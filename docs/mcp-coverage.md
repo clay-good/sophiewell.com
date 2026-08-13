@@ -7706,6 +7706,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/hhie-s-v728.js (spec-v728: HHIE-S hearing-handicap screen — clinical disclaimer)
 - `hhie-s`
 
+### lib/abc-scale-v729.js (spec-v729: ABC Balance Confidence Scale — clinical disclaimer)
+- `abc-scale`
+
 ### lib/cobb-angle-v694.js (spec-v694: Cobb angle scoliosis severity — clinical disclaimer)
 - `cobb-angle`
 

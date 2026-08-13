@@ -641,6 +641,7 @@ import glickmanFurcationV725 from './adapters/glickman-furcation-v725.js';
 import isiV726 from './adapters/isi-v726.js';
 import foisV727 from './adapters/fois-v727.js';
 import hhieSV728 from './adapters/hhie-s-v728.js';
+import abcScaleV729 from './adapters/abc-scale-v729.js';
 import masaokaV650 from './adapters/masaoka-v650.js';
 
 const ADAPTER_MODULES = [
@@ -1269,6 +1270,7 @@ const ADAPTER_MODULES = [
   ['isi-v726', isiV726],
   ['fois-v727', foisV727],
   ['hhie-s-v728', hhieSV728],
+  ['abc-scale-v729', abcScaleV729],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));
