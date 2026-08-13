@@ -851,6 +851,8 @@
       "tile": "mna-sf", "audience": "clinicians" },
     { "phrases": ["edmonton obesity staging system", "eoss obesity stage", "obesity clinical staging", "obesity severity staging"],
       "tile": "eoss", "audience": "clinicians" },
+    { "phrases": ["prostate health index", "phi prostate score", "p2psa prostate cancer index", "phi psa biopsy"],
+      "tile": "prostate-health-index", "audience": "clinicians" },
     { "phrases": ["masaoka koga staging thymoma", "thymoma stage classification", "thymic tumor staging", "masaoka thymoma stage"],
       "tile": "masaoka-koga", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],
