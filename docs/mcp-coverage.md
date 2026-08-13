@@ -7697,6 +7697,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/glickman-furcation-v725.js (spec-v725: Glickman furcation grade — clinical disclaimer)
 - `glickman-furcation`
 
+### lib/isi-v726.js (spec-v726: Insomnia Severity Index — clinical disclaimer)
+- `isi`
+
 ### lib/cobb-angle-v694.js (spec-v694: Cobb angle scoliosis severity — clinical disclaimer)
 - `cobb-angle`
 

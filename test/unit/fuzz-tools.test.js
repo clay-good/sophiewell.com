@@ -620,6 +620,7 @@ import * as loeSilnessGingivalIndexV722 from '../../lib/loe-silness-gingival-ind
 import * as silnessLoePlaqueIndexV723 from '../../lib/silness-loe-plaque-index-v723.js';
 import * as millerGingivalRecessionV724 from '../../lib/miller-gingival-recession-v724.js';
 import * as glickmanFurcationV725 from '../../lib/glickman-furcation-v725.js';
+import * as isiV726 from '../../lib/isi-v726.js';
 import * as masaokaV650 from '../../lib/masaoka-v650.js';
 import * as erezDicV559 from '../../lib/erez-dic-v559.js';
 import * as anaqeebAeegV560 from '../../lib/anaqeeb-aeeg-v560.js';
@@ -1246,6 +1247,7 @@ const MODULES = {
   'silness-loe-plaque-index-v723.js': silnessLoePlaqueIndexV723,
   'miller-gingival-recession-v724.js': millerGingivalRecessionV724,
   'glickman-furcation-v725.js': glickmanFurcationV725,
+  'isi-v726.js': isiV726,
   'masaoka-v650.js': masaokaV650,
   'erez-dic-v559.js': erezDicV559,
   'anaqeeb-aeeg-v560.js': anaqeebAeegV560,

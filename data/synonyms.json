@@ -875,6 +875,8 @@
       "tile": "miller-gingival-recession", "audience": "clinicians" },
     { "phrases": ["glickman furcation", "furcation involvement grade", "furcation classification", "periodontal furcation grade"],
       "tile": "glickman-furcation", "audience": "clinicians" },
+    { "phrases": ["insomnia severity index", "isi sleep score", "insomnia questionnaire", "sleep severity score"],
+      "tile": "isi", "audience": "clinicians" },
     { "phrases": ["masaoka koga staging thymoma", "thymoma stage classification", "thymic tumor staging", "masaoka thymoma stage"],
       "tile": "masaoka-koga", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],
