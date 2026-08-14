@@ -685,6 +685,7 @@ const PROBES = [
   ['severity of dependence scale sds substance', ['sds-dependence']],
   ['infant breastfeeding assessment tool ibfat feeding', ['ibfat']],
   ['fatigue severity scale fss krupp', ['fss']],
+  ['chalder fatigue scale cfq-11 questionnaire', ['chalder-fatigue']],
   ['masaoka koga thymoma staging stage', ['masaoka-koga']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],
