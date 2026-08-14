@@ -893,6 +893,8 @@
       "tile": "chalder-fatigue", "audience": "clinicians" },
     { "phrases": ["phq-15 somatic symptom", "patient health questionnaire 15", "somatic symptom severity score", "phq15 somatization"],
       "tile": "phq15", "audience": "clinicians" },
+    { "phrases": ["kessler k6 distress", "psychological distress scale", "k6 serious mental illness", "kessler distress screen"],
+      "tile": "k6", "audience": "clinicians" },
     { "phrases": ["masaoka koga staging thymoma", "thymoma stage classification", "thymic tumor staging", "masaoka thymoma stage"],
       "tile": "masaoka-koga", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],

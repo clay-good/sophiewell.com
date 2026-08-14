@@ -7724,6 +7724,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/phq15-v734.js (spec-v734: PHQ-15 somatic symptom severity — clinical disclaimer)
 - `phq15`
 
+### lib/k6-v735.js (spec-v735: Kessler K6 psychological distress — clinical disclaimer)
+- `k6`
+
 ### lib/cobb-angle-v694.js (spec-v694: Cobb angle scoliosis severity — clinical disclaimer)
 - `cobb-angle`
 

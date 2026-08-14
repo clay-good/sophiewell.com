@@ -629,6 +629,7 @@ import * as ibfatV731 from '../../lib/ibfat-v731.js';
 import * as fssV732 from '../../lib/fss-v732.js';
 import * as chalderFatigueV733 from '../../lib/chalder-fatigue-v733.js';
 import * as phq15V734 from '../../lib/phq15-v734.js';
+import * as k6V735 from '../../lib/k6-v735.js';
 import * as masaokaV650 from '../../lib/masaoka-v650.js';
 import * as erezDicV559 from '../../lib/erez-dic-v559.js';
 import * as anaqeebAeegV560 from '../../lib/anaqeeb-aeeg-v560.js';
@@ -1264,6 +1265,7 @@ const MODULES = {
   'fss-v732.js': fssV732,
   'chalder-fatigue-v733.js': chalderFatigueV733,
   'phq15-v734.js': phq15V734,
+  'k6-v735.js': k6V735,
   'masaoka-v650.js': masaokaV650,
   'erez-dic-v559.js': erezDicV559,
   'anaqeeb-aeeg-v560.js': anaqeebAeegV560,

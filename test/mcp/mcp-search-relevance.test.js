@@ -687,6 +687,7 @@ const PROBES = [
   ['fatigue severity scale fss krupp', ['fss']],
   ['chalder fatigue scale cfq-11 questionnaire', ['chalder-fatigue']],
   ['phq-15 somatic symptom severity questionnaire', ['phq15']],
+  ['kessler k6 psychological distress scale', ['k6']],
   ['masaoka koga thymoma staging stage', ['masaoka-koga']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],
