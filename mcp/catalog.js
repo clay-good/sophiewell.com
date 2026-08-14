@@ -646,6 +646,7 @@ import sdsDependenceV730 from './adapters/sds-dependence-v730.js';
 import ibfatV731 from './adapters/ibfat-v731.js';
 import fssV732 from './adapters/fss-v732.js';
 import chalderFatigueV733 from './adapters/chalder-fatigue-v733.js';
+import phq15V734 from './adapters/phq15-v734.js';
 import masaokaV650 from './adapters/masaoka-v650.js';
 
 const ADAPTER_MODULES = [
@@ -1279,6 +1280,7 @@ const ADAPTER_MODULES = [
   ['ibfat-v731', ibfatV731],
   ['fss-v732', fssV732],
   ['chalder-fatigue-v733', chalderFatigueV733],
+  ['phq15-v734', phq15V734],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

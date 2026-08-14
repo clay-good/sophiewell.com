@@ -7721,6 +7721,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/chalder-fatigue-v733.js (spec-v733: Chalder Fatigue Scale CFQ-11 — clinical disclaimer)
 - `chalder-fatigue`
 
+### lib/phq15-v734.js (spec-v734: PHQ-15 somatic symptom severity — clinical disclaimer)
+- `phq15`
+
 ### lib/cobb-angle-v694.js (spec-v694: Cobb angle scoliosis severity — clinical disclaimer)
 - `cobb-angle`
 
