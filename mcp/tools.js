@@ -39,18 +39,26 @@ function loadSynonymEntries() {
 // The committed search corpus (scripts/build-search-corpus.mjs) carries per-tile
 // natural-language prose -- adapter summaries, interpretation-band text, example
 // sentences -- so a query term that appears in a tile's summary or bands but not
-// its name still routes. Load it once, lazily; if absent, find_calculator ranks
-// on names + specialties alone (same accelerator-not-dependency contract as the
-// synonym table).
+// its name still routes. spec-v736 tiered the corpus into corpus.json (Tier 1:
+// name/group/audiences/specialties) + corpus-detail.json (Tier 2: the desc prose);
+// merge both per id so ranking sees the same row as the pre-tiering single file.
+// Load once, lazily; if absent, find_calculator ranks on names + specialties alone
+// (same accelerator-not-dependency contract as the synonym table).
 let corpusCache;
+function readCorpusFile(name) {
+  try {
+    const path = fileURLToPath(new URL(`../data/search-corpus/${name}`, import.meta.url));
+    return JSON.parse(readFileSync(path, 'utf8'));
+  } catch {
+    return {};
+  }
+}
 function loadCorpus() {
   if (corpusCache !== undefined) return corpusCache;
-  try {
-    const path = fileURLToPath(new URL('../data/search-corpus/corpus.json', import.meta.url));
-    corpusCache = JSON.parse(readFileSync(path, 'utf8'));
-  } catch {
-    corpusCache = {};
-  }
+  const index = readCorpusFile('corpus.json');
+  const detail = readCorpusFile('corpus-detail.json');
+  corpusCache = {};
+  for (const id of Object.keys(index)) corpusCache[id] = { ...index[id], ...(detail[id] || {}) };
   return corpusCache;
 }
 

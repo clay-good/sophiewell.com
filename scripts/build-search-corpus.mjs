@@ -33,13 +33,24 @@ import { dirname, join, resolve } from 'node:path';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
 const OUT_DIR = join(ROOT, 'data', 'search-corpus');
-// Raised 224 -> 226 KiB at ~1559 tiles (spec-v728): the cheap CAP trims are exhausted --
-// CAP.band is at its 50-char floor (below it the CHADS golden probe regresses, see below),
-// MAX_BANDS 3 -> 2 regressed a golden probe when tried, and trimming CAP.expected saved
-// nothing (example-output strings are already short). The real fix remains corpus tiering
-// (docs/spec-v619.md); this +2 KiB is the documented stopgap to keep the build green as the
-// catalog grows. Prefer corpus tiering over further raises.
+// spec-v736: CORPUS TIERING implemented (the real fix from docs/spec-v619.md). The corpus
+// is split into two files:
+//   corpus.json        Tier 1 (TIER1_FIELDS): id -> {name, group, audiences, specialties}.
+//                       High find-signal, small, grows ~35 B/tile. The HARD budget below is
+//                       checked against THIS file, so the build no longer hits a wall as the
+//                       catalog grows.
+//   corpus-detail.json Tier 2 (TIER2_FIELDS): id -> {summary, what, when, expected, bands}.
+//                       The desc-channel prose (lib/search-corpus.js corpusDesc) - the bulk
+//                       of the bytes. Both consumers (app.js, mcp/tools.js) merge the tiers
+//                       back into one row before ranking, so ranking is byte-for-byte the
+//                       same as the single-file corpus; only the on-the-wire layout changed.
+// BUDGET_GZIP is the Tier-1 ceiling (was the whole-corpus ceiling before tiering); DETAIL_
+// BUDGET_GZIP is a generous guardrail on Tier 2. Before tiering the single blob was ~225 KB
+// against a 226 KiB budget with ~4 tiles of headroom; tiering drops Tier 1 to ~63 KB.
 const BUDGET_GZIP = 226 * 1024;
+const DETAIL_BUDGET_GZIP = 320 * 1024;
+const TIER1_FIELDS = ['name', 'group', 'audiences', 'specialties'];
+const TIER2_FIELDS = ['summary', 'what', 'when', 'expected', 'bands'];
 
 // Field length caps (chars, cut at a word boundary). Tuned so the full catalog
 // stays comfortably under the gzip budget with headroom for growth.
@@ -170,40 +181,70 @@ async function buildRow(tile, meta, summaries) {
 async function main() {
   const [tiles, META, summaries] = await Promise.all([loadUtilities(), loadMeta(), loadSummaries()]);
 
-  const corpus = {};
+  // Build the full rows, then split each into a Tier-1 (index) row and a Tier-2
+  // (detail) row. Every tile has a Tier-1 row (name + group are guaranteed);
+  // Tier-2 rows are emitted only when the tile has desc prose, so tiles without a
+  // summary/bands add nothing to corpus-detail.json.
+  const index = {};
+  const detail = {};
   for (const tile of tiles) {
-    corpus[tile.id] = await buildRow(tile, META[tile.id], summaries);
+    const row = await buildRow(tile, META[tile.id], summaries);
+    const t1 = {};
+    for (const f of TIER1_FIELDS) if (row[f] !== undefined) t1[f] = row[f];
+    index[tile.id] = t1;
+    const t2 = {};
+    for (const f of TIER2_FIELDS) if (row[f] !== undefined) t2[f] = row[f];
+    if (Object.keys(t2).length) detail[tile.id] = t2;
   }
 
-  const corpusJson = JSON.stringify(corpus);
-  const gzipBytes = gzipSync(corpusJson).length;
-  if (gzipBytes > BUDGET_GZIP) {
+  const indexJson = JSON.stringify(index);
+  const detailJson = JSON.stringify(detail);
+  const indexGzip = gzipSync(indexJson).length;
+  const detailGzip = gzipSync(detailJson).length;
+  if (indexGzip > BUDGET_GZIP) {
     throw new Error(
-      `build-search-corpus: corpus is ${gzipBytes} bytes gzipped, over the ${BUDGET_GZIP}-byte budget. `
-      + 'Tighten the CAP field limits or drop the lowest-signal field.',
+      `build-search-corpus: Tier-1 corpus.json is ${indexGzip} bytes gzipped, over the ${BUDGET_GZIP}-byte budget. `
+      + 'Tier-1 carries only name/group/audiences/specialties; if this is hit, the id/name set itself is the weight.',
+    );
+  }
+  if (detailGzip > DETAIL_BUDGET_GZIP) {
+    throw new Error(
+      `build-search-corpus: Tier-2 corpus-detail.json is ${detailGzip} bytes gzipped, over the ${DETAIL_BUDGET_GZIP}-byte budget. `
+      + 'Trim CAP.band / CAP.summary, or move Tier-2 to on-demand sharded loading (docs/spec-v619.md).',
     );
   }
 
-  const hash = createHash('sha256').update(corpusJson).digest('hex').slice(0, 16);
+  const hash = createHash('sha256').update(indexJson).digest('hex').slice(0, 16);
+  const detailHash = createHash('sha256').update(detailJson).digest('hex').slice(0, 16);
   const manifest = {
-    version: '1',
+    version: '2',
     generator: 'scripts/build-search-corpus.mjs',
-    note: 'Per-tile natural-language search corpus compiled from existing hand-authored sources (UTILITIES, META, mcp adapter summaries, data/tool-copy). Deterministic and byte-stable; regenerated by npm run build. Accelerator asset: search degrades to name/id/synonym routing if it is absent.',
-    fields: ['name', 'group', 'audiences', 'specialties', 'summary', 'what', 'when', 'expected', 'bands'],
+    note: 'Per-tile natural-language search corpus compiled from existing hand-authored sources (UTILITIES, META, mcp adapter summaries, data/tool-copy). spec-v736: tiered into corpus.json (Tier 1: name/group/audiences/specialties, budgeted) + corpus-detail.json (Tier 2: summary/what/when/expected/bands). Consumers merge both before ranking. Deterministic and byte-stable; regenerated by npm run build. Accelerator asset: search degrades to name/id/synonym routing if absent.',
+    tier1Fields: TIER1_FIELDS,
+    tier2Fields: TIER2_FIELDS,
     count: tiles.length,
     withSummary: tiles.filter((t) => summaries.has(t.id)).length,
     budgetGzip: BUDGET_GZIP,
-    gzipBytes,
+    gzipBytes: indexGzip,
     hash,
+    detail: {
+      file: 'corpus-detail.json',
+      count: Object.keys(detail).length,
+      budgetGzip: DETAIL_BUDGET_GZIP,
+      gzipBytes: detailGzip,
+      hash: detailHash,
+    },
   };
 
   await mkdir(OUT_DIR, { recursive: true });
-  await writeFile(join(OUT_DIR, 'corpus.json'), corpusJson, 'utf8');
+  await writeFile(join(OUT_DIR, 'corpus.json'), indexJson, 'utf8');
+  await writeFile(join(OUT_DIR, 'corpus-detail.json'), detailJson, 'utf8');
   await writeFile(join(OUT_DIR, 'manifest.json'), `${JSON.stringify(manifest, null, 2)}\n`, 'utf8');
 
   console.log(
     `build-search-corpus: wrote ${tiles.length} rows (${manifest.withSummary} with adapter summary) `
-    + `to data/search-corpus/ (${(gzipBytes / 1024).toFixed(1)} KB gzipped, hash ${hash}).`,
+    + `to data/search-corpus/ -- Tier 1 ${(indexGzip / 1024).toFixed(1)} KB gzip (hash ${hash}), `
+    + `Tier 2 ${(detailGzip / 1024).toFixed(1)} KB gzip (${manifest.detail.count} rows, hash ${detailHash}).`,
   );
 }
 

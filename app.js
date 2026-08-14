@@ -4345,11 +4345,24 @@ function boot() {
   // optional accelerator, not a hard dependency.
   loadSynonyms().then((entries) => { SYNONYM_ENTRIES = entries; }).catch(() => {});
   // plain-language-search: load the search corpus once at boot, then rebuild the
-  // tile corpus so desc-channel (summary/band) terms become matchable. Same
-  // accelerator-not-dependency contract: on failure the corpus stays empty and
-  // hero search ranks on name / id / tags / specialties as before.
-  fetchJson('data/search-corpus/corpus.json')
-    .then((corpus) => { if (corpus && typeof corpus === 'object') { SEARCH_CORPUS = corpus; TILE_CORPUS_CACHE = null; } })
+  // tile corpus so desc-channel (summary/band) terms become matchable. spec-v736
+  // tiered the corpus into corpus.json (Tier 1: name/group/audiences/specialties)
+  // + corpus-detail.json (Tier 2: the desc prose); merge both per id so ranking
+  // sees the same row as the pre-tiering single file. Same accelerator-not-
+  // dependency contract: if Tier 2 fails, Tier 1 still ranks on name / specialties;
+  // if both fail the corpus stays empty and hero search ranks on name / id / tags.
+  Promise.all([
+    fetchJson('data/search-corpus/corpus.json'),
+    fetchJson('data/search-corpus/corpus-detail.json').catch(() => ({})),
+  ])
+    .then(([index, detail]) => {
+      if (!index || typeof index !== 'object') return;
+      const d = detail && typeof detail === 'object' ? detail : {};
+      const merged = {};
+      for (const id of Object.keys(index)) merged[id] = { ...index[id], ...(d[id] || {}) };
+      SEARCH_CORPUS = merged;
+      TILE_CORPUS_CACHE = null;
+    })
     .catch(() => {});
   window.addEventListener('hashchange', route);
   route();

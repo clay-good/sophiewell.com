@@ -18,6 +18,7 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = new URL('../../', import.meta.url);
 const CORPUS_PATH = fileURLToPath(new URL('data/search-corpus/corpus.json', ROOT));
+const DETAIL_PATH = fileURLToPath(new URL('data/search-corpus/corpus-detail.json', ROOT));
 const MANIFEST_PATH = fileURLToPath(new URL('data/search-corpus/manifest.json', ROOT));
 const BUILDER = fileURLToPath(new URL('scripts/build-search-corpus.mjs', ROOT));
 
@@ -30,12 +31,14 @@ function catalogIds() {
 
 const corpusText = readFileSync(CORPUS_PATH, 'utf8');
 const corpus = JSON.parse(corpusText);
+const detailText = readFileSync(DETAIL_PATH, 'utf8');
+const detail = JSON.parse(detailText);
 const manifest = JSON.parse(readFileSync(MANIFEST_PATH, 'utf8'));
 
 test('search-corpus: every row keys to a real catalog tile; counts agree', () => {
   const ids = catalogIds();
   const rowIds = Object.keys(corpus);
-  assert.equal(rowIds.length, ids.size, 'a row per catalog tile');
+  assert.equal(rowIds.length, ids.size, 'a Tier-1 row per catalog tile');
   assert.equal(manifest.count, rowIds.length, 'manifest count matches row count');
   for (const id of rowIds) {
     assert.ok(ids.has(id), `corpus row "${id}" must be a real catalog tile`);
@@ -43,16 +46,28 @@ test('search-corpus: every row keys to a real catalog tile; counts agree', () =>
   }
 });
 
-test('search-corpus: no en/em dash or smart quotes leaked from source prose', () => {
+test('search-corpus: Tier-2 detail rows all key to a Tier-1 tile; manifest agrees', () => {
+  const detailIds = Object.keys(detail);
+  assert.equal(manifest.detail.count, detailIds.length, 'manifest.detail.count matches detail row count');
+  for (const id of detailIds) {
+    assert.ok(corpus[id], `detail row "${id}" must have a Tier-1 index row`);
+    // A detail row must carry at least one desc field (else it should be omitted).
+    const r = detail[id];
+    assert.ok(r.summary || r.bands || r.what || r.when || r.expected, `detail row "${id}" must carry desc prose`);
+  }
+});
+
+test('search-corpus: no en/em dash or smart quotes leaked from source prose (both tiers)', () => {
   // The runtime surfaces enforce this; the builder sanitizes, and this guards
-  // that the committed bytes stayed clean.
-  assert.ok(!/[\u2012\u2013\u2014\u2015\u2212\u2018\u2019\u201C\u201D]/.test(corpusText),
-    'corpus must not contain en/em dashes or smart quotes');
+  // that the committed bytes stayed clean. Tier 2 carries the prose fields.
+  const bad = /[\u2012\u2013\u2014\u2015\u2212\u2018\u2019\u201C\u201D]/;
+  assert.ok(!bad.test(corpusText), 'Tier-1 corpus must not contain en/em dashes or smart quotes');
+  assert.ok(!bad.test(detailText), 'Tier-2 corpus-detail must not contain en/em dashes or smart quotes');
 });
 
 test('search-corpus: gzip size is within the 226 KB budget', () => {
   const gzip = gzipSync(corpusText).length;
-  assert.ok(gzip <= 226 * 1024, `corpus is ${gzip} bytes gzipped, over the 226 KB budget`);
+  assert.ok(gzip <= 226 * 1024, `Tier-1 corpus is ${gzip} bytes gzipped, over the 226 KB budget`);
   // manifest.gzipBytes is informational and stamped by whichever zlib built
   // it; different node/zlib versions emit different (all valid) gzip
   // streams, so a strict equality here is environment-dependent - it held
@@ -67,15 +82,25 @@ test('search-corpus: gzip size is within the 226 KB budget', () => {
     `manifest gzipBytes (${manifest.gzipBytes}) differs from this environment's measurement (${gzip}) by ${(drift * 100).toFixed(1)}% - over the 2% zlib-variance allowance, rebuild the corpus`);
 });
 
-test('search-corpus: manifest hash matches the corpus bytes (drift guard)', () => {
+test('search-corpus: manifest hashes match the corpus bytes (drift guard, both tiers)', () => {
   const hash = createHash('sha256').update(corpusText).digest('hex').slice(0, 16);
   assert.equal(manifest.hash, hash,
-    'manifest.hash is stale -- rebuild with `node scripts/build-search-corpus.mjs`');
+    'manifest.hash (Tier 1) is stale -- rebuild with `node scripts/build-search-corpus.mjs`');
+  const detailHash = createHash('sha256').update(detailText).digest('hex').slice(0, 16);
+  assert.equal(manifest.detail.hash, detailHash,
+    'manifest.detail.hash (Tier 2) is stale -- rebuild with `node scripts/build-search-corpus.mjs`');
 });
 
-test('search-corpus: builder is deterministic (rebuild is byte-identical)', () => {
+test('search-corpus: Tier-2 detail gzip is within its guardrail budget', () => {
+  const gzip = gzipSync(detailText).length;
+  assert.ok(gzip <= manifest.detail.budgetGzip,
+    `Tier-2 corpus-detail is ${gzip} bytes gzipped, over the ${manifest.detail.budgetGzip}-byte guardrail`);
+});
+
+test('search-corpus: builder is deterministic (rebuild is byte-identical, both tiers)', () => {
   const before = readFileSync(CORPUS_PATH);
+  const beforeDetail = readFileSync(DETAIL_PATH);
   execFileSync(process.execPath, [BUILDER], { stdio: 'pipe' });
-  const after = readFileSync(CORPUS_PATH);
-  assert.ok(before.equals(after), 'rebuilding the corpus changed its bytes -- non-deterministic builder');
+  assert.ok(before.equals(readFileSync(CORPUS_PATH)), 'rebuilding Tier 1 changed its bytes -- non-deterministic builder');
+  assert.ok(beforeDetail.equals(readFileSync(DETAIL_PATH)), 'rebuilding Tier 2 changed its bytes -- non-deterministic builder');
 });

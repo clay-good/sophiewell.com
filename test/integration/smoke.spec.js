@@ -64,10 +64,12 @@ test('home: hero-search resolves patient phrasing via the synonym table', async 
 // plain-language-search: once the search corpus loads, hero search matches a
 // query term that lives only in a tile's summary / interpretation bands, not
 // its name. "antithrombotic therapy not recommended" is CHA2DS2-VASc band text;
-// without the corpus it misroutes (name-only), with it routes to chads.
+// without the corpus it misroutes (name-only), with it routes to chads. spec-v736
+// tiered the corpus: band text lives in corpus-detail.json (Tier 2), so wait for
+// THAT response before asserting a band-text route.
 test('home: hero-search matches corpus prose (band-text term routes to chads)', async ({ page }) => {
   const corpusLoaded = page.waitForResponse(
-    (r) => r.url().includes('data/search-corpus/corpus.json') && r.status() === 200,
+    (r) => r.url().includes('data/search-corpus/corpus-detail.json') && r.status() === 200,
     { timeout: 15000 },
   );
   await page.goto('/');
