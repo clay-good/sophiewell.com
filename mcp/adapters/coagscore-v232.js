@@ -27,14 +27,4 @@ export default [
       { dom: 'vil-ulcer', arg: 'ulcer', kind: 'bool', required: false, label: 'Venous ulcer (open or healed)' },
     ],
   },
-  {
-    id: 'sic',
-    summary: 'ISTH sepsis-induced coagulopathy score (Iba 2019): platelet count, PT-INR, and total SOFA each scored 0-2; a total >= 4 meets the definition of sepsis-induced coagulopathy.',
-    compute: F.sic,
-    fields: [
-      { dom: 'sic-plt', arg: 'platelet', kind: 'number', required: true, label: 'Platelet count band (0-2)' },
-      { dom: 'sic-inr', arg: 'inr', kind: 'number', required: true, label: 'PT-INR band (0-2)' },
-      { dom: 'sic-sofa', arg: 'sofa', kind: 'number', required: true, label: 'Total SOFA band (0-2)' },
-    ],
-  },
 ];

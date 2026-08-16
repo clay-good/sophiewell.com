@@ -3166,7 +3166,6 @@ const UTILITIES = [
   // classifies, none diagnoses or orders (spec-v11 5.3). Point systems >= 2-source
   // verified (spec-v97).
   { id: 'villalta',             name: 'Villalta Scale (Post-Thrombotic Syndrome)',        group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
-  { id: 'sic',                  name: 'Sepsis-Induced Coagulopathy (SIC) Score',          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   // spec-v233: quantitative bedside estimators. lib/estimators-v233.js, RV233.
   // Each verified absent (spec-v85 6.2, incl. MCP adapters); each computes a ratio/
   // estimate/threshold, none diagnoses or orders (spec-v11 5.3). Formulas/cutoffs

@@ -59,15 +59,4 @@ export const renderers = {
     }));
     postureNote(root);
   },
-  'sic'(root) {
-    note(root, 'ISTH sepsis-induced coagulopathy (Iba 2019): platelet, PT-INR, and total SOFA each 0-2. >= 4 diagnoses SIC. Near-neighbors: isth-dic, sirs.');
-    root.appendChild(select('Platelet count (10³/µL)', 'sic-plt', [['0', '>= 150 (0)'], ['1', '100-150 (1)'], ['2', '< 100 (2)']]));
-    root.appendChild(select('PT-INR', 'sic-inr', [['0', '<= 1.2 (0)'], ['1', '1.2-1.4 (1)'], ['2', '> 1.4 (2)']]));
-    root.appendChild(select('Total SOFA score', 'sic-sofa', [['0', '0 (0)'], ['1', '1 (1)'], ['2', '>= 2 (2)']]));
-    const o = out(); root.appendChild(o);
-    wire(['sic-plt', 'sic-inr', 'sic-sofa'], () => safe(o, () => {
-      render(o, M.sic({ platelet: val('sic-plt'), inr: val('sic-inr'), sofa: val('sic-sofa') }), 'SIC');
-    }));
-    postureNote(root);
-  },
 };

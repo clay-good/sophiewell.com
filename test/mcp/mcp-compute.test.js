@@ -721,7 +721,6 @@ test('lib wave 52 (spec-v230 through spec-v257 subspecialty depth) worked calls'
   assert.equal(ok('far', { 'far-fib': '400', 'far-alb': '4.0' }).score, 100);
   // coagscore-v232
   assert.equal(ok('villalta', { 'vil-pain': '2', 'vil-heavy': '2', 'vil-edema': '2', 'vil-ind': '2', 'vil-hyp': '2', 'vil-ect': '2' }).score, 12);
-  assert.equal(ok('sic', { 'sic-plt': '2', 'sic-inr': '1', 'sic-sofa': '2' }).score, 5);
   // estimators-v233
   assert.equal(ok('evans-index', { 'ev-frontal': '45', 'ev-skull': '140' }).score, 0.32);
   assert.equal(ok('fohr', { 'fo-frontal': '38', 'fo-occipital': '42', 'fo-bpd': '110' }).score, 0.36);

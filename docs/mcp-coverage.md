@@ -8644,7 +8644,6 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/coagscore-v232.js
 - `villalta`
-- `sic`
 
 ### lib/estimators-v233.js
 - `evans-index`

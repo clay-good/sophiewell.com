@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `501c51f2371a6c24`
-Generated: 2026-08-16T21:58:17.468Z
+Build ID: `2bdaacfac1380d3e`
+Generated: 2026-08-16T22:15:53.489Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 101487 | `f2dee5d0ef93f4408bfbbaabdc326ffaa5106f55d0d39d9fe1e134427e477e01` |
+| `index.html` | 101432 | `0b4d615330ab732e81f5efb024b737de326501714759792ed03b06a5ac3170bf` |
 | `styles.css` | 44160 | `a2cc7ad7bae9f7cfc9681d80bc6bd4a58f0b07d47bfcff64897dc04929c12333` |
-| `app.js` | 419271 | `a9bf1f1fc631b4ed89d351073455fa04d778d5afeefad602e1eeb4168a49dafa` |
+| `app.js` | 419111 | `ccc204007cd1fe437aacce0555bb5d53ca25a8592bc0818b96f1f00c854229c3` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 239935 | `5134729c7911de3993845362de4deeec69bdfd75392a967eb5a6dd0e1064ac5a` |
+| `sitemap.xml` | 239792 | `241448f19c9abcdcf88aedb320fd0a204824392d2334cd5d95c249176fabe769` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -141,7 +141,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/clinical-v8.js` | 17487 | `1620bb22277f42f6ae3f0e59f3f3042f9c577920c9ee0a5730a7907aec7252a7` |
 | `lib/clinical.js` | 16372 | `817e2bdffe1b58b64ac9cdc13eec076d25f4effa7424a91cf86845949bf22888` |
 | `lib/clipboard.js` | 2907 | `951c41df24f58df747734474d383d6f75f52d22d2c4d0a370ef5bfb269a15147` |
-| `lib/coagscore-v232.js` | 4172 | `b76b9bc99eec4910fc3ff60ddbc012bfe066faee27d9f3777657660314c13052` |
+| `lib/coagscore-v232.js` | 3053 | `aff9e82479da5b38deeaf70ade27caa7f5d1a0f21b01d74f764ca147e9846bd8` |
 | `lib/cobb-angle-v694.js` | 3885 | `c51f18d33e692edaf7490e8c3d849bc589a8e4daa5526c46535bf93c997333e3` |
 | `lib/coding-v5.js` | 12119 | `9dd3bbc7e833f65a612386b9a9474bff60d822d7cb7bc2e8f6b5ce48456a8ef1` |
 | `lib/columbia-fsgs-v532.js` | 11989 | `28d8b6d7b02e2a089ce151e7aab0a269efe8181262a34f4884f5df7102140e41` |
@@ -407,7 +407,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/meld3-v678.js` | 5664 | `7bda4af7c9412eae41162d0cdd6b977cbc9a6f9b8a7bc40fe350f861e989444c` |
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2153299 | `5faf79c5f657f0189c65159c0599fa7cc663604ca83ac4d7ebfce3055f770be1` |
+| `lib/meta.js` | 2152280 | `7e6aef0c5a3918f73700290eb49583d4e62d37d390f804e3c64db7e0018b6565` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -849,7 +849,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v23.js` | 14725 | `5b5270fee62e0915f4596e11ea46831f7055ad3bb5039a2c4fe96af83382d305` |
 | `views/group-v230.js` | 4636 | `3a2bbc700ddd0ce96af1772dbccbd40e30ba54bb7b3e52cdb4cdbd9f567c1835` |
 | `views/group-v231.js` | 3949 | `33e406bdfb72f9e2c739cef65b56dbb787d93d08eecc2eaa89c195afb7747554` |
-| `views/group-v232.js` | 4445 | `37a9f6c38ef32fa351967802e4ae4f18159b62bab26bf77a7ede6bd9716340eb` |
+| `views/group-v232.js` | 3653 | `e15e2d59b1d83103e655011fe0c65eee5e96c5e2878d6389ab6e55a1c9888613` |
 | `views/group-v233.js` | 5097 | `0fda99ea83688d0d3d2bdbaff5b7a9ab63e9cbbaf03c2427b0bcb8bd6ff6e826` |
 | `views/group-v234.js` | 6456 | `cf69be76c6f88b7b6deda2aa4734b2ecb7865644174c95edc2ffd15e206faf0b` |
 | `views/group-v235.js` | 6163 | `826c96f55b8c14d8adefda7e82a690e72aa9b86aed43dd9b28b18d621c758cb2` |
