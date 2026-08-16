@@ -901,6 +901,8 @@
       "tile": "cage-aid", "audience": "clinicians" },
     { "phrases": ["mayo olecranon fracture classification", "olecranon fracture type", "mayo elbow fracture classification", "olecranon fracture mayo type"],
       "tile": "mayo-olecranon", "audience": "clinicians" },
+    { "phrases": ["walch glenoid classification", "glenoid morphology osteoarthritis", "walch b2 glenoid", "glenoid version classification shoulder"],
+      "tile": "walch-glenoid", "audience": "clinicians" },
     { "phrases": ["masaoka koga staging thymoma", "thymoma stage classification", "thymic tumor staging", "masaoka thymoma stage"],
       "tile": "masaoka-koga", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],

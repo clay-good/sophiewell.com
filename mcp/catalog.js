@@ -651,6 +651,7 @@ import k6V735 from './adapters/k6-v735.js';
 import smastV737 from './adapters/smast-v737.js';
 import cageAidV738 from './adapters/cage-aid-v738.js';
 import mayoOlecranonV739 from './adapters/mayo-olecranon-v739.js';
+import walchGlenoidV740 from './adapters/walch-glenoid-v740.js';
 import masaokaV650 from './adapters/masaoka-v650.js';
 
 const ADAPTER_MODULES = [
@@ -1289,6 +1290,7 @@ const ADAPTER_MODULES = [
   ['smast-v737', smastV737],
   ['cage-aid-v738', cageAidV738],
   ['mayo-olecranon-v739', mayoOlecranonV739],
+  ['walch-glenoid-v740', walchGlenoidV740],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));

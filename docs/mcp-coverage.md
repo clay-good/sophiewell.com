@@ -7736,6 +7736,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/mayo-olecranon-v739.js (spec-v739: Mayo olecranon fracture classification — clinical disclaimer)
 - `mayo-olecranon`
 
+### lib/walch-glenoid-v740.js (spec-v740: Walch glenoid morphology classification — clinical disclaimer)
+- `walch-glenoid`
+
 ### lib/cobb-angle-v694.js (spec-v694: Cobb angle scoliosis severity — clinical disclaimer)
 - `cobb-angle`
 

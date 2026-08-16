@@ -633,6 +633,7 @@ import * as k6V735 from '../../lib/k6-v735.js';
 import * as smastV737 from '../../lib/smast-v737.js';
 import * as cageAidV738 from '../../lib/cage-aid-v738.js';
 import * as mayoOlecranonV739 from '../../lib/mayo-olecranon-v739.js';
+import * as walchGlenoidV740 from '../../lib/walch-glenoid-v740.js';
 import * as masaokaV650 from '../../lib/masaoka-v650.js';
 import * as erezDicV559 from '../../lib/erez-dic-v559.js';
 import * as anaqeebAeegV560 from '../../lib/anaqeeb-aeeg-v560.js';
@@ -1272,6 +1273,7 @@ const MODULES = {
   'smast-v737.js': smastV737,
   'cage-aid-v738.js': cageAidV738,
   'mayo-olecranon-v739.js': mayoOlecranonV739,
+  'walch-glenoid-v740.js': walchGlenoidV740,
   'masaoka-v650.js': masaokaV650,
   'erez-dic-v559.js': erezDicV559,
   'anaqeeb-aeeg-v560.js': anaqeebAeegV560,

@@ -691,6 +691,7 @@ const PROBES = [
   ['short michigan alcoholism screening test smast', ['smast']],
   ['cage-aid alcohol and drug screen adapted to include drugs', ['cage-aid']],
   ['mayo classification olecranon fracture type', ['mayo-olecranon']],
+  ['walch glenoid morphology classification osteoarthritis', ['walch-glenoid']],
   ['masaoka koga thymoma staging stage', ['masaoka-koga']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],
