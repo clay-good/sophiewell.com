@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `0435951f696e2044`
-Generated: 2026-08-14T14:39:22.123Z
+Build ID: `7f93d292d22a9c86`
+Generated: 2026-08-15T17:02:03.438Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 101560 | `2d922609ca14405d440ee66707800327c7f072b35338ed80f47037704991c053` |
+| `index.html` | 101624 | `39baa79c3075bec76ebcc45c90ed747e44c91c3868a06915cae7439b69246a6d` |
 | `styles.css` | 44160 | `a2cc7ad7bae9f7cfc9681d80bc6bd4a58f0b07d47bfcff64897dc04929c12333` |
-| `app.js` | 419402 | `91c72c793faab66b24b29541d2119ddf06bcb4777bcb82fd480d98b0e827d89a` |
+| `app.js` | 419629 | `985d96dbed38193c2b3ea609426328abcd5e7b4f3b84c352841339c5fc726e01` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 240210 | `94ddfe5d5e8bb62edabc4377351107bad89936fdeefcf6378871297a43a9e605` |
+| `sitemap.xml` | 240355 | `e950e47743c540c8af7e8a1d42c5ddc052fd8d873d50bec89376127495ef291b` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -405,7 +405,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/meld3-v678.js` | 5664 | `7bda4af7c9412eae41162d0cdd6b977cbc9a6f9b8a7bc40fe350f861e989444c` |
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2154672 | `31eb19cb632d9064ee66aab06b79050034a67d1f69097d38b36566ec61b0cefa` |
+| `lib/meta.js` | 2155841 | `423d5a1c91f201f450e3ee766cc6ad02a4bc9a6a6bbdb6087c6df2d53fcd641b` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -627,6 +627,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/simpson-angus-v515.js` | 4076 | `ac4c0ab6135693d8e2ae1d91e8bbd2d3f176262bf2be9107be355d942d0a2ca1` |
 | `lib/simpson-meningioma-v503.js` | 3590 | `a47197f0a46356bffdb89208d4b780b324ac51000a2f5bdf650db5cd8fb841ca` |
 | `lib/slums-v644.js` | 4856 | `d9c9656774dd3fe4d38211de2f131622c2bbf13356ff462aa0454546a1a95693` |
+| `lib/smast-v737.js` | 3334 | `15043daafddc1d9e3c9ee3119ccb3f66038d78b1e0289987e77b3aaad262834a` |
 | `lib/snot22-v552.js` | 11542 | `73435b2a8335bd8e96ca85dd386fc70fdb5ca8829ba4ba20d7b37c87b099dd88` |
 | `lib/spadi-v561.js` | 10890 | `1da081c00b12deb444752014acf1124d1ab47072642cf9a1078dc3e29f446172` |
 | `lib/spaulding-classification-v478.js` | 3914 | `3769b89a89709f65be882a19360c23f6a8f371168daa90b3563d32e554767142` |
@@ -1337,6 +1338,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v733.js` | 3692 | `aef578b5d3e265ddfacd2d0715fe0888024de50f78247db35434f5a618d8f615` |
 | `views/group-v734.js` | 3702 | `ccfb3de8a4d295384817558bc2c3482c1a4295d2e4f332c7f1f28d9a64ec7ca3` |
 | `views/group-v735.js` | 3228 | `b44090485e26685f19ed7df3c15873a20bdcbce423b82c820cefa707eb8075c4` |
+| `views/group-v737.js` | 4263 | `87d8fce47290bd90d8513aa2c3000291ceebba80b4acf3691f4b8f28e7c79bec` |
 | `views/group-v8.js` | 20546 | `5e6ebaa807abb0677621321175906ec60531116c30aa824930ad77bc47ecad6d` |
 | `views/group-v9.js` | 22815 | `66b61a3aa7fc5d8e0eb324392f546ff29c8bc88af80c0a418879f887737e5e1a` |
 | `views/pa-lint.js` | 28680 | `90c4bbb985af80d74f2957de7d11efc33f5a14d21a40ae8ae114ff3313879b88` |

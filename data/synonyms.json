@@ -895,6 +895,8 @@
       "tile": "phq15", "audience": "clinicians" },
     { "phrases": ["kessler k6 distress", "psychological distress scale", "k6 serious mental illness", "kessler distress screen"],
       "tile": "k6", "audience": "clinicians" },
+    { "phrases": ["short michigan alcoholism screening test", "smast alcohol screen", "michigan alcohol screening test", "mast alcohol questionnaire"],
+      "tile": "smast", "audience": "clinicians" },
     { "phrases": ["masaoka koga staging thymoma", "thymoma stage classification", "thymic tumor staging", "masaoka thymoma stage"],
       "tile": "masaoka-koga", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],

@@ -7727,6 +7727,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/k6-v735.js (spec-v735: Kessler K6 psychological distress — clinical disclaimer)
 - `k6`
 
+### lib/smast-v737.js (spec-v737: Short Michigan Alcoholism Screening Test — clinical disclaimer)
+- `smast`
+
 ### lib/cobb-angle-v694.js (spec-v694: Cobb angle scoliosis severity — clinical disclaimer)
 - `cobb-angle`
 

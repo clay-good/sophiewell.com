@@ -648,6 +648,7 @@ import fssV732 from './adapters/fss-v732.js';
 import chalderFatigueV733 from './adapters/chalder-fatigue-v733.js';
 import phq15V734 from './adapters/phq15-v734.js';
 import k6V735 from './adapters/k6-v735.js';
+import smastV737 from './adapters/smast-v737.js';
 import masaokaV650 from './adapters/masaoka-v650.js';
 
 const ADAPTER_MODULES = [
@@ -1283,6 +1284,7 @@ const ADAPTER_MODULES = [
   ['chalder-fatigue-v733', chalderFatigueV733],
   ['phq15-v734', phq15V734],
   ['k6-v735', k6V735],
+  ['smast-v737', smastV737],
 ];
 
 const HERE = dirname(fileURLToPath(import.meta.url));
