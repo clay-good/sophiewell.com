@@ -7730,6 +7730,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/smast-v737.js (spec-v737: Short Michigan Alcoholism Screening Test — clinical disclaimer)
 - `smast`
 
+### lib/cage-aid-v738.js (spec-v738: CAGE-AID alcohol & drug screen — clinical disclaimer)
+- `cage-aid`
+
 ### lib/cobb-angle-v694.js (spec-v694: Cobb angle scoliosis severity — clinical disclaimer)
 - `cobb-angle`
 
