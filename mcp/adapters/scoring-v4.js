@@ -790,15 +790,6 @@ export default [
     ],
   },
   {
-    id: 'cthr',
-    summary: 'Canadian CT Head Rule (Stiell 2001) for GCS 13-15 blunt head injury: CT recommended if any high-risk criterion (neurosurgical-intervention concern) or medium-risk criterion (clinically important brain injury) is present.',
-    compute: F.cthr,
-    fields: [
-      { dom: 'ct-hr', arg: 'highRisk', kind: 'bool', label: 'Any high-risk criterion (GCS < 15 at 2 h, open/depressed or basal skull fracture, >= 2 vomiting episodes, age >= 65)' },
-      { dom: 'ct-mr', arg: 'mediumRisk', kind: 'bool', label: 'Any medium-risk criterion (retrograde amnesia >= 30 min, dangerous mechanism)' },
-    ],
-  },
-  {
     id: 'ccsr',
     summary: 'Canadian C-Spine Rule (Stiell 2001): imaging is required if any high-risk factor is present, or if no low-risk factor allows safe range-of-motion testing, or if the patient cannot actively rotate the neck 45 degrees each way.',
     compute: F.ccsr,
@@ -1816,23 +1807,6 @@ export default [
   },
 
   // --- wave 68: the workflow / wound / transfusion cluster ----------------
-  {
-    id: 'drip',
-    summary: 'Drug Resistance in Pneumonia score (Webb 2016): four major risk factors (antibiotics in 60 days, long-term-care residence, tube feeding, prior MDR isolate) score 2 each; six minor factors (recent hospitalization, chronic pulmonary disease, poor functional status, gastric acid suppression, wound care, MRSA colonization) score 1 each; total >= 4 is high risk for a drug-resistant pathogen.',
-    compute: F.drip,
-    fields: [
-      { dom: 'dr-abx', arg: 'antibioticsLast60d', kind: 'bool', label: 'Antibiotic use in past 60 days (2)' },
-      { dom: 'dr-ltc', arg: 'longTermCareResidence', kind: 'bool', label: 'Long-term care facility residence (2)' },
-      { dom: 'dr-tube', arg: 'tubeFeeding', kind: 'bool', label: 'Tube feeding (2)' },
-      { dom: 'dr-mdr', arg: 'priorMdrIsolate', kind: 'bool', label: 'Prior multidrug-resistant isolate (2)' },
-      { dom: 'dr-hosp', arg: 'hospitalizationLast60d', kind: 'bool', label: 'Hospitalization in past 60 days (1)' },
-      { dom: 'dr-cpd', arg: 'chronicPulmonary', kind: 'bool', label: 'Chronic pulmonary disease (1)' },
-      { dom: 'dr-func', arg: 'poorFunctionalStatus', kind: 'bool', label: 'Poor functional status (1)' },
-      { dom: 'dr-ppi', arg: 'gastricAcidSuppression', kind: 'bool', label: 'Gastric acid suppression (1)' },
-      { dom: 'dr-wound', arg: 'woundCare', kind: 'bool', label: 'Wound care (1)' },
-      { dom: 'dr-mrsa', arg: 'mrsaColonization', kind: 'bool', label: 'MRSA colonization (1)' },
-    ],
-  },
   {
     id: 'abc-mtp',
     summary: 'Assessment of Blood Consumption score (Nunez 2009) for massive-transfusion activation: penetrating mechanism, SBP <= 90, heart rate >= 120, and a positive FAST exam (1 each); a total >= 2 predicts the need for massive transfusion.',

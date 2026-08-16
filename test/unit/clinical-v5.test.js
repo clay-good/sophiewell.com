@@ -164,24 +164,6 @@ test('rsbi: high index flags failure', () => {
   assert.match(r.interpretation, /fail weaning/);
 });
 
-// --- T6: Light's criteria ------------------------------------------------
-test("lightsCriteria: classic exudate", () => {
-  const r = V5.lightsCriteria({
-    pleuralProtein: 4.0, serumProtein: 6.0,
-    pleuralLdh: 250, serumLdh: 200, serumLdhUln: 222,
-  });
-  // Protein ratio 0.67 > 0.5 → exudate
-  assert.equal(r.classification, 'Exudate');
-  assert.equal(r.criterionProtein, true);
-});
-test("lightsCriteria: classic transudate", () => {
-  const r = V5.lightsCriteria({
-    pleuralProtein: 2.0, serumProtein: 6.0,
-    pleuralLdh: 80, serumLdh: 200, serumLdhUln: 222,
-  });
-  assert.equal(r.classification, 'Transudate');
-});
-
 // --- T7: Mentzer index ---------------------------------------------------
 test('mentzerIndex: MCV 65, RBC 6.0 -> 10.8 favors thalassemia', () => {
   const r = V5.mentzerIndex({ mcvFl: 65, rbcMillionsPerUl: 6.0 });

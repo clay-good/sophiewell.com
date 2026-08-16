@@ -186,7 +186,6 @@ test('lib/renal-v128.js worked calls (wave 6)', () => {
   assert.equal(ok('femg', { 'fm-um': '2.0', 'fm-pm': '1.2', 'fm-uc': '50', 'fm-pc': '1.0' }).fe, 4.8);
   assert.equal(ok('npcr-pna', { 'np-post': '24', 'np-pre': '70', 'np-hr': '44' }).npcr, 1.12);
   assert.equal(ok('std-ktv', { 'sk-sp': '1.4', 'sk-min': '240', 'sk-n': '3' }).std, 2.18);
-  assert.equal(ok('efwc', { 'ef-vol': '2.0', 'ef-una': '20', 'ef-uk': '15', 'ef-pna': '140' }).efwc, 1.5);
 });
 
 test('lib/uro-v130.js worked calls (wave 6)', () => {
@@ -1107,8 +1106,6 @@ test('lib/scoring-v4.js GI-bleed / readmission / comorbidity / performance worke
   const ml = ok('maddrey-lille', { 'ml-pt': '20', 'ml-ctrl': '12', 'ml-bili': '10', 'ml-age': '50', 'ml-alb': '3.0', 'ml-cr': '0.9', 'ml-b0': '10', 'ml-b7': '6', 'ml-ptl': '20' });
   assert.equal(Math.round(ml.maddrey.df * 10) / 10, 46.8);
   assert.ok(ml.lille.score > 0 && ml.lille.score < 1);
-  assert.equal(ok('cthr', { 'ct-hr': '1', 'ct-mr': '0' }).ctRecommended, true);
-  assert.equal(ok('cthr', { 'ct-hr': '0', 'ct-mr': '0' }).ctRecommended, false);
   assert.equal(ok('ccsr', { 'cs-hr': '0', 'cs-lr': '1', 'cs-rot': '1' }).imagingRecommended, false);
   assert.equal(ok('ccsr', { 'cs-hr': '0', 'cs-lr': '0', 'cs-rot': '1' }).imagingRecommended, true);
   // HOSPITAL: onc (2) + LOS (2) + hgb (1) = 5, intermediate.
@@ -1382,8 +1379,6 @@ test('lib/scoring-v4.js nutrition-risk + Ottawa-rule worked calls (wave 67)', ()
 
 test('lib/scoring-v4.js workflow / wound / transfusion worked calls (wave 68)', () => {
   // DRIP: two majors (4) -> high risk.
-  const dr = ok('drip', { 'dr-abx': '1', 'dr-ltc': '1', 'dr-tube': '0', 'dr-mdr': '0', 'dr-hosp': '0', 'dr-cpd': '0', 'dr-func': '0', 'dr-ppi': '0', 'dr-wound': '0', 'dr-mrsa': '0' });
-  assert.equal(dr.score, 4);
   // ABC: penetrating + SBP<=90 = 2 -> activate MTP.
   const abc = ok('abc-mtp', { 'abc-pen': '1', 'abc-sbp': '1', 'abc-hr': '0', 'abc-fast': '0' });
   assert.equal(abc.score, 2);
@@ -1406,9 +1401,6 @@ test('lib/scoring-v4.js workflow / wound / transfusion worked calls (wave 68)', 
 });
 
 test('lib/clinical-v5.js group-v5 diagnostic ratios + staging worked calls (wave 69)', () => {
-  const li = ok('lights', { pp: '4.0', sp: '6.0', pl: '250', sl: '200', uln: '222' });
-  assert.equal(li.proteinRatio, 0.67);
-  assert.match(li.classification, /Exudate/);
   const me = ok('mentzer', { mcv: '65', rbc: '6.0' });
   assert.equal(me.index, 10.8);
   const sa = ok('saag', { sa: '3.5', aa: '1.5' });
@@ -1529,7 +1521,6 @@ test('lib/scoring-v5.js group-v9 screening / decision worked calls (wave 76)', (
   assert.equal(gd.total, 7);
   assert.equal(ok('ottawa-knee', { 'ok-age55': '1' }).xrayIndicated, true);
   assert.equal(ok('nexus-chest', { 'nc-cxr': '1' }).imagingIndicated, true);
-  assert.equal(ok('sfsr', { 'sf-ecg': '1' }).highRisk, true);
   assert.equal(ok('canadian-syncope', { 'cs-heart': '1', 'cs-trop': '1' }).score, 3);
   const ed = ok('edacs', { 'ed-age': '50', 'ed-male': '1', 'ed-risk': '1', 'ed-diaph': '1' });
   assert.equal(ed.score, 17);

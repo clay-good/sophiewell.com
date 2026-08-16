@@ -49,15 +49,4 @@ export default [
       { dom: 'sk-n', arg: 'sessions', kind: 'number', required: true, label: 'Sessions per week' },
     ],
   },
-  {
-    id: 'efwc',
-    summary: 'Electrolyte-free water clearance: EFWC = urine volume x (1 - (urine Na + urine K) / plasma Na); positive means net free-water excretion (raises plasma sodium), negative means retention.',
-    compute: F.efwc,
-    fields: [
-      { dom: 'ef-vol', arg: 'volume', kind: 'number', required: true, label: 'Urine volume', unit: 'L' },
-      { dom: 'ef-una', arg: 'urineNa', kind: 'number', required: true, label: 'Urine sodium', unit: 'mEq/L' },
-      { dom: 'ef-uk', arg: 'urineK', kind: 'number', required: true, label: 'Urine potassium', unit: 'mEq/L' },
-      { dom: 'ef-pna', arg: 'plasmaNa', kind: 'number', required: true, label: 'Plasma sodium', unit: 'mEq/L' },
-    ],
-  },
 ];

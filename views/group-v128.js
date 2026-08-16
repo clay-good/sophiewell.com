@@ -107,19 +107,4 @@ export const renderers = {
   },
 
   // ----- 2.5 efwc -------------------------------------------------------
-  efwc(root) {
-    note(root, 'Electrolyte-free water clearance (Rose 1986): EFWC = urine volume × [1 − (urine Na + urine K) / plasma Na]. Positive = net free-water excretion that raises plasma sodium (toward hypernatremia); negative = net free-water retention that lowers plasma sodium (drives hyponatremia). The result flips as urine Na + K crosses plasma Na.');
-    root.appendChild(field('Urine volume (L)', 'ef-vol', { step: '0.1', min: 0, placeholder: 'e.g. 2.0' }));
-    root.appendChild(field('Urine sodium (mEq/L)', 'ef-una', { step: '1', min: 0, placeholder: 'e.g. 20' }));
-    root.appendChild(field('Urine potassium (mEq/L)', 'ef-uk', { step: '1', min: 0, placeholder: 'e.g. 15' }));
-    root.appendChild(field('Plasma sodium (mEq/L)', 'ef-pna', { step: '1', min: 0, placeholder: 'e.g. 140' }));
-    const o = out(); root.appendChild(o);
-    wire(['ef-vol', 'ef-una', 'ef-uk', 'ef-pna'], () => safe(o, () => {
-      const r = M.efwc({ volume: optNum('ef-vol'), urineNa: optNum('ef-una'), urineK: optNum('ef-uk'), plasmaNa: optNum('ef-pna') });
-      if (!r.valid) { showInvalid(o, r); return; }
-      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'EFWC', value: `${r.efwc} L` }]);
-      note(o, r.note);
-    }));
-    postureNote(root);
-  },
 };

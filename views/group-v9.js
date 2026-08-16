@@ -226,22 +226,6 @@ export const renderers = {
   },
 
   // ----- 2.7 sfsr --------------------------------------------------------
-  sfsr(root) {
-    root.appendChild(el('p', { class: 'muted', text: 'San Francisco Syncope Rule (CHESS):' }));
-    root.appendChild(checkField('C - History of congestive heart failure', 'sf-chf'));
-    root.appendChild(checkField('H - Hematocrit <30%', 'sf-hct'));
-    root.appendChild(checkField('E - Abnormal ECG', 'sf-ecg'));
-    root.appendChild(checkField('S - Shortness of breath', 'sf-sob'));
-    root.appendChild(checkField('S - Systolic BP <90 mmHg at triage', 'sf-sbp'));
-    const o = out(); root.appendChild(o);
-    wire(['sf-chf', 'sf-hct', 'sf-ecg', 'sf-sob', 'sf-sbp'], () => safe(o, () => {
-      const r = S.sfsr({ chf: chk('sf-chf'), hctLow: chk('sf-hct'), ecgAbnormal: chk('sf-ecg'), sob: chk('sf-sob'), sbpLow: chk('sf-sbp') });
-      o.appendChild(list([li(r.band, r.highRisk ? 'warn' : null)]));
-    }));
-    note(root, 'Sensitivity varies across external validations; apply with clinical judgement.');
-    screenerNote(root);
-  },
-
   // ----- 2.8 canadian-syncope --------------------------------------------
   'canadian-syncope'(root) {
     root.appendChild(checkField('Predisposition to vasovagal symptoms (-1)', 'cs-vaso'));

@@ -210,28 +210,6 @@ export const renderers = {
   },
 
   // ----- T6: Light's criteria --------------------------------------------
-  lights(root) {
-    root.appendChild(field('Pleural protein (g/dL)', 'pp'));
-    root.appendChild(field('Serum protein (g/dL)', 'sp'));
-    root.appendChild(field('Pleural LDH (U/L)', 'pl'));
-    root.appendChild(field('Serum LDH (U/L)', 'sl'));
-    root.appendChild(field('Serum LDH ULN (U/L)', 'uln', { value: 222 }));
-    const o = out(); root.appendChild(o);
-    const run = () => safe(o, () => {
-      const r = V5.lightsCriteria({
-        pleuralProtein: num('pp'), serumProtein: num('sp'),
-        pleuralLdh: num('pl'), serumLdh: num('sl'), serumLdhUln: num('uln'),
-      });
-      resultRow(o, [
-        { label: 'Protein ratio', value: `${r.proteinRatio} (>0.5 ${r.criterionProtein ? '✓' : '✗'})` },
-        { label: 'LDH ratio', value: `${r.ldhRatio} (>0.6 ${r.criterionLdhRatio ? '✓' : '✗'})` },
-        { label: 'Pleural LDH vs ULN', value: `${r.ldhVsUlnRatio} (>2/3 ${r.criterionLdhVsUln ? '✓' : '✗'})` },
-        { label: 'Classification', value: r.classification },
-      ]);
-    });
-    ['pp', 'sp', 'pl', 'sl', 'uln'].forEach((id) => document.getElementById(id).addEventListener('input', run));
-  },
-
   // ----- T7: Mentzer index -----------------------------------------------
   mentzer(root) {
     root.appendChild(field('MCV (fL)', 'mcv'));

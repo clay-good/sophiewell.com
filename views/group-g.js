@@ -1526,35 +1526,6 @@ export const renderers = {
   },
 
   // spec-v12 §3.5.1 wave 12-5: Canadian CT Head Rule (Stiell 2001).
-  cthr(root) {
-    root.appendChild(el('p', { class: 'muted', text: 'Apply only to GCS 13-15 blunt head injury with witnessed LOC, definite amnesia, or witnessed disorientation (Stiell 2001 §Methods).' }));
-    root.appendChild(el('h2', { text: 'High-risk criteria (neurosurgical-intervention concern)' }));
-    const high = [
-      ['GCS < 15 at 2 hours post-injury', 'ct-h1'],
-      ['Suspected open or depressed skull fracture', 'ct-h2'],
-      ['Any sign of basal skull fracture', 'ct-h3'],
-      ['Vomiting >= 2 episodes', 'ct-h4'],
-      ['Age >= 65', 'ct-h5'],
-    ];
-    for (const [l, id] of high) root.appendChild(checkbox(l, id));
-    root.appendChild(el('h2', { text: 'Medium-risk criteria (clinically important brain injury concern)' }));
-    const medium = [
-      ['Retrograde amnesia >= 30 minutes', 'ct-m1'],
-      ['Dangerous mechanism (pedestrian struck, ejection, fall > 3 feet / 5 stairs)', 'ct-m2'],
-    ];
-    for (const [l, id] of medium) root.appendChild(checkbox(l, id));
-    const o = out(); root.appendChild(o);
-    const run = () => safe(o, () => {
-      const anyHigh = high.some(([, id]) => checked(id));
-      const anyMedium = medium.some(([, id]) => checked(id));
-      const r = S4.cthr({ highRisk: anyHigh, mediumRisk: anyMedium });
-      o.appendChild(el('h2', { text: r.ctRecommended ? 'CT recommended' : 'CT not required' }));
-      o.appendChild(el('p', { text: r.band }));
-    });
-    [...high, ...medium].forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
-    run();
-  },
-
   // spec-v12 §3.5.2 wave 12-5: Canadian C-Spine Rule (Stiell 2001).
   ccsr(root) {
     root.appendChild(el('p', { class: 'muted', text: 'Apply only to alert (GCS 15) stable trauma patients with neck pain or visible injury above the clavicles, non-ambulatory, or with dangerous mechanism (Stiell 2001 §Methods). Ships side by side with the existing NEXUS + Canadian C-Spine tile.' }));
@@ -2649,46 +2620,6 @@ export const renderers = {
   },
 
   // spec-v13 §3.7.4 wave 13-7: DRIP Score (Webb 2016).
-  drip(root) {
-    root.appendChild(el('h2', { text: 'Major risk factors (each +2)' }));
-    const majors = [
-      ['Antibiotic use in past 60 days', 'dr-abx'],
-      ['Long-term care facility residence', 'dr-ltc'],
-      ['Tube feeding', 'dr-tube'],
-      ['Prior multidrug-resistant isolate', 'dr-mdr'],
-    ];
-    for (const [l, id] of majors) root.appendChild(checkbox(l, id));
-    root.appendChild(el('h2', { text: 'Minor risk factors (each +1)' }));
-    const minors = [
-      ['Hospitalization in past 60 days', 'dr-hosp'],
-      ['Chronic pulmonary disease', 'dr-cpd'],
-      ['Poor functional status', 'dr-func'],
-      ['Gastric acid suppression', 'dr-ppi'],
-      ['Wound care', 'dr-wound'],
-      ['MRSA colonization', 'dr-mrsa'],
-    ];
-    for (const [l, id] of minors) root.appendChild(checkbox(l, id));
-    const o = out(); root.appendChild(o);
-    const run = () => safe(o, () => {
-      const r = S4.drip({
-        antibioticsLast60d: checked('dr-abx'),
-        longTermCareResidence: checked('dr-ltc'),
-        tubeFeeding: checked('dr-tube'),
-        priorMdrIsolate: checked('dr-mdr'),
-        hospitalizationLast60d: checked('dr-hosp'),
-        chronicPulmonary: checked('dr-cpd'),
-        poorFunctionalStatus: checked('dr-func'),
-        gastricAcidSuppression: checked('dr-ppi'),
-        woundCare: checked('dr-wound'),
-        mrsaColonization: checked('dr-mrsa'),
-      });
-      o.appendChild(el('h2', { text: `DRIP ${r.score}` }));
-      o.appendChild(el('p', { text: r.band }));
-    });
-    document.querySelectorAll('input').forEach((n) => n.addEventListener('change', run));
-    run();
-  },
-
   // spec-v14 §3.2.1 wave 14-2: STOP-BANG (Chung 2008, 2012).
   'stop-bang'(root) {
     const items = [

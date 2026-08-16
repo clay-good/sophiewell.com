@@ -87,18 +87,6 @@ export default [
     ],
   },
   {
-    id: 'sfsr',
-    summary: 'San Francisco Syncope Rule (CHESS): high risk for a serious 7-day outcome if any of congestive heart failure history, hematocrit < 30%, abnormal ECG, shortness of breath, or triage SBP < 90.',
-    compute: F.sfsr,
-    fields: [
-      { dom: 'sf-chf', arg: 'chf', kind: 'bool', label: 'C - congestive heart failure history' },
-      { dom: 'sf-hct', arg: 'hctLow', kind: 'bool', label: 'H - hematocrit < 30%' },
-      { dom: 'sf-ecg', arg: 'ecgAbnormal', kind: 'bool', label: 'E - abnormal ECG' },
-      { dom: 'sf-sob', arg: 'sob', kind: 'bool', label: 'S - shortness of breath' },
-      { dom: 'sf-sbp', arg: 'sbpLow', kind: 'bool', label: 'S - triage SBP < 90 mmHg' },
-    ],
-  },
-  {
     id: 'canadian-syncope',
     summary: 'Canadian Syncope Risk Score: vasovagal predisposition (-1), heart-disease history (1), extreme SBP (2), elevated troponin (2), abnormal QRS axis (1), QRS > 130 ms (1), QTc > 480 ms (2), ED vasovagal diagnosis (-2), ED cardiac diagnosis (2); the total maps to a 30-day serious-outcome risk band.',
     compute: F.canadianSyncope,

@@ -95,7 +95,7 @@ const PROBES = [
   // clinical terms, and bare plurals must fold.
   ['what is the score for pneumonia severity', ['curb-65', 'psi']],
   ['how do i correct sodium for high glucose', ['corrected-sodium', 'corrected-ca-na']],
-  ['should i get a head ct for minor head injury', ['canadian-ct-head', 'nexus-head', 'pecarn-head', 'catch-head', 'chalice', 'cthr']],
+  ['should i get a head ct for minor head injury', ['canadian-ct-head', 'nexus-head', 'pecarn-head', 'catch-head', 'chalice']],
   ['what fluids does a burn patient need', ['burn-fluid']],
   ['how do i figure out the anion gap', ['anion-gap']],
   ['what is my patients stroke risk with afib', ['chads']],

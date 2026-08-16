@@ -87,23 +87,6 @@ export default [
 
   // --- wave 69: the group-v5 diagnostic-ratio and staging tiles -----------
   {
-    id: 'lights',
-    summary: "Light's criteria for a pleural effusion: exudative if the pleural/serum protein ratio > 0.5, the pleural/serum LDH ratio > 0.6, or pleural LDH > 2/3 of the serum LDH upper-normal limit. Returns each ratio, whether its criterion is met, and the transudate/exudate classification.",
-    // Echo the three criterion cutoffs so the documented thresholds appear in
-    // the JSON (self-describing enrichment).
-    compute: (a) => {
-      const r = F.lightsCriteria(a);
-      return r == null ? null : { ...r, cutoffs: { proteinRatio: 0.5, ldhRatio: 0.6 } };
-    },
-    fields: [
-      { dom: 'pp', arg: 'pleuralProtein', kind: 'number', required: true, label: 'Pleural protein', unit: 'g/dL' },
-      { dom: 'sp', arg: 'serumProtein', kind: 'number', required: true, label: 'Serum protein', unit: 'g/dL' },
-      { dom: 'pl', arg: 'pleuralLdh', kind: 'number', required: true, label: 'Pleural LDH', unit: 'U/L' },
-      { dom: 'sl', arg: 'serumLdh', kind: 'number', required: true, label: 'Serum LDH', unit: 'U/L' },
-      { dom: 'uln', arg: 'serumLdhUln', kind: 'number', required: true, label: 'Serum LDH upper-normal limit', unit: 'U/L' },
-    ],
-  },
-  {
     id: 'mentzer',
     summary: 'Mentzer index = MCV / RBC count: < 13 favors beta-thalassemia trait, > 13 favors iron-deficiency anemia.',
     compute: (a) => F.mentzerIndex(a),

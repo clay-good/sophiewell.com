@@ -878,10 +878,10 @@ the example-correctness sweep's scenario allowlist — deferred, recorded here.
 The GI-bleed severity trio Glasgow-Blatchford, Rockall (with the pre-endoscopy
 flag), and AIMS65, plus the Oakland lower-GI-bleed safe-discharge score; the
 alcoholic-hepatitis pair Maddrey DF + Lille (composite wrapper computing both
-from one lab panel, bilirubin in mg/dL); the two Canadian imaging rules
-(`cthr`, `ccsr`) exposed at the collapsed any-criterion boolean granularity
-their `META.example` already uses (the compute takes only the reduced
-`highRisk` / `mediumRisk` / `lowRisk` / `canRotate45` booleans, so the browser
+from one lab panel, bilirubin in mg/dL); the Canadian C-Spine imaging rule
+(`ccsr`) exposed at the collapsed any-criterion boolean granularity
+its `META.example` already uses (the compute takes only the reduced
+`highRisk` / `lowRisk` / `canRotate45` booleans, so the browser
 tile's per-criterion checkboxes are an input-side convenience the compute never
 sees); the readmission pair HOSPITAL + LACE; the Charlson Comorbidity Index
 (bespoke `toArgs` rebuilding the lib's `items` object from the flat comorbidity
@@ -7910,7 +7910,6 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `femg`
 - `npcr-pna`
 - `std-ktv`
-- `efwc`
 
 ### lib/uro-v130.js
 - `prostate-volume`
@@ -8848,7 +8847,6 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `rsbi`
 - `corrected-anion-gap`
 - `iron-ganzoni`
-- `lights`
 - `mentzer`
 - `saag`
 - `r-factor`
@@ -8956,7 +8954,6 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `aims65`
 - `oakland`
 - `maddrey-lille`
-- `cthr`
 - `ccsr`
 - `hospital-score`
 - `lace`
@@ -9032,7 +9029,6 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `must-nutrition`
 - `ottawa-ankle`
 - `ottawa-sah`
-- `drip`
 - `abc-mtp`
 - `npiap-staging`
 - `norton-push`
@@ -9120,7 +9116,6 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `gds15`
 - `ottawa-knee`
 - `nexus-chest`
-- `sfsr`
 - `canadian-syncope`
 - `edacs`
 - `years-pe`
