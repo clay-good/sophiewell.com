@@ -69,17 +69,19 @@ const SNAQ_FIELDS = [
   ['Food tastes… (1 very bad → 5 very good)', 'snaq-taste', 'taste'],
   ['Normally I eat… (1 less than 1 meal/day → 5 more than 3 meals/day)', 'snaq-meals', 'meals'],
 ];
+// Neutral symptom-domain labels (each rated 0-4). The EAT-10's verbatim item wording is
+// proprietary (Nestle/Mapi); these are short topic cues, not the instrument's statements.
 const EAT10_FIELDS = [
-  ['My swallowing problem has caused me to lose weight', 'eat-1', 'i1'],
-  ['My swallowing problem interferes with going out for meals', 'eat-2', 'i2'],
-  ['Swallowing liquids takes extra effort', 'eat-3', 'i3'],
-  ['Swallowing solids takes extra effort', 'eat-4', 'i4'],
-  ['Swallowing pills takes extra effort', 'eat-5', 'i5'],
-  ['Swallowing is painful', 'eat-6', 'i6'],
-  ['The pleasure of eating is affected by my swallowing', 'eat-7', 'i7'],
-  ['When I swallow, food sticks in my throat', 'eat-8', 'i8'],
-  ['I cough when I eat', 'eat-9', 'i9'],
-  ['Swallowing is stressful', 'eat-10', 'i10'],
+  ['Weight loss from swallowing trouble', 'eat-1', 'i1'],
+  ['Eating out affected', 'eat-2', 'i2'],
+  ['Liquids need extra effort', 'eat-3', 'i3'],
+  ['Solids need extra effort', 'eat-4', 'i4'],
+  ['Pills need extra effort', 'eat-5', 'i5'],
+  ['Painful swallowing', 'eat-6', 'i6'],
+  ['Pleasure of eating affected', 'eat-7', 'i7'],
+  ['Food sticks in the throat', 'eat-8', 'i8'],
+  ['Coughing when eating', 'eat-9', 'i9'],
+  ['Swallowing feels stressful', 'eat-10', 'i10'],
 ];
 const DETERMINE_FIELDS = [
   ['Illness or condition that changed the kind/amount of food eaten', 'det-illness', 'illness'],

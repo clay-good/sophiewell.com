@@ -2727,15 +2727,17 @@ export const renderers = {
 
   // spec-v14 §3.2.3 wave 14-2: Epworth Sleepiness Scale (Johns 1991).
   epworth(root) {
+    // Neutral topic labels for each situation (0-3 chance of dozing). The instrument's
+    // verbatim item wording is proprietary (Johns/Mapi); these are short domain cues.
     const items = [
-      ['Sitting and reading', 'ep-read'],
-      ['Watching TV', 'ep-tv'],
-      ['Sitting inactive in a public place (e.g., a theater or a meeting)', 'ep-pub'],
-      ['As a passenger in a car for an hour without a break', 'ep-car'],
-      ['Lying down to rest in the afternoon when circumstances permit', 'ep-lying'],
-      ['Sitting and talking to someone', 'ep-talk'],
-      ['Sitting quietly after a lunch without alcohol', 'ep-lunch'],
-      ['In a car, while stopped for a few minutes in traffic', 'ep-traffic'],
+      ['Reading', 'ep-read'],
+      ['Watching television', 'ep-tv'],
+      ['Inactive in a public place', 'ep-pub'],
+      ['Car passenger (about an hour)', 'ep-car'],
+      ['Lying down to rest in the afternoon', 'ep-lying'],
+      ['Talking with someone while seated', 'ep-talk'],
+      ['Seated quietly after lunch', 'ep-lunch'],
+      ['In a car stopped in traffic', 'ep-traffic'],
     ];
     for (const [l, id] of items) root.appendChild(rangeField(l, id, 0, 3, 0));
     const o = out(); root.appendChild(o);

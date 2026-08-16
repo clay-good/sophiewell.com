@@ -186,19 +186,22 @@ export const renderers = {
       { value: '0', text: 'Not at all / not prevented (0)' },
       { value: '1', text: 'A little (1)' },
       { value: '2', text: 'A lot (2)' },
-      { value: '3', text: 'Yes — prevented from working or studying (3)' },
+      { value: '3', text: 'Prevented work or study (3)' },
     ];
+    // Neutral domain labels for the 10 DLQI items (over the last week, rated 0-3). The
+    // instrument's verbatim question wording is proprietary (Cardiff/Finlay); these are
+    // short topic cues, not the questionnaire's statements.
     const qs = [
-      'Q1. How itchy, sore, painful, or stinging has your skin been?',
-      'Q2. How embarrassed or self-conscious have you been because of your skin?',
-      'Q3. How much has your skin interfered with shopping or home/garden tasks?',
-      'Q4. How much has your skin influenced the clothes you wear?',
-      'Q5. How much has your skin affected social or leisure activities?',
-      'Q6. How much has your skin made it difficult to do any sport?',
-      'Q7. Has your skin prevented you from working or studying? (or, if not, how much a problem at work/study?)',
-      'Q8. How much has your skin created problems with your partner, close friends, or relatives?',
-      'Q9. How much has your skin caused any sexual difficulties?',
-      'Q10. How much of a problem has the treatment for your skin been (e.g. mess, time)?',
+      'Q1. Skin symptoms (itch, soreness, pain, stinging)',
+      'Q2. Embarrassment or self-consciousness',
+      'Q3. Interference with shopping or home/garden tasks',
+      'Q4. Influence on choice of clothing',
+      'Q5. Effect on social or leisure activities',
+      'Q6. Difficulty doing any sport',
+      'Q7. Effect on work or study',
+      'Q8. Problems with partner, close friends, or relatives',
+      'Q9. Sexual difficulties',
+      'Q10. Burden of skin treatment (e.g. mess, time)',
     ];
     const ids = [];
     qs.forEach((label, i) => {

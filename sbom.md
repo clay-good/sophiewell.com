@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `ec246dac73961c67`
-Generated: 2026-08-16T20:23:44.609Z
+Build ID: `ac7d18079d8b2e64`
+Generated: 2026-08-16T20:54:17.859Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -66,7 +66,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/areds-v615.js` | 11067 | `b4c592adc803d89cacfc892bc840c5cd7c8060978f48e0e5b3d513f42baa0a4a` |
 | `lib/asrm-mania-v675.js` | 3304 | `87fd04b0801853da577a43910474e1d44732328cf7df8e4b2fc8a2c91d8fd010` |
 | `lib/asrs-v513.js` | 5206 | `1c7faaf0acea6f85228c21aa97496ad212e0f623e9364b1c33e68c4143fe7bf9` |
-| `lib/asthma-control-test-v516.js` | 5938 | `79ba0008f697e922671adecf105ab73e3f4bc1526c354027eabe3b3f48ea366a` |
+| `lib/asthma-control-test-v516.js` | 5724 | `15970db321969412a38f6cf6d0b3c69d6dfd3621b679993e00daf253add26a96` |
 | `lib/atlanta-pancreatitis-v445.js` | 3620 | `1eb1382cc11cc7b3a42e54ab14143721e30ac6b41de03bec5362d29e17d85bf3` |
 | `lib/ausdrisk-v711.js` | 5293 | `6c2cfc5bf32ec40fe19a06b5c46b007313db94bc43afc2d67da5e0ebf024be66` |
 | `lib/av-fistula-v300.js` | 4050 | `9fa354a34bd21ab3dc8c93762767d54f281b1c4e605e00af36917098787fc1e8` |
@@ -126,7 +126,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/ceap-venous-v356.js` | 3969 | `595138549f950b9332bfa4fc3b7e9d2433d432673ad8d5603fdef98b6c36b2ae` |
 | `lib/chalder-fatigue-v733.js` | 2855 | `53b98fdcf781ce148e2818c35f5c0f193509de9c34b3ff1b69e69913cd500eb1` |
 | `lib/cheops-v645.js` | 4245 | `3089c79629ad74cc9784257cc07ca41dc8b6c1b6595279bade935fd4d9b2e89c` |
-| `lib/childhood-act-v518.js` | 6614 | `9c517f088594999fc519f83e2fddcbfef52a84e5821c2f75ac5b1475f08b9179` |
+| `lib/childhood-act-v518.js` | 6336 | `75e97685b5f3324ef5c2836e421417846632deb582788ab1b73ac872bdc9d66d` |
 | `lib/cholangitis-dx-v312.js` | 4598 | `73a2cdd9c981717c1c8810c286fc6b76d2ff629e5af4a04e7cbbe881e9776825` |
 | `lib/cholangitis-v310.js` | 4886 | `4cac9a021e002921e5ab5a7b41a7bb3b029db3050404e1bcf586f94cb8e8d7c3` |
 | `lib/cholecystitis-dx-v313.js` | 4270 | `6360a208f6243d59a29a492fcd166d7de931a86faf14ea411df7c782bf16cdcd` |
@@ -610,7 +610,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/schenck-v647.js` | 4238 | `a8812ca39707393d88f56a5cb9f253edf3598252603aada1786b6abf0ace8a7c` |
 | `lib/schobinger-avm-v497.js` | 3484 | `fd7d680fede1965fd9a9026d0977e4f2c1970e30d33718df3daaca235dfed009` |
 | `lib/schwab-england-v385.js` | 4331 | `caddd0709826db63186ebf0a5f8b60fd9a3e00fa934bddc3e0331977f70c5e4b` |
-| `lib/scoring-v4.js` | 228123 | `b5de5498817722bbb2ffc2f0381ceaf62c66d262d43e7aa47a6fa03f64ad6697` |
+| `lib/scoring-v4.js` | 228301 | `458f0dd10bc24c6fb73c55d6abd56b402e92759c154ee4ecee01b25f3c9094bf` |
 | `lib/scoring-v5.js` | 13048 | `3fabc60daa3144ffbb37e6016de326a427649ca545b9bd32a9ee2fb2c7126b60` |
 | `lib/scoring-v6.js` | 26559 | `4f2d7d77c536dce8d356539e2c69f941feb34146d251ac96b882c590399ce562` |
 | `lib/scp-pushing-v562.js` | 12399 | `6da019a04668722b7a8d448b4d7bf9908717629b72e4a162088e74363ad62360` |
@@ -630,7 +630,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/simpson-meningioma-v503.js` | 3590 | `a47197f0a46356bffdb89208d4b780b324ac51000a2f5bdf650db5cd8fb841ca` |
 | `lib/slums-v644.js` | 4856 | `d9c9656774dd3fe4d38211de2f131622c2bbf13356ff462aa0454546a1a95693` |
 | `lib/smast-v737.js` | 3334 | `15043daafddc1d9e3c9ee3119ccb3f66038d78b1e0289987e77b3aaad262834a` |
-| `lib/snot22-v552.js` | 11542 | `73435b2a8335bd8e96ca85dd386fc70fdb5ca8829ba4ba20d7b37c87b099dd88` |
+| `lib/snot22-v552.js` | 11497 | `90f581a13039333b4ee2e5c0486061a25dfa7056fba35e0c76a95c9f71754ab3` |
 | `lib/spadi-v561.js` | 10890 | `1da081c00b12deb444752014acf1124d1ab47072642cf9a1078dc3e29f446172` |
 | `lib/spaulding-classification-v478.js` | 3914 | `3769b89a89709f65be882a19360c23f6a8f371168daa90b3563d32e554767142` |
 | `lib/specialtymath-v186.js` | 15358 | `90330464aea36b60a02933f5811ed91393d38e4e97cafb0cb62a8678a8a0f3c8` |
@@ -724,7 +724,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-c.js` | 24145 | `67dbb3952ce0af75ae5a91376b2347f8f61e0c92866401be9c969eb32489fdc5` |
 | `views/group-e.js` | 38858 | `7474579f9256a65348881aa13dffe1e01eb8413bb34e178155e988cf36af92b3` |
 | `views/group-f.js` | 45938 | `94975266742e8e996141a755c202fe5dc7a4c7d8d89d44bf11211540d3f3b263` |
-| `views/group-g.js` | 234247 | `917ed1d6006e3ad825fa3af310171347c38efc889379c7da06d73e4120abb008` |
+| `views/group-g.js` | 234290 | `4489b5429d2f2bd1454bda7e0424e456d752057c72d5d438d438e044fed4caf1` |
 | `views/group-h.js` | 28477 | `f9a8dc4ddbf7987b39a6bb88908d3523599eddaca1d6fcde22dbd847b4594b14` |
 | `views/group-i.js` | 27564 | `a29c0dd2e02f1edcee8fb79e85ba4fa4c7630ca0e97c2412e787419cec697f83` |
 | `views/group-j.js` | 8713 | `c50db0023300187dd15cf8e6dddbf4c98ad59c1febd84594aaf84be698aeb819` |
@@ -768,7 +768,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v148.js` | 19231 | `5ec92456ff2a51fcfc6e7fb23271cb6ad819b7ad667071a6e342c27534d904b0` |
 | `views/group-v149.js` | 6334 | `f9dc119d2d29ed6f3cb218ef3de6412364ad128bab062a1ebdd6bd143d466c8f` |
 | `views/group-v15.js` | 9388 | `01c28613e794ec8bed2941659514ad8b75c18c1cb1256d2907644873fcbc53e4` |
-| `views/group-v151.js` | 12911 | `a4714b9e37739fcaf32669b3f1af04414babcaba8eb9df2078ecba47ba01e367` |
+| `views/group-v151.js` | 12800 | `6ed4dafd085ae7c72180ba5cfe137883dde7a4e910babd70f0a3860e115ca3a2` |
 | `views/group-v152.js` | 12541 | `57d18428e1a0be221992c48228fb96b5980aefc73b7c43d7f44617e6771aa27a` |
 | `views/group-v153.js` | 11361 | `f5224aae77498ed9681a5493cea92a6983da60d7d1970a48549635a6e55ccf12` |
 | `views/group-v154.js` | 11517 | `a57e53e96d380ecdeb00114ea2fab7d73148183237dcd086222c11b64436a1d0` |
@@ -791,7 +791,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v175.js` | 8400 | `a629a477874fe833dc433b819efd390f5627e53a97774d0fb3f795b099fde643` |
 | `views/group-v176.js` | 11693 | `61a837144735d943b5e20b57ff125bc8353422c80f9656e37bc84adbbc8844c9` |
 | `views/group-v177.js` | 9040 | `e301e7f11c7e0c7979144ec2f22141e173c86b3b2625a1261e0fcf8b839c2ae4` |
-| `views/group-v178.js` | 11794 | `1453bdcf2e702ebc4a787d0b20dce2fc022a11ca337c11af71ca686884b804ea` |
+| `views/group-v178.js` | 11848 | `562ea7c8b9a5fc280440f4dfc8d9157a25fafbcbf559fd62691a35e13ad3079c` |
 | `views/group-v179.js` | 6756 | `240fe2830b2e7736ff3f57f681f4d109e99aeb0069fb4240f50933785033b01d` |
 | `views/group-v18.js` | 10455 | `90a5482884a16c0d8883b7e7de1ed1d1cbbbbcc6dcd45bc1f6d28d78e6547965` |
 | `views/group-v180.js` | 7351 | `a5cd0aaced4af92efd84a5cd5fcfa938d16efe014760e34ddda71b08874ef20f` |
