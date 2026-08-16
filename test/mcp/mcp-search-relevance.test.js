@@ -690,6 +690,7 @@ const PROBES = [
   ['kessler k6 psychological distress scale', ['k6']],
   ['short michigan alcoholism screening test smast', ['smast']],
   ['cage-aid alcohol and drug screen adapted to include drugs', ['cage-aid']],
+  ['mayo classification olecranon fracture type', ['mayo-olecranon']],
   ['masaoka koga thymoma staging stage', ['masaoka-koga']],
   ['pregnancy dic score erez obstetric', ['erez-dic']],
   ['aeeg amplitude classification neonatal encephalopathy', ['anaqeeb-aeeg']],

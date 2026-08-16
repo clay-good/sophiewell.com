@@ -899,6 +899,8 @@
       "tile": "smast", "audience": "clinicians" },
     { "phrases": ["cage aid alcohol drug screen", "cage adapted to include drugs", "cage-aid substance screen", "alcohol and drug cage screen"],
       "tile": "cage-aid", "audience": "clinicians" },
+    { "phrases": ["mayo olecranon fracture classification", "olecranon fracture type", "mayo elbow fracture classification", "olecranon fracture mayo type"],
+      "tile": "mayo-olecranon", "audience": "clinicians" },
     { "phrases": ["masaoka koga staging thymoma", "thymoma stage classification", "thymic tumor staging", "masaoka thymoma stage"],
       "tile": "masaoka-koga", "audience": "clinicians" },
     { "phrases": ["erez dic score", "pregnancy dic score", "obstetric disseminated intravascular coagulation", "pregnancy specific isth dic"],

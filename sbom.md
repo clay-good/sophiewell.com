@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `830f26b8eb2a3dd0`
-Generated: 2026-08-16T18:13:21.567Z
+Build ID: `ec246dac73961c67`
+Generated: 2026-08-16T20:23:44.609Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 101672 | `7bef375a1d196a28bf0fee5829e8b14aaf8f721d2bbf2a73c51cc46bde47fff2` |
+| `index.html` | 101728 | `484d34d0ae8d494af74c3056f2f432a88255434147f3ec96fcc2723f32ae206e` |
 | `styles.css` | 44160 | `a2cc7ad7bae9f7cfc9681d80bc6bd4a58f0b07d47bfcff64897dc04929c12333` |
-| `app.js` | 419843 | `c8201c534e0410f1e93470db16879c31124ce72b11b7f891b1cea23089eac0cc` |
+| `app.js` | 420076 | `450d5402357d1dc0e97f689c41e322756194c965db97f0824d946d809bf35fb2` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 240503 | `edb0bc36ae22095525446f9136b5b7eddf9f1d664741e94874c3ca6d90e714c9` |
+| `sitemap.xml` | 240657 | `1095b9e47e2d37283c15119501c0e371e1e8ad246c2442bf40ae14e49468d4ae` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -397,6 +397,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/massive-transfusion-v265.js` | 3240 | `7ad4d1d86063fdd077546be5d6381ea4a5024ef669389f88abdfe07850903b29` |
 | `lib/mayfield-perilunate-v414.js` | 4219 | `dbec2e4abce7912c621e5cee9f8bdb1fa3555240da1d08a3f75f448fd0297fc4` |
 | `lib/mayo-adpkd-v563.js` | 14849 | `73038b5a9d14c0580a7a19d6027f80e54c4a0b48dae6d5dec96a51d9f61eae3f` |
+| `lib/mayo-olecranon-v739.js` | 4140 | `66676472ba5d7bfdbc1806f1c5c8620fb9be6d1b18f4b2e66c5f6acabaaa507d` |
 | `lib/mccormack-v646.js` | 4125 | `8498079ab8394c03b90998ff4b1de2112042540b2860c69bbbb11acc1159c44f` |
 | `lib/mccormick-v444.js` | 3548 | `226844081eb702e3917925b1fb684495c90fd90d83717106c632f91f09fad0c6` |
 | `lib/mcmahon-rhabdo-v677.js` | 5811 | `669c95226348ac3b9a9a686586979094d0ff530c608b0a59e9ce719830756290` |
@@ -406,7 +407,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/meld3-v678.js` | 5664 | `7bda4af7c9412eae41162d0cdd6b977cbc9a6f9b8a7bc40fe350f861e989444c` |
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2156837 | `14575f526e75274223a8403b68a9bcc32e17f345074bbc55771cfbb9a3a83249` |
+| `lib/meta.js` | 2158059 | `6b9cf34e1cceea18856660f61901ae7b2f7c219e9ad22f895792f37f1474f66d` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -1341,6 +1342,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v735.js` | 3228 | `b44090485e26685f19ed7df3c15873a20bdcbce423b82c820cefa707eb8075c4` |
 | `views/group-v737.js` | 4263 | `87d8fce47290bd90d8513aa2c3000291ceebba80b4acf3691f4b8f28e7c79bec` |
 | `views/group-v738.js` | 3174 | `22b7973f8fe2e56f27faa2175132f24b7ab1597027dcc4178f05bee4faf64b89` |
+| `views/group-v739.js` | 3467 | `d3167ee5ad1f3a5ad1eebc7937be715a52291a305e86bb2fe5c3ce9ce099f659` |
 | `views/group-v8.js` | 20546 | `5e6ebaa807abb0677621321175906ec60531116c30aa824930ad77bc47ecad6d` |
 | `views/group-v9.js` | 22815 | `66b61a3aa7fc5d8e0eb324392f546ff29c8bc88af80c0a418879f887737e5e1a` |
 | `views/pa-lint.js` | 28680 | `90c4bbb985af80d74f2957de7d11efc33f5a14d21a40ae8ae114ff3313879b88` |

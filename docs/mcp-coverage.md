@@ -7733,6 +7733,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/cage-aid-v738.js (spec-v738: CAGE-AID alcohol & drug screen — clinical disclaimer)
 - `cage-aid`
 
+### lib/mayo-olecranon-v739.js (spec-v739: Mayo olecranon fracture classification — clinical disclaimer)
+- `mayo-olecranon`
+
 ### lib/cobb-angle-v694.js (spec-v694: Cobb angle scoliosis severity — clinical disclaimer)
 - `cobb-angle`
 
