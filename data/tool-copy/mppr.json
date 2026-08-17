@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Applies the multiple-procedure payment reduction to a set of surgical or endoscopic lines. Enter each line's fee and it re-ranks them, pays 100% of the highest and the cited percentage on every subsequent line, and returns the expected allowed total. Supports the surgical 100/50/50 rule, the endoscopy base-code rule, and a custom subsequent percentage.",
+  "whenToUse": "Use it to estimate expected payment on a multi-procedure claim, or to check a remittance that reduced lines you did not expect. The reduction is arithmetic only: it does not decide whether a line is separately reportable, which is an NCCI and documentation question."
+}

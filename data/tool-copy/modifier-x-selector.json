@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Picks the right distinct-service modifier. Answer whether there is a distinct procedural service and which basis applies (separate encounter, site, practitioner, or a non-overlapping service) and it returns the single most specific X modifier, XE, XS, XP, or XU, or 59 when none of the four subsets fits, or refuses outright when there is no distinct-service basis at all.",
+  "whenToUse": "Use it before appending 59 to a bundled pair, since CMS prefers the specific X modifier over the blunt 59. The selector reads the scenario you describe; the documentation has to support that scenario, and the pair's NCCI PTP indicator still has to permit a bypass."
+}

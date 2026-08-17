@@ -1,0 +1,4 @@
+{
+  "whatThisIs": "Tracks the clock during a cardiac arrest. Enter the code start time and the timestamps of the last rhythm check and last epinephrine dose, and it returns elapsed code time, cycle count, and when the next rhythm check and next epinephrine dose fall due, following AHA 2020 intervals. It also builds a printable timeline summary for the chart.",
+  "whenToUse": "Use it as the recorder's aid during a resuscitation and for documenting the timeline afterward. It computes intervals only; the code leader, the ACLS algorithm, and local protocol drive every decision, and the timer is never a prompt to give a drug or deliver a shock."
+}

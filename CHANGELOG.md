@@ -38,6 +38,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   down to 13 blanks and `/topics/cardiology/` reads as a real list.
 - The home lede's visible count is now a `check-catalog-truth` surface too, and the lede itself drops
   a closing sentence that said nothing the rest of it did not.
+- The last six pages still on filler copy (`code-blue-clock`, `device-day-counter`, `ews-escalation`,
+  `sepsis-bundle-clock`, `mppr`, `modifier-x-selector`) got hand-authored descriptions. These are the
+  time-dependent timers and billing tools that are deliberately not exposed over MCP, so no adapter
+  summary existed to fall back to. **All 1564 tool pages now carry a real description.**
 
 ### Added (spec-v548 — Patient-prosthesis mismatch (indexed effective orifice area) tile, 1397 → 1398)
 
