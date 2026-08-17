@@ -641,6 +641,7 @@ import { loadSynonyms } from './lib/synonyms.js';
 import { resolvePrompt } from './lib/prompt.js';
 import { corpusDesc, corpusOneLiner } from './lib/search-corpus.js';
 import { queryCompute } from './lib/query-compute.js';
+import { collapseLongNotes } from './lib/long-note.js';
 // The patient-artifact dropzone UI (spec-v7 sec 3.1) was removed when
 // Sophie pivoted to a clinical-staff-first wedge. The orphaned
 // artifact-detect / artifact-route / artifact-handoff helpers were
@@ -4015,6 +4016,10 @@ function renderToolView(util) {
   if (renderer) {
     try {
       renderer(body);
+      // Fold the long explanation paragraphs the renderer just wrote. Done
+      // here, once, rather than in 600-odd view files: the rule is about how
+      // the page reads, not about what any one tile means.
+      collapseLongNotes(body);
       // spec-v9 §3.3: pre-fill META[id].example after the renderer mounts,
       // but let URL-hash state win (deep links keep their values).
       Promise.resolve().then(() => {

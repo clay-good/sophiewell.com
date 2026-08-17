@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `2d372b81f1f6a4ac`
-Generated: 2026-08-17T14:13:02.052Z
+Build ID: `79cee079b6e4fde9`
+Generated: 2026-08-17T15:27:24.812Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -25,8 +25,8 @@ downloads is committed in this repository and is hashed below.
 | Path | Bytes | SHA-256 |
 |---|---:|---|
 | `index.html` | 101421 | `c6bf7d4c523e4e3a16ae2c4918b2935b32f2e0df8aa35a7ae3463393f4810e69` |
-| `styles.css` | 47420 | `f265d4da49926fab0c6ea0f7270d3b597e104bd197aa51689d086bfb45b1aa9e` |
-| `app.js` | 420432 | `2c49ba11c8fd7c584cf3957e83641ce796582897c90486ff1cd3695872243cd3` |
+| `styles.css` | 47930 | `8167f40db76bd37a5241ac056cc6c6ff31a77d73cb9c06c4228890f71d69c35c` |
+| `app.js` | 420733 | `c0f61c27624d6f61dd81bddeffc5d5f3d3cafa8dc39099fd06ef96c8290e5fa3` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
@@ -371,6 +371,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/liver-v196.js` | 11726 | `655b4f9f7fc646dc4f0dea656563175d56cd862381d75acfb1a9fe25f2db6f3d` |
 | `lib/lodwick-grade-v496.js` | 3715 | `8c5aee72ee779640837fa2cba4ae459aff9e50b9c76c6da64751c2077ae3f283` |
 | `lib/loe-silness-gingival-index-v722.js` | 3556 | `256b3056d2f235eaf93f210bb3453cd9078261ae090cbd71afc05696d71661d4` |
+| `lib/long-note.js` | 3066 | `b82bce22edbaa722693b5a1a798d98bfa23789b49ccb84c7098db448e590d8d8` |
 | `lib/lown-ectopy-v493.js` | 3439 | `01a09f6591bd9b5920fbbde72749e59fa8f2d9d0b158f0f1e25f5a8c0fefefb4` |
 | `lib/ltcga-v173.js` | 8751 | `ccfa88577d21bee98dd73f65f49af5f7dcd68c45a8c0dbc08e2e35de6e2f8c63` |
 | `lib/ltcga-v174.js` | 14382 | `6e634584422770963d6b44b35106c7648c7c4e22cc0687b2d58a318294815403` |

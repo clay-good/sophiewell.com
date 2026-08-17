@@ -287,6 +287,24 @@ test('spec-v2: leader G then B navigates to BMI', async ({ page }) => {
   await expect(page).toHaveURL(/#bmi/);
 });
 
+// A long explanation paragraph keeps its first sentence visible and puts the
+// rest behind "More detail", so the reader meets the fields sooner. #poseidon
+// carries two such paragraphs: the opening description of the classification
+// and the field note about the two alternative reserve markers.
+test('a long explanation paragraph folds behind a More detail disclosure', async ({ page }) => {
+  await page.goto('/#poseidon');
+  const lead = page.locator('#tool-body > p.muted').first();
+  await expect(lead).toBeVisible();
+  expect((await lead.textContent()).length).toBeLessThan(280);
+
+  const more = page.locator('#tool-body > details.note-more');
+  await expect(more.first().locator('summary')).toHaveText('More detail');
+  const hidden = more.first().locator('p');
+  await expect(hidden).toBeHidden();
+  await more.first().locator('summary').click();
+  await expect(hidden).toBeVisible();
+});
+
 // ---- spec-v3 layer ----
 
 test('spec-v3: Group I tools render the local-protocol notice', async ({ page }) => {

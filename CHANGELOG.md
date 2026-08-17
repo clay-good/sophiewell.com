@@ -8,6 +8,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed (page copy: say less, and say it bigger)
 
+- **Long explanations fold behind "More detail".** 477 of the catalog's 1150 explanation paragraphs
+  ran past 280 characters — a full paragraph of background before the reader reached the first field.
+  The first sentence stays visible, the rest is one click away. Nothing is deleted: the text is still
+  in the page for search and find-in-page, and it still prints, because `theme.js` opens every
+  disclosure before printing. Applied once, centrally, rather than edited into 612 view files, so it
+  cannot drift tile by tile. 463 paragraphs collapse; the other 14 are a single long sentence with
+  nothing to split off and are left as written.
 - **Every tool page states its example first.** The worked result now appears in one line above the
   fields ("Example: Wells PE total 4.5 (PE-likely group, moderate probability). Replace the values
   below with your own."), so a reader who has never seen the tool knows what the answer looks like

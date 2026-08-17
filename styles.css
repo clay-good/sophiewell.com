@@ -1555,6 +1555,28 @@ button:active { transform: translateY(1px) scale(0.985); }
 }
 .tool-proof > *:not(summary) { margin-top: var(--space-2); }
 
+/* The rest of a long explanation paragraph, one click away. Block summary (not
+   flex) so the UA disclosure triangle survives; the padding carries the 44px
+   touch target. */
+.note-more {
+  margin: 0 0 var(--space-2);
+}
+.note-more > summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 10px 0;
+}
+.note-more > summary:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+.note-more p {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
 /* Pre-rendered static tool pages: inputs / output statement. */
 .tool-page .tp-io-dl { margin: 0 0 var(--space-2); }
 .tool-page .tp-io-dl dt {
