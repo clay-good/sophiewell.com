@@ -32,6 +32,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   1558 pages now carry a tile-specific description, and each page states its real inputs and output,
   generated from the MCP field registry.
 - `mcp/README.md` told readers the smoke test lists "the five tools"; it lists eight.
+- The audience hubs (`/for/<slug>/`) and topic pages (`/topics/<slug>/`) rendered an **empty**
+  description span under every tile name, from the same retired source: 1524 of them on
+  `/for/clinicians/` alone. Each entry now carries a one-line description, so `/for/clinicians/` is
+  down to 13 blanks and `/topics/cardiology/` reads as a real list.
+- The home lede's visible count is now a `check-catalog-truth` surface too, and the lede itself drops
+  a closing sentence that said nothing the rest of it did not.
 
 ### Added (spec-v548 — Patient-prosthesis mismatch (indexed effective orifice area) tile, 1397 → 1398)
 

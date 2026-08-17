@@ -109,6 +109,14 @@ function makeSurfaces() {
     // tile-grid. 2026-07-04: the hero search label went count-free too
     // ("What do you need to figure out?"), so its surface is retired the
     // same way; the count stays enforced on the surfaces above and below.
+    // The home lede carries a visible count again ("Search N calculators..."),
+    // so it is enforced rather than left to drift the way the README headline
+    // did (it had reached 1145 against a catalog of 1564).
+    {
+      name: 'home lede visible count',
+      file: 'index.html',
+      extract: (t) => firstCapture(t, /<p class="home-lede">\s*Search\s+(\d{2,4})\s+calculators/i),
+    },
     {
       name: 'JSON-LD description',
       file: 'index.html',

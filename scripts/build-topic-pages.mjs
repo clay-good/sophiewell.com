@@ -17,9 +17,28 @@ import { mkdir, readFile, writeFile, rm } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
+import { getCalculator } from '../mcp/catalog.js';
+import { corpusOneLiner } from '../lib/search-corpus.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
+
+// The tile one-liner shown under each name in the list. The old source (the
+// `tc-desc` spans in the retired homepage tile grid) is gone, so every entry
+// had been rendering an empty <span>. Fall back to the first sentence of the
+// MCP adapter summary, which is specific per tile.
+function tileDesc(id) {
+  let rec = null;
+  try { rec = getCalculator(id); } catch { rec = null; }
+  const full = rec?.summary || '';
+  const line = corpusOneLiner({ summary: full }, 110);
+  if (!line) return '';
+  // corpusOneLiner cuts on a word boundary, which can land on a comma mid-list.
+  // Tidy the seam and mark the cut so the line does not read as a finished
+  // sentence that simply stops.
+  const trimmed = line.replace(/[\s,;:]+$/, '');
+  return trimmed.length < full.replace(/[\s,;:]+$/, '').length ? `${trimmed}...` : trimmed;
+}
 const DIST = join(ROOT, 'dist');
 const SITE = 'https://sophiewell.com';
 
@@ -429,7 +448,7 @@ async function main() {
         console.warn(`build-topic-pages: topic "${topic.slug}" references unknown tile "${id}" - skipping.`);
         continue;
       }
-      resolved.push({ ...t, desc: descriptions.get(id) || '' });
+      resolved.push({ ...t, desc: descriptions.get(id) || tileDesc(id) });
     }
     if (resolved.length === 0) {
       console.warn(`build-topic-pages: topic "${topic.slug}" has zero resolved tiles - skipping page.`);
