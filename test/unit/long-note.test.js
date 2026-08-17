@@ -31,6 +31,14 @@ test('splitLead scans past a spelled-out acronym rather than leading with it', (
   assert.equal(rest, 'It is not a treatment decision.');
 });
 
+// Field descriptions on the pre-rendered pages legitimately lead with a short
+// noun phrase; that phrase is the line a reader scans, so keep it.
+test('splitLead keeps a short noun-phrase lead', () => {
+  const { lead, rest } = splitLead('Antral follicle count. Adequate reserve is 5 or more, and it is an alternative to anti-Mullerian hormone.');
+  assert.equal(lead, 'Antral follicle count.');
+  assert.ok(rest.startsWith('Adequate reserve'));
+});
+
 test('splitLead returns null when there is nothing to split off', () => {
   assert.equal(splitLead('One sentence only.'), null);
   assert.equal(splitLead('No terminator at all'), null);

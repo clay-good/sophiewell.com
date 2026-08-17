@@ -28,6 +28,7 @@ import { dirname, join, resolve } from 'node:path';
 // rather than hand-written or guessed.
 import { getCalculator } from '../mcp/catalog.js';
 import { corpusOneLiner } from '../lib/search-corpus.js';
+import { splitLead } from '../lib/long-note.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
@@ -347,16 +348,33 @@ ${related.map((r) => `          <li><a href="${SITE}/tools/${r.id}/">${esc(r.nam
   const whatThisIsText = copy?.whatThisIs || '';
   const whenToUseText = copy?.whenToUse || '';
 
+  // One field per line, not a semicolon-joined run-on: a reader scanning for
+  // "do I have the values for this?" wants a list. Each line is trimmed to its
+  // first sentence, because the field descriptions carry a second and third
+  // sentence of qualification that belongs one click away rather than in the
+  // way. Nothing is dropped: if any line was trimmed, the full descriptions
+  // sit under a disclosure directly below.
   const labels = inputLabels(tile.id);
   const shownLabels = labels.slice(0, MAX_LISTED_INPUTS);
   const extraLabels = labels.length - shownLabels.length;
-  const inputsText = shownLabels.length
-    ? `${shownLabels.map((l) => esc(l)).join('; ')}${extraLabels > 0 ? `; and ${extraLabels} more field${extraLabels === 1 ? '' : 's'}` : ''}.`
-    : esc(copy?.inputs || '');
-  const inputsHtml = inputsText
-    ? `<dt>What you enter</dt>
-          <dd>${inputsText}</dd>`
+  const extraLine = extraLabels > 0
+    ? `<li>and ${extraLabels} more field${extraLabels === 1 ? '' : 's'}</li>`
     : '';
+  const leads = shownLabels.map((l) => splitLead(l)?.lead || l);
+  const trimmed = leads.some((lead, i) => lead !== shownLabels[i]);
+  const fullHtml = trimmed
+    ? `\n          <details class="tp-io-full">
+            <summary>Full field descriptions</summary>
+            <ul>${shownLabels.map((l) => `<li>${esc(l)}</li>`).join('')}</ul>
+          </details>`
+    : '';
+  const inputsHtml = shownLabels.length
+    ? `<dt>What you enter</dt>
+          <dd><ul class="tp-io-list">${leads.map((l) => `<li>${esc(l)}</li>`).join('')}${extraLine}</ul>${fullHtml}</dd>`
+    : (copy?.inputs
+        ? `<dt>What you enter</dt>
+          <dd>${esc(copy.inputs)}</dd>`
+        : '');
   const outputText = meta?.example?.expected
     ? esc(meta.example.expected)
     : esc(copy?.output || '');

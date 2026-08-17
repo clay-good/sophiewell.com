@@ -15,6 +15,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   disclosure before printing. Applied once, centrally, rather than edited into 612 view files, so it
   cannot drift tile by tile. 463 paragraphs collapse; the other 14 are a single long sentence with
   nothing to split off and are left as written.
+- **"What you enter" is a list, not a paragraph.** The pre-rendered `/tools/<id>/` pages built their
+  inputs line by joining every field description with semicolons, which on some tiles ran to 1,100
+  characters and ended in a stray "..". It is now one field per line, each trimmed to its first
+  sentence, with a "Full field descriptions" disclosure below wherever anything was trimmed.
 - **Every tool page states its example first.** The worked result now appears in one line above the
   fields ("Example: Wells PE total 4.5 (PE-likely group, moderate probability). Replace the values
   below with your own."), so a reader who has never seen the tool knows what the answer looks like

@@ -1589,6 +1589,27 @@ button:active { transform: translateY(1px) scale(0.985); }
   line-height: 1.55;
   overflow-wrap: anywhere;
 }
+/* One field per line. The marker sits outside the text so a wrapped
+   description hangs under its own first line, not under the bullet. */
+.tool-page .tp-io-list {
+  margin: 0;
+  padding-left: 1.2em;
+}
+.tool-page .tp-io-list li { margin: 0 0 var(--space-2); }
+.tool-page .tp-io-full > summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 10px 0;
+}
+.tool-page .tp-io-full ul {
+  margin: 0;
+  padding-left: 1.2em;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+.tool-page .tp-io-full li { margin: 0 0 var(--space-2); }
+
 .tool-page .tp-refs {
   margin-bottom: var(--space-5);
 }
