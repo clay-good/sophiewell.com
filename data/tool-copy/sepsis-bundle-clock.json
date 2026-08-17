@@ -1,4 +1,5 @@
 {
   "whatThisIs": "Measures the Surviving Sepsis Campaign bundle elements against the recognition time T0. Enter T0 and the timestamps for blood cultures, broad-spectrum antibiotics, the 30 mL/kg crystalloid start, and the initial and repeat lactates, and it returns each element's elapsed time, whether it landed inside its window, and lactate clearance.",
-  "whenToUse": "Use it during and after a sepsis presentation to see which bundle elements are still outstanding and to document the timeline. It reports timing against the published windows; it does not decide that a patient has sepsis, and it never orders a bundle element."
+  "whenToUse": "Use it during and after a sepsis presentation to see which bundle elements are still outstanding and to document the timeline. It reports timing against the published windows; it does not decide that a patient has sepsis, and it never orders a bundle element.",
+  "inputs": "The sepsis recognition time, then the times for cultures, antibiotics, fluids, and vasopressors, plus the initial and repeat lactate values and when they were drawn."
 }

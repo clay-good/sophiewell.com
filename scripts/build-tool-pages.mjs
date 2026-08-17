@@ -94,9 +94,14 @@ async function loadMeta() {
 
 // --- Per-tile prose overrides (spec-seo §5.4 + §14.2). Hand-authored
 // copy lives at `data/tool-copy/<id>.json`. Recognized fields:
-//   { whatThisIs?: string, whenToUse?: string }
-// Either may be omitted; missing fields fall back to the templated
-// defaults. Phase 2 follow-on PRs author one of these per top-50 tile.
+//   { whatThisIs?: string, whenToUse?: string, inputs?: string, output?: string }
+// Any may be omitted; missing fields fall back to the templated
+// defaults. `inputs` and `output` fill the "Inputs and output" block for
+// the tiles that have no MCP adapter to read field labels from -- mostly
+// question-flow decision aids and document builders, which render their
+// fields as the reader answers rather than up front. Without them those
+// pages printed no such block at all, so the reader was told the answer
+// the tile gives without being told what it needs from them.
 async function loadToolCopy(id) {
   const path = new URL(`../data/tool-copy/${id}.json`, import.meta.url);
   if (!existsSync(path)) return null;
@@ -345,13 +350,26 @@ ${related.map((r) => `          <li><a href="${SITE}/tools/${r.id}/">${esc(r.nam
   const labels = inputLabels(tile.id);
   const shownLabels = labels.slice(0, MAX_LISTED_INPUTS);
   const extraLabels = labels.length - shownLabels.length;
-  const inputsHtml = shownLabels.length
+  const inputsText = shownLabels.length
+    ? `${shownLabels.map((l) => esc(l)).join('; ')}${extraLabels > 0 ? `; and ${extraLabels} more field${extraLabels === 1 ? '' : 's'}` : ''}.`
+    : esc(copy?.inputs || '');
+  const inputsHtml = inputsText
     ? `<dt>What you enter</dt>
-          <dd>${shownLabels.map((l) => esc(l)).join('; ')}${extraLabels > 0 ? `; and ${extraLabels} more field${extraLabels === 1 ? '' : 's'}` : ''}.</dd>`
+          <dd>${inputsText}</dd>`
     : '';
-  const outputHtml = meta?.example?.expected
+  const outputText = meta?.example?.expected
+    ? esc(meta.example.expected)
+    : esc(copy?.output || '');
+  const outputHtml = outputText
     ? `<dt>What you get</dt>
-          <dd>${esc(meta.example.expected)}</dd>`
+          <dd>${outputText}</dd>`
+    : '';
+  // Only promise a pre-filled example when there is a worked example behind
+  // it. A tile whose output line came from hand-authored copy has no META
+  // example to pre-fill from, so the line would be a claim the tool does not
+  // keep.
+  const exampleLine = meta?.example?.expected
+    ? '\n          <p class="muted">The tool opens pre-filled with that example. Replace the values with your own.</p>'
     : '';
   const howHtml = (inputsHtml || outputHtml)
     ? `<section class="tp-io" aria-labelledby="tp-io-h">
@@ -359,8 +377,7 @@ ${related.map((r) => `          <li><a href="${SITE}/tools/${r.id}/">${esc(r.nam
           <dl class="tp-io-dl">
           ${inputsHtml}
           ${outputHtml}
-          </dl>
-          <p class="muted">The tool opens pre-filled with that example. Replace the values with your own.</p>
+          </dl>${exampleLine}
         </section>`
     : '';
 

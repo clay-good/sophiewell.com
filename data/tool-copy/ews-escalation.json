@@ -1,4 +1,5 @@
 {
   "whatThisIs": "Turns a NEWS2 or MEWS total into an observation interval. Enter the most recent score, when the vitals were taken, and whether any single parameter scored 3, and it returns how soon the next set of observations is due and the timestamp they fall due at.",
-  "whenToUse": "Use it on the ward when a deteriorating-patient score needs to become a concrete re-check time. A single red-trigger parameter escalates the interval on its own, independent of the total. Escalation to a rapid-response or outreach team is a local-protocol decision, not an output of this tool."
+  "whenToUse": "Use it on the ward when a deteriorating-patient score needs to become a concrete re-check time. A single red-trigger parameter escalates the interval on its own, independent of the total. Escalation to a rapid-response or outreach team is a local-protocol decision, not an output of this tool.",
+  "inputs": "The most recent NEWS2 total, when the vitals were taken, and whether any single parameter scored 3."
 }

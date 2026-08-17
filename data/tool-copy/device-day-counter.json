@@ -1,4 +1,5 @@
 {
   "whatThisIs": "Counts device-days for an indwelling Foley catheter or central venous catheter. Enter the device and its insertion timestamp and it returns elapsed days and hours, then checks the CDC/SHEA daily-removal criteria you tick against that duration and flags the device for a removal conversation when none of them still apply.",
-  "whenToUse": "Use it on daily rounds for CAUTI and CLABSI prevention, where the single strongest intervention is removing a line or catheter that no longer has an indication. The criteria list is the published one; whether an indication genuinely still holds is a clinical judgment the counter cannot make."
+  "whenToUse": "Use it on daily rounds for CAUTI and CLABSI prevention, where the single strongest intervention is removing a line or catheter that no longer has an indication. The criteria list is the published one; whether an indication genuinely still holds is a clinical judgment the counter cannot make.",
+  "inputs": "The device, its insertion timestamp, and which daily-removal criteria currently apply."
 }
