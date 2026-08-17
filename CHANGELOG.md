@@ -21,6 +21,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - **Bigger type where it is read.** Input labels go from 0.92rem to the full 1rem body size, with the
   references block and its controls raised to match.
 
+### Fixed (printing keeps the citation)
+
+- A closed `<details>` does not print its contents, so collapsing the citation would have dropped the
+  provenance from any page printed for the chart, leaving the number alone. `theme.js` now opens every
+  disclosure on `beforeprint` and restores each one to exactly the state the reader left it in on
+  `afterprint`. It lives there rather than in `app.js` so the pre-rendered `/tools/<id>/` pages, which
+  load only that script, behave the same. This also fixes the pre-existing derivation block, which had
+  never printed. Guarded by `test/integration/print-details.spec.js`.
+
 ### Fixed (stale user-facing numbers)
 
 - The README headline claimed **1145** calculators against a catalog of **1564**. Corrected, and the

@@ -49,3 +49,22 @@ document.addEventListener('DOMContentLoaded', function () {
     sync();
   });
 });
+
+// A closed <details> does not print its contents, so the collapsed citation
+// (and the derivation block) would silently drop out of a page printed for the
+// chart. Open every disclosure for the print, then put each one back exactly as
+// the reader left it. CSS cannot do this: a closed details is hidden by the UA's
+// own content-visibility, not by a `display` rule a stylesheet can override.
+// Lives here rather than in app.js so the pre-rendered /tools/<id>/ pages, which
+// load only this script, get the same behavior.
+(function () {
+  var reopened = [];
+  window.addEventListener('beforeprint', function () {
+    reopened = Array.prototype.slice.call(document.querySelectorAll('details:not([open])'));
+    for (var i = 0; i < reopened.length; i++) reopened[i].open = true;
+  });
+  window.addEventListener('afterprint', function () {
+    for (var i = 0; i < reopened.length; i++) reopened[i].open = false;
+    reopened = [];
+  });
+})();
