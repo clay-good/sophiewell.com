@@ -8,6 +8,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed (page copy: say less, and say it bigger)
 
+- **Every tool page now shows the example as values, not just as an answer.** `/tools/<id>/` used to
+  state "What you get: POSEIDON group 1b." with none of the inputs behind it. It now leads with the
+  worked example itself — `Patient age 32 years`, `Anti-Mullerian hormone 2.0 ng/mL`, then the
+  result — so a reader sees the unit, the precision, and the shape of every value before they open
+  the tool and start overwriting the pre-filled fields. 1,538 of the 1,564 pages; the rest have no
+  field registry to name the inputs from and keep the old line. Checkbox values print as Yes / No
+  instead of the `1` the tile happens to store. A unit test gates the join the page is built from,
+  so a field rename fails the build instead of silently emptying 1,500 pages.
+- **Field descriptions stopped running on.** The list added above trimmed each field to its first
+  sentence, but refused any lead under 20 characters — so "Patient age." kept its whole trailing
+  paragraph. A field label is not a paragraph; the trim now accepts a short noun phrase, and the
+  full text stays under "Full field descriptions".
 - **Long explanations fold behind "More detail".** 477 of the catalog's 1150 explanation paragraphs
   ran past 280 characters — a full paragraph of background before the reader reached the first field.
   The first sentence stays visible, the rest is one click away. Nothing is deleted: the text is still

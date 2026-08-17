@@ -15,6 +15,17 @@ test('splitLead keeps the first sentence and hands back the rest', () => {
   assert.equal(`${lead} ${rest}`, LONG);
 });
 
+test('splitLead refuses a two-word lead by default but takes it at a lower floor', () => {
+  const label = 'Patient age. The classification splits at 35: under 35 gives groups 1 and 3, 35 or over gives groups 2 and 4.';
+  // Default floor: "Patient age." is a fragment inside a paragraph, so the
+  // whole label stands.
+  assert.equal(splitLead(label), null);
+  // Field-label floor: "Patient age." IS the label; the rest is qualification.
+  const { lead, rest } = splitLead(label, { minLead: 10 });
+  assert.equal(lead, 'Patient age.');
+  assert.ok(rest.startsWith('The classification splits'));
+});
+
 test('splitLead does not cut a decimal in half', () => {
   const { lead } = splitLead('Ovarian reserve counts as adequate at 1.2 ng/mL or anything higher. Below that it does not.');
   assert.equal(lead, 'Ovarian reserve counts as adequate at 1.2 ng/mL or anything higher.');

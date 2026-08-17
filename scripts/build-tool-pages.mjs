@@ -229,6 +229,80 @@ function inputLabels(tileId) {
   return labels;
 }
 
+// --- The worked example, stated as concrete values.
+//
+// `META.example.fields` is keyed by DOM id and the MCP registry carries the
+// same DOM id alongside a human label and a unit, so the two join cleanly:
+// 1,538 of the 1,564 tiles have every example key matched to a field.
+// Before this, the page printed the example's *expected output* under "What
+// you get" with none of the inputs that produced it -- a number with nothing
+// behind it. Showing the inputs beside it is what makes the page intuitive:
+// the reader sees the shape of every value and can substitute their own.
+const MAX_EXAMPLE_ROWS = 10;
+
+// A field label leads with the name of the thing and then qualifies it, so the
+// lead worth keeping is often just two words ("Patient age."). The paragraph
+// default would refuse that as a fragment and print the whole label instead.
+const FIELD_MIN_LEAD = 10;
+
+// The name of the thing, not the explanation of it. Field labels lead with a
+// noun phrase and then qualify it; the example row wants only the noun phrase,
+// without the trailing scale legend that several instruments append.
+function shortLabel(raw) {
+  const text = (raw || '').trim();
+  if (!text) return '';
+  const lead = (splitLead(text, { minLead: FIELD_MIN_LEAD })?.lead || text).trim();
+  const stripped = lead.replace(/\s*[([][^()[\]]*[)\]]\s*\.?$/, '').trim();
+  let s = (stripped || lead).replace(/[.:;,]+$/, '').trim();
+  if (s.length > 80) {
+    const cut = s.slice(0, 79);
+    const sp = cut.lastIndexOf(' ');
+    s = (sp > 40 ? cut.slice(0, sp) : cut).trimEnd() + '…';
+  }
+  return s;
+}
+
+// A unit belongs on a measurement, not on a yes/no or a picked option. A
+// checkbox is stored as `1` / `true` / `yes` depending on the tile, and none of
+// those is what the reader sees on screen -- a row reading "Heart rate > 100:
+// 1" states a count, not a checked box.
+const BOOL_TRUE = new Set(['1', 'true', 'yes', 'y', 'on']);
+function exampleValue(field, raw) {
+  const value = String(raw ?? '').trim();
+  if (!value) return '';
+  if (field.kind === 'bool' || field.kind === 'boolean') {
+    return BOOL_TRUE.has(value.toLowerCase()) ? 'Yes' : 'No';
+  }
+  // An enum whose option is literally "yes" or "no" is the same answer written
+  // as a picklist rather than a checkbox; print it the same way.
+  const YES_NO = { yes: 'Yes', no: 'No', true: 'Yes', false: 'No' };
+  if (YES_NO[value.toLowerCase()]) return YES_NO[value.toLowerCase()];
+  const unit = typeof field.unit === 'string' ? field.unit.trim() : '';
+  const numeric = /^-?\d+(\.\d+)?$/.test(value);
+  return unit && numeric ? `${value} ${unit}` : value;
+}
+
+function exampleRows(tileId, meta) {
+  const fields = meta?.example?.fields;
+  if (!fields || typeof fields !== 'object') return null;
+  const rec = mcpRecord(tileId);
+  if (!rec || !Array.isArray(rec.fields)) return null;
+  const byDom = new Map(rec.fields.map((f) => [f.dom, f]));
+  const rows = [];
+  for (const [dom, raw] of Object.entries(fields)) {
+    const field = byDom.get(dom);
+    if (!field) return null; // partial join would misstate the example
+    const label = shortLabel(field.label);
+    const value = exampleValue(field, raw);
+    // An empty example value is a select left on its blank default (seven
+    // tiles do this, where blank means "no"). The reader types nothing there,
+    // so the row is left out rather than printed as an empty cell.
+    if (!label || !value) continue;
+    rows.push({ label, value });
+  }
+  return rows.length ? rows : null;
+}
+
 function pickRelated(tiles, current, max = 4) {
   return tiles
     .filter((t) => t.group === current.group && t.id !== current.id)
@@ -360,7 +434,7 @@ ${related.map((r) => `          <li><a href="${SITE}/tools/${r.id}/">${esc(r.nam
   const extraLine = extraLabels > 0
     ? `<li>and ${extraLabels} more field${extraLabels === 1 ? '' : 's'}</li>`
     : '';
-  const leads = shownLabels.map((l) => splitLead(l)?.lead || l);
+  const leads = shownLabels.map((l) => splitLead(l, { minLead: FIELD_MIN_LEAD })?.lead || l);
   const trimmed = leads.some((lead, i) => lead !== shownLabels[i]);
   const fullHtml = trimmed
     ? `\n          <details class="tp-io-full">
@@ -368,34 +442,52 @@ ${related.map((r) => `          <li><a href="${SITE}/tools/${r.id}/">${esc(r.nam
             <ul>${shownLabels.map((l) => `<li>${esc(l)}</li>`).join('')}</ul>
           </details>`
     : '';
-  const inputsHtml = shownLabels.length
-    ? `<dt>What you enter</dt>
-          <dd><ul class="tp-io-list">${leads.map((l) => `<li>${esc(l)}</li>`).join('')}${extraLine}</ul>${fullHtml}</dd>`
-    : (copy?.inputs
-        ? `<dt>What you enter</dt>
-          <dd>${esc(copy.inputs)}</dd>`
-        : '');
-  const outputText = meta?.example?.expected
-    ? esc(meta.example.expected)
-    : esc(copy?.output || '');
-  const outputHtml = outputText
-    ? `<dt>What you get</dt>
-          <dd>${outputText}</dd>`
-    : '';
+  const inputsBody = shownLabels.length
+    ? `<ul class="tp-io-list">${leads.map((l) => `<li>${esc(l)}</li>`).join('')}${extraLine}</ul>${fullHtml}`
+    : (copy?.inputs ? `<p>${esc(copy.inputs)}</p>` : '');
+  // The worked example, when the example's fields join cleanly to the field
+  // registry. Where they don't, fall back to stating the expected output on
+  // its own -- less useful, but honest about what the page knows.
+  const rows = exampleRows(tile.id, meta);
+  const shownRows = rows ? rows.slice(0, MAX_EXAMPLE_ROWS) : [];
+  const extraRows = rows ? rows.length - shownRows.length : 0;
+  const outputText = rows
+    ? esc(copy?.output || '')
+    : (meta?.example?.expected ? esc(meta.example.expected) : esc(copy?.output || ''));
   // Only promise a pre-filled example when there is a worked example behind
   // it. A tile whose output line came from hand-authored copy has no META
   // example to pre-fill from, so the line would be a claim the tool does not
   // keep.
-  const exampleLine = meta?.example?.expected
+  const exampleLine = (!rows && meta?.example?.expected)
     ? '\n          <p class="muted">The tool opens pre-filled with that example. Replace the values with your own.</p>'
     : '';
-  const howHtml = (inputsHtml || outputHtml)
+  // The heading names what the section actually holds. Once the worked example
+  // carries the result, most pages have only the input list left here, and
+  // "Inputs and output" would promise an output the section no longer states.
+  const howHeading = outputText ? 'Inputs and output' : 'What you enter';
+  const howBody = outputText
+    ? `<dl class="tp-io-dl">
+          <dt>What you enter</dt>
+          <dd>${inputsBody}</dd>
+          <dt>What you get</dt>
+          <dd>${outputText}</dd>
+          </dl>`
+    : inputsBody;
+  const howHtml = (inputsBody || outputText)
     ? `<section class="tp-io" aria-labelledby="tp-io-h">
-          <h2 id="tp-io-h">Inputs and output</h2>
-          <dl class="tp-io-dl">
-          ${inputsHtml}
-          ${outputHtml}
-          </dl>${exampleLine}
+          <h2 id="tp-io-h">${howHeading}</h2>
+          ${howBody}${exampleLine}
+        </section>`
+    : '';
+
+  const exampleHtml = (rows && meta?.example?.expected)
+    ? `<section class="tp-ex" aria-labelledby="tp-ex-h">
+          <h2 id="tp-ex-h">Example</h2>
+          <dl class="tp-ex-dl">
+${shownRows.map((r) => `            <div class="tp-ex-row"><dt>${esc(r.label)}</dt><dd>${esc(r.value)}</dd></div>`).join('\n')}
+          </dl>${extraRows > 0 ? `\n          <p class="muted">and ${extraRows} more field${extraRows === 1 ? '' : 's'}</p>` : ''}
+          <p class="tp-ex-result"><strong>Result:</strong> ${esc(meta.example.expected)}</p>
+          <p class="muted">The tool opens with these values already filled in. Replace them with your own.</p>
         </section>`
     : '';
 
@@ -486,6 +578,8 @@ ${datasetLd ? `    <script type="application/ld+json">\n${JSON.stringify(dataset
           <a class="tp-open" href="${hashUrl}">Open the ${esc(tile.name)} →</a>
           <span class="muted">Runs in your browser. Nothing you type leaves your device.</span>
         </p>
+
+        ${exampleHtml}
 
         ${howHtml}
 

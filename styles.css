@@ -1594,6 +1594,15 @@ button:active { transform: translateY(1px) scale(0.985); }
 .tool-page .tp-io-list {
   margin: 0;
   padding-left: 1.2em;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+.tool-page .tp-io > p {
+  margin: 0 0 var(--space-2);
+  color: var(--text-secondary);
+  line-height: 1.55;
+  overflow-wrap: anywhere;
 }
 .tool-page .tp-io-list li { margin: 0 0 var(--space-2); }
 .tool-page .tp-io-full > summary {
@@ -1609,6 +1618,35 @@ button:active { transform: translateY(1px) scale(0.985); }
   line-height: 1.55;
 }
 .tool-page .tp-io-full li { margin: 0 0 var(--space-2); }
+
+/* The worked example: one row per value, label above value so a long unit
+   string wraps under its own label instead of pushing the page sideways. */
+.tool-page .tp-ex-dl { margin: 0 0 var(--space-3); }
+.tool-page .tp-ex-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--space-2);
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+}
+.tool-page .tp-ex-row dt {
+  flex: 1 1 12rem;
+  min-width: 0;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+.tool-page .tp-ex-row dd {
+  flex: 0 1 auto;
+  margin: 0;
+  color: var(--text-secondary);
+  overflow-wrap: anywhere;
+}
+.tool-page .tp-ex-result {
+  margin: 0 0 var(--space-2);
+  font-size: 1.05rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
 
 .tool-page .tp-refs {
   margin-bottom: var(--space-5);
