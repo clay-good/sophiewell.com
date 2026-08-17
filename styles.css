@@ -264,6 +264,10 @@ body {
   font-size: 1.05rem;
   line-height: 1.5;
   margin: 0 0 var(--space-4);
+  /* Tile descriptions carry slash-joined clinical terms
+     ("erythema/edema/excoriation/lichenification"); break them rather than
+     force a side-scroll at 320px. */
+  overflow-wrap: anywhere;
 }
 .tool-page .tp-cta {
   display: flex;
@@ -295,6 +299,7 @@ body {
   color: var(--text-secondary);
   line-height: 1.55;
   margin: 0 0 var(--space-2);
+  overflow-wrap: anywhere;
 }
 .tool-page .src-stamp {
   font-family: var(--font-mono);
@@ -1032,7 +1037,7 @@ main h1 {
 }
 .tool-meta p {
   margin: 0 0 var(--space-2);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: var(--text-secondary);
 }
 .tool-meta p:last-child { margin-bottom: 0; }
@@ -1080,18 +1085,16 @@ main h1 {
   border-radius: 3px;
 }
 .tool-meta .example-row { margin-bottom: 0; display: flex; align-items: center; flex-wrap: wrap; }
-.tool-meta .example-expected { margin-left: var(--space-2); font-size: 0.85rem; }
+.tool-meta .example-expected { margin-left: var(--space-2); font-size: 0.95rem; }
 /* spec-v72: the "Reset to example" control is an <a> on its own row, not a
    button, so it needs inline-flex for min-height to apply (44px touch target,
    WCAG 2.5.5). The flex example-row keeps it centered beside its note. */
 .tool-meta .example-reset {
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   display: inline-flex;
   align-items: center;
   min-height: 44px;
 }
-/* spec-v9 §3.3: muted "(example: <value>)" annotation next to input labels. */
-.example-hint { font-size: 0.8rem; margin-left: var(--space-1); font-weight: normal; }
 
 /* spec-v61 §2 A7: opt-in "remember my inputs" toggle. Wraps naturally on
    narrow screens so it never forces horizontal scroll. */
@@ -1110,7 +1113,7 @@ main h1 {
   cursor: pointer;
 }
 .remember-checkbox { flex: 0 0 auto; }
-.remember-note { font-size: 0.78rem; }
+.remember-note { font-size: 0.85rem; }
 
 /* Copy buttons */
 .copy-row { margin-bottom: 0; }
@@ -1389,7 +1392,9 @@ label {
   display: inline-block;
   font-weight: 600;
   color: var(--text-primary);
-  font-size: 0.92rem;
+  /* Full body size: input labels are the text a reader actually works from
+     on a tool page, often on a phone at arm's length. */
+  font-size: 1rem;
   margin-bottom: 6px;
   /* Break long unbreakable tokens (gene/karyotype notations like
      "-5/-7/-17/abn(17p)") rather than force horizontal scroll at 320px. */
@@ -1485,6 +1490,65 @@ button:active { transform: translateY(1px) scale(0.985); }
   *,
   *::before,
   *::after { animation: none !important; transition: none !important; }
+}
+
+/* The worked example, stated above the fields. This is the first thing a
+   cold reader needs: what the answer looks like. Kept to one line. */
+.tool-example-lede {
+  margin: 0 0 var(--space-3);
+  font-size: 1.05rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+.tool-example-lede .tel-label { font-weight: 600; }
+.tool-example-lede .tel-hint { font-size: 0.95rem; }
+
+/* Collapsed proof region inside the References block: citation, per-source
+   interpretation bands, recommended next step, dataset stamp. Closed by
+   default so the tool page stays short; one click reveals all of it. */
+.tool-proof {
+  margin: 0 0 var(--space-2);
+}
+.tool-proof > summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  /* Block display (not flex) so the UA disclosure triangle survives; the
+     vertical padding carries the 44px touch target instead. */
+  padding: 10px 0;
+}
+.tool-proof > summary:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+.tool-proof > *:not(summary) { margin-top: var(--space-2); }
+
+/* Pre-rendered static tool pages: inputs / output statement. */
+.tool-page .tp-io-dl { margin: 0 0 var(--space-2); }
+.tool-page .tp-io-dl dt {
+  font-weight: 600;
+  margin: 0 0 2px;
+}
+.tool-page .tp-io-dl dd {
+  margin: 0 0 var(--space-3);
+  color: var(--text-secondary);
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+.tool-page .tp-refs {
+  margin-bottom: var(--space-5);
+}
+.tool-page .tp-refs > summary {
+  cursor: pointer;
+  font-weight: 600;
+  padding: 10px 0;
+}
+.tool-page .tp-refs p {
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin: var(--space-2) 0 0;
+  overflow-wrap: anywhere;
 }
 
 /* spec-v48: derivation block ("where does this come from?") */

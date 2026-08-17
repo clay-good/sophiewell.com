@@ -25,6 +25,13 @@ test('320px: a long-DOI tile renders its inline citation and the references bloc
   await page.setViewportSize({ width: 320, height: 800 });
   await page.goto('/#' + LONG_DOI_TILE, { waitUntil: 'load' });
 
+  // The citation lives inside the collapsed "Citation and how to read this"
+  // <details>: the proof is one click away rather than in the reader's face.
+  // Open it before asserting, so this still measures the rendered citation.
+  const proof = page.locator('.tool-meta .tool-proof').first();
+  await expect(proof).toBeAttached();
+  await proof.evaluate((d) => { d.open = true; });
+
   // Invariant 2.1: the inline citation is present on the tile.
   const citation = page.locator('.tool-meta .citation').first();
   await expect(citation).toBeVisible();

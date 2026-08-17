@@ -49,7 +49,7 @@ printf '%s\n%s\n' \
 ```
 
 You should see an `initialize` result carrying the server `instructions`, then a
-`tools/list` result listing the five tools.
+`tools/list` result listing the eight tools.
 
 ## Wire it into an MCP client
 

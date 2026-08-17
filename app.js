@@ -3730,6 +3730,14 @@ function renderMetaBlock(util) {
   if (!meta) return null;
   const block = el('section', { class: 'tool-meta', 'aria-label': 'References' });
 
+  // The proof (citation, how the source says to read the bands, the dataset
+  // stamp) is collapsed by default: it is what makes the number trustworthy,
+  // not what the reader needs in front of them to use the tool. It is one
+  // click away, and every word of it is still on the page for search and for
+  // "find in page".
+  const proof = el('details', { class: 'tool-proof' });
+  proof.appendChild(el('summary', { text: 'Citation and how to read this' }));
+
   if (meta.citation) {
     // Inline + detailed citation, with links where possible: bare URLs in
     // the citation text become clickable, and an optional structured
@@ -3748,7 +3756,7 @@ function renderMetaBlock(util) {
         text: 'Read the source ↗',
       }));
     }
-    block.appendChild(p);
+    proof.appendChild(p);
   }
 
   // spec-v11 §5: optional per-band `interpretation` block. Renders below
@@ -3767,7 +3775,7 @@ function renderMetaBlock(util) {
       list.appendChild(item);
     }
     interp.appendChild(list);
-    block.appendChild(interp);
+    proof.appendChild(interp);
   }
 
   // spec-v62 §2 A2: optional source-anchored "next step" (action) block. Renders
@@ -3788,12 +3796,12 @@ function renderMetaBlock(util) {
     }
     actions.appendChild(alist);
     if (meta.actions.source) actions.appendChild(el('p', { class: 'actions-source muted', text: `Source: ${meta.actions.source}` }));
-    block.appendChild(actions);
+    proof.appendChild(actions);
   }
 
   if (meta.source) {
     const stamp = el('p', { class: 'source-stamp', text: `Source: ${meta.source.label} (loading version...)` });
-    block.appendChild(stamp);
+    proof.appendChild(stamp);
     fetchJson(`data/${meta.source.dataset}/manifest.json`).then((m) => {
       // When the dataset manifest carries a vetted sourceUrl (the agency's
       // canonical page, verified by the data pipeline), make the label a
@@ -3812,6 +3820,10 @@ function renderMetaBlock(util) {
       stamp.textContent = `Source: ${meta.source.label}`;
     });
   }
+
+  // Only mount the proof block if it actually collected something (the
+  // <summary> alone is always there, so check for a second child).
+  if (proof.children.length > 1) block.appendChild(proof);
 
   if (meta.example) {
     const link = el('a', {
@@ -3936,19 +3948,6 @@ function applyExample(util, { skip } = {}) {
   return filled;
 }
 
-// spec-v9 §3.3: append a muted "(example: <value>)" annotation next to the
-// label of an input that was pre-filled from META[id].example. Renderers
-// that pair each input with a <label for="id"> get the annotation
-// automatically; ad-hoc renderers can call this helper from view code.
-export function annotateExample(id, value) {
-  const label = document.querySelector(`label[for="${CSS.escape(id)}"]`);
-  if (!label) return;
-  if (label.querySelector('.example-hint')) return;
-  label.appendChild(
-    el('span', { class: 'example-hint muted', text: ` (example: ${value})` })
-  );
-}
-
 function renderToolView(util) {
   const main = getMain();
   if (!main) return;
@@ -3984,6 +3983,23 @@ function renderToolView(util) {
     );
   }
 
+  // The worked example, stated up front. A reader landing here cold needs one
+  // thing before anything else: what the answer looks like. Saying it above
+  // the fields (rather than only in the References region at the bottom) makes
+  // the shape of the output obvious, and makes the pre-filled values legible
+  // as an example to overwrite rather than as data someone left behind.
+  const tileMeta = META[util.id];
+  if (tileMeta && tileMeta.example && tileMeta.example.expected) {
+    // Some `expected` strings already end in a period; normalize so the
+    // sentence never reads "4.5 (moderate)..".
+    const expected = String(tileMeta.example.expected).replace(/\s*\.\s*$/, '');
+    content.appendChild(el('p', { class: 'tool-example-lede' }, [
+      el('span', { class: 'tel-label', text: 'Example: ' }),
+      el('span', { class: 'tel-expected', text: `${expected}.` }),
+      el('span', { class: 'tel-hint muted', text: ' Replace the values below with your own.' }),
+    ]));
+  }
+
   // spec-v9 §3.2: tile regions render in the order title -> description ->
   // inputs -> references. The meta block (References) is appended *after*
   // the tool body, not above it.
@@ -4013,13 +4029,11 @@ function renderToolView(util) {
         const save = () => saveInputs(util.id, body);
         body.addEventListener('input', save);
         body.addEventListener('change', save);
-        const filled = applyExample(util, { skip: new Set([...hashKeys, ...remembered]) });
-        const meta = META[util.id];
-        if (meta && meta.example && meta.example.fields) {
-          for (const [id, value] of Object.entries(meta.example.fields)) {
-            if (filled.has(id)) annotateExample(id, value);
-          }
-        }
+        // The example values land in the fields themselves, and the example
+        // result is stated above them, so the old per-label "(example: 1)"
+        // annotation only repeated what the reader could already see (and on
+        // a checkbox it read as a meaningless "1").
+        applyExample(util, { skip: new Set([...hashKeys, ...remembered]) });
       });
     } catch (err) {
       console.error(`[sophiewell] renderer threw for tool "${util.id}":`, err);

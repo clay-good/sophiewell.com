@@ -119,6 +119,14 @@ function makeSurfaces() {
       file: 'README.md',
       extract: (t) => firstCapture(t, /At v\d+ close the catalog is\s+(\d{2,4})\s*\n?\s*deterministic\s+tiles/i),
     },
+    // The README's *visible* headline count was previously unenforced and had
+    // drifted to 1145 while the catalog reached 1564. It is the first number a
+    // reader sees, so it is now a checked surface like every other.
+    {
+      name: 'README headline count',
+      file: 'README.md',
+      extract: (t) => firstCapture(t, /(\d{2,4})\s+free healthcare calculators/i),
+    },
     {
       name: 'package.json description',
       file: 'package.json',

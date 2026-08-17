@@ -22,6 +22,12 @@ import { mkdir, readFile, writeFile, rm } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
+// The MCP registry is the machine-readable field list for every exposed tile
+// (label + kind per input). It is the only place the inputs are enumerated
+// outside the DOM, so the page's "What you enter" list is generated from it
+// rather than hand-written or guessed.
+import { getCalculator } from '../mcp/catalog.js';
+import { corpusOneLiner } from '../lib/search-corpus.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
@@ -195,6 +201,28 @@ function clampDescription(s, max = 158) {
   return (lastSpace > 100 ? cut.slice(0, lastSpace) : cut).trimEnd() + '…';
 }
 
+// The visible input list, generated from the MCP field registry. Long lists
+// are truncated so the page stays scannable; the tool itself always shows
+// every field.
+const MAX_LISTED_INPUTS = 8;
+function mcpRecord(tileId) {
+  try { return getCalculator(tileId) || null; } catch { return null; }
+}
+
+function inputLabels(tileId) {
+  const rec = mcpRecord(tileId);
+  const fields = rec && Array.isArray(rec.fields) ? rec.fields : [];
+  const labels = [];
+  const seen = new Set();
+  for (const f of fields) {
+    const label = f && typeof f.label === 'string' ? f.label.trim() : '';
+    if (!label || seen.has(label)) continue;
+    seen.add(label);
+    labels.push(label);
+  }
+  return labels;
+}
+
 function pickRelated(tiles, current, max = 4) {
   return tiles
     .filter((t) => t.group === current.group && t.id !== current.id)
@@ -224,9 +252,6 @@ function buildPageHtml({ tile, desc, meta, related, copy }) {
     : '';
   const sourceHtml = meta?.source?.label
     ? `<p class="src-stamp"><strong>Source:</strong> ${esc(meta.source.label)}</p>`
-    : '';
-  const exampleHtml = meta?.example?.expected
-    ? `<p><strong>Worked example:</strong> ${esc(meta.example.expected)}</p>`
     : '';
 
   const relatedHtml = related.length
@@ -310,10 +335,47 @@ ${related.map((r) => `          <li><a href="${SITE}/tools/${r.id}/">${esc(r.nam
       }
     : null;
 
-  const whatThisIsText = copy?.whatThisIs
-    || `${tile.name} is one of 230 deterministic tools in Sophie Well's ${groupLabel} group. ${desc}`;
-  const whenToUseText = copy?.whenToUse
-    || `Use this tool when you need a quick, citable reference. Every calculation runs entirely in your browser - no inputs leave your device, no account is required, no AI is involved. The site enforces a strict Content Security Policy and ships no analytics or third-party CDN.`;
+  // Hand-authored copy only. The old generated fallbacks asserted a
+  // hardcoded tile count that had drifted far from the real catalog, and
+  // repeated the same privacy boilerplate on every one of the ~1,500 pages.
+  // A page with nothing specific to say now says nothing instead.
+  const whatThisIsText = copy?.whatThisIs || '';
+  const whenToUseText = copy?.whenToUse || '';
+
+  const labels = inputLabels(tile.id);
+  const shownLabels = labels.slice(0, MAX_LISTED_INPUTS);
+  const extraLabels = labels.length - shownLabels.length;
+  const inputsHtml = shownLabels.length
+    ? `<dt>What you enter</dt>
+          <dd>${shownLabels.map((l) => esc(l)).join('; ')}${extraLabels > 0 ? `; and ${extraLabels} more field${extraLabels === 1 ? '' : 's'}` : ''}.</dd>`
+    : '';
+  const outputHtml = meta?.example?.expected
+    ? `<dt>What you get</dt>
+          <dd>${esc(meta.example.expected)}</dd>`
+    : '';
+  const howHtml = (inputsHtml || outputHtml)
+    ? `<section class="tp-io" aria-labelledby="tp-io-h">
+          <h2 id="tp-io-h">Inputs and output</h2>
+          <dl class="tp-io-dl">
+          ${inputsHtml}
+          ${outputHtml}
+          </dl>
+          <p class="muted">The tool opens pre-filled with that example. Replace the values with your own.</p>
+        </section>`
+    : '';
+
+  const whatHtml = whatThisIsText
+    ? `<section class="tp-what" aria-labelledby="tp-what-h">
+          <h2 id="tp-what-h">What this is</h2>
+          <p>${esc(whatThisIsText)}</p>
+        </section>`
+    : '';
+  const whenHtml = whenToUseText
+    ? `<section class="tp-when" aria-labelledby="tp-when-h">
+          <h2 id="tp-when-h">When to use it</h2>
+          <p>${esc(whenToUseText)}</p>
+        </section>`
+    : '';
 
   return `<!doctype html>
 <html lang="en-US">
@@ -387,26 +449,21 @@ ${datasetLd ? `    <script type="application/ld+json">\n${JSON.stringify(dataset
 
         <p class="tp-cta">
           <a class="tp-open" href="${hashUrl}">Open the ${esc(tile.name)} →</a>
-          <span class="muted">Runs in your browser. No signup, no tracking.</span>
+          <span class="muted">Runs in your browser. Nothing you type leaves your device.</span>
         </p>
 
-        <section class="tp-what" aria-labelledby="tp-what-h">
-          <h2 id="tp-what-h">What this is</h2>
-          <p>${esc(whatThisIsText)}</p>
-        </section>
+        ${howHtml}
 
-        <section class="tp-when" aria-labelledby="tp-when-h">
-          <h2 id="tp-when-h">When to use it</h2>
-          <p>${esc(whenToUseText)}</p>
-        </section>
+        ${whatHtml}
 
-        <section class="tp-refs" aria-labelledby="tp-refs-h">
-          <h2 id="tp-refs-h">References</h2>
+        ${whenHtml}
+
+        <details class="tp-refs">
+          <summary>Citation and sources</summary>
           ${citationHtml}
           ${sourceHtml}
-          ${exampleHtml}
-          <p class="muted">Sophie Well is a reference and educational tool. Not medical, legal, or financial advice. Does not replace clinician judgment, professional billing review, or legal counsel.</p>
-        </section>
+          <p class="muted">A reference and educational tool. Not medical, legal, or financial advice, and not a substitute for clinician judgment.</p>
+        </details>
 
         ${relatedHtml}
 
@@ -452,10 +509,23 @@ async function main() {
 
   let written = 0;
   let withCopy = 0;
+  let withRealDesc = 0;
   for (const tile of tiles) {
-    const desc = descriptions.get(tile.id) || `${tile.name} - a deterministic tool in Sophie Well's ${GROUP_LABELS[tile.group] || tile.group} group.`;
     const copy = await loadToolCopy(tile.id);
     if (copy) withCopy += 1;
+    // The homepage tile grid (the old source of `tc-desc`) was retired, so
+    // every page had been falling back to a generic "a deterministic tool in
+    // ... group" line -- as the visible lede AND as the meta / OG / JSON-LD
+    // description on all ~1,500 pages. Prefer the hand-authored copy, then the
+    // first sentence of the MCP adapter summary, which is specific per tile.
+    const oneLiner = corpusOneLiner({
+      what: copy?.whatThisIs,
+      summary: descriptions.get(tile.id) || mcpRecord(tile.id)?.summary,
+    }, 180);
+    const desc = oneLiner
+      ? (/[.!?]$/.test(oneLiner) ? oneLiner : `${oneLiner}.`)
+      : `${tile.name} - a deterministic tool in Sophie Well's ${GROUP_LABELS[tile.group] || tile.group} group.`;
+    if (oneLiner) withRealDesc += 1;
     const html = buildPageHtml({
       tile,
       desc,
@@ -468,7 +538,7 @@ async function main() {
     await writeFile(join(out, 'index.html'), html, 'utf8');
     written += 1;
   }
-  console.log(`build-tool-pages: wrote ${written} pre-rendered tool pages under dist/tools/ (${withCopy} with hand-authored copy).`);
+  console.log(`build-tool-pages: wrote ${written} pre-rendered tool pages under dist/tools/ (${withCopy} with hand-authored copy, ${withRealDesc} with a tile-specific description).`);
 }
 
 main().catch((err) => { console.error('build-tool-pages: failed', err); process.exit(1); });

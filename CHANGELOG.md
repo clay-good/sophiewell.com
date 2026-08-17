@@ -6,6 +6,33 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed (page copy: say less, and say it bigger)
+
+- **Every tool page states its example first.** The worked result now appears in one line above the
+  fields ("Example: Wells PE total 4.5 (PE-likely group, moderate probability). Replace the values
+  below with your own."), so a reader who has never seen the tool knows what the answer looks like
+  before entering anything.
+- **The proof is one click away, not in the way.** The citation, the source's interpretation bands,
+  the recommended-next-step block, and the dataset stamp now sit inside a closed "Citation and how to
+  read this" disclosure. Nothing was removed: every word is still in the page for search and
+  find-in-page, and the same collapse ships on the pre-rendered `/tools/<id>/` pages.
+- **Removed the "(example: 1)" label annotations.** They repeated the value already sitting in the
+  field, and on a checkbox they rendered as a meaningless "1".
+- **Bigger type where it is read.** Input labels go from 0.92rem to the full 1rem body size, with the
+  references block and its controls raised to match.
+
+### Fixed (stale user-facing numbers)
+
+- The README headline claimed **1145** calculators against a catalog of **1564**. Corrected, and the
+  visible count is now a `check-catalog-truth` surface so it cannot drift again.
+- Every one of the 1564 pre-rendered `/tools/<id>/` pages carried a templated lede ("a deterministic
+  tool in Sophie Well's ... group") and asserted a hardcoded **230** tools per group. The description
+  source (the retired homepage tile grid) had been gone for some time and nothing caught it, because
+  the same filler also fed each page's `<meta description>`, OG/Twitter cards, and JSON-LD.
+  1558 pages now carry a tile-specific description, and each page states its real inputs and output,
+  generated from the MCP field registry.
+- `mcp/README.md` told readers the smoke test lists "the five tools"; it lists eight.
+
 ### Added (spec-v548 — Patient-prosthesis mismatch (indexed effective orifice area) tile, 1397 → 1398)
 
 - New `ppm-eoai` tile (group G): EOAi = prosthesis effective orifice area ÷ body surface area, graded

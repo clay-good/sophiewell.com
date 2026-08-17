@@ -5,7 +5,7 @@
 <h1 align="center">sophiewell.com</h1>
 
 <p align="center">
-  <strong>1145 free healthcare calculators that run entirely in your browser.</strong><br>
+  <strong>1564 free healthcare calculators that run entirely in your browser.</strong><br>
   No servers, no accounts, no ads, no telemetry, no AI.
 </p>
 
@@ -25,29 +25,37 @@
 
 Clinical calculators, scores, drips, and dosing math for the nurse on
 shift, and for the doctors, pharmacists, respiratory therapists, EMS
-providers, billers, and coders working alongside. Search for what you
-need, get your number, get back to work.
+providers, billers, and coders working alongside.
 
-Every calculator computes from your inputs and cites its source.
-Everything runs locally: after the page loads it makes no network
-calls, nothing you type leaves your device, and it keeps working
-offline.
+Each calculator does one thing:
+
+| | |
+|---|---|
+| **In** | The values you already have. Every field opens pre-filled with a worked example, so you can see the expected format before you type. |
+| **Out** | One number or grade, plus how the source says to read it. |
+| **Proof** | The primary citation, one click away under "Citation and how to read this." |
+
+For example, on [Wells Score for PE](https://sophiewell.com/#wells-pe)
+you tick the criteria that apply and get
+`Wells PE total 4.5 (PE-likely group, moderate probability)`.
+
+Nothing you type leaves your device. After the page loads there are no
+network calls, no accounts, and it keeps working offline.
 
 ## Use it
 
 Go to [sophiewell.com](https://sophiewell.com) and type what you need.
 
-To run your own copy, clone this repository and run `npm run dev`,
-then open http://localhost:4173.
+To run your own copy: clone this repository, run `npm run dev`, open
+http://localhost:4173.
 
 ## For AI agents (MCP)
 
-The same deterministic calculators are available to AI agents through an
-optional local [Model Context Protocol](https://modelcontextprotocol.io)
-server — so an agent calls a tool and gets the right number plus a
-citation, instead of guessing. It runs on your machine over stdio: no
-hosting, no network, no telemetry. Quickstart and client config are in
-[mcp/README.md](mcp/README.md).
+The same calculators are available to agents through a local
+[Model Context Protocol](https://modelcontextprotocol.io) server, so an
+agent gets the right number plus a citation instead of guessing. It runs
+on your machine over stdio: no hosting, no network, no telemetry.
+Setup is in [mcp/README.md](mcp/README.md).
 
 ## More
 
