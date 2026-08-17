@@ -123,3 +123,30 @@ test('only the two no-input tiles lack a worked example', () => {
   }
   assert.deepEqual(without.sort(), ['co-cn-antidote', 'sti-screening']);
 });
+
+// The result strings are checked against the data files above, but the ROWS
+// are the answers a reader is told to pick. If a label drifts from the option
+// the view actually renders, the page directs them to a choice that is not
+// there -- and no data file would catch it, because the option labels live in
+// the view. Assert each one appears verbatim in the module that renders it.
+test('every question-flow example row names an option the view renders', () => {
+  const views = {
+    tetanus: 'views/group-j.js',
+    'rabies-pep': 'views/group-j.js',
+    'bbp-exposure': 'views/group-j.js',
+  };
+  const missing = [];
+  for (const [id, view] of Object.entries(views)) {
+    const src = readFileSync(fileURLToPath(new URL(`../../${view}`, import.meta.url)), 'utf8');
+    const copy = read(`data/tool-copy/${id}.json`);
+    for (const [, value] of copy.example.rows) {
+      // rabies-pep's animal names come from its data file, not the view.
+      if (id === 'rabies-pep' && !src.includes(value)) {
+        const d = read('data/rabies-pep/rabies.json');
+        if (d.animalRules.some((a) => a.animal === value)) continue;
+      }
+      if (!src.includes(value)) missing.push(`${id}: "${value}"`);
+    }
+  }
+  assert.deepEqual(missing, [], `example answers with no matching option:\n${missing.join('\n')}`);
+});

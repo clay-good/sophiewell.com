@@ -57,7 +57,10 @@ tetanus  Wound type              Dirty / serious wound
 ```
 
 Change `data/tetanus/tetanus.json` and the test fails. The page cannot state a recommendation the
-tool would not give.
+tool would not give. A second test asserts each row's answer appears verbatim in the module that
+renders the options, so a renamed option cannot leave the page pointing at a choice that is not
+there. And all three were walked in the live tool by hand: every option is reachable by the label
+printed on the page, and each flow returns the result string byte-for-byte.
 
 The other two — `co-cn-antidote` and `sti-screening` — take no input at all. One is a reference
 card, the other a lookup table, and an example is the wrong shape for both; their pages already say
