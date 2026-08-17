@@ -339,7 +339,7 @@ function pickRelated(tiles, current, max = 4) {
 // already says when META has it, otherwise fall back to the tile
 // description. Hand-authored copy can replace any of these in a
 // later PR by reading from `data/tool-copy/<id>.json` (not wired here).
-function buildPageHtml({ tile, desc, meta, related, copy }) {
+function buildPageHtml({ tile, desc, meta, related, copy, whatThisIs }) {
   const groupLabel = GROUP_LABELS[tile.group] || tile.group;
   const seoTitle = clampTitle(`${tile.name} - Free, in your browser · Sophie Well`);
   const seoDesc = clampDescription(
@@ -445,7 +445,10 @@ ${related.map((r) => `          <li><a href="${SITE}/tools/${r.id}/">${esc(r.nam
   // hardcoded tile count that had drifted far from the real catalog, and
   // repeated the same privacy boilerplate on every one of the ~1,500 pages.
   // A page with nothing specific to say now says nothing instead.
-  const whatThisIsText = copy?.whatThisIs || '';
+  // `whatThisIs` arrives already de-duplicated against the lede: when the
+  // lede was lifted from this section's first sentence, that sentence has been
+  // taken out here, so the page never says it twice.
+  const whatThisIsText = whatThisIs || '';
   const whenToUseText = copy?.whenToUse || '';
 
   // One field per line, not a semicolon-joined run-on: a reader scanning for
@@ -686,17 +689,41 @@ async function main() {
     // stopped -- "wound type (clean and minor vs." -- and read as finished.
     // A lede is one sentence, so take the whole first sentence instead; only
     // ellipsize when that single sentence is itself too long to lead with.
-    const source = (copy?.whatThisIs || descriptions.get(tile.id) || mcpRecord(tile.id)?.summary || '').trim();
-    const desc = source
-      ? leadSentence(source)
-      : `${tile.name} - a deterministic tool in Sophie Well's ${GROUP_LABELS[tile.group] || tile.group} group.`;
-    if (source) withRealDesc += 1;
+    //
+    // The 127 tiles with hand-authored copy print it again under "What this
+    // is", so a lede lifted from it says the same sentence twice on one
+    // screen. Take that sentence out of the section when it fits as a lede;
+    // when it is too long to lead with, lead with the adapter summary instead
+    // and leave the section whole -- rather than showing a clipped version of
+    // a paragraph the reader is about to read in full.
+    const hand = (copy?.whatThisIs || '').trim();
+    const summary = (descriptions.get(tile.id) || mcpRecord(tile.id)?.summary || '').trim();
+    const handParts = hand ? splitLead(hand) : null;
+    const handLead = handParts ? handParts.lead : hand;
+
+    let desc = '';
+    let whatThisIs = hand;
+    if (hand && (handLead.length <= LEDE_MAX || !summary)) {
+      // Take the whole first sentence, however long, when there is no adapter
+      // summary to lead with instead: a long lede beats a clipped copy of a
+      // paragraph printed in full three inches below it.
+      desc = /[.!?]$/.test(handLead) ? handLead : `${handLead}.`;
+      whatThisIs = handParts ? handParts.rest : '';
+    } else if (summary) {
+      desc = leadSentence(summary);
+    }
+    if (!desc) {
+      desc = `${tile.name} - a deterministic tool in Sophie Well's ${GROUP_LABELS[tile.group] || tile.group} group.`;
+    } else {
+      withRealDesc += 1;
+    }
     const html = buildPageHtml({
       tile,
       desc,
       meta: meta[tile.id],
       related: pickRelated(tiles, tile),
       copy,
+      whatThisIs,
     });
     const out = join(toolsDir, tile.id);
     await ensureDir(out);

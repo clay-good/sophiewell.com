@@ -16,6 +16,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   field registry to name the inputs from and keep the old line. Checkbox values print as Yes / No
   instead of the `1` the tile happens to store. A unit test gates the join the page is built from,
   so a field rename fails the build instead of silently emptying 1,500 pages.
+- **127 tool pages said their opening sentence twice.** On every tile with hand-authored copy the
+  lede was lifted from "What this is", and the section below then printed that same sentence again,
+  in full, within one screen. The sentence now appears once: as the lede, taken out of the section.
+  Where its first sentence is too long to lead with, the page leads with the tile's own one-line
+  summary instead and leaves the section whole.
 - **188 tool pages opened with a sentence that stopped mid-clause.** `/tools/tetanus/` led with
   "Cross-reference the CDC's tetanus prophylaxis decision matrix: wound type (clean and minor vs." —
   a line cut at a character budget and then given a period, so it read as finished. The same string
@@ -29,6 +34,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   the rule and the test fails, rather than the page quietly recommending something the tool no
   longer does. That leaves exactly two pages without an example, both of which take no input (a
   reference card and a lookup table); a test pins the list to those two.
+- **Checkboxes were 13px, not the 16px the rule asked for.** The hanging-indent rule sized the box
+  with `width: 1em`, but `em` on an `<input>` resolves against the input's own browser font-size
+  (13.33px), not the row's 16px — so the most-tapped control in the catalog rendered smaller than
+  the text beside it, and its outdent missed the row's indent by 4px. Both are `rem` now, and the
+  box is 1.15rem: bigger than the text it sits next to, and lined up with it.
 - **Section headings on a tool page read as headings.** At 1.1rem a heading was 1.6px larger than
   the text beneath it, so the page rendered as one undifferentiated column. Now 1.25rem.
 - **Field descriptions stopped running on.** The list added above trimmed each field to its first

@@ -93,6 +93,35 @@ and `e.g.` are not sentence ends). A first sentence longer than 220 characters i
 ellipsis, which at least admits there is more; 311 pages land there. `corpusOneLiner` itself is
 untouched — it is on the search corpus's byte budget, and this was a call-site bug.
 
+## And the lede that was said twice
+
+Same read-the-page pass. On the 127 tiles with hand-authored copy the lede is lifted from
+`whatThisIs`, and the **What this is** section then printed that identical sentence again, in full,
+about three inches below it — 250 characters of exact repetition on one screen.
+
+The sentence now appears once. Where it fits as a lede it becomes the lede and is taken out of the
+section; where it does not, the page leads with the tile's own adapter summary and the section
+stays whole. Where there is no summary to fall back on (12 tiles, all question flows and document
+builders with no MCP adapter), the lede takes the whole first sentence however long it runs — a
+long lede beats a clipped copy of a paragraph printed right below it. 0 pages duplicate now; 124
+still carry a section, the 3 that lost it having said everything in one sentence.
+
+## A 13px checkbox
+
+Also found by looking rather than by a failing test. The hanging-indent rule for checkbox rows
+sizes the box with `width: 1em` and outdents it `-1.7em` against the row's `padding-left: 1.7em`.
+
+`em` on an `<input>` resolves against the **input's own** UA font-size — 13.33px, not the row's
+16px. So the box came out 13px wide where the rule asked for 16, and outdented 22.7px against a
+27.2px indent: 4px short of where it was aimed. Both units are `rem` now, and the box is `1.15rem`
+— larger than the text beside it, which is the right relationship for the control a reader taps
+most often in the whole catalog.
+
+Guarded by a new case in `test/integration/mobile-touch-targets.spec.js`: a checkbox must not
+render smaller than the label text beside it, and must not overlap that label. Negative-tested —
+reverting the rule to `1em` fails it. Nothing else in the suite catches this: the box was the wrong
+size for as long as the rule existed and every check stayed green.
+
 ## Where it lives
 
 - `scripts/build-tool-pages.mjs` — `exampleRows()`, `shortLabel()`, `exampleValue()`, the section.

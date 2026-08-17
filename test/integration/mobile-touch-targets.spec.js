@@ -57,3 +57,38 @@ test('mobile 360px: primary interactive controls meet the 44px touch target', as
   }
   expect(offenders, `controls below the ${MIN}px touch target:\n${offenders.join('\n')}`).toEqual([]);
 });
+
+// The checkbox itself is not in the list above -- a tick box is not one of the
+// 44px controls spec-v72 sized -- but it has its own floor: it must not render
+// SMALLER than the label text beside it. It did. The hanging-indent rule sized
+// it with `width: 1em`, and `em` on an `<input>` resolves against the input's
+// own UA font-size (13.33px), not the row's 16px, so the most-tapped control
+// in the catalog came out 13px and its outdent missed the row indent by 4px.
+// Both are `rem` now. This guards the trap, which no other check would catch.
+test('mobile 360px: a checkbox is at least as large as the text beside it', async ({ page, browserName }) => {
+  test.skip(browserName !== 'chromium', 'box sizing is engine-agnostic layout; one engine is a sufficient guard');
+  await page.setViewportSize(PHONE);
+  await page.goto('/#curb-65', { waitUntil: 'load' });
+
+  const boxes = page.locator('#tool-body input[type="checkbox"]');
+  await expect(boxes.first()).toBeVisible();
+  const count = await boxes.count();
+  expect(count, 'CURB-65 renders five criteria checkboxes').toBeGreaterThan(0);
+
+  const offenders = [];
+  for (let i = 0; i < count; i++) {
+    const box = boxes.nth(i);
+    const size = await box.boundingBox();
+    const fontPx = await box.evaluate((el) => {
+      const label = el.parentElement.querySelector('label');
+      return parseFloat(getComputedStyle(label || el.parentElement).fontSize);
+    });
+    if (!size) { offenders.push(`checkbox #${i} has no box`); continue; }
+    if (size.width < fontPx) offenders.push(`checkbox #${i}: ${size.width.toFixed(1)}px wide < ${fontPx}px label text`);
+    if (size.height < fontPx) offenders.push(`checkbox #${i}: ${size.height.toFixed(1)}px tall < ${fontPx}px label text`);
+    // The outdent must place the box left of its label, not on top of it.
+    const labelLeft = await box.evaluate((el) => el.parentElement.querySelector('label').getBoundingClientRect().left);
+    if (size.x + size.width > labelLeft + 1) offenders.push(`checkbox #${i} overlaps its label`);
+  }
+  expect(offenders, `checkbox sizing regressions:\n${offenders.join('\n')}`).toEqual([]);
+});

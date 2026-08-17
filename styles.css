@@ -1417,11 +1417,18 @@ label {
    20 wrap the input inside the label, and no container holds more than one
    checkbox (which is what would make an indent rule misfire). */
 p:has(> input[type="checkbox"] + label) {
-  padding-left: 1.7em;
+  padding-left: 1.7rem;
 }
 p:has(> input[type="checkbox"] + label) > input[type="checkbox"] {
-  margin-left: -1.7em;
-  width: 1em;
+  /* `em` on the input resolves against the input's OWN UA font-size (13.33px),
+     not the row's 16px -- so `width: 1em` rendered a 13px box and `-1.7em`
+     outdented 22.7px against the row's 27.2px indent, leaving the box short of
+     where the rule meant to put it. In `rem` both agree, and the most-tapped
+     control in the catalog is no longer smaller than the text beside it. */
+  margin-left: -1.7rem;
+  width: 1.15rem;
+  height: 1.15rem;
+  vertical-align: -0.15rem;
 }
 /* The base `label` rule is inline-block, which wraps as one atomic box and so
    would drop the whole label below the outdented checkbox instead of flowing
