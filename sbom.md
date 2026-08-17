@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `251e319910c3cf5c`
-Generated: 2026-08-17T02:05:59.988Z
+Build ID: `b8e334233b3d0735`
+Generated: 2026-08-17T13:39:10.236Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -25,7 +25,7 @@ downloads is committed in this repository and is hashed below.
 | Path | Bytes | SHA-256 |
 |---|---:|---|
 | `index.html` | 101421 | `c6bf7d4c523e4e3a16ae2c4918b2935b32f2e0df8aa35a7ae3463393f4810e69` |
-| `styles.css` | 46027 | `434dc7ddb35b239093f63636549048c5965e110e20c036ac8f6de50d045e5013` |
+| `styles.css` | 47274 | `068a4acc5d0d45e9549ad93313942e3b73f53ad4467a4e34a7d5b431c4100627` |
 | `app.js` | 420432 | `2c49ba11c8fd7c584cf3957e83641ce796582897c90486ff1cd3695872243cd3` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
@@ -407,7 +407,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/meld3-v678.js` | 5664 | `7bda4af7c9412eae41162d0cdd6b977cbc9a6f9b8a7bc40fe350f861e989444c` |
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2153495 | `ef0037c648239f0c589276d89f251172a683f49dbbcb403a617509335b4a7727` |
+| `lib/meta.js` | 2153389 | `f668ce671a40dd03281bbcdec0a59dffecf720fcd13aaa874bce743b1689a021` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -478,7 +478,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/ortho-v144.js` | 17827 | `0356389ca72f53f295f6734cf34e7981c111b15010f161e253e05b1227d2e33c` |
 | `lib/ortho-v145.js` | 15839 | `b7ce4042ce54b38128c236b847b393ef24f849fbf89180da0c03c5517b6d1ede` |
 | `lib/orthospine-v252.js` | 7329 | `f1ba93384570eb23ff335624c2facc37666daaf0cf9577cf988504897564c046` |
-| `lib/osdi-v558.js` | 12374 | `515470625b998fb6e507663de9ed3fafa95cf8fc93d305733e315f0533bf2741` |
+| `lib/osdi-v558.js` | 12462 | `ae89ceca530591ebd754e97f4bad4997fb99c1cc65d249713352ebb3ceba4db4` |
 | `lib/osi-onychomycosis-v674.js` | 3577 | `cdc4873826dd624fe21fbb25d9cbc2b446af8815030a15e176db5ee08160d8f9` |
 | `lib/oswestry-v643.js` | 4727 | `1dccac04347831c73b9f45bf744c6242bcb2f4cfb3e78d3f5685ef7afaade004` |
 | `lib/ottawa-bowel-prep-v670.js` | 3829 | `230547b220183ed6b5bd4bfc719c2c5119c4b54e96a1c1bafec86dade709d2f8` |
@@ -631,7 +631,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/slums-v644.js` | 4856 | `d9c9656774dd3fe4d38211de2f131622c2bbf13356ff462aa0454546a1a95693` |
 | `lib/smast-v737.js` | 3334 | `15043daafddc1d9e3c9ee3119ccb3f66038d78b1e0289987e77b3aaad262834a` |
 | `lib/snot22-v552.js` | 11497 | `90f581a13039333b4ee2e5c0486061a25dfa7056fba35e0c76a95c9f71754ab3` |
-| `lib/spadi-v561.js` | 10890 | `1da081c00b12deb444752014acf1124d1ab47072642cf9a1078dc3e29f446172` |
+| `lib/spadi-v561.js` | 11154 | `e293b8878a937723e92250e22c25fd87bee30e635718428f548ee5301ead3677` |
 | `lib/spaulding-classification-v478.js` | 3914 | `3769b89a89709f65be882a19360c23f6a8f371168daa90b3563d32e554767142` |
 | `lib/specialtymath-v186.js` | 15358 | `90330464aea36b60a02933f5811ed91393d38e4e97cafb0cb62a8678a8a0f3c8` |
 | `lib/spetzler-ponce-v384.js` | 4231 | `772c79598424299e9aec418f92d9878cd29f53fa96a9694ab4f935b8eec6c992` |
@@ -661,7 +661,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/tbi-stroke-v206.js` | 13545 | `7f56c16239081d17db7cdc841957c5c6dcb6c15a2dbe4abfa84aefbaec7fef5d` |
 | `lib/tegner-activity-v500.js` | 4131 | `db8258facb99a0cde768edff7c6b13fa9a513d97da08812e804f5a7398e6e8d3` |
 | `lib/thakar-aki-v568.js` | 12602 | `62fcf74616b811d48115fa3c9122bc5e364d275b402935a37fdad39af6256e07` |
-| `lib/thi-v555.js` | 11928 | `f60a5aa733bc81f501a8b0ae5eeabb44c605eb7a49d584ba688a45045c075e79` |
+| `lib/thi-v555.js` | 11195 | `d55b2f2f862ca6e733596598a66b327cbd14ca7da573a5ea7c1eeb5c8d407bbb` |
 | `lib/thompson-epstein-v459.js` | 3276 | `3952607d4d19cb032c2a30aa175392e917a89ea63555efc8177e76d727b61155` |
 | `lib/thwaites-v529.js` | 9004 | `11927f9c5d35a3086c8b8ed2d6deb46fe3cc766aa3b561c7d089c42476be549a` |
 | `lib/tile-pelvic-v379.js` | 3632 | `9f8e39fbc8808b9a30860a6fbfee2c3c9170db94bb7db72a0ceb2b6ff4844d27` |
@@ -693,7 +693,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/vaughan-williams-v427.js` | 4207 | `241cb6fc10d5a9b15a3a849ab44f7887e7508a99daa8a9c55567feb737b1893d` |
 | `lib/vent-v195.js` | 9473 | `9f8fd14cdaa7e971da29cc8bdc6247bf8c7e3974daae70bc597e2269c400c110` |
 | `lib/vesikari-v530.js` | 9422 | `4307be628831c30efea4745a9a663ef444521f32d150be71d29a79bb27b80c41` |
-| `lib/vhi10-v508.js` | 3836 | `7cc765894d5be66b018c77ee56e52efdb826fefc16213b5ebe76b6d57c1db6ac` |
+| `lib/vhi10-v508.js` | 3708 | `40297e81fc7f0da10cc909b1b2a13fe7a6b2048c7cf72291d8f3f1f16ac4c871` |
 | `lib/vhwg-hernia-v666.js` | 3465 | `cbf1ad3125634cff69574f4faa775b128beb2ad2ead868106673ee8b698c8776` |
 | `lib/vras-v602.js` | 11408 | `c0d4f85ac36e41350f355e1702e1438fba0f0c43c485e93d3f66597ce73cd2a4` |
 | `lib/vte-v106.js` | 16247 | `aaae9bd91a94f9ac820ec0995ab00124af598023cbf4d1e4e6fffaeaed13aaaf` |
@@ -1182,7 +1182,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-v558.js` | 3656 | `9d617318b51fd78339ee41031a0501a921c174438898129dc240a2dc6e751587` |
 | `views/group-v559.js` | 3910 | `3346923f5e743d5dc929aa45899734cad2bdc8a0c0c480d90a05da75ba1572fa` |
 | `views/group-v560.js` | 4195 | `4c03d462e00f0b48a3778d44d87b49116a702d26ff27678473d845b1b70e352c` |
-| `views/group-v561.js` | 3888 | `bf99672fef72c1d6591e7c76353fccbe3d5ac3fd4e8fc247f3d97884079b88b2` |
+| `views/group-v561.js` | 3884 | `57cfade92258930198eccbf1a850abeaaf79bbf43c417fa46b88db86dcf7b46a` |
 | `views/group-v562.js` | 4033 | `0f5f09f03df8a68a356d0dee2d0e2879edff9b5ded9d90dd18b0d192c94c2792` |
 | `views/group-v563.js` | 4515 | `aa43aabb2493c90d16070117469c7564bb53d7b787a81c0f72bdec61dc4e214f` |
 | `views/group-v564.js` | 4509 | `f06e9c5f2e271f333a6fd027ccdf37e0648e2f4aa15557ce4b811ec7b92fc153` |

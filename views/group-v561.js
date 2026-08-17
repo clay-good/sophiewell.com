@@ -42,13 +42,13 @@ export const renderers = {
   spadi(root) {
     note(root, 'The SPADI has 13 items in two subscales, each rated 0-10. The total is the MEAN of the two subscale percentages — not the sum of all 13 items over 130, which gives a different and wrong answer. Five pain items therefore carry half the total and eight disability items the other half, so one pain item is worth 1.6 times one disability item. All 13 items are required: the published rules for handling omissions disagree with one another, so only complete forms are scored.');
 
-    heading(root, 'How severe is your pain?');
+    heading(root, 'Pain subscale (5 items)');
     note(root, M.PAIN_ANCHORS);
     for (const item of M.SPADI_PAIN_ITEMS) {
       root.appendChild(select(item.text, `spadi-${item.key}`, SCALE));
     }
 
-    heading(root, 'How much difficulty do you have?');
+    heading(root, 'Disability subscale (8 items)');
     note(root, M.DISABILITY_ANCHORS);
     for (const item of M.SPADI_DISABILITY_ITEMS) {
       root.appendChild(select(item.text, `spadi-${item.key}`, SCALE));
