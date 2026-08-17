@@ -19,7 +19,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - **Removed the "(example: 1)" label annotations.** They repeated the value already sitting in the
   field, and on a checkbox they rendered as a meaningless "1".
 - **Bigger type where it is read.** Input labels go from 0.92rem to the full 1rem body size, with the
-  references block and its controls raised to match.
+  references block and its controls raised to match. A second pass took everything else on a tool page
+  up to a 0.95rem floor: the breadcrumb and its back button, the "Copy all" / "Copy link" buttons, the
+  related-tool links, and the remember-inputs row. The clinical-safety notice goes to a full 1rem,
+  since it is the one line on the page that should never be squinted at. Nothing on a tool page now
+  renders below 15px except the mono derivation formula and one muted footnote.
 
 ### Fixed (printing keeps the citation)
 

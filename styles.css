@@ -865,7 +865,7 @@ body {
   align-items: center;
   gap: 12px;
   margin: 24px 0 18px;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   flex-wrap: wrap;
 }
 .breadcrumb-back {
@@ -881,7 +881,7 @@ body {
   border-radius: 8px;
   cursor: pointer;
   font-family: inherit;
-  font-size: 0.88rem;
+  font-size: 0.95rem;
   font-weight: 500;
   transition: all 0.18s ease;
 }
@@ -891,7 +891,7 @@ body {
   background: var(--bg-secondary);
 }
 .breadcrumb-back:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
-.breadcrumb-trail { color: var(--text-muted); font-size: 0.86rem; }
+.breadcrumb-trail { color: var(--text-muted); font-size: 0.95rem; }
 .breadcrumb-trail .bc-current { color: var(--text-primary); font-weight: 600; }
 
 /* ==========================================================
@@ -996,7 +996,8 @@ main h1 {
   border: 1px solid var(--border);
   background: var(--bg-tertiary);
   color: var(--text-secondary);
-  font-size: 0.92rem;
+  /* The one line on the page that must never be squinted at. */
+  font-size: 1rem;
   border-radius: var(--radius);
 }
 .deprecation-notice {
@@ -1109,7 +1110,7 @@ main h1 {
   display: inline-flex;
   align-items: center;
   gap: var(--space-1);
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   cursor: pointer;
 }
 .remember-checkbox { flex: 0 0 auto; }
@@ -1121,7 +1122,7 @@ main h1 {
    visually light; min-height matches the base button so the control is a
    comfortable tap on a phone, not a 24px sliver packed beside its neighbors. */
 .copy-btn {
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   padding: 4px 12px;
   min-height: 44px;
   display: inline-flex;
@@ -1141,7 +1142,7 @@ main h1 {
 .tool-meta .related-tools { margin: var(--space-2) 0; }
 .tool-meta .related-header {
   margin: 0 0 var(--space-1);
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   color: var(--text-muted);
 }
 .tool-meta .related-list {
@@ -1155,7 +1156,7 @@ main h1 {
 .tool-meta .related-item { margin: 0; }
 .tool-meta .related-link {
   display: inline-block;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   color: var(--accent-pop-strong);
   text-decoration: underline;
   text-underline-offset: 2px;
