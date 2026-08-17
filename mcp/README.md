@@ -1,4 +1,4 @@
-# Sophie Well calculators — optional stdio MCP server (spec-v183)
+# Sophie Well calculators — optional stdio MCP server
 
 A local [Model Context Protocol](https://modelcontextprotocol.io) server that
 exposes Sophie Well's deterministic, source-cited clinical calculators as tools
@@ -173,4 +173,4 @@ for the current set and the per-tile rationale.
 ## Not in scope
 
 No hosting, no remote/HTTP transport, no auth, no website change, no new tiles,
-no AI, no network. See `docs/spec-v183.md` §7.
+no AI, no network.
