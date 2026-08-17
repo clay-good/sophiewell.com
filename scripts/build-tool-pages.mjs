@@ -28,6 +28,9 @@ import { dirname, join, resolve } from 'node:path';
 // rather than hand-written or guessed.
 import { getCalculator } from '../mcp/catalog.js';
 import { splitLead } from '../lib/long-note.js';
+// The option TEXT behind an example's raw `<option value>`, read out of the
+// view that builds the select. See scripts/lib/option-labels.mjs.
+import { loadOptionLabels, optionText } from './lib/option-labels.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
@@ -279,7 +282,20 @@ function shortLabel(raw) {
 // those is what the reader sees on screen -- a row reading "Heart rate > 100:
 // 1" states a count, not a checked box.
 const BOOL_TRUE = new Set(['1', 'true', 'yes', 'y', 'on']);
-function exampleValue(field, raw) {
+
+// An option text is written to be read inside a picklist, where the reader has
+// the field label above it and room for a parenthetical. In a two-column
+// example row it only has to identify which option was picked, so a long one
+// is cut at a word boundary rather than pushing the value column off screen.
+const MAX_OPTION_TEXT = 72;
+function clampOption(text) {
+  if (text.length <= MAX_OPTION_TEXT) return text;
+  const cut = text.slice(0, MAX_OPTION_TEXT - 1);
+  const sp = cut.lastIndexOf(' ');
+  return `${(sp > 40 ? cut.slice(0, sp) : cut).trimEnd()}\u2026`;
+}
+
+function exampleValue(field, raw, tileOptions) {
   const value = String(raw ?? '').trim();
   if (!value) return '';
   if (field.kind === 'bool' || field.kind === 'boolean') {
@@ -289,6 +305,10 @@ function exampleValue(field, raw) {
   // as a picklist rather than a checkbox; print it the same way.
   const YES_NO = { yes: 'Yes', no: 'No', true: 'Yes', false: 'No' };
   if (YES_NO[value.toLowerCase()]) return YES_NO[value.toLowerCase()];
+  // What the reader would have picked on screen, when the select behind this
+  // field can be identified with certainty. Otherwise the raw value stands.
+  const picked = optionText(tileOptions, field, value);
+  if (picked) return clampOption(picked);
   const unit = typeof field.unit === 'string' ? field.unit.trim() : '';
   const numeric = /^-?\d+(\.\d+)?$/.test(value);
   return unit && numeric ? `${value} ${unit}` : value;
@@ -308,7 +328,7 @@ function copyExample(copy) {
   return rows.length ? { rows, result: String(ex.result) } : null;
 }
 
-function exampleRows(tileId, meta) {
+function exampleRows(tileId, meta, optionLabels) {
   const fields = meta?.example?.fields;
   if (!fields || typeof fields !== 'object') return null;
   const rec = mcpRecord(tileId);
@@ -319,7 +339,7 @@ function exampleRows(tileId, meta) {
     const field = byDom.get(dom);
     if (!field) return null; // partial join would misstate the example
     const label = shortLabel(field.label);
-    const value = exampleValue(field, raw);
+    const value = exampleValue(field, raw, optionLabels?.get(tileId));
     // An empty example value is a select left on its blank default (seven
     // tiles do this, where blank means "no"). The reader types nothing there,
     // so the row is left out rather than printed as an empty cell.
@@ -339,7 +359,7 @@ function pickRelated(tiles, current, max = 4) {
 // already says when META has it, otherwise fall back to the tile
 // description. Hand-authored copy can replace any of these in a
 // later PR by reading from `data/tool-copy/<id>.json` (not wired here).
-function buildPageHtml({ tile, desc, meta, related, copy, whatThisIs }) {
+function buildPageHtml({ tile, desc, meta, related, copy, whatThisIs, optionLabels }) {
   const groupLabel = GROUP_LABELS[tile.group] || tile.group;
   const seoTitle = clampTitle(`${tile.name} - Free, in your browser · Sophie Well`);
   const seoDesc = clampDescription(
@@ -477,7 +497,7 @@ ${related.map((r) => `          <li><a href="${SITE}/tools/${r.id}/">${esc(r.nam
   // The worked example, when the example's fields join cleanly to the field
   // registry. Where they don't, fall back to stating the expected output on
   // its own -- less useful, but honest about what the page knows.
-  const metaRows = exampleRows(tile.id, meta);
+  const metaRows = exampleRows(tile.id, meta, optionLabels);
   const example = (metaRows && meta?.example?.expected)
     ? { rows: metaRows, result: meta.example.expected, prefilled: true }
     : (copyExample(copy) ? { ...copyExample(copy), prefilled: false } : null);
@@ -656,6 +676,7 @@ async function main() {
   const [tiles, descriptions, meta] = await Promise.all([
     loadUtilities(), loadDescriptions(), loadMeta(),
   ]);
+  const optionLabels = loadOptionLabels();
 
   // spec-v76: the discovery-surface allowlists (classify()) are matched only
   // against live tiles, so a dead id in them is silently inert: exactly the
@@ -724,6 +745,7 @@ async function main() {
       related: pickRelated(tiles, tile),
       copy,
       whatThisIs,
+      optionLabels,
     });
     const out = join(toolsDir, tile.id);
     await ensureDir(out);
