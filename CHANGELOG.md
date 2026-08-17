@@ -42,6 +42,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   `sepsis-bundle-clock`, `mppr`, `modifier-x-selector`) got hand-authored descriptions. These are the
   time-dependent timers and billing tools that are deliberately not exposed over MCP, so no adapter
   summary existed to fall back to. **All 1564 tool pages now carry a real description.**
+- The hub and topic builders never read `data/tool-copy/` at all, so the 24 tiles whose only
+  description is hand-authored (document generators, decision trees, timers) stayed blank in those
+  listings even though the copy existed. **Every row on every hub and topic page now has a
+  description.**
 
 ### Added (spec-v548 — Patient-prosthesis mismatch (indexed effective orifice area) tile, 1397 → 1398)
 

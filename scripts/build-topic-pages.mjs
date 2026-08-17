@@ -14,7 +14,7 @@
 // internal-link equity flows to the canonical per-tool URLs.
 
 import { mkdir, readFile, writeFile, rm } from 'node:fs/promises';
-import { existsSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
 import { getCalculator } from '../mcp/catalog.js';
@@ -27,10 +27,26 @@ const ROOT = resolve(__dirname, '..');
 // `tc-desc` spans in the retired homepage tile grid) is gone, so every entry
 // had been rendering an empty <span>. Fall back to the first sentence of the
 // MCP adapter summary, which is specific per tile.
+// Hand-authored copy for tiles that have no MCP adapter (document generators,
+// decision trees, time-dependent timers). Loaded once by main() and consulted
+// ahead of the adapter summary, since it is written for a human reader.
+const TOOL_COPY = new Map();
+function loadToolCopy() {
+  const dir = join(ROOT, 'data', 'tool-copy');
+  if (!existsSync(dir)) return;
+  for (const file of readdirSync(dir)) {
+    if (!file.endsWith('.json')) continue;
+    try {
+      const json = JSON.parse(readFileSync(join(dir, file), 'utf8'));
+      if (json?.whatThisIs) TOOL_COPY.set(file.replace(/\.json$/, ''), json.whatThisIs);
+    } catch { /* a malformed copy file just falls through to the adapter summary */ }
+  }
+}
+
 function tileDesc(id) {
   let rec = null;
   try { rec = getCalculator(id); } catch { rec = null; }
-  const full = rec?.summary || '';
+  const full = TOOL_COPY.get(id) || rec?.summary || '';
   const line = corpusOneLiner({ summary: full }, 110);
   if (!line) return '';
   // corpusOneLiner cuts on a word boundary, which can land on a comma mid-list.
@@ -435,6 +451,7 @@ async function main() {
   if (existsSync(topicsDir)) await rm(topicsDir, { recursive: true, force: true });
   await mkdir(topicsDir, { recursive: true });
 
+  loadToolCopy();
   const [tileMap, descriptions] = await Promise.all([loadUtilities(), loadDescriptions()]);
 
   let written = 0;
