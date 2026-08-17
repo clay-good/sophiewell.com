@@ -8,7 +8,7 @@ import { osiOnychomycosis } from '../../lib/osi-onychomycosis-v674.js';
 export default [
   {
     id: 'osi-onychomycosis',
-    summary: 'Onychomycosis Severity Index (Carney 2011): grades a single fungal nail as area of involvement (0 none, 1 = 1-10%, 2 = 11-25%, 3 = 26-50%, 4 = 51-75%, 5 = >75%) MULTIPLIED by proximity to the matrix (1 distal quarter to 5 matrix), plus 10 points if a dermatophytoma or > 2 mm subungual hyperkeratosis is present. Total 0-35: 0 none, 1-5 mild, 6-15 moderate, 16-35 severe. Area 0 gives total 0.',
+    summary: 'Onychomycosis Severity Index (Carney 2011): grades a single fungal nail as area of involvement (0 none, 1 = 1-10%, 2 = 11-25%, 3 = 26-50%, 4 = 51-75%, 5 = >75%) multiplied by proximity to the matrix (1 distal quarter to 5 matrix), plus 10 points if a dermatophytoma or > 2 mm subungual hyperkeratosis is present. Total 0-35: 0 none, 1-5 mild, 6-15 moderate, 16-35 severe. Area 0 gives total 0.',
     compute: osiOnychomycosis,
     fields: [
       { dom: 'osi-area', arg: 'area', kind: 'enum', values: ['0', '1', '2', '3', '4', '5'], required: true, label: 'Area of involvement (0 none, 1 = 1-10%, 2 = 11-25%, 3 = 26-50%, 4 = 51-75%, 5 = >75%)' },

@@ -15,6 +15,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   disclosure before printing. Applied once, centrally, rather than edited into 612 view files, so it
   cannot drift tile by tile. 463 paragraphs collapse; the other 14 are a single long sentence with
   nothing to split off and are left as written.
+- **The first line of a tool page no longer shouts.** Ten tiles opened with an ordinary word in
+  capitals ("classification of LOW-PROGNOSIS patients", "a patient ALREADY DIAGNOSED with") — an
+  emphasis convention from the agent-facing tool descriptions that read as shouting on the page.
+  `npm run lint` now fails on a new one, via a stoplist of words that are never acronyms here.
 - **"What you enter" is a list, not a paragraph.** The pre-rendered `/tools/<id>/` pages built their
   inputs line by joining every field description with semicolons, which on some tiles ran to 1,100
   characters and ended in a stray "..". It is now one field per line, each trimmed to its first

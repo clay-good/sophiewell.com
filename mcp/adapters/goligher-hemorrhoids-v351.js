@@ -10,7 +10,7 @@ import * as C from '../../lib/goligher-hemorrhoids-v351.js';
 export default [
   {
     id: 'goligher-hemorrhoids',
-    summary: 'Goligher classification of INTERNAL hemorrhoids by degree of prolapse (grades I-IV) — the worldwide-standard grading of internal hemorrhoidal disease. I: bleed but do not prolapse; the cushions project into the anal canal without descending through the anus. II: prolapse through the anus on straining or defecation but reduce spontaneously. III: prolapse on straining or defecation and require manual reduction (advanced). IV: irreducible; permanently prolapsed and cannot be reduced, may be thrombosed or strangulated (advanced). Reports the grade, not a diagnosis, a treatment decision, or a prognosis.',
+    summary: 'Goligher classification of internal hemorrhoids by degree of prolapse (grades I-IV) — the worldwide-standard grading of internal hemorrhoidal disease. I: bleed but do not prolapse; the cushions project into the anal canal without descending through the anus. II: prolapse through the anus on straining or defecation but reduce spontaneously. III: prolapse on straining or defecation and require manual reduction (advanced). IV: irreducible; permanently prolapsed and cannot be reduced, may be thrombosed or strangulated (advanced). Reports the grade, not a diagnosis, a treatment decision, or a prognosis.',
     compute: C.goligherHemorrhoids,
     fields: [
       { dom: 'goligher-grade', arg: 'grade', kind: 'enum', values: ['I', 'II', 'III', 'IV'], label: 'Goligher grade' },

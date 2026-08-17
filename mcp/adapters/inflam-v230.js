@@ -9,7 +9,7 @@ import * as F from '../../lib/inflam-v230.js';
 export default [
   {
     id: 'lmr',
-    summary: 'Lymphocyte-to-monocyte ratio: absolute lymphocyte count / absolute monocyte count; a prognostic inflammation marker where a LOWER value is less favorable.',
+    summary: 'Lymphocyte-to-monocyte ratio: absolute lymphocyte count / absolute monocyte count; a prognostic inflammation marker where a lower value is less favorable.',
     compute: F.lmr,
     fields: [
       { dom: 'lmr-alc', arg: 'alc', kind: 'number', required: true, label: 'Absolute lymphocyte count', unit: '×10³/µL' },

@@ -10,7 +10,7 @@ import * as C from '../../lib/cas-ted-v364.js';
 export default [
   {
     id: 'cas-ted',
-    summary: 'Clinical Activity Score (Mourits 1989; EUGOGO) for thyroid eye disease / Graves orbitopathy — a 7-item initial-assessment measure of disease ACTIVITY. Each inflammatory item present in the study eye scores 1 point: spontaneous orbital pain, gaze-evoked orbital pain, eyelid swelling, eyelid erythema, conjunctival redness, chemosis, and inflammation of the caruncle or plica. The sum is 0-7; a CAS of 3 or more indicates active disease (the classically taught threshold for considering anti-inflammatory treatment). Reports the score, not a diagnosis, a treatment decision, or a prognosis.',
+    summary: 'Clinical Activity Score (Mourits 1989; EUGOGO) for thyroid eye disease / Graves orbitopathy — a 7-item initial-assessment measure of disease activity. Each inflammatory item present in the study eye scores 1 point: spontaneous orbital pain, gaze-evoked orbital pain, eyelid swelling, eyelid erythema, conjunctival redness, chemosis, and inflammation of the caruncle or plica. The sum is 0-7; a CAS of 3 or more indicates active disease (the classically taught threshold for considering anti-inflammatory treatment). Reports the score, not a diagnosis, a treatment decision, or a prognosis.',
     compute: C.casTed,
     fields: [
       { dom: 'cas-pain', arg: 'pain', kind: 'bool', label: 'Spontaneous orbital (retrobulbar) pain' },
