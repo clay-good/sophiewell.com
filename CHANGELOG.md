@@ -16,6 +16,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   field registry to name the inputs from and keep the old line. Checkbox values print as Yes / No
   instead of the `1` the tile happens to store. A unit test gates the join the page is built from,
   so a field rename fails the build instead of silently emptying 1,500 pages.
+- **188 tool pages opened with a sentence that stopped mid-clause.** `/tools/tetanus/` led with
+  "Cross-reference the CDC's tetanus prophylaxis decision matrix: wound type (clean and minor vs." —
+  a line cut at a character budget and then given a period, so it read as finished. The same string
+  was also the page's meta description, its OG and Twitter description, and its JSON-LD description.
+  The lede is now the author's own first sentence; a first sentence over 220 characters is trimmed
+  with an ellipsis instead of a fabricated period.
+- **The three question-flow tiles got a worked example too.** `tetanus`, `rabies-pep`, and
+  `bbp-exposure` ask one question at a time, so they have no fields to pre-fill and had no example
+  at all. Each page now shows the answers and the recommendation they produce. The example is
+  hand-written, so a test re-derives it from the same committed rule table the tile reads — change
+  the rule and the test fails, rather than the page quietly recommending something the tool no
+  longer does. That leaves exactly two pages without an example, both of which take no input (a
+  reference card and a lookup table); a test pins the list to those two.
+- **Section headings on a tool page read as headings.** At 1.1rem a heading was 1.6px larger than
+  the text beneath it, so the page rendered as one undifferentiated column. Now 1.25rem.
 - **Field descriptions stopped running on.** The list added above trimmed each field to its first
   sentence, but refused any lead under 20 characters — so "Patient age." kept its whole trailing
   paragraph. A field label is not a paragraph; the trim now accepts a short noun phrase, and the

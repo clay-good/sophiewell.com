@@ -125,3 +125,15 @@ test('collapseLongNotes ignores paragraphs that are not explanation notes', asyn
     assert.equal(root.children.length, 1);
   });
 });
+
+// The lede on a pre-rendered tool page. It used to be cut at a character
+// budget and then have a period appended, which produced a sentence that
+// simply stopped -- "wound type (clean and minor vs." -- and read as finished.
+// splitLead is what fixed it: the lede is now the author's own first sentence.
+test('splitLead ends a lede where the author ended the sentence', () => {
+  const summary = "Cross-reference the CDC's tetanus prophylaxis decision matrix: wound type (clean and minor vs. all other wounds) by immunization history. The tile returns the recommended action.";
+  const { lead } = splitLead(summary);
+  // "vs." is an abbreviation, not a sentence end, so the lede does not stop there.
+  assert.ok(!lead.endsWith('vs.'), 'lede stopped on an abbreviation');
+  assert.ok(lead.endsWith('by immunization history.'));
+});

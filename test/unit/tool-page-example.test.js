@@ -10,8 +10,12 @@
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import { META } from '../../lib/meta.js';
 import { getCalculator } from '../../mcp/catalog.js';
+
+const read = (p) => JSON.parse(readFileSync(fileURLToPath(new URL(`../../${p}`, import.meta.url)), 'utf8'));
 
 // Measured at 1,564 tiles: 1,538 pages carry an example block. The rest are
 // tiles with no MCP adapter (no field registry to join against) or no worked
@@ -61,4 +65,61 @@ test('every field behind a joined example has a label to print', () => {
       assert.ok(typeof label === 'string' && label.trim(), `${id}/${dom} has no label`);
     }
   }
+});
+
+// --- The three question-flow tiles.
+//
+// tetanus, rabies-pep, and bbp-exposure render one question at a time, so they
+// have no static fields and no `META.example` to join. Their worked example is
+// written into `data/tool-copy/<id>.json` by hand, which means it can drift
+// away from the tile the moment the underlying rule table is updated. Each
+// case below re-derives the result string the same way the view builds it,
+// from the same committed data file the view loads. Change a rule and this
+// fails; the page never states a recommendation the tool would not give.
+
+test('the tetanus example matches the rule table the tile reads', () => {
+  const copy = read('data/tool-copy/tetanus.json');
+  const d = read('data/tetanus/tetanus.json');
+  const k = d.dirtyOrSerious.unknownOrLessThan3Doses;
+  assert.deepEqual(copy.example.rows, [
+    ['Wound type', 'Dirty / serious wound'],
+    ['Tdap / Td immunization status', 'Unknown or <3 doses'],
+  ]);
+  assert.equal(copy.example.result, `Td/Tdap: ${k.tdap}; TIG: ${k.tig}`);
+});
+
+test('the rabies-pep example matches the schedule the tile reads', () => {
+  const copy = read('data/tool-copy/rabies-pep.json');
+  const d = read('data/rabies-pep/rabies.json');
+  const animal = copy.example.rows[0][1];
+  const rule = d.animalRules.find((a) => a.animal === animal);
+  assert.ok(rule, `no animal rule named "${animal}"`);
+  const s = d.schedule.previouslyUnvaccinated;
+  assert.equal(
+    copy.example.result,
+    `${rule.action}. If PEP indicated: HRIG ${s.hrig}; vaccine days ${s.vaccineDays.join(', ')}.`
+  );
+});
+
+test('the bbp-exposure example matches the PEP table the tile reads', () => {
+  const copy = read('data/tool-copy/bbp-exposure.json');
+  const d = read('data/bbp-exposure/bbp.json');
+  assert.equal(
+    copy.example.result,
+    `HIV PEP: ${d.hivPep.regimen}, start within ${d.hivPep.startWithin}. HBV: ${d.hbvPep.vaccinatedRespondersExposed}. HCV: ${d.hcv}`
+  );
+});
+
+// Every tool page now carries a worked example except the two tiles that take
+// no input at all (a reference card and a lookup table), where an example
+// would be the wrong shape. Those two say so in their own words.
+test('only the two no-input tiles lack a worked example', () => {
+  const without = [];
+  for (const [id, meta] of Object.entries(META)) {
+    if (meta?.example?.expected) continue;
+    let copy = null;
+    try { copy = read(`data/tool-copy/${id}.json`); } catch { copy = null; }
+    if (!copy?.example?.result) without.push(id);
+  }
+  assert.deepEqual(without.sort(), ['co-cn-antidote', 'sti-screening']);
 });

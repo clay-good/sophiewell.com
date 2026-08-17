@@ -291,8 +291,11 @@ body {
   border-color: var(--text-secondary);
 }
 .tool-page section { margin-bottom: var(--space-5); }
+/* At 1.1rem a section heading was 1.6px larger than the text under it, which
+   is not a size difference a reader perceives -- the page read as one
+   undifferentiated column. 1.25rem is the smallest step that separates them. */
 .tool-page section h2 {
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   margin: 0 0 var(--space-2);
 }
 .tool-page section p {

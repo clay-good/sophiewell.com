@@ -41,6 +41,29 @@ overwrite each one with.
 | **Booleans** | Stored as `1` / `true` / `yes` depending on the tile. All print as **Yes** / **No** — "Heart rate > 100: 1" stated a count, not a checked box. |
 | **Cap** | 10 rows, then "and N more fields". |
 
+### The question flows
+
+`tetanus`, `rabies-pep`, and `bbp-exposure` render one question at a time. They have no static
+fields, so there is no `META.example` to join, and they were three of the five pages in the catalog
+with no worked example at all. Their example is written into `data/tool-copy/<id>.json` as
+`{ rows: [[label, value]], result }` — and gated, because a hand-written clinical recommendation is
+exactly the kind of thing that goes stale silently. Each test re-derives the result string the way
+the view builds it, from the same committed data file the view loads:
+
+```
+tetanus  Wound type              Dirty / serious wound
+         Immunization status     Unknown or <3 doses
+         Result: Td/Tdap: Yes; TIG: Yes
+```
+
+Change `data/tetanus/tetanus.json` and the test fails. The page cannot state a recommendation the
+tool would not give.
+
+The other two — `co-cn-antidote` and `sti-screening` — take no input at all. One is a reference
+card, the other a lookup table, and an example is the wrong shape for both; their pages already say
+so in their own words ("Nothing. This one is a reference card rather than a calculator."). A test
+pins the list to exactly those two, so a new tile cannot quietly join them.
+
 ## Two things it fixed on the way
 
 **The field list stopped running on.** `splitLead` refused any lead under 20 characters, so
@@ -53,6 +76,22 @@ under **Full field descriptions**.
 **The heading stopped over-promising.** With the result moved into the example, most pages had only
 the input list left under a heading reading "Inputs and output". It now reads **What you enter**,
 and only says "Inputs and output" on the 26 pages that still state an output there.
+
+## The lede that stopped mid-sentence
+
+Found while checking the pages above. `/tools/tetanus/` opened with:
+
+> Cross-reference the CDC's tetanus prophylaxis decision matrix: wound type (clean and minor vs.
+
+That is the whole lede. `corpusOneLiner` cuts at a 180-character budget, and the call site appended
+a period — so a sentence sliced mid-clause read as a finished thought. **188 of 1,564 pages.** Not
+only the visible lede: the same string is the `<meta name="description">`, the OG and Twitter
+description, and the JSON-LD `description`.
+
+The lede is now the author's own first sentence, taken with `splitLead` (which already knows `vs.`
+and `e.g.` are not sentence ends). A first sentence longer than 220 characters is trimmed with an
+ellipsis, which at least admits there is more; 311 pages land there. `corpusOneLiner` itself is
+untouched — it is on the search corpus's byte budget, and this was a call-site bug.
 
 ## Where it lives
 

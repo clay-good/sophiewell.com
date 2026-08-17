@@ -27,7 +27,6 @@ import { dirname, join, resolve } from 'node:path';
 // outside the DOM, so the page's "What you enter" list is generated from it
 // rather than hand-written or guessed.
 import { getCalculator } from '../mcp/catalog.js';
-import { corpusOneLiner } from '../lib/search-corpus.js';
 import { splitLead } from '../lib/long-note.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -200,6 +199,19 @@ function clampTitle(s, max = 65) {
   return s.slice(0, max - 1).trimEnd() + '…';
 }
 
+// The visible lede: the first whole sentence of whatever the tile says about
+// itself. Ends where the author ended it, so it never reads as a thought that
+// was cut off. A first sentence long enough to be its own paragraph is trimmed
+// with an ellipsis, which at least admits there is more.
+const LEDE_MAX = 220;
+function leadSentence(text) {
+  const lead = (splitLead(text)?.lead || text).trim();
+  if (lead.length <= LEDE_MAX) return /[.!?]$/.test(lead) ? lead : `${lead}.`;
+  const cut = lead.slice(0, LEDE_MAX);
+  const sp = cut.lastIndexOf(' ');
+  return `${(sp > LEDE_MAX * 0.6 ? cut.slice(0, sp) : cut).trimEnd()}…`;
+}
+
 function clampDescription(s, max = 158) {
   if (s.length <= max) return s;
   const cut = s.slice(0, max - 1);
@@ -280,6 +292,20 @@ function exampleValue(field, raw) {
   const unit = typeof field.unit === 'string' ? field.unit.trim() : '';
   const numeric = /^-?\d+(\.\d+)?$/.test(value);
   return unit && numeric ? `${value} ${unit}` : value;
+}
+
+// Three tiles are question flows: they render one question at a time and have
+// no static fields, so there is no `META.example` to join. Their example is
+// written out in `data/tool-copy/<id>.json` as `{ rows: [[label, value]],
+// result }`, and `test/unit/tool-page-example.test.js` re-derives the result
+// from the same committed data file the tile reads, so it cannot go stale.
+function copyExample(copy) {
+  const ex = copy?.example;
+  if (!ex || !Array.isArray(ex.rows) || !ex.result) return null;
+  const rows = ex.rows
+    .filter((r) => Array.isArray(r) && r[0] && r[1])
+    .map(([label, value]) => ({ label: String(label), value: String(value) }));
+  return rows.length ? { rows, result: String(ex.result) } : null;
 }
 
 function exampleRows(tileId, meta) {
@@ -448,17 +474,20 @@ ${related.map((r) => `          <li><a href="${SITE}/tools/${r.id}/">${esc(r.nam
   // The worked example, when the example's fields join cleanly to the field
   // registry. Where they don't, fall back to stating the expected output on
   // its own -- less useful, but honest about what the page knows.
-  const rows = exampleRows(tile.id, meta);
-  const shownRows = rows ? rows.slice(0, MAX_EXAMPLE_ROWS) : [];
-  const extraRows = rows ? rows.length - shownRows.length : 0;
-  const outputText = rows
+  const metaRows = exampleRows(tile.id, meta);
+  const example = (metaRows && meta?.example?.expected)
+    ? { rows: metaRows, result: meta.example.expected, prefilled: true }
+    : (copyExample(copy) ? { ...copyExample(copy), prefilled: false } : null);
+  const shownRows = example ? example.rows.slice(0, MAX_EXAMPLE_ROWS) : [];
+  const extraRows = example ? example.rows.length - shownRows.length : 0;
+  const outputText = example
     ? esc(copy?.output || '')
     : (meta?.example?.expected ? esc(meta.example.expected) : esc(copy?.output || ''));
   // Only promise a pre-filled example when there is a worked example behind
   // it. A tile whose output line came from hand-authored copy has no META
   // example to pre-fill from, so the line would be a claim the tool does not
   // keep.
-  const exampleLine = (!rows && meta?.example?.expected)
+  const exampleLine = (!example && meta?.example?.expected)
     ? '\n          <p class="muted">The tool opens pre-filled with that example. Replace the values with your own.</p>'
     : '';
   // The heading names what the section actually holds. Once the worked example
@@ -480,14 +509,19 @@ ${related.map((r) => `          <li><a href="${SITE}/tools/${r.id}/">${esc(r.nam
         </section>`
     : '';
 
-  const exampleHtml = (rows && meta?.example?.expected)
+  // A question flow has no fields to pre-fill, so it gets the honest version of
+  // the hint: answer the same way and you land on the same result.
+  const exampleHint = example?.prefilled
+    ? 'The tool opens with these values already filled in. Replace them with your own.'
+    : 'Answer the questions this way to reach that result. Your own answers give your own.';
+  const exampleHtml = example
     ? `<section class="tp-ex" aria-labelledby="tp-ex-h">
           <h2 id="tp-ex-h">Example</h2>
           <dl class="tp-ex-dl">
 ${shownRows.map((r) => `            <div class="tp-ex-row"><dt>${esc(r.label)}</dt><dd>${esc(r.value)}</dd></div>`).join('\n')}
           </dl>${extraRows > 0 ? `\n          <p class="muted">and ${extraRows} more field${extraRows === 1 ? '' : 's'}</p>` : ''}
-          <p class="tp-ex-result"><strong>Result:</strong> ${esc(meta.example.expected)}</p>
-          <p class="muted">The tool opens with these values already filled in. Replace them with your own.</p>
+          <p class="tp-ex-result"><strong>Result:</strong> ${esc(example.result)}</p>
+          <p class="muted">${exampleHint}</p>
         </section>`
     : '';
 
@@ -647,14 +681,16 @@ async function main() {
     // ... group" line -- as the visible lede AND as the meta / OG / JSON-LD
     // description on all ~1,500 pages. Prefer the hand-authored copy, then the
     // first sentence of the MCP adapter summary, which is specific per tile.
-    const oneLiner = corpusOneLiner({
-      what: copy?.whatThisIs,
-      summary: descriptions.get(tile.id) || mcpRecord(tile.id)?.summary,
-    }, 180);
-    const desc = oneLiner
-      ? (/[.!?]$/.test(oneLiner) ? oneLiner : `${oneLiner}.`)
+    // `corpusOneLiner` cuts at a character budget and the call site used to
+    // append a period, which on 188 tiles produced a sentence that simply
+    // stopped -- "wound type (clean and minor vs." -- and read as finished.
+    // A lede is one sentence, so take the whole first sentence instead; only
+    // ellipsize when that single sentence is itself too long to lead with.
+    const source = (copy?.whatThisIs || descriptions.get(tile.id) || mcpRecord(tile.id)?.summary || '').trim();
+    const desc = source
+      ? leadSentence(source)
       : `${tile.name} - a deterministic tool in Sophie Well's ${GROUP_LABELS[tile.group] || tile.group} group.`;
-    if (oneLiner) withRealDesc += 1;
+    if (source) withRealDesc += 1;
     const html = buildPageHtml({
       tile,
       desc,
