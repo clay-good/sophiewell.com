@@ -1402,6 +1402,34 @@ label {
   overflow-wrap: anywhere;
 }
 
+/* Hanging indent for checkbox rows. When a label wrapped, the box was left
+   alone on the first line with the whole label below it, reading as two
+   unrelated rows. Indenting the row and outdenting the box keeps the box beside
+   the first line of text and hangs the wrapped text under the text.
+
+   Scoped to the two shapes the view modules actually produce, confirmed by a
+   catalog-wide audit at 1564 tiles: 2416 rows are `<p><input><label>` siblings,
+   20 wrap the input inside the label, and no container holds more than one
+   checkbox (which is what would make an indent rule misfire). */
+p:has(> input[type="checkbox"] + label) {
+  padding-left: 1.7em;
+}
+p:has(> input[type="checkbox"] + label) > input[type="checkbox"] {
+  margin-left: -1.7em;
+  width: 1em;
+}
+/* The base `label` rule is inline-block, which wraps as one atomic box and so
+   would drop the whole label below the outdented checkbox instead of flowing
+   its text. Inside a checkbox row the label must be plain inline. */
+p:has(> input[type="checkbox"] + label) > label {
+  display: inline;
+}
+label:has(> input[type="checkbox"]) {
+  display: inline-block;
+  padding-left: 1.7em;
+  text-indent: -1.7em;
+}
+
 /* Interpretation band text can carry slash-joined criteria lists
    ("delay/presence/challenge/..."); break them rather than overflow. */
 .interpretation-text {

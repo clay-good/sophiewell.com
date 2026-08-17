@@ -24,6 +24,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   related-tool links, and the remember-inputs row. The clinical-safety notice goes to a full 1rem,
   since it is the one line on the page that should never be squinted at. Nothing on a tool page now
   renders below 15px except the mono derivation formula and one muted footnote.
+- **Checkbox rows hang properly when they wrap.** A long criterion used to leave the box alone on the
+  first line with its whole label on the next, reading as two unrelated rows. The row now carries a
+  hanging indent, so the box stays beside the first line of text and continuation lines align under
+  the text. Scoped from a catalog-wide audit of what the view modules actually emit: 2416 rows are
+  `<p><input><label>` siblings, 20 wrap the input inside the label, no container holds more than one
+  checkbox, and the catalog has no radio inputs at all.
 
 ### Fixed (printing keeps the citation)
 
