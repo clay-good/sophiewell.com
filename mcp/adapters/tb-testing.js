@@ -10,7 +10,7 @@ import * as F from '../../lib/tb-testing.js';
 export default [
   {
     id: 'tb-testing',
-    summary: 'TST (Mantoux) tuberculin skin test interpretation: an induration (mm) is POSITIVE when it meets or exceeds the risk-stratified cutoff (CDC/ATS) - >= 5 mm for high risk (HIV+, recent contact, immunosuppressed, fibrotic CXR), >= 10 mm for moderate risk, >= 15 mm for low / no specific risk. Reports the interpretation, not a treatment decision.',
+    summary: 'TST (Mantoux) tuberculin skin test interpretation: an induration (mm) is positive when it meets or exceeds the risk-stratified cutoff (CDC/ATS) - >= 5 mm for high risk (HIV+, recent contact, immunosuppressed, fibrotic CXR), >= 10 mm for moderate risk, >= 15 mm for low / no specific risk. Reports the interpretation, not a treatment decision.',
     compute: F.tbTstInterpret,
     fields: [
       { dom: 'tb-mm', arg: 'indurationMm', kind: 'number', required: true, label: 'Induration', unit: 'mm' },

@@ -16,6 +16,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   field registry to name the inputs from and keep the old line. Checkbox values print as Yes / No
   instead of the `1` the tile happens to store. A unit test gates the join the page is built from,
   so a field rename fails the build instead of silently emptying 1,500 pages.
+- **The check that stops tool pages shouting was reading 93% of them.** It matched only
+  single-quoted adapter summaries, so the 101 written as template literals or double-quoted strings
+  — 6.6% of the catalog, and the newest tiles, since those are the ones written with backticks —
+  were never checked. `bauer-score` shipped with "The BAUER SCORE ... estimate survival after
+  surgery for SKELETAL METASTASES" while the gate reported clean. Widening it found 30 shouting
+  ledes; 10 more in already-visible files used words the stoplist did not name ("a femoral NECK
+  fracture", "a PELVIC RING injury"). All 40 rewritten, stoplist extended, and a test now asserts
+  the check can see every summary in the tree so the hole cannot reopen.
 - **127 tool pages said their opening sentence twice.** On every tile with hand-authored copy the
   lede was lifted from "What this is", and the section below then printed that same sentence again,
   in full, within one screen. The sentence now appears once: as the lede, taken out of the section.

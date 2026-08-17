@@ -9,7 +9,7 @@ import * as C from '../../lib/pipkin-femoral-head-v375.js';
 export default [
   {
     id: 'pipkin-femoral-head',
-    summary: 'Pipkin classification (Pipkin 1957) of a femoral HEAD fracture (types I-IV), which typically occurs with a posterior hip dislocation. I: a femoral head fracture caudad to (below) the fovea centralis; spares the main weight-bearing surface. II: cephalad to (above) the fovea centralis; involves the weight-bearing surface. III: a type I or II femoral head fracture with an associated femoral neck fracture. IV: a type I or II femoral head fracture with an associated acetabular fracture (most commonly the posterior wall). Types III and IV carry worse outcomes. Reports the type, not a diagnosis, a treatment decision, or a prognosis.',
+    summary: 'Pipkin classification (Pipkin 1957) of a femoral head fracture (types I-IV), which typically occurs with a posterior hip dislocation. I: a femoral head fracture caudad to (below) the fovea centralis; spares the main weight-bearing surface. II: cephalad to (above) the fovea centralis; involves the weight-bearing surface. III: a type I or II femoral head fracture with an associated femoral neck fracture. IV: a type I or II femoral head fracture with an associated acetabular fracture (most commonly the posterior wall). Types III and IV carry worse outcomes. Reports the type, not a diagnosis, a treatment decision, or a prognosis.',
     compute: C.pipkinFemoralHead,
     fields: [
       { dom: 'pipkin-type', arg: 'type', kind: 'enum', values: ['I', 'II', 'III', 'IV'], label: 'Pipkin type' },

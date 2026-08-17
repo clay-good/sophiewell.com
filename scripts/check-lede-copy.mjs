@@ -30,11 +30,30 @@ const STOPLIST = [
   'INTERNAL', 'LOW-PROGNOSIS', 'LOWER', 'METASTATIC', 'MULTIPLIED',
   'PREOPERATIVE', 'REQUIRING', 'SEVERITY', 'SUPERSEDED', 'SUSPICION',
   'TOXICITY', 'UPDATED',
+  // Anatomy and plain adjectives shouted in an ortho or lab lede ("a femoral
+  // NECK fracture", "a PELVIC RING injury", "an induration is POSITIVE when").
+  // None is an acronym anywhere in this catalog. `HEAD` is deliberately absent:
+  // it would fire on HEAD-US and HEADSS, since a hyphen is a word boundary.
+  'HUMERUS', 'LATERAL', 'NECK', 'PELVIC', 'PILLAR', 'POSITIVE', 'RUPTURED',
+  'SHAFT', 'SKELETAL',
 ];
 const STOP = new RegExp(`\\b(${STOPLIST.join('|')})\\b`, 'g');
 
-// Matches the quoted body of `summary: '...'`, including escaped quotes.
-const SUMMARY = /summary:\s*'((?:[^'\\]|\\.)*)'/g;
+// Matches the quoted body of a summary, including escaped quotes, in any of
+// the three delimiters the adapters actually use. Matching only `'...'` left
+// 101 of the 1,540 summaries -- every backtick template literal and every
+// double-quoted string -- outside the check entirely, and `bauer-score` used
+// the gap: "The BAUER SCORE ... estimate survival after surgery for SKELETAL
+// METASTASES" shipped as a lede with the gate reporting clean.
+const SUMMARY = /summary:\s*(['"`])((?:[^\\]|\\.)*?)\1/g;
+
+// A template literal's `${...}` is code, not prose: the reader never sees the
+// expression, and an identifier like `P.CRITERIA` would be read as a shouted
+// word. Drop the expressions (leaving a space, so words either side stay
+// separate) before looking for emphasis.
+function prose(text) {
+  return text.replace(/\$\{[^}]*\}/g, ' ');
+}
 
 function firstSentence(text) {
   const m = /[.!?]\s+/.exec(text);
@@ -45,7 +64,7 @@ const violations = [];
 for (const file of (await readdir(ADAPTERS)).filter((f) => f.endsWith('.js'))) {
   const source = await readFile(join(ADAPTERS, file), 'utf8');
   for (const match of source.matchAll(SUMMARY)) {
-    const lede = firstSentence(match[1]);
+    const lede = firstSentence(prose(match[2]));
     const shouted = [...new Set(lede.match(STOP) || [])];
     if (shouted.length) {
       violations.push(`mcp/adapters/${file}: ${shouted.join(', ')}\n    ${lede.slice(0, 140)}`);
