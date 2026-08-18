@@ -18,7 +18,7 @@ import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
 import { getCalculator } from '../mcp/catalog.js';
-import { corpusOneLiner } from '../lib/search-corpus.js';
+import { tileLine } from './lib/tile-line.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
@@ -46,14 +46,7 @@ function loadToolCopy() {
 function tileDesc(id) {
   let rec = null;
   try { rec = getCalculator(id); } catch { rec = null; }
-  const full = TOOL_COPY.get(id) || rec?.summary || '';
-  const line = corpusOneLiner({ summary: full }, 110);
-  if (!line) return '';
-  // corpusOneLiner cuts on a word boundary, which can land on a comma mid-list.
-  // Tidy the seam and mark the cut so the line does not read as a finished
-  // sentence that simply stops.
-  const trimmed = line.replace(/[\s,;:]+$/, '');
-  return trimmed.length < full.replace(/[\s,;:]+$/, '').length ? `${trimmed}...` : trimmed;
+  return tileLine(TOOL_COPY.get(id) || rec?.summary || '');
 }
 const DIST = join(ROOT, 'dist');
 const SITE = 'https://sophiewell.com';
