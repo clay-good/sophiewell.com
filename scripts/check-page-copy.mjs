@@ -166,10 +166,34 @@ function main() {
     );
   }
 
-  // The README tells a reader where the proof is, by quoting the control they
-  // have to click. That quote is a UI string living outside the UI, so it
-  // drifts silently: it said "Citation and how to read this" while all 1,564
-  // pages said "Citation and sources". Same failure the headline count had.
+  // Three places name the collapsed proof control: the pre-rendered pages, the
+  // app that replaces them once JavaScript runs, and the sentence in the README
+  // that tells a reader where to click. All three are the same control and a
+  // reader moves between them, so all three have to use the same words.
+  //
+  // Two had drifted. The README said "Citation and how to read this" and every
+  // one of the 1,564 pages said "Citation and sources" -- and the README was
+  // not simply wrong, it was quoting the *app*, which had its own third
+  // wording. A UI string living outside the UI drifts silently, the same
+  // failure the headline count had.
+  if (disclosureSummaries.size > 1) {
+    failures.push(
+      `the pre-rendered pages use ${disclosureSummaries.size} different names for the citation disclosure: ` +
+        [...disclosureSummaries].map((t) => `"${t}"`).join(', '),
+    );
+  }
+  const [pageSummary] = [...disclosureSummaries];
+
+  const appSummary = readFileSync(join(ROOT, 'app.js'), 'utf8')
+    .match(/export const PROOF_SUMMARY = '([^']+)'/);
+  if (!appSummary) {
+    failures.push('app.js no longer exports PROOF_SUMMARY, so the app and the static pages cannot be compared');
+  } else if (pageSummary && appSummary[1] !== pageSummary) {
+    failures.push(
+      `the app calls the citation disclosure "${appSummary[1]}" and the static pages call it "${pageSummary}"`,
+    );
+  }
+
   if (existsSync(README)) {
     const readme = readFileSync(README, 'utf8');
     const quoted = readme.match(/one click away under "([^"]+)"/);

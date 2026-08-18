@@ -3725,6 +3725,12 @@ function appendLinkified(parent, str) {
 // spec-v9 §3.2: the meta block now renders as the per-tile References
 // region below the tool body. It carries the citation, the dataset stamp
 // (when present), a "Reset to example" link (when an example is defined),
+// The one name for the collapsed proof control. `scripts/build-tool-pages.mjs`
+// writes the same string into every pre-rendered page, and
+// `scripts/check-page-copy.mjs` holds all three -- the app, the static pages,
+// and the sentence in the README that tells a reader where to click -- to it.
+export const PROOF_SUMMARY = 'Citation and sources';
+
 // and the universal "Copy all" affordance.
 function renderMetaBlock(util) {
   const meta = META[util.id];
@@ -3737,7 +3743,12 @@ function renderMetaBlock(util) {
   // click away, and every word of it is still on the page for search and for
   // "find in page".
   const proof = el('details', { class: 'tool-proof' });
-  proof.appendChild(el('summary', { text: 'Citation and how to read this' }));
+  // The same words the pre-rendered /tools/<id>/ page uses for the same
+  // control. A reader who lands on a static page from search and then opens
+  // the app met two names for one thing; "and sources" is also what is behind
+  // it -- a citation, a source link and the disclaimer -- where "how to read
+  // this" promised reading guidance that is not in there.
+  proof.appendChild(el('summary', { text: PROOF_SUMMARY }));
 
   if (meta.citation) {
     // Inline + detailed citation, with links where possible: bare URLs in
