@@ -211,9 +211,11 @@ const LEDE_MAX = 220;
 function leadSentence(text) {
   const lead = (splitLead(text)?.lead || text).trim();
   if (lead.length <= LEDE_MAX) return /[.!?]$/.test(lead) ? lead : `${lead}.`;
-  const cut = lead.slice(0, LEDE_MAX);
-  const sp = cut.lastIndexOf(' ');
-  return `${(sp > LEDE_MAX * 0.6 ? cut.slice(0, sp) : cut).trimEnd()}…`;
+  // Too long to lead with. These sentences carry their own break -- a colon
+  // before the enumeration, a dash before the caveat -- so cut there and end on
+  // a full stop rather than trailing off inside a parenthetical list of option
+  // values the reader has no use for.
+  return clauseLede(lead);
 }
 
 // The opening clause of a long sentence. These sentences are built the same
