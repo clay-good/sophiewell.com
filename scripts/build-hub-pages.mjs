@@ -15,7 +15,7 @@ import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
 import { getCalculator } from '../mcp/catalog.js';
-import { tileLine } from './lib/tile-line.mjs';
+import { tileLine, ledeParts } from './lib/tile-line.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
@@ -38,6 +38,19 @@ function loadToolCopy() {
       if (json?.whatThisIs) TOOL_COPY.set(file.replace(/\.json$/, ''), json.whatThisIs);
     } catch { /* a malformed copy file just falls through to the adapter summary */ }
   }
+}
+
+// The opening paragraph: first sentence visible, the rest one click away.
+// See ledeParts() in scripts/lib/tile-line.mjs for why.
+function ledeHtml(text) {
+  const { lead, rest } = ledeParts(text);
+  const more = rest
+    ? `\n        <details class="hub-lede-more">
+          <summary>More about this page</summary>
+          <p>${esc(rest)}</p>
+        </details>`
+    : '';
+  return `<p class="tp-lede">${esc(lead)}</p>${more}`;
 }
 
 function tileDesc(id, name = '') {
@@ -282,7 +295,7 @@ ${JSON.stringify(breadcrumb, null, 2)}
         </nav>
 
         <h1 class="tp-h1">${esc(hub.h1)}</h1>
-        <p class="tp-lede">${esc(hub.lede)}</p>
+        ${ledeHtml(hub.lede)}
         <p class="hub-count muted">${totalCount} tool${totalCount === 1 ? '' : 's'} in this hub, all free, all in your browser.</p>
 
 ${groupSections}

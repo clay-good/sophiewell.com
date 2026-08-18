@@ -364,6 +364,23 @@ body {
   margin: 0 0 var(--space-5);
   font-size: 0.95rem;
 }
+/* The rest of the opening paragraph, one click away: these pages named every
+   tool on them and then listed those same tools underneath. Nothing is
+   deleted -- it stays in the DOM for search and for "find in page". */
+.hub-page .hub-lede-more {
+  margin: 0 0 var(--space-4);
+}
+.hub-page .hub-lede-more > summary {
+  cursor: pointer;
+  font-weight: 600;
+  padding: 8px 0;
+}
+.hub-page .hub-lede-more p {
+  margin: var(--space-2) 0 0;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
 .hub-page .hub-group { margin-bottom: var(--space-6); }
 .hub-page .hub-group h2 {
   font-size: 1.1rem;

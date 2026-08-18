@@ -7,7 +7,7 @@
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { tileLine, fieldName, stripLegend } from '../../scripts/lib/tile-line.mjs';
+import { tileLine, fieldName, stripLegend, ledeParts } from '../../scripts/lib/tile-line.mjs';
 
 test('a first sentence that fits is printed whole, with no cut mark', () => {
   const line = tileLine('Score the Wells criteria for pulmonary embolism. Higher totals move the patient into the PE-likely group.');
@@ -143,4 +143,50 @@ test('tileLine refuses a clause cut that only restates the tile name', () => {
 // A sentence that fits is still printed whole, boundary or not.
 test('tileLine leaves a short sentence alone even when it has a colon', () => {
   assert.equal(tileLine('Wells score: pulmonary embolism.'), 'Wells score: pulmonary embolism.');
+});
+
+// --- ledeParts: the hub and topic page opening paragraph.
+//
+// These pages opened by naming every tool on them and then listed those same
+// tools underneath, each with its own line. One ran to 959 characters. The
+// first sentence stays visible and the rest goes one click away -- nothing is
+// deleted, and the <meta> description is written separately and untouched.
+test('ledeParts leaves a short opening paragraph alone', () => {
+  const short = 'Decision tools for triage and acuity.';
+  assert.deepEqual(ledeParts(short), { lead: short, rest: '' });
+});
+
+test('ledeParts splits a long paragraph after its first sentence', () => {
+  const text = 'Bedside cardiology math and rule-out scores with the primary citation under every result. QTc by Bazett, Fridericia, Framingham and Hodges; Wells PE and DVT with the Geneva alternative; CHA2DS2-VASc and HAS-BLED for atrial fibrillation.';
+  const { lead, rest } = ledeParts(text);
+  assert.equal(lead, 'Bedside cardiology math and rule-out scores with the primary citation under every result.');
+  assert.ok(rest.startsWith('QTc by Bazett'), rest);
+});
+
+// Most of them are not several sentences at all -- they are one sentence that
+// names the page, then a colon, then the name-dump, and never end a sentence.
+test('ledeParts splits at the colon when there is no sentence break', () => {
+  const text = 'Calculators that compute a deterministic billing or coding output: the MPFS reimbursement engine, the claim-edit decision engines, and the patient-responsibility engines that say what the patient actually owes.';
+  const { lead, rest } = ledeParts(text);
+  assert.equal(lead, 'Calculators that compute a deterministic billing or coding output.');
+  // What followed a colon continued the clause, so it began in lower case and
+  // has to open like a sentence now that it stands on its own.
+  assert.ok(rest.startsWith('The MPFS reimbursement engine'), rest);
+});
+
+// Only the colon path recapitalizes. A sentence break hands back the author's
+// own sentence, and "eGFR" is spelled that way on purpose.
+test('ledeParts does not recapitalize text that already began a sentence', () => {
+  const text = 'Deterministic bedside math and clinical scoring with the primary citation under every result. eGFR (CKD-EPI 2021), QTc, Wells PE and DVT, MME (CDC 2022), ABG interpretation and dozens more.';
+  const { rest } = ledeParts(text);
+  assert.ok(rest.startsWith('eGFR'), rest);
+});
+
+// Hiding two words behind a control costs more attention than it saves.
+test('ledeParts does not split when there is almost nothing to hide', () => {
+  // Over the length that triggers a split, but the only sentence break leaves
+  // barely twenty characters on the other side of it.
+  const text = 'A long opening sentence about what this page collects, why it exists, who it serves and how it happens to be organized for the reader who lands here. Short tail.';
+  assert.ok(text.length > 150, 'the fixture has to be long enough to be considered');
+  assert.deepEqual(ledeParts(text), { lead: text, rest: '' });
 });

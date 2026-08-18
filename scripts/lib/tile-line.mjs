@@ -119,3 +119,54 @@ export function fieldName(text) {
   const sp = cut.lastIndexOf(' ');
   return `${(sp > 40 ? cut.slice(0, sp) : cut).trimEnd()}…`;
 }
+
+// --- The hub and topic page opening paragraph.
+//
+// These pages open with a paragraph that names the tools on them -- "QTc by
+// Bazett, Fridericia, Framingham, and Hodges; Wells PE and DVT with the Geneva
+// alternative; CHA2DS2-VASc and HAS-BLED for..." -- and then list those same
+// tools directly underneath, each with its own line. One ran to 959
+// characters. The reader scrolls past a name-dump to reach the names.
+//
+// The first sentence says what the page is and stays visible. The rest is not
+// deleted -- it goes one click away, still in the DOM for search and for "find
+// in page", the same treatment long explanations get inside a tile. The <meta>
+// description is written separately and is untouched by this.
+const HIDE_OVER = 150;
+const MIN_HIDDEN = 60;
+
+// Most of these paragraphs are not several sentences -- they are one sentence
+// that names the page, then a colon, then the name-dump. "Calculators that
+// compute a deterministic billing or coding output: the MPFS reimbursement
+// engine, ..." runs to 959 characters that way and never ends a sentence at
+// all. So a colon counts as a break when no full stop does.
+const MIN_CLAUSE_LEDE = 18;
+function colonSplit(text) {
+  const at = text.search(/:|(?<=\S) - /);
+  if (at < MIN_CLAUSE_LEDE || at > HIDE_OVER) return null;
+  const lead = `${text.slice(0, at).trimEnd().replace(/[,:;-]+$/, '')}.`;
+  // What follows a colon continues the clause and so begins in lower case.
+  // Standing on its own under a disclosure it has to open like a sentence,
+  // which is a capital letter and nothing else -- no words are added.
+  const tail = text.slice(at + 1).trim();
+  const rest = tail.replace(/^[a-z]/, (c) => c.toUpperCase());
+  return rest.length >= MIN_HIDDEN ? { lead, rest } : null;
+}
+
+export function ledeParts(text) {
+  const full = (text || '').trim();
+  if (full.length <= HIDE_OVER) return { lead: full, rest: '' };
+
+  const sentence = splitLead(full);
+  if (sentence && sentence.rest.length >= MIN_HIDDEN) {
+    // The first sentence can itself be a name-dump behind a colon, so it gets
+    // the same treatment and what it sheds joins the hidden half.
+    if (sentence.lead.length > HIDE_OVER) {
+      const inner = colonSplit(sentence.lead);
+      if (inner) return { lead: inner.lead, rest: `${inner.rest} ${sentence.rest}`.trim() };
+    }
+    return { lead: sentence.lead, rest: sentence.rest };
+  }
+
+  return colonSplit(full) || { lead: full, rest: '' };
+}
