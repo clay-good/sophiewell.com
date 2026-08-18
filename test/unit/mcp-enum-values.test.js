@@ -15,8 +15,13 @@
 //                        5 to 3 silently, so the caller gets a score built from
 //                        a number it did not send.
 //
-// The select in `views/` is the second opinion. Where it can be read, every
-// declared value has to appear in it.
+// The select in `views/` is the second opinion, and the two lists have to
+// agree in both directions. A value the registry declares and the tool does
+// not offer is the drift above. A value the tool offers and the registry does
+// not is the opposite defect -- something a person can pick and an agent
+// cannot ask for. `minipiers/mp-prot` was one: "Negative, trace, or 1+" is the
+// reference category the coefficients are measured against, and an agent had
+// to infer it from omitting the field.
 //
 // The extractor reads source text and sometimes binds the wrong array to a DOM
 // id. That failure looks completely different: a wrong binding shares NO value
@@ -62,6 +67,14 @@ test('every value an agent may pass is a value the tool offers', async () => {
         drift.push(
           `${calc.id}/${field.dom}: declares ${missing.join(', ')}, ` +
             `which the select does not offer (it has ${[...select.keys()].filter(Boolean).join(', ')})`,
+        );
+      }
+      // The blank first row is the "-- choose --" placeholder, not an option.
+      const unreachable = [...select.keys()].filter((v) => v && !declared.includes(v));
+      if (unreachable.length) {
+        drift.push(
+          `${calc.id}/${field.dom}: the tool offers ${unreachable.join(', ')}, ` +
+            'which an agent cannot ask for because the registry does not declare it',
         );
       }
     }

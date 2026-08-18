@@ -38,7 +38,12 @@ export default [
       { dom: 'mp-multip', arg: 'multiparous', kind: 'bool', required: false, label: 'Multiparous' },
       { dom: 'mp-ga', arg: 'ga', kind: 'number', required: true, label: 'Gestational age', unit: 'weeks' },
       { dom: 'mp-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic blood pressure', unit: 'mmHg' },
-      { dom: 'mp-prot', arg: 'proteinuria', kind: 'enum', values: ['2+', '3+', '4+'], required: false, label: 'Dipstick proteinuria' },
+      // `lt2` is the reference category the three published coefficients are
+      // measured against, and the select offers it as "Negative, trace, or 1+".
+      // Leaving it undeclared made it reachable only by omitting the field --
+      // an agent had to infer that omission meant "negative", and a typo landed
+      // on the same silent default.
+      { dom: 'mp-prot', arg: 'proteinuria', kind: 'enum', values: ['lt2', '2+', '3+', '4+'], required: false, label: 'Dipstick proteinuria; lt2 is negative, trace or 1+, the reference category' },
       { dom: 'mp-hv', arg: 'headacheVisual', kind: 'bool', required: false, label: 'Headache or visual changes' },
       { dom: 'mp-cpd', arg: 'chestPainDyspnea', kind: 'bool', required: false, label: 'Chest pain or dyspnea' },
       { dom: 'mp-vbap', arg: 'vaginalBleedingAbdPain', kind: 'bool', required: false, label: 'Vaginal bleeding with abdominal pain' },
