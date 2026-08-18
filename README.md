@@ -31,9 +31,9 @@ Each calculator does one thing:
 
 | | |
 |---|---|
-| **In** | The values you already have. Every field opens pre-filled with a worked example, so you can see the expected format before you type. |
+| **In** | The values you already have. It opens pre-filled with a worked example, so you can see the expected format before you type over it. |
 | **Out** | One number or grade, plus how the source says to read it. |
-| **Proof** | The primary citation, one click away under "Citation and how to read this." |
+| **Proof** | The primary citation, one click away under "Citation and sources". |
 
 For example, on [Wells Score for PE](https://sophiewell.com/#wells-pe)
 you tick the criteria that apply and get

@@ -30,6 +30,7 @@ import { join } from 'node:path';
 
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
 const TOOLS = join(ROOT, 'dist', 'tools');
+const README = join(ROOT, 'README.md');
 
 // A lede is one line saying what the tool does. The longest on the site is 235
 // characters (entity escapes included, which is what this counts).
@@ -44,8 +45,20 @@ const RAW_VALUE_ROWS_MAX = 70;
 
 // Example labels with no name in front of the criterion, so nothing shorter
 // than the clamp can be printed. Was 60 before the value legend an
-// agent-facing label carries inline was stripped ahead of the trim.
-const CLAMPED_LABELS_MAX = 22;
+// agent-facing label carries inline was stripped ahead of the trim, then 22,
+// and it is 35 deliberately: de-colliding the duplicate labels below moved 13
+// rows into this bucket. A clamped label the reader can tell apart from the
+// row under it beats a whole one they cannot.
+const CLAMPED_LABELS_MAX = 35;
+
+// The same name on two rows of one example, with two different values. The
+// reader cannot tell which row is which, and the page reads as a mistake --
+// "PAIN subscale" five times over, "Maxillary" twice. 83 rows across 20 pages
+// read that way, every one of them a label cut back past the part that told it
+// apart from its sibling. This one is not a budget: a duplicate is never the
+// best available label, because the full label is always there to fall back
+// on.
+const DUPLICATE_LABELS_MAX = 0;
 
 // Hub and topic list rows: a row may be clamped, but a clamped row must be
 // marked with an ellipsis and a marked row must actually have been clamped.
@@ -68,6 +81,8 @@ function main() {
   let longestLede = { chars: 0, id: '' };
   let rawValueRows = 0;
   let clampedLabels = 0;
+  const duplicateLabels = [];
+  const disclosureSummaries = new Set();
 
   for (const id of readdirSync(TOOLS)) {
     const file = join(TOOLS, id, 'index.html');
@@ -92,6 +107,8 @@ function main() {
 
     // 4. A source, inside the collapsed disclosure and not just the disclaimer.
     const refs = html.match(/<details class="tp-refs">([\s\S]*?)<\/details>/);
+    const summary = refs && refs[1].match(/<summary>([\s\S]*?)<\/summary>/);
+    if (summary) disclosureSummaries.add(summary[1].replace(/\s+/g, ' ').trim());
     const body = refs
       ? refs[1]
         .replace(/<summary>[\s\S]*?<\/summary>/, '')
@@ -100,9 +117,12 @@ function main() {
       : '';
     if (!body) failures.push(`${id}: the citation disclosure holds nothing but the disclaimer`);
 
+    const seenLabels = new Set();
     for (const [, label, value] of html.matchAll(/<div class="tp-ex-row"><dt>(.*?)<\/dt><dd>(.*?)<\/dd><\/div>/g)) {
       if (RAW_VALUE.test(value.trim())) rawValueRows += 1;
       if (label.endsWith('…')) clampedLabels += 1;
+      if (seenLabels.has(label)) duplicateLabels.push(`${id}: "${label}"`);
+      seenLabels.add(label);
     }
   }
 
@@ -112,6 +132,29 @@ function main() {
   }
   if (clampedLabels > CLAMPED_LABELS_MAX) {
     failures.push(`${clampedLabels} example labels are clamped mid-phrase (max ${CLAMPED_LABELS_MAX})`);
+  }
+  if (duplicateLabels.length > DUPLICATE_LABELS_MAX) {
+    failures.push(
+      `${duplicateLabels.length} example rows repeat a label already used on the same page ` +
+        `(max ${DUPLICATE_LABELS_MAX}): ${duplicateLabels.slice(0, 6).join(', ')}`,
+    );
+  }
+
+  // The README tells a reader where the proof is, by quoting the control they
+  // have to click. That quote is a UI string living outside the UI, so it
+  // drifts silently: it said "Citation and how to read this" while all 1,564
+  // pages said "Citation and sources". Same failure the headline count had.
+  if (existsSync(README)) {
+    const readme = readFileSync(README, 'utf8');
+    const quoted = readme.match(/one click away under "([^"]+)"/);
+    if (!quoted) {
+      failures.push('README no longer says where the citation is; the check below has nothing to hold it to');
+    } else if (!disclosureSummaries.has(quoted[1])) {
+      failures.push(
+        `README points the reader at "${quoted[1]}", which no page has. ` +
+          `The pages say: ${[...disclosureSummaries].map((t) => `"${t}"`).join(', ')}`,
+      );
+    }
   }
 
   // The list pages: a cut mark means text was cut.
@@ -143,7 +186,7 @@ function main() {
   }
   console.log(
     `check-page-copy: clean (${pages} tool pages; longest lede ${longestLede.chars} chars on ${longestLede.id}; ` +
-      `${rawValueRows} raw-value rows, ${clampedLabels} clamped labels; ${listRows} list rows, ${markedRows} marked as cut).`,
+      `${rawValueRows} raw-value rows, ${clampedLabels} clamped labels, ${duplicateLabels.length} duplicate labels; ${listRows} list rows, ${markedRows} marked as cut).`,
   );
 }
 

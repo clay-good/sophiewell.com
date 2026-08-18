@@ -290,6 +290,72 @@ function shortLabel(raw) {
   return fieldName(stripped || lead);
 }
 
+// The same name, on five rows, with five different values.
+//
+// A field label names a group and then the item inside it -- "PAIN subscale.
+// Pain at its worst", "Resting symmetry: Eye", "Head / neck: erythema" -- and
+// `shortLabel` keeps the group, which is the right answer right up until the
+// tile has five of them. Then the example prints "PAIN subscale" five times
+// over and the reader cannot tell which row is which. 83 rows across 20 pages
+// read that way.
+//
+// So each row carries a second, longer candidate, and only the rows that
+// actually collide fall back to it. Nothing is lengthened that did not need to
+// be: a tile with one "Head / neck" row still prints "Head / neck".
+const MAX_ITEM = 44;
+function itemName(raw) {
+  // A legend the reader does not need, here in the middle of the label rather
+  // than at the end: "Edema [0 = Absent; 1 = Present - loss of normal vascular
+  // markings]. Contributes up to 1 point." The item is "Edema".
+  const plain = String(raw || '').replace(/\s*\[[^\]]*?\s=\s[^\]]*\]/g, '');
+  let s = (splitLead(plain, { minLead: FIELD_MIN_LEAD })?.lead || plain).trim();
+  s = s.replace(/\s*[([][^()[\]]*[)\]]\s*\.?$/, '').replace(/[.:;,-]+$/, '').trim();
+  // The item carries its own break before its gloss -- a comma or a dash --
+  // so cutting there ends on a whole phrase instead of an ellipsis.
+  if (s.length > MAX_ITEM) {
+    const breaks = [s.indexOf(','), s.indexOf(' - ')].filter((i) => i >= 8);
+    if (breaks.length) s = s.slice(0, Math.min(...breaks)).trim();
+  }
+  if (s.length <= MAX_ITEM) return s;
+  const cut = s.slice(0, MAX_ITEM - 1);
+  const sp = cut.lastIndexOf(' ');
+  return `${(sp > 20 ? cut.slice(0, sp) : cut).trimEnd()}\u2026`;
+}
+
+// `<group>: <item>` and `<group>. <item>`, the two ways these labels are
+// written. Falls back to the short name when the label has no such split --
+// then the collision is in the source and no cut can undo it.
+function qualifiedLabel(raw) {
+  const text = stripLegend(raw);
+  const m = text.match(/^(.{4,70}?)(\s-|[:.,?])\s+([\s\S]+)$/);
+  if (m) {
+    const item = itemName(m[3]);
+    // A dash separates with a space on both sides; a colon or comma does not.
+    const sep = m[2].trim() === '-' ? ' -' : m[2].trim();
+    if (item) return `${m[1].trim()}${sep} ${item}`;
+  }
+  // No group to qualify with. Then the label is already just a name, and what
+  // made two of them identical was `shortLabel` stripping the trailing
+  // parenthetical -- which on these is the whole discriminator: "Maxillary (R)"
+  // and "Maxillary (L)" both came out "Maxillary". Keep it.
+  return fieldName(text) || shortLabel(raw);
+}
+
+// Give every row the shortest label that still tells it apart from its
+// siblings. Rows that are unique at the short form keep it.
+function decollide(rows) {
+  const count = new Map();
+  for (const r of rows) count.set(r.label, (count.get(r.label) || 0) + 1);
+  for (const r of rows) {
+    if (count.get(r.label) > 1 && r.full) {
+      const longer = qualifiedLabel(r.full);
+      if (longer && longer !== r.label) r.label = longer;
+    }
+    delete r.full;
+  }
+  return rows;
+}
+
 // A unit belongs on a measurement, not on a yes/no or a picked option. A
 // checkbox is stored as `1` / `true` / `yes` depending on the tile, and none of
 // those is what the reader sees on screen -- a row reading "Heart rate > 100:
@@ -371,9 +437,9 @@ function viewExampleRows(tileId, meta, fieldLabels, optionLabels) {
     const picked = looseOptionText(options, dom, value);
     // A checkbox stores `on`; the reader ticked a box, they did not type "on".
     const shown = picked || (BOOL_TRUE.has(value.toLowerCase()) ? 'Yes' : freeTextValue(value));
-    rows.push({ label: shortLabel(label), value: shown });
+    rows.push({ label: shortLabel(label), value: shown, full: label });
   }
-  return rows.length ? rows : null;
+  return rows.length ? decollide(rows) : null;
 }
 
 function exampleRows(tileId, meta, optionLabels) {
@@ -392,9 +458,9 @@ function exampleRows(tileId, meta, optionLabels) {
     // tiles do this, where blank means "no"). The reader types nothing there,
     // so the row is left out rather than printed as an empty cell.
     if (!label || !value) continue;
-    rows.push({ label, value });
+    rows.push({ label, value, full: field.label });
   }
-  return rows.length ? rows : null;
+  return rows.length ? decollide(rows) : null;
 }
 
 function pickRelated(tiles, current, max = 4) {
