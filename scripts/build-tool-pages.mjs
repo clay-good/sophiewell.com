@@ -208,24 +208,76 @@ function clampTitle(s, max = 65) {
 // was cut off. A first sentence long enough to be its own paragraph is trimmed
 // with an ellipsis, which at least admits there is more.
 const LEDE_MAX = 220;
-function leadSentence(text) {
+function leadSentence(text, name = '') {
   const lead = (splitLead(text)?.lead || text).trim();
   if (lead.length <= LEDE_MAX) return /[.!?]$/.test(lead) ? lead : `${lead}.`;
   // Too long to lead with. These sentences carry their own break -- a colon
   // before the enumeration, a dash before the caveat -- so cut there and end on
   // a full stop rather than trailing off inside a parenthetical list of option
   // values the reader has no use for.
-  return clauseLede(lead);
+  return clauseLede(lead, name);
+}
+
+// The name, stripped of the citation these summaries append to it, so
+// "ATRIA Stroke Risk Score (Singer 2013)" can be recognised as the name of the
+// tile called "ATRIA Stroke Risk Score".
+const bare = (s) => s.replace(/\s*\([^()]*\)\s*$/, '').replace(/[^a-z0-9]/gi, '').toLowerCase();
+
+// "APACHE II score" against a tile called "APACHE II (ICU mortality estimate)":
+// the clause is the name plus a generic noun, and it still says nothing the
+// heading did not. Exact equality misses those, so a short remainder counts as
+// the same thing. A clause carrying real content runs far longer than this.
+const NAME_SLACK = 10;
+
+// Shorter than this, minus any trailing citation, and a clause is a title.
+const MIN_CONTENT = 45;
+function restatesName(clause, name) {
+  const a = bare(clause);
+  const b = bare(name);
+  if (!a || !b) return false;
+  if (a === b) return true;
+  return (a.startsWith(b) && a.length - b.length <= NAME_SLACK)
+    || (b.startsWith(a) && b.length - a.length <= NAME_SLACK);
+}
+
+// A boundary inside an unclosed bracket is not a boundary. "Frontal Assessment
+// Battery (FAB; Dubois 2000)" carries its citation semicolon *within* the
+// parenthesis, and cutting there published "Frontal Assessment Battery (FAB."
+// -- a lede with a bracket it never closes. Seven tiles read that way.
+function depthAt(text, index) {
+  let depth = 0;
+  for (let i = 0; i < index; i++) {
+    const c = text[i];
+    if (c === '(' || c === '[') depth += 1;
+    else if (c === ')' || c === ']') depth -= 1;
+  }
+  return depth;
 }
 
 // The opening clause of a long sentence. These sentences are built the same
 // way -- a clause naming the tool, then a colon or a dash, then the list of
 // everything it covers -- so the boundary is usually already written into the
 // text. Falling back to a word-boundary cut keeps the ones that are not.
-function clauseLede(text) {
-  const boundary = text.search(/:| - |;/);
-  if (boundary >= 24 && boundary <= LEDE_MAX) {
-    return `${text.slice(0, boundary).trimEnd().replace(/[,:;-]+$/, '')}.`;
+function clauseLede(text, name = '') {
+  // Every boundary, not just the first: on 15 tiles the first one sits
+  // immediately after the tile's own name, and cutting there published a lede
+  // that repeated the <h1> directly above it and said nothing else --
+  // "ATRIA Stroke Risk Score (Singer 2013)." under a heading reading "ATRIA
+  // Stroke Risk Score". The next boundary along carries the content.
+  for (const m of text.matchAll(/:| - |;/g)) {
+    const at = m.index;
+    if (at < 24) continue;
+    if (at > LEDE_MAX) break;
+    if (depthAt(text, at) > 0) continue;
+    const clause = text.slice(0, at).trimEnd().replace(/[,:;-]+$/, '');
+    if (name && restatesName(clause, name)) continue;
+    // A clause that is nothing but a title and its citation is the heading
+    // again, whatever words it happens to use. `restatesName` matches on the
+    // name and so misses the ones written in a different order ("Predicted
+    // six-minute walk distance" under "6-Minute Walk Distance (Predicted)").
+    // Below this length there is no room for a clause to say anything else.
+    if (clause.replace(/\s*\([^()]*\)\s*$/, '').trim().length < MIN_CONTENT) continue;
+    return `${clause}.`;
   }
   const cut = text.slice(0, LEDE_MAX);
   const sp = cut.lastIndexOf(' ');
@@ -859,7 +911,7 @@ async function main() {
       desc = clauseLede(handLead);
       whatThisIs = hand;
     } else if (summary) {
-      desc = leadSentence(summary);
+      desc = leadSentence(summary, tile.name);
     }
     if (!desc) {
       desc = `${tile.name} - a deterministic tool in Sophie Well's ${GROUP_LABELS[tile.group] || tile.group} group.`;

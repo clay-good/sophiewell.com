@@ -66,6 +66,24 @@ const HUB_DIRS = ['for', 'topics'];
 
 const RAW_VALUE = /^(?:[a-z]+(?:-[a-z0-9]+)+|[a-z]{4,})$/;
 
+// A lede that adds nothing to the <h1> above it. Both are stripped of a
+// trailing citation parenthetical and of everything but their letters and
+// digits, so "ATRIA Stroke Risk Score (Singer 2013)." and "ATRIA Stroke Risk
+// Score" compare equal. The slack absorbs a trailing generic noun -- "APACHE II
+// score" against a tile called "APACHE II (ICU mortality estimate)".
+const NAME_SLACK = 10;
+function bare(s) {
+  return s.trim().replace(/[.!?]+$/, '').replace(/\s*\([^()]*\)\s*$/, '').replace(/[^a-z0-9]/gi, '').toLowerCase();
+}
+function restatesHeading(lede, heading) {
+  const a = bare(lede);
+  const b = bare(heading);
+  if (!a || !b) return false;
+  if (a === b) return true;
+  return (a.startsWith(b) && a.length - b.length <= NAME_SLACK)
+    || (b.startsWith(a) && b.length - a.length <= NAME_SLACK);
+}
+
 function textOf(html, re) {
   const m = html.match(re);
   return m ? m[1].replace(/\s+/g, ' ').trim() : '';
@@ -90,9 +108,17 @@ function main() {
     pages += 1;
     const html = readFileSync(file, 'utf8');
 
-    // 1. One readable opening line.
+    // 1. One readable opening line -- and one that says something the heading
+    // did not. 72 pages opened with the tile's own name and a citation and
+    // stopped there: "Berlin definition of ARDS (Ranieri 2012)." printed under
+    // a heading reading "Berlin Definition of ARDS". The line meant to say what
+    // the tool does said nothing at all.
     const lede = textOf(html, /<p class="tp-lede">([\s\S]*?)<\/p>/);
     if (!lede) failures.push(`${id}: no lede`);
+    const heading = textOf(html, /<h1[^>]*>([\s\S]*?)<\/h1>/);
+    if (lede && heading && restatesHeading(lede, heading)) {
+      failures.push(`${id}: the lede only restates the heading ("${heading}" / "${lede}")`);
+    }
     if (lede.length > LEDE_MAX) failures.push(`${id}: lede is ${lede.length} chars (max ${LEDE_MAX})`);
     if (lede.length > longestLede.chars) longestLede = { chars: lede.length, id };
 

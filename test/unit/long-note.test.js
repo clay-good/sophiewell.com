@@ -45,6 +45,15 @@ test('splitLead skips an abbreviation that opens a parenthesis', () => {
   assert.equal(lead, 'Level just completed (e.g. initial, redetermination, reconsideration).');
 });
 
+// Author initials inside a parenthetical citation end in a period and are not
+// the end of a sentence. Splitting there published "Five-times sit-to-stand
+// test (Csuka M, McCarty DJ." -- a fragment holding a bracket it never closes.
+test('splitLead does not split inside a bracket', () => {
+  const text = 'Five-times sit-to-stand test (Csuka M, McCarty DJ. J Rheumatol 1985): timed lower-limb strength. The cutoff varies by age.';
+  const { lead } = splitLead(text);
+  assert.equal(lead, 'Five-times sit-to-stand test (Csuka M, McCarty DJ. J Rheumatol 1985): timed lower-limb strength.');
+});
+
 test('splitLead scans past a spelled-out acronym rather than leading with it', () => {
   const { lead, rest } = splitLead('S.T.O.N.E. is a five-part score for predicting spontaneous passage of a ureteral stone. It is not a treatment decision.');
   assert.ok(lead.startsWith('S.T.O.N.E. is a five-part score'));
