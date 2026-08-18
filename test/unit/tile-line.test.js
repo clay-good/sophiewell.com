@@ -7,7 +7,7 @@
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { tileLine } from '../../scripts/lib/tile-line.mjs';
+import { tileLine, fieldName } from '../../scripts/lib/tile-line.mjs';
 
 test('a first sentence that fits is printed whole, with no cut mark', () => {
   const line = tileLine('Score the Wells criteria for pulmonary embolism. Higher totals move the patient into the PE-likely group.');
@@ -36,4 +36,29 @@ test('a clamped line never ends mid-word', () => {
 test('empty prose gives an empty line, not a bare ellipsis', () => {
   assert.equal(tileLine(''), '');
   assert.equal(tileLine(undefined), '');
+});
+
+// --- fieldName: the left column of a worked example.
+
+test('a label that carries its own definition is cut at the separator', () => {
+  assert.equal(fieldName('Tissue type (worst present): 0 closed, 1 epithelial, 2 granulation'), 'Tissue type (worst present)');
+  assert.equal(fieldName('Age and sex band for the hematocrit threshold - there is no single value'), 'Age and sex band for the hematocrit threshold');
+});
+
+test('a label that is already just a name is left alone', () => {
+  assert.equal(fieldName('Wound length'), 'Wound length');
+  assert.equal(fieldName('S wave in V1'), 'S wave in V1');
+});
+
+test('a separator too early to be a name is not a cut point', () => {
+  // "0 = none" style labels lead with the value, not a name.
+  assert.equal(fieldName('Sex: male or female'), 'Sex: male or female');
+});
+
+test('a label with no separator is clamped at a word boundary', () => {
+  const long = 'At least one glomerulus with segmental or global collapse AND overlying podocyte hypertrophy and hyperplasia present';
+  const out = fieldName(long);
+  assert.ok(out.endsWith('…'));
+  assert.ok(out.length <= 80, `${out.length} chars`);
+  assert.ok(!out.includes('  '));
 });

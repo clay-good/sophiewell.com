@@ -31,6 +31,7 @@ import { splitLead } from '../lib/long-note.js';
 // The option TEXT behind an example's raw `<option value>`, read out of the
 // view that builds the select. See scripts/lib/option-labels.mjs.
 import { loadOptionLabels, loadFieldLabels, optionText, looseOptionText } from './lib/option-labels.mjs';
+import { fieldName } from './lib/tile-line.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
@@ -282,13 +283,7 @@ function shortLabel(raw) {
   if (!text) return '';
   const lead = (splitLead(text, { minLead: FIELD_MIN_LEAD })?.lead || text).trim();
   const stripped = lead.replace(/\s*[([][^()[\]]*[)\]]\s*\.?$/, '').trim();
-  let s = (stripped || lead).replace(/[.:;,]+$/, '').trim();
-  if (s.length > 80) {
-    const cut = s.slice(0, 79);
-    const sp = cut.lastIndexOf(' ');
-    s = (sp > 40 ? cut.slice(0, sp) : cut).trimEnd() + '…';
-  }
-  return s;
+  return fieldName(stripped || lead);
 }
 
 // A unit belongs on a measurement, not on a yes/no or a picked option. A

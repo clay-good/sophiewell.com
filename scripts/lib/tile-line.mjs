@@ -38,3 +38,24 @@ export function tileLine(text) {
   const kept = (sp > CLAMP_AT * 0.6 ? cut.slice(0, sp) : cut).replace(/[\s,;:-]+$/, '');
   return `${kept}…`;
 }
+
+// The name of a field, for the left column of a worked example.
+//
+// An MCP registry label doubles as the field's full description, so many read
+// "Name: what counts as each level" or "Name - the caveat", and a few run past
+// a thousand characters. In a two-column row only the name is wanted; the
+// definition is in the tool itself. Cut at the separator the label already
+// carries, before falling back to a blunt character clamp that would end the
+// row on a dangling "3 slough,…".
+const NAME_MAX = 80;
+export function fieldName(text) {
+  let s = (text || '').trim();
+  if (!s) return '';
+  const sep = s.search(/:| - /);
+  if (sep >= 8 && sep <= 70) s = s.slice(0, sep);
+  s = s.replace(/[.:;,-]+$/, '').trim();
+  if (s.length <= NAME_MAX) return s;
+  const cut = s.slice(0, NAME_MAX - 1);
+  const sp = cut.lastIndexOf(' ');
+  return `${(sp > 40 ? cut.slice(0, sp) : cut).trimEnd()}…`;
+}
