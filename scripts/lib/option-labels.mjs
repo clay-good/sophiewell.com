@@ -64,7 +64,20 @@ function sliceArray(src, start) {
 function parseOptions(body) {
   const out = new Map();
   const S = "(['\"`])";
-  const TEXT = "((?:[^'\"`\\\\]|\\\\.)*?)";
+  // The text runs to its own closing delimiter, whichever one opened it. The
+  // first cut excluded all three quote characters from the text regardless,
+  // and did so silently: `['A', 'A - complete filling ("white-out")']` never
+  // matched, so the whole Barrack grade list came back short and the registry
+  // check refused it. A quote inside option text is ordinary -- a nickname for
+  // a radiographic sign, a quoted grade name -- and every one of them dropped
+  // its select.
+  //
+  // So the text is anything at all, lazily, closed by a back-reference to the
+  // delimiter that opened it. Lazy plus back-reference stops at the first
+  // unescaped matching quote, which is the end of the string and nowhere else;
+  // `\\.` leads the alternation so an escaped delimiter is consumed rather
+  // than treated as the close.
+  const TEXT = '((?:\\\\.|[\\s\\S])*?)';
   const objValueFirst = new RegExp(`\\{\\s*value:\\s*${S}(.*?)\\1\\s*,\\s*text:\\s*${S}${TEXT}\\3\\s*\\}`, 'g');
   const objTextFirst = new RegExp(`\\{\\s*text:\\s*${S}${TEXT}\\1\\s*,\\s*value:\\s*${S}(.*?)\\3\\s*\\}`, 'g');
   for (const m of body.matchAll(objValueFirst)) out.set(m[2], m[4]);

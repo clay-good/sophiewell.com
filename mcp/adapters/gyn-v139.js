@@ -12,9 +12,17 @@ export default [
     compute: F.flammVbac,
     fields: [
       { dom: 'fv-age', arg: 'ageUnder40', kind: 'bool', required: false, label: 'Age under 40 (+2)' },
-      { dom: 'fv-vb', arg: 'vaginalBirth', kind: 'enum', values: ['none', 'before', 'after'], required: true, label: 'Prior vaginal-birth history' },
+      // The four categories the score defines, and the four `flammVbac`
+      // accepts. `beforeAfter` -- a vaginal birth both before and after the
+      // prior cesarean -- is worth 4, the most any single item contributes,
+      // and it was missing here: an agent reading this list could not express
+      // the most favorable history the score has.
+      { dom: 'fv-vb', arg: 'vaginalBirth', kind: 'enum', values: ['none', 'before', 'after', 'beforeAfter'], required: true, label: 'Prior vaginal-birth history: none, before the cesarean only, after only, or both before and after' },
       { dom: 'fv-reason', arg: 'reasonNotFtp', kind: 'bool', required: false, label: 'Prior cesarean for a reason other than failure to progress (+1)' },
-      { dom: 'fv-eff', arg: 'effacement', kind: 'enum', values: ['low', 'mid', 'high'], required: true, label: 'Cervical effacement' },
+      // `low` and `high` were never accepted by the calculator, which keys on
+      // the band names the select uses. An agent passing either -- both were
+      // documented here -- got "Choose the ... categories" back.
+      { dom: 'fv-eff', arg: 'effacement', kind: 'enum', values: ['lt25', 'mid', 'gt75'], required: true, label: 'Cervical effacement at admission: lt25 is under 25 percent, mid is 25 to 75, gt75 is over 75' },
       { dom: 'fv-dil', arg: 'dilation4', kind: 'bool', required: false, label: 'Cervical dilation ≥ 4 cm (+1)' },
     ],
   },

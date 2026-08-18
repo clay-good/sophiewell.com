@@ -53,9 +53,14 @@ export default [
     summary: 'Barnes Akathisia Rating Scale (Barnes 1989): the objective, awareness, and distress items plus a 0-5 global clinical rating of drug-induced akathisia.',
     compute: F.barsAkathisia,
     fields: [
-      { dom: 'ba-obj', arg: 'objective', kind: 'enum', values: ['0', '1', '2', '3', '4', '5'], label: 'Objective akathisia (0-3)' },
-      { dom: 'ba-aware', arg: 'awareness', kind: 'enum', values: ['0', '1', '2', '3', '4', '5'], label: 'Subjective awareness of restlessness (0-3)' },
-      { dom: 'ba-distress', arg: 'distress', kind: 'enum', values: ['0', '1', '2', '3', '4', '5'], label: 'Subjective distress from restlessness (0-3)' },
+      // The three subtotal items are 0-3, as their own labels say and as the
+      // select on screen offers. Declaring 0-5 here -- the global item's range
+      // -- told an agent that 4 and 5 were legal, and `barsAkathisia` clamps
+      // both to 3 without saying so: the caller gets a score built from a
+      // number it did not pass, and nothing in the result marks it.
+      { dom: 'ba-obj', arg: 'objective', kind: 'enum', values: ['0', '1', '2', '3'], label: 'Objective akathisia (0-3)' },
+      { dom: 'ba-aware', arg: 'awareness', kind: 'enum', values: ['0', '1', '2', '3'], label: 'Subjective awareness of restlessness (0-3)' },
+      { dom: 'ba-distress', arg: 'distress', kind: 'enum', values: ['0', '1', '2', '3'], label: 'Subjective distress from restlessness (0-3)' },
       { dom: 'ba-global', arg: 'global', kind: 'enum', values: ['0', '1', '2', '3', '4', '5'], label: 'Global clinical rating (0-5)' },
     ],
   },
