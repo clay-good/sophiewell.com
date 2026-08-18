@@ -30,7 +30,7 @@ import { getCalculator } from '../mcp/catalog.js';
 import { splitLead } from '../lib/long-note.js';
 // The option TEXT behind an example's raw `<option value>`, read out of the
 // view that builds the select. See scripts/lib/option-labels.mjs.
-import { loadOptionLabels, optionText } from './lib/option-labels.mjs';
+import { loadOptionLabels, loadFieldLabels, optionText, looseOptionText } from './lib/option-labels.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
@@ -215,6 +215,20 @@ function leadSentence(text) {
   return `${(sp > LEDE_MAX * 0.6 ? cut.slice(0, sp) : cut).trimEnd()}…`;
 }
 
+// The opening clause of a long sentence. These sentences are built the same
+// way -- a clause naming the tool, then a colon or a dash, then the list of
+// everything it covers -- so the boundary is usually already written into the
+// text. Falling back to a word-boundary cut keeps the ones that are not.
+function clauseLede(text) {
+  const boundary = text.search(/:| - |;/);
+  if (boundary >= 24 && boundary <= LEDE_MAX) {
+    return `${text.slice(0, boundary).trimEnd().replace(/[,:;-]+$/, '')}.`;
+  }
+  const cut = text.slice(0, LEDE_MAX);
+  const sp = cut.lastIndexOf(' ');
+  return `${(sp > LEDE_MAX * 0.6 ? cut.slice(0, sp) : cut).trimEnd()}…`;
+}
+
 function clampDescription(s, max = 158) {
   if (s.length <= max) return s;
   const cut = s.slice(0, max - 1);
@@ -328,6 +342,41 @@ function copyExample(copy) {
   return rows.length ? { rows, result: String(ex.result) } : null;
 }
 
+// The tiles with no MCP adapter -- document builders, timers, question flows.
+// There is no field registry to read a label off, so the label comes from the
+// view that builds the field. Every example key has to resolve: a partial join
+// would print some of the values behind a result and silently drop the rest.
+// A free-text example value can carry newlines (a wallet card's medication
+// list) and can be long; both are normalized for a one-line table cell.
+const MAX_FREE_TEXT = 90;
+function freeTextValue(raw) {
+  const value = String(raw ?? '').replace(/\s*\n\s*/g, '; ').trim();
+  if (value.length <= MAX_FREE_TEXT) return value;
+  const cut = value.slice(0, MAX_FREE_TEXT - 1);
+  const sp = cut.lastIndexOf(' ');
+  return `${(sp > 50 ? cut.slice(0, sp) : cut).trimEnd()}\u2026`;
+}
+
+function viewExampleRows(tileId, meta, fieldLabels, optionLabels) {
+  const fields = meta?.example?.fields;
+  if (!fields || typeof fields !== 'object') return null;
+  const labels = fieldLabels?.get(tileId);
+  const options = optionLabels?.get(tileId);
+  if (!labels) return null;
+  const rows = [];
+  for (const [dom, raw] of Object.entries(fields)) {
+    const label = labels.get(dom);
+    if (!label) return null; // partial join would misstate the example
+    const value = String(raw ?? '').trim();
+    if (!value) continue;
+    const picked = looseOptionText(options, dom, value);
+    // A checkbox stores `on`; the reader ticked a box, they did not type "on".
+    const shown = picked || (BOOL_TRUE.has(value.toLowerCase()) ? 'Yes' : freeTextValue(value));
+    rows.push({ label: shortLabel(label), value: shown });
+  }
+  return rows.length ? rows : null;
+}
+
 function exampleRows(tileId, meta, optionLabels) {
   const fields = meta?.example?.fields;
   if (!fields || typeof fields !== 'object') return null;
@@ -359,7 +408,7 @@ function pickRelated(tiles, current, max = 4) {
 // already says when META has it, otherwise fall back to the tile
 // description. Hand-authored copy can replace any of these in a
 // later PR by reading from `data/tool-copy/<id>.json` (not wired here).
-function buildPageHtml({ tile, desc, meta, related, copy, whatThisIs, optionLabels }) {
+function buildPageHtml({ tile, desc, meta, related, copy, whatThisIs, optionLabels, fieldLabels }) {
   const groupLabel = GROUP_LABELS[tile.group] || tile.group;
   const seoTitle = clampTitle(`${tile.name} - Free, in your browser · Sophie Well`);
   const seoDesc = clampDescription(
@@ -497,7 +546,8 @@ ${related.map((r) => `          <li><a href="${SITE}/tools/${r.id}/">${esc(r.nam
   // The worked example, when the example's fields join cleanly to the field
   // registry. Where they don't, fall back to stating the expected output on
   // its own -- less useful, but honest about what the page knows.
-  const metaRows = exampleRows(tile.id, meta, optionLabels);
+  const metaRows = exampleRows(tile.id, meta, optionLabels)
+    || viewExampleRows(tile.id, meta, fieldLabels, optionLabels);
   const example = (metaRows && meta?.example?.expected)
     ? { rows: metaRows, result: meta.example.expected, prefilled: true }
     : (copyExample(copy) ? { ...copyExample(copy), prefilled: false } : null);
@@ -677,6 +727,7 @@ async function main() {
     loadUtilities(), loadDescriptions(), loadMeta(),
   ]);
   const optionLabels = loadOptionLabels();
+  const fieldLabels = loadFieldLabels();
 
   // spec-v76: the discovery-surface allowlists (classify()) are matched only
   // against live tiles, so a dead id in them is silently inert: exactly the
@@ -724,12 +775,18 @@ async function main() {
 
     let desc = '';
     let whatThisIs = hand;
-    if (hand && (handLead.length <= LEDE_MAX || !summary)) {
-      // Take the whole first sentence, however long, when there is no adapter
-      // summary to lead with instead: a long lede beats a clipped copy of a
-      // paragraph printed in full three inches below it.
+    if (hand && handLead.length <= LEDE_MAX) {
       desc = /[.!?]$/.test(handLead) ? handLead : `${handLead}.`;
       whatThisIs = handParts ? handParts.rest : '';
+    } else if (hand && !summary) {
+      // A long first sentence and no adapter summary to lead with instead.
+      // Twenty-seven pages led with one of these; the worst ran 663
+      // characters, an eight-line paragraph standing where the one line
+      // saying what the tool does belongs. Lead with the clause that names
+      // the tool and leave the whole sentence in "What this is", so the
+      // enumeration the reader skipped is still a scroll away.
+      desc = clauseLede(handLead);
+      whatThisIs = hand;
     } else if (summary) {
       desc = leadSentence(summary);
     }
@@ -746,6 +803,7 @@ async function main() {
       copy,
       whatThisIs,
       optionLabels,
+      fieldLabels,
     });
     const out = join(toolsDir, tile.id);
     await ensureDir(out);

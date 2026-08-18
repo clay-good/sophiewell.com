@@ -111,6 +111,14 @@ function moduleConsts(src) {
   return consts;
 }
 
+// Renderer blocks sit at one indent inside the exported `renderers` object:
+// `  'tile-id'(root) {`, `  'tile-id': (root) => {`, and -- for the ids that
+// happen to be valid identifiers -- `  roi(root) {` with no quotes at all.
+function rendererStarts(src) {
+  return [...src.matchAll(/^ {2}(?:(['"])([A-Za-z0-9-]+)\1|([A-Za-z][\w$]*))\s*[:(]/gm)]
+    .map((m) => ({ id: m[2] || m[3], index: m.index }));
+}
+
 /**
  * @returns {Map<string, Map<string, Map<string, string>>>} tile id -> DOM id -> value -> option text
  */
@@ -119,11 +127,9 @@ export function loadOptionLabels() {
   for (const file of readdirSync(VIEWS).filter((f) => f.endsWith('.js'))) {
     const src = readFileSync(join(VIEWS, file), 'utf8');
     const consts = moduleConsts(src);
-    // Renderer blocks are `  'tile-id'(root) {` / `  'tile-id': (root) => {`
-    // at one indent inside the exported `renderers` object.
-    const starts = [...src.matchAll(/^ {2}(['"])([A-Za-z0-9-]+)\1\s*[:(]/gm)];
+    const starts = rendererStarts(src);
     for (let i = 0; i < starts.length; i++) {
-      const id = starts[i][2];
+      const id = starts[i].id;
       const end = i + 1 < starts.length ? starts[i + 1].index : src.length;
       const map = scanBlock(src.slice(starts[i].index, end), consts);
       if (map.size && !byTile.has(id)) byTile.set(id, map);
@@ -145,5 +151,81 @@ export function optionText(tileOptions, field, value) {
   if (!declared.length) return null;
   if (!declared.every((v) => options.has(String(v)))) return null;
   const text = options.get(String(value));
+  return typeof text === 'string' && text.trim() ? text.trim() : null;
+}
+
+// --- Field labels for the tiles with no MCP adapter.
+//
+// Twenty-four tiles are not exposed over MCP -- document builders, timers, and
+// question flows -- so there is no field registry to read a label off. Nineteen
+// of them do have a worked example in META, and their pages printed no example
+// at all: the reader was told what the tool answers without being shown one
+// filled-in run of it.
+//
+// The label is in the view, in the same call that names the DOM id:
+// `field('Insertion timestamp', 'dd-ins', ...)`. Only calls to a field-building
+// helper are read -- `setAttribute('aria-live', 'polite')` is the same shape and
+// is not a label.
+const FIELD_HELPER = /field|num|select|check|number|grade|scale|point|score|money|range|date|textarea|pick|time|text/i;
+// `f29d` / `s29d` and friends: the same helpers, named for the spec that added
+// them rather than for what they build.
+const FIELD_HELPER_ALIAS = /^[fs]\d*[a-z]*$/i;
+const isFieldHelper = (name) => FIELD_HELPER.test(name) || FIELD_HELPER_ALIAS.test(name);
+
+/**
+ * @returns {Map<string, Map<string, string>>} tile id -> DOM id -> field label
+ */
+export function loadFieldLabels() {
+  const byTile = new Map();
+  for (const file of readdirSync(VIEWS).filter((f) => f.endsWith('.js'))) {
+    const src = readFileSync(join(VIEWS, file), 'utf8');
+    const starts = rendererStarts(src);
+    for (let i = 0; i < starts.length; i++) {
+      const id = starts[i].id;
+      if (byTile.has(id)) continue;
+      const end = i + 1 < starts.length ? starts[i + 1].index : src.length;
+      const block = src.slice(starts[i].index, end);
+      const map = new Map();
+      const rx = /([A-Za-z_$][\w$]*)\(\s*(['"`])((?:[^'"`\\]|\\.){2,160}?)\2\s*,\s*(['"])([a-z][\w-]*)\4/g;
+      let m;
+      while ((m = rx.exec(block))) {
+        const [, helper, , label, , dom] = m;
+        if (!isFieldHelper(helper)) continue;
+        if (!/[A-Za-z]/.test(label)) continue;
+        if (!map.has(dom)) map.set(dom, label.trim());
+      }
+      // `el('label', { for: 'dom-id', text: 'Label' })`: the label element
+      // written out by hand, in either key order.
+      const forFirst = /\bfor:\s*(['"])([a-z][\w-]*)\1\s*,\s*text:\s*(['"`])((?:[^'"`\\]|\\.){2,160}?)\3/g;
+      const textFirst = /\btext:\s*(['"`])((?:[^'"`\\]|\\.){2,160}?)\1\s*,\s*for:\s*(['"])([a-z][\w-]*)\3/g;
+      for (const m of block.matchAll(forFirst)) if (!map.has(m[2])) map.set(m[2], m[4].trim());
+      for (const m of block.matchAll(textFirst)) if (!map.has(m[4])) map.set(m[4], m[2].trim());
+
+      // Several tiles list their fields as `[label, id]` tuples and build them
+      // in a loop, so the label never appears in the same call as the id. The
+      // pair is read label-first: an option list is `[value, text]`, the other
+      // way round, and its first element is the token, not the sentence.
+      const tuple = /\[\s*(['"`])((?:[^'"`\\]|\\.){2,160}?)\1\s*,\s*(['"])([a-z][\w-]*)\3\s*[,\]]/g;
+      let t;
+      while ((t = tuple.exec(block))) {
+        const label = t[2].trim();
+        const dom = t[4];
+        if (map.has(dom) || !/[A-Za-z]/.test(label)) continue;
+        if (!/[A-Z]/.test(label) && !label.includes(' ')) continue;
+        map.set(dom, label);
+      }
+      if (map.size) byTile.set(id, map);
+    }
+  }
+  return byTile;
+}
+
+/**
+ * The option text for a raw value on a tile with no MCP registry entry to
+ * check against. Per-tile scoping is the only guard available here, and it is
+ * the one that matters: the map came from this tile's own renderer block.
+ */
+export function looseOptionText(tileOptions, dom, value) {
+  const text = tileOptions?.get(dom)?.get(String(value));
   return typeof text === 'string' && text.trim() ? text.trim() : null;
 }
