@@ -40,10 +40,10 @@ function loadToolCopy() {
   }
 }
 
-function tileDesc(id) {
+function tileDesc(id, name = '') {
   let rec = null;
   try { rec = getCalculator(id); } catch { rec = null; }
-  return tileLine(TOOL_COPY.get(id) || rec?.summary || '');
+  return tileLine(TOOL_COPY.get(id) || rec?.summary || '', { name });
 }
 const DIST = join(ROOT, 'dist');
 const SITE = 'https://sophiewell.com';
@@ -320,7 +320,7 @@ async function main() {
     const hub = HUBS[audKey];
     const matched = tiles
       .filter((t) => t.audiences.includes(audKey))
-      .map((t) => ({ ...t, desc: descriptions.get(t.id) || tileDesc(t.id) }));
+      .map((t) => ({ ...t, desc: descriptions.get(t.id) || tileDesc(t.id, t.name) }));
     const byGroup = {};
     for (const t of matched) {
       (byGroup[t.group] ||= []).push(t);

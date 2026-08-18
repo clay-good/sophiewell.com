@@ -43,10 +43,10 @@ function loadToolCopy() {
   }
 }
 
-function tileDesc(id) {
+function tileDesc(id, name = '') {
   let rec = null;
   try { rec = getCalculator(id); } catch { rec = null; }
-  return tileLine(TOOL_COPY.get(id) || rec?.summary || '');
+  return tileLine(TOOL_COPY.get(id) || rec?.summary || '', { name });
 }
 const DIST = join(ROOT, 'dist');
 const SITE = 'https://sophiewell.com';
@@ -458,7 +458,7 @@ async function main() {
         console.warn(`build-topic-pages: topic "${topic.slug}" references unknown tile "${id}" - skipping.`);
         continue;
       }
-      resolved.push({ ...t, desc: descriptions.get(id) || tileDesc(id) });
+      resolved.push({ ...t, desc: descriptions.get(id) || tileDesc(id, t.name) });
     }
     if (resolved.length === 0) {
       console.warn(`build-topic-pages: topic "${topic.slug}" has zero resolved tiles - skipping page.`);

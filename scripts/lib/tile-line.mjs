@@ -26,12 +26,39 @@ const SENTENCE_MAX = 130;
 // with a mark on the end.
 const CLAMP_AT = 110;
 
-export function tileLine(text) {
+// A clause shorter than this names too little to be a row on its own -- "MELD
+// 3.0" is not a description. Below it, fall through to the character clamp.
+const MIN_CLAUSE = 22;
+
+// A row that restates the name printed directly above it says nothing. The
+// name is passed in so the clause cut can be refused when it lands there.
+const sameAs = (a, b) => a.replace(/[^a-z0-9]/gi, '').toLowerCase() === b.replace(/[^a-z0-9]/gi, '').toLowerCase();
+
+export function tileLine(text, { name = '' } = {}) {
   const full = (text || '').trim();
   if (!full) return '';
   const lead = (splitLead(full)?.lead || full).trim();
   if (lead.length <= SENTENCE_MAX) {
     return /[.!?]$/.test(lead) ? lead : `${lead}.`;
+  }
+  // Too long to print whole. These sentences are built the same way -- a
+  // clause naming the tool, then a colon or a dash, then the definition it
+  // expands into -- so the boundary is already written into the text. Cutting
+  // there ends the row on a finished thought and a full stop:
+  //
+  //   "E&M level by medical decision making: the level from the two-of-three
+  //    highest of problems, data, and risk…"        (cut before the payload)
+  //   "E&M level by medical decision making."       (a line, and shorter)
+  //
+  // The list row wants the name of the thing; the definition is on the page it
+  // links to.
+  const boundary = lead.search(/:| - |;/);
+  if (boundary >= MIN_CLAUSE && boundary <= CLAMP_AT) {
+    const clause = lead.slice(0, boundary).trimEnd().replace(/[,:;-]+$/, '');
+    // Unless the clause is just the name again, in which case the row would
+    // print "MELD 3.0" under a heading reading "MELD 3.0". Keep the long form:
+    // a cut line that adds something beats a short one that adds nothing.
+    if (!name || !sameAs(clause, name)) return `${clause}.`;
   }
   const cut = lead.slice(0, CLAMP_AT);
   const sp = cut.lastIndexOf(' ');

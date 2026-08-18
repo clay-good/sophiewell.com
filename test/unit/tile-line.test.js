@@ -27,8 +27,11 @@ test('a sentence too long to print is clamped at a word boundary and marked', ()
 });
 
 test('a clamped line never ends mid-word', () => {
-  const line = tileLine(`Modified NIH Stroke Scale (Meyer 2002): the eleven retained items covering level of consciousness, gaze, visual fields, and the rest of the exam.`);
-  assert.ok(line.endsWith('…'));
+  // No colon, dash or semicolon anywhere, so there is no boundary to cut at
+  // and the character clamp is what runs. (An input carrying a boundary now
+  // takes the clause path instead -- see the tests at the bottom of this file.)
+  const line = tileLine(`Modified NIH Stroke Scale scoring the eleven retained items covering level of consciousness, gaze, visual fields, motor function and the rest of the exam.`);
+  assert.ok(line.endsWith('…'), line);
   const lastWord = line.slice(0, -1).trim().split(' ').pop();
   assert.ok(/^[\w()/-]+$/.test(lastWord), lastWord);
 });
@@ -107,4 +110,37 @@ test('fieldName cuts an over-long label at its appositive comma', () => {
 test('fieldName leaves a comma inside a label that already fits', () => {
   assert.equal(fieldName('Skin stage, active erythema only'), 'Skin stage, active erythema only');
   assert.equal(fieldName('Age, in years'), 'Age, in years');
+});
+
+// --- The clause boundary a long tile line already carries.
+//
+// 2,482 of the 3,329 rows on the hub and topic pages ended in a cut mark: the
+// first sentence of most tiles runs past the line budget, so the row was
+// clamped at a word boundary and stopped just before the part that said what
+// the tool does. These sentences are built the same way -- a clause naming the
+// tool, then a colon or a dash, then the definition -- so the boundary is
+// already written into the text.
+test('tileLine cuts a long line at the boundary the sentence already has', () => {
+  assert.equal(
+    tileLine('E&M level by medical decision making: the level from the two-of-three highest of problems, data, and risk, with the audit trail for each.'),
+    'E&M level by medical decision making.',
+  );
+  assert.equal(
+    tileLine('Medicare PFS payment from RVUs: (work x workGPCI + PE x peGPCI + MP x mpGPCI) x the conversion factor x units, rounded to the cent and shown per line.'),
+    'Medicare PFS payment from RVUs.',
+  );
+});
+
+// A row printed under a heading that already says the name gains nothing by
+// repeating it. Fifteen rows did.
+test('tileLine refuses a clause cut that only restates the tile name', () => {
+  const text = 'MELD 3.0 liver allocation score: the current OPTN score, adding female sex and albumin and refitting every coefficient from MELD-Na.';
+  assert.equal(tileLine(text, { name: 'MELD 3.0 Liver Allocation Score' }).endsWith('…'), true);
+  assert.equal(tileLine(text, { name: 'Something Else' }), 'MELD 3.0 liver allocation score.');
+  assert.equal(tileLine(text), 'MELD 3.0 liver allocation score.');
+});
+
+// A sentence that fits is still printed whole, boundary or not.
+test('tileLine leaves a short sentence alone even when it has a colon', () => {
+  assert.equal(tileLine('Wells score: pulmonary embolism.'), 'Wells score: pulmonary embolism.');
 });

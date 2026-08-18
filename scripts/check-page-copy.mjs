@@ -157,6 +157,13 @@ function main() {
     }
   }
 
+  // A hub row that ends in a cut mark stops before it has said what the tool
+  // does. 2,482 of 3,329 rows did, because the first sentence of most tiles
+  // runs past the line budget. Cutting at the boundary the sentence already
+  // carries -- the colon before the definition -- takes that to 751. A
+  // ratchet, so the fraction can only fall.
+  const CUT_ROWS_MAX = 751;
+
   // The list pages: a cut mark means text was cut.
   let listRows = 0;
   let markedRows = 0;
@@ -176,6 +183,10 @@ function main() {
         if (line.endsWith('...')) failures.push(`${dir}/${slug}: a list row ends in "..." rather than a single ellipsis: ${line.slice(-60)}`);
       }
     }
+  }
+
+  if (markedRows > CUT_ROWS_MAX) {
+    failures.push(`${markedRows} of ${listRows} hub and topic rows end in a cut mark (max ${CUT_ROWS_MAX})`);
   }
 
   if (failures.length) {
