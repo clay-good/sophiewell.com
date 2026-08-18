@@ -38,14 +38,15 @@ function enumExampleValues() {
   return out;
 }
 
-// Measured when the extractor landed: 636 of 1,465 enum example values across
-// the catalog resolve to the option text. The rest are selects whose options
-// are built at render time from a lib constant, which is not statically
-// readable; those keep printing the raw value, as they always did.
-const MIN_RESOLVED = 636;
+// A ratchet, measured: 863 of 1,465 enum example values across the catalog
+// resolve to the option text. It started at 636 -- the three shapes below,
+// added later, account for the rest. What still does not resolve is a select
+// whose options are computed at render time rather than named anywhere, and
+// those keep printing the raw value, as they always did.
+const MIN_RESOLVED = 863;
 
-test('the option text still resolves for as many example values as it did', () => {
-  const labels = loadOptionLabels();
+test('the option text still resolves for as many example values as it did', async () => {
+  const labels = await loadOptionLabels();
   const resolved = enumExampleValues().filter(({ id, field, value }) => optionText(labels.get(id), field, value));
   assert.ok(
     resolved.length >= MIN_RESOLVED,
@@ -57,8 +58,8 @@ test('the option text still resolves for as many example values as it did', () =
 // A DOM id is unique inside a tile, not across the catalog. `lf-type` is a Le
 // Fort fracture level in one tile and a Lisfranc injury pattern in another; a
 // globally-keyed map would print one tile's options on the other tile's page.
-test('option maps do not leak between tiles that share a DOM id', () => {
-  const labels = loadOptionLabels();
+test('option maps do not leak between tiles that share a DOM id', async () => {
+  const labels = await loadOptionLabels();
   const leFort = labels.get('le-fort')?.get('lf-type');
   const lisfranc = labels.get('lisfranc-myerson')?.get('lf-type');
   assert.ok(leFort && lisfranc, 'both tiles should have their own lf-type options');
@@ -81,8 +82,8 @@ test('a map that does not cover the declared values is refused', () => {
 
 // Every resolved label has to be readable on its own: a blank or duplicated
 // option text names nothing.
-test('resolved option text is distinct within its select', () => {
-  const labels = loadOptionLabels();
+test('resolved option text is distinct within its select', async () => {
+  const labels = await loadOptionLabels();
   for (const { id, field } of enumExampleValues()) {
     const options = labels.get(id)?.get(field.dom);
     if (!options) continue;
@@ -91,6 +92,56 @@ test('resolved option text is distinct within its select', () => {
     const texts = declared.map((v) => options.get(v).trim());
     assert.ok(texts.every(Boolean), `${id}/${field.dom} has a blank option text`);
     assert.equal(new Set(texts).size, texts.length, `${id}/${field.dom} has duplicate option text`);
+  }
+});
+
+// --- The three shapes the first cut could not read.
+//
+// Each was found the same way: a page in `dist/tools/` printing a token no
+// reader has ever seen on screen. They are asserted by name because the
+// aggregate ratchet above moves by hundreds and would not notice one shape
+// regressing while another improved.
+
+test('a select whose id sits in its attribute object resolves', async () => {
+  // views/group-g.js: el('select', { id: 'bp-c' }, [el('option', ...), ...]).
+  // The option array follows the attribute object, not the id, so the
+  // "id then list" scan walked straight past it and the page said "medium".
+  const options = (await loadOptionLabels()).get('bishop')?.get('bp-c');
+  assert.equal(options?.get('medium'), 'Medium');
+  assert.equal(options?.get('firm'), 'Firm');
+});
+
+test('a field descriptor object built in a loop resolves', async () => {
+  // views/group-v645.js: { key, dom: 'cheops-cry', label, opts: [[value, text]] }
+  // at module scope, so it is outside every renderer block. Adopted here only
+  // because the id is prefixed with the tile's own id.
+  const options = (await loadOptionLabels()).get('cheops')?.get('cheops-touch');
+  assert.equal(options?.get('nottouching'), 'Not touching (1)');
+});
+
+test('an option list held in lib/ resolves through the call that reshapes it', async () => {
+  // views/group-v584.js: select('Disease stage', 'ebmt-stage', opts(M.STAGE_BANDS)).
+  // The labels are exported from lib/ebmt-score-v584.js and the view only
+  // reshapes them, so the lib module is imported and the array read directly.
+  const labels = await loadOptionLabels();
+  assert.equal(labels.get('ebmt-score')?.get('ebmt-stage')?.get('late'), 'Late');
+  assert.equal(labels.get('ebmt-score')?.get('ebmt-age')?.get('over-40'), 'Over 40 years');
+  // CHOICE(SEX): a helper that prepends a blank row and passes the list on.
+  assert.equal(labels.get('meld3')?.get('m3-sex')?.get('female'), 'Female');
+});
+
+// A lib module exports its scoring tables and its threshold arrays alongside
+// its option lists. Only an array whose every element carries both a value and
+// a text is an option list; anything else would map a value onto a number.
+test('a lib array that is not an option list is not read as one', async () => {
+  const labels = await loadOptionLabels();
+  for (const byDom of labels.values()) {
+    for (const options of byDom.values()) {
+      for (const text of options.values()) {
+        assert.equal(typeof text, 'string');
+        assert.ok(text.trim(), 'an option list mapped a value onto blank text');
+      }
+    }
   }
 });
 

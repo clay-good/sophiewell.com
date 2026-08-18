@@ -36,12 +36,16 @@ const TOOLS = join(ROOT, 'dist', 'tools');
 const LEDE_MAX = 260;
 
 // Example rows still printing a raw option token, because their select is
-// built at render time from a lib constant and cannot be read statically.
-const RAW_VALUE_ROWS_MAX = 130;
+// built at render time and its options are named nowhere a build step can
+// read. Was 130 before scripts/lib/option-labels.mjs learned to read a select
+// whose id sits in its attribute object, a field descriptor built in a loop,
+// and an option list exported from lib/.
+const RAW_VALUE_ROWS_MAX = 70;
 
 // Example labels with no name in front of the criterion, so nothing shorter
-// than the clamp can be printed.
-const CLAMPED_LABELS_MAX = 60;
+// than the clamp can be printed. Was 60 before the value legend an
+// agent-facing label carries inline was stripped ahead of the trim.
+const CLAMPED_LABELS_MAX = 22;
 
 // Hub and topic list rows: a row may be clamped, but a clamped row must be
 // marked with an ellipsis and a marked row must actually have been clamped.

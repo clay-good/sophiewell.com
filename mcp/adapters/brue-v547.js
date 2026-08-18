@@ -37,10 +37,17 @@ export default [
         dom: 'brue-qualifiesAsBrue', arg: 'qualifiesAsBrue', kind: 'enum', values: ['no', 'yes'], required: true,
         label: 'Does the event meet the BRUE definition - sudden, brief, now resolved, with a qualifying feature, and NO explanation identified after an appropriate history and physical examination? This is a gate: answer no and nothing further is scored, because BRUE is a diagnosis of exclusion.',
       },
-      ...B.BRUE_LOWER_RISK_CRITERIA.map((c) => ({
-        dom: `brue-${c.key}`, arg: c.key, kind: 'enum', values: ['no', 'yes'],
-        label: `${c.text}${c.detail ? `. ${c.detail}` : ''} Required only when the event qualifies as a BRUE. All seven are conjunctive: failing this one alone makes the infant higher-risk.`,
-      })),
+      // `c.text` is a criterion, not a sentence, so most carry no terminator.
+      // Joined straight onto the shared suffix it read as one run-on -- "No CPR
+      // by a trained medical provider was required Required only when..." --
+      // and nothing downstream could find the end of the criterion.
+      ...B.BRUE_LOWER_RISK_CRITERIA.map((c) => {
+        const head = `${c.text}${c.detail ? `. ${c.detail}` : ''}`.trim();
+        return {
+          dom: `brue-${c.key}`, arg: c.key, kind: 'enum', values: ['no', 'yes'],
+          label: `${/[.!?]$/.test(head) ? head : `${head}.`} Required only when the event qualifies as a BRUE. All seven are conjunctive: failing this one alone makes the infant higher-risk.`,
+        };
+      }),
     ],
   },
 ];

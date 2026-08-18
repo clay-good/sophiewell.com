@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `cafcacb361ec90f1`
-Generated: 2026-08-17T21:24:21.893Z
+Build ID: `bd9e4e0e3f8c3a10`
+Generated: 2026-08-18T12:04:22.037Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -25,12 +25,12 @@ downloads is committed in this repository and is hashed below.
 | Path | Bytes | SHA-256 |
 |---|---:|---|
 | `index.html` | 101421 | `c6bf7d4c523e4e3a16ae2c4918b2935b32f2e0df8aa35a7ae3463393f4810e69` |
-| `styles.css` | 50089 | `d8ac6bf6e1a9f621dcfb28218092ce7e915ce9ab8091bb2c629dbc16eadbec0f` |
+| `styles.css` | 51028 | `677ea6a109108660fec69f132a8572e9854398e21f6814a876f54f2666d9ccb6` |
 | `app.js` | 420733 | `c0f61c27624d6f61dd81bddeffc5d5f3d3cafa8dc39099fd06ef96c8290e5fa3` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 239945 | `435e75f3fe1cfdf75b3eb10cebceaa3b403d2e83c4c9fefd47d33fa1784a25c4` |
+| `sitemap.xml` | 239945 | `291b5c8ac5b31e8552a9037fbbd06dc45a198ed57f802a808bb2aa3f47774d71` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -371,7 +371,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/liver-v196.js` | 11726 | `655b4f9f7fc646dc4f0dea656563175d56cd862381d75acfb1a9fe25f2db6f3d` |
 | `lib/lodwick-grade-v496.js` | 3715 | `8c5aee72ee779640837fa2cba4ae459aff9e50b9c76c6da64751c2077ae3f283` |
 | `lib/loe-silness-gingival-index-v722.js` | 3556 | `256b3056d2f235eaf93f210bb3453cd9078261ae090cbd71afc05696d71661d4` |
-| `lib/long-note.js` | 3637 | `f2229f198254030a07c8d40c42672d9d251f4dfd6877c57e9858b2b118aecd23` |
+| `lib/long-note.js` | 3896 | `fe05dab577e70931ef3737a31def26cd52f313a87f1a6f25b21d4fb9f0f0090d` |
 | `lib/lown-ectopy-v493.js` | 3439 | `01a09f6591bd9b5920fbbde72749e59fa8f2d9d0b158f0f1e25f5a8c0fefefb4` |
 | `lib/ltcga-v173.js` | 8751 | `ccfa88577d21bee98dd73f65f49af5f7dcd68c45a8c0dbc08e2e35de6e2f8c63` |
 | `lib/ltcga-v174.js` | 14382 | `6e634584422770963d6b44b35106c7648c7c4e22cc0687b2d58a318294815403` |

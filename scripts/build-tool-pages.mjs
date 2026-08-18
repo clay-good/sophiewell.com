@@ -31,7 +31,7 @@ import { splitLead } from '../lib/long-note.js';
 // The option TEXT behind an example's raw `<option value>`, read out of the
 // view that builds the select. See scripts/lib/option-labels.mjs.
 import { loadOptionLabels, loadFieldLabels, optionText, looseOptionText } from './lib/option-labels.mjs';
-import { fieldName } from './lib/tile-line.mjs';
+import { fieldName, stripLegend } from './lib/tile-line.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
@@ -273,15 +273,17 @@ function inputLabels(tileId) {
 const MAX_EXAMPLE_ROWS = 10;
 
 // A field label leads with the name of the thing and then qualifies it, so the
-// lead worth keeping is often just two words ("Patient age."). The paragraph
-// default would refuse that as a fragment and print the whole label instead.
-const FIELD_MIN_LEAD = 10;
+// lead worth keeping is often just two words ("Patient age.") and sometimes
+// one ("Tremor.", "Fever.", "Sex."). The paragraph default would refuse those
+// as fragments and print the whole label -- the qualification included -- so
+// the floor here is a single short word rather than a phrase.
+const FIELD_MIN_LEAD = 4;
 
 // The name of the thing, not the explanation of it. Field labels lead with a
 // noun phrase and then qualify it; the example row wants only the noun phrase,
 // without the trailing scale legend that several instruments append.
 function shortLabel(raw) {
-  const text = (raw || '').trim();
+  const text = stripLegend(raw);
   if (!text) return '';
   const lead = (splitLead(text, { minLead: FIELD_MIN_LEAD })?.lead || text).trim();
   const stripped = lead.replace(/\s*[([][^()[\]]*[)\]]\s*\.?$/, '').trim();
@@ -529,7 +531,13 @@ ${related.map((r) => `          <li><a href="${SITE}/tools/${r.id}/">${esc(r.nam
   const extraLine = extraLabels > 0
     ? `<li>and ${extraLabels} more field${extraLabels === 1 ? '' : 's'}</li>`
     : '';
-  const leads = shownLabels.map((l) => splitLead(l, { minLead: FIELD_MIN_LEAD })?.lead || l);
+  // The value legend goes first: it is the picklist the reader is looking at,
+  // and its inline periods otherwise end the first-sentence trim inside the
+  // brackets ("... 0 = None of the time." with the bracket left open).
+  const leads = shownLabels.map((l) => {
+    const t = stripLegend(l);
+    return splitLead(t, { minLead: FIELD_MIN_LEAD })?.lead || t;
+  });
   const trimmed = leads.some((lead, i) => lead !== shownLabels[i]);
   const fullHtml = trimmed
     ? `\n          <details class="tp-io-full">
@@ -723,7 +731,7 @@ async function main() {
   const [tiles, descriptions, meta] = await Promise.all([
     loadUtilities(), loadDescriptions(), loadMeta(),
   ]);
-  const optionLabels = loadOptionLabels();
+  const optionLabels = await loadOptionLabels();
   const fieldLabels = loadFieldLabels();
 
   // spec-v76: the discovery-surface allowlists (classify()) are matched only

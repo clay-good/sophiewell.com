@@ -7,7 +7,7 @@
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { tileLine, fieldName } from '../../scripts/lib/tile-line.mjs';
+import { tileLine, fieldName, stripLegend } from '../../scripts/lib/tile-line.mjs';
 
 test('a first sentence that fits is printed whole, with no cut mark', () => {
   const line = tileLine('Score the Wells criteria for pulmonary embolism. Higher totals move the patient into the PE-likely group.');
@@ -61,4 +61,50 @@ test('a label with no separator is clamped at a word boundary', () => {
   assert.ok(out.endsWith('…'));
   assert.ok(out.length <= 80, `${out.length} chars`);
   assert.ok(!out.includes('  '));
+});
+
+// --- stripLegend: the value list an agent-facing label carries inline.
+//
+// An MCP field label enumerates its legal values because an agent passes a raw
+// token and never sees the picklist. On a page that list is the select the
+// reader is about to use, and its inline periods ended the first-sentence trim
+// *inside* the brackets: every OSDI item printed as "... 0 = None of the
+// time." with the bracket never closed.
+test('stripLegend drops a bracketed value legend', () => {
+  assert.equal(
+    stripLegend('Item 1. Light sensitivity [4 = All of the time; 3 = Most of the time; 0 = None of the time. This item does NOT accept "not applicable"]'),
+    'Item 1. Light sensitivity',
+  );
+  assert.equal(
+    stripLegend('Liver stage by bilirubin [0 = Bilirubin under 2 mg/dL; 4 = Bilirubin over 15 mg/dL]'),
+    'Liver stage by bilirubin',
+  );
+});
+
+test('stripLegend leaves a bracket that is not a value legend', () => {
+  assert.equal(stripLegend('Total kidney volume [mL]'), 'Total kidney volume [mL]');
+  assert.equal(stripLegend('S wave in V1'), 'S wave in V1');
+  assert.equal(stripLegend('Bicarbonate [HCO3-]'), 'Bicarbonate [HCO3-]');
+});
+
+// A legend mid-string is left alone: the label goes on after it, and cutting
+// there would drop text the reader needs.
+test('stripLegend only cuts a legend that runs to the end', () => {
+  const s = 'Grade [0 = none; 1 = some] measured before the matrix lookup.';
+  assert.equal(stripLegend(s), s);
+});
+
+// The last resort before a blunt character clamp. These labels qualify the
+// name with an appositive rather than a separator, so the comma is the
+// boundary and cutting there names the field.
+test('fieldName cuts an over-long label at its appositive comma', () => {
+  assert.equal(
+    fieldName('Cellularity, counted in cells per unit area at a specified magnification and therefore operator-dependent'),
+    'Cellularity',
+  );
+});
+
+test('fieldName leaves a comma inside a label that already fits', () => {
+  assert.equal(fieldName('Skin stage, active erythema only'), 'Skin stage, active erythema only');
+  assert.equal(fieldName('Age, in years'), 'Age, in years');
 });

@@ -27,6 +27,7 @@
 // statically readable, and this fails quiet rather than wrong.
 
 import { readFileSync, readdirSync } from 'node:fs';
+import { pathToFileURL } from 'node:url';
 import { fileURLToPath } from 'node:url';
 import { join } from 'node:path';
 
@@ -68,6 +69,13 @@ function parseOptions(body) {
   const objTextFirst = new RegExp(`\\{\\s*text:\\s*${S}${TEXT}\\1\\s*,\\s*value:\\s*${S}(.*?)\\3\\s*\\}`, 'g');
   for (const m of body.matchAll(objValueFirst)) out.set(m[2], m[4]);
   for (const m of body.matchAll(objTextFirst)) out.set(m[4], m[2]);
+  // `el('option', { value: 'x', text: 'X' })` -- the same pair written as an
+  // element call rather than a plain object, which is how the older views
+  // build a select.
+  if (out.size === 0) {
+    const elValueFirst = new RegExp(`value:\\s*${S}(.*?)\\1\\s*,\\s*text:\\s*${S}${TEXT}\\3`, 'g');
+    for (const m of body.matchAll(elValueFirst)) out.set(m[2], m[4]);
+  }
   if (out.size === 0) {
     const tuple = new RegExp(`\\[\\s*${S}(.*?)\\1\\s*,\\s*${S}${TEXT}\\3\\s*\\]`, 'g');
     for (const m of body.matchAll(tuple)) out.set(m[2], m[4]);
@@ -81,21 +89,133 @@ function parseOptions(body) {
 // overwrite the real one.
 function scanBlock(src, consts) {
   const map = new Map();
-  const rx = /(['"])([A-Za-z][\w-]*)\1\s*,\s*(\[|[A-Za-z_$][\w$]*)/g;
+  const put = (dom, options) => {
+    if (dom && options && options.size && !map.has(dom)) map.set(dom, options);
+  };
+
+  // `el('select', { id: 'dom-id' }, [ el('option', ...), ... ])`: the id is
+  // inside the attribute object, so the option array does not follow the id
+  // directly -- it follows the object's closing brace.
+  const inAttrs = /id:\s*(['"])([A-Za-z][\w-]*)\1[^{}]*\}\s*,\s*\[/g;
+  let a;
+  while ((a = inAttrs.exec(src))) {
+    const arr = sliceArray(src, inAttrs.lastIndex - 1);
+    if (arr) put(a[2], parseOptions(arr));
+  }
+
+  // `'dom-id', [...]`, `'dom-id', CONST`, `'dom-id', M.CONST`, and the wrapped
+  // form `'dom-id', CHOICE(CONST)` -- a helper that prepends a blank "choose"
+  // row and otherwise passes the list through untouched. Only a call whose
+  // single argument is a list already known by name is unwrapped; anything
+  // computed stays unresolved.
+  const rx = /(['"])([A-Za-z][\w-]*)\1\s*,\s*(\[|[A-Za-z_$][\w$.]*\s*\(\s*[A-Za-z_$][\w$.]*\s*\)|[A-Za-z_$][\w$.]*)/g;
   let m;
   while ((m = rx.exec(src))) {
     const dom = m[2];
     if (map.has(dom)) continue;
     let options = null;
-    if (m[3] === '[') {
+    const token = m[3].trim();
+    if (token === '[') {
       const arr = sliceArray(src, rx.lastIndex - 1);
       if (arr) options = parseOptions(arr);
-    } else if (consts.has(m[3])) {
-      options = consts.get(m[3]);
+    } else {
+      const call = token.match(/^[A-Za-z_$][\w$.]*\s*\(\s*([A-Za-z_$][\w$.]*)\s*\)$/);
+      const name = call ? call[1] : token;
+      if (consts.has(name)) options = consts.get(name);
     }
-    if (options && options.size) map.set(dom, options);
+    put(dom, options);
   }
   return map;
+}
+
+// --- Option lists that live in `lib/`, not in the view.
+//
+// A view routinely writes `select('Disease stage', 'ebmt-stage', opts(M.STAGE_BANDS))`:
+// the labels are in the lib module the tile computes with, and the view only
+// reshapes them. Reading them back out of the source is hopeless -- so the lib
+// module is imported and the array read directly. These modules are pure
+// arithmetic and touch no DOM, which is why they can be loaded under Node at
+// all; anything that throws on import is skipped and its tile falls back to the
+// raw value, same as before.
+//
+// An array counts as an option list only when every element carries a value and
+// a text, in either the object or the tuple form. That rules out the score
+// tables and threshold arrays that sit beside them in the same module.
+function optionsFromArray(arr) {
+  if (!Array.isArray(arr) || !arr.length) return null;
+  const out = new Map();
+  for (const item of arr) {
+    if (Array.isArray(item)) {
+      if (item.length < 2 || typeof item[1] !== 'string') return null;
+      out.set(String(item[0]), item[1]);
+      continue;
+    }
+    if (!item || typeof item !== 'object') return null;
+    const { value, text } = item;
+    if (value === undefined || typeof text !== 'string') return null;
+    out.set(String(value), text);
+  }
+  return out.size ? out : null;
+}
+
+async function importedConsts(src, fileUrl) {
+  const consts = new Map();
+  const rx = /import\s+(?:\*\s+as\s+([A-Za-z_$][\w$]*)|\{([^}]*)\})\s+from\s+(['"])([^'"]+)\3/g;
+  let m;
+  while ((m = rx.exec(src))) {
+    const [, namespace, named, , spec] = m;
+    if (!spec.startsWith('.')) continue;
+    let mod;
+    try {
+      mod = await import(new URL(spec, fileUrl).href);
+    } catch {
+      continue;
+    }
+    if (namespace) {
+      for (const [key, value] of Object.entries(mod)) {
+        const options = optionsFromArray(value);
+        if (options) consts.set(`${namespace}.${key}`, options);
+      }
+      continue;
+    }
+    for (const part of named.split(',')) {
+      const name = part.trim().split(/\s+as\s+/).pop().trim();
+      if (!name) continue;
+      const options = optionsFromArray(mod[name]);
+      if (options) consts.set(name, options);
+    }
+  }
+  return consts;
+}
+
+// Field descriptor objects -- `{ key, dom: 'dom-id', label, opts: [...] }` --
+// listed once and built in a loop. These sit at module scope, outside every
+// renderer block, so the per-tile scan cannot see them.
+//
+// Scoping is recovered rather than dropped: a descriptor is offered to a tile
+// only when the renderer block names the DOM id outright, or the id is
+// prefixed with the tile's own id (`cheops-cry` belongs to `cheops`), or the
+// file defines a single renderer and there is nothing else it could belong to.
+// The registry check in `optionText` still has to pass on top of that.
+function moduleDescriptors(src) {
+  const map = new Map();
+  const rx = /dom:\s*(['"])([A-Za-z][\w-]*)\1[\s\S]{0,200}?\bopts:\s*\[/g;
+  let m;
+  while ((m = rx.exec(src))) {
+    const arr = sliceArray(src, rx.lastIndex - 1);
+    if (!arr || map.has(m[2])) continue;
+    const options = parseOptions(arr);
+    if (options.size) map.set(m[2], options);
+  }
+  return map;
+}
+
+function adoptDescriptors(map, descriptors, tileId, block, soleRenderer) {
+  for (const [dom, options] of descriptors) {
+    if (map.has(dom)) continue;
+    if (!(soleRenderer || dom.startsWith(`${tileId}-`) || block.includes(`'${dom}'`) || block.includes(`"${dom}"`))) continue;
+    map.set(dom, options);
+  }
 }
 
 // Module-level `const NAME = [...]` option lists, shared by several renderers
@@ -122,16 +242,25 @@ function rendererStarts(src) {
 /**
  * @returns {Map<string, Map<string, Map<string, string>>>} tile id -> DOM id -> value -> option text
  */
-export function loadOptionLabels() {
+export async function loadOptionLabels() {
   const byTile = new Map();
   for (const file of readdirSync(VIEWS).filter((f) => f.endsWith('.js'))) {
-    const src = readFileSync(join(VIEWS, file), 'utf8');
+    const path = join(VIEWS, file);
+    const src = readFileSync(path, 'utf8');
     const consts = moduleConsts(src);
+    // A lib list is a fallback: a name defined in the view itself wins, since
+    // that is the list the select was actually built from.
+    for (const [name, options] of await importedConsts(src, pathToFileURL(path))) {
+      if (!consts.has(name)) consts.set(name, options);
+    }
+    const descriptors = moduleDescriptors(src);
     const starts = rendererStarts(src);
     for (let i = 0; i < starts.length; i++) {
       const id = starts[i].id;
       const end = i + 1 < starts.length ? starts[i + 1].index : src.length;
-      const map = scanBlock(src.slice(starts[i].index, end), consts);
+      const block = src.slice(starts[i].index, end);
+      const map = scanBlock(block, consts);
+      adoptDescriptors(map, descriptors, id, block, starts.length === 1);
       if (map.size && !byTile.has(id)) byTile.set(id, map);
     }
   }

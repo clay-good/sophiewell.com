@@ -39,6 +39,31 @@ export function tileLine(text) {
   return `${kept}…`;
 }
 
+// --- The value legend an agent-facing label carries, and a reader does not.
+//
+// An MCP field label enumerates its legal values inline, because an agent
+// passes a raw token and never sees the picklist:
+//
+//   "Item 1. Light sensitivity [4 = All of the time; 3 = Most of the time; ...]"
+//   "Skin stage, ACTIVE ERYTHEMA ONLY [0 = No active GVHD rash; 1 = ...]"
+//
+// On a page the reader already has that list -- it is the select they are
+// about to use -- so the legend is pure noise in front of the name. Worse, the
+// legend contains sentence-ending periods, so the first-sentence trim cut
+// *inside* it and printed rows ending on a dangling "0 = None of the time."
+// with the bracket never closed.
+//
+// A legend is recognised, not guessed at: the text has to end on `]` and the
+// bracket has to open on a `<token> = ` pair. "Weight [kg]" has no `=` and is
+// left alone.
+const LEGEND = /^([\s\S]*?[A-Za-z][\s\S]*?)\s*\[\s*[^\s=\][]{1,24}\s*=\s[\s\S]*\]$/;
+export function stripLegend(text) {
+  const s = (text || '').trim();
+  if (!s.endsWith(']')) return s;
+  const m = s.match(LEGEND);
+  return m ? m[1].trim() : s;
+}
+
 // The name of a field, for the left column of a worked example.
 //
 // An MCP registry label doubles as the field's full description, so many read
@@ -55,6 +80,14 @@ export function fieldName(text) {
   if (sep >= 8 && sep <= 70) s = s.slice(0, sep);
   s = s.replace(/[.:;,-]+$/, '').trim();
   if (s.length <= NAME_MAX) return s;
+  // Still too long, so the label qualifies its name with an appositive rather
+  // than a separator: "Cellularity, counted in cells per unit area at a
+  // specified magnification and therefore operator-dependent". The comma is
+  // the boundary, and cutting there names the field instead of ending the row
+  // on a clamped "...at a specified magnific…". Only reached when the blunt
+  // clamp is the alternative, so a short "Sex, at birth" is never touched.
+  const comma = s.indexOf(',');
+  if (comma >= 8 && comma <= 70) return s.slice(0, comma).trim();
   const cut = s.slice(0, NAME_MAX - 1);
   const sp = cut.lastIndexOf(' ');
   return `${(sp > 40 ? cut.slice(0, sp) : cut).trimEnd()}…`;

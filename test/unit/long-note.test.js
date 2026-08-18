@@ -36,6 +36,15 @@ test('splitLead skips a period that ends an abbreviation', () => {
   assert.equal(lead, 'Report the histologic grade the pathologist assigned, e.g. Grade 2, and not a diagnosis.');
 });
 
+// The abbreviation lookup read the last whitespace-delimited token, and an
+// aside opens with a bracket: "(e.g." is not "e.g.", so the check missed and
+// a field label was published cut to "Level just completed (e.g".
+test('splitLead skips an abbreviation that opens a parenthesis', () => {
+  const label = 'Level just completed (e.g. initial, redetermination, reconsideration). Pick the one you just heard back on.';
+  const { lead } = splitLead(label, { minLead: 4 });
+  assert.equal(lead, 'Level just completed (e.g. initial, redetermination, reconsideration).');
+});
+
 test('splitLead scans past a spelled-out acronym rather than leading with it', () => {
   const { lead, rest } = splitLead('S.T.O.N.E. is a five-part score for predicting spontaneous passage of a ureteral stone. It is not a treatment decision.');
   assert.ok(lead.startsWith('S.T.O.N.E. is a five-part score'));
