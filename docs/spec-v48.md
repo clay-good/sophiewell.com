@@ -102,7 +102,7 @@ in [lib/derivation.js](../lib/derivation.js) (new file). Picks up
 
 ```html
 <details class="tile-derivation">
-  <summary>Where does this come from?</summary>
+  <summary>How this is calculated</summary>
   <section>
     <h4>Formula</h4>
     <pre>{formula}</pre>

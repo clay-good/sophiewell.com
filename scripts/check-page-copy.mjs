@@ -98,6 +98,12 @@ function bare(s) {
 }
 const count = (s, ch) => s.split(ch).length - 1;
 
+// Two labels reading as the same question. Provenance words are what made the
+// old pair indistinguishable, so a label is "about the source" if it carries
+// any of them, and two such labels next to each other is the failure.
+const PROVENANCE = /\b(source|sources|citation|citations|reference|references|come from|comes from|where from|proof|evidence)\b/i;
+const overlaps = (a, b) => PROVENANCE.test(a) && PROVENANCE.test(b);
+
 // `<title>` and the description are attribute/element text, so they are read
 // back escaped; compare the characters a reader sees, not the entities.
 const decode = (s) => s
@@ -380,6 +386,22 @@ async function main() {
   } else if (pageSummary && appSummary[1] !== pageSummary) {
     failures.push(
       `the app calls the citation disclosure "${appSummary[1]}" and the static pages call it "${pageSummary}"`,
+    );
+  }
+
+  // The app puts a second disclosure directly above the citation one, holding
+  // the formula and the working. Both were named for provenance -- "Where does
+  // this come from?" over "Citation and sources" -- so on the 126 tiles that
+  // have both, the reader opened one to learn it was the other they wanted.
+  // The two controls have to ask different questions.
+  const derivSummary = readFileSync(join(ROOT, 'lib', 'derivation.js'), 'utf8')
+    .match(/el\('summary', \{ text: '([^']+)' \}\)/);
+  if (!derivSummary) {
+    failures.push('lib/derivation.js no longer names its disclosure where this check can read it');
+  } else if (appSummary && overlaps(derivSummary[1], appSummary[1])) {
+    failures.push(
+      `the method disclosure "${derivSummary[1]}" reads as the same question as the citation one ` +
+        `"${appSummary[1]}"; the two sit next to each other and have to be told apart`,
     );
   }
 
