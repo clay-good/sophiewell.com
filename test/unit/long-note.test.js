@@ -94,6 +94,32 @@ function stubDocument() {
         other.parent = this.parent;
         return other;
       },
+      get parentNode() { return this.parent; },
+      insertBefore(other, ref) {
+        if (other.parent) other.parent.children.splice(other.parent.children.indexOf(other), 1);
+        const at = ref ? this.children.indexOf(ref) : this.children.length;
+        this.children.splice(at < 0 ? this.children.length : at, 0, other);
+        other.parent = this;
+        return other;
+      },
+      remove() {
+        if (!this.parent) return;
+        this.parent.children.splice(this.parent.children.indexOf(this), 1);
+        this.parent = null;
+      },
+      // Only the one selector `hoistIntroNote` uses.
+      querySelector(sel) {
+        if (sel !== '[aria-live]') throw new Error('stub only knows [aria-live]: ' + sel);
+        const walk = (n) => {
+          for (const c of n.children) {
+            if (c.attrs['aria-live']) return c;
+            const hit = walk(c);
+            if (hit) return hit;
+          }
+          return null;
+        };
+        return walk(this);
+      },
     };
     return node;
   };
@@ -154,4 +180,116 @@ test('splitLead ends a lede where the author ended the sentence', () => {
   // "vs." is an abbreviation, not a sentence end, so the lede does not stop there.
   assert.ok(!lead.endsWith('vs.'), 'lede stopped on an abbreviation');
   assert.ok(lead.endsWith('by immunization history.'));
+});
+
+// --- hoistIntroNote: the static explanation a tile writes into its own
+// aria-live results region.
+//
+// 964 tiles appended 400 to 3,051 characters of constant prose inside
+// `#q-results` on every recompute, so a screen reader re-announced all of it
+// on every keystroke and the fold above would not touch it -- correctly, since
+// it will not reach into a live region.
+
+function tileWith(doc, noteText) {
+  const body = doc.createElement('div');
+  const live = doc.createElement('div');
+  live.setAttribute('aria-live', 'polite');
+  body.appendChild(live);
+  const result = doc.createElement('ul');
+  result.textContent = 'Score 5 of 9';
+  live.appendChild(result);
+  const note = doc.createElement('p');
+  note.setAttribute('class', 'muted');
+  note.textContent = noteText;
+  live.appendChild(note);
+  return { body, live, note };
+}
+
+test('hoistIntroNote moves the note out of the live region and folds it', async () => {
+  await withStubDom(async (doc) => {
+    const { hoistIntroNote } = await import('../../lib/long-note.js');
+    const { body, live } = tileWith(doc, LONG);
+
+    hoistIntroNote(body);
+
+    // Nothing long left inside the region that exists to announce results.
+    assert.equal(live.children.length, 1);
+    assert.equal(live.children[0].tagName, 'UL');
+    // The note now sits above it, cut to its first sentence, with the rest
+    // one click away.
+    assert.equal(body.children[0].tagName, 'P');
+    assert.ok(body.children[0].textContent.endsWith('into four groups.'));
+    assert.equal(body.children[1].tagName, 'DETAILS');
+    assert.ok(body.children[1].children[1].textContent.startsWith('Only groups 1 and 2'));
+    assert.equal(body.children[2], live);
+  });
+});
+
+test('hoistIntroNote drops the copy the next render appends', async () => {
+  await withStubDom(async (doc) => {
+    const { hoistIntroNote } = await import('../../lib/long-note.js');
+    const { body, live } = tileWith(doc, LONG);
+    const handle = hoistIntroNote(body);
+
+    // What a recompute does: clear the region, write the new result, and
+    // append the same constant again.
+    live.children.length = 0;
+    const again = doc.createElement('p');
+    again.setAttribute('class', 'muted');
+    again.textContent = LONG;
+    live.appendChild(again);
+    handle.recheck();
+
+    assert.equal(live.children.length, 0, 'the duplicate is dropped, not stacked');
+    assert.equal(body.children[1].tagName, 'DETAILS', 'the hoisted copy stays');
+  });
+});
+
+// The case this must not break: a paragraph that only looks like the static
+// note. Freezing it at its first value, or keeping it out of the live region,
+// would both be worse than leaving the tile alone.
+test('hoistIntroNote undoes itself when the text turns out to change', async () => {
+  await withStubDom(async (doc) => {
+    const { hoistIntroNote } = await import('../../lib/long-note.js');
+    const { body, live } = tileWith(doc, LONG);
+    const handle = hoistIntroNote(body);
+    assert.equal(body.children[1].tagName, 'DETAILS');
+
+    live.children.length = 0;
+    const changed = doc.createElement('p');
+    changed.setAttribute('class', 'muted');
+    changed.textContent = LONG.replace('four groups', 'five groups');
+    live.appendChild(changed);
+    handle.recheck();
+
+    assert.ok(handle.stopped(), 'stops for this tile');
+    assert.equal(live.children[0], changed, 'the computed paragraph is left where it was');
+    assert.equal(body.children[0], live, 'nothing of ours is left above it');
+  });
+});
+
+test('hoistIntroNote leaves a tile alone when two long notes are ambiguous', async () => {
+  await withStubDom(async (doc) => {
+    const { hoistIntroNote } = await import('../../lib/long-note.js');
+    const { body, live } = tileWith(doc, LONG);
+    const second = doc.createElement('p');
+    second.setAttribute('class', 'muted');
+    second.textContent = LONG.replace('four groups', 'six groups');
+    live.appendChild(second);
+
+    hoistIntroNote(body);
+
+    assert.equal(live.children.length, 3, 'both stay where the tile put them');
+    assert.equal(body.children[0], live);
+  });
+});
+
+test('hoistIntroNote ignores a short note', async () => {
+  await withStubDom(async (doc) => {
+    const { hoistIntroNote } = await import('../../lib/long-note.js');
+    const { body, live } = tileWith(doc, 'Enter the age and the reserve marker.');
+    hoistIntroNote(body);
+    assert.equal(live.children.length, 2);
+    assert.equal(body.children[0], live);
+  });
 });
