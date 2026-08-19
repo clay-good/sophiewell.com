@@ -780,11 +780,16 @@ ${related.map((r) => `          <li><a href="${SITE}/tools/${r.id}/">${esc(r.nam
     const t = stripLegend(l);
     return splitLead(t, { minLead: FIELD_MIN_LEAD })?.lead || t;
   });
-  const trimmed = leads.some((lead, i) => lead !== shownLabels[i]);
-  const fullHtml = trimmed
+  // Only the lines that were actually shortened. Emitting all of them put 42
+  // rows on 18 pages into the disclosure byte-for-byte identical to the line
+  // already above it -- `alsfrs-r` printed seven of its eight fields twice on
+  // one screen, ~250 words of it, because one other field happened to be
+  // trimmed.
+  const trimmedLabels = shownLabels.filter((l, i) => leads[i] !== l);
+  const fullHtml = trimmedLabels.length
     ? `\n          <details class="tp-io-full">
             <summary>Full field descriptions</summary>
-            <ul>${shownLabels.map((l) => `<li>${esc(l)}</li>`).join('')}</ul>
+            <ul>${trimmedLabels.map((l) => `<li>${esc(l)}</li>`).join('')}</ul>
           </details>`
     : '';
   const inputsBody = shownLabels.length

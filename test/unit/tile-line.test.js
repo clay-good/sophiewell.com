@@ -90,11 +90,36 @@ test('stripLegend leaves a bracket that is not a value legend', () => {
   assert.equal(stripLegend('Bicarbonate [HCO3-]'), 'Bicarbonate [HCO3-]');
 });
 
-// A legend mid-string is left alone: the label goes on after it, and cutting
-// there would drop text the reader needs.
-test('stripLegend only cuts a legend that runs to the end', () => {
-  const s = 'Grade [0 = none; 1 = some] measured before the matrix lookup.';
+// A legend is cut wherever it sits, and the label goes on around it. Anchoring
+// to the end of the string was how `bilsky-escc` published a 477-character
+// input row: it writes "...not a number [0 = ...; 3 = ...]. 1a, 1b and 1c are
+// DISTINCT grades", so the legend has a sentence after it and nothing matched.
+test('stripLegend cuts a legend that sits mid-label, keeping what follows', () => {
+  assert.equal(
+    stripLegend('Grade [0 = none; 1 = some] measured before the matrix lookup.'),
+    'Grade measured before the matrix lookup.',
+  );
+});
+
+// Two pairs make a legend; one is a parenthetical the label meant to say.
+test('stripLegend leaves a bracket holding a single pair', () => {
+  const s = 'Grade [0 = none] measured before the matrix lookup.';
   assert.equal(stripLegend(s), s);
+});
+
+// The pairs are divided by a semicolon on some tiles, a full stop on others,
+// and the value is often hyphenated -- so neither the divider nor the value
+// can be used to find a pair. 60 rows on 10 pages printed a whole rating scale
+// on one line because only "value = text" was recognised.
+test('stripLegend cuts a dash-separated legend', () => {
+  assert.equal(
+    stripLegend('Speech [4 - Normal speech; 3 - Detectable disturbance; 2 - Intelligible]'),
+    'Speech',
+  );
+  assert.equal(
+    stripLegend('Acuity [nlp = No light perception. pl-hm = Light perception or hand movements]'),
+    'Acuity',
+  );
 });
 
 // The last resort before a blunt character clamp. These labels qualify the

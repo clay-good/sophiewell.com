@@ -60,6 +60,12 @@ const CLAMPED_LABELS_MAX = 43;
 // back to catalog order again, which is how 1201 pages came to share one.
 const SAME_RELATED_MAX = 20;
 
+// An input row is one field on one line. A few carry a definition no shorter
+// form survives -- three rows run past this and are named in the failure so a
+// new one is visible rather than absorbed.
+const LONG_INPUT_ROW = 200;
+const LONG_INPUT_ROWS_MAX = 3;
+
 // The same name on two rows of one example, with two different values. The
 // reader cannot tell which row is which, and the page reads as a mistake --
 // "PAIN subscale" five times over, "Maxillary" twice. 83 rows across 20 pages
@@ -132,6 +138,8 @@ function main() {
   let clampedLabels = 0;
   const openBracketLabels = [];
   const relatedLists = new Map();
+  const repeatedRows = [];
+  let longInputRows = 0;
   const duplicateLabels = [];
   const disclosureSummaries = new Set();
 
@@ -189,6 +197,23 @@ function main() {
       : '';
     if (!body) failures.push(`${id}: the citation disclosure holds nothing but the disclaimer`);
 
+    // 3b. The input list, and the disclosure holding the lines it shortened.
+    // The disclosure used to hold every line whenever any one was shortened,
+    // so 42 rows on 18 pages appeared twice on one screen, identical --
+    // `alsfrs-r` printed seven of its eight fields both ways.
+    const listBlock = html.match(/<ul class="tp-io-list">([\s\S]*?)<\/ul>/);
+    const listRowsHere = listBlock
+      ? [...listBlock[1].matchAll(/<li>(.*?)<\/li>/g)].map((m) => m[1])
+      : [];
+    for (const row of listRowsHere) if (row.length > LONG_INPUT_ROW) longInputRows += 1;
+    const fullBlock = html.match(/<details class="tp-io-full">[\s\S]*?<ul>([\s\S]*?)<\/ul>/);
+    if (listBlock && fullBlock) {
+      const shown = new Set(listRowsHere);
+      for (const [, row] of fullBlock[1].matchAll(/<li>(.*?)<\/li>/g)) {
+        if (shown.has(row)) repeatedRows.push(`${id}: "${row.slice(0, 40)}"`);
+      }
+    }
+
     // 4. Four links that have something to do with this tool. Picked by
     // catalog order once, which made them a property of the group rather than
     // of the tile: 1201 of 1563 pages listed the same four.
@@ -217,6 +242,14 @@ function main() {
   if (pages === 0) failures.push('no tool pages found under dist/tools/');
   if (rawValueRows > RAW_VALUE_ROWS_MAX) {
     failures.push(`${rawValueRows} example rows print a raw option value (max ${RAW_VALUE_ROWS_MAX})`);
+  }
+  if (repeatedRows.length) {
+    failures.push(
+      `${repeatedRows.length} field row(s) appear both in the list and, unchanged, in the disclosure below it: ${repeatedRows.slice(0, 3).join('; ')}`,
+    );
+  }
+  if (longInputRows > LONG_INPUT_ROWS_MAX) {
+    failures.push(`${longInputRows} input rows run past ${LONG_INPUT_ROW} chars (max ${LONG_INPUT_ROWS_MAX})`);
   }
   const commonest = [...relatedLists.entries()].sort((a, b) => b[1] - a[1])[0];
   if (commonest && commonest[1] > SAME_RELATED_MAX) {
