@@ -66,6 +66,10 @@ const SAME_RELATED_MAX = 20;
 // form survives -- three rows run past this and are named in the failure so a
 // new one is visible rather than absorbed.
 const LONG_INPUT_ROW = 200;
+
+// "Open the calculator →" and its four siblings. Anything longer is the tile
+// name creeping back into the button.
+const OPEN_LABEL_MAX = 32;
 const LONG_INPUT_ROWS_MAX = 3;
 
 // The same name on two rows of one example, with two different values. The
@@ -198,6 +202,18 @@ function main() {
         .trim()
       : '';
     if (!body) failures.push(`${id}: the citation disclosure holds nothing but the disclaimer`);
+
+    // 3a. The button. Its visible text says what clicking does; the tile's
+    // name is on it as the accessible name. It used to be the name, so 695
+    // buttons ran past this saying only what the <h1> above them had said --
+    // the longest 95 characters, three wrapped lines on a phone.
+    const open = html.match(/<a class="tp-open"[^>]*>(.*?)<\/a>/);
+    if (open && open[1].length > OPEN_LABEL_MAX) {
+      failures.push(`${id}: the open button reads ${open[1].length} chars (max ${OPEN_LABEL_MAX}): ${open[1]}`);
+    }
+    if (open && !/aria-label="/.test(open[0])) {
+      failures.push(`${id}: the open button has no accessible name naming the tool`);
+    }
 
     // 3b. The input list, and the disclosure holding the lines it shortened.
     // The disclosure used to hold every line whenever any one was shortened,

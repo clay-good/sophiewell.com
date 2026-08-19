@@ -158,6 +158,22 @@ const REFERENCE_TILES = new Set([
   'co-cn-antidote',
 ]);
 
+// What the button says it opens. It used to name the tile -- "Open the 2022
+// ACR/EULAR Eosinophilic Granulomatosis with Polyangiitis Classification
+// Criteria →", 95 characters, wrapping to three lines on a phone, directly
+// under an <h1> that had just said the same words. 695 buttons ran past 50
+// characters saying nothing the heading had not.
+//
+// The visible text says what clicking does; the full name stays on the link
+// as its accessible name, so a screen reader listing the page's links still
+// hears which tool this one opens.
+const OPEN_NOUN = {
+  calculator: 'calculator',
+  howto: 'generator',
+  dataset: 'reference table',
+  reference: 'reference',
+};
+
 function classify(tile) {
   // Math / scoring / clinical-decision tiles are MedicalCalculator.
   // The HowTo / Dataset / Reference allowlists override that default
@@ -941,7 +957,7 @@ ${datasetLd ? `    <script type="application/ld+json">\n${JSON.stringify(dataset
         <p class="tp-lede">${esc(desc)}</p>
 
         <p class="tp-cta">
-          <a class="tp-open" href="${hashUrl}">Open the ${esc(tile.name)} →</a>
+          <a class="tp-open" href="${hashUrl}" aria-label="Open the ${esc(tile.name)}">Open the ${OPEN_NOUN[kind] || 'tool'} →</a>
           <span class="muted">Runs in your browser. Nothing you type leaves your device.</span>
         </p>
 
