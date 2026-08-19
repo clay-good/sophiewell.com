@@ -421,8 +421,12 @@ body {
 .hub-page .hub-tile-desc {
   display: block;
   color: var(--text-secondary);
-  font-size: 0.95rem;
-  line-height: 1.4;
+  /* Full size. This line is the content of a hub page -- the reader scans
+     3,329 of them across the eight lists deciding which tool they want -- and
+     it was the only body text on the site set below the 17px base. The name
+     above it is already told apart by weight and color, so the size drop was
+     buying hierarchy that was paid for twice. */
+  line-height: 1.5;
   overflow-wrap: anywhere;
 }
 .hub-page .hub-other {
