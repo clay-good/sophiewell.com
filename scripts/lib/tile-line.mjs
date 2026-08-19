@@ -91,6 +91,50 @@ export function stripLegend(text) {
   return m ? m[1].trim() : s;
 }
 
+// --- Cutting a line without cutting a bracket in half.
+//
+// Every clamp in this file and in build-tool-pages.mjs picks an index and
+// slices there. An index inside a parenthesis publishes a line that opens a
+// bracket and never closes it -- "(the C axis of\u2026", "(0-4 animals = 0" --
+// which reads as text that was corrupted rather than shortened.
+
+// How many brackets are open at `index`.
+export function depthAt(text, index) {
+  let depth = 0;
+  for (let i = 0; i < index; i++) {
+    const c = text[i];
+    if (c === '(' || c === '[') depth += 1;
+    else if (c === ')' || c === ']') depth -= 1;
+  }
+  return depth;
+}
+
+// The same cut point, backed out to before any bracket it landed inside.
+export function outsideBrackets(text, index) {
+  const open = [];
+  for (let i = 0; i < index; i++) {
+    const c = text[i];
+    if (c === '(' || c === '[') open.push(i);
+    else if (c === ')' || c === ']') open.pop();
+  }
+  return open.length ? open[0] : index;
+}
+
+// The first occurrence that is not inside a bracket, or -1.
+function topLevelIndexOf(text, ch) {
+  for (let i = 0; i < text.length; i++) {
+    if (text[i] === ch && depthAt(text, i) === 0) return i;
+  }
+  return -1;
+}
+
+function topLevelSearch(text, re) {
+  for (const m of text.matchAll(re)) {
+    if (depthAt(text, m.index) === 0) return m.index;
+  }
+  return -1;
+}
+
 // The name of a field, for the left column of a worked example.
 //
 // An MCP registry label doubles as the field's full description, so many read
@@ -103,7 +147,7 @@ const NAME_MAX = 80;
 export function fieldName(text) {
   let s = (text || '').trim();
   if (!s) return '';
-  const sep = s.search(/:| - /);
+  const sep = topLevelSearch(s, /:| - /g);
   if (sep >= 8 && sep <= 70) s = s.slice(0, sep);
   s = s.replace(/[.:;,-]+$/, '').trim();
   if (s.length <= NAME_MAX) return s;
@@ -113,11 +157,16 @@ export function fieldName(text) {
   // the boundary, and cutting there names the field instead of ending the row
   // on a clamped "...at a specified magnific…". Only reached when the blunt
   // clamp is the alternative, so a short "Sex, at birth" is never touched.
-  const comma = s.indexOf(',');
+  // The first comma the label itself made, not the first one inside a bracket:
+  // "(0-4 animals = 0, 5-9 = 1, ...)" is a legend, and cutting at its first
+  // comma named the field "(0-4 animals = 0". Skipping to the next boundary
+  // outside the bracket keeps the clean cut this branch exists for.
+  const comma = topLevelIndexOf(s, ',');
   if (comma >= 8 && comma <= 70) return s.slice(0, comma).trim();
   const cut = s.slice(0, NAME_MAX - 1);
   const sp = cut.lastIndexOf(' ');
-  return `${(sp > 40 ? cut.slice(0, sp) : cut).trimEnd()}…`;
+  const at = outsideBrackets(s, sp > 40 ? sp : cut.length);
+  return `${s.slice(0, at).trimEnd().replace(/[,;:([]+$/, '').trimEnd()}…`;
 }
 
 // --- The hub and topic page opening paragraph.

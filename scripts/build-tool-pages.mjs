@@ -31,7 +31,7 @@ import { splitLead } from '../lib/long-note.js';
 // The option TEXT behind an example's raw `<option value>`, read out of the
 // view that builds the select. See scripts/lib/option-labels.mjs.
 import { loadOptionLabels, loadFieldLabels, optionText, looseOptionText } from './lib/option-labels.mjs';
-import { fieldName, stripLegend } from './lib/tile-line.mjs';
+import { depthAt, fieldName, outsideBrackets, stripLegend } from './lib/tile-line.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
@@ -243,16 +243,8 @@ function restatesName(clause, name) {
 // A boundary inside an unclosed bracket is not a boundary. "Frontal Assessment
 // Battery (FAB; Dubois 2000)" carries its citation semicolon *within* the
 // parenthesis, and cutting there published "Frontal Assessment Battery (FAB."
-// -- a lede with a bracket it never closes. Seven tiles read that way.
-function depthAt(text, index) {
-  let depth = 0;
-  for (let i = 0; i < index; i++) {
-    const c = text[i];
-    if (c === '(' || c === '[') depth += 1;
-    else if (c === ')' || c === ']') depth -= 1;
-  }
-  return depth;
-}
+// -- a lede with a bracket it never closes. Seven tiles read that way, so
+// every cut below is checked with `depthAt` or moved with `outsideBrackets`.
 
 // The opening clause of a long sentence. These sentences are built the same
 // way -- a clause naming the tool, then a colon or a dash, then the list of
@@ -279,9 +271,45 @@ function clauseLede(text, name = '') {
     if (clause.replace(/\s*\([^()]*\)\s*$/, '').trim().length < MIN_CONTENT) continue;
     return `${clause}.`;
   }
-  const cut = text.slice(0, LEDE_MAX);
+  // No boundary to cut at. Before trailing off, drop the enumerations these
+  // sentences carry: a bracket or a pair of dashes holding a comma-separated
+  // run of every input. The page lists those same inputs under "What you
+  // enter" a few lines down, so the lede was spending its whole length -- and
+  // then running out of it -- on a list the reader is about to read anyway.
+  // Removing a bracketed aside cannot ungrammatical the sentence around it,
+  // and on 27 tiles what is left is a whole sentence that fits.
+  const trimmed = dropEnumerations(text);
+  if (trimmed.length <= LEDE_MAX && trimmed.length >= MIN_LEDE) {
+    return /[.!?]$/.test(trimmed) ? trimmed : `${trimmed}.`;
+  }
+  // Still too long, so it does get cut. Cut between items rather than inside
+  // one: a word-boundary cut lands mid-criterion and publishes a lede ending
+  // "venous invasion, sinusoidal…" or "temperature < 36 C, altered…", which
+  // reads as a fact the page got half-way through stating.
+  const cut = trimmed.slice(0, LEDE_MAX);
+  let comma = -1;
+  for (const m of cut.matchAll(/,/g)) if (depthAt(trimmed, m.index) === 0) comma = m.index;
+  if (comma > LEDE_MAX * 0.6) return `${trimmed.slice(0, comma).trimEnd()},…`;
   const sp = cut.lastIndexOf(' ');
-  return `${(sp > LEDE_MAX * 0.6 ? cut.slice(0, sp) : cut).trimEnd()}…`;
+  const at = sp > LEDE_MAX * 0.6 ? sp : cut.length;
+  return `${trimmed.slice(0, outsideBrackets(trimmed, at)).trimEnd().replace(/[,;:\u2014-]+$/, '')}…`;
+}
+
+// Below this a lede has been cut down to a stub and says less than the cut
+// sentence did; keep the sentence and ellipsize it instead.
+const MIN_LEDE = 40;
+
+// A parenthesis, bracket, or dash pair holding a comma-separated run: the
+// enumeration, not an aside. Two commas is the floor -- one comma is a pair
+// ("(violent / non-violent)", "(Wesson & Ling 2003)"), which is content.
+function dropEnumerations(text) {
+  return text
+    .replace(/\s*\((?:[^()]*,){2,}[^()]*\)/g, '')
+    .replace(/\s*\[(?:[^[\]]*,){2,}[^[\]]*\]/g, '')
+    .replace(/\s+\u2014(?:[^\u2014]*,){2,}[^\u2014]*\u2014/g, '')
+    .replace(/\s{2,}/g, ' ')
+    .replace(/\s+([,.;:])/g, '$1')
+    .trim();
 }
 
 function clampDescription(s, max = 158) {
@@ -294,6 +322,14 @@ function clampDescription(s, max = 158) {
 // The visible input list, generated from the MCP field registry. Long lists
 // are truncated so the page stays scannable; the tool itself always shows
 // every field.
+// A cap that absorbs a single item of overflow. "and 1 more field" costs the
+// same line as the field it hides, and hides it -- so a ninth input, or an
+// eleventh example row, is shown rather than counted. Only overflow of two or
+// more is worth a summary line.
+function absorbOne(items, cap) {
+  return items.length === cap + 1 ? items.length : cap;
+}
+
 const MAX_LISTED_INPUTS = 8;
 function mcpRecord(tileId) {
   try { return getCalculator(tileId) || null; } catch { return null; }
@@ -365,13 +401,18 @@ function itemName(raw) {
   // The item carries its own break before its gloss -- a comma or a dash --
   // so cutting there ends on a whole phrase instead of an ellipsis.
   if (s.length > MAX_ITEM) {
-    const breaks = [s.indexOf(','), s.indexOf(' - ')].filter((i) => i >= 8);
+    // Only a break the label itself made. The commas inside a scale legend
+    // are not breaks in the label: cutting at the first one published
+    // "animal naming in 1 minute (0-4 animals = 0", a bracket opened around
+    // a legend and then abandoned one value in.
+    const breaks = [s.indexOf(','), s.indexOf(' - ')].filter((i) => i >= 8 && depthAt(s, i) === 0);
     if (breaks.length) s = s.slice(0, Math.min(...breaks)).trim();
   }
   if (s.length <= MAX_ITEM) return s;
   const cut = s.slice(0, MAX_ITEM - 1);
   const sp = cut.lastIndexOf(' ');
-  return `${(sp > 20 ? cut.slice(0, sp) : cut).trimEnd()}\u2026`;
+  const at = outsideBrackets(s, sp > 20 ? sp : cut.length);
+  return `${s.slice(0, at).trimEnd().replace(/[,;:([]+$/, '').trimEnd()}\u2026`;
 }
 
 // `<group>: <item>` and `<group>. <item>`, the two ways these labels are
@@ -644,7 +685,7 @@ ${related.map((r) => `          <li><a href="${SITE}/tools/${r.id}/">${esc(r.nam
   // way. Nothing is dropped: if any line was trimmed, the full descriptions
   // sit under a disclosure directly below.
   const labels = inputLabels(tile.id);
-  const shownLabels = labels.slice(0, MAX_LISTED_INPUTS);
+  const shownLabels = labels.slice(0, absorbOne(labels, MAX_LISTED_INPUTS));
   const extraLabels = labels.length - shownLabels.length;
   const extraLine = extraLabels > 0
     ? `<li>and ${extraLabels} more field${extraLabels === 1 ? '' : 's'}</li>`
@@ -674,7 +715,7 @@ ${related.map((r) => `          <li><a href="${SITE}/tools/${r.id}/">${esc(r.nam
   const example = (metaRows && meta?.example?.expected)
     ? { rows: metaRows, result: meta.example.expected, prefilled: true }
     : (copyExample(copy) ? { ...copyExample(copy), prefilled: false } : null);
-  const shownRows = example ? example.rows.slice(0, MAX_EXAMPLE_ROWS) : [];
+  const shownRows = example ? example.rows.slice(0, absorbOne(example.rows, MAX_EXAMPLE_ROWS)) : [];
   const extraRows = example ? example.rows.length - shownRows.length : 0;
   const outputText = example
     ? esc(copy?.output || '')

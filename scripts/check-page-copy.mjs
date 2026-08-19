@@ -48,8 +48,11 @@ const RAW_VALUE_ROWS_MAX = 70;
 // agent-facing label carries inline was stripped ahead of the trim, then 22,
 // and it is 35 deliberately: de-colliding the duplicate labels below moved 13
 // rows into this bucket. A clamped label the reader can tell apart from the
-// row under it beats a whole one they cannot.
-const CLAMPED_LABELS_MAX = 35;
+// row under it beats a whole one they cannot. It is 43 rather than 35 because
+// eight labels used to end mid-bracket instead -- "Linear growth (score by
+// height velocity when possible; the height-channel\u2026" -- and an honest
+// ellipsis on a whole phrase is the better of the two, not a new problem.
+const CLAMPED_LABELS_MAX = 43;
 
 // The same name on two rows of one example, with two different values. The
 // reader cannot tell which row is which, and the page reads as a mistake --
@@ -75,6 +78,28 @@ const NAME_SLACK = 10;
 function bare(s) {
   return s.trim().replace(/[.!?]+$/, '').replace(/\s*\([^()]*\)\s*$/, '').replace(/[^a-z0-9]/gi, '').toLowerCase();
 }
+const count = (s, ch) => s.split(ch).length - 1;
+
+// Was the cut made mid-enumeration? Two tells together: the sentence has more
+// than one item, and the last one started close enough to the end that what
+// follows the final comma is a fragment of an item rather than the sentence's
+// own closing clause. Without the second tell this flags every list that ends
+// and then says what the list adds up to -- "a, b, and c give a score banding
+// the probability of familial\u2026" is cut in its tail, not in its list.
+const ITEM_TAIL = 40;
+function stillInsideList(s) {
+  let depth = 0;
+  let n = 0;
+  let last = -1;
+  for (let i = 0; i < s.length; i++) {
+    const c = s[i];
+    if (c === '(' || c === '[') depth += 1;
+    else if (c === ')' || c === ']') depth -= 1;
+    else if (c === ',' && depth <= 0) { n += 1; last = i; }
+  }
+  return n >= 2 && s.length - last <= ITEM_TAIL;
+}
+
 function restatesHeading(lede, heading) {
   const a = bare(lede);
   const b = bare(heading);
@@ -99,6 +124,7 @@ function main() {
   let longestLede = { chars: 0, id: '' };
   let rawValueRows = 0;
   let clampedLabels = 0;
+  const openBracketLabels = [];
   const duplicateLabels = [];
   const disclosureSummaries = new Set();
 
@@ -121,6 +147,19 @@ function main() {
     }
     if (lede.length > LEDE_MAX) failures.push(`${id}: lede is ${lede.length} chars (max ${LEDE_MAX})`);
     if (lede.length > longestLede.chars) longestLede = { chars: lede.length, id };
+    // A lede that runs an enumeration and then gets cut has to be cut between
+    // items. 114 pages ended inside one -- "venous invasion, sinusoidal\u2026",
+    // "temperature < 36 C, altered\u2026" -- so the first line of the page stated
+    // half a criterion and stopped. Prose that simply runs long may still end
+    // on a word; only a list has an item boundary to land on.
+    if (/\u2026$/.test(lede) && stillInsideList(lede) && !/[,;:)\]]\u2026$/.test(lede)) {
+      failures.push(`${id}: the lede is cut inside a list item, not between two: ${lede.slice(-48)}`);
+    }
+    // And it must not leave a bracket open. Four pages opened with "(the C
+    // axis of\u2026" -- a parenthesis the sentence never closes.
+    if (lede && count(lede, '(') !== count(lede, ')')) {
+      failures.push(`${id}: the lede leaves a bracket open: ${lede.slice(-48)}`);
+    }
 
     // 2. What to type in.
     const io = html.match(/<section class="tp-io"[\s\S]*?<\/section>/);
@@ -147,6 +186,13 @@ function main() {
     for (const [, label, value] of html.matchAll(/<div class="tp-ex-row"><dt>(.*?)<\/dt><dd>(.*?)<\/dd><\/div>/g)) {
       if (RAW_VALUE.test(value.trim())) rawValueRows += 1;
       if (label.endsWith('…')) clampedLabels += 1;
+      // Whatever a label is cut down to, it closes every bracket it opens.
+      // Ten rows read "(percutaneous drainage", "(0-4 animals = 0" -- an
+      // aside the row starts and abandons, which looks like broken data
+      // rather than a shortened name.
+      if (count(label, '(') !== count(label, ')')) {
+        openBracketLabels.push(`${id}: "${label}"`);
+      }
       if (seenLabels.has(label)) duplicateLabels.push(`${id}: "${label}"`);
       seenLabels.add(label);
     }
@@ -155,6 +201,11 @@ function main() {
   if (pages === 0) failures.push('no tool pages found under dist/tools/');
   if (rawValueRows > RAW_VALUE_ROWS_MAX) {
     failures.push(`${rawValueRows} example rows print a raw option value (max ${RAW_VALUE_ROWS_MAX})`);
+  }
+  if (openBracketLabels.length) {
+    failures.push(
+      `${openBracketLabels.length} example label(s) leave a bracket open: ${openBracketLabels.slice(0, 3).join('; ')}`,
+    );
   }
   if (clampedLabels > CLAMPED_LABELS_MAX) {
     failures.push(`${clampedLabels} example labels are clamped mid-phrase (max ${CLAMPED_LABELS_MAX})`);
