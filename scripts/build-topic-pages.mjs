@@ -19,6 +19,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
 import { getCalculator } from '../mcp/catalog.js';
 import { tileLine, ledeParts } from './lib/tile-line.mjs';
+import { tileName } from './lib/tile-name.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
@@ -186,10 +187,10 @@ async function loadUtilities() {
   const tiles = new Map();
   for (const line of arr[1].split('\n')) {
     const id = line.match(/id:\s*'([^']+)'/);
-    const name = line.match(/name:\s*'([^']+)'/);
+    const name = tileName(line);
     const group = line.match(/group:\s*'([^']+)'/);
     if (id && name && group) {
-      tiles.set(id[1], { id: id[1], name: name[1], group: group[1] });
+      tiles.set(id[1], { id: id[1], name, group: group[1] });
     }
   }
   if (tiles.size === 0) throw new Error('build-topic-pages: zero tiles parsed.');

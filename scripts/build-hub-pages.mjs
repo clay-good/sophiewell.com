@@ -16,6 +16,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
 import { getCalculator } from '../mcp/catalog.js';
 import { tileLine, ledeParts } from './lib/tile-line.mjs';
+import { tileName } from './lib/tile-name.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
@@ -145,12 +146,12 @@ async function loadUtilities() {
   const tiles = [];
   for (const line of arr[1].split('\n')) {
     const id = line.match(/id:\s*'([^']+)'/);
-    const name = line.match(/name:\s*'([^']+)'/);
+    const name = tileName(line);
     const group = line.match(/group:\s*'([^']+)'/);
     const aud = line.match(/audiences:\s*\[([^\]]*)\]/);
     if (id && name && group && aud) {
       const audiences = aud[1].split(',').map((s) => s.replace(/['\s]/g, '')).filter(Boolean);
-      tiles.push({ id: id[1], name: name[1], group: group[1], audiences });
+      tiles.push({ id: id[1], name, group: group[1], audiences });
     }
   }
   if (tiles.length === 0) throw new Error('build-hub-pages: zero tiles parsed.');

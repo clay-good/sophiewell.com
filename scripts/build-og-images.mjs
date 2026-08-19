@@ -21,6 +21,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
 import { encodePNG, makeCanvas, fillRect } from './lib/png-writer.mjs';
 import { drawText, textWidth, wrapText, GLYPH_H } from './lib/bitmap-font.mjs';
+import { tileName } from './lib/tile-name.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
@@ -93,8 +94,8 @@ async function loadUtilities() {
   const tiles = [];
   for (const line of arr[1].split('\n')) {
     const id = line.match(/id:\s*'([^']+)'/);
-    const name = line.match(/name:\s*'([^']+)'/);
-    if (id && name) tiles.push({ id: id[1], name: name[1] });
+    const name = tileName(line);
+    if (id && name) tiles.push({ id: id[1], name: name });
   }
   if (tiles.length === 0) throw new Error('build-og-images: zero tiles parsed.');
   return tiles;

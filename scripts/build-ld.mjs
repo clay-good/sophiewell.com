@@ -10,6 +10,7 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
+import { tileName } from './lib/tile-name.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
@@ -28,8 +29,8 @@ if (!arrMatch) {
 const lines = arrMatch[1].split('\n');
 const featureList = [];
 for (const line of lines) {
-  const m = line.match(/name:\s*'([^']+)'/);
-  if (m) featureList.push(m[1]);
+  const m = tileName(line);
+  if (m) featureList.push(m);
 }
 if (featureList.length === 0) {
   console.error('build-ld: parsed zero tools from UTILITIES  -  refusing to overwrite.');

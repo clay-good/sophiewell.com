@@ -98,6 +98,15 @@ function bare(s) {
 }
 const count = (s, ch) => s.split(ch).length - 1;
 
+// `<title>` and the description are attribute/element text, so they are read
+// back escaped; compare the characters a reader sees, not the entities.
+const decode = (s) => s
+  .replace(/&lt;/g, '<')
+  .replace(/&gt;/g, '>')
+  .replace(/&quot;/g, '"')
+  .replace(/&#39;/g, "'")
+  .replace(/&amp;/g, '&');
+
 // Was the cut made mid-enumeration? Two tells together: the sentence has more
 // than one item, and the last one started close enough to the end that what
 // follows the final comma is a fragment of an item rather than the sentence's
@@ -202,6 +211,24 @@ function main() {
         .trim()
       : '';
     if (!body) failures.push(`${id}: the citation disclosure holds nothing but the disclaimer`);
+
+    // 2b. The two strings a reader meets before the page: the browser tab and
+    // the search-result snippet. Held to the same rules as the page itself --
+    // they close what they open, and they carry no escape character from the
+    // source array. 85 descriptions ended inside a bracket, and two titles
+    // read "CDAI (Crohn\\ - Free, in your browser".
+    const head = html.slice(0, 4000);
+    const title = decode((head.match(/<title>([^<]*)<\/title>/) || [])[1] || '');
+    const metaDesc = decode((head.match(/<meta name="description" content="([^"]*)"/) || [])[1] || '');
+    for (const [what, text] of [['title', title], ['meta description', metaDesc]]) {
+      if (!text) continue;
+      if (count(text, '(') !== count(text, ')')) {
+        failures.push(`${id}: the ${what} leaves a bracket open: ${text.slice(-48)}`);
+      }
+      if (text.includes('\\')) {
+        failures.push(`${id}: the ${what} carries a backslash out of the source array: ${text.slice(0, 48)}`);
+      }
+    }
 
     // 3a. The button. Its visible text says what clicking does; the tile's
     // name is on it as the accessible name. It used to be the name, so 695

@@ -32,6 +32,7 @@ import { splitLead } from '../lib/long-note.js';
 // view that builds the select. See scripts/lib/option-labels.mjs.
 import { loadOptionLabels, loadFieldLabels, optionText, looseOptionText } from './lib/option-labels.mjs';
 import { depthAt, fieldName, outsideBrackets, stripLegend } from './lib/tile-line.mjs';
+import { tileName } from './lib/tile-name.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
@@ -66,10 +67,10 @@ async function loadUtilities() {
   const tiles = [];
   for (const line of arr[1].split('\n')) {
     const id = line.match(/id:\s*'([^']+)'/);
-    const name = line.match(/name:\s*'([^']+)'/);
+    const name = tileName(line);
     const group = line.match(/group:\s*'([^']+)'/);
     if (id && name && group) {
-      tiles.push({ id: id[1], name: name[1], group: group[1] });
+      tiles.push({ id: id[1], name, group: group[1] });
     }
   }
   if (tiles.length === 0) throw new Error('build-tool-pages: zero tiles parsed.');
@@ -230,7 +231,7 @@ function linkifyCitation(s) {
 
 function clampTitle(s, max = 65) {
   if (s.length <= max) return s;
-  return s.slice(0, max - 1).trimEnd() + '…';
+  return `${s.slice(0, outsideBrackets(s, max - 1)).trimEnd().replace(/[,;:([-]+$/, '').trimEnd()}…`;
 }
 
 // The visible lede: the first whole sentence of whatever the tile says about
@@ -342,11 +343,15 @@ function dropEnumerations(text) {
     .trim();
 }
 
+// The search-result snippet. Held to the same rule as everything else that
+// gets cut: it closes what it opens. 85 descriptions did not, so the snippet
+// Google shows read "(unilateral weakness 2, speech disturbance without…".
 function clampDescription(s, max = 158) {
   if (s.length <= max) return s;
   const cut = s.slice(0, max - 1);
   const lastSpace = cut.lastIndexOf(' ');
-  return (lastSpace > 100 ? cut.slice(0, lastSpace) : cut).trimEnd() + '…';
+  const at = outsideBrackets(s, lastSpace > 100 ? lastSpace : cut.length);
+  return `${s.slice(0, at).trimEnd().replace(/[,;:([-]+$/, '').trimEnd()}…`;
 }
 
 // The visible input list, generated from the MCP field registry. Long lists

@@ -29,6 +29,7 @@ import { gzipSync } from 'node:zlib';
 import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
+import { tileName } from './lib/tile-name.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
@@ -103,12 +104,12 @@ async function loadUtilities() {
   const tiles = [];
   for (const line of arr[1].split('\n')) {
     const id = line.match(/id:\s*'([^']+)'/);
-    const name = line.match(/name:\s*'([^']+)'/);
+    const name = tileName(line);
     const group = line.match(/group:\s*'([^']+)'/);
     if (!(id && name && group)) continue;
     const audMatch = line.match(/audiences:\s*\[([^\]]*)\]/);
     const audiences = audMatch ? [...audMatch[1].matchAll(/'([^']+)'/g)].map((m) => m[1]) : [];
-    tiles.push({ id: id[1], name: name[1], group: group[1], audiences });
+    tiles.push({ id: id[1], name, group: group[1], audiences });
   }
   if (tiles.length === 0) throw new Error('build-search-corpus: zero tiles parsed');
   tiles.sort((a, b) => (a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
