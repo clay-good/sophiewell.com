@@ -40,8 +40,10 @@ const LEDE_MAX = 260;
 // built at render time and its options are named nowhere a build step can
 // read. Was 130 before scripts/lib/option-labels.mjs learned to read a select
 // whose id sits in its attribute object, a field descriptor built in a loop,
-// and an option list exported from lib/.
-const RAW_VALUE_ROWS_MAX = 70;
+// and an option list exported from lib/. Then 70, until it learned the last
+// of those: a bank handed whole to a builder that mints the DOM ids itself,
+// which no view file ever names. Identified by the values it covers instead.
+const RAW_VALUE_ROWS_MAX = 46;
 
 // Example labels with no name in front of the criterion, so nothing shorter
 // than the clamp can be printed. Was 60 before the value legend an
@@ -233,6 +235,10 @@ function main() {
       // rather than a shortened name.
       if (count(label, '(') !== count(label, ')')) {
         openBracketLabels.push(`${id}: "${label}"`);
+      }
+      // The value beside it, held to the same rule.
+      if (count(value, '(') !== count(value, ')')) {
+        openBracketLabels.push(`${id}: value "${value}"`);
       }
       if (seenLabels.has(label)) duplicateLabels.push(`${id}: "${label}"`);
       seenLabels.add(label);

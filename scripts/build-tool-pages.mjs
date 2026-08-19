@@ -478,7 +478,8 @@ function clampOption(text) {
   if (text.length <= MAX_OPTION_TEXT) return text;
   const cut = text.slice(0, MAX_OPTION_TEXT - 1);
   const sp = cut.lastIndexOf(' ');
-  return `${(sp > 40 ? cut.slice(0, sp) : cut).trimEnd()}\u2026`;
+  const at = outsideBrackets(text, sp > 40 ? sp : cut.length);
+  return `${text.slice(0, at).trimEnd().replace(/[,;:([]+$/, '').trimEnd()}\u2026`;
 }
 
 function exampleValue(field, raw, tileOptions) {

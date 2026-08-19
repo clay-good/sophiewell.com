@@ -32,6 +32,7 @@ import { fileURLToPath } from 'node:url';
 import { join } from 'node:path';
 
 const VIEWS = fileURLToPath(new URL('../../views/', import.meta.url));
+const LIB = fileURLToPath(new URL('../../lib/', import.meta.url));
 
 // Slice a bracketed array literal starting at `[`, respecting nesting and
 // quotes. A regex cannot do this: the option text routinely contains brackets
@@ -277,7 +278,65 @@ export async function loadOptionLabels() {
       if (map.size && !byTile.has(id)) byTile.set(id, map);
     }
   }
+  libBanks = await loadLibBanks();
   return byTile;
+}
+
+// --- The option lists a view never names.
+//
+// Some tiles hand a whole bank to a builder -- `buildTile(root, { prefix:
+// 'loeb', sites: M.LOEB_SITES })` -- which mints the DOM ids inside itself, so
+// nothing in the view file ties `LOEB_SITES` to a DOM id and the scan above
+// resolves nothing. 24 example rows printed the raw token instead: a nurse
+// reading /tools/loeb-minimum-criteria/ saw "uti-no-catheter" where the select
+// on screen reads "Urinary tract -- without indwelling catheter".
+//
+// The DOM id is not the only way to identify the right list. A bank that
+// carries every value the MCP field declares, when it is the only bank in
+// `lib/` that does, is that field's list -- which is rule 2 above doing the
+// scoping on its own, without the DOM id. Ambiguity is refused rather than
+// guessed at: across the catalog no field has two covering banks, and if one
+// ever does, neither is used.
+let libBanks = null;
+
+// A bank writes its display string as `label` where a view's inline option
+// list writes `text`, because the bank is a data record the renderer turns
+// into an option rather than the option itself. Accepted only here, so the
+// view scan keeps meaning exactly what it meant.
+function bankFromArray(arr) {
+  const out = new Map();
+  for (const item of arr) {
+    if (!item || typeof item !== 'object' || Array.isArray(item)) return null;
+    const { value } = item;
+    const shown = typeof item.text === 'string' ? item.text : item.label;
+    if (value === undefined || typeof shown !== 'string' || !shown.trim()) return null;
+    out.set(String(value), shown);
+  }
+  return out.size ? out : null;
+}
+
+async function loadLibBanks() {
+  const banks = [];
+  for (const file of readdirSync(LIB).filter((f) => f.endsWith('.js'))) {
+    let mod;
+    try { mod = await import(pathToFileURL(join(LIB, file)).href); } catch { continue; }
+    for (const value of Object.values(mod)) {
+      // Two entries at least: a one-entry array names nothing and would match
+      // any single-value field.
+      if (!Array.isArray(value) || value.length < 2) continue;
+      const options = bankFromArray(value);
+      if (options) banks.push(options);
+    }
+  }
+  return banks;
+}
+
+function bankText(declared, value) {
+  if (!libBanks) return null;
+  const covering = libBanks.filter((b) => declared.every((v) => b.has(String(v))));
+  if (covering.length !== 1) return null;
+  const text = covering[0].get(String(value));
+  return typeof text === 'string' && text.trim() ? text.trim() : null;
 }
 
 /**
@@ -286,12 +345,13 @@ export async function loadOptionLabels() {
  * entry from `loadOptionLabels()`.
  */
 export function optionText(tileOptions, field, value) {
-  if (!tileOptions || !field || field.kind !== 'enum') return null;
-  const options = tileOptions.get(field.dom);
-  if (!options) return null;
+  if (!field || field.kind !== 'enum') return null;
   const declared = Array.isArray(field.values) ? field.values : [];
   if (!declared.length) return null;
-  if (!declared.every((v) => options.has(String(v)))) return null;
+  const options = tileOptions?.get(field.dom);
+  if (!options || !declared.every((v) => options.has(String(v)))) {
+    return bankText(declared, value);
+  }
   const text = options.get(String(value));
   return typeof text === 'string' && text.trim() ? text.trim() : null;
 }
