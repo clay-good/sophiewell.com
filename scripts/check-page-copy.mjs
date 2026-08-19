@@ -317,12 +317,19 @@ function main() {
   // does. 2,482 of 3,329 rows did, because the first sentence of most tiles
   // runs past the line budget. Cutting at the boundary the sentence already
   // carries -- the colon before the definition -- takes that to 751. A
-  // ratchet, so the fraction can only fall.
-  const CUT_ROWS_MAX = 751;
+  // ratchet, so the fraction can only fall -- with one deliberate step up, to
+  // 775. Thirty rows used to look finished and were not: the clause cut landed
+  // inside a bracket and put a full stop after it, so "Compute the serum anion
+  // gap (Na." was the whole row. Refusing that boundary leaves 24 of them
+  // honestly cut instead of dishonestly complete, which is the trade this
+  // number should always take. See the bracket check below, which is the
+  // ratchet that actually holds.
+  const CUT_ROWS_MAX = 775;
 
   // The list pages: a cut mark means text was cut.
   let listRows = 0;
   let markedRows = 0;
+  const openBracketRows = [];
   for (const dir of HUB_DIRS) {
     const base = join(ROOT, 'dist', dir);
     if (!existsSync(base)) continue;
@@ -337,10 +344,20 @@ function main() {
         if (line.endsWith('…')) markedRows += 1;
         // "..." was the old mark, and it was applied to whole sentences.
         if (line.endsWith('...')) failures.push(`${dir}/${slug}: a list row ends in "..." rather than a single ellipsis: ${line.slice(-60)}`);
+        // A row closes every bracket it opens. 211 did not, because the cut
+        // was made inside one; twelve of those said nothing at all once cut
+        // -- "Compute the serum anion gap (Na.", "TIMI Risk Index (Wiviott
+        // 2006.". This is the ratchet that matters: zero, and it stays zero.
+        if (count(line, '(') !== count(line, ')')) openBracketRows.push(`${dir}/${slug}: ${line.slice(0, 60)}`);
       }
     }
   }
 
+  if (openBracketRows.length) {
+    failures.push(
+      `${openBracketRows.length} hub or topic row(s) leave a bracket open: ${openBracketRows.slice(0, 3).join('; ')}`,
+    );
+  }
   if (markedRows > CUT_ROWS_MAX) {
     failures.push(`${markedRows} of ${listRows} hub and topic rows end in a cut mark (max ${CUT_ROWS_MAX})`);
   }

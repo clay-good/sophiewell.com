@@ -215,3 +215,28 @@ test('ledeParts does not split when there is almost nothing to hide', () => {
   assert.ok(text.length > 150, 'the fixture has to be long enough to be considered');
   assert.deepEqual(ledeParts(text), { lead: text, rest: '' });
 });
+
+// A boundary inside a bracket is not a boundary. Taking the first one wherever
+// it fell cut inside the formula these summaries carry and then ended the row
+// on a full stop, so 211 hub rows opened a bracket they never closed and
+// twelve said nothing at all once cut.
+test('tileLine skips a clause boundary inside a bracket', () => {
+  const s = 'Compute the serum anion gap (Na - (Cl + HCO3)), albumin-correct it when albumin is below 4 g/dL, and run the delta-delta for a mixed disorder.';
+  const line = tileLine(s, { name: 'Anion Gap & Delta-Delta' });
+  assert.ok(!line.startsWith('Compute the serum anion gap (Na.'), line);
+  assert.equal((line.match(/\(/g) || []).length, (line.match(/\)/g) || []).length, line);
+});
+
+test('tileLine takes the next boundary when the first is bracketed', () => {
+  assert.equal(
+    tileLine('Pulmonary-to-systemic flow ratio (Qp:Qs) for intracardiac shunts.', { name: 'Qp:Qs' }),
+    'Pulmonary-to-systemic flow ratio (Qp:Qs) for intracardiac shunts.',
+  );
+});
+
+// The last-resort character clamp closes its brackets too.
+test('tileLine does not clamp inside a bracket', () => {
+  const s = `Translate a National Drug Code between its FDA-assigned 10-digit segmentation (4-4-2, 5-3-2, or 5-4-1 across labeler, product, and package) and the 11-digit billing form.`;
+  const line = tileLine(s, { name: 'NDC Converter' });
+  assert.equal((line.match(/\(/g) || []).length, (line.match(/\)/g) || []).length, line);
+});

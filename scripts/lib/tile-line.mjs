@@ -52,17 +52,29 @@ export function tileLine(text, { name = '' } = {}) {
   //
   // The list row wants the name of the thing; the definition is on the page it
   // links to.
-  const boundary = lead.search(/:| - |;/);
-  if (boundary >= MIN_CLAUSE && boundary <= CLAMP_AT) {
+  // Every boundary, and only the ones outside a bracket. Taking the first one
+  // wherever it fell cut inside the formula these summaries put in brackets
+  // and then ended the row on a full stop, so 211 rows opened a bracket they
+  // never closed and 12 of them said nothing at all: "Compute the serum anion
+  // gap (Na.", "Albumin-to-globulin ratio = albumin / (total protein.",
+  // "TIMI Risk Index (Wiviott 2006.". Skipping those leaves the next boundary
+  // along, which is the one the author wrote.
+  for (const m of lead.matchAll(/:| - |;/g)) {
+    const boundary = m.index;
+    if (boundary < MIN_CLAUSE) continue;
+    if (boundary > CLAMP_AT) break;
+    if (depthAt(lead, boundary) > 0) continue;
     const clause = lead.slice(0, boundary).trimEnd().replace(/[,:;-]+$/, '');
     // Unless the clause is just the name again, in which case the row would
-    // print "MELD 3.0" under a heading reading "MELD 3.0". Keep the long form:
-    // a cut line that adds something beats a short one that adds nothing.
-    if (!name || !sameAs(clause, name)) return `${clause}.`;
+    // print "MELD 3.0" under a heading reading "MELD 3.0". Keep looking: a cut
+    // line that adds something beats a short one that adds nothing.
+    if (name && sameAs(clause, name)) continue;
+    return `${clause}.`;
   }
   const cut = lead.slice(0, CLAMP_AT);
   const sp = cut.lastIndexOf(' ');
-  const kept = (sp > CLAMP_AT * 0.6 ? cut.slice(0, sp) : cut).replace(/[\s,;:-]+$/, '');
+  const at = outsideBrackets(lead, sp > CLAMP_AT * 0.6 ? sp : cut.length);
+  const kept = lead.slice(0, at).replace(/[\s,;:([-]+$/, '');
   return `${kept}…`;
 }
 
@@ -80,30 +92,26 @@ export function tileLine(text, { name = '' } = {}) {
 // *inside* it and printed rows ending on a dangling "0 = None of the time."
 // with the bracket never closed.
 //
-// A legend is recognised, not guessed at: the text has to end on `]` and the
-// bracket has to open on a `<token> = ` pair. "Weight [kg]" has no `=` and is
-// left alone.
-// A bracket holding the picklist: two or more `<value> = <what it means>` or
-// `<value> - <what it means>` pairs, separated by semicolons. Every one of
-// these is the same list the tool shows on screen as a select, spelled out
-// for an agent that never sees the select.
+// A legend is recognised, not guessed at: what makes one is two or more
+// `<value> <separator> <meaning>` pairs inside one bracket. "Weight [kg]" has
+// no pairs and is left alone; "[0 = none]" has one, which is a parenthetical
+// the label meant to say.
 //
-// Two shapes were missed. The pairs are written with a dash as often as an
-// equals ("[4 - Normal; 3 - Slow or sloppy; ...]"), which left 60 rows on 10
-// pages printing a whole rating scale on one line. And the legend is not
-// always last -- `bilsky-escc` writes "...not a number [0 = ...; 3 = ...]. 1a,
-// 1b and 1c are DISTINCT grades", where anchoring to the end of the string
-// matched nothing and published a 477-character row.
-// One `<value><separator><meaning>` pair, at the start of the bracket or after
-// the punctuation that ends the previous pair. The pairs are divided by a
-// semicolon on some tiles and by a full stop on others, so what identifies a
-// legend is two or more pairs, not what sits between them.
-// The value may be hyphenated ("pl-hm = ...", "spontaneous-type1 = ...") and
-// the separator is a colon on some tiles ("1: Secundum ASD repair; ..."), so
-// neither can be used to find the value's end -- only the space that follows
-// the separator can. A pair also starts after the closing bracket of the
-// previous one's aside ("...(from 1990 grades 3B, 4) 1R = ..."), not only
-// after a semicolon or a full stop.
+// Nothing narrower survives the catalog. The rule used to be an equals sign,
+// with the bracket running to the end of the label, and both halves were
+// wrong often enough to publish long rows:
+//
+//   - The pairs are written with a dash as often as an equals ("[4 - Normal;
+//     3 - Slow or sloppy; ...]") and with a colon on others ("[1: Secundum
+//     ASD repair; ...]"). 60 rows on 10 pages printed a whole rating scale.
+//   - They are divided by a full stop as often as a semicolon, and the value
+//     itself is often hyphenated ("pl-hm = ..."), so neither the divider nor
+//     the value can mark where a pair begins -- only the space after the
+//     separator can. A pair also starts straight after the closing bracket of
+//     the previous one's aside ("...(from 1990 grades 3B, 4) 1R = ...").
+//   - The legend is not always last. `bilsky-escc` writes "...not a number
+//     [0 = ...; 3 = ...]. 1a, 1b and 1c are DISTINCT grades", so the end
+//     anchor matched nothing and the row ran 477 characters.
 const LEGEND_PAIR = /(?:^|[;.)]\s+)[A-Za-z0-9][^\s=\][]{0,23}\s*[=\-:]\s/g;
 const isLegend = (body) => (body.match(LEGEND_PAIR) || []).length >= 2;
 
