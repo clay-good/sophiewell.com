@@ -224,6 +224,13 @@ function main() {
       ? [...listBlock[1].matchAll(/<li>(.*?)<\/li>/g)].map((m) => m[1])
       : [];
     for (const row of listRowsHere) if (row.length > LONG_INPUT_ROW) longInputRows += 1;
+    // Nor may it hide a field the example directly above it just named. The
+    // example holds ten rows and this list held eight, so 105 pages listed a
+    // field by name and then said "and 3 more fields" without it.
+    const exampleNames = [...html.matchAll(/<div class="tp-ex-row"><dt>/g)].length;
+    if (/more field/.test(listBlock?.[1] || '') && exampleNames > listRowsHere.length - 1) {
+      failures.push(`${id}: the input list hides ${exampleNames - (listRowsHere.length - 1)} field(s) the example above it named`);
+    }
     const fullBlock = html.match(/<details class="tp-io-full">[\s\S]*?<ul>([\s\S]*?)<\/ul>/);
     if (listBlock && fullBlock) {
       const shown = new Set(listRowsHere);

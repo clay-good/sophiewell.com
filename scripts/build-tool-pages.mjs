@@ -778,14 +778,32 @@ ${related.map((r) => `          <li><a href="${SITE}/tools/${r.id}/">${esc(r.nam
   const whatThisIsText = whatThisIs || '';
   const whenToUseText = copy?.whenToUse || '';
 
+  // The worked example, when the example's fields join cleanly to the field
+  // registry. Where they don't, fall back to stating the expected output on
+  // its own -- less useful, but honest about what the page knows.
+  const metaRows = exampleRows(tile.id, meta, optionLabels)
+    || viewExampleRows(tile.id, meta, fieldLabels, optionLabels);
+  const example = (metaRows && meta?.example?.expected)
+    ? { rows: metaRows, result: meta.example.expected, prefilled: true }
+    : (copyExample(copy) ? { ...copyExample(copy), prefilled: false } : null);
+  const shownRows = example ? example.rows.slice(0, absorbOne(example.rows, MAX_EXAMPLE_ROWS)) : [];
+  const extraRows = example ? example.rows.length - shownRows.length : 0;
+
   // One field per line, not a semicolon-joined run-on: a reader scanning for
   // "do I have the values for this?" wants a list. Each line is trimmed to its
   // first sentence, because the field descriptions carry a second and third
   // sentence of qualification that belongs one click away rather than in the
   // way. Nothing is dropped: if any line was trimmed, the full descriptions
   // sit under a disclosure directly below.
+  //
+  // The cap is at least the number of fields the worked example just named.
+  // The example holds ten rows and this list held eight, so on 105 pages the
+  // list hid two fields the reader had read the names of a few lines further
+  // up -- `alsfrs-r` listed "Climbing stairs" in the example and then said
+  // "and 3 more fields" without it.
   const labels = inputLabels(tile.id);
-  const shownLabels = labels.slice(0, absorbOne(labels, MAX_LISTED_INPUTS));
+  const listCap = Math.max(MAX_LISTED_INPUTS, shownRows.length);
+  const shownLabels = labels.slice(0, absorbOne(labels, listCap));
   const extraLabels = labels.length - shownLabels.length;
   const extraLine = extraLabels > 0
     ? `<li>and ${extraLabels} more field${extraLabels === 1 ? '' : 's'}</li>`
@@ -812,16 +830,6 @@ ${related.map((r) => `          <li><a href="${SITE}/tools/${r.id}/">${esc(r.nam
   const inputsBody = shownLabels.length
     ? `<ul class="tp-io-list">${leads.map((l) => `<li>${esc(l)}</li>`).join('')}${extraLine}</ul>${fullHtml}`
     : (copy?.inputs ? `<p>${esc(copy.inputs)}</p>` : '');
-  // The worked example, when the example's fields join cleanly to the field
-  // registry. Where they don't, fall back to stating the expected output on
-  // its own -- less useful, but honest about what the page knows.
-  const metaRows = exampleRows(tile.id, meta, optionLabels)
-    || viewExampleRows(tile.id, meta, fieldLabels, optionLabels);
-  const example = (metaRows && meta?.example?.expected)
-    ? { rows: metaRows, result: meta.example.expected, prefilled: true }
-    : (copyExample(copy) ? { ...copyExample(copy), prefilled: false } : null);
-  const shownRows = example ? example.rows.slice(0, absorbOne(example.rows, MAX_EXAMPLE_ROWS)) : [];
-  const extraRows = example ? example.rows.length - shownRows.length : 0;
   const outputText = example
     ? esc(copy?.output || '')
     : (meta?.example?.expected ? esc(meta.example.expected) : esc(copy?.output || ''));

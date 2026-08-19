@@ -102,8 +102,10 @@ export function tileLine(text, { name = '' } = {}) {
 // wrong often enough to publish long rows:
 //
 //   - The pairs are written with a dash as often as an equals ("[4 - Normal;
-//     3 - Slow or sloppy; ...]") and with a colon on others ("[1: Secundum
-//     ASD repair; ...]"). 60 rows on 10 pages printed a whole rating scale.
+//     3 - Slow or sloppy; ...]"), with a colon on others ("[1: Secundum
+//     ASD repair; ...]"), and with an em dash on others again ("[0 \u2014
+//     intracavitary; 1 \u2014 submucosal; ...]", a 654-character row). 60 rows
+//     on 10 pages printed a whole rating scale.
 //   - They are divided by a full stop as often as a semicolon, and the value
 //     itself is often hyphenated ("pl-hm = ..."), so neither the divider nor
 //     the value can mark where a pair begins -- only the space after the
@@ -112,7 +114,7 @@ export function tileLine(text, { name = '' } = {}) {
 //   - The legend is not always last. `bilsky-escc` writes "...not a number
 //     [0 = ...; 3 = ...]. 1a, 1b and 1c are DISTINCT grades", so the end
 //     anchor matched nothing and the row ran 477 characters.
-const LEGEND_PAIR = /(?:^|[;.)]\s+)[A-Za-z0-9][^\s=\][]{0,23}\s*[=\-:]\s/g;
+const LEGEND_PAIR = /(?:^|[;.)]\s+)[A-Za-z0-9][^\s=\][]{0,23}\s*[=\-:\u2013\u2014]\s/g;
 const isLegend = (body) => (body.match(LEGEND_PAIR) || []).length >= 2;
 
 export function stripLegend(text) {
