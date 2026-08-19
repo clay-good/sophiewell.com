@@ -54,6 +54,12 @@ const RAW_VALUE_ROWS_MAX = 70;
 // ellipsis on a whole phrase is the better of the two, not a new problem.
 const CLAMPED_LABELS_MAX = 43;
 
+// Related tools are picked from what a tile shares with the others, so a
+// repeat means a genuine cluster -- the four ACR/EULAR criteria tiles point at
+// each other, and should. A list repeating past this is the picker falling
+// back to catalog order again, which is how 1201 pages came to share one.
+const SAME_RELATED_MAX = 20;
+
 // The same name on two rows of one example, with two different values. The
 // reader cannot tell which row is which, and the page reads as a mistake --
 // "PAIN subscale" five times over, "Maxillary" twice. 83 rows across 20 pages
@@ -125,6 +131,7 @@ function main() {
   let rawValueRows = 0;
   let clampedLabels = 0;
   const openBracketLabels = [];
+  const relatedLists = new Map();
   const duplicateLabels = [];
   const disclosureSummaries = new Set();
 
@@ -182,6 +189,15 @@ function main() {
       : '';
     if (!body) failures.push(`${id}: the citation disclosure holds nothing but the disclaimer`);
 
+    // 4. Four links that have something to do with this tool. Picked by
+    // catalog order once, which made them a property of the group rather than
+    // of the tile: 1201 of 1563 pages listed the same four.
+    const relatedBlock = html.match(/<nav class="tp-related"[\s\S]*?<\/nav>/);
+    if (relatedBlock) {
+      const key = [...relatedBlock[0].matchAll(/<a [^>]*>(.*?)<\/a>/g)].map((m) => m[1]).join(' | ');
+      relatedLists.set(key, (relatedLists.get(key) || 0) + 1);
+    }
+
     const seenLabels = new Set();
     for (const [, label, value] of html.matchAll(/<div class="tp-ex-row"><dt>(.*?)<\/dt><dd>(.*?)<\/dd><\/div>/g)) {
       if (RAW_VALUE.test(value.trim())) rawValueRows += 1;
@@ -201,6 +217,12 @@ function main() {
   if (pages === 0) failures.push('no tool pages found under dist/tools/');
   if (rawValueRows > RAW_VALUE_ROWS_MAX) {
     failures.push(`${rawValueRows} example rows print a raw option value (max ${RAW_VALUE_ROWS_MAX})`);
+  }
+  const commonest = [...relatedLists.entries()].sort((a, b) => b[1] - a[1])[0];
+  if (commonest && commonest[1] > SAME_RELATED_MAX) {
+    failures.push(
+      `${commonest[1]} pages carry the same four related tools (max ${SAME_RELATED_MAX}): ${commonest[0]}`,
+    );
   }
   if (openBracketLabels.length) {
     failures.push(

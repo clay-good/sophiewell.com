@@ -90,6 +90,20 @@ async function loadDescriptions() {
   return out;
 }
 
+// The specialty tags the search corpus already derives per tile, reused here
+// to decide which tiles are related. Built one step earlier in build.mjs; a
+// missing file leaves the tags empty and the picker falls back to the group.
+async function loadSpecialties() {
+  const file = join(ROOT, 'data', 'search-corpus', 'corpus.json');
+  const map = new Map();
+  if (!existsSync(file)) return map;
+  const rows = JSON.parse(await readFile(file, 'utf8'));
+  for (const [id, row] of Object.entries(rows)) {
+    if (Array.isArray(row?.specialties)) map.set(id, row.specialties);
+  }
+  return map;
+}
+
 // --- Load META directly (lib/meta.js is a pure module, no DOM access).
 async function loadMeta() {
   const mod = await import(new URL('../lib/meta.js', import.meta.url));
@@ -556,10 +570,79 @@ function exampleRows(tileId, meta, optionLabels) {
   return rows.length ? decollide(rows) : null;
 }
 
-function pickRelated(tiles, current, max = 4) {
-  return tiles
-    .filter((t) => t.group === current.group && t.id !== current.id)
-    .slice(0, max);
+// --- "Related tools": four links picked from what this tile has in common
+// with the others, rather than from the order they happen to sit in.
+//
+// The list used to be the first four tiles sharing a group. A group holds
+// hundreds of tiles, so the group chose the list and the tile did not: 1201
+// of 1563 pages carried the identical four links, and a nurse finishing the
+// DOLOPLUS-2 pain scale was pointed at APGAR, ABG, and Wells PE.
+//
+// Two signals, both already in the build. The search corpus tags every tile
+// with its specialties, which is what puts a stroke score next to other
+// stroke work. And the tile's own name, which is what catches the siblings no
+// tag can tell apart -- "Wells Score for PE" and "Wells Score for DVT" share
+// every specialty they have with 300 other tiles, and share "wells" with one.
+//
+// Both are weighted by how rare the term is across the catalog, so sharing
+// "toxicology" counts and sharing "internal-medicine" (365 tiles) barely
+// does. That falls out of one number and needs no stopword list: "score",
+// "index", and "risk" are common enough to weigh nothing on their own.
+const RELATED_MAX = 4;
+
+function termsOf(tile, specialties) {
+  const terms = new Set();
+  for (const w of String(tile.name || '').toLowerCase().split(/[^a-z0-9]+/)) {
+    if (w.length >= 2) terms.add(`n:${w}`);
+  }
+  for (const sp of specialties.get(tile.id) || []) terms.add(`s:${sp}`);
+  return terms;
+}
+
+// log(N / documents holding the term): zero for a term on every tile, largest
+// for one on a handful.
+function inverseFrequency(termsByTile, total) {
+  const seen = new Map();
+  for (const terms of termsByTile.values()) {
+    for (const t of terms) seen.set(t, (seen.get(t) || 0) + 1);
+  }
+  const idf = new Map();
+  for (const [t, n] of seen) idf.set(t, Math.log(total / n));
+  return idf;
+}
+
+function buildRelatedIndex(tiles, specialties) {
+  const termsByTile = new Map(tiles.map((t) => [t.id, termsOf(t, specialties)]));
+  return { termsByTile, idf: inverseFrequency(termsByTile, tiles.length || 1) };
+}
+
+function pickRelated(tiles, current, index, max = RELATED_MAX) {
+  const mine = index.termsByTile.get(current.id) || new Set();
+  const scored = [];
+  for (const t of tiles) {
+    if (t.id === current.id) continue;
+    let score = 0;
+    for (const term of index.termsByTile.get(t.id) || []) {
+      if (mine.has(term)) score += index.idf.get(term) || 0;
+    }
+    // A tile in the same group is the same kind of thing -- a score, a drip,
+    // a form -- which breaks ties the terms leave level without ever
+    // outweighing a real shared term.
+    if (t.group === current.group) score += 0.25;
+    if (score > 0.25) scored.push([score, t]);
+  }
+  // Sort by id under equal scores so the same catalog always builds the same
+  // page; `dist/` is compared byte-for-byte between builds.
+  scored.sort((a, b) => b[0] - a[0] || (a[1].id < b[1].id ? -1 : 1));
+  const picked = scored.slice(0, max).map(([, t]) => t);
+  // A tile that shares nothing measurable still gets neighbors, as before.
+  if (picked.length < max) {
+    for (const t of tiles) {
+      if (picked.length >= max) break;
+      if (t.id !== current.id && t.group === current.group && !picked.includes(t)) picked.push(t);
+    }
+  }
+  return picked;
 }
 
 // --- Per-tile prose block (templated). The blocks reuse what META
@@ -724,7 +807,13 @@ ${related.map((r) => `          <li><a href="${SITE}/tools/${r.id}/">${esc(r.nam
   // it. A tile whose output line came from hand-authored copy has no META
   // example to pre-fill from, so the line would be a claim the tool does not
   // keep.
-  const exampleLine = (!example && meta?.example?.expected)
+  // ... and only when there is something pre-filled to point at. Four pages
+  // printed the line with no example above it and nothing filled in below:
+  // `cam`, `mnihss`, and `pa-lint` name no example fields at all -- pa-lint
+  // takes dropped files, so there are no values to replace -- and the reader
+  // was told to overwrite an example the page never showed.
+  const prefilledFields = Object.keys(meta?.example?.fields || {}).length > 0;
+  const exampleLine = (!example && prefilledFields && meta?.example?.expected)
     ? '\n          <p class="muted">The tool opens pre-filled with that example. Replace the values with your own.</p>'
     : '';
   // The heading names what the section actually holds. Once the worked example
@@ -892,6 +981,7 @@ async function main() {
   ]);
   const optionLabels = await loadOptionLabels();
   const fieldLabels = loadFieldLabels();
+  const relatedIndex = buildRelatedIndex(tiles, await loadSpecialties());
 
   // spec-v76: the discovery-surface allowlists (classify()) are matched only
   // against live tiles, so a dead id in them is silently inert: exactly the
@@ -963,7 +1053,7 @@ async function main() {
       tile,
       desc,
       meta: meta[tile.id],
-      related: pickRelated(tiles, tile),
+      related: pickRelated(tiles, tile, relatedIndex),
       copy,
       whatThisIs,
       optionLabels,
