@@ -82,7 +82,14 @@ function stubDocument() {
       children: [],
       attrs: {},
       classList: { contains: (c) => String(node.attrs.class || '').split(/\s+/).includes(c) },
-      appendChild(c) { this.children.push(c); c.parent = this; return c; },
+      // Real `appendChild` MOVES a node that already has a parent. The stub
+      // used to leave it in both, which hid a restore that was working.
+      appendChild(c) {
+        if (c.parent) c.parent.children.splice(c.parent.children.indexOf(c), 1);
+        this.children.push(c);
+        c.parent = this;
+        return c;
+      },
       setAttribute(k, v) { this.attrs[k] = v; if (k === 'class') this.className = v; },
       set className(v) { this.attrs.class = v; },
       get className() { return this.attrs.class || ''; },
@@ -190,6 +197,9 @@ test('splitLead ends a lede where the author ended the sentence', () => {
 // on every keystroke and the fold above would not touch it -- correctly, since
 // it will not reach into a live region.
 
+// The first scan is deferred so it never reads a half-built region; let it run.
+const settle = () => new Promise((r) => setTimeout(r, 0));
+
 function tileWith(doc, noteText) {
   const body = doc.createElement('div');
   const live = doc.createElement('div');
@@ -211,6 +221,7 @@ test('hoistIntroNote moves the note out of the live region and folds it', async 
     const { body, live } = tileWith(doc, LONG);
 
     hoistIntroNote(body);
+    await settle();
 
     // Nothing long left inside the region that exists to announce results.
     assert.equal(live.children.length, 1);
@@ -230,6 +241,7 @@ test('hoistIntroNote drops the copy the next render appends', async () => {
     const { hoistIntroNote } = await import('../../lib/long-note.js');
     const { body, live } = tileWith(doc, LONG);
     const handle = hoistIntroNote(body);
+    await settle();
 
     // What a recompute does: clear the region, write the new result, and
     // append the same constant again.
@@ -253,6 +265,7 @@ test('hoistIntroNote undoes itself when the text turns out to change', async () 
     const { hoistIntroNote } = await import('../../lib/long-note.js');
     const { body, live } = tileWith(doc, LONG);
     const handle = hoistIntroNote(body);
+    await settle();
     assert.equal(body.children[1].tagName, 'DETAILS');
 
     live.children.length = 0;
@@ -265,9 +278,16 @@ test('hoistIntroNote undoes itself when the text turns out to change', async () 
     assert.ok(handle.stopped(), 'stops for this tile');
     assert.equal(live.children[0], changed, 'the computed paragraph is left where it was');
     assert.equal(body.children[0], live, 'nothing of ours is left above it');
+    // The hoisted paragraph was moved, not copied, so undoing has to put it
+    // back whole. Removing it deleted the tile's explanation outright.
+    assert.equal(live.children.length, 2);
+    assert.equal(live.children[1].textContent, LONG, 'the note is returned intact');
   });
 });
 
+// 45 tiles write a long computed detail as well as their note. Taking the last
+// one works in isolation but not against the real render sequence, so these are
+// left alone rather than guessed at.
 test('hoistIntroNote leaves a tile alone when two long notes are ambiguous', async () => {
   await withStubDom(async (doc) => {
     const { hoistIntroNote } = await import('../../lib/long-note.js');
@@ -276,10 +296,10 @@ test('hoistIntroNote leaves a tile alone when two long notes are ambiguous', asy
     second.setAttribute('class', 'muted');
     second.textContent = LONG.replace('four groups', 'six groups');
     live.appendChild(second);
-
     hoistIntroNote(body);
+    await settle();
 
-    assert.equal(live.children.length, 3, 'both stay where the tile put them');
+    assert.equal(live.children.length, 3, 'everything stays where the tile put it');
     assert.equal(body.children[0], live);
   });
 });
@@ -289,6 +309,7 @@ test('hoistIntroNote ignores a short note', async () => {
     const { hoistIntroNote } = await import('../../lib/long-note.js');
     const { body, live } = tileWith(doc, 'Enter the age and the reserve marker.');
     hoistIntroNote(body);
+    await settle();
     assert.equal(live.children.length, 2);
     assert.equal(body.children[0], live);
   });
