@@ -25,7 +25,7 @@
 // with a reason, not a silent drift.
 
 import { readdirSync, readFileSync, existsSync } from 'node:fs';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { join } from 'node:path';
 
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
@@ -141,7 +141,19 @@ function textOf(html, re) {
   return m ? m[1].replace(/\s+/g, ' ').trim() : '';
 }
 
-function main() {
+// The sibling ids the app links to, for comparison with the ones the page
+// prints. `lib/meta.js` is a pure module with no DOM access.
+async function loadMetaRelated() {
+  const { META } = await import(pathToFileURL(join(ROOT, 'lib', 'meta.js')).href);
+  const map = new Map();
+  for (const [id, v] of Object.entries(META)) {
+    if (Array.isArray(v?.related) && v.related.length) map.set(id, v.related);
+  }
+  return map;
+}
+
+async function main() {
+  const metaRelated = await loadMetaRelated();
   if (!existsSync(TOOLS)) {
     console.error('check-page-copy: dist/tools/ does not exist. Run after build-tool-pages.mjs.');
     process.exit(1);
@@ -153,6 +165,7 @@ function main() {
   let clampedLabels = 0;
   const openBracketLabels = [];
   const relatedLists = new Map();
+  const missingCurated = [];
   const repeatedRows = [];
   let longInputRows = 0;
   const duplicateLabels = [];
@@ -273,6 +286,15 @@ function main() {
     if (relatedBlock) {
       const key = [...relatedBlock[0].matchAll(/<a [^>]*>(.*?)<\/a>/g)].map((m) => m[1]).join(' | ');
       relatedLists.set(key, (relatedLists.get(key) || 0) + 1);
+      // The page and the app have to name the same siblings. The app links to
+      // META[id].related; the page used its own catalog-order pick, so the two
+      // surfaces recommended different tools for the same tile and the page's
+      // were not chosen by anyone.
+      for (const rid of (metaRelated.get(id) || []).slice(0, 4)) {
+        if (!relatedBlock[0].includes(`/tools/${rid}/`)) {
+          missingCurated.push(`${id} -> ${rid}`);
+        }
+      }
     }
 
     const seenLabels = new Set();
@@ -306,6 +328,11 @@ function main() {
   }
   if (longInputRows > LONG_INPUT_ROWS_MAX) {
     failures.push(`${longInputRows} input rows run past ${LONG_INPUT_ROW} chars (max ${LONG_INPUT_ROWS_MAX})`);
+  }
+  if (missingCurated.length) {
+    failures.push(
+      `${missingCurated.length} hand-picked related link(s) the app shows are missing from the page: ${missingCurated.slice(0, 3).join('; ')}`,
+    );
   }
   const commonest = [...relatedLists.entries()].sort((a, b) => b[1] - a[1])[0];
   if (commonest && commonest[1] > SAME_RELATED_MAX) {

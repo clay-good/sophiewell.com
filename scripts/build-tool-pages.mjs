@@ -638,11 +638,24 @@ function buildRelatedIndex(tiles, specialties) {
   return { termsByTile, idf: inverseFrequency(termsByTile, tiles.length || 1) };
 }
 
-function pickRelated(tiles, current, index, max = RELATED_MAX) {
+function pickRelated(tiles, current, index, meta, max = RELATED_MAX) {
+  // The hand-picked siblings first. `META[id].related` is what the app itself
+  // links to under "Related tools", so the two surfaces named different tools
+  // for the same tile -- and the app's were chosen by a person. 1462 tiles
+  // have them, a median of two each, which is why the scorer still runs: it
+  // tops the list up to four rather than replacing a curated choice.
+  const byId = new Map(tiles.map((t) => [t.id, t]));
+  const picked = [];
+  for (const rid of Array.isArray(meta?.related) ? meta.related : []) {
+    const t = byId.get(rid);
+    if (t && t.id !== current.id && !picked.includes(t)) picked.push(t);
+    if (picked.length >= max) return picked;
+  }
+
   const mine = index.termsByTile.get(current.id) || new Set();
   const scored = [];
   for (const t of tiles) {
-    if (t.id === current.id) continue;
+    if (t.id === current.id || picked.includes(t)) continue;
     let score = 0;
     for (const term of index.termsByTile.get(t.id) || []) {
       if (mine.has(term)) score += index.idf.get(term) || 0;
@@ -656,7 +669,7 @@ function pickRelated(tiles, current, index, max = RELATED_MAX) {
   // Sort by id under equal scores so the same catalog always builds the same
   // page; `dist/` is compared byte-for-byte between builds.
   scored.sort((a, b) => b[0] - a[0] || (a[1].id < b[1].id ? -1 : 1));
-  const picked = scored.slice(0, max).map(([, t]) => t);
+  picked.push(...scored.slice(0, max - picked.length).map(([, t]) => t));
   // A tile that shares nothing measurable still gets neighbors, as before.
   if (picked.length < max) {
     for (const t of tiles) {
@@ -1088,7 +1101,7 @@ async function main() {
       tile,
       desc,
       meta: meta[tile.id],
-      related: pickRelated(tiles, tile, relatedIndex),
+      related: pickRelated(tiles, tile, relatedIndex, meta[tile.id]),
       copy,
       whatThisIs,
       optionLabels,
