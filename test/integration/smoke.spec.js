@@ -346,8 +346,9 @@ test('spec-v4 group N: pediatric weight converter computes lb/oz to kg', async (
 
 
 // ---------------------------------------------------------------------------
-// spec-v752..v756: the answer sits above the fields it came from, and a
-// plain-language question fills them. The home page itself is spec-v751.
+// spec-v751..v756: the one-box flow. A plain-language question routes to the
+// right tile with the reader's own values in the fields, the answer sits above
+// them, and every filled field says where it came from.
 // ---------------------------------------------------------------------------
 
 // Type a query and take the top result the way a reader does.
@@ -359,6 +360,17 @@ async function ask(page, query) {
   await page.locator('.hero-search-result').first().waitFor();
   await page.locator('.hero-search-result').first().click();
 }
+
+test('spec-v751 home: one box, four example chips, no browse nav', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.locator('.home-h1')).toHaveText('Bedside math, answered.');
+  await expect(page.locator('nav.home-browse')).toHaveCount(0);
+  await expect(page.locator('.hero-chip')).toHaveCount(4);
+  // A chip is a demonstration: it does exactly what typing does.
+  await page.locator('.hero-chip').first().click();
+  await expect(page.locator('#hero-search')).not.toHaveValue('');
+  await expect(page.locator('#hero-search-results')).toBeVisible();
+});
 
 test('spec-v752 tile: the answer is the first thing in the tool body', async ({ page }) => {
   await page.goto('/#cockcroft-gault');

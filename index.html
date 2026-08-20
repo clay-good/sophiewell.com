@@ -1816,19 +1816,17 @@
 
     <div class="container">
       <main id="main">
-        <h1 id="intro-heading" class="home-h1">Healthcare calculators, one search away</h1>
+        <h1 id="intro-heading" class="home-h1">Bedside math, answered.</h1>
         <p class="home-lede">
-          Search 1564 calculators, scores, and clinical references, from Wells
-          and CHA2DS2-VASc to GCS, drip rates, and electrolyte replacement.
-          Everything runs in your browser and stays on your device. No signup,
-          no tracking, no AI.
+          Type the question the way you'd say it. You get the number, the
+          inputs, and the source.
         </p>
 
         <section id="home-view" class="home-view view active" aria-labelledby="tools-heading">
           <h2 id="tools-heading" class="visually-hidden">Tools</h2>
 
           <div class="task-hero" role="search">
-            <label for="hero-search" class="hero-label">What do you need to figure out?</label>
+            <label for="hero-search" class="hero-label visually-hidden">What do you need to figure out?</label>
             <input
               id="hero-search"
               type="search"
@@ -1839,37 +1837,22 @@
               inputmode="search"
               autocomplete="off"
               spellcheck="false"
-              placeholder="wells PE, CHA2DS2-VASc, GCS, magnesium replacement..."
+              placeholder="crcl for a 72 year old woman, 68 kg, creatinine 1.4"
             />
             <ul id="hero-search-results" class="hero-search-results" role="listbox" aria-label="Tools" hidden></ul>
           </div>
 
-          <nav class="home-browse" aria-label="Browse tools by category">
-            <div class="home-browse-group">
-              <h2 class="home-browse-h2">Browse by specialty</h2>
-              <ul class="home-browse-list">
-                <li><a href="/topics/cardiology/">Cardiology</a></li>
-                <li><a href="/topics/nephrology/">Nephrology &amp; acid-base</a></li>
-                <li><a href="/topics/triage/">Triage &amp; acuity</a></li>
-                <li><a href="/topics/medication-safety/">Medication safety</a></li>
-                <li><a href="/topics/obstetrics-pediatrics/">Obstetrics &amp; pediatrics</a></li>
-                <li><a href="/topics/behavioral-health/">Behavioral health</a></li>
-                <li><a href="/topics/billing-and-coding/">Billing &amp; coding</a></li>
-                <li><a href="/topics/patient-literacy/">Patient &amp; insurance literacy</a></li>
-              </ul>
-            </div>
-            <div class="home-browse-group">
-              <h2 class="home-browse-h2">Browse by who you are</h2>
-              <ul class="home-browse-list">
-                <li><a href="/for/clinicians/">Nurses &amp; clinicians</a></li>
-                <li><a href="/for/ems/">EMS &amp; field medicine</a></li>
-                <li><a href="/for/case-managers/">Case managers &amp; UM nurses</a></li>
-                <li><a href="/for/patients/">Patients</a></li>
-                <li><a href="/for/billers/">Billers &amp; coders</a></li>
-                <li><a href="/for/educators/">Educators</a></li>
-              </ul>
-            </div>
-          </nav>
+          <!-- spec-v751: the examples are the instructions. Each chip is a real
+               query that routes, so what a reader sees demonstrated is exactly
+               what their own typing does. Buttons, not links: clicking one fills
+               the box and runs the same code path as typing. -->
+          <div class="hero-examples">
+            <span class="hero-examples-label">Try:</span>
+            <button type="button" class="hero-chip" data-q="crcl for a 72 year old woman, 68 kg, creatinine 1.4">crcl 72F 68 kg cr 1.4</button>
+            <button type="button" class="hero-chip" data-q="wells score for PE, heart rate 110, previous DVT">wells PE, hr 110, previous DVT</button>
+            <button type="button" class="hero-chip" data-q="map 120/80">map 120/80</button>
+            <button type="button" class="hero-chip" data-q="correct the sodium">correct the sodium</button>
+          </div>
         </section>
       </main>
     </div>

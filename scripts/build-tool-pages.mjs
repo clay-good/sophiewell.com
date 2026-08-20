@@ -22,6 +22,7 @@ import { mkdir, readFile, writeFile, rm } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
+import { TOPICS } from './lib/topics.mjs';
 // The MCP registry is the machine-readable field list for every exposed tile
 // (label + kind per input). It is the only place the inputs are enumerated
 // outside the DOM, so the page's "What you enter" list is generated from it
@@ -592,6 +593,14 @@ function exampleRows(tileId, meta, optionLabels) {
   return rows.length ? decollide(rows) : null;
 }
 
+// spec-v751: tile id -> the topic hub that lists it, so the static page can
+// carry the link the home page no longer does. Built once; a tile in no topic
+// simply gets no link.
+const TOPIC_BY_TILE = new Map();
+for (const topic of Object.values(TOPICS)) {
+  for (const id of topic.tiles) if (!TOPIC_BY_TILE.has(id)) TOPIC_BY_TILE.set(id, topic);
+}
+
 // --- "Related tools": four links picked from what this tile has in common
 // with the others, rather than from the order they happen to sit in.
 //
@@ -712,6 +721,16 @@ function buildPageHtml({ tile, desc, meta, related, copy, whatThisIs, optionLabe
 ${related.map((r) => `          <li><a href="${SITE}/tools/${r.id}/">${esc(r.name)}</a></li>`).join('\n')}
         </ul>
       </nav>`
+    : '';
+
+  // spec-v751: the home page's "browse by category" nav is gone -- the app takes
+  // a question now, it does not offer a menu -- and it was the only internal
+  // link into the eight /topics/<slug>/ hubs. Those hubs are search-landing
+  // pages, not app navigation, so they stay; this one line on the static page
+  // keeps them linked. The SPA never renders it.
+  const topic = TOPIC_BY_TILE.get(tile.id);
+  const topicHtml = topic
+    ? `<p class="tp-topic muted">More in <a href="${SITE}/topics/${topic.slug}/">${esc(topic.label)}</a>.</p>`
     : '';
 
   // spec-seo §7.2: per-tool JSON-LD type via classify(). Dataset
@@ -1003,6 +1022,8 @@ ${datasetLd ? `    <script type="application/ld+json">\n${JSON.stringify(dataset
         </details>
 
         ${relatedHtml}
+
+        ${topicHtml}
 
         <p class="tp-author muted">Built by <a href="https://claygood.com" rel="noopener" target="_blank">Clay Good</a>. Source on <a href="https://github.com/clay-good/sophiewell.com" rel="noopener" target="_blank">GitHub</a>.</p>
       </main>

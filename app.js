@@ -4728,6 +4728,19 @@ function bindHeroSearch() {
   }
 
   input.addEventListener('focus', () => render(input.value));
+
+  // spec-v751: the example chips. A chip is a demonstration, so it does exactly
+  // what typing does -- fill the box, focus it, run the same render. No separate
+  // routing path, or the example would stop being an honest example.
+  document.querySelectorAll('.hero-chip').forEach((chip) => {
+    chip.addEventListener('click', () => {
+      input.value = chip.dataset.q || chip.textContent;
+      input.focus();
+      userPicked = false;
+      clearPickCard();
+      render(input.value);
+    });
+  });
   input.addEventListener('input', () => { userPicked = false; clearPickCard(); render(input.value); });
 
 
@@ -4783,6 +4796,10 @@ function bindHeroSearch() {
       const lst = document.getElementById('hero-search-results');
       if (!inp || !lst) return;
       if (e.target === inp || lst.contains(e.target)) return;
+      // spec-v751: an example chip is part of the search UI, not a click
+      // outside it. Without this the chip fills the box and this handler
+      // immediately closes the listbox it just opened.
+      if (e.target.closest && e.target.closest('.hero-chip')) return;
       inp.setAttribute('aria-expanded', 'false');
       lst.hidden = true;
     });

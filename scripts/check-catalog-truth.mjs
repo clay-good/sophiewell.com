@@ -112,11 +112,14 @@ function makeSurfaces() {
     // The home lede carries a visible count again ("Search N calculators..."),
     // so it is enforced rather than left to drift the way the README headline
     // did (it had reached 1145 against a catalog of 1564).
-    {
-      name: 'home lede visible count',
-      file: 'index.html',
-      extract: (t) => firstCapture(t, /<p class="home-lede">\s*Search\s+(\d{2,4})\s+calculators/i),
-    },
+    // spec-v751: retired again. The home page takes a question now, and the
+    // lede is one sentence about what you get back ("Type the question the way
+    // you'd say it..."). A catalog size is a browse-era brag; it is not what a
+    // nurse standing at a bedside needs to read first. The count stays enforced
+    // on the surfaces above and below -- title, meta / OG / Twitter description
+    // + image-alt, JSON-LD, README x2, package.json, parity ledger. Follow the
+    // spec-v51 / spec-v52 rule if it ever comes back: a visible count and a
+    // surface here, in the same change, or it will drift.
     {
       name: 'JSON-LD description',
       file: 'index.html',

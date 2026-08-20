@@ -576,53 +576,47 @@ body {
   .hero-search-results { max-height: min(70vh, 420px); }
 }
 
-/* spec-seo §10: "browse by category" nav under the hero. Two grouped
-   pill clusters (specialty topics + audience hubs) that link out to the
-   prerendered /topics/<slug>/ and /for/<slug>/ landing pages. Calm at
-   rest, cheery on touch -- the pills lift and bloom the teal accent on
-   hover/focus so the home page feels alive without shouting. */
-.home-browse {
+/* spec-v751: the example chips under the box. They replace the two
+   "browse by category" pill clusters that used to live here -- the site
+   takes a question now, it does not offer a menu. Same calm-at-rest,
+   teal-on-touch treatment the pills had, at a smaller scale so the box
+   above stays the loudest thing on the page. */
+.hero-examples {
   width: 100%;
-  max-width: 760px;
-  margin: var(--space-4) auto 0;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-5);
-}
-.home-browse-group { text-align: center; }
-.home-browse-h2 {
-  margin: 0 0 var(--space-3);
-  font-size: 0.95rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.09em;
-  color: var(--text-muted);
-}
-.home-browse-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 var(--space-3);
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
   gap: var(--space-2);
 }
-.home-browse-list a {
+.hero-examples-label {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+.hero-chip {
+  /* 44px minimum touch target (9px padding + 1.2 line-height on 0.95rem
+     clears it); the mobile-touch-targets sweep holds this. */
   display: inline-block;
+  min-height: 44px;
   padding: 9px 16px;
+  font: inherit;
   font-size: 0.95rem;
   font-weight: 500;
   line-height: 1.2;
   color: var(--text-secondary);
-  text-decoration: none;
+  text-align: left;
   background: var(--bg-secondary);
   border: 1px solid var(--border);
   border-radius: var(--radius-pill);
+  cursor: pointer;
   transition: color 0.16s ease, border-color 0.16s ease,
     background 0.16s ease, transform 0.16s ease, box-shadow 0.16s ease;
 }
-.home-browse-list a:hover,
-.home-browse-list a:focus-visible {
+.hero-chip:hover,
+.hero-chip:focus-visible {
   color: var(--accent-pop-strong);
   background: var(--accent-pop-tint);
   border-color: var(--accent-pop);
@@ -630,21 +624,20 @@ body {
   box-shadow: 0 6px 18px var(--accent-pop-glow);
   outline: none;
 }
-.home-browse-list a:focus-visible {
+.hero-chip:focus-visible {
   outline: 2px solid var(--focus-ring);
   outline-offset: 2px;
 }
-.home-browse-list a:active { transform: translateY(0); }
+.hero-chip:active { transform: translateY(0); }
 
 @media (prefers-reduced-motion: reduce) {
-  .home-browse-list a { transition: color 0.16s ease, border-color 0.16s ease, background 0.16s ease; }
-  .home-browse-list a:hover,
-  .home-browse-list a:focus-visible { transform: none; }
+  .hero-chip { transition: color 0.16s ease, border-color 0.16s ease, background 0.16s ease; }
+  .hero-chip:hover,
+  .hero-chip:focus-visible { transform: none; }
 }
 
 @media (max-width: 600px) {
-  .home-browse { gap: var(--space-4); margin-top: var(--space-3); }
-  .home-browse-list a { padding: 8px 14px; font-size: 0.95rem; }
+  .hero-chip { padding: 9px 14px; font-size: 0.95rem; }
 }
 /* spec-v52 §4.2: prior-auth packet linter dropzone. Lives on the
    pa-lint tile only; reuses the existing tool-meta + tool-result
