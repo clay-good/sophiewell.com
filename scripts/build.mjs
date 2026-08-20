@@ -55,7 +55,10 @@ async function regenerate() {
   // Regenerate JSON-LD and sitemap from the live UTILITIES list before
   // copying static assets into dist/. Both scripts are idempotent.
   const { spawnSync } = await import('node:child_process');
-  for (const script of ['build-favicons.mjs', 'build-search-corpus.mjs', 'build-ld.mjs', 'build-sitemap.mjs', 'build-sbom.mjs']) {
+  // spec-v753: build-field-index writes data/fields/, which the copy step below
+  // picks up with the rest of data/. It runs before build-sbom so the shards are
+  // on disk when the bill of materials counts source files.
+  for (const script of ['build-favicons.mjs', 'build-search-corpus.mjs', 'build-field-index.mjs', 'build-ld.mjs', 'build-sitemap.mjs', 'build-sbom.mjs']) {
     const r = spawnSync(process.execPath, [join(ROOT, 'scripts', script)], { stdio: 'inherit' });
     if (r.status !== 0) throw new Error(`${script} exited with status ${r.status}`);
   }

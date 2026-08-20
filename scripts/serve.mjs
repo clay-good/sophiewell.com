@@ -57,6 +57,23 @@ const server = createServer(async (req, res) => {
   try {
     let urlPath = decodeURIComponent((req.url || '/').split('?')[0]);
     if (urlPath === '/') urlPath = '/index.html';
+    // sw.js caches the shell under a build hash that is the literal string
+    // "dev" in the source tree, so in local development the cache never
+    // invalidates and every edit is served from a stale copy until the worker
+    // is unregistered by hand. Serve a self-unregistering stub instead: the
+    // page registers it, it tears down the previous worker and its caches, and
+    // localhost always sees the files on disk. Set SERVE_SW=1 to serve the real
+    // worker when the offline behavior itself is what you are testing.
+    if (urlPath === '/sw.js' && !process.env.SERVE_SW) {
+      const stub = 'self.addEventListener("install", () => self.skipWaiting());\n'
+        + 'self.addEventListener("activate", (e) => { e.waitUntil((async () => {\n'
+        + '  for (const k of await caches.keys()) await caches.delete(k);\n'
+        + '  await self.registration.unregister();\n'
+        + '  for (const c of await self.clients.matchAll()) c.navigate(c.url);\n'
+        + '})()); });\n';
+      res.writeHead(200, { ...HEADERS, 'Content-Type': MIME['.js'], 'Content-Length': String(Buffer.byteLength(stub)) });
+      return res.end(stub);
+    }
     const safe = normalize(urlPath).replace(/^([./\\]+)/, '');
     let filePath = join(ROOT, safe);
     if (!filePath.startsWith(ROOT)) { res.writeHead(403); return res.end('Forbidden'); }

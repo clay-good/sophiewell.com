@@ -1,0 +1,710 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Sophie Well - one-box mockup (spec-v751 to v756)</title>
+</head>
+<body>
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #ffffff;
+    --bg-2: #f4f4f5;
+    --bg-3: #e6e6e8;
+    --text: #0a0a0a;
+    --text-2: #2a2a2a;
+    --muted: #5a5a5a;
+    --border: #d6d6d9;
+    --border-2: #b8b8bc;
+    --pop: #0d9488;
+    --pop-strong: #0f766e;
+    --pop-tint: rgba(13, 148, 136, 0.10);
+    --pop-line: rgba(13, 148, 136, 0.35);
+    --warn: #b45309;
+    --warn-tint: rgba(180, 83, 9, 0.10);
+    --shadow: 0 1px 2px rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.06);
+    --radius: 10px;
+    --radius-lg: 16px;
+    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --bg: #0a0a0a;
+      --bg-2: #1a1a1a;
+      --bg-3: #2a2a2a;
+      --text: #ffffff;
+      --text-2: #c8c8c8;
+      --muted: #9a9a9a;
+      --border: #333333;
+      --border-2: #404040;
+      --pop: #2dd4bf;
+      --pop-strong: #14b8a6;
+      --pop-tint: rgba(45, 212, 191, 0.13);
+      --pop-line: rgba(45, 212, 191, 0.40);
+      --warn: #fbbf24;
+      --warn-tint: rgba(251, 191, 36, 0.12);
+      --shadow: 0 1px 2px rgba(0,0,0,.5), 0 8px 24px rgba(0,0,0,.35);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #0a0a0a;
+    --bg-2: #1a1a1a;
+    --bg-3: #2a2a2a;
+    --text: #ffffff;
+    --text-2: #c8c8c8;
+    --muted: #9a9a9a;
+    --border: #333333;
+    --border-2: #404040;
+    --pop: #2dd4bf;
+    --pop-strong: #14b8a6;
+    --pop-tint: rgba(45, 212, 191, 0.13);
+    --pop-line: rgba(45, 212, 191, 0.40);
+    --warn: #fbbf24;
+    --warn-tint: rgba(251, 191, 36, 0.12);
+    --shadow: 0 1px 2px rgba(0,0,0,.5), 0 8px 24px rgba(0,0,0,.35);
+  }
+
+  html { font-size: 17px; -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    line-height: 1.6;
+  }
+
+  .wrap {
+    max-width: 660px;
+    margin: 0 auto;
+    padding: 0 20px 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  /* ---- header ---- */
+  header.bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 0 6px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .brand .mark {
+    width: 26px; height: 26px;
+    border-radius: 7px;
+    background: var(--pop);
+    display: grid; place-items: center;
+    color: var(--bg);
+    font-size: .78rem; font-weight: 700;
+  }
+  .toggle {
+    appearance: none;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-2);
+    border-radius: 999px;
+    width: 38px; height: 38px;
+    display: grid; place-items: center;
+    cursor: pointer;
+  }
+  .toggle:hover { border-color: var(--border-2); color: var(--text); }
+  .toggle:focus-visible { outline: 2px solid var(--pop); outline-offset: 2px; }
+  .toggle .moon { display: none; }
+  :root[data-theme="dark"] .toggle .sun { display: none; }
+  :root[data-theme="dark"] .toggle .moon { display: block; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .toggle .sun { display: none; }
+    :root:not([data-theme="light"]) .toggle .moon { display: block; }
+  }
+
+  /* ---- lede ---- */
+  .lede { display: flex; flex-direction: column; gap: 6px; padding-top: 22px; }
+  h1 {
+    font-size: 1.7rem;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    font-weight: 650;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .lede p { margin: 0; color: var(--muted); font-size: 1rem; }
+
+  /* ---- the box ---- */
+  .box { display: flex; flex-direction: column; gap: 10px; }
+  .field {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 4px 6px 4px 16px;
+    transition: border-color .15s ease, box-shadow .15s ease;
+  }
+  .field:focus-within {
+    border-color: var(--pop-line);
+    box-shadow: 0 0 0 3px var(--pop-tint);
+  }
+  .field input {
+    flex: 1;
+    min-width: 0;
+    background: transparent;
+    border: 0;
+    color: var(--text);
+    font: inherit;
+    font-size: 1.05rem;
+    padding: 14px 0;
+  }
+  .field input:focus { outline: none; }
+  .field input::placeholder { color: var(--muted); }
+  .go {
+    appearance: none;
+    border: 0;
+    border-radius: 12px;
+    background: var(--pop);
+    color: var(--bg);
+    font: inherit;
+    font-weight: 600;
+    font-size: .95rem;
+    padding: 11px 18px;
+    cursor: pointer;
+  }
+  .go:hover { background: var(--pop-strong); }
+  .go:focus-visible { outline: 2px solid var(--pop); outline-offset: 2px; }
+
+  .examples { display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; }
+  .examples .label { color: var(--muted); font-size: .82rem; }
+  .chip {
+    appearance: none;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-2);
+    border-radius: 999px;
+    font: inherit;
+    font-size: .82rem;
+    padding: 5px 12px;
+    cursor: pointer;
+    text-align: left;
+  }
+  .chip:hover { border-color: var(--pop-line); color: var(--text); background: var(--pop-tint); }
+  .chip:focus-visible { outline: 2px solid var(--pop); outline-offset: 2px; }
+
+  /* ---- result ---- */
+  .result { display: none; flex-direction: column; gap: 14px; }
+  .result.on { display: flex; }
+
+  .card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+
+  .answer { padding: 20px 20px 18px; display: flex; flex-direction: column; gap: 4px; }
+  .answer .who {
+    font-size: .74rem;
+    text-transform: uppercase;
+    letter-spacing: .09em;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .answer .big {
+    font-size: 2.6rem;
+    line-height: 1.1;
+    font-weight: 660;
+    letter-spacing: -0.03em;
+    font-variant-numeric: tabular-nums;
+  }
+  .answer .big .unit { font-size: 1.1rem; font-weight: 500; color: var(--muted); letter-spacing: 0; }
+  .answer .band {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    align-self: flex-start;
+    margin-top: 6px;
+    border: 1px solid var(--pop-line);
+    background: var(--pop-tint);
+    color: var(--pop-strong);
+    border-radius: 999px;
+    font-size: .85rem;
+    font-weight: 550;
+    padding: 3px 12px;
+  }
+  :root[data-theme="dark"] .answer .band { color: var(--pop); }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .answer .band { color: var(--pop); }
+  }
+  .answer .plain { color: var(--text-2); font-size: .95rem; margin-top: 8px; }
+
+  .inputs {
+    border-top: 1px solid var(--border);
+    background: var(--bg-2);
+    padding: 16px 20px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .inputs h2 {
+    font-size: .74rem;
+    text-transform: uppercase;
+    letter-spacing: .09em;
+    color: var(--muted);
+    font-weight: 600;
+    margin: 0;
+  }
+  .grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; }
+  @media (max-width: 520px) { .grid { grid-template-columns: 1fr; } }
+
+  .cell { display: flex; flex-direction: column; gap: 4px; }
+  .cell label { font-size: .82rem; color: var(--muted); }
+  .cell .val {
+    display: flex; align-items: baseline; gap: 6px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg);
+    padding: 9px 12px;
+    font-variant-numeric: tabular-nums;
+  }
+  .cell.filled .val { border-color: var(--pop-line); }
+  .cell .val .u { color: var(--muted); font-size: .85rem; }
+  .cell .from {
+    font-size: .74rem;
+    color: var(--pop-strong);
+  }
+  :root[data-theme="dark"] .cell .from { color: var(--pop); }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .cell .from { color: var(--pop); }
+  }
+  .cell.missing .val {
+    border-color: var(--warn);
+    background: var(--warn-tint);
+    color: var(--muted);
+  }
+  .cell.missing .from { color: var(--warn); }
+
+  details.proof {
+    border-top: 1px solid var(--border);
+  }
+  details.proof > summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 13px 20px;
+    font-size: .9rem;
+    color: var(--text-2);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  details.proof > summary::-webkit-details-marker { display: none; }
+  details.proof > summary::before {
+    content: "";
+    width: 7px; height: 7px;
+    border-right: 1.6px solid currentColor;
+    border-bottom: 1.6px solid currentColor;
+    transform: rotate(-45deg);
+    transition: transform .15s ease;
+  }
+  details.proof[open] > summary::before { transform: rotate(45deg); }
+  details.proof > summary:hover { color: var(--text); }
+  details.proof > summary:focus-visible { outline: 2px solid var(--pop); outline-offset: -2px; }
+  .proof-body {
+    padding: 0 20px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: .92rem;
+    color: var(--text-2);
+  }
+  .formula {
+    font-family: var(--mono);
+    font-size: .84rem;
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 11px 13px;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .cite { color: var(--muted); font-size: .86rem; }
+  .cite a { color: inherit; }
+
+  /* follow-up + disambiguation */
+  .ask {
+    display: flex; flex-direction: column; gap: 12px;
+    padding: 18px 20px;
+  }
+  .ask .q { font-size: 1.02rem; font-weight: 550; }
+  .ask .sub { color: var(--muted); font-size: .9rem; margin-top: -6px; }
+  .miniform { display: flex; gap: 8px; flex-wrap: wrap; }
+  .miniform input {
+    flex: 1; min-width: 140px;
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text);
+    font: inherit;
+    padding: 10px 12px;
+  }
+  .miniform input:focus { outline: none; border-color: var(--pop-line); box-shadow: 0 0 0 3px var(--pop-tint); }
+
+  .picks { display: flex; flex-direction: column; gap: 8px; }
+  .pick {
+    display: flex; flex-direction: column; gap: 2px;
+    text-align: left;
+    appearance: none;
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 12px 14px;
+    font: inherit;
+    color: var(--text);
+    cursor: pointer;
+  }
+  .pick:hover { border-color: var(--pop-line); background: var(--pop-tint); }
+  .pick:focus-visible { outline: 2px solid var(--pop); outline-offset: 2px; }
+  .pick .n { font-weight: 550; font-size: .97rem; }
+  .pick .d { color: var(--muted); font-size: .85rem; }
+
+  .checks { display: flex; flex-direction: column; gap: 7px; }
+  .check {
+    display: flex; align-items: center; gap: 10px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 9px 12px;
+    background: var(--bg);
+    font-size: .93rem;
+  }
+  .check .mark {
+    width: 18px; height: 18px; border-radius: 5px;
+    border: 1.5px solid var(--border-2);
+    display: grid; place-items: center;
+    flex: none;
+    font-size: .7rem;
+  }
+  .check.yes { border-color: var(--pop-line); background: var(--pop-tint); }
+  .check.yes .mark { background: var(--pop); border-color: var(--pop); color: var(--bg); }
+  .check .pts { margin-left: auto; color: var(--muted); font-size: .82rem; font-variant-numeric: tabular-nums; }
+  .check.todo { border-style: dashed; }
+
+  .runningtotal {
+    display: flex; align-items: baseline; gap: 8px;
+    color: var(--muted); font-size: .88rem;
+    padding-top: 2px;
+  }
+  .runningtotal b { color: var(--text); font-size: 1.05rem; font-variant-numeric: tabular-nums; }
+
+  /* footer */
+  footer.site {
+    display: flex; gap: 10px; justify-content: center;
+    padding-top: 8px;
+  }
+  footer.site a {
+    display: inline-flex; align-items: center; gap: 7px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 6px 14px;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: .84rem;
+  }
+  footer.site a:hover { color: var(--text); border-color: var(--border-2); }
+
+  .sep { height: 1px; background: var(--border); border: 0; margin: 4px 0; }
+
+  .note {
+    border-left: 2px solid var(--pop-line);
+    padding: 2px 0 2px 14px;
+    color: var(--muted);
+    font-size: .88rem;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .note b { color: var(--text-2); font-weight: 600; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="bar">
+    <a class="brand" href="#">
+      <span class="mark" aria-hidden="true">SW</span>
+      <span>Sophie Well</span>
+    </a>
+    <button type="button" class="toggle" id="themeBtn" aria-label="Switch theme" title="Switch theme">
+      <svg class="sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+        <circle cx="12" cy="12" r="4.2" fill="currentColor"/>
+        <g stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4"/>
+        </g>
+      </svg>
+      <svg class="moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+        <path fill="currentColor" d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/>
+      </svg>
+    </button>
+  </header>
+
+  <div class="lede">
+    <h1>Bedside math, answered.</h1>
+    <p>Type the question the way you'd say it. You get the number, the inputs, and the source.</p>
+  </div>
+
+  <div class="box">
+    <form class="field" id="form" role="search">
+      <input id="q" type="text" autocomplete="off" aria-label="Ask what you need to work out"
+             placeholder="crcl for a 72 year old woman, 68 kg, creatinine 1.4" />
+      <button class="go" type="submit">Answer</button>
+    </form>
+    <div class="examples">
+      <span class="label">Try:</span>
+      <button class="chip" type="button" data-q="crcl for a 72 year old woman, 68 kg, creatinine 1.4">crcl 72F 68 kg cr 1.4</button>
+      <button class="chip" type="button" data-q="wells score for PE, heart rate 110, previous DVT">wells PE, hr 110, previous DVT</button>
+      <button class="chip" type="button" data-q="heparin drip 25000 units in 250 mL running at 12 mL/hr">heparin drip 25,000 in 250 at 12</button>
+      <button class="chip" type="button" data-q="correct the sodium">correct the sodium</button>
+    </div>
+  </div>
+
+  <!-- STATE 1: fully prefilled -->
+  <section class="result" id="r-crcl" aria-live="polite">
+    <div class="card">
+      <div class="answer">
+        <div class="who">Cockcroft-Gault creatinine clearance</div>
+        <div class="big">39 <span class="unit">mL/min</span></div>
+        <span class="band">Moderate impairment &middot; renal dosing applies</span>
+        <p class="plain">Below 50 mL/min, check every renally cleared drug on the MAR against its dose adjustment.</p>
+      </div>
+
+      <div class="inputs">
+        <h2>Inputs</h2>
+        <div class="grid">
+          <div class="cell filled">
+            <label>Age</label>
+            <div class="val">72 <span class="u">years</span></div>
+            <span class="from">from your question</span>
+          </div>
+          <div class="cell filled">
+            <label>Sex</label>
+            <div class="val">Female</div>
+            <span class="from">from your question</span>
+          </div>
+          <div class="cell filled">
+            <label>Weight</label>
+            <div class="val">68 <span class="u">kg</span></div>
+            <span class="from">from your question</span>
+          </div>
+          <div class="cell filled">
+            <label>Serum creatinine</label>
+            <div class="val">1.4 <span class="u">mg/dL</span></div>
+            <span class="from">from your question</span>
+          </div>
+        </div>
+      </div>
+
+      <details class="proof">
+        <summary>How this was worked out</summary>
+        <div class="proof-body">
+          <div class="formula">CrCl = ((140 &minus; 72) &times; 68) / (72 &times; 1.4) &times; 0.85 = 39.0 mL/min</div>
+          <p>Uses actual body weight, and the 0.85 factor for female sex. Estimates clearance; it is not a measured GFR.</p>
+          <p class="cite">Cockcroft DW, Gault MH. <i>Nephron.</i> 1976;16(1):31&ndash;41. Source checked August 19, 2026.</p>
+        </div>
+      </details>
+    </div>
+    <div class="note">
+      <b>Why this shape</b>
+      <span>The number leads. The inputs stay visible so a wrong pickup is caught in one glance, and every value is editable in place.</span>
+    </div>
+  </section>
+
+  <!-- STATE 2: partial, asks for the rest -->
+  <section class="result" id="r-wells" aria-live="polite">
+    <div class="card">
+      <div class="answer">
+        <div class="who">Wells score for pulmonary embolism</div>
+        <div class="big">3.0 <span class="unit">of 12.5 so far</span></div>
+        <p class="plain">I caught two criteria in your question. Five left &mdash; tap the ones that apply.</p>
+      </div>
+      <div class="inputs">
+        <h2>Criteria</h2>
+        <div class="checks">
+          <div class="check yes"><span class="mark">&#10003;</span> Heart rate over 100 <span class="pts">+1.5</span></div>
+          <div class="check yes"><span class="mark">&#10003;</span> Previous PE or DVT <span class="pts">+1.5</span></div>
+          <div class="check todo"><span class="mark"></span> Clinical signs of DVT <span class="pts">+3</span></div>
+          <div class="check todo"><span class="mark"></span> PE is the most likely diagnosis <span class="pts">+3</span></div>
+          <div class="check todo"><span class="mark"></span> Immobilization or surgery in the past 4 weeks <span class="pts">+1.5</span></div>
+          <div class="check todo"><span class="mark"></span> Hemoptysis <span class="pts">+1</span></div>
+          <div class="check todo"><span class="mark"></span> Active malignancy <span class="pts">+1</span></div>
+        </div>
+        <div class="runningtotal">Running total <b>3.0</b> &mdash; under 2 is low risk, over 6 is high</div>
+      </div>
+      <details class="proof">
+        <summary>How this was worked out</summary>
+        <div class="proof-body">
+          <p>Points sum across seven criteria. Three-tier reading: under 2 low, 2 to 6 moderate, over 6 high.</p>
+          <p class="cite">Wells PS, et al. <i>Thromb Haemost.</i> 2000;83(3):416&ndash;420. Source checked August 19, 2026.</p>
+        </div>
+      </details>
+    </div>
+    <div class="note">
+      <b>Why this shape</b>
+      <span>A missing value never blocks the page. The score is shown partial, and what is unanswered is the only thing left to touch.</span>
+    </div>
+  </section>
+
+  <!-- STATE 3: one value missing, asked in words -->
+  <section class="result" id="r-heparin" aria-live="polite">
+    <div class="card">
+      <div class="ask">
+        <div class="q">What is the patient's weight?</div>
+        <div class="sub">Everything else is in: 25,000 units in 250 mL at 12 mL/hr &rarr; 1,200 units/hr.</div>
+        <form class="miniform" onsubmit="return false;">
+          <input type="text" placeholder="e.g. 80 kg or 176 lb" aria-label="Patient weight" />
+          <button class="go" type="submit">Finish</button>
+        </form>
+      </div>
+      <div class="inputs">
+        <h2>Inputs</h2>
+        <div class="grid">
+          <div class="cell filled">
+            <label>Heparin in bag</label>
+            <div class="val">25,000 <span class="u">units</span></div>
+            <span class="from">from your question</span>
+          </div>
+          <div class="cell filled">
+            <label>Volume</label>
+            <div class="val">250 <span class="u">mL</span></div>
+            <span class="from">from your question</span>
+          </div>
+          <div class="cell filled">
+            <label>Rate</label>
+            <div class="val">12 <span class="u">mL/hr</span></div>
+            <span class="from">from your question</span>
+          </div>
+          <div class="cell missing">
+            <label>Weight</label>
+            <div class="val">Needed</div>
+            <span class="from">ask above</span>
+          </div>
+        </div>
+      </div>
+      <details class="proof">
+        <summary>How this was worked out</summary>
+        <div class="proof-body">
+          <div class="formula">units/hr = (25,000 / 250) &times; 12 = 1,200 &nbsp;&rarr;&nbsp; units/kg/hr = 1,200 / weight</div>
+          <p>Weight-based heparin rates are checked against your institution's own nomogram.</p>
+          <p class="cite">Institution-specific nomogram. Source checked August 19, 2026.</p>
+        </div>
+      </details>
+    </div>
+    <div class="note">
+      <b>Why this shape</b>
+      <span>One question at a time, in plain words, with the partial work already shown above it. No form to scan for the red field.</span>
+    </div>
+  </section>
+
+  <!-- STATE 4: ambiguous -->
+  <section class="result" id="r-pick" aria-live="polite">
+    <div class="card">
+      <div class="ask">
+        <div class="q">Which sodium question?</div>
+        <div class="sub">Two calculators match. Pick one and I'll carry over what you already typed.</div>
+        <div class="picks">
+          <button class="pick" type="button">
+            <span class="n">Corrected sodium for hyperglycemia</span>
+            <span class="d">Measured sodium reads low when glucose is high. Needs sodium and glucose.</span>
+          </button>
+          <button class="pick" type="button">
+            <span class="n">Sodium correction rate in hyponatremia</span>
+            <span class="d">How fast it is safe to raise sodium. Needs current sodium, target, and hours.</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="note">
+      <b>Why this shape</b>
+      <span>Two plain-language choices, not a list of nine near-matches. Ambiguity is the only case where a page appears before an answer does.</span>
+    </div>
+  </section>
+
+  <hr class="sep" />
+
+  <footer class="site">
+    <a href="https://claygood.com" target="_blank" rel="noopener noreferrer">Made by Clay Good</a>
+    <a href="https://github.com/clay-good/sophiewell.com" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true">
+        <path fill="currentColor" fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+      </svg>
+      GitHub
+    </a>
+  </footer>
+
+</div>
+
+<script>
+  var root = document.documentElement;
+  document.getElementById('themeBtn').addEventListener('click', function () {
+    var dark = getComputedStyle(root).colorScheme.indexOf('dark') === 0;
+    root.setAttribute('data-theme', dark ? 'light' : 'dark');
+  });
+
+  var STATES = [
+    { id: 'r-crcl',    keys: ['crcl', 'creatinine clearance', 'cockcroft', 'kidney', 'renal'] },
+    { id: 'r-wells',   keys: ['wells', 'pe ', 'pulmonary'] },
+    { id: 'r-heparin', keys: ['heparin', 'drip', 'units/hr', 'infusion'] },
+    { id: 'r-pick',    keys: ['sodium', 'na '] }
+  ];
+
+  function show(id) {
+    STATES.forEach(function (s) {
+      document.getElementById(s.id).classList.toggle('on', s.id === id);
+    });
+    if (id) document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function route(text) {
+    var t = (text || '').toLowerCase() + ' ';
+    var hit = STATES.find(function (s) {
+      return s.keys.some(function (k) { return t.indexOf(k) !== -1; });
+    });
+    show(hit ? hit.id : 'r-crcl');
+  }
+
+  document.getElementById('form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    route(document.getElementById('q').value);
+  });
+
+  Array.prototype.forEach.call(document.querySelectorAll('.chip'), function (chip) {
+    chip.addEventListener('click', function () {
+      document.getElementById('q').value = chip.dataset.q;
+      route(chip.dataset.q);
+    });
+  });
+
+  Array.prototype.forEach.call(document.querySelectorAll('.check.todo'), function (row) {
+    row.addEventListener('click', function () { row.classList.toggle('yes'); row.classList.toggle('todo'); });
+  });
+
+  show('r-crcl');
+</script>
+
+</body>
+</html>

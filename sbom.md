@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `1bc7e1cd4217d2b6`
-Generated: 2026-08-20T04:24:57.059Z
+Build ID: `720eae6192127543`
+Generated: 2026-08-20T16:45:54.734Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,9 +24,9 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 101503 | `1617528a33177e4b79cb0a1df49be6e73cbbc60c35b911ee70adf8b60462bd9c` |
-| `styles.css` | 52253 | `ba35672f089ea6e327fab23be4858f998ffec7ed47661a2d4e663a37ecd127e3` |
-| `app.js` | 421839 | `bdbfe6f7b6b382dae298ec3608621ee66913b80dd036bbf1c10ca880fad4393b` |
+| `index.html` | 100654 | `43c76ba7dcf5b87e95a896ff2ee737d93f12dc93fd5acb5228795affd4a711dd` |
+| `styles.css` | 58432 | `edd30c59cb6bf9ad3b8ca1bf9e437691f1fa9f4c3423e466e3f88f7a7d833872` |
+| `app.js` | 442474 | `fe25f8bd84d656bb4f755bc9f37939c87c39e8f8943c9872081caddca3087500` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
@@ -226,6 +226,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/fgsi-v667.js` | 5493 | `8d04462986eadc0e971e5892ca0376658d80110beff1d6486f8c96db6999e899` |
 | `lib/fibrosis-v275.js` | 2577 | `2d43ffb3616e1d1cf98df08e2def7ef97046d61755cfe4f52af8819b3a8f0324` |
 | `lib/ficat-arlet-v344.js` | 4921 | `a055326850836eb72bf210ce9e62fa7c406cf669a5dd231368a7b6ae020a8496` |
+| `lib/field-bucket.js` | 506 | `b5ff024f9cfdcfc048948094fe6da7099758d52f6c6d8971a941c206a9aa3855` |
 | `lib/field-units.js` | 6801 | `46aa4546c76ec5d672d726f2bb1bb8101aeb13aa5761c20c741342291789ce25` |
 | `lib/field.js` | 13513 | `cbe15d4b105da144ed2c465e525fb1a49a626b50df7fc402f80830fa8efa0996` |
 | `lib/fielding-hawkins-v449.js` | 3661 | `5c5a27ddb8773fee2d37bfbcf114a7d46feb891e7b43689c81a56221a05cb5a9` |
@@ -556,6 +557,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/qcsi-v698.js` | 4036 | `291e4b4e5ce4a881b28306be5eacd3d9627efd1015c6796a19be4a53eba9e4c5` |
 | `lib/qpitt-v587.js` | 10218 | `a62e42423fe772330c1dce867e4669b68e446b877b9eddf3d057f54a5c5e45b8` |
 | `lib/query-compute.js` | 18505 | `c4132165eb74826abc209f8783fee660f7fd8b661b0614f313f9a1f5481f7a0c` |
+| `lib/query-fill.js` | 25591 | `a3d63f5175c8578b633c263ff9bb2785582c7ee839404f96c2f7c0d6bdf16ca6` |
 | `lib/rachs1-v541.js` | 11732 | `2203884a2c8ed58ab8d3c53b11de429a58adfff473cab669878d8d0cfc64a99a` |
 | `lib/radiology-v165.js` | 14752 | `965c040fa92553139ecfca2c11efb94522496799ee745f6b2fdf512ee3494d72` |
 | `lib/radmeasure-v253.js` | 7140 | `6e438d606d573be5431eb6ec9d0575353297d97ed8f255aa7afb6c7f86c7197c` |
@@ -575,7 +577,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/renal-v277.js` | 3090 | `08c99f10959b0ec0bc08d9067fb3ab92686a80428d1ddd31ee029c3767dc6574` |
 | `lib/renalpulm-v249.js` | 7088 | `f3a5c749b247759356a20c4f147d62f9b694302882e6d58c3cd05ceae8e5e6d0` |
 | `lib/respiratory-maternal-v263.js` | 9007 | `e983b05aaca13cbc24663ff10b78f9e74842609be7bbddaed82a81bdbac2127c` |
-| `lib/result-copy.js` | 1745 | `0389d38cabd3d8adca91096d93e663a5e446f3062f6282d0fb7e77f5a0ffad93` |
+| `lib/result-copy.js` | 3158 | `33b4ecea181c594f8b9b0631357284f817a4c206e6f367ce0b0be3fd96ddd66d` |
 | `lib/resus-trauma-v207.js` | 10247 | `de821d74c4915f2be35616dce76d9ef07f8237bfd3e2358b73830a5ed5dde55a` |
 | `lib/rheum-classification-v222.js` | 13915 | `95c66ddc0349e0fd38cde0662c0862de9c06e7e0534e4a21bab1108257f5a09b` |
 | `lib/rheum-fn-v280.js` | 8137 | `27469e9bd77ea9899b3446127f132ca1661759f0e860ecd88bc7c2c5a6349534` |

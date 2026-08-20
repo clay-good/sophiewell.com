@@ -1,0 +1,52 @@
+# spec-v753: the query corpus lib/query-fill.js is measured against.
+#
+# This file exists instead of query telemetry. The home page says "no tracking",
+# and that stays true: what a nurse types is never recorded, so the only honest
+# way to know whether the extractor works is to write down what people say and
+# check it here. Add a line whenever a phrasing comes up; the test is the ledger.
+#
+# Format, pipe-separated:
+#   <query> | <tileId> | <expectations>
+#
+# An expectation is `dom=value` (must be filled with that value) or `!dom` (must
+# NOT be filled). `~` in place of expectations means "fill nothing at all".
+# Values compare numerically where both sides are numbers, else as strings.
+
+# --- the four states from the mockup ---------------------------------------
+crcl for a 72 year old woman, 68 kg, creatinine 1.4 | cockcroft-gault | age=72 w=68 scr=1.4 sex=F
+wells score for PE, heart rate 110, previous DVT | wells-pe | hrOver100=true priorPeOrDvt=true
+map 120/80 | map | s=120 d=80
+
+# --- units: US customary in, canonical out ---------------------------------
+bmi 180 lb 5 ft 10 in | bmi | w=81.646627 h=1.778
+bmi for 5'10 and 180 lbs | bmi | w=81.646627 h=1.778
+bmi 82 kg 178 cm | bmi | w=82 h=1.78
+
+# --- a run of labs: name-then-value must not poison its neighbor -----------
+anion gap na 140 cl 104 hco3 24 | anion-gap | na=140 cl=104 hco3=24
+corrected calcium 7.2 albumin 2.1 | corrected-calcium | ca=7.2 alb=2.1
+
+# --- numeric and lettered enums need their own name next to the value ------
+mmrc dyspnea grade 2 | mmrc-dyspnea | md-grade=2
+deauville 4 | deauville-score | deauville-score-in=4
+la grade B | la-esophagitis | la-grade=B
+strasberg type D | strasberg-bdi | strasberg-type=D
+skin stage 1, liver stage 2, lower gi stage 0 | gvhd-grade | gvhd-skin=1 gvhd-liver=2 gvhd-gi=0
+
+# --- SAFETY: a threshold criterion is about the number, not the words ------
+# "Heart rate > 100" ticks only when the number actually clears 100.
+wells pe, heart rate 110 | wells-pe | hrOver100=true
+wells pe, heart rate 80 | wells-pe | !hrOver100
+# An explicitly negated criterion is left alone, never ticked.
+wells pe hemoptysis, no malignancy | wells-pe | hemoptysis=true !malignancy
+wells pe, denies hemoptysis | wells-pe | !hemoptysis
+wells pe without hemoptysis | wells-pe | !hemoptysis
+# Naming the tool is not asserting its criteria.
+wells score for PE | wells-pe | ~
+
+# --- SAFETY: a bare number is not a value ----------------------------------
+gvhd 2 | gvhd-grade | ~
+72 | cockcroft-gault | ~
+
+# --- SAFETY: two readings of one field fill neither -------------------------
+sodium 140 then sodium 122 | corrected-sodium | !na
