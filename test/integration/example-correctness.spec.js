@@ -98,6 +98,17 @@ test('every example payload produces the documented numeric output', async ({ pa
     'conc-rate', 'opioid-mme', 'free-water-deficit', 'vasopressor',
     // expected describes the reference band, not the computed cell
     'rcri',
+    // spec-v752: four more of the same kind, surfaced when the `Example:
+    // <expected>` lede came off the tool view. Every one of these numbers is
+    // prose -- a regulation, a source's criteria count, a trimester label, a
+    // protocol hour -- not a cell the tile computes, so the numeric sweep was
+    // never validating them; it was reading them back out of the lede's copy of
+    // the expected string. Their math is covered by unit tests.
+    //   hipaa-auth          "45 CFR 164.508" is the regulation the letter cites
+    //   vent-sbt-peep       "all 5 Boles 2007 criteria" counts the source's list
+    //   sepsis-bundle-clock "hour-1 elements", "at 6 h" name SSC bundle windows
+    //   preg-dating         "T1 discordance" is a trimester label
+    'hipaa-auth', 'vent-sbt-peep', 'sepsis-bundle-clock', 'preg-dating',
     // expected includes derivation breakdown the tool doesn't echo
     'maint-fluids', 'iron-ganzoni',
     // expected hour-band is local-tz-dependent (datetime-local input,
@@ -140,8 +151,36 @@ test('every example payload produces the documented numeric output', async ({ pa
 
     const text = await page.locator('main').innerText();
     const cleaned = text.replace(/Expected:[^\n]*/g, '');
+    let missing = facts.filter((f) => !findNumberNear(cleaned, f)).map((f) => f.raw);
 
-    const missing = facts.filter((f) => !findNumberNear(cleaned, f)).map((f) => f.raw);
+    // spec-v752: an example's documented output routinely names its own INPUTS
+    // -- "15 kg x 20 mL/kg = 300 mL bolus" -- and an input's value is not text,
+    // so innerText never saw the 15. Until now that did not show, because the
+    // tool view printed `Example: <expected>` above the fields and this sweep
+    // was matching the expected string against a verbatim copy of ITSELF. That
+    // lede is gone, and 19 tiles turned out to be leaning on it.
+    //
+    // So when the rendered text alone does not account for every number, look
+    // in the fields before calling it a failure. Done only on the miss path:
+    // reading values for all ~1100 tiles added a second round trip each and
+    // pushed the serial sweep past its wall-clock cap for no benefit, since the
+    // other ~1080 tiles state their numbers in the output.
+    if (missing.length) {
+      const values = await page.locator('main').evaluate((root) => {
+        const parts = [];
+        for (const node of root.querySelectorAll('input, select, textarea')) {
+          if (node.type === 'checkbox' || node.type === 'radio') continue;
+          if (node.tagName === 'SELECT') {
+            const opt = node.selectedOptions && node.selectedOptions[0];
+            if (opt) parts.push(opt.textContent);
+          }
+          if (node.value) parts.push(String(node.value));
+        }
+        return parts.join(' \n');
+      });
+      missing = facts.filter((f) => !findNumberNear(`${cleaned}\n${values}`, f)).map((f) => f.raw);
+    }
+
     if (missing.length) {
       failures.push({ id, expected, missing, got: cleaned.slice(0, 400) });
     }

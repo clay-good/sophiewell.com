@@ -346,9 +346,8 @@ test('spec-v4 group N: pediatric weight converter computes lb/oz to kg', async (
 
 
 // ---------------------------------------------------------------------------
-// spec-v753..v756: a plain-language question routes to the right tile with the
-// reader's own values already in the fields, every filled one saying where it
-// came from. The page does not move yet -- that is spec-v751/v752.
+// spec-v752..v756: the answer sits above the fields it came from, and a
+// plain-language question fills them. The home page itself is spec-v751.
 // ---------------------------------------------------------------------------
 
 // Type a query and take the top result the way a reader does.
@@ -360,6 +359,20 @@ async function ask(page, query) {
   await page.locator('.hero-search-result').first().waitFor();
   await page.locator('.hero-search-result').first().click();
 }
+
+test('spec-v752 tile: the answer is the first thing in the tool body', async ({ page }) => {
+  await page.goto('/#cockcroft-gault');
+  const results = page.locator('#tool-body > *').first();
+  await expect(results).toHaveAttribute('id', 'q-results');
+  // ...and it is actually above the first input on screen.
+  const answerBox = await page.locator('#q-results').boundingBox();
+  const firstInput = await page.locator('#tool-body input').first().boundingBox();
+  expect(answerBox.y).toBeLessThan(firstInput.y);
+  // The old duplicate example lede is gone; the one sentence that replaced it
+  // sits under the answer and names the values for what they are.
+  await expect(page.locator('.tool-example-lede')).toHaveCount(0);
+  await expect(page.locator('.example-hint')).toHaveText(/example values/i);
+});
 
 test('spec-v753/v754 crcl: the query fills every field, in the right units', async ({ page }) => {
   await ask(page, 'crcl for a 72 year old woman, 68 kg, creatinine 1.4');

@@ -3970,6 +3970,51 @@ function applyExample(util, { skip } = {}) {
   return filled;
 }
 
+// spec-v752: move the tile's result region to the top of the tool body, so the
+// page reads answer -> inputs -> proof. Fails quiet: a tile whose renderer does
+// not use the #q-results convention (group-a, pa-lint) is left exactly as it
+// was, and a region already in first position is not touched.
+function hoistResults(body) {
+  const results = body.querySelector('#q-results');
+  if (!results) return;
+  // The ask card outranks the answer. When spec-v755 is asking for a missing
+  // value there is no answer yet, and the card's own rule hides the region --
+  // but that rule is a sibling selector, so the region has to stay AFTER the
+  // card for it to bite. Hoisting past the card left a tile rendering a
+  // confident "0 mL/min" above the question asking for the value it needs.
+  const ask = body.querySelector(':scope > .ask-card');
+  const target = ask ? ask.nextElementSibling : body.firstElementChild;
+  if (target === results) return;
+  body.insertBefore(results, target);
+}
+
+
+// spec-v752: the one sentence that survives from the old example lede. The
+// pre-rendered /tools/<id>/ page says the same thing in the same words --
+// scripts/check-page-copy.mjs holds both to this string, the way it already
+// holds PROOF_SUMMARY.
+export const EXAMPLE_HINT_TEXT = 'These are example values. Replace them with your own.';
+
+// Render the example hint between the answer and the fields, and take it away
+// the moment the reader edits anything -- after the first keystroke the values
+// are theirs, not ours. Attached after applyExample has finished dispatching
+// its own input events, so the hint does not remove itself on arrival.
+function showExampleHint(body) {
+  if (!body || body.querySelector('.example-hint')) return;
+  const hint = el('p', { class: 'example-hint', text: EXAMPLE_HINT_TEXT });
+  const results = body.querySelector('#q-results');
+  if (results && results.nextSibling) body.insertBefore(hint, results.nextSibling);
+  else if (results) body.appendChild(hint);
+  else body.insertBefore(hint, body.firstChild);
+  const drop = () => {
+    hint.remove();
+    body.removeEventListener('input', drop);
+    body.removeEventListener('change', drop);
+  };
+  body.addEventListener('input', drop);
+  body.addEventListener('change', drop);
+}
+
 // spec-v754: put a field's unit select back on its canonical option, so a
 // value expressed in canonical units is read as canonical units. Mirrors the
 // reset in applyExample; only unitField selects are touched, identified by the
@@ -4161,22 +4206,16 @@ function renderToolView(util) {
     );
   }
 
-  // The worked example, stated up front. A reader landing here cold needs one
-  // thing before anything else: what the answer looks like. Saying it above
-  // the fields (rather than only in the References region at the bottom) makes
-  // the shape of the output obvious, and makes the pre-filled values legible
-  // as an example to overwrite rather than as data someone left behind.
+  // spec-v752: the worked example used to be stated up front -- "Example: CrCl
+  // 39 mL/min. Replace the values below with your own." -- because the answer
+  // was off-screen and a reader landing cold needed to know what the output
+  // looked like. Now the live answer is the first thing on the page and the
+  // example values are pre-filled, so that sentence printed the same number
+  // twice, three lines apart. What is left is the part the answer cannot say
+  // for itself: that these values are a demonstration, not someone's patient.
+  // It renders under the answer (see EXAMPLE_HINT_TEXT below), not above it.
   const tileMeta = META[util.id];
-  if (tileMeta && tileMeta.example && tileMeta.example.expected) {
-    // Some `expected` strings already end in a period; normalize so the
-    // sentence never reads "4.5 (moderate)..".
-    const expected = String(tileMeta.example.expected).replace(/\s*\.\s*$/, '');
-    content.appendChild(el('p', { class: 'tool-example-lede' }, [
-      el('span', { class: 'tel-label', text: 'Example: ' }),
-      el('span', { class: 'tel-expected', text: `${expected}.` }),
-      el('span', { class: 'tel-hint muted', text: ' Replace the values below with your own.' }),
-    ]));
-  }
+  const hasExample = !!(tileMeta && tileMeta.example && tileMeta.example.expected);
 
   // spec-v9 §3.2: tile regions render in the order title -> description ->
   // inputs -> references. The meta block (References) is appended *after*
@@ -4203,6 +4242,25 @@ function renderToolView(util) {
       // here, once, rather than in 600-odd view files: the rule is about how
       // the page reads, not about what any one tile means.
       collapseLongNotes(body);
+      // spec-v752: the answer moves above the fields. Renderers append their
+      // result region last because that is the order the page is built in, not
+      // the order it is read in -- on a 16-field tile that puts the number a
+      // screen and a half down, which is the wrong place for the one thing the
+      // reader came for. Done here, once, for all 626 views that use the
+      // #q-results convention; the two that don't are left alone.
+      //
+      // Runs LAST of the three passes, and the order matters. hoistIntroNote
+      // has already lifted the tile's static explanation out of the live region
+      // and parked it immediately before #q-results; collapseLongNotes has
+      // folded it. Moving #q-results to the front then leaves the page reading
+      // answer -> inputs -> explanation -> proof, which is the order a reader
+      // needs. Doing it earlier would move the region out from under the note
+      // hoist and land the explanation above the answer.
+      //
+      // Also before applyHashState/applyExample fire in their microtask, so the
+      // live region is moved while it is still empty and a screen reader never
+      // hears its contents announced twice.
+      hoistResults(body);
       // spec-v9 §3.3: pre-fill META[id].example after the renderer mounts,
       // but let URL-hash state win (deep links keep their values).
       Promise.resolve().then(() => {
@@ -4228,6 +4286,26 @@ function renderToolView(util) {
         const save = () => saveInputs(util.id, body);
         body.addEventListener('input', save);
         body.addEventListener('change', save);
+        // spec-v752: re-assert the answer's position once everything else has
+        // settled. hoistIntroNote installs a MutationObserver, and it parks the
+        // note it lifts out of the live region immediately before #q-results --
+        // which, after the synchronous hoist above has moved the region to the
+        // front, puts the explanation back on top of the answer.
+        //
+        // Landing after that park is fiddlier than it looks, and the timing was
+        // measured rather than reasoned about. On a tile whose result is
+        // invalid until the example fills it -- abc-scale, poseidon, slums --
+        // the note does not exist at render time at all: it arrives with the
+        // fill below, and the observer parks it then. A microtask is too early
+        // (the observer's own callbacks are microtasks). An animation frame is
+        // ALSO too early: double-rAF was tried and still lost. A task is late
+        // enough, so setTimeout it is. Do not "optimize" this into a frame.
+        //
+        // It sticks once it lands: the observer parks on its FIRST hoist only,
+        // and later scans either drop a re-appended copy or undo, neither of
+        // which moves the region. Idempotent, so the tiles that were already
+        // right pay one no-op.
+        setTimeout(() => hoistResults(body), 0);
 
         // spec-v754: consumed once -- a later visit to the same tile is not
         // "from your question". Read before applyExample, because whether the
@@ -4268,6 +4346,13 @@ function renderToolView(util) {
             const card = askCard(body, auto.missing, summary);
             if (card) body.insertBefore(card, body.firstChild);
           }
+        }
+        // spec-v752: say once, under the answer, that these are example values.
+        // Only when the example actually filled the fields -- a deep link or a
+        // remembered set means the values on screen are the reader's own, and
+        // calling those an example would be a lie.
+        if (hasExample && !fromQuery && hashKeys.size === 0 && remembered.size === 0) {
+          showExampleHint(body);
         }
       });
     } catch (err) {

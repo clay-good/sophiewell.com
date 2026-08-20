@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `ec58bc6781c7ac67`
-Generated: 2026-08-20T17:08:59.947Z
+Build ID: `380a66bb7af10ea0`
+Generated: 2026-08-20T17:17:01.365Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -25,8 +25,8 @@ downloads is committed in this repository and is hashed below.
 | Path | Bytes | SHA-256 |
 |---|---:|---|
 | `index.html` | 101503 | `1617528a33177e4b79cb0a1df49be6e73cbbc60c35b911ee70adf8b60462bd9c` |
-| `styles.css` | 56458 | `38173514d934ea2d342fc0e5ce46575ac351b085e8a394f1cb67a28fbdc41f2e` |
-| `app.js` | 438559 | `1b6c0509a150bd5f66d66fa531405b5afa8aece429bc6206d93b399d098c4c72` |
+| `styles.css` | 58654 | `92b44012ad9099b8d475059c12ed045e9e5419b26a04c815b5bfbb2860bdf33e` |
+| `app.js` | 443591 | `c3bc1b9982494a5790ad524cad3ab8d4e586b4fb514113153850c99ec6e92384` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
@@ -577,7 +577,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/renal-v277.js` | 3090 | `08c99f10959b0ec0bc08d9067fb3ab92686a80428d1ddd31ee029c3767dc6574` |
 | `lib/renalpulm-v249.js` | 7088 | `f3a5c749b247759356a20c4f147d62f9b694302882e6d58c3cd05ceae8e5e6d0` |
 | `lib/respiratory-maternal-v263.js` | 9007 | `e983b05aaca13cbc24663ff10b78f9e74842609be7bbddaed82a81bdbac2127c` |
-| `lib/result-copy.js` | 1745 | `0389d38cabd3d8adca91096d93e663a5e446f3062f6282d0fb7e77f5a0ffad93` |
+| `lib/result-copy.js` | 3158 | `33b4ecea181c594f8b9b0631357284f817a4c206e6f367ce0b0be3fd96ddd66d` |
 | `lib/resus-trauma-v207.js` | 10247 | `de821d74c4915f2be35616dce76d9ef07f8237bfd3e2358b73830a5ed5dde55a` |
 | `lib/rheum-classification-v222.js` | 13915 | `95c66ddc0349e0fd38cde0662c0862de9c06e7e0534e4a21bab1108257f5a09b` |
 | `lib/rheum-fn-v280.js` | 8137 | `27469e9bd77ea9899b3446127f132ca1661759f0e860ecd88bc7c2c5a6349534` |

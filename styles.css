@@ -1313,6 +1313,76 @@ main h1 {
   #q-results > p:first-child { font-size: 1.1rem; }
 }
 
+/* spec-v752: the answer reads as an instrument, not as the first line of a
+   list. The primary value is set large with tabular figures so digits line up
+   as the reader types; the band (the interpretation the source gives) sits
+   under it as a pill. Both live inside the existing answer card above, which
+   now sits at the TOP of the tool body -- see hoistResults() in app.js. */
+#q-results ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+#q-results li.result-primary {
+  font-size: 2rem;
+  font-weight: 650;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+  /* The label and value can wrap apart on a narrow phone; they must never
+     force the page sideways. */
+  overflow-wrap: anywhere;
+}
+#q-results li.result-primary .rp-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+#q-results li.result-primary .rp-units {
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: var(--text-muted);
+}
+#q-results li.result-band {
+  align-self: flex-start;
+  padding: 3px 12px;
+  border: 1px solid var(--accent-pop);
+  border-radius: var(--radius-pill);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  font-weight: 550;
+  line-height: 1.4;
+}
+/* `.warn` is the codebase's abnormal-result marker, and its global rule adds a
+   left bar (line 1051). Inside the pill that bar would fight the border, so the
+   pill overrides it with a filled tint instead -- same signal, one shape. */
+#q-results li.result-band.warn {
+  border-left: 1px solid var(--accent-pop-strong);
+  border-color: var(--accent-pop-strong);
+  background: var(--accent-pop-tint);
+  padding-left: 12px;
+}
+@media (max-width: 600px) {
+  #q-results li.result-primary { font-size: 1.7rem; }
+}
+
+/* spec-v752: the one sentence left from the old example lede, now sitting
+   between the answer and the fields. Removed on the reader's first edit. */
+.example-hint {
+  margin: 0 0 var(--space-4);
+  color: var(--text-muted);
+  font-size: 0.92rem;
+}
+
 /* spec-v754: the caption under a field the reader's own words filled. Small and
    quiet -- it is a receipt, not an announcement -- but present on every filled
    field, because being able to check the pickup at a glance is the reason this
