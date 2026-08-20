@@ -367,3 +367,31 @@ test('hoistIntroNote ignores a short note', async () => {
     assert.equal(body.children[0], live);
   });
 });
+
+// One tile is on screen at a time, and routing to the next replaces the body
+// this watches. The observer from the previous tile has to go with it, or each
+// render leaves one behind, still registered against a detached tree it keeps
+// alive -- a serial sweep of the whole catalog accumulates one per tile.
+test('hoistIntroNote drops the previous tile observer', async () => {
+  await withStubDom(async (doc) => {
+    const { hoistIntroNote } = await import('../../lib/long-note.js');
+    const seen = [];
+    const realMO = globalThis.MutationObserver;
+    globalThis.MutationObserver = class {
+      constructor() { this.live = true; seen.push(this); }
+      observe() {}
+      disconnect() { this.live = false; }
+    };
+    try {
+      const a = tileWith(doc, LONG);
+      hoistIntroNote(a.body);
+      const b = tileWith(doc, LONG);
+      hoistIntroNote(b.body);
+      assert.equal(seen.length, 2, 'one observer per tile');
+      assert.equal(seen[0].live, false, 'the first tile\'s observer is disconnected');
+      assert.equal(seen[1].live, true, 'the current one is still watching');
+    } finally {
+      if (realMO) globalThis.MutationObserver = realMO; else delete globalThis.MutationObserver;
+    }
+  });
+});
