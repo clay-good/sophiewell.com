@@ -112,6 +112,39 @@ test('an unmentioned criterion is never filled false', () => {
   assert.ok(!('malignancy' in r.filled), 'silence is not evidence of absence');
 });
 
+// --- label noise that is not label -------------------------------------------
+
+test('spec-v763: a qualifier that discriminates is kept when it has to be', () => {
+  // AKIN compares current creatinine against baseline. Strip the qualifier from
+  // both and they are the same field, veto each other, and neither fills.
+  const fields = [
+    { d: 'cur', k: 'number', l: 'Current creatinine', u: 'mg/dL', r: 1 },
+    { d: 'base', k: 'number', l: 'Baseline creatinine', u: 'mg/dL', r: 1 },
+  ];
+  const r = queryFill('current creatinine 2.4, baseline creatinine 0.9', fields);
+  assert.equal(r.filled.cur, 2.4);
+  assert.equal(r.filled.base, 0.9);
+});
+
+test('spec-v763: a qualifier is still noise when nothing collides', () => {
+  // One creatinine field on the tile: "serum creatinine 1.4" must still fill it
+  // without the reader saying "total" or "current".
+  const fields = [{ d: 'scr', k: 'number', l: 'Total serum creatinine', u: 'mg/dL', r: 1 }];
+  assert.equal(queryFill('creatinine 1.4', fields).filled.scr, 1.4);
+});
+
+test('spec-v763: an enum is not identified by its own glossary', () => {
+  // Adapters document an enum for agents by listing it in brackets. Every one of
+  // those option words is a word the field must NOT be identified by: read as
+  // terms, the glossary's first option wins over the value actually given.
+  const fields = [{
+    d: 'cell', k: 'enum', v: ['low', 'moderate', 'high'],
+    l: 'Cellularity, operator-dependent [low = under 2 per field; moderate = 2 to 5; high = over 5]',
+  }];
+  assert.equal(queryFill('cellularity moderate', fields).filled.cell, 'moderate');
+  assert.equal(queryFill('cellularity high', fields).filled.cell, 'high');
+});
+
 // --- the veto ---------------------------------------------------------------
 
 test('one field with two readings fills neither', () => {
