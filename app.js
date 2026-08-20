@@ -638,9 +638,13 @@ import {
 import { installKeyboard } from './lib/keyboard.js';
 import { parseHash, patchHash, buildHash } from './lib/hash.js';
 import { loadSynonyms } from './lib/synonyms.js';
-import { resolvePrompt } from './lib/prompt.js';
+import { resolvePrompt, resolvePromptRanked } from './lib/prompt.js';
 import { corpusDesc, corpusOneLiner } from './lib/search-corpus.js';
 import { queryCompute } from './lib/query-compute.js';
+// spec-v753/v754: the generic prefill path -- reads the tile's own field
+// registry so a plain-language query fills any tile, not just the 22 with a
+// hand-written template.
+import { queryFill, loadFields } from './lib/query-fill.js';
 import { collapseLongNotes, hoistIntroNote } from './lib/long-note.js';
 // The patient-artifact dropzone UI (spec-v7 sec 3.1) was removed when
 // Sophie pivoted to a clinical-staff-first wedge. The orphaned
@@ -3653,8 +3657,14 @@ function applyHashState(body) {
     if (node.tagName === 'SELECT') node.value = v;
     else if (node.type === 'checkbox') node.checked = v === '1' || v === 'true';
     else node.value = v;
-    const evt = node.tagName === 'SELECT' ? 'change' : (node.type === 'checkbox' ? 'change' : 'input');
-    node.dispatchEvent(new Event(evt, { bubbles: true }));
+    // Dispatch BOTH events, the way applyExample already does. Renderers are
+    // split on which one they listen to, and picking one by element type meant
+    // a tile wired to `input` never recomputed after a select was restored: a
+    // shared Cockcroft-Gault link with sex=F rendered the male number, because
+    // the last compute ran before the select was set. Pre-existing, and it hit
+    // every deep link with a select on an input-wired tile.
+    node.dispatchEvent(new Event('input', { bubbles: true }));
+    node.dispatchEvent(new Event('change', { bubbles: true }));
   }
 }
 
@@ -3960,6 +3970,162 @@ function applyExample(util, { skip } = {}) {
   return filled;
 }
 
+// spec-v754: put a field's unit select back on its canonical option, so a
+// value expressed in canonical units is read as canonical units. Mirrors the
+// reset in applyExample; only unitField selects are touched, identified by the
+// identity converter their option 0 carries.
+function resetUnitsToCanonical(keys) {
+  for (const id of keys) {
+    const sel = document.getElementById(`${id}-unit`);
+    if (!sel || sel.tagName !== 'SELECT' || sel.selectedIndex === 0) continue;
+    if (!sel.options[0] || typeof sel.options[0]._toCanonical !== 'function') continue;
+    sel.selectedIndex = 0;
+    sel.dispatchEvent(new Event('input', { bubbles: true }));
+    sel.dispatchEvent(new Event('change', { bubbles: true }));
+  }
+}
+
+// spec-v754: mark every field the query filled, and drop the mark the moment
+// the reader edits it.
+//
+// This is the verification affordance the whole design rests on: a number in a
+// chat bubble has to be trusted, a number sitting above the four values it came
+// from can be checked at a glance. It is not decoration -- if the extractor
+// picked up the wrong figure, this is where a nurse sees it.
+export const PROVENANCE_TEXT = 'from your question';
+
+function markAutofilled(body, keys) {
+  for (const key of keys) {
+    const node = body.querySelector(`#${CSS.escape(key)}`);
+    if (!node) continue;
+    // A span, not a p.muted: collapseLongNotes folds direct p.muted children of
+    // the tool body, and a caption is not an explanation to fold away.
+    const tag = el('span', { class: 'field-provenance', text: PROVENANCE_TEXT });
+    const anchor = node.closest('p, div, li, fieldset') || node;
+    if (anchor.parentNode) anchor.appendChild(tag);
+    const drop = () => {
+      tag.remove();
+      node.removeEventListener('input', drop);
+      node.removeEventListener('change', drop);
+    };
+    node.addEventListener('input', drop);
+    node.addEventListener('change', drop);
+  }
+}
+
+// spec-v755: the human name of a field, taken from what the page actually
+// renders. A registry label is written for an agent and often carries its unit
+// ("Age (years)"); a rendered <label> is what a nurse already reads next to the
+// box. Strip the unit parenthetical either way -- the question asks what the
+// value is, not what unit it is in.
+function renderedLabel(body, dom) {
+  const lab = body.querySelector(`label[for="${CSS.escape(dom)}"]`);
+  const text = lab && lab.textContent ? lab.textContent : '';
+  return text.replace(/\([^)]*\)/g, ' ').replace(/\s+/g, ' ').trim().replace(/[:*]\s*$/, '');
+}
+
+// What a field currently READS, not what it stores. A select holds `F` and
+// shows "Female"; quoting the stored code back at the reader is the mistake
+// that once printed `onevaso` on screen.
+function renderedValue(body, dom) {
+  const node = body.querySelector(`#${CSS.escape(dom)}`);
+  if (!node) return null;
+  if (node.tagName === 'SELECT') {
+    const opt = node.selectedOptions && node.selectedOptions[0];
+    return opt ? opt.textContent.trim() : node.value;
+  }
+  if (node.type === 'checkbox') return node.checked ? 'yes' : 'no';
+  return node.value;
+}
+
+// The unit a field is currently expecting: the selected option of its unit
+// toggle, or the parenthetical the label already carries ("Age (years)").
+// Returns '' when the field has no unit, which is most of them.
+function askUnit(body, dom) {
+  const sel = document.getElementById(`${dom}-unit`);
+  if (sel && sel.tagName === 'SELECT') {
+    const opt = sel.selectedOptions && sel.selectedOptions[0];
+    if (opt && opt.textContent.trim()) return opt.textContent.trim();
+  }
+  const lab = body.querySelector(`label[for="${CSS.escape(dom)}"]`);
+  const m = lab && lab.textContent ? lab.textContent.match(/\(([^)]+)\)/) : null;
+  return m ? m[1].trim() : '';
+}
+
+// spec-v755: ask for the one thing the question did not say.
+//
+// A query that carries three of four values lands on a tile with three fields
+// filled and one blank, and the reader has to work out which one is holding
+// everything up. One question, in words, at the top of the page, is the
+// difference between an assistant and a form.
+//
+// The question text comes from the RENDERED label, never from the field
+// registry: registry labels are written for an agent reading a schema, and
+// rendering them at a nurse has misfired before (a raw registry value once
+// printed `onevaso` on screen). If there is no rendered label to quote, there
+// is no card -- fail quiet.
+function askCard(body, missing, filledSummary) {
+  const dom = missing.find((k) => {
+    const node = body.querySelector(`#${CSS.escape(k)}`);
+    if (!node) return false;
+    // A checkbox or a select needs its own control, not a text box. Where the
+    // field has no sensible one-line answer, the field itself speaks better
+    // than a card would.
+    return node.tagName === 'INPUT' && node.type !== 'checkbox' && node.type !== 'radio';
+  });
+  if (!dom) return null;
+  const node = body.querySelector(`#${CSS.escape(dom)}`);
+  const labelText = renderedLabel(body, dom);
+  if (!labelText) return null;
+
+  // Ask in the unit the field is CURRENTLY showing, and say so. The weight box
+  // pre-selects lb (spec-v283: US customary is the bedside happy path), so a
+  // bare "What is the weight?" answered with 68 means 68 lb -- and silently
+  // produced 17.69 mL/min where the reader meant 39. Naming the unit makes the
+  // question answerable; changing the select under them would not.
+  const unit = askUnit(body, dom);
+  const question = unit
+    ? `What is the ${labelText.toLowerCase()} in ${unit}?`
+    : `What is the ${labelText.toLowerCase()}?`;
+
+  const card = el('div', { class: 'ask-card' });
+  // The question IS the label for the box below it. A real <label for> rather
+  // than an aria-label: it is better for a screen reader (the visible text and
+  // the accessible name are the same string, not two strings that can drift),
+  // and scripts/a11y-check.mjs holds every dynamically created input to it.
+  card.appendChild(el('label', { class: 'ask-q', for: 'ask-input', text: question }));
+  if (filledSummary) card.appendChild(el('p', { class: 'ask-receipt', text: `Everything else is in: ${filledSummary}.` }));
+
+  const field = el('input', {
+    type: node.type === 'number' ? 'number' : 'text',
+    class: 'ask-input',
+    id: 'ask-input',
+    autocomplete: 'off',
+  });
+  const submit = el('button', { type: 'submit', class: 'ask-go', text: 'Finish' });
+  const form = el('form', { class: 'ask-form' }, [field, submit]);
+  const finish = (e) => {
+    if (e) e.preventDefault();
+    const v = field.value.trim();
+    if (!v) return;
+    node.value = v;
+    // The renderer's own handler listens on the input; without the event the
+    // answer would land in the box and nothing would recompute.
+    node.dispatchEvent(new Event('input', { bubbles: true }));
+    node.dispatchEvent(new Event('change', { bubbles: true }));
+    card.remove();
+  };
+  form.addEventListener('submit', finish);
+  card.appendChild(form);
+
+  // Filling the real field instead dismisses the card too. It is a shortcut,
+  // never a gate: the whole tile stays live underneath it the entire time.
+  const dismiss = () => { card.remove(); node.removeEventListener('input', dismiss); };
+  node.addEventListener('input', dismiss);
+
+  return card;
+}
+
 function renderToolView(util) {
   const main = getMain();
   if (!main) return;
@@ -4040,6 +4206,17 @@ function renderToolView(util) {
       // spec-v9 §3.3: pre-fill META[id].example after the renderer mounts,
       // but let URL-hash state win (deep links keep their values).
       Promise.resolve().then(() => {
+        // spec-v754: a query says "68 kg" and queryFill returns 68 in the
+        // field's CANONICAL unit -- but the unit select next to that field
+        // pre-selects the US-customary option (lb, in, °F) per spec-v283. Left
+        // alone, 68 kg is read as 68 lb and Cockcroft-Gault answers 17.69
+        // mL/min instead of 39. Reset the unit select on every query-filled
+        // field to canonical first, exactly as applyExample does for the same
+        // reason, and only for fields the query itself filled -- a deep link
+        // carries its own `-unit` state and must keep the unit it was sent with.
+        if (autofilledKeys && autofilledKeys.tileId === util.id) {
+          resetUnitsToCanonical(autofilledKeys.keys);
+        }
         applyHashState(body);
         trackHashState(body);
         const hashKeys = new Set(Object.keys(parseHash(window.location.hash).state || {}));
@@ -4051,11 +4228,47 @@ function renderToolView(util) {
         const save = () => saveInputs(util.id, body);
         body.addEventListener('input', save);
         body.addEventListener('change', save);
+
+        // spec-v754: consumed once -- a later visit to the same tile is not
+        // "from your question". Read before applyExample, because whether the
+        // reader's own words filled anything decides if the example runs at all.
+        const auto = autofilledKeys;
+        autofilledKeys = null;
+        const fromQuery = !!(auto && auto.tileId === util.id && auto.keys.size);
+
         // The example values land in the fields themselves, and the example
         // result is stated above them, so the old per-label "(example: 1)"
         // annotation only repeated what the reader could already see (and on
         // a checkbox it read as a meaningless "1").
-        applyExample(util, { skip: new Set([...hashKeys, ...remembered]) });
+        //
+        // spec-v754: but NOT when the reader's own question filled some of
+        // them. applyExample tops up whatever the hash did not set, which on a
+        // partly-filled tile silently mixes demo values into the reader's --
+        // "wells pe, hr 110" arrived with three of the reader's criteria and
+        // four more from the worked example, scoring 6 instead of 3. A partly
+        // answered question stays partly answered; spec-v755 asks for the rest.
+        if (!fromQuery) {
+          applyExample(util, { skip: new Set([...hashKeys, ...remembered]) });
+        }
+        if (fromQuery) {
+          markAutofilled(body, auto.keys);
+          // spec-v755: one question at a time. When it is answered and others
+          // remain, the reader is already in the form and the remaining blanks
+          // are the only things left to touch -- a queue of seven questions is
+          // a form with extra steps.
+          if (auto.missing && auto.missing.length) {
+            const summary = [...auto.keys]
+              .map((k) => {
+                const name = renderedLabel(body, k);
+                const value = renderedValue(body, k);
+                return (name && value) ? `${name.toLowerCase()} ${value}` : null;
+              })
+              .filter(Boolean)
+              .join(', ');
+            const card = askCard(body, auto.missing, summary);
+            if (card) body.insertBefore(card, body.firstChild);
+          }
+        }
       });
     } catch (err) {
       console.error(`[sophiewell] renderer threw for tool "${util.id}":`, err);
@@ -4163,6 +4376,14 @@ function searchUtilities(query, limit) {
 // the bar doubles as the "browse all tools" affordance the retired
 // tool-picker <select> used to provide. Typing narrows to the ranked top
 // matches; click / Enter routes to the tile.
+// spec-v754: which fields on the next tile came from what the reader typed.
+//
+// It cannot ride in the hash: a deep link someone was SENT and a query someone
+// just typed produce the same URL, and captioning a stranger's link "from your
+// question" would be a lie. So it is held here for exactly one navigation and
+// cleared by the render that consumes it.
+let autofilledKeys = null;
+
 let heroSearchDocClickBound = false;
 function bindHeroSearch() {
   const input = document.getElementById('hero-search');
@@ -4171,6 +4392,11 @@ function bindHeroSearch() {
 
   let activeIndex = -1;
   let currentMatches = [];
+  // spec-v756: whether the reader has actually chosen a row, as opposed to
+  // render() having highlighted the first one for them. Without this the
+  // ambiguity check never runs -- every Enter looks like a deliberate pick,
+  // because activeIndex is 0 the moment anything is typed.
+  let userPicked = false;
   // answer-shaped-results: the inline compute for the current query (or null).
   // When set, its tile leads the list, its option shows the computed value, and
   // selecting it routes with the parsed inputs prefilled.
@@ -4201,13 +4427,124 @@ function bindHeroSearch() {
     activeIndex = idx;
   }
 
-  function navigateTo(util) {
+
+  // spec-v756: two plain choices when the query is ambiguous.
+  //
+  // "correct the sodium" is two different calculators -- one corrects a
+  // measured sodium for hyperglycemia, the other works out how fast it is safe
+  // to raise sodium in hyponatremia. They answer different questions, and
+  // picking wrong at the bedside is not a small error. The ranker says so
+  // plainly: the top four all score identically.
+  //
+  // This is the ONLY state in the program where a page appears before an answer
+  // does, and that is the point. Ambiguity is the one case where guessing costs
+  // more than asking.
+  const AMBIGUITY_MARGIN = 0.95;
+
+  function ambiguousMatches(query) {
+    // An inline-compute hit parsed real values out of the query; there is
+    // nothing ambiguous about it.
+    if (inlineCompute) return null;
+    const ranked = resolvePromptRanked(query, tileCorpus(), SYNONYM_ENTRIES, audienceHint(), 4);
+    if (ranked.length < 2) return null;
+    // A curated synonym is a deliberate routing decision, not a coincidence of
+    // token scores. Trust it.
+    if (ranked[0].why === 'synonym') return null;
+    if (ranked[1].score < ranked[0].score * AMBIGUITY_MARGIN) return null;
+    const tied = ranked.filter((r) => r.score >= ranked[0].score * AMBIGUITY_MARGIN).slice(0, 3);
+    const utils = tied.map((r) => UTIL_BY_ID && UTIL_BY_ID.get(r.tileId)).filter(Boolean);
+    return utils.length >= 2 ? utils : null;
+  }
+
+  // What each option needs from the reader, so they can pick by what they have
+  // in front of them. Built from the required fields in the tile's own
+  // registry, trimmed to two or three names -- the same restraint spec-v755
+  // uses, because these labels are written for an agent, not for a nurse.
+  async function needsLine(tileId) {
+    try {
+      const fields = await loadFields(tileId);
+      if (!fields) return '';
+      const names = fields
+        .filter((f) => f.r)
+        .map((f) => String(f.l || '').replace(/\([^)]*\)/g, ' ').replace(/\s+/g, ' ').trim())
+        .filter(Boolean)
+        .slice(0, 3);
+      if (!names.length) return '';
+      return `Needs ${names.join(', ').toLowerCase()}.`;
+    } catch { return ''; }
+  }
+
+  async function renderPickCard(query, utils) {
+    const host = document.getElementById('home-view');
+    if (!host) return;
+    const old = host.querySelector('.pick-card');
+    if (old) old.remove();
+
+    const card = el('div', { class: 'pick-card' });
+    card.appendChild(el('p', { class: 'pick-q', text: 'Which one do you mean?' }));
+    card.appendChild(el('p', {
+      class: 'pick-sub',
+      text: 'More than one calculator matches. Pick one and anything you typed carries over.',
+    }));
+    const picks = el('div', { class: 'picks' });
+    for (const util of utils) {
+      const btn = el('button', { type: 'button', class: 'pick' }, [
+        el('span', { class: 'pick-name', text: util.name }),
+      ]);
+      const oneLiner = corpusOneLiner(SEARCH_CORPUS[util.id]);
+      if (oneLiner) btn.appendChild(el('span', { class: 'pick-desc', text: oneLiner }));
+      const needs = await needsLine(util.id);
+      if (needs) btn.appendChild(el('span', { class: 'pick-needs', text: needs }));
+      // Route through the same path the listbox uses, so hash building, unit
+      // resetting, and provenance all stay in one place.
+      btn.addEventListener('click', () => {
+        input.value = query;
+        card.remove();
+        navigateTo(util);
+      });
+      picks.appendChild(btn);
+    }
+    card.appendChild(picks);
+    host.appendChild(card);
+  }
+
+  function clearPickCard() {
+    const card = document.querySelector('.pick-card');
+    if (card) card.remove();
+  }
+
+  async function navigateTo(util) {
     if (!util) return;
-    // For the inline-compute tile, route with the parsed inputs prefilled via
-    // the existing q= hash-state; otherwise a bare tile hash as before.
-    const targetHash = (inlineCompute && util.id === inlineCompute.tile)
-      ? buildHash({ route: util.id, state: inlineCompute.inputs })
-      : '#' + util.id;
+    // spec-v754: the reader typed values; spend them. queryCompute's 22
+    // templates keep priority where one fires -- each is checked against a
+    // unit-tested expected value, which the generic path cannot claim. For
+    // every other tile, read the tile's own field registry and fill what the
+    // query says. A failed fetch or an unexposed tile just means an empty form,
+    // which is what happened before this existed.
+    const query = input.value.trim();
+    let state = null;
+    if (inlineCompute && util.id === inlineCompute.tile) {
+      state = inlineCompute.inputs;
+      autofilledKeys = { tileId: util.id, keys: new Set(Object.keys(state)), missing: [], filled: state };
+    } else if (query) {
+      try {
+        const fields = await loadFields(util.id);
+        if (fields) {
+          const { filled, missing } = queryFill(query, fields);
+          const keys = Object.keys(filled);
+          if (keys.length) {
+            state = {};
+            // A checkbox reads '1'/'true' out of the hash; everything else
+            // takes the value as typed.
+            for (const k of keys) state[k] = filled[k] === true ? '1' : String(filled[k]);
+            // spec-v755 carries `missing` so the tile can ask for the first one
+            // in words instead of leaving the reader to find the blank field.
+            autofilledKeys = { tileId: util.id, keys: new Set(keys), missing, filled };
+          }
+        }
+      } catch { /* prefill is a courtesy, never a gate on opening the tile */ }
+    }
+    const targetHash = state ? buildHash({ route: util.id, state }) : '#' + util.id;
     input.value = '';
     currentMatches = [];
     inlineCompute = null;
@@ -4298,7 +4635,7 @@ function bindHeroSearch() {
       }, children);
       // mousedown so the route fires before the input-blur close handler.
       item.addEventListener('mousedown', (e) => { e.preventDefault(); navigateTo(util); });
-      item.addEventListener('mouseenter', () => setActive(i));
+      item.addEventListener('mouseenter', () => { userPicked = true; setActive(i); });
       list.appendChild(item);
     });
     setExpanded(true);
@@ -4306,24 +4643,38 @@ function bindHeroSearch() {
   }
 
   input.addEventListener('focus', () => render(input.value));
-  input.addEventListener('input', () => render(input.value));
+  input.addEventListener('input', () => { userPicked = false; clearPickCard(); render(input.value); });
+
 
   input.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowDown') {
       if (!currentMatches.length) return;
+      userPicked = true;
       setActive((activeIndex + 1) % currentMatches.length);
       e.preventDefault();
     } else if (e.key === 'ArrowUp') {
       if (!currentMatches.length) return;
+      userPicked = true;
       setActive((activeIndex - 1 + currentMatches.length) % currentMatches.length);
       e.preventDefault();
     } else if (e.key === 'Enter') {
-      if (activeIndex >= 0 && currentMatches[activeIndex]) {
+      if (userPicked && activeIndex >= 0 && currentMatches[activeIndex]) {
+        // An explicit pick from the listbox is never ambiguous -- the reader
+        // just told us which one they meant.
         e.preventDefault();
+        clearPickCard();
         navigateTo(currentMatches[activeIndex]);
       } else if (currentMatches[0]) {
         e.preventDefault();
-        navigateTo(currentMatches[0]);
+        const query = input.value.trim();
+        const tied = ambiguousMatches(query);
+        if (tied) {
+          setExpanded(false);
+          renderPickCard(query, tied);
+        } else {
+          clearPickCard();
+          navigateTo(currentMatches[0]);
+        }
       }
     } else if (e.key === 'Escape') {
       if (input.value || !list.hidden) {

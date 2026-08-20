@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:sophiewell-720eae6192127543",
+  "serialNumber": "urn:uuid:sophiewell-ec58bc6781c7ac67",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-20T16:45:54.734Z",
+    "timestamp": "2026-08-20T17:08:59.947Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -83,7 +83,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "720eae6192127543"
+      "value": "ec58bc6781c7ac67"
     },
     {
       "name": "sophiewell:runtimeAssetCount",

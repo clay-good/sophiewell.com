@@ -1313,6 +1313,150 @@ main h1 {
   #q-results > p:first-child { font-size: 1.1rem; }
 }
 
+/* spec-v754: the caption under a field the reader's own words filled. Small and
+   quiet -- it is a receipt, not an announcement -- but present on every filled
+   field, because being able to check the pickup at a glance is the reason this
+   design is a card and not a chat bubble. */
+.field-provenance {
+  display: block;
+  margin-top: 2px;
+  color: var(--accent-pop-strong);
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+}
+[data-theme="dark"] .field-provenance { color: var(--accent-pop); }
+
+/* spec-v755: the ask card. Sits above the answer, asks for one missing value in
+   words, and shows what is already in so the reader can see their work was not
+   lost. Not a live region and never inside #q-results -- it is a question, not
+   a result, and announcing it as one would be wrong. */
+.ask-card {
+  margin: 0 0 var(--space-4);
+  padding: var(--space-4);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.ask-q {
+  /* A <label>, so it needs display:block -- the global label rule is
+     inline-block, which would wrap the whole question atomically and push a
+     long one off a 320px screen. */
+  display: block;
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  overflow-wrap: anywhere;
+}
+.ask-receipt {
+  margin: calc(-1 * var(--space-2)) 0 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  /* A receipt is built from values and labels and can run long on a narrow
+     phone; it wraps rather than pushing the page sideways. */
+  overflow-wrap: anywhere;
+}
+.ask-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.ask-form .ask-input {
+  flex: 1 1 140px;
+  min-width: 0;
+  min-height: 44px;
+  font: inherit;
+  padding: 10px 12px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.ask-form .ask-input:focus {
+  outline: none;
+  border-color: var(--focus-ring);
+  box-shadow: 0 0 0 3px rgba(77, 144, 254, 0.25);
+}
+.ask-form .ask-go {
+  min-height: 44px;
+  padding: 10px 18px;
+  font: inherit;
+  font-weight: 600;
+  color: var(--bg-primary);
+  background: var(--accent-pop);
+  border: 0;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+.ask-form .ask-go:hover { background: var(--accent-pop-strong); }
+.ask-form .ask-go:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
+
+/* While the card is asking for a required value, there is no answer yet -- and
+   a tile whose lib reads a blank field as zero will happily render "0 mL/min",
+   which looks exactly like a result. Hide the answer card until the question is
+   answered; removing the ask card brings it straight back. */
+.ask-card ~ #q-results { display: none; }
+
+/* spec-v756: the disambiguation card. Two or three plain-language choices, each
+   named by the question it answers rather than by its group -- never the
+   twelve-row listbox, which is a search result, not a decision. */
+.pick-card {
+  width: 100%;
+  max-width: 720px;
+  margin: var(--space-4) auto 0;
+  padding: var(--space-4);
+  text-align: left;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+}
+.pick-q {
+  margin: 0 0 var(--space-1);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.pick-sub {
+  margin: 0 0 var(--space-3);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+.picks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.pick {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+  min-height: 44px;
+  padding: 12px 14px;
+  font: inherit;
+  text-align: left;
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+.pick:hover {
+  border-color: var(--accent-pop);
+  background: var(--accent-pop-tint);
+}
+.pick:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
+.pick-name { font-weight: 600; font-size: 0.98rem; }
+.pick-desc,
+.pick-needs {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  overflow-wrap: anywhere;
+}
+
 .result-list {
   list-style: none;
   padding: 0;

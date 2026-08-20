@@ -344,3 +344,90 @@ test('spec-v4 group N: pediatric weight converter computes lb/oz to kg', async (
   await expect(page.getByText('Term newborn:', { exact: false })).toBeVisible();
 });
 
+
+// ---------------------------------------------------------------------------
+// spec-v753..v756: a plain-language question routes to the right tile with the
+// reader's own values already in the fields, every filled one saying where it
+// came from. The page does not move yet -- that is spec-v751/v752.
+// ---------------------------------------------------------------------------
+
+// Type a query and take the top result the way a reader does.
+async function ask(page, query) {
+  await page.goto('/');
+  const hero = page.locator('#hero-search');
+  await hero.click();
+  await hero.fill(query);
+  await page.locator('.hero-search-result').first().waitFor();
+  await page.locator('.hero-search-result').first().click();
+}
+
+test('spec-v753/v754 crcl: the query fills every field, in the right units', async ({ page }) => {
+  await ask(page, 'crcl for a 72 year old woman, 68 kg, creatinine 1.4');
+  await expect(page).toHaveURL(/#cockcroft-gault/);
+  await expect(page.locator('#age')).toHaveValue('72');
+  await expect(page.locator('#w')).toHaveValue('68');
+  await expect(page.locator('#scr')).toHaveValue('1.4');
+  await expect(page.locator('#sex')).toHaveValue('F');
+  // 68 was said in kilograms, so the unit select must read kilograms -- left on
+  // the pre-selected lb it would answer 17.69 instead of 39.
+  await expect(page.locator('#w-unit')).toHaveValue('kg');
+  await expect(page.locator('#q-results')).toContainText('38.99');
+  // Every filled field says where its value came from.
+  await expect(page.locator('.field-provenance')).toHaveCount(4);
+  // ...and stops saying so once the reader makes the value their own.
+  await page.fill('#age', '80');
+  await expect(page.locator('.field-provenance')).toHaveCount(3);
+});
+
+test('spec-v754 wells: the example never tops up a partly answered question', async ({ page }) => {
+  await ask(page, 'wells score for PE, heart rate 110, previous DVT');
+  await expect(page).toHaveURL(/#wells-pe/);
+  await expect(page.locator('#hrOver100')).toBeChecked();
+  await expect(page.locator('#priorPeOrDvt')).toBeChecked();
+  // The worked example would have ticked more criteria and scored 6.
+  await expect(page.locator('#peLikely')).not.toBeChecked();
+  await expect(page.locator('#q-results')).toContainText('Wells PE total: 3');
+  await expect(page.locator('.example-hint')).toHaveCount(0);
+});
+
+test('spec-v755 ask card: one missing value is asked for in words', async ({ page }) => {
+  await ask(page, 'crcl for a 72 year old woman, creatinine 1.4');
+  // The weight box pre-selects lb, so the question has to say which unit it is
+  // asking in -- an unqualified "What is the weight?" answered with 68 silently
+  // computed 17.69 mL/min where the reader meant kilograms.
+  await expect(page.locator('.ask-q')).toHaveText('What is the weight in lb?');
+  // The receipt quotes what the page RENDERS, not what the registry stores:
+  // "sex Female", never the stored code "F".
+  await expect(page.locator('.ask-receipt')).toContainText('sex Female');
+  await expect(page.locator('.ask-receipt')).not.toContainText('sex F,');
+  // No answer while a required value is missing -- the lib would render a
+  // confident "0 mL/min" from the blank field.
+  await expect(page.locator('#q-results')).toBeHidden();
+  await page.fill('.ask-input', '150');
+  await page.locator('.ask-go').click();
+  await expect(page.locator('.ask-card')).toHaveCount(0);
+  await expect(page.locator('#w')).toHaveValue('150');
+  await expect(page.locator('#w-unit')).toHaveValue('lb');
+  // 150 lb answered to a question that said "in lb".
+  await expect(page.locator('#q-results')).toContainText('mL/min');
+});
+
+test('spec-v756 ambiguity: two plain choices, not a picklist', async ({ page }) => {
+  await page.goto('/');
+  const hero = page.locator('#hero-search');
+  await hero.click();
+  await hero.fill('correct the sodium');
+  await page.locator('.hero-search-result').first().waitFor();
+  await hero.press('Enter');
+  const card = page.locator('.pick-card');
+  await expect(card).toBeVisible();
+  // At most three, each named by the question it answers and what it needs.
+  const picks = page.locator('.pick');
+  expect(await picks.count()).toBeGreaterThanOrEqual(2);
+  expect(await picks.count()).toBeLessThanOrEqual(3);
+  await expect(picks.first().locator('.pick-needs')).toContainText(/needs/i);
+  // Nothing was routed until the reader chose.
+  await expect(page).not.toHaveURL(/#corrected/);
+  await picks.first().click();
+  await expect(page).toHaveURL(/#corrected-sodium/);
+});
