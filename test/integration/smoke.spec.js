@@ -466,3 +466,27 @@ test('spec-v757 home: the footer offers the whole catalog', async ({ page }) => 
   // thing above the fold that takes input.
   await expect(page.locator('#hero-search')).toBeVisible();
 });
+
+test('spec-v760: a tile with no MCP adapter still prefills from its own DOM', async ({ page }) => {
+  // device-day-counter is waived from MCP as time-dependent, so it has no
+  // field shard and navigateTo cannot fill it before routing. The tile still
+  // has typed inputs, and a reader who names one should not have to retype it.
+  await ask(page, 'device day counter for a foley');
+  await expect(page).toHaveURL(/#device-day-counter/);
+  await expect(page.locator('#dd-dev')).toHaveValue('foley');
+  await expect(page.locator('.field-provenance')).toHaveCount(1);
+});
+
+test('spec-v760: the DOM path never guesses a free-text field', async ({ page }) => {
+  // A HIPAA authorization is all free text -- patient name, plan, information
+  // released. Filling any of it from a sentence would be the worst kind of
+  // wrong value, so the extractor has no rule for `string` and fills nothing.
+  //
+  // The check is the provenance count, not the field value: this tile ships a
+  // worked example, so the boxes are legitimately full of ITS names. What must
+  // not happen is a field claiming it came from the reader's question.
+  await ask(page, 'hipaa authorization for Marjorie Klepper at Tri-State Mutual');
+  await expect(page).toHaveURL(/#hipaa-auth/);
+  await expect(page.locator('.field-provenance')).toHaveCount(0);
+  await expect(page.locator('#ha-pt')).not.toHaveValue(/Klepper/);
+});

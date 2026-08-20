@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `5cd414ca8d12ac1c`
-Generated: 2026-08-20T19:52:59.031Z
+Build ID: `8b73cc2944d51a8f`
+Generated: 2026-08-20T21:26:10.008Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -26,7 +26,7 @@ downloads is committed in this repository and is hashed below.
 |---|---:|---|
 | `index.html` | 101227 | `f629d9a8ae00d99780a6888a2e3e88603fbd7c7018534300132c04f20554eed4` |
 | `styles.css` | 63872 | `970c06092b4cb023a25a451601aad81486c1a29cf1c654720e04bcb383497564` |
-| `app.js` | 444371 | `e0042571b5fabe2c6b131032369d91f503f678ba1bb8e7cd2ff0d51f25a5c0ff` |
+| `app.js` | 447608 | `bf100e48fe6fc6e58e564f8f80b1dac4d84ec8b6aa6148da02acd92bf23cba58` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
@@ -179,6 +179,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/dive-v257.js` | 5167 | `9eb14bab5a80d0508cacbd7becaf4a90385ec0f6a5b4b8ddfd7682baf6f46915` |
 | `lib/dme-v307.js` | 4101 | `0fa5891d588c79a927bcd10662181d79cf571f68e8138f58d0ec5c4c92873568` |
 | `lib/dmft-caries-v716.js` | 3722 | `e535a145b103c28a450bc854df168c2eb29c23ea0c1dec766ec8fbf2f38d1022` |
+| `lib/dom-fields.js` | 3941 | `7815860d170b0780dfaecb8567a3bb80cc6f7bc42d3eea123329c29f31c5a683` |
 | `lib/dom.js` | 984 | `b4b4ac74decb848bde516bfc1773e6c45a8d80031ed8f9d14226393d18fcde54` |
 | `lib/dorr-femur-v499.js` | 3385 | `b2b7a006e152b4301decb8c63f6f5367332bd6366e4606ec410ab3689be5e991` |
 | `lib/dose-schedule.js` | 1291 | `6bd747010b2e79ea5b45cbe11ebb8eb4d97f9524c2e0e2a9adcc91c1a96f7147` |

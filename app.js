@@ -645,6 +645,9 @@ import { queryCompute } from './lib/query-compute.js';
 // registry so a plain-language query fills any tile, not just the 22 with a
 // hand-written template.
 import { queryFill, loadFields } from './lib/query-fill.js';
+// spec-v760: the fallback field source for a tile with no MCP adapter, and so
+// no shard in data/fields/. Reads what the tile actually rendered.
+import { readDomFields } from './lib/dom-fields.js';
 import { collapseLongNotes, hoistIntroNote } from './lib/long-note.js';
 // The patient-artifact dropzone UI (spec-v7 sec 3.1) was removed when
 // Sophie pivoted to a clinical-staff-first wedge. The orphaned
@@ -4097,6 +4100,57 @@ function askUnit(body, dom) {
   return m ? m[1].trim() : '';
 }
 
+// spec-v760: prefill a rendered tile from its own DOM. Returns the filled keys,
+// or null when nothing landed.
+//
+// Everything that makes the shard path safe is reused rather than reimplemented:
+// readDomFields produces the same row shape, queryFill applies the same veto,
+// negation, and threshold rules, and the values go in through the same event
+// dispatch a reader's typing would.
+function fillFromDom(body, query) {
+  if (!body || !query) return null;
+  let rows = [];
+  try { rows = readDomFields(body); } catch { return null; }
+  if (!rows.length) return null;
+
+  let filled = {};
+  let missing = [];
+  try { ({ filled, missing } = queryFill(query, rows)); } catch { return null; }
+  const keys = Object.keys(filled);
+  if (!keys.length) return null;
+
+  // Canonical units first, exactly as the shard path does before applyHashState
+  // -- a value the reader said in kilograms must not be read as pounds.
+  resetUnitsToCanonical(keys);
+
+  for (const key of keys) {
+    const node = body.querySelector(`#${CSS.escape(key)}`);
+    if (!node) continue;
+    const value = filled[key];
+    if (node.type === 'checkbox' || node.type === 'radio') node.checked = value === true || value === '1';
+    else node.value = String(value);
+    // Both events, for the same reason applyHashState dispatches both: views
+    // are split on which one they listen to.
+    node.dispatchEvent(new Event('input', { bubbles: true }));
+    node.dispatchEvent(new Event('change', { bubbles: true }));
+  }
+
+  markAutofilled(body, keys);
+  if (missing.length) {
+    const summary = keys
+      .map((k) => {
+        const name = renderedLabel(body, k);
+        const value = renderedValue(body, k);
+        return (name && value) ? `${name.toLowerCase()} ${value}` : null;
+      })
+      .filter(Boolean)
+      .join(', ');
+    const card = askCard(body, missing, summary);
+    if (card) body.insertBefore(card, body.firstChild);
+  }
+  return keys;
+}
+
 // spec-v755: ask for the one thing the question did not say.
 //
 // A query that carries three of four values lands on a tile with three fields
@@ -4328,6 +4382,18 @@ function renderToolView(util) {
         if (!fromQuery) {
           applyExample(util, { skip: new Set([...hashKeys, ...remembered]) });
         }
+        // spec-v760: the second prefill path. A tile with no MCP adapter has no
+        // field shard, so navigateTo could not fill anything before routing --
+        // but the tile has now rendered, and its own inputs describe themselves.
+        // Read them, run the SAME extractor with the SAME safety rules, and
+        // apply what it finds.
+        const pending = pendingQuery;
+        pendingQuery = null;
+        let domFilled = null;
+        if (pending && pending.tileId === util.id && !fromQuery) {
+          domFilled = fillFromDom(body, pending.query);
+        }
+
         if (fromQuery) {
           markAutofilled(body, auto.keys);
           // spec-v755: one question at a time. When it is answered and others
@@ -4351,7 +4417,7 @@ function renderToolView(util) {
         // Only when the example actually filled the fields -- a deep link or a
         // remembered set means the values on screen are the reader's own, and
         // calling those an example would be a lie.
-        if (hasExample && !fromQuery && hashKeys.size === 0 && remembered.size === 0) {
+        if (hasExample && !fromQuery && !domFilled && hashKeys.size === 0 && remembered.size === 0) {
           showExampleHint(body);
         }
       });
@@ -4468,6 +4534,12 @@ function searchUtilities(query, limit) {
 // question" would be a lie. So it is held here for exactly one navigation and
 // cleared by the render that consumes it.
 let autofilledKeys = null;
+
+// spec-v760: the reader's words, held for a tile that could not be prefilled
+// before it rendered -- one without an MCP adapter, and so without a field
+// shard. Same one-navigation lifetime as autofilledKeys, and consumed by the
+// render that follows.
+let pendingQuery = null;
 
 let heroSearchDocClickBound = false;
 function bindHeroSearch() {
@@ -4628,6 +4700,9 @@ function bindHeroSearch() {
           }
         }
       } catch { /* prefill is a courtesy, never a gate on opening the tile */ }
+      // spec-v760: no shard, or a shard that filled nothing. Carry the words
+      // so the tile can try again from its own rendered fields once it exists.
+      if (!state) pendingQuery = { tileId: util.id, query };
     }
     const targetHash = state ? buildHash({ route: util.id, state }) : '#' + util.id;
     input.value = '';
