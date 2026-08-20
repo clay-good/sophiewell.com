@@ -14,6 +14,7 @@ import { readFileSync } from 'node:fs';
 import { gzipSync } from 'node:zlib';
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
+import { clampToPhrase, corpusOneLiner } from '../../lib/search-corpus.js';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = new URL('../../', import.meta.url);
@@ -103,4 +104,45 @@ test('search-corpus: builder is deterministic (rebuild is byte-identical, both t
   execFileSync(process.execPath, [BUILDER], { stdio: 'pipe' });
   assert.ok(before.equals(readFileSync(CORPUS_PATH)), 'rebuilding Tier 1 changed its bytes -- non-deterministic builder');
   assert.ok(beforeDetail.equals(readFileSync(DETAIL_PATH)), 'rebuilding Tier 2 changed its bytes -- non-deterministic builder');
+});
+
+// spec-v759: a one-liner that is shortened must still read as a finished
+// phrase. These render on the disambiguation card and on every search result,
+// and the live site shipped "(Katz factor 1.6 and" -- a description that stops
+// on a conjunction inside a bracket it never closes reads as a broken page,
+// not as a shortened one.
+test('clampToPhrase never ends on a connective', () => {
+  const s = 'Combined electrolyte panel: albumin-corrected calcium plus glucose-corrected sodium and a second thing that runs long';
+  const out = clampToPhrase(s, 90);
+  assert.ok(out.length <= 90);
+  assert.ok(!/\b(and|or|with|of|the|plus)$/i.test(out), `ends on a connective: ${out}`);
+});
+
+test('clampToPhrase closes every bracket it opens', () => {
+  // The cut lands inside the bracket.
+  const a = clampToPhrase('Delbet classification of a pediatric femoral neck fracture (types I-IV, by physeal level)', 70);
+  assert.equal((a.match(/\(/g) || []).length, (a.match(/\)/g) || []).length, a);
+  // And the harder case: the cut is BALANCED, and trimming a trailing word
+  // afterwards is what removes the closing bracket.
+  const b = clampToPhrase('a pediatric femoral neck / proximal femur fracture (types I-IV), by physeal level', 65);
+  assert.equal((b.match(/\(/g) || []).length, (b.match(/\)/g) || []).length, b);
+});
+
+test('clampToPhrase keeps a meaningful final token that has no letters', () => {
+  // "48 h" and "1-3" end real phrases; only connectives are droppable.
+  const out = clampToPhrase('the creatinine rise measured as an absolute change within 48 h, then the urine-output category', 64);
+  assert.match(out, /48 h$/, out);
+});
+
+test('clampToPhrase leaves a short line alone', () => {
+  assert.equal(clampToPhrase('Short one.', 120), 'Short one.');
+  assert.equal(clampToPhrase('', 120), '');
+});
+
+test('corpusOneLiner does not split a sentence at author initials', () => {
+  // "Boey J, et al. 1987" is a citation, not two sentences; splitting there
+  // hands back a line with an open parenthesis.
+  const line = corpusOneLiner({ summary: 'Boey score (Boey J, et al. 1987) for perforated peptic ulcer mortality. Second sentence here.' });
+  assert.equal((line.match(/\(/g) || []).length, (line.match(/\)/g) || []).length, line);
+  assert.match(line, /perforated peptic ulcer/);
 });

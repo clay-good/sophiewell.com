@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `320b5efe8e4909d4`
-Generated: 2026-08-20T19:10:55.696Z
+Build ID: `5cd414ca8d12ac1c`
+Generated: 2026-08-20T19:52:59.031Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -619,7 +619,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/scp-pushing-v562.js` | 12399 | `6da019a04668722b7a8d448b4d7bf9908717629b72e4a162088e74363ad62360` |
 | `lib/screener.js` | 6613 | `e017903130ae2d23cb1560f6ad55990ef3dda443a5ac1e9c289b283e3dcd930b` |
 | `lib/sds-dependence-v730.js` | 3683 | `111dc5ff5665875e42cae687e26f1068b4592c227c4b59824e0d2691be12c9da` |
-| `lib/search-corpus.js` | 1702 | `fcc637589730886aa05ee89dcf1a85c99e8dde55ad3f4d790166be17e74defd6` |
+| `lib/search-corpus.js` | 6193 | `6ee837eb937b3cc01a5b1374f271f382f15bd42bdfec044b613d873a6037fbcb` |
 | `lib/search.js` | 1726 | `eb447d039ac1ea7b459743b6aeeffea114f90f07d45a6bd53dbe60eb1c8fdd9b` |
 | `lib/seinsheimer-subtroch-v413.js` | 4898 | `9f843754c0a49e0b7c21c720f3ce5e9ce202e34a466b070d738e93bf4d6ba607` |
 | `lib/severin-ddh-v491.js` | 3659 | `625634ab7c1a987e12a9af368a36ebfad762f4a62f89666badfcf210cb43152a` |

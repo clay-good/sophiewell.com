@@ -1,6 +1,6 @@
 # scope-one-box.md — One box in, an instrument out
 
-> Status: **SHIPPED (2026-08-20).** Eight specs, `spec-v751` through `spec-v758`, all on `main`, CI green.
+> Status: **SHIPPED (2026-08-20).** Nine specs, `spec-v751` through `spec-v759`, all on `main`.
 > Mockup: [one-box-mockup.html](one-box-mockup.html) — an interactive four-state prototype, built
 > against the real `styles.css` tokens. Open it directly; the example chips walk all four states.
 
@@ -52,6 +52,7 @@ from the plan.
 | [v756](spec-v756.md) | Two plain choices when the query is ambiguous | v754 |
 | [v757](spec-v757.md) | The catalog gets a page, the home page gets a floor | v751 |
 | [v758](spec-v758.md) | `answer_query` reads the field registry too | v753 |
+| [v759](spec-v759.md) | A shortened description still reads as a finished phrase | v756 |
 
 ## How it landed
 
