@@ -91,6 +91,74 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   `<p><input><label>` siblings, 20 wrap the input inside the label, no container holds more than one
   checkbox, and the catalog has no radio inputs at all.
 
+- **964 tiles put their whole explanation inside the live results region.** Every affected view
+  ended its compute callback with `note(o, r.note)`, and `r.note` is a constant — so 400 to 3,051
+  characters of static prose sat inside the `aria-live` div and were re-announced to a screen reader
+  every time the reader changed an input. It is also why the "More detail" fold never reached them:
+  it will not walk into a live region, and it should not. The paragraph now moves out, above the
+  results, where it is announced once and folds like every other long explanation. Visible
+  paragraphs over 400 characters go from 932 to 113; the median longest paragraph on a tile goes
+  from 463 characters to 227; 1,151 tiles now open on a sentence with the rest one click away.
+  Nothing is hidden that was not already on the page — every tile was swept before and after and
+  compared character for character, and none lost any. Which paragraph is the static one is decided
+  by watching rather than guessing: a tile whose text turns out to change has the move undone and is
+  left alone.
+- **1,201 of 1,563 pages recommended the same four tools.** "Related tools" was the first four tiles
+  sharing a group, so the group chose the list and the tile did not — a nurse finishing the
+  DOLOPLUS-2 pain scale was pointed at APGAR, ABG, and Wells PE. The app has always linked to a
+  hand-picked list of siblings that the pre-rendered pages never read; those come first now, in the
+  order they were written, and a scorer over shared specialty tags and name words tops each list up
+  to four. 48 distinct lists become 1,562. Wells PE now points at PERC, PESI, YEARS and Geneva.
+- **225 lines opened a bracket they never closed.** Every place the build cuts a line to fit — the
+  opening sentence, the example labels and values, the hub and topic rows, the browser tab, the
+  search-result snippet — could cut inside a parenthesis. The worst were whole rows that read as
+  finished and said nothing: "Compute the serum anion gap (Na.", "TIMI Risk Index (Wiviott 2006.".
+  Every cut point now refuses a boundary inside a bracket and backs out of one it lands in.
+- **114 pages opened with a sentence that stopped mid-criterion.** The first line named every input
+  and then ran out of room inside one — "venous invasion, sinusoidal…". Enumerations that repeat the
+  field list below are dropped before cutting, which lets 27 pages end on a full stop instead; what
+  still has to be cut is now cut between items, not inside one.
+- **A page printed its whole rating scale on one line, then again underneath.** A field label
+  carries its picklist spelled out for an agent, and the page strips it — but only when the values
+  were written with an equals sign and the bracket ran to the end of the label. Both are wrong often
+  enough to matter: the pairs are written with a dash, a colon, or an em dash just as often, divided
+  by a full stop as often as a semicolon, and the bracket is not always last. Longest input row:
+  477 characters to 228. Separately, the "Full field descriptions" disclosure held every field
+  whenever any one was trimmed, so 42 rows on 18 pages appeared twice on one screen, byte for byte.
+- **The button repeated the heading it sat under.** "Open the 2022 ACR/EULAR Eosinophilic
+  Granulomatosis with Polyangiitis Classification Criteria →" is 95 characters and wraps to three
+  lines on a phone, directly below an `<h1>` that had just said the same words. It now says what
+  clicking does — "Open the calculator", or generator, or reference — with the tile's name kept as
+  the link's accessible name so a screen reader listing the page's links still hears which tool it
+  opens. Longest button: 95 characters to 26.
+- **Two collapsed controls sat side by side asking the same question.** "Where does this come from?"
+  above "Citation and sources", on 126 tiles, so the reader had to open one to find out it was the
+  other they wanted. The first holds the method — the formula, the population it was derived on,
+  where it stops being valid — not the proof. It is now called "How this is calculated".
+- **An apostrophe in a tile's name truncated it everywhere.** Every static surface reads names by
+  matching `name: '...'`, which stops at the first quote — including the escaped one inside
+  `CDAI (Crohn\'s Disease Activity Index)`. Three tiles published a browser tab and a search result
+  reading `CDAI (Crohn\ - Free, in your browser`, and the homepage listed `Anderson-D\` among the
+  site's features. Fixed on titles, descriptions, headings, hub and topic rows, OG cards, the search
+  corpus, and the homepage structured data.
+- **Worked examples printed the token instead of the option.** A reader of
+  `/tools/loeb-minimum-criteria/` saw "uti-no-catheter" where the picklist reads "Urinary tract —
+  without indwelling catheter". Some tiles hand a whole option bank to a builder that mints the
+  field ids itself, so nothing in the view names it; those are now matched by the set of values they
+  cover, and only when exactly one bank in the tree covers a field. 70 raw tokens down to 46.
+- **The input list hid fields the example above it had just named.** The worked example shows up to
+  ten rows and the list under it showed eight, so 105 pages named a field with its value and then
+  declined to list it. The list never shows fewer than the example did.
+- **The line describing each tool was the smallest text on the site.** Every size is a rem off a
+  deliberately large 17px base so the whole scale moves together; the one-line description under
+  each tool's name on the hub and topic lists opted out at 0.95rem. It is the content of those
+  pages — 3,329 rows a reader scans to pick a tool — and the name above it is already told apart by
+  weight and color, so the size drop bought nothing. Now full size.
+- **A validation line ran off a 320px screen.** The line naming the fields still needed used the
+  registry's own key names, and "serotonergicAgentAddedOrIncreased," is 34 characters with nothing
+  to break on. The results region was the one place on the site whose paragraphs did not wrap long
+  tokens.
+
 ### Fixed (printing keeps the citation)
 
 - A closed `<details>` does not print its contents, so collapsing the citation would have dropped the
