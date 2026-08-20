@@ -411,11 +411,69 @@ const TILE_NAME_NOISE = new Set([
   'adult', 'child', 'total', 'time', 'level', 'with', 'from', 'this', 'that',
 ]);
 
-function queryNamesTile(query, entry) {
+// How many tile names each word appears in, over the whole exposed catalog.
+// A name word shared by fifty tiles ("surgery", "risk", "pediatric") says
+// almost nothing about which one the caller meant; a word shared by two says
+// almost everything. Counting beats maintaining a stoplist by hand: the list
+// stays right as the catalog grows, and it needed no guessing about which words
+// would turn out to be common.
+let nameWordCounts = null;
+function wordCounts() {
+  if (nameWordCounts) return nameWordCounts;
+  nameWordCounts = new Map();
+  for (const e of allCalculators()) {
+    for (const w of new Set(nameWords(e.name))) {
+      nameWordCounts.set(w, (nameWordCounts.get(w) || 0) + 1);
+    }
+  }
+  return nameWordCounts;
+}
+
+function nameWords(name) {
+  return (String(name || '').toLowerCase().match(/[a-z0-9-]+/g) || [])
+    .filter((w) => w.length >= 4 && !TILE_NAME_NOISE.has(w));
+}
+
+// How strongly a query names this calculator: the summed rarity of the name
+// words that appear in the query, scaled by how much of the NAME they cover.
+// 0 means the query does not name it.
+//
+// Rarity alone is not enough, because a sibling's name can contain its
+// neighbour's. "HEAR Score (HEART minus troponin)" contains `heart`, so a query
+// about the HEART score matched it on the rarest word available and outscored
+// the calculator actually named. Coverage settles it: HEART matches 3 of its 3
+// distinctive words, HEAR matches 1 of its 4.
+function nameScore(query, entry) {
+  return nameMatch(query, entry).score;
+}
+
+// The matched words, their summed rarity scaled by name coverage, and whether
+// the match is strong enough to override the ranker.
+//
+// Strength is a separate question from score, and conflating them cost two
+// regressions. "what is the meaning of life" matches `life`, which appears in
+// exactly ONE tile name -- rare by frequency, meaningless as a signal -- and
+// promoted a dermatology quality-of-life index over the ranker's own answer.
+// One moderately-common word is not someone naming a calculator: it takes two
+// words, or one long rare one.
+function nameMatch(query, entry) {
   const q = ` ${String(query).toLowerCase()} `;
-  const words = String(entry && entry.name || '').toLowerCase().match(/[a-z0-9-]+/g) || [];
-  return words.some((w) => w.length >= 4 && !TILE_NAME_NOISE.has(w)
-    && new RegExp(`\\b${w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`).test(q));
+  const counts = wordCounts();
+  const words = new Set(nameWords(entry && entry.name));
+  if (!words.size) return { score: 0, hits: 0, strong: false };
+  let rarity = 0;
+  const matched = [];
+  for (const w of words) {
+    const re = new RegExp(`\\b${w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`);
+    if (re.test(q)) { rarity += 1 / (counts.get(w) || 1); matched.push(w); }
+  }
+  const strong = matched.length >= 2
+    || matched.some((w) => w.length >= 6 && (counts.get(w) || 1) <= 2);
+  return { score: rarity * (matched.length / words.size), hits: matched.length, strong };
+}
+
+function queryNamesTile(query, entry) {
+  return nameScore(query, entry) > 0;
 }
 
 // spec-v758: the second attempt, when no hand-written template matches.
@@ -434,11 +492,48 @@ function queryNamesTile(query, entry) {
 // the ones it still needs -- which is strictly more useful than NO_MATCH and
 // saves the agent the discovery round trip either way.
 function answerQueryGeneric(q) {
-  const found = findCalculator({ query: q, limit: 3 });
-  const top = found && Array.isArray(found.candidates) ? found.candidates[0] : null;
-  if (!top) {
+  const found = findCalculator({ query: q, limit: 5 });
+  const candidates = (found && Array.isArray(found.candidates)) ? found.candidates : [];
+  if (!candidates.length) {
     return { query: q, matched: false, code: 'NO_MATCH', hint: 'No calculator matches this query. Try find_calculator with different words.' };
   }
+  // A query that NAMES a calculator gets that calculator. The ranker scores on
+  // tokens and its top hit is routinely a near neighbour: "CHA2DS2-VA" came
+  // back as `chads`, and "Modified Glasgow (Imrie)" as `ranson-bisap`. Both
+  // then answered -- matched:true, with a citation -- for a calculator the
+  // caller never asked about, which is worse than not answering at all.
+  // Pick by how strongly the query names each candidate, not by first match:
+  // "planned surgery" matched RACHS-1's "Surgery" and stole a POSPOM query,
+  // and "Pancreatitis Severity" matched ranson-bisap while the query also said
+  // "Glasgow" and "Imrie". Ties keep the ranker's order.
+  // Only a STRONG name match may override the ranker; see nameMatch. A weak one
+  // leaves the ranker's own ordering alone, which is what it is for.
+  const scored = candidates
+    .map((c) => ({ c, ...nameMatch(q, getCalculator(c.id)) }))
+    .filter((x) => x.strong)
+    .sort((a, b) => b.score - a.score);
+  const bestScore = scored.length ? scored[0].score : 0;
+
+  // Two calculators the query names equally well is not a tie to break, it is a
+  // question to hand back. The catalog is full of siblings -- HEART and HEAR,
+  // Sternbach and the serotonin-toxicity criteria, osmolal gap and effective
+  // osmolality -- and picking one produced a confident, cited answer to a
+  // question the caller did not ask. The website refuses the same way
+  // (spec-v756); so should this.
+  if (bestScore > 0) {
+    const tied = scored.filter((x) => x.score >= bestScore * 0.999);
+    if (tied.length > 1) {
+      return {
+        query: q,
+        matched: false,
+        code: 'AMBIGUOUS',
+        candidates: tied.map((x) => x.c.id),
+        hint: `The query names ${tied.length} calculators equally well: ${tied.map((x) => x.c.id).join(', ')}. `
+          + 'Pick one and call compute_calculator, or ask with the one you mean.',
+      };
+    }
+  }
+  const top = scored.length ? scored[0].c : candidates[0];
 
   const entry = getCalculator(top.id);
   const rows = toIndexRows(entry && entry.fields);
@@ -479,6 +574,25 @@ function answerQueryGeneric(q) {
     query: q, matched: true, valid: true, via: 'registry', tile: top.id, label: entry.name,
     inputs: filled, result: full.result,
   };
+  // Criteria the query never mentioned. `missing` only covers REQUIRED fields,
+  // and a scoring tile's criteria are optional by construction -- so pospom
+  // answered "3.126% mortality" from three inputs with fifteen comorbidity
+  // criteria unstated, and nothing in the response said so. The score is a
+  // floor, not an answer, and a caller cannot tell without being told.
+  // Any field the query did not provide, not just the boolean criteria. An
+  // optional NUMBER matters just as much: gold-spirometry answered with
+  // grade:null because the FEV1 percentage never came through, and said
+  // nothing about it. `missing` covers only REQUIRED fields, and it returns
+  // before computing -- this is the set the calculator was willing to run
+  // without.
+  const unstated = rows
+    .filter((f) => !f.r && !Object.prototype.hasOwnProperty.call(filled, f.d))
+    .map((f) => f.d);
+  if (unstated.length) {
+    out.unstated = unstated;
+    out.unstatedNote = `${unstated.length} optional input(s) were not mentioned; the calculator ran `
+      + 'without them, so a scored result is a floor. Supply them via compute_calculator for a complete answer.';
+  }
   out.citation = entry.citation;
   out.citationUrl = entry.citationUrl;
   out.disclaimer = disclaimerFor(entry);

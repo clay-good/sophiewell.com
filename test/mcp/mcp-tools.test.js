@@ -542,6 +542,39 @@ test('spec-v758: a partial query returns what it worked out, not a refusal', () 
   assert.equal(answerQuery({ query: 'what is the meaning of life' }).code, 'NO_MATCH');
 });
 
+// spec-v762: answer_query must answer the calculator it was ASKED about, and
+// say when it answered an incomplete question.
+test('spec-v762: a query that names a calculator gets that calculator', () => {
+  // The ranker scores on tokens and its top hit is routinely a near neighbour.
+  // Answering with the neighbour is worse than not answering: the caller gets a
+  // confident, cited result for something they did not ask about.
+  const cha = answerQuery({ query: 'CHA2DS2-VA (2024 ESC, sex-removed AF stroke risk) age 70 years' });
+  assert.equal(cha.tile, 'cha2ds2-va', 'not the older chads tile');
+
+  const imrie = answerQuery({ query: 'Modified Glasgow (Imrie) Pancreatitis Severity pao 55 kPa, age 60 years' });
+  assert.equal(imrie.tile, 'glasgow-imrie', 'not ranson-bisap, which shares "pancreatitis severity"');
+
+  // A weak name match does NOT override the ranker. "life" appears in exactly
+  // one tile name, which makes it rare and still meaningless here.
+  assert.equal(answerQuery({ query: 'what is the meaning of life' }).code, 'NO_MATCH');
+});
+
+test('spec-v762: an incomplete question is answered as incomplete', () => {
+  // pospom has fifteen comorbidity criteria. A query naming none of them still
+  // computes -- they are optional, so `missing` stays empty -- and the score is
+  // a floor. Saying so is the difference between an answer and a wrong answer.
+  const r = answerQuery({ query: 'POSPOM (preoperative postoperative-mortality score) age 70 years, planned surgery category major-gi' });
+  assert.equal(r.tile, 'pospom');
+  assert.equal(r.matched, true);
+  assert.ok(Array.isArray(r.unstated) && r.unstated.length > 5, `expected unstated criteria, got ${JSON.stringify(r.unstated)}`);
+  assert.match(r.unstatedNote, /floor/);
+
+  // A query that supplies everything says nothing about unstated inputs.
+  const gcs = answerQuery({ query: 'glasgow coma scale eye 3 verbal 4 motor 5' });
+  assert.equal(gcs.tile, 'gcs');
+  assert.equal(gcs.unstated, undefined);
+});
+
 // spec-v630: deterministic lab/vitals unit conversion.
 test('spec-v630: convert_units converts labs and vitals both directions', () => {
   const g = convertUnits({ kind: 'glucose', value: 90, direction: 'toSi' });
