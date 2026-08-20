@@ -18,6 +18,10 @@ function domainOf(e) { return e.clinical ? 'clinical' : 'administrative'; }
 import { resolvePromptRanked } from '../lib/prompt.js';
 import { corpusDesc } from '../lib/search-corpus.js';
 import { queryCompute } from '../lib/query-compute.js';
+// spec-v758: the generic extractor behind answer_query's second attempt. Reads
+// the same adapter field descriptors this module already has in memory, so it
+// needs no data file -- see toIndexRows.
+import { queryFill, toIndexRows } from '../lib/query-fill.js';
 import * as UNITS from '../lib/unit-convert.js';
 
 // The hand-curated synonym table (data/synonyms.json) is the same accelerator
@@ -381,9 +385,7 @@ export function answerQuery(args = {}) {
     return { valid: false, code: 'BAD_ARGS', message: 'answer_query needs a non-empty "query". Describe the calculation with its values, e.g. "bmi 80kg 180cm".' };
   }
   const hit = queryCompute(q);
-  if (!hit) {
-    return { query: q, matched: false, code: 'NO_MATCH', hint: 'No one-shot answer for this query. Use find_calculator to choose a calculator, then compute_calculator.' };
-  }
+  if (!hit) return answerQueryGeneric(q);
   const out = {
     query: q, matched: true, valid: true, tile: hit.tile, label: hit.label, value: hit.value, unit: hit.unit, text: hit.text, inputs: hit.inputs,
   };
@@ -395,6 +397,91 @@ export function answerQuery(args = {}) {
   }
   const full = computeCalculator({ id: hit.tile, inputs: hit.inputs });
   if (full.valid) out.result = full.result;
+  return out;
+}
+
+// Does the query actually name this calculator? A distinctive word from the
+// tile's own name, four characters or more, appearing whole in the query.
+// Short words and the connective vocabulary every second tile shares ("score",
+// "index", "risk") do not count -- they are what made the weak matches look
+// confident in the first place.
+const TILE_NAME_NOISE = new Set([
+  'score', 'scale', 'index', 'risk', 'rule', 'test', 'tool', 'calculator',
+  'criteria', 'classification', 'grade', 'stage', 'ratio', 'rate', 'value',
+  'adult', 'child', 'total', 'time', 'level', 'with', 'from', 'this', 'that',
+]);
+
+function queryNamesTile(query, entry) {
+  const q = ` ${String(query).toLowerCase()} `;
+  const words = String(entry && entry.name || '').toLowerCase().match(/[a-z0-9-]+/g) || [];
+  return words.some((w) => w.length >= 4 && !TILE_NAME_NOISE.has(w)
+    && new RegExp(`\\b${w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`).test(q));
+}
+
+// spec-v758: the second attempt, when no hand-written template matches.
+//
+// queryCompute covers 22 tiles, each verified against a unit-tested expected
+// value. Every other query used to come back NO_MATCH and cost the agent two
+// more round trips -- find_calculator, then compute_calculator, re-typing the
+// values it had already written out in the question. The site solved this by
+// reading the adapter field registry; the registry is already in memory here,
+// so the same extractor works with no data file.
+//
+// It answers on its own terms. A confident single match with every required
+// input present computes and returns like a template hit, marked `via:
+// "registry"` so a caller can tell the two apart. Anything short of that
+// returns what it DID work out -- the calculator, the inputs it recovered, and
+// the ones it still needs -- which is strictly more useful than NO_MATCH and
+// saves the agent the discovery round trip either way.
+function answerQueryGeneric(q) {
+  const found = findCalculator({ query: q, limit: 3 });
+  const top = found && Array.isArray(found.candidates) ? found.candidates[0] : null;
+  if (!top) {
+    return { query: q, matched: false, code: 'NO_MATCH', hint: 'No calculator matches this query. Try find_calculator with different words.' };
+  }
+
+  const entry = getCalculator(top.id);
+  const rows = toIndexRows(entry && entry.fields);
+  if (!rows.length) {
+    return { query: q, matched: false, code: 'NO_MATCH', tile: top.id, hint: `Closest match is "${top.id}". Call describe_calculator for its inputs, then compute_calculator.` };
+  }
+
+  const { filled, missing } = queryFill(q, rows);
+  if (!Object.keys(filled).length) {
+    // No values means no corroboration, and the ranker always returns its best
+    // guess however weak -- "what is the meaning of life" comes back as
+    // crop-index. Only name a calculator here when the query actually names it;
+    // otherwise this is a miss, and saying so is more useful than a confident
+    // pointer at a tile the caller never asked about.
+    if (!queryNamesTile(q, entry)) {
+      return { query: q, matched: false, code: 'NO_MATCH', hint: 'No calculator matches this query. Try find_calculator with different words.' };
+    }
+    return {
+      query: q, matched: false, code: 'NO_VALUES', tile: top.id,
+      hint: `Matched "${top.id}" but the query carries no values it recognizes. Call describe_calculator for its inputs, then compute_calculator.`,
+    };
+  }
+  if (missing.length) {
+    return {
+      query: q, matched: false, code: 'MISSING_INPUTS', tile: top.id, inputs: filled, missing,
+      hint: `Matched "${top.id}" and recovered ${Object.keys(filled).length} input(s). Supply ${missing.join(', ')} and call compute_calculator.`,
+    };
+  }
+
+  const full = computeCalculator({ id: top.id, inputs: filled });
+  if (!full.valid) {
+    return {
+      query: q, matched: false, code: full.code || 'INVALID_INPUTS', tile: top.id, inputs: filled,
+      hint: full.message || `Recovered every input for "${top.id}" but the calculator rejected them. Call describe_calculator for the accepted ranges.`,
+    };
+  }
+  const out = {
+    query: q, matched: true, valid: true, via: 'registry', tile: top.id, label: entry.name,
+    inputs: filled, result: full.result,
+  };
+  out.citation = entry.citation;
+  out.citationUrl = entry.citationUrl;
+  out.disclaimer = disclaimerFor(entry);
   return out;
 }
 

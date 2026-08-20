@@ -493,6 +493,55 @@ test('spec-v630: answer_query computes a value from a sentence with embedded num
   assert.deepEqual(answerQuery({ query: 'bmi 80kg 180cm' }), bmi);
 });
 
+// spec-v758: answer_query's second attempt, when no hand-written template
+// matches. queryCompute covers 22 tiles; the field registry covers the rest.
+test('spec-v758: answer_query falls back to the field registry', () => {
+  // A tile with no template. Reads the criteria out of the sentence and
+  // computes -- and says which path it took, so a caller can tell the
+  // unit-tested templates from the generic extractor.
+  const wells = answerQuery({ query: 'wells score for PE, heart rate 110, previous DVT' });
+  assert.equal(wells.matched, true);
+  assert.equal(wells.via, 'registry');
+  assert.equal(wells.tile, 'wells-pe');
+  assert.equal(wells.result.total, 3, 'only the two criteria the sentence states');
+  assert.ok(wells.citation, 'carries the tile citation');
+  assert.ok(wells.disclaimer, 'and the disclaimer');
+
+  const gcs = answerQuery({ query: 'glasgow coma scale eye 3 verbal 4 motor 5' });
+  assert.equal(gcs.tile, 'gcs');
+  assert.equal(gcs.result.total, 12);
+
+  // A template still wins where one exists, and is NOT marked via:registry.
+  const bmi = answerQuery({ query: 'bmi 80kg 180cm' });
+  assert.equal(bmi.matched, true);
+  assert.equal(bmi.via, undefined);
+
+  // Deterministic on the registry path too.
+  assert.deepEqual(answerQuery({ query: 'wells score for PE, heart rate 110, previous DVT' }), wells);
+});
+
+test('spec-v758: a partial query returns what it worked out, not a refusal', () => {
+  // Naming the tile and the recovered inputs saves the agent a discovery round
+  // trip even when it cannot answer.
+  const partial = answerQuery({ query: 'crcl for a 72 year old woman, creatinine 1.4' });
+  assert.equal(partial.matched, false);
+  assert.equal(partial.code, 'MISSING_INPUTS');
+  assert.equal(partial.tile, 'cockcroft-gault');
+  assert.deepEqual(partial.missing, ['w']);
+  assert.equal(partial.inputs.age, 72);
+  assert.equal(partial.inputs.sex, 'F');
+  assert.match(partial.hint, /compute_calculator/);
+
+  // Named a calculator but carried no values at all.
+  const bare = answerQuery({ query: 'wells score for PE' });
+  assert.equal(bare.matched, false);
+  assert.equal(bare.code, 'NO_VALUES');
+  assert.equal(bare.tile, 'wells-pe');
+
+  // Nothing to match at all still reports NO_MATCH.
+  assert.equal(answerQuery({ query: 'what is the meaning of life' }).code, 'NO_MATCH');
+});
+
 // spec-v630: deterministic lab/vitals unit conversion.
 test('spec-v630: convert_units converts labs and vitals both directions', () => {
   const g = convertUnits({ kind: 'glucose', value: 90, direction: 'toSi' });
