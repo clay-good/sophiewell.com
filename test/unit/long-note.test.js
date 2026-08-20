@@ -285,10 +285,61 @@ test('hoistIntroNote undoes itself when the text turns out to change', async () 
   });
 });
 
-// 45 tiles write a long computed detail as well as their note. Taking the last
-// one works in isolation but not against the real render sequence, so these are
-// left alone rather than guessed at.
-test('hoistIntroNote leaves a tile alone when two long notes are ambiguous', async () => {
+// 45 tiles write a long computed detail and then the note. Both arrive in the
+// same mutation, so there is never a moment when only one is there; the note is
+// the one appended last.
+test('hoistIntroNote takes the last note when a computed one precedes it', async () => {
+  await withStubDom(async (doc) => {
+    const { hoistIntroNote } = await import('../../lib/long-note.js');
+    const { body, live } = tileWith(doc, LONG.replace('four groups', 'six groups'));
+    const note = doc.createElement('p');
+    note.setAttribute('class', 'muted');
+    note.textContent = LONG;
+    live.appendChild(note);
+
+    hoistIntroNote(body);
+
+    assert.equal(live.children.length, 2, 'the computed detail stays announced');
+    assert.ok(live.children[1].textContent.includes('six groups'));
+    assert.ok(body.children[0].textContent.endsWith('into four groups.'), 'the note is the one hoisted');
+    assert.equal(body.children[1].tagName, 'DETAILS');
+  });
+});
+
+// The computed detail re-renders beside the hoisted note on every input. It is
+// not a copy of the note and must not be read as one -- comparing against it
+// undid a perfectly good hoist and took the explanation with it.
+test('hoistIntroNote leaves a recomputed detail alone beside a hoisted note', async () => {
+  await withStubDom(async (doc) => {
+    const { hoistIntroNote } = await import('../../lib/long-note.js');
+    const { body, live } = tileWith(doc, LONG.replace('four groups', 'six groups'));
+    const note = doc.createElement('p');
+    note.setAttribute('class', 'muted');
+    note.textContent = LONG;
+    live.appendChild(note);
+    const handle = hoistIntroNote(body);
+
+    live.children.length = 0;
+    const detail2 = doc.createElement('p');
+    detail2.setAttribute('class', 'muted');
+    detail2.textContent = LONG.replace('four groups', 'seven groups');
+    live.appendChild(detail2);
+    const note2 = doc.createElement('p');
+    note2.setAttribute('class', 'muted');
+    note2.textContent = LONG;
+    live.appendChild(note2);
+    handle.recheck();
+
+    assert.ok(!handle.stopped(), 'the hoist stands');
+    assert.equal(live.children.length, 1, 'only the note copy is dropped');
+    assert.ok(live.children[0].textContent.includes('seven groups'));
+    assert.equal(body.children[1].tagName, 'DETAILS');
+  });
+});
+
+// ... but only when the note really is last. A tile that writes something
+// after it gives nothing to go on, so it is left exactly as it was.
+test('hoistIntroNote leaves a tile alone when the last long note is not last', async () => {
   await withStubDom(async (doc) => {
     const { hoistIntroNote } = await import('../../lib/long-note.js');
     const { body, live } = tileWith(doc, LONG);
@@ -296,9 +347,13 @@ test('hoistIntroNote leaves a tile alone when two long notes are ambiguous', asy
     second.setAttribute('class', 'muted');
     second.textContent = LONG.replace('four groups', 'six groups');
     live.appendChild(second);
+    const trailer = doc.createElement('p');
+    trailer.textContent = 'Computed after the notes.';
+    live.appendChild(trailer);
+
     hoistIntroNote(body);
 
-    assert.equal(live.children.length, 3, 'everything stays where the tile put it');
+    assert.equal(live.children.length, 4, 'everything stays where the tile put it');
     assert.equal(body.children[0], live);
   });
 });
