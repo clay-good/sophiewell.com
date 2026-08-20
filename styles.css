@@ -1291,7 +1291,16 @@ main h1 {
   border-left: 4px solid var(--accent-pop);
   border-radius: var(--radius);
 }
-#q-results > p { margin: 0 0 var(--space-2); color: var(--text-secondary); }
+#q-results > p {
+  margin: 0 0 var(--space-2);
+  color: var(--text-secondary);
+  /* A validation line names the fields still needed, and those names are the
+     registry's camelCase keys -- "serotonergicAgentAddedOrIncreased," is 34
+     unbreakable characters and put `sternbach` 23px past a 320px viewport.
+     Every equivalent paragraph on the pre-rendered pages already wraps this
+     way; this one did not. */
+  overflow-wrap: anywhere;
+}
 #q-results > p:last-child { margin-bottom: 0; }
 #q-results > p:first-child {
   font-size: 1.2rem;

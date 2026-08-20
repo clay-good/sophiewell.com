@@ -102,6 +102,10 @@ function stubDocument() {
         return other;
       },
       get parentNode() { return this.parent; },
+      get nextSibling() {
+        if (!this.parent) return null;
+        return this.parent.children[this.parent.children.indexOf(this) + 1] || null;
+      },
       insertBefore(other, ref) {
         if (other.parent) other.parent.children.splice(other.parent.children.indexOf(other), 1);
         const at = ref ? this.children.indexOf(ref) : this.children.length;
@@ -197,9 +201,6 @@ test('splitLead ends a lede where the author ended the sentence', () => {
 // on every keystroke and the fold above would not touch it -- correctly, since
 // it will not reach into a live region.
 
-// The first scan is deferred so it never reads a half-built region; let it run.
-const settle = () => new Promise((r) => setTimeout(r, 0));
-
 function tileWith(doc, noteText) {
   const body = doc.createElement('div');
   const live = doc.createElement('div');
@@ -221,7 +222,6 @@ test('hoistIntroNote moves the note out of the live region and folds it', async 
     const { body, live } = tileWith(doc, LONG);
 
     hoistIntroNote(body);
-    await settle();
 
     // Nothing long left inside the region that exists to announce results.
     assert.equal(live.children.length, 1);
@@ -241,7 +241,6 @@ test('hoistIntroNote drops the copy the next render appends', async () => {
     const { hoistIntroNote } = await import('../../lib/long-note.js');
     const { body, live } = tileWith(doc, LONG);
     const handle = hoistIntroNote(body);
-    await settle();
 
     // What a recompute does: clear the region, write the new result, and
     // append the same constant again.
@@ -265,7 +264,6 @@ test('hoistIntroNote undoes itself when the text turns out to change', async () 
     const { hoistIntroNote } = await import('../../lib/long-note.js');
     const { body, live } = tileWith(doc, LONG);
     const handle = hoistIntroNote(body);
-    await settle();
     assert.equal(body.children[1].tagName, 'DETAILS');
 
     live.children.length = 0;
@@ -280,6 +278,8 @@ test('hoistIntroNote undoes itself when the text turns out to change', async () 
     assert.equal(body.children[0], live, 'nothing of ours is left above it');
     // The hoisted paragraph was moved, not copied, so undoing has to put it
     // back whole. Removing it deleted the tile's explanation outright.
+    // Returned whole, and to its own place -- appending it after the tile's
+    // other output put `sternbach` 23px over a 320px viewport.
     assert.equal(live.children.length, 2);
     assert.equal(live.children[1].textContent, LONG, 'the note is returned intact');
   });
@@ -297,7 +297,6 @@ test('hoistIntroNote leaves a tile alone when two long notes are ambiguous', asy
     second.textContent = LONG.replace('four groups', 'six groups');
     live.appendChild(second);
     hoistIntroNote(body);
-    await settle();
 
     assert.equal(live.children.length, 3, 'everything stays where the tile put it');
     assert.equal(body.children[0], live);
@@ -309,7 +308,6 @@ test('hoistIntroNote ignores a short note', async () => {
     const { hoistIntroNote } = await import('../../lib/long-note.js');
     const { body, live } = tileWith(doc, 'Enter the age and the reserve marker.');
     hoistIntroNote(body);
-    await settle();
     assert.equal(live.children.length, 2);
     assert.equal(body.children[0], live);
   });
