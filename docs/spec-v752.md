@@ -32,22 +32,43 @@ The good news is that this is one hook, not 628 view files. `#q-results` is the 
 The two views without `#q-results` (`group-a.js`, `pa-lint.js`) and the fourteen without
 `resultRow` are left exactly as they are. The hoist fails quiet when there is nothing to hoist.
 
-## The prose in the answer card had to be folded
+## The prose in the answer card — solved on main, not here
 
-The plan assumed the answer card held the answer. It does not: **611 of 628 views write
-explanation prose into `#q-results`** alongside the result, and `note(o, r.note)` is 1102
-of those calls. On `abc-scale` that is a 787-character paragraph. Below the fields it was
-merely long; hoisted above them it pushed the first input off the screen — the opposite of
-what moving the answer up was for.
+**611 of 628 views write explanation prose into `#q-results`** alongside the result, and
+`note(o, r.note)` is 1102 of those calls. On `abc-scale` that is a 787-character paragraph.
+Below the fields it was merely long; hoisted above them it pushed the first input off screen.
 
-The fix reuses spec-v741's fold rather than inventing one: `collapseLongNotes` already
-operates on direct `p.muted` children, which is exactly what `note()` writes, so it needed
-a second place to run, not a new rule. First sentence stays, the rest goes behind
-**More detail**, re-applied after every recompute.
+This spec's first attempt folded that prose *inside* the live region. It worked, and it was
+the wrong fix. While it was being built, `3aef1d74` landed on `main` and solved the same
+problem properly: it moves the static note **out** of the region entirely, where it is
+announced once instead of on every keystroke, and where the existing fold already reaches it.
 
-On the `aria-live` concern that ruled this out in spec-v741: the region announces its full
-text on every update either way, so folding changes what is *painted*, not what is
-*spoken*. Nothing leaves the DOM and the disclosure is reachable.
+The rebase deleted this spec's `foldResultNotes` and kept `hoistIntroNote`. The lesson is
+cheap to state and was not cheap to learn: check what landed on `main` before assuming your
+fix is the only one.
+
+## Three passes, and the order matters
+
+`hoistIntroNote` parks the note immediately before `#q-results`, so with the answer hoisted
+the page settles at **answer → inputs → explanation → proof**.
+
+Getting the answer to stay on top took measuring rather than reasoning. On a tile whose
+result is invalid until the example fills it — `abc-scale`, `poseidon`, `slums` — the note
+does not exist at render time; it arrives with the fill, and `hoistIntroNote`'s
+MutationObserver parks it *after* the synchronous hoist has already run.
+
+| Re-assert scheduled as | Result |
+|---|---|
+| Microtask | too early — observer callbacks are microtasks too |
+| `requestAnimationFrame` | too early |
+| Double `requestAnimationFrame` | still too early |
+| **`setTimeout(…, 0)`** | lands after the park, and sticks |
+
+Do not "optimize" that timeout into a frame.
+
+The ask card outranks the answer: when [v755](spec-v755.md) is asking for a missing value there is
+no answer yet, and hoisting past the card left a tile rendering a confident `0 mL/min` directly
+above the question asking for the value it needed.
 
 ## The example lede goes away
 

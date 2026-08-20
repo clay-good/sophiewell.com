@@ -1,6 +1,6 @@
 # scope-one-box.md — One box in, an instrument out
 
-> Status: **SHIPPED (2026-08-20).** Six specs, `spec-v751` through `spec-v756`, all green.
+> Status: **SHIPPED (2026-08-20).** Eight specs, `spec-v751` through `spec-v758`, all on `main`, CI green.
 > Mockup: [one-box-mockup.html](one-box-mockup.html) — an interactive four-state prototype, built
 > against the real `styles.css` tokens. Open it directly; the example chips walk all four states.
 
@@ -50,6 +50,26 @@ from the plan.
 | [v754](spec-v754.md) | Enter goes to the answer, not a picklist | v753 |
 | [v755](spec-v755.md) | Ask for the missing value in words | v753, v754 |
 | [v756](spec-v756.md) | Two plain choices when the query is ambiguous | v754 |
+| [v757](spec-v757.md) | The catalog gets a page, the home page gets a floor | v751 |
+| [v758](spec-v758.md) | `answer_query` reads the field registry too | v753 |
+
+## How it landed
+
+Four commits of plumbing and behaviour before anything moved on screen, so the backend was live and
+CI-verified for hours before the redesign deployed:
+
+| Commit | | Visible |
+|---|---|---|
+| `800799b9` | Field registry, `query-fill.js`, 26 bucket files | no |
+| `b85f0ae6` | Prefill, provenance, ask card, disambiguation | behaviour only |
+| `3f6d0fb1` | The answer moves above the fields | yes |
+| `e02fbccd` | The home page becomes one box | yes |
+| `c45636db` | `/tools/` and the home floor | yes |
+| `26cbc695` | MCP registry fallback | no |
+
+The sequencing earned its keep: the one regression that got through local checks — a `<body>` flex
+change that broke horizontal scrolling on 20 tiles — was in a **visual** commit, the class held
+back. The backend was already live and unaffected.
 
 ## What it cost, and what it caught
 
@@ -64,6 +84,16 @@ Three bugs that would have put wrong numbers in front of a nurse, all found by b
 Plus one pre-existing bug, unrelated to this program: `applyHashState` dispatched only one
 event type per restored field, so **every shared deep link with a `<select>` on an
 input-wired tile rendered a stale number**. Fixed in [v754](spec-v754.md).
+
+And two process notes worth keeping:
+
+- **`main` moved 12 commits during the build**, including `3aef1d74`, which solved the
+  live-region prose problem *better* than this program's first attempt did — by moving the
+  prose out of the region rather than folding it inside. The rebase deleted our version and
+  kept theirs. Check what landed before assuming your fix is the only one.
+- **Never pipe a test run through `tail`.** A truncated Playwright log hid a failure summary
+  and a "0 failures" grep read the surviving lines as success. The regression above shipped
+  into a local commit because of it, and only the untruncated full-suite run caught it.
 
 ## What this program is not
 
