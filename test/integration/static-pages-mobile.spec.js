@@ -40,7 +40,10 @@ async function assertNoHorizontalScroll(page, label) {
 // narrowest mainstream phone). Hubs/topics are read from dist/ so a new
 // audience or topic is covered automatically.
 const STRUCTURAL = [
-  '/', '/commitments/', '/topics/',
+  // spec-v757: /tools/ is the whole catalog on one page -- 1564 names in
+  // multi-column lists, which is exactly the shape that overflows a narrow
+  // phone if a column minimum is set too wide.
+  '/', '/commitments/', '/topics/', '/tools/',
   ...dirSlugs('for').map((s) => `/for/${s}/`),
   ...dirSlugs('topics').map((s) => `/topics/${s}/`),
 ];
@@ -76,5 +79,33 @@ test.describe('static tool pages', () => {
       if (o.s > o.c + 1) bad.push(`${id}: ${o.s}/${o.c}`);
     }
     expect(bad, `static tool pages with horizontal scroll at 320px:\n  - ${bad.join('\n  - ')}`).toEqual([]);
+  });
+});
+
+// spec-v757: the catalog page is the one hub that reaches every pre-rendered
+// tool page. If its grouping or its links break, 1564 pages lose their only
+// internal entry point that is not the sitemap.
+test.describe('tools index', () => {
+  test.skip(({ browserName }) => browserName !== 'chromium', 'catalog sweep is chromium-only');
+
+  test('/tools/ lists every tile, grouped, with working links', async ({ page }) => {
+    const resp = await page.goto(`${DIST}/tools/`, { waitUntil: 'load' });
+    expect(resp && resp.status()).toBe(200);
+
+    const ids = dirSlugs('tools').filter((s) => s !== 'index.html');
+    const links = await page.locator('.ti-list a').count();
+    expect(links, 'every pre-rendered tool page is listed').toBe(ids.length);
+
+    // Groups carry their own counts, and the counts add up to the catalog.
+    const counts = await page.locator('.ti-count').allTextContents();
+    expect(counts.length).toBeGreaterThan(5);
+    expect(counts.reduce((a, b) => a + Number(b), 0)).toBe(ids.length);
+
+    // The jump nav reaches every group it names.
+    const jumps = await page.locator('.ti-jump a').count();
+    expect(jumps).toBe(counts.length);
+
+    // And the primary path is still the box.
+    await expect(page.locator('.ti-ask')).toHaveAttribute('href', '/');
   });
 });

@@ -1025,6 +1025,8 @@ ${datasetLd ? `    <script type="application/ld+json">\n${JSON.stringify(dataset
 
         ${topicHtml}
 
+        <p class="tp-all muted"><a href="${SITE}/tools/">Browse all tools</a></p>
+
         <p class="tp-author muted">Built by <a href="https://claygood.com" rel="noopener" target="_blank">Clay Good</a>. Source on <a href="https://github.com/clay-good/sophiewell.com" rel="noopener" target="_blank">GitHub</a>.</p>
       </main>
     </div>

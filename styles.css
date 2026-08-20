@@ -976,6 +976,7 @@ main h1 {
   gap: 14px;
   flex-wrap: wrap;
 }
+.all-tools-badge,
 .credit-badge,
 .gh-badge {
   display: inline-flex;
@@ -992,6 +993,7 @@ main h1 {
   transition: all 0.2s ease;
   font-family: inherit;
 }
+.all-tools-badge:hover,
 .credit-badge:hover,
 .gh-badge:hover {
   background: var(--bg-tertiary);
@@ -999,8 +1001,15 @@ main h1 {
   transform: translateY(-1px);
   box-shadow: 0 6px 18px var(--shadow-soft);
 }
+.all-tools-badge:focus-visible,
 .credit-badge:focus-visible,
 .gh-badge:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 3px; }
+/* spec-v757: the catalog badge takes the teal so the escape hatch reads as a
+   way forward rather than as another piece of site chrome. */
+.all-tools-badge { color: var(--accent-pop-strong); border-color: var(--accent-pop); }
+.all-tools-badge:hover { background: var(--accent-pop-tint); border-color: var(--accent-pop); }
+[data-theme="dark"] .all-tools-badge { color: var(--accent-pop); }
+.all-tools-mark { display: block; }
 .credit-heart { color: #ff5d6c; transition: transform 0.2s ease; }
 .credit-badge:hover .credit-heart { transform: scale(1.15); }
 .gh-badge-mark { display: block; color: var(--text-primary); }
@@ -1968,4 +1977,152 @@ button:active { transform: translateY(1px) scale(0.985); }
 }
 .tile-derivation-steps li {
   margin: 0.15rem 0;
+}
+
+
+/* ==========================================================
+   spec-v757: /tools/ - the whole catalog, grouped by specialty
+   ========================================================== */
+.tools-index { max-width: 1000px; margin: 0 auto; padding-bottom: var(--space-7); }
+.ti-h1 {
+  font-size: clamp(1.7rem, 3.6vw, 2.3rem);
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  margin: var(--space-5) 0 var(--space-2);
+}
+.ti-lede {
+  max-width: 62ch;
+  margin: 0 0 var(--space-3);
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+.ti-cta { margin: 0 0 var(--space-6); }
+.ti-ask {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 10px 18px;
+  border-radius: var(--radius-pill);
+  background: var(--accent-pop);
+  color: var(--bg-primary);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+.ti-ask:hover { background: var(--accent-pop-strong); }
+.ti-ask:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 3px; }
+
+/* The specialty jump list. Sticky on a wide screen so a reader 900 names deep
+   can get back to the top level without scrolling for it. */
+.ti-jump {
+  margin: 0 0 var(--space-6);
+  padding: var(--space-4);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+}
+.ti-jump ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.ti-jump a {
+  display: inline-block;
+  min-height: 44px;
+  padding: 11px 14px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  text-decoration: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  line-height: 1.3;
+}
+.ti-jump a:hover { color: var(--accent-pop-strong); border-color: var(--accent-pop); background: var(--accent-pop-tint); }
+[data-theme="dark"] .ti-jump a:hover { color: var(--accent-pop); }
+.ti-jump a:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
+
+.ti-group { margin: 0 0 var(--space-6); scroll-margin-top: var(--space-5); }
+.ti-group h2 {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-3);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--border);
+  font-size: 1.05rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+.ti-count {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+/* Multi-column on a wide screen, one column on a phone. `columns` rather than
+   grid so the names flow in reading order down each column instead of across. */
+.ti-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  columns: 3 240px;
+  column-gap: var(--space-5);
+}
+.ti-list li { break-inside: avoid; margin: 0 0 2px; }
+.ti-list a {
+  display: block;
+  padding: 7px 10px;
+  border-radius: var(--radius);
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.35;
+  text-decoration: none;
+  /* A tile name can be a long unbroken eponym; it wraps rather than pushing
+     the page sideways at 320px. */
+  overflow-wrap: anywhere;
+}
+.ti-list a:hover { background: var(--accent-pop-tint); color: var(--text-primary); }
+.ti-list a:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 1px; }
+
+@media (max-width: 600px) {
+  .ti-list { columns: 1; }
+}
+
+
+/* spec-v757: the catalog link on a pre-rendered tool page. Same quiet
+   treatment as the topic line above it. */
+.tp-all { margin: var(--space-2) 0 0; }
+
+/* spec-v751: the home page is one box, so it should sit like one.
+   Top-aligned, the box clung to the header with a screen of dead space under
+   the footer -- the shape of a page that ran out of content rather than one
+   that only ever had a question to ask.
+
+   Scoped to the container ONLY while the home view is active. The first cut of
+   this made <body> a flex column to pin the footer, which is the usual idiom
+   and was wrong here: a flex item does not shrink past its content, so every
+   tile with a wide reference table (anticoag-reversal, peds-dose, the whole
+   billing group) stopped being able to scroll that table inside its own box
+   and pushed the document to 385px inside a 320px viewport. 1564 pages
+   restructured for one page's whitespace. This version leaves the document in
+   normal flow and gives the home container a floor to centre against, so the
+   footer lands at the bottom on the home page and nothing else moves at all.
+
+   :has() so it tracks the active view; where it is unsupported the page keeps
+   today's top-aligned layout, which is the correct degradation. */
+.container:has(#home-view.active) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: calc(100vh - 200px);
+}
+
+@media (max-height: 560px) {
+  /* On a landscape phone there is no room to centre anything; give the box
+     back its normal top-aligned flow. */
+  .container:has(#home-view.active) { min-height: 0; justify-content: flex-start; }
+}
 }

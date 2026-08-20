@@ -456,3 +456,13 @@ test('spec-v756 ambiguity: two plain choices, not a picklist', async ({ page }) 
   await picks.first().click();
   await expect(page).toHaveURL(/#corrected-sodium/);
 });
+
+test('spec-v757 home: the footer offers the whole catalog', async ({ page }) => {
+  await page.goto('/');
+  const badge = page.locator('.all-tools-badge');
+  await expect(badge).toBeVisible();
+  await expect(badge).toHaveAttribute('href', '/tools/');
+  // It is an escape hatch, not a competing path: the box is still the only
+  // thing above the fold that takes input.
+  await expect(page.locator('#hero-search')).toBeVisible();
+});

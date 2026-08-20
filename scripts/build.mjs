@@ -106,7 +106,7 @@ async function main() {
   // reader gets, which is the only place a defect made by correct source text
   // meeting a template can be seen. Every source-reading gate in `npm run lint`
   // was clean while a 663-character lede and 23 example-less pages were live.
-  for (const script of ['build-tool-pages.mjs', 'build-hub-pages.mjs', 'build-topic-pages.mjs', 'build-commitments-page.mjs', 'build-og-images.mjs', 'check-page-copy.mjs']) {
+  for (const script of ['build-tool-pages.mjs', 'build-tools-index.mjs', 'build-hub-pages.mjs', 'build-topic-pages.mjs', 'build-commitments-page.mjs', 'build-og-images.mjs', 'check-page-copy.mjs']) {
     const r = spawnSync(process.execPath, [join(ROOT, 'scripts', script)], { stdio: 'inherit' });
     if (r.status !== 0) throw new Error(`${script} exited with status ${r.status}`);
   }

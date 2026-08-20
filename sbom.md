@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `9d4bd77fdf764de0`
-Generated: 2026-08-20T17:44:10.718Z
+Build ID: `320b5efe8e4909d4`
+Generated: 2026-08-20T19:07:45.477Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -24,13 +24,13 @@ downloads is committed in this repository and is hashed below.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 100654 | `43c76ba7dcf5b87e95a896ff2ee737d93f12dc93fd5acb5228795affd4a711dd` |
-| `styles.css` | 58432 | `edd30c59cb6bf9ad3b8ca1bf9e437691f1fa9f4c3423e466e3f88f7a7d833872` |
+| `index.html` | 101227 | `f629d9a8ae00d99780a6888a2e3e88603fbd7c7018534300132c04f20554eed4` |
+| `styles.css` | 63872 | `970c06092b4cb023a25a451601aad81486c1a29cf1c654720e04bcb383497564` |
 | `app.js` | 444371 | `e0042571b5fabe2c6b131032369d91f503f678ba1bb8e7cd2ff0d51f25a5c0ff` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 239945 | `85f9632780c56c0b8ae07c5993064c4d56ba54a4c6655f544a637272d4b63d5c` |
+| `sitemap.xml` | 240083 | `b1099a85ffd8c15d3c09ace879d431ebd62b93f01a6dc1284587a609a10d29e4` |
 | `_headers` | 1316 | `2f39986457d2feff7e73e491a7d09ee871e8f2f4cc2bc437f86bd86a42554ec6` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -557,7 +557,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/qcsi-v698.js` | 4036 | `291e4b4e5ce4a881b28306be5eacd3d9627efd1015c6796a19be4a53eba9e4c5` |
 | `lib/qpitt-v587.js` | 10218 | `a62e42423fe772330c1dce867e4669b68e446b877b9eddf3d057f54a5c5e45b8` |
 | `lib/query-compute.js` | 18505 | `c4132165eb74826abc209f8783fee660f7fd8b661b0614f313f9a1f5481f7a0c` |
-| `lib/query-fill.js` | 25591 | `a3d63f5175c8578b633c263ff9bb2785582c7ee839404f96c2f7c0d6bdf16ca6` |
+| `lib/query-fill.js` | 26523 | `3e9b32c5b6c144a15ead30bf940ccb90d3c9d8a3a53c0ef492e5895153a84769` |
 | `lib/rachs1-v541.js` | 11732 | `2203884a2c8ed58ab8d3c53b11de429a58adfff473cab669878d8d0cfc64a99a` |
 | `lib/radiology-v165.js` | 14752 | `965c040fa92553139ecfca2c11efb94522496799ee745f6b2fdf512ee3494d72` |
 | `lib/radmeasure-v253.js` | 7140 | `6e438d606d573be5431eb6ec9d0575353297d97ed8f255aa7afb6c7f86c7197c` |
