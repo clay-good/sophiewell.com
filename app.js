@@ -3655,11 +3655,20 @@ function restoreHome() {
 // spec-v2 section 4.3: hash-based calculator input state. After a tool body
 // is rendered, populate inputs from `q=...` and start writing changes back.
 function applyHashState(body) {
+  const landed = new Set();
   const { state } = parseHash(window.location.hash);
-  if (!state || Object.keys(state).length === 0) return;
+  if (!state || Object.keys(state).length === 0) return landed;
   for (const [k, v] of Object.entries(state)) {
     const node = body.querySelector(`#${CSS.escape(k)}`) || document.getElementById(k);
     if (!node) continue;
+    // Assigning a <select> a value none of its options carries deselects EVERY
+    // option, leaving the field blank while the tile computes on an empty
+    // string. helsinki-ct-score renders "Mass lesion type" as a 0/2/-3 select
+    // that the field registry describes as a plain number, so a stated 5 wiped
+    // it -- and the tile still printed a score. Leave the field at its own
+    // default: an untouched field is a question that can still be answered.
+    if (node.tagName === 'SELECT' && ![...node.options].some((o) => o.value === String(v))) continue;
+    landed.add(k);
     if (node.tagName === 'SELECT') node.value = v;
     else if (node.type === 'checkbox') node.checked = v === '1' || v === 'true';
     else node.value = v;
@@ -3672,6 +3681,7 @@ function applyHashState(body) {
     node.dispatchEvent(new Event('input', { bubbles: true }));
     node.dispatchEvent(new Event('change', { bubbles: true }));
   }
+  return landed;
 }
 
 function trackHashState(body) {
@@ -4126,10 +4136,20 @@ function fillFromDom(body, query) {
   // -- a value the reader said in kilograms must not be read as pounds.
   resetUnitsToCanonical(keys);
 
+  const landed = [];
   for (const key of keys) {
     const node = body.querySelector(`#${CSS.escape(key)}`);
     if (!node) continue;
     const value = filled[key];
+    // A <select> cannot hold a value none of its options carry -- assigning one
+    // silently deselects EVERY option, so the field goes blank while the tile
+    // computes on with an empty string. helsinki-ct-score renders its "Mass
+    // lesion type" as a 0/2/-3 select, the field registry describes it as a
+    // plain number, and a stated 5 wiped it. Leave the field alone instead: an
+    // untouched field is a question the reader can still answer, a blanked one
+    // looks answered and is not.
+    if (node.tagName === 'SELECT' && ![...node.options].some((o) => o.value === String(value))) continue;
+    landed.push(key);
     if (node.type === 'checkbox' || node.type === 'radio') node.checked = value === true || value === '1';
     else node.value = String(value);
     // Both events, for the same reason applyHashState dispatches both: views
@@ -4138,9 +4158,19 @@ function fillFromDom(body, query) {
     node.dispatchEvent(new Event('change', { bubbles: true }));
   }
 
-  markAutofilled(body, keys);
+  // A value that could not land is not filled -- it is still missing, and the
+  // ask card is what gets it answered.
+  if (landed.length !== keys.length) {
+    const asked = new Set(missing.map((f) => f.d));
+    for (const row of rows) {
+      if (!asked.has(row.d) && keys.includes(row.d) && !landed.includes(row.d)) missing.push(row);
+    }
+  }
+  if (!landed.length) return null;
+
+  markAutofilled(body, landed);
   if (missing.length) {
-    const summary = keys
+    const summary = landed
       .map((k) => {
         const name = renderedLabel(body, k);
         const value = renderedValue(body, k);
@@ -4151,7 +4181,7 @@ function fillFromDom(body, query) {
     const card = askCard(body, missing, summary);
     if (card) body.insertBefore(card, body.firstChild);
   }
-  return keys;
+  return landed;
 }
 
 // spec-v755: ask for the one thing the question did not say.
@@ -4332,7 +4362,7 @@ function renderToolView(util) {
         if (autofilledKeys && autofilledKeys.tileId === util.id) {
           resetUnitsToCanonical(autofilledKeys.keys);
         }
-        applyHashState(body);
+        const landedKeys = applyHashState(body);
         trackHashState(body);
         const hashKeys = new Set(Object.keys(parseHash(window.location.hash).state || {}));
         // spec-v61 §2 A7: opt-in remembered inputs fill fields the deep link
@@ -4398,13 +4428,22 @@ function renderToolView(util) {
         }
 
         if (fromQuery) {
-          markAutofilled(body, auto.keys);
+          // A value the field could not hold did not land, so it is still
+          // unanswered -- move it from "filled" to "ask about this".
+          const held = [...auto.keys].filter((k) => landedKeys.has(k));
+          if (held.length !== auto.keys.size) {
+            const asked = new Set((auto.missing || []).map((f) => f.d));
+            for (const row of auto.rows || []) {
+              if (auto.keys.has(row.d) && !landedKeys.has(row.d) && !asked.has(row.d)) auto.missing.push(row);
+            }
+          }
+          markAutofilled(body, held);
           // spec-v755: one question at a time. When it is answered and others
           // remain, the reader is already in the form and the remaining blanks
           // are the only things left to touch -- a queue of seven questions is
           // a form with extra steps.
           if (auto.missing && auto.missing.length) {
-            const summary = [...auto.keys]
+            const summary = held
               .map((k) => {
                 const name = renderedLabel(body, k);
                 const value = renderedValue(body, k);
@@ -4711,7 +4750,7 @@ function bindHeroSearch() {
             for (const k of keys) state[k] = filled[k] === true ? '1' : String(filled[k]);
             // spec-v755 carries `missing` so the tile can ask for the first one
             // in words instead of leaving the reader to find the blank field.
-            autofilledKeys = { tileId: util.id, keys: new Set(keys), missing, filled };
+            autofilledKeys = { tileId: util.id, keys: new Set(keys), missing, filled, rows: fields };
           }
         }
       } catch { /* prefill is a courtesy, never a gate on opening the tile */ }
