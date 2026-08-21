@@ -115,7 +115,7 @@ export const HUBS = {
     label: 'EMS and field medicine',
     h1: 'Tools for EMS and field medicine',
     title: 'EMS and Field Medicine Tools · Sophie Well',
-    description: 'Free EMS / field-medicine references: pediatric dose, START/JumpSTART triage, burn fluids, naloxone, defib energy, AHA CPR numerics, DOT ERG, NIOSH Pocket Guide.',
+    description: 'Free EMS and field-medicine references: pediatric dose, START/JumpSTART triage, burn fluids, naloxone, defib energy, AHA CPR numerics, DOT ERG.',
     lede: 'Field-tested references for the back of the rig: pediatric weight-to-dose, START and JumpSTART MCI triage, Parkland and Modified Brooke burn fluids, naloxone dosing, defibrillation energy, AHA CPR numeric reference, DOT ERG hazmat lookup, NIOSH Pocket Guide.',
   },
   educators: {
@@ -134,7 +134,7 @@ export const HUBS = {
     label: 'Case managers and UM nurses',
     h1: 'Tools for case managers, UM nurses, and prior-auth coordinators',
     title: 'Tools for Case Managers and UM Nurses · Sophie Well',
-    description: 'Free deterministic tools for case management and utilization management: prior-authorization packet linting, with the rule sources, payer overlays, and dataset versions pinned. Runs in your browser, no signup.',
+    description: 'Free deterministic tools for case and utilization management: prior-auth packet linting, with rule sources, payer overlays, and dataset versions pinned.',
     lede: 'Tools sized for the people who actually move prior authorizations through the day: utilization-management nurses, case managers, prior-auth coordinators, and the moonlighting clinician who just got handed a denial. Drop a packet, get a deterministic findings report. Your packet stays in the tab; the rule sources, dataset versions, and source hashes are all pinned and visible.',
   },
 };

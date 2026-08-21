@@ -41,6 +41,9 @@ const LEDE_MAX = 260;
 const TITLE_MAX = 65;
 const BRAND = 'Sophie Well';
 
+// The search-result snippet, held to the same length the tool pages are.
+const STATIC_DESC_MAX = 158;
+
 // Example rows still printing a raw option token, because their select is
 // built at render time and its options are named nowhere a build step can
 // read. Was 130 before scripts/lib/option-labels.mjs learned to read a select
@@ -477,6 +480,32 @@ async function main() {
   // number should always take. See the bracket check below, which is the
   // ratchet that actually holds.
   const CUT_ROWS_MAX = 775;
+
+  // Every page that is not a tool page: the home, the catalog index, the
+  // commitments page, the six audience hubs, the eight topic pages and their
+  // index. Their titles and descriptions are hand-authored rather than built,
+  // so the rule the tool pages get from `pageTitle`/`pageDescription` reached
+  // none of them -- eight topic titles ran 68 to 73 characters and six
+  // descriptions ran up to 209, so the tail of each was cut in a search result
+  // wherever the tab did not cut it first. Same budgets, checked the same way.
+  const staticPages = ['index.html', 'tools/index.html', 'commitments/index.html', 'topics/index.html'];
+  for (const dir of HUB_DIRS) {
+    const base = join(ROOT, 'dist', dir);
+    if (!existsSync(base)) continue;
+    for (const slug of readdirSync(base)) {
+      if (existsSync(join(base, slug, 'index.html'))) staticPages.push(`${dir}/${slug}/index.html`);
+    }
+  }
+  for (const rel of staticPages) {
+    const file = join(ROOT, 'dist', rel);
+    if (!existsSync(file)) continue;
+    const head = readFileSync(file, 'utf8').slice(0, 4000);
+    const title = decode((head.match(/<title>([^<]*)<\/title>/) || [])[1] || '');
+    const desc = decode((head.match(/<meta name="description" content="([^"]*)"/) || [])[1] || '');
+    if (!title) { failures.push(`${rel}: no title`); continue; }
+    if (title.length > TITLE_MAX) failures.push(`${rel}: the title runs ${title.length} chars (max ${TITLE_MAX}): ${title}`);
+    if (desc.length > STATIC_DESC_MAX) failures.push(`${rel}: the description runs ${desc.length} chars (max ${STATIC_DESC_MAX})`);
+  }
 
   // The list pages: a cut mark means text was cut.
   let listRows = 0;

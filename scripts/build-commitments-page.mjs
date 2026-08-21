@@ -13,7 +13,7 @@ const DIST = join(ROOT, 'dist');
 const SITE = 'https://sophiewell.com';
 const CANONICAL = `${SITE}/commitments/`;
 const TITLE = 'Sophie Well commitments - what we promise, and how it stays true';
-const DESCRIPTION = 'Eight commitments: no ads, no login, no telemetry, no third-party fetch, no AI, no cookies, no paid tier, MIT-licensed forever. Each one is enforced by an automated check on every release.';
+const DESCRIPTION = 'Eight commitments: no ads, no login, no telemetry, no third-party fetch, no AI, no cookies, no paid tier, MIT forever. Enforced on every release.';
 
 const COMMITMENTS = [
   {
