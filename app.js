@@ -639,6 +639,9 @@ import { installKeyboard } from './lib/keyboard.js';
 import { parseHash, patchHash, buildHash } from './lib/hash.js';
 import { loadSynonyms } from './lib/synonyms.js';
 import { resolvePrompt, resolvePromptRanked, rankableWords } from './lib/prompt.js';
+// spec-v766: how strongly a query names a tile. Shared with mcp/tools.js so the
+// two surfaces resolve a name the same way.
+import { buildNameCounts, buildNameIndex, findNamed } from './lib/name-match.js';
 import { corpusDesc, corpusOneLiner } from './lib/search-corpus.js';
 import { queryCompute } from './lib/query-compute.js';
 // spec-v753/v754: the generic prefill path -- reads the tile's own field
@@ -4541,6 +4544,18 @@ let autofilledKeys = null;
 // render that follows.
 let pendingQuery = null;
 
+// spec-v766: word rarity across every tile name, built once on first use.
+let NAME_COUNTS = null;
+function tileNameCounts() {
+  if (!NAME_COUNTS) NAME_COUNTS = buildNameCounts(UTILITIES.map((u) => u.name));
+  return NAME_COUNTS;
+}
+let NAME_INDEX = null;
+function tileNameIndex() {
+  if (!NAME_INDEX) NAME_INDEX = buildNameIndex(UTILITIES);
+  return NAME_INDEX;
+}
+
 let heroSearchDocClickBound = false;
 function bindHeroSearch() {
   const input = document.getElementById('hero-search');
@@ -4754,6 +4769,27 @@ function bindHeroSearch() {
       const u = UTIL_BY_ID.get(r.tileId);
       if (u) list = [u, ...ranked.filter((x) => x.id !== u.id)].slice(0, 12);
     }
+    // spec-v766: a tile the query NAMES leads, whatever the token ranker made of
+    // it. Overlap scoring lets a shorter name beat a longer one that contains
+    // it -- "TyG-BMI (Triglyceride-Glucose-BMI Index)" lost to "BMI Calculator",
+    // and "Modified Glasgow (Imrie)" to the Ranson/BISAP tile it shares
+    // "pancreatitis severity" with. Only a STRONG match promotes; a weak one
+    // leaves the ranker's own order alone, which is what it is for.
+    //
+    // Looked up by name word rather than filtered from the ranker's output,
+    // because the ranker sometimes returns a single row and the named tile is
+    // not in it at all.
+    //
+    // A synonym hit is NOT a reason to skip this. The curated table maps generic
+    // phrases -- "early warning score" -> NEWS2 -- and a query naming PEWS says
+    // that phrase on its way to naming a different tile. What protects the
+    // curated routes is minHits: "they denied it" and "kidney function" name no
+    // tile with two distinctive words, so nothing is promoted over them.
+    {
+      const named = findNamed(rq, tileNameIndex(), tileNameCounts(), (id) => UTIL_BY_ID && UTIL_BY_ID.get(id), { minHits: 2 });
+      if (named && list[0] !== named) list = [named, ...list.filter((x) => x.id !== named.id)].slice(0, 12);
+    }
+
     // The inline-compute tile leads (injected if the ranker did not surface it).
     if (inlineCompute && UTIL_BY_ID) {
       const cu = UTIL_BY_ID.get(inlineCompute.tile);

@@ -16,6 +16,7 @@ import {
 function disclaimerFor(e) { return e.clinical ? DISCLAIMER : ADMIN_DISCLAIMER; }
 function domainOf(e) { return e.clinical ? 'clinical' : 'administrative'; }
 import { resolvePromptRanked, rankableWords } from '../lib/prompt.js';
+import { buildNameCounts, nameMatch } from '../lib/name-match.js';
 import { corpusDesc } from '../lib/search-corpus.js';
 import { queryCompute } from '../lib/query-compute.js';
 // spec-v758: the generic extractor behind answer_query's second attempt. Reads
@@ -403,81 +404,21 @@ export function answerQuery(args = {}) {
   return out;
 }
 
-// Does the query actually name this calculator? A distinctive word from the
-// tile's own name, four characters or more, appearing whole in the query.
-// Short words and the connective vocabulary every second tile shares ("score",
-// "index", "risk") do not count -- they are what made the weak matches look
-// confident in the first place.
-const TILE_NAME_NOISE = new Set([
-  'score', 'scale', 'index', 'risk', 'rule', 'test', 'tool', 'calculator',
-  'criteria', 'classification', 'grade', 'stage', 'ratio', 'rate', 'value',
-  'adult', 'child', 'total', 'time', 'level', 'with', 'from', 'this', 'that',
-]);
-
-// How many tile names each word appears in, over the whole exposed catalog.
-// A name word shared by fifty tiles ("surgery", "risk", "pediatric") says
-// almost nothing about which one the caller meant; a word shared by two says
-// almost everything. Counting beats maintaining a stoplist by hand: the list
-// stays right as the catalog grows, and it needed no guessing about which words
-// would turn out to be common.
-let nameWordCounts = null;
-function wordCounts() {
-  if (nameWordCounts) return nameWordCounts;
-  nameWordCounts = new Map();
-  for (const e of allCalculators()) {
-    for (const w of new Set(nameWords(e.name))) {
-      nameWordCounts.set(w, (nameWordCounts.get(w) || 0) + 1);
-    }
-  }
-  return nameWordCounts;
+// spec-v766: name matching moved to lib/name-match.js so the website and this
+// server decide the same way. The counts are built once from the exposed
+// catalog.
+let nameCounts = null;
+function counts() {
+  if (!nameCounts) nameCounts = buildNameCounts(allCalculators().map((e) => e.name));
+  return nameCounts;
 }
-
-function nameWords(name) {
-  return (String(name || '').toLowerCase().match(/[a-z0-9-]+/g) || [])
-    .filter((w) => w.length >= 4 && !TILE_NAME_NOISE.has(w));
+function nameMatchFor(query, entry) {
+  return nameMatch(query, entry && entry.name, counts());
 }
-
-// How strongly a query names this calculator: the summed rarity of the name
-// words that appear in the query, scaled by how much of the NAME they cover.
-// 0 means the query does not name it.
-//
-// Rarity alone is not enough, because a sibling's name can contain its
-// neighbour's. "HEAR Score (HEART minus troponin)" contains `heart`, so a query
-// about the HEART score matched it on the rarest word available and outscored
-// the calculator actually named. Coverage settles it: HEART matches 3 of its 3
-// distinctive words, HEAR matches 1 of its 4.
-function nameScore(query, entry) {
-  return nameMatch(query, entry).score;
-}
-
-// The matched words, their summed rarity scaled by name coverage, and whether
-// the match is strong enough to override the ranker.
-//
-// Strength is a separate question from score, and conflating them cost two
-// regressions. "what is the meaning of life" matches `life`, which appears in
-// exactly ONE tile name -- rare by frequency, meaningless as a signal -- and
-// promoted a dermatology quality-of-life index over the ranker's own answer.
-// One moderately-common word is not someone naming a calculator: it takes two
-// words, or one long rare one.
-function nameMatch(query, entry) {
-  const q = ` ${String(query).toLowerCase()} `;
-  const counts = wordCounts();
-  const words = new Set(nameWords(entry && entry.name));
-  if (!words.size) return { score: 0, hits: 0, strong: false };
-  let rarity = 0;
-  const matched = [];
-  for (const w of words) {
-    const re = new RegExp(`\\b${w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`);
-    if (re.test(q)) { rarity += 1 / (counts.get(w) || 1); matched.push(w); }
-  }
-  const strong = matched.length >= 2
-    || matched.some((w) => w.length >= 6 && (counts.get(w) || 1) <= 2);
-  return { score: rarity * (matched.length / words.size), hits: matched.length, strong };
-}
-
 function queryNamesTile(query, entry) {
-  return nameScore(query, entry) > 0;
+  return nameMatchFor(query, entry).score > 0;
 }
+
 
 // spec-v758: the second attempt, when no hand-written template matches.
 //
@@ -512,7 +453,7 @@ function answerQueryGeneric(q) {
   // Only a STRONG name match may override the ranker; see nameMatch. A weak one
   // leaves the ranker's own ordering alone, which is what it is for.
   const scored = candidates
-    .map((c) => ({ c, ...nameMatch(q, getCalculator(c.id)) }))
+    .map((c) => ({ c, ...nameMatchFor(q, getCalculator(c.id)) }))
     .filter((x) => x.strong)
     .sort((a, b) => b.score - a.score);
   const bestScore = scored.length ? scored[0].score : 0;
