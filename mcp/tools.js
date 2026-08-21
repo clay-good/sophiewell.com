@@ -866,6 +866,38 @@ export const TOOL_DEFS = [
         disclaimer: { type: 'string' },
         code: { type: 'string' },
         hint: { type: 'string' },
+        message: {
+          type: 'string',
+          description: 'With code BAD_ARGS: what was wrong with the call itself, as opposed to `hint`, which suggests the next tool to reach for.',
+        },
+        // spec-v768: the fields spec-v758 and spec-v762 added. They were
+        // returned but never declared, so an agent reading this contract could
+        // not discover them -- including `unstated`, which exists precisely to
+        // warn a caller that the number it just received is incomplete.
+        via: {
+          type: 'string',
+          enum: ['registry'],
+          description: 'Present only when the answer came from the generic field-registry path rather than a hand-written, unit-tested template. Absent means a template produced it.',
+        },
+        unstated: {
+          type: 'array',
+          items: { type: 'string' },
+          description: 'Optional inputs the query did not supply. The calculator ran without them, so a SCORED result is a floor, not a total. Supply them via compute_calculator for a complete answer.',
+        },
+        unstatedNote: {
+          type: 'string',
+          description: 'The same warning as `unstated`, in one sentence.',
+        },
+        missing: {
+          type: 'array',
+          items: { type: 'string' },
+          description: 'Required inputs still needed, with code MISSING_INPUTS. `inputs` carries what was already recovered, so only these have to be supplied.',
+        },
+        candidates: {
+          type: 'array',
+          items: { type: 'string' },
+          description: 'With code AMBIGUOUS: the calculator ids the query names equally well. Pick one rather than assuming the first.',
+        },
       },
     },
   },
