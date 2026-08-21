@@ -102,3 +102,42 @@ for (const id of LATE_TILES) {
     })).toBe(true);
   });
 }
+
+// The same sentences, twice on one page.
+//
+// 45 tiles built their result text by joining a computed lead to the tile's
+// own constant notes -- REGIONAL_NOTE, FISTULA_NOTE, DISTANCE_NOTE -- every
+// one of which the view had already rendered on the page beside the field it
+// explains. Said again inside the live region, that was 46,817 characters of
+// verbatim repetition, 61% of all the prose those regions held, re-announced
+// on every keystroke. The MCP result string keeps them: an agent reading one
+// string has no page to have read them on. The page is what had them twice.
+const RESTATING_TILES = ['sartorius-hs', 'heffner', 'bauer-score', 'hijdra', 'pedis'];
+
+for (const id of RESTATING_TILES) {
+  test(`${id}: the answer does not repeat what the page already says`, async ({ page }) => {
+    await page.goto(`/#${id}`);
+    await page.waitForSelector('#tool-body [aria-live]');
+    await expect.poll(async () => page.evaluate(() => {
+      const body = document.querySelector('#tool-body');
+      const live = body.querySelector('[aria-live]');
+      const norm = (s) => s.replace(/\s+/g, ' ').trim();
+      const elsewhere = Array.from(body.querySelectorAll('p, li, summary, dd'))
+        .filter((n) => !live.contains(n))
+        .map((n) => norm(n.textContent))
+        .join('  ');
+      // How much of what the region announces the reader can already read
+      // beside the fields. Counted in characters rather than sentences: this
+      // test splits on a full stop and the rule splits on a sentence, so on
+      // heffner one 79-character clause is repeated inside a longer sentence
+      // that is not. Every one of these tiles repeated between 1,242 and 2,233
+      // characters before the rule landed, so the bound is far below any of
+      // them and far above the granularity difference.
+      return Array.from(live.children)
+        .filter((n) => n.tagName === 'P' && n.classList.contains('muted'))
+        .flatMap((n) => norm(n.textContent).split('. '))
+        .filter((s) => s.length > 60 && elsewhere.includes(s))
+        .reduce((a, s) => a + s.length, 0);
+    })).toBeLessThan(200);
+  });
+}

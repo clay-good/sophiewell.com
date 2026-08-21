@@ -395,3 +395,73 @@ test('hoistIntroNote drops the previous tile observer', async () => {
     }
   });
 });
+
+// --- dropRestatedSentences: the same sentence, twice on one page.
+
+const RESTATED = 'A draining fistula counts six points, so a single fistula outweighs five nodules.';
+const COMPUTED = 'Regional score 31 for this region: nodules 4, fistulas 12, separation 9.';
+const UNIQUE = 'The two draining fistulas contributed twelve points, as much as twelve nodules would.';
+
+function tileRestating(doc, announced, onPage) {
+  const body = doc.createElement('div');
+  for (const text of onPage) {
+    const p = doc.createElement('p');
+    p.setAttribute('class', 'muted');
+    p.textContent = text;
+    body.appendChild(p);
+  }
+  const live = doc.createElement('div');
+  live.setAttribute('aria-live', 'polite');
+  body.appendChild(live);
+  const said = doc.createElement('p');
+  said.setAttribute('class', 'muted');
+  said.textContent = announced;
+  live.appendChild(said);
+  return { body, said };
+}
+
+test('dropRestatedSentences drops what the page already says, and keeps what it does not', async () => {
+  await withStubDom(async (doc) => {
+    const { dropRestatedSentences } = await import('../../lib/long-note.js');
+    const announced = `${COMPUTED} ${RESTATED} ${UNIQUE} ${LONG.slice(0, 120)}`;
+    const { body, said } = tileRestating(doc, announced, [RESTATED]);
+
+    assert.equal(dropRestatedSentences(body), 1);
+    assert.ok(!said.textContent.includes(RESTATED), 'the restatement is gone');
+    assert.ok(said.textContent.startsWith(COMPUTED), 'the computed answer leads, untouched');
+    assert.ok(said.textContent.includes(UNIQUE), 'a sentence the page does not carry stays');
+  });
+});
+
+test('dropRestatedSentences is idempotent', async () => {
+  await withStubDom(async (doc) => {
+    const { dropRestatedSentences } = await import('../../lib/long-note.js');
+    const { body, said } = tileRestating(doc, `${COMPUTED} ${RESTATED} ${LONG}`, [RESTATED]);
+    dropRestatedSentences(body);
+    const once = said.textContent;
+    assert.equal(dropRestatedSentences(body), 0, 'a second pass finds nothing to do');
+    assert.equal(said.textContent, once);
+  });
+});
+
+test('dropRestatedSentences never drops the paragraph opening', async () => {
+  await withStubDom(async (doc) => {
+    const { dropRestatedSentences } = await import('../../lib/long-note.js');
+    // The tile's own answer, restated on the page under the fields. It still
+    // leads the announcement -- taking it would leave the region opening on a
+    // caveat about an answer it no longer states.
+    const { body, said } = tileRestating(doc, `${COMPUTED} ${RESTATED} ${LONG}`, [COMPUTED, RESTATED]);
+    dropRestatedSentences(body);
+    assert.ok(said.textContent.startsWith(COMPUTED));
+  });
+});
+
+test('dropRestatedSentences leaves a short paragraph alone', async () => {
+  await withStubDom(async (doc) => {
+    const { dropRestatedSentences } = await import('../../lib/long-note.js');
+    const { body, said } = tileRestating(doc, `${COMPUTED} ${RESTATED}`, [RESTATED]);
+    const before = said.textContent;
+    assert.equal(dropRestatedSentences(body), 0, 'under the length that makes a wall of text');
+    assert.equal(said.textContent, before);
+  });
+});
