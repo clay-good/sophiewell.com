@@ -70,6 +70,29 @@ gir                          <->  conc-rate
 either could reasonably mean either, and there is no signal in the query to prefer one — the same
 irreducible class as the 47 identical labels in [spec-v764](spec-v764.md). Left alone.
 
+## Three loosenings tried, three reverted
+
+`minHits: 2` means a query that names a tile with a **single short word** does not promote. That is
+a real cost: `akin current creatinine 2.4 baseline creatinine 0.9` reaches Cockcroft-Gault, because
+`akin-aki` is named *"AKIN criteria (AKI staging)"* and only `akin` matches — `criteria` is noise
+and `aki` is under the four-character floor.
+
+Three ways of loosening it were tried and measured. All three regressed:
+
+| Attempt | What broke |
+|---|---|
+| `minHits: 1` | `therapy` promoted Therapy Units over CHA2DS2-VASc for *"antithrombotic therapy not recommended"* |
+| Keep parentheticals in strict terms ([v764](spec-v764.md)) | 84.1% → 83.4%, no gain |
+| A rare word **leading** the query counts as naming | `kidney function` → egfr and `antithrombotic …` → chads both broke; those words lead their queries too |
+
+The pattern is consistent: **any rule that lets one word promote breaks queries where that word is
+descriptive rather than nominal.** The ranker's own corpus evidence is better than a single-word
+name match, which is exactly what `minHits: 2` encodes.
+
+Do not try a fourth variant without a probe set that contains both shapes — queries that *name* a
+tile and queries that *describe* one. Testing only the first will happily approve a rule that
+breaks the second.
+
 ## Proof
 
 - `test/integration/query-routing.spec.js` — **new.** 200 tiles, deterministically sampled across
