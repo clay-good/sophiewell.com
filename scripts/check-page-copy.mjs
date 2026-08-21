@@ -36,6 +36,11 @@ const README = join(ROOT, 'README.md');
 // characters (entity escapes included, which is what this counts).
 const LEDE_MAX = 260;
 
+// The browser tab. Must fit the width a tab and a search result give it, and
+// must end either at the site's name or at the end of the tool's own name.
+const TITLE_MAX = 65;
+const BRAND = 'Sophie Well';
+
 // Example rows still printing a raw option token, because their select is
 // built at render time and its options are named nowhere a build step can
 // read. Was 130 before scripts/lib/option-labels.mjs learned to read a select
@@ -246,6 +251,28 @@ async function main() {
       }
       if (text.includes('\\')) {
         failures.push(`${id}: the ${what} carries a backslash out of the source array: ${text.slice(0, 48)}`);
+      }
+    }
+
+    // 2c. The tab, specifically. It used to be built as
+    // `<name> - Free, in your browser · Sophie Well` and clamped afterwards, so
+    // on 1336 of 1564 pages the cut landed inside the boilerplate: the tab read
+    // "Wells Score for DVT - Free, in your brows…" and the brand was gone. The
+    // rule that holds it shut is that only the tool's own name may ever be the
+    // thing that gets cut. Anything else means a template appended text after
+    // the name and then let the clamp eat it.
+    const h1 = decode((html.match(/<h1 class="tp-h1">([^<]*)<\/h1>/) || [])[1] || '');
+    if (title) {
+      if (title.length > TITLE_MAX) {
+        failures.push(`${id}: the title runs ${title.length} chars (max ${TITLE_MAX}): ${title}`);
+      }
+      if (title.endsWith('\u2026')) {
+        const kept = title.slice(0, -1);
+        if (!h1.startsWith(kept)) {
+          failures.push(`${id}: the title cut something other than the tool name: ${title}`);
+        }
+      } else if (title !== h1 && !title.endsWith(`\u00b7 ${BRAND}`)) {
+        failures.push(`${id}: the title neither names the site nor is the tool name alone: ${title}`);
       }
     }
 

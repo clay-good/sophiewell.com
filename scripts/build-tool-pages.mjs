@@ -230,9 +230,41 @@ function linkifyCitation(s) {
   return out;
 }
 
-function clampTitle(s, max = 65) {
+function clampTitle(s, max = TITLE_MAX) {
   if (s.length <= max) return s;
   return `${s.slice(0, outsideBrackets(s, max - 1)).trimEnd().replace(/[,;:([-]+$/, '').trimEnd()}…`;
+}
+
+// The browser tab, and the first line of every search result. Two things
+// belong there: what the tool is, and whose site it is. The old title built
+// `<name> - Free, in your browser · Sophie Well` and clamped afterwards, so on
+// 1336 of 1564 pages the cut landed inside the boilerplate and the tab read
+// "Wells Score for DVT - Free, in your brows…" -- the pitch half-said, the
+// brand gone. Drop the boilerplate whole instead. It is the part no reader
+// needs, so losing it costs nothing, and the name and the brand both survive.
+const TITLE_MAX = 65;
+const BRAND = 'Sophie Well';
+function pageTitle(name) {
+  const withBrand = `${name} · ${BRAND}`;
+  if (withBrand.length <= TITLE_MAX) return withBrand;
+  // A name long enough to crowd out the brand keeps the tab honest on its own.
+  if (name.length <= TITLE_MAX) return name;
+  return clampTitle(name);
+}
+
+// The search-result snippet. Same rule: the sentence the tile wrote about
+// itself comes first, and the pitch is appended only when it fits whole. It
+// used to be appended first, so 1378 snippets ended on a chopped fragment of
+// it -- "…>=3 high. Free, runs…" -- after a description that had already
+// finished its own sentence.
+const DESC_MAX = 158;
+const PITCH = 'Free, runs in your browser, no signup, no tracking. Sophie Well.';
+function pageDescription(desc) {
+  const text = /[.!?]$/.test(desc.trim()) ? desc.trim() : `${desc.trim()}.`;
+  const full = `${text} ${PITCH}`;
+  if (full.length <= DESC_MAX) return full;
+  if (text.length <= DESC_MAX) return text;
+  return clampDescription(text);
 }
 
 // The visible lede: the first whole sentence of whatever the tile says about
@@ -347,9 +379,15 @@ function dropEnumerations(text) {
 // The search-result snippet. Held to the same rule as everything else that
 // gets cut: it closes what it opens. 85 descriptions did not, so the snippet
 // Google shows read "(unilateral weakness 2, speech disturbance without…".
-function clampDescription(s, max = 158) {
+function clampDescription(s, max = DESC_MAX) {
   if (s.length <= max) return s;
   const cut = s.slice(0, max - 1);
+  // Cut between items rather than inside one, the same way the lede does: a
+  // word-boundary cut lands mid-criterion and the snippet reads "clinical, and
+  // radiographic findings, stages…" instead of stopping where the list did.
+  let comma = -1;
+  for (const m of cut.matchAll(/,/g)) if (depthAt(s, m.index) === 0) comma = m.index;
+  if (comma > max * 0.6) return `${s.slice(0, comma).trimEnd()},…`;
   const lastSpace = cut.lastIndexOf(' ');
   const at = outsideBrackets(s, lastSpace > 100 ? lastSpace : cut.length);
   return `${s.slice(0, at).trimEnd().replace(/[,;:([-]+$/, '').trimEnd()}…`;
@@ -695,10 +733,8 @@ function pickRelated(tiles, current, index, meta, max = RELATED_MAX) {
 // later PR by reading from `data/tool-copy/<id>.json` (not wired here).
 function buildPageHtml({ tile, desc, meta, related, copy, whatThisIs, optionLabels, fieldLabels }) {
   const groupLabel = GROUP_LABELS[tile.group] || tile.group;
-  const seoTitle = clampTitle(`${tile.name} - Free, in your browser · Sophie Well`);
-  const seoDesc = clampDescription(
-    `${desc} Free, runs in your browser, no signup, no tracking. Sophie Well.`
-  );
+  const seoTitle = pageTitle(tile.name);
+  const seoDesc = pageDescription(desc);
   const canonical = `${SITE}/tools/${tile.id}/`;
   const hashUrl = `${SITE}/#${tile.id}`;
 
