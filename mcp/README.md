@@ -92,7 +92,7 @@ and typed `structuredContent`.
 | `describe_calculator` | `{ id }` | The full contract: `inputSchema` (JSON Schema), a worked `example`, `citation` + `citationUrl` + `citationAccessed`, the source interpretation bands, `related` calculator ids, and the clinical-posture disclaimer. |
 | `compute_calculator` | `{ id, inputs }` | The deterministic `result` (score, bands, derived values, source note), the citation, and the disclaimer. Invalid or incomplete input returns `{ valid: false, code, field?, message }` — never a thrown error and never a non-finite number. |
 | `compute_batch` | `{ calculations: [{ id, inputs }, ...] }` | Runs up to 25 calculators in one call for a workup. Results come back in request order, each the same shape as `compute_calculator`; one invalid element does not fail the others. No combined interpretation. |
-| `answer_query` | `{ query }` | One-shot answer: parses a sentence that already carries its values ("bmi 80kg 180cm", "wells score for PE, heart rate 110, previous DVT") and returns the computed value with its citation. Tries 22 verified templates first, then reads the field registry for the rest of the catalog — a registry answer is marked `via: "registry"`. When it cannot answer outright it still says what it worked out: `MISSING_INPUTS` carries the calculator plus the inputs it recovered and the ones it needs, `NO_VALUES` carries the calculator when the query named one, and `NO_MATCH` means nothing matched. |
+| `answer_query` | `{ query }` | One-shot answer: parses a sentence that already carries its values ("bmi 80kg 180cm", "wells score for PE, heart rate 110, previous DVT") and returns the computed value with its citation. Tries 21 verified templates first, then reads the field registry for the rest of the catalog — a registry answer is marked `via: "registry"`. When it cannot answer outright it still says what it worked out: `MISSING_INPUTS` carries the calculator plus the inputs it recovered and the ones it needs, `NO_VALUES` carries the calculator when the query named one, and `NO_MATCH` means nothing matched. |
 | `convert_units` | `{ kind, value, direction? }` | Deterministic lab + vitals unit conversion (mg/dL ↔ mmol/L, HbA1c % ↔ IFCC, mmHg ↔ kPa, degF ↔ degC, in ↔ cm, lb ↔ kg). `kind` is a lab analyte or a1c/pressure/temperature/length/weight. |
 
 `inputs` are keyed exactly as `describe_calculator` reports them (and exactly as
@@ -120,7 +120,7 @@ compliance. Both are deterministic and cited the same way.
 
 ```
 find_calculator { "query": "stroke risk afib" }
-  -> { query: "stroke risk afib", count: 3,
+  -> { query: "stroke risk afib", count: <N>,
        candidates: [ { id: "chads", name: "CHA2DS2-VASc", why: "synonym", ... }, ... ] }
 
 list_calculators { "specialty": "hepatology", "limit": 50 }

@@ -184,6 +184,24 @@ async function main() {
     if (missing.length) errors.push(`${e.id}: example expected numbers not in result: ${missing.join(', ')}`);
   }
 
+  // 7. The one number mcp/README.md states about the code rather than about
+  // the catalog. It read "22 verified templates" while lib/query-compute.js
+  // shipped 21 -- a count nothing checked, so it drifted the moment a template
+  // was added or dropped. Checked here for the same reason every visible tile
+  // count is checked in check-catalog-truth: a number a reader can see and a
+  // gate cannot is a number that will be wrong.
+  if (await exists('mcp/README.md')) {
+    const readme = await readFile(join(ROOT, 'mcp', 'README.md'), 'utf8');
+    const claimed = readme.match(/Tries\s+(\d+)\s+verified templates/);
+    const { _testing } = await import(new URL('../lib/query-compute.js', import.meta.url).href);
+    const actual = (_testing && _testing.TEMPLATES || []).length;
+    if (!claimed) {
+      errors.push('mcp/README.md no longer states how many verified templates answer_query tries');
+    } else if (Number(claimed[1]) !== actual) {
+      errors.push(`mcp/README.md says ${claimed[1]} verified templates; lib/query-compute.js ships ${actual}`);
+    }
+  }
+
   if (errors.length) {
     console.error('check-mcp-catalog: violations.');
     for (const err of errors) console.error(`  ${err}`);
