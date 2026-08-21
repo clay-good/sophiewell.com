@@ -15,8 +15,8 @@ export default [
     { dom: 'stratify-agitated', arg: 'agitated', kind: 'enum', values: ["yes","no"], required: true, label: 'Agitated' },
     { dom: 'stratify-visual', arg: 'visualImpairment', kind: 'enum', values: ["yes","no"], required: true, label: 'Visual Impairment' },
     { dom: 'stratify-toilet', arg: 'frequentToileting', kind: 'enum', values: ["yes","no"], required: true, label: 'Frequent Toileting' },
-    { dom: 'stratify-transfer', arg: 'transfer', kind: 'number', required: true, label: 'Transfer' },
-    { dom: 'stratify-mobility', arg: 'mobility', kind: 'number', required: true, label: 'Mobility' },
+    { dom: 'stratify-transfer', arg: 'transfer', kind: 'number', required: true, label: 'Transfer', values: ['0', '1', '2', '3'] },
+    { dom: 'stratify-mobility', arg: 'mobility', kind: 'number', required: true, label: 'Mobility', values: ['0', '1', '2', '3'] },
     ],
   },
   {
@@ -62,7 +62,7 @@ export default [
     compute: F.steadiAlgorithm,
     fields: [
     { dom: 'steadi-fell', arg: 'fellPastYear', kind: 'enum', values: ["yes","no"], required: true, label: 'Fell Past Year' },
-    { dom: 'steadi-count', arg: 'numberOfFalls', kind: 'number', required: true, label: 'Number Of Falls' },
+    { dom: 'steadi-count', arg: 'numberOfFalls', kind: 'number', required: true, label: 'Number Of Falls', values: ['1', '2'] },
     { dom: 'steadi-injury', arg: 'fallWithInjury', kind: 'enum', values: ["yes","no"], required: true, label: 'Fall With Injury' },
     { dom: 'steadi-unsteady', arg: 'feelsUnsteady', kind: 'enum', values: ["yes","no"], required: true, label: 'Feels Unsteady' },
     { dom: 'steadi-worried', arg: 'worriesAboutFalling', kind: 'enum', values: ["yes","no"], required: true, label: 'Worries About Falling' },

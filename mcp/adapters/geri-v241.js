@@ -20,9 +20,9 @@ export default [
     summary: 'Short Physical Performance Battery (Guralnik JM, et al. J Gerontol 1994): standing balance, 4-meter gait speed, and five chair stands each scored 0-4 for a 0-12 total, where < 10 indicates mobility limitation.',
     compute: F.sppb,
     fields: [
-      { dom: 'sppb-balance', arg: 'balance', kind: 'number', required: true, label: 'Balance sub-score (0-4)' },
-      { dom: 'sppb-gait', arg: 'gait', kind: 'number', required: true, label: '4-meter gait-speed sub-score (0-4)' },
-      { dom: 'sppb-chair', arg: 'chair', kind: 'number', required: true, label: 'Chair-stand sub-score (0-4)' },
+      { dom: 'sppb-balance', arg: 'balance', kind: 'number', required: true, label: 'Balance sub-score (0-4)', values: ['0', '1', '2', '3', '4'] },
+      { dom: 'sppb-gait', arg: 'gait', kind: 'number', required: true, label: '4-meter gait-speed sub-score (0-4)', values: ['0', '1', '2', '3', '4'] },
+      { dom: 'sppb-chair', arg: 'chair', kind: 'number', required: true, label: 'Chair-stand sub-score (0-4)', values: ['0', '1', '2', '3', '4'] },
     ],
   },
   {

@@ -55,10 +55,10 @@ export default [
     summary: 'Harvey-Bradshaw Index for Crohn disease activity: general well-being (0-4), abdominal pain (0-3), liquid stools per day, abdominal mass (0-3), and complications; < 5 remission, 5-7 mild, 8-16 moderate, > 16 severe.',
     compute: F.harveyBradshaw,
     fields: [
-      { dom: 'hb-wb', arg: 'wellbeing', kind: 'number', required: true, label: 'General well-being (0 very well - 4 terrible)' },
-      { dom: 'hb-pain', arg: 'pain', kind: 'number', required: true, label: 'Abdominal pain (0 none - 3 severe)' },
+      { dom: 'hb-wb', arg: 'wellbeing', kind: 'number', required: true, label: 'General well-being (0 very well - 4 terrible)', values: ['0', '1', '2', '3', '4'] },
+      { dom: 'hb-pain', arg: 'pain', kind: 'number', required: true, label: 'Abdominal pain (0 none - 3 severe)', values: ['0', '1', '2', '3'] },
       { dom: 'hb-stools', arg: 'stools', kind: 'number', required: true, label: 'Liquid stools per day' },
-      { dom: 'hb-mass', arg: 'mass', kind: 'number', required: true, label: 'Abdominal mass (0 none - 3 definite and tender)' },
+      { dom: 'hb-mass', arg: 'mass', kind: 'number', required: true, label: 'Abdominal mass (0 none - 3 definite and tender)', values: ['0', '1', '2', '3'] },
       { dom: 'hb-cx', arg: 'complications', kind: 'number', required: true, label: 'Number of complications' },
     ],
   },
@@ -67,10 +67,10 @@ export default [
     summary: 'Mayo score for ulcerative colitis activity: stool frequency, rectal bleeding, physician global assessment, and endoscopy subscores (each 0-3); full score 0-12, partial (no endoscopy) 0-9.',
     compute: F.mayoUc,
     fields: [
-      { dom: 'mu-sf', arg: 'stoolFreq', kind: 'number', required: true, label: 'Stool frequency subscore (0-3)' },
-      { dom: 'mu-rb', arg: 'rectalBleeding', kind: 'number', required: true, label: 'Rectal bleeding subscore (0-3)' },
-      { dom: 'mu-pg', arg: 'physicianGlobal', kind: 'number', required: true, label: 'Physician global assessment (0-3)' },
-      { dom: 'mu-en', arg: 'endoscopy', kind: 'number', label: 'Endoscopy subscore (0-3, optional)' },
+      { dom: 'mu-sf', arg: 'stoolFreq', kind: 'number', required: true, label: 'Stool frequency subscore (0-3)', values: ['0', '1', '2', '3'] },
+      { dom: 'mu-rb', arg: 'rectalBleeding', kind: 'number', required: true, label: 'Rectal bleeding subscore (0-3)', values: ['0', '1', '2', '3'] },
+      { dom: 'mu-pg', arg: 'physicianGlobal', kind: 'number', required: true, label: 'Physician global assessment (0-3)', values: ['0', '1', '2', '3'] },
+      { dom: 'mu-en', arg: 'endoscopy', kind: 'number', label: 'Endoscopy subscore (0-3, optional)', values: ['0', '1', '2', '3'] },
     ],
   },
   {

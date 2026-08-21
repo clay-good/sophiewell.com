@@ -5,6 +5,7 @@
 // makeToArgs applies without a bespoke transform.
 
 import * as F from '../../lib/function-v154.js';
+import { scaleValues } from '../fields.js';
 
 const BERG_ITEMS = [
   'Sitting to standing', 'Standing unsupported', 'Sitting unsupported',
@@ -20,7 +21,7 @@ export default [
     id: 'berg-balance',
     summary: 'Berg Balance Scale (Berg 1989): fourteen 0–4 balance tasks summed to a 0–56 total; lower totals indicate greater fall risk.',
     compute: F.bergBalance,
-    fields: BERG_ITEMS.map((label, i) => ({ dom: `berg-q${i + 1}`, arg: `q${i + 1}`, kind: 'number', label: `${i + 1}. ${label} (0–4)` })),
+    fields: BERG_ITEMS.map((label, i) => ({ dom: `berg-q${i + 1}`, arg: `q${i + 1}`, kind: 'number', label: `${i + 1}. ${label} (0–4)`, values: scaleValues(4) })),
   },
   {
     id: 'tug',

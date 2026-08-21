@@ -61,11 +61,11 @@ export default [
     summary: 'CISNE (Carmona-Bayonas 2015): 0-8 serious-complication score for clinically stable febrile-neutropenia outpatients — ECOG ≥ 2 (2), stress hyperglycemia (2), COPD (1), cardiovascular disease (1), mucositis ≥ 2 (1), monocytes < 200 (1); 0 low, 1-2 intermediate, ≥ 3 high.',
     compute: F.cisne,
     fields: [
-      { dom: 'ci-ecog', arg: 'ecog', kind: 'number', required: true, label: 'ECOG performance status (0-4)' },
+      { dom: 'ci-ecog', arg: 'ecog', kind: 'number', required: true, label: 'ECOG performance status (0-4)', values: ['0', '1', '2', '3', '4'] },
       { dom: 'ci-glu', arg: 'hyperglycemia', kind: 'enum', values: YN, required: true, label: 'Stress-induced hyperglycemia' },
       { dom: 'ci-copd', arg: 'copd', kind: 'enum', values: YN, required: true, label: 'COPD' },
       { dom: 'ci-cv', arg: 'cardiovascular', kind: 'enum', values: YN, required: true, label: 'Chronic cardiovascular disease' },
-      { dom: 'ci-muc', arg: 'mucositis', kind: 'number', required: true, label: 'NCI mucositis grade (0-4)' },
+      { dom: 'ci-muc', arg: 'mucositis', kind: 'number', required: true, label: 'NCI mucositis grade (0-4)', values: ['0', '1', '2', '3', '4'] },
       { dom: 'ci-mono', arg: 'monocytes', kind: 'number', required: true, label: 'Monocyte count', unit: '/µL' },
     ],
   },

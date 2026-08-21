@@ -13,7 +13,7 @@ export default [
     summary: 'Modified Rankin Scale (van Swieten 1988): the 0-6 global disability grade after stroke; 0-2 marks functional independence, 6 is death.',
     compute: F.mrs,
     fields: [
-      { dom: 'mrs-grade', arg: 'grade', kind: 'number', required: true, label: 'Modified Rankin grade (0-6)' },
+      { dom: 'mrs-grade', arg: 'grade', kind: 'number', required: true, label: 'Modified Rankin grade (0-6)', values: ['0', '1', '2', '3', '4', '5', '6'] },
     ],
   },
   {
@@ -21,7 +21,7 @@ export default [
     summary: 'Glasgow Outcome Scale - Extended (Jennett 1981; Wilson 1998): the 1-8 traumatic-brain-injury outcome grade, from death to upper good recovery.',
     compute: F.gose,
     fields: [
-      { dom: 'gose-cat', arg: 'category', kind: 'number', required: true, label: 'GOS-E category (1-8)' },
+      { dom: 'gose-cat', arg: 'category', kind: 'number', required: true, label: 'GOS-E category (1-8)', values: ['1', '2', '3', '4', '5', '6', '7', '8'] },
     ],
   },
   {
@@ -50,7 +50,7 @@ export default [
     summary: 'House-Brackmann facial-nerve grading (1985): the I-VI grade of facial-nerve function, from normal to total paralysis.',
     compute: F.houseBrackmann,
     fields: [
-      { dom: 'hb-grade', arg: 'grade', kind: 'number', required: true, label: 'House-Brackmann grade (1-6)' },
+      { dom: 'hb-grade', arg: 'grade', kind: 'number', required: true, label: 'House-Brackmann grade (1-6)', values: ['1', '2', '3', '4', '5', '6'] },
     ],
   },
   {

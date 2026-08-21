@@ -30,6 +30,16 @@ function toBool(v) {
   return v === true || v === 1 || v === '1' || v === 'true' || v === 'yes';
 }
 
+// The values of a 0..max scored scale, as the strings a <select> carries. A
+// scale item is a number to the calculator -- its points get summed -- and a
+// fixed set of options to the person answering it, and `values` is how a
+// descriptor says both at once.
+export function scaleValues(max, min = 0) {
+  const out = [];
+  for (let i = min; i <= max; i += 1) out.push(String(i));
+  return out;
+}
+
 // Build the published JSON Schema for one calculator's { inputs } object. This
 // is the machine-readable contract describe_calculator returns; it documents
 // the ideal type for an agent. Validation (validateInputs) is intentionally a
@@ -39,7 +49,13 @@ export function fieldSchema(fields) {
   const required = [];
   for (const f of fields) {
     const p = { description: f.label || f.arg };
-    if (f.kind === 'number') p.type = 'number';
+    if (f.kind === 'number') {
+      p.type = 'number';
+      // A number field whose form is a fixed set of options: say so. "Mass
+      // lesion type" typed only as `number` told an agent nothing about which
+      // numbers mean anything, and 0 / 2 / -3 is not guessable.
+      if (Array.isArray(f.values)) p.enum = f.values.map(Number);
+    }
     else if (f.kind === 'bool') p.type = 'boolean';
     else if (f.kind === 'enum') { p.type = 'string'; p.enum = f.values.slice(); }
     else p.type = 'string';
@@ -79,6 +95,15 @@ export function validateInputs(inputs, fields) {
       }
       const n = typeof v === 'number' ? v : (typeof v === 'string' && v.trim() !== '' ? Number(v) : NaN);
       if (!Number.isFinite(n)) return { valid: false, code: 'INVALID_TYPE', field: f.dom, message: `"${f.dom}" must be a finite number.` };
+      // Scored categories are numbers, but only some numbers. Passing one the
+      // form has no option for used to score as if the finding were absent and
+      // return a confident total: atlas-cdi took atl-abx = 9 where the options
+      // are 0 or 2 and answered ATLAS 4 instead of 6, valid: true. The kind
+      // stays `number` on purpose -- these values are summed, and an enum would
+      // hand the lib a string.
+      if (Array.isArray(f.values) && !f.values.includes(String(n))) {
+        return { valid: false, code: 'INVALID_TYPE', field: f.dom, message: `"${f.dom}" must be one of: ${f.values.join(', ')}.` };
+      }
     } else if (f.kind === 'bool') {
       if (!isBoolLike(v)) return { valid: false, code: 'INVALID_TYPE', field: f.dom, message: `"${f.dom}" must be a boolean.` };
     } else if (f.kind === 'enum') {

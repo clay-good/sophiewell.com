@@ -8,6 +8,7 @@
 // site grades; the rest are boolean criteria and 0–10 patient scales.
 
 import * as F from '../../lib/rheum-classification-v222.js';
+import { scaleValues } from '../fields.js';
 
 const MRSS_SITES = [
   'fingersR', 'fingersL', 'handsR', 'handsL', 'forearmsR', 'forearmsL',
@@ -77,7 +78,7 @@ export default [
     summary: 'Modified Rodnan skin score (Clements 1995): skin thickness graded 0–3 at 17 body sites gives a 0–51 total; a higher score marks more extensive skin involvement in systemic sclerosis.',
     compute: F.mrss,
     fields: MRSS_SITES.map((key) => ({
-      dom: `mrss-${key}`, arg: key, kind: 'number', required: false, label: `${key} skin thickness (0–3)`,
+      dom: `mrss-${key}`, arg: key, kind: 'number', required: false, label: `${key} skin thickness (0–3)`, values: scaleValues(3),
     })),
   },
   {

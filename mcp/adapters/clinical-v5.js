@@ -172,9 +172,9 @@ export default [
     summary: 'Pediatric Early Warning Score: behavior, cardiovascular, and respiratory subscales each 0-3; the total maps to an escalation band (a rising trend warrants escalation).',
     compute: F.pews,
     fields: [
-      { dom: 'Behavior', arg: 'behaviorScore', kind: 'number', required: true, label: 'Behavior subscale (0-3)' },
-      { dom: 'Cardiovascular', arg: 'cardiovascularScore', kind: 'number', required: true, label: 'Cardiovascular subscale (0-3)' },
-      { dom: 'Respiratory', arg: 'respiratoryScore', kind: 'number', required: true, label: 'Respiratory subscale (0-3)' },
+      { dom: 'Behavior', arg: 'behaviorScore', kind: 'number', required: true, label: 'Behavior subscale (0-3)', values: ['0', '1', '2', '3'] },
+      { dom: 'Cardiovascular', arg: 'cardiovascularScore', kind: 'number', required: true, label: 'Cardiovascular subscale (0-3)', values: ['0', '1', '2', '3'] },
+      { dom: 'Respiratory', arg: 'respiratoryScore', kind: 'number', required: true, label: 'Respiratory subscale (0-3)', values: ['0', '1', '2', '3'] },
     ],
   },
   {

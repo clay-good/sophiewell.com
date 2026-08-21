@@ -39,7 +39,7 @@ export default [
     summary: 'SORT — Surgical Outcome Risk Tool: a six-preoperative-variable logistic model for 30-day mortality from ASA grade, urgency, high-risk specialty, high severity, cancer, and age.',
     compute: F.sort,
     fields: [
-      { dom: 'sort-asa', arg: 'asa', kind: 'number', required: true, label: 'ASA physical-status grade (1–5)' },
+      { dom: 'sort-asa', arg: 'asa', kind: 'number', required: true, label: 'ASA physical-status grade (1–5)', values: ['1', '2', '3', '4', '5'] },
       { dom: 'sort-urg', arg: 'urgency', kind: 'enum', values: ['elective', 'expedited', 'urgent', 'immediate'], required: true, label: 'Urgency of surgery' },
       { dom: 'sort-age', arg: 'age', kind: 'enum', values: ['under65', '65to79', '80plus'], required: true, label: 'Age band' },
       { dom: 'sort-hr', arg: 'highRisk', kind: 'bool', required: false, label: 'High-risk specialty (GI, thoracic, vascular)' },
@@ -68,11 +68,11 @@ export default [
     summary: 'Wilson Risk Sum Score (0–10) for difficult intubation: body weight, head/neck movement, jaw movement, receding mandible, and buck teeth each scored 0–2; ≥ 2 is the common sensitive screen.',
     compute: F.wilsonAirway,
     fields: [
-      { dom: 'wil-weight', arg: 'weight', kind: 'number', required: false, label: 'Body weight (0–2)' },
-      { dom: 'wil-headneck', arg: 'headneck', kind: 'number', required: false, label: 'Head and neck movement (0–2)' },
-      { dom: 'wil-jaw', arg: 'jaw', kind: 'number', required: false, label: 'Jaw movement (0–2)' },
-      { dom: 'wil-mandible', arg: 'mandible', kind: 'number', required: false, label: 'Receding mandible (0–2)' },
-      { dom: 'wil-teeth', arg: 'teeth', kind: 'number', required: false, label: 'Buck teeth (0–2)' },
+      { dom: 'wil-weight', arg: 'weight', kind: 'number', required: false, label: 'Body weight (0–2)', values: ['0', '1', '2'] },
+      { dom: 'wil-headneck', arg: 'headneck', kind: 'number', required: false, label: 'Head and neck movement (0–2)', values: ['0', '1', '2'] },
+      { dom: 'wil-jaw', arg: 'jaw', kind: 'number', required: false, label: 'Jaw movement (0–2)', values: ['0', '1', '2'] },
+      { dom: 'wil-mandible', arg: 'mandible', kind: 'number', required: false, label: 'Receding mandible (0–2)', values: ['0', '1', '2'] },
+      { dom: 'wil-teeth', arg: 'teeth', kind: 'number', required: false, label: 'Buck teeth (0–2)', values: ['0', '1', '2'] },
     ],
   },
   {
@@ -80,9 +80,9 @@ export default [
     summary: 'Surgical Risk Scale (3–14): CEPOD operative urgency + ASA grade + BUPA operative-magnitude grade; a score of 8 or more is a common high-risk threshold.',
     compute: F.surgicalRiskScale,
     fields: [
-      { dom: 'srs-cepod', arg: 'cepod', kind: 'number', required: true, label: 'CEPOD urgency (1–4)' },
-      { dom: 'srs-asa', arg: 'asa', kind: 'number', required: true, label: 'ASA grade (1–5)' },
-      { dom: 'srs-bupa', arg: 'bupa', kind: 'number', required: true, label: 'BUPA operative-magnitude grade (1–5)' },
+      { dom: 'srs-cepod', arg: 'cepod', kind: 'number', required: true, label: 'CEPOD urgency (1–4)', values: ['1', '2', '3', '4'] },
+      { dom: 'srs-asa', arg: 'asa', kind: 'number', required: true, label: 'ASA grade (1–5)', values: ['1', '2', '3', '4', '5'] },
+      { dom: 'srs-bupa', arg: 'bupa', kind: 'number', required: true, label: 'BUPA operative-magnitude grade (1–5)', values: ['1', '2', '3', '4', '5'] },
     ],
   },
 ];

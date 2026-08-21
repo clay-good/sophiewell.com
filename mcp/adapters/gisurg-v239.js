@@ -41,7 +41,7 @@ export default [
       { dom: 'mpi-dur', arg: 'duration24', kind: 'bool', required: false, label: 'Preoperative duration > 24 h (4)' },
       { dom: 'mpi-noncolonic', arg: 'nonColonic', kind: 'bool', required: false, label: 'Origin of sepsis not colonic (4)' },
       { dom: 'mpi-diffuse', arg: 'diffuse', kind: 'bool', required: true, label: 'Diffuse generalized peritonitis (6)' },
-      { dom: 'mpi-exudate', arg: 'exudate', kind: 'number', required: true, label: 'Exudate (clear 0 / cloudy-purulent 6 / fecal 12)' },
+      { dom: 'mpi-exudate', arg: 'exudate', kind: 'number', required: true, label: 'Exudate (clear 0 / cloudy-purulent 6 / fecal 12)', values: ['0', '6', '12'] },
     ],
   },
   {

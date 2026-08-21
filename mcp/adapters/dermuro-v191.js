@@ -36,8 +36,8 @@ export default [
     compute: F.piRads,
     fields: [
       { dom: 'pirads-zone', arg: 'zone', kind: 'enum', values: ['peripheral', 'transition'], required: true, label: 'Zone of the dominant lesion' },
-      { dom: 'pirads-dwi', arg: 'dwi', kind: 'number', required: false, label: 'DWI/ADC score (1–5)' },
-      { dom: 'pirads-t2w', arg: 't2w', kind: 'number', required: false, label: 'T2W score (1–5)' },
+      { dom: 'pirads-dwi', arg: 'dwi', kind: 'number', required: false, label: 'DWI/ADC score (1–5)', values: ['1', '2', '3', '4', '5'] },
+      { dom: 'pirads-t2w', arg: 't2w', kind: 'number', required: false, label: 'T2W score (1–5)', values: ['1', '2', '3', '4', '5'] },
       { dom: 'pirads-dce', arg: 'dce', kind: 'enum', values: ['negative', 'positive'], required: false, label: 'DCE (dynamic contrast enhancement)' },
     ],
   },
@@ -46,7 +46,7 @@ export default [
     summary: "Guy's stone score (Grade I–IV) for percutaneous-nephrolithotomy complexity, with the expected stone-free rate by grade.",
     compute: F.guysStoneScore,
     fields: [
-      { dom: 'guys-grade', arg: 'grade', kind: 'number', required: true, label: 'Stone configuration / anatomy grade (1–4)' },
+      { dom: 'guys-grade', arg: 'grade', kind: 'number', required: true, label: 'Stone configuration / anatomy grade (1–4)', values: ['1', '2', '3', '4'] },
     ],
   },
 ];

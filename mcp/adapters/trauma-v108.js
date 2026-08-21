@@ -63,7 +63,7 @@ export default [
     compute: F.gcsPupils,
     fields: [
       { dom: 'gp-gcs', arg: 'gcs', kind: 'number', required: true, label: 'Glasgow Coma Scale total (3-15)' },
-      { dom: 'gp-pupils', arg: 'pupils', kind: 'number', required: true, label: 'Unreactive pupils (0 / 1 / 2)' },
+      { dom: 'gp-pupils', arg: 'pupils', kind: 'number', required: true, label: 'Unreactive pupils (0 / 1 / 2)', values: ['0', '1', '2'] },
     ],
   },
   {

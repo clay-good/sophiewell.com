@@ -8,15 +8,22 @@
 // the Amsel items are booleans.
 
 import * as F from '../../lib/obgyn-v225.js';
+import { scaleValues } from '../fields.js';
 
 const FG_AREAS = ['upperLip', 'chin', 'chest', 'upperAbdomen', 'lowerAbdomen', 'upperArm', 'thigh', 'upperBack', 'lowerBack'];
 const FG_DOMS = ['fg-lip', 'fg-chin', 'fg-chest', 'fg-uabd', 'fg-labd', 'fg-arm', 'fg-thigh', 'fg-uback', 'fg-lback'];
-const TH_ITEMS = [['th-tone', 'tone'], ['th-cons', 'consciousness'], ['th-seiz', 'seizures'], ['th-post', 'posture'], ['th-moro', 'moro'], ['th-grasp', 'grasp'], ['th-suck', 'suck'], ['th-resp', 'respiration'], ['th-font', 'fontanelle']];
+// Thompson's items do not share one ceiling: tone, posture and respiration run
+// 0-3, the rest 0-2, exactly as the renderer builds them. A blanket max
+// over-declared the short items by one grade each.
+const TH_ITEMS = [['th-tone', 'tone', 3], ['th-cons', 'consciousness', 2], ['th-seiz', 'seizures', 2], ['th-post', 'posture', 3], ['th-moro', 'moro', 2], ['th-grasp', 'grasp', 2], ['th-suck', 'suck', 2], ['th-resp', 'respiration', 3], ['th-font', 'fontanelle', 2]];
 const MRS_ITEMS = [['mrs-flush', 'hotFlushes'], ['mrs-heart', 'heartDiscomfort'], ['mrs-sleep', 'sleepProblems'], ['mrs-depr', 'depressive'], ['mrs-irr', 'irritability'], ['mrs-anx', 'anxiety'], ['mrs-exh', 'exhaustion'], ['mrs-sex', 'sexualProblems'], ['mrs-blad', 'bladderProblems'], ['mrs-dry', 'vaginalDryness'], ['mrs-joint', 'jointMuscle']];
 const KU_ITEMS = [['ku-flush', 'hotFlushes'], ['ku-par', 'paresthesia'], ['ku-ins', 'insomnia'], ['ku-nerv', 'nervousness'], ['ku-mel', 'melancholia'], ['ku-ver', 'vertigo'], ['ku-weak', 'weakness'], ['ku-arth', 'arthralgia'], ['ku-head', 'headache'], ['ku-palp', 'palpitations'], ['ku-form', 'formication']];
 
 function gradeFields(pairs, max) {
-  return pairs.map(([dom, arg]) => ({ dom, arg, kind: 'number', required: false, label: `${arg} (0-${max})` }));
+  return pairs.map(([dom, arg, ownMax]) => {
+    const top = ownMax == null ? max : ownMax;
+    return { dom, arg, kind: 'number', required: false, label: `${arg} (0-${top})`, values: scaleValues(top) };
+  });
 }
 
 export default [
@@ -45,7 +52,7 @@ export default [
     id: 'ferriman-gallwey',
     summary: 'Modified Ferriman-Gallwey score (1961/1981): terminal-hair grades 0–4 over nine body areas give a 0–36 total; ≥ 8 indicates hirsutism.',
     compute: F.ferrimanGallwey,
-    fields: FG_DOMS.map((dom, i) => ({ dom, arg: FG_AREAS[i], kind: 'number', required: false, label: `${FG_AREAS[i]} hair grade (0-4)` })),
+    fields: FG_DOMS.map((dom, i) => ({ dom, arg: FG_AREAS[i], kind: 'number', required: false, label: `${FG_AREAS[i]} hair grade (0-4)`, values: scaleValues(4) })),
   },
   {
     id: 'pbac-hmb',

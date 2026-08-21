@@ -31,10 +31,10 @@ export default [
     summary: 'Combined PHQ-2 depression and GAD-2 anxiety ultra-brief screens: two depression items (d1, d2) and two anxiety items (a1, a2) each 0-3; a PHQ-2 or GAD-2 total >= 3 is a positive screen.',
     compute: F.phq2Gad2,
     fields: [
-      { dom: 'pg-d1', arg: 'd1', kind: 'number', required: true, label: 'Little interest or pleasure (0-3)' },
-      { dom: 'pg-d2', arg: 'd2', kind: 'number', required: true, label: 'Feeling down / depressed / hopeless (0-3)' },
-      { dom: 'pg-a1', arg: 'a1', kind: 'number', required: true, label: 'Feeling nervous / anxious / on edge (0-3)' },
-      { dom: 'pg-a2', arg: 'a2', kind: 'number', required: true, label: 'Not able to stop / control worrying (0-3)' },
+      { dom: 'pg-d1', arg: 'd1', kind: 'number', required: true, label: 'Little interest or pleasure (0-3)', values: ['0', '1', '2', '3'] },
+      { dom: 'pg-d2', arg: 'd2', kind: 'number', required: true, label: 'Feeling down / depressed / hopeless (0-3)', values: ['0', '1', '2', '3'] },
+      { dom: 'pg-a1', arg: 'a1', kind: 'number', required: true, label: 'Feeling nervous / anxious / on edge (0-3)', values: ['0', '1', '2', '3'] },
+      { dom: 'pg-a2', arg: 'a2', kind: 'number', required: true, label: 'Not able to stop / control worrying (0-3)', values: ['0', '1', '2', '3'] },
     ],
   },
   {
@@ -159,9 +159,9 @@ export default [
     summary: 'Injury Severity Score (sum of squares of the three highest AIS region scores; any AIS 6 forces ISS 75, >= 16 is major trauma) alongside the Revised Trauma Score computed from GCS, systolic BP, and respiratory rate (0-7.84).',
     compute: F.issRts,
     fields: [
-      { dom: 'ir-ais1', arg: 'ais1', kind: 'number', required: true, label: 'Highest AIS region (0-6)' },
-      { dom: 'ir-ais2', arg: 'ais2', kind: 'number', required: true, label: '2nd highest AIS region (0-6)' },
-      { dom: 'ir-ais3', arg: 'ais3', kind: 'number', required: true, label: '3rd highest AIS region (0-6)' },
+      { dom: 'ir-ais1', arg: 'ais1', kind: 'number', required: true, label: 'Highest AIS region (0-6)', values: ['0', '1', '2', '3', '4', '5', '6'] },
+      { dom: 'ir-ais2', arg: 'ais2', kind: 'number', required: true, label: '2nd highest AIS region (0-6)', values: ['0', '1', '2', '3', '4', '5', '6'] },
+      { dom: 'ir-ais3', arg: 'ais3', kind: 'number', required: true, label: '3rd highest AIS region (0-6)', values: ['0', '1', '2', '3', '4', '5', '6'] },
       { dom: 'ir-gcs', arg: 'gcs', kind: 'number', required: true, label: 'Glasgow Coma Scale (3-15)' },
       { dom: 'ir-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg' },
       { dom: 'ir-rr', arg: 'rr', kind: 'number', required: true, label: 'Respiratory rate', unit: '/min' },

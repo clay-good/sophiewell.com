@@ -37,11 +37,11 @@ export default [
     summary: 'ATLAS score (Miller 2013) for Clostridioides difficile infection: Age + Antibiotics + Leukocyte count + Albumin + serum Creatinine, 0-10; predicted cure = 100 - 5.08 x score.',
     compute: F.atlasCdi,
     fields: [
-      { dom: 'atl-age', arg: 'age', kind: 'number', required: true, label: 'Age (< 60 = 0, 60-79 = 1, >= 80 = 2)' },
-      { dom: 'atl-abx', arg: 'antibiotics', kind: 'number', required: true, label: 'Systemic antibiotics during CDI therapy' },
-      { dom: 'atl-wbc', arg: 'leukocyte', kind: 'number', required: true, label: 'Leukocyte count (< 16 = 0, 16-25 = 1, > 25 = 2)' },
-      { dom: 'atl-alb', arg: 'albumin', kind: 'number', required: true, label: 'Albumin (> 35 = 0, 26-35 = 1, <= 25 = 2) g/L' },
-      { dom: 'atl-cr', arg: 'creatinine', kind: 'number', required: true, label: 'Serum creatinine (<= 120 = 0, 121-179 = 1, >= 180 = 2) umol/L' },
+      { dom: 'atl-age', arg: 'age', kind: 'number', required: true, label: 'Age (< 60 = 0, 60-79 = 1, >= 80 = 2)', values: ['0', '1', '2'] },
+      { dom: 'atl-abx', arg: 'antibiotics', kind: 'number', required: true, label: 'Systemic antibiotics during CDI therapy', values: ['0', '2'] },
+      { dom: 'atl-wbc', arg: 'leukocyte', kind: 'number', required: true, label: 'Leukocyte count (< 16 = 0, 16-25 = 1, > 25 = 2)', values: ['0', '1', '2'] },
+      { dom: 'atl-alb', arg: 'albumin', kind: 'number', required: true, label: 'Albumin (> 35 = 0, 26-35 = 1, <= 25 = 2) g/L', values: ['0', '1', '2'] },
+      { dom: 'atl-cr', arg: 'creatinine', kind: 'number', required: true, label: 'Serum creatinine (<= 120 = 0, 121-179 = 1, >= 180 = 2) umol/L', values: ['0', '1', '2'] },
     ],
   },
   {

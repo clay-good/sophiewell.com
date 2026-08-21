@@ -40,7 +40,7 @@ export default [
       { dom: 'bs-bmi', arg: 'bmi', kind: 'number', required: true, label: 'BMI (kg/m^2)' },
       { dom: 'bs-fev1', arg: 'fev1', kind: 'number', required: true, label: 'FEV1 (% predicted)' },
       { dom: 'bs-exac', arg: 'exacerbations', kind: 'number', required: true, label: 'Exacerbations in the prior year' },
-      { dom: 'bs-mrc', arg: 'mrc', kind: 'number', required: true, label: 'MRC dyspnea grade (1-5)' },
+      { dom: 'bs-mrc', arg: 'mrc', kind: 'number', required: true, label: 'MRC dyspnea grade (1-5)', values: ['1', '4', '5'] },
       { dom: 'bs-adm', arg: 'priorAdmission', kind: 'bool', label: 'Hospital admission in the prior 2 years' },
       { dom: 'bs-ps', arg: 'pseudomonas', kind: 'bool', label: 'Pseudomonas colonization' },
       { dom: 'bs-other', arg: 'otherOrganism', kind: 'bool', label: 'Colonization with another organism' },

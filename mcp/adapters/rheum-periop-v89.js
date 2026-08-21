@@ -39,7 +39,7 @@ export default [
     summary: 'ASA Physical Status classification (I–VI) with the optional emergency (E) modifier, which is not assignable to class I or VI.',
     compute: F.asaPs,
     fields: [
-      { dom: 'as-class', arg: 'asaClass', kind: 'number', required: true, label: 'ASA class (1–6)' },
+      { dom: 'as-class', arg: 'asaClass', kind: 'number', required: true, label: 'ASA class (1–6)', values: ['1', '2', '3', '4', '5', '6'] },
       { dom: 'as-emerg', arg: 'emergency', kind: 'bool', required: false, label: 'Emergency (E modifier)' },
     ],
   },

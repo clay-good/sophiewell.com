@@ -31,7 +31,7 @@ export default [
     summary: 'Kellgren-Lawrence radiographic osteoarthritis grade (0–4); grade ≥ 2 (osteophyte plus narrowing) is the threshold for definite radiographic OA.',
     compute: F.kellgrenLawrence,
     fields: [
-      { dom: 'kl-grade', arg: 'grade', kind: 'number', required: true, label: 'Radiographic grade (0–4)' },
+      { dom: 'kl-grade', arg: 'grade', kind: 'number', required: true, label: 'Radiographic grade (0–4)', values: ['0', '1', '2', '3', '4'] },
     ],
   },
   {

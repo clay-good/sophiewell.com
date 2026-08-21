@@ -50,7 +50,7 @@ export default [
     summary: 'Kovacs 10 mg warfarin initiation nomogram (Kovacs, Ann Intern Med 2003): the early-day dose when genotype is unknown. Days 1–2 are a fixed 10 mg; the day-3 INR sets days 3–4 and the day-5 INR sets days 5–7.',
     compute: F.warfarinInit10mg,
     fields: [
-      { dom: 'w10-day', arg: 'day', kind: 'number', required: true, label: 'Protocol day (1–7)' },
+      { dom: 'w10-day', arg: 'day', kind: 'number', required: true, label: 'Protocol day (1–7)', values: ['1', '2', '3', '4', '5', '6', '7'] },
       { dom: 'w10-inr3', arg: 'inr3', kind: 'number', label: 'Day-3 INR (required from day 3)' },
       { dom: 'w10-inr5', arg: 'inr5', kind: 'number', label: 'Day-5 INR (required from day 5)' },
     ],
@@ -60,7 +60,7 @@ export default [
     summary: 'Crowther 5 mg warfarin initiation nomogram (Crowther, Arch Intern Med 1999): the early-day dose when a lower starting dose is preferred. Days 1–2 are a fixed 5 mg; the daily INR from day 3 sets the subsequent dose.',
     compute: F.warfarinInit5mg,
     fields: [
-      { dom: 'w5-day', arg: 'day', kind: 'number', required: true, label: 'Protocol day (1–6)' },
+      { dom: 'w5-day', arg: 'day', kind: 'number', required: true, label: 'Protocol day (1–6)', values: ['1', '2', '3', '4', '5', '6'] },
       { dom: 'w5-inr', arg: 'inr', kind: 'number', label: 'INR (required from day 3)' },
     ],
   },

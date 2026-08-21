@@ -51,7 +51,7 @@ export default [
     summary: 'West Haven criteria (Conn 1977): hepatic-encephalopathy grade 0–4 from the selected clinical stage.',
     compute: F.westHavenHe,
     fields: [
-      { dom: 'wh-grade', arg: 'grade', kind: 'number', required: true, label: 'West Haven grade (0–4)' },
+      { dom: 'wh-grade', arg: 'grade', kind: 'number', required: true, label: 'West Haven grade (0–4)', values: ['0', '1', '2', '3', '4'] },
     ],
   },
   {

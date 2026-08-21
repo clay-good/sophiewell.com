@@ -61,7 +61,7 @@ export default [
     formatResult: withUsd,
     fields: [
       { dom: 'bil-fee', arg: 'feeCents', kind: 'number', required: true, label: 'Fee-schedule amount', unit: '$', to: (v) => Math.round(v * 100) },
-      { dom: 'bil-ind', arg: 'indicator', kind: 'number', required: true, label: 'Bilateral indicator (0, 1, 2, or 3)' },
+      { dom: 'bil-ind', arg: 'indicator', kind: 'number', required: true, label: 'Bilateral indicator (0, 1, 2, or 3)', values: ['1', '2', '3', '0', '9'] },
     ],
   },
   {
@@ -72,7 +72,7 @@ export default [
     fields: [
       { dom: 'ms-fee', arg: 'feeCents', kind: 'number', required: true, label: 'Primary fee-schedule amount', unit: '$', to: (v) => Math.round(v * 100) },
       { dom: 'ms-role', arg: 'role', kind: 'string', required: true, label: 'Surgical role (e.g. assistant, co-surgeon, team)' },
-      { dom: 'ms-ind', arg: 'indicator', kind: 'number', required: true, label: 'Multi-surgeon indicator (0, 1, 2, or 9)' },
+      { dom: 'ms-ind', arg: 'indicator', kind: 'number', required: true, label: 'Multi-surgeon indicator (0, 1, 2, or 9)', values: ['2', '1', '0', '9'] },
     ],
   },
   {

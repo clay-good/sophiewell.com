@@ -12,10 +12,10 @@ export default [
     summary: 'Lake Louise Acute Mountain Sickness score (Roach 2018): sums four self-rated 0–3 symptom items; a total ≥ 3 with a headache present diagnoses AMS and grades its severity.',
     compute: F.lakeLouiseAms,
     fields: [
-      { dom: 'll-head', arg: 'headache', kind: 'number', required: true, label: 'Headache (0–3)' },
-      { dom: 'll-gi', arg: 'gi', kind: 'number', required: true, label: 'Gastrointestinal symptoms (0–3)' },
-      { dom: 'll-fat', arg: 'fatigue', kind: 'number', required: true, label: 'Fatigue / weakness (0–3)' },
-      { dom: 'll-diz', arg: 'dizziness', kind: 'number', required: true, label: 'Dizziness / lightheadedness (0–3)' },
+      { dom: 'll-head', arg: 'headache', kind: 'number', required: true, label: 'Headache (0–3)', values: ['0', '1', '2', '3'] },
+      { dom: 'll-gi', arg: 'gi', kind: 'number', required: true, label: 'Gastrointestinal symptoms (0–3)', values: ['0', '1', '2', '3'] },
+      { dom: 'll-fat', arg: 'fatigue', kind: 'number', required: true, label: 'Fatigue / weakness (0–3)', values: ['0', '1', '2', '3'] },
+      { dom: 'll-diz', arg: 'dizziness', kind: 'number', required: true, label: 'Dizziness / lightheadedness (0–3)', values: ['0', '1', '2', '3'] },
     ],
   },
   {
@@ -34,12 +34,12 @@ export default [
     summary: 'Snakebite Severity Score (Dart 1996): sums six organ-system sub-scores (pulmonary, cardiovascular, local wound, gastrointestinal, hematologic, CNS) into a 0–20 continuous severity index.',
     compute: F.snakebiteSeverity,
     fields: [
-      { dom: 'ss-pul', arg: 'pulmonary', kind: 'number', label: 'Pulmonary (0–3)' },
-      { dom: 'ss-cv', arg: 'cardiovascular', kind: 'number', label: 'Cardiovascular (0–3)' },
-      { dom: 'ss-loc', arg: 'local', kind: 'number', label: 'Local wound (0–4)' },
-      { dom: 'ss-gi', arg: 'gi', kind: 'number', label: 'Gastrointestinal (0–3)' },
-      { dom: 'ss-hem', arg: 'hematologic', kind: 'number', label: 'Hematologic (0–4)' },
-      { dom: 'ss-cns', arg: 'cns', kind: 'number', label: 'CNS (0–3)' },
+      { dom: 'ss-pul', arg: 'pulmonary', kind: 'number', label: 'Pulmonary (0–3)', values: ['0', '1', '2', '3'] },
+      { dom: 'ss-cv', arg: 'cardiovascular', kind: 'number', label: 'Cardiovascular (0–3)', values: ['0', '1', '2', '3'] },
+      { dom: 'ss-loc', arg: 'local', kind: 'number', label: 'Local wound (0–4)', values: ['0', '1', '2', '3', '4'] },
+      { dom: 'ss-gi', arg: 'gi', kind: 'number', label: 'Gastrointestinal (0–3)', values: ['0', '1', '2', '3'] },
+      { dom: 'ss-hem', arg: 'hematologic', kind: 'number', label: 'Hematologic (0–4)', values: ['0', '1', '2', '3', '4'] },
+      { dom: 'ss-cns', arg: 'cns', kind: 'number', label: 'CNS (0–3)', values: ['0', '1', '2', '3'] },
     ],
   },
   {

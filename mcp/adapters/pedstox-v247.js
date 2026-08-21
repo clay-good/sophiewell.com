@@ -12,12 +12,12 @@ export default [
     summary: 'Pediatric Trauma Score (Tepas 1987): six components each -1 / +1 / +2, total -6..+12; a score <= 8 indicates increased mortality and prompts transfer to a pediatric trauma center.',
     compute: F.pediatricTraumaScore,
     fields: [
-      { dom: 'pts-wt', arg: 'weight', kind: 'number', required: true, label: 'Weight (> 20 kg / 10-20 kg / < 10 kg)' },
-      { dom: 'pts-air', arg: 'airway', kind: 'number', required: true, label: 'Airway (normal / maintainable / unmaintainable)' },
-      { dom: 'pts-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP (> 90 / 50-90 / < 50)' },
-      { dom: 'pts-cns', arg: 'cns', kind: 'number', required: true, label: 'CNS (awake / obtunded / comatose)' },
-      { dom: 'pts-wound', arg: 'wound', kind: 'number', required: true, label: 'Open wound (none / minor / major)' },
-      { dom: 'pts-skel', arg: 'skeletal', kind: 'number', required: true, label: 'Skeletal (none / closed / open-multiple)' },
+      { dom: 'pts-wt', arg: 'weight', kind: 'number', required: true, label: 'Weight (> 20 kg / 10-20 kg / < 10 kg)', values: ['2', '1', '-1'] },
+      { dom: 'pts-air', arg: 'airway', kind: 'number', required: true, label: 'Airway (normal / maintainable / unmaintainable)', values: ['2', '1', '-1'] },
+      { dom: 'pts-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP (> 90 / 50-90 / < 50)', values: ['2', '1', '-1'] },
+      { dom: 'pts-cns', arg: 'cns', kind: 'number', required: true, label: 'CNS (awake / obtunded / comatose)', values: ['2', '1', '-1'] },
+      { dom: 'pts-wound', arg: 'wound', kind: 'number', required: true, label: 'Open wound (none / minor / major)', values: ['2', '1', '-1'] },
+      { dom: 'pts-skel', arg: 'skeletal', kind: 'number', required: true, label: 'Skeletal (none / closed / open-multiple)', values: ['2', '1', '-1'] },
     ],
   },
   {
@@ -25,9 +25,9 @@ export default [
     summary: 'Bilirubin-Induced Neurologic Dysfunction score (Johnson & Bhutani 1999): mental status, muscle tone, and cry pattern, each 0-3; total 0-9 grades acute bilirubin encephalopathy.',
     compute: F.bindScore,
     fields: [
-      { dom: 'bind-ms', arg: 'mentalStatus', kind: 'number', required: true, label: 'Mental status' },
-      { dom: 'bind-mt', arg: 'muscleTone', kind: 'number', required: true, label: 'Muscle tone' },
-      { dom: 'bind-cry', arg: 'cry', kind: 'number', required: true, label: 'Cry pattern' },
+      { dom: 'bind-ms', arg: 'mentalStatus', kind: 'number', required: true, label: 'Mental status', values: ['0', '1', '2', '3'] },
+      { dom: 'bind-mt', arg: 'muscleTone', kind: 'number', required: true, label: 'Muscle tone', values: ['0', '1', '2', '3'] },
+      { dom: 'bind-cry', arg: 'cry', kind: 'number', required: true, label: 'Cry pattern', values: ['0', '1', '2', '3'] },
     ],
   },
   {

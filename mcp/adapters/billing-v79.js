@@ -17,7 +17,7 @@ export default [
       { dom: 'ncci-a', arg: 'codeA', kind: 'string', required: true, label: 'Code A (HCPCS/CPT)' },
       { dom: 'ncci-b', arg: 'codeB', kind: 'string', required: true, label: 'Code B (HCPCS/CPT)' },
       { dom: 'ncci-col', arg: 'column1', kind: 'string', label: 'Which code is column 1 (a, b, or unknown)' },
-      { dom: 'ncci-ind', arg: 'modifierIndicator', kind: 'number', required: true, label: 'PTP modifier indicator (0 never bypass, 1 may bypass, 9 not applicable)' },
+      { dom: 'ncci-ind', arg: 'modifierIndicator', kind: 'number', required: true, label: 'PTP modifier indicator (0 never bypass, 1 may bypass, 9 not applicable)', values: ['1', '0', '9'] },
       { dom: 'ncci-mod', arg: 'proposedModifier', kind: 'string', label: 'Proposed modifier, e.g. 59 or XS' },
     ],
   },
@@ -28,7 +28,7 @@ export default [
     fields: [
       { dom: 'mue-units', arg: 'unitsBilled', kind: 'number', required: true, label: 'Units billed' },
       { dom: 'mue-value', arg: 'mueValue', kind: 'number', required: true, label: 'MUE value (the ceiling)' },
-      { dom: 'mue-mai', arg: 'mai', kind: 'number', required: true, label: 'MUE Adjudication Indicator (1, 2, or 3)' },
+      { dom: 'mue-mai', arg: 'mai', kind: 'number', required: true, label: 'MUE Adjudication Indicator (1, 2, or 3)', values: ['1', '2', '3'] },
       { dom: 'mue-split', arg: 'splitAcrossLines', kind: 'bool', label: 'Units split across multiple lines' },
     ],
   },

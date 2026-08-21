@@ -49,7 +49,7 @@ export default [
       { dom: 'ids-attempts', arg: 'extraAttempts', kind: 'number', required: true, label: 'Attempts beyond the first (N1)' },
       { dom: 'ids-operators', arg: 'extraOperators', kind: 'number', required: false, label: 'Operators beyond the first (N2)' },
       { dom: 'ids-tech', arg: 'altTechniques', kind: 'number', required: false, label: 'Alternative techniques used (N3)' },
-      { dom: 'ids-cormack', arg: 'cormack', kind: 'number', required: true, label: 'Cormack-Lehane grade (N4 = grade - 1)' },
+      { dom: 'ids-cormack', arg: 'cormack', kind: 'number', required: true, label: 'Cormack-Lehane grade (N4 = grade - 1)', values: ['1', '2', '3', '4'] },
       { dom: 'ids-force', arg: 'liftingForce', kind: 'bool', required: false, label: 'Increased lifting force required (N5)' },
       { dom: 'ids-pressure', arg: 'laryngealPressure', kind: 'bool', required: false, label: 'External laryngeal pressure applied (N6)' },
       { dom: 'ids-cords', arg: 'cordsAdducted', kind: 'bool', required: false, label: 'Vocal cords adducted / closed (N7)' },

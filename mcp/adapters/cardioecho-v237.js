@@ -13,7 +13,7 @@ export default [
     compute: F.romhiltEstes,
     fields: [
       { dom: 're-volt', arg: 'voltage', kind: 'bool', required: true, label: 'Voltage criterion met (3)' },
-      { dom: 're-stt', arg: 'strain', kind: 'number', required: true, label: 'ST-T strain pattern (0/3/1)' },
+      { dom: 're-stt', arg: 'strain', kind: 'number', required: true, label: 'ST-T strain pattern (0/3/1)', values: ['0', '3', '1'] },
       { dom: 're-la', arg: 'laAbnormality', kind: 'bool', required: false, label: 'Left atrial abnormality (3)' },
       { dom: 're-lad', arg: 'leftAxis', kind: 'bool', required: false, label: 'Left axis deviation >= -30 deg (2)' },
       { dom: 're-qrs', arg: 'qrs', kind: 'bool', required: false, label: 'QRS duration >= 90 ms (1)' },
@@ -25,10 +25,10 @@ export default [
     summary: 'Wilkins mitral-valve echo score (1988): leaflet mobility + thickening + calcification + subvalvular thickening, each 1-4 (total 4-16); <= 8 favorable for percutaneous balloon mitral valvuloplasty.',
     compute: F.wilkinsScore,
     fields: [
-      { dom: 'wk-mob', arg: 'mobility', kind: 'number', required: true, label: 'Leaflet mobility (1-4)' },
-      { dom: 'wk-thick', arg: 'thickening', kind: 'number', required: true, label: 'Leaflet thickening (1-4)' },
-      { dom: 'wk-calc', arg: 'calcification', kind: 'number', required: true, label: 'Leaflet calcification (1-4)' },
-      { dom: 'wk-sub', arg: 'subvalvular', kind: 'number', required: true, label: 'Subvalvular thickening (1-4)' },
+      { dom: 'wk-mob', arg: 'mobility', kind: 'number', required: true, label: 'Leaflet mobility (1-4)', values: ['1', '2', '3', '4'] },
+      { dom: 'wk-thick', arg: 'thickening', kind: 'number', required: true, label: 'Leaflet thickening (1-4)', values: ['1', '2', '3', '4'] },
+      { dom: 'wk-calc', arg: 'calcification', kind: 'number', required: true, label: 'Leaflet calcification (1-4)', values: ['1', '2', '3', '4'] },
+      { dom: 'wk-sub', arg: 'subvalvular', kind: 'number', required: true, label: 'Subvalvular thickening (1-4)', values: ['1', '2', '3', '4'] },
     ],
   },
   {

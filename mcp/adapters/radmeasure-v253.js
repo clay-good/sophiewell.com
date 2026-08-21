@@ -20,10 +20,10 @@ export default [
     summary: 'Helsinki CT score (Raj 2014): mass lesion type + volume + intraventricular hemorrhage + suprasellar cisterns; a higher score predicts higher TBI mortality.',
     compute: F.helsinkiCtScore,
     fields: [
-      { dom: 'hel-mass', arg: 'massType', kind: 'number', required: true, label: 'Mass lesion type' },
+      { dom: 'hel-mass', arg: 'massType', kind: 'number', required: true, label: 'Mass lesion type', values: ['0', '2', '-3'] },
       { dom: 'hel-size', arg: 'largeMass', kind: 'bool', required: false, label: 'Mass lesion volume > 25 mL (+2)' },
       { dom: 'hel-ivh', arg: 'ivh', kind: 'bool', required: true, label: 'Intraventricular hemorrhage (+3)' },
-      { dom: 'hel-cist', arg: 'cisterns', kind: 'number', required: true, label: 'Suprasellar cisterns' },
+      { dom: 'hel-cist', arg: 'cisterns', kind: 'number', required: true, label: 'Suprasellar cisterns', values: ['0', '1', '5'] },
     ],
   },
   {

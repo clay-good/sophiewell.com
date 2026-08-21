@@ -35,7 +35,7 @@ export default [
     compute: F.aastOrganInjury,
     fields: [
       { dom: 'ao-organ', arg: 'organ', kind: 'enum', values: ['spleen', 'liver', 'kidney'], required: true, label: 'Organ' },
-      { dom: 'ao-find', arg: 'finding', kind: 'number', required: true, label: 'Anatomic finding grade (1-5)' },
+      { dom: 'ao-find', arg: 'finding', kind: 'number', required: true, label: 'Anatomic finding grade (1-5)', values: ['1', '2', '3', '4', '5'] },
       { dom: 'ao-vasc', arg: 'vascular', kind: 'enum', values: ['none', 'contained', 'beyond'], required: true, label: 'Vascular injury / active bleeding' },
     ],
   },
@@ -44,11 +44,11 @@ export default [
     summary: 'Mangled Extremity Severity Score (Johansen 1990): the amputation-risk score from skeletal/soft-tissue injury, limb ischemia, shock, and age (ischemia doubled > 6 h).',
     compute: F.mangledExtremity,
     fields: [
-      { dom: 'me-sk', arg: 'skeletal', kind: 'number', required: true, label: 'Skeletal/soft-tissue injury energy (1-4)' },
-      { dom: 'me-isc', arg: 'ischemia', kind: 'number', required: true, label: 'Limb ischemia grade (1-3)' },
+      { dom: 'me-sk', arg: 'skeletal', kind: 'number', required: true, label: 'Skeletal/soft-tissue injury energy (1-4)', values: ['1', '2', '3', '4'] },
+      { dom: 'me-isc', arg: 'ischemia', kind: 'number', required: true, label: 'Limb ischemia grade (1-3)', values: ['1', '2', '3'] },
       { dom: 'me-6h', arg: 'ischemiaOver6h', kind: 'bool', label: 'Ischemia time > 6 hours (doubles the subscore)' },
-      { dom: 'me-sh', arg: 'shock', kind: 'number', required: true, label: 'Shock grade (0-2)' },
-      { dom: 'me-age', arg: 'age', kind: 'number', required: true, label: 'Age grade (0-2)' },
+      { dom: 'me-sh', arg: 'shock', kind: 'number', required: true, label: 'Shock grade (0-2)', values: ['0', '1', '2'] },
+      { dom: 'me-age', arg: 'age', kind: 'number', required: true, label: 'Age grade (0-2)', values: ['0', '1', '2'] },
     ],
   },
   {

@@ -8,11 +8,12 @@
 // expansion checkbox, exactly as the renderer assembles them.
 
 import * as N from '../../lib/neuro-v118.js';
+import { scaleValues } from '../fields.js';
 
 const YESNO = ['no', 'yes'];
 
-const graebCompartment = (dom, arg, label) => ([
-  { dom, arg, kind: 'number', label },
+const graebCompartment = (dom, arg, label, max) => ([
+  { dom, arg, kind: 'number', label, values: scaleValues(max) },
   { dom: `${dom}-exp`, arg: `${arg}Exp`, kind: 'bool', label: `${label}: expanded by clot (+1)` },
 ]);
 
@@ -31,14 +32,14 @@ export default [
     summary: 'Modified Graeb Score (0-32): intraventricular-hemorrhage burden across eight compartments, each with an expansion modifier.',
     compute: N.graebIvh,
     fields: [
-      ...graebCompartment('gr-rl', 'rightLateral', 'Right lateral ventricle'),
-      ...graebCompartment('gr-ll', 'leftLateral', 'Left lateral ventricle'),
-      ...graebCompartment('gr-3', 'third', 'Third ventricle'),
-      ...graebCompartment('gr-4', 'fourth', 'Fourth ventricle'),
-      ...graebCompartment('gr-ro', 'rightOccipital', 'Right occipital horn'),
-      ...graebCompartment('gr-lo', 'leftOccipital', 'Left occipital horn'),
-      ...graebCompartment('gr-rt', 'rightTemporal', 'Right temporal horn'),
-      ...graebCompartment('gr-lt', 'leftTemporal', 'Left temporal horn'),
+      ...graebCompartment('gr-rl', 'rightLateral', 'Right lateral ventricle', 4),
+      ...graebCompartment('gr-ll', 'leftLateral', 'Left lateral ventricle', 4),
+      ...graebCompartment('gr-3', 'third', 'Third ventricle', 4),
+      ...graebCompartment('gr-4', 'fourth', 'Fourth ventricle', 4),
+      ...graebCompartment('gr-ro', 'rightOccipital', 'Right occipital horn', 2),
+      ...graebCompartment('gr-lo', 'leftOccipital', 'Left occipital horn', 2),
+      ...graebCompartment('gr-rt', 'rightTemporal', 'Right temporal horn', 2),
+      ...graebCompartment('gr-lt', 'leftTemporal', 'Left temporal horn', 2),
     ],
   },
   {

@@ -40,7 +40,7 @@ export default [
     summary: 'Randleman Ectasia Risk Score System (Randleman 2008): topography + residual stromal bed + age + corneal thickness + MRSE myopia magnitude; 0-2 low, 3 moderate, >= 4 high risk of post-LASIK ectasia.',
     compute: F.randlemanErss,
     fields: [
-      { dom: 'er-topo', arg: 'topo', kind: 'number', required: true, label: 'Topography grade (0-4)' },
+      { dom: 'er-topo', arg: 'topo', kind: 'number', required: true, label: 'Topography grade (0-4)', values: ['0', '2', '3', '4'] },
       { dom: 'er-rsb', arg: 'rsb', kind: 'number', required: true, label: 'Residual stromal bed', unit: 'um' },
       { dom: 'er-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
       { dom: 'er-cct', arg: 'cct', kind: 'number', required: true, label: 'Central corneal thickness', unit: 'um' },

@@ -13,11 +13,11 @@ export default [
     summary: 'Wexner (Cleveland Clinic) fecal incontinence score (Jorge & Wexner 1993). Five items -- incontinence to solid stool, liquid stool, and gas, plus wearing a pad and lifestyle alteration -- each on a 0-4 frequency scale (0 never; 1 rarely, < 1/month; 2 sometimes, >= 1/month and < 1/week; 3 usually, >= 1/week and < 1/day; 4 always, >= 1/day). Total 0-20: 0 is perfect continence and 20 is complete incontinence; >= 9 is a commonly cited (not fixed) threshold for clinically significant incontinence. Reports the cited severity score, not a diagnosis or a treatment order.',
     compute: W.wexner,
     fields: [
-      { dom: 'wex-solid', arg: 'solid', kind: 'number', label: 'Incontinence to solid stool (0-4)' },
-      { dom: 'wex-liquid', arg: 'liquid', kind: 'number', label: 'Incontinence to liquid stool (0-4)' },
-      { dom: 'wex-gas', arg: 'gas', kind: 'number', label: 'Incontinence to gas (0-4)' },
-      { dom: 'wex-pad', arg: 'pad', kind: 'number', label: 'Wears a pad (0-4)' },
-      { dom: 'wex-lifestyle', arg: 'lifestyle', kind: 'number', label: 'Lifestyle alteration (0-4)' },
+      { dom: 'wex-solid', arg: 'solid', kind: 'number', label: 'Incontinence to solid stool (0-4)', values: ['0', '1', '2', '3', '4'] },
+      { dom: 'wex-liquid', arg: 'liquid', kind: 'number', label: 'Incontinence to liquid stool (0-4)', values: ['0', '1', '2', '3', '4'] },
+      { dom: 'wex-gas', arg: 'gas', kind: 'number', label: 'Incontinence to gas (0-4)', values: ['0', '1', '2', '3', '4'] },
+      { dom: 'wex-pad', arg: 'pad', kind: 'number', label: 'Wears a pad (0-4)', values: ['0', '1', '2', '3', '4'] },
+      { dom: 'wex-lifestyle', arg: 'lifestyle', kind: 'number', label: 'Lifestyle alteration (0-4)', values: ['0', '1', '2', '3', '4'] },
     ],
   },
 ];
