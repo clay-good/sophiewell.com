@@ -86,6 +86,14 @@ const LONG_INPUT_ROWS_MAX = 3;
 // on.
 const DUPLICATE_LABELS_MAX = 0;
 
+// Pages stating what the result means, from the source's own band table in
+// META.interpretation. 1387 of 1564 carry one; the rest are converters,
+// lookups, and letter builders whose output is not a graded value. A ratchet:
+// a build that stops reading the bands drops this to zero without failing
+// anything else, and 1387 pages quietly go back to showing a worked example
+// with no scale behind it.
+const BAND_PAGES_MIN = 1380;
+
 // Hub and topic list rows: a row may be clamped, but a clamped row must be
 // marked with an ellipsis and a marked row must actually have been clamped.
 const HUB_DIRS = ['for', 'topics'];
@@ -171,6 +179,7 @@ async function main() {
   }
   const failures = [];
   let pages = 0;
+  let bandPages = 0;
   let longestLede = { chars: 0, id: '' };
   let rawValueRows = 0;
   let clampedLabels = 0;
@@ -235,6 +244,17 @@ async function main() {
         .trim()
       : '';
     if (!body) failures.push(`${id}: the citation disclosure holds nothing but the disclaimer`);
+
+    // 2a-bis. The band table: the reading the source gives for each result.
+    // Counted rather than required per page, because most of the tiles without
+    // one genuinely have no bands to show.
+    const bandRows = (html.match(/<div class="tp-bands-row">/g) || []).length;
+    if (bandRows) {
+      bandPages += 1;
+      if (!/<h2 id="tp-bands-h">What the result means<\/h2>/.test(html)) {
+        failures.push(`${id}: the band table has no heading naming it`);
+      }
+    }
 
     // 2b. The two strings a reader meets before the page: the browser tab and
     // the search-result snippet. Held to the same rules as the page itself --
@@ -490,6 +510,9 @@ async function main() {
       `${openBracketRows.length} hub or topic row(s) leave a bracket open: ${openBracketRows.slice(0, 3).join('; ')}`,
     );
   }
+  if (bandPages < BAND_PAGES_MIN) {
+    failures.push(`only ${bandPages} pages state what the result means (min ${BAND_PAGES_MIN})`);
+  }
   if (markedRows > CUT_ROWS_MAX) {
     failures.push(`${markedRows} of ${listRows} hub and topic rows end in a cut mark (max ${CUT_ROWS_MAX})`);
   }
@@ -502,7 +525,7 @@ async function main() {
   }
   console.log(
     `check-page-copy: clean (${pages} tool pages; longest lede ${longestLede.chars} chars on ${longestLede.id}; ` +
-      `${rawValueRows} raw-value rows, ${clampedLabels} clamped labels, ${duplicateLabels.length} duplicate labels; ${listRows} list rows, ${markedRows} marked as cut).`,
+      `${rawValueRows} raw-value rows, ${clampedLabels} clamped labels, ${duplicateLabels.length} duplicate labels; ${bandPages} state what the result means; ${listRows} list rows, ${markedRows} marked as cut).`,
   );
 }
 

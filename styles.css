@@ -1921,6 +1921,34 @@ button:active { transform: translateY(1px) scale(0.985); }
   overflow-wrap: anywhere;
 }
 
+/* The source's own band table: what each result means. The range is short and
+   the reading is a sentence, so the range takes a narrow fixed column and the
+   sentence takes the rest -- the reverse of the worked example above, where the
+   label is the long half. Both wrap rather than push the page sideways. */
+.tool-page .tp-bands-dl { margin: 0 0 var(--space-3); }
+.tool-page .tp-bands-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--space-3);
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+}
+.tool-page .tp-bands-row dt {
+  /* Wide enough for the longest single word any range uses -- "High-intermediate",
+     17 characters -- so a one-word band never wraps against a half-empty row. */
+  flex: 0 0 9rem;
+  min-width: 0;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+.tool-page .tp-bands-row dd {
+  flex: 1 1 14rem;
+  min-width: 0;
+  margin: 0;
+  color: var(--text-secondary);
+  overflow-wrap: anywhere;
+}
+
 .tool-page .tp-refs {
   margin-bottom: var(--space-5);
 }

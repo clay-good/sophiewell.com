@@ -938,6 +938,23 @@ ${related.map((r) => `          <li><a href="${SITE}/tools/${r.id}/">${esc(r.nam
         </section>`
     : '';
 
+  // What the number means, which is the other half of "what comes out" and the
+  // half a reader cannot infer from one worked example. 1383 of 1540 tiles
+  // carry the source's own band table in META.interpretation -- a median of two
+  // rows, none longer than 200 characters -- and none of it reached the page.
+  // Rendered whole rather than capped: the widest table is 14 rows on one tile,
+  // and a band table with rows missing is a scale that lies about its own ends.
+  const bands = (meta?.interpretation?.bands || [])
+    .filter((b) => b && (b.range || b.range === 0) && b.text);
+  const bandsHtml = bands.length
+    ? `<section class="tp-bands" aria-labelledby="tp-bands-h">
+          <h2 id="tp-bands-h">What the result means</h2>
+          <dl class="tp-bands-dl">
+${bands.map((b) => `            <div class="tp-bands-row"><dt>${esc(String(b.range))}</dt><dd>${esc(b.text)}</dd></div>`).join('\n')}
+          </dl>
+        </section>`
+    : '';
+
   // A question flow has no fields to pre-fill, so it gets the honest version of
   // the hint: answer the same way and you land on the same result.
   const exampleHint = example?.prefilled
@@ -1043,6 +1060,8 @@ ${datasetLd ? `    <script type="application/ld+json">\n${JSON.stringify(dataset
         </p>
 
         ${exampleHtml}
+
+        ${bandsHtml}
 
         ${howHtml}
 
