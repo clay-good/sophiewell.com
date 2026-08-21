@@ -16,7 +16,7 @@ import {
 function disclaimerFor(e) { return e.clinical ? DISCLAIMER : ADMIN_DISCLAIMER; }
 function domainOf(e) { return e.clinical ? 'clinical' : 'administrative'; }
 import { resolvePromptRanked, rankableWords } from '../lib/prompt.js';
-import { buildNameCounts, nameMatch } from '../lib/name-match.js';
+import { buildNameCounts, nameMatch, nameWords } from '../lib/name-match.js';
 import { corpusDesc } from '../lib/search-corpus.js';
 import { queryCompute } from '../lib/query-compute.js';
 // spec-v758: the generic extractor behind answer_query's second attempt. Reads
@@ -325,6 +325,8 @@ export function computeCalculator(args = {}) {
 // resolver -- the synonym table plus the token ranker from lib/prompt.js -- over
 // the exposed registry and returns the top-N candidates with a `why` tag. Same
 // ranker, two surfaces (browser prompt bar + MCP). No AI, no model.
+// How far past the caller's limit to rank before the name pass reorders.
+const PROMOTE_LOOKAHEAD = 5;
 const FIND_LIMIT_DEFAULT = 5;
 const FIND_LIMIT_MAX = 20;
 
@@ -350,7 +352,9 @@ export function findCalculator(args = {}) {
   // spec-v765: rank on the words. An agent passing a question with its values
   // in it -- which answer_query encourages -- otherwise has those values
   // competing with the name for the match.
-  const ranked = resolvePromptRanked(rankableWords(q) || q, tiles, loadSynonymEntries(), 'all', limit);
+  // Rank a few beyond the caller's limit so the name pass below can promote a
+  // tile the token ranker put just out of reach, then trim back to `limit`.
+  const ranked = resolvePromptRanked(rankableWords(q) || q, tiles, loadSynonymEntries(), 'all', Math.min(FIND_LIMIT_MAX, limit + PROMOTE_LOOKAHEAD));
   const candidates = ranked.map((r) => {
     const e = getCalculator(r.tileId);
     return {
@@ -363,6 +367,37 @@ export function findCalculator(args = {}) {
       ...(r.phrase ? { matchedPhrase: r.phrase } : {}),
     };
   });
+
+  // spec-v771: the token ranker scores on overlap, so a SHORTER sibling whose
+  // name is contained in a longer one wins its own name: "TIMI Risk Score for
+  // STEMI (Morrow)" returned `timi` first, "CHADS2 Score" returned `chads`,
+  // "Glasgow Coma Scale - Pupils" returned `gcs`. 62 of 1540 calculators could
+  // not be reached at rank 1 by their own exact name -- and find_calculator is
+  // how an agent looks a calculator up.
+  //
+  // answer_query already weighs nameMatch (spec-v762); this is the same rule on
+  // the discovery path. Reordering happens strictly WITHIN the ranked set, so a
+  // group / specialty prefilter can never be bypassed by a promotion.
+  if (candidates.length > 1) {
+    const best = candidates.reduce((acc, c) => {
+      const m = nameMatchFor(q, c);
+      // Promote only when the query names the calculator IN FULL -- every
+      // distinctive word of its name is present. Weaker rules override curated
+      // routes: on `strong` alone, `therapy` (rare among names, common in
+      // language) put Therapy Units over CHA2DS2-VASc for "antithrombotic
+      // therapy not recommended"; on two-matched-words, "creatinine clearance"
+      // put Cockcroft-Gault over the synonym-routed eGFR. Naming a calculator
+      // outright is a different act from describing what you want, and only the
+      // first should outrank the ranker. The MCP suite caught both.
+      const full = m.hits >= 2 && nameWords(c.name).every((w) => new RegExp(`\\b${w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`).test(q.toLowerCase()));
+      return (full && m.score > acc.score) ? { score: m.score, id: c.id } : acc;
+    }, { score: nameMatchFor(q, candidates[0]).score, id: candidates[0].id });
+    if (best.id !== candidates[0].id) {
+      const i = candidates.findIndex((c) => c.id === best.id);
+      candidates.unshift(candidates.splice(i, 1)[0]);
+    }
+  }
+  candidates.length = Math.min(candidates.length, limit);
 
   if (candidates.length === 0) {
     return {
