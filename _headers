@@ -22,15 +22,25 @@
 /sw.js
   Cache-Control: no-cache
 
-# Hashed assets in /assets/* would be immutable for one year. The current
-# build inlines styles.css and app.js at the root with versioned cache via
-# the service worker, so apply a moderate cache here and rely on the SW
-# for revalidation.
+# The entry point revalidates, like index.html and sw.js above.
+#
+# It used to carry max-age=3600 and lean on the service worker to invalidate,
+# which works once the SW has activated and not before. Everything app.js
+# IMPORTS -- lib/*.js, views/*.js -- has no rule here and so revalidates every
+# visit, and that mismatch is a version-skew window: for up to an hour after a
+# deploy a returning reader ran the OLD app.js against NEW modules. Observed on
+# the live site, not theorised -- a page served a cached app.js while the
+# lib/name-match.js it was supposed to import came down fresh.
+#
+# Nothing broke that time, because the old app.js simply did not import the new
+# module. A change that alters a lib signature would not be so lucky, and on a
+# site whose value is the correctness of clinical arithmetic a 304 per visit is
+# the cheaper side of that trade.
 /styles.css
-  Cache-Control: public, max-age=3600
+  Cache-Control: public, max-age=0, must-revalidate
 
 /app.js
-  Cache-Control: public, max-age=3600
+  Cache-Control: public, max-age=0, must-revalidate
 
 # Data shards: cache for one day; the service worker keys them to BUILD_HASH.
 /data/*
