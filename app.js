@@ -638,7 +638,7 @@ import {
 import { installKeyboard } from './lib/keyboard.js';
 import { parseHash, patchHash, buildHash } from './lib/hash.js';
 import { loadSynonyms } from './lib/synonyms.js';
-import { resolvePrompt, resolvePromptRanked } from './lib/prompt.js';
+import { resolvePrompt, resolvePromptRanked, rankableWords } from './lib/prompt.js';
 import { corpusDesc, corpusOneLiner } from './lib/search-corpus.js';
 import { queryCompute } from './lib/query-compute.js';
 // spec-v753/v754: the generic prefill path -- reads the tile's own field
@@ -4602,7 +4602,7 @@ function bindHeroSearch() {
     // An inline-compute hit parsed real values out of the query; there is
     // nothing ambiguous about it.
     if (inlineCompute) return null;
-    const ranked = resolvePromptRanked(query, tileCorpus(), SYNONYM_ENTRIES, audienceHint(), 4);
+    const ranked = resolvePromptRanked(rankableWords(query) || query, tileCorpus(), SYNONYM_ENTRIES, audienceHint(), 4);
     if (ranked.length < 2) return null;
     // A curated synonym is a deliberate routing decision, not a coincidence of
     // token scores. Trust it.
@@ -4731,7 +4731,12 @@ function bindHeroSearch() {
     // routing is unchanged.
     inlineCompute = q ? queryCompute(q) : null;
     if (!q) return ALL;
-    const ranked = searchUtilities(q, 12);
+    // spec-v765: rank on the words, not the values. The reader's numbers are
+    // inputs, never name tokens, and they outrank the name they sit beside --
+    // "creatinine 2.4 ... 0.9" reached COMPERA 2.0. Extraction still sees the
+    // whole query; only the ranking ignores the digits.
+    const rq = rankableWords(q) || q;
+    const ranked = searchUtilities(rq, 12);
     // spec-v7 §3.2: searchUtilities ranks on name/id only and is blind to the
     // curated synonym table and patient phrasing, so a query like "they denied
     // it" -> appeal-letter or "kidney function" -> egfr (which share no token
@@ -4740,7 +4745,7 @@ function bindHeroSearch() {
     // its single best tile first so patient-mental-model queries resolve to the
     // right tool. resolvePrompt returns null below its threshold, so a
     // non-matching query simply falls back to the name/id ranking.
-    const r = resolvePrompt(q, tileCorpus(), SYNONYM_ENTRIES, audienceHint());
+    const r = resolvePrompt(rq, tileCorpus(), SYNONYM_ENTRIES, audienceHint());
     answerHit = (r && r.tileId && r.why === 'synonym' && r.phrase)
       ? { tileId: r.tileId, phrase: r.phrase }
       : null;

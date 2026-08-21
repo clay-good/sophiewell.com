@@ -1,6 +1,7 @@
 // Unit tests for the reusable code-search component.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import { rankableWords } from '../../lib/prompt.js';
 import { buildIndex } from '../../lib/search.js';
 
 const RECORDS = [
@@ -54,4 +55,25 @@ test('buildIndex: limit caps results', () => {
 test('buildIndex: no match returns empty', () => {
   const idx = buildIndex(RECORDS);
   assert.deepEqual(idx.search('xyzzy'), []);
+});
+
+// spec-v765: rank on the words, not the reader's values.
+test('rankableWords drops standalone values and keeps names that contain digits', () => {
+  // A value competing with the name it sits beside: "2.4" and "0.9" matched
+  // COMPERA 2.0 and beat the AKIN tile the query literally names.
+  assert.equal(
+    rankableWords('akin current creatinine 2.4 baseline creatinine 0.9'),
+    'akin current creatinine baseline creatinine'
+  );
+  assert.equal(rankableWords('bmi 80 kg 180 cm'), 'bmi kg cm');
+
+  // A digit INSIDE a name is part of the name. These are the tiles most likely
+  // to be searched by their number, and stripping them would break exactly them.
+  for (const q of ['cha2ds2-vasc score', 'phq-9 depression', '4at delirium', 'covid-19 severity']) {
+    assert.equal(rankableWords(q), q, `must not touch ${q}`);
+  }
+
+  // Degenerate input stays safe.
+  assert.equal(rankableWords(''), '');
+  assert.equal(rankableWords('140'), '');
 });

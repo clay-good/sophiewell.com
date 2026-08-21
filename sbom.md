@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `7d5766a64825e4c3`
-Generated: 2026-08-21T00:58:09.423Z
+Build ID: `db7e7f6d06346cf3`
+Generated: 2026-08-21T02:32:14.805Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -26,7 +26,7 @@ downloads is committed in this repository and is hashed below.
 |---|---:|---|
 | `index.html` | 101227 | `f629d9a8ae00d99780a6888a2e3e88603fbd7c7018534300132c04f20554eed4` |
 | `styles.css` | 63872 | `970c06092b4cb023a25a451601aad81486c1a29cf1c654720e04bcb383497564` |
-| `app.js` | 447608 | `bf100e48fe6fc6e58e564f8f80b1dac4d84ec8b6aa6148da02acd92bf23cba58` |
+| `app.js` | 447980 | `8c117c42a430d832502eaa75995de736235893d15bd3d8de7e4cb432a06a6d8a` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
@@ -542,7 +542,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/pressure-injury-stage-v359.js` | 4749 | `b286894ea7f911cf8ed86221f1440080f129fe5b621bfd78f9788bd5abe16cbb` |
 | `lib/print.js` | 4179 | `84053c26cd3859b4156ddf0cc33bc546656c7ce4b01651de786d1dced7cf4d3c` |
 | `lib/prognostic-v231.js` | 5562 | `0bd8d6d5916244b3897dd52156e6833f877142fb93f7a34f4f5435e7944ff5f3` |
-| `lib/prompt.js` | 22249 | `11c87dbd60c7b4d26a4b42b3e7bdce23cab53ea87371ec502d871b40b0a20516` |
+| `lib/prompt.js` | 23406 | `4dd7f28cbc1958276bfc49eb2a607161309f38a82c4f2c1e903b309ba6cc5013` |
 | `lib/propkd-v564.js` | 12565 | `a92acd4c8f065df50dcfffd0ad8dde4a6d1a6a9dddf8118bc4351307633d5c25` |
 | `lib/prostate-health-index-v714.js` | 3788 | `c73d17188461e047dbf1658447de06c9474dda8ff88e9b92b13845d53d2561a1` |
 | `lib/proteins-v274.js` | 3182 | `124b907ef2e82939179df0c4d15ebd08e2132481feb6b980a73b2e9170e6a315` |

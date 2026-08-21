@@ -15,7 +15,7 @@ import {
 // agent tell decision-support from administrative math.
 function disclaimerFor(e) { return e.clinical ? DISCLAIMER : ADMIN_DISCLAIMER; }
 function domainOf(e) { return e.clinical ? 'clinical' : 'administrative'; }
-import { resolvePromptRanked } from '../lib/prompt.js';
+import { resolvePromptRanked, rankableWords } from '../lib/prompt.js';
 import { corpusDesc } from '../lib/search-corpus.js';
 import { queryCompute } from '../lib/query-compute.js';
 // spec-v758: the generic extractor behind answer_query's second attempt. Reads
@@ -346,7 +346,10 @@ export function findCalculator(args = {}) {
     .sort((a, b) => a.id.localeCompare(b.id))
     .map((e) => ({ id: e.id, name: e.name, group: e.group, specialties: e.specialties, desc: corpusDesc(corpus[e.id]) }));
 
-  const ranked = resolvePromptRanked(q, tiles, loadSynonymEntries(), 'all', limit);
+  // spec-v765: rank on the words. An agent passing a question with its values
+  // in it -- which answer_query encourages -- otherwise has those values
+  // competing with the name for the match.
+  const ranked = resolvePromptRanked(rankableWords(q) || q, tiles, loadSynonymEntries(), 'all', limit);
   const candidates = ranked.map((r) => {
     const e = getCalculator(r.tileId);
     return {
