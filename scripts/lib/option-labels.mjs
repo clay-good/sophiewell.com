@@ -25,6 +25,17 @@
 // Anything unresolved falls back to the raw value, exactly as before -- the
 // dynamic option lists (built from a lib constant at render time) are not
 // statically readable, and this fails quiet rather than wrong.
+//
+// Tried and reverted: walking one level into an export that is a lookup keyed
+// by variant, so `opts(M.ONSET_ITEMS.hepatocellular)` would resolve. It gains
+// one row and risks a wrong one. rucam's two scales share every option VALUE
+// and disagree on four of the seven option TEXTS -- "Prior exposure, onset 1
+// to 15 days" on the hepatocellular scale, "1 to 90 days" on the cholestatic
+// one -- so resolving to whichever branch the view happens to name in a
+// literal prints the other scale's wording as if it were this one's.
+// test/unit/mcp-enum-values.test.js caught it on the sibling field, where the
+// values differ too. A raw token is a token the reader can see is a token; a
+// confident wrong label is not.
 
 import { readFileSync, readdirSync } from 'node:fs';
 import { pathToFileURL } from 'node:url';
