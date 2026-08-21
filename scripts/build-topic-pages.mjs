@@ -290,7 +290,7 @@ function buildIndexHtml({ topics }) {
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="referrer" content="no-referrer" />
     <meta name="color-scheme" content="dark light" />
-    <title>Sophie Well Topics - Browse by clinical area · Sophie Well</title>
+    <title>Healthcare Tools by Topic · Sophie Well</title>
     <meta name="description" content="Browse Sophie Well's free healthcare tools by topic: cardiology, nephrology, medication safety, triage, OB/peds, behavioral health, billing, literacy." />
     <meta name="author" content="Clay Good" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
