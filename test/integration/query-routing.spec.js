@@ -36,18 +36,24 @@ function sample(n) {
   const meta = JSON.parse(readFileSync(join(ROOT, 'test', 'fixtures', 'routing-values.json'), 'utf8'));
   const withValues = tiles.filter((t) => fields[t.id] && meta[t.id]);
   // Evenly spaced, so the sample spans the catalog and is the same every run.
+  if (!Number.isFinite(n)) return withValues.map((t) => ({ ...t, values: meta[t.id] }));
   const step = Math.max(1, Math.floor(withValues.length / n));
   return withValues.filter((_, i) => i % step === 0).slice(0, n)
     .map((t) => ({ ...t, values: meta[t.id] }));
 }
 
-const TILES = sample(200);
+// 200 by default: broad enough to catch a systematic routing fault, fast enough
+// to sit in CI beside two 25-minute catalog sweeps. ROUTING_SAMPLE=all runs
+// every tile that has documented values, which takes minutes and is the right
+// thing to do after touching the ranker.
+const SAMPLE = process.env.ROUTING_SAMPLE === 'all' ? Infinity : Number(process.env.ROUTING_SAMPLE || 200);
+const TILES = sample(SAMPLE);
 
 test.skip(({ browserName }) => browserName !== 'chromium', 'routing sweep is chromium-only');
 
 test('a question carrying its values reaches the tile it names', async ({ page }) => {
-  test.setTimeout(600_000);
-  expect(TILES.length).toBeGreaterThan(150);
+  test.setTimeout(SAMPLE === Infinity ? 1_800_000 : 600_000);
+  expect(TILES.length).toBeGreaterThan(Math.min(150, SAMPLE - 1));
   await page.goto('/');
 
   const missed = [];

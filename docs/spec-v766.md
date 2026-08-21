@@ -47,6 +47,29 @@ tile.
 `minHits: 2` protects them properly. *"they denied it"* and *"kidney function"* name no tile with
 two distinctive words, so nothing is promoted over `appeal-letter` or `egfr`. The guard came out.
 
+## The whole catalog
+
+`ROUTING_SAMPLE=all` runs every tile that has documented values — 1337 of them:
+
+| | |
+|---|---|
+| Reach the tile they name | **1332 (99.6%)** |
+| Miss | 5 |
+
+All five are **bidirectional sibling pairs**, each naming the other:
+
+```
+palliative-prognostic-index  <->  palliative-prognostic-score
+iadpsg                       <->  carpenter-coustan
+kdigo-aki                    <->  ckd-staging
+timi                         <->  timi-risk-index
+gir                          <->  conc-rate
+```
+
+`Palliative Prognostic Index` and `Palliative Prognostic Score` differ by one word. A reader typing
+either could reasonably mean either, and there is no signal in the query to prefer one — the same
+irreducible class as the 47 identical labels in [spec-v764](spec-v764.md). Left alone.
+
 ## Proof
 
 - `test/integration/query-routing.spec.js` — **new.** 200 tiles, deterministically sampled across
