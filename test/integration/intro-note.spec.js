@@ -68,3 +68,37 @@ for (const id of TILES) {
     expect(stray).toBe(0);
   });
 }
+
+// The tiles that ask for the rest of their inputs before they can compute.
+// Their first render holds one long paragraph -- "Answer every item. Still
+// needed: temperature, cns, ..." -- and nothing else, so that prompt was
+// hoisted as if it were the explanation. The moment the inputs arrived and the
+// real output replaced it, the mismatch was caught and the tile abandoned: 18
+// tiles kept 35,167 characters of constant prose inside a polite live region,
+// re-announced on every keystroke. The prompt is a computed line and belongs
+// there. The explanation standing behind it does not.
+const LATE_TILES = ['sartorius-hs', 'heffner', 'myxedema-coma', 'katagiri', 'hijdra', 'sternbach'];
+
+for (const id of LATE_TILES) {
+  test(`${id}: the explanation is hoisted even though a prompt rendered first`, async ({ page }) => {
+    await page.goto(`/#${id}`);
+    await page.waitForSelector('#tool-body [aria-live]');
+    // The hoist runs off a MutationObserver, so the settled state is the one
+    // worth asserting -- not whichever render the selector happened to catch.
+    await expect.poll(async () => page.evaluate(() => {
+      const body = document.querySelector('#tool-body');
+      const live = body.querySelector('[aria-live]');
+      const longest = Array.from(body.children)
+        .filter((n) => n.tagName === 'DETAILS' && n.classList.contains('note-more'))
+        .reduce((a, n) => Math.max(a, n.querySelector('p').textContent.length), 0);
+      const longsInLive = Array.from(live.children)
+        .filter((n) => n.tagName === 'P' && n.classList.contains('muted') && n.textContent.length > 280)
+        .length;
+      // Each of these tiles wrote three long paragraphs into the region and
+      // folded nothing over 350 characters. Two is what is left once the
+      // constant one is out: the computed detail about this answer, and the
+      // prompt for the inputs still missing. The fold is where the third went.
+      return longsInLive <= 2 && longest > 1000;
+    })).toBe(true);
+  });
+}
