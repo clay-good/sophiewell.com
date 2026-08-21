@@ -145,6 +145,50 @@ test('spec-v763: an enum is not identified by its own glossary', () => {
   assert.equal(queryFill('cellularity high', fields).filled.cell, 'high');
 });
 
+test('spec-v764: a multi-word term matches across the words it dropped', () => {
+  // Terms are built by dropping stopwords from the label, but the query still
+  // HAS them: "Bend over and pick up" becomes the term "bend pick up", which can
+  // never match contiguously. A third of every miss in the catalog was this.
+  const fields = [{ d: 'a3', k: 'number', l: 'Bend over and pick up a slipper', u: '%', r: 1 }];
+  assert.equal(queryFill('bend over and pick up 60 %', fields).filled.a3, 60);
+});
+
+test('spec-v764: the gap does not reach across a clause', () => {
+  // Looser matching must stay bounded, or a term reaches past its own phrase and
+  // claims a number belonging to something else.
+  const fields = [{ d: 'x', k: 'number', l: 'Bend over and pick up a slipper', u: '%', r: 1 }];
+  const far = queryFill('bend down, then after a long unrelated aside about something else, pick up 60', fields);
+  assert.ok(!('x' in far.filled), 'a term must not span an arbitrary distance');
+});
+
+test('spec-v764: a negation can be the only discriminator', () => {
+  // abc-scale asks about an escalator "holding the rail" and "NOT holding the
+  // rail". Drop `not` and they are one field, veto each other, and neither fills.
+  const fields = [
+    { d: 'a14', k: 'number', l: 'Ride an escalator holding the rail', u: '%' },
+    { d: 'a15', k: 'number', l: 'Ride an escalator not holding the rail', u: '%' },
+  ];
+  const r = queryFill('ride an escalator holding the rail 80, ride an escalator not holding the rail 40', fields);
+  assert.equal(r.filled.a14, 80);
+  assert.equal(r.filled.a15, 40);
+});
+
+test('spec-v764: an enum value ending in punctuation still matches', () => {
+  // "O-", "3+", "63+" have no word boundary after them, so a trailing \\b can
+  // never match.
+  const blood = [{ d: 'bc', k: 'enum', l: 'Recipient blood type', v: ['O-', 'O+', 'A-', 'A+'] }];
+  assert.equal(queryFill('recipient blood type O-', blood).filled.bc, 'O-');
+
+  const band = [{ d: 'ab', k: 'enum', l: 'Age band', v: ['under-50', '50-62', '63+'] }];
+  assert.equal(queryFill('age band 63+', band).filled.ab, '63+');
+});
+
+test('spec-v764: a label made only of stopwords falls back to its key', () => {
+  // "Value" identifies nothing. The dom key usually carries a word that does.
+  const fields = [{ d: 'cp-val', k: 'number', l: 'Value' }];
+  assert.equal(queryFill('val 1000', fields).filled['cp-val'], 1000);
+});
+
 // --- the veto ---------------------------------------------------------------
 
 test('one field with two readings fills neither', () => {
