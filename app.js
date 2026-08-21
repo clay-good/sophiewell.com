@@ -641,7 +641,7 @@ import { loadSynonyms } from './lib/synonyms.js';
 import { resolvePrompt, resolvePromptRanked, rankableWords } from './lib/prompt.js';
 // spec-v766: how strongly a query names a tile. Shared with mcp/tools.js so the
 // two surfaces resolve a name the same way.
-import { buildNameCounts, buildNameIndex, findNamed } from './lib/name-match.js';
+import { buildNameCounts, buildNameIndex, findNamed, nameMatch, namesInFull } from './lib/name-match.js';
 import { corpusDesc, corpusOneLiner } from './lib/search-corpus.js';
 import { queryCompute } from './lib/query-compute.js';
 // spec-v753/v754: the generic prefill path -- reads the tile's own field
@@ -4827,6 +4827,23 @@ function bindHeroSearch() {
     {
       const named = findNamed(rq, tileNameIndex(), tileNameCounts(), (id) => UTIL_BY_ID && UTIL_BY_ID.get(id), { minHits: 2 });
       if (named && list[0] !== named) list = [named, ...list.filter((x) => x.id !== named.id)].slice(0, 12);
+    }
+
+    // spec-v772: a reader who types a calculator's whole name gets that
+    // calculator. findNamed above scores rarity x coverage, which still let a
+    // sibling win an exact name -- "KDIGO CKD Staging (GxA risk)" put kdigo-aki
+    // first, "ABC Score (Massive Transfusion)" put abc-mtp first. The MCP server
+    // learned this rule first (spec-v771) and the two surfaces then DISAGREED on
+    // the same words, which is the thing lib/name-match.js exists to prevent.
+    if (rq) {
+      let top = null;
+      let topScore = -1;
+      for (const u of list) {
+        if (!namesInFull(rq, u.name)) continue;
+        const sc = nameMatch(rq, u.name, tileNameCounts()).score;
+        if (sc > topScore) { topScore = sc; top = u; }
+      }
+      if (top && list[0] !== top) list = [top, ...list.filter((x) => x.id !== top.id)].slice(0, 12);
     }
 
     // The inline-compute tile leads (injected if the ranker did not surface it).

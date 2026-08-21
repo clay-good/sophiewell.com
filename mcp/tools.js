@@ -16,7 +16,7 @@ import {
 function disclaimerFor(e) { return e.clinical ? DISCLAIMER : ADMIN_DISCLAIMER; }
 function domainOf(e) { return e.clinical ? 'clinical' : 'administrative'; }
 import { resolvePromptRanked, rankableWords } from '../lib/prompt.js';
-import { buildNameCounts, nameMatch, nameWords } from '../lib/name-match.js';
+import { buildNameCounts, nameMatch, namesInFull } from '../lib/name-match.js';
 import { corpusDesc } from '../lib/search-corpus.js';
 import { queryCompute } from '../lib/query-compute.js';
 // spec-v758: the generic extractor behind answer_query's second attempt. Reads
@@ -389,8 +389,7 @@ export function findCalculator(args = {}) {
       // put Cockcroft-Gault over the synonym-routed eGFR. Naming a calculator
       // outright is a different act from describing what you want, and only the
       // first should outrank the ranker. The MCP suite caught both.
-      const full = m.hits >= 2 && nameWords(c.name).every((w) => new RegExp(`\\b${w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`).test(q.toLowerCase()));
-      return (full && m.score > acc.score) ? { score: m.score, id: c.id } : acc;
+      return (namesInFull(q, c.name) && m.score > acc.score) ? { score: m.score, id: c.id } : acc;
     }, { score: nameMatchFor(q, candidates[0]).score, id: candidates[0].id });
     if (best.id !== candidates[0].id) {
       const i = candidates.findIndex((c) => c.id === best.id);
