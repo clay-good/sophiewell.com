@@ -63,6 +63,29 @@ Probes phrased the way a person says it:
 Looser matching bought 155 fields **without a single wrong value** in the per-field measurement,
 which is the trade that had to hold.
 
+## What is left, and one thing that did not work
+
+After these fixes, of the fields whose loose terms collide with a sibling:
+
+| | |
+|---|---|
+| Resolved by strict mode + the foreign-word rule | **108** |
+| Still unfilled | 333 |
+| — of which identical **even in strict mode** | **47** |
+
+The 47 are the irreducible ones, and the samples say why: the discriminator lives in the
+parenthetical. `Maxillary (R)` vs `Maxillary (L)`. `Cutting food (patient)` vs
+`Cutting food (alternate)`. `From benzodiazepine` vs `To benzodiazepine`.
+
+**Keeping the parenthetical in strict mode was tried and reverted.** It sounds like the obvious
+fix, and measured on realistic phrasing it made things *worse* — 84.1% → 83.4%, gaining nothing:
+
+> A parenthetical only disambiguates if the reader says it, and they do not. Someone reading
+> `Maxillary (R)` off the screen types "maxillary 2", which is genuinely ambiguous on a tile that
+> also has `Maxillary (L)`. Refusing is the correct answer.
+
+Do not re-try this without a probe that models a reader who actually says the discriminator.
+
 ## Gotchas
 
 - The gap is bounded at three words on purpose. There is a test that a term must not span an
