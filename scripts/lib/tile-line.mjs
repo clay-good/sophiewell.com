@@ -16,6 +16,7 @@
 // then does the row end in an ellipsis -- which now means what it says.
 
 import { splitLead } from '../../lib/long-note.js';
+import { depthAt, outsideBrackets } from '../../lib/brackets.js';
 
 // A sentence up to this long still reads as one line in the list. Measured
 // across the catalog: 387 of 1,564 tiles lead with a sentence this short.
@@ -136,32 +137,10 @@ export function stripLegend(text) {
 
 // --- Cutting a line without cutting a bracket in half.
 //
-// Every clamp in this file and in build-tool-pages.mjs picks an index and
-// slices there. An index inside a parenthesis publishes a line that opens a
-// bracket and never closes it -- "(the C axis of\u2026", "(0-4 animals = 0" --
-// which reads as text that was corrupted rather than shortened.
-
-// How many brackets are open at `index`.
-export function depthAt(text, index) {
-  let depth = 0;
-  for (let i = 0; i < index; i++) {
-    const c = text[i];
-    if (c === '(' || c === '[') depth += 1;
-    else if (c === ')' || c === ']') depth -= 1;
-  }
-  return depth;
-}
-
-// The same cut point, backed out to before any bracket it landed inside.
-export function outsideBrackets(text, index) {
-  const open = [];
-  for (let i = 0; i < index; i++) {
-    const c = text[i];
-    if (c === '(' || c === '[') open.push(i);
-    else if (c === ')' || c === ']') open.pop();
-  }
-  return open.length ? open[0] : index;
-}
+// Moved to lib/brackets.js and re-exported here: the browser clamps the same
+// strings (lib/page-title.js writes the tab), and a second copy of the rule is
+// a second thing to keep in step. Every existing importer keeps its import.
+export { depthAt, outsideBrackets };
 
 // The first occurrence that is not inside a bracket, or -1.
 function topLevelIndexOf(text, ch) {

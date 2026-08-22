@@ -33,6 +33,9 @@ import { splitLead } from '../lib/long-note.js';
 // view that builds the select. See scripts/lib/option-labels.mjs.
 import { loadOptionLabels, loadFieldLabels, optionText, looseOptionText } from './lib/option-labels.mjs';
 import { depthAt, fieldName, outsideBrackets, stripLegend } from './lib/tile-line.mjs';
+// The tab is written in lib/ because the app writes the same one; see the
+// note there for why they cannot be two rules.
+import { BRAND, TITLE_MAX, clampTitle, pageTitle } from '../lib/page-title.js';
 import { tileName } from './lib/tile-name.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -229,28 +232,6 @@ function linkifyCitation(s) {
   }
   out += esc(str.slice(last));
   return out;
-}
-
-function clampTitle(s, max = TITLE_MAX) {
-  if (s.length <= max) return s;
-  return `${s.slice(0, outsideBrackets(s, max - 1)).trimEnd().replace(/[,;:([-]+$/, '').trimEnd()}…`;
-}
-
-// The browser tab, and the first line of every search result. Two things
-// belong there: what the tool is, and whose site it is. The old title built
-// `<name> - Free, in your browser · Sophie Well` and clamped afterwards, so on
-// 1336 of 1564 pages the cut landed inside the boilerplate and the tab read
-// "Wells Score for DVT - Free, in your brows…" -- the pitch half-said, the
-// brand gone. Drop the boilerplate whole instead. It is the part no reader
-// needs, so losing it costs nothing, and the name and the brand both survive.
-const TITLE_MAX = 65;
-const BRAND = 'Sophie Well';
-function pageTitle(name) {
-  const withBrand = `${name} · ${BRAND}`;
-  if (withBrand.length <= TITLE_MAX) return withBrand;
-  // A name long enough to crowd out the brand keeps the tab honest on its own.
-  if (name.length <= TITLE_MAX) return name;
-  return clampTitle(name);
 }
 
 // The search-result snippet. Same rule: the sentence the tile wrote about

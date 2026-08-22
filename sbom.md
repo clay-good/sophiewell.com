@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `bcd86d953ec109be`
-Generated: 2026-08-22T22:40:45.185Z
+Build ID: `db078100aa05f8bd`
+Generated: 2026-08-22T23:20:17.912Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -26,7 +26,7 @@ downloads is committed in this repository and is hashed below.
 |---|---:|---|
 | `index.html` | 101227 | `f629d9a8ae00d99780a6888a2e3e88603fbd7c7018534300132c04f20554eed4` |
 | `styles.css` | 66091 | `2ddcb327180edcfcf8ad8171201f7bd813d36a5f6523f4107f6380cef7aed245` |
-| `app.js` | 460594 | `31725fdabea2fa68df366e8e665d4227af360b0ba1594c0d147151bdf40f8866` |
+| `app.js` | 460939 | `75c0659c8f49f28746be519e846057ec602298f3261a2c51834ecd81b7b80b23` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
@@ -98,6 +98,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/borrmann-gastric-v394.js` | 3865 | `df918e05475876bcc710c4fc8997aa67ee7d4832f352f1ae062fa1ab3d4678b1` |
 | `lib/bounds.js` | 6360 | `2417098c7e9bd78ba92156465958ea89ef0a4dfac937621ae6141d4607fbf468` |
 | `lib/boyd-griffin-v458.js` | 3748 | `7f5f81294d8ba43ad3a72d67bc9f47c590ddaf6f4a003c713715d1336927934c` |
+| `lib/brackets.js` | 1153 | `58e691e496e9abfb8b3f39545f18d76b69e1d755af0c6ea3db0ecbaee1e33371` |
 | `lib/brodsky-tonsil-v388.js` | 3325 | `9b3c2d6d23116ecb9c6249b5ab2cd6436e5304574981a4a4a6c87e59339ff697` |
 | `lib/bromage-scale-v467.js` | 3093 | `9247f0b4421fca3c360e3fd27504c23e02ca612b34cc2b33daea168762c0ce64` |
 | `lib/brooker-v452.js` | 3050 | `a04239b3721fad434f4c86321e7bcf34c3f1e149e2eeb079339b026f452931db` |
@@ -501,6 +502,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/pa/rules.js` | 1569004 | `02887004b05927dfc1079dcdfa9ccd327998f31a4f2fb41caf030e316d2e49ac` |
 | `lib/pa/staleness-ledger.js` | 39392 | `2828590419b53ab3be5c64a9d5884c51f6e47d67cc1feb3c8d243444ed200ff9` |
 | `lib/pa/staleness.js` | 9310 | `99249cde34d35bb57ea644fced966019d1373b34f792f1ea9b42b586b94454df` |
+| `lib/page-title.js` | 1458 | `575f7d045fda35d9bc5c6a04f70fd76dbf3364a987983ccde90d84fa54b12925` |
 | `lib/painscore-v235.js` | 7238 | `2350c90eb23bd3fdd62a55bf993e502e1120b047ee16d14619829c8d0659a0dc` |
 | `lib/palm-coein-v545.js` | 13316 | `8da3a972bae20d9741a8ef6c58f919a2dd252a100fdaf5ba09e15e58f985871b` |
 | `lib/panc3-v597.js` | 11023 | `ffe123609fffc192acfd9bf341c9ec84fc7db3ac9abdb76f850350e60ac9ea83` |

@@ -652,6 +652,7 @@ import { queryFill, loadFields } from './lib/query-fill.js';
 // no shard in data/fields/. Reads what the tile actually rendered.
 import { readDomFields } from './lib/dom-fields.js';
 import { collapseLongNotes, hoistIntroNote, mergeRepeatedAnswer } from './lib/long-note.js';
+import { pageTitle } from './lib/page-title.js';
 // The patient-artifact dropzone UI (spec-v7 sec 3.1) was removed when
 // Sophie pivoted to a clinical-staff-first wedge. The orphaned
 // artifact-detect / artifact-route / artifact-handoff helpers were
@@ -4625,7 +4626,11 @@ function renderToolView(util) {
 
   const metaBlock = renderMetaBlock(util);
   if (metaBlock) content.appendChild(metaBlock);
-  document.title = util.name + ' | Sophie Well';
+  // The same tab the pre-rendered /tools/<id>/ page opens. It used to be
+  // `name + ' | Sophie Well'` with no clamp, so 30 tools opened a tab the
+  // browser cut mid-word -- thakar-aki ran 91 characters -- while the static
+  // page for the same tool opened a clamped 65, with a different separator.
+  document.title = pageTitle(util.name);
 
   // Always reset scroll so the new view is visible.
   window.scrollTo({ top: 0, behavior: 'auto' });
