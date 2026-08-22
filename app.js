@@ -4046,20 +4046,22 @@ function applyExample(util, { skip } = {}) {
 // field would be wrong.
 const EXAMPLE_RETRY_MS = 8000;
 const EXAMPLE_RETRY_MAX = 40;
-//
+
 // The same watch covers a deep link, for the same reason and with worse
 // consequences: a shared /#steroid-equiv link carries st-from=prednisone, the
 // select has no options when the restore runs, and the tile settled on
 // hydrocortisone and rendered nothing at all. Four tiles answered a link to
 // themselves with a blank result region.
+//
+// A value has "taken" when the field holds it. A select with no options yet is
+// a tile still building; a select whose options exist and do not carry the
+// value never will, which applyHashState treats as settled rather than
+// retrying forever.
 function valueTook(id, value) {
   const node = document.getElementById(id);
   if (!node) return false;
   if (node.type === 'checkbox') return true;
   if (node.tagName === 'SELECT') {
-    // No options yet means the tile has not finished building; options that
-    // exist and do not carry this value mean it never will, which
-    // applyHashState treats as settled rather than retrying forever.
     if (!node.options.length) return false;
     if (![...node.options].some((o) => o.value === String(value))) return true;
   }
