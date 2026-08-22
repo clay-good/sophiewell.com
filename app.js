@@ -4080,15 +4080,26 @@ function watchRestore(body, fields, skip, onRetry) {
     return pairs.filter(([id, v]) => !valueTook(id, v));
   };
   let retries = 0;
+  let applying = false;
   const observer = new MutationObserver(() => {
     if (!outstanding().length || retries >= EXAMPLE_RETRY_MAX) return;
     retries += 1;
-    onRetry();
+    applying = true;
+    try { onRetry(); } finally { applying = false; }
   });
   const stop = () => observer.disconnect();
-  // A synthetic event from the restore itself is not the reader typing.
-  body.addEventListener('input', (e) => { if (e.isTrusted) stop(); }, true);
-  body.addEventListener('change', (e) => { if (e.isTrusted) stop(); }, true);
+  // Anyone but the restore touching a field ends the watch, so a value the
+  // reader has just entered is never overwritten by the example.
+  //
+  // Told apart by a flag around the restore's own dispatch, not by
+  // `event.isTrusted`: a driven browser fills a field and picks an option with
+  // untrusted events, so an isTrusted test reads a whole test suite -- and any
+  // scripted interaction -- as if nobody had touched anything. It reset the
+  // unit selects under a reader who had just chosen lb and inches, and
+  // answered "BMI: 50.4" for a 154 lb adult.
+  const onEdit = () => { if (!applying) stop(); };
+  body.addEventListener('input', onEdit, true);
+  body.addEventListener('change', onEdit, true);
   observer.observe(body, { childList: true, subtree: true });
   setTimeout(stop, EXAMPLE_RETRY_MS);
 }
