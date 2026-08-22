@@ -200,6 +200,46 @@ async function main() {
     } else if (Number(claimed[1]) !== actual) {
       errors.push(`mcp/README.md says ${claimed[1]} verified templates; lib/query-compute.js ships ${actual}`);
     }
+
+    // The other two numbers on that page an agent acts on: how many tools the
+    // surface has, and which error codes it can branch on. Both are written
+    // out in prose, both would go stale the first time a tool or a code was
+    // added, and an agent that trusts a stale list writes a broken client.
+    const { TOOL_DEFS } = await import(new URL('../mcp/tools.js', import.meta.url).href);
+    const WORDS = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve'];
+    const said = readme.match(/A fixed ([a-z]+)-tool surface/);
+    if (!said) {
+      errors.push('mcp/README.md no longer states how many tools the surface has');
+    } else if (said[1] !== WORDS[TOOL_DEFS.length]) {
+      errors.push(`mcp/README.md calls it a ${said[1]}-tool surface; mcp/tools.js ships ${TOOL_DEFS.length}`);
+    }
+    const rows = [...readme.matchAll(/^\| `([a-z_]+)` \|/gm)].map((m) => m[1]);
+    const listed = new Set(rows);
+    for (const t of TOOL_DEFS) {
+      if (!listed.has(t.name)) errors.push(`mcp/README.md's tool table does not list ${t.name}`);
+    }
+    for (const r of rows) {
+      if (!TOOL_DEFS.some((t) => t.name === r)) errors.push(`mcp/README.md's tool table lists ${r}, which the server does not serve`);
+    }
+    // The codes the server actually returns, read out of the server rather
+    // than kept in a second list that can disagree with it. The README named
+    // nine of the twelve; an agent branching on `code` never learned that
+    // `AMBIGUOUS`, `MISSING_INPUTS` or `NO_VALUES` could come back.
+    const served = new Set();
+    for (const f of ['tools.js', 'server.js', 'catalog.js', 'fields.js']) {
+      if (!(await exists(join('mcp', f)))) continue;
+      const src = await readFile(join(ROOT, 'mcp', f), 'utf8');
+      for (const m of src.matchAll(/code: '([A-Z_]{3,})'/g)) served.add(m[1]);
+    }
+    const codeLine = readme.match(/branch without parsing prose: ([^.]+)\./);
+    const named = codeLine ? codeLine[1].match(/[A-Z_]{3,}/g) || [] : [];
+    if (!codeLine) errors.push('mcp/README.md no longer lists the error codes a client can branch on');
+    for (const c of served) {
+      if (!named.includes(c)) errors.push(`mcp/README.md does not name the error code ${c}`);
+    }
+    for (const c of named) {
+      if (!served.has(c)) errors.push(`mcp/README.md names an error code the server never returns: ${c}`);
+    }
   }
 
   if (errors.length) {

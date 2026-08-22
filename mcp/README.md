@@ -102,7 +102,8 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 **Errors carry a stable `code`** (and `field` where input-specific) alongside the
 English `message`, so you can branch without parsing prose: `UNKNOWN_TOOL`,
 `UNKNOWN_ID`, `BAD_ARGS`, `UNKNOWN_INPUT`, `MISSING_INPUT`, `INVALID_TYPE`,
-`INCOMPLETE`, `COMPUTE_ERROR`, `NO_MATCH`.
+`INCOMPLETE`, `COMPUTE_ERROR`, `NO_MATCH`, `NO_VALUES`, `MISSING_INPUTS`,
+`AMBIGUOUS`.
 
 **`catalogVersion`** (`{ contentHash, tileCount, exposedCount, deterministic,
 cacheable }`) rides on the discovery tools. Because compute is deterministic, you
