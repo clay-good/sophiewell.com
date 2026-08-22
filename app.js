@@ -4046,34 +4046,66 @@ function applyExample(util, { skip } = {}) {
 // field would be wrong.
 const EXAMPLE_RETRY_MS = 8000;
 const EXAMPLE_RETRY_MAX = 40;
-function exampleTook(id, value) {
+//
+// The same watch covers a deep link, for the same reason and with worse
+// consequences: a shared /#steroid-equiv link carries st-from=prednisone, the
+// select has no options when the restore runs, and the tile settled on
+// hydrocortisone and rendered nothing at all. Four tiles answered a link to
+// themselves with a blank result region.
+function valueTook(id, value) {
   const node = document.getElementById(id);
   if (!node) return false;
-  if (node.tagName === 'SELECT') return String(node.value) === String(value);
   if (node.type === 'checkbox') return true;
+  if (node.tagName === 'SELECT') {
+    // No options yet means the tile has not finished building; options that
+    // exist and do not carry this value mean it never will, which
+    // applyHashState treats as settled rather than retrying forever.
+    if (!node.options.length) return false;
+    if (![...node.options].some((o) => o.value === String(value))) return true;
+  }
   return String(node.value) === String(value);
 }
-function applyExampleWhenReady(util, body, opts = {}) {
-  const filled = applyExample(util, opts);
-  const meta = META[util.id];
-  const fields = (meta && meta.example && meta.example.fields) || null;
-  if (!fields || !body) return filled;
-  const skip = opts.skip;
-  const outstanding = () => Object.entries(fields)
-    .filter(([id, v]) => !(skip && skip.has(id)) && !exampleTook(id, v));
+// The watcher both entry points share. `fields` is the example's, or empty
+// when the reader's own question filled the tile -- there the example must not
+// run at all, not even to reset a unit select: applyExample's canonical-unit
+// reset keys off `<id>-unit`, which no `skip` set of field ids covers, and it
+// turned "What is the weight in lb?" into "in kg?".
+function watchRestore(body, fields, skip, onRetry) {
+  const outstanding = () => {
+    const { state } = parseHash(window.location.hash);
+    const pairs = [...Object.entries(state || {})];
+    for (const [id, v] of Object.entries(fields)) {
+      if (!(skip && skip.has(id))) pairs.push([id, v]);
+    }
+    return pairs.filter(([id, v]) => !valueTook(id, v));
+  };
   let retries = 0;
   const observer = new MutationObserver(() => {
     if (!outstanding().length || retries >= EXAMPLE_RETRY_MAX) return;
     retries += 1;
-    applyExample(util, opts);
+    onRetry();
   });
   const stop = () => observer.disconnect();
-  // A synthetic event from applyExample itself is not the reader typing.
+  // A synthetic event from the restore itself is not the reader typing.
   body.addEventListener('input', (e) => { if (e.isTrusted) stop(); }, true);
   body.addEventListener('change', (e) => { if (e.isTrusted) stop(); }, true);
   observer.observe(body, { childList: true, subtree: true });
   setTimeout(stop, EXAMPLE_RETRY_MS);
+}
+
+function applyExampleWhenReady(util, body, opts = {}) {
+  const filled = applyExample(util, opts);
+  if (!body) return filled;
+  const fields = (META[util.id]?.example?.fields) || {};
+  watchRestore(body, fields, opts.skip, () => { applyHashState(body); applyExample(util, opts); });
   return filled;
+}
+
+// The deep-link half on its own, for the tile the reader's own question
+// filled: its shared values still have to survive a picklist built by a fetch.
+function applyHashStateWhenReady(body) {
+  if (!body) return;
+  watchRestore(body, {}, null, () => applyHashState(body));
 }
 
 // spec-v752: move the tile's result region to the top of the tool body, so the
@@ -4509,6 +4541,8 @@ function renderToolView(util) {
         // answered question stays partly answered; spec-v755 asks for the rest.
         if (!fromQuery) {
           applyExampleWhenReady(util, body, { skip: new Set([...hashKeys, ...remembered]) });
+        } else {
+          applyHashStateWhenReady(body);
         }
         // spec-v760: the second prefill path. A tile with no MCP adapter has no
         // field shard, so navigateTo could not fill anything before routing --
