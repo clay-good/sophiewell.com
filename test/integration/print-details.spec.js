@@ -16,8 +16,8 @@ import { test, expect } from '@playwright/test';
 
 test.skip(({ browserName }) => browserName !== 'chromium', 'print-expansion check is chromium-only');
 
-// wells-pe carries both disclosures: the derivation block inside the tool body
-// and the citation block in the references region.
+// The open/closed state of every disclosure on the page, before printing,
+// while printing, and after.
 async function probe(page) {
   return page.evaluate(() => {
     const state = () => [...document.querySelectorAll('details')].map((d) => d.open);
@@ -43,14 +43,35 @@ test('SPA tool view: every closed disclosure opens for print and closes again', 
 // The pre-rendered pages are served from dist/ on 4174 (see playwright.config.js
 // webServer), and load theme.js as their only script, so they exercise the same
 // handler from a different entry point.
-test('pre-rendered tool page: the references disclosure opens for print', async ({ page }) => {
-  await page.goto('http://localhost:4174/tools/wells-pe/', { waitUntil: 'load' });
-  await expect(page.locator('details.tp-refs')).toBeAttached();
+//
+// On `sternbach`, not `wells-pe`: a tool page now folds four different things
+// away, and wells-pe carries only one of them. The page has to hold every kind
+// for this to prove anything -- the citation, the full field descriptions, the
+// fields past the visible list, the values past the visible example, and the
+// method rows. A printed page missing any of them is a page that dropped
+// content the reader could see on screen.
+const FOLDED = ['tp-refs', 'tp-io-full', 'tp-method', 'tp-ex-more'];
+
+test('pre-rendered tool page: every kind of disclosure opens for print', async ({ page }) => {
+  await page.goto('http://localhost:4174/tools/sternbach/', { waitUntil: 'load' });
+  for (const cls of FOLDED) {
+    await expect(page.locator(`details.${cls}`), `${cls} is on the page`).toBeAttached();
+  }
 
   const r = await probe(page);
-  expect(r.before.length).toBeGreaterThan(0);
+  expect(r.before.length).toBeGreaterThanOrEqual(FOLDED.length);
   expect(r.during, 'every disclosure is open while printing').toEqual(r.before.map(() => true));
   expect(r.after, 'each disclosure is restored after printing').toEqual(r.before);
+
+  // And the content itself reaches the printed page, not just the open
+  // attribute: a details that opens but renders nothing is the same loss.
+  const text = await page.evaluate(() => {
+    window.dispatchEvent(new Event('beforeprint'));
+    const out = [...document.querySelectorAll('details')].map((d) => (d.innerText || '').trim().length);
+    window.dispatchEvent(new Event('afterprint'));
+    return out;
+  });
+  expect(Math.min(...text), 'every disclosure renders its contents while printing').toBeGreaterThan(40);
 });
 
 test('SPA: a disclosure the reader opened stays open after printing', async ({ page }) => {
