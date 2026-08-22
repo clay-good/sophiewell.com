@@ -114,6 +114,11 @@ dependency-free checks instead:
       Rendered in [app.js](../app.js) `renderToolView` for any utility with
       `clinical: true` outside Group I, which has its own local-protocol
       notice (spec-v3 sec 6.5).
+- [x] Exactly one such notice per tile. A view that closes with its own -- 
+      "Decision support, not a verdict. ... the management decision stays with
+      the clinician and local protocol" -- keeps its own sentence and the
+      generic banner is dropped, so no tile disclaims twice on one screen.
+      Swept by [test/integration/one-disclaimer.spec.js](../test/integration/one-disclaimer.spec.js).
 
 ## Reduced motion and zoom
 

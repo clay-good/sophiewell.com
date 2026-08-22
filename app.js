@@ -3440,6 +3440,43 @@ const UTIL_BY_ID = new Map(UTILITIES.map((u) => [u.id, u]));
 const CLINICAL_NOTICE_TEXT =
   'This is a math aid for verification. Institutional protocols and clinician judgment govern any clinical decision.';
 
+// 1063 of the 1564 tiles said that twice. The generic notice goes above the
+// inputs on every clinical tile; a third of the views then close with their
+// own, longer version of the same sentence -- "Decision support, not a
+// verdict. The result is the cited source's, computed from the inputs you
+// enter. The management decision stays with the clinician and local protocol."
+// Two disclaimers on one screen is one disclaimer and one piece of noise, and
+// the reader learns to skip both.
+//
+// So the generic one yields to the specific one. A view that states the same
+// thing in its own words -- naming what the tool does not decide, and who
+// does -- keeps its sentence and the banner is dropped; a view that states
+// nothing keeps the banner. Recognised by a closed set of openings rather
+// than by keyword, because "the clinician" appears in plenty of prose that is
+// not a disclaimer.
+const OWN_NOTICE_DISCLAIMER = /^decision support,? (?:and|but)? ?not an? (?:verdict|order|diagnosis|prescription|treatment|substitute)/i;
+const OWN_NOTICE_OPENING = /^(?:[A-Z][A-Za-z-]* )?(?:\/ )?(?:decision support|screening \/ decision support|estimate \/ decision support)\b[,.]/i;
+function tileStatesItsOwnNotice(root) {
+  const nodes = root.querySelectorAll('p, li, summary');
+  for (const n of nodes) {
+    if (n.querySelector('p, li')) continue;
+    const t = (n.textContent || '').replace(/\s+/g, ' ').trim();
+    if (t.length < 40) continue;
+    // "Decision support, not a verdict" is a disclaimer and nothing else, so
+    // it stands on its own. Any other opening has to also say who the decision
+    // belongs to, because "decision support" alone appears in prose that is
+    // describing the tool rather than disclaiming it.
+    if (OWN_NOTICE_DISCLAIMER.test(t)) return true;
+    if (!OWN_NOTICE_OPENING.test(t)) continue;
+    if (/stays? with|clinician|prescriber|protocol|clinical judgment/i.test(t)) return true;
+  }
+  return false;
+}
+function dropDuplicateNotice(content, body) {
+  const notice = content.querySelector('.clinical-notice');
+  if (notice && tileStatesItsOwnNotice(body)) notice.remove();
+}
+
 // spec-v29 wave 29-2: tiles deleted from UTILITIES whose permalink
 // hashes still resolve. The router sends them to the home view with a
 // one-line removed-note (spec-v29 sec 2.7). The map carries the
@@ -4329,6 +4366,7 @@ function renderToolView(util) {
       // here, once, rather than in 600-odd view files: the rule is about how
       // the page reads, not about what any one tile means.
       collapseLongNotes(body);
+      dropDuplicateNotice(content, body);
       // spec-v752: the answer moves above the fields. Renderers append their
       // result region last because that is the order the page is built in, not
       // the order it is read in -- on a 16-field tile that puts the number a
@@ -4393,6 +4431,10 @@ function renderToolView(util) {
         // which moves the region. Idempotent, so the tiles that were already
         // right pay one no-op.
         setTimeout(() => hoistResults(body), 0);
+        // Same task, same reason as the hoist above: a tile whose result is
+        // invalid until the example fills it writes its notice with the fill,
+        // so the synchronous pass saw a body that did not have it yet.
+        setTimeout(() => dropDuplicateNotice(content, body), 0);
 
         // spec-v754: consumed once -- a later visit to the same tile is not
         // "from your question". Read before applyExample, because whether the
