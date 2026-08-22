@@ -157,7 +157,14 @@ test('mobile 320px: every tile in the catalog (sitemap) does not scroll horizont
     await page.goto('/#' + id, { waitUntil: 'load' });
     // Let async data fetches and the meta-block source stamp settle.
     await page.waitForTimeout(40);
+    // With every disclosure OPEN, which is what a reader who taps one gets. A
+    // closed <details> lays nothing out, so measuring the folded page exempts
+    // the citation block and every explanation collapseLongNotes has folded --
+    // the longest text on the tile. The pre-rendered sweep in
+    // static-pages-mobile.spec.js measured folded for the same reason and
+    // missed a page running 330px wide.
     const overflow = await page.evaluate(() => {
+      document.querySelectorAll('details').forEach((d) => { d.open = true; });
       const doc = document.documentElement;
       return { scroll: doc.scrollWidth, client: doc.clientWidth };
     });
