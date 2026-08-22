@@ -653,6 +653,7 @@ import { queryFill, loadFields } from './lib/query-fill.js';
 import { readDomFields } from './lib/dom-fields.js';
 import { collapseLongNotes, hoistIntroNote, mergeRepeatedAnswer } from './lib/long-note.js';
 import { pageTitle } from './lib/page-title.js';
+import { guardNonFinite } from './lib/output-guard.js';
 // The patient-artifact dropzone UI (spec-v7 sec 3.1) was removed when
 // Sophie pivoted to a clinical-staff-first wedge. The orphaned
 // artifact-detect / artifact-route / artifact-handoff helpers were
@@ -4469,6 +4470,9 @@ function renderToolView(util) {
       // explanation is already out of the live region and cannot be mistaken
       // for the computed line the heading duplicates.
       mergeRepeatedAnswer(body);
+      // Last of the region passes: a result the page cannot mean is refused
+      // outright, so nothing above has to reason about it.
+      guardNonFinite(body);
       dropDuplicateNotice(content, body);
       // spec-v752: the answer moves above the fields. Renderers append their
       // result region last because that is the order the page is built in, not

@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `db078100aa05f8bd`
-Generated: 2026-08-22T23:20:17.912Z
+Build ID: `df1088fce34ac2ad`
+Generated: 2026-08-22T23:52:06.846Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -26,7 +26,7 @@ downloads is committed in this repository and is hashed below.
 |---|---:|---|
 | `index.html` | 101227 | `f629d9a8ae00d99780a6888a2e3e88603fbd7c7018534300132c04f20554eed4` |
 | `styles.css` | 66091 | `2ddcb327180edcfcf8ad8171201f7bd813d36a5f6523f4107f6380cef7aed245` |
-| `app.js` | 460939 | `75c0659c8f49f28746be519e846057ec602298f3261a2c51834ecd81b7b80b23` |
+| `app.js` | 461160 | `574cf0aa2d335dcf76ff7af2434f7bcca8ee8c0bddd74df5487ae0b927c77b1f` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
@@ -488,6 +488,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/oswestry-v643.js` | 4727 | `1dccac04347831c73b9f45bf744c6242bcb2f4cfb3e78d3f5685ef7afaade004` |
 | `lib/ottawa-bowel-prep-v670.js` | 3829 | `230547b220183ed6b5bd4bfc719c2c5119c4b54e96a1c1bafec86dade709d2f8` |
 | `lib/outerbridge-v337.js` | 4106 | `7208f5e889ea571cda441f4e88f738c2c92edd0a23e1a907277163b800d922e9` |
+| `lib/output-guard.js` | 2844 | `f725a87380384ed69280c8f826a951eb2ae8b38721d50f81776c4773436174af` |
 | `lib/pa/classify.js` | 3432 | `a7958e40890ad63ebf68ce5a0107fe7ab5a5b0c9e877e2669e8f44ecfb7f34ca` |
 | `lib/pa/cms-opd-pa-list.js` | 3701 | `d142fdc90cc782bb472d729df2ee6d0e89429cba2ecf0cfc7857a4e7e471b454` |
 | `lib/pa/date.js` | 3183 | `797ce4bc2a6f7807b076f4660fa6ade69d29e0ae984ef43f20b60dafd5ad4d14` |
