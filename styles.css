@@ -1914,6 +1914,16 @@ button:active { transform: translateY(1px) scale(0.985); }
   color: var(--text-secondary);
   overflow-wrap: anywhere;
 }
+/* The values past the tenth. Collapsed, so a 29-item inventory still shows a
+   readable example; present, so the stated result is reproducible. */
+.tool-page .tp-ex-more > summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 10px 0;
+}
+.tool-page .tp-ex-more .tp-ex-dl { margin: 0 0 var(--space-2); }
+
 .tool-page .tp-ex-result {
   margin: 0 0 var(--space-2);
   font-size: 1.05rem;

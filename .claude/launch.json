@@ -4,8 +4,24 @@
     {
       "name": "sophiewell-dev",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev"],
+      "runtimeArgs": [
+        "run",
+        "dev"
+      ],
       "port": 4173
+    },
+    {
+      "name": "sophiewell-dist",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev"
+      ],
+      "env": {
+        "SERVE_ROOT": "dist",
+        "PORT": "4174"
+      },
+      "port": 4174
     }
   ]
 }

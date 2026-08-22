@@ -29,11 +29,11 @@ export default [
     fields: [
       ...H.CISTERNS.map((s) => ({
         dom: `hij-${s.key}`, arg: s.key, kind: 'enum', values: ['0', '1', '2', '3'], required: true,
-        label: `CISTERN: ${s.text}. [${H.CISTERN_LEVELS.map((l) => `${l.value} = ${l.text}`).join('; ')}]${s.paired ? ' PAIRED - score left and right separately.' : ' Midline - scored once.'}`,
+        label: `${s.text} - CISTERN. [${H.CISTERN_LEVELS.map((l) => `${l.value} = ${l.text}`).join('; ')}]${s.paired ? ' PAIRED - score left and right separately.' : ' Midline - scored once.'}`,
       })),
       ...H.VENTRICLES.map((s) => ({
         dom: `hij-${s.key}`, arg: s.key, kind: 'enum', values: ['0', '1', '2', '3'], required: true,
-        label: `VENTRICLE - DIFFERENT WORDING: ${s.text}. [${H.VENTRICLE_LEVELS.map((l) => `${l.value} = ${l.text}`).join('; ')}]${s.paired ? ' PAIRED - score left and right separately.' : ' Scored once.'}`,
+        label: `${s.text} - VENTRICLE, DIFFERENT WORDING FROM THE CISTERNS. [${H.VENTRICLE_LEVELS.map((l) => `${l.value} = ${l.text}`).join('; ')}]${s.paired ? ' PAIRED - score left and right separately.' : ' Scored once.'}`,
       })),
     ],
   },

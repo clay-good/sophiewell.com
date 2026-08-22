@@ -432,6 +432,9 @@ function inputLabels(tileId) {
 // you get" with none of the inputs that produced it -- a number with nothing
 // behind it. Showing the inputs beside it is what makes the page intuitive:
 // the reader sees the shape of every value and can substitute their own.
+// Rows past this go into a disclosure under the table, not into a count of
+// them. 46 pages used to print ten values, say "and 19 more fields", and then
+// state a result the reader had no way to reproduce.
 const MAX_EXAMPLE_ROWS = 10;
 
 // A field label leads with the name of the thing and then qualifies it, so the
@@ -877,10 +880,7 @@ ${related.map((r) => `          <li><a href="${SITE}/tools/${r.id}/">${esc(r.nam
   const labels = inputLabels(tile.id);
   const listCap = Math.max(MAX_LISTED_INPUTS, shownRows.length);
   const shownLabels = labels.slice(0, absorbOne(labels, listCap));
-  const extraLabels = labels.length - shownLabels.length;
-  const extraLine = extraLabels > 0
-    ? `<li>and ${extraLabels} more field${extraLabels === 1 ? '' : 's'}</li>`
-    : '';
+  const hiddenLabels = labels.slice(shownLabels.length);
   // The value legend goes first: it is the picklist the reader is looking at,
   // and its inline periods otherwise end the first-sentence trim inside the
   // brackets ("... 0 = None of the time." with the bracket left open).
@@ -894,14 +894,24 @@ ${related.map((r) => `          <li><a href="${SITE}/tools/${r.id}/">${esc(r.nam
   // one screen, ~250 words of it, because one other field happened to be
   // trimmed.
   const trimmedLabels = shownLabels.filter((l, i) => leads[i] !== l);
-  const fullHtml = trimmedLabels.length
+  // The disclosure holds whatever the visible list could not: the fields past
+  // the cap, and the full text of the lines it shortened. It used to hold only
+  // the second of those, and the first was a dead end -- 145 pages ended the
+  // list with "and 46 more fields" and never named one of them, so a reader
+  // asking "do I have the values for this?" could not answer it. Collapsed, so
+  // the page stays one screen; present, so the page states every input.
+  const detailRows = [...trimmedLabels, ...hiddenLabels];
+  const detailSummary = hiddenLabels.length
+    ? `The other ${hiddenLabels.length} field${hiddenLabels.length === 1 ? '' : 's'}`
+    : 'Full field descriptions';
+  const fullHtml = detailRows.length
     ? `\n          <details class="tp-io-full">
-            <summary>Full field descriptions</summary>
-            <ul>${trimmedLabels.map((l) => `<li>${esc(l)}</li>`).join('')}</ul>
+            <summary>${detailSummary}</summary>
+            <ul>${detailRows.map((l) => `<li>${esc(l)}</li>`).join('')}</ul>
           </details>`
     : '';
   const inputsBody = shownLabels.length
-    ? `<ul class="tp-io-list">${leads.map((l) => `<li>${esc(l)}</li>`).join('')}${extraLine}</ul>${fullHtml}`
+    ? `<ul class="tp-io-list">${leads.map((l) => `<li>${esc(l)}</li>`).join('')}</ul>${fullHtml}`
     : (copy?.inputs ? `<p>${esc(copy.inputs)}</p>` : '');
   const outputText = example
     ? esc(copy?.output || '')
@@ -965,7 +975,12 @@ ${bands.map((b) => `            <div class="tp-bands-row"><dt>${esc(String(b.ran
           <h2 id="tp-ex-h">Example</h2>
           <dl class="tp-ex-dl">
 ${shownRows.map((r) => `            <div class="tp-ex-row"><dt>${esc(r.label)}</dt><dd>${esc(r.value)}</dd></div>`).join('\n')}
-          </dl>${extraRows > 0 ? `\n          <p class="muted">and ${extraRows} more field${extraRows === 1 ? '' : 's'}</p>` : ''}
+          </dl>${extraRows > 0 ? `\n          <details class="tp-ex-more">
+            <summary>The other ${extraRows} value${extraRows === 1 ? '' : 's'}</summary>
+            <dl class="tp-ex-dl">
+${example.rows.slice(shownRows.length).map((r) => `              <div class="tp-ex-row"><dt>${esc(r.label)}</dt><dd>${esc(r.value)}</dd></div>`).join('\n')}
+            </dl>
+          </details>` : ''}
           <p class="tp-ex-result"><strong>Result:</strong> ${esc(example.result)}</p>
           <p class="muted">${exampleHint}</p>
         </section>`

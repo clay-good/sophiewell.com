@@ -320,12 +320,14 @@ async function main() {
       ? [...listBlock[1].matchAll(/<li>(.*?)<\/li>/g)].map((m) => m[1])
       : [];
     for (const row of listRowsHere) if (row.length > LONG_INPUT_ROW) longInputRows += 1;
-    // Nor may it hide a field the example directly above it just named. The
-    // example holds ten rows and this list held eight, so 105 pages listed a
-    // field by name and then said "and 3 more fields" without it.
-    const exampleNames = [...html.matchAll(/<div class="tp-ex-row"><dt>/g)].length;
-    if (/more field/.test(listBlock?.[1] || '') && exampleNames > listRowsHere.length - 1) {
-      failures.push(`${id}: the input list hides ${exampleNames - (listRowsHere.length - 1)} field(s) the example above it named`);
+    // Nor may it count what it does not name. 145 pages ended the input list
+    // with "and 46 more fields" and 46 ended the worked example with "and 19
+    // more fields" -- a reader asking "do I have the values for this?" or
+    // trying to reproduce the stated result had nothing to read. Both now put
+    // the remainder in a disclosure, so a bare count anywhere on the page is
+    // the dead end coming back.
+    if (/and \d+ more fields?<\/(li|p)>/.test(html)) {
+      failures.push(`${id}: the page counts fields it never names`);
     }
     const fullBlock = html.match(/<details class="tp-io-full">[\s\S]*?<ul>([\s\S]*?)<\/ul>/);
     if (listBlock && fullBlock) {

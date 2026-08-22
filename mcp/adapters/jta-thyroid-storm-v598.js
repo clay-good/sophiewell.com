@@ -40,7 +40,7 @@ export default [
     fields: [
       { dom: 'jta-thyrotoxicosis', arg: 'thyrotoxicosis', kind: 'enum', values: ['confirmed', 'labs-unavailable', 'absent'], required: true, label: 'Thyrotoxicosis (elevated free T3 or free T4). A PREREQUISITE, not a scored item: "absent" means neither grade can be met. "labs-unavailable" opens the TS2 no-laboratory route.' },
       { dom: 'jta-clinicalThyroidDisease', arg: 'clinicalThyroidDisease', kind: 'enum', values: ['no', 'yes'], required: true, label: 'Clinical evidence of thyroid disease (history, goiter, exophthalmos). Used ONLY for the TS2 no-laboratory route.' },
-      { dom: 'jta-cnsManifestation', arg: 'cnsManifestation', kind: 'enum', values: ['no', 'yes'], required: true, label: `THE PRIVILEGED FEATURE. ${J.CNS_DESCRIPTION} With it, ${J.TS1_FEATURES_WITH_CNS} other feature reaches TS1; without it, ${J.TS1_FEATURES_WITHOUT_CNS} are required.` },
+      { dom: 'jta-cnsManifestation', arg: 'cnsManifestation', kind: 'enum', values: ['no', 'yes'], required: true, label: `CNS manifestation - THE PRIVILEGED FEATURE. ${J.CNS_DESCRIPTION} With it, ${J.TS1_FEATURES_WITH_CNS} other feature reaches TS1; without it, ${J.TS1_FEATURES_WITHOUT_CNS} are required.` },
       ...J.NON_CNS_FEATURES.map((f) => ({
         dom: `jta-${f.key}`, arg: f.key, kind: 'enum', values: ['no', 'yes'], required: true,
         label: `${f.text}. One of the four non-privileged features.${f.key === 'heartFailure' ? ` ${J.CHF_DESCRIPTION}` : ''}${f.key === 'giHepatic' ? ` ${J.GI_DESCRIPTION}` : ''}`,
