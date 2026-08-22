@@ -62,7 +62,9 @@ const RAW_VALUE_ROWS_MAX = 46;
 // eight labels used to end mid-bracket instead -- "Linear growth (score by
 // height velocity when possible; the height-channel\u2026" -- and an honest
 // ellipsis on a whole phrase is the better of the two, not a new problem.
-const CLAMPED_LABELS_MAX = 43;
+// 31 since stripLegend learned the two legend forms whose value token holds a
+// space -- "1 point - tubular; ..." and "Below 50 x10^9/L = 1; ...".
+const CLAMPED_LABELS_MAX = 31;
 
 // Related tools are picked from what a tile shares with the others, so a
 // repeat means a genuine cluster -- the four ACR/EULAR criteria tiles point at

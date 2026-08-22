@@ -114,7 +114,13 @@ export function tileLine(text, { name = '' } = {}) {
 //   - The legend is not always last. `bilsky-escc` writes "...not a number
 //     [0 = ...; 3 = ...]. 1a, 1b and 1c are DISTINCT grades", so the end
 //     anchor matched nothing and the row ran 477 characters.
-const LEGEND_PAIR = /(?:^|[;.)]\s+)[A-Za-z0-9][^\s=\][]{0,23}\s*[=\-:\u2013\u2014]\s/g;
+//   - The value is not always one word. `spigelman` writes its legend as
+//     "1 point - tubular; 2 points - tubulovillous; ...", and `erez-dic`
+//     reverses it entirely ("Below 50 x10^9/L = 1; ..."). A value token that
+//     could hold no space matched neither, so both tiles printed their whole
+//     legend as the field name -- and `spigelman` published "Dysplasia\u2026",
+//     an ellipsis on a word that was never cut.
+const LEGEND_PAIR = /(?:^|[;.)]\s+)[A-Za-z0-9][^=\][;]{0,23}?\s*[=\-:\u2013\u2014]\s/g;
 const isLegend = (body) => (body.match(LEGEND_PAIR) || []).length >= 2;
 
 export function stripLegend(text) {
