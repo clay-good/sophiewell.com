@@ -651,7 +651,7 @@ import { queryFill, loadFields } from './lib/query-fill.js';
 // spec-v760: the fallback field source for a tile with no MCP adapter, and so
 // no shard in data/fields/. Reads what the tile actually rendered.
 import { readDomFields } from './lib/dom-fields.js';
-import { collapseLongNotes, hoistIntroNote } from './lib/long-note.js';
+import { collapseLongNotes, hoistIntroNote, mergeRepeatedAnswer } from './lib/long-note.js';
 // The patient-artifact dropzone UI (spec-v7 sec 3.1) was removed when
 // Sophie pivoted to a clinical-staff-first wedge. The orphaned
 // artifact-detect / artifact-route / artifact-handoff helpers were
@@ -4464,6 +4464,10 @@ function renderToolView(util) {
       // here, once, rather than in 600-odd view files: the rule is about how
       // the page reads, not about what any one tile means.
       collapseLongNotes(body);
+      // The answer states itself once. Runs after the hoist, so the static
+      // explanation is already out of the live region and cannot be mistaken
+      // for the computed line the heading duplicates.
+      mergeRepeatedAnswer(body);
       dropDuplicateNotice(content, body);
       // spec-v752: the answer moves above the fields. Renderers append their
       // result region last because that is the order the page is built in, not
