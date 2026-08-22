@@ -5,8 +5,14 @@
 // pain per Gelinas 2006 (cutoff <3)." The reader parsed the same words twice
 // before reaching the part that was new, and a screen reader read them twice.
 //
+// The renderers write it in two shapes: a heading with the paragraph directly
+// under it, and a `li.result-band` row at the top of a summary list with the
+// explanation further down, past the copy button.
+//
 // lib/long-note.js `mergeRepeatedAnswer` gives the heading the sentence's
-// words and drops the duplicate line. This is the only place the result is
+// words and drops the duplicate line, or -- where the line is too long to be a
+// heading, or the glance is a list row -- takes the repeated words off the
+// front of the paragraph instead. This is the only place the result is
 // visible: it is a property of what the renderer wrote, not of any one view.
 import { test, expect } from '@playwright/test';
 
@@ -25,14 +31,31 @@ test('no tile opens its answer with a line the next line repeats', async ({ page
       await new Promise((r) => setTimeout(r, 40));
       const live = document.querySelector('#q-results');
       if (!live) return null;
+      const flat = (n) => (n.textContent || '').replace(/\s+/g, ' ').trim();
+      // A repeat that could be undone: `full` opens with `short`, and what is
+      // left of it starts a sentence on its own. A remainder beginning
+      // "for this region: ..." or "; original score 2.2" is left alone, and so
+      // is a heading that runs into the next token -- `hospital-score` reads
+      // "HOSPITAL 0" over "HOSPITAL 0-4", where 0 is the score and 0-4 the
+      // band. Those are named in lib/long-note.js and are not failures here.
+      const repeats = (full, short) => short.length >= 6 && full.length > short.length
+        && full.startsWith(short) && /^[\s:;,.(]/.test(full.charAt(short.length))
+        && /^[A-Z0-9]/.test(full.slice(short.length).replace(/^[\s:;,.(-]+/, ''));
+
+      // A heading and the paragraph under it.
       for (const head of live.querySelectorAll('h2, h3')) {
         if (head.children.length) continue;
         const next = head.nextElementSibling;
         if (!next || next.tagName !== 'P' || next.children.length) continue;
-        const short = (head.textContent || '').replace(/\s+/g, ' ').trim();
-        const full = (next.textContent || '').replace(/\s+/g, ' ').trim();
-        if (short.length >= 6 && full.length > short.length && full.startsWith(short)
-          && /^[\s:;,.(]/.test(full.charAt(short.length))) return `"${short}" then "${full.slice(0, 70)}"`;
+        if (repeats(flat(next), flat(head))) return `"${flat(head)}" then "${flat(next).slice(0, 70)}"`;
+      }
+      // A result-band row and the explanation further down.
+      const band = live.querySelector('li.result-band');
+      if (band) {
+        for (const para of live.querySelectorAll('p')) {
+          if (para.children.length) continue;
+          if (repeats(flat(para), flat(band))) return `band "${flat(band)}" then "${flat(para).slice(0, 70)}"`;
+        }
       }
       return null;
     });
