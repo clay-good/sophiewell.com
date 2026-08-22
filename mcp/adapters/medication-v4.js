@@ -106,9 +106,12 @@ export default [
       return { ...r, cdcReassessThreshold: 50, cdcJustifyThreshold: 90 };
     },
     fields: [
-      { dom: 'mme-drug', arg: 'drug', kind: 'enum', values: MME.map((f) => f.drug), required: true, label: 'Opioid' },
-      { dom: 'mme-mg', arg: 'mgPerDose', kind: 'number', required: true, label: 'mg per dose' },
-      { dom: 'mme-n', arg: 'dosesPerDay', kind: 'number', required: true, label: 'Doses per day' },
+      // The tile is a repeatable row builder; these are row one, which is the
+      // row it opens with. The ids used to be written without the row, so the
+      // worked example filled nothing and the tile rendered no total.
+      { dom: 'mme-row-1-drug', arg: 'drug', kind: 'enum', values: MME.map((f) => f.drug), required: true, label: 'Opioid' },
+      { dom: 'mme-row-1-mg', arg: 'mgPerDose', kind: 'number', required: true, label: 'mg per dose' },
+      { dom: 'mme-row-1-n', arg: 'dosesPerDay', kind: 'number', required: true, label: 'Doses per day' },
     ],
   },
   {

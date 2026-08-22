@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `ddd48e64edd9e38e`
-Generated: 2026-08-22T14:20:52.696Z
+Build ID: `a9ba74c2faaf510f`
+Generated: 2026-08-22T15:04:14.100Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -26,7 +26,7 @@ downloads is committed in this repository and is hashed below.
 |---|---:|---|
 | `index.html` | 101227 | `f629d9a8ae00d99780a6888a2e3e88603fbd7c7018534300132c04f20554eed4` |
 | `styles.css` | 65876 | `ae47d4baf772e1e9d5853f326babbcf897cac32e444427dfc678ea457dd87529` |
-| `app.js` | 455425 | `a3d8d0fab934a1e8a1dad9db28d58debd22363623146e5961086bd786e78ce7e` |
+| `app.js` | 458131 | `049150658b65eda440ba379cf012f577103fb4c2806c3cca0f86d32398fbc2b5` |
 | `sw.js` | 4622 | `b891d4344f8e04403b7f1d307fd446cc224bddc6f0c4397438a17d197351171e` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
@@ -410,7 +410,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/meld3-v678.js` | 5664 | `7bda4af7c9412eae41162d0cdd6b977cbc9a6f9b8a7bc40fe350f861e989444c` |
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2154552 | `621b59dff96adb9b1ddb1282c18d443ce5477a983538421c05cf45eb890f389b` |
+| `lib/meta.js` | 2154580 | `f6f0f1677bc068b507fa8dad798ae0913d63040b9b98915ec09683cbdac88a4f` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -615,7 +615,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/schenck-v647.js` | 4238 | `a8812ca39707393d88f56a5cb9f253edf3598252603aada1786b6abf0ace8a7c` |
 | `lib/schobinger-avm-v497.js` | 3484 | `fd7d680fede1965fd9a9026d0977e4f2c1970e30d33718df3daaca235dfed009` |
 | `lib/schwab-england-v385.js` | 4331 | `caddd0709826db63186ebf0a5f8b60fd9a3e00fa934bddc3e0331977f70c5e4b` |
-| `lib/scoring-v4.js` | 226244 | `7ea750cd71d4e6d5bef32f44b8320e73a47b9240c6276fd6baa7fd3abfcaaf86` |
+| `lib/scoring-v4.js` | 226494 | `8718dfb164cbd26762b8686cd4e80be717e75bf66c683842e451b66b0eceaa5a` |
 | `lib/scoring-v5.js` | 12551 | `2e7854ebd83d2aecf3413aefde44cde85f11b1640587d6c1122d493209e00a42` |
 | `lib/scoring-v6.js` | 26559 | `4f2d7d77c536dce8d356539e2c69f941feb34146d251ac96b882c590399ce562` |
 | `lib/scp-pushing-v562.js` | 12399 | `6da019a04668722b7a8d448b4d7bf9908717629b72e4a162088e74363ad62360` |
@@ -729,7 +729,7 @@ downloads is committed in this repository and is hashed below.
 | `views/group-b.js` | 74248 | `d70e83be8d304672f596e7464c807a3b928f7bffe5265b5915c9471b90681442` |
 | `views/group-c.js` | 24145 | `67dbb3952ce0af75ae5a91376b2347f8f61e0c92866401be9c969eb32489fdc5` |
 | `views/group-e.js` | 38858 | `7474579f9256a65348881aa13dffe1e01eb8413bb34e178155e988cf36af92b3` |
-| `views/group-f.js` | 45938 | `94975266742e8e996141a755c202fe5dc7a4c7d8d89d44bf11211540d3f3b263` |
+| `views/group-f.js` | 46226 | `eca9d61d652f8a509ea9ecec361940fa16acbfb6f197e21992aee1cef4edcf77` |
 | `views/group-g.js` | 231118 | `c17a5042f2b1c07f3230379ff291b9367f807328b67a8dae706efc0598285acc` |
 | `views/group-h.js` | 28477 | `f9a8dc4ddbf7987b39a6bb88908d3523599eddaca1d6fcde22dbd847b4594b14` |
 | `views/group-i.js` | 27564 | `a29c0dd2e02f1edcee8fb79e85ba4fa4c7630ca0e97c2412e787419cec697f83` |

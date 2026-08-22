@@ -794,8 +794,12 @@ export default [
     summary: 'Canadian C-Spine Rule (Stiell 2001): imaging is required if any high-risk factor is present, or if no low-risk factor allows safe range-of-motion testing, or if the patient cannot actively rotate the neck 45 degrees each way.',
     compute: F.ccsr,
     fields: [
-      { dom: 'cs-hr', arg: 'highRisk', kind: 'bool', label: 'Any high-risk factor (age >= 65, dangerous mechanism, extremity paresthesias)' },
-      { dom: 'cs-lr', arg: 'lowRisk', kind: 'bool', label: 'Any low-risk factor permitting safe range-of-motion assessment' },
+      // The two aggregates the rule is written in terms of. On screen each is
+      // a row of checkboxes (cs-h1..h3, cs-l1..l5) with no single control for
+      // "any of them", so `dom` names one representative box -- enough for the
+      // worked example to fill the tile, and the label carries the full list.
+      { dom: 'cs-h1', arg: 'highRisk', kind: 'bool', label: 'Any high-risk factor (age >= 65, dangerous mechanism, extremity paresthesias)' },
+      { dom: 'cs-l3', arg: 'lowRisk', kind: 'bool', label: 'Any low-risk factor permitting safe range-of-motion assessment' },
       { dom: 'cs-rot', arg: 'canRotate45', kind: 'bool', label: 'Able to actively rotate neck 45 degrees left and right' },
     ],
   },

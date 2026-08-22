@@ -1105,8 +1105,8 @@ test('lib/scoring-v4.js GI-bleed / readmission / comorbidity / performance worke
   const ml = ok('maddrey-lille', { 'ml-pt': '20', 'ml-ctrl': '12', 'ml-bili': '10', 'ml-age': '50', 'ml-alb': '3.0', 'ml-cr': '0.9', 'ml-b0': '10', 'ml-b7': '6', 'ml-ptl': '20' });
   assert.equal(Math.round(ml.maddrey.df * 10) / 10, 46.8);
   assert.ok(ml.lille.score > 0 && ml.lille.score < 1);
-  assert.equal(ok('ccsr', { 'cs-hr': '0', 'cs-lr': '1', 'cs-rot': '1' }).imagingRecommended, false);
-  assert.equal(ok('ccsr', { 'cs-hr': '0', 'cs-lr': '0', 'cs-rot': '1' }).imagingRecommended, true);
+  assert.equal(ok('ccsr', { 'cs-h1': '0', 'cs-l3': '1', 'cs-rot': '1' }).imagingRecommended, false);
+  assert.equal(ok('ccsr', { 'cs-h1': '0', 'cs-l3': '0', 'cs-rot': '1' }).imagingRecommended, true);
   // HOSPITAL: onc (2) + LOS (2) + hgb (1) = 5, intermediate.
   const hs = ok('hospital-score', { 'hs-hgb': '1', 'hs-onc': '1', 'hs-na': '0', 'hs-proc': '0', 'hs-urg': '0', 'hs-prior': '0', 'hs-los': '1' });
   assert.equal(hs.score, 5);
@@ -2005,11 +2005,11 @@ test('lib/medication-v4.js vasopressor worked calls', () => {
 
 test('lib/medication-v4.js opioid-mme worked calls', () => {
   // Morphine (factor 1) 30 mg x 6/day = 180 MME.
-  const morphine = ok('opioid-mme', { 'mme-drug': 'morphine', 'mme-mg': '30', 'mme-n': '6' });
+  const morphine = ok('opioid-mme', { 'mme-row-1-drug': 'morphine', 'mme-row-1-mg': '30', 'mme-row-1-n': '6' });
   assert.equal(morphine.totalMme, 180);
   assert.equal(morphine.cdcJustifyThreshold, 90);
   // Hydromorphone (factor 4) 4 mg x 4/day = 64 MME.
-  const hydromorphone = ok('opioid-mme', { 'mme-drug': 'hydromorphone', 'mme-mg': '4', 'mme-n': '4' });
+  const hydromorphone = ok('opioid-mme', { 'mme-row-1-drug': 'hydromorphone', 'mme-row-1-mg': '4', 'mme-row-1-n': '4' });
   assert.equal(hydromorphone.totalMme, 64);
 });
 

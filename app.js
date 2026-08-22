@@ -4023,6 +4023,59 @@ function applyExample(util, { skip } = {}) {
   return filled;
 }
 
+// Six tiles load their picklist over the network -- opioid-mme, steroid-equiv,
+// benzo-equiv, vasopressor, abx-renal, lab-interpret -- and build their rows
+// and options only once the fetch resolves. applyExample runs in a microtask
+// long before that, so its `select.value = 'prednisone'` landed on a select
+// with no options and was dropped, and on opioid-mme the whole row did not
+// exist yet. All six then rendered nothing at all while the page above them
+// said "These are example values. Replace them with your own." and the
+// /tools/<id>/ page stated a result nobody could reproduce.
+//
+// So the fill retries. Whatever did not take is re-applied when the tile
+// mutates, which is exactly when the fetch lands, and the watch stops as soon
+// as everything has taken -- or after a bounded wait, so a tile that is
+// offline does not keep an observer alive. One hook here rather than a
+// load-order contract six views would each have to keep.
+//
+// The watch also has to survive a *clobber*: rvu-payment's locality select is
+// built with one option ("Enter GPCI by hand"), which the example picks, and
+// then the locality file lands and the select re-selects its first row. So the
+// re-apply is not one-shot -- it runs on every mutation until the reader
+// touches something themselves, which is the only point at which overwriting a
+// field would be wrong.
+const EXAMPLE_RETRY_MS = 8000;
+const EXAMPLE_RETRY_MAX = 40;
+function exampleTook(id, value) {
+  const node = document.getElementById(id);
+  if (!node) return false;
+  if (node.tagName === 'SELECT') return String(node.value) === String(value);
+  if (node.type === 'checkbox') return true;
+  return String(node.value) === String(value);
+}
+function applyExampleWhenReady(util, body, opts = {}) {
+  const filled = applyExample(util, opts);
+  const meta = META[util.id];
+  const fields = (meta && meta.example && meta.example.fields) || null;
+  if (!fields || !body) return filled;
+  const skip = opts.skip;
+  const outstanding = () => Object.entries(fields)
+    .filter(([id, v]) => !(skip && skip.has(id)) && !exampleTook(id, v));
+  let retries = 0;
+  const observer = new MutationObserver(() => {
+    if (!outstanding().length || retries >= EXAMPLE_RETRY_MAX) return;
+    retries += 1;
+    applyExample(util, opts);
+  });
+  const stop = () => observer.disconnect();
+  // A synthetic event from applyExample itself is not the reader typing.
+  body.addEventListener('input', (e) => { if (e.isTrusted) stop(); }, true);
+  body.addEventListener('change', (e) => { if (e.isTrusted) stop(); }, true);
+  observer.observe(body, { childList: true, subtree: true });
+  setTimeout(stop, EXAMPLE_RETRY_MS);
+  return filled;
+}
+
 // spec-v752: move the tile's result region to the top of the tool body, so the
 // page reads answer -> inputs -> proof. Fails quiet: a tile whose renderer does
 // not use the #q-results convention (group-a, pa-lint) is left exactly as it
@@ -4455,7 +4508,7 @@ function renderToolView(util) {
         // four more from the worked example, scoring 6 instead of 3. A partly
         // answered question stays partly answered; spec-v755 asks for the rest.
         if (!fromQuery) {
-          applyExample(util, { skip: new Set([...hashKeys, ...remembered]) });
+          applyExampleWhenReady(util, body, { skip: new Set([...hashKeys, ...remembered]) });
         }
         // spec-v760: the second prefill path. A tile with no MCP adapter has no
         // field shard, so navigateTo could not fill anything before routing --

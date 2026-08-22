@@ -549,6 +549,11 @@ export const renderers = {
         out.appendChild(el('p', { text: `Dose: ${band.dose}; Interval: ${band.interval}` }));
       };
       ['abx-drug', 'abx-crcl'].forEach((id) => document.getElementById(id).addEventListener(id === 'abx-crcl' ? 'input' : 'change', run));
+      // Every other view in this file runs once after wiring. This one did not,
+      // so the tile rendered an empty result region on load even with the
+      // example CrCl already in the field -- the reader had to touch an input
+      // before the page said anything.
+      run();
     });
   },
 
