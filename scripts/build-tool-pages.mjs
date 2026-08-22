@@ -56,6 +56,7 @@ const GROUP_LABELS = {
   M: 'State & Coverage Reference',
   N: 'Pediatrics & Neonatal',
   O: 'High-Alert & Safety',
+  P: 'Revenue Cycle & Utilization',
 };
 
 // --- Parse UTILITIES from app.js. We can't import app.js under Node
@@ -435,6 +436,17 @@ function inputLabels(tileId) {
 // Rows past this go into a disclosure under the table, not into a count of
 // them. 46 pages used to print ten values, say "and 19 more fields", and then
 // state a result the reader had no way to reproduce.
+// Rows whose label names the method rather than a reading of the result.
+// A closed stoplist, not a shape test: "Lower HOMA-IR indicates greater insulin
+// sensitivity" has no numeric range and is still a reading, so only these
+// labels move.
+const METHOD_ROWS = new Set([
+  'formula', 'equation', 'calculation', 'derivation', 'method',
+  'scoring', 'points', 'weights', 'coefficients',
+  'components', 'factors', 'items', 'inputs', 'variables', 'structure',
+  'model', 'rule', 'criteria', 'range', 'denominator',
+]);
+
 const MAX_EXAMPLE_ROWS = 10;
 
 // A field label leads with the name of the thing and then qualifies it, so the
@@ -735,7 +747,13 @@ function pickRelated(tiles, current, index, meta, max = RELATED_MAX) {
 // description. Hand-authored copy can replace any of these in a
 // later PR by reading from `data/tool-copy/<id>.json` (not wired here).
 function buildPageHtml({ tile, desc, meta, related, copy, whatThisIs, optionLabels, fieldLabels }) {
-  const groupLabel = GROUP_LABELS[tile.group] || tile.group;
+  // A group with no label here printed its bare letter: `pa-lint` read
+  // "Home / P / Prior-Auth Packet Linter" in the breadcrumb, in the JSON-LD
+  // breadcrumb, and in the page keywords, while the app said "Revenue Cycle &
+  // Utilization". Falling back to the letter is what let that ship, so a group
+  // this map does not know is now a build failure.
+  const groupLabel = GROUP_LABELS[tile.group];
+  if (!groupLabel) throw new Error(`build-tool-pages: no label for group '${tile.group}' (${tile.id})`);
   const seoTitle = pageTitle(tile.name);
   const seoDesc = pageDescription(desc);
   const canonical = `${SITE}/tools/${tile.id}/`;
@@ -954,8 +972,16 @@ ${related.map((r) => `          <li><a href="${SITE}/tools/${r.id}/">${esc(r.nam
   // rows, none longer than 200 characters -- and none of it reached the page.
   // Rendered whole rather than capped: the widest table is 14 rows on one tile,
   // and a band table with rows missing is a scale that lies about its own ends.
-  const bands = (meta?.interpretation?.bands || [])
+  const allBands = (meta?.interpretation?.bands || [])
     .filter((b) => b && (b.range || b.range === 0) && b.text);
+  // Half the rows under that heading were not readings. 467 of them across 411
+  // tiles are labelled "Formula", "Points", "Components" and hold the algebra
+  // -- "DTS = exercise time(min) - (5 x ST deviation mm) - ..." -- which is how
+  // the number is produced, not what it means. A reader scanning for their
+  // score met an equation first. They keep their place on the page, one click
+  // down, under a heading that says what they are.
+  const bands = allBands.filter((b) => !METHOD_ROWS.has(String(b.range).trim().toLowerCase()));
+  const methodRows = allBands.filter((b) => METHOD_ROWS.has(String(b.range).trim().toLowerCase()));
   const bandsHtml = bands.length
     ? `<section class="tp-bands" aria-labelledby="tp-bands-h">
           <h2 id="tp-bands-h">What the result means</h2>
@@ -963,6 +989,14 @@ ${related.map((r) => `          <li><a href="${SITE}/tools/${r.id}/">${esc(r.nam
 ${bands.map((b) => `            <div class="tp-bands-row"><dt>${esc(String(b.range))}</dt><dd>${esc(b.text)}</dd></div>`).join('\n')}
           </dl>
         </section>`
+    : '';
+  const methodHtml = methodRows.length
+    ? `<details class="tp-method">
+          <summary>How it is calculated</summary>
+          <dl class="tp-bands-dl">
+${methodRows.map((b) => `            <div class="tp-method-row"><dt>${esc(String(b.range))}</dt><dd>${esc(b.text)}</dd></div>`).join('\n')}
+          </dl>
+        </details>`
     : '';
 
   // A question flow has no fields to pre-fill, so it gets the honest version of
@@ -1080,6 +1114,8 @@ ${datasetLd ? `    <script type="application/ld+json">\n${JSON.stringify(dataset
 
         ${howHtml}
 
+        ${methodHtml}
+
         ${whatHtml}
 
         ${whenHtml}
@@ -1186,7 +1222,7 @@ async function main() {
       desc = leadSentence(summary, tile.name);
     }
     if (!desc) {
-      desc = `${tile.name} - a deterministic tool in Sophie Well's ${GROUP_LABELS[tile.group] || tile.group} group.`;
+      desc = `${tile.name} - a deterministic tool in Sophie Well's ${GROUP_LABELS[tile.group]} group.`;
     } else {
       withRealDesc += 1;
     }

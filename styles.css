@@ -1959,6 +1959,38 @@ button:active { transform: translateY(1px) scale(0.985); }
   overflow-wrap: anywhere;
 }
 
+/* How the number is produced. A click away, because a reader scanning for
+   their score wants the reading first and the algebra only if they ask. */
+.tool-page .tp-method {
+  margin-bottom: var(--space-5);
+}
+.tool-page .tp-method > summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.05rem;
+  padding: 10px 0;
+}
+.tool-page .tp-method-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--space-3);
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+}
+.tool-page .tp-method-row dt {
+  flex: 0 0 9rem;
+  min-width: 0;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+.tool-page .tp-method-row dd {
+  flex: 1 1 14rem;
+  min-width: 0;
+  margin: 0;
+  color: var(--text-secondary);
+  overflow-wrap: anywhere;
+}
+
 .tool-page .tp-refs {
   margin-bottom: var(--space-5);
 }

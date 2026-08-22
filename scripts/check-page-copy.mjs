@@ -95,7 +95,11 @@ const DUPLICATE_LABELS_MAX = 0;
 // a build that stops reading the bands drops this to zero without failing
 // anything else, and 1387 pages quietly go back to showing a worked example
 // with no scale behind it.
-const BAND_PAGES_MIN = 1380;
+// 1376, not 1380: eleven pages whose whole "What the result means" table was
+// the formula for producing the number now show that under "How it is
+// calculated" instead and state no reading, which is what was true of them all
+// along. Every other page kept its readings.
+const BAND_PAGES_MIN = 1376;
 
 // Hub and topic list rows: a row may be clamped, but a clamped row must be
 // marked with an ellipsis and a marked row must actually have been clamped.

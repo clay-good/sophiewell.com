@@ -31,7 +31,7 @@ const GROUP_LABELS = {
   M: 'State & Coverage Reference',
   N: 'Pediatrics & Neonatal',
   O: 'High-Alert & Safety',
-  P: 'Revenue cycle & utilization',
+  P: 'Revenue Cycle & Utilization',
 };
 
 async function loadUtilities() {

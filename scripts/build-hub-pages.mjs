@@ -79,7 +79,7 @@ const GROUP_LABELS = {
   N: 'Pediatrics & Neonatal',
   O: 'High-Alert & Safety',
   // spec-v52 §10.1: revenue-cycle / utilization-management group.
-  P: 'Revenue cycle & utilization',
+  P: 'Revenue Cycle & Utilization',
 };
 const GROUP_ORDER = ['A', 'B', 'C', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P'];
 

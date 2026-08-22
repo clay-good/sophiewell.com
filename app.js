@@ -3554,7 +3554,7 @@ const GROUP_LABELS = {
   O: 'High-Alert & Safety',
   // spec-v52 §10.1: new top-level group for revenue-cycle / utilization
   // tiles. Ships with one tile (pa-lint) at v52-1b close.
-  P: 'Revenue cycle & utilization',
+  P: 'Revenue Cycle & Utilization',
 };
 
 
