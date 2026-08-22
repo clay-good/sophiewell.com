@@ -59,6 +59,16 @@ function tileDesc(id, name = '') {
   try { rec = getCalculator(id); } catch { rec = null; }
   return tileLine(TOOL_COPY.get(id) || rec?.summary || '', { name });
 }
+// The hub label, read as the tail of "For ...". Lowercasing the whole string
+// was close enough for four of the six and wrong for the other two: it printed
+// "For ems and field medicine" and "For case managers and um nurses". Only the
+// first character moves, and only when the first word is not an acronym.
+function crumbLabel(label) {
+  const first = String(label).split(' ')[0];
+  if (first === first.toUpperCase()) return label;
+  return label.charAt(0).toLowerCase() + label.slice(1);
+}
+
 const DIST = join(ROOT, 'dist');
 const SITE = 'https://sophiewell.com';
 
@@ -292,7 +302,7 @@ ${JSON.stringify(breadcrumb, null, 2)}
         <nav class="tp-breadcrumb" aria-label="Breadcrumb">
           <a href="/">Home</a>
           <span aria-hidden="true"> / </span>
-          <span aria-current="page">For ${esc(hub.label.toLowerCase())}</span>
+          <span aria-current="page">For ${esc(crumbLabel(hub.label))}</span>
         </nav>
 
         <h1 class="tp-h1">${esc(hub.h1)}</h1>

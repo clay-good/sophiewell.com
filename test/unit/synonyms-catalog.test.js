@@ -10,15 +10,18 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { resolvePrompt } from '../../lib/prompt.js';
 import { normalizePhrase } from '../../lib/synonyms.js';
+import { tileName } from '../../scripts/lib/tile-name.mjs';
 
 function catalogTiles() {
   const src = readFileSync(new URL('../../app.js', import.meta.url), 'utf8');
   const m = src.match(/const UTILITIES = \[([\s\S]*?)\n\];/);
   if (!m) throw new Error('synonyms-catalog: could not find UTILITIES array in app.js');
   const tiles = [];
-  const re = /\{ id: '([^']+)',\s*name: '([^']*)'/g;
-  let mm;
-  while ((mm = re.exec(m[1]))) tiles.push({ id: mm[1], name: mm[2], audiences: [], desc: '' });
+  for (const line of m[1].split('\n')) {
+    const id = line.match(/id: '([^']+)'/);
+    const name = tileName(line);
+    if (id && name) tiles.push({ id: id[1], name, audiences: [], desc: '' });
+  }
   return tiles;
 }
 

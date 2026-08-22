@@ -25,6 +25,8 @@ import { existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
 
+import { tileName } from './lib/tile-name.mjs';
+
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
 const DIST = join(ROOT, 'dist');
@@ -62,9 +64,14 @@ async function loadUtilities() {
   const tiles = [];
   for (const line of arr[1].split('\n')) {
     const id = line.match(/id:\s*'([^']+)'/);
-    const name = line.match(/name:\s*'([^']+)'/);
+    // Via the shared reader, not `name: '([^']+)'` -- that stops at the escaped
+    // quote inside `'CDAI (Crohn\'s Disease Activity Index)'`, and this page
+    // listed two tiles as "CDAI (Crohn\" and "SES-CD (Crohn\". The other six
+    // generators were fixed in 34053398; this one was missed, so the bug stayed
+    // live on the page that lists every tool.
+    const name = tileName(line);
     const group = line.match(/group:\s*'([^']+)'/);
-    if (id && name && group) tiles.push({ id: id[1], name: name[1], group: group[1] });
+    if (id && name && group) tiles.push({ id: id[1], name, group: group[1] });
   }
   if (tiles.length === 0) throw new Error('build-tools-index: zero tiles parsed.');
   return tiles;

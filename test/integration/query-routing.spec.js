@@ -16,6 +16,7 @@ import { test, expect } from '@playwright/test';
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
+import { tileName } from '../../scripts/lib/tile-name.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..', '..');
 
@@ -25,8 +26,8 @@ function sample(n) {
   const tiles = [];
   for (const line of arr.split('\n')) {
     const id = line.match(/id: '([^']+)'/);
-    const name = line.match(/name: '([^']+)'/);
-    if (id && name) tiles.push({ id: id[1], name: name[1] });
+    const name = tileName(line);
+    if (id && name) tiles.push({ id: id[1], name });
   }
   const fields = {};
   for (const f of ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',

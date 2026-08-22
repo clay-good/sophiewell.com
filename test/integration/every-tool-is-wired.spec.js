@@ -19,6 +19,7 @@ import { test, expect } from '@playwright/test';
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
+import { tileName } from '../../scripts/lib/tile-name.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..', '..');
 
@@ -38,8 +39,8 @@ function catalog() {
   const out = [];
   for (const line of arr.split('\n')) {
     const id = line.match(/id: '([^']+)'/);
-    const nm = line.match(/name: '([^']+)'/);
-    if (id && nm) out.push({ id: id[1], name: nm[1] });
+    const nm = tileName(line);
+    if (id && nm) out.push({ id: id[1], name: nm });
   }
   return out;
 }

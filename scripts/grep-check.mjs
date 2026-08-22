@@ -34,6 +34,13 @@ const COMMITMENTS_RUNTIME_TESTS = new Set([
 const ESLINT_CONFIG = '.eslintrc.json';
 
 const FORBIDDEN = [
+  // A tile name read with a pattern that stops at the first quote. Two names
+  // in UTILITIES carry an escaped apostrophe -- 'CDAI (Crohn\\'s Disease
+  // Activity Index)' -- so `name: '([^']+)'` yields "CDAI (Crohn\\", which
+  // reached the browser tab of two tool pages and the row of two more on
+  // /tools/. Every generator reads the array with scripts/lib/tile-name.mjs
+  // instead, and this keeps the naive pattern from coming back.
+  { name: "naive tile-name parse (use scripts/lib/tile-name.mjs)", regex: /name:\\s\*'\(\[\^'\]\+\)'|name:\s*'\(\[\^'\]/ },
   { name: 'innerHTML',           regex: /\binnerHTML\b/ },
   { name: 'outerHTML',           regex: /\bouterHTML\b/ },
   { name: 'insertAdjacentHTML',  regex: /\binsertAdjacentHTML\b/ },
@@ -96,7 +103,12 @@ async function main() {
     const lines = text.split(/\r?\n/);
     for (let i = 0; i < lines.length; i += 1) {
       const line = lines[i];
+      // A comment describing a forbidden pattern is documentation, not a use.
+      // Only the tile-name rule needs this: the others name an API, and an API
+      // named in a comment is worth flagging.
+      const isComment = /^\s*(?:\/\/|\*|\/\*)/.test(line);
       for (const rule of FORBIDDEN) {
+        if (isComment && rule.name.startsWith('naive tile-name')) continue;
         if (rule.regex.test(line)) {
           // Allow eslint config to mention forbidden DOM names in its rule strings.
           if (rel === ESLINT_CONFIG && (rule.name === 'innerHTML' || rule.name === 'outerHTML' || rule.name === 'insertAdjacentHTML')) {

@@ -19,6 +19,7 @@ import { test, expect } from '@playwright/test';
 import { readFileSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
+import { tileName } from '../../scripts/lib/tile-name.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..', '..');
 
@@ -28,8 +29,8 @@ function riskyTiles(limit) {
   const names = {};
   for (const line of arr.split('\n')) {
     const id = line.match(/id: '([^']+)'/);
-    const nm = line.match(/name: '([^']+)'/);
-    if (id && nm) names[id[1]] = nm[1];
+    const nm = tileName(line);
+    if (id && nm) names[id[1]] = nm;
   }
   const fields = {};
   for (const f of readdirSync(join(ROOT, 'data', 'fields'))) {
