@@ -73,9 +73,17 @@ test.describe('static tool pages', () => {
     for (const id of ids) {
       const resp = await page.goto(`${DIST}/tools/${id}/`, { waitUntil: 'load' });
       if (!resp || resp.status() >= 400) { bad.push(`${id}: HTTP ${resp && resp.status()}`); continue; }
-      const o = await page.evaluate(() => ({
-        s: document.documentElement.scrollWidth, c: document.documentElement.clientWidth,
-      }));
+      // Measured with every disclosure OPEN, which is what a reader who taps
+      // one gets. A page now folds four things away -- the citation, the full
+      // field descriptions, the fields past the visible list, the values past
+      // the visible example, and the method rows -- and a closed <details>
+      // lays nothing out, so measuring the folded page exempts most of the
+      // text on it. `sternbach` ran 330px wide on a 320px phone with its field
+      // descriptions open, and the folded measurement called it clean.
+      const o = await page.evaluate(() => {
+        document.querySelectorAll('details').forEach((d) => { d.open = true; });
+        return { s: document.documentElement.scrollWidth, c: document.documentElement.clientWidth };
+      });
       if (o.s > o.c + 1) bad.push(`${id}: ${o.s}/${o.c}`);
     }
     expect(bad, `static tool pages with horizontal scroll at 320px:\n  - ${bad.join('\n  - ')}`).toEqual([]);

@@ -1889,6 +1889,10 @@ button:active { transform: translateY(1px) scale(0.985); }
   padding-left: 1.2em;
   color: var(--text-secondary);
   line-height: 1.55;
+  /* Same as the visible list above it. Without this, one unbreakable token in
+     a full field description pushed sternbach 10px past a 320px phone once the
+     disclosure was open. */
+  overflow-wrap: anywhere;
 }
 .tool-page .tp-io-full li { margin: 0 0 var(--space-2); }
 
