@@ -51,7 +51,13 @@ const STATIC_DESC_MAX = 158;
 // and an option list exported from lib/. Then 70, until it learned the last
 // of those: a bank handed whole to a builder that mints the DOM ids itself,
 // which no view file ever names. Identified by the values it covers instead.
-const RAW_VALUE_ROWS_MAX = 46;
+// 40 since the bank reader learned two more shapes -- an option list written
+// as tuples rather than records, and one nested inside an array of item
+// records -- and stopped counting the same bank twice when a module exports it
+// and then spreads it into a second array. That took the opaque ones:
+// `over90`, `first-5-90`, `fall-50-by-8-days`, `alot`. Most of what is left
+// reads as English on its own ("morphine", "medicare", "emergency").
+const RAW_VALUE_ROWS_MAX = 40;
 
 // Example labels with no name in front of the criterion, so nothing shorter
 // than the clamp can be printed. Was 60 before the value legend an

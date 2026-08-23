@@ -317,7 +317,21 @@ let libBanks = null;
 function bankFromArray(arr) {
   const out = new Map();
   for (const item of arr) {
-    if (!item || typeof item !== 'object' || Array.isArray(item)) return null;
+    if (!item || typeof item !== 'object') return null;
+    // A bank is written either as records or as tuples. `wayne-index` writes
+    // `[['over90', 'Above 90/min', 3], ...]`, value first and display second,
+    // and rejecting those printed "over90" on the page where the select reads
+    // "Above 90/min". The scoping rule is unchanged -- a tuple bank still has
+    // to cover every value the field declares, and to be the only bank that
+    // does -- so reading one more shape cannot make a wrong match, only fewer
+    // unresolved ones.
+    if (Array.isArray(item)) {
+      const [value, shown] = item;
+      if (value === undefined || value === null) return null;
+      if (typeof value === 'object' || typeof shown !== 'string' || !shown.trim()) return null;
+      out.set(String(value), shown);
+      continue;
+    }
     const { value } = item;
     const shown = typeof item.text === 'string' ? item.text : item.label;
     if (value === undefined || typeof shown !== 'string' || !shown.trim()) return null;
@@ -332,14 +346,37 @@ async function loadLibBanks() {
     let mod;
     try { mod = await import(pathToFileURL(join(LIB, file)).href); } catch { continue; }
     for (const value of Object.values(mod)) {
+      if (!Array.isArray(value) || value.length < 2) continue;
       // Two entries at least: a one-entry array names nothing and would match
       // any single-value field.
-      if (!Array.isArray(value) || value.length < 2) continue;
       const options = bankFromArray(value);
-      if (options) banks.push(options);
+      if (options) { banks.push(options); continue; }
+      // An array of item records, each carrying its own option list --
+      // `WAYNE_SIGNS` is `[{ key: 'pulse', text: 'Casual pulse rate', options:
+      // [['over90', 'Above 90/min', 3], ...] }, ...]`. The item list is not a
+      // bank, but every `options` inside it is one. Harvested separately; the
+      // yes/no ones collide with each other and are refused by the uniqueness
+      // rule, which is what should happen to them.
+      for (const item of value) {
+        if (!item || typeof item !== 'object' || Array.isArray(item)) continue;
+        if (!Array.isArray(item.options) || item.options.length < 2) continue;
+        const nested = bankFromArray(item.options);
+        if (nested) banks.push(nested);
+      }
     }
   }
-  return banks;
+  // The same bank reached twice is one bank. `lib/wayne-index-v527.js` exports
+  // WAYNE_SIGNS and then WAYNE_ITEMS, which spreads it, so the pulse options
+  // were harvested twice and the "exactly one covering bank" rule refused an
+  // answer it had found twice over. Ambiguity means two DIFFERENT lists, not
+  // one list counted twice.
+  const seen = new Set();
+  return banks.filter((b) => {
+    const key = [...b].map(([k, v]) => `${k}\u0000${v}`).sort().join('\u0001');
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
 }
 
 function bankText(declared, value) {
