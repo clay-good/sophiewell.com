@@ -92,6 +92,10 @@ self.addEventListener('fetch', (event) => {
   const url = new URL(request.url);
   if (!isSameOrigin(url)) return;
 
+  // Report configuration is a live kill-switch surface. Never satisfy an API
+  // request with an old shell-cache response.
+  if (url.pathname.startsWith('/api/')) return;
+
   if (isDataRequest(url)) {
     // Cache-first for data shards; fall through to network on miss and store.
     event.respondWith(

@@ -2,18 +2,24 @@
 
 ## Overview
 
-sophiewell.com is a single-page static web application. There is no backend. The
-browser receives `index.html`, `styles.css`, and `app.js` from the same origin,
-boots a vanilla JavaScript application, and renders the home view (a
+sophiewell.com is an offline-first single-page application. Calculation remains
+entirely client-side. The browser receives `index.html`, `styles.css`, and
+`app.js` from the same origin, boots a vanilla JavaScript application, and renders the home view (a
 hero-search combobox over all 1145 utilities plus a static browse-by-category
 nav). Each utility runs entirely client side and operates either on user-supplied
 input or on bundled reference data served from the same origin.
 
+The one hosted write path is an anonymous tool report: a separate API-only
+Cloudflare Worker validates a bounded, user-initiated submission with Turnstile
+and writes it to a private D1 queue. The Worker is routed only to
+`/api/reports*`, has no static asset binding, and is never invoked during normal
+tool use. See [calculator-reports.md](calculator-reports.md).
+
 The application is structurally identical in spirit to encryptalotta.com: one
 HTML file, one CSS file, one JavaScript file (or a small set of vanilla ES
-modules), a data folder, and a service worker. A Content Security Policy
-forbids outbound network connections except to the same origin. The user can
-save the page and use it offline forever.
+modules), a data folder, and a service worker. A Content Security Policy keeps
+connections same-origin and permits only the lazy Turnstile script/frame
+needed by reporting. The user can save the page and use it offline forever.
 
 ## Diagram
 
@@ -38,16 +44,16 @@ save the page and use it offline forever.
 |  +---------------------+  |         |                                   |
 |  | Cache storage       |  |         |  _headers                         |
 |  |  (offline copy of   |  |         |                                   |
-|  |   shell + shards)   |  |         |  No application server.           |
-|  +---------------------+  |         |  No database.                     |
+|  |   shell + shards)   |  |         |  Separate report API Worker.     |
+|  +---------------------+  |         |  Private report D1 queue.        |
 |                           |         |  No analytics endpoint.           |
-|  CSP: connect-src 'self'  |         |  No telemetry.                    |
+|  CSP: bounded exceptions  |         |  No telemetry.                    |
 +---------------------------+         +-----------------------------------+
 ```
 
-There is no backend. There is no API. There is no analytics endpoint. There is
-no telemetry. There is no AI inference. The diagram on the right is a static
-file host; it serves files and nothing else.
+There is no server-side calculator, analytics endpoint, telemetry, or AI
+inference. Pages serves ordinary traffic. The isolated report Worker accepts
+only the deliberate feedback form and cannot read or serve the asset tree.
 
 ## Runtime Architecture
 
@@ -118,14 +124,13 @@ Each module has a unit-test suite in `test/unit/{tree,screener,table,print}.test
 covering pure helpers plus the render path via the minimal DOM stub at
 `test/fixtures/dom-stub.js`.
 
-## Why No Backend
+## Why calculation stays client-side
 
-A backend would introduce operating cost, an account system or rate limiting,
-a privacy surface for user input, a maintenance burden, and a dependency the
-user cannot inspect. None of the utilities require server computation. Every
-lookup is a search over a bundled dataset; every calculator is a published
-formula. Holding the line against a backend is the single most important
-durability decision in the project.
+None of the utilities require server computation. Every lookup is a search over
+a bundled dataset; every calculator is a published formula. The report endpoint
+does not participate in calculation and fails closed without affecting any
+tool. Keeping those paths separate preserves offline use and constrains the new
+privacy and maintenance surface to one explicit action.
 
 ## v4 group expansion (post-v29 surface)
 

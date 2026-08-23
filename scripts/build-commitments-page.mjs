@@ -13,27 +13,27 @@ const DIST = join(ROOT, 'dist');
 const SITE = 'https://sophiewell.com';
 const CANONICAL = `${SITE}/commitments/`;
 const TITLE = 'Sophie Well commitments - what we promise, and how it stays true';
-const DESCRIPTION = 'Eight commitments: no ads, no login, no telemetry, no third-party fetch, no AI, no cookies, no paid tier, MIT forever. Enforced on every release.';
+const DESCRIPTION = 'Eight commitments: no ads, no login, no telemetry, local calculation, no AI, no cookies, no paid tier, MIT forever. Enforced on every release.';
 
 const COMMITMENTS = [
   {
     n: '1',
-    heading: 'No outbound network calls',
-    body: 'Sophie does not call any server, ever. Every calculation runs in your browser. Closing the page or going offline does not change what Sophie can do.',
-    enforcement: "_headers pins Content-Security-Policy connect-src 'self'. scripts/check-commitments.mjs asserts that shape on every build.",
+    heading: 'No background network calls',
+    body: 'Every calculation runs in your browser and keeps working offline. The only hosted write is a problem report you deliberately open and send after the dialog explains which context categories apply.',
+    enforcement: "_headers pins Content-Security-Policy connect-src 'self'. The report Worker validates the same-origin request and stores only a bounded reproduction record.",
     checkPath: 'scripts/check-commitments.mjs',
   },
   {
     n: '2',
-    heading: 'No third-party scripts',
-    body: "Sophie loads no code from anyone else's servers. All JavaScript (and the optional on-device OCR engine's WebAssembly) is part of the page you downloaded, served from this origin.",
-    enforcement: "_headers pins script-src to 'self' plus 'wasm-unsafe-eval' (which permits only same-origin WebAssembly compilation for the vendored on-device OCR engine, not general eval and not any third-party origin). The grep-check rule and the commitments check both deny any third-party script vendor and forbid 'unsafe-inline', wildcards, and off-origin script sources.",
+    heading: 'No third-party code during ordinary use',
+    body: "All calculation code and the optional on-device OCR engine ship from Sophie Well. Cloudflare Turnstile is the one exception and loads only after you open Report a problem.",
+    enforcement: "_headers allows only 'self', same-origin WebAssembly, and challenges.cloudflare.com for Turnstile. The commitments check rejects every other script or frame origin.",
     checkPath: 'scripts/grep-check.mjs',
   },
   {
     n: '3',
     heading: 'No cookies',
-    body: 'Sophie sets no cookies, ever. There is no cookie banner because there is nothing to consent to.',
+    body: 'Sophie sets no first-party cookies. There is no account, advertising profile, or cross-visit identity.',
     enforcement: 'grep-check denies any cookie-writing API call in source files outside the test suite.',
     checkPath: 'scripts/grep-check.mjs',
   },
@@ -48,7 +48,7 @@ const COMMITMENTS = [
     n: '5',
     heading: 'No analytics, telemetry, or beaconing',
     body: "Sophie does not measure you. No analytics, no session recording, no error reporting to anyone else's server, no 'anonymous usage data.'",
-    enforcement: 'grep-check denies a list of analytics / RUM / error-reporting vendor identifiers in any source file. The CSP connect-src self also blocks the network half at runtime.',
+    enforcement: 'grep-check denies analytics, RUM, session-recording, and error-reporting vendors. The reporting path accepts only an intentional bounded form submission.',
     checkPath: 'scripts/grep-check.mjs',
   },
   {
@@ -102,7 +102,7 @@ const VENDORED = [
     upstream: 'https://github.com/naptha/tesseract.js',
     version: '5.1.1 (+ tesseract.js-core 5.1.0, tessdata_fast eng)',
     license: 'Apache-2.0',
-    purpose: 'Optional, user-triggered, fully on-device OCR for scanned PDFs and images in the Prior-Auth Packet Linter. Loads on demand; runs entirely in the tab; no network, no AI service. Same-origin WebAssembly requires the narrow CSP token script-src \'wasm-unsafe-eval\' (no general eval, no third-party origin; connect-src \'self\' is unchanged).',
+    purpose: 'Optional, user-triggered, fully on-device OCR for scanned PDFs and images in the Prior-Auth Packet Linter. Loads on demand; runs entirely in the tab; no AI service. Same-origin WebAssembly requires the narrow CSP token script-src \'wasm-unsafe-eval\' (no general eval).',
   },
 ];
 

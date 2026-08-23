@@ -46,17 +46,19 @@ segment.
 
 ## Client-side processing of clinical and billing data
 
-Every calculation, lookup, and decode runs in the browser. Inputs the
-user types into a tile — clinical values, billing codes, pasted
-artifact text — never cross the network. The CSP `connect-src 'self'`
-directive enforces this; the absence of any backend or edge function
-that sees user input enforces it architecturally. There is no
-server-side processing surface on sophiewell.com that *could* see
-clinical data, by construction.
+Every calculation, lookup, and decode runs in the browser. Nothing is uploaded
+in the background. The explicit **Report a problem** action is the sole
+exception: after explaining which context categories apply, it sends bounded
+tool context to a private queue. Sensitive tools and patient-document
+generators attach no form fields, generated output, query parameters, or URL
+state, known identity/contact controls are skipped, and the dialog forbids
+patient identifiers. The report endpoint never participates in calculation.
 
 ## Bounded runtime-dependency budget
 
-sophiewell.com ships zero runtime dependencies today. The project
+sophiewell.com ships zero packaged runtime dependencies today. Cloudflare
+Turnstile is a reviewed external script that loads only inside the report
+dialog. The project
 commits to a maximum of **two pinned, exact-version runtime
 dependencies** going forward, each justified against a clinical use
 case that cannot be hand-rolled at small cost (see

@@ -47,8 +47,13 @@ test('every tool route renders without console errors and shows an h1', async ({
     await page.goto('/#' + id, { waitUntil: 'load' });
     // Allow async data fetches and the meta-block source stamp to settle.
     await page.waitForTimeout(120);
-    const h1 = await page.locator('.content > h1').first().textContent().catch(() => null);
+    const h1 = await page.locator('.content h1').first().textContent().catch(() => null);
     if (!h1 || !h1.trim()) failures.push({ id, reason: 'no h1' });
+    const reportButtons = await page.getByRole('button', { name: 'Report a problem' }).count();
+    if (reportButtons !== 1) failures.push({ id, reason: `report buttons: ${reportButtons}` });
+    else if (!await page.getByRole('button', { name: 'Report a problem' }).isVisible()) {
+      failures.push({ id, reason: 'report button hidden' });
+    }
     const newErrs = errors.slice(before);
     if (newErrs.length) failures.push({ id, reason: 'errors', errors: newErrs });
   }
@@ -97,7 +102,7 @@ test('every form control in every tool view has an accessible name', async ({ pa
 
 // Accessibility: heading levels in a rendered tile body must not skip a level
 // (WCAG 1.3.1 Info and Relationships, 2.4.10 Section Headings). The page name
-// is the `.content > h1`; a renderer whose first section heading is an <h3>
+// is the `.content h1`; a renderer whose first section heading is an <h3>
 // produces an h1->h3 skip that a screen-reader's heading navigation reports as a
 // missing level. The static a11y-check only validates heading order in
 // index.html, and the h1 test above only checks h1 presence, so this dynamic

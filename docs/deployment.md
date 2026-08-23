@@ -1,9 +1,11 @@
 # Deployment
 
-sophiewell.com deploys to Cloudflare Pages. There is no application server.
-The output of `npm run build` is a directory of static files served from
-the same origin. The repository's `_headers` file applies the security
-headers from spec section 7.
+sophiewell.com deploys its application to Cloudflare Pages. A separate API-only
+Worker accepts tool reports at `/api/reports*`; it does not serve or compute
+tools. The output of `npm run build` is a directory of static files served from
+the same origin. The repository's `_headers` file applies the security headers.
+Report launch and D1 maintenance are in
+[calculator-reports.md](calculator-reports.md).
 
 ## One-time Cloudflare Pages setup
 
@@ -47,7 +49,9 @@ headers from spec section 7.
 After every production deploy, verify in a browser developer tools panel
 or with `curl -I https://sophiewell.com/`:
 
-- `Content-Security-Policy: default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; form-action 'self'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'`
+- `Content-Security-Policy` allows same-origin app resources plus
+  `challenges.cloudflare.com` only in `script-src` and `frame-src` for the
+  user-opened Turnstile widget. `connect-src` remains `'self'`.
 - `Strict-Transport-Security: max-age=31536000; includeSubDomains; preload`
 - `X-Content-Type-Options: nosniff`
 - `X-Frame-Options: DENY`
@@ -73,12 +77,13 @@ External grades to check:
 5. Open `em-mdm` (2021 E/M level by medical decision-making); confirm the
    AMA notice is shown and no verbatim AMA descriptors appear.
 6. In the developer tools console:
-   - Run `await fetch('https://example.com/')` and verify it is blocked
-     by CSP.
+   - Run `await fetch('https://example.com/')` and verify it is blocked by CSP.
    - Run `localStorage.length`, `sessionStorage.length`, `document.cookie`
      and verify all three are zero / empty.
 7. Toggle the network panel offline and reload; the page should still
    render via the service-worker shell cache.
+8. Open a calculator, send one report, and verify the row through the query in
+   `docs/calculator-reports.md`.
 
 ## Rollback
 
@@ -89,5 +94,5 @@ change.
 
 ## Cost
 
-Cloudflare Pages free tier covers the expected traffic. The only ongoing
-cost is the domain registration (approximately ten dollars per year).
+Pages, Workers, Turnstile, and D1 free tiers cover the bounded expected traffic.
+The hard 200-report daily ceiling limits D1 writes.

@@ -4422,7 +4422,14 @@ function renderToolView(util) {
   // (HTML disallows multiple main landmarks; some screen readers also get
   // confused). The .content class still gets the encryptalotta panel chrome.
   const content = el('section', { class: 'content', 'aria-label': util.name });
-  content.appendChild(el('h1', { text: util.name }));
+  const title = el('h1', { text: util.name });
+  const report = el('button', {
+    type: 'button',
+    class: 'report-trigger',
+    text: 'Report a problem',
+  });
+  const titleRow = el('div', { class: 'tool-title-row' }, [title, report]);
+  content.appendChild(titleRow);
 
   if (util.clinical && util.group !== 'I') {
     content.appendChild(
@@ -4446,6 +4453,31 @@ function renderToolView(util) {
   // the tool body, not above it.
   const body = el('div', { id: 'tool-body', class: 'tool-body' });
   content.appendChild(body);
+
+  // One shared mount covers every current tool and every future tool that
+  // enters through renderToolView. The reporting client and Turnstile load
+  // only after this deliberate click, so ordinary tool use remains local.
+  report.addEventListener('click', () => {
+    report.disabled = true;
+    import('./report-feedback.js').then((module) => {
+      if (!report.isConnected) return;
+      report.disabled = false;
+      const outputRegion = body.querySelector('#q-results')
+        || body.querySelector('.tool-output, [aria-label="Output"], [aria-live="polite"]')
+        || body;
+      return module.openReportDialog({
+        tool: util,
+        inputRegion: body,
+        outputRegion,
+        trigger: report,
+        host: content,
+      });
+    }).catch(() => {
+      if (!report.isConnected) return;
+      report.disabled = false;
+      report.textContent = 'Reporting unavailable';
+    });
+  });
 
   // Attach to the live DOM before invoking the renderer. Several renderers
   // call document.getElementById on inputs they just appended, which only

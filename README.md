@@ -6,7 +6,7 @@
 
 <p align="center">
   <strong>1564 free healthcare calculators that run entirely in your browser.</strong><br>
-  No servers, no accounts, no ads, no telemetry, no AI.
+  No accounts, no ads, no telemetry, no AI.
 </p>
 
 <p align="center">
@@ -39,8 +39,12 @@ For example, on [Wells Score for PE](https://sophiewell.com/#wells-pe)
 you tick the criteria that apply and get
 `Wells PE total 4.5 (PE-likely group, moderate probability)`.
 
-Nothing you type leaves your device. After the page loads there are no
-network calls, no accounts, and it keeps working offline.
+Calculations run locally and keep working offline. Nothing leaves your device
+unless you deliberately choose **Report a problem**; that action sends the
+tool URL, current bounded inputs, results, and an optional short note
+to a private maintenance queue. Sensitive tools attach no form entries,
+generated text, query parameters, or URL state. There are no accounts or
+background telemetry.
 
 ## Use it
 

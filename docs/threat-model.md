@@ -35,11 +35,30 @@ maliciously crafted dependency could exfiltrate that text.
 Mitigations:
 - The CSP `connect-src 'self'` directive blocks outbound connections to any
   origin other than the page's own.
-- The application makes no outbound network requests at runtime by design.
+- Ordinary tool use makes no outbound requests. The deliberate report POST is
+  same-origin, strictly bounded, and validated by an API-only Worker.
 - Verified by attempting a `fetch` to a third-party URL from the console;
   the request must be blocked.
 
-### T3. Supply-chain compromise via runtime dependencies
+### T3. Abuse or disclosure through tool reports
+
+A public write endpoint could be flooded, or a clinician could accidentally
+include patient identifiers in feedback.
+
+Mitigations:
+- Turnstile is verified server-side for the exact action and hostname.
+- A zone WAF rate limit runs before the Worker; D1 enforces global and
+  privacy-preserving per-reporter daily ceilings plus duplicate suppression.
+- The body and every stored field are bounded. Encoded bodies, unknown keys,
+  unsafe control characters, unknown tool IDs, and mismatched URLs are rejected.
+- Sensitive tools and patient-document generators attach no form fields,
+  generated output, query parameters, or URL state;
+  identity/contact/file controls are skipped; the dialog explicitly forbids
+  patient identifiers.
+- Raw IP addresses, user agents, identities, and Turnstile tokens are not stored
+  by the application in D1.
+
+### T4. Supply-chain compromise via runtime dependencies
 
 Compromised npm packages could ship malicious code into the bundle.
 
@@ -50,7 +69,7 @@ Mitigations:
 - Bundled data is hashed; the application verifies SHA-256 of each manifest
   on first read.
 
-### T4. Tampered data shards in transit or storage
+### T5. Tampered data shards in transit or storage
 
 A network attacker, a CDN compromise, or an accidental file replacement
 could substitute an attacker-controlled data shard.
@@ -63,7 +82,7 @@ Mitigations:
   and surfaces a clear error.
 - HSTS, HTTPS-only, and same-origin policy reduce the in-transit risk.
 
-### T5. Stale data presented as authoritative
+### T6. Stale data presented as authoritative
 
 Healthcare data changes (annual ICD updates, quarterly NCCI, weekly NADAC,
 daily NDC). Stale data presented without dates would mislead.
@@ -74,7 +93,7 @@ Mitigations:
 - The Limitations section of the README documents typical update cadence
   per dataset.
 
-### T6. Misuse of clinical calculators as decision tools
+### T7. Misuse of clinical calculators as decision tools
 
 A user might rely on a calculator to make a clinical decision the
 calculator was not designed to make.
@@ -87,7 +106,7 @@ Mitigations:
 - No utility produces a recommendation; only a computed value or a
   referenced fact.
 
-### T7. Clickjacking and embedding
+### T8. Clickjacking and embedding
 
 A hostile site could iframe the application to trick users into actions.
 
@@ -95,7 +114,7 @@ Mitigations:
 - `frame-ancestors 'none'` in the CSP.
 - `X-Frame-Options: DENY` header.
 
-### T8. MIME confusion and content sniffing
+### T9. MIME confusion and content sniffing
 
 A maliciously named file could be interpreted as a script.
 
@@ -103,7 +122,7 @@ Mitigations:
 - `X-Content-Type-Options: nosniff` header.
 - All shipped files have correct MIME types from the static host.
 
-### T9. Cross-origin reads of sensitive page state
+### T10. Cross-origin reads of sensitive page state
 
 Another origin could try to read window state if the page allowed it.
 

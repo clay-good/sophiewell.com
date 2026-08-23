@@ -3,13 +3,13 @@
 //
 // Enforces the machine-checkable half of Sophie's eight public commitments:
 //
-//   §3.1  No outbound network calls
-//         -> _headers CSP `connect-src 'self'` is asserted here at build time.
+//   §3.1  No background outbound network calls
+//         -> _headers CSP `connect-src 'self'` is asserted here at build time;
+//            the only hosted write is the deliberate same-origin report POST.
 //            (The Playwright runtime assertion is a separate test, scope of
 //            a future wave.)
-//   §3.2  No third-party scripts
-//         -> _headers CSP `script-src 'self'` asserted here. (HTML scan that
-//            every <script src> is relative is enforced by grep-check.)
+//   §3.2  One reviewed third-party script exception
+//         -> Cloudflare Turnstile may load only after the report dialog opens.
 //   §3.4  No persistent storage outside an allowlist
 //         -> every localStorage.setItem(...) / sessionStorage.setItem(...)
 //            in scanned source must pass a string literal present in
@@ -259,9 +259,14 @@ async function checkHeadersCsp() {
     violations.push({ file: '_headers', line: 0, msg: `connect-src must be exactly 'self' (spec-v50 §3.1); found: ${connectSrc ? connectSrc.join(' ') : '(missing)'}` });
   }
   const scriptSrc = getDirective('script-src');
-  if (!scriptSrc || !scriptSrc.includes("'self'") || scriptSrc.some((tok) => tok.startsWith('http') || tok === '*' || tok === "'unsafe-inline'")) {
-    // Inline hashes (sha256-...) are permitted; 'self' is required; no http or wildcard.
-    violations.push({ file: '_headers', line: 0, msg: `script-src must be 'self' (+ inline sha256 hashes only) per spec-v50 §3.2; found: ${scriptSrc ? scriptSrc.join(' ') : '(missing)'}` });
+  const allowedScriptSources = new Set(["'self'", "'wasm-unsafe-eval'", 'https://challenges.cloudflare.com']);
+  if (!scriptSrc || !scriptSrc.includes("'self'") || !scriptSrc.includes('https://challenges.cloudflare.com')
+    || scriptSrc.some((tok) => !allowedScriptSources.has(tok) && !tok.startsWith("'sha256-"))) {
+    violations.push({ file: '_headers', line: 0, msg: `script-src must allow only self, wasm, inline hashes, and the lazy Turnstile origin; found: ${scriptSrc ? scriptSrc.join(' ') : '(missing)'}` });
+  }
+  const frameSrc = getDirective('frame-src');
+  if (!frameSrc || frameSrc.length !== 1 || frameSrc[0] !== 'https://challenges.cloudflare.com') {
+    violations.push({ file: '_headers', line: 0, msg: `frame-src must be exactly the Turnstile origin; found: ${frameSrc ? frameSrc.join(' ') : '(missing)'}` });
   }
   return violations;
 }

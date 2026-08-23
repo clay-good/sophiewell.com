@@ -5,11 +5,9 @@
 //   sbom.json       CycloneDX 1.5 minimal structure (machine-readable)
 //   sbom.md         Human-readable summary
 //
-// Sophie Well ships zero runtime third-party dependencies (the deployed
-// site is index.html + styles.css + app.js + a few JSON shards). The only
-// dependencies are dev/build tools, which are pinned to exact versions in
-// package.json. This script captures them, the runtime asset SHA-256s,
-// and the engines pin so reviewers can reproduce the exact bundle.
+// Sophie Well ships no packaged runtime dependency. Cloudflare Turnstile is a
+// reviewed external script loaded only when a user opens the report dialog.
+// Dev/build tools are pinned to exact versions in package.json.
 
 import { readFile, writeFile, readdir, stat } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
@@ -27,6 +25,10 @@ const RUNTIME_FILES = [
   'index.html',
   'styles.css',
   'app.js',
+  'report-feedback.js',
+  'report-policy.js',
+  'theme.js',
+  'file-origin-guard.js',
   'sw.js',
   'site.webmanifest',
   'robots.txt',
@@ -37,6 +39,14 @@ const RUNTIME_FILES = [
   'favicon-16x16.png',
   'favicon-32x32.png',
   'apple-touch-icon.png',
+];
+
+// Runtime files deployed to the isolated report Worker. report-policy.js is
+// intentionally shared so the browser and edge enforce the same privacy rule.
+const EDGE_RUNTIME_FILES = [
+  'report-worker.mjs',
+  'report-catalog.js',
+  'report-policy.js',
 ];
 
 async function sha256(buf) {
@@ -72,6 +82,15 @@ for (const f of RUNTIME_FILES) {
   runtime.push({ path: f, bytes: s.size, sha256: h });
 }
 
+const edgeRuntime = [];
+for (const f of EDGE_RUNTIME_FILES) {
+  const p = resolve(ROOT, f);
+  if (!existsSync(p)) continue;
+  const s = await stat(p);
+  const h = await sha256(await readFile(p));
+  edgeRuntime.push({ path: f, bytes: s.size, sha256: h });
+}
+
 const source = [];
 for (const f of await listSourceTree()) {
   const p = resolve(ROOT, f);
@@ -82,7 +101,9 @@ for (const f of await listSourceTree()) {
 
 // CycloneDX 1.5 minimal structure
 const buildId = createHash('sha256')
-  .update(runtime.map((r) => r.sha256).join('') + source.map((r) => r.sha256).join(''))
+  .update(runtime.map((r) => r.sha256).join('')
+    + edgeRuntime.map((r) => r.sha256).join('')
+    + source.map((r) => r.sha256).join(''))
   .digest('hex')
   .slice(0, 16);
 
@@ -124,6 +145,7 @@ const sbom = {
   properties: [
     { name: 'sophiewell:buildId', value: buildId },
     { name: 'sophiewell:runtimeAssetCount', value: String(runtime.length) },
+    { name: 'sophiewell:edgeRuntimeAssetCount', value: String(edgeRuntime.length) },
     { name: 'sophiewell:sourceFileCount', value: String(source.length) },
   ],
 };
@@ -142,9 +164,9 @@ lines.push(`Engines: node ${pkg.engines.node}, npm ${pkg.engines.npm}`);
 lines.push('');
 lines.push('## Runtime third-party dependencies');
 lines.push('');
-lines.push('**None.** Sophie Well ships zero third-party JavaScript at runtime.');
-lines.push('No CDN, no analytics, no telemetry, no fonts. Every byte the browser');
-lines.push('downloads is committed in this repository and is hashed below.');
+lines.push('**No packaged runtime dependencies.** The ordinary app uses only files');
+lines.push('committed here. Cloudflare Turnstile is the one reviewed external script');
+lines.push('and loads only after a user opens Report a problem. No analytics or fonts.');
 lines.push('');
 lines.push('## Build/dev dependencies (pinned)');
 lines.push('');
@@ -159,6 +181,14 @@ lines.push('');
 lines.push('| Path | Bytes | SHA-256 |');
 lines.push('|---|---:|---|');
 for (const r of runtime) {
+  lines.push(`| \`${r.path}\` | ${r.bytes} | \`${r.sha256}\` |`);
+}
+lines.push('');
+lines.push('## Report Worker runtime hashes (SHA-256)');
+lines.push('');
+lines.push('| Path | Bytes | SHA-256 |');
+lines.push('|---|---:|---|');
+for (const r of edgeRuntime) {
   lines.push(`| \`${r.path}\` | ${r.bytes} | \`${r.sha256}\` |`);
 }
 lines.push('');
@@ -179,4 +209,4 @@ lines.push('');
 
 await writeFile(resolve(ROOT, 'sbom.md'), lines.join('\n'));
 
-console.log(`build-sbom: wrote sbom.json and sbom.md (buildId=${buildId}, ${runtime.length} runtime files, ${source.length} source files, ${Object.keys(pkg.devDependencies || {}).length} dev deps)`);
+console.log(`build-sbom: wrote sbom.json and sbom.md (buildId=${buildId}, ${runtime.length} browser runtime files, ${edgeRuntime.length} edge runtime files, ${source.length} source files, ${Object.keys(pkg.devDependencies || {}).length} dev deps)`);

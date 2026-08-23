@@ -17,7 +17,7 @@ const REPO_ROOT = resolve(fileURLToPath(import.meta.url), '..', '..');
 const ROOT = process.env.SERVE_ROOT ? resolve(REPO_ROOT, process.env.SERVE_ROOT) : REPO_ROOT;
 const PORT = Number(process.env.PORT || 4173);
 
-const CSP_BASE = "default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; form-action 'self'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'";
+const CSP_BASE = "default-src 'self'; script-src 'self' 'wasm-unsafe-eval' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; frame-src https://challenges.cloudflare.com; form-action 'self'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'";
 
 async function buildCsp() {
   try {
@@ -48,6 +48,7 @@ const HEADERS = {
   'X-Frame-Options': 'DENY',
   'Referrer-Policy': 'no-referrer',
   'Cross-Origin-Opener-Policy': 'same-origin',
+  'Cross-Origin-Embedder-Policy': 'require-corp',
   'Cross-Origin-Resource-Policy': 'same-origin',
   'Permissions-Policy': 'camera=(), microphone=(), geolocation=(), payment=(), usb=(), accelerometer=()',
   'Cache-Control': 'no-cache',

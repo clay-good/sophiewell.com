@@ -4,7 +4,12 @@ The site is intentionally low-maintenance. The recurring work is the
 weekly data refresh PR; the rest is quarterly review and a yearly
 licensing re-read. This document is the maintainer's runbook.
 
-## Weekly: data refresh
+## Weekly: reports and data refresh
+
+Review the private D1 report queue using
+[calculator-reports.md](calculator-reports.md). Prioritize plausible formula,
+dose, unit, and threshold errors before routine maintenance, then resolve each
+row with an audit note.
 
 `.github/workflows/data-refresh.yml` runs every Sunday at 06:00 UTC
 and on manual `workflow_dispatch`. It snapshots the previous `data/`,

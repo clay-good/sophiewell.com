@@ -1,9 +1,9 @@
 # Security policy
 
-Sophie Well is a static, client-side site. There is no application server,
-no database, no user accounts, no telemetry, and no third-party JavaScript
-loaded at runtime. The browser downloads only files committed in this
-repository.
+Sophie Well calculations are static and client-side. There are no user
+accounts or telemetry. The sole hosted write path is an isolated, user-initiated
+tool-report Worker backed by D1. Cloudflare Turnstile loads only after a user
+opens the report dialog.
 
 ## Reporting a vulnerability
 
@@ -31,14 +31,14 @@ commits are not maintained; security fixes are applied to the current
 Documented in [docs/threat-model.md](docs/threat-model.md). High-level
 summary:
 
-- The site is static. There is no server-side code path to compromise.
+- Normal tool and asset traffic is static. The report Worker is API-only,
+  separately routed, rate-limited, and has no asset binding.
 - A strict Content Security Policy is set both via `<meta>` and via real
   HTTP response headers in [`_headers`](_headers) (Cloudflare Pages) and
   [`scripts/serve.mjs`](scripts/serve.mjs) (local dev). The deployed CSP
-  is `default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src
-  'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self';
-  form-action 'self'; base-uri 'self'; frame-ancestors 'none'; object-src
-  'none'`. The `'wasm-unsafe-eval'` token permits only same-origin
+  allows only same-origin resources plus `challenges.cloudflare.com` in
+  `script-src` and `frame-src` for the user-opened Turnstile widget. The
+  `'wasm-unsafe-eval'` token permits only same-origin
   WebAssembly compilation for the vendored on-device OCR engine
   (`lib/pa/ocr.js`); it does not permit `eval`, `Function`, or inline scripts.
 - All data shards under `data/` are integrity-verified at build time by
@@ -46,17 +46,18 @@ summary:
   against SHA-256 hashes recorded in each dataset's `manifest.json`.
 - No `localStorage`, `sessionStorage`, `IndexedDB`, or cookies are used.
   Calculator state is encoded in the URL fragment (`location.hash`).
-- No outbound network requests. The CSP `connect-src 'self'` directive
-  structurally prevents data exfiltration.
+- `connect-src 'self'` prevents arbitrary off-origin data exfiltration. The
+  report POST is same-origin and the Worker validates its exact origin, body,
+  tool ID, URL, Turnstile token, and size before storage.
 
 ## Supply-chain posture
 
-- **Zero runtime third-party dependencies.** The deployed bundle contains
-  only files in this repository. No CDN, no fonts, no analytics, no
-  trackers, no external scripts of any kind.
+- **One bounded runtime exception.** Cloudflare Turnstile is fetched only after
+  a user opens the report dialog. There are no analytics, trackers, fonts, or
+  other external scripts.
 - **Pinned dev dependencies.** All entries in `package.json`
-  `devDependencies` use exact versions (no `^` or `~`). Today: ESLint
-  `9.39.4` and `@playwright/test` `1.59.1`.
+  `devDependencies` use exact versions (no `^` or `~`), including ESLint,
+  Playwright, OpenLore, and Wrangler.
 - **Pinned runtime engine.** `engines.node` is constrained to
   `>=20.18.1 <21`; `.nvmrc` records the exact patch. Cloudflare Pages
   reads `.nvmrc` to lock the build's Node version.
@@ -86,11 +87,18 @@ summary:
 
 ## Privacy
 
-- No personal data is collected, processed, or transmitted.
-- All calculator inputs stay on the user's device. The fragment-based
-  state lives only in the URL and is never sent to any server.
+- Calculation is local. A report is sent only after the user opens the dialog,
+  is told which context categories will be attached, completes Turnstile, and
+  chooses **Send report**.
+- Reports contain the tool URL, bounded input rows, results,
+  and an optional note. Sensitive tools and patient-document generators attach
+  no form fields, generated output, query parameters, or URL state.
+- Raw IP addresses, user agents, identities, email addresses, and Turnstile
+  tokens are not stored by the application in D1. A secret-keyed daily HMAC
+  supports rate limiting and cannot be used to track a reporter across days.
 - The footer links to `claygood.com` and `github.com` only when the user
-  explicitly clicks. No automatic external requests are made.
+  explicitly clicks. Ordinary tool use makes no automatic external requests;
+  opening the report dialog deliberately loads Cloudflare Turnstile.
 
 ## Disclosure history
 

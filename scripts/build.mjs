@@ -13,7 +13,7 @@ const ROOT = resolve(fileURLToPath(import.meta.url), '..', '..');
 const DIST = join(ROOT, 'dist');
 
 const COPY_FILES = [
-  'index.html', 'styles.css', 'app.js', 'sw.js', 'theme.js', 'file-origin-guard.js',
+  'index.html', 'styles.css', 'app.js', 'report-feedback.js', 'report-policy.js', 'sw.js', 'theme.js', 'file-origin-guard.js',
   '_headers', 'robots.txt', 'sitemap.xml', 'site.webmanifest',
   'CHANGELOG.md', 'sbom.json', 'sbom.md',
 ];
@@ -58,7 +58,7 @@ async function regenerate() {
   // spec-v753: build-field-index writes data/fields/, which the copy step below
   // picks up with the rest of data/. It runs before build-sbom so the shards are
   // on disk when the bill of materials counts source files.
-  for (const script of ['build-favicons.mjs', 'build-search-corpus.mjs', 'build-field-index.mjs', 'build-ld.mjs', 'build-sitemap.mjs', 'build-sbom.mjs']) {
+  for (const script of ['build-favicons.mjs', 'build-search-corpus.mjs', 'build-field-index.mjs', 'build-report-catalog.mjs', 'build-ld.mjs', 'build-sitemap.mjs', 'build-sbom.mjs']) {
     const r = spawnSync(process.execPath, [join(ROOT, 'scripts', script)], { stdio: 'inherit' });
     if (r.status !== 0) throw new Error(`${script} exited with status ${r.status}`);
   }

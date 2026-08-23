@@ -101,13 +101,14 @@ keyboard shortcuts, the pinning system, and the CSP/storage assertions.
 
 ## Supply-chain posture
 
-- **Zero runtime third-party dependencies.** The deployed bundle is
+- **Zero packaged runtime third-party dependencies.** The deployed bundle is
   `index.html`, `styles.css`, `app.js`, `sw.js`, `site.webmanifest`,
-  five favicon files, and JSON shards under `data/`. No CDN, no fonts,
-  no analytics, no trackers.
+  five favicon files, and JSON shards under `data/`. Cloudflare Turnstile is
+  the one external script and loads only after a user opens the report dialog.
+  There are no fonts, analytics, or trackers.
 - **Pinned dev dependencies.** `package.json` uses exact versions for
-  every entry in `devDependencies`. Today: `eslint` `9.17.0` and
-  `@playwright/test` `1.49.1`.
+  every entry in `devDependencies`, including ESLint, Playwright, OpenLore,
+  and Wrangler.
 - **Pinned runtime engine.** `engines.node` is `>=20.18.1 <21`;
   `.nvmrc` records `20.18.1`. Cloudflare Pages reads `.nvmrc`.
 - **Reproducible SBOM.** `npm run sbom` writes a CycloneDX 1.5
@@ -119,7 +120,8 @@ keyboard shortcuts, the pinning system, and the CSP/storage assertions.
 - **HTTP security headers.** Set in [`_headers`](../_headers)
   for production (Cloudflare Pages) and in
   [`scripts/serve.mjs`](../scripts/serve.mjs) for local dev. Includes
-  CSP `connect-src 'self'`, HSTS preload, COOP/COEP/CORP isolation,
+  CSP `connect-src 'self'` plus the narrow Turnstile script/frame exception,
+  HSTS preload, COOP/COEP/CORP isolation,
   Permissions-Policy denying camera/mic/geolocation/payment/USB.
 - **Service worker** caches the bundle keyed to `BUILD_HASH`, so a new
   deploy invalidates the old cache.

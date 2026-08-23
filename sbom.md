@@ -1,16 +1,16 @@
 # Sophie Well SBOM
 
-Build ID: `7f2bfefb404713a7`
-Generated: 2026-08-23T05:54:08.709Z
+Build ID: `8b6da08ecf1faec7`
+Generated: 2026-08-23T17:18:37.462Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
 
 ## Runtime third-party dependencies
 
-**None.** Sophie Well ships zero third-party JavaScript at runtime.
-No CDN, no analytics, no telemetry, no fonts. Every byte the browser
-downloads is committed in this repository and is hashed below.
+**No packaged runtime dependencies.** The ordinary app uses only files
+committed here. Cloudflare Turnstile is the one reviewed external script
+and loads only after a user opens Report a problem. No analytics or fonts.
 
 ## Build/dev dependencies (pinned)
 
@@ -19,24 +19,37 @@ downloads is committed in this repository and is hashed below.
 | `@playwright/test` | `1.59.1` | dev |
 | `eslint` | `9.39.4` | dev |
 | `openlore` | `2.1.3` | dev |
+| `wrangler` | `4.125.0` | dev |
 
 ## Runtime asset hashes (SHA-256)
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 101227 | `f629d9a8ae00d99780a6888a2e3e88603fbd7c7018534300132c04f20554eed4` |
-| `styles.css` | 66091 | `2ddcb327180edcfcf8ad8171201f7bd813d36a5f6523f4107f6380cef7aed245` |
-| `app.js` | 461160 | `574cf0aa2d335dcf76ff7af2434f7bcca8ee8c0bddd74df5487ae0b927c77b1f` |
-| `sw.js` | 5009 | `89f194661d77fcca924ec5bc14773f9ece88f7da55e2cd56d063a410f497fc82` |
+| `index.html` | 101427 | `9399953666774115fa25172cee0e28e3295dc9eb859da3fdb464b7787e440cec` |
+| `styles.css` | 68199 | `4889294c5b817cbdbf9f08ac1c0cf513a610c97b0418e58de3c9a3b978d49dac` |
+| `app.js` | 462292 | `94491b2fdd03aef495c5661debb984183b3cf4cccae2c824f40b1d5f05acccbf` |
+| `report-feedback.js` | 11273 | `b8a0ea6c7ad5fe50c28b7e38c5170dfb8d792e0c1cf71b01e120903d11055545` |
+| `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
+| `theme.js` | 3132 | `6910af0b4c65869c6a3d24d17842bb2cc88c7d23f8fb32506fcdbfeec70ce979` |
+| `file-origin-guard.js` | 1876 | `45414c830b9c95f04d22fd19bb0be70363b88e37559f33c2d197872591a8cd55` |
+| `sw.js` | 5183 | `009dd2cf8ba1a16ad8a76c8f523c45600068c78f07582c657015defdead2c876` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
 | `sitemap.xml` | 240083 | `f4ca217037a034388177e849c166e0babeea46fe639543e011f5e933236dd259` |
-| `_headers` | 1971 | `0df0b860c0cd593c199b16737725c5b3eb98963b18bd367df7e2bb6f027ff89e` |
+| `_headers` | 2050 | `3874f05a080b8cab13ff022e6e6147c7e1057420a2d9cbc7834bac6b421d4011` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
 | `favicon-16x16.png` | 1812 | `d8ab9268c1d9c99912dc9c2b57873efd2641a28aee8f12b65cec8cee1d79a653` |
 | `favicon-32x32.png` | 2397 | `a2f623e5e34259a4886cdef2bc7cfeaf23894393fff7717dee5bf2732ccf083d` |
 | `apple-touch-icon.png` | 11142 | `29cdc69c3bbec5245236d27dc6814f351b1734f0fa4683ce2411de9837b56368` |
+
+## Report Worker runtime hashes (SHA-256)
+
+| Path | Bytes | SHA-256 |
+|---|---:|---|
+| `report-worker.mjs` | 13151 | `0480acd870cad883b404e9fdcd499200585dbc2fa80da44f1a01a64f4b0fd3ef` |
+| `report-catalog.js` | 87024 | `9a54e01fcd5eed5789b6500eff902430c2240983fb85f4b4c039ff5800f96c11` |
+| `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 
 ## Source-of-truth modules (lib + views)
 

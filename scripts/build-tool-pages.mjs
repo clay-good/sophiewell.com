@@ -1086,7 +1086,7 @@ ${datasetLd ? `    <script type="application/ld+json">\n${JSON.stringify(dataset
 
         <p class="tp-cta">
           <a class="tp-open" href="${hashUrl}" aria-label="Open the ${esc(tile.name)}">Open the ${OPEN_NOUN[kind] || 'tool'} →</a>
-          <span class="muted">Runs in your browser. Nothing you type leaves your device.</span>
+          <span class="muted">Runs in your browser. Data leaves only if you deliberately send a problem report from the interactive tool.</span>
         </p>
 
         ${exampleHtml}

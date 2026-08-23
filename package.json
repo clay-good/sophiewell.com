@@ -2,7 +2,7 @@
   "name": "sophiewell.com",
   "version": "1.0.0",
   "private": true,
-  "description": "Sophie Well - 1564 deterministic healthcare calculators. Free, client-side, no servers, no telemetry, no AI.",
+  "description": "Sophie Well - 1564 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
   "homepage": "https://sophiewell.com",
   "repository": {
     "type": "git",
@@ -25,7 +25,7 @@
     "test:e2e": "npm run build && playwright test",
     "test:mcp": "node --test test/mcp/*.test.js",
     "test:a11y": "node scripts/a11y-check.mjs",
-    "lint": "eslint . && node scripts/grep-check.mjs && node scripts/check-us-english.mjs && node scripts/check-lede-copy.mjs && node scripts/check-output-safety.mjs && node scripts/check-citations.mjs && node scripts/check-catalog-truth.mjs && node scripts/check-commitments.mjs && node scripts/check-mcp-catalog.mjs && node scripts/check-pa-staleness.mjs && node scripts/audit-pa.mjs",
+    "lint": "eslint . && node scripts/build-report-catalog.mjs --check && node scripts/grep-check.mjs && node scripts/check-us-english.mjs && node scripts/check-lede-copy.mjs && node scripts/check-output-safety.mjs && node scripts/check-citations.mjs && node scripts/check-catalog-truth.mjs && node scripts/check-commitments.mjs && node scripts/check-mcp-catalog.mjs && node scripts/check-pa-staleness.mjs && node scripts/audit-pa.mjs",
     "check:pa-staleness": "node scripts/check-pa-staleness.mjs",
     "check:citation-cadence": "node scripts/check-citation-cadence.mjs",
     "audit:pa": "node scripts/audit-pa.mjs",
@@ -39,15 +39,18 @@
   "devDependencies": {
     "@playwright/test": "1.59.1",
     "eslint": "9.39.4",
-    "openlore": "2.1.3"
+    "openlore": "2.1.3",
+    "wrangler": "4.125.0"
   },
   "overrides": {
-    "hono": ">=4.12.27",
+    "hono": "4.13.3",
     "js-yaml": ">=4.3.0",
     "protobufjs": ">=8.6.2",
     "@hono/node-server": ">=2.0.5",
-    "fast-uri": ">=3.1.4",
+    "fast-uri": "3.1.5",
     "postcss": ">=8.5.18",
-    "brace-expansion": ">=5.0.8"
+    "brace-expansion": "5.0.9",
+    "ip-address": "10.5.0",
+    "nanoid": "3.3.18"
   }
 }

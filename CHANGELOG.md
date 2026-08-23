@@ -6,6 +6,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+
+- **Every interactive tool now has a clinician-friendly problem report.** The
+  shared **Report a problem** control sends the tool URL, current bounded inputs,
+  results, and an optional 160-character expectation note to a private D1 queue
+  after server-validated Turnstile. The API-only Worker enforces exact origins,
+  catalog IDs, payload limits, daily quotas, duplicate suppression, and a
+  privacy-preserving daily reporter identity without storing IP addresses,
+  user agents, email, identity, or Turnstile tokens. Sensitive tools and
+  patient-document generators attach no form fields, generated output, query
+  parameters, or URL state. Ordinary calculation remains local and
+  offline-capable; reporting fails closed without affecting a tool.
+
 ### Changed (page copy: say less, and say it bigger)
 
 - **Every tool page now shows the example as values, not just as an answer.** `/tools/<id>/` used to
