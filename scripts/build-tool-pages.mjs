@@ -838,7 +838,7 @@ ${related.map((r) => `          <li><a href="${SITE}/tools/${r.id}/">${esc(r.nam
         step: [
           { '@type': 'HowToStep', position: 1, name: 'Open the tool', text: `Open ${tile.name} in your browser at ${hashUrl}. No signup, no install.` },
           { '@type': 'HowToStep', position: 2, name: 'Enter your inputs', text: 'Each field is pre-filled with a worked example so you can see the expected format. Overwrite the values with your own.' },
-          { '@type': 'HowToStep', position: 3, name: 'Read the result', text: 'The output is computed deterministically. The References region under the result links to the primary source.' },
+          { '@type': 'HowToStep', position: 3, name: 'Read the result', text: 'The output is computed deterministically. The calculation explanation under the result includes the primary source.' },
         ],
       }
     : null;
@@ -972,12 +972,11 @@ ${bands.map((b) => `            <div class="tp-bands-row"><dt>${esc(String(b.ran
         </section>`
     : '';
   const methodHtml = methodRows.length
-    ? `<details class="tp-method">
-          <summary>How it is calculated</summary>
+    ? `<div class="tp-method" aria-label="Calculation method">
           <dl class="tp-bands-dl">
 ${methodRows.map((b) => `            <div class="tp-method-row"><dt>${esc(String(b.range))}</dt><dd>${esc(b.text)}</dd></div>`).join('\n')}
           </dl>
-        </details>`
+        </div>`
     : '';
 
   // A question flow has no fields to pre-fill, so it gets the honest version of
@@ -1095,14 +1094,13 @@ ${datasetLd ? `    <script type="application/ld+json">\n${JSON.stringify(dataset
 
         ${howHtml}
 
-        ${methodHtml}
-
         ${whatHtml}
 
         ${whenHtml}
 
         <details class="tp-refs">
-          <summary>Citation and sources</summary>
+          <summary>How this is calculated</summary>
+          ${methodHtml}
           ${citationHtml}
           ${sourceHtml}
           <p class="muted">A reference and educational tool. Not medical, legal, or financial advice, and not a substitute for clinician judgment.</p>

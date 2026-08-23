@@ -33,7 +33,7 @@ Each calculator does one thing:
 |---|---|
 | **In** | The values you already have. It opens pre-filled with a worked example, so you can see the expected format before you type over it. |
 | **Out** | One number or grade, plus how the source says to read it. |
-| **Proof** | The primary citation, one click away under "Citation and sources". |
+| **Proof** | The method and primary citations together, one click away under "How this is calculated". |
 
 For example, on [Wells Score for PE](https://sophiewell.com/#wells-pe)
 you tick the criteria that apply and get
@@ -68,6 +68,7 @@ Setup is in [mcp/README.md](mcp/README.md).
 - [CHANGELOG.md](CHANGELOG.md): what's new
 - [mcp/README.md](mcp/README.md): use the calculators from an MCP client
 - [docs/architecture.md](docs/architecture.md): how it's built
+- [docs/product-decisions.md](docs/product-decisions.md): durable interface decisions
 
 ## License
 

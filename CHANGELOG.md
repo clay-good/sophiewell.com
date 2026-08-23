@@ -6,6 +6,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed
+
+- **Each calculator and tool now has one explanation disclosure.** "How this is
+  calculated" contains the available formula, derivation, interpretation,
+  citation, source link, and dataset stamp; the duplicate "Citation and
+  sources" disclosure is gone. The opt-in "Remember my inputs on this device"
+  control and its browser-storage implementation are also removed. Calculator
+  state remains shareable in the URL fragment without persistent device
+  storage.
+
 ### Added
 
 - **Every interactive tool now has a clinician-friendly problem report.** The

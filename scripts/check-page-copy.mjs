@@ -425,16 +425,9 @@ async function main() {
     );
   }
 
-  // Three places name the collapsed proof control: the pre-rendered pages, the
-  // app that replaces them once JavaScript runs, and the sentence in the README
-  // that tells a reader where to click. All three are the same control and a
-  // reader moves between them, so all three have to use the same words.
-  //
-  // Two had drifted. The README said "Citation and how to read this" and every
-  // one of the 1,564 pages said "Citation and sources" -- and the README was
-  // not simply wrong, it was quoting the *app*, which had its own third
-  // wording. A UI string living outside the UI drifts silently, the same
-  // failure the headline count had.
+  // Three places name the shared method-and-citation control: the pre-rendered
+  // pages, the app that replaces them once JavaScript runs, and the README.
+  // A reader moves between them, so all three have to use the same words.
   if (disclosureSummaries.size > 1) {
     failures.push(
       `the pre-rendered pages use ${disclosureSummaries.size} different names for the citation disclosure: ` +
@@ -450,22 +443,6 @@ async function main() {
   } else if (pageSummary && appSummary[1] !== pageSummary) {
     failures.push(
       `the app calls the citation disclosure "${appSummary[1]}" and the static pages call it "${pageSummary}"`,
-    );
-  }
-
-  // The app puts a second disclosure directly above the citation one, holding
-  // the formula and the working. Both were named for provenance -- "Where does
-  // this come from?" over "Citation and sources" -- so on the 126 tiles that
-  // have both, the reader opened one to learn it was the other they wanted.
-  // The two controls have to ask different questions.
-  const derivSummary = readFileSync(join(ROOT, 'lib', 'derivation.js'), 'utf8')
-    .match(/el\('summary', \{ text: '([^']+)' \}\)/);
-  if (!derivSummary) {
-    failures.push('lib/derivation.js no longer names its disclosure where this check can read it');
-  } else if (appSummary && overlaps(derivSummary[1], appSummary[1])) {
-    failures.push(
-      `the method disclosure "${derivSummary[1]}" reads as the same question as the citation one ` +
-        `"${appSummary[1]}"; the two sit next to each other and have to be told apart`,
     );
   }
 

@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:fe47af89-c818-5ad9-8cb7-b32d718c4fd8",
+  "serialNumber": "urn:uuid:3b327e26-5c61-5bab-8b01-c123d815cbb0",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-23T19:49:07.552Z",
+    "timestamp": "2026-08-23T20:31:03.128Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -83,7 +83,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "30b1f118e9effcd0d9032229baefae56981547cca0f4da44ae3bb845a63bf614"
+          "content": "2942923c5157d85e7e381552e74488a519e4a6deff4edd9029489f3311f1870d"
         }
       ],
       "properties": [
@@ -93,7 +93,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "68215"
+          "value": "67361"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "94491b2fdd03aef495c5661debb984183b3cf4cccae2c824f40b1d5f05acccbf"
+          "content": "e7758c3ce9618d2d734b5871d45cbfdf8d7a30c470dadba38702ec033c15ed2c"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "462292"
+          "value": "460293"
         }
       ]
     },
@@ -3170,7 +3170,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "469255fc9053a803d43aa182fa24f8210eaa5ab90cab3d8eab7bf354b1fd594b"
+          "content": "5288dbaac973b6219d70c30a7802d4f1f82ecbcfda83bbc5636a10cb33db668b"
         }
       ],
       "properties": [
@@ -3180,7 +3180,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "7804"
+          "value": "7056"
         }
       ]
     },
@@ -4409,7 +4409,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "46aa4546c76ec5d672d726f2bb1bb8101aeb13aa5761c20c741342291789ce25"
+          "content": "d6717b020d7f2b7385252a1a726e398994adcf0cf96720a46787db2c018ef48d"
         }
       ],
       "properties": [
@@ -4419,7 +4419,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "6801"
+          "value": "6787"
         }
       ]
     },
@@ -6331,27 +6331,6 @@
         {
           "name": "sophiewell:bytes",
           "value": "3148"
-        }
-      ]
-    },
-    {
-      "bom-ref": "urn:sophiewell:file:source:lib/input-persist.js",
-      "type": "file",
-      "name": "lib/input-persist.js",
-      "hashes": [
-        {
-          "alg": "SHA-256",
-          "content": "aa35b830df15bd1410a5f80c3829b6092122f0118d72d3f581c64d5678e94427"
-        }
-      ],
-      "properties": [
-        {
-          "name": "sophiewell:scope",
-          "value": "source"
-        },
-        {
-          "name": "sophiewell:bytes",
-          "value": "4716"
         }
       ]
     },
@@ -57677,7 +57656,6 @@
         "urn:sophiewell:file:source:lib/inflam-v230.js",
         "urn:sophiewell:file:source:lib/inflam-v267.js",
         "urn:sophiewell:file:source:lib/inflam-v268.js",
-        "urn:sophiewell:file:source:lib/input-persist.js",
         "urn:sophiewell:file:source:lib/insulin-drip.js",
         "urn:sophiewell:file:source:lib/interchest-v693.js",
         "urn:sophiewell:file:source:lib/intermacs-profile-v494.js",
@@ -59471,7 +59449,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "fe47af89c818cad9"
+      "value": "3b327e265c61ebab"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -59483,7 +59461,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "1969"
+      "value": "1968"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

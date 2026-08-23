@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `fe47af89c818cad9`
-Generated: 2026-08-23T19:49:07.552Z
+Build ID: `3b327e265c61ebab`
+Generated: 2026-08-23T20:31:03.128Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -26,8 +26,8 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | Path | Bytes | SHA-256 |
 |---|---:|---|
 | `index.html` | 101427 | `9399953666774115fa25172cee0e28e3295dc9eb859da3fdb464b7787e440cec` |
-| `styles.css` | 68215 | `30b1f118e9effcd0d9032229baefae56981547cca0f4da44ae3bb845a63bf614` |
-| `app.js` | 462292 | `94491b2fdd03aef495c5661debb984183b3cf4cccae2c824f40b1d5f05acccbf` |
+| `styles.css` | 67361 | `2942923c5157d85e7e381552e74488a519e4a6deff4edd9029489f3311f1870d` |
+| `app.js` | 460293 | `e7758c3ce9618d2d734b5871d45cbfdf8d7a30c470dadba38702ec033c15ed2c` |
 | `report-feedback.js` | 12178 | `955e5cb542c7b13dcbb85a75ecf4ccf2dc0b2dffecd84daac1d607bd6acc7cd2` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 | `theme.js` | 3132 | `6910af0b4c65869c6a3d24d17842bb2cc88c7d23f8fb32506fcdbfeec70ce979` |
@@ -183,7 +183,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/dejour-trochlea-v485.js` | 3370 | `e24e2cb02e597a2dd73c81b424a1305b3423609993c79e142fb1aa0f4a010e31` |
 | `lib/delbet-femoral-neck-v378.js` | 3870 | `be1d4650275a314e54cacb832804c6b41af08843d296ec4938c2c22ac7db42cc` |
 | `lib/denis-sacral-v376.js` | 3688 | `fc489399a839b38692a0f716910e6e31f30ff38407b35cc4e160ef595baad540` |
-| `lib/derivation.js` | 7804 | `469255fc9053a803d43aa182fa24f8210eaa5ab90cab3d8eab7bf354b1fd594b` |
+| `lib/derivation.js` | 7056 | `5288dbaac973b6219d70c30a7802d4f1f82ecbcfda83bbc5636a10cb33db668b` |
 | `lib/derm-v151.js` | 14407 | `4e7576314c8e0883b5688d740f45b361c7cabaac1d7af12a200d2f342f8722db` |
 | `lib/dermatology-v223.js` | 13207 | `b0664bf97310df895e03501102ab3504d890636210525de6b8046f434e97f56d` |
 | `lib/dermscore-v234.js` | 7891 | `bc3594b69d62b10208190ba28e89a4412d3be45118e5e3836568902c37301b8c` |
@@ -242,7 +242,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/fibrosis-v275.js` | 2577 | `2d43ffb3616e1d1cf98df08e2def7ef97046d61755cfe4f52af8819b3a8f0324` |
 | `lib/ficat-arlet-v344.js` | 4921 | `a055326850836eb72bf210ce9e62fa7c406cf669a5dd231368a7b6ae020a8496` |
 | `lib/field-bucket.js` | 506 | `b5ff024f9cfdcfc048948094fe6da7099758d52f6c6d8971a941c206a9aa3855` |
-| `lib/field-units.js` | 6801 | `46aa4546c76ec5d672d726f2bb1bb8101aeb13aa5761c20c741342291789ce25` |
+| `lib/field-units.js` | 6787 | `d6717b020d7f2b7385252a1a726e398994adcf0cf96720a46787db2c018ef48d` |
 | `lib/field.js` | 13513 | `cbe15d4b105da144ed2c465e525fb1a49a626b50df7fc402f80830fa8efa0996` |
 | `lib/fielding-hawkins-v449.js` | 3661 | `5c5a27ddb8773fee2d37bfbcf114a7d46feb891e7b43689c81a56221a05cb5a9` |
 | `lib/fisher-grade-v600.js` | 10299 | `e9155f9fdefe95d66f6fa2ec622a908cb15ddc858a3dd1d3275d4384cff93a44` |
@@ -334,7 +334,6 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/inflam-v230.js` | 6411 | `bf7c4bf274d5eb4ccffdd80ea334f09b85a94f9357dd6aeae093f321845da0ef` |
 | `lib/inflam-v267.js` | 3039 | `e45a593d4423f6958e9a7bfe34b57f3b2c09df7a54083d602f224fddd1b7e15d` |
 | `lib/inflam-v268.js` | 3148 | `f1f23e1e817f4b4761a70c83c2662269970db006d974607329160c2acbf9f021` |
-| `lib/input-persist.js` | 4716 | `aa35b830df15bd1410a5f80c3829b6092122f0118d72d3f581c64d5678e94427` |
 | `lib/insulin-drip.js` | 1130 | `d5143980d2697143a2c2e45f5a71042571d668288883aa9daaa24681ef06c600` |
 | `lib/interchest-v693.js` | 4205 | `a3e8e532e8f39429f920c0bafc659368ac8667e17d1743668aeb2cbcf41ae455` |
 | `lib/intermacs-profile-v494.js` | 4333 | `4b56fe0900a9e1f9441ee1c8259959e261405815f4b3f1e168e6b983ea897fab` |

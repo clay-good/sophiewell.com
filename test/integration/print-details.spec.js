@@ -50,7 +50,7 @@ test('SPA tool view: every closed disclosure opens for print and closes again', 
 // fields past the visible list, the values past the visible example, and the
 // method rows. A printed page missing any of them is a page that dropped
 // content the reader could see on screen.
-const FOLDED = ['tp-refs', 'tp-io-full', 'tp-method', 'tp-ex-more'];
+const FOLDED = ['tp-refs', 'tp-io-full', 'tp-ex-more'];
 
 test('pre-rendered tool page: every kind of disclosure opens for print', async ({ page }) => {
   await page.goto('http://localhost:4174/tools/sternbach/', { waitUntil: 'load' });

@@ -1205,25 +1205,6 @@ main h1 {
   min-height: 44px;
 }
 
-/* spec-v61 §2 A7: opt-in "remember my inputs" toggle. Wraps naturally on
-   narrow screens so it never forces horizontal scroll. */
-.remember-line {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: var(--space-1) var(--space-2);
-  margin: var(--space-2) 0 0;
-}
-.remember-row {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-1);
-  font-size: 0.95rem;
-  cursor: pointer;
-}
-.remember-checkbox { flex: 0 0 auto; }
-.remember-note { font-size: 0.85rem; }
-
 /* Copy buttons */
 .copy-row { margin-bottom: 0; }
 /* spec-v72: 44px min touch target (WCAG 2.5.5). The small font keeps the pill
@@ -2041,16 +2022,9 @@ button:active { transform: translateY(1px) scale(0.985); }
   overflow-wrap: anywhere;
 }
 
-/* How the number is produced. A click away, because a reader scanning for
-   their score wants the reading first and the algebra only if they ask. */
+/* How the number is produced, inside the shared calculation disclosure. */
 .tool-page .tp-method {
-  margin-bottom: var(--space-5);
-}
-.tool-page .tp-method > summary {
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 1.05rem;
-  padding: 10px 0;
+  margin-top: var(--space-2);
 }
 .tool-page .tp-method-row {
   display: flex;
@@ -2088,17 +2062,10 @@ button:active { transform: translateY(1px) scale(0.985); }
   overflow-wrap: anywhere;
 }
 
-/* spec-v48: derivation block ("where does this come from?") */
+/* spec-v48: derivation content inside the shared calculation disclosure. */
 .tile-derivation {
   margin-top: 1rem;
-  padding: 0.5rem 0.75rem;
-  border: 1px solid var(--border, #ccc);
-  border-radius: 4px;
-  background: var(--surface-alt, transparent);
-}
-.tile-derivation > summary {
-  cursor: pointer;
-  font-weight: 600;
+  padding-top: 0.25rem;
 }
 .tile-derivation-dl {
   margin: 0;
