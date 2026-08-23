@@ -1387,13 +1387,28 @@ function buildRegistry() {
   if (errors.length) {
     throw new Error('mcp/catalog: registry assembly failed:\n  ' + errors.join('\n  '));
   }
-  return { registry, totalTiles: utilities.size };
+  // The tiles the website has and this server does not. Exposure is opt-in by
+  // the existence of an adapter, so this is every row of UTILITIES with no
+  // adapter behind it -- the document generators, the reference tables and the
+  // time-dependent timers, tracked as accountable exceptions in
+  // docs/mcp-coverage.md.
+  //
+  // Kept rather than discarded because an agent that names one of them is
+  // asking about a real tool, and answering with the nearest RANKED
+  // calculator is answering the wrong question: find_calculator returned
+  // `cosyntropin-stim` for "Prior-Auth Packet Linter".
+  const unexposed = new Map();
+  for (const [id, util] of utilities) {
+    if (!registry.has(id)) unexposed.set(id, { id, name: util.name, group: util.group });
+  }
+  return { registry, totalTiles: utilities.size, unexposed };
 }
 
-const { registry, totalTiles } = buildRegistry();
+const { registry, totalTiles, unexposed } = buildRegistry();
 
 export const REGISTRY = registry;
 export const TOTAL_TILES = totalTiles;
+export const UNEXPOSED = unexposed;
 
 export function getCalculator(id) { return registry.get(id) || null; }
 export function allCalculators() { return [...registry.values()]; }

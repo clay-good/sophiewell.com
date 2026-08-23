@@ -86,7 +86,7 @@ and typed `structuredContent`.
 
 | Tool | Input | Returns |
 |---|---|---|
-| `find_calculator` | `{ query, limit?, group?, specialty? }` | Discovery by plain-language intent: the same deterministic ranker the browser prompt bar uses (synonym table + token ranker, no AI) ranks the exposed calculators and returns the top-N candidates `{ id, name, group, specialties, summary, why }`. Use it when a substring `query` would miss (e.g. "stroke risk afib"). |
+| `find_calculator` | `{ query, limit?, group?, specialty? }` | Discovery by plain-language intent: the same deterministic ranker the browser prompt bar uses (synonym table + token ranker, no AI) ranks the exposed calculators and returns the top-N candidates `{ id, name, group, specialties, summary, why }`. Use it when a substring `query` would miss (e.g. "stroke risk afib"). Naming a website tool this server does not carry -- a document generator, a reference table, a time-dependent timer -- returns `NOT_EXPOSED` with that tile's `id`, `name` and page, and no candidates: answering "Prior-Auth Packet Linter" with the nearest ranked calculator would be answering a different question. |
 | `list_calculators` | `{ group?, specialty?, query?, limit?, offset?, fields? }` | Paginated rows plus a live coverage line and `catalogVersion`. Default page 50, max 200; read `total`, `count`, and `nextOffset` to page. `fields:"compact"` returns id/name/group only. `query` is a substring test. No computation. |
 | `get_catalog_manifest` | `{}` | A one-shot compact index of **every** exposed calculator `{ id, name, group, specialties }` plus coverage counts and `catalogVersion`. Fetch once to reason about the whole catalog instead of paging. |
 | `describe_calculator` | `{ id }` | The full contract: `inputSchema` (JSON Schema), a worked `example`, `citation` + `citationUrl` + `citationAccessed`, the source interpretation bands, `related` calculator ids, and the clinical-posture disclaimer. |
@@ -103,7 +103,7 @@ strings; booleans as `true`/`false`; enums by their listed string values.
 English `message`, so you can branch without parsing prose: `UNKNOWN_TOOL`,
 `UNKNOWN_ID`, `BAD_ARGS`, `UNKNOWN_INPUT`, `MISSING_INPUT`, `INVALID_TYPE`,
 `INCOMPLETE`, `COMPUTE_ERROR`, `NO_MATCH`, `NO_VALUES`, `MISSING_INPUTS`,
-`AMBIGUOUS`.
+`AMBIGUOUS`, `NOT_EXPOSED`.
 
 **`catalogVersion`** (`{ contentHash, tileCount, exposedCount, deterministic,
 cacheable }`) rides on the discovery tools. Because compute is deterministic, you

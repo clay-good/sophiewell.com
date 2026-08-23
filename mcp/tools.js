@@ -7,7 +7,7 @@
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import {
-  REGISTRY, TOTAL_TILES, getCalculator, allCalculators, coverageCount, DISCLAIMER, ADMIN_DISCLAIMER,
+  REGISTRY, TOTAL_TILES, UNEXPOSED, getCalculator, allCalculators, coverageCount, DISCLAIMER, ADMIN_DISCLAIMER,
 } from './catalog.js';
 
 // spec-v629: clinical tiles carry the clinical disclaimer; non-clinical
@@ -326,6 +326,9 @@ export function computeCalculator(args = {}) {
 // the exposed registry and returns the top-N candidates with a `why` tag. Same
 // ranker, two surfaces (browser prompt bar + MCP). No AI, no model.
 // How far past the caller's limit to rank before the name pass reorders.
+// Where the website keeps a tile that this server does not carry.
+const SITE_TOOL_BASE = 'https://sophiewell.com/tools/';
+
 const PROMOTE_LOOKAHEAD = 5;
 const FIND_LIMIT_DEFAULT = 5;
 const FIND_LIMIT_MAX = 20;
@@ -397,6 +400,26 @@ export function findCalculator(args = {}) {
     }
   }
   candidates.length = Math.min(candidates.length, limit);
+
+  // The query names a tool this server does not carry. Some of the site's
+  // tiles have no adapter -- the document generators, the reference tables and
+  // the time-dependent timers -- and the ranker can only rank the ones it has, so
+  // an agent asking for "Prior-Auth Packet Linter" got `cosyntropin-stim` at
+  // rank 1 and no reason to doubt it. Naming a tool in full is unambiguous
+  // (every word of its name, the same rule an exact name is promoted by), so
+  // say what happened instead of answering a question that was not asked.
+  const namedElsewhere = [...UNEXPOSED.values()].find((u) => namesInFull(q, u.name));
+  if (namedElsewhere) {
+    return {
+      query: q,
+      count: 0,
+      candidates: [],
+      code: 'NOT_EXPOSED',
+      tile: namedElsewhere.id,
+      name: namedElsewhere.name,
+      hint: `"${namedElsewhere.name}" is on the website at ${SITE_TOOL_BASE}${namedElsewhere.id}/ but is not a callable calculator here -- it generates a document, reads a reference table, or depends on the current time. See docs/mcp-coverage.md for the exposed set.`,
+    };
+  }
 
   if (candidates.length === 0) {
     return {
