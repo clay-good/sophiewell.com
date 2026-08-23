@@ -4,8 +4,8 @@ async function expectDialogCentered(dialog) {
   const centerDelta = await dialog.evaluate((element) => {
     const bounds = element.getBoundingClientRect();
     return {
-      x: Math.abs(bounds.left + (bounds.width / 2) - (window.innerWidth / 2)),
-      y: Math.abs(bounds.top + (bounds.height / 2) - (window.innerHeight / 2)),
+      x: Math.abs(bounds.left + (bounds.width / 2) - (document.documentElement.clientWidth / 2)),
+      y: Math.abs(bounds.top + (bounds.height / 2) - (document.documentElement.clientHeight / 2)),
     };
   });
   expect(centerDelta.x).toBeLessThanOrEqual(2);
