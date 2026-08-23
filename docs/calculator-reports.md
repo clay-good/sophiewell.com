@@ -5,9 +5,10 @@ The public site has no report-reading endpoint. Review uses authenticated
 Cloudflare D1 access.
 
 The existing `sophiewell` Static Assets Worker continues to serve static files.
-A separate `sophiewell-reports` Worker is routed only to
-`sophiewell.com/api/reports*`, so normal calculator and asset requests never
-invoke it. Public `workers.dev` and version-preview URLs stay disabled so they
+A separate `sophiewell-reports` Worker is routed only to the exact
+`/api/reports` and `/api/reports/config` paths, so normal calculator, asset, and
+lookalike-prefix requests never invoke it. Public `workers.dev` and
+version-preview URLs stay disabled so they
 cannot bypass the zone WAF.
 
 ## Launch checklist
@@ -87,13 +88,14 @@ Then verify:
 
 1. Open a calculator and confirm **Report a problem** appears beside its name.
 2. Send an empty-note report and confirm the success message.
-3. Send the exact context again and confirm only one D1 row exists.
-4. Send a short expectation note and confirm it is saved with the URL, inputs,
-   and results.
+3. Send the same URL and note again and confirm only one D1 row exists.
+4. Send a short expectation note with **Include current inputs and results**
+   selected and confirm the bounded context is saved.
 5. Confirm an invalid Turnstile token returns a bad-request response and writes
    no row.
-6. Confirm sensitive tools such as SBAR and MBI submit no inputs, outputs,
-   query parameters, or URL state.
+6. Confirm every report uses a canonical tool URL with no query parameters or
+   URL state, and sensitive tools such as SBAR and MBI also submit no inputs or
+   outputs.
 7. Confirm ordinary calculation, offline use, print, and MCP execution are
    unchanged.
 
@@ -107,8 +109,9 @@ npx wrangler d1 execute sophiewell-reports --remote --config wrangler.reports.js
 
 For each report:
 
-1. Open `page_url` and reproduce the submitted state.
-2. Compare saved inputs and results with the current tool.
+1. Open the canonical `page_url` for the affected tool.
+2. Reproduce the state from the saved inputs and results, then compare it with
+   the current tool.
 3. Verify the formula or rule against its primary source.
 4. Add a regression test before correcting confirmed behavior.
 5. Resolve the report with an audit note:
@@ -120,7 +123,8 @@ npx wrangler d1 execute sophiewell-reports --remote --config wrangler.reports.js
 Use `wont_fix` only when the saved behavior is correct or outside the tool's
 stated scope, and record the reason in `resolution_note`. Remove counters older
 than 14 days, resolved reports older than 90 days, and open reports older than
-180 days after review:
+180 days. The reporting Worker enforces these windows every day at 05:17 UTC;
+the following commands are the manual fallback:
 
 ```sh
 npx wrangler d1 execute sophiewell-reports --remote --config wrangler.reports.jsonc --command "DELETE FROM report_limits WHERE bucket < date('now', '-14 days');"
@@ -136,17 +140,19 @@ multiple independent reports identify the same tool.
 
 ## Data and cost boundaries
 
-- Pages serves normal traffic without invoking the API Worker.
+- The `sophiewell` Static Assets Worker serves normal traffic without invoking
+  the API Worker.
 - Turnstile loads only after the report dialog opens.
 - At most 200 reports are accepted per UTC day.
 - Accepted traffic writes at most one report and two counter rows.
 - Duplicate and over-quota submissions add no rows.
 - Raw IP addresses, user agents, identity, email, and Turnstile tokens are not
   stored by the application in D1.
-- Sensitive tools and patient-document generators attach no form fields,
-  generated output, query parameters, or URL state. Other
-  tools skip password, contact, payment, identity, one-time-code, and file
-  controls.
+- Every report stores a canonical tool URL without query parameters or URL
+  state. Inputs and results are omitted unless the user selects the unchecked
+  context option. Sensitive tools and patient-document generators cannot attach
+  form fields or generated output. Other tools skip password, contact, payment,
+  identity, one-time-code, and file controls.
 - The optional note is limited to 160 characters; the dialog tells users not
   to include patient identifiers.
 - Bodies are capped at 24 KB, encoded bodies are rejected, and stored text

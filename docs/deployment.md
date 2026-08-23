@@ -2,7 +2,8 @@
 
 sophiewell.com deploys its application through the `sophiewell` Cloudflare
 Worker's Static Assets binding. A separate API-only Worker accepts tool reports
-at `/api/reports*`; it does not serve or compute tools. The output of
+only at `/api/reports` and `/api/reports/config`; it does not serve or compute
+tools. The output of
 `npm run build` is a directory of static files served from the same origin. The
 repository's `_headers` file applies the security headers.
 Report launch and D1 maintenance are in
@@ -15,8 +16,9 @@ Report launch and D1 maintenance are in
    `wrangler.toml`.
 2. Build with the Node version in `.nvmrc` and `SOPHIEWELL_OFFLINE=1` where
    required. Production consumes the committed `data/` folder.
-3. Keep the `sophiewell-reports` Worker on the more-specific
-   `https://sophiewell.com/api/reports*` route.
+3. Keep the `sophiewell-reports` Worker on the exact
+   `https://sophiewell.com/api/reports` and
+   `https://sophiewell.com/api/reports/config` routes.
 4. HTTPS:
    - "Always use HTTPS" enabled at the zone level.
    - "HTTP Strict Transport Security" enforced via `_headers`.

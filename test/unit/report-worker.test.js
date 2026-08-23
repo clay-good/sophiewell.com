@@ -14,7 +14,7 @@ function validPayload() {
   return {
     calculator_id: 'bmi',
     calculator_name: 'untrusted client name',
-    page_url: 'https://sophiewell.com/#bmi?w=70&h=1.75',
+    page_url: 'https://sophiewell.com/#bmi',
     note: 'I expected a different BMI.',
     inputs: [{ label: 'Weight', value: '70' }],
     outputs: {
@@ -76,6 +76,10 @@ test('report validation rejects unknown tools and mismatched URLs', () => {
   const query = validPayload();
   query.page_url = 'https://sophiewell.com/?patient=identifier#bmi';
   assert.equal(validateReportPayload(query).status, 403);
+
+  const fragmentState = validPayload();
+  fragmentState.page_url = 'https://sophiewell.com/#bmi?patient=identifier';
+  assert.equal(validateReportPayload(fragmentState).status, 403);
 });
 
 test('sensitive tools cannot submit identifiers, generated text, or URL state', () => {

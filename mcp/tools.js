@@ -819,9 +819,9 @@ export const TOOL_DEFS = [
     inputSchema: {
       type: 'object',
       properties: {
-        group: { type: 'string', description: 'Catalog group letter, e.g. "G" or "E".' },
-        specialty: { type: 'string', description: 'Specialty tag, e.g. "hepatology".' },
-        query: { type: 'string', description: 'Substring match over id, name, summary, specialties.' },
+        group: { type: 'string', maxLength: 8, description: 'Catalog group letter, e.g. "G" or "E".' },
+        specialty: { type: 'string', maxLength: 120, description: 'Specialty tag, e.g. "hepatology".' },
+        query: { type: 'string', maxLength: 1000, description: 'Substring match over id, name, summary, specialties.' },
         limit: { type: 'integer', description: 'Max rows per page (default 50, capped at 200).' },
         offset: { type: 'integer', description: 'Row offset for pagination (default 0). Use the returned nextOffset to page.' },
         fields: { type: 'string', enum: ['full', 'compact'], description: '"compact" returns id/name/group only (~8x smaller); "full" (default) adds specialties + summary.' },
@@ -870,7 +870,7 @@ export const TOOL_DEFS = [
     annotations: readOnlyAnnotations('Describe a calculator'),
     inputSchema: {
       type: 'object',
-      properties: { id: { type: 'string', description: 'Calculator id from list_calculators.' } },
+      properties: { id: { type: 'string', maxLength: 160, description: 'Calculator id from list_calculators.' } },
       required: ['id'],
       additionalProperties: false,
     },
@@ -905,7 +905,7 @@ export const TOOL_DEFS = [
     inputSchema: {
       type: 'object',
       properties: {
-        id: { type: 'string', description: 'Calculator id from list_calculators.' },
+        id: { type: 'string', maxLength: 160, description: 'Calculator id from list_calculators.' },
         inputs: { type: 'object', description: 'Inputs keyed per the calculator inputSchema (describe_calculator).' },
       },
       required: ['id', 'inputs'],
@@ -935,10 +935,10 @@ export const TOOL_DEFS = [
     inputSchema: {
       type: 'object',
       properties: {
-        query: { type: 'string', description: 'Plain-language description of the calculation you want.' },
+        query: { type: 'string', maxLength: 1000, description: 'Plain-language description of the calculation you want.' },
         limit: { type: 'integer', description: 'Max candidates to return (default 5, capped at 20).' },
-        group: { type: 'string', description: 'Optional catalog group letter prefilter, e.g. "G".' },
-        specialty: { type: 'string', description: 'Optional specialty-tag prefilter, e.g. "hepatology".' },
+        group: { type: 'string', maxLength: 8, description: 'Optional catalog group letter prefilter, e.g. "G".' },
+        specialty: { type: 'string', maxLength: 120, description: 'Optional specialty-tag prefilter, e.g. "hepatology".' },
       },
       required: ['query'],
       additionalProperties: false,
@@ -963,7 +963,7 @@ export const TOOL_DEFS = [
     inputSchema: {
       type: 'object',
       properties: {
-        query: { type: 'string', description: 'A calculation described with its numbers, e.g. "bmi 80kg 180cm".' },
+        query: { type: 'string', maxLength: 1000, description: 'A calculation described with its numbers, e.g. "bmi 80kg 180cm".' },
       },
       required: ['query'],
       additionalProperties: false,
@@ -1035,7 +1035,7 @@ export const TOOL_DEFS = [
           items: {
             type: 'object',
             properties: {
-              id: { type: 'string', description: 'Calculator id.' },
+              id: { type: 'string', maxLength: 160, description: 'Calculator id.' },
               inputs: { type: 'object', description: 'Inputs keyed per the calculator inputSchema.' },
             },
             required: ['id', 'inputs'],
@@ -1065,9 +1065,9 @@ export const TOOL_DEFS = [
     inputSchema: {
       type: 'object',
       properties: {
-        kind: { type: 'string', description: 'What to convert, e.g. "glucose", "creatinine", "a1c", "pressure", "temperature".' },
+        kind: { type: 'string', maxLength: 40, description: 'What to convert, e.g. "glucose", "creatinine", "a1c", "pressure", "temperature".' },
         value: { type: 'number', description: 'The numeric value to convert.' },
-        direction: { type: 'string', description: 'e.g. lab: "toSi"|"fromSi"; a1c: "pctToIfcc"|"ifccToPct"; pressure: "mmHgToKpa"|"kpaToMmHg". Defaults to the first for the kind.' },
+        direction: { type: 'string', maxLength: 40, description: 'e.g. lab: "toSi"|"fromSi"; a1c: "pctToIfcc"|"ifccToPct"; pressure: "mmHgToKpa"|"kpaToMmHg". Defaults to the first for the kind.' },
       },
       required: ['kind', 'value'],
       additionalProperties: false,
@@ -1090,6 +1090,14 @@ export const TOOL_DEFS = [
 ];
 
 export function dispatch(name, args) {
+  if (typeof name !== 'string' || name.length > 100) {
+    return { valid: false, code: 'BAD_ARGS', message: 'Tool name is invalid.' };
+  }
+  let encoded;
+  try { encoded = JSON.stringify(args); } catch { encoded = ''; }
+  if (!encoded || encoded.length > 65536) {
+    return { valid: false, code: 'BAD_ARGS', message: 'Tool arguments exceed 65,536 characters.' };
+  }
   switch (name) {
     case 'list_calculators': return listCalculators(args);
     case 'get_catalog_manifest': return getCatalogManifest(args);

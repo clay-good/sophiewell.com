@@ -73,11 +73,6 @@ function validRows(rows) {
     && safeStoredText(row.value) && row.value.length <= MAX_VALUE_LENGTH);
 }
 
-function urlIdentifiesCalculator(url, calculatorId) {
-  const hashId = url.hash.replace(/^#\/?/, '').split('?')[0];
-  return hashId === calculatorId;
-}
-
 function emptyOutputs(outputs) {
   return Array.isArray(outputs.values) && outputs.values.length === 0
     && outputs.text === '' && outputs.truncated === false;
@@ -102,7 +97,8 @@ export function validateReportPayload(payload, origins = ['https://sophiewell.co
   try { pageUrl = new URL(payload.page_url); } catch { return { ok: false, status: 400 }; }
   if (pageUrl.username || pageUrl.password || pageUrl.search
     || !origins.includes(pageUrl.origin)
-    || !urlIdentifiesCalculator(pageUrl, payload.calculator_id)) {
+    || pageUrl.pathname !== '/'
+    || pageUrl.hash !== `#${payload.calculator_id}`) {
     return { ok: false, status: 403 };
   }
   if (!safeStoredText(payload.note) || payload.note.length > MAX_NOTE_LENGTH) {
@@ -117,8 +113,7 @@ export function validateReportPayload(payload, origins = ['https://sophiewell.co
     return { ok: false, status: 400 };
   }
   if (SENSITIVE_CONTEXT_TOOLS.has(payload.calculator_id)
-    && (pageUrl.hash !== `#${payload.calculator_id}`
-      || payload.inputs.length !== 0
+    && (payload.inputs.length !== 0
       || !emptyOutputs(payload.outputs))) {
     return { ok: false, status: 400 };
   }
@@ -228,7 +223,7 @@ function storagePayload(value) {
   return JSON.stringify(value);
 }
 
-async function storeReport(db, report, env, remoteIp) {
+export async function storeReport(db, report, env, remoteIp) {
   const now = new Date();
   const createdAt = now.toISOString();
   const day = createdAt.slice(0, 10);
@@ -279,6 +274,18 @@ async function storeReport(db, report, env, remoteIp) {
   `).bind(day, reporter, reportId);
 
   await db.batch([insert, incrementGlobal, incrementReporter]);
+}
+
+export async function cleanupReports(db) {
+  await db.batch([
+    db.prepare("DELETE FROM report_limits WHERE bucket < date('now', '-14 days')"),
+    db.prepare(`
+      DELETE FROM calculator_reports
+      WHERE (status IN ('resolved', 'wont_fix')
+        AND created_at < datetime('now', '-90 days'))
+      OR created_at < datetime('now', '-180 days')
+    `),
+  ]);
 }
 
 function reportingConfigured(env) {
@@ -344,5 +351,8 @@ export async function handleRequest(request, env) {
 export default {
   fetch(request, env) {
     return handleRequest(request, env);
+  },
+  scheduled(_controller, env, ctx) {
+    ctx.waitUntil(cleanupReports(env.REPORTS_DB));
   },
 };

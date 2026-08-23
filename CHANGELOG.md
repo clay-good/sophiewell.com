@@ -9,15 +9,26 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Added
 
 - **Every interactive tool now has a clinician-friendly problem report.** The
-  shared **Report a problem** control sends the tool URL, current bounded inputs,
-  results, and an optional 160-character expectation note to a private D1 queue
+  shared **Report a problem** control sends the tool URL and an optional
+  160-character expectation note to a private D1 queue
   after server-validated Turnstile. The API-only Worker enforces exact origins,
   catalog IDs, payload limits, daily quotas, duplicate suppression, and a
   privacy-preserving daily reporter identity without storing IP addresses,
-  user agents, email, identity, or Turnstile tokens. Sensitive tools and
-  patient-document generators attach no form fields, generated output, query
-  parameters, or URL state. Ordinary calculation remains local and
+  user agents, email, identity, or Turnstile tokens. Every report uses a
+  canonical tool URL without query parameters or URL state. Inputs and results
+  are omitted by default and require an unchecked explicit opt-in. Sensitive
+  tools and patient-document generators can never attach form fields or
+  generated output. Daily D1 retention cleanup removes expired counters and
+  bounded-lifetime reports. Ordinary calculation remains local and
   offline-capable; reporting fails closed without affecting a tool.
+
+- **The build, MCP, and scheduled-maintenance supply chain is fail-closed.** CI
+  actions are pinned to immutable commits, checkouts do not retain credentials,
+  lockfile drift fails instead of falling back to an install, and the only
+  write-capable refresh job consumes a tested artifact without running package
+  code. The MCP job installs its own lockfile and performs a real stdio
+  handshake. The CycloneDX SBOM now includes hashed source/runtime components,
+  both lockfiles, vendored code, Turnstile, and a valid deterministic UUID.
 
 ### Changed (page copy: say less, and say it bigger)
 

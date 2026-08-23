@@ -88,22 +88,21 @@ export function collectReportOutputs(outputRegion) {
   return { values, ...outputText(outputRegion) };
 }
 
-export function buildReportPayload({ tool, inputRegion, outputRegion, note, token }) {
+export function buildReportPayload({ tool, inputRegion, outputRegion, note, token, includeContext = false }) {
   const sensitive = SENSITIVE_CONTEXT_TOOLS.has(tool.id);
+  const attachContext = includeContext && !sensitive;
   const sanitized = new URL(window.location.href);
   sanitized.search = '';
-  if (sensitive) {
-    sanitized.hash = tool.id;
-  }
+  sanitized.hash = tool.id;
   return {
     calculator_id: tool.id,
     calculator_name: tool.name,
     page_url: sanitized.href,
     note: bounded(note, NOTE_LIMIT),
-    inputs: collectReportInputs(inputRegion, tool.id),
-    outputs: sensitive
-      ? { values: [], text: '', truncated: false }
-      : collectReportOutputs(outputRegion),
+    inputs: attachContext ? collectReportInputs(inputRegion, tool.id) : [],
+    outputs: attachContext
+      ? collectReportOutputs(outputRegion)
+      : { values: [], text: '', truncated: false },
     turnstile_token: token,
   };
 }
@@ -158,6 +157,7 @@ export async function openReportDialog({ tool, inputRegion, outputRegion, trigge
   const dialog = document.createElement('dialog');
   dialog.className = 'report-dialog';
   dialog.setAttribute('aria-labelledby', 'report-dialog-title');
+  dialog.setAttribute('aria-describedby', 'report-dialog-context report-dialog-privacy');
 
   const title = document.createElement('h2');
   title.id = 'report-dialog-title';
@@ -165,17 +165,30 @@ export async function openReportDialog({ tool, inputRegion, outputRegion, trigge
   dialog.appendChild(title);
 
   const context = document.createElement('p');
+  context.id = 'report-dialog-context';
   context.className = 'report-context';
   const includesContext = !SENSITIVE_CONTEXT_TOOLS.has(tool.id);
   context.textContent = includesContext
-    ? `${tool.name}: we will attach this tool's URL, current inputs, and results.`
+    ? `${tool.name}: we will attach only this tool's URL unless you choose to include current values.`
     : `${tool.name}: we will not attach form entries, generated text, or URL state.`;
   dialog.appendChild(context);
 
   const privacy = document.createElement('p');
+  privacy.id = 'report-dialog-privacy';
   privacy.className = 'report-privacy';
   privacy.textContent = 'Do not include a patient name, date of birth, medical record number, address, or other identifying information.';
   dialog.appendChild(privacy);
+
+  let includeContext = null;
+  if (includesContext) {
+    const contextLabel = document.createElement('label');
+    includeContext = document.createElement('input');
+    includeContext.type = 'checkbox';
+    includeContext.className = 'report-include-context';
+    contextLabel.appendChild(includeContext);
+    contextLabel.append(' Include current inputs and results (do not use for patient information)');
+    dialog.appendChild(contextLabel);
+  }
 
   const label = document.createElement('label');
   label.htmlFor = 'report-note';
@@ -277,7 +290,14 @@ export async function openReportDialog({ tool, inputRegion, outputRegion, trigge
     cancel.disabled = true;
     status.textContent = 'Sending report...';
     try {
-      const payload = buildReportPayload({ tool, inputRegion, outputRegion, note: note.value, token });
+      const payload = buildReportPayload({
+        tool,
+        inputRegion,
+        outputRegion,
+        note: note.value,
+        token,
+        includeContext: Boolean(includeContext && includeContext.checked),
+      });
       const response = await fetch(REPORT_URL, {
         method: 'POST',
         credentials: 'same-origin',
@@ -288,7 +308,9 @@ export async function openReportDialog({ tool, inputRegion, outputRegion, trigge
       status.textContent = 'Thanks. Report saved.';
       trigger.dataset.reportSent = 'true';
       trigger.textContent = 'Report sent';
-      setTimeout(close, 900);
+      submit.hidden = true;
+      cancel.disabled = false;
+      cancel.textContent = 'Done';
     } catch {
       token = '';
       cancel.disabled = false;

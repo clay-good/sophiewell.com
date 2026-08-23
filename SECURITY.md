@@ -59,12 +59,14 @@ summary:
   `devDependencies` use exact versions (no `^` or `~`), including ESLint,
   Playwright, OpenLore, and Wrangler.
 - **Pinned runtime engine.** `engines.node` is constrained to
-  `>=20.18.1 <21`; `.nvmrc` records the exact patch for local and CI builds.
+  `>=22.23.2 <23`; `.nvmrc` records the exact patch for local and CI builds.
 - **Reproducible SBOM.** [`scripts/build-sbom.mjs`](scripts/build-sbom.mjs)
   emits a CycloneDX 1.5 [`sbom.json`](sbom.json) and a human-readable
-  [`sbom.md`](sbom.md). Both include a per-build SHA-256-derived build
-  ID and SHA-256s of every shipped runtime asset and every JS source
-  module. Run `npm run sbom` to regenerate.
+  [`sbom.md`](sbom.md). They include a valid deterministic UUID, hashes for
+  browser and Worker entry assets, every `lib/`, `views/`, MCP, and vendored
+  source file, both complete lockfiles, and the on-demand Turnstile component.
+  Generated pages and data shards are covered by their build and integrity
+  manifests. Run `npm run sbom` to regenerate.
 - **Data integrity.** `npm run data:verify` re-hashes every shard under
   `data/` and compares against the value in its dataset manifest. CI
   fails the build on any mismatch.
@@ -89,12 +91,16 @@ summary:
 - Calculation is local. A report is sent only after the user opens the dialog,
   is told which context categories will be attached, completes Turnstile, and
   chooses **Send report**.
-- Reports contain the tool URL, bounded input rows, results,
-  and an optional note. Sensitive tools and patient-document generators attach
-  no form fields, generated output, query parameters, or URL state.
+- Reports contain a canonical tool URL and an optional note. An unchecked,
+  explicit option can add bounded input rows and results. No report URL contains
+  query parameters or URL state.
+  Sensitive tools and patient-document generators also attach no form fields
+  or generated output.
 - Raw IP addresses, user agents, identities, email addresses, and Turnstile
   tokens are not stored by the application in D1. A secret-keyed daily HMAC
   supports rate limiting and cannot be used to track a reporter across days.
+- A daily Worker schedule deletes rate counters after 14 days, resolved or
+  `wont_fix` reports after 90 days, and every report after 180 days.
 - The footer links to `claygood.com` and `github.com` only when the user
   explicitly clicks. Ordinary tool use makes no automatic external requests;
   opening the report dialog deliberately loads Cloudflare Turnstile.

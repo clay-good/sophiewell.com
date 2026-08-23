@@ -51,12 +51,15 @@ Mitigations:
   privacy-preserving per-reporter daily ceilings plus duplicate suppression.
 - The body and every stored field are bounded. Encoded bodies, unknown keys,
   unsafe control characters, unknown tool IDs, and mismatched URLs are rejected.
-- Sensitive tools and patient-document generators attach no form fields,
-  generated output, query parameters, or URL state;
-  identity/contact/file controls are skipped; the dialog explicitly forbids
-  patient identifiers.
+- Every report sends only a canonical tool URL, never query parameters or URL
+  state. Inputs and results are omitted by default and require explicit opt-in.
+  Sensitive tools and patient-document generators cannot attach form fields or
+  generated output; identity/contact/file controls are skipped; the dialog
+  explicitly forbids patient identifiers.
 - Raw IP addresses, user agents, identities, and Turnstile tokens are not stored
   by the application in D1.
+- Daily D1 cleanup bounds counter retention to 14 days, resolved or `wont_fix`
+  reports to 90 days, and all reports to 180 days.
 
 ### T4. Supply-chain compromise via runtime dependencies
 
@@ -159,8 +162,9 @@ could share a URL containing clinical inputs without realizing the
 recipient sees those values.
 
 Mitigations:
-- The fragment never leaves the browser. CSP `connect-src 'self'`
-  prevents any outbound transmission.
+- Stateful fragment content never leaves the browser. Reports send only the
+  canonical `/#tool-id`; CSP `connect-src 'self'` prevents off-origin
+  transmission.
 - The Stability Commitments doc and the per-utility view make
   explicit that nothing the user types is sent anywhere; what they
   bookmark is what they share.

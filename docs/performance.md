@@ -62,15 +62,16 @@ catalog (discovered from `sitemap.xml`) at 320 px and fails CI if any
 view's `documentElement.scrollWidth` exceeds its `clientWidth`, so a
 new tile cannot ship horizontal overflow undetected.
 
-## CI Wiring
+## Lighthouse configuration
 
-`.github/workflows/ci.yml` runs Lighthouse CI in its own `lighthouse` job
-(`needs: unit`), via `npx @lhci/cli@0.13.x autorun`. Configuration lives in
-`.lighthouserc.json` at the repo root. To run locally:
+`.lighthouserc.json` remains available for an explicitly installed, audited
+Lighthouse environment. The CLI is not installed or downloaded in CI because
+its current transitive dependency tree contains unresolved advisories. To run
+it in a disposable local environment after reviewing that tree:
 
 ```
 npm run build
-npx @lhci/cli@0.13.x autorun
+lhci autorun
 ```
 
 `.lighthouserc.json` sets the desktop preset + Slow-4G-class throttling and

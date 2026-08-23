@@ -36,8 +36,9 @@ test('a mobile clinician can send reproducible tool context', async ({ page }) =
   await report.click();
   const dialog = page.getByRole('dialog', { name: 'Report a problem' });
   await expect(dialog).toBeVisible();
-  await expect(dialog).toContainText("URL, current inputs, and results");
+  await expect(dialog).toContainText("only this tool's URL");
   await expect(dialog).toContainText('Do not include a patient name');
+  await dialog.getByLabel(/Include current inputs and results/).check();
 
   const note = dialog.getByLabel('What did you expect instead? (optional)');
   await expect(note).toHaveAttribute('maxlength', '160');
@@ -51,7 +52,7 @@ test('a mobile clinician can send reproducible tool context', async ({ page }) =
 
   expect(submitted).toBeTruthy();
   expect(submitted.calculator_id).toBe('bmi');
-  expect(submitted.page_url).toContain('#bmi');
+  expect(submitted.page_url).toMatch(/\/#bmi$/);
   expect(submitted.note).toBe('I expected a BMI of 23.');
   expect(submitted.turnstile_token).toBe('browser-test-token');
   expect(submitted.inputs.length).toBeGreaterThan(0);
@@ -62,6 +63,38 @@ test('a mobile clinician can send reproducible tool context', async ({ page }) =
     client: document.documentElement.clientWidth,
   }));
   expect(width.scroll).toBeLessThanOrEqual(width.client + 1);
+});
+
+test('ordinary reports omit calculator context unless the clinician opts in', async ({ page }) => {
+  await page.addInitScript(() => {
+    window.turnstile = {
+      render: (_host, options) => {
+        queueMicrotask(() => options.callback('browser-test-token'));
+        return 'widget-1';
+      },
+      remove: () => {},
+      reset: () => {},
+    };
+  });
+  let submitted = null;
+  await page.route('**/api/reports/config', (route) => route.fulfill({
+    status: 200,
+    contentType: 'application/json',
+    body: JSON.stringify({ sitekey: 'browser-test-sitekey' }),
+  }));
+  await page.route('**/api/reports', async (route) => {
+    submitted = route.request().postDataJSON();
+    await route.fulfill({ status: 202, contentType: 'application/json', body: '{"ok":true}' });
+  });
+
+  await page.goto('/#bmi');
+  await page.getByRole('button', { name: 'Report a problem' }).click();
+  const dialog = page.getByRole('dialog', { name: 'Report a problem' });
+  await expect(dialog.getByLabel(/Include current inputs and results/)).not.toBeChecked();
+  await dialog.getByRole('button', { name: 'Send report' }).click();
+  await expect(dialog).toContainText('Thanks. Report saved.');
+  expect(submitted.inputs).toEqual([]);
+  expect(submitted.outputs).toEqual({ values: [], text: '', truncated: false });
 });
 
 test('sensitive tools do not attach form fields, generated text, or URL state', async ({ page }) => {

@@ -10,15 +10,16 @@ jobs:
   refresh:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
-      pull-requests: write
+      contents: read
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v5
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
         with:
           node-version-file: .nvmrc
           cache: npm
-      - run: npm ci || npm install --no-audit --no-fund
+      - run: npm ci
 
       - name: Snapshot previous data
         run: |
@@ -38,12 +39,11 @@ jobs:
         run: node scripts/build-search-corpus.mjs
 
       - name: Generate data change summary
-        id: changes
         run: |
-          node scripts/analyze-data-changes.mjs --previous /tmp/prev-data/data --current data > /tmp/changes.md
-          echo "summary<<EOF" >> $GITHUB_OUTPUT
-          cat /tmp/changes.md >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
+          echo "Automated weekly refresh of bundled public datasets." > data-refresh-summary.md
+          echo "See scripts/sources.md for the canonical source URL of each dataset." >> data-refresh-summary.md
+          echo >> data-refresh-summary.md
+          node scripts/analyze-data-changes.mjs --previous /tmp/prev-data/data --current data >> data-refresh-summary.md
 
       - name: Run full test suite on refreshed data
         run: |
@@ -51,17 +51,42 @@ jobs:
           npm run test:unit
           npm run test:a11y
 
-      - name: Open pull request if data changed
-        uses: peter-evans/create-pull-request@v6
+      - name: Package reviewed changes
+        run: git diff --binary -- data scripts/expected-hashes.json > data-refresh.patch
+
+      - name: Upload reviewed changes
+        uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5
         with:
+          name: data-refresh
+          path: |
+            data-refresh.patch
+            data-refresh-summary.md
+          retention-days: 1
+
+  publish:
+    needs: refresh
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+      - uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0 # v5
+        with:
+          name: data-refresh
+          path: .data-refresh
+      - name: Apply reviewed changes
+        run: git apply .data-refresh/data-refresh.patch
+      - name: Open pull request if data changed
+        uses: peter-evans/create-pull-request@c5a7806660adbe173f04e3e038b0ccdcd758773c # v6
+        with:
+          token: ${{ github.token }}
           branch: data/weekly-refresh
           title: 'data: weekly refresh'
           commit-message: 'data: weekly refresh of bundled datasets'
-          body: |
-            Automated weekly refresh of bundled public datasets.
-            See scripts/sources.md for the canonical source URL of each dataset.
-
-            ${{ steps.changes.outputs.summary }}
+          body-path: .data-refresh/data-refresh-summary.md
           add-paths: |
             data/**
             scripts/expected-hashes.json

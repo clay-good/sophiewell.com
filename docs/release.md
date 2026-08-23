@@ -10,7 +10,7 @@ SBOM is committed to the repo on every release.
 
 1. Create the `sophiewell` Worker and attach `sophiewell.com` as its custom
    domain. Keep `workers.dev` and preview URLs disabled.
-2. Build with Node `20.18.1` from `.nvmrc`, npm `10.8.2`, and
+2. Build with Node `22.23.2` from `.nvmrc`, npm `10.8.2`, and
    `SOPHIEWELL_OFFLINE=1` when running the offline production data build.
 3. Confirm Cloudflare manages the TLS certificate and the custom domain is
    active.
@@ -24,7 +24,7 @@ SBOM is committed to the repo on every release.
 Run from a clean checkout:
 
 ```sh
-nvm use            # honours .nvmrc -> Node 20.18.1
+nvm use            # honours .nvmrc -> Node 22.23.2
 npm ci             # installs exactly what the lockfile pins
 npm run release:check
 ```
@@ -60,7 +60,7 @@ keyboard shortcuts, the pinning system, and the CSP/storage assertions.
 ## Promotion to production
 
 1. Open a PR from `develop` (or a topic branch) into `main`.
-2. CI runs `unit`, `e2e`, and `lighthouse` jobs (see
+2. CI runs `unit`, `mcp`, and `e2e` jobs (see
    [`.github/workflows/ci.yml`](../.github/workflows/ci.yml)).
 3. Merge to `main`, build `dist`, and upload the static Worker version:
 
@@ -95,8 +95,8 @@ keyboard shortcuts, the pinning system, and the CSP/storage assertions.
 - **Pinned dev dependencies.** `package.json` uses exact versions for
   every entry in `devDependencies`, including ESLint, Playwright, OpenLore,
   and Wrangler.
-- **Pinned runtime engine.** `engines.node` is `>=20.18.1 <21`;
-  `.nvmrc` records `20.18.1` for local and CI builds.
+- **Pinned runtime engine.** `engines.node` is `>=22.23.2 <23`;
+  `.nvmrc` records `22.23.2` for local and CI builds.
 - **Reproducible SBOM.** `npm run sbom` writes a CycloneDX 1.5
   `sbom.json` plus a human-readable `sbom.md` with SHA-256 hashes for
   every runtime asset and every JS source module.

@@ -26,7 +26,7 @@ the site.
 
 ## Install
 
-Requires Node `>=20.18.1 <21` (matches the repo `.nvmrc`).
+Requires Node `>=22.23.2 <23` (matches the repo `.nvmrc`).
 
 ```sh
 git clone https://github.com/clay-good/sophiewell.com.git

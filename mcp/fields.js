@@ -44,6 +44,8 @@ export function scaleValues(max, min = 0) {
 // is the machine-readable contract describe_calculator returns; it documents
 // the ideal type for an agent. Validation (validateInputs) is intentionally a
 // touch more lenient so DOM-string example payloads round-trip unchanged.
+const MAX_STRING_LENGTH = 2048;
+
 export function fieldSchema(fields) {
   const properties = {};
   const required = [];
@@ -58,7 +60,7 @@ export function fieldSchema(fields) {
     }
     else if (f.kind === 'bool') p.type = 'boolean';
     else if (f.kind === 'enum') { p.type = 'string'; p.enum = f.values.slice(); }
-    else p.type = 'string';
+    else { p.type = 'string'; p.maxLength = MAX_STRING_LENGTH; }
     if (f.unit) p.description += ` (${f.unit})`;
     properties[f.dom] = p;
     if (f.required) required.push(f.dom);
@@ -79,6 +81,7 @@ export function validateInputs(inputs, fields) {
   }
   const known = new Set(fields.map((f) => f.dom));
   for (const key of Object.keys(inputs)) {
+    if (key.length > MAX_STRING_LENGTH) return { valid: false, code: 'BAD_ARGS', message: 'Input field name is too long.' };
     if (!known.has(key)) return { valid: false, code: 'UNKNOWN_INPUT', field: key, message: `Unknown input "${key}". Call describe_calculator for the input schema.` };
   }
   for (const f of fields) {
@@ -88,6 +91,9 @@ export function validateInputs(inputs, fields) {
       continue;
     }
     const v = inputs[f.dom];
+    if (typeof v === 'string' && v.length > MAX_STRING_LENGTH) {
+      return { valid: false, code: 'BAD_ARGS', field: f.dom, message: `"${f.dom}" exceeds ${MAX_STRING_LENGTH} characters.` };
+    }
     if (f.kind === 'number') {
       if (v === '' || v === null || v === undefined) {
         if (f.required) return { valid: false, code: 'MISSING_INPUT', field: f.dom, message: `"${f.dom}" is required.` };

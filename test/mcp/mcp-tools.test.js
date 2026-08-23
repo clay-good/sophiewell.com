@@ -37,6 +37,12 @@ test('every tool is wired into dispatch and documented in mcp/README.md', () => 
   }
 });
 
+test('dispatch rejects oversized local MCP arguments before tool execution', () => {
+  const result = dispatch('find_calculator', { query: 'x'.repeat(65537) });
+  assert.equal(result.code, 'BAD_ARGS');
+  assert.match(result.message, /65,536/);
+});
+
 test('list_calculators: coverage line, paginated totals, and filters', () => {
   const all = listCalculators();
   assert.match(all.coverage, /^\d+ of \d+ catalog tiles exposed/);

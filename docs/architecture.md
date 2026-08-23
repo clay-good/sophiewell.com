@@ -12,7 +12,8 @@ input or on bundled reference data served from the same origin.
 The one hosted write path is an anonymous tool report: a separate API-only
 Cloudflare Worker validates a bounded, user-initiated submission with Turnstile
 and writes it to a private D1 queue. The Worker is routed only to
-`/api/reports*`, has no static asset binding, and is never invoked during normal
+the exact `/api/reports` and `/api/reports/config` paths, has no static asset
+binding, and is never invoked during normal
 tool use. See [calculator-reports.md](calculator-reports.md).
 
 The application is structurally identical in spirit to encryptalotta.com: one

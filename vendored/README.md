@@ -11,7 +11,7 @@ intact:
 
 - **No third-party fetch at runtime.** Every vendored file is served
   from the same origin as the rest of the site.
-- **No npm install at build time** beyond the two dev-only entries in
+- **No npm install at build time** beyond the pinned dev-only entries in
   `package.json`. Vendored libraries are committed to the repo so
   build reproducibility does not depend on a third-party registry.
 - **License compatibility is auditable.** Each subdirectory's
@@ -26,6 +26,7 @@ intact:
 |----------------|--------------|-------------------------------------------|------------|--------------------------------------------------------|
 | `pdfjs/`       | Mozilla pdf.js | https://github.com/mozilla/pdf.js       | Apache-2.0 | PDF text extraction for the `pa-lint` tile (spec-v52)  |
 | `mammoth/`     | mammoth.js   | https://github.com/mwilliamson/mammoth.js | BSD-2-Clause | DOCX text extraction for the `pa-lint` tile (spec-v52) |
+| `tesseract/`   | Tesseract.js | https://github.com/naptha/tesseract.js | Apache-2.0 | Local OCR support for the `pa-lint` tile |
 
 The docx (DOCX generation) vendored entry from spec-v52 §5.2 will
 land in a subsequent wave.

@@ -41,9 +41,11 @@ you tick the criteria that apply and get
 
 Calculations run locally and keep working offline. Nothing leaves your device
 unless you deliberately choose **Report a problem**; that action sends the
-tool URL, current bounded inputs, results, and an optional short note
-to a private maintenance queue. Sensitive tools attach no form entries,
-generated text, query parameters, or URL state. There are no accounts or
+canonical tool URL and an optional short note to a private maintenance queue.
+Current bounded inputs and results are included only when you select the
+unchecked context option. No report URL contains query parameters or URL state.
+Sensitive tools never attach form entries or generated text. There are
+no accounts or
 background telemetry.
 
 ## Use it

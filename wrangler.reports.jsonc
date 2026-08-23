@@ -11,9 +11,16 @@
   "observability": {
     "enabled": false
   },
+  "triggers": {
+    "crons": ["17 5 * * *"]
+  },
   "routes": [
     {
-      "pattern": "https://sophiewell.com/api/reports*",
+      "pattern": "https://sophiewell.com/api/reports",
+      "zone_name": "sophiewell.com"
+    },
+    {
+      "pattern": "https://sophiewell.com/api/reports/config",
       "zone_name": "sophiewell.com"
     }
   ],

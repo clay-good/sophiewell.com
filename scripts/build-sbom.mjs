@@ -19,6 +19,9 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
 
 const pkg = JSON.parse(await readFile(resolve(ROOT, 'package.json'), 'utf8'));
+const rootLock = JSON.parse(await readFile(resolve(ROOT, 'package-lock.json'), 'utf8'));
+const mcpPkg = JSON.parse(await readFile(resolve(ROOT, 'mcp/package.json'), 'utf8'));
+const mcpLock = JSON.parse(await readFile(resolve(ROOT, 'mcp/package-lock.json'), 'utf8'));
 
 // Runtime files shipped to the browser. Hashed for reviewer reproducibility.
 const RUNTIME_FILES = [
@@ -55,6 +58,7 @@ async function sha256(buf) {
 
 async function* walk(dir) {
   for (const entry of await readdir(dir, { withFileTypes: true })) {
+    if (entry.name === 'node_modules') continue;
     const p = join(dir, entry.name);
     if (entry.isDirectory()) yield* walk(p);
     else yield p;
@@ -62,12 +66,12 @@ async function* walk(dir) {
 }
 
 async function listSourceTree() {
-  const dirs = ['lib', 'views'];
+  const dirs = ['lib', 'views', 'mcp', 'vendored'];
   const out = [];
   for (const d of dirs) {
     if (!existsSync(join(ROOT, d))) continue;
     for await (const f of walk(join(ROOT, d))) {
-      if (f.endsWith('.js')) out.push(relative(ROOT, f));
+      if (f.endsWith('.js') || d === 'vendored') out.push(relative(ROOT, f));
     }
   }
   return out.sort();
@@ -100,17 +104,62 @@ for (const f of await listSourceTree()) {
 }
 
 // CycloneDX 1.5 minimal structure
-const buildId = createHash('sha256')
+const buildDigest = createHash('sha256')
   .update(runtime.map((r) => r.sha256).join('')
     + edgeRuntime.map((r) => r.sha256).join('')
     + source.map((r) => r.sha256).join(''))
-  .digest('hex')
-  .slice(0, 16);
+  .digest('hex');
+const buildId = buildDigest.slice(0, 16);
+const uuidHex = `${buildDigest.slice(0, 12)}5${buildDigest.slice(13, 16)}8${buildDigest.slice(17, 32)}`;
+const serialUuid = `${uuidHex.slice(0, 8)}-${uuidHex.slice(8, 12)}-${uuidHex.slice(12, 16)}-${uuidHex.slice(16, 20)}-${uuidHex.slice(20)}`;
+
+function fileComponent(entry, scope) {
+  return {
+    'bom-ref': `urn:sophiewell:file:${scope}:${entry.path}`,
+    type: 'file',
+    name: entry.path,
+    hashes: [{ alg: 'SHA-256', content: entry.sha256 }],
+    properties: [
+      { name: 'sophiewell:scope', value: scope },
+      { name: 'sophiewell:bytes', value: String(entry.bytes) },
+    ],
+  };
+}
+
+function npmComponents(lock, lockName) {
+  return Object.entries(lock.packages || {})
+    .filter(([path, info]) => path && info && info.version && path.includes('node_modules/'))
+    .map(([path, info]) => {
+      const name = info.name || path.slice(path.lastIndexOf('node_modules/') + 13);
+      const component = {
+        'bom-ref': `urn:sophiewell:npm:${lockName}:${path}`,
+        type: 'library',
+        name,
+        version: info.version,
+        scope: info.dev ? 'optional' : 'required',
+        purl: `pkg:npm/${name.replace(/^@/, '%40')}@${info.version}`,
+        properties: [{ name: 'sophiewell:lockfile', value: lockName }],
+      };
+      if (typeof info.integrity === 'string' && info.integrity.startsWith('sha512-')) {
+        component.hashes = [{ alg: 'SHA-512', content: Buffer.from(info.integrity.slice(7), 'base64').toString('hex') }];
+      }
+      if (info.license) component.licenses = [{ license: { id: info.license } }];
+      return component;
+    });
+}
+
+const rootNpm = npmComponents(rootLock, 'package-lock.json');
+const mcpNpm = npmComponents(mcpLock, 'mcp/package-lock.json');
+const fileComponents = [
+  ...runtime.map((entry) => fileComponent(entry, 'browser-entry')),
+  ...edgeRuntime.map((entry) => fileComponent(entry, 'report-worker')),
+  ...source.map((entry) => fileComponent(entry, entry.path.startsWith('mcp/') ? 'mcp-source' : 'source')),
+];
 
 const sbom = {
   bomFormat: 'CycloneDX',
   specVersion: '1.5',
-  serialNumber: `urn:uuid:sophiewell-${buildId}`,
+  serialNumber: `urn:uuid:${serialUuid}`,
   version: 1,
   metadata: {
     timestamp: new Date().toISOString(),
@@ -134,19 +183,48 @@ const sbom = {
       ],
     },
   },
-  components: Object.entries(pkg.devDependencies || {}).map(([name, version]) => ({
-    'bom-ref': `pkg:npm/${name}@${version}`,
-    type: 'library',
-    name,
-    version,
-    scope: 'optional',
-    purl: `pkg:npm/${name}@${version}`,
-  })),
+  components: [
+    ...fileComponents,
+    ...rootNpm,
+    {
+      'bom-ref': 'pkg:application/sophiewell-mcp',
+      type: 'application',
+      name: mcpPkg.name,
+      version: mcpPkg.version,
+      licenses: [{ license: { id: 'MIT' } }],
+    },
+    ...mcpNpm,
+    {
+      'bom-ref': 'urn:sophiewell:external:cloudflare-turnstile',
+      type: 'library',
+      name: 'Cloudflare Turnstile',
+      scope: 'optional',
+      externalReferences: [{ type: 'website', url: 'https://developers.cloudflare.com/turnstile/' }],
+      properties: [{ name: 'sophiewell:delivery', value: 'external, on demand after report dialog opens' }],
+    },
+  ],
+  dependencies: [
+    {
+      ref: 'pkg:application/sophiewell',
+      dependsOn: fileComponents
+        .filter((component) => component.properties[0].value !== 'mcp-source')
+        .map((component) => component['bom-ref']),
+    },
+    {
+      ref: 'pkg:application/sophiewell-mcp',
+      dependsOn: [
+        ...fileComponents.filter((component) => component.properties[0].value === 'mcp-source').map((component) => component['bom-ref']),
+        ...mcpNpm.filter((component) => component.scope === 'required').map((component) => component['bom-ref']),
+      ],
+    },
+  ],
   properties: [
     { name: 'sophiewell:buildId', value: buildId },
     { name: 'sophiewell:runtimeAssetCount', value: String(runtime.length) },
     { name: 'sophiewell:edgeRuntimeAssetCount', value: String(edgeRuntime.length) },
     { name: 'sophiewell:sourceFileCount', value: String(source.length) },
+    { name: 'sophiewell:rootLockedPackageCount', value: String(rootNpm.length) },
+    { name: 'sophiewell:mcpLockedPackageCount', value: String(mcpNpm.length) },
   ],
 };
 
