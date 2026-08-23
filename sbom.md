@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `5849f2839fc649ba`
-Generated: 2026-08-23T00:57:21.823Z
+Build ID: `7f2bfefb404713a7`
+Generated: 2026-08-23T01:55:34.154Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=20.18.1 <21, npm >=10.0.0
@@ -432,7 +432,7 @@ downloads is committed in this repository and is hashed below.
 | `lib/myeloid-prognosis-v199.js` | 11996 | `d65fe650bc865814907eb9176be30f15bb5db529c5dbd629a78aaae974f6e1a6` |
 | `lib/myxedema-coma-v599.js` | 15439 | `76c6237db1eafb935ba2908633c46d61b59545cb05488f892d4d599eadd17637` |
 | `lib/nac-attr-stage-v583.js` | 12233 | `7cbf9dbc38f5e929d85f09c774fec6a1d46ef015dfb3a5144d592a7e4857f999` |
-| `lib/name-match.js` | 7179 | `5cbf7ec25bc73798907740814c10dadc80e9e0479b07a4930a07458733712f67` |
+| `lib/name-match.js` | 7925 | `52385d64e4bb505f087d614f4e10ddf4dcf51169bb19bebcf103e03dcf8660af` |
 | `lib/nancy-index-v578.js` | 13756 | `9ad406fe2f9ab2f84d2d321db7de21bfa2f53ce5e00ee92b4f700952ab243c24` |
 | `lib/narakas-obpp-v498.js` | 3267 | `255a2ed868495c515b280b54793fe7787a70d2134c1abe289f32245209584b6b` |
 | `lib/nash-moe-rotation-v476.js` | 3250 | `f93c53ace03d4639ba7a6995c1860bddb90842f4075a94632a201017fde9c1ad` |
