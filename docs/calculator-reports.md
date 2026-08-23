@@ -4,8 +4,8 @@ This runbook launches and maintains the anonymous **Report a problem** path.
 The public site has no report-reading endpoint. Review uses authenticated
 Cloudflare D1 access.
 
-The existing `sophiewell` Pages project continues to serve static files. A
-separate `sophiewell-reports` Worker is routed only to
+The existing `sophiewell` Static Assets Worker continues to serve static files.
+A separate `sophiewell-reports` Worker is routed only to
 `sophiewell.com/api/reports*`, so normal calculator and asset requests never
 invoke it. Public `workers.dev` and version-preview URLs stay disabled so they
 cannot bypass the zone WAF.
@@ -73,12 +73,14 @@ independent backstops.
 
 ### 4. Deploy and prove the path
 
-Build once, deploy the API Worker, and let the normal Pages deployment publish
-the same commit:
+Build once, deploy the API Worker, then upload and explicitly promote the
+`sophiewell` static Worker version:
 
 ```sh
 npm run build
 npx wrangler deploy --config wrangler.reports.jsonc
+npx wrangler deploy
+npx wrangler versions deploy VERSION_ID --name sophiewell --percentage 100 --yes
 ```
 
 Then verify:

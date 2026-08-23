@@ -119,13 +119,13 @@ The pattern mirrors what already exists. Briefly:
 ## Cost
 
 The site costs the domain renewal (approximately ten dollars per
-year) and zero compute on the Cloudflare Pages free tier.
+year) and uses the Cloudflare Workers free tier for static delivery.
 
 ## Emergency procedures
 
-- **Data corruption discovered in production**. Cloudflare Pages
-  keeps every prior deployment. Promote the previous deployment via
-  the Pages dashboard (rollback). Open a hotfix PR against the
+- **Data corruption discovered in production**. Cloudflare keeps every prior
+  Worker version. Promote the previous `sophiewell` version to 100% traffic
+  (rollback). Open a hotfix PR against the
   current data folder.
 - **A clinician reports a calculator returning a wrong value**.
   Reproduce locally with the values; if confirmed, fix the formula

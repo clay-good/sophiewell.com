@@ -201,7 +201,7 @@ Mitigations:
 ## Out of Scope Threats
 
 Physical attacks on the user's device, attacks on the user's browser
-runtime itself, attacks on Cloudflare Pages infrastructure, and AMA
+runtime itself, attacks on Cloudflare Workers infrastructure, and AMA
 litigation are out of scope for this threat model. The CPT posture in
 `legal.md` addresses the AMA content question as a legal matter rather than
 as a technical control.

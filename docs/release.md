@@ -1,44 +1,20 @@
 # Public release runbook
 
-Sophie Well is published at `https://sophiewell.com` via Cloudflare Pages.
+Sophie Well is published at `https://sophiewell.com` through the `sophiewell`
+Cloudflare Worker's Static Assets binding.
 The build is fully reproducible: every byte the browser downloads is in
 this repository, every dev tool is pinned to an exact version, and an
 SBOM is committed to the repo on every release.
 
-## One-time Cloudflare Pages setup
+## One-time Cloudflare Worker setup
 
-1. Sign in to the Cloudflare dashboard, go to **Workers & Pages -> Create
-   application -> Pages -> Connect to Git**, and select the
-   `clay-good/sophiewell.com` GitHub repository.
-2. Configure the build:
-
-   | Field | Value |
-   |---|---|
-   | Production branch | `main` |
-   | Framework preset | None |
-   | Build command | `npm run build` |
-   | Build output directory | `dist` |
-   | Root directory | (leave blank) |
-
-3. Set environment variables (Pages -> Settings -> Environment variables):
-
-   | Name | Value | Scope |
-   |---|---|---|
-   | `NODE_VERSION` | `20.18.1` | Production + Preview |
-   | `NPM_VERSION` | `10.8.2` | Production + Preview |
-   | `SOPHIEWELL_OFFLINE` | `1` | Production + Preview |
-
-   The `.nvmrc` file already pins Node to `20.18.1`; setting
-   `NODE_VERSION` in the dashboard belt-and-braces the lock so a Pages
-   image upgrade cannot silently change runtimes.
-
-4. Add the custom domain in **Pages -> Custom domains**:
-   - Apex: `sophiewell.com`
-   - Subdomain: `www.sophiewell.com` (optional, redirect to apex)
-   - Cloudflare manages the TLS cert. Confirm it goes Active before
-     submitting to the HSTS preload list.
-
-5. Submit `sophiewell.com` to <https://hstspreload.org> after the first
+1. Create the `sophiewell` Worker and attach `sophiewell.com` as its custom
+   domain. Keep `workers.dev` and preview URLs disabled.
+2. Build with Node `20.18.1` from `.nvmrc`, npm `10.8.2`, and
+   `SOPHIEWELL_OFFLINE=1` when running the offline production data build.
+3. Confirm Cloudflare manages the TLS certificate and the custom domain is
+   active.
+4. Submit `sophiewell.com` to <https://hstspreload.org> after the first
    green production deploy. The site already serves
    `Strict-Transport-Security: max-age=31536000; includeSubDomains;
    preload` from `_headers`, so it qualifies on day one.
@@ -86,18 +62,28 @@ keyboard shortcuts, the pinning system, and the CSP/storage assertions.
 1. Open a PR from `develop` (or a topic branch) into `main`.
 2. CI runs `unit`, `e2e`, and `lighthouse` jobs (see
    [`.github/workflows/ci.yml`](../.github/workflows/ci.yml)).
-3. Cloudflare Pages builds a preview deploy on push.
-4. Manually verify the preview URL: tool clicks land, breadcrumb works,
-   footer badges go to the right URLs, favicon is "Sophie Well".
-5. Merge to `main`. Cloudflare Pages auto-deploys to production.
-6. After a successful production deploy, tag the release:
+3. Merge to `main`, build `dist`, and upload the static Worker version:
+
+   ```sh
+   npm run build
+   npx wrangler deploy
+   ```
+
+4. Record the reported version ID. Because production targets are managed in
+   Cloudflare, explicitly promote it:
+
+   ```sh
+   npx wrangler versions deploy VERSION_ID --name sophiewell --percentage 100 --yes
+   ```
+
+5. Verify `https://sophiewell.com`, then tag the release:
 
    ```sh
    git tag -s v$(jq -r .version package.json) -m "Sophie Well release"
    git push origin v$(jq -r .version package.json)
    ```
 
-7. Attach `sbom.json` to the GitHub release.
+6. Attach `sbom.json` to the GitHub release.
 
 ## Supply-chain posture
 
@@ -110,7 +96,7 @@ keyboard shortcuts, the pinning system, and the CSP/storage assertions.
   every entry in `devDependencies`, including ESLint, Playwright, OpenLore,
   and Wrangler.
 - **Pinned runtime engine.** `engines.node` is `>=20.18.1 <21`;
-  `.nvmrc` records `20.18.1`. Cloudflare Pages reads `.nvmrc`.
+  `.nvmrc` records `20.18.1` for local and CI builds.
 - **Reproducible SBOM.** `npm run sbom` writes a CycloneDX 1.5
   `sbom.json` plus a human-readable `sbom.md` with SHA-256 hashes for
   every runtime asset and every JS source module.
@@ -118,7 +104,7 @@ keyboard shortcuts, the pinning system, and the CSP/storage assertions.
   recorded in its dataset's `manifest.json` and is re-verified by
   `npm run data:verify` (CI fails on mismatch).
 - **HTTP security headers.** Set in [`_headers`](../_headers)
-  for production (Cloudflare Pages) and in
+  for the production Static Assets Worker and in
   [`scripts/serve.mjs`](../scripts/serve.mjs) for local dev. Includes
   CSP `connect-src 'self'` plus the narrow Turnstile script/frame exception,
   HSTS preload, COOP/COEP/CORP isolation,
@@ -128,11 +114,11 @@ keyboard shortcuts, the pinning system, and the CSP/storage assertions.
 
 ## Rollback
 
-Cloudflare Pages keeps deployment history. To roll back:
+Cloudflare keeps Worker version history. To roll back:
 
-1. **Workers & Pages -> sophiewell.com -> Deployments**.
+1. **Workers & Pages -> sophiewell -> Deployments**.
 2. Find the last known good deployment.
-3. **... menu -> Rollback to this deployment**.
+3. Deploy that version to 100% of traffic.
 
 This is instant and does not require a GitHub revert. Follow up with a
 `git revert` of the offending commit on `main` so the dashboard and the

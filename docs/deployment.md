@@ -1,33 +1,23 @@
 # Deployment
 
-sophiewell.com deploys its application to Cloudflare Pages. A separate API-only
-Worker accepts tool reports at `/api/reports*`; it does not serve or compute
-tools. The output of `npm run build` is a directory of static files served from
-the same origin. The repository's `_headers` file applies the security headers.
+sophiewell.com deploys its application through the `sophiewell` Cloudflare
+Worker's Static Assets binding. A separate API-only Worker accepts tool reports
+at `/api/reports*`; it does not serve or compute tools. The output of
+`npm run build` is a directory of static files served from the same origin. The
+repository's `_headers` file applies the security headers.
 Report launch and D1 maintenance are in
 [calculator-reports.md](calculator-reports.md).
 
-## One-time Cloudflare Pages setup
+## One-time Cloudflare Worker setup
 
-1. Sign in to the Cloudflare dashboard and create a new Pages project.
-2. Connect the project to the `clay-good/sophiewell.com` GitHub repository.
-3. Build configuration:
-   - Framework preset: None
-   - Build command: `npm run build`
-   - Build output directory: `dist`
-   - Node version: pull from `.nvmrc` (Node 20 LTS)
-   - Environment variable for the data-refresh and CI builds:
-     `SOPHIEWELL_OFFLINE=1` for the production build (data is committed to
-     the repo by the weekly data-refresh workflow, not fetched at deploy
-     time). Production deploys consume the committed `data/` folder.
-4. Branch deployments:
-   - `main` → production environment, custom domain `sophiewell.com`.
-   - `develop` → preview environment, automatic Cloudflare preview URL.
-5. Custom domain:
-   - Add `sophiewell.com` to the project.
-   - Set DNS for the root and `www` to Cloudflare's Pages targets per
-     dashboard instructions. Cloudflare manages the certificate.
-6. HTTPS:
+1. Create the `sophiewell` Worker and attach `sophiewell.com` as its production
+   custom domain. Keep `workers.dev` and preview URLs disabled, as declared in
+   `wrangler.toml`.
+2. Build with the Node version in `.nvmrc` and `SOPHIEWELL_OFFLINE=1` where
+   required. Production consumes the committed `data/` folder.
+3. Keep the `sophiewell-reports` Worker on the more-specific
+   `https://sophiewell.com/api/reports*` route.
+4. HTTPS:
    - "Always use HTTPS" enabled at the zone level.
    - "HTTP Strict Transport Security" enforced via `_headers`.
    - HSTS preload submission via https://hstspreload.org once the
@@ -87,12 +77,11 @@ External grades to check:
 
 ## Rollback
 
-Cloudflare Pages keeps every prior build as a deployment. To roll back,
-open the Pages dashboard, select the project, choose a previous
-deployment, and click "Promote to production." DNS does not need to
-change.
+Cloudflare keeps every uploaded Worker version. To roll back, select a known
+good `sophiewell` version in Workers & Pages and deploy it to 100% of traffic.
+DNS does not need to change.
 
 ## Cost
 
-Pages, Workers, Turnstile, and D1 free tiers cover the bounded expected traffic.
+Workers, Turnstile, and D1 free tiers cover the bounded expected traffic.
 The hard 200-report daily ceiling limits D1 writes.

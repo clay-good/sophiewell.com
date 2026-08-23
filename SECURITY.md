@@ -34,7 +34,7 @@ summary:
 - Normal tool and asset traffic is static. The report Worker is API-only,
   separately routed, rate-limited, and has no asset binding.
 - A strict Content Security Policy is set both via `<meta>` and via real
-  HTTP response headers in [`_headers`](_headers) (Cloudflare Pages) and
+  HTTP response headers in [`_headers`](_headers) (Cloudflare Static Assets) and
   [`scripts/serve.mjs`](scripts/serve.mjs) (local dev). The deployed CSP
   allows only same-origin resources plus `challenges.cloudflare.com` in
   `script-src` and `frame-src` for the user-opened Turnstile widget. The
@@ -59,8 +59,7 @@ summary:
   `devDependencies` use exact versions (no `^` or `~`), including ESLint,
   Playwright, OpenLore, and Wrangler.
 - **Pinned runtime engine.** `engines.node` is constrained to
-  `>=20.18.1 <21`; `.nvmrc` records the exact patch. Cloudflare Pages
-  reads `.nvmrc` to lock the build's Node version.
+  `>=20.18.1 <21`; `.nvmrc` records the exact patch for local and CI builds.
 - **Reproducible SBOM.** [`scripts/build-sbom.mjs`](scripts/build-sbom.mjs)
   emits a CycloneDX 1.5 [`sbom.json`](sbom.json) and a human-readable
   [`sbom.md`](sbom.md). Both include a per-build SHA-256-derived build
