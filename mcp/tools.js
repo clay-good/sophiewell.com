@@ -139,6 +139,23 @@ function resolveEntry(id) {
   return resolveWithAliases(id, getCalculator, loadIdAliases());
 }
 
+// A tile the website has and this server does not is not an unknown id.
+// `describe_calculator({ id: 'pa-lint' })` answered "Unknown calculator id",
+// which is false and sends an agent that read the id off a page URL looking
+// for a tool it already found. Same distinction find_calculator draws, at the
+// other end: the id resolves, the calculator is not callable here.
+function notExposed(id) {
+  const tile = UNEXPOSED.get(id);
+  if (!tile) return null;
+  return {
+    id,
+    valid: false,
+    code: 'NOT_EXPOSED',
+    name: tile.name,
+    message: `"${tile.name}" is a Sophie Well tool at ${SITE_TOOL_BASE}${id}/, but it is not a callable calculator here -- it generates a document, reads a reference table, or depends on the current time. See docs/mcp-coverage.md for the exposed set.`,
+  };
+}
+
 // spec-v59 output-safety on the JSON surface: a result must serialize with no
 // NaN / Infinity. Returns the dotted path of the first non-finite number, or
 // null if clean.
@@ -241,6 +258,8 @@ export function describeCalculator(args = {}) {
   const { entry: e, deprecation } = resolveEntry(id);
   if (!e) {
     if (deprecation) return { id, valid: false, code: 'UNKNOWN_ID', replacedBy: deprecation.canonicalId, deprecatedSince: deprecation.since, message: `Calculator id "${id}" was retired; use "${deprecation.canonicalId}".` };
+    const elsewhere = notExposed(id);
+    if (elsewhere) return elsewhere;
     return { id, valid: false, code: 'UNKNOWN_ID', message: `Unknown calculator id "${id}". Call list_calculators for available ids.` };
   }
   const out = {
@@ -275,6 +294,8 @@ export function computeCalculator(args = {}) {
   const { entry: e, deprecation } = resolveEntry(id);
   if (!e) {
     if (deprecation) return { id, valid: false, code: 'UNKNOWN_ID', replacedBy: deprecation.canonicalId, deprecatedSince: deprecation.since, message: `Calculator id "${id}" was retired; use "${deprecation.canonicalId}".` };
+    const elsewhere = notExposed(id);
+    if (elsewhere) return elsewhere;
     return { id, valid: false, code: 'UNKNOWN_ID', message: `Unknown calculator id "${id}". Call list_calculators for available ids.` };
   }
   // spec-v637 §2: deprecation fields ride on every return when reached via a
@@ -444,6 +465,20 @@ export function answerQuery(args = {}) {
   const q = typeof query === 'string' ? query.trim() : '';
   if (!q) {
     return { valid: false, code: 'BAD_ARGS', message: 'answer_query needs a non-empty "query". Describe the calculation with its values, e.g. "bmi 80kg 180cm".' };
+  }
+  // Naming a tool this server does not carry, before anything tries to compute
+  // one: `answer_query('Appeal Letter Generator')` said "No calculator matches
+  // this query", and one does -- it is just not callable here.
+  const elsewhere = [...UNEXPOSED.values()].find((u) => namesInFull(q, u.name));
+  if (elsewhere) {
+    return {
+      query: q,
+      matched: false,
+      code: 'NOT_EXPOSED',
+      tile: elsewhere.id,
+      name: elsewhere.name,
+      hint: `"${elsewhere.name}" is a Sophie Well tool at ${SITE_TOOL_BASE}${elsewhere.id}/, but it is not a callable calculator here -- it generates a document, reads a reference table, or depends on the current time.`,
+    };
   }
   const hit = queryCompute(q);
   if (!hit) return answerQueryGeneric(q);

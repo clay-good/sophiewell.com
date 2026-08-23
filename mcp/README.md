@@ -99,6 +99,14 @@ and typed `structuredContent`.
 each calculator's documented example). Numbers may be sent as numbers or numeric
 strings; booleans as `true`/`false`; enums by their listed string values.
 
+**`NOT_EXPOSED`** is the one error that is not a mistake on the caller's part.
+The website has tiles this server does not carry -- document generators,
+reference tables, time-dependent timers -- and naming one, or passing its id,
+returns the tile's `id`, `name` and page rather than pretending it does not
+exist. `describe_calculator` and `compute_calculator` return it in place of
+`UNKNOWN_ID`; `find_calculator` and `answer_query` return it in place of
+candidates or `NO_MATCH`. An id that is not a tile at all is still `UNKNOWN_ID`.
+
 **Errors carry a stable `code`** (and `field` where input-specific) alongside the
 English `message`, so you can branch without parsing prose: `UNKNOWN_TOOL`,
 `UNKNOWN_ID`, `BAD_ARGS`, `UNKNOWN_INPUT`, `MISSING_INPUT`, `INVALID_TYPE`,

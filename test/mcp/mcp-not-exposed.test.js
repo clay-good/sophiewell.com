@@ -46,6 +46,38 @@ test('a partial name is still ranked', () => {
   }
 });
 
+// The same distinction at the other end: an agent that read an id off a page
+// URL and called describe/compute with it was told the id was unknown, which is
+// false and sends it looking for a tool it had already found.
+test('describe and compute name the tile rather than deny it', async () => {
+  const { describeCalculator, computeCalculator } = await import('../../mcp/tools.js');
+  for (const u of UNEXPOSED.values()) {
+    for (const [what, r] of [
+      ['describe', describeCalculator({ id: u.id })],
+      ['compute', computeCalculator({ id: u.id, inputs: {} })],
+    ]) {
+      assert.equal(r.code, 'NOT_EXPOSED', `${what}(${u.id}) must not report an unknown id`);
+      assert.equal(r.name, u.name);
+      assert.match(r.message, new RegExp(`/tools/${u.id}/`));
+    }
+  }
+});
+
+test('an id that is not a tile at all is still UNKNOWN_ID', async () => {
+  const { describeCalculator, computeCalculator } = await import('../../mcp/tools.js');
+  assert.equal(describeCalculator({ id: 'not-a-tile' }).code, 'UNKNOWN_ID');
+  assert.equal(computeCalculator({ id: 'not-a-tile', inputs: {} }).code, 'UNKNOWN_ID');
+});
+
+test('answer_query says the tool exists rather than that nothing matched', async () => {
+  const { answerQuery } = await import('../../mcp/tools.js');
+  const r = answerQuery({ query: 'Appeal Letter Generator' });
+  assert.equal(r.code, 'NOT_EXPOSED');
+  assert.equal(r.tile, 'appeal-letter');
+  // And a query it can actually answer is untouched.
+  assert.equal(answerQuery({ query: 'bmi 80kg 180cm' }).tile, 'bmi');
+});
+
 test('naming an exposed calculator in full is unaffected', () => {
   for (const [q, id] of [['TIMI Risk Index', 'timi-risk-index'], ['Wells Score for DVT', 'wells-dvt']]) {
     const r = findCalculator({ query: q, limit: 1 });
