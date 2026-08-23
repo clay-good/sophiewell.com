@@ -959,6 +959,7 @@ body {
 .report-dialog {
   width: min(520px, calc(100vw - 32px));
   max-height: calc(100vh - 32px);
+  margin: auto;
   overflow-y: auto;
   padding: var(--space-5);
   color: var(--text-primary);

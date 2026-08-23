@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `4aa779ad6fe8d848`
-Generated: 2026-08-23T19:31:17.394Z
+Build ID: `fe47af89c818cad9`
+Generated: 2026-08-23T19:49:07.552Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -26,7 +26,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | Path | Bytes | SHA-256 |
 |---|---:|---|
 | `index.html` | 101427 | `9399953666774115fa25172cee0e28e3295dc9eb859da3fdb464b7787e440cec` |
-| `styles.css` | 68199 | `4889294c5b817cbdbf9f08ac1c0cf513a610c97b0418e58de3c9a3b978d49dac` |
+| `styles.css` | 68215 | `30b1f118e9effcd0d9032229baefae56981547cca0f4da44ae3bb845a63bf614` |
 | `app.js` | 462292 | `94491b2fdd03aef495c5661debb984183b3cf4cccae2c824f40b1d5f05acccbf` |
 | `report-feedback.js` | 12178 | `955e5cb542c7b13dcbb85a75ecf4ccf2dc0b2dffecd84daac1d607bd6acc7cd2` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |

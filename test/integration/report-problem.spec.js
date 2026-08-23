@@ -1,5 +1,17 @@
 import { test, expect } from '@playwright/test';
 
+async function expectDialogCentered(dialog) {
+  const centerDelta = await dialog.evaluate((element) => {
+    const bounds = element.getBoundingClientRect();
+    return {
+      x: Math.abs(bounds.left + (bounds.width / 2) - (window.innerWidth / 2)),
+      y: Math.abs(bounds.top + (bounds.height / 2) - (window.innerHeight / 2)),
+    };
+  });
+  expect(centerDelta.x).toBeLessThanOrEqual(2);
+  expect(centerDelta.y).toBeLessThanOrEqual(2);
+}
+
 test('a mobile clinician can send reproducible tool context', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 720 });
   await page.addInitScript(() => {
@@ -36,6 +48,7 @@ test('a mobile clinician can send reproducible tool context', async ({ page }) =
   await report.click();
   const dialog = page.getByRole('dialog', { name: 'Report a problem' });
   await expect(dialog).toBeVisible();
+  await expectDialogCentered(dialog);
   await expect(dialog).toContainText("only this tool's URL");
   await expect(dialog).toContainText('Do not include a patient name');
   await dialog.getByLabel(/Include current inputs and results/).check();
@@ -90,6 +103,7 @@ test('ordinary reports omit calculator context unless the clinician opts in', as
   await page.goto('/#bmi');
   await page.getByRole('button', { name: 'Report a problem' }).click();
   const dialog = page.getByRole('dialog', { name: 'Report a problem' });
+  await expectDialogCentered(dialog);
   await expect(dialog.getByLabel(/Include current inputs and results/)).not.toBeChecked();
   await dialog.getByRole('button', { name: 'Send report' }).click();
   await expect(dialog).toContainText('Thanks. Report saved.');
