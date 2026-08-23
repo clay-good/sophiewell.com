@@ -21,6 +21,13 @@ const DATA_CACHE = `sophiewell-data-${BUILD_HASH}`;
 // stays in this list, so it cannot silently drift again. Dataset manifests are
 // still NOT precached: they (and their shards) are cached lazily on first fetch
 // via DATA_CACHE in the fetch handler below.
+//
+// The list also has to hold nothing the shell does not load. It carried
+// CHANGELOG.md and docs/stability.md, which the #changelog and #stability
+// routes fetched -- and those routes went with everything else that was not
+// find-a-tool-and-use-it. Nothing referenced either file afterwards, so every
+// visitor's install spent 1.35 MB downloading a changelog no page links to.
+// The same guard now reads in both directions.
 const SHELL_ASSETS = [
   './',
   './index.html',
@@ -34,8 +41,6 @@ const SHELL_ASSETS = [
   './apple-touch-icon.png',
   './site.webmanifest',
   './logo.png',
-  './CHANGELOG.md',
-  './docs/stability.md',
 ];
 
 self.addEventListener('install', (event) => {

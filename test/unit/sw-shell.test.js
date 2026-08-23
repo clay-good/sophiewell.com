@@ -6,9 +6,15 @@
 // is hand-maintained, and twice now it fell behind index.html (v75 missed the
 // two shell scripts; v84 the icon/manifest links and the topbar logo). The
 // install-time fetch swallows individual failures, so a missing entry never
-// surfaces at runtime -- only here. The check is one-directional: every local
-// href/src in index.html must be precached; SHELL_ASSETS may carry extras (the
-// CHANGELOG.md / docs/stability.md doc bodies are fetched by JS, not the HTML).
+// surfaces at runtime -- only here.
+//
+// It reads in both directions. It used to allow extras, on the grounds that
+// CHANGELOG.md and docs/stability.md were fetched by JS rather than by the
+// HTML -- true when the #changelog and #stability routes existed, and false
+// from the moment those routes were removed. Nothing referenced either file
+// afterwards and nothing noticed, so every visitor's install went on
+// downloading 1.35 MB of changelog that no page links to. An entry the shell
+// does not load is as much a defect as one it loads and cannot find.
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -56,6 +62,21 @@ test('sw.js precaches every local asset index.html references', () => {
     [],
     `SHELL_ASSETS is missing shell assets index.html loads: ${missing.join(', ')}. `
       + 'Add them to sw.js SHELL_ASSETS so an offline cold reload renders the full shell.'
+  );
+});
+
+test('sw.js precaches nothing the shell does not load', () => {
+  const referenced = indexHtmlLocalAssets();
+  // The document itself, under both the names a navigation can arrive as. No
+  // tag inside it references it, and precaching it is the whole point.
+  const SELF = new Set(['./', './index.html']);
+  const extra = [...shellAssets()].filter((a) => !SELF.has(a) && !referenced.has(a));
+  assert.deepEqual(
+    extra,
+    [],
+    `SHELL_ASSETS precaches ${extra.join(', ')}, which index.html does not load. `
+      + 'Either the shell stopped referencing it -- drop it from sw.js -- or it is '
+      + 'fetched some other way, in which case say where, here.'
   );
 });
 
