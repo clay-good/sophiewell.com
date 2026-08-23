@@ -99,6 +99,14 @@ and typed `structuredContent`.
 each calculator's documented example). Numbers may be sent as numbers or numeric
 strings; booleans as `true`/`false`; enums by their listed string values.
 
+**Nothing hides the tiles this server does not carry.** Wherever the answer
+would otherwise be an empty list or a bare "no", the reply names them and links
+their pages instead: `describe_calculator` adds `relatedOnWebsite` when a
+tile's siblings are browser-only (it returned `related: []` for 19 calculators
+that do have siblings), and `list_calculators` adds `onlyOnWebsite` when a
+`query` matches nothing exposed but does match a real tile. Both fields are
+omitted when empty, so they only ever appear when they say something.
+
 **`NOT_EXPOSED`** is the one error that is not a mistake on the caller's part.
 The website has tiles this server does not carry -- document generators,
 reference tables, time-dependent timers -- and naming one, or passing its id,

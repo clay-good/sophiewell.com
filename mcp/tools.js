@@ -144,6 +144,16 @@ function resolveEntry(id) {
 // which is false and sends an agent that read the id off a page URL looking
 // for a tool it already found. Same distinction find_calculator draws, at the
 // other end: the id resolves, the calculator is not callable here.
+// The related ids that exist on the website and are not callable here. Omitted
+// entirely when there are none, so a reader of the response only meets the
+// field when it says something.
+function relatedOnWebsite(related) {
+  const off = (related || [])
+    .filter((rid) => UNEXPOSED.has(rid))
+    .map((rid) => ({ id: rid, name: UNEXPOSED.get(rid).name, url: `${SITE_TOOL_BASE}${rid}/` }));
+  return off.length ? { relatedOnWebsite: off } : {};
+}
+
 function notExposed(id) {
   const tile = UNEXPOSED.get(id);
   if (!tile) return null;
@@ -220,9 +230,19 @@ export function listCalculators(args = {}) {
     }));
   const nextOffset = offset + page.length < matched.length ? offset + page.length : null;
 
+  // A `query` that matches nothing here may still match a tile the website has.
+  // The coverage line says the set is partial, but "total: 0" reads as "no such
+  // tool" and the caller has no way to tell the two apart.
+  const onlyOnWebsite = (query && matched.length === 0)
+    ? [...UNEXPOSED.values()]
+      .filter((u) => `${u.id} ${u.name}`.toLowerCase().includes(String(query).toLowerCase()))
+      .map((u) => ({ id: u.id, name: u.name, url: `${SITE_TOOL_BASE}${u.id}/` }))
+    : [];
+
   return {
     coverage: `${coverageCount()} of ${TOTAL_TILES} catalog tiles exposed as MCP tools`,
     exposed: coverageCount(),
+    ...(onlyOnWebsite.length ? { onlyOnWebsite } : {}),
     catalogTotal: TOTAL_TILES,
     catalogVersion: catalogVersion(),
     total: matched.length,
@@ -277,6 +297,13 @@ export function describeCalculator(args = {}) {
     // spec-v630: the curated related calculators, filtered to the exposed set so
     // every id here is one the agent can describe/compute next.
     related: (e.related || []).filter((rid) => getCalculator(rid)),
+    // ...and the ones the filter took out, rather than nothing. Dropping them
+    // silently made an empty `related` mean two different things -- this tile
+    // has no siblings, or its siblings are all browser-only -- and 22 links
+    // across 19 calculators read as the first when they were the second.
+    // `pa-turnaround` returned `related: []` while the website shows it next to
+    // the prior-auth linter and the prior-auth checklist.
+    ...relatedOnWebsite(e.related),
     domain: domainOf(e),
     disclaimer: disclaimerFor(e),
   };
@@ -862,6 +889,7 @@ export const TOOL_DEFS = [
         citationAccessed: { type: ['string', 'null'] },
         interpretation: {},
         related: { type: 'array', items: { type: 'string' }, description: 'Ids of related calculators, all exposed and describable.' },
+        relatedOnWebsite: { type: 'array', description: 'Related tools that exist on the website but are not callable here, with their pages. Present only when there are any.' },
         domain: { type: 'string', description: 'clinical | administrative (which disclaimer applies).' },
         disclaimer: { type: 'string' },
         valid: { type: 'boolean' },

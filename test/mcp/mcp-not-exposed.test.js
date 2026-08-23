@@ -78,6 +78,38 @@ test('answer_query says the tool exists rather than that nothing matched', async
   assert.equal(answerQuery({ query: 'bmi 80kg 180cm' }).tile, 'bmi');
 });
 
+// The same silence in the two places a partial view is easiest to mistake for
+// a complete one: an empty list, and an empty field.
+test('describe names the related tools it cannot offer', async () => {
+  const { describeCalculator } = await import('../../mcp/tools.js');
+  const { META } = await import('../../lib/meta.js');
+  const { allCalculators } = await import('../../mcp/catalog.js');
+  let checked = 0;
+  for (const c of allCalculators()) {
+    const declared = (META[c.id] && META[c.id].related) || [];
+    const hidden = declared.filter((rid) => UNEXPOSED.has(rid));
+    const d = describeCalculator({ id: c.id });
+    if (!hidden.length) {
+      assert.ok(!('relatedOnWebsite' in d), `${c.id} has no browser-only siblings and should not carry the field`);
+      continue;
+    }
+    checked += 1;
+    assert.deepEqual((d.relatedOnWebsite || []).map((r) => r.id), hidden, `${c.id} drops a related tool silently`);
+  }
+  assert.ok(checked > 0, 'at least one calculator has a browser-only sibling to name');
+});
+
+test('list_calculators says when a query only matches a browser-only tool', async () => {
+  const { listCalculators } = await import('../../mcp/tools.js');
+  const hit = listCalculators({ query: 'appeal letter' });
+  assert.equal(hit.total, 0);
+  assert.deepEqual((hit.onlyOnWebsite || []).map((r) => r.id), ['appeal-letter']);
+  // A query that matches exposed rows, and one that matches nothing anywhere,
+  // both stay exactly as they were.
+  assert.ok(!('onlyOnWebsite' in listCalculators({ query: 'wells' })));
+  assert.ok(!('onlyOnWebsite' in listCalculators({ query: 'zzznothing' })));
+});
+
 test('naming an exposed calculator in full is unaffected', () => {
   for (const [q, id] of [['TIMI Risk Index', 'timi-risk-index'], ['Wells Score for DVT', 'wells-dvt']]) {
     const r = findCalculator({ query: q, limit: 1 });
