@@ -10,6 +10,7 @@
 
 import { readFile, readdir } from 'node:fs/promises';
 import { join } from 'node:path';
+import { pathToFileURL } from 'node:url';
 
 const ROOT = process.cwd();
 
@@ -242,7 +243,26 @@ async function main() {
     process.exit(1);
   }
 
-  console.log(`check-catalog-truth: clean (${truth} tiles across ${surfaces.length} surfaces, ${docLinters} document-linter, ${removed.size} v29-removed ids guarded, 0 orphan copy)`);
+  // The README shows one worked example, so a reader can see what a result
+  // looks like before opening anything: "Wells PE total 4.5 (PE-likely group,
+  // moderate probability)". It is the same string the tile computes and MCP
+  // returns, and nothing kept the two in step -- change a band label and the
+  // README would quietly go on quoting the old one. A count is not the only
+  // number on a page that can drift.
+  const readmeText = cache.get('README.md') || await readFile(join(ROOT, 'README.md'), 'utf8');
+  const readmeExample = (readmeText.match(/`(Wells PE total[^`]*)`/) || [])[1] || '';
+  const { META } = await import(pathToFileURL(join(ROOT, 'lib', 'meta.js')).href);
+  const live = String(META['wells-pe']?.example?.expected || '').replace(/\.$/, '');
+  if (!readmeExample) {
+    console.error('check-catalog-truth: README no longer shows the Wells PE worked example.');
+    process.exit(1);
+  }
+  if (readmeExample !== live) {
+    console.error(`check-catalog-truth: README quotes "${readmeExample}" but wells-pe computes "${live}".`);
+    process.exit(1);
+  }
+
+  console.log(`check-catalog-truth: clean (${truth} tiles across ${surfaces.length} surfaces, ${docLinters} document-linter, ${removed.size} v29-removed ids guarded, 0 orphan copy, README example matches)`);
 }
 
 main().catch((err) => {
