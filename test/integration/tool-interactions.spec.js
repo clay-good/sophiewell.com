@@ -31,7 +31,12 @@ test('every tool tolerates indiscriminate interaction without crashing', async (
   // (~1s/tile) and a contended CI run past 900s hit the ceiling mid-sweep.
   // Bumped 1500s -> 2400s (2026-08-16): at ~1560 tiles, degraded CI runners
   // (whole e2e job ~1.4h vs the usual ~48 min) tipped this sweep past the 1500s
-  // ceiling and failed the job on all 3 attempts; the extra headroom absorbs it.)
+  // ceiling and failed the job on all 3 attempts; the extra headroom absorbs it.
+  // 2026-08-25: the 2400s ceiling was being hit on all 3 attempts on main too,
+  // but the cause was not the catalog -- it was the report dialog swallowing
+  // the click loop (see the `.report-trigger` note below). With that fixed a
+  // full 1564-tile pass is ~27 min on a loaded dev box and well under half the
+  // ceiling in CI, so the budget stays where it is as real headroom.)
   test.setTimeout(2_400_000);
   const errors = [];
   page.on('pageerror', (e) => errors.push(`pageerror: ${e}`));
@@ -67,8 +72,17 @@ test('every tool tolerates indiscriminate interaction without crashing', async (
     // Click every visible button in the tool body except print, navigation,
     // and the example-button (the example button is exercised separately
     // and reloading the body mid-loop confuses Playwright's locator caching).
+    //
+    // `.report-trigger` is excluded for a stronger reason: it is the first
+    // button on every tile and it opens a modal <dialog>. Once that dialog was
+    // open every later click in the same tile was intercepted by its backdrop
+    // and sat out the full 1000ms actionability timeout, so the sweep spent
+    // ~3.2s per tile waiting and, worse, never reached the buttons it exists to
+    // fuzz -- 40 clicks landed across 40 tiles where 95 should have. Skipping
+    // it takes the sweep to ~1.1s per tile with every other button actually
+    // clicked. The dialog itself is covered by report-problem.spec.js.
     const btns = await page.locator(
-      'main button:not(.breadcrumb-back):not(.print-btn):not(.example-reset)',
+      'main button:not(.breadcrumb-back):not(.print-btn):not(.example-reset):not(.report-trigger)',
     ).all();
     for (const b of btns) {
       try {
