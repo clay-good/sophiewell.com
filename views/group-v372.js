@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'cad-rads'(root) {
-    note(root, 'CAD-RADS 2.0 (Cury 2022) - coronary-CT-angiography category by maximal coronary stenosis. Pick the category. 0: 0% (no plaque); 1: 1-24% minimal; 2: 25-49% mild; 3: 50-69% moderate (obstructive); 4A: 70-99% severe; 4B: left main >= 50% or three-vessel obstructive; 5: 100% occlusion. Modifiers (N/S/G/HRP/I/E) and the P-score are out of scope. Part of the RADS family: bi-rads, li-rads, c-rads, o-rads.');
+    note(root, 'CAD-RADS 2.0 (Cury 2022) - coronary-CT-angiography category by maximal coronary stenosis. Pick the category. 0: 0% (no plaque); 1: 1-24% minimal; 2: 25-49% mild; 3: 50-69% moderate (obstructive); 4A: 70-99% severe; 4B: left main >= 50% or three-vessel obstructive; 5: 100% occlusion. Modifiers (N/S/G/HRP/I/E) and the P-score are out of scope. Part of the ACR RADS family of standardized reporting categories.');
     root.appendChild(select('CAD-RADS category', 'cadrads-cat', [
       ['0', '0 - 0% (no plaque or stenosis)'],
       ['1', '1 - minimal (1-24%)'],

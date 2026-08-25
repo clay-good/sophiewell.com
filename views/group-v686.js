@@ -40,7 +40,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'ucsf-hcc'(root) {
-    note(root, 'UCSF criteria (Yao 2001) for HCC liver-transplant eligibility: within if a single tumor ≤ 6.5 cm, or ≤ 3 nodules with the largest ≤ 4.5 cm and total ≤ 8 cm — and no macrovascular invasion or extrahepatic spread. The expanded version of Milan. Companion tiles: milan-criteria, up-to-seven.');
+    note(root, 'UCSF criteria (Yao 2001) for HCC liver-transplant eligibility: within if a single tumor ≤ 6.5 cm, or ≤ 3 nodules with the largest ≤ 4.5 cm and total ≤ 8 cm — and no macrovascular invasion or extrahepatic spread. The expanded version of Milan.');
     root.appendChild(numberField('Number of tumor nodules', 'ucsf-nodules', '1'));
     root.appendChild(numberField('Largest tumor diameter (cm)', 'ucsf-largest', '0.1'));
     root.appendChild(numberField('Total (summed) tumor diameter (cm)', 'ucsf-total', '0.1'));

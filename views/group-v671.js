@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'acr-eular-boolean'(root) {
-    note(root, 'ACR/EULAR Boolean remission (Felson 2011; 2022 revision): remission requires ALL of TJC28 ≤ 1, SJC28 ≤ 1, CRP ≤ 1 mg/dL, and patient global ≤ 1 (2011) or ≤ 2 (2022 Boolean 2.0) on a 0–10 scale. Companion tiles: das28, cdai-ra, sdai-ra.');
+    note(root, 'ACR/EULAR Boolean remission (Felson 2011; 2022 revision): remission requires ALL of TJC28 ≤ 1, SJC28 ≤ 1, CRP ≤ 1 mg/dL, and patient global ≤ 1 (2011) or ≤ 2 (2022 Boolean 2.0) on a 0–10 scale.');
     root.appendChild(numberField('Tender joint count (28-joint)', 'boolean-tjc', '1', '28'));
     root.appendChild(numberField('Swollen joint count (28-joint)', 'boolean-sjc', '1', '28'));
     root.appendChild(numberField('C-reactive protein (mg/dL)', 'boolean-crp', '0.1'));

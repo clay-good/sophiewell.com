@@ -106,7 +106,7 @@ export const renderers = {
 
   // ----- 2.3 mess-first-seizure -----------------------------------------
   'mess-first-seizure'(root) {
-    note(root, 'MESS first-seizure recurrence rule (Kim 2006, MRC MESS trial): groups seizure-recurrence risk after a single or early seizure. Select the number of seizures at presentation and mark a neurological disorder and an abnormal EEG. Total 0-4; low (0), medium (1), high (2 or more). Distinct from the v109 MESS mangled-extremity score.');
+    note(root, 'MESS first-seizure recurrence rule (Kim 2006, MRC MESS trial): groups seizure-recurrence risk after a single or early seizure. Select the number of seizures at presentation and mark a neurological disorder and an abnormal EEG. Total 0-4; low (0), medium (1), high (2 or more). Distinct from the other MESS, the Mangled Extremity Severity Score.');
     root.appendChild(selectField('Seizures at presentation', 'me-sz', [
       { value: '0', text: '1 seizure (0)' },
       { value: '1', text: '2-3 seizures (+1)' },

@@ -32,7 +32,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'diastolic-function-ase'(root) {
-    note(root, 'ASE/EACVI 2016 LV diastolic function screen (normal EF): average E/e′ > 14, annular e′ (septal < 7 or lateral < 10 cm/s), TR velocity > 2.8 m/s, LA volume index > 34 mL/m2. Of the criteria measured, fewer than half abnormal = normal, more than half = diastolic dysfunction, exactly half = indeterminate. Enter the values you have (at least three ideally). Grade I-III is not computed here. Companion tiles: h2fpef, hfa-peff.');
+    note(root, 'ASE/EACVI 2016 LV diastolic function screen (normal EF): average E/e′ > 14, annular e′ (septal < 7 or lateral < 10 cm/s), TR velocity > 2.8 m/s, LA volume index > 34 mL/m2. Of the criteria measured, fewer than half abnormal = normal, more than half = diastolic dysfunction, exactly half = indeterminate. Enter the values you have (at least three ideally). Grade I-III is not computed here.');
     root.appendChild(numberField('Average E/e′', 'dias-ee'));
     root.appendChild(numberField('Septal e′ velocity (cm/s)', 'dias-septal'));
     root.appendChild(numberField('Lateral e′ velocity (cm/s)', 'dias-lateral'));

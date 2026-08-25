@@ -30,7 +30,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'effective-osmolality'(root) {
-    note(root, 'Effective serum osmolality (tonicity) = 2 × sodium + glucose/18. It excludes urea, unlike total calculated osmolality (the osmolal-gap tile). Reference range ~275–295 mOsm/kg; above 320 is a diagnostic criterion for the hyperosmolar hyperglycemic state (HHS).');
+    note(root, 'Effective serum osmolality (tonicity) = 2 × sodium + glucose/18. It excludes urea, unlike total calculated osmolality (the Osmolal Gap tile). Reference range ~275–295 mOsm/kg; above 320 is a diagnostic criterion for the hyperosmolar hyperglycemic state (HHS).');
     root.appendChild(numberField('Serum sodium (mEq/L)', 'eosm-na', '1'));
     root.appendChild(numberField('Serum glucose (mg/dL)', 'eosm-glu', '1'));
     const ids = ['eosm-na', 'eosm-glu'];

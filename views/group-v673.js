@@ -39,7 +39,7 @@ const ITEMS = [
 
 export const renderers = {
   'heckerling-pneumonia'(root) {
-    note(root, 'Heckerling pneumonia rule (Heckerling 1990): check each finding present. More points = higher probability of a radiographic infiltrate (0–1 low, 2–3 intermediate, 4–5 high) → guides whether to obtain a chest x-ray. Note: the absence of asthma scores the point. Companion tiles: psi, curb-65.');
+    note(root, 'Heckerling pneumonia rule (Heckerling 1990): check each finding present. More points = higher probability of a radiographic infiltrate (0–1 low, 2–3 intermediate, 4–5 high) → guides whether to obtain a chest x-ray. Note: the absence of asthma scores the point.');
     for (const [id, label] of ITEMS) root.appendChild(checkField(label, id));
     const ids = ITEMS.map(([id]) => id);
     const o = out(); root.appendChild(o);

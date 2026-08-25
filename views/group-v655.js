@@ -38,7 +38,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'completeness-cytoreduction'(root) {
-    note(root, 'Completeness of Cytoreduction (CC) score (Jacquet-Sugarbaker 1996): the largest residual tumor nodule after cytoreductive surgery. CC-0 none, CC-1 under 2.5 mm, CC-2 2.5 mm to 2.5 cm, CC-3 over 2.5 cm or confluence. CC-0 and CC-1 are a complete cytoreduction. Companion tile: peritoneal-cancer-index.');
+    note(root, 'Completeness of Cytoreduction (CC) score (Jacquet-Sugarbaker 1996): the largest residual tumor nodule after cytoreductive surgery. CC-0 none, CC-1 under 2.5 mm, CC-2 2.5 mm to 2.5 cm, CC-3 over 2.5 cm or confluence. CC-0 and CC-1 are a complete cytoreduction.');
     root.appendChild(numberField('Largest residual tumor nodule (mm)', 'cc-residual'));
     root.appendChild(checkField('Confluence of unresectable disease (forces CC-3)', 'cc-confluence'));
     const ids = ['cc-residual', 'cc-confluence'];

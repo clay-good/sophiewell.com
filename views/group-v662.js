@@ -44,7 +44,7 @@ const TISSUE_OPTS = [['0', '0 — closed'], ['1', '1 — epithelial'], ['2', '2 
 
 export const renderers = {
   'push-tool'(root) {
-    note(root, 'PUSH tool 3.0 (Pressure Ulcer Scale for Healing, NPUAP): surface area (length x width, scored 0-10 by category) + exudate (0-3) + tissue type (0-4, worst present), total 0-17. A decreasing total over time indicates healing. Companion tiles: braden, norton, bates-jensen.');
+    note(root, 'PUSH tool 3.0 (Pressure Ulcer Scale for Healing, NPUAP): surface area (length x width, scored 0-10 by category) + exudate (0-3) + tissue type (0-4, worst present), total 0-17. A decreasing total over time indicates healing.');
     root.appendChild(numberField('Wound length (cm)', 'push-length'));
     root.appendChild(numberField('Wound width (cm)', 'push-width'));
     root.appendChild(selectField('Exudate amount', 'push-exudate', CHOICE(EXUDATE_OPTS)));

@@ -48,7 +48,7 @@ const NUCLEOLI_OPTS = [
 
 export const renderers = {
   'who-isup-renal-grade'(root) {
-    note(root, 'WHO/ISUP nucleolar grade for renal cell carcinoma (Delahunt/ISUP 2013, WHO 2016; replaced Fuhrman). Grade set by nucleolar prominence at magnification; a grade-4 feature (extreme pleomorphism, giant cells, rhabdoid, and/or sarcomatoid) overrides to grade 4. For clear-cell and papillary RCC, not chromophobe. Companion tile: leibovich-rcc.');
+    note(root, 'WHO/ISUP nucleolar grade for renal cell carcinoma (Delahunt/ISUP 2013, WHO 2016; replaced Fuhrman). Grade set by nucleolar prominence at magnification; a grade-4 feature (extreme pleomorphism, giant cells, rhabdoid, and/or sarcomatoid) overrides to grade 4. For clear-cell and papillary RCC, not chromophobe.');
     root.appendChild(selectField('Nucleolar prominence', 'isup-nucleoli', NUCLEOLI_OPTS));
     root.appendChild(checkField('Grade-4 feature: extreme pleomorphism, tumor giant cells, rhabdoid, and/or sarcomatoid', 'isup-grade4'));
     const ids = ['isup-nucleoli', 'isup-grade4'];

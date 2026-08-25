@@ -39,7 +39,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'ips-hodgkin'(root) {
-    note(root, 'International Prognostic Score for advanced Hodgkin lymphoma (Hasenclever & Diehl 1998): 7 adverse factors, each 1 point (albumin < 4 g/dL, Hgb < 10.5 g/dL, male, age >= 45, stage IV, WBC >= 15000/mm3, lymphocytopenia < 600/mm3 and/or < 8%). Sum 0-7; higher = worse prognosis. Companion tiles: flipi, r-ipi.');
+    note(root, 'International Prognostic Score for advanced Hodgkin lymphoma (Hasenclever & Diehl 1998): 7 adverse factors, each 1 point (albumin < 4 g/dL, Hgb < 10.5 g/dL, male, age >= 45, stage IV, WBC >= 15000/mm3, lymphocytopenia < 600/mm3 and/or < 8%). Sum 0-7; higher = worse prognosis.');
     root.appendChild(numberField('Serum albumin (g/dL)', 'ips-albumin'));
     root.appendChild(numberField('Hemoglobin (g/dL)', 'ips-hgb'));
     root.appendChild(numberField('Age (years)', 'ips-age'));

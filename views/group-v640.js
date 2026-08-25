@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'mpa-acr-eular-2022'(root) {
-    note(root, '2022 ACR/EULAR microscopic-polyangiitis classification (Suppiah 2022): apply only after a small/medium-vessel-vasculitis diagnosis with mimics excluded. Six weighted items sum to a range of -8 to +12; ≥ 5 classifies as MPA. Three items are negative (nasal involvement, cANCA/PR3, blood eosinophilia) because they point toward GPA and EGPA. Companion tiles: gpa-acr-eular-2022, gca-acr-eular-2022, takayasu-acr-eular-2022.');
+    note(root, '2022 ACR/EULAR microscopic-polyangiitis classification (Suppiah 2022): apply only after a small/medium-vessel-vasculitis diagnosis with mimics excluded. Six weighted items sum to a range of -8 to +12; ≥ 5 classifies as MPA. Three items are negative (nasal involvement, cANCA/PR3, blood eosinophilia) because they point toward GPA and EGPA.');
     root.appendChild(checkField('Positive pANCA or anti-MPO antibody (+6)', 'mpa-panca'));
     root.appendChild(checkField('Pauci-immune glomerulonephritis on biopsy (+3)', 'mpa-gn'));
     root.appendChild(checkField('Fibrosis or interstitial lung disease on chest imaging (+3)', 'mpa-ild'));

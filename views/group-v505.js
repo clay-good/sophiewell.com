@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'metavir-activity'(root) {
-    note(root, 'The METAVIR necroinflammatory activity grade, the second axis of the METAVIR system, derived from the combination of piecemeal (interface) necrosis and lobular necrosis. A METAVIR read is reported as an activity grade and a fibrosis stage together, for example A2F3. Pick the grade. A0: none; A1: mild; A2: moderate; A3: severe. Activity describes ongoing necroinflammation; fibrosis describes accumulated scarring. Reports the grade the pathologist has assigned, not a diagnosis or a treatment decision. Companion tile: metavir-fibrosis.');
+    note(root, 'The METAVIR necroinflammatory activity grade, the second axis of the METAVIR system, derived from the combination of piecemeal (interface) necrosis and lobular necrosis. A METAVIR read is reported as an activity grade and a fibrosis stage together, for example A2F3. Pick the grade. A0: none; A1: mild; A2: moderate; A3: severe. Activity describes ongoing necroinflammation; fibrosis describes accumulated scarring. Reports the grade the pathologist has assigned, not a diagnosis or a treatment decision.');
     root.appendChild(select('METAVIR activity grade', 'metavir-activity-grade', [
       ['A0', 'A0 - no activity'],
       ['A1', 'A1 - mild activity'],

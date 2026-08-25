@@ -41,7 +41,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'up-to-seven'(root) {
-    note(root, `Within the criteria when the largest tumor’s size in centimeters PLUS the number of tumors is ${M.UP_TO_SEVEN_LIMIT} or less. The Milan criteria are reported alongside, because Milan is fully contained within up-to-seven.`);
+    note(root, `Within the criteria when the largest tumor’s size in centimeters PLUS the number of tumors is ${M.UP_TO_SEVEN_LIMIT} or less. The Milan criteria are reported alongside, because Milan is fully contained within Up-to-Seven.`);
 
     heading(root, 'Tumor burden');
     root.appendChild(number('Number of tumors', 'u7-count', '1'));

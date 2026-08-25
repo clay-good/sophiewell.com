@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'schobinger-avm'(root) {
-    note(root, 'The Schobinger staging of a peripheral (extracranial) arteriovenous malformation. The staging is cumulative: each stage carries the findings of the one below it. Pick the stage. I: quiescence, a warm stain with shunting on Doppler; II: expansion, with pulsation, thrill, and bruit; III: destruction, with skin breakdown, bleeding, pain, or necrosis; IV: decompensation, with high-output cardiac failure. Reports the stage the clinician has determined, not an indication for embolization or resection. For an intracranial AVM see spetzler-martin.');
+    note(root, 'The Schobinger staging of a peripheral (extracranial) arteriovenous malformation. The staging is cumulative: each stage carries the findings of the one below it. Pick the stage. I: quiescence, a warm stain with shunting on Doppler; II: expansion, with pulsation, thrill, and bruit; III: destruction, with skin breakdown, bleeding, pain, or necrosis; IV: decompensation, with high-output cardiac failure. Reports the stage the clinician has determined, not an indication for embolization or resection. For an intracranial AVM see the Spetzler-Martin grade.');
     root.appendChild(select('Schobinger stage', 'schobinger-stage', [
       ['I', 'I - quiescence (warm stain, shunting)'],
       ['II', 'II - expansion (pulsation, thrill, bruit)'],

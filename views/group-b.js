@@ -262,7 +262,7 @@ export const renderers = {
         o.appendChild(el('h3', { text: 'Per-line, ranked by fee' }));
         o.appendChild(el('ul', {}, r.lines.map((l) =>
           li(`Rank ${l.rank}: ${usd(l.feeCents)} fee -> ${usd(l.allowedCents)} allowed (${l.appliedPct}%).`))));
-        o.appendChild(postureNote('CMS Pub. 100-04 Claims Processing Manual, Ch. 12 40.6 (surgical 100/50/50) / 40.7 (endoscopy base rule). Pair with bilateral-pay for a single line at 150%.'));
+        o.appendChild(postureNote('CMS Pub. 100-04 Claims Processing Manual, Ch. 12 40.6 (surgical 100/50/50) / 40.7 (endoscopy base rule). Pair with Bilateral (Modifier 50) Payment by Indicator for a single line at 150%.'));
       });
     }
 
@@ -338,7 +338,7 @@ export const renderers = {
         o.appendChild(el('h2', { text: 'Not separately payable' }));
       }
       o.appendChild(el('p', { class: r.payable ? null : 'flag', text: r.note }));
-      o.appendChild(postureNote('CMS Pub. 100-04, Ch. 12 20.4.3 / 40.8; MPFS ASST SURG / CO SURG / TEAM SURG indicators. The base fee comes from rvu-payment.'));
+      o.appendChild(postureNote('CMS Pub. 100-04, Ch. 12 20.4.3 / 40.8; MPFS ASST SURG / CO SURG / TEAM SURG indicators. The base fee comes from the MPFS Allowed Amount tile.'));
     }));
   },
 
@@ -453,7 +453,7 @@ export const renderers = {
       o.appendChild(el('h2', { text: r.modifier ? `Modifier ${r.modifier}` : 'No distinct-service modifier' }));
       verdictLine(o, r.verdict, r.modifier ? null : 'flag');
       if (r.alsoApply && r.alsoApply.length) verdictLine(o, `Also describe(s) the scenario: ${r.alsoApply.join(', ')}.`);
-      o.appendChild(postureNote('CMS MLN "Proper Use of Modifiers 59 & X{EPSU}"; Pub. 100-04 Ch. 23. Feed the chosen modifier back into ncci-ptp to confirm the pair\'s indicator permits a bypass.'));
+      o.appendChild(postureNote('CMS MLN "Proper Use of Modifiers 59 & X{EPSU}"; Pub. 100-04 Ch. 23. Feed the chosen modifier back into the NCCI Edit & Modifier-Bypass Checker to confirm the pair\'s indicator permits a bypass.'));
     }));
   },
 
@@ -567,7 +567,7 @@ export const renderers = {
         ['Limiting element', r.limitingElements.length ? r.limitingElements.join(', ') : 'none -- all three reach the level'],
       ]));
       verdictLine(o, r.note);
-      o.appendChild(postureNote('AMA CPT 2023 E/M Guidelines (the 2021 office MDM grid extended to all settings). Confirm code selection against the current CPT code set and your documentation. Office near-neighbors: em-mdm (MDM) and em-time (time path).'));
+      o.appendChild(postureNote('AMA CPT 2023 E/M Guidelines (the 2021 office MDM grid extended to all settings). Confirm code selection against the current CPT code set and your documentation. The two office code selectors are the MDM-based one and the time-based one.'));
     }));
   },
 
@@ -626,7 +626,7 @@ export const renderers = {
         ['Modifier FS', 'Required (identifies the split/shared service)'],
         ['Pays at', `${r.paymentPercent}% of the physician fee schedule`],
       ]));
-      o.appendChild(postureNote('CMS Pub. 100-04 Ch. 12 30.6.18; PFS split (or shared) visit policy. Near-neighbor: multi-surgeon-pay is the surgical two-provider split; this is the E/M one.'));
+      o.appendChild(postureNote('CMS Pub. 100-04 Ch. 12 30.6.18; PFS split (or shared) visit policy. Assistant / Co- / Team-Surgeon Payment is the surgical two-provider split; this is the E/M one.'));
     }));
   },
 
@@ -657,7 +657,7 @@ export const renderers = {
         ['Total time', `${r.totalMinutes} minutes`],
         ['Prolonged units', String(r.units)],
       ]));
-      o.appendChild(postureNote('AMA CPT 99417 / 99418; CMS Pub. 100-04 (G2212 / G0316). Near-neighbor: em-time selects the primary code this adds onto.'));
+      o.appendChild(postureNote('AMA CPT 99417 / 99418; CMS Pub. 100-04 (G2212 / G0316). The Time-Based E/M Code Selector picks the primary code this adds onto.'));
     }));
   },
 
@@ -729,14 +729,14 @@ export const renderers = {
         ['Full payment (before direction)', usd(r.fullPaymentCents)],
         [r.directionLabel, usd(r.directedPaymentCents)],
       ]));
-      o.appendChild(postureNote('CMS Pub. 100-04 Ch. 12 50; ASA Relative Value Guide base units (entered, not shipped). Near-neighbor: rvu-payment prices everything EXCEPT anesthesia -- this is the exception.'));
+      o.appendChild(postureNote('CMS Pub. 100-04 Ch. 12 50; ASA Relative Value Guide base units (entered, not shipped). The MPFS Allowed Amount tile prices everything EXCEPT anesthesia; this is the exception.'));
     }));
   },
 
   // ===== spec-v81: drug & infusion billing =================================
   // ----- 2.1 ndc-hcpcs-units ------------------------------------------------
   'ndc-hcpcs-units'(root) {
-    root.appendChild(el('p', { class: 'notice', text: 'Converts a dose to the number of HCPCS billing units to report. A J-code\'s billing unit is a fixed amount ("1 unit = 10 mg") -- the units are almost never the milligrams given, and the off-by-a-factor error here is the most common drug-claim mistake. Enter the unit size from the code descriptor. Near-neighbor: ndc-convert flips the NDC digit format; this is dose -> units.' }));
+    root.appendChild(el('p', { class: 'notice', text: 'Converts a dose to the number of HCPCS billing units to report. A J-code\'s billing unit is a fixed amount ("1 unit = 10 mg") -- the units are almost never the milligrams given, and the off-by-a-factor error here is the most common drug-claim mistake. Enter the unit size from the code descriptor. The NDC 10 to 11 Digit Converter flips the digit format; this is dose to units.' }));
     root.appendChild(field('Dose administered', 'nh-dose', { type: 'number', inputmode: 'decimal', placeholder: '35' }));
     root.appendChild(unitSelect('Dose unit', 'nh-dose-unit', 'mg'));
     root.appendChild(field('Billing-unit size (1 unit = this much)', 'nh-unitsize', { type: 'number', inputmode: 'decimal', placeholder: '10' }));
@@ -763,7 +763,7 @@ export const renderers = {
         ['Billing units to report', String(r.billingUnits)],
         ['Clean multiple?', r.isCleanMultiple ? 'yes' : 'no -- rounding applied'],
       ]));
-      o.appendChild(postureNote('CMS HCPCS Level II drug descriptors; CMS Pub. 100-04 Ch. 17. The unit size is entered from the code descriptor (doctrine clause 2 -- no drug-pricing file ships). Pairs with drug-wastage to split administered vs discarded units.'));
+      o.appendChild(postureNote('CMS HCPCS Level II drug descriptors; CMS Pub. 100-04 Ch. 17. The unit size is entered from the code descriptor (doctrine clause 2 -- no drug-pricing file ships). Pairs with the Drug Wastage tile to split administered from discarded units.'));
     }));
   },
 
@@ -804,7 +804,7 @@ export const renderers = {
         ['Modifier', r.modifier || 'none'],
         r.leastWaste ? ['Least-waste vial selection', `${r.leastWaste.combo.map((c) => `${c.count}x${c.size}`).join(' + ')} = ${r.leastWaste.totalAmount} (${r.leastWaste.wasteAmount} wasted)`] : null,
       ]));
-      o.appendChild(postureNote('CMS Pub. 100-04 Ch. 17 §40; JW/JZ modifier guidance. Near-neighbor: ndc-hcpcs-units supplies the unit math this splits.'));
+      o.appendChild(postureNote('CMS Pub. 100-04 Ch. 17 §40; JW/JZ modifier guidance. HCPCS Drug Billing Units supplies the unit math this splits.'));
     }));
   },
 
@@ -977,7 +977,7 @@ export const renderers = {
         ['Residual (billed - paid - adjustments)', usd(r.residualCents)],
         ['Patient responsibility (Sigma PR) to bill', usd(r.patientResponsibilityCents)],
       ]));
-      o.appendChild(postureNote('ASC X12 835 balancing; CAS group codes CO/PR/OA/PI (CARC/RARC per CAQH CORE). Near-neighbor: allowed-amount projects the split from the contract; this reconciles the split the payer sent.'));
+      o.appendChild(postureNote('ASC X12 835 balancing; CAS group codes CO/PR/OA/PI (CARC/RARC per CAQH CORE). Contractual Write-Off vs Patient Balance projects the split from the contract; this reconciles the split the payer sent.'));
     }));
   },
 
@@ -1021,7 +1021,7 @@ export const renderers = {
           r.addOnCents > 0 ? ['Entered add-ons', usd(r.addOnCents)] : null,
           ['Total estimated payment', usd(r.totalCents)],
         ]));
-        o.appendChild(postureNote('42 CFR Part 412 (IPPS); relative weight from the bundled data/drg or entered. Estimates the operating model -- outlier/IME/DSH/new-tech need the hospital\'s cost-report factors. Near-neighbor: apc-payment is the outpatient counterpart.'));
+        o.appendChild(postureNote('42 CFR Part 412 (IPPS); relative weight from the bundled data/drg or entered. Estimates the operating model -- outlier/IME/DSH/new-tech need the hospital\'s cost-report factors. The OPPS APC Payment Estimate is the outpatient counterpart.'));
       });
     }
     wire(['drg-code', 'drg-weight', 'drg-oper', 'drg-cap', 'drg-wage', 'drg-transfer', 'drg-los', 'drg-gmlos', 'drg-addon'], run);
@@ -1070,7 +1070,7 @@ export const renderers = {
         ul.appendChild(li(`Weight ${ln.weight}, status ${ln.statusIndicator}: ${usd(ln.payCents)} (${status})`, ln.packaged ? 'muted' : null));
       }
       o.appendChild(ul);
-      o.appendChild(postureNote('42 CFR Part 419 (OPPS); relative weight / status indicator from the bundled data/apc or entered. Near-neighbor: mppr is the professional multiple-procedure reduction; this is the OPPS one. rvu-payment prices the professional line.'));
+      o.appendChild(postureNote('42 CFR Part 419 (OPPS); relative weight / status indicator from the bundled data/apc or entered. Multiple-Procedure Payment Reduction is the professional version; this is the OPPS one. The MPFS Allowed Amount tile prices the professional line.'));
     }));
   },
 };

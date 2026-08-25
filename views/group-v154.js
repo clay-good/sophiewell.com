@@ -186,7 +186,7 @@ export const renderers = {
 
   // ----- 2.4 pps -------------------------------------------------------------
   pps(root) {
-    note(root, 'Palliative Performance Scale v2 (Anderson 1996; PPSv2 © Victoria Hospice Society): five columns read left-to-right with leftward precedence — ambulation, activity & evidence of disease, self-care, intake, conscious level — giving a level 0%–100% in 10% steps (0% = death). A lower PPS frames a shorter expected survival and the hospice-eligibility discussion. Near-neighbor: ecog-karnofsky (distinct anchor).');
+    note(root, 'Palliative Performance Scale v2 (Anderson 1996; PPSv2 © Victoria Hospice Society): five columns read left-to-right with leftward precedence — ambulation, activity & evidence of disease, self-care, intake, conscious level — giving a level 0%–100% in 10% steps (0% = death). A lower PPS frames a shorter expected survival and the hospice-eligibility discussion. ECOG and Karnofsky Performance Status use a different anchor.');
     root.appendChild(pickField('Ambulation', 'pps-amb', PPS_AMBULATION));
     root.appendChild(pickField('Activity & evidence of disease', 'pps-act', PPS_ACTIVITY));
     root.appendChild(pickField('Self-care', 'pps-self', PPS_SELFCARE));

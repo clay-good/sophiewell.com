@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'gpa-acr-eular-2022'(root) {
-    note(root, '2022 ACR/EULAR granulomatosis-with-polyangiitis classification (Robson 2022): apply only after a small/medium-vessel-vasculitis diagnosis with mimics excluded. Ten weighted items sum to a range of -5 to +17; ≥ 5 classifies as GPA. Two items are negative (positive pANCA/MPO, blood eosinophilia) because they point toward MPA and EGPA. Companion tiles: gca-acr-eular-2022, takayasu-acr-eular-2022.');
+    note(root, '2022 ACR/EULAR granulomatosis-with-polyangiitis classification (Robson 2022): apply only after a small/medium-vessel-vasculitis diagnosis with mimics excluded. Ten weighted items sum to a range of -5 to +17; ≥ 5 classifies as GPA. Two items are negative (positive pANCA/MPO, blood eosinophilia) because they point toward MPA and EGPA.');
     root.appendChild(checkField('Nasal involvement — bloody discharge, ulcers, crusting, congestion, blockage, or septal defect/perforation (+3)', 'gpa-nasal'));
     root.appendChild(checkField('Cartilaginous involvement — ear/nose cartilage, hoarse voice or stridor, endobronchial, or saddle nose deformity (+2)', 'gpa-cartilage'));
     root.appendChild(checkField('Conductive or sensorineural hearing loss (+1)', 'gpa-hearing'));

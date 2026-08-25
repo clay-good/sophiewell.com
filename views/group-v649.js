@@ -42,7 +42,7 @@ const FIELDS = [
 
 export const renderers = {
   'nottingham-grade'(root) {
-    note(root, 'Nottingham histologic grade (Elston-Ellis 1991, modified Scarff-Bloom-Richardson): tubule formation + nuclear pleomorphism + mitotic score, each 1-3, total 3-9. Grade 1 (3-5) well differentiated, grade 2 (6-7) moderately, grade 3 (8-9) poorly. This is the grade, not the prognostic index. Companion tile: nottingham-prognostic-index.');
+    note(root, 'Nottingham histologic grade (Elston-Ellis 1991, modified Scarff-Bloom-Richardson): tubule formation + nuclear pleomorphism + mitotic score, each 1-3, total 3-9. Grade 1 (3-5) well differentiated, grade 2 (6-7) moderately, grade 3 (8-9) poorly. This is the grade, not the prognostic index.');
     for (const f of FIELDS) root.appendChild(selectField(f.label, f.dom, CHOICE(f.opts)));
     const ids = FIELDS.map((f) => f.dom);
     const o = out(); root.appendChild(o);

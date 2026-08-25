@@ -46,7 +46,7 @@ const FIELDS = [
 
 export const renderers = {
   'lichtiger-index'(root) {
-    note(root, 'Lichtiger Index (Modified Truelove-Witts Severity Index, Lichtiger 1994) for ulcerative colitis activity: eight items summed 0-21. Advisory cutoffs from later trials: under 10 = clinical response, 10 or more = active disease, 3 or less = remission. Companion tiles: truelove-witts, mayo-uc, harvey-bradshaw.');
+    note(root, 'Lichtiger Index (Modified Truelove-Witts Severity Index, Lichtiger 1994) for ulcerative colitis activity: eight items summed 0-21. Advisory cutoffs from later trials: under 10 = clinical response, 10 or more = active disease, 3 or less = remission.');
     for (const f of FIELDS) root.appendChild(selectField(f.label, f.dom, CHOICE(f.opts)));
     const ids = FIELDS.map((f) => f.dom);
     const o = out(); root.appendChild(o);

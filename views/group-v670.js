@@ -39,7 +39,7 @@ const FLUID_OPTS = [['0', '0 — small amount'], ['1', '1 — moderate amount'],
 
 export const renderers = {
   'ottawa-bowel-prep'(root) {
-    note(root, 'Ottawa Bowel Preparation Scale (Rostom 2004): cleanliness of 3 colon segments (each 0 excellent – 4 inadequate) + overall fluid quantity (0 small – 2 large), total 0–14. Lower is better (0 = perfect). Companion tile: bbps-boston.');
+    note(root, 'Ottawa Bowel Preparation Scale (Rostom 2004): cleanliness of 3 colon segments (each 0 excellent – 4 inadequate) + overall fluid quantity (0 small – 2 large), total 0–14. Lower is better (0 = perfect).');
     root.appendChild(selectField('Right / ascending colon cleanliness', 'obps-right', CHOICE(SEG_OPTS)));
     root.appendChild(selectField('Mid colon (transverse + descending) cleanliness', 'obps-mid', CHOICE(SEG_OPTS)));
     root.appendChild(selectField('Rectosigmoid cleanliness', 'obps-recto', CHOICE(SEG_OPTS)));

@@ -76,7 +76,7 @@ const FALLCOUNT = [
 export const renderers = {
   // ----- 2.1 stratify --------------------------------------------------------
   stratify(root) {
-    note(root, 'STRATIFY (Oliver 1997): the inpatient falls-risk tool the catalog’s morse-falls and hendrich-ii complement. Five factors each score 1 — a recent fall, agitation, visual impairment, frequent toileting, and a transfer+mobility (Barthel 0–3 each) combined score of 3 or 4. Total 0–5; ≥ 2 is high fall risk.');
+    note(root, 'STRATIFY (Oliver 1997): the inpatient falls-risk tool the Morse Fall Scale and the Hendrich II Fall Risk Model complement. Five factors each score 1 — a recent fall, agitation, visual impairment, frequent toileting, and a transfer+mobility (Barthel 0–3 each) combined score of 3 or 4. Total 0–5; ≥ 2 is high fall risk.');
     root.appendChild(pickField('Presented with a fall, or has fallen since admission', 'stratify-fall', YESNO));
     root.appendChild(pickField('Agitated', 'stratify-agitated', YESNO));
     root.appendChild(pickField('Visual impairment affecting everyday function', 'stratify-visual', YESNO));
@@ -96,7 +96,7 @@ export const renderers = {
 
   // ----- 2.2 chair-stand-30s -------------------------------------------------
   'chair-stand-30s'(root) {
-    note(root, '30-Second Chair Stand (CDC STEADI): the count of full sit-to-stands in 30 seconds, compared with the CDC STEADI below-average cut-point for age and sex. A count below the cut-point is below average and indicates increased fall risk. Norm bands cover ages 60–94. Companion to steadi-algorithm.');
+    note(root, '30-Second Chair Stand (CDC STEADI): the count of full sit-to-stands in 30 seconds, compared with the CDC STEADI below-average cut-point for age and sex. A count below the cut-point is below average and indicates increased fall risk. Norm bands cover ages 60–94.');
     root.appendChild(numField('Full stands completed in 30 seconds', 'chair-stands', { min: 0, placeholder: 'e.g. 10' }));
     root.appendChild(numField('Age (years)', 'chair-age', { min: 0, placeholder: 'e.g. 75' }));
     root.appendChild(pickField('Sex', 'chair-sex', SEX));
@@ -142,7 +142,7 @@ export const renderers = {
 
   // ----- 2.5 gait-speed (Group E) --------------------------------------------
   'gait-speed'(root) {
-    note(root, 'Gait speed (Studenski 2011; “the sixth vital sign”): distance ÷ time, in m/s, commonly over a 4-meter walk. Under 0.6 m/s is a high risk of adverse outcomes, under 0.8 m/s is limited community ambulation, and 1.0 m/s or more is healthy. The time denominator is guarded — a zero or blank time never produces Infinity. Companion to steadi-algorithm.');
+    note(root, 'Gait speed (Studenski 2011; “the sixth vital sign”): distance ÷ time, in m/s, commonly over a 4-meter walk. Under 0.6 m/s is a high risk of adverse outcomes, under 0.8 m/s is limited community ambulation, and 1.0 m/s or more is healthy. The time denominator is guarded — a zero or blank time never produces Infinity.');
     root.appendChild(numField('Distance walked (meters)', 'gait-distance', { step: '0.1', min: 0, placeholder: 'e.g. 4' }));
     root.appendChild(numField('Time taken (seconds)', 'gait-time', { step: '0.1', min: 0, placeholder: 'e.g. 5' }));
     const o = out(); root.appendChild(o);
@@ -157,7 +157,7 @@ export const renderers = {
 
   // ----- 2.6 steadi-algorithm ------------------------------------------------
   'steadi-algorithm'(root) {
-    note(root, 'CDC STEADI screening algorithm: the three key questions (a fall in the past year, feeling unsteady, worry about falling) plus a gait/strength/balance result route to a low / moderate / high pathway. A negative screen is low risk; a positive screen is high when there are recurrent or injurious falls or a gait/balance problem, otherwise moderate. Ties together chair-stand-30s, four-stage-balance, and gait-speed.');
+    note(root, 'CDC STEADI screening algorithm: the three key questions (a fall in the past year, feeling unsteady, worry about falling) plus a gait/strength/balance result route to a low / moderate / high pathway. A negative screen is low risk; a positive screen is high when there are recurrent or injurious falls or a gait/balance problem, otherwise moderate. Ties together the 30-Second Chair Stand, the 4-Stage Balance Test, and gait speed.');
     root.appendChild(pickField('Fallen in the past year', 'steadi-fell', YESNO));
     root.appendChild(pickField('If fell: how many falls', 'steadi-count', FALLCOUNT));
     root.appendChild(pickField('If fell: did any fall cause injury', 'steadi-injury', YESNO));

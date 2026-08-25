@@ -38,7 +38,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'pass-pheo'(root) {
-    note(root, 'PASS (Pheochromocytoma of the Adrenal gland Scaled Score, Thompson 2002): mark the histologic features present. Eight features are worth 2 points and four are worth 1, summed 0-20. PASS 4 or more indicates potential for biologically aggressive behavior; under 4 behaves benignly. Companion tile: gapp.');
+    note(root, 'PASS (Pheochromocytoma of the Adrenal gland Scaled Score, Thompson 2002): mark the histologic features present. Eight features are worth 2 points and four are worth 1, summed 0-20. PASS 4 or more indicates potential for biologically aggressive behavior; under 4 behaves benignly.');
     for (const f of M.PASS_FEATURES) root.appendChild(checkField(`${f.label} (+${f.points})`, DOM[f.key]));
     const ids = M.PASS_FEATURES.map((f) => DOM[f.key]);
     const o = out(); root.appendChild(o);

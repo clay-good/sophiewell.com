@@ -235,7 +235,7 @@ export const renderers = {
 
   // ----- 2.6 opioid-conversion ------------------------------------------
   'opioid-conversion'(root) {
-    note(root, 'Opioid equianalgesic / rotation converter: the source daily dose is converted to oral morphine equivalents (OME) and back to the target opioid, then reduced 25–50% for incomplete cross-tolerance. Methadone and buprenorphine are deliberately excluded (non-linear/ceiling pharmacology). Distinct from opioid-mme (surveillance MME sum). This is a planning aid — confirm against your protocol and an independent second check.');
+    note(root, 'Opioid equianalgesic / rotation converter: the source daily dose is converted to oral morphine equivalents (OME) and back to the target opioid, then reduced 25–50% for incomplete cross-tolerance. Methadone and buprenorphine are deliberately excluded (non-linear/ceiling pharmacology). Distinct from the Opioid MME Calculator, which sums a surveillance MME. This is a planning aid — confirm against your protocol and an independent second check.');
     const agentOpts = [
       { value: 'morphine-po', text: 'Morphine — oral (mg/day)' },
       { value: 'morphine-iv', text: 'Morphine — IV/SC (mg/day)' },

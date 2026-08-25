@@ -132,7 +132,7 @@ function idsOf(fields) { return fields.map(([, id]) => id); }
 export const renderers = {
   // ----- 2.1 sandvik-incontinence (Group E) ----------------------------------
   'sandvik-incontinence'(root) {
-    note(root, 'Sandvik Severity Index (1993/2000): Severity Index = frequency × amount of leakage. Product 1–12; 1–2 slight, 3–6 moderate, 8–9 severe, 12 very severe. A two-question incontinence-severity measure. Companion to iciq-ui-sf.');
+    note(root, 'Sandvik Severity Index (1993/2000): Severity Index = frequency × amount of leakage. Product 1–12; 1–2 slight, 3–6 moderate, 8–9 severe, 12 very severe. A two-question incontinence-severity measure.');
     root.appendChild(pickField('Frequency of leakage', 'sandvik-freq', SANDVIK_FREQ));
     root.appendChild(pickField('Amount of leakage', 'sandvik-amount', SANDVIK_AMT));
     const o = out(); root.appendChild(o);
@@ -163,7 +163,7 @@ export const renderers = {
 
   // ----- 2.3 modified-caregiver-strain-index ---------------------------------
   'modified-caregiver-strain-index'(root) {
-    note(root, 'Modified Caregiver Strain Index (Thornton & Travis 2003): 13 items each 0 (no) / 1 (sometimes) / 2 (regularly). Total 0–26; higher = greater caregiver strain. No official cut. The free alternative to the licensed Zarit Burden Interview; companion to caregiver-strain-index.');
+    note(root, 'Modified Caregiver Strain Index (Thornton & Travis 2003): 13 items each 0 (no) / 1 (sometimes) / 2 (regularly). Total 0–26; higher = greater caregiver strain. No official cut. The free alternative to the licensed Zarit Burden Interview; the shorter form is the Caregiver Strain Index.');
     addPicks(root, MCSI_FIELDS, MCSI012);
     const o = out(); root.appendChild(o);
     wire(idsOf(MCSI_FIELDS), () => safe(o, () => {
@@ -191,7 +191,7 @@ export const renderers = {
 
   // ----- 2.5 bwat ------------------------------------------------------------
   bwat(root) {
-    note(root, 'Bates-Jensen Wound Assessment Tool: 13 wound items each 1 (healthy tissue) to 5 (severe degeneration). Total 13–65; lower = healing, higher = degeneration. Read the trajectory across serial scores. The full-trajectory companion to the live braden / norton-push pressure-injury tiles.');
+    note(root, 'Bates-Jensen Wound Assessment Tool: 13 wound items each 1 (healthy tissue) to 5 (severe degeneration). Total 13–65; lower = healing, higher = degeneration. Read the trajectory across serial scores. The full-trajectory companion to the live Braden and Norton pressure-injury tiles.');
     addPicks(root, BWAT_FIELDS, BWAT15);
     const o = out(); root.appendChild(o);
     wire(idsOf(BWAT_FIELDS), () => safe(o, () => {

@@ -35,7 +35,7 @@ const IDS = ['cgd-fever', 'cgd-inflammation', 'cgd-jaundice', 'cgd-lfts', 'cgd-d
 
 export const renderers = {
   'cholangitis-diagnosis'(root) {
-    note(root, 'Acute cholangitis diagnosis (Tokyo Guidelines TG18/TG13). Check the items you have determined. Suspected: one item in A plus one in B or C. Definite: one item in each of A, B, and C. Companion: cholangitis-severity.');
+    note(root, 'Acute cholangitis diagnosis (Tokyo Guidelines TG18/TG13). Check the items you have determined. Suspected: one item in A plus one in B or C. Definite: one item in each of A, B, and C.');
 
     note(root, 'A — Systemic inflammation:');
     root.appendChild(check('A-1 Fever and/or shaking chills (BT >38 °C)', 'cgd-fever'));

@@ -42,7 +42,7 @@ const DOM = { temp: 'fgsi-temp', hr: 'fgsi-hr', rr: 'fgsi-rr', na: 'fgsi-na', k:
 
 export const renderers = {
   'fgsi'(root) {
-    note(root, 'FGSI (Fournier’s Gangrene Severity Index, Laor 1995): the APACHE-II acute-physiology score over nine parameters, each scored 0-4 by deviation from normal, summed to 0-36. A total greater than 9 predicts high mortality. Creatinine points double in acute renal failure. Companion tiles: apache2, saps-ii.');
+    note(root, 'FGSI (Fournier’s Gangrene Severity Index, Laor 1995): the APACHE-II acute-physiology score over nine parameters, each scored 0-4 by deviation from normal, summed to 0-36. A total greater than 9 predicts high mortality. Creatinine points double in acute renal failure.');
     for (const p of M.FGSI_PARAMS) root.appendChild(numberField(p.label, DOM[p.key]));
     root.appendChild(checkField('Acute renal failure (doubles the creatinine points)', 'fgsi-arf'));
     const ids = M.FGSI_PARAMS.map((p) => DOM[p.key]).concat('fgsi-arf');

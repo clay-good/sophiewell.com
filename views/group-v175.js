@@ -107,7 +107,7 @@ const CNPI_FIELDS = CNPI_BEHAVIOURS.flatMap(([label, key]) => [
 export const renderers = {
   // ----- 2.1 abbey-pain ------------------------------------------------------
   'abbey-pain'(root) {
-    note(root, 'Abbey Pain Scale (Abbey 2004): a 1-minute observational scale for people with end-stage dementia. Six items each rated 0 (absent) / 1 (mild) / 2 (moderate) / 3 (severe). Total 0–18; 0–2 no pain, 3–7 mild, 8–13 moderate, 14+ severe. The aged-care companion to painad; the standard scale in Australian and UK aged care.');
+    note(root, 'Abbey Pain Scale (Abbey 2004): a 1-minute observational scale for people with end-stage dementia. Six items each rated 0 (absent) / 1 (mild) / 2 (moderate) / 3 (severe). Total 0–18; 0–2 no pain, 3–7 mild, 8–13 moderate, 14+ severe. The aged-care companion to PAINAD; the standard scale in Australian and UK aged care.');
     addFields(root, ABBEY_FIELDS, SEV0123);
     const o = out(); root.appendChild(o);
     wire(fieldIds(ABBEY_FIELDS), () => safe(o, () => {
@@ -121,7 +121,7 @@ export const renderers = {
 
   // ----- 2.2 cnpi ------------------------------------------------------------
   cnpi(root) {
-    note(root, 'Checklist of Nonverbal Pain Indicators (Feldt 2000): six behaviors, each marked present or absent twice — once at rest and once with movement (a transfer). Rest 0–6, movement 0–6, combined 0–12. Unlike painad, CNPI structures the with-movement assessment separately. There is no formal cut: any indicator in either condition warrants further pain assessment.');
+    note(root, 'Checklist of Nonverbal Pain Indicators (Feldt 2000): six behaviors, each marked present or absent twice — once at rest and once with movement (a transfer). Rest 0–6, movement 0–6, combined 0–12. Unlike PAINAD, CNPI structures the with-movement assessment separately. There is no formal cut: any indicator in either condition warrants further pain assessment.');
     for (const [label, key] of CNPI_BEHAVIOURS) {
       root.appendChild(el('p', { class: 'muted', text: label }));
       root.appendChild(pickField('At rest', `cnpi-${key}-rest`, PRESENT));
@@ -139,7 +139,7 @@ export const renderers = {
 
   // ----- 2.3 doloplus-2 ------------------------------------------------------
   'doloplus-2'(root) {
-    note(root, 'DOLOPLUS-2 (Wary 2001): a 10-item behavioral pain scale across somatic, psychomotor, and psychosocial reactions, each item 0–3. Total 0–30; a score of 5 or more indicates pain. The standard observational scale in French and European geriatric care; companion to abbey-pain and painad.');
+    note(root, 'DOLOPLUS-2 (Wary 2001): a 10-item behavioral pain scale across somatic, psychomotor, and psychosocial reactions, each item 0–3. Total 0–30; a score of 5 or more indicates pain. The standard observational scale in French and European geriatric care; the observational alternatives are the Abbey Pain Scale and PAINAD.');
     addFields(root, DOLO_FIELDS, DOLO03);
     const o = out(); root.appendChild(o);
     wire(fieldIds(DOLO_FIELDS), () => safe(o, () => {

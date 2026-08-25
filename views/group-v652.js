@@ -44,7 +44,7 @@ const CLASS_OPTS = [['1', '1 — non-high grade, no necrosis'], ['2', '2 — non
 
 export const renderers = {
   'van-nuys-vnpi'(root) {
-    note(root, 'USC/Van Nuys Prognostic Index for DCIS (Silverstein 2003, 4-factor update): size + margin width + pathologic classification + age, each scored 1-3, total 4-12. Low (4-6), intermediate (7-9), high (10-12). Companion tiles: nottingham-grade, nottingham-prognostic-index.');
+    note(root, 'USC/Van Nuys Prognostic Index for DCIS (Silverstein 2003, 4-factor update): size + margin width + pathologic classification + age, each scored 1-3, total 4-12. Low (4-6), intermediate (7-9), high (10-12).');
     root.appendChild(numberField('Tumor size (mm)', 'vnpi-size'));
     root.appendChild(numberField('Margin width (mm)', 'vnpi-margin'));
     root.appendChild(selectField('Pathologic classification', 'vnpi-class', CHOICE(CLASS_OPTS)));

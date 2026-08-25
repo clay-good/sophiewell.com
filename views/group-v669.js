@@ -55,7 +55,7 @@ const CANCER_OPTS = [['none', 'No cancer'], ['solitary', 'Solitary (non-metastat
 
 export const renderers = {
   'walter-index'(root) {
-    note(root, 'Walter Index (Walter 2001): estimates 1-year mortality at hospital discharge in adults 70 or older. Male sex (1) + ADL dependence (1–4 = 2, all 5 = 5) + heart failure (2) + cancer (solitary 3, metastatic 8) + creatinine > 3.0 mg/dL (2) + albumin (3.0–3.4 = 1, < 3.0 = 2), total 0–20. The 5 ADLs are bathing, dressing, transferring, toileting, eating. Companion tile: lee-mortality-index.');
+    note(root, 'Walter Index (Walter 2001): estimates 1-year mortality at hospital discharge in adults 70 or older. Male sex (1) + ADL dependence (1–4 = 2, all 5 = 5) + heart failure (2) + cancer (solitary 3, metastatic 8) + creatinine > 3.0 mg/dL (2) + albumin (3.0–3.4 = 1, < 3.0 = 2), total 0–20. The 5 ADLs are bathing, dressing, transferring, toileting, eating.');
     root.appendChild(selectField('Sex', 'walter-sex', CHOICE(SEX_OPTS)));
     root.appendChild(selectField('ADL dependence at discharge (bathing, dressing, transferring, toileting, eating)', 'walter-adl', CHOICE(ADL_OPTS)));
     root.appendChild(checkField('Congestive heart failure', 'walter-chf'));

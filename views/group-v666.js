@@ -30,7 +30,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'vhwg-hernia'(root) {
-    note(root, 'Ventral Hernia Working Group (VHWG) grade (Breuing 2010): the most severe feature present sets the grade. Grade 4 infected (infected mesh / septic dehiscence); grade 3 potentially contaminated (prior wound infection, stoma, GI-tract violation); grade 2 comorbid (smoking, obesity, diabetes, immunosuppression, COPD); grade 1 low risk. Higher grade = higher surgical-site-occurrence risk. Companion tile: nyhus-hernia.');
+    note(root, 'Ventral Hernia Working Group (VHWG) grade (Breuing 2010): the most severe feature present sets the grade. Grade 4 infected (infected mesh / septic dehiscence); grade 3 potentially contaminated (prior wound infection, stoma, GI-tract violation); grade 2 comorbid (smoking, obesity, diabetes, immunosuppression, COPD); grade 1 low risk. Higher grade = higher surgical-site-occurrence risk.');
     root.appendChild(checkField('Infected mesh or septic dehiscence (Grade 4)', 'vhwg-infected'));
     root.appendChild(checkField('Previous wound infection, a stoma, or GI-tract violation (Grade 3)', 'vhwg-contaminated'));
     root.appendChild(checkField('Smoking, obesity, diabetes, immunosuppression, or COPD (Grade 2)', 'vhwg-comorbid'));

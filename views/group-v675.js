@@ -45,7 +45,7 @@ const ITEMS = [
 
 export const renderers = {
   'asrm-mania'(root) {
-    note(root, 'Altman Self-Rating Mania Scale (Altman 1997): rate each of 5 domains 0–4 for the past week. Total 0–20; a score of 6 or more screens positive for a manic/hypomanic condition. A self-report screen, not a diagnosis. Companion tile: ymrs (clinician-rated).');
+    note(root, 'Altman Self-Rating Mania Scale (Altman 1997): rate each of 5 domains 0–4 for the past week. Total 0–20; a score of 6 or more screens positive for a manic/hypomanic condition. A self-report screen, not a diagnosis. The clinician-rated counterpart is the Young Mania Rating Scale.');
     root.appendChild(selectField('Elevated / positive mood', 'asrm-mood', CHOICE(RATE)));
     root.appendChild(selectField('Increased self-confidence', 'asrm-confidence', CHOICE(RATE)));
     root.appendChild(selectField('Decreased need for sleep', 'asrm-sleep', CHOICE(RATE)));

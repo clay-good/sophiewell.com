@@ -175,7 +175,7 @@ export const renderers = {
 
   // ----- 2.4 elixhauser ------------------------------------------------------
   elixhauser(root) {
-    note(root, 'Elixhauser comorbidity index, van Walraven weighting (Elixhauser 1998; van Walraven 2009): each present condition adds its signed weight (−7 to +12); a higher total predicts higher in-hospital mortality. A complement to charlson.');
+    note(root, 'Elixhauser comorbidity index, van Walraven weighting (Elixhauser 1998; van Walraven 2009): each present condition adds its signed weight (−7 to +12); a higher total predicts higher in-hospital mortality. A complement to the Charlson Comorbidity Index.');
     const ids = [];
     for (const [heading, items] of ELIX_GROUPS) {
       subhead(root, heading);

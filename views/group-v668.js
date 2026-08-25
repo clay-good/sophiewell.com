@@ -31,7 +31,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'cac-agatston'(root) {
-    note(root, 'Coronary artery calcium (CAC) Agatston score (Agatston 1990): a total score of 0 = no identifiable plaque, 1-99 = mild, 100-399 = moderate, 400 or more = severe/extensive. In borderline/intermediate-risk primary prevention, the 2018 ACC/AHA guideline uses CAC to guide the statin decision. Companion tile: mesa-chd.');
+    note(root, 'Coronary artery calcium (CAC) Agatston score (Agatston 1990): a total score of 0 = no identifiable plaque, 1-99 = mild, 100-399 = moderate, 400 or more = severe/extensive. In borderline/intermediate-risk primary prevention, the 2018 ACC/AHA guideline uses CAC to guide the statin decision.');
     root.appendChild(numberField('Total coronary artery calcium (Agatston) score', 'cac-score'));
     const ids = ['cac-score'];
     const o = out(); root.appendChild(o);

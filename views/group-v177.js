@@ -88,7 +88,7 @@ function sarcfIds() { return SARCF_FIELDS.map(([, id]) => id); }
 export const renderers = {
   // ----- 2.2 sarc-f ----------------------------------------------------------
   'sarc-f'(root) {
-    note(root, 'SARC-F (Malmstrom 2013): the 5-item sarcopenia screen — Strength, Assistance walking, Rise from a chair, Climb stairs, Falls — each 0 (none) / 1 (some) / 2 (a lot / unable). Total 0–10; ≥ 4 predicts sarcopenia and poor outcomes. Pairs with sarc-calf, which adds a calf-circumference measure.');
+    note(root, 'SARC-F (Malmstrom 2013): the 5-item sarcopenia screen — Strength, Assistance walking, Rise from a chair, Climb stairs, Falls — each 0 (none) / 1 (some) / 2 (a lot / unable). Total 0–10; ≥ 4 predicts sarcopenia and poor outcomes. Pairs with SARC-CalF, which adds a calf-circumference measure.');
     addSarcf(root);
     const o = out(); root.appendChild(o);
     wire(sarcfIds(), () => safe(o, () => {

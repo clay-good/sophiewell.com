@@ -107,7 +107,7 @@ export const renderers = {
 
   // ----- 2.2 ad8 -------------------------------------------------------------
   ad8(root) {
-    note(root, 'AD8 Dementia Screening Interview (Galvin 2005): eight informant yes/no items, each asking whether a change has occurred due to thinking/memory problems over the past several years. Total 0–8; ≥ 2 suggests cognitive impairment. Informant-report companion to mini-cog.');
+    note(root, 'AD8 Dementia Screening Interview (Galvin 2005): eight informant yes/no items, each asking whether a change has occurred due to thinking/memory problems over the past several years. Total 0–8; ≥ 2 suggests cognitive impairment.');
     root.appendChild(pickField('Problems with judgment (bad decisions, problems with thinking)', 'ad8-judgment', YESNO));
     root.appendChild(pickField('Reduced interest in hobbies or activities', 'ad8-interest', YESNO));
     root.appendChild(pickField('Repeats the same things over and over', 'ad8-repeating', YESNO));

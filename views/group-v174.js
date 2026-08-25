@@ -168,7 +168,7 @@ function fieldIds(fields) { return fields.map(([, id]) => id); }
 export const renderers = {
   // ----- 2.1 nu-desc ---------------------------------------------------------
   'nu-desc'(root) {
-    note(root, 'Nursing Delirium Screening Scale (Gaudreau 2005): five features a nurse rates from a full shift’s observation, each 0 (absent) / 1 (mild) / 2 (severe). Total 0–10; ≥ 2 is a positive delirium screen. The shift-observation companion to the interview-based cam and 4at; sibling of doss.');
+    note(root, 'Nursing Delirium Screening Scale (Gaudreau 2005): five features a nurse rates from a full shift’s observation, each 0 (absent) / 1 (mild) / 2 (severe). Total 0–10; ≥ 2 is a positive delirium screen. The shift-observation companion to the interview-based CAM and 4AT screens.');
     addFields(root, NUDESC_FIELDS, SEV012);
     const o = out(); root.appendChild(o);
     wire(fieldIds(NUDESC_FIELDS), () => safe(o, () => {
@@ -182,7 +182,7 @@ export const renderers = {
 
   // ----- 2.2 doss ------------------------------------------------------------
   doss(root) {
-    note(root, 'Delirium Observation Screening Scale (Schuurmans 2003), 13-item short form: mark each behavior present or absent across the shift. Total 0–13; ≥ 3 suggests delirium. Three items (attention, time-of-day, recent recall) are reverse-scored on the original form and are written here in their abnormal direction. Sibling of nu-desc; confirm with cam.');
+    note(root, 'Delirium Observation Screening Scale (Schuurmans 2003), 13-item short form: mark each behavior present or absent across the shift. Total 0–13; ≥ 3 suggests delirium. Three items (attention, time-of-day, recent recall) are reverse-scored on the original form and are written here in their abnormal direction. Confirm a positive screen with the Confusion Assessment Method.');
     addFields(root, DOSS_FIELDS, PRESENT);
     const o = out(); root.appendChild(o);
     wire(fieldIds(DOSS_FIELDS), () => safe(o, () => {
@@ -196,7 +196,7 @@ export const renderers = {
 
   // ----- 2.3 cornell-csdd ----------------------------------------------------
   'cornell-csdd'(root) {
-    note(root, 'Cornell Scale for Depression in Dementia (Alexopoulos 1988): 19 items rated 0 (absent) / 1 (mild) / 2 (severe), or “unable to evaluate” (scores 0). Total 0–38; > 10 probable, > 18 definite major depression. Built for moderate-to-severe dementia precisely because gds15 and phq9 (self-report) are not valid there — it uses observation and a caregiver informant instead.');
+    note(root, 'Cornell Scale for Depression in Dementia (Alexopoulos 1988): 19 items rated 0 (absent) / 1 (mild) / 2 (severe), or “unable to evaluate” (scores 0). Total 0–38; > 10 probable, > 18 definite major depression. Built for moderate-to-severe dementia precisely because the GDS-15 and PHQ-9 self-report screens are not valid there — it uses observation and a caregiver informant instead.');
     addFields(root, CSDD_FIELDS, CSDD012);
     const o = out(); root.appendChild(o);
     wire(fieldIds(CSDD_FIELDS), () => safe(o, () => {
@@ -210,7 +210,7 @@ export const renderers = {
 
   // ----- 2.4 interrai-abs ----------------------------------------------------
   'interrai-abs'(root) {
-    note(root, 'interRAI Aggressive Behavior Scale (Perlman & Hirdes 2008): four behaviors each rated on the MDS 7-day frequency scale 0 (not exhibited) to 3 (daily). Total 0–12. The original scale defines no named bands; the none/mild/moderate/severe split (0 / 1–2 / 3–5 / 6–12) is a secondary-literature convention. Quantifies the BPSD that drive the behavioral care plan; companion to cmai.');
+    note(root, 'interRAI Aggressive Behavior Scale (Perlman & Hirdes 2008): four behaviors each rated on the MDS 7-day frequency scale 0 (not exhibited) to 3 (daily). Total 0–12. The original scale defines no named bands; the none/mild/moderate/severe split (0 / 1–2 / 3–5 / 6–12) is a secondary-literature convention. Quantifies the BPSD that drive the behavioral care plan.');
     addFields(root, ABS_FIELDS, ABS03);
     const o = out(); root.appendChild(o);
     wire(fieldIds(ABS_FIELDS), () => safe(o, () => {
@@ -224,7 +224,7 @@ export const renderers = {
 
   // ----- 2.5 cmai ------------------------------------------------------------
   cmai(root) {
-    note(root, 'Cohen-Mansfield Agitation Inventory (1989), 29-item long form: rate each behavior’s frequency over the prior two weeks, 1 (never) to 7 (several times an hour). Total 29–203 — the floor is 29, not 0, so a “low” score is not zero agitation. The CMAI manual advises against a total severity cut; it is read as a frequency quantifier and by its three factor subscales. Companion to interrai-abs.');
+    note(root, 'Cohen-Mansfield Agitation Inventory (1989), 29-item long form: rate each behavior’s frequency over the prior two weeks, 1 (never) to 7 (several times an hour). Total 29–203 — the floor is 29, not 0, so a “low” score is not zero agitation. The CMAI manual advises against a total severity cut; it is read as a frequency quantifier and by its three factor subscales.');
     addFields(root, CMAI_FIELDS, FREQ17);
     const o = out(); root.appendChild(o);
     wire(fieldIds(CMAI_FIELDS), () => safe(o, () => {

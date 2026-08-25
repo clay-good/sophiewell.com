@@ -48,7 +48,7 @@ const DBI_ROWS = 5;
 export const renderers = {
   // ----- 2.1 anticholinergic-burden (ACB) ------------------------------------
   'anticholinergic-burden'(root) {
-    note(root, 'Anticholinergic Cognitive Burden (ACB, Boustani 2008): read each current medication’s level from the published ACB list and enter how many the patient takes at each level. Total = 1×(level-1) + 2×(level-2) + 3×(level-3). ≥ 3 is commonly treated as clinically relevant. Complements beers-check and anticholinergic-risk-scale.');
+    note(root, 'Anticholinergic Cognitive Burden (ACB, Boustani 2008): read each current medication’s level from the published ACB list and enter how many the patient takes at each level. Total = 1×(level-1) + 2×(level-2) + 3×(level-3). ≥ 3 is commonly treated as clinically relevant. Complements the Beers Criteria checker and the Anticholinergic Risk Scale.');
     root.appendChild(numField('Number of level-1 (possible anticholinergic) drugs', 'acb-l1', { min: 0, placeholder: '0' }));
     root.appendChild(numField('Number of level-2 drugs', 'acb-l2', { min: 0, placeholder: '0' }));
     root.appendChild(numField('Number of level-3 (definite anticholinergic) drugs', 'acb-l3', { min: 0, placeholder: '0' }));
@@ -64,7 +64,7 @@ export const renderers = {
 
   // ----- 2.2 anticholinergic-risk-scale (ARS) --------------------------------
   'anticholinergic-risk-scale'(root) {
-    note(root, 'Anticholinergic Risk Scale (ARS, Rudolph 2008): read each current medication’s ARS point value (1, 2, or 3) from the published list and enter how many the patient takes at each value. Total = 1×(1-point) + 2×(2-point) + 3×(3-point). A higher total means greater anticholinergic adverse-effect risk; the scale defines no official cut. Companion to anticholinergic-burden.');
+    note(root, 'Anticholinergic Risk Scale (ARS, Rudolph 2008): read each current medication’s ARS point value (1, 2, or 3) from the published list and enter how many the patient takes at each value. Total = 1×(1-point) + 2×(2-point) + 3×(3-point). A higher total means greater anticholinergic adverse-effect risk; the scale defines no official cut.');
     root.appendChild(numField('Number of 1-point ARS drugs', 'ars-p1', { min: 0, placeholder: '0' }));
     root.appendChild(numField('Number of 2-point ARS drugs', 'ars-p2', { min: 0, placeholder: '0' }));
     root.appendChild(numField('Number of 3-point ARS drugs', 'ars-p3', { min: 0, placeholder: '0' }));

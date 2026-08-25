@@ -31,7 +31,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'cobb-angle'(root) {
-    note(root, 'Cobb angle (Cobb 1948; Scoliosis Research Society): a curve of ≥ 10° defines scoliosis. Bands: < 10° not scoliosis, 10–24° mild, 25–44° moderate, ≥ 45° severe. Bracing is typically considered ~25–40° in a growing child; surgery ~45–50°+. Companion tile: risser-sign.');
+    note(root, 'Cobb angle (Cobb 1948; Scoliosis Research Society): a curve of ≥ 10° defines scoliosis. Bands: < 10° not scoliosis, 10–24° mild, 25–44° moderate, ≥ 45° severe. Bracing is typically considered ~25–40° in a growing child; surgery ~45–50°+.');
     root.appendChild(numberField('Measured Cobb angle (degrees)', 'cobb-angle'));
     const ids = ['cobb-angle'];
     const o = out(); root.appendChild(o);

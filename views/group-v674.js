@@ -47,7 +47,7 @@ const PROX_OPTS = [['1', '1 — distal quarter'], ['2', '2 — second quarter'],
 
 export const renderers = {
   'osi-onychomycosis'(root) {
-    note(root, 'Onychomycosis Severity Index (Carney 2011): area of involvement (0–5) × proximity to the nail matrix (1–5), plus 10 points if a dermatophytoma or > 2 mm subungual hyperkeratosis is present. Total 0–35: 0 none, 1–5 mild, 6–15 moderate, 16–35 severe. Companion tiles: napsi, pasi.');
+    note(root, 'Onychomycosis Severity Index (Carney 2011): area of involvement (0–5) × proximity to the nail matrix (1–5), plus 10 points if a dermatophytoma or > 2 mm subungual hyperkeratosis is present. Total 0–35: 0 none, 1–5 mild, 6–15 moderate, 16–35 severe.');
     root.appendChild(selectField('Area of involvement', 'osi-area', CHOICE(AREA_OPTS)));
     root.appendChild(selectField('Proximity of disease to the matrix', 'osi-prox', CHOICE(PROX_OPTS)));
     root.appendChild(checkField('Dermatophytoma (streak/patch) or > 2 mm subungual hyperkeratosis (+10)', 'osi-bonus'));

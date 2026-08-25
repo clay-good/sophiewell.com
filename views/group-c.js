@@ -265,7 +265,7 @@ export const renderers = {
           ['Patient responsibility', usd(r.patientCents)],
         ]));
       }
-      o.appendChild(postureNote('SSA Title XVIII; CMS CY2026 Medicare cost-sharing amounts. This is the rule\'s math, not a coverage determination -- it is the patient share BEFORE Medigap / secondary coverage. Near-neighbor: sequestration-adjust reduces the program payment, NOT this patient share.'));
+      o.appendChild(postureNote('SSA Title XVIII; CMS CY2026 Medicare cost-sharing amounts. This is the rule\'s math, not a coverage determination -- it is the patient share BEFORE Medigap / secondary coverage. The Medicare 2% Sequestration Adjustment reduces the program payment, NOT this patient share.'));
     }));
   },
 
@@ -303,7 +303,7 @@ export const renderers = {
         ['Patient residual', usd(r.patientResidualCents)],
         ['Contractual write-off (charge - primary allowed)', usd(r.writeOffCents)],
       ]));
-      o.appendChild(postureNote('42 CFR Part 411; CMS Pub. 100-05 (Medicare Secondary Payer Manual). The patient share after the primary is the primary allowed minus the primary payment (the charge-minus-allowed gap is a contractual write-off -- see allowed-amount). Near-neighbor: medicare-cost-share computes the Medicare-primary share this can coordinate.'));
+      o.appendChild(postureNote('42 CFR Part 411; CMS Pub. 100-05 (Medicare Secondary Payer Manual). The patient share after the primary is the primary allowed minus the primary payment (the charge-minus-allowed gap is a contractual write-off). Medicare Patient Cost-Share computes the Medicare-primary share this can coordinate.'));
     }));
   },
 
@@ -339,7 +339,7 @@ export const renderers = {
         ['Payer payment', usd(r.payerPaymentCents)],
         ['Balance billing the gap', r.balanceBillProhibited ? 'PROHIBITED (must be written off)' : (r.inNetwork ? 'n/a (charge = allowed)' : 'permitted (out-of-network)')],
       ]));
-      o.appendChild(postureNote('Third-party-payer contract accounting; the prohibition on balance-billing a contracted allowable. allowed = payer payment + patient responsibility; charge = allowed + write-off. Near-neighbor: era-balance (v83) checks a posted remittance balances; this projects it from the contract.'));
+      o.appendChild(postureNote('Third-party-payer contract accounting; the prohibition on balance-billing a contracted allowable. allowed = payer payment + patient responsibility; charge = allowed + write-off. 835 / EOB Remittance Balancing checks that a posted remittance balances; this projects it from the contract.'));
     }));
   },
 

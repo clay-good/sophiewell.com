@@ -44,7 +44,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'takayasu-acr-eular-2022'(root) {
-    note(root, '2022 ACR/EULAR Takayasu arteritis classification (Grayson 2022): apply only after a medium/large-vessel-vasculitis diagnosis with mimics excluded, and only when BOTH absolute requirements hold — age ≤ 60 at diagnosis and imaging evidence of vasculitis. Ten weighted items then sum to 0–19; ≥ 5 classifies as Takayasu arteritis. Companion tile: gca-acr-eular-2022.');
+    note(root, '2022 ACR/EULAR Takayasu arteritis classification (Grayson 2022): apply only after a medium/large-vessel-vasculitis diagnosis with mimics excluded, and only when BOTH absolute requirements hold — age ≤ 60 at diagnosis and imaging evidence of vasculitis. Ten weighted items then sum to 0–19; ≥ 5 classifies as Takayasu arteritis.');
     root.appendChild(checkField('Absolute requirement — age ≤ 60 years at diagnosis', 'tak-age'));
     root.appendChild(checkField('Absolute requirement — evidence of vasculitis on imaging (angiography, ultrasound, or PET of the aorta or branch arteries)', 'tak-imaging'));
     root.appendChild(checkField('Female sex (+1)', 'tak-female'));

@@ -41,7 +41,7 @@ const ITEMS = [
 
 export const renderers = {
   'mda-psoriatic'(root) {
-    note(root, 'Minimal Disease Activity (MDA) in psoriatic arthritis (Coates 2010): check each criterion that is met. ≥ 5 of 7 = MDA; all 7 = Very Low Disease Activity (VLDA). Companion tiles: dapsa, caspar, pest.');
+    note(root, 'Minimal Disease Activity (MDA) in psoriatic arthritis (Coates 2010): check each criterion that is met. ≥ 5 of 7 = MDA; all 7 = Very Low Disease Activity (VLDA).');
     for (const [id, label] of ITEMS) root.appendChild(checkField(label, id));
     const ids = ITEMS.map(([id]) => id);
     const o = out(); root.appendChild(o);

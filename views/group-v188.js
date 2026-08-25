@@ -147,7 +147,7 @@ export const renderers = {
 
   // ----- 2.5 hasford-cml -----------------------------------------------------
   'hasford-cml'(root) {
-    note(root, 'Hasford (Euro) CML score (Hasford 1998): weighted formula on age, spleen (cm below costal margin), platelets, and peripheral blast/eosinophil/basophil %. Low ≤ 780, intermediate 781–1480, high > 1480. An older comparator to sokal-cml.');
+    note(root, 'Hasford (Euro) CML score (Hasford 1998): weighted formula on age, spleen (cm below costal margin), platelets, and peripheral blast/eosinophil/basophil %. Low ≤ 780, intermediate 781–1480, high > 1480. An older comparator to the Sokal and ELTS risk scores.');
     root.appendChild(num('Age (years)', 'hasford-age'));
     root.appendChild(num('Spleen (cm below costal margin)', 'hasford-spleen'));
     root.appendChild(num('Platelet count (×10⁹/L)', 'hasford-platelets'));

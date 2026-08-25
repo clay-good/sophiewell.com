@@ -42,7 +42,7 @@ const SEV = [['0', '0 — absent'], ['1', '1 — mild'], ['2', '2 — severe']];
 
 export const renderers = {
   'lund-kennedy'(root) {
-    note(root, 'Lund-Kennedy endoscopic score (Lund-Kennedy 1997; modified Psaltis 2014): score each side 0–2 on polyps, edema, and discharge (modified total 0–12). Scarring and crusting are optional post-op findings that extend the original total to 0–20. Higher is worse. Companion tiles: snot22, lund-mackay.');
+    note(root, 'Lund-Kennedy endoscopic score (Lund-Kennedy 1997; modified Psaltis 2014): score each side 0–2 on polyps, edema, and discharge (modified total 0–12). Scarring and crusting are optional post-op findings that extend the original total to 0–20. Higher is worse.');
     root.appendChild(selectField('Polyps — left', 'lk-pol-l', CHOICE(POLYP)));
     root.appendChild(selectField('Polyps — right', 'lk-pol-r', CHOICE(POLYP)));
     root.appendChild(selectField('Edema — left', 'lk-ede-l', CHOICE(EDEMA)));

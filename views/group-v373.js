@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'ni-rads'(root) {
-    note(root, 'NI-RADS (ACR Neck Imaging Reporting and Data System, Aiken 2018) - a category for post-treatment head-and-neck-cancer surveillance imaging, assigned separately to the primary site and the neck (nodes). Pick the category. 1: no recurrence (routine surveillance); 2A: low suspicion, mucosal; 2B: low suspicion, deep; 3: high suspicion (biopsy if indicated); 4: definite recurrence. Completes the RADS family: bi-rads, li-rads, c-rads, cad-rads.');
+    note(root, 'NI-RADS (ACR Neck Imaging Reporting and Data System, Aiken 2018) - a category for post-treatment head-and-neck-cancer surveillance imaging, assigned separately to the primary site and the neck (nodes). Pick the category. 1: no recurrence (routine surveillance); 2A: low suspicion, mucosal; 2B: low suspicion, deep; 3: high suspicion (biopsy if indicated); 4: definite recurrence. Completes the ACR RADS family of standardized reporting categories.');
     root.appendChild(select('NI-RADS category', 'nirads-cat', [
       ['1', '1 - no evidence of recurrence'],
       ['2A', '2A - low suspicion, mucosal / superficial'],

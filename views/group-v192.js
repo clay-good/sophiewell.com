@@ -96,7 +96,7 @@ export const renderers = {
 
   // ----- 2.2 grobman-vbac ----------------------------------------------------
   'grobman-vbac'(root) {
-    note(root, 'Grobman race-free 2021 VBAC calculator (AJOG 2021): predicts the probability of a successful trial of labor after cesarean. The 2021 model uses weight + height (not BMI) and removed the race/ethnicity terms. The race-free successor to flamm-vbac.');
+    note(root, 'Grobman race-free 2021 VBAC calculator (AJOG 2021): predicts the probability of a successful trial of labor after cesarean. The 2021 model uses weight + height (not BMI) and removed the race/ethnicity terms. The race-free successor to the Flamm VBAC Score.');
     root.appendChild(num('Maternal age (years)', 'grobman-age'));
     root.appendChild(num('Pre-pregnancy weight (kg)', 'grobman-weight'));
     root.appendChild(num('Height (cm)', 'grobman-height'));

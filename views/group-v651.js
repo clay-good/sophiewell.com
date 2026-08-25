@@ -46,7 +46,7 @@ const NEC_OPTS = [['0', '0 — no necrosis'], ['1', '1 — < 50% necrosis'], ['2
 
 export const renderers = {
   'fnclcc-grade'(root) {
-    note(root, 'FNCLCC grade (Trojani 1984, Coindre 2006) for adult soft-tissue sarcoma: tumor differentiation (1-3) + mitotic count score (0-9=1, 10-19=2, ≥20=3) + tumor necrosis (0-2), total 2-8. Grade 1 (2-3), grade 2 (4-5), grade 3 (6-8). Companion tiles: enneking, gleason-grade-group.');
+    note(root, 'FNCLCC grade (Trojani 1984, Coindre 2006) for adult soft-tissue sarcoma: tumor differentiation (1-3) + mitotic count score (0-9=1, 10-19=2, ≥20=3) + tumor necrosis (0-2), total 2-8. Grade 1 (2-3), grade 2 (4-5), grade 3 (6-8).');
     root.appendChild(selectField('Tumor differentiation', 'fnclcc-diff', CHOICE(DIFF_OPTS)));
     root.appendChild(numberField('Mitotic count (mitoses per 10 high-power fields)', 'fnclcc-mitoses'));
     root.appendChild(selectField('Tumor necrosis', 'fnclcc-necrosis', CHOICE(NEC_OPTS)));

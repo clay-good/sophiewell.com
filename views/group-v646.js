@@ -42,7 +42,7 @@ const FIELDS = [
 
 export const renderers = {
   'mccormack-lsc'(root) {
-    note(root, 'McCormack Load-Sharing Classification (McCormack 1994): grades how much load a fractured vertebral body can share, to predict whether short-segment posterior fixation will hold. Three CT/radiographic components each 1-3, total 3-9. ≤ 6 → short-segment posterior fixation likely suffices; ≥ 7 → predicts failure, anterior support or a longer construct advised. Companion tile: tlics-score.');
+    note(root, 'McCormack Load-Sharing Classification (McCormack 1994): grades how much load a fractured vertebral body can share, to predict whether short-segment posterior fixation will hold. Three CT/radiographic components each 1-3, total 3-9. ≤ 6 → short-segment posterior fixation likely suffices; ≥ 7 → predicts failure, anterior support or a longer construct advised.');
     for (const f of FIELDS) root.appendChild(selectField(f.label, f.dom, CHOICE(f.opts)));
     const ids = FIELDS.map((f) => f.dom);
     const o = out(); root.appendChild(o);

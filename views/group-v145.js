@@ -160,7 +160,7 @@ export const renderers = {
 
   // ----- 2.4 pittsburgh-knee-rule ---------------------------------------
   'pittsburgh-knee-rule'(root) {
-    note(root, 'Pittsburgh knee rules (Seaberg 1994): the entry gate is a blunt-trauma or fall mechanism — without it the rule does not apply. Given the gate, a knee radiograph is indicated if age < 12 or > 50, or the patient cannot take 4 weight-bearing steps. Near-neighbor: ottawa-knee (different inputs).');
+    note(root, 'Pittsburgh knee rules (Seaberg 1994): the entry gate is a blunt-trauma or fall mechanism — without it the rule does not apply. Given the gate, a knee radiograph is indicated if age < 12 or > 50, or the patient cannot take 4 weight-bearing steps. The Ottawa Knee Rule asks for different inputs.');
     const ids = checkList(root, [
       ['pitt-mech', 'Mechanism is blunt trauma OR a fall (entry criterion)'],
       ['pitt-young', 'Age younger than 12 years'],

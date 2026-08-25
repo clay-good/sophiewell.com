@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'egpa-acr-eular-2022'(root) {
-    note(root, '2022 ACR/EULAR eosinophilic-granulomatosis-with-polyangiitis classification (Grayson 2022): apply only after a small/medium-vessel-vasculitis diagnosis with mimics excluded. Seven weighted items sum to a range of -4 to +14; ≥ 6 classifies as EGPA. Note two contrasts with GPA/MPA: eosinophilia is the heaviest POSITIVE item here (+5), and the threshold is ≥ 6 (one higher). Two items are negative (cANCA/PR3, hematuria). Companion tiles: gpa-acr-eular-2022, mpa-acr-eular-2022.');
+    note(root, '2022 ACR/EULAR eosinophilic-granulomatosis-with-polyangiitis classification (Grayson 2022): apply only after a small/medium-vessel-vasculitis diagnosis with mimics excluded. Seven weighted items sum to a range of -4 to +14; ≥ 6 classifies as EGPA. Note two contrasts with GPA/MPA: eosinophilia is the heaviest POSITIVE item here (+5), and the threshold is ≥ 6 (one higher). Two items are negative (cANCA/PR3, hematuria).');
     root.appendChild(checkField('Maximum blood eosinophil count ≥ 1 x10^9/L (+5)', 'egpa-eos'));
     root.appendChild(checkField('Obstructive airway disease (+3)', 'egpa-airway'));
     root.appendChild(checkField('Nasal polyps (+3)', 'egpa-polyps'));

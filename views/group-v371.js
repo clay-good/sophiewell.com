@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'c-rads'(root) {
-    note(root, 'C-RADS (CT Colonography Reporting and Data System, 2023 update) - the colonic reporting category on a CT colonography. Pick the category. C0 inadequate; C1 normal / benign; C2a indeterminate 6-9 mm polyps; C2b likely-benign stricture; C3 polyp(s) >= 10 mm or >= 3 polyps 6-9 mm (colonoscopy); C4 colonic mass (urgent). The extracolonic (E0-E4) axis is out of scope. Completes the RADS family: bi-rads, li-rads, pi-rads, o-rads, acr-tirads, lung-rads.');
+    note(root, 'C-RADS (CT Colonography Reporting and Data System, 2023 update) - the colonic reporting category on a CT colonography. Pick the category. C0 inadequate; C1 normal / benign; C2a indeterminate 6-9 mm polyps; C2b likely-benign stricture; C3 polyp(s) >= 10 mm or >= 3 polyps 6-9 mm (colonoscopy); C4 colonic mass (urgent). The extracolonic (E0-E4) axis is out of scope. Completes the ACR RADS family of standardized reporting categories.');
     root.appendChild(select('C-RADS colonic category', 'crads-cat', [
       ['C0', 'C0 - inadequate / incomplete study'],
       ['C1', 'C1 - normal colon or benign finding'],

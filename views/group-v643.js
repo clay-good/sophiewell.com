@@ -58,7 +58,7 @@ const SECTIONS = [
 
 export const renderers = {
   'oswestry-odi'(root) {
-    note(root, 'Oswestry Disability Index (Fairbank 2000): rate each of ten sections 0 (no disability) to 5 (maximum). ODI% = round(sum / (5 × sections answered) × 100), so a section left unanswered drops the denominator by 5. Grades: 0-20% minimal, 21-40% moderate, 41-60% severe, 61-80% crippled, 81-100% bed-bound. Companion tiles: roland-morris-disability, neck-disability-index.');
+    note(root, 'Oswestry Disability Index (Fairbank 2000): rate each of ten sections 0 (no disability) to 5 (maximum). ODI% = round(sum / (5 × sections answered) × 100), so a section left unanswered drops the denominator by 5. Grades: 0-20% minimal, 21-40% moderate, 41-60% severe, 61-80% crippled, 81-100% bed-bound.');
     for (const s of SECTIONS) root.appendChild(selectField(s.label, s.dom, RATING_OPTS));
     const ids = SECTIONS.map((s) => s.dom);
     const o = out(); root.appendChild(o);

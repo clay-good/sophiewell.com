@@ -36,7 +36,7 @@ const IDS = ['ccd-murphy', 'ccd-ruq', 'ccd-fever', 'ccd-crp', 'ccd-wbc', 'ccd-im
 
 export const renderers = {
   'cholecystitis-diagnosis'(root) {
-    note(root, 'Acute cholecystitis diagnosis (Tokyo Guidelines TG18/TG13). Check the items you have determined. Suspected: one item in A plus one in B. Definite: one item in A plus one in B plus a characteristic imaging finding (C). Companion: cholecystitis-severity.');
+    note(root, 'Acute cholecystitis diagnosis (Tokyo Guidelines TG18/TG13). Check the items you have determined. Suspected: one item in A plus one in B. Definite: one item in A plus one in B plus a characteristic imaging finding (C).');
 
     note(root, 'A — Local signs of inflammation:');
     root.appendChild(check('Murphy’s sign', 'ccd-murphy'));
