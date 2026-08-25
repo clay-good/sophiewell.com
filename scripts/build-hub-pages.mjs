@@ -134,7 +134,7 @@ export const HUBS = {
     h1: 'Healthcare tools for educators',
     title: 'Healthcare Tools for Educators · Sophie Well',
     description: 'Free deterministic reference tools for clinical educators, coding instructors, and EMS trainers. Every tool ships a primary citation and a worked example.',
-    lede: 'Citation-first reference tools you can use in lectures, simulation, and skills labs. Every clinical formula links its primary source; every lookup ships the authoritative dataset name and fetched-on date; every scoring tile carries a worked example.',
+    lede: 'Citation-first reference tools you can use in lectures, simulation, and skills labs. Every clinical formula links its primary source; every lookup ships the authoritative dataset name and fetched-on date; every scoring tool carries a worked example.',
   },
   // spec-v52 §10.2: case-managers / utilization-management hub. Ships
   // with one tile (pa-lint) at v52-1b close; expected to grow as

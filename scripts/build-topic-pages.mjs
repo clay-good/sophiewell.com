@@ -320,7 +320,7 @@ ${JSON.stringify(breadcrumb, null, 2)}
           <span aria-current="page">Topics</span>
         </nav>
         <h1 class="tp-h1">Browse Sophie Well by topic</h1>
-        <p class="tp-lede">${items.length} clinical and workflow topics, cutting across the home view's organizational groups. Each topic page lists every tile that fits, with internal links to the canonical per-tool pages.</p>
+        <p class="tp-lede">${items.length} clinical and workflow topics, cutting across the home view's organizational groups. Each topic page lists every tool that fits, with internal links to the canonical per-tool pages.</p>
 
         <section class="hub-group" aria-labelledby="topic-index-h">
           <h2 id="topic-index-h" class="visually-hidden">Topic index</h2>

@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `ad9939ef399d6614`
-Generated: 2026-08-25T20:29:07.499Z
+Build ID: `96a30d808d596993`
+Generated: 2026-08-25T20:39:16.763Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -423,7 +423,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/meld3-v678.js` | 5664 | `7bda4af7c9412eae41162d0cdd6b977cbc9a6f9b8a7bc40fe350f861e989444c` |
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2154923 | `80ef9126e6ecf116faf2c576af8da9bc536f8ab91ab1f55ed66ada717bcee52b` |
+| `lib/meta.js` | 2154733 | `0af235e0f4ece5ae6c9121baf68f1f05ce1d886b469e8fd05bb78a02d92237a8` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -981,7 +981,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/hemederm-v245.js` | 2558 | `f167b9cbc55e8616fff7300edddf947bfa4c99c10510115011dcf2ad57bb903f` |
 | `mcp/adapters/hemo-v194.js` | 3515 | `f914dfeb62c69ecb9e57586c1635f270320c3076d4461adf6ba89837cf12f63d` |
 | `mcp/adapters/hemodynamics-v87.js` | 3219 | `d849f168739ab694666e51bbcbcc61327be638bd499c9f318695960422accab6` |
-| `mcp/adapters/hemonc-v94.js` | 5626 | `6b808735afc09b713c030cd68fc42110d3d25cdc9d74ccf69a224462b6c15db7` |
+| `mcp/adapters/hemonc-v94.js` | 5606 | `cdedee258495d5f6d7c1a8af13d3a5e052406ac40ebb97c1e79442c616af78f3` |
 | `mcp/adapters/hep-fibrosis-portal-v212.js` | 1834 | `bb69121e7d3608f4d03e0cc83bb864dd86cbb01c8560ae62e8b0fec7013214cb` |
 | `mcp/adapters/hep-v124.js` | 3578 | `4d10d19f2bb9a32f05191a680906924fa58422b3ca73d7090295e2f8c0273835` |
 | `mcp/adapters/hep-v125.js` | 3919 | `783c00dbb357c1195cd6278ba33f380e7b5c436ede09019251f23d39733b4f37` |
@@ -1109,7 +1109,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/mrc-power-v428.js` | 1179 | `23e10f156905eeda319ac1c0b3f66fbea38503fd1ddd666732ea23c3da7becb3` |
 | `mcp/adapters/mswat-v557.js` | 6009 | `c6d46d69c71972f2ae12996bd22e72ac8ac9b1fef153b532fdb426565b87f13a` |
 | `mcp/adapters/myeloid-prognosis-v199.js` | 5920 | `44a20d7f84c8d2efb18121f5d2ebead59142804eb3fa6b2e222583accac04b6c` |
-| `mcp/adapters/myxedema-coma-v599.js` | 6518 | `e486cfddb02680c422e1701db47ca5479e0e1fd7c04f720793429eea7cf7072f` |
+| `mcp/adapters/myxedema-coma-v599.js` | 6515 | `9b6f5bf49fe750d8d9a23d2c4b7d7bd378460a84ef6cf1b799eb1406b7dd10b4` |
 | `mcp/adapters/nac-attr-stage-v583.js` | 6145 | `349339750833a08efc950485c22f701e9a74ebf0af6048271a0f3ff7540c39ca` |
 | `mcp/adapters/nancy-index-v578.js` | 6149 | `af86d4cbe08e58351a375ba8248312ba4a33b4390eff49762ced7dc49ff8d7ac` |
 | `mcp/adapters/narakas-obpp-v498.js` | 1344 | `e57c48b27dee7ed551055a65e4008f30f18579fa412c397ac58f08882029a815` |

@@ -38,7 +38,7 @@ export default [
   },
   {
     id: 'flipi',
-    summary: 'FLIPI (Solal-Celigny 2004) for follicular lymphoma: age >= 60, advanced stage III-IV, elevated LDH, hemoglobin < 12, and > 4 nodal areas; 0-1 low, 2 intermediate, >= 3 high risk (the renderer also reports the IPI count).',
+    summary: 'FLIPI (Solal-Celigny 2004) for follicular lymphoma: age >= 60, advanced stage III-IV, elevated LDH, hemoglobin < 12, and > 4 nodal areas; 0-1 low, 2 intermediate, >= 3 high risk (it also reports the IPI count).',
     compute: F.flipi,
     fields: [
       { dom: 'fl-age', arg: 'ageOver60', kind: 'bool', label: 'Age >= 60 years' },
@@ -66,7 +66,7 @@ export default [
   },
   {
     id: 'sokal-cml',
-    summary: 'Sokal index (1984) for chronic myeloid leukemia: an exponential hazard over age, spleen size below costal margin, platelets, and peripheral blasts; the relative risk maps to low / intermediate / high (the renderer also reports the ELTS score).',
+    summary: 'Sokal index (1984) for chronic myeloid leukemia: an exponential hazard over age, spleen size below costal margin, platelets, and peripheral blasts; the relative risk maps to low / intermediate / high (it also reports the ELTS score).',
     compute: F.sokalCml,
     fields: [
       { dom: 'sk-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
