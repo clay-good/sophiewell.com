@@ -648,7 +648,7 @@ import { queryFill, loadFields } from './lib/query-fill.js';
 // spec-v760: the fallback field source for a tile with no MCP adapter, and so
 // no shard in data/fields/. Reads what the tile actually rendered.
 import { readDomFields } from './lib/dom-fields.js';
-import { collapseLongNotes, hoistIntroNote, mergeRepeatedAnswer } from './lib/long-note.js';
+import { collapseLongNotes, foldRestatedNote, hoistIntroNote, mergeRepeatedAnswer } from './lib/long-note.js';
 import { pageTitle } from './lib/page-title.js';
 import { guardNonFinite } from './lib/output-guard.js';
 // The patient-artifact dropzone UI (spec-v7 sec 3.1) was removed when
@@ -4473,6 +4473,14 @@ function renderToolView(util) {
       // here, once, rather than in 600-odd view files: the rule is about how
       // the page reads, not about what any one tile means.
       collapseLongNotes(body);
+      // ... and fold the ones that say what a paragraph above them already
+      // said. Two hands wrote each tile's explanation -- the renderer's intro
+      // above the fields, and the `NOTE` constant hoisted out of the results
+      // region below them -- so 583 tiles printed the same paragraph twice,
+      // paraphrased rather than repeated, which is why the verbatim pass never
+      // caught it. The later one folds into its own disclosure; nothing is
+      // deleted.
+      foldRestatedNote(body);
       // The answer states itself once. Runs after the hoist, so the static
       // explanation is already out of the live region and cannot be mistaken
       // for the computed line the heading duplicates.
@@ -4541,6 +4549,11 @@ function renderToolView(util) {
         // invalid until the example fills it writes its notice with the fill,
         // so the synchronous pass saw a body that did not have it yet.
         setTimeout(() => dropDuplicateNotice(content, body), 0);
+        // Same task, same reason: on the 419 tiles that compute behind an
+        // await, the hoisted explanation does not exist yet when the pass above
+        // runs. Idempotent -- a paragraph already folded is no longer a direct
+        // child of the body, so this second pass sees nothing to do.
+        setTimeout(() => foldRestatedNote(body), 0);
 
         // spec-v754: consumed once -- a later visit to the same tile is not
         // "from your question". Read before applyExample, because whether the
