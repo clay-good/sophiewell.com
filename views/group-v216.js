@@ -53,7 +53,7 @@ function render(o, r, valueLabel, value) {
 
 export const renderers = {
   'wpss-mds'(root) {
-    note(root, 'WPSS (Malcovati 2007): WHO category + karyotype + transfusion requirement (0-6). Very low 0, low 1, intermediate 2, high 3-4, very high 5-6. Near-neighbors: ipss-r, myeloma-iss.');
+    note(root, 'WPSS (Malcovati 2007): WHO category + karyotype + transfusion requirement (0-6). Very low 0, low 1, intermediate 2, high 3-4, very high 5-6.');
     root.appendChild(select('WHO category', 'wpss-cat', [['0', 'RA / RARS / isolated del(5q) (0)'], ['1', 'RCMD / RCMD-RS (1)'], ['2', 'RAEB-1 (2)'], ['3', 'RAEB-2 (3)']]));
     root.appendChild(select('Karyotype', 'wpss-karyo', [['0', 'Good (0)'], ['1', 'Intermediate (1)'], ['2', 'Poor (2)']]));
     root.appendChild(check('Regular transfusion requirement (+1)', 'wpss-tx'));
@@ -65,7 +65,7 @@ export const renderers = {
     postureNote(root);
   },
   'mdacc-cll-index'(root) {
-    note(root, 'MDACC CLL index (Wierda 2007): age, beta-2-microglobulin band, ALC, male, Rai III-IV, >= 3 nodal groups (0-9). Low <= 3, intermediate 4-7, high >= 8. Near-neighbors: cll-ipi, binet.');
+    note(root, 'MDACC CLL index (Wierda 2007): age, beta-2-microglobulin band, ALC, male, Rai III-IV, >= 3 nodal groups (0-9). Low <= 3, intermediate 4-7, high >= 8.');
     root.appendChild(num('Age (years)', 'mdacc-age', { min: '0' }));
     root.appendChild(select('Beta-2-microglobulin', 'mdacc-b2m', [['0', '< upper limit of normal (0)'], ['1', '1-2x ULN (1)'], ['2', '> 2x ULN (2)']]));
     root.appendChild(num('Absolute lymphocyte count (×10⁹/L)', 'mdacc-alc', { min: '0' }));
@@ -80,7 +80,7 @@ export const renderers = {
     postureNote(root);
   },
   'pit-ptcl'(root) {
-    note(root, 'Prognostic Index for PTCL-U (Gallamini 2004): one point each for age > 60, LDH > normal, ECOG >= 2, marrow involvement (0-4). Groups 1-4. Near-neighbors: flipi, nccn-ipi.');
+    note(root, 'Prognostic Index for PTCL-U (Gallamini 2004): one point each for age > 60, LDH > normal, ECOG >= 2, marrow involvement (0-4). Groups 1-4.');
     root.appendChild(check('Age > 60 years (+1)', 'pit-age'));
     root.appendChild(check('LDH above normal (+1)', 'pit-ldh'));
     root.appendChild(check('ECOG performance status >= 2 (+1)', 'pit-ecog'));
@@ -93,7 +93,7 @@ export const renderers = {
     postureNote(root);
   },
   'prima-pi'(root) {
-    note(root, 'PRIMA-PI (Bachy 2018): beta-2-microglobulin and marrow involvement. Low = B2M <= 3 without marrow; intermediate = B2M <= 3 with marrow; high = B2M > 3. Near-neighbors: flipi, nccn-ipi.');
+    note(root, 'PRIMA-PI (Bachy 2018): beta-2-microglobulin and marrow involvement. Low = B2M <= 3 without marrow; intermediate = B2M <= 3 with marrow; high = B2M > 3.');
     root.appendChild(num('Beta-2-microglobulin (mg/L)', 'prima-b2m', { min: '0' }));
     root.appendChild(check('Bone-marrow involvement', 'prima-marrow'));
     const o = out(); root.appendChild(o);
@@ -104,7 +104,7 @@ export const renderers = {
     postureNote(root);
   },
   'durie-salmon'(root) {
-    note(root, 'Durie-Salmon staging (Durie 1975): stage from hemoglobin, calcium, bone lesions, and M-protein burden; subclass A/B by creatinine. Near-neighbors: myeloma-iss, myeloma-r-iss.');
+    note(root, 'Durie-Salmon staging (Durie 1975): stage from hemoglobin, calcium, bone lesions, and M-protein burden; subclass A/B by creatinine.');
     root.appendChild(num('Hemoglobin (g/dL)', 'ds-hb', { min: '0' }));
     root.appendChild(num('Serum calcium (mg/dL)', 'ds-ca', { min: '0' }));
     root.appendChild(num('Number of lytic bone lesions', 'ds-lesions', { min: '0' }));
@@ -118,7 +118,7 @@ export const renderers = {
     postureNote(root);
   },
   'lymphocyte-doubling-time'(root) {
-    note(root, 'Lymphocyte doubling time (Molica 1987): LDT = interval × ln(2) / ln(ALC2 / ALC1). A doubling time <= 12 months predicts a worse CLL prognosis. Near-neighbors: cll-ipi, psa-doubling-time.');
+    note(root, 'Lymphocyte doubling time (Molica 1987): LDT = interval × ln(2) / ln(ALC2 / ALC1). A doubling time <= 12 months predicts a worse CLL prognosis.');
     root.appendChild(num('Earlier absolute lymphocyte count (×10⁹/L)', 'ldt-alc1', { min: '0' }));
     root.appendChild(num('Later absolute lymphocyte count (×10⁹/L)', 'ldt-alc2', { min: '0' }));
     root.appendChild(num('Interval between counts (months)', 'ldt-int', { min: '0' }));
@@ -130,7 +130,7 @@ export const renderers = {
     postureNote(root);
   },
   'talcott-febrile-neutropenia'(root) {
-    note(root, "Talcott's rules (Talcott 1988): Group I inpatient; II outpatient with comorbidity; III outpatient with uncontrolled cancer; IV outpatient, no comorbidity, controlled cancer = low risk. Near-neighbors: mascc, cisne.");
+    note(root, "Talcott's rules (Talcott 1988): Group I inpatient; II outpatient with comorbidity; III outpatient with uncontrolled cancer; IV outpatient, no comorbidity, controlled cancer = low risk.");
     root.appendChild(check('Inpatient at onset of fever', 'tal-inpt'));
     root.appendChild(check('Outpatient with serious concurrent comorbidity', 'tal-comorb'));
     root.appendChild(check('Outpatient with uncontrolled / progressive cancer', 'tal-cancer'));

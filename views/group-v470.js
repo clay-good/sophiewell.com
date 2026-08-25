@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'larsen-ra'(root) {
-    note(root, 'The Larsen (Larsen-Dale-Eek) radiographic grading of joint damage in rheumatoid arthritis, by erosion and joint-space change. Pick the grade. 0: normal; 1: slight (swelling, osteoporosis, slight narrowing); 2: definite early (erosion and narrowing); 3: medium destructive (marked erosions); 4: severe destructive (extensive erosions, gross deformity); 5: mutilating (articular surfaces lost). Reports the grade the clinician has determined, not a diagnosis or a treatment decision. Near-neighbor: steinbrocker-ra.');
+    note(root, 'The Larsen (Larsen-Dale-Eek) radiographic grading of joint damage in rheumatoid arthritis, by erosion and joint-space change. Pick the grade. 0: normal; 1: slight (swelling, osteoporosis, slight narrowing); 2: definite early (erosion and narrowing); 3: medium destructive (marked erosions); 4: severe destructive (extensive erosions, gross deformity); 5: mutilating (articular surfaces lost). Reports the grade the clinician has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('Larsen grade', 'larsen-grade', [
       ['0', '0 - normal'],
       ['1', '1 - slight (swelling, osteoporosis, slight narrowing)'],

@@ -54,7 +54,7 @@ function render(o, r, valueLabel, value) {
 
 export const renderers = {
   'iim-eular-acr-2017'(root) {
-    note(root, '2017 EULAR/ACR myositis criteria (Lundberg 2017), without-biopsy weights. Definite >= 7.5, probable >= 5.5, possible >= 5.3. Near-neighbors: bohan-peter, mrss-modified-rodnan-skin-score.');
+    note(root, '2017 EULAR/ACR myositis criteria (Lundberg 2017), without-biopsy weights. Definite >= 7.5, probable >= 5.5, possible >= 5.3.');
     root.appendChild(select('Age of onset', 'iim-age', [['0', '< 18 years (0)'], ['1.3', '18 to < 40 years (1.3)'], ['2.1', '>= 40 years (2.1)']]));
     const items = [['iim-pu', 'proximalUpper', 'Proximal upper-extremity weakness (0.7)'], ['iim-pl', 'proximalLower', 'Proximal lower-extremity weakness (0.8)'], ['iim-neck', 'neckFlexors', 'Neck flexors weaker than extensors (1.9)'], ['iim-leg', 'legProximal', 'Leg proximal weaker than distal (0.9)'], ['iim-helio', 'heliotrope', 'Heliotrope rash (3.1)'], ['iim-gp', 'gottronPapules', "Gottron's papules (2.1)"], ['iim-gs', 'gottronSign', "Gottron's sign (3.3)"], ['iim-dys', 'dysphagia', 'Dysphagia / esophageal dysmotility (0.7)'], ['iim-jo1', 'antiJo1', 'Anti-Jo-1 antibody (3.9)'], ['iim-enz', 'elevatedEnzymes', 'Elevated CK / LDH / AST / ALT (1.3)']];
     for (const [id, , label] of items) root.appendChild(check(label, id));
@@ -66,7 +66,7 @@ export const renderers = {
     postureNote(root);
   },
   'pmr-eular-acr-2012'(root) {
-    note(root, '2012 EULAR/ACR PMR criteria (Dasgupta 2012), after entry criteria (age >= 50, bilateral shoulder aching, abnormal CRP/ESR). >= 4 = PMR. Near-neighbors: gca-acr-eular-2022, esr.');
+    note(root, '2012 EULAR/ACR PMR criteria (Dasgupta 2012), after entry criteria (age >= 50, bilateral shoulder aching, abnormal CRP/ESR). >= 4 = PMR.');
     const items = [['pmr-stiff', 'stiffness', 'Morning stiffness > 45 minutes (+2)'], ['pmr-hip', 'hip', 'Hip pain or limited range of motion (+1)'], ['pmr-rf', 'absentRfAcpa', 'Absence of RF and/or ACPA (+2)'], ['pmr-joint', 'absentOtherJoints', 'Absence of other joint involvement (+1)']];
     for (const [id, , label] of items) root.appendChild(check(label, id));
     const o = out(); root.appendChild(o);
@@ -77,7 +77,7 @@ export const renderers = {
     postureNote(root);
   },
   'bohan-peter'(root) {
-    note(root, 'Bohan & Peter criteria (1975): weakness, enzymes, EMG, biopsy, DM rash. Polymyositis (no rash) or dermatomyositis (rash) classified by count. Near-neighbors: iim-eular-acr-2017, mrss-modified-rodnan-skin-score.');
+    note(root, 'Bohan & Peter criteria (1975): weakness, enzymes, EMG, biopsy, DM rash. Polymyositis (no rash) or dermatomyositis (rash) classified by count.');
     const items = [['bp-weak', 'weakness', 'Symmetric proximal muscle weakness'], ['bp-enz', 'enzymes', 'Elevated serum muscle enzymes'], ['bp-emg', 'emg', 'Myopathic EMG changes'], ['bp-biopsy', 'biopsy', 'Abnormal muscle biopsy'], ['bp-rash', 'rash', 'Dermatomyositis rash (heliotrope / Gottron)']];
     for (const [id, , label] of items) root.appendChild(check(label, id));
     const o = out(); root.appendChild(o);
@@ -89,7 +89,7 @@ export const renderers = {
     postureNote(root);
   },
   'acr-eular-2013-systemic-sclerosis'(root) {
-    note(root, '2013 ACR/EULAR systemic sclerosis criteria (van den Hoogen 2013): skin proximal to MCP is sufficient (9); else weighted sum. >= 9 = SSc. Near-neighbors: mrss-modified-rodnan-skin-score, esspri.');
+    note(root, '2013 ACR/EULAR systemic sclerosis criteria (van den Hoogen 2013): skin proximal to MCP is sufficient (9); else weighted sum. >= 9 = SSc.');
     root.appendChild(check('Skin thickening of the fingers extending proximal to the MCP joints (sufficient, 9)', 'ssc-mcp'));
     root.appendChild(select('Skin thickening of the fingers (if not proximal to MCP)', 'ssc-skin', [['0', 'None (0)'], ['2', 'Puffy fingers (2)'], ['4', 'Sclerodactyly / distal to MCP (4)']]));
     root.appendChild(select('Fingertip lesions', 'ssc-tip', [['0', 'None (0)'], ['2', 'Digital tip ulcers (2)'], ['3', 'Fingertip pitting scars (3)']]));
@@ -106,7 +106,7 @@ export const renderers = {
     postureNote(root);
   },
   'mrss-modified-rodnan-skin-score'(root) {
-    note(root, 'Modified Rodnan skin score (Clements 1995): skin thickness 0-3 at 17 sites; total 0-51. Higher = more extensive skin involvement in systemic sclerosis. Near-neighbors: acr-eular-2013-systemic-sclerosis, esspri.');
+    note(root, 'Modified Rodnan skin score (Clements 1995): skin thickness 0-3 at 17 sites; total 0-51. Higher = more extensive skin involvement in systemic sclerosis.');
     const sites = [['fingersR', 'Fingers (right)'], ['fingersL', 'Fingers (left)'], ['handsR', 'Hand (right)'], ['handsL', 'Hand (left)'], ['forearmsR', 'Forearm (right)'], ['forearmsL', 'Forearm (left)'], ['upperArmsR', 'Upper arm (right)'], ['upperArmsL', 'Upper arm (left)'], ['face', 'Face'], ['chest', 'Anterior chest'], ['abdomen', 'Abdomen'], ['thighsR', 'Thigh (right)'], ['thighsL', 'Thigh (left)'], ['legsR', 'Lower leg (right)'], ['legsL', 'Lower leg (left)'], ['feetR', 'Foot (right)'], ['feetL', 'Foot (left)']];
     for (const [key, label] of sites) root.appendChild(grade04(label + ' (0-3)', 'mrss-' + key));
     const o = out(); root.appendChild(o);
@@ -117,7 +117,7 @@ export const renderers = {
     postureNote(root);
   },
   'acr-eular-2016-sjogren'(root) {
-    note(root, "2016 ACR/EULAR Sjogren criteria (Shiboski 2017): focus score >= 1 (3), anti-SSA/Ro (3), ocular staining >= 5 (1), Schirmer <= 5 (1), saliva flow <= 0.1 (1). >= 4 = Sjogren. Near-neighbors: esspri, essdai.");
+    note(root, "2016 ACR/EULAR Sjogren criteria (Shiboski 2017): focus score >= 1 (3), anti-SSA/Ro (3), ocular staining >= 5 (1), Schirmer <= 5 (1), saliva flow <= 0.1 (1). >= 4 = Sjogren.");
     const items = [['sj-focus', 'focusScore', 'Labial gland focus score >= 1 (+3)'], ['sj-ssa', 'antiSsa', 'Anti-SSA/Ro positivity (+3)'], ['sj-ocular', 'ocularStaining', 'Ocular staining score >= 5 (+1)'], ['sj-schirmer', 'schirmer', 'Schirmer test <= 5 mm/5 min (+1)'], ['sj-saliva', 'salivaFlow', 'Unstimulated saliva flow <= 0.1 mL/min (+1)']];
     for (const [id, , label] of items) root.appendChild(check(label, id));
     const o = out(); root.appendChild(o);
@@ -128,7 +128,7 @@ export const renderers = {
     postureNote(root);
   },
   'esspri'(root) {
-    note(root, 'ESSPRI (Seror 2011): mean of three 0-10 patient-reported scales — dryness, fatigue, pain. Near-neighbors: acr-eular-2016-sjogren, essdai.');
+    note(root, 'ESSPRI (Seror 2011): mean of three 0-10 patient-reported scales — dryness, fatigue, pain.');
     root.appendChild(num('Dryness (0-10)', 'esp-dry', { min: '0', max: '10' }));
     root.appendChild(num('Fatigue (0-10)', 'esp-fat', { min: '0', max: '10' }));
     root.appendChild(num('Pain (limb / articular / muscular) (0-10)', 'esp-pain', { min: '0', max: '10' }));

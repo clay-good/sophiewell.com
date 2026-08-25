@@ -47,7 +47,7 @@ const S04 = [['0', '0 (none)'], ['1', '1'], ['2', '2'], ['3', '3'], ['4', '4 (se
 
 export const renderers = {
   'nose-scale'(root) {
-    note(root, 'NOSE scale (Stewart 2004): 5 items each 0-4, sum x 5 = 0-100. 30-50 moderate, 55-75 severe, 80-100 extreme obstruction. Near-neighbors: rfs-reflux-finding.');
+    note(root, 'NOSE scale (Stewart 2004): 5 items each 0-4, sum x 5 = 0-100. 30-50 moderate, 55-75 severe, 80-100 extreme obstruction.');
     const items = [['nose-cong', 'congestion', 'Nasal congestion / stuffiness'], ['nose-block', 'blockage', 'Nasal blockage / obstruction'], ['nose-breath', 'breathing', 'Trouble breathing through nose'], ['nose-sleep', 'sleep', 'Trouble sleeping'], ['nose-exert', 'exertion', 'Cannot get enough air on exertion']];
     for (const [id, , label] of items) root.appendChild(select(`${label} (0-4)`, id, S04));
     const o = out(); root.appendChild(o);
@@ -58,7 +58,7 @@ export const renderers = {
     postureNote(root);
   },
   'rfs-reflux-finding'(root) {
-    note(root, 'Reflux Finding Score (Belafsky 2001): 8 laryngoscopic findings, 0-26. > 7 indicates LPR (~95% certainty). Near-neighbors: nose-scale.');
+    note(root, 'Reflux Finding Score (Belafsky 2001): 8 laryngoscopic findings, 0-26. > 7 indicates LPR (~95% certainty).');
     root.appendChild(select('Subglottic edema', 'rfs-sub', [['0', 'Absent (0)'], ['2', 'Present (2)']]));
     root.appendChild(select('Ventricular obliteration', 'rfs-vent', [['0', 'None (0)'], ['2', 'Partial (2)'], ['4', 'Complete (4)']]));
     root.appendChild(select('Erythema / hyperemia', 'rfs-eryth', [['0', 'None (0)'], ['2', 'Arytenoids (2)'], ['4', 'Diffuse (4)']]));
@@ -74,7 +74,7 @@ export const renderers = {
     postureNote(root);
   },
   'no-apnea-score'(root) {
-    note(root, 'No-Apnea OSA screen (Duarte 2018): neck circumference + age, 0-9. > 3 high risk of OSA. Near-neighbors: stop-bang.');
+    note(root, 'No-Apnea OSA screen (Duarte 2018): neck circumference + age, 0-9. > 3 high risk of OSA.');
     root.appendChild(numInput('Neck circumference (cm)', 'na-neck', { min: '0' }));
     root.appendChild(numInput('Age (years)', 'na-age', { min: '0' }));
     const o = out(); root.appendChild(o);
@@ -84,7 +84,7 @@ export const renderers = {
     postureNote(root);
   },
   'sleep-efficiency'(root) {
-    note(root, 'Sleep efficiency = total sleep time / time in bed x 100. >= 85% normal, 75-84% moderate, < 75% poor. Near-neighbors: no-apnea-score.');
+    note(root, 'Sleep efficiency = total sleep time / time in bed x 100. >= 85% normal, 75-84% moderate, < 75% poor.');
     root.appendChild(numInput('Total sleep time (minutes)', 'se-tst', { min: '0' }));
     root.appendChild(numInput('Time in bed (minutes)', 'se-tib', { min: '0' }));
     const o = out(); root.appendChild(o);

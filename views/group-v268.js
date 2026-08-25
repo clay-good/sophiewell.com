@@ -37,7 +37,7 @@ function render(o, r, valueLabel) {
 
 export const renderers = {
   'ali-index'(root) {
-    note(root, 'Advanced Lung Cancer Inflammation Index = BMI x albumin / NLR (Jafri 2013). A LOWER value is less favorable. Near-neighbors: nlr, halp-score, pni-onodera.');
+    note(root, 'Advanced Lung Cancer Inflammation Index = BMI x albumin / NLR (Jafri 2013). A LOWER value is less favorable.');
     root.appendChild(num('Body-mass index (kg/m²)', 'ali-bmi', { min: '0' }));
     root.appendChild(num('Serum albumin (g/dL)', 'ali-alb', { min: '0' }));
     root.appendChild(num('Absolute neutrophil count (10⁹/L)', 'ali-anc', { min: '0' }));

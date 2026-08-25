@@ -102,7 +102,7 @@ const SLE2019_ITEMS = [
 export const renderers = {
   // ----- 2.1 rapid3 ----------------------------------------------------------
   rapid3(root) {
-    note(root, 'Routine Assessment of Patient Index Data 3 (Pincus 2008): three patient-reported 0–10 components — physical function (the 10-item MDHAQ FN, each 0–3, summed 0–30 then ÷3), pain VAS, and patient-global VAS — summed to 0–30. Categories: near-remission ≤ 3, low 3.1–6, moderate 6.1–12, high > 12. Near-neighbors: dapsa, das28, cdai-ra.');
+    note(root, 'Routine Assessment of Patient Index Data 3 (Pincus 2008): three patient-reported 0–10 components — physical function (the 10-item MDHAQ FN, each 0–3, summed 0–30 then ÷3), pain VAS, and patient-global VAS — summed to 0–30. Categories: near-remission ≤ 3, low 3.1–6, moderate 6.1–12, high > 12.');
     root.appendChild(numField('MDHAQ function sum (10 items × 0–3, 0–30)', 'rapid3-fn', 30));
     root.appendChild(numField('Pain VAS (0–10)', 'rapid3-pain', 10));
     root.appendChild(numField('Patient global VAS (0–10)', 'rapid3-global', 10));
@@ -122,7 +122,7 @@ export const renderers = {
 
   // ----- 2.2 dapsa -----------------------------------------------------------
   dapsa(root) {
-    note(root, 'Disease Activity in Psoriatic Arthritis (Schoels 2016): TJC68 + SJC66 + patient-global VAS (0–10) + pain VAS (0–10) + CRP in mg/dL. CRP is mg/dL, NOT mg/L. Cutoffs: remission ≤ 4, low 5–14, moderate 15–28, high > 28. Near-neighbors: rapid3, caspar, das28.');
+    note(root, 'Disease Activity in Psoriatic Arthritis (Schoels 2016): TJC68 + SJC66 + patient-global VAS (0–10) + pain VAS (0–10) + CRP in mg/dL. CRP is mg/dL, NOT mg/L. Cutoffs: remission ≤ 4, low 5–14, moderate 15–28, high > 28.');
     root.appendChild(numField('68-joint tender count', 'dapsa-tjc', 68));
     root.appendChild(numField('66-joint swollen count', 'dapsa-sjc', 66));
     root.appendChild(numField('Patient global VAS (0–10)', 'dapsa-global', 10));
@@ -144,7 +144,7 @@ export const renderers = {
 
   // ----- 2.3 slicc-sle -------------------------------------------------------
   'slicc-sle'(root) {
-    note(root, 'SLICC 2012 SLE classification criteria (Petri 2012): 11 clinical + 6 immunologic criteria. Classifies if ≥ 4 criteria with ≥ 1 clinical AND ≥ 1 immunologic; OR biopsy-proven lupus nephritis with ANA or anti-dsDNA (the shortcut pathway). A study classification, not a clinical diagnosis. Near-neighbors: sle-2019-eular-acr, sledai-2k.');
+    note(root, 'SLICC 2012 SLE classification criteria (Petri 2012): 11 clinical + 6 immunologic criteria. Classifies if ≥ 4 criteria with ≥ 1 clinical AND ≥ 1 immunologic; OR biopsy-proven lupus nephritis with ANA or anti-dsDNA (the shortcut pathway). A study classification, not a clinical diagnosis.');
     root.appendChild(el('h2', { text: 'Clinical criteria' }));
     const ids = [];
     for (const [label, id] of SLICC_CLINICAL) { root.appendChild(checkField(label, id)); ids.push(id); }
@@ -171,7 +171,7 @@ export const renderers = {
 
   // ----- 2.4 sle-2019-eular-acr ----------------------------------------------
   'sle-2019-eular-acr'(root) {
-    note(root, '2019 EULAR/ACR SLE classification criteria (Aringer 2019): a positive ANA ≥ 1:80 ever is a hard entry gate. Across 7 clinical + 3 immunologic domains only the highest-weighted item per domain counts. Classifies if entry met AND weighted total ≥ 10 AND ≥ 1 clinical criterion. A study classification, not a clinical diagnosis. Near-neighbors: slicc-sle, sledai-2k.');
+    note(root, '2019 EULAR/ACR SLE classification criteria (Aringer 2019): a positive ANA ≥ 1:80 ever is a hard entry gate. Across 7 clinical + 3 immunologic domains only the highest-weighted item per domain counts. Classifies if entry met AND weighted total ≥ 10 AND ≥ 1 clinical criterion. A study classification, not a clinical diagnosis.');
     root.appendChild(checkField('Entry criterion — ANA ≥ 1:80 on HEp-2 cells (ever)', 'sle19-anaEntry'));
     const ids = ['sle19-anaEntry'];
     const keymap = { 'sle19-anaEntry': 'anaEntry' };

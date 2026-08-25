@@ -36,7 +36,7 @@ function render(o, r, valueLabel) {
 
 export const renderers = {
   'abc-transfusion-score'(root) {
-    note(root, 'ABC score (Nunez 2009): the fastest bedside massive-transfusion-protocol trigger, computable before any lab returns. Four binary items; >= 2 predicts massive transfusion. Near-neighbors: tash-score, rabt-score, shock-index.');
+    note(root, 'ABC score (Nunez 2009): the fastest bedside massive-transfusion-protocol trigger, computable before any lab returns. Four binary items; >= 2 predicts massive transfusion.');
     root.appendChild(check('Penetrating mechanism of injury', 'abc-pen'));
     root.appendChild(check('Systolic BP <= 90 mmHg on ED arrival', 'abc-sbp'));
     root.appendChild(check('Heart rate >= 120 bpm on ED arrival', 'abc-hr'));

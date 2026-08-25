@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'mccormick'(root) {
-    note(root, 'The McCormick neurological grading scale for spinal-cord (intramedullary) lesion function, by the motor / sensory deficit and ambulation. Pick the grade. I: intact or mild deficit, normal gait; II: deficit affecting the involved limb but functions and ambulates independently; III: needs a cane or brace, or significant bilateral upper-limb impairment; IV: severe, needs a wheelchair, usually not independent. Reports the grade the clinician has determined, not a diagnosis or a treatment decision. Near-neighbor: meyerding-spondylolisthesis.');
+    note(root, 'The McCormick neurological grading scale for spinal-cord (intramedullary) lesion function, by the motor / sensory deficit and ambulation. Pick the grade. I: intact or mild deficit, normal gait; II: deficit affecting the involved limb but functions and ambulates independently; III: needs a cane or brace, or significant bilateral upper-limb impairment; IV: severe, needs a wheelchair, usually not independent. Reports the grade the clinician has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('McCormick grade', 'mccormick-grade', [
       ['I', 'I - intact or mild deficit, normal gait'],
       ['II', 'II - deficit but independent ambulation'],

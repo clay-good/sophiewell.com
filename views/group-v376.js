@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'denis-sacral'(root) {
-    note(root, 'Denis classification (Denis 1988) of a sacral fracture, by the relationship of the fracture line to the sacral foramina and central canal. Pick the zone. I: alar (lateral to the foramina), lowest neurologic-injury rate; II: through the foramina, intermediate; III: central canal (medial to the foramina), highest, with bowel / bladder / sexual dysfunction. Near-neighbors: neck-zone.');
+    note(root, 'Denis classification (Denis 1988) of a sacral fracture, by the relationship of the fracture line to the sacral foramina and central canal. Pick the zone. I: alar (lateral to the foramina), lowest neurologic-injury rate; II: through the foramina, intermediate; III: central canal (medial to the foramina), highest, with bowel / bladder / sexual dysfunction.');
     root.appendChild(select('Denis zone', 'denis-zone', [
       ['I', 'Zone I - alar (lateral to the foramina)'],
       ['II', 'Zone II - through the foramina'],

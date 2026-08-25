@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'lauren-gastric'(root) {
-    note(root, 'Lauren classification of gastric carcinoma, by histological growth pattern. Pick the type. Intestinal: cohesive cells retaining glandular structure (chronic gastritis / intestinal metaplasia). Diffuse: poorly cohesive cells, signet-ring cells, no gland formation (classically a worse prognosis). Mixed: both components. Near-neighbors: hill-flap-valve.');
+    note(root, 'Lauren classification of gastric carcinoma, by histological growth pattern. Pick the type. Intestinal: cohesive cells retaining glandular structure (chronic gastritis / intestinal metaplasia). Diffuse: poorly cohesive cells, signet-ring cells, no gland formation (classically a worse prognosis). Mixed: both components.');
     root.appendChild(select('Lauren type', 'lauren-type', [
       ['intestinal', 'Intestinal - cohesive, glandular'],
       ['diffuse', 'Diffuse - poorly cohesive, signet-ring'],

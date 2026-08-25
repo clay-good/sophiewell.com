@@ -87,7 +87,7 @@ function anthroFields(root, prefix) {
 export const renderers = {
   // ----- 2.1 mifflin-st-jeor -------------------------------------------------
   'mifflin-st-jeor'(root) {
-    note(root, 'Mifflin-St Jeor (1990): the first-line predictive resting energy expenditure equation for adults. REE = 10 × weight(kg) + 6.25 × height(cm) − 5 × age(yr) + s, where s = +5 (male) / −161 (female). Add an activity factor for total daily expenditure (TDEE = REE × factor). Near-neighbor: harris-benedict.');
+    note(root, 'Mifflin-St Jeor (1990): the first-line predictive resting energy expenditure equation for adults. REE = 10 × weight(kg) + 6.25 × height(cm) − 5 × age(yr) + s, where s = +5 (male) / −161 (female). Add an activity factor for total daily expenditure (TDEE = REE × factor).');
     anthroFields(root, 'msj');
     root.appendChild(selectField('Activity factor (optional — for TDEE)', 'msj-act', ACTIVITY));
     const o = out(); root.appendChild(o);
@@ -104,7 +104,7 @@ export const renderers = {
 
   // ----- 2.2 harris-benedict -------------------------------------------------
   'harris-benedict'(root) {
-    note(root, 'Harris-Benedict, revised constants (Roza 1984): the classic basal energy expenditure comparator. Male BEE = 88.362 + 13.397 × wt + 4.799 × ht − 5.677 × age; female BEE = 447.593 + 9.247 × wt + 3.098 × ht − 4.330 × age. TDEE = BEE × activity factor. Tends to run ~5% above Mifflin-St Jeor, the preferred contemporary equation. Near-neighbor: mifflin-st-jeor.');
+    note(root, 'Harris-Benedict, revised constants (Roza 1984): the classic basal energy expenditure comparator. Male BEE = 88.362 + 13.397 × wt + 4.799 × ht − 5.677 × age; female BEE = 447.593 + 9.247 × wt + 3.098 × ht − 4.330 × age. TDEE = BEE × activity factor. Tends to run ~5% above Mifflin-St Jeor, the preferred contemporary equation.');
     anthroFields(root, 'hb');
     root.appendChild(selectField('Activity factor (optional — for TDEE)', 'hb-act', ACTIVITY));
     const o = out(); root.appendChild(o);
@@ -121,7 +121,7 @@ export const renderers = {
 
   // ----- 2.3 katch-mcardle ---------------------------------------------------
   'katch-mcardle'(root) {
-    note(root, 'Katch-McArdle: the lean-body-mass BMR equation. BMR = 370 + 21.6 × lean body mass(kg). Enter lean body mass directly, or weight + body-fat % (LBM = weight × (1 − fat%/100)). Preferred for athletes and lean/obese bodies where weight-only equations drift. TDEE = BMR × activity factor. Near-neighbor: mifflin-st-jeor.');
+    note(root, 'Katch-McArdle: the lean-body-mass BMR equation. BMR = 370 + 21.6 × lean body mass(kg). Enter lean body mass directly, or weight + body-fat % (LBM = weight × (1 − fat%/100)). Preferred for athletes and lean/obese bodies where weight-only equations drift. TDEE = BMR × activity factor.');
     root.appendChild(numField('Lean body mass (kg) — if known', 'km-lbm', { min: 0, max: 200, step: '0.1', placeholder: 'e.g. 55' }));
     note(root, 'or derive it from total body composition:');
     root.appendChild(numField('Total weight (kg)', 'km-wt', { min: 0, max: 400, step: '0.1', placeholder: 'e.g. 70' }));
@@ -141,7 +141,7 @@ export const renderers = {
 
   // ----- 2.4 penn-state-ree --------------------------------------------------
   'penn-state-ree'(root) {
-    note(root, 'Penn State equation (2004): predicts resting metabolic rate in mechanically ventilated ICU adults. RMR = Mifflin × 0.96 + Tmax × 167 + Ve × 31 − 6212 (standard 2003b). When BMI ≥ 30 AND age ≥ 60 the modified (2010) form RMR = Mifflin × 0.71 + Tmax × 85 + Ve × 64 − 3085 is used. Tmax = max temperature in the prior 24 h; Ve = ventilator minute ventilation. Near-neighbors: icu-nutrition-target, mifflin-st-jeor.');
+    note(root, 'Penn State equation (2004): predicts resting metabolic rate in mechanically ventilated ICU adults. RMR = Mifflin × 0.96 + Tmax × 167 + Ve × 31 − 6212 (standard 2003b). When BMI ≥ 30 AND age ≥ 60 the modified (2010) form RMR = Mifflin × 0.71 + Tmax × 85 + Ve × 64 − 3085 is used. Tmax = max temperature in the prior 24 h; Ve = ventilator minute ventilation.');
     anthroFields(root, 'ps');
     root.appendChild(unitField('Tmax — max temperature prior 24 h', 'ps-tmax', TEMP_UNITS, { placeholder: 'e.g. 38.5' }));
     root.appendChild(numField('Minute ventilation Ve (L/min, ventilator)', 'ps-ve', { min: 0, max: 40, step: '0.1', placeholder: 'e.g. 9' }));
@@ -161,7 +161,7 @@ export const renderers = {
 
   // ----- 2.5 ireton-jones ----------------------------------------------------
   'ireton-jones'(root) {
-    note(root, 'Ireton-Jones (1997 revised): estimates energy expenditure in hospitalized patients. Ventilated EEE = 1784 − 11 × age + 5 × weight + 244 × (male) + 239 × (trauma) + 804 × (burn). Spontaneously breathing EEE = 629 − 11 × age + 25 × weight − 609 × (obese, BMI > 27). Near-neighbors: penn-state-ree, icu-nutrition-target.');
+    note(root, 'Ireton-Jones (1997 revised): estimates energy expenditure in hospitalized patients. Ventilated EEE = 1784 − 11 × age + 5 × weight + 244 × (male) + 239 × (trauma) + 804 × (burn). Spontaneously breathing EEE = 629 − 11 × age + 25 × weight − 609 × (obese, BMI > 27).');
     root.appendChild(selectField('Ventilation status', 'ij-mode', [
       { value: 'ventilated', text: 'Ventilator-dependent' },
       { value: 'spontaneous', text: 'Spontaneously breathing' },

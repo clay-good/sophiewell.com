@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'shaffer-angle'(root) {
-    note(root, 'Shaffer gonioscopy grading (Shaffer 1960) of the anterior chamber (drainage) angle. Pick the grade. A higher grade is a wider, safer angle. 4: wide open (~35-45 deg); 3: open (~20-35 deg); 2: moderately narrow (~20 deg), closure possible; 1: very narrow (~10 deg), closure probable; 0: closed. Grades 0-2 are at risk of angle-closure glaucoma. Near-neighbors: icdr-retinopathy.');
+    note(root, 'Shaffer gonioscopy grading (Shaffer 1960) of the anterior chamber (drainage) angle. Pick the grade. A higher grade is a wider, safer angle. 4: wide open (~35-45 deg); 3: open (~20-35 deg); 2: moderately narrow (~20 deg), closure possible; 1: very narrow (~10 deg), closure probable; 0: closed. Grades 0-2 are at risk of angle-closure glaucoma.');
     root.appendChild(select('Shaffer grade', 'shaffer-grade', [
       ['4', 'Grade 4 - wide open (~35-45 deg)'],
       ['3', 'Grade 3 - open (~20-35 deg)'],

@@ -35,7 +35,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'parks-fistula'(root) {
-    note(root, 'Parks classification of an anal fistula (fistula-in-ano), by the tract\'s relationship to the anal sphincter complex. Pick the type. Intersphincteric: through the internal sphincter only (most common). Transsphincteric: through both sphincters. Suprasphincteric: above the puborectalis (complex). Extrasphincteric: outside the sphincter complex (complex). Near-neighbors: lauren-gastric.');
+    note(root, 'Parks classification of an anal fistula (fistula-in-ano), by the tract\'s relationship to the anal sphincter complex. Pick the type. Intersphincteric: through the internal sphincter only (most common). Transsphincteric: through both sphincters. Suprasphincteric: above the puborectalis (complex). Extrasphincteric: outside the sphincter complex (complex).');
     root.appendChild(select('Parks type', 'parks-type', [
       ['intersphincteric', 'Intersphincteric - internal sphincter only'],
       ['transsphincteric', 'Transsphincteric - through both sphincters'],

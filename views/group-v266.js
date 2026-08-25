@@ -39,7 +39,7 @@ function render(o, r, valueLabel) {
 
 export const renderers = {
   'ssign-score'(root) {
-    note(root, 'SSIGN score (Frank/Mayo 2002): cancer-specific survival after nephrectomy for clear-cell RCC. Total 0-17; uses 1997 TNM and Fuhrman grade. Near-neighbors: imdc-rcc, mskcc-rcc, ecog-karnofsky.');
+    note(root, 'SSIGN score (Frank/Mayo 2002): cancer-specific survival after nephrectomy for clear-cell RCC. Total 0-17; uses 1997 TNM and Fuhrman grade.');
     root.appendChild(select('Primary tumor (pT) stage', 'ss-t', [['pt1', 'pT1 (0)'], ['pt2', 'pT2 (+1)'], ['pt3', 'pT3 (+2)'], ['pt4', 'pT4 (+4)']]));
     root.appendChild(select('Regional lymph nodes', 'ss-n', [['n0', 'pNx or pN0 (0)'], ['n1', 'pN1 or pN2 (+2)']]));
     root.appendChild(select('Distant metastasis', 'ss-m', [['m0', 'M0 (0)'], ['m1', 'M1 (+4)']]));

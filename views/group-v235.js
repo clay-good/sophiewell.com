@@ -54,7 +54,7 @@ const S05 = [['0', '0'], ['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '
 
 export const renderers = {
   'dn4-neuropathic-pain'(root) {
-    note(root, 'DN4 (Bouhassira 2005): 7 interview + 3 exam items each 1 point. >= 4 suggests neuropathic pain. Near-neighbors: lanss-pain-scale.');
+    note(root, 'DN4 (Bouhassira 2005): 7 interview + 3 exam items each 1 point. >= 4 suggests neuropathic pain.');
     const items = [['dn4-burn', 'burning', 'Burning'], ['dn4-cold', 'cold', 'Painful cold'], ['dn4-shock', 'shocks', 'Electric shocks'], ['dn4-tingle', 'tingling', 'Tingling'], ['dn4-pins', 'pins', 'Pins and needles'], ['dn4-numb', 'numbness', 'Numbness'], ['dn4-itch', 'itching', 'Itching'], ['dn4-htouch', 'hypoTouch', 'Exam: hypoesthesia to touch'], ['dn4-hpin', 'hypoPinprick', 'Exam: hypoesthesia to pinprick'], ['dn4-brush', 'brushAllodynia', 'Exam: brush allodynia']];
     for (const [id, , label] of items) root.appendChild(check(label, id));
     const o = out(); root.appendChild(o);
@@ -65,7 +65,7 @@ export const renderers = {
     postureNote(root);
   },
   'lanss-pain-scale'(root) {
-    note(root, 'LANSS (Bennett 2001): weighted symptom + exam items, total 0-24. >= 12 suggests neuropathic origin. Near-neighbors: dn4-neuropathic-pain.');
+    note(root, 'LANSS (Bennett 2001): weighted symptom + exam items, total 0-24. >= 12 suggests neuropathic origin.');
     const items = [['lanss-dys', 'dysesthesia', 'Dysesthesia — pricking/tingling/pins-and-needles (5)'], ['lanss-auto', 'autonomic', 'Skin looks different — mottled/red (5)'], ['lanss-allo', 'allodyniaReport', 'Abnormally sensitive to touch (3)'], ['lanss-par', 'paroxysmal', 'Sudden electric-shock bursts (2)'], ['lanss-therm', 'thermal', 'Feels hot/burning (1)'], ['lanss-brush', 'brushAllodynia', 'Exam: brush allodynia (5)'], ['lanss-pin', 'pinprick', 'Exam: altered pin-prick threshold (3)']];
     for (const [id, , label] of items) root.appendChild(check(label, id));
     const o = out(); root.appendChild(o);
@@ -76,7 +76,7 @@ export const renderers = {
     postureNote(root);
   },
   'roland-morris-disability'(root) {
-    note(root, 'Roland-Morris (Roland & Morris 1983): 24 low-back disability statements, each applicable one scores 1. Total 0-24; MDC ~5. Near-neighbors: neck-disability-index.');
+    note(root, 'Roland-Morris (Roland & Morris 1983): 24 low-back disability statements, each applicable one scores 1. Total 0-24; MDC ~5.');
     root.appendChild(numInput('Number of applicable statements (0-24)', 'rmdq-count', { min: '0', max: '24' }));
     const o = out(); root.appendChild(o);
     wire(['rmdq-count'], () => safe(o, () => {
@@ -85,7 +85,7 @@ export const renderers = {
     postureNote(root);
   },
   'neck-disability-index'(root) {
-    note(root, 'Neck Disability Index (Vernon & Mior 1991): 10 sections each 0-5, raw 0-50, percentage = raw x 2. Near-neighbors: roland-morris-disability.');
+    note(root, 'Neck Disability Index (Vernon & Mior 1991): 10 sections each 0-5, raw 0-50, percentage = raw x 2.');
     const secs = [['ndi-pain', 'pain', 'Pain intensity'], ['ndi-care', 'care', 'Personal care'], ['ndi-lift', 'lifting', 'Lifting'], ['ndi-read', 'reading', 'Reading'], ['ndi-head', 'headaches', 'Headaches'], ['ndi-conc', 'concentration', 'Concentration'], ['ndi-work', 'work', 'Work'], ['ndi-drive', 'driving', 'Driving'], ['ndi-sleep', 'sleeping', 'Sleeping'], ['ndi-rec', 'recreation', 'Recreation']];
     for (const [id, , label] of secs) root.appendChild(select(`${label} (0-5)`, id, S05));
     const o = out(); root.appendChild(o);

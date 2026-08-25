@@ -38,7 +38,7 @@ function wire(ids, run) {
 export const renderers = {
   // ----- 2.1 spina-gt --------------------------------------------------------
   'spina-gt'(root) {
-    note(root, 'SPINA-GT — thyroid secretory capacity (Dietrich 2016): from TSH (mIU/L) and free T4 (pmol/L). Reference ~1.4–8.7 pmol/s; low = reduced capacity. Near-neighbors: free-thyroxine-index, spina-gd.');
+    note(root, 'SPINA-GT — thyroid secretory capacity (Dietrich 2016): from TSH (mIU/L) and free T4 (pmol/L). Reference ~1.4–8.7 pmol/s; low = reduced capacity.');
     root.appendChild(num('TSH (mIU/L)', 'spinagt-tsh'));
     root.appendChild(num('Free T4 (pmol/L)', 'spinagt-ft4'));
     const o = out(); root.appendChild(o);
@@ -53,7 +53,7 @@ export const renderers = {
 
   // ----- 2.2 spina-gd --------------------------------------------------------
   'spina-gd'(root) {
-    note(root, 'SPINA-GD — sum activity of peripheral deiodinases (Dietrich 2016): from free T4 and free T3 (pmol/L). Reference ~20–60 nmol/s. Near-neighbors: spina-gt, free-thyroxine-index.');
+    note(root, 'SPINA-GD — sum activity of peripheral deiodinases (Dietrich 2016): from free T4 and free T3 (pmol/L). Reference ~20–60 nmol/s.');
     root.appendChild(num('Free T4 (pmol/L)', 'spinagd-ft4'));
     root.appendChild(num('Free T3 (pmol/L)', 'spinagd-ft3'));
     const o = out(); root.appendChild(o);
@@ -68,7 +68,7 @@ export const renderers = {
 
   // ----- 2.3 jostel-tsh-index ------------------------------------------------
   'jostel-tsh-index'(root) {
-    note(root, 'Jostel’s TSH index (Jostel 2009): TSHI = ln(TSH) + 0.1345 × FT4 (pmol/L); standardized sTSHI = (TSHI − 2.7) / 0.676. A low index suggests central hypothyroidism. Near-neighbors: free-thyroxine-index, spina-gt.');
+    note(root, 'Jostel’s TSH index (Jostel 2009): TSHI = ln(TSH) + 0.1345 × FT4 (pmol/L); standardized sTSHI = (TSHI − 2.7) / 0.676. A low index suggests central hypothyroidism.');
     root.appendChild(num('TSH (mIU/L)', 'jostel-tsh'));
     root.appendChild(num('Free T4 (pmol/L)', 'jostel-ft4'));
     const o = out(); root.appendChild(o);
@@ -83,7 +83,7 @@ export const renderers = {
 
   // ----- 2.4 homa-beta -------------------------------------------------------
   'homa-beta'(root) {
-    note(root, 'HOMA-B — steady-state β-cell function (Matthews 1985): 20 × fasting insulin (µU/mL) / (fasting glucose (mmol/L) − 3.5). The β-cell arm complementing HOMA-IR. Near-neighbors: homa-ir, quicki.');
+    note(root, 'HOMA-B — steady-state β-cell function (Matthews 1985): 20 × fasting insulin (µU/mL) / (fasting glucose (mmol/L) − 3.5). The β-cell arm complementing HOMA-IR.');
     root.appendChild(num('Fasting insulin (µU/mL)', 'homab-ins'));
     root.appendChild(num('Fasting glucose (mmol/L)', 'homab-glu'));
     const o = out(); root.appendChild(o);
@@ -98,7 +98,7 @@ export const renderers = {
 
   // ----- 2.5 oral-disposition-index ------------------------------------------
   'oral-disposition-index'(root) {
-    note(root, 'Oral disposition index DIo (Utzschneider 2009): insulinogenic index = ΔInsulin(0–30) / ΔGlucose(0–30); DIo = insulinogenic index × (1 / fasting insulin). Lower predicts higher future-diabetes risk. Near-neighbors: homa-beta, matsuda-index.');
+    note(root, 'Oral disposition index DIo (Utzschneider 2009): insulinogenic index = ΔInsulin(0–30) / ΔGlucose(0–30); DIo = insulinogenic index × (1 / fasting insulin). Lower predicts higher future-diabetes risk.');
     root.appendChild(num('Fasting (0-min) insulin (µU/mL)', 'dio-i0'));
     root.appendChild(num('30-min insulin (µU/mL)', 'dio-i30'));
     root.appendChild(num('Fasting (0-min) glucose (mg/dL)', 'dio-g0'));

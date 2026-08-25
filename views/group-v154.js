@@ -125,7 +125,7 @@ const PPS_CONSCIOUS = [
 export const renderers = {
   // ----- 2.1 berg-balance ----------------------------------------------------
   'berg-balance'(root) {
-    note(root, 'Berg Balance Scale (Berg 1992): 14 performance tasks, each scored 0 (unable) to 4 (independent and safe), summed 0–56. Strata: 0–20 wheelchair-bound / high fall risk, 21–40 walking with assistance, 41–56 independent; a total below 45 flags increased fall risk. Near-neighbors: tinetti-poma, tug, morse-falls.');
+    note(root, 'Berg Balance Scale (Berg 1992): 14 performance tasks, each scored 0 (unable) to 4 (independent and safe), summed 0–56. Strata: 0–20 wheelchair-bound / high fall risk, 21–40 walking with assistance, 41–56 independent; a total below 45 flags increased fall risk.');
     const ids = [];
     BERG_TASKS.forEach((task, i) => { const id = `berg-q${i + 1}`; root.appendChild(pickField(`${i + 1}. ${task}`, id, BERG_SCALE)); ids.push(id); });
     const o = out(); root.appendChild(o);
@@ -147,7 +147,7 @@ export const renderers = {
 
   // ----- 2.2 tug -------------------------------------------------------------
   tug(root) {
-    note(root, 'Timed Up & Go (Podsiadlo & Richardson 1991): the time in seconds to rise from a chair, walk 3 m, turn, return, and sit. CDC STEADI flags increased fall risk at ≥ 12 s; the community-dwelling cut-off is ≥ 13.5 s; ≥ 30 s rates as dependent in transfers/ADLs. Near-neighbors: berg-balance, tinetti-poma.');
+    note(root, 'Timed Up & Go (Podsiadlo & Richardson 1991): the time in seconds to rise from a chair, walk 3 m, turn, return, and sit. CDC STEADI flags increased fall risk at ≥ 12 s; the community-dwelling cut-off is ≥ 13.5 s; ≥ 30 s rates as dependent in transfers/ADLs.');
     root.appendChild(numField('Measured Timed Up & Go time (seconds)', 'tug-secs', { step: '0.1', min: 0, max: 600, placeholder: 'e.g. 12.5' }));
     const o = out(); root.appendChild(o);
     wire(['tug-secs'], () => safe(o, () => {
@@ -166,7 +166,7 @@ export const renderers = {
 
   // ----- 2.3 tinetti-poma ----------------------------------------------------
   'tinetti-poma'(root) {
-    note(root, 'Tinetti POMA (Tinetti 1986): the 28-point version — balance subscale 0–16 plus gait subscale 0–12, total 0–28. Bands: ≤ 18 high fall risk, 19–23 moderate, ≥ 24 low. Enter the two subscale totals. Near-neighbors: berg-balance, tug.');
+    note(root, 'Tinetti POMA (Tinetti 1986): the 28-point version — balance subscale 0–16 plus gait subscale 0–12, total 0–28. Bands: ≤ 18 high fall risk, 19–23 moderate, ≥ 24 low. Enter the two subscale totals.');
     root.appendChild(numField('Balance subscore (0–16)', 'poma-balance', { step: '1', min: 0, max: 16, placeholder: '0–16' }));
     root.appendChild(numField('Gait subscore (0–12)', 'poma-gait', { step: '1', min: 0, max: 12, placeholder: '0–12' }));
     const o = out(); root.appendChild(o);

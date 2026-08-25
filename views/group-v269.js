@@ -37,7 +37,7 @@ function render(o, r, valueLabel) {
 
 export const renderers = {
   'mets-ir'(root) {
-    note(root, 'METS-IR = ln((2 x fasting glucose) + fasting TG) x BMI / ln(HDL) (Bello-Chavolla 2018). A fasting-insulin-free insulin-resistance surrogate; higher is more insulin-resistant. Near-neighbors: homa-ir, tyg-index, quicki.');
+    note(root, 'METS-IR = ln((2 x fasting glucose) + fasting TG) x BMI / ln(HDL) (Bello-Chavolla 2018). A fasting-insulin-free insulin-resistance surrogate; higher is more insulin-resistant.');
     root.appendChild(num('Fasting glucose (mg/dL)', 'metsir-fpg', { min: '0' }));
     root.appendChild(num('Fasting triglycerides (mg/dL)', 'metsir-tg', { min: '0' }));
     root.appendChild(num('HDL cholesterol (mg/dL)', 'metsir-hdl', { min: '0' }));

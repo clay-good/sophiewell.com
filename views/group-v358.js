@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'ramsay-sedation'(root) {
-    note(root, 'Ramsay Sedation Scale (Ramsay 1974). Pick the level. Awake: 1 agitated / restless; 2 cooperative, tranquil; 3 responds to commands only. Asleep: 4 brisk response to glabellar tap / loud stimulus; 5 sluggish response; 6 no response. Levels 2-4 are the cooperative-to-lightly-sedated range. Near-neighbors: rass, sas-riker.');
+    note(root, 'Ramsay Sedation Scale (Ramsay 1974). Pick the level. Awake: 1 agitated / restless; 2 cooperative, tranquil; 3 responds to commands only. Asleep: 4 brisk response to glabellar tap / loud stimulus; 5 sluggish response; 6 no response. Levels 2-4 are the cooperative-to-lightly-sedated range.');
     root.appendChild(select('Ramsay level', 'ramsay-level', [
       ['1', 'Level 1 - anxious, agitated, or restless (awake)'],
       ['2', 'Level 2 - cooperative, oriented, tranquil (awake)'],

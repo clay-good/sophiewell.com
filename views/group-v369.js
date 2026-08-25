@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'nohria-stevenson'(root) {
-    note(root, 'Nohria-Stevenson clinical hemodynamic profiles (Nohria 2003) for acute heart failure - the bedside counterpart to the invasive Forrester classification. Select congestion and perfusion. Wet signs: orthopnea, elevated JVP, edema, rales, S3. Cold signs: narrow pulse pressure, cool extremities, altered mentation, hypotension. A dry-warm; B wet-warm; C wet-cold; L dry-cold. Near-neighbors: forrester-hemodynamic.');
+    note(root, 'Nohria-Stevenson clinical hemodynamic profiles (Nohria 2003) for acute heart failure - the bedside counterpart to the invasive Forrester classification. Select congestion and perfusion. Wet signs: orthopnea, elevated JVP, edema, rales, S3. Cold signs: narrow pulse pressure, cool extremities, altered mentation, hypotension. A dry-warm; B wet-warm; C wet-cold; L dry-cold.');
     root.appendChild(select('Congestion', 'ns-congestion', [
       ['dry', 'Dry - no congestion'],
       ['wet', 'Wet - congestion present'],

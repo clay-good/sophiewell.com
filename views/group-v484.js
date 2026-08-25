@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'barrack-cement'(root) {
-    note(root, 'The Barrack classification of the cement mantle around a cemented femoral stem, by the quality of cementing on the immediate postoperative radiograph. Pick the grade. A: complete filling ("white-out"); B: slight radiolucency, nearly complete filling; C: radiolucency over 50-99% of the interface, or a mantle defect; D: radiolucency over 100%, or an unfilled canal. Reports the grade the clinician has determined, not a diagnosis or a treatment decision. Near-neighbor: vancouver-periprosthetic.');
+    note(root, 'The Barrack classification of the cement mantle around a cemented femoral stem, by the quality of cementing on the immediate postoperative radiograph. Pick the grade. A: complete filling ("white-out"); B: slight radiolucency, nearly complete filling; C: radiolucency over 50-99% of the interface, or a mantle defect; D: radiolucency over 100%, or an unfilled canal. Reports the grade the clinician has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('Barrack grade', 'barrack-grade', [
       ['A', 'A - complete filling ("white-out")'],
       ['B', 'B - slight radiolucency, nearly complete filling'],

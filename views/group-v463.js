@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'waldenstrom-perthes'(root) {
-    note(root, 'The Waldenstrom radiographic staging of active Legg-Calve-Perthes disease, by the temporal appearance of the femoral epiphysis. Pick the stage. I: initial (sclerosis); II: fragmentation; III: reossification (healing); IV: healed (remodeling). Reports the stage the clinician has determined, not a diagnosis or a treatment decision. Near-neighbor: stulberg.');
+    note(root, 'The Waldenstrom radiographic staging of active Legg-Calve-Perthes disease, by the temporal appearance of the femoral epiphysis. Pick the stage. I: initial (sclerosis); II: fragmentation; III: reossification (healing); IV: healed (remodeling). Reports the stage the clinician has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('Waldenstrom stage', 'wp-stage', [
       ['I', 'I - initial (sclerosis)'],
       ['II', 'II - fragmentation'],

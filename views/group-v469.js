@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'steinbrocker-ra'(root) {
-    note(root, 'The Steinbrocker functional classification of rheumatoid arthritis, by global functional capacity. Pick the class. I: complete capacity, all usual duties; II: adequate for normal activities despite discomfort or limited joint mobility; III: adequate for little or none of the usual occupation or self-care; IV: largely or wholly incapacitated (bedridden or wheelchair-bound). The ACR revised the wording in 1991. Reports the class the clinician has determined, not a diagnosis or a treatment decision. Near-neighbor: das28.');
+    note(root, 'The Steinbrocker functional classification of rheumatoid arthritis, by global functional capacity. Pick the class. I: complete capacity, all usual duties; II: adequate for normal activities despite discomfort or limited joint mobility; III: adequate for little or none of the usual occupation or self-care; IV: largely or wholly incapacitated (bedridden or wheelchair-bound). The ACR revised the wording in 1991. Reports the class the clinician has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('Steinbrocker class', 'steinbrocker-class', [
       ['I', 'I - complete capacity, all usual duties'],
       ['II', 'II - adequate despite discomfort / limited mobility'],

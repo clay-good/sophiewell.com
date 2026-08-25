@@ -43,7 +43,7 @@ const IDS = ['mibd-disease', 'mibd-age', 'mibd-loc', 'mibd-l4', 'mibd-beh', 'mib
 
 export const renderers = {
   'montreal-ibd'(root) {
-    note(root, 'Montreal classification of IBD (Silverberg 2005). Choose the disease, then the relevant axes. Crohn’s uses age (A), location (L), and behavior (B); ulcerative colitis uses extent (E) and severity (S). Near-neighbors: harvey-bradshaw.');
+    note(root, 'Montreal classification of IBD (Silverberg 2005). Choose the disease, then the relevant axes. Crohn’s uses age (A), location (L), and behavior (B); ulcerative colitis uses extent (E) and severity (S).');
     root.appendChild(select('Disease', 'mibd-disease', [
       ['crohn', 'Crohn’s disease'],
       ['uc', 'Ulcerative colitis'],

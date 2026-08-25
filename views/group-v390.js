@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'knosp-adenoma'(root) {
-    note(root, 'Knosp grading of cavernous sinus invasion by a pituitary adenoma, on coronal MRI, using the internal carotid artery as the landmark. Pick the grade. 0: medial to the medial tangent; 1: past the medial tangent, not past the intercarotid line; 2: past the intercarotid line, not past the lateral tangent; 3: lateral to the lateral tangent (3A/3B); 4: total ICA encasement. Grades 3-4 predict invasion. Near-neighbors: koos-schwannoma.');
+    note(root, 'Knosp grading of cavernous sinus invasion by a pituitary adenoma, on coronal MRI, using the internal carotid artery as the landmark. Pick the grade. 0: medial to the medial tangent; 1: past the medial tangent, not past the intercarotid line; 2: past the intercarotid line, not past the lateral tangent; 3: lateral to the lateral tangent (3A/3B); 4: total ICA encasement. Grades 3-4 predict invasion.');
     root.appendChild(select('Knosp grade', 'knosp-grade', [
       ['0', 'Grade 0 - medial to the medial tangent'],
       ['1', 'Grade 1 - to the intercarotid line'],

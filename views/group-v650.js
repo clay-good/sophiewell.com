@@ -31,7 +31,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'masaoka-koga'(root) {
-    note(root, 'Masaoka-Koga staging (Koga 1994; ITMIG-clarified, Detterbeck 2011): the most advanced finding sets the thymoma stage. Nothing checked = Stage I (completely encapsulated, including invasion into but not through the capsule). Stage III is not subdivided. Near-neighbors: bismuth-corlette, enneking.');
+    note(root, 'Masaoka-Koga staging (Koga 1994; ITMIG-clarified, Detterbeck 2011): the most advanced finding sets the thymoma stage. Nothing checked = Stage I (completely encapsulated, including invasion into but not through the capsule). Stage III is not subdivided.');
     root.appendChild(checkField('Microscopic transcapsular invasion (through the capsule) — IIa', 'mk-micro'));
     root.appendChild(checkField('Macroscopic invasion into surrounding fat, or gross adherence to (not through) pleura/pericardium — IIb', 'mk-macro'));
     root.appendChild(checkField('Macroscopic invasion into a neighboring organ (pericardium, great vessel, lung) — III', 'mk-organ'));

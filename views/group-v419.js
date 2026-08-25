@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'cotton-myer'(root) {
-    note(root, 'Myer-Cotton grading of subglottic stenosis, by the percent obstruction of the subglottic airway lumen (classically from the largest endotracheal tube that passes with an appropriate leak versus the age-expected size). Pick the grade. I: 0-50%; II: 51-70%; III: 71-99%; IV: no detectable lumen. Near-neighbors: brodsky-tonsil.');
+    note(root, 'Myer-Cotton grading of subglottic stenosis, by the percent obstruction of the subglottic airway lumen (classically from the largest endotracheal tube that passes with an appropriate leak versus the age-expected size). Pick the grade. I: 0-50%; II: 51-70%; III: 71-99%; IV: no detectable lumen.');
     root.appendChild(select('Cotton-Myer grade', 'cm-grade', [
       ['I', 'Grade I - 0% to 50% obstruction'],
       ['II', 'Grade II - 51% to 70% obstruction'],

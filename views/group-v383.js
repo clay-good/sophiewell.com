@@ -35,7 +35,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'risser-sign'(root) {
-    note(root, 'Risser sign (US grading) - skeletal maturity by the ossification and fusion of the iliac crest apophysis, used in scoliosis to gauge remaining growth. Pick the grade. 0: none; 1: ~25%; 2: ~50%; 3: ~75%; 4: 100% ossified but unfused; 5: ossified and fused (mature). The remaining growth potential falls 0 to 5. Near-neighbors: tanner-staging.');
+    note(root, 'Risser sign (US grading) - skeletal maturity by the ossification and fusion of the iliac crest apophysis, used in scoliosis to gauge remaining growth. Pick the grade. 0: none; 1: ~25%; 2: ~50%; 3: ~75%; 4: 100% ossified but unfused; 5: ossified and fused (mature). The remaining growth potential falls 0 to 5.');
     root.appendChild(select('Risser grade', 'risser-grade', [
       ['0', 'Grade 0 - no ossification'],
       ['1', 'Grade 1 - ~25% ossification'],

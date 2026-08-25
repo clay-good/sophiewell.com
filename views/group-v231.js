@@ -37,7 +37,7 @@ function render(o, r, valueLabel) {
 
 export const renderers = {
   'naples-prognostic-score'(root) {
-    note(root, 'Naples Prognostic Score (Galizia 2017): albumin < 4 g/dL, cholesterol <= 180, NLR > 2.96, LMR <= 4.44 each +1. Group 0 (0), 1 (1-2), 2 (3-4). Near-neighbors: nlr, lmr.');
+    note(root, 'Naples Prognostic Score (Galizia 2017): albumin < 4 g/dL, cholesterol <= 180, NLR > 2.96, LMR <= 4.44 each +1. Group 0 (0), 1 (1-2), 2 (3-4).');
     root.appendChild(num('Serum albumin (g/dL)', 'nap-alb', { min: '0' }));
     root.appendChild(num('Total cholesterol (mg/dL)', 'nap-chol', { min: '0' }));
     root.appendChild(num('Neutrophil-to-lymphocyte ratio (NLR)', 'nap-nlr', { min: '0' }));
@@ -49,7 +49,7 @@ export const renderers = {
     postureNote(root);
   },
   'nmr'(root) {
-    note(root, 'Neutrophil-to-monocyte ratio = ANC / AMC. Higher = less favorable. Near-neighbors: nlr, lmr.');
+    note(root, 'Neutrophil-to-monocyte ratio = ANC / AMC. Higher = less favorable.');
     root.appendChild(num('Absolute neutrophil count (10³/µL)', 'nmr-anc', { min: '0' }));
     root.appendChild(num('Absolute monocyte count (10³/µL)', 'nmr-amc', { min: '0' }));
     const o = out(); root.appendChild(o);
@@ -59,7 +59,7 @@ export const renderers = {
     postureNote(root);
   },
   'far'(root) {
-    note(root, 'Fibrinogen-to-albumin ratio = fibrinogen (mg/dL) / albumin (g/dL). Higher = less favorable. Near-neighbors: crp-albumin-ratio, siri.');
+    note(root, 'Fibrinogen-to-albumin ratio = fibrinogen (mg/dL) / albumin (g/dL). Higher = less favorable.');
     root.appendChild(num('Fibrinogen (mg/dL)', 'far-fib', { min: '0' }));
     root.appendChild(num('Serum albumin (g/dL)', 'far-alb', { min: '0' }));
     const o = out(); root.appendChild(o);

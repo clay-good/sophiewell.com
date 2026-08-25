@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'hardy-adenoma'(root) {
-    note(root, 'Hardy (Hardy-Wilson) classification of a pituitary adenoma - a sellar-floor grade and a suprasellar-extension stage. Pick both. Grade: 0 enclosed / I focal < 10 mm / II enlarged, floor intact / III localized floor erosion / IV diffuse destruction. Stage: 0 none / A cistern / B third-ventricle recess / C third ventricle displaced / D intracranial / E cavernous sinus. Near-neighbors: knosp-adenoma.');
+    note(root, 'Hardy (Hardy-Wilson) classification of a pituitary adenoma - a sellar-floor grade and a suprasellar-extension stage. Pick both. Grade: 0 enclosed / I focal < 10 mm / II enlarged, floor intact / III localized floor erosion / IV diffuse destruction. Stage: 0 none / A cistern / B third-ventricle recess / C third ventricle displaced / D intracranial / E cavernous sinus.');
     root.appendChild(select('Sellar-floor grade', 'hardy-grade', [
       ['0', 'Grade 0 - enclosed within the sella'],
       ['I', 'Grade I - focal, tumor < 10 mm'],

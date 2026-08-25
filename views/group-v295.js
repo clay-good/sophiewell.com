@@ -36,7 +36,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'global-deterioration-scale'(root) {
-    note(root, 'Reisberg Global Deterioration Scale (GDS) for dementia. Select the single most appropriate global stage to see its published label and clinical characteristics. Stages 1–3 are pre-dementia; 4–7 are dementia. At stage 5 and beyond the patient can no longer survive without assistance. Companion to FAST (finer functional substaging). Near-neighbors: fast-dementia, cdr-sob, bims.');
+    note(root, 'Reisberg Global Deterioration Scale (GDS) for dementia. Select the single most appropriate global stage to see its published label and clinical characteristics. Stages 1–3 are pre-dementia; 4–7 are dementia. At stage 5 and beyond the patient can no longer survive without assistance. Companion to FAST (finer functional substaging).');
     root.appendChild(select('Most appropriate GDS global stage', 'gds-stage', [
       ['1', 'Stage 1 — no cognitive decline'],
       ['2', 'Stage 2 — very mild decline (age-associated memory impairment)'],

@@ -64,7 +64,7 @@ const ANN_OPTS = [
 export const renderers = {
   // ----- 2.1 binet-cll -------------------------------------------------------
   'binet-cll'(root) {
-    note(root, 'Binet CLL stage (Binet 1981): A = < 3 involved areas with Hb ≥ 10 and platelets ≥ 100; B = ≥ 3 areas, counts preserved; C = Hb < 10 and/or platelets < 100. Five areas: cervical, axillary, inguinal nodes, spleen, liver. Near-neighbors: rai-cll.');
+    note(root, 'Binet CLL stage (Binet 1981): A = < 3 involved areas with Hb ≥ 10 and platelets ≥ 100; B = ≥ 3 areas, counts preserved; C = Hb < 10 and/or platelets < 100. Five areas: cervical, axillary, inguinal nodes, spleen, liver.');
     root.appendChild(num('Involved lymphoid areas (0–5)', 'binet-areas'));
     root.appendChild(num('Hemoglobin (g/dL)', 'binet-hb'));
     root.appendChild(num('Platelet count (×10⁹/L)', 'binet-platelets'));
@@ -83,7 +83,7 @@ export const renderers = {
 
   // ----- 2.2 rai-cll ---------------------------------------------------------
   'rai-cll'(root) {
-    note(root, 'Rai CLL stage (Rai 1975; modified risk grouping): 0 lymphocytosis only; I + lymphadenopathy; II + organomegaly; III + anemia (Hb < 11); IV + thrombocytopenia (platelets < 100). Low (0), intermediate (I–II), high (III–IV). Near-neighbors: binet-cll.');
+    note(root, 'Rai CLL stage (Rai 1975; modified risk grouping): 0 lymphocytosis only; I + lymphadenopathy; II + organomegaly; III + anemia (Hb < 11); IV + thrombocytopenia (platelets < 100). Low (0), intermediate (I–II), high (III–IV).');
     root.appendChild(checkField('Blood + marrow lymphocytosis (required)', 'rai-lymphocytosis'));
     root.appendChild(checkField('Lymphadenopathy', 'rai-lymphadenopathy'));
     root.appendChild(checkField('Spleen and/or liver enlargement', 'rai-organomegaly'));
@@ -105,7 +105,7 @@ export const renderers = {
 
   // ----- 2.3 ann-arbor -------------------------------------------------------
   'ann-arbor'(root) {
-    note(root, 'Ann Arbor stage, Lugano modification (Cheson 2014): I one region; II ≥ 2 regions same side; III both sides; IV disseminated. A/B suffix for B symptoms; E extranodal; S splenic. Limited (I–II) vs advanced (III–IV). Near-neighbors: flipi, nccn-ipi, hodgkin-ips.');
+    note(root, 'Ann Arbor stage, Lugano modification (Cheson 2014): I one region; II ≥ 2 regions same side; III both sides; IV disseminated. A/B suffix for B symptoms; E extranodal; S splenic. Limited (I–II) vs advanced (III–IV).');
     root.appendChild(pickField('Anatomic distribution', 'ann-distribution', ANN_OPTS));
     root.appendChild(checkField('B symptoms (fever, night sweats, ≥ 10% weight loss)', 'ann-bSymptoms'));
     root.appendChild(checkField('Extranodal extension (E)', 'ann-extranodal'));
@@ -125,7 +125,7 @@ export const renderers = {
 
   // ----- 2.4 flipi-2 ---------------------------------------------------------
   'flipi-2'(root) {
-    note(root, 'FLIPI-2 (Federico 2009): five factors, 1 point each — age > 60, elevated β₂-microglobulin, longest node > 6 cm, marrow involvement, Hb < 12. Low 0, intermediate 1–2, high 3–5. Uses β₂-microglobulin where the original FLIPI uses LDH and stage. Near-neighbors: flipi.');
+    note(root, 'FLIPI-2 (Federico 2009): five factors, 1 point each — age > 60, elevated β₂-microglobulin, longest node > 6 cm, marrow involvement, Hb < 12. Low 0, intermediate 1–2, high 3–5. Uses β₂-microglobulin where the original FLIPI uses LDH and stage.');
     root.appendChild(checkField('Age > 60 years', 'flipi2-ageOver60'));
     root.appendChild(checkField('Elevated β₂-microglobulin (above ULN)', 'flipi2-b2m'));
     root.appendChild(checkField('Longest involved node > 6 cm', 'flipi2-nodeOver6cm'));
@@ -147,7 +147,7 @@ export const renderers = {
 
   // ----- 2.5 hasford-cml -----------------------------------------------------
   'hasford-cml'(root) {
-    note(root, 'Hasford (Euro) CML score (Hasford 1998): weighted formula on age, spleen (cm below costal margin), platelets, and peripheral blast/eosinophil/basophil %. Low ≤ 780, intermediate 781–1480, high > 1480. An older comparator to sokal-cml. Near-neighbors: sokal-cml.');
+    note(root, 'Hasford (Euro) CML score (Hasford 1998): weighted formula on age, spleen (cm below costal margin), platelets, and peripheral blast/eosinophil/basophil %. Low ≤ 780, intermediate 781–1480, high > 1480. An older comparator to sokal-cml.');
     root.appendChild(num('Age (years)', 'hasford-age'));
     root.appendChild(num('Spleen (cm below costal margin)', 'hasford-spleen'));
     root.appendChild(num('Platelet count (×10⁹/L)', 'hasford-platelets'));

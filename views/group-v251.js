@@ -46,7 +46,7 @@ function render(o, r, valueLabel) {
 
 export const renderers = {
   'corrected-timi-frame-count'(root) {
-    note(root, 'Corrected TIMI frame count (Gibson 1996): frames to distal landmark, normalized to 30 fps; LAD divided by 1.7. Normal ~21. Near-neighbors: timi-stemi.');
+    note(root, 'Corrected TIMI frame count (Gibson 1996): frames to distal landmark, normalized to 30 fps; LAD divided by 1.7. Normal ~21.');
     root.appendChild(numInput('Frame count to distal landmark', 'ctfc-frames', { min: '0' }));
     root.appendChild(numInput('Acquisition frame rate (frames/s)', 'ctfc-fps', { min: '0' }));
     root.appendChild(select('Vessel', 'ctfc-vessel', [['other', 'RCA or LCx'], ['lad', 'LAD (÷ 1.7)']]));
@@ -57,7 +57,7 @@ export const renderers = {
     postureNote(root);
   },
   'tpe-qt-ratio'(root) {
-    note(root, 'Tp-e/QT ratio (Gupta 2008): T-peak-to-T-end / QT, a repolarization-dispersion marker. Reference ~0.21; > 0.25 increased. Near-neighbors: qtc-suite.');
+    note(root, 'Tp-e/QT ratio (Gupta 2008): T-peak-to-T-end / QT, a repolarization-dispersion marker. Reference ~0.21; > 0.25 increased.');
     root.appendChild(numInput('Tp-e interval (ms)', 'tpe-tpe', { min: '0' }));
     root.appendChild(numInput('QT interval (ms)', 'tpe-qt', { min: '0' }));
     const o = out(); root.appendChild(o);
@@ -67,7 +67,7 @@ export const renderers = {
     postureNote(root);
   },
   'spise'(root) {
-    note(root, 'SPISE (Paulmichl 2016) = 600 x HDL^0.185 / (TG^0.2 x BMI^1.338), lipids in mg/dL. < 5.4 suggests insulin resistance (adolescents). Near-neighbors: homa-ir, tyg-index.');
+    note(root, 'SPISE (Paulmichl 2016) = 600 x HDL^0.185 / (TG^0.2 x BMI^1.338), lipids in mg/dL. < 5.4 suggests insulin resistance (adolescents).');
     root.appendChild(numInput('HDL cholesterol (mg/dL)', 'spise-hdl', { min: '0' }));
     root.appendChild(numInput('Triglycerides (mg/dL)', 'spise-tg', { min: '0' }));
     root.appendChild(numInput('BMI (kg/m^2)', 'spise-bmi', { min: '0' }));
@@ -78,7 +78,7 @@ export const renderers = {
     postureNote(root);
   },
   'atherogenic-index-of-plasma'(root) {
-    note(root, 'Atherogenic index of plasma (Dobiasova 2001) = log10(TG / HDL), mmol/L. < 0.11 low, 0.11-0.21 intermediate, > 0.21 high CV risk. Near-neighbors: tyg-index, non-hdl-remnant.');
+    note(root, 'Atherogenic index of plasma (Dobiasova 2001) = log10(TG / HDL), mmol/L. < 0.11 low, 0.11-0.21 intermediate, > 0.21 high CV risk.');
     root.appendChild(numInput('Triglycerides (mmol/L)', 'aip-tg', { min: '0' }));
     root.appendChild(numInput('HDL cholesterol (mmol/L)', 'aip-hdl', { min: '0' }));
     const o = out(); root.appendChild(o);

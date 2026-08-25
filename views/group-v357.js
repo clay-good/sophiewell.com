@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'nyha-class'(root) {
-    note(root, 'NYHA (New York Heart Association) functional classification of heart failure. Pick the class from the patient\'s symptoms. I: no limitation; II: slight limitation, symptoms on ordinary activity; III: marked limitation, symptoms on less-than-ordinary activity; IV: symptoms at rest. Comfortable at rest in I-III. Used as an input to many cardiac risk scores. Near-neighbors: maggic-hf, euroscore-2.');
+    note(root, 'NYHA (New York Heart Association) functional classification of heart failure. Pick the class from the patient\'s symptoms. I: no limitation; II: slight limitation, symptoms on ordinary activity; III: marked limitation, symptoms on less-than-ordinary activity; IV: symptoms at rest. Comfortable at rest in I-III. Used as an input to many cardiac risk scores.');
     root.appendChild(select('NYHA class', 'nyha-class', [
       ['I', 'Class I - no limitation of physical activity'],
       ['II', 'Class II - slight limitation; symptoms on ordinary activity'],

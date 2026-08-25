@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'catterall-perthes'(root) {
-    note(root, 'Catterall classification (Catterall 1971) of Legg-Calve-Perthes disease (childhood osteonecrosis of the femoral head) — how much of the capital femoral epiphysis is involved. Pick the group. I anterior epiphysis only (best prognosis); II anterior and central, pillars preserved; III most of the epiphysis ("head within a head"); IV the entire epiphysis. More extensive involvement (III-IV) carries a worse prognosis. The "head-at-risk" signs are separate modifiers. Near-neighbors: ficat-arlet, lichtman-kienbock.');
+    note(root, 'Catterall classification (Catterall 1971) of Legg-Calve-Perthes disease (childhood osteonecrosis of the femoral head) — how much of the capital femoral epiphysis is involved. Pick the group. I anterior epiphysis only (best prognosis); II anterior and central, pillars preserved; III most of the epiphysis ("head within a head"); IV the entire epiphysis. More extensive involvement (III-IV) carries a worse prognosis. The "head-at-risk" signs are separate modifiers.');
     root.appendChild(select('Catterall group', 'catterall-group', [
       ['I', 'I — anterior epiphysis only (best prognosis)'],
       ['II', 'II — anterior and central, pillars preserved'],

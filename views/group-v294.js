@@ -38,7 +38,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'fast-dementia'(root) {
-    note(root, 'Functional Assessment Staging Tool (FAST) for dementia. Select the highest consecutive stage the patient has reached to see its functional descriptor. Stage 6 covers dressing through incontinence (6a–6e); stage 7 covers speech loss through loss of head control (7a–7f). At stage 7a or beyond, FAST plus a named medical complication is part of the Medicare dementia hospice-eligibility guideline. Near-neighbors: global-deterioration-scale, cdr-sob, bims.');
+    note(root, 'Functional Assessment Staging Tool (FAST) for dementia. Select the highest consecutive stage the patient has reached to see its functional descriptor. Stage 6 covers dressing through incontinence (6a–6e); stage 7 covers speech loss through loss of head control (7a–7f). At stage 7a or beyond, FAST plus a named medical complication is part of the Medicare dementia hospice-eligibility guideline.');
     root.appendChild(select('Highest FAST stage reached', 'fast-stage', [
       ['1', 'Stage 1 — no difficulty'],
       ['2', 'Stage 2 — subjective forgetfulness'],

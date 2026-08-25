@@ -84,7 +84,7 @@ const CDR_BOX4 = [
 export const renderers = {
   // ----- 2.1 bims ------------------------------------------------------------
   bims(root) {
-    note(root, 'Brief Interview for Mental Status (MDS 3.0 §C): the CMS-mandated bedside cognition interview. Score word repetition, temporal orientation, and delayed recall of the three words (sock / blue / bed). Summary 0–15: 13–15 intact, 8–12 moderate, 0–7 severe impairment. Near-neighbor: mini-cog.');
+    note(root, 'Brief Interview for Mental Status (MDS 3.0 §C): the CMS-mandated bedside cognition interview. Score word repetition, temporal orientation, and delayed recall of the three words (sock / blue / bed). Summary 0–15: 13–15 intact, 8–12 moderate, 0–7 severe impairment.');
     root.appendChild(pickField('Repetition of three words (first attempt)', 'bims-rep', BIMS_REP));
     root.appendChild(pickField('Able to report the correct year', 'bims-year', BIMS_YEAR));
     root.appendChild(pickField('Able to report the correct month', 'bims-month', BIMS_MONTH));
@@ -132,7 +132,7 @@ export const renderers = {
 
   // ----- 2.3 cdr-sob ---------------------------------------------------------
   'cdr-sob'(root) {
-    note(root, 'Clinical Dementia Rating — Sum of Boxes (Morris 1993; O\'Bryant 2008 staging): rate the six boxes and sum them, 0–18. Memory, orientation, judgment & problem-solving, community affairs, and home & hobbies score 0/0.5/1/2/3; personal care 0/1/2/3. 0 none, 0.5–4.0 questionable–very mild, 4.5–9.0 mild, 9.5–15.5 moderate, 16.0–18.0 severe. Near-neighbor: global-deterioration-scale.');
+    note(root, 'Clinical Dementia Rating — Sum of Boxes (Morris 1993; O\'Bryant 2008 staging): rate the six boxes and sum them, 0–18. Memory, orientation, judgment & problem-solving, community affairs, and home & hobbies score 0/0.5/1/2/3; personal care 0/1/2/3. 0 none, 0.5–4.0 questionable–very mild, 4.5–9.0 mild, 9.5–15.5 moderate, 16.0–18.0 severe.');
     root.appendChild(pickField('Memory', 'cdr-memory', CDR_BOX5));
     root.appendChild(pickField('Orientation', 'cdr-orientation', CDR_BOX5));
     root.appendChild(pickField('Judgment & problem-solving', 'cdr-judgment', CDR_BOX5));

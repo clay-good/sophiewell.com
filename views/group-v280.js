@@ -53,7 +53,7 @@ const HAQ_CATS = [
 
 export const renderers = {
   'haq-di'(root) {
-    note(root, 'HAQ-DI (Fries 1980) — the anchor measure of physical function in rheumatology: the mean of 8 functional categories, each 0–3. Check "aids/help" for a category to raise a 0 or 1 to 2. Needs ≥ 6 of 8 answered. Bands: ≤ 1 mild-moderate, > 1–2 moderate-severe, > 2 severe. Near-neighbors: das28, rapid3, basfi.');
+    note(root, 'HAQ-DI (Fries 1980) — the anchor measure of physical function in rheumatology: the mean of 8 functional categories, each 0–3. Check "aids/help" for a category to raise a 0 or 1 to 2. Needs ≥ 6 of 8 answered. Bands: ≤ 1 mild-moderate, > 1–2 moderate-severe, > 2 severe.');
     const ids = [];
     for (const [key, label] of HAQ_CATS) {
       root.appendChild(select(`${label} (difficulty)`, `haq-${key}`, DIFFICULTY));
@@ -69,7 +69,7 @@ export const renderers = {
     postureNote(root);
   },
   'asas-axspa'(root) {
-    note(root, 'ASAS classification criteria for axial spondyloarthritis (Rudwaleit 2009). Entry: back pain ≥ 3 months with onset < 45. Then the imaging arm (sacroiliitis + ≥ 1 SpA feature) OR the clinical arm (HLA-B27 + ≥ 2 other SpA features). A classification (study-enrollment) tool, not a diagnostic test. Near-neighbors: basdai, asdas, caspar.');
+    note(root, 'ASAS classification criteria for axial spondyloarthritis (Rudwaleit 2009). Entry: back pain ≥ 3 months with onset < 45. Then the imaging arm (sacroiliitis + ≥ 1 SpA feature) OR the clinical arm (HLA-B27 + ≥ 2 other SpA features). A classification (study-enrollment) tool, not a diagnostic test.');
     note(root, 'Entry criteria:');
     root.appendChild(check('Back pain ≥ 3 months', 'asas-bp'));
     root.appendChild(check('Age at onset < 45 years', 'asas-age'));

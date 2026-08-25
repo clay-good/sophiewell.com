@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'glogau-photoaging'(root) {
-    note(root, 'The Glogau classification of photoaging, by the severity of wrinkles, keratoses, and dyschromia. Pick the type. I: "no wrinkles" (mild pigment changes, minimal wrinkles); II: "wrinkles in motion" (early keratoses, dynamic wrinkles); III: "wrinkles at rest" (dyschromia, telangiectasias, static wrinkles); IV: "only wrinkles" (yellow-gray skin, prior malignancies, wrinkles throughout). Reports the type the clinician has determined, not a diagnosis or a treatment decision. Near-neighbor: fitzpatrick-skin-type.');
+    note(root, 'The Glogau classification of photoaging, by the severity of wrinkles, keratoses, and dyschromia. Pick the type. I: "no wrinkles" (mild pigment changes, minimal wrinkles); II: "wrinkles in motion" (early keratoses, dynamic wrinkles); III: "wrinkles at rest" (dyschromia, telangiectasias, static wrinkles); IV: "only wrinkles" (yellow-gray skin, prior malignancies, wrinkles throughout). Reports the type the clinician has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('Glogau type', 'glogau-type', [
       ['I', 'I - no wrinkles (early photoaging)'],
       ['II', 'II - wrinkles in motion (dynamic)'],

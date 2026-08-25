@@ -54,7 +54,7 @@ function wire(ids, run) {
 export const renderers = {
   // ----- 2.3 tor-rule --------------------------------------------------------
   'tor-rule'(root) {
-    note(root, 'Termination-of-Resuscitation rules (Morrison 2006/2007): field decision support for non-traumatic adult OHCA. BLS TOR needs all three absent (EMS-witnessed, ROSC before transport, shock delivered); ALS TOR adds two (bystander-witnessed, bystander CPR). Never a mandate to stop. Near-neighbors: go-far, four-score.');
+    note(root, 'Termination-of-Resuscitation rules (Morrison 2006/2007): field decision support for non-traumatic adult OHCA. BLS TOR needs all three absent (EMS-witnessed, ROSC before transport, shock delivered); ALS TOR adds two (bystander-witnessed, bystander CPR). Never a mandate to stop.');
     root.appendChild(selectField('Rule', 'tor-rule', [
       { value: 'bls', text: 'BLS TOR (3 criteria)' },
       { value: 'als', text: 'ALS TOR (5 criteria)' },
@@ -80,7 +80,7 @@ export const renderers = {
 
   // ----- 2.5 rems ------------------------------------------------------------
   rems(root) {
-    note(root, 'Rapid Emergency Medicine Score (Olsson 2004): an abbreviated-APACHE-II in-hospital-mortality score needing no labs — age, MAP, heart rate, respiratory rate, SpO₂, and GCS (age 0–6, the five physiologic variables 0–4 each; total 0–26). Risk: low < 6, medium 6–13, high > 13. Near-neighbors: mews, apache2.');
+    note(root, 'Rapid Emergency Medicine Score (Olsson 2004): an abbreviated-APACHE-II in-hospital-mortality score needing no labs — age, MAP, heart rate, respiratory rate, SpO₂, and GCS (age 0–6, the five physiologic variables 0–4 each; total 0–26). Risk: low < 6, medium 6–13, high > 13.');
     root.appendChild(num('Age (years)', 'rems-age', { min: '0' }));
     root.appendChild(num('Mean arterial pressure (mmHg)', 'rems-map', { min: '0' }));
     root.appendChild(num('Heart rate (bpm)', 'rems-hr', { min: '0' }));
@@ -100,7 +100,7 @@ export const renderers = {
 
   // ----- 2.4 cart-score ------------------------------------------------------
   'cart-score'(root) {
-    note(root, 'Cardiac Arrest Risk Triage (Churpek 2012): a vital-sign early-warning model from four ward observations — respiratory rate, heart rate, diastolic BP, and age — banded to 0–57. A score > 20 marks markedly elevated risk of ward cardiac arrest within 48 hours; it outperformed MEWS in its derivation. Near-neighbors: mews, rems.');
+    note(root, 'Cardiac Arrest Risk Triage (Churpek 2012): a vital-sign early-warning model from four ward observations — respiratory rate, heart rate, diastolic BP, and age — banded to 0–57. A score > 20 marks markedly elevated risk of ward cardiac arrest within 48 hours; it outperformed MEWS in its derivation.');
     root.appendChild(num('Respiratory rate (breaths/min)', 'cart-rr', { min: '0' }));
     root.appendChild(num('Heart rate (bpm)', 'cart-hr', { min: '0' }));
     root.appendChild(num('Diastolic blood pressure (mmHg)', 'cart-dbp', { min: '0' }));

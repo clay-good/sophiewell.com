@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'barrow-ccf'(root) {
-    note(root, 'The Barrow classification of carotid-cavernous fistula (CCF), by the arterial supply and flow. Pick the type. A: direct high-flow ICA-to-cavernous-sinus shunt (often traumatic); B: dural shunt from ICA meningeal branches; C: dural shunt from ECA meningeal branches; D: dural shunt from both. B/C/D are the indirect (dural) fistulas. Reports the type the clinician has determined, not a diagnosis or a treatment decision. Near-neighbor: spetzler-ponce.');
+    note(root, 'The Barrow classification of carotid-cavernous fistula (CCF), by the arterial supply and flow. Pick the type. A: direct high-flow ICA-to-cavernous-sinus shunt (often traumatic); B: dural shunt from ICA meningeal branches; C: dural shunt from ECA meningeal branches; D: dural shunt from both. B/C/D are the indirect (dural) fistulas. Reports the type the clinician has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('Barrow type', 'barrow-type', [
       ['A', 'A - direct ICA-to-cavernous-sinus shunt (high-flow)'],
       ['B', 'B - dural shunt from ICA meningeal branches'],

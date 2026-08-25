@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'kadish'(root) {
-    note(root, 'The Kadish staging of esthesioneuroblastoma (olfactory neuroblastoma), by the anatomic extent of the tumor. Pick the stage. A: confined to the nasal cavity; B: nasal cavity plus paranasal sinuses; C: beyond the sinuses (orbit, skull base, intracranial); D: metastasis to cervical nodes or distant sites (Morita modification). Reports the stage the clinician has determined, not a diagnosis or a treatment decision. Near-neighbor: cotton-myer.');
+    note(root, 'The Kadish staging of esthesioneuroblastoma (olfactory neuroblastoma), by the anatomic extent of the tumor. Pick the stage. A: confined to the nasal cavity; B: nasal cavity plus paranasal sinuses; C: beyond the sinuses (orbit, skull base, intracranial); D: metastasis to cervical nodes or distant sites (Morita modification). Reports the stage the clinician has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('Kadish stage', 'kadish-stage', [
       ['A', 'A - confined to the nasal cavity'],
       ['B', 'B - nasal cavity plus paranasal sinuses'],

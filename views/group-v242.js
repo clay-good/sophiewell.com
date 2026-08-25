@@ -46,7 +46,7 @@ function render(o, r, valueLabel) {
 
 export const renderers = {
   'heat-index'(root) {
-    note(root, 'NWS heat index (Rothfusz): apparent temperature from air temp (F) and humidity (%). Caution 80-90, danger 103-124, extreme danger >= 125 F. Near-neighbors: humidex.');
+    note(root, 'NWS heat index (Rothfusz): apparent temperature from air temp (F) and humidity (%). Caution 80-90, danger 103-124, extreme danger >= 125 F.');
     root.appendChild(numInput('Air temperature (F)', 'hi-temp'));
     root.appendChild(numInput('Relative humidity (%)', 'hi-rh', { min: '0', max: '100' }));
     const o = out(); root.appendChild(o);
@@ -56,7 +56,7 @@ export const renderers = {
     postureNote(root);
   },
   'humidex'(root) {
-    note(root, 'Canadian humidex (Masterton 1979) = air temp (C) + 0.5555 x (vapor pressure - 10). 40-45 great discomfort, >= 54 heat stroke imminent. Near-neighbors: heat-index.');
+    note(root, 'Canadian humidex (Masterton 1979) = air temp (C) + 0.5555 x (vapor pressure - 10). 40-45 great discomfort, >= 54 heat stroke imminent.');
     root.appendChild(numInput('Air temperature (C)', 'hx-temp'));
     root.appendChild(numInput('Dewpoint (C)', 'hx-dew'));
     const o = out(); root.appendChild(o);
@@ -66,7 +66,7 @@ export const renderers = {
     postureNote(root);
   },
   'wind-chill'(root) {
-    note(root, 'Wind-chill index (2001 JAG/TI): Twc = 13.12 + 0.6215·Ta - 11.37·V^0.16 + 0.3965·Ta·V^0.16 (C, km/h). <= -27 C high frostbite risk. Near-neighbors: heat-index.');
+    note(root, 'Wind-chill index (2001 JAG/TI): Twc = 13.12 + 0.6215·Ta - 11.37·V^0.16 + 0.3965·Ta·V^0.16 (C, km/h). <= -27 C high frostbite risk.');
     root.appendChild(numInput('Air temperature (C)', 'wc-temp'));
     root.appendChild(numInput('Wind speed (km/h)', 'wc-wind', { min: '0' }));
     const o = out(); root.appendChild(o);
@@ -76,7 +76,7 @@ export const renderers = {
     postureNote(root);
   },
   'wbgt'(root) {
-    note(root, 'Wet-bulb globe temperature (ISO 7243): outdoor = 0.7·NWB + 0.2·globe + 0.1·dry; indoor = 0.7·NWB + 0.3·dry. Maps to work-rest flags. Near-neighbors: heat-index.');
+    note(root, 'Wet-bulb globe temperature (ISO 7243): outdoor = 0.7·NWB + 0.2·globe + 0.1·dry; indoor = 0.7·NWB + 0.3·dry. Maps to work-rest flags.');
     root.appendChild(select('Setting', 'wbgt-setting', [['outdoor', 'Outdoor (in sun)'], ['indoor', 'Indoor / shade']]));
     root.appendChild(numInput('Natural wet-bulb temperature', 'wbgt-nwb'));
     root.appendChild(numInput('Globe temperature (outdoor only)', 'wbgt-globe'));

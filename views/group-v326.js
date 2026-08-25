@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'o-rads'(root) {
-    note(root, 'ACR O-RADS US v2022 risk categories (ovarian-adnexal ultrasound). Pick the risk category. 1–2 are normal or almost certainly benign; 3 low risk; 4 intermediate; 5 high risk. Management is guidance modified by symptoms and history. Near-neighbors: bi-rads.');
+    note(root, 'ACR O-RADS US v2022 risk categories (ovarian-adnexal ultrasound). Pick the risk category. 1–2 are normal or almost certainly benign; 3 low risk; 4 intermediate; 5 high risk. Management is guidance modified by symptoms and history.');
     root.appendChild(select('O-RADS risk category', 'orads-cat', [
       ['0', '0 — incomplete evaluation'],
       ['1', '1 — normal premenopausal ovary (0%)'],

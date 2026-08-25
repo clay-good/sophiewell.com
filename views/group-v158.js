@@ -70,7 +70,7 @@ const EE_SITE_OPTS = [
 export const renderers = {
   // ----- 2.1 lv-mass-index ---------------------------------------------------
   'lv-mass-index'(root) {
-    note(root, 'LV mass (Devereux 1986) with the ASE/EACVI (Lang 2015) geometry partitions. LV mass = 0.8·{1.04·[(LVIDd + PWTd + IVSd)³ − LVIDd³]} + 0.6; LVMI = mass/BSA; RWT = 2·PWTd/LVIDd. Geometry combines RWT 0.42 with the sex-specific LVMI limit (men > 115, women > 95 g/m²). Near-neighbors: aortic-valve-area, lvh-criteria, bw-bsa-suite.');
+    note(root, 'LV mass (Devereux 1986) with the ASE/EACVI (Lang 2015) geometry partitions. LV mass = 0.8·{1.04·[(LVIDd + PWTd + IVSd)³ − LVIDd³]} + 0.6; LVMI = mass/BSA; RWT = 2·PWTd/LVIDd. Geometry combines RWT 0.42 with the sex-specific LVMI limit (men > 115, women > 95 g/m²).');
     root.appendChild(num('LV internal diameter, end-diastole LVIDd (cm)', 'lvmi-lvidd'));
     root.appendChild(num('Posterior-wall thickness, diastole PWTd (cm)', 'lvmi-pwtd'));
     root.appendChild(num('Septal-wall thickness, diastole IVSd (cm)', 'lvmi-ivsd'));
@@ -94,7 +94,7 @@ export const renderers = {
 
   // ----- 2.2 la-volume-index -------------------------------------------------
   'la-volume-index'(root) {
-    note(root, 'Left-atrial volume index (Lang 2015), biplane area-length: LA volume = 0.85·(A1·A2)/L, where A1 = A4C LA area, A2 = A2C LA area, L = the shorter LA length; LAVI = volume/BSA. Bands (mL/m²): normal ≤ 34, mild 35–41, moderate 42–48, severe > 48. Near-neighbors: aortic-valve-area, mitral-e-e-prime.');
+    note(root, 'Left-atrial volume index (Lang 2015), biplane area-length: LA volume = 0.85·(A1·A2)/L, where A1 = A4C LA area, A2 = A2C LA area, L = the shorter LA length; LAVI = volume/BSA. Bands (mL/m²): normal ≤ 34, mild 35–41, moderate 42–48, severe > 48.');
     root.appendChild(num('Apical 4-chamber LA area A1 (cm²)', 'lavi-a1'));
     root.appendChild(num('Apical 2-chamber LA area A2 (cm²)', 'lavi-a2'));
     root.appendChild(num('LA length L — the shorter of the two (cm)', 'lavi-l'));
@@ -115,7 +115,7 @@ export const renderers = {
 
   // ----- 2.3 teichholz-lvef --------------------------------------------------
   'teichholz-lvef'(root) {
-    note(root, 'Teichholz LVEF & fractional shortening (Teichholz 1976; ASE 2015 bands). V = 7·D³/(2.4 + D); EDV uses LVIDd, ESV uses LVIDs; LVEF = (EDV − ESV)/EDV; FS = (LVIDd − LVIDs)/LVIDd. Dimension-derived — biplane Simpson is preferred when wall motion is regional. Near-neighbors: la-volume-index, mitral-e-e-prime.');
+    note(root, 'Teichholz LVEF & fractional shortening (Teichholz 1976; ASE 2015 bands). V = 7·D³/(2.4 + D); EDV uses LVIDd, ESV uses LVIDs; LVEF = (EDV − ESV)/EDV; FS = (LVIDd − LVIDs)/LVIDd. Dimension-derived — biplane Simpson is preferred when wall motion is regional.');
     root.appendChild(num('LV internal diameter, end-diastole LVIDd (cm)', 'teich-lvidd'));
     root.appendChild(num('LV internal diameter, end-systole LVIDs (cm)', 'teich-lvids'));
     root.appendChild(pickField('Sex', 'teich-sex', SEX_OPTS));
@@ -135,7 +135,7 @@ export const renderers = {
 
   // ----- 2.4 rvsp-pasp -------------------------------------------------------
   'rvsp-pasp'(root) {
-    note(root, 'RV systolic pressure / PASP from the tricuspid-regurgitation jet (Yock 1984): RVSP = 4·(TR Vmax)² + RAP (simplified Bernoulli). Equals PASP absent pulmonic stenosis / RVOT obstruction. RAP from the IVC: small/collapsing 3, intermediate 8, dilated/non-collapsing 15 mmHg. Near-neighbors: ivc-fluid-responsiveness, mitral-e-e-prime.');
+    note(root, 'RV systolic pressure / PASP from the tricuspid-regurgitation jet (Yock 1984): RVSP = 4·(TR Vmax)² + RAP (simplified Bernoulli). Equals PASP absent pulmonic stenosis / RVOT obstruction. RAP from the IVC: small/collapsing 3, intermediate 8, dilated/non-collapsing 15 mmHg.');
     root.appendChild(num('Peak TR jet velocity Vmax (m/s)', 'rvsp-vmax'));
     root.appendChild(pickField('Estimated right-atrial pressure (from IVC)', 'rvsp-rap', RAP_OPTS));
     const o = out(); root.appendChild(o);
@@ -154,7 +154,7 @@ export const renderers = {
 
   // ----- 2.5 mitral-e-e-prime ------------------------------------------------
   'mitral-e-e-prime'(root) {
-    note(root, 'E/e′, the LV filling-pressure estimate (Nagueh 2016): E/e′ = mitral E (cm/s) ÷ tissue-Doppler e′ (cm/s). Average E/e′: < 9 normal, 9–14 indeterminate, > 14 elevated. Single-site: septal > 15, lateral > 13 elevated. Near-neighbors: la-volume-index, rvsp-pasp.');
+    note(root, 'E/e′, the LV filling-pressure estimate (Nagueh 2016): E/e′ = mitral E (cm/s) ÷ tissue-Doppler e′ (cm/s). Average E/e′: < 9 normal, 9–14 indeterminate, > 14 elevated. Single-site: septal > 15, lateral > 13 elevated.');
     root.appendChild(num('Mitral-inflow early-diastolic velocity E (cm/s)', 'ee-e'));
     root.appendChild(num('Tissue-Doppler e′ velocity (cm/s)', 'ee-eprime'));
     root.appendChild(pickField('e′ site', 'ee-site', EE_SITE_OPTS));

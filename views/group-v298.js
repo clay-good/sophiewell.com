@@ -35,7 +35,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'concussion-rts'(root) {
-    note(root, 'Graduated Return-to-Sport (RTS) strategy after sport-related concussion (Amsterdam 2022 consensus). Select the step to see the exercise strategy, the activity, the goal, and the progression gates. Each step typically takes a minimum of 24 hours; Steps 4–6 begin only after symptoms have resolved. Near-neighbors: gcs, canadian-ct-head.');
+    note(root, 'Graduated Return-to-Sport (RTS) strategy after sport-related concussion (Amsterdam 2022 consensus). Select the step to see the exercise strategy, the activity, the goal, and the progression gates. Each step typically takes a minimum of 24 hours; Steps 4–6 begin only after symptoms have resolved.');
     root.appendChild(select('Return-to-sport step', 'crts-step', [
       ['1', 'Step 1 — Symptom-limited activity'],
       ['2', 'Step 2 — Light/moderate aerobic exercise'],

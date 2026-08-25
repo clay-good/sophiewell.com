@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'mrc-power'(root) {
-    note(root, 'The Medical Research Council (MRC) muscle-power grade, the standard 0-5 bedside grading of the strength of a single muscle or movement. Pick the grade. 0: no contraction; 1: a flicker or trace; 2: active movement with gravity eliminated; 3: against gravity; 4: against gravity and resistance; 5: normal power. Grade 4 is sometimes subdivided (4-/4/4+). It is the unit the MRC sum score aggregates. Near-neighbor: mrc-sum-score.');
+    note(root, 'The Medical Research Council (MRC) muscle-power grade, the standard 0-5 bedside grading of the strength of a single muscle or movement. Pick the grade. 0: no contraction; 1: a flicker or trace; 2: active movement with gravity eliminated; 3: against gravity; 4: against gravity and resistance; 5: normal power. Grade 4 is sometimes subdivided (4-/4/4+). It is the unit the MRC sum score aggregates.');
     root.appendChild(select('MRC muscle-power grade', 'mrc-grade', [
       ['0', '0 - no contraction'],
       ['1', '1 - a flicker or trace of contraction'],

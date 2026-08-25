@@ -55,7 +55,7 @@ const G14 = [['1', '1 (normal/mild)'], ['2', '2'], ['3', '3'], ['4', '4 (severe)
 
 export const renderers = {
   'romhilt-estes'(root) {
-    note(root, 'Romhilt-Estes LVH score (1968): voltage 3, ST-T strain 3 (1 on digitalis), LA abnormality 3, LAD 2, QRS >= 90 ms 1, intrinsicoid 1. >= 5 definite LVH. Near-neighbors: lvh-criteria.');
+    note(root, 'Romhilt-Estes LVH score (1968): voltage 3, ST-T strain 3 (1 on digitalis), LA abnormality 3, LAD 2, QRS >= 90 ms 1, intrinsicoid 1. >= 5 definite LVH.');
     root.appendChild(check('Voltage criterion met (3)', 're-volt'));
     root.appendChild(select('ST-T strain pattern', 're-stt', [['0', 'None (0)'], ['3', 'Typical, not on digitalis (3)'], ['1', 'Typical, on digitalis (1)']]));
     root.appendChild(check('Left atrial abnormality (3)', 're-la'));
@@ -69,7 +69,7 @@ export const renderers = {
     postureNote(root);
   },
   'wilkins-score'(root) {
-    note(root, 'Wilkins mitral-valve echo score (1988): mobility + thickening + calcification + subvalvular, each 1-4 (4-16). <= 8 favorable for balloon valvuloplasty. Near-neighbors: mitral-valve-area-pht.');
+    note(root, 'Wilkins mitral-valve echo score (1988): mobility + thickening + calcification + subvalvular, each 1-4 (4-16). <= 8 favorable for balloon valvuloplasty.');
     root.appendChild(select('Leaflet mobility', 'wk-mob', G14));
     root.appendChild(select('Leaflet thickening', 'wk-thick', G14));
     root.appendChild(select('Leaflet calcification', 'wk-calc', G14));
@@ -81,7 +81,7 @@ export const renderers = {
     postureNote(root);
   },
   'mitral-valve-area-pht'(root) {
-    note(root, 'Mitral valve area = 220 / pressure half-time (ms). > 1.5 mild, 1.0-1.5 moderate, < 1.0 severe MS. Near-neighbors: wilkins-score.');
+    note(root, 'Mitral valve area = 220 / pressure half-time (ms). > 1.5 mild, 1.0-1.5 moderate, < 1.0 severe MS.');
     root.appendChild(numInput('Pressure half-time (ms)', 'mva-pht', { min: '0' }));
     const o = out(); root.appendChild(o);
     wire(['mva-pht'], () => safe(o, () => {
@@ -90,7 +90,7 @@ export const renderers = {
     postureNote(root);
   },
   'aortic-dvi'(root) {
-    note(root, 'Aortic dimensionless index = LVOT VTI / aortic-valve VTI (or peak velocities). <= 0.25 severe, 0.25-0.50 moderate, > 0.50 mild AS. Near-neighbors: aortic-valve-area.');
+    note(root, 'Aortic dimensionless index = LVOT VTI / aortic-valve VTI (or peak velocities). <= 0.25 severe, 0.25-0.50 moderate, > 0.50 mild AS.');
     root.appendChild(numInput('LVOT VTI (or peak velocity)', 'dvi-lvot', { min: '0' }));
     root.appendChild(numInput('Aortic-valve VTI (or peak velocity)', 'dvi-av', { min: '0' }));
     const o = out(); root.appendChild(o);
@@ -100,7 +100,7 @@ export const renderers = {
     postureNote(root);
   },
   'rate-pressure-product'(root) {
-    note(root, 'Rate-pressure product = heart rate x systolic BP; a myocardial oxygen-demand surrogate. Near-neighbors: map.');
+    note(root, 'Rate-pressure product = heart rate x systolic BP; a myocardial oxygen-demand surrogate.');
     root.appendChild(numInput('Heart rate (bpm)', 'rpp-hr', { min: '0' }));
     root.appendChild(numInput('Systolic BP (mmHg)', 'rpp-sbp', { min: '0' }));
     const o = out(); root.appendChild(o);

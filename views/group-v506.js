@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'jerger-tympanogram'(root) {
-    note(root, 'The Jerger classification of tympanogram shapes, by the peak pressure and peak compliance of the tracing. Pick the type. A: normal peak, normal pressure and compliance; As: shallow peak, reduced compliance (a stiff system); Ad: deep peak, abnormally high compliance; B: flat with no peak; C: peak at significantly negative pressure. The cause associations are the classic ones and are descriptive only, and type B is read together with the ear-canal volume. Reports the type read from the tracing, not a diagnosis, a hearing-loss severity, or a decision about tubes. Near-neighbor: sade-retraction.');
+    note(root, 'The Jerger classification of tympanogram shapes, by the peak pressure and peak compliance of the tracing. Pick the type. A: normal peak, normal pressure and compliance; As: shallow peak, reduced compliance (a stiff system); Ad: deep peak, abnormally high compliance; B: flat with no peak; C: peak at significantly negative pressure. The cause associations are the classic ones and are descriptive only, and type B is read together with the ear-canal volume. Reports the type read from the tracing, not a diagnosis, a hearing-loss severity, or a decision about tubes.');
     root.appendChild(select('Tympanogram type', 'jerger-type', [
       ['A', 'A - normal peak, normal pressure and compliance'],
       ['As', 'As - shallow peak, reduced compliance'],

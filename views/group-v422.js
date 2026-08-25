@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'sun-ac-flare'(root) {
-    note(root, 'SUN (Standardization of Uveitis Nomenclature) anterior chamber flare grade, the grading of aqueous flare (the scatter of the slit-lamp beam by anterior-chamber protein). Pick the grade. 0: none; 1+: faint; 2+: moderate (iris and lens details clear); 3+: marked (iris and lens details hazy); 4+: intense (fibrin or plasmoid aqueous). Grades flare (protein leak), a separate scale from anterior chamber cells. Near-neighbors: sun-ac-cell, shaffer-angle.');
+    note(root, 'SUN (Standardization of Uveitis Nomenclature) anterior chamber flare grade, the grading of aqueous flare (the scatter of the slit-lamp beam by anterior-chamber protein). Pick the grade. 0: none; 1+: faint; 2+: moderate (iris and lens details clear); 3+: marked (iris and lens details hazy); 4+: intense (fibrin or plasmoid aqueous). Grades flare (protein leak), a separate scale from anterior chamber cells.');
     root.appendChild(select('SUN anterior chamber flare grade', 'sunf-grade', [
       ['0', '0 - none'],
       ['1+', '1+ - faint'],

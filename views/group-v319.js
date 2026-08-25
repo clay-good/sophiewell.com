@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'ccs-angina'(root) {
-    note(root, 'Canadian Cardiovascular Society (CCS) angina grade (Campeau 1976): the angina analog of the NYHA functional class. Pick the class from the activity that provokes angina. Classes III–IV (angina on mild exertion or at rest) mark severe limitation. Near-neighbors: euroscore2.');
+    note(root, 'Canadian Cardiovascular Society (CCS) angina grade (Campeau 1976): the angina analog of the NYHA functional class. Pick the class from the activity that provokes angina. Classes III–IV (angina on mild exertion or at rest) mark severe limitation.');
     root.appendChild(select('CCS angina class (activity that provokes angina)', 'ccs-grade', [
       ['1', 'I — only strenuous/rapid/prolonged exertion; ordinary activity does not'],
       ['2', 'II — slight limitation; hurrying, uphill, after meals, cold, > 2 blocks'],

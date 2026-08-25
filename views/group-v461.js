@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'debakey'(root) {
-    note(root, 'The DeBakey classification of aortic dissection, by the site of origin and the extent of the flap. Pick the type. I: ascending aorta, extending through the arch into the descending (and often abdominal) aorta; II: confined to the ascending aorta; IIIa: descending thoracic aorta, limited above the diaphragm; IIIb: descending thoracic aorta, extending below the diaphragm. Types I and II are Stanford A; type III is Stanford B. Reports the type the clinician has determined, not a diagnosis or a treatment decision. Near-neighbor: add-rs.');
+    note(root, 'The DeBakey classification of aortic dissection, by the site of origin and the extent of the flap. Pick the type. I: ascending aorta, extending through the arch into the descending (and often abdominal) aorta; II: confined to the ascending aorta; IIIa: descending thoracic aorta, limited above the diaphragm; IIIb: descending thoracic aorta, extending below the diaphragm. Types I and II are Stanford A; type III is Stanford B. Reports the type the clinician has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('DeBakey type', 'debakey-type', [
       ['I', 'I - ascending + arch + descending'],
       ['II', 'II - confined to the ascending aorta'],

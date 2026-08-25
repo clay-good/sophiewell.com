@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'spetzler-ponce'(root) {
-    note(root, 'Spetzler-Ponce classification of a cerebral AVM - a 3-tier simplification of the Spetzler-Martin grade. Pick the class. A: Spetzler-Martin grade I-II (lowest surgical risk); B: grade III (intermediate); C: grade IV-V (highest surgical risk). Near-neighbors: spetzler-martin.');
+    note(root, 'Spetzler-Ponce classification of a cerebral AVM - a 3-tier simplification of the Spetzler-Martin grade. Pick the class. A: Spetzler-Martin grade I-II (lowest surgical risk); B: grade III (intermediate); C: grade IV-V (highest surgical risk).');
     root.appendChild(select('Spetzler-Ponce class', 'sp-class', [
       ['A', 'Class A - Spetzler-Martin grade I-II'],
       ['B', 'Class B - Spetzler-Martin grade III'],

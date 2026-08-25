@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'gmfcs'(root) {
-    note(root, 'The Gross Motor Function Classification System (GMFCS) for cerebral palsy, by self-initiated movement (emphasizing sitting and walking). Pick the level. I: walks without limitations; II: walks with limitations; III: walks using a hand-held mobility device; IV: self-mobility with limitations, may use powered mobility; V: transported in a manual wheelchair. Reports the level the clinician has determined, not a diagnosis or a treatment decision. Near-neighbor: sarnat-hie.');
+    note(root, 'The Gross Motor Function Classification System (GMFCS) for cerebral palsy, by self-initiated movement (emphasizing sitting and walking). Pick the level. I: walks without limitations; II: walks with limitations; III: walks using a hand-held mobility device; IV: self-mobility with limitations, may use powered mobility; V: transported in a manual wheelchair. Reports the level the clinician has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('GMFCS level', 'gmfcs-level', [
       ['I', 'I - walks without limitations'],
       ['II', 'II - walks with limitations'],

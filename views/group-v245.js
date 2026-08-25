@@ -37,7 +37,7 @@ function render(o, r, valueLabel) {
 
 export const renderers = {
   'shine-lal-index'(root) {
-    note(root, 'Shine & Lal index (1977) = (MCV^2 x MCH) / 100. < 1530 suggests thalassemia trait. Near-neighbors: mentzer, green-king-index.');
+    note(root, 'Shine & Lal index (1977) = (MCV^2 x MCH) / 100. < 1530 suggests thalassemia trait.');
     root.appendChild(numInput('MCV (fL)', 'sl-mcv', { min: '0' }));
     root.appendChild(numInput('MCH (pg)', 'sl-mch', { min: '0' }));
     const o = out(); root.appendChild(o);
@@ -47,7 +47,7 @@ export const renderers = {
     postureNote(root);
   },
   'green-king-index'(root) {
-    note(root, 'Green & King index (1989) = (MCV^2 x RDW) / (Hb x 100). < 65 suggests thalassemia trait. Near-neighbors: shine-lal-index, mentzer.');
+    note(root, 'Green & King index (1989) = (MCV^2 x RDW) / (Hb x 100). < 65 suggests thalassemia trait.');
     root.appendChild(numInput('MCV (fL)', 'gk-mcv', { min: '0' }));
     root.appendChild(numInput('RDW (%)', 'gk-rdw', { min: '0' }));
     root.appendChild(numInput('Hemoglobin (g/dL)', 'gk-hb', { min: '0' }));
@@ -58,7 +58,7 @@ export const renderers = {
     postureNote(root);
   },
   'percent-platelet-recovery'(root) {
-    note(root, 'PPR = [(post - pre) x blood volume] / platelets transfused. > 30% at 1 h = good response; low PPR suggests refractoriness. Near-neighbors: cci-platelet.');
+    note(root, 'PPR = [(post - pre) x blood volume] / platelets transfused. > 30% at 1 h = good response; low PPR suggests refractoriness.');
     root.appendChild(numInput('Pre-transfusion platelet count (x10^9/L)', 'ppr-pre', { min: '0' }));
     root.appendChild(numInput('Post-transfusion platelet count (x10^9/L)', 'ppr-post', { min: '0' }));
     root.appendChild(numInput('Blood volume (L)', 'ppr-bv', { min: '0' }));
@@ -70,7 +70,7 @@ export const renderers = {
     postureNote(root);
   },
   'ihs4'(root) {
-    note(root, 'IHS4 (Zouboulis 2017) = nodules x 1 + abscesses x 2 + draining tunnels x 4. 0-3 mild, 4-10 moderate, >= 11 severe HS. Near-neighbors: hurley-stage, hiscr.');
+    note(root, 'IHS4 (Zouboulis 2017) = nodules x 1 + abscesses x 2 + draining tunnels x 4. 0-3 mild, 4-10 moderate, >= 11 severe HS.');
     root.appendChild(numInput('Inflammatory nodules (count)', 'ihs4-nod', { min: '0' }));
     root.appendChild(numInput('Abscesses (count)', 'ihs4-abs', { min: '0' }));
     root.appendChild(numInput('Draining tunnels (count)', 'ihs4-tun', { min: '0' }));

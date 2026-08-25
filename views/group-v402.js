@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'lauge-hansen'(root) {
-    note(root, 'Lauge-Hansen classification of a rotational ankle fracture, by mechanism (foot position + deforming force) - the mechanistic companion to the anatomic Danis-Weber classification. Pick the mechanism. SA: supination-adduction; SER: supination-external-rotation (most common, Weber B); PAB: pronation-abduction (Weber C); PER: pronation-external-rotation (Weber C); PD: pronation-dorsiflexion (pilon-type). Near-neighbors: weber-ankle.');
+    note(root, 'Lauge-Hansen classification of a rotational ankle fracture, by mechanism (foot position + deforming force) - the mechanistic companion to the anatomic Danis-Weber classification. Pick the mechanism. SA: supination-adduction; SER: supination-external-rotation (most common, Weber B); PAB: pronation-abduction (Weber C); PER: pronation-external-rotation (Weber C); PD: pronation-dorsiflexion (pilon-type).');
     root.appendChild(select('Lauge-Hansen mechanism', 'lh-mech', [
       ['SA', 'SA - supination-adduction'],
       ['SER', 'SER - supination-external-rotation (most common)'],

@@ -70,7 +70,7 @@ const VAG_OPTS = [
 export const renderers = {
   // ----- 2.1 findrisc --------------------------------------------------------
   findrisc(root) {
-    note(root, 'FINDRISC (Lindström 2003): eight-item type-2-diabetes screening score (0–26). Bands: < 7 low, 7–11 slightly elevated, 12–14 moderate, 15–20 high, > 20 very high 10-year risk. Near-neighbors: the metabolic tiles.');
+    note(root, 'FINDRISC (Lindström 2003): eight-item type-2-diabetes screening score (0–26). Bands: < 7 low, 7–11 slightly elevated, 12–14 moderate, 15–20 high, > 20 very high 10-year risk.');
     root.appendChild(num('Age (years)', 'findrisc-age'));
     root.appendChild(num('BMI (kg/m²)', 'findrisc-bmi'));
     root.appendChild(selectField('Sex (sets the waist bands)', 'findrisc-sex', SEX_OPTS));
@@ -96,7 +96,7 @@ export const renderers = {
 
   // ----- 2.2 grobman-vbac ----------------------------------------------------
   'grobman-vbac'(root) {
-    note(root, 'Grobman race-free 2021 VBAC calculator (AJOG 2021): predicts the probability of a successful trial of labor after cesarean. The 2021 model uses weight + height (not BMI) and removed the race/ethnicity terms. The race-free successor to flamm-vbac. Near-neighbors: flamm-vbac.');
+    note(root, 'Grobman race-free 2021 VBAC calculator (AJOG 2021): predicts the probability of a successful trial of labor after cesarean. The 2021 model uses weight + height (not BMI) and removed the race/ethnicity terms. The race-free successor to flamm-vbac.');
     root.appendChild(num('Maternal age (years)', 'grobman-age'));
     root.appendChild(num('Pre-pregnancy weight (kg)', 'grobman-weight'));
     root.appendChild(num('Height (cm)', 'grobman-height'));
@@ -118,7 +118,7 @@ export const renderers = {
 
   // ----- 2.3 marburg-heart-score ---------------------------------------------
   'marburg-heart-score'(root) {
-    note(root, 'Marburg Heart Score (Bösner 2010): rules out CAD in primary-care chest pain. Five criteria each 1 point; 0–2 makes CAD unlikely, ≥ 3 warrants further evaluation. Near-neighbors: heart, edacs.');
+    note(root, 'Marburg Heart Score (Bösner 2010): rules out CAD in primary-care chest pain. Five criteria each 1 point; 0–2 makes CAD unlikely, ≥ 3 warrants further evaluation.');
     root.appendChild(checkField('Female ≥ 65 or male ≥ 55 (age/sex)', 'marburg-ageSex'));
     root.appendChild(checkField('Known vascular disease (CAD, cerebrovascular, or PAD)', 'marburg-vascular'));
     root.appendChild(checkField('Pain worse with exercise', 'marburg-worseExercise'));
@@ -138,7 +138,7 @@ export const renderers = {
 
   // ----- 2.4 adhere-hf -------------------------------------------------------
   'adhere-hf'(root) {
-    note(root, 'ADHERE CART tree (Fonarow 2005): in-hospital heart-failure mortality from three admission labs — BUN ≥ 43, then SBP < 115, then creatinine ≥ 2.75. A fast bedside triage complement to point-based HF models. Near-neighbors: maggic.');
+    note(root, 'ADHERE CART tree (Fonarow 2005): in-hospital heart-failure mortality from three admission labs — BUN ≥ 43, then SBP < 115, then creatinine ≥ 2.75. A fast bedside triage complement to point-based HF models.');
     root.appendChild(num('BUN (mg/dL)', 'adhere-bun'));
     root.appendChild(num('Systolic BP (mmHg)', 'adhere-sbp'));
     root.appendChild(num('Creatinine (mg/dL) — needed only if BUN ≥ 43 and SBP < 115', 'adhere-creatinine'));

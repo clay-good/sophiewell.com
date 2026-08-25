@@ -49,7 +49,7 @@ function wire(ids, run) {
 export const renderers = {
   // ----- 2.1 cccr ------------------------------------------------------------
   cccr(root) {
-    note(root, 'Calcium/Creatinine Clearance Ratio (Christensen 2008): CCCR = (urine Ca × serum Cr) / (serum Ca × urine Cr). < 0.01 suggests FHH; > 0.02 suggests primary hyperparathyroidism; 0.01–0.02 indeterminate. Enter calcium terms in one shared unit and creatinine terms in one shared unit. Near-neighbors: corrected-calcium, tmp-gfr.');
+    note(root, 'Calcium/Creatinine Clearance Ratio (Christensen 2008): CCCR = (urine Ca × serum Cr) / (serum Ca × urine Cr). < 0.01 suggests FHH; > 0.02 suggests primary hyperparathyroidism; 0.01–0.02 indeterminate. Enter calcium terms in one shared unit and creatinine terms in one shared unit.');
     root.appendChild(num('Urine calcium (shared calcium unit)', 'cccr-uca', { min: '0' }));
     root.appendChild(num('Serum calcium (shared calcium unit)', 'cccr-sca', { min: '0' }));
     root.appendChild(num('Serum creatinine (shared creatinine unit)', 'cccr-scr', { min: '0' }));
@@ -67,7 +67,7 @@ export const renderers = {
 
   // ----- 2.3 max-allowable-blood-loss ----------------------------------------
   'max-allowable-blood-loss'(root) {
-    note(root, 'Maximum Allowable Blood Loss (Gross 1983): EBV = weight × factor (neonate 85, infant 80, child 70, adult male 75, adult female 65 mL/kg); ABL = EBV × (Hct initial − Hct target) / Hct initial. An intraoperative transfusion-planning estimate. Near-neighbors: peds-transfusion-volume, blood-compat.');
+    note(root, 'Maximum Allowable Blood Loss (Gross 1983): EBV = weight × factor (neonate 85, infant 80, child 70, adult male 75, adult female 65 mL/kg); ABL = EBV × (Hct initial − Hct target) / Hct initial. An intraoperative transfusion-planning estimate.');
     root.appendChild(selectField('Patient category (blood-volume factor)', 'abl-cat', [
       { value: 'neonate', text: 'Neonate (85 mL/kg)' },
       { value: 'infant', text: 'Infant (80 mL/kg)' },
@@ -91,7 +91,7 @@ export const renderers = {
 
   // ----- 2.4 efw-clearance ---------------------------------------------------
   'efw-clearance'(root) {
-    note(root, 'Electrolyte-Free Water Clearance (Rose 1986): EFWC = V × [1 − (U_Na + U_K) / P_Na]. A positive value means the kidney is excreting free water (aggravating hypernatremia / correcting hyponatremia); a negative value means net free-water retention (aggravating hyponatremia). Near-neighbors: free-water-deficit, sodium-correction.');
+    note(root, 'Electrolyte-Free Water Clearance (Rose 1986): EFWC = V × [1 − (U_Na + U_K) / P_Na]. A positive value means the kidney is excreting free water (aggravating hypernatremia / correcting hyponatremia); a negative value means net free-water retention (aggravating hyponatremia).');
     root.appendChild(num('Urine sodium (mEq/L)', 'efwc-una', { min: '0' }));
     root.appendChild(num('Urine potassium (mEq/L)', 'efwc-uk', { min: '0' }));
     root.appendChild(num('Plasma sodium (mEq/L)', 'efwc-pna', { min: '0' }));
@@ -109,7 +109,7 @@ export const renderers = {
 
   // ----- 2.5 tmp-gfr ---------------------------------------------------------
   'tmp-gfr'(root) {
-    note(root, 'TmP/GFR (Payne 1998): the renal phosphate threshold. TRP = 1 − (U_P × S_Cr)/(S_P × U_Cr); TmP/GFR = TRP × S_P when TRP ≤ 0.86, else the Payne hyperbolic form. Adult reference ≈ 0.80–1.35 mmol/L (2.5–4.2 mg/dL); low = renal phosphate wasting. Enter phosphate terms in one shared unit and creatinine terms in one shared unit. Near-neighbors: fepo4, cccr.');
+    note(root, 'TmP/GFR (Payne 1998): the renal phosphate threshold. TRP = 1 − (U_P × S_Cr)/(S_P × U_Cr); TmP/GFR = TRP × S_P when TRP ≤ 0.86, else the Payne hyperbolic form. Adult reference ≈ 0.80–1.35 mmol/L (2.5–4.2 mg/dL); low = renal phosphate wasting. Enter phosphate terms in one shared unit and creatinine terms in one shared unit.');
     root.appendChild(num('Serum phosphate (shared phosphate unit)', 'tmp-sp', { min: '0' }));
     root.appendChild(num('Urine phosphate (shared phosphate unit)', 'tmp-up', { min: '0' }));
     root.appendChild(num('Serum creatinine (shared creatinine unit)', 'tmp-scr', { min: '0' }));
@@ -127,7 +127,7 @@ export const renderers = {
 
   // ----- 2.2 urine-calcium-cr ------------------------------------------------
   'urine-calcium-cr'(root) {
-    note(root, 'Urinary-calcium assessment (StatPearls; Sargent 1993 for infants): the calciuria step in the nephrolithiasis / hypercalciuria workup. Spot Ca/Cr > 0.20 mg/mg (adult), or 24-hour calcium > 250 (women) / > 300 (men) mg/day or > 4 mg/kg/day. Choose a mode and fill its fields. Near-neighbors: cccr, uacr-upcr.');
+    note(root, 'Urinary-calcium assessment (StatPearls; Sargent 1993 for infants): the calciuria step in the nephrolithiasis / hypercalciuria workup. Spot Ca/Cr > 0.20 mg/mg (adult), or 24-hour calcium > 250 (women) / > 300 (men) mg/day or > 4 mg/kg/day. Choose a mode and fill its fields.');
     root.appendChild(selectField('Mode', 'uca-mode', [
       { value: 'spot', text: 'Spot Ca/Cr ratio' },
       { value: 'day', text: '24-hour excretion' },

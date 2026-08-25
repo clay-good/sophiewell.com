@@ -47,7 +47,7 @@ function render(o, r, valueLabel) {
 
 export const renderers = {
   'leibovich-rcc'(root) {
-    note(root, 'Leibovich progression score (2003) for clear-cell RCC after radical nephrectomy — the recurrence-risk model that stratifies for adjuvant trials. Total 0–11: low 0–2, intermediate 3–5, high ≥ 6. Near-neighbors: ssign-score, uiss-rcc, imdc-rcc.');
+    note(root, 'Leibovich progression score (2003) for clear-cell RCC after radical nephrectomy — the recurrence-risk model that stratifies for adjuvant trials. Total 0–11: low 0–2, intermediate 3–5, high ≥ 6.');
     root.appendChild(select('Primary tumor stage (pT)', 'leib-pt', [['pt1a', 'pT1a (0)'], ['pt1b', 'pT1b (+2)'], ['pt2', 'pT2 (+3)'], ['pt3-4', 'pT3–pT4 (+4)']]));
     root.appendChild(select('Regional lymph nodes', 'leib-n', [['n0', 'pNx / pN0 (0)'], ['n1-2', 'pN1 / pN2 (+2)']]));
     root.appendChild(select('Tumor size', 'leib-size', [['lt10', '< 10 cm (0)'], ['ge10', '≥ 10 cm (+1)']]));
@@ -63,7 +63,7 @@ export const renderers = {
     postureNote(root);
   },
   'uiss-rcc'(root) {
-    note(root, 'UCLA Integrated Staging System (UISS) for surgically resected, localized (N0M0) RCC — integrates 1997 TNM stage, Fuhrman grade, and ECOG performance status into low / intermediate / high tiers (5-year overall survival ~92% / 67% / 44%). The node-positive/metastatic branch is out of scope; use imdc-rcc / mskcc-rcc there. Near-neighbors: leibovich-rcc, ssign-score, mskcc-rcc.');
+    note(root, 'UCLA Integrated Staging System (UISS) for surgically resected, localized (N0M0) RCC — integrates 1997 TNM stage, Fuhrman grade, and ECOG performance status into low / intermediate / high tiers (5-year overall survival ~92% / 67% / 44%). The node-positive/metastatic branch is out of scope; use imdc-rcc / mskcc-rcc there.');
     root.appendChild(select('Primary tumor stage (T, 1997 TNM)', 'uiss-t', [['t1', 'T1'], ['t2', 'T2'], ['t3', 'T3'], ['t4', 'T4']]));
     root.appendChild(select('Fuhrman grade', 'uiss-grade', [['1', 'Grade 1'], ['2', 'Grade 2'], ['3', 'Grade 3'], ['4', 'Grade 4']]));
     root.appendChild(select('ECOG performance status', 'uiss-ecog', [['ecog0', 'ECOG 0'], ['ecog1plus', 'ECOG ≥ 1']]));

@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'spaulding-classification'(root) {
-    note(root, 'The Spaulding classification of medical devices for reprocessing, by the infection risk of the site the device contacts. Pick the category. Critical: enters sterile tissue or the bloodstream, requires sterilization; Semicritical: contacts mucous membranes or non-intact skin, requires at least high-level disinfection; Noncritical: contacts intact skin only, requires low-level disinfection. Reports the category the clinician has determined; always follow the device instructions for use. Near-neighbor: device-day-counter.');
+    note(root, 'The Spaulding classification of medical devices for reprocessing, by the infection risk of the site the device contacts. Pick the category. Critical: enters sterile tissue or the bloodstream, requires sterilization; Semicritical: contacts mucous membranes or non-intact skin, requires at least high-level disinfection; Noncritical: contacts intact skin only, requires low-level disinfection. Reports the category the clinician has determined; always follow the device instructions for use.');
     root.appendChild(select('Spaulding category', 'spaulding-category', [
       ['critical', 'Critical - enters sterile tissue / bloodstream'],
       ['semicritical', 'Semicritical - contacts mucous membranes / non-intact skin'],

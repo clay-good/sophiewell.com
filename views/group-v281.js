@@ -46,7 +46,7 @@ function render(o, r, valueLabel) {
 
 export const renderers = {
   'galad-hcc'(root) {
-    note(root, 'GALAD score (Johnson 2014) — the serum-biomarker probability that a lesion is HCC, from Gender, Age, AFP-L3, AFP, and DCP (PIVKA-II). Commonly applied at the Z = −0.63 cutoff. Assay units: AFP ng/mL, DCP mAU/mL, AFP-L3 %. Near-neighbors: amap-score, page-b, bclc-hcc.');
+    note(root, 'GALAD score (Johnson 2014) — the serum-biomarker probability that a lesion is HCC, from Gender, Age, AFP-L3, AFP, and DCP (PIVKA-II). Commonly applied at the Z = −0.63 cutoff. Assay units: AFP ng/mL, DCP mAU/mL, AFP-L3 %.');
     root.appendChild(select('Sex', 'galad-sex', [['male', 'Male'], ['female', 'Female']]));
     root.appendChild(num('Age (years)', 'galad-age', { min: '0', max: '120' }));
     root.appendChild(num('AFP-L3 (%)', 'galad-afpl3', { min: '0', max: '100' }));
@@ -62,7 +62,7 @@ export const renderers = {
     postureNote(root);
   },
   'toronto-hcc-risk'(root) {
-    note(root, 'Toronto HCC Risk Index (THRI; Sharma 2017) — 10-year HCC risk in cirrhosis from age, sex, etiology, and platelet count (total 0–366). Bands: low < 120 (~3% 10-yr HCC), medium 120–240 (~10%), high > 240 (~32%). Near-neighbors: amap-score, page-b, albi-grade.');
+    note(root, 'Toronto HCC Risk Index (THRI; Sharma 2017) — 10-year HCC risk in cirrhosis from age, sex, etiology, and platelet count (total 0–366). Bands: low < 120 (~3% 10-yr HCC), medium 120–240 (~10%), high > 240 (~32%).');
     root.appendChild(num('Age (years)', 'thri-age', { min: '0', max: '120' }));
     root.appendChild(select('Sex', 'thri-sex', [['male', 'Male'], ['female', 'Female']]));
     root.appendChild(select('Cirrhosis etiology', 'thri-etiology', [

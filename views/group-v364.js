@@ -41,7 +41,7 @@ const ITEMS = [
 
 export const renderers = {
   'cas-ted'(root) {
-    note(root, 'Clinical Activity Score (Mourits 1989; EUGOGO) for thyroid eye disease / Graves orbitopathy. Check each inflammatory item present in the study eye. Each scores 1 point; CAS of 3 or more (of 7) indicates active disease. The 10-item follow-up version (adds change-over-time items) is out of scope. Near-neighbors: kwb-retinopathy.');
+    note(root, 'Clinical Activity Score (Mourits 1989; EUGOGO) for thyroid eye disease / Graves orbitopathy. Check each inflammatory item present in the study eye. Each scores 1 point; CAS of 3 or more (of 7) indicates active disease. The 10-item follow-up version (adds change-over-time items) is out of scope.');
     for (const [id, label] of ITEMS) root.appendChild(checkField(label, id));
 
     const o = out(); root.appendChild(o);

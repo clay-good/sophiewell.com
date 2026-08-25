@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'stulberg'(root) {
-    note(root, 'The Stulberg classification of the residual femoral head after Legg-Calve-Perthes disease, by sphericity and joint congruency at skeletal maturity. Pick the class. I: normal spherical head; II: spherical but with coxa magna, a short neck, or an abnormal acetabulum; III: non-spherical (ovoid/mushroom/umbrella) but not flat; IV: flat head, congruent; V: flat head, incongruent. Reports the class the clinician has determined, not a diagnosis or a treatment decision. Near-neighbor: catterall-perthes.');
+    note(root, 'The Stulberg classification of the residual femoral head after Legg-Calve-Perthes disease, by sphericity and joint congruency at skeletal maturity. Pick the class. I: normal spherical head; II: spherical but with coxa magna, a short neck, or an abnormal acetabulum; III: non-spherical (ovoid/mushroom/umbrella) but not flat; IV: flat head, congruent; V: flat head, incongruent. Reports the class the clinician has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('Stulberg class', 'stulberg-class', [
       ['I', 'I - normal spherical head'],
       ['II', 'II - spherical, with coxa magna / short neck / abnormal acetabulum'],

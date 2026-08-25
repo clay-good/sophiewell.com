@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'sun-ac-cell'(root) {
-    note(root, 'SUN (Standardization of Uveitis Nomenclature) anterior chamber cell grade, the grading of anterior-chamber inflammatory cells by the number counted in a 1 mm by 1 mm slit-lamp beam field. Pick the grade. 0: <1 cell; 0.5+: 1-5; 1+: 6-15; 2+: 16-25; 3+: 26-50; 4+: >50. Grades cells (activity), a separate scale from anterior chamber flare. Near-neighbor: shaffer-angle.');
+    note(root, 'SUN (Standardization of Uveitis Nomenclature) anterior chamber cell grade, the grading of anterior-chamber inflammatory cells by the number counted in a 1 mm by 1 mm slit-lamp beam field. Pick the grade. 0: <1 cell; 0.5+: 1-5; 1+: 6-15; 2+: 16-25; 3+: 26-50; 4+: >50. Grades cells (activity), a separate scale from anterior chamber flare.');
     root.appendChild(select('SUN anterior chamber cell grade', 'sun-cell', [
       ['0', '0 - less than 1 cell'],
       ['0.5+', '0.5+ - 1 to 5 cells'],

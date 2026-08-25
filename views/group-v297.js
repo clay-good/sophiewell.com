@@ -35,7 +35,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'seddon-sunderland'(root) {
-    note(root, 'Seddon-Sunderland peripheral nerve-injury classification. Select the Sunderland grade to see which structures are disrupted, the Seddon equivalent (neurapraxia / axonotmesis / neurotmesis), the expected recovery, and whether surgical repair is typically required. Grades I–II usually recover spontaneously; IV–V typically need surgery. Near-neighbors: house-brackmann, asia-impairment.');
+    note(root, 'Seddon-Sunderland peripheral nerve-injury classification. Select the Sunderland grade to see which structures are disrupted, the Seddon equivalent (neurapraxia / axonotmesis / neurotmesis), the expected recovery, and whether surgical repair is typically required. Grades I–II usually recover spontaneously; IV–V typically need surgery.');
     root.appendChild(select('Sunderland grade', 'ni-grade', [
       ['I', 'Grade I — neurapraxia (conduction block)'],
       ['II', 'Grade II — axonotmesis (axon disrupted, endoneurium intact)'],

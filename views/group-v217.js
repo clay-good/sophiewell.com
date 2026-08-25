@@ -52,7 +52,7 @@ function render(o, r, valueLabel, value) {
 
 export const renderers = {
   'canadian-tia-score'(root) {
-    note(root, 'Canadian TIA Score (Perry 2014): 13 clinical and investigation variables (-3 to 23). Low <= 3, medium 4-8, high >= 9 for 7-day stroke. Near-neighbors: abcd2, abcd3-i.');
+    note(root, 'Canadian TIA Score (Perry 2014): 13 clinical and investigation variables (-3 to 23). Low <= 3, medium 4-8, high >= 9 for 7-day stroke.');
     const items = [
       ['ctia-first', 'firstTia', 'First TIA in lifetime (+2)'],
       ['ctia-dur', 'duration10', 'Symptoms >= 10 minutes (+2)'],
@@ -78,7 +78,7 @@ export const renderers = {
     postureNote(root);
   },
   'astral-score'(root) {
-    note(root, 'ASTRAL score (Ntaios 2012): 1 pt/5 y age + 1 pt/NIHSS point + onset > 3 h +2 + visual defect +2 + glucose out of range +1 + impaired consciousness +3. Higher = worse 90-day outcome. Near-neighbors: nihss, ich-score.');
+    note(root, 'ASTRAL score (Ntaios 2012): 1 pt/5 y age + 1 pt/NIHSS point + onset > 3 h +2 + visual defect +2 + glucose out of range +1 + impaired consciousness +3. Higher = worse 90-day outcome.');
     root.appendChild(num('Age (years)', 'ast-age', { min: '0' }));
     root.appendChild(num('Admission NIHSS (0-42)', 'ast-nihss', { min: '0', max: '42' }));
     root.appendChild(check('Onset-to-admission > 3 hours (or unknown) (+2)', 'ast-onset'));
@@ -93,7 +93,7 @@ export const renderers = {
     postureNote(root);
   },
   'soar-score'(root) {
-    note(root, 'SOAR score (Myint 2014): stroke subtype + OCSP class + age band + prestroke Rankin (0-7). Higher = higher early mortality. Near-neighbors: nihss, ich-score.');
+    note(root, 'SOAR score (Myint 2014): stroke subtype + OCSP class + age band + prestroke Rankin (0-7). Higher = higher early mortality.');
     root.appendChild(select('Stroke subtype', 'soar-sub', [['0', 'Ischemic (0)'], ['1', 'Hemorrhagic (1)']]));
     root.appendChild(select('OCSP (Bamford) classification', 'soar-ocsp', [['0', 'PACS or LACS (0)'], ['1', 'POCS (1)'], ['2', 'TACS (2)']]));
     root.appendChild(select('Age band', 'soar-age', [['0', '<= 65 (0)'], ['1', '66-85 (1)'], ['2', '>= 85 (2)']]));
@@ -106,7 +106,7 @@ export const renderers = {
     postureNote(root);
   },
   'plan-score'(root) {
-    note(root, 'PLAN score (O’Donnell 2012): preadmission comorbidities + level of consciousness + age + neurologic deficits (0-25). Higher = higher 30-day mortality. Near-neighbors: nihss, ich-score.');
+    note(root, 'PLAN score (O’Donnell 2012): preadmission comorbidities + level of consciousness + age + neurologic deficits (0-25). Higher = higher 30-day mortality.');
     root.appendChild(num('Age (years)', 'plan-age', { min: '0' }));
     root.appendChild(check('Preadmission dependence (+1.5)', 'plan-dep'));
     root.appendChild(check('Cancer (+1.5)', 'plan-cancer'));
@@ -124,7 +124,7 @@ export const renderers = {
     postureNote(root);
   },
   'sits-sich'(root) {
-    note(root, 'SITS-SICH (Mazya 2012): antiplatelet + NIHSS band + glucose + SBP + weight + age + onset + hypertension (0-15). Predicts symptomatic ICH after IV alteplase. Near-neighbors: hat-score, sedan-score.');
+    note(root, 'SITS-SICH (Mazya 2012): antiplatelet + NIHSS band + glucose + SBP + weight + age + onset + hypertension (0-15). Predicts symptomatic ICH after IV alteplase.');
     root.appendChild(select('Antiplatelet therapy', 'sits-ap', [['0', 'None (0)'], ['1', 'Aspirin alone (1)'], ['2', 'Aspirin + clopidogrel (2)']]));
     root.appendChild(num('Admission NIHSS', 'sits-nihss', { min: '0', max: '42' }));
     root.appendChild(num('Blood glucose (mg/dL)', 'sits-glu', { min: '0' }));
@@ -141,7 +141,7 @@ export const renderers = {
     postureNote(root);
   },
   'vasograde'(root) {
-    note(root, 'VASOGRADE (de Oliveira Manoel 2015): combines modified Fisher and WFNS after aneurysmal SAH. Green (low), Yellow, Red (high) delayed-cerebral-ischemia risk. Near-neighbors: modified-fisher, hunt-hess-wfns.');
+    note(root, 'VASOGRADE (de Oliveira Manoel 2015): combines modified Fisher and WFNS after aneurysmal SAH. Green (low), Yellow, Red (high) delayed-cerebral-ischemia risk.');
     root.appendChild(select('Modified Fisher scale', 'vaso-mf', [['1', '1'], ['2', '2'], ['3', '3'], ['4', '4']]));
     root.appendChild(select('WFNS grade', 'vaso-wfns', [['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5']]));
     const o = out(); root.appendChild(o);
@@ -152,7 +152,7 @@ export const renderers = {
     postureNote(root);
   },
   'ogilvy-carter'(root) {
-    note(root, 'Ogilvy-Carter grading (Ogilvy 1998): one point each for age > 50, Hunt-Hess 4-5, Fisher 3-4, aneurysm > 10 mm, posterior giant >= 25 mm (0-5). Near-neighbors: hunt-hess-wfns, modified-fisher.');
+    note(root, 'Ogilvy-Carter grading (Ogilvy 1998): one point each for age > 50, Hunt-Hess 4-5, Fisher 3-4, aneurysm > 10 mm, posterior giant >= 25 mm (0-5).');
     root.appendChild(check('Age > 50 years (+1)', 'oc-age'));
     root.appendChild(check('Hunt-Hess grade 4-5 (+1)', 'oc-hh'));
     root.appendChild(check('Fisher grade 3-4 (+1)', 'oc-fisher'));

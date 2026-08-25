@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'bigliani-acromion'(root) {
-    note(root, 'The Bigliani classification of acromion morphology, by the shape of the acromial undersurface on the supraspinatus-outlet view. Pick the type. I: flat; II: curved (paralleling the humeral head); III: hooked (anterior hook), most associated with subacromial impingement and rotator cuff tears. Reports the type the clinician has determined, not a diagnosis or a treatment decision. Near-neighbor: goutallier.');
+    note(root, 'The Bigliani classification of acromion morphology, by the shape of the acromial undersurface on the supraspinatus-outlet view. Pick the type. I: flat; II: curved (paralleling the humeral head); III: hooked (anterior hook), most associated with subacromial impingement and rotator cuff tears. Reports the type the clinician has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('Bigliani type', 'bigliani-type', [
       ['I', 'I - flat acromion'],
       ['II', 'II - curved acromion'],

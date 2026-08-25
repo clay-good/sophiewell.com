@@ -37,7 +37,7 @@ function render(o, r, valueLabel) {
 
 export const renderers = {
   'lmr'(root) {
-    note(root, 'Lymphocyte-to-monocyte ratio = ALC / AMC. A lower value is less favorable. Near-neighbors: nlr, siri.');
+    note(root, 'Lymphocyte-to-monocyte ratio = ALC / AMC. A lower value is less favorable.');
     root.appendChild(num('Absolute lymphocyte count (10³/µL)', 'lmr-alc', { min: '0' }));
     root.appendChild(num('Absolute monocyte count (10³/µL)', 'lmr-amc', { min: '0' }));
     const o = out(); root.appendChild(o);
@@ -47,7 +47,7 @@ export const renderers = {
     postureNote(root);
   },
   'siri'(root) {
-    note(root, 'Systemic inflammation response index = ANC x AMC / ALC (Qi 2016). Higher = more pro-inflammatory. Near-neighbors: sii, piv.');
+    note(root, 'Systemic inflammation response index = ANC x AMC / ALC (Qi 2016). Higher = more pro-inflammatory.');
     root.appendChild(num('Absolute neutrophil count (10³/µL)', 'siri-anc', { min: '0' }));
     root.appendChild(num('Absolute monocyte count (10³/µL)', 'siri-amc', { min: '0' }));
     root.appendChild(num('Absolute lymphocyte count (10³/µL)', 'siri-alc', { min: '0' }));
@@ -58,7 +58,7 @@ export const renderers = {
     postureNote(root);
   },
   'piv'(root) {
-    note(root, 'Pan-immune-inflammation value = ANC x platelets x AMC / ALC (Fuca 2020). Higher = more pro-inflammatory. Near-neighbors: sii, siri.');
+    note(root, 'Pan-immune-inflammation value = ANC x platelets x AMC / ALC (Fuca 2020). Higher = more pro-inflammatory.');
     root.appendChild(num('Absolute neutrophil count (10³/µL)', 'piv-anc', { min: '0' }));
     root.appendChild(num('Platelet count (10³/µL)', 'piv-plt', { min: '0' }));
     root.appendChild(num('Absolute monocyte count (10³/µL)', 'piv-amc', { min: '0' }));
@@ -70,7 +70,7 @@ export const renderers = {
     postureNote(root);
   },
   'crp-albumin-ratio'(root) {
-    note(root, 'CRP-to-albumin ratio = CRP (mg/L) / albumin (g/dL). Higher = greater inflammatory burden relative to nutrition. Near-neighbors: siri, nlr.');
+    note(root, 'CRP-to-albumin ratio = CRP (mg/L) / albumin (g/dL). Higher = greater inflammatory burden relative to nutrition.');
     root.appendChild(num('C-reactive protein (mg/L)', 'car-crp', { min: '0' }));
     root.appendChild(num('Serum albumin (g/dL)', 'car-alb', { min: '0' }));
     const o = out(); root.appendChild(o);

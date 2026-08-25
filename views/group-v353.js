@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'crowe-ddh'(root) {
-    note(root, 'Crowe classification (Crowe, Mani & Ranawat 1979) of adult developmental dysplasia of the hip. Pick the proximal femoral-head subluxation grade. I: <50%; II: 50-75%; III: 75-100%; IV: >100% (high / complete dislocation). The most commonly used adult-DDH grade for total-hip-arthroplasty planning. Near-neighbors: garden-classification.');
+    note(root, 'Crowe classification (Crowe, Mani & Ranawat 1979) of adult developmental dysplasia of the hip. Pick the proximal femoral-head subluxation grade. I: <50%; II: 50-75%; III: 75-100%; IV: >100% (high / complete dislocation). The most commonly used adult-DDH grade for total-hip-arthroplasty planning.');
     root.appendChild(select('Crowe grade', 'crowe-grade', [
       ['I', 'Grade I - < 50% subluxation'],
       ['II', 'Grade II - 50-75% subluxation'],

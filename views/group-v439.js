@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'hamada'(root) {
-    note(root, 'The Hamada classification of rotator cuff tear arthropathy on shoulder radiographs, by the acromiohumeral interval (AHI) and glenohumeral / acromial changes. Pick the grade. 1: AHI >= 6 mm; 2: AHI <= 5 mm; 3: AHI <= 5 mm with acetabularization; 4: glenohumeral arthritis; 5: humeral head collapse. A later modification subdivides grade 4 (4A/4B). Reports the grade the clinician has determined, not a diagnosis or a treatment decision. Near-neighbor: goutallier.');
+    note(root, 'The Hamada classification of rotator cuff tear arthropathy on shoulder radiographs, by the acromiohumeral interval (AHI) and glenohumeral / acromial changes. Pick the grade. 1: AHI >= 6 mm; 2: AHI <= 5 mm; 3: AHI <= 5 mm with acetabularization; 4: glenohumeral arthritis; 5: humeral head collapse. A later modification subdivides grade 4 (4A/4B). Reports the grade the clinician has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('Hamada grade', 'hamada-grade', [
       ['1', '1 - AHI >= 6 mm'],
       ['2', '2 - AHI <= 5 mm'],

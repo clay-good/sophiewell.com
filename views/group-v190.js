@@ -62,7 +62,7 @@ const SUBTYPE_OPTS = [
 export const renderers = {
   // ----- 2.1 palbi -----------------------------------------------------------
   palbi(root) {
-    note(root, 'PALBI grade (Liu 2017): refines ALBI by adding the platelet count (a portal-hypertension marker). Grade 1 (≤ −2.53), 2 (−2.53 to −2.09), 3 (> −2.09). Near-neighbors: albi-grade, bclc-hcc.');
+    note(root, 'PALBI grade (Liu 2017): refines ALBI by adding the platelet count (a portal-hypertension marker). Grade 1 (≤ −2.53), 2 (−2.53 to −2.09), 3 (> −2.09).');
     root.appendChild(num('Total bilirubin (mg/dL)', 'palbi-bilirubin'));
     root.appendChild(num('Albumin (g/dL)', 'palbi-albumin'));
     root.appendChild(num('Platelet count (×10⁹/L, i.e. thousands/µL)', 'palbi-platelets'));
@@ -82,7 +82,7 @@ export const renderers = {
 
   // ----- 2.2 meld-na ---------------------------------------------------------
   'meld-na'(root) {
-    note(root, 'MELD-Na (Kim 2008; OPTN/UNOS operational coefficients): the sodium-augmented waitlist mortality score that preceded MELD 3.0. Sodium is applied only when MELD > 11; the score is bounded to 6–40. Near-neighbors: meld-childpugh.');
+    note(root, 'MELD-Na (Kim 2008; OPTN/UNOS operational coefficients): the sodium-augmented waitlist mortality score that preceded MELD 3.0. Sodium is applied only when MELD > 11; the score is bounded to 6–40.');
     root.appendChild(num('Total bilirubin (mg/dL)', 'meldna-bilirubin'));
     root.appendChild(num('INR', 'meldna-inr'));
     root.appendChild(num('Creatinine (mg/dL)', 'meldna-creatinine'));
@@ -104,7 +104,7 @@ export const renderers = {
 
   // ----- 2.3 clichy ----------------------------------------------------------
   clichy(root) {
-    note(root, 'Clichy criteria (Bernuau 1986): emergency liver-transplant evaluation when encephalopathy is present AND factor V is < 20% (age < 30) or < 30% (age ≥ 30). A complement to King’s College. Near-neighbors: kings-college.');
+    note(root, 'Clichy criteria (Bernuau 1986): emergency liver-transplant evaluation when encephalopathy is present AND factor V is < 20% (age < 30) or < 30% (age ≥ 30). A complement to King’s College.');
     root.appendChild(num('Age (years)', 'clichy-age'));
     root.appendChild(num('Coagulation factor V (% of normal)', 'clichy-factorV'));
     root.appendChild(checkField('Hepatic encephalopathy (grade 3–4: confusion or coma)', 'clichy-encephalopathy'));

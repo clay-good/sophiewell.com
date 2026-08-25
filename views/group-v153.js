@@ -121,7 +121,7 @@ const OAB_URG = [
 export const renderers = {
   // ----- 2.1 ipss ------------------------------------------------------------
   ipss(root) {
-    note(root, 'International Prostate Symptom Score / AUA-SI (Barry 1992): seven symptom questions over the past month, each 0–5, summed 0–35 (0–7 mild, 8–19 moderate, 20–35 severe). The separate quality-of-life item (0 delighted → 6 terrible) is reported alongside and is not added into the symptom total. Near-neighbors: prostate-volume, oabss.');
+    note(root, 'International Prostate Symptom Score / AUA-SI (Barry 1992): seven symptom questions over the past month, each 0–5, summed 0–35 (0–7 mild, 8–19 moderate, 20–35 severe). The separate quality-of-life item (0 delighted → 6 terrible) is reported alongside and is not added into the symptom total.');
     const qs = [
       'Q1. Incomplete emptying — sensation of not emptying your bladder completely',
       'Q2. Frequency — had to urinate again less than 2 hours after finishing',
@@ -154,7 +154,7 @@ export const renderers = {
 
   // ----- 2.2 iief5 -----------------------------------------------------------
   iief5(root) {
-    note(root, 'IIEF-5 / Sexual Health Inventory for Men (Rosen 1999): five items over the past six months. Q1 is scored 1–5; Q2–Q5 carry a "0 = no sexual activity / did not attempt intercourse" option. Total 22–25 no ED, 17–21 mild, 12–16 mild-to-moderate, 8–11 moderate, 5–7 severe; ≤21 meets the threshold for erectile dysfunction. Near-neighbor: ipss.');
+    note(root, 'IIEF-5 / Sexual Health Inventory for Men (Rosen 1999): five items over the past six months. Q1 is scored 1–5; Q2–Q5 carry a "0 = no sexual activity / did not attempt intercourse" option. Total 22–25 no ED, 17–21 mild, 12–16 mild-to-moderate, 8–11 moderate, 5–7 severe; ≤21 meets the threshold for erectile dysfunction.');
     root.appendChild(pickField('Q1. How do you rate your confidence that you could get and keep an erection?', 'iief-q1', IIEF_Q1));
     root.appendChild(pickField('Q2. When you had erections with stimulation, how often were they hard enough for penetration?', 'iief-q2', IIEF_FREQ('no sexual activity')));
     root.appendChild(pickField('Q3. During intercourse, how often were you able to maintain your erection after penetration?', 'iief-q3', IIEF_FREQ('did not attempt intercourse')));
@@ -176,7 +176,7 @@ export const renderers = {
 
   // ----- 2.3 oabss -----------------------------------------------------------
   oabss(root) {
-    note(root, 'Overactive Bladder Symptom Score (Homma 2006): four items over the past week — daytime frequency (0–2), nighttime frequency (0–3), urgency (0–5), urgency incontinence (0–5). Total 0–15 (≤5 mild, 6–11 moderate, ≥12 severe). OAB requires the urgency item ≥ 2 and total ≥ 3; the tile flags when that gate is not met. Near-neighbor: ipss.');
+    note(root, 'Overactive Bladder Symptom Score (Homma 2006): four items over the past week — daytime frequency (0–2), nighttime frequency (0–3), urgency (0–5), urgency incontinence (0–5). Total 0–15 (≤5 mild, 6–11 moderate, ≥12 severe). OAB requires the urgency item ≥ 2 and total ≥ 3; the tile flags when that gate is not met.');
     root.appendChild(pickField('Q1. Daytime frequency — times urinated from waking until sleeping', 'oab-day', OAB_DAY));
     root.appendChild(pickField('Q2. Nighttime frequency — times got up to urinate during sleep', 'oab-night', OAB_NIGHT));
     root.appendChild(pickField('Q3. Urgency — sudden desire to urinate, difficult to defer', 'oab-urg', OAB_URG));

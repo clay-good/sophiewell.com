@@ -57,7 +57,7 @@ const VA_MODE_OPTS = [
 export const renderers = {
   // ----- 2.1 iol-power -------------------------------------------------------
   'iol-power'(root) {
-    note(root, 'Intraocular-lens power, SRK II (Sanders/Retzlaff/Kraff 1988): P = A1 − 0.9·K − 2.5·AL, where A1 is the A-constant adjusted for axial length (AL<20 +3, 20–21 +2, 21–22 +1, 22–24.5 0, ≥24.5 −0.5). A regression formula superseded by optical formulas (SRK/T, Barrett); it does not replace device biometry. Near-neighbors: visual-acuity-converter, bw-bsa-suite.');
+    note(root, 'Intraocular-lens power, SRK II (Sanders/Retzlaff/Kraff 1988): P = A1 − 0.9·K − 2.5·AL, where A1 is the A-constant adjusted for axial length (AL<20 +3, 20–21 +2, 21–22 +1, 22–24.5 0, ≥24.5 −0.5). A regression formula superseded by optical formulas (SRK/T, Barrett); it does not replace device biometry.');
     root.appendChild(num('Lens A-constant', 'iol-a', { min: '0' }));
     root.appendChild(num('Axial length AL (mm)', 'iol-al', { min: '0' }));
     root.appendChild(num('Average keratometry K (D)', 'iol-k', { min: '0' }));
@@ -79,7 +79,7 @@ export const renderers = {
 
   // ----- 2.2 visual-acuity-converter -----------------------------------------
   'visual-acuity-converter'(root) {
-    note(root, 'Visual-acuity converter (Holladay 2004): logMAR = log10(Snellen denominator/20) = −log10(decimal); decimal = 20/denominator. Enter a value in any one notation to see the equivalent in the others. 20/20 = decimal 1.0 = logMAR 0. Near-neighbors: iol-power, ocular-perfusion-pressure.');
+    note(root, 'Visual-acuity converter (Holladay 2004): logMAR = log10(Snellen denominator/20) = −log10(decimal); decimal = 20/denominator. Enter a value in any one notation to see the equivalent in the others. 20/20 = decimal 1.0 = logMAR 0.');
     root.appendChild(selectField('Notation you are entering', 'va-mode', VA_MODE_OPTS));
     root.appendChild(num('Value — Snellen denominator (e.g. 40 for 20/40), decimal, or logMAR', 'va-value'));
     const o = out(); root.appendChild(o);
@@ -100,7 +100,7 @@ export const renderers = {
 
   // ----- 2.3 ocular-perfusion-pressure ---------------------------------------
   'ocular-perfusion-pressure'(root) {
-    note(root, 'Ocular perfusion pressure (Costa 2014): MAP = DBP + ⅓·(SBP − DBP); mean OPP = ⅔·MAP − IOP; systolic OPP = SBP − IOP; diastolic OPP = DBP − IOP. A low mean OPP (≈ below 50 mmHg) is one of several vascular associations with glaucoma risk. Near-neighbors: map, iop-pressure.');
+    note(root, 'Ocular perfusion pressure (Costa 2014): MAP = DBP + ⅓·(SBP − DBP); mean OPP = ⅔·MAP − IOP; systolic OPP = SBP − IOP; diastolic OPP = DBP − IOP. A low mean OPP (≈ below 50 mmHg) is one of several vascular associations with glaucoma risk.');
     root.appendChild(num('Systolic BP (mmHg)', 'opp-sbp', { min: '0' }));
     root.appendChild(num('Diastolic BP (mmHg)', 'opp-dbp', { min: '0' }));
     root.appendChild(num('Intraocular pressure IOP (mmHg)', 'opp-iop', { min: '0' }));

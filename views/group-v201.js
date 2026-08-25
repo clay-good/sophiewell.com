@@ -56,7 +56,7 @@ function wire(ids, run) {
 export const renderers = {
   // ----- 2.1 glasgow-blatchford ----------------------------------------------
   'glasgow-blatchford'(root) {
-    note(root, 'Glasgow-Blatchford Score (Blatchford 2000): a pre-endoscopy upper-GI-bleed risk score from first-contact data. A score of 0 (or ≤ 1 by the BSG extension) flags a candidate for outpatient management; ≥ 6 a > 50% chance of needing intervention. Near-neighbors: rockall, aims65.');
+    note(root, 'Glasgow-Blatchford Score (Blatchford 2000): a pre-endoscopy upper-GI-bleed risk score from first-contact data. A score of 0 (or ≤ 1 by the BSG extension) flags a candidate for outpatient management; ≥ 6 a > 50% chance of needing intervention.');
     root.appendChild(selectField('Urea unit', 'gbs-ureaunit', [
       { value: 'mmol', text: 'Blood urea (mmol/L)' },
       { value: 'mgdl', text: 'BUN (mg/dL)' },
@@ -89,7 +89,7 @@ export const renderers = {
 
   // ----- 2.2 clif-c-ad -------------------------------------------------------
   'clif-c-ad'(root) {
-    note(root, 'CLIF-C AD score (Jalan 2015): a mortality model for the hospitalised decompensated cirrhotic without acute-on-chronic liver failure. CLIF-C ADs = 10 × [0.03·age + 0.66·ln(creatinine) + 1.71·ln(INR) + 0.88·ln(WBC) − 0.05·sodium + 8]. Bands: < 50 low, 50–59 intermediate, ≥ 60 high. Near-neighbors: clif-c-aclf, meld-na.');
+    note(root, 'CLIF-C AD score (Jalan 2015): a mortality model for the hospitalised decompensated cirrhotic without acute-on-chronic liver failure. CLIF-C ADs = 10 × [0.03·age + 0.66·ln(creatinine) + 1.71·ln(INR) + 0.88·ln(WBC) − 0.05·sodium + 8]. Bands: < 50 low, 50–59 intermediate, ≥ 60 high.');
     root.appendChild(num('Age (years)', 'clifad-age', { min: '0' }));
     root.appendChild(num('Creatinine (mg/dL)', 'clifad-creat', { min: '0' }));
     root.appendChild(num('INR', 'clifad-inr', { min: '0' }));
@@ -108,7 +108,7 @@ export const renderers = {
 
   // ----- 2.3 hepamet-fibrosis ------------------------------------------------
   'hepamet-fibrosis'(root) {
-    note(root, 'Hepamet Fibrosis Score (Ampuero 2020): a non-invasive advanced-fibrosis score for NAFLD from age, sex, AST, albumin, HOMA-IR, diabetes, and platelets. Cut-points: < 0.12 rules OUT, ≥ 0.47 rules IN, 0.12–0.47 indeterminate. Built to shrink the FIB-4 / NFS gray zone. Near-neighbors: fib4, nafld-fibrosis.');
+    note(root, 'Hepamet Fibrosis Score (Ampuero 2020): a non-invasive advanced-fibrosis score for NAFLD from age, sex, AST, albumin, HOMA-IR, diabetes, and platelets. Cut-points: < 0.12 rules OUT, ≥ 0.47 rules IN, 0.12–0.47 indeterminate. Built to shrink the FIB-4 / NFS gray zone.');
     root.appendChild(num('Age (years)', 'hep-age', { min: '0' }));
     root.appendChild(selectField('Sex', 'hep-sex', [
       { value: 'male', text: 'Male' },
@@ -132,7 +132,7 @@ export const renderers = {
 
   // ----- 2.4 clip-hcc --------------------------------------------------------
   'clip-hcc'(root) {
-    note(root, 'CLIP score (CLIP Investigators 1998): an HCC prognostic score summing four items 0–6 — Child-Pugh stage, tumor morphology, AFP, and portal-vein thrombosis. Median survival falls from ≈ 36 months at 0 to ≈ 3 months at 4–6. Complementary to BCLC. Near-neighbors: bclc-hcc, albi-grade, meld-childpugh.');
+    note(root, 'CLIP score (CLIP Investigators 1998): an HCC prognostic score summing four items 0–6 — Child-Pugh stage, tumor morphology, AFP, and portal-vein thrombosis. Median survival falls from ≈ 36 months at 0 to ≈ 3 months at 4–6. Complementary to BCLC.');
     root.appendChild(selectField('Child-Pugh stage', 'clip-child', [
       { value: 'A', text: 'A (+0)' },
       { value: 'B', text: 'B (+1)' },
@@ -158,7 +158,7 @@ export const renderers = {
 
   // ----- 2.5 agile-3plus -----------------------------------------------------
   'agile-3plus'(root) {
-    note(root, 'Agile 3+ (Sanyal 2023): a FibroScan-anchored probability of advanced (≥ F3) fibrosis in NAFLD from LSM, AST, ALT, platelets, diabetes, sex, and age. Cut-points: < 0.451 rules OUT, ≥ 0.679 rules IN, 0.451–0.679 indeterminate. Outperforms LSM alone. Near-neighbors: hepamet-fibrosis, fib4.');
+    note(root, 'Agile 3+ (Sanyal 2023): a FibroScan-anchored probability of advanced (≥ F3) fibrosis in NAFLD from LSM, AST, ALT, platelets, diabetes, sex, and age. Cut-points: < 0.451 rules OUT, ≥ 0.679 rules IN, 0.451–0.679 indeterminate. Outperforms LSM alone.');
     root.appendChild(num('Liver stiffness (LSM, kPa) by VCTE / FibroScan', 'agile-lsm', { min: '0' }));
     root.appendChild(num('AST (IU/L)', 'agile-ast', { min: '0' }));
     root.appendChild(num('ALT (IU/L)', 'agile-alt', { min: '0' }));

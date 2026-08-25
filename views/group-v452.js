@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'brooker'(root) {
-    note(root, 'The Brooker classification of heterotopic (ectopic) ossification about the hip, by the radiographic extent of ectopic bone. Pick the class. I: islands of bone in soft tissue; II: spurs leaving at least 1 cm between opposing surfaces; III: spurs reducing the gap to less than 1 cm; IV: apparent bony ankylosis. Reports the class the clinician has determined, not a diagnosis or a treatment decision. Near-neighbor: outerbridge-cartilage.');
+    note(root, 'The Brooker classification of heterotopic (ectopic) ossification about the hip, by the radiographic extent of ectopic bone. Pick the class. I: islands of bone in soft tissue; II: spurs leaving at least 1 cm between opposing surfaces; III: spurs reducing the gap to less than 1 cm; IV: apparent bony ankylosis. Reports the class the clinician has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('Brooker class', 'brooker-class', [
       ['I', 'I - islands of bone in soft tissue'],
       ['II', 'II - spurs, >= 1 cm gap between surfaces'],

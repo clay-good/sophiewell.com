@@ -37,7 +37,7 @@ function render(o, r, valueLabel) {
 
 export const renderers = {
   'renal-failure-index'(root) {
-    note(root, 'Renal failure index = urine Na x plasma Cr / urine Cr. < 1 prerenal, > 1 ATN. Unreliable with diuretics. Near-neighbors: fena-feurea.');
+    note(root, 'Renal failure index = urine Na x plasma Cr / urine Cr. < 1 prerenal, > 1 ATN. Unreliable with diuretics.');
     root.appendChild(numInput('Urine sodium (mEq/L)', 'rfi-una', { min: '0' }));
     root.appendChild(numInput('Plasma creatinine (mg/dL)', 'rfi-pcr', { min: '0' }));
     root.appendChild(numInput('Urine creatinine (mg/dL)', 'rfi-ucr', { min: '0' }));
@@ -48,7 +48,7 @@ export const renderers = {
     postureNote(root);
   },
   'feua'(root) {
-    note(root, 'FEUA = 100 x (urine UA x serum Cr) / (serum UA x urine Cr). Normal 4-11%; aids hyponatremia / SIADH workup. Near-neighbors: fena-feurea.');
+    note(root, 'FEUA = 100 x (urine UA x serum Cr) / (serum UA x urine Cr). Normal 4-11%; aids hyponatremia / SIADH workup.');
     root.appendChild(numInput('Urine uric acid (mg/dL)', 'feua-uua', { min: '0' }));
     root.appendChild(numInput('Serum creatinine (mg/dL)', 'feua-scr', { min: '0' }));
     root.appendChild(numInput('Serum uric acid (mg/dL)', 'feua-sua', { min: '0' }));
@@ -60,7 +60,7 @@ export const renderers = {
     postureNote(root);
   },
   'bronchodilator-response'(root) {
-    note(root, 'Bronchodilator response (ATS/ERS 2022) = 100 x (post - pre) / predicted. > 10% of predicted is significant. Near-neighbors: predicted-spirometry.');
+    note(root, 'Bronchodilator response (ATS/ERS 2022) = 100 x (post - pre) / predicted. > 10% of predicted is significant.');
     root.appendChild(numInput('Pre-bronchodilator FEV1 or FVC (L)', 'bdr-pre', { min: '0' }));
     root.appendChild(numInput('Post-bronchodilator FEV1 or FVC (L)', 'bdr-post', { min: '0' }));
     root.appendChild(numInput('Predicted FEV1 or FVC (L)', 'bdr-pred', { min: '0' }));
@@ -71,7 +71,7 @@ export const renderers = {
     postureNote(root);
   },
   'integrative-weaning-index'(root) {
-    note(root, 'IWI (Nemer 2009) = static compliance x SaO2 / RSBI. >= 25 predicts weaning success. Near-neighbors: rsbi.');
+    note(root, 'IWI (Nemer 2009) = static compliance x SaO2 / RSBI. >= 25 predicts weaning success.');
     root.appendChild(numInput('Static compliance (mL/cmH2O)', 'iwi-cst', { min: '0' }));
     root.appendChild(numInput('SaO2 (%)', 'iwi-sao2', { min: '0', max: '100' }));
     root.appendChild(numInput('RSBI / f/VT (breaths/min/L)', 'iwi-rsbi', { min: '0' }));

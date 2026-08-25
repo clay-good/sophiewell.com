@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'traynelis'(root) {
-    note(root, 'The Traynelis classification of traumatic atlanto-occipital dislocation (AOD), by the direction of occiput displacement relative to the atlas. Pick the type. I: anterior displacement; II: longitudinal distraction (vertical separation); III: posterior displacement. Atlanto-occipital dislocation is a high-mortality craniocervical injury. Reports the type the clinician has determined, not a diagnosis or a stability determination. Near-neighbor: anderson-montesano.');
+    note(root, 'The Traynelis classification of traumatic atlanto-occipital dislocation (AOD), by the direction of occiput displacement relative to the atlas. Pick the type. I: anterior displacement; II: longitudinal distraction (vertical separation); III: posterior displacement. Atlanto-occipital dislocation is a high-mortality craniocervical injury. Reports the type the clinician has determined, not a diagnosis or a stability determination.');
     root.appendChild(select('Traynelis type', 'traynelis-type', [
       ['I', 'I - anterior displacement of the occiput'],
       ['II', 'II - longitudinal distraction (vertical separation)'],

@@ -91,7 +91,7 @@ const EDSS_FS = [
 export const renderers = {
   // ----- 2.3 mjoa ------------------------------------------------------------
   mjoa(root) {
-    note(root, 'modified Japanese Orthopaedic Association score (Benzel 1991) for cervical myelopathy: four domains summed to 0–18. HIGHER is BETTER (18 = no dysfunction), the opposite of most scores. Severity: mild ≥ 15, moderate 12–14, severe ≤ 11. Near-neighbors: nurick, sins-score.');
+    note(root, 'modified Japanese Orthopaedic Association score (Benzel 1991) for cervical myelopathy: four domains summed to 0–18. HIGHER is BETTER (18 = no dysfunction), the opposite of most scores. Severity: mild ≥ 15, moderate 12–14, severe ≤ 11.');
     root.appendChild(pickField('Motor — upper extremity', 'mjoa-ue', gradeOpts(5, MJOA_UE)));
     root.appendChild(pickField('Motor — lower extremity', 'mjoa-le', gradeOpts(7, MJOA_LE)));
     root.appendChild(pickField('Sensory — upper extremity', 'mjoa-sensory', gradeOpts(3, MJOA_SENS)));
@@ -112,7 +112,7 @@ export const renderers = {
 
   // ----- 2.4 nurick ----------------------------------------------------------
   nurick(root) {
-    note(root, 'Nurick grade (Nurick 1972) for cervical spondylotic myelopathy — a gait-focused 0–5 ordinal scale from root signs only (0) to chairbound/bedridden (5). Near-neighbors: mjoa.');
+    note(root, 'Nurick grade (Nurick 1972) for cervical spondylotic myelopathy — a gait-focused 0–5 ordinal scale from root signs only (0) to chairbound/bedridden (5).');
     root.appendChild(pickField('Gait / ambulation status', 'nurick-grade', NURICK_OPTS));
     const o = out(); root.appendChild(o);
     wire(['nurick-grade'], () => safe(o, () => {
@@ -129,7 +129,7 @@ export const renderers = {
 
   // ----- 2.2 asia-impairment -------------------------------------------------
   'asia-impairment'(root) {
-    note(root, 'ASIA Impairment Scale (ISNCSCI, Kirshblum 2011): A complete, B sensory incomplete, C/D motor incomplete, E normal. Sacral sparing at S4–S5 is the complete-vs-incomplete gate; the proportion of key muscles below the level at grade ≥ 3 is the C-vs-D gate. Reports the AIS grade from your exam findings — it does not re-derive the full dermatome/myotome worksheet. Near-neighbors: nurick, mjoa.');
+    note(root, 'ASIA Impairment Scale (ISNCSCI, Kirshblum 2011): A complete, B sensory incomplete, C/D motor incomplete, E normal. Sacral sparing at S4–S5 is the complete-vs-incomplete gate; the proportion of key muscles below the level at grade ≥ 3 is the C-vs-D gate. Reports the AIS grade from your exam findings — it does not re-derive the full dermatome/myotome worksheet.');
     root.appendChild(pickField('All sensory & motor function normal (patient has a prior documented deficit)?', 'asia-allnormal', YESNO));
     root.appendChild(pickField('Sacral sparing at S4–S5 (sensation, deep anal pressure, or voluntary anal contraction)?', 'asia-sacral', YESNO));
     root.appendChild(pickField('Motor function preserved below the neurological level (VAC, or motor > 3 levels below)?', 'asia-motor', YESNO));
@@ -149,7 +149,7 @@ export const renderers = {
 
   // ----- 2.1 edss ------------------------------------------------------------
   edss(root) {
-    note(root, 'Expanded Disability Status Scale (Kurtzke 1983), 0–10 in 0.5 steps. The low range follows the eight Functional-System grades; the 4.0–9.5 range follows ambulation. A precise FS→step rating is not fully algorithmic, so this tile uses the standard simplified FS-count table and the authoritative ambulation anchors, reporting the HIGHER of the two. For a definitive rating use a trained Neurostatus assessment. Near-neighbors: mrs, gose.');
+    note(root, 'Expanded Disability Status Scale (Kurtzke 1983), 0–10 in 0.5 steps. The low range follows the eight Functional-System grades; the 4.0–9.5 range follows ambulation. A precise FS→step rating is not fully algorithmic, so this tile uses the standard simplified FS-count table and the authoritative ambulation anchors, reporting the HIGHER of the two. For a definitive rating use a trained Neurostatus assessment.');
     root.appendChild(pickField('Ambulation status', 'edss-ambulation', EDSS_AMB));
     const ids = ['edss-ambulation'];
     for (const [label, id, max] of EDSS_FS) { root.appendChild(pickField(label, id, gradeOpts(max))); ids.push(id); }

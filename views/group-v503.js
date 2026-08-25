@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'simpson-meningioma'(root) {
-    note(root, 'The Simpson grade records how complete a meningioma resection was, recorded by the surgeon at operation. Pick the grade. I: complete removal with the dural attachment and abnormal bone; II: complete removal with coagulation of the dural attachment; III: complete removal without treating the dural attachment; IV: partial removal, tumor left in situ; V: decompression only. Lower grades were associated with a lower reported recurrence rate. Reports the grade the surgeon has recorded, not an individual recurrence prediction or an adjuvant-radiotherapy decision. Near-neighbor: spetzler-martin.');
+    note(root, 'The Simpson grade records how complete a meningioma resection was, recorded by the surgeon at operation. Pick the grade. I: complete removal with the dural attachment and abnormal bone; II: complete removal with coagulation of the dural attachment; III: complete removal without treating the dural attachment; IV: partial removal, tumor left in situ; V: decompression only. Lower grades were associated with a lower reported recurrence rate. Reports the grade the surgeon has recorded, not an individual recurrence prediction or an adjuvant-radiotherapy decision.');
     root.appendChild(select('Simpson grade', 'simpson-grade', [
       ['I', 'I - complete, dural attachment and bone excised'],
       ['II', 'II - complete, dural attachment coagulated'],

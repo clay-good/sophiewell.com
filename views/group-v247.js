@@ -55,7 +55,7 @@ const S03 = [['0', '0 (normal)'], ['1', '1 (mild)'], ['2', '2 (moderate)'], ['3'
 
 export const renderers = {
   'pediatric-trauma-score'(root) {
-    note(root, 'Pediatric Trauma Score (Tepas 1987): 6 components each -1/+1/+2, -6..+12. <= 8 transfer to a pediatric trauma center. Near-neighbors: big.');
+    note(root, 'Pediatric Trauma Score (Tepas 1987): 6 components each -1/+1/+2, -6..+12. <= 8 transfer to a pediatric trauma center.');
     root.appendChild(select('Weight (> 20 kg / 10-20 kg / < 10 kg)', 'pts-wt', TRI));
     root.appendChild(select('Airway (normal / maintainable / unmaintainable)', 'pts-air', TRI));
     root.appendChild(select('Systolic BP (> 90 / 50-90 / < 50)', 'pts-sbp', TRI));
@@ -69,7 +69,7 @@ export const renderers = {
     postureNote(root);
   },
   'bind-score'(root) {
-    note(root, 'BIND score (Johnson & Bhutani 1999): mental status, muscle tone, cry, each 0-3 (0-9). Higher = worse acute bilirubin encephalopathy. Near-neighbors: bhutani-bilirubin.');
+    note(root, 'BIND score (Johnson & Bhutani 1999): mental status, muscle tone, cry, each 0-3 (0-9). Higher = worse acute bilirubin encephalopathy.');
     root.appendChild(select('Mental status', 'bind-ms', S03));
     root.appendChild(select('Muscle tone', 'bind-mt', S03));
     root.appendChild(select('Cry pattern', 'bind-cry', S03));
@@ -80,7 +80,7 @@ export const renderers = {
     postureNote(root);
   },
   'widmark-bac'(root) {
-    note(root, 'Widmark BAC estimate: BAC = A / (r x weight x 10) - 0.015 x hours (r = 0.68 male / 0.55 female). A population estimate, not a legal measurement. Near-neighbors: osmolal-gap.');
+    note(root, 'Widmark BAC estimate: BAC = A / (r x weight x 10) - 0.015 x hours (r = 0.68 male / 0.55 female). A population estimate, not a legal measurement.');
     root.appendChild(numInput('Pure alcohol consumed (grams)', 'wid-grams', { min: '0' }));
     root.appendChild(numInput('Body weight (kg)', 'wid-weight', { min: '0' }));
     root.appendChild(numInput('Hours since drinking', 'wid-hours', { min: '0' }));
@@ -92,7 +92,7 @@ export const renderers = {
     postureNote(root);
   },
   'povoc-ponv'(root) {
-    note(root, 'POVOC pediatric POV score (Eberhart 2004): surgery >= 30 min, age >= 3 y, POV/PONV history, strabismus surgery, each 1 point (0-4). Near-neighbors: apfel.');
+    note(root, 'POVOC pediatric POV score (Eberhart 2004): surgery >= 30 min, age >= 3 y, POV/PONV history, strabismus surgery, each 1 point (0-4).');
     root.appendChild(check('Surgery >= 30 minutes', 'pov-dur'));
     root.appendChild(check('Age >= 3 years', 'pov-age'));
     root.appendChild(check('History of POV/PONV (self or relative)', 'pov-hist'));

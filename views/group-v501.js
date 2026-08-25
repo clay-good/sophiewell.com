@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'ludwig-hairloss'(root) {
-    note(root, 'The Ludwig scale of female-pattern (androgenetic) hair loss, by the degree of central crown thinning with the frontal hairline preserved throughout. Pick the grade. I: perceptible thinning of the crown behind a retained frontal fringe; II: pronounced thinning within that area; III: full baldness within that area. Reports the pattern grade the clinician has determined, not a diagnosis of androgenetic alopecia or an exclusion of other causes of hair loss. Near-neighbor: salt-score.');
+    note(root, 'The Ludwig scale of female-pattern (androgenetic) hair loss, by the degree of central crown thinning with the frontal hairline preserved throughout. Pick the grade. I: perceptible thinning of the crown behind a retained frontal fringe; II: pronounced thinning within that area; III: full baldness within that area. Reports the pattern grade the clinician has determined, not a diagnosis of androgenetic alopecia or an exclusion of other causes of hair loss.');
     root.appendChild(select('Ludwig grade', 'ludwig-grade', [
       ['I', 'I - perceptible crown thinning'],
       ['II', 'II - pronounced crown thinning'],

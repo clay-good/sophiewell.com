@@ -37,7 +37,7 @@ function render(o, r, valueLabel) {
 
 export const renderers = {
   'whtr'(root) {
-    note(root, 'Waist-to-height ratio = waist / height (same units). The 0.5 boundary: "keep your waist to less than half your height" (Ashwell 2016). Near-neighbors: cmi, visceral-adiposity-index, bmi.');
+    note(root, 'Waist-to-height ratio = waist / height (same units). The 0.5 boundary: "keep your waist to less than half your height" (Ashwell 2016).');
     root.appendChild(num('Waist circumference (cm)', 'whtr-waist', { min: '0' }));
     root.appendChild(num('Height (cm)', 'whtr-height', { min: '0' }));
     const o = out(); root.appendChild(o);

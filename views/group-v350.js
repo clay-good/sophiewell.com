@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'tscherne-closed'(root) {
-    note(root, 'Oestern-Tscherne classification (Tscherne & Oestern 1982) of a closed-fracture soft-tissue injury. Pick the grade. 0/C0 little or no injury (low-energy); I/C1 superficial abrasion / contusion; II/C2 deep contaminated abrasion, local contusion, impending compartment syndrome; III/C3 extensive crush, degloving, overt compartment syndrome, or major vascular injury. The closed-fracture counterpart to Gustilo-Anderson (open fractures). Near-neighbors: gustilo-anderson.');
+    note(root, 'Oestern-Tscherne classification (Tscherne & Oestern 1982) of a closed-fracture soft-tissue injury. Pick the grade. 0/C0 little or no injury (low-energy); I/C1 superficial abrasion / contusion; II/C2 deep contaminated abrasion, local contusion, impending compartment syndrome; III/C3 extensive crush, degloving, overt compartment syndrome, or major vascular injury. The closed-fracture counterpart to Gustilo-Anderson (open fractures).');
     root.appendChild(select('Tscherne grade', 'tscherne-grade', [
       ['0', 'Grade 0 (C0) - little or no soft-tissue injury'],
       ['I', 'Grade I (C1) - superficial abrasion / contusion'],

@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'pipkin-femoral-head'(root) {
-    note(root, 'Pipkin classification (Pipkin 1957) of a femoral head fracture (typically with a posterior hip dislocation). Pick the type. I: below the fovea centralis (spares the weight-bearing surface); II: above the fovea centralis (involves the weight-bearing surface); III: type I/II plus a femoral neck fracture; IV: type I/II plus an acetabular fracture. Near-neighbors: garden-classification, pauwels-femoral-neck.');
+    note(root, 'Pipkin classification (Pipkin 1957) of a femoral head fracture (typically with a posterior hip dislocation). Pick the type. I: below the fovea centralis (spares the weight-bearing surface); II: above the fovea centralis (involves the weight-bearing surface); III: type I/II plus a femoral neck fracture; IV: type I/II plus an acetabular fracture.');
     root.appendChild(select('Pipkin type', 'pipkin-type', [
       ['I', 'Type I - below the fovea centralis'],
       ['II', 'Type II - above the fovea centralis (weight-bearing)'],

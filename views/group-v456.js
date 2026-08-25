@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'leddy-packer'(root) {
-    note(root, 'The Leddy-Packer classification of flexor digitorum profundus (FDP) avulsion — "jersey finger" — by the level of tendon retraction and any bony fragment. Pick the type. I: retraction into the palm (blood supply lost, most time-critical); II: retraction to the PIP joint, held by the vinculum longus (most common); III: a large bony fragment caught at the A4 pulley. Reports the type the clinician has determined, not a diagnosis or a treatment decision. Near-neighbor: eaton-littler.');
+    note(root, 'The Leddy-Packer classification of flexor digitorum profundus (FDP) avulsion — "jersey finger" — by the level of tendon retraction and any bony fragment. Pick the type. I: retraction into the palm (blood supply lost, most time-critical); II: retraction to the PIP joint, held by the vinculum longus (most common); III: a large bony fragment caught at the A4 pulley. Reports the type the clinician has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('Leddy-Packer type', 'leddy-type', [
       ['I', 'I - retraction into the palm (vincula ruptured)'],
       ['II', 'II - retraction to the PIP joint (most common)'],

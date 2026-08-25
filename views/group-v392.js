@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'hill-flap-valve'(root) {
-    note(root, 'Hill classification of the gastroesophageal flap valve, graded from a retroflexed endoscopic view of the cardia. Pick the grade. I: prominent ridge, closely approximated (normal); II: less pronounced ridge, may open with respiration; III: diminished ridge, fails to close around the scope; IV: no ridge, junction stays open. Grades III-IV are associated with a hiatal hernia. Near-neighbors: la-esophagitis.');
+    note(root, 'Hill classification of the gastroesophageal flap valve, graded from a retroflexed endoscopic view of the cardia. Pick the grade. I: prominent ridge, closely approximated (normal); II: less pronounced ridge, may open with respiration; III: diminished ridge, fails to close around the scope; IV: no ridge, junction stays open. Grades III-IV are associated with a hiatal hernia.');
     root.appendChild(select('Hill grade', 'hill-grade', [
       ['I', 'Grade I - prominent ridge (normal)'],
       ['II', 'Grade II - less pronounced ridge'],

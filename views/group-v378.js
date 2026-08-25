@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'delbet-femoral-neck'(root) {
-    note(root, 'Delbet (Delbet-Colonna) classification of a pediatric femoral neck / proximal femur fracture, by the anatomic level of the fracture line. Pick the type. I: transepiphyseal (highest AVN risk); II: transcervical (most common, high AVN risk); III: cervicotrochanteric / basicervical (lower); IV: intertrochanteric (lowest). Near-neighbors: garden-classification, pauwels-femoral-neck.');
+    note(root, 'Delbet (Delbet-Colonna) classification of a pediatric femoral neck / proximal femur fracture, by the anatomic level of the fracture line. Pick the type. I: transepiphyseal (highest AVN risk); II: transcervical (most common, high AVN risk); III: cervicotrochanteric / basicervical (lower); IV: intertrochanteric (lowest).');
     root.appendChild(select('Delbet type', 'delbet-type', [
       ['I', 'Type I - transepiphyseal'],
       ['II', 'Type II - transcervical'],

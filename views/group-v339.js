@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'cormack-lehane'(root) {
-    note(root, 'Cormack-Lehane classification (Cormack & Lehane 1984) of the laryngeal view at direct laryngoscopy. Pick the grade. 1 most of the glottis visible; 2 only posterior glottis / arytenoids; 3 only the epiglottis; 4 neither glottis nor epiglottis. Grades 3-4 indicate a difficult view. Near-neighbors: el-ganzouri, wilson-airway.');
+    note(root, 'Cormack-Lehane classification (Cormack & Lehane 1984) of the laryngeal view at direct laryngoscopy. Pick the grade. 1 most of the glottis visible; 2 only posterior glottis / arytenoids; 3 only the epiglottis; 4 neither glottis nor epiglottis. Grades 3-4 indicate a difficult view.');
     root.appendChild(select('Cormack-Lehane grade', 'cl-grade', [
       ['1', '1 — most of the glottis (vocal cords) visible'],
       ['2', '2 — only posterior glottis / arytenoids (2a cords, 2b arytenoids)'],

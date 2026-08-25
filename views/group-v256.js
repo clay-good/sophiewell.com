@@ -53,7 +53,7 @@ function render(o, r, valueLabel) {
 
 export const renderers = {
   'mases-enthesitis'(root) {
-    note(root, 'MASES (Heuft-Dorenbosch 2003): 13 entheseal sites, each tender = 1, 0-13. >= 1 enthesitis. Near-neighbors: basdai.');
+    note(root, 'MASES (Heuft-Dorenbosch 2003): 13 entheseal sites, each tender = 1, 0-13. >= 1 enthesitis.');
     const items = [['ma-cc1r', 'cc1R', '1st costochondral (R)'], ['ma-cc1l', 'cc1L', '1st costochondral (L)'], ['ma-cc7r', 'cc7R', '7th costochondral (R)'], ['ma-cc7l', 'cc7L', '7th costochondral (L)'], ['ma-psisr', 'psisR', 'Posterior superior iliac spine (R)'], ['ma-psisl', 'psisL', 'Posterior superior iliac spine (L)'], ['ma-asisr', 'asisR', 'Anterior superior iliac spine (R)'], ['ma-asisl', 'asisL', 'Anterior superior iliac spine (L)'], ['ma-ilr', 'iliacR', 'Iliac crest (R)'], ['ma-ill', 'iliacL', 'Iliac crest (L)'], ['ma-achr', 'achillesR', 'Proximal Achilles (R)'], ['ma-achl', 'achillesL', 'Proximal Achilles (L)'], ['ma-l5', 'l5', 'L5 spinous process']];
     for (const [id, , label] of items) root.appendChild(check(label, id));
     const o = out(); root.appendChild(o);
@@ -64,7 +64,7 @@ export const renderers = {
     postureNote(root);
   },
   'mmt8-myositis'(root) {
-    note(root, 'MMT-8 (IMACS): 8 muscle groups each 0-10, 0-80. Higher = stronger. Near-neighbors: mases-enthesitis.');
+    note(root, 'MMT-8 (IMACS): 8 muscle groups each 0-10, 0-80. Higher = stronger.');
     const items = [['mm-neck', 'neck', 'Neck flexors'], ['mm-delt', 'deltoid', 'Deltoid (middle)'], ['mm-bic', 'biceps', 'Biceps'], ['mm-wrist', 'wrist', 'Wrist extensors'], ['mm-gmax', 'glutMax', 'Gluteus maximus'], ['mm-gmed', 'glutMed', 'Gluteus medius'], ['mm-quad', 'quad', 'Quadriceps'], ['mm-ankle', 'ankle', 'Ankle dorsiflexors']];
     for (const [id, , label] of items) root.appendChild(numInput(`${label} (0-10)`, id, { min: '0', max: '10' }));
     const o = out(); root.appendChild(o);
@@ -75,7 +75,7 @@ export const renderers = {
     postureNote(root);
   },
   'intubation-difficulty-scale'(root) {
-    note(root, 'Intubation Difficulty Scale (Adnet 1997): N1-N7 summed. 0 easy, 1-5 slight-moderate, > 5 difficult. Near-neighbors: el-ganzouri.');
+    note(root, 'Intubation Difficulty Scale (Adnet 1997): N1-N7 summed. 0 easy, 1-5 slight-moderate, > 5 difficult.');
     root.appendChild(numInput('Attempts beyond the first (N1)', 'ids-attempts', { min: '0' }));
     root.appendChild(numInput('Operators beyond the first (N2)', 'ids-operators', { min: '0' }));
     root.appendChild(numInput('Alternative techniques used (N3)', 'ids-tech', { min: '0' }));
@@ -90,7 +90,7 @@ export const renderers = {
     postureNote(root);
   },
   'crop-index'(root) {
-    note(root, 'CROP index (Yang-Tobin 1991) = [Cdyn x PImax x (PaO2/PAO2)] / RR. >= 13 favors extubation. Near-neighbors: rsbi, integrative-weaning-index.');
+    note(root, 'CROP index (Yang-Tobin 1991) = [Cdyn x PImax x (PaO2/PAO2)] / RR. >= 13 favors extubation.');
     root.appendChild(numInput('Dynamic compliance (mL/cmH2O)', 'crop-cdyn', { min: '0' }));
     root.appendChild(numInput('Maximal inspiratory pressure PImax (cmH2O, magnitude)', 'crop-pimax', { min: '0' }));
     root.appendChild(numInput('PaO2 (mmHg)', 'crop-pao2', { min: '0' }));

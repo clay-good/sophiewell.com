@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'pressure-injury-stage'(root) {
-    note(root, 'NPIAP pressure injury staging (2016 revision). Pick the stage by depth of tissue loss. 1: non-blanchable erythema, intact skin; 2: partial-thickness loss, exposed dermis; 3: full-thickness loss (fat may show); 4: full-thickness loss with exposed fascia / muscle / bone; Unstageable: obscured by slough / eschar; Deep Tissue Pressure Injury: persistent non-blanchable deep discoloration. Staging describes tissue loss, not healing. Near-neighbors: braden, bwat.');
+    note(root, 'NPIAP pressure injury staging (2016 revision). Pick the stage by depth of tissue loss. 1: non-blanchable erythema, intact skin; 2: partial-thickness loss, exposed dermis; 3: full-thickness loss (fat may show); 4: full-thickness loss with exposed fascia / muscle / bone; Unstageable: obscured by slough / eschar; Deep Tissue Pressure Injury: persistent non-blanchable deep discoloration. Staging describes tissue loss, not healing.');
     root.appendChild(select('Pressure injury stage', 'pi-stage', [
       ['1', 'Stage 1 - non-blanchable erythema, intact skin'],
       ['2', 'Stage 2 - partial-thickness loss, exposed dermis'],

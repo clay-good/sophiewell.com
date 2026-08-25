@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'goligher-hemorrhoids'(root) {
-    note(root, 'Goligher classification of internal hemorrhoids. Pick the prolapse grade. I: bleed, no prolapse; II: prolapse on straining, reduces spontaneously; III: prolapse, requires manual reduction; IV: irreducible / permanently prolapsed. Near-neighbors: forrest, rockall.');
+    note(root, 'Goligher classification of internal hemorrhoids. Pick the prolapse grade. I: bleed, no prolapse; II: prolapse on straining, reduces spontaneously; III: prolapse, requires manual reduction; IV: irreducible / permanently prolapsed.');
     root.appendChild(select('Goligher grade', 'goligher-grade', [
       ['I', 'Grade I - bleed, no prolapse'],
       ['II', 'Grade II - prolapse on straining, reduces spontaneously'],

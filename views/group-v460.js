@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'enneking'(root) {
-    note(root, 'The Enneking (MSTS) surgical staging of malignant musculoskeletal tumors, combining histologic grade (G), compartment (T), and metastasis (M). Pick the stage. IA: G1 T1 M0; IB: G1 T2 M0; IIA: G2 T1 M0; IIB: G2 T2 M0; III: any M1. Reports the stage the clinician has determined, not a diagnosis or a treatment decision. Near-neighbor: mirels-score.');
+    note(root, 'The Enneking (MSTS) surgical staging of malignant musculoskeletal tumors, combining histologic grade (G), compartment (T), and metastasis (M). Pick the stage. IA: G1 T1 M0; IB: G1 T2 M0; IIA: G2 T1 M0; IIB: G2 T2 M0; III: any M1. Reports the stage the clinician has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('Enneking stage', 'enneking-stage', [
       ['IA', 'IA - low-grade, intracompartmental, no mets'],
       ['IB', 'IB - low-grade, extracompartmental, no mets'],

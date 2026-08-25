@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'bismuth-corlette'(root) {
-    note(root, 'Bismuth-Corlette classification of a perihilar cholangiocarcinoma (Klatskin tumor), by how far the tumor extends along the hepatic-duct confluence. Pick the type. I: below the confluence; II: reaching the confluence; IIIa: extending to the right secondary ducts; IIIb: extending to the left secondary ducts; IV: bilateral secondary ducts or multifocal. Near-neighbors: strasberg-bdi.');
+    note(root, 'Bismuth-Corlette classification of a perihilar cholangiocarcinoma (Klatskin tumor), by how far the tumor extends along the hepatic-duct confluence. Pick the type. I: below the confluence; II: reaching the confluence; IIIa: extending to the right secondary ducts; IIIb: extending to the left secondary ducts; IV: bilateral secondary ducts or multifocal.');
     root.appendChild(select('Bismuth-Corlette type', 'bc-type', [
       ['I', 'Type I - below (sparing) the confluence'],
       ['II', 'Type II - reaching the confluence'],

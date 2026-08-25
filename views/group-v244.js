@@ -48,7 +48,7 @@ const FPI5 = [['-2', '-2'], ['-1', '-1'], ['0', '0'], ['1', '+1'], ['2', '+2']];
 
 export const renderers = {
   'lysholm-knee-score'(root) {
-    note(root, 'Lysholm knee score (Lysholm & Gillquist 1982): 8 items, 0-100. >= 95 excellent, 84-94 good, 65-83 fair, < 65 poor. Near-neighbors: marx-activity-rating.');
+    note(root, 'Lysholm knee score (Lysholm & Gillquist 1982): 8 items, 0-100. >= 95 excellent, 84-94 good, 65-83 fair, < 65 poor.');
     root.appendChild(select('Limp', 'lys-limp', [['5', 'None (5)'], ['3', 'Slight / periodic (3)'], ['0', 'Severe / constant (0)']]));
     root.appendChild(select('Support', 'lys-support', [['5', 'None (5)'], ['2', 'Stick or crutch (2)'], ['0', 'Weight-bearing impossible (0)']]));
     root.appendChild(select('Locking', 'lys-lock', [['15', 'None (15)'], ['10', 'Catching, no locking (10)'], ['6', 'Occasional locking (6)'], ['2', 'Frequent locking (2)'], ['0', 'Locked at exam (0)']]));
@@ -64,7 +64,7 @@ export const renderers = {
     postureNote(root);
   },
   'marx-activity-rating'(root) {
-    note(root, 'Marx activity rating (Marx 2001): running, cutting, deceleration, pivoting, each 0-4 by frequency. Total 0-16; higher = more knee demand. Near-neighbors: lysholm-knee-score.');
+    note(root, 'Marx activity rating (Marx 2001): running, cutting, deceleration, pivoting, each 0-4 by frequency. Total 0-16; higher = more knee demand.');
     root.appendChild(select('Running', 'marx-run', MARX));
     root.appendChild(select('Cutting', 'marx-cut', MARX));
     root.appendChild(select('Deceleration', 'marx-dec', MARX));
@@ -76,7 +76,7 @@ export const renderers = {
     postureNote(root);
   },
   'foot-posture-index'(root) {
-    note(root, 'Foot Posture Index (Redmond 2006): 6 observations each -2..+2, total -12..+12. +6..+9 pronated, -1..-4 supinated. Near-neighbors: bess-balance-error.');
+    note(root, 'Foot Posture Index (Redmond 2006): 6 observations each -2..+2, total -12..+12. +6..+9 pronated, -1..-4 supinated.');
     const items = [['fpi-talar', 'talar', 'Talar-head palpation'], ['fpi-supra', 'supra', 'Supra/infra-lateral malleolar curvature'], ['fpi-calc', 'calcaneal', 'Calcaneal inversion/eversion'], ['fpi-tn', 'talonavicular', 'Talonavicular bulge'], ['fpi-arch', 'arch', 'Medial-arch congruence'], ['fpi-fore', 'forefoot', 'Forefoot abduction/adduction']];
     for (const [id, , label] of items) root.appendChild(select(`${label} (-2 to +2)`, id, FPI5));
     const o = out(); root.appendChild(o);
@@ -87,7 +87,7 @@ export const renderers = {
     postureNote(root);
   },
   'bess-balance-error'(root) {
-    note(root, 'Balance Error Scoring System (Riemann & Guskiewicz 1999): errors (max 10) across 6 stances on firm/foam, eyes closed. Total 0-60. Near-neighbors: foot-posture-index.');
+    note(root, 'Balance Error Scoring System (Riemann & Guskiewicz 1999): errors (max 10) across 6 stances on firm/foam, eyes closed. Total 0-60.');
     const items = [['bess-df', 'dlFirm', 'Double-leg, firm'], ['bess-sf', 'slFirm', 'Single-leg, firm'], ['bess-tf', 'tandemFirm', 'Tandem, firm'], ['bess-dm', 'dlFoam', 'Double-leg, foam'], ['bess-sm', 'slFoam', 'Single-leg, foam'], ['bess-tm', 'tandemFoam', 'Tandem, foam']];
     for (const [id, , label] of items) root.appendChild(numInput(`${label} — errors (0-10)`, id, { min: '0', max: '10' }));
     const o = out(); root.appendChild(o);

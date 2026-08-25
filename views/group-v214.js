@@ -57,7 +57,7 @@ function boolTile(root, intro, fields, compute, valueLabel, nums = []) {
 
 export const renderers = {
   'apple-score'(root) {
-    boolTile(root, 'APPLE score (Kornej 2015): one point each for age > 65, persistent AF, impaired eGFR < 60, LA diameter >= 43 mm, EF < 50% (0-5). Higher = higher AF recurrence after ablation. Near-neighbors: cha2ds2-va, hatch-score.', [
+    boolTile(root, 'APPLE score (Kornej 2015): one point each for age > 65, persistent AF, impaired eGFR < 60, LA diameter >= 43 mm, EF < 50% (0-5). Higher = higher AF recurrence after ablation.', [
       ['apl-age', 'ageOver65', 'Age > 65 years (+1)'],
       ['apl-pers', 'persistentAf', 'Persistent AF (+1)'],
       ['apl-egfr', 'egfrLow', 'Impaired eGFR < 60 mL/min/1.73m2 (+1)'],
@@ -66,7 +66,7 @@ export const renderers = {
     ], M.apple, 'APPLE');
   },
   'caap-af-score'(root) {
-    boolTile(root, 'CAAP-AF score (Winkle 2016): CAD, LA diameter band, age band, persistent AF, failed-AAD band, female (0-13). Higher = lower freedom from AF after ablation; >= 5 elevated. Near-neighbors: apple-score, atlas-score.', [
+    boolTile(root, 'CAAP-AF score (Winkle 2016): CAD, LA diameter band, age band, persistent AF, failed-AAD band, female (0-13). Higher = lower freedom from AF after ablation; >= 5 elevated.', [
       ['caap-cad', 'cad', 'Coronary artery disease (+1)'],
       ['caap-pers', 'persistentAf', 'Persistent / long-standing persistent AF (+2)'],
       ['caap-female', 'female', 'Female sex (+1)'],
@@ -77,7 +77,7 @@ export const renderers = {
     ]);
   },
   'atlas-score'(root) {
-    boolTile(root, 'ATLAS score (Mesquita 2018): age > 60, non-paroxysmal AF, indexed LA volume (+1/10 mL/m2), female (+4), current smoking (+7). Low < 6, intermediate 6-10, high > 10. Near-neighbors: apple-score, la-volume-index.', [
+    boolTile(root, 'ATLAS score (Mesquita 2018): age > 60, non-paroxysmal AF, indexed LA volume (+1/10 mL/m2), female (+4), current smoking (+7). Low < 6, intermediate 6-10, high > 10.', [
       ['atl-age', 'ageOver60', 'Age > 60 years (+1)'],
       ['atl-np', 'nonParoxysmal', 'Non-paroxysmal AF (+2)'],
       ['atl-female', 'female', 'Female sex (+4)'],
@@ -87,7 +87,7 @@ export const renderers = {
     ]);
   },
   'hatch-score'(root) {
-    boolTile(root, 'HATCH score (de Vos 2010): hypertension, age > 75, TIA/stroke (+2), COPD, heart failure (+2) (0-7). Higher = higher progression from paroxysmal to persistent AF. Near-neighbors: cha2ds2-va, apple-score.', [
+    boolTile(root, 'HATCH score (de Vos 2010): hypertension, age > 75, TIA/stroke (+2), COPD, heart failure (+2) (0-7). Higher = higher progression from paroxysmal to persistent AF.', [
       ['htc-htn', 'hypertension', 'Hypertension (+1)'],
       ['htc-age', 'ageOver75', 'Age > 75 years (+1)'],
       ['htc-stroke', 'strokeTia', 'TIA or stroke (+2)'],
@@ -96,7 +96,7 @@ export const renderers = {
     ], M.hatch, 'HATCH');
   },
   'mb-later-score'(root) {
-    boolTile(root, 'MB-LATER score (Mujovic 2017): male, bundle-branch block, LA >= 47 mm, AF type (0 paroxysmal / 1 persistent / 2 long-standing), early recurrence < 3 mo (0-6). >= 2 predicts very-late recurrence. Near-neighbors: apple-score, caap-af-score.', [
+    boolTile(root, 'MB-LATER score (Mujovic 2017): male, bundle-branch block, LA >= 47 mm, AF type (0 paroxysmal / 1 persistent / 2 long-standing), early recurrence < 3 mo (0-6). >= 2 predicts very-late recurrence.', [
       ['mbl-male', 'male', 'Male sex (+1)'],
       ['mbl-bbb', 'bbb', 'Bundle-branch block (+1)'],
       ['mbl-la', 'laLarge', 'Left atrium >= 47 mm (+1)'],
@@ -106,7 +106,7 @@ export const renderers = {
     ]);
   },
   'canada-acs-risk-score'(root) {
-    boolTile(root, 'Canada ACS (C-ACS) risk score (Huynh 2013): age >= 75, Killip > 1, SBP < 100, HR > 100 (0-4). Rising score = higher in-hospital mortality across the ACS spectrum. Near-neighbors: grace, timi.', [
+    boolTile(root, 'Canada ACS (C-ACS) risk score (Huynh 2013): age >= 75, Killip > 1, SBP < 100, HR > 100 (0-4). Rising score = higher in-hospital mortality across the ACS spectrum.', [
       ['cacs-age', 'ageOver75', 'Age >= 75 years (+1)'],
       ['cacs-killip', 'killipOver1', 'Killip class > 1 (+1)'],
       ['cacs-sbp', 'sbpLow', 'Systolic BP < 100 mmHg (+1)'],
@@ -114,7 +114,7 @@ export const renderers = {
     ], M.canadaAcs, 'C-ACS');
   },
   'action-icu-score'(root) {
-    boolTile(root, 'ACTION ICU score (Fanaroff 2018): age, HR band, SBP band, creatinine, troponin, heart failure (+5), ST depression, no prior revascularization, chronic lung disease (0-20). Predicts complications needing critical care in NSTEMI. Near-neighbors: grace, timi.', [
+    boolTile(root, 'ACTION ICU score (Fanaroff 2018): age, HR band, SBP band, creatinine, troponin, heart failure (+5), ST depression, no prior revascularization, chronic lung disease (0-20). Predicts complications needing critical care in NSTEMI.', [
       ['aic-age', 'ageOver70', 'Age >= 70 years (+1)'],
       ['aic-cr', 'creatHigh', 'Creatinine >= 1.1 mg/dL (+1)'],
       ['aic-trop', 'tropHigh', 'Initial troponin / ULN >= 12 (+2)'],

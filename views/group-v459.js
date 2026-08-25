@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'thompson-epstein'(root) {
-    note(root, 'The Thompson-Epstein classification of posterior hip dislocations, by the associated acetabular or femoral-head fracture. Pick the type. I: no or minor rim fracture; II: a single large posterior rim fracture; III: a comminuted rim fracture; IV: an acetabular rim and floor fracture; V: a femoral-head fracture. Reports the type the clinician has determined, not a diagnosis or a treatment decision. Near-neighbor: pipkin-femoral-head.');
+    note(root, 'The Thompson-Epstein classification of posterior hip dislocations, by the associated acetabular or femoral-head fracture. Pick the type. I: no or minor rim fracture; II: a single large posterior rim fracture; III: a comminuted rim fracture; IV: an acetabular rim and floor fracture; V: a femoral-head fracture. Reports the type the clinician has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('Thompson-Epstein type', 'te-type', [
       ['I', 'I - no or minor rim fracture'],
       ['II', 'II - single large posterior rim fracture'],

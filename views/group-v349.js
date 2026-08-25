@@ -35,7 +35,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'fazekas-wmh'(root) {
-    note(root, 'Fazekas scale (Fazekas 1987) of white matter hyperintensities on brain MRI (FLAIR preferred). Pick both grades. Periventricular (PVH): 0 absent, 1 caps / thin lining, 2 smooth halo, 3 irregular extension into deep white matter. Deep white matter (DWMH): 0 absent, 1 punctate foci, 2 beginning confluence, 3 large confluent areas. Higher grades indicate greater white-matter-disease burden, read in the clinical context. Near-neighbors: marshall-ct.');
+    note(root, 'Fazekas scale (Fazekas 1987) of white matter hyperintensities on brain MRI (FLAIR preferred). Pick both grades. Periventricular (PVH): 0 absent, 1 caps / thin lining, 2 smooth halo, 3 irregular extension into deep white matter. Deep white matter (DWMH): 0 absent, 1 punctate foci, 2 beginning confluence, 3 large confluent areas. Higher grades indicate greater white-matter-disease burden, read in the clinical context.');
     root.appendChild(select('Periventricular (PVH) grade', 'fz-pvh', [
       ['0', '0 - absent'],
       ['1', '1 - caps or a pencil-thin lining'],

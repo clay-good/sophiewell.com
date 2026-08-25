@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'bado'(root) {
-    note(root, 'The Bado classification of Monteggia fractures, by the direction of radial-head dislocation and the ulnar fracture. Pick the type. I: anterior dislocation, anterior ulnar angulation (most common); II: posterior dislocation, posterior ulnar angulation; III: lateral dislocation with an ulnar metaphyseal fracture; IV: anterior dislocation with both-bone proximal-third fractures. Reports the type the clinician has determined, not a diagnosis or a treatment decision. Near-neighbor: mason-radial-head.');
+    note(root, 'The Bado classification of Monteggia fractures, by the direction of radial-head dislocation and the ulnar fracture. Pick the type. I: anterior dislocation, anterior ulnar angulation (most common); II: posterior dislocation, posterior ulnar angulation; III: lateral dislocation with an ulnar metaphyseal fracture; IV: anterior dislocation with both-bone proximal-third fractures. Reports the type the clinician has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('Bado type', 'bado-type', [
       ['I', 'I - anterior radial-head dislocation'],
       ['II', 'II - posterior radial-head dislocation'],

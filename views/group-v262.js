@@ -46,7 +46,7 @@ function render(o, r, valueLabel) {
 
 export const renderers = {
   'lab-score'(root) {
-    note(root, 'Lab-score (Galetto-Lacour 2008): biomarker risk of serious bacterial infection in fever without source. Total 0-9; >= 3 = high risk. Near-neighbors: step-by-step, rochester, nigrovic.');
+    note(root, 'Lab-score (Galetto-Lacour 2008): biomarker risk of serious bacterial infection in fever without source. Total 0-9; >= 3 = high risk.');
     root.appendChild(select('CRP', 'ls-crp', [['lt40', 'CRP < 40 mg/L (0)'], ['mid', 'CRP 40-99 mg/L (+2)'], ['high', 'CRP >= 100 mg/L (+4)']]));
     root.appendChild(select('Procalcitonin', 'ls-pct', [['lt05', 'PCT < 0.5 ng/mL (0)'], ['mid', 'PCT 0.5-1.99 ng/mL (+2)'], ['high', 'PCT >= 2.0 ng/mL (+4)']]));
     root.appendChild(check('Urine dipstick positive (leukocyte esterase and/or nitrite) (+1)', 'ls-urine'));
@@ -57,7 +57,7 @@ export const renderers = {
     postureNote(root);
   },
   'chalice'(root) {
-    note(root, 'CHALICE rule (Dunning 2006): a sensitivity-first pediatric head-CT rule. CT recommended if ANY of 14 criteria is present. Near-neighbors: pecarn-head, catch-head, canadian-ct-head.');
+    note(root, 'CHALICE rule (Dunning 2006): a sensitivity-first pediatric head-CT rule. CT recommended if ANY of 14 criteria is present.');
     note(root, 'History:');
     root.appendChild(check('Witnessed loss of consciousness > 5 min', 'ch-loc'));
     root.appendChild(check('Amnesia > 5 min', 'ch-amnesia'));
@@ -88,7 +88,7 @@ export const renderers = {
     postureNote(root);
   },
   'egami'(root) {
-    note(root, 'Egami score (Egami 2006): predicts IVIG resistance in Kawasaki disease. Total 0-6; >= 3 = high risk. Near-neighbor: kawasaki-criteria.');
+    note(root, 'Egami score (Egami 2006): predicts IVIG resistance in Kawasaki disease. Total 0-6; >= 3 = high risk.');
     root.appendChild(check('ALT >= 80 IU/L (+2)', 'eg-alt'));
     root.appendChild(check('Age <= 6 months (+1)', 'eg-age'));
     root.appendChild(check('Treatment on illness day <= 4 (+1)', 'eg-day'));

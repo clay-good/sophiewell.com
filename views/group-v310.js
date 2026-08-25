@@ -37,7 +37,7 @@ const IDS = [
 
 export const renderers = {
   'cholangitis-severity'(root) {
-    note(root, 'Acute cholangitis severity (Tokyo Guidelines TG18/TG13). Check the criteria you have determined. Grade III (severe): any one organ dysfunction. Grade II (moderate): any two of the moderate criteria. Grade I (mild): neither. Near-neighbors: charlson, sirs.');
+    note(root, 'Acute cholangitis severity (Tokyo Guidelines TG18/TG13). Check the criteria you have determined. Grade III (severe): any one organ dysfunction. Grade II (moderate): any two of the moderate criteria. Grade I (mild): neither.');
 
     note(root, 'Grade III — organ dysfunction (any one → Grade III):');
     root.appendChild(check('Cardiovascular: hypotension needing dopamine ≥5 µg/kg/min or any norepinephrine', 'chol-cv'));

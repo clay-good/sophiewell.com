@@ -54,7 +54,7 @@ const T012 = [['0', '0'], ['1', '1'], ['2', '2']];
 
 export const renderers = {
   'absi-burn'(root) {
-    note(root, 'ABSI (Tobiasen 1982): sex + age band + inhalation + full-thickness + %TBSA band. Threat to life 2-3 very low to >= 12 maximum. Near-neighbors: lund-browder, burn-fluid.');
+    note(root, 'ABSI (Tobiasen 1982): sex + age band + inhalation + full-thickness + %TBSA band. Threat to life 2-3 very low to >= 12 maximum.');
     root.appendChild(select('Sex', 'absi-sex', [['male', 'Male'], ['female', 'Female']]));
     root.appendChild(numInput('Age (years)', 'absi-age', { min: '0' }));
     root.appendChild(numInput('%TBSA burned', 'absi-tbsa', { min: '0', max: '100' }));
@@ -67,7 +67,7 @@ export const renderers = {
     postureNote(root);
   },
   'sinbad-score'(root) {
-    note(root, 'SINBAD (Ince 2008): 6 diabetic-foot-ulcer features each 0/1, 0-6. >= 3 predicts poorer outcome. Near-neighbors: wagner-dfu, university-texas-dfu.');
+    note(root, 'SINBAD (Ince 2008): 6 diabetic-foot-ulcer features each 0/1, 0-6. >= 3 predicts poorer outcome.');
     root.appendChild(check('Site: mid- or hindfoot (vs forefoot)', 'sin-site'));
     root.appendChild(check('Ischemia: pedal pulses absent', 'sin-isch'));
     root.appendChild(check('Neuropathy: protective sensation lost', 'sin-neuro'));
@@ -81,7 +81,7 @@ export const renderers = {
     postureNote(root);
   },
   'atlas-cdi'(root) {
-    note(root, 'ATLAS (Miller 2013): age + antibiotics + leukocyte + albumin + creatinine, 0-10. Predicted cure = 100 - 5.08 x score. Near-neighbors: sirs.');
+    note(root, 'ATLAS (Miller 2013): age + antibiotics + leukocyte + albumin + creatinine, 0-10. Predicted cure = 100 - 5.08 x score.');
     root.appendChild(select('Age (< 60 = 0, 60-79 = 1, >= 80 = 2)', 'atl-age', T012));
     root.appendChild(select('Systemic antibiotics during CDI therapy', 'atl-abx', [['0', 'No (0)'], ['2', 'Yes (2)']]));
     root.appendChild(select('Leukocyte count (< 16 = 0, 16-25 = 1, > 25 = 2) x10^9/L', 'atl-wbc', T012));
@@ -94,7 +94,7 @@ export const renderers = {
     postureNote(root);
   },
   'increment-cpe'(root) {
-    note(root, 'INCREMENT-CPE (Gutierrez-Gutierrez 2017): septic shock 5, Pitt >= 6 →4, Charlson >= 2 →3, non-urinary/biliary source 3. 0-15; >= 8 high risk. Near-neighbors: sirs.');
+    note(root, 'INCREMENT-CPE (Gutierrez-Gutierrez 2017): septic shock 5, Pitt >= 6 →4, Charlson >= 2 →3, non-urinary/biliary source 3. 0-15; >= 8 high risk.');
     root.appendChild(check('Severe sepsis or septic shock at presentation (5)', 'inc-shock'));
     root.appendChild(check('Pitt bacteremia score >= 6 (4)', 'inc-pitt'));
     root.appendChild(check('Charlson comorbidity index >= 2 (3)', 'inc-charl'));

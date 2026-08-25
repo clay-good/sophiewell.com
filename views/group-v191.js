@@ -72,7 +72,7 @@ const GUYS_OPTS = [
 export const renderers = {
   // ----- 2.1 scorten ---------------------------------------------------------
   scorten(root) {
-    note(root, 'SCORTEN (Bastuji-Garin 2000): seven criteria each 1 point; predicts in-hospital TEN mortality. Best scored on day 1 and again on day 3. Near-neighbors: the burn tiles.');
+    note(root, 'SCORTEN (Bastuji-Garin 2000): seven criteria each 1 point; predicts in-hospital TEN mortality. Best scored on day 1 and again on day 3.');
     root.appendChild(num('Age (years)', 'scorten-age'));
     root.appendChild(num('Heart rate (bpm)', 'scorten-heartRate'));
     root.appendChild(num('Body surface area detached (%)', 'scorten-bsaDetached'));
@@ -96,7 +96,7 @@ export const renderers = {
 
   // ----- 2.2 melanoma-t-stage ------------------------------------------------
   'melanoma-t-stage'(root) {
-    note(root, 'AJCC 8th-edition melanoma T category (Gershenwald 2017): from Breslow thickness and ulceration. The T element only — nodal and metastatic staging are separate. Near-neighbors: gleason-grade-group.');
+    note(root, 'AJCC 8th-edition melanoma T category (Gershenwald 2017): from Breslow thickness and ulceration. The T element only — nodal and metastatic staging are separate.');
     root.appendChild(num('Breslow thickness (mm)', 'melt-breslow'));
     root.appendChild(checkField('Ulceration present', 'melt-ulceration'));
     const o = out(); root.appendChild(o);
@@ -114,7 +114,7 @@ export const renderers = {
 
   // ----- 2.3 pi-rads ---------------------------------------------------------
   'pi-rads'(root) {
-    note(root, 'PI-RADS v2.1 (Turkbey 2019): the prostate-MRI assessment category (1–5). DWI drives the peripheral zone; T2W drives the transition zone; the score-3 upgrade rules differ by zone. A reporting category, not a biopsy order. Near-neighbors: psa-density.');
+    note(root, 'PI-RADS v2.1 (Turkbey 2019): the prostate-MRI assessment category (1–5). DWI drives the peripheral zone; T2W drives the transition zone; the score-3 upgrade rules differ by zone. A reporting category, not a biopsy order.');
     root.appendChild(selectField('Zone of the dominant lesion', 'pirads-zone', ZONE_OPTS));
     root.appendChild(selectField('DWI / ADC score (1–5) — peripheral-zone driver', 'pirads-dwi', SCORE_OPTS()));
     root.appendChild(selectField('T2W score (1–5) — transition-zone driver', 'pirads-t2w', SCORE_OPTS()));
@@ -134,7 +134,7 @@ export const renderers = {
 
   // ----- 2.4 guys-stone-score ------------------------------------------------
   'guys-stone-score'(root) {
-    note(root, "Guy's stone score (Thomas 2011): grades PCNL complexity (Grade I–IV) with the expected stone-free rate. A complement to S.T.O.N.E. nephrolithometry. Near-neighbors: stone-nephrolithometry.");
+    note(root, "Guy's stone score (Thomas 2011): grades PCNL complexity (Grade I–IV) with the expected stone-free rate. A complement to S.T.O.N.E. nephrolithometry.");
     root.appendChild(selectField('Stone configuration and anatomy', 'guys-grade', GUYS_OPTS));
     const o = out(); root.appendChild(o);
     wire(['guys-grade'], () => safe(o, () => {

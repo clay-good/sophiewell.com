@@ -33,7 +33,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'avf-rule-of-6s'(root) {
-    note(root, 'Arteriovenous fistula (AVF) maturation — the “Rule of 6s”. Enter the fistula blood flow, vein inner diameter, and vein depth; the tile checks each against the 2006 KDOQI thresholds (flow ≥ 600 mL/min, diameter ≥ 6 mm, depth ≤ 6 mm) and reports whether all three are met. Meeting all three is highly predictive of maturation; the 2019 KDOQI update relies on clinical judgment. Near-neighbors: ktv-urr, ufr-dialysis.');
+    note(root, 'Arteriovenous fistula (AVF) maturation — the “Rule of 6s”. Enter the fistula blood flow, vein inner diameter, and vein depth; the tile checks each against the 2006 KDOQI thresholds (flow ≥ 600 mL/min, diameter ≥ 6 mm, depth ≤ 6 mm) and reports whether all three are met. Meeting all three is highly predictive of maturation; the 2019 KDOQI update relies on clinical judgment.');
     root.appendChild(numInput('Fistula blood flow (mL/min)', 'avf-flow', { min: '0' }));
     root.appendChild(numInput('Vein inner diameter (mm)', 'avf-diameter', { min: '0' }));
     root.appendChild(numInput('Vein depth from skin (mm)', 'avf-depth', { min: '0' }));

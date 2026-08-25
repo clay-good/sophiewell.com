@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'tile-pelvic'(root) {
-    note(root, 'Tile (AO/Tile) classification of a pelvic ring injury, by the mechanical stability of the posterior ring. Pick the type. A: stable (posterior ring intact); B: rotationally unstable but vertically stable (incomplete posterior disruption; open-book or lateral-compression); C: rotationally and vertically unstable (complete posterior disruption). Near-neighbors: iss-rts.');
+    note(root, 'Tile (AO/Tile) classification of a pelvic ring injury, by the mechanical stability of the posterior ring. Pick the type. A: stable (posterior ring intact); B: rotationally unstable but vertically stable (incomplete posterior disruption; open-book or lateral-compression); C: rotationally and vertically unstable (complete posterior disruption).');
     root.appendChild(select('Tile type', 'tile-type', [
       ['A', 'Type A - stable (posterior ring intact)'],
       ['B', 'Type B - rotationally unstable, vertically stable'],

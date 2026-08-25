@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'van-herick'(root) {
-    note(root, 'The Van Herick grade of the peripheral anterior chamber angle, estimated at the slit lamp by the ratio of the peripheral anterior chamber depth (PACD) to the corneal thickness (CT). Pick the grade. 0: closed; 1: <1/4 CT (closure likely); 2: 1/4 CT (closure possible); 3: 1/4-1/2 CT (closure unlikely); 4: >=1 CT (wide open). Gonioscopy remains the reference standard. Reports the grade the clinician has estimated, not a diagnosis of angle-closure. Near-neighbor: shaffer-angle.');
+    note(root, 'The Van Herick grade of the peripheral anterior chamber angle, estimated at the slit lamp by the ratio of the peripheral anterior chamber depth (PACD) to the corneal thickness (CT). Pick the grade. 0: closed; 1: <1/4 CT (closure likely); 2: 1/4 CT (closure possible); 3: 1/4-1/2 CT (closure unlikely); 4: >=1 CT (wide open). Gonioscopy remains the reference standard. Reports the grade the clinician has estimated, not a diagnosis of angle-closure.');
     root.appendChild(select('Van Herick grade', 'vh-grade', [
       ['0', '0 - PACD = 0, angle closed'],
       ['1', '1 - PACD < 1/4 CT, closure likely'],

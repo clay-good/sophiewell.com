@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'lodwick-grade'(root) {
-    note(root, 'The Lodwick grading of how aggressive a focal bone lesion looks on radiographs, read from the lesion margin and the pattern of bone destruction. Pick the grade. IA: geographic with a sclerotic margin; IB: geographic, well-defined, no sclerotic rim; IC: geographic with an ill-defined margin; II: geographic with moth-eaten or permeative areas; III: moth-eaten or permeative throughout. A higher grade indicates a faster-growing, more aggressive-appearing lesion, not a specific tumor. Near-neighbors: enneking, mirels-score.');
+    note(root, 'The Lodwick grading of how aggressive a focal bone lesion looks on radiographs, read from the lesion margin and the pattern of bone destruction. Pick the grade. IA: geographic with a sclerotic margin; IB: geographic, well-defined, no sclerotic rim; IC: geographic with an ill-defined margin; II: geographic with moth-eaten or permeative areas; III: moth-eaten or permeative throughout. A higher grade indicates a faster-growing, more aggressive-appearing lesion, not a specific tumor.');
     root.appendChild(select('Lodwick grade', 'lodwick-grade', [
       ['IA', 'IA - geographic, sclerotic margin'],
       ['IB', 'IB - geographic, well-defined, no sclerotic rim'],

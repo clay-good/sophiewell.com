@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'clark-level'(root) {
-    note(root, 'Clark level (Clark 1969) of a cutaneous melanoma — the anatomic skin layer invaded. Pick the level. I in situ (epidermis); II papillary dermis (partial); III fills papillary dermis; IV reticular dermis; V subcutaneous fat. Deeper levels (IV-V) historically carried higher risk. Modern staging uses AJCC TNM with Breslow thickness. Near-neighbors: melanoma-t-stage.');
+    note(root, 'Clark level (Clark 1969) of a cutaneous melanoma — the anatomic skin layer invaded. Pick the level. I in situ (epidermis); II papillary dermis (partial); III fills papillary dermis; IV reticular dermis; V subcutaneous fat. Deeper levels (IV-V) historically carried higher risk. Modern staging uses AJCC TNM with Breslow thickness.');
     root.appendChild(select('Clark level', 'clark-lvl', [
       ['I', 'I — intraepidermal (melanoma in situ)'],
       ['II', 'II — papillary dermis (partial)'],

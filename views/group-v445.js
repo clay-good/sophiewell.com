@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'atlanta-pancreatitis'(root) {
-    note(root, 'The Revised Atlanta classification of acute pancreatitis severity, by the presence and duration of organ failure and of local/systemic complications. Pick the severity. Mild: no organ failure, no complications; moderately severe: transient organ failure (resolving within 48 h) and/or complications; severe: persistent organ failure (> 48 h). Reports the severity category the clinician has determined, not a diagnosis or a treatment decision. Near-neighbor: ranson-bisap.');
+    note(root, 'The Revised Atlanta classification of acute pancreatitis severity, by the presence and duration of organ failure and of local/systemic complications. Pick the severity. Mild: no organ failure, no complications; moderately severe: transient organ failure (resolving within 48 h) and/or complications; severe: persistent organ failure (> 48 h). Reports the severity category the clinician has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('Revised Atlanta severity', 'atlanta-sev', [
       ['mild', 'Mild - no organ failure, no complications'],
       ['moderately-severe', 'Moderately severe - transient organ failure and/or complications'],

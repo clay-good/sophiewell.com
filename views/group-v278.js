@@ -49,7 +49,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'phoenix-sepsis'(root) {
-    note(root, 'The 2024 international-consensus organ-dysfunction score that defines pediatric sepsis. Score the worst values in the window; leave a field blank if not measured. In a child with suspected/confirmed infection: total ≥ 2 = sepsis; sepsis + cardiovascular ≥ 1 = septic shock. Near-neighbors: psofa, pelod2, qsofa-sofa, pews.');
+    note(root, 'The 2024 international-consensus organ-dysfunction score that defines pediatric sepsis. Score the worst values in the window; leave a field blank if not measured. In a child with suspected/confirmed infection: total ≥ 2 = sepsis; sepsis + cardiovascular ≥ 1 = septic shock.');
     root.appendChild(num('Age (months)', 'phx-age', { min: '0', max: '300' }));
 
     note(root, 'Respiratory (0–3):');

@@ -38,7 +38,7 @@ function wire(ids, run) {
 export const renderers = {
   // ----- 2.3 span-100 --------------------------------------------------------
   'span-100'(root) {
-    note(root, 'SPAN-100 index (Saposnik 2013): the simplest validated age-plus-severity stroke-prognostic index — SPAN-100 = age + NIHSS, dichotomized at 100. Positive (≥ 100) patients have substantially worse prognosis and much lower favorable-outcome rates. A prognostic index for counseling, not a treatment-eligibility rule. Near-neighbors: nihss, mrs.');
+    note(root, 'SPAN-100 index (Saposnik 2013): the simplest validated age-plus-severity stroke-prognostic index — SPAN-100 = age + NIHSS, dichotomized at 100. Positive (≥ 100) patients have substantially worse prognosis and much lower favorable-outcome rates. A prognostic index for counseling, not a treatment-eligibility rule.');
     root.appendChild(num('Age (years)', 'span-age', { min: '0' }));
     root.appendChild(num('NIHSS (0–42)', 'span-nihss', { min: '0', max: '42' }));
     const o = out(); root.appendChild(o);

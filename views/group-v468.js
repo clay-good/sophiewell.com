@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'brouet-cryoglobulinemia'(root) {
-    note(root, 'The Brouet classification of cryoglobulinemia, by the clonality of the cryoprecipitating immunoglobulins. Pick the type. I: a single monoclonal immunoglobulin (lymphoproliferative disorders); II: mixed, a monoclonal immunoglobulin plus polyclonal IgG (strongly linked to hepatitis C); III: mixed, polyclonal immunoglobulins only. Types II and III are "mixed" cryoglobulinemia. Reports the type the clinician has determined, not a diagnosis or a treatment decision. Near-neighbor: ffs-2011.');
+    note(root, 'The Brouet classification of cryoglobulinemia, by the clonality of the cryoprecipitating immunoglobulins. Pick the type. I: a single monoclonal immunoglobulin (lymphoproliferative disorders); II: mixed, a monoclonal immunoglobulin plus polyclonal IgG (strongly linked to hepatitis C); III: mixed, polyclonal immunoglobulins only. Types II and III are "mixed" cryoglobulinemia. Reports the type the clinician has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('Brouet type', 'brouet-type', [
       ['I', 'I - monoclonal only (lymphoproliferative)'],
       ['II', 'II - mixed: monoclonal + polyclonal (HCV)'],

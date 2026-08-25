@@ -42,7 +42,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'dme-severity'(root) {
-    note(root, 'Diabetic macular edema (DME) severity — the International Clinical scale (Wilkinson 2003), the companion to the ICDR retinopathy grade. Mark whether retinal thickening / hard exudates are present and pick their location relative to the center of the macula; center-involving (severe) DME is the vision-threatening form. Near-neighbors: icdr-retinopathy.');
+    note(root, 'Diabetic macular edema (DME) severity — the International Clinical scale (Wilkinson 2003), the companion to the ICDR retinopathy grade. Mark whether retinal thickening / hard exudates are present and pick their location relative to the center of the macula; center-involving (severe) DME is the vision-threatening form.');
     root.appendChild(check('Retinal thickening or hard exudates in the posterior pole', 'dme-present'));
     root.appendChild(select('Location relative to the center of the macula', 'dme-location', [
       ['distant', 'Distant from the center (mild)'],

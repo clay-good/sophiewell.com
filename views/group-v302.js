@@ -32,7 +32,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'isis-shoulder'(root) {
-    note(root, 'Instability Severity Index Score (ISIS) — recurrence risk after arthroscopic Bankart repair for anterior shoulder instability. Check the preoperative factors; the tile sums them (0–10) and flags a score above 6 (high recurrence risk; an open procedure is favored). Near-neighbors: weber-ankle.');
+    note(root, 'Instability Severity Index Score (ISIS) — recurrence risk after arthroscopic Bankart repair for anterior shoulder instability. Check the preoperative factors; the tile sums them (0–10) and flags a score above 6 (high recurrence risk; an open procedure is favored).');
     root.appendChild(check('Age ≤20 years at surgery (2)', 'isis-age'));
     root.appendChild(check('Competitive sport participation (2)', 'isis-comp'));
     root.appendChild(check('Contact or forced-overhead sport (1)', 'isis-contact'));

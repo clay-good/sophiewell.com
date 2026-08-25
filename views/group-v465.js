@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'stamey-incontinence'(root) {
-    note(root, 'The Stamey grading of stress urinary incontinence, by the degree of physical stress that provokes leakage. Pick the grade. 1: sudden increases in abdominal pressure (cough, sneeze, laugh), not at night; 2: lesser stress (walking, standing, sitting up); 3: total, continuous incontinence regardless of activity or position. Reports the grade the clinician has determined, not a diagnosis or a treatment decision. Near-neighbor: sandvik-incontinence.');
+    note(root, 'The Stamey grading of stress urinary incontinence, by the degree of physical stress that provokes leakage. Pick the grade. 1: sudden increases in abdominal pressure (cough, sneeze, laugh), not at night; 2: lesser stress (walking, standing, sitting up); 3: total, continuous incontinence regardless of activity or position. Reports the grade the clinician has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('Stamey grade', 'stamey-grade', [
       ['1', '1 - sudden pressure (cough, sneeze, laugh), not at night'],
       ['2', '2 - lesser stress (walking, standing, sitting up)'],

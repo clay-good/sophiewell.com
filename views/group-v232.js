@@ -48,7 +48,7 @@ const GRADE = [['0', 'None (0)'], ['1', 'Mild (1)'], ['2', 'Moderate (2)'], ['3'
 
 export const renderers = {
   'villalta'(root) {
-    note(root, 'Villalta scale (Kahn 2009): 5 symptoms + 6 signs each 0-3 (max 33), plus venous ulcer. 0-4 none, 5-9 mild, 10-14 moderate, >= 15 or ulcer severe. Near-neighbors: wells-dvt-caprini, hit-4ts.');
+    note(root, 'Villalta scale (Kahn 2009): 5 symptoms + 6 signs each 0-3 (max 33), plus venous ulcer. 0-4 none, 5-9 mild, 10-14 moderate, >= 15 or ulcer severe.');
     const items = [['vil-pain', 'pain', 'Pain'], ['vil-cramps', 'cramps', 'Cramps'], ['vil-heavy', 'heaviness', 'Heaviness'], ['vil-par', 'paresthesia', 'Paresthesia'], ['vil-pru', 'pruritus', 'Pruritus'], ['vil-edema', 'edema', 'Pretibial edema'], ['vil-ind', 'induration', 'Skin induration'], ['vil-hyp', 'hyperpigmentation', 'Hyperpigmentation'], ['vil-red', 'redness', 'Redness'], ['vil-ect', 'ectasia', 'Venous ectasia'], ['vil-comp', 'compressionPain', 'Pain on calf compression']];
     for (const [id, , label] of items) root.appendChild(select(label, id, GRADE));
     root.appendChild(check('Venous ulcer (open or healed) — severe regardless of score', 'vil-ulcer'));

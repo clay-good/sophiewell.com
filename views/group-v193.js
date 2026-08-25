@@ -62,7 +62,7 @@ const TIMI_FLOW_OPTS = [{ value: '3', text: '3 (normal flow)' }, { value: '2', t
 export const renderers = {
   // ----- 2.1 crusade ---------------------------------------------------------
   crusade(root) {
-    note(root, 'CRUSADE major-bleeding risk in NSTEMI (Subherwal 2009): eight weighted variables, incl. a U-shaped systolic-BP term (both low and high add points). Near-neighbors: hasbled, heart, timi.');
+    note(root, 'CRUSADE major-bleeding risk in NSTEMI (Subherwal 2009): eight weighted variables, incl. a U-shaped systolic-BP term (both low and high add points).');
     root.appendChild(num('Baseline hematocrit (%)', 'crusade-hct'));
     root.appendChild(num('Creatinine clearance (mL/min)', 'crusade-crcl'));
     root.appendChild(num('Heart rate (bpm)', 'crusade-hr'));
@@ -83,7 +83,7 @@ export const renderers = {
 
   // ----- 2.2 scai-shock ------------------------------------------------------
   'scai-shock'(root) {
-    note(root, 'SCAI SHOCK cardiogenic-shock stage (Naidu 2022; Kadosh/Kapur operationalization 2022): stage A→E from hypotension, lactate, and support level, with a cardiac-arrest modifier. A shared severity vocabulary. Near-neighbors: cardshock-score, lactate-clearance.');
+    note(root, 'SCAI SHOCK cardiogenic-shock stage (Naidu 2022; Kadosh/Kapur operationalization 2022): stage A→E from hypotension, lactate, and support level, with a cardiac-arrest modifier. A shared severity vocabulary.');
     root.appendChild(num('Systolic blood pressure (mmHg)', 'scai-sbp'));
     root.appendChild(num('Serum lactate (mmol/L)', 'scai-lactate'));
     root.appendChild(pickField('Vasoactive / mechanical support', 'scai-support', [
@@ -106,7 +106,7 @@ export const renderers = {
 
   // ----- 2.3 zwolle-pci ------------------------------------------------------
   'zwolle-pci'(root) {
-    note(root, 'Zwolle primary-PCI risk score (De Luca 2004): Killip, post-PCI TIMI flow, age ≥ 60, three-vessel disease, anterior MI, ischemic time > 4 h → 0–16; ≤ 3 low identifies an early-discharge candidate. Near-neighbors: killip, timi-stemi, grace.');
+    note(root, 'Zwolle primary-PCI risk score (De Luca 2004): Killip, post-PCI TIMI flow, age ≥ 60, three-vessel disease, anterior MI, ischemic time > 4 h → 0–16; ≤ 3 low identifies an early-discharge candidate.');
     root.appendChild(pickField('Killip class', 'zwolle-killip', KILLIP_OPTS));
     root.appendChild(pickField('Post-PCI TIMI flow', 'zwolle-timi', TIMI_FLOW_OPTS));
     root.appendChild(num('Age (years)', 'zwolle-age'));
@@ -125,7 +125,7 @@ export const renderers = {
 
   // ----- 2.4 timi-risk-index -------------------------------------------------
   'timi-risk-index'(root) {
-    note(root, 'TIMI Risk Index (Wiviott 2006; Morrow 2001): TRI = heart rate × (age / 10)² / systolic BP. A higher index marks higher mortality. Near-neighbors: timi, shock-index.');
+    note(root, 'TIMI Risk Index (Wiviott 2006; Morrow 2001): TRI = heart rate × (age / 10)² / systolic BP. A higher index marks higher mortality.');
     root.appendChild(num('Heart rate (bpm)', 'tri-hr'));
     root.appendChild(num('Age (years)', 'tri-age'));
     root.appendChild(num('Systolic blood pressure (mmHg)', 'tri-sbp'));
@@ -141,7 +141,7 @@ export const renderers = {
 
   // ----- 2.5 cadillac-risk ---------------------------------------------------
   'cadillac-risk'(root) {
-    note(root, 'CADILLAC post-PCI mortality risk (Halkin 2005): LVEF < 40%, CrCl < 60, Killip 2–3, post-PCI TIMI 0–2, age > 65, anemia, three-vessel disease → 0–18; low 0–2, intermediate 3–5, high ≥ 6. Near-neighbors: zwolle-pci, killip, grace.');
+    note(root, 'CADILLAC post-PCI mortality risk (Halkin 2005): LVEF < 40%, CrCl < 60, Killip 2–3, post-PCI TIMI 0–2, age > 65, anemia, three-vessel disease → 0–18; low 0–2, intermediate 3–5, high ≥ 6.');
     root.appendChild(num('LVEF (%)', 'cad-lvef'));
     root.appendChild(num('Creatinine clearance (mL/min)', 'cad-crcl'));
     root.appendChild(num('Age (years)', 'cad-age'));

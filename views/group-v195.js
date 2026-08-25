@@ -51,7 +51,7 @@ function wire(ids, run) {
 export const renderers = {
   // ----- 2.1 sf-ratio --------------------------------------------------------
   'sf-ratio'(root) {
-    note(root, 'SpO₂/FiO₂ (S/F) ratio with Rice-regression P/F estimate (Rice 2007): S/F = SpO₂ ÷ FiO₂; est P/F ≈ (S/F − 64) / 0.84. Reliable only when SpO₂ ≤ 97%. Near-neighbors: pf-ratio, oxygenation-index, aa-pf-suite.');
+    note(root, 'SpO₂/FiO₂ (S/F) ratio with Rice-regression P/F estimate (Rice 2007): S/F = SpO₂ ÷ FiO₂; est P/F ≈ (S/F − 64) / 0.84. Reliable only when SpO₂ ≤ 97%.');
     root.appendChild(num('SpO₂ (%)', 'sf-spo2'));
     root.appendChild(num('FiO₂ (fraction, 0.21–1.0)', 'sf-fio2'));
     const o = out(); root.appendChild(o);
@@ -66,7 +66,7 @@ export const renderers = {
 
   // ----- 2.2 ventilatory-ratio -----------------------------------------------
   'ventilatory-ratio'(root) {
-    note(root, 'Ventilatory ratio (Sinha 2009): VR = (measured minute ventilation × measured PaCO₂) / (PBW × 100 × 37.5). Normal ≈ 1; rising VR (> 2) tracks ARDS mortality. Near-neighbors: dead-space, minute-ventilation, driving-pressure.');
+    note(root, 'Ventilatory ratio (Sinha 2009): VR = (measured minute ventilation × measured PaCO₂) / (PBW × 100 × 37.5). Normal ≈ 1; rising VR (> 2) tracks ARDS mortality.');
     root.appendChild(num('Measured minute ventilation (mL/min)', 'vr-ve'));
     root.appendChild(num('Measured PaCO₂ (mmHg)', 'vr-paco2'));
     root.appendChild(num('Height (cm)', 'vr-height'));
@@ -83,7 +83,7 @@ export const renderers = {
 
   // ----- 2.3 osi-oxygenation -------------------------------------------------
   'osi-oxygenation'(root) {
-    note(root, 'Oxygen saturation index (PALICC 2015): OSI = (FiO₂ × mean airway pressure × 100) / SpO₂. PARDS: mild 5–<7.5, moderate 7.5–<12.3, severe ≥ 12.3. Reliable only when SpO₂ ≤ 97%. Near-neighbors: oxygenation-index, mean-airway-pressure, sf-ratio.');
+    note(root, 'Oxygen saturation index (PALICC 2015): OSI = (FiO₂ × mean airway pressure × 100) / SpO₂. PARDS: mild 5–<7.5, moderate 7.5–<12.3, severe ≥ 12.3. Reliable only when SpO₂ ≤ 97%.');
     root.appendChild(num('FiO₂ (fraction, 0.21–1.0)', 'osi-fio2'));
     root.appendChild(num('Mean airway pressure (cmH₂O)', 'osi-map'));
     root.appendChild(num('SpO₂ (%)', 'osi-spo2'));
@@ -99,7 +99,7 @@ export const renderers = {
 
   // ----- 2.4 ventilation-index -----------------------------------------------
   'ventilation-index'(root) {
-    note(root, 'Ventilation index (Paret 1998): VI = (respiratory rate × peak inspiratory pressure × PaCO₂) / 1000. Higher = worse; a PEEP-corrected variant uses (PIP − PEEP). Near-neighbors: mean-airway-pressure, dead-space, ventilatory-ratio.');
+    note(root, 'Ventilation index (Paret 1998): VI = (respiratory rate × peak inspiratory pressure × PaCO₂) / 1000. Higher = worse; a PEEP-corrected variant uses (PIP − PEEP).');
     root.appendChild(num('Respiratory rate (breaths/min)', 'vi-rr'));
     root.appendChild(num('Peak inspiratory pressure (cmH₂O)', 'vi-pip'));
     root.appendChild(num('PaCO₂ (mmHg)', 'vi-paco2'));

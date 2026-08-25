@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'lichtman-kienbock'(root) {
-    note(root, 'Lichtman staging (Lichtman 1977) of Kienbock disease (osteonecrosis of the carpal lunate). Pick the stage. I normal X-ray (abnormal MRI); II lunate sclerosis, shape preserved; IIIA lunate collapse, carpal alignment maintained; IIIB lunate collapse with fixed carpal collapse; IV generalized degenerative arthrosis. The pre-collapse (I-II) vs collapse (IIIA-IV) split is the classic reconstruct-vs-salvage watershed. Near-neighbors: ficat-arlet, hawkins-talar.');
+    note(root, 'Lichtman staging (Lichtman 1977) of Kienbock disease (osteonecrosis of the carpal lunate). Pick the stage. I normal X-ray (abnormal MRI); II lunate sclerosis, shape preserved; IIIA lunate collapse, carpal alignment maintained; IIIB lunate collapse with fixed carpal collapse; IV generalized degenerative arthrosis. The pre-collapse (I-II) vs collapse (IIIA-IV) split is the classic reconstruct-vs-salvage watershed.');
     root.appendChild(select('Lichtman stage', 'lichtman-stage', [
       ['I', 'I — normal X-ray (abnormal MRI)'],
       ['II', 'II — lunate sclerosis, shape preserved'],

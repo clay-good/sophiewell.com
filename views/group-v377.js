@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'gartland-supracondylar'(root) {
-    note(root, 'Gartland classification (Gartland 1959; modified type IV, Leitch 2006) of a pediatric extension-type supracondylar humerus fracture. Pick the type. I: nondisplaced (anterior humeral line through the capitellum); II: displaced with an intact posterior cortical hinge (Wilkins IIA stable / IIB malrotated); III: completely displaced, no cortical contact; IV: multidirectional instability, complete periosteal disruption. Near-neighbors: salter-harris, neer-classification.');
+    note(root, 'Gartland classification (Gartland 1959; modified type IV, Leitch 2006) of a pediatric extension-type supracondylar humerus fracture. Pick the type. I: nondisplaced (anterior humeral line through the capitellum); II: displaced with an intact posterior cortical hinge (Wilkins IIA stable / IIB malrotated); III: completely displaced, no cortical contact; IV: multidirectional instability, complete periosteal disruption.');
     root.appendChild(select('Gartland type', 'gartland-type', [
       ['I', 'Type I - nondisplaced'],
       ['II', 'Type II - displaced, posterior hinge intact'],

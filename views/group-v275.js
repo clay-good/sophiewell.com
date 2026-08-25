@@ -37,7 +37,7 @@ function render(o, r, valueLabel) {
 
 export const renderers = {
   'rpr'(root) {
-    note(root, 'RDW-to-platelet ratio = RDW (%) / platelet count (10⁹/L) (Chen 2013). A non-invasive liver-fibrosis marker; higher marks more advanced fibrosis (source cutoff ~0.1). Near-neighbors: fib4, apri, forns-index.');
+    note(root, 'RDW-to-platelet ratio = RDW (%) / platelet count (10⁹/L) (Chen 2013). A non-invasive liver-fibrosis marker; higher marks more advanced fibrosis (source cutoff ~0.1).');
     root.appendChild(num('Red cell distribution width (%)', 'rpr-rdw', { min: '0' }));
     root.appendChild(num('Platelet count (10⁹/L)', 'rpr-plt', { min: '0' }));
     const o = out(); root.appendChild(o);

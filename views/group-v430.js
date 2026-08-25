@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'papile-ivh'(root) {
-    note(root, 'The Papile grading of germinal matrix / intraventricular hemorrhage (IVH) in the preterm newborn, by the extent of hemorrhage on cranial imaging. Pick the grade. I: confined to the germinal matrix (subependymal); II: IVH without ventricular dilatation; III: IVH with ventricular dilatation; IV: IVH with parenchymal extension. Reports the original four-grade scheme, not a diagnosis or a treatment decision. Near-neighbor: sarnat-hie.');
+    note(root, 'The Papile grading of germinal matrix / intraventricular hemorrhage (IVH) in the preterm newborn, by the extent of hemorrhage on cranial imaging. Pick the grade. I: confined to the germinal matrix (subependymal); II: IVH without ventricular dilatation; III: IVH with ventricular dilatation; IV: IVH with parenchymal extension. Reports the original four-grade scheme, not a diagnosis or a treatment decision.');
     root.appendChild(select('Papile grade', 'papile-grade', [
       ['I', 'I - germinal matrix (subependymal) only'],
       ['II', 'II - IVH without ventricular dilatation'],

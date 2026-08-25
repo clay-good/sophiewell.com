@@ -54,7 +54,7 @@ const ITEM_DOM = {
 
 export const renderers = {
   slums(root) {
-    note(root, 'SLUMS (Tariq 2006): a free MMSE alternative. Enter the earned points per item (total 0-30). Bands are education-adjusted — high-school or above: 27-30 normal, 21-26 mild neurocognitive disorder, ≤ 20 dementia; less than high-school: 25-30 normal, 20-24 MNCD, ≤ 19 dementia. Near-neighbors: mini-cog, cdr-sob.');
+    note(root, 'SLUMS (Tariq 2006): a free MMSE alternative. Enter the earned points per item (total 0-30). Bands are education-adjusted — high-school or above: 27-30 normal, 21-26 mild neurocognitive disorder, ≤ 20 dementia; less than high-school: 25-30 normal, 20-24 MNCD, ≤ 19 dementia.');
     root.appendChild(selectField('Education level', 'slums-edu', [
       { value: '', text: '— choose —' },
       { value: 'hs', text: 'High-school education or above' },

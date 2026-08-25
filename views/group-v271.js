@@ -37,7 +37,7 @@ function render(o, r, valueLabel) {
 
 export const renderers = {
   'castelli-index'(root) {
-    note(root, 'Castelli Risk Index-I = TC/HDL, Risk Index-II = LDL/HDL (Castelli 1983). Higher ratios mark a more atherogenic profile. Enter all three in the same units. Near-neighbors: non-hdl-remnant, atherogenic-index-of-plasma.');
+    note(root, 'Castelli Risk Index-I = TC/HDL, Risk Index-II = LDL/HDL (Castelli 1983). Higher ratios mark a more atherogenic profile. Enter all three in the same units.');
     root.appendChild(num('Total cholesterol (mg/dL)', 'cast-tc', { min: '0' }));
     root.appendChild(num('LDL cholesterol (mg/dL)', 'cast-ldl', { min: '0' }));
     root.appendChild(num('HDL cholesterol (mg/dL)', 'cast-hdl', { min: '0' }));

@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'yerdel-pvt'(root) {
-    note(root, 'The Yerdel classification of portal vein thrombosis, by the extent of thrombus in the portal vein and superior mesenteric vein (SMV). Pick the grade. 1: partial PVT, 50% or less of the lumen; 2: more than 50% occlusion, including total, of the portal vein; 3: complete portal vein and proximal SMV thrombosis, distal SMV patent; 4: complete portal vein and entire SMV thrombosis. Reports the grade the clinician has determined, not a diagnosis or a treatment decision. Near-neighbor: baveno-vii.');
+    note(root, 'The Yerdel classification of portal vein thrombosis, by the extent of thrombus in the portal vein and superior mesenteric vein (SMV). Pick the grade. 1: partial PVT, 50% or less of the lumen; 2: more than 50% occlusion, including total, of the portal vein; 3: complete portal vein and proximal SMV thrombosis, distal SMV patent; 4: complete portal vein and entire SMV thrombosis. Reports the grade the clinician has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('Yerdel grade', 'yerdel-grade', [
       ['1', '1 - partial PVT, 50% or less of the lumen'],
       ['2', '2 - more than 50% occlusion (including total)'],

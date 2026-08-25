@@ -55,7 +55,7 @@ const FAGAN_MODE_OPTS = [
 export const renderers = {
   // ----- 2.1 fagan-post-test -------------------------------------------------
   'fagan-post-test'(root) {
-    note(root, 'Fagan post-test probability (Fagan 1975): pre-test odds = p/(1−p); post-test odds = pre-test odds × likelihood ratio; post-test probability = odds/(1+odds). Enter an LR directly, or enter sensitivity & specificity to derive LR+ and LR− and see the post-test probability after a positive and a negative result. Near-neighbors: diagnostic-2x2, nnt-arr.');
+    note(root, 'Fagan post-test probability (Fagan 1975): pre-test odds = p/(1−p); post-test odds = pre-test odds × likelihood ratio; post-test probability = odds/(1+odds). Enter an LR directly, or enter sensitivity & specificity to derive LR+ and LR− and see the post-test probability after a positive and a negative result.');
     root.appendChild(selectField('Input mode', 'fagan-mode', FAGAN_MODE_OPTS));
     root.appendChild(num('Pre-test probability (%) — 0 to 100, exclusive', 'fagan-pretest', { min: '0', max: '100' }));
     root.appendChild(num('Likelihood ratio (LR+ or LR−) — used in “likelihood ratio” mode', 'fagan-lr', { min: '0' }));
@@ -87,7 +87,7 @@ export const renderers = {
 
   // ----- 2.2 diagnostic-2x2 --------------------------------------------------
   'diagnostic-2x2'(root) {
-    note(root, 'Diagnostic test 2×2 (Altman & Bland 1994): from the four cells — sensitivity = TP/(TP+FN), specificity = TN/(TN+FP), PPV = TP/(TP+FP), NPV = TN/(TN+FN), LR+ = sens/(1−spec), LR− = (1−sens)/spec. The sample PPV/NPV reflect the study prevalence; enter a target prevalence to recompute them by Bayes. Near-neighbors: fagan-post-test, nnt-arr.');
+    note(root, 'Diagnostic test 2×2 (Altman & Bland 1994): from the four cells — sensitivity = TP/(TP+FN), specificity = TN/(TN+FP), PPV = TP/(TP+FP), NPV = TN/(TN+FN), LR+ = sens/(1−spec), LR− = (1−sens)/spec. The sample PPV/NPV reflect the study prevalence; enter a target prevalence to recompute them by Bayes.');
     root.appendChild(num('True positives (diseased, test positive)', 'dx-tp', { min: '0', step: '1' }));
     root.appendChild(num('False positives (well, test positive)', 'dx-fp', { min: '0', step: '1' }));
     root.appendChild(num('False negatives (diseased, test negative)', 'dx-fn', { min: '0', step: '1' }));
@@ -117,7 +117,7 @@ export const renderers = {
 
   // ----- 2.3 nnt-arr ---------------------------------------------------------
   'nnt-arr'(root) {
-    note(root, 'Number needed to treat / absolute risk reduction (Laupacis 1988): ARR = CER − EER; RRR = ARR/CER; relative risk RR = EER/CER; NNT = 1/ARR. When the experimental event rate exceeds control the result is a number needed to harm (NNH). Near-neighbors: fagan-post-test, diagnostic-2x2.');
+    note(root, 'Number needed to treat / absolute risk reduction (Laupacis 1988): ARR = CER − EER; RRR = ARR/CER; relative risk RR = EER/CER; NNT = 1/ARR. When the experimental event rate exceeds control the result is a number needed to harm (NNH).');
     root.appendChild(num('Control event rate CER (%)', 'nnt-cer', { min: '0', max: '100' }));
     root.appendChild(num('Experimental event rate EER (%)', 'nnt-eer', { min: '0', max: '100' }));
     const o = out(); root.appendChild(o);

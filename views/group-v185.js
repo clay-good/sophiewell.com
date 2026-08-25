@@ -84,7 +84,7 @@ const VALVE_OPTS = [
 export const renderers = {
   // ----- 2.1 fick-cardiac-output --------------------------------------------
   'fick-cardiac-output'(root) {
-    note(root, 'Cardiac output by the Fick principle (Fick 1870; LaFarge estimated VO₂ 1970). CO = VO₂ / [1.36·Hb·(SaO₂ − SvO₂)·10]; CI = CO/BSA (normal 2.5–4.0). Choose a measured VO₂ or estimate it from age, sex, and heart rate. Near-neighbors: hemodynamic-suite, cao2-do2, aortic-valve-area.');
+    note(root, 'Cardiac output by the Fick principle (Fick 1870; LaFarge estimated VO₂ 1970). CO = VO₂ / [1.36·Hb·(SaO₂ − SvO₂)·10]; CI = CO/BSA (normal 2.5–4.0). Choose a measured VO₂ or estimate it from age, sex, and heart rate.');
     root.appendChild(selectField('VO₂ source', 'fick-method', FICK_METHOD_OPTS));
     root.appendChild(num('Measured VO₂ (mL/min) — for the measured method', 'fick-vo2'));
     root.appendChild(field('Age (years) — for the estimate', 'fick-age', { type: 'number', min: '0', step: 'any', inputmode: 'decimal' }));
@@ -111,7 +111,7 @@ export const renderers = {
 
   // ----- 2.2 gorlin ----------------------------------------------------------
   gorlin(root) {
-    note(root, 'Gorlin valve area (Gorlin 1951): area = flow / (K·√mean gradient); flow = CO(mL/min) / (period·HR). K = 44.3 with the systolic ejection period (aortic), 37.7 with the diastolic filling period (mitral). Severity (cm²): severe < 1.0, moderate 1.0–1.5. Near-neighbors: aortic-valve-area, hemodynamic-suite.');
+    note(root, 'Gorlin valve area (Gorlin 1951): area = flow / (K·√mean gradient); flow = CO(mL/min) / (period·HR). K = 44.3 with the systolic ejection period (aortic), 37.7 with the diastolic filling period (mitral). Severity (cm²): severe < 1.0, moderate 1.0–1.5.');
     root.appendChild(pickField('Valve', 'gorlin-valve', VALVE_OPTS));
     root.appendChild(num('Cardiac output (L/min)', 'gorlin-co'));
     root.appendChild(num('Heart rate (bpm)', 'gorlin-hr'));
@@ -133,7 +133,7 @@ export const renderers = {
 
   // ----- 2.3 qp-qs -----------------------------------------------------------
   'qp-qs'(root) {
-    note(root, 'Pulmonary-to-systemic flow ratio (Wilkinson 2001): Qp/Qs = (SaO₂ − MvO₂)/(PvO₂ − PaO₂). ≈ 1 no net shunt; small 1.1–1.5, moderate 1.5–2.0, large > 2.0 (closure often considered); < 1 net right-to-left. Near-neighbors: gorlin, hemodynamic-suite.');
+    note(root, 'Pulmonary-to-systemic flow ratio (Wilkinson 2001): Qp/Qs = (SaO₂ − MvO₂)/(PvO₂ − PaO₂). ≈ 1 no net shunt; small 1.1–1.5, moderate 1.5–2.0, large > 2.0 (closure often considered); < 1 net right-to-left.');
     root.appendChild(num('Systemic-arterial (aortic) SaO₂ (%)', 'qpqs-sao2'));
     root.appendChild(num('Mixed-venous MvO₂ (%)', 'qpqs-mvo2'));
     root.appendChild(num('Pulmonary-vein PvO₂ (%) — defaults to 98', 'qpqs-pvo2'));
@@ -153,7 +153,7 @@ export const renderers = {
 
   // ----- 2.4 lvot-stroke-volume ---------------------------------------------
   'lvot-stroke-volume'(root) {
-    note(root, 'Doppler stroke volume & cardiac output (ASE/EACVI, Lang 2015): LVOT area = π·(D/2)²; SV = area·VTI; CO = SV·HR/1000; SVI = SV/BSA (normal 35–47 mL/m²); CI = CO/BSA. Near-neighbors: hemodynamic-suite, fick-cardiac-output.');
+    note(root, 'Doppler stroke volume & cardiac output (ASE/EACVI, Lang 2015): LVOT area = π·(D/2)²; SV = area·VTI; CO = SV·HR/1000; SVI = SV/BSA (normal 35–47 mL/m²); CI = CO/BSA.');
     root.appendChild(num('LVOT diameter (cm)', 'lvot-d'));
     root.appendChild(num('LVOT velocity-time integral VTI (cm)', 'lvot-vti'));
     root.appendChild(num('Heart rate (bpm)', 'lvot-hr'));
@@ -175,7 +175,7 @@ export const renderers = {
 
   // ----- 2.5 vte-bleed -------------------------------------------------------
   'vte-bleed'(root) {
-    note(root, 'VTE-BLEED bleeding risk on stable anticoagulation (Klok 2016). Points: active cancer 2; male with uncontrolled hypertension 1; anemia, history of bleeding, age ≥ 60, and renal dysfunction 1.5 each. ≥ 2 = elevated. Near-neighbors: hasbled, atria-bleeding, orbit-bleeding.');
+    note(root, 'VTE-BLEED bleeding risk on stable anticoagulation (Klok 2016). Points: active cancer 2; male with uncontrolled hypertension 1; anemia, history of bleeding, age ≥ 60, and renal dysfunction 1.5 each. ≥ 2 = elevated.');
     root.appendChild(checkField('Active cancer (2)', 'vte-cancer'));
     root.appendChild(checkField('Male with uncontrolled hypertension (1)', 'vte-maleHtn'));
     root.appendChild(checkField('Anemia (1.5)', 'vte-anemia'));
@@ -199,7 +199,7 @@ export const renderers = {
 
   // ----- 2.6 matsuda-index ---------------------------------------------------
   'matsuda-index'(root) {
-    note(root, 'Matsuda whole-body insulin-sensitivity index (Matsuda & DeFronzo 1999): ISI = 10000/√(fasting glucose·fasting insulin·mean glucose·mean insulin), glucose mg/dL, insulin µU/mL. Lower = more insulin resistant. Complements fasting HOMA-IR / QUICKI. Near-neighbors: homa-ir, quicki.');
+    note(root, 'Matsuda whole-body insulin-sensitivity index (Matsuda & DeFronzo 1999): ISI = 10000/√(fasting glucose·fasting insulin·mean glucose·mean insulin), glucose mg/dL, insulin µU/mL. Lower = more insulin resistant. Complements fasting HOMA-IR / QUICKI.');
     root.appendChild(num('Fasting glucose (mg/dL)', 'matsuda-g0'));
     root.appendChild(num('Fasting insulin (µU/mL)', 'matsuda-i0'));
     root.appendChild(num('Mean OGTT glucose (mg/dL)', 'matsuda-gmean'));
@@ -219,7 +219,7 @@ export const renderers = {
 
   // ----- 2.7 rosendaal-ttr ---------------------------------------------------
   'rosendaal-ttr'(root) {
-    note(root, 'Time in therapeutic range (Rosendaal 1993): an INR is linearly interpolated across the days between measurements; TTR = days-in-range / total-days. Good control commonly ≥ 65%. Near-neighbors: warfarin dosing tiles.');
+    note(root, 'Time in therapeutic range (Rosendaal 1993): an INR is linearly interpolated across the days between measurements; TTR = days-in-range / total-days. Good control commonly ≥ 65%.');
     root.appendChild(textareaField('Dated INR values — one per line, "YYYY-MM-DD INR"', 'ttr-series', '2026-01-01 1.5\n2026-01-11 2.5\n2026-01-21 2.8'));
     root.appendChild(field('Target INR low', 'ttr-low', { type: 'number', min: '0', step: 'any', inputmode: 'decimal', value: '2.0' }));
     root.appendChild(field('Target INR high', 'ttr-high', { type: 'number', min: '0', step: 'any', inputmode: 'decimal', value: '3.0' }));
@@ -239,7 +239,7 @@ export const renderers = {
 
   // ----- 2.8 lean-body-weight ------------------------------------------------
   'lean-body-weight'(root) {
-    note(root, 'Lean body weight (Janmahasatian 2005): LBW = 9270·TBW/(6680 + 216·BMI) for men, 9270·TBW/(8780 + 244·BMI) for women; BMI = weight/height². Many anesthetic induction agents dose to LBW. Near-neighbors: bw-bsa-suite.');
+    note(root, 'Lean body weight (Janmahasatian 2005): LBW = 9270·TBW/(6680 + 216·BMI) for men, 9270·TBW/(8780 + 244·BMI) for women; BMI = weight/height². Many anesthetic induction agents dose to LBW.');
     root.appendChild(pickField('Sex', 'lbw-sex', SEX_OPTS));
     root.appendChild(num('Total body weight (kg)', 'lbw-weight'));
     root.appendChild(num('Height (cm)', 'lbw-height'));

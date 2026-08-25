@@ -45,7 +45,7 @@ const FIELDS = [
 
 export const renderers = {
   cheops(root) {
-    note(root, 'CHEOPS (McGrath 1985): observed postoperative pain in children ~1-7 years. Rate six behaviors; the total ranges 4-13 (higher = more pain behavior). The scale sets no single cutoff; a score of 6 or more is the most commonly cited analgesia threshold, with 5 and 8 schemes also in use. Near-neighbors: flacc, cries, comfort-b.');
+    note(root, 'CHEOPS (McGrath 1985): observed postoperative pain in children ~1-7 years. Rate six behaviors; the total ranges 4-13 (higher = more pain behavior). The scale sets no single cutoff; a score of 6 or more is the most commonly cited analgesia threshold, with 5 and 8 schemes also in use.');
     for (const f of FIELDS) root.appendChild(selectField(f.label, f.dom, CHOICE(f.opts)));
     const ids = FIELDS.map((f) => f.dom);
     const o = out(); root.appendChild(o);

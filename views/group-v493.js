@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'lown-ectopy'(root) {
-    note(root, 'The Lown grading system for ventricular ectopy on an ambulatory ECG (Holter) recording, by the frequency and form of the ventricular ectopic beats. Pick the grade. 0: none; 1: occasional isolated beats (fewer than 30 per hour); 2: frequent beats (30 or more per hour); 3: multiform beats; 4A: couplets; 4B: salvos (three or more consecutive beats); 5: the R-on-T phenomenon. Reports the grade the clinician has determined, not a diagnosis or an antiarrhythmic decision. Near-neighbor: vaughan-williams.');
+    note(root, 'The Lown grading system for ventricular ectopy on an ambulatory ECG (Holter) recording, by the frequency and form of the ventricular ectopic beats. Pick the grade. 0: none; 1: occasional isolated beats (fewer than 30 per hour); 2: frequent beats (30 or more per hour); 3: multiform beats; 4A: couplets; 4B: salvos (three or more consecutive beats); 5: the R-on-T phenomenon. Reports the grade the clinician has determined, not a diagnosis or an antiarrhythmic decision.');
     root.appendChild(select('Lown grade', 'lown-grade', [
       ['0', '0 - no ventricular ectopic beats'],
       ['1', '1 - occasional, isolated (fewer than 30 per hour)'],

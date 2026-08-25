@@ -46,7 +46,7 @@ function render(o, r, valueLabel) {
 
 export const renderers = {
   'ripasa'(root) {
-    note(root, 'RIPASA appendicitis score (Chong 2010): a higher-sensitivity alternative to Alvarado. Max 16; 7.5 = optimal diagnostic cutoff. Bands: < 5 unlikely, 5-7 low/moderate, 7.5-11.5 high, >= 12 very high. Near-neighbors: alvarado-pas, air-score, adult-appendicitis-score.');
+    note(root, 'RIPASA appendicitis score (Chong 2010): a higher-sensitivity alternative to Alvarado. Max 16; 7.5 = optimal diagnostic cutoff. Bands: < 5 unlikely, 5-7 low/moderate, 7.5-11.5 high, >= 12 very high.');
     root.appendChild(select('Gender', 'rp-gender', [['male', 'Male (+1)'], ['female', 'Female (+0.5)']]));
     root.appendChild(select('Age', 'rp-age', [['le40', 'Age <= 40 (+1)'], ['gt40', 'Age > 40 (+0.5)']]));
     root.appendChild(select('Symptom duration', 'rp-dur', [['lt48', 'Duration < 48h (+1)'], ['gt48', 'Duration > 48h (+0.5)']]));
@@ -75,7 +75,7 @@ export const renderers = {
     postureNote(root);
   },
   'pulp'(root) {
-    note(root, 'PULP (Peptic Ulcer Perforation) score (Møller 2012): 30-day mortality after peptic-ulcer-perforation surgery, total 0-18. <= 7 low risk (< 25%), >= 8 high risk (> 25%). Near-neighbors: boey-score, mannheim-peritonitis-index, p-possum.');
+    note(root, 'PULP (Peptic Ulcer Perforation) score (Møller 2012): 30-day mortality after peptic-ulcer-perforation surgery, total 0-18. <= 7 low risk (< 25%), >= 8 high risk (> 25%).');
     root.appendChild(check('Age > 65 (+3)', 'pu-age'));
     root.appendChild(check('Active malignancy or AIDS (+1)', 'pu-malig'));
     root.appendChild(check('Liver cirrhosis (+2)', 'pu-cirr'));
@@ -95,7 +95,7 @@ export const renderers = {
     postureNote(root);
   },
   'emergency-surgery-score'(root) {
-    note(root, 'Emergency Surgery Score (ESS) (Sangji 2016): 22 preoperative variables, total 0-29, predicting 30-day mortality on a monotone gradient. The white-race term is a derivation coefficient reproduced as published, not a clinical recommendation. Near-neighbors: possum, p-possum, pulp.');
+    note(root, 'Emergency Surgery Score (ESS) (Sangji 2016): 22 preoperative variables, total 0-29, predicting 30-day mortality on a monotone gradient. The white-race term is a derivation coefficient reproduced as published, not a clinical recommendation.');
     note(root, 'Demographic:');
     root.appendChild(check('Age > 60 (+2)', 'es-age'));
     root.appendChild(check('White race (+1, derivation coefficient)', 'es-race'));

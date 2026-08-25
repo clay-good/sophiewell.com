@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'fielding-hawkins'(root) {
-    note(root, 'The Fielding-Hawkins classification of atlantoaxial rotatory subluxation / fixation, by the direction and degree of atlas displacement on the axis. Pick the type. I: no anterior displacement (ADI <= 3 mm); II: anterior 3-5 mm (transverse ligament deficient); III: anterior > 5 mm (transverse and alar ligaments deficient); IV: posterior displacement. Reports the type the clinician has determined, not a diagnosis or a stability determination. Near-neighbors: traynelis, anderson-montesano.');
+    note(root, 'The Fielding-Hawkins classification of atlantoaxial rotatory subluxation / fixation, by the direction and degree of atlas displacement on the axis. Pick the type. I: no anterior displacement (ADI <= 3 mm); II: anterior 3-5 mm (transverse ligament deficient); III: anterior > 5 mm (transverse and alar ligaments deficient); IV: posterior displacement. Reports the type the clinician has determined, not a diagnosis or a stability determination.');
     root.appendChild(select('Fielding-Hawkins type', 'fh-type', [
       ['I', 'I - no anterior displacement (ADI <= 3 mm)'],
       ['II', 'II - anterior 3-5 mm (transverse ligament deficient)'],

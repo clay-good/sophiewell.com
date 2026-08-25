@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'letournel-acetabulum'(root) {
-    note(root, 'The Judet-Letournel classification of acetabular fractures: five elementary patterns (posterior wall, posterior column, anterior wall, anterior column, transverse) and five associated patterns (posterior column + posterior wall, transverse + posterior wall, T-shaped, anterior column + posterior hemitransverse, both-column). Pick the pattern. Reports the pattern the clinician has determined, not a diagnosis or a treatment decision. Near-neighbor: thompson-epstein.');
+    note(root, 'The Judet-Letournel classification of acetabular fractures: five elementary patterns (posterior wall, posterior column, anterior wall, anterior column, transverse) and five associated patterns (posterior column + posterior wall, transverse + posterior wall, T-shaped, anterior column + posterior hemitransverse, both-column). Pick the pattern. Reports the pattern the clinician has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('Judet-Letournel pattern', 'letournel-pattern', [
       ['posterior-wall', 'Elementary: posterior wall'],
       ['posterior-column', 'Elementary: posterior column'],

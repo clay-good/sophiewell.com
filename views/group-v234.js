@@ -49,7 +49,7 @@ const Q4 = [['0', '0 quadrants'], ['1', '1 quadrant'], ['2', '2 quadrants'], ['3
 
 export const renderers = {
   'masi'(root) {
-    note(root, 'MASI (Kimbrough-Green 1994): forehead, right malar, left malar (x 0.3) and chin (x 0.1); each region Area 0-6 and Darkness + Homogeneity 0-4. Range 0-48. Near-neighbors: pasi, easi.');
+    note(root, 'MASI (Kimbrough-Green 1994): forehead, right malar, left malar (x 0.3) and chin (x 0.1); each region Area 0-6 and Darkness + Homogeneity 0-4. Range 0-48.');
     const regions = [['f', 'Forehead'], ['rmr', 'Right malar'], ['lmr', 'Left malar'], ['m', 'Chin']];
     const ids = [];
     for (const [k, label] of regions) {
@@ -67,7 +67,7 @@ export const renderers = {
     postureNote(root);
   },
   'salt-score'(root) {
-    note(root, 'SALT (Olsen 2004): % terminal hair loss per scalp region weighted top 0.40, back 0.24, right 0.18, left 0.18. Range 0-100 with S0-S5 bands. Near-neighbors: pasi.');
+    note(root, 'SALT (Olsen 2004): % terminal hair loss per scalp region weighted top 0.40, back 0.24, right 0.18, left 0.18. Range 0-100 with S0-S5 bands.');
     root.appendChild(numInput('Top of scalp — % hair loss (0-100)', 'salt-top', { min: '0', max: '100' }));
     root.appendChild(numInput('Back of scalp — % hair loss (0-100)', 'salt-back', { min: '0', max: '100' }));
     root.appendChild(numInput('Right side — % hair loss (0-100)', 'salt-right', { min: '0', max: '100' }));
@@ -79,7 +79,7 @@ export const renderers = {
     postureNote(root);
   },
   'napsi'(root) {
-    note(root, 'NAPSI (Rich & Scher 2003), per target nail: matrix (0-4 quadrants with pitting / leukonychia / red lunula / crumbling) + bed (0-4 quadrants with onycholysis / splinter / oil-drop / hyperkeratosis) = 0-8. Near-neighbors: pasi.');
+    note(root, 'NAPSI (Rich & Scher 2003), per target nail: matrix (0-4 quadrants with pitting / leukonychia / red lunula / crumbling) + bed (0-4 quadrants with onycholysis / splinter / oil-drop / hyperkeratosis) = 0-8.');
     root.appendChild(select('Nail matrix — quadrants involved (0-4)', 'napsi-matrix', Q4));
     root.appendChild(select('Nail bed — quadrants involved (0-4)', 'napsi-bed', Q4));
     const o = out(); root.appendChild(o);
@@ -89,7 +89,7 @@ export const renderers = {
     postureNote(root);
   },
   'vancouver-scar-scale'(root) {
-    note(root, 'Vancouver Scar Scale (Sullivan 1990): pigmentation 0-2, vascularity 0-3, pliability 0-5, height 0-3. Total 0-13; 0 = normal skin. Near-neighbors: lund-browder.');
+    note(root, 'Vancouver Scar Scale (Sullivan 1990): pigmentation 0-2, vascularity 0-3, pliability 0-5, height 0-3. Total 0-13; 0 = normal skin.');
     root.appendChild(select('Pigmentation', 'vss-pig', [['0', '0 (normal)'], ['1', '1 (hypopigmentation)'], ['2', '2 (hyperpigmentation)']]));
     root.appendChild(select('Vascularity', 'vss-vas', [['0', '0 (normal)'], ['1', '1 (pink)'], ['2', '2 (red)'], ['3', '3 (purple)']]));
     root.appendChild(select('Pliability', 'vss-pli', [['0', '0 (normal)'], ['1', '1 (supple)'], ['2', '2 (yielding)'], ['3', '3 (firm)'], ['4', '4 (ropes)'], ['5', '5 (contracture)']]));

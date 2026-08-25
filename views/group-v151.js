@@ -76,7 +76,7 @@ const EASI_REGIONS = PASI_REGIONS;
 export const renderers = {
   // ----- 2.1 pasi -------------------------------------------------------
   pasi(root) {
-    note(root, 'PASI (Fredriksson 1978): the standard psoriasis severity index. For each of four regions grade erythema, induration, and desquamation 0–4 and enter the % area involved; PASI = Σ (E+I+D) × area grade × region weight (head 0.1, upper 0.2, trunk 0.3, lower 0.4), range 0–72. Bands: mild < 10, moderate 10–20, severe > 20. Near-neighbor: dlqi.');
+    note(root, 'PASI (Fredriksson 1978): the standard psoriasis severity index. For each of four regions grade erythema, induration, and desquamation 0–4 and enter the % area involved; PASI = Σ (E+I+D) × area grade × region weight (head 0.1, upper 0.2, trunk 0.3, lower 0.4), range 0–72. Bands: mild < 10, moderate 10–20, severe > 20.');
     const ids = [];
     for (const [k, label] of PASI_REGIONS) {
       root.appendChild(el('p', { class: 'muted', text: `${label} — region weight ${({ head: 0.1, upper: 0.2, trunk: 0.3, lower: 0.4 })[k]}` }));
@@ -107,7 +107,7 @@ export const renderers = {
 
   // ----- 2.2 easi -------------------------------------------------------
   easi(root) {
-    note(root, 'EASI (Hanifin 2001): atopic-dermatitis severity. For each region grade erythema, edema/papulation, excoriation, and lichenification 0–3 and enter the % area; EASI = Σ (sum) × area grade × weight. Weights are age-dependent — adults (≥ 8 yr) head 0.1/upper 0.2/trunk 0.3/lower 0.4; children (< 8 yr) head 0.2/upper 0.2/trunk 0.3/lower 0.3. Range 0–72 (Leshem strata). Near-neighbor: scorad.');
+    note(root, 'EASI (Hanifin 2001): atopic-dermatitis severity. For each region grade erythema, edema/papulation, excoriation, and lichenification 0–3 and enter the % area; EASI = Σ (sum) × area grade × weight. Weights are age-dependent — adults (≥ 8 yr) head 0.1/upper 0.2/trunk 0.3/lower 0.4; children (< 8 yr) head 0.2/upper 0.2/trunk 0.3/lower 0.3. Range 0–72 (Leshem strata).');
     root.appendChild(selectField('Age band (sets the region weights)', 'easi-age', [
       { value: 'adult', text: 'Adult / ≥ 8 years' },
       { value: 'child', text: 'Child / < 8 years' },
@@ -143,7 +143,7 @@ export const renderers = {
 
   // ----- 2.3 scorad -----------------------------------------------------
   scorad(root) {
-    note(root, 'SCORAD (European Task Force 1993): SCORAD = A/5 + 7B/2 + C, where A is % body-surface extent (0–100), B six intensity items each 0–3 (dryness graded on uninvolved skin), and C two 0–10 VAS (pruritus, sleeplessness). Range 0–103; oSCORAD = A/5 + 7B/2 drops the subjective items. Bands: mild < 25, moderate 25–50, severe > 50. Near-neighbor: easi.');
+    note(root, 'SCORAD (European Task Force 1993): SCORAD = A/5 + 7B/2 + C, where A is % body-surface extent (0–100), B six intensity items each 0–3 (dryness graded on uninvolved skin), and C two 0–10 VAS (pruritus, sleeplessness). Range 0–103; oSCORAD = A/5 + 7B/2 drops the subjective items. Bands: mild < 25, moderate 25–50, severe > 50.');
     root.appendChild(numField('A — extent: % body surface affected (0–100, rule of nines)', 'scorad-extent', { min: 0, max: 100, placeholder: 'e.g. 30' }));
     root.appendChild(selectField('B — erythema', 'scorad-erythema', SEV4));
     root.appendChild(selectField('B — edema / papulation', 'scorad-edema', SEV4));
@@ -175,7 +175,7 @@ export const renderers = {
 
   // ----- 2.4 dlqi -------------------------------------------------------
   dlqi(root) {
-    note(root, 'DLQI (Finlay 1994): ten questions on how much your skin affected your life over the last week, each Very much 3 / A lot 2 / A little 1 / Not at all (or not relevant) 0; question 7 asks first whether your skin prevented work or study (Yes = 3). Total 0–30: 0–1 no effect, 2–5 small, 6–10 moderate, 11–20 very large, 21–30 extremely large effect. Near-neighbor: pasi.');
+    note(root, 'DLQI (Finlay 1994): ten questions on how much your skin affected your life over the last week, each Very much 3 / A lot 2 / A little 1 / Not at all (or not relevant) 0; question 7 asks first whether your skin prevented work or study (Yes = 3). Total 0–30: 0–1 no effect, 2–5 small, 6–10 moderate, 11–20 very large, 21–30 extremely large effect.');
     const opt = [
       { value: '0', text: 'Not at all / not relevant (0)' },
       { value: '1', text: 'A little (1)' },

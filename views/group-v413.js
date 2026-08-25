@@ -35,7 +35,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'seinsheimer-subtroch'(root) {
-    note(root, 'Seinsheimer classification of a subtrochanteric femur fracture, by fragment count, fracture-line shape, and lesser-trochanter attachment. Pick the type. I: nondisplaced (<2 mm); IIA: two-part transverse; IIB/IIC: two-part spiral (lesser trochanter proximal / distal); IIIA: three-part spiral (lesser trochanter in third fragment); IIIB: three-part spiral with a butterfly fragment; IV: comminuted (four or more fragments); V: subtrochanteric-intertrochanteric. Near-neighbors: pauwels-femoral-neck, winquist-hansen, pipkin-femoral-head.');
+    note(root, 'Seinsheimer classification of a subtrochanteric femur fracture, by fragment count, fracture-line shape, and lesser-trochanter attachment. Pick the type. I: nondisplaced (<2 mm); IIA: two-part transverse; IIB/IIC: two-part spiral (lesser trochanter proximal / distal); IIIA: three-part spiral (lesser trochanter in third fragment); IIIB: three-part spiral with a butterfly fragment; IV: comminuted (four or more fragments); V: subtrochanteric-intertrochanteric.');
     root.appendChild(select('Seinsheimer type', 'ss-type', [
       ['I', 'Type I - nondisplaced (<2 mm)'],
       ['IIA', 'Type IIA - two-part transverse'],

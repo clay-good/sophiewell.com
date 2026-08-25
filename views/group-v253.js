@@ -52,7 +52,7 @@ function render(o, r, valueLabel) {
 
 export const renderers = {
   'nascet-carotid-stenosis'(root) {
-    note(root, 'NASCET % stenosis = (1 - narrowest lumen / distal ICA) x 100. < 50 mild, 50-69 moderate, >= 70 severe. Near-neighbors: abcd2.');
+    note(root, 'NASCET % stenosis = (1 - narrowest lumen / distal ICA) x 100. < 50 mild, 50-69 moderate, >= 70 severe.');
     root.appendChild(numInput('Narrowest residual lumen (mm)', 'ns-narrow', { min: '0' }));
     root.appendChild(numInput('Normal distal ICA diameter (mm)', 'ns-distal', { min: '0' }));
     const o = out(); root.appendChild(o);
@@ -62,7 +62,7 @@ export const renderers = {
     postureNote(root);
   },
   'helsinki-ct-score'(root) {
-    note(root, 'Helsinki CT score (Raj 2014): mass type + volume + IVH + suprasellar cisterns, -3 to +14. Higher = worse TBI outcome. Near-neighbors: rotterdam-ct, marshall-ct.');
+    note(root, 'Helsinki CT score (Raj 2014): mass type + volume + IVH + suprasellar cisterns, -3 to +14. Higher = worse TBI outcome.');
     root.appendChild(select('Mass lesion type', 'hel-mass', [['0', 'None (0)'], ['2', 'Subdural hematoma (+2)'], ['2', 'Intracerebral hematoma (+2)'], ['-3', 'Epidural hematoma (-3)']]));
     root.appendChild(check('Mass lesion volume > 25 mL (+2)', 'hel-size'));
     root.appendChild(check('Intraventricular hemorrhage (+3)', 'hel-ivh'));
@@ -74,7 +74,7 @@ export const renderers = {
     postureNote(root);
   },
   'genant-vertebral-fracture'(root) {
-    note(root, 'Genant grade by vertebral height loss: 0 < 20%, 1 (mild) 20-25%, 2 (moderate) 26-40%, 3 (severe) > 40%. Near-neighbors: osteoporosis-prescreen.');
+    note(root, 'Genant grade by vertebral height loss: 0 < 20%, 1 (mild) 20-25%, 2 (moderate) 26-40%, 3 (severe) > 40%.');
     root.appendChild(numInput('Vertebral height loss (%)', 'ge-loss', { min: '0', max: '100' }));
     const o = out(); root.appendChild(o);
     wire(['ge-loss'], () => safe(o, () => {
@@ -83,7 +83,7 @@ export const renderers = {
     postureNote(root);
   },
   'testicular-volume'(root) {
-    note(root, 'Testicular volume (Lambert) = L x W x H x 0.71 (cm). Normal adult ~12-30 mL. Near-neighbors: twist-score.');
+    note(root, 'Testicular volume (Lambert) = L x W x H x 0.71 (cm). Normal adult ~12-30 mL.');
     root.appendChild(numInput('Length (cm)', 'tv-l', { min: '0' }));
     root.appendChild(numInput('Width (cm)', 'tv-w', { min: '0' }));
     root.appendChild(numInput('Height (cm)', 'tv-h', { min: '0' }));

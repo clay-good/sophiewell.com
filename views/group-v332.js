@@ -35,7 +35,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'haggitt-level'(root) {
-    note(root, 'Haggitt classification (Haggitt 1985). Pick the level from how deeply the invasive carcinoma has invaded relative to the polyp anatomy. Levels 1–3 (pedunculated, favorable histology) carry a low risk of adverse outcome; level 4 — and every invasive sessile polyp, which is level 4 by definition — carries a higher lymph-node-metastasis risk. Near-neighbors: paris-classification, siewert.');
+    note(root, 'Haggitt classification (Haggitt 1985). Pick the level from how deeply the invasive carcinoma has invaded relative to the polyp anatomy. Levels 1–3 (pedunculated, favorable histology) carry a low risk of adverse outcome; level 4 — and every invasive sessile polyp, which is level 4 by definition — carries a higher lymph-node-metastasis risk.');
     root.appendChild(select('Haggitt level', 'hag-level', [
       ['0', '0 — carcinoma in situ / intramucosal (not through muscularis mucosae)'],
       ['1', '1 — submucosa of the polyp head'],

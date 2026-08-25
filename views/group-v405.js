@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'savary-miller'(root) {
-    note(root, 'Modified Savary-Miller endoscopic classification of reflux esophagitis, by the extent of the mucosal lesions - the older / alternative companion to the Los Angeles classification. Pick the grade. I: single erosion on one fold; II: multiple non-confluent erosions on more than one fold; III: circumferential confluent erosions; IV: chronic complications (ulcer / stricture / short esophagus); V: Barrett\'s. Near-neighbors: la-esophagitis.');
+    note(root, 'Modified Savary-Miller endoscopic classification of reflux esophagitis, by the extent of the mucosal lesions - the older / alternative companion to the Los Angeles classification. Pick the grade. I: single erosion on one fold; II: multiple non-confluent erosions on more than one fold; III: circumferential confluent erosions; IV: chronic complications (ulcer / stricture / short esophagus); V: Barrett\'s.');
     root.appendChild(select('Savary-Miller grade', 'sm-grade', [
       ['I', 'Grade I - single erosion on one fold'],
       ['II', 'Grade II - multiple non-confluent erosions, >1 fold'],

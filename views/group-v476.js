@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'nash-moe-rotation'(root) {
-    note(root, 'The Nash-Moe method of grading vertebral rotation in scoliosis, by the position of the convex-side pedicle on the AP radiograph. Pick the grade. 0: symmetric pedicles (no rotation); 1: convex pedicle slightly toward the midline; 2: convex pedicle in the middle third; 3: convex pedicle central, near the midline; 4: convex pedicle past the midline. Reports the grade the clinician has determined, not a diagnosis or a treatment decision. Near-neighbor: risser-sign.');
+    note(root, 'The Nash-Moe method of grading vertebral rotation in scoliosis, by the position of the convex-side pedicle on the AP radiograph. Pick the grade. 0: symmetric pedicles (no rotation); 1: convex pedicle slightly toward the midline; 2: convex pedicle in the middle third; 3: convex pedicle central, near the midline; 4: convex pedicle past the midline. Reports the grade the clinician has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('Nash-Moe grade', 'nash-moe-grade', [
       ['0', '0 - symmetric pedicles (no rotation)'],
       ['1', '1 - convex pedicle slightly toward the midline'],

@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'intermacs-profile'(root) {
-    note(root, 'The INTERMACS profiles describe the clinical severity of advanced heart failure when mechanical circulatory support is being considered, from profile 1 (the sickest) to profile 7. Pick the profile. 1: critical cardiogenic shock; 2: progressive decline on inotropes; 3: stable but inotrope dependent; 4: resting symptoms; 5: exertion intolerant; 6: exertion limited; 7: advanced NYHA class III. Reports the profile the clinician has determined, not a device or transplant decision. Near-neighbor: nyha-class.');
+    note(root, 'The INTERMACS profiles describe the clinical severity of advanced heart failure when mechanical circulatory support is being considered, from profile 1 (the sickest) to profile 7. Pick the profile. 1: critical cardiogenic shock; 2: progressive decline on inotropes; 3: stable but inotrope dependent; 4: resting symptoms; 5: exertion intolerant; 6: exertion limited; 7: advanced NYHA class III. Reports the profile the clinician has determined, not a device or transplant decision.');
     root.appendChild(select('INTERMACS profile', 'intermacs-profile', [
       ['1', '1 - critical cardiogenic shock'],
       ['2', '2 - progressive decline on inotropes'],

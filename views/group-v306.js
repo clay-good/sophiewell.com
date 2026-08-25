@@ -49,7 +49,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'icans-grade'(root) {
-    note(root, 'ICANS neurotoxicity grading — the ASTCT consensus (Lee 2019) after immune-effector-cell / CAR-T therapy. Enter the ICE score (0–10, scored with the official tool) and the other findings; the grade is the most severe of the five domains. Grades ≥3 are severe. Near-neighbors: crs-grade.');
+    note(root, 'ICANS neurotoxicity grading — the ASTCT consensus (Lee 2019) after immune-effector-cell / CAR-T therapy. Enter the ICE score (0–10, scored with the official tool) and the other findings; the grade is the most severe of the five domains. Grades ≥3 are severe.');
     root.appendChild(numInput('ICE score (0–10)', 'icans-ice', { min: '0', max: '10' }));
     root.appendChild(select('Level of consciousness', 'icans-loc', [
       ['spontaneous', 'Awakens spontaneously (normal)'],

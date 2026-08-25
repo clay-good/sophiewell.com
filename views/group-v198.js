@@ -67,7 +67,7 @@ const ISTHBAT_UI = [
 export const renderers = {
   // ----- 2.1 cns-ipi ---------------------------------------------------------
   'cns-ipi'(root) {
-    note(root, 'CNS International Prognostic Index (Schmitz 2016): six factors, 1 point each → 0–6; low 0–1 (~0.6%), intermediate 2–3 (~3.4%), high 4–6 (~10.2%) 2-year CNS relapse. Near-neighbors: nccn-ipi, r-ipi, ann-arbor.');
+    note(root, 'CNS International Prognostic Index (Schmitz 2016): six factors, 1 point each → 0–6; low 0–1 (~0.6%), intermediate 2–3 (~3.4%), high 4–6 (~10.2%) 2-year CNS relapse.');
     root.appendChild(checkField('Age > 60 years', 'cnsipi-age'));
     root.appendChild(checkField('LDH > normal', 'cnsipi-ldh'));
     root.appendChild(checkField('ECOG performance status > 1', 'cnsipi-ecog'));
@@ -86,7 +86,7 @@ export const renderers = {
 
   // ----- 2.2 isth-bat --------------------------------------------------------
   'isth-bat'(root) {
-    note(root, 'ISTH bleeding assessment tool (Rodeghiero 2010; thresholds Elbatarny 2014): 14 domains scored 0 to +4. Abnormal ≥ 4 (adult male), ≥ 6 (adult female), ≥ 3 (child). Near-neighbors: four-ts, plasmic-ttp.');
+    note(root, 'ISTH bleeding assessment tool (Rodeghiero 2010; thresholds Elbatarny 2014): 14 domains scored 0 to +4. Abnormal ≥ 4 (adult male), ≥ 6 (adult female), ≥ 3 (child).');
     root.appendChild(pickField('Patient group', 'isth-group', [
       { value: 'male', text: 'Adult male (abnormal ≥ 4)' },
       { value: 'female', text: 'Adult female (abnormal ≥ 6)' },
@@ -108,7 +108,7 @@ export const renderers = {
 
   // ----- 2.3 virsta ----------------------------------------------------------
   virsta(root) {
-    note(root, 'VIRSTA score for IE risk in S. aureus bacteremia (Tubiana 2016): weighted items → ≤ 2 low (IE ~1%, NPV ~99%; echo deferrable), ≥ 3 higher (~17%; echo recommended). Near-neighbors: duke-endocarditis, pitt-bacteremia.');
+    note(root, 'VIRSTA score for IE risk in S. aureus bacteremia (Tubiana 2016): weighted items → ≤ 2 low (IE ~1%, NPV ~99%; echo deferrable), ≥ 3 higher (~17%; echo recommended).');
     root.appendChild(checkField('Cerebral / peripheral emboli (+5)', 'virsta-emboli'));
     root.appendChild(checkField('Meningitis (+5)', 'virsta-meningitis'));
     root.appendChild(checkField('Intracardiac device or previous IE (+4)', 'virsta-device'));
@@ -132,7 +132,7 @@ export const renderers = {
 
   // ----- 2.4 select-pse ------------------------------------------------------
   'select-pse'(root) {
-    note(root, 'SeLECT score for late post-stroke epilepsy (Galovic 2018): Severity + Large-artery atherosclerosis + Early seizure + Cortical + Territory → 0–9, mapped to 1-year and 5-year late-seizure risk. Near-neighbors: nihss, stess.');
+    note(root, 'SeLECT score for late post-stroke epilepsy (Galovic 2018): Severity + Large-artery atherosclerosis + Early seizure + Cortical + Territory → 0–9, mapped to 1-year and 5-year late-seizure risk.');
     root.appendChild(pickField('Stroke severity (NIHSS)', 'select-nihss', [
       { value: '0-3', text: '0–3 (0 points)' },
       { value: '4-10', text: '4–10 (1 point)' },
@@ -154,7 +154,7 @@ export const renderers = {
 
   // ----- 2.5 figo-gtn --------------------------------------------------------
   'figo-gtn'(root) {
-    note(root, 'WHO/FIGO prognostic score for gestational trophoblastic neoplasia (FIGO 2000): eight factors scored 0/1/2/4; ≤ 6 low (single-agent), ≥ 7 high (multi-agent). Near-neighbors: robson.');
+    note(root, 'WHO/FIGO prognostic score for gestational trophoblastic neoplasia (FIGO 2000): eight factors scored 0/1/2/4; ≤ 6 low (single-agent), ≥ 7 high (multi-agent).');
     root.appendChild(num('Age (years)', 'figo-age'));
     root.appendChild(pickField('Antecedent pregnancy', 'figo-antecedent', [
       { value: 'mole', text: 'Mole (0)' }, { value: 'abortion', text: 'Abortion (1)' }, { value: 'term', text: 'Term pregnancy (2)' },

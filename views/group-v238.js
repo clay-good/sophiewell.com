@@ -53,7 +53,7 @@ const SEX = [['male', 'Male'], ['female', 'Female']];
 
 export const renderers = {
   'relative-fat-mass'(root) {
-    note(root, 'RFM (Woolcott 2018) = 64 - 20 x (height / waist) + 12 x sex (female = 1). Estimates whole-body fat %. Near-neighbors: deurenberg-body-fat, navy-body-fat.');
+    note(root, 'RFM (Woolcott 2018) = 64 - 20 x (height / waist) + 12 x sex (female = 1). Estimates whole-body fat %.');
     root.appendChild(numInput('Height (cm or in)', 'rfm-height', { min: '0' }));
     root.appendChild(numInput('Waist circumference (same units)', 'rfm-waist', { min: '0' }));
     root.appendChild(select('Sex', 'rfm-sex', SEX));
@@ -64,7 +64,7 @@ export const renderers = {
     postureNote(root);
   },
   'body-roundness-index'(root) {
-    note(root, 'BRI (Thomas 2013) = 364.2 - 365.5 x sqrt(1 - ((waist/(2·pi))/(0.5·height))^2). Higher = more central adiposity. Near-neighbors: relative-fat-mass.');
+    note(root, 'BRI (Thomas 2013) = 364.2 - 365.5 x sqrt(1 - ((waist/(2·pi))/(0.5·height))^2). Higher = more central adiposity.');
     root.appendChild(numInput('Waist circumference (cm)', 'bri-waist', { min: '0' }));
     root.appendChild(numInput('Height (cm)', 'bri-height', { min: '0' }));
     const o = out(); root.appendChild(o);
@@ -74,7 +74,7 @@ export const renderers = {
     postureNote(root);
   },
   'navy-body-fat'(root) {
-    note(root, 'US Navy body fat (Hodgdon-Beckett 1984), measurements in inches. Men use neck + waist; women add hip. Near-neighbors: relative-fat-mass, deurenberg-body-fat.');
+    note(root, 'US Navy body fat (Hodgdon-Beckett 1984), measurements in inches. Men use neck + waist; women add hip.');
     root.appendChild(select('Sex', 'navy-sex', SEX));
     root.appendChild(numInput('Height (in)', 'navy-height', { min: '0' }));
     root.appendChild(numInput('Neck (in)', 'navy-neck', { min: '0' }));
@@ -87,7 +87,7 @@ export const renderers = {
     postureNote(root);
   },
   'egdr'(root) {
-    note(root, 'eGDR (Williams 2000) = 21.158 - 0.09·waist(cm) - 3.407·hypertension - 0.551·HbA1c. Lower = more insulin resistant. Near-neighbors: homa-ir, tyg-index.');
+    note(root, 'eGDR (Williams 2000) = 21.158 - 0.09·waist(cm) - 3.407·hypertension - 0.551·HbA1c. Lower = more insulin resistant.');
     root.appendChild(numInput('Waist circumference (cm)', 'egdr-waist', { min: '0' }));
     root.appendChild(check('Hypertension (treated or BP >= 140/90)', 'egdr-htn'));
     root.appendChild(numInput('HbA1c (%)', 'egdr-a1c', { min: '0' }));

@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'ceap-venous'(root) {
-    note(root, 'CEAP clinical classification (Eklof 2004; 2020 update) of chronic venous disease. Pick the clinical class. C0: no signs; C1: telangiectasias / reticular veins; C2: varicose veins; C3: edema; C4a: pigmentation / eczema; C4b: lipodermatosclerosis / atrophie blanche; C5: healed venous ulcer; C6: active venous ulcer. Complements the Venous Clinical Severity Score. Near-neighbors: vcss.');
+    note(root, 'CEAP clinical classification (Eklof 2004; 2020 update) of chronic venous disease. Pick the clinical class. C0: no signs; C1: telangiectasias / reticular veins; C2: varicose veins; C3: edema; C4a: pigmentation / eczema; C4b: lipodermatosclerosis / atrophie blanche; C5: healed venous ulcer; C6: active venous ulcer. Complements the Venous Clinical Severity Score.');
     root.appendChild(select('CEAP clinical class', 'ceap-class', [
       ['C0', 'C0 - no visible or palpable signs'],
       ['C1', 'C1 - telangiectasias / reticular veins'],

@@ -35,7 +35,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'geissler-carpal'(root) {
-    note(root, 'Geissler arthroscopic classification of an interosseous (scapholunate / lunotriquetral) carpal-ligament injury, grading instability by what is seen from the radiocarpal vs midcarpal joint. Pick the grade. I: radiocarpal attenuation, midcarpal alignment congruent; II: added midcarpal incongruency, no probe passage; III: incongruency from both joints, a probe passes; IV: gross instability, a 2.7 mm arthroscope passes (drive-through sign). Near-neighbors: mayfield-perilunate.');
+    note(root, 'Geissler arthroscopic classification of an interosseous (scapholunate / lunotriquetral) carpal-ligament injury, grading instability by what is seen from the radiocarpal vs midcarpal joint. Pick the grade. I: radiocarpal attenuation, midcarpal alignment congruent; II: added midcarpal incongruency, no probe passage; III: incongruency from both joints, a probe passes; IV: gross instability, a 2.7 mm arthroscope passes (drive-through sign).');
     root.appendChild(select('Geissler grade', 'gc-grade', [
       ['I', 'Grade I - radiocarpal attenuation, midcarpal congruent'],
       ['II', 'Grade II - added midcarpal incongruency, no probe passage'],

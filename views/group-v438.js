@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'eaton-littler'(root) {
-    note(root, 'The Eaton-Littler classification of thumb carpometacarpal (basal-joint) osteoarthritis, by the radiographic joint findings. Pick the stage. I: normal or slightly widened joint (synovitis); II: slight narrowing, osteophytes <2 mm, subluxation up to 1/3; III: marked narrowing, osteophytes >=2 mm, subluxation >1/3, scaphotrapezial joint spared; IV: pantrapezial arthritis. Reports the stage the clinician has determined, not a diagnosis or a treatment decision. Near-neighbor: outerbridge-cartilage.');
+    note(root, 'The Eaton-Littler classification of thumb carpometacarpal (basal-joint) osteoarthritis, by the radiographic joint findings. Pick the stage. I: normal or slightly widened joint (synovitis); II: slight narrowing, osteophytes <2 mm, subluxation up to 1/3; III: marked narrowing, osteophytes >=2 mm, subluxation >1/3, scaphotrapezial joint spared; IV: pantrapezial arthritis. Reports the stage the clinician has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('Eaton-Littler stage', 'eaton-stage', [
       ['I', 'I - normal or slightly widened joint (synovitis)'],
       ['II', 'II - slight narrowing, osteophytes <2 mm'],

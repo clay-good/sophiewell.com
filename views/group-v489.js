@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'fernandez-radius'(root) {
-    note(root, 'The Fernandez classification of distal radius fractures, by the mechanism of injury (complements the Frykman fracture-line pattern). Pick the type. I: bending (Colles/Smith); II: shearing (Barton, radial styloid); III: compression (die-punch); IV: avulsion / radiocarpal fracture-dislocation; V: combined, high-velocity. Reports the type the clinician has determined, not a diagnosis or a treatment decision. Near-neighbor: frykman-classification.');
+    note(root, 'The Fernandez classification of distal radius fractures, by the mechanism of injury (complements the Frykman fracture-line pattern). Pick the type. I: bending (Colles/Smith); II: shearing (Barton, radial styloid); III: compression (die-punch); IV: avulsion / radiocarpal fracture-dislocation; V: combined, high-velocity. Reports the type the clinician has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('Fernandez type', 'fernandez-type', [
       ['I', 'I - bending (Colles/Smith)'],
       ['II', 'II - shearing (Barton, radial styloid)'],

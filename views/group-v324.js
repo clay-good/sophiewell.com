@@ -43,7 +43,7 @@ const IDS = ['wex-solid', 'wex-liquid', 'wex-gas', 'wex-pad', 'wex-lifestyle'];
 
 export const renderers = {
   'wexner'(root) {
-    note(root, 'Wexner (Cleveland Clinic) fecal incontinence score (Jorge & Wexner 1993). Set how often each applies. Each item scores 0 (never) to 4 (daily); total 0–20, where 0 is perfect continence and 20 is complete incontinence. Near-neighbors: bristol-girth.');
+    note(root, 'Wexner (Cleveland Clinic) fecal incontinence score (Jorge & Wexner 1993). Set how often each applies. Each item scores 0 (never) to 4 (daily); total 0–20, where 0 is perfect continence and 20 is complete incontinence.');
     root.appendChild(select('Incontinence to solid stool', 'wex-solid'));
     root.appendChild(select('Incontinence to liquid stool', 'wex-liquid'));
     root.appendChild(select('Incontinence to gas', 'wex-gas'));

@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'koos-schwannoma'(root) {
-    note(root, 'Koos grading of a vestibular schwannoma (acoustic neuroma), by extrameatal extension and brainstem involvement. Pick the grade. I: intracanalicular; II: extends into the cerebellopontine angle, no brainstem contact; III: contacts the brainstem, no displacement; IV: compresses the brainstem, displaces the fourth ventricle. Near-neighbors: spetzler-ponce.');
+    note(root, 'Koos grading of a vestibular schwannoma (acoustic neuroma), by extrameatal extension and brainstem involvement. Pick the grade. I: intracanalicular; II: extends into the cerebellopontine angle, no brainstem contact; III: contacts the brainstem, no displacement; IV: compresses the brainstem, displaces the fourth ventricle.');
     root.appendChild(select('Koos grade', 'koos-grade', [
       ['I', 'Grade I - intracanalicular'],
       ['II', 'Grade II - cerebellopontine angle, no brainstem contact'],

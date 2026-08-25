@@ -43,7 +43,7 @@ function render(o, r, valueLabel) {
 
 export const renderers = {
   'canadian-ct-head'(root) {
-    note(root, 'Canadian CT Head Rule: for minor head injury (GCS 13-15 with witnessed LOC / amnesia / disorientation). CT recommended if any high- or medium-risk criterion is present. Near-neighbors: pecarn-head, nexus-cspine, gcs.');
+    note(root, 'Canadian CT Head Rule: for minor head injury (GCS 13-15 with witnessed LOC / amnesia / disorientation). CT recommended if any high- or medium-risk criterion is present.');
     note(root, 'High-risk criteria (need for neurosurgical intervention):');
     root.appendChild(check('GCS < 15 at 2 h post-injury', 'cch-gcs2h'));
     root.appendChild(check('Suspected open or depressed skull fracture', 'cch-skull'));
@@ -64,7 +64,7 @@ export const renderers = {
     postureNote(root);
   },
   'sf-syncope'(root) {
-    note(root, 'San Francisco Syncope Rule — CHESS mnemonic. Any one positive => high risk for a serious 7-day outcome; all negative => low risk. Near-neighbors: canadian-syncope, rose-syncope, egsys.');
+    note(root, 'San Francisco Syncope Rule — CHESS mnemonic. Any one positive => high risk for a serious 7-day outcome; all negative => low risk.');
     root.appendChild(check('C — history of Congestive heart failure', 'sfs-chf'));
     root.appendChild(check('H — Hematocrit < 30%', 'sfs-hct'));
     root.appendChild(check('E — abnormal ECG (new change or any non-sinus rhythm)', 'sfs-ecg'));
@@ -80,7 +80,7 @@ export const renderers = {
     postureNote(root);
   },
   'mcisaac'(root) {
-    note(root, 'McIsaac score = Centor (4 criteria) + age adjustment (3-14 +1, 15-44 0, >= 45 -1). Maps -1..5 to group A strep probability and a testing strategy. Near-neighbors: centor, feverpain.');
+    note(root, 'McIsaac score = Centor (4 criteria) + age adjustment (3-14 +1, 15-44 0, >= 45 -1). Maps -1..5 to group A strep probability and a testing strategy.');
     root.appendChild(numInput('Age (years)', 'mci-age', { min: '0', max: '120' }));
     root.appendChild(check('Temperature > 38 C', 'mci-fever'));
     root.appendChild(check('Absence of cough', 'mci-cough'));

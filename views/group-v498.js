@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'narakas-obpp'(root) {
-    note(root, 'The Narakas classification of obstetric brachial plexus palsy, by which nerve roots are involved, in increasing extent. Pick the group. I: C5-C6, the upper trunk (Erb palsy); II: C5-C7, adding wrist and finger extension; III: C5-T1, a complete flaccid limb without Horner syndrome; IV: C5-T1 with Horner syndrome. Reports the group the clinician has determined from the examination, not a recovery prediction for an individual infant. Near-neighbor: seddon-sunderland.');
+    note(root, 'The Narakas classification of obstetric brachial plexus palsy, by which nerve roots are involved, in increasing extent. Pick the group. I: C5-C6, the upper trunk (Erb palsy); II: C5-C7, adding wrist and finger extension; III: C5-T1, a complete flaccid limb without Horner syndrome; IV: C5-T1 with Horner syndrome. Reports the group the clinician has determined from the examination, not a recovery prediction for an individual infant.');
     root.appendChild(select('Narakas group', 'narakas-group', [
       ['I', 'I - C5-C6 (Erb palsy)'],
       ['II', 'II - C5-C7 (adds wrist and finger extension)'],

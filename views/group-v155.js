@@ -87,7 +87,7 @@ const UT_STAGE_OPTS = [
 export const renderers = {
   // ----- 2.2 mipi ------------------------------------------------------------
   mipi(root) {
-    note(root, 'Mantle Cell Lymphoma International Prognostic Index (Hoster 2008): 0.03535·age + 0.6978·(ECOG 2–4) + 1.367·log₁₀(LDH/ULN) + 0.9393·log₁₀(WBC per µL). Bands low < 5.7, intermediate 5.7 to < 6.2, high ≥ 6.2. Enter WBC as the absolute count per microliter (e.g. 8000), not thousands. Near-neighbors: nccn-ipi, r-ipi, flipi.');
+    note(root, 'Mantle Cell Lymphoma International Prognostic Index (Hoster 2008): 0.03535·age + 0.6978·(ECOG 2–4) + 1.367·log₁₀(LDH/ULN) + 0.9393·log₁₀(WBC per µL). Bands low < 5.7, intermediate 5.7 to < 6.2, high ≥ 6.2. Enter WBC as the absolute count per microliter (e.g. 8000), not thousands.');
     root.appendChild(field('Age (years)', 'mipi-age', { type: 'number', min: '0', step: '1', inputmode: 'numeric' }));
     root.appendChild(pickField('ECOG performance status', 'mipi-ecog', ECOG_OPTS));
     root.appendChild(field('Serum LDH (U/L)', 'mipi-ldh', { type: 'number', min: '0', step: 'any', inputmode: 'decimal' }));
@@ -110,7 +110,7 @@ export const renderers = {
 
   // ----- 2.3 forrest ---------------------------------------------------------
   forrest(root) {
-    note(root, 'Forrest classification (Forrest 1974): the endoscopic stigmata of a bleeding peptic ulcer. Ia/Ib (active bleeding) and IIa (visible vessel) are high-risk stigmata that warrant endoscopic therapy; IIb (adherent clot) is intermediate; IIc (flat spot) and III (clean base) are low-risk. Near-neighbors: rockall, gbs, aims65.');
+    note(root, 'Forrest classification (Forrest 1974): the endoscopic stigmata of a bleeding peptic ulcer. Ia/Ib (active bleeding) and IIa (visible vessel) are high-risk stigmata that warrant endoscopic therapy; IIb (adherent clot) is intermediate; IIc (flat spot) and III (clean base) are low-risk.');
     root.appendChild(pickField('Endoscopic finding', 'forrest-class', FORREST_OPTS));
     const o = out(); root.appendChild(o);
     wire(['forrest-class'], () => safe(o, () => {
@@ -128,7 +128,7 @@ export const renderers = {
 
   // ----- 2.4 wagner-dfu ------------------------------------------------------
   'wagner-dfu': function wagnerDfu(root) {
-    note(root, 'Wagner (Meggitt-Wagner) diabetic foot ulcer grade (Wagner 1981): depth/extent from grade 0 (intact / at-risk foot) through 1 superficial, 2 deep to tendon/capsule/bone, 3 deep with abscess or osteomyelitis, 4 localized gangrene, 5 whole-foot gangrene. Near-neighbors: wifi, university-texas-dfu.');
+    note(root, 'Wagner (Meggitt-Wagner) diabetic foot ulcer grade (Wagner 1981): depth/extent from grade 0 (intact / at-risk foot) through 1 superficial, 2 deep to tendon/capsule/bone, 3 deep with abscess or osteomyelitis, 4 localized gangrene, 5 whole-foot gangrene.');
     root.appendChild(pickField('Lesion depth / extent', 'wagner-grade', WAGNER_OPTS));
     const o = out(); root.appendChild(o);
     wire(['wagner-grade'], () => safe(o, () => {
@@ -145,7 +145,7 @@ export const renderers = {
 
   // ----- 2.5 university-texas-dfu --------------------------------------------
   'university-texas-dfu': function universityTexasDfu(root) {
-    note(root, 'University of Texas diabetic foot ulcer classification (Lavery/Armstrong 1996/1998): a grade × stage grid — grade (depth) 0 epithelialized, 1 superficial, 2 to tendon/capsule, 3 to bone/joint; stage A clean, B infection, C ischemia, D infection + ischemia. Healing odds fall and amputation odds rise as both axes increase. Near-neighbors: wagner-dfu, wifi.');
+    note(root, 'University of Texas diabetic foot ulcer classification (Lavery/Armstrong 1996/1998): a grade × stage grid — grade (depth) 0 epithelialized, 1 superficial, 2 to tendon/capsule, 3 to bone/joint; stage A clean, B infection, C ischemia, D infection + ischemia. Healing odds fall and amputation odds rise as both axes increase.');
     root.appendChild(pickField('Grade — wound depth', 'ut-grade', UT_GRADE_OPTS));
     root.appendChild(pickField('Stage — complication', 'ut-stage', UT_STAGE_OPTS));
     const o = out(); root.appendChild(o);

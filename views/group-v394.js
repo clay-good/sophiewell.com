@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'borrmann-gastric'(root) {
-    note(root, 'Borrmann classification of advanced gastric cancer, by the gross (macroscopic) tumor appearance. Pick the type. I: polypoid (protruding, demarcated, no ulcer); II: fungating / ulcerated (raised margins); III: ulcerated and infiltrative (ill-defined margins); IV: diffusely infiltrative / linitis plastica (no mass or ulcer). Type IV is classically the worst prognosis. Near-neighbors: lauren-gastric.');
+    note(root, 'Borrmann classification of advanced gastric cancer, by the gross (macroscopic) tumor appearance. Pick the type. I: polypoid (protruding, demarcated, no ulcer); II: fungating / ulcerated (raised margins); III: ulcerated and infiltrative (ill-defined margins); IV: diffusely infiltrative / linitis plastica (no mass or ulcer). Type IV is classically the worst prognosis.');
     root.appendChild(select('Borrmann type', 'borrmann-type', [
       ['I', 'Type I - polypoid'],
       ['II', 'Type II - fungating / ulcerated'],

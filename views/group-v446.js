@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'rop-stage'(root) {
-    note(root, 'The International Classification of Retinopathy of Prematurity (ICROP) stage of acute ROP at the vascular/avascular junction. Pick the stage. 1: demarcation line; 2: ridge; 3: ridge with fibrovascular proliferation; 4: partial retinal detachment (4A extrafoveal, 4B foveal); 5: total retinal detachment. Zone and plus disease are separate axes that also drive management. Reports the stage the ophthalmologist has determined, not a diagnosis or a treatment decision. Near-neighbors: sarnat-hie, papile-ivh.');
+    note(root, 'The International Classification of Retinopathy of Prematurity (ICROP) stage of acute ROP at the vascular/avascular junction. Pick the stage. 1: demarcation line; 2: ridge; 3: ridge with fibrovascular proliferation; 4: partial retinal detachment (4A extrafoveal, 4B foveal); 5: total retinal detachment. Zone and plus disease are separate axes that also drive management. Reports the stage the ophthalmologist has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('ROP stage', 'rop-stage', [
       ['1', '1 - demarcation line'],
       ['2', '2 - ridge'],

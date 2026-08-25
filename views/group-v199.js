@@ -55,7 +55,7 @@ function wire(ids, run) {
 export const renderers = {
   // ----- 2.2 mipss70 ---------------------------------------------------------
   mipss70(root) {
-    note(root, 'MIPSS70 (Guglielmelli 2018): transplantation-age prognostic model for primary myelofibrosis. Weighted items → 0–12; low 0–1, intermediate 2–4, high ≥ 5. Near-neighbors: dipss-plus-mf, gipss.');
+    note(root, 'MIPSS70 (Guglielmelli 2018): transplantation-age prognostic model for primary myelofibrosis. Weighted items → 0–12; low 0–1, intermediate 2–4, high ≥ 5.');
     root.appendChild(checkField('Hemoglobin < 10 g/dL (+1)', 'mipss-hb'));
     root.appendChild(checkField('Leukocytes > 25 ×10⁹/L (+2)', 'mipss-wbc'));
     root.appendChild(checkField('Platelets < 100 ×10⁹/L (+2)', 'mipss-plt'));
@@ -81,7 +81,7 @@ export const renderers = {
 
   // ----- 2.3 gipss -----------------------------------------------------------
   gipss(root) {
-    note(root, 'GIPSS (Tefferi 2018): mutation-and-karyotype-only companion to MIPSS70. Karyotype + CALR/ASXL1/SRSF2/U2AF1 → 0–6; low 0, int-1 1, int-2 2, high ≥ 3. Near-neighbors: mipss70, dipss-plus-mf.');
+    note(root, 'GIPSS (Tefferi 2018): mutation-and-karyotype-only companion to MIPSS70. Karyotype + CALR/ASXL1/SRSF2/U2AF1 → 0–6; low 0, int-1 1, int-2 2, high ≥ 3.');
     root.appendChild(selectField('Karyotype', 'gipss-karyo', [
       { value: 'favorable', text: 'Favorable / normal (0)' },
       { value: 'unfavorable', text: 'Unfavorable (+1)' },
@@ -104,7 +104,7 @@ export const renderers = {
 
   // ----- 2.4 mysec-pm --------------------------------------------------------
   'mysec-pm'(root) {
-    note(root, 'MYSEC-PM (Passamonti 2017): dedicated model for post-PV / post-ET (secondary) myelofibrosis. 0.15·age + weighted items; low < 11, int-1 ≥ 11 to < 14, int-2 ≥ 14 to < 16, high ≥ 16. Near-neighbors: dipss-plus-mf, mipss70.');
+    note(root, 'MYSEC-PM (Passamonti 2017): dedicated model for post-PV / post-ET (secondary) myelofibrosis. 0.15·age + weighted items; low < 11, int-1 ≥ 11 to < 14, int-2 ≥ 14 to < 16, high ≥ 16.');
     root.appendChild(num('Age (years)', 'mysec-age'));
     root.appendChild(checkField('Hemoglobin < 11 g/dL (+2)', 'mysec-hb'));
     root.appendChild(checkField('Circulating blasts ≥ 3% (+2)', 'mysec-blasts'));
@@ -124,7 +124,7 @@ export const renderers = {
 
   // ----- 2.5 hct-ci ----------------------------------------------------------
   'hct-ci'(root) {
-    note(root, 'HCT-CI (Sorror 2005): pre-transplant non-relapse-mortality risk before allogeneic HCT. Weighted comorbidity grid; low 0, intermediate 1–2, high ≥ 3. Near-neighbors: charlson.');
+    note(root, 'HCT-CI (Sorror 2005): pre-transplant non-relapse-mortality risk before allogeneic HCT. Weighted comorbidity grid; low 0, intermediate 1–2, high ≥ 3.');
     root.appendChild(checkField('Arrhythmia (+1)', 'hct-arrhythmia'));
     root.appendChild(checkField('Cardiac — CAD / CHF / MI / EF ≤ 50% (+1)', 'hct-cardiac'));
     root.appendChild(checkField('Inflammatory bowel disease (+1)', 'hct-ibd'));

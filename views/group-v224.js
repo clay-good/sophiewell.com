@@ -53,7 +53,7 @@ function render(o, r, valueLabel, value) {
 
 export const renderers = {
   'id-migraine'(root) {
-    note(root, 'ID Migraine screener (Lipton 2003): nausea, photophobia, headache-related disability over the past 3 months. >= 2 positive = positive migraine screen. Near-neighbors: midas, pound-migraine.');
+    note(root, 'ID Migraine screener (Lipton 2003): nausea, photophobia, headache-related disability over the past 3 months. >= 2 positive = positive migraine screen.');
     root.appendChild(check('Nausea or sick to your stomach with headaches', 'idm-nausea'));
     root.appendChild(check('Light bothers you a lot more when you have headaches', 'idm-photo'));
     root.appendChild(check('Headaches limited activity for >= 1 day', 'idm-dis'));
@@ -65,7 +65,7 @@ export const renderers = {
     postureNote(root);
   },
   'onls'(root) {
-    note(root, 'ONLS (Graham & Hughes 2006): arm scale (0-5) + leg scale (0-7), total 0-12. Higher = greater neuropathy-related limitation. Near-neighbors: mrc-sum-score, edss.');
+    note(root, 'ONLS (Graham & Hughes 2006): arm scale (0-5) + leg scale (0-7), total 0-12. Higher = greater neuropathy-related limitation.');
     root.appendChild(select('Arm scale (0-5)', 'onls-arm', [['0', '0 - normal'], ['1', '1 - minor symptoms, no functional effect'], ['2', '2 - affects but does not prevent functions'], ['3', '3 - prevents >= 1 function'], ['4', '4 - prevents all listed functions, purposeful movement possible'], ['5', '5 - no purposeful movement in either arm']]));
     root.appendChild(select('Leg scale (0-7)', 'onls-leg', [['0', '0 - unaffected'], ['1', '1 - affected, gait normal-looking'], ['2', '2 - independent, gait abnormal'], ['3', '3 - unilateral support to walk 10 m'], ['4', '4 - bilateral support to walk 10 m'], ['5', '5 - wheelchair, can stand/walk 1 m with help'], ['6', '6 - wheelchair, some purposeful leg movement'], ['7', '7 - wheelchair/bed-bound, no purposeful leg movement']]));
     const o = out(); root.appendChild(o);
@@ -75,7 +75,7 @@ export const renderers = {
     postureNote(root);
   },
   'end-it-score'(root) {
-    note(root, 'END-IT score (Gao 2016): encephalitis, nonconvulsive SE, diazepam resistance, imaging (uni 1 / bi 2), intubation (0-6). >= 3 unfavorable outcome. Near-neighbors: stess, helps2b.');
+    note(root, 'END-IT score (Gao 2016): encephalitis, nonconvulsive SE, diazepam resistance, imaging (uni 1 / bi 2), intubation (0-6). >= 3 unfavorable outcome.');
     root.appendChild(check('Encephalitis etiology (+1)', 'end-enc'));
     root.appendChild(check('Nonconvulsive SE after convulsive SE controlled (+1)', 'end-ncse'));
     root.appendChild(check('Diazepam resistance (+1)', 'end-diaz'));
@@ -89,7 +89,7 @@ export const renderers = {
     postureNote(root);
   },
   'engel-classification'(root) {
-    note(root, 'Engel epilepsy-surgery outcome (Engel 1993): Class I free of disabling seizures; II rare disabling; III worthwhile improvement; IV no worthwhile improvement. Near-neighbors: ilae-surgical-outcome, stess.');
+    note(root, 'Engel epilepsy-surgery outcome (Engel 1993): Class I free of disabling seizures; II rare disabling; III worthwhile improvement; IV no worthwhile improvement.');
     root.appendChild(select('Postoperative seizure outcome', 'eng-out', [['1', 'Free of disabling seizures (Class I)'], ['2', 'Rare disabling seizures (Class II)'], ['3', 'Worthwhile improvement (Class III)'], ['4', 'No worthwhile improvement (Class IV)']]));
     const o = out(); root.appendChild(o);
     wire(['eng-out'], () => safe(o, () => {
@@ -99,7 +99,7 @@ export const renderers = {
     postureNote(root);
   },
   'ilae-surgical-outcome'(root) {
-    note(root, 'ILAE epilepsy-surgery outcome (Wieser 2001): Class 1 seizure-free; 2 auras only; 3 1-3 seizure days/year; 4 to 50% reduction; 5 to 100% increase; 6 > 100% increase. Near-neighbors: engel-classification, stess.');
+    note(root, 'ILAE epilepsy-surgery outcome (Wieser 2001): Class 1 seizure-free; 2 auras only; 3 1-3 seizure days/year; 4 to 50% reduction; 5 to 100% increase; 6 > 100% increase.');
     root.appendChild(check('Completely seizure-free, no auras (Class 1)', 'ilae-free'));
     root.appendChild(check('Only auras, no other seizures (Class 2)', 'ilae-aura'));
     root.appendChild(num('Current seizure days per year', 'ilae-days', { min: '0' }));
@@ -112,7 +112,7 @@ export const renderers = {
     postureNote(root);
   },
   'salzburg-ncse-criteria'(root) {
-    note(root, 'Salzburg consensus criteria for NCSE (Leitinger 2015): discharges > 2.5/s = definite; slower pattern needs a secondary criterion; EEG-only improvement = possible. Near-neighbors: stess, helps2b.');
+    note(root, 'Salzburg consensus criteria for NCSE (Leitinger 2015): discharges > 2.5/s = definite; slower pattern needs a secondary criterion; EEG-only improvement = possible.');
     root.appendChild(select('EEG pattern (worst 10-second epoch)', 'salz-pat', [['0', 'Neither of the below'], ['1', 'Epileptiform discharges <= 2.5/s OR rhythmic delta/theta > 0.5/s'], ['2', 'Epileptiform discharges > 2.5/s']]));
     root.appendChild(check('Typical spatiotemporal evolution', 'salz-evo'));
     root.appendChild(check('Subtle clinical ictal phenomena time-locked to the pattern', 'salz-ictal'));
@@ -126,7 +126,7 @@ export const renderers = {
     postureNote(root);
   },
   'dhi'(root) {
-    note(root, 'Dizziness Handicap Inventory (Jacobson & Newman 1990): 25 items, No 0 / Sometimes 2 / Yes 4; total 0-100. 0-30 mild, 31-60 moderate, 61-100 severe. Near-neighbors: epworth, mini-cog.');
+    note(root, 'Dizziness Handicap Inventory (Jacobson & Newman 1990): 25 items, No 0 / Sometimes 2 / Yes 4; total 0-100. 0-30 mild, 31-60 moderate, 61-100 severe.');
     root.appendChild(num('Number of "Yes" answers (0-25)', 'dhi-yes', { min: '0', max: '25' }));
     root.appendChild(num('Number of "Sometimes" answers (0-25)', 'dhi-some', { min: '0', max: '25' }));
     const o = out(); root.appendChild(o);

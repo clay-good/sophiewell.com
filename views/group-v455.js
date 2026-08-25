@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'nunley-vertullo'(root) {
-    note(root, 'The Nunley-Vertullo classification of athletic midfoot (Lisfranc) sprains, by weightbearing-radiograph diastasis and arch height. Pick the stage. I: no diastasis or arch-height loss; II: 1 to 5 mm diastasis, no arch-height loss; III: more than 5 mm diastasis with arch-height loss. Reports the stage the clinician has determined, not a diagnosis or a treatment decision. Near-neighbor: lisfranc-myerson.');
+    note(root, 'The Nunley-Vertullo classification of athletic midfoot (Lisfranc) sprains, by weightbearing-radiograph diastasis and arch height. Pick the stage. I: no diastasis or arch-height loss; II: 1 to 5 mm diastasis, no arch-height loss; III: more than 5 mm diastasis with arch-height loss. Reports the stage the clinician has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('Nunley-Vertullo stage', 'nunley-stage', [
       ['I', 'I - no diastasis, no arch-height loss'],
       ['II', 'II - 1 to 5 mm diastasis, no arch-height loss'],

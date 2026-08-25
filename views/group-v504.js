@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'metavir-fibrosis'(root) {
-    note(root, 'The METAVIR fibrosis stage, the histologic staging of liver fibrosis on biopsy. This is the stage read from the biopsy, distinct from the non-invasive serum estimates (FIB-4, NAFLD Fibrosis Score). Pick the stage. F0: no fibrosis; F1: portal fibrosis without septa; F2: portal fibrosis with a few septa; F3: numerous septa without cirrhosis (bridging fibrosis); F4: cirrhosis. METAVIR also grades necroinflammatory activity (A0-A3) separately. Reports the fibrosis stage the pathologist has assigned, not a diagnosis or a treatment decision. Near-neighbor: fib4.');
+    note(root, 'The METAVIR fibrosis stage, the histologic staging of liver fibrosis on biopsy. This is the stage read from the biopsy, distinct from the non-invasive serum estimates (FIB-4, NAFLD Fibrosis Score). Pick the stage. F0: no fibrosis; F1: portal fibrosis without septa; F2: portal fibrosis with a few septa; F3: numerous septa without cirrhosis (bridging fibrosis); F4: cirrhosis. METAVIR also grades necroinflammatory activity (A0-A3) separately. Reports the fibrosis stage the pathologist has assigned, not a diagnosis or a treatment decision.');
     root.appendChild(select('METAVIR fibrosis stage', 'metavir-stage', [
       ['F0', 'F0 - no fibrosis'],
       ['F1', 'F1 - portal fibrosis without septa'],

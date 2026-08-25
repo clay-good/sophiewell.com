@@ -76,7 +76,7 @@ const YND = [
 export const renderers = {
   // ----- 2.1 asdas ------------------------------------------------------
   asdas(root) {
-    note(root, 'ASDAS (Lukas 2009, ASAS): four 0–10 patient items plus CRP (mg/L, preferred) or ESR (mm/h). ASDAS-CRP = 0.12·back pain + 0.06·morning stiffness + 0.11·patient global + 0.07·peripheral pain + 0.58·ln(CRP+1). Cutoffs: inactive < 1.3, low 1.3–<2.1, high 2.1–3.5, very high > 3.5. Near-neighbor: das28.');
+    note(root, 'ASDAS (Lukas 2009, ASAS): four 0–10 patient items plus CRP (mg/L, preferred) or ESR (mm/h). ASDAS-CRP = 0.12·back pain + 0.06·morning stiffness + 0.11·patient global + 0.07·peripheral pain + 0.58·ln(CRP+1). Cutoffs: inactive < 1.3, low 1.3–<2.1, high 2.1–3.5, very high > 3.5.');
     root.appendChild(numField('Total back pain (BASDAI Q2, 0–10)', 'asdas-bp', { step: '0.1', min: 0, max: 10, placeholder: 'e.g. 4' }));
     root.appendChild(numField('Duration of morning stiffness (BASDAI Q6, 0–10)', 'asdas-ms', { step: '0.1', min: 0, max: 10, placeholder: 'e.g. 3' }));
     root.appendChild(numField('Patient global assessment (0–10)', 'asdas-pg', { step: '0.1', min: 0, max: 10, placeholder: 'e.g. 5' }));
@@ -126,7 +126,7 @@ export const renderers = {
 
   // ----- 2.3 gca-acr-eular-2022 -----------------------------------------
   'gca-acr-eular-2022'(root) {
-    note(root, '2022 ACR/EULAR GCA classification (Ponte 2022): apply only with age ≥ 50 at diagnosis after a medium/large-vessel-vasculitis diagnosis with mimics excluded. Weighted items sum to 0–25; ≥ 6 classifies as GCA. Near-neighbors: cdai-ra, das28.');
+    note(root, '2022 ACR/EULAR GCA classification (Ponte 2022): apply only with age ≥ 50 at diagnosis after a medium/large-vessel-vasculitis diagnosis with mimics excluded. Weighted items sum to 0–25; ≥ 6 classifies as GCA.');
     root.appendChild(checkField('Entry requirement — age ≥ 50 years at diagnosis', 'gca-entry'));
     root.appendChild(checkField('Positive temporal-artery biopsy or halo sign on temporal-artery ultrasound (+5)', 'gca-biopsy'));
     root.appendChild(checkField('Maximum ESR ≥ 50 mm/h or CRP ≥ 10 mg/L (+3)', 'gca-apr'));
@@ -160,7 +160,7 @@ export const renderers = {
 
   // ----- 2.4 palliative-prognostic-index --------------------------------
   'palliative-prognostic-index'(root) {
-    note(root, 'PPI (Morita 1999): survival band for terminally ill cancer patients from the Palliative Performance Scale, oral intake, edema, dyspnea at rest, and delirium, total 0–15. PPI > 6 → survival < 3 weeks; > 4 → < 6 weeks; ≤ 4 → > 6 weeks. Near-neighbors: ecog-karnofsky, palliative-prognostic-score.');
+    note(root, 'PPI (Morita 1999): survival band for terminally ill cancer patients from the Palliative Performance Scale, oral intake, edema, dyspnea at rest, and delirium, total 0–15. PPI > 6 → survival < 3 weeks; > 4 → < 6 weeks; ≤ 4 → > 6 weeks.');
     root.appendChild(pickField('Palliative Performance Scale (PPS)', 'ppi-pps', [
       { value: 'high', text: 'PPS ≥ 60 (0)' },
       { value: 'mid', text: 'PPS 30–50 (2.5)' },
@@ -192,7 +192,7 @@ export const renderers = {
 
   // ----- 2.5 palliative-prognostic-score --------------------------------
   'palliative-prognostic-score'(root) {
-    note(root, 'PaP (Pirovano/Maltoni 1999): 30-day-survival risk group from dyspnea, anorexia, Karnofsky status, the clinician’s prediction of survival in weeks, total WBC, and lymphocyte %, total 0–17.5. Group A (0–5.5) > 70%, B (5.6–11) 30–70%, C (11.1–17.5) < 30%. Near-neighbors: ecog-karnofsky, palliative-prognostic-index.');
+    note(root, 'PaP (Pirovano/Maltoni 1999): 30-day-survival risk group from dyspnea, anorexia, Karnofsky status, the clinician’s prediction of survival in weeks, total WBC, and lymphocyte %, total 0–17.5. Group A (0–5.5) > 70%, B (5.6–11) 30–70%, C (11.1–17.5) < 30%.');
     root.appendChild(checkField('Dyspnea (+1)', 'pap-dyspnea'));
     root.appendChild(checkField('Anorexia (+1.5)', 'pap-anorexia'));
     root.appendChild(pickField('Karnofsky Performance Status', 'pap-kps', [

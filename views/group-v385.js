@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'schwab-england'(root) {
-    note(root, 'Schwab & England ADL scale - a global 0-100% (10% steps) measure of functional independence, widely used in Parkinson disease. Pick the level. 100%: completely independent; 50%: needs help with half of chores; 0%: bedridden, vegetative functions failing. Near-neighbors: hoehn-yahr.');
+    note(root, 'Schwab & England ADL scale - a global 0-100% (10% steps) measure of functional independence, widely used in Parkinson disease. Pick the level. 100%: completely independent; 50%: needs help with half of chores; 0%: bedridden, vegetative functions failing.');
     root.appendChild(select('Schwab & England level', 'se-percent', [
       ['100', '100% - completely independent, normal'],
       ['90', '90% - independent, some slowness'],

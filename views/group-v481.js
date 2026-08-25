@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'wiltse-spondylolisthesis'(root) {
-    note(root, 'The Wiltse-Newman-Macnab classification of spondylolisthesis, by etiology (complements the Meyerding slip grade). Pick the type. I: dysplastic (congenital); II: isthmic (pars lesion; IIA lytic, IIB elongated, IIC acute fracture); III: degenerative; IV: traumatic; V: pathologic. A type VI (iatrogenic) was added later. Reports the type the clinician has determined, not a diagnosis or a treatment decision. Near-neighbor: meyerding-spondylolisthesis.');
+    note(root, 'The Wiltse-Newman-Macnab classification of spondylolisthesis, by etiology (complements the Meyerding slip grade). Pick the type. I: dysplastic (congenital); II: isthmic (pars lesion; IIA lytic, IIB elongated, IIC acute fracture); III: degenerative; IV: traumatic; V: pathologic. A type VI (iatrogenic) was added later. Reports the type the clinician has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('Wiltse type', 'wiltse-type', [
       ['I', 'I - dysplastic (congenital)'],
       ['II', 'II - isthmic (pars lesion)'],

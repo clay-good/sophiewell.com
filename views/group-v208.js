@@ -54,7 +54,7 @@ function wire(ids, run) {
 export const renderers = {
   // ----- 2.5 ponderal-index --------------------------------------------------
   'ponderal-index'(root) {
-    note(root, 'Neonatal Ponderal Index / Rohrer\'s index (Miller & Hassanein 1971): PI = [weight (g) / length (cm)³] × 100, the proportionality of weight to length at birth. Normal ≈ 2.0–3.0; < 2.0 signals disproportionate wasting (asymmetric IUGR); > 3.0 is heavy-for-length. Near-neighbors: peds-bmi-percentile, cdc-weight-for-age.');
+    note(root, 'Neonatal Ponderal Index / Rohrer\'s index (Miller & Hassanein 1971): PI = [weight (g) / length (cm)³] × 100, the proportionality of weight to length at birth. Normal ≈ 2.0–3.0; < 2.0 signals disproportionate wasting (asymmetric IUGR); > 3.0 is heavy-for-length.');
     root.appendChild(num('Birth weight (g)', 'pi-weight', { min: '0' }));
     root.appendChild(num('Crown-heel length (cm)', 'pi-length', { min: '0' }));
     const o = out(); root.appendChild(o);
@@ -70,7 +70,7 @@ export const renderers = {
 
   // ----- 2.4 sflt1-plgf ------------------------------------------------------
   'sflt1-plgf'(root) {
-    note(root, 'sFlt-1/PlGF ratio (Zeisler 2016 PROGNOSIS; Verlohren 2014 phase-specific): a Roche Elecsys biomarker for suspected preeclampsia. ≤ 38 rules PE out for the next week (NPV ≈ 99.3%); > 38 flags elevated risk; rule-in ≥ 85 (early < 34 wk) / ≥ 110 (late ≥ 34 wk). Near-neighbors: fullpiers, acog-severe-pre.');
+    note(root, 'sFlt-1/PlGF ratio (Zeisler 2016 PROGNOSIS; Verlohren 2014 phase-specific): a Roche Elecsys biomarker for suspected preeclampsia. ≤ 38 rules PE out for the next week (NPV ≈ 99.3%); > 38 flags elevated risk; rule-in ≥ 85 (early < 34 wk) / ≥ 110 (late ≥ 34 wk).');
     root.appendChild(num('sFlt-1/PlGF ratio', 'sflt-ratio', { min: '0' }));
     root.appendChild(selectField('Gestational phase', 'sflt-phase', [
       { value: 'early', text: 'Early-onset (< 34 weeks) — rule-in ≥ 85' },
@@ -89,7 +89,7 @@ export const renderers = {
 
   // ----- 2.2 glim-malnutrition -----------------------------------------------
   'glim-malnutrition'(root) {
-    note(root, 'GLIM criteria (Cederholm 2019): malnutrition requires ≥ 1 phenotypic AND ≥ 1 etiologic criterion after a positive screen. Severity is graded on the phenotypic criteria (Stage 1 moderate vs Stage 2 severe). Near-neighbors: must-nutrition, conut.');
+    note(root, 'GLIM criteria (Cederholm 2019): malnutrition requires ≥ 1 phenotypic AND ≥ 1 etiologic criterion after a positive screen. Severity is graded on the phenotypic criteria (Stage 1 moderate vs Stage 2 severe).');
     root.appendChild(selectField('Phenotypic — non-volitional weight loss', 'glim-wl', [
       { value: 'none', text: 'None' },
       { value: 'moderate', text: 'Moderate (5–10% within 6 mo, or 10–20% beyond)' },
@@ -116,7 +116,7 @@ export const renderers = {
 
   // ----- 2.1 sga-nutrition ---------------------------------------------------
   'sga-nutrition'(root) {
-    note(root, 'Subjective Global Assessment (Detsky 1987): the reference bedside malnutrition assessment, a structured clinician gestalt with no numeric score. Grade the five history features (weight change over 6 mo and the past 2 weeks, intake change, GI symptoms > 2 weeks, functional capacity, disease metabolic demand) and four exam features (subcutaneous-fat loss, muscle wasting, ankle/sacral edema, ascites) — weight loss > 10% ongoing, poor intake, and fat/muscle loss weigh heaviest — then select the overall rating. Near-neighbors: glim-malnutrition, must-nutrition, nrs2002.');
+    note(root, 'Subjective Global Assessment (Detsky 1987): the reference bedside malnutrition assessment, a structured clinician gestalt with no numeric score. Grade the five history features (weight change over 6 mo and the past 2 weeks, intake change, GI symptoms > 2 weeks, functional capacity, disease metabolic demand) and four exam features (subcutaneous-fat loss, muscle wasting, ankle/sacral edema, ascites) — weight loss > 10% ongoing, poor intake, and fat/muscle loss weigh heaviest — then select the overall rating.');
     root.appendChild(selectField('Overall SGA rating', 'sga-rating', [
       { value: 'A', text: 'A — well nourished' },
       { value: 'B', text: 'B — moderately or suspected malnourished' },

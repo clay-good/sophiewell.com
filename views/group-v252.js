@@ -44,7 +44,7 @@ function render(o, r, valueLabel) {
 
 export const renderers = {
   'insall-salvati-ratio'(root) {
-    note(root, 'Insall-Salvati ratio = patellar-tendon length / patellar-bone length. Normal 0.8-1.2; < 0.8 baja, > 1.2 alta. Near-neighbors: torg-pavlov-ratio.');
+    note(root, 'Insall-Salvati ratio = patellar-tendon length / patellar-bone length. Normal 0.8-1.2; < 0.8 baja, > 1.2 alta.');
     root.appendChild(numInput('Patellar-tendon length (mm)', 'is-tendon', { min: '0' }));
     root.appendChild(numInput('Patellar-bone length (mm)', 'is-patella', { min: '0' }));
     const o = out(); root.appendChild(o);
@@ -54,7 +54,7 @@ export const renderers = {
     postureNote(root);
   },
   'torg-pavlov-ratio'(root) {
-    note(root, 'Torg-Pavlov ratio = sagittal canal diameter / vertebral-body diameter (lateral C-spine). <= 0.8 developmental stenosis. Near-neighbors: meyerding-spondylolisthesis.');
+    note(root, 'Torg-Pavlov ratio = sagittal canal diameter / vertebral-body diameter (lateral C-spine). <= 0.8 developmental stenosis.');
     root.appendChild(numInput('Spinal-canal sagittal diameter (mm)', 'tp-canal', { min: '0' }));
     root.appendChild(numInput('Vertebral-body sagittal diameter (mm)', 'tp-body', { min: '0' }));
     const o = out(); root.appendChild(o);
@@ -64,7 +64,7 @@ export const renderers = {
     postureNote(root);
   },
   'meyerding-spondylolisthesis'(root) {
-    note(root, 'Meyerding grade: % anterior slip = displacement / caudal-endplate width x 100. I 1-25%, II 26-50%, III 51-75%, IV 76-100%, V > 100%. Near-neighbors: torg-pavlov-ratio.');
+    note(root, 'Meyerding grade: % anterior slip = displacement / caudal-endplate width x 100. I 1-25%, II 26-50%, III 51-75%, IV 76-100%, V > 100%.');
     root.appendChild(numInput('Anterior displacement (mm)', 'my-disp', { min: '0' }));
     root.appendChild(numInput('Caudal-endplate AP width (mm)', 'my-width', { min: '0' }));
     const o = out(); root.appendChild(o);
@@ -74,7 +74,7 @@ export const renderers = {
     postureNote(root);
   },
   'beighton-hypermobility'(root) {
-    note(root, 'Beighton score (1973): 9 manoeuvres, >= 5 in adults suggests generalized joint hypermobility. Near-neighbors: insall-salvati-ratio.');
+    note(root, 'Beighton score (1973): 9 manoeuvres, >= 5 in adults suggests generalized joint hypermobility.');
     const items = [['bg-f5r', 'finger5R', 'Right 5th finger dorsiflexes > 90 deg'], ['bg-f5l', 'finger5L', 'Left 5th finger dorsiflexes > 90 deg'], ['bg-thr', 'thumbR', 'Right thumb to forearm'], ['bg-thl', 'thumbL', 'Left thumb to forearm'], ['bg-elr', 'elbowR', 'Right elbow hyperextends > 10 deg'], ['bg-ell', 'elbowL', 'Left elbow hyperextends > 10 deg'], ['bg-knr', 'kneeR', 'Right knee hyperextends > 10 deg'], ['bg-knl', 'kneeL', 'Left knee hyperextends > 10 deg'], ['bg-palm', 'palms', 'Palms flat on floor, knees straight']];
     for (const [id, , label] of items) root.appendChild(check(label, id));
     const o = out(); root.appendChild(o);

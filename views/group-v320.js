@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'clavien-dindo'(root) {
-    note(root, 'Clavien-Dindo classification of surgical complications (Dindo 2004): graded by the therapy the complication required. Pick the grade. IIIb (reoperation under general anesthesia) and IV–V (life-threatening / death) mark the severe end. Near-neighbors: euroscore2.');
+    note(root, 'Clavien-Dindo classification of surgical complications (Dindo 2004): graded by the therapy the complication required. Pick the grade. IIIb (reoperation under general anesthesia) and IV–V (life-threatening / death) mark the severe end.');
     root.appendChild(select('Clavien-Dindo grade (therapy the complication required)', 'cd-grade', [
       ['I', 'I — no treatment beyond antiemetics, analgesics, electrolytes, physio (or bedside wound opening)'],
       ['II', 'II — pharmacological treatment beyond grade I (incl. transfusion, TPN)'],

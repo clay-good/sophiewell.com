@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'hattrup-johnson'(root) {
-    note(root, 'The Hattrup-Johnson classification of hallux rigidus (first metatarsophalangeal osteoarthritis), by radiographic osteophyte formation and joint-space change. Pick the grade. I: mild (dorsal osteophyte, preserved joint space); II: moderate (dorsal/medial/lateral osteophytes with narrowing and sclerosis); III: severe (marked osteophytes with joint-space loss and subchondral cysts). Reports the grade the clinician has determined, not a diagnosis or a treatment decision. Near-neighbor: hawkins-talar.');
+    note(root, 'The Hattrup-Johnson classification of hallux rigidus (first metatarsophalangeal osteoarthritis), by radiographic osteophyte formation and joint-space change. Pick the grade. I: mild (dorsal osteophyte, preserved joint space); II: moderate (dorsal/medial/lateral osteophytes with narrowing and sclerosis); III: severe (marked osteophytes with joint-space loss and subchondral cysts). Reports the grade the clinician has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('Hattrup-Johnson grade', 'hattrup-grade', [
       ['I', 'I - mild (preserved joint space)'],
       ['II', 'II - moderate (narrowing and sclerosis)'],

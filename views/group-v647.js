@@ -32,7 +32,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'schenck-knee'(root) {
-    note(root, 'Schenck classification (Schenck 1994; KD-V and C/N modifiers Wascher 1997): maps the torn ligaments to a KD grade. KD-I one cruciate; KD-II both cruciates (collaterals intact); KD-III both cruciates + one collateral (IIIM medial / IIIL lateral); KD-IV both cruciates + both collaterals; KD-V dislocation with a periarticular fracture. C = arterial injury, N = neurologic injury. Near-neighbors: schatzker-classification, tlics-score.');
+    note(root, 'Schenck classification (Schenck 1994; KD-V and C/N modifiers Wascher 1997): maps the torn ligaments to a KD grade. KD-I one cruciate; KD-II both cruciates (collaterals intact); KD-III both cruciates + one collateral (IIIM medial / IIIL lateral); KD-IV both cruciates + both collaterals; KD-V dislocation with a periarticular fracture. C = arterial injury, N = neurologic injury.');
     root.appendChild(checkField('ACL torn', 'sk-acl'));
     root.appendChild(checkField('PCL torn', 'sk-pcl'));
     root.appendChild(checkField('Medial side torn (MCL / posteromedial corner)', 'sk-medial'));

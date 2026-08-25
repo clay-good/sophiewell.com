@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'bi-rads'(root) {
-    note(root, 'ACR BI-RADS assessment categories (breast imaging, 5th ed). Pick the final assessment category. Categories 4–5 (suspicious to highly suggestive) warrant biopsy; 6 is known malignancy. Near-neighbors: acr-tirads.');
+    note(root, 'ACR BI-RADS assessment categories (breast imaging, 5th ed). Pick the final assessment category. Categories 4–5 (suspicious to highly suggestive) warrant biopsy; 6 is known malignancy.');
     root.appendChild(select('BI-RADS final assessment category', 'birads-cat', [
       ['0', '0 — incomplete; need more imaging or prior comparison'],
       ['1', '1 — negative (about 0%)'],

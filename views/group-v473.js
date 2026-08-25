@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'todani-choledochal'(root) {
-    note(root, 'The Todani classification of choledochal (congenital bile duct) cysts, by the location and shape of the cystic dilatation. Pick the type. I: extrahepatic fusiform/cystic dilatation (most common); II: a true extrahepatic diverticulum; III: choledochocele (intraduodenal segment); IV: multiple cysts (IVa intra- and extrahepatic, IVb extrahepatic only); V: Caroli disease (intrahepatic only). Reports the type the clinician has determined, not a diagnosis or a treatment decision. Near-neighbor: bismuth-corlette.');
+    note(root, 'The Todani classification of choledochal (congenital bile duct) cysts, by the location and shape of the cystic dilatation. Pick the type. I: extrahepatic fusiform/cystic dilatation (most common); II: a true extrahepatic diverticulum; III: choledochocele (intraduodenal segment); IV: multiple cysts (IVa intra- and extrahepatic, IVb extrahepatic only); V: Caroli disease (intrahepatic only). Reports the type the clinician has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('Todani type', 'todani-type', [
       ['I', 'I - extrahepatic fusiform/cystic dilatation (most common)'],
       ['II', 'II - true extrahepatic diverticulum'],

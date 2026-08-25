@@ -53,7 +53,7 @@ function render(o, r, valueLabel) {
 
 export const renderers = {
   'bonacini-cds'(root) {
-    note(root, 'Bonacini cirrhosis discriminant score (1997): platelets, ALT/AST ratio, and INR each binned to points (0-11). <= 3 unlikely, >= 8 cirrhosis likely. Near-neighbors: apri, fib4.');
+    note(root, 'Bonacini cirrhosis discriminant score (1997): platelets, ALT/AST ratio, and INR each binned to points (0-11). <= 3 unlikely, >= 8 cirrhosis likely.');
     root.appendChild(numInput('Platelet count (10^3/uL)', 'bon-plt', { min: '0' }));
     root.appendChild(numInput('ALT / AST ratio', 'bon-ratio', { min: '0' }));
     root.appendChild(numInput('INR', 'bon-inr', { min: '0' }));
@@ -64,7 +64,7 @@ export const renderers = {
     postureNote(root);
   },
   'guci'(root) {
-    note(root, 'GUCI (Islam 2005) = (AST / ULN) x INR x 100 / platelets (10^9/L). > 1.0 suggests cirrhosis. Near-neighbors: apri, fib4.');
+    note(root, 'GUCI (Islam 2005) = (AST / ULN) x INR x 100 / platelets (10^9/L). > 1.0 suggests cirrhosis.');
     root.appendChild(numInput('AST (U/L)', 'guci-ast', { min: '0' }));
     root.appendChild(numInput('AST upper limit of normal (U/L)', 'guci-uln', { min: '0' }));
     root.appendChild(numInput('INR', 'guci-inr', { min: '0' }));
@@ -76,7 +76,7 @@ export const renderers = {
     postureNote(root);
   },
   'mannheim-peritonitis-index'(root) {
-    note(root, 'Mannheim Peritonitis Index (1987): weighted intraoperative factors, 0-47. > 26 marks high mortality risk. Near-neighbors: apache2.');
+    note(root, 'Mannheim Peritonitis Index (1987): weighted intraoperative factors, 0-47. > 26 marks high mortality risk.');
     root.appendChild(check('Age > 50 years (5)', 'mpi-age'));
     root.appendChild(check('Female sex (5)', 'mpi-female'));
     root.appendChild(check('Organ failure (7)', 'mpi-organ'));
@@ -92,7 +92,7 @@ export const renderers = {
     postureNote(root);
   },
   'boey-score'(root) {
-    note(root, 'Boey score (1987): preoperative shock, perforation > 24 h, significant comorbidity, each 1 point (0-3). Near-neighbors: mannheim-peritonitis-index.');
+    note(root, 'Boey score (1987): preoperative shock, perforation > 24 h, significant comorbidity, each 1 point (0-3).');
     root.appendChild(check('Preoperative shock (SBP < 100 mmHg)', 'boey-shock'));
     root.appendChild(check('Perforation present > 24 h', 'boey-delay'));
     root.appendChild(check('Significant medical comorbidity', 'boey-comorb'));

@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'ahlback-knee-oa'(root) {
-    note(root, 'The Ahlback classification of knee osteoarthritis, by radiographic joint-space loss and bone attrition. Pick the grade. I: joint-space narrowing; II: joint-space obliteration (bone-to-bone); III: minor bone attrition (0-5 mm); IV: moderate bone attrition (5-10 mm); V: severe bone attrition (>10 mm), often with subluxation. Reports the grade the clinician has determined, not a diagnosis or a treatment decision. Near-neighbor: kellgren-lawrence.');
+    note(root, 'The Ahlback classification of knee osteoarthritis, by radiographic joint-space loss and bone attrition. Pick the grade. I: joint-space narrowing; II: joint-space obliteration (bone-to-bone); III: minor bone attrition (0-5 mm); IV: moderate bone attrition (5-10 mm); V: severe bone attrition (>10 mm), often with subluxation. Reports the grade the clinician has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('Ahlback grade', 'ahlback-grade', [
       ['I', 'I - joint-space narrowing'],
       ['II', 'II - joint-space obliteration (bone-to-bone)'],

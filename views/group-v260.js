@@ -35,7 +35,7 @@ function render(o, r, valueLabel) {
 
 export const renderers = {
   'a-drop'(root) {
-    note(root, 'A-DROP (Japanese Respiratory Society) CAP severity, 1 point each. Bands: 0 mild, 1-2 moderate, 3 severe, 4-5 extremely severe. Near-neighbors: curb-65, psi, smart-cop.');
+    note(root, 'A-DROP (Japanese Respiratory Society) CAP severity, 1 point each. Bands: 0 mild, 1-2 moderate, 3 severe, 4-5 extremely severe.');
     root.appendChild(check('A — Age (male >= 70 or female >= 75)', 'ad-age'));
     root.appendChild(check('D — Dehydration (BUN >= 21 mg/dL / 7.5 mmol/L)', 'ad-dehyd'));
     root.appendChild(check('R — Respiratory failure (SpO2 <= 90% or PaO2 <= 60 mmHg)', 'ad-resp'));
@@ -51,7 +51,7 @@ export const renderers = {
     postureNote(root);
   },
   'drip-score'(root) {
-    note(root, 'DRIP (Drug Resistance in Pneumonia): major criteria +2, minor +1. >= 4 favors broad-spectrum empiric coverage. Near-neighbors: shorr, a-drop, curb-65.');
+    note(root, 'DRIP (Drug Resistance in Pneumonia): major criteria +2, minor +1. >= 4 favors broad-spectrum empiric coverage.');
     note(root, 'Major criteria (+2 each):');
     root.appendChild(check('Antibiotic use within 60 days', 'dr-abx'));
     root.appendChild(check('Long-term-care residence', 'dr-ltc'));
@@ -75,7 +75,7 @@ export const renderers = {
     postureNote(root);
   },
   'shorr'(root) {
-    note(root, 'Shorr MRSA-pneumonia risk: +2 items and +1 items. Bands: low 0-1 (MRSA < 10%), medium 2-5, high >= 6 (MRSA > 30%). Near-neighbors: drip-score, a-drop.');
+    note(root, 'Shorr MRSA-pneumonia risk: +2 items and +1 items. Bands: low 0-1 (MRSA < 10%), medium 2-5, high >= 6 (MRSA > 30%).');
     root.appendChild(check('Recent hospitalization (+2)', 'sh-hosp'));
     root.appendChild(check('ICU admission at presentation (+2)', 'sh-icu'));
     root.appendChild(check('Age < 30 or > 79 (+1)', 'sh-age'));

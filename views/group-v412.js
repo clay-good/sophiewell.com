@@ -35,7 +35,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'lisfranc-myerson'(root) {
-    note(root, 'Myerson classification of a Lisfranc (tarsometatarsal) injury, by the pattern and direction of the tarsometatarsal incongruity. Pick the type. A: total incongruity (all five metatarsals, same direction); B1: partial, medial (first metatarsal); B2: partial, lateral (one or more of the lateral four); C1: divergent, partial; C2: divergent, total. Near-neighbors: hawkins-talar, sanders-calcaneal, lauge-hansen.');
+    note(root, 'Myerson classification of a Lisfranc (tarsometatarsal) injury, by the pattern and direction of the tarsometatarsal incongruity. Pick the type. A: total incongruity (all five metatarsals, same direction); B1: partial, medial (first metatarsal); B2: partial, lateral (one or more of the lateral four); C1: divergent, partial; C2: divergent, total.');
     root.appendChild(select('Myerson type', 'lf-type', [
       ['A', 'Type A - total incongruity (all five, same direction)'],
       ['B1', 'Type B1 - partial, medial (first metatarsal)'],

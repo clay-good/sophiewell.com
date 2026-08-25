@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'hinchey'(root) {
-    note(root, 'Original Hinchey classification of perforated diverticulitis (Hinchey 1978). Pick the stage from the operative/CT findings. Stages I–II are abscesses (often antibiotics ± drainage); III–IV are generalized peritonitis (generally emergent surgery). Near-neighbors: mannheim-peritonitis-index.');
+    note(root, 'Original Hinchey classification of perforated diverticulitis (Hinchey 1978). Pick the stage from the operative/CT findings. Stages I–II are abscesses (often antibiotics ± drainage); III–IV are generalized peritonitis (generally emergent surgery).');
     root.appendChild(select('Hinchey stage (operative / CT findings)', 'hinchey-stage', [
       ['I', 'I — localized pericolic/mesocolic abscess or phlegmon'],
       ['II', 'II — pelvic, distant intra-abdominal, or retroperitoneal abscess'],

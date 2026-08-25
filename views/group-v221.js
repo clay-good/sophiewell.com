@@ -53,7 +53,7 @@ function render(o, r, valueLabel, value) {
 
 export const renderers = {
   'simplified-revised-geneva'(root) {
-    note(root, 'Simplified Revised Geneva (Klok 2008): age > 65, previous DVT/PE, surgery/fracture, malignancy, limb pain, hemoptysis, palpation pain + edema, HR band (0-8). Unlikely 0-2, likely >= 3. Near-neighbors: wells-pe-geneva, geneva-original.');
+    note(root, 'Simplified Revised Geneva (Klok 2008): age > 65, previous DVT/PE, surgery/fracture, malignancy, limb pain, hemoptysis, palpation pain + edema, HR band (0-8). Unlikely 0-2, likely >= 3.');
     root.appendChild(num('Heart rate (bpm)', 'sg-hr', { min: '0' }));
     const items = [['sg-age', 'ageOver65', 'Age > 65 (+1)'], ['sg-vte', 'priorVte', 'Previous DVT/PE (+1)'], ['sg-surg', 'surgeryFracture', 'Surgery or fracture <= 1 month (+1)'], ['sg-malig', 'malignancy', 'Active malignancy (+1)'], ['sg-limb', 'limbPain', 'Unilateral lower-limb pain (+1)'], ['sg-hemo', 'hemoptysis', 'Hemoptysis (+1)'], ['sg-palp', 'palpationEdema', 'Pain on deep venous palpation + unilateral edema (+1)']];
     for (const [id, , label] of items) root.appendChild(check(label, id));
@@ -65,7 +65,7 @@ export const renderers = {
     postureNote(root);
   },
   'scap-score'(root) {
-    note(root, 'SCAP / España (España 2006): major pH < 7.30 (13), SBP < 90 (11); minor RR > 30 (9), hypoxemia (6), BUN > 30 (5), AMS (5), age >= 80 (5), multilobar (5). >= 10 high risk. Near-neighbors: psi, curb-65.');
+    note(root, 'SCAP / España (España 2006): major pH < 7.30 (13), SBP < 90 (11); minor RR > 30 (9), hypoxemia (6), BUN > 30 (5), AMS (5), age >= 80 (5), multilobar (5). >= 10 high risk.');
     const items = [['scap-ph', 'phLow', 'Arterial pH < 7.30 (+13)'], ['scap-sbp', 'sbpLow', 'Systolic BP < 90 mmHg (+11)'], ['scap-rr', 'rrHigh', 'Respiratory rate > 30 (+9)'], ['scap-o2', 'hypoxemia', 'PaO2 < 54 or PaO2/FiO2 < 250 (+6)'], ['scap-bun', 'bunHigh', 'BUN > 30 mg/dL (+5)'], ['scap-ams', 'ams', 'Altered mental status (+5)'], ['scap-age', 'ageOld', 'Age >= 80 (+5)'], ['scap-multi', 'multilobar', 'Multilobar / bilateral infiltrate (+5)']];
     for (const [id, , label] of items) root.appendChild(check(label, id));
     const o = out(); root.appendChild(o);
@@ -76,7 +76,7 @@ export const renderers = {
     postureNote(root);
   },
   'corb-score'(root) {
-    note(root, 'CORB (Buising 2007): Confusion, Oxygen saturation <= 90%, Respiratory rate >= 30, Blood pressure (SBP < 90 or DBP <= 60) (0-4). >= 2 severe. Near-neighbors: curb-65, crb-65.');
+    note(root, 'CORB (Buising 2007): Confusion, Oxygen saturation <= 90%, Respiratory rate >= 30, Blood pressure (SBP < 90 or DBP <= 60) (0-4). >= 2 severe.');
     const items = [['corb-conf', 'confusion', 'Acute confusion (+1)'], ['corb-o2', 'oxygen', 'Oxygen saturation <= 90% (+1)'], ['corb-rr', 'respRate', 'Respiratory rate >= 30 (+1)'], ['corb-bp', 'bp', 'Systolic BP < 90 or diastolic <= 60 (+1)']];
     for (const [id, , label] of items) root.appendChild(check(label, id));
     const o = out(); root.appendChild(o);
@@ -87,7 +87,7 @@ export const renderers = {
     postureNote(root);
   },
   'resp-score'(root) {
-    note(root, 'RESP score (Schmidt 2014): age band, immunocompromise, pre-ECMO ventilation, diagnosis, and acute modifiers → predicted respiratory-ECMO survival (class I-V). Near-neighbors: murray-lung-injury, pf-ratio.');
+    note(root, 'RESP score (Schmidt 2014): age band, immunocompromise, pre-ECMO ventilation, diagnosis, and acute modifiers → predicted respiratory-ECMO survival (class I-V).');
     root.appendChild(select('Age', 'resp-age', [['0', '18-49 (0)'], ['-2', '50-59 (-2)'], ['-3', '>= 60 (-3)']]));
     root.appendChild(select('Mechanical ventilation before ECMO', 'resp-mv', [['3', '< 48 hours (+3)'], ['1', '48 hours - 7 days (+1)'], ['0', '> 7 days (0)']]));
     root.appendChild(select('Acute respiratory diagnosis', 'resp-dx', [['3', 'Viral pneumonia (+3)'], ['3', 'Bacterial pneumonia (+3)'], ['11', 'Asthma (+11)'], ['3', 'Trauma / burn (+3)'], ['5', 'Aspiration pneumonitis (+5)'], ['1', 'Other acute respiratory (+1)'], ['0', 'Non-respiratory / chronic (0)']]));
@@ -102,7 +102,7 @@ export const renderers = {
     postureNote(root);
   },
   'ild-gap'(root) {
-    note(root, 'ILD-GAP (Ryerson 2014): ILD subtype, sex, age band, FVC %pred, DLCO band → stage I-IV mortality. Near-neighbors: gap-ipf, du-bois-ipf.');
+    note(root, 'ILD-GAP (Ryerson 2014): ILD subtype, sex, age band, FVC %pred, DLCO band → stage I-IV mortality.');
     root.appendChild(select('ILD subtype', 'ild-sub', [['0', 'IPF / unclassifiable (0)'], ['-2', 'CTD-ILD / idiopathic NSIP / chronic HP (-2)']]));
     root.appendChild(select('Age band', 'ild-age', [['0', '<= 60 (0)'], ['1', '61-65 (+1)'], ['2', '> 65 (+2)']]));
     root.appendChild(num('FVC % predicted', 'ild-fvc', { min: '0' }));
@@ -116,7 +116,7 @@ export const renderers = {
     postureNote(root);
   },
   'du-bois-ipf'(root) {
-    note(root, 'du Bois IPF score (du Bois 2011): age, respiratory hospitalization, baseline FVC %pred, and 24-week FVC change → 1-year mortality (0-61). Near-neighbors: gap-ipf, ild-gap.');
+    note(root, 'du Bois IPF score (du Bois 2011): age, respiratory hospitalization, baseline FVC %pred, and 24-week FVC change → 1-year mortality (0-61).');
     root.appendChild(num('Age (years)', 'db-age', { min: '0' }));
     root.appendChild(num('Baseline FVC % predicted', 'db-fvc', { min: '0' }));
     root.appendChild(num('24-week change in FVC % predicted (signed)', 'db-dfvc', { step: 'any' }));
@@ -129,7 +129,7 @@ export const renderers = {
     postureNote(root);
   },
   'pneumothorax-volume'(root) {
-    note(root, 'Pneumothorax size (Collins 1995): % = 4.2 + 4.7 × (A + B + C), where A, B, C are interpleural distances (cm) at apex, mid-upper, and mid-lower lung. Near-neighbors: light-criteria, driving-pressure.');
+    note(root, 'Pneumothorax size (Collins 1995): % = 4.2 + 4.7 × (A + B + C), where A, B, C are interpleural distances (cm) at apex, mid-upper, and mid-lower lung.');
     root.appendChild(num('Apex interpleural distance (cm)', 'ptx-a', { min: '0' }));
     root.appendChild(num('Mid-upper interpleural distance (cm)', 'ptx-b', { min: '0' }));
     root.appendChild(num('Mid-lower interpleural distance (cm)', 'ptx-c', { min: '0' }));

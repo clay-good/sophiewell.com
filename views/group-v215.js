@@ -54,7 +54,7 @@ function render(o, r, valueLabel) {
 
 export const renderers = {
   'dlcn-fh-score'(root) {
-    note(root, 'Dutch Lipid Clinic Network score (Nordestgaard 2013): family history, clinical history, physical exam, untreated LDL-C band, and DNA mutation. > 8 definite, 6-8 probable, 3-5 possible FH. Near-neighbors: simon-broome-fh, ldl-calc.');
+    note(root, 'Dutch Lipid Clinic Network score (Nordestgaard 2013): family history, clinical history, physical exam, untreated LDL-C band, and DNA mutation. > 8 definite, 6-8 probable, 3-5 possible FH.');
     root.appendChild(select('Family history', 'dlcn-fam', [['0', 'None (0)'], ['1', '1st-degree relative with premature CHD/vascular OR LDL > 95th pct (1)'], ['2', 'Relative with tendon xanthoma/arcus OR child < 18 y LDL > 95th pct (2)']]));
     root.appendChild(select('Personal clinical history', 'dlcn-clin', [['0', 'None (0)'], ['1', 'Premature cerebral / peripheral vascular disease (1)'], ['2', 'Premature coronary heart disease (2)']]));
     root.appendChild(select('Physical examination', 'dlcn-exam', [['0', 'None (0)'], ['4', 'Corneal arcus before age 45 (4)'], ['6', 'Tendon xanthoma (6)']]));
@@ -67,7 +67,7 @@ export const renderers = {
     postureNote(root);
   },
   'simon-broome-fh'(root) {
-    note(root, 'Simon Broome criteria (1991): a cholesterol criterion (adult TC > 7.5 or LDL > 4.9; child TC > 6.7 or LDL > 4.0 mmol/L) plus tendon xanthoma / DNA mutation (definite) or family history of premature MI / raised cholesterol (possible). Near-neighbors: dlcn-fh-score, ldl-calc.');
+    note(root, 'Simon Broome criteria (1991): a cholesterol criterion (adult TC > 7.5 or LDL > 4.9; child TC > 6.7 or LDL > 4.0 mmol/L) plus tendon xanthoma / DNA mutation (definite) or family history of premature MI / raised cholesterol (possible).');
     root.appendChild(num('Total cholesterol (mmol/L)', 'sb-tc', { min: '0' }));
     root.appendChild(num('LDL-C (mmol/L)', 'sb-ldl', { min: '0' }));
     root.appendChild(check('Child (< 16 years) thresholds', 'sb-child'));
@@ -82,7 +82,7 @@ export const renderers = {
     postureNote(root);
   },
   'padit-score'(root) {
-    note(root, 'PADIT score (Birnie 2019): prior procedures, age band, eGFR < 30, immunocompromised, procedure type. Low 0-4, intermediate 5-6, high >= 7 for CIED infection. Near-neighbors: nnis, sofa.');
+    note(root, 'PADIT score (Birnie 2019): prior procedures, age band, eGFR < 30, immunocompromised, procedure type. Low 0-4, intermediate 5-6, high >= 7 for CIED infection.');
     root.appendChild(select('Prior CIED procedures', 'padit-prior', [['0', 'None (0)'], ['1', '1 prior (1)'], ['4', '>= 2 prior (4)']]));
     root.appendChild(num('Age (years)', 'padit-age', { min: '0' }));
     root.appendChild(select('Procedure type', 'padit-type', [['0', 'Generator change / de novo pacemaker (0)'], ['2', 'ICD (2)'], ['4', 'CRT (4)'], ['5', 'Revision / upgrade (5)']]));
@@ -95,7 +95,7 @@ export const renderers = {
     postureNote(root);
   },
   'grim-score'(root) {
-    note(root, 'GRIm-Score (Bigot 2017): one point each for LDH > ULN, albumin < 3.5 g/dL, NLR > 6. Low 0-1, high 2-3 predicts worse survival on immunotherapy. Near-neighbors: lipi, nlr.');
+    note(root, 'GRIm-Score (Bigot 2017): one point each for LDH > ULN, albumin < 3.5 g/dL, NLR > 6. Low 0-1, high 2-3 predicts worse survival on immunotherapy.');
     root.appendChild(num('Serum albumin (g/dL)', 'grim-alb', { min: '0' }));
     root.appendChild(num('Neutrophil-to-lymphocyte ratio', 'grim-nlr', { min: '0' }));
     root.appendChild(check('LDH above upper limit of normal (+1)', 'grim-ldh'));
@@ -106,7 +106,7 @@ export const renderers = {
     postureNote(root);
   },
   'lipi'(root) {
-    note(root, 'Lung Immune Prognostic Index (Mezquita 2018): dNLR = ANC / (WBC - ANC); one point each for dNLR > 3 and LDH > ULN. Good 0, intermediate 1, poor 2. Near-neighbors: grim-score, nlr.');
+    note(root, 'Lung Immune Prognostic Index (Mezquita 2018): dNLR = ANC / (WBC - ANC); one point each for dNLR > 3 and LDH > ULN. Good 0, intermediate 1, poor 2.');
     root.appendChild(num('Absolute neutrophil count (×10⁹/L)', 'lipi-anc', { min: '0' }));
     root.appendChild(num('Total WBC (×10⁹/L)', 'lipi-wbc', { min: '0' }));
     root.appendChild(check('LDH above upper limit of normal (+1)', 'lipi-ldh'));
@@ -117,7 +117,7 @@ export const renderers = {
     postureNote(root);
   },
   'onkotev-score'(root) {
-    note(root, 'ONKOTEV score (Cella 2017): one point each for Khorana > 2, metastatic disease, macroscopic vascular/lymphatic compression, previous VTE. Low 0, intermediate 1, high >= 2. Near-neighbors: khorana, protecht-score.');
+    note(root, 'ONKOTEV score (Cella 2017): one point each for Khorana > 2, metastatic disease, macroscopic vascular/lymphatic compression, previous VTE. Low 0, intermediate 1, high >= 2.');
     root.appendChild(check('Khorana score > 2 (+1)', 'onk-khorana'));
     root.appendChild(check('Metastatic disease (+1)', 'onk-mets'));
     root.appendChild(check('Macroscopic vascular or lymphatic compression (+1)', 'onk-comp'));
@@ -129,7 +129,7 @@ export const renderers = {
     postureNote(root);
   },
   'protecht-score'(root) {
-    note(root, 'PROTECHT score (Verso 2012): Khorana base (cancer site, platelets >= 350, Hb < 10/ESA, WBC > 11, BMI >= 35) plus platinum and gemcitabine chemotherapy. High risk >= 3. Near-neighbors: khorana, onkotev-score.');
+    note(root, 'PROTECHT score (Verso 2012): Khorana base (cancer site, platelets >= 350, Hb < 10/ESA, WBC > 11, BMI >= 35) plus platinum and gemcitabine chemotherapy. High risk >= 3.');
     root.appendChild(select('Cancer site', 'prot-site', [['0', 'Other (0)'], ['1', 'High risk: lung, lymphoma, gynecologic, bladder, testicular (1)'], ['2', 'Very high risk: stomach, pancreas (2)']]));
     root.appendChild(check('Platelet count >= 350 ×10⁹/L (+1)', 'prot-plt'));
     root.appendChild(check('Hemoglobin < 10 g/dL or ESA use (+1)', 'prot-hb'));

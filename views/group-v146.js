@@ -53,7 +53,7 @@ function pickField(label, id, options) {
 export const renderers = {
   // ----- 2.1 sins-score -------------------------------------------------
   'sins-score'(root) {
-    note(root, 'SINS (Fisher 2010): oncologic spinal instability from six radiographic/clinical components, total 0–18. 0–6 stable, 7–12 indeterminate, 13–18 unstable; 7–18 warrants a surgical/spine-oncology consult. Near-neighbors: ich-score, nihss.');
+    note(root, 'SINS (Fisher 2010): oncologic spinal instability from six radiographic/clinical components, total 0–18. 0–6 stable, 7–12 indeterminate, 13–18 unstable; 7–18 warrants a surgical/spine-oncology consult.');
     root.appendChild(pickField('Spinal location', 'sins-loc', [
       { value: 'junctional', text: 'Junctional — occiput–C2, C7–T2, T11–L1, L5–S1 (3)' },
       { value: 'mobile', text: 'Mobile spine — C3–C6, L2–L4 (2)' },
@@ -156,7 +156,7 @@ export const renderers = {
 
   // ----- 2.3 tomita-score -----------------------------------------------
   'tomita-score'(root) {
-    note(root, 'Tomita (Tomita 2001): surgical-strategy score for spinal metastases from three factors, total 2–10. 2–3 wide/marginal excision, 4–5 marginal/intralesional, 6–7 palliative surgery, 8–10 supportive/terminal care. Near-neighbor: tokuhashi-revised.');
+    note(root, 'Tomita (Tomita 2001): surgical-strategy score for spinal metastases from three factors, total 2–10. 2–3 wide/marginal excision, 4–5 marginal/intralesional, 6–7 palliative surgery, 8–10 supportive/terminal care.');
     root.appendChild(pickField('Primary tumor', 'tom-primary', [
       { value: 'slow', text: 'Slow growth — e.g. breast, thyroid, prostate (1)' },
       { value: 'moderate', text: 'Moderate growth — e.g. kidney, uterus (2)' },
@@ -189,7 +189,7 @@ export const renderers = {
 
   // ----- 2.4 tlics-score ------------------------------------------------
   'tlics-score'(root) {
-    note(root, 'TLICS (Vaccaro 2005): thoracolumbar (T1–L5) injury triage from morphology + neurology + posterior-ligamentous-complex integrity, total 0–10. ≤ 3 nonoperative, 4 indeterminate, ≥ 5 operative. Incomplete cord (3) scores higher than complete (2) by design. Near-neighbor: slic-score.');
+    note(root, 'TLICS (Vaccaro 2005): thoracolumbar (T1–L5) injury triage from morphology + neurology + posterior-ligamentous-complex integrity, total 0–10. ≤ 3 nonoperative, 4 indeterminate, ≥ 5 operative. Incomplete cord (3) scores higher than complete (2) by design.');
     root.appendChild(pickField('Injury morphology', 'tlics-morph', [
       { value: 'compression', text: 'Compression (1)' },
       { value: 'burst', text: 'Burst (2)' },
@@ -226,7 +226,7 @@ export const renderers = {
 
   // ----- 2.5 slic-score -------------------------------------------------
   'slic-score'(root) {
-    note(root, 'SLIC (Vaccaro 2007): subaxial cervical (C3–C7) injury triage from morphology + disco-ligamentous complex + neurology, total 0–10, plus a +1 modifier for continuous cord compression with deficit. ≤ 3 nonoperative, 4 indeterminate, ≥ 5 operative. Near-neighbor: tlics-score.');
+    note(root, 'SLIC (Vaccaro 2007): subaxial cervical (C3–C7) injury triage from morphology + disco-ligamentous complex + neurology, total 0–10, plus a +1 modifier for continuous cord compression with deficit. ≤ 3 nonoperative, 4 indeterminate, ≥ 5 operative.');
     root.appendChild(pickField('Injury morphology', 'slic-morph', [
       { value: 'none', text: 'No abnormality (0)' },
       { value: 'compression', text: 'Compression (1)' },

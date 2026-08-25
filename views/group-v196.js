@@ -59,7 +59,7 @@ const SEX_OPTS = [{ value: 'female', text: 'Female' }, { value: 'male', text: 'M
 export const renderers = {
   // ----- 2.1 abic-score ------------------------------------------------------
   'abic-score'(root) {
-    note(root, 'ABIC score for alcoholic hepatitis (Dominguez 2008): 0.1×age + 0.08×bilirubin + 0.3×creatinine + 0.8×INR. 90-day survival: < 6.71 ~100%, 6.71–< 9.0 ~70%, ≥ 9.0 ~25%. Near-neighbors: maddrey-lille, gahs, meld-na.');
+    note(root, 'ABIC score for alcoholic hepatitis (Dominguez 2008): 0.1×age + 0.08×bilirubin + 0.3×creatinine + 0.8×INR. 90-day survival: < 6.71 ~100%, 6.71–< 9.0 ~70%, ≥ 9.0 ~25%.');
     root.appendChild(num('Age (years)', 'abic-age'));
     root.appendChild(num('Serum bilirubin (mg/dL)', 'abic-bili'));
     root.appendChild(num('Serum creatinine (mg/dL)', 'abic-creat'));
@@ -76,7 +76,7 @@ export const renderers = {
 
   // ----- 2.2 globe-score -----------------------------------------------------
   'globe-score'(root) {
-    note(root, 'GLOBE score for PBC on UDCA (Lammers 2015): from age and 1-year bilirubin (×ULN), ALP (×ULN), albumin (×LLN), platelets (×10⁹/L). A score > 0.30 marks a non-responder. Near-neighbors: uk-pbc-risk, albi-grade.');
+    note(root, 'GLOBE score for PBC on UDCA (Lammers 2015): from age and 1-year bilirubin (×ULN), ALP (×ULN), albumin (×LLN), platelets (×10⁹/L). A score > 0.30 marks a non-responder.');
     root.appendChild(num('Age (years)', 'globe-age'));
     root.appendChild(num('Bilirubin (× ULN)', 'globe-bili'));
     root.appendChild(num('Alkaline phosphatase (× ULN)', 'globe-alp'));
@@ -94,7 +94,7 @@ export const renderers = {
 
   // ----- 2.3 uk-pbc-risk -----------------------------------------------------
   'uk-pbc-risk'(root) {
-    note(root, 'UK-PBC risk score (Carbone 2016): from ALP, transaminase, bilirubin (each ×ULN at 12 mo) plus baseline albumin and platelets (×LLN), predicts 5/10/15-year risk of end-stage liver disease. Near-neighbors: globe-score.');
+    note(root, 'UK-PBC risk score (Carbone 2016): from ALP, transaminase, bilirubin (each ×ULN at 12 mo) plus baseline albumin and platelets (×LLN), predicts 5/10/15-year risk of end-stage liver disease.');
     root.appendChild(num('Alkaline phosphatase (× ULN, 12 mo)', 'ukpbc-alp'));
     root.appendChild(num('Transaminase ALT or AST (× ULN, 12 mo)', 'ukpbc-trans'));
     root.appendChild(num('Bilirubin (× ULN, 12 mo)', 'ukpbc-bili'));
@@ -112,7 +112,7 @@ export const renderers = {
 
   // ----- 2.4 page-b ----------------------------------------------------------
   'page-b'(root) {
-    note(root, 'PAGE-B score for HCC risk in treated chronic hepatitis B (Papatheodoridis 2016): age, sex, and platelets → ≤ 9 low, 10–17 intermediate, ≥ 18 high (5-year HCC risk). Near-neighbors: bclc-hcc.');
+    note(root, 'PAGE-B score for HCC risk in treated chronic hepatitis B (Papatheodoridis 2016): age, sex, and platelets → ≤ 9 low, 10–17 intermediate, ≥ 18 high (5-year HCC risk).');
     root.appendChild(num('Age (years)', 'pageb-age'));
     root.appendChild(pickField('Sex', 'pageb-sex', SEX_OPTS));
     root.appendChild(num('Platelet count (× 10⁹/L)', 'pageb-plt'));
@@ -128,7 +128,7 @@ export const renderers = {
 
   // ----- 2.5 mayo-psc-risk ---------------------------------------------------
   'mayo-psc-risk'(root) {
-    note(root, 'Revised Mayo PSC natural-history model (Kim 2000): R = 0.03×age + 0.54×ln(bilirubin) + 0.54×ln(AST) + 1.24×(variceal bleed) − 0.84×albumin. Higher = worse. Near-neighbors: meld-na, kings-college.');
+    note(root, 'Revised Mayo PSC natural-history model (Kim 2000): R = 0.03×age + 0.54×ln(bilirubin) + 0.54×ln(AST) + 1.24×(variceal bleed) − 0.84×albumin. Higher = worse.');
     root.appendChild(num('Age (years)', 'mayopsc-age'));
     root.appendChild(num('Bilirubin (mg/dL)', 'mayopsc-bili'));
     root.appendChild(num('Albumin (g/dL)', 'mayopsc-alb'));

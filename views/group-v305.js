@@ -42,7 +42,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'crs-grade'(root) {
-    note(root, 'Cytokine release syndrome (CRS) grading — the ASTCT consensus (Lee 2019) after immune-effector-cell / CAR-T therapy. Mark the fever and pick the hypotension and hypoxia levels; the grade is the more severe of the two axes. Grades ≥3 are severe. Near-neighbors: vasopressor, mascc.');
+    note(root, 'Cytokine release syndrome (CRS) grading — the ASTCT consensus (Lee 2019) after immune-effector-cell / CAR-T therapy. Mark the fever and pick the hypotension and hypoxia levels; the grade is the more severe of the two axes. Grades ≥3 are severe.');
     root.appendChild(check('Fever ≥38°C, not otherwise explained', 'crs-fever'));
     root.appendChild(select('Hypotension', 'crs-hypotension', [
       ['none', 'None'],

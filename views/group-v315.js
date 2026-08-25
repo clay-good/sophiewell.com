@@ -49,7 +49,7 @@ const IDS = [
 
 export const renderers = {
   'jones-criteria'(root) {
-    note(root, '2015 revised Jones criteria (AHA) for acute rheumatic fever. Choose the population risk tier and episode, mark evidence of preceding group A strep, and check the manifestations present. Diagnosis: 2 major, or 1 major + 2 minor (recurrent also allows 3 minor). Near-neighbors: duke-endocarditis.');
+    note(root, '2015 revised Jones criteria (AHA) for acute rheumatic fever. Choose the population risk tier and episode, mark evidence of preceding group A strep, and check the manifestations present. Diagnosis: 2 major, or 1 major + 2 minor (recurrent also allows 3 minor).');
     root.appendChild(select('Population risk tier', 'jones-risk', [
       ['low', 'Low-risk population (ARF ≤2/100,000 school-age; RHD ≤1/1000)'],
       ['modhigh', 'Moderate/high-risk population'],

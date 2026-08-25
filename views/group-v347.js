@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'herring-pillar'(root) {
-    note(root, 'Herring lateral pillar classification (Herring 1992; B/C border added 2004) of Legg-Calve-Perthes disease — the height of the lateral pillar of the femoral head at fragmentation. Pick the group. A pillar not involved (best prognosis); B pillar > 50% of original height; B/C border narrow or poorly ossified at about 50%; C pillar < 50% (poorest prognosis). Prognosis also depends strongly on the age at onset. Near-neighbors: catterall-perthes, ficat-arlet.');
+    note(root, 'Herring lateral pillar classification (Herring 1992; B/C border added 2004) of Legg-Calve-Perthes disease — the height of the lateral pillar of the femoral head at fragmentation. Pick the group. A pillar not involved (best prognosis); B pillar > 50% of original height; B/C border narrow or poorly ossified at about 50%; C pillar < 50% (poorest prognosis). Prognosis also depends strongly on the age at onset.');
     root.appendChild(select('Herring group', 'herring-group', [
       ['A', 'A — lateral pillar not involved (best prognosis)'],
       ['B', 'B — lateral pillar > 50% of original height'],

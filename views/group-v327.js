@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'li-rads'(root) {
-    note(root, 'ACR LI-RADS v2018 CT/MRI diagnostic categories (liver observations in patients at risk for HCC). Pick the assigned category. LR-1/2 are benign; LR-3 intermediate; LR-4/5 probable/definite HCC; LR-M non-HCC malignancy; LR-TIV tumor in vein. Near-neighbors: bclc-hcc.');
+    note(root, 'ACR LI-RADS v2018 CT/MRI diagnostic categories (liver observations in patients at risk for HCC). Pick the assigned category. LR-1/2 are benign; LR-3 intermediate; LR-4/5 probable/definite HCC; LR-M non-HCC malignancy; LR-TIV tumor in vein.');
     root.appendChild(select('LI-RADS diagnostic category', 'lirads-cat', [
       ['LR-1', 'LR-1 — definitely benign'],
       ['LR-2', 'LR-2 — probably benign'],

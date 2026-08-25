@@ -105,7 +105,7 @@ const ROBSON_GESTATION = [
 export const renderers = {
   // ----- 2.1 basdai ----------------------------------------------------------
   basdai(root) {
-    note(root, 'Bath Ankylosing Spondylitis Disease Activity Index (Garrett 1994): six 0–10 patient-reported items over the past week. BASDAI = [Q1 + Q2 + Q3 + Q4 + (Q5 + Q6)/2] / 5 — the two morning-stiffness items are averaged, not summed. A BASDAI ≥ 4 suggests active / suboptimally controlled disease. Near-neighbors: basfi, asdas, das28.');
+    note(root, 'Bath Ankylosing Spondylitis Disease Activity Index (Garrett 1994): six 0–10 patient-reported items over the past week. BASDAI = [Q1 + Q2 + Q3 + Q4 + (Q5 + Q6)/2] / 5 — the two morning-stiffness items are averaged, not summed. A BASDAI ≥ 4 suggests active / suboptimally controlled disease.');
     const ids = [];
     for (const [label, id] of BASDAI_ITEMS) { root.appendChild(scale010(label, id)); ids.push(id); }
     const o = out(); root.appendChild(o);
@@ -124,7 +124,7 @@ export const renderers = {
 
   // ----- 2.2 basfi -----------------------------------------------------------
   basfi(root) {
-    note(root, 'Bath Ankylosing Spondylitis Functional Index (Calin 1994): ten 0–10 items (eight daily-living tasks + two coping items; 0 = easy, 10 = impossible). BASFI = the mean of the 10 items. A higher index means poorer function. Near-neighbors: basdai, asdas.');
+    note(root, 'Bath Ankylosing Spondylitis Functional Index (Calin 1994): ten 0–10 items (eight daily-living tasks + two coping items; 0 = easy, 10 = impossible). BASFI = the mean of the 10 items. A higher index means poorer function.');
     const ids = [];
     for (const [label, id] of BASFI_ITEMS) { root.appendChild(scale010(label, id)); ids.push(id); }
     const o = out(); root.appendChild(o);
@@ -143,7 +143,7 @@ export const renderers = {
 
   // ----- 2.3 essdai ----------------------------------------------------------
   essdai(root) {
-    note(root, 'EULAR Sjögren’s Syndrome Disease Activity Index (Seror 2010): 12 systemic domains, each scored at an activity level whose printed value is already weight × level, so the total is the direct sum. Constitutional, glandular, and biological have no “high” level; CNS has no “low” level. Strata: low < 5, moderate 5–13, high ≥ 14. An unselected domain contributes 0. Near-neighbors: sledai-2k, cdai-ra.');
+    note(root, 'EULAR Sjögren’s Syndrome Disease Activity Index (Seror 2010): 12 systemic domains, each scored at an activity level whose printed value is already weight × level, so the total is the direct sum. Constitutional, glandular, and biological have no “high” level; CNS has no “low” level. Strata: low < 5, moderate 5–13, high ≥ 14. An unselected domain contributes 0.');
     const ids = [];
     for (const d of M.ESSDAI_DOMAINS) {
       const id = `essdai-${d.key}`;
@@ -169,7 +169,7 @@ export const renderers = {
 
   // ----- 2.4 robson ----------------------------------------------------------
   robson(root) {
-    note(root, 'Robson Ten-Group Classification System (Robson 2001; WHO 2015): the standard cesarean-audit classification that sorts every delivery into one of ten mutually-exclusive groups. Groups 1–4 are single cephalic term with no previous cesarean; group 5 is single cephalic term with a previous cesarean; groups 6–10 cover breech, multiple, transverse/oblique, and preterm cephalic deliveries. An audit classification, not an individual risk. Near-neighbors: bishop, meows.');
+    note(root, 'Robson Ten-Group Classification System (Robson 2001; WHO 2015): the standard cesarean-audit classification that sorts every delivery into one of ten mutually-exclusive groups. Groups 1–4 are single cephalic term with no previous cesarean; group 5 is single cephalic term with a previous cesarean; groups 6–10 cover breech, multiple, transverse/oblique, and preterm cephalic deliveries. An audit classification, not an individual risk.');
     root.appendChild(pickField('Parity', 'robson-parity', ROBSON_PARITY));
     root.appendChild(pickField('Previous cesarean', 'robson-previous-cs', ROBSON_PREVIOUS_CS));
     root.appendChild(pickField('Number of fetuses', 'robson-fetuses', ROBSON_FETUSES));

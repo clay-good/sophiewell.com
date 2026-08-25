@@ -67,7 +67,7 @@ const LEVEL_OPTS = [
 export const renderers = {
   // ----- 2.1 bed-eqd2 --------------------------------------------------------
   'bed-eqd2'(root) {
-    note(root, 'Radiotherapy BED & EQD2 (Fowler 1989, linear-quadratic): BED = n·d·(1 + d/(α/β)); EQD2 = BED/(1 + 2/(α/β)). α/β ≈ 10 tumor / early tissue, 3 late normal tissue. Compares schedules on an equal-effect basis. Near-neighbors: none.');
+    note(root, 'Radiotherapy BED & EQD2 (Fowler 1989, linear-quadratic): BED = n·d·(1 + d/(α/β)); EQD2 = BED/(1 + 2/(α/β)). α/β ≈ 10 tumor / early tissue, 3 late normal tissue. Compares schedules on an equal-effect basis.');
     root.appendChild(num('Number of fractions', 'bed-n'));
     root.appendChild(num('Dose per fraction (Gy)', 'bed-d'));
     root.appendChild(num('α/β ratio (Gy) — 10 tumor, 3 late tissue', 'bed-ab'));
@@ -87,7 +87,7 @@ export const renderers = {
 
   // ----- 2.2 pisa-eroa -------------------------------------------------------
   'pisa-eroa'(root) {
-    note(root, 'PISA effective regurgitant orifice & regurgitant volume (ASE, Zoghbi 2017): flow = 2π·r²·Va; EROA = flow/peak Vreg; RVol = EROA·VTIreg. Mitral EROA severe ≥ 0.40 cm². Near-neighbors: lvot-stroke-volume, aortic-valve-area.');
+    note(root, 'PISA effective regurgitant orifice & regurgitant volume (ASE, Zoghbi 2017): flow = 2π·r²·Va; EROA = flow/peak Vreg; RVol = EROA·VTIreg. Mitral EROA severe ≥ 0.40 cm².');
     root.appendChild(num('PISA radius (cm)', 'pisa-r'));
     root.appendChild(num('Aliasing velocity Va (cm/s)', 'pisa-va'));
     root.appendChild(num('Peak regurgitant velocity (cm/s)', 'pisa-vpeak'));
@@ -108,7 +108,7 @@ export const renderers = {
 
   // ----- 2.3 lv-wall-stress --------------------------------------------------
   'lv-wall-stress'(root) {
-    note(root, 'LV meridional wall stress (Grossman 1975; Laplace): σ = P·r/(2·h); with 1 mmHg = 1.36 g/cm². Relates pressure and cavity size to afterload and the hypertrophy pattern. Near-neighbors: lv-mass-index, teichholz-lvef.');
+    note(root, 'LV meridional wall stress (Grossman 1975; Laplace): σ = P·r/(2·h); with 1 mmHg = 1.36 g/cm². Relates pressure and cavity size to afterload and the hypertrophy pattern.');
     root.appendChild(num('LV pressure (mmHg) — systolic or end-systolic', 'lvws-p'));
     root.appendChild(num('LV internal radius (cm)', 'lvws-r'));
     root.appendChild(num('Wall thickness (cm)', 'lvws-h'));
@@ -128,7 +128,7 @@ export const renderers = {
 
   // ----- 2.4 dlco-correction -------------------------------------------------
   'dlco-correction'(root) {
-    note(root, 'Hemoglobin-corrected DLCO (Cotes; ATS/ERS 2005): Hb-adjusted DLCO = observed·(10.22 + Hb)/(1.7·Hb) men, ·(9.38 + Hb)/(1.7·Hb) women/children; KCO = DLCO/VA. Anemia falsely lowers, polycythemia falsely raises. Near-neighbors: predicted-spirometry.');
+    note(root, 'Hemoglobin-corrected DLCO (Cotes; ATS/ERS 2005): Hb-adjusted DLCO = observed·(10.22 + Hb)/(1.7·Hb) men, ·(9.38 + Hb)/(1.7·Hb) women/children; KCO = DLCO/VA. Anemia falsely lowers, polycythemia falsely raises.');
     root.appendChild(num('Measured DLCO (mL/min/mmHg)', 'dlco-dlco'));
     root.appendChild(num('Hemoglobin (g/dL)', 'dlco-hb'));
     root.appendChild(num('Alveolar volume VA (L)', 'dlco-va'));
@@ -149,7 +149,7 @@ export const renderers = {
 
   // ----- 2.5 vo2max-exercise -------------------------------------------------
   'vo2max-exercise'(root) {
-    note(root, 'Estimated VO₂max & METs (Bruce 1973 / Cooper 1968). Bruce: men 14.76 − 1.379·T + 0.451·T² − 0.012·T³, women 4.38·T − 3.9 (T = min). Cooper: (distance_m − 504.9)/44.73. METs = VO₂max/3.5. Near-neighbors: duke-treadmill.');
+    note(root, 'Estimated VO₂max & METs (Bruce 1973 / Cooper 1968). Bruce: men 14.76 − 1.379·T + 0.451·T² − 0.012·T³, women 4.38·T − 3.9 (T = min). Cooper: (distance_m − 504.9)/44.73. METs = VO₂max/3.5.');
     root.appendChild(selectField('Method', 'vo2-method', VO2_METHOD_OPTS));
     root.appendChild(num('Treadmill time to exhaustion (min) — Bruce', 'vo2-time'));
     root.appendChild(pickField('Sex — Bruce', 'vo2-sex', SEX_OPTS));
@@ -170,7 +170,7 @@ export const renderers = {
 
   // ----- 2.6 proportion-ci ---------------------------------------------------
   'proportion-ci'(root) {
-    note(root, 'Confidence interval for a proportion (Wilson score, 1927): the interval stays within [0, 1] and behaves well near 0/1, unlike the naive Wald interval (shown for teaching). Near-neighbors: diagnostic-2x2, nnt-arr.');
+    note(root, 'Confidence interval for a proportion (Wilson score, 1927): the interval stays within [0, 1] and behaves well near 0/1, unlike the naive Wald interval (shown for teaching).');
     root.appendChild(field('Number of events', 'prop-events', { type: 'number', min: '0', step: '1', inputmode: 'numeric' }));
     root.appendChild(field('Sample size n', 'prop-n', { type: 'number', min: '1', step: '1', inputmode: 'numeric' }));
     root.appendChild(selectField('Confidence level', 'prop-level', LEVEL_OPTS));

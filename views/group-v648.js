@@ -44,7 +44,7 @@ const FIELDS = [
 
 export const renderers = {
   'weiss-adrenal'(root) {
-    note(root, 'Weiss system (Weiss 1984; modified 1989): distinguishes adrenocortical carcinoma from a benign adenoma. Nine histopathologic criteria, 1 point each; ≥ 3 indicates carcinoma, 0-2 a benign adenoma. Note the two easy-to-invert definitions below. Near-neighbor: adrenal-ct-washout.');
+    note(root, 'Weiss system (Weiss 1984; modified 1989): distinguishes adrenocortical carcinoma from a benign adenoma. Nine histopathologic criteria, 1 point each; ≥ 3 indicates carcinoma, 0-2 a benign adenoma. Note the two easy-to-invert definitions below.');
     for (const f of FIELDS) root.appendChild(checkField(f.label, f.dom));
     const ids = FIELDS.map((f) => f.dom);
     const o = out(); root.appendChild(o);

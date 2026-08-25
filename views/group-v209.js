@@ -48,7 +48,7 @@ function wire(ids, run) {
 export const renderers = {
   // ----- 2.1 hcm-risk-scd ----------------------------------------------------
   'hcm-risk-scd'(root) {
-    note(root, 'HCM Risk-SCD (O\'Mahony 2014): the ESC-endorsed 5-year sudden-cardiac-death risk estimator for hypertrophic cardiomyopathy. 5-year SCD probability = 1 − 0.998^exp(PI) from seven predictors. ESC bands: < 4% low, 4–6% intermediate, ≥ 6% high — informing the ICD discussion. Validated for age ≥ 16 without prior arrest/sustained VT, wall thickness < 35 mm, or prior ICD. Near-neighbors: maggic, mesa-chd.');
+    note(root, 'HCM Risk-SCD (O\'Mahony 2014): the ESC-endorsed 5-year sudden-cardiac-death risk estimator for hypertrophic cardiomyopathy. 5-year SCD probability = 1 − 0.998^exp(PI) from seven predictors. ESC bands: < 4% low, 4–6% intermediate, ≥ 6% high — informing the ICD discussion. Validated for age ≥ 16 without prior arrest/sustained VT, wall thickness < 35 mm, or prior ICD.');
     root.appendChild(num('Age (years)', 'hcm-age', { min: '16' }));
     root.appendChild(num('Maximal LV wall thickness (mm)', 'hcm-mwt', { min: '5', max: '35' }));
     root.appendChild(num('Left-atrial diameter (mm)', 'hcm-la', { min: '20' }));
@@ -72,7 +72,7 @@ export const renderers = {
 
   // ----- 2.4 charge-af -------------------------------------------------------
   'charge-af'(root) {
-    note(root, 'CHARGE-AF (Alonso 2013): a simple 5-year incident-atrial-fibrillation risk model from routine variables — age, race, height, weight, BP, smoking, antihypertensive use, diabetes, heart failure, and prior MI. Used to select patients for AF screening. Near-neighbors: cha2ds2-va, ascvd.');
+    note(root, 'CHARGE-AF (Alonso 2013): a simple 5-year incident-atrial-fibrillation risk model from routine variables — age, race, height, weight, BP, smoking, antihypertensive use, diabetes, heart failure, and prior MI. Used to select patients for AF screening.');
     root.appendChild(num('Age (years)', 'charge-age', { min: '18' }));
     root.appendChild(num('Height (cm)', 'charge-height', { min: '100' }));
     root.appendChild(num('Weight (kg)', 'charge-weight', { min: '20' }));

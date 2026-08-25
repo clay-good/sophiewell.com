@@ -36,7 +36,7 @@ function render(o, r, valueLabel) {
 
 export const renderers = {
   'nri'(root) {
-    note(root, 'Nutritional Risk Index (Buzby, VA-TPN) = 1.519 × albumin (g/L) + 41.7 × (current / usual weight). Lower marks greater risk. Enter albumin in g/L (multiply a g/dL value by 10). Near-neighbors: gnri, pni-onodera, conut.');
+    note(root, 'Nutritional Risk Index (Buzby, VA-TPN) = 1.519 × albumin (g/L) + 41.7 × (current / usual weight). Lower marks greater risk. Enter albumin in g/L (multiply a g/dL value by 10).');
     root.appendChild(num('Serum albumin (g/L)', 'nri-alb', { min: '0' }));
     root.appendChild(num('Current body weight', 'nri-current', { min: '0' }));
     root.appendChild(num('Usual body weight (same unit)', 'nri-usual', { min: '0' }));

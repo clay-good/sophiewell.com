@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'dorr-femur'(root) {
-    note(root, 'The Dorr classification of proximal femoral bone morphology on a plain radiograph, from the cortical thickness and the canal-to-calcar ratio. Pick the type. A: the champagne-flute femur, thick cortices and a narrow canal (ratio below 0.5); B: intermediate (ratio 0.5 to 0.75); C: the stovepipe femur, thin cortices and a wide canal (ratio above 0.75). Reports the morphologic type the clinician has determined, not a bone-quality diagnosis or a stem recommendation. Near-neighbors: barrack-cement, vancouver-periprosthetic.');
+    note(root, 'The Dorr classification of proximal femoral bone morphology on a plain radiograph, from the cortical thickness and the canal-to-calcar ratio. Pick the type. A: the champagne-flute femur, thick cortices and a narrow canal (ratio below 0.5); B: intermediate (ratio 0.5 to 0.75); C: the stovepipe femur, thin cortices and a wide canal (ratio above 0.75). Reports the morphologic type the clinician has determined, not a bone-quality diagnosis or a stem recommendation.');
     root.appendChild(select('Dorr type', 'dorr-type', [
       ['A', 'A - champagne flute (thick cortices, narrow canal)'],
       ['B', 'B - intermediate'],

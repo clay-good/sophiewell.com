@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'goutallier'(root) {
-    note(root, 'The Goutallier classification of rotator cuff muscle fatty infiltration on CT/MRI, by the amount of fat relative to muscle in the cuff belly. Pick the grade. 0: normal, no fatty streaks; 1: some fatty streaks; 2: less fat than muscle; 3: fat equals muscle; 4: more fat than muscle. Reports the grade the radiologist has determined, not a diagnosis or a reparability decision. Near-neighbor: outerbridge-cartilage.');
+    note(root, 'The Goutallier classification of rotator cuff muscle fatty infiltration on CT/MRI, by the amount of fat relative to muscle in the cuff belly. Pick the grade. 0: normal, no fatty streaks; 1: some fatty streaks; 2: less fat than muscle; 3: fat equals muscle; 4: more fat than muscle. Reports the grade the radiologist has determined, not a diagnosis or a reparability decision.');
     root.appendChild(select('Goutallier grade', 'goutallier-grade', [
       ['0', '0 - normal, no fatty streaks'],
       ['1', '1 - some fatty streaks'],

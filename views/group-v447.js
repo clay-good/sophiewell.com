@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'anderson-montesano'(root) {
-    note(root, 'The Anderson-Montesano classification of occipital condyle fractures, by fracture morphology and mechanism. Pick the type. I: impacted/comminuted from axial load (typically stable); II: extending from a basioccipital / skull-base fracture (usually stable); III: alar-ligament avulsion (potentially unstable). Stability is judged with the full clinical and imaging picture. Reports the type the clinician has determined, not a diagnosis or a stability determination. Near-neighbor: levine-edwards.');
+    note(root, 'The Anderson-Montesano classification of occipital condyle fractures, by fracture morphology and mechanism. Pick the type. I: impacted/comminuted from axial load (typically stable); II: extending from a basioccipital / skull-base fracture (usually stable); III: alar-ligament avulsion (potentially unstable). Stability is judged with the full clinical and imaging picture. Reports the type the clinician has determined, not a diagnosis or a stability determination.');
     root.appendChild(select('Anderson-Montesano type', 'am-type', [
       ['I', 'I - impacted/comminuted (axial load), typically stable'],
       ['II', 'II - extending from a basioccipital/skull-base fracture'],

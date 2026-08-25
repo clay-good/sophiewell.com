@@ -36,7 +36,7 @@ function render(o, r, valueLabel) {
 
 export const renderers = {
   'agr'(root) {
-    note(root, 'Albumin-to-globulin ratio = albumin / (total protein − albumin). A lower / reversed ratio (< ~1) is a recognized flag. Enter both in the same units. Near-neighbors: non-hdl-remnant, tsat.');
+    note(root, 'Albumin-to-globulin ratio = albumin / (total protein − albumin). A lower / reversed ratio (< ~1) is a recognized flag. Enter both in the same units.');
     root.appendChild(num('Serum albumin (g/dL)', 'agr-albumin', { min: '0' }));
     root.appendChild(num('Total protein (g/dL)', 'agr-tp', { min: '0' }));
     const o = out(); root.appendChild(o);

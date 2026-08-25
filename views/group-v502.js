@@ -35,7 +35,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'norwood-hairloss'(root) {
-    note(root, 'The Norwood (Hamilton-Norwood) scale of male-pattern (androgenetic) hair loss, by increasing frontotemporal recession and vertex loss. Pick the stage. I: no or minimal recession; II: triangular frontotemporal recession; III: the minimal balding extent; III vertex: crown-predominant loss; IV: recession and vertex loss separated by a band; V: the band narrows; VI: the band is gone and the areas are confluent; VII: only a horseshoe band remains. Reports the pattern stage the clinician has determined, not a diagnosis of androgenetic alopecia or a treatment decision. Near-neighbor: ludwig-hairloss.');
+    note(root, 'The Norwood (Hamilton-Norwood) scale of male-pattern (androgenetic) hair loss, by increasing frontotemporal recession and vertex loss. Pick the stage. I: no or minimal recession; II: triangular frontotemporal recession; III: the minimal balding extent; III vertex: crown-predominant loss; IV: recession and vertex loss separated by a band; V: the band narrows; VI: the band is gone and the areas are confluent; VII: only a horseshoe band remains. Reports the pattern stage the clinician has determined, not a diagnosis of androgenetic alopecia or a treatment decision.');
     root.appendChild(select('Norwood stage', 'norwood-stage', [
       ['I', 'I - no or minimal recession'],
       ['II', 'II - triangular frontotemporal recession'],

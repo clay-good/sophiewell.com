@@ -75,7 +75,7 @@ const SSS_OPTIONS = [
 export const renderers = {
   // ----- 2.1 cdai-ra ----------------------------------------------------
   'cdai-ra'(root) {
-    note(root, 'CDAI (Aletaha 2005): lab-free RA disease activity, the sum of swollen + tender joint counts and the patient and physician global VAS, total 0–76. Remission ≤ 2.8, low ≤ 10, moderate ≤ 22, high > 22. Near-neighbors: das28, sdai-ra.');
+    note(root, 'CDAI (Aletaha 2005): lab-free RA disease activity, the sum of swollen + tender joint counts and the patient and physician global VAS, total 0–76. Remission ≤ 2.8, low ≤ 10, moderate ≤ 22, high > 22.');
     root.appendChild(numField('Swollen-joint count (0–28)', 'cdai-sjc', { min: 0, max: 28, placeholder: 'e.g. 6' }));
     root.appendChild(numField('Tender-joint count (0–28)', 'cdai-tjc', { min: 0, max: 28, placeholder: 'e.g. 8' }));
     root.appendChild(numField('Patient global assessment (0–10 cm VAS)', 'cdai-pga', { step: '0.1', min: 0, max: 10, placeholder: 'e.g. 3' }));
@@ -98,7 +98,7 @@ export const renderers = {
 
   // ----- 2.2 sdai-ra ----------------------------------------------------
   'sdai-ra'(root) {
-    note(root, 'SDAI (Smolen 2003): the CDAI plus CRP in mg/dL, total 0–86. Remission ≤ 3.3, low ≤ 11, moderate ≤ 26, high > 26. Enter CRP in mg/dL — a value reported in mg/L is 10× larger. Near-neighbors: das28, cdai-ra.');
+    note(root, 'SDAI (Smolen 2003): the CDAI plus CRP in mg/dL, total 0–86. Remission ≤ 3.3, low ≤ 11, moderate ≤ 26, high > 26. Enter CRP in mg/dL — a value reported in mg/L is 10× larger.');
     root.appendChild(numField('Swollen-joint count (0–28)', 'sdai-sjc', { min: 0, max: 28, placeholder: 'e.g. 6' }));
     root.appendChild(numField('Tender-joint count (0–28)', 'sdai-tjc', { min: 0, max: 28, placeholder: 'e.g. 8' }));
     root.appendChild(numField('Patient global assessment (0–10 cm VAS)', 'sdai-pga', { step: '0.1', min: 0, max: 10, placeholder: 'e.g. 3' }));
@@ -122,7 +122,7 @@ export const renderers = {
 
   // ----- 2.3 acr-eular-2010-ra ------------------------------------------
   'acr-eular-2010-ra'(root) {
-    note(root, '2010 ACR/EULAR RA classification (Aletaha 2010): four weighted domains, total 0–10; ≥ 6 classifies as definite RA. Apply only after confirming the entry condition (≥ 1 joint of definite clinical synovitis not better explained by another disease). Near-neighbor: das28.');
+    note(root, '2010 ACR/EULAR RA classification (Aletaha 2010): four weighted domains, total 0–10; ≥ 6 classifies as definite RA. Apply only after confirming the entry condition (≥ 1 joint of definite clinical synovitis not better explained by another disease).');
     root.appendChild(checkField('Entry condition met — ≥ 1 joint with definite clinical synovitis, not better explained by another disease', 'acr-entry'));
     root.appendChild(pickField('Joint involvement', 'acr-joints', [
       { value: 'large1', text: '1 large joint (0)' },
@@ -269,7 +269,7 @@ export const renderers = {
 
   // ----- 2.6 caspar -----------------------------------------------------
   caspar(root) {
-    note(root, 'CASPAR (Taylor 2006): psoriatic-arthritis classification. After confirming established inflammatory articular disease (joint, spine, or entheseal), ≥ 3 of a maximum 6 points classifies. Current psoriasis is the only 2-point item. Near-neighbors: das28, acr-eular-2010-ra.');
+    note(root, 'CASPAR (Taylor 2006): psoriatic-arthritis classification. After confirming established inflammatory articular disease (joint, spine, or entheseal), ≥ 3 of a maximum 6 points classifies. Current psoriasis is the only 2-point item.');
     root.appendChild(checkField('Entry condition — established inflammatory articular disease (joint, spine, or entheseal)', 'caspar-entry'));
     root.appendChild(pickField('Psoriasis (highest applies)', 'caspar-psoriasis', [
       { value: 'current', text: 'Current psoriasis (2)' },
@@ -300,7 +300,7 @@ export const renderers = {
 
   // ----- 2.7 fibromyalgia-acr-2016 --------------------------------------
   'fibromyalgia-acr-2016'(root) {
-    note(root, '2016 revised ACR fibromyalgia criteria (Wolfe 2016): met when (WPI ≥ 7 and SSS ≥ 5) OR (WPI 4–6 and SSS ≥ 9), AND generalized pain (≥ 4 of 5 regions), AND symptoms ≥ 3 months. The diagnosis is valid irrespective of other diagnoses. Near-neighbor: das28.');
+    note(root, '2016 revised ACR fibromyalgia criteria (Wolfe 2016): met when (WPI ≥ 7 and SSS ≥ 5) OR (WPI 4–6 and SSS ≥ 9), AND generalized pain (≥ 4 of 5 regions), AND symptoms ≥ 3 months. The diagnosis is valid irrespective of other diagnoses.');
     root.appendChild(numField('Widespread Pain Index — painful regions (0–19)', 'fib-wpi', { min: 0, max: 19, placeholder: 'e.g. 8' }));
     root.appendChild(selectField('Fatigue severity', 'fib-fatigue', SSS_OPTIONS));
     root.appendChild(selectField('Waking unrefreshed', 'fib-waking', SSS_OPTIONS));

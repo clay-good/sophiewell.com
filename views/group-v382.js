@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'eichenholtz-charcot'(root) {
-    note(root, '(Modified) Eichenholtz classification of Charcot neuroarthropathy, by temporal and radiographic findings. Pick the stage. 0: prodromal / pre-radiographic (warm, swollen; normal radiographs); 1: development / fragmentation (inflammation + fragmentation, subluxation); 2: coalescence (debris absorption, sclerosis); 3: reconstruction / consolidation (remodeling, stable deformity). Stages 0-1 are the acutely-active, at-risk phase. Near-neighbors: wagner-dfu.');
+    note(root, '(Modified) Eichenholtz classification of Charcot neuroarthropathy, by temporal and radiographic findings. Pick the stage. 0: prodromal / pre-radiographic (warm, swollen; normal radiographs); 1: development / fragmentation (inflammation + fragmentation, subluxation); 2: coalescence (debris absorption, sclerosis); 3: reconstruction / consolidation (remodeling, stable deformity). Stages 0-1 are the acutely-active, at-risk phase.');
     root.appendChild(select('Eichenholtz stage', 'eich-stage', [
       ['0', 'Stage 0 - prodromal / pre-radiographic'],
       ['1', 'Stage 1 - development / fragmentation'],

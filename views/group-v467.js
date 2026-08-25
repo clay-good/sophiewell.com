@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'bromage-scale'(root) {
-    note(root, 'The Bromage scale of motor block after neuraxial (epidural / spinal) anesthesia, by residual lower-limb movement. Pick the grade. I: nil (free knees and feet); II: partial (just able to flex the knees); III: almost complete (unable to flex the knees, some foot movement); IV: complete (unable to move the legs or feet). A modified Bromage renumbers these 0-3. Reports the grade the clinician has determined, not a diagnosis or a treatment decision. Near-neighbor: aldrete.');
+    note(root, 'The Bromage scale of motor block after neuraxial (epidural / spinal) anesthesia, by residual lower-limb movement. Pick the grade. I: nil (free knees and feet); II: partial (just able to flex the knees); III: almost complete (unable to flex the knees, some foot movement); IV: complete (unable to move the legs or feet). A modified Bromage renumbers these 0-3. Reports the grade the clinician has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('Bromage grade', 'bromage-grade', [
       ['I', 'I - nil (free knees and feet)'],
       ['II', 'II - partial (just able to flex the knees)'],

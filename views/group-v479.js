@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'spitz-atresia'(root) {
-    note(root, 'The Spitz classification of esophageal atresia, by birth weight and major congenital cardiac disease. Pick the group. I: birth weight 1500 g or more and no major cardiac disease; II: birth weight less than 1500 g, or major cardiac disease; III: birth weight less than 1500 g and major cardiac disease. Reports the group the clinician has determined, not a diagnosis or a treatment decision. Near-neighbor: papile-ivh.');
+    note(root, 'The Spitz classification of esophageal atresia, by birth weight and major congenital cardiac disease. Pick the group. I: birth weight 1500 g or more and no major cardiac disease; II: birth weight less than 1500 g, or major cardiac disease; III: birth weight less than 1500 g and major cardiac disease. Reports the group the clinician has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('Spitz group', 'spitz-group', [
       ['I', 'I - weight >= 1500 g and no major cardiac disease'],
       ['II', 'II - weight < 1500 g, or major cardiac disease'],

@@ -35,7 +35,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'nice-classification'(root) {
-    note(root, 'NICE classification (NBI International Colorectal Endoscopic; Hewett 2012 / Hayashi 2013), read on narrow-band imaging without requiring magnification. Pick the type from the lesion’s color, vessels, and surface pattern. Type 1 is hyperplastic (non-neoplastic); type 2 is adenoma; type 3 suggests deep submucosal invasive cancer. Near-neighbors: kudo-pit-pattern, paris-classification.');
+    note(root, 'NICE classification (NBI International Colorectal Endoscopic; Hewett 2012 / Hayashi 2013), read on narrow-band imaging without requiring magnification. Pick the type from the lesion’s color, vessels, and surface pattern. Type 1 is hyperplastic (non-neoplastic); type 2 is adenoma; type 3 suggests deep submucosal invasive cancer.');
     root.appendChild(select('NICE type', 'nice-type', [
       ['1', '1 — same/lighter color, no/lacy vessels, uniform or absent surface (hyperplastic)'],
       ['2', '2 — browner, brown vessels around white structures (adenoma)'],

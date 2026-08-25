@@ -46,7 +46,7 @@ const IDS = ['dim-equinus', 'dim-varus', 'dim-derotation', 'dim-adduction', 'dim
 
 export const renderers = {
   'dimeglio-clubfoot'(root) {
-    note(root, 'Dimeglio classification of clubfoot severity - four reducibility parameters (each 0-4) plus four 1-point features, total 0-20 (grade I benign to IV very severe). Higher = more severe. Companion to the Pirani score. Near-neighbors: pirani-clubfoot.');
+    note(root, 'Dimeglio classification of clubfoot severity - four reducibility parameters (each 0-4) plus four 1-point features, total 0-20 (grade I benign to IV very severe). Higher = more severe. Companion to the Pirani score.');
     note(root, 'Reducibility (each 0-4: 90-45 deg = 4, down to < -20 deg = 0):');
     root.appendChild(select('Equinus', 'dim-equinus'));
     root.appendChild(select('Varus', 'dim-varus'));

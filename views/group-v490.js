@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'ruedi-allgower-pilon'(root) {
-    note(root, 'The Ruedi-Allgower classification of tibial pilon (plafond) fractures, by the displacement and comminution of the distal tibial articular surface. Pick the type. I: nondisplaced cleavage fracture; II: significant displacement with minimal comminution; III: comminution and impaction of the articular surface. Reports the type the clinician has determined, not a diagnosis or a treatment decision. Near-neighbor: lauge-hansen.');
+    note(root, 'The Ruedi-Allgower classification of tibial pilon (plafond) fractures, by the displacement and comminution of the distal tibial articular surface. Pick the type. I: nondisplaced cleavage fracture; II: significant displacement with minimal comminution; III: comminution and impaction of the articular surface. Reports the type the clinician has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('Ruedi-Allgower type', 'ruedi-type', [
       ['I', 'I - nondisplaced cleavage fracture'],
       ['II', 'II - displaced, minimal comminution'],

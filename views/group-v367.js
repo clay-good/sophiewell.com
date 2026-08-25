@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'pas-swallow'(root) {
-    note(root, 'Penetration-Aspiration Scale (Rosenbek 1996) for a swallow study (videofluoroscopy / FEES). Pick the worst airway-invasion score. 1: no airway invasion; 2-5: penetration (above / at the vocal folds); 6-8: aspiration (below the vocal folds); 8: silent aspiration. Near-neighbors: guss, eat-10.');
+    note(root, 'Penetration-Aspiration Scale (Rosenbek 1996) for a swallow study (videofluoroscopy / FEES). Pick the worst airway-invasion score. 1: no airway invasion; 2-5: penetration (above / at the vocal folds); 6-8: aspiration (below the vocal folds); 8: silent aspiration.');
     root.appendChild(select('PAS score', 'pas-score', [
       ['1', '1 - does not enter the airway'],
       ['2', '2 - above vocal folds, ejected (penetration)'],

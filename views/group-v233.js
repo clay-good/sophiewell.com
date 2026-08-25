@@ -46,7 +46,7 @@ function render(o, r, valueLabel) {
 
 export const renderers = {
   'evans-index'(root) {
-    note(root, 'Evans index = frontal-horn width / inner-skull (biparietal) diameter on the same axial slice. Normal <= 0.25, borderline 0.25-0.30, > 0.30 ventricular enlargement. Near-neighbors: fohr.');
+    note(root, 'Evans index = frontal-horn width / inner-skull (biparietal) diameter on the same axial slice. Normal <= 0.25, borderline 0.25-0.30, > 0.30 ventricular enlargement.');
     root.appendChild(num('Maximum frontal-horn width (mm)', 'ev-frontal', { min: '0' }));
     root.appendChild(num('Maximum inner-skull (biparietal) diameter (mm)', 'ev-skull', { min: '0' }));
     const o = out(); root.appendChild(o);
@@ -56,7 +56,7 @@ export const renderers = {
     postureNote(root);
   },
   'fohr'(root) {
-    note(root, 'Frontal-occipital horn ratio = (frontal-horn + occipital-horn width) / (2 x biparietal diameter). Normal mean 0.37; >= 0.55 clinically significant ventriculomegaly. Near-neighbors: evans-index.');
+    note(root, 'Frontal-occipital horn ratio = (frontal-horn + occipital-horn width) / (2 x biparietal diameter). Normal mean 0.37; >= 0.55 clinically significant ventriculomegaly.');
     root.appendChild(num('Maximum frontal-horn width (mm)', 'fo-frontal', { min: '0' }));
     root.appendChild(num('Maximum occipital-horn width (mm)', 'fo-occipital', { min: '0' }));
     root.appendChild(num('Biparietal diameter (mm)', 'fo-bpd', { min: '0' }));
@@ -67,7 +67,7 @@ export const renderers = {
     postureNote(root);
   },
   'age-adjusted-d-dimer'(root) {
-    note(root, 'Age-adjusted D-dimer (ADJUST-PE, JAMA 2014): cutoff = 500 ug/L up to age 50, else age x 10 ug/L. Use only with a non-high pretest probability. Near-neighbors: wells-pe-geneva.');
+    note(root, 'Age-adjusted D-dimer (ADJUST-PE, JAMA 2014): cutoff = 500 ug/L up to age 50, else age x 10 ug/L. Use only with a non-high pretest probability.');
     root.appendChild(num('Age (years)', 'add-age', { min: '0' }));
     root.appendChild(num('D-dimer (ug/L FEU)', 'add-dd', { min: '0' }));
     const o = out(); root.appendChild(o);
@@ -77,7 +77,7 @@ export const renderers = {
     postureNote(root);
   },
   'deurenberg-body-fat'(root) {
-    note(root, 'Deurenberg body-fat % (Br J Nutr 1991) = 1.20 x BMI + 0.23 x age - 10.8 x sex - 5.4 (male = 1, female = 0). Categories per ACE. A BMI-based estimate, not a measured composition. Near-neighbors: bmi.');
+    note(root, 'Deurenberg body-fat % (Br J Nutr 1991) = 1.20 x BMI + 0.23 x age - 10.8 x sex - 5.4 (male = 1, female = 0). Categories per ACE. A BMI-based estimate, not a measured composition.');
     root.appendChild(num('BMI (kg/m^2)', 'db-bmi', { min: '0' }));
     root.appendChild(num('Age (years)', 'db-age', { min: '0' }));
     root.appendChild(select('Sex', 'db-sex', [['male', 'Male'], ['female', 'Female']]));

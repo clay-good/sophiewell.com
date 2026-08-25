@@ -46,7 +46,7 @@ const IDS = ['cdi-wbc', 'cdi-cr', 'cdi-hypotension', 'cdi-ileus', 'cdi-megacolon
 
 export const renderers = {
   'cdi-severity'(root) {
-    note(root, '2017 IDSA/SHEA Clostridioides difficile infection severity classification. Enter the WBC and serum creatinine, and check any fulminant finding. Severe = WBC ≥ 15,000 cells/µL or creatinine ≥ 1.5 mg/dL; fulminant = hypotension/shock, ileus, or megacolon (overrides the labs). Near-neighbors: atlas-cdi.');
+    note(root, '2017 IDSA/SHEA Clostridioides difficile infection severity classification. Enter the WBC and serum creatinine, and check any fulminant finding. Severe = WBC ≥ 15,000 cells/µL or creatinine ≥ 1.5 mg/dL; fulminant = hypotension/shock, ileus, or megacolon (overrides the labs).');
     root.appendChild(field('WBC (cells/µL)', 'cdi-wbc', { min: 0, placeholder: 'e.g. 18000' }));
     root.appendChild(field('Serum creatinine (mg/dL)', 'cdi-cr', { step: '0.1', min: 0, placeholder: 'e.g. 1.2' }));
     note(root, 'Fulminant findings (any one classifies fulminant):');

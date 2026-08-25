@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'wassel-thumb'(root) {
-    note(root, 'Wassel classification of thumb polydactyly (radial / preaxial thumb duplication), by the most proximal level of skeletal duplication. Pick the type. Odd numerals are a bifid bone (shared base); even numerals are a complete duplication; the numbers ascend proximally. I/II: distal phalanx; III/IV: proximal phalanx (IV most common); V/VI: metacarpal; VII: triphalangeal thumb. Near-neighbors: russe-scaphoid.');
+    note(root, 'Wassel classification of thumb polydactyly (radial / preaxial thumb duplication), by the most proximal level of skeletal duplication. Pick the type. Odd numerals are a bifid bone (shared base); even numerals are a complete duplication; the numbers ascend proximally. I/II: distal phalanx; III/IV: proximal phalanx (IV most common); V/VI: metacarpal; VII: triphalangeal thumb.');
     root.appendChild(select('Wassel type', 'wa-type', [
       ['I', 'Type I - bifid distal phalanx'],
       ['II', 'Type II - duplicated distal phalanx'],

@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'ross-hf-peds'(root) {
-    note(root, 'Ross classification (Ross 1992; modified 2012) of heart failure in infants and children - the pediatric counterpart to the adult NYHA class. Pick the class from the child\'s symptoms. I: no symptoms; II: mild tachypnea / diaphoresis with feeds or dyspnea on exertion, no growth failure; III: marked symptoms with growth failure; IV: symptoms at rest. Near-neighbors: nyha-class.');
+    note(root, 'Ross classification (Ross 1992; modified 2012) of heart failure in infants and children - the pediatric counterpart to the adult NYHA class. Pick the class from the child\'s symptoms. I: no symptoms; II: mild tachypnea / diaphoresis with feeds or dyspnea on exertion, no growth failure; III: marked symptoms with growth failure; IV: symptoms at rest.');
     root.appendChild(select('Ross class', 'ross-class', [
       ['I', 'Class I - no limitation or symptoms'],
       ['II', 'Class II - mild symptoms with feeds / exertion, no growth failure'],

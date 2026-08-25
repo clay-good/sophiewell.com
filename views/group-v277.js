@@ -36,7 +36,7 @@ function render(o, r, valueLabel) {
 
 export const renderers = {
   'measured-crcl'(root) {
-    note(root, 'Measured creatinine clearance = (urine Cr × urine volume) / (serum Cr × collection time). The direct clearance from a timed urine, distinct from the Cockcroft-Gault estimate. Near-neighbors: cockcroft-gault, egfr, uacr-upcr.');
+    note(root, 'Measured creatinine clearance = (urine Cr × urine volume) / (serum Cr × collection time). The direct clearance from a timed urine, distinct from the Cockcroft-Gault estimate.');
     root.appendChild(num('Urine creatinine (mg/dL)', 'mcrcl-ucr', { min: '0' }));
     root.appendChild(num('Urine volume over the collection (mL)', 'mcrcl-uvol', { min: '0' }));
     root.appendChild(num('Serum creatinine (mg/dL)', 'mcrcl-scr', { min: '0' }));

@@ -117,7 +117,7 @@ const CT_REGION_OPTS = [
 export const renderers = {
   // ----- 2.1 acr-tirads ------------------------------------------------------
   'acr-tirads'(root) {
-    note(root, 'ACR TI-RADS (Tessler 2017): composition + echogenicity + shape + margin + echogenic foci (additive) → points → TR level. FNA / follow by max diameter: TR3 FNA ≥2.5/follow ≥1.5 cm; TR4 ≥1.5/≥1.0; TR5 ≥1.0/≥0.5. Near-neighbors: fleischner-2017, bosniak.');
+    note(root, 'ACR TI-RADS (Tessler 2017): composition + echogenicity + shape + margin + echogenic foci (additive) → points → TR level. FNA / follow by max diameter: TR3 FNA ≥2.5/follow ≥1.5 cm; TR4 ≥1.5/≥1.0; TR5 ≥1.0/≥0.5.');
     root.appendChild(pickField('Composition', 'tir-comp', TIRADS_COMP_OPTS));
     root.appendChild(pickField('Echogenicity', 'tir-echo', TIRADS_ECHO_OPTS));
     root.appendChild(pickField('Shape', 'tir-shape', TIRADS_SHAPE_OPTS));
@@ -146,7 +146,7 @@ export const renderers = {
 
   // ----- 2.2 adrenal-ct-washout ----------------------------------------------
   'adrenal-ct-washout'(root) {
-    note(root, 'Adrenal CT washout (Caoili 2002): absolute washout APW = (E − D)/(E − U)×100 (≥60% adenoma); relative washout RPW = (E − D)/E×100 (≥40% adenoma) when no unenhanced scan. Unenhanced ≤10 HU is a lipid-rich adenoma. Near-neighbors: mehran-cin.');
+    note(root, 'Adrenal CT washout (Caoili 2002): absolute washout APW = (E − D)/(E − U)×100 (≥60% adenoma); relative washout RPW = (E − D)/E×100 (≥40% adenoma) when no unenhanced scan. Unenhanced ≤10 HU is a lipid-rich adenoma.');
     root.appendChild(numHU('Enhanced / portal-venous attenuation E (HU)', 'aw-e'));
     root.appendChild(numHU('Delayed attenuation D (HU)', 'aw-d'));
     root.appendChild(numHU('Unenhanced attenuation U (HU) — optional, enables absolute washout', 'aw-u'));
@@ -165,7 +165,7 @@ export const renderers = {
 
   // ----- 2.3 bosniak ---------------------------------------------------------
   'bosniak'(root) {
-    note(root, 'Bosniak classification of cystic renal masses, version 2019 (Silverman 2019). Class by the most significant feature: enhancing nodule → IV; thick wall/septa or small obtuse protrusion → III; minimal (3 mm) thickening or ≥4 thin enhancing septa → IIF; 1–3 thin septa or calcification → II; thin smooth wall → I. Near-neighbors: renal-nephrometry, acr-tirads.');
+    note(root, 'Bosniak classification of cystic renal masses, version 2019 (Silverman 2019). Class by the most significant feature: enhancing nodule → IV; thick wall/septa or small obtuse protrusion → III; minimal (3 mm) thickening or ≥4 thin enhancing septa → IIF; 1–3 thin septa or calcification → II; thin smooth wall → I.');
     root.appendChild(pickField('Wall (thickest enhancing component)', 'bos-wall', BOSNIAK_WALL_OPTS));
     root.appendChild(pickField('Septa', 'bos-septa', BOSNIAK_SEPTA_OPTS));
     root.appendChild(pickField('Enhancing protrusion / nodule', 'bos-prot', BOSNIAK_PROT_OPTS));
@@ -185,7 +185,7 @@ export const renderers = {
 
   // ----- 2.4 ct-effective-dose -----------------------------------------------
   'ct-effective-dose'(root) {
-    note(root, 'CT effective dose (AAPM Report 96 / EUR 16262): effective dose (mSv) = DLP (mGy·cm) × region k factor. A population estimate (ICRP-60 weighting), not patient-specific organ dosimetry; pediatric factors differ. Near-neighbors: adrenal-ct-washout.');
+    note(root, 'CT effective dose (AAPM Report 96 / EUR 16262): effective dose (mSv) = DLP (mGy·cm) × region k factor. A population estimate (ICRP-60 weighting), not patient-specific organ dosimetry; pediatric factors differ.');
     root.appendChild(num('Dose-length product DLP (mGy·cm)', 'ct-dlp'));
     root.appendChild(pickField('Body region', 'ct-region', CT_REGION_OPTS));
     const o = out(); root.appendChild(o);

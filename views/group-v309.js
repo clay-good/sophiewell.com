@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'gvhd-grade'(root) {
-    note(root, 'Acute GVHD grade (modified Glucksberg) after allogeneic transplant. Pick the skin, liver, and gastrointestinal organ stages (0–4 each); the tile reports the overall grade (0–IV). Grades III–IV are severe. Staging thresholds are in the note. Near-neighbors: crs-grade.');
+    note(root, 'Acute GVHD grade (modified Glucksberg) after allogeneic transplant. Pick the skin, liver, and gastrointestinal organ stages (0–4 each); the tile reports the overall grade (0–IV). Grades III–IV are severe. Staging thresholds are in the note.');
     root.appendChild(select('Skin stage (by BSA rash)', 'gvhd-skin', [
       ['0', '0 — no rash'],
       ['1', '1 — rash <25% BSA'],

@@ -78,7 +78,7 @@ const BURDEN_OPTS = [
 export const renderers = {
   // ----- 2.1 bclc-hcc --------------------------------------------------------
   'bclc-hcc'(root) {
-    note(root, 'Barcelona Clinic Liver Cancer stage (Llovet 1999; 2022 update): maps ECOG performance status, tumor burden, and Child-Pugh liver function to stage 0/A/B/C/D with the guideline-linked strategy. Near-neighbors: meld-childpugh.');
+    note(root, 'Barcelona Clinic Liver Cancer stage (Llovet 1999; 2022 update): maps ECOG performance status, tumor burden, and Child-Pugh liver function to stage 0/A/B/C/D with the guideline-linked strategy.');
     root.appendChild(pickField('ECOG performance status', 'bclc-ecog', ECOG_OPTS));
     root.appendChild(pickField('Child-Pugh class', 'bclc-child', CHILD_OPTS));
     root.appendChild(pickField('Tumor burden', 'bclc-burden', BURDEN_OPTS));
@@ -98,7 +98,7 @@ export const renderers = {
 
   // ----- 2.2 imdc-rcc --------------------------------------------------------
   'imdc-rcc'(root) {
-    note(root, 'IMDC (Heng) metastatic RCC risk: six factors, 1 point each (Karnofsky < 80%, dx-to-therapy < 1 y, anemia, hypercalcemia, neutrophilia, thrombocytosis). Favorable 0, intermediate 1–2, poor ≥ 3. Near-neighbors: mskcc-rcc.');
+    note(root, 'IMDC (Heng) metastatic RCC risk: six factors, 1 point each (Karnofsky < 80%, dx-to-therapy < 1 y, anemia, hypercalcemia, neutrophilia, thrombocytosis). Favorable 0, intermediate 1–2, poor ≥ 3.');
     root.appendChild(checkField('Karnofsky performance status < 80%', 'imdc-karnofsky'));
     root.appendChild(checkField('< 1 year from diagnosis to systemic therapy', 'imdc-dxToTx'));
     root.appendChild(checkField('Anemia (Hb below normal)', 'imdc-anemia'));
@@ -121,7 +121,7 @@ export const renderers = {
 
   // ----- 2.3 mskcc-rcc -------------------------------------------------------
   'mskcc-rcc'(root) {
-    note(root, 'MSKCC (Motzer) metastatic RCC risk: five factors, 1 point each (Karnofsky < 80%, LDH > 1.5× ULN, low hemoglobin, high corrected calcium, dx-to-treatment < 1 y). Favorable 0, intermediate 1–2, poor ≥ 3. The historical comparator to IMDC. Near-neighbors: imdc-rcc.');
+    note(root, 'MSKCC (Motzer) metastatic RCC risk: five factors, 1 point each (Karnofsky < 80%, LDH > 1.5× ULN, low hemoglobin, high corrected calcium, dx-to-treatment < 1 y). Favorable 0, intermediate 1–2, poor ≥ 3. The historical comparator to IMDC.');
     root.appendChild(checkField('Karnofsky performance status < 80%', 'mskcc-karnofsky'));
     root.appendChild(checkField('LDH > 1.5× upper limit of normal', 'mskcc-ldh'));
     root.appendChild(checkField('Low hemoglobin (below normal)', 'mskcc-anemia'));
@@ -143,7 +143,7 @@ export const renderers = {
 
   // ----- 2.4 recist ----------------------------------------------------------
   recist(root) {
-    note(root, 'RECIST 1.1 tumor response (Eisenhauer 2009): CR (target sum 0); PR (≥ 30% decrease from baseline); PD (≥ 20% increase from nadir and ≥ 5 mm absolute, or a new lesion / non-target progression); SD otherwise. Consumes entered diameters. Near-neighbors: none.');
+    note(root, 'RECIST 1.1 tumor response (Eisenhauer 2009): CR (target sum 0); PR (≥ 30% decrease from baseline); PD (≥ 20% increase from nadir and ≥ 5 mm absolute, or a new lesion / non-target progression); SD otherwise. Consumes entered diameters.');
     root.appendChild(num('Baseline sum of target-lesion diameters (mm)', 'recist-baseline'));
     root.appendChild(num('Current sum of diameters (mm)', 'recist-current'));
     root.appendChild(num('Nadir (smallest recorded) sum of diameters (mm)', 'recist-nadir'));
@@ -166,7 +166,7 @@ export const renderers = {
 
   // ----- 2.5 glasgow-prognostic-score ----------------------------------------
   'glasgow-prognostic-score'(root) {
-    note(root, 'Modified Glasgow Prognostic Score (McMillan 2013): CRP ≤ 10 → 0; CRP > 10 with albumin ≥ 3.5 → 1; CRP > 10 and albumin < 3.5 → 2. A systemic-inflammation-based cancer prognostic score. Near-neighbors: pni-onodera, conut.');
+    note(root, 'Modified Glasgow Prognostic Score (McMillan 2013): CRP ≤ 10 → 0; CRP > 10 with albumin ≥ 3.5 → 1; CRP > 10 and albumin < 3.5 → 2. A systemic-inflammation-based cancer prognostic score.');
     root.appendChild(num('C-reactive protein (mg/L)', 'mgps-crp'));
     root.appendChild(num('Serum albumin (g/dL)', 'mgps-albumin'));
     const o = out(); root.appendChild(o);

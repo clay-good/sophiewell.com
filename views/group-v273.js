@@ -37,7 +37,7 @@ function render(o, r, valueLabel) {
 
 export const renderers = {
   'tyg-bmi'(root) {
-    note(root, 'TyG-BMI = TyG x BMI, TyG = ln((TG x glucose)/2) mg/dL (Er 2016). Adds adiposity to the triglyceride-glucose index; higher is more insulin-resistant. Near-neighbors: tyg-index, mets-ir, homa-ir.');
+    note(root, 'TyG-BMI = TyG x BMI, TyG = ln((TG x glucose)/2) mg/dL (Er 2016). Adds adiposity to the triglyceride-glucose index; higher is more insulin-resistant.');
     root.appendChild(num('Fasting triglycerides (mg/dL)', 'tygbmi-tg', { min: '0' }));
     root.appendChild(num('Fasting glucose (mg/dL)', 'tygbmi-glucose', { min: '0' }));
     root.appendChild(num('Body-mass index (kg/m²)', 'tygbmi-bmi', { min: '0' }));

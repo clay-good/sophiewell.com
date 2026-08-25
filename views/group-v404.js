@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'regan-morrey'(root) {
-    note(root, 'Regan-Morrey classification of a coronoid process fracture of the ulna, by the height of the fragment. Pick the type. I: avulsion of the coronoid tip; II: 50% or less of the coronoid height; III: more than 50% of the coronoid height (each subdivided A without / B with an elbow dislocation). Near-neighbors: mason-radial-head.');
+    note(root, 'Regan-Morrey classification of a coronoid process fracture of the ulna, by the height of the fragment. Pick the type. I: avulsion of the coronoid tip; II: 50% or less of the coronoid height; III: more than 50% of the coronoid height (each subdivided A without / B with an elbow dislocation).');
     root.appendChild(select('Regan-Morrey type', 'rm-type', [
       ['I', 'Type I - avulsion of the coronoid tip'],
       ['II', 'Type II - 50% or less of the coronoid height'],

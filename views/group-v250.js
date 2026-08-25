@@ -54,7 +54,7 @@ const M012 = (labels) => [['0', labels[0]], ['1', labels[1]], ['2', labels[2]]];
 
 export const renderers = {
   'pearl-index'(root) {
-    note(root, 'Pearl Index = (accidental pregnancies x 1200) / woman-months of exposure = failures per 100 woman-years. Lower = more effective. Near-neighbors: due-date.');
+    note(root, 'Pearl Index = (accidental pregnancies x 1200) / woman-months of exposure = failures per 100 woman-years. Lower = more effective.');
     root.appendChild(numInput('Accidental pregnancies', 'pi-preg', { min: '0' }));
     root.appendChild(numInput('Total months of exposure', 'pi-months', { min: '1' }));
     const o = out(); root.appendChild(o);
@@ -64,7 +64,7 @@ export const renderers = {
     postureNote(root);
   },
   'robinson-crl-dating'(root) {
-    note(root, 'Robinson-Fleming (1975): GA (days) = 8.052 x sqrt(1.037 x CRL) + 23.73. Valid CRL 5-84 mm. Near-neighbors: due-date.');
+    note(root, 'Robinson-Fleming (1975): GA (days) = 8.052 x sqrt(1.037 x CRL) + 23.73. Valid CRL 5-84 mm.');
     root.appendChild(numInput('Crown-rump length (mm)', 'crl-mm', { min: '0' }));
     const o = out(); root.appendChild(o);
     wire(['crl-mm'], () => safe(o, () => {
@@ -73,7 +73,7 @@ export const renderers = {
     postureNote(root);
   },
   'carpreg-ii'(root) {
-    note(root, 'CARPREG II (Silversides 2018): weighted maternal cardiac risk factors. Risk 0-1 = 5% ... > 4 = 41%. Near-neighbors: due-date.');
+    note(root, 'CARPREG II (Silversides 2018): weighted maternal cardiac risk factors. Risk 0-1 = 5% ... > 4 = 41%.');
     root.appendChild(check('Prior cardiac events or arrhythmias (3)', 'cp-events'));
     root.appendChild(check('NYHA III-IV or cyanosis (3)', 'cp-nyha'));
     root.appendChild(check('Mechanical heart valve (3)', 'cp-valve'));
@@ -91,7 +91,7 @@ export const renderers = {
     postureNote(root);
   },
   'malinas-score'(root) {
-    note(root, 'Malinas score: 5 prehospital-labour criteria each 0-2, 0-10. >= 6 delivery likely imminent. Near-neighbors: bishop.');
+    note(root, 'Malinas score: 5 prehospital-labour criteria each 0-2, 0-10. >= 6 delivery likely imminent.');
     root.appendChild(select('Parity', 'mal-par', M012(['1st pregnancy (0)', '2nd (1)', '>= 3rd (2)'])));
     root.appendChild(select('Duration of labour', 'mal-dur', M012(['< 3 h (0)', '3-5 h (1)', '> 6 h (2)'])));
     root.appendChild(select('Contraction duration', 'mal-con', M012(['< 1 min (0)', '1 min (1)', '> 1 min (2)'])));

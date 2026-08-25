@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'strasberg-bdi'(root) {
-    note(root, 'Strasberg classification (Strasberg 1995) of an iatrogenic bile duct injury (usually laparoscopic cholecystectomy). Pick the type. A leak from a small duct in continuity (cystic stump / Luschka); B occlusion of an aberrant sectoral duct; C leak from an aberrant sectoral duct not in continuity; D lateral injury to the extrahepatic duct; E transection of the main bile duct (E1-E5). Minor (A-C, often ERCP) vs major (D-E, often surgical). Near-neighbors: cholangitis-severity, cholecystitis-severity.');
+    note(root, 'Strasberg classification (Strasberg 1995) of an iatrogenic bile duct injury (usually laparoscopic cholecystectomy). Pick the type. A leak from a small duct in continuity (cystic stump / Luschka); B occlusion of an aberrant sectoral duct; C leak from an aberrant sectoral duct not in continuity; D lateral injury to the extrahepatic duct; E transection of the main bile duct (E1-E5). Minor (A-C, often ERCP) vs major (D-E, often surgical).');
     root.appendChild(select('Strasberg type', 'strasberg-type', [
       ['A', 'A - leak from a small duct in continuity (cystic stump / Luschka)'],
       ['B', 'B - occlusion of an aberrant sectoral duct'],

@@ -54,7 +54,7 @@ const S03 = [['0', '0 (none)'], ['1', '1 (mild)'], ['2', '2 (moderate)'], ['3', 
 
 export const renderers = {
   'vcss'(root) {
-    note(root, 'Venous Clinical Severity Score (Vasquez 2010): 10 attributes each 0-3, 0-30. Complements CEAP. Near-neighbors: wells-dvt-caprini.');
+    note(root, 'Venous Clinical Severity Score (Vasquez 2010): 10 attributes each 0-3, 0-30. Complements CEAP.');
     const items = [['vc-pain', 'pain', 'Pain'], ['vc-var', 'varicose', 'Varicose veins'], ['vc-edema', 'edema', 'Venous edema'], ['vc-pig', 'pigmentation', 'Skin pigmentation'], ['vc-inf', 'inflammation', 'Inflammation'], ['vc-ind', 'induration', 'Induration'], ['vc-uln', 'ulcerNumber', 'Number of active ulcers'], ['vc-uld', 'ulcerDuration', 'Active ulcer duration'], ['vc-uls', 'ulcerSize', 'Active ulcer size'], ['vc-comp', 'compression', 'Use of compression therapy']];
     for (const [id, , label] of items) root.appendChild(select(`${label} (0-3)`, id, S03));
     const o = out(); root.appendChild(o);
@@ -65,7 +65,7 @@ export const renderers = {
     postureNote(root);
   },
   'pen-fast'(root) {
-    note(root, 'PEN-FAST (Trubiano 2020): Five years, Anaphylaxis/SCAR, Treatment required, 0-5. < 3 low risk -> direct challenge. Near-neighbors: auditc.');
+    note(root, 'PEN-FAST (Trubiano 2020): Five years, Anaphylaxis/SCAR, Treatment required, 0-5. < 3 low risk -> direct challenge.');
     root.appendChild(check('Reaction within the last Five years (2)', 'pf-recent'));
     root.appendChild(check('Anaphylaxis/angioedema OR severe cutaneous reaction (2)', 'pf-anaph'));
     root.appendChild(check('Treatment required for the reaction (1)', 'pf-treat'));
@@ -76,7 +76,7 @@ export const renderers = {
     postureNote(root);
   },
   'harris-hip-score'(root) {
-    note(root, 'Harris Hip Score (Harris 1969): pain (0-44) + function (0-47) + deformity (0/4) + ROM (0-5) = 0-100. Near-neighbors: quickdash.');
+    note(root, 'Harris Hip Score (Harris 1969): pain (0-44) + function (0-47) + deformity (0/4) + ROM (0-5) = 0-100.');
     root.appendChild(numInput('Pain (0-44)', 'hh-pain', { min: '0', max: '44' }));
     root.appendChild(numInput('Function / gait + activities (0-47)', 'hh-func', { min: '0', max: '47' }));
     root.appendChild(numInput('Absence of deformity (0 or 4)', 'hh-def', { min: '0', max: '4' }));
@@ -88,7 +88,7 @@ export const renderers = {
     postureNote(root);
   },
   'koivuranta-ponv'(root) {
-    note(root, 'Koivuranta PONV (1997): female, prior PONV, motion sickness, non-smoker, surgery > 60 min, each 1 point. Near-neighbors: apfel.');
+    note(root, 'Koivuranta PONV (1997): female, prior PONV, motion sickness, non-smoker, surgery > 60 min, each 1 point.');
     root.appendChild(check('Female sex', 'kv-female'));
     root.appendChild(check('Previous PONV', 'kv-prior'));
     root.appendChild(check('History of motion sickness', 'kv-motion'));

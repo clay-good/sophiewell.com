@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'ficat-arlet'(root) {
-    note(root, 'Ficat-Arlet staging (Ficat 1985; Ficat & Arlet 1980) of femoral-head osteonecrosis (avascular necrosis). Pick the stage. 0 silent (normal X-ray); I pre-radiographic (abnormal MRI); II pre-collapse (sclerosis / cysts, sphericity preserved); III collapse (crescent sign, flattening); IV secondary osteoarthritis. The pre-collapse (0-II) vs post-collapse (III-IV) split is the classic joint-preservation-vs-replacement watershed. Near-neighbors: hawkins-talar, kellgren-lawrence.');
+    note(root, 'Ficat-Arlet staging (Ficat 1985; Ficat & Arlet 1980) of femoral-head osteonecrosis (avascular necrosis). Pick the stage. 0 silent (normal X-ray); I pre-radiographic (abnormal MRI); II pre-collapse (sclerosis / cysts, sphericity preserved); III collapse (crescent sign, flattening); IV secondary osteoarthritis. The pre-collapse (0-II) vs post-collapse (III-IV) split is the classic joint-preservation-vs-replacement watershed.');
     root.appendChild(select('Ficat-Arlet stage', 'ficat-stage', [
       ['0', '0 — silent hip (normal X-ray)'],
       ['I', 'I — pre-radiographic (abnormal MRI)'],

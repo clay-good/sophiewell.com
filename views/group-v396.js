@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'sievers-bav'(root) {
-    note(root, 'Sievers classification of a bicuspid aortic valve, by the number of raphes. Pick the type. 0: no raphe (two symmetrical leaflets); 1: one raphe (the most common; sub-typed by the fused sinuses L-R / R-N / N-L); 2: two raphes (least common). Near-neighbors: nyha-class.');
+    note(root, 'Sievers classification of a bicuspid aortic valve, by the number of raphes. Pick the type. 0: no raphe (two symmetrical leaflets); 1: one raphe (the most common; sub-typed by the fused sinuses L-R / R-N / N-L); 2: two raphes (least common).');
     root.appendChild(select('Sievers type', 'sievers-type', [
       ['0', 'Type 0 - no raphe'],
       ['1', 'Type 1 - one raphe (most common)'],

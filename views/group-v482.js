@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'russell-taylor-subtroch'(root) {
-    note(root, 'The Russell-Taylor classification of subtrochanteric femur fractures, by whether the fracture involves the piriformis fossa (type I intact, type II involved) and whether the lesser trochanter is attached (A) or detached (B). Devised to guide intramedullary nail selection. Pick the type. IA: piriformis intact, lesser trochanter attached; IB: piriformis intact, lesser trochanter detached; IIA: piriformis involved, lesser trochanter attached; IIB: piriformis involved, lesser trochanter detached. Reports the type the clinician has determined, not a diagnosis or a treatment decision. Near-neighbor: seinsheimer-subtroch.');
+    note(root, 'The Russell-Taylor classification of subtrochanteric femur fractures, by whether the fracture involves the piriformis fossa (type I intact, type II involved) and whether the lesser trochanter is attached (A) or detached (B). Devised to guide intramedullary nail selection. Pick the type. IA: piriformis intact, lesser trochanter attached; IB: piriformis intact, lesser trochanter detached; IIA: piriformis involved, lesser trochanter attached; IIB: piriformis involved, lesser trochanter detached. Reports the type the clinician has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('Russell-Taylor type', 'rt-type', [
       ['IA', 'IA - piriformis intact, lesser trochanter attached'],
       ['IB', 'IB - piriformis intact, lesser trochanter detached'],

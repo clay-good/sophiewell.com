@@ -46,7 +46,7 @@ function render(o, r, valueLabel) {
 
 export const renderers = {
   'spherical-equivalent'(root) {
-    note(root, 'Spherical equivalent = sphere + cylinder / 2. Near-neighbors: vertex-distance.');
+    note(root, 'Spherical equivalent = sphere + cylinder / 2.');
     root.appendChild(numInput('Sphere (D)', 'se-sph'));
     root.appendChild(numInput('Cylinder (D)', 'se-cyl'));
     const o = out(); root.appendChild(o);
@@ -56,7 +56,7 @@ export const renderers = {
     postureNote(root);
   },
   'vertex-distance'(root) {
-    note(root, 'Vertex-corrected power = Fs / (1 - d·Fs), d in meters. Significant beyond ~+/-4 D. Near-neighbors: spherical-equivalent.');
+    note(root, 'Vertex-corrected power = Fs / (1 - d·Fs), d in meters. Significant beyond ~+/-4 D.');
     root.appendChild(numInput('Spectacle-plane power (D)', 'vx-power'));
     root.appendChild(numInput('Vertex distance (mm)', 'vx-mm', { min: '0' }));
     const o = out(); root.appendChild(o);
@@ -66,7 +66,7 @@ export const renderers = {
     postureNote(root);
   },
   'percent-tissue-altered'(root) {
-    note(root, 'PTA (Santhiago 2014) = (flap thickness + ablation depth) / central corneal thickness x 100. >= 40% high ectasia risk. Near-neighbors: randleman-erss.');
+    note(root, 'PTA (Santhiago 2014) = (flap thickness + ablation depth) / central corneal thickness x 100. >= 40% high ectasia risk.');
     root.appendChild(numInput('Flap thickness (um)', 'pta-flap', { min: '0' }));
     root.appendChild(numInput('Ablation depth (um)', 'pta-abl', { min: '0' }));
     root.appendChild(numInput('Central corneal thickness (um)', 'pta-cct', { min: '0' }));
@@ -77,7 +77,7 @@ export const renderers = {
     postureNote(root);
   },
   'randleman-erss'(root) {
-    note(root, 'Randleman ERSS (2008): topography + residual stromal bed + age + corneal thickness + MRSE, each 0-4. 0-2 low, 3 moderate, >= 4 high ectasia risk. Near-neighbors: percent-tissue-altered.');
+    note(root, 'Randleman ERSS (2008): topography + residual stromal bed + age + corneal thickness + MRSE, each 0-4. 0-2 low, 3 moderate, >= 4 high ectasia risk.');
     root.appendChild(select('Topography', 'er-topo', [['0', 'Normal / symmetric bowtie (0)'], ['2', 'Asymmetric bowtie (2)'], ['3', 'Inferior steepening / skewed axis (3)'], ['4', 'Abnormal (4)']]));
     root.appendChild(numInput('Residual stromal bed (um)', 'er-rsb', { min: '0' }));
     root.appendChild(numInput('Age (years)', 'er-age', { min: '0' }));

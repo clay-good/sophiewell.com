@@ -46,7 +46,7 @@ const S03 = [['0', '0'], ['1', '1'], ['2', '2'], ['3', '3']];
 
 export const renderers = {
   'sccai'(root) {
-    note(root, 'SCCAI (Walmsley 1998): 6 domains, 0-19. >= 5 active disease. Near-neighbors: mayo-uc, harvey-bradshaw.');
+    note(root, 'SCCAI (Walmsley 1998): 6 domains, 0-19. >= 5 active disease.');
     root.appendChild(select('Bowel frequency, daytime', 'sc-day', [['0', '1-3/day (0)'], ['1', '4-6/day (1)'], ['2', '7-9/day (2)'], ['3', '> 9/day (3)']]));
     root.appendChild(select('Bowel frequency, night', 'sc-night', [['0', 'None (0)'], ['1', '1-3 (1)'], ['2', '4-6 (2)']]));
     root.appendChild(select('Urgency of defecation', 'sc-urg', [['0', 'None (0)'], ['1', 'Hurry (1)'], ['2', 'Immediately (2)'], ['3', 'Incontinence (3)']]));
@@ -60,7 +60,7 @@ export const renderers = {
     postureNote(root);
   },
   'pucai'(root) {
-    note(root, 'PUCAI (Turner 2007): 6 items, 0-85. < 10 remission, 10-34 mild, 35-64 moderate, 65-85 severe. Near-neighbors: sccai, mayo-uc.');
+    note(root, 'PUCAI (Turner 2007): 6 items, 0-85. < 10 remission, 10-34 mild, 35-64 moderate, 65-85 severe.');
     root.appendChild(select('Abdominal pain', 'pu-pain', [['0', 'None (0)'], ['5', 'Can be ignored (5)'], ['10', 'Cannot be ignored (10)']]));
     root.appendChild(select('Rectal bleeding', 'pu-bleed', [['0', 'None (0)'], ['10', 'Small, < 50% stools (10)'], ['20', 'Small, most stools (20)'], ['30', 'Large, > 50% (30)']]));
     root.appendChild(select('Stool consistency', 'pu-cons', [['0', 'Formed (0)'], ['5', 'Partially formed (5)'], ['10', 'Completely unformed (10)']]));
@@ -74,7 +74,7 @@ export const renderers = {
     postureNote(root);
   },
   'bbps-boston'(root) {
-    note(root, 'Boston Bowel Prep Scale (Lai 2009): right, transverse, left colon each 0-3. Total 0-9; >= 6 (each segment >= 2) adequate. Near-neighbors: pucai.');
+    note(root, 'Boston Bowel Prep Scale (Lai 2009): right, transverse, left colon each 0-3. Total 0-9; >= 6 (each segment >= 2) adequate.');
     root.appendChild(select('Right colon segment (0-3)', 'bb-right', S03));
     root.appendChild(select('Transverse colon segment (0-3)', 'bb-trans', S03));
     root.appendChild(select('Left colon segment (0-3)', 'bb-left', S03));
@@ -85,7 +85,7 @@ export const renderers = {
     postureNote(root);
   },
   'simplified-aih'(root) {
-    note(root, 'Simplified AIH criteria (IAIHG 2008): autoantibodies + IgG + histology + viral-absent, 0-8. >= 6 probable, >= 7 definite. Near-neighbors: king-score.');
+    note(root, 'Simplified AIH criteria (IAIHG 2008): autoantibodies + IgG + histology + viral-absent, 0-8. >= 6 probable, >= 7 definite.');
     root.appendChild(select('Autoantibodies (ANA/SMA/anti-LKM1/SLA)', 'aih-auto', [['0', 'Negative (0)'], ['1', 'Titer 1:40 (1)'], ['2', 'Titer >= 1:80 (2)']]));
     root.appendChild(select('IgG', 'aih-igg', [['0', 'Normal (0)'], ['1', '> upper limit of normal (1)'], ['2', '> 1.1x ULN (2)']]));
     root.appendChild(select('Liver histology', 'aih-hist', [['0', 'Atypical (0)'], ['1', 'Compatible with AIH (1)'], ['2', 'Typical of AIH (2)']]));

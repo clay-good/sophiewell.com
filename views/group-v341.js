@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'mason-radial-head'(root) {
-    note(root, 'Mason-Johnston classification (Mason 1954; type IV added Johnston 1962) of a radial head fracture — the fracture pattern. Pick the type. I nondisplaced (< 2 mm), no block; II displaced (> 2 mm) partial-articular, may block motion; III comminuted whole head; IV with an associated elbow dislocation. The management shorthand is the classically taught association, not an order. Near-neighbors: neer-classification, garden-classification.');
+    note(root, 'Mason-Johnston classification (Mason 1954; type IV added Johnston 1962) of a radial head fracture — the fracture pattern. Pick the type. I nondisplaced (< 2 mm), no block; II displaced (> 2 mm) partial-articular, may block motion; III comminuted whole head; IV with an associated elbow dislocation. The management shorthand is the classically taught association, not an order.');
     root.appendChild(select('Mason type', 'mason-type', [
       ['I', 'I — nondisplaced / minimally displaced (< 2 mm), no block'],
       ['II', 'II — displaced (> 2 mm) partial-articular, may block motion'],

@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'sanders-calcaneal'(root) {
-    note(root, 'Sanders classification (Sanders 1993) of an intra-articular calcaneal fracture — the CT-based grade of posterior-facet fragmentation. Pick the type. I nondisplaced (< 2 mm); II two-part (one fracture line); III three-part (two fracture lines) with a depressed middle fragment; IV four or more parts (highly comminuted). Graded on the coronal CT at the widest undersurface of the posterior facet. Near-neighbors: hawkins-talar, weber-ankle.');
+    note(root, 'Sanders classification (Sanders 1993) of an intra-articular calcaneal fracture — the CT-based grade of posterior-facet fragmentation. Pick the type. I nondisplaced (< 2 mm); II two-part (one fracture line); III three-part (two fracture lines) with a depressed middle fragment; IV four or more parts (highly comminuted). Graded on the coronal CT at the widest undersurface of the posterior facet.');
     root.appendChild(select('Sanders type', 'sanders-type', [
       ['I', 'I — nondisplaced (< 2 mm)'],
       ['II', 'II — two-part (one fracture line)'],

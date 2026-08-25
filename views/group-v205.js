@@ -55,7 +55,7 @@ function wire(ids, run) {
 export const renderers = {
   // ----- 2.4 cat-copd --------------------------------------------------------
   'cat-copd'(root) {
-    note(root, 'COPD Assessment Test (Jones 2009): eight patient-completed items, each 0–5; total 0–40. Impact: low < 10, medium 10–20, high 21–30, very high > 30. GOLD uses ≥ 10 as the "more symptoms" threshold. Score each item 0 (no impact) to 5 (most impact). Near-neighbors: mmrc-dyspnea, gold-spirometry, decaf-score.');
+    note(root, 'COPD Assessment Test (Jones 2009): eight patient-completed items, each 0–5; total 0–40. Impact: low < 10, medium 10–20, high 21–30, very high > 30. GOLD uses ≥ 10 as the "more symptoms" threshold. Score each item 0 (no impact) to 5 (most impact).');
     const items = [
       ['cat-cough', 'Cough (0 never – 5 all the time)'],
       ['cat-phlegm', 'Phlegm / mucus (0 none – 5 chest full)'],
@@ -83,7 +83,7 @@ export const renderers = {
 
   // ----- 2.1 lent-score ------------------------------------------------------
   'lent-score'(root) {
-    note(root, 'LENT score (Clive 2014): the first effusion-specific survival score for malignant pleural effusion — pleural-fluid LDH, ECOG, serum neutrophil-to-lymphocyte ratio, and tumor type; total 0–7. Risk: low 0–1 (≈ 319 days), moderate 2–4 (≈ 130 days), high 5–7 (≈ 44 days). Near-neighbors: rapid-pleural, ecog-karnofsky.');
+    note(root, 'LENT score (Clive 2014): the first effusion-specific survival score for malignant pleural effusion — pleural-fluid LDH, ECOG, serum neutrophil-to-lymphocyte ratio, and tumor type; total 0–7. Risk: low 0–1 (≈ 319 days), moderate 2–4 (≈ 130 days), high 5–7 (≈ 44 days).');
     root.appendChild(num('Pleural-fluid LDH (IU/L)', 'lent-ldh', { min: '0' }));
     root.appendChild(selectField('ECOG performance status', 'lent-ecog', [
       { value: '0', text: '0 — fully active (+0)' },
@@ -110,7 +110,7 @@ export const renderers = {
 
   // ----- 2.2 ado-index -------------------------------------------------------
   'ado-index'(root) {
-    note(root, 'ADO index (Puhan 2009): a primary-care-friendly COPD mortality index needing no 6-minute walk test — age, mMRC dyspnea, and FEV₁ % predicted; total 0–10. Higher scores predict higher 3-year all-cause mortality. Near-neighbors: bode-index, gold-spirometry, mmrc-dyspnea.');
+    note(root, 'ADO index (Puhan 2009): a primary-care-friendly COPD mortality index needing no 6-minute walk test — age, mMRC dyspnea, and FEV₁ % predicted; total 0–10. Higher scores predict higher 3-year all-cause mortality.');
     root.appendChild(num('Age (years)', 'ado-age', { min: '0' }));
     root.appendChild(selectField('mMRC dyspnea grade', 'ado-mmrc', [
       { value: '0', text: '0 — breathless with strenuous exercise (+0)' },
@@ -133,7 +133,7 @@ export const renderers = {
 
   // ----- 2.3 dose-index ------------------------------------------------------
   'dose-index'(root) {
-    note(root, 'DOSE index (Jones 2009): a four-item composite for routine primary-care COPD review — dyspnea (mMRC), obstruction (FEV₁ % predicted), current smoking, and exacerbations in the past year; total 0–8. A score ≥ 4 marks markedly higher mortality and admission risk. Near-neighbors: bode-index, ado-index, pack-years.');
+    note(root, 'DOSE index (Jones 2009): a four-item composite for routine primary-care COPD review — dyspnea (mMRC), obstruction (FEV₁ % predicted), current smoking, and exacerbations in the past year; total 0–8. A score ≥ 4 marks markedly higher mortality and admission risk.');
     root.appendChild(selectField('mMRC dyspnea grade', 'dose-mmrc', [
       { value: '0', text: '0 — strenuous exercise only (+0)' },
       { value: '1', text: '1 — hurrying / slight hill (+0)' },
@@ -157,7 +157,7 @@ export const renderers = {
 
   // ----- 2.5 sacs-osa --------------------------------------------------------
   'sacs-osa'(root) {
-    note(root, 'Sleep Apnea Clinical Score (Flemons 1994): adjusted neck circumference = measured neck (cm) + 4 (hypertension) + 3 (habitual snoring) + 3 (nocturnal gasping/choking). Bands: ≤ 43 low, 43–48 intermediate, > 48 high pretest probability of OSA. An anthropometry-driven triage rule. Near-neighbors: stop-bang, berlin-osa, nosas-score.');
+    note(root, 'Sleep Apnea Clinical Score (Flemons 1994): adjusted neck circumference = measured neck (cm) + 4 (hypertension) + 3 (habitual snoring) + 3 (nocturnal gasping/choking). Bands: ≤ 43 low, 43–48 intermediate, > 48 high pretest probability of OSA. An anthropometry-driven triage rule.');
     root.appendChild(num('Measured neck circumference (cm)', 'sacs-neck', { min: '20', max: '80' }));
     root.appendChild(checkField('Hypertension (+4)', 'sacs-htn'));
     root.appendChild(checkField('Habitual snoring (+3)', 'sacs-snore'));

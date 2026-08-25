@@ -37,7 +37,7 @@ function render(o, r, valueLabel) {
 
 export const renderers = {
   'halp-score'(root) {
-    note(root, 'HALP score = hemoglobin x albumin x ALC / platelets (Chen 2015). A LOWER value is less favorable. Enter hemoglobin and albumin in g/L (multiply a g/dL value by 10). Near-neighbors: pni-onodera, gnri, lmr.');
+    note(root, 'HALP score = hemoglobin x albumin x ALC / platelets (Chen 2015). A LOWER value is less favorable. Enter hemoglobin and albumin in g/L (multiply a g/dL value by 10).');
     root.appendChild(num('Hemoglobin (g/L)', 'halp-hgb', { min: '0' }));
     root.appendChild(num('Serum albumin (g/L)', 'halp-alb', { min: '0' }));
     root.appendChild(num('Absolute lymphocyte count (10⁹/L)', 'halp-alc', { min: '0' }));

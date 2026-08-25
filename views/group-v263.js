@@ -46,7 +46,7 @@ function render(o, r, valueLabel) {
 
 export const renderers = {
   'mulbsta'(root) {
-    note(root, 'MuLBSTA score (Guo 2019): 90-day mortality in viral pneumonia. Max 20; >= 12 = high risk. Near-neighbors: curb-65, psi, a-drop.');
+    note(root, 'MuLBSTA score (Guo 2019): 90-day mortality in viral pneumonia. Max 20; >= 12 = high risk.');
     root.appendChild(check('Multilobular infiltrate (>= 2 lobes) (+5)', 'mu-multi'));
     root.appendChild(check('Lymphocyte <= 0.8 x10^9/L (+4)', 'mu-lymph'));
     root.appendChild(check('Bacterial coinfection (+4)', 'mu-bact'));
@@ -63,7 +63,7 @@ export const renderers = {
     postureNote(root);
   },
   'ottawa-copd'(root) {
-    note(root, 'Ottawa COPD Risk Scale (Stiell 2014, original derivation weighting): short-term serious-outcome risk after an ED COPD exacerbation. Total 0-16. Near-neighbors: decaf-score, bap-65, curb-65.');
+    note(root, 'Ottawa COPD Risk Scale (Stiell 2014, original derivation weighting): short-term serious-outcome risk after an ED COPD exacerbation. Total 0-16.');
     root.appendChild(check('Prior coronary bypass graft (+1)', 'ot-cabg'));
     root.appendChild(check('Prior peripheral-vascular-disease intervention (+1)', 'ot-pvd'));
     root.appendChild(check('Prior intubation for respiratory distress (+2)', 'ot-intub'));
@@ -85,7 +85,7 @@ export const renderers = {
     postureNote(root);
   },
   'sepsis-obstetrics-score'(root) {
-    note(root, 'Sepsis in Obstetrics Score (Albright 2014): pregnancy-specific, APACHE-II-derived ICU-admission risk. Eight two-tailed bands, total 0-28; >= 6 = high risk. Near-neighbors: meows, qsofa-sofa.');
+    note(root, 'Sepsis in Obstetrics Score (Albright 2014): pregnancy-specific, APACHE-II-derived ICU-admission risk. Eight two-tailed bands, total 0-28; >= 6 = high risk.');
     root.appendChild(select('Temperature (C)', 'sos-temp', [['normal', '36-38.4 (normal, 0)'], ['gt409', '> 40.9 (+4)'], ['t39_409', '39-40.9 (+3)'], ['t385_389', '38.5-38.9 (+2)'], ['t34_359', '34-35.9 (+1)'], ['t32_339', '32-33.9 (+2)'], ['t30_319', '30-31.9 (+3)'], ['lt30', '< 30 (+4)']]));
     root.appendChild(select('Systolic BP (mmHg)', 'sos-sbp', [['normal', '> 90 (normal, 0)'], ['s70_90', '70-90 (+1)'], ['lt70', '< 70 (+2)']]));
     root.appendChild(select('Heart rate (bpm)', 'sos-hr', [['normal', '<= 119 (normal, 0)'], ['h120_129', '120-129 (+1)'], ['h130_149', '130-149 (+2)'], ['h150_179', '150-179 (+3)'], ['gt179', '> 179 (+4)']]));

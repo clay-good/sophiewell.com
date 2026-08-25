@@ -38,7 +38,7 @@ const IDS = ['pir-clb', 'pir-mc', 'pir-lht', 'pir-pc', 'pir-eh', 'pir-re'];
 
 export const renderers = {
   'pirani-clubfoot'(root) {
-    note(root, 'Pirani score for clubfoot severity - six signs, each 0 (normal) / 0.5 (moderate) / 1 (severe), split into a midfoot and a hindfoot contracture score (total 0-6). Higher = more severe. Near-neighbors: catterall-perthes.');
+    note(root, 'Pirani score for clubfoot severity - six signs, each 0 (normal) / 0.5 (moderate) / 1 (severe), split into a midfoot and a hindfoot contracture score (total 0-6). Higher = more severe.');
     note(root, 'Midfoot signs:');
     root.appendChild(select('Curvature of the lateral border', 'pir-clb'));
     root.appendChild(select('Medial crease', 'pir-mc'));

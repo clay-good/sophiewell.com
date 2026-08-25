@@ -53,7 +53,7 @@ function render(o, r, valueLabel, value) {
 
 export const renderers = {
   'uas7'(root) {
-    note(root, 'UAS7 (Mlynek 2008): 7-day sum of daily wheal (0-3) and itch (0-3) scores (0-42). 0 free, 1-6 well-controlled, 7-15 mild, 16-27 moderate, 28-42 severe. Near-neighbors: scorad, easi.');
+    note(root, 'UAS7 (Mlynek 2008): 7-day sum of daily wheal (0-3) and itch (0-3) scores (0-42). 0 free, 1-6 well-controlled, 7-15 mild, 16-27 moderate, 28-42 severe.');
     root.appendChild(num('Sum of 7 daily wheal scores (0-21)', 'uas-wheal', { min: '0', max: '21' }));
     root.appendChild(num('Sum of 7 daily itch scores (0-21)', 'uas-itch', { min: '0', max: '21' }));
     const o = out(); root.appendChild(o);
@@ -64,7 +64,7 @@ export const renderers = {
     postureNote(root);
   },
   'hiscr'(root) {
-    note(root, 'HiSCR (Kimball 2014): responder if >= 50% reduction in abscess + nodule count with no increase in abscesses or draining fistulas. Near-neighbors: hurley-stage, pasi.');
+    note(root, 'HiSCR (Kimball 2014): responder if >= 50% reduction in abscess + nodule count with no increase in abscesses or draining fistulas.');
     root.appendChild(num('Baseline abscess count', 'hs-bab', { min: '0' }));
     root.appendChild(num('Baseline inflammatory nodule count', 'hs-bnod', { min: '0' }));
     root.appendChild(num('Baseline draining-fistula count', 'hs-bfist', { min: '0' }));
@@ -79,7 +79,7 @@ export const renderers = {
     postureNote(root);
   },
   'hurley-stage'(root) {
-    note(root, 'Hurley staging (Hurley 1989): Stage I abscess(es) without tracts/scarring; II recurrent abscesses with sinus tracts and scarring; III diffuse or interconnected tracts. Near-neighbors: hiscr, pasi.');
+    note(root, 'Hurley staging (Hurley 1989): Stage I abscess(es) without tracts/scarring; II recurrent abscesses with sinus tracts and scarring; III diffuse or interconnected tracts.');
     root.appendChild(check('Sinus tract(s) present', 'hur-tract'));
     root.appendChild(check('Scarring / cicatrization present', 'hur-scar'));
     root.appendChild(check('Diffuse involvement or multiple interconnected tracts and abscesses', 'hur-diffuse'));
@@ -91,7 +91,7 @@ export const renderers = {
     postureNote(root);
   },
   'poem'(root) {
-    note(root, 'POEM (Charman 2004): 7 symptom items each 0-4 by days affected in the past week (0-28). 0-2 clear, 3-7 mild, 8-16 moderate, 17-24 severe, 25-28 very severe. Near-neighbors: scorad, easi.');
+    note(root, 'POEM (Charman 2004): 7 symptom items each 0-4 by days affected in the past week (0-28). 0-2 clear, 3-7 mild, 8-16 moderate, 17-24 severe, 25-28 very severe.');
     const items = [['poem-itch', 'itch', 'Itch'], ['poem-sleep', 'sleep', 'Sleep disturbance'], ['poem-bleed', 'bleeding', 'Bleeding'], ['poem-weep', 'weeping', 'Weeping / oozing'], ['poem-crack', 'cracking', 'Cracking'], ['poem-flake', 'flaking', 'Flaking'], ['poem-dry', 'dryness', 'Dryness / roughness']];
     for (const [id, , label] of items) root.appendChild(grade04(label, id));
     const o = out(); root.appendChild(o);
@@ -102,7 +102,7 @@ export const renderers = {
     postureNote(root);
   },
   'alden'(root) {
-    note(root, 'ALDEN (Sassolas 2010): per-drug causality for SJS/TEN. < 0 very unlikely, 0-1 unlikely, 2-3 possible, 4-5 probable, >= 6 very probable. Near-neighbors: scorten, regiscar-dress.');
+    note(root, 'ALDEN (Sassolas 2010): per-drug causality for SJS/TEN. < 0 very unlikely, 0-1 unlikely, 2-3 possible, 4-5 probable, >= 6 very probable.');
     root.appendChild(select('Delay from drug intake to index day', 'ald-delay', [['3', 'Suggestive: 5-28 days (+3)'], ['2', 'Compatible: 29-56 days (+2)'], ['1', 'Likely: 1-4 days (+1)'], ['-1', 'Unlikely: > 56 days (-1)'], ['-3', 'Excluded: on/after index day (-3)']]));
     root.appendChild(select('Drug present in body on index day', 'ald-present', [['0', 'Definite (0)'], ['-1', 'Doubtful (-1)'], ['-3', 'Excluded (-3)']]));
     root.appendChild(select('Prechallenge / rechallenge', 'ald-chal', [['4', 'Positive, specific for disease and drug (+4)'], ['2', 'Positive for disease or drug (+2)'], ['1', 'Positive, unspecific (+1)'], ['0', 'Not done / unknown (0)'], ['-2', 'Negative (-2)']]));
@@ -117,7 +117,7 @@ export const renderers = {
     postureNote(root);
   },
   'pest'(root) {
-    note(root, 'PEST (Ibrahim 2009): 5 yes/no items; >= 3 refers for possible psoriatic arthritis. Near-neighbors: dapsa, rapid3.');
+    note(root, 'PEST (Ibrahim 2009): 5 yes/no items; >= 3 refers for possible psoriatic arthritis.');
     const items = [['pest-swollen', 'swollenJoint', 'Have you ever had a swollen joint (or joints)?'], ['pest-dx', 'arthritisDx', 'Has a doctor ever told you that you have arthritis?'], ['pest-nail', 'nailPits', 'Do your nails have holes or pits?'], ['pest-heel', 'heelPain', 'Have you had pain in your heel?'], ['pest-dact', 'dactylitis', 'Have you had a finger or toe completely swollen and painful (dactylitis)?']];
     for (const [id, , label] of items) root.appendChild(check(label, id));
     const o = out(); root.appendChild(o);
@@ -128,7 +128,7 @@ export const renderers = {
     postureNote(root);
   },
   'glasgow-7-point-checklist'(root) {
-    note(root, 'Weighted Glasgow 7-point checklist (MacKie 1990; weighted): major features 2 points each, minor 1 point each. >= 3 prompts referral for a suspicious lesion. Near-neighbors: melanoma-t-stage, abcde.');
+    note(root, 'Weighted Glasgow 7-point checklist (MacKie 1990; weighted): major features 2 points each, minor 1 point each. >= 3 prompts referral for a suspicious lesion.');
     root.appendChild(check('Change in size of lesion (major, +2)', 'g7-size'));
     root.appendChild(check('Irregular shape or border (major, +2)', 'g7-shape'));
     root.appendChild(check('Irregular color / change in pigmentation (major, +2)', 'g7-color'));

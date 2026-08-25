@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'la-esophagitis'(root) {
-    note(root, 'Los Angeles (LA) classification of erosive esophagitis (Lundell 1999). Pick the endoscopic grade. Grades A–B are mild (breaks not bridging fold tops); C–D are severe (bridging folds; D ≥ 75% circumference). It grades erosive disease, not non-erosive reflux or Barrett esophagus. Near-neighbors: forrest.');
+    note(root, 'Los Angeles (LA) classification of erosive esophagitis (Lundell 1999). Pick the endoscopic grade. Grades A–B are mild (breaks not bridging fold tops); C–D are severe (bridging folds; D ≥ 75% circumference). It grades erosive disease, not non-erosive reflux or Barrett esophagus.');
     root.appendChild(select('LA grade (extent of mucosal breaks)', 'la-grade', [
       ['A', 'A — break(s) ≤ 5 mm, not between two fold tops'],
       ['B', 'B — break(s) > 5 mm, not between two fold tops'],

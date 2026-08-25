@@ -42,7 +42,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'cosyntropin-stim'(root) {
-    note(root, 'Cosyntropin (ACTH) stimulation test interpretation. Enter the peak stimulated serum cortisol (30 or 60 min after 250 µg cosyntropin); the tile compares it with the standard-immunoassay threshold of 18 µg/dL (500 nmol/L). Newer, more specific assays use lower cutoffs — use your laboratory’s. Near-neighbors: steroid-equiv, adrenal-ct-washout.');
+    note(root, 'Cosyntropin (ACTH) stimulation test interpretation. Enter the peak stimulated serum cortisol (30 or 60 min after 250 µg cosyntropin); the tile compares it with the standard-immunoassay threshold of 18 µg/dL (500 nmol/L). Newer, more specific assays use lower cutoffs — use your laboratory’s.');
     root.appendChild(numInput('Peak stimulated cortisol', 'csy-cortisol', { min: '0' }));
     root.appendChild(select('Unit', 'csy-unit', [
       ['µg/dL', 'µg/dL'],

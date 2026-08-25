@@ -32,7 +32,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'prague-barrett'(root) {
-    note(root, 'Prague C&M criteria (Sharma 2006) for grading the extent of Barrett\'s esophagus. Enter the circumferential (C) and maximal (M) extent in cm above the gastroesophageal junction; M must be at least as long as C. Reports the Prague notation (C_ M_) and the traditional short-/long-segment (M >= 3 cm) descriptor. Near-neighbors: la-esophagitis.');
+    note(root, 'Prague C&M criteria (Sharma 2006) for grading the extent of Barrett\'s esophagus. Enter the circumferential (C) and maximal (M) extent in cm above the gastroesophageal junction; M must be at least as long as C. Reports the Prague notation (C_ M_) and the traditional short-/long-segment (M >= 3 cm) descriptor.');
     root.appendChild(numField('Circumferential extent C (cm above GEJ)', 'pr-c', { min: '0', max: '25', step: '0.5' }));
     root.appendChild(numField('Maximal extent M (cm above GEJ)', 'pr-m', { min: '0', max: '25', step: '0.5' }));
 

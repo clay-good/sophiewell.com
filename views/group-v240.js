@@ -48,7 +48,7 @@ const SEX = [['male', 'Male'], ['female', 'Female']];
 
 export const renderers = {
   'esas-symptom-assessment'(root) {
-    note(root, 'ESAS (Bruera 1991): 9 symptoms each 0-10, total 0-90. Higher = greater symptom burden. Near-neighbors: ecog-karnofsky.');
+    note(root, 'ESAS (Bruera 1991): 9 symptoms each 0-10, total 0-90. Higher = greater symptom burden.');
     const items = [['esas-pain', 'pain', 'Pain'], ['esas-tired', 'tiredness', 'Tiredness'], ['esas-drowsy', 'drowsiness', 'Drowsiness'], ['esas-nausea', 'nausea', 'Nausea'], ['esas-appetite', 'appetite', 'Lack of appetite'], ['esas-dyspnea', 'dyspnea', 'Shortness of breath'], ['esas-depression', 'depression', 'Depression'], ['esas-anxiety', 'anxiety', 'Anxiety'], ['esas-wellbeing', 'wellbeing', 'Wellbeing']];
     for (const [id, , label] of items) root.appendChild(numInput(`${label} (0-10)`, id, { min: '0', max: '10' }));
     const o = out(); root.appendChild(o);
@@ -59,7 +59,7 @@ export const renderers = {
     postureNote(root);
   },
   'rivermead-mobility-index'(root) {
-    note(root, 'Rivermead Mobility Index (Collen 1991): 15 mobility items, each achieved = 1. Total 0-15; higher = more independent. Near-neighbors: barthel.');
+    note(root, 'Rivermead Mobility Index (Collen 1991): 15 mobility items, each achieved = 1. Total 0-15; higher = more independent.');
     root.appendChild(numInput('Number of items achieved (0-15)', 'rmi-count', { min: '0', max: '15' }));
     const o = out(); root.appendChild(o);
     wire(['rmi-count'], () => safe(o, () => {
@@ -68,7 +68,7 @@ export const renderers = {
     postureNote(root);
   },
   'six-minute-walk-predicted'(root) {
-    note(root, 'Predicted 6-minute walk (Enright-Sherrill 1998): sex-specific equation from height, age, weight. Lower limit = predicted - 153 m (men) / - 139 m (women). Near-neighbors: bode-index.');
+    note(root, 'Predicted 6-minute walk (Enright-Sherrill 1998): sex-specific equation from height, age, weight. Lower limit = predicted - 153 m (men) / - 139 m (women).');
     root.appendChild(select('Sex', 'smwd-sex', SEX));
     root.appendChild(numInput('Height (cm)', 'smwd-height', { min: '0' }));
     root.appendChild(numInput('Age (years)', 'smwd-age', { min: '0' }));
@@ -80,7 +80,7 @@ export const renderers = {
     postureNote(root);
   },
   'quickdash'(root) {
-    note(root, 'QuickDASH (Institute for Work & Health): 11 items each 1-5; score = [(mean) - 1] x 25. Higher = more upper-limb disability. Near-neighbors: rivermead-mobility-index.');
+    note(root, 'QuickDASH (Institute for Work & Health): 11 items each 1-5; score = [(mean) - 1] x 25. Higher = more upper-limb disability.');
     const items = [['qd-1', 'i1', '1. Open a tight jar'], ['qd-2', 'i2', '2. Heavy household chores'], ['qd-3', 'i3', '3. Carry a shopping bag'], ['qd-4', 'i4', '4. Wash your back'], ['qd-5', 'i5', '5. Use a knife'], ['qd-6', 'i6', '6. Recreational activities'], ['qd-7', 'i7', '7. Social activities limited'], ['qd-8', 'i8', '8. Work / daily activities limited'], ['qd-9', 'i9', '9. Arm/shoulder/hand pain'], ['qd-10', 'i10', '10. Tingling'], ['qd-11', 'i11', '11. Difficulty sleeping']];
     for (const [id, , label] of items) root.appendChild(select(`${label} (1 none - 5 severe)`, id, S15));
     const o = out(); root.appendChild(o);

@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'milch-condyle'(root) {
-    note(root, 'Milch classification of a lateral humeral condyle fracture (a common pediatric elbow injury), by whether the fracture line reaches the trochlear groove and involves the lateral trochlear ridge. Pick the type. I: lateral to the groove, ridge intact (elbow stable); II: into the groove, ridge involved (elbow unstable, the forearm can translate laterally). Near-neighbors: mason-radial-head, regan-morrey.');
+    note(root, 'Milch classification of a lateral humeral condyle fracture (a common pediatric elbow injury), by whether the fracture line reaches the trochlear groove and involves the lateral trochlear ridge. Pick the type. I: lateral to the groove, ridge intact (elbow stable); II: into the groove, ridge involved (elbow unstable, the forearm can translate laterally).');
     root.appendChild(select('Milch type', 'mi-type', [
       ['I', 'Type I - lateral to the groove, ridge intact (stable)'],
       ['II', 'Type II - into the groove, ridge involved (unstable)'],

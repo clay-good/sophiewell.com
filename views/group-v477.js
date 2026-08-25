@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'sfu-hydronephrosis'(root) {
-    note(root, 'The Society for Fetal Urology (SFU) ultrasound grading of hydronephrosis, by renal-sinus and calyceal dilatation and parenchymal thinning. Pick the grade. 0: intact central renal complex; 1: renal pelvis only; 2: pelvis and a few calyces; 3: pelvis and all calyces uniformly dilated (normal parenchyma); 4: as grade 3 plus parenchymal thinning. Reports the grade the clinician has determined, not a diagnosis or a treatment decision. Near-neighbor: koff-bladder-capacity.');
+    note(root, 'The Society for Fetal Urology (SFU) ultrasound grading of hydronephrosis, by renal-sinus and calyceal dilatation and parenchymal thinning. Pick the grade. 0: intact central renal complex; 1: renal pelvis only; 2: pelvis and a few calyces; 3: pelvis and all calyces uniformly dilated (normal parenchyma); 4: as grade 3 plus parenchymal thinning. Reports the grade the clinician has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('SFU grade', 'sfu-grade', [
       ['0', '0 - intact central renal complex'],
       ['1', '1 - renal pelvis only'],

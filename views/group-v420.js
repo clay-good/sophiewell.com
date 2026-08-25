@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'friedman-tongue'(root) {
-    note(root, 'Friedman tongue position (FTP), the anatomical grade of what the observer can visualize of the oropharynx with the mouth open (no tongue protrusion), used in obstructive-sleep-apnea staging. Pick the grade. I: entire uvula and tonsils/pillars; II: uvula but not tonsils; III: soft palate but not uvula; IV: only the hard palate. One input to the Friedman OSA stage (with tonsil size and BMI), not the stage itself. Near-neighbors: cotton-myer, brodsky-tonsil.');
+    note(root, 'Friedman tongue position (FTP), the anatomical grade of what the observer can visualize of the oropharynx with the mouth open (no tongue protrusion), used in obstructive-sleep-apnea staging. Pick the grade. I: entire uvula and tonsils/pillars; II: uvula but not tonsils; III: soft palate but not uvula; IV: only the hard palate. One input to the Friedman OSA stage (with tonsil size and BMI), not the stage itself.');
     root.appendChild(select('Friedman tongue position', 'ft-grade', [
       ['I', 'I - entire uvula and tonsils / pillars'],
       ['II', 'II - uvula but not tonsils'],

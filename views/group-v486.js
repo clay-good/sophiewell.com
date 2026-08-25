@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'samilson-prieto'(root) {
-    note(root, 'The Samilson-Prieto classification of dislocation arthropathy of the shoulder, by the size of the inferior humeral / glenoid osteophyte on radiographs. Pick the grade. Mild: osteophyte less than 3 mm; Moderate: 3 to 7 mm, with slight joint irregularity; Severe: greater than 7 mm, with joint-space narrowing and sclerosis. Reports the grade the clinician has determined, not a diagnosis or a treatment decision. Near-neighbor: hamada.');
+    note(root, 'The Samilson-Prieto classification of dislocation arthropathy of the shoulder, by the size of the inferior humeral / glenoid osteophyte on radiographs. Pick the grade. Mild: osteophyte less than 3 mm; Moderate: 3 to 7 mm, with slight joint irregularity; Severe: greater than 7 mm, with joint-space narrowing and sclerosis. Reports the grade the clinician has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('Samilson-Prieto grade', 'samilson-grade', [
       ['mild', 'Mild - osteophyte less than 3 mm'],
       ['moderate', 'Moderate - 3 to 7 mm, slight joint irregularity'],

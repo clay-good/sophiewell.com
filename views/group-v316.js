@@ -47,7 +47,7 @@ const IDS = ['gold-mmrc', 'gold-cat', 'gold-exac-mod', 'gold-exac-hosp'];
 
 export const renderers = {
   'gold-abe'(root) {
-    note(root, 'GOLD ABE assessment tool (GOLD 2025 Report): assigns a COPD patient to group A, B, or E from symptom burden and exacerbation history. Enter mMRC and/or CAT (either one suffices) and the past-year exacerbations. More symptoms = mMRC ≥ 2 or CAT ≥ 10; high exacerbation risk (group E) = ≥ 2 moderate or ≥ 1 hospitalized. Near-neighbors: gold-spirometry, mmrc-dyspnea, cat-copd.');
+    note(root, 'GOLD ABE assessment tool (GOLD 2025 Report): assigns a COPD patient to group A, B, or E from symptom burden and exacerbation history. Enter mMRC and/or CAT (either one suffices) and the past-year exacerbations. More symptoms = mMRC ≥ 2 or CAT ≥ 10; high exacerbation risk (group E) = ≥ 2 moderate or ≥ 1 hospitalized.');
     note(root, 'Symptom burden (enter at least one):');
     root.appendChild(field('mMRC dyspnea grade (0-4)', 'gold-mmrc', { min: 0, max: 4, placeholder: 'e.g. 2' }));
     root.appendChild(field('CAT score (0-40)', 'gold-cat', { min: 0, max: 40, placeholder: 'e.g. 15' }));

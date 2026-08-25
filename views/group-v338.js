@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'icrs-cartilage'(root) {
-    note(root, 'ICRS classification (International Cartilage Repair Society; Brittberg 2003) of a chondral defect at arthroscopy, graded by depth. Pick the grade. 0 normal; 1 nearly normal (surface intact); 2 <50% depth; 3 >50% depth / to but not through subchondral bone; 4 through the subchondral bone (osteochondral). The depth-based modern companion to the Outerbridge classification. Near-neighbors: outerbridge-cartilage, kellgren-lawrence.');
+    note(root, 'ICRS classification (International Cartilage Repair Society; Brittberg 2003) of a chondral defect at arthroscopy, graded by depth. Pick the grade. 0 normal; 1 nearly normal (surface intact); 2 <50% depth; 3 >50% depth / to but not through subchondral bone; 4 through the subchondral bone (osteochondral). The depth-based modern companion to the Outerbridge classification.');
     root.appendChild(select('ICRS grade', 'icrs-grade', [
       ['0', '0 — normal cartilage'],
       ['1', '1 — nearly normal (surface intact, softening/superficial fissures)'],

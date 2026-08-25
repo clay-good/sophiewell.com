@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'levine-edwards'(root) {
-    note(root, 'Levine-Edwards classification of a hangman\'s fracture (traumatic spondylolisthesis of the axis), by translation and angulation. Pick the type. I: <3 mm translation, no angulation (stable); II: >3 mm translation with angulation (unstable); IIa: minimal translation but severe angulation (flexion - traction contraindicated); III: type I plus bilateral C2-C3 facet dislocation. Near-neighbors: anderson-dalonzo.');
+    note(root, 'Levine-Edwards classification of a hangman\'s fracture (traumatic spondylolisthesis of the axis), by translation and angulation. Pick the type. I: <3 mm translation, no angulation (stable); II: >3 mm translation with angulation (unstable); IIa: minimal translation but severe angulation (flexion - traction contraindicated); III: type I plus bilateral C2-C3 facet dislocation.');
     root.appendChild(select('Levine-Edwards type', 'le-type', [
       ['I', 'Type I - <3 mm translation, no angulation (stable)'],
       ['II', 'Type II - >3 mm translation with angulation (unstable)'],

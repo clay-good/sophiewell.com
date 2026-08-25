@@ -64,7 +64,7 @@ const CAPO4_UNITS = [
 export const renderers = {
   // ----- 2.1 arr -------------------------------------------------------------
   arr(root) {
-    note(root, 'Aldosterone-Renin Ratio (Endocrine Society 2016): ARR = plasma aldosterone (ng/dL) ÷ renin. The cutoff differs by renin unit — with PRA ~20–40 (representative 30) and with DRC ~3.7 — and is never compared across unit systems; a positive screen also needs aldosterone ≥ 15 ng/dL and warrants confirmatory testing. Near-neighbors: corrected-calcium.');
+    note(root, 'Aldosterone-Renin Ratio (Endocrine Society 2016): ARR = plasma aldosterone (ng/dL) ÷ renin. The cutoff differs by renin unit — with PRA ~20–40 (representative 30) and with DRC ~3.7 — and is never compared across unit systems; a positive screen also needs aldosterone ≥ 15 ng/dL and warrants confirmatory testing.');
     root.appendChild(numField('Plasma aldosterone concentration (ng/dL)', 'arr-aldo', { min: '0' }));
     root.appendChild(numField('Renin value (> 0)', 'arr-renin', { min: '0' }));
     root.appendChild(pickField('Renin assay unit', 'arr-unit', RENIN_UNITS));
@@ -84,7 +84,7 @@ export const renderers = {
 
   // ----- 2.2 calcium-phosphate-product ---------------------------------------
   'calcium-phosphate-product'(root) {
-    note(root, 'Calcium-phosphate product (CKD-MBD): Ca × PO₄ in mg²/dL². A product above 55 was a historical caution threshold. Contemporary KDIGO guidance favors tracking calcium and phosphate individually over the product, so the product is shown as context, not a target. Near-neighbors: corrected-calcium.');
+    note(root, 'Calcium-phosphate product (CKD-MBD): Ca × PO₄ in mg²/dL². A product above 55 was a historical caution threshold. Contemporary KDIGO guidance favors tracking calcium and phosphate individually over the product, so the product is shown as context, not a target.');
     root.appendChild(pickField('Input units', 'capo4-unit', CAPO4_UNITS));
     root.appendChild(numField('Serum calcium', 'capo4-ca', { min: '0' }));
     root.appendChild(numField('Serum phosphate', 'capo4-po', { min: '0' }));
@@ -103,7 +103,7 @@ export const renderers = {
 
   // ----- 2.3 free-thyroxine-index --------------------------------------------
   'free-thyroxine-index'(root) {
-    note(root, 'Free Thyroxine Index (FTI / T7): FTI = total T4 × (T3-resin uptake % ÷ reference-mean T3RU%, default 30%). Corrects total T4 for binding-protein changes — pregnancy/estrogen raise TBG and total T4 but the FTI stays normal. A legacy index where direct free-T4 immunoassay is unavailable. Near-neighbors: eag-a1c.');
+    note(root, 'Free Thyroxine Index (FTI / T7): FTI = total T4 × (T3-resin uptake % ÷ reference-mean T3RU%, default 30%). Corrects total T4 for binding-protein changes — pregnancy/estrogen raise TBG and total T4 but the FTI stays normal. A legacy index where direct free-T4 immunoassay is unavailable.');
     root.appendChild(numField('Total T4 (µg/dL)', 'fti-t4', { min: '0' }));
     root.appendChild(numField('T3-resin uptake (%)', 'fti-t3ru', { min: '0', max: '100' }));
     root.appendChild(numField('Reference-mean T3RU (%, optional — default 30)', 'fti-ref', { min: '0', max: '100' }));
@@ -122,7 +122,7 @@ export const renderers = {
 
   // ----- 2.4 nitrogen-balance ------------------------------------------------
   'nitrogen-balance'(root) {
-    note(root, 'Nitrogen balance (ASPEN): N balance = (24-hour protein g ÷ 6.25) − (24-hour urine urea nitrogen g + insensible losses, default 4 g/day). Positive is anabolic, negative catabolic. Needs a complete 24-hour urine collection and is unreliable in renal impairment. Near-neighbors: icu-nutrition-target, mifflin-st-jeor.');
+    note(root, 'Nitrogen balance (ASPEN): N balance = (24-hour protein g ÷ 6.25) − (24-hour urine urea nitrogen g + insensible losses, default 4 g/day). Positive is anabolic, negative catabolic. Needs a complete 24-hour urine collection and is unreliable in renal impairment.');
     root.appendChild(numField('24-hour protein (or amino-acid) intake (g)', 'nbal-protein', { min: '0' }));
     root.appendChild(numField('24-hour urine urea nitrogen UUN (g)', 'nbal-uun', { min: '0' }));
     root.appendChild(numField('Insensible losses (g/day, optional — default 4)', 'nbal-insensible', { min: '0' }));

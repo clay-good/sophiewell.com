@@ -52,7 +52,7 @@ function render(o, r, valueLabel, value) {
 
 export const renderers = {
   'faint-score'(root) {
-    note(root, 'FAINT score (Probst 2020): for ED patients >= 60 y with syncope — heart failure, arrhythmia, abnormal ECG, NT-proBNP (+2), hs-troponin (0-6). Score 0 = low risk; >= 1 = not low risk. Near-neighbors: canadian-syncope, egsys.');
+    note(root, 'FAINT score (Probst 2020): for ED patients >= 60 y with syncope — heart failure, arrhythmia, abnormal ECG, NT-proBNP (+2), hs-troponin (0-6). Score 0 = low risk; >= 1 = not low risk.');
     const items = [['fnt-hf', 'heartFailure', 'History of heart failure (+1)'], ['fnt-arr', 'arrhythmia', 'History of cardiac arrhythmia (+1)'], ['fnt-ecg', 'abnormalEcg', 'Abnormal initial ECG (+1)'], ['fnt-bnp', 'ntprobnp', 'Elevated NT-proBNP (+2)'], ['fnt-trop', 'troponin', 'Elevated hs-troponin (+1)']];
     for (const [id, , label] of items) root.appendChild(check(label, id));
     const o = out(); root.appendChild(o);
@@ -63,7 +63,7 @@ export const renderers = {
     postureNote(root);
   },
   'nexus-head-ct'(root) {
-    note(root, 'NEXUS Head CT (Mower 2005): CT indicated if ANY of 8 findings present; if all absent, CT can be deferred. Near-neighbors: cthr, canadian-cspine.');
+    note(root, 'NEXUS Head CT (Mower 2005): CT indicated if ANY of 8 findings present; if all absent, CT can be deferred.');
     const items = [['nx-skull', 'skullFracture', 'Signs of significant skull fracture'], ['nx-scalp', 'scalpHematoma', 'Scalp hematoma'], ['nx-deficit', 'neuroDeficit', 'Neurologic deficit'], ['nx-alert', 'alteredAlertness', 'Altered level of alertness'], ['nx-behavior', 'abnormalBehavior', 'Abnormal behavior'], ['nx-coag', 'coagulopathy', 'Coagulopathy'], ['nx-vomit', 'vomiting', 'Persistent vomiting'], ['nx-age', 'ageOver65', 'Age >= 65 years']];
     for (const [id, , label] of items) root.appendChild(check(label, id));
     const o = out(); root.appendChild(o);
@@ -75,7 +75,7 @@ export const renderers = {
     postureNote(root);
   },
   'handoc-score'(root) {
-    note(root, 'HANDOC score (Sunnerhagen 2018): in non-beta-hemolytic strep bacteremia — murmur, aetiology, >= 2 cultures, duration >= 7 d, one species, community-acquired (-1 to 6). >= 3 = echo. Near-neighbors: denova-score, duke-endocarditis.');
+    note(root, 'HANDOC score (Sunnerhagen 2018): in non-beta-hemolytic strep bacteremia — murmur, aetiology, >= 2 cultures, duration >= 7 d, one species, community-acquired (-1 to 6). >= 3 = echo.');
     root.appendChild(check('Heart murmur or valve disease/prosthesis (+1)', 'hd-murmur'));
     root.appendChild(select('Aetiology (species group)', 'hd-aet', [['0', 'Other species (0)'], ['1', 'S. mutans / bovis / sanguinis group (+1)'], ['2', 'S. anginosus group (-1)']]));
     root.appendChild(check('>= 2 positive blood cultures (+1)', 'hd-cult'));
@@ -90,7 +90,7 @@ export const renderers = {
     postureNote(root);
   },
   'denova-score'(root) {
-    note(root, 'DENOVA score (Berge 2019): in E. faecalis bacteremia — duration >= 7 d, embolization, >= 2 cultures, origin unknown, valve disease, murmur (0-6). >= 3 = echo. Near-neighbors: handoc-score, duke-endocarditis.');
+    note(root, 'DENOVA score (Berge 2019): in E. faecalis bacteremia — duration >= 7 d, embolization, >= 2 cultures, origin unknown, valve disease, murmur (0-6). >= 3 = echo.');
     const items = [['dn-dur', 'duration7', 'Duration of symptoms >= 7 days (+1)'], ['dn-emb', 'embolization', 'Embolization (+1)'], ['dn-cult', 'cultures2', '>= 2 positive cultures (+1)'], ['dn-origin', 'originUnknown', 'Origin of infection unknown (+1)'], ['dn-valve', 'valveDisease', 'Valve disease (+1)'], ['dn-murmur', 'murmur', 'Auscultated murmur (+1)']];
     for (const [id, , label] of items) root.appendChild(check(label, id));
     const o = out(); root.appendChild(o);
@@ -101,7 +101,7 @@ export const renderers = {
     postureNote(root);
   },
   'icm-pji-2018'(root) {
-    note(root, '2018 ICM PJI definition (Parvizi 2018): a major criterion = infected; otherwise sum preop minor criteria. >= 6 infected, 2-5 inconclusive, 0-1 not infected. Near-neighbors: wbc-count, esr.');
+    note(root, '2018 ICM PJI definition (Parvizi 2018): a major criterion = infected; otherwise sum preop minor criteria. >= 6 infected, 2-5 inconclusive, 0-1 not infected.');
     root.appendChild(check('Major criterion: sinus tract OR >= 2 cultures with the same organism', 'icm-major'));
     root.appendChild(check('Serum CRP > 10 mg/L or D-dimer > 860 ng/mL (+2)', 'icm-crp'));
     root.appendChild(check('ESR > 30 mm/h (+1)', 'icm-esr'));
@@ -117,7 +117,7 @@ export const renderers = {
     postureNote(root);
   },
   'air-score'(root) {
-    note(root, 'AIR score (Andersson 2008): vomiting, RIF pain, rebound grade, temp >= 38.5, WBC/PMN/CRP bands (0-12). Low 0-4, indeterminate 5-8, high 9-12. Near-neighbors: alvarado-pas, adult-appendicitis-score.');
+    note(root, 'AIR score (Andersson 2008): vomiting, RIF pain, rebound grade, temp >= 38.5, WBC/PMN/CRP bands (0-12). Low 0-4, indeterminate 5-8, high 9-12.');
     root.appendChild(check('Vomiting (+1)', 'air-vomit'));
     root.appendChild(check('Right-iliac-fossa pain (+1)', 'air-rif'));
     root.appendChild(select('Rebound tenderness / defense', 'air-rebound', [['0', 'None (0)'], ['1', 'Light (1)'], ['2', 'Medium (2)'], ['3', 'Strong (3)']]));
@@ -133,7 +133,7 @@ export const renderers = {
     postureNote(root);
   },
   'adult-appendicitis-score'(root) {
-    note(root, 'Adult Appendicitis Score (Sammalkorpi 2014): RLQ pain/relocation/tenderness, guarding, WBC/PMN/CRP bands (CRP depends on symptom duration). Low 0-10, intermediate 11-15, high >= 16. Near-neighbors: air-score, alvarado-pas.');
+    note(root, 'Adult Appendicitis Score (Sammalkorpi 2014): RLQ pain/relocation/tenderness, guarding, WBC/PMN/CRP bands (CRP depends on symptom duration). Low 0-10, intermediate 11-15, high >= 16.');
     root.appendChild(check('Pain in right lower quadrant (+2)', 'aas-rlq'));
     root.appendChild(check('Migration/relocation of pain to RLQ (+2)', 'aas-reloc'));
     root.appendChild(check('RLQ tenderness present', 'aas-tender'));

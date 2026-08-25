@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'biffl-bcvi'(root) {
-    note(root, 'The Biffl (Denver) grading scale for blunt cerebrovascular injury (BCVI), by the angiographic appearance of the carotid or vertebral artery injury. Pick the grade. I: irregularity/dissection <25% narrowing; II: dissection/hematoma >=25% narrowing, thrombus, or raised intimal flap; III: pseudoaneurysm; IV: occlusion; V: transection with extravasation. It follows a positive BCVI screen. Reports the grade the clinician has determined, not a diagnosis or a treatment decision. Near-neighbor: denver-bcvi.');
+    note(root, 'The Biffl (Denver) grading scale for blunt cerebrovascular injury (BCVI), by the angiographic appearance of the carotid or vertebral artery injury. Pick the grade. I: irregularity/dissection <25% narrowing; II: dissection/hematoma >=25% narrowing, thrombus, or raised intimal flap; III: pseudoaneurysm; IV: occlusion; V: transection with extravasation. It follows a positive BCVI screen. Reports the grade the clinician has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('Biffl BCVI grade', 'biffl-grade', [
       ['I', 'I - irregularity/dissection <25% narrowing'],
       ['II', 'II - dissection/hematoma >=25% narrowing, thrombus, or intimal flap'],

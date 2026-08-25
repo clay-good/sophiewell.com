@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'ranawat-myelopathy'(root) {
-    note(root, 'The Ranawat classification of the neurologic deficit of the rheumatoid cervical spine. Pick the class. I: pain but no neural deficit; II: subjective weakness with dysesthesias and hyperreflexia; IIIA: objective weakness and long-tract signs, still ambulatory; IIIB: the same, no longer ambulatory. Reports the class the clinician has determined, not a diagnosis or a decision to operate. Near-neighbors: nurick, mjoa.');
+    note(root, 'The Ranawat classification of the neurologic deficit of the rheumatoid cervical spine. Pick the class. I: pain but no neural deficit; II: subjective weakness with dysesthesias and hyperreflexia; IIIA: objective weakness and long-tract signs, still ambulatory; IIIB: the same, no longer ambulatory. Reports the class the clinician has determined, not a diagnosis or a decision to operate.');
     root.appendChild(select('Ranawat class', 'ranawat-class', [
       ['I', 'I - pain, no neural deficit'],
       ['II', 'II - subjective weakness, hyperreflexia'],

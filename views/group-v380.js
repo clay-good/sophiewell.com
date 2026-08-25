@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'young-burgess'(root) {
-    note(root, 'Young-Burgess classification of a pelvic ring injury, by the force vector (mechanism). Pick the pattern. LC (lateral compression) I-III; APC (anteroposterior compression) I-III; VS (vertical shear); CM (combined mechanism). Lateral-compression patterns are the most common and often stable; APC-II/III, LC-III, VS, and CM are the typically-unstable patterns. Near-neighbors: tile-pelvic, iss-rts.');
+    note(root, 'Young-Burgess classification of a pelvic ring injury, by the force vector (mechanism). Pick the pattern. LC (lateral compression) I-III; APC (anteroposterior compression) I-III; VS (vertical shear); CM (combined mechanism). Lateral-compression patterns are the most common and often stable; APC-II/III, LC-III, VS, and CM are the typically-unstable patterns.');
     root.appendChild(select('Young-Burgess pattern', 'yb-pattern', [
       ['LC-I', 'LC-I - lateral compression, sacral compression'],
       ['LC-II', 'LC-II - lateral compression, crescent fracture'],

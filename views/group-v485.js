@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'dejour-trochlea'(root) {
-    note(root, 'The Dejour classification of trochlear dysplasia, by the radiographic / CT appearance of the femoral trochlea. Pick the type. A: shallow but symmetric (low-grade); B: flat or convex with a supratrochlear spur (high-grade); C: facet asymmetry (double contour) without a spur (high-grade); D: asymmetry plus a spur with a facet "cliff" (high-grade). Reports the type the clinician has determined, not a diagnosis or a treatment decision. Near-neighbor: ahlback-knee-oa.');
+    note(root, 'The Dejour classification of trochlear dysplasia, by the radiographic / CT appearance of the femoral trochlea. Pick the type. A: shallow but symmetric (low-grade); B: flat or convex with a supratrochlear spur (high-grade); C: facet asymmetry (double contour) without a spur (high-grade); D: asymmetry plus a spur with a facet "cliff" (high-grade). Reports the type the clinician has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('Dejour type', 'dejour-type', [
       ['A', 'A - shallow but symmetric (low-grade)'],
       ['B', 'B - flat/convex with a spur (high-grade)'],

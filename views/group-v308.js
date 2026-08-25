@@ -35,7 +35,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'concussion-rtl'(root) {
-    note(root, 'Graduated Return-to-Learn (RTL) strategy after sport-related concussion (Amsterdam 2022 consensus) — the school companion to the return-to-sport ladder. Select the step to see the mental activity, the activity, and the goal. Progression is symptom-limited; a full return to learn is completed before unrestricted return to sport. Near-neighbors: concussion-rts.');
+    note(root, 'Graduated Return-to-Learn (RTL) strategy after sport-related concussion (Amsterdam 2022 consensus) — the school companion to the return-to-sport ladder. Select the step to see the mental activity, the activity, and the goal. Progression is symptom-limited; a full return to learn is completed before unrestricted return to sport.');
     root.appendChild(select('Return-to-learn step', 'crtl-step', [
       ['1', 'Step 1 — Symptom-limited daily activity'],
       ['2', 'Step 2 — School activities (out of the classroom)'],

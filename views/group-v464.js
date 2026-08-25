@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'crawford-taaa'(root) {
-    note(root, 'The Crawford classification of thoracoabdominal aortic aneurysms, by the extent of aortic involvement. Pick the extent. I: left subclavian to above the renals; II: left subclavian to the aortoiliac bifurcation (most extensive); III: distal descending thoracic (sixth intercostal space) to below the renals; IV: the entire abdominal aorta (diaphragm to bifurcation). The Safi modification adds an extent V. Reports the extent the clinician has determined, not a diagnosis or a treatment decision. Near-neighbor: debakey.');
+    note(root, 'The Crawford classification of thoracoabdominal aortic aneurysms, by the extent of aortic involvement. Pick the extent. I: left subclavian to above the renals; II: left subclavian to the aortoiliac bifurcation (most extensive); III: distal descending thoracic (sixth intercostal space) to below the renals; IV: the entire abdominal aorta (diaphragm to bifurcation). The Safi modification adds an extent V. Reports the extent the clinician has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('Crawford extent', 'crawford-extent', [
       ['I', 'I - left subclavian to above the renals'],
       ['II', 'II - left subclavian to the aortoiliac bifurcation'],

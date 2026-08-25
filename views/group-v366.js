@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'neck-zone'(root) {
-    note(root, 'Anatomic zones of the neck for penetrating trauma. Pick the zone. I: sternal notch to cricoid cartilage; II: cricoid to the angle of the mandible; III: angle of the mandible to the skull base. The zone describes the structures at risk and surgical-access considerations. The modern "no-zone" approach drives management by hard signs of injury + CT angiography rather than by zone alone. Near-neighbors: iss-rts.');
+    note(root, 'Anatomic zones of the neck for penetrating trauma. Pick the zone. I: sternal notch to cricoid cartilage; II: cricoid to the angle of the mandible; III: angle of the mandible to the skull base. The zone describes the structures at risk and surgical-access considerations. The modern "no-zone" approach drives management by hard signs of injury + CT angiography rather than by zone alone.');
     root.appendChild(select('Neck zone', 'neck-zone', [
       ['I', 'Zone I - sternal notch / clavicles to the cricoid cartilage'],
       ['II', 'Zone II - cricoid cartilage to the angle of the mandible'],

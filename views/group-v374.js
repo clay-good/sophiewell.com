@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'pauwels-femoral-neck'(root) {
-    note(root, 'Pauwels classification (Pauwels 1935) of a femoral neck fracture, by the angle of the fracture line from the horizontal. Pick the type. I: < 30 degrees (compression dominant, most stable); II: 30-50 degrees (shear appears); III: > 50 degrees (shear dominant, highest nonunion / AVN risk). The shear-angle counterpart to the Garden classification (displacement). Near-neighbors: garden-classification.');
+    note(root, 'Pauwels classification (Pauwels 1935) of a femoral neck fracture, by the angle of the fracture line from the horizontal. Pick the type. I: < 30 degrees (compression dominant, most stable); II: 30-50 degrees (shear appears); III: > 50 degrees (shear dominant, highest nonunion / AVN risk). The shear-angle counterpart to the Garden classification (displacement).');
     root.appendChild(select('Pauwels type', 'pauwels-type', [
       ['I', 'Type I - < 30 degrees (compression dominant)'],
       ['II', 'Type II - 30-50 degrees (shear appears)'],

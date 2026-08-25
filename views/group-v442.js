@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'zabramski'(root) {
-    note(root, 'The Zabramski classification of a cerebral cavernous malformation (CCM), by its MRI appearance (hemorrhage age and signal). Pick the type. I: subacute hemorrhage (hyperintense on T1/T2); II: classic popcorn/mulberry with a hemosiderin rim; III: chronic hemorrhage (iso- to hypointense); IV: punctate microhemorrhages seen only on GRE/SWI. Reports the type the radiologist has determined, not a diagnosis or a treatment decision. Near-neighbors: barrow-ccf, spetzler-ponce.');
+    note(root, 'The Zabramski classification of a cerebral cavernous malformation (CCM), by its MRI appearance (hemorrhage age and signal). Pick the type. I: subacute hemorrhage (hyperintense on T1/T2); II: classic popcorn/mulberry with a hemosiderin rim; III: chronic hemorrhage (iso- to hypointense); IV: punctate microhemorrhages seen only on GRE/SWI. Reports the type the radiologist has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('Zabramski type', 'zabramski-type', [
       ['I', 'I - subacute hemorrhage (hyperintense T1/T2)'],
       ['II', 'II - popcorn/mulberry with hemosiderin rim'],

@@ -35,7 +35,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'hawkins-talar'(root) {
-    note(root, 'Hawkins classification (Hawkins 1970; type IV added Canale-Kelly 1978) of a talar neck fracture — the fracture pattern, which correlates with avascular-necrosis (AVN) risk. Pick the type. I nondisplaced (AVN ~0-15%); II with subtalar dislocation (~20-50%); III with subtalar + ankle dislocation (~70-100%); IV also with talonavicular dislocation (highest). The AVN-risk ranges are classically reported case-series figures, not a per-patient prediction. Near-neighbors: mason-radial-head, weber-ankle.');
+    note(root, 'Hawkins classification (Hawkins 1970; type IV added Canale-Kelly 1978) of a talar neck fracture — the fracture pattern, which correlates with avascular-necrosis (AVN) risk. Pick the type. I nondisplaced (AVN ~0-15%); II with subtalar dislocation (~20-50%); III with subtalar + ankle dislocation (~70-100%); IV also with talonavicular dislocation (highest). The AVN-risk ranges are classically reported case-series figures, not a per-patient prediction.');
     root.appendChild(select('Hawkins type', 'hawkins-type', [
       ['I', 'I — nondisplaced, no dislocation'],
       ['II', 'II — displaced, subtalar dislocation'],

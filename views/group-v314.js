@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'deauville-score'(root) {
-    note(root, 'Deauville 5-point score (Lugano classification): FDG-PET response assessment in lymphoma. Pick the uptake score (1–5). Scores 1–2 are negative (complete metabolic response); 4–5 are positive; 3 is read in the clinical context. Near-neighbors: ann-arbor.');
+    note(root, 'Deauville 5-point score (Lugano classification): FDG-PET response assessment in lymphoma. Pick the uptake score (1–5). Scores 1–2 are negative (complete metabolic response); 4–5 are positive; 3 is read in the clinical context.');
     root.appendChild(select('Deauville score (uptake vs reference regions)', 'deauville-score-in', [
       ['1', '1 — no uptake above background'],
       ['2', '2 — uptake ≤ mediastinum'],

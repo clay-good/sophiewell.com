@@ -45,7 +45,7 @@ function render(o, r, valueLabel, value) {
 
 export const renderers = {
   'watson-tbw'(root) {
-    note(root, 'Watson total body water (Watson 1980): sex-specific equation from age, height, and weight. Feeds sodium and dosing calculations. Near-neighbors: sodium-correction, cockcroft-gault.');
+    note(root, 'Watson total body water (Watson 1980): sex-specific equation from age, height, and weight. Feeds sodium and dosing calculations.');
     root.appendChild(num('Age (years)', 'wt-age', { min: '0' }));
     root.appendChild(num('Height (cm)', 'wt-ht', { min: '0' }));
     root.appendChild(num('Weight (kg)', 'wt-wt', { min: '0' }));
@@ -58,7 +58,7 @@ export const renderers = {
     postureNote(root);
   },
   'salazar-corcoran'(root) {
-    note(root, 'Salazar-Corcoran CrCl (Salazar & Corcoran 1988): estimate for obese patients where Cockcroft-Gault overestimates. Near-neighbors: cockcroft-gault, egfr-ckd-epi.');
+    note(root, 'Salazar-Corcoran CrCl (Salazar & Corcoran 1988): estimate for obese patients where Cockcroft-Gault overestimates.');
     root.appendChild(num('Age (years)', 'sc-age', { min: '0' }));
     root.appendChild(num('Weight (kg)', 'sc-wt', { min: '0' }));
     root.appendChild(num('Height (cm)', 'sc-ht', { min: '0' }));
@@ -72,7 +72,7 @@ export const renderers = {
     postureNote(root);
   },
   'epvs'(root) {
-    note(root, 'Estimated plasma volume status (Duarte 2015): ePVS = 100 × (1 − hematocrit fraction) / hemoglobin. Higher = more congestion. Near-neighbors: adhere-hf, maggic.');
+    note(root, 'Estimated plasma volume status (Duarte 2015): ePVS = 100 × (1 − hematocrit fraction) / hemoglobin. Higher = more congestion.');
     root.appendChild(num('Hematocrit (%)', 'ep-hct', { min: '0', max: '100' }));
     root.appendChild(num('Hemoglobin (g/dL)', 'ep-hb', { min: '0' }));
     const o = out(); root.appendChild(o);
@@ -83,7 +83,7 @@ export const renderers = {
     postureNote(root);
   },
   'furosemide-stress-test'(root) {
-    note(root, 'Furosemide stress test (Chawla 2013): 1.0 mg/kg (naive) or 1.5 mg/kg (prior loop) IV; 2-hour urine <= 200 mL predicts progression to stage 3 AKI. Near-neighbors: kdigo-aki, fena.');
+    note(root, 'Furosemide stress test (Chawla 2013): 1.0 mg/kg (naive) or 1.5 mg/kg (prior loop) IV; 2-hour urine <= 200 mL predicts progression to stage 3 AKI.');
     root.appendChild(num('Weight (kg)', 'fst-wt', { min: '0' }));
     root.appendChild(num('2-hour urine output (mL)', 'fst-uop', { min: '0' }));
     root.appendChild(check('Prior loop-diuretic exposure (use 1.5 mg/kg)', 'fst-prior'));
@@ -95,7 +95,7 @@ export const renderers = {
     postureNote(root);
   },
   'fe-bicarbonate'(root) {
-    note(root, 'Fractional excretion of bicarbonate (Kurtzman 2000): FEHCO3 = (UHCO3/PHCO3) × (PCr/UCr) × 100. > 15% proximal (type II) RTA; < 5% distal (type I) / normal. Near-neighbors: fena, urine-anion-gap.');
+    note(root, 'Fractional excretion of bicarbonate (Kurtzman 2000): FEHCO3 = (UHCO3/PHCO3) × (PCr/UCr) × 100. > 15% proximal (type II) RTA; < 5% distal (type I) / normal.');
     root.appendChild(num('Urine bicarbonate (mEq/L)', 'fe-uhco3', { min: '0' }));
     root.appendChild(num('Plasma bicarbonate (mEq/L)', 'fe-phco3', { min: '0' }));
     root.appendChild(num('Plasma creatinine (mg/dL)', 'fe-pcr', { min: '0' }));
@@ -108,7 +108,7 @@ export const renderers = {
     postureNote(root);
   },
   'corrected-potassium-ph'(root) {
-    note(root, 'pH-corrected serum potassium (Adrogué & Madias 1981): corrected K = measured K − 0.6 × [(7.4 − pH) / 0.1]. A rule of thumb (organic acidosis ~0.3). Near-neighbors: corrected-sodium, anion-gap.');
+    note(root, 'pH-corrected serum potassium (Adrogué & Madias 1981): corrected K = measured K − 0.6 × [(7.4 − pH) / 0.1]. A rule of thumb (organic acidosis ~0.3).');
     root.appendChild(num('Measured serum potassium (mEq/L)', 'kc-k', { min: '0' }));
     root.appendChild(num('Arterial pH', 'kc-ph', { min: '6.5', max: '8' }));
     const o = out(); root.appendChild(o);

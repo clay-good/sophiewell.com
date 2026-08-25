@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'hartofilakidis-ddh'(root) {
-    note(root, 'Hartofilakidis classification (Hartofilakidis 1988) of adult developmental dysplasia of the hip - the second widely used adult-DDH classification alongside Crowe. Pick the type. A: dysplasia (head within the true acetabulum); B: low dislocation (false acetabulum partially overlaps the true one); C: high dislocation (false acetabulum with no connection to the true one). Near-neighbors: crowe-ddh.');
+    note(root, 'Hartofilakidis classification (Hartofilakidis 1988) of adult developmental dysplasia of the hip - the second widely used adult-DDH classification alongside Crowe. Pick the type. A: dysplasia (head within the true acetabulum); B: low dislocation (false acetabulum partially overlaps the true one); C: high dislocation (false acetabulum with no connection to the true one).');
     root.appendChild(select('Hartofilakidis type', 'hart-type', [
       ['A', 'Type A - dysplasia (head within the true acetabulum)'],
       ['B', 'Type B - low dislocation (false acetabulum partially overlaps)'],

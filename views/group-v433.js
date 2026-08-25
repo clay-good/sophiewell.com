@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'modic-changes'(root) {
-    note(root, 'The Modic classification of vertebral endplate / subchondral bone-marrow changes on MRI in degenerative disc disease, by the T1 and T2 signal. Pick the type. 1: edema/inflammation (T1 low, T2 high); 2: fatty marrow (T1 high, T2 iso-to-high); 3: bony sclerosis (T1 low, T2 low). Mixed types (1/2, 2/3) are described when features coexist. Reports the type the radiologist has determined, not a diagnosis or a treatment decision. Near-neighbor: meyerding-spondylolisthesis.');
+    note(root, 'The Modic classification of vertebral endplate / subchondral bone-marrow changes on MRI in degenerative disc disease, by the T1 and T2 signal. Pick the type. 1: edema/inflammation (T1 low, T2 high); 2: fatty marrow (T1 high, T2 iso-to-high); 3: bony sclerosis (T1 low, T2 low). Mixed types (1/2, 2/3) are described when features coexist. Reports the type the radiologist has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('Modic type', 'modic-type', [
       ['1', '1 - edema/inflammation (T1 low, T2 high)'],
       ['2', '2 - fatty marrow (T1 high, T2 iso-to-high)'],

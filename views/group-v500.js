@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'tegner-activity'(root) {
-    note(root, 'The Tegner activity scale records a knee activity level from 0 to 10, and is normally reported alongside the Lysholm knee score: the score measures symptoms, the scale records the activity level those symptoms are measured against. Pick the level. 0 is sick leave or a disability pension because of knee problems; 10 is competitive sport at the national elite level. Each level names representative work and sport anchors. This is an activity level, not a pathology grade and not a return-to-sport clearance. Near-neighbor: lysholm-knee-score.');
+    note(root, 'The Tegner activity scale records a knee activity level from 0 to 10, and is normally reported alongside the Lysholm knee score: the score measures symptoms, the scale records the activity level those symptoms are measured against. Pick the level. 0 is sick leave or a disability pension because of knee problems; 10 is competitive sport at the national elite level. Each level names representative work and sport anchors. This is an activity level, not a pathology grade and not a return-to-sport clearance.');
     root.appendChild(select('Tegner activity level', 'tegner-level', [
       ['0', '0 - sick leave or disability pension (knee)'],
       ['1', '1 - sedentary work'],

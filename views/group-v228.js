@@ -37,7 +37,7 @@ function render(o, r) {
 
 export const renderers = {
   'england-fraser-index'(root) {
-    note(root, 'England & Fraser (1973): DF = MCV - RBC - (5 x Hb) - 3.4. < 0 favors beta-thalassemia trait, > 0 favors iron deficiency. Near-neighbors: mentzer, sirdah-index.');
+    note(root, 'England & Fraser (1973): DF = MCV - RBC - (5 x Hb) - 3.4. < 0 favors beta-thalassemia trait, > 0 favors iron deficiency.');
     root.appendChild(num('MCV (fL)', 'ef-mcv', { min: '0' }));
     root.appendChild(num('RBC count (10^6/µL)', 'ef-rbc', { min: '0' }));
     root.appendChild(num('Hemoglobin (g/dL)', 'ef-hb', { min: '0' }));
@@ -48,7 +48,7 @@ export const renderers = {
     postureNote(root);
   },
   'sirdah-index'(root) {
-    note(root, 'Sirdah (2008): MCV - RBC - (3 x Hb). < 27 favors beta-thalassemia trait, > 27 favors iron deficiency. Near-neighbors: england-fraser-index, ehsani-index.');
+    note(root, 'Sirdah (2008): MCV - RBC - (3 x Hb). < 27 favors beta-thalassemia trait, > 27 favors iron deficiency.');
     root.appendChild(num('MCV (fL)', 'sd-mcv', { min: '0' }));
     root.appendChild(num('RBC count (10^6/µL)', 'sd-rbc', { min: '0' }));
     root.appendChild(num('Hemoglobin (g/dL)', 'sd-hb', { min: '0' }));
@@ -59,7 +59,7 @@ export const renderers = {
     postureNote(root);
   },
   'rdw-index'(root) {
-    note(root, 'RDW Index / RDWI (Jayabose 1999): (MCV x RDW) / RBC. < 220 favors beta-thalassemia trait, > 220 favors iron deficiency. Near-neighbors: mentzer, srivastava-index.');
+    note(root, 'RDW Index / RDWI (Jayabose 1999): (MCV x RDW) / RBC. < 220 favors beta-thalassemia trait, > 220 favors iron deficiency.');
     root.appendChild(num('MCV (fL)', 'rdwi-mcv', { min: '0' }));
     root.appendChild(num('RDW (%)', 'rdwi-rdw', { min: '0' }));
     root.appendChild(num('RBC count (10^6/µL)', 'rdwi-rbc', { min: '0' }));
@@ -70,7 +70,7 @@ export const renderers = {
     postureNote(root);
   },
   'srivastava-index'(root) {
-    note(root, 'Srivastava (1973): MCH / RBC. < 3.8 favors beta-thalassemia trait, > 3.8 favors iron deficiency. Near-neighbors: mentzer, rdw-index.');
+    note(root, 'Srivastava (1973): MCH / RBC. < 3.8 favors beta-thalassemia trait, > 3.8 favors iron deficiency.');
     root.appendChild(num('MCH (pg)', 'sv-mch', { min: '0' }));
     root.appendChild(num('RBC count (10^6/µL)', 'sv-rbc', { min: '0' }));
     const o = out(); root.appendChild(o);
@@ -80,7 +80,7 @@ export const renderers = {
     postureNote(root);
   },
   'ehsani-index'(root) {
-    note(root, 'Ehsani: MCV - (10 x RBC). < 15 favors beta-thalassemia trait, > 15 favors iron deficiency. Near-neighbors: mentzer, sirdah-index.');
+    note(root, 'Ehsani: MCV - (10 x RBC). < 15 favors beta-thalassemia trait, > 15 favors iron deficiency.');
     root.appendChild(num('MCV (fL)', 'eh-mcv', { min: '0' }));
     root.appendChild(num('RBC count (10^6/µL)', 'eh-rbc', { min: '0' }));
     const o = out(); root.appendChild(o);

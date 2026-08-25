@@ -58,7 +58,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'benzodiazepine-equivalence'(root) {
-    note(root, 'Benzodiazepine dose-equivalence converter for tapering. Pick the source benzodiazepine and dose, and (optionally) a target benzodiazepine, to see the oral-diazepam equivalent and target-drug dose under both the VA/DoD 2021 and Ashton 2002 systems. Equivalents are approximate and differ between systems — individualize. Near-neighbors: opioid-conversion, steroid-equiv.');
+    note(root, 'Benzodiazepine dose-equivalence converter for tapering. Pick the source benzodiazepine and dose, and (optionally) a target benzodiazepine, to see the oral-diazepam equivalent and target-drug dose under both the VA/DoD 2021 and Ashton 2002 systems. Equivalents are approximate and differ between systems — individualize.');
     root.appendChild(select('Source benzodiazepine', 'bz-source', AGENT_OPTIONS));
     root.appendChild(numField('Source dose (mg)', 'bz-dose', { min: '0', step: 'any', placeholder: 'e.g. 2' }));
     root.appendChild(select('Target benzodiazepine', 'bz-target', AGENT_OPTIONS));

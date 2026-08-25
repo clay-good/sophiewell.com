@@ -60,7 +60,7 @@ const RUTGEERTS_OPTS = [
 export const renderers = {
   // ----- 2.1 mean-airway-pressure --------------------------------------------
   'mean-airway-pressure'(root) {
-    note(root, 'Mean airway pressure (Marini 1992): Pₘₐw = [(PIP·Ti) + (PEEP·Te)] / (Ti + Te), the square-wave approximation. A determinant of oxygenation and of the oxygenation index. Near-neighbors: oxygenation-index.');
+    note(root, 'Mean airway pressure (Marini 1992): Pₘₐw = [(PIP·Ti) + (PEEP·Te)] / (Ti + Te), the square-wave approximation. A determinant of oxygenation and of the oxygenation index.');
     root.appendChild(num('Peak inspiratory pressure PIP (cmH₂O)', 'maw-pip', { min: '0' }));
     root.appendChild(num('PEEP (cmH₂O)', 'maw-peep', { min: '0' }));
     root.appendChild(num('Inspiratory time Ti (s)', 'maw-ti', { min: '0' }));
@@ -80,7 +80,7 @@ export const renderers = {
 
   // ----- 2.2 cerebroplacental-ratio ------------------------------------------
   'cerebroplacental-ratio'(root) {
-    note(root, 'Cerebroplacental ratio (Gramellini 1992): CPR = MCA-PI / UA-PI. A CPR below 1 (or below the gestational-age centile) indicates cerebral redistribution ("brain-sparing") and is associated with adverse outcome. Near-neighbors: hadlock-efw, bpp.');
+    note(root, 'Cerebroplacental ratio (Gramellini 1992): CPR = MCA-PI / UA-PI. A CPR below 1 (or below the gestational-age centile) indicates cerebral redistribution ("brain-sparing") and is associated with adverse outcome.');
     root.appendChild(num('MCA pulsatility index (MCA-PI)', 'cpr-mca', { min: '0' }));
     root.appendChild(num('Umbilical-artery pulsatility index (UA-PI)', 'cpr-ua', { min: '0' }));
     const o = out(); root.appendChild(o);
@@ -98,7 +98,7 @@ export const renderers = {
 
   // ----- 2.3 toe-brachial-index ----------------------------------------------
   'toe-brachial-index'(root) {
-    note(root, 'Toe-brachial index (Aboyans 2012): TBI = toe systolic / higher brachial systolic pressure. A TBI below 0.70 is abnormal (PAD); the test of choice when the ABI is non-compressible (> 1.40). Near-neighbors: abi.');
+    note(root, 'Toe-brachial index (Aboyans 2012): TBI = toe systolic / higher brachial systolic pressure. A TBI below 0.70 is abnormal (PAD); the test of choice when the ABI is non-compressible (> 1.40).');
     root.appendChild(num('Toe systolic pressure (mmHg)', 'tbi-toe', { min: '0' }));
     root.appendChild(num('Brachial systolic pressure — the higher arm (mmHg)', 'tbi-brachial', { min: '0' }));
     const o = out(); root.appendChild(o);
@@ -116,7 +116,7 @@ export const renderers = {
 
   // ----- 2.4 stool-osmotic-gap -----------------------------------------------
   'stool-osmotic-gap'(root) {
-    note(root, 'Stool osmotic gap (Eherer & Fordtran 1992): gap = 290 − 2·(stool Na + K). > 100 osmotic diarrhea, < 50 secretory, 50–100 indeterminate. Fixed 290 mOsm/kg assumption. Near-neighbors: anion-gap.');
+    note(root, 'Stool osmotic gap (Eherer & Fordtran 1992): gap = 290 − 2·(stool Na + K). > 100 osmotic diarrhea, < 50 secretory, 50–100 indeterminate. Fixed 290 mOsm/kg assumption.');
     root.appendChild(num('Stool sodium (mEq/L)', 'sog-na', { min: '0' }));
     root.appendChild(num('Stool potassium (mEq/L)', 'sog-k', { min: '0' }));
     const o = out(); root.appendChild(o);
@@ -156,7 +156,7 @@ export const renderers = {
 
   // ----- 2.6 rutgeerts -------------------------------------------------------
   'rutgeerts'(root) {
-    note(root, 'Rutgeerts score (Rutgeerts 1990): endoscopic grading of post-operative Crohn’s recurrence in the neoterminal ileum (i0–i4). A grade ≥ i2 predicts clinical recurrence. Near-neighbors: harvey-bradshaw, cdai-crohns.');
+    note(root, 'Rutgeerts score (Rutgeerts 1990): endoscopic grading of post-operative Crohn’s recurrence in the neoterminal ileum (i0–i4). A grade ≥ i2 predicts clinical recurrence.');
     root.appendChild(pickField('Neoterminal-ileum endoscopic finding', 'rutg-finding', RUTGEERTS_OPTS));
     const o = out(); root.appendChild(o);
     wire(['rutg-finding'], () => safe(o, () => {

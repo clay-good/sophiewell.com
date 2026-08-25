@@ -63,7 +63,7 @@ const CPZ_AGENT_OPTS = [
 export const renderers = {
   // ----- 2.1 pk-suite --------------------------------------------------------
   'pk-suite'(root) {
-    note(root, 'Pharmacokinetics suite (Rowland & Tozer): loading dose = Vd·Cp/F; maintenance = CL·Css·τ/F; k = CL/Vd; half-life = 0.693·Vd/CL; steady state ≈ 5·t½. Each relation is computed only from the inputs you supply. Near-neighbors: vanc-auc, opioid-mme.');
+    note(root, 'Pharmacokinetics suite (Rowland & Tozer): loading dose = Vd·Cp/F; maintenance = CL·Css·τ/F; k = CL/Vd; half-life = 0.693·Vd/CL; steady state ≈ 5·t½. Each relation is computed only from the inputs you supply.');
     root.appendChild(num('Volume of distribution Vd (L)', 'pk-vd'));
     root.appendChild(num('Clearance CL (L/h)', 'pk-cl'));
     root.appendChild(num('Target / desired concentration Cp or Css (mg/L)', 'pk-cp'));
@@ -87,7 +87,7 @@ export const renderers = {
 
   // ----- 2.2 chlorpromazine-equivalents --------------------------------------
   'chlorpromazine-equivalents'(root) {
-    note(root, 'Antipsychotic chlorpromazine equivalents (Woods 2003): CPZ-equivalent mg = daily dose × (100 / agent factor), where the factor is the daily mg ≈ 100 mg chlorpromazine. Equivalence methods differ (DDD, consensus, Woods) and conversions are approximations. Near-neighbors: opioid-mme, benzo-equiv.');
+    note(root, 'Antipsychotic chlorpromazine equivalents (Woods 2003): CPZ-equivalent mg = daily dose × (100 / agent factor), where the factor is the daily mg ≈ 100 mg chlorpromazine. Equivalence methods differ (DDD, consensus, Woods) and conversions are approximations.');
     root.appendChild(pickField('Antipsychotic agent (Woods factor)', 'cpz-agent', CPZ_AGENT_OPTS));
     root.appendChild(num('Total daily dose (mg)', 'cpz-dose'));
     const o = out(); root.appendChild(o);

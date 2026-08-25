@@ -37,7 +37,7 @@ function render(o, r, valueLabel) {
 
 export const renderers = {
   'aec'(root) {
-    note(root, 'Absolute eosinophil count = WBC x eosinophil %. Bands: < 500 normal, 500-1500 mild, 1500-5000 moderate, > 5000 severe (cells/µL); >= 1500 = hypereosinophilia. Near-neighbors: nlr, anc.');
+    note(root, 'Absolute eosinophil count = WBC x eosinophil %. Bands: < 500 normal, 500-1500 mild, 1500-5000 moderate, > 5000 severe (cells/µL); >= 1500 = hypereosinophilia.');
     root.appendChild(num('Total WBC (10³/µL)', 'aec-wbc', { min: '0' }));
     root.appendChild(num('Eosinophils (%)', 'aec-eos', { min: '0', max: '100' }));
     const o = out(); root.appendChild(o);
@@ -47,7 +47,7 @@ export const renderers = {
     postureNote(root);
   },
   'nlr'(root) {
-    note(root, 'Neutrophil-to-lymphocyte ratio = ANC / ALC (Zahorec 2001). Healthy reference roughly 1-3; > 3 commonly regarded as elevated. Near-neighbors: plr, sii.');
+    note(root, 'Neutrophil-to-lymphocyte ratio = ANC / ALC (Zahorec 2001). Healthy reference roughly 1-3; > 3 commonly regarded as elevated.');
     root.appendChild(num('Absolute neutrophil count (10³/µL)', 'nlr-anc', { min: '0' }));
     root.appendChild(num('Absolute lymphocyte count (10³/µL)', 'nlr-alc', { min: '0' }));
     const o = out(); root.appendChild(o);
@@ -57,7 +57,7 @@ export const renderers = {
     postureNote(root);
   },
   'plr'(root) {
-    note(root, 'Platelet-to-lymphocyte ratio = platelets / ALC (Gasparyan 2019). Commonly cited healthy values below roughly 180. Near-neighbors: nlr, sii.');
+    note(root, 'Platelet-to-lymphocyte ratio = platelets / ALC (Gasparyan 2019). Commonly cited healthy values below roughly 180.');
     root.appendChild(num('Platelet count (10³/µL)', 'plr-plt', { min: '0' }));
     root.appendChild(num('Absolute lymphocyte count (10³/µL)', 'plr-alc', { min: '0' }));
     const o = out(); root.appendChild(o);
@@ -67,7 +67,7 @@ export const renderers = {
     postureNote(root);
   },
   'sii'(root) {
-    note(root, 'Systemic immune-inflammation index = platelets x ANC / ALC (Hu 2014). Higher values reflect a more pro-inflammatory state; no universal cutoff. Near-neighbors: nlr, plr.');
+    note(root, 'Systemic immune-inflammation index = platelets x ANC / ALC (Hu 2014). Higher values reflect a more pro-inflammatory state; no universal cutoff.');
     root.appendChild(num('Platelet count (10³/µL)', 'sii-plt', { min: '0' }));
     root.appendChild(num('Absolute neutrophil count (10³/µL)', 'sii-anc', { min: '0' }));
     root.appendChild(num('Absolute lymphocyte count (10³/µL)', 'sii-alc', { min: '0' }));

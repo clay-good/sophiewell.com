@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'borden-davf'(root) {
-    note(root, 'The Borden classification of a dural arteriovenous fistula (DAVF), by the pattern of venous drainage. Pick the type. I: dural sinus / meningeal vein with antegrade flow, no cortical venous drainage (benign); II: dural sinus with retrograde cortical venous reflux; III: cortical venous drainage only (aggressive). The key discriminator is cortical venous drainage (II/III). Reports the type the clinician has determined, not a diagnosis or a treatment decision. Near-neighbors: barrow-ccf, spetzler-ponce.');
+    note(root, 'The Borden classification of a dural arteriovenous fistula (DAVF), by the pattern of venous drainage. Pick the type. I: dural sinus / meningeal vein with antegrade flow, no cortical venous drainage (benign); II: dural sinus with retrograde cortical venous reflux; III: cortical venous drainage only (aggressive). The key discriminator is cortical venous drainage (II/III). Reports the type the clinician has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('Borden type', 'borden-type', [
       ['I', 'I - dural sinus, antegrade flow, no cortical drainage (benign)'],
       ['II', 'II - dural sinus with cortical venous reflux'],

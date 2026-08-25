@@ -35,7 +35,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'kikuchi-level'(root) {
-    note(root, 'Kikuchi classification (Kikuchi 1995) for a sessile (non-pedunculated) malignant colorectal lesion. Pick the level from how deeply the invasive carcinoma has invaded the submucosa (divided into thirds). Sm1 (upper third) carries a low metastasis risk; Sm2 / Sm3 (middle / lower third) carry a materially higher risk. The sessile counterpart to Haggitt. Near-neighbors: haggitt-level, paris-classification.');
+    note(root, 'Kikuchi classification (Kikuchi 1995) for a sessile (non-pedunculated) malignant colorectal lesion. Pick the level from how deeply the invasive carcinoma has invaded the submucosa (divided into thirds). Sm1 (upper third) carries a low metastasis risk; Sm2 / Sm3 (middle / lower third) carry a materially higher risk. The sessile counterpart to Haggitt.');
     root.appendChild(select('Kikuchi level', 'kik-level', [
       ['Sm1', 'Sm1 — upper (superficial) third of the submucosa (~0–3% node metastasis)'],
       ['Sm2', 'Sm2 — middle third (~10% node metastasis)'],

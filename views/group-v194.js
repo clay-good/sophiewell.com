@@ -38,7 +38,7 @@ function wire(ids, run) {
 export const renderers = {
   // ----- 2.1 papi ------------------------------------------------------------
   papi(root) {
-    note(root, 'Pulmonary artery pulsatility index (Korabathina 2012; Lim 2020): PAPi = (PA systolic − PA diastolic) / right atrial pressure. Context-specific thresholds (< 1.0 acute RV/LVAD; < 1.85 advanced HF). Near-neighbors: hemodynamic-suite, rvsp-pasp, cardiac-power-output.');
+    note(root, 'Pulmonary artery pulsatility index (Korabathina 2012; Lim 2020): PAPi = (PA systolic − PA diastolic) / right atrial pressure. Context-specific thresholds (< 1.0 acute RV/LVAD; < 1.85 advanced HF).');
     root.appendChild(num('PA systolic pressure (mmHg)', 'papi-pasp'));
     root.appendChild(num('PA diastolic pressure (mmHg)', 'papi-padp'));
     root.appendChild(num('Right atrial pressure (mmHg)', 'papi-rap'));
@@ -54,7 +54,7 @@ export const renderers = {
 
   // ----- 2.2 transpulmonary-gradient -----------------------------------------
   'transpulmonary-gradient'(root) {
-    note(root, 'Transpulmonary (TPG = mean PAP − PCWP) and diastolic (DPG = PA diastolic − PCWP) gradients (Naeije 2013): TPG > 12 flags a pulmonary-vascular component; with PCWP > 15, DPG ≥ 7 marks combined pre-/post-capillary PH. Near-neighbors: hemodynamic-suite, rvsp-pasp.');
+    note(root, 'Transpulmonary (TPG = mean PAP − PCWP) and diastolic (DPG = PA diastolic − PCWP) gradients (Naeije 2013): TPG > 12 flags a pulmonary-vascular component; with PCWP > 15, DPG ≥ 7 marks combined pre-/post-capillary PH.');
     root.appendChild(num('Mean PA pressure (mmHg)', 'tpg-mpap'));
     root.appendChild(num('PA diastolic pressure (mmHg)', 'tpg-padp'));
     root.appendChild(num('Mean PCWP (mmHg)', 'tpg-pcwp'));
@@ -70,7 +70,7 @@ export const renderers = {
 
   // ----- 2.3 tei-index -------------------------------------------------------
   'tei-index'(root) {
-    note(root, 'Tei myocardial performance index (Tei 1995): MPI = (IVCT + IVRT) / ET. Higher = worse combined systolic-diastolic function (LV normal ~0.39 ± 0.05). Near-neighbors: teichholz-lvef, mitral-e-e-prime.');
+    note(root, 'Tei myocardial performance index (Tei 1995): MPI = (IVCT + IVRT) / ET. Higher = worse combined systolic-diastolic function (LV normal ~0.39 ± 0.05).');
     root.appendChild(num('Isovolumic contraction time IVCT (ms)', 'tei-ivct'));
     root.appendChild(num('Isovolumic relaxation time IVRT (ms)', 'tei-ivrt'));
     root.appendChild(num('Ejection time ET (ms)', 'tei-et'));
@@ -86,7 +86,7 @@ export const renderers = {
 
   // ----- 2.4 shunt-fraction --------------------------------------------------
   'shunt-fraction'(root) {
-    note(root, 'Pulmonary shunt fraction Qs/Qt (Berggren 1942): oxygen contents CxO₂ = 1.34 × Hb × SxO₂ + 0.0031 × PxO₂, end-capillary saturation assumed 100%; Qs/Qt = (CcO₂ − CaO₂) / (CcO₂ − CvO₂). Normal ~4–10%. Near-neighbors: cao2-do2, aa-gradient, pf-ratio.');
+    note(root, 'Pulmonary shunt fraction Qs/Qt (Berggren 1942): oxygen contents CxO₂ = 1.34 × Hb × SxO₂ + 0.0031 × PxO₂, end-capillary saturation assumed 100%; Qs/Qt = (CcO₂ − CaO₂) / (CcO₂ − CvO₂). Normal ~4–10%.');
     root.appendChild(num('Hemoglobin (g/dL)', 'shunt-hb'));
     root.appendChild(num('Alveolar / end-capillary O₂ tension (mmHg)', 'shunt-pao2a'));
     root.appendChild(num('Arterial SaO₂ (%)', 'shunt-sao2'));

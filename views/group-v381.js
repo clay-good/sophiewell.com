@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'winquist-hansen'(root) {
-    note(root, 'Winquist-Hansen classification of a femoral shaft fracture, by the extent of comminution and the cortical contact between the two main fragments. Pick the type. 0: none; I: small butterfly (< 25% width); II: larger butterfly (< 50% width, >= 50% contact); III: large fragment (> 50% width, < 50% contact); IV: circumferential, no contact. Near-neighbors: garden-classification, tile-pelvic.');
+    note(root, 'Winquist-Hansen classification of a femoral shaft fracture, by the extent of comminution and the cortical contact between the two main fragments. Pick the type. 0: none; I: small butterfly (< 25% width); II: larger butterfly (< 50% width, >= 50% contact); III: large fragment (> 50% width, < 50% contact); IV: circumferential, no contact.');
     root.appendChild(select('Winquist-Hansen type', 'wh-type', [
       ['0', 'Type 0 - no comminution'],
       ['I', 'Type I - small butterfly (< 25% width)'],

@@ -43,7 +43,7 @@ function render(o, r, valueLabel, value) {
 
 export const renderers = {
   'fips-score'(root) {
-    note(root, 'FIPS (Bettinger 2021): FIPS = 1.43·log10(bili) − 1.71·(1/creatinine) + 0.02·age − 0.02·albumin + 0.8074 (mg/dL, g/dL). >= 0.92 = high post-TIPS mortality. Near-neighbors: meld-na, meld-childpugh.');
+    note(root, 'FIPS (Bettinger 2021): FIPS = 1.43·log10(bili) − 1.71·(1/creatinine) + 0.02·age − 0.02·albumin + 0.8074 (mg/dL, g/dL). >= 0.92 = high post-TIPS mortality.');
     root.appendChild(num('Total bilirubin (mg/dL)', 'fips-bili', { min: '0' }));
     root.appendChild(num('Creatinine (mg/dL)', 'fips-cr', { min: '0' }));
     root.appendChild(num('Age (years)', 'fips-age', { min: '0' }));
@@ -56,7 +56,7 @@ export const renderers = {
     postureNote(root);
   },
   'albi-plt'(root) {
-    note(root, 'ALBI-PLT (Chen 2018): ALBI grade points + platelet points (2-5). A score of 2 marks very low high-risk-varices risk (screening deferrable). Near-neighbors: albi-grade, baveno-vii.');
+    note(root, 'ALBI-PLT (Chen 2018): ALBI grade points + platelet points (2-5). A score of 2 marks very low high-risk-varices risk (screening deferrable).');
     root.appendChild(num('Total bilirubin (µmol/L)', 'ap-bili', { min: '0' }));
     root.appendChild(num('Albumin (g/L)', 'ap-alb', { min: '0' }));
     root.appendChild(num('Platelet count (×10⁹/L)', 'ap-plt', { min: '0' }));
@@ -68,7 +68,7 @@ export const renderers = {
     postureNote(root);
   },
   'damico-cirrhosis-stage'(root) {
-    note(root, "D'Amico staging (D'Amico 2006): Stage 1 no varices/ascites (~1%); 2 varices (~3.4%); 3 ascites (~20%); 4 variceal bleeding (~57%). Near-neighbors: meld-childpugh, baveno-vii.");
+    note(root, "D'Amico staging (D'Amico 2006): Stage 1 no varices/ascites (~1%); 2 varices (~3.4%); 3 ascites (~20%); 4 variceal bleeding (~57%).");
     root.appendChild(check('Gastroesophageal varices present', 'dam-varices'));
     root.appendChild(check('Ascites present', 'dam-ascites'));
     root.appendChild(check('Variceal bleeding', 'dam-bleeding'));
@@ -80,7 +80,7 @@ export const renderers = {
     postureNote(root);
   },
   'amap-score'(root) {
-    note(root, 'aMAP score (Fan 2020): age, sex, ALBI, platelets → HCC risk. < 50 low, 50-60 medium, > 60 high. Near-neighbors: albi-grade, fib4.');
+    note(root, 'aMAP score (Fan 2020): age, sex, ALBI, platelets → HCC risk. < 50 low, 50-60 medium, > 60 high.');
     root.appendChild(num('Age (years)', 'amap-age', { min: '0' }));
     root.appendChild(num('Total bilirubin (µmol/L)', 'amap-bili', { min: '0' }));
     root.appendChild(num('Albumin (g/L)', 'amap-alb', { min: '0' }));
@@ -94,7 +94,7 @@ export const renderers = {
     postureNote(root);
   },
   'nacseld-aclf'(root) {
-    note(root, "NACSELD-ACLF (O'Leary 2018): count of extrahepatic organ failures (0-4). >= 2 = ACLF; 30-day survival ~93% at 0 to ~19% at 4. Near-neighbors: clif-c-aclf, meld-na.");
+    note(root, "NACSELD-ACLF (O'Leary 2018): count of extrahepatic organ failures (0-4). >= 2 = ACLF; 30-day survival ~93% at 0 to ~19% at 4.");
     root.appendChild(check('Circulatory failure (shock / vasopressors)', 'nac-circ'));
     root.appendChild(check('Brain failure (grade III/IV hepatic encephalopathy)', 'nac-brain'));
     root.appendChild(check('Renal failure (dialysis)', 'nac-renal'));
@@ -107,7 +107,7 @@ export const renderers = {
     postureNote(root);
   },
   'fibroq'(root) {
-    note(root, 'FibroQ (Hsieh 2009): FibroQ = 10 × (age × AST × INR) / (ALT × platelets). > 1.6 predicts significant fibrosis (≥ F2). Near-neighbors: fib4, apri.');
+    note(root, 'FibroQ (Hsieh 2009): FibroQ = 10 × (age × AST × INR) / (ALT × platelets). > 1.6 predicts significant fibrosis (≥ F2).');
     root.appendChild(num('Age (years)', 'fq-age', { min: '0' }));
     root.appendChild(num('AST (IU/L)', 'fq-ast', { min: '0' }));
     root.appendChild(num('INR', 'fq-inr', { min: '0' }));

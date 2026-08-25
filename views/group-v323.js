@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'siewert'(root) {
-    note(root, 'Siewert classification of esophagogastric-junction (GEJ) adenocarcinoma (Siewert & Stein 1998). Pick the type from where the tumor center sits relative to the anatomic GEJ. Type I is treated more like esophageal cancer, type III more like gastric cancer; type II is the true cardia. Near-neighbors: la-esophagitis.');
+    note(root, 'Siewert classification of esophagogastric-junction (GEJ) adenocarcinoma (Siewert & Stein 1998). Pick the type from where the tumor center sits relative to the anatomic GEJ. Type I is treated more like esophageal cancer, type III more like gastric cancer; type II is the true cardia.');
     root.appendChild(select('Siewert type (tumor-center location vs the GEJ)', 'siewert-type', [
       ['1', 'I — center 1 to 5 cm above the GEJ (distal esophageal)'],
       ['2', 'II — center 1 cm above to 2 cm below the GEJ (true cardia)'],

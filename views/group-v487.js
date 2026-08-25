@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'rockwood-ac'(root) {
-    note(root, 'The Rockwood classification of acromioclavicular (AC) joint injuries, by AC and coracoclavicular (CC) ligament integrity and clavicular displacement. Pick the type. I: AC sprain (ligaments intact); II: AC torn, CC intact, slight widening; III: both torn, CC distance 25-100% increased; IV: posterior clavicle displacement; V: gross superior displacement (CC 100-300%); VI: inferior clavicle displacement. Reports the type the clinician has determined, not a diagnosis or a treatment decision. Near-neighbor: samilson-prieto.');
+    note(root, 'The Rockwood classification of acromioclavicular (AC) joint injuries, by AC and coracoclavicular (CC) ligament integrity and clavicular displacement. Pick the type. I: AC sprain (ligaments intact); II: AC torn, CC intact, slight widening; III: both torn, CC distance 25-100% increased; IV: posterior clavicle displacement; V: gross superior displacement (CC 100-300%); VI: inferior clavicle displacement. Reports the type the clinician has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('Rockwood type', 'rockwood-type', [
       ['I', 'I - AC sprain, ligaments intact'],
       ['II', 'II - AC torn, CC intact, slight widening'],

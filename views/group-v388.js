@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'brodsky-tonsil'(root) {
-    note(root, 'Brodsky grading scale for palatine tonsil size, by the percentage of the oropharyngeal width the tonsils occupy. Pick the grade. 0: within the fossa; 1: <25%; 2: 25-50%; 3: 50-75%; 4: >75% ("kissing tonsils"). Grades 3-4 are obstructive. Near-neighbors: stop-bang.');
+    note(root, 'Brodsky grading scale for palatine tonsil size, by the percentage of the oropharyngeal width the tonsils occupy. Pick the grade. 0: within the fossa; 1: <25%; 2: 25-50%; 3: 50-75%; 4: >75% ("kissing tonsils"). Grades 3-4 are obstructive.');
     root.appendChild(select('Brodsky grade', 'brodsky-grade', [
       ['0', 'Grade 0 - within the tonsillar fossa'],
       ['1', 'Grade 1 - < 25% of the width'],

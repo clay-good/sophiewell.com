@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'kwb-retinopathy'(root) {
-    note(root, 'Keith-Wagener-Barker classification (Keith, Wagener & Barker 1939) of hypertensive retinopathy on fundoscopy. Pick the grade. 1: mild generalized arteriolar narrowing; 2: focal narrowing and AV nicking; 3: plus hemorrhages, cotton-wool spots, and exudates; 4: plus optic disc swelling (papilledema), the hallmark of malignant hypertension. Near-neighbors: icdr-retinopathy.');
+    note(root, 'Keith-Wagener-Barker classification (Keith, Wagener & Barker 1939) of hypertensive retinopathy on fundoscopy. Pick the grade. 1: mild generalized arteriolar narrowing; 2: focal narrowing and AV nicking; 3: plus hemorrhages, cotton-wool spots, and exudates; 4: plus optic disc swelling (papilledema), the hallmark of malignant hypertension.');
     root.appendChild(select('Keith-Wagener-Barker grade', 'kwb-grade', [
       ['1', 'Grade 1 - mild generalized arteriolar narrowing'],
       ['2', 'Grade 2 - focal narrowing and AV nicking'],

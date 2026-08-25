@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'pfirrmann-disc'(root) {
-    note(root, 'The Pfirrmann classification of lumbar intervertebral disc degeneration on T2 MRI, by disc structure, nucleus-annulus distinction, signal, and height. Pick the grade. I: homogeneous bright, normal; II: inhomogeneous bright, normal; III: gray, unclear distinction; IV: gray-black, lost distinction; V: black, collapsed disc space. Reports the grade the radiologist has determined, not a diagnosis or a treatment decision. Near-neighbors: modic-changes, meyerding-spondylolisthesis.');
+    note(root, 'The Pfirrmann classification of lumbar intervertebral disc degeneration on T2 MRI, by disc structure, nucleus-annulus distinction, signal, and height. Pick the grade. I: homogeneous bright, normal; II: inhomogeneous bright, normal; III: gray, unclear distinction; IV: gray-black, lost distinction; V: black, collapsed disc space. Reports the grade the radiologist has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('Pfirrmann grade', 'pfirrmann-grade', [
       ['I', 'I - homogeneous bright white, normal height'],
       ['II', 'II - inhomogeneous bright, normal height'],

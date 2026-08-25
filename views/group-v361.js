@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'tanner-staging'(root) {
-    note(root, 'Tanner staging / Sexual Maturity Rating (Marshall & Tanner 1969/1970). Pick the development scale and the stage. Three scales - female breast, male genitalia, and pubic hair - each from stage 1 (prepubertal) to stage 5 (adult). Whether a stage is early or late for age (precocious vs delayed puberty) is a clinician judgment. Near-neighbors: mid-parental-height.');
+    note(root, 'Tanner staging / Sexual Maturity Rating (Marshall & Tanner 1969/1970). Pick the development scale and the stage. Three scales - female breast, male genitalia, and pubic hair - each from stage 1 (prepubertal) to stage 5 (adult). Whether a stage is early or late for age (precocious vs delayed puberty) is a clinician judgment.');
     root.appendChild(select('Development scale', 'tanner-scale', [
       ['breast', 'Breast (female)'],
       ['genital', 'Genital (male)'],

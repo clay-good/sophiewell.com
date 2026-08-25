@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'paris-classification'(root) {
-    note(root, 'Paris endoscopic classification of superficial neoplastic lesions (esophagus, stomach, colon; 2002/2005). Pick the morphologic type. 0-I are protruded; 0-II non-protruding; 0-III excavated. Depressed (0-IIc) and excavated (0-III) types carry a higher risk of submucosal invasion. Near-neighbors: forrest.');
+    note(root, 'Paris endoscopic classification of superficial neoplastic lesions (esophagus, stomach, colon; 2002/2005). Pick the morphologic type. 0-I are protruded; 0-II non-protruding; 0-III excavated. Depressed (0-IIc) and excavated (0-III) types carry a higher risk of submucosal invasion.');
     root.appendChild(select('Paris morphologic type', 'paris-type', [
       ['0-Ip', '0-Ip — protruded, pedunculated'],
       ['0-Is', '0-Is — protruded, sessile'],

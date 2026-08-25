@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'boyd-griffin'(root) {
-    note(root, 'The Boyd-Griffin classification of trochanteric (intertrochanteric) femur fractures, by fracture line and comminution. Pick the type. I: simple intertrochanteric, undisplaced; II: comminuted intertrochanteric with secondary cortical lines; III: essentially subtrochanteric; IV: trochanteric region plus proximal shaft in at least two planes. Reports the type the clinician has determined, not a diagnosis or a treatment decision. Near-neighbor: seinsheimer-subtroch.');
+    note(root, 'The Boyd-Griffin classification of trochanteric (intertrochanteric) femur fractures, by fracture line and comminution. Pick the type. I: simple intertrochanteric, undisplaced; II: comminuted intertrochanteric with secondary cortical lines; III: essentially subtrochanteric; IV: trochanteric region plus proximal shaft in at least two planes. Reports the type the clinician has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('Boyd-Griffin type', 'boyd-type', [
       ['I', 'I - simple intertrochanteric, undisplaced'],
       ['II', 'II - comminuted intertrochanteric'],

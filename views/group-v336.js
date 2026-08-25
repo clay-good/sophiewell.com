@@ -35,7 +35,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'jnet-classification'(root) {
-    note(root, 'JNET classification (Japan NBI Expert Team; Sano 2016), read on magnifying narrow-band imaging. Pick the type from the lesion’s vessel and surface pattern. Type 1 is hyperplastic / sessile-serrated (non-neoplastic); 2A is low-grade adenoma; 2B is high-grade neoplasia / shallow submucosal cancer; 3 suggests deep submucosal invasive cancer. Refines NICE by splitting type 2 into 2A/2B. Near-neighbors: nice-classification, kudo-pit-pattern.');
+    note(root, 'JNET classification (Japan NBI Expert Team; Sano 2016), read on magnifying narrow-band imaging. Pick the type from the lesion’s vessel and surface pattern. Type 1 is hyperplastic / sessile-serrated (non-neoplastic); 2A is low-grade adenoma; 2B is high-grade neoplasia / shallow submucosal cancer; 3 suggests deep submucosal invasive cancer. Refines NICE by splitting type 2 into 2A/2B.');
     root.appendChild(select('JNET type', 'jnet-type', [
       ['1', '1 — invisible vessels, regular spots (hyperplastic / sessile-serrated)'],
       ['2A', '2A — regular vessels and surface (low-grade adenoma)'],

@@ -55,7 +55,7 @@ function wire(ids, run) {
 export const renderers = {
   // ----- 2.5 dasi ------------------------------------------------------------
   dasi(root) {
-    note(root, 'Duke Activity Status Index (Hlatky 1989): a 12-item self-report functional-capacity questionnaire. Affirmative activities are summed by their METs weights (max 58.2); peak VO₂ = 0.43 × DASI + 9.6 and METs = VO₂ / 3.5. < 4 METs marks poor functional capacity. Near-neighbors: rcri, mets-activity. Check every activity the patient can do:');
+    note(root, 'Duke Activity Status Index (Hlatky 1989): a 12-item self-report functional-capacity questionnaire. Affirmative activities are summed by their METs weights (max 58.2); peak VO₂ = 0.43 × DASI + 9.6 and METs = VO₂ / 3.5. < 4 METs marks poor functional capacity. Check every activity the patient can do:');
     const items = [
       ['dasi-selfcare', 'Take care of self (eat, dress, bathe, toilet) — 2.75'],
       ['dasi-walkindoors', 'Walk indoors — 1.75'],
@@ -88,7 +88,7 @@ export const renderers = {
 
   // ----- 2.3 abcd3-i ---------------------------------------------------------
   'abcd3-i'(root) {
-    note(root, 'ABCD3-I score (Merwick 2010): the imaging-augmented refinement of ABCD² for early stroke risk after TIA — the ABCD² items plus dual TIA within 7 days (+2), ipsilateral ≥ 50% carotid stenosis (+2), and abnormal DWI (+2), total 0–13. Strata: low 0–3, medium 4–7, high 8–13. Near-neighbors: abcd2, nihss.');
+    note(root, 'ABCD3-I score (Merwick 2010): the imaging-augmented refinement of ABCD² for early stroke risk after TIA — the ABCD² items plus dual TIA within 7 days (+2), ipsilateral ≥ 50% carotid stenosis (+2), and abnormal DWI (+2), total 0–13. Strata: low 0–3, medium 4–7, high 8–13.');
     root.appendChild(numField('Age (years)', 'abcd3i-age', { min: '0' }));
     root.appendChild(numField('Systolic BP (mmHg)', 'abcd3i-sbp', { min: '30' }));
     root.appendChild(numField('Diastolic BP (mmHg)', 'abcd3i-dbp', { min: '10' }));
@@ -118,7 +118,7 @@ export const renderers = {
 
   // ----- 2.1 sort-mortality --------------------------------------------------
   'sort-mortality'(root) {
-    note(root, 'Surgical Outcome Risk Tool (Protopapa 2014): a preoperative 30-day-mortality estimate from six routine variables — ASA physical status, urgency, high-risk specialty (GI / thoracic / vascular), surgical severity, cancer, and age. logit = −7.366 + weighted terms; mortality = 1/(1+e^−logit). Near-neighbors: rcri, possum, surgical-apgar.');
+    note(root, 'Surgical Outcome Risk Tool (Protopapa 2014): a preoperative 30-day-mortality estimate from six routine variables — ASA physical status, urgency, high-risk specialty (GI / thoracic / vascular), surgical severity, cancer, and age. logit = −7.366 + weighted terms; mortality = 1/(1+e^−logit).');
     root.appendChild(selectField('ASA physical status', 'sort-asa', [
       { value: 'I', text: 'I (0)' },
       { value: 'II', text: 'II (0)' },

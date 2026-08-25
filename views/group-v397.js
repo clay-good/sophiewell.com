@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'el-khoury-ar'(root) {
-    note(root, 'El Khoury (Boodhwani) repair-oriented classification of aortic regurgitation, by mechanism (the aortic analog of Carpentier for mitral). Pick the type. I: normal cusp motion with functional-aortic-annulus dilatation (subtypes Ia-Id); II: cusp prolapse (excessive motion); III: cusp restriction (restrictive motion). Near-neighbors: sievers-bav.');
+    note(root, 'El Khoury (Boodhwani) repair-oriented classification of aortic regurgitation, by mechanism (the aortic analog of Carpentier for mitral). Pick the type. I: normal cusp motion with functional-aortic-annulus dilatation (subtypes Ia-Id); II: cusp prolapse (excessive motion); III: cusp restriction (restrictive motion).');
     root.appendChild(select('El Khoury type', 'elk-type', [
       ['I', 'Type I - normal motion, annulus dilatation'],
       ['II', 'Type II - cusp prolapse'],

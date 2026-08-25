@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'lung-rads'(root) {
-    note(root, 'ACR Lung-RADS v2022 assessment categories (lung cancer screening LDCT). Pick the final assessment category. 1–2 continue annual screening; 3 is a 6-month follow-up; 4A–4X are suspicious (short-interval or diagnostic workup). An S modifier flags significant non-lung findings. Near-neighbors: bi-rads.');
+    note(root, 'ACR Lung-RADS v2022 assessment categories (lung cancer screening LDCT). Pick the final assessment category. 1–2 continue annual screening; 3 is a 6-month follow-up; 4A–4X are suspicious (short-interval or diagnostic workup). An S modifier flags significant non-lung findings.');
     root.appendChild(select('Lung-RADS assessment category', 'lungrads-cat', [
       ['0', '0 — incomplete (comparison or more imaging needed)'],
       ['1', '1 — negative'],

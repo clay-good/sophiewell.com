@@ -59,7 +59,7 @@ const OHFRS_FIELDS = [
 export const renderers = {
   // ----- 2.1 heart-pathway ---------------------------------------------------
   'heart-pathway'(root) {
-    note(root, 'HEART Pathway (Mahler 2015): pairs the HEART score with serial troponin. HEART 0-3 AND a non-elevated troponin at 0 h and 3 h = low risk, an early-discharge candidate (~0.9-2% 30-day MACE); HEART >= 4 or any elevated troponin = not low risk. Enter the HEART score from the HEART tile. Near-neighbors: heart, timi.');
+    note(root, 'HEART Pathway (Mahler 2015): pairs the HEART score with serial troponin. HEART 0-3 AND a non-elevated troponin at 0 h and 3 h = low risk, an early-discharge candidate (~0.9-2% 30-day MACE); HEART >= 4 or any elevated troponin = not low risk. Enter the HEART score from the HEART tile.');
     root.appendChild(num('HEART score (0-10)', 'hp-heart', { min: '0', max: '10' }));
     root.appendChild(check('0-hour troponin elevated', 'hp-trop0'));
     root.appendChild(check('3-hour troponin elevated', 'hp-trop3'));
@@ -76,7 +76,7 @@ export const renderers = {
 
   // ----- 2.2 ottawa-heart-failure --------------------------------------------
   'ottawa-heart-failure'(root) {
-    note(root, 'Ottawa Heart Failure Risk Scale (Stiell 2013): 10 weighted items (0-15) for ED heart-failure patients. Serious-adverse-event risk rises from ~2.8% at 0 to ~89% at the high end; the authors recommend an admission threshold of > 1. Near-neighbors: adhere-hf, gwtg-hf.');
+    note(root, 'Ottawa Heart Failure Risk Scale (Stiell 2013): 10 weighted items (0-15) for ED heart-failure patients. Serious-adverse-event risk rises from ~2.8% at 0 to ~89% at the high end; the authors recommend an admission threshold of > 1.');
     for (const [id, , label] of OHFRS_FIELDS) root.appendChild(check(label, id));
     const o = out(); root.appendChild(o);
     const ids = OHFRS_FIELDS.map((f) => f[0]);
@@ -93,7 +93,7 @@ export const renderers = {
 
   // ----- 2.3 light-criteria --------------------------------------------------
   'light-criteria'(root) {
-    note(root, "Light's criteria (Light 1972): a pleural effusion is an exudate if ANY of - pleural/serum protein ratio > 0.5; pleural/serum LDH ratio > 0.6; pleural LDH > two-thirds the upper limit of normal serum LDH. None met = transudate. Near-neighbors: saag, pleural-fluid.");
+    note(root, "Light's criteria (Light 1972): a pleural effusion is an exudate if ANY of - pleural/serum protein ratio > 0.5; pleural/serum LDH ratio > 0.6; pleural LDH > two-thirds the upper limit of normal serum LDH. None met = transudate.");
     root.appendChild(num('Pleural fluid total protein (g/dL)', 'lc-pprot', { min: '0' }));
     root.appendChild(num('Serum total protein (g/dL)', 'lc-sprot', { min: '0' }));
     root.appendChild(num('Pleural fluid LDH (IU/L)', 'lc-pldh', { min: '0' }));
@@ -112,7 +112,7 @@ export const renderers = {
 
   // ----- 2.4 baux-score ------------------------------------------------------
   'baux-score'(root) {
-    note(root, 'Baux score (Baux 1961): burn mortality estimate = age + burned %TBSA. A score near 100 was near-universally fatal in the pre-modern era; modern burn care shifts survivable thresholds higher. Near-neighbors: revised-baux, burn-fluid.');
+    note(root, 'Baux score (Baux 1961): burn mortality estimate = age + burned %TBSA. A score near 100 was near-universally fatal in the pre-modern era; modern burn care shifts survivable thresholds higher.');
     root.appendChild(num('Age (years)', 'bx-age', { min: '0' }));
     root.appendChild(num('Burned total body surface area (%TBSA, 0-100)', 'bx-tbsa', { min: '0', max: '100' }));
     const o = out(); root.appendChild(o);
@@ -128,7 +128,7 @@ export const renderers = {
 
   // ----- 2.5 revised-baux ----------------------------------------------------
   'revised-baux'(root) {
-    note(root, 'Revised Baux score (Osler 2010): age + burned %TBSA + 17 if inhalation injury is present. The LD50 in the best modern burn units is a score of ~130-140. Reports the classic Baux too. Near-neighbors: baux-score, burn-fluid.');
+    note(root, 'Revised Baux score (Osler 2010): age + burned %TBSA + 17 if inhalation injury is present. The LD50 in the best modern burn units is a score of ~130-140. Reports the classic Baux too.');
     root.appendChild(num('Age (years)', 'rbx-age', { min: '0' }));
     root.appendChild(num('Burned total body surface area (%TBSA, 0-100)', 'rbx-tbsa', { min: '0', max: '100' }));
     root.appendChild(check('Inhalation injury present (+17)', 'rbx-inh'));

@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'tonnis-hip-oa'(root) {
-    note(root, 'Tonnis classification (Tonnis 1987) of hip osteoarthritis on an AP pelvis radiograph. Pick the grade. 0: no OA; 1: slight sclerosis / narrowing / small osteophytes; 2: small cysts, moderate narrowing, moderate loss of sphericity; 3: large cysts, severe narrowing, head deformity, or AVN. Grade 2+ defines radiographic hip OA. The hip counterpart to Kellgren-Lawrence; this is the OA grade, not the Tonnis angle. Near-neighbors: kellgren-lawrence, crowe-ddh.');
+    note(root, 'Tonnis classification (Tonnis 1987) of hip osteoarthritis on an AP pelvis radiograph. Pick the grade. 0: no OA; 1: slight sclerosis / narrowing / small osteophytes; 2: small cysts, moderate narrowing, moderate loss of sphericity; 3: large cysts, severe narrowing, head deformity, or AVN. Grade 2+ defines radiographic hip OA. The hip counterpart to Kellgren-Lawrence; this is the OA grade, not the Tonnis angle.');
     root.appendChild(select('Tonnis grade', 'tonnis-grade', [
       ['0', 'Grade 0 - no osteoarthritis'],
       ['1', 'Grade 1 - slight sclerosis / narrowing / small osteophytes'],

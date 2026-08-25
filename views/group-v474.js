@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'rastelli-avsd'(root) {
-    note(root, 'The Rastelli classification of the complete atrioventricular septal defect (complete AV canal), by the morphology of the superior (anterior) bridging leaflet. Pick the type. A: attached by chordae to the crest of the ventricular septum (most common); B: anomalous chordal attachments to a right-ventricular papillary muscle (rarest); C: free-floating, unattached to the septum (often with tetralogy of Fallot). Reports the type the clinician has determined, not a diagnosis or a treatment decision. Near-neighbor: sievers-bav.');
+    note(root, 'The Rastelli classification of the complete atrioventricular septal defect (complete AV canal), by the morphology of the superior (anterior) bridging leaflet. Pick the type. A: attached by chordae to the crest of the ventricular septum (most common); B: anomalous chordal attachments to a right-ventricular papillary muscle (rarest); C: free-floating, unattached to the septum (often with tetralogy of Fallot). Reports the type the clinician has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('Rastelli type', 'rastelli-type', [
       ['A', 'A - attached to the ventricular septal crest (most common)'],
       ['B', 'B - anomalous attachment to an RV papillary muscle (rarest)'],

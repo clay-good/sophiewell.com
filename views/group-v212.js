@@ -39,7 +39,7 @@ function wire(ids, run) {
 export const renderers = {
   // ----- 2.3 king-score ------------------------------------------------------
   'king-score'(root) {
-    note(root, 'King’s Score (Cross 2009): a simple four-variable non-invasive marker of cirrhosis — King’s Score = (age × AST × INR) / platelets (×10⁹/L). A score ≥ 16.7 rules cirrhosis in (sensitivity 86%, specificity 80%, NPV 96%); ≥ 12.3 marks significant fibrosis (F3-6); < 12.3 rules it out. Used alongside FIB-4 and APRI. Near-neighbors: fib4, apri.');
+    note(root, 'King’s Score (Cross 2009): a simple four-variable non-invasive marker of cirrhosis — King’s Score = (age × AST × INR) / platelets (×10⁹/L). A score ≥ 16.7 rules cirrhosis in (sensitivity 86%, specificity 80%, NPV 96%); ≥ 12.3 marks significant fibrosis (F3-6); < 12.3 rules it out. Used alongside FIB-4 and APRI.');
     root.appendChild(num('Age (years)', 'king-age', { min: '0' }));
     root.appendChild(num('AST (IU/L)', 'king-ast', { min: '0' }));
     root.appendChild(num('INR', 'king-inr', { min: '0' }));
@@ -57,7 +57,7 @@ export const renderers = {
 
   // ----- 2.1 baveno-vii ------------------------------------------------------
   'baveno-vii'(root) {
-    note(root, 'Baveno VII (de Franchis 2022): the consensus non-invasive rules in compensated advanced chronic liver disease. Clinically significant portal hypertension (CSPH): LSM ≤ 15 kPa with platelets ≥ 150 rules it out; LSM ≥ 25 kPa rules it in (not reliable in obese MASLD); 15–25 kPa is the gray zone. Favorable Baveno VI (LSM < 20 kPa and platelets > 150) makes high-risk varices unlikely, so screening endoscopy may be deferred. Near-neighbors: meld-childpugh, apri.');
+    note(root, 'Baveno VII (de Franchis 2022): the consensus non-invasive rules in compensated advanced chronic liver disease. Clinically significant portal hypertension (CSPH): LSM ≤ 15 kPa with platelets ≥ 150 rules it out; LSM ≥ 25 kPa rules it in (not reliable in obese MASLD); 15–25 kPa is the gray zone. Favorable Baveno VI (LSM < 20 kPa and platelets > 150) makes high-risk varices unlikely, so screening endoscopy may be deferred.');
     root.appendChild(num('Liver-stiffness measurement (kPa, transient elastography)', 'bav-lsm', { min: '0' }));
     root.appendChild(num('Platelet count (×10⁹/L)', 'bav-plt', { min: '0' }));
     const o = out(); root.appendChild(o);

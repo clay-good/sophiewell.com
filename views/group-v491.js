@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'severin-ddh'(root) {
-    note(root, 'The Severin classification of the radiographic outcome of the hip after treatment for developmental dysplasia (DDH), by joint congruency and the center-edge (CE) angle at maturity. Pick the group. I: normal; II: concentric with moderate deformity; III: dysplastic without subluxation; IV: subluxated; V: false (secondary) acetabulum; VI: redislocation. Reports the group the clinician has determined, not a diagnosis or a treatment decision. Near-neighbor: crowe-ddh.');
+    note(root, 'The Severin classification of the radiographic outcome of the hip after treatment for developmental dysplasia (DDH), by joint congruency and the center-edge (CE) angle at maturity. Pick the group. I: normal; II: concentric with moderate deformity; III: dysplastic without subluxation; IV: subluxated; V: false (secondary) acetabulum; VI: redislocation. Reports the group the clinician has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('Severin group', 'severin-group', [
       ['I', 'I - normal or nearly normal'],
       ['II', 'II - concentric, moderate deformity'],

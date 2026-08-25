@@ -35,7 +35,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'kudo-pit-pattern'(root) {
-    note(root, 'Kudo pit-pattern classification (Kudo 1996), read on magnifying chromoendoscopy. Pick the crypt-opening (pit) pattern seen. Types I–II are non-neoplastic; IIIS / IIIL / IV are neoplastic adenomas; type V raises concern for invasive carcinoma / deep submucosal invasion. Near-neighbors: paris-classification, haggitt-level.');
+    note(root, 'Kudo pit-pattern classification (Kudo 1996), read on magnifying chromoendoscopy. Pick the crypt-opening (pit) pattern seen. Types I–II are non-neoplastic; IIIS / IIIL / IV are neoplastic adenomas; type V raises concern for invasive carcinoma / deep submucosal invasion.');
     root.appendChild(select('Kudo pit-pattern type', 'kudo-type', [
       ['I', 'I — roundish pits (normal, non-neoplastic)'],
       ['II', 'II — stellar / papillary pits (hyperplastic, non-neoplastic)'],

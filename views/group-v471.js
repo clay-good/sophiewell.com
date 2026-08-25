@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'gass-macular-hole'(root) {
-    note(root, 'The Gass classification of the stages of development of an idiopathic macular hole, by the biomicroscopic and OCT appearance. Pick the stage. 1: impending (foveal detachment, no full-thickness defect); 2: small full-thickness hole (less than 400 micrometers); 3: larger full-thickness hole (400 micrometers or more) without a complete posterior vitreous detachment; 4: full-thickness hole with a complete posterior vitreous detachment. Reports the stage the clinician has determined, not a diagnosis or a treatment decision. Near-neighbor: dme-severity.');
+    note(root, 'The Gass classification of the stages of development of an idiopathic macular hole, by the biomicroscopic and OCT appearance. Pick the stage. 1: impending (foveal detachment, no full-thickness defect); 2: small full-thickness hole (less than 400 micrometers); 3: larger full-thickness hole (400 micrometers or more) without a complete posterior vitreous detachment; 4: full-thickness hole with a complete posterior vitreous detachment. Reports the stage the clinician has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('Gass stage', 'gass-stage', [
       ['1', '1 - impending (no full-thickness defect)'],
       ['2', '2 - small full-thickness hole (< 400 micrometers)'],

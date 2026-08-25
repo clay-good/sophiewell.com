@@ -116,7 +116,7 @@ const ELIX_GROUPS = [
 export const renderers = {
   // ----- 2.1 msmart ----------------------------------------------------------
   msmart(root) {
-    note(root, 'mSMART myeloma risk (Mikhael 2013; 3.0): high-risk if any high-risk cytogenetic/lab feature is present; two features = double hit, ≥ 3 = triple hit; standard risk otherwise. Near-neighbors: impede-vte.');
+    note(root, 'mSMART myeloma risk (Mikhael 2013; 3.0): high-risk if any high-risk cytogenetic/lab feature is present; two features = double hit, ≥ 3 = triple hit; standard risk otherwise.');
     for (const [label, id] of MSMART_FIELDS) root.appendChild(checkField(label, id));
     const o = out(); root.appendChild(o);
     wire(MSMART_FIELDS.map((f) => f[1]), () => safe(o, () => {
@@ -133,7 +133,7 @@ export const renderers = {
 
   // ----- 2.2 impede-vte ------------------------------------------------------
   'impede-vte'(root) {
-    note(root, 'IMPEDE VTE score (Sanfilippo 2019): weighted VTE-risk factors in myeloma. Bands: ≤ 3 low, 4–7 intermediate, ≥ 8 high. Framed for a thromboprophylaxis discussion. Near-neighbors: msmart.');
+    note(root, 'IMPEDE VTE score (Sanfilippo 2019): weighted VTE-risk factors in myeloma. Bands: ≤ 3 low, 4–7 intermediate, ≥ 8 high. Framed for a thromboprophylaxis discussion.');
     root.appendChild(checkField('Immunomodulatory agent (+4)', 'impede-imid'));
     root.appendChild(checkField('BMI ≥ 25 (+1)', 'impede-bmi25'));
     root.appendChild(checkField('Pelvic / hip / femur fracture (+4)', 'impede-fracture'));
@@ -159,7 +159,7 @@ export const renderers = {
 
   // ----- 2.3 same-tt2r2 ------------------------------------------------------
   'same-tt2r2'(root) {
-    note(root, 'SAMe-TT2R2 (Apostolakis 2013): predicts INR-control quality on a vitamin-K antagonist. Score 0–1 favors a VKA; ≥ 2 favors a DOAC or closer monitoring. Near-neighbors: rosendaal-ttr.');
+    note(root, 'SAMe-TT2R2 (Apostolakis 2013): predicts INR-control quality on a vitamin-K antagonist. Score 0–1 favors a VKA; ≥ 2 favors a DOAC or closer monitoring.');
     for (const [label, id] of SAME_FIELDS) root.appendChild(checkField(label, id));
     const o = out(); root.appendChild(o);
     wire(SAME_FIELDS.map((f) => f[1]), () => safe(o, () => {
@@ -175,7 +175,7 @@ export const renderers = {
 
   // ----- 2.4 elixhauser ------------------------------------------------------
   elixhauser(root) {
-    note(root, 'Elixhauser comorbidity index, van Walraven weighting (Elixhauser 1998; van Walraven 2009): each present condition adds its signed weight (−7 to +12); a higher total predicts higher in-hospital mortality. A complement to charlson. Near-neighbors: charlson.');
+    note(root, 'Elixhauser comorbidity index, van Walraven weighting (Elixhauser 1998; van Walraven 2009): each present condition adds its signed weight (−7 to +12); a higher total predicts higher in-hospital mortality. A complement to charlson.');
     const ids = [];
     for (const [heading, items] of ELIX_GROUPS) {
       subhead(root, heading);

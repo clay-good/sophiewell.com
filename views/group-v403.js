@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'berndt-harty'(root) {
-    note(root, 'Berndt-Harty classification of an osteochondral lesion (transchondral fracture) of the talus, by the radiographic stage of the fragment. Pick the stage. I: subchondral compression (cartilage intact); II: partial detachment; III: complete detachment, non-displaced (in situ); IV: displaced fragment / loose body. Near-neighbors: weber-ankle, lauge-hansen.');
+    note(root, 'Berndt-Harty classification of an osteochondral lesion (transchondral fracture) of the talus, by the radiographic stage of the fragment. Pick the stage. I: subchondral compression (cartilage intact); II: partial detachment; III: complete detachment, non-displaced (in situ); IV: displaced fragment / loose body.');
     root.appendChild(select('Berndt-Harty stage', 'bh-stage', [
       ['I', 'Stage I - subchondral compression (cartilage intact)'],
       ['II', 'Stage II - partial detachment'],

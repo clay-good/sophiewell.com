@@ -47,7 +47,7 @@ const S04 = [['0', '0'], ['1', '1'], ['2', '2'], ['3', '3'], ['4', '4']];
 
 export const renderers = {
   'groningen-frailty-indicator'(root) {
-    note(root, 'Groningen Frailty Indicator (Steverink 2001): 15 items across physical, cognitive, social, psychological domains. >= 4 indicates frailty. Near-neighbors: sof-frailty-index.');
+    note(root, 'Groningen Frailty Indicator (Steverink 2001): 15 items across physical, cognitive, social, psychological domains. >= 4 indicates frailty.');
     root.appendChild(numInput('Total items positive (0-15)', 'gfi-count', { min: '0', max: '15' }));
     const o = out(); root.appendChild(o);
     wire(['gfi-count'], () => safe(o, () => {
@@ -56,7 +56,7 @@ export const renderers = {
     postureNote(root);
   },
   'short-physical-performance-battery'(root) {
-    note(root, 'SPPB (Guralnik 1994): balance, gait speed, and chair stands, each 0-4. Total 0-12; < 10 mobility limitation. Near-neighbors: gait-speed.');
+    note(root, 'SPPB (Guralnik 1994): balance, gait speed, and chair stands, each 0-4. Total 0-12; < 10 mobility limitation.');
     root.appendChild(select('Balance sub-score (0-4)', 'sppb-balance', S04));
     root.appendChild(select('4-meter gait-speed sub-score (0-4)', 'sppb-gait', S04));
     root.appendChild(select('Chair-stand sub-score (0-4)', 'sppb-chair', S04));
@@ -67,7 +67,7 @@ export const renderers = {
     postureNote(root);
   },
   'osteoporosis-self-assessment-tool'(root) {
-    note(root, 'OST (Koh 2001) = (weight kg - age years) x 0.2, truncated. > -1 low, -1 to -4 moderate, < -4 high risk of low bone density. Near-neighbors: osteoporosis-prescreen.');
+    note(root, 'OST (Koh 2001) = (weight kg - age years) x 0.2, truncated. > -1 low, -1 to -4 moderate, < -4 high risk of low bone density.');
     root.appendChild(numInput('Weight (kg)', 'ost-weight', { min: '0' }));
     root.appendChild(numInput('Age (years)', 'ost-age', { min: '0' }));
     const o = out(); root.appendChild(o);
@@ -77,7 +77,7 @@ export const renderers = {
     postureNote(root);
   },
   'five-times-sit-to-stand'(root) {
-    note(root, 'Five-times sit-to-stand (Csuka & McCarty 1985): time for five sit-to-stand cycles, arms folded. >= 12 s increased fall risk, >= 15 s recurrent-faller risk. Near-neighbors: chair-stand-30s.');
+    note(root, 'Five-times sit-to-stand (Csuka & McCarty 1985): time for five sit-to-stand cycles, arms folded. >= 12 s increased fall risk, >= 15 s recurrent-faller risk.');
     root.appendChild(numInput('Time for five sit-to-stand cycles (seconds)', 'ftsts-time', { min: '0' }));
     const o = out(); root.appendChild(o);
     wire(['ftsts-time'], () => safe(o, () => {

@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'steinberg-avn'(root) {
-    note(root, 'Steinberg (University of Pennsylvania) staging of femoral-head osteonecrosis (AVN), by imaging. Pick the stage. 0: normal imaging; I: normal XR, abnormal MRI; II: cystic/sclerotic; III: subchondral collapse (crescent) without flattening; IV: flattening; V: joint narrowing / acetabular changes; VI: degenerative. Stages I-V are quantified A (<15%) / B (15-30%) / C (>30%) by extent. Near-neighbors: ficat-arlet.');
+    note(root, 'Steinberg (University of Pennsylvania) staging of femoral-head osteonecrosis (AVN), by imaging. Pick the stage. 0: normal imaging; I: normal XR, abnormal MRI; II: cystic/sclerotic; III: subchondral collapse (crescent) without flattening; IV: flattening; V: joint narrowing / acetabular changes; VI: degenerative. Stages I-V are quantified A (<15%) / B (15-30%) / C (>30%) by extent.');
     root.appendChild(select('Steinberg stage', 'stb-stage', [
       ['0', 'Stage 0 - normal imaging (at-risk hip)'],
       ['I', 'Stage I - normal XR, abnormal MRI / bone scan'],

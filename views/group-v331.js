@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'fitzpatrick-skin-type'(root) {
-    note(root, 'Fitzpatrick skin phototype (Fitzpatrick 1988). Pick the type from how the skin responds to UV. Lower types (I–II) burn easily and carry the highest photosensitivity / skin-cancer risk; higher types tan and rarely burn. Used to guide sun protection, phototherapy dosing, and laser settings. Near-neighbors: scorten.');
+    note(root, 'Fitzpatrick skin phototype (Fitzpatrick 1988). Pick the type from how the skin responds to UV. Lower types (I–II) burn easily and carry the highest photosensitivity / skin-cancer risk; higher types tan and rarely burn. Used to guide sun protection, phototherapy dosing, and laser settings.');
     root.appendChild(select('Fitzpatrick skin type', 'fitz-type', [
       ['I', 'I — always burns, never tans (pale white)'],
       ['II', 'II — usually burns, tans minimally (fair)'],

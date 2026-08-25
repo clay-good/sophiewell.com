@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'carpentier-mr'(root) {
-    note(root, 'Carpentier (the "French correction") functional classification of mitral regurgitation, by leaflet motion (the mitral analog of El Khoury for the aortic valve). Pick the type. I: normal motion (annular dilatation or perforation); II: excessive motion (prolapse or flail); IIIa: restricted motion in systole and diastole (structural, e.g. rheumatic); IIIb: restricted motion in systole only (functional / ischemic). Near-neighbors: el-khoury-ar.');
+    note(root, 'Carpentier (the "French correction") functional classification of mitral regurgitation, by leaflet motion (the mitral analog of El Khoury for the aortic valve). Pick the type. I: normal motion (annular dilatation or perforation); II: excessive motion (prolapse or flail); IIIa: restricted motion in systole and diastole (structural, e.g. rheumatic); IIIb: restricted motion in systole only (functional / ischemic).');
     root.appendChild(select('Carpentier type', 'carp-type', [
       ['I', 'Type I - normal motion, annular dilatation / perforation'],
       ['II', 'Type II - excessive motion (prolapse / flail)'],

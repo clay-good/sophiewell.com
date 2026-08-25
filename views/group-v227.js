@@ -44,7 +44,7 @@ function render(o, r, valueLabel, value) {
 
 export const renderers = {
   'icbd-2014-behcet'(root) {
-    note(root, "ICBD 2014 (Davatchi 2014): ocular 2, oral 2, genital 2, skin 1, neuro 1, vascular 1, pathergy 1. >= 4 = Behcet disease. Near-neighbors: isg-1990-behcet, sledai-2k.");
+    note(root, "ICBD 2014 (Davatchi 2014): ocular 2, oral 2, genital 2, skin 1, neuro 1, vascular 1, pathergy 1. >= 4 = Behcet disease.");
     const items = [['icbd-eye', 'ocular', 'Ocular lesions (+2)'], ['icbd-oral', 'oral', 'Oral aphthosis (+2)'], ['icbd-gen', 'genital', 'Genital aphthosis (+2)'], ['icbd-skin', 'skin', 'Skin lesions (+1)'], ['icbd-neuro', 'neuro', 'Neurological manifestations (+1)'], ['icbd-vasc', 'vascular', 'Vascular manifestations (+1)'], ['icbd-path', 'pathergy', 'Positive pathergy test (+1)']];
     for (const [id, , label] of items) root.appendChild(check(label, id));
     const o = out(); root.appendChild(o);
@@ -55,7 +55,7 @@ export const renderers = {
     postureNote(root);
   },
   'isg-1990-behcet'(root) {
-    note(root, "ISG 1990: recurrent oral ulceration (mandatory) plus >= 2 of genital ulceration, eye lesions, skin lesions, positive pathergy. Near-neighbors: icbd-2014-behcet, sledai-2k.");
+    note(root, "ISG 1990: recurrent oral ulceration (mandatory) plus >= 2 of genital ulceration, eye lesions, skin lesions, positive pathergy.");
     root.appendChild(check('Recurrent oral ulceration (>= 3 times in 12 months) — mandatory', 'isg-oral'));
     root.appendChild(check('Recurrent genital ulceration', 'isg-gen'));
     root.appendChild(check('Eye lesions (uveitis / retinal vasculitis)', 'isg-eye'));
@@ -69,7 +69,7 @@ export const renderers = {
     postureNote(root);
   },
   'batt'(root) {
-    note(root, 'BATT score (Ageron 2019): age, SBP, GCS bands + RR/SpO2, HR, penetrating, high-energy (0-27). >= 2 has guided TXA. Near-neighbors: iss-rts, denver-ed-tof.');
+    note(root, 'BATT score (Ageron 2019): age, SBP, GCS bands + RR/SpO2, HR, penetrating, high-energy (0-27). >= 2 has guided TXA.');
     root.appendChild(num('Age (years)', 'batt-age', { min: '0' }));
     root.appendChild(num('Systolic BP (mmHg)', 'batt-sbp', { min: '0' }));
     root.appendChild(num('GCS (3-15)', 'batt-gcs', { min: '3', max: '15' }));
@@ -85,7 +85,7 @@ export const renderers = {
     postureNote(root);
   },
   'denver-ed-tof'(root) {
-    note(root, 'Denver ED Trauma Organ Failure (Vogel 2014): age >= 65, intubation, hematocrit band, SBP < 90, BUN >= 30, WBC >= 20,000. 0-1 low, 2-3 moderate, >= 4 high. Near-neighbors: iss-rts, batt.');
+    note(root, 'Denver ED Trauma Organ Failure (Vogel 2014): age >= 65, intubation, hematocrit band, SBP < 90, BUN >= 30, WBC >= 20,000. 0-1 low, 2-3 moderate, >= 4 high.');
     root.appendChild(num('Hematocrit (%)', 'den-hct', { min: '0', max: '100' }));
     root.appendChild(check('Age >= 65 (+1)', 'den-age'));
     root.appendChild(check('Emergent intubation (prehospital or ED) (+3)', 'den-intub'));
@@ -100,7 +100,7 @@ export const renderers = {
     postureNote(root);
   },
   'ets'(root) {
-    note(root, 'Emergency Transfusion Score (Ruchholtz 2006): SBP band, free fluid, unstable pelvis, age band, from scene, traffic, fall > 3 m. >= 3 flags need for blood. Near-neighbors: abc-score, denver-ed-tof.');
+    note(root, 'Emergency Transfusion Score (Ruchholtz 2006): SBP band, free fluid, unstable pelvis, age band, from scene, traffic, fall > 3 m. >= 3 flags need for blood.');
     root.appendChild(num('Systolic BP (mmHg)', 'ets-sbp', { min: '0' }));
     root.appendChild(num('Age (years)', 'ets-age', { min: '0' }));
     root.appendChild(check('Free intra-abdominal fluid on ultrasound (+2.0)', 'ets-fluid'));
@@ -116,7 +116,7 @@ export const renderers = {
     postureNote(root);
   },
   'who-dengue-2009'(root) {
-    note(root, 'WHO 2009 dengue classification: severe dengue, dengue with warning signs, or dengue without warning signs. Near-neighbors: curb-65, qsofa.');
+    note(root, 'WHO 2009 dengue classification: severe dengue, dengue with warning signs, or dengue without warning signs.');
     root.appendChild(el('p', { class: 'muted', text: 'Severity criteria (any -> severe dengue):' }));
     root.appendChild(check('Severe plasma leakage: shock or respiratory distress', 'dg-leak'));
     root.appendChild(check('Severe bleeding', 'dg-bleed'));

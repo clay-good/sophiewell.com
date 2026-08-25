@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'bell-nec'(root) {
-    note(root, 'The modified Bell staging of necrotizing enterocolitis (NEC), staging a newborn by systemic, intestinal, and radiographic findings. Pick the stage. I (IA/IB): suspected; II (IIA/IIB): proven (pneumatosis intestinalis; IIB adds portal venous gas); III (IIIA/IIIB): advanced and severely ill (IIIA intact, IIIB perforated with pneumoperitoneum). Reports the stage the clinician has assigned, not a diagnosis or a treatment decision (medical vs surgery). Near-neighbors: sarnat-hie, papile-ivh.');
+    note(root, 'The modified Bell staging of necrotizing enterocolitis (NEC), staging a newborn by systemic, intestinal, and radiographic findings. Pick the stage. I (IA/IB): suspected; II (IIA/IIB): proven (pneumatosis intestinalis; IIB adds portal venous gas); III (IIIA/IIIB): advanced and severely ill (IIIA intact, IIIB perforated with pneumoperitoneum). Reports the stage the clinician has assigned, not a diagnosis or a treatment decision (medical vs surgery).');
     root.appendChild(select('Modified Bell stage', 'bell-stage', [
       ['IA', 'IA - suspected'],
       ['IB', 'IB - suspected, grossly bloody stool'],

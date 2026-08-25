@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'outerbridge-cartilage'(root) {
-    note(root, 'Outerbridge classification (Outerbridge 1961) of articular cartilage damage seen at arthroscopy. Pick the grade. 0 normal; I softening/swelling; II partial-thickness fissures (<=1.5 cm, not to bone); III fissuring to subchondral bone (>1.5 cm); IV exposed subchondral bone (full-thickness loss). The arthroscopic-cartilage companion to the Kellgren-Lawrence radiographic grade. Near-neighbors: kellgren-lawrence.');
+    note(root, 'Outerbridge classification (Outerbridge 1961) of articular cartilage damage seen at arthroscopy. Pick the grade. 0 normal; I softening/swelling; II partial-thickness fissures (<=1.5 cm, not to bone); III fissuring to subchondral bone (>1.5 cm); IV exposed subchondral bone (full-thickness loss). The arthroscopic-cartilage companion to the Kellgren-Lawrence radiographic grade.');
     root.appendChild(select('Outerbridge grade', 'outer-grade', [
       ['0', '0 — normal cartilage'],
       ['I', 'I — softening and swelling'],

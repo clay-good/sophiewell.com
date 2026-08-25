@@ -53,7 +53,7 @@ function render(o, r, valueLabel, value) {
 
 export const renderers = {
   'ada-diabetes-risk-test'(root) {
-    note(root, 'ADA / Bang diabetes-risk score (Bang 2009): age band, male, prior GDM, family history, hypertension, inactivity, BMI band (0-13). >= 5 = high risk, screen. Near-neighbors: findrisc, tyg-index.');
+    note(root, 'ADA / Bang diabetes-risk score (Bang 2009): age band, male, prior GDM, family history, hypertension, inactivity, BMI band (0-13). >= 5 = high risk, screen.');
     root.appendChild(num('Age (years)', 'ada-age', { min: '0' }));
     root.appendChild(num('BMI (kg/m²)', 'ada-bmi', { min: '0' }));
     root.appendChild(check('Male sex (+1)', 'ada-male'));
@@ -69,7 +69,7 @@ export const renderers = {
     postureNote(root);
   },
   'cambridge-diabetes-risk'(root) {
-    note(root, 'Cambridge Diabetes Risk Score (Griffin 2000): logistic probability of undiagnosed type 2 diabetes from age, sex, BMI, family history, smoking, antihypertensive / steroid use. Near-neighbors: findrisc, ada-diabetes-risk-test.');
+    note(root, 'Cambridge Diabetes Risk Score (Griffin 2000): logistic probability of undiagnosed type 2 diabetes from age, sex, BMI, family history, smoking, antihypertensive / steroid use.');
     root.appendChild(num('Age (years)', 'camb-age', { min: '0' }));
     root.appendChild(num('BMI (kg/m²)', 'camb-bmi', { min: '0' }));
     root.appendChild(check('Female sex', 'camb-female'));
@@ -85,7 +85,7 @@ export const renderers = {
     postureNote(root);
   },
   'lipid-accumulation-product'(root) {
-    note(root, 'Lipid Accumulation Product (Kahn 2005): Men (waist - 65) × TG; Women (waist - 58) × TG (mmol/L). Higher = greater central lipid accumulation. Near-neighbors: tyg-index, visceral-adiposity-index.');
+    note(root, 'Lipid Accumulation Product (Kahn 2005): Men (waist - 65) × TG; Women (waist - 58) × TG (mmol/L). Higher = greater central lipid accumulation.');
     root.appendChild(num('Waist circumference (cm)', 'lap-wc', { min: '0' }));
     root.appendChild(num('Triglycerides (mmol/L)', 'lap-tg', { min: '0' }));
     root.appendChild(check('Female sex', 'lap-female'));
@@ -97,7 +97,7 @@ export const renderers = {
     postureNote(root);
   },
   'visceral-adiposity-index'(root) {
-    note(root, 'Visceral Adiposity Index (Amato 2010): sex-specific function of waist, BMI, triglycerides, and HDL (mmol/L). ~ 1 in healthy non-obese adults. Near-neighbors: lipid-accumulation-product, tyg-index.');
+    note(root, 'Visceral Adiposity Index (Amato 2010): sex-specific function of waist, BMI, triglycerides, and HDL (mmol/L). ~ 1 in healthy non-obese adults.');
     root.appendChild(num('Waist circumference (cm)', 'vai-wc', { min: '0' }));
     root.appendChild(num('BMI (kg/m²)', 'vai-bmi', { min: '0' }));
     root.appendChild(num('Triglycerides (mmol/L)', 'vai-tg', { min: '0' }));
@@ -111,7 +111,7 @@ export const renderers = {
     postureNote(root);
   },
   'conicity-index'(root) {
-    note(root, 'Conicity Index (Valdez 1991): CI = waist(m) / (0.109 × √(weight(kg) / height(m))). Higher = greater central adiposity. Near-neighbors: waist-hip, visceral-adiposity-index.');
+    note(root, 'Conicity Index (Valdez 1991): CI = waist(m) / (0.109 × √(weight(kg) / height(m))). Higher = greater central adiposity.');
     root.appendChild(num('Waist circumference (cm)', 'con-wc', { min: '0' }));
     root.appendChild(num('Weight (kg)', 'con-wt', { min: '0' }));
     root.appendChild(num('Height (cm)', 'con-ht', { min: '0' }));
@@ -123,7 +123,7 @@ export const renderers = {
     postureNote(root);
   },
   'ast-alt-ratio'(root) {
-    note(root, 'AST/ALT (De Ritis) ratio (De Ritis 1957): AAR = AST / ALT. < 1 NAFLD/viral/acute; 1-2 advanced fibrosis; > 2 classic alcoholic liver disease. Near-neighbors: fib4, apri.');
+    note(root, 'AST/ALT (De Ritis) ratio (De Ritis 1957): AAR = AST / ALT. < 1 NAFLD/viral/acute; 1-2 advanced fibrosis; > 2 classic alcoholic liver disease.');
     root.appendChild(num('AST (IU/L)', 'aar-ast', { min: '0' }));
     root.appendChild(num('ALT (IU/L)', 'aar-alt', { min: '0' }));
     const o = out(); root.appendChild(o);
@@ -134,7 +134,7 @@ export const renderers = {
     postureNote(root);
   },
   'ggt-platelet-ratio'(root) {
-    note(root, 'GGT-to-platelet ratio (Lemoine 2016): GPR = (GGT/ULN)/platelets × 100. A cutoff of 0.32 predicts significant fibrosis. Near-neighbors: apri, fib4.');
+    note(root, 'GGT-to-platelet ratio (Lemoine 2016): GPR = (GGT/ULN)/platelets × 100. A cutoff of 0.32 predicts significant fibrosis.');
     root.appendChild(num('GGT (IU/L)', 'gpr-ggt', { min: '0' }));
     root.appendChild(num('Upper limit of normal for GGT (IU/L)', 'gpr-uln', { min: '0' }));
     root.appendChild(num('Platelet count (×10⁹/L)', 'gpr-plt', { min: '0' }));

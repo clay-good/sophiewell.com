@@ -55,7 +55,7 @@ const S02 = [['0', '0 (none)'], ['1', '1 (partial)'], ['2', '2 (total)']];
 
 export const renderers = {
   'reflux-symptom-index'(root) {
-    note(root, 'Reflux Symptom Index (Belafsky 2002): 9 symptom items each 0-5, 0-45. > 13 suggests LPR. Near-neighbors: rfs-reflux-finding.');
+    note(root, 'Reflux Symptom Index (Belafsky 2002): 9 symptom items each 0-5, 0-45. > 13 suggests LPR.');
     const items = [['rsi-1', 'hoarseness', 'Hoarseness / voice problem'], ['rsi-2', 'clearing', 'Throat clearing'], ['rsi-3', 'mucus', 'Excess mucus / postnasal drip'], ['rsi-4', 'swallowing', 'Difficulty swallowing'], ['rsi-5', 'cough1', 'Cough after eating or lying down'], ['rsi-6', 'breathing', 'Breathing difficulty / choking'], ['rsi-7', 'cough2', 'Troublesome / annoying cough'], ['rsi-8', 'globus', 'Globus / lump in throat'], ['rsi-9', 'heartburn', 'Heartburn / chest pain / reflux']];
     for (const [id, , label] of items) root.appendChild(select(`${label} (0-5)`, id, S05));
     const o = out(); root.appendChild(o);
@@ -66,7 +66,7 @@ export const renderers = {
     postureNote(root);
   },
   'lund-mackay'(root) {
-    note(root, 'Lund-Mackay CT score (1993): 5 sinuses x 0-2 per side + OMC 0/2 per side, 0-24. Near-neighbors: nose-scale.');
+    note(root, 'Lund-Mackay CT score (1993): 5 sinuses x 0-2 per side + OMC 0/2 per side, 0-24.');
     const sinuses = [['lm-maxr', 'maxR', 'Maxillary (R)'], ['lm-aethr', 'aethR', 'Anterior ethmoid (R)'], ['lm-pethr', 'pethR', 'Posterior ethmoid (R)'], ['lm-sphr', 'sphR', 'Sphenoid (R)'], ['lm-frontr', 'frontR', 'Frontal (R)'], ['lm-maxl', 'maxL', 'Maxillary (L)'], ['lm-aethl', 'aethL', 'Anterior ethmoid (L)'], ['lm-pethl', 'pethL', 'Posterior ethmoid (L)'], ['lm-sphl', 'sphL', 'Sphenoid (L)'], ['lm-frontl', 'frontL', 'Frontal (L)']];
     for (const [id, , label] of sinuses) root.appendChild(select(label, id, S02));
     root.appendChild(check('Ostiomeatal complex occluded, right (2)', 'lm-omcr'));
@@ -80,7 +80,7 @@ export const renderers = {
     postureNote(root);
   },
   'bladder-outlet-obstruction-index'(root) {
-    note(root, 'BOOI = PdetQmax - 2 x Qmax (> 40 obstructed); BCI = PdetQmax + 5 x Qmax (100-150 normal). Near-neighbors: ipss.');
+    note(root, 'BOOI = PdetQmax - 2 x Qmax (> 40 obstructed); BCI = PdetQmax + 5 x Qmax (100-150 normal).');
     root.appendChild(numInput('Detrusor pressure at max flow (PdetQmax, cmH2O)', 'boo-pdet', { min: '0' }));
     root.appendChild(numInput('Maximum flow rate (Qmax, mL/s)', 'boo-qmax', { min: '0' }));
     const o = out(); root.appendChild(o);
@@ -90,7 +90,7 @@ export const renderers = {
     postureNote(root);
   },
   'fagerstrom-ftnd'(root) {
-    note(root, 'Fagerstrom Test for Nicotine Dependence (1991): 6 items, 0-10. 6-7 high, 8-10 very high dependence. Near-neighbors: auditc.');
+    note(root, 'Fagerstrom Test for Nicotine Dependence (1991): 6 items, 0-10. 6-7 high, 8-10 very high dependence.');
     root.appendChild(select('Time to first cigarette', 'ftnd-time', [['3', '<= 5 min (3)'], ['2', '6-30 min (2)'], ['1', '31-60 min (1)'], ['0', '> 60 min (0)']]));
     root.appendChild(check('Hard to refrain in forbidden places (1)', 'ftnd-refrain'));
     root.appendChild(check('First-of-morning cigarette is hardest to give up (1)', 'ftnd-morning'));

@@ -35,7 +35,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'russe-scaphoid'(root) {
-    note(root, 'Russe classification of a scaphoid fracture, by the orientation of the fracture line relative to the long axis of the scaphoid (which sets whether compressive or shear forces predominate). Pick the orientation. Horizontal oblique: compressive forces predominate (most stable); transverse: both compressive and shear (intermediate); vertical oblique: shear predominates (least stable). Near-neighbors: mayfield-perilunate, geissler-carpal.');
+    note(root, 'Russe classification of a scaphoid fracture, by the orientation of the fracture line relative to the long axis of the scaphoid (which sets whether compressive or shear forces predominate). Pick the orientation. Horizontal oblique: compressive forces predominate (most stable); transverse: both compressive and shear (intermediate); vertical oblique: shear predominates (least stable).');
     root.appendChild(select('Russe orientation', 'ru-type', [
       ['horizontal oblique', 'Horizontal oblique - compressive, most stable'],
       ['transverse', 'Transverse - compressive + shear, intermediate'],

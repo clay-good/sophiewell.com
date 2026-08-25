@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'anaphylaxis-grade'(root) {
-    note(root, 'Anaphylaxis severity grade (Ring & Messmer 1977). Select the grade to see its clinical features and whether it is life-threatening. Grades I–II are generally not life-threatening; grades III–IV are managed as anaphylaxis. Near-neighbors: pen-fast.');
+    note(root, 'Anaphylaxis severity grade (Ring & Messmer 1977). Select the grade to see its clinical features and whether it is life-threatening. Grades I–II are generally not life-threatening; grades III–IV are managed as anaphylaxis.');
     root.appendChild(select('Ring & Messmer grade', 'anp-grade', [
       ['I', 'Grade I — cutaneous-mucous signs only'],
       ['II', 'Grade II — moderate multi-organ, not immediately life-threatening'],

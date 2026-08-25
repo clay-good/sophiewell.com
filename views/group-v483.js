@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'vancouver-periprosthetic'(root) {
-    note(root, 'The Vancouver classification of periprosthetic femoral fractures after hip replacement, by location, stem stability, and bone stock. Pick the type. AG/AL: trochanteric (greater/lesser); B1: around the stem, stem well-fixed; B2: around the stem, stem loose, adequate bone; B3: around the stem, stem loose, deficient bone; C: well below the stem tip. Reports the type the clinician has determined, not a diagnosis or a treatment decision. Near-neighbor: seinsheimer-subtroch.');
+    note(root, 'The Vancouver classification of periprosthetic femoral fractures after hip replacement, by location, stem stability, and bone stock. Pick the type. AG/AL: trochanteric (greater/lesser); B1: around the stem, stem well-fixed; B2: around the stem, stem loose, adequate bone; B3: around the stem, stem loose, deficient bone; C: well below the stem tip. Reports the type the clinician has determined, not a diagnosis or a treatment decision.');
     root.appendChild(select('Vancouver type', 'vancouver-type', [
       ['AG', 'AG - greater trochanter'],
       ['AL', 'AL - lesser trochanter'],
