@@ -254,6 +254,11 @@ function pageDescription(desc) {
 // was cut off. A first sentence long enough to be its own paragraph is trimmed
 // with an ellipsis, which at least admits there is more.
 const LEDE_MAX = 220;
+// The ceiling for a sentence that ends where its author ended it, as opposed
+// to one this file cuts. Above LEDE_MAX because a whole sentence earns the
+// extra line; below the 260 check-page-copy enforces, with room for the entity
+// escapes that gate counts and this one does not.
+const LEDE_COMPLETE_MAX = 240;
 function leadSentence(text, name = '') {
   const lead = (splitLead(text)?.lead || text).trim();
   if (lead.length <= LEDE_MAX) return /[.!?]$/.test(lead) ? lead : `${lead}.`;
@@ -328,10 +333,35 @@ function clauseLede(text, name = '') {
   if (trimmed.length <= LEDE_MAX && trimmed.length >= MIN_LEDE) {
     return /[.!?]$/.test(trimmed) ? trimmed : `${trimmed}.`;
   }
-  // Still too long, so it does get cut. Cut between items rather than inside
-  // one: a word-boundary cut lands mid-criterion and publishes a lede ending
-  // "venous invasion, sinusoidal…" or "temperature < 36 C, altered…", which
-  // reads as a fact the page got half-way through stating.
+  // Still too long. Before giving up on a whole sentence, drop the remaining
+  // parenthetical asides, rightmost first, and stop the moment it fits. These
+  // sentences carry the same three kinds of bracket -- the threshold behind an
+  // item ("(SpO2 <= 90% or PaO2 <= 60 mmHg)"), the citation behind the name
+  // ("(Ntaios 2012)"), and a sub-list behind an arm ("(HLA-B27 positive plus
+  // >= 2 other SpA features)") -- and every one of them is stated again, in
+  // full, further down the same page: the thresholds under "What you enter",
+  // the citation under "How this is calculated". Rightmost first so the
+  // sentence keeps as much as it can, and one at a time so it keeps the most
+  // it can while still fitting.
+  //
+  // 87 tiles were reaching the ellipsis below and publishing a lede that
+  // dead-ended mid-list -- "Orientation disturbance,…" under a heading the
+  // reader had just read. Dropping brackets ends the sentence where its author
+  // ended it and keeps MORE of it than the cut did, because the cut threw away
+  // the whole tail: what the score is actually for.
+  //
+  // Held to a looser ceiling than the cut is. A whole sentence that runs 20
+  // characters over reads better than a fragment that stops on a comma, and it
+  // is still well inside what check-page-copy allows a lede (260 escaped).
+  const unbracketed = dropParentheticals(trimmed, LEDE_COMPLETE_MAX);
+  if (unbracketed.length <= LEDE_COMPLETE_MAX && unbracketed.length >= MIN_LEDE) {
+    return /[.!?]$/.test(unbracketed) ? unbracketed : `${unbracketed}.`;
+  }
+  // Nothing left to drop and it still does not fit, so it does get cut. Cut
+  // between items rather than inside one: a word-boundary cut lands
+  // mid-criterion and publishes a lede ending "venous invasion, sinusoidal…"
+  // or "temperature < 36 C, altered…", which reads as a fact the page got
+  // half-way through stating.
   const cut = trimmed.slice(0, LEDE_MAX);
   let comma = -1;
   for (const m of cut.matchAll(/,/g)) if (depthAt(trimmed, m.index) === 0) comma = m.index;
@@ -344,6 +374,26 @@ function clauseLede(text, name = '') {
 // Below this a lede has been cut down to a stub and says less than the cut
 // sentence did; keep the sentence and ellipsize it instead.
 const MIN_LEDE = 40;
+
+// Drop top-level parenthetical asides, rightmost first, until the sentence
+// fits. Returns the input unchanged when there is nothing left to drop, so the
+// caller can fall through to the ellipsis. Only `(...)` pairs at bracket depth
+// zero are touched: a nested bracket is part of the aside around it, and the
+// whole aside goes or none of it does.
+function dropParentheticals(text, max) {
+  let s = text;
+  for (;;) {
+    if (s.length <= max) return s;
+    let at = -1;
+    for (const m of s.matchAll(/\s*\([^()]*\)/g)) if (depthAt(s, m.index) === 0) at = m.index;
+    if (at < 0) return s;
+    const aside = s.slice(at).match(/^\s*\([^()]*\)/)[0];
+    s = `${s.slice(0, at)}${s.slice(at + aside.length)}`
+      .replace(/\s{2,}/g, ' ')
+      .replace(/\s+([,.;:])/g, '$1')
+      .trim();
+  }
+}
 
 // A parenthesis, bracket, or dash pair holding a comma-separated run: the
 // enumeration, not an aside. Two commas is the floor -- one comma is a pair

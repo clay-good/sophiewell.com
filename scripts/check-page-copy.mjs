@@ -36,6 +36,16 @@ const README = join(ROOT, 'README.md');
 // characters (entity escapes included, which is what this counts).
 const LEDE_MAX = 260;
 
+// How many ledes may end on an ellipsis at all. A tile whose own first
+// sentence is a bare run of every criterion has nothing to lead with but the
+// run, and cutting it between items is the best that can be done -- but it is
+// still a first line that trails off, so the count is a ratchet, not a
+// licence. It fell 87 -> 16 when the lede builder started dropping the
+// parenthetical asides (thresholds, citation years, sub-lists) that the page
+// restates in full further down, which ends the sentence where its author
+// ended it instead.
+const MAX_CUT_LEDES = 16;
+
 // The browser tab. Must fit the width a tab and a search result give it, and
 // must end either at the site's name or at the end of the tool's own name.
 const TITLE_MAX = 65;
@@ -196,6 +206,7 @@ async function main() {
   let pages = 0;
   let bandPages = 0;
   let longestLede = { chars: 0, id: '' };
+  let cutLedes = 0;
   let rawValueRows = 0;
   let clampedLabels = 0;
   const openBracketLabels = [];
@@ -230,6 +241,7 @@ async function main() {
     // "temperature < 36 C, altered\u2026" -- so the first line of the page stated
     // half a criterion and stopped. Prose that simply runs long may still end
     // on a word; only a list has an item boundary to land on.
+    if (/\u2026$/.test(lede)) cutLedes += 1;
     if (/\u2026$/.test(lede) && stillInsideList(lede) && !/[,;:)\]]\u2026$/.test(lede)) {
       failures.push(`${id}: the lede is cut inside a list item, not between two: ${lede.slice(-48)}`);
     }
@@ -537,6 +549,10 @@ async function main() {
     failures.push(`${markedRows} of ${listRows} hub and topic rows end in a cut mark (max ${CUT_ROWS_MAX})`);
   }
 
+  if (cutLedes > MAX_CUT_LEDES) {
+    failures.push(`${cutLedes} ledes end on an ellipsis (max ${MAX_CUT_LEDES}); a lede should end where its sentence does`);
+  }
+
   if (failures.length) {
     console.error(`check-page-copy: ${failures.length} problem(s) across ${pages} tool pages:`);
     for (const f of failures.slice(0, 40)) console.error(`  - ${f}`);
@@ -544,7 +560,7 @@ async function main() {
     process.exit(1);
   }
   console.log(
-    `check-page-copy: clean (${pages} tool pages; longest lede ${longestLede.chars} chars on ${longestLede.id}; ` +
+    `check-page-copy: clean (${pages} tool pages; longest lede ${longestLede.chars} chars on ${longestLede.id}; ${cutLedes} cut; ` +
       `${rawValueRows} raw-value rows, ${clampedLabels} clamped labels, ${duplicateLabels.length} duplicate labels; ${bandPages} state what the result means; ${listRows} list rows, ${markedRows} marked as cut).`,
   );
 }
