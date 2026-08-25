@@ -36,7 +36,7 @@ const kid = (key) => `kat-${key}`;
 
 export const renderers = {
   katagiri(root) {
-    note(root, `Six factors, 0 to ${M.MAX_SCORE}. Derived in a cohort treated mostly NON-surgically, unlike the other skeletal-metastasis scores in this catalog.`);
+    note(root, `Six factors, 0 to ${M.MAX_SCORE}. Derived in a cohort treated mostly NON-surgically, unlike the other skeletal-metastasis scores on this site.`);
 
     heading(root, 'Primary site — graded by treatability, not by organ');
     root.appendChild(select('Growth-rate group', kid('primarySite'),

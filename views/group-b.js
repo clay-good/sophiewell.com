@@ -338,7 +338,7 @@ export const renderers = {
         o.appendChild(el('h2', { text: 'Not separately payable' }));
       }
       o.appendChild(el('p', { class: r.payable ? null : 'flag', text: r.note }));
-      o.appendChild(postureNote('CMS Pub. 100-04, Ch. 12 20.4.3 / 40.8; MPFS ASST SURG / CO SURG / TEAM SURG indicators. The base fee comes from the MPFS Allowed Amount tile.'));
+      o.appendChild(postureNote('CMS Pub. 100-04, Ch. 12 20.4.3 / 40.8; MPFS ASST SURG / CO SURG / TEAM SURG indicators. The base fee comes from the MPFS Allowed Amount tool.'));
     }));
   },
 
@@ -729,7 +729,7 @@ export const renderers = {
         ['Full payment (before direction)', usd(r.fullPaymentCents)],
         [r.directionLabel, usd(r.directedPaymentCents)],
       ]));
-      o.appendChild(postureNote('CMS Pub. 100-04 Ch. 12 50; ASA Relative Value Guide base units (entered, not shipped). The MPFS Allowed Amount tile prices everything EXCEPT anesthesia; this is the exception.'));
+      o.appendChild(postureNote('CMS Pub. 100-04 Ch. 12 50; ASA Relative Value Guide base units (entered, not shipped). The MPFS Allowed Amount tool prices everything EXCEPT anesthesia; this is the exception.'));
     }));
   },
 
@@ -763,7 +763,7 @@ export const renderers = {
         ['Billing units to report', String(r.billingUnits)],
         ['Clean multiple?', r.isCleanMultiple ? 'yes' : 'no -- rounding applied'],
       ]));
-      o.appendChild(postureNote('CMS HCPCS Level II drug descriptors; CMS Pub. 100-04 Ch. 17. The unit size is entered from the code descriptor (doctrine clause 2 -- no drug-pricing file ships). Pairs with the Drug Wastage tile to split administered from discarded units.'));
+      o.appendChild(postureNote('CMS HCPCS Level II drug descriptors; CMS Pub. 100-04 Ch. 17. The unit size is entered from the code descriptor (doctrine clause 2 -- no drug-pricing file ships). Pairs with the Drug Wastage tool to split administered from discarded units.'));
     }));
   },
 
@@ -1070,7 +1070,7 @@ export const renderers = {
         ul.appendChild(li(`Weight ${ln.weight}, status ${ln.statusIndicator}: ${usd(ln.payCents)} (${status})`, ln.packaged ? 'muted' : null));
       }
       o.appendChild(ul);
-      o.appendChild(postureNote('42 CFR Part 419 (OPPS); relative weight / status indicator from the bundled data/apc or entered. Multiple-Procedure Payment Reduction is the professional version; this is the OPPS one. The MPFS Allowed Amount tile prices the professional line.'));
+      o.appendChild(postureNote('42 CFR Part 419 (OPPS); relative weight / status indicator from the bundled data/apc or entered. Multiple-Procedure Payment Reduction is the professional version; this is the OPPS one. The MPFS Allowed Amount tool prices the professional line.'));
     }));
   },
 };

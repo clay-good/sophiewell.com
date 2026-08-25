@@ -41,7 +41,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'pollock-flickinger'(root) {
-    note(root, 'Both published versions are computed from the same inputs. The Spetzler-Ponce grade in this catalog answers a different question about the same malformation — microsurgical risk, not radiosurgical outcome.');
+    note(root, 'Both published versions are computed from the same inputs. The Spetzler-Ponce grade on this site answers a different question about the same malformation — microsurgical risk, not radiosurgical outcome.');
 
     heading(root, 'The three inputs');
     root.appendChild(number('AVM volume (cm^3)', 'pf-volume'));

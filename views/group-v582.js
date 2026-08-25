@@ -44,7 +44,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'hlh-2004'(root) {
-    note(root, `HLH-2004 establishes the diagnosis if EITHER a molecular diagnosis is present OR ${M.CRITERIA_REQUIRED} of ${M.CRITERIA_TOTAL} criteria are met. Leave a send-out assay as "pending" rather than answering no — pending is not the same as not met, and this tool keeps them apart. (Distinct from the HScore in this catalog, which returns a probability of reactive hemophagocytic syndrome in adults.)`);
+    note(root, `HLH-2004 establishes the diagnosis if EITHER a molecular diagnosis is present OR ${M.CRITERIA_REQUIRED} of ${M.CRITERIA_TOTAL} criteria are met. Leave a send-out assay as "pending" rather than answering no — pending is not the same as not met, and this tool keeps them apart. (Distinct from the HScore on this site, which returns a probability of reactive hemophagocytic syndrome in adults.)`);
 
     heading(root, 'The alternative path');
     root.appendChild(select('Molecular diagnosis consistent with HLH?', 'hlh-molecular', YN));

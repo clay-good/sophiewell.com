@@ -63,7 +63,7 @@ function showInvalid(o, r) { note(o, r.message || 'Enter the required values.');
 export const renderers = {
   // ----- 2.1 hadlock-efw ------------------------------------------------
   'hadlock-efw'(root) {
-    note(root, 'Hadlock estimated fetal weight, four-parameter model (Hadlock 1985): enter the four sonographic biometry measurements in centimeters. The tile returns a point weight estimate; the percentile interpretation is left to the clinician.');
+    note(root, 'Hadlock estimated fetal weight, four-parameter model (Hadlock 1985): enter the four sonographic biometry measurements in centimeters. The tool returns a point weight estimate; the percentile interpretation is left to the clinician.');
     root.appendChild(field('Biparietal diameter, BPD (cm)', 'he-bpd', { step: '0.1', min: 0, placeholder: 'e.g. 9.0' }));
     root.appendChild(field('Head circumference, HC (cm)', 'he-hc', { step: '0.1', min: 0, placeholder: 'e.g. 33.0' }));
     root.appendChild(field('Abdominal circumference, AC (cm)', 'he-ac', { step: '0.1', min: 0, placeholder: 'e.g. 30.0' }));

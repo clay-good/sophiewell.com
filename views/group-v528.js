@@ -38,7 +38,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'mest-c'(root) {
-    note(root, 'The Oxford classification (MEST-C) of an IgA nephropathy biopsy: five lesions scored separately and reported side by side, for example M1 E0 S1 T1 C0. It is not summed — the summed 0 to 7 grading is a research proposal, not the standard biopsy report — so this tile reports a code and five lesion rows rather than a total. It describes the biopsy; the diagnosis of IgA nephropathy needs mesangial IgA on immunofluorescence, not these light-microscopy lesions.');
+    note(root, 'The Oxford classification (MEST-C) of an IgA nephropathy biopsy: five lesions scored separately and reported side by side, for example M1 E0 S1 T1 C0. It is not summed — the summed 0 to 7 grading is a research proposal, not the standard biopsy report — so this tool reports a code and five lesion rows rather than a total. It describes the biopsy; the diagnosis of IgA nephropathy needs mesangial IgA on immunofluorescence, not these light-microscopy lesions.');
 
     heading(root, 'Lesion scores from the biopsy report');
     const ids = [];

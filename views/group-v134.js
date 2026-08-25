@@ -77,7 +77,7 @@ export const renderers = {
 
   // ----- 2.2 myeloma-r-iss ----------------------------------------------
   'myeloma-r-iss'(root) {
-    note(root, 'Revised ISS (Palumbo 2015, IMWG): refines the ISS with serum LDH and high-risk iFISH (del(17p), t(4;14), or t(14;16)). The tile recomputes the ISS from β2M + albumin so the chain cannot desync. Stage I = ISS I + normal LDH + no high-risk iFISH; Stage III = ISS III + (high LDH OR high-risk iFISH); Stage II = all others. 5-yr OS ~82 / 62 / 40%.');
+    note(root, 'Revised ISS (Palumbo 2015, IMWG): refines the ISS with serum LDH and high-risk iFISH (del(17p), t(4;14), or t(14;16)). The tool recomputes the ISS from β2M + albumin so the chain cannot desync. Stage I = ISS I + normal LDH + no high-risk iFISH; Stage III = ISS III + (high LDH OR high-risk iFISH); Stage II = all others. 5-yr OS ~82 / 62 / 40%.');
     root.appendChild(field('Serum β2-microglobulin (mg/L)', 'riss-b2m', { step: '0.1', min: 0, placeholder: 'e.g. 6.0' }));
     root.appendChild(field('Serum albumin (g/dL)', 'riss-alb', { step: '0.1', min: 0, placeholder: 'e.g. 3.2' }));
     root.appendChild(selectField('Serum LDH above the upper limit of normal?', 'riss-ldh', YN));

@@ -39,7 +39,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'twstrs-severity'(root) {
-    note(root, `The severity (motor) subscale of the Toronto Western Spasmodic Torticollis Rating Scale, out of ${M.TWSTRS_SEVERITY_MAX}. This scores the severity subscale only — the full TWSTRS also has a disability subscale out of 30 and a pain subscale out of 20, whose item wording could not be verified to the standard this catalog requires, so they are not implemented rather than shipping a total that resembles the published instrument without being it. Note that duration is rated 0 to 5 and then doubled, and that anterocollis and retrocollis share one slot because a neck cannot be flexed and extended at once.`);
+    note(root, `The severity (motor) subscale of the Toronto Western Spasmodic Torticollis Rating Scale, out of ${M.TWSTRS_SEVERITY_MAX}. This scores the severity subscale only — the full TWSTRS also has a disability subscale out of 30 and a pain subscale out of 20, whose item wording could not be verified to the standard this site requires, so they are not implemented rather than shipping a total that resembles the published instrument without being it. Note that duration is rated 0 to 5 and then doubled, and that anterocollis and retrocollis share one slot because a neck cannot be flexed and extended at once.`);
 
     const ids = [];
     const add = (item) => {

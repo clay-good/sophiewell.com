@@ -37,7 +37,7 @@ const mid = (key) => `myx-${key}`;
 
 export const renderers = {
   'myxedema-coma'(root) {
-    note(root, `A score of ${M.DIAGNOSTIC_THRESHOLD} or more is highly suggestive of myxedema coma — which is only about a quarter of the maximum of ${M.MAX_SCORE}. The two thyroid-storm tiles in this catalog cover the opposite emergency.`);
+    note(root, `A score of ${M.DIAGNOSTIC_THRESHOLD} or more is highly suggestive of myxedema coma — which is only about a quarter of the maximum of ${M.MAX_SCORE}. The two thyroid-storm tools on this site cover the opposite emergency.`);
 
     heading(root, 'Single-pick ladders — one option each');
     root.appendChild(select('Thermoregulatory dysfunction', mid('temperature'), ladder(M.TEMPERATURE_OPTIONS)));

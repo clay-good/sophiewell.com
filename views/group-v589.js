@@ -35,7 +35,7 @@ const id = (key) => `stern-${key}`;
 
 export const renderers = {
   sternbach(root) {
-    note(root, `At least ${M.FEATURES_REQUIRED} of ${M.FEATURES.length} features PLUS all three requirements. The Hunter criteria in this catalog are the successor — but their claimed superiority is contested, which is why this one is still worth applying.`);
+    note(root, `At least ${M.FEATURES_REQUIRED} of ${M.FEATURES.length} features PLUS all three requirements. The Hunter criteria on this site are the successor — but their claimed superiority is contested, which is why this one is still worth applying.`);
 
     heading(root, `The ${M.FEATURES.length} clinical features`);
     for (const f of M.FEATURES) root.appendChild(select(f.text, id(f.key)));

@@ -176,7 +176,7 @@ export const renderers = {
 
   // ----- 2.3 oabss -----------------------------------------------------------
   oabss(root) {
-    note(root, 'Overactive Bladder Symptom Score (Homma 2006): four items over the past week — daytime frequency (0–2), nighttime frequency (0–3), urgency (0–5), urgency incontinence (0–5). Total 0–15 (≤5 mild, 6–11 moderate, ≥12 severe). OAB requires the urgency item ≥ 2 and total ≥ 3; the tile flags when that gate is not met.');
+    note(root, 'Overactive Bladder Symptom Score (Homma 2006): four items over the past week — daytime frequency (0–2), nighttime frequency (0–3), urgency (0–5), urgency incontinence (0–5). Total 0–15 (≤5 mild, 6–11 moderate, ≥12 severe). OAB requires the urgency item ≥ 2 and total ≥ 3; this tool flags when that gate is not met.');
     root.appendChild(pickField('Q1. Daytime frequency — times urinated from waking until sleeping', 'oab-day', OAB_DAY));
     root.appendChild(pickField('Q2. Nighttime frequency — times got up to urinate during sleep', 'oab-night', OAB_NIGHT));
     root.appendChild(pickField('Q3. Urgency — sudden desire to urinate, difficult to defer', 'oab-urg', OAB_URG));

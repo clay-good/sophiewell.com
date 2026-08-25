@@ -147,7 +147,7 @@ export const renderers = {
 
   // ----- 2.2 iciq-ui-sf ------------------------------------------------------
   'iciq-ui-sf'(root) {
-    note(root, 'ICIQ-UI Short Form (Avery 2004): score = frequency (0–5) + amount (0–6) + impact on daily life (0–10). Total 0–21; 1–5 slight, 6–12 moderate, 13–18 severe, 19–21 very severe. (A fourth self-diagnostic item is recorded but not scored.) The ICIQ is free to use, registered with the ICIQ Group, Bristol; this tile ships the scoring only.');
+    note(root, 'ICIQ-UI Short Form (Avery 2004): score = frequency (0–5) + amount (0–6) + impact on daily life (0–10). Total 0–21; 1–5 slight, 6–12 moderate, 13–18 severe, 19–21 very severe. (A fourth self-diagnostic item is recorded but not scored.) The ICIQ is free to use, registered with the ICIQ Group, Bristol; this tool ships the scoring only.');
     root.appendChild(numField('Frequency of leakage (0–5)', 'iciq-freq', { min: 0, max: 5, placeholder: '0–5' }));
     root.appendChild(numField('Amount of leakage (0–6)', 'iciq-amount', { min: 0, max: 6, placeholder: '0–6' }));
     root.appendChild(numField('Overall impact on daily life (0–10)', 'iciq-impact', { min: 0, max: 10, placeholder: '0–10' }));
@@ -191,7 +191,7 @@ export const renderers = {
 
   // ----- 2.5 bwat ------------------------------------------------------------
   bwat(root) {
-    note(root, 'Bates-Jensen Wound Assessment Tool: 13 wound items each 1 (healthy tissue) to 5 (severe degeneration). Total 13–65; lower = healing, higher = degeneration. Read the trajectory across serial scores. The full-trajectory companion to the live Braden and Norton pressure-injury tiles.');
+    note(root, 'Bates-Jensen Wound Assessment Tool: 13 wound items each 1 (healthy tissue) to 5 (severe degeneration). Total 13–65; lower = healing, higher = degeneration. Read the trajectory across serial scores. The full-trajectory companion to the live Braden and Norton pressure-injury tools.');
     addPicks(root, BWAT_FIELDS, BWAT15);
     const o = out(); root.appendChild(o);
     wire(idsOf(BWAT_FIELDS), () => safe(o, () => {

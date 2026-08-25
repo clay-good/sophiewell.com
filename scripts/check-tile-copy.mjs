@@ -1,6 +1,7 @@
 #!/usr/bin/env node
-// Tile ids are addresses, not words. This gate keeps them out of the prose a
-// reader sees on the tile.
+// Words the reader should never meet. This gate keeps two kinds of in-house
+// vocabulary out of the prose a calculator puts on screen: a tile's id, and
+// the words "tile" and "catalog".
 //
 // 549 tiles ended their on-screen explanation with a line written for whoever
 // maintains the catalog: "Near-neighbors: curb-65, psi, smart-cop." Raw ids, in
@@ -20,8 +21,15 @@
 // id is also an ordinary word would be a false positive, so single-word ids are
 // exempt -- the pattern this exists to catch is the multi-word slug.
 //
-// Exit 0 clean, 1 on any violation. `findTileIdCopy` is exported so
-// test/unit can prove the gate bites on a reintroduced line.
+// The second rule is plainer: "tile" and "catalog" are what this repository
+// calls a calculator and the set of them. A nurse reading "the tile squares
+// the result" or "the Hunter criteria in this catalog" has met a word from the
+// wrong vocabulary; 50 lines did. On screen they are "this tool" and "on this
+// site". `Tile` capitalised is left alone -- it is a surname, and the AO/Tile
+// pelvic-ring classification is named after him.
+//
+// Exit 0 clean, 1 on any violation. `findTileIdCopy` and `findHouseWords` are
+// exported so test/unit can prove the gate bites on a reintroduced line.
 
 import { readdir, readFile } from 'node:fs/promises';
 import { join } from 'node:path';
@@ -73,6 +81,28 @@ export function findTileIdCopy(text, isId) {
   return out;
 }
 
+// The in-house words, lowercase only. `Tile` with a capital is the surname in
+// the AO/Tile classification and is not this.
+const HOUSE = /\b(?:tiles?|catalog)\b/g;
+
+// findHouseWords(text) -> [{ line, word, snippet }]. Pure; line-numbered.
+export function findHouseWords(text) {
+  const out = [];
+  const lines = String(text || '').split('\n');
+  for (let i = 0; i < lines.length; i += 1) {
+    const line = lines[i];
+    if (!RENDERERS.test(line)) continue;
+    if (/^\s*(?:\/\/|\*|\/\*)/.test(line)) continue;
+    const seen = new Set();
+    for (const m of line.matchAll(HOUSE)) {
+      if (seen.has(m[0])) continue;
+      seen.add(m[0]);
+      out.push({ line: i + 1, word: m[0], snippet: line.trim().slice(0, 140) });
+    }
+  }
+  return out;
+}
+
 async function main() {
   const { META } = await import(join(ROOT, 'lib', 'meta.js'));
   const ids = new Set(Object.keys(META));
@@ -85,16 +115,20 @@ async function main() {
     for (const v of findTileIdCopy(text, isId)) {
       violations.push(`${rel}:${v.line}  names "${v.id}"  ${v.snippet}`);
     }
+    for (const v of findHouseWords(text)) {
+      violations.push(`${rel}:${v.line}  says "${v.word}"  ${v.snippet}`);
+    }
   }
   if (violations.length) {
     console.error(`check-tile-copy: FAIL -- ${violations.length} on-screen line(s) name a tile by its id.`);
-    console.error('  Use the tile\'s name in the sentence, and put the id in META[<id>].related');
-    console.error('  so the app renders it as a named link under "Related tools:".');
+    console.error('  For an id: use the tile\'s name in the sentence, and put the id in');
+    console.error('  META[<id>].related so the app renders it as a named link under "Related tools:".');
+    console.error('  For "tile" / "catalog": on screen those are "this tool" and "on this site".');
     for (const v of violations.slice(0, 30)) console.error('  ' + v);
     if (violations.length > 30) console.error(`  ... and ${violations.length - 30} more`);
     process.exit(1);
   }
-  console.log(`check-tile-copy: clean (${names.length} view files scanned; no tile ids in on-screen copy).`);
+  console.log(`check-tile-copy: clean (${names.length} view files scanned; no tile ids or in-house words in on-screen copy).`);
 }
 
 if (process.argv[1] && process.argv[1].endsWith('check-tile-copy.mjs')) {

@@ -365,7 +365,7 @@ export const renderers = {
         li(`Revised Trauma Score (RTS): ${fmt(r.rts, { fallback: '(enter vitals)' })} / 7.84`),
       ]));
     }));
-    note(root, 'ISS: any region AIS=6 forces ISS 75. Companion to the MGAP/GAP/BIG trauma tiles.');
+    note(root, 'ISS: any region AIS=6 forces ISS 75. Companion to the MGAP/GAP/BIG trauma tools.');
     screenerNote(root);
   },
 

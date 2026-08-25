@@ -32,7 +32,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'icdr-retinopathy'(root) {
-    note(root, 'Diabetic retinopathy severity — the International Clinical Diabetic Retinopathy (ICDR) scale. Check the dilated-fundus findings; the tile reports the ICDR grade (the highest-severity level that applies). With no findings checked it reports “no apparent retinopathy”.');
+    note(root, 'Diabetic retinopathy severity — the International Clinical Diabetic Retinopathy (ICDR) scale. Check the dilated-fundus findings; this tool reports the ICDR grade (the highest-severity level that applies). With no findings checked it reports “no apparent retinopathy”.');
     root.appendChild(check('Neovascularization (of the disc or elsewhere)', 'dr-neo'));
     root.appendChild(check('Vitreous or preretinal hemorrhage', 'dr-vith'));
     root.appendChild(check('>20 intraretinal hemorrhages in each of 4 quadrants', 'dr-hem421'));

@@ -42,7 +42,7 @@ const YN = [['', '--'], ['no', 'No'], ['yes', 'Yes']];
 
 export const renderers = {
   'bologna-por'(root) {
-    note(root, `At least ${M.CRITERIA_REQUIRED} of three criteria — with an override that needs only one. The POSEIDON classification in this catalog was proposed because these criteria group women with very different prognoses.`);
+    note(root, `At least ${M.CRITERIA_REQUIRED} of three criteria — with an override that needs only one. The POSEIDON classification on this site was proposed because these criteria group women with very different prognoses.`);
 
     heading(root, 'Criterion 1 — advanced maternal age, or any other risk factor');
     root.appendChild(number('Age (years)', 'bol-age', '1'));

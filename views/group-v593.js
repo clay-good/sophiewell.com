@@ -35,7 +35,7 @@ const cid = (key) => `beth-${key}`;
 
 export const renderers = {
   bethesda(root) {
-    note(root, 'Any ONE criterion means the tumor should be tested for microsatellite instability. This is the opposite of the Amsterdam II criteria in this catalog, which require all six of their requirements.');
+    note(root, 'Any ONE criterion means the tumor should be tested for microsatellite instability. This is the opposite of the Amsterdam II criteria on this site, which require all six of their requirements.');
 
     heading(root, 'The Lynch-associated tumor spectrum used here');
     note(root, M.SPECTRUM_NOTE);

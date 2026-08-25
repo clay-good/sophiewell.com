@@ -34,7 +34,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'fisher-grade'(root) {
-    note(root, 'The grades are NOT ordinal for vasospasm risk: risk rises from grade 1 to grade 3, and grade 4 does not continue the trend. The modified Fisher scale in this catalog is a different construction, not a renumbering.');
+    note(root, 'The grades are NOT ordinal for vasospasm risk: risk rises from grade 1 to grade 3, and grade 4 does not continue the trend. The modified Fisher scale on this site is a different construction, not a renumbering.');
 
     heading(root, 'The compartment — this decides grade 4');
     root.appendChild(select('Intracerebral or intraventricular blood?', 'fish-ivh',

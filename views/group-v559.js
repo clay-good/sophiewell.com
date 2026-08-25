@@ -35,7 +35,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'erez-dic'(root) {
-    note(root, 'The Erez score is a pregnancy-specific modification of the ISTH DIC score. It is a third DIC instrument alongside the ISTH and JAAM scores in this catalog, with different components and a cutoff on a different scale — 26, not 5 — so the cutoffs are not interchangeable. D-dimer and fibrin degradation products are deliberately absent, because they rise in normal pregnancy and would produce false positives.');
+    note(root, 'The Erez score is a pregnancy-specific modification of the ISTH DIC score. It is a third DIC instrument alongside the ISTH and JAAM scores on this site, with different components and a cutoff on a different scale — 26, not 5 — so the cutoffs are not interchangeable. D-dimer and fibrin degradation products are deliberately absent, because they rise in normal pregnancy and would produce false positives.');
 
     heading(root, 'Laboratory values');
     root.appendChild(number('Platelet count (×10⁹/L)', 'erez-platelets', '1'));

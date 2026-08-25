@@ -42,7 +42,7 @@ const opts = (list) => [['', '--'], ...list.map((i) => [i.value, `${i.text} — 
 
 export const renderers = {
   'ebmt-score'(root) {
-    note(root, 'Five pre-transplant factors, 0 to 7. This scores the disease and the transplant; the HCT-CI in this catalog scores organ comorbidity, and the two are complementary axes routinely reported together.');
+    note(root, 'Five pre-transplant factors, 0 to 7. This scores the disease and the transplant; the HCT-CI on this site scores organ comorbidity, and the two are complementary axes routinely reported together.');
 
     heading(root, 'Patient and disease');
     root.appendChild(select('Patient age', 'ebmt-age', opts(M.AGE_BANDS)));

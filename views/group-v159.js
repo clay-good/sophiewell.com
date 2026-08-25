@@ -149,7 +149,7 @@ export const renderers = {
 
   // ----- 2.1 edss ------------------------------------------------------------
   edss(root) {
-    note(root, 'Expanded Disability Status Scale (Kurtzke 1983), 0–10 in 0.5 steps. The low range follows the eight Functional-System grades; the 4.0–9.5 range follows ambulation. A precise FS→step rating is not fully algorithmic, so this tile uses the standard simplified FS-count table and the authoritative ambulation anchors, reporting the HIGHER of the two. For a definitive rating use a trained Neurostatus assessment.');
+    note(root, 'Expanded Disability Status Scale (Kurtzke 1983), 0–10 in 0.5 steps. The low range follows the eight Functional-System grades; the 4.0–9.5 range follows ambulation. A precise FS→step rating is not fully algorithmic, so this tool uses the standard simplified FS-count table and the authoritative ambulation anchors, reporting the HIGHER of the two. For a definitive rating use a trained Neurostatus assessment.');
     root.appendChild(pickField('Ambulation status', 'edss-ambulation', EDSS_AMB));
     const ids = ['edss-ambulation'];
     for (const [label, id, max] of EDSS_FS) { root.appendChild(pickField(label, id, gradeOpts(max))); ids.push(id); }

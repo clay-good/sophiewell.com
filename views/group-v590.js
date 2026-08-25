@@ -43,7 +43,7 @@ const fid = (key) => `ffs96-${key}`;
 
 export const renderers = {
   'ffs-1996'(root) {
-    note(root, 'The original Five-Factor Score. The 2011 revision in this catalog shares its name, its 0 to 5 range and its band structure — and only one of its five factors, so the two numbers do not mean the same thing.');
+    note(root, 'The original Five-Factor Score. The 2011 revision on this site shares its name, its 0 to 5 range and its band structure — and only one of its five factors, so the two numbers do not mean the same thing.');
 
     heading(root, 'The five factors');
     for (const f of M.FACTORS) {

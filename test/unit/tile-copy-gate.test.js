@@ -45,3 +45,23 @@ test('reports each id once per line', () => {
 test('a single-segment id is out of range, by design', () => {
   assert.deepEqual(findTileIdCopy("  note(root, 'Companion tile: psi.');", isId), []);
 });
+
+// --- the in-house words the same gate keeps off the screen.
+
+test('catches "tile" and "catalog" in copy the reader sees', async () => {
+  const { findHouseWords } = await import('../../scripts/check-tile-copy.mjs');
+  const src = "  note(root, 'Enter mg/dL; the tile converts internally. Light\\u2019s criteria in this catalog need a serum sample.');";
+  assert.deepEqual(findHouseWords(src).map((f) => f.word), ['tile', 'catalog']);
+});
+
+test('leaves Tile the surname alone', async () => {
+  const { findHouseWords } = await import('../../scripts/check-tile-copy.mjs');
+  const src = "  note(root, 'The AO/Tile classification of a pelvic ring injury.');";
+  assert.deepEqual(findHouseWords(src), []);
+});
+
+test('accepts the wording these should be rewritten to', async () => {
+  const { findHouseWords } = await import('../../scripts/check-tile-copy.mjs');
+  const src = "  note(root, 'Enter mg/dL; this tool converts internally. Light\\u2019s criteria on this site need a serum sample.');";
+  assert.deepEqual(findHouseWords(src), []);
+});

@@ -42,7 +42,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'dexamethasone-suppression'(root) {
-    note(root, 'Overnight 1-mg dexamethasone suppression test (DST) interpretation. Enter the 8 am serum cortisol drawn after 1 mg dexamethasone at ~11 pm; the tile compares it with the suppression cutoff of 1.8 µg/dL (50 nmol/L). Below the cutoff is normal suppression; at or above is a failure to suppress that must be confirmed.');
+    note(root, 'Overnight 1-mg dexamethasone suppression test (DST) interpretation. Enter the 8 am serum cortisol drawn after 1 mg dexamethasone at ~11 pm; this tool compares it with the suppression cutoff of 1.8 µg/dL (50 nmol/L). Below the cutoff is normal suppression; at or above is a failure to suppress that must be confirmed.');
     root.appendChild(numInput('Post-dexamethasone 8 am cortisol', 'dst-cortisol', { min: '0' }));
     root.appendChild(select('Unit', 'dst-unit', [
       ['µg/dL', 'µg/dL'],

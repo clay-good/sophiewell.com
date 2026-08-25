@@ -79,7 +79,7 @@ function wire(ids, run) {
 export const renderers = {
   // ----- 2.1 triss ------------------------------------------------------
   triss(root) {
-    note(root, 'The live "Injury Severity Score + Revised Trauma Score" tile computes the ISS and coded RTS this model consumes.');
+    note(root, 'The live "Injury Severity Score + Revised Trauma Score" tool computes the ISS and coded RTS this model consumes.');
     root.appendChild(selectField('Mechanism', 'tr-mech', [
       { value: 'blunt', text: 'Blunt' },
       { value: 'penetrating', text: 'Penetrating' },

@@ -41,7 +41,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'palm-coein'(root) {
-    note(root, 'The FIGO PALM-COEIN classification of abnormal uterine bleeding. It is a notation, not a score: modelled on TNM staging, every one of the nine categories is reported for every patient, and each takes 0 for absent, 1 for present, or ? for not yet assessed — a category left unstated is otherwise ambiguous between looked-for-and-not-found and never-assessed. More than one category can be positive at once, and assuming a visible structural lesion is the cause is a known error. This tile implements the 2018 revision, which differs from 2011 on type 3 leiomyomas and on where anticoagulant-associated bleeding sits.');
+    note(root, 'The FIGO PALM-COEIN classification of abnormal uterine bleeding. It is a notation, not a score: modelled on TNM staging, every one of the nine categories is reported for every patient, and each takes 0 for absent, 1 for present, or ? for not yet assessed — a category left unstated is otherwise ambiguous between looked-for-and-not-found and never-assessed. More than one category can be positive at once, and assuming a visible structural lesion is the cause is a known error. This tool implements the 2018 revision, which differs from 2011 on type 3 leiomyomas and on where anticoagulant-associated bleeding sits.');
 
     const ids = [];
     const addCategory = (c) => {

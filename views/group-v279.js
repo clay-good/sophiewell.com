@@ -63,7 +63,7 @@ export const renderers = {
     postureNote(root);
   },
   'uiss-rcc'(root) {
-    note(root, 'UCLA Integrated Staging System (UISS) for surgically resected, localized (N0M0) RCC — integrates 1997 TNM stage, Fuhrman grade, and ECOG performance status into low / intermediate / high tiers (5-year overall survival ~92% / 67% / 44%). The node-positive/metastatic branch is out of scope; use the IMDC (Heng) or MSKCC (Motzer) metastatic RCC risk tiles there.');
+    note(root, 'UCLA Integrated Staging System (UISS) for surgically resected, localized (N0M0) RCC — integrates 1997 TNM stage, Fuhrman grade, and ECOG performance status into low / intermediate / high tiers (5-year overall survival ~92% / 67% / 44%). The node-positive/metastatic branch is out of scope; use the IMDC (Heng) or MSKCC (Motzer) metastatic RCC risk tools there.');
     root.appendChild(select('Primary tumor stage (T, 1997 TNM)', 'uiss-t', [['t1', 'T1'], ['t2', 'T2'], ['t3', 'T3'], ['t4', 'T4']]));
     root.appendChild(select('Fuhrman grade', 'uiss-grade', [['1', 'Grade 1'], ['2', 'Grade 2'], ['3', 'Grade 3'], ['4', 'Grade 4']]));
     root.appendChild(select('ECOG performance status', 'uiss-ecog', [['ecog0', 'ECOG 0'], ['ecog1plus', 'ECOG ≥ 1']]));

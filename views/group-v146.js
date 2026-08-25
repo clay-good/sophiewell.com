@@ -104,7 +104,7 @@ export const renderers = {
 
   // ----- 2.2 tokuhashi-revised ------------------------------------------
   'tokuhashi-revised'(root) {
-    note(root, 'Revised Tokuhashi (Tokuhashi 2005): metastatic-spine prognosis from six parameters, total 0–15. A lower total is the worse prognosis: 0–8 < 6 months, 9–11 ≥ 6 months, 12–15 ≥ 1 year. Compute the Karnofsky status with the performance-status tile if needed.');
+    note(root, 'Revised Tokuhashi (Tokuhashi 2005): metastatic-spine prognosis from six parameters, total 0–15. A lower total is the worse prognosis: 0–8 < 6 months, 9–11 ≥ 6 months, 12–15 ≥ 1 year. Compute the Karnofsky status with the performance-status tool if needed.');
     root.appendChild(pickField('General condition (Karnofsky)', 'tok-kps', [
       { value: 'poor', text: 'Poor — KPS 10–40 (0)' },
       { value: 'moderate', text: 'Moderate — KPS 50–70 (1)' },

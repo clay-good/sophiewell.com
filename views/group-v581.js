@@ -44,7 +44,7 @@ const opts = (items) => items.map((i) => [i.value, i.points ? `${i.text} — ${i
 
 export const renderers = {
   'shanghai-brugada'(root) {
-    note(root, 'The Shanghai score diagnoses Brugada syndrome. Within each of the first three categories only the SINGLE HIGHEST-scoring item counts — several findings in one category do not add. And at least one ECG finding is REQUIRED: without it the result is non-diagnostic however high the other categories total. (Not to be confused with the Brugada algorithm for wide-complex tachycardia, which is a different instrument in this catalog.)');
+    note(root, 'The Shanghai score diagnoses Brugada syndrome. Within each of the first three categories only the SINGLE HIGHEST-scoring item counts — several findings in one category do not add. And at least one ECG finding is REQUIRED: without it the result is non-diagnostic however high the other categories total. (Not to be confused with the Brugada algorithm for wide-complex tachycardia, which is a different instrument on this site.)');
 
     heading(root, 'I. ECG — required, and a gate rather than a score');
     root.appendChild(select('Highest-scoring ECG finding', 'shanghai-ecg', opts(M.ECG_ITEMS)));

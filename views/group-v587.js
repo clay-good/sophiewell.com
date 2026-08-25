@@ -39,7 +39,7 @@ const DOM = {
 
 export const renderers = {
   qpitt(root) {
-    note(root, `Five binary items, one point each, 0 to ${M.QPITT_MAX}, for a patient who already has a bloodstream infection. High risk is only ${M.HIGH_RISK_THRESHOLD} of ${M.QPITT_MAX}. This is the simplified successor to the Pitt Bacteremia Score in this catalog, which runs 0 to ${M.PREDECESSOR_MAX} with weighted items — the two scores are not interchangeable.`);
+    note(root, `Five binary items, one point each, 0 to ${M.QPITT_MAX}, for a patient who already has a bloodstream infection. High risk is only ${M.HIGH_RISK_THRESHOLD} of ${M.QPITT_MAX}. This is the simplified successor to the Pitt Bacteremia Score on this site, which runs 0 to ${M.PREDECESSOR_MAX} with weighted items — the two scores are not interchangeable.`);
 
     heading(root, 'The five items');
     for (const item of M.ITEMS) {

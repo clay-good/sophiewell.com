@@ -42,7 +42,7 @@ function wire(ids, run) {
 
 export const renderers = {
   vras(root) {
-    note(root, `Scores 0 to ${M.VRAS_MAX}. The Pollock-Flickinger score in this catalog answers the same question with a continuous formula — the two share only volume, and neither converts into the other.`);
+    note(root, `Scores 0 to ${M.VRAS_MAX}. The Pollock-Flickinger score on this site answers the same question with a continuous formula — the two share only volume, and neither converts into the other.`);
 
     heading(root, 'The three items');
     root.appendChild(number('AVM volume (cm^3)', 'vras-volume'));

@@ -59,7 +59,7 @@ const OHFRS_FIELDS = [
 export const renderers = {
   // ----- 2.1 heart-pathway ---------------------------------------------------
   'heart-pathway'(root) {
-    note(root, 'HEART Pathway (Mahler 2015): pairs the HEART score with serial troponin. HEART 0-3 AND a non-elevated troponin at 0 h and 3 h = low risk, an early-discharge candidate (~0.9-2% 30-day MACE); HEART >= 4 or any elevated troponin = not low risk. Enter the HEART score from the HEART tile.');
+    note(root, 'HEART Pathway (Mahler 2015): pairs the HEART score with serial troponin. HEART 0-3 AND a non-elevated troponin at 0 h and 3 h = low risk, an early-discharge candidate (~0.9-2% 30-day MACE); HEART >= 4 or any elevated troponin = not low risk. Enter the HEART score from the HEART tool.');
     root.appendChild(num('HEART score (0-10)', 'hp-heart', { min: '0', max: '10' }));
     root.appendChild(check('0-hour troponin elevated', 'hp-trop0'));
     root.appendChild(check('3-hour troponin elevated', 'hp-trop3'));

@@ -33,7 +33,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'bilsky-escc'(root) {
-    note(root, `Assessed on ${M.SEQUENCE}. The catalog's other spine tiles grade stability and survival; this one grades the cord.`);
+    note(root, `Assessed on ${M.SEQUENCE}. The other spine tools here grade stability and survival; this one grades the cord.`);
 
     heading(root, 'The grade');
     root.appendChild(select('ESCC grade', 'escc-grade',

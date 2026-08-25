@@ -57,7 +57,7 @@ function showInvalid(o, r) { note(o, r.message || 'Enter the required values.');
 export const renderers = {
   // ----- 2.1 albi-grade -------------------------------------------------
   'albi-grade'(root) {
-    note(root, 'Albumin-Bilirubin (ALBI) grade (Johnson 2015): an objective liver-function grade from albumin and bilirubin alone — no subjective ascites/encephalopathy terms. Enter US-customary units (g/dL, mg/dL); the tile converts internally. Grade 1 (≤ −2.60) is best, 2 intermediate, 3 (> −1.39) worst.');
+    note(root, 'Albumin-Bilirubin (ALBI) grade (Johnson 2015): an objective liver-function grade from albumin and bilirubin alone — no subjective ascites/encephalopathy terms. Enter US-customary units (g/dL, mg/dL); this tool converts internally. Grade 1 (≤ −2.60) is best, 2 intermediate, 3 (> −1.39) worst.');
     root.appendChild(field('Serum albumin (g/dL)', 'al-alb', { step: '0.1', min: 0, placeholder: 'e.g. 3.5' }));
     root.appendChild(field('Total bilirubin (mg/dL)', 'al-bili', { step: '0.1', min: 0, placeholder: 'e.g. 1.0' }));
     const o = out(); root.appendChild(o);

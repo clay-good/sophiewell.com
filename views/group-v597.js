@@ -41,7 +41,7 @@ function wire(ids, run) {
 
 export const renderers = {
   panc3(root) {
-    note(root, `All three criteria must be present — two of three is NOT a positive result. Every item is available at admission, unlike the 48-hour scores in this catalog.`);
+    note(root, `All three criteria must be present — two of three is NOT a positive result. Every item is available at admission, unlike the 48-hour scores on this site.`);
 
     heading(root, 'The three admission criteria');
     root.appendChild(number(`Hematocrit (%) — positive above ${M.HEMATOCRIT_THRESHOLD}`, 'panc3-hct'));

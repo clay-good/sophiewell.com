@@ -36,7 +36,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'rasrm-stage'(root) {
-    note(root, 'The revised ASRM stage of endometriosis, from the point total on a completed scoring form: stage I minimal 1–5, II mild 6–15, III moderate 16–40, IV severe above 40, maximum 150. This tile interprets a total rather than computing one — the per-site point grid could not be verified against two independent sources, so building a calculator on a single transcription would produce numbers that look authoritative and cannot be checked. The stage correlates poorly with pain and with fertility outcome.');
+    note(root, 'The revised ASRM stage of endometriosis, from the point total on a completed scoring form: stage I minimal 1–5, II mild 6–15, III moderate 16–40, IV severe above 40, maximum 150. This tool interprets a total rather than computing one — the per-site point grid could not be verified against two independent sources, so building a calculator on a single transcription would produce numbers that look authoritative and cannot be checked. The stage correlates poorly with pain and with fertility outcome.');
 
     heading(root, 'Total from the completed ASRM form');
     root.appendChild(number(`Revised ASRM point total (0 to ${M.RASRM_MAX})`, 'rasrm-total'));

@@ -36,7 +36,7 @@ const jid = (key) => `jta-${key}`;
 
 export const renderers = {
   'jta-thyroid-storm'(root) {
-    note(root, 'TS1 is DEFINITE and TS2 is SUSPECTED — grades of diagnostic certainty, not of severity. The Burch-Wartofsky Point Scale in this catalog answers the same question with a point scale instead, and the two are known to disagree.');
+    note(root, 'TS1 is DEFINITE and TS2 is SUSPECTED — grades of diagnostic certainty, not of severity. The Burch-Wartofsky Point Scale on this site answers the same question with a point scale instead, and the two are known to disagree.');
 
     heading(root, 'The prerequisite');
     root.appendChild(select('Thyrotoxicosis (elevated free T3 or free T4)', jid('thyrotoxicosis'), [

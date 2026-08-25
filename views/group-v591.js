@@ -32,7 +32,7 @@ function wire(ids, run) {
 
 export const renderers = {
   heffner(root) {
-    note(root, 'Classifies a pleural effusion as exudative without a paired serum sample. Any ONE test is enough — the tests do not vote. Light’s criteria are also in this catalog and need a serum sample drawn at the same time.');
+    note(root, 'Classifies a pleural effusion as exudative without a paired serum sample. Any ONE test is enough — the tests do not vote. Light’s criteria are also on this site and need a serum sample drawn at the same time.');
 
     heading(root, 'The three pleural fluid tests');
     root.appendChild(number('Pleural fluid LDH (U/L)', 'heff-ldh'));

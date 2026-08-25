@@ -206,7 +206,7 @@ export const renderers = {
       ['carg-social', 'Decreased social activity because of health (1)'],
     ];
     const ids = checkList(root, items);
-    note(root, 'Compute the creatinine clearance itself with the Cockcroft–Gault tile, then check the box if it is below 34 mL/min.');
+    note(root, 'Compute the creatinine clearance itself with the Cockcroft–Gault tool, then check the box if it is below 34 mL/min.');
     const o = out(); root.appendChild(o);
     wire(ids, () => safe(o, () => {
       const r = M.cargToxicity({
