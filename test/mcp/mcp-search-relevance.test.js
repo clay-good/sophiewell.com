@@ -660,6 +660,7 @@ const PROBES = [
   ['awol delirium risk prediction admission', ['awol']],
   ['six item cognitive impairment test 6cit dementia screen', ['sixcit']],
   ['schofield basal metabolic rate age banded equation', ['schofield']],
+  ['copenhagen burnout inventory personal work related', ['cbi']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],

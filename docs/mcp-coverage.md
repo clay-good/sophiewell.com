@@ -7643,6 +7643,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/schofield-v779.js (spec-v779: Schofield basal metabolic rate — clinical disclaimer)
 - `schofield`
 
+### lib/cbi-v780.js (spec-v780: Copenhagen Burnout Inventory — clinical disclaimer)
+- `cbi`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
