@@ -66,6 +66,7 @@ maintainer can see the instrument was reviewed and deliberately retained.
 |---|---|---|---|---|---|
 | acute-pericarditis | pericardial disease diagnostic criteria | 2015 ESC pericardial diseases guideline (Eur Heart J 2015;36(42):2921) | same | 2026-08-26 | current — no newer edition of the pericardial-disease guideline; the two-of-four diagnostic criteria and the acute/incessant/recurrent/chronic definitions are unchanged |
 | mis-c | MIS-C surveillance case definition | 2023 CSTE/CDC definition (MMWR Recomm Rep 2022;71(4)) | same | 2026-08-26 | current — the 2023 definition superseded the 2020 one; no newer revision |
+| nen-who-grade | WHO classification of neuroendocrine neoplasms | WHO 2022, 5th edition (Endocr Pathol 2022;33(1):115) | same | 2026-08-26 | current — the 2022 classification is the latest; the Ki-67 and mitotic thresholds are unchanged from it |
 | wells-pe | Wells score for PE | Wells 2000 (Thromb Haemost 2000;83) | 2019 ESC PE guideline / YEARS algorithm | 2026-06-05 | foundational instrument retained; later work (ESC 2019, YEARS) is an alternative pathway, not a revised Wells score |
 | egfr | CKD-EPI creatinine eGFR | CKD-EPI 2021 race-free (NEJM 2021;385) | same | 2026-06-05 | current — the 2021 race-free equation is the latest CKD-EPI |
 | nihss | NIH Stroke Scale | Brott 1989 (Stroke 1989;20) | same | 2026-06-05 | foundational instrument, no superseding edition (NIH/NINDS-maintained, public domain) |

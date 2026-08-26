@@ -619,6 +619,7 @@ import * as simpleShoulderTestV793 from '../../lib/simple-shoulder-test-v793.js'
 import * as furstRatioV794 from '../../lib/furst-ratio-v794.js';
 import * as misCV795 from '../../lib/mis-c-v795.js';
 import * as euTiradsV796 from '../../lib/eu-tirads-v796.js';
+import * as nenWhoGradeV797 from '../../lib/nen-who-grade-v797.js';
 import * as sadPersonsV701 from '../../lib/sad-persons-v701.js';
 import * as edinburghClaudicationV702 from '../../lib/edinburgh-claudication-v702.js';
 import * as reimersMigrationPercentageV703 from '../../lib/reimers-migration-percentage-v703.js';
@@ -1283,6 +1284,7 @@ const MODULES = {
   'furst-ratio-v794.js': furstRatioV794,
   'mis-c-v795.js': misCV795,
   'eu-tirads-v796.js': euTiradsV796,
+  'nen-who-grade-v797.js': nenWhoGradeV797,
   'sad-persons-v701.js': sadPersonsV701,
   'edinburgh-claudication-v702.js': edinburghClaudicationV702,
   'reimers-migration-percentage-v703.js': reimersMigrationPercentageV703,

@@ -677,6 +677,7 @@ const PROBES = [
   ['furst ratio urine plasma electrolyte fluid restriction siadh', ['furst-ratio']],
   ['multisystem inflammatory syndrome children case definition', ['mis-c']],
   ['eu tirads thyroid nodule european ultrasound category', ['eu-tirads']],
+  ['neuroendocrine neoplasm who grade ki67 mitotic count', ['nen-who-grade']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],

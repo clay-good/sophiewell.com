@@ -637,6 +637,7 @@ import simpleShoulderTestV793 from './adapters/simple-shoulder-test-v793.js';
 import furstRatioV794 from './adapters/furst-ratio-v794.js';
 import misCV795 from './adapters/mis-c-v795.js';
 import euTiradsV796 from './adapters/eu-tirads-v796.js';
+import nenWhoGradeV797 from './adapters/nen-who-grade-v797.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
 import reimersMigrationPercentageV703 from './adapters/reimers-migration-percentage-v703.js';
@@ -1300,6 +1301,7 @@ const ADAPTER_MODULES = [
   ['furst-ratio-v794', furstRatioV794],
   ['mis-c-v795', misCV795],
   ['eu-tirads-v796', euTiradsV796],
+  ['nen-who-grade-v797', nenWhoGradeV797],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],
   ['reimers-migration-percentage-v703', reimersMigrationPercentageV703],
