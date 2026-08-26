@@ -535,7 +535,15 @@ function nameMatchFor(query, entry) {
   return nameMatch(query, entry && entry.name, counts());
 }
 function queryNamesTile(query, entry) {
-  return nameMatchFor(query, entry).score > 0;
+  // spec-v806: `score > 0` fires on a SINGLE shared word, so "what is the meaning
+  // of life" was judged to name the Dermatology Life Quality Index on "life"
+  // alone, and answer_query pointed at dlqi instead of admitting a miss. That was
+  // latent: it only surfaced once the ranker happened to float dlqi to the top,
+  // which adding one unrelated tile was enough to do. nameMatch already computes
+  // namesInFull already encodes the right test and is shared with the website:
+  // EVERY token of the name must appear. "wells score for PE" names Wells Score
+  // for PE in full; "meaning of life" supplies one word of five, so it does not.
+  return namesInFull(query, entry && entry.name);
 }
 
 

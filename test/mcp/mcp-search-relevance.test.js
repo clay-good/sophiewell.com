@@ -686,6 +686,7 @@ const PROBES = [
   ['anaphylaxis diagnostic criteria world allergy organization', ['anaphylaxis-criteria']],
   ['rome proposal copd exacerbation severity classification', ['rome-ecopd']],
   ['abbreviated mental test score hodkinson ten question', ['amts']],
+  ['perceived stress scale ten item cohen', ['pss10']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],

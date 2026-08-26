@@ -7721,6 +7721,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/amts-v805.js (spec-v805: Abbreviated Mental Test Score — clinical disclaimer)
 - `amts`
 
+### lib/pss10-v806.js (spec-v806: Perceived Stress Scale — clinical disclaimer)
+- `pss10`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

@@ -546,6 +546,18 @@ test('spec-v758: a partial query returns what it worked out, not a refusal', () 
 
   // Nothing to match at all still reports NO_MATCH.
   assert.equal(answerQuery({ query: 'what is the meaning of life' }).code, 'NO_MATCH');
+
+  // spec-v806: that NO_MATCH used to depend on which tile the ranker happened to
+  // float to the top. When it floated dlqi, "life" alone satisfied the old
+  // score > 0 name test and the query came back pointing at the Dermatology Life
+  // Quality Index. Adding one unrelated calculator was enough to shift the
+  // ranking and expose it. Pin the rule itself, not the ranking: a single shared
+  // word is not naming a calculator, a full name is.
+  assert.equal(answerQuery({ query: 'quality of life' }).code, 'NO_MATCH');
+  assert.equal(answerQuery({ query: 'index' }).code, 'NO_MATCH');
+  const named = answerQuery({ query: 'dlqi dermatology life quality index' });
+  assert.equal(named.code, 'NO_VALUES');
+  assert.equal(named.tile, 'dlqi');
 });
 
 // spec-v762: answer_query must answer the calculator it was ASKED about, and

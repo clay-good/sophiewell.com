@@ -628,6 +628,7 @@ import * as gardnerRobertsonV802 from '../../lib/gardner-robertson-v802.js';
 import * as anaphylaxisCriteriaV803 from '../../lib/anaphylaxis-criteria-v803.js';
 import * as romeEcopdV804 from '../../lib/rome-ecopd-v804.js';
 import * as amtsV805 from '../../lib/amts-v805.js';
+import * as pss10V806 from '../../lib/pss10-v806.js';
 import * as sadPersonsV701 from '../../lib/sad-persons-v701.js';
 import * as edinburghClaudicationV702 from '../../lib/edinburgh-claudication-v702.js';
 import * as reimersMigrationPercentageV703 from '../../lib/reimers-migration-percentage-v703.js';
@@ -1301,6 +1302,7 @@ const MODULES = {
   'anaphylaxis-criteria-v803.js': anaphylaxisCriteriaV803,
   'rome-ecopd-v804.js': romeEcopdV804,
   'amts-v805.js': amtsV805,
+  'pss10-v806.js': pss10V806,
   'sad-persons-v701.js': sadPersonsV701,
   'edinburgh-claudication-v702.js': edinburghClaudicationV702,
   'reimers-migration-percentage-v703.js': reimersMigrationPercentageV703,

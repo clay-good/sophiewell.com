@@ -891,6 +891,8 @@
       "tile": "rome-ecopd", "audience": "clinicians" },
     { "phrases": ["abbreviated mental test", "amts score", "ten question cognitive screen", "hodkinson mental test"],
       "tile": "amts", "audience": "clinicians" },
+    { "phrases": ["perceived stress scale", "pss 10 score", "how stressed am i scale", "cohen perceived stress"],
+      "tile": "pss10", "audience": "clinicians" },
     { "phrases": ["sad persons scale", "suicide risk screen sad persons", "sad persons suicide", "suicidality mnemonic screen"],
       "tile": "sad-persons", "audience": "clinicians" },
     { "phrases": ["edinburgh claudication questionnaire", "intermittent claudication screen", "claudication symptom questionnaire", "leg pain walking claudication"],
