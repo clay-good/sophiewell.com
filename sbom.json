@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:17d7646c-0abf-5d4a-84ac-a1a7314c0e88",
+  "serialNumber": "urn:uuid:c919556d-cb33-599e-8c80-00c3a73b9eb9",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-26T18:20:55.379Z",
+    "timestamp": "2026-08-26T18:29:57.738Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1566 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1567 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3271d2d7a83a7241cdb0bf281b89a6df8aa4702a59a581aff7a26a3cafdeaaa8"
+          "content": "47068b5ce463bcc66931ec055653e73db039f361c2fa910b56d582c6457f13e5"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "101549"
+          "value": "101606"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d076f34e7c5f956259ea9749a500b5fbc85004c6eedf7795204da81cc9464592"
+          "content": "a7d9f2dade0369d14701d4bba23d39f4cddae1f2d00e077d57b0b2ec6dc90967"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "461638"
+          "value": "461872"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "74994dac6e4144d5d09db4f2ad8f5033a1341a46c1ac03369407729b0b3207ef"
+          "content": "1809d16d6575b98146b6b09d66fab8d5d2c1e483bd5e40181d6fa6d49d3b4b84"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "240371"
+          "value": "240517"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "71fef7e3f636f0ef209b7308f0bfe9abf11f0fce9761ab0cded82667b4a1235a"
+          "content": "1d3e31b24f91e59deece4d833550d52a507830f18155223fd3f11401f9e74314"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "87134"
+          "value": "87187"
         }
       ]
     },
@@ -8252,7 +8252,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4a068265144981e22e8ea6c0406592b63ade8daa6e16192000b80c08b8ffa743"
+          "content": "96f94e4abeba2e579a5bb3aed76d5840e899fa13b631d2ee36af5930ee082464"
         }
       ],
       "properties": [
@@ -8262,7 +8262,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2157860"
+          "value": "2159597"
         }
       ]
     },
@@ -10699,6 +10699,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3716"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/pfdi20-v775.js",
+      "type": "file",
+      "name": "lib/pfdi20-v775.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5b9b7b749246ec16329fd2edee61832aa29970d49574659b07a29b5005973877"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3982"
         }
       ]
     },
@@ -24374,6 +24395,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/pfdi20-v775.js",
+      "type": "file",
+      "name": "mcp/adapters/pfdi20-v775.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f404b5890da7570b4764877400bede73226e4b012d8ecccc49b164f21384dcf9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2313"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/pfirrmann-disc-v434.js",
       "type": "file",
       "name": "mcp/adapters/pfirrmann-disc-v434.js",
@@ -28307,7 +28349,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0c1033410b641922f9962ea07e19483ff1a993979f232c62ee32ecf65dd0507d"
+          "content": "d4f6f576faaa397e957761e5391ec927e302f563344e4862f4578e118abe171c"
         }
       ],
       "properties": [
@@ -28317,7 +28359,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "70472"
+          "value": "70555"
         }
       ]
     },
@@ -41863,6 +41905,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4661"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v775.js",
+      "type": "file",
+      "name": "views/group-v775.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "62ebeefdd100ba5b44073935c2acf639666291869568c870a81a9558e08edc16"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5121"
         }
       ]
     },
@@ -57990,6 +58053,7 @@
         "urn:sophiewell:file:source:lib/periop-frailty-v203.js",
         "urn:sophiewell:file:source:lib/periop-v97.js",
         "urn:sophiewell:file:source:lib/peritoneal-cancer-index-v654.js",
+        "urn:sophiewell:file:source:lib/pfdi20-v775.js",
         "urn:sophiewell:file:source:lib/pfirrmann-disc-v434.js",
         "urn:sophiewell:file:source:lib/phq15-v734.js",
         "urn:sophiewell:file:source:lib/pi-ll-mismatch-v705.js",
@@ -58832,6 +58896,7 @@
         "urn:sophiewell:file:source:views/group-v740.js",
         "urn:sophiewell:file:source:views/group-v773.js",
         "urn:sophiewell:file:source:views/group-v774.js",
+        "urn:sophiewell:file:source:views/group-v775.js",
         "urn:sophiewell:file:source:views/group-v8.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
@@ -59291,6 +59356,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/periop-frailty-v203.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/periop-v97.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/peritoneal-cancer-index-v654.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/pfdi20-v775.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pfirrmann-disc-v434.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/phq15-v734.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pi-ll-mismatch-v705.js",
@@ -59581,7 +59647,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "17d7646c0abf7d4a"
+      "value": "c919556dcb33b99e"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -59593,7 +59659,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "1974"
+      "value": "1977"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

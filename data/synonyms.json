@@ -829,6 +829,8 @@
       "tile": "cts6", "audience": "clinicians" },
     { "phrases": ["boston carpal tunnel questionnaire", "bctq symptom severity scale", "carpal tunnel functional status scale", "levine carpal tunnel questionnaire"],
       "tile": "bctq", "audience": "clinicians" },
+    { "phrases": ["pelvic floor distress inventory", "pfdi 20 score", "popdi cradi udi subscales", "pelvic floor symptom bother questionnaire"],
+      "tile": "pfdi20", "audience": "clinicians" },
     { "phrases": ["sad persons scale", "suicide risk screen sad persons", "sad persons suicide", "suicidality mnemonic screen"],
       "tile": "sad-persons", "audience": "clinicians" },
     { "phrases": ["edinburgh claudication questionnaire", "intermittent claudication screen", "claudication symptom questionnaire", "leg pain walking claudication"],

@@ -7628,6 +7628,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/bctq-v774.js (spec-v774: Boston Carpal Tunnel Questionnaire — clinical disclaimer)
 - `bctq`
 
+### lib/pfdi20-v775.js (spec-v775: Pelvic Floor Distress Inventory short form — clinical disclaimer)
+- `pfdi20`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

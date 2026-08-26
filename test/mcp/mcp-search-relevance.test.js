@@ -655,6 +655,7 @@ const PROBES = [
   ['malt lymphoma prognostic index ipi marginal zone', ['malt-ipi']],
   ['cts6 carpal tunnel clinical diagnostic score', ['cts6']],
   ['boston carpal tunnel questionnaire symptom severity function', ['bctq']],
+  ['pelvic floor distress inventory popdi cradi udi', ['pfdi20']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],
