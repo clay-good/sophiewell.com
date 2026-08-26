@@ -613,6 +613,7 @@ import kingsScoreV697 from './adapters/kings-score-v697.js';
 import qcsiV698 from './adapters/qcsi-v698.js';
 import fabV699 from './adapters/fab-v699.js';
 import maltIpiV700 from './adapters/malt-ipi-v700.js';
+import cts6V773 from './adapters/cts6-v773.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
 import reimersMigrationPercentageV703 from './adapters/reimers-migration-percentage-v703.js';
@@ -1252,6 +1253,7 @@ const ADAPTER_MODULES = [
   ['qcsi-v698', qcsiV698],
   ['fab-v699', fabV699],
   ['malt-ipi-v700', maltIpiV700],
+  ['cts6-v773', cts6V773],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],
   ['reimers-migration-percentage-v703', reimersMigrationPercentageV703],

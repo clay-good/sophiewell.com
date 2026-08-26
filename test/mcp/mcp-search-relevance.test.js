@@ -653,6 +653,7 @@ const PROBES = [
   ['quick covid severity index qcsi respiratory decompensation', ['qcsi']],
   ['frontal assessment battery fab executive dysfunction dementia', ['fab']],
   ['malt lymphoma prognostic index ipi marginal zone', ['malt-ipi']],
+  ['cts6 carpal tunnel clinical diagnostic score', ['cts6']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],
