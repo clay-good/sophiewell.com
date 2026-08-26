@@ -631,6 +631,7 @@ import atrialEnlargementV787 from './adapters/atrial-enlargement-v787.js';
 import intertakV788 from './adapters/intertak-v788.js';
 import pericarditisV789 from './adapters/pericarditis-v789.js';
 import lakeLouiseCmrV790 from './adapters/lake-louise-cmr-v790.js';
+import cardiacSarcoidosisV791 from './adapters/cardiac-sarcoidosis-v791.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
 import reimersMigrationPercentageV703 from './adapters/reimers-migration-percentage-v703.js';
@@ -1288,6 +1289,7 @@ const ADAPTER_MODULES = [
   ['intertak-v788', intertakV788],
   ['pericarditis-v789', pericarditisV789],
   ['lake-louise-cmr-v790', lakeLouiseCmrV790],
+  ['cardiac-sarcoidosis-v791', cardiacSarcoidosisV791],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],
   ['reimers-migration-percentage-v703', reimersMigrationPercentageV703],

@@ -7676,6 +7676,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/lake-louise-cmr-v790.js (spec-v790: 2018 Lake Louise Criteria for myocarditis — clinical disclaimer)
 - `lake-louise-cmr`
 
+### lib/cardiac-sarcoidosis-v791.js (spec-v791: HRS 2014 cardiac sarcoidosis criteria — clinical disclaimer)
+- `cardiac-sarcoidosis`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
