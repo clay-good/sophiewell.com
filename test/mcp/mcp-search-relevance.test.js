@@ -679,6 +679,7 @@ const PROBES = [
   ['eu tirads thyroid nodule european ultrasound category', ['eu-tirads']],
   ['neuroendocrine neoplasm who grade ki67 mitotic count', ['nen-who-grade']],
   ['renal tubular acidosis type 1 2 4 urine ph potassium', ['rta-type']],
+  ['caine criteria wernicke encephalopathy thiamine', ['caine-wernicke']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],

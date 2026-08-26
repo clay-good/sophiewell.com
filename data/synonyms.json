@@ -877,6 +877,8 @@
       "tile": "nen-who-grade", "audience": "clinicians" },
     { "phrases": ["renal tubular acidosis type", "rta typing", "distal versus proximal rta", "which type of rta"],
       "tile": "rta-type", "audience": "clinicians" },
+    { "phrases": ["caine criteria", "wernicke encephalopathy criteria", "thiamine deficiency encephalopathy", "when to suspect wernicke"],
+      "tile": "caine-wernicke", "audience": "clinicians" },
     { "phrases": ["sad persons scale", "suicide risk screen sad persons", "sad persons suicide", "suicidality mnemonic screen"],
       "tile": "sad-persons", "audience": "clinicians" },
     { "phrases": ["edinburgh claudication questionnaire", "intermittent claudication screen", "claudication symptom questionnaire", "leg pain walking claudication"],

@@ -7700,6 +7700,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/rta-type-v798.js (spec-v798: renal tubular acidosis typing — clinical disclaimer)
 - `rta-type`
 
+### lib/caine-wernicke-v799.js (spec-v799: Caine criteria for Wernicke encephalopathy — clinical disclaimer)
+- `caine-wernicke`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
