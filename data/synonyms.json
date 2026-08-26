@@ -875,6 +875,8 @@
       "tile": "eu-tirads", "audience": "clinicians" },
     { "phrases": ["neuroendocrine tumor grade", "who grade net nec", "ki 67 mitotic grade neuroendocrine", "carcinoid grading ki67"],
       "tile": "nen-who-grade", "audience": "clinicians" },
+    { "phrases": ["renal tubular acidosis type", "rta typing", "distal versus proximal rta", "which type of rta"],
+      "tile": "rta-type", "audience": "clinicians" },
     { "phrases": ["sad persons scale", "suicide risk screen sad persons", "sad persons suicide", "suicidality mnemonic screen"],
       "tile": "sad-persons", "audience": "clinicians" },
     { "phrases": ["edinburgh claudication questionnaire", "intermittent claudication screen", "claudication symptom questionnaire", "leg pain walking claudication"],

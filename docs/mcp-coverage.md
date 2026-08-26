@@ -7697,6 +7697,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/nen-who-grade-v797.js (spec-v797: WHO 2022 neuroendocrine neoplasm grade — clinical disclaimer)
 - `nen-who-grade`
 
+### lib/rta-type-v798.js (spec-v798: renal tubular acidosis typing — clinical disclaimer)
+- `rta-type`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
