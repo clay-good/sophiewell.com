@@ -629,6 +629,7 @@ import olbiV785 from './adapters/olbi-v785.js';
 import arvcTfcV786 from './adapters/arvc-tfc-v786.js';
 import atrialEnlargementV787 from './adapters/atrial-enlargement-v787.js';
 import intertakV788 from './adapters/intertak-v788.js';
+import pericarditisV789 from './adapters/pericarditis-v789.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
 import reimersMigrationPercentageV703 from './adapters/reimers-migration-percentage-v703.js';
@@ -1284,6 +1285,7 @@ const ADAPTER_MODULES = [
   ['arvc-tfc-v786', arvcTfcV786],
   ['atrial-enlargement-v787', atrialEnlargementV787],
   ['intertak-v788', intertakV788],
+  ['pericarditis-v789', pericarditisV789],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],
   ['reimers-migration-percentage-v703', reimersMigrationPercentageV703],

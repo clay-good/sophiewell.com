@@ -7670,6 +7670,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/intertak-v788.js (spec-v788: InterTAK Diagnostic Score — clinical disclaimer)
 - `intertak`
 
+### lib/pericarditis-v789.js (spec-v789: acute pericarditis criteria — clinical disclaimer)
+- `acute-pericarditis`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

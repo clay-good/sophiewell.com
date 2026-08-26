@@ -857,6 +857,8 @@
       "tile": "atrial-enlargement", "audience": "clinicians" },
     { "phrases": ["intertak diagnostic score", "takotsubo versus acs", "stress cardiomyopathy score", "broken heart syndrome score"],
       "tile": "intertak", "audience": "clinicians" },
+    { "phrases": ["acute pericarditis criteria", "pericarditis diagnosis two of four", "friction rub pr depression", "recurrent pericarditis definition"],
+      "tile": "acute-pericarditis", "audience": "clinicians" },
     { "phrases": ["sad persons scale", "suicide risk screen sad persons", "sad persons suicide", "suicidality mnemonic screen"],
       "tile": "sad-persons", "audience": "clinicians" },
     { "phrases": ["edinburgh claudication questionnaire", "intermittent claudication screen", "claudication symptom questionnaire", "leg pain walking claudication"],
