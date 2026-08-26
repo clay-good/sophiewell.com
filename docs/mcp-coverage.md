@@ -7655,6 +7655,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/posas-patient-scar-v783.js (spec-v783: POSAS Patient Scale — clinical disclaimer)
 - `posas-patient-scar`
 
+### lib/griffith-vt-v784.js (spec-v784: Griffith wide-complex tachycardia algorithm — clinical disclaimer)
+- `griffith-vt`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

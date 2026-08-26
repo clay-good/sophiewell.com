@@ -847,6 +847,8 @@
       "tile": "fabq", "audience": "clinicians" },
     { "phrases": ["posas patient scale", "patient scar assessment scale", "scar rating by the patient", "scar pain and itch rating"],
       "tile": "posas-patient-scar", "audience": "clinicians" },
+    { "phrases": ["griffith algorithm", "vt versus svt default to vt", "wide complex tachycardia griffith", "broad complex tachycardia aberrancy rule"],
+      "tile": "griffith-vt", "audience": "clinicians" },
     { "phrases": ["sad persons scale", "suicide risk screen sad persons", "sad persons suicide", "suicidality mnemonic screen"],
       "tile": "sad-persons", "audience": "clinicians" },
     { "phrases": ["edinburgh claudication questionnaire", "intermittent claudication screen", "claudication symptom questionnaire", "leg pain walking claudication"],

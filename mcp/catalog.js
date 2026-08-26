@@ -624,6 +624,7 @@ import cbiV780 from './adapters/cbi-v780.js';
 import startbackV781 from './adapters/startback-v781.js';
 import fabqV782 from './adapters/fabq-v782.js';
 import posasPatientScarV783 from './adapters/posas-patient-scar-v783.js';
+import griffithVtV784 from './adapters/griffith-vt-v784.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
 import reimersMigrationPercentageV703 from './adapters/reimers-migration-percentage-v703.js';
@@ -1274,6 +1275,7 @@ const ADAPTER_MODULES = [
   ['startback-v781', startbackV781],
   ['fabq-v782', fabqV782],
   ['posas-patient-scar-v783', posasPatientScarV783],
+  ['griffith-vt-v784', griffithVtV784],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],
   ['reimers-migration-percentage-v703', reimersMigrationPercentageV703],
