@@ -849,6 +849,8 @@
       "tile": "posas-patient-scar", "audience": "clinicians" },
     { "phrases": ["griffith algorithm", "vt versus svt default to vt", "wide complex tachycardia griffith", "broad complex tachycardia aberrancy rule"],
       "tile": "griffith-vt", "audience": "clinicians" },
+    { "phrases": ["oldenburg burnout inventory", "olbi burnout score", "exhaustion and disengagement scale", "work disengagement questionnaire"],
+      "tile": "olbi", "audience": "clinicians" },
     { "phrases": ["sad persons scale", "suicide risk screen sad persons", "sad persons suicide", "suicidality mnemonic screen"],
       "tile": "sad-persons", "audience": "clinicians" },
     { "phrases": ["edinburgh claudication questionnaire", "intermittent claudication screen", "claudication symptom questionnaire", "leg pain walking claudication"],

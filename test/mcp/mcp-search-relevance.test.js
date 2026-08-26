@@ -665,6 +665,7 @@ const PROBES = [
   ['fear avoidance beliefs questionnaire back pain work', ['fabq']],
   ['posas patient scale scar pain itch rating', ['posas-patient-scar']],
   ['griffith algorithm wide complex tachycardia default vt', ['griffith-vt']],
+  ['oldenburg burnout inventory exhaustion disengagement', ['olbi']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],

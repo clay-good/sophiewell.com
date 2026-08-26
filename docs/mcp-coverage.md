@@ -7658,6 +7658,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/griffith-vt-v784.js (spec-v784: Griffith wide-complex tachycardia algorithm — clinical disclaimer)
 - `griffith-vt`
 
+### lib/olbi-v785.js (spec-v785: Oldenburg Burnout Inventory — clinical disclaimer)
+- `olbi`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
