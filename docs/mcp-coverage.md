@@ -7715,6 +7715,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/anaphylaxis-criteria-v803.js (spec-v803: 2020 WAO anaphylaxis criteria — clinical disclaimer)
 - `anaphylaxis-criteria`
 
+### lib/rome-ecopd-v804.js (spec-v804: Rome proposal COPD exacerbation severity — clinical disclaimer)
+- `rome-ecopd`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

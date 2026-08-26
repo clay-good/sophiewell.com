@@ -684,6 +684,7 @@ const PROBES = [
   ['hodapp parrish anderson glaucoma visual field staging', ['hpa-glaucoma']],
   ['gardner robertson hearing class serviceable audiogram', ['gardner-robertson']],
   ['anaphylaxis diagnostic criteria world allergy organization', ['anaphylaxis-criteria']],
+  ['rome proposal copd exacerbation severity classification', ['rome-ecopd']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],
