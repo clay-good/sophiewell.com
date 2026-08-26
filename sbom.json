@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:691a1d48-6b4d-58ed-8268-9d28b019113d",
+  "serialNumber": "urn:uuid:a46548f5-1163-53b5-801a-0ad7c1787d3e",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-26T19:24:57.812Z",
+    "timestamp": "2026-08-26T19:31:33.357Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1574 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1575 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3dbce204f826877270aa08367ff7dd487cb41890e9b3be1751e3b615cd36468c"
+          "content": "edd5812dc4484846ede06dc3ef269bb61dde91c7e326a29875bc0c9796ee1bb5"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "102006"
+          "value": "102059"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b1132a29e345022506d9c82efbdfa32cdf7d624ed53810abe56ad8004c886efb"
+          "content": "d63a2cd6aa1b7302d91d4089c51388a25a6570da4ab6c60d5ada277c97217387"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "463457"
+          "value": "463686"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "320ddedb8bce58123bf2f015a62d3bef715fcf57a964d43cafc701e1329d018a"
+          "content": "13743202c775b8c4780e2d2a9892fdbdaae8ad3e9818172140ba6471f5f3108e"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "241537"
+          "value": "241695"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d6c1bd9c039b2d394008b643f45775d9a336030e144ad7d6a7835c44f3832595"
+          "content": "9f69464dff028d42d761f3cab55a09774f1b3b95ec3b71d17fc977ab6e5e2d2d"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "87557"
+          "value": "87618"
         }
       ]
     },
@@ -8315,7 +8315,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e9118e07d8fba8d8fbb03c01d0ff0e2452fecac7624d3663e450629c5c077ecc"
+          "content": "08bd7665fc06cc0bf9742e5446e8e79c800d708277ac177dc3c7885437282499"
         }
       ],
       "properties": [
@@ -8325,7 +8325,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2170518"
+          "value": "2172206"
         }
       ]
     },
@@ -11035,6 +11035,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3697"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/posas-patient-scar-v783.js",
+      "type": "file",
+      "name": "lib/posas-patient-scar-v783.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "58b2fefabafaf9466dd29beb9821909c3fd3feaa9e2f76cfcca6333f18035481"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4310"
         }
       ]
     },
@@ -24878,6 +24899,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/posas-patient-scar-v783.js",
+      "type": "file",
+      "name": "mcp/adapters/posas-patient-scar-v783.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8015f61a0185d69268e58db0fc87a6984e50baa1cd75f598382319bc018b46c3"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1853"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/poseidon-v549.js",
       "type": "file",
       "name": "mcp/adapters/poseidon-v549.js",
@@ -28643,7 +28685,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "72c8153b3317ca63a6dce3c26eda5602c383265bd91ee3cf391e553f68625d19"
+          "content": "5e42c2d663e7b0c613e9be1b12e9500f1c74ee78215af83a0812a172cb1c8992"
         }
       ],
       "properties": [
@@ -28653,7 +28695,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "71128"
+          "value": "71255"
         }
       ]
     },
@@ -42367,6 +42409,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4373"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v783.js",
+      "type": "file",
+      "name": "views/group-v783.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3c57e72a8055b84f2c591c00fc8573ee601909bbd060a50be15c4eb1f54c6c2f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3826"
         }
       ]
     },
@@ -58510,6 +58573,7 @@
         "urn:sophiewell:file:source:lib/pneumonia-risk-v260.js",
         "urn:sophiewell:file:source:lib/pollock-flickinger-v601.js",
         "urn:sophiewell:file:source:lib/posas-observer-scar-v691.js",
+        "urn:sophiewell:file:source:lib/posas-patient-scar-v783.js",
         "urn:sophiewell:file:source:lib/poseidon-v549.js",
         "urn:sophiewell:file:source:lib/ppm-eoai-v548.js",
         "urn:sophiewell:file:source:lib/prague-barrett-v365.js",
@@ -59352,6 +59416,7 @@
         "urn:sophiewell:file:source:views/group-v780.js",
         "urn:sophiewell:file:source:views/group-v781.js",
         "urn:sophiewell:file:source:views/group-v782.js",
+        "urn:sophiewell:file:source:views/group-v783.js",
         "urn:sophiewell:file:source:views/group-v8.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
@@ -59827,6 +59892,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/pneumonia-risk-v260.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pollock-flickinger-v601.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/posas-observer-scar-v691.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/posas-patient-scar-v783.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/poseidon-v549.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ppm-eoai-v548.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/prague-barrett-v365.js",
@@ -60109,7 +60175,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "691a1d486b4dc8ed"
+      "value": "a46548f51163b3b5"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -60121,7 +60187,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "1998"
+      "value": "2001"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

@@ -7652,6 +7652,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/fabq-v782.js (spec-v782: Fear-Avoidance Beliefs Questionnaire — clinical disclaimer)
 - `fabq`
 
+### lib/posas-patient-scar-v783.js (spec-v783: POSAS Patient Scale — clinical disclaimer)
+- `posas-patient-scar`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

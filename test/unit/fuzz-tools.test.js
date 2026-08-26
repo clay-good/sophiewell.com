@@ -605,6 +605,7 @@ import * as schofieldV779 from '../../lib/schofield-v779.js';
 import * as cbiV780 from '../../lib/cbi-v780.js';
 import * as startbackV781 from '../../lib/startback-v781.js';
 import * as fabqV782 from '../../lib/fabq-v782.js';
+import * as posasPatientScarV783 from '../../lib/posas-patient-scar-v783.js';
 import * as sadPersonsV701 from '../../lib/sad-persons-v701.js';
 import * as edinburghClaudicationV702 from '../../lib/edinburgh-claudication-v702.js';
 import * as reimersMigrationPercentageV703 from '../../lib/reimers-migration-percentage-v703.js';
@@ -1255,6 +1256,7 @@ const MODULES = {
   'cbi-v780.js': cbiV780,
   'startback-v781.js': startbackV781,
   'fabq-v782.js': fabqV782,
+  'posas-patient-scar-v783.js': posasPatientScarV783,
   'sad-persons-v701.js': sadPersonsV701,
   'edinburgh-claudication-v702.js': edinburghClaudicationV702,
   'reimers-migration-percentage-v703.js': reimersMigrationPercentageV703,
