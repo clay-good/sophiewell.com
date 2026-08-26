@@ -7679,6 +7679,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/cardiac-sarcoidosis-v791.js (spec-v791: HRS 2014 cardiac sarcoidosis criteria — clinical disclaimer)
 - `cardiac-sarcoidosis`
 
+### lib/rudas-v792.js (spec-v792: Rowland Universal Dementia Assessment Scale — clinical disclaimer)
+- `rudas`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

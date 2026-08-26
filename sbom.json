@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:cbb3f8b1-6a3d-5ba4-8c3d-d28a631c58a7",
+  "serialNumber": "urn:uuid:9ad90449-abd3-513d-841b-e6c3c679c912",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-26T20:54:35.238Z",
+    "timestamp": "2026-08-26T21:01:41.841Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1583 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1584 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "582679475ade6c9f10a28db84f99e1999966741c9620ff642947423e149902f4"
+          "content": "c9446b5a16f881561f4ad705159762723605f9e145d5ed1f370b8405dd920f40"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "102528"
+          "value": "102595"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3933417b789f27ac946f61cee3c42b825d73fe0b873df291fe65e6ef5542ce5b"
+          "content": "286819ffe717875225b3f7a7f73604201d3f4761404d40564071a0e7bb884cbc"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "465465"
+          "value": "465700"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "48de02015eeb1bfdb2f60a6e4d5aa83b50a6685508594c38b91b8da5b24a9fc4"
+          "content": "d248a966b462d1392d5defcc93e3c47af158abf8db058ed00698e1e2ee9b2d0e"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "242916"
+          "value": "243061"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1483f9147e78b636ed06b5bcb7248f23171b6d9c30564bbd181bc93f68f68623"
+          "content": "71bf4cd421d69929e479ca804fa0dca5e4fc09007571bf3ea67327a5a6205652"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "88108"
+          "value": "88170"
         }
       ]
     },
@@ -8441,7 +8441,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8a9e66069e226836b8d1032fd15144efa050af248e0dfb7a3aba9b07d6b7d153"
+          "content": "b7abfdb277dd4943e9ae46f910640f7c71ab03b4ef719261e49c566c826493f6"
         }
       ],
       "properties": [
@@ -8451,7 +8451,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2185864"
+          "value": "2187343"
         }
       ]
     },
@@ -12547,6 +12547,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "18101"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/rudas-v792.js",
+      "type": "file",
+      "name": "lib/rudas-v792.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "bd0032baa9f9b96b4082830d28b0fdf2d9f2576f1765a6517bbf7765734978d6"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3925"
         }
       ]
     },
@@ -26474,6 +26495,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/rudas-v792.js",
+      "type": "file",
+      "name": "mcp/adapters/rudas-v792.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4767cf48baa2733e9090261efe9f218412ecc9c873f354f1de0038a7a578612f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1487"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ruedi-allgower-pilon-v490.js",
       "type": "file",
       "name": "mcp/adapters/ruedi-allgower-pilon-v490.js",
@@ -29021,7 +29063,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "956c95c2ad2509e17520e3b6e740f8bae12b614960530a1fb1b90336a4b3aef3"
+          "content": "2c792c7d6ce3c8ba20efff0166cd254e8a72dcb5edb6157584433e7867dca908"
         }
       ],
       "properties": [
@@ -29031,7 +29073,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "72095"
+          "value": "72174"
         }
       ]
     },
@@ -42934,6 +42976,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4684"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v792.js",
+      "type": "file",
+      "name": "views/group-v792.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2071967a57e28327735d696fa95f9624e8ba710cc8979493292e3d36c56b8bf4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3368"
         }
       ]
     },
@@ -59149,6 +59212,7 @@
         "urn:sophiewell:file:source:lib/rop-stage-v446.js",
         "urn:sophiewell:file:source:lib/ross-hf-peds-v368.js",
         "urn:sophiewell:file:source:lib/rucam-v585.js",
+        "urn:sophiewell:file:source:lib/rudas-v792.js",
         "urn:sophiewell:file:source:lib/ruedi-allgower-pilon-v490.js",
         "urn:sophiewell:file:source:lib/russe-scaphoid-v416.js",
         "urn:sophiewell:file:source:lib/russell-taylor-subtroch-v482.js",
@@ -59937,6 +60001,7 @@
         "urn:sophiewell:file:source:views/group-v789.js",
         "urn:sophiewell:file:source:views/group-v790.js",
         "urn:sophiewell:file:source:views/group-v791.js",
+        "urn:sophiewell:file:source:views/group-v792.js",
         "urn:sophiewell:file:source:views/group-v8.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
@@ -60479,6 +60544,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/rop-stage-v446.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ross-hf-peds-v368.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/rucam-v585.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/rudas-v792.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ruedi-allgower-pilon-v490.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/russe-scaphoid-v416.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/russell-taylor-subtroch-v482.js",
@@ -60703,7 +60769,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "cbb3f8b16a3dfba4"
+      "value": "9ad90449abd3013d"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -60715,7 +60781,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2025"
+      "value": "2028"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

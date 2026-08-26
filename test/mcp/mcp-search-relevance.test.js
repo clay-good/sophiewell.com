@@ -672,6 +672,7 @@ const PROBES = [
   ['acute pericarditis diagnostic criteria friction rub', ['acute-pericarditis']],
   ['lake louise criteria myocarditis cardiac mri t1 t2', ['lake-louise-cmr']],
   ['cardiac sarcoidosis diagnostic criteria heart rhythm society', ['cardiac-sarcoidosis']],
+  ['rudas multicultural dementia screening scale', ['rudas']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],
