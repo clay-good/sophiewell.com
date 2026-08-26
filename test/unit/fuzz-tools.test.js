@@ -624,6 +624,7 @@ import * as rtaTypeV798 from '../../lib/rta-type-v798.js';
 import * as caineWernickeV799 from '../../lib/caine-wernicke-v799.js';
 import * as hughesGbsV800 from '../../lib/hughes-gbs-v800.js';
 import * as hpaGlaucomaV801 from '../../lib/hpa-glaucoma-v801.js';
+import * as gardnerRobertsonV802 from '../../lib/gardner-robertson-v802.js';
 import * as sadPersonsV701 from '../../lib/sad-persons-v701.js';
 import * as edinburghClaudicationV702 from '../../lib/edinburgh-claudication-v702.js';
 import * as reimersMigrationPercentageV703 from '../../lib/reimers-migration-percentage-v703.js';
@@ -1293,6 +1294,7 @@ const MODULES = {
   'caine-wernicke-v799.js': caineWernickeV799,
   'hughes-gbs-v800.js': hughesGbsV800,
   'hpa-glaucoma-v801.js': hpaGlaucomaV801,
+  'gardner-robertson-v802.js': gardnerRobertsonV802,
   'sad-persons-v701.js': sadPersonsV701,
   'edinburgh-claudication-v702.js': edinburghClaudicationV702,
   'reimers-migration-percentage-v703.js': reimersMigrationPercentageV703,

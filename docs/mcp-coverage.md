@@ -7709,6 +7709,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/hpa-glaucoma-v801.js (spec-v801: Hodapp-Parrish-Anderson glaucoma staging — clinical disclaimer)
 - `hpa-glaucoma`
 
+### lib/gardner-robertson-v802.js (spec-v802: Gardner-Robertson hearing class — clinical disclaimer)
+- `gardner-robertson`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

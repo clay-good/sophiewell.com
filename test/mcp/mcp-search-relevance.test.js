@@ -682,6 +682,7 @@ const PROBES = [
   ['caine criteria wernicke encephalopathy thiamine', ['caine-wernicke']],
   ['hughes functional grading scale guillain barre disability', ['hughes-gbs']],
   ['hodapp parrish anderson glaucoma visual field staging', ['hpa-glaucoma']],
+  ['gardner robertson hearing class serviceable audiogram', ['gardner-robertson']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],

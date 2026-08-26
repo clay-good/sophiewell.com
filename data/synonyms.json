@@ -883,6 +883,8 @@
       "tile": "hughes-gbs", "audience": "clinicians" },
     { "phrases": ["hodapp parrish anderson", "glaucoma visual field staging", "glaucoma severity mean deviation", "how bad is this visual field"],
       "tile": "hpa-glaucoma", "audience": "clinicians" },
+    { "phrases": ["gardner robertson class", "serviceable hearing class", "hearing classification acoustic neuroma", "pure tone and discrimination class"],
+      "tile": "gardner-robertson", "audience": "clinicians" },
     { "phrases": ["sad persons scale", "suicide risk screen sad persons", "sad persons suicide", "suicidality mnemonic screen"],
       "tile": "sad-persons", "audience": "clinicians" },
     { "phrases": ["edinburgh claudication questionnaire", "intermittent claudication screen", "claudication symptom questionnaire", "leg pain walking claudication"],

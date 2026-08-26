@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:53ff4ae4-cf76-52e6-8a68-b42e9ceee9e4",
+  "serialNumber": "urn:uuid:b00ab3a1-d82f-5c4e-83e0-e653913c7008",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-26T22:36:01.891Z",
+    "timestamp": "2026-08-26T22:43:46.568Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1593 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1594 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "96e214f1c0b258236f731d588d249076047524c2a3883ab628946f53301f35d9"
+          "content": "1965101e090cbdf5571fbc7c3dfcbef4236e093d4eb7580cc87a43942e1008a7"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "103162"
+          "value": "103209"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c659e8ae34d33ba01c67fab5c89f8b503c268d0af63d464e7b7bbe26c5807ffd"
+          "content": "58b7e37df017fe2b78ac0f8db192e4961ab7fa02dc6b0458916713e7d317efa9"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "467832"
+          "value": "468064"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "15c9871567f616aed9d85a9441d183f4436fa5a1fa73c070d427ffc4166b8a19"
+          "content": "11a69893b25f3cca1a07774f2882b94a1ffe53123df27736a187a8c1e0bb89b4"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "244423"
+          "value": "244580"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "48449df7c6e4fb119209303bd31ece6294cba172a732994cd2449fc9c392be00"
+          "content": "6d46cdea9ef21d2238426735849c71d45255f777bb7cfa7e2bbef95dd92e20d4"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "88749"
+          "value": "88803"
         }
       ]
     },
@@ -5096,6 +5096,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/gardner-robertson-v802.js",
+      "type": "file",
+      "name": "lib/gardner-robertson-v802.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "52238918856f485748f23fd90f48b6c9d30ae8a7193dd9fbff4e52ddd895b8b4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5165"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/gartland-supracondylar-v377.js",
       "type": "file",
       "name": "lib/gartland-supracondylar-v377.js",
@@ -8546,7 +8567,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a48c620ba0b3492cc43b99531d7d9b71db911969c2e00b05134b27c61feedd78"
+          "content": "48ae593fb30ff5baa20391628bdc6b84b9438734bcbd5040e62cd0d9adcd3b43"
         }
       ],
       "properties": [
@@ -8556,7 +8577,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2201832"
+          "value": "2203272"
         }
       ]
     },
@@ -19880,6 +19901,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/gardner-robertson-v802.js",
+      "type": "file",
+      "name": "mcp/adapters/gardner-robertson-v802.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0a1addbb28c2787d7b681d4b62fca7cac1303f553b053c61fb57f8c6d1d2d5a2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1218"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/gartland-supracondylar-v377.js",
       "type": "file",
       "name": "mcp/adapters/gartland-supracondylar-v377.js",
@@ -29441,7 +29483,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2457ab3b8b1372ff3b9d6597c1ebe066269b22c51384f2f7232ec4542fabff81"
+          "content": "2c0603caa36625cb8ca88bd852a20bc4cb96f5a6d6bea5984cdabbde98a1224c"
         }
       ],
       "properties": [
@@ -29451,7 +29493,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "73091"
+          "value": "73216"
         }
       ]
     },
@@ -43585,6 +43627,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4187"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v802.js",
+      "type": "file",
+      "name": "views/group-v802.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2c21752063d89628f4526a6c6d962fcb4d61175367b5db20edf83d886d55e246"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3559"
         }
       ]
     },
@@ -59424,6 +59487,7 @@
         "urn:sophiewell:file:source:lib/gags-v554.js",
         "urn:sophiewell:file:source:lib/gapp-v569.js",
         "urn:sophiewell:file:source:lib/gaps-v185.js",
+        "urn:sophiewell:file:source:lib/gardner-robertson-v802.js",
         "urn:sophiewell:file:source:lib/gartland-supracondylar-v377.js",
         "urn:sophiewell:file:source:lib/gass-macular-hole-v471.js",
         "urn:sophiewell:file:source:lib/gds-v295.js",
@@ -60588,6 +60652,7 @@
         "urn:sophiewell:file:source:views/group-v8.js",
         "urn:sophiewell:file:source:views/group-v800.js",
         "urn:sophiewell:file:source:views/group-v801.js",
+        "urn:sophiewell:file:source:views/group-v802.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
@@ -60805,6 +60870,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/gags-v554.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/gapp-v569.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/gaps-v185.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/gardner-robertson-v802.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/gartland-supracondylar-v377.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/gass-macular-hole-v471.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/gds-v295.js",
@@ -61363,7 +61429,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "53ff4ae4cf76d2e6"
+      "value": "b00ab3a1d82fbc4e"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -61375,7 +61441,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2055"
+      "value": "2058"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
