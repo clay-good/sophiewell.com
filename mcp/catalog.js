@@ -616,6 +616,7 @@ import maltIpiV700 from './adapters/malt-ipi-v700.js';
 import cts6V773 from './adapters/cts6-v773.js';
 import bctqV774 from './adapters/bctq-v774.js';
 import pfdi20V775 from './adapters/pfdi20-v775.js';
+import pfiq7V776 from './adapters/pfiq7-v776.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
 import reimersMigrationPercentageV703 from './adapters/reimers-migration-percentage-v703.js';
@@ -1258,6 +1259,7 @@ const ADAPTER_MODULES = [
   ['cts6-v773', cts6V773],
   ['bctq-v774', bctqV774],
   ['pfdi20-v775', pfdi20V775],
+  ['pfiq7-v776', pfiq7V776],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],
   ['reimers-migration-percentage-v703', reimersMigrationPercentageV703],

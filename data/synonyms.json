@@ -831,6 +831,8 @@
       "tile": "bctq", "audience": "clinicians" },
     { "phrases": ["pelvic floor distress inventory", "pfdi 20 score", "popdi cradi udi subscales", "pelvic floor symptom bother questionnaire"],
       "tile": "pfdi20", "audience": "clinicians" },
+    { "phrases": ["pelvic floor impact questionnaire", "pfiq 7 score", "uiq craiq popiq scales", "pelvic floor quality of life impact"],
+      "tile": "pfiq7", "audience": "clinicians" },
     { "phrases": ["sad persons scale", "suicide risk screen sad persons", "sad persons suicide", "suicidality mnemonic screen"],
       "tile": "sad-persons", "audience": "clinicians" },
     { "phrases": ["edinburgh claudication questionnaire", "intermittent claudication screen", "claudication symptom questionnaire", "leg pain walking claudication"],
