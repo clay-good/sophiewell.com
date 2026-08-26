@@ -7640,6 +7640,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/sixcit-v778.js (spec-v778: Six-item Cognitive Impairment Test — clinical disclaimer)
 - `sixcit`
 
+### lib/schofield-v779.js (spec-v779: Schofield basal metabolic rate — clinical disclaimer)
+- `schofield`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

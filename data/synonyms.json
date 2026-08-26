@@ -837,6 +837,8 @@
       "tile": "awol", "audience": "clinicians" },
     { "phrases": ["six item cognitive impairment test", "6cit dementia screen", "kingshill cognitive test", "brief cognitive screen primary care"],
       "tile": "sixcit", "audience": "clinicians" },
+    { "phrases": ["schofield equation bmr", "schofield basal metabolic rate", "who fao bmr equation", "basal metabolic rate from weight and age"],
+      "tile": "schofield", "audience": "clinicians" },
     { "phrases": ["sad persons scale", "suicide risk screen sad persons", "sad persons suicide", "suicidality mnemonic screen"],
       "tile": "sad-persons", "audience": "clinicians" },
     { "phrases": ["edinburgh claudication questionnaire", "intermittent claudication screen", "claudication symptom questionnaire", "leg pain walking claudication"],
