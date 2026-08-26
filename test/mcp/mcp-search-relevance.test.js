@@ -680,6 +680,7 @@ const PROBES = [
   ['neuroendocrine neoplasm who grade ki67 mitotic count', ['nen-who-grade']],
   ['renal tubular acidosis type 1 2 4 urine ph potassium', ['rta-type']],
   ['caine criteria wernicke encephalopathy thiamine', ['caine-wernicke']],
+  ['hughes functional grading scale guillain barre disability', ['hughes-gbs']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],

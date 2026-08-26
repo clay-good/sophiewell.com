@@ -7703,6 +7703,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/caine-wernicke-v799.js (spec-v799: Caine criteria for Wernicke encephalopathy — clinical disclaimer)
 - `caine-wernicke`
 
+### lib/hughes-gbs-v800.js (spec-v800: Hughes Functional Grading Scale — clinical disclaimer)
+- `hughes-gbs`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

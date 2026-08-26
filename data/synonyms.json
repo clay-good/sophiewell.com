@@ -879,6 +879,8 @@
       "tile": "rta-type", "audience": "clinicians" },
     { "phrases": ["caine criteria", "wernicke encephalopathy criteria", "thiamine deficiency encephalopathy", "when to suspect wernicke"],
       "tile": "caine-wernicke", "audience": "clinicians" },
+    { "phrases": ["hughes functional grading scale", "gbs disability grade", "guillain barre functional grade", "hughes score neuropathy"],
+      "tile": "hughes-gbs", "audience": "clinicians" },
     { "phrases": ["sad persons scale", "suicide risk screen sad persons", "sad persons suicide", "suicidality mnemonic screen"],
       "tile": "sad-persons", "audience": "clinicians" },
     { "phrases": ["edinburgh claudication questionnaire", "intermittent claudication screen", "claudication symptom questionnaire", "leg pain walking claudication"],
