@@ -608,6 +608,7 @@ import * as fabqV782 from '../../lib/fabq-v782.js';
 import * as posasPatientScarV783 from '../../lib/posas-patient-scar-v783.js';
 import * as griffithVtV784 from '../../lib/griffith-vt-v784.js';
 import * as olbiV785 from '../../lib/olbi-v785.js';
+import * as arvcTfcV786 from '../../lib/arvc-tfc-v786.js';
 import * as sadPersonsV701 from '../../lib/sad-persons-v701.js';
 import * as edinburghClaudicationV702 from '../../lib/edinburgh-claudication-v702.js';
 import * as reimersMigrationPercentageV703 from '../../lib/reimers-migration-percentage-v703.js';
@@ -1261,6 +1262,7 @@ const MODULES = {
   'posas-patient-scar-v783.js': posasPatientScarV783,
   'griffith-vt-v784.js': griffithVtV784,
   'olbi-v785.js': olbiV785,
+  'arvc-tfc-v786.js': arvcTfcV786,
   'sad-persons-v701.js': sadPersonsV701,
   'edinburgh-claudication-v702.js': edinburghClaudicationV702,
   'reimers-migration-percentage-v703.js': reimersMigrationPercentageV703,

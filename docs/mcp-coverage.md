@@ -7661,6 +7661,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/olbi-v785.js (spec-v785: Oldenburg Burnout Inventory — clinical disclaimer)
 - `olbi`
 
+### lib/arvc-tfc-v786.js (spec-v786: 2010 ARVC Task Force Criteria — clinical disclaimer)
+- `arvc-tfc`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
