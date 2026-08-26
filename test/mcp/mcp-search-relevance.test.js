@@ -657,6 +657,7 @@ const PROBES = [
   ['boston carpal tunnel questionnaire symptom severity function', ['bctq']],
   ['pelvic floor distress inventory popdi cradi udi', ['pfdi20']],
   ['pelvic floor impact questionnaire uiq craiq popiq', ['pfiq7']],
+  ['awol delirium risk prediction admission', ['awol']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],

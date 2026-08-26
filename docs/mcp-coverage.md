@@ -7634,6 +7634,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/pfiq7-v776.js (spec-v776: Pelvic Floor Impact Questionnaire short form — clinical disclaimer)
 - `pfiq7`
 
+### lib/awol-v777.js (spec-v777: AWOL delirium risk score — clinical disclaimer)
+- `awol`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

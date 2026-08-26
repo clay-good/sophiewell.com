@@ -599,6 +599,7 @@ import * as cts6V773 from '../../lib/cts6-v773.js';
 import * as bctqV774 from '../../lib/bctq-v774.js';
 import * as pfdi20V775 from '../../lib/pfdi20-v775.js';
 import * as pfiq7V776 from '../../lib/pfiq7-v776.js';
+import * as awolV777 from '../../lib/awol-v777.js';
 import * as sadPersonsV701 from '../../lib/sad-persons-v701.js';
 import * as edinburghClaudicationV702 from '../../lib/edinburgh-claudication-v702.js';
 import * as reimersMigrationPercentageV703 from '../../lib/reimers-migration-percentage-v703.js';
@@ -1243,6 +1244,7 @@ const MODULES = {
   'bctq-v774.js': bctqV774,
   'pfdi20-v775.js': pfdi20V775,
   'pfiq7-v776.js': pfiq7V776,
+  'awol-v777.js': awolV777,
   'sad-persons-v701.js': sadPersonsV701,
   'edinburgh-claudication-v702.js': edinburghClaudicationV702,
   'reimers-migration-percentage-v703.js': reimersMigrationPercentageV703,

@@ -833,6 +833,8 @@
       "tile": "pfdi20", "audience": "clinicians" },
     { "phrases": ["pelvic floor impact questionnaire", "pfiq 7 score", "uiq craiq popiq scales", "pelvic floor quality of life impact"],
       "tile": "pfiq7", "audience": "clinicians" },
+    { "phrases": ["awol delirium score", "delirium risk prediction admission", "awol tool delirium", "predict inpatient delirium risk"],
+      "tile": "awol", "audience": "clinicians" },
     { "phrases": ["sad persons scale", "suicide risk screen sad persons", "sad persons suicide", "suicidality mnemonic screen"],
       "tile": "sad-persons", "audience": "clinicians" },
     { "phrases": ["edinburgh claudication questionnaire", "intermittent claudication screen", "claudication symptom questionnaire", "leg pain walking claudication"],
