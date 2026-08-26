@@ -7688,6 +7688,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/furst-ratio-v794.js (spec-v794: Furst urine/plasma electrolyte ratio — clinical disclaimer)
 - `furst-ratio`
 
+### lib/mis-c-v795.js (spec-v795: 2023 MIS-C surveillance case definition — clinical disclaimer)
+- `mis-c`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
