@@ -855,6 +855,8 @@
       "tile": "arvc-tfc", "audience": "clinicians" },
     { "phrases": ["atrial enlargement ecg criteria", "p mitrale p pulmonale", "morris index p terminal force", "left atrial enlargement ekg"],
       "tile": "atrial-enlargement", "audience": "clinicians" },
+    { "phrases": ["intertak diagnostic score", "takotsubo versus acs", "stress cardiomyopathy score", "broken heart syndrome score"],
+      "tile": "intertak", "audience": "clinicians" },
     { "phrases": ["sad persons scale", "suicide risk screen sad persons", "sad persons suicide", "suicidality mnemonic screen"],
       "tile": "sad-persons", "audience": "clinicians" },
     { "phrases": ["edinburgh claudication questionnaire", "intermittent claudication screen", "claudication symptom questionnaire", "leg pain walking claudication"],

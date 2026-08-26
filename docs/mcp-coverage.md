@@ -7667,6 +7667,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/atrial-enlargement-v787.js (spec-v787: ECG atrial-enlargement criteria — clinical disclaimer)
 - `atrial-enlargement`
 
+### lib/intertak-v788.js (spec-v788: InterTAK Diagnostic Score — clinical disclaimer)
+- `intertak`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
