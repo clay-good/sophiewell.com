@@ -622,6 +622,7 @@ import sixcitV778 from './adapters/sixcit-v778.js';
 import schofieldV779 from './adapters/schofield-v779.js';
 import cbiV780 from './adapters/cbi-v780.js';
 import startbackV781 from './adapters/startback-v781.js';
+import fabqV782 from './adapters/fabq-v782.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
 import reimersMigrationPercentageV703 from './adapters/reimers-migration-percentage-v703.js';
@@ -1270,6 +1271,7 @@ const ADAPTER_MODULES = [
   ['schofield-v779', schofieldV779],
   ['cbi-v780', cbiV780],
   ['startback-v781', startbackV781],
+  ['fabq-v782', fabqV782],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],
   ['reimers-migration-percentage-v703', reimersMigrationPercentageV703],

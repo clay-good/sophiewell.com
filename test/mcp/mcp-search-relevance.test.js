@@ -662,6 +662,7 @@ const PROBES = [
   ['schofield basal metabolic rate age banded equation', ['schofield']],
   ['copenhagen burnout inventory personal work related', ['cbi']],
   ['start back screening tool low back pain risk', ['startback']],
+  ['fear avoidance beliefs questionnaire back pain work', ['fabq']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],

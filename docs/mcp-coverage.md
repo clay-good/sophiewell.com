@@ -7649,6 +7649,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/startback-v781.js (spec-v781: STarT Back Screening Tool — clinical disclaimer)
 - `startback`
 
+### lib/fabq-v782.js (spec-v782: Fear-Avoidance Beliefs Questionnaire — clinical disclaimer)
+- `fabq`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
