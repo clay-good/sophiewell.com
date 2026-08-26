@@ -603,6 +603,7 @@ import * as awolV777 from '../../lib/awol-v777.js';
 import * as sixcitV778 from '../../lib/sixcit-v778.js';
 import * as schofieldV779 from '../../lib/schofield-v779.js';
 import * as cbiV780 from '../../lib/cbi-v780.js';
+import * as startbackV781 from '../../lib/startback-v781.js';
 import * as sadPersonsV701 from '../../lib/sad-persons-v701.js';
 import * as edinburghClaudicationV702 from '../../lib/edinburgh-claudication-v702.js';
 import * as reimersMigrationPercentageV703 from '../../lib/reimers-migration-percentage-v703.js';
@@ -1251,6 +1252,7 @@ const MODULES = {
   'sixcit-v778.js': sixcitV778,
   'schofield-v779.js': schofieldV779,
   'cbi-v780.js': cbiV780,
+  'startback-v781.js': startbackV781,
   'sad-persons-v701.js': sadPersonsV701,
   'edinburgh-claudication-v702.js': edinburghClaudicationV702,
   'reimers-migration-percentage-v703.js': reimersMigrationPercentageV703,

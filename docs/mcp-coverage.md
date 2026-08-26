@@ -7646,6 +7646,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/cbi-v780.js (spec-v780: Copenhagen Burnout Inventory — clinical disclaimer)
 - `cbi`
 
+### lib/startback-v781.js (spec-v781: STarT Back Screening Tool — clinical disclaimer)
+- `startback`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

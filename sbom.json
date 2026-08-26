@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:3d1eb0dd-1c64-518c-8672-4f7a5f353e9e",
+  "serialNumber": "urn:uuid:40ae1bb6-f945-5e4c-82bf-62c378c51452",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-26T19:07:22.810Z",
+    "timestamp": "2026-08-26T19:17:31.578Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1572 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1573 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "091feb1d39ecb305452cabfd746195fea7094020f0fa6553f1354634ba83604f"
+          "content": "c3ffbc2a42b9a0ad72a98179a21af0d58cbb2ecf5583f44abea701283cca1416"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "101885"
+          "value": "101947"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b5e3663f8ffd4fd6dc48645dd7569e469094f83ecfc48875feef6241167a7172"
+          "content": "b784abdfb1130d7fa8e54e79c75d84b017217ef575e2cf614a2247cd416d3a1a"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "462995"
+          "value": "463226"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b1c1c707325a0a2ca294c1c13db86de6ea5412f95d31995aca3e157ef4bcf0ef"
+          "content": "c64edfdb9fa6691ad6d3e98031478a08c109df2eb1a2b7473d1d5039c62ed23f"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "241244"
+          "value": "241393"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c244937c72c1aabc841592004e3d5d18fd7993cd1b3a82041164c210f7a01d6a"
+          "content": "ee9d7e5b41777cb5f8eb0d7b887178665f661ef34a023e69aff3eba46dd1fdbf"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "87443"
+          "value": "87504"
         }
       ]
     },
@@ -8294,7 +8294,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "694482b30e55b8abe8a18f6db569bb39b5da0bf00b72d3e2aa5cdd1f185fa413"
+          "content": "7e370099e5c42f5e675203ad7d7e6a2892842adb55505c58e156d7725e1a264a"
         }
       ],
       "properties": [
@@ -8304,7 +8304,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2167353"
+          "value": "2168895"
         }
       ]
     },
@@ -13345,6 +13345,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2929"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/startback-v781.js",
+      "type": "file",
+      "name": "lib/startback-v781.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e56e0ff8dc44d8254e7afbc509a2012c39b69b2266d9ea13a82955c1b396e0c0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4071"
         }
       ]
     },
@@ -26978,6 +26999,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/startback-v781.js",
+      "type": "file",
+      "name": "mcp/adapters/startback-v781.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ffd18b131d9965110246d4c15f39cf0e5bdfa9562bd0e5b95e342a3dcf9129b3"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1968"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/steinberg-avn-v407.js",
       "type": "file",
       "name": "mcp/adapters/steinberg-avn-v407.js",
@@ -28559,7 +28601,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "fcb63c9efb12a5df6c733ae66fd7eb374ed9a8d77de8bed39f0d43e96e58f9a3"
+          "content": "ddfa220484a14dae31383d88bb0f89f95c6eccf4c42f2eee484f6fe7394f4cbc"
         }
       ],
       "properties": [
@@ -28569,7 +28611,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "70958"
+          "value": "71053"
         }
       ]
     },
@@ -42241,6 +42283,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "5472"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v781.js",
+      "type": "file",
+      "name": "views/group-v781.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "92fb781d653aa78cbac97508f4f7df560e828dd9d57153485e34dca34a7ee5d6"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4168"
         }
       ]
     },
@@ -58494,6 +58557,7 @@
         "urn:sophiewell:file:source:lib/spitz-atresia-v479.js",
         "urn:sophiewell:file:source:lib/sportsmsk-v244.js",
         "urn:sophiewell:file:source:lib/stamey-incontinence-v465.js",
+        "urn:sophiewell:file:source:lib/startback-v781.js",
         "urn:sophiewell:file:source:lib/steinberg-avn-v407.js",
         "urn:sophiewell:file:source:lib/steinbrocker-ra-v469.js",
         "urn:sophiewell:file:source:lib/sternbach-v589.js",
@@ -59222,6 +59286,7 @@
         "urn:sophiewell:file:source:views/group-v778.js",
         "urn:sophiewell:file:source:views/group-v779.js",
         "urn:sophiewell:file:source:views/group-v780.js",
+        "urn:sophiewell:file:source:views/group-v781.js",
         "urn:sophiewell:file:source:views/group-v8.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
@@ -59799,6 +59864,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/spitz-atresia-v479.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/sportsmsk-v244.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/stamey-incontinence-v465.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/startback-v781.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/steinberg-avn-v407.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/steinbrocker-ra-v469.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/sternbach-v589.js",
@@ -59977,7 +60043,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "3d1eb0dd1c64a18c"
+      "value": "40ae1bb6f9458e4c"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -59989,7 +60055,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "1992"
+      "value": "1995"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
