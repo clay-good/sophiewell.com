@@ -681,6 +681,7 @@ const PROBES = [
   ['renal tubular acidosis type 1 2 4 urine ph potassium', ['rta-type']],
   ['caine criteria wernicke encephalopathy thiamine', ['caine-wernicke']],
   ['hughes functional grading scale guillain barre disability', ['hughes-gbs']],
+  ['hodapp parrish anderson glaucoma visual field staging', ['hpa-glaucoma']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],

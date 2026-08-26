@@ -7706,6 +7706,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/hughes-gbs-v800.js (spec-v800: Hughes Functional Grading Scale — clinical disclaimer)
 - `hughes-gbs`
 
+### lib/hpa-glaucoma-v801.js (spec-v801: Hodapp-Parrish-Anderson glaucoma staging — clinical disclaimer)
+- `hpa-glaucoma`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

@@ -641,6 +641,7 @@ import nenWhoGradeV797 from './adapters/nen-who-grade-v797.js';
 import rtaTypeV798 from './adapters/rta-type-v798.js';
 import caineWernickeV799 from './adapters/caine-wernicke-v799.js';
 import hughesGbsV800 from './adapters/hughes-gbs-v800.js';
+import hpaGlaucomaV801 from './adapters/hpa-glaucoma-v801.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
 import reimersMigrationPercentageV703 from './adapters/reimers-migration-percentage-v703.js';
@@ -1308,6 +1309,7 @@ const ADAPTER_MODULES = [
   ['rta-type-v798', rtaTypeV798],
   ['caine-wernicke-v799', caineWernickeV799],
   ['hughes-gbs-v800', hughesGbsV800],
+  ['hpa-glaucoma-v801', hpaGlaucomaV801],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],
   ['reimers-migration-percentage-v703', reimersMigrationPercentageV703],
