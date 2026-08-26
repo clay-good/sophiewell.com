@@ -7637,6 +7637,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/awol-v777.js (spec-v777: AWOL delirium risk score — clinical disclaimer)
 - `awol`
 
+### lib/sixcit-v778.js (spec-v778: Six-item Cognitive Impairment Test — clinical disclaimer)
+- `sixcit`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
