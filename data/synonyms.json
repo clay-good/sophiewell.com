@@ -885,6 +885,8 @@
       "tile": "hpa-glaucoma", "audience": "clinicians" },
     { "phrases": ["gardner robertson class", "serviceable hearing class", "hearing classification acoustic neuroma", "pure tone and discrimination class"],
       "tile": "gardner-robertson", "audience": "clinicians" },
+    { "phrases": ["anaphylaxis diagnostic criteria", "is this anaphylaxis", "wao anaphylaxis criteria", "anaphylaxis definition criteria"],
+      "tile": "anaphylaxis-criteria", "audience": "clinicians" },
     { "phrases": ["sad persons scale", "suicide risk screen sad persons", "sad persons suicide", "suicidality mnemonic screen"],
       "tile": "sad-persons", "audience": "clinicians" },
     { "phrases": ["edinburgh claudication questionnaire", "intermittent claudication screen", "claudication symptom questionnaire", "leg pain walking claudication"],

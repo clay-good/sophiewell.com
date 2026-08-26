@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:b00ab3a1-d82f-5c4e-83e0-e653913c7008",
+  "serialNumber": "urn:uuid:64465984-7b9d-548c-8247-047d6f0697bd",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-26T22:43:46.568Z",
+    "timestamp": "2026-08-26T22:52:59.132Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1594 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1595 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1965101e090cbdf5571fbc7c3dfcbef4236e093d4eb7580cc87a43942e1008a7"
+          "content": "45a22bcbb4e397a26d0045aeed3f7d2d02b159723676fcb2ba9825290790dfdd"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "103209"
+          "value": "103267"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "58b7e37df017fe2b78ac0f8db192e4961ab7fa02dc6b0458916713e7d317efa9"
+          "content": "7ce6ddd13640a531d5d6a5859a5e0b7043c2f4475200f6608130a97a8126e12a"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "468064"
+          "value": "468297"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "11a69893b25f3cca1a07774f2882b94a1ffe53123df27736a187a8c1e0bb89b4"
+          "content": "86b61336185c0d4ff247f8bc593e4372f8945de4b53041032029a4e442b1f6b7"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "244580"
+          "value": "244740"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6d46cdea9ef21d2238426735849c71d45255f777bb7cfa7e2bbef95dd92e20d4"
+          "content": "07c18599de09372be678ddef19b78f3a7c37bb5de93be2349074a24387fa8c10"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "88803"
+          "value": "88871"
         }
       ]
     },
@@ -745,6 +745,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "12218"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/anaphylaxis-criteria-v803.js",
+      "type": "file",
+      "name": "lib/anaphylaxis-criteria-v803.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "43bb47b10fe03fa200c26f8ee54d45923b26d28540016f6e32a8ed8a4422d8ee"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4952"
         }
       ]
     },
@@ -8567,7 +8588,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "48ae593fb30ff5baa20391628bdc6b84b9438734bcbd5040e62cd0d9adcd3b43"
+          "content": "c2191eb9dcfbab95ea23baa642f3dc5cdb93d91e9f83fe37b854f26b014d2def"
         }
       ],
       "properties": [
@@ -8577,7 +8598,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2203272"
+          "value": "2204818"
         }
       ]
     },
@@ -15760,6 +15781,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "5405"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/anaphylaxis-criteria-v803.js",
+      "type": "file",
+      "name": "mcp/adapters/anaphylaxis-criteria-v803.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6f375c020d9f6c624b7989f4b26c4b96f4e3d52258f3d243deac07b840d91c80"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1879"
         }
       ]
     },
@@ -29483,7 +29525,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2c0603caa36625cb8ca88bd852a20bc4cb96f5a6d6bea5984cdabbde98a1224c"
+          "content": "30173c6077946bab170e6c79813968fe74c09daa02b4dd935fc51bf15f2b1f2d"
         }
       ],
       "properties": [
@@ -29493,7 +29535,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "73216"
+          "value": "73353"
         }
       ]
     },
@@ -43648,6 +43690,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3559"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v803.js",
+      "type": "file",
+      "name": "views/group-v803.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fdab4d237678ba3a816203a62190c0609ea9b77d3d5a2f53f7d7d81eb726f8dd"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4192"
         }
       ]
     },
@@ -59280,6 +59343,7 @@
         "urn:sophiewell:file:source:lib/alsfrs-r-v537.js",
         "urn:sophiewell:file:source:lib/amsler-krumeich-v707.js",
         "urn:sophiewell:file:source:lib/amsterdam-ii-v592.js",
+        "urn:sophiewell:file:source:lib/anaphylaxis-criteria-v803.js",
         "urn:sophiewell:file:source:lib/anaphylaxis-v303.js",
         "urn:sophiewell:file:source:lib/anaqeeb-aeeg-v560.js",
         "urn:sophiewell:file:source:lib/anderson-dalonzo-v410.js",
@@ -60653,6 +60717,7 @@
         "urn:sophiewell:file:source:views/group-v800.js",
         "urn:sophiewell:file:source:views/group-v801.js",
         "urn:sophiewell:file:source:views/group-v802.js",
+        "urn:sophiewell:file:source:views/group-v803.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
@@ -60673,6 +60738,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/alsfrs-r-v537.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/amsler-krumeich-v707.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/amsterdam-ii-v592.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/anaphylaxis-criteria-v803.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/anaphylaxis-v303.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/anaqeeb-aeeg-v560.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/anderson-dalonzo-v410.js",
@@ -61429,7 +61495,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "b00ab3a1d82fbc4e"
+      "value": "644659847b9d848c"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -61441,7 +61507,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2058"
+      "value": "2061"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
