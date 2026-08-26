@@ -7718,6 +7718,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/rome-ecopd-v804.js (spec-v804: Rome proposal COPD exacerbation severity — clinical disclaimer)
 - `rome-ecopd`
 
+### lib/amts-v805.js (spec-v805: Abbreviated Mental Test Score — clinical disclaimer)
+- `amts`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

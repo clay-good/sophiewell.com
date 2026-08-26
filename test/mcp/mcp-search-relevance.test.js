@@ -685,6 +685,7 @@ const PROBES = [
   ['gardner robertson hearing class serviceable audiogram', ['gardner-robertson']],
   ['anaphylaxis diagnostic criteria world allergy organization', ['anaphylaxis-criteria']],
   ['rome proposal copd exacerbation severity classification', ['rome-ecopd']],
+  ['abbreviated mental test score hodkinson ten question', ['amts']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],

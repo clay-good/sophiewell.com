@@ -889,6 +889,8 @@
       "tile": "anaphylaxis-criteria", "audience": "clinicians" },
     { "phrases": ["rome proposal copd", "copd exacerbation severity classification", "how severe is this copd exacerbation", "ecopd rome severity"],
       "tile": "rome-ecopd", "audience": "clinicians" },
+    { "phrases": ["abbreviated mental test", "amts score", "ten question cognitive screen", "hodkinson mental test"],
+      "tile": "amts", "audience": "clinicians" },
     { "phrases": ["sad persons scale", "suicide risk screen sad persons", "sad persons suicide", "suicidality mnemonic screen"],
       "tile": "sad-persons", "audience": "clinicians" },
     { "phrases": ["edinburgh claudication questionnaire", "intermittent claudication screen", "claudication symptom questionnaire", "leg pain walking claudication"],
