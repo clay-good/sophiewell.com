@@ -827,6 +827,8 @@
       "tile": "malt-ipi", "audience": "clinicians" },
     { "phrases": ["cts6 carpal tunnel", "carpal tunnel syndrome clinical diagnosis score", "cts 6 score hand numbness", "carpal tunnel diagnostic criteria score"],
       "tile": "cts6", "audience": "clinicians" },
+    { "phrases": ["boston carpal tunnel questionnaire", "bctq symptom severity scale", "carpal tunnel functional status scale", "levine carpal tunnel questionnaire"],
+      "tile": "bctq", "audience": "clinicians" },
     { "phrases": ["sad persons scale", "suicide risk screen sad persons", "sad persons suicide", "suicidality mnemonic screen"],
       "tile": "sad-persons", "audience": "clinicians" },
     { "phrases": ["edinburgh claudication questionnaire", "intermittent claudication screen", "claudication symptom questionnaire", "leg pain walking claudication"],

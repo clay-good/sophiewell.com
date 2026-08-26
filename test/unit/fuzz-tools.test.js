@@ -596,6 +596,7 @@ import * as qcsiV698 from '../../lib/qcsi-v698.js';
 import * as fabV699 from '../../lib/fab-v699.js';
 import * as maltIpiV700 from '../../lib/malt-ipi-v700.js';
 import * as cts6V773 from '../../lib/cts6-v773.js';
+import * as bctqV774 from '../../lib/bctq-v774.js';
 import * as sadPersonsV701 from '../../lib/sad-persons-v701.js';
 import * as edinburghClaudicationV702 from '../../lib/edinburgh-claudication-v702.js';
 import * as reimersMigrationPercentageV703 from '../../lib/reimers-migration-percentage-v703.js';
@@ -1237,6 +1238,7 @@ const MODULES = {
   'fab-v699.js': fabV699,
   'malt-ipi-v700.js': maltIpiV700,
   'cts6-v773.js': cts6V773,
+  'bctq-v774.js': bctqV774,
   'sad-persons-v701.js': sadPersonsV701,
   'edinburgh-claudication-v702.js': edinburghClaudicationV702,
   'reimers-migration-percentage-v703.js': reimersMigrationPercentageV703,

@@ -7625,6 +7625,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/cts6-v773.js (spec-v773: CTS-6 carpal tunnel clinical diagnosis — clinical disclaimer)
 - `cts6`
 
+### lib/bctq-v774.js (spec-v774: Boston Carpal Tunnel Questionnaire — clinical disclaimer)
+- `bctq`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
