@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:4b7f579a-eefa-5c8d-83e6-126c697c4ebd",
+  "serialNumber": "urn:uuid:d1928dbb-a938-569b-8b5e-89df4297429a",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-26T21:22:48.285Z",
+    "timestamp": "2026-08-26T21:27:40.567Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1585 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1586 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "73a100badf74c7f3eb90de3f8d333e2c7ca730a5d1d815d5c0c16e13278e4812"
+          "content": "1779e235178dc96b76c80ae7332672a552dd8c347342894cab45337b6e6c5b73"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "102637"
+          "value": "102717"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "52fc01ed77b2584ff9e9132ada6c00e28df485a277aa4069f9ae72d7ae8d6b59"
+          "content": "272f55696385778c6084fa61ba5ebb1b292613ea4864d01b2946ea2912db4155"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "465945"
+          "value": "466191"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7cb46f929f7120885eb1448d9a8606a88c779dd19c796ebe3faebb909a61d055"
+          "content": "363bbf5ab41986e27ea886f145e5fe5d50e5c3d07ca76f287f9ca6a3a5a82e1d"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "243221"
+          "value": "243372"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4a61df218c549d0216075f1e0e0fdd4cb113eaceea9763b4a50e6f30741222a2"
+          "content": "4f390df2106f2f3cc9f5d07c6ea1b4e3a5e78c2283eeb4163d95c7f50e04fbd7"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "88222"
+          "value": "88303"
         }
       ]
     },
@@ -4949,6 +4949,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/furst-ratio-v794.js",
+      "type": "file",
+      "name": "lib/furst-ratio-v794.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "73785921102b415b9ec0eeaa451514e1aea044dd62a3e477cfe41cbc761607fb"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4470"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/g8-geriatric-v710.js",
       "type": "file",
       "name": "lib/g8-geriatric-v710.js",
@@ -8441,7 +8462,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ce4adc9cd9148540304316dad60ed16dd99d7a5970e7be5b193f867f2e60d98b"
+          "content": "4a5e7d53664e4b07926d05e4f6be281cb7e6f9d4b3bc3ca33eddb801bc27433b"
         }
       ],
       "properties": [
@@ -8451,7 +8472,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2189010"
+          "value": "2190559"
         }
       ]
     },
@@ -19565,6 +19586,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/furst-ratio-v794.js",
+      "type": "file",
+      "name": "mcp/adapters/furst-ratio-v794.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0db86f5ca0cb33e000e39b6957b627f656e7cd25615aacfc5b6d662c2eefbfae"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1406"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/g8-geriatric-v710.js",
       "type": "file",
       "name": "mcp/adapters/g8-geriatric-v710.js",
@@ -29105,7 +29147,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "789bc93c5e16d136ffb5c53a93e51bd6ab50a30b8638e00a8071fb5a3c66426a"
+          "content": "8091fa1d12fb9b6b4fc682117ce522e2b788b3c829038199c412265b4633e772"
         }
       ],
       "properties": [
@@ -29115,7 +29157,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "72309"
+          "value": "72410"
         }
       ]
     },
@@ -43060,6 +43102,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4484"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v794.js",
+      "type": "file",
+      "name": "views/group-v794.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "66525a85858e297109acac237d4611bf74a923b3f9a31cffc924d66025724865"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3266"
         }
       ]
     },
@@ -58913,6 +58976,7 @@
         "urn:sophiewell:file:source:lib/frisen-v616.js",
         "urn:sophiewell:file:source:lib/fss-v732.js",
         "urn:sophiewell:file:source:lib/function-v154.js",
+        "urn:sophiewell:file:source:lib/furst-ratio-v794.js",
         "urn:sophiewell:file:source:lib/g8-geriatric-v710.js",
         "urn:sophiewell:file:source:lib/gags-v554.js",
         "urn:sophiewell:file:source:lib/gapp-v569.js",
@@ -60067,6 +60131,7 @@
         "urn:sophiewell:file:source:views/group-v791.js",
         "urn:sophiewell:file:source:views/group-v792.js",
         "urn:sophiewell:file:source:views/group-v793.js",
+        "urn:sophiewell:file:source:views/group-v794.js",
         "urn:sophiewell:file:source:views/group-v8.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
@@ -60278,6 +60343,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/frisen-v616.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/fss-v732.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/function-v154.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/furst-ratio-v794.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/g8-geriatric-v710.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/gags-v554.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/gapp-v569.js",
@@ -60835,7 +60901,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "4b7f579aeefa1c8d"
+      "value": "d1928dbba938969b"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -60847,7 +60913,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2031"
+      "value": "2034"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

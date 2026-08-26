@@ -7685,6 +7685,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/simple-shoulder-test-v793.js (spec-v793: Simple Shoulder Test — clinical disclaimer)
 - `simple-shoulder-test`
 
+### lib/furst-ratio-v794.js (spec-v794: Furst urine/plasma electrolyte ratio — clinical disclaimer)
+- `furst-ratio`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

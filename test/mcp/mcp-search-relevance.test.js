@@ -674,6 +674,7 @@ const PROBES = [
   ['cardiac sarcoidosis diagnostic criteria heart rhythm society', ['cardiac-sarcoidosis']],
   ['rudas multicultural dementia screening scale', ['rudas']],
   ['simple shoulder test twelve yes no shoulder function', ['simple-shoulder-test']],
+  ['furst ratio urine plasma electrolyte fluid restriction siadh', ['furst-ratio']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],
