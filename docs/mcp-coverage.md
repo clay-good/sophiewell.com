@@ -7664,6 +7664,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/arvc-tfc-v786.js (spec-v786: 2010 ARVC Task Force Criteria — clinical disclaimer)
 - `arvc-tfc`
 
+### lib/atrial-enlargement-v787.js (spec-v787: ECG atrial-enlargement criteria — clinical disclaimer)
+- `atrial-enlargement`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

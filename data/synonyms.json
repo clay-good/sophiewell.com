@@ -853,6 +853,8 @@
       "tile": "olbi", "audience": "clinicians" },
     { "phrases": ["arvc task force criteria", "arrhythmogenic right ventricular cardiomyopathy diagnosis", "arvd diagnostic criteria", "2010 task force criteria arvc"],
       "tile": "arvc-tfc", "audience": "clinicians" },
+    { "phrases": ["atrial enlargement ecg criteria", "p mitrale p pulmonale", "morris index p terminal force", "left atrial enlargement ekg"],
+      "tile": "atrial-enlargement", "audience": "clinicians" },
     { "phrases": ["sad persons scale", "suicide risk screen sad persons", "sad persons suicide", "suicidality mnemonic screen"],
       "tile": "sad-persons", "audience": "clinicians" },
     { "phrases": ["edinburgh claudication questionnaire", "intermittent claudication screen", "claudication symptom questionnaire", "leg pain walking claudication"],

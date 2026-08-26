@@ -667,6 +667,7 @@ const PROBES = [
   ['griffith algorithm wide complex tachycardia default vt', ['griffith-vt']],
   ['oldenburg burnout inventory exhaustion disengagement', ['olbi']],
   ['arvc task force criteria arrhythmogenic right ventricular', ['arvc-tfc']],
+  ['ecg atrial enlargement p wave morris index criteria', ['atrial-enlargement']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],
