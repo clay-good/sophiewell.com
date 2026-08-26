@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:ed0db6e5-ccbd-51f0-87a0-5015c0ae1938",
+  "serialNumber": "urn:uuid:3673a24f-a88c-554c-88e7-8a11aa9d90fa",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-26T20:26:54.323Z",
+    "timestamp": "2026-08-26T20:34:31.801Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1581 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1582 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "715c6a4fb7b525711d358cbdca076fcbd564a0d99d720cfda57893ba202b8590"
+          "content": "b468f0366afc1dd8fe2e9f38e47e16dd437bf9f025ab84de73cc524854dca562"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "102403"
+          "value": "102473"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7a2fed29c2d5dfd8c3aa35b93ba0ae1296e933dbdfe695fade2546516a7ef64d"
+          "content": "3edb617fe31ec8665522b88d434b69d8f3a215da962a245a0a617382058972fc"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "465014"
+          "value": "465245"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9085a459544e3c39e67f809c98f702ddeb715dcb0dcc9e50754b56459ead8148"
+          "content": "f06701ed747414936c52af9b45f31a73076ab356290779bf6a698d73642ba41d"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "242602"
+          "value": "242757"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "067e647c19d8d8632062da9555eceee4a4d47263c86d7160a460ff9e9907ddb3"
+          "content": "de1f65cbf489c2dbca3ae45fc554d7e7e08961499a47e427dc8dc088b08fdcef"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "87969"
+          "value": "88044"
         }
       ]
     },
@@ -7217,6 +7217,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/lake-louise-cmr-v790.js",
+      "type": "file",
+      "name": "lib/lake-louise-cmr-v790.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e189393140d6b862dcd0eb104d9e7772f87e7a52a84aed712af47ececfc71922"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4460"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/lansky-v352.js",
       "type": "file",
       "name": "lib/lansky-v352.js",
@@ -8399,7 +8420,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4d9d773481a74414181a39f7b82f3bd565ac62f58f0bafd8c2fe4303c9ebad93"
+          "content": "d3bad3538ecaf187f23c88cd7f0a78e0659279d27fed833c574184c871b5a0ae"
         }
       ],
       "properties": [
@@ -8409,7 +8430,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2182506"
+          "value": "2184207"
         }
       ]
     },
@@ -21644,6 +21665,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/lake-louise-cmr-v790.js",
+      "type": "file",
+      "name": "mcp/adapters/lake-louise-cmr-v790.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "810561cdf431351059da58cc3df4c67a26fa623885d81ce57922e4d1082b19ae"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1789"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/lansky-v352.js",
       "type": "file",
       "name": "mcp/adapters/lansky-v352.js",
@@ -28937,7 +28979,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a4d3ce878462fb91988f4e3b0b343c747e2a95ffa669b9ec29d38893fefce5ff"
+          "content": "1d3b51701fdc09ba3ceef603fd7a36397cb33f1b9b360de35b8ef607277b9812"
         }
       ],
       "properties": [
@@ -28947,7 +28989,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "71847"
+          "value": "71962"
         }
       ]
     },
@@ -42808,6 +42850,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4814"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v790.js",
+      "type": "file",
+      "name": "views/group-v790.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "73ef1101f59193f0fa73256cdfe82efe0e53d2847f133aafa2aa843c55d2680e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3804"
         }
       ]
     },
@@ -58769,6 +58832,7 @@
         "urn:sophiewell:file:source:lib/la-esophagitis-v318.js",
         "urn:sophiewell:file:source:lib/lab-interpret.js",
         "urn:sophiewell:file:source:lib/lachman-acl-v355.js",
+        "urn:sophiewell:file:source:lib/lake-louise-cmr-v790.js",
         "urn:sophiewell:file:source:lib/lansky-v352.js",
         "urn:sophiewell:file:source:lib/larsen-ra-v470.js",
         "urn:sophiewell:file:source:lib/lauge-hansen-v402.js",
@@ -59807,6 +59871,7 @@
         "urn:sophiewell:file:source:views/group-v787.js",
         "urn:sophiewell:file:source:views/group-v788.js",
         "urn:sophiewell:file:source:views/group-v789.js",
+        "urn:sophiewell:file:source:views/group-v790.js",
         "urn:sophiewell:file:source:views/group-v8.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
@@ -60121,6 +60186,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/la-esophagitis-v318.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lab-interpret.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lachman-acl-v355.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/lake-louise-cmr-v790.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lansky-v352.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/larsen-ra-v470.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lauge-hansen-v402.js",
@@ -60571,7 +60637,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "ed0db6e5ccbd61f0"
+      "value": "3673a24fa88c254c"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -60583,7 +60649,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2019"
+      "value": "2022"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

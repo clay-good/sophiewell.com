@@ -7673,6 +7673,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/pericarditis-v789.js (spec-v789: acute pericarditis criteria — clinical disclaimer)
 - `acute-pericarditis`
 
+### lib/lake-louise-cmr-v790.js (spec-v790: 2018 Lake Louise Criteria for myocarditis — clinical disclaimer)
+- `lake-louise-cmr`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

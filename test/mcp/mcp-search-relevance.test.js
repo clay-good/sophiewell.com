@@ -670,6 +670,7 @@ const PROBES = [
   ['ecg atrial enlargement p wave morris index criteria', ['atrial-enlargement']],
   ['intertak score takotsubo versus acute coronary syndrome', ['intertak']],
   ['acute pericarditis diagnostic criteria friction rub', ['acute-pericarditis']],
+  ['lake louise criteria myocarditis cardiac mri t1 t2', ['lake-louise-cmr']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],
