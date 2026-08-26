@@ -871,6 +871,8 @@
       "tile": "furst-ratio", "audience": "clinicians" },
     { "phrases": ["mis c case definition", "multisystem inflammatory syndrome in children", "pims ts criteria", "misc covid children criteria"],
       "tile": "mis-c", "audience": "clinicians" },
+    { "phrases": ["eu tirads", "european thyroid imaging reporting data system", "thyroid nodule european ultrasound category", "eu tirads fna size"],
+      "tile": "eu-tirads", "audience": "clinicians" },
     { "phrases": ["sad persons scale", "suicide risk screen sad persons", "sad persons suicide", "suicidality mnemonic screen"],
       "tile": "sad-persons", "audience": "clinicians" },
     { "phrases": ["edinburgh claudication questionnaire", "intermittent claudication screen", "claudication symptom questionnaire", "leg pain walking claudication"],

@@ -7691,6 +7691,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/mis-c-v795.js (spec-v795: 2023 MIS-C surveillance case definition — clinical disclaimer)
 - `mis-c`
 
+### lib/eu-tirads-v796.js (spec-v796: EU-TIRADS thyroid nodule stratification — clinical disclaimer)
+- `eu-tirads`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
