@@ -615,6 +615,7 @@ import * as pericarditisV789 from '../../lib/pericarditis-v789.js';
 import * as lakeLouiseCmrV790 from '../../lib/lake-louise-cmr-v790.js';
 import * as cardiacSarcoidosisV791 from '../../lib/cardiac-sarcoidosis-v791.js';
 import * as rudasV792 from '../../lib/rudas-v792.js';
+import * as simpleShoulderTestV793 from '../../lib/simple-shoulder-test-v793.js';
 import * as sadPersonsV701 from '../../lib/sad-persons-v701.js';
 import * as edinburghClaudicationV702 from '../../lib/edinburgh-claudication-v702.js';
 import * as reimersMigrationPercentageV703 from '../../lib/reimers-migration-percentage-v703.js';
@@ -1275,6 +1276,7 @@ const MODULES = {
   'lake-louise-cmr-v790.js': lakeLouiseCmrV790,
   'cardiac-sarcoidosis-v791.js': cardiacSarcoidosisV791,
   'rudas-v792.js': rudasV792,
+  'simple-shoulder-test-v793.js': simpleShoulderTestV793,
   'sad-persons-v701.js': sadPersonsV701,
   'edinburgh-claudication-v702.js': edinburghClaudicationV702,
   'reimers-migration-percentage-v703.js': reimersMigrationPercentageV703,

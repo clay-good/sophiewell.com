@@ -865,6 +865,8 @@
       "tile": "cardiac-sarcoidosis", "audience": "clinicians" },
     { "phrases": ["rowland universal dementia assessment scale", "rudas cognitive screen", "culturally fair dementia screen", "multicultural cognitive assessment"],
       "tile": "rudas", "audience": "clinicians" },
+    { "phrases": ["simple shoulder test", "sst shoulder function", "twelve question shoulder score", "yes no shoulder function test"],
+      "tile": "simple-shoulder-test", "audience": "clinicians" },
     { "phrases": ["sad persons scale", "suicide risk screen sad persons", "sad persons suicide", "suicidality mnemonic screen"],
       "tile": "sad-persons", "audience": "clinicians" },
     { "phrases": ["edinburgh claudication questionnaire", "intermittent claudication screen", "claudication symptom questionnaire", "leg pain walking claudication"],

@@ -7682,6 +7682,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/rudas-v792.js (spec-v792: Rowland Universal Dementia Assessment Scale — clinical disclaimer)
 - `rudas`
 
+### lib/simple-shoulder-test-v793.js (spec-v793: Simple Shoulder Test — clinical disclaimer)
+- `simple-shoulder-test`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

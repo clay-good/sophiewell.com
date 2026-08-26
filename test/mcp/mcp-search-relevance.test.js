@@ -673,6 +673,7 @@ const PROBES = [
   ['lake louise criteria myocarditis cardiac mri t1 t2', ['lake-louise-cmr']],
   ['cardiac sarcoidosis diagnostic criteria heart rhythm society', ['cardiac-sarcoidosis']],
   ['rudas multicultural dementia screening scale', ['rudas']],
+  ['simple shoulder test twelve yes no shoulder function', ['simple-shoulder-test']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],
