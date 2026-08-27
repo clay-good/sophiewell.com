@@ -709,6 +709,7 @@ const PROBES = [
   ['pulmonary hypertension mpap wedge pvr classification', ['ph-hemodynamics-2022']],
   ['nontuberculous mycobacterial lung disease criteria', ['ntm-pulmonary']],
   ['cystic fibrosis sweat chloride diagnosis criteria', ['cf-diagnosis']],
+  ['obesity hypoventilation syndrome paco2 bicarbonate', ['ohs-diagnosis']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],

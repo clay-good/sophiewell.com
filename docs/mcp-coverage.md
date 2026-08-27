@@ -7790,6 +7790,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/cf-diagnosis-v828.js (spec-v828: 2017 CFF cystic fibrosis diagnostic criteria — clinical disclaimer)
 - `cf-diagnosis`
 
+### lib/ohs-diagnosis-v829.js (spec-v829: 2019 ATS obesity hypoventilation syndrome — clinical disclaimer)
+- `ohs-diagnosis`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
