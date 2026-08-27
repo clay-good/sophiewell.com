@@ -663,6 +663,7 @@ import indomethacinHeadacheIchd3V819 from './adapters/indomethacin-headache-ichd
 import sunctSunaIchd3V820 from './adapters/sunct-suna-ichd3-v820.js';
 import ghentMarfanV821 from './adapters/ghent-marfan-v821.js';
 import heds2017V822 from './adapters/heds-2017-v822.js';
+import nmosd2015V823 from './adapters/nmosd-2015-v823.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
 import reimersMigrationPercentageV703 from './adapters/reimers-migration-percentage-v703.js';
@@ -1352,6 +1353,7 @@ const ADAPTER_MODULES = [
   ['sunct-suna-ichd3-v820', sunctSunaIchd3V820],
   ['ghent-marfan-v821', ghentMarfanV821],
   ['heds-2017-v822', heds2017V822],
+  ['nmosd-2015-v823', nmosd2015V823],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],
   ['reimers-migration-percentage-v703', reimersMigrationPercentageV703],

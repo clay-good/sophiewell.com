@@ -7772,6 +7772,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/heds-2017-v822.js (spec-v822: 2017 hypermobile Ehlers-Danlos criteria — clinical disclaimer)
 - `heds-2017`
 
+### lib/nmosd-2015-v823.js (spec-v823: 2015 NMOSD consensus criteria — clinical disclaimer)
+- `nmosd-2015`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
