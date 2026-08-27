@@ -673,6 +673,7 @@ import ohsDiagnosisV829 from './adapters/ohs-diagnosis-v829.js';
 import aatDeficiencyV830 from './adapters/aat-deficiency-v830.js';
 import quinteroTttsV831 from './adapters/quintero-ttts-v831.js';
 import tripleIV832 from './adapters/triple-i-v832.js';
+import figoPasV833 from './adapters/figo-pas-v833.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
 import reimersMigrationPercentageV703 from './adapters/reimers-migration-percentage-v703.js';
@@ -1372,6 +1373,7 @@ const ADAPTER_MODULES = [
   ['aat-deficiency-v830', aatDeficiencyV830],
   ['quintero-ttts-v831', quinteroTttsV831],
   ['triple-i-v832', tripleIV832],
+  ['figo-pas-v833', figoPasV833],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],
   ['reimers-migration-percentage-v703', reimersMigrationPercentageV703],

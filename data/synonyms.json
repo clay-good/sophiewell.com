@@ -6460,5 +6460,11 @@
     "triple i criteria",
     "intraamniotic infection",
     "fever in labor"
+  ],
+  "figo-pas": [
+    "placenta accreta",
+    "placenta percreta",
+    "pas grading",
+    "placenta will not separate"
   ]
 }

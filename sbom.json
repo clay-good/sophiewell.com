@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:238a8365-89db-52f1-82eb-3e3b01a8b324",
+  "serialNumber": "urn:uuid:034b1af1-9b67-5284-88e0-a20ef62d8859",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-27T04:25:50.389Z",
+    "timestamp": "2026-08-27T04:33:58.670Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1624 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1625 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "40dd66a870d96d969e9dab6f24b221c51189bdd63a9f05d14fd2b50ba7e6a1c1"
+          "content": "0c0a71711f62766b376056d530f026b48451e1f792ce97cee92c871cfda34e71"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "104908"
+          "value": "104964"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "acf532347a54f7e686ebf386cf7b6d984e22d13c5f81824744f7eff0b5c2e137"
+          "content": "5ad73df45dce8554737ec65ad6014b4df8d616125ed68a4e696c27faf9551217"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "475030"
+          "value": "475263"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8b0c1fb5e4c4957e9ee2edfb118c1a045df6659f1ef773dda40c49a0a77b2794"
+          "content": "066f20b18ec0280bfb9e4e6b8d2c30cf9753e9208ad79a114ad821e44f76bde0"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "249219"
+          "value": "249367"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "80ab2533df50f02742a07e2743bdeb924192bfe4eb3999cd8f232e8fff310c20"
+          "content": "a88aeab567bac9070c1386f57c8478d49403139146a9b0bd9756fc12fd609990"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "90641"
+          "value": "90695"
         }
       ]
     },
@@ -4823,6 +4823,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/figo-pas-v833.js",
+      "type": "file",
+      "name": "lib/figo-pas-v833.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2680f161b34ab92db39cf745ff07fd99d1e160fb926b8f118a98a1f0bb0a6059"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7409"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/fisher-grade-v600.js",
       "type": "file",
       "name": "lib/fisher-grade-v600.js",
@@ -8903,7 +8924,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2216e02df66bb67f56921ea877b7589fed8b409fdd7a86bd910beeb937e2c09c"
+          "content": "8e581419040e6fada6f5c8075a68becc953334688eade7295cb1b173832dda1b"
         }
       ],
       "properties": [
@@ -8913,7 +8934,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2261567"
+          "value": "2263831"
         }
       ]
     },
@@ -20258,6 +20279,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/figo-pas-v833.js",
+      "type": "file",
+      "name": "mcp/adapters/figo-pas-v833.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "08be823c4b900178e2abdfc68d09105ea26c3b3a334fe86ad6d388d4388b0dfa"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2058"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/fisher-grade-v600.js",
       "type": "file",
       "name": "mcp/adapters/fisher-grade-v600.js",
@@ -30743,7 +30785,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d9291f07670509a2177c135846fb715794b17571dc0192c6038d63c3e47c15ae"
+          "content": "d8833211ee718e186839a33bd5358042ffb8310b7b8f17d0b6149822d19f27de"
         }
       ],
       "properties": [
@@ -30753,7 +30795,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "76672"
+          "value": "76761"
         }
       ]
     },
@@ -45538,6 +45580,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "5321"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v833.js",
+      "type": "file",
+      "name": "views/group-v833.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5744db195a83b587e3495c93070b340b0d4a41844b5e25df5f62ed5fa6848eeb"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3958"
         }
       ]
     },
@@ -61364,6 +61427,7 @@
         "urn:sophiewell:file:source:lib/field-units.js",
         "urn:sophiewell:file:source:lib/field.js",
         "urn:sophiewell:file:source:lib/fielding-hawkins-v449.js",
+        "urn:sophiewell:file:source:lib/figo-pas-v833.js",
         "urn:sophiewell:file:source:lib/fisher-grade-v600.js",
         "urn:sophiewell:file:source:lib/fitzpatrick-v331.js",
         "urn:sophiewell:file:source:lib/fluidresp-v113.js",
@@ -62603,6 +62667,7 @@
         "urn:sophiewell:file:source:views/group-v830.js",
         "urn:sophiewell:file:source:views/group-v831.js",
         "urn:sophiewell:file:source:views/group-v832.js",
+        "urn:sophiewell:file:source:views/group-v833.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
@@ -62807,6 +62872,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/ficat-arlet-v344.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/field.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/fielding-hawkins-v449.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/figo-pas-v833.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/fisher-grade-v600.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/fitzpatrick-v331.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/fluidresp-v113.js",
@@ -63409,7 +63475,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "238a836589db62f1"
+      "value": "034b1af19b676284"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -63421,7 +63487,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2148"
+      "value": "2151"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

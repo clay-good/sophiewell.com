@@ -7802,6 +7802,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/triple-i-v832.js (spec-v832: NICHD Triple I framework for intraamniotic infection — clinical disclaimer)
 - `triple-i`
 
+### lib/figo-pas-v833.js (spec-v833: FIGO clinical grading of placenta accreta spectrum — clinical disclaimer)
+- `figo-pas`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
