@@ -6358,5 +6358,11 @@
     "migraine with aura diagnosis",
     "is this a migraine",
     "ichd migraine"
+  ],
+  "moh-ichd3": [
+    "medication overuse headache",
+    "rebound headache",
+    "painkiller headache",
+    "too many triptans"
   ]
 }
