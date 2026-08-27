@@ -654,6 +654,7 @@ import * as cfDiagnosisV828 from '../../lib/cf-diagnosis-v828.js';
 import * as ohsDiagnosisV829 from '../../lib/ohs-diagnosis-v829.js';
 import * as aatDeficiencyV830 from '../../lib/aat-deficiency-v830.js';
 import * as quinteroTttsV831 from '../../lib/quintero-ttts-v831.js';
+import * as tripleIV832 from '../../lib/triple-i-v832.js';
 import * as sadPersonsV701 from '../../lib/sad-persons-v701.js';
 import * as edinburghClaudicationV702 from '../../lib/edinburgh-claudication-v702.js';
 import * as reimersMigrationPercentageV703 from '../../lib/reimers-migration-percentage-v703.js';
@@ -1353,6 +1354,7 @@ const MODULES = {
   'ohs-diagnosis-v829.js': ohsDiagnosisV829,
   'aat-deficiency-v830.js': aatDeficiencyV830,
   'quintero-ttts-v831.js': quinteroTttsV831,
+  'triple-i-v832.js': tripleIV832,
   'sad-persons-v701.js': sadPersonsV701,
   'edinburgh-claudication-v702.js': edinburghClaudicationV702,
   'reimers-migration-percentage-v703.js': reimersMigrationPercentageV703,

@@ -7799,6 +7799,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/quintero-ttts-v831.js (spec-v831: Quintero staging of twin-twin transfusion syndrome — clinical disclaimer)
 - `quintero-ttts`
 
+### lib/triple-i-v832.js (spec-v832: NICHD Triple I framework for intraamniotic infection — clinical disclaimer)
+- `triple-i`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

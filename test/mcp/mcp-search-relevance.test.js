@@ -712,6 +712,7 @@ const PROBES = [
   ['obesity hypoventilation syndrome paco2 bicarbonate', ['ohs-diagnosis']],
   ['alpha 1 antitrypsin level genotype deficiency', ['aat-deficiency']],
   ['twin twin transfusion quintero stage', ['quintero-ttts']],
+  ['triple i intraamniotic infection maternal fever', ['triple-i']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],

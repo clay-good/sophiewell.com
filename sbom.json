@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:3a6ecd9d-1e6c-5d82-8345-469e56f2b6ff",
+  "serialNumber": "urn:uuid:238a8365-89db-52f1-82eb-3e3b01a8b324",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-27T04:17:14.696Z",
+    "timestamp": "2026-08-27T04:25:50.389Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1623 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1624 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "711cb0a31fa52dedb1f2040fc666be457a03153a830177c68bef02e08c6eb206"
+          "content": "40dd66a870d96d969e9dab6f24b221c51189bdd63a9f05d14fd2b50ba7e6a1c1"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "104848"
+          "value": "104908"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a337163bca46adf6aff8651b74652fd00270276545e1c36db0d5280eea3fefeb"
+          "content": "acf532347a54f7e686ebf386cf7b6d984e22d13c5f81824744f7eff0b5c2e137"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "474797"
+          "value": "475030"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ecd7c4b64676dfb8d4a0389e4678a486a6fa71c514a1a4ae3555bf40cdf7cfb4"
+          "content": "8b0c1fb5e4c4957e9ee2edfb118c1a045df6659f1ef773dda40c49a0a77b2794"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "249071"
+          "value": "249219"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "09362ead60cddc6e4f4ba8195d8176dfd40a77d3846e1513649793fb087fb469"
+          "content": "80ab2533df50f02742a07e2743bdeb924192bfe4eb3999cd8f232e8fff310c20"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "90583"
+          "value": "90641"
         }
       ]
     },
@@ -8903,7 +8903,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "bcd5f218e9df9c2fd6e5bcd3bc04d9288232b474b97abc6c4abf8f0a644e694e"
+          "content": "2216e02df66bb67f56921ea877b7589fed8b409fdd7a86bd910beeb937e2c09c"
         }
       ],
       "properties": [
@@ -8913,7 +8913,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2259477"
+          "value": "2261567"
         }
       ]
     },
@@ -15151,6 +15151,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "6234"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/triple-i-v832.js",
+      "type": "file",
+      "name": "lib/triple-i-v832.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e2fbd3739fca2416edbe0c4e670f810a41569d1279fdf613098553da2512137a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "9320"
         }
       ]
     },
@@ -29771,6 +29792,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/triple-i-v832.js",
+      "type": "file",
+      "name": "mcp/adapters/triple-i-v832.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "64530f8c744ab5ecb6ca727f3504e71f9e2cf72a479110ee2628442f7a9d6651"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2198"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/tscherne-closed-v350.js",
       "type": "file",
       "name": "mcp/adapters/tscherne-closed-v350.js",
@@ -30701,7 +30743,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "496b6925f8be723ea11fc8d958884d6440d57547dc93e3856f916ad6d1ed7497"
+          "content": "d9291f07670509a2177c135846fb715794b17571dc0192c6038d63c3e47c15ae"
         }
       ],
       "properties": [
@@ -30711,7 +30753,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "76583"
+          "value": "76672"
         }
       ]
     },
@@ -45475,6 +45517,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4252"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v832.js",
+      "type": "file",
+      "name": "views/group-v832.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "208c8d42e50ab84abc8254b115b426ad2a45605640841f290563dcd3e03d0523"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5321"
         }
       ]
     },
@@ -61793,6 +61856,7 @@
         "urn:sophiewell:file:source:lib/tree.js",
         "urn:sophiewell:file:source:lib/trend.js",
         "urn:sophiewell:file:source:lib/trigeminal-neuralgia-ichd3-v817.js",
+        "urn:sophiewell:file:source:lib/triple-i-v832.js",
         "urn:sophiewell:file:source:lib/tscherne-closed-v350.js",
         "urn:sophiewell:file:source:lib/twstrs-severity-v542.js",
         "urn:sophiewell:file:source:lib/ucsf-hcc-v686.js",
@@ -62538,6 +62602,7 @@
         "urn:sophiewell:file:source:views/group-v829.js",
         "urn:sophiewell:file:source:views/group-v830.js",
         "urn:sophiewell:file:source:views/group-v831.js",
+        "urn:sophiewell:file:source:views/group-v832.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
@@ -63196,6 +63261,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/traumaclass-v109.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/traynelis-v448.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/trigeminal-neuralgia-ichd3-v817.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/triple-i-v832.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tscherne-closed-v350.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/twstrs-severity-v542.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ucsf-hcc-v686.js",
@@ -63343,7 +63409,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "3a6ecd9d1e6c4d82"
+      "value": "238a836589db62f1"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -63355,7 +63421,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2145"
+      "value": "2148"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
