@@ -6340,5 +6340,11 @@
     "wilson disease diagnosis",
     "ferenci score",
     "copper metabolism disorder score"
+  ],
+  "systemic-mastocytosis": [
+    "mastocytosis criteria",
+    "mast cell disease diagnosis",
+    "tryptase criteria",
+    "kit d816v mast cell"
   ]
 }

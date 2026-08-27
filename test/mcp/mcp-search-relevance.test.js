@@ -693,6 +693,7 @@ const PROBES = [
   ['mallampati oropharyngeal view airway class', ['mallampati']],
   ['gold coast criteria als diagnosis motor neuron', ['gold-coast-als']],
   ['leipzig score wilson disease copper diagnosis', ['leipzig-wilson']],
+  ['systemic mastocytosis who criteria tryptase mast cell', ['systemic-mastocytosis']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],

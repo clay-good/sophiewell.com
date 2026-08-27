@@ -7742,6 +7742,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/leipzig-wilson-v812.js (spec-v812: Leipzig score for Wilson disease — clinical disclaimer)
 - `leipzig-wilson`
 
+### lib/systemic-mastocytosis-v813.js (spec-v813: WHO systemic mastocytosis criteria — clinical disclaimer)
+- `systemic-mastocytosis`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

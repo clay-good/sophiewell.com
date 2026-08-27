@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:6616b24a-eec6-57a4-882f-672977d0c277",
+  "serialNumber": "urn:uuid:02a700df-8c45-5bf6-8baa-a6fbc6438044",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-27T00:50:38.300Z",
+    "timestamp": "2026-08-27T00:58:37.250Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1604 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1605 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0e34bfa01a6300db3601a8f9a1e6001890c82cedb019196f67e9f87bb1ce4ea0"
+          "content": "2a5224bd1af32f59591197710399102ba99917ddc53c3af275c842856e507ebc"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "103768"
+          "value": "103820"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "36ec51bfe90bba15300504d95631f863eae056310f5abdb482d88b137a85d342"
+          "content": "a0d28cc9226b8a4ab3294ae098792ba95142803ff3be6b0146eff83cebf559a9"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "470362"
+          "value": "470595"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ec80fabef560ff56d6b3ee4e43196741a78438f23a2c49a17357ce8d7e2c5490"
+          "content": "3d9f14c56a6cbfbec0ddf320f78f078baa41c0d2de6d8ec9caae676898c2e9d2"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "246103"
+          "value": "246264"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "dd4ff0d843439d027d3a9aba2f724bf1c0856b524b11a22a91cff08abaee0007"
+          "content": "9666c5050655d689dd4860f1b13908f7901c2ed69bdee26e7cbb601ecad90d86"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "89385"
+          "value": "89448"
         }
       ]
     },
@@ -8735,7 +8735,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ebc10ca0ec4ded5d6926e6a4b91814b799fdd1f0fe8ab3f31bf8607031e7917a"
+          "content": "797f43b21e64c95a1f265854d29306c3765470d5c658e5b5bc49eaf6b9ee3256"
         }
       ],
       "properties": [
@@ -8745,7 +8745,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2219791"
+          "value": "2221763"
         }
       ]
     },
@@ -14311,6 +14311,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3813"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/systemic-mastocytosis-v813.js",
+      "type": "file",
+      "name": "lib/systemic-mastocytosis-v813.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e982b3cceed78f5eb8ab8cdeb1204c72a31d57432d129e341435094f2b119474"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6819"
         }
       ]
     },
@@ -28595,6 +28616,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/systemic-mastocytosis-v813.js",
+      "type": "file",
+      "name": "mcp/adapters/systemic-mastocytosis-v813.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "83810bf4743584a018b39bf6fcbd72be38477f56657fd63a2c705aa3d36ac3d1"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1781"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/takayasu-v638.js",
       "type": "file",
       "name": "mcp/adapters/takayasu-v638.js",
@@ -29903,7 +29945,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "92bf93bf592e2e526d2e45cdc355ab57f3b0cce554f81f442d91df289fb8be45"
+          "content": "43c8dcdc1510812cac2d2aaf9388e809423f0e1473ab3b3f1e7e168a1ad0b49d"
         }
       ],
       "properties": [
@@ -29913,7 +29955,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "74282"
+          "value": "74423"
         }
       ]
     },
@@ -44278,6 +44320,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4353"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v813.js",
+      "type": "file",
+      "name": "views/group-v813.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "397d0ac0884082a8fa1d61418553be1681fd5c2dfd0ddffef70c3493368a6d18"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4238"
         }
       ]
     },
@@ -60556,6 +60619,7 @@
         "urn:sophiewell:file:source:lib/sunnybrook-facial-v509.js",
         "urn:sophiewell:file:source:lib/surg-v142.js",
         "urn:sophiewell:file:source:lib/synonyms.js",
+        "urn:sophiewell:file:source:lib/systemic-mastocytosis-v813.js",
         "urn:sophiewell:file:source:lib/table.js",
         "urn:sophiewell:file:source:lib/takayasu-v638.js",
         "urn:sophiewell:file:source:lib/tanner-staging-v361.js",
@@ -61303,6 +61367,7 @@
         "urn:sophiewell:file:source:views/group-v810.js",
         "urn:sophiewell:file:source:views/group-v811.js",
         "urn:sophiewell:file:source:views/group-v812.js",
+        "urn:sophiewell:file:source:views/group-v813.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
@@ -61924,6 +61989,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/sun-ac-flare-v422.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/sunnybrook-facial-v509.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/surg-v142.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/systemic-mastocytosis-v813.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/takayasu-v638.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tanner-staging-v361.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tb-testing.js",
@@ -62089,7 +62155,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "6616b24aeec6e7a4"
+      "value": "02a700df8c452bf6"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -62101,7 +62167,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2088"
+      "value": "2091"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
