@@ -6346,5 +6346,11 @@
     "mast cell disease diagnosis",
     "tryptase criteria",
     "kit d816v mast cell"
+  ],
+  "cluster-headache-ichd3": [
+    "cluster headache criteria",
+    "trigeminal autonomic cephalalgia",
+    "one sided eye pain attacks",
+    "suicide headache diagnosis"
   ]
 }

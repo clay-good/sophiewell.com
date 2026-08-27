@@ -694,6 +694,7 @@ const PROBES = [
   ['gold coast criteria als diagnosis motor neuron', ['gold-coast-als']],
   ['leipzig score wilson disease copper diagnosis', ['leipzig-wilson']],
   ['systemic mastocytosis who criteria tryptase mast cell', ['systemic-mastocytosis']],
+  ['cluster headache ichd3 diagnostic criteria autonomic', ['cluster-headache-ichd3']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],
