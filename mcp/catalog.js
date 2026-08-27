@@ -675,6 +675,7 @@ import quinteroTttsV831 from './adapters/quintero-ttts-v831.js';
 import tripleIV832 from './adapters/triple-i-v832.js';
 import figoPasV833 from './adapters/figo-pas-v833.js';
 import poiDiagnosisV834 from './adapters/poi-diagnosis-v834.js';
+import acromegalyBiochemV835 from './adapters/acromegaly-biochem-v835.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
 import reimersMigrationPercentageV703 from './adapters/reimers-migration-percentage-v703.js';
@@ -1376,6 +1377,7 @@ const ADAPTER_MODULES = [
   ['triple-i-v832', tripleIV832],
   ['figo-pas-v833', figoPasV833],
   ['poi-diagnosis-v834', poiDiagnosisV834],
+  ['acromegaly-biochem-v835', acromegalyBiochemV835],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],
   ['reimers-migration-percentage-v703', reimersMigrationPercentageV703],

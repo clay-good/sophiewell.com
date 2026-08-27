@@ -7808,6 +7808,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/poi-diagnosis-v834.js (spec-v834: 2024 ESHRE premature ovarian insufficiency algorithm — clinical disclaimer)
 - `poi-diagnosis`
 
+### lib/acromegaly-biochem-v835.js (spec-v835: biochemical diagnosis of acromegaly — clinical disclaimer)
+- `acromegaly-biochem`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

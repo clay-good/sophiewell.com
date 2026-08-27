@@ -715,6 +715,7 @@ const PROBES = [
   ['triple i intraamniotic infection maternal fever', ['triple-i']],
   ['placenta accreta spectrum figo grade', ['figo-pas']],
   ['premature ovarian insufficiency fsh criteria', ['poi-diagnosis']],
+  ['acromegaly igf1 growth hormone ogtt nadir', ['acromegaly-biochem']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],

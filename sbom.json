@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:29caf8a9-b048-5582-8cf3-72b3374a6cd9",
+  "serialNumber": "urn:uuid:84a48617-19d6-5145-846b-01b7cc955f9b",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-27T04:42:22.261Z",
+    "timestamp": "2026-08-27T04:50:19.133Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1626 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1627 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5afc5c6afb27af5aa1df59cc07838f6a14658b3b3f05694b06b4243a7fb04927"
+          "content": "0a2810ee3332ea0a2718caaadfc97fa14862969abbd50c7fc6957c6321255e98"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "105028"
+          "value": "105091"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5e72ef82fdc5eb4527b626cdee8fd1ba049f3e48b557a06c2983dee494a6ed69"
+          "content": "8a53290f63109c5b3802f001db40b788a9675125ba7df16ccce67aaa2ed940fc"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "475496"
+          "value": "475729"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6d75e1046bb6039e628000f003de57f7543998094717a81db73064c66149dab9"
+          "content": "85fb785ca7475ccc63c4cdd9ad5b14cb6f38b9523065e9eff558ac628daeee56"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "249520"
+          "value": "249678"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4385b4adfd210330408412dbb4f659a97f86e59bc571642c7e112a99f06f5e6b"
+          "content": "e8c77780f85e82deddff6fd1c342887fe4a9f2447719111af613d8ca63c24fb0"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "90762"
+          "value": "90833"
         }
       ]
     },
@@ -598,6 +598,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4453"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/acromegaly-biochem-v835.js",
+      "type": "file",
+      "name": "lib/acromegaly-biochem-v835.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5c01fa6a4d597275ba6c7dad683c80055b6446ae6412a93b7bddff0b444a585d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "9541"
         }
       ]
     },
@@ -8924,7 +8945,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "267f2a381b82250b8a3508dc59fac005d691a3fa00da105c0975cc4843b20793"
+          "content": "1053e1991ee299381eb179de1428c1cdd704bfc5a758f352ecec237f9e0e3ff2"
         }
       ],
       "properties": [
@@ -8934,7 +8955,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2265867"
+          "value": "2268124"
         }
       ]
     },
@@ -16285,6 +16306,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1494"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/acromegaly-biochem-v835.js",
+      "type": "file",
+      "name": "mcp/adapters/acromegaly-biochem-v835.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "17352e0a38d9bf268cb930ff8b78635d9262ad689e6358502bf08c8a052c4e8b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1867"
         }
       ]
     },
@@ -30827,7 +30869,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "09988422eed3e0d52277b918691bdc8276ce12684dfadea7feac60dbcff153ea"
+          "content": "08b3150294852c4d19beabf9beb0cd94241091fc8ac71ca09f183030c872a09f"
         }
       ],
       "properties": [
@@ -30837,7 +30879,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "76870"
+          "value": "76999"
         }
       ]
     },
@@ -45664,6 +45706,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4491"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v835.js",
+      "type": "file",
+      "name": "views/group-v835.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "16fd75de38ceb1d46e389ebb3068dbba2e19e71d00a1de699ee11b9e55aa1276"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4700"
         }
       ]
     },
@@ -61289,6 +61352,7 @@
         "urn:sophiewell:file:source:lib/acef-v595.js",
         "urn:sophiewell:file:source:lib/acidbase-v129.js",
         "urn:sophiewell:file:source:lib/acr-eular-boolean-v671.js",
+        "urn:sophiewell:file:source:lib/acromegaly-biochem-v835.js",
         "urn:sophiewell:file:source:lib/acs-v193.js",
         "urn:sophiewell:file:source:lib/acute-abdomen-v261.js",
         "urn:sophiewell:file:source:lib/acute-injury-v213.js",
@@ -62733,6 +62797,7 @@
         "urn:sophiewell:file:source:views/group-v832.js",
         "urn:sophiewell:file:source:views/group-v833.js",
         "urn:sophiewell:file:source:views/group-v834.js",
+        "urn:sophiewell:file:source:views/group-v835.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
@@ -62746,6 +62811,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/acef-v595.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/acidbase-v129.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/acr-eular-boolean-v671.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/acromegaly-biochem-v835.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/acs-v193.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/acute-abdomen-v261.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/acute-injury-v213.js",
@@ -63541,7 +63607,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "29caf8a9b0484582"
+      "value": "84a4861719d69145"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -63553,7 +63619,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2154"
+      "value": "2157"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
