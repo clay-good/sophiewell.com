@@ -708,6 +708,7 @@ const PROBES = [
   ['igg4 related disease diagnostic criteria', ['igg4-rd-2020']],
   ['pulmonary hypertension mpap wedge pvr classification', ['ph-hemodynamics-2022']],
   ['nontuberculous mycobacterial lung disease criteria', ['ntm-pulmonary']],
+  ['cystic fibrosis sweat chloride diagnosis criteria', ['cf-diagnosis']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],

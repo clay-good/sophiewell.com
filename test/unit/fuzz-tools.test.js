@@ -650,6 +650,7 @@ import * as autoimmuneEncephalitisV824 from '../../lib/autoimmune-encephalitis-v
 import * as igg4Rd2020V825 from '../../lib/igg4-rd-2020-v825.js';
 import * as phHemodynamics2022V826 from '../../lib/ph-hemodynamics-2022-v826.js';
 import * as ntmPulmonaryV827 from '../../lib/ntm-pulmonary-v827.js';
+import * as cfDiagnosisV828 from '../../lib/cf-diagnosis-v828.js';
 import * as sadPersonsV701 from '../../lib/sad-persons-v701.js';
 import * as edinburghClaudicationV702 from '../../lib/edinburgh-claudication-v702.js';
 import * as reimersMigrationPercentageV703 from '../../lib/reimers-migration-percentage-v703.js';
@@ -1345,6 +1346,7 @@ const MODULES = {
   'igg4-rd-2020-v825.js': igg4Rd2020V825,
   'ph-hemodynamics-2022-v826.js': phHemodynamics2022V826,
   'ntm-pulmonary-v827.js': ntmPulmonaryV827,
+  'cf-diagnosis-v828.js': cfDiagnosisV828,
   'sad-persons-v701.js': sadPersonsV701,
   'edinburgh-claudication-v702.js': edinburghClaudicationV702,
   'reimers-migration-percentage-v703.js': reimersMigrationPercentageV703,

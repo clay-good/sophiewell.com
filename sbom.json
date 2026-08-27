@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:42d90e79-6125-54b0-80d9-d782913704ac",
+  "serialNumber": "urn:uuid:775bb70f-4ed2-5c6d-85d6-46265b0bd7a6",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-27T03:37:55.010Z",
+    "timestamp": "2026-08-27T03:48:38.357Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1619 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1620 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3ca937552c6345372537dc51e7d528b88ea5d5efe42463ce2bd5bcee77887180"
+          "content": "79cf893257040ec4f1dbc8946f195bc5fbe5b204e3f1cc59766ef41a91cd45c3"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "104622"
+          "value": "104679"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "34ee26474165912f20372dd8b49133ffe5f0035221edf6bd2f9e606543690032"
+          "content": "fb8fabf802729412214df62c02a34b68fd16b199f49c3299be157fa87490aa59"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "473865"
+          "value": "474098"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f3462e512118f4542ff577c98fc6cf9d94175e8ba60789453f9d57a6becd28d6"
+          "content": "82b5c483ad20ef0d3a9db5fd7cd54ddc2693a73076c0bf0599199ca891ed123a"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "248459"
+          "value": "248611"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3ca16e59d2110923bd7daef6a7eecab2145e8d5621fdb88b6384fb5ac1222613"
+          "content": "bb8a0fe09786482935ffae047322b04dc4f020c2f40236c26314744063ed0875"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "90345"
+          "value": "90404"
         }
       ]
     },
@@ -2425,6 +2425,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3969"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/cf-diagnosis-v828.js",
+      "type": "file",
+      "name": "lib/cf-diagnosis-v828.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "87d4cfeb5038f3c22db8acc870becdbded9e0c94411297f9af54b6f61028ccf8"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8017"
         }
       ]
     },
@@ -8861,7 +8882,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2892791d7603d8439b51a715d59be2efefd3025aaea289a0345109a065b42bf0"
+          "content": "aa00abf2420b646e5818eff265de1518cc6c7a9914690a96ea3add900b17be16"
         }
       ],
       "properties": [
@@ -8871,7 +8892,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2251419"
+          "value": "2253280"
         }
       ]
     },
@@ -17923,6 +17944,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1494"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/cf-diagnosis-v828.js",
+      "type": "file",
+      "name": "mcp/adapters/cf-diagnosis-v828.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0c40199cad72ec1a145e155045bf513598b251e00e124d87a915cc90e5f57ed3"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1627"
         }
       ]
     },
@@ -30533,7 +30575,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "64ebfd4b8d693ea2100907a7ab2fef1277f467bed5fa89c354c06b4bd5940a53"
+          "content": "84da550638638175baf52f2cf86ec31aef8df34d321d083c1989e9e530da9f15"
         }
       ],
       "properties": [
@@ -30543,7 +30585,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "76147"
+          "value": "76252"
         }
       ]
     },
@@ -45223,6 +45265,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4925"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v828.js",
+      "type": "file",
+      "name": "views/group-v828.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "67ef26bfb652bbd2c0122f01e8ad47b26d8653a2e0c9dc261941a9f027f81838"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4288"
         }
       ]
     },
@@ -60935,6 +60998,7 @@
         "urn:sophiewell:file:source:lib/ccs-angina-v319.js",
         "urn:sophiewell:file:source:lib/cdi-severity-v317.js",
         "urn:sophiewell:file:source:lib/ceap-venous-v356.js",
+        "urn:sophiewell:file:source:lib/cf-diagnosis-v828.js",
         "urn:sophiewell:file:source:lib/chalder-fatigue-v733.js",
         "urn:sophiewell:file:source:lib/cheops-v645.js",
         "urn:sophiewell:file:source:lib/chicago-achalasia-v807.js",
@@ -62278,6 +62342,7 @@
         "urn:sophiewell:file:source:views/group-v825.js",
         "urn:sophiewell:file:source:views/group-v826.js",
         "urn:sophiewell:file:source:views/group-v827.js",
+        "urn:sophiewell:file:source:views/group-v828.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
@@ -62376,6 +62441,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/ccs-angina-v319.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cdi-severity-v317.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ceap-venous-v356.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/cf-diagnosis-v828.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/chalder-fatigue-v733.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cheops-v645.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/chicago-achalasia-v807.js",
@@ -63079,7 +63145,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "42d90e79612544b0"
+      "value": "775bb70f4ed2dc6d"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -63091,7 +63157,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2133"
+      "value": "2136"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

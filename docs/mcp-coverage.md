@@ -7787,6 +7787,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/ntm-pulmonary-v827.js (spec-v827: ATS/IDSA nontuberculous mycobacterial pulmonary disease criteria — clinical disclaimer)
 - `ntm-pulmonary`
 
+### lib/cf-diagnosis-v828.js (spec-v828: 2017 CFF cystic fibrosis diagnostic criteria — clinical disclaimer)
+- `cf-diagnosis`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

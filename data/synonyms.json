@@ -6430,5 +6430,11 @@
     "ntm lung disease criteria",
     "mycobacterium avium complex",
     "mac lung disease diagnosis"
+  ],
+  "cf-diagnosis": [
+    "cystic fibrosis diagnosis",
+    "sweat chloride test",
+    "cftr criteria",
+    "positive newborn screen cf"
   ]
 }

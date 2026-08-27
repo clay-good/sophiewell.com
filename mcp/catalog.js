@@ -668,6 +668,7 @@ import autoimmuneEncephalitisV824 from './adapters/autoimmune-encephalitis-v824.
 import igg4Rd2020V825 from './adapters/igg4-rd-2020-v825.js';
 import phHemodynamics2022V826 from './adapters/ph-hemodynamics-2022-v826.js';
 import ntmPulmonaryV827 from './adapters/ntm-pulmonary-v827.js';
+import cfDiagnosisV828 from './adapters/cf-diagnosis-v828.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
 import reimersMigrationPercentageV703 from './adapters/reimers-migration-percentage-v703.js';
@@ -1362,6 +1363,7 @@ const ADAPTER_MODULES = [
   ['igg4-rd-2020-v825', igg4Rd2020V825],
   ['ph-hemodynamics-2022-v826', phHemodynamics2022V826],
   ['ntm-pulmonary-v827', ntmPulmonaryV827],
+  ['cf-diagnosis-v828', cfDiagnosisV828],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],
   ['reimers-migration-percentage-v703', reimersMigrationPercentageV703],
