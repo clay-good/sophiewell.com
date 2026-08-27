@@ -7784,6 +7784,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/ph-hemodynamics-2022-v826.js (spec-v826: 2022 ESC/ERS pulmonary hypertension haemodynamics — clinical disclaimer)
 - `ph-hemodynamics-2022`
 
+### lib/ntm-pulmonary-v827.js (spec-v827: ATS/IDSA nontuberculous mycobacterial pulmonary disease criteria — clinical disclaimer)
+- `ntm-pulmonary`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

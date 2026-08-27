@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:5a4e7702-c673-5d3b-8af0-ee7841322efe",
+  "serialNumber": "urn:uuid:42d90e79-6125-54b0-80d9-d782913704ac",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-27T03:30:36.950Z",
+    "timestamp": "2026-08-27T03:37:55.010Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1618 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1619 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "22ab4f27a9aa1c791697fe1ffe110cd9e2484344cfa626208afb631c0b0d7158"
+          "content": "3ca937552c6345372537dc51e7d528b88ea5d5efe42463ce2bd5bcee77887180"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "104565"
+          "value": "104622"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "560817b59d877f976b0b76a016d4b3d478933565fb5a6c774000f54c69162306"
+          "content": "34ee26474165912f20372dd8b49133ffe5f0035221edf6bd2f9e606543690032"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "473632"
+          "value": "473865"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e284e2557dbe88e100249e9dc673270ea3c6be371bb30c476fb1e842af8669cf"
+          "content": "f3462e512118f4542ff577c98fc6cf9d94175e8ba60789453f9d57a6becd28d6"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "248306"
+          "value": "248459"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "783effb860ade314a0a8037726290fde40a07b121c1b855974233072d7edecb4"
+          "content": "3ca16e59d2110923bd7daef6a7eecab2145e8d5621fdb88b6384fb5ac1222613"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "90285"
+          "value": "90345"
         }
       ]
     },
@@ -8861,7 +8861,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3fad587c6b46a6bd83441ac87cbc3892b7d7417686e259826b7e2c7ae4aa8753"
+          "content": "2892791d7603d8439b51a715d59be2efefd3025aaea289a0345109a065b42bf0"
         }
       ],
       "properties": [
@@ -8871,7 +8871,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2249184"
+          "value": "2251419"
         }
       ]
     },
@@ -10006,6 +10006,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "9799"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/ntm-pulmonary-v827.js",
+      "type": "file",
+      "name": "lib/ntm-pulmonary-v827.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "51b554704f575d5ffce2a350e5d8013ee70f0b42f5b85b86d7415d4479de1696"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8077"
         }
       ]
     },
@@ -25130,6 +25151,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ntm-pulmonary-v827.js",
+      "type": "file",
+      "name": "mcp/adapters/ntm-pulmonary-v827.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1433bceef43a9c3f5f6bc3d99d39f523d96f731271878589a52bbd30b7bf47b4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2301"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/nunley-vertullo-v455.js",
       "type": "file",
       "name": "mcp/adapters/nunley-vertullo-v455.js",
@@ -30491,7 +30533,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2ffe1c237c0ebe4b8ac207a8ad0006c98eef3db6b74730c7f054ff0b102ccf48"
+          "content": "64ebfd4b8d693ea2100907a7ab2fef1277f467bed5fa89c354c06b4bd5940a53"
         }
       ],
       "properties": [
@@ -30501,7 +30543,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "76038"
+          "value": "76147"
         }
       ]
     },
@@ -45160,6 +45202,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3138"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v827.js",
+      "type": "file",
+      "name": "views/group-v827.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1cb0fd9d38a0b2fc2cacfdf9d5ce9ba8f5164e200725a750027d1acaec299cba"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4925"
         }
       ]
     },
@@ -61233,6 +61296,7 @@
         "urn:sophiewell:file:source:lib/nottingham-grade-v649.js",
         "urn:sophiewell:file:source:lib/nottingham-npi-v330.js",
         "urn:sophiewell:file:source:lib/nsofa-v526.js",
+        "urn:sophiewell:file:source:lib/ntm-pulmonary-v827.js",
         "urn:sophiewell:file:source:lib/num.js",
         "urn:sophiewell:file:source:lib/nunley-vertullo-v455.js",
         "urn:sophiewell:file:source:lib/nutrition-energy-v152.js",
@@ -62213,6 +62277,7 @@
         "urn:sophiewell:file:source:views/group-v824.js",
         "urn:sophiewell:file:source:views/group-v825.js",
         "urn:sophiewell:file:source:views/group-v826.js",
+        "urn:sophiewell:file:source:views/group-v827.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
@@ -62655,6 +62720,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/nottingham-grade-v649.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nottingham-npi-v330.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nsofa-v526.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/ntm-pulmonary-v827.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nunley-vertullo-v455.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nutrition-energy-v152.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nutrition-maternal-v208.js",
@@ -63013,7 +63079,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "5a4e7702c6738d3b"
+      "value": "42d90e79612544b0"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -63025,7 +63091,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2130"
+      "value": "2133"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
