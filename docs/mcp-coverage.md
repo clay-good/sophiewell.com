@@ -7739,6 +7739,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/gold-coast-als-v811.js (spec-v811: Gold Coast ALS diagnostic criteria — clinical disclaimer)
 - `gold-coast-als`
 
+### lib/leipzig-wilson-v812.js (spec-v812: Leipzig score for Wilson disease — clinical disclaimer)
+- `leipzig-wilson`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
