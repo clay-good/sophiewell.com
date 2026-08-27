@@ -637,6 +637,7 @@ import * as goldCoastAlsV811 from '../../lib/gold-coast-als-v811.js';
 import * as leipzigWilsonV812 from '../../lib/leipzig-wilson-v812.js';
 import * as systemicMastocytosisV813 from '../../lib/systemic-mastocytosis-v813.js';
 import * as clusterHeadacheIchd3V814 from '../../lib/cluster-headache-ichd3-v814.js';
+import * as migraineIchd3V815 from '../../lib/migraine-ichd3-v815.js';
 import * as sadPersonsV701 from '../../lib/sad-persons-v701.js';
 import * as edinburghClaudicationV702 from '../../lib/edinburgh-claudication-v702.js';
 import * as reimersMigrationPercentageV703 from '../../lib/reimers-migration-percentage-v703.js';
@@ -1319,6 +1320,7 @@ const MODULES = {
   'leipzig-wilson-v812.js': leipzigWilsonV812,
   'systemic-mastocytosis-v813.js': systemicMastocytosisV813,
   'cluster-headache-ichd3-v814.js': clusterHeadacheIchd3V814,
+  'migraine-ichd3-v815.js': migraineIchd3V815,
   'sad-persons-v701.js': sadPersonsV701,
   'edinburgh-claudication-v702.js': edinburghClaudicationV702,
   'reimers-migration-percentage-v703.js': reimersMigrationPercentageV703,

@@ -655,6 +655,7 @@ import goldCoastAlsV811 from './adapters/gold-coast-als-v811.js';
 import leipzigWilsonV812 from './adapters/leipzig-wilson-v812.js';
 import systemicMastocytosisV813 from './adapters/systemic-mastocytosis-v813.js';
 import clusterHeadacheIchd3V814 from './adapters/cluster-headache-ichd3-v814.js';
+import migraineIchd3V815 from './adapters/migraine-ichd3-v815.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
 import reimersMigrationPercentageV703 from './adapters/reimers-migration-percentage-v703.js';
@@ -1336,6 +1337,7 @@ const ADAPTER_MODULES = [
   ['leipzig-wilson-v812', leipzigWilsonV812],
   ['systemic-mastocytosis-v813', systemicMastocytosisV813],
   ['cluster-headache-ichd3-v814', clusterHeadacheIchd3V814],
+  ['migraine-ichd3-v815', migraineIchd3V815],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],
   ['reimers-migration-percentage-v703', reimersMigrationPercentageV703],

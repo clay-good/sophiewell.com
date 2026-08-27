@@ -6352,5 +6352,11 @@
     "trigeminal autonomic cephalalgia",
     "one sided eye pain attacks",
     "suicide headache diagnosis"
+  ],
+  "migraine-ichd3": [
+    "migraine criteria",
+    "migraine with aura diagnosis",
+    "is this a migraine",
+    "ichd migraine"
   ]
 }

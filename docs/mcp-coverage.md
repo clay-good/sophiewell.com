@@ -7748,6 +7748,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/cluster-headache-ichd3-v814.js (spec-v814: ICHD-3 cluster headache criteria — clinical disclaimer)
 - `cluster-headache-ichd3`
 
+### lib/migraine-ichd3-v815.js (spec-v815: ICHD-3 migraine criteria, with and without aura — clinical disclaimer)
+- `migraine-ichd3`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
