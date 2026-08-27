@@ -650,6 +650,7 @@ import pss10V806 from './adapters/pss10-v806.js';
 import chicagoAchalasiaV807 from './adapters/chicago-achalasia-v807.js';
 import hrsAkiV808 from './adapters/hrs-aki-v808.js';
 import forrestClassificationV809 from './adapters/forrest-classification-v809.js';
+import mallampatiV810 from './adapters/mallampati-v810.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
 import reimersMigrationPercentageV703 from './adapters/reimers-migration-percentage-v703.js';
@@ -1326,6 +1327,7 @@ const ADAPTER_MODULES = [
   ['chicago-achalasia-v807', chicagoAchalasiaV807],
   ['hrs-aki-v808', hrsAkiV808],
   ['forrest-classification-v809', forrestClassificationV809],
+  ['mallampati-v810', mallampatiV810],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],
   ['reimers-migration-percentage-v703', reimersMigrationPercentageV703],

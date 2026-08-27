@@ -6322,5 +6322,11 @@
     "visible vessel ulcer",
     "adherent clot ulcer",
     "ulcer rebleeding risk endoscopy"
+  ],
+  "mallampati": [
+    "mallampati class",
+    "airway view assessment",
+    "oropharyngeal view grading",
+    "how much of the throat is visible"
   ]
 }

@@ -632,6 +632,7 @@ import * as pss10V806 from '../../lib/pss10-v806.js';
 import * as chicagoAchalasiaV807 from '../../lib/chicago-achalasia-v807.js';
 import * as hrsAkiV808 from '../../lib/hrs-aki-v808.js';
 import * as forrestClassificationV809 from '../../lib/forrest-classification-v809.js';
+import * as mallampatiV810 from '../../lib/mallampati-v810.js';
 import * as sadPersonsV701 from '../../lib/sad-persons-v701.js';
 import * as edinburghClaudicationV702 from '../../lib/edinburgh-claudication-v702.js';
 import * as reimersMigrationPercentageV703 from '../../lib/reimers-migration-percentage-v703.js';
@@ -1309,6 +1310,7 @@ const MODULES = {
   'chicago-achalasia-v807.js': chicagoAchalasiaV807,
   'hrs-aki-v808.js': hrsAkiV808,
   'forrest-classification-v809.js': forrestClassificationV809,
+  'mallampati-v810.js': mallampatiV810,
   'sad-persons-v701.js': sadPersonsV701,
   'edinburgh-claudication-v702.js': edinburghClaudicationV702,
   'reimers-migration-percentage-v703.js': reimersMigrationPercentageV703,

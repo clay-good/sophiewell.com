@@ -7733,6 +7733,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/forrest-classification-v809.js (spec-v809: Forrest classification of a bleeding peptic ulcer — clinical disclaimer)
 - `forrest-classification`
 
+### lib/mallampati-v810.js (spec-v810: modified Mallampati oropharyngeal view — clinical disclaimer)
+- `mallampati`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

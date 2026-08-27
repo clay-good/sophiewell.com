@@ -690,6 +690,7 @@ const PROBES = [
   ['chicago classification achalasia subtype manometry', ['chicago-achalasia']],
   ['hepatorenal syndrome aki diagnostic criteria cirrhosis', ['hrs-aki']],
   ['forrest classification bleeding ulcer endoscopy stigmata', ['forrest-classification']],
+  ['mallampati oropharyngeal view airway class', ['mallampati']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],
