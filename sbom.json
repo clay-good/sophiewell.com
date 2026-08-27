@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:901fe691-78ff-5ef9-865b-10ca6e5bb5d0",
+  "serialNumber": "urn:uuid:5a4e7702-c673-5d3b-8af0-ee7841322efe",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-27T03:22:40.259Z",
+    "timestamp": "2026-08-27T03:30:36.950Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1617 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1618 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "bfe26a18b89de7f1e524819f486447743334cfc01b2542d955de71f452988e8d"
+          "content": "22ab4f27a9aa1c791697fe1ffe110cd9e2484344cfa626208afb631c0b0d7158"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "104506"
+          "value": "104565"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7bbf881565cd3346662663a748983b70889ffe20ef4373592e3aac1c588d6abd"
+          "content": "560817b59d877f976b0b76a016d4b3d478933565fb5a6c774000f54c69162306"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "473399"
+          "value": "473632"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9e03a73f542469c3d60a4ce9fca33b8b119f92d1ab0b333930d1a0d83c08b6f7"
+          "content": "e284e2557dbe88e100249e9dc673270ea3c6be371bb30c476fb1e842af8669cf"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "248146"
+          "value": "248306"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "99eff7ffc4d8a40e1f4c78e73a645145d78382d67d7d0f1a5ea5e3119a530835"
+          "content": "783effb860ade314a0a8037726290fde40a07b121c1b855974233072d7edecb4"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "90216"
+          "value": "90285"
         }
       ]
     },
@@ -8861,7 +8861,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e70254aeec08ed612d58bc09eac433557dabf09b377fd6c9d27f85b96b70e8ba"
+          "content": "3fad587c6b46a6bd83441ac87cbc3892b7d7417686e259826b7e2c7ae4aa8753"
         }
       ],
       "properties": [
@@ -8871,7 +8871,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2247252"
+          "value": "2249184"
         }
       ]
     },
@@ -11518,6 +11518,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3552"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/ph-hemodynamics-2022-v826.js",
+      "type": "file",
+      "name": "lib/ph-hemodynamics-2022-v826.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "838feec5c8f5e73d7eb50fc69e2d01aeb4ef34f1884c17507698950c3acac710"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7915"
         }
       ]
     },
@@ -26264,6 +26285,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ph-hemodynamics-2022-v826.js",
+      "type": "file",
+      "name": "mcp/adapters/ph-hemodynamics-2022-v826.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9a48344caca87290dc804e73263782a55b70f184d9eadf428a973b665084f9c0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1335"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/phq15-v734.js",
       "type": "file",
       "name": "mcp/adapters/phq15-v734.js",
@@ -30449,7 +30491,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "01a5584197d44d0ef6d5a6fd05559018a016e4ee253cf2969a761e55b8eb3ebb"
+          "content": "2ffe1c237c0ebe4b8ac207a8ad0006c98eef3db6b74730c7f054ff0b102ccf48"
         }
       ],
       "properties": [
@@ -30459,7 +30501,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "75903"
+          "value": "76038"
         }
       ]
     },
@@ -45097,6 +45139,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4230"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v826.js",
+      "type": "file",
+      "name": "views/group-v826.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9e5a8b9fd5da7d2977f4b6130dc7dbcf61df31b0f9c50e577c1e284521dcb3b5"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3138"
         }
       ]
     },
@@ -61242,6 +61305,7 @@
         "urn:sophiewell:file:source:lib/pfdi20-v775.js",
         "urn:sophiewell:file:source:lib/pfiq7-v776.js",
         "urn:sophiewell:file:source:lib/pfirrmann-disc-v434.js",
+        "urn:sophiewell:file:source:lib/ph-hemodynamics-2022-v826.js",
         "urn:sophiewell:file:source:lib/phq15-v734.js",
         "urn:sophiewell:file:source:lib/pi-ll-mismatch-v705.js",
         "urn:sophiewell:file:source:lib/pipkin-femoral-head-v375.js",
@@ -62148,6 +62212,7 @@
         "urn:sophiewell:file:source:views/group-v823.js",
         "urn:sophiewell:file:source:views/group-v824.js",
         "urn:sophiewell:file:source:views/group-v825.js",
+        "urn:sophiewell:file:source:views/group-v826.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
@@ -62645,6 +62710,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/pfdi20-v775.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pfiq7-v776.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pfirrmann-disc-v434.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/ph-hemodynamics-2022-v826.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/phq15-v734.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pi-ll-mismatch-v705.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pipkin-femoral-head-v375.js",
@@ -62947,7 +63013,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "901fe69178fffef9"
+      "value": "5a4e7702c6738d3b"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -62959,7 +63025,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2127"
+      "value": "2130"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
