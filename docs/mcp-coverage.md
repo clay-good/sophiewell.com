@@ -7730,6 +7730,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/hrs-aki-v808.js (spec-v808: 2024 HRS-AKI diagnostic criteria — clinical disclaimer)
 - `hrs-aki`
 
+### lib/forrest-classification-v809.js (spec-v809: Forrest classification of a bleeding peptic ulcer — clinical disclaimer)
+- `forrest-classification`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

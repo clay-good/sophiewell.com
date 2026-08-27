@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:09c04f81-a623-53fd-8f4b-da36c08d8afd",
+  "serialNumber": "urn:uuid:67412627-eeda-550a-8375-fdab3046191d",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-27T00:07:30.217Z",
+    "timestamp": "2026-08-27T00:22:13.083Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1600 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1601 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c412c3ba50a0fe781f2a2ed43f139bab3a9cbe4fc1ddffbfd301cb6f3a76cec7"
+          "content": "5a05fe602141becbb6ea136136259d4de6c5bfdd1a4d73748ea1f34147ce0708"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "103543"
+          "value": "103605"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9ef3ab1faf0604cb52a622f0d8c65917435cef324d4d4b82ca412bea54ce079f"
+          "content": "6b55135bc6c16e0fbb4adc930a9b725fea2eb6135956fdc13d040932f26665a6"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "469428"
+          "value": "469662"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2e18f22c47f478e2ac71b8ba2f2fb158cd325e1e82ec14e5b0a533e2f2461711"
+          "content": "ba4ed2ace5a6c6c9bdbf6961efc0428dcab09cb1da5adc21e59058f1af682e98"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "245483"
+          "value": "245645"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a88090e5917311995e4d81bd8cd0d485c9f480672cc36d971817b486b72fcb8c"
+          "content": "c1b2d054948c43efdb066b03b4af61dd0fbb7f5e6f5975eb025794d87182b96d"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "89140"
+          "value": "89214"
         }
       ]
     },
@@ -4844,6 +4844,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/forrest-classification-v809.js",
+      "type": "file",
+      "name": "lib/forrest-classification-v809.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fd3a47b799a5ccfea4848d3e133cbd18c22e90fcfe8091e992426ce43b8a4d93"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5613"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/forrester-hemodynamic-v362.js",
       "type": "file",
       "name": "lib/forrester-hemodynamic-v362.js",
@@ -8651,7 +8672,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f5390576bccb993c4ef9ffafc731cefe18b1b872ca4d085219fc6b0b9290d568"
+          "content": "243a338e9719de1351cb6506b9cda2a7b2aeb0d64b393ccad1034410a781137d"
         }
       ],
       "properties": [
@@ -8661,7 +8682,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2212673"
+          "value": "2214216"
         }
       ]
     },
@@ -19775,6 +19796,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/forrest-classification-v809.js",
+      "type": "file",
+      "name": "mcp/adapters/forrest-classification-v809.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5acda126dec37515fb37dd6f98fd0581f0c7c00f21513fde6ab71641e09888e2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1121"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/forrester-hemodynamic-v362.js",
       "type": "file",
       "name": "mcp/adapters/forrester-hemodynamic-v362.js",
@@ -29735,7 +29777,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "045445357a665b98e0fa7de20edf21bdceb0134a6ef6d69cd909763d015cf749"
+          "content": "a160832e5b8d2ec67954183be478886d713b7a1323b0d4866a4d1202b2d34fec"
         }
       ],
       "properties": [
@@ -29745,7 +29787,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "73814"
+          "value": "73959"
         }
       ]
     },
@@ -44026,6 +44068,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3831"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v809.js",
+      "type": "file",
+      "name": "views/group-v809.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fb39460a892bc61dfb2d9bfe299fedc366e7a16cafa53c7aed25cb5f720d3834"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2918"
         }
       ]
     },
@@ -59853,6 +59916,7 @@
         "urn:sophiewell:file:source:lib/fluidresp-v113.js",
         "urn:sophiewell:file:source:lib/fnclcc-grade-v651.js",
         "urn:sophiewell:file:source:lib/fois-v727.js",
+        "urn:sophiewell:file:source:lib/forrest-classification-v809.js",
         "urn:sophiewell:file:source:lib/forrester-hemodynamic-v362.js",
         "urn:sophiewell:file:source:lib/fractional-excretion-potassium-v684.js",
         "urn:sophiewell:file:source:lib/frailty-v143.js",
@@ -61043,6 +61107,7 @@
         "urn:sophiewell:file:source:views/group-v806.js",
         "urn:sophiewell:file:source:views/group-v807.js",
         "urn:sophiewell:file:source:views/group-v808.js",
+        "urn:sophiewell:file:source:views/group-v809.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
@@ -61248,6 +61313,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/fluidresp-v113.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/fnclcc-grade-v651.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/fois-v727.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/forrest-classification-v809.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/forrester-hemodynamic-v362.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/fractional-excretion-potassium-v684.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/frailty-v143.js",
@@ -61825,7 +61891,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "09c04f81a623c3fd"
+      "value": "67412627eedab50a"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -61837,7 +61903,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2076"
+      "value": "2079"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
