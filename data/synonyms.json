@@ -6376,5 +6376,11 @@
     "tension type headache",
     "band around the head headache",
     "pressing headache both sides"
+  ],
+  "indomethacin-headache-ichd3": [
+    "paroxysmal hemicrania",
+    "hemicrania continua",
+    "indomethacin responsive headache",
+    "headache that only indomethacin stops"
   ]
 }

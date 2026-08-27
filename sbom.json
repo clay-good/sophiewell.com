@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:778d8366-ae0d-5d93-861e-293d8c396f3c",
+  "serialNumber": "urn:uuid:6add802b-6792-5640-8951-b42397e3e8a4",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-27T02:14:30.252Z",
+    "timestamp": "2026-08-27T02:23:12.904Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1610 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1611 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5e46bc4b0948d41ac8423bf1c37e576057ea8254cc5e59b23c7f8046ce96c09f"
+          "content": "538049ca2ece4e8300f5aa7720eb90872efabc1b43b605213e03ff67a5d76fa8"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "104105"
+          "value": "104172"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c03357052b278447bb92e90b050a26978a4a1d6423d7940895eefac9d678bc1b"
+          "content": "dd58e5860f392c625a709af4f2f7ea99631a5c48dc727a199ca3b52e12b7b1aa"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "471760"
+          "value": "472000"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "987e657409052c37e98e1cdc74137055f115922fb866e74c1ce83ade0173c4a4"
+          "content": "146e66cef6c57f52e420196ddc6ed9643bc9df281f62526e6484e3508e262bcf"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "247057"
+          "value": "247224"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "458e3895ef5a5c5a62db159de61c210b7652c7bbce6e857cd99fb799daa6f783"
+          "content": "de12f7431466e27b849034423decaa794d477ae0802ba96d1b4dc5f01099fcdd"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "89776"
+          "value": "89860"
         }
       ]
     },
@@ -6734,6 +6734,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/indomethacin-headache-ichd3-v819.js",
+      "type": "file",
+      "name": "lib/indomethacin-headache-ichd3-v819.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a5410327d8d7bb9ad4261b27bc914c8796a28fb91e0ee9ccb6676c6b9bc97b34"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "9315"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/inflam-v230.js",
       "type": "file",
       "name": "lib/inflam-v230.js",
@@ -8756,7 +8777,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "66736bcb95c4fb15bf976a8ce8aa81a2916d5045b4064c6438b38e89f6961124"
+          "content": "ec15a5f8a9fc6461c2171a536a945a96117fdb8d970f381cef6fa3195a491c03"
         }
       ],
       "properties": [
@@ -8766,7 +8787,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2232426"
+          "value": "2234531"
         }
       ]
     },
@@ -21812,6 +21833,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/indomethacin-headache-ichd3-v819.js",
+      "type": "file",
+      "name": "mcp/adapters/indomethacin-headache-ichd3-v819.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "402879c1d15d90f4f87f6fb198ff932436523c01a952489fb321c0d678c611b5"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2852"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/inflam-v230.js",
       "type": "file",
       "name": "mcp/adapters/inflam-v230.js",
@@ -30155,7 +30197,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e268b82cb59227618e0f933f021d13b06786cc6a45400e6e733d86d8c1a546bd"
+          "content": "01654edac748039d70716b080f1d64b774ae383db8e62fa0c60d0de0da183e49"
         }
       ],
       "properties": [
@@ -30165,7 +30207,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "75074"
+          "value": "75237"
         }
       ]
     },
@@ -44656,6 +44698,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "5582"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v819.js",
+      "type": "file",
+      "name": "views/group-v819.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "60d48de2f6a0983be8c532daad8d143f2503c3e48aeb586f1edc3ac8640da542"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5720"
         }
       ]
     },
@@ -60573,6 +60636,7 @@
         "urn:sophiewell:file:source:lib/idcrit-v99.js",
         "urn:sophiewell:file:source:lib/ideberg-glenoid-v409.js",
         "urn:sophiewell:file:source:lib/igcccg-v567.js",
+        "urn:sophiewell:file:source:lib/indomethacin-headache-ichd3-v819.js",
         "urn:sophiewell:file:source:lib/inflam-v230.js",
         "urn:sophiewell:file:source:lib/inflam-v267.js",
         "urn:sophiewell:file:source:lib/inflam-v268.js",
@@ -61693,6 +61757,7 @@
         "urn:sophiewell:file:source:views/group-v816.js",
         "urn:sophiewell:file:source:views/group-v817.js",
         "urn:sophiewell:file:source:views/group-v818.js",
+        "urn:sophiewell:file:source:views/group-v819.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
@@ -61985,6 +62050,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/idcrit-v99.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ideberg-glenoid-v409.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/igcccg-v567.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/indomethacin-headache-ichd3-v819.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/inflam-v230.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/inflam-v267.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/inflam-v268.js",
@@ -62485,7 +62551,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "778d8366ae0dcd93"
+      "value": "6add802b6792c640"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -62497,7 +62563,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2106"
+      "value": "2109"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
