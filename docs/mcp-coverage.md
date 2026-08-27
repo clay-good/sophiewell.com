@@ -7805,6 +7805,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/figo-pas-v833.js (spec-v833: FIGO clinical grading of placenta accreta spectrum — clinical disclaimer)
 - `figo-pas`
 
+### lib/poi-diagnosis-v834.js (spec-v834: 2024 ESHRE premature ovarian insufficiency algorithm — clinical disclaimer)
+- `poi-diagnosis`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
