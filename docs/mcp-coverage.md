@@ -7793,6 +7793,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/ohs-diagnosis-v829.js (spec-v829: 2019 ATS obesity hypoventilation syndrome — clinical disclaimer)
 - `ohs-diagnosis`
 
+### lib/aat-deficiency-v830.js (spec-v830: alpha-1 antitrypsin level and genotype — clinical disclaimer)
+- `aat-deficiency`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

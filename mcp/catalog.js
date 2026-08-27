@@ -670,6 +670,7 @@ import phHemodynamics2022V826 from './adapters/ph-hemodynamics-2022-v826.js';
 import ntmPulmonaryV827 from './adapters/ntm-pulmonary-v827.js';
 import cfDiagnosisV828 from './adapters/cf-diagnosis-v828.js';
 import ohsDiagnosisV829 from './adapters/ohs-diagnosis-v829.js';
+import aatDeficiencyV830 from './adapters/aat-deficiency-v830.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
 import reimersMigrationPercentageV703 from './adapters/reimers-migration-percentage-v703.js';
@@ -1366,6 +1367,7 @@ const ADAPTER_MODULES = [
   ['ntm-pulmonary-v827', ntmPulmonaryV827],
   ['cf-diagnosis-v828', cfDiagnosisV828],
   ['ohs-diagnosis-v829', ohsDiagnosisV829],
+  ['aat-deficiency-v830', aatDeficiencyV830],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],
   ['reimers-migration-percentage-v703', reimersMigrationPercentageV703],

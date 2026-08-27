@@ -710,6 +710,7 @@ const PROBES = [
   ['nontuberculous mycobacterial lung disease criteria', ['ntm-pulmonary']],
   ['cystic fibrosis sweat chloride diagnosis criteria', ['cf-diagnosis']],
   ['obesity hypoventilation syndrome paco2 bicarbonate', ['ohs-diagnosis']],
+  ['alpha 1 antitrypsin level genotype deficiency', ['aat-deficiency']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],
