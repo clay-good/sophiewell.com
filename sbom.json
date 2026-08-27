@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:84a48617-19d6-5145-846b-01b7cc955f9b",
+  "serialNumber": "urn:uuid:7b8bdbc3-8552-5f7b-8e69-d0f77fed3fee",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-27T04:50:19.133Z",
+    "timestamp": "2026-08-27T04:59:02.250Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1627 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1628 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0a2810ee3332ea0a2718caaadfc97fa14862969abbd50c7fc6957c6321255e98"
+          "content": "2348434a1e4698ed1ba62e0d9a0463a9abc94163e0ead1f3822286a433a32bb7"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "105091"
+          "value": "105151"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8a53290f63109c5b3802f001db40b788a9675125ba7df16ccce67aaa2ed940fc"
+          "content": "c5152f4e029d92d4bb758442c42acfa99977bc44a155a7fd145681195b86d154"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "475729"
+          "value": "475962"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "85fb785ca7475ccc63c4cdd9ad5b14cb6f38b9523065e9eff558ac628daeee56"
+          "content": "ffcf38ca5432cf9324b4a5aae22878ce3ee843a1cb266f8054fb423146a45abe"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "249678"
+          "value": "249829"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e8c77780f85e82deddff6fd1c342887fe4a9f2447719111af613d8ca63c24fb0"
+          "content": "a28232b2016b3c50d38d5e26cd58f9129fddfec9b26d16a9e36730c78cd3240a"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "90833"
+          "value": "90894"
         }
       ]
     },
@@ -5012,6 +5012,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/four-ts-hit-v836.js",
+      "type": "file",
+      "name": "lib/four-ts-hit-v836.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d1957f127d10fec71c7defbd9828b3ddf34a6ba46a8654a5dee98074a35ae708"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8557"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/fractional-excretion-potassium-v684.js",
       "type": "file",
       "name": "lib/fractional-excretion-potassium-v684.js",
@@ -8945,7 +8966,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1053e1991ee299381eb179de1428c1cdd704bfc5a758f352ecec237f9e0e3ff2"
+          "content": "c6314c7d1dd30bbec28c00e5f363d2231102acf450624a7b012faf57927dc0c6"
         }
       ],
       "properties": [
@@ -8955,7 +8976,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2268124"
+          "value": "2270355"
         }
       ]
     },
@@ -20510,6 +20531,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/four-ts-hit-v836.js",
+      "type": "file",
+      "name": "mcp/adapters/four-ts-hit-v836.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c7ef5dc4057eb64c8500d86501d3b2cf738c8d912556c36b145b137e78585326"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1411"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/fractional-excretion-potassium-v684.js",
       "type": "file",
       "name": "mcp/adapters/fractional-excretion-potassium-v684.js",
@@ -30869,7 +30911,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "08b3150294852c4d19beabf9beb0cd94241091fc8ac71ca09f183030c872a09f"
+          "content": "e11c49ee0f320bd85b6ae8d859e63f534924d864e1b2ab9d01dc4215f690d990"
         }
       ],
       "properties": [
@@ -30879,7 +30921,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "76999"
+          "value": "77098"
         }
       ]
     },
@@ -45727,6 +45769,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4700"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v836.js",
+      "type": "file",
+      "name": "views/group-v836.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9ce7e1d3e23f7a4d1ab60f5a88dba3724ee57fa49d1f9435e79e277745afa510"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4346"
         }
       ]
     },
@@ -61562,6 +61625,7 @@
         "urn:sophiewell:file:source:lib/fois-v727.js",
         "urn:sophiewell:file:source:lib/forrest-classification-v809.js",
         "urn:sophiewell:file:source:lib/forrester-hemodynamic-v362.js",
+        "urn:sophiewell:file:source:lib/four-ts-hit-v836.js",
         "urn:sophiewell:file:source:lib/fractional-excretion-potassium-v684.js",
         "urn:sophiewell:file:source:lib/frailty-v143.js",
         "urn:sophiewell:file:source:lib/framingham-hf-criteria-v696.js",
@@ -62798,6 +62862,7 @@
         "urn:sophiewell:file:source:views/group-v833.js",
         "urn:sophiewell:file:source:views/group-v834.js",
         "urn:sophiewell:file:source:views/group-v835.js",
+        "urn:sophiewell:file:source:views/group-v836.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
@@ -63011,6 +63076,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/fois-v727.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/forrest-classification-v809.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/forrester-hemodynamic-v362.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/four-ts-hit-v836.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/fractional-excretion-potassium-v684.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/frailty-v143.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/framingham-hf-criteria-v696.js",
@@ -63607,7 +63673,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "84a4861719d69145"
+      "value": "7b8bdbc38552df7b"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -63619,7 +63685,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2157"
+      "value": "2160"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

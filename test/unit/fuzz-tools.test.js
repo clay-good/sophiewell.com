@@ -658,6 +658,7 @@ import * as tripleIV832 from '../../lib/triple-i-v832.js';
 import * as figoPasV833 from '../../lib/figo-pas-v833.js';
 import * as poiDiagnosisV834 from '../../lib/poi-diagnosis-v834.js';
 import * as acromegalyBiochemV835 from '../../lib/acromegaly-biochem-v835.js';
+import * as fourTsHitV836 from '../../lib/four-ts-hit-v836.js';
 import * as sadPersonsV701 from '../../lib/sad-persons-v701.js';
 import * as edinburghClaudicationV702 from '../../lib/edinburgh-claudication-v702.js';
 import * as reimersMigrationPercentageV703 from '../../lib/reimers-migration-percentage-v703.js';
@@ -1361,6 +1362,7 @@ const MODULES = {
   'figo-pas-v833.js': figoPasV833,
   'poi-diagnosis-v834.js': poiDiagnosisV834,
   'acromegaly-biochem-v835.js': acromegalyBiochemV835,
+  'four-ts-hit-v836.js': fourTsHitV836,
   'sad-persons-v701.js': sadPersonsV701,
   'edinburgh-claudication-v702.js': edinburghClaudicationV702,
   'reimers-migration-percentage-v703.js': reimersMigrationPercentageV703,

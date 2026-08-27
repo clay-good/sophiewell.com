@@ -7811,6 +7811,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/acromegaly-biochem-v835.js (spec-v835: biochemical diagnosis of acromegaly — clinical disclaimer)
 - `acromegaly-biochem`
 
+### lib/four-ts-hit-v836.js (spec-v836: 4Ts score for heparin-induced thrombocytopenia — clinical disclaimer)
+- `four-ts-hit`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

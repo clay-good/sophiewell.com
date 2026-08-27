@@ -6478,5 +6478,11 @@
     "igf1 growth hormone test",
     "gh suppression ogtt",
     "enlarging hands jaw"
+  ],
+  "four-ts-hit": [
+    "4ts score",
+    "heparin induced thrombocytopenia",
+    "hit probability",
+    "platelets dropped on heparin"
   ]
 }
