@@ -7727,6 +7727,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/chicago-achalasia-v807.js (spec-v807: Chicago Classification achalasia subtype — clinical disclaimer)
 - `chicago-achalasia`
 
+### lib/hrs-aki-v808.js (spec-v808: 2024 HRS-AKI diagnostic criteria — clinical disclaimer)
+- `hrs-aki`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

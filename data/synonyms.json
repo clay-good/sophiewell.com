@@ -895,6 +895,8 @@
       "tile": "pss10", "audience": "clinicians" },
     { "phrases": ["chicago classification achalasia", "achalasia subtype", "achalasia type i ii iii", "manometry achalasia type"],
       "tile": "chicago-achalasia", "audience": "clinicians" },
+    { "phrases": ["hepatorenal syndrome criteria", "hrs aki diagnosis", "kidney injury in cirrhosis criteria", "is this hepatorenal syndrome"],
+      "tile": "hrs-aki", "audience": "clinicians" },
     { "phrases": ["sad persons scale", "suicide risk screen sad persons", "sad persons suicide", "suicidality mnemonic screen"],
       "tile": "sad-persons", "audience": "clinicians" },
     { "phrases": ["edinburgh claudication questionnaire", "intermittent claudication screen", "claudication symptom questionnaire", "leg pain walking claudication"],
