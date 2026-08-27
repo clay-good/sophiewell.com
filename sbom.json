@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:a4a5d782-218d-55ec-888d-28f0f5007a1f",
+  "serialNumber": "urn:uuid:51d0f70f-c273-56d3-872d-04a9785a4daa",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-26T23:47:43.642Z",
+    "timestamp": "2026-08-26T23:58:26.030Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1598 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1599 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2bf2189c276f631fb6b394237e42aa0ab72b8f6c0b90c4b8a49044df1363ed06"
+          "content": "1c531bde62620b2339d973abc13f1bfa0156fd3cbb9951b5cba0708fa0ed21d6"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "103424"
+          "value": "103482"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "fd21b7c5c9a7744eef9c226b983483e05c9a99a75c159ebb46dc64d91ff3137e"
+          "content": "732d3bd0faa90344a0be7757b07fe6baef5297b317b90d745487e5bfeb46134a"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "468961"
+          "value": "469194"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f7c9ee16ae64488c1f6fd2fcd1671d2565f76f6b51ce7b95f4b8d9905f85c00f"
+          "content": "073dd7a7e28150c1a5036c24bccf7384183b7eeb05dd3208cf574d8ba8e18d0f"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "245179"
+          "value": "245336"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2adefd5d03036f7a56efd820a06f30be2a0f9192594e3d0ddff51821a752d4e0"
+          "content": "daed59e9b5e641f46d3d032cebf709adbd9432980ef815bed28f1c73c97937f3"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "89017"
+          "value": "89082"
         }
       ]
     },
@@ -2446,6 +2446,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4245"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/chicago-achalasia-v807.js",
+      "type": "file",
+      "name": "lib/chicago-achalasia-v807.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "99382f3f3b153291f8ce878e35c62cf16d5e4d01895188360390e2ba9b62d9cb"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5132"
         }
       ]
     },
@@ -8609,7 +8630,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "666554b6d56118b02cd96dbdc7b9c65ed7301eddcc260b3a3096e219889ee10c"
+          "content": "05c70f41e934c34373355f3ff686af3a25489ac07192fe2fc4398d3686a0bd64"
         }
       ],
       "properties": [
@@ -8619,7 +8640,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2209487"
+          "value": "2211091"
         }
       ]
     },
@@ -17503,6 +17524,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2177"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/chicago-achalasia-v807.js",
+      "type": "file",
+      "name": "mcp/adapters/chicago-achalasia-v807.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a5df8d850a0f84cb51170df9670b997a91b3def6434388277acfe6d925ace510"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1374"
         }
       ]
     },
@@ -29651,7 +29693,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9648f4121cbccc5220cd6e698593a2e52ae5d4a989a9ad4ce2504ba6a97f19e0"
+          "content": "6dff0ff4f48481fc023c848f9bc46712ee55afefa46719cd3378b0194a1dfb5d"
         }
       ],
       "properties": [
@@ -29661,7 +29703,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "73604"
+          "value": "73729"
         }
       ]
     },
@@ -29714,7 +29756,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7e29cea52b6320e3369fb221438ff698fb802eff01bf1058c4347efc3a464daa"
+          "content": "7e30d6284f8f7db4d99ed43f4417c2722dc5edc16d54bd2e4f0e1840f84d9a3e"
         }
       ],
       "properties": [
@@ -29724,7 +29766,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "53407"
+          "value": "53497"
         }
       ]
     },
@@ -43900,6 +43942,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3901"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v807.js",
+      "type": "file",
+      "name": "views/group-v807.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6f42badd2db52174bca1fc893b1d2490d55c8f8899792606f1ceba0074c7bfbe"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3410"
         }
       ]
     },
@@ -59613,6 +59676,7 @@
         "urn:sophiewell:file:source:lib/ceap-venous-v356.js",
         "urn:sophiewell:file:source:lib/chalder-fatigue-v733.js",
         "urn:sophiewell:file:source:lib/cheops-v645.js",
+        "urn:sophiewell:file:source:lib/chicago-achalasia-v807.js",
         "urn:sophiewell:file:source:lib/childhood-act-v518.js",
         "urn:sophiewell:file:source:lib/cholangitis-dx-v312.js",
         "urn:sophiewell:file:source:lib/cholangitis-v310.js",
@@ -60913,6 +60977,7 @@
         "urn:sophiewell:file:source:views/group-v804.js",
         "urn:sophiewell:file:source:views/group-v805.js",
         "urn:sophiewell:file:source:views/group-v806.js",
+        "urn:sophiewell:file:source:views/group-v807.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
@@ -61012,6 +61077,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/ceap-venous-v356.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/chalder-fatigue-v733.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cheops-v645.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/chicago-achalasia-v807.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/childhood-act-v518.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cholangitis-dx-v312.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cholangitis-v310.js",
@@ -61693,7 +61759,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "a4a5d782218dc5ec"
+      "value": "51d0f70fc27356d3"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -61705,7 +61771,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2070"
+      "value": "2073"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

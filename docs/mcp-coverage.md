@@ -7724,6 +7724,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/pss10-v806.js (spec-v806: Perceived Stress Scale — clinical disclaimer)
 - `pss10`
 
+### lib/chicago-achalasia-v807.js (spec-v807: Chicago Classification achalasia subtype — clinical disclaimer)
+- `chicago-achalasia`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

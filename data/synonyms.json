@@ -893,6 +893,8 @@
       "tile": "amts", "audience": "clinicians" },
     { "phrases": ["perceived stress scale", "pss 10 score", "how stressed am i scale", "cohen perceived stress"],
       "tile": "pss10", "audience": "clinicians" },
+    { "phrases": ["chicago classification achalasia", "achalasia subtype", "achalasia type i ii iii", "manometry achalasia type"],
+      "tile": "chicago-achalasia", "audience": "clinicians" },
     { "phrases": ["sad persons scale", "suicide risk screen sad persons", "sad persons suicide", "suicidality mnemonic screen"],
       "tile": "sad-persons", "audience": "clinicians" },
     { "phrases": ["edinburgh claudication questionnaire", "intermittent claudication screen", "claudication symptom questionnaire", "leg pain walking claudication"],
