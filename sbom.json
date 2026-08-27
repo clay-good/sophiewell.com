@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:c61a7de3-0040-5300-8bf2-50981da66023",
+  "serialNumber": "urn:uuid:57a76add-2d3d-5ed2-8e56-ac6fe0066ef4",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-27T02:42:22.000Z",
+    "timestamp": "2026-08-27T02:53:48.989Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1613 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1614 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "239fd1ace80591e0ec4593e8738c4db81edb7dee6b0dff54c001d6dfaad770d0"
+          "content": "1b4db0b1b81da20de04831b069755bc355da3b63191a8286c883fcc33204fe39"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "104276"
+          "value": "104333"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ecf4a088e7cedeee2bef657233108a95b818e8c9963200f20938effc344224f7"
+          "content": "054c1a7d0a920a3d49a13a774846d7859711381b985575c45a86d7fefa5dcb1d"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "472466"
+          "value": "472699"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "63d9057660d5b34abc08f6f59f5340366ecce3faf38c324656f4891c971f6ff6"
+          "content": "30e67a039e957f87441234f43704ed113a0965a0aa0399d2dc816b7392365d14"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "247532"
+          "value": "247681"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "28634721c046f1d3bb32d7d6e767370287b07d0f37d14e6e484304ee0e35ed74"
+          "content": "eea5ec2d405edfd43427fa730836d234dddb7ff294065b9d027b15a21e20bc30"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "89972"
+          "value": "90028"
         }
       ]
     },
@@ -6020,6 +6020,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/heds-2017-v822.js",
+      "type": "file",
+      "name": "lib/heds-2017-v822.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b98e067cdccce9652f8c915b085d5aaf3b1f11e0904e42d14b90f8c99edd5fe7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "9879"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/heffner-v591.js",
       "type": "file",
       "name": "lib/heffner-v591.js",
@@ -8798,7 +8819,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "bfee61f5a98deeebd42c9ec15ed33a26e3696ac4bb7aac47f1bcfe6ce5d9fb9c"
+          "content": "8e42fce5bc561962072985537639b62d656a4cfcbfbb21d02025726ebb567415"
         }
       ],
       "properties": [
@@ -8808,7 +8829,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2238751"
+          "value": "2241066"
         }
       ]
     },
@@ -21161,6 +21182,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/heds-2017-v822.js",
+      "type": "file",
+      "name": "mcp/adapters/heds-2017-v822.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fcef4917c76dccf8ee89fa6b1c5add17624bf1a0e59b6a6792357e80fabb7745"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4087"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/heffner-v591.js",
       "type": "file",
       "name": "mcp/adapters/heffner-v591.js",
@@ -30281,7 +30323,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "925992fe2b59a62aba46073ea120f4a306a5418a86dbf884b5c3f89057db71e7"
+          "content": "6de5f69bc72fb31e75758e2cfca02d0c5d4dca897d7fa43e98fefdd722c58f96"
         }
       ],
       "properties": [
@@ -30291,7 +30333,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "75461"
+          "value": "75554"
         }
       ]
     },
@@ -44845,6 +44887,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "6905"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v822.js",
+      "type": "file",
+      "name": "views/group-v822.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4f15b049c90cfef22f1bec032cbda5348b3f33723393abeeff3b222599b1031b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7991"
         }
       ]
     },
@@ -60728,6 +60791,7 @@
         "urn:sophiewell:file:source:lib/hcc-surveillance-v281.js",
         "urn:sophiewell:file:source:lib/heaven-criteria-v572.js",
         "urn:sophiewell:file:source:lib/heckerling-pneumonia-v673.js",
+        "urn:sophiewell:file:source:lib/heds-2017-v822.js",
         "urn:sophiewell:file:source:lib/heffner-v591.js",
         "urn:sophiewell:file:source:lib/hematology-v229.js",
         "urn:sophiewell:file:source:lib/heme-onc-risk-v211.js",
@@ -61888,6 +61952,7 @@
         "urn:sophiewell:file:source:views/group-v819.js",
         "urn:sophiewell:file:source:views/group-v820.js",
         "urn:sophiewell:file:source:views/group-v821.js",
+        "urn:sophiewell:file:source:views/group-v822.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
@@ -62146,6 +62211,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/hcc-surveillance-v281.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/heaven-criteria-v572.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/heckerling-pneumonia-v673.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/heds-2017-v822.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/heffner-v591.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hematology-v229.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/heme-onc-risk-v211.js",
@@ -62683,7 +62749,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "c61a7de30040c300"
+      "value": "57a76add2d3d3ed2"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -62695,7 +62761,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2115"
+      "value": "2118"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

@@ -7769,6 +7769,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/ghent-marfan-v821.js (spec-v821: revised Ghent nosology for Marfan syndrome — clinical disclaimer)
 - `ghent-marfan`
 
+### lib/heds-2017-v822.js (spec-v822: 2017 hypermobile Ehlers-Danlos criteria — clinical disclaimer)
+- `heds-2017`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
