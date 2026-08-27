@@ -660,6 +660,7 @@ import mohIchd3V816 from './adapters/moh-ichd3-v816.js';
 import trigeminalNeuralgiaIchd3V817 from './adapters/trigeminal-neuralgia-ichd3-v817.js';
 import tensionHeadacheIchd3V818 from './adapters/tension-headache-ichd3-v818.js';
 import indomethacinHeadacheIchd3V819 from './adapters/indomethacin-headache-ichd3-v819.js';
+import sunctSunaIchd3V820 from './adapters/sunct-suna-ichd3-v820.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
 import reimersMigrationPercentageV703 from './adapters/reimers-migration-percentage-v703.js';
@@ -1346,6 +1347,7 @@ const ADAPTER_MODULES = [
   ['trigeminal-neuralgia-ichd3-v817', trigeminalNeuralgiaIchd3V817],
   ['tension-headache-ichd3-v818', tensionHeadacheIchd3V818],
   ['indomethacin-headache-ichd3-v819', indomethacinHeadacheIchd3V819],
+  ['sunct-suna-ichd3-v820', sunctSunaIchd3V820],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],
   ['reimers-migration-percentage-v703', reimersMigrationPercentageV703],

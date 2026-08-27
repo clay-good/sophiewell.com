@@ -700,6 +700,7 @@ const PROBES = [
   ['trigeminal neuralgia facial pain criteria', ['trigeminal-neuralgia-ichd3']],
   ['tension type headache ichd3 criteria', ['tension-headache-ichd3']],
   ['paroxysmal hemicrania continua indomethacin criteria', ['indomethacin-headache-ichd3']],
+  ['sunct suna short lasting neuralgiform attacks', ['sunct-suna-ichd3']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],

@@ -7763,6 +7763,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/indomethacin-headache-ichd3-v819.js (spec-v819: ICHD-3 paroxysmal hemicrania and hemicrania continua — clinical disclaimer)
 - `indomethacin-headache-ichd3`
 
+### lib/sunct-suna-ichd3-v820.js (spec-v820: ICHD-3 SUNCT and SUNA — clinical disclaimer)
+- `sunct-suna-ichd3`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
