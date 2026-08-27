@@ -6370,5 +6370,11 @@
     "tic douloureux",
     "electric shock face pain",
     "facial pain triggered by touch"
+  ],
+  "tension-headache-ichd3": [
+    "tension headache criteria",
+    "tension type headache",
+    "band around the head headache",
+    "pressing headache both sides"
   ]
 }

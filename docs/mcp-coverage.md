@@ -7757,6 +7757,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/trigeminal-neuralgia-ichd3-v817.js (spec-v817: ICHD-3 trigeminal neuralgia — clinical disclaimer)
 - `trigeminal-neuralgia-ichd3`
 
+### lib/tension-headache-ichd3-v818.js (spec-v818: ICHD-3 tension-type headache — clinical disclaimer)
+- `tension-headache-ichd3`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
