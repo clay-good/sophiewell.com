@@ -6484,5 +6484,12 @@
     "heparin induced thrombocytopenia",
     "hit probability",
     "platelets dropped on heparin"
+  ],
+  "masld-criteria": [
+    "masld",
+    "metald",
+    "fatty liver new name",
+    "steatotic liver disease criteria",
+    "nafld renamed"
   ]
 }

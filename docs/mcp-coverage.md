@@ -7814,6 +7814,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/four-ts-hit-v836.js (spec-v836: 4Ts score for heparin-induced thrombocytopenia — clinical disclaimer)
 - `four-ts-hit`
 
+### lib/masld-criteria-v837.js (spec-v837: MASLD and MetALD 2023 nomenclature — clinical disclaimer)
+- `masld-criteria`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
