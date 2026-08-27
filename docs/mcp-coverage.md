@@ -7778,6 +7778,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/autoimmune-encephalitis-v824.js (spec-v824: Graus 2016 autoimmune encephalitis criteria — clinical disclaimer)
 - `autoimmune-encephalitis`
 
+### lib/igg4-rd-2020-v825.js (spec-v825: 2020 revised comprehensive criteria for IgG4-related disease — clinical disclaimer)
+- `igg4-rd-2020`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

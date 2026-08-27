@@ -705,6 +705,7 @@ const PROBES = [
   ['hypermobile ehlers danlos 2017 criteria beighton', ['heds-2017']],
   ['neuromyelitis optica nmosd aquaporin criteria', ['nmosd-2015']],
   ['autoimmune encephalitis graus possible criteria', ['autoimmune-encephalitis']],
+  ['igg4 related disease diagnostic criteria', ['igg4-rd-2020']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],

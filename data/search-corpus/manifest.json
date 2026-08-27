@@ -15,16 +15,16 @@
     "expected",
     "bands"
   ],
-  "count": 1616,
-  "withSummary": 1592,
+  "count": 1617,
+  "withSummary": 1593,
   "budgetGzip": 231424,
-  "gzipBytes": 53381,
-  "hash": "492e6a9d5fd3fde4",
+  "gzipBytes": 53421,
+  "hash": "b1c06fbee30e9459",
   "detail": {
     "file": "corpus-detail.json",
-    "count": 1616,
+    "count": 1617,
     "budgetGzip": 327680,
-    "gzipBytes": 196559,
-    "hash": "e114757ac6ac3e40"
+    "gzipBytes": 196703,
+    "hash": "56a0fc40bb13afb4"
   }
 }
