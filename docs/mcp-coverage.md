@@ -7736,6 +7736,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/mallampati-v810.js (spec-v810: modified Mallampati oropharyngeal view — clinical disclaimer)
 - `mallampati`
 
+### lib/gold-coast-als-v811.js (spec-v811: Gold Coast ALS diagnostic criteria — clinical disclaimer)
+- `gold-coast-als`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

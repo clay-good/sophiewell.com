@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:36843276-a045-5e81-8d3b-f1cd8ba1714b",
+  "serialNumber": "urn:uuid:8f86603b-b291-5ba0-86d9-1bdcd8bf4ba2",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-27T00:30:50.254Z",
+    "timestamp": "2026-08-27T00:38:05.508Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1602 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1603 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "bffe53c66d5cec4067a97f0cffb02cce3b57c9fbc28b373bcdec143477544cb3"
+          "content": "43e252860e39d1a451f8de6cad0d0ee05e84fa2a20965a2f26441e5fe11da84d"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "103655"
+          "value": "103712"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "284b1085cd8bb25a5429b0c22dffbf909bdd00bf7a40c30228a297d4208cee1f"
+          "content": "b75c52bbe985c221164d3e97b8a76cba915c629c8ab58cd5b3917144f101f0ce"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "469895"
+          "value": "470128"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e7b4fda9878799ba11d0e2f4cb5db17f092924cfe11ddd0091eb7c6a35a70722"
+          "content": "ab017df6a3853f43d11e6df3dee35f07fbd9e888a3f979928c851b1a1567d465"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "245795"
+          "value": "245949"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "73fdb9c6b83a7944e0d3a935844722af598391c20873704b19713e416d443a7a"
+          "content": "5a437c3fa0d5c8b57023e74bfdc658590fd7e7432f42b7f6635cdd3e38116c6e"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "89264"
+          "value": "89325"
         }
       ]
     },
@@ -5537,6 +5537,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/gold-coast-als-v811.js",
+      "type": "file",
+      "name": "lib/gold-coast-als-v811.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "aded1e0e2df0f998626a41377381646dd7243c5c24ac1acbc5d9c9d0c3c929d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6774"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/goligher-hemorrhoids-v351.js",
       "type": "file",
       "name": "lib/goligher-hemorrhoids-v351.js",
@@ -8693,7 +8714,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2becd93cedf6c97010e12823f74b245bab193735b65bcae9c5950113900c4bc7"
+          "content": "26f41f1b493d156c8d12d3d187cea50e4ff943dfc9781b4046e9f3e2896c52c1"
         }
       ],
       "properties": [
@@ -8703,7 +8724,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2216140"
+          "value": "2217946"
         }
       ]
     },
@@ -20489,6 +20510,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/gold-coast-als-v811.js",
+      "type": "file",
+      "name": "mcp/adapters/gold-coast-als-v811.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "169a8c8b3e445a59927eba4dcbd0ec0bc599cd747278035b44ecc12610f2f7ef"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2216"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/goligher-hemorrhoids-v351.js",
       "type": "file",
       "name": "mcp/adapters/goligher-hemorrhoids-v351.js",
@@ -29819,7 +29861,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "17a2093c6146e473a53e72532214f2b9b86aa038c5ce544aa74a2ca2ad00afb3"
+          "content": "ee60f54b85d15ef6098f8cf2bffa68df0cf81f026fc8d5e5b6f4e9e4a4e5a50c"
         }
       ],
       "properties": [
@@ -29829,7 +29871,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "74058"
+          "value": "74169"
         }
       ]
     },
@@ -44152,6 +44194,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2570"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v811.js",
+      "type": "file",
+      "name": "views/group-v811.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "785345b4bea391359ed818485490f8da68740d093d5289263a46fff66b35216e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4141"
         }
       ]
     },
@@ -60012,6 +60075,7 @@
         "urn:sophiewell:file:source:lib/glogau-photoaging-v475.js",
         "urn:sophiewell:file:source:lib/gmfcs-v462.js",
         "urn:sophiewell:file:source:lib/gold-abe-v316.js",
+        "urn:sophiewell:file:source:lib/gold-coast-als-v811.js",
         "urn:sophiewell:file:source:lib/goligher-hemorrhoids-v351.js",
         "urn:sophiewell:file:source:lib/goutallier-v437.js",
         "urn:sophiewell:file:source:lib/gpa-v639.js",
@@ -61173,6 +61237,7 @@
         "urn:sophiewell:file:source:views/group-v808.js",
         "urn:sophiewell:file:source:views/group-v809.js",
         "urn:sophiewell:file:source:views/group-v810.js",
+        "urn:sophiewell:file:source:views/group-v811.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
@@ -61410,6 +61475,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/glogau-photoaging-v475.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/gmfcs-v462.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/gold-abe-v316.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/gold-coast-als-v811.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/goligher-hemorrhoids-v351.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/goutallier-v437.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/gpa-v639.js",
@@ -61957,7 +62023,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "36843276a0454e81"
+      "value": "8f86603bb2919ba0"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -61969,7 +62035,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2082"
+      "value": "2085"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

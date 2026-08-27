@@ -691,6 +691,7 @@ const PROBES = [
   ['hepatorenal syndrome aki diagnostic criteria cirrhosis', ['hrs-aki']],
   ['forrest classification bleeding ulcer endoscopy stigmata', ['forrest-classification']],
   ['mallampati oropharyngeal view airway class', ['mallampati']],
+  ['gold coast criteria als diagnosis motor neuron', ['gold-coast-als']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],

@@ -6328,5 +6328,11 @@
     "airway view assessment",
     "oropharyngeal view grading",
     "how much of the throat is visible"
+  ],
+  "gold-coast-als": [
+    "gold coast criteria",
+    "als diagnostic criteria",
+    "motor neuron disease diagnosis",
+    "amyotrophic lateral sclerosis criteria"
   ]
 }
