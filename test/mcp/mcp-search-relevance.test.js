@@ -704,6 +704,7 @@ const PROBES = [
   ['ghent nosology marfan syndrome systemic score', ['ghent-marfan']],
   ['hypermobile ehlers danlos 2017 criteria beighton', ['heds-2017']],
   ['neuromyelitis optica nmosd aquaporin criteria', ['nmosd-2015']],
+  ['autoimmune encephalitis graus possible criteria', ['autoimmune-encephalitis']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],

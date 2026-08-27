@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:ba6cff42-7d84-588f-8ba1-893db1765aac",
+  "serialNumber": "urn:uuid:b249e40b-ff5a-5c2c-84a1-dff204abea1a",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-27T03:06:30.607Z",
+    "timestamp": "2026-08-27T03:14:37.735Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1615 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1616 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "81c3a4983f8015caae3b6ec92f6d96044664b13cc4db09a28864b94f5cdd070b"
+          "content": "ceff15000fff4cb0edc9e0bf0db1f422103d83a7004691dea662ee0f504743bc"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "104394"
+          "value": "104450"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b80e3ff9fc04dd5d2ba48c07e8db6d32d5b1a7d2290d28ac867a0f0fdf42b3f0"
+          "content": "ec5bf8c2f95ff972c69754aff92a99e64cce2a58ace2ee8c8e06866721e00de7"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "472932"
+          "value": "473166"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2661231deea131fb5d18ece0486d6c9716e70dbd02538e975d1e0d509b0ac0fe"
+          "content": "75bec22056e263c63817fc6354baccba6a69eed41628c3494d1d14e89b0cae2c"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "247831"
+          "value": "247994"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3a986b2e4543d8d54e910e78a046d3f34b1a6074c6ec9a37427076fb40aeb879"
+          "content": "24efefe291fb8ffcbfe0f8d79c7fe73af105d5e84b4ff06ed6b5231a7f780b8e"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "90089"
+          "value": "90158"
         }
       ]
     },
@@ -1123,6 +1123,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "5293"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/autoimmune-encephalitis-v824.js",
+      "type": "file",
+      "name": "lib/autoimmune-encephalitis-v824.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "aea180929a1c3e96008ff75d6138ee7ee6cb7230d2e327bc6aadd89e2844eb79"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8413"
         }
       ]
     },
@@ -8819,7 +8840,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "44d74a9ddae15b8a5ea6859e20c1dc45c88a1b9c44c314f018c52c8956c840e0"
+          "content": "7d8840d18019c42275f8e70d495c98265637219ec94f016833f0ae811847def9"
         }
       ],
       "properties": [
@@ -8829,7 +8850,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2243141"
+          "value": "2245294"
         }
       ]
     },
@@ -16579,6 +16600,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2523"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/autoimmune-encephalitis-v824.js",
+      "type": "file",
+      "name": "mcp/adapters/autoimmune-encephalitis-v824.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "29adfb372281b90f340d12c79f803b7fbaf8d948057d3afd3edb5fb7cb594803"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2236"
         }
       ]
     },
@@ -30365,7 +30407,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "16f8eef556607d4e5f1552d563dcd698fa8b9d83dde3e7f297f58284217ae8c0"
+          "content": "d8e371b7cb3fa84dfe4f8f680bead5f43e9a9df80a84decdf073ef013308f2fd"
         }
       ],
       "properties": [
@@ -30375,7 +30417,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "75651"
+          "value": "75800"
         }
       ]
     },
@@ -44971,6 +45013,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "5359"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v824.js",
+      "type": "file",
+      "name": "views/group-v824.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c2e2cb62454ecfaefccd571fc89fe88a194f806a127db5ee70aaadb59da4f8d1"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4831"
         }
       ]
     },
@@ -60621,6 +60684,7 @@
         "urn:sophiewell:file:source:lib/atlanta-pancreatitis-v445.js",
         "urn:sophiewell:file:source:lib/atrial-enlargement-v787.js",
         "urn:sophiewell:file:source:lib/ausdrisk-v711.js",
+        "urn:sophiewell:file:source:lib/autoimmune-encephalitis-v824.js",
         "urn:sophiewell:file:source:lib/av-fistula-v300.js",
         "urn:sophiewell:file:source:lib/awol-v777.js",
         "urn:sophiewell:file:source:lib/baden-walker-v432.js",
@@ -62018,6 +62082,7 @@
         "urn:sophiewell:file:source:views/group-v821.js",
         "urn:sophiewell:file:source:views/group-v822.js",
         "urn:sophiewell:file:source:views/group-v823.js",
+        "urn:sophiewell:file:source:views/group-v824.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
@@ -62056,6 +62121,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/atlanta-pancreatitis-v445.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/atrial-enlargement-v787.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ausdrisk-v711.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/autoimmune-encephalitis-v824.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/av-fistula-v300.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/awol-v777.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/baden-walker-v432.js",
@@ -62815,7 +62881,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "ba6cff427d84488f"
+      "value": "b249e40bff5a5c2c"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -62827,7 +62893,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2121"
+      "value": "2124"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

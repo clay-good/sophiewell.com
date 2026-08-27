@@ -646,6 +646,7 @@ import * as sunctSunaIchd3V820 from '../../lib/sunct-suna-ichd3-v820.js';
 import * as ghentMarfanV821 from '../../lib/ghent-marfan-v821.js';
 import * as heds2017V822 from '../../lib/heds-2017-v822.js';
 import * as nmosd2015V823 from '../../lib/nmosd-2015-v823.js';
+import * as autoimmuneEncephalitisV824 from '../../lib/autoimmune-encephalitis-v824.js';
 import * as sadPersonsV701 from '../../lib/sad-persons-v701.js';
 import * as edinburghClaudicationV702 from '../../lib/edinburgh-claudication-v702.js';
 import * as reimersMigrationPercentageV703 from '../../lib/reimers-migration-percentage-v703.js';
@@ -1337,6 +1338,7 @@ const MODULES = {
   'ghent-marfan-v821.js': ghentMarfanV821,
   'heds-2017-v822.js': heds2017V822,
   'nmosd-2015-v823.js': nmosd2015V823,
+  'autoimmune-encephalitis-v824.js': autoimmuneEncephalitisV824,
   'sad-persons-v701.js': sadPersonsV701,
   'edinburgh-claudication-v702.js': edinburghClaudicationV702,
   'reimers-migration-percentage-v703.js': reimersMigrationPercentageV703,

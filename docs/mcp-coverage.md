@@ -7775,6 +7775,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/nmosd-2015-v823.js (spec-v823: 2015 NMOSD consensus criteria — clinical disclaimer)
 - `nmosd-2015`
 
+### lib/autoimmune-encephalitis-v824.js (spec-v824: Graus 2016 autoimmune encephalitis criteria — clinical disclaimer)
+- `autoimmune-encephalitis`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
