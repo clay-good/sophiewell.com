@@ -6364,5 +6364,11 @@
     "rebound headache",
     "painkiller headache",
     "too many triptans"
+  ],
+  "trigeminal-neuralgia-ichd3": [
+    "trigeminal neuralgia",
+    "tic douloureux",
+    "electric shock face pain",
+    "facial pain triggered by touch"
   ]
 }
