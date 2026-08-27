@@ -7766,6 +7766,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/sunct-suna-ichd3-v820.js (spec-v820: ICHD-3 SUNCT and SUNA — clinical disclaimer)
 - `sunct-suna-ichd3`
 
+### lib/ghent-marfan-v821.js (spec-v821: revised Ghent nosology for Marfan syndrome — clinical disclaimer)
+- `ghent-marfan`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

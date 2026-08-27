@@ -643,6 +643,7 @@ import * as trigeminalNeuralgiaIchd3V817 from '../../lib/trigeminal-neuralgia-ic
 import * as tensionHeadacheIchd3V818 from '../../lib/tension-headache-ichd3-v818.js';
 import * as indomethacinHeadacheIchd3V819 from '../../lib/indomethacin-headache-ichd3-v819.js';
 import * as sunctSunaIchd3V820 from '../../lib/sunct-suna-ichd3-v820.js';
+import * as ghentMarfanV821 from '../../lib/ghent-marfan-v821.js';
 import * as sadPersonsV701 from '../../lib/sad-persons-v701.js';
 import * as edinburghClaudicationV702 from '../../lib/edinburgh-claudication-v702.js';
 import * as reimersMigrationPercentageV703 from '../../lib/reimers-migration-percentage-v703.js';
@@ -1331,6 +1332,7 @@ const MODULES = {
   'tension-headache-ichd3-v818.js': tensionHeadacheIchd3V818,
   'indomethacin-headache-ichd3-v819.js': indomethacinHeadacheIchd3V819,
   'sunct-suna-ichd3-v820.js': sunctSunaIchd3V820,
+  'ghent-marfan-v821.js': ghentMarfanV821,
   'sad-persons-v701.js': sadPersonsV701,
   'edinburgh-claudication-v702.js': edinburghClaudicationV702,
   'reimers-migration-percentage-v703.js': reimersMigrationPercentageV703,
