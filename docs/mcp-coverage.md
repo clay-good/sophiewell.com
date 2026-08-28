@@ -7844,6 +7844,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/aortic-regurgitation-stage-v846.js (spec-v846: ACC/AHA aortic regurgitation stages A to D — clinical disclaimer)
 - `aortic-regurgitation-stage`
 
+### lib/mitral-regurgitation-stage-v847.js (spec-v847: ACC/AHA primary mitral regurgitation stages A to D — clinical disclaimer)
+- `mitral-regurgitation-stage`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
