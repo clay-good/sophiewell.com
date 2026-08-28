@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:d6e34a70-fc24-51e0-8af8-90e4da3e07c4",
+  "serialNumber": "urn:uuid:1fa67627-cf2b-56b0-880d-a2478fa9f97d",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-28T19:25:22.176Z",
+    "timestamp": "2026-08-28T20:18:26.428Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1636 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1637 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "184c5652a13d9fe31683a663a93def27821aa8dfcc9c0fabf2aaa59b17e16f66"
+          "content": "026e7911ce34793dc34a44b163a2f95a8947be68badd4a7502326c885632ecf7"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "105615"
+          "value": "105670"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a4306404565156b524653fe93a075203533ec2f65d5ad4c5325607ad4fe34bd6"
+          "content": "c127d0c4645e76f129ae48faf97c44d49a479ae38c9e4dbd9f1eb364171ad381"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "477825"
+          "value": "478058"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "87f96c5a71aa6124d6399fa826fb3adad9888ef2649e52742c110fd0e53e749d"
+          "content": "ee7783a4c726c6d8f6fd337ca2cb6ed49607908b8c8433efe24de9db6df722d6"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "251079"
+          "value": "251240"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e4694cd38048d54690fe38dd49618b26bfc3b301cebcda9349eae487b5d41d10"
+          "content": "b32324cad55bcaa143f3c08da6d0b6993e4ec9228d4e3ceb535fb1fad6be4a51"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "91408"
+          "value": "91474"
         }
       ]
     },
@@ -9134,7 +9134,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "115e63a28e60546a6de05e96557d51d6c65376a0aa77122eee5d82b1f5ccbc6c"
+          "content": "2020151cdd7e9e4d8a73eab5932f434b7f1eea7efd19abaf7aeb2d2acf459185"
         }
       ],
       "properties": [
@@ -9144,7 +9144,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2287702"
+          "value": "2289877"
         }
       ]
     },
@@ -9376,6 +9376,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "5510"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/mitral-stenosis-stage-v845.js",
+      "type": "file",
+      "name": "lib/mitral-stenosis-stage-v845.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c93977ffc80b48b99a9ea70a82c353d9ee4e4436301fd3a7973da098d471d6cd"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "9235"
         }
       ]
     },
@@ -24899,6 +24920,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/mitral-stenosis-stage-v845.js",
+      "type": "file",
+      "name": "mcp/adapters/mitral-stenosis-stage-v845.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f93b986a2062c388e4cd0b1afd78ea13a5981375cb0a91b8f08a4a6a3741fa9f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1938"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/mixed-v227.js",
       "type": "file",
       "name": "mcp/adapters/mixed-v227.js",
@@ -31247,7 +31289,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ab131e76de4661e6ad2ccd99db1c908362041503b2a0865442561fc18908eac6"
+          "content": "8cbd423301a8e18b3cbb3c98f4c61c59358e2bc7cf4743707c79f929b0f095ac"
         }
       ],
       "properties": [
@@ -31257,7 +31299,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "78066"
+          "value": "78205"
         }
       ]
     },
@@ -46294,6 +46336,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4296"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v845.js",
+      "type": "file",
+      "name": "views/group-v845.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c43e8895ef5478bd11cf415bd05d25987b9cf0346dd63f532fe6ff2d96d1a8ea"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4545"
         }
       ]
     },
@@ -62337,6 +62400,7 @@
         "urn:sophiewell:file:source:lib/milch-condyle-v418.js",
         "urn:sophiewell:file:source:lib/miller-gingival-recession-v724.js",
         "urn:sophiewell:file:source:lib/mis-c-v795.js",
+        "urn:sophiewell:file:source:lib/mitral-stenosis-stage-v845.js",
         "urn:sophiewell:file:source:lib/mixed-v227.js",
         "urn:sophiewell:file:source:lib/mixed-v228.js",
         "urn:sophiewell:file:source:lib/mna-sf-v712.js",
@@ -63383,6 +63447,7 @@
         "urn:sophiewell:file:source:views/group-v842.js",
         "urn:sophiewell:file:source:views/group-v843.js",
         "urn:sophiewell:file:source:views/group-v844.js",
+        "urn:sophiewell:file:source:views/group-v845.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
@@ -63796,6 +63861,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/milch-condyle-v418.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/miller-gingival-recession-v724.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mis-c-v795.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/mitral-stenosis-stage-v845.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mixed-v227.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mixed-v228.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mna-sf-v712.js",
@@ -64201,7 +64267,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "d6e34a70fc24c1e0"
+      "value": "1fa67627cf2b06b0"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -64213,7 +64279,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2184"
+      "value": "2187"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

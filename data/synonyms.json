@@ -6536,5 +6536,12 @@
     "low gradient aortic stenosis",
     "paradoxical low flow aortic stenosis",
     "aortic stenosis stages"
+  ],
+  "mitral-stenosis-stage": [
+    "mitral stenosis severity",
+    "is this severe mitral stenosis",
+    "rheumatic mitral stenosis stage",
+    "mitral valve area 1.2",
+    "mitral stenosis stages"
   ]
 }

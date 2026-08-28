@@ -685,6 +685,7 @@ import diabetesDiagnosisV841 from './adapters/diabetes-diagnosis-v841.js';
 import hfStagesAbcdV842 from './adapters/hf-stages-abcd-v842.js';
 import bpCategoriesV843 from './adapters/bp-categories-v843.js';
 import aorticStenosisStageV844 from './adapters/aortic-stenosis-stage-v844.js';
+import mitralStenosisStageV845 from './adapters/mitral-stenosis-stage-v845.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
 import reimersMigrationPercentageV703 from './adapters/reimers-migration-percentage-v703.js';
@@ -1396,6 +1397,7 @@ const ADAPTER_MODULES = [
   ['hf-stages-abcd-v842', hfStagesAbcdV842],
   ['bp-categories-v843', bpCategoriesV843],
   ['aortic-stenosis-stage-v844', aorticStenosisStageV844],
+  ['mitral-stenosis-stage-v845', mitralStenosisStageV845],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],
   ['reimers-migration-percentage-v703', reimersMigrationPercentageV703],
