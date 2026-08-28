@@ -7835,6 +7835,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/bp-categories-v843.js (spec-v843: ACC/AHA blood pressure categories — clinical disclaimer)
 - `bp-categories`
 
+### lib/aortic-stenosis-stage-v844.js (spec-v844: ACC/AHA aortic stenosis stages A to D — clinical disclaimer)
+- `aortic-stenosis-stage`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

@@ -724,6 +724,7 @@ const PROBES = [
   ['diabetes diagnosis a1c fasting glucose criteria', ['diabetes-diagnosis']],
   ['heart failure stages a b c d acc aha', ['hf-stages-abcd']],
   ['blood pressure categories acc aha normal elevated stage 1', ['bp-categories']],
+  ['aortic stenosis stages acc aha low gradient d2 d3', ['aortic-stenosis-stage']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],

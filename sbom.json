@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:be4088fd-03ca-514b-8aab-76f725521b77",
+  "serialNumber": "urn:uuid:d6e34a70-fc24-51e0-8af8-90e4da3e07c4",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-28T18:31:55.289Z",
+    "timestamp": "2026-08-28T19:25:22.176Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1634 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1636 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "71816c23165ff2d7e70c6e232ffd353ebade4ff4754b1558080c84db830cb0a3"
+          "content": "184c5652a13d9fe31683a663a93def27821aa8dfcc9c0fabf2aaa59b17e16f66"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "105560"
+          "value": "105615"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6565e2bf2eb0fa4001ad14c243cad32648a534af87e8c3c56c0818879df3c9cb"
+          "content": "a4306404565156b524653fe93a075203533ec2f65d5ad4c5325607ad4fe34bd6"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "477592"
+          "value": "477825"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6cd003d6627ba96df7344d46407ae3bd455febef163cc0001f7ee5163231bc09"
+          "content": "87f96c5a71aa6124d6399fa826fb3adad9888ef2649e52742c110fd0e53e749d"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "250918"
+          "value": "251079"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f25475ed6159b5c232f44b82899cd6671251ba667d1316277761b478d273937d"
+          "content": "e4694cd38048d54690fe38dd49618b26bfc3b301cebcda9349eae487b5d41d10"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "91342"
+          "value": "91408"
         }
       ]
     },
@@ -997,6 +997,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2988"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/aortic-stenosis-stage-v844.js",
+      "type": "file",
+      "name": "lib/aortic-stenosis-stage-v844.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "de1f641aa25e2c4dd3f2aeed490352265c02029de4b351c89e0e9a26f644d0b5"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "12474"
         }
       ]
     },
@@ -9113,7 +9134,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "56d86d6addf224abeee1e9f14154a7f022226c8bd130e7a5c494bd9cedc22af5"
+          "content": "115e63a28e60546a6de05e96557d51d6c65376a0aa77122eee5d82b1f5ccbc6c"
         }
       ],
       "properties": [
@@ -9123,7 +9144,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2285047"
+          "value": "2287702"
         }
       ]
     },
@@ -16873,6 +16894,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "712"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/aortic-stenosis-stage-v844.js",
+      "type": "file",
+      "name": "mcp/adapters/aortic-stenosis-stage-v844.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3f8d1fd55960dcb125493632179b074777eb8abbdcadcfc5ef92a216410d78cb"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2103"
         }
       ]
     },
@@ -31205,7 +31247,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8898cfde2d425d63c15aa22e062f062a3510b555504e338401f15fa38fb132d2"
+          "content": "ab131e76de4661e6ad2ccd99db1c908362041503b2a0865442561fc18908eac6"
         }
       ],
       "properties": [
@@ -31215,7 +31257,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "77927"
+          "value": "78066"
         }
       ]
     },
@@ -46231,6 +46273,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2559"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v844.js",
+      "type": "file",
+      "name": "views/group-v844.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fe9921a43eea13b088e97a29590c848f2f4b555da260a437d79a69d675ad9f9d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4296"
         }
       ]
     },
@@ -61875,6 +61938,7 @@
         "urn:sophiewell:file:source:lib/angle-malocclusion-v720.js",
         "urn:sophiewell:file:source:lib/anthro-v238.js",
         "urn:sophiewell:file:source:lib/anthro-v272.js",
+        "urn:sophiewell:file:source:lib/aortic-stenosis-stage-v844.js",
         "urn:sophiewell:file:source:lib/arc-hbr-v594.js",
         "urn:sophiewell:file:source:lib/areds-v615.js",
         "urn:sophiewell:file:source:lib/arvc-tfc-v786.js",
@@ -63318,6 +63382,7 @@
         "urn:sophiewell:file:source:views/group-v841.js",
         "urn:sophiewell:file:source:views/group-v842.js",
         "urn:sophiewell:file:source:views/group-v843.js",
+        "urn:sophiewell:file:source:views/group-v844.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
@@ -63350,6 +63415,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/angle-malocclusion-v720.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/anthro-v238.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/anthro-v272.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/aortic-stenosis-stage-v844.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/arc-hbr-v594.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/areds-v615.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/arvc-tfc-v786.js",
@@ -64135,7 +64201,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "be4088fd03ca414b"
+      "value": "d6e34a70fc24c1e0"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -64147,7 +64213,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2181"
+      "value": "2184"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
