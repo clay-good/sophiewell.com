@@ -7832,6 +7832,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/hf-stages-abcd-v842.js (spec-v842: ACC/AHA/HFSA heart failure stages A to D — clinical disclaimer)
 - `hf-stages-abcd`
 
+### lib/bp-categories-v843.js (spec-v843: ACC/AHA blood pressure categories — clinical disclaimer)
+- `bp-categories`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

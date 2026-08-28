@@ -6522,5 +6522,12 @@
     "stage a b c d heart failure",
     "pre heart failure",
     "at risk for heart failure"
+  ],
+  "bp-categories": [
+    "blood pressure categories",
+    "is my blood pressure high",
+    "stage 1 hypertension",
+    "what does 135 over 95 mean",
+    "hypertension stages"
   ]
 }

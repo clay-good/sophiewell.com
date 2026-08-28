@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:7547be22-a61c-5ba1-860d-3dcb5de84b3c",
+  "serialNumber": "urn:uuid:be4088fd-03ca-514b-8aab-76f725521b77",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-28T15:53:09.843Z",
+    "timestamp": "2026-08-28T18:31:55.289Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0e44d6aaf81023e63a2ab8dc85edd01a694598cee399822e24f0fa96831c8a2c"
+          "content": "71816c23165ff2d7e70c6e232ffd353ebade4ff4754b1558080c84db830cb0a3"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "105509"
+          "value": "105560"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9bff2c717a607dff573f12545e6752767d3a6c3b3057386ca3235b79a506b511"
+          "content": "6565e2bf2eb0fa4001ad14c243cad32648a534af87e8c3c56c0818879df3c9cb"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "477360"
+          "value": "477592"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "74a9394b7a7496267dc3997ebc4d8b5e430db0eb19b0e9418741af94a7c3c403"
+          "content": "6cd003d6627ba96df7344d46407ae3bd455febef163cc0001f7ee5163231bc09"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "250765"
+          "value": "250918"
         }
       ]
     },
@@ -335,7 +335,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b"
+          "content": "8dd13c4dd66de0c9ec93c2c1561e5fec1902f144b677d3581cf56b124b04a1b8"
         }
       ],
       "properties": [
@@ -345,7 +345,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "7411"
+          "value": "3682"
         }
       ]
     },
@@ -356,7 +356,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d8ab9268c1d9c99912dc9c2b57873efd2641a28aee8f12b65cec8cee1d79a653"
+          "content": "048382388a01dabe029443f89e0e7396ff26fafa156cdd68a8e26256e3929f81"
         }
       ],
       "properties": [
@@ -366,7 +366,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "1812"
+          "value": "434"
         }
       ]
     },
@@ -377,7 +377,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a2f623e5e34259a4886cdef2bc7cfeaf23894393fff7717dee5bf2732ccf083d"
+          "content": "fbcbde6664e83fed988e81ebeb2bd107fc86530e0422475db0bfa11058693a12"
         }
       ],
       "properties": [
@@ -387,7 +387,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2397"
+          "value": "1112"
         }
       ]
     },
@@ -398,7 +398,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "29cdc69c3bbec5245236d27dc6814f351b1734f0fa4683ce2411de9837b56368"
+          "content": "d0e9b629aa93f9c5b8f14380585c8f3a064d43494f00abeaaa01f5261f1bc999"
         }
       ],
       "properties": [
@@ -408,7 +408,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "11142"
+          "value": "11875"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "149767f7b51a7576e5f1debf42824fd3a426acf1a955081350c9b6bdabeb3ed7"
+          "content": "f25475ed6159b5c232f44b82899cd6671251ba667d1316277761b478d273937d"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "91288"
+          "value": "91342"
         }
       ]
     },
@@ -1858,6 +1858,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3748"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/bp-categories-v843.js",
+      "type": "file",
+      "name": "lib/bp-categories-v843.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9d0291a7f64273cf1fa5c94601e7725fe5c376d28b8dcec30d22fbf5f5db3eb3"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6552"
         }
       ]
     },
@@ -9092,7 +9113,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "50064f80486643288b97ea30c4a2a30aeea22855ea8e146d26c0b80945efc79f"
+          "content": "56d86d6addf224abeee1e9f14154a7f022226c8bd130e7a5c494bd9cedc22af5"
         }
       ],
       "properties": [
@@ -9102,7 +9123,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2283163"
+          "value": "2285047"
         }
       ]
     },
@@ -17692,6 +17713,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1203"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/bp-categories-v843.js",
+      "type": "file",
+      "name": "mcp/adapters/bp-categories-v843.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e02552ed3cf1cba8351b667806db326a1991b1a280eb529cce82a15b863f379c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1125"
         }
       ]
     },
@@ -31163,7 +31205,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "21252e586b4d1138ea57e0f1e808a615c8e5d29ce4c9215fe93073e9d3219231"
+          "content": "8898cfde2d425d63c15aa22e062f062a3510b555504e338401f15fa38fb132d2"
         }
       ],
       "properties": [
@@ -31173,7 +31215,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "77818"
+          "value": "77927"
         }
       ]
     },
@@ -46168,6 +46210,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3917"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v843.js",
+      "type": "file",
+      "name": "views/group-v843.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "bbaeff62ee1b91984d853638b609b4300bfc7da6399f40eba08803a0d31e3819"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2559"
         }
       ]
     },
@@ -61853,6 +61916,7 @@
         "urn:sophiewell:file:source:lib/borrmann-gastric-v394.js",
         "urn:sophiewell:file:source:lib/bounds.js",
         "urn:sophiewell:file:source:lib/boyd-griffin-v458.js",
+        "urn:sophiewell:file:source:lib/bp-categories-v843.js",
         "urn:sophiewell:file:source:lib/brackets.js",
         "urn:sophiewell:file:source:lib/brodsky-tonsil-v388.js",
         "urn:sophiewell:file:source:lib/bromage-scale-v467.js",
@@ -63253,6 +63317,7 @@
         "urn:sophiewell:file:source:views/group-v840.js",
         "urn:sophiewell:file:source:views/group-v841.js",
         "urn:sophiewell:file:source:views/group-v842.js",
+        "urn:sophiewell:file:source:views/group-v843.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
@@ -63325,6 +63390,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/borden-davf-v441.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/borrmann-gastric-v394.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/boyd-griffin-v458.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/bp-categories-v843.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/brodsky-tonsil-v388.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/bromage-scale-v467.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/brooker-v452.js",
@@ -64069,7 +64135,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "7547be22a61cfba1"
+      "value": "be4088fd03ca414b"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -64081,7 +64147,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2178"
+      "value": "2181"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
