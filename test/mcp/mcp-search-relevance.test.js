@@ -721,6 +721,7 @@ const PROBES = [
   ['clinical obesity preclinical lancet commission', ['clinical-obesity']],
   ['atrial fibrillation stages permanent paroxysmal', ['af-stages-2023']],
   ['hfref hfpef hfimpef ejection fraction classification', ['hf-ef-classification']],
+  ['diabetes diagnosis a1c fasting glucose criteria', ['diabetes-diagnosis']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],

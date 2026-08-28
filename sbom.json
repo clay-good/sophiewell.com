@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:95950279-1df5-5ec4-8172-8eaa556cd793",
+  "serialNumber": "urn:uuid:9f89e171-6cf6-559f-85b7-dcbd57372446",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-28T15:30:50.723Z",
+    "timestamp": "2026-08-28T15:43:05.449Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1632 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1633 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e587cdaf87f41711663b3444da050c775bf378ac56c26abc4999e9a1a56ebe03"
+          "content": "18af508bce0ff6a473c336244f7d78695b943b00c57e4a3fcce945f440e4be10"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "105396"
+          "value": "105456"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "90d7ca346fa78ae20495c94f7ae2a11188a24ad9acab864bcd76b3dc0a25027d"
+          "content": "4e6f99ccbd5a50a7e4ed06efc99158569de470a16f4c99ffb29a1f712a32a15a"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "476894"
+          "value": "477127"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "532f4ac8639490031d748f298fd225cfe0e7c9f0098a257854ebbe013a6eea0c"
+          "content": "ec0834253a471c9ee71225a55194d03c76626ece4d26a401c72ae97d01b3c2d1"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "250453"
+          "value": "250611"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a60754e6b6bfee0fc3cca39aec122aef297e38c13135a5863b62b2abe7bc9c4e"
+          "content": "d1e0a3a076b636a537f0ec337a64e88c1326a31cc5bf55f350051fe191c3ae4d"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "91163"
+          "value": "91231"
         }
       ]
     },
@@ -3643,6 +3643,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "11583"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/diabetes-diagnosis-v841.js",
+      "type": "file",
+      "name": "lib/diabetes-diagnosis-v841.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "472972eae7fa430440ff70e0090e2fc22e2c195520a635e866796b1efba44adb"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "10174"
         }
       ]
     },
@@ -9050,7 +9071,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "317c1b409f6a912e1ce881b991b88f7d4b571d8b7110d7af17948db5be795f56"
+          "content": "cf7a9e98ce4e5c68c2fa8d8a1862928201ab12f46a93f951315c4893fa205639"
         }
       ],
       "properties": [
@@ -9060,7 +9081,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2278917"
+          "value": "2281110"
         }
       ]
     },
@@ -19330,6 +19351,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3268"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/diabetes-diagnosis-v841.js",
+      "type": "file",
+      "name": "mcp/adapters/diabetes-diagnosis-v841.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b562e8568d78ae64564518d574d0b8e7557003e690907b5acecdf19166e651c2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2014"
         }
       ]
     },
@@ -31079,7 +31121,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "579701b58d97118294c80ed323a985c416ec35292e1a342c543d53c0406d96c1"
+          "content": "3528a87b1699be3293eaf231c67022cc88743b6f21695616087519e125c0fe87"
         }
       ],
       "properties": [
@@ -31089,7 +31131,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "77578"
+          "value": "77707"
         }
       ]
     },
@@ -46042,6 +46084,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3419"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v841.js",
+      "type": "file",
+      "name": "views/group-v841.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d469b0561793a4ab2b9107d02cb9fda24216944d86623aad56dbaadc4129d2c2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4461"
         }
       ]
     },
@@ -61812,6 +61875,7 @@
         "urn:sophiewell:file:source:lib/dermatology-v223.js",
         "urn:sophiewell:file:source:lib/dermscore-v234.js",
         "urn:sophiewell:file:source:lib/dermuro-v191.js",
+        "urn:sophiewell:file:source:lib/diabetes-diagnosis-v841.js",
         "urn:sophiewell:file:source:lib/diastolic-function-ase-v664.js",
         "urn:sophiewell:file:source:lib/dimeglio-clubfoot-v387.js",
         "urn:sophiewell:file:source:lib/dive-v257.js",
@@ -63123,6 +63187,7 @@
         "urn:sophiewell:file:source:views/group-v838.js",
         "urn:sophiewell:file:source:views/group-v839.js",
         "urn:sophiewell:file:source:views/group-v840.js",
+        "urn:sophiewell:file:source:views/group-v841.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
@@ -63275,6 +63340,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/dermatology-v223.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dermscore-v234.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dermuro-v191.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/diabetes-diagnosis-v841.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/diastolic-function-ase-v664.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dimeglio-clubfoot-v387.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dive-v257.js",
@@ -63937,7 +64003,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "959502791df52ec4"
+      "value": "9f89e1716cf6a59f"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -63949,7 +64015,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2172"
+      "value": "2175"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
