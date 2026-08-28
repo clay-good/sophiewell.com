@@ -726,6 +726,7 @@ const PROBES = [
   ['blood pressure categories acc aha normal elevated stage 1', ['bp-categories']],
   ['aortic stenosis stages acc aha low gradient d2 d3', ['aortic-stenosis-stage']],
   ['mitral stenosis stages acc aha valve area pressure half time', ['mitral-stenosis-stage']],
+  ['aortic regurgitation stages acc aha c1 c2 end systolic diameter', ['aortic-regurgitation-stage']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],

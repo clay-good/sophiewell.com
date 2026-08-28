@@ -6543,5 +6543,12 @@
     "rheumatic mitral stenosis stage",
     "mitral valve area 1.2",
     "mitral stenosis stages"
+  ],
+  "aortic-regurgitation-stage": [
+    "aortic regurgitation severity",
+    "is this severe aortic regurgitation",
+    "aortic insufficiency stage",
+    "when to operate aortic regurgitation",
+    "aortic regurgitation stages"
   ]
 }

@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:1fa67627-cf2b-56b0-880d-a2478fa9f97d",
+  "serialNumber": "urn:uuid:69738f91-ce52-5c92-8ce0-7c47fad36248",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-28T20:18:26.428Z",
+    "timestamp": "2026-08-28T21:44:38.313Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1637 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1638 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "026e7911ce34793dc34a44b163a2f95a8947be68badd4a7502326c885632ecf7"
+          "content": "f06849fedc5e9c043044cc7ed5739db135f51a7bb8e58937c35b9d8eb5e729eb"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "105670"
+          "value": "105730"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c127d0c4645e76f129ae48faf97c44d49a479ae38c9e4dbd9f1eb364171ad381"
+          "content": "ffc545d1c6664c46b31d9adc3d019c6d05f6573e54db0ea9042604b4e851ac79"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "478058"
+          "value": "478293"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ee7783a4c726c6d8f6fd337ca2cb6ed49607908b8c8433efe24de9db6df722d6"
+          "content": "0736bdaa85fa53ed21c5ba2a18a2515929d55e2e4750afe204f512567f30f94e"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "251240"
+          "value": "251406"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b32324cad55bcaa143f3c08da6d0b6993e4ec9228d4e3ceb535fb1fad6be4a51"
+          "content": "1baf12b002e6b721d32cb489f306ed61daf0b663bd7a22c755695525a0f91129"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "91474"
+          "value": "91550"
         }
       ]
     },
@@ -997,6 +997,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2988"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/aortic-regurgitation-stage-v846.js",
+      "type": "file",
+      "name": "lib/aortic-regurgitation-stage-v846.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2d0a184f7928ff430da10f5226b0aa19d538654b6c5d0a466559372c1a7891c0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "12048"
         }
       ]
     },
@@ -9134,7 +9155,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2020151cdd7e9e4d8a73eab5932f434b7f1eea7efd19abaf7aeb2d2acf459185"
+          "content": "d75983c8245035236aa8566209421f119e9a9bcf782a3727fe7f6e434ef9242b"
         }
       ],
       "properties": [
@@ -9144,7 +9165,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2289877"
+          "value": "2292501"
         }
       ]
     },
@@ -16915,6 +16936,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "712"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/aortic-regurgitation-stage-v846.js",
+      "type": "file",
+      "name": "mcp/adapters/aortic-regurgitation-stage-v846.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6ee5025de71f405806c9dd97a9658139899bb6af9d43a385c4a4b31c349c64f2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2596"
         }
       ]
     },
@@ -31289,7 +31331,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8cbd423301a8e18b3cbb3c98f4c61c59358e2bc7cf4743707c79f929b0f095ac"
+          "content": "a28f530af3a18b57382b59886e8e4f2b80d5a27cb06630bfba1cd690602ce8ed"
         }
       ],
       "properties": [
@@ -31299,7 +31341,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "78205"
+          "value": "78364"
         }
       ]
     },
@@ -46357,6 +46399,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4545"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v846.js",
+      "type": "file",
+      "name": "views/group-v846.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c874a8f0e2fdc6736f80c9b7625f62647ad4953e43535e402351eb932f5c3084"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4796"
         }
       ]
     },
@@ -62001,6 +62064,7 @@
         "urn:sophiewell:file:source:lib/angle-malocclusion-v720.js",
         "urn:sophiewell:file:source:lib/anthro-v238.js",
         "urn:sophiewell:file:source:lib/anthro-v272.js",
+        "urn:sophiewell:file:source:lib/aortic-regurgitation-stage-v846.js",
         "urn:sophiewell:file:source:lib/aortic-stenosis-stage-v844.js",
         "urn:sophiewell:file:source:lib/arc-hbr-v594.js",
         "urn:sophiewell:file:source:lib/areds-v615.js",
@@ -63448,6 +63512,7 @@
         "urn:sophiewell:file:source:views/group-v843.js",
         "urn:sophiewell:file:source:views/group-v844.js",
         "urn:sophiewell:file:source:views/group-v845.js",
+        "urn:sophiewell:file:source:views/group-v846.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
@@ -63480,6 +63545,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/angle-malocclusion-v720.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/anthro-v238.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/anthro-v272.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/aortic-regurgitation-stage-v846.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/aortic-stenosis-stage-v844.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/arc-hbr-v594.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/areds-v615.js",
@@ -64267,7 +64333,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "1fa67627cf2b06b0"
+      "value": "69738f91ce521c92"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -64279,7 +64345,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2187"
+      "value": "2190"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
