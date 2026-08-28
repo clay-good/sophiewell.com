@@ -7829,6 +7829,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/diabetes-diagnosis-v841.js (spec-v841: diabetes and prediabetes diagnostic criteria — clinical disclaimer)
 - `diabetes-diagnosis`
 
+### lib/hf-stages-abcd-v842.js (spec-v842: ACC/AHA/HFSA heart failure stages A to D — clinical disclaimer)
+- `hf-stages-abcd`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

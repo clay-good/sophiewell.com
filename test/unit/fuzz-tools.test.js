@@ -664,6 +664,7 @@ import * as clinicalObesityV838 from '../../lib/clinical-obesity-v838.js';
 import * as afStages2023V839 from '../../lib/af-stages-2023-v839.js';
 import * as hfEfClassificationV840 from '../../lib/hf-ef-classification-v840.js';
 import * as diabetesDiagnosisV841 from '../../lib/diabetes-diagnosis-v841.js';
+import * as hfStagesAbcdV842 from '../../lib/hf-stages-abcd-v842.js';
 import * as sadPersonsV701 from '../../lib/sad-persons-v701.js';
 import * as edinburghClaudicationV702 from '../../lib/edinburgh-claudication-v702.js';
 import * as reimersMigrationPercentageV703 from '../../lib/reimers-migration-percentage-v703.js';
@@ -1373,6 +1374,7 @@ const MODULES = {
   'af-stages-2023-v839.js': afStages2023V839,
   'hf-ef-classification-v840.js': hfEfClassificationV840,
   'diabetes-diagnosis-v841.js': diabetesDiagnosisV841,
+  'hf-stages-abcd-v842.js': hfStagesAbcdV842,
   'sad-persons-v701.js': sadPersonsV701,
   'edinburgh-claudication-v702.js': edinburghClaudicationV702,
   'reimers-migration-percentage-v703.js': reimersMigrationPercentageV703,
