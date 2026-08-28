@@ -660,6 +660,7 @@ import * as poiDiagnosisV834 from '../../lib/poi-diagnosis-v834.js';
 import * as acromegalyBiochemV835 from '../../lib/acromegaly-biochem-v835.js';
 import * as fourTsHitV836 from '../../lib/four-ts-hit-v836.js';
 import * as masldCriteriaV837 from '../../lib/masld-criteria-v837.js';
+import * as clinicalObesityV838 from '../../lib/clinical-obesity-v838.js';
 import * as sadPersonsV701 from '../../lib/sad-persons-v701.js';
 import * as edinburghClaudicationV702 from '../../lib/edinburgh-claudication-v702.js';
 import * as reimersMigrationPercentageV703 from '../../lib/reimers-migration-percentage-v703.js';
@@ -1365,6 +1366,7 @@ const MODULES = {
   'acromegaly-biochem-v835.js': acromegalyBiochemV835,
   'four-ts-hit-v836.js': fourTsHitV836,
   'masld-criteria-v837.js': masldCriteriaV837,
+  'clinical-obesity-v838.js': clinicalObesityV838,
   'sad-persons-v701.js': sadPersonsV701,
   'edinburgh-claudication-v702.js': edinburghClaudicationV702,
   'reimers-migration-percentage-v703.js': reimersMigrationPercentageV703,

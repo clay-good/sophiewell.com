@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:55484a6d-7d67-5c22-8b83-b6f286963912",
+  "serialNumber": "urn:uuid:d31567be-967f-53c2-8b6a-376c453dc7c0",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-27T05:15:51.160Z",
+    "timestamp": "2026-08-28T14:42:43.613Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1629 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1630 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "07358803f774cf68171cd13de3e89c2cdd23efc02e02b5fd6f1735b8332b58b1"
+          "content": "744499a259ed7566d46713ef8328145c514937e754b80563eeca74212d170259"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "105212"
+          "value": "105277"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "500a660139789958abcf8d65fbd8eb37f654e2020c99b1463e5f6004487f90be"
+          "content": "fd518f16a8b7409d835884d287ff6b86fb19460f24550179828fefee81df6a78"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "476195"
+          "value": "476428"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8915d866ba4ba41784c5001bb1a3adf462bf21df169e884b819bb5bde025b953"
+          "content": "7376b9dd433693f6dcc5cc7d2486351136ca703a9bba44993c5cfa00cbee2980"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "249983"
+          "value": "250139"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9c9c7a80faad56f8f17f12a6ac19cd79fa5fb08619dd7de5c0e2973c422055a5"
+          "content": "07e7417a2539a2d57c0383bc4e970ed75b50b8222d4b1046d77bb2f88553b3c0"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "90959"
+          "value": "91030"
         }
       ]
     },
@@ -2719,6 +2719,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4841"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/clinical-obesity-v838.js",
+      "type": "file",
+      "name": "lib/clinical-obesity-v838.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "742a529bbd6a43b4a9f695f82f2134c5bf24b16ae67e2e8cbdffb39f4b198cb3"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8584"
         }
       ]
     },
@@ -8987,7 +9008,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "08287e44cffdb2679e786276da3f484924cebb24ac4fb58112cde846cc36a186"
+          "content": "4df4345e6a0e7c651b22bb56761ee4fd2aebfebb7709b7916aed4298fba583cc"
         }
       ],
       "properties": [
@@ -8997,7 +9018,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2272520"
+          "value": "2274728"
         }
       ]
     },
@@ -18427,6 +18448,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2348"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/clinical-obesity-v838.js",
+      "type": "file",
+      "name": "mcp/adapters/clinical-obesity-v838.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "aa1e48cb5974a086c583469b65b330c762c91ea793b1669b04a3acf893990575"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1999"
         }
       ]
     },
@@ -30953,7 +30995,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7720523863439d7bc8583e967ac0514f19521ca6bb3eb1b64c3286d985654d91"
+          "content": "caf52bfd24d110218515cf5479178089bfe928e70539bc0a9a530cf14d06ce59"
         }
       ],
       "properties": [
@@ -30963,7 +31005,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "77211"
+          "value": "77332"
         }
       ]
     },
@@ -45853,6 +45895,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "6261"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v838.js",
+      "type": "file",
+      "name": "views/group-v838.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4dd62631bf1977b59265d65fc6c2bc7f5b29ac371b28c39529b62489ea38a682"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4300"
         }
       ]
     },
@@ -61579,6 +61642,7 @@
         "urn:sophiewell:file:source:lib/clark-level-v340.js",
         "urn:sophiewell:file:source:lib/clavien-dindo-v320.js",
         "urn:sophiewell:file:source:lib/cleveland-constipation-v665.js",
+        "urn:sophiewell:file:source:lib/clinical-obesity-v838.js",
         "urn:sophiewell:file:source:lib/clinical-v4.js",
         "urn:sophiewell:file:source:lib/clinical-v5.js",
         "urn:sophiewell:file:source:lib/clinical-v6.js",
@@ -62928,6 +62992,7 @@
         "urn:sophiewell:file:source:views/group-v835.js",
         "urn:sophiewell:file:source:views/group-v836.js",
         "urn:sophiewell:file:source:views/group-v837.js",
+        "urn:sophiewell:file:source:views/group-v838.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
@@ -63040,6 +63105,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/clark-level-v340.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/clavien-dindo-v320.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cleveland-constipation-v665.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/clinical-obesity-v838.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/clinical-v4.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/clinical-v5.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/clinical-v6.js",
@@ -63739,7 +63805,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "55484a6d7d675c22"
+      "value": "d31567be967fe3c2"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -63751,7 +63817,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2163"
+      "value": "2166"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

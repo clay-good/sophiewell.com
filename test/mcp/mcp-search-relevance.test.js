@@ -718,6 +718,7 @@ const PROBES = [
   ['acromegaly igf1 growth hormone ogtt nadir', ['acromegaly-biochem']],
   ['4ts score heparin induced thrombocytopenia', ['four-ts-hit']],
   ['masld metald steatotic liver disease criteria', ['masld-criteria']],
+  ['clinical obesity preclinical lancet commission', ['clinical-obesity']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],
