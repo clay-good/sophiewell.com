@@ -7820,6 +7820,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/clinical-obesity-v838.js (spec-v838: 2025 Lancet Commission clinical obesity — clinical disclaimer)
 - `clinical-obesity`
 
+### lib/af-stages-2023-v839.js (spec-v839: 2023 stage-based classification of atrial fibrillation — clinical disclaimer)
+- `af-stages-2023`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
