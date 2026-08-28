@@ -7823,6 +7823,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/af-stages-2023-v839.js (spec-v839: 2023 stage-based classification of atrial fibrillation — clinical disclaimer)
 - `af-stages-2023`
 
+### lib/hf-ef-classification-v840.js (spec-v840: heart failure classification by ejection fraction — clinical disclaimer)
+- `hf-ef-classification`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

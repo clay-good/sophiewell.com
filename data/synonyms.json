@@ -6503,5 +6503,11 @@
     "af staging",
     "permanent vs persistent af",
     "pre-af"
+  ],
+  "hf-ef-classification": [
+    "hfref hfpef hfmref",
+    "hfimpef",
+    "ejection fraction heart failure category",
+    "improved ejection fraction"
   ]
 }
