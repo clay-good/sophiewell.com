@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:e6176eb1-4b45-5543-83a3-5e817bf6ccd6",
+  "serialNumber": "urn:uuid:b692800b-5116-5b33-86a8-194dfe1ebc21",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-29T20:01:27.251Z",
+    "timestamp": "2026-08-29T20:10:34.159Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1671 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1672 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "52055c74a3218e3e3493b3c93edd49ca81d8a46977e4dd966fc876e5ad93fb22"
+          "content": "36aeb192394a0c066c37fd4f35ccd9144ffc56fc9e925ff3c873d6241b827152"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "107413"
+          "value": "107469"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "42cc9c92a9cb927c8662703f564e251a4f8cfd0def7f5ed2b6dc01d08f399f42"
+          "content": "c21f895a75ae58ecb4d1bc00070511dc1577f6a0f1efe0cfaf980936f73ab38d"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "485348"
+          "value": "485567"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1eff3d494c0096d83bfad618357a391022337111455ac992309c9583ebcc8ca5"
+          "content": "a1f6ef1d7952354c59e7633795e8bcd37d9ac54dc932fc1a76083b0a393415a8"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "256542"
+          "value": "256697"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3432c87af348fb7b6e72041d3fc406f9ae5eedea71899d475a9726c95dacb65b"
+          "content": "f9b660d2c4526e3d98227662748f0054fc6f89351ac845a85a2af34f810c9440"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "93419"
+          "value": "93480"
         }
       ]
     },
@@ -9491,7 +9491,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2e2bacb07ee889020db1b24218a84043a2fccfed8ab23d6c3003ed14a050751e"
+          "content": "04b312ead37e878aeccf53c565b619cc828e581bcdabe420f17e955516c2b157"
         }
       ],
       "properties": [
@@ -9501,7 +9501,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2356943"
+          "value": "2358961"
         }
       ]
     },
@@ -16537,6 +16537,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3465"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/vitamin-d-level-v881.js",
+      "type": "file",
+      "name": "lib/vitamin-d-level-v881.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d28a76c402f67174161d539f209b6211a24773dd13eb7f4780f07042e4544a4a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7879"
         }
       ]
     },
@@ -32165,6 +32186,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/vitamin-d-level-v881.js",
+      "type": "file",
+      "name": "mcp/adapters/vitamin-d-level-v881.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "232c350e2d11ff8e9160fb150dc9cab26614f77c116bc754ba2976c20f20abb6"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1588"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/vras-v602.js",
       "type": "file",
       "name": "mcp/adapters/vras-v602.js",
@@ -32717,7 +32759,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2e494884c2246817545273e1bfbc197a776465d7052e302eed9bc68d4b8b84c5"
+          "content": "df18fc7f9434f18a595f388a9caed7526b4c0571c39c19ae827fd1e069866600"
         }
       ],
       "properties": [
@@ -32727,7 +32769,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "82257"
+          "value": "82372"
         }
       ]
     },
@@ -48499,6 +48541,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4751"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v881.js",
+      "type": "file",
+      "name": "views/group-v881.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "36c96e6256beef62d26c6044cf030b7478831a206dcae41356a53a6c6b2717b6"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3096"
         }
       ]
     },
@@ -64883,6 +64946,7 @@
         "urn:sophiewell:file:source:lib/vesikari-v530.js",
         "urn:sophiewell:file:source:lib/vhi10-v508.js",
         "urn:sophiewell:file:source:lib/vhwg-hernia-v666.js",
+        "urn:sophiewell:file:source:lib/vitamin-d-level-v881.js",
         "urn:sophiewell:file:source:lib/vras-v602.js",
         "urn:sophiewell:file:source:lib/vte-v106.js",
         "urn:sophiewell:file:source:lib/vur-grade-v425.js",
@@ -65658,6 +65722,7 @@
         "urn:sophiewell:file:source:views/group-v878.js",
         "urn:sophiewell:file:source:views/group-v879.js",
         "urn:sophiewell:file:source:views/group-v880.js",
+        "urn:sophiewell:file:source:views/group-v881.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
@@ -66382,6 +66447,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/vesikari-v530.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/vhi10-v508.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/vhwg-hernia-v666.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/vitamin-d-level-v881.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/vras-v602.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/vte-v106.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/vur-grade-v425.js",
@@ -66511,7 +66577,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "e6176eb14b456543"
+      "value": "b692800b51165b33"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -66523,7 +66589,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2289"
+      "value": "2292"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

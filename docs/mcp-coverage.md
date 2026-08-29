@@ -7943,6 +7943,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/ewgsop2-v880.js (spec-v880: EWGSOP2 sarcopenia algorithm — clinical disclaimer)
 - `ewgsop2`
 
+### lib/vitamin-d-level-v881.js (spec-v881: 25-hydroxyvitamin D level interpretation — clinical disclaimer)
+- `vitamin-d-level`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

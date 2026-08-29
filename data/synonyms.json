@@ -6781,5 +6781,12 @@
     "grip strength cutoff sarcopenia",
     "is this probable sarcopenia",
     "muscle mass index sarcopenia"
+  ],
+  "vitamin-d-level": [
+    "vitamin d level interpretation",
+    "is my vitamin d low",
+    "25 hydroxyvitamin d threshold",
+    "vitamin d deficiency cutoff",
+    "should i check a vitamin d level"
   ]
 }
