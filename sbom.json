@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:84244e45-158e-5dcf-89a4-a3fc9604bc30",
+  "serialNumber": "urn:uuid:e79252be-7945-5421-8c0c-0f79e4ec21d9",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-29T08:48:21.939Z",
+    "timestamp": "2026-08-29T08:58:55.688Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1645 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1646 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f87e07195213a9a7f818d7501dbb81ffc79e04087ac9a0d561c0a97f33a5b07a"
+          "content": "064d14ed94f1576947e53624a7ce48b3cf4966753391b46f5dbc357ad6a8bf2f"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "106129"
+          "value": "106173"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9668f1c88d9d64f941c45bebca7b9779160052aae736d7bd9c757332f9b2f99b"
+          "content": "91417e263657975f93a63860cfdb99e5adfadbceb63980201e9bb2ea29b1a85a"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "479886"
+          "value": "480105"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5855da47649fe49f81714c536959535b737d6e832f73025558e64bf456c38fc1"
+          "content": "377cd327487a963b3eca88c16494959ef0aa1f0c8c0c0f3e5cb2cd24c1e27117"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "252546"
+          "value": "252715"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d2a6df7434d705f53d244fa7aae96fd24cd899f20ce19113d0cc1de7878a7915"
+          "content": "84c4237db6b2f96fb673fa875c77218040bb79198008b3981ef4614069d2ea2f"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "92039"
+          "value": "92102"
         }
       ]
     },
@@ -5537,6 +5537,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/gastric-emptying-scintigraphy-v854.js",
+      "type": "file",
+      "name": "lib/gastric-emptying-scintigraphy-v854.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "17b52cc97043b4ec86ab00d8194e4b206f6a9606a33741fcd312bd1154bf950f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8197"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/gds-v295.js",
       "type": "file",
       "name": "lib/gds-v295.js",
@@ -9176,7 +9197,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7a36f24c609e4fa3b0089a079b59bf5736f969e51882b1912c0c0c0b61bee230"
+          "content": "9c63ac126540c11b1c6e91e05403248d53472f08b8f3e19ccaa5cdbd6873248f"
         }
       ],
       "properties": [
@@ -9186,7 +9207,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2306924"
+          "value": "2308876"
         }
       ]
     },
@@ -21413,6 +21434,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/gastric-emptying-scintigraphy-v854.js",
+      "type": "file",
+      "name": "mcp/adapters/gastric-emptying-scintigraphy-v854.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3a289d14faed0fd18ea708428ba96b7b943f03bd7469a14f85480bf46ae58f3d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2291"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/gds-v295.js",
       "type": "file",
       "name": "mcp/adapters/gds-v295.js",
@@ -31625,7 +31667,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3c329d4efaee48e564e3a45e2fe43c584aa910e33f657418ad37bb04e5dc8831"
+          "content": "6aee4821af1450572cf993b82a98fb51deaeb4fe777492d256da61fae10b2fde"
         }
       ],
       "properties": [
@@ -31635,7 +31677,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "79391"
+          "value": "79562"
         }
       ]
     },
@@ -46861,6 +46903,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4229"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v854.js",
+      "type": "file",
+      "name": "views/group-v854.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7b01c6016808afc4c7ff31a41850087017172ec3d625075e15a361449e11e1f2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3883"
         }
       ]
     },
@@ -62721,6 +62784,7 @@
         "urn:sophiewell:file:source:lib/gardner-robertson-v802.js",
         "urn:sophiewell:file:source:lib/gartland-supracondylar-v377.js",
         "urn:sophiewell:file:source:lib/gass-macular-hole-v471.js",
+        "urn:sophiewell:file:source:lib/gastric-emptying-scintigraphy-v854.js",
         "urn:sophiewell:file:source:lib/gds-v295.js",
         "urn:sophiewell:file:source:lib/geissler-carpal-v415.js",
         "urn:sophiewell:file:source:lib/gell-coombs-v426.js",
@@ -63968,6 +64032,7 @@
         "urn:sophiewell:file:source:views/group-v851.js",
         "urn:sophiewell:file:source:views/group-v852.js",
         "urn:sophiewell:file:source:views/group-v853.js",
+        "urn:sophiewell:file:source:views/group-v854.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
@@ -64206,6 +64271,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/gardner-robertson-v802.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/gartland-supracondylar-v377.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/gass-macular-hole-v471.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/gastric-emptying-scintigraphy-v854.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/gds-v295.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/geissler-carpal-v415.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/gell-coombs-v426.js",
@@ -64795,7 +64861,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "84244e45158efdcf"
+      "value": "e79252be79458421"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -64807,7 +64873,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2211"
+      "value": "2214"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

@@ -7865,6 +7865,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/constrictive-pericarditis-echo-v853.js (spec-v853: echocardiographic criteria for constrictive pericarditis — clinical disclaimer)
 - `constrictive-pericarditis-echo`
 
+### lib/gastric-emptying-scintigraphy-v854.js (spec-v854: reading a standardized 4-hour gastric emptying study — clinical disclaimer)
+- `gastric-emptying-scintigraphy`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

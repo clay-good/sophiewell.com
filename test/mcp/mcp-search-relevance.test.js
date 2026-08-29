@@ -734,6 +734,7 @@ const PROBES = [
   ['rassi score chagas heart disease death risk', ['rassi-chagas']],
   ['spontaneous bacterial peritonitis ascitic neutrophil count 250', ['sbp-ascitic-fluid']],
   ['constrictive pericarditis echo septal shift hepatic vein reversal', ['constrictive-pericarditis-echo']],
+  ['gastric emptying study four hour retention grade', ['gastric-emptying-scintigraphy']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],
