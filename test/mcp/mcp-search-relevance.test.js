@@ -729,6 +729,7 @@ const PROBES = [
   ['aortic regurgitation stages acc aha c1 c2 end systolic diameter', ['aortic-regurgitation-stage']],
   ['primary mitral regurgitation stages acc aha ejection fraction 60', ['mitral-regurgitation-stage']],
   ['tricuspid regurgitation stages acc aha hepatic vein reversal', ['tricuspid-regurgitation-stage']],
+  ['secondary functional mitral regurgitation stages acc aha', ['secondary-mitral-regurgitation-stage']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],

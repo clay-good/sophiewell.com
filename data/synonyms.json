@@ -6564,5 +6564,12 @@
     "tricuspid regurgitation stage",
     "leaky tricuspid valve grading",
     "tricuspid regurgitation stages"
+  ],
+  "secondary-mitral-regurgitation-stage": [
+    "secondary mitral regurgitation stage",
+    "functional mitral regurgitation severity",
+    "ischemic mitral regurgitation grading",
+    "is this severe functional mitral regurgitation",
+    "secondary mitral regurgitation stages"
   ]
 }
