@@ -726,6 +726,7 @@ import ipmnFukuokaV883 from './adapters/ipmn-fukuoka-v883.js';
 import eatSleepConsoleV884 from './adapters/eat-sleep-console-v884.js';
 import nioshLiftingV885 from './adapters/niosh-lifting-v885.js';
 import noiseExposureV886 from './adapters/noise-exposure-v886.js';
+import hivPepOccupationalV887 from './adapters/hiv-pep-occupational-v887.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
 import reimersMigrationPercentageV703 from './adapters/reimers-migration-percentage-v703.js';
@@ -1478,6 +1479,7 @@ const ADAPTER_MODULES = [
   ['eat-sleep-console-v884', eatSleepConsoleV884],
   ['niosh-lifting-v885', nioshLiftingV885],
   ['noise-exposure-v886', noiseExposureV886],
+  ['hiv-pep-occupational-v887', hivPepOccupationalV887],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],
   ['reimers-migration-percentage-v703', reimersMigrationPercentageV703],

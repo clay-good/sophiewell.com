@@ -7961,6 +7961,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/noise-exposure-v886.js (spec-v886: occupational noise exposure limits — clinical disclaimer)
 - `noise-exposure`
 
+### lib/hiv-pep-occupational-v887.js (spec-v887: occupational HIV exposure PEP decision — clinical disclaimer)
+- `hiv-pep-occupational`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

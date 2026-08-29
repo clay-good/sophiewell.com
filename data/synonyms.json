@@ -6823,5 +6823,12 @@
     "osha niosh noise standard",
     "hearing protection derating nrr",
     "decibel exposure time"
+  ],
+  "hiv-pep-occupational": [
+    "needlestick hiv prophylaxis",
+    "occupational hiv exposure",
+    "do i need pep after a needlestick",
+    "sharps injury source unknown",
+    "post exposure prophylaxis decision"
   ]
 }
