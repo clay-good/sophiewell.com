@@ -7934,6 +7934,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/ishoo-angioedema-v877.js (spec-v877: Ishoo angioedema staging — clinical disclaimer)
 - `ishoo-angioedema`
 
+### lib/membranous-risk-v878.js (spec-v878: KDIGO membranous nephropathy risk categories — clinical disclaimer)
+- `membranous-risk`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

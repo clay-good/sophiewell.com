@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:cd867d9a-cd8a-5eb2-8aed-53678e05ad88",
+  "serialNumber": "urn:uuid:5e87f732-4b00-5c02-86d0-2554b593316d",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-29T19:31:00.128Z",
+    "timestamp": "2026-08-29T19:42:57.513Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1668 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1669 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d1c555062f77242a8feb73a01a06f5a3e8ce14f483ad727d2e3070a927b54b9a"
+          "content": "7166ef46fcd618960fc64e54a08ff0b6914e789bff0e00c52ccee91a2a191a73"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "107268"
+          "value": "107317"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ea8c4b0e3131051fdfa304cbd62869cf45a73bce32857c32bacf30cc8132ac04"
+          "content": "39ce31a539ba5a90311d9ec9cc015ac44fc3490fca18776922705abbe7782b50"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "484722"
+          "value": "484934"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "149713a754f02f065196bb524f1178d5186bd3d140ccbada8ab36f072074c99c"
+          "content": "94bfedb25854a3ce68898958a6c07212e413fe91a2b30d83b6157822fec4ecc8"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "256085"
+          "value": "256240"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "77ecb251edb1e94fcf43702be8bbbdbe06bf0ee29419ea4fe2d659ab5743b146"
+          "content": "c0f10d62698710552b18bf68108bf4089f3fdf8bf54045ca51b4792cebcbbfb9"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "93267"
+          "value": "93321"
         }
       ]
     },
@@ -9380,6 +9380,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/membranous-risk-v878.js",
+      "type": "file",
+      "name": "lib/membranous-risk-v878.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ff774f72e82303f0c83c8091aaa6ea2bb3b4deeba5c6323985d910dd003d53f4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "10326"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/meniere-aao-hns-v708.js",
       "type": "file",
       "name": "lib/meniere-aao-hns-v708.js",
@@ -9428,7 +9449,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a4b03167b9b506dc84b6387b53b258f337cba92afb1f3e87248160f7f20198b6"
+          "content": "5ced301bb11b9ca3dfbe10cfce83c55a05600986a6e10b05f4cedda7a3549529"
         }
       ],
       "properties": [
@@ -9438,7 +9459,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2351554"
+          "value": "2353350"
         }
       ]
     },
@@ -25592,6 +25613,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/membranous-risk-v878.js",
+      "type": "file",
+      "name": "mcp/adapters/membranous-risk-v878.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7b6babfdf69026f8522a02f9539b48ebb04e105912e1f4542caacbc00b82d3c5"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2992"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/meniere-aao-hns-v708.js",
       "type": "file",
       "name": "mcp/adapters/meniere-aao-hns-v708.js",
@@ -32591,7 +32633,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "134cbc47eb947de9bbd8017922debb4bc8677107bed08ee097581d4e7ce63d5e"
+          "content": "904ec9db11cdc714f7bd66fa635410d1682a72913cdb94d93d19ee90e81e5573"
         }
       ],
       "properties": [
@@ -32601,7 +32643,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "81936"
+          "value": "82053"
         }
       ]
     },
@@ -48310,6 +48352,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2846"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v878.js",
+      "type": "file",
+      "name": "views/group-v878.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "81f4f2c567b3871cd49fd95fb1d13adafa5b276c78dc16eba68e32320e7cbc99"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4584"
         }
       ]
     },
@@ -64353,6 +64416,7 @@
         "urn:sophiewell:file:source:lib/medication-v4.js",
         "urn:sophiewell:file:source:lib/medication-v5.js",
         "urn:sophiewell:file:source:lib/meld3-v678.js",
+        "urn:sophiewell:file:source:lib/membranous-risk-v878.js",
         "urn:sophiewell:file:source:lib/meniere-aao-hns-v708.js",
         "urn:sophiewell:file:source:lib/mest-c-v528.js",
         "urn:sophiewell:file:source:lib/meta.js",
@@ -65463,6 +65527,7 @@
         "urn:sophiewell:file:source:views/group-v875.js",
         "urn:sophiewell:file:source:views/group-v876.js",
         "urn:sophiewell:file:source:views/group-v877.js",
+        "urn:sophiewell:file:source:views/group-v878.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
@@ -65877,6 +65942,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/medication-v4.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/medication-v5.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/meld3-v678.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/membranous-risk-v878.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/meniere-aao-hns-v708.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mest-c-v528.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/metabolic-hepatic-v219.js",
@@ -66313,7 +66379,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "cd867d9acd8a9eb2"
+      "value": "5e87f7324b00fc02"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -66325,7 +66391,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2280"
+      "value": "2283"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

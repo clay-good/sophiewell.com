@@ -757,6 +757,7 @@ const PROBES = [
   ['nhsn cauti catheter associated urinary tract infection criteria', ['cauti-nhsn']],
   ['nhsn ventilator associated event vac ivac pvap', ['nhsn-vae']],
   ['ishoo angioedema staging tongue larynx airway risk', ['ishoo-angioedema']],
+  ['kdigo membranous nephropathy risk category pla2r proteinuria', ['membranous-risk']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],

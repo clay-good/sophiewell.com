@@ -714,6 +714,7 @@ import { renderers as RV874 } from './views/group-v874.js';
 import { renderers as RV875 } from './views/group-v875.js';
 import { renderers as RV876 } from './views/group-v876.js';
 import { renderers as RV877 } from './views/group-v877.js';
+import { renderers as RV878 } from './views/group-v878.js';
 import { renderers as RV164 } from './views/group-v164.js';
 import { renderers as RV165 } from './views/group-v165.js';
 import { renderers as RV166 } from './views/group-v166.js';
@@ -770,7 +771,8 @@ const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...R
   ...RV874,
   ...RV875,
   ...RV876,
-  ...RV877, ...RV63, ...RPALINT };
+  ...RV877,
+  ...RV878, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -2546,6 +2548,7 @@ const UTILITIES = [
   { id: 'cauti-nhsn', name: 'NHSN CAUTI Definition', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'nhsn-vae', name: 'NHSN Ventilator-Associated Event (VAE)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'ishoo-angioedema', name: 'Ishoo Angioedema Staging', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'membranous-risk', name: 'KDIGO Membranous Nephropathy Risk', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'gahs',                   name: 'Glasgow Alcoholic Hepatitis Score',                group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'west-haven-he',          name: 'West Haven HE grade (hepatic encephalopathy)',     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'hepatic-steatosis-index', name: 'Hepatic Steatosis Index (NAFLD screen)',          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },

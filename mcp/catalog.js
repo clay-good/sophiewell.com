@@ -717,6 +717,7 @@ import clabsiLcbiV874 from './adapters/clabsi-lcbi-v874.js';
 import cautiNhsnV875 from './adapters/cauti-nhsn-v875.js';
 import nhsnVaeV876 from './adapters/nhsn-vae-v876.js';
 import ishooAngioedemaV877 from './adapters/ishoo-angioedema-v877.js';
+import membranousRiskV878 from './adapters/membranous-risk-v878.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
 import reimersMigrationPercentageV703 from './adapters/reimers-migration-percentage-v703.js';
@@ -1460,6 +1461,7 @@ const ADAPTER_MODULES = [
   ['cauti-nhsn-v875', cautiNhsnV875],
   ['nhsn-vae-v876', nhsnVaeV876],
   ['ishoo-angioedema-v877', ishooAngioedemaV877],
+  ['membranous-risk-v878', membranousRiskV878],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],
   ['reimers-migration-percentage-v703', reimersMigrationPercentageV703],
