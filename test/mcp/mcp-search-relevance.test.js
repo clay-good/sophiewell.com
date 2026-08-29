@@ -755,6 +755,7 @@ const PROBES = [
   ['lyme two tier serology immunoblot interpretation', ['lyme-two-tier']],
   ['nhsn clabsi central line bloodstream infection lcbi', ['clabsi-lcbi']],
   ['nhsn cauti catheter associated urinary tract infection criteria', ['cauti-nhsn']],
+  ['nhsn ventilator associated event vac ivac pvap', ['nhsn-vae']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],

@@ -7928,6 +7928,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/cauti-nhsn-v875.js (spec-v875: NHSN CAUTI definition — clinical disclaimer)
 - `cauti-nhsn`
 
+### lib/nhsn-vae-v876.js (spec-v876: NHSN ventilator-associated event algorithm — clinical disclaimer)
+- `nhsn-vae`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

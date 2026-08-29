@@ -712,6 +712,7 @@ import { renderers as RV872 } from './views/group-v872.js';
 import { renderers as RV873 } from './views/group-v873.js';
 import { renderers as RV874 } from './views/group-v874.js';
 import { renderers as RV875 } from './views/group-v875.js';
+import { renderers as RV876 } from './views/group-v876.js';
 import { renderers as RV164 } from './views/group-v164.js';
 import { renderers as RV165 } from './views/group-v165.js';
 import { renderers as RV166 } from './views/group-v166.js';
@@ -766,7 +767,8 @@ const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...R
   ...RV872,
   ...RV873,
   ...RV874,
-  ...RV875, ...RV63, ...RPALINT };
+  ...RV875,
+  ...RV876, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -2540,6 +2542,7 @@ const UTILITIES = [
   { id: 'lyme-two-tier', name: 'CDC Two-Tier Lyme Serology Algorithm', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'clabsi-lcbi', name: 'NHSN CLABSI Definition', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'cauti-nhsn', name: 'NHSN CAUTI Definition', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'nhsn-vae', name: 'NHSN Ventilator-Associated Event (VAE)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'gahs',                   name: 'Glasgow Alcoholic Hepatitis Score',                group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'west-haven-he',          name: 'West Haven HE grade (hepatic encephalopathy)',     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'hepatic-steatosis-index', name: 'Hepatic Steatosis Index (NAFLD screen)',          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },

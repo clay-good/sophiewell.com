@@ -6746,5 +6746,12 @@
     "nhsn urinary tract infection criteria",
     "does dysuria count with a foley in",
     "mixed urine culture cauti"
+  ],
+  "nhsn-vae": [
+    "ventilator associated event",
+    "vac ivac pvap criteria",
+    "is this a ventilator associated pneumonia",
+    "nhsn vae algorithm",
+    "peep fio2 rise surveillance"
   ]
 }
