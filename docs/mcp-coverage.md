@@ -7895,6 +7895,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/lead-v863.js (spec-v863: CDC blood lead reference value — clinical disclaimer)
 - `blood-lead`
 
+### lib/methemoglobin-v864.js (spec-v864: methemoglobin level interpretation — clinical disclaimer)
+- `methemoglobin`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

@@ -686,6 +686,7 @@ import * as mhGradingScaleV860 from '../../lib/mh-grading-scale-v860.js';
 import * as seaGuidelineV861 from '../../lib/sea-guideline-v861.js';
 import * as mchatV862 from '../../lib/mchat-v862.js';
 import * as leadV863 from '../../lib/lead-v863.js';
+import * as methemoglobinV864 from '../../lib/methemoglobin-v864.js';
 import * as sadPersonsV701 from '../../lib/sad-persons-v701.js';
 import * as edinburghClaudicationV702 from '../../lib/edinburgh-claudication-v702.js';
 import * as reimersMigrationPercentageV703 from '../../lib/reimers-migration-percentage-v703.js';
@@ -1417,6 +1418,7 @@ const MODULES = {
   'sea-guideline-v861.js': seaGuidelineV861,
   'mchat-v862.js': mchatV862,
   'lead-v863.js': leadV863,
+  'methemoglobin-v864.js': methemoglobinV864,
   'sad-persons-v701.js': sadPersonsV701,
   'edinburgh-claudication-v702.js': edinburghClaudicationV702,
   'reimers-migration-percentage-v703.js': reimersMigrationPercentageV703,
