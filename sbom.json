@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:014d65b4-b93e-5542-88ee-0f7ecae02442",
+  "serialNumber": "urn:uuid:38bee55e-9e8a-55b4-8151-6100568dd8f7",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-29T14:00:36.065Z",
+    "timestamp": "2026-08-29T14:39:33.103Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1656 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1657 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "15fc925b241fc36762b0f9a63653986e3eea33fc0c7b6a37a73724b3e982f876"
+          "content": "473c8512bc94e4e8b1e954876f246954d551a9b61a2e1477effd406ae6cfd9c5"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "106682"
+          "value": "106736"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ccce1c933bfd8f811b91571659c7ed02bcefb5e279d9546b3f4440c823ec1c65"
+          "content": "b5dd3278364a0aa8439bab3ce57e07bd9166b3834683bf334cb4afdd0ff035a2"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "482206"
+          "value": "482423"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b809cdd40cb90f2144383543a91026fb23432c0c852e98ff20f6dffbf2a4cebd"
+          "content": "3395edfdaeb5c3957602a8fe3ebf38599c8e1b4017ef790eb1f85641c23c4b57"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "254247"
+          "value": "254404"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "342b0cacaf32d790f80815db8cd035ed080e8d051e264dd7c078d661725350b0"
+          "content": "1014237df2a913ec59a8c1eafb5f6adb4791a5bb72b6520cc67809df2fc32500"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "92643"
+          "value": "92704"
         }
       ]
     },
@@ -2215,6 +2215,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "9392"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/carboxyhemoglobin-v865.js",
+      "type": "file",
+      "name": "lib/carboxyhemoglobin-v865.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fb15cab8e571e1b0fe8506e1db9f553d82e22ec67bdebd538a8a664f5f1f8b93"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "9909"
         }
       ]
     },
@@ -9260,7 +9281,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "33cea3d0bb02d08252c557fdc63a865cdc9c24f4d115e425ab7a3cb3caf6a0fb"
+          "content": "1c867a29bd315acaf4d6901bfe2812b1e46e3d877e853e3aacf0837f0c9b8551"
         }
       ],
       "properties": [
@@ -9270,7 +9291,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2328362"
+          "value": "2330495"
         }
       ]
     },
@@ -18490,6 +18511,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3745"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/carboxyhemoglobin-v865.js",
+      "type": "file",
+      "name": "mcp/adapters/carboxyhemoglobin-v865.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0922545c142b555e08d72daa7e77e1ea4be3292f820c282ed165ad0d5609c204"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2921"
         }
       ]
     },
@@ -32087,7 +32129,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "051510b7883546e4804e6233df39a74f252a27709933b20e27bd38879aba202b"
+          "content": "804a12d615224eb223a59b5796cd76486c49b539e0366c2b6479e1ef6bc8e035"
         }
       ],
       "properties": [
@@ -32097,7 +32139,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "80626"
+          "value": "80753"
         }
       ]
     },
@@ -47554,6 +47596,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3623"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v865.js",
+      "type": "file",
+      "name": "views/group-v865.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c5ff0238bdaf404535f93243a97500067b9fd1bac577fba3b088904d08d377d7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4481"
         }
       ]
     },
@@ -63256,6 +63319,7 @@
         "urn:sophiewell:file:source:lib/caine-wernicke-v799.js",
         "urn:sophiewell:file:source:lib/capd-v525.js",
         "urn:sophiewell:file:source:lib/capthus-v535.js",
+        "urn:sophiewell:file:source:lib/carboxyhemoglobin-v865.js",
         "urn:sophiewell:file:source:lib/cardiac-sarcoidosis-v791.js",
         "urn:sophiewell:file:source:lib/cardio-v101.js",
         "urn:sophiewell:file:source:lib/cardio-v102.js",
@@ -64683,6 +64747,7 @@
         "urn:sophiewell:file:source:views/group-v862.js",
         "urn:sophiewell:file:source:views/group-v863.js",
         "urn:sophiewell:file:source:views/group-v864.js",
+        "urn:sophiewell:file:source:views/group-v865.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
@@ -64771,6 +64836,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/caine-wernicke-v799.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/capd-v525.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/capthus-v535.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/carboxyhemoglobin-v865.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cardiac-sarcoidosis-v791.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cardio-v101.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cardio-v102.js",
@@ -65521,7 +65587,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "014d65b4b93ea542"
+      "value": "38bee55e9e8ad5b4"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -65533,7 +65599,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2244"
+      "value": "2247"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
