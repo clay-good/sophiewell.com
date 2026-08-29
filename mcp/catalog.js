@@ -700,6 +700,7 @@ import rlsCriteriaV856 from './adapters/rls-criteria-v856.js';
 import aomCriteriaV857 from './adapters/aom-criteria-v857.js';
 import whoHearingGradeV858 from './adapters/who-hearing-grade-v858.js';
 import priapismGasV859 from './adapters/priapism-gas-v859.js';
+import mhGradingScaleV860 from './adapters/mh-grading-scale-v860.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
 import reimersMigrationPercentageV703 from './adapters/reimers-migration-percentage-v703.js';
@@ -1426,6 +1427,7 @@ const ADAPTER_MODULES = [
   ['aom-criteria-v857', aomCriteriaV857],
   ['who-hearing-grade-v858', whoHearingGradeV858],
   ['priapism-gas-v859', priapismGasV859],
+  ['mh-grading-scale-v860', mhGradingScaleV860],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],
   ['reimers-migration-percentage-v703', reimersMigrationPercentageV703],

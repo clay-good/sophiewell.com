@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:eba22d95-f333-5397-83a1-05e2bbeb630c",
+  "serialNumber": "urn:uuid:e567c753-5192-5600-8fe2-d74347964117",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-29T12:59:34.504Z",
+    "timestamp": "2026-08-29T13:08:28.613Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1651 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1652 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "037a7ed1c8999a9945fb0931855b4ac1f014fe2cc7862e8b8f63d2d844a55f6b"
+          "content": "73672e5c8e8de61524335f0572376a0573053c7ef1527ac86d5abe330fcc699e"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "106419"
+          "value": "106480"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "16e0fefe3dc5de71737e529d526d8690a08c7887c0d4e6f9b267ff87bbb7af51"
+          "content": "339b6e5e682fe5efa375667b5ee3b22cf21fa8b65787dc140abb4603db8d007f"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "481153"
+          "value": "481376"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d0189f7da725be99cb801df50255b89aca4051bf60a995637f07683ab1fdffd5"
+          "content": "cacb5c8f6093bcd056b7888caf4d6c3aa7ffa4c5ea5dc598b8df495be028e811"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "253487"
+          "value": "253643"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f97da4f77d4f6c644cecf2abdc2622281390dd8f0c50378901d5e4f5aee074ab"
+          "content": "68d40ca6d688e4fa381d18220b4343b980cdea46e0a20cded5299dff82c69a22"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "92370"
+          "value": "92437"
         }
       ]
     },
@@ -9218,7 +9218,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "cfbc2bbd440e66a6e818a53026d27b094a0262e22a5017f51ecf04fb3529b805"
+          "content": "19638a135007e2f326d2a0463cca77f2ab4ba988c5ee2416d6c29a8ea51fd52e"
         }
       ],
       "properties": [
@@ -9228,7 +9228,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2318998"
+          "value": "2320846"
         }
       ]
     },
@@ -9376,6 +9376,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3443"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/mh-grading-scale-v860.js",
+      "type": "file",
+      "name": "lib/mh-grading-scale-v860.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "12d4c73d2cc090e044efa0e5a6df2f19c4759b3686146b060798f9ad53efc4f7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "10650"
         }
       ]
     },
@@ -25214,6 +25235,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/mh-grading-scale-v860.js",
+      "type": "file",
+      "name": "mcp/adapters/mh-grading-scale-v860.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ecb3ea9d29fec3a2fbd04555f4005b6e145a91dd1b658eacedb0e8c7aa44f7bf"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5537"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/migraine-ichd3-v815.js",
       "type": "file",
       "name": "mcp/adapters/migraine-ichd3-v815.js",
@@ -31877,7 +31919,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2d52291478e5ddcdf250c81de1440848ccbcbfe70cc081b806d8f212b5886183"
+          "content": "69a9f22e6c9fd9123399b993c756fc701c981e2edba1af08600283ac8d24bfd2"
         }
       ],
       "properties": [
@@ -31887,7 +31929,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "80133"
+          "value": "80252"
         }
       ]
     },
@@ -47239,6 +47281,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4018"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v860.js",
+      "type": "file",
+      "name": "views/group-v860.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8108ecf289a9481de638b3b9e92a4fa24bf692b05203058aaf500ab92705cea1"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3121"
         }
       ]
     },
@@ -63282,6 +63345,7 @@
         "urn:sophiewell:file:source:lib/metavir-activity-v505.js",
         "urn:sophiewell:file:source:lib/metavir-fibrosis-v504.js",
         "urn:sophiewell:file:source:lib/meyers-mckeever-v408.js",
+        "urn:sophiewell:file:source:lib/mh-grading-scale-v860.js",
         "urn:sophiewell:file:source:lib/migraine-ichd3-v815.js",
         "urn:sophiewell:file:source:lib/milch-condyle-v418.js",
         "urn:sophiewell:file:source:lib/miller-gingival-recession-v724.js",
@@ -64358,6 +64422,7 @@
         "urn:sophiewell:file:source:views/group-v857.js",
         "urn:sophiewell:file:source:views/group-v858.js",
         "urn:sophiewell:file:source:views/group-v859.js",
+        "urn:sophiewell:file:source:views/group-v860.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
@@ -64771,6 +64836,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/metavir-activity-v505.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/metavir-fibrosis-v504.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/meyers-mckeever-v408.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/mh-grading-scale-v860.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/migraine-ichd3-v815.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/milch-condyle-v418.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/miller-gingival-recession-v724.js",
@@ -65191,7 +65257,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "eba22d95f3337397"
+      "value": "e567c75351926600"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -65203,7 +65269,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2229"
+      "value": "2232"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

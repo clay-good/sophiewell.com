@@ -740,6 +740,7 @@ const PROBES = [
   ['acute otitis media criteria bulging eardrum observation option', ['aom-criteria']],
   ['who grades of hearing loss better ear pure tone average', ['who-hearing-grade']],
   ['priapism cavernous blood gas ischemic or non-ischemic', ['priapism-gas']],
+  ['malignant hyperthermia clinical grading scale raw score rank', ['mh-grading-scale']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],
