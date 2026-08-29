@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:aadc0291-f181-5767-8e59-2160f413a7a6",
+  "serialNumber": "urn:uuid:ac8515a1-c465-5b31-8ad7-960dd1bb05da",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-29T08:24:11.587Z",
+    "timestamp": "2026-08-29T08:30:19.759Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1642 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1643 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8ae93af143708bf76a347403fb6fb21d94b1b92024622b3cace7ef5c7852c3d6"
+          "content": "8e25607760ed67a9989e9df4fc76f132f87fb4421318b938cd4607d860d71132"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "105958"
+          "value": "106010"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "34aebd64224d06993f2da0f3b021071ba12e775e1b91377c4495579d23fb851c"
+          "content": "5f2eb140a49a7fd5d5bcb22d2a0dd4bcaa6674eb86ecf7cc917f6d7164913526"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "479218"
+          "value": "479428"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1a930e48895890ca68ff22517850b79969911707118c039d71b61eaa8bf6e7b3"
+          "content": "9c36898969241b2cb6cbf851af0c6a77ed6d0ee991796709ada4d8c3765f7924"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "252067"
+          "value": "252219"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "905bc89d94cf46996c2a338a0d025a2babd1d679693aea65fffdcb1ce0b4fc40"
+          "content": "8e1bb2eff1aff5c0efd0aff899ffdd5f21480540cc36a9d5f67bfcd9606c24b7"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "91839"
+          "value": "91893"
         }
       ]
     },
@@ -9155,7 +9155,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4216012071d4771cdd6094acd8bdfcc70563b5c1cfcaafd919e44b4e38f28bc4"
+          "content": "ee9a112a7a20203432f0b4382721c03217a589cb8a9babb13dd692451638d77c"
         }
       ],
       "properties": [
@@ -9165,7 +9165,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2301464"
+          "value": "2303051"
         }
       ]
     },
@@ -12841,6 +12841,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "9072"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/rassi-chagas-v851.js",
+      "type": "file",
+      "name": "lib/rassi-chagas-v851.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "32fd5c5649daaa93139486e4d909b77c2cb7cb01b7f7861cb1cdf29e5910de62"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6350"
         }
       ]
     },
@@ -28028,6 +28049,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/rassi-chagas-v851.js",
+      "type": "file",
+      "name": "mcp/adapters/rassi-chagas-v851.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3c420f091e26c46e29019e800e28059c43e03270b2701d600e7650d3271f224a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2052"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/rastelli-avsd-v474.js",
       "type": "file",
       "name": "mcp/adapters/rastelli-avsd-v474.js",
@@ -31499,7 +31541,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c86b2859a90f28d2253a535f15b4410c740d9824614b053cf53295064888b8aa"
+          "content": "c0c0803fba7bee77f942e15c693144645afca0fdcc5d188123d9a92867aad647"
         }
       ],
       "properties": [
@@ -31509,7 +31551,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "78988"
+          "value": "79093"
         }
       ]
     },
@@ -46672,6 +46714,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3581"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v851.js",
+      "type": "file",
+      "name": "views/group-v851.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "58f6025521389ffeb5623e9ae806d3e69771386cffa74416a0f10f259ba2417c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3300"
         }
       ]
     },
@@ -62880,6 +62943,7 @@
         "urn:sophiewell:file:source:lib/ramsay-sedation-v358.js",
         "urn:sophiewell:file:source:lib/ranawat-myelopathy-v495.js",
         "urn:sophiewell:file:source:lib/rasrm-stage-v546.js",
+        "urn:sophiewell:file:source:lib/rassi-chagas-v851.js",
         "urn:sophiewell:file:source:lib/rastelli-avsd-v474.js",
         "urn:sophiewell:file:source:lib/rcc-prognosis-v266.js",
         "urn:sophiewell:file:source:lib/rcc-prognosis-v279.js",
@@ -63773,6 +63837,7 @@
         "urn:sophiewell:file:source:views/group-v848.js",
         "urn:sophiewell:file:source:views/group-v849.js",
         "urn:sophiewell:file:source:views/group-v850.js",
+        "urn:sophiewell:file:source:views/group-v851.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
@@ -64329,6 +64394,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/ramsay-sedation-v358.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ranawat-myelopathy-v495.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/rasrm-stage-v546.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/rassi-chagas-v851.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/rastelli-avsd-v474.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/rcc-prognosis-v266.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/rcc-prognosis-v279.js",
@@ -64597,7 +64663,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "aadc0291f1814767"
+      "value": "ac8515a1c4652b31"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -64609,7 +64675,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2202"
+      "value": "2205"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

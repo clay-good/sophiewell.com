@@ -731,6 +731,7 @@ const PROBES = [
   ['tricuspid regurgitation stages acc aha hepatic vein reversal', ['tricuspid-regurgitation-stage']],
   ['secondary functional mitral regurgitation stages acc aha', ['secondary-mitral-regurgitation-stage']],
   ['rope score paradoxical embolism patent foramen ovale cryptogenic stroke', ['rope-score']],
+  ['rassi score chagas heart disease death risk', ['rassi-chagas']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],

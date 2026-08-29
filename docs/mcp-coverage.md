@@ -7856,6 +7856,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/rope-score-v850.js (spec-v850: RoPE index for a patent foramen ovale after cryptogenic stroke — clinical disclaimer)
 - `rope-score`
 
+### lib/rassi-chagas-v851.js (spec-v851: Rassi death-risk score in chronic Chagas heart disease — clinical disclaimer)
+- `rassi-chagas`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
