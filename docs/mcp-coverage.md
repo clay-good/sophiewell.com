@@ -7970,6 +7970,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/home-oxygen-v889.js (spec-v889: home oxygen qualifying criteria — clinical disclaimer)
 - `home-oxygen`
 
+### lib/methacholine-v890.js (spec-v890: methacholine challenge interpretation — clinical disclaimer)
+- `methacholine`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

@@ -729,6 +729,7 @@ import noiseExposureV886 from './adapters/noise-exposure-v886.js';
 import hivPepOccupationalV887 from './adapters/hiv-pep-occupational-v887.js';
 import fenoV888 from './adapters/feno-v888.js';
 import homeOxygenV889 from './adapters/home-oxygen-v889.js';
+import methacholineV890 from './adapters/methacholine-v890.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
 import reimersMigrationPercentageV703 from './adapters/reimers-migration-percentage-v703.js';
@@ -1484,6 +1485,7 @@ const ADAPTER_MODULES = [
   ['hiv-pep-occupational-v887', hivPepOccupationalV887],
   ['feno-v888', fenoV888],
   ['home-oxygen-v889', homeOxygenV889],
+  ['methacholine-v890', methacholineV890],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],
   ['reimers-migration-percentage-v703', reimersMigrationPercentageV703],

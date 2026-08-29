@@ -769,6 +769,7 @@ const PROBES = [
   ['needlestick occupational hiv post exposure prophylaxis decision', ['hiv-pep-occupational']],
   ['feno exhaled nitric oxide interpretation cutpoints asthma', ['feno']],
   ['home oxygen qualifying criteria saturation 88 percent', ['home-oxygen']],
+  ['methacholine challenge pd20 pc20 bronchial hyperresponsiveness', ['methacholine']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],
