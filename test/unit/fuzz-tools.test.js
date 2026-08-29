@@ -691,6 +691,7 @@ import * as carboxyhemoglobinV865 from '../../lib/carboxyhemoglobin-v865.js';
 import * as brosetV866 from '../../lib/broset-v866.js';
 import * as whoSevereMalariaV867 from '../../lib/who-severe-malaria-v867.js';
 import * as pertussisCaseDefV868 from '../../lib/pertussis-case-def-v868.js';
+import * as eortcMsgIfdV869 from '../../lib/eortc-msg-ifd-v869.js';
 import * as sadPersonsV701 from '../../lib/sad-persons-v701.js';
 import * as edinburghClaudicationV702 from '../../lib/edinburgh-claudication-v702.js';
 import * as reimersMigrationPercentageV703 from '../../lib/reimers-migration-percentage-v703.js';
@@ -1427,6 +1428,7 @@ const MODULES = {
   'broset-v866.js': brosetV866,
   'who-severe-malaria-v867.js': whoSevereMalariaV867,
   'pertussis-case-def-v868.js': pertussisCaseDefV868,
+  'eortc-msg-ifd-v869.js': eortcMsgIfdV869,
   'sad-persons-v701.js': sadPersonsV701,
   'edinburgh-claudication-v702.js': edinburghClaudicationV702,
   'reimers-migration-percentage-v703.js': reimersMigrationPercentageV703,

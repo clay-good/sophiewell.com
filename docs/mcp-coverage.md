@@ -7910,6 +7910,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/pertussis-case-def-v868.js (spec-v868: CDC/CSTE pertussis case definition — clinical disclaimer)
 - `pertussis-case-def`
 
+### lib/eortc-msg-ifd-v869.js (spec-v869: EORTC/MSGERC invasive fungal disease definitions — clinical disclaimer)
+- `eortc-msg-ifd`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

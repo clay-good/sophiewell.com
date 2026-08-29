@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `033a954990e7699b`
-Generated: 2026-08-29T17:34:18.812Z
+Build ID: `edd4e309600a1e92`
+Generated: 2026-08-29T17:57:27.396Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -25,9 +25,9 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 106870 | `b0b41f0214ae13a4adae0386e47feeb48a30d7463d148a0a33104194bff0feaa` |
+| `index.html` | 106934 | `6aa5f689dd21f28900af738f32c38e72e4740fe04c72957716a9e4511834e39e` |
 | `styles.css` | 67361 | `2942923c5157d85e7e381552e74488a519e4a6deff4edd9029489f3311f1870d` |
-| `app.js` | 483041 | `8ccd73c64428c392a183249a062770842b96ad99ec3dfad96749c55c682744c8` |
+| `app.js` | 483266 | `96827019e010cbb164481ed9e7b8232f6cd17f552350caf5c2beb422f83176db` |
 | `report-feedback.js` | 12178 | `955e5cb542c7b13dcbb85a75ecf4ccf2dc0b2dffecd84daac1d607bd6acc7cd2` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 | `theme.js` | 3132 | `6910af0b4c65869c6a3d24d17842bb2cc88c7d23f8fb32506fcdbfeec70ce979` |
@@ -35,7 +35,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `sw.js` | 5183 | `009dd2cf8ba1a16ad8a76c8f523c45600068c78f07582c657015defdead2c876` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 254866 | `1dd07cb248c5be1cc894e3fc73c706b9c1eb92b7184aa74245574672d00b5ed0` |
+| `sitemap.xml` | 255019 | `8b267fd4932818022adfd65a64949c4ba8da8e1aec703fd9acd3281822211158` |
 | `_headers` | 2050 | `3874f05a080b8cab13ff022e6e6147c7e1057420a2d9cbc7834bac6b421d4011` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -48,7 +48,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | Path | Bytes | SHA-256 |
 |---|---:|---|
 | `report-worker.mjs` | 13434 | `bcbebe960bf79e0cb2038f7ddc216dfb0753a9665f071fa32966d5d460ffc794` |
-| `report-catalog.js` | 92850 | `8f59394d144a3e278dec18ca91b89093003a1d0a84fbcc6c5b37b4f359f8f8d4` |
+| `report-catalog.js` | 92917 | `b427f7d174bd7a624907dbfbc2903f4d87d84029c1c87f57059d93362bce4eeb` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 
 ## Source-of-truth modules (lib + views)
@@ -255,6 +255,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/enturopsych-v254.js` | 8040 | `fda74506629d3035d3c24c18a3cf6faf49a5fa79e3807f01d188c73d6720bd83` |
 | `lib/enviro-v111.js` | 14119 | `77ba090d075f4f9fd608f9afc6f30b68fd3612f5c6719addbe75658a7e6a12ae` |
 | `lib/environ-v242.js` | 7645 | `7fc43e83281b5d7ea301bc962322b3c149ff800873d8494971902291de51cd89` |
+| `lib/eortc-msg-ifd-v869.js` | 9785 | `846502bc39581253f8ffe1cf38dcd5e926144f344ae528fcfab13c02cc24ba01` |
 | `lib/eoss-v713.js` | 3955 | `150229c936465a637e488f83903837324b8752c7051b42903c784ffbae404441` |
 | `lib/erefs-v618.js` | 11260 | `1150b196683116439fd890c8db58d5a091ca149b10d74ab0df6cc1efb717bd70` |
 | `lib/erez-dic-v559.js` | 12795 | `e29e69649b85654d9ef1b52e5eac56c390734f9b85da044ddc54e1190314270f` |
@@ -475,7 +476,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/meld3-v678.js` | 5664 | `7bda4af7c9412eae41162d0cdd6b977cbc9a6f9b8a7bc40fe350f861e989444c` |
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2335870 | `ccbaa51b23d7c1f99ba00344f168cdc06c2021a09a9fb9d17f409469edea11db` |
+| `lib/meta.js` | 2337894 | `85412f32255c492ccb9cee90dc9d6ed31d62223d32a79002840493cf60de817a` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -1028,6 +1029,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/enturopsych-v254.js` | 5374 | `1b54f1d13d6a62e9d51426d6f22d9f7190cbf9fe478afab42be22adaa32cd5da` |
 | `mcp/adapters/enviro-v111.js` | 3924 | `29a82b362dd3eeb49a625a19a9f2a3dc61f7b86e5d18521ff3fa3909b940fb48` |
 | `mcp/adapters/environ-v242.js` | 2332 | `416ac6d1531eb719111cadbe83e23466fe3931aa18242a6d832238349dc5f354` |
+| `mcp/adapters/eortc-msg-ifd-v869.js` | 5250 | `8962a4bc9eb938168b687250b478125bfc5108325dba7c64ca450505c671b8b8` |
 | `mcp/adapters/eoss-v713.js` | 1273 | `fcfce1a420c2b7cbf40863b179dcea93a0c8f07511498d7d7ca8bd4c4c42bfd0` |
 | `mcp/adapters/erefs-v618.js` | 2861 | `4fb7b838337edde7fb72ef98c97bf85ee1d6210ebf41965dfc126cc1dad45c5a` |
 | `mcp/adapters/erez-dic-v559.js` | 5955 | `de79f9d508eba77ed842238ba0c4ff026e221185e4d791b39fe7d0ad7708c2b3` |
@@ -1568,7 +1570,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/zabramski-v442.js` | 1156 | `f364baad3d680210aafd8b47cb6ad472521c8bfb9f02683340f5175dcb03d097` |
 | `mcp/adapters/zargar-caustic-v401.js` | 1423 | `158261bfae30e1660e5888582289b46bef0344c5763a15a9be2c812be5722d4a` |
 | `mcp/adapters/zulewski-v608.js` | 4193 | `68da25df2e1cd4653dd6ad796f5c0f032429c1da8d89459e8d66f5cc7bb51ab8` |
-| `mcp/catalog.js` | 81090 | `ef405e82657592ebd49c220ee344c9ce45a646079292643e24252ce6fa27fc57` |
+| `mcp/catalog.js` | 81197 | `15092f5ebf25d61eddf7de15a64c44951c949fa8b56bca85658e8c31e8c5c1f4` |
 | `mcp/fields.js` | 7055 | `7760c7a95fdada71f67ab67497556a1f87782f180df93e828b0736ee0b2796bb` |
 | `mcp/server.js` | 2079 | `54d0769126ef3fde8965a26b4a36c15964cd67018343660cae43983685c34df9` |
 | `mcp/tools.js` | 53497 | `7e30d6284f8f7db4d99ed43f4417c2722dc5edc16d54bd2e4f0e1840f84d9a3e` |
@@ -2309,6 +2311,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v866.js` | 2465 | `c9ed82d2c491ad7620794511ee3d2e163a48f7f6dfb0cf95a2a5c7637caec3fb` |
 | `views/group-v867.js` | 3818 | `95715a652477f3b2dfc31722537fc9442ab6a5b31297426cc4009af86d78b6a0` |
 | `views/group-v868.js` | 5028 | `b548f535646fc74d49502f2e4e624bb281c10f2a6d5f2a3aded8748b65b190f6` |
+| `views/group-v869.js` | 3390 | `f3902359d71909ec336154cc281d803bd0f22b61712a4cf656dfa9c389c4b134` |
 | `views/group-v9.js` | 21860 | `8b3114cdcae1dc84285a39a9cb23ce28ae5df404bc7b987a12aa2a1a3d793526` |
 | `views/pa-lint.js` | 28680 | `90c4bbb985af80d74f2957de7d11efc33f5a14d21a40ae8ae114ff3313879b88` |
 

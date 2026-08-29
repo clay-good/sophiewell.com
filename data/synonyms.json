@@ -6704,5 +6704,12 @@
     "is this a confirmed pertussis case",
     "probable pertussis criteria",
     "cdc pertussis surveillance definition"
+  ],
+  "eortc-msg-ifd": [
+    "eortc msg invasive fungal disease definitions",
+    "proven probable possible fungal infection",
+    "is this probable aspergillosis",
+    "galactomannan threshold criteria",
+    "invasive mold disease criteria"
   ]
 }
