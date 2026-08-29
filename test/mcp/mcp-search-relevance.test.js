@@ -754,6 +754,7 @@ const PROBES = [
   ['measles case definition febrile rash suspect probable confirmed', ['measles-case-def']],
   ['lyme two tier serology immunoblot interpretation', ['lyme-two-tier']],
   ['nhsn clabsi central line bloodstream infection lcbi', ['clabsi-lcbi']],
+  ['nhsn cauti catheter associated urinary tract infection criteria', ['cauti-nhsn']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],

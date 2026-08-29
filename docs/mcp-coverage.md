@@ -7925,6 +7925,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/clabsi-lcbi-v874.js (spec-v874: NHSN CLABSI definition — clinical disclaimer)
 - `clabsi-lcbi`
 
+### lib/cauti-nhsn-v875.js (spec-v875: NHSN CAUTI definition — clinical disclaimer)
+- `cauti-nhsn`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

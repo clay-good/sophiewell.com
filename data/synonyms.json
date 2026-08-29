@@ -6739,5 +6739,12 @@
     "nhsn bloodstream infection criteria",
     "lcbi 1 lcbi 2 criteria",
     "blood culture contaminant or clabsi"
+  ],
+  "cauti-nhsn": [
+    "cauti definition",
+    "is this a catheter associated uti",
+    "nhsn urinary tract infection criteria",
+    "does dysuria count with a foley in",
+    "mixed urine culture cauti"
   ]
 }
