@@ -670,6 +670,7 @@ import * as aorticStenosisStageV844 from '../../lib/aortic-stenosis-stage-v844.j
 import * as mitralStenosisStageV845 from '../../lib/mitral-stenosis-stage-v845.js';
 import * as aorticRegurgitationStageV846 from '../../lib/aortic-regurgitation-stage-v846.js';
 import * as mitralRegurgitationStageV847 from '../../lib/mitral-regurgitation-stage-v847.js';
+import * as tricuspidRegurgitationStageV848 from '../../lib/tricuspid-regurgitation-stage-v848.js';
 import * as sadPersonsV701 from '../../lib/sad-persons-v701.js';
 import * as edinburghClaudicationV702 from '../../lib/edinburgh-claudication-v702.js';
 import * as reimersMigrationPercentageV703 from '../../lib/reimers-migration-percentage-v703.js';
@@ -1385,6 +1386,7 @@ const MODULES = {
   'mitral-stenosis-stage-v845.js': mitralStenosisStageV845,
   'aortic-regurgitation-stage-v846.js': aorticRegurgitationStageV846,
   'mitral-regurgitation-stage-v847.js': mitralRegurgitationStageV847,
+  'tricuspid-regurgitation-stage-v848.js': tricuspidRegurgitationStageV848,
   'sad-persons-v701.js': sadPersonsV701,
   'edinburgh-claudication-v702.js': edinburghClaudicationV702,
   'reimers-migration-percentage-v703.js': reimersMigrationPercentageV703,
