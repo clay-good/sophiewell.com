@@ -710,6 +710,7 @@ import { renderers as RV869 } from './views/group-v869.js';
 import { renderers as RV870 } from './views/group-v870.js';
 import { renderers as RV872 } from './views/group-v872.js';
 import { renderers as RV873 } from './views/group-v873.js';
+import { renderers as RV874 } from './views/group-v874.js';
 import { renderers as RV164 } from './views/group-v164.js';
 import { renderers as RV165 } from './views/group-v165.js';
 import { renderers as RV166 } from './views/group-v166.js';
@@ -762,7 +763,8 @@ const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...R
   ...RV869,
   ...RV870,
   ...RV872,
-  ...RV873, ...RV63, ...RPALINT };
+  ...RV873,
+  ...RV874, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -2534,6 +2536,7 @@ const UTILITIES = [
   { id: 'nms-criteria', name: 'Neuroleptic Malignant Syndrome Diagnostic Criteria', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'measles-case-def', name: 'CDC/CSTE Measles Case Definition', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'lyme-two-tier', name: 'CDC Two-Tier Lyme Serology Algorithm', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'clabsi-lcbi', name: 'NHSN CLABSI Definition', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'gahs',                   name: 'Glasgow Alcoholic Hepatitis Score',                group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'west-haven-he',          name: 'West Haven HE grade (hepatic encephalopathy)',     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'hepatic-steatosis-index', name: 'Hepatic Steatosis Index (NAFLD screen)',          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },

@@ -6732,5 +6732,12 @@
     "lyme western blot interpretation",
     "is this a positive lyme test",
     "lyme igm without igg"
+  ],
+  "clabsi-lcbi": [
+    "clabsi definition",
+    "is this a central line infection",
+    "nhsn bloodstream infection criteria",
+    "lcbi 1 lcbi 2 criteria",
+    "blood culture contaminant or clabsi"
   ]
 }

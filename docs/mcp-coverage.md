@@ -7922,6 +7922,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/lyme-two-tier-v873.js (spec-v873: CDC two-tier Lyme serology algorithm — clinical disclaimer)
 - `lyme-two-tier`
 
+### lib/clabsi-lcbi-v874.js (spec-v874: NHSN CLABSI definition — clinical disclaimer)
+- `clabsi-lcbi`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

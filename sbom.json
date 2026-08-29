@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:dec73aa2-28a6-56af-8a55-426b2b4ab735",
+  "serialNumber": "urn:uuid:9c0f3f58-9af7-56a4-8bcf-f36b5515cbaa",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-29T18:46:42.471Z",
+    "timestamp": "2026-08-29T18:57:06.385Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1664 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1665 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8f0f97615acbf6a62d850fcea89d92c789f7b1e648409944672e09c7a2833d30"
+          "content": "7da027dc5a6032b6a0c2d413b4da9d0c50763c4d4e05e807807bb7319c8e9372"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "107099"
+          "value": "107137"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "faf94455c234df72cfc39f65917048135396533022387c7793afa5c0a68227e0"
+          "content": "f06e433ffde920b050b6d00cc53a8117d5c1b3d97bfb9f2bf11de19596afa42b"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "483916"
+          "value": "484113"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a0fa71c4592474893d1b832b6aef0b98ea40d768fd9e8978d144a653457b0166"
+          "content": "88a09e1571200fe15da8ac1a612ae011c0ac7adcd42b5d3039a822e98e2d148b"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "255480"
+          "value": "255631"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8a42ef7f96e5428f3a66cb345d73b44fef4d4a217443dd59ed8693cfb17b3f10"
+          "content": "cb6bdb754ee9a850bb6fea05e10858d6fb1cf5a06508c0505f35cace474849f2"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "93093"
+          "value": "93132"
         }
       ]
     },
@@ -2803,6 +2803,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4816"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/clabsi-lcbi-v874.js",
+      "type": "file",
+      "name": "lib/clabsi-lcbi-v874.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "511a3fe00f80da28010098040841170e1c99e52ae528f0709a64caf4dca1bc8e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "10412"
         }
       ]
     },
@@ -9365,7 +9386,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6215a08ad34a493947fbbecf249857b2bdfe024b73f6fc8cbcce288dc8615260"
+          "content": "cd874f75496d3e99cf07cfaddad81731aa2c7dd5e3af32e8043dc923cb07f011"
         }
       ],
       "properties": [
@@ -9375,7 +9396,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2343877"
+          "value": "2345835"
         }
       ]
     },
@@ -19246,6 +19267,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2909"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/clabsi-lcbi-v874.js",
+      "type": "file",
+      "name": "mcp/adapters/clabsi-lcbi-v874.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5685fcd2b324666a9c02e2b85d6c04e9ba12e2fd4253d680a62bf3e42eff791f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3377"
         }
       ]
     },
@@ -32423,7 +32465,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "cf6aa20badda1ebec65be269d1fb0e9bda06c9cb1a0ea1551d315c7a6be26b35"
+          "content": "6e2450d16944a779a51cfe51db96923e607431607166df5a89c6ce1c9609fd9a"
         }
       ],
       "properties": [
@@ -32433,7 +32475,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "81528"
+          "value": "81629"
         }
       ]
     },
@@ -48058,6 +48100,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4294"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v874.js",
+      "type": "file",
+      "name": "views/group-v874.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "43ac5a8b9bea089f1ce06b53cce71b095c9ba11c2b509462ef84e03c360e6462"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5326"
         }
       ]
     },
@@ -63788,6 +63851,7 @@
         "urn:sophiewell:file:source:lib/cholangitis-v310.js",
         "urn:sophiewell:file:source:lib/cholecystitis-dx-v313.js",
         "urn:sophiewell:file:source:lib/cholecystitis-v311.js",
+        "urn:sophiewell:file:source:lib/clabsi-lcbi-v874.js",
         "urn:sophiewell:file:source:lib/clark-level-v340.js",
         "urn:sophiewell:file:source:lib/clavien-dindo-v320.js",
         "urn:sophiewell:file:source:lib/cleveland-constipation-v665.js",
@@ -65203,6 +65267,7 @@
         "urn:sophiewell:file:source:views/group-v870.js",
         "urn:sophiewell:file:source:views/group-v872.js",
         "urn:sophiewell:file:source:views/group-v873.js",
+        "urn:sophiewell:file:source:views/group-v874.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
@@ -65319,6 +65384,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/cholangitis-v310.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cholecystitis-dx-v313.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cholecystitis-v311.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/clabsi-lcbi-v874.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/clark-level-v340.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/clavien-dindo-v320.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cleveland-constipation-v665.js",
@@ -66049,7 +66115,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "dec73aa228a626af"
+      "value": "9c0f3f589af7f6a4"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -66061,7 +66127,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2268"
+      "value": "2271"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

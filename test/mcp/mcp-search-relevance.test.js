@@ -753,6 +753,7 @@ const PROBES = [
   ['neuroleptic malignant syndrome diagnostic criteria priority points', ['nms-criteria']],
   ['measles case definition febrile rash suspect probable confirmed', ['measles-case-def']],
   ['lyme two tier serology immunoblot interpretation', ['lyme-two-tier']],
+  ['nhsn clabsi central line bloodstream infection lcbi', ['clabsi-lcbi']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],
