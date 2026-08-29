@@ -762,6 +762,7 @@ const PROBES = [
   ['ewgsop2 sarcopenia grip strength muscle mass algorithm', ['ewgsop2']],
   ['vitamin d level interpretation deficiency insufficiency threshold', ['vitamin-d-level']],
   ['post polypectomy surveillance interval next colonoscopy adenoma', ['polyp-surveillance']],
+  ['fukuoka ipmn worrisome features high risk stigmata pancreatic cyst', ['ipmn-fukuoka']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],

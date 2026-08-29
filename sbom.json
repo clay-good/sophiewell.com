@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:dc21addb-3976-5b43-8d20-922361bafa47",
+  "serialNumber": "urn:uuid:bfe081e4-5a99-5292-86f7-07e7b5e6f46e",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-29T20:19:20.373Z",
+    "timestamp": "2026-08-29T20:27:33.320Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1673 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1674 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "097dcbd1351d6b7a4cb38ba15f71472d369491de94a653123aaadb79a5c96c6c"
+          "content": "b1a30fb0a32e9601b620337a56fc9215855ba7ad4f3a0d236ebe3216348d8dc6"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "107523"
+          "value": "107576"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c26286e608bef6e573293de0aea20577ac2343e9dba8cb604d8061a83c5a1e6a"
+          "content": "cbfebaefdd7f59a98effc6f99c630741a1d7dbdd8ace65f5894be8939bf58058"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "485787"
+          "value": "486000"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "34094524b83a80252ab9ef8a7385d15408fcb95464cfe0e039ae1355170868a1"
+          "content": "6fda1c8ac4d605ea108e137a27677fd6374a865df76b2b8285a118c4535fa76e"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "256855"
+          "value": "257007"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "eff08977db4fd4fbcf9746aea09c45be382df2010eacab0b6f929b07e0b1c271"
+          "content": "0b4658350e374b3801274c29e2c3d88a5a1aca3689282e46707f2c6322577400"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "93542"
+          "value": "93597"
         }
       ]
     },
@@ -7469,6 +7469,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/ipmn-fukuoka-v883.js",
+      "type": "file",
+      "name": "lib/ipmn-fukuoka-v883.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "df7fc6ca811bda28207423dde203e405486297aacc248eefbca0eecbc08b85b7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8021"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/ips-hodgkin-v661.js",
       "type": "file",
       "name": "lib/ips-hodgkin-v661.js",
@@ -9491,7 +9512,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c5c851d919381f095e3d1eff8f43ec7071697e12aaca3be3e6abe5c6ccd0d795"
+          "content": "cdd2a82dccc4fc68974a8e4006a68bf64cd90b42ba62af6fc19a1d34db3c799e"
         }
       ],
       "properties": [
@@ -9501,7 +9522,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2360986"
+          "value": "2363087"
         }
       ]
     },
@@ -23870,6 +23891,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ipmn-fukuoka-v883.js",
+      "type": "file",
+      "name": "mcp/adapters/ipmn-fukuoka-v883.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c0602c64067ab43b3993fee0e86917dd449329ca5455a425253a8cf5aee90b86"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3363"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ips-hodgkin-v661.js",
       "type": "file",
       "name": "mcp/adapters/ips-hodgkin-v661.js",
@@ -32801,7 +32843,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d5dec6b7782a88bfb81109d8ed8477ba05da6b5d462ce9ba5b230263a13506c8"
+          "content": "ce8cfa94937df30e5d2816603a186c753c762035f92705413a1605000d5f4f27"
         }
       ],
       "properties": [
@@ -32811,7 +32853,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "82501"
+          "value": "82606"
         }
       ]
     },
@@ -48625,6 +48667,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4595"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v883.js",
+      "type": "file",
+      "name": "views/group-v883.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "209b74e6b80d4141890931dac23f5842c21bac31cd3774c22eadb9d1475406ac"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2679"
         }
       ]
     },
@@ -64577,6 +64640,7 @@
         "urn:sophiewell:file:source:lib/interchest-v693.js",
         "urn:sophiewell:file:source:lib/intermacs-profile-v494.js",
         "urn:sophiewell:file:source:lib/intertak-v788.js",
+        "urn:sophiewell:file:source:lib/ipmn-fukuoka-v883.js",
         "urn:sophiewell:file:source:lib/ips-hodgkin-v661.js",
         "urn:sophiewell:file:source:lib/irecist-v551.js",
         "urn:sophiewell:file:source:lib/isgls-bile-leak-v658.js",
@@ -65788,6 +65852,7 @@
         "urn:sophiewell:file:source:views/group-v880.js",
         "urn:sophiewell:file:source:views/group-v881.js",
         "urn:sophiewell:file:source:views/group-v882.js",
+        "urn:sophiewell:file:source:views/group-v883.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
@@ -66115,6 +66180,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/interchest-v693.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/intermacs-profile-v494.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/intertak-v788.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/ipmn-fukuoka-v883.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ips-hodgkin-v661.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/irecist-v551.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/isgls-bile-leak-v658.js",
@@ -66643,7 +66709,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "dc21addb39762b43"
+      "value": "bfe081e45a99b292"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -66655,7 +66721,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2295"
+      "value": "2298"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

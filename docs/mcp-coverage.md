@@ -7949,6 +7949,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/polyp-surveillance-v882.js (spec-v882: USMSTF post-polypectomy surveillance intervals — clinical disclaimer)
 - `polyp-surveillance`
 
+### lib/ipmn-fukuoka-v883.js (spec-v883: Fukuoka branch-duct IPMN tiers — clinical disclaimer)
+- `ipmn-fukuoka`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
