@@ -703,6 +703,7 @@ import * as membranousRiskV878 from '../../lib/membranous-risk-v878.js';
 import * as cancerCachexiaV879 from '../../lib/cancer-cachexia-v879.js';
 import * as ewgsop2V880 from '../../lib/ewgsop2-v880.js';
 import * as vitaminDLevelV881 from '../../lib/vitamin-d-level-v881.js';
+import * as polypSurveillanceV882 from '../../lib/polyp-surveillance-v882.js';
 import * as sadPersonsV701 from '../../lib/sad-persons-v701.js';
 import * as edinburghClaudicationV702 from '../../lib/edinburgh-claudication-v702.js';
 import * as reimersMigrationPercentageV703 from '../../lib/reimers-migration-percentage-v703.js';
@@ -1451,6 +1452,7 @@ const MODULES = {
   'cancer-cachexia-v879.js': cancerCachexiaV879,
   'ewgsop2-v880.js': ewgsop2V880,
   'vitamin-d-level-v881.js': vitaminDLevelV881,
+  'polyp-surveillance-v882.js': polypSurveillanceV882,
   'sad-persons-v701.js': sadPersonsV701,
   'edinburgh-claudication-v702.js': edinburghClaudicationV702,
   'reimers-migration-percentage-v703.js': reimersMigrationPercentageV703,

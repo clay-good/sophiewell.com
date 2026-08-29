@@ -718,6 +718,7 @@ import { renderers as RV878 } from './views/group-v878.js';
 import { renderers as RV879 } from './views/group-v879.js';
 import { renderers as RV880 } from './views/group-v880.js';
 import { renderers as RV881 } from './views/group-v881.js';
+import { renderers as RV882 } from './views/group-v882.js';
 import { renderers as RV164 } from './views/group-v164.js';
 import { renderers as RV165 } from './views/group-v165.js';
 import { renderers as RV166 } from './views/group-v166.js';
@@ -778,7 +779,8 @@ const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...R
   ...RV878,
   ...RV879,
   ...RV880,
-  ...RV881, ...RV63, ...RPALINT };
+  ...RV881,
+  ...RV882, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -2558,6 +2560,7 @@ const UTILITIES = [
   { id: 'cancer-cachexia', name: 'Cancer Cachexia Consensus Definition', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'ewgsop2', name: 'EWGSOP2 Sarcopenia Algorithm', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'vitamin-d-level', name: '25-Hydroxyvitamin D Level Interpretation', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'polyp-surveillance', name: 'Post-Polypectomy Surveillance Interval', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'gahs',                   name: 'Glasgow Alcoholic Hepatitis Score',                group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'west-haven-he',          name: 'West Haven HE grade (hepatic encephalopathy)',     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'hepatic-steatosis-index', name: 'Hepatic Steatosis Index (NAFLD screen)',          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },

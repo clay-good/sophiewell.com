@@ -7946,6 +7946,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/vitamin-d-level-v881.js (spec-v881: 25-hydroxyvitamin D level interpretation — clinical disclaimer)
 - `vitamin-d-level`
 
+### lib/polyp-surveillance-v882.js (spec-v882: USMSTF post-polypectomy surveillance intervals — clinical disclaimer)
+- `polyp-surveillance`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
