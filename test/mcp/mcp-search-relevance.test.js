@@ -746,6 +746,7 @@ const PROBES = [
   ['blood lead reference value micrograms per deciliter child', ['blood-lead']],
   ['methemoglobin co-oximetry methylene blue pulse oximeter', ['methemoglobin']],
   ['carboxyhemoglobin carbon monoxide level smoker baseline', ['carboxyhemoglobin']],
+  ['broset violence checklist inpatient risk next 24 hours', ['broset']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],

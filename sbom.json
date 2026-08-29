@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:38bee55e-9e8a-55b4-8151-6100568dd8f7",
+  "serialNumber": "urn:uuid:d36824a7-f5ae-5d16-8d15-3e0e8166475d",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-29T14:39:33.103Z",
+    "timestamp": "2026-08-29T15:16:08.814Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1657 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1658 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "473c8512bc94e4e8b1e954876f246954d551a9b61a2e1477effd406ae6cfd9c5"
+          "content": "e14ae9818a8932b941a74f5399b7767d383a853671e000fa0b90d28c0122db25"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "106736"
+          "value": "106777"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b5dd3278364a0aa8439bab3ce57e07bd9166b3834683bf334cb4afdd0ff035a2"
+          "content": "d9e87df5108317b5475ee4ae645454a79553aae6ea1ba44c1a7c350499369f71"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "482423"
+          "value": "482616"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3395edfdaeb5c3957602a8fe3ebf38599c8e1b4017ef790eb1f85641c23c4b57"
+          "content": "e05d0f480b4209934ce0602acb0abb0b5f9818419ffc96c4a11daedc985d37a7"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "254404"
+          "value": "254550"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1014237df2a913ec59a8c1eafb5f6adb4791a5bb72b6520cc67809df2fc32500"
+          "content": "e939a2cb64f6d1e0c2dd313de083aa65d5d63b589e9cf717af39d3cebd9a159a"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "92704"
+          "value": "92741"
         }
       ]
     },
@@ -2026,6 +2026,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3050"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/broset-v866.js",
+      "type": "file",
+      "name": "lib/broset-v866.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "446a1f3babae94fec3972a8c3d332e3b4fb59b2f3c5ccd02f4473001a0774f50"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5806"
         }
       ]
     },
@@ -9281,7 +9302,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1c867a29bd315acaf4d6901bfe2812b1e46e3d877e853e3aacf0837f0c9b8551"
+          "content": "72cf78a1b6786865c6943e360d850cd93d1679fc527c12dc64b0f55360edd0ac"
         }
       ],
       "properties": [
@@ -9291,7 +9312,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2330495"
+          "value": "2332057"
         }
       ]
     },
@@ -18322,6 +18343,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1119"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/broset-v866.js",
+      "type": "file",
+      "name": "mcp/adapters/broset-v866.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b07f7f7576f31a43482bda3fb0d3217e88b34cf8d5b8407b0b1c300633267686"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1982"
         }
       ]
     },
@@ -32129,7 +32171,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "804a12d615224eb223a59b5796cd76486c49b539e0366c2b6479e1ef6bc8e035"
+          "content": "37f66cb36525ea670d94b03f022194fc573c494eb932cd24be496a68d94acc3c"
         }
       ],
       "properties": [
@@ -32139,7 +32181,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "80753"
+          "value": "80836"
         }
       ]
     },
@@ -47617,6 +47659,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4481"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v866.js",
+      "type": "file",
+      "name": "views/group-v866.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c9ed82d2c491ad7620794511ee3d2e163a48f7f6dfb0cf95a2a5c7637caec3fb"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2465"
         }
       ]
     },
@@ -63310,6 +63373,7 @@
         "urn:sophiewell:file:source:lib/brodsky-tonsil-v388.js",
         "urn:sophiewell:file:source:lib/bromage-scale-v467.js",
         "urn:sophiewell:file:source:lib/brooker-v452.js",
+        "urn:sophiewell:file:source:lib/broset-v866.js",
         "urn:sophiewell:file:source:lib/brouet-cryoglobulinemia-v468.js",
         "urn:sophiewell:file:source:lib/brue-v547.js",
         "urn:sophiewell:file:source:lib/c-rads-v371.js",
@@ -64748,6 +64812,7 @@
         "urn:sophiewell:file:source:views/group-v863.js",
         "urn:sophiewell:file:source:views/group-v864.js",
         "urn:sophiewell:file:source:views/group-v865.js",
+        "urn:sophiewell:file:source:views/group-v866.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
@@ -64827,6 +64892,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/brodsky-tonsil-v388.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/bromage-scale-v467.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/brooker-v452.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/broset-v866.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/brouet-cryoglobulinemia-v468.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/brue-v547.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/c-rads-v371.js",
@@ -65587,7 +65653,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "38bee55e9e8ad5b4"
+      "value": "d36824a7f5ae8d16"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -65599,7 +65665,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2247"
+      "value": "2250"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

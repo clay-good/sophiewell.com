@@ -7901,6 +7901,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/carboxyhemoglobin-v865.js (spec-v865: carboxyhemoglobin level interpretation — clinical disclaimer)
 - `carboxyhemoglobin`
 
+### lib/broset-v866.js (spec-v866: Broset Violence Checklist — clinical disclaimer)
+- `broset`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
