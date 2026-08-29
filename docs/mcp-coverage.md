@@ -7919,6 +7919,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/measles-case-def-v872.js (spec-v872: CDC/CSTE measles case definition — clinical disclaimer)
 - `measles-case-def`
 
+### lib/lyme-two-tier-v873.js (spec-v873: CDC two-tier Lyme serology algorithm — clinical disclaimer)
+- `lyme-two-tier`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

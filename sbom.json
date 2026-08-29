@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:32dba447-40b9-5787-8c1e-61bac0fa468a",
+  "serialNumber": "urn:uuid:dec73aa2-28a6-56af-8a55-426b2b4ab735",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-29T18:32:18.683Z",
+    "timestamp": "2026-08-29T18:46:42.471Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1663 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1664 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7f32c051e61601bb7bda60e636be30d6a5f4c860b8c162dd14f5074d0c81214c"
+          "content": "8f0f97615acbf6a62d850fcea89d92c789f7b1e648409944672e09c7a2833d30"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "107047"
+          "value": "107099"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "55e06451ac675a1eb6567bc1dc50e75d89b1e997123a92ec5d6d925580c7929e"
+          "content": "faf94455c234df72cfc39f65917048135396533022387c7793afa5c0a68227e0"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "483703"
+          "value": "483916"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "58d600a4250561491191b003f6bcd5c872da98147741f023885956d32e098a52"
+          "content": "a0fa71c4592474893d1b832b6aef0b98ea40d768fd9e8978d144a653457b0166"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "255327"
+          "value": "255480"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "35bb01b22637e34bb0c420c0a21a56d5408aed4ff234a365ee249c021aeb1ece"
+          "content": "8a42ef7f96e5428f3a66cb345d73b44fef4d4a217443dd59ed8693cfb17b3f10"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "93038"
+          "value": "93093"
         }
       ]
     },
@@ -8813,6 +8813,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/lyme-two-tier-v873.js",
+      "type": "file",
+      "name": "lib/lyme-two-tier-v873.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8fcbfad055c05efa29c2e6961764d66c577da4c82c0d6776424bad307dd79d8d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "9504"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/lymphoma-v135.js",
       "type": "file",
       "name": "lib/lymphoma-v135.js",
@@ -9344,7 +9365,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8d34811bf721f06f2f9e4a2f7778b47d0e8b79168774ee985cb938813d1c605a"
+          "content": "6215a08ad34a493947fbbecf249857b2bdfe024b73f6fc8cbcce288dc8615260"
         }
       ],
       "properties": [
@@ -9354,7 +9375,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2341920"
+          "value": "2343877"
         }
       ]
     },
@@ -24920,6 +24941,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/lyme-two-tier-v873.js",
+      "type": "file",
+      "name": "mcp/adapters/lyme-two-tier-v873.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6e38ba0a5aba8e8c6b49d1039ed2459c85cce8ddd145bd0e166488b7b4dfd65e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2079"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/lymphoma-v135.js",
       "type": "file",
       "name": "mcp/adapters/lymphoma-v135.js",
@@ -32381,7 +32423,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0eee879a755b8d7092cc88f820e2a2476fb3217564e5c42b16c8b30f6793aa85"
+          "content": "cf6aa20badda1ebec65be269d1fb0e9bda06c9cb1a0ea1551d315c7a6be26b35"
         }
       ],
       "properties": [
@@ -32391,7 +32433,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "81421"
+          "value": "81528"
         }
       ]
     },
@@ -47995,6 +48037,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3645"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v873.js",
+      "type": "file",
+      "name": "views/group-v873.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "21f35688c7ed475528ba4e9816909cf0bb9e447af42e522410c29b169742df56"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4294"
         }
       ]
     },
@@ -64011,6 +64074,7 @@
         "urn:sophiewell:file:source:lib/lund-kennedy-v676.js",
         "urn:sophiewell:file:source:lib/lung-rads-v325.js",
         "urn:sophiewell:file:source:lib/lupus-nephritis-indices-v565.js",
+        "urn:sophiewell:file:source:lib/lyme-two-tier-v873.js",
         "urn:sophiewell:file:source:lib/lymphoma-v135.js",
         "urn:sophiewell:file:source:lib/magic-gvhd-v577.js",
         "urn:sophiewell:file:source:lib/mallampati-v810.js",
@@ -65138,6 +65202,7 @@
         "urn:sophiewell:file:source:views/group-v869.js",
         "urn:sophiewell:file:source:views/group-v870.js",
         "urn:sophiewell:file:source:views/group-v872.js",
+        "urn:sophiewell:file:source:views/group-v873.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
@@ -65525,6 +65590,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/lund-kennedy-v676.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lung-rads-v325.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lupus-nephritis-indices-v565.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/lyme-two-tier-v873.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lymphoma-v135.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/magic-gvhd-v577.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mallampati-v810.js",
@@ -65983,7 +66049,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "32dba44740b91787"
+      "value": "dec73aa228a626af"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -65995,7 +66061,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2265"
+      "value": "2268"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

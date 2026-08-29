@@ -694,6 +694,7 @@ import * as pertussisCaseDefV868 from '../../lib/pertussis-case-def-v868.js';
 import * as eortcMsgIfdV869 from '../../lib/eortc-msg-ifd-v869.js';
 import * as nmsCriteriaV870 from '../../lib/nms-criteria-v870.js';
 import * as measlesCaseDefV872 from '../../lib/measles-case-def-v872.js';
+import * as lymeTwoTierV873 from '../../lib/lyme-two-tier-v873.js';
 import * as sadPersonsV701 from '../../lib/sad-persons-v701.js';
 import * as edinburghClaudicationV702 from '../../lib/edinburgh-claudication-v702.js';
 import * as reimersMigrationPercentageV703 from '../../lib/reimers-migration-percentage-v703.js';
@@ -1433,6 +1434,7 @@ const MODULES = {
   'eortc-msg-ifd-v869.js': eortcMsgIfdV869,
   'nms-criteria-v870.js': nmsCriteriaV870,
   'measles-case-def-v872.js': measlesCaseDefV872,
+  'lyme-two-tier-v873.js': lymeTwoTierV873,
   'sad-persons-v701.js': sadPersonsV701,
   'edinburgh-claudication-v702.js': edinburghClaudicationV702,
   'reimers-migration-percentage-v703.js': reimersMigrationPercentageV703,
