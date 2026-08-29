@@ -7892,6 +7892,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/mchat-v862.js (spec-v862: M-CHAT-R/F toddler autism screen — clinical disclaimer)
 - `mchat-rf`
 
+### lib/lead-v863.js (spec-v863: CDC blood lead reference value — clinical disclaimer)
+- `blood-lead`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

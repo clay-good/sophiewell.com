@@ -743,6 +743,7 @@ const PROBES = [
   ['malignant hyperthermia clinical grading scale raw score rank', ['mh-grading-scale']],
   ['spinal epidural abscess spine pain risk factor sedimentation rate imaging', ['sea-guideline']],
   ['m-chat toddler autism screen follow-up medium risk', ['mchat-rf']],
+  ['blood lead reference value micrograms per deciliter child', ['blood-lead']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],
