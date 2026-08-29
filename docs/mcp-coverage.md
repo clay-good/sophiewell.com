@@ -7937,6 +7937,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/membranous-risk-v878.js (spec-v878: KDIGO membranous nephropathy risk categories — clinical disclaimer)
 - `membranous-risk`
 
+### lib/cancer-cachexia-v879.js (spec-v879: cancer cachexia consensus definition — clinical disclaimer)
+- `cancer-cachexia`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
