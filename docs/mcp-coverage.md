@@ -7913,6 +7913,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/eortc-msg-ifd-v869.js (spec-v869: EORTC/MSGERC invasive fungal disease definitions — clinical disclaimer)
 - `eortc-msg-ifd`
 
+### lib/nms-criteria-v870.js (spec-v870: neuroleptic malignant syndrome diagnostic criteria — clinical disclaimer)
+- `nms-criteria`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

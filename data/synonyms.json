@@ -6711,5 +6711,12 @@
     "is this probable aspergillosis",
     "galactomannan threshold criteria",
     "invasive mold disease criteria"
+  ],
+  "nms-criteria": [
+    "neuroleptic malignant syndrome criteria",
+    "nms diagnostic criteria",
+    "is this nms or serotonin syndrome",
+    "antipsychotic fever rigidity rhabdomyolysis",
+    "gurrera consensus criteria"
   ]
 }
