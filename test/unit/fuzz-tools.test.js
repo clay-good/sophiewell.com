@@ -678,6 +678,7 @@ import * as sbpAsciticFluidV852 from '../../lib/sbp-ascitic-fluid-v852.js';
 import * as constrictivePericarditisEchoV853 from '../../lib/constrictive-pericarditis-echo-v853.js';
 import * as gastricEmptyingScintigraphyV854 from '../../lib/gastric-emptying-scintigraphy-v854.js';
 import * as narcolepsyCriteriaV855 from '../../lib/narcolepsy-criteria-v855.js';
+import * as rlsCriteriaV856 from '../../lib/rls-criteria-v856.js';
 import * as sadPersonsV701 from '../../lib/sad-persons-v701.js';
 import * as edinburghClaudicationV702 from '../../lib/edinburgh-claudication-v702.js';
 import * as reimersMigrationPercentageV703 from '../../lib/reimers-migration-percentage-v703.js';
@@ -1401,6 +1402,7 @@ const MODULES = {
   'constrictive-pericarditis-echo-v853.js': constrictivePericarditisEchoV853,
   'gastric-emptying-scintigraphy-v854.js': gastricEmptyingScintigraphyV854,
   'narcolepsy-criteria-v855.js': narcolepsyCriteriaV855,
+  'rls-criteria-v856.js': rlsCriteriaV856,
   'sad-persons-v701.js': sadPersonsV701,
   'edinburgh-claudication-v702.js': edinburghClaudicationV702,
   'reimers-migration-percentage-v703.js': reimersMigrationPercentageV703,

@@ -736,6 +736,7 @@ const PROBES = [
   ['constrictive pericarditis echo septal shift hepatic vein reversal', ['constrictive-pericarditis-echo']],
   ['gastric emptying study four hour retention grade', ['gastric-emptying-scintigraphy']],
   ['narcolepsy type 1 type 2 criteria cataplexy hypocretin sleep latency', ['narcolepsy-criteria']],
+  ['restless legs syndrome five essential diagnostic criteria', ['rls-criteria']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],

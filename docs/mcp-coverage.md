@@ -7871,6 +7871,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/narcolepsy-criteria-v855.js (spec-v855: ICSD-3 narcolepsy criteria, type 1 and type 2 — clinical disclaimer)
 - `narcolepsy-criteria`
 
+### lib/rls-criteria-v856.js (spec-v856: the five essential IRLSSG criteria for restless legs syndrome — clinical disclaimer)
+- `rls-criteria`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
