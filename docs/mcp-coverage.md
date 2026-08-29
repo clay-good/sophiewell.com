@@ -7886,6 +7886,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/mh-grading-scale-v860.js (spec-v860: malignant hyperthermia clinical grading scale — clinical disclaimer)
 - `mh-grading-scale`
 
+### lib/sea-guideline-v861.js (spec-v861: spinal epidural abscess decision guideline — clinical disclaimer)
+- `sea-guideline`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
