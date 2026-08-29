@@ -7889,6 +7889,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/sea-guideline-v861.js (spec-v861: spinal epidural abscess decision guideline — clinical disclaimer)
 - `sea-guideline`
 
+### lib/mchat-v862.js (spec-v862: M-CHAT-R/F toddler autism screen — clinical disclaimer)
+- `mchat-rf`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

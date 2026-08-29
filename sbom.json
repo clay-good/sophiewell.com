@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:c127dae4-216f-555f-83da-35a900e3f777",
+  "serialNumber": "urn:uuid:2a5bc6ea-8309-5cf9-8700-13e60bfba2b7",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-29T13:18:35.515Z",
+    "timestamp": "2026-08-29T13:29:49.870Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1653 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1654 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "eb10bd4fbf81d82a3e1b23878632cd704acf1eb6e1ebd85fb8d4ca8c0f920277"
+          "content": "75d70f3f44275b3b56a4af47ce30b4890fada0e3dfa5e1cee0e4290063bc0bd0"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "106538"
+          "value": "106586"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "062e7e899fb5218602f74af11ad2cc6940b692eb02f6685ac3cb5a24bf1ef8bf"
+          "content": "2f7c833ab1c07d3ec0a717ba1e7eaf0068f3e0f273268d9ba22b3c9ac06fe963"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "481593"
+          "value": "481795"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b0c7d246bf0c8d83e3115f67886b7e2500bc914caff7a72aae33037ec9c0430a"
+          "content": "e4116fbdcf481ac013bdb6a61371cdff03a7898761758ee937c71805f3c335f7"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "253796"
+          "value": "253944"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "02a52c4a287eff4e67baff6474d414da36197121c4adceb7e60314940f452ed0"
+          "content": "a2b440217f61bbe02a4f4e963439db3285a938ef4f931880a5b39562fea4f7fe"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "92498"
+          "value": "92544"
         }
       ]
     },
@@ -9065,6 +9065,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/mchat-v862.js",
+      "type": "file",
+      "name": "lib/mchat-v862.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8aaecc04039a25a985d3618008e5c393b9394ea751555623cd4a1a89021e0378"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "9185"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/mcmahon-rhabdo-v677.js",
       "type": "file",
       "name": "lib/mcmahon-rhabdo-v677.js",
@@ -9218,7 +9239,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "727c563b6ea6930c317fe3cab2f96f1438efcb1ef0425e225caf034c5a559d89"
+          "content": "96cef054ffc92fa39f4cf23d7ae304ba3ecd3af1e7d15002edf816530b7d11c4"
         }
       ],
       "properties": [
@@ -9228,7 +9249,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2322750"
+          "value": "2324758"
         }
       ]
     },
@@ -24962,6 +24983,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/mchat-v862.js",
+      "type": "file",
+      "name": "mcp/adapters/mchat-v862.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5db1446dd5f72ae33974ce75c28db62322659404c3f9a41b83e5acfacde0730f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4617"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/mcmahon-rhabdo-v677.js",
       "type": "file",
       "name": "mcp/adapters/mcmahon-rhabdo-v677.js",
@@ -31961,7 +32003,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "360479839bf28fc1582ffa757e1c9e09430cbff51f9fd740624014cd9bafa7af"
+          "content": "fa0fe5809b5d14ac05337a1551849eefab4b943f34d42b6502e585c8e431132c"
         }
       ],
       "properties": [
@@ -31971,7 +32013,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "80361"
+          "value": "80440"
         }
       ]
     },
@@ -47365,6 +47407,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3796"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v862.js",
+      "type": "file",
+      "name": "views/group-v862.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6e5a18e0753934339b38adf589ccfdbee0ef2dbf54fbb5f3deb64d3d510d91a2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3497"
         }
       ]
     },
@@ -63393,6 +63456,7 @@
         "urn:sophiewell:file:source:lib/mayo-olecranon-v739.js",
         "urn:sophiewell:file:source:lib/mccormack-v646.js",
         "urn:sophiewell:file:source:lib/mccormick-v444.js",
+        "urn:sophiewell:file:source:lib/mchat-v862.js",
         "urn:sophiewell:file:source:lib/mcmahon-rhabdo-v677.js",
         "urn:sophiewell:file:source:lib/mda-psoriatic-v672.js",
         "urn:sophiewell:file:source:lib/medication-v4.js",
@@ -64488,6 +64552,7 @@
         "urn:sophiewell:file:source:views/group-v859.js",
         "urn:sophiewell:file:source:views/group-v860.js",
         "urn:sophiewell:file:source:views/group-v861.js",
+        "urn:sophiewell:file:source:views/group-v862.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
@@ -64887,6 +64952,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/mayo-olecranon-v739.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mccormack-v646.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mccormick-v444.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/mchat-v862.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mcmahon-rhabdo-v677.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mda-psoriatic-v672.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/medication-v4.js",
@@ -65323,7 +65389,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "c127dae4216f055f"
+      "value": "2a5bc6ea8309ecf9"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -65335,7 +65401,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2235"
+      "value": "2238"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

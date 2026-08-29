@@ -684,6 +684,7 @@ import * as whoHearingGradeV858 from '../../lib/who-hearing-grade-v858.js';
 import * as priapismGasV859 from '../../lib/priapism-gas-v859.js';
 import * as mhGradingScaleV860 from '../../lib/mh-grading-scale-v860.js';
 import * as seaGuidelineV861 from '../../lib/sea-guideline-v861.js';
+import * as mchatV862 from '../../lib/mchat-v862.js';
 import * as sadPersonsV701 from '../../lib/sad-persons-v701.js';
 import * as edinburghClaudicationV702 from '../../lib/edinburgh-claudication-v702.js';
 import * as reimersMigrationPercentageV703 from '../../lib/reimers-migration-percentage-v703.js';
@@ -1413,6 +1414,7 @@ const MODULES = {
   'priapism-gas-v859.js': priapismGasV859,
   'mh-grading-scale-v860.js': mhGradingScaleV860,
   'sea-guideline-v861.js': seaGuidelineV861,
+  'mchat-v862.js': mchatV862,
   'sad-persons-v701.js': sadPersonsV701,
   'edinburgh-claudication-v702.js': edinburghClaudicationV702,
   'reimers-migration-percentage-v703.js': reimersMigrationPercentageV703,

@@ -702,6 +702,7 @@ import whoHearingGradeV858 from './adapters/who-hearing-grade-v858.js';
 import priapismGasV859 from './adapters/priapism-gas-v859.js';
 import mhGradingScaleV860 from './adapters/mh-grading-scale-v860.js';
 import seaGuidelineV861 from './adapters/sea-guideline-v861.js';
+import mchatV862 from './adapters/mchat-v862.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
 import reimersMigrationPercentageV703 from './adapters/reimers-migration-percentage-v703.js';
@@ -1430,6 +1431,7 @@ const ADAPTER_MODULES = [
   ['priapism-gas-v859', priapismGasV859],
   ['mh-grading-scale-v860', mhGradingScaleV860],
   ['sea-guideline-v861', seaGuidelineV861],
+  ['mchat-v862', mchatV862],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],
   ['reimers-migration-percentage-v703', reimersMigrationPercentageV703],
