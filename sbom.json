@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:22379741-1a3c-56ed-839e-880085401f96",
+  "serialNumber": "urn:uuid:2c5ae347-53fc-5615-8ea5-dab9e6577a52",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-29T21:32:42.836Z",
+    "timestamp": "2026-08-29T21:43:13.942Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1679 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1680 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ce5787c75a9ba9a1cba7935bcec76ba5089fac5fc7b1d193d979c26a27d27551"
+          "content": "ef289d7167e339f5f530b6cb2884a5667a258d0896661812a4a3292f8cd4802f"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "107830"
+          "value": "107877"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4dda67adedf3ec47a047442ec312f53bc67420db13f41fa0887550c95e04729b"
+          "content": "03c5d47a337aa686d24099458ee38449b9be15f0f9cd76ea35aca82d29af433a"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "487062"
+          "value": "487268"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c27f9830832dbf534cf44d6188142107889c3b922964757c71ed34563e74d98d"
+          "content": "c025c82cd294005950d32a4f711aba4f7e4ba2d14003147ad9686c70b0b8a116"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "257775"
+          "value": "257926"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "73a4588d43752deca18e7a7b1eee600ec9cbb1c39b158d861228093f4f279fd0"
+          "content": "5851e7c672b44152b64406c94a9543345f777bb2f31fbb9164a61db3dab6368f"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "93869"
+          "value": "93917"
         }
       ]
     },
@@ -7112,6 +7112,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/home-oxygen-v889.js",
+      "type": "file",
+      "name": "lib/home-oxygen-v889.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c53ca0e0f6f86991569b8759181d88790fc1f6f532d431c73e0044a48f14b242"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "9562"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/hpa-glaucoma-v801.js",
       "type": "file",
       "name": "lib/hpa-glaucoma-v801.js",
@@ -9575,7 +9596,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ee262277908951e4cbab1b983478c5a2e45efb46b6853c4898ad007b035613c6"
+          "content": "a2e6851ebc2ba5a88876c29d4884b795a48822d930fea66fdb4587de8be81d54"
         }
       ],
       "properties": [
@@ -9585,7 +9606,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2372735"
+          "value": "2374785"
         }
       ]
     },
@@ -23639,6 +23660,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/home-oxygen-v889.js",
+      "type": "file",
+      "name": "mcp/adapters/home-oxygen-v889.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f5238806d2cf66f77af787da49b1d7c7817be50bf95d4ed5aa5d01f233328628"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2332"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/hpa-glaucoma-v801.js",
       "type": "file",
       "name": "mcp/adapters/hpa-glaucoma-v801.js",
@@ -33053,7 +33095,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "de2b60c7a01b574ae40cee8dd39d2fd2c4b4d908ae8faffa1414a02e49543f0b"
+          "content": "77644c4f9f498ea289d64bcc5d99dc3cb92e0d86c3d3e7f0a4a2b2c894dbdd5b"
         }
       ],
       "properties": [
@@ -33063,7 +33105,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "83161"
+          "value": "83262"
         }
       ]
     },
@@ -49007,6 +49049,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v889.js",
+      "type": "file",
+      "name": "views/group-v889.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2b9497df12358e2b7fbbf55c9468a6cde5b944f4c4721912cb5c25da2375be1d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3626"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:views/group-v9.js",
       "type": "file",
       "name": "views/group-v9.js",
@@ -64938,6 +65001,7 @@
         "urn:sophiewell:file:source:lib/hinchey-v321.js",
         "urn:sophiewell:file:source:lib/hiv-pep-occupational-v887.js",
         "urn:sophiewell:file:source:lib/hlh-2004-v582.js",
+        "urn:sophiewell:file:source:lib/home-oxygen-v889.js",
         "urn:sophiewell:file:source:lib/hpa-glaucoma-v801.js",
         "urn:sophiewell:file:source:lib/hrs-aki-v808.js",
         "urn:sophiewell:file:source:lib/hughes-gbs-v800.js",
@@ -66178,6 +66242,7 @@
         "urn:sophiewell:file:source:views/group-v886.js",
         "urn:sophiewell:file:source:views/group-v887.js",
         "urn:sophiewell:file:source:views/group-v888.js",
+        "urn:sophiewell:file:source:views/group-v889.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
@@ -66488,6 +66553,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/hinchey-v321.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hiv-pep-occupational-v887.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hlh-2004-v582.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/home-oxygen-v889.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hpa-glaucoma-v801.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hrs-aki-v808.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hughes-gbs-v800.js",
@@ -67039,7 +67105,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "223797411a3cf6ed"
+      "value": "2c5ae34753fc7615"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -67051,7 +67117,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2313"
+      "value": "2316"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

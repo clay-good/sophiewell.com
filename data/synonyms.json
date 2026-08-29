@@ -6837,5 +6837,12 @@
     "is this feno high",
     "nitric oxide asthma test",
     "eosinophilic airway inflammation marker"
+  ],
+  "home-oxygen": [
+    "home oxygen criteria",
+    "does this patient qualify for home oxygen",
+    "long term oxygen therapy qualification",
+    "saturation 88 percent oxygen",
+    "oxygen prescription requirements"
   ]
 }

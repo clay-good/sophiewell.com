@@ -7967,6 +7967,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/feno-v888.js (spec-v888: FeNO interpretation — clinical disclaimer)
 - `feno`
 
+### lib/home-oxygen-v889.js (spec-v889: home oxygen qualifying criteria — clinical disclaimer)
+- `home-oxygen`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

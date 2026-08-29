@@ -725,6 +725,7 @@ import { renderers as RV885 } from './views/group-v885.js';
 import { renderers as RV886 } from './views/group-v886.js';
 import { renderers as RV887 } from './views/group-v887.js';
 import { renderers as RV888 } from './views/group-v888.js';
+import { renderers as RV889 } from './views/group-v889.js';
 import { renderers as RV164 } from './views/group-v164.js';
 import { renderers as RV165 } from './views/group-v165.js';
 import { renderers as RV166 } from './views/group-v166.js';
@@ -792,7 +793,8 @@ const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...R
   ...RV885,
   ...RV886,
   ...RV887,
-  ...RV888, ...RV63, ...RPALINT };
+  ...RV888,
+  ...RV889, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -2579,6 +2581,7 @@ const UTILITIES = [
   { id: 'noise-exposure', name: 'Occupational Noise Exposure Limits', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'hiv-pep-occupational', name: 'Occupational HIV Exposure (PEP decision)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'feno', name: 'FeNO Interpretation (ATS 2011)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'home-oxygen', name: 'Home Oxygen Qualifying Criteria', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'gahs',                   name: 'Glasgow Alcoholic Hepatitis Score',                group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'west-haven-he',          name: 'West Haven HE grade (hepatic encephalopathy)',     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'hepatic-steatosis-index', name: 'Hepatic Steatosis Index (NAFLD screen)',          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
