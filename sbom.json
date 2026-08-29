@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:0d8cf611-884e-5975-8e31-c53f9901b699",
+  "serialNumber": "urn:uuid:cd867d9a-cd8a-5eb2-8aed-53678e05ad88",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-29T19:18:46.860Z",
+    "timestamp": "2026-08-29T19:31:00.128Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1667 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1668 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "bc1d026042340cbdb4c90e4a126e7d32f264851a589ebdc3821fd30751d13e0d"
+          "content": "d1c555062f77242a8feb73a01a06f5a3e8ce14f483ad727d2e3070a927b54b9a"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "107228"
+          "value": "107268"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c4333d17b4cd7a1830defcf8f1fab8c0e0659519a380b12262b4dbbc423401cd"
+          "content": "ea8c4b0e3131051fdfa304cbd62869cf45a73bce32857c32bacf30cc8132ac04"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "484518"
+          "value": "484722"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7498f4b4e0108544f4b70c33253fdbe77a63e5970cb7016e2efc319eb122dd94"
+          "content": "149713a754f02f065196bb524f1178d5186bd3d140ccbada8ab36f072074c99c"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "255929"
+          "value": "256085"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "45286fbdec082bd1f7c8ca2402e2438f995a5daf41e4815ed7bf0cec2bb3c924"
+          "content": "77ecb251edb1e94fcf43702be8bbbdbe06bf0ee29419ea4fe2d659ab5743b146"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "93221"
+          "value": "93267"
         }
       ]
     },
@@ -7574,6 +7574,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/ishoo-angioedema-v877.js",
+      "type": "file",
+      "name": "lib/ishoo-angioedema-v877.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2cabdc9989a0cbe96c10c328fd071e1750db0c85473dcc92e786bb89375d7fcd"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6884"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/isi-v726.js",
       "type": "file",
       "name": "lib/isi-v726.js",
@@ -9407,7 +9428,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "fd46a205d7e0012d40a4854bb971a9013863ceaa2f4aff067a0f2e5096c3ec3b"
+          "content": "a4b03167b9b506dc84b6387b53b258f337cba92afb1f3e87248160f7f20198b6"
         }
       ],
       "properties": [
@@ -9417,7 +9438,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2349860"
+          "value": "2351554"
         }
       ]
     },
@@ -23849,6 +23870,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ishoo-angioedema-v877.js",
+      "type": "file",
+      "name": "mcp/adapters/ishoo-angioedema-v877.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "49728a4518110b4cc3f399773f195c278196e204c67d6f78e794310c67e76682"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1994"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/isi-v726.js",
       "type": "file",
       "name": "mcp/adapters/isi-v726.js",
@@ -32549,7 +32591,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "534a0aae99ec6f15659b4a9887cc0bfd3cb9f9383f1acd6d6e71a2ed89e9713a"
+          "content": "134cbc47eb947de9bbd8017922debb4bc8677107bed08ee097581d4e7ce63d5e"
         }
       ],
       "properties": [
@@ -32559,7 +32601,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "81815"
+          "value": "81936"
         }
       ]
     },
@@ -48247,6 +48289,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4790"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v877.js",
+      "type": "file",
+      "name": "views/group-v877.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0531aebe185115ad1ce390559bd8944fd65e7c364a40275556348a16e18421e7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2846"
         }
       ]
     },
@@ -64204,6 +64267,7 @@
         "urn:sophiewell:file:source:lib/isgps-dge-v659.js",
         "urn:sophiewell:file:source:lib/isgps-popf-v656.js",
         "urn:sophiewell:file:source:lib/ishlt-rejection-v540.js",
+        "urn:sophiewell:file:source:lib/ishoo-angioedema-v877.js",
         "urn:sophiewell:file:source:lib/isi-v726.js",
         "urn:sophiewell:file:source:lib/isis-v302.js",
         "urn:sophiewell:file:source:lib/isl-lymphedema-v539.js",
@@ -65398,6 +65462,7 @@
         "urn:sophiewell:file:source:views/group-v874.js",
         "urn:sophiewell:file:source:views/group-v875.js",
         "urn:sophiewell:file:source:views/group-v876.js",
+        "urn:sophiewell:file:source:views/group-v877.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
@@ -65730,6 +65795,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/isgps-dge-v659.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/isgps-popf-v656.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ishlt-rejection-v540.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/ishoo-angioedema-v877.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/isi-v726.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/isis-v302.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/isl-lymphedema-v539.js",
@@ -66247,7 +66313,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "0d8cf611884e5975"
+      "value": "cd867d9acd8a9eb2"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -66259,7 +66325,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2277"
+      "value": "2280"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

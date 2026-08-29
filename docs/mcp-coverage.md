@@ -7931,6 +7931,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/nhsn-vae-v876.js (spec-v876: NHSN ventilator-associated event algorithm — clinical disclaimer)
 - `nhsn-vae`
 
+### lib/ishoo-angioedema-v877.js (spec-v877: Ishoo angioedema staging — clinical disclaimer)
+- `ishoo-angioedema`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

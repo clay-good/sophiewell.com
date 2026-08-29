@@ -6753,5 +6753,12 @@
     "is this a ventilator associated pneumonia",
     "nhsn vae algorithm",
     "peep fio2 rise surveillance"
+  ],
+  "ishoo-angioedema": [
+    "angioedema staging",
+    "ace inhibitor angioedema airway risk",
+    "does this angioedema need icu",
+    "tongue swelling airway stage",
+    "ishoo classification"
   ]
 }

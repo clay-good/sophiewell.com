@@ -698,6 +698,7 @@ import * as lymeTwoTierV873 from '../../lib/lyme-two-tier-v873.js';
 import * as clabsiLcbiV874 from '../../lib/clabsi-lcbi-v874.js';
 import * as cautiNhsnV875 from '../../lib/cauti-nhsn-v875.js';
 import * as nhsnVaeV876 from '../../lib/nhsn-vae-v876.js';
+import * as ishooAngioedemaV877 from '../../lib/ishoo-angioedema-v877.js';
 import * as sadPersonsV701 from '../../lib/sad-persons-v701.js';
 import * as edinburghClaudicationV702 from '../../lib/edinburgh-claudication-v702.js';
 import * as reimersMigrationPercentageV703 from '../../lib/reimers-migration-percentage-v703.js';
@@ -1441,6 +1442,7 @@ const MODULES = {
   'clabsi-lcbi-v874.js': clabsiLcbiV874,
   'cauti-nhsn-v875.js': cautiNhsnV875,
   'nhsn-vae-v876.js': nhsnVaeV876,
+  'ishoo-angioedema-v877.js': ishooAngioedemaV877,
   'sad-persons-v701.js': sadPersonsV701,
   'edinburgh-claudication-v702.js': edinburghClaudicationV702,
   'reimers-migration-percentage-v703.js': reimersMigrationPercentageV703,
