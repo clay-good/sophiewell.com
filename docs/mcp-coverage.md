@@ -7868,6 +7868,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/gastric-emptying-scintigraphy-v854.js (spec-v854: reading a standardized 4-hour gastric emptying study — clinical disclaimer)
 - `gastric-emptying-scintigraphy`
 
+### lib/narcolepsy-criteria-v855.js (spec-v855: ICSD-3 narcolepsy criteria, type 1 and type 2 — clinical disclaimer)
+- `narcolepsy-criteria`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

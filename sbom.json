@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:e79252be-7945-5421-8c0c-0f79e4ec21d9",
+  "serialNumber": "urn:uuid:d068aef9-5d5c-5cd9-83ee-dfa922e78f73",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-29T08:58:55.688Z",
+    "timestamp": "2026-08-29T09:21:37.773Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1646 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1647 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "064d14ed94f1576947e53624a7ce48b3cf4966753391b46f5dbc357ad6a8bf2f"
+          "content": "5a95d029bc1bd13894021c9a0ae42819a08c16cc2c75d21f61b27247e4e637b9"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "106173"
+          "value": "106228"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "91417e263657975f93a63860cfdb99e5adfadbceb63980201e9bb2ea29b1a85a"
+          "content": "317619f7daeec8945e5167a6ab4993ca79f8e74d5afd91225e9d44688b46b831"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "480105"
+          "value": "480325"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "377cd327487a963b3eca88c16494959ef0aa1f0c8c0c0f3e5cb2cd24c1e27117"
+          "content": "dac4c8daca368988ef90ffce27e9f3fd3c314d0366a5d68e1a1b081512508e03"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "252715"
+          "value": "252874"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "84c4237db6b2f96fb673fa875c77218040bb79198008b3981ef4614069d2ea2f"
+          "content": "f32f6af92d510612e3ce33623b4003321401ae611dc9a4cc6d55c8b462d947c0"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "92102"
+          "value": "92166"
         }
       ]
     },
@@ -9197,7 +9197,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9c63ac126540c11b1c6e91e05403248d53472f08b8f3e19ccaa5cdbd6873248f"
+          "content": "f54fc82d97fb99b8f2b23b17201d5df0edadd1fedceba39b0c7cc9643dc35115"
         }
       ],
       "properties": [
@@ -9207,7 +9207,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2308876"
+          "value": "2310880"
         }
       ]
     },
@@ -9796,6 +9796,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3267"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/narcolepsy-criteria-v855.js",
+      "type": "file",
+      "name": "lib/narcolepsy-criteria-v855.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "031f755ed0184a2efbf07fc5a6ad68c7f58ae97b6986858f05b8c189fdaf371f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "10694"
         }
       ]
     },
@@ -25508,6 +25529,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/narcolepsy-criteria-v855.js",
+      "type": "file",
+      "name": "mcp/adapters/narcolepsy-criteria-v855.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5d46cd7273f99e781f6f295211ba0b0fb5e13c754d2d81a73a044ef81adfcc31"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2490"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/nash-moe-rotation-v476.js",
       "type": "file",
       "name": "mcp/adapters/nash-moe-rotation-v476.js",
@@ -31667,7 +31709,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6aee4821af1450572cf993b82a98fb51deaeb4fe777492d256da61fae10b2fde"
+          "content": "570d7f411d786e0de7af2bc9d0c6c23039d42300d14f059dfd6d5eb6104f8f4a"
         }
       ],
       "properties": [
@@ -31677,7 +31719,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "79562"
+          "value": "79695"
         }
       ]
     },
@@ -46924,6 +46966,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3883"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v855.js",
+      "type": "file",
+      "name": "views/group-v855.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "02d53cf82f79ea61f2167c6c42340dfdbd801e40802a691c6c8e76b8120beebd"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4465"
         }
       ]
     },
@@ -62987,6 +63050,7 @@
         "urn:sophiewell:file:source:lib/name-match.js",
         "urn:sophiewell:file:source:lib/nancy-index-v578.js",
         "urn:sophiewell:file:source:lib/narakas-obpp-v498.js",
+        "urn:sophiewell:file:source:lib/narcolepsy-criteria-v855.js",
         "urn:sophiewell:file:source:lib/nash-moe-rotation-v476.js",
         "urn:sophiewell:file:source:lib/neck-zone-v366.js",
         "urn:sophiewell:file:source:lib/nems-v544.js",
@@ -64033,6 +64097,7 @@
         "urn:sophiewell:file:source:views/group-v852.js",
         "urn:sophiewell:file:source:views/group-v853.js",
         "urn:sophiewell:file:source:views/group-v854.js",
+        "urn:sophiewell:file:source:views/group-v855.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
@@ -64465,6 +64530,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/nac-attr-stage-v583.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nancy-index-v578.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/narakas-obpp-v498.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/narcolepsy-criteria-v855.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nash-moe-rotation-v476.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/neck-zone-v366.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nems-v544.js",
@@ -64861,7 +64927,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "e79252be79458421"
+      "value": "d068aef95d5c8cd9"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -64873,7 +64939,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2214"
+      "value": "2217"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
