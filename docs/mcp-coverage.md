@@ -7874,6 +7874,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/rls-criteria-v856.js (spec-v856: the five essential IRLSSG criteria for restless legs syndrome — clinical disclaimer)
 - `rls-criteria`
 
+### lib/aom-criteria-v857.js (spec-v857: AAP acute otitis media criteria and the observation option — clinical disclaimer)
+- `aom-criteria`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

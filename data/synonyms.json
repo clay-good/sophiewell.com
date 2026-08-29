@@ -6620,5 +6620,12 @@
     "willis ekbom disease criteria",
     "urge to move my legs at night",
     "restless legs diagnostic criteria"
+  ],
+  "aom-criteria": [
+    "acute otitis media criteria",
+    "does my child have an ear infection",
+    "ear infection antibiotics or wait",
+    "bulging eardrum diagnosis",
+    "acute otitis media diagnosis"
   ]
 }

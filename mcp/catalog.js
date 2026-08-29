@@ -697,6 +697,7 @@ import constrictivePericarditisEchoV853 from './adapters/constrictive-pericardit
 import gastricEmptyingScintigraphyV854 from './adapters/gastric-emptying-scintigraphy-v854.js';
 import narcolepsyCriteriaV855 from './adapters/narcolepsy-criteria-v855.js';
 import rlsCriteriaV856 from './adapters/rls-criteria-v856.js';
+import aomCriteriaV857 from './adapters/aom-criteria-v857.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
 import reimersMigrationPercentageV703 from './adapters/reimers-migration-percentage-v703.js';
@@ -1420,6 +1421,7 @@ const ADAPTER_MODULES = [
   ['gastric-emptying-scintigraphy-v854', gastricEmptyingScintigraphyV854],
   ['narcolepsy-criteria-v855', narcolepsyCriteriaV855],
   ['rls-criteria-v856', rlsCriteriaV856],
+  ['aom-criteria-v857', aomCriteriaV857],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],
   ['reimers-migration-percentage-v703', reimersMigrationPercentageV703],
