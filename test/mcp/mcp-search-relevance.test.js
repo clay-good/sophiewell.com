@@ -730,6 +730,7 @@ const PROBES = [
   ['primary mitral regurgitation stages acc aha ejection fraction 60', ['mitral-regurgitation-stage']],
   ['tricuspid regurgitation stages acc aha hepatic vein reversal', ['tricuspid-regurgitation-stage']],
   ['secondary functional mitral regurgitation stages acc aha', ['secondary-mitral-regurgitation-stage']],
+  ['rope score paradoxical embolism patent foramen ovale cryptogenic stroke', ['rope-score']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],
