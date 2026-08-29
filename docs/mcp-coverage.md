@@ -7859,6 +7859,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/rassi-chagas-v851.js (spec-v851: Rassi death-risk score in chronic Chagas heart disease — clinical disclaimer)
 - `rassi-chagas`
 
+### lib/sbp-ascitic-fluid-v852.js (spec-v852: ascitic-fluid criteria for spontaneous bacterial peritonitis — clinical disclaimer)
+- `sbp-ascitic-fluid`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

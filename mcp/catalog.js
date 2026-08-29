@@ -692,6 +692,7 @@ import tricuspidRegurgitationStageV848 from './adapters/tricuspid-regurgitation-
 import secondaryMitralRegurgitationStageV849 from './adapters/secondary-mitral-regurgitation-stage-v849.js';
 import ropeScoreV850 from './adapters/rope-score-v850.js';
 import rassiChagasV851 from './adapters/rassi-chagas-v851.js';
+import sbpAsciticFluidV852 from './adapters/sbp-ascitic-fluid-v852.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
 import reimersMigrationPercentageV703 from './adapters/reimers-migration-percentage-v703.js';
@@ -1410,6 +1411,7 @@ const ADAPTER_MODULES = [
   ['secondary-mitral-regurgitation-stage-v849', secondaryMitralRegurgitationStageV849],
   ['rope-score-v850', ropeScoreV850],
   ['rassi-chagas-v851', rassiChagasV851],
+  ['sbp-ascitic-fluid-v852', sbpAsciticFluidV852],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],
   ['reimers-migration-percentage-v703', reimersMigrationPercentageV703],

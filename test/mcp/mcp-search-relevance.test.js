@@ -732,6 +732,7 @@ const PROBES = [
   ['secondary functional mitral regurgitation stages acc aha', ['secondary-mitral-regurgitation-stage']],
   ['rope score paradoxical embolism patent foramen ovale cryptogenic stroke', ['rope-score']],
   ['rassi score chagas heart disease death risk', ['rassi-chagas']],
+  ['spontaneous bacterial peritonitis ascitic neutrophil count 250', ['sbp-ascitic-fluid']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],
