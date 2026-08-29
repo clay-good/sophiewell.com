@@ -680,6 +680,7 @@ import * as gastricEmptyingScintigraphyV854 from '../../lib/gastric-emptying-sci
 import * as narcolepsyCriteriaV855 from '../../lib/narcolepsy-criteria-v855.js';
 import * as rlsCriteriaV856 from '../../lib/rls-criteria-v856.js';
 import * as aomCriteriaV857 from '../../lib/aom-criteria-v857.js';
+import * as whoHearingGradeV858 from '../../lib/who-hearing-grade-v858.js';
 import * as sadPersonsV701 from '../../lib/sad-persons-v701.js';
 import * as edinburghClaudicationV702 from '../../lib/edinburgh-claudication-v702.js';
 import * as reimersMigrationPercentageV703 from '../../lib/reimers-migration-percentage-v703.js';
@@ -1405,6 +1406,7 @@ const MODULES = {
   'narcolepsy-criteria-v855.js': narcolepsyCriteriaV855,
   'rls-criteria-v856.js': rlsCriteriaV856,
   'aom-criteria-v857.js': aomCriteriaV857,
+  'who-hearing-grade-v858.js': whoHearingGradeV858,
   'sad-persons-v701.js': sadPersonsV701,
   'edinburgh-claudication-v702.js': edinburghClaudicationV702,
   'reimers-migration-percentage-v703.js': reimersMigrationPercentageV703,

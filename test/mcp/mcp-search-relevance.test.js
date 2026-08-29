@@ -738,6 +738,7 @@ const PROBES = [
   ['narcolepsy type 1 type 2 criteria cataplexy hypocretin sleep latency', ['narcolepsy-criteria']],
   ['restless legs syndrome five essential diagnostic criteria', ['rls-criteria']],
   ['acute otitis media criteria bulging eardrum observation option', ['aom-criteria']],
+  ['who grades of hearing loss better ear pure tone average', ['who-hearing-grade']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],

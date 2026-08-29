@@ -7877,6 +7877,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/aom-criteria-v857.js (spec-v857: AAP acute otitis media criteria and the observation option — clinical disclaimer)
 - `aom-criteria`
 
+### lib/who-hearing-grade-v858.js (spec-v858: WHO grades of hearing loss — clinical disclaimer)
+- `who-hearing-grade`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
