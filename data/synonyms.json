@@ -6592,5 +6592,12 @@
     "is this ascites infected",
     "sbp diagnosis ascitic pmn",
     "bloody tap ascites correction"
+  ],
+  "constrictive-pericarditis-echo": [
+    "constrictive pericarditis echo criteria",
+    "constriction versus restriction echo",
+    "septal bounce annulus reversus",
+    "is this constrictive pericarditis",
+    "constrictive pericarditis criteria"
   ]
 }

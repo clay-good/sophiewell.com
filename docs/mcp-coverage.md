@@ -7862,6 +7862,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/sbp-ascitic-fluid-v852.js (spec-v852: ascitic-fluid criteria for spontaneous bacterial peritonitis — clinical disclaimer)
 - `sbp-ascitic-fluid`
 
+### lib/constrictive-pericarditis-echo-v853.js (spec-v853: echocardiographic criteria for constrictive pericarditis — clinical disclaimer)
+- `constrictive-pericarditis-echo`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

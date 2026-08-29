@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:1fa502e9-b1a4-5a96-82d6-a5197290b2a9",
+  "serialNumber": "urn:uuid:84244e45-158e-5dcf-89a4-a3fc9604bc30",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-29T08:40:30.120Z",
+    "timestamp": "2026-08-29T08:48:21.939Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1644 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1645 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c0f3e8ce74d95306fbd4cd373b536d139c26c91bcb1fe29b97f5250ea460534d"
+          "content": "f87e07195213a9a7f818d7501dbb81ffc79e04087ac9a0d561c0a97f33a5b07a"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "106074"
+          "value": "106129"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0b4ccae7a86b0a75c2b268eb1f0578f3f2fb03e09024c6978820004e8566b882"
+          "content": "9668f1c88d9d64f941c45bebca7b9779160052aae736d7bd9c757332f9b2f99b"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "479655"
+          "value": "479886"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "cefa379b64c45e5f25296a2bd393f3b261299fc1dad18f3bc6be6e612b61b406"
+          "content": "5855da47649fe49f81714c536959535b737d6e832f73025558e64bf456c38fc1"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "252376"
+          "value": "252546"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e65dd882a480f4f60836218e749807b01be3fcc4568c8db43b60e1b2d51bdb32"
+          "content": "d2a6df7434d705f53d244fa7aae96fd24cd899f20ce19113d0cc1de7878a7915"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "91964"
+          "value": "92039"
         }
       ]
     },
@@ -3181,6 +3181,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3190"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/constrictive-pericarditis-echo-v853.js",
+      "type": "file",
+      "name": "lib/constrictive-pericarditis-echo-v853.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "37f3c0cd7e498e7a9a336d2ce9d2f6e4d2fe739acde289323598d40edcbdcc85"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "9928"
         }
       ]
     },
@@ -9155,7 +9176,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2f2a591c4049a4073a8c28c6378d238b6357277baa00b2967798d99c14a4d0c5"
+          "content": "7a36f24c609e4fa3b0089a079b59bf5736f969e51882b1912c0c0c0b61bee230"
         }
       ],
       "properties": [
@@ -9165,7 +9186,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2304934"
+          "value": "2306924"
         }
       ]
     },
@@ -19183,6 +19204,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1556"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/constrictive-pericarditis-echo-v853.js",
+      "type": "file",
+      "name": "mcp/adapters/constrictive-pericarditis-echo-v853.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4842370bb39d2dea31456061241dd66d0fbe7fc6992b976a383b133e5c4fe107"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2610"
         }
       ]
     },
@@ -31583,7 +31625,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7c8c59fc2a0363d54c01c8fe896835a211eb88747d4316705174447108295831"
+          "content": "3c329d4efaee48e564e3a45e2fe43c584aa910e33f657418ad37bb04e5dc8831"
         }
       ],
       "properties": [
@@ -31593,7 +31635,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "79216"
+          "value": "79391"
         }
       ]
     },
@@ -46798,6 +46840,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4752"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v853.js",
+      "type": "file",
+      "name": "views/group-v853.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0a1f03b6deaa50c245f806402a9332f985c392756d2173a09a5ffaa279885ed8"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4229"
         }
       ]
     },
@@ -62546,6 +62609,7 @@
         "urn:sophiewell:file:source:lib/concussion-rtl-v308.js",
         "urn:sophiewell:file:source:lib/concussion-rts-v298.js",
         "urn:sophiewell:file:source:lib/conley-fall-risk-v692.js",
+        "urn:sophiewell:file:source:lib/constrictive-pericarditis-echo-v853.js",
         "urn:sophiewell:file:source:lib/cormack-lehane-v339.js",
         "urn:sophiewell:file:source:lib/cosyntropin-v299.js",
         "urn:sophiewell:file:source:lib/cotton-myer-v419.js",
@@ -63903,6 +63967,7 @@
         "urn:sophiewell:file:source:views/group-v850.js",
         "urn:sophiewell:file:source:views/group-v851.js",
         "urn:sophiewell:file:source:views/group-v852.js",
+        "urn:sophiewell:file:source:views/group-v853.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
@@ -64036,6 +64101,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/concussion-rtl-v308.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/concussion-rts-v298.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/conley-fall-risk-v692.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/constrictive-pericarditis-echo-v853.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cormack-lehane-v339.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cosyntropin-v299.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cotton-myer-v419.js",
@@ -64729,7 +64795,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "1fa502e9b1a44a96"
+      "value": "84244e45158efdcf"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -64741,7 +64807,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2208"
+      "value": "2211"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
