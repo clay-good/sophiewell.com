@@ -6697,5 +6697,12 @@
     "severe falciparum malaria features",
     "malaria severity criteria",
     "when to give iv artesunate criteria"
+  ],
+  "pertussis-case-def": [
+    "pertussis case definition",
+    "whooping cough case definition",
+    "is this a confirmed pertussis case",
+    "probable pertussis criteria",
+    "cdc pertussis surveillance definition"
   ]
 }

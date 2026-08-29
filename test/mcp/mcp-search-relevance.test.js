@@ -748,6 +748,7 @@ const PROBES = [
   ['carboxyhemoglobin carbon monoxide level smoker baseline', ['carboxyhemoglobin']],
   ['broset violence checklist inpatient risk next 24 hours', ['broset']],
   ['who severe malaria criteria falciparum severity features', ['who-severe-malaria']],
+  ['pertussis case definition whooping cough confirmed probable', ['pertussis-case-def']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],

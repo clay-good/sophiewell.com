@@ -7907,6 +7907,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/who-severe-malaria-v867.js (spec-v867: WHO severe malaria criteria — clinical disclaimer)
 - `who-severe-malaria`
 
+### lib/pertussis-case-def-v868.js (spec-v868: CDC/CSTE pertussis case definition — clinical disclaimer)
+- `pertussis-case-def`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
