@@ -723,6 +723,7 @@ import ewgsop2V880 from './adapters/ewgsop2-v880.js';
 import vitaminDLevelV881 from './adapters/vitamin-d-level-v881.js';
 import polypSurveillanceV882 from './adapters/polyp-surveillance-v882.js';
 import ipmnFukuokaV883 from './adapters/ipmn-fukuoka-v883.js';
+import eatSleepConsoleV884 from './adapters/eat-sleep-console-v884.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
 import reimersMigrationPercentageV703 from './adapters/reimers-migration-percentage-v703.js';
@@ -1472,6 +1473,7 @@ const ADAPTER_MODULES = [
   ['vitamin-d-level-v881', vitaminDLevelV881],
   ['polyp-surveillance-v882', polypSurveillanceV882],
   ['ipmn-fukuoka-v883', ipmnFukuokaV883],
+  ['eat-sleep-console-v884', eatSleepConsoleV884],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],
   ['reimers-migration-percentage-v703', reimersMigrationPercentageV703],

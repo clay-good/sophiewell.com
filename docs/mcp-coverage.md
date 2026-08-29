@@ -7952,6 +7952,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/ipmn-fukuoka-v883.js (spec-v883: Fukuoka branch-duct IPMN tiers — clinical disclaimer)
 - `ipmn-fukuoka`
 
+### lib/eat-sleep-console-v884.js (spec-v884: Eat, Sleep, Console — clinical disclaimer)
+- `eat-sleep-console`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
