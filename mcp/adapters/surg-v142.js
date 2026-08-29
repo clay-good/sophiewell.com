@@ -11,7 +11,7 @@ import * as F from '../../lib/surg-v142.js';
 const POSSUM_VARS = [
   ['age', 'Age'], ['cardiac', 'Cardiac status'], ['respiratory', 'Respiratory status'],
   ['sbp', 'Systolic blood pressure'], ['pulse', 'Pulse'], ['gcs', 'Glasgow Coma Score'],
-  ['hb', 'Haemoglobin'], ['wcc', 'White-cell count'], ['urea', 'Urea'],
+  ['hb', 'Hemoglobin'], ['wcc', 'White-cell count'], ['urea', 'Urea'],
   ['sodium', 'Sodium'], ['potassium', 'Potassium'], ['ecg', 'ECG'],
   ['opSeverity', 'Operative severity'], ['procedures', 'Number of procedures'],
   ['bloodLoss', 'Blood loss'], ['soiling', 'Peritoneal soiling'],

@@ -51,7 +51,7 @@ export default [
       { dom: 'essdai-muscular', arg: 'muscular', kind: 'enum', values: ['No', 'Low', 'Moderate', 'High'], required: false, label: 'Muscular' },
       { dom: 'essdai-pns', arg: 'pns', kind: 'enum', values: ['No', 'Low', 'Moderate', 'High'], required: false, label: 'Peripheral nervous system' },
       { dom: 'essdai-cns', arg: 'cns', kind: 'enum', values: ['No', 'Moderate', 'High'], required: false, label: 'Central nervous system' },
-      { dom: 'essdai-hematological', arg: 'hematological', kind: 'enum', values: ['No', 'Low', 'Moderate', 'High'], required: false, label: 'Haematological' },
+      { dom: 'essdai-hematological', arg: 'hematological', kind: 'enum', values: ['No', 'Low', 'Moderate', 'High'], required: false, label: 'Hematological' },
       { dom: 'essdai-biological', arg: 'biological', kind: 'enum', values: ['No', 'Low', 'Moderate'], required: false, label: 'Biological' },
     ],
   },

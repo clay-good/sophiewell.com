@@ -59,7 +59,7 @@ export const renderers = {
     root.appendChild(checkField('Recent weight loss (clothes looser)', 'efs-weight'));
     root.appendChild(checkField('Often feels sad or depressed', 'efs-mood'));
     root.appendChild(checkField('Urinary incontinence', 'efs-incont'));
-    root.appendChild(selectField('Timed Up and Go (3 metres)', 'efs-tug', CHOICE(TUG)));
+    root.appendChild(selectField('Timed Up and Go (3 meters)', 'efs-tug', CHOICE(TUG)));
     const ids = ['efs-cog', 'efs-hosp', 'efs-health', 'efs-iadl', 'efs-social', 'efs-meds5', 'efs-medforget', 'efs-weight', 'efs-mood', 'efs-incont', 'efs-tug'];
     const o = out(); root.appendChild(o);
     wire(ids, () => safe(o, () => {

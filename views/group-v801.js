@@ -37,7 +37,7 @@ function val(id) { const n = document.getElementById(id); return n ? n.value : '
 function safe(o, fn) { clear(o); try { fn(); } catch (err) { o.appendChild(el('p', { class: 'muted', text: err.message })); } }
 function note(root, text) { if (text) root.appendChild(el('p', { class: 'muted', text })); }
 function postureNote(root) {
-  root.appendChild(el('p', { class: 'muted', text: 'Decision support, not a verdict. This stages a field a clinician has already reviewed for reliability and artefact. It does not read the printout, it says nothing about intraocular pressure or the optic nerve, and it sets no treatment target.' }));
+  root.appendChild(el('p', { class: 'muted', text: 'Decision support, not a verdict. This stages a field a clinician has already reviewed for reliability and artifact. It does not read the printout, it says nothing about intraocular pressure or the optic nerve, and it sets no treatment target.' }));
 }
 function wire(ids, run) {
   for (const id of ids) { const n = document.getElementById(id); if (n) { n.addEventListener('input', run); n.addEventListener('change', run); } }

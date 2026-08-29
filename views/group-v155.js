@@ -44,7 +44,7 @@ function safe(o, fn) { clear(o); try { fn(); } catch (err) { o.appendChild(el('p
 function note(root, text) { if (text) root.appendChild(el('p', { class: 'muted', text })); }
 function showInvalid(o, r) { note(o, r.message || 'Complete the remaining fields.'); }
 function postureNote(root) {
-  root.appendChild(el('p', { class: 'muted', text: 'Decision support, not a verdict. The score / class and its interpretation are the cited instrument’s, computed from the values you enter. The management decision (therapy intensity, endoscopic haemostasis, debridement, vascular referral, or amputation) stays with the clinician and local protocol.' }));
+  root.appendChild(el('p', { class: 'muted', text: 'Decision support, not a verdict. The score / class and its interpretation are the cited instrument’s, computed from the values you enter. The management decision (therapy intensity, endoscopic hemostasis, debridement, vascular referral, or amputation) stays with the clinician and local protocol.' }));
 }
 function wire(ids, run) {
   for (const id of ids) { const n = document.getElementById(id); if (n) { n.addEventListener('input', run); n.addEventListener('change', run); } }

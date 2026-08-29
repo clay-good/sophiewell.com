@@ -35,7 +35,7 @@ export default [
   },
   {
     id: 'beighton-hypermobility',
-    summary: 'Beighton hypermobility score (1973): nine passive manoeuvres scored 0-9; >= 5 in adults suggests generalized joint hypermobility.',
+    summary: 'Beighton hypermobility score (1973): nine passive maneuvers scored 0-9; >= 5 in adults suggests generalized joint hypermobility.',
     compute: F.beightonHypermobility,
     fields: [
       { dom: 'bg-f5r', arg: 'finger5R', kind: 'bool', required: true, label: 'Right 5th finger dorsiflexes > 90 deg' },

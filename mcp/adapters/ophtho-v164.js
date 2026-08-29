@@ -20,7 +20,7 @@ export default [
   },
   {
     id: 'visual-acuity-converter',
-    summary: 'Convert between Snellen (20-foot and 6-metre), decimal, and logMAR visual-acuity notations.',
+    summary: 'Convert between Snellen (20-foot and 6-meter), decimal, and logMAR visual-acuity notations.',
     compute: F.visualAcuityConverter,
     fields: [
       { dom: 'va-mode', arg: 'mode', kind: 'enum', values: ['snellen20', 'snellen6', 'decimal', 'logmar'], required: true, label: 'Notation entered' },

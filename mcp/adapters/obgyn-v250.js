@@ -42,11 +42,11 @@ export default [
   },
   {
     id: 'malinas-score',
-    summary: 'Malinas score: five prehospital-labour criteria (parity, labour duration, contraction duration, interval, membranes) each 0-2; >= 6 suggests delivery is likely imminent.',
+    summary: 'Malinas score: five prehospital-labor criteria (parity, labor duration, contraction duration, interval, membranes) each 0-2; >= 6 suggests delivery is likely imminent.',
     compute: F.malinasScore,
     fields: [
       { dom: 'mal-par', arg: 'parity', kind: 'number', required: true, label: 'Parity', values: ['0', '1', '2'] },
-      { dom: 'mal-dur', arg: 'duration', kind: 'number', required: true, label: 'Duration of labour', values: ['0', '1', '2'] },
+      { dom: 'mal-dur', arg: 'duration', kind: 'number', required: true, label: 'Duration of labor', values: ['0', '1', '2'] },
       { dom: 'mal-con', arg: 'contraction', kind: 'number', required: true, label: 'Contraction duration', values: ['0', '1', '2'] },
       { dom: 'mal-int', arg: 'interval', kind: 'number', required: true, label: 'Interval between contractions', values: ['0', '1', '2'] },
       { dom: 'mal-mem', arg: 'membranes', kind: 'number', required: true, label: 'Ruptured membranes', values: ['0', '1', '2'] },

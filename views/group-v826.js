@@ -52,6 +52,6 @@ export const renderers = {
       note(o, r.note);
     }));
 
-    root.appendChild(el('p', { class: 'muted', text: 'Decision support, not a verdict. This classifies numbers from a right heart catheterisation already performed. It does not start pulmonary vasodilators or decide who should be catheterised.' }));
+    root.appendChild(el('p', { class: 'muted', text: 'Decision support, not a verdict. This classifies numbers from a right heart catheterization already performed. It does not start pulmonary vasodilators or decide who should be catheterized.' }));
   },
 };

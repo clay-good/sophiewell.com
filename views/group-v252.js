@@ -74,7 +74,7 @@ export const renderers = {
     postureNote(root);
   },
   'beighton-hypermobility'(root) {
-    note(root, 'Beighton score (1973): 9 manoeuvres, >= 5 in adults suggests generalized joint hypermobility.');
+    note(root, 'Beighton score (1973): 9 maneuvers, >= 5 in adults suggests generalized joint hypermobility.');
     const items = [['bg-f5r', 'finger5R', 'Right 5th finger dorsiflexes > 90 deg'], ['bg-f5l', 'finger5L', 'Left 5th finger dorsiflexes > 90 deg'], ['bg-thr', 'thumbR', 'Right thumb to forearm'], ['bg-thl', 'thumbL', 'Left thumb to forearm'], ['bg-elr', 'elbowR', 'Right elbow hyperextends > 10 deg'], ['bg-ell', 'elbowL', 'Left elbow hyperextends > 10 deg'], ['bg-knr', 'kneeR', 'Right knee hyperextends > 10 deg'], ['bg-knl', 'kneeL', 'Left knee hyperextends > 10 deg'], ['bg-palm', 'palms', 'Palms flat on floor, knees straight']];
     for (const [id, , label] of items) root.appendChild(check(label, id));
     const o = out(); root.appendChild(o);

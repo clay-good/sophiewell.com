@@ -39,7 +39,7 @@ export const renderers = {
     note(root, 'The carbon dioxide threshold is for an awake, resting sample at sea level. Oximetry does not answer this question, and altitude changes it.');
 
     root.appendChild(el('h2', { text: 'The four diagnostic criteria' }));
-    numField(root, 'Body mass index, kg per square metre', 'ohs-bmi', { min: '5', max: '150', step: '0.1' });
+    numField(root, 'Body mass index, kg per square meter', 'ohs-bmi', { min: '5', max: '150', step: '0.1' });
     root.appendChild(checkField('Sleep-disordered breathing', 'ohs-sdb'));
     numField(root, 'Awake resting PaCO2, mmHg', 'ohs-paco2', { min: '5', max: '200', step: '1' });
     root.appendChild(checkField('Other causes of hypoventilation excluded', 'ohs-excluded'));

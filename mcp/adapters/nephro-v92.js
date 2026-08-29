@@ -10,7 +10,7 @@ import * as F from '../../lib/nephro-v92.js';
 export default [
   {
     id: 'ckd-staging',
-    summary: 'KDIGO CKD staging: G-stage by eGFR and A-stage by UACR (or a direct albuminuria category) mapped to the heat-map risk colour (KDIGO 2024).',
+    summary: 'KDIGO CKD staging: G-stage by eGFR and A-stage by UACR (or a direct albuminuria category) mapped to the heat-map risk color (KDIGO 2024).',
     compute: F.ckdStaging,
     fields: [
       { dom: 'cs-egfr', arg: 'egfr', kind: 'number', required: true, label: 'eGFR', unit: 'mL/min/1.73m^2' },

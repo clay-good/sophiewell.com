@@ -2483,7 +2483,7 @@ const UTILITIES = [
   { id: 'nmosd-2015',             name: '2015 Criteria (Neuromyelitis Optica Spectrum)',     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'autoimmune-encephalitis', name: 'Graus Criteria (Autoimmune Encephalitis)',          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'igg4-rd-2020',           name: '2020 RCD Criteria (IgG4-Related Disease)',          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
-  { id: 'ph-hemodynamics-2022',   name: 'Pulmonary Hypertension Haemodynamics (2022)',       group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ph-hemodynamics-2022',   name: 'Pulmonary Hypertension Hemodynamics (2022)',       group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'ntm-pulmonary',          name: 'ATS/IDSA Criteria (NTM Pulmonary Disease)',         group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'cf-diagnosis',           name: '2017 Consensus Criteria (Cystic Fibrosis)',         group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'ohs-diagnosis',          name: 'Obesity Hypoventilation Syndrome (2019 ATS)',       group: 'G', audiences: ['clinicians', 'educators'], clinical: true },

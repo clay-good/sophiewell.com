@@ -91,9 +91,9 @@ export const renderers = {
     postureNote(root);
   },
   'malinas-score'(root) {
-    note(root, 'Malinas score: 5 prehospital-labour criteria each 0-2, 0-10. >= 6 delivery likely imminent.');
+    note(root, 'Malinas score: 5 prehospital-labor criteria each 0-2, 0-10. >= 6 delivery likely imminent.');
     root.appendChild(select('Parity', 'mal-par', M012(['1st pregnancy (0)', '2nd (1)', '>= 3rd (2)'])));
-    root.appendChild(select('Duration of labour', 'mal-dur', M012(['< 3 h (0)', '3-5 h (1)', '> 6 h (2)'])));
+    root.appendChild(select('Duration of labor', 'mal-dur', M012(['< 3 h (0)', '3-5 h (1)', '> 6 h (2)'])));
     root.appendChild(select('Contraction duration', 'mal-con', M012(['< 1 min (0)', '1 min (1)', '> 1 min (2)'])));
     root.appendChild(select('Interval between contractions', 'mal-int', M012(['> 5 min (0)', '3-5 min (1)', '< 3 min (2)'])));
     root.appendChild(select('Ruptured membranes', 'mal-mem', M012(['No (0)', 'Recent (1)', '> 1 h ago (2)'])));

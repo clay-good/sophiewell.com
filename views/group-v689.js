@@ -47,7 +47,7 @@ export const renderers = {
     root.appendChild(selectField('Sit to stand', 'ems-sit-stand', CHOICE(SIT_STAND)));
     root.appendChild(selectField('Standing (and reach)', 'ems-standing', CHOICE(STANDING)));
     root.appendChild(selectField('Gait', 'ems-gait', CHOICE(GAIT)));
-    root.appendChild(selectField('Timed 6 metre walk', 'ems-walk', CHOICE(WALK)));
+    root.appendChild(selectField('Timed 6 meter walk', 'ems-walk', CHOICE(WALK)));
     root.appendChild(selectField('Functional reach', 'ems-reach', CHOICE(REACH)));
     const ids = ['ems-lie-sit', 'ems-sit-lie', 'ems-sit-stand', 'ems-standing', 'ems-gait', 'ems-walk', 'ems-reach'];
     const o = out(); root.appendChild(o);

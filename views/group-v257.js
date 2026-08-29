@@ -36,7 +36,7 @@ function render(o, r, valueLabel) {
 
 export const renderers = {
   'maximum-operating-depth'(root) {
-    note(root, 'Nitrox MOD = 10 x (PO2max / FO2 - 1) metres. PO2max typically 1.4 (working) / 1.6 (contingency).');
+    note(root, 'Nitrox MOD = 10 x (PO2max / FO2 - 1) meters. PO2max typically 1.4 (working) / 1.6 (contingency).');
     root.appendChild(numInput('Oxygen fraction FO2 (e.g. 0.32 for EAN32)', 'mod-fo2', { min: '0', max: '1' }));
     root.appendChild(numInput('PO2 limit (bar, e.g. 1.4)', 'mod-po2', { min: '1', max: '2' }));
     const o = out(); root.appendChild(o);
@@ -46,7 +46,7 @@ export const renderers = {
     postureNote(root);
   },
   'equivalent-air-depth'(root) {
-    note(root, 'Nitrox EAD = (depth + 10) x (FN2 / 0.79) - 10 metres, FN2 = 1 - FO2. For use with air decompression tables.');
+    note(root, 'Nitrox EAD = (depth + 10) x (FN2 / 0.79) - 10 meters, FN2 = 1 - FO2. For use with air decompression tables.');
     root.appendChild(numInput('Actual depth (m)', 'ead-depth', { min: '0' }));
     root.appendChild(numInput('Oxygen fraction FO2 (e.g. 0.32)', 'ead-fo2', { min: '0', max: '1' }));
     const o = out(); root.appendChild(o);

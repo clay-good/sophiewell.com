@@ -31,9 +31,15 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
 
-// User-facing surfaces only. lib/ and views/ are walked recursively; app.js and
-// index.html are scanned directly.
-const SCAN_DIRS = ['lib', 'views'];
+// User-facing surfaces only. lib/, views/ and mcp/adapters/ are walked
+// recursively; app.js and index.html are scanned directly.
+//
+// spec-v871 added mcp/adapters. An adapter `summary` is not agent-only copy: it
+// is the source of the lede on every /tools/<id>/ page and of the tile's row on
+// every hub and topic page, so it is read by more people than the view it
+// describes. Five of them were carrying British spellings that this gate had
+// never been pointed at.
+const SCAN_DIRS = ['lib', 'views', 'mcp/adapters'];
 const SCAN_FILES = ['app.js', 'index.html'];
 
 // British spellings + non-US drug names (spec-v184 §5.3 seed list). Whole-word,
@@ -45,6 +51,19 @@ const BANNED = new RegExp(
     'grey', 'paralyse', 'catheteris', 'oestrogen', 'foetal', 'leucocyte',
     'caesarean', 'orthopaedic', 'noradrenaline', 'adrenaline', 'paracetamol',
     'salbutamol', 'frusemide',
+    // spec-v871: the seed list missed a British spelling sitting in a tile NAME
+    // -- "Pulmonary Hypertension Haemodynamics (2022)" was the browser tab title
+    // on every visit to that tool, and on its row in three hub pages. These are
+    // the forms that were actually leaking into reader-facing copy, each one
+    // verified against the surfaces below before it was added.
+    // Whole words, not stems: the pattern closes with \b, so a stem such as
+    // 'haematolog' can never match 'haematological'.
+    'haemodynamic', 'haemodynamics', 'haemostasis', 'haematology',
+    'haematological', 'oesophagus', 'oesophageal', 'oesophagectomy',
+    'dyspnoea', 'apnoea', 'tachypnoea', 'manoeuvre', 'manoeuvres',
+    'artefact', 'artefacts', 'favourable', 'favourably', 'litre', 'litres',
+    'metre', 'metres', 'labour', 'stabilisation', 'visualisation', 'analysed',
+    'catheterisation', 'catheterised',
   ].join('|') + ')\\b',
   'i',
 );

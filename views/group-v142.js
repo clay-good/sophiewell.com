@@ -57,7 +57,7 @@ const POSSUM_VARS = [
   ['phys', 'Physiological variables'],
   ['age', 'Age', [{ v: 1, text: '≤ 60 years' }, { v: 2, text: '61–70 years' }, { v: 4, text: '≥ 71 years' }]],
   ['cardiac', 'Cardiac signs / chest radiograph', [{ v: 1, text: 'no failure, normal CXR' }, { v: 2, text: 'cardiac drugs or steroids' }, { v: 4, text: 'peripheral edema, warfarin, or borderline cardiomegaly' }, { v: 8, text: 'raised JVP or cardiomegaly on CXR' }]],
-  ['respiratory', 'Respiratory history / chest radiograph', [{ v: 1, text: 'no dyspnoea, normal CXR' }, { v: 2, text: 'dyspnoea on exertion or mild COPD' }, { v: 4, text: 'dyspnoea limiting to one flight, or moderate COPD' }, { v: 8, text: 'dyspnoea at rest, fibrosis or consolidation' }]],
+  ['respiratory', 'Respiratory history / chest radiograph', [{ v: 1, text: 'no dyspnea, normal CXR' }, { v: 2, text: 'dyspnea on exertion or mild COPD' }, { v: 4, text: 'dyspnea limiting to one flight, or moderate COPD' }, { v: 8, text: 'dyspnea at rest, fibrosis or consolidation' }]],
   ['sbp', 'Systolic blood pressure (mmHg)', [{ v: 1, text: '110–130' }, { v: 2, text: '100–109 or 131–170' }, { v: 4, text: '90–99 or ≥ 171' }, { v: 8, text: '≤ 89' }]],
   ['pulse', 'Pulse (beats/min)', [{ v: 1, text: '50–80' }, { v: 2, text: '40–49 or 81–100' }, { v: 4, text: '101–120' }, { v: 8, text: '≤ 39 or ≥ 121' }]],
   ['gcs', 'Glasgow Coma Score', [{ v: 1, text: '15' }, { v: 2, text: '12–14' }, { v: 4, text: '9–11' }, { v: 8, text: '≤ 8' }]],
