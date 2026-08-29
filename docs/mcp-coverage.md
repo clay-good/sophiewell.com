@@ -7964,6 +7964,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/hiv-pep-occupational-v887.js (spec-v887: occupational HIV exposure PEP decision — clinical disclaimer)
 - `hiv-pep-occupational`
 
+### lib/feno-v888.js (spec-v888: FeNO interpretation — clinical disclaimer)
+- `feno`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
