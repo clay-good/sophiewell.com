@@ -7880,6 +7880,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/who-hearing-grade-v858.js (spec-v858: WHO grades of hearing loss — clinical disclaimer)
 - `who-hearing-grade`
 
+### lib/priapism-gas-v859.js (spec-v859: priapism cavernous blood gas classification — clinical disclaimer)
+- `priapism-gas`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

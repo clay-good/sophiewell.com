@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:54a46e40-d8ee-592a-8bef-0c18b0ad2174",
+  "serialNumber": "urn:uuid:eba22d95-f333-5397-83a1-05e2bbeb630c",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-29T09:52:28.036Z",
+    "timestamp": "2026-08-29T12:59:34.504Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1650 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1651 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7c3a20a3ced1d34e59dcdf2c8253a01888c66d903a784288938f120095feb521"
+          "content": "037a7ed1c8999a9945fb0931855b4ac1f014fe2cc7862e8b8f63d2d844a55f6b"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "106360"
+          "value": "106419"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "96f79afe3c7c0ef444b053d8cc233a23feddc4d52ba4076359d626c07a525cf6"
+          "content": "16e0fefe3dc5de71737e529d526d8690a08c7887c0d4e6f9b267ff87bbb7af51"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "480936"
+          "value": "481153"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c378425226755c56b003c2e13f43359b973f7b802c91ba93ae5db88f45b0db2f"
+          "content": "d0189f7da725be99cb801df50255b89aca4051bf60a995637f07683ab1fdffd5"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "253335"
+          "value": "253487"
         }
       ]
     },
@@ -335,7 +335,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b"
+          "content": "8dd13c4dd66de0c9ec93c2c1561e5fec1902f144b677d3581cf56b124b04a1b8"
         }
       ],
       "properties": [
@@ -345,7 +345,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "7411"
+          "value": "3682"
         }
       ]
     },
@@ -356,7 +356,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d8ab9268c1d9c99912dc9c2b57873efd2641a28aee8f12b65cec8cee1d79a653"
+          "content": "048382388a01dabe029443f89e0e7396ff26fafa156cdd68a8e26256e3929f81"
         }
       ],
       "properties": [
@@ -366,7 +366,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "1812"
+          "value": "434"
         }
       ]
     },
@@ -377,7 +377,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a2f623e5e34259a4886cdef2bc7cfeaf23894393fff7717dee5bf2732ccf083d"
+          "content": "fbcbde6664e83fed988e81ebeb2bd107fc86530e0422475db0bfa11058693a12"
         }
       ],
       "properties": [
@@ -387,7 +387,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2397"
+          "value": "1112"
         }
       ]
     },
@@ -398,7 +398,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "29cdc69c3bbec5245236d27dc6814f351b1734f0fa4683ce2411de9837b56368"
+          "content": "d0e9b629aa93f9c5b8f14380585c8f3a064d43494f00abeaaa01f5261f1bc999"
         }
       ],
       "properties": [
@@ -408,7 +408,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "11142"
+          "value": "11875"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "40a283149b8e95b5b7c1c06f76ceadd57a829d10f92674abc723831a6fd6c622"
+          "content": "f97da4f77d4f6c644cecf2abdc2622281390dd8f0c50378901d5e4f5aee074ab"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "92309"
+          "value": "92370"
         }
       ]
     },
@@ -9218,7 +9218,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "279f49ba26be63291442f141d5722f346b1aa7f2fea7ec295b544c479cdcc756"
+          "content": "cfbc2bbd440e66a6e818a53026d27b094a0262e22a5017f51ecf04fb3529b805"
         }
       ],
       "properties": [
@@ -9228,7 +9228,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2316666"
+          "value": "2318998"
         }
       ]
     },
@@ -12358,6 +12358,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4749"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/priapism-gas-v859.js",
+      "type": "file",
+      "name": "lib/priapism-gas-v859.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "64a551a208b4f1430a62b0d16669339f61c853a2af7db33e5612ce32a559d6cf"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "10757"
         }
       ]
     },
@@ -27797,6 +27818,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/priapism-gas-v859.js",
+      "type": "file",
+      "name": "mcp/adapters/priapism-gas-v859.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a920cb0c61f75696b5bdbab889db3f9b50b90def5800faada73e66b65f3dcb9b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2393"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/prognostic-v231.js",
       "type": "file",
       "name": "mcp/adapters/prognostic-v231.js",
@@ -31835,7 +31877,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6f1c4011bccd1cc4fc4873428178e9a7d460ec562a4066ccd6146b235cc7f246"
+          "content": "2d52291478e5ddcdf250c81de1440848ccbcbfe70cc081b806d8f212b5886183"
         }
       ],
       "properties": [
@@ -31845,7 +31887,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "80028"
+          "value": "80133"
         }
       ]
     },
@@ -47176,6 +47218,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3726"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v859.js",
+      "type": "file",
+      "name": "views/group-v859.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "757ecce655f3dfb83e767ee54f028f20364f862d909f8de69670bc500fb523be"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4018"
         }
       ]
     },
@@ -63361,6 +63424,7 @@
         "urn:sophiewell:file:source:lib/prague-barrett-v365.js",
         "urn:sophiewell:file:source:lib/preg-dating.js",
         "urn:sophiewell:file:source:lib/pressure-injury-stage-v359.js",
+        "urn:sophiewell:file:source:lib/priapism-gas-v859.js",
         "urn:sophiewell:file:source:lib/print.js",
         "urn:sophiewell:file:source:lib/prognostic-v231.js",
         "urn:sophiewell:file:source:lib/prompt.js",
@@ -64293,6 +64357,7 @@
         "urn:sophiewell:file:source:views/group-v856.js",
         "urn:sophiewell:file:source:views/group-v857.js",
         "urn:sophiewell:file:source:views/group-v858.js",
+        "urn:sophiewell:file:source:views/group-v859.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
@@ -64830,6 +64895,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/prague-barrett-v365.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/preg-dating.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pressure-injury-stage-v359.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/priapism-gas-v859.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/prognostic-v231.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/propkd-v564.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/prostate-health-index-v714.js",
@@ -65125,7 +65191,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "54a46e40d8eef92a"
+      "value": "eba22d95f3337397"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -65137,7 +65203,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2226"
+      "value": "2229"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

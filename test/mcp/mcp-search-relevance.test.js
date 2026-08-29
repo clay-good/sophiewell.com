@@ -739,6 +739,7 @@ const PROBES = [
   ['restless legs syndrome five essential diagnostic criteria', ['rls-criteria']],
   ['acute otitis media criteria bulging eardrum observation option', ['aom-criteria']],
   ['who grades of hearing loss better ear pure tone average', ['who-hearing-grade']],
+  ['priapism cavernous blood gas ischemic or non-ischemic', ['priapism-gas']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],

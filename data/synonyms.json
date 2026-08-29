@@ -6634,5 +6634,12 @@
     "pure tone average hearing grade",
     "hearing loss severity classification",
     "hearing loss grade"
+  ],
+  "priapism-gas": [
+    "priapism",
+    "is this priapism ischemic",
+    "cavernous blood gas priapism",
+    "low flow vs high flow priapism",
+    "prolonged painful erection"
   ]
 }
