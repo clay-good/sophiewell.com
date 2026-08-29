@@ -721,6 +721,7 @@ import { renderers as RV881 } from './views/group-v881.js';
 import { renderers as RV882 } from './views/group-v882.js';
 import { renderers as RV883 } from './views/group-v883.js';
 import { renderers as RV884 } from './views/group-v884.js';
+import { renderers as RV885 } from './views/group-v885.js';
 import { renderers as RV164 } from './views/group-v164.js';
 import { renderers as RV165 } from './views/group-v165.js';
 import { renderers as RV166 } from './views/group-v166.js';
@@ -784,7 +785,8 @@ const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...R
   ...RV881,
   ...RV882,
   ...RV883,
-  ...RV884, ...RV63, ...RPALINT };
+  ...RV884,
+  ...RV885, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -2567,6 +2569,7 @@ const UTILITIES = [
   { id: 'polyp-surveillance', name: 'Post-Polypectomy Surveillance Interval', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'ipmn-fukuoka', name: 'Fukuoka Guidelines (Branch-Duct IPMN)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'eat-sleep-console', name: 'Eat, Sleep, Console (neonatal opioid withdrawal)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'niosh-lifting', name: 'NIOSH Lifting Equation', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'gahs',                   name: 'Glasgow Alcoholic Hepatitis Score',                group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'west-haven-he',          name: 'West Haven HE grade (hepatic encephalopathy)',     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'hepatic-steatosis-index', name: 'Hepatic Steatosis Index (NAFLD screen)',          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },

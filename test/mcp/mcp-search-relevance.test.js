@@ -764,6 +764,7 @@ const PROBES = [
   ['post polypectomy surveillance interval next colonoscopy adenoma', ['polyp-surveillance']],
   ['fukuoka ipmn worrisome features high risk stigmata pancreatic cyst', ['ipmn-fukuoka']],
   ['eat sleep console neonatal opioid withdrawal function based care', ['eat-sleep-console']],
+  ['niosh lifting equation recommended weight limit lifting index', ['niosh-lifting']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],

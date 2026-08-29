@@ -706,6 +706,7 @@ import * as vitaminDLevelV881 from '../../lib/vitamin-d-level-v881.js';
 import * as polypSurveillanceV882 from '../../lib/polyp-surveillance-v882.js';
 import * as ipmnFukuokaV883 from '../../lib/ipmn-fukuoka-v883.js';
 import * as eatSleepConsoleV884 from '../../lib/eat-sleep-console-v884.js';
+import * as nioshLiftingV885 from '../../lib/niosh-lifting-v885.js';
 import * as sadPersonsV701 from '../../lib/sad-persons-v701.js';
 import * as edinburghClaudicationV702 from '../../lib/edinburgh-claudication-v702.js';
 import * as reimersMigrationPercentageV703 from '../../lib/reimers-migration-percentage-v703.js';
@@ -1457,6 +1458,7 @@ const MODULES = {
   'polyp-surveillance-v882.js': polypSurveillanceV882,
   'ipmn-fukuoka-v883.js': ipmnFukuokaV883,
   'eat-sleep-console-v884.js': eatSleepConsoleV884,
+  'niosh-lifting-v885.js': nioshLiftingV885,
   'sad-persons-v701.js': sadPersonsV701,
   'edinburgh-claudication-v702.js': edinburghClaudicationV702,
   'reimers-migration-percentage-v703.js': reimersMigrationPercentageV703,
