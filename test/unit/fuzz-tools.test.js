@@ -701,6 +701,7 @@ import * as nhsnVaeV876 from '../../lib/nhsn-vae-v876.js';
 import * as ishooAngioedemaV877 from '../../lib/ishoo-angioedema-v877.js';
 import * as membranousRiskV878 from '../../lib/membranous-risk-v878.js';
 import * as cancerCachexiaV879 from '../../lib/cancer-cachexia-v879.js';
+import * as ewgsop2V880 from '../../lib/ewgsop2-v880.js';
 import * as sadPersonsV701 from '../../lib/sad-persons-v701.js';
 import * as edinburghClaudicationV702 from '../../lib/edinburgh-claudication-v702.js';
 import * as reimersMigrationPercentageV703 from '../../lib/reimers-migration-percentage-v703.js';
@@ -1447,6 +1448,7 @@ const MODULES = {
   'ishoo-angioedema-v877.js': ishooAngioedemaV877,
   'membranous-risk-v878.js': membranousRiskV878,
   'cancer-cachexia-v879.js': cancerCachexiaV879,
+  'ewgsop2-v880.js': ewgsop2V880,
   'sad-persons-v701.js': sadPersonsV701,
   'edinburgh-claudication-v702.js': edinburghClaudicationV702,
   'reimers-migration-percentage-v703.js': reimersMigrationPercentageV703,

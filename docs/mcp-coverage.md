@@ -7940,6 +7940,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/cancer-cachexia-v879.js (spec-v879: cancer cachexia consensus definition — clinical disclaimer)
 - `cancer-cachexia`
 
+### lib/ewgsop2-v880.js (spec-v880: EWGSOP2 sarcopenia algorithm — clinical disclaimer)
+- `ewgsop2`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

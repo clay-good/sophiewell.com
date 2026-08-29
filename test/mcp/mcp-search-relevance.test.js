@@ -759,6 +759,7 @@ const PROBES = [
   ['ishoo angioedema staging tongue larynx airway risk', ['ishoo-angioedema']],
   ['kdigo membranous nephropathy risk category pla2r proteinuria', ['membranous-risk']],
   ['cancer cachexia consensus definition weight loss sarcopenia', ['cancer-cachexia']],
+  ['ewgsop2 sarcopenia grip strength muscle mass algorithm', ['ewgsop2']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],
