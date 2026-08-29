@@ -7973,6 +7973,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/methacholine-v890.js (spec-v890: methacholine challenge interpretation — clinical disclaimer)
 - `methacholine`
 
+### lib/pef-zones-v891.js (spec-v891: peak flow action-plan zones — clinical disclaimer)
+- `pef-zones`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

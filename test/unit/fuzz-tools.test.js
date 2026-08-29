@@ -712,6 +712,7 @@ import * as hivPepOccupationalV887 from '../../lib/hiv-pep-occupational-v887.js'
 import * as fenoV888 from '../../lib/feno-v888.js';
 import * as homeOxygenV889 from '../../lib/home-oxygen-v889.js';
 import * as methacholineV890 from '../../lib/methacholine-v890.js';
+import * as pefZonesV891 from '../../lib/pef-zones-v891.js';
 import * as sadPersonsV701 from '../../lib/sad-persons-v701.js';
 import * as edinburghClaudicationV702 from '../../lib/edinburgh-claudication-v702.js';
 import * as reimersMigrationPercentageV703 from '../../lib/reimers-migration-percentage-v703.js';
@@ -1469,6 +1470,7 @@ const MODULES = {
   'feno-v888.js': fenoV888,
   'home-oxygen-v889.js': homeOxygenV889,
   'methacholine-v890.js': methacholineV890,
+  'pef-zones-v891.js': pefZonesV891,
   'sad-persons-v701.js': sadPersonsV701,
   'edinburgh-claudication-v702.js': edinburghClaudicationV702,
   'reimers-migration-percentage-v703.js': reimersMigrationPercentageV703,

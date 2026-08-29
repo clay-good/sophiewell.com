@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:25c2fba0-7e4b-5a37-898f-06743d2c05db",
+  "serialNumber": "urn:uuid:eae3c35d-1957-5f9d-8adf-780fffd2887b",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-29T22:03:21.053Z",
+    "timestamp": "2026-08-29T22:25:49.885Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1681 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1682 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ed612a6a20569a7adec10d9fcb858f504d11abaa1dcf09a23bc03e962e98b99a"
+          "content": "b1b1dbec628b3678539d58f5a0cea62fa8c2da7de24a179e6e93e2045bfec0fc"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "107930"
+          "value": "107973"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "eb7b04187ecee52b6a0393c380f8a9df5d11107fb8e15a22650d5c595f88648b"
+          "content": "350f779ee658ccac82ee219537b2c99c1c2c54c35899cea2dfe62cae59cd1ede"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "487481"
+          "value": "487681"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6702fbf77e369b2c96dd5d8cf0991916c7fd356edd34513a4b18685b541fbccb"
+          "content": "fadc1f04b1d6bc5df50d7c679af599827e3e6d0eca2b1eee8820dc71d8eafb2f"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "258078"
+          "value": "258227"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e349739deadb676a475fce6ca53aba244c9cd4856c81e5132f4471f439533122"
+          "content": "312e3114d3a6008f14d6cee733dd1dfcc18743855f2405252ea6e73e8a2e31cc"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "93972"
+          "value": "94014"
         }
       ]
     },
@@ -9596,7 +9596,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ae320e1ea42db0744a51d4fcfd02b133b32a0443de9d214899e9886ad43ba3a0"
+          "content": "be886ca38e8abe6ae8289ca1b1c64ce499639059c7006f402df62ff0d2894685"
         }
       ],
       "properties": [
@@ -9606,7 +9606,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2376692"
+          "value": "2378334"
         }
       ]
     },
@@ -12337,6 +12337,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "7629"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/pef-zones-v891.js",
+      "type": "file",
+      "name": "lib/pef-zones-v891.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3d6f9c84c5641a3d89998e5e0a3305468f0607125d9a2ca5fdc0350b84af1ffc"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6826"
         }
       ]
     },
@@ -28427,6 +28448,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/pef-zones-v891.js",
+      "type": "file",
+      "name": "mcp/adapters/pef-zones-v891.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "384881416395ad13ac80eb360336722ba9ff945da1dbd06a54e0559d442f575a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1688"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/peradeniya-op-v575.js",
       "type": "file",
       "name": "mcp/adapters/peradeniya-op-v575.js",
@@ -33137,7 +33179,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "92d3fea5a49231a10c65b2bdadb3ffe1a9a83e79a48ca5c1f4acdd57ba2c90c9"
+          "content": "ad215bda2e3f5634c380918c1aad839bd1a7df63fb1a966aceb4c68d46d2507d"
         }
       ],
       "properties": [
@@ -33147,7 +33189,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "83369"
+          "value": "83462"
         }
       ]
     },
@@ -49129,6 +49171,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3717"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v891.js",
+      "type": "file",
+      "name": "views/group-v891.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a1769e574b8de95442140d36715cb5f59e91905d6da453d4f7b94076b272da44"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3110"
         }
       ]
     },
@@ -65313,6 +65376,7 @@
         "urn:sophiewell:file:source:lib/peds-v140.js",
         "urn:sophiewell:file:source:lib/peds-v98.js",
         "urn:sophiewell:file:source:lib/pedstox-v247.js",
+        "urn:sophiewell:file:source:lib/pef-zones-v891.js",
         "urn:sophiewell:file:source:lib/peradeniya-op-v575.js",
         "urn:sophiewell:file:source:lib/pericarditis-v789.js",
         "urn:sophiewell:file:source:lib/periop-frailty-v203.js",
@@ -66308,6 +66372,7 @@
         "urn:sophiewell:file:source:views/group-v888.js",
         "urn:sophiewell:file:source:views/group-v889.js",
         "urn:sophiewell:file:source:views/group-v890.js",
+        "urn:sophiewell:file:source:views/group-v891.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
@@ -66844,6 +66909,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/peds-v140.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/peds-v98.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pedstox-v247.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/pef-zones-v891.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/peradeniya-op-v575.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pericarditis-v789.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/periop-frailty-v203.js",
@@ -67171,7 +67237,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "25c2fba07e4bfa37"
+      "value": "eae3c35d1957af9d"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -67183,7 +67249,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2319"
+      "value": "2322"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

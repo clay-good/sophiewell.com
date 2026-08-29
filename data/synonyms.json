@@ -6851,5 +6851,12 @@
     "bronchial provocation result",
     "is this methacholine test positive",
     "airway hyperresponsiveness testing"
+  ],
+  "pef-zones": [
+    "peak flow zones",
+    "asthma action plan green yellow red",
+    "what does my peak flow mean",
+    "peak flow percent of personal best",
+    "peak expiratory flow zone calculator"
   ]
 }
