@@ -765,6 +765,7 @@ const PROBES = [
   ['fukuoka ipmn worrisome features high risk stigmata pancreatic cyst', ['ipmn-fukuoka']],
   ['eat sleep console neonatal opioid withdrawal function based care', ['eat-sleep-console']],
   ['niosh lifting equation recommended weight limit lifting index', ['niosh-lifting']],
+  ['occupational noise exposure allowable time niosh osha decibels', ['noise-exposure']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],

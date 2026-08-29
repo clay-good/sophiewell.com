@@ -7958,6 +7958,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/niosh-lifting-v885.js (spec-v885: revised NIOSH lifting equation — clinical disclaimer)
 - `niosh-lifting`
 
+### lib/noise-exposure-v886.js (spec-v886: occupational noise exposure limits — clinical disclaimer)
+- `noise-exposure`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
