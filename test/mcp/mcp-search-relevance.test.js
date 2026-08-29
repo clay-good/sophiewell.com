@@ -751,6 +751,7 @@ const PROBES = [
   ['pertussis case definition whooping cough confirmed probable', ['pertussis-case-def']],
   ['eortc msgerc invasive fungal disease proven probable possible', ['eortc-msg-ifd']],
   ['neuroleptic malignant syndrome diagnostic criteria priority points', ['nms-criteria']],
+  ['measles case definition febrile rash suspect probable confirmed', ['measles-case-def']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],

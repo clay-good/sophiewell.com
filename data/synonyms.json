@@ -6718,5 +6718,12 @@
     "is this nms or serotonin syndrome",
     "antipsychotic fever rigidity rhabdomyolysis",
     "gurrera consensus criteria"
+  ],
+  "measles-case-def": [
+    "measles case definition",
+    "is this rash measles",
+    "measles suspect probable confirmed",
+    "febrile rash isolation measles",
+    "measles igm negative early"
   ]
 }

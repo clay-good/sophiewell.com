@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:c7293fef-6882-5678-82d8-430501b0fb0f",
+  "serialNumber": "urn:uuid:32dba447-40b9-5787-8c1e-61bac0fa468a",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-29T18:17:41.820Z",
+    "timestamp": "2026-08-29T18:32:18.683Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1662 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1663 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "93f184d940c908f67822edba27a7c38b395becc6a7e524e6ec45b4d9832ccd00"
+          "content": "7f32c051e61601bb7bda60e636be30d6a5f4c860b8c162dd14f5074d0c81214c"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "106999"
+          "value": "107047"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "040c2ecde00e6f7f0d858fdbfa244e8c7b357f84e9d24f47a0dffe91fe50be7c"
+          "content": "55e06451ac675a1eb6567bc1dc50e75d89b1e997123a92ec5d6d925580c7929e"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "483491"
+          "value": "483703"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c235ee094bb9b762045f93db9228e7dbc7db7ef3602941a87ff65dac6281ea34"
+          "content": "58d600a4250561491191b003f6bcd5c872da98147741f023885956d32e098a52"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "255171"
+          "value": "255327"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "841dcdfeb37a71a84893826b3bf2b429e977fb3ed4c334de19af24231ca43f31"
+          "content": "35bb01b22637e34bb0c420c0a21a56d5408aed4ff234a365ee249c021aeb1ece"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "92984"
+          "value": "93038"
         }
       ]
     },
@@ -9212,6 +9212,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/measles-case-def-v872.js",
+      "type": "file",
+      "name": "lib/measles-case-def-v872.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "81b9f742a3e925d662ce16c4e5d53bcac73d69d494f8df443a7509eeb7bd5554"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "9149"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/medication-v4.js",
       "type": "file",
       "name": "lib/medication-v4.js",
@@ -9323,7 +9344,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2350a539145127a32c766d9a1a3b56a1acf2cff901eaf499785377fb8ecc7d9c"
+          "content": "8d34811bf721f06f2f9e4a2f7778b47d0e8b79168774ee985cb938813d1c605a"
         }
       ],
       "properties": [
@@ -9333,7 +9354,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2339947"
+          "value": "2341920"
         }
       ]
     },
@@ -25298,6 +25319,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/measles-case-def-v872.js",
+      "type": "file",
+      "name": "mcp/adapters/measles-case-def-v872.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1c78e4af19eea2890fea97bf044b5e68268af780c76e820bbd91adb6021179e6"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3259"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/medication-v4.js",
       "type": "file",
       "name": "mcp/adapters/medication-v4.js",
@@ -32339,7 +32381,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "602fdbe7ae423de86dcea6e182f12d2971f8a6bc56d5ef1fc231671f87920fac"
+          "content": "0eee879a755b8d7092cc88f820e2a2476fb3217564e5c42b16c8b30f6793aa85"
         }
       ],
       "properties": [
@@ -32349,7 +32391,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "81302"
+          "value": "81421"
         }
       ]
     },
@@ -47932,6 +47974,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2784"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v872.js",
+      "type": "file",
+      "name": "views/group-v872.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6dd1d65bdc1f49dc218ca32e73ca7a88b47efe4f9522893a8462af0e642df3f2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3645"
         }
       ]
     },
@@ -63967,6 +64030,7 @@
         "urn:sophiewell:file:source:lib/mchat-v862.js",
         "urn:sophiewell:file:source:lib/mcmahon-rhabdo-v677.js",
         "urn:sophiewell:file:source:lib/mda-psoriatic-v672.js",
+        "urn:sophiewell:file:source:lib/measles-case-def-v872.js",
         "urn:sophiewell:file:source:lib/medication-v4.js",
         "urn:sophiewell:file:source:lib/medication-v5.js",
         "urn:sophiewell:file:source:lib/meld3-v678.js",
@@ -65073,6 +65137,7 @@
         "urn:sophiewell:file:source:views/group-v868.js",
         "urn:sophiewell:file:source:views/group-v869.js",
         "urn:sophiewell:file:source:views/group-v870.js",
+        "urn:sophiewell:file:source:views/group-v872.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
@@ -65479,6 +65544,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/mchat-v862.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mcmahon-rhabdo-v677.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mda-psoriatic-v672.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/measles-case-def-v872.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/medication-v4.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/medication-v5.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/meld3-v678.js",
@@ -65917,7 +65983,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "c7293fef6882d678"
+      "value": "32dba44740b91787"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -65929,7 +65995,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2262"
+      "value": "2265"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

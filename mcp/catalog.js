@@ -711,6 +711,7 @@ import whoSevereMalariaV867 from './adapters/who-severe-malaria-v867.js';
 import pertussisCaseDefV868 from './adapters/pertussis-case-def-v868.js';
 import eortcMsgIfdV869 from './adapters/eortc-msg-ifd-v869.js';
 import nmsCriteriaV870 from './adapters/nms-criteria-v870.js';
+import measlesCaseDefV872 from './adapters/measles-case-def-v872.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
 import reimersMigrationPercentageV703 from './adapters/reimers-migration-percentage-v703.js';
@@ -1448,6 +1449,7 @@ const ADAPTER_MODULES = [
   ['pertussis-case-def-v868', pertussisCaseDefV868],
   ['eortc-msg-ifd-v869', eortcMsgIfdV869],
   ['nms-criteria-v870', nmsCriteriaV870],
+  ['measles-case-def-v872', measlesCaseDefV872],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],
   ['reimers-migration-percentage-v703', reimersMigrationPercentageV703],
