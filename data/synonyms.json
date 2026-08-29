@@ -6690,5 +6690,12 @@
     "will this patient become violent",
     "aggression risk next shift",
     "bvc score"
+  ],
+  "who-severe-malaria": [
+    "who severe malaria criteria",
+    "is this malaria severe",
+    "severe falciparum malaria features",
+    "malaria severity criteria",
+    "when to give iv artesunate criteria"
   ]
 }

@@ -7904,6 +7904,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/broset-v866.js (spec-v866: Broset Violence Checklist — clinical disclaimer)
 - `broset`
 
+### lib/who-severe-malaria-v867.js (spec-v867: WHO severe malaria criteria — clinical disclaimer)
+- `who-severe-malaria`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

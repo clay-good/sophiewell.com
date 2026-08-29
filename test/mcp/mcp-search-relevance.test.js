@@ -747,6 +747,7 @@ const PROBES = [
   ['methemoglobin co-oximetry methylene blue pulse oximeter', ['methemoglobin']],
   ['carboxyhemoglobin carbon monoxide level smoker baseline', ['carboxyhemoglobin']],
   ['broset violence checklist inpatient risk next 24 hours', ['broset']],
+  ['who severe malaria criteria falciparum severity features', ['who-severe-malaria']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],

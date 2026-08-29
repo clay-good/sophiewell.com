@@ -707,6 +707,7 @@ import leadV863 from './adapters/lead-v863.js';
 import methemoglobinV864 from './adapters/methemoglobin-v864.js';
 import carboxyhemoglobinV865 from './adapters/carboxyhemoglobin-v865.js';
 import brosetV866 from './adapters/broset-v866.js';
+import whoSevereMalariaV867 from './adapters/who-severe-malaria-v867.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
 import reimersMigrationPercentageV703 from './adapters/reimers-migration-percentage-v703.js';
@@ -1440,6 +1441,7 @@ const ADAPTER_MODULES = [
   ['methemoglobin-v864', methemoglobinV864],
   ['carboxyhemoglobin-v865', carboxyhemoglobinV865],
   ['broset-v866', brosetV866],
+  ['who-severe-malaria-v867', whoSevereMalariaV867],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],
   ['reimers-migration-percentage-v703', reimersMigrationPercentageV703],
