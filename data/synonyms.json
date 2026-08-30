@@ -6907,5 +6907,12 @@
     "doac interruption before procedure",
     "periprocedural anticoagulation",
     "bridging heparin before surgery"
+  ],
+  "skin-tear": [
+    "skin tear classification",
+    "istap type skin tear",
+    "is this a stage 2 or a skin tear",
+    "flap loss wound type",
+    "skin tear documentation"
   ]
 }

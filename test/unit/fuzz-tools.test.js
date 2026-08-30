@@ -720,6 +720,7 @@ import * as lastLipidV896 from '../../lib/last-lipid-v896.js';
 import * as preopFastingV897 from '../../lib/preop-fasting-v897.js';
 import * as pciSurgeryTimingV898 from '../../lib/pci-surgery-timing-v898.js';
 import * as periopBridgingV899 from '../../lib/periop-bridging-v899.js';
+import * as skinTearV900 from '../../lib/skin-tear-v900.js';
 import * as sadPersonsV701 from '../../lib/sad-persons-v701.js';
 import * as edinburghClaudicationV702 from '../../lib/edinburgh-claudication-v702.js';
 import * as reimersMigrationPercentageV703 from '../../lib/reimers-migration-percentage-v703.js';
@@ -1485,6 +1486,7 @@ const MODULES = {
   'preop-fasting-v897.js': preopFastingV897,
   'pci-surgery-timing-v898.js': pciSurgeryTimingV898,
   'periop-bridging-v899.js': periopBridgingV899,
+  'skin-tear-v900.js': skinTearV900,
   'sad-persons-v701.js': sadPersonsV701,
   'edinburgh-claudication-v702.js': edinburghClaudicationV702,
   'reimers-migration-percentage-v703.js': reimersMigrationPercentageV703,

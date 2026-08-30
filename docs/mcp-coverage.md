@@ -7997,6 +7997,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/periop-bridging-v899.js (spec-v899: periprocedural anticoagulant bridging — clinical disclaimer)
 - `periop-bridging`
 
+### lib/skin-tear-v900.js (spec-v900: ISTAP skin tear classification — clinical disclaimer)
+- `skin-tear`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
