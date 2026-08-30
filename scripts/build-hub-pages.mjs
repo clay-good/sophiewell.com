@@ -358,4 +358,11 @@ async function main() {
   console.log(`build-hub-pages: wrote ${written} audience hub pages under dist/for/.`);
 }
 
-main().catch((err) => { console.error('build-hub-pages: failed', err); process.exit(1); });
+// spec-v937: run the build only when this file is the entry point. `HUBS` is
+// imported by test/unit/hub-reachability.test.js, and an unguarded main() ran a
+// whole page build on import -- which passed locally, where dist/ happened to
+// exist, and failed the CI unit job, which runs before anything is built. Same
+// guard the check-*.mjs gates already use.
+if (process.argv[1] && process.argv[1].endsWith('build-hub-pages.mjs')) {
+  main().catch((err) => { console.error('build-hub-pages: failed', err); process.exit(1); });
+}
