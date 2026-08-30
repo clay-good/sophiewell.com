@@ -8024,6 +8024,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/udca-response-v909.js (spec-v909: ursodeoxycholic acid response criteria — clinical disclaimer)
 - `udca-response`
 
+### lib/kings-college-nonapap-v910.js (spec-v910: King's College criteria, non-acetaminophen arm — clinical disclaimer)
+- `kings-college-nonapap`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

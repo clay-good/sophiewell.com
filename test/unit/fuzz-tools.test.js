@@ -729,6 +729,7 @@ import * as tacoTraliV906 from '../../lib/taco-trali-v906.js';
 import * as vodSosV907 from '../../lib/vod-sos-v907.js';
 import * as hysLawV908 from '../../lib/hys-law-v908.js';
 import * as udcaResponseV909 from '../../lib/udca-response-v909.js';
+import * as kingsCollegeNonApapV910 from '../../lib/kings-college-nonapap-v910.js';
 import * as sadPersonsV701 from '../../lib/sad-persons-v701.js';
 import * as edinburghClaudicationV702 from '../../lib/edinburgh-claudication-v702.js';
 import * as reimersMigrationPercentageV703 from '../../lib/reimers-migration-percentage-v703.js';
@@ -1503,6 +1504,7 @@ const MODULES = {
   'vod-sos-v907.js': vodSosV907,
   'hys-law-v908.js': hysLawV908,
   'udca-response-v909.js': udcaResponseV909,
+  'kings-college-nonapap-v910.js': kingsCollegeNonApapV910,
   'sad-persons-v701.js': sadPersonsV701,
   'edinburgh-claudication-v702.js': edinburghClaudicationV702,
   'reimers-migration-percentage-v703.js': reimersMigrationPercentageV703,

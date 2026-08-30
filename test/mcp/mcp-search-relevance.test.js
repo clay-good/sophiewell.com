@@ -787,6 +787,7 @@ const PROBES = [
   ['hepatic veno-occlusive disease definition after transplant', ['vod-sos']],
   ['hy law drug induced liver injury bilirubin', ['hys-law']],
   ['ursodeoxycholic acid response paris criteria', ['udca-response']],
+  ['kings college criteria non acetaminophen liver failure', ['kings-college-nonapap']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],
