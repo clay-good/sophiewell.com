@@ -62,6 +62,50 @@ an unscored NIHSS item — the fix makes a blank read as zero, matching what an 
 already did. Where it does not — a cervical exam, a discharge decision, a tuberculin test — the
 tile refuses and says what it needs.
 
+## The half that only a browser check found
+
+Fixing the libraries fixed the **agent** surface. It did not fix the **reader's**, and the
+invariant could not see that, because it calls the library directly.
+
+`views/group-g.js` reads its numeric inputs with
+
+```js
+function nv(id) { return Number(document.getElementById(id).value); }
+```
+
+so a blank field became `0` **before the library was ever called**. Every guard added above was
+downstream of that. Clearing every number input on the live page still produced *"MODS 12 of 24:
+ICU mortality ~25%"*, *"GRACE 59, Low"*, *"Oakland 27, not in the safe-discharge band"*,
+*"Bishop: 5, Unfavorable"*, *"MUST 2: high malnutrition risk; refer to dietitian"*.
+
+The fix was already in the same file, twelve lines below, written for this exact purpose in
+spec-v59:
+
+```js
+// A genuinely empty field reads as null (not 0), so a compute function can refuse to score an
+// empty instrument instead of substituting a clinically-loaded default.
+function nvOrNull(id) { ... }
+```
+
+It had simply never been applied to these tiles. `mods`, `grace`, `oakland`, `bishop`,
+`must-nutrition` and `smart-cop` now use it; `tb-testing` gained the same reader in
+`views/group-j.js`. `views/group-v140.js` already had one (`optNum`) and needed nothing.
+
+Verified in a live browser, clearing every number input:
+
+| Tile | Before | After |
+| --- | --- | --- |
+| `mods` | MODS 12 of 24: ICU mortality ~25% | MODS 0 of 24: ICU mortality 0% |
+| `grace` | GRACE 59, Low | Enter age, heart rate, systolic BP, creatinine and Killip class |
+| `oakland` | Oakland 27, not safe for discharge | Enter age, heart rate, systolic BP and hemoglobin |
+| `bishop` | Bishop: 5, Unfavorable | Enter cervical dilation, effacement and station |
+| `must-nutrition` | MUST 2: high risk; refer to dietitian | MUST 0: low malnutrition risk |
+| `tb-testing` | TST: 0 mm vs cutoff 10 mm → Negative | Enter the induration in mm and select a risk category |
+
+**The lesson for the invariant itself:** a test that calls the library proves the library. The
+surface a person actually touches has its own input reader, and it can undo every guard beneath
+it.
+
 ## A reversal worth recording
 
 `test/unit/tb-testing.test.js` carried a deliberate test asserting that an empty string reads as

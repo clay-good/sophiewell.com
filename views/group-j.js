@@ -13,6 +13,9 @@ import { tbTstInterpret } from '../lib/tb-testing.js';
 
 function out() { return el('div', { id: 'q-results', 'aria-live': 'polite' }); }
 function num(id) { return Number(document.getElementById(id).value); }
+// spec-v930: a blank field read as 0 before the library ever saw it, so a cleared form
+// scored as a form full of zeros. A present "0" still reads as 0.
+function numOrNull(id) { const s = document.getElementById(id).value; return s.trim() === '' ? null : Number(s); }
 
 export const renderers = {
   tetanus(root) {
@@ -136,7 +139,7 @@ export const renderers = {
     let igra = null;
     const run = () => {
       clear(o);
-      const r = tbTstInterpret({ indurationMm: num('tb-mm'), cutoffMm: Number(document.getElementById('tb-risk').value) });
+      const r = tbTstInterpret({ indurationMm: numOrNull('tb-mm'), cutoffMm: Number(document.getElementById('tb-risk').value) });
       o.appendChild(el('h2', { text: r.band }));
       if (igra) {
         o.appendChild(el('h2', { text: 'IGRA interpretation reference' }));

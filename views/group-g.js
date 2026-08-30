@@ -325,9 +325,11 @@ export const renderers = {
     root.appendChild(checkbox('Abnormal cardiac enzymes', 'gr-enz'));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
+      // spec-v930: nvOrNull, not nv. nv() reads a blank field as 0 before the library ever
+      // sees it, so a cleared form scored as a form full of zeros.
       const r = S4.grace({
-        age: nv('gr-age'), heartRate: nv('gr-hr'), sbp: nv('gr-sbp'),
-        creatinineMgDl: nv('gr-cr'), killipClass: nv('gr-killip'),
+        age: nvOrNull('gr-age'), heartRate: nvOrNull('gr-hr'), sbp: nvOrNull('gr-sbp'),
+        creatinineMgDl: nvOrNull('gr-cr'), killipClass: nvOrNull('gr-killip'),
         cardiacArrestAdmission: checked('gr-arrest'),
         stDeviation: checked('gr-st'), abnormalEnzymes: checked('gr-enz'),
       });
@@ -744,8 +746,9 @@ export const renderers = {
     const deriv = renderDerivation(META.bishop);
     if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
+      // spec-v930: nvOrNull, not nv -- a blank cervical exam is not a zero one.
       const inputs = {
-        dilation: nv('bp-d'), effacement: nv('bp-e'), station: nv('bp-s'),
+        dilation: nvOrNull('bp-d'), effacement: nvOrNull('bp-e'), station: nvOrNull('bp-s'),
         consistency: document.getElementById('bp-c').value,
         position: document.getElementById('bp-p').value,
       };
@@ -1448,13 +1451,14 @@ export const renderers = {
     if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
       const inputs = {
-        age: nv('ok-age'),
+        // spec-v930: nvOrNull, not nv -- a blank form must not land on a discharge decision.
+        age: nvOrNull('ok-age'),
         sex: document.getElementById('ok-sex').value,
         priorLgibAdmission: checked('ok-prior'),
         dreBlood: checked('ok-dre'),
-        hr: nv('ok-hr'),
-        sbp: nv('ok-sbp'),
-        hgbGdl: nv('ok-hgb'),
+        hr: nvOrNull('ok-hr'),
+        sbp: nvOrNull('ok-sbp'),
+        hgbGdl: nvOrNull('ok-hgb'),
       };
       const r = S4.oakland(inputs);
       // spec-v930: with a value missing there is no score and no per-parameter breakdown, only
@@ -1972,13 +1976,16 @@ export const renderers = {
     const deriv = renderDerivation(META.mods);
     if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
+      // spec-v930: nvOrNull, not nv. Read as 0, a blank P/F ratio and a blank platelet count
+      // both fall off the bottom of their bands and score the WORST organ subscore -- a cleared
+      // form reported "MODS 12 of 24: ICU mortality ~25%".
       const inputs = {
-        pfRatio: nv('mods-pf'),
-        creatinineMgDl: nv('mods-cr'),
-        bilirubinMgDl: nv('mods-bili'),
-        par: nv('mods-par'),
-        plateletsK: nv('mods-plt'),
-        gcs: nv('mods-gcs'),
+        pfRatio: nvOrNull('mods-pf'),
+        creatinineMgDl: nvOrNull('mods-cr'),
+        bilirubinMgDl: nvOrNull('mods-bili'),
+        par: nvOrNull('mods-par'),
+        plateletsK: nvOrNull('mods-plt'),
+        gcs: nvOrNull('mods-gcs'),
       };
       const r = S4.mods(inputs);
       o.appendChild(el('h2', { text: `MODS ${r.score} of 24` }));
@@ -2351,9 +2358,11 @@ export const renderers = {
     const deriv = renderDerivation(META['must-nutrition']);
     if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
+      // spec-v930: nvOrNull, not nv. Read as 0, a blank BMI is a BMI under 18.5 and scored 2 --
+      // an empty form reported "high malnutrition risk; refer to dietitian".
       const inputs = {
-        bmi: nv('mu-bmi'),
-        weightLossPct: nv('mu-wl'),
+        bmi: nvOrNull('mu-bmi'),
+        weightLossPct: nvOrNull('mu-wl'),
         acuteDiseaseNoIntakeGt5d: checked('mu-acute'),
       };
       const r = S4.mustNutrition(inputs);
@@ -2540,14 +2549,16 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       const r = S4.smartCop({
-        ageYears: nv('sc-age'),
+        // spec-v930: nvOrNull, not nv. Read as 0, a blank SpO2 is below every threshold and
+        // scored the 2-point oxygenation criterion from an empty form.
+        ageYears: nvOrNull('sc-age'),
         sbpLt90: checked('sc-sbp'),
         multilobar: checked('sc-multi'),
         albuminLt35: checked('sc-alb'),
-        rr: nv('sc-rr'),
-        pao2: nv('sc-pao2'),
-        spo2: nv('sc-spo2'),
-        pfRatio: nv('sc-pf'),
+        rr: nvOrNull('sc-rr'),
+        pao2: nvOrNull('sc-pao2'),
+        spo2: nvOrNull('sc-spo2'),
+        pfRatio: nvOrNull('sc-pf'),
         hrGe125: checked('sc-hr'),
         confusion: checked('sc-conf'),
         phLt735: checked('sc-ph'),
