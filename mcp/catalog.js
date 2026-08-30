@@ -737,6 +737,7 @@ import gadoliniumNsfV895 from './adapters/gadolinium-nsf-v895.js';
 import lastLipidV896 from './adapters/last-lipid-v896.js';
 import preopFastingV897 from './adapters/preop-fasting-v897.js';
 import pciSurgeryTimingV898 from './adapters/pci-surgery-timing-v898.js';
+import periopBridgingV899 from './adapters/periop-bridging-v899.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
 import reimersMigrationPercentageV703 from './adapters/reimers-migration-percentage-v703.js';
@@ -1500,6 +1501,7 @@ const ADAPTER_MODULES = [
   ['last-lipid-v896', lastLipidV896],
   ['preop-fasting-v897', preopFastingV897],
   ['pci-surgery-timing-v898', pciSurgeryTimingV898],
+  ['periop-bridging-v899', periopBridgingV899],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],
   ['reimers-migration-percentage-v703', reimersMigrationPercentageV703],

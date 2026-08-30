@@ -777,6 +777,7 @@ const PROBES = [
   ['lipid emulsion rescue local anesthetic toxicity dose', ['last-lipid']],
   ['preoperative fasting clear liquids two hours npo', ['preop-fasting']],
   ['how long after a drug eluting stent before elective surgery', ['pci-surgery-timing']],
+  ['periprocedural bridging warfarin doac interruption', ['periop-bridging']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],

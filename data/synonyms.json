@@ -6900,5 +6900,12 @@
     "elective surgery delay after pci",
     "bare metal stent 30 days surgery",
     "stent thrombosis noncardiac surgery"
+  ],
+  "periop-bridging": [
+    "should i bridge anticoagulation",
+    "hold warfarin before surgery",
+    "doac interruption before procedure",
+    "periprocedural anticoagulation",
+    "bridging heparin before surgery"
   ]
 }
