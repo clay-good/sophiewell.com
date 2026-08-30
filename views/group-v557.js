@@ -44,7 +44,7 @@ function wire(ids, run) {
 
 export const renderers = {
   mswat(root) {
-    note(root, 'mSWAT multiplies the percentage of body surface area involved by each lesion type by that type’s weight — 1, 2, and 4 for tumors or ulcers — and sums the products. The score runs 0 to 400, not 0 to 100: a body wholly covered in tumor scores 4 × 100. Each square centimetre is counted once, in one category only, so the three percentages cannot total more than 100. Area is measured with the patient’s own palm plus fingers as 1% of body surface area.');
+    note(root, 'mSWAT multiplies the percentage of body surface area involved by each lesion type by that type’s weight — 1, 2, and 4 for tumors or ulcers — and sums the products. The score runs 0 to 400, not 0 to 100: a body wholly covered in tumor scores 4 × 100. Each square centimeter is counted once, in one category only, so the three percentages cannot total more than 100. Area is measured with the patient’s own palm plus fingers as 1% of body surface area.');
 
     heading(root, 'Form');
     root.appendChild(select('Is the patient erythrodermic? (selects the lesion vocabulary — the weights are the same either way)',

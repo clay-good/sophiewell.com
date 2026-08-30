@@ -64,6 +64,15 @@ const BANNED = new RegExp(
     'artefact', 'artefacts', 'favourable', 'favourably', 'litre', 'litres',
     'metre', 'metres', 'labour', 'stabilisation', 'visualisation', 'analysed',
     'catheterisation', 'catheterised',
+    // spec-v893: the unit words above carry a leading \b, so a COMPOUND unit slips
+    // past them -- 'millimetre' has no boundary before its 'metre'. 74 lines of
+    // reader-facing copy were spelling their units this way. Listed in full rather
+    // than by dropping the boundary, which would fire on ordinary words.
+    'microlitre', 'microlitres', 'millilitre', 'millilitres', 'decilitre',
+    'decilitres', 'centilitre', 'centilitres', 'kilolitre', 'kilolitres',
+    'nanometre', 'nanometres', 'micrometre', 'micrometres', 'millimetre',
+    'millimetres', 'centimetre', 'centimetres', 'decimetre', 'decimetres',
+    'kilometre', 'kilometres',
   ].join('|') + ')\\b',
   'i',
 );

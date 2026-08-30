@@ -38,7 +38,7 @@ export default [
       },
       ...M.MSWAT_CATEGORIES.map((category) => ({
         dom: `mswat-${category.key}`, arg: category.key, kind: 'number', unit: '% BSA', required: false,
-        label: `Percent body surface area of "${category.erythrodermic}" (erythrodermic) / "${category.nonerythrodermic}" (nonerythrodermic). WEIGHT ${category.weight}. Counted once per square centimetre: the three categories are mutually exclusive and together cannot exceed 100 percent.`,
+        label: `Percent body surface area of "${category.erythrodermic}" (erythrodermic) / "${category.nonerythrodermic}" (nonerythrodermic). WEIGHT ${category.weight}. Counted once per square centimeter: the three categories are mutually exclusive and together cannot exceed 100 percent.`,
       })),
     ],
   },

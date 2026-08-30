@@ -42,7 +42,7 @@ function wire(ids, run) {
 
 export const renderers = {
   'sbp-ascitic-fluid'(root) {
-    note(root, 'The line is 250 neutrophils per cubic millimetre in the fluid, after the count has been corrected for blood. A tap that drew blood carries neutrophils in with it and can cross 250 on the blood alone.');
+    note(root, 'The line is 250 neutrophils per cubic millimeter in the fluid, after the count has been corrected for blood. A tap that drew blood carries neutrophils in with it and can cross 250 on the blood alone.');
 
     root.appendChild(el('h2', { text: 'The fluid' }));
     numField(root, 'Neutrophils in the fluid (cells per cubic mm)', 'sbp-pmn', { min: '0', max: '500000', step: '1' });

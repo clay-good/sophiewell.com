@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:ca1e5516-c032-5fa0-8cc6-cec7ff3695ea",
+  "serialNumber": "urn:uuid:32f49c0e-8378-56d0-88c9-776ba0242e2e",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-30T00:24:29.494Z",
+    "timestamp": "2026-08-30T00:29:11.399Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -482,7 +482,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6e74289ff834256ff687efffa6a9fb152ceaabf6c3eb96e0baab61a80f7b162d"
+          "content": "0927422c6802b1e2afca5f337cecfd47fe8566219d5ff2a38ed4db62a8e6e37a"
         }
       ],
       "properties": [
@@ -1091,7 +1091,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b4c592adc803d89cacfc892bc840c5cd7c8060978f48e0e5b3d513f42baa0a4a"
+          "content": "7da2179ea02ee6b4f983417d4fedc03f50d680c2b945213a0cf75fefd6411857"
         }
       ],
       "properties": [
@@ -1217,7 +1217,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ae12e61addb1dd6dc187e37f12d37ca8c1bfdf13816fb97a576c4b54a26a3ecb"
+          "content": "f0b4ade6cf4739e21569ada75e961b0b641e270e84e8d0b5a2f24e22ddb0d63c"
         }
       ],
       "properties": [
@@ -2519,7 +2519,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "92ea65a0a4929ee6af8a772ddaa7eb42a014d8681c33c22314026d26bcf794e7"
+          "content": "b9be7c0dc63de6f287f3fdb77af63d1988443fff204eb0b177ae5ef91fec242a"
         }
       ],
       "properties": [
@@ -4871,7 +4871,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f0ff0560524808b7a87862db0480e78c32d7231bec21755b54a5e2942ec5db08"
+          "content": "be0b0828b57d4484b44c8f4f13b38ddc856c49c576eb130009c31960b2e66b58"
         }
       ],
       "properties": [
@@ -5585,7 +5585,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b4e4cbbf171ac41193248c56f69cf05b55297136ea3a47e144bfc2e3d7bce829"
+          "content": "f52e9d55d1c894e6fc0bc015073e6dbc0a10ea702de9b65c0f4294d908764118"
         }
       ],
       "properties": [
@@ -7160,7 +7160,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "56c46cced63dec82a71359f18665de93836931dd61b5d6727d773fe9cf921ff3"
+          "content": "1c0f95ac894d64cfa61e232142bcea6c972b1eb9d79dd7ce9a9a2bc88d44d40b"
         }
       ],
       "properties": [
@@ -7370,7 +7370,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1f8cdd8bcaa458cf3e755dab4eed4f9e2cd00445d45baa27f165b3c5a462ee7b"
+          "content": "9a508c9597e17f30bc65156b09c5d5baf29116bca796c85070e050101c1614a0"
         }
       ],
       "properties": [
@@ -7937,7 +7937,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d3ee2e6943f6737510a177e3cf6099618204bcaaf2ea442ec4b0b7439132df2a"
+          "content": "25c9e0325c85733e3dff37804267bbba20cb56892fcf59b372a25337d09747b1"
         }
       ],
       "properties": [
@@ -9323,7 +9323,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "fb64c51e87e7eba2d1c70383e67fc72317e67aa35946763c397074d689c92174"
+          "content": "695de256799eafbf68b5c6b341c1a8be2f322e35fb855d3718059083361c8e67"
         }
       ],
       "properties": [
@@ -9617,7 +9617,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f1a88925c91cdc6514c205019ee453c1c29be51ab6ea66ff9b88f0b3a53b8c22"
+          "content": "f6da7fddc04fba103524b175b6b2498236cd816a3afd9e1b2109355557978e8a"
         }
       ],
       "properties": [
@@ -9911,7 +9911,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "432431a6a9c24140a26cd322b98d9a59780987537c08b9a173256d661dc1115e"
+          "content": "aebe68b4bd5f98d48ddb51cf2a35e0a15ebb97f435a18010a2005382dbebfdbe"
         }
       ],
       "properties": [
@@ -10142,7 +10142,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ccf9d353d2eb10a77ea6376178c8e28f63290525980087d3702acddbffeb6896"
+          "content": "ff629f32d5110d9f30f229486c8b9c4cb8d4586e3ac286a2926affadfd6d6ccb"
         }
       ],
       "properties": [
@@ -10394,7 +10394,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "763d70f48eb529d3cc229aed9e8b2fe1d9ebf7a0b118689701b2ff9a6a7257f4"
+          "content": "f59d15ba97d1a630c20186f69efc1d6685a39356264be1c5842f91fa37809d3c"
         }
       ],
       "properties": [
@@ -12221,7 +12221,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b9a172744b045cb17629ef3bb941188a2d414f2798bb7a556dff464bba54bbe0"
+          "content": "f158474599314efcff28d525a5512b83d595a7fc21d75bb30dac2620d741b6b9"
         }
       ],
       "properties": [
@@ -12305,7 +12305,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "030aded1fe39d5dc12975ddb533de52348d762bf01e3a4185b661f55dc77f96e"
+          "content": "a56671e5465a6fcd05b586f4b742db215265f6fda6fe3edd9f504d28106a632a"
         }
       ],
       "properties": [
@@ -12578,7 +12578,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0b63e9352100aa9dda46dcd4e9ee1b18699f0853fd8571e9cd4b00e2fc8046ad"
+          "content": "70cf4c387cf44e6b5fbab5408c18d2da54ee1684930c7ec611c09f1c984202d8"
         }
       ],
       "properties": [
@@ -12788,7 +12788,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b564dc21227c2220d35a42b4a7df0bdb362022c83d08916161f31a7e032439d3"
+          "content": "19675dc09546ea686829394e1d801040ffdf77cd300f834a8771988c0b1db9c4"
         }
       ],
       "properties": [
@@ -13418,7 +13418,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "53909b8539dfed43a2f55695f07e61587e7fd732e71d2882d8296d1c29db0ab9"
+          "content": "8bd66030eb9be4038678fa55fed7bd436ac4d270b80ee4a39a3985be26909a48"
         }
       ],
       "properties": [
@@ -14636,7 +14636,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c89906ab5038a21980b9750dece4837cfc68538413a2b2848b6747d065d260cd"
+          "content": "6c301915bf0cfc69f18bfc3e971bd7fbfeaa91d39823de417c526c8bb4031dc1"
         }
       ],
       "properties": [
@@ -15812,7 +15812,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e982b3cceed78f5eb8ab8cdeb1204c72a31d57432d129e341435094f2b119474"
+          "content": "42d1022282199970a686cb8fce8fd320ca7e02f1245da18d01ee3b7df0c2d895"
         }
       ],
       "properties": [
@@ -16337,7 +16337,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e2fbd3739fca2416edbe0c4e670f810a41569d1279fdf613098553da2512137a"
+          "content": "425d7a9b2afbaf09423292972ad67b718b9c85afbf1b33ac18e736db10ccbe45"
         }
       ],
       "properties": [
@@ -16799,7 +16799,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b73da9739534c03626a50e5435d8c32e1c31ea31b0139bfd7f87b84fccba9bce"
+          "content": "788dc1747f4d5b22b34b75ccd5d75f0e4bf2d3eca57156b6d360f28183f29098"
         }
       ],
       "properties": [
@@ -26648,7 +26648,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c6d46d69c71972f2ae12996bd22e72ac8ac9b1fef153b532fdb426565b87f13a"
+          "content": "97780c969648b6c26b43545e0eed65b6b99a259273adaff1584ecff01740f359"
         }
       ],
       "properties": [
@@ -26879,7 +26879,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "08fef6405e3b13a913ccb38bc917307d5bb272cd9bc0d956aaa9daaffbc545e5"
+          "content": "e2bed699cec6788b35b122ea2f392a5404168ce6f1c33d8ff192274e0e859fab"
         }
       ],
       "properties": [
@@ -30659,7 +30659,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "80bcf8265332ac6df81eedf38c79632ed990013fda7914f66e09bf029e23bf3d"
+          "content": "97c8388b5b0a5c8d8b5f042d7230f13da29567740e7c3d390e9c8462cbcbf7a1"
         }
       ],
       "properties": [
@@ -32528,7 +32528,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "516b0e33c32cf0296c4520fc8b18cf41f5d77632e87df09aa3b61d37fb1fdf32"
+          "content": "05b55d5819701e231d4359631a9a3b970934a8a5c5e2aac4a344bd451477c257"
         }
       ],
       "properties": [
@@ -32675,7 +32675,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "113219fd4b93c29e7c1a2061ef936f89fd7f005f22d28757e2d82d81a9d0c802"
+          "content": "c03edce0fc051584de17724b25a05637f7512483301e0a3b6c8e6536a906c7d2"
         }
       ],
       "properties": [
@@ -43238,7 +43238,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "cd29db8677c7692857a97a9bdcd975efad4d19f32014ff1380a74ae1a1b3234d"
+          "content": "ff4957e148423e3da6f23d7c188ba26f89e2814119ed10d27510876efa3c87de"
         }
       ],
       "properties": [
@@ -48425,7 +48425,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "78155e5fd62efbc9b79b2205b699dcee1bcc96320df31652b6d59f4f0e348457"
+          "content": "4fd15dd8748c4c0337709da2f1a1262c6bf3a2d474d3e785ba4ca1453a06d422"
         }
       ],
       "properties": [
@@ -67303,7 +67303,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "ca1e5516c0328fa0"
+      "value": "32f49c0e837896d0"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
