@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:fcc06726-a04b-5f77-897a-e694d1a05915",
+  "serialNumber": "urn:uuid:6ce89fbf-6379-5e06-895e-b62cfb624afb",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-30T11:14:35.723Z",
+    "timestamp": "2026-08-30T11:38:00.035Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1698 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1699 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5b10b9bce190b515c588562bea5cfc72cfc9a72f43a86ea25d2dd795c4cddd76"
+          "content": "b2c8fac2aacca6d52bb54e1f4620327e691807212af749e123f72eae618531a9"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "108776"
+          "value": "108828"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d29d99fcb20911c5d1dc8e42b73582c694c7c58920666b68d71f2e50854475cc"
+          "content": "636cdded7071a74e9a4793cc2b48dd1913b4a80607ffbefdc742ee6c85292948"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "494038"
+          "value": "494585"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d9cf40d39d79b5176283e30f3963a9fbe69b4e71764dc30f6ac3bead90043a8b"
+          "content": "28c3567d8cfbcf344fe153d340e2712490dd5f7f5b80080c95e594b66fefd7f1"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "260653"
+          "value": "260815"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3a1b7723393d463fcca56cb08de9709417166a4ae9e7bcf2dfd5f38ed9a866f7"
+          "content": "648c42add445f1b86bdd51aebbc2939253b7444d00096367843f0ca189c805a5"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "94843"
+          "value": "94907"
         }
       ]
     },
@@ -9827,7 +9827,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2a9f9cf8b9e6cc29d0a7c3362c998576eb608ac8d3778de5ad08e73f648d88f1"
+          "content": "d631429d234462dac6cb61b36118dba294a36fc72a3f82b98ee258e2d9f5c5ae"
         }
       ],
       "properties": [
@@ -9837,7 +9837,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2411193"
+          "value": "2413120"
         }
       ]
     },
@@ -17524,6 +17524,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "8519"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/who-surgical-checklist-v917.js",
+      "type": "file",
+      "name": "lib/who-surgical-checklist-v917.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e46dd6f9bcde6239c5739174857434e2b5e79065a6d5829afea72be9c19b1b1b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8990"
         }
       ]
     },
@@ -33803,6 +33824,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/who-surgical-checklist-v917.js",
+      "type": "file",
+      "name": "mcp/adapters/who-surgical-checklist-v917.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e9c82a77f697e4db3bab7168f5124546e7f00eca590fc4df92fe68209c8731ca"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2085"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/wiltse-spondylolisthesis-v481.js",
       "type": "file",
       "name": "mcp/adapters/wiltse-spondylolisthesis-v481.js",
@@ -34019,7 +34061,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3553bf9b992df5f2c005f026aa6887bad53a44d7636bccab75af43557106f076"
+          "content": "a30570f07303a24669c1c972b8ea4624c2f8eb0dd914a8ab3c9cb52eef0cc23d"
         }
       ],
       "properties": [
@@ -34029,7 +34071,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "85526"
+          "value": "85669"
         }
       ]
     },
@@ -50477,6 +50519,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v917.js",
+      "type": "file",
+      "name": "views/group-v917.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4cc99bf9d05edd9c02f82d584a63a0499b5f570f56ce7167e61ca138de70d126"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2744"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:views/pa-lint.js",
       "type": "file",
       "name": "views/pa-lint.js",
@@ -66883,6 +66946,7 @@
         "urn:sophiewell:file:source:lib/who-isup-renal-grade-v653.js",
         "urn:sophiewell:file:source:lib/who-mucositis-v617.js",
         "urn:sophiewell:file:source:lib/who-severe-malaria-v867.js",
+        "urn:sophiewell:file:source:lib/who-surgical-checklist-v917.js",
         "urn:sophiewell:file:source:lib/wiltse-spondylolisthesis-v481.js",
         "urn:sophiewell:file:source:lib/winquist-hansen-v381.js",
         "urn:sophiewell:file:source:lib/workflow-v4.js",
@@ -67674,6 +67738,7 @@
         "urn:sophiewell:file:source:views/group-v911.js",
         "urn:sophiewell:file:source:views/group-v912.js",
         "urn:sophiewell:file:source:views/group-v916.js",
+        "urn:sophiewell:file:source:views/group-v917.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
     },
@@ -68444,6 +68509,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/who-isup-renal-grade-v653.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/who-mucositis-v617.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/who-severe-malaria-v867.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/who-surgical-checklist-v917.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/wiltse-spondylolisthesis-v481.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/winquist-hansen-v381.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/woundid-v248.js",
@@ -68557,7 +68623,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "fcc06726a04b5f77"
+      "value": "6ce89fbf63791e06"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -68569,7 +68635,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2382"
+      "value": "2385"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

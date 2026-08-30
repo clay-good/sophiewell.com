@@ -8036,6 +8036,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/ipass-handoff-v916.js (spec-v916: I-PASS handoff structure — administrative disclaimer)
 - `ipass-handoff`
 
+### lib/who-surgical-checklist-v917.js (spec-v917: WHO Surgical Safety Checklist phases — administrative disclaimer)
+- `who-surgical-checklist`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

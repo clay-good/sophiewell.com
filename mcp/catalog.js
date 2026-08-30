@@ -751,6 +751,7 @@ import kingsCollegeNonApapV910 from './adapters/kings-college-nonapap-v910.js';
 import cgvhdSeverityV911 from './adapters/cgvhd-severity-v911.js';
 import nichdFhrV912 from './adapters/nichd-fhr-v912.js';
 import ipassHandoffV916 from './adapters/ipass-handoff-v916.js';
+import whoSurgicalChecklistV917 from './adapters/who-surgical-checklist-v917.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
 import reimersMigrationPercentageV703 from './adapters/reimers-migration-percentage-v703.js';
@@ -1528,6 +1529,7 @@ const ADAPTER_MODULES = [
   ['cgvhd-severity-v911', cgvhdSeverityV911],
   ['nichd-fhr-v912', nichdFhrV912],
   ['ipass-handoff-v916', ipassHandoffV916],
+  ['who-surgical-checklist-v917', whoSurgicalChecklistV917],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],
   ['reimers-migration-percentage-v703', reimersMigrationPercentageV703],

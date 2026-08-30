@@ -791,6 +791,7 @@ const PROBES = [
   ['chronic graft versus host disease global severity', ['cgvhd-severity']],
   ['fetal heart rate tracing category two', ['nichd-fhr']],
   ['i pass handoff structure', ['ipass-handoff']],
+  ['who surgical safety checklist sign out', ['who-surgical-checklist']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],
