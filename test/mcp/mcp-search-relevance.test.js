@@ -785,6 +785,7 @@ const PROBES = [
   ['dka resolution criteria anion gap bicarbonate', ['dka-resolution']],
   ['taco versus trali transfusion respiratory reaction', ['taco-trali']],
   ['hepatic veno-occlusive disease definition after transplant', ['vod-sos']],
+  ['hy law drug induced liver injury bilirubin', ['hys-law']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],

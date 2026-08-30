@@ -8018,6 +8018,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/vod-sos-v907.js (spec-v907: hepatic VOD / SOS definitions — clinical disclaimer)
 - `vod-sos`
 
+### lib/hys-law-v908.js (spec-v908: Hy's Law for drug-induced liver injury — clinical disclaimer)
+- `hys-law`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

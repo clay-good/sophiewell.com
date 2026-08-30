@@ -745,6 +745,7 @@ import cuffLeakV903 from './adapters/cuff-leak-v903.js';
 import dkaResolutionV905 from './adapters/dka-resolution-v905.js';
 import tacoTraliV906 from './adapters/taco-trali-v906.js';
 import vodSosV907 from './adapters/vod-sos-v907.js';
+import hysLawV908 from './adapters/hys-law-v908.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
 import reimersMigrationPercentageV703 from './adapters/reimers-migration-percentage-v703.js';
@@ -1516,6 +1517,7 @@ const ADAPTER_MODULES = [
   ['dka-resolution-v905', dkaResolutionV905],
   ['taco-trali-v906', tacoTraliV906],
   ['vod-sos-v907', vodSosV907],
+  ['hys-law-v908', hysLawV908],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],
   ['reimers-migration-percentage-v703', reimersMigrationPercentageV703],

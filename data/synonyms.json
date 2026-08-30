@@ -1,5 +1,5 @@
 {
-  "version": "v230-2026-08-30",
+  "version": "v231-2026-08-30",
   "note": "spec-v7 section 3.2: hand-curated patient-phrasing -> tile id table. Each entry maps patient-mental-model phrases (and, from the v8/v9 plain-language-search batches, clinical abbreviations, eponym aliases, and canonical-intent phrases) to a single existing tile. Audience is the primary audience the entry serves; the matcher deprioritizes (does not hide) entries when the user has selected a different chip. Every phrase is lowercase; every tile id is an existing catalog tile (guarded by test/unit/synonyms-catalog.test.js). Adding a new phrase is a one-line PR.",
   "entries": [
     {
@@ -7335,6 +7335,17 @@
         "seattle versus baltimore criteria"
       ],
       "tile": "vod-sos",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "hy law",
+        "hys law",
+        "potential hy law case",
+        "drug induced liver injury bilirubin rule",
+        "liver enzymes and bilirubin both up on a new drug"
+      ],
+      "tile": "hys-law",
       "audience": "clinicians"
     }
   ]
