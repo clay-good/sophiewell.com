@@ -25,7 +25,10 @@
 
 Clinical calculators, scores, drips, and dosing math for the nurse on
 shift, and for the doctors, pharmacists, respiratory therapists, EMS
-providers, billers, and coders working alongside.
+providers, billers, and coders working alongside. The catalog also carries
+the measurement and process tools the same shift runs on: reference change
+values and method agreement for the laboratory, and handoff structures,
+checklist phases and event-review frameworks for quality and safety.
 
 Each calculator does one thing:
 
