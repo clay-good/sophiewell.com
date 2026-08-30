@@ -772,6 +772,7 @@ const PROBES = [
   ['methacholine challenge pd20 pc20 bronchial hyperresponsiveness', ['methacholine']],
   ['peak flow green yellow red zone asthma action plan', ['pef-zones']],
   ['albumin after large volume paracentesis grams per litre', ['lvp-albumin']],
+  ['acute tryptase rise baseline mast cell activation', ['tryptase']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],

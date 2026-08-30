@@ -6865,5 +6865,12 @@
     "large volume paracentesis albumin dose",
     "ascites drainage albumin replacement",
     "post paracentesis circulatory dysfunction"
+  ],
+  "tryptase": [
+    "tryptase rise anaphylaxis",
+    "is this tryptase elevated",
+    "acute versus baseline tryptase",
+    "mast cell activation criteria",
+    "tryptase 1.2 plus 2 rule"
   ]
 }

@@ -7979,6 +7979,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/lvp-albumin-v892.js (spec-v892: post-paracentesis albumin — clinical disclaimer)
 - `lvp-albumin`
 
+### lib/tryptase-v894.js (spec-v894: acute tryptase rise — clinical disclaimer)
+- `tryptase`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
