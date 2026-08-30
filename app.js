@@ -745,6 +745,7 @@ import { renderers as RV907 } from './views/group-v907.js';
 import { renderers as RV908 } from './views/group-v908.js';
 import { renderers as RV909 } from './views/group-v909.js';
 import { renderers as RV910 } from './views/group-v910.js';
+import { renderers as RV911 } from './views/group-v911.js';
 import { renderers as RV164 } from './views/group-v164.js';
 import { renderers as RV165 } from './views/group-v165.js';
 import { renderers as RV166 } from './views/group-v166.js';
@@ -828,7 +829,7 @@ const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...R
   ...RV902,
   ...RV903,
   ...RV905,
-  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV63, ...RPALINT };
+  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -2652,6 +2653,11 @@ const UTILITIES = [
   // views/group-v910.js, lib/kings-college-nonapap-v910.js,
   // mcp/adapters/kings-college-nonapap-v910.js.
   { id: 'kings-college-nonapap', name: 'King\'s College criteria (non-acetaminophen ALF)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v911: the NIH 2014 global severity of CHRONIC graft-versus-host disease, beside the
+  // two acute-GVHD tiles. views/group-v911.js, lib/cgvhd-severity-v911.js,
+  // mcp/adapters/cgvhd-severity-v911.js.
+  { id: 'cgvhd-severity', name: 'Chronic GVHD global severity (NIH 2014)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'gahs',                   name: 'Glasgow Alcoholic Hepatitis Score',                group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'west-haven-he',          name: 'West Haven HE grade (hepatic encephalopathy)',     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'hepatic-steatosis-index', name: 'Hepatic Steatosis Index (NAFLD screen)',          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },

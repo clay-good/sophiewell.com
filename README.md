@@ -5,7 +5,7 @@
 <h1 align="center">sophiewell.com</h1>
 
 <p align="center">
-  <strong>1699 free healthcare calculators that run entirely in your browser.</strong><br>
+  <strong>1700 free healthcare calculators that run entirely in your browser.</strong><br>
   No accounts, no ads, no telemetry, no AI.
 </p>
 
@@ -17,7 +17,7 @@
 <!--
   Machine-checked count (scripts/check-catalog-truth.mjs reads the line
   below; keep it in sync with UTILITIES.length in app.js):
-  At v910 close the catalog is 1699
+  At v911 close the catalog is 1700
   deterministic tiles.
 -->
 

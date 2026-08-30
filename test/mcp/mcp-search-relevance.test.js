@@ -788,6 +788,7 @@ const PROBES = [
   ['hy law drug induced liver injury bilirubin', ['hys-law']],
   ['ursodeoxycholic acid response paris criteria', ['udca-response']],
   ['kings college criteria non acetaminophen liver failure', ['kings-college-nonapap']],
+  ['chronic graft versus host disease global severity', ['cgvhd-severity']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],

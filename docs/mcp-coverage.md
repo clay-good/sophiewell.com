@@ -8027,6 +8027,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/kings-college-nonapap-v910.js (spec-v910: King's College criteria, non-acetaminophen arm — clinical disclaimer)
 - `kings-college-nonapap`
 
+### lib/cgvhd-severity-v911.js (spec-v911: chronic GVHD global severity, NIH 2014 — clinical disclaimer)
+- `cgvhd-severity`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
