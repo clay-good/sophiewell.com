@@ -23,16 +23,14 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { allCalculators } from '../../mcp/catalog.js';
 
-// The 31 that were already diverging when the invariant was written. Sorted, so a diff is
-// readable. Draining this list is the follow-up; the ones left are mostly ordinal selects the
-// browser never leaves blank, plus banded scores whose libraries take an already-typed number
-// and have no missing-value guard at all -- fixing those means teaching them to refuse, which
-// changes their return shape and their renderers.
+// Started at 31 when the invariant was written; 12 were drained in the same change. Sorted, so
+// a diff is readable. What is left are banded scores whose libraries take an already-typed
+// number and have no missing-value guard at all -- fixing those means teaching them to refuse,
+// which changes their return shape and their renderers, and is the follow-up this list holds.
 const KNOWN = new Set([
-  'abx-renal', 'afi', 'aom-criteria', 'ariscat', 'bishop', 'bps', 'burch-wartofsky', 'cfs',
-  'cries', 'fazekas-wmh', 'flacc', 'grace', 'kings-college', 'koff-bladder-capacity', 'mods',
-  'must-nutrition', 'nihss', 'nips', 'norepi-equiv', 'oakland', 'painad', 'peds-weight-conv',
-  'poss', 'qbl-pph', 'rass', 'sas-riker', 'sbs', 'smart-cop', 'snappe-ii', 'sos', 'wat-1',
+  'abx-renal', 'afi', 'aom-criteria', 'ariscat', 'bishop', 'burch-wartofsky', 'fazekas-wmh',
+  'grace', 'kings-college', 'koff-bladder-capacity', 'mods', 'must-nutrition', 'nihss',
+  'norepi-equiv', 'oakland', 'peds-weight-conv', 'qbl-pph', 'smart-cop', 'snappe-ii',
 ]);
 
 function outcome(compute, args) {

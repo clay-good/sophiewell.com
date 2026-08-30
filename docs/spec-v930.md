@@ -31,11 +31,23 @@ It says nothing about *which* outcome is right (a checklist may legitimately ans
 empty form), only that a blank and an absent input cannot mean different things. Negative-tested:
 reintroducing the `tb-testing` bug fails it by name.
 
-**Ledger:** the 31 tiles still diverging are named in `KNOWN`, which may only shrink — a second
-test fails if an id in it has been fixed and not removed. Most are ordinal selects the browser
-never leaves blank; the rest are banded scores whose libraries take an already-typed number and
-have no missing-value guard at all. Fixing those means teaching them to refuse, which changes
-their return shape and their renderers, and is the follow-up this ledger exists to hold.
+**Drained (12 more), by guarding four shared readers in `lib/scoring-v4.js`:**
+`checkOrdinal`, `checkOrdinalRange` and `checkSigned` now refuse a blank the same way they
+refuse an absent value — `Number('')` is 0, which *is* an integer, so an unanswered item scored
+as a zero while a missing one threw. That covers the eight paediatric pain and sedation scales
+at once. Four more had a refusal path that a blank slipped straight past:
+
+| Tile | A blank form used to report |
+| --- | --- |
+| `rass` | "RASS 0: in the light-sedation target band" |
+| `sas-riker` | "SAS 4: calm and cooperative; goal sedation" — it fell through to a **default** of 4 |
+| `cfs` | "CFS 1 (Very fit): not frail" |
+| `bps` | "BPS 3 of 12: acceptable pain" — clamped to 1, "relaxed", the exact default its guard existed to prevent |
+
+**Ledger:** 31 → **19**. `KNOWN` may only shrink, and a second test fails if an id in it has
+been fixed and not removed. What is left are banded scores whose libraries take an already-typed
+number and have no missing-value guard at all; fixing those changes their return shape and their
+renderers, and is the follow-up this list holds.
 
 ## A reversal worth recording
 
