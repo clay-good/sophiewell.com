@@ -78,6 +78,7 @@ export const RULED = new Map(Object.entries({
   'npiap-staging|pressure-injury-stage': 'DISTINCT -- one DERIVES the stage from observations, the other explains a stage already assigned.',
   'benzo-equiv|benzodiazepine-equivalence': 'DISTINCT -- overlapping, but benzo-equiv carries midazolam and the other does not.',
   'unit-converter|unit-converter-v4': 'DISTINCT -- overlapping, but unit-converter carries volume and unit-converter-v4 does not.',
+  'kings-college|kings-college-nonapap': 'DISTINCT -- the two ARMS of one rule, and they share no variables: the acetaminophen arm turns on arterial pH, creatinine and encephalopathy grade, the other on INR, age, cause, jaundice interval and bilirubin (spec-v910).',
 }));
 
 function main() {
