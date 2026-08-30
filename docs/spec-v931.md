@@ -1,0 +1,46 @@
+# spec-v931 — `0 + '70'` is `'070'`
+
+## What this is
+
+A latent arithmetic hazard in `psi()`, found by an audit that also produced a **correction to
+its own premise**. Both are recorded, because the correction is the more useful half.
+
+## The hazard
+
+`psi()` built its total as `pts += age`. In JavaScript `0 + '70'` is the string `'070'`, and
+every later `pts +=` concatenated instead of adding. A string age of `'70'` for a man with a
+respiratory rate of 30 produced:
+
+```
+score: "07020"   band: "Class V (admit)"
+```
+
+The arithmetic gives **90 — Class III**, which is exactly what the tile's own worked example
+documents. The library now converts the age once, and the Class I gate compares the converted
+value.
+
+## Nobody saw it, and saying otherwise would be wrong
+
+- The **MCP** surface coerces a field declared `kind: 'number'` before calling `compute` —
+  verified by calling `dispatch` with string inputs for another tile in the same list and
+  watching it answer correctly where a direct library call did not.
+- The **browser** reads numbers through `nv()` / `nvOrNull()`, both of which return a `Number`.
+
+So this is defence in depth against a caller that does neither, not a fix for something a reader
+or an agent hit. The tests say so in as many words.
+
+## The audit, and what it was actually measuring
+
+The scan compared every tile's answer for `7` against its answer for `'7'`. **112 differed** —
+which looks alarming and is not: almost all are libraries that require a real `number` and return
+a complete-the-fields prompt for a string. A refusal is not a wrong answer.
+
+Only one tile answered *differently and confidently*, and that was `psi`. The narrower scan that
+found it directly is worth keeping: **a numeric output field that comes back as a string of
+digits.** Twenty-five tiles match, and twenty-four are classification tiles echoing an ordinal
+label — `grade: "2"` is a category, not a quantity. The twenty-fifth was `score: "07020"`.
+
+## Files
+
+`lib/scoring-v4.js`, `test/unit/scoring-v4.test.js`, this file. No catalog change, no count
+change.

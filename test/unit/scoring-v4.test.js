@@ -309,3 +309,25 @@ test('bisap: 5 (max) -> High', () => {
 test('bisap: counts only truthy', () => {
   assert.equal(bisap({ bun25: true, sirs: true, age60: false, pleuralEffusion: true }).score, 3);
 });
+
+// spec-v931: psi() built its total by `pts += age`, and `0 + '70'` is the string '070'. Every
+// later `+=` concatenated, so a string age produced score '07020' and "Class V (admit)" where
+// the arithmetic gives 90 and Class III.
+//
+// No live surface reached it -- the MCP dispatch layer coerces a declared number field before
+// calling compute, and the browser reader returns a Number -- so this is defence in depth
+// against a caller that does neither, not a fix for something anyone saw.
+test('psi: a string age adds rather than concatenating', () => {
+  const asString = psi({ age: '70', sex: 'M', rr30: '1' });
+  const asNumber = psi({ age: 70, sex: 'M', rr30: true });
+  assert.equal(typeof asString.score, 'number');
+  assert.equal(asString.score, 90);
+  assert.equal(asString.score, asNumber.score);
+  assert.equal(asString.band, 'Class III (observation/short admission)');
+});
+
+test('psi: the female age adjustment and the Class I gate both survive a string age', () => {
+  assert.equal(psi({ age: '70', sex: 'F', rr30: '1' }).score, 80);
+  assert.equal(psi({ age: '45', sex: 'M' }).band, 'Class I (outpatient)');
+  assert.equal(psi({ age: '55', sex: 'M' }).band, 'Class II (outpatient)');
+});
