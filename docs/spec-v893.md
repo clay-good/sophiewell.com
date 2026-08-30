@@ -18,8 +18,8 @@ the entry did and did not catch turned up the compounds.
 
 | | |
 |---|---|
-| Banned list | 22 compound unit words added, spelled out in full |
-| Copy fixed | 48 lines across 31 files |
+| Banned list | 22 compound unit words added, plus `oesophagogastrectomy`, all spelled out in full |
+| Copy fixed | 49 lines across 32 files |
 
 The compounds are listed explicitly rather than by dropping the leading `\b` from the existing
 `litre` / `metre` entries. Dropping it would make those entries fire inside ordinary words, and
@@ -28,6 +28,24 @@ guessing.
 
 Added: microlitre(s), millilitre(s), decilitre(s), centilitre(s), kilolitre(s), nanometre(s),
 micrometre(s), millimetre(s), centimetre(s), decimetre(s), kilometre(s).
+
+## The rest of the list, measured
+
+Having found the compound-unit hole, I swept every other banned word for the prefixes and
+suffixes its `\b` might be hiding — plurals (`tumours`, `behaviours`, `colours`, `fibres`,
+`artefacts`, `manoeuvres`), and compounds of `oesophag-` and `haem-`.
+
+**One further leak, in a picklist option**: `oesophagogastrectomy` in the POSSUM operative-severity
+selector. Fixed, and the word added.
+
+Everything else the sweep surfaced was a false positive of the search rather than a defect: code
+identifiers (`CNPI_BEHAVIOURS`, `systemicIonisedCa`, `unmetRequirements`, `paralysisThresholdGrade`)
+which the gate exempts by design and no reader sees, and correct American words caught by a
+crude stem match (`paralysis`, `analysis`, `analyses`, `angioedema`, `gastroesophageal`,
+`perfusionist`). The seed list's own plurals do not occur in reader-facing copy at all.
+
+That is the useful negative result: after the 22 compound units, the banned list has no further
+boundary holes in the copy as it stands.
 
 ## What did not change
 

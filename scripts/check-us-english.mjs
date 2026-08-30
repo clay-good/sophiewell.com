@@ -60,6 +60,7 @@ const BANNED = new RegExp(
     // 'haematolog' can never match 'haematological'.
     'haemodynamic', 'haemodynamics', 'haemostasis', 'haematology',
     'haematological', 'oesophagus', 'oesophageal', 'oesophagectomy',
+    'oesophagogastrectomy',
     'dyspnoea', 'apnoea', 'tachypnoea', 'manoeuvre', 'manoeuvres',
     'artefact', 'artefacts', 'favourable', 'favourably', 'litre', 'litres',
     'metre', 'metres', 'labour', 'stabilisation', 'visualisation', 'analysed',

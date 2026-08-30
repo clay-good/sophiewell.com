@@ -68,7 +68,7 @@ const POSSUM_VARS = [
   ['potassium', 'Potassium (mmol/L)', [{ v: 1, text: '3.5–5.0' }, { v: 2, text: '3.2–3.4 or 5.1–5.3' }, { v: 4, text: '2.9–3.1 or 5.4–5.9' }, { v: 8, text: '≤ 2.8 or ≥ 6.0' }]],
   ['ecg', 'ECG', [{ v: 1, text: 'normal' }, { v: 4, text: 'atrial fibrillation, rate 60–90' }, { v: 8, text: 'any other abnormal rhythm, ≥ 5 ectopics/min, Q waves, or ST/T changes' }]],
   ['op', 'Operative variables'],
-  ['opSeverity', 'Operative severity', [{ v: 1, text: 'minor' }, { v: 2, text: 'moderate (e.g. appendicectomy, cholecystectomy)' }, { v: 4, text: 'major (e.g. laparotomy, bowel resection)' }, { v: 8, text: 'major+ (e.g. aortic, AP resection, oesophagogastrectomy)' }]],
+  ['opSeverity', 'Operative severity', [{ v: 1, text: 'minor' }, { v: 2, text: 'moderate (e.g. appendicectomy, cholecystectomy)' }, { v: 4, text: 'major (e.g. laparotomy, bowel resection)' }, { v: 8, text: 'major+ (e.g. aortic, AP resection, esophagogastrectomy)' }]],
   ['procedures', 'Number of procedures (within 30 days)', [{ v: 1, text: '1' }, { v: 4, text: '2' }, { v: 8, text: '> 2' }]],
   ['bloodLoss', 'Total blood loss (mL)', [{ v: 1, text: '≤ 100' }, { v: 2, text: '101–500' }, { v: 4, text: '501–999' }, { v: 8, text: '≥ 1000' }]],
   ['soiling', 'Peritoneal soiling', [{ v: 1, text: 'none' }, { v: 2, text: 'minor or serous fluid' }, { v: 4, text: 'local pus' }, { v: 8, text: 'free bowel content, pus, or blood' }]],
