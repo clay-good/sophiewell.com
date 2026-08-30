@@ -138,6 +138,21 @@ marks every field required so dispatch refuses a call that omits it. A bare libr
 surface anyone reaches. Recorded because the first pass called it a live bug on the strength of
 the library alone — the same mistake in the opposite direction from the one this spec is about.
 
+### The other forty, checked rather than assumed
+
+The remaining candidates from that list were opened in a browser and their number inputs
+cleared, because the `pecarn-head` correction above is the reason not to trust the library
+alone. Of fourteen sampled, **nine have no number input at all** — `heart`, `psi`, `mini-cog`,
+`aldrete`, `white-song`, `yos`, `rockall`, `killip`, `4at` are built from selects and
+checkboxes, which always carry a value, so a blank state is unreachable. The eight paediatric
+pain and sedation scales are the same shape.
+
+The five that do take numbers — `vis`, `ciwa`, `cows`, `hospital-score`, `charlson` — return a
+legitimate zero: no vasoactive drug running is a VIS of 0, and no withdrawal sign scored is a
+CIWA of 0. Those sit in the ambiguous middle this spec names rather than resolves: an unassessed
+patient and an unaffected one both read as 0. Changing a monitored withdrawal protocol to refuse
+on a blank item is a clinical decision, not an editorial one, and it is not made here.
+
 ### The size of what is left, measured
 
 **803** of the 1,685 exposed calculators take at least one numeric field *and* have a library
