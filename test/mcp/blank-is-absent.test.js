@@ -16,21 +16,13 @@
 // outcome is right -- a tile may legitimately answer 0 from an empty checklist -- only that a
 // blank and an absent input cannot mean different things.
 //
-// KNOWN is a ratchet. It may only shrink. Each id in it is a tile whose blank and absent paths
-// still diverge; none of them may be added to.
+// It held for every exposed calculator from spec-v930 onward. The ledger it shipped with -- 31
+// tiles that were already diverging -- was drained to zero in the same session, so there is no
+// exemption list and no id may be added to one.
 
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { allCalculators } from '../../mcp/catalog.js';
-
-// Started at 31 when the invariant was written; 12 were drained in the same change. Sorted, so
-// a diff is readable. What is left are banded scores whose libraries take an already-typed
-// number and have no missing-value guard at all -- fixing those means teaching them to refuse,
-// which changes their return shape and their renderers, and is the follow-up this list holds.
-const KNOWN = new Set([
-  'abx-renal', 'ariscat', 'bishop', 'burch-wartofsky', 'nihss', 'norepi-equiv',
-  'peds-weight-conv', 'qbl-pph',
-]);
 
 function outcome(compute, args) {
   try {
@@ -55,16 +47,10 @@ function diverging() {
   return out.sort();
 }
 
-test('spec-v930: a blank field and an absent field reach the same outcome', () => {
-  const stray = diverging().filter((id) => !KNOWN.has(id));
+test('spec-v930: a blank field and an absent field reach the same outcome, on every tile', () => {
+  const stray = diverging();
   assert.deepEqual(stray, [],
     'these tiles read an empty string as a value, so an empty form answers from nothing: '
-      + `${stray.join(', ')}. Guard the input reader -- an empty string is not a zero.`);
-});
-
-test('spec-v930: the known-diverging list only shrinks', () => {
-  const still = new Set(diverging());
-  const fixed = [...KNOWN].filter((id) => !still.has(id));
-  assert.deepEqual(fixed, [],
-    `these are no longer diverging and should be removed from KNOWN: ${fixed.join(', ')}`);
+      + `${stray.join(', ')}. Guard the input reader -- an empty string is not a zero, it is not `
+      + 'a chosen option, and it does not trigger a default parameter.');
 });

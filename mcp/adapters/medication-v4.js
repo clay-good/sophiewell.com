@@ -59,7 +59,13 @@ export default [
     id: 'abx-renal',
     summary: 'Renal antibiotic dose adjustment: the dose and interval band for the selected drug at the given creatinine clearance (reference dosing table).',
     // The drug select defaults to the first table row when not supplied.
-    compute: (a) => F.abxRenalDose({ drug: a.drug || ABX_DRUGS[0], crCl: a.crCl, table: ABX }),
+    // spec-v930: a blank creatinine clearance is not a clearance. Passing '' through produced a
+    // different nothing than passing undefined did.
+    compute: (a) => F.abxRenalDose({
+      drug: a.drug || ABX_DRUGS[0],
+      crCl: a.crCl === null || a.crCl === undefined || (typeof a.crCl !== 'number' && String(a.crCl).trim() === '') ? undefined : a.crCl,
+      table: ABX,
+    }),
     fields: [
       { dom: 'abx-drug', arg: 'drug', kind: 'enum', values: ABX_DRUGS, required: false, label: 'Antibiotic' },
       { dom: 'abx-crcl', arg: 'crCl', kind: 'number', required: true, label: 'Creatinine clearance', unit: 'mL/min' },

@@ -14,7 +14,10 @@ export default [
     summary: 'Pediatric weight conversion between pounds + ounces and kilograms, in both directions.',
     compute: (a) => {
       const out = {};
-      const hasLbOz = a.lb != null || a.oz != null;
+      // spec-v930: a blank field is not a supplied one. `!= null` lets '' through, so an empty
+      // form produced an lb/oz block of zeros while an absent one produced nothing.
+      const given = (v) => v !== null && v !== undefined && (typeof v === 'number' || String(v).trim() !== '');
+      const hasLbOz = given(a.lb) || given(a.oz);
       if (hasLbOz) {
         const lb = a.lb || 0;
         const oz = a.oz || 0;
@@ -22,14 +25,15 @@ export default [
         out.oz = oz;
         out.kg = round(lbOzToKg(lb, oz), 3);
       }
-      if (a.kg != null) {
+      if (given(a.kg)) {
         out.inputKg = a.kg;
         const r = kgToLbOz(a.kg);
         out.lbFromKg = r.lb;
         out.ozFromKg = round(r.oz, 1);
       }
-      // Nothing to convert -> incomplete input.
-      if (!hasLbOz && a.kg == null) return null;
+      // Nothing to convert -> incomplete input. spec-v930: `== null` missed a blank, so an empty
+      // form returned an empty object here instead of the same null an absent one returns.
+      if (!hasLbOz && !given(a.kg)) return null;
       return out;
     },
     fields: [

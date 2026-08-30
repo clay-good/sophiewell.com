@@ -44,49 +44,23 @@ at once. Four more had a refusal path that a blank slipped straight past:
 | `cfs` | "CFS 1 (Very fit): not frail" |
 | `bps` | "BPS 3 of 12: acceptable pain" — clamped to 1, "relaxed", the exact default its guard existed to prevent |
 
-**Ledger:** 31 → **8**. `KNOWN` may only shrink, and a second test fails if an id in it has
-been fixed and not removed. Three more went in a second pass, and they are the ones that show why the
-rest are not one-liners:
+**Ledger: 31 → 0.** It was drained in the same session and the exemption list is gone; the
+invariant now holds for every exposed calculator with no carve-outs.
 
-- **`mods`** — its six organ helpers already returned 0 for a non-finite input, so *absent* was
-  fine. `Number('')` is 0, and 0 falls off the bottom of every band, so a **blank** form scored
-  the worst value in several organs: "MODS 12 of 24: ICU mortality ~25%". Guarding the helpers
-  fixed it with no change to the return shape.
-- **`grace`** and **`oakland`** band with bare `if/else` chains and no guard at all, so an absent
-  input fell through to the **worst** band and a blank one took the **best** — `grace` returned
-  "High (>3%)" from nothing and "Low (<1%)" from an empty form; `oakland` swung across the
-  safe-discharge cutoff. Both now refuse, which meant returning `score: null` and teaching their
-  renderers not to print "GRACE null" above the prompt.
+The last eight fell into three shapes, and the last two are the ones worth remembering:
 
-Four more went the same way as `mods` — a guard that was already there, which `Number('')`
-walked straight past because 0 is finite:
-
-| Tile | A blank form used to report |
-| --- | --- |
-| `must-nutrition` | "MUST 2: high malnutrition risk; refer to dietitian" — a blank BMI scored as a BMI under 18.5 |
-| `smart-cop` | the 2-point oxygenation criterion, from a blank SpO₂ |
-| `koff-bladder-capacity` | "Expected bladder capacity 60 mL for age 0 years" |
-| `snappe-ii` | "SNAPPE-II 103/162: high illness severity" |
-
-The last two came from one helper each in `lib/peds-v140.js`. One of them had a comment reading
-*"a blank or non-finite value → lo"* while the code only handled non-finite: the intent was
-already right and the empty string was the case nobody had in mind.
-
-Four more, and two of them were not about numbers at all:
-
-| Tile | A blank form used to report | Why |
+| Shape | Tiles | The mistake |
 | --- | --- | --- |
-| `afi` | "AFI 0.0 cm: oligohydramnios (below 5 cm)" | a `Number.isFinite && >= 0` guard that 0 passes |
-| `fazekas-wmh` | "periventricular grade 0 — absent" as a reading | 0 is an integer in range |
-| `kings-college` | a verdict instead of its own complete-the-fields prompt | **a default parameter only fires when the argument is absent** — `encephalopathy = 'no'` never applied to a blank `''`, which walked past the nothing-entered guard |
-| `aom-criteria` | the criteria evaluated against an unpicked select | `typeof '' === 'string'`, so a blank option counted as a chosen one |
+| A guard that 0 passes | `afi`, `fazekas-wmh` | `Number.isFinite` / integer-in-range, both true of 0 |
+| A bare band chain | `bishop` | absent fell to the top band ("Favorable"), blank to the bottom ("Unfavorable") — now refuses, with the renderer taught not to print "Bishop: null" |
+| **A blank string is not a chosen option** | `kings-college`, `aom-criteria` | a **default parameter** fires only on `undefined`, and `typeof '' === 'string'` |
+| **A blank is not an absent argument** | `ariscat`, `burch-wartofsky`, `nihss`, `norepi-equiv`, `qbl-pph` | `?? 0` and `= 0` defaults both skip `''`, so a picker nobody touched threw while the same picker left off scored 0 |
+| A nothing that is not the other nothing | `abx-renal`, `peds-weight-conv` | `!= null` let `''` through, so an empty form returned `{}` where an absent one returned `null` |
 
-The last two are the same lesson in two forms: **a blank string is not a chosen option**, and
-neither `= 'default'` nor a `typeof === 'string'` test will catch it.
-
-What is left are the `grace`/`oakland` kind: banded scores whose libraries take an already-typed
-number, where the fix changes the return shape and its renderer. That is the follow-up this list
-holds.
+Where "nothing entered" genuinely means zero — a points picker, an infusion that is not running,
+an unscored NIHSS item — the fix makes a blank read as zero, matching what an absent field
+already did. Where it does not — a cervical exam, a discharge decision, a tuberculin test — the
+tile refuses and says what it needs.
 
 ## A reversal worth recording
 

@@ -750,7 +750,8 @@ export const renderers = {
         position: document.getElementById('bp-p').value,
       };
       const r = S4.bishop(inputs);
-      o.appendChild(el('h2', { text: `Bishop: ${r.score}` }));
+      // spec-v930: with a measurement missing there is no score, only the prompt.
+      if (r.score !== null) o.appendChild(el('h2', { text: `Bishop: ${r.score}` }));
       o.appendChild(el('p', { text: r.band }));
       if (deriv) updateDerivationSteps(deriv, META.bishop, inputs);
     });
