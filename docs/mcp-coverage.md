@@ -7982,6 +7982,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/tryptase-v894.js (spec-v894: acute tryptase rise — clinical disclaimer)
 - `tryptase`
 
+### lib/gadolinium-nsf-v895.js (spec-v895: gadolinium and NSF risk — clinical disclaimer)
+- `gadolinium-nsf`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

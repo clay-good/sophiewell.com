@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:4e4e54f0-3177-5112-8434-af0c08252367",
+  "serialNumber": "urn:uuid:b1499353-1c6d-562c-82b8-a034f60a62a2",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-30T00:43:28.538Z",
+    "timestamp": "2026-08-30T01:03:41.617Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1684 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1685 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ce36b69667b1595361f8647e8b93ea522b332cc2b6abdc4ef3880abfc673ac0a"
+          "content": "acb3105fdad43fca780d377e0c8e4dd3023e4458ac9259d533b583f6d19ef34d"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "108072"
+          "value": "108111"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1bda5e1e8dec3969456e74d791e1a0b7ec2815e947f015794c0da9667516d3ac"
+          "content": "ab475d2527523cb90895c448fba5ad496fa8b1bb556e98a9cbf192a6ea3f6dcb"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "488095"
+          "value": "488296"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "425e5524c499f964004425fdf89b6e2806482875a5527e7d5a1f56a2ea07c501"
+          "content": "1c1d8a901b6f603fae34525e2ef246e4267a4a9eadbf0e34333d08b4b00baa3d"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "258526"
+          "value": "258680"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b549f0a2c0ff212d9f5e1fce22540b233a1007d2c8467eef3b763e0a71c2ddbd"
+          "content": "39f0b472b42c4e115fc2ebf443c0ab48dc45b25ef0af985de6b79c36f2f84c9b"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "94112"
+          "value": "94155"
         }
       ]
     },
@@ -5621,6 +5621,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/gadolinium-nsf-v895.js",
+      "type": "file",
+      "name": "lib/gadolinium-nsf-v895.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "dd352002fd08b68c80c171b1efb9e5b221ee9cc78e6f64079077ad935b2fcb40"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8306"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/gags-v554.js",
       "type": "file",
       "name": "lib/gags-v554.js",
@@ -9617,7 +9638,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2fb3b834d98f5fc0b76db0620413bdd727810aad897e69c707b0b2b661084dd5"
+          "content": "ba045dbe08c4224ba464b44fc2eec2fa9e49dc40018b95c1c36d4732dadccaaf"
         }
       ],
       "properties": [
@@ -9627,7 +9648,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2382090"
+          "value": "2383965"
         }
       ]
     },
@@ -22316,6 +22337,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/gadolinium-nsf-v895.js",
+      "type": "file",
+      "name": "mcp/adapters/gadolinium-nsf-v895.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b06cd988540c35b39ab198a0aa7a3ef5724892b15fc5ec60a2be791cc0c68e1d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1555"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/gags-v554.js",
       "type": "file",
       "name": "mcp/adapters/gags-v554.js",
@@ -33263,7 +33305,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7ff817b08c3c5650fe81fdd2e5406d95ee2311d2da16e1eb8f61f62fe4017453"
+          "content": "f1fe31bfa6f82fe0b48964f3d119b4bf0998b49b595b41093fa8ac4fbb7c25ec"
         }
       ],
       "properties": [
@@ -33273,7 +33315,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "83654"
+          "value": "83767"
         }
       ]
     },
@@ -49322,6 +49364,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v895.js",
+      "type": "file",
+      "name": "views/group-v895.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4ef69be3a54003099becb708fafea40b0d4c2af2bf0e9bb8eab636fd4e4377fc"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3410"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:views/group-v9.js",
       "type": "file",
       "name": "views/group-v9.js",
@@ -65182,6 +65245,7 @@
         "urn:sophiewell:file:source:lib/function-v154.js",
         "urn:sophiewell:file:source:lib/furst-ratio-v794.js",
         "urn:sophiewell:file:source:lib/g8-geriatric-v710.js",
+        "urn:sophiewell:file:source:lib/gadolinium-nsf-v895.js",
         "urn:sophiewell:file:source:lib/gags-v554.js",
         "urn:sophiewell:file:source:lib/gapp-v569.js",
         "urn:sophiewell:file:source:lib/gaps-v185.js",
@@ -66503,6 +66567,7 @@
         "urn:sophiewell:file:source:views/group-v891.js",
         "urn:sophiewell:file:source:views/group-v892.js",
         "urn:sophiewell:file:source:views/group-v894.js",
+        "urn:sophiewell:file:source:views/group-v895.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
@@ -66745,6 +66810,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/function-v154.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/furst-ratio-v794.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/g8-geriatric-v710.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/gadolinium-nsf-v895.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/gags-v554.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/gapp-v569.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/gaps-v185.js",
@@ -67369,7 +67435,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "4e4e54f031773112"
+      "value": "b14993531c6dd62c"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -67381,7 +67447,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2328"
+      "value": "2331"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

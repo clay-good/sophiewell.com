@@ -715,6 +715,7 @@ import * as methacholineV890 from '../../lib/methacholine-v890.js';
 import * as pefZonesV891 from '../../lib/pef-zones-v891.js';
 import * as lvpAlbuminV892 from '../../lib/lvp-albumin-v892.js';
 import * as tryptaseV894 from '../../lib/tryptase-v894.js';
+import * as gadoliniumNsfV895 from '../../lib/gadolinium-nsf-v895.js';
 import * as sadPersonsV701 from '../../lib/sad-persons-v701.js';
 import * as edinburghClaudicationV702 from '../../lib/edinburgh-claudication-v702.js';
 import * as reimersMigrationPercentageV703 from '../../lib/reimers-migration-percentage-v703.js';
@@ -1475,6 +1476,7 @@ const MODULES = {
   'pef-zones-v891.js': pefZonesV891,
   'lvp-albumin-v892.js': lvpAlbuminV892,
   'tryptase-v894.js': tryptaseV894,
+  'gadolinium-nsf-v895.js': gadoliniumNsfV895,
   'sad-persons-v701.js': sadPersonsV701,
   'edinburgh-claudication-v702.js': edinburghClaudicationV702,
   'reimers-migration-percentage-v703.js': reimersMigrationPercentageV703,

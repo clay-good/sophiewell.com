@@ -773,6 +773,7 @@ const PROBES = [
   ['peak flow green yellow red zone asthma action plan', ['pef-zones']],
   ['albumin after large volume paracentesis grams per litre', ['lvp-albumin']],
   ['acute tryptase rise baseline mast cell activation', ['tryptase']],
+  ['gadolinium nephrogenic systemic fibrosis group ii low egfr', ['gadolinium-nsf']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],
