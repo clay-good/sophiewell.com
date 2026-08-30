@@ -8021,6 +8021,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/hys-law-v908.js (spec-v908: Hy's Law for drug-induced liver injury — clinical disclaimer)
 - `hys-law`
 
+### lib/udca-response-v909.js (spec-v909: ursodeoxycholic acid response criteria — clinical disclaimer)
+- `udca-response`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
