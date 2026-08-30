@@ -30,6 +30,27 @@ function loadEntries() {
   return doc;
 }
 
+// spec-v904: the file has exactly one read shape. `loadSynonyms()` in
+// lib/synonyms.js and `loadSynonymEntries()` in mcp/tools.js both read
+// `doc.entries` and nothing else, so a top-level `"<tile-id>": [ ...phrases ]`
+// block is invisible to the browser prompt bar AND to find_calculator. Ninety-
+// three of them had accumulated, carrying 434 phrases that nothing read, and
+// every existing test iterated `doc.entries` and so never saw them.
+//
+// This is the guard that would have caught it: the document has three keys and
+// no others. If a phrase batch is added, it goes in `entries`.
+test('synonyms.json: the document has no keys outside version, note and entries', () => {
+  const doc = loadEntries();
+  const allowed = new Set(['version', 'note', 'entries']);
+  const stray = Object.keys(doc).filter((k) => !allowed.has(k));
+  assert.deepEqual(
+    stray,
+    [],
+    `synonyms.json keys outside {version, note, entries} are read by nothing -- `
+      + `move these phrase blocks into entries as { phrases, tile, audience } rows: ${stray.join(', ')}`,
+  );
+});
+
 test('synonyms.json: phrases are lowercase and unique across the whole table', () => {
   const { entries } = loadEntries();
   assert.ok(entries.length >= 40, 'expected the expanded v8 table');

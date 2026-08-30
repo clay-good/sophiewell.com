@@ -62,6 +62,16 @@ mean"`) and predate this change. They are **left alone and recorded here**: the 
 reword them the same way or to give `find_calculator` the browser's synonym precedence on the raw
 query, and neither belongs in a change whose subject is the file's shape.
 
+## The guard
+
+`test/unit/synonyms-catalog.test.js` now asserts the document has **no keys outside `version`,
+`note` and `entries`**, with a failure message that names the stray keys and says where the
+phrases belong. That is the check that would have caught this on the first tile that introduced
+the wrong shape, and it is the reason it cannot come back one tile at a time.
+
+Verified in both directions: it passes on the fixed file, and reintroducing a single top-level
+block fails it with the naming message.
+
 ## Posture
 
 No catalog change, no code change. One data file, reshaped so that what was already written is
