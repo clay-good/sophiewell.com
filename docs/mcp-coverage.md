@@ -7976,6 +7976,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/pef-zones-v891.js (spec-v891: peak flow action-plan zones — clinical disclaimer)
 - `pef-zones`
 
+### lib/lvp-albumin-v892.js (spec-v892: post-paracentesis albumin — clinical disclaimer)
+- `lvp-albumin`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
