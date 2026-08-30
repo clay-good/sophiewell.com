@@ -8030,6 +8030,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/cgvhd-severity-v911.js (spec-v911: chronic GVHD global severity, NIH 2014 — clinical disclaimer)
 - `cgvhd-severity`
 
+### lib/nichd-fhr-v912.js (spec-v912: NICHD fetal heart rate categories — clinical disclaimer)
+- `nichd-fhr`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
