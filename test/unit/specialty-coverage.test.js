@@ -33,10 +33,15 @@ const ALLOWED_SPECIALTIES = new Set([
   'nursing-preop', 'nursing-procedural', 'nursing-rehab', 'nursing-tele',
   'nursing-transport',
   'nutrition', 'obstetrics', 'obstetrics-gynecology', 'occupational-therapy',
-  'oncology', 'orthopedics', 'pain-management', 'pain-medicine', 'palliative',
+  // spec-v935: 'pain-management', 'palliative' and 'pediatric-emergency-medicine' were removed.
+  // Each was a synonym of a term already here, and a closed vocabulary that admits both halves
+  // of a synonym pair SPLITS the filter it exists to serve -- list_calculators?specialty=
+  // palliative-care returned 21 and silently missed the 5 tagged 'palliative'. Merged into the
+  // more-used and more standard name of each pair.
+  'oncology', 'orthopedics', 'pain-medicine',
   'palliative-care', 'paramedicine', 'pathology', 'burn-surgery',
   'pediatric-cardiology', 'pediatric-critical-care', 'pediatric-emergency',
-  'pediatric-emergency-medicine', 'pediatric-nephrology', 'pediatric-orthopedics',
+  'pediatric-nephrology', 'pediatric-orthopedics',
   'pediatric-surgery',
   'pediatrics', 'perfusion', 'periop', 'pharmacy',
   'physical-medicine-rehabilitation',
