@@ -331,7 +331,9 @@ export const renderers = {
         cardiacArrestAdmission: checked('gr-arrest'),
         stDeviation: checked('gr-st'), abnormalEnzymes: checked('gr-enz'),
       });
-      o.appendChild(el('h2', { text: `GRACE ${r.score}` }));
+      // spec-v930: with a value missing the score is null and the band is a prompt. Printing
+      // "GRACE null" above it would be worse than printing nothing.
+      if (r.score !== null) o.appendChild(el('h2', { text: `GRACE ${r.score}` }));
       o.appendChild(el('p', { text: r.band }));
     });
     ['gr-age', 'gr-hr', 'gr-sbp', 'gr-cr', 'gr-killip', 'gr-arrest', 'gr-st', 'gr-enz']
@@ -1454,11 +1456,15 @@ export const renderers = {
         hgbGdl: nv('ok-hgb'),
       };
       const r = S4.oakland(inputs);
-      o.appendChild(el('h2', { text: `Oakland ${r.score}` }));
+      // spec-v930: with a value missing there is no score and no per-parameter breakdown, only
+      // the prompt. Printing "Oakland null" above it would be worse than printing nothing.
+      if (r.score !== null) o.appendChild(el('h2', { text: `Oakland ${r.score}` }));
       o.appendChild(el('p', { text: r.band }));
       const p = r.parts;
-      o.appendChild(el('p', { class: 'muted',
-        text: `Per-parameter: age ${p.age}, sex ${p.sex}, prior LGIB ${p.priorLgibAdmission}, DRE blood ${p.dreBlood}, HR ${p.hr}, SBP ${p.sbp}, hemoglobin ${p.hgb}.` }));
+      if (p) {
+        o.appendChild(el('p', { class: 'muted',
+          text: `Per-parameter: age ${p.age}, sex ${p.sex}, prior LGIB ${p.priorLgibAdmission}, DRE blood ${p.dreBlood}, HR ${p.hr}, SBP ${p.sbp}, hemoglobin ${p.hgb}.` }));
+      }
       if (deriv) updateDerivationSteps(deriv, META.oakland, inputs);
       renderHgbTrend(o, 'ok-hgbtrend', nv('ok-hgb'));
     });

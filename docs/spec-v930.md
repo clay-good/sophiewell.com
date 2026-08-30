@@ -44,10 +44,23 @@ at once. Four more had a refusal path that a blank slipped straight past:
 | `cfs` | "CFS 1 (Very fit): not frail" |
 | `bps` | "BPS 3 of 12: acceptable pain" — clamped to 1, "relaxed", the exact default its guard existed to prevent |
 
-**Ledger:** 31 → **19**. `KNOWN` may only shrink, and a second test fails if an id in it has
-been fixed and not removed. What is left are banded scores whose libraries take an already-typed
-number and have no missing-value guard at all; fixing those changes their return shape and their
-renderers, and is the follow-up this list holds.
+**Ledger:** 31 → **16**. `KNOWN` may only shrink, and a second test fails if an id in it has
+been fixed and not removed. Three more went in a second pass, and they are the ones that show why the
+rest are not one-liners:
+
+- **`mods`** — its six organ helpers already returned 0 for a non-finite input, so *absent* was
+  fine. `Number('')` is 0, and 0 falls off the bottom of every band, so a **blank** form scored
+  the worst value in several organs: "MODS 12 of 24: ICU mortality ~25%". Guarding the helpers
+  fixed it with no change to the return shape.
+- **`grace`** and **`oakland`** band with bare `if/else` chains and no guard at all, so an absent
+  input fell through to the **worst** band and a blank one took the **best** — `grace` returned
+  "High (>3%)" from nothing and "Low (<1%)" from an empty form; `oakland` swung across the
+  safe-discharge cutoff. Both now refuse, which meant returning `score: null` and teaching their
+  renderers not to print "GRACE null" above the prompt.
+
+What is left are more of that second kind: banded scores whose libraries take an already-typed
+number, where the fix changes the return shape and its renderer. That is the follow-up this list
+holds.
 
 ## A reversal worth recording
 
