@@ -8060,6 +8060,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/bland-altman-v924.js (spec-v924: Bland-Altman limits of agreement — clinical disclaimer)
 - `bland-altman`
 
+### lib/delta-check-v925.js (spec-v925: delta check — clinical disclaimer)
+- `delta-check`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
