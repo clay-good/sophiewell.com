@@ -742,6 +742,7 @@ import skinTearV900 from './adapters/skin-tear-v900.js';
 import iadGlobiadV901 from './adapters/iad-globiad-v901.js';
 import marsiV902 from './adapters/marsi-v902.js';
 import cuffLeakV903 from './adapters/cuff-leak-v903.js';
+import dkaResolutionV905 from './adapters/dka-resolution-v905.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
 import reimersMigrationPercentageV703 from './adapters/reimers-migration-percentage-v703.js';
@@ -1510,6 +1511,7 @@ const ADAPTER_MODULES = [
   ['iad-globiad-v901', iadGlobiadV901],
   ['marsi-v902', marsiV902],
   ['cuff-leak-v903', cuffLeakV903],
+  ['dka-resolution-v905', dkaResolutionV905],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],
   ['reimers-migration-percentage-v703', reimersMigrationPercentageV703],

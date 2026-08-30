@@ -7303,6 +7303,17 @@
       ],
       "tile": "cuff-leak",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "dka resolution criteria",
+        "when is dka resolved",
+        "can i stop the insulin drip",
+        "anion gap closed dka",
+        "dka recovery endpoint"
+      ],
+      "tile": "dka-resolution",
+      "audience": "clinicians"
     }
   ]
 }

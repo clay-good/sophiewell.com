@@ -724,6 +724,7 @@ import * as skinTearV900 from '../../lib/skin-tear-v900.js';
 import * as iadGlobiadV901 from '../../lib/iad-globiad-v901.js';
 import * as marsiV902 from '../../lib/marsi-v902.js';
 import * as cuffLeakV903 from '../../lib/cuff-leak-v903.js';
+import * as dkaResolutionV905 from '../../lib/dka-resolution-v905.js';
 import * as sadPersonsV701 from '../../lib/sad-persons-v701.js';
 import * as edinburghClaudicationV702 from '../../lib/edinburgh-claudication-v702.js';
 import * as reimersMigrationPercentageV703 from '../../lib/reimers-migration-percentage-v703.js';
@@ -1493,6 +1494,7 @@ const MODULES = {
   'iad-globiad-v901.js': iadGlobiadV901,
   'marsi-v902.js': marsiV902,
   'cuff-leak-v903.js': cuffLeakV903,
+  'dka-resolution-v905.js': dkaResolutionV905,
   'sad-persons-v701.js': sadPersonsV701,
   'edinburgh-claudication-v702.js': edinburghClaudicationV702,
   'reimers-migration-percentage-v703.js': reimersMigrationPercentageV703,

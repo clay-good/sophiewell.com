@@ -782,6 +782,7 @@ const PROBES = [
   ['incontinence associated dermatitis globiad category', ['iad-globiad']],
   ['medical adhesive related skin injury marsi tape damage', ['marsi']],
   ['cuff leak test before extubation stridor volume', ['cuff-leak']],
+  ['dka resolution criteria anion gap bicarbonate', ['dka-resolution']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],

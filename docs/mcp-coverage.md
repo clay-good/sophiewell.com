@@ -8009,6 +8009,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/cuff-leak-v903.js (spec-v903: cuff leak test — clinical disclaimer)
 - `cuff-leak`
 
+### lib/dka-resolution-v905.js (spec-v905: DKA resolution criteria — clinical disclaimer)
+- `dka-resolution`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
