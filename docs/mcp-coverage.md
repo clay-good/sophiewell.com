@@ -8039,6 +8039,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/who-surgical-checklist-v917.js (spec-v917: WHO Surgical Safety Checklist phases — administrative disclaimer)
 - `who-surgical-checklist`
 
+### lib/fmea-rpn-v918.js (spec-v918: FMEA risk priority number — administrative disclaimer)
+- `fmea-rpn`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

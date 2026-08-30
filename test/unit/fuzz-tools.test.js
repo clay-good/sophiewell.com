@@ -734,6 +734,7 @@ import * as cgvhdSeverityV911 from '../../lib/cgvhd-severity-v911.js';
 import * as nichdFhrV912 from '../../lib/nichd-fhr-v912.js';
 import * as ipassHandoffV916 from '../../lib/ipass-handoff-v916.js';
 import * as whoSurgicalChecklistV917 from '../../lib/who-surgical-checklist-v917.js';
+import * as fmeaRpnV918 from '../../lib/fmea-rpn-v918.js';
 import * as sadPersonsV701 from '../../lib/sad-persons-v701.js';
 import * as edinburghClaudicationV702 from '../../lib/edinburgh-claudication-v702.js';
 import * as reimersMigrationPercentageV703 from '../../lib/reimers-migration-percentage-v703.js';
@@ -1513,6 +1514,7 @@ const MODULES = {
   'nichd-fhr-v912.js': nichdFhrV912,
   'ipass-handoff-v916.js': ipassHandoffV916,
   'who-surgical-checklist-v917.js': whoSurgicalChecklistV917,
+  'fmea-rpn-v918.js': fmeaRpnV918,
   'sad-persons-v701.js': sadPersonsV701,
   'edinburgh-claudication-v702.js': edinburghClaudicationV702,
   'reimers-migration-percentage-v703.js': reimersMigrationPercentageV703,

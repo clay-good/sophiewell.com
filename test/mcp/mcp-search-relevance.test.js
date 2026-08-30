@@ -792,6 +792,7 @@ const PROBES = [
   ['fetal heart rate tracing category two', ['nichd-fhr']],
   ['i pass handoff structure', ['ipass-handoff']],
   ['who surgical safety checklist sign out', ['who-surgical-checklist']],
+  ['fmea risk priority number', ['fmea-rpn']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],
