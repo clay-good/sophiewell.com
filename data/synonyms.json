@@ -6928,5 +6928,12 @@
     "skin stripping from dressing",
     "marsi category",
     "adhesive removal skin injury"
+  ],
+  "cuff-leak": [
+    "cuff leak test",
+    "post extubation stridor risk",
+    "leak volume before extubation",
+    "should i extubate with a small cuff leak",
+    "laryngeal edema test"
   ]
 }

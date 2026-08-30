@@ -8006,6 +8006,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/marsi-v902.js (spec-v902: medical adhesive-related skin injury — clinical disclaimer)
 - `marsi`
 
+### lib/cuff-leak-v903.js (spec-v903: cuff leak test — clinical disclaimer)
+- `cuff-leak`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

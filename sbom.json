@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:cdc65a98-0ab1-5ca5-85ea-84ea9a0922a9",
+  "serialNumber": "urn:uuid:26e5cb09-44e1-53a1-8a6e-461a8cd0dad1",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-30T03:55:39.249Z",
+    "timestamp": "2026-08-30T04:04:39.281Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1692 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1693 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "402d9135d369b45e2742f8a8616a354d9186ad6a98729a505cb8fc672eee1823"
+          "content": "ef689cf444aff44a1d464929db6b98fedf7766b04c7bc71b45c8fe75790015e0"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "108488"
+          "value": "108518"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1ae66f1bc720ee8119a6f65754182efc456720036d77bf2d310b59906242c12b"
+          "content": "83b1a17d48787478da4ebd4e367d609ec66e311a1c4ae5fb3369844eba886ea6"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "489790"
+          "value": "489977"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8ceadf555a2544dfd79302780536df6bced46e4582962a790b9f6069fee6619a"
+          "content": "03d95f22bd3609d81ccb8f52230c8372d7c31f8c34451eb1de39e521b83f9d08"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "259741"
+          "value": "259890"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d53259356e2d9cc8378b136da8a44a2ce8fabedde93b6e437fdef060f49d8487"
+          "content": "89e6f7cace3de69e0d96e0523f938a411abeb8a2859f99f250f17f7c2a577f62"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "94543"
+          "value": "94572"
         }
       ]
     },
@@ -3538,6 +3538,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3589"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/cuff-leak-v903.js",
+      "type": "file",
+      "name": "lib/cuff-leak-v903.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cf0d0afa2741c0d26f357fe35a05cfd0092146f4282d32e3d331b3adad04faa"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7823"
         }
       ]
     },
@@ -9701,7 +9722,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2c5ac9881bcca6af59ecfe2469c1f43499429a06ef3c5c7cc4749c777ccf1046"
+          "content": "7e573d1fccfca424a6cac5c676fe72403d8afcd578b153defb6e4e906eda0692"
         }
       ],
       "properties": [
@@ -9711,7 +9732,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2396672"
+          "value": "2398509"
         }
       ]
     },
@@ -20548,6 +20569,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1485"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/cuff-leak-v903.js",
+      "type": "file",
+      "name": "mcp/adapters/cuff-leak-v903.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ab0cf5d150e9078f2c0a381b86d094b660878dcc1dcbf10aad33bfc8b93ed0a1"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1742"
         }
       ]
     },
@@ -33599,7 +33641,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0b853ac46d7d259fe4679d55f9cda4270c6594775c434775eeecc6728277c966"
+          "content": "066158f7662adf52044adc7242276f98c3d56bb7f9f8269195e6e5f5484abcdc"
         }
       ],
       "properties": [
@@ -33609,7 +33651,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "84490"
+          "value": "84583"
         }
       ]
     },
@@ -49847,6 +49889,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v903.js",
+      "type": "file",
+      "name": "views/group-v903.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b0e910f9a2680542820454203fdbae3f772c6b1fcfff99561a5c742b9c76e9dd"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3072"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:views/pa-lint.js",
       "type": "file",
       "name": "views/pa-lint.js",
@@ -65587,6 +65650,7 @@
         "urn:sophiewell:file:source:lib/crowe-ddh-v353.js",
         "urn:sophiewell:file:source:lib/crs-v305.js",
         "urn:sophiewell:file:source:lib/cts6-v773.js",
+        "urn:sophiewell:file:source:lib/cuff-leak-v903.js",
         "urn:sophiewell:file:source:lib/cvrisk-engines-v202.js",
         "urn:sophiewell:file:source:lib/cvrisk-v103.js",
         "urn:sophiewell:file:source:lib/data.js",
@@ -67024,6 +67088,7 @@
         "urn:sophiewell:file:source:views/group-v900.js",
         "urn:sophiewell:file:source:views/group-v901.js",
         "urn:sophiewell:file:source:views/group-v902.js",
+        "urn:sophiewell:file:source:views/group-v903.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
     },
@@ -67173,6 +67238,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/crowe-ddh-v353.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/crs-v305.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cts6-v773.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/cuff-leak-v903.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cvrisk-engines-v202.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cvrisk-v103.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/deauville-v314.js",
@@ -67897,7 +67963,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "cdc65a980ab17ca5"
+      "value": "26e5cb0944e1b3a1"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -67909,7 +67975,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2352"
+      "value": "2355"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
