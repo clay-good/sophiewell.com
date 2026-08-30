@@ -7991,6 +7991,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/preop-fasting-v897.js (spec-v897: preoperative fasting intervals — clinical disclaimer)
 - `preop-fasting`
 
+### lib/pci-surgery-timing-v898.js (spec-v898: surgery timing after coronary stenting — clinical disclaimer)
+- `pci-surgery-timing`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

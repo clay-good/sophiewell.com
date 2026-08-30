@@ -6893,5 +6893,12 @@
     "how long clear liquids before surgery",
     "asa fasting guideline hours",
     "can this patient drink before anesthesia"
+  ],
+  "pci-surgery-timing": [
+    "surgery after stent timing",
+    "how long after a drug eluting stent",
+    "elective surgery delay after pci",
+    "bare metal stent 30 days surgery",
+    "stent thrombosis noncardiac surgery"
   ]
 }

@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:181fb825-5e58-57e6-89d0-b8475ebd21cd",
+  "serialNumber": "urn:uuid:78414dab-5312-59d9-8f30-7332622a401b",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-30T01:30:07.142Z",
+    "timestamp": "2026-08-30T01:40:45.637Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1687 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1688 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2a2d5b1ab0d314e222290232a87f162f1285e16efff111fd5f1ef2df71bd49e9"
+          "content": "114bba20603fc579d47b5dd3756c8e26a6413150cf3dc5eda89de5820dfea86e"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "108215"
+          "value": "108269"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "47cb94a632c78ab30e3a58814082aa0607af841a9f81075fe6ae5137654d8ff7"
+          "content": "71f6e2c1fb724fa82fb772243bba1acf54733b811f78ae528670d40797ee94ba"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "488719"
+          "value": "488939"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "46fb16def5023817e7654024e2e4647ed9fae30ccc2037b9b57e4c50ea2f6569"
+          "content": "c550dd179690862496681bc7ce75168bf5cb388ab58c5989b013c5a61eccfa54"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "258983"
+          "value": "259141"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "fad09df21d371dc892e74359b951c63b33c6c690f280907c0c5d0f2833d82b8d"
+          "content": "a11a832e1cecc7edb78b38743ed1fef5983ac189666aa331403258e689d5d929"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "94262"
+          "value": "94324"
         }
       ]
     },
@@ -9659,7 +9659,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "59e5789a6380964dbd2375526412c60aa1f474327d23d301d98093e1b754d76a"
+          "content": "15111e80be96efe5fd25106ca7d339d71ed563f422af0f77f7e90af3c812dcab"
         }
       ],
       "properties": [
@@ -9669,7 +9669,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2387530"
+          "value": "2389289"
         }
       ]
     },
@@ -12211,6 +12211,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "12145"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/pci-surgery-timing-v898.js",
+      "type": "file",
+      "name": "lib/pci-surgery-timing-v898.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "90b739b591d012a621a3e8d41682371eb7d27c1cc2069239c573938348d72767"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7874"
         }
       ]
     },
@@ -28427,6 +28448,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/pci-surgery-timing-v898.js",
+      "type": "file",
+      "name": "mcp/adapters/pci-surgery-timing-v898.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5a94457d89eb607b900d137e735027edf230f36ecfa34c27f1ce100471cee92e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1704"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/pederson-difficulty-v717.js",
       "type": "file",
       "name": "mcp/adapters/pederson-difficulty-v717.js",
@@ -33389,7 +33431,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "76437e390f2037edb761e34c677e349c51f95c79d7f42df1ba579c6b8e6d0b7c"
+          "content": "1b1d8fe14fb4851659da0ec2fa82510626c8e14cbbd3b8721930b1d0fad595a3"
         }
       ],
       "properties": [
@@ -33399,7 +33441,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "83973"
+          "value": "84100"
         }
       ]
     },
@@ -49507,6 +49549,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3458"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v898.js",
+      "type": "file",
+      "name": "views/group-v898.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "da1d5f1004a37f849f1a5214dcb52569667d43b42870ceb582995000da264ca9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3767"
         }
       ]
     },
@@ -65685,6 +65748,7 @@
         "urn:sophiewell:file:source:lib/pauwels-femoral-neck-v374.js",
         "urn:sophiewell:file:source:lib/pc-ptsd5-v521.js",
         "urn:sophiewell:file:source:lib/pcdai-v522.js",
+        "urn:sophiewell:file:source:lib/pci-surgery-timing-v898.js",
         "urn:sophiewell:file:source:lib/pederson-difficulty-v717.js",
         "urn:sophiewell:file:source:lib/pediatric-acute-v262.js",
         "urn:sophiewell:file:source:lib/pedis-v613.js",
@@ -66698,6 +66762,7 @@
         "urn:sophiewell:file:source:views/group-v895.js",
         "urn:sophiewell:file:source:views/group-v896.js",
         "urn:sophiewell:file:source:views/group-v897.js",
+        "urn:sophiewell:file:source:views/group-v898.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
@@ -67228,6 +67293,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/pauwels-femoral-neck-v374.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pc-ptsd5-v521.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pcdai-v522.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/pci-surgery-timing-v898.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pederson-difficulty-v717.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pediatric-acute-v262.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pedis-v613.js",
@@ -67567,7 +67633,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "181fb8255e5867e6"
+      "value": "78414dab5312b9d9"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -67579,7 +67645,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2337"
+      "value": "2340"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
