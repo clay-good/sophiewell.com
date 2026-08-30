@@ -8051,6 +8051,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/sigma-metric-v921.js (spec-v921: sigma metric — clinical disclaimer)
 - `sigma-metric`
 
+### lib/cohens-kappa-v922.js (spec-v922: Cohen's kappa — clinical disclaimer)
+- `cohens-kappa`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

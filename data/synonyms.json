@@ -1,5 +1,5 @@
 {
-  "version": "v242-2026-08-30",
+  "version": "v243-2026-08-30",
   "note": "spec-v7 section 3.2: hand-curated patient-phrasing -> tile id table. Each entry maps patient-mental-model phrases (and, from the v8/v9 plain-language-search batches, clinical abbreviations, eponym aliases, and canonical-intent phrases) to a single existing tile. Audience is the primary audience the entry serves; the matcher deprioritizes (does not hide) entries when the user has selected a different chip. Every phrase is lowercase; every tile id is an existing catalog tile (guarded by test/unit/synonyms-catalog.test.js). Adding a new phrase is a one-line PR.",
   "entries": [
     {
@@ -7451,6 +7451,17 @@
         "total allowable error bias cv"
       ],
       "tile": "sigma-metric",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "cohens kappa",
+        "inter rater agreement",
+        "agreement beyond chance",
+        "kappa paradox",
+        "do two reviewers agree"
+      ],
+      "tile": "cohens-kappa",
       "audience": "clinicians"
     }
   ]
