@@ -717,6 +717,7 @@ import * as lvpAlbuminV892 from '../../lib/lvp-albumin-v892.js';
 import * as tryptaseV894 from '../../lib/tryptase-v894.js';
 import * as gadoliniumNsfV895 from '../../lib/gadolinium-nsf-v895.js';
 import * as lastLipidV896 from '../../lib/last-lipid-v896.js';
+import * as preopFastingV897 from '../../lib/preop-fasting-v897.js';
 import * as sadPersonsV701 from '../../lib/sad-persons-v701.js';
 import * as edinburghClaudicationV702 from '../../lib/edinburgh-claudication-v702.js';
 import * as reimersMigrationPercentageV703 from '../../lib/reimers-migration-percentage-v703.js';
@@ -1479,6 +1480,7 @@ const MODULES = {
   'tryptase-v894.js': tryptaseV894,
   'gadolinium-nsf-v895.js': gadoliniumNsfV895,
   'last-lipid-v896.js': lastLipidV896,
+  'preop-fasting-v897.js': preopFastingV897,
   'sad-persons-v701.js': sadPersonsV701,
   'edinburgh-claudication-v702.js': edinburghClaudicationV702,
   'reimers-migration-percentage-v703.js': reimersMigrationPercentageV703,

@@ -7988,6 +7988,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/last-lipid-v896.js (spec-v896: lipid rescue for local anesthetic toxicity — clinical disclaimer)
 - `last-lipid`
 
+### lib/preop-fasting-v897.js (spec-v897: preoperative fasting intervals — clinical disclaimer)
+- `preop-fasting`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
