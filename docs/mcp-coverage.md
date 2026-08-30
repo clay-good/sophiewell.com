@@ -8012,6 +8012,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/dka-resolution-v905.js (spec-v905: DKA resolution criteria — clinical disclaimer)
 - `dka-resolution`
 
+### lib/taco-trali-v906.js (spec-v906: TACO vs TRALI — clinical disclaimer)
+- `taco-trali`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

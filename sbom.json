@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:e2a6badf-74aa-5542-88e1-04f787847f13",
+  "serialNumber": "urn:uuid:b46a6e8f-f193-562c-8890-d8f0ecf0719a",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-30T06:12:10.946Z",
+    "timestamp": "2026-08-30T06:31:10.279Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1694 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1695 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a1696a420a63f128c4e40149f758c7fd9af652f374ca627b0783c05334678433"
+          "content": "5e6b380fbf2b5c9e31b53a39ce122bd0b0d43982a5f10cbafc2b45c8882a2f15"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "108557"
+          "value": "108586"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "07c38e056fbbf3ae525f3dd300ea1d93ee142a3616023498b8ccc44f8ae85bd3"
+          "content": "73e64dae6d7e50be29555cf9bddc46ff964ffee6eceff3cec13cc74e4744ec0a"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "490178"
+          "value": "490365"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "16564d51f86e16d37e3ba1da2102607997c4b2468c34e2c107765cb82e1e9d4d"
+          "content": "bbd78786761b322d8047c31e484b01fbf15a624b3046650a7802d90ea6aafd1a"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "260044"
+          "value": "260194"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "94a4b0da84bc27c101d2246426e19bd087aa84a87a7b6d6b30b27e1f31668798"
+          "content": "bdfb988a023843ade7f0cb0e4e2cfdfc6c791343f01ca52a6b2cbd597c76d1ab"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "94615"
+          "value": "94644"
         }
       ]
     },
@@ -9743,7 +9743,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7338a6a1f5d2748041565c853d9ecf6e9fe7a2031af34367749bb46381d3d2a6"
+          "content": "f31d82e3e8f4153db20469b13feb0f22cf277cfa9c2623763751ded04e332ff0"
         }
       ],
       "properties": [
@@ -9753,7 +9753,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2400377"
+          "value": "2402345"
         }
       ]
     },
@@ -16054,6 +16054,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "5372"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/taco-trali-v906.js",
+      "type": "file",
+      "name": "lib/taco-trali-v906.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "61d4684d02f080f6956e63ae326a8837d0dcba1e2b48ebb7a09e598ae587416d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8467"
         }
       ]
     },
@@ -32207,6 +32228,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/taco-trali-v906.js",
+      "type": "file",
+      "name": "mcp/adapters/taco-trali-v906.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c43eb0309f98356d84da0a6fdffa74ed6d642ef7e3fd495f75e43285a728954c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3225"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/takayasu-v638.js",
       "type": "file",
       "name": "mcp/adapters/takayasu-v638.js",
@@ -33683,7 +33725,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b8da9a00e9cbb7f3f8849417de9339e158888177c762321b989e51f6100403a1"
+          "content": "67d28d431602b5e1feba3c94840aac2d563f395e02df2cac524da36801784d4f"
         }
       ],
       "properties": [
@@ -33693,7 +33735,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "84696"
+          "value": "84793"
         }
       ]
     },
@@ -49969,6 +50011,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2911"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v906.js",
+      "type": "file",
+      "name": "views/group-v906.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6da85f6499db1e29c2e1b407d54df3cdee6b6ab9c8ba4b1a0a97e4700af73c2a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3125"
         }
       ]
     },
@@ -66309,6 +66372,7 @@
         "urn:sophiewell:file:source:lib/synonyms.js",
         "urn:sophiewell:file:source:lib/systemic-mastocytosis-v813.js",
         "urn:sophiewell:file:source:lib/table.js",
+        "urn:sophiewell:file:source:lib/taco-trali-v906.js",
         "urn:sophiewell:file:source:lib/takayasu-v638.js",
         "urn:sophiewell:file:source:lib/tanner-staging-v361.js",
         "urn:sophiewell:file:source:lib/tb-testing.js",
@@ -67154,6 +67218,7 @@
         "urn:sophiewell:file:source:views/group-v902.js",
         "urn:sophiewell:file:source:views/group-v903.js",
         "urn:sophiewell:file:source:views/group-v905.js",
+        "urn:sophiewell:file:source:views/group-v906.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
     },
@@ -67856,6 +67921,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/sunnybrook-facial-v509.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/surg-v142.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/systemic-mastocytosis-v813.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/taco-trali-v906.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/takayasu-v638.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tanner-staging-v361.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tb-testing.js",
@@ -68029,7 +68095,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "e2a6badf74aa4542"
+      "value": "b46a6e8ff193a62c"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -68041,7 +68107,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2358"
+      "value": "2361"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

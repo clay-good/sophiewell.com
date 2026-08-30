@@ -7314,6 +7314,17 @@
       ],
       "tile": "dka-resolution",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "taco or trali",
+        "transfusion reaction shortness of breath",
+        "circulatory overload versus lung injury",
+        "post transfusion hypoxemia",
+        "is this fluid overload from blood"
+      ],
+      "tile": "taco-trali",
+      "audience": "clinicians"
     }
   ]
 }
