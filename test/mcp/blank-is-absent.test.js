@@ -28,8 +28,8 @@ import { allCalculators } from '../../mcp/catalog.js';
 // number and have no missing-value guard at all -- fixing those means teaching them to refuse,
 // which changes their return shape and their renderers, and is the follow-up this list holds.
 const KNOWN = new Set([
-  'abx-renal', 'afi', 'aom-criteria', 'ariscat', 'bishop', 'burch-wartofsky', 'fazekas-wmh',
-  'kings-college', 'nihss', 'norepi-equiv', 'peds-weight-conv', 'qbl-pph',
+  'abx-renal', 'ariscat', 'bishop', 'burch-wartofsky', 'nihss', 'norepi-equiv',
+  'peds-weight-conv', 'qbl-pph',
 ]);
 
 function outcome(compute, args) {

@@ -44,7 +44,7 @@ at once. Four more had a refusal path that a blank slipped straight past:
 | `cfs` | "CFS 1 (Very fit): not frail" |
 | `bps` | "BPS 3 of 12: acceptable pain" — clamped to 1, "relaxed", the exact default its guard existed to prevent |
 
-**Ledger:** 31 → **12**. `KNOWN` may only shrink, and a second test fails if an id in it has
+**Ledger:** 31 → **8**. `KNOWN` may only shrink, and a second test fails if an id in it has
 been fixed and not removed. Three more went in a second pass, and they are the ones that show why the
 rest are not one-liners:
 
@@ -72,9 +72,21 @@ The last two came from one helper each in `lib/peds-v140.js`. One of them had a 
 *"a blank or non-finite value → lo"* while the code only handled non-finite: the intent was
 already right and the empty string was the case nobody had in mind.
 
-What is left are more of the `grace`/`oakland` kind: banded scores whose libraries take an
-already-typed number, where the fix changes the return shape and its renderer. That is the
-follow-up this list holds.
+Four more, and two of them were not about numbers at all:
+
+| Tile | A blank form used to report | Why |
+| --- | --- | --- |
+| `afi` | "AFI 0.0 cm: oligohydramnios (below 5 cm)" | a `Number.isFinite && >= 0` guard that 0 passes |
+| `fazekas-wmh` | "periventricular grade 0 — absent" as a reading | 0 is an integer in range |
+| `kings-college` | a verdict instead of its own complete-the-fields prompt | **a default parameter only fires when the argument is absent** — `encephalopathy = 'no'` never applied to a blank `''`, which walked past the nothing-entered guard |
+| `aom-criteria` | the criteria evaluated against an unpicked select | `typeof '' === 'string'`, so a blank option counted as a chosen one |
+
+The last two are the same lesson in two forms: **a blank string is not a chosen option**, and
+neither `= 'default'` nor a `typeof === 'string'` test will catch it.
+
+What is left are the `grace`/`oakland` kind: banded scores whose libraries take an already-typed
+number, where the fix changes the return shape and its renderer. That is the follow-up this list
+holds.
 
 ## A reversal worth recording
 

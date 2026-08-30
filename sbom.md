@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `f0bd9056b372ea3c`
-Generated: 2026-08-30T16:33:56.715Z
+Build ID: `2b947d45fa882d87`
+Generated: 2026-08-30T16:49:33.425Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -81,7 +81,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/angle-malocclusion-v720.js` | 3749 | `550bb570288e3b855208fcb6d653617ff5a407a361fd819c19a64567397420f2` |
 | `lib/anthro-v238.js` | 7554 | `ab4ac8a758bfa2c72f22a29bf3df91b2e5d49991a9d8e2fc4f5343a6428c3512` |
 | `lib/anthro-v272.js` | 2988 | `0c8ae06f40b6747996c3069ca3eed48dd37fcb32d0b211bee0ada6ec113c1f53` |
-| `lib/aom-criteria-v857.js` | 10163 | `601cfe3a9ed3e76ababa8d341728fd5c2e4b1b7d2ebdad20ca6dbe3ff0e6dac6` |
+| `lib/aom-criteria-v857.js` | 10341 | `d7cba14bf1182a24929931232357fed8c9c05930140d051dbd6fb2634f4d2983` |
 | `lib/aortic-regurgitation-stage-v846.js` | 12048 | `2d0a184f7928ff430da10f5226b0aa19d538654b6c5d0a466559372c1a7891c0` |
 | `lib/aortic-stenosis-stage-v844.js` | 12474 | `de1f641aa25e2c4dd3f2aeed490352265c02029de4b351c89e0e9a26f644d0b5` |
 | `lib/arc-hbr-v594.js` | 16008 | `88c72c385e4018fc0d2cddba66606c2f136b52091d4f7e2b4f9dfc656fcdb7f9` |
@@ -278,7 +278,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/fab-v699.js` | 3133 | `3d15af628a254c38bbf87e2c0e3a80df7771fb4688d4b62b8ca2e9d6cd1568d7` |
 | `lib/fabq-v782.js` | 4825 | `37d2130110cb36da3e67c8cc92c76fb4b6f5cae77382edc1027cbed06fce1a40` |
 | `lib/fast-dementia-v294.js` | 5928 | `ca241cbeef3ca9c9ba2a8d46c024d617b2691c1519265d5454caa2d5887af661` |
-| `lib/fazekas-v349.js` | 3676 | `2f05c0cdfe1a50fcbb23aa3a43b91841296c76c2b9df3c9f16d10e1801c5053b` |
+| `lib/fazekas-v349.js` | 3945 | `21bb6a7dee337f80109349b3a983b97ffff33057f2a96cda79cef09cd91ddfed` |
 | `lib/feno-v888.js` | 7756 | `4e9ac8ae71097085aa70f697a1e28f1f74e1866f9f3e25adbfe54650e1e6a744` |
 | `lib/fernandez-radius-v489.js` | 3424 | `ba068bf9d2eccfe4c35d61a30f5ed1d73146698a65fc68f43940ba6d264622ee` |
 | `lib/ffs-1996-v590.js` | 11730 | `1d34a96d7576fd07ea0408a9b207147b3a0ee5307355d6a398aa85d93081e239` |
@@ -583,7 +583,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/nyha-class-v357.js` | 3947 | `9188475fe8f8841468efbc8dac1433f17a421391156cdcfd2f1357d922e9cceb` |
 | `lib/nyhus-hernia-v400.js` | 4753 | `a59093d147acab71dedf6ef3f3ff72e48ab5c66f0aa346e1d4bb86b08bc22d4c` |
 | `lib/o-rads-v326.js` | 4404 | `92d6104c9737cad58b5bfd157d613629c1aef44e853eaee54256638ed7d64eeb` |
-| `lib/ob-v138.js` | 15914 | `31473ee0596e0822f6a19fd4fb31f7c037fcac43888d9da260939925ab5f869b` |
+| `lib/ob-v138.js` | 16193 | `43883f05cd9c28d9f97b9b656e93c1c7ce3f02c7ec4337203e6fa1932dbb28e2` |
 | `lib/obgyn-v225.js` | 12339 | `21e416cb4cbbabab393fae5d173671294b2939dd5b197bd69694da90d54c5026` |
 | `lib/obgyn-v250.js` | 7713 | `5326c2fc2c5eb02959ddc337e1ac095cbfdf3fecd2a9d34dec63678eb7036b15` |
 | `lib/ocular-trauma-score-v614.js` | 9546 | `49ec3b45d088a7b6003b1aa2f6d8437db613b02e77d35a8d0d482407a027b077` |
@@ -720,7 +720,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/rheum-classification-v222.js` | 13915 | `95c66ddc0349e0fd38cde0662c0862de9c06e7e0534e4a21bab1108257f5a09b` |
 | `lib/rheum-fn-v280.js` | 8137 | `27469e9bd77ea9899b3446127f132ca1661759f0e860ecd88bc7c2c5a6349534` |
 | `lib/rheum-ob-v156.js` | 16130 | `5c9baf7c3413bc94d4605701c00bb192312e28c44c21b7a1f286b2cf6eb9fd84` |
-| `lib/rheum-periop-v89.js` | 15816 | `d179d4fd804b17a9eb2efd29498c8375d07f5b2a568130ff8453e017492e5659` |
+| `lib/rheum-periop-v89.js` | 16191 | `b835f92189f8b5ff7ecf09459a285046af568265589c95feaef084a71707502c` |
 | `lib/rheum-v147.js` | 28396 | `2684e744e39599fe5bdd32b8447a8078db34ffd2c4fdcba14f7b24c240101040` |
 | `lib/rheum-v148.js` | 29530 | `c4cb0e6ee86e544f6bd1404db9b2d8b477e7b1d95beaa779a33a4ee81dba4f8b` |
 | `lib/rheum-v160.js` | 13178 | `6f9c9caad669edb9cdb844015cbb354104dbbf6be91576aa1107e512efee360c` |
