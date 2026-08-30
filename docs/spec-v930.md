@@ -130,9 +130,13 @@ Two traps in that audit are worth recording, because each cost a pass:
 - **Probing with a literal `0` is not probing with `''`.** The first tells you whether zero is a
   confident answer, which is the *second* half of the question.
 
-Still open, and a different bug: **`pecarn-head` reports "CT recommended" from an empty form**,
-because `gcs15` is a positively-framed checkbox whose *unchecked* state is the alarming answer.
-That is a polarity problem, not a blank-reading one, and it wants its own change.
+One candidate turned out **not** to be a defect, and the correction is worth keeping. Calling
+`pecarnHead({})` directly returns *"High risk … CT recommended"*, because `gcs15` is a
+positively-framed flag whose absent state reads as GCS < 15. On the page it never happens: the
+renderer **pre-checks** `ph-gcs15` (and `ph-acting`) when it builds the form, and the MCP adapter
+marks every field required so dispatch refuses a call that omits it. A bare library call is not a
+surface anyone reaches. Recorded because the first pass called it a live bug on the strength of
+the library alone — the same mistake in the opposite direction from the one this spec is about.
 
 ### The size of what is left, measured
 
