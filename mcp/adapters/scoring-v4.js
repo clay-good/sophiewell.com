@@ -712,22 +712,6 @@ export default [
 
   // --- wave 59: GI-bleed / readmission / comorbidity / performance status --
   {
-    id: 'gbs',
-    summary: 'Glasgow-Blatchford bleeding score (Blatchford 2000): BUN, hemoglobin (sex-weighted), and SBP banded, plus pulse >= 100, melena, syncope, hepatic disease, and cardiac failure; 0 identifies the low-risk outpatient group.',
-    compute: F.gbs,
-    fields: [
-      { dom: 'gb-bun', arg: 'bunMgDl', kind: 'number', required: true, label: 'BUN', unit: 'mg/dL' },
-      { dom: 'gb-hgb', arg: 'hgbGdl', kind: 'number', required: true, label: 'Hemoglobin', unit: 'g/dL' },
-      { dom: 'gb-sex', arg: 'sex', kind: 'enum', values: ['M', 'F'], required: true, label: 'Sex (weights hemoglobin per Blatchford 2000 Table 1)' },
-      { dom: 'gb-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg' },
-      { dom: 'gb-pulse', arg: 'pulse100', kind: 'bool', label: 'Pulse >= 100 (1)' },
-      { dom: 'gb-mel', arg: 'melena', kind: 'bool', label: 'Melena (1)' },
-      { dom: 'gb-syn', arg: 'syncope', kind: 'bool', label: 'Recent syncope (2)' },
-      { dom: 'gb-hep', arg: 'hepaticDisease', kind: 'bool', label: 'Hepatic disease (2)' },
-      { dom: 'gb-cf', arg: 'cardiacFailure', kind: 'bool', label: 'Cardiac failure (2)' },
-    ],
-  },
-  {
     id: 'rockall',
     summary: 'Rockall upper-GI-bleed score (Rockall 1996): age band, shock, and comorbidity, plus (post-endoscopy) the endoscopic diagnosis and stigmata of recent hemorrhage; an optional pre-endoscopy flag scores the Vreeburg 1999 variant. Returns the mortality band.',
     compute: F.rockall,

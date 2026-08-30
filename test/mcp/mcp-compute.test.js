@@ -417,7 +417,15 @@ test('lib/vent-v195.js worked calls (wave 17)', () => {
   const sf = ok('sf-ratio', { 'sf-spo2': '95', 'sf-fio2': '0.5' });
   assert.equal(sf.sf, 190);
   assert.equal(ok('ventilatory-ratio', { 'vr-ve': '9000', 'vr-paco2': '50', 'vr-height': '175', 'vr-sex': 'male' }).vr, 1.7);
-  assert.equal(ok('osi-oxygenation', { 'osi-fio2': '0.6', 'osi-map': '15', 'osi-spo2': '92' }).value, 9.78);
+  // spec-v913: osi-oxygenation was retired as a duplicate. oxygenation-index returns the same
+  // OSI from the same inputs -- and must accept an SpO2 with no PaO2 to do it, which is why
+  // neither gas is a required field.
+  const osiOnly = ok('oxygenation-index', { 'oi-fio2': '0.6', 'oi-map': '15', 'oi-spo2': '92' });
+  assert.equal(osiOnly.osi, 9.8);
+  assert.equal(osiOnly.oi, null);
+  const oiOnly = ok('oxygenation-index', { 'oi-fio2': '0.6', 'oi-map': '15', 'oi-pao2': '60' });
+  assert.equal(oiOnly.osi, null);
+  assert.ok(oiOnly.oi > 0);
   assert.equal(ok('ventilation-index', { 'vi-rr': '30', 'vi-pip': '30', 'vi-paco2': '50' }).value, 45);
 });
 
@@ -873,7 +881,6 @@ test('lib wave-53 deferral-cleanup worked calls', () => {
   assert.equal(ok('phases', { 'ph-pop': 'finnish', 'ph-htn': true, 'ph-age': '72', 'ph-size': '12', 'ph-sah': true, 'ph-site': 'acaPcomPost' }).total, 18);
   assert.equal(ok('hear', { 'hr-hist': 'h1', 'hr-ecg': 'e1', 'hr-age': '58', 'hr-risk': 'r1' }).total, 4);
   assert.equal(ok('wagner-dfu', { 'wagner-grade': '3' }).grade, 3);
-  assert.equal(ok('university-texas-dfu', { 'ut-grade': '2', 'ut-stage': 'B' }).cell, 'IIB');
   assert.equal(ok('doloplus-2', {
     'dolo-complaints': '2', 'dolo-posture': '1', 'dolo-protection': '1', 'dolo-facial': '1', 'dolo-sleep': '0',
     'dolo-washing': '0', 'dolo-mobility': '0', 'dolo-communication': '0', 'dolo-social': '0', 'dolo-behavior': '0',
@@ -1088,10 +1095,6 @@ test('lib/scoring-v4.js cognition / withdrawal / sleep / periop worked calls (wa
 });
 
 test('lib/scoring-v4.js GI-bleed / readmission / comorbidity / performance worked calls (wave 59)', () => {
-  // GBS: BUN 30 (points) + Hgb 11 male (3) + SBP 95 (3) + melena (1) + syncope (2).
-  const gb = ok('gbs', { 'gb-bun': '30', 'gb-hgb': '11', 'gb-sex': 'M', 'gb-sbp': '95', 'gb-pulse': '0', 'gb-mel': '1', 'gb-syn': '1', 'gb-hep': '0', 'gb-cf': '0' });
-  assert.ok(gb.score > 0);
-  assert.equal(gb.parts.syncope, 2);
   // Complete Rockall: age 2 + shock 2 + comorbidity 2 + dx 2 + stigmata 2 = 10.
   const rk = ok('rockall', { 'rk-age': '2', 'rk-shock': '2', 'rk-co': '2', 'rk-dx': '2', 'rk-stig': '2', 'rk-pre': '0' });
   assert.equal(rk.score, 10);

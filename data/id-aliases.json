@@ -1,4 +1,25 @@
 {
-  "_comment": "spec-v637 §2: stable-id alias map for the MCP surface. Tile ids are a public API an agent may hardcode; when a shipped id is RETIRED it is mapped here to its canonical successor so callers self-heal. Shape: aliases[oldId] = { canonical: <live id>, since: 'YYYY-MM-DD', sunset: 'YYYY-MM-DD' }. The server resolves an alias to its canonical (attaching a deprecation notice) whenever the canonical is live, regardless of wall-clock (it reads no clock); a maintainer removes the entry after the sunset date. See docs/stability.md. Empty today: no shipped id has been renamed.",
-  "aliases": {}
+  "_comment": "spec-v637 §2: stable-id alias map for the MCP surface. Tile ids are a public API an agent may hardcode; when a shipped id is RETIRED it is mapped here to its canonical successor so callers self-heal. Shape: aliases[oldId] = { canonical: <live id>, since: 'YYYY-MM-DD', sunset: 'YYYY-MM-DD' }. The server resolves an alias to its canonical (attaching a deprecation notice) whenever the canonical is live, regardless of wall-clock (it reads no clock); a maintainer removes the entry after the sunset date. See docs/stability.md. spec-v913 retired four ids that were the same instrument twice; each maps to the fuller twin that survived.",
+  "aliases": {
+    "forrest": {
+      "canonical": "forrest-classification",
+      "since": "2026-08-30",
+      "sunset": "2027-08-30"
+    },
+    "gbs": {
+      "canonical": "glasgow-blatchford",
+      "since": "2026-08-30",
+      "sunset": "2027-08-30"
+    },
+    "osi-oxygenation": {
+      "canonical": "oxygenation-index",
+      "since": "2026-08-30",
+      "sunset": "2027-08-30"
+    },
+    "university-texas-dfu": {
+      "canonical": "ut-diabetic-foot",
+      "since": "2026-08-30",
+      "sunset": "2027-08-30"
+    }
+  }
 }

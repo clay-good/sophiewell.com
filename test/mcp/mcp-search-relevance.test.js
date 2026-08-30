@@ -87,7 +87,7 @@ const PROBES = [
   ['osteoporosis fracture screen', ['osteoporosis-prescreen']],
   ['dka anion gap closure', ['dka-hhs', 'dka-gap', 'anion-gap']],
   ['aki staging creatinine', ['kdigo-aki']],
-  ['ards oxygenation severity', ['pf-ratio', 'oxygenation-index', 'osi-oxygenation']],
+  ['ards oxygenation severity', ['pf-ratio', 'oxygenation-index']],
   ['ventilator tidal volume ideal body weight', ['pbw-ardsnet']],
   ['rsbi wean vent', ['rsbi']],
   // question-phrased probes (unlocked by the scaffold-strip + plural fold,

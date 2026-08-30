@@ -64,3 +64,21 @@ surfaces by four.
 ## Files
 
 New: `scripts/find-duplicate-tiles.mjs`, this file. Nothing else changes.
+
+---
+
+## Executed (spec-v914)
+
+The four retirements above were carried out. Each old id is now in
+`data/id-aliases.json` — the map built in spec-v637 for exactly this and empty until now — so an
+agent holding a retired id resolves to the survivor with a deprecation notice.
+
+One thing had to move rather than be deleted. The retired `gbs` carried the **derivation
+component breakdown** that prints the weights on its tool page, and `glasgow-blatchford` had
+none. It was transplanted, not copied: the survivor bands urea in **mmol/L** and divides a
+mg/dL BUN by 2.8 first, so the components were rewritten against the survivor's own library
+function. `test/unit/derivation.test.js` asserts the components sum to the live score **in both
+units** — a version that skipped the divide-by-2.8 would still have passed on mmol input, so
+that case is in the table.
+
+Catalog 1701 → 1697.

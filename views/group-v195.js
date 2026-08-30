@@ -81,21 +81,6 @@ export const renderers = {
     postureNote(root);
   },
 
-  // ----- 2.3 osi-oxygenation -------------------------------------------------
-  'osi-oxygenation'(root) {
-    note(root, 'Oxygen saturation index (PALICC 2015): OSI = (FiO₂ × mean airway pressure × 100) / SpO₂. PARDS: mild 5–<7.5, moderate 7.5–<12.3, severe ≥ 12.3. Reliable only when SpO₂ ≤ 97%.');
-    root.appendChild(num('FiO₂ (fraction, 0.21–1.0)', 'osi-fio2'));
-    root.appendChild(num('Mean airway pressure (cmH₂O)', 'osi-map'));
-    root.appendChild(num('SpO₂ (%)', 'osi-spo2'));
-    const o = out(); root.appendChild(o);
-    wire(['osi-fio2', 'osi-map', 'osi-spo2'], () => safe(o, () => {
-      const r = M.osi({ fio2: val('osi-fio2'), map: val('osi-map'), spo2: val('osi-spo2') });
-      if (!r.valid) { showInvalid(o, r); return; }
-      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'OSI', value: `${r.value}` }]);
-      note(o, r.detail); note(o, r.caveat); note(o, r.note);
-    }));
-    postureNote(root);
-  },
 
   // ----- 2.4 ventilation-index -----------------------------------------------
   'ventilation-index'(root) {

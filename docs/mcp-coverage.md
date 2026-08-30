@@ -8754,9 +8754,7 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/suites-v155.js
 - `mipi`
-- `forrest`
 - `wagner-dfu`
-- `university-texas-dfu`
 
 ### lib/peds-v98.js
 - `kocher-criteria`
@@ -8803,7 +8801,6 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/vent-v195.js
 - `sf-ratio`
 - `ventilatory-ratio`
-- `osi-oxygenation`
 - `ventilation-index`
 
 ### lib/liver-v196.js
@@ -9362,7 +9359,6 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `aldrete`
 - `lemon`
 - `white-song`
-- `gbs`
 - `rockall`
 - `aims65`
 - `oakland`

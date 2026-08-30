@@ -77,13 +77,17 @@ export default [
   },
   {
     id: 'oxygenation-index',
-    summary: 'Oxygenation index OI = FiO2*MAP*100/PaO2 and oxygen saturation index OSI = FiO2*MAP*100/SpO2; pediatric ARDS severity.',
+    summary: 'Oxygenation index OI = FiO2*MAP*100/PaO2 and oxygen saturation index OSI = FiO2*MAP*100/SpO2; pediatric ARDS severity. Give a PaO2, an SpO2, or both -- whichever is missing comes back null and the other is still computed.',
     compute: F.oxygenationIndex,
     fields: [
       { dom: 'oi-fio2', arg: 'fio2', kind: 'number', required: true, label: 'FiO2 (0.21-1.0)' },
       { dom: 'oi-map', arg: 'map', kind: 'number', required: true, label: 'Mean airway pressure', unit: 'cmH2O' },
-      { dom: 'oi-pao2', arg: 'pao2', kind: 'number', required: true, label: 'PaO2', unit: 'mmHg' },
-      { dom: 'oi-spo2', arg: 'spo2', kind: 'number', required: true, label: 'SpO2', unit: '%' },
+      // spec-v913 retired osi-oxygenation, which computed the saturation index on its own.
+      // Neither of these can stay required or that capability goes with it: the library already
+      // returns a null OI when the PaO2 is absent and a null OSI when the SpO2 is, so either
+      // one alone is a legitimate call.
+      { dom: 'oi-pao2', arg: 'pao2', kind: 'number', required: false, label: 'PaO2 (omit for the saturation index alone)', unit: 'mmHg' },
+      { dom: 'oi-spo2', arg: 'spo2', kind: 'number', required: false, label: 'SpO2 (omit for the oxygenation index alone)', unit: '%' },
     ],
   },
   {

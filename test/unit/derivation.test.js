@@ -13,7 +13,8 @@ import { padua, epworth, nrs2002 } from '../../lib/scoring-v4.js';
 import { apgar } from '../../lib/clinical.js';
 import { silvermanAndersen, downes } from '../../lib/scoring-v6.js';
 import { pesi, spesi, nigrovic } from '../../lib/scoring-v4.js';
-import { gbs, rockall, oakland } from '../../lib/scoring-v4.js';
+import { rockall, oakland } from '../../lib/scoring-v4.js';
+import { glasgowBlatchford } from '../../lib/hepatology-gibleed-v201.js';
 import { nutric, mnutric, mods } from '../../lib/scoring-v4.js';
 import { burchWartofsky, ariscat, bradenQ } from '../../lib/scoring-v6.js';
 import { charlson, hacor } from '../../lib/scoring-v4.js';
@@ -79,8 +80,8 @@ const WAVE_61_A1E_TILES = ['pesi', 'spesi', 'nigrovic'];
 // ordinals with a pre-endoscopy variant that omits the last two items), and
 // Oakland (banded age/HR/SBP/Hgb plus binaries). Each banded weight is encoded
 // as a `points` callback that replicates the live banding, so the component sum
-// reproduces the live `score` exactly (gbs/oakland also expose `parts`).
-const WAVE_61_A1F_TILES = ['gbs', 'rockall', 'oakland'];
+// reproduces the live `score` exactly (oakland also exposes `parts`).
+const WAVE_61_A1F_TILES = ['glasgow-blatchford', 'rockall', 'oakland'];
 // spec-v61 A1 derivation tail, wave 7: the ICU-prognosis additive indices.
 // NUTRIC and mNUTRIC (banded age/APACHE/SOFA weights plus binaries; mNUTRIC is
 // NUTRIC without the IL-6 term) and MODS (six organ-system subscores, each a 0-4
@@ -488,14 +489,17 @@ for (const [label, inputs, expected] of [
 // and pre-endoscopy callbacks resolve, reproducing each live score exactly.
 
 for (const [label, inputs, expected] of [
-  ['default low-risk (BUN 14, Hgb 15 M, SBP 120, no flags) = 0', { bunMgDl: 14, hgbGdl: 15, sex: 'M', sbp: 120, pulse100: false, melena: false, syncope: false, hepaticDisease: false, cardiacFailure: false }, 0],
-  ['banded BUN+Hgb(M)+SBP', { bunMgDl: 30, hgbGdl: 11, sex: 'M', sbp: 95, pulse100: false, melena: false, syncope: false, hepaticDisease: false, cardiacFailure: false }, 4 + 3 + 2],
-  ['female Hgb band differs (Hgb 11 F = +1, not +3)', { bunMgDl: 14, hgbGdl: 11, sex: 'F', sbp: 120, pulse100: false, melena: false, syncope: false, hepaticDisease: false, cardiacFailure: false }, 1],
-  ['max-ish (BUN>=70, Hgb<10, SBP<90, all binaries)', { bunMgDl: 80, hgbGdl: 8, sex: 'F', sbp: 80, pulse100: true, melena: true, syncope: true, hepaticDisease: true, cardiacFailure: true }, 6 + 6 + 3 + 1 + 1 + 2 + 2 + 2],
+  // spec-v913: these cases moved off the retired `gbs` tile onto glasgow-blatchford, the same
+  // Blatchford 2000 score built once. That tile bands urea in mmol/L, so BOTH units are
+  // exercised: a derivation that skipped the mg/dL divide-by-2.8 would still pass on mmol.
+  ['default low-risk (urea 5 mmol/L, Hb 15 male, SBP 120, no flags) = 0', { ureaUnit: 'mmol', urea: 5, hb: 15, sex: 'male', sbp: 120, pulseHigh: false, melena: false, syncope: false, hepatic: false, cardiac: false }, 0],
+  ['banded urea + Hb(male) + SBP, entered as a BUN', { ureaUnit: 'mgdl', urea: 30, hb: 11, sex: 'male', sbp: 95, pulseHigh: false, melena: false, syncope: false, hepatic: false, cardiac: false }, 4 + 3 + 2],
+  ['female Hb band differs (Hb 11 female = +1, not +3)', { ureaUnit: 'mgdl', urea: 14, hb: 11, sex: 'female', sbp: 120, pulseHigh: false, melena: false, syncope: false, hepatic: false, cardiac: false }, 1],
+  ['max-ish (top urea band, Hb < 10, SBP < 90, every binary)', { ureaUnit: 'mgdl', urea: 80, hb: 8, sex: 'female', sbp: 80, pulseHigh: true, melena: true, syncope: true, hepatic: true, cardiac: true }, 6 + 6 + 3 + 1 + 1 + 2 + 2 + 2],
 ]) {
-  test(`gbs components sum equals gbs() score (${label})`, () => {
-    const r = gbs(inputs);
-    const sum = sumDerivation('gbs', inputs);
+  test(`glasgow-blatchford components sum equals its score (${label})`, () => {
+    const r = glasgowBlatchford(inputs);
+    const sum = sumDerivation('glasgow-blatchford', inputs);
     assert.equal(sum, r.score);
     assert.equal(sum, expected);
   });

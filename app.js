@@ -1102,7 +1102,6 @@ const UTILITIES = [
   { id: 'spesi',               name: 'sPESI (Simplified PESI)',                          group: 'G', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'padua',               name: 'Padua Prediction Score (VTE risk in medical inpatients)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   // spec-v12 §3.3 wave 12-3: upper & lower GI-bleeding bundle.
-  { id: 'gbs',                 name: 'Glasgow-Blatchford Bleeding Score',                group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'rockall',             name: 'Rockall Score (upper GI bleeding)',                group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'aims65',              name: 'AIMS65 Score (upper GI bleeding mortality)',       group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'oakland',             name: 'Oakland Score (lower GI bleeding safe discharge)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
@@ -2072,9 +2071,7 @@ const UTILITIES = [
   // parked with crib-ii / gail-bcrat. views/group-v155.js, lib/suites-v155.js
   // (RV155).
   { id: 'mipi',               name: 'MIPI (Mantle Cell Lymphoma Prognostic Index)',     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
-  { id: 'forrest',            name: 'Forrest Classification (UGI bleeding stigmata)',   group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'wagner-dfu',         name: 'Wagner Diabetic Foot Ulcer Grade',                group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
-  { id: 'university-texas-dfu', name: 'University of Texas Diabetic Foot Ulcer Class',  group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v156 (the sixth and CLOSING implementation spec of the spec-v150
   // Post-Parity Coverage program): four tiles that complete the rheumatology
@@ -3209,7 +3206,6 @@ const UTILITIES = [
   // lib/vent-v195.js, views/group-v195.js (RV195).
   { id: 'sf-ratio',             name: 'SpO₂/FiO₂ (S/F) Ratio with estimated P/F',         group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'ventilatory-ratio',    name: 'Ventilatory Ratio (VR)',                           group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
-  { id: 'osi-oxygenation',      name: 'Oxygen Saturation Index (OSI)',                    group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'ventilation-index',    name: 'Ventilation Index (VI)',                           group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   // spec-v196: five chronic-liver-disease prognostic instruments.
   // lib/liver-v196.js, views/group-v196.js (RV196).

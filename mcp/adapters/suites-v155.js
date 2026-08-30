@@ -17,15 +17,6 @@ export default [
     ],
   },
   {
-    id: 'university-texas-dfu',
-    summary: 'University of Texas diabetic-foot ulcer classification (Lavery/Armstrong 1996/1998): a grade (depth 0–3) × stage (A clean, B infection, C ischemia, D both) grid; outcomes worsen with increasing grade and stage.',
-    compute: F.universityTexasDfu,
-    fields: [
-      { dom: 'ut-grade', arg: 'grade', kind: 'enum', values: ['0', '1', '2', '3'], required: true, label: 'Grade — wound depth' },
-      { dom: 'ut-stage', arg: 'stage', kind: 'enum', values: ['A', 'B', 'C', 'D'], required: true, label: 'Stage — complication' },
-    ],
-  },
-  {
     id: 'mipi',
     summary: 'Mantle-cell lymphoma International Prognostic Index (Hoster 2008): a continuous score from age, ECOG, LDH/ULN ratio, and white-cell count → low / intermediate / high risk.',
     compute: F.mipi,
@@ -35,14 +26,6 @@ export default [
       { dom: 'mipi-ldh', arg: 'ldh', kind: 'number', label: 'LDH (U/L)' },
       { dom: 'mipi-uln', arg: 'uln', kind: 'number', label: 'LDH upper limit of normal (U/L)' },
       { dom: 'mipi-wbc', arg: 'wbc', kind: 'number', label: 'White-cell count (cells/µL)' },
-    ],
-  },
-  {
-    id: 'forrest',
-    summary: 'Forrest classification (Forrest 1974): the endoscopic stigmata grade Ia–III of an upper-GI ulcer, mapping to rebleeding risk and the indication for endoscopic therapy.',
-    compute: F.forrest,
-    fields: [
-      { dom: 'forrest-class', arg: 'klass', kind: 'enum', values: ['Ia', 'Ib', 'IIa', 'IIb', 'IIc', 'III'], required: true, label: 'Forrest class' },
     ],
   },
 ];

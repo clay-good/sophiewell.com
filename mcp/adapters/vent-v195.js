@@ -27,16 +27,6 @@ export default [
     ],
   },
   {
-    id: 'osi-oxygenation',
-    summary: 'Oxygen saturation index (OSI = FiO₂ × mean airway pressure × 100 / SpO₂): a noninvasive oxygenation-severity index used for pediatric ARDS grading.',
-    compute: F.osi,
-    fields: [
-      { dom: 'osi-fio2', arg: 'fio2', kind: 'number', required: true, label: 'FiO₂ (fraction, 0.21–1.0)' },
-      { dom: 'osi-map', arg: 'map', kind: 'number', required: true, label: 'Mean airway pressure', unit: 'cmH₂O' },
-      { dom: 'osi-spo2', arg: 'spo2', kind: 'number', required: true, label: 'SpO₂', unit: '%' },
-    ],
-  },
-  {
     id: 'ventilation-index',
     summary: 'Ventilation index (VI = respiratory rate × peak inspiratory pressure × PaCO₂ / 1000): a bedside marker of ventilatory burden; higher values track mortality and extubation-failure risk.',
     compute: F.ventilationIndex,

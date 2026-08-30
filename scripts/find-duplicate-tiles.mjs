@@ -67,12 +67,14 @@ export function candidatePairs(corpus, floor = 0.55) {
 }
 
 // Pairs already read and ruled on, so a re-run shows only what is new. A verdict here is a
+// claim that someone opened both adapters. The four RETIRED entries no longer appear in the
+// corpus and so no longer match; they stay as the record of what was removed and why.
 // claim that someone opened both adapters.
 export const RULED = new Map(Object.entries({
-  'forrest|forrest-classification': 'DUPLICATE -- one instrument, one input, same six classes.',
-  'gbs|glasgow-blatchford': 'DUPLICATE -- the same Blatchford 2000 score; glasgow-blatchford adds a urea unit toggle.',
-  'osi-oxygenation|oxygenation-index': 'DUPLICATE -- oxygenation-index returns the same OSI and the same band, and an OI besides.',
-  'university-texas-dfu|ut-diabetic-foot': 'DUPLICATE -- the same grade-by-stage grid; ut-diabetic-foot is the fuller build.',
+  'forrest|forrest-classification': 'RETIRED in spec-v914 -- one instrument, one input, same six classes.',
+  'gbs|glasgow-blatchford': 'RETIRED in spec-v914 -- the same Blatchford 2000 score; the survivor takes urea in either unit.',
+  'osi-oxygenation|oxygenation-index': 'RETIRED in spec-v914 -- the survivor returns the same OSI and the same band, and an OI besides.',
+  'university-texas-dfu|ut-diabetic-foot': 'RETIRED in spec-v914 -- the same grade-by-stage grid; the survivor is the fuller build.',
   'npiap-staging|pressure-injury-stage': 'DISTINCT -- one DERIVES the stage from observations, the other explains a stage already assigned.',
   'benzo-equiv|benzodiazepine-equivalence': 'DISTINCT -- overlapping, but benzo-equiv carries midazolam and the other does not.',
   'unit-converter|unit-converter-v4': 'DISTINCT -- overlapping, but unit-converter carries volume and unit-converter-v4 does not.',
