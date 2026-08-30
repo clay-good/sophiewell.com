@@ -755,6 +755,7 @@ import { renderers as RV920 } from './views/group-v920.js';
 import { renderers as RV921 } from './views/group-v921.js';
 import { renderers as RV922 } from './views/group-v922.js';
 import { renderers as RV923 } from './views/group-v923.js';
+import { renderers as RV924 } from './views/group-v924.js';
 import { renderers as RV164 } from './views/group-v164.js';
 import { renderers as RV165 } from './views/group-v165.js';
 import { renderers as RV166 } from './views/group-v166.js';
@@ -838,7 +839,7 @@ const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...R
   ...RV902,
   ...RV903,
   ...RV905,
-  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV63, ...RPALINT };
+  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -2710,6 +2711,11 @@ const UTILITIES = [
   // "the" specification is not a thing. views/group-v923.js,
   // lib/biological-variation-goals-v923.js, mcp/adapters/biological-variation-goals-v923.js.
   { id: 'biological-variation-goals', name: 'Analytical goals from biological variation', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v924: Bland-Altman limits of agreement, reported with their own confidence
+  // intervals. views/group-v924.js, lib/bland-altman-v924.js,
+  // mcp/adapters/bland-altman-v924.js.
+  { id: 'bland-altman', name: 'Bland-Altman limits of agreement', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'gahs',                   name: 'Glasgow Alcoholic Hepatitis Score',                group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'west-haven-he',          name: 'West Haven HE grade (hepatic encephalopathy)',     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'hepatic-steatosis-index', name: 'Hepatic Steatosis Index (NAFLD screen)',          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },

@@ -798,6 +798,7 @@ const PROBES = [
   ['sigma metric laboratory method', ['sigma-metric']],
   ['inter rater agreement kappa', ['cohens-kappa']],
   ['analytical goals from biological variation', ['biological-variation-goals']],
+  ['bland altman limits of agreement', ['bland-altman']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],

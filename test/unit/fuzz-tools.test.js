@@ -740,6 +740,7 @@ import * as referenceChangeValueV920 from '../../lib/reference-change-value-v920
 import * as sigmaMetricV921 from '../../lib/sigma-metric-v921.js';
 import * as cohensKappaV922 from '../../lib/cohens-kappa-v922.js';
 import * as biologicalVariationGoalsV923 from '../../lib/biological-variation-goals-v923.js';
+import * as blandAltmanV924 from '../../lib/bland-altman-v924.js';
 import * as sadPersonsV701 from '../../lib/sad-persons-v701.js';
 import * as edinburghClaudicationV702 from '../../lib/edinburgh-claudication-v702.js';
 import * as reimersMigrationPercentageV703 from '../../lib/reimers-migration-percentage-v703.js';
@@ -1525,6 +1526,7 @@ const MODULES = {
   'sigma-metric-v921.js': sigmaMetricV921,
   'cohens-kappa-v922.js': cohensKappaV922,
   'biological-variation-goals-v923.js': biologicalVariationGoalsV923,
+  'bland-altman-v924.js': blandAltmanV924,
   'sad-persons-v701.js': sadPersonsV701,
   'edinburgh-claudication-v702.js': edinburghClaudicationV702,
   'reimers-migration-percentage-v703.js': reimersMigrationPercentageV703,
