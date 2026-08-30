@@ -802,6 +802,7 @@ const PROBES = [
   ['delta check between two lab results', ['delta-check']],
   ['peak pressure high plateau normal', ['airway-resistance']],
   ['auto peep end expiratory hold', ['auto-peep']],
+  ['hepatic iron index liver biopsy', ['hepatic-iron-index']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],

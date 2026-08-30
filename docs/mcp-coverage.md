@@ -8069,6 +8069,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/auto-peep-v928.js (spec-v928: auto-PEEP — clinical disclaimer)
 - `auto-peep`
 
+### lib/hepatic-iron-index-v932.js (spec-v932: hepatic iron index — clinical disclaimer)
+- `hepatic-iron-index`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

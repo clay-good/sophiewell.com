@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `3fb6b7fb40792c88`
-Generated: 2026-08-30T19:16:42.750Z
+Build ID: `00b5f03491d3153f`
+Generated: 2026-08-30T19:23:13.677Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -25,9 +25,9 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 109352 | `4e1f283e56c51a7104028073f00893eff938be1885949b86bb90b95a22b5ea48` |
+| `index.html` | 109396 | `50e22f5bb5c81f5f12ef5a2404ca6da6044a5f65a65202be51f55aeec3e04cb5` |
 | `styles.css` | 67361 | `2942923c5157d85e7e381552e74488a519e4a6deff4edd9029489f3311f1870d` |
-| `app.js` | 498858 | `d0b929ef76cebba18b20f314e4dd074ee0c3feebd6e400d8751288007081d837` |
+| `app.js` | 499325 | `eb6a1d1c69faeb4e99d6988b8694b0b60a70a54f0749a5834ce580873d297be4` |
 | `report-feedback.js` | 12178 | `955e5cb542c7b13dcbb85a75ecf4ccf2dc0b2dffecd84daac1d607bd6acc7cd2` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 | `theme.js` | 3132 | `6910af0b4c65869c6a3d24d17842bb2cc88c7d23f8fb32506fcdbfeec70ce979` |
@@ -35,7 +35,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `sw.js` | 5183 | `009dd2cf8ba1a16ad8a76c8f523c45600068c78f07582c657015defdead2c876` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 262356 | `c1bdc94aaedd45fb47d356a25371bd8a6b3fad641b3300cf338ed8f8eb0addfd` |
+| `sitemap.xml` | 262514 | `bdbf90c8278144a0328d78ec2efbe6077fc5f86864c0abfc7acba2e3686a35ea` |
 | `_headers` | 2050 | `3874f05a080b8cab13ff022e6e6147c7e1057420a2d9cbc7834bac6b421d4011` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
@@ -48,7 +48,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | Path | Bytes | SHA-256 |
 |---|---:|---|
 | `report-worker.mjs` | 13434 | `bcbebe960bf79e0cb2038f7ddc216dfb0753a9665f071fa32966d5d460ffc794` |
-| `report-catalog.js` | 95472 | `3d25c5ed4a7a9312339cbcb059f4686181bb47ae6646877941082bd430074538` |
+| `report-catalog.js` | 95524 | `a2573cada11c40d3584becf3357d4db551af4b54c95648933d41e9a8f3d7c040` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 
 ## Source-of-truth modules (lib + views)
@@ -369,6 +369,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/hep-fibrosis-portal-v212.js` | 6585 | `93bb19ad8fac24e2e86c21bd76be22c40b3df7ec8d1a8888002c643453d3223a` |
 | `lib/hep-v124.js` | 12530 | `9ab4bc19416297163fc8917ebd848a65105f65004f680219067e9c838c8ae9b9` |
 | `lib/hep-v125.js` | 11783 | `6b9383681fba0eb6b3576be4537ee3e10308b92b4f5e8729d461fa987e7a7391` |
+| `lib/hepatic-iron-index-v932.js` | 6957 | `4c14e67de0551f4e4f9bde691e19eaa0c2f4e5cc6fb41033d1b7e0fd73ec74d6` |
 | `lib/hepatology-gibleed-v201.js` | 19770 | `b13202719fc096c742097095af56bcd722c07b67f7e138a791e72cd818eb7da6` |
 | `lib/hepatology-prognosis-v220.js` | 11769 | `1f9c49980dee9a6c4959fb670f74c99b1bbd44eab695f06dee16190eee21addb` |
 | `lib/hepgi-v190.js` | 11863 | `18fdde7face8dec98d83118b4840f01f3e93a7594a0cade787ab75771707e239` |
@@ -508,7 +509,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/membranous-risk-v878.js` | 10326 | `ff774f72e82303f0c83c8091aaa6ea2bb3b4deeba5c6323985d910dd003d53f4` |
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2430510 | `47544714538c761a589a95ea16d49f71759d619ed1c9881e6a1cbbc809143189` |
+| `lib/meta.js` | 2432225 | `b2e77b5e0818ddf3ec3025c7212e5a2673473a4c7cb679bc5529f25cfe7fc799` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -1190,6 +1191,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/hep-fibrosis-portal-v212.js` | 1834 | `bb69121e7d3608f4d03e0cc83bb864dd86cbb01c8560ae62e8b0fec7013214cb` |
 | `mcp/adapters/hep-v124.js` | 3578 | `4d10d19f2bb9a32f05191a680906924fa58422b3ca73d7090295e2f8c0273835` |
 | `mcp/adapters/hep-v125.js` | 3919 | `783c00dbb357c1195cd6278ba33f380e7b5c436ede09019251f23d39733b4f37` |
+| `mcp/adapters/hepatic-iron-index-v932.js` | 1926 | `0cd5e595ae56b7e3c70a554776adc11741a44d939a998ad069eacc17977a61c4` |
 | `mcp/adapters/hepatology-gibleed-v201.js` | 5915 | `2e2a91f651a464ba5b6f369ebeab46bfb22777f1145018d60d67f9417ff985b2` |
 | `mcp/adapters/hepatology-prognosis-v220.js` | 4614 | `45a10caf5243b438cbfb064c7680872b63ece28e1e2813038ca86dcef2aaca07` |
 | `mcp/adapters/hepgi-v190.js` | 3488 | `e7058f2c7494b0e390708f12b6ae7173276320d9c94372ef0bb1a97f470199fb` |
@@ -1674,7 +1676,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/zabramski-v442.js` | 1156 | `f364baad3d680210aafd8b47cb6ad472521c8bfb9f02683340f5175dcb03d097` |
 | `mcp/adapters/zargar-caustic-v401.js` | 1423 | `158261bfae30e1660e5888582289b46bef0344c5763a15a9be2c812be5722d4a` |
 | `mcp/adapters/zulewski-v608.js` | 4193 | `68da25df2e1cd4653dd6ad796f5c0f032429c1da8d89459e8d66f5cc7bb51ab8` |
-| `mcp/catalog.js` | 86799 | `8a56274c8d38fecf5ae5cdb0ccdb042c90fecaa39de9245041cca934ab72ee9e` |
+| `mcp/catalog.js` | 86926 | `93a9823a9e6d13c7ebf4f8f21eeb0a1921dff43069a1cc1843ceab8b3358064d` |
 | `mcp/fields.js` | 7055 | `7760c7a95fdada71f67ab67497556a1f87782f180df93e828b0736ee0b2796bb` |
 | `mcp/server.js` | 2079 | `54d0769126ef3fde8965a26b4a36c15964cd67018343660cae43983685c34df9` |
 | `mcp/tools.js` | 53641 | `6e5f0a9a9104a70d647b18ca38dd931daeaaab5fa134c09eca74fa22884d793a` |
@@ -2469,6 +2471,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v925.js` | 3332 | `bcaaf16e76e3f047c0ef7500fb84e11b24eca1ed740b90018b58b1c0b812068e` |
 | `views/group-v927.js` | 2490 | `d2e3b8f214a4c5d0f721a03c5dc7f586173018020269e0ae84ffe5b039fab817` |
 | `views/group-v928.js` | 3048 | `4790b0c9e0d2319f41a9f6f4bf0ae8eb8bfb94ea7d8e21a48f013b3795dc8d62` |
+| `views/group-v932.js` | 2874 | `c47fc16077385b88fb2c027e5065709402fdeb38cdde45fe49a6ceae5ba67fca` |
 | `views/pa-lint.js` | 28680 | `90c4bbb985af80d74f2957de7d11efc33f5a14d21a40ae8ae114ff3313879b88` |
 
 ## Verifying this SBOM

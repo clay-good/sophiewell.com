@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:3fb6b7fb-4079-5c88-864c-b9fbe5c6e87e",
+  "serialNumber": "urn:uuid:00b5f034-91d3-553f-807e-45a4fd4d0ff4",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-30T19:16:42.750Z",
+    "timestamp": "2026-08-30T19:23:13.677Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1709 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1710 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4e1f283e56c51a7104028073f00893eff938be1885949b86bb90b95a22b5ea48"
+          "content": "50e22f5bb5c81f5f12ef5a2404ca6da6044a5f65a65202be51f55aeec3e04cb5"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "109352"
+          "value": "109396"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d0b929ef76cebba18b20f314e4dd074ee0c3feebd6e400d8751288007081d837"
+          "content": "eb6a1d1c69faeb4e99d6988b8694b0b60a70a54f0749a5834ce580873d297be4"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "498858"
+          "value": "499325"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c1bdc94aaedd45fb47d356a25371bd8a6b3fad641b3300cf338ed8f8eb0addfd"
+          "content": "bdbf90c8278144a0328d78ec2efbe6077fc5f86864c0abfc7acba2e3686a35ea"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "262356"
+          "value": "262514"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3d25c5ed4a7a9312339cbcb059f4686181bb47ae6646877941082bd430074538"
+          "content": "a2573cada11c40d3584becf3357d4db551af4b54c95648933d41e9a8f3d7c040"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "95472"
+          "value": "95524"
         }
       ]
     },
@@ -7070,6 +7070,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/hepatic-iron-index-v932.js",
+      "type": "file",
+      "name": "lib/hepatic-iron-index-v932.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4c14e67de0551f4e4f9bde691e19eaa0c2f4e5cc6fb41033d1b7e0fd73ec74d6"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6957"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/hepatology-gibleed-v201.js",
       "type": "file",
       "name": "lib/hepatology-gibleed-v201.js",
@@ -9995,7 +10016,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "47544714538c761a589a95ea16d49f71759d619ed1c9881e6a1cbbc809143189"
+          "content": "b2e77b5e0818ddf3ec3025c7212e5a2673473a4c7cb679bc5529f25cfe7fc799"
         }
       ],
       "properties": [
@@ -10005,7 +10026,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2430510"
+          "value": "2432225"
         }
       ]
     },
@@ -24311,6 +24332,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/hepatic-iron-index-v932.js",
+      "type": "file",
+      "name": "mcp/adapters/hepatic-iron-index-v932.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cd5e595ae56b7e3c70a554776adc11741a44d939a998ad069eacc17977a61c4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1926"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/hepatology-gibleed-v201.js",
       "type": "file",
       "name": "mcp/adapters/hepatology-gibleed-v201.js",
@@ -34481,7 +34523,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8a56274c8d38fecf5ae5cdb0ccdb042c90fecaa39de9245041cca934ab72ee9e"
+          "content": "93a9823a9e6d13c7ebf4f8f21eeb0a1921dff43069a1cc1843ceab8b3358064d"
         }
       ],
       "properties": [
@@ -34491,7 +34533,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "86799"
+          "value": "86926"
         }
       ]
     },
@@ -51170,6 +51212,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v932.js",
+      "type": "file",
+      "name": "views/group-v932.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c47fc16077385b88fb2c027e5065709402fdeb38cdde45fe49a6ceae5ba67fca"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2874"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:views/pa-lint.js",
       "type": "file",
       "name": "views/pa-lint.js",
@@ -67078,6 +67141,7 @@
         "urn:sophiewell:file:source:lib/hep-fibrosis-portal-v212.js",
         "urn:sophiewell:file:source:lib/hep-v124.js",
         "urn:sophiewell:file:source:lib/hep-v125.js",
+        "urn:sophiewell:file:source:lib/hepatic-iron-index-v932.js",
         "urn:sophiewell:file:source:lib/hepatology-gibleed-v201.js",
         "urn:sophiewell:file:source:lib/hepatology-prognosis-v220.js",
         "urn:sophiewell:file:source:lib/hepgi-v190.js",
@@ -68389,6 +68453,7 @@
         "urn:sophiewell:file:source:views/group-v925.js",
         "urn:sophiewell:file:source:views/group-v927.js",
         "urn:sophiewell:file:source:views/group-v928.js",
+        "urn:sophiewell:file:source:views/group-v932.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
     },
@@ -68696,6 +68761,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/hep-fibrosis-portal-v212.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hep-v124.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hep-v125.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/hepatic-iron-index-v932.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hepatology-gibleed-v201.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hepatology-prognosis-v220.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hepgi-v190.js",
@@ -69283,7 +69349,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "3fb6b7fb40792c88"
+      "value": "00b5f03491d3153f"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -69295,7 +69361,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2415"
+      "value": "2418"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

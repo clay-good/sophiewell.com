@@ -759,6 +759,7 @@ import { renderers as RV924 } from './views/group-v924.js';
 import { renderers as RV925 } from './views/group-v925.js';
 import { renderers as RV927 } from './views/group-v927.js';
 import { renderers as RV928 } from './views/group-v928.js';
+import { renderers as RV932 } from './views/group-v932.js';
 import { renderers as RV164 } from './views/group-v164.js';
 import { renderers as RV165 } from './views/group-v165.js';
 import { renderers as RV166 } from './views/group-v166.js';
@@ -842,7 +843,7 @@ const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...R
   ...RV902,
   ...RV903,
   ...RV905,
-  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV63, ...RPALINT };
+  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -2732,6 +2733,11 @@ const UTILITIES = [
   // spec-v928: auto-PEEP by an end-expiratory hold, and the error it puts into the driving
   // pressure. views/group-v928.js, lib/auto-peep-v928.js, mcp/adapters/auto-peep-v928.js.
   { id: 'auto-peep', name: 'Auto-PEEP (end-expiratory hold)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v932: the hepatic iron index, where the reporting unit is the whole trap -- a
+  // microgram figure read as micromolar overstates it fifty-six-fold. views/group-v932.js,
+  // lib/hepatic-iron-index-v932.js, mcp/adapters/hepatic-iron-index-v932.js.
+  { id: 'hepatic-iron-index', name: 'Hepatic iron index (Bassett)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'gahs',                   name: 'Glasgow Alcoholic Hepatitis Score',                group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'west-haven-he',          name: 'West Haven HE grade (hepatic encephalopathy)',     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'hepatic-steatosis-index', name: 'Hepatic Steatosis Index (NAFLD screen)',          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
