@@ -44,7 +44,7 @@ at once. Four more had a refusal path that a blank slipped straight past:
 | `cfs` | "CFS 1 (Very fit): not frail" |
 | `bps` | "BPS 3 of 12: acceptable pain" — clamped to 1, "relaxed", the exact default its guard existed to prevent |
 
-**Ledger:** 31 → **16**. `KNOWN` may only shrink, and a second test fails if an id in it has
+**Ledger:** 31 → **12**. `KNOWN` may only shrink, and a second test fails if an id in it has
 been fixed and not removed. Three more went in a second pass, and they are the ones that show why the
 rest are not one-liners:
 
@@ -58,9 +58,23 @@ rest are not one-liners:
   safe-discharge cutoff. Both now refuse, which meant returning `score: null` and teaching their
   renderers not to print "GRACE null" above the prompt.
 
-What is left are more of that second kind: banded scores whose libraries take an already-typed
-number, where the fix changes the return shape and its renderer. That is the follow-up this list
-holds.
+Four more went the same way as `mods` — a guard that was already there, which `Number('')`
+walked straight past because 0 is finite:
+
+| Tile | A blank form used to report |
+| --- | --- |
+| `must-nutrition` | "MUST 2: high malnutrition risk; refer to dietitian" — a blank BMI scored as a BMI under 18.5 |
+| `smart-cop` | the 2-point oxygenation criterion, from a blank SpO₂ |
+| `koff-bladder-capacity` | "Expected bladder capacity 60 mL for age 0 years" |
+| `snappe-ii` | "SNAPPE-II 103/162: high illness severity" |
+
+The last two came from one helper each in `lib/peds-v140.js`. One of them had a comment reading
+*"a blank or non-finite value → lo"* while the code only handled non-finite: the intent was
+already right and the empty string was the case nobody had in mind.
+
+What is left are more of the `grace`/`oakland` kind: banded scores whose libraries take an
+already-typed number, where the fix changes the return shape and its renderer. That is the
+follow-up this list holds.
 
 ## A reversal worth recording
 

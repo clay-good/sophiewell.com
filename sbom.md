@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `e83ddab51a67f603`
-Generated: 2026-08-30T16:02:57.744Z
+Build ID: `f0bd9056b372ea3c`
+Generated: 2026-08-30T16:33:56.715Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -638,7 +638,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/peds-growth-v141.js` | 12800 | `d88ff256e715181dc4b0c611584d2542968bd1f2e3cb66bab2f5ad5cab522f1d` |
 | `lib/peds-percentile-v169.js` | 8081 | `f4f77722f256c375a17e4910a4ee7a30253c62c45a0ee4c88afe2a7377cb06ed` |
 | `lib/peds-sepsis-v278.js` | 8360 | `8611b803d3273833b65d5d11eb7de6dc14af6fa36a739cc72700290606b8ef83` |
-| `lib/peds-v140.js` | 17319 | `a56671e5465a6fcd05b586f4b742db215265f6fda6fe3edd9f504d28106a632a` |
+| `lib/peds-v140.js` | 17889 | `0e058883a54b1a214302e123029fd663f503043178fd60284dd749125829dc7b` |
 | `lib/peds-v98.js` | 16874 | `2e6e709332d5911144e0a93dd6ebb5fd0d0719d7c71e90ea4031849701a49cdb` |
 | `lib/pedstox-v247.js` | 7629 | `9ffa2359f05cf582c46fc4d77d02a7906b0f0e62b6b5a952bafaebd45ef4b4a6` |
 | `lib/pef-zones-v891.js` | 6826 | `3d6f9c84c5641a3d89998e5e0a3305468f0607125d9a2ca5fdc0350b84af1ffc` |
@@ -758,7 +758,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/schobinger-avm-v497.js` | 3484 | `fd7d680fede1965fd9a9026d0977e4f2c1970e30d33718df3daaca235dfed009` |
 | `lib/schofield-v779.js` | 4325 | `7c398e3b1dc2df66c5323baee0f73ff66c28927fb47a72ede85dfd51d2de4931` |
 | `lib/schwab-england-v385.js` | 4331 | `caddd0709826db63186ebf0a5f8b60fd9a3e00fa934bddc3e0331977f70c5e4b` |
-| `lib/scoring-v4.js` | 229958 | `bcf779953585b0b707c5801663183f624439cae95b7313d1ff7231b066f79394` |
+| `lib/scoring-v4.js` | 230482 | `8bd086d6b57e65a4290c0cd87d40c049c7edb79d1a9a506cca380c02172a4bda` |
 | `lib/scoring-v5.js` | 12551 | `2e7854ebd83d2aecf3413aefde44cde85f11b1640587d6c1122d493209e00a42` |
 | `lib/scoring-v6.js` | 26559 | `4f2d7d77c536dce8d356539e2c69f941feb34146d251ac96b882c590399ce562` |
 | `lib/scp-pushing-v562.js` | 12399 | `6da019a04668722b7a8d448b4d7bf9908717629b72e4a162088e74363ad62360` |

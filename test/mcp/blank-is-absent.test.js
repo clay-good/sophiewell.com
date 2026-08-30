@@ -29,8 +29,7 @@ import { allCalculators } from '../../mcp/catalog.js';
 // which changes their return shape and their renderers, and is the follow-up this list holds.
 const KNOWN = new Set([
   'abx-renal', 'afi', 'aom-criteria', 'ariscat', 'bishop', 'burch-wartofsky', 'fazekas-wmh',
-  'kings-college', 'koff-bladder-capacity', 'must-nutrition', 'nihss', 'norepi-equiv',
-  'peds-weight-conv', 'qbl-pph', 'smart-cop', 'snappe-ii',
+  'kings-college', 'nihss', 'norepi-equiv', 'peds-weight-conv', 'qbl-pph',
 ]);
 
 function outcome(compute, args) {
