@@ -18,13 +18,13 @@
   "count": 1710,
   "withSummary": 1686,
   "budgetGzip": 231424,
-  "gzipBytes": 56617,
-  "hash": "7a1f0d9c6d3b7fbd",
+  "gzipBytes": 56615,
+  "hash": "a37da5e85e77259f",
   "detail": {
     "file": "corpus-detail.json",
     "count": 1710,
     "budgetGzip": 327680,
-    "gzipBytes": 210103,
-    "hash": "40864b0824bc962e"
+    "gzipBytes": 210113,
+    "hash": "7f86d4e6a0620481"
   }
 }

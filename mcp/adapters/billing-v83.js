@@ -65,7 +65,9 @@ export default [
   },
   {
     id: 'apc-payment',
-    summary: 'OPPS APC payment estimate: relative weight x conversion factor, wage adjusted, with status-indicator packaging (status N pays $0) and the multiple-procedure discount for status-T lines.',
+    // spec-v936: the first sentence is the hub row, and the hub row is cut at about 100
+    // characters. Splitting the packaging rules into a second sentence lets the row finish.
+    summary: 'OPPS APC payment estimate: relative weight x conversion factor, wage adjusted. Status-indicator packaging applies (status N pays $0), as does the multiple-procedure discount for status-T lines.',
     compute: C.apcPayment,
     fields: [
       { dom: 'apc-list', arg: 'lines', kind: 'string', required: true, label: 'APC lines, one per line as "weight, status indicator" (e.g. "10, T")' },

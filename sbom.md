@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `1b42364645ae76dc`
-Generated: 2026-08-30T21:02:07.258Z
+Build ID: `ae4a044f8af6435b`
+Generated: 2026-08-30T22:11:55.080Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -27,7 +27,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 |---|---:|---|
 | `index.html` | 109396 | `50e22f5bb5c81f5f12ef5a2404ca6da6044a5f65a65202be51f55aeec3e04cb5` |
 | `styles.css` | 67361 | `2942923c5157d85e7e381552e74488a519e4a6deff4edd9029489f3311f1870d` |
-| `app.js` | 499325 | `eb6a1d1c69faeb4e99d6988b8694b0b60a70a54f0749a5834ce580873d297be4` |
+| `app.js` | 499496 | `ec7f25731dcd36a669901080f4ae872515a70eda8cb22a199d5c39fdc0d99f0c` |
 | `report-feedback.js` | 12178 | `955e5cb542c7b13dcbb85a75ecf4ccf2dc0b2dffecd84daac1d607bd6acc7cd2` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 | `theme.js` | 3132 | `6910af0b4c65869c6a3d24d17842bb2cc88c7d23f8fb32506fcdbfeec70ce979` |
@@ -953,7 +953,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/billing-v80.js` | 4459 | `49511d8ac100d62e47be175430a1784c99cf02ae65fde5f89ba6eaf39be363ea` |
 | `mcp/adapters/billing-v81.js` | 3431 | `2bb3d67725e2cfb8788e5681c256a62b5970c87e6c546db61a5d1e3a1927d2f4` |
 | `mcp/adapters/billing-v82.js` | 4481 | `d9927196f92edca28d14679ed8b335c87262b4524dea8c6b0538b3541b554a92` |
-| `mcp/adapters/billing-v83.js` | 5976 | `2f137745af345cdb369956fb1444561f7d4df51f29756ee34385ab28c768a73f` |
+| `mcp/adapters/billing-v83.js` | 6166 | `ef59979c46a11b55516389d387383a5b08ce5b40ede2a71345aa9c6808b9b04f` |
 | `mcp/adapters/bilsky-escc-v604.js` | 4923 | `6fbc81158f881ba1faf75315a4e11d687980024727881f433a4e25096f919ed7` |
 | `mcp/adapters/biological-variation-goals-v923.js` | 1935 | `bdfd9f2447fcf0be7ee50ff18d9dd21ffb2b714431fbccd0cd18699ab287f58a` |
 | `mcp/adapters/bismuth-corlette-v399.js` | 1553 | `6e9dd07b4258729b6cd436312cc6e30f7ba5f254c2665b9917c809d1e4863491` |

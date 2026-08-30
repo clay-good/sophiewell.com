@@ -901,8 +901,10 @@ const UTILITIES = [
   { id: 'mbi-validate', name: 'Medicare Beneficiary Identifier (MBI) Format Validator', group: 'B', audiences: ['billers', 'front-desk'], clinical: false },
   { id: 'icd10-validate', name: 'ICD-10-CM Structural & Specificity Checker', group: 'B', audiences: ['coders', 'billers'], clinical: false },
   { id: 'era-balance', name: '835 / EOB Remittance Balancing', group: 'B', audiences: ['billers', 'posting'], clinical: false },
-  { id: 'drg-payment', name: 'IPPS DRG Payment Estimate', group: 'B', audiences: ['facility-billing', 'coders'], clinical: false },
-  { id: 'apc-payment', name: 'OPPS APC Payment Estimate', group: 'B', audiences: ['facility-billing', 'coders'], clinical: false },
+  // spec-v936: 'billers' is the hub key; 'facility-billing' and 'coders' name no hub, so
+  // without it this tile reached no audience page at all.
+  { id: 'drg-payment', name: 'IPPS DRG Payment Estimate', group: 'B', audiences: ['billers', 'facility-billing', 'coders'], clinical: false },
+  { id: 'apc-payment', name: 'OPPS APC Payment Estimate', group: 'B', audiences: ['billers', 'facility-billing', 'coders'], clinical: false },
   // Group C: Patient Bill and Insurance Tools
   // spec-v29 wave 29-2: 12 Group C patient-literacy / eligibility tiles
   // removed (decoder, insurance, eob-decoder, no-surprises,
