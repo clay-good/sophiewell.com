@@ -8063,6 +8063,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/delta-check-v925.js (spec-v925: delta check — clinical disclaimer)
 - `delta-check`
 
+### lib/airway-resistance-v927.js (spec-v927: inspiratory airway resistance — clinical disclaimer)
+- `airway-resistance`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

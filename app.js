@@ -757,6 +757,7 @@ import { renderers as RV922 } from './views/group-v922.js';
 import { renderers as RV923 } from './views/group-v923.js';
 import { renderers as RV924 } from './views/group-v924.js';
 import { renderers as RV925 } from './views/group-v925.js';
+import { renderers as RV927 } from './views/group-v927.js';
 import { renderers as RV164 } from './views/group-v164.js';
 import { renderers as RV165 } from './views/group-v165.js';
 import { renderers as RV166 } from './views/group-v166.js';
@@ -840,7 +841,7 @@ const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...R
   ...RV902,
   ...RV903,
   ...RV905,
-  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV63, ...RPALINT };
+  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -2721,6 +2722,11 @@ const UTILITIES = [
   // spec-v925: the delta check. Thresholds are local, so none are supplied and none are
   // assumed. views/group-v925.js, lib/delta-check-v925.js, mcp/adapters/delta-check-v925.js.
   { id: 'delta-check', name: 'Delta check (change from the last result)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v927: inspiratory airway resistance, and the peak-versus-plateau distinction it
+  // exists to make. views/group-v927.js, lib/airway-resistance-v927.js,
+  // mcp/adapters/airway-resistance-v927.js.
+  { id: 'airway-resistance', name: 'Airway resistance (peak minus plateau)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'gahs',                   name: 'Glasgow Alcoholic Hepatitis Score',                group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'west-haven-he',          name: 'West Haven HE grade (hepatic encephalopathy)',     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'hepatic-steatosis-index', name: 'Hepatic Steatosis Index (NAFLD screen)',          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },

@@ -742,6 +742,7 @@ import * as cohensKappaV922 from '../../lib/cohens-kappa-v922.js';
 import * as biologicalVariationGoalsV923 from '../../lib/biological-variation-goals-v923.js';
 import * as blandAltmanV924 from '../../lib/bland-altman-v924.js';
 import * as deltaCheckV925 from '../../lib/delta-check-v925.js';
+import * as airwayResistanceV927 from '../../lib/airway-resistance-v927.js';
 import * as sadPersonsV701 from '../../lib/sad-persons-v701.js';
 import * as edinburghClaudicationV702 from '../../lib/edinburgh-claudication-v702.js';
 import * as reimersMigrationPercentageV703 from '../../lib/reimers-migration-percentage-v703.js';
@@ -1529,6 +1530,7 @@ const MODULES = {
   'biological-variation-goals-v923.js': biologicalVariationGoalsV923,
   'bland-altman-v924.js': blandAltmanV924,
   'delta-check-v925.js': deltaCheckV925,
+  'airway-resistance-v927.js': airwayResistanceV927,
   'sad-persons-v701.js': sadPersonsV701,
   'edinburgh-claudication-v702.js': edinburghClaudicationV702,
   'reimers-migration-percentage-v703.js': reimersMigrationPercentageV703,

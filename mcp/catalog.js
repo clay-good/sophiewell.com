@@ -760,6 +760,7 @@ import cohensKappaV922 from './adapters/cohens-kappa-v922.js';
 import biologicalVariationGoalsV923 from './adapters/biological-variation-goals-v923.js';
 import blandAltmanV924 from './adapters/bland-altman-v924.js';
 import deltaCheckV925 from './adapters/delta-check-v925.js';
+import airwayResistanceV927 from './adapters/airway-resistance-v927.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
 import reimersMigrationPercentageV703 from './adapters/reimers-migration-percentage-v703.js';
@@ -1546,6 +1547,7 @@ const ADAPTER_MODULES = [
   ['biological-variation-goals-v923', biologicalVariationGoalsV923],
   ['bland-altman-v924', blandAltmanV924],
   ['delta-check-v925', deltaCheckV925],
+  ['airway-resistance-v927', airwayResistanceV927],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],
   ['reimers-migration-percentage-v703', reimersMigrationPercentageV703],
