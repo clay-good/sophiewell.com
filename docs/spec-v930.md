@@ -106,6 +106,34 @@ Verified in a live browser, clearing every number input:
 surface a person actually touches has its own input reader, and it can undo every guard beneath
 it.
 
+### Two more, found by the same measurement
+
+Repeating the audit against the *renderer* rather than the library — view files that define
+`function X(id) { return Number(el.value) }`, renderer blocks that call it, tiles where zero is a
+confident answer — turned up **42** candidates. Two were early-warning scores, and they are the
+worst of the whole spec:
+
+| Tile | An empty observation set reported |
+| --- | --- |
+| `news2` | **"High (≥7): continuous monitoring; emergency assessment by critical-care team"** |
+| `mews` | **"≥5: increased risk of death, ICU admission, and HDU admission"** |
+
+Both band with unguarded `if/else` chains, so a respiratory rate of 0, a saturation of 0 and a
+systolic of 0 each score the worst value. An empty chart is not a deteriorating patient. Both now
+refuse and name the observations they need, and their renderers read with `nvOrNull`.
+
+Two traps in that audit are worth recording, because each cost a pass:
+
+- **`num(` is a field builder in the `group-vNNN` view files, not a reader.** Those renderers
+  pass the raw string through `val()` and were already safe; matching on the name alone flags
+  them all.
+- **Probing with a literal `0` is not probing with `''`.** The first tells you whether zero is a
+  confident answer, which is the *second* half of the question.
+
+Still open, and a different bug: **`pecarn-head` reports "CT recommended" from an empty form**,
+because `gcs15` is a positively-framed checkbox whose *unchecked* state is the alarming answer.
+That is a polarity problem, not a blank-reading one, and it wants its own change.
+
 ### The size of what is left, measured
 
 **803** of the 1,685 exposed calculators take at least one numeric field *and* have a library
