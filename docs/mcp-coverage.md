@@ -8045,6 +8045,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/just-culture-v919.js (spec-v919: Just Culture behavior and response — administrative disclaimer)
 - `just-culture`
 
+### lib/reference-change-value-v920.js (spec-v920: reference change value — clinical disclaimer)
+- `reference-change-value`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

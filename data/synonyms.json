@@ -1,5 +1,5 @@
 {
-  "version": "v240-2026-08-30",
+  "version": "v241-2026-08-30",
   "note": "spec-v7 section 3.2: hand-curated patient-phrasing -> tile id table. Each entry maps patient-mental-model phrases (and, from the v8/v9 plain-language-search batches, clinical abbreviations, eponym aliases, and canonical-intent phrases) to a single existing tile. Audience is the primary audience the entry serves; the matcher deprioritizes (does not hide) entries when the user has selected a different chip. Every phrase is lowercase; every tile id is an existing catalog tile (guarded by test/unit/synonyms-catalog.test.js). Adding a new phrase is a one-line PR.",
   "entries": [
     {
@@ -7430,6 +7430,17 @@
         "console coach discipline"
       ],
       "tile": "just-culture",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "reference change value",
+        "is this lab change real",
+        "critical difference between two results",
+        "delta between serial labs",
+        "biological variation change"
+      ],
+      "tile": "reference-change-value",
       "audience": "clinicians"
     }
   ]

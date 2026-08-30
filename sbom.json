@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:2a8a405e-8ab5-5916-8b38-a84515785dad",
+  "serialNumber": "urn:uuid:d41b9431-2f7e-5b06-8e45-408dadde1af5",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-30T12:00:54.520Z",
+    "timestamp": "2026-08-30T12:20:39.133Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1701 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1702 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4e5c820f32b5ed889a825b6e69c492a5e787a50dec3352779b4677b544b43b5d"
+          "content": "1ad6bc5102cb204a0e06f875f02ae9c5a14235bdae5fc63534b58c1263454093"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "108919"
+          "value": "108978"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "01ba643c52b5af464b8e1a6d1d0a0c0a680db8244512795c04b7f045f9d635ac"
+          "content": "9a43902b6f2c43bacf5c8aa2be7ecff1dcd4586940a1ec789548c6722f3212c4"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "495506"
+          "value": "495938"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "094385ed40435461e5b6682268944f5462096d6ff1ba418f43ab665fbe56b6dc"
+          "content": "0c7f1fc5518cd1e41f1e19ba2d15729ec63e3c5e2d7f3b3b65d019f05ed6d9a8"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "261115"
+          "value": "261277"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7da92d28e31641312ce44dfb5cfe215d3d59a4956855266cbbfd989c7d9c808f"
+          "content": "0d05e512fbd3d1eb1ae5e3e356bd8a1cdd65dc0da07381eced1d45e170e038df"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "94998"
+          "value": "95069"
         }
       ]
     },
@@ -9869,7 +9869,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2b678242f3868cab35d284d79edfc3f3dade4cf6ebb074d3b18cc66892fa6152"
+          "content": "6471c7369fc05bfef5f1a48c50e297506bea48e183bf5ed38c4d361a52d01bd4"
         }
       ],
       "properties": [
@@ -9879,7 +9879,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2416606"
+          "value": "2418473"
         }
       ]
     },
@@ -13975,6 +13975,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "7877"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/reference-change-value-v920.js",
+      "type": "file",
+      "name": "lib/reference-change-value-v920.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6b604d5df6d31e289d9501c75092fc6bfee92b0172a688a650dda16c7df2bb53"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8408"
         }
       ]
     },
@@ -30485,6 +30506,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/reference-change-value-v920.js",
+      "type": "file",
+      "name": "mcp/adapters/reference-change-value-v920.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2dd2447e9769fc4570e2f3ce50313eeedd85e2f95c58d304670265cd09f7b318"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2336"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/regan-morrey-v404.js",
       "type": "file",
       "name": "mcp/adapters/regan-morrey-v404.js",
@@ -34145,7 +34187,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d4e27d06a4842d1e51ad62d1259a2e0767493233f7dbac4ca7604eb5e051dd37"
+          "content": "38b4ea4cee695ceb833df1fed5c0b2f1fa6a238d795755de4c3b680f64415d8e"
         }
       ],
       "properties": [
@@ -34155,7 +34197,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "85863"
+          "value": "86006"
         }
       ]
     },
@@ -50666,6 +50708,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v920.js",
+      "type": "file",
+      "name": "views/group-v920.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2a462509cfc082fb6fda25f5f5bc4fb17dbd3a23fa4b56055e661f79c3134c14"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3484"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:views/pa-lint.js",
       "type": "file",
       "name": "views/pa-lint.js",
@@ -66903,6 +66966,7 @@
         "urn:sophiewell:file:source:lib/rastelli-avsd-v474.js",
         "urn:sophiewell:file:source:lib/rcc-prognosis-v266.js",
         "urn:sophiewell:file:source:lib/rcc-prognosis-v279.js",
+        "urn:sophiewell:file:source:lib/reference-change-value-v920.js",
         "urn:sophiewell:file:source:lib/regan-morrey-v404.js",
         "urn:sophiewell:file:source:lib/regulatory.js",
         "urn:sophiewell:file:source:lib/rehab-v240.js",
@@ -67869,6 +67933,7 @@
         "urn:sophiewell:file:source:views/group-v917.js",
         "urn:sophiewell:file:source:views/group-v918.js",
         "urn:sophiewell:file:source:views/group-v919.js",
+        "urn:sophiewell:file:source:views/group-v920.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
     },
@@ -68478,6 +68543,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/rastelli-avsd-v474.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/rcc-prognosis-v266.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/rcc-prognosis-v279.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/reference-change-value-v920.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/regan-morrey-v404.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/regulatory.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/rehab-v240.js",
@@ -68755,7 +68821,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "2a8a405e8ab53916"
+      "value": "d41b94312f7eab06"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -68767,7 +68833,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2391"
+      "value": "2394"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

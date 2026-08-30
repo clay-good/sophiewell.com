@@ -751,6 +751,7 @@ import { renderers as RV916 } from './views/group-v916.js';
 import { renderers as RV917 } from './views/group-v917.js';
 import { renderers as RV918 } from './views/group-v918.js';
 import { renderers as RV919 } from './views/group-v919.js';
+import { renderers as RV920 } from './views/group-v920.js';
 import { renderers as RV164 } from './views/group-v164.js';
 import { renderers as RV165 } from './views/group-v165.js';
 import { renderers as RV166 } from './views/group-v166.js';
@@ -834,7 +835,7 @@ const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...R
   ...RV902,
   ...RV903,
   ...RV905,
-  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV63, ...RPALINT };
+  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -2686,6 +2687,11 @@ const UTILITIES = [
   // and Category III needs ABSENT variability, not minimal. views/group-v912.js,
   // lib/nichd-fhr-v912.js, mcp/adapters/nichd-fhr-v912.js.
   { id: 'nichd-fhr', name: 'NICHD fetal heart rate category (I, II, III)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v920: the reference change value. A change inside it is never reported as stable.
+  // views/group-v920.js, lib/reference-change-value-v920.js,
+  // mcp/adapters/reference-change-value-v920.js.
+  { id: 'reference-change-value', name: 'Reference change value (serial lab results)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'gahs',                   name: 'Glasgow Alcoholic Hepatitis Score',                group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'west-haven-he',          name: 'West Haven HE grade (hepatic encephalopathy)',     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'hepatic-steatosis-index', name: 'Hepatic Steatosis Index (NAFLD screen)',          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
