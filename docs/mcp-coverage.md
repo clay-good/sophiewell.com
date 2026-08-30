@@ -8054,6 +8054,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/cohens-kappa-v922.js (spec-v922: Cohen's kappa — clinical disclaimer)
 - `cohens-kappa`
 
+### lib/biological-variation-goals-v923.js (spec-v923: analytical goals from biological variation — clinical disclaimer)
+- `biological-variation-goals`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

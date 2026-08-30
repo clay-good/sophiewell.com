@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:8b36f19a-1fe0-5507-8b23-5ba29a83c108",
+  "serialNumber": "urn:uuid:d1b2903d-9691-5ae5-80c9-2089b45cba25",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-30T12:46:31.828Z",
+    "timestamp": "2026-08-30T13:24:19.994Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1704 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1705 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3110284a71f83726f46a7ca18c7fe770c72e61e350ca21c58d02ee0222272ba0"
+          "content": "0c0e6c67f697d3b8ee00d6c975da22b1e9d82420227df80afeadd4b97966a4e0"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "109088"
+          "value": "109146"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "51c20825418ae382a30ab2befe1e1c9e9bec2f452c1401b9d3a001e1c1306a30"
+          "content": "e33f3f4b247394a989687d6f9a44573c0054644ad4977ce667c003905644680a"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "496775"
+          "value": "497253"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "92a6689e1d4432186c4b518c4799b2f7a7584d6f70b6535175babc5fdecfd64d"
+          "content": "2bb0c5831751530e6555f754cf551f6734dfc793baef6e0bcfdf938bf3e4b165"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "261581"
+          "value": "261747"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e1e358a8ecb1239e67699324669ce1506cf625851068c162c2b0bc83f2d4dfbd"
+          "content": "156dfc3ee64d6339f94ecde0caeb75848f2a7c57aa90470d1d95c9f492f0ab24"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "95183"
+          "value": "95257"
         }
       ]
     },
@@ -1795,6 +1795,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "10899"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/biological-variation-goals-v923.js",
+      "type": "file",
+      "name": "lib/biological-variation-goals-v923.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "96cfff402e11e7346c313ff14e7dabba59cdd1a2f0e6953a9e199008e3b94a01"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7561"
         }
       ]
     },
@@ -9890,7 +9911,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4c09d7276e2d39f260b87139ff54a26188e9d325840d2117dcd4de344939ef75"
+          "content": "de4a45dcbd045985c157cb618384003d31623d7b559d70eeabcd641585268bc4"
         }
       ],
       "properties": [
@@ -9900,7 +9921,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2421709"
+          "value": "2423563"
         }
       ]
     },
@@ -19204,6 +19225,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4923"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/biological-variation-goals-v923.js",
+      "type": "file",
+      "name": "mcp/adapters/biological-variation-goals-v923.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "bdfd9f2447fcf0be7ee50ff18d9dd21ffb2b714431fbccd0cd18699ab287f58a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1935"
         }
       ]
     },
@@ -34271,7 +34313,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "34881254e8464c0e27f0cd1b2b78a3d2c181a83cd921e26d1d7c483bbe35171a"
+          "content": "aab4691684c1f584f723353aff3f6547fb40fa9d6061cc6ede10ddcf6103e870"
         }
       ],
       "properties": [
@@ -34281,7 +34323,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "86216"
+          "value": "86375"
         }
       ]
     },
@@ -50855,6 +50897,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v923.js",
+      "type": "file",
+      "name": "views/group-v923.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9b46a5ae98734b1c1e88d835ae3d897e8fef4b97cbc54dfc180d93aa437241ff"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2726"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:views/pa-lint.js",
       "type": "file",
       "name": "views/pa-lint.js",
@@ -66512,6 +66575,7 @@
         "urn:sophiewell:file:source:lib/billing-v82.js",
         "urn:sophiewell:file:source:lib/billing-v83.js",
         "urn:sophiewell:file:source:lib/bilsky-escc-v604.js",
+        "urn:sophiewell:file:source:lib/biological-variation-goals-v923.js",
         "urn:sophiewell:file:source:lib/bismuth-corlette-v399.js",
         "urn:sophiewell:file:source:lib/bologna-por-v588.js",
         "urn:sophiewell:file:source:lib/borden-davf-v441.js",
@@ -68064,6 +68128,7 @@
         "urn:sophiewell:file:source:views/group-v920.js",
         "urn:sophiewell:file:source:views/group-v921.js",
         "urn:sophiewell:file:source:views/group-v922.js",
+        "urn:sophiewell:file:source:views/group-v923.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
     },
@@ -68133,6 +68198,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/billing-v82.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/billing-v83.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/bilsky-escc-v604.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/biological-variation-goals-v923.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/bismuth-corlette-v399.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/bologna-por-v588.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/borden-davf-v441.js",
@@ -68953,7 +69019,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "8b36f19a1fe09507"
+      "value": "d1b2903d9691bae5"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -68965,7 +69031,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2400"
+      "value": "2403"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
