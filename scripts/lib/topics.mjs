@@ -73,9 +73,9 @@ export const TOPICS = {
     h1: 'Obstetrics and pediatrics tools',
     title: 'Obstetrics & Pediatrics - APGAR, PEWS, Bishop, EDD · Sophie Well',
     description: 'Free OB and peds tools: estimated due date, pregnancy dating, Bishop, APGAR, weight-to-dose, ETT size, JumpSTART, PEWS. No signup.',
-    lede: 'OB and pediatric tools: estimated due date and pregnancy dating, the Bishop score for cervical favorability, APGAR scoring, pediatric weight-to-dose and unit conversions, pediatric ETT sizing, JumpSTART MCI triage, PEWS for pediatric acuity, Mentzer for microcytic anemia.',
+    lede: 'OB and pediatric tools: estimated due date and pregnancy dating, the Bishop score for cervical favorability, the NICHD three-tier fetal heart rate categories, APGAR scoring, pediatric weight-to-dose and unit conversions, pediatric ETT sizing, JumpSTART MCI triage, PEWS for pediatric acuity, Mentzer for microcytic anemia.',
     tiles: [
-      'due-date', 'preg-dating', 'bishop', 'apgar',
+      'due-date', 'preg-dating', 'bishop', 'nichd-fhr', 'apgar',
       'peds-dose', 'peds-weight-dose', 'peds-weight-conv', 'peds-ett',
       'jumpstart-triage', 'pews', 'mentzer', 'epds',
     ],
