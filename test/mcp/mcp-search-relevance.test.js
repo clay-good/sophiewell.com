@@ -774,6 +774,7 @@ const PROBES = [
   ['albumin after large volume paracentesis grams per litre', ['lvp-albumin']],
   ['acute tryptase rise baseline mast cell activation', ['tryptase']],
   ['gadolinium nephrogenic systemic fibrosis group ii low egfr', ['gadolinium-nsf']],
+  ['lipid emulsion rescue local anesthetic toxicity dose', ['last-lipid']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],

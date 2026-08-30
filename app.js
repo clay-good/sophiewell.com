@@ -731,6 +731,7 @@ import { renderers as RV891 } from './views/group-v891.js';
 import { renderers as RV892 } from './views/group-v892.js';
 import { renderers as RV894 } from './views/group-v894.js';
 import { renderers as RV895 } from './views/group-v895.js';
+import { renderers as RV896 } from './views/group-v896.js';
 import { renderers as RV164 } from './views/group-v164.js';
 import { renderers as RV165 } from './views/group-v165.js';
 import { renderers as RV166 } from './views/group-v166.js';
@@ -804,7 +805,8 @@ const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...R
   ...RV891,
   ...RV892,
   ...RV894,
-  ...RV895, ...RV63, ...RPALINT };
+  ...RV895,
+  ...RV896, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -2597,6 +2599,7 @@ const UTILITIES = [
   { id: 'lvp-albumin', name: 'Post-Paracentesis Albumin', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'tryptase', name: 'Acute Tryptase Rise (mast cell activation)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'gadolinium-nsf', name: 'Gadolinium and NSF Risk', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'last-lipid', name: 'Lipid Rescue for Local Anesthetic Toxicity', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'gahs',                   name: 'Glasgow Alcoholic Hepatitis Score',                group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'west-haven-he',          name: 'West Haven HE grade (hepatic encephalopathy)',     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'hepatic-steatosis-index', name: 'Hepatic Steatosis Index (NAFLD screen)',          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },

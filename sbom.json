@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:b1499353-1c6d-562c-82b8-a034f60a62a2",
+  "serialNumber": "urn:uuid:a7b78a7a-f166-5b13-80a1-93317783dc92",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-30T01:03:41.617Z",
+    "timestamp": "2026-08-30T01:12:22.914Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1685 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1686 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "acb3105fdad43fca780d377e0c8e4dd3023e4458ac9259d533b583f6d19ef34d"
+          "content": "cfa8449e6fe40121519468e1dbd298632f919648f0b34a851e18e8e4dd6bf9c6"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "108111"
+          "value": "108169"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ab475d2527523cb90895c448fba5ad496fa8b1bb556e98a9cbf192a6ea3f6dcb"
+          "content": "fdeb25600b389bb52e749ec14deb6955c05ef5f74d7c944462f339919e589c94"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "488296"
+          "value": "488512"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1c1d8a901b6f603fae34525e2ef246e4267a4a9eadbf0e34333d08b4b00baa3d"
+          "content": "271d087b9db03b9d3bd745894750d24a4c33e62ba10e95ade11821c11eb029b8"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "258680"
+          "value": "258830"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "39f0b472b42c4e115fc2ebf443c0ab48dc45b25ef0af985de6b79c36f2f84c9b"
+          "content": "4a12f1298cacac6db1016e8bdc59f29da7b6d006964e3605c34cf66a9721da88"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "94155"
+          "value": "94213"
         }
       ]
     },
@@ -8309,6 +8309,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/last-lipid-v896.js",
+      "type": "file",
+      "name": "lib/last-lipid-v896.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3efdcef698dc1b12616d417816bd5470cb2a52f673ff3159512d13cb709bc1cb"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6947"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/lauge-hansen-v402.js",
       "type": "file",
       "name": "lib/lauge-hansen-v402.js",
@@ -9638,7 +9659,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ba045dbe08c4224ba464b44fc2eec2fa9e49dc40018b95c1c36d4732dadccaaf"
+          "content": "2f52e89d355329b248af1f51a4ab0b74aa56e409114a560429cba68e7f8398a5"
         }
       ],
       "properties": [
@@ -9648,7 +9669,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2383965"
+          "value": "2385726"
         }
       ]
     },
@@ -24920,6 +24941,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/last-lipid-v896.js",
+      "type": "file",
+      "name": "mcp/adapters/last-lipid-v896.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fb3704e4bc11b086354d8f7f01bd8aeccce3f94f94aba15f0d56d4621cd75a53"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1465"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/lauge-hansen-v402.js",
       "type": "file",
       "name": "mcp/adapters/lauge-hansen-v402.js",
@@ -33305,7 +33347,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f1fe31bfa6f82fe0b48964f3d119b4bf0998b49b595b41093fa8ac4fbb7c25ec"
+          "content": "9ffa8f917e2265e749de1299353e9bee3a62794ce5d036cf22961a69b4de1f29"
         }
       ],
       "properties": [
@@ -33315,7 +33357,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "83767"
+          "value": "83864"
         }
       ]
     },
@@ -49385,6 +49427,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v896.js",
+      "type": "file",
+      "name": "views/group-v896.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "254797091563dfbefac50c195ceb5c27985de9d915fde991b2f234adc42228e6"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2869"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:views/group-v9.js",
       "type": "file",
       "name": "views/group-v9.js",
@@ -65373,6 +65436,7 @@
         "urn:sophiewell:file:source:lib/lake-louise-cmr-v790.js",
         "urn:sophiewell:file:source:lib/lansky-v352.js",
         "urn:sophiewell:file:source:lib/larsen-ra-v470.js",
+        "urn:sophiewell:file:source:lib/last-lipid-v896.js",
         "urn:sophiewell:file:source:lib/lauge-hansen-v402.js",
         "urn:sophiewell:file:source:lib/lauren-gastric-v393.js",
         "urn:sophiewell:file:source:lib/le-fort-v406.js",
@@ -66568,6 +66632,7 @@
         "urn:sophiewell:file:source:views/group-v892.js",
         "urn:sophiewell:file:source:views/group-v894.js",
         "urn:sophiewell:file:source:views/group-v895.js",
+        "urn:sophiewell:file:source:views/group-v896.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
@@ -66933,6 +66998,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/lake-louise-cmr-v790.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lansky-v352.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/larsen-ra-v470.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/last-lipid-v896.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lauge-hansen-v402.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lauren-gastric-v393.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/le-fort-v406.js",
@@ -67435,7 +67501,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "b14993531c6dd62c"
+      "value": "a7b78a7af1660b13"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -67447,7 +67513,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2331"
+      "value": "2334"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
