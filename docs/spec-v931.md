@@ -29,6 +29,23 @@ value.
 So this is defence in depth against a caller that does neither, not a fix for something a reader
 or an agent hit. The tests say so in as many words.
 
+## Converting it exposed the other half
+
+`Number('')` is `0`. Converting the age turned a **blank** age into a newborn where an absent one
+had given `NaN` — so the fix broke the spec-v930 invariant, and the gate written that morning
+caught it in the same session:
+
+```
+these tiles read an empty string as a value, so an empty form answers from nothing: psi
+```
+
+PSI has no meaning without an age — age *is* the largest single term in it — so a missing age now
+refuses rather than scoring, and the renderer prints the prompt in place of `PSI null - …`.
+Blank and absent reach the same place again.
+
+That is the invariant earning its keep: it caught a regression introduced by a fix to a different
+bug, in a file the fix had every reason to touch.
+
 ## The audit, and what it was actually measuring
 
 The scan compared every tile's answer for `7` against its answer for `'7'`. **112 differed** —

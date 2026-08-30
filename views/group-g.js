@@ -509,7 +509,8 @@ export const renderers = {
         pleuralEffusion: checked('ps-pl'),
       };
       const r = S4.psi(inputs);
-      o.appendChild(el('h2', { text: `PSI ${r.score} - ${r.band}` }));
+      // spec-v931: with no age there is no score, only the prompt.
+      o.appendChild(el('h2', { text: r.score === null ? r.band : `PSI ${r.score} - ${r.band}` }));
       if (deriv) updateDerivationSteps(deriv, META.psi, inputs);
     });
     document.querySelectorAll('input, select').forEach((n) => n.addEventListener(n.type === 'checkbox' || n.tagName === 'SELECT' ? 'change' : 'input', run));
