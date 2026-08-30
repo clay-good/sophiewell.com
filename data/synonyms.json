@@ -1,5 +1,5 @@
 {
-  "version": "v228-2026-07-23",
+  "version": "v229-2026-08-30",
   "note": "spec-v7 section 3.2: hand-curated patient-phrasing -> tile id table. Each entry maps patient-mental-model phrases (and, from the v8/v9 plain-language-search batches, clinical abbreviations, eponym aliases, and canonical-intent phrases) to a single existing tile. Audience is the primary audience the entry serves; the matcher deprioritizes (does not hide) entries when the user has selected a different chip. Every phrase is lowercase; every tile id is an existing catalog tile (guarded by test/unit/synonyms-catalog.test.js). Adding a new phrase is a one-line PR.",
   "entries": [
     {
@@ -6314,626 +6314,995 @@
       ],
       "tile": "erefs",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "forrest class",
+        "bleeding ulcer endoscopic stigmata",
+        "visible vessel ulcer",
+        "adherent clot ulcer",
+        "ulcer rebleeding risk endoscopy"
+      ],
+      "tile": "forrest-classification",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "mallampati class",
+        "airway view assessment",
+        "oropharyngeal view grading",
+        "how much of the throat is visible"
+      ],
+      "tile": "mallampati",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "gold coast criteria",
+        "als diagnostic criteria",
+        "motor neuron disease diagnosis",
+        "amyotrophic lateral sclerosis criteria"
+      ],
+      "tile": "gold-coast-als",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "leipzig score",
+        "wilson disease diagnosis",
+        "ferenci score",
+        "copper metabolism disorder score"
+      ],
+      "tile": "leipzig-wilson",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "mastocytosis criteria",
+        "mast cell disease diagnosis",
+        "tryptase criteria",
+        "kit d816v mast cell"
+      ],
+      "tile": "systemic-mastocytosis",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "cluster headache criteria",
+        "trigeminal autonomic cephalalgia",
+        "one sided eye pain attacks",
+        "suicide headache diagnosis"
+      ],
+      "tile": "cluster-headache-ichd3",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "migraine criteria",
+        "migraine with aura diagnosis",
+        "is this a migraine",
+        "ichd migraine"
+      ],
+      "tile": "migraine-ichd3",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "medication overuse headache",
+        "rebound headache",
+        "painkiller headache",
+        "too many triptans"
+      ],
+      "tile": "moh-ichd3",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "trigeminal neuralgia",
+        "tic douloureux",
+        "electric shock face pain",
+        "facial pain triggered by touch"
+      ],
+      "tile": "trigeminal-neuralgia-ichd3",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "tension headache criteria",
+        "tension type headache",
+        "band around the head headache",
+        "pressing headache both sides"
+      ],
+      "tile": "tension-headache-ichd3",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "paroxysmal hemicrania",
+        "hemicrania continua",
+        "indomethacin responsive headache",
+        "headache that only indomethacin stops"
+      ],
+      "tile": "indomethacin-headache-ichd3",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "sunct",
+        "suna",
+        "short lasting neuralgiform headache",
+        "seconds long stabbing eye pain"
+      ],
+      "tile": "sunct-suna-ichd3",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "ghent nosology",
+        "marfan syndrome criteria",
+        "marfan systemic score",
+        "tall thin lens dislocation aortic root"
+      ],
+      "tile": "ghent-marfan",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "hypermobile ehlers danlos",
+        "heds criteria",
+        "hypermobility syndrome diagnosis",
+        "bendy joints chronic pain criteria"
+      ],
+      "tile": "heds-2017",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "neuromyelitis optica",
+        "nmosd criteria",
+        "devic disease",
+        "aquaporin 4 antibody criteria"
+      ],
+      "tile": "nmosd-2015",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "autoimmune encephalitis",
+        "limbic encephalitis criteria",
+        "graus criteria",
+        "rapid confusion seizures psychiatric new"
+      ],
+      "tile": "autoimmune-encephalitis",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "igg4 related disease",
+        "igg4 rd criteria",
+        "storiform fibrosis diagnosis",
+        "raised igg4 organ swelling"
+      ],
+      "tile": "igg4-rd-2020",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "pulmonary hypertension definition",
+        "pre capillary post capillary ph",
+        "mpap wedge pvr",
+        "right heart cath numbers"
+      ],
+      "tile": "ph-hemodynamics-2022",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "nontuberculous mycobacteria",
+        "ntm lung disease criteria",
+        "mycobacterium avium complex",
+        "mac lung disease diagnosis"
+      ],
+      "tile": "ntm-pulmonary",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "cystic fibrosis diagnosis",
+        "sweat chloride test",
+        "cftr criteria",
+        "positive newborn screen cf"
+      ],
+      "tile": "cf-diagnosis",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "obesity hypoventilation syndrome",
+        "pickwickian",
+        "daytime hypercapnia obesity",
+        "ohs criteria"
+      ],
+      "tile": "ohs-diagnosis",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "alpha 1 antitrypsin",
+        "aatd genotype",
+        "pi zz emphysema",
+        "early emphysema young nonsmoker"
+      ],
+      "tile": "aat-deficiency",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "twin twin transfusion",
+        "quintero stage",
+        "ttts staging",
+        "monochorionic twins fluid discordance"
+      ],
+      "tile": "quintero-ttts",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "chorioamnionitis",
+        "triple i criteria",
+        "intraamniotic infection",
+        "fever in labor"
+      ],
+      "tile": "triple-i",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "placenta accreta",
+        "placenta percreta",
+        "pas grading",
+        "placenta will not separate"
+      ],
+      "tile": "figo-pas",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "premature ovarian insufficiency",
+        "premature menopause",
+        "early menopause criteria",
+        "periods stopped young raised fsh"
+      ],
+      "tile": "poi-diagnosis",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "acromegaly diagnosis",
+        "igf1 growth hormone test",
+        "gh suppression ogtt",
+        "enlarging hands jaw"
+      ],
+      "tile": "acromegaly-biochem",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "hit probability",
+        "platelets dropped on heparin"
+      ],
+      "tile": "four-ts-hit",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "masld",
+        "metald",
+        "fatty liver new name",
+        "steatotic liver disease criteria",
+        "nafld renamed"
+      ],
+      "tile": "masld-criteria",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "clinical obesity",
+        "preclinical obesity",
+        "is bmi enough to diagnose obesity",
+        "obesity as a disease criteria"
+      ],
+      "tile": "clinical-obesity",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "atrial fibrillation stages",
+        "af staging",
+        "permanent vs persistent af",
+        "pre-af"
+      ],
+      "tile": "af-stages-2023",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "hfref hfpef hfmref",
+        "hfimpef",
+        "ejection fraction heart failure category",
+        "improved ejection fraction"
+      ],
+      "tile": "hf-ef-classification",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "diabetes diagnosis",
+        "prediabetes",
+        "a1c 6.5",
+        "do i have diabetes criteria",
+        "fasting glucose 126"
+      ],
+      "tile": "diabetes-diagnosis",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "heart failure stages",
+        "stage a b c d heart failure",
+        "pre heart failure",
+        "at risk for heart failure"
+      ],
+      "tile": "hf-stages-abcd",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "blood pressure categories",
+        "is my blood pressure high",
+        "stage 1 hypertension",
+        "what does 135 over 95 mean",
+        "hypertension stages"
+      ],
+      "tile": "bp-categories",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "aortic stenosis severity",
+        "is this severe aortic stenosis",
+        "low gradient aortic stenosis",
+        "paradoxical low flow aortic stenosis",
+        "aortic stenosis stages"
+      ],
+      "tile": "aortic-stenosis-stage",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "mitral stenosis severity",
+        "is this severe mitral stenosis",
+        "rheumatic mitral stenosis stage",
+        "mitral valve area 1.2",
+        "mitral stenosis stages"
+      ],
+      "tile": "mitral-stenosis-stage",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "aortic regurgitation severity",
+        "is this severe aortic regurgitation",
+        "aortic insufficiency stage",
+        "when to operate aortic regurgitation",
+        "aortic regurgitation stages"
+      ],
+      "tile": "aortic-regurgitation-stage",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "mitral regurgitation severity",
+        "is this severe mitral regurgitation",
+        "primary mitral regurgitation stage",
+        "when to operate mitral regurgitation",
+        "mitral regurgitation stages"
+      ],
+      "tile": "mitral-regurgitation-stage",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "tricuspid regurgitation severity",
+        "is this severe tricuspid regurgitation",
+        "tricuspid regurgitation stage",
+        "leaky tricuspid valve grading",
+        "tricuspid regurgitation stages"
+      ],
+      "tile": "tricuspid-regurgitation-stage",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "secondary mitral regurgitation stage",
+        "functional mitral regurgitation severity",
+        "ischemic mitral regurgitation grading",
+        "is this severe functional mitral regurgitation",
+        "secondary mitral regurgitation stages"
+      ],
+      "tile": "secondary-mitral-regurgitation-stage",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "rope score",
+        "risk of paradoxical embolism",
+        "did the hole in my heart cause my stroke",
+        "patent foramen ovale stroke cause",
+        "pfo attributable fraction"
+      ],
+      "tile": "rope-score",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "rassi score",
+        "chagas heart disease prognosis",
+        "chagas cardiomyopathy risk score",
+        "chagas disease mortality risk",
+        "chagas heart risk score"
+      ],
+      "tile": "rassi-chagas",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "spontaneous bacterial peritonitis",
+        "ascitic fluid neutrophil count",
+        "is this ascites infected",
+        "sbp diagnosis ascitic pmn",
+        "bloody tap ascites correction"
+      ],
+      "tile": "sbp-ascitic-fluid",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "constrictive pericarditis echo criteria",
+        "constriction versus restriction echo",
+        "septal bounce annulus reversus",
+        "is this constrictive pericarditis",
+        "constrictive pericarditis criteria"
+      ],
+      "tile": "constrictive-pericarditis-echo",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "gastric emptying study",
+        "gastroparesis severity from the scan",
+        "how much of the meal is left at four hours",
+        "gastric emptying scan interpretation"
+      ],
+      "tile": "gastric-emptying-scintigraphy",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "narcolepsy criteria",
+        "narcolepsy type 1 versus type 2",
+        "do i have narcolepsy",
+        "cataplexy sleep latency test criteria",
+        "narcolepsy diagnostic criteria"
+      ],
+      "tile": "narcolepsy-criteria",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "restless legs syndrome criteria",
+        "do i have restless legs",
+        "willis ekbom disease criteria",
+        "urge to move my legs at night",
+        "restless legs diagnostic criteria"
+      ],
+      "tile": "rls-criteria",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "acute otitis media criteria",
+        "does my child have an ear infection",
+        "ear infection antibiotics or wait",
+        "bulging eardrum diagnosis",
+        "acute otitis media diagnosis"
+      ],
+      "tile": "aom-criteria",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "grades of hearing loss",
+        "how bad is my hearing loss",
+        "pure tone average hearing grade",
+        "hearing loss severity classification",
+        "hearing loss grade"
+      ],
+      "tile": "who-hearing-grade",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "priapism",
+        "is this priapism ischemic",
+        "cavernous blood gas priapism",
+        "low flow vs high flow priapism",
+        "prolonged painful erection"
+      ],
+      "tile": "priapism-gas",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "malignant hyperthermia",
+        "mh grading scale",
+        "larach score",
+        "was this malignant hyperthermia",
+        "mh susceptibility likelihood"
+      ],
+      "tile": "mh-grading-scale",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "spinal epidural abscess",
+        "back pain red flags imaging",
+        "when to mri back pain infection",
+        "epidural abscess risk factors",
+        "spine pain sedimentation rate"
+      ],
+      "tile": "sea-guideline",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "m chat",
+        "autism screening toddler",
+        "screen my toddler for autism",
+        "modified checklist for autism in toddlers",
+        "18 month autism screen"
+      ],
+      "tile": "mchat-rf",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "blood lead level",
+        "is this lead level high",
+        "lead reference value",
+        "lead poisoning child",
+        "lead screening result"
+      ],
+      "tile": "blood-lead",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "methemoglobinemia",
+        "methemoglobin level",
+        "chocolate brown blood",
+        "saturation gap pulse oximeter",
+        "methylene blue indication"
+      ],
+      "tile": "methemoglobin",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "carbon monoxide poisoning",
+        "carboxyhemoglobin level",
+        "co level after fire",
+        "smoke inhalation carbon monoxide",
+        "is this co level dangerous"
+      ],
+      "tile": "carboxyhemoglobin",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "broset violence checklist",
+        "violence risk inpatient",
+        "will this patient become violent",
+        "aggression risk next shift",
+        "bvc score"
+      ],
+      "tile": "broset",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "who severe malaria criteria",
+        "is this malaria severe",
+        "severe falciparum malaria features",
+        "malaria severity criteria",
+        "when to give iv artesunate criteria"
+      ],
+      "tile": "who-severe-malaria",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "pertussis case definition",
+        "whooping cough case definition",
+        "is this a confirmed pertussis case",
+        "probable pertussis criteria",
+        "cdc pertussis surveillance definition"
+      ],
+      "tile": "pertussis-case-def",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "eortc msg invasive fungal disease definitions",
+        "proven probable possible fungal infection",
+        "is this probable aspergillosis",
+        "galactomannan threshold criteria",
+        "invasive mold disease criteria"
+      ],
+      "tile": "eortc-msg-ifd",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "neuroleptic malignant syndrome criteria",
+        "nms diagnostic criteria",
+        "is this nms or serotonin syndrome",
+        "antipsychotic fever rigidity rhabdomyolysis",
+        "gurrera consensus criteria"
+      ],
+      "tile": "nms-criteria",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "measles case definition",
+        "is this rash measles",
+        "measles suspect probable confirmed",
+        "febrile rash isolation measles",
+        "measles igm negative early"
+      ],
+      "tile": "measles-case-def",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "lyme two tier testing",
+        "how to interpret lyme serology",
+        "lyme western blot interpretation",
+        "is this a positive lyme test",
+        "lyme igm without igg"
+      ],
+      "tile": "lyme-two-tier",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "clabsi definition",
+        "is this a central line infection",
+        "nhsn bloodstream infection criteria",
+        "laboratory confirmed bloodstream infection criteria",
+        "blood culture contaminant or clabsi"
+      ],
+      "tile": "clabsi-lcbi",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "cauti definition",
+        "is this a catheter associated uti",
+        "nhsn urinary tract infection criteria",
+        "does dysuria count with a foley in",
+        "mixed urine culture cauti"
+      ],
+      "tile": "cauti-nhsn",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "ventilator associated event",
+        "vac ivac pvap criteria",
+        "is this a ventilator associated pneumonia",
+        "nhsn vae algorithm",
+        "peep fio2 rise surveillance"
+      ],
+      "tile": "nhsn-vae",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "angioedema staging",
+        "ace inhibitor angioedema airway risk",
+        "does this angioedema need icu",
+        "tongue swelling airway stage",
+        "ishoo classification"
+      ],
+      "tile": "ishoo-angioedema",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "membranous nephropathy risk",
+        "kdigo membranous risk category",
+        "when to treat membranous nephropathy",
+        "pla2r antibody interpretation",
+        "nephrotic proteinuria immunosuppression decision"
+      ],
+      "tile": "membranous-risk",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "cancer cachexia definition",
+        "is this weight loss cachexia",
+        "fearon cachexia criteria",
+        "precachexia refractory cachexia stage",
+        "weight loss percent bmi cancer"
+      ],
+      "tile": "cancer-cachexia",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "sarcopenia diagnosis",
+        "ewgsop2 algorithm",
+        "grip strength cutoff sarcopenia",
+        "is this probable sarcopenia",
+        "muscle mass index sarcopenia"
+      ],
+      "tile": "ewgsop2",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "vitamin d level interpretation",
+        "is my vitamin d low",
+        "25 hydroxyvitamin d threshold",
+        "vitamin d deficiency cutoff",
+        "should i check a vitamin d level"
+      ],
+      "tile": "vitamin-d-level",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "when is the next colonoscopy",
+        "post polypectomy surveillance interval",
+        "adenoma follow up interval",
+        "colonoscopy surveillance guideline",
+        "how soon repeat colonoscopy after polyps"
+      ],
+      "tile": "polyp-surveillance",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "fukuoka guidelines ipmn",
+        "pancreatic cyst worrisome features",
+        "does this pancreatic cyst need surgery",
+        "high risk stigmata ipmn",
+        "branch duct ipmn management"
+      ],
+      "tile": "ipmn-fukuoka",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "eat sleep console",
+        "neonatal opioid withdrawal care",
+        "esc approach nas",
+        "does this baby need morphine",
+        "function based assessment newborn withdrawal"
+      ],
+      "tile": "eat-sleep-console",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "niosh lifting equation",
+        "how much can this be lifted safely",
+        "recommended weight limit lifting",
+        "lifting index calculation",
+        "manual handling assessment"
+      ],
+      "tile": "niosh-lifting",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "occupational noise exposure limit",
+        "how long can i work at this noise level",
+        "osha niosh noise standard",
+        "hearing protection derating nrr",
+        "decibel exposure time"
+      ],
+      "tile": "noise-exposure",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "needlestick hiv prophylaxis",
+        "occupational hiv exposure",
+        "do i need pep after a needlestick",
+        "sharps injury source unknown",
+        "post exposure prophylaxis decision"
+      ],
+      "tile": "hiv-pep-occupational",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "feno interpretation",
+        "exhaled nitric oxide level",
+        "is this feno high",
+        "nitric oxide asthma test",
+        "eosinophilic airway inflammation marker"
+      ],
+      "tile": "feno",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "home oxygen criteria",
+        "does this patient qualify for home oxygen",
+        "long term oxygen therapy qualification",
+        "saturation 88 percent oxygen",
+        "oxygen prescription requirements"
+      ],
+      "tile": "home-oxygen",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "methacholine challenge interpretation",
+        "pd20 pc20 cutoff",
+        "bronchial provocation result",
+        "is this methacholine test positive",
+        "airway hyperresponsiveness testing"
+      ],
+      "tile": "methacholine",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "peak flow zones",
+        "asthma action plan green yellow red",
+        "what does my peak flow mean",
+        "peak flow percent of personal best",
+        "peak expiratory flow zone calculator"
+      ],
+      "tile": "pef-zones",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "albumin after paracentesis",
+        "how much albumin after paracentesis",
+        "large volume paracentesis albumin dose",
+        "ascites drainage albumin replacement",
+        "post paracentesis circulatory dysfunction"
+      ],
+      "tile": "lvp-albumin",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "tryptase rise anaphylaxis",
+        "is this tryptase elevated",
+        "acute versus baseline tryptase",
+        "mast cell activation criteria",
+        "tryptase 1.2 plus 2 rule"
+      ],
+      "tile": "tryptase",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "gadolinium low egfr",
+        "nephrogenic systemic fibrosis risk",
+        "can this patient have gadolinium",
+        "group ii gadolinium agent dialysis",
+        "mri contrast kidney function"
+      ],
+      "tile": "gadolinium-nsf",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "lipid rescue dose",
+        "local anesthetic toxicity treatment",
+        "intralipid for last",
+        "bupivacaine toxicity lipid emulsion",
+        "how much lipid emulsion for 70 kg"
+      ],
+      "tile": "last-lipid",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "preoperative fasting times",
+        "npo before surgery",
+        "how long clear liquids before surgery",
+        "asa fasting guideline hours",
+        "can this patient drink before anesthesia"
+      ],
+      "tile": "preop-fasting",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "surgery after stent timing",
+        "how long after a drug eluting stent",
+        "elective surgery delay after pci",
+        "bare metal stent 30 days surgery",
+        "stent thrombosis noncardiac surgery"
+      ],
+      "tile": "pci-surgery-timing",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "should i bridge anticoagulation",
+        "hold warfarin before surgery",
+        "doac interruption before procedure",
+        "periprocedural anticoagulation",
+        "bridging heparin before surgery"
+      ],
+      "tile": "periop-bridging",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "skin tear classification",
+        "istap type skin tear",
+        "is this a stage 2 or a skin tear",
+        "flap loss wound type",
+        "skin tear documentation"
+      ],
+      "tile": "skin-tear",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "incontinence associated dermatitis",
+        "moisture damage or pressure injury",
+        "globiad category",
+        "pressure injury or moisture damage",
+        "perineal skin breakdown category"
+      ],
+      "tile": "iad-globiad",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "medical adhesive related skin injury",
+        "tape damage to skin",
+        "skin stripping from dressing",
+        "marsi category",
+        "adhesive removal skin injury"
+      ],
+      "tile": "marsi",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "cuff leak test",
+        "post extubation stridor risk",
+        "leak volume before extubation",
+        "should i extubate with a small cuff leak",
+        "laryngeal edema test"
+      ],
+      "tile": "cuff-leak",
+      "audience": "clinicians"
     }
-  ],
-  "forrest-classification": [
-    "forrest class",
-    "bleeding ulcer endoscopic stigmata",
-    "visible vessel ulcer",
-    "adherent clot ulcer",
-    "ulcer rebleeding risk endoscopy"
-  ],
-  "mallampati": [
-    "mallampati class",
-    "airway view assessment",
-    "oropharyngeal view grading",
-    "how much of the throat is visible"
-  ],
-  "gold-coast-als": [
-    "gold coast criteria",
-    "als diagnostic criteria",
-    "motor neuron disease diagnosis",
-    "amyotrophic lateral sclerosis criteria"
-  ],
-  "leipzig-wilson": [
-    "leipzig score",
-    "wilson disease diagnosis",
-    "ferenci score",
-    "copper metabolism disorder score"
-  ],
-  "systemic-mastocytosis": [
-    "mastocytosis criteria",
-    "mast cell disease diagnosis",
-    "tryptase criteria",
-    "kit d816v mast cell"
-  ],
-  "cluster-headache-ichd3": [
-    "cluster headache criteria",
-    "trigeminal autonomic cephalalgia",
-    "one sided eye pain attacks",
-    "suicide headache diagnosis"
-  ],
-  "migraine-ichd3": [
-    "migraine criteria",
-    "migraine with aura diagnosis",
-    "is this a migraine",
-    "ichd migraine"
-  ],
-  "moh-ichd3": [
-    "medication overuse headache",
-    "rebound headache",
-    "painkiller headache",
-    "too many triptans"
-  ],
-  "trigeminal-neuralgia-ichd3": [
-    "trigeminal neuralgia",
-    "tic douloureux",
-    "electric shock face pain",
-    "facial pain triggered by touch"
-  ],
-  "tension-headache-ichd3": [
-    "tension headache criteria",
-    "tension type headache",
-    "band around the head headache",
-    "pressing headache both sides"
-  ],
-  "indomethacin-headache-ichd3": [
-    "paroxysmal hemicrania",
-    "hemicrania continua",
-    "indomethacin responsive headache",
-    "headache that only indomethacin stops"
-  ],
-  "sunct-suna-ichd3": [
-    "sunct",
-    "suna",
-    "short lasting neuralgiform headache",
-    "seconds long stabbing eye pain"
-  ],
-  "ghent-marfan": [
-    "ghent nosology",
-    "marfan syndrome criteria",
-    "marfan systemic score",
-    "tall thin lens dislocation aortic root"
-  ],
-  "heds-2017": [
-    "hypermobile ehlers danlos",
-    "heds criteria",
-    "hypermobility syndrome diagnosis",
-    "bendy joints chronic pain criteria"
-  ],
-  "nmosd-2015": [
-    "neuromyelitis optica",
-    "nmosd criteria",
-    "devic disease",
-    "aquaporin 4 antibody criteria"
-  ],
-  "autoimmune-encephalitis": [
-    "autoimmune encephalitis",
-    "limbic encephalitis criteria",
-    "graus criteria",
-    "rapid confusion seizures psychiatric new"
-  ],
-  "igg4-rd-2020": [
-    "igg4 related disease",
-    "igg4 rd criteria",
-    "storiform fibrosis diagnosis",
-    "raised igg4 organ swelling"
-  ],
-  "ph-hemodynamics-2022": [
-    "pulmonary hypertension definition",
-    "pre capillary post capillary ph",
-    "mpap wedge pvr",
-    "right heart cath numbers"
-  ],
-  "ntm-pulmonary": [
-    "nontuberculous mycobacteria",
-    "ntm lung disease criteria",
-    "mycobacterium avium complex",
-    "mac lung disease diagnosis"
-  ],
-  "cf-diagnosis": [
-    "cystic fibrosis diagnosis",
-    "sweat chloride test",
-    "cftr criteria",
-    "positive newborn screen cf"
-  ],
-  "ohs-diagnosis": [
-    "obesity hypoventilation syndrome",
-    "pickwickian",
-    "daytime hypercapnia obesity",
-    "ohs criteria"
-  ],
-  "aat-deficiency": [
-    "alpha 1 antitrypsin",
-    "aatd genotype",
-    "pi zz emphysema",
-    "early emphysema young nonsmoker"
-  ],
-  "quintero-ttts": [
-    "twin twin transfusion",
-    "quintero stage",
-    "ttts staging",
-    "monochorionic twins fluid discordance"
-  ],
-  "triple-i": [
-    "chorioamnionitis",
-    "triple i criteria",
-    "intraamniotic infection",
-    "fever in labor"
-  ],
-  "figo-pas": [
-    "placenta accreta",
-    "placenta percreta",
-    "pas grading",
-    "placenta will not separate"
-  ],
-  "poi-diagnosis": [
-    "premature ovarian insufficiency",
-    "premature menopause",
-    "early menopause criteria",
-    "periods stopped young raised fsh"
-  ],
-  "acromegaly-biochem": [
-    "acromegaly diagnosis",
-    "igf1 growth hormone test",
-    "gh suppression ogtt",
-    "enlarging hands jaw"
-  ],
-  "four-ts-hit": [
-    "4ts score",
-    "heparin induced thrombocytopenia",
-    "hit probability",
-    "platelets dropped on heparin"
-  ],
-  "masld-criteria": [
-    "masld",
-    "metald",
-    "fatty liver new name",
-    "steatotic liver disease criteria",
-    "nafld renamed"
-  ],
-  "clinical-obesity": [
-    "clinical obesity",
-    "preclinical obesity",
-    "is bmi enough to diagnose obesity",
-    "obesity as a disease criteria"
-  ],
-  "af-stages-2023": [
-    "atrial fibrillation stages",
-    "af staging",
-    "permanent vs persistent af",
-    "pre-af"
-  ],
-  "hf-ef-classification": [
-    "hfref hfpef hfmref",
-    "hfimpef",
-    "ejection fraction heart failure category",
-    "improved ejection fraction"
-  ],
-  "diabetes-diagnosis": [
-    "diabetes diagnosis",
-    "prediabetes",
-    "a1c 6.5",
-    "do i have diabetes criteria",
-    "fasting glucose 126"
-  ],
-  "hf-stages-abcd": [
-    "heart failure stages",
-    "stage a b c d heart failure",
-    "pre heart failure",
-    "at risk for heart failure"
-  ],
-  "bp-categories": [
-    "blood pressure categories",
-    "is my blood pressure high",
-    "stage 1 hypertension",
-    "what does 135 over 95 mean",
-    "hypertension stages"
-  ],
-  "aortic-stenosis-stage": [
-    "aortic stenosis severity",
-    "is this severe aortic stenosis",
-    "low gradient aortic stenosis",
-    "paradoxical low flow aortic stenosis",
-    "aortic stenosis stages"
-  ],
-  "mitral-stenosis-stage": [
-    "mitral stenosis severity",
-    "is this severe mitral stenosis",
-    "rheumatic mitral stenosis stage",
-    "mitral valve area 1.2",
-    "mitral stenosis stages"
-  ],
-  "aortic-regurgitation-stage": [
-    "aortic regurgitation severity",
-    "is this severe aortic regurgitation",
-    "aortic insufficiency stage",
-    "when to operate aortic regurgitation",
-    "aortic regurgitation stages"
-  ],
-  "mitral-regurgitation-stage": [
-    "mitral regurgitation severity",
-    "is this severe mitral regurgitation",
-    "primary mitral regurgitation stage",
-    "when to operate mitral regurgitation",
-    "mitral regurgitation stages"
-  ],
-  "tricuspid-regurgitation-stage": [
-    "tricuspid regurgitation severity",
-    "is this severe tricuspid regurgitation",
-    "tricuspid regurgitation stage",
-    "leaky tricuspid valve grading",
-    "tricuspid regurgitation stages"
-  ],
-  "secondary-mitral-regurgitation-stage": [
-    "secondary mitral regurgitation stage",
-    "functional mitral regurgitation severity",
-    "ischemic mitral regurgitation grading",
-    "is this severe functional mitral regurgitation",
-    "secondary mitral regurgitation stages"
-  ],
-  "rope-score": [
-    "rope score",
-    "risk of paradoxical embolism",
-    "did the hole in my heart cause my stroke",
-    "patent foramen ovale stroke cause",
-    "pfo attributable fraction"
-  ],
-  "rassi-chagas": [
-    "rassi score",
-    "chagas heart disease prognosis",
-    "chagas cardiomyopathy risk score",
-    "chagas disease mortality risk",
-    "chagas heart risk score"
-  ],
-  "sbp-ascitic-fluid": [
-    "spontaneous bacterial peritonitis",
-    "ascitic fluid neutrophil count",
-    "is this ascites infected",
-    "sbp diagnosis ascitic pmn",
-    "bloody tap ascites correction"
-  ],
-  "constrictive-pericarditis-echo": [
-    "constrictive pericarditis echo criteria",
-    "constriction versus restriction echo",
-    "septal bounce annulus reversus",
-    "is this constrictive pericarditis",
-    "constrictive pericarditis criteria"
-  ],
-  "gastric-emptying-scintigraphy": [
-    "gastric emptying study",
-    "delayed gastric emptying grade",
-    "gastroparesis severity from the scan",
-    "how much of the meal is left at four hours",
-    "gastric emptying scan interpretation"
-  ],
-  "narcolepsy-criteria": [
-    "narcolepsy criteria",
-    "narcolepsy type 1 versus type 2",
-    "do i have narcolepsy",
-    "cataplexy sleep latency test criteria",
-    "narcolepsy diagnostic criteria"
-  ],
-  "rls-criteria": [
-    "restless legs syndrome criteria",
-    "do i have restless legs",
-    "willis ekbom disease criteria",
-    "urge to move my legs at night",
-    "restless legs diagnostic criteria"
-  ],
-  "aom-criteria": [
-    "acute otitis media criteria",
-    "does my child have an ear infection",
-    "ear infection antibiotics or wait",
-    "bulging eardrum diagnosis",
-    "acute otitis media diagnosis"
-  ],
-  "who-hearing-grade": [
-    "grades of hearing loss",
-    "how bad is my hearing loss",
-    "pure tone average hearing grade",
-    "hearing loss severity classification",
-    "hearing loss grade"
-  ],
-  "priapism-gas": [
-    "priapism",
-    "is this priapism ischemic",
-    "cavernous blood gas priapism",
-    "low flow vs high flow priapism",
-    "prolonged painful erection"
-  ],
-  "mh-grading-scale": [
-    "malignant hyperthermia",
-    "mh grading scale",
-    "larach score",
-    "was this malignant hyperthermia",
-    "mh susceptibility likelihood"
-  ],
-  "sea-guideline": [
-    "spinal epidural abscess",
-    "back pain red flags imaging",
-    "when to mri back pain infection",
-    "epidural abscess risk factors",
-    "spine pain sedimentation rate"
-  ],
-  "mchat-rf": [
-    "m chat",
-    "autism screening toddler",
-    "screen my toddler for autism",
-    "modified checklist for autism in toddlers",
-    "18 month autism screen"
-  ],
-  "blood-lead": [
-    "blood lead level",
-    "is this lead level high",
-    "lead reference value",
-    "lead poisoning child",
-    "lead screening result"
-  ],
-  "methemoglobin": [
-    "methemoglobinemia",
-    "methemoglobin level",
-    "chocolate brown blood",
-    "saturation gap pulse oximeter",
-    "methylene blue indication"
-  ],
-  "carboxyhemoglobin": [
-    "carbon monoxide poisoning",
-    "carboxyhemoglobin level",
-    "co level after fire",
-    "smoke inhalation carbon monoxide",
-    "is this co level dangerous"
-  ],
-  "broset": [
-    "broset violence checklist",
-    "violence risk inpatient",
-    "will this patient become violent",
-    "aggression risk next shift",
-    "bvc score"
-  ],
-  "who-severe-malaria": [
-    "who severe malaria criteria",
-    "is this malaria severe",
-    "severe falciparum malaria features",
-    "malaria severity criteria",
-    "when to give iv artesunate criteria"
-  ],
-  "pertussis-case-def": [
-    "pertussis case definition",
-    "whooping cough case definition",
-    "is this a confirmed pertussis case",
-    "probable pertussis criteria",
-    "cdc pertussis surveillance definition"
-  ],
-  "eortc-msg-ifd": [
-    "eortc msg invasive fungal disease definitions",
-    "proven probable possible fungal infection",
-    "is this probable aspergillosis",
-    "galactomannan threshold criteria",
-    "invasive mold disease criteria"
-  ],
-  "nms-criteria": [
-    "neuroleptic malignant syndrome criteria",
-    "nms diagnostic criteria",
-    "is this nms or serotonin syndrome",
-    "antipsychotic fever rigidity rhabdomyolysis",
-    "gurrera consensus criteria"
-  ],
-  "measles-case-def": [
-    "measles case definition",
-    "is this rash measles",
-    "measles suspect probable confirmed",
-    "febrile rash isolation measles",
-    "measles igm negative early"
-  ],
-  "lyme-two-tier": [
-    "lyme two tier testing",
-    "how to interpret lyme serology",
-    "lyme western blot interpretation",
-    "is this a positive lyme test",
-    "lyme igm without igg"
-  ],
-  "clabsi-lcbi": [
-    "clabsi definition",
-    "is this a central line infection",
-    "nhsn bloodstream infection criteria",
-    "lcbi 1 lcbi 2 criteria",
-    "blood culture contaminant or clabsi"
-  ],
-  "cauti-nhsn": [
-    "cauti definition",
-    "is this a catheter associated uti",
-    "nhsn urinary tract infection criteria",
-    "does dysuria count with a foley in",
-    "mixed urine culture cauti"
-  ],
-  "nhsn-vae": [
-    "ventilator associated event",
-    "vac ivac pvap criteria",
-    "is this a ventilator associated pneumonia",
-    "nhsn vae algorithm",
-    "peep fio2 rise surveillance"
-  ],
-  "ishoo-angioedema": [
-    "angioedema staging",
-    "ace inhibitor angioedema airway risk",
-    "does this angioedema need icu",
-    "tongue swelling airway stage",
-    "ishoo classification"
-  ],
-  "membranous-risk": [
-    "membranous nephropathy risk",
-    "kdigo membranous risk category",
-    "when to treat membranous nephropathy",
-    "pla2r antibody interpretation",
-    "nephrotic proteinuria immunosuppression decision"
-  ],
-  "cancer-cachexia": [
-    "cancer cachexia definition",
-    "is this weight loss cachexia",
-    "fearon cachexia criteria",
-    "precachexia refractory cachexia stage",
-    "weight loss percent bmi cancer"
-  ],
-  "ewgsop2": [
-    "sarcopenia diagnosis",
-    "ewgsop2 algorithm",
-    "grip strength cutoff sarcopenia",
-    "is this probable sarcopenia",
-    "muscle mass index sarcopenia"
-  ],
-  "vitamin-d-level": [
-    "vitamin d level interpretation",
-    "is my vitamin d low",
-    "25 hydroxyvitamin d threshold",
-    "vitamin d deficiency cutoff",
-    "should i check a vitamin d level"
-  ],
-  "polyp-surveillance": [
-    "when is the next colonoscopy",
-    "post polypectomy surveillance interval",
-    "adenoma follow up interval",
-    "colonoscopy surveillance guideline",
-    "how soon repeat colonoscopy after polyps"
-  ],
-  "ipmn-fukuoka": [
-    "fukuoka guidelines ipmn",
-    "pancreatic cyst worrisome features",
-    "does this pancreatic cyst need surgery",
-    "high risk stigmata ipmn",
-    "branch duct ipmn management"
-  ],
-  "eat-sleep-console": [
-    "eat sleep console",
-    "neonatal opioid withdrawal care",
-    "esc approach nas",
-    "does this baby need morphine",
-    "function based assessment newborn withdrawal"
-  ],
-  "niosh-lifting": [
-    "niosh lifting equation",
-    "how much can this be lifted safely",
-    "recommended weight limit lifting",
-    "lifting index calculation",
-    "manual handling assessment"
-  ],
-  "noise-exposure": [
-    "occupational noise exposure limit",
-    "how long can i work at this noise level",
-    "osha niosh noise standard",
-    "hearing protection derating nrr",
-    "decibel exposure time"
-  ],
-  "hiv-pep-occupational": [
-    "needlestick hiv prophylaxis",
-    "occupational hiv exposure",
-    "do i need pep after a needlestick",
-    "sharps injury source unknown",
-    "post exposure prophylaxis decision"
-  ],
-  "feno": [
-    "feno interpretation",
-    "exhaled nitric oxide level",
-    "is this feno high",
-    "nitric oxide asthma test",
-    "eosinophilic airway inflammation marker"
-  ],
-  "home-oxygen": [
-    "home oxygen criteria",
-    "does this patient qualify for home oxygen",
-    "long term oxygen therapy qualification",
-    "saturation 88 percent oxygen",
-    "oxygen prescription requirements"
-  ],
-  "methacholine": [
-    "methacholine challenge interpretation",
-    "pd20 pc20 cutoff",
-    "bronchial provocation result",
-    "is this methacholine test positive",
-    "airway hyperresponsiveness testing"
-  ],
-  "pef-zones": [
-    "peak flow zones",
-    "asthma action plan green yellow red",
-    "what does my peak flow mean",
-    "peak flow percent of personal best",
-    "peak expiratory flow zone calculator"
-  ],
-  "lvp-albumin": [
-    "albumin after paracentesis",
-    "how much albumin for 8 litres",
-    "large volume paracentesis albumin dose",
-    "ascites drainage albumin replacement",
-    "post paracentesis circulatory dysfunction"
-  ],
-  "tryptase": [
-    "tryptase rise anaphylaxis",
-    "is this tryptase elevated",
-    "acute versus baseline tryptase",
-    "mast cell activation criteria",
-    "tryptase 1.2 plus 2 rule"
-  ],
-  "gadolinium-nsf": [
-    "gadolinium low egfr",
-    "nephrogenic systemic fibrosis risk",
-    "can this patient have gadolinium",
-    "group ii gadolinium agent dialysis",
-    "mri contrast kidney function"
-  ],
-  "last-lipid": [
-    "lipid rescue dose",
-    "local anesthetic toxicity treatment",
-    "intralipid for last",
-    "bupivacaine toxicity lipid emulsion",
-    "how much lipid emulsion for 70 kg"
-  ],
-  "preop-fasting": [
-    "preoperative fasting times",
-    "npo before surgery",
-    "how long clear liquids before surgery",
-    "asa fasting guideline hours",
-    "can this patient drink before anesthesia"
-  ],
-  "pci-surgery-timing": [
-    "surgery after stent timing",
-    "how long after a drug eluting stent",
-    "elective surgery delay after pci",
-    "bare metal stent 30 days surgery",
-    "stent thrombosis noncardiac surgery"
-  ],
-  "periop-bridging": [
-    "should i bridge anticoagulation",
-    "hold warfarin before surgery",
-    "doac interruption before procedure",
-    "periprocedural anticoagulation",
-    "bridging heparin before surgery"
-  ],
-  "skin-tear": [
-    "skin tear classification",
-    "istap type skin tear",
-    "is this a stage 2 or a skin tear",
-    "flap loss wound type",
-    "skin tear documentation"
-  ],
-  "iad-globiad": [
-    "incontinence associated dermatitis",
-    "moisture damage or pressure injury",
-    "globiad category",
-    "is this a stage 2 or moisture damage",
-    "perineal skin breakdown category"
-  ],
-  "marsi": [
-    "medical adhesive related skin injury",
-    "tape damage to skin",
-    "skin stripping from dressing",
-    "marsi category",
-    "adhesive removal skin injury"
-  ],
-  "cuff-leak": [
-    "cuff leak test",
-    "post extubation stridor risk",
-    "leak volume before extubation",
-    "should i extubate with a small cuff leak",
-    "laryngeal edema test"
   ]
 }
