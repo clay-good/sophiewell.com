@@ -106,6 +106,23 @@ Verified in a live browser, clearing every number input:
 surface a person actually touches has its own input reader, and it can undo every guard beneath
 it.
 
+### The size of what is left, measured
+
+**803** of the 1,685 exposed calculators take at least one numeric field *and* have a library
+that refuses an all-null form. Those are exactly the tiles where a renderer reading a blank as
+`0` would mask a refusal the library was written to give. Seven of them are fixed here — the ones
+whose blank-state answer was alarming — and the rest are unaudited.
+
+A browser-side gate would have to sweep them the way
+`test/integration/no-impossible-number.spec.js` sweeps for `NaN`. It is not written here, for a
+reason worth recording: **the obvious formulation does not work.** Asserting that a cleared form
+must not state a number fails on tiles where an empty checklist legitimately totals 0 (`MODS 0`,
+`SMART-COP 0`, an unscored NIHSS). Asserting that a cleared form must match the same form filled
+with zeros passes the very bug it is meant to catch — `nv()` *makes* it a zero, so the two agree.
+The property that actually broke is semantic: 0 is a legitimate value that happens to be
+alarming, and a blank should not mean it. Writing that as a mechanical assertion is the open
+problem, and a weak gate here would be worse than none.
+
 ## A reversal worth recording
 
 `test/unit/tb-testing.test.js` carried a deliberate test asserting that an empty string reads as
