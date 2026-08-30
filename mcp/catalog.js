@@ -755,6 +755,7 @@ import whoSurgicalChecklistV917 from './adapters/who-surgical-checklist-v917.js'
 import fmeaRpnV918 from './adapters/fmea-rpn-v918.js';
 import justCultureV919 from './adapters/just-culture-v919.js';
 import referenceChangeValueV920 from './adapters/reference-change-value-v920.js';
+import sigmaMetricV921 from './adapters/sigma-metric-v921.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
 import reimersMigrationPercentageV703 from './adapters/reimers-migration-percentage-v703.js';
@@ -1536,6 +1537,7 @@ const ADAPTER_MODULES = [
   ['fmea-rpn-v918', fmeaRpnV918],
   ['just-culture-v919', justCultureV919],
   ['reference-change-value-v920', referenceChangeValueV920],
+  ['sigma-metric-v921', sigmaMetricV921],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],
   ['reimers-migration-percentage-v703', reimersMigrationPercentageV703],
