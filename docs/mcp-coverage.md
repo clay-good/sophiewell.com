@@ -8000,6 +8000,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/skin-tear-v900.js (spec-v900: ISTAP skin tear classification — clinical disclaimer)
 - `skin-tear`
 
+### lib/iad-globiad-v901.js (spec-v901: GLOBIAD incontinence-associated dermatitis — clinical disclaimer)
+- `iad-globiad`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

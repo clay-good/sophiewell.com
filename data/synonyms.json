@@ -6914,5 +6914,12 @@
     "is this a stage 2 or a skin tear",
     "flap loss wound type",
     "skin tear documentation"
+  ],
+  "iad-globiad": [
+    "incontinence associated dermatitis",
+    "moisture damage or pressure injury",
+    "globiad category",
+    "is this a stage 2 or moisture damage",
+    "perineal skin breakdown category"
   ]
 }

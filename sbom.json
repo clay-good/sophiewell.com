@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:c5a29e86-d23d-575b-89e0-1cecc716a308",
+  "serialNumber": "urn:uuid:5d526b4a-2490-5026-8306-65cf60a3ee95",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-30T02:06:44.830Z",
+    "timestamp": "2026-08-30T02:58:39.239Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1690 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1691 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4744d00bca21f4340aa13b7cefe1923d1b500d27429c822f634fc03cf8dde8f9"
+          "content": "56674bb3d0e1f4639d99ed14d06d24450b4ed494da9581a49880b189ee54cbdc"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "108368"
+          "value": "108428"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "95ad5a7d03084b479362828aee92055424aaf0f298a8d19360627721ea0d7e9d"
+          "content": "9e2bf01f65d013b1ee9c3d22127d258a8e103c6c8a230f81ffef1815fb2b4c95"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "489358"
+          "value": "489577"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b50958d275f010b9fd7aa38235f4ab8c2fe4842aca496a5fb1444bf76beabefd"
+          "content": "2be5896efb12bba3b23fd5b4d6ac4509031bd6a814d54cbd8e94adde9d4234ba"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "259445"
+          "value": "259596"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "cb8a5438298b0d6af926168228ae0f0017f41cb6eedbe98aefa4e8e202a6b1ae"
+          "content": "c46c84964d7b24a60e23af514b3d1a0774fb0656f3870647001760874b84d3e3"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "94427"
+          "value": "94488"
         }
       ]
     },
@@ -7217,6 +7217,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/iad-globiad-v901.js",
+      "type": "file",
+      "name": "lib/iad-globiad-v901.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9dceb0d31486938d1741281b42b39ecee8567de4db8d70fe7c2154ce2cbeedb2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7293"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/ibd-v246.js",
       "type": "file",
       "name": "lib/ibd-v246.js",
@@ -9659,7 +9680,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4c238a4ec71370a5f6a498c0a6603b27bf2a67ed42d4201d31bb8f638ad0efee"
+          "content": "9e4dcc3a4eea8ef4406cefa9f82744ce7ad0c10859ceb12751f419a2c6a3b21e"
         }
       ],
       "properties": [
@@ -9669,7 +9690,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2393043"
+          "value": "2394898"
         }
       ]
     },
@@ -23975,6 +23996,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/iad-globiad-v901.js",
+      "type": "file",
+      "name": "mcp/adapters/iad-globiad-v901.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6828e04cf22c4b6107e799771aeac8c41f0f4824719d2611c4127f661610e96e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2034"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ibd-v246.js",
       "type": "file",
       "name": "mcp/adapters/ibd-v246.js",
@@ -33515,7 +33557,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c82ffc471774bd91c02a4eb89aecc931eee632a368a6ce5d32498d5ca2ae7b8d"
+          "content": "a1f17537f6825822af0755ea7d04fc070f03c7d1ba74df36d40a49c66a79835a"
         }
       ],
       "properties": [
@@ -33525,7 +33567,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "84310"
+          "value": "84411"
         }
       ]
     },
@@ -49721,6 +49763,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v901.js",
+      "type": "file",
+      "name": "views/group-v901.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "057e645896acc5ad37233d0651b1ff95686555751c7987b730a3f878260bee26"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3174"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:views/pa-lint.js",
       "type": "file",
       "name": "views/pa-lint.js",
@@ -65636,6 +65699,7 @@
         "urn:sophiewell:file:source:lib/hpa-glaucoma-v801.js",
         "urn:sophiewell:file:source:lib/hrs-aki-v808.js",
         "urn:sophiewell:file:source:lib/hughes-gbs-v800.js",
+        "urn:sophiewell:file:source:lib/iad-globiad-v901.js",
         "urn:sophiewell:file:source:lib/ibd-v246.js",
         "urn:sophiewell:file:source:lib/ibfat-v731.js",
         "urn:sophiewell:file:source:lib/icans-v306.js",
@@ -66894,6 +66958,7 @@
         "urn:sophiewell:file:source:views/group-v899.js",
         "urn:sophiewell:file:source:views/group-v9.js",
         "urn:sophiewell:file:source:views/group-v900.js",
+        "urn:sophiewell:file:source:views/group-v901.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
     },
@@ -67208,6 +67273,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/hpa-glaucoma-v801.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hrs-aki-v808.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hughes-gbs-v800.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/iad-globiad-v901.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ibd-v246.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ibfat-v731.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/icans-v306.js",
@@ -67765,7 +67831,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "c5a29e86d23d275b"
+      "value": "5d526b4a2490c026"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -67777,7 +67843,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2346"
+      "value": "2349"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
