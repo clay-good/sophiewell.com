@@ -8015,6 +8015,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/taco-trali-v906.js (spec-v906: TACO vs TRALI — clinical disclaimer)
 - `taco-trali`
 
+### lib/vod-sos-v907.js (spec-v907: hepatic VOD / SOS definitions — clinical disclaimer)
+- `vod-sos`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 

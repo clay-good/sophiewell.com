@@ -741,6 +741,7 @@ import { renderers as RV902 } from './views/group-v902.js';
 import { renderers as RV903 } from './views/group-v903.js';
 import { renderers as RV905 } from './views/group-v905.js';
 import { renderers as RV906 } from './views/group-v906.js';
+import { renderers as RV907 } from './views/group-v907.js';
 import { renderers as RV164 } from './views/group-v164.js';
 import { renderers as RV165 } from './views/group-v165.js';
 import { renderers as RV166 } from './views/group-v166.js';
@@ -824,7 +825,7 @@ const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...R
   ...RV902,
   ...RV903,
   ...RV905,
-  ...RV906, ...RV63, ...RPALINT };
+  ...RV906, ...RV907, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -2627,6 +2628,11 @@ const UTILITIES = [
   { id: 'cuff-leak', name: 'Cuff Leak Test', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'dka-resolution', name: 'DKA Resolution Criteria', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'taco-trali', name: 'TACO vs TRALI', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v907: which published definition of hepatic veno-occlusive disease / sinusoidal
+  // obstruction syndrome a post-transplant picture meets. views/group-v907.js,
+  // lib/vod-sos-v907.js, mcp/adapters/vod-sos-v907.js.
+  { id: 'vod-sos', name: 'Hepatic VOD / SOS definitions (Seattle, Baltimore, EBMT 2016)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'gahs',                   name: 'Glasgow Alcoholic Hepatitis Score',                group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'west-haven-he',          name: 'West Haven HE grade (hepatic encephalopathy)',     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'hepatic-steatosis-index', name: 'Hepatic Steatosis Index (NAFLD screen)',          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
