@@ -737,6 +737,7 @@ import { renderers as RV898 } from './views/group-v898.js';
 import { renderers as RV899 } from './views/group-v899.js';
 import { renderers as RV900 } from './views/group-v900.js';
 import { renderers as RV901 } from './views/group-v901.js';
+import { renderers as RV902 } from './views/group-v902.js';
 import { renderers as RV164 } from './views/group-v164.js';
 import { renderers as RV165 } from './views/group-v165.js';
 import { renderers as RV166 } from './views/group-v166.js';
@@ -816,7 +817,8 @@ const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...R
   ...RV898,
   ...RV899,
   ...RV900,
-  ...RV901, ...RV63, ...RPALINT };
+  ...RV901,
+  ...RV902, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -2615,6 +2617,7 @@ const UTILITIES = [
   { id: 'periop-bridging', name: 'Periprocedural Anticoagulant Bridging', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'skin-tear', name: 'ISTAP Skin Tear Classification', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'iad-globiad', name: 'GLOBIAD (incontinence-associated dermatitis)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'marsi', name: 'Medical Adhesive-Related Skin Injury (MARSI)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'gahs',                   name: 'Glasgow Alcoholic Hepatitis Score',                group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'west-haven-he',          name: 'West Haven HE grade (hepatic encephalopathy)',     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'hepatic-steatosis-index', name: 'Hepatic Steatosis Index (NAFLD screen)',          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },

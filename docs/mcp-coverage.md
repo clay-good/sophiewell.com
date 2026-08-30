@@ -8003,6 +8003,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/iad-globiad-v901.js (spec-v901: GLOBIAD incontinence-associated dermatitis — clinical disclaimer)
 - `iad-globiad`
 
+### lib/marsi-v902.js (spec-v902: medical adhesive-related skin injury — clinical disclaimer)
+- `marsi`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
