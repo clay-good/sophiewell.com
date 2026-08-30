@@ -3812,6 +3812,22 @@ function dropDuplicateNotice(content, body) {
 // hashes still resolve. The router sends them to the home view with a
 // one-line removed-note (spec-v29 sec 2.7). The map carries the
 // per-group note text so the explanation matches the deletion bucket.
+// spec-v915: ids RETIRED because the tile was the same instrument twice
+// (spec-v913 found them, spec-v914 removed them). Unlike REMOVED_V29_IDS below,
+// these are NOT gone -- the instrument is still here under the surviving id, so
+// a permalink to a retired id REDIRECTS rather than explaining a removal.
+//
+// This mirrors data/id-aliases.json, which is what the MCP server reads.
+// scripts/check-mcp-catalog.mjs holds the two in step: an alias in one and not
+// the other fails the build, because an agent self-healing while a reader lands
+// on the home page is the exact split this pair exists to prevent.
+const RETIRED_TILE_ALIASES = new Map([
+  ['forrest', 'forrest-classification'],
+  ['gbs', 'glasgow-blatchford'],
+  ['osi-oxygenation', 'oxygenation-index'],
+  ['university-texas-dfu', 'ut-diabetic-foot'],
+]);
+
 const REMOVED_V29_IDS = new Map([
   // Group A (wave 29-2 Group A PR): 19 code-reference lookups.
   ...[
@@ -4999,6 +5015,13 @@ function route() {
   if (!id) {
     currentRouteId = null;
     restoreHome();
+    return;
+  }
+  // A retired duplicate resolves to the tile that survived it, and the hash is
+  // rewritten so the address bar, a copied link and a reload all agree.
+  const alias = RETIRED_TILE_ALIASES.get(id);
+  if (alias && UTIL_BY_ID.has(alias)) {
+    window.location.replace(`#${alias}`);
     return;
   }
   const util = UTIL_BY_ID.get(id);

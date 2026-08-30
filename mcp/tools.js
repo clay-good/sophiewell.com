@@ -100,7 +100,9 @@ export function catalogVersion() {
 // spec-v637 §2: stable-id aliasing. Tile ids are the public API; when a shipped
 // id is retired it maps here to its canonical successor so an agent that
 // hardcoded the old id self-heals. Loaded once, lazily; empty if absent
-// (accelerator-not-dependency). Empty today — no shipped id has been renamed.
+// (accelerator-not-dependency). Non-empty since spec-v914, which retired four
+// ids that were the same instrument twice; app.js carries the reader-facing copy
+// of the same map and check-mcp-catalog holds the two in step.
 let aliasCache;
 function loadIdAliases() {
   if (aliasCache !== undefined) return aliasCache;

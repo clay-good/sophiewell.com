@@ -741,3 +741,33 @@ test('toCallToolResult: text block preserved, structuredContent equals the paylo
   const errEnv = toCallToolResult(computeCalculator({ id: 'no-such', inputs: {} }));
   assert.equal(errEnv.structuredContent.valid, false);
 });
+
+// spec-v915: the alias path had unit coverage against a SYNTHETIC map from the day it was
+// written in spec-v637, and no coverage at all against the real file -- which was empty until
+// spec-v914 retired four ids. These run it end to end: real data/id-aliases.json, real
+// registry, real dispatch.
+test('spec-v915: every shipped id alias resolves through dispatch to its live successor', async () => {
+  const doc = JSON.parse(readFileSync(new URL('../../data/id-aliases.json', import.meta.url), 'utf8'));
+  const aliases = Object.entries(doc.aliases || {});
+  assert.ok(aliases.length > 0, 'data/id-aliases.json has no aliases to check');
+
+  for (const [oldId, rec] of aliases) {
+    const described = await dispatch('describe_calculator', { id: oldId });
+    const text = JSON.stringify(described);
+    assert.ok(!text.includes('UNKNOWN_ID'), `${oldId} came back UNKNOWN_ID instead of resolving`);
+    assert.ok(text.includes(`"id":"${rec.canonical}"`), `${oldId} did not resolve to ${rec.canonical}`);
+    // The notice is the point: an agent must be able to see that the id it holds is retired.
+    assert.ok(text.includes('deprecat'), `${oldId} resolved silently, with no deprecation notice`);
+  }
+});
+
+test('spec-v915: a retired id still computes, and says which id answered', async () => {
+  const out = await dispatch('compute_calculator', {
+    id: 'gbs',
+    inputs: { 'gbs-ureaunit': 'mmol', 'gbs-urea': '5', 'gbs-hb': '15', 'gbs-sex': 'male', 'gbs-sbp': '120' },
+  });
+  const text = JSON.stringify(out);
+  assert.ok(text.includes('"deprecatedId":"gbs"'), 'the retired id is not named in the result');
+  assert.ok(text.includes('"canonicalId":"glasgow-blatchford"'), 'the surviving id is not named in the result');
+  assert.equal(out.result ? out.result.score : (JSON.parse(text).result || {}).score, 0);
+});

@@ -100,6 +100,25 @@ async function main() {
         if (rec.canonical === oldId) errors.push(`id-alias "${oldId}" points to itself`);
         if (!live.has(rec.canonical)) errors.push(`id-alias "${oldId}" canonical "${rec.canonical}" is not a live exposed id`);
       }
+      // spec-v915: the browser has its own copy of this map, because app.js reads no
+      // JSON at runtime. An alias in one and not the other is the split this pair
+      // exists to prevent -- an agent self-heals to the survivor while a reader
+      // following the same permalink lands on the home page with no explanation.
+      const appSrc = await readFile(join(ROOT, 'app.js'), 'utf8');
+      const start = appSrc.indexOf('const RETIRED_TILE_ALIASES = new Map([');
+      if (start === -1) {
+        if (Object.keys(aliases).length) errors.push('app.js has no RETIRED_TILE_ALIASES map, so a retired id resolves for agents and not for readers');
+      } else {
+        const body = appSrc.slice(start, appSrc.indexOf(']);', start));
+        const inApp = new Map([...body.matchAll(/\['([a-z0-9-]+)',\s*'([a-z0-9-]+)'\]/g)].map((m) => [m[1], m[2]]));
+        for (const [oldId, rec] of Object.entries(aliases)) {
+          if (!inApp.has(oldId)) errors.push(`id-alias "${oldId}" is in data/id-aliases.json and not in app.js RETIRED_TILE_ALIASES`);
+          else if (inApp.get(oldId) !== rec.canonical) errors.push(`id-alias "${oldId}" points at "${rec.canonical}" for agents and "${inApp.get(oldId)}" for readers`);
+        }
+        for (const [oldId] of inApp) {
+          if (!aliases[oldId]) errors.push(`app.js RETIRED_TILE_ALIASES has "${oldId}" and data/id-aliases.json does not`);
+        }
+      }
     } catch (err) {
       errors.push(`data/id-aliases.json is not valid JSON: ${err && err.message ? err.message : err}`);
     }
