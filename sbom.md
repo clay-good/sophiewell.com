@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `9ea8688249f41007`
-Generated: 2026-08-30T14:38:16.418Z
+Build ID: `8f6fd5079c1c5f54`
+Generated: 2026-08-30T15:13:58.597Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -93,7 +93,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/atlanta-pancreatitis-v445.js` | 3620 | `1eb1382cc11cc7b3a42e54ab14143721e30ac6b41de03bec5362d29e17d85bf3` |
 | `lib/atrial-enlargement-v787.js` | 5972 | `f0b4ade6cf4739e21569ada75e961b0b641e270e84e8d0b5a2f24e22ddb0d63c` |
 | `lib/ausdrisk-v711.js` | 5293 | `6c2cfc5bf32ec40fe19a06b5c46b007313db94bc43afc2d67da5e0ebf024be66` |
-| `lib/auto-peep-v928.js` | 7533 | `9082bd0a8889c12511ccb94bc0e8754274facf0a7ca3ed59f527af09eeb0797e` |
+| `lib/auto-peep-v928.js` | 7813 | `e4ca4bf52c90213c8c2ced767c3fcf56be90467bcd3ff396fa6e4f07ed867a34` |
 | `lib/autoimmune-encephalitis-v824.js` | 8413 | `aea180929a1c3e96008ff75d6138ee7ee6cb7230d2e327bc6aadd89e2844eb79` |
 | `lib/av-fistula-v300.js` | 4050 | `9fa354a34bd21ab3dc8c93762767d54f281b1c4e605e00af36917098787fc1e8` |
 | `lib/awol-v777.js` | 3543 | `ad621e07b766cf100663ce54f64aad1e3a8326e594683988ebd998845186acbd` |
@@ -430,7 +430,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/keyboard.js` | 4876 | `631f85b7b49a68ca7aa8e3c3d31cfbfbefb44360a5aace83305ed27d5e0d8ee0` |
 | `lib/keywords.js` | 2715 | `8ba3e40698eaf14947556b0d2078f168a99e8589644808057fa1b453d903a742` |
 | `lib/kikuchi-v333.js` | 4405 | `72627d9482ffa26501879c46ba68e3d7bf6f4adfb2894f5a4ffc8463ee1cf2d7` |
-| `lib/kings-college-nonapap-v910.js` | 8950 | `afa1ac8db82155e36060a8b3f2eb5804d5b35b57e7d9f9ac115c4be17015e009` |
+| `lib/kings-college-nonapap-v910.js` | 9230 | `a8718f32ae7aa1cd93a9dfcadf3de4a2544d58531bf47b92cd20c34e8b1f1996` |
 | `lib/kings-score-v697.js` | 3857 | `3bf0ec8be51374e0ab8b152e018159b69ec68de7fb2757b47d6dbf7478350eeb` |
 | `lib/knosp-adenoma-v390.js` | 4212 | `9f64fa144eeffdd48112251eeb84c7514e44b4df370ae0c646e8289c5da13cce` |
 | `lib/kobayashi-kawasaki-v680.js` | 4979 | `692e534fe081b29b74c682af96d3588795ecf3ac55c05235e75bf52dc71e2842` |
@@ -704,7 +704,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/rastelli-avsd-v474.js` | 3480 | `ce357583fded28e0cad061c42d6f72a017763b472552b882ad44a5110b5ab134` |
 | `lib/rcc-prognosis-v266.js` | 4621 | `dd2e544deb3bb3ff78c9454fa9ffb5260860f27f1c2ef4ad3e25e71d9d6bb4f1` |
 | `lib/rcc-prognosis-v279.js` | 7877 | `65dfbce477ca8b65350799b98f3364d9c2db8bc22f528ced54c19a9e306ab93e` |
-| `lib/reference-change-value-v920.js` | 8408 | `6b604d5df6d31e289d9501c75092fc6bfee92b0172a688a650dda16c7df2bb53` |
+| `lib/reference-change-value-v920.js` | 8688 | `171465315afa19e07e439a5f5306c53c9e2febad5983cb8da9b89936b38b5fe9` |
 | `lib/regan-morrey-v404.js` | 3237 | `6b740bafcf5b1f9e8e306ba3b6863513bc950c73c0f6c46d00a095816929c04a` |
 | `lib/regulatory.js` | 8260 | `c65d46053e1a36ff443d8c518dc6cbae1d61e35dc640ddc9a1ad483d07eb62e4` |
 | `lib/rehab-v240.js` | 6834 | `98fad9be8c75236525118ca3df7581ab6229ce20e4586fee571ad0045ed019e8` |
@@ -815,7 +815,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/taco-trali-v906.js` | 8467 | `61d4684d02f080f6956e63ae326a8837d0dcba1e2b48ebb7a09e598ae587416d` |
 | `lib/takayasu-v638.js` | 4946 | `e6f6fd9a75612cbb13ba144972a674f3098d201c326e4c3125cf6a1f42f7b137` |
 | `lib/tanner-staging-v361.js` | 4925 | `e2484223339faaac7f4272ed90ce8834fc835f51b70498bb064bc25cf77c9ec5` |
-| `lib/tb-testing.js` | 1334 | `7a93a7c1892656c433942733d45e7866d939585f107341e53fa6843273148c58` |
+| `lib/tb-testing.js` | 1648 | `cc73aea69ef4256ba44fab37bcff1dc497c553784de852a4f9cf12c7a9b1d7cb` |
 | `lib/tbi-stroke-v206.js` | 13545 | `7f56c16239081d17db7cdc841957c5c6dcb6c15a2dbe4abfa84aefbaec7fef5d` |
 | `lib/tegner-activity-v500.js` | 4131 | `db8258facb99a0cde768edff7c6b13fa9a513d97da08812e804f5a7398e6e8d3` |
 | `lib/tension-headache-ichd3-v818.js` | 9090 | `f90aaa946b3c4d27b8c9fc05dbd1594ce45a1d63c3d85a7f6b91a05e0fafc74d` |
@@ -860,7 +860,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/vhi10-v508.js` | 3708 | `40297e81fc7f0da10cc909b1b2a13fe7a6b2048c7cf72291d8f3f1f16ac4c871` |
 | `lib/vhwg-hernia-v666.js` | 3465 | `cbf1ad3125634cff69574f4faa775b128beb2ad2ead868106673ee8b698c8776` |
 | `lib/vitamin-d-level-v881.js` | 7879 | `d28a76c402f67174161d539f209b6211a24773dd13eb7f4780f07042e4544a4a` |
-| `lib/vod-sos-v907.js` | 10752 | `28097c35b371a6296a3e54189c3ff29b126d1ffc41c95572f130e007af86a3e7` |
+| `lib/vod-sos-v907.js` | 11030 | `9b67268df8ead7231be8f51caa3de5f679a7cdfb9d914794c4a1e6709b552dd8` |
 | `lib/vras-v602.js` | 11407 | `788dc1747f4d5b22b34b75ccd5d75f0e4bf2d3eca57156b6d360f28183f29098` |
 | `lib/vte-v106.js` | 16247 | `aaae9bd91a94f9ac820ec0995ab00124af598023cbf4d1e4e6fffaeaed13aaaf` |
 | `lib/vur-grade-v425.js` | 3871 | `c913640f0b99a847e24489017c9694b2e1a3e4483824ba5fcc13dec377b77352` |
