@@ -793,6 +793,7 @@ const PROBES = [
   ['i pass handoff structure', ['ipass-handoff']],
   ['who surgical safety checklist sign out', ['who-surgical-checklist']],
   ['fmea risk priority number', ['fmea-rpn']],
+  ['just culture human error at risk reckless', ['just-culture']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],

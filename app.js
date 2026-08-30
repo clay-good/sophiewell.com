@@ -750,6 +750,7 @@ import { renderers as RV912 } from './views/group-v912.js';
 import { renderers as RV916 } from './views/group-v916.js';
 import { renderers as RV917 } from './views/group-v917.js';
 import { renderers as RV918 } from './views/group-v918.js';
+import { renderers as RV919 } from './views/group-v919.js';
 import { renderers as RV164 } from './views/group-v164.js';
 import { renderers as RV165 } from './views/group-v165.js';
 import { renderers as RV166 } from './views/group-v166.js';
@@ -833,7 +834,7 @@ const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...R
   ...RV902,
   ...RV903,
   ...RV905,
-  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV63, ...RPALINT };
+  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -1107,6 +1108,11 @@ const UTILITIES = [
   // band, because there is no standard threshold. views/group-v918.js, lib/fmea-rpn-v918.js,
   // mcp/adapters/fmea-rpn-v918.js.
   { id: 'fmea-rpn',           name: 'FMEA Risk Priority Number',                         group: 'H', audiences: ['clinicians', 'educators'], clinical: false },
+
+  // spec-v919: the Just Culture behaviors. The outcome is collected and then reported as
+  // having changed nothing, which is the point of the page. views/group-v919.js,
+  // lib/just-culture-v919.js, mcp/adapters/just-culture-v919.js.
+  { id: 'just-culture',       name: 'Just Culture behavior and response',               group: 'H', audiences: ['clinicians', 'educators'], clinical: false },
 
   // spec-v6 §1: deterministic additions, citing 45 CFR (HIPAA) and Figge.
   { id: 'corrected-anion-gap', name: 'Albumin-Corrected Anion Gap (Figge)',             group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
