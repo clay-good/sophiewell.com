@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:b6504192-dae1-57e7-8a22-d49793e409d5",
+  "serialNumber": "urn:uuid:fcc06726-a04b-5f77-897a-e694d1a05915",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-30T10:38:44.019Z",
+    "timestamp": "2026-08-30T11:14:35.723Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1697 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1698 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "39fbeca2b018cf32694e210352e4f3296fe97b180ff3f4d87f3897d46b818c07"
+          "content": "5b10b9bce190b515c588562bea5cfc72cfc9a72f43a86ea25d2dd795c4cddd76"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "108736"
+          "value": "108776"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "46bbcd3afb4002ca1217bbd5eaffb7898e36fc2b64c337dc39cd44cf029bbcb4"
+          "content": "d29d99fcb20911c5d1dc8e42b73582c694c7c58920666b68d71f2e50854475cc"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "493578"
+          "value": "494038"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6d1e9febf904c55952f141104cdf3c4a321d675d328690b9cc6e237ccee64daa"
+          "content": "d9cf40d39d79b5176283e30f3963a9fbe69b4e71764dc30f6ac3bead90043a8b"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "260500"
+          "value": "260653"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f17c9cc0707ee9e92ae4c5bbe718f94412ee915226888a03412824bd89395e5b"
+          "content": "3a1b7723393d463fcca56cb08de9709417166a4ae9e7bcf2dfd5f38ed9a866f7"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "94800"
+          "value": "94843"
         }
       ]
     },
@@ -7679,6 +7679,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/ipass-handoff-v916.js",
+      "type": "file",
+      "name": "lib/ipass-handoff-v916.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3060c3aa6ba9ff09a8f122421eeb36313edeb07c4e08d2429097d9480b1244d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7257"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/ipmn-fukuoka-v883.js",
       "type": "file",
       "name": "lib/ipmn-fukuoka-v883.js",
@@ -9806,7 +9827,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a0b056b61d4d2b2fa0ff24855c2bf4a62e9f441ca4e36b9833ba44f24587c75e"
+          "content": "2a9f9cf8b9e6cc29d0a7c3362c998576eb608ac8d3778de5ad08e73f648d88f1"
         }
       ],
       "properties": [
@@ -9816,7 +9837,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2409460"
+          "value": "2411193"
         }
       ]
     },
@@ -24668,6 +24689,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ipass-handoff-v916.js",
+      "type": "file",
+      "name": "mcp/adapters/ipass-handoff-v916.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6a65fbef826dae94fb39a5d32baabe253e4e62c5bb290f8f3623e44bb5bb859c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2421"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ipmn-fukuoka-v883.js",
       "type": "file",
       "name": "mcp/adapters/ipmn-fukuoka-v883.js",
@@ -33977,7 +34019,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a5141957fcdd8e816699d5d2f4005bb7a0fd6e91141e95f44226beed8210947c"
+          "content": "3553bf9b992df5f2c005f026aa6887bad53a44d7636bccab75af43557106f076"
         }
       ],
       "properties": [
@@ -33987,7 +34029,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "85417"
+          "value": "85526"
         }
       ]
     },
@@ -50414,6 +50456,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v916.js",
+      "type": "file",
+      "name": "views/group-v916.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fccf87c8eaf7ce08f696ce76095bf3f9a8f5ffafaac6b602096b025d7ccf429f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4066"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:views/pa-lint.js",
       "type": "file",
       "name": "views/pa-lint.js",
@@ -66351,6 +66414,7 @@
         "urn:sophiewell:file:source:lib/interchest-v693.js",
         "urn:sophiewell:file:source:lib/intermacs-profile-v494.js",
         "urn:sophiewell:file:source:lib/intertak-v788.js",
+        "urn:sophiewell:file:source:lib/ipass-handoff-v916.js",
         "urn:sophiewell:file:source:lib/ipmn-fukuoka-v883.js",
         "urn:sophiewell:file:source:lib/ips-hodgkin-v661.js",
         "urn:sophiewell:file:source:lib/irecist-v551.js",
@@ -67609,6 +67673,7 @@
         "urn:sophiewell:file:source:views/group-v910.js",
         "urn:sophiewell:file:source:views/group-v911.js",
         "urn:sophiewell:file:source:views/group-v912.js",
+        "urn:sophiewell:file:source:views/group-v916.js",
         "urn:sophiewell:file:source:views/pa-lint.js"
       ]
     },
@@ -67945,6 +68010,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/interchest-v693.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/intermacs-profile-v494.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/intertak-v788.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/ipass-handoff-v916.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ipmn-fukuoka-v883.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ips-hodgkin-v661.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/irecist-v551.js",
@@ -68491,7 +68557,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "b6504192dae1a7e7"
+      "value": "fcc06726a04b5f77"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -68503,7 +68569,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2379"
+      "value": "2382"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

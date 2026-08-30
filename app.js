@@ -747,6 +747,7 @@ import { renderers as RV909 } from './views/group-v909.js';
 import { renderers as RV910 } from './views/group-v910.js';
 import { renderers as RV911 } from './views/group-v911.js';
 import { renderers as RV912 } from './views/group-v912.js';
+import { renderers as RV916 } from './views/group-v916.js';
 import { renderers as RV164 } from './views/group-v164.js';
 import { renderers as RV165 } from './views/group-v165.js';
 import { renderers as RV166 } from './views/group-v166.js';
@@ -830,7 +831,7 @@ const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...R
   ...RV902,
   ...RV903,
   ...RV905,
-  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV63, ...RPALINT };
+  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -1088,6 +1089,11 @@ const UTILITIES = [
   { id: 'ndc-convert',        name: 'NDC 10 ↔ 11 Digit Converter',                      group: 'A', audiences: ['billers', 'clinicians', 'educators'], clinical: false },
   { id: 'avpu-gcs',           name: 'AVPU ↔ GCS Quick Reference',                       group: 'I', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'sbar-template',      name: 'SBAR Handoff Template Generator',                  group: 'H', audiences: ['clinicians', 'field', 'educators'], clinical: false },
+
+  // spec-v916: I-PASS beside SBAR. The receiver's synthesis is reported on its own,
+  // because it is the part that gets dropped. views/group-v916.js,
+  // lib/ipass-handoff-v916.js, mcp/adapters/ipass-handoff-v916.js.
+  { id: 'ipass-handoff',      name: 'I-PASS Handoff Structure',                         group: 'H', audiences: ['clinicians', 'field', 'educators'], clinical: false },
 
   // spec-v6 §1: deterministic additions, citing 45 CFR (HIPAA) and Figge.
   { id: 'corrected-anion-gap', name: 'Albumin-Corrected Anion Gap (Figge)',             group: 'E', audiences: ['clinicians', 'educators'], clinical: true },

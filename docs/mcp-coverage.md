@@ -8033,6 +8033,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/nichd-fhr-v912.js (spec-v912: NICHD fetal heart rate categories — clinical disclaimer)
 - `nichd-fhr`
 
+### lib/ipass-handoff-v916.js (spec-v916: I-PASS handoff structure — administrative disclaimer)
+- `ipass-handoff`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
