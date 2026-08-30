@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `4e71753ffb97f938`
-Generated: 2026-08-30T19:06:13.401Z
+Build ID: `3fb6b7fb40792c88`
+Generated: 2026-08-30T19:16:42.750Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -502,7 +502,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/mcmahon-rhabdo-v677.js` | 5811 | `669c95226348ac3b9a9a686586979094d0ff530c608b0a59e9ce719830756290` |
 | `lib/mda-psoriatic-v672.js` | 3497 | `e7c82444dbf39ca9b8e6cac36422ad6d754179545affa74b8779a1469309cc74` |
 | `lib/measles-case-def-v872.js` | 9149 | `81b9f742a3e925d662ce16c4e5d53bcac73d69d494f8df443a7509eeb7bd5554` |
-| `lib/medication-v4.js` | 18192 | `467f9576c50da696cc56094eb022d0a5ed1e88de0c7618448554ede8067270b0` |
+| `lib/medication-v4.js` | 18668 | `5ebcd006990133581ed4d2cbf2514201a3f871f070ca19ac25804ee3764ab796` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
 | `lib/meld3-v678.js` | 5664 | `7bda4af7c9412eae41162d0cdd6b977cbc9a6f9b8a7bc40fe350f861e989444c` |
 | `lib/membranous-risk-v878.js` | 10326 | `ff774f72e82303f0c83c8091aaa6ea2bb3b4deeba5c6323985d910dd003d53f4` |
@@ -1319,7 +1319,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/mcmahon-rhabdo-v677.js` | 2065 | `61bc696ab1499235da162852738926b114a35f386103ca061d731bdbef4db84d` |
 | `mcp/adapters/mda-psoriatic-v672.js` | 1622 | `f4ffa035cd43ee96dc178c635cacda758c595f034b6592f37545d20c37f71a55` |
 | `mcp/adapters/measles-case-def-v872.js` | 3259 | `1c78e4af19eea2890fea97bf044b5e68268af780c76e820bbd91adb6021179e6` |
-| `mcp/adapters/medication-v4.js` | 9566 | `06d720d6c0857ba45c44a9c44370fe87b3228f2e3fbb177a63194e686520501c` |
+| `mcp/adapters/medication-v4.js` | 9804 | `1807346d6f3976ff240163509d621779627fc494dba1cf48ad333c9cda6ca21d` |
 | `mcp/adapters/medication-v5.js` | 10647 | `4f89ca0abe6d9fcc2c119f0e5f6039d47b24ef43be8a44f211c8921d90dcbba0` |
 | `mcp/adapters/meld3-v678.js` | 1809 | `cdd0ac147f46bd4dc5a5ac9f71d3a8fb62e8f008a2609cc05c3369f18f682c33` |
 | `mcp/adapters/membranous-risk-v878.js` | 2992 | `7b6babfdf69026f8522a02f9539b48ebb04e105912e1f4542caacbc00b82d3c5` |

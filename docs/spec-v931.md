@@ -61,3 +61,22 @@ label — `grade: "2"` is a category, not a quantity. The twenty-fifth was `scor
 
 `lib/scoring-v4.js`, `test/unit/scoring-v4.test.js`, this file. No catalog change, no count
 change.
+
+## A second sweep, from the same idea
+
+If a value the arithmetic accepts is not the same as a value the quantity admits, the obvious
+next question is whether anything returns a **negative** mass, volume or rate. Feeding every tile
+all-negative numbers and looking for a negative result in a dose-shaped field found **three**:
+
+| Tile | Returned |
+| --- | --- |
+| `steroid-equiv` | −100 mg hydrocortisone converted cleanly to −25 mg prednisone |
+| `benzo-equiv` | the same, on the Ashton table |
+| `vasopressor` | a bag concentration of −16 mcg/mL, echoed back |
+
+The dose and rate on `vasopressor` were already gated on `> 0`; the concentration was not. All
+three now refuse. `benzodiazepine-equivalence`, the newer tile, already had the guard — which is
+where the wording for the others came from.
+
+`test/mcp/blank-is-absent.test.js` carries the sweep as a second assertion, because it is the
+same idea as the blank invariant it sits beside.

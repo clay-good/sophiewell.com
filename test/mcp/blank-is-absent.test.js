@@ -54,3 +54,36 @@ test('spec-v930: a blank field and an absent field reach the same outcome, on ev
       + `${stray.join(', ')}. Guard the input reader -- an empty string is not a zero, it is not `
       + 'a chosen option, and it does not trigger a default parameter.');
 });
+
+// spec-v931: a dose is a mass and a bag concentration is a mass per volume. Neither is
+// negative. Three tiles echoed one back and converted it cleanly -- "-100 mg hydrocortisone"
+// became "-25 mg prednisone", which is arithmetically consistent and clinically meaningless.
+//
+// Kept alongside the blank invariant because it is the same idea: a value the arithmetic
+// accepts is not the same as a value the quantity admits.
+test('spec-v931: no tile returns a negative dose, volume, rate or concentration', () => {
+  const QUANTITY = /(dose|volume|rate|perhour|perday|infusion|drip|mg$|ml$|units?$|kcal|grams?$|vials?)/i;
+  const offenders = [];
+  for (const tool of allCalculators()) {
+    const numeric = tool.fields.filter((f) => f.kind === 'number');
+    if (!numeric.length) continue;
+    for (const probe of [-1, -100]) {
+      const args = {};
+      for (const field of tool.fields) {
+        if (field.kind === 'number') args[field.arg] = probe;
+        else if (Array.isArray(field.values) && field.values.length) args[field.arg] = field.values[0];
+        else if (field.kind === 'boolean' || field.kind === 'bool') args[field.arg] = true;
+      }
+      let result;
+      try { result = tool.compute(args); } catch { continue; }
+      if (!result || typeof result !== 'object' || result.valid === false) continue;
+      for (const [key, value] of Object.entries(result)) {
+        if (typeof value === 'number' && value < 0 && QUANTITY.test(key)) {
+          offenders.push(`${tool.id}.${key} = ${value}`);
+        }
+      }
+    }
+  }
+  assert.deepEqual([...new Set(offenders)], [],
+    'a negative mass, volume or rate is not a quantity: ' + offenders.join(', '));
+});

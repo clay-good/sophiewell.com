@@ -132,6 +132,9 @@ export default [
     compute: (a) => {
       const rawUnits = VASO_UNITS.get(a.drug);
       const units = rawUnits === 'units/min' ? 'mcg/min' : rawUnits;
+      // spec-v931: a bag concentration is a mass per volume, and neither is negative. The dose
+      // and rate below are already gated on `> 0`; the concentration was echoed back unchecked.
+      if (!(a.concUgPerMl > 0)) return null;
       const out = { drug: a.drug, doseUnits: rawUnits, concUgPerMl: a.concUgPerMl, weightKg: a.weightKg ?? null };
       if (a.dose > 0) { out.dose = a.dose; out.rateMlHr = F.vasopressorRateMlHr({ dose: a.dose, units, weightKg: a.weightKg, concUgPerMl: a.concUgPerMl }); }
       if (a.rateMlHr > 0) { out.inputRateMlHr = a.rateMlHr; out.doseFromRate = F.vasopressorDose({ rateMlHr: a.rateMlHr, units, weightKg: a.weightKg, concUgPerMl: a.concUgPerMl }); }
