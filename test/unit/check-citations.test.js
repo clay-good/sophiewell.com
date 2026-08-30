@@ -10,8 +10,10 @@ import {
   ISSUER_PATTERN,
 } from '../../scripts/check-citations.mjs';
 
-// A minimal well-formed baseline: one clinical guideline tile (dated + ledgered)
-// and one non-clinical tile with no citation (allowed).
+// A minimal well-formed baseline: one clinical guideline tile (dated + ledgered
+// + linked) and one non-clinical tile with no citation (allowed). The guideline
+// tile carries a citationUrl because spec-v938 rule 6 requires one of any
+// citation that names a year.
 function baseline() {
   return {
     tiles: [
@@ -21,6 +23,7 @@ function baseline() {
     meta: {
       'kdigo-aki': {
         citation: 'KDIGO Clinical Practice Guideline for Acute Kidney Injury. Kidney Int Suppl 2012;2:1-138.',
+        citationUrl: 'https://doi.org/10.1038/kisup.2012.1',
         citationAccessed: '2026-06-05',
       },
       'appeal-letter': { citation: '' },
@@ -119,4 +122,46 @@ test('parseLedgerIds reads the first table column, skipping header/separator and
   assert.ok(ids.has('beers-check'));
   assert.ok(!ids.has('tile id'));
   assert.equal(ids.size, 2);
+});
+
+// ---- spec-v938 rule 6: a dated citation is reachable ----
+
+test('rule 6 - a dated citation with no citationUrl fails unless it is grandfathered', () => {
+  const b = baseline();
+  delete b.meta['kdigo-aki'].citationUrl;
+  const v = findCitationViolations(b);
+  assert.equal(v.filter((x) => x.includes('rule 6')).length, 1, v.join('\n'));
+
+  // The frozen backlog is the only way a dated citation may go unlinked.
+  const grandfathered = findCitationViolations({ ...b, backlogIds: new Set(['kdigo-aki']) });
+  assert.deepEqual(grandfathered.filter((x) => x.includes('rule 6')), []);
+});
+
+test('rule 6 - an undated citation needs no link: there is no paper to reach', () => {
+  const b = baseline();
+  b.meta['kdigo-aki'] = { citation: 'Standard physiology: MAP = ((2 * DBP) + SBP) / 3.' };
+  b.ledgerIds = new Set();
+  assert.deepEqual(findCitationViolations(b).filter((x) => x.includes('rule 6')), []);
+});
+
+test('rule 6 - the backlog may only shrink: a linked or retired tile may not stay on it', () => {
+  const b = baseline();
+  const linked = findCitationViolations({ ...b, backlogIds: new Set(['kdigo-aki']) });
+  assert.equal(linked.filter((x) => x.includes('remove it from')).length, 1, linked.join('\n'));
+
+  const retired = findCitationViolations({ ...b, backlogIds: new Set(['gone']) });
+  assert.equal(retired.filter((x) => x.includes('is not a tile')).length, 1, retired.join('\n'));
+});
+
+test('rule 6 - the shipped backlog matches the catalog exactly', async () => {
+  const { META } = await import('../../lib/meta.js');
+  const { readFileSync } = await import('node:fs');
+  const listed = JSON.parse(
+    readFileSync(new URL('../../data/citation-url-backlog.json', import.meta.url), 'utf8'),
+  ).tiles;
+  const actual = Object.keys(META)
+    .filter((id) => !META[id].citationUrl && /\b(19|20)\d\d\b/.test(META[id].citation || ''))
+    .sort();
+  assert.deepEqual(listed, actual,
+    'data/citation-url-backlog.json has drifted from lib/meta.js');
 });

@@ -15,6 +15,11 @@
 //      docs/citation-staleness.md.
 //   5. No `citation` contains the unpinned phrases "current edition",
 //      "latest version", or "most recent".
+//   6. (spec-v938) A citation that names a year names a real, findable paper.
+//      Every such tile carries a `citationUrl` unless its id is in the frozen
+//      backlog `data/citation-url-backlog.json`. The backlog may only shrink:
+//      a new tile may not join it, and a tile that gains a `citationUrl` must
+//      be removed from it. 220 tiles were grandfathered at v938.
 //
 // The detector `findCitationViolations` is pure and exported so test/unit can
 // prove each rule bites on a synthetic violation. Exit 0 clean, 1 on violation.
@@ -33,6 +38,11 @@ export const ISSUER_PATTERN =
 
 // Unpinned-edition phrases banned by rule 5.
 const UNPINNED = /current edition|latest version|most recent/i;
+
+// A four-digit year is what separates "Wells PJ, et al. Thromb Haemost. 2000"
+// -- a paper someone can go read -- from "MAP = ((2 * DBP) + SBP) / 3", which
+// has no document behind it to link. Rule 6 only bites on the former.
+const DATED_CITATION = /\b(19|20)\d\d\b/;
 
 // hasAccessed(meta) -> bool. An accessed date may live on the lightweight
 // `citationAccessed` string (formula tiles) or on the dataset stamp
@@ -53,8 +63,9 @@ function isValidHttpsUrl(s) {
 
 // findCitationViolations({ tiles, meta, ledgerIds }) -> [string].
 // Pure. `tiles` is [{ id, clinical }]; `meta` is the META map; `ledgerIds` is a
-// Set of tile ids present in the staleness ledger.
-export function findCitationViolations({ tiles, meta, ledgerIds }) {
+// Set of tile ids present in the staleness ledger; `backlogIds` is a Set of the
+// tile ids grandfathered by rule 6.
+export function findCitationViolations({ tiles, meta, ledgerIds, backlogIds = new Set() }) {
   const out = [];
   for (const t of tiles) {
     const m = meta[t.id] || {};
@@ -91,6 +102,26 @@ export function findCitationViolations({ tiles, meta, ledgerIds }) {
       if (!ledgerIds.has(t.id)) {
         out.push(`${t.id}: rule 4 - guideline-issuer citation has no docs/citation-staleness.md row`);
       }
+    }
+
+    // Rule 6: a dated citation is reachable, or is a known-and-frozen exception.
+    if (DATED_CITATION.test(citation) && !m.citationUrl && !backlogIds.has(t.id)) {
+      out.push(
+        `${t.id}: rule 6 - citation names a dated source but has no citationUrl, ` +
+        'and the backlog is frozen (add a real citationUrl; do not add the tile ' +
+        'to data/citation-url-backlog.json)',
+      );
+    }
+  }
+
+  // Rule 6, the other direction: the backlog shrinks and never goes stale. A
+  // tile that has since gained a citationUrl -- or been retired -- must leave
+  // the list, otherwise the frozen set slowly stops describing anything.
+  for (const id of backlogIds) {
+    if (!meta[id]) {
+      out.push(`${id}: rule 6 - listed in data/citation-url-backlog.json but is not a tile (remove the row)`);
+    } else if (meta[id].citationUrl) {
+      out.push(`${id}: rule 6 - now has a citationUrl; remove it from data/citation-url-backlog.json`);
     }
   }
   return out;
@@ -139,14 +170,16 @@ export function parseLedgerIds(markdown) {
 }
 
 async function main() {
-  const [appJs, ledgerMd, metaMod] = await Promise.all([
+  const [appJs, ledgerMd, backlogJson, metaMod] = await Promise.all([
     readFile(join(ROOT, 'app.js'), 'utf8'),
     readFile(join(ROOT, 'docs/citation-staleness.md'), 'utf8').catch(() => ''),
+    readFile(join(ROOT, 'data/citation-url-backlog.json'), 'utf8'),
     import(join(ROOT, 'lib/meta.js')),
   ]);
   const tiles = parseTiles(appJs);
   const ledgerIds = parseLedgerIds(ledgerMd);
-  const violations = findCitationViolations({ tiles, meta: metaMod.META, ledgerIds });
+  const backlogIds = new Set(JSON.parse(backlogJson).tiles);
+  const violations = findCitationViolations({ tiles, meta: metaMod.META, ledgerIds, backlogIds });
 
   if (violations.length) {
     console.error('check-citations: FAIL - citation-integrity violations (spec-v54):');
@@ -159,7 +192,8 @@ async function main() {
   }).length;
   console.log(
     `check-citations: clean (${tiles.length} tiles, ` +
-    `${issuerCount} guideline-issuer tiles dated + ledgered, ${ledgerIds.size} ledger rows).`,
+    `${issuerCount} guideline-issuer tiles dated + ledgered, ${ledgerIds.size} ledger rows, ` +
+    `${backlogIds.size} dated citations still unlinked).`,
   );
 }
 
