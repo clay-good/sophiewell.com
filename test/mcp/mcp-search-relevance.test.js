@@ -801,6 +801,7 @@ const PROBES = [
   ['bland altman limits of agreement', ['bland-altman']],
   ['delta check between two lab results', ['delta-check']],
   ['peak pressure high plateau normal', ['airway-resistance']],
+  ['auto peep end expiratory hold', ['auto-peep']],
   ['sad persons scale suicide risk screen', ['sad-persons']],
   ['edinburgh claudication questionnaire leg pain walking', ['edinburgh-claudication']],
   ['reimers migration percentage hip cerebral palsy subluxation', ['reimers-migration-percentage']],

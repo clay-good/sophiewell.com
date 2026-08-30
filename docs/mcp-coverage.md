@@ -8066,6 +8066,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/airway-resistance-v927.js (spec-v927: inspiratory airway resistance — clinical disclaimer)
 - `airway-resistance`
 
+### lib/auto-peep-v928.js (spec-v928: auto-PEEP — clinical disclaimer)
+- `auto-peep`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
