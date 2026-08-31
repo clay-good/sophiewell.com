@@ -36,7 +36,7 @@ Each calculator does one thing:
 |---|---|
 | **In** | The values you already have. It opens pre-filled with a worked example, so you can see the expected format before you type over it. |
 | **Out** | One number or grade, plus how the source says to read it. |
-| **Proof** | The method and primary citations together, one click away under "How this is calculated". 1,551 of the 1,710 link straight through to the source paper. |
+| **Proof** | The method and primary citations together, one click away under "How this is calculated". 1,553 of the 1,710 link straight through to the source paper. |
 
 For example, on [Wells Score for PE](https://sophiewell.com/#wells-pe)
 you tick the criteria that apply and get
