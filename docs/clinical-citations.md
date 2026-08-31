@@ -295,8 +295,8 @@ Logic lives in `lib/clinical-v5.js` (T1-T13, T16) and `lib/coding-v5.js`
 (T14-T15); T17 is a pure-template helper in `views/group-v5.js`.
 
 ### T1. Sodium Correction Rate (Adrogue-Madias)
-Citation: Adrogue HJ, Madias NE. Hyponatremia. NEJM. 2000;342(21):1493-1499;
-Hypernatremia. NEJM. 2000;342(20):1581-1589.
+Citation: Adrogue HJ, Madias NE. Hyponatremia. NEJM. 2000;342(21):1581-1589;
+Hypernatremia. NEJM. 2000;342(20):1493-1499.
 Formula: TBW = weight_kg × factor (M 0.6 / F 0.5; elderly drop 0.05).
 ΔNa per liter infusate = (infusate_Na − serum_Na) / (TBW + 1).
 Volume to reach target = target_ΔNa / ΔNa_per_L; rate = volume × 1000 / 24 mL/h.

@@ -1,0 +1,84 @@
+// spec-v941: the source links recovered by bibliographic lookup, pinned.
+//
+// Each row was matched against Crossref on journal + volume + first page (with
+// the year or the journal name as a second check), then resolved through the
+// DOI handle system before it was written into lib/meta.js. Pinning the pairs
+// here means a later edit that drops a link, or swaps one paper's DOI for
+// another's, fails in CI rather than silently sending a reader to the wrong
+// paper -- which is the defect this spec fixed on four tiles.
+
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { META } from '../../lib/meta.js';
+
+const RECOVERED = [
+  ['4at', 'https://doi.org/10.3310/hta23400'],
+  ['anion-gap-dd', 'https://doi.org/10.1016/s0196-0644(05)82292-9'],
+  ['apache2', 'https://doi.org/10.1097/00003246-198510000-00009'],
+  ['auditc', 'https://doi.org/10.1001/archinte.158.16.1789'],
+  ['avpu-gcs', 'https://doi.org/10.1111/j.1365-2044.2004.03526.x'],
+  ['burch-wartofsky', 'https://doi.org/10.1016/s0889-8529(18)30165-8'],
+  ['cage', 'https://doi.org/10.1001/jama.1984.03350140051025'],
+  ['ciwa', 'https://doi.org/10.1111/j.1360-0443.1989.tb00737.x'],
+  ['epds', 'https://doi.org/10.1192/bjp.150.6.782'],
+  ['free-water-deficit', 'https://doi.org/10.1056/nejm200005183422006'],
+  ['gad7', 'https://doi.org/10.1001/archinte.166.10.1092'],
+  ['gds15', 'https://doi.org/10.1300/j018v05n01_09'],
+  ['grace', 'https://doi.org/10.1001/archinte.163.19.2345'],
+  ['hacor', 'https://doi.org/10.1007/s00134-016-4601-3'],
+  ['heart', 'https://doi.org/10.1007/bf03086144'],
+  ['ich-score', 'https://doi.org/10.1161/01.str.32.4.891'],
+  ['local-anesthetic-max', 'https://doi.org/10.1097/aap.0000000000000720'],
+  ['mini-cog', 'https://doi.org/10.1002/1099-1166(200011)15:11%3C1021::aid-gps234%3E3.0.co;2-6'],
+  ['npass', 'https://doi.org/10.1038/sj.jp.7211861'],
+  ['opioid-mme', 'https://doi.org/10.15585/mmwr.rr7103a1'],
+  ['phq9', 'https://doi.org/10.1046/j.1525-1497.2001.016009606.x'],
+  ['psi', 'https://doi.org/10.1056/nejm199701233360402'],
+  ['r-factor', 'https://doi.org/10.1016/0168-8278(90)90124-a'],
+  ['rsbi', 'https://doi.org/10.1056/nejm199105233242101'],
+  ['sgarbossa', 'https://doi.org/10.1016/j.annemergmed.2012.07.119'],
+  ['silverman-andersen', 'https://doi.org/10.1542/peds.17.1.1'],
+  ['urine-anion-gap', 'https://doi.org/10.1097/00000441-198610000-00003'],
+  ['wells-dvt', 'https://doi.org/10.1016/s0140-6736(97)08140-3'],
+  ['wells-pe', 'https://doi.org/10.1055/s-0037-1613830'],
+  ['sodium-correction', 'https://doi.org/10.1056/nejm200005253422107'],
+  ['cincinnati', 'https://doi.org/10.1016/s0196-0644(99)70299-4'],
+  ['delta-gap', 'https://doi.org/10.1016/s0196-0644(05)82292-9'],
+  ['aldrete', 'https://doi.org/10.1016/0952-8180(94)00001-k'],
+];
+
+test('spec-v941: every recovered citation link is still in place', () => {
+  const bad = [];
+  for (const [id, url] of RECOVERED) {
+    const m = META[id];
+    if (!m) { bad.push(`${id}: no longer a tile`); continue; }
+    if (m.citationUrl !== url) bad.push(`${id}: citationUrl is ${m.citationUrl}, expected ${url}`);
+  }
+  assert.deepEqual(bad, []);
+});
+
+test('spec-v941: no recovered tile is still on the frozen backlog', () => {
+  const backlog = new Set(JSON.parse(
+    readFileSync(new URL('../../data/citation-url-backlog.json', import.meta.url), 'utf8'),
+  ).tiles);
+  const stuck = RECOVERED.map(([id]) => id).filter((id) => backlog.has(id));
+  assert.deepEqual(stuck, []);
+});
+
+// The two citations whose own numbers pointed at a different paper.
+test('spec-v941: sodium-correction cites the Hyponatremia paper it names', () => {
+  // Adrogue & Madias published Hyponatremia (342:1581-1589) and Hypernatremia
+  // (342:1493-1499) in the same 2000 NEJM volume. This tile named the first and
+  // carried the second's page range.
+  assert.match(META['sodium-correction'].citation, /Hyponatremia\. NEJM 2000;342:1581-1589\./);
+  assert.match(META['free-water-deficit'].citation, /Hypernatremia\. NEJM 2000;342:1493-1499\./);
+  assert.notEqual(META['sodium-correction'].citationUrl, META['free-water-deficit'].citationUrl);
+});
+
+test('spec-v941: cincinnati cites the CPSS validation paper it names', () => {
+  // Ann Emerg Med 1999;33(4):373-378, not the 1997 out-of-hospital NIHSS paper
+  // whose volume and pages the citation had been carrying.
+  assert.match(META.cincinnati.citation, /Ann Emerg Med\. 1999;33\(4\):373-378\./);
+  assert.equal(META.cincinnati.citationUrl, META.cpss.citationUrl);
+});
