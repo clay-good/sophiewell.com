@@ -789,6 +789,9 @@ import { resolvePrompt, resolvePromptRanked, rankableWords } from './lib/prompt.
 // spec-v766: how strongly a query names a tile. Shared with mcp/tools.js so the
 // two surfaces resolve a name the same way.
 import { buildNameCounts, buildNameIndex, findNamed, nameMatch, namesInFull } from './lib/name-match.js';
+// spec-v939/v940: the same "Related tools" picker the tool pages and the MCP
+// server use, so all three surfaces name the same siblings.
+import { buildRelatedIndex, pickRelated } from './lib/related.js';
 import { corpusDesc, corpusOneLiner } from './lib/search-corpus.js';
 import { queryCompute } from './lib/query-compute.js';
 // spec-v753/v754: the generic prefill path -- reads the tile's own field
@@ -4058,6 +4061,22 @@ function tileCorpus() {
   return TILE_CORPUS_CACHE;
 }
 
+// spec-v940: the related-tools shortlist for a tile with no curated siblings.
+// Two signals, both already loaded: the tile's own name and its specialties,
+// weighted by how rare each is across the catalog (lib/related.js). Built once,
+// lazily -- it is only ever needed once a tile with no curated list is opened.
+let RELATED_INDEX_CACHE = null;
+function relatedFill(id) {
+  if (!RELATED_INDEX_CACHE) {
+    const tiles = tileCorpus();
+    const specialties = new Map(tiles.map((t) => [t.id, t.specialties]));
+    RELATED_INDEX_CACHE = { tiles, index: buildRelatedIndex(tiles, specialties) };
+  }
+  const current = RELATED_INDEX_CACHE.tiles.find((t) => t.id === id);
+  if (!current) return [];
+  return pickRelated(RELATED_INDEX_CACHE.tiles, current, RELATED_INDEX_CACHE.index, null).map((t) => t.id);
+}
+
 function audienceHint() {
   return CHIP_TO_AUDIENCE_HINT[filterState.audience] || 'all';
 }
@@ -4350,10 +4369,19 @@ function renderMetaBlock(util) {
   // link so a nurse on `wells-pe` is one click from `perc` / `pesi`. Unknown
   // ids are silently skipped (the related-tools unit test pins that every
   // declared id resolves, so this is defensive, not a feature).
-  if (Array.isArray(meta.related) && meta.related.length) {
+  // spec-v940: ...and when nothing is curated, the shortlist the tool page has
+  // shown all along. 102 tiles rendered no related-tools line here while
+  // /tools/<id>/ offered four -- `abg` sent a reader nowhere on this surface and
+  // to airway resistance, auto-PEEP, CPIS and cuff leak on the other. Curation
+  // still wins; this only runs when there is nothing curated to show.
+  const curated = Array.isArray(meta.related) ? meta.related : [];
+  const relatedIds = curated.some((rid) => UTILITIES.some((u) => u.id === rid))
+    ? curated
+    : relatedFill(util.id);
+  if (relatedIds.length) {
     const seen = new Set();
     const links = [];
-    for (const rid of meta.related) {
+    for (const rid of relatedIds) {
       if (rid === util.id || seen.has(rid)) continue;
       const target = UTILITIES.find((u) => u.id === rid);
       if (!target) continue;
