@@ -341,6 +341,9 @@ export function describeCalculator(args = {}) {
     example: e.example,
     citation: e.citation,
     citationUrl: e.citationUrl,
+    // spec-v942: present only when the citation names two or more papers, each
+    // with its own labelled link. citationUrl above is the first of them.
+    ...(e.citationUrls ? { citationUrls: e.citationUrls } : {}),
     citationAccessed: e.citationAccessed,
     interpretation: e.interpretation,
     // spec-v630: the curated related calculators, filtered to the exposed set so
@@ -943,6 +946,11 @@ export const TOOL_DEFS = [
         example: { type: 'object' },
         citation: { type: ['string', 'null'] },
         citationUrl: { type: ['string', 'null'] },
+        citationUrls: {
+          type: 'array',
+          description: 'Every paper the citation names, each with a label and a link. Present only when it names more than one; citationUrl is the first of them.',
+          items: { type: 'object', properties: { label: { type: 'string' }, url: { type: 'string' } } },
+        },
         citationAccessed: { type: ['string', 'null'] },
         interpretation: {},
         related: { type: 'array', items: { type: 'string' }, description: 'Ids of related calculators, all exposed and describable.' },

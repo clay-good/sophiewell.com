@@ -9,14 +9,17 @@
 // Five rules (spec-v54 §4.1):
 //   1. Every `clinical: true` tile has a non-empty `META[id].citation`.
 //   2. `citation` contains no raw `http://` / `https://` (URLs -> `citationUrl`).
-//   3. `citationUrl`, when present, parses as a valid `https://` URL.
+//   3. `citationUrl`, when present, parses as a valid `https://` URL. A tile
+//      whose citation names two or more papers may carry `citationUrls`
+//      instead -- a labelled list, two entries or more, never alongside the
+//      singular field (spec-v942).
 //   4. Every tile whose citation matches the guideline-issuer pattern has an
 //      `accessed` date (`citationAccessed` or `source.accessed`) AND a row in
 //      docs/citation-staleness.md.
 //   5. No `citation` contains the unpinned phrases "current edition",
 //      "latest version", or "most recent".
 //   6. (spec-v938) A citation that names a year names a real, findable paper.
-//      Every such tile carries a `citationUrl` unless its id is in the frozen
+//      Every such tile carries a `citationUrl` (or `citationUrls`) unless its id is in the frozen
 //      backlog `data/citation-url-backlog.json`. The backlog may only shrink:
 //      a new tile may not join it, and a tile that gains a `citationUrl` must
 //      be removed from it. 220 tiles were grandfathered at v938.
@@ -49,6 +52,12 @@ const DATED_CITATION = /\b(19|20)\d\d\b/;
 // `source.accessed` (spec-v54 §4.3).
 function hasAccessed(m) {
   return Boolean(m.citationAccessed || (m.source && m.source.accessed));
+}
+
+// hasCitationLink(meta) -> bool. A tile reaches its source through either the
+// singular `citationUrl` or the labelled `citationUrls` list (spec-v942).
+function hasCitationLink(m) {
+  return Boolean(m.citationUrl || (Array.isArray(m.citationUrls) && m.citationUrls.length));
 }
 
 // isValidHttpsUrl(s) -> bool. Syntactic only (no network; spec-v54 §7).
@@ -89,6 +98,29 @@ export function findCitationViolations({ tiles, meta, ledgerIds, backlogIds = ne
       out.push(`${t.id}: rule 3 - citationUrl is not a valid https:// URL`);
     }
 
+    // Rule 3b (spec-v942): a citation that names two or more papers links each
+    // of them through `citationUrls`, a labelled list. One link cannot stand
+    // for two papers, and an unlabelled second link does not say which paper
+    // it opens -- so every entry carries a label and a valid https URL, the
+    // list is never shorter than two, and it never sits beside the singular
+    // field (which surface would then be the source of truth?).
+    if (m.citationUrls !== undefined) {
+      if (!Array.isArray(m.citationUrls) || m.citationUrls.length < 2) {
+        out.push(`${t.id}: rule 3 - citationUrls must be a list of two or more entries (one link belongs in citationUrl)`);
+      } else if (m.citationUrl !== undefined) {
+        out.push(`${t.id}: rule 3 - tile carries both citationUrl and citationUrls (use one)`);
+      } else {
+        for (const [i, entry] of m.citationUrls.entries()) {
+          if (!entry || typeof entry.label !== 'string' || entry.label.trim() === '') {
+            out.push(`${t.id}: rule 3 - citationUrls[${i}] has no label (a reader must know which paper the link opens)`);
+          }
+          if (!entry || !isValidHttpsUrl(entry.url)) {
+            out.push(`${t.id}: rule 3 - citationUrls[${i}] is not a valid https:// URL`);
+          }
+        }
+      }
+    }
+
     // Rule 5: no unpinned-edition phrase.
     if (UNPINNED.test(citation)) {
       out.push(`${t.id}: rule 5 - unpinned phrase ("current edition"/"latest version"/"most recent")`);
@@ -105,7 +137,7 @@ export function findCitationViolations({ tiles, meta, ledgerIds, backlogIds = ne
     }
 
     // Rule 6: a dated citation is reachable, or is a known-and-frozen exception.
-    if (DATED_CITATION.test(citation) && !m.citationUrl && !backlogIds.has(t.id)) {
+    if (DATED_CITATION.test(citation) && !hasCitationLink(m) && !backlogIds.has(t.id)) {
       out.push(
         `${t.id}: rule 6 - citation names a dated source but has no citationUrl, ` +
         'and the backlog is frozen (add a real citationUrl; do not add the tile ' +
@@ -120,7 +152,7 @@ export function findCitationViolations({ tiles, meta, ledgerIds, backlogIds = ne
   for (const id of backlogIds) {
     if (!meta[id]) {
       out.push(`${id}: rule 6 - listed in data/citation-url-backlog.json but is not a tile (remove the row)`);
-    } else if (meta[id].citationUrl) {
+    } else if (hasCitationLink(meta[id])) {
       out.push(`${id}: rule 6 - now has a citationUrl; remove it from data/citation-url-backlog.json`);
     }
   }

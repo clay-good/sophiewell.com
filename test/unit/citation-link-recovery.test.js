@@ -82,3 +82,35 @@ test('spec-v941: cincinnati cites the CPSS validation paper it names', () => {
   assert.match(META.cincinnati.citation, /Ann Emerg Med\. 1999;33\(4\):373-378\./);
   assert.equal(META.cincinnati.citationUrl, META.cpss.citationUrl);
 });
+
+// ---- spec-v942: the tiles whose citation names two papers, both linked ----
+
+const TWO_PAPER = [
+  ['alvarado-pas', 'Alvarado 1986', 'Samuel 2002'],
+  ['dast10', 'Skinner 1982', 'Yudko 2007'],
+  ['fast', 'Kleindorfer 2007', 'Aroor 2017'],
+  ['hypothermia-rewarm', 'Durrer 2003', 'ERC 2021'],
+  ['iss-rts', 'Baker 1974', 'Champion 1989'],
+  ['lams', 'Llanes 2004', 'Nazliel 2008'],
+  ['nexus-cspine', 'Hoffman 2000', 'Stiell 2001'],
+  ['phq2-gad2', 'Kroenke 2003', 'Kroenke 2007'],
+  ['vent-sbt-peep', 'Boles 2007', 'ARDS Network 2000'],
+  ['wells-dvt-caprini', 'Wells 1997', 'Caprini 2005'],
+  ['wells-pe-geneva', 'Wells 2000', 'Le Gal 2006'],
+];
+
+test('spec-v942: each two-paper citation links both papers, labelled and distinct', () => {
+  const bad = [];
+  for (const [id, ...labels] of TWO_PAPER) {
+    const list = META[id]?.citationUrls;
+    if (!Array.isArray(list)) { bad.push(`${id}: no citationUrls`); continue; }
+    if (META[id].citationUrl) bad.push(`${id}: also carries a singular citationUrl`);
+    assert.deepEqual(list.map((e) => e.label), labels, `${id}: labels drifted`);
+    const urls = new Set(list.map((e) => e.url));
+    if (urls.size !== list.length) bad.push(`${id}: two labels share one link`);
+    for (const e of list) {
+      if (!e.url.startsWith('https://doi.org/')) bad.push(`${id}: ${e.label} is not a DOI link`);
+    }
+  }
+  assert.deepEqual(bad, []);
+});

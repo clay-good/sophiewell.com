@@ -710,8 +710,18 @@ function buildPageHtml({ tile, desc, meta, related, copy, whatThisIs, optionLabe
   // renders as an explicit "Read the source" link. Mirrors the SPA's
   // References region (app.js renderMetaBlock) so the indexable page and
   // the live tool point at the same primary source.
+  // spec-v942: a citation naming two or more papers carries a labelled
+  // `citationUrls` list instead of the singular field, and each paper gets its
+  // own link so the reader can tell which one they are opening.
+  const sourceLinksHtml = meta?.citationUrl
+    ? ` <a class="tp-citation-link" href="${esc(meta.citationUrl)}" target="_blank" rel="noopener noreferrer">Read the source &#8599;</a>`
+    : Array.isArray(meta?.citationUrls) && meta.citationUrls.length
+      ? ' Read the sources: ' + meta.citationUrls
+        .map((e) => `<a class="tp-citation-link" href="${esc(e.url)}" target="_blank" rel="noopener noreferrer">${esc(e.label)} &#8599;</a>`)
+        .join(', ')
+      : '';
   const citationHtml = meta?.citation
-    ? `<p>${linkifyCitation(meta.citation)}${meta.citationUrl ? ` <a class="tp-citation-link" href="${esc(meta.citationUrl)}" target="_blank" rel="noopener noreferrer">Read the source &#8599;</a>` : ''}</p>`
+    ? `<p>${linkifyCitation(meta.citation)}${sourceLinksHtml}</p>`
     : '';
   const sourceHtml = meta?.source?.label
     ? `<p class="src-stamp"><strong>Source:</strong> ${esc(meta.source.label)}</p>`

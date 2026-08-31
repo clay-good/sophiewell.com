@@ -4278,6 +4278,20 @@ function renderMetaBlock(util) {
         rel: 'noopener noreferrer',
         text: 'Read the source ↗',
       }));
+    } else if (Array.isArray(meta.citationUrls) && meta.citationUrls.length) {
+      // spec-v942: a citation that names two or more papers gets one labelled
+      // link per paper, so the reader can tell which one each link opens.
+      p.appendChild(document.createTextNode(' Read the sources: '));
+      meta.citationUrls.forEach((entry, i) => {
+        if (i) p.appendChild(document.createTextNode(', '));
+        p.appendChild(el('a', {
+          class: 'citation-link',
+          href: entry.url,
+          target: '_blank',
+          rel: 'noopener noreferrer',
+          text: `${entry.label} ↗`,
+        }));
+      });
     }
     proof.appendChild(p);
   }

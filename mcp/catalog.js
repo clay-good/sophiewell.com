@@ -1672,7 +1672,15 @@ function buildRegistry() {
         formatResult,
         validate: (inputs) => validateInputs(inputs, fields),
         citation: meta.citation || null,
-        citationUrl: meta.citationUrl || null,
+        // spec-v942: a citation naming two or more papers carries a labelled
+        // list instead of one link. `citationUrl` stays the primary source so
+        // no caller that reads only that field loses its link; `citationUrls`
+        // carries the whole set.
+        citationUrl: meta.citationUrl
+          || (Array.isArray(meta.citationUrls) && meta.citationUrls.length ? meta.citationUrls[0].url : null),
+        citationUrls: Array.isArray(meta.citationUrls) && meta.citationUrls.length
+          ? meta.citationUrls.map((e) => ({ label: e.label, url: e.url }))
+          : null,
         citationAccessed: meta.citationAccessed || null,
         interpretation: meta.interpretation || null,
         example: meta.example || null,

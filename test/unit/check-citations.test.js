@@ -160,8 +160,62 @@ test('rule 6 - the shipped backlog matches the catalog exactly', async () => {
     readFileSync(new URL('../../data/citation-url-backlog.json', import.meta.url), 'utf8'),
   ).tiles;
   const actual = Object.keys(META)
-    .filter((id) => !META[id].citationUrl && /\b(19|20)\d\d\b/.test(META[id].citation || ''))
+    .filter((id) => !META[id].citationUrl && !META[id].citationUrls
+      && /\b(19|20)\d\d\b/.test(META[id].citation || ''))
     .sort();
   assert.deepEqual(listed, actual,
     'data/citation-url-backlog.json has drifted from lib/meta.js');
+});
+
+// ---- spec-v942 rule 3b: a citation naming two papers links both, labelled ----
+
+test('rule 3 - citationUrls links every paper, each with a label', () => {
+  const b = baseline();
+  delete b.meta['kdigo-aki'].citationUrl;
+  b.meta['kdigo-aki'].citationUrls = [
+    { label: 'KDIGO 2012', url: 'https://doi.org/10.1038/kisup.2012.1' },
+    { label: 'KDIGO 2024', url: 'https://doi.org/10.1016/j.kint.2023.10.018' },
+  ];
+  assert.deepEqual(findCitationViolations(b).filter((x) => x.includes('rule 3')), []);
+  // It also satisfies rule 6: the paper is reachable.
+  assert.deepEqual(findCitationViolations(b).filter((x) => x.includes('rule 6')), []);
+});
+
+test('rule 3 - a one-entry list, an unlabelled entry, a bad URL, or both fields, all fail', () => {
+  const cases = [
+    [[{ label: 'KDIGO 2012', url: 'https://doi.org/10.1038/kisup.2012.1' }], 'two or more entries'],
+    [[{ label: '  ', url: 'https://doi.org/10.1038/kisup.2012.1' },
+      { label: 'KDIGO 2024', url: 'https://doi.org/10.1016/j.kint.2023.10.018' }], 'has no label'],
+    [[{ label: 'KDIGO 2012', url: 'http://doi.org/10.1038/kisup.2012.1' },
+      { label: 'KDIGO 2024', url: 'https://doi.org/10.1016/j.kint.2023.10.018' }], 'not a valid https'],
+  ];
+  for (const [urls, needle] of cases) {
+    const b = baseline();
+    delete b.meta['kdigo-aki'].citationUrl;
+    b.meta['kdigo-aki'].citationUrls = urls;
+    const v = findCitationViolations(b).filter((x) => x.includes('rule 3'));
+    assert.equal(v.length, 1, `${needle}: ${JSON.stringify(v)}`);
+    assert.ok(v[0].includes(needle), v[0]);
+  }
+
+  // Both fields at once: which one is the source of truth?
+  const both = baseline();
+  both.meta['kdigo-aki'].citationUrls = [
+    { label: 'KDIGO 2012', url: 'https://doi.org/10.1038/kisup.2012.1' },
+    { label: 'KDIGO 2024', url: 'https://doi.org/10.1016/j.kint.2023.10.018' },
+  ];
+  const v = findCitationViolations(both).filter((x) => x.includes('rule 3'));
+  assert.equal(v.length, 1, JSON.stringify(v));
+  assert.ok(v[0].includes('both citationUrl and citationUrls'), v[0]);
+});
+
+test('rule 6 - a backlogged tile that gained a citationUrls list must leave the list', () => {
+  const b = baseline();
+  delete b.meta['kdigo-aki'].citationUrl;
+  b.meta['kdigo-aki'].citationUrls = [
+    { label: 'KDIGO 2012', url: 'https://doi.org/10.1038/kisup.2012.1' },
+    { label: 'KDIGO 2024', url: 'https://doi.org/10.1016/j.kint.2023.10.018' },
+  ];
+  const v = findCitationViolations({ ...b, backlogIds: new Set(['kdigo-aki']) });
+  assert.equal(v.filter((x) => x.includes('remove it from')).length, 1, v.join('\n'));
 });
