@@ -114,3 +114,48 @@ test('spec-v942: each two-paper citation links both papers, labelled and distinc
   }
   assert.deepEqual(bad, []);
 });
+
+// ---- spec-v943: the links that did not reach a source ----
+
+// Twelve DOIs that looked right and 404ed at doi.org. They read like real
+// records -- correct prefix, plausible suffix -- which is exactly why nothing
+// caught them for so long. Assert by string, so a copy-paste cannot bring one
+// back under a different tile.
+const FABRICATED_DOIS = [
+  '10.1016/0735-1097(85)90581-1', '10.1097/00003086-197901000-00012',
+  '10.1027/1015-5759.19.1.12', '10.1080/01621459.1927.10502667',
+  '10.1111/j.1748-1716.1942.tb00363.x', '10.1097/TA.0b013e31824157e6',
+  '10.1016/0002-9343(81)90178-4', '10.1016/S0140-6736(73)93104-5',
+  '10.1016/0016-5085(92)90845-Q', '10.1016/0002-9610(44)90000-0',
+  '10.1016/S0022-5347(17)38501-5', '10.1001/archinte.1990.00390150103019',
+];
+
+test('spec-v943: no tile links a DOI that does not resolve', () => {
+  const live = new Set();
+  for (const m of Object.values(META)) {
+    if (m.citationUrl) live.add(m.citationUrl);
+    for (const e of m.citationUrls || []) live.add(e.url);
+  }
+  const back = FABRICATED_DOIS.filter((d) => live.has(`https://doi.org/${d}`));
+  assert.deepEqual(back, []);
+});
+
+test('spec-v943: the olbi and Wilson DOIs keep the exact form that resolves', () => {
+  // Hogrefe DOIs carry a double slash after the prefix; dropping one 404s.
+  assert.equal(META.olbi.citationUrl, 'https://doi.org/10.1027//1015-5759.19.1.12');
+  // The shipped Wilson DOI had the wrong article number, not the wrong journal.
+  assert.equal(META['proportion-ci'].citationUrl, 'https://doi.org/10.1080/01621459.1927.10502953');
+});
+
+test('spec-v943: every PubMed link names a record, not a query, outside the frozen set', () => {
+  const offenders = [];
+  for (const [id, m] of Object.entries(META)) {
+    const url = m.citationUrl || '';
+    if (!url.includes('pubmed.ncbi.nlm.nih.gov')) continue;
+    if (/pubmed\.ncbi\.nlm\.nih\.gov\/\d+\/?$/.test(url)) continue;
+    offenders.push(id);
+  }
+  // The frozen set is the only place a search URL may live; it is checked
+  // against the catalog by check-citations.test.js.
+  assert.equal(offenders.length, 12, offenders.join(', '));
+});

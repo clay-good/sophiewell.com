@@ -4270,13 +4270,17 @@ function renderMetaBlock(util) {
     p.appendChild(document.createTextNode('Citation: '));
     appendLinkified(p, meta.citation);
     if (meta.citationUrl) {
+      // spec-v943: eight sources are a book chapter, a meeting abstract or a
+      // pre-1946 paper that no index carries, so the only pointer is a search.
+      // Say so: "Read the source" would promise a paper the link cannot open.
+      const isSearch = /[?&](term|q|query|search)=/.test(meta.citationUrl);
       p.appendChild(document.createTextNode(' '));
       p.appendChild(el('a', {
         class: 'citation-link',
         href: meta.citationUrl,
         target: '_blank',
         rel: 'noopener noreferrer',
-        text: 'Read the source ↗',
+        text: isSearch ? 'Search PubMed for this source ↗' : 'Read the source ↗',
       }));
     } else if (Array.isArray(meta.citationUrls) && meta.citationUrls.length) {
       // spec-v942: a citation that names two or more papers gets one labelled

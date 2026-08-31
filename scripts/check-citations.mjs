@@ -18,6 +18,12 @@
 //      docs/citation-staleness.md.
 //   5. No `citation` contains the unpinned phrases "current edition",
 //      "latest version", or "most recent".
+//   7. (spec-v943) No source link is a search-results page. "Read the source"
+//      promises the paper; a `?term=` URL delivers a result list that may hold
+//      the paper, six unrelated ones, or none. Eight tiles whose source is a
+//      book chapter, a meeting abstract or a pre-1946 paper that no index
+//      carries are grandfathered, and render as "Search PubMed" rather than
+//      "Read the source". The list shrinks only.
 //   6. (spec-v938) A citation that names a year names a real, findable paper.
 //      Every such tile carries a `citationUrl` (or `citationUrls`) unless its id is in the frozen
 //      backlog `data/citation-url-backlog.json`. The backlog may only shrink:
@@ -54,6 +60,31 @@ function hasAccessed(m) {
   return Boolean(m.citationAccessed || (m.source && m.source.accessed));
 }
 
+// The twelve tiles whose only reachable pointer is a PubMed search: six book
+// chapters (Bromage 1978, Russell-Taylor 1992, Rockwood 1984, Narakas 1987,
+// Schwab-England 1969, Lippitt 1993), four pre-1946 papers (Waldenstrom 1938,
+// Severin 1941, Berggren 1942, Lund-Browder 1944), one meeting abstract
+// (Bigliani, Orthop Trans 1986) and one tile whose citation names no single
+// paper (nmr). No index carries any of them, so the page says "Search PubMed
+// for this source" rather than promising a paper the link cannot open.
+// Frozen at spec-v943; shrinks only.
+export const SEARCH_URL_GRANDFATHERED = new Set([
+  'bigliani-acromion', 'bromage-scale', 'lund-browder', 'narakas-obpp', 'nmr',
+  'rockwood-ac', 'russell-taylor-subtroch', 'schwab-england', 'severin-ddh',
+  'shunt-fraction', 'simple-shoulder-test', 'waldenstrom-perthes',
+]);
+
+// isSearchUrl(s) -> bool. A results page, not a document: a query string that
+// carries a search term. Syntactic only, like every other rule here.
+export function isSearchUrl(s) {
+  try {
+    const u = new URL(s);
+    return ['term', 'q', 'query', 'search'].some((k) => u.searchParams.has(k));
+  } catch {
+    return false;
+  }
+}
+
 // hasCitationLink(meta) -> bool. A tile reaches its source through either the
 // singular `citationUrl` or the labelled `citationUrls` list (spec-v942).
 function hasCitationLink(m) {
@@ -73,8 +104,11 @@ function isValidHttpsUrl(s) {
 // findCitationViolations({ tiles, meta, ledgerIds }) -> [string].
 // Pure. `tiles` is [{ id, clinical }]; `meta` is the META map; `ledgerIds` is a
 // Set of tile ids present in the staleness ledger; `backlogIds` is a Set of the
-// tile ids grandfathered by rule 6.
-export function findCitationViolations({ tiles, meta, ledgerIds, backlogIds = new Set() }) {
+// tile ids grandfathered by rule 6; `searchUrlIds` is the set grandfathered by
+// rule 7. Both default to empty so a synthetic catalog sees only its own rules.
+export function findCitationViolations({
+  tiles, meta, ledgerIds, backlogIds = new Set(), searchUrlIds = new Set(),
+}) {
   const out = [];
   for (const t of tiles) {
     const m = meta[t.id] || {};
@@ -121,6 +155,13 @@ export function findCitationViolations({ tiles, meta, ledgerIds, backlogIds = ne
       }
     }
 
+    // Rule 7 (spec-v943): a source link points at the source, not at a search
+    // for it. Grandfathered tiles are the ones no index carries.
+    const links = [m.citationUrl, ...(Array.isArray(m.citationUrls) ? m.citationUrls.map((e) => e && e.url) : [])];
+    if (links.some((u) => u && isSearchUrl(u)) && !searchUrlIds.has(t.id)) {
+      out.push(`${t.id}: rule 7 - source link is a search-results page, not the source (link the record, not the query)`);
+    }
+
     // Rule 5: no unpinned-edition phrase.
     if (UNPINNED.test(citation)) {
       out.push(`${t.id}: rule 5 - unpinned phrase ("current edition"/"latest version"/"most recent")`);
@@ -154,6 +195,17 @@ export function findCitationViolations({ tiles, meta, ledgerIds, backlogIds = ne
       out.push(`${id}: rule 6 - listed in data/citation-url-backlog.json but is not a tile (remove the row)`);
     } else if (hasCitationLink(meta[id])) {
       out.push(`${id}: rule 6 - now has a citationUrl; remove it from data/citation-url-backlog.json`);
+    }
+  }
+
+  // Rule 7, the other direction: the grandfathered search-link set shrinks and
+  // never goes stale, exactly like the backlog above.
+  for (const id of searchUrlIds) {
+    const m = meta[id];
+    if (!m) {
+      out.push(`${id}: rule 7 - grandfathered as a search link but is not a tile (remove it from SEARCH_URL_GRANDFATHERED)`);
+    } else if (!isSearchUrl(m.citationUrl || '')) {
+      out.push(`${id}: rule 7 - no longer links a search; remove it from SEARCH_URL_GRANDFATHERED`);
     }
   }
   return out;
@@ -211,7 +263,9 @@ async function main() {
   const tiles = parseTiles(appJs);
   const ledgerIds = parseLedgerIds(ledgerMd);
   const backlogIds = new Set(JSON.parse(backlogJson).tiles);
-  const violations = findCitationViolations({ tiles, meta: metaMod.META, ledgerIds, backlogIds });
+  const violations = findCitationViolations({
+    tiles, meta: metaMod.META, ledgerIds, backlogIds, searchUrlIds: SEARCH_URL_GRANDFATHERED,
+  });
 
   if (violations.length) {
     console.error('check-citations: FAIL - citation-integrity violations (spec-v54):');

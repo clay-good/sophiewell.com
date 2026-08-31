@@ -8,6 +8,8 @@ import {
   parseTiles,
   parseLedgerIds,
   ISSUER_PATTERN,
+  SEARCH_URL_GRANDFATHERED,
+  isSearchUrl,
 } from '../../scripts/check-citations.mjs';
 
 // A minimal well-formed baseline: one clinical guideline tile (dated + ledgered
@@ -218,4 +220,73 @@ test('rule 6 - a backlogged tile that gained a citationUrls list must leave the 
   ];
   const v = findCitationViolations({ ...b, backlogIds: new Set(['kdigo-aki']) });
   assert.equal(v.filter((x) => x.includes('remove it from')).length, 1, v.join('\n'));
+});
+
+// ---- spec-v943 rule 7: a source link is the source, not a search for it ----
+
+test('isSearchUrl separates a record from a query for it', () => {
+  assert.ok(isSearchUrl('https://pubmed.ncbi.nlm.nih.gov/?term=Bromage+epidural'));
+  assert.ok(isSearchUrl('https://www.alsg.org/en/?q=APLS'));
+  assert.ok(!isSearchUrl('https://pubmed.ncbi.nlm.nih.gov/920239/'));
+  assert.ok(!isSearchUrl('https://doi.org/10.1038/kisup.2012.1'));
+  assert.ok(!isSearchUrl('not a url'));
+});
+
+test('rule 7 - a search-results link fails unless the tile is grandfathered', () => {
+  const b = baseline();
+  b.meta['kdigo-aki'].citationUrl = 'https://pubmed.ncbi.nlm.nih.gov/?term=KDIGO+acute+kidney+injury';
+  const v = findCitationViolations(b).filter((x) => x.includes('rule 7') && x.includes('kdigo-aki'));
+  assert.equal(v.length, 1, JSON.stringify(v));
+
+  // A grandfathered tile passes -- and its label on the page says "Search PubMed".
+  const [grandfathered] = [...SEARCH_URL_GRANDFATHERED];
+  const g = {
+    tiles: [{ id: grandfathered, clinical: true }],
+    meta: { [grandfathered]: { citation: 'Bromage PR. Epidural Analgesia. 1978.', citationUrl: 'https://pubmed.ncbi.nlm.nih.gov/?term=Bromage' } },
+    ledgerIds: new Set(),
+    searchUrlIds: SEARCH_URL_GRANDFATHERED,
+  };
+  assert.deepEqual(findCitationViolations(g).filter((x) => x.startsWith(`${grandfathered}:`)), []);
+});
+
+test('rule 7 - a search link in a citationUrls entry fails too', () => {
+  const b = baseline();
+  delete b.meta['kdigo-aki'].citationUrl;
+  b.meta['kdigo-aki'].citationUrls = [
+    { label: 'KDIGO 2012', url: 'https://doi.org/10.1038/kisup.2012.1' },
+    { label: 'KDIGO 2024', url: 'https://pubmed.ncbi.nlm.nih.gov/?term=KDIGO+2024' },
+  ];
+  const v = findCitationViolations(b).filter((x) => x.includes('rule 7') && x.startsWith('kdigo-aki'));
+  assert.equal(v.length, 1, JSON.stringify(v));
+});
+
+test('rule 7 - the grandfathered set shrinks only', () => {
+  // A grandfathered tile that has since gained a real link must leave the set.
+  const [first] = [...SEARCH_URL_GRANDFATHERED];
+  const fixed = findCitationViolations({
+    tiles: [{ id: first, clinical: true }],
+    meta: { [first]: { citation: 'Bromage PR. Epidural Analgesia. 1978.', citationUrl: 'https://doi.org/10.1000/x' } },
+    ledgerIds: new Set(),
+    searchUrlIds: SEARCH_URL_GRANDFATHERED,
+  });
+  assert.equal(fixed.filter((x) => x.startsWith(`${first}:`) && x.includes('no longer links a search')).length, 1,
+    fixed.join('\n'));
+
+  // Against a catalog that holds none of them, every id reports as retired.
+  const empty = findCitationViolations({
+    tiles: [], meta: {}, ledgerIds: new Set(), searchUrlIds: SEARCH_URL_GRANDFATHERED,
+  });
+  assert.equal(
+    empty.filter((x) => x.includes('rule 7') && x.includes('is not a tile')).length,
+    SEARCH_URL_GRANDFATHERED.size,
+  );
+});
+
+test('rule 7 - the shipped grandfathered set matches the catalog exactly', async () => {
+  const { META } = await import('../../lib/meta.js');
+  const actual = Object.keys(META)
+    .filter((id) => isSearchUrl(META[id].citationUrl || ''))
+    .sort();
+  assert.deepEqual([...SEARCH_URL_GRANDFATHERED].sort(), actual,
+    'SEARCH_URL_GRANDFATHERED has drifted from lib/meta.js');
 });

@@ -713,8 +713,13 @@ function buildPageHtml({ tile, desc, meta, related, copy, whatThisIs, optionLabe
   // spec-v942: a citation naming two or more papers carries a labelled
   // `citationUrls` list instead of the singular field, and each paper gets its
   // own link so the reader can tell which one they are opening.
+  // spec-v943: a link that can only reach a search says so, rather than
+  // promising a paper it cannot open. Mirrors app.js renderMetaBlock.
+  const citationLinkText = meta?.citationUrl && /[?&](term|q|query|search)=/.test(meta.citationUrl)
+    ? 'Search PubMed for this source'
+    : 'Read the source';
   const sourceLinksHtml = meta?.citationUrl
-    ? ` <a class="tp-citation-link" href="${esc(meta.citationUrl)}" target="_blank" rel="noopener noreferrer">Read the source &#8599;</a>`
+    ? ` <a class="tp-citation-link" href="${esc(meta.citationUrl)}" target="_blank" rel="noopener noreferrer">${citationLinkText} &#8599;</a>`
     : Array.isArray(meta?.citationUrls) && meta.citationUrls.length
       ? ' Read the sources: ' + meta.citationUrls
         .map((e) => `<a class="tp-citation-link" href="${esc(e.url)}" target="_blank" rel="noopener noreferrer">${esc(e.label)} &#8599;</a>`)

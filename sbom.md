@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `be0b258b4f6d92c8`
-Generated: 2026-08-31T22:59:20.781Z
+Build ID: `7b7cbf8da5559702`
+Generated: 2026-08-31T23:48:10.101Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -27,7 +27,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 |---|---:|---|
 | `index.html` | 109396 | `50e22f5bb5c81f5f12ef5a2404ca6da6044a5f65a65202be51f55aeec3e04cb5` |
 | `styles.css` | 67361 | `2942923c5157d85e7e381552e74488a519e4a6deff4edd9029489f3311f1870d` |
-| `app.js` | 501682 | `dfdfdb9a8fbcd3ac387f240c45696c82f8593927f2dbb4b4f2b7d6612cb03065` |
+| `app.js` | 502044 | `cfc0535f7bd2432232a95e25d11dc963eba18aa3ea6493e048dbcd5e04fa7ac8` |
 | `report-feedback.js` | 12178 | `955e5cb542c7b13dcbb85a75ecf4ccf2dc0b2dffecd84daac1d607bd6acc7cd2` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 | `theme.js` | 3132 | `6910af0b4c65869c6a3d24d17842bb2cc88c7d23f8fb32506fcdbfeec70ce979` |
@@ -509,7 +509,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/membranous-risk-v878.js` | 10326 | `ff774f72e82303f0c83c8091aaa6ea2bb3b4deeba5c6323985d910dd003d53f4` |
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2444682 | `36143314c17ecffe8370305893570d71c53cbd585fedf04311d35b70554bac4a` |
+| `lib/meta.js` | 2442831 | `470d1a465f2d81db0efb7d751dbb123b7e76bfec3a8674d29e5e4b7506106a40` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |

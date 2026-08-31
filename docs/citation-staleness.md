@@ -16,8 +16,16 @@ was reviewed and deliberately retained, not missed.
 
 `accessed` records human verification of the citation text against the source —
 distinct from the dataset `fetchDate` in `data/*/manifest.json`. v54 does not
-fetch any URL at build time (spec-v54 §7); liveness is verified by a human at
-the quarterly source pull. No clinical formula or threshold changes here.
+fetch any URL at build time (spec-v54 §7). No clinical formula or threshold
+changes here.
+
+Liveness was left to the quarterly source pull until spec-v943 measured it and
+found **66 of 1,556 source links reaching nothing** — dead DOIs, retired
+publisher pages, and links that opened a search rather than the paper. Run
+`node scripts/check-citation-links.mjs` at the source pull (and after any batch
+of new citations) to check every link on the network. It stays out of
+`npm run lint` on purpose: a publisher outage should not fail an unrelated
+change in CI.
 
 ## Guideline-derived tiles (gate-enforced)
 
