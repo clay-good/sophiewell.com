@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:787d66e4-de57-519b-8659-b1e16c85bc27",
+  "serialNumber": "urn:uuid:8ac23933-02a0-5471-842d-2331bd9cd799",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-08-30T23:54:31.599Z",
+    "timestamp": "2026-08-31T00:14:22.401Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "bdbf90c8278144a0328d78ec2efbe6077fc5f86864c0abfc7acba2e3686a35ea"
+          "content": "ac9db496190ecd163a85ba1c0d690180c4a61abf4ed19808576e9dc28bec7e82"
         }
       ],
       "properties": [
@@ -14248,6 +14248,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3535"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/related.js",
+      "type": "file",
+      "name": "lib/related.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9dfc547d46c29521a700c5382ff44ec8c6ab4aca66c08848e769738621f429f1"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4698"
         }
       ]
     },
@@ -34586,7 +34607,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6e5f0a9a9104a70d647b18ca38dd931daeaaab5fa134c09eca74fa22884d793a"
+          "content": "46e572d7667a3714eee3ad6aff4961609de1fed634326cf3a84803b4ad4e2359"
         }
       ],
       "properties": [
@@ -34596,7 +34617,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "53641"
+          "value": "55971"
         }
       ]
     },
@@ -67483,6 +67504,7 @@
         "urn:sophiewell:file:source:lib/rehab-v240.js",
         "urn:sophiewell:file:source:lib/reid-bronchiectasis-v450.js",
         "urn:sophiewell:file:source:lib/reimers-migration-percentage-v703.js",
+        "urn:sophiewell:file:source:lib/related.js",
         "urn:sophiewell:file:source:lib/renal-angina-v533.js",
         "urn:sophiewell:file:source:lib/renal-v128.js",
         "urn:sophiewell:file:source:lib/renal-v277.js",
@@ -69349,7 +69371,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "787d66e4de57119b"
+      "value": "8ac2393302a06471"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -69361,7 +69383,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2418"
+      "value": "2419"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

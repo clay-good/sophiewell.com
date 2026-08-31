@@ -89,14 +89,51 @@ test('describe names the related tools it cannot offer', async () => {
     const declared = (META[c.id] && META[c.id].related) || [];
     const hidden = declared.filter((rid) => UNEXPOSED.has(rid));
     const d = describeCalculator({ id: c.id });
-    if (!hidden.length) {
-      assert.ok(!('relatedOnWebsite' in d), `${c.id} has no browser-only siblings and should not carry the field`);
-      continue;
+
+    // Whatever the field carries, it never names something the agent could
+    // have called instead, and it is never present-but-empty.
+    for (const r of d.relatedOnWebsite || []) {
+      assert.ok(UNEXPOSED.has(r.id), `${c.id}: relatedOnWebsite names ${r.id}, which is callable here`);
     }
-    checked += 1;
-    assert.deepEqual((d.relatedOnWebsite || []).map((r) => r.id), hidden, `${c.id} drops a related tool silently`);
+    assert.ok(!('relatedOnWebsite' in d) || d.relatedOnWebsite.length > 0,
+      `${c.id} carries an empty relatedOnWebsite`);
+
+    // Where curation applies -- the tile has at least one curated sibling this
+    // server can call -- the field is exactly the curated ids it cannot.
+    if (declared.some((rid) => !UNEXPOSED.has(rid))) {
+      if (!hidden.length) {
+        assert.ok(!('relatedOnWebsite' in d), `${c.id} has no browser-only siblings and should not carry the field`);
+        continue;
+      }
+      checked += 1;
+      assert.deepEqual((d.relatedOnWebsite || []).map((r) => r.id), hidden, `${c.id} drops a related tool silently`);
+    }
   }
   assert.ok(checked > 0, 'at least one calculator has a browser-only sibling to name');
+});
+
+// spec-v939: a tile with no curated siblings falls back to the shortlist the
+// website computes for it, and the same rule applies to that list -- the ones
+// this server cannot call are named rather than dropped. Every tile the website
+// pairs restraint-timer with is one of the four time-dependent timers, so its
+// answer used to be silence about four pages that exist.
+test('describe fills an empty related list from what the website shows', async () => {
+  const { describeCalculator } = await import('../../mcp/tools.js');
+  const { META } = await import('../../lib/meta.js');
+
+  assert.deepEqual(META['restraint-timer'].related || [], [],
+    'fixture drift: restraint-timer is supposed to have no curated siblings');
+  const d = describeCalculator({ id: 'restraint-timer' });
+  assert.deepEqual(d.related, []);
+  assert.deepEqual((d.relatedOnWebsite || []).map((r) => r.id),
+    ['code-blue-clock', 'ews-escalation', 'sepsis-bundle-clock', 'device-day-counter']);
+
+  // And where the fill does find callable tiles, it answers with them.
+  const acet = describeCalculator({ id: 'acetaminophen-nomogram' });
+  assert.deepEqual(META['acetaminophen-nomogram'].related || [], []);
+  assert.ok(acet.related.length > 0, 'acetaminophen-nomogram still answers with nothing');
+  assert.ok(acet.related.includes('nac-dosing'),
+    `expected the NAC dosing tile among ${acet.related.join(', ')}`);
 });
 
 test('list_calculators says when a query only matches a browser-only tool', async () => {

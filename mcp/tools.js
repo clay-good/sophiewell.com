@@ -18,6 +18,7 @@ function domainOf(e) { return e.clinical ? 'clinical' : 'administrative'; }
 import { resolvePromptRanked, rankableWords } from '../lib/prompt.js';
 import { buildNameCounts, nameMatch, namesInFull } from '../lib/name-match.js';
 import { corpusDesc } from '../lib/search-corpus.js';
+import { buildRelatedIndex, pickRelated } from '../lib/related.js';
 import { queryCompute } from '../lib/query-compute.js';
 // spec-v758: the generic extractor behind answer_query's second attempt. Reads
 // the same adapter field descriptors this module already has in memory, so it
@@ -149,6 +150,52 @@ function resolveEntry(id) {
 // The related ids that exist on the website and are not callable here. Omitted
 // entirely when there are none, so a reader of the response only meets the
 // field when it says something.
+// spec-v939: the same shortlist the website shows, for the tiles that had none.
+// `describe_calculator` answered `related: []` on 102 calculators the website
+// gives four good suggestions for, because the field was the curated
+// `META.related` ids and nothing else -- while scripts/build-tool-pages.mjs has
+// always topped that list up from what the tile shares with the rest of the
+// catalog. The picker now lives in lib/related.js and both surfaces call it.
+// Curation still wins: this only runs when there is nothing curated to show.
+//
+// The corpus is an accelerator, not a dependency (same contract as the synonym
+// table): with no corpus on disk this returns [] and the field is as it was.
+let relatedFillCache;
+function relatedFill(id) {
+  if (relatedFillCache === undefined) {
+    const corpus = loadCorpus();
+    const ids = Object.keys(corpus);
+    if (!ids.length) {
+      relatedFillCache = null;
+    } else {
+      const tiles = ids.map((tid) => ({ id: tid, name: corpus[tid].name, group: corpus[tid].group }));
+      const specialties = new Map(ids.map((tid) => [tid, corpus[tid].specialties || []]));
+      relatedFillCache = { tiles, index: buildRelatedIndex(tiles, specialties) };
+    }
+  }
+  if (!relatedFillCache) return [];
+  const current = relatedFillCache.tiles.find((t) => t.id === id);
+  if (!current) return [];
+  return pickRelated(relatedFillCache.tiles, current, relatedFillCache.index, null).map((t) => t.id);
+}
+
+// The curated siblings an agent can call, or -- when a tile has none -- the
+// shortlist the website computes for it.
+function relatedIds(entry) {
+  const curated = (entry.related || []).filter((rid) => getCalculator(rid));
+  return curated.length ? curated : relatedFill(entry.id).filter((rid) => getCalculator(rid));
+}
+
+// The ids whichever list is in play -- curated, or the computed fill -- that the
+// website shows and this server cannot call. `restraint-timer` has no curated
+// siblings and every tile the website pairs it with is one of the four
+// time-dependent timers, so without this its answer is silence about four
+// pages that exist.
+function relatedElsewhere(entry) {
+  const curated = (entry.related || []).filter((rid) => getCalculator(rid));
+  return curated.length ? (entry.related || []) : relatedFill(entry.id);
+}
+
 function relatedOnWebsite(related) {
   const off = (related || [])
     .filter((rid) => UNEXPOSED.has(rid))
@@ -298,14 +345,14 @@ export function describeCalculator(args = {}) {
     interpretation: e.interpretation,
     // spec-v630: the curated related calculators, filtered to the exposed set so
     // every id here is one the agent can describe/compute next.
-    related: (e.related || []).filter((rid) => getCalculator(rid)),
+    related: relatedIds(e),
     // ...and the ones the filter took out, rather than nothing. Dropping them
     // silently made an empty `related` mean two different things -- this tile
     // has no siblings, or its siblings are all browser-only -- and 22 links
     // across 19 calculators read as the first when they were the second.
     // `pa-turnaround` returned `related: []` while the website shows it next to
     // the prior-auth linter and the prior-auth checklist.
-    ...relatedOnWebsite(e.related),
+    ...relatedOnWebsite(relatedElsewhere(e)),
     domain: domainOf(e),
     disclaimer: disclaimerFor(e),
   };
