@@ -159,3 +159,45 @@ test('spec-v943: every PubMed link names a record, not a query, outside the froz
   // against the catalog by check-citations.test.js.
   assert.equal(offenders.length, 12, offenders.join(', '));
 });
+
+// ---- spec-v944: the pre-DOI papers PubMed carries and Crossref does not ----
+
+const PUBMED_RECOVERED = [
+  ['bishop', 'https://pubmed.ncbi.nlm.nih.gov/14199536/'],
+  ['braden-q', 'https://pubmed.ncbi.nlm.nih.gov/8951145/'],
+  ['downes', 'https://pubmed.ncbi.nlm.nih.gov/5419441/'],
+  ['flacc', 'https://pubmed.ncbi.nlm.nih.gov/9220806/'],
+  ['iron-ganzoni', 'https://pubmed.ncbi.nlm.nih.gov/5413918/'],
+  ['ketamine-propofol', 'https://pubmed.ncbi.nlm.nih.gov/24438649/'],
+  ['mentzer', 'https://pubmed.ncbi.nlm.nih.gov/4123424/'],
+  ['nips', 'https://pubmed.ncbi.nlm.nih.gov/8413140/'],
+  ['pecarn-head', 'https://pubmed.ncbi.nlm.nih.gov/19758692/'],
+  ['perc', 'https://pubmed.ncbi.nlm.nih.gov/15304025/'],
+  ['pf-ratio', 'https://pubmed.ncbi.nlm.nih.gov/22797452/'],
+  ['prevent', 'https://pubmed.ncbi.nlm.nih.gov/37947085/'],
+];
+
+test('spec-v944: every PubMed-recovered link is still in place', () => {
+  const bad = [];
+  for (const [id, url] of PUBMED_RECOVERED) {
+    if (META[id]?.citationUrl !== url) bad.push(`${id}: ${META[id]?.citationUrl}`);
+  }
+  assert.deepEqual(bad, []);
+});
+
+test('spec-v944: mentzer links the index paper, not its page-neighbour', () => {
+  // Lancet 1973;1:882 holds more than one item. Volume and page alone matched
+  // "Acanthocytes and hypobetalipoproteinaemia"; only the title and author
+  // checks pick out Mentzer's "Differentiation of iron deficiency from
+  // thalassaemia trait".
+  assert.equal(META.mentzer.citationUrl, 'https://pubmed.ncbi.nlm.nih.gov/4123424/');
+});
+
+test('spec-v944: barthel and centor link both of the papers they name', () => {
+  assert.deepEqual(META.barthel.citationUrls.map((e) => e.label), ['Mahoney 1965', 'Shah 1989']);
+  assert.deepEqual(META.centor.citationUrls.map((e) => e.label), ['Centor 1981', 'McIsaac 1998']);
+  for (const id of ['barthel', 'centor']) {
+    assert.equal(META[id].citationUrl, undefined, `${id} must not carry both fields`);
+    assert.equal(new Set(META[id].citationUrls.map((e) => e.url)).size, 2);
+  }
+});
