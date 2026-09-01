@@ -25,7 +25,7 @@ test('rfs: <= 7 unlikely', () => {
   assert.equal(rfsRefluxFinding({ subglottic: 2, granuloma: 2 }).abnormal, false);
 });
 
-test('no-apnea: > 3 high risk', () => {
+test('no-apnea: at or above 3 is high risk', () => {
   const r = noApnea({ neck: 41, age: 50 }); // 3 + 2
   assert.equal(r.score, 5);
   assert.equal(r.abnormal, true);
@@ -34,6 +34,30 @@ test('no-apnea: low risk', () => {
   const r = noApnea({ neck: 36, age: 30 }); // 0 + 0
   assert.equal(r.score, 0);
   assert.equal(r.abnormal, false);
+});
+
+// spec-v961: the boundary this tile used to get wrong. The derivation says it in one line --
+// "We used the cutoff >= 3 to classify patients at high risk of having OSA" (Duarte 2018,
+// J Clin Sleep Med 14:1097-1107, PMC6040787) -- and the code read `score > 3`, so a patient
+// scoring exactly the paper's threshold was told they were lower risk. Both sides are pinned.
+test('no-apnea: a score of exactly 3 is HIGH risk, not lower', () => {
+  const r = noApnea({ neck: 40, age: 30 }); // 3 + 0 = 3, the cutoff itself
+  assert.equal(r.score, 3);
+  assert.equal(r.abnormal, true, 'a score of 3 meets the derivation cutoff of >= 3');
+  assert.match(r.band, />= 3/);
+});
+test('no-apnea: 2 is the highest lower-risk score', () => {
+  const r = noApnea({ neck: 37, age: 35 }); // 1 + 1 = 2
+  assert.equal(r.score, 2);
+  assert.equal(r.abnormal, false);
+  assert.match(r.band, /< 3/);
+});
+test('no-apnea: the note says it is a two-item model', () => {
+  // The citation used to call it "a 4-item instrument", which is the GOAL questionnaire from
+  // the same group -- and it contradicted this tile's own two inputs.
+  const r = noApnea({ neck: 40, age: 30 });
+  assert.match(r.note, /TWO-item model/);
+  assert.match(r.note, /GOAL questionnaire/);
 });
 
 test('sleep-efficiency: TST/TIB x 100', () => {
