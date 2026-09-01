@@ -263,6 +263,36 @@ async function main() {
     process.exit(1);
   }
 
+  // spec-v955: the README's second number. The catalog size above is gated on
+  // twelve surfaces; the count of tiles that link straight through to their
+  // source paper was not gated anywhere, and it went stale the same day it was
+  // written -- spec-v949 wrote 1,592 and spec-v954 linked nine more tiles. It
+  // is derived from META rather than from a build artifact, so it can be
+  // checked without a dist/ on disk. Twelve tiles link a PubMed search rather
+  // than the paper (spec-v943), and the sentence counts them separately.
+  const readmeLinked = Number((readmeText.match(/([\d,]+) of the [\d,]+ link straight through to the source paper/) || [])[1]?.replace(/,/g, ''));
+  const readmeSearch = /Twelve more say "Search PubMed for this source"/.test(readmeText);
+  const searchUrl = (u) => { try { return ['term', 'q', 'query', 'search'].some((k) => new URL(u).searchParams.has(k)); } catch { return false; } };
+  let straightThrough = 0;
+  let searchLinks = 0;
+  for (const m of Object.values(META)) {
+    const url = m.citationUrl;
+    if (Array.isArray(m.citationUrls) && m.citationUrls.length) straightThrough += 1;
+    else if (url) { if (searchUrl(url)) searchLinks += 1; else straightThrough += 1; }
+  }
+  if (!Number.isFinite(readmeLinked)) {
+    console.error('check-catalog-truth: README no longer states how many tiles link straight through to their source.');
+    process.exit(1);
+  }
+  if (readmeLinked !== straightThrough) {
+    console.error(`check-catalog-truth: README says ${readmeLinked} tiles link straight through to the source paper; META has ${straightThrough}.`);
+    process.exit(1);
+  }
+  if (searchLinks !== 12 || !readmeSearch) {
+    console.error(`check-catalog-truth: README says twelve tiles link a PubMed search; META has ${searchLinks}.`);
+    process.exit(1);
+  }
+
   // spec-v953: the visible group name is declared five times -- once in app.js and once in each
   // builder that renders it onto a pre-rendered page, plus the audit report. Nothing held them
   // in step, and audit-coverage had already lost group B. Same rule as the counts above: a
@@ -279,7 +309,7 @@ async function main() {
     process.exit(1);
   }
 
-  console.log(`check-catalog-truth: clean (${truth} tiles across ${surfaces.length} surfaces, ${docLinters} document-linter, ${removed.size} v29-removed ids guarded, 0 orphan copy, README example matches, ${Object.keys(labelFiles[0].labels).length} group labels agree across ${labelFiles.length} files)`);
+  console.log(`check-catalog-truth: clean (${truth} tiles across ${surfaces.length} surfaces, ${docLinters} document-linter, ${removed.size} v29-removed ids guarded, 0 orphan copy, README example matches, ${Object.keys(labelFiles[0].labels).length} group labels agree across ${labelFiles.length} files, README source-link count ${straightThrough} matches)`);
 }
 
 main().catch((err) => {
