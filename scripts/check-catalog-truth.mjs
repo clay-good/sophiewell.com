@@ -11,6 +11,7 @@
 import { readFile, readdir } from 'node:fs/promises';
 import { join } from 'node:path';
 import { pathToFileURL } from 'node:url';
+import { LABEL_FILES, parseGroupLabels, findLabelDrift } from './lib/group-labels.mjs';
 
 const ROOT = process.cwd();
 
@@ -262,7 +263,23 @@ async function main() {
     process.exit(1);
   }
 
-  console.log(`check-catalog-truth: clean (${truth} tiles across ${surfaces.length} surfaces, ${docLinters} document-linter, ${removed.size} v29-removed ids guarded, 0 orphan copy, README example matches)`);
+  // spec-v953: the visible group name is declared five times -- once in app.js and once in each
+  // builder that renders it onto a pre-rendered page, plus the audit report. Nothing held them
+  // in step, and audit-coverage had already lost group B. Same rule as the counts above: a
+  // visible surface with more than one copy drifts unless something checks it.
+  const labelFiles = [];
+  for (const path of LABEL_FILES) {
+    const text = cache.get(path) || await readFile(join(ROOT, path), 'utf8');
+    labelFiles.push({ path, labels: parseGroupLabels(text) });
+  }
+  const labelDrift = findLabelDrift(labelFiles);
+  if (labelDrift.length) {
+    console.error('check-catalog-truth: the visible group labels have drifted between copies:');
+    for (const d of labelDrift) console.error(`  ${d}`);
+    process.exit(1);
+  }
+
+  console.log(`check-catalog-truth: clean (${truth} tiles across ${surfaces.length} surfaces, ${docLinters} document-linter, ${removed.size} v29-removed ids guarded, 0 orphan copy, README example matches, ${Object.keys(labelFiles[0].labels).length} group labels agree across ${labelFiles.length} files)`);
 }
 
 main().catch((err) => {

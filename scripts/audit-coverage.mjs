@@ -19,6 +19,7 @@ const AUDIT_DIR = join(ROOT, 'docs', 'audits', 'v11');
 // spec-v11 §4.1: visible group labels. Kept in sync with app.js.
 const GROUP_LABELS = {
   A: 'Billing & Coding',
+  B: 'Billing & Reimbursement',
   C: 'Insurance & Patient Literacy',
   E: 'Clinical Math & Conversions',
   F: 'Medication & Infusion',
