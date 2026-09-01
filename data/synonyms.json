@@ -7524,6 +7524,18 @@
       ],
       "tile": "hepatic-iron-index",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "vexus",
+        "venous excess ultrasound",
+        "venous congestion ultrasound",
+        "portal vein pulsatility",
+        "hepatic vein doppler congestion",
+        "is my patient fluid overloaded on ultrasound"
+      ],
+      "tile": "vexus",
+      "audience": "clinicians"
     }
   ]
 }

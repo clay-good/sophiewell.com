@@ -8071,6 +8071,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/hepatic-iron-index-v932.js (spec-v932: hepatic iron index — clinical disclaimer)
 - `hepatic-iron-index`
 
+### lib/vexus-v958.js (spec-v958: VExUS venous congestion grade — clinical disclaimer)
+- `vexus`
+
 ### lib/sad-persons-v701.js (spec-v701: SAD PERSONS suicide-risk screen — clinical disclaimer)
 - `sad-persons`
 
