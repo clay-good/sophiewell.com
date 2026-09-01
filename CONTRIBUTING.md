@@ -61,6 +61,26 @@ Sophie rejects contributions that:
 Before opening a PR, run `npm run release:check` locally. This is the
 same gate that runs in CI.
 
+### If you touched tile text, a label, or CSS, run `npm run test:mobile`
+
+`release:check` does not lay a page out, so it cannot see a line that is
+too wide. Any string a tile supplies — a band label, a factor name, a
+citation label — becomes real pixels, and one that cannot wrap pushes the
+page sideways at 320px. This has broken CI twice: once on a
+slash-joined token in a factor string (spec-v677), once on a citation
+label that CSS forbade from wrapping (spec-v969). Both times lint, unit,
+mcp and build were all green and the failure arrived an hour later.
+
+```bash
+npm run test:mobile
+```
+
+That builds `dist/` and runs the two chromium 320px sweeps — the
+pre-rendered `/tools/<id>/` pages and every in-app tile route — in about
+two minutes, against the same assertion CI uses. Prefer spaces and
+commas to slash-joined or underscore-joined tokens, and keep any string
+that renders as its own line short.
+
 ## How to add or change a commitment
 
 A commitment is a guarantee Sophie makes to its users about its own
