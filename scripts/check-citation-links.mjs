@@ -61,9 +61,14 @@ async function checkDoi(url) {
   return 'DOI check failed after 3 attempts';
 }
 
+// Publisher and society sites are behind bot filters that answer an unfamiliar
+// User-Agent with 504 or 403 while serving a browser normally. The question
+// this check asks is "can a reader open this page", so it asks as a browser.
+const BROWSER_UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0 Safari/537.36';
+
 async function checkWeb(url) {
   try {
-    const res = await fetch(url, { redirect: 'follow', headers: { 'User-Agent': UA } });
+    const res = await fetch(url, { redirect: 'follow', headers: { 'User-Agent': BROWSER_UA } });
     if (res.status === 404 || res.status === 410 || res.status >= 500) return `HTTP ${res.status}`;
     return null;
   } catch (e) {

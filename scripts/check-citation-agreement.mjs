@@ -28,14 +28,16 @@
 
 import { META } from '../lib/meta.js';
 
-// The twelve links whose record and citation still disagree, each because the
-// citation's own numbers are wrong or the paper is not the one the citation
-// describes -- fixing them means editing citation text, not swapping a link.
-// Frozen at spec-v945; shrinks only.
+// The five links whose record and citation still disagree and cannot be
+// reconciled without human source review: three cite a paper no index carries
+// under the numbers given (delbet-femoral-neck, no-apnea-score, rdw-index),
+// one names a book chapter with no numbers at all (savary-miller), and one
+// describes AABB dosing guidance while its numbers name a paper about RHD
+// genotyping (rhig-dose). Frozen at spec-v945, cut from twelve at spec-v946;
+// shrinks only.
 export const KNOWN_DISAGREEMENTS = new Set([
-  'delbet-femoral-neck', 'dimeglio-clubfoot', 'eat-sleep-console', 'femg',
-  'goligher-hemorrhoids', 'increment-cpe', 'no-apnea-score', 'prisma-7',
-  'rdw-index', 'rhig-dose', 'savary-miller', 'std-ktv',
+  'delbet-femoral-neck', 'no-apnea-score', 'rdw-index', 'rhig-dose',
+  'savary-miller',
 ]);
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));

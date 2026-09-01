@@ -57,3 +57,22 @@ test('the four links spec-v945 corrected point at their own paper', () => {
   // hamada was off by one PMID: 2323151 is the neighbouring article.
   assert.equal(META.hamada.citationUrl, 'https://pubmed.ncbi.nlm.nih.gov/2323152/');
 });
+
+// ---- spec-v946: the citations whose own numbers were wrong ----
+
+test('spec-v946: the four corrected citations name the journal that carries them', () => {
+  assert.match(META.femg.citation, /Magnes Res\. 1997;10\(4\):315-320\./);
+  assert.match(META['std-ktv'].citation, /Semin Dial\. 2004;17\(2\):142-145\./);
+  assert.match(META['increment-cpe'].citation, /Mayo Clin Proc\. 2016;91\(10\):1362-1371\./);
+  assert.match(META['goligher-hemorrhoids'].citation, /Tech Coloproctol\. 2022;26\(5\):387-392\./);
+});
+
+test('spec-v946: eat-sleep-console links both papers it names', () => {
+  assert.deepEqual(META['eat-sleep-console'].citationUrls.map((e) => e.label), ['Grossman 2017', 'Young 2023']);
+  assert.equal(META['eat-sleep-console'].citationUrl, undefined);
+});
+
+test('spec-v946: the frozen disagreement list is down to the five needing source review', () => {
+  assert.deepEqual([...KNOWN_DISAGREEMENTS].sort(),
+    ['delbet-femoral-neck', 'no-apnea-score', 'rdw-index', 'rhig-dose', 'savary-miller']);
+});
