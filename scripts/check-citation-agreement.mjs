@@ -40,7 +40,13 @@ export const KNOWN_DISAGREEMENTS = new Set([
 ]);
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-const norm = (s) => (s || '').toLowerCase().replace(/[^a-z0-9 ]/g, ' ').replace(/\s+/g, ' ').trim();
+// Medical citations write surnames without their diacritics far more often than
+// the index does -- "Allgower" against PubMed's "Allgöwer", "Raiche" against
+// "Raîche". Decompose and drop the combining marks before comparing, or every
+// such author reads as a mismatch and the pair trips the two-strike rule.
+const norm = (s) => (s || '')
+  .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+  .toLowerCase().replace(/[^a-z0-9 ]/g, ' ').replace(/\s+/g, ' ').trim();
 
 // linkRows() -> [{ id, url, citation }]. One row per link.
 export function linkRows(meta = META) {

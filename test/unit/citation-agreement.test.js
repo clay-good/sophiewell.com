@@ -80,3 +80,31 @@ test('spec-v950: the frozen disagreement list is down to the four needing source
     ['delbet-femoral-neck', 'no-apnea-score', 'rhig-dose', 'savary-miller']);
   assert.equal(META['rdw-index'].citationUrl, 'https://doi.org/10.1097/00043426-199907000-00040');
 });
+
+// ---- spec-v954 ----
+
+test('spec-v954: a surname written without its diacritics still matches', () => {
+  // The citation writes "Allgower"; PubMed records "Allgöwer". Before the fold
+  // that read as a mismatch, and with the page absent too it tripped the
+  // two-strike rule on a link that was correct.
+  const citation = 'Allgower M, Burri C. Schockindex. Dtsch Med Wochenschr. 1967;92(43):1947-1950.';
+  assert.deepEqual(disagreements(citation, { year: 1967, page: '1947-50', author: 'Allgöwer' }), []);
+  assert.deepEqual(disagreements('Raiche M. PRISMA-7. 2008;47:9-18.', { year: 2008, page: '9-18', author: 'Raîche' }), []);
+});
+
+test('spec-v954: the guideline links added to the backlog tiles are in place', () => {
+  const expected = {
+    'kdigo-aki': 'https://doi.org/10.1038/kisup.2012.1',
+    'code-blue-clock': 'https://pubmed.ncbi.nlm.nih.gov/33081529/',
+    'digoxin': 'https://pubmed.ncbi.nlm.nih.gov/35363499/',
+    'peds-resus': 'https://pubmed.ncbi.nlm.nih.gov/33081526/',
+    'finnegan': 'https://pubmed.ncbi.nlm.nih.gov/1163358/',
+    'maint-fluids': 'https://pubmed.ncbi.nlm.nih.gov/13431307/',
+    'shock-index': 'https://pubmed.ncbi.nlm.nih.gov/5299769/',
+    'insulin-correction': 'https://pubmed.ncbi.nlm.nih.gov/38078585/',
+  };
+  const bad = Object.entries(expected).filter(([id, url]) => META[id]?.citationUrl !== url);
+  assert.deepEqual(bad, []);
+  // crrt-dose names two works and links both.
+  assert.deepEqual(META['crrt-dose'].citationUrls.map((e) => e.label), ['KDIGO 2012', 'Davenport 2009']);
+});
