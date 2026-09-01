@@ -48,18 +48,36 @@ export function nameKey(name) {
   return [...new Set(base.split(/\s+/).filter((w) => w.length > 2 && !STOP.has(w)))].sort();
 }
 
+// spec-v947: and the same key with the parenthetical KEPT. Dropping it is right when the
+// parenthetical says which variant a tile is; it is wrong when the parenthetical holds the
+// instrument's name and an acronym stands outside it. "Cincinnati Prehospital Stroke Scale"
+// against "CPSS (Cincinnati Prehospital Stroke Scale)" scores 0 on the dropped key and 0.80 on
+// this one -- and those two tiles are the same instrument, built twice. Every pair is scored
+// both ways and keeps the higher score.
+export function nameKeyWithParens(name) {
+  const base = String(name).toLowerCase().replace(/[^a-z0-9 ]/g, ' ');
+  return [...new Set(base.split(/\s+/).filter((w) => w.length > 2 && !STOP.has(w)))].sort();
+}
+
 export function similarity(a, b) {
   if (!a.length || !b.length) return 0;
   const shared = a.filter((w) => b.includes(w)).length;
   return shared / (a.length + b.length - shared);
 }
 
+// nameScore(a, b) -> number. The higher of the two readings of the name.
+export function nameScore(a, b) {
+  return Math.max(similarity(a.key, b.key), similarity(a.keyParens, b.keyParens));
+}
+
 export function candidatePairs(corpus, floor = 0.55) {
-  const rows = Object.entries(corpus).map(([id, r]) => ({ id, name: r.name, key: nameKey(r.name) }));
+  const rows = Object.entries(corpus).map(([id, r]) => ({
+    id, name: r.name, key: nameKey(r.name), keyParens: nameKeyWithParens(r.name),
+  }));
   const out = [];
   for (let i = 0; i < rows.length; i++) {
     for (let j = i + 1; j < rows.length; j++) {
-      const score = similarity(rows[i].key, rows[j].key);
+      const score = nameScore(rows[i], rows[j]);
       if (score >= floor) out.push({ score, a: rows[i], b: rows[j] });
     }
   }
@@ -79,6 +97,14 @@ export const RULED = new Map(Object.entries({
   'benzo-equiv|benzodiazepine-equivalence': 'DISTINCT -- overlapping, but benzo-equiv carries midazolam and the other does not.',
   'unit-converter|unit-converter-v4': 'DISTINCT -- overlapping, but unit-converter carries volume and unit-converter-v4 does not.',
   'kings-college|kings-college-nonapap': 'DISTINCT -- the two ARMS of one rule, and they share no variables: the acetaminophen arm turns on arterial pH, creatinine and encephalopathy grade, the other on INR, age, cause, jaundice interval and bilirubin (spec-v910).',
+
+  // spec-v947: the four the parenthetical rule had been hiding. Each pair was confirmed by
+  // reading both adapters -- same source, same items, same threshold, and in two cases the same
+  // worked-example number to the decimal. Retirement is spec-v948.
+  'cincinnati|cpss': 'DUPLICATE -- one CPSS: the same three items from Kothari 1999 and the same >=1-abnormal rule. Survivor cpss (it carries the interpretation bands; cincinnati has none).',
+  'abc-mtp|abc-transfusion-score': 'DUPLICATE -- one ABC score: the same four Nunez 2009 items and the same >=2 threshold. Survivor abc-transfusion-score (its bands carry the derivation sensitivity and specificity).',
+  'hodgkin-ips|ips-hodgkin': 'DUPLICATE -- one Hasenclever IPS: the same seven adverse factors. Survivor hodgkin-ips (its bands give freedom-from-progression per band; ips-hodgkin lists the factors instead of interpreting the score).',
+  'sort|sort-mortality': 'DUPLICATE -- one SORT model, coefficient for coefficient, and both worked examples return 14.67%. Survivor sort-mortality (its name says what the number is).',
 }));
 
 function main() {
