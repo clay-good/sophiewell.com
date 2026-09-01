@@ -1,8 +1,6 @@
 {
   "note": "spec-v938 backlog: tiles whose citation names a dated source but carry no citationUrl, so a reader has no way to reach the paper. Frozen set - a NEW tile may not join it, and a tile that gains a citationUrl must be removed from this list. Shrink only.",
   "tiles": [
-    "aa-pf-suite",
-    "abg",
     "audit-full",
     "blood-compat",
     "bsa",
@@ -10,16 +8,12 @@
     "bw-bsa-suite",
     "cao2-do2",
     "cci-platelet",
-    "corrected-ca-na",
     "corrected-phenytoin",
-    "corrected-sodium",
     "device-day-counter",
     "ecmo-titration",
-    "ecog-karnofsky",
     "em-time",
     "ews-escalation",
     "field-triage",
-    "heatstroke-decision",
     "lab-interpret",
     "minute-ventilation",
     "mtp-tracker",
@@ -30,10 +24,8 @@
     "pbw-ardsnet",
     "qtc",
     "qtc-suite",
-    "rabies-pep",
     "retic-index",
     "start-triage",
-    "tetanus",
     "vip-extravasation"
   ]
 }
