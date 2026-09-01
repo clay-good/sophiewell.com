@@ -761,6 +761,7 @@ import { renderers as RV927 } from './views/group-v927.js';
 import { renderers as RV928 } from './views/group-v928.js';
 import { renderers as RV932 } from './views/group-v932.js';
 import { renderers as RV958 } from './views/group-v958.js';
+import { renderers as RV960 } from './views/group-v960.js';
 import { renderers as RV164 } from './views/group-v164.js';
 import { renderers as RV165 } from './views/group-v165.js';
 import { renderers as RV166 } from './views/group-v166.js';
@@ -847,7 +848,7 @@ const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...R
   ...RV902,
   ...RV903,
   ...RV905,
-  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV63, ...RPALINT };
+  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV960, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -2745,6 +2746,11 @@ const UTILITIES = [
   // IVC on its own is 41% specific. views/group-v958.js, lib/vexus-v958.js,
   // mcp/adapters/vexus-v958.js.
   { id: 'vexus', name: 'VExUS grade (venous excess ultrasound)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v960: the mTICI reperfusion grade, and the one option where it and the original TICI
+  // scale call the same angiogram a success and a failure. views/group-v960.js,
+  // lib/tici-v960.js, mcp/adapters/tici-v960.js.
+  { id: 'tici', name: 'mTICI reperfusion grade (stroke thrombectomy)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'gahs',                   name: 'Glasgow Alcoholic Hepatitis Score',                group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'west-haven-he',          name: 'West Haven HE grade (hepatic encephalopathy)',     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'hepatic-steatosis-index', name: 'Hepatic Steatosis Index (NAFLD screen)',          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },

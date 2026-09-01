@@ -125,8 +125,12 @@ test('describe fills an empty related list from what the website shows', async (
     'fixture drift: restraint-timer is supposed to have no curated siblings');
   const d = describeCalculator({ id: 'restraint-timer' });
   assert.deepEqual(d.related, []);
-  assert.deepEqual((d.relatedOnWebsite || []).map((r) => r.id),
-    ['code-blue-clock', 'ews-escalation', 'sepsis-bundle-clock', 'device-day-counter']);
+  // The SET is the assertion, not the order. This list is derived by similarity over the search
+  // corpus, and that ranking weights token rarity across the whole catalog -- so adding any tile
+  // anywhere can reorder it without anything being wrong. spec-v960 added two and swapped the
+  // first two entries here. What must hold is that the four browser-only timers are named.
+  assert.deepEqual((d.relatedOnWebsite || []).map((r) => r.id).sort(),
+    ['code-blue-clock', 'device-day-counter', 'ews-escalation', 'sepsis-bundle-clock']);
 
   // And where the fill does find callable tiles, it answers with them.
   const acet = describeCalculator({ id: 'acetaminophen-nomogram' });

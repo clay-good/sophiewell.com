@@ -7536,6 +7536,17 @@
       ],
       "tile": "vexus",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "mtici",
+        "tici grade",
+        "reperfusion grade thrombectomy",
+        "was the thrombectomy successful",
+        "angiographic reperfusion stroke"
+      ],
+      "tile": "tici",
+      "audience": "clinicians"
     }
   ]
 }
