@@ -43,7 +43,6 @@ const RECOVERED = [
   ['wells-dvt', 'https://doi.org/10.1016/s0140-6736(97)08140-3'],
   ['wells-pe', 'https://doi.org/10.1055/s-0037-1613830'],
   ['sodium-correction', 'https://doi.org/10.1056/nejm200005253422107'],
-  ['cincinnati', 'https://doi.org/10.1016/s0196-0644(99)70299-4'],
   ['delta-gap', 'https://doi.org/10.1016/s0196-0644(05)82292-9'],
   ['aldrete', 'https://doi.org/10.1016/0952-8180(94)00001-k'],
 ];
@@ -76,11 +75,13 @@ test('spec-v941: sodium-correction cites the Hyponatremia paper it names', () =>
   assert.notEqual(META['sodium-correction'].citationUrl, META['free-water-deficit'].citationUrl);
 });
 
-test('spec-v941: cincinnati cites the CPSS validation paper it names', () => {
+test('spec-v941: the CPSS tile cites the validation paper it names', () => {
   // Ann Emerg Med 1999;33(4):373-378, not the 1997 out-of-hospital NIHSS paper
-  // whose volume and pages the citation had been carrying.
-  assert.match(META.cincinnati.citation, /Ann Emerg Med\. 1999;33\(4\):373-378\./);
-  assert.equal(META.cincinnati.citationUrl, META.cpss.citationUrl);
+  // whose volume and pages the citation had been carrying. spec-v948 retired
+  // the duplicate `cincinnati` tile into `cpss`, which carries the same link.
+  assert.match(META.cpss.citation, /Ann Emerg Med\. 1999;33\(4\):373-378\./);
+  assert.equal(META.cpss.citationUrl, 'https://doi.org/10.1016/s0196-0644(99)70299-4');
+  assert.equal(META.cincinnati, undefined);
 });
 
 // ---- spec-v942: the tiles whose citation names two papers, both linked ----

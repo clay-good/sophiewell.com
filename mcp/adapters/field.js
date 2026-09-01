@@ -24,21 +24,6 @@ const LUND_REGIONS = [
 
 export default [
   {
-    id: 'cincinnati',
-    summary: 'Cincinnati Prehospital Stroke Scale: facial droop, arm drift, and abnormal speech each 0 (normal) or 1 (abnormal); any single abnormal finding is a positive screen. Returns the abnormal count and positivity.',
-    // Echo the three-item denominator so the "N of 3" the tile reports appears
-    // in the JSON (self-describing enrichment).
-    compute: (a) => {
-      const r = F.cincinnatiStroke(a);
-      return r == null ? null : { ...r, itemCount: 3 };
-    },
-    fields: [
-      { dom: 'cps-face', arg: 'facialDroop', kind: 'number', required: true, label: 'Facial droop (0 normal / 1 abnormal)' },
-      { dom: 'cps-arm', arg: 'armDrift', kind: 'number', required: true, label: 'Arm drift (0 normal / 1 abnormal)' },
-      { dom: 'cps-speech', arg: 'abnormalSpeech', kind: 'number', required: true, label: 'Abnormal speech (0 normal / 1 abnormal)' },
-    ],
-  },
-  {
     id: 'fast',
     summary: 'FAST / BE-FAST stroke screen: any positive finding among balance loss, eye/vision change, face droop, arm weakness, or speech change is a positive screen (the balance and eyes items are the BE-FAST extension).',
     // fast(answers, opts) takes a second options object; the browser tile always

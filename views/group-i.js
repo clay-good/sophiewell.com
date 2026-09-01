@@ -70,36 +70,6 @@ export const renderers = {
   // ---- Utility 65: Adult cardiac arrest reference ----------------------
   // adult-arrest-ref / peds-arrest-ref / defib removed in spec-v29
   // wave 29-2 (Group I): pure AHA ECC numeric reference cards.
-  cincinnati(root) {
-    noticeBlock(root);
-    root.appendChild(field('Time of last known well (text or HH:MM)', 'cps-time', { type: 'text', placeholder: '09:30' }));
-    const slider = (label, id) => {
-      const wrap = el('p');
-      wrap.appendChild(el('label', { for: id, text: `${label} (0 = normal, 1 = abnormal)` }));
-      wrap.appendChild(el('br'));
-      const r = el('input', { id, type: 'range', min: '0', max: '1', step: '1', value: '0' });
-      const v = el('output', { id: `${id}-v`, text: '0' });
-      r.addEventListener('input', () => { v.textContent = r.value; });
-      wrap.appendChild(r); wrap.appendChild(document.createTextNode(' ')); wrap.appendChild(v);
-      return wrap;
-    };
-    root.appendChild(slider('Facial droop',      'cps-face'));
-    root.appendChild(slider('Arm drift',         'cps-arm'));
-    root.appendChild(slider('Abnormal speech',   'cps-speech'));
-    const o = out(); root.appendChild(o);
-    const run = () => safe(o, () => {
-      const r = cincinnatiStroke({
-        facialDroop:    nv('cps-face'),
-        armDrift:       nv('cps-arm'),
-        abnormalSpeech: nv('cps-speech'),
-      });
-      o.appendChild(el('p', { text: `Cincinnati Prehospital Stroke Scale: ${r.positive ? 'POSITIVE' : 'negative'} (${r.total} of 3 abnormal)` }));
-      const t = document.getElementById('cps-time').value.trim();
-      if (t) o.appendChild(el('p', { text: `Time of last known well: ${t}` }));
-    });
-    ['cps-face', 'cps-arm', 'cps-speech', 'cps-time'].forEach((id) => document.getElementById(id).addEventListener('input', run));
-    run();
-  },
 
   // ---- Utility 69: FAST / BE-FAST --------------------------------------
   fast(root) {

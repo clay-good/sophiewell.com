@@ -1796,17 +1796,6 @@ export default [
 
   // --- wave 68: the workflow / wound / transfusion cluster ----------------
   {
-    id: 'abc-mtp',
-    summary: 'Assessment of Blood Consumption score (Nunez 2009) for massive-transfusion activation: penetrating mechanism, SBP <= 90, heart rate >= 120, and a positive FAST exam (1 each); a total >= 2 predicts the need for massive transfusion.',
-    compute: F.abcMtp,
-    fields: [
-      { dom: 'abc-pen', arg: 'penetratingMechanism', kind: 'bool', label: 'Penetrating mechanism' },
-      { dom: 'abc-sbp', arg: 'sbpLe90', kind: 'bool', label: 'SBP <= 90 mmHg' },
-      { dom: 'abc-hr', arg: 'hrGe120', kind: 'bool', label: 'Heart rate >= 120 bpm' },
-      { dom: 'abc-fast', arg: 'positiveFast', kind: 'bool', label: 'Positive FAST exam' },
-    ],
-  },
-  {
     id: 'npiap-staging',
     summary: 'NPIAP 2016 pressure-injury staging: classifies from a mucosal location, whether skin is intact and the erythema behavior (blanchable / non-blanchable / deep discoloration), whether slough/eschar obscures the wound base, and the depth (partial-thickness, subcutaneous fat visible, or bone/tendon/muscle visible). Returns the stage.',
     compute: F.npiapStaging,

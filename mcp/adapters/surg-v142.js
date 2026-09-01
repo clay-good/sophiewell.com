@@ -35,19 +35,6 @@ export default [
     fields: possumFields('pp'),
   },
   {
-    id: 'sort',
-    summary: 'SORT — Surgical Outcome Risk Tool: a six-preoperative-variable logistic model for 30-day mortality from ASA grade, urgency, high-risk specialty, high severity, cancer, and age.',
-    compute: F.sort,
-    fields: [
-      { dom: 'sort-asa', arg: 'asa', kind: 'number', required: true, label: 'ASA physical-status grade (1–5)', values: ['1', '2', '3', '4', '5'] },
-      { dom: 'sort-urg', arg: 'urgency', kind: 'enum', values: ['elective', 'expedited', 'urgent', 'immediate'], required: true, label: 'Urgency of surgery' },
-      { dom: 'sort-age', arg: 'age', kind: 'enum', values: ['under65', '65to79', '80plus'], required: true, label: 'Age band' },
-      { dom: 'sort-hr', arg: 'highRisk', kind: 'bool', required: false, label: 'High-risk specialty (GI, thoracic, vascular)' },
-      { dom: 'sort-sev', arg: 'severity', kind: 'bool', required: false, label: 'High surgical severity' },
-      { dom: 'sort-ca', arg: 'cancer', kind: 'bool', required: false, label: 'Active or recent cancer' },
-    ],
-  },
-  {
     id: 'goldman-cardiac-risk',
     summary: 'Goldman Cardiac Risk Index (0–53): nine weighted clinical factors mapping to Class I–IV with the source’s per-class cardiac-complication rate for noncardiac surgery.',
     compute: F.goldmanCardiacRisk,

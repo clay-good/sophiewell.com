@@ -7506,7 +7506,6 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `pass-pheo`
 
 ### lib/ips-hodgkin-v661.js (spec-v661: IPS advanced Hodgkin lymphoma prognostic score — clinical disclaimer)
-- `ips-hodgkin`
 
 ### lib/push-tool-v662.js (spec-v662: PUSH tool pressure ulcer scale for healing — clinical disclaimer)
 - `push-tool`
@@ -8671,7 +8670,6 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/surg-v142.js
 - `possum`
 - `p-possum`
-- `sort`
 - `goldman-cardiac-risk`
 - `wilson-airway`
 - `surgical-risk-scale`
@@ -9477,7 +9475,6 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `must-nutrition`
 - `ottawa-ankle`
 - `ottawa-sah`
-- `abc-mtp`
 - `npiap-staging`
 - `norton-push`
 - `vip-extravasation`
@@ -9532,7 +9529,6 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `conc-percent`
 
 ### lib/field.js
-- `cincinnati`
 - `fast`
 - `start-triage`
 - `jumpstart-triage`

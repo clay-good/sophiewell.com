@@ -3,8 +3,9 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { META } from '../../lib/meta.js';
+import { abcTransfusion } from '../../lib/massive-transfusion-v265.js';
 import { wellsPe, gcs, wellsDvt, chadsVasc, hasBled } from '../../lib/clinical.js';
-import { qsofa, timi, heart, perc, sofa, news2, meld30, curb65, centor, mcisaac, ciwaAr, fourScore, bisap, cows, icdsc, fourAt, psi, cpot, bps, braden, morseFalls, lawtonIadl, katzAdl, barthel, rosier, cpss, lams, race, sos, flacc, hendrichII, atriaBleeding, orbitBleeding, painad, miniCog, mews, comfortB, wat1, stopBang, fourTs, ichScore, improveVte, khorana, dashVte, herdoo2, hospitalScore, improveBleeding, aldrete, padss, lace, hemorr2hages, daptScore, mustNutrition, crb65, isthDic, alvarado, pediatricAppendicitis, lips, westley, pramAsthma, passAsthma, bishop, abcMtp, mgap, gap, sirs, apfel, aims65 } from '../../lib/scoring-v4.js';
+import { qsofa, timi, heart, perc, sofa, news2, meld30, curb65, centor, mcisaac, ciwaAr, fourScore, bisap, cows, icdsc, fourAt, psi, cpot, bps, braden, morseFalls, lawtonIadl, katzAdl, barthel, rosier, cpss, lams, race, sos, flacc, hendrichII, atriaBleeding, orbitBleeding, painad, miniCog, mews, comfortB, wat1, stopBang, fourTs, ichScore, improveVte, khorana, dashVte, herdoo2, hospitalScore, improveBleeding, aldrete, padss, lace, hemorr2hages, daptScore, mustNutrition, crb65, isthDic, alvarado, pediatricAppendicitis, lips, westley, pramAsthma, passAsthma, bishop, mgap, gap, sirs, apfel, aims65 } from '../../lib/scoring-v4.js';
 import { pews as pewsV5 } from '../../lib/clinical-v5.js';
 import { nihss } from '../../lib/clinical.js';
 import { rcri, abcd2 } from '../../lib/clinical-v5.js';
@@ -48,7 +49,7 @@ const WAVE_48_4F_TILES = ['herdoo2', 'hospital-score', 'improve-bleeding', 'aldr
 const WAVE_48_4G_TILES = ['lace', 'hemorr2hages', 'dapt-score', 'must-nutrition'];
 const WAVE_48_4H_TILES = ['crb65', 'isth-dic', 'pews', 'alvarado-pas'];
 const WAVE_48_4I_TILES = ['lips', 'westley', 'pram-asthma', 'pass-asthma'];
-const WAVE_48_4J_TILES = ['bishop', 'abc-mtp', 'mgap', 'gap'];
+const WAVE_48_4J_TILES = ['bishop', 'abc-transfusion-score', 'mgap', 'gap'];
 // spec-v61 A1 derivation tail: simple additive screening scores backfilled with
 // a per-input "show your work" block. `source` reuses each tile's already-vetted
 // inline citation; the component sums are cross-checked against the live scoring
@@ -2742,25 +2743,30 @@ test('bishop station banded callback (-3 / -2 / 0 / 1 -> 0 / 1 / 2 / 3)', () => 
   }
 });
 
-test('abc-mtp components sum equals abcMtp() (zero)', () => {
-  const inputs = { penetratingMechanism: false, sbpLe90: false, hrGe120: false, positiveFast: false };
-  const r = abcMtp(inputs);
-  assert.equal(sumComponents(META['abc-mtp'], inputs), r.score);
+// spec-v948 retired the duplicate `abc-mtp` tile into `abc-transfusion-score`.
+// The derivation block moved with it, and the component inputKeys were rewritten
+// to the SURVIVOR's argument names: abcTransfusion() takes penetrating / sbp90 /
+// hr120 / positiveFast where the retired function took longer ones. A copied
+// block would have summed to zero on every input and said nothing.
+test('abc-transfusion-score components sum equals abcTransfusion() (zero)', () => {
+  const inputs = { penetrating: false, sbp90: false, hr120: false, positiveFast: false };
+  const r = abcTransfusion(inputs);
+  assert.equal(sumComponents(META['abc-transfusion-score'], inputs), r.score);
   assert.equal(r.score, 0);
 });
 
-test('abc-mtp components sum equals abcMtp() (cutoff at 2)', () => {
-  const inputs = { penetratingMechanism: true, sbpLe90: true, hrGe120: false, positiveFast: false };
-  const r = abcMtp(inputs);
-  assert.equal(sumComponents(META['abc-mtp'], inputs), r.score);
+test('abc-transfusion-score components sum equals abcTransfusion() (cutoff at 2)', () => {
+  const inputs = { penetrating: true, sbp90: true, hr120: false, positiveFast: false };
+  const r = abcTransfusion(inputs);
+  assert.equal(sumComponents(META['abc-transfusion-score'], inputs), r.score);
   assert.equal(r.score, 2);
-  assert.equal(r.activateMtp, true);
+  assert.equal(r.abnormal, true);
 });
 
-test('abc-mtp components sum equals abcMtp() (max 4)', () => {
-  const inputs = { penetratingMechanism: true, sbpLe90: true, hrGe120: true, positiveFast: true };
-  const r = abcMtp(inputs);
-  assert.equal(sumComponents(META['abc-mtp'], inputs), r.score);
+test('abc-transfusion-score components sum equals abcTransfusion() (max 4)', () => {
+  const inputs = { penetrating: true, sbp90: true, hr120: true, positiveFast: true };
+  const r = abcTransfusion(inputs);
+  assert.equal(sumComponents(META['abc-transfusion-score'], inputs), r.score);
   assert.equal(r.score, 4);
 });
 

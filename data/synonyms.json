@@ -4553,7 +4553,7 @@
         "hasenclever score",
         "advanced hodgkin prognostic score"
       ],
-      "tile": "ips-hodgkin",
+      "tile": "hodgkin-ips",
       "audience": "clinicians"
     },
     {

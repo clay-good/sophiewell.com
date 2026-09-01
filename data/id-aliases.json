@@ -1,6 +1,16 @@
 {
-  "_comment": "spec-v637 §2: stable-id alias map for the MCP surface. Tile ids are a public API an agent may hardcode; when a shipped id is RETIRED it is mapped here to its canonical successor so callers self-heal. Shape: aliases[oldId] = { canonical: <live id>, since: 'YYYY-MM-DD', sunset: 'YYYY-MM-DD' }. The server resolves an alias to its canonical (attaching a deprecation notice) whenever the canonical is live, regardless of wall-clock (it reads no clock); a maintainer removes the entry after the sunset date. See docs/stability.md. spec-v913 retired four ids that were the same instrument twice; each maps to the fuller twin that survived.",
+  "_comment": "spec-v637 \u00a72: stable-id alias map for the MCP surface. Tile ids are a public API an agent may hardcode; when a shipped id is RETIRED it is mapped here to its canonical successor so callers self-heal. Shape: aliases[oldId] = { canonical: <live id>, since: 'YYYY-MM-DD', sunset: 'YYYY-MM-DD' }. The server resolves an alias to its canonical (attaching a deprecation notice) whenever the canonical is live, regardless of wall-clock (it reads no clock); a maintainer removes the entry after the sunset date. See docs/stability.md. spec-v913 retired four ids that were the same instrument twice; each maps to the fuller twin that survived. spec-v948 retired four more, surfaced once spec-v947 fixed the finder blind spot that had hidden them.",
   "aliases": {
+    "abc-mtp": {
+      "canonical": "abc-transfusion-score",
+      "since": "2026-09-01",
+      "sunset": "2027-09-01"
+    },
+    "cincinnati": {
+      "canonical": "cpss",
+      "since": "2026-09-01",
+      "sunset": "2027-09-01"
+    },
     "forrest": {
       "canonical": "forrest-classification",
       "since": "2026-08-30",
@@ -11,10 +21,20 @@
       "since": "2026-08-30",
       "sunset": "2027-08-30"
     },
+    "ips-hodgkin": {
+      "canonical": "hodgkin-ips",
+      "since": "2026-09-01",
+      "sunset": "2027-09-01"
+    },
     "osi-oxygenation": {
       "canonical": "oxygenation-index",
       "since": "2026-08-30",
       "sunset": "2027-08-30"
+    },
+    "sort": {
+      "canonical": "sort-mortality",
+      "since": "2026-09-01",
+      "sunset": "2027-09-01"
     },
     "university-texas-dfu": {
       "canonical": "ut-diabetic-foot",

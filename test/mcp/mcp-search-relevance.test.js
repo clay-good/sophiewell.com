@@ -613,7 +613,7 @@ const PROBES = [
   ['isgls bile leak grade after liver surgery', ['isgls-bile-leak']],
   ['isgps delayed gastric emptying grade pancreatic surgery', ['isgps-dge']],
   ['pass pheochromocytoma scaled score malignancy histology', ['pass-pheo']],
-  ['ips international prognostic score advanced hodgkin lymphoma', ['ips-hodgkin']],
+  ['ips international prognostic score advanced hodgkin lymphoma', ['hodgkin-ips']],
   ['push tool pressure ulcer scale for healing wound', ['push-tool']],
   ['lichtiger index ulcerative colitis activity modified truelove', ['lichtiger-index']],
   ['ase diastolic function grade echo e/e prime tr velocity', ['diastolic-function-ase']],

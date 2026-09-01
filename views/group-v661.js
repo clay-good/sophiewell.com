@@ -38,32 +38,4 @@ function wire(ids, run) {
 }
 
 export const renderers = {
-  'ips-hodgkin'(root) {
-    note(root, 'International Prognostic Score for advanced Hodgkin lymphoma (Hasenclever & Diehl 1998): 7 adverse factors, each 1 point (albumin < 4 g/dL, Hgb < 10.5 g/dL, male, age >= 45, stage IV, WBC >= 15000/mm3, lymphocytopenia < 600/mm3 and/or < 8%). Sum 0-7; higher = worse prognosis.');
-    root.appendChild(numberField('Serum albumin (g/dL)', 'ips-albumin'));
-    root.appendChild(numberField('Hemoglobin (g/dL)', 'ips-hgb'));
-    root.appendChild(numberField('Age (years)', 'ips-age'));
-    root.appendChild(numberField('White blood cell count (/mm3)', 'ips-wbc'));
-    root.appendChild(numberField('Absolute lymphocyte count (/mm3)', 'ips-lymph'));
-    root.appendChild(numberField('Lymphocytes as % of WBC (optional)', 'ips-lymphpct'));
-    root.appendChild(checkField('Male sex', 'ips-male'));
-    root.appendChild(checkField('Ann Arbor stage IV', 'ips-stage4'));
-    const ids = ['ips-albumin', 'ips-hgb', 'ips-age', 'ips-wbc', 'ips-lymph', 'ips-lymphpct', 'ips-male', 'ips-stage4'];
-    const o = out(); root.appendChild(o);
-    wire(ids, () => safe(o, () => {
-      const r = M.ipsHodgkin({
-        albumin: val('ips-albumin'), hemoglobin: val('ips-hgb'), age: val('ips-age'), wbc: val('ips-wbc'),
-        lymphocyteCount: val('ips-lymph'), lymphocytePct: val('ips-lymphpct'),
-        male: chk('ips-male'), stageIV: chk('ips-stage4'),
-      });
-      if (!r.valid) { note(o, r.message); return; }
-      resultRow(o, [
-        { text: r.bandLabel, cls: r.abnormal ? 'warn' : null },
-        { label: 'Score', value: `${r.total}/7` },
-      ]);
-      note(o, r.detail);
-      note(o, r.note);
-    }));
-    postureNote(root);
-  },
 };

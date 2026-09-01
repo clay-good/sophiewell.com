@@ -135,41 +135,6 @@ export const renderers = {
   },
 
   // ----- 2.3 sort -------------------------------------------------------
-  sort(root) {
-    note(root, 'SORT (Protopapa 2014): a six-variable logistic estimate of 30-day mortality, the modern bedside companion to P-POSSUM. No intraoperative data needed.');
-    root.appendChild(selectField('ASA physical-status grade', 'sort-asa', [
-      { value: '1', text: 'I — normal healthy patient' },
-      { value: '2', text: 'II — mild systemic disease' },
-      { value: '3', text: 'III — severe systemic disease' },
-      { value: '4', text: 'IV — severe disease, constant threat to life' },
-      { value: '5', text: 'V — moribund, not expected to survive without operation' },
-    ]));
-    root.appendChild(selectField('Urgency of surgery', 'sort-urg', [
-      { value: 'elective', text: 'Elective' },
-      { value: 'expedited', text: 'Expedited' },
-      { value: 'urgent', text: 'Urgent' },
-      { value: 'immediate', text: 'Immediate' },
-    ]));
-    root.appendChild(selectField('Age band', 'sort-age', [
-      { value: 'under65', text: 'Under 65 years' },
-      { value: '65to79', text: '65–79 years' },
-      { value: '80plus', text: '80 years or older' },
-    ]));
-    root.appendChild(checkField('High-risk surgical specialty (gastrointestinal, thoracic, or vascular)', 'sort-hr'));
-    root.appendChild(checkField('High surgical severity (Xmajor or complex)', 'sort-sev'));
-    root.appendChild(checkField('Cancer (malignancy within the last 5 years)', 'sort-ca'));
-    const o = out(); root.appendChild(o);
-    wire(['sort-asa', 'sort-urg', 'sort-age', 'sort-hr', 'sort-sev', 'sort-ca'], () => safe(o, () => {
-      const r = M.sort({ asa: selVal('sort-asa'), urgency: selVal('sort-urg'), age: selVal('sort-age'), highRisk: chk('sort-hr'), severity: chk('sort-sev'), cancer: chk('sort-ca') });
-      if (!r.valid) { showInvalid(o, r); return; }
-      resultRow(o, [
-        { text: r.band, cls: r.abnormal ? 'warn' : null },
-        { label: 'Predicted 30-day mortality', value: `${r.mortality}%` },
-      ]);
-      note(o, r.note);
-    }));
-    postureNote(root);
-  },
 
   // ----- 2.4 goldman-cardiac-risk ---------------------------------------
   'goldman-cardiac-risk'(root) {

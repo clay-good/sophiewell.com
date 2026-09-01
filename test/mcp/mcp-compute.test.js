@@ -1382,9 +1382,11 @@ test('lib/scoring-v4.js nutrition-risk + Ottawa-rule worked calls (wave 67)', ()
 test('lib/scoring-v4.js workflow / wound / transfusion worked calls (wave 68)', () => {
   // DRIP: two majors (4) -> high risk.
   // ABC: penetrating + SBP<=90 = 2 -> activate MTP.
-  const abc = ok('abc-mtp', { 'abc-pen': '1', 'abc-sbp': '1', 'abc-hr': '0', 'abc-fast': '0' });
+  // spec-v948 retired abc-mtp into abc-transfusion-score, which keeps the same
+  // four dom keys and reports the >= 2 trigger as `abnormal`.
+  const abc = ok('abc-transfusion-score', { 'abc-pen': '1', 'abc-sbp': '1', 'abc-hr': '0', 'abc-fast': '0' });
   assert.equal(abc.score, 2);
-  assert.equal(abc.activateMtp, true);
+  assert.equal(abc.abnormal, true);
   // NPIAP: non-blanchable erythema on intact skin -> Stage 1.
   const np = ok('npiap-staging', { 'np-muc': '0', 'np-intact': '1', 'np-blanch': 'non-blanchable-erythema', 'np-obs': '0', 'np-depth': 'partial-thickness' });
   assert.match(np.stage, /Stage 1/);
@@ -1422,10 +1424,10 @@ test('lib/clinical-v5.js group-v5 diagnostic ratios + staging worked calls (wave
 });
 
 test('lib/field.js prehospital / MCI triage worked calls (wave 70)', () => {
-  const ci = ok('cincinnati', { 'cps-face': '1', 'cps-arm': '1', 'cps-speech': '0' });
-  assert.equal(ci.total, 2);
+  // spec-v948 retired the duplicate cincinnati tile into cpss.
+  const ci = ok('cpss', { 'cp-face': '1', 'cp-arm': '1', 'cp-speech': '0' });
+  assert.equal(ci.abnormalCount, 2);
   assert.equal(ci.positive, true);
-  assert.equal(ci.itemCount, 3);
   assert.equal(ok('fast', { 'fast-face': '1' }).positive, true);
   assert.equal(ok('fast', { 'fast-balance': '0', 'fast-eyes': '0', 'fast-face': '0', 'fast-arms': '0', 'fast-speech': '0' }).positive, false);
   // START: can walk -> Minor.

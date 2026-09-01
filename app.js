@@ -1050,7 +1050,6 @@ const UTILITIES = [
   // REMOVED_V29_IDS below. Surviving Group I calculators / decision
   // rules remain.
   { id: 'peds-weight-dose', name: 'Pediatric Weight-to-Dose Calculator', group: 'I', audiences: ['clinicians', 'educators', 'field'], clinical: true },
-  { id: 'cincinnati',       name: 'Cincinnati Prehospital Stroke Scale', group: 'I', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'fast',             name: 'FAST and BE-FAST Stroke Assessment', group: 'I', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'field-triage',     name: 'Trauma Triage Decision Tool (CDC)', group: 'I', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'start-triage',     name: 'START Adult MCI Triage', group: 'I', audiences: ['clinicians', 'educators', 'field'], clinical: true },
@@ -1239,7 +1238,6 @@ const UTILITIES = [
   { id: 'pecarn-iai',          name: 'PECARN Intra-Abdominal Injury Rule',               group: 'N', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'pecarn-cspine',       name: 'PECARN Pediatric C-Spine Rule',                    group: 'N', audiences: ['clinicians', 'educators'], clinical: true },
   // spec-v15 §3.5 wave 15-5 (partial): trauma scoring.
-  { id: 'abc-mtp',             name: 'ABC Score for Massive Transfusion',                group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'mgap',                name: 'MGAP Trauma Score',                                group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'gap',                 name: 'GAP Trauma Score',                                 group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'big',                 name: 'BIG Score (pediatric trauma)',                     group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
@@ -1480,7 +1478,6 @@ const UTILITIES = [
   // CEPOD+ASA+BUPA audit score. views/group-v142.js, lib/surg-v142.js (RV142).
   { id: 'possum',                 name: 'POSSUM (operative morbidity & mortality)',          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'p-possum',               name: 'P-POSSUM (Portsmouth-recalibrated mortality)',      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
-  { id: 'sort',                   name: 'Surgical Outcome Risk Tool (SORT)',                 group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'goldman-cardiac-risk',   name: 'Goldman Cardiac Risk Index',                        group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'wilson-airway',          name: 'Wilson Risk Sum Score (difficult intubation)',      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'surgical-risk-scale',    name: 'Surgical Risk Scale (Sutton)',                      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
@@ -1945,7 +1942,6 @@ const UTILITIES = [
   { id: 'isgls-bile-leak', name: 'ISGLS Bile Leak Grade', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'isgps-dge', name: 'ISGPS Delayed Gastric Emptying Grade', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'pass-pheo', name: 'PASS (Pheochromocytoma Histologic Score)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
-  { id: 'ips-hodgkin', name: 'IPS (Advanced Hodgkin Lymphoma Prognostic Score)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'push-tool', name: 'PUSH Tool (Pressure Ulcer Scale for Healing)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'lichtiger-index', name: 'Lichtiger Index (Ulcerative Colitis Activity)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'diastolic-function-ase', name: 'LV Diastolic Function (ASE 2016, normal EF)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
@@ -3908,6 +3904,11 @@ const RETIRED_TILE_ALIASES = new Map([
   ['gbs', 'glasgow-blatchford'],
   ['osi-oxygenation', 'oxygenation-index'],
   ['university-texas-dfu', 'ut-diabetic-foot'],
+  // spec-v948: the four the parenthetical blind spot had hidden (spec-v947).
+  ['cincinnati', 'cpss'],
+  ['abc-mtp', 'abc-transfusion-score'],
+  ['ips-hodgkin', 'hodgkin-ips'],
+  ['sort', 'sort-mortality'],
 ]);
 
 const REMOVED_V29_IDS = new Map([
