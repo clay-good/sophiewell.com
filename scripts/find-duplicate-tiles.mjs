@@ -87,6 +87,52 @@ export function nameScore(a, b) {
   return Math.max(similarity(a.key, b.key), similarity(a.keyParens, b.keyParens));
 }
 
+// spec-v956: the two readings DISAGREEING is itself the signal, and it points both ways.
+//
+//   dropped high, kept low   the parenthetical is the only thing telling them apart, so it is
+//                            carrying the instrument's identity: "ATLAS Score (C. difficile
+//                            Infection)" against "ATLAS Score (AF Recurrence After PVI)". An
+//                            acronym collision, and almost never a duplicate.
+//
+// The other direction needs a sharper test than "kept high, dropped low". That fires on any two
+// tools sharing a clinical domain -- "Egami Score (IVIG Resistance, Kawasaki)" against
+// "Kobayashi Score (IVIG Resistance, Kawasaki)" are two different instruments for one problem.
+// The shape that actually hides duplicates is narrower: ONE TILE'S PARENTHETICAL CONTAINS THE
+// OTHER TILE'S WHOLE NAME. "CPSS (Cincinnati Prehospital Stroke Scale)" against "Cincinnati
+// Prehospital Stroke Scale" -- an acronym outside, the same instrument spelled out inside.
+//
+// Naming the shape is what makes a 100-pair backlog readable: a reader can dismiss a family at
+// a glance instead of opening two adapters to learn what the names already said.
+
+// outsideKey / parenKey(name) -> sorted distinctive tokens either side of the parentheses.
+export function outsideKey(name) {
+  return nameKey(name);
+}
+
+export function parenKey(name) {
+  const inside = [...String(name).matchAll(/\(([^)]*)\)/g)].map((m) => m[1]).join(' ');
+  const base = inside.toLowerCase().replace(/[^a-z0-9 ]/g, ' ');
+  return [...new Set(base.split(/\s+/).filter((w) => w.length > 2 && !STOP.has(w)))].sort();
+}
+
+// namesTheOther(a, b) -> bool. Does either tile's parenthetical hold the other's whole name?
+// The other name must be at least two distinctive words: "MELD-Na (Sodium-Augmented MELD)" and
+// "MELD-XI (MELD excluding INR)" each hold the other's single surviving token, `meld`, and are
+// obviously not the same instrument. One shared word is a family name, not an identity.
+export function namesTheOther(a, b) {
+  const holds = (paren, outside) => outside.length >= 2 && paren.length > 0
+    && outside.every((w) => paren.includes(w));
+  return holds(parenKey(a.name), outsideKey(b.name)) || holds(parenKey(b.name), outsideKey(a.name));
+}
+
+export function pairShape(a, b) {
+  if (namesTheOther(a, b)) return 'NAMES THE OTHER IN PARENTHESES';
+  const dropped = similarity(a.key, b.key);
+  const kept = similarity(a.keyParens, b.keyParens);
+  if (dropped >= 0.8 && kept <= 0.5) return 'ACRONYM COLLISION';
+  return '';
+}
+
 export function candidatePairs(corpus, floor = 0.55) {
   const rows = Object.entries(corpus).map(([id, r]) => ({
     id, name: r.name, key: nameKey(r.name), keyParens: nameKeyWithParens(r.name),
@@ -146,6 +192,10 @@ export const RULED = new Map(Object.entries({
   'anion-gap-dd|delta-gap': 'DISTINCT -- overlapping arithmetic, but anion-gap-dd computes the gap itself and delta-gap the ratio against bicarbonate.',
   'ccsr|nexus-cspine': 'DISTINCT -- the single-rule tile and the combined tile that runs NEXUS and the Canadian rule together, the same shape as egfr / egfr-suite.',
   'wells-dvt|wells-dvt-caprini': 'DISTINCT -- the same single-rule / combined-suite shape.',
+
+  // spec-v956: the only two unread pairs left in the shape that hides duplicates. Both read.
+  'cam|cam-icu': 'DISTINCT -- Inouye 1990 for a patient who can be interviewed, Ely 2001 for a ventilated one who cannot. Different papers, different validation populations, different fields.',
+  'tyg-bmi|tyg-index': 'DISTINCT -- Simental-Mendia 2008 takes two inputs and returns ~8.9; Er 2016 multiplies by BMI, takes three, and returns ~223. One is the other times a third variable, which makes it a different instrument on a different scale.',
 }));
 
 function main() {
@@ -159,7 +209,8 @@ function main() {
     } else {
       unruled++;
       const same = sharesSource(a.id, b.id) ? '   SAME SOURCE' : '';
-      console.log(`${score.toFixed(2)}  ${a.id} / ${b.id}   NOT YET RULED ON${same}`);
+      const shape = pairShape(a, b);
+      console.log(`${score.toFixed(2)}  ${a.id} / ${b.id}   NOT YET RULED ON${shape ? `   ${shape}` : ''}${same}`);
       console.log(`        ${a.name}`);
       console.log(`        ${b.name}`);
     }
