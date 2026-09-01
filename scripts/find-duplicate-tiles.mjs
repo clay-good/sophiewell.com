@@ -30,6 +30,7 @@
 
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
+import { META } from '../lib/meta.js';
 
 const CORPUS = fileURLToPath(new URL('../data/search-corpus/corpus.json', import.meta.url));
 
@@ -63,6 +64,22 @@ export function similarity(a, b) {
   if (!a.length || !b.length) return 0;
   const shared = a.filter((w) => b.includes(w)).length;
   return shared / (a.length + b.length - shared);
+}
+
+// spec-v950: a second, independent signal -- do the two tiles cite the SAME PAPER? It is much
+// sharper than the name, and on its own it is not evidence of a duplicate: one guideline
+// routinely defines several distinct instruments (TG18 grades diagnosis and severity; the SUN
+// group grades cell and flare). Every pair that scored on both signals turned out to be a
+// companion, so this is reported next to the score rather than used to widen the net -- it
+// tells the reader WHY a pair matched, which is what makes a pair quick to rule on.
+export function sharesSource(aId, bId, meta = META) {
+  const links = (id) => {
+    const m = meta[id] || {};
+    return new Set([m.citationUrl, ...(m.citationUrls || []).map((e) => e.url)]
+      .filter(Boolean).map((u) => u.toLowerCase()));
+  };
+  const a = links(aId);
+  return [...links(bId)].some((u) => a.has(u));
 }
 
 // nameScore(a, b) -> number. The higher of the two readings of the name.
@@ -105,6 +122,30 @@ export const RULED = new Map(Object.entries({
   'abc-mtp|abc-transfusion-score': 'DUPLICATE -- one ABC score: the same four Nunez 2009 items and the same >=2 threshold. Survivor abc-transfusion-score (its bands carry the derivation sensitivity and specificity).',
   'hodgkin-ips|ips-hodgkin': 'DUPLICATE -- one Hasenclever IPS: the same seven adverse factors. Survivor hodgkin-ips (its bands give freedom-from-progression per band; ips-hodgkin lists the factors instead of interpreting the score).',
   'sort|sort-mortality': 'DUPLICATE -- one SORT model, coefficient for coefficient, and both worked examples return 14.67%. Survivor sort-mortality (its name says what the number is).',
+
+  // spec-v950: the pairs that are name-similar AND cite the same paper -- the sharpest signal
+  // there is, and every one of them turned out to be a COMPANION rather than a duplicate. One
+  // guideline or one paper routinely defines several distinct instruments, and the catalog
+  // splits them on purpose. Recorded so the finder stops asking.
+  'homa-beta|homa-ir': 'DISTINCT -- one HOMA paper, two quantities: beta-cell function and insulin resistance.',
+  'spina-gd|spina-gt': 'DISTINCT -- one SPINA paper, two constants: deiodinase activity and thyroid secretory capacity.',
+  'nexus-chest|nexus-chest-ct': 'DISTINCT -- the chest-radiograph rule and the chest-CT rule, different criteria sets from the same NEXUS programme.',
+  'cholangitis-diagnosis|cholangitis-severity': 'DISTINCT -- TG18 defines diagnosis and severity separately; one says whether, the other says how bad.',
+  'cholecystitis-diagnosis|cholecystitis-severity': 'DISTINCT -- same TG18 split as the cholangitis pair.',
+  'cholangitis-diagnosis|cholecystitis-diagnosis': 'DISTINCT -- two diseases, one guideline.',
+  'cholangitis-severity|cholecystitis-severity': 'DISTINCT -- two diseases, one guideline.',
+  'aortic-regurgitation-stage|aortic-stenosis-stage': 'DISTINCT -- two lesions staged by one ACC/AHA guideline.',
+  'aortic-stenosis-stage|mitral-stenosis-stage': 'DISTINCT -- two valves staged by one ACC/AHA guideline.',
+  'mitral-regurgitation-stage|secondary-mitral-regurgitation-stage': 'DISTINCT -- primary and secondary MR are staged on different variables in the same guideline.',
+  'concussion-rtl|concussion-rts': 'DISTINCT -- return to LEARN and return to SPORT are separate graduated ladders in one consensus statement.',
+  'engel-classification|ilae-surgical-outcome': 'DISTINCT -- two competing outcome scales for the same operation, reported side by side in the literature.',
+  'sun-ac-cell|sun-ac-flare': 'DISTINCT -- the SUN working group grades cell and flare on separate scales.',
+  'cdc-stature-for-age|cdc-weight-for-age': 'DISTINCT -- two growth charts from one CDC reference.',
+  'posas-observer-scar|posas-patient-scar': 'DISTINCT -- the observer and patient halves of POSAS are scored by different people.',
+  'dme-severity|icdr-retinopathy': 'DISTINCT -- the ICDR scale grades retinopathy and macular edema separately.',
+  'anion-gap-dd|delta-gap': 'DISTINCT -- overlapping arithmetic, but anion-gap-dd computes the gap itself and delta-gap the ratio against bicarbonate.',
+  'ccsr|nexus-cspine': 'DISTINCT -- the single-rule tile and the combined tile that runs NEXUS and the Canadian rule together, the same shape as egfr / egfr-suite.',
+  'wells-dvt|wells-dvt-caprini': 'DISTINCT -- the same single-rule / combined-suite shape.',
 }));
 
 function main() {
@@ -117,7 +158,8 @@ function main() {
       console.log(`${score.toFixed(2)}  ${a.id} / ${b.id}\n        ${verdict}`);
     } else {
       unruled++;
-      console.log(`${score.toFixed(2)}  ${a.id} / ${b.id}   NOT YET RULED ON`);
+      const same = sharesSource(a.id, b.id) ? '   SAME SOURCE' : '';
+      console.log(`${score.toFixed(2)}  ${a.id} / ${b.id}   NOT YET RULED ON${same}`);
       console.log(`        ${a.name}`);
       console.log(`        ${b.name}`);
     }

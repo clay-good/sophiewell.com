@@ -28,16 +28,15 @@
 
 import { META } from '../lib/meta.js';
 
-// The five links whose record and citation still disagree and cannot be
-// reconciled without human source review: three cite a paper no index carries
-// under the numbers given (delbet-femoral-neck, no-apnea-score, rdw-index),
-// one names a book chapter with no numbers at all (savary-miller), and one
-// describes AABB dosing guidance while its numbers name a paper about RHD
-// genotyping (rhig-dose). Frozen at spec-v945, cut from twelve at spec-v946;
-// shrinks only.
+// The four links whose record and citation still disagree and cannot be
+// reconciled without human source review: two cite a paper no index carries
+// under the numbers given (delbet-femoral-neck, no-apnea-score), one names a
+// book chapter with no numbers at all (savary-miller), and one describes AABB
+// dosing guidance while its numbers name a paper about RHD genotyping
+// (rhig-dose). Frozen at spec-v945, cut from twelve at spec-v946 and from five
+// at spec-v950; shrinks only.
 export const KNOWN_DISAGREEMENTS = new Set([
-  'delbet-femoral-neck', 'no-apnea-score', 'rdw-index', 'rhig-dose',
-  'savary-miller',
+  'delbet-femoral-neck', 'no-apnea-score', 'rhig-dose', 'savary-miller',
 ]);
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));

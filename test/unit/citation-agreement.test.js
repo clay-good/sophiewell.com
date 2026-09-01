@@ -72,7 +72,11 @@ test('spec-v946: eat-sleep-console links both papers it names', () => {
   assert.equal(META['eat-sleep-console'].citationUrl, undefined);
 });
 
-test('spec-v946: the frozen disagreement list is down to the five needing source review', () => {
+test('spec-v950: the frozen disagreement list is down to the four needing source review', () => {
+  // spec-v950 settled rdw-index: the Jayabose RDW index is a meeting abstract,
+  // "#262", J Pediatr Hematol Oncol 1999;21:314 -- a single page, which is why
+  // every full-record search had missed it.
   assert.deepEqual([...KNOWN_DISAGREEMENTS].sort(),
-    ['delbet-femoral-neck', 'no-apnea-score', 'rdw-index', 'rhig-dose', 'savary-miller']);
+    ['delbet-femoral-neck', 'no-apnea-score', 'rhig-dose', 'savary-miller']);
+  assert.equal(META['rdw-index'].citationUrl, 'https://doi.org/10.1097/00043426-199907000-00040');
 });

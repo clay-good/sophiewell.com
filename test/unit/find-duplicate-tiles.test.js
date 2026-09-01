@@ -4,7 +4,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
-  nameKey, nameKeyWithParens, similarity, nameScore, RULED,
+  nameKey, nameKeyWithParens, similarity, nameScore, sharesSource, RULED,
 } from '../../scripts/find-duplicate-tiles.mjs';
 
 const CINCINNATI = 'Cincinnati Prehospital Stroke Scale';
@@ -40,5 +40,30 @@ test('the four duplicates the blind spot hid are ruled on and name a survivor', 
     assert.ok(verdict, `${pair} has no ruling`);
     assert.ok(verdict.startsWith('DUPLICATE'), verdict);
     assert.match(verdict, /Survivor \S+/, verdict);
+  }
+});
+
+// ---- spec-v950: the second signal ----
+
+test('sharesSource sees two tiles citing one paper, and only those', () => {
+  const meta = {
+    a: { citationUrl: 'https://doi.org/10.1/x' },
+    b: { citationUrl: 'https://DOI.org/10.1/X'.toLowerCase() },
+    c: { citationUrls: [{ label: 'x', url: 'https://doi.org/10.1/x' }, { label: 'y', url: 'https://doi.org/10.1/y' }] },
+    d: { citationUrl: 'https://doi.org/10.1/z' },
+    e: {},
+  };
+  assert.equal(sharesSource('a', 'b', meta), true);
+  assert.equal(sharesSource('a', 'c', meta), true, 'a citationUrls entry counts');
+  assert.equal(sharesSource('a', 'd', meta), false);
+  assert.equal(sharesSource('a', 'e', meta), false, 'a tile with no link shares nothing');
+});
+
+test('sharing a source is not evidence of a duplicate on its own', () => {
+  // One guideline defines several instruments. Every pair that matched on both
+  // signals was read and ruled DISTINCT, which is why this is reported next to
+  // the score rather than used to widen the net.
+  for (const pair of ['homa-beta|homa-ir', 'sun-ac-cell|sun-ac-flare', 'concussion-rtl|concussion-rts']) {
+    assert.match(RULED.get(pair) || '', /^DISTINCT/, pair);
   }
 });
