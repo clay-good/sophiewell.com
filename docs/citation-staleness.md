@@ -23,7 +23,14 @@ Liveness was left to the quarterly source pull until spec-v943 measured it and
 found **66 of 1,556 source links reaching nothing** — dead DOIs, retired
 publisher pages, and links that opened a search rather than the paper. Run
 `node scripts/check-citation-links.mjs` at the source pull (and after any batch
-of new citations) to check every link on the network. It stays out of
+of new citations) to check every link on the network.
+
+Resolving is not the same as being right. spec-v945 then compared every linked
+record's own year, first page and first author against the citation it sits
+under, and found **49 links that resolved perfectly and opened a different
+paper** -- `pipkin-femoral-head` opened an elbow electromyography study.
+`node scripts/check-citation-agreement.mjs` is the check for that, and belongs
+in the same pass. It stays out of
 `npm run lint` on purpose: a publisher outage should not fail an unrelated
 change in CI.
 
