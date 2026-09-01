@@ -28,22 +28,22 @@
 
 import { META } from '../lib/meta.js';
 
-// The one link whose record and citation still disagree and cannot be
-// reconciled here. `savary-miller` links a 1992 study of intestinal
-// permeability in Crohn's disease -- a paper with nothing to do with
-// esophagitis grading. Its citation names the 1978 Savary & Miller endoscopy
-// atlas and the Ollyo modification of grade V, and NO INDEX CARRIES EITHER:
-// PubMed has no Savary-Miller classification paper, and Europe PMC full text
-// finds the grades quoted but never defined. Removing the wrong link would
-// leave a dated citation with no link at all, and both escape hatches --
-// SEARCH_URL_GRANDFATHERED and data/citation-url-backlog.json -- are
-// shrink-only sets. That is an owner's call between the two, not a lint fix;
-// see docs/spec-v968.md. Frozen at spec-v945, cut from twelve at spec-v946,
-// from five at spec-v950, from four at spec-v961 and from three at spec-v968;
-// shrinks only.
-export const KNOWN_DISAGREEMENTS = new Set([
-  'savary-miller',
-]);
+// EMPTY. Every link in the catalog now opens the paper its citation names.
+//
+// The list held twelve at spec-v945, five at v950, four at v961, three until
+// v968 and one until here. The last was `savary-miller`, whose link opened a
+// 1992 study of intestinal permeability in Crohn's disease. PubMed carries
+// nothing under "Savary-Miller", which is why every PubMed-shaped search had
+// failed; Crossref, searched on the names in the tile's own citation, returned
+// the Lausanne group's paper on the first page -- Monnier, Ollyo, Fontolliet
+// and Savary, "Epidemiology and natural history of reflux esophagitis,"
+// Surgical Innovation 1995;2(1):2-9. WHEN PUBMED HAS NOTHING, ASK CROSSREF:
+// it indexes book chapters, society journals and renamed titles that MEDLINE
+// never took.
+//
+// Keep it empty. A new entry means a tile is shipping a link to the wrong
+// paper, which is the one thing this gate exists to prevent.
+export const KNOWN_DISAGREEMENTS = new Set([]);
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 // Medical citations write surnames without their diacritics far more often than

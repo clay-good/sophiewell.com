@@ -72,7 +72,7 @@ test('spec-v946: eat-sleep-console links both papers it names', () => {
   assert.equal(META['eat-sleep-console'].citationUrl, undefined);
 });
 
-test('spec-v968: the frozen disagreement list is down to the one needing an owner decision', () => {
+test('spec-v970: the frozen disagreement list is empty', () => {
   // spec-v950 settled rdw-index: the Jayabose RDW index is a meeting abstract,
   // "#262", J Pediatr Hematol Oncol 1999;21:314 -- a single page, which is why
   // every full-record search had missed it.
@@ -84,7 +84,12 @@ test('spec-v968: the frozen disagreement list is down to the one needing an owne
   // the real Spence paper is J Pediatr Orthop 2016;36(2):111-116. rhig-dose described AABB
   // RhIG dosing while its numbers named Sandler's RHD-genotyping editorial; the paper that
   // states the four-step 300 ug dosing procedure is Obstet Gynecol 2012;120(6):1428-1438.
-  assert.deepEqual([...KNOWN_DISAGREEMENTS].sort(), ['savary-miller']);
+  // spec-v970 settled the last one. savary-miller linked a 1992 Crohn's
+  // permeability study; PubMed has no "Savary-Miller" record at all, but
+  // Crossref -- searched on the names in the tile's own citation -- returned
+  // the Lausanne group's paper on the first page.
+  assert.deepEqual([...KNOWN_DISAGREEMENTS], []);
+  assert.equal(META['savary-miller'].citationUrl, 'https://doi.org/10.1177/155335069500200102');
   assert.equal(META['no-apnea-score'].citationUrl, 'https://pubmed.ncbi.nlm.nih.gov/29991419/');
   assert.equal(META['rdw-index'].citationUrl, 'https://doi.org/10.1097/00043426-199907000-00040');
   assert.equal(META['delbet-femoral-neck'].citationUrl, 'https://pubmed.ncbi.nlm.nih.gov/25730381/');
