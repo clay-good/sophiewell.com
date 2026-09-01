@@ -74,6 +74,19 @@ Once a quarter the maintainer reviews:
    bands in `data/environmental/environmental.json` if changed.
 6. **Mozilla Observatory + securityheaders.com**. Re-run an A+
    verification on the production domain.
+7. **Source links**. Run the two network checks that `npm run lint`
+   deliberately leaves out, because a publisher outage should not fail
+   an unrelated change in CI:
+
+   ```bash
+   node scripts/check-citation-links.mjs
+   node scripts/check-citation-agreement.mjs
+   ```
+
+   The first asks whether every source link still resolves; the second
+   asks whether it opens the paper the citation names. They are
+   different questions — spec-v945 found 49 links that resolved
+   perfectly and opened a different paper.
 
 ## Adding a new utility
 
@@ -90,9 +103,18 @@ The pattern mirrors what already exists. Briefly:
    group, audiences, and `clinical` flag.
 5. Add the utility to `META` in `lib/meta.js` with citation,
    `source` (if any), and `example` for the Test-with-example
-   button.
-6. Add a tile to `index.html` with the right `data-group`,
-   `data-audiences`, tags, and link.
+   button. **If the citation names a year, it also needs a
+   `citationUrl`** — `scripts/check-citations.mjs` rule 6 fails the
+   build otherwise, and the frozen backlog in
+   `data/citation-url-backlog.json` may not take a new tile. Use a
+   DOI (`https://doi.org/…`) or a PubMed record
+   (`https://pubmed.ncbi.nlm.nih.gov/<pmid>/`); a search-results URL
+   is refused by rule 7. If the citation names **two or more** papers,
+   use `citationUrls: [{ label, url }, …]` instead of the singular
+   field, so each paper gets its own labelled link (spec-v942).
+6. There is no tile to add to `index.html` — the homepage tile grid
+   was removed with the search-first pivot, and the registry in step 4
+   is the only place a tile is declared.
 7. Add unit tests for the pure function. Match the
    Test-with-example payload to a test case.
 8. If the utility is a calculator, the live-render helper from

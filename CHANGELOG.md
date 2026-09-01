@@ -193,6 +193,34 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   to break on. The results region was the one place on the site whose paragraphs did not wrap long
   tokens.
 
+### Fixed (every source link reaches the paper its citation names)
+
+- **A hundred and thirty-one calculators had a citation naming a real paper and no way to reach
+  it.** Bishop 1964, GAD-7, PHQ-9, GRACE, HEART, PERC, PECARN, APACHE II and the rest now link
+  their own paper. A citation that names **two** papers no longer has to pick one: it carries a
+  labelled link for each, so NEXUS + Canadian C-Spine reaches Hoffman *and* Stiell.
+- **Sixty-six links said "Read the source" and reached none.** Forty-one opened a search-results
+  page rather than the paper, twelve were DOIs that returned "not found", and thirteen were pages
+  their publisher had moved. All fixed but twelve, whose source is a book chapter or a pre-1946
+  paper no index carries; those twelve now say **"Search PubMed for this source"** rather than
+  promising a paper the link cannot open.
+- **Forty-nine more links resolved perfectly and opened the wrong paper.** Right journal, right
+  year, wrong article: the Pipkin hip-fracture tile opened a study of elbow electromyography, and
+  the Russe scaphoid tile opened a Hungarian case report on congenital hemangiomatosis. Each now
+  opens the paper its citation names. Seven citations whose own volume or year was wrong were
+  corrected against the record.
+- Two checks keep it that way, run at the quarterly source pull:
+  `scripts/check-citation-links.mjs` asks whether a link resolves and
+  `scripts/check-citation-agreement.mjs` asks whether it opens the right paper. They are different
+  questions.
+
+### Changed (four calculators were the same instrument twice)
+
+- The Cincinnati Prehospital Stroke Scale, the ABC massive-transfusion score, the Hasenclever IPS
+  and the SORT surgical mortality tool each existed on two tiles, built years apart by authors who
+  did not see the first one. The thinner half of each pair is retired into the fuller one, and an
+  old link or a saved id still lands on the surviving tool. Catalog 1,710 → 1,706.
+
 ### Fixed (printing keeps the citation)
 
 - A closed `<details>` does not print its contents, so collapsing the citation would have dropped the
