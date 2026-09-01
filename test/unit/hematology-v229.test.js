@@ -44,16 +44,34 @@ test('nlr: invalid without inputs', () => {
   assert.equal(nlr({ anc: 6 }).valid, false);
 });
 
-// PLR = platelets / ALC.
-test('plr: elevated above 180', () => {
+// PLR = platelets / ALC, read against the Lee 2018 healthy reference interval
+// 46.8-218.0. spec-v964: the old cut at 180 appeared in no cited source and sat
+// inside that interval, so 180-218 read as elevated when it is not.
+test('plr: 200 is inside the healthy reference interval, not elevated', () => {
   const r = plr({ plt: 300, alc: 1.5 }); // 200
   assert.equal(r.score, 200);
+  assert.equal(r.abnormal, false);
+  assert.match(r.band, /within the healthy reference interval \(46\.8-218\.0\)/);
+});
+test('plr: above the interval', () => {
+  const r = plr({ plt: 300, alc: 1.2 }); // 250
+  assert.equal(r.score, 250);
   assert.equal(r.abnormal, true);
+  assert.match(r.band, /above the healthy reference interval/);
+});
+test('plr: below the interval', () => {
+  const r = plr({ plt: 90, alc: 3 }); // 30
+  assert.equal(r.score, 30);
+  assert.equal(r.abnormal, true);
+  assert.match(r.band, /below the healthy reference interval/);
 });
 test('plr: within range', () => {
   const r = plr({ plt: 200, alc: 2 }); // 100
   assert.equal(r.score, 100);
   assert.equal(r.abnormal, false);
+});
+test('plr: states that there is no validated general cut-off', () => {
+  assert.match(plr({ plt: 200, alc: 2 }).note, /no validated general cut-off/);
 });
 
 // SII = platelets x ANC / ALC.

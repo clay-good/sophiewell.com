@@ -27,7 +27,7 @@ export default [
   },
   {
     id: 'plr',
-    summary: 'Platelet-to-lymphocyte ratio: platelet count / absolute lymphocyte count; > 180 is often considered elevated.',
+    summary: 'Platelet-to-lymphocyte ratio: platelet count / absolute lymphocyte count, reported against a healthy reference interval of 46.8-218.0; there is no validated general cut-off.',
     compute: F.plr,
     fields: [
       { dom: 'plr-plt', arg: 'plt', kind: 'number', required: true, label: 'Platelet count', unit: '×10⁹/L' },

@@ -8,6 +8,17 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
+- **The platelet-to-lymphocyte ratio is now read against a measured healthy
+  reference interval (46.8-218.0) instead of a cut at 180.** The 180 line
+  appeared in no cited source and sat inside the healthy interval, so every
+  ratio from 180 to 218 was reported as elevated when reference data from
+  12,160 adults say it is normal. The tool now also states that PLR has no
+  validated general cut-off. See `docs/spec-v964.md`.
+- **The CDAI activity bands now name where they come from.** Remission at 2.8
+  or less, low at 10, moderate at 22 were credited to the paper that introduced
+  the index, which says the cut-offs still had to be determined. The numbers are
+  unchanged; the tool now links the remission criterion separately.
+
 - **Each calculator and tool now has one explanation disclosure.** "How this is
   calculated" contains the available formula, derivation, interpretation,
   citation, source link, and dataset stamp; the duplicate "Citation and

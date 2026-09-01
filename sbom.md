@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `b87667d6caac6046`
-Generated: 2026-09-01T19:55:57.942Z
+Build ID: `67c591a09c737478`
+Generated: 2026-09-01T21:41:53.546Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -356,7 +356,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/heckerling-pneumonia-v673.js` | 4376 | `cfd64d11802e91986c9c9c019e709809613be5059fae6106fa98ead6866affa0` |
 | `lib/heds-2017-v822.js` | 9879 | `b98e067cdccce9652f8c915b085d5aaf3b1f11e0904e42d14b90f8c99edd5fe7` |
 | `lib/heffner-v591.js` | 11393 | `84d4304edda82826b4a03363df288491740cf143544442fec83255f87cb67d6a` |
-| `lib/hematology-v229.js` | 7344 | `00286443125b0036df49b1f27f7b5d373d4c1b1281e89f185ccd18d189bd6e2d` |
+| `lib/hematology-v229.js` | 8046 | `4d939895522748f249e51ce0d3e4159bc8fec828297d19e4b706ae3922625404` |
 | `lib/heme-onc-risk-v211.js` | 11804 | `cbe39fe689c3723cd7eef4796c470a780d23dd31ac350a9cbd19bad2a05561c9` |
 | `lib/heme-prognostic-v216.js` | 13013 | `c6389635286fd17370fac65bfe97663eaf3e8ffa1b7852620f7b7011d532b6e8` |
 | `lib/heme-risk-v189.js` | 12298 | `dff84aab9784ab4cda57e923c6f7454447bdd25807742645fe707a03baa29478` |
@@ -509,7 +509,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/membranous-risk-v878.js` | 10326 | `ff774f72e82303f0c83c8091aaa6ea2bb3b4deeba5c6323985d910dd003d53f4` |
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2447529 | `0634cec015eb3cba533e5cac1e7bddf3c988a05f410e73be1a62f6bb1ad6ddde` |
+| `lib/meta.js` | 2448813 | `952335c9aae786268e2943bab8d2e9fa4e4a53d7b1d56e276d6bb46295d88f59` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -1181,7 +1181,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/heckerling-pneumonia-v673.js` | 1501 | `37a50893860af3959b49dd6e73ac9aa8c93e8fd68cfef8365c9068c3d578a7e3` |
 | `mcp/adapters/heds-2017-v822.js` | 4087 | `fcef4917c76dccf8ee89fa6b1c5add17624bf1a0e59b6a6792357e80fabb7745` |
 | `mcp/adapters/heffner-v591.js` | 5692 | `9b46b8775fc73177c0d697fe6b1b1abfe98481fb8aa3b460ac02948cf3538275` |
-| `mcp/adapters/hematology-v229.js` | 2391 | `7944ebde7c438c03add3bc5ae606bc867317ed45b9da8c31d5940ab25f4cf902` |
+| `mcp/adapters/hematology-v229.js` | 2455 | `8549fef8b657497f65a128404407c90e389c1aa53867175d66d6caf7b67e279e` |
 | `mcp/adapters/heme-onc-risk-v211.js` | 4570 | `522c7048fc000d9778726bf1e5761be10a34df5f15e2b259ad70309c3c38fe70` |
 | `mcp/adapters/heme-prognostic-v216.js` | 5769 | `8f15976e02276621c53e064ebadd0bd4b1d87b6fade70671bbaf74e1ca54a22e` |
 | `mcp/adapters/heme-risk-v189.js` | 5507 | `e82a606dfd5b23c2cea1e0eae5d1858559c2d127e9b564b2cbc270f2a889f6da` |
