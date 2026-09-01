@@ -66,3 +66,26 @@ test('inputs are validated', () => {
   assert.equal(mcmahonRhabdo({ ...LOW, cause: 'x' }).field, 'cause');
   assert.equal(mcmahonRhabdo({ ...LOW, creatinine: '' }).field, 'creatinine');
 });
+
+// ---- spec-v963: two cut-offs are in circulation, and the tool says which it uses ----
+
+test('the note names both cut-offs and attributes each correctly', () => {
+  // The derivation cut at 5: "a score of less than 5 identified patients with a 3% risk of the
+  // primary outcome ... Using 5 as the cutoff, the negative predictive value was 97.0%"
+  // (McMahon 2013, JAMA Intern Med 173:1821-1828, PMC5152583). The >= 6 cut this tool uses is
+  // the later convention from validation work and a trauma consensus statement. The note used
+  // to attribute >= 6 to "the authors", which is the one thing the paper does not say.
+  const r = mcmahonRhabdo({ ...LOW, age: '60', sex: 'female', creatinine: '2.5', calcium: '7.0' });
+  assert.match(r.note, /derivation itself cut at 5/);
+  assert.match(r.note, /negative predictive value of 97 percent/);
+  assert.match(r.note, /settled on 6 or more/);
+  assert.doesNotMatch(r.note, /per the authors/);
+});
+
+test('the >= 6 cut is unchanged: 6 is high risk, 5 is not', () => {
+  // Changing a clinical threshold on the strength of one reading is exactly what this session
+  // spent its time undoing. The number stays; only the attribution was wrong.
+  const at6 = mcmahonRhabdo({ ...LOW, age: '75', sex: 'female', creatinine: '1.5', calcium: '7.0' });
+  assert.ok(at6.score >= 6, `expected a score at or above 6, got ${at6.score}`);
+  assert.equal(at6.abnormal, true);
+});
