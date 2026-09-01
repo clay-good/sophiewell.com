@@ -28,15 +28,21 @@
 
 import { META } from '../lib/meta.js';
 
-// The three links whose record and citation still disagree and cannot be
-// reconciled without human source review: one cites a paper no index carries
-// under the numbers given (delbet-femoral-neck), one names a book chapter with
-// no numbers at all (savary-miller), and one describes AABB dosing guidance
-// while its numbers name a paper about RHD genotyping (rhig-dose). Frozen at
-// spec-v945, cut from twelve at spec-v946, from five at spec-v950 and from four
-// at spec-v961; shrinks only.
+// The one link whose record and citation still disagree and cannot be
+// reconciled here. `savary-miller` links a 1992 study of intestinal
+// permeability in Crohn's disease -- a paper with nothing to do with
+// esophagitis grading. Its citation names the 1978 Savary & Miller endoscopy
+// atlas and the Ollyo modification of grade V, and NO INDEX CARRIES EITHER:
+// PubMed has no Savary-Miller classification paper, and Europe PMC full text
+// finds the grades quoted but never defined. Removing the wrong link would
+// leave a dated citation with no link at all, and both escape hatches --
+// SEARCH_URL_GRANDFATHERED and data/citation-url-backlog.json -- are
+// shrink-only sets. That is an owner's call between the two, not a lint fix;
+// see docs/spec-v968.md. Frozen at spec-v945, cut from twelve at spec-v946,
+// from five at spec-v950, from four at spec-v961 and from three at spec-v968;
+// shrinks only.
 export const KNOWN_DISAGREEMENTS = new Set([
-  'delbet-femoral-neck', 'rhig-dose', 'savary-miller',
+  'savary-miller',
 ]);
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));

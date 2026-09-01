@@ -72,17 +72,23 @@ test('spec-v946: eat-sleep-console links both papers it names', () => {
   assert.equal(META['eat-sleep-console'].citationUrl, undefined);
 });
 
-test('spec-v961: the frozen disagreement list is down to the three needing source review', () => {
+test('spec-v968: the frozen disagreement list is down to the one needing an owner decision', () => {
   // spec-v950 settled rdw-index: the Jayabose RDW index is a meeting abstract,
   // "#262", J Pediatr Hematol Oncol 1999;21:314 -- a single page, which is why
   // every full-record search had missed it.
   // spec-v961 settled no-apnea-score: its citation named a "4-item instrument" in Sleep Breath,
   // which is neither the right paper nor the right instrument. The derivation is the 2-item
   // model in J Clin Sleep Med 2018;14(7):1097-1107.
-  assert.deepEqual([...KNOWN_DISAGREEMENTS].sort(),
-    ['delbet-femoral-neck', 'rhig-dose', 'savary-miller']);
+  // spec-v968 settled two more. delbet-femoral-neck named a JAAOS 2018 review that PubMed does
+  // not carry at any pagination, and linked an unrelated bone-graft article in the same volume;
+  // the real Spence paper is J Pediatr Orthop 2016;36(2):111-116. rhig-dose described AABB
+  // RhIG dosing while its numbers named Sandler's RHD-genotyping editorial; the paper that
+  // states the four-step 300 ug dosing procedure is Obstet Gynecol 2012;120(6):1428-1438.
+  assert.deepEqual([...KNOWN_DISAGREEMENTS].sort(), ['savary-miller']);
   assert.equal(META['no-apnea-score'].citationUrl, 'https://pubmed.ncbi.nlm.nih.gov/29991419/');
   assert.equal(META['rdw-index'].citationUrl, 'https://doi.org/10.1097/00043426-199907000-00040');
+  assert.equal(META['delbet-femoral-neck'].citationUrl, 'https://pubmed.ncbi.nlm.nih.gov/25730381/');
+  assert.equal(META['rhig-dose'].citationUrl, 'https://pubmed.ncbi.nlm.nih.gov/23168770/');
 });
 
 // ---- spec-v954 ----
