@@ -290,9 +290,11 @@ test('a long explanation paragraph folds behind a More detail disclosure', async
 // ---- spec-v3 layer ----
 
 test('spec-v3: Group I tools render the local-protocol notice', async ({ page }) => {
-  // `defib` was retired in spec-v29 wave 29-2 (Group I reference cards); the
-  // local-protocol notice is now exercised against a Group I survivor.
-  await page.goto('/#cincinnati');
+  // `defib` was retired in spec-v29 wave 29-2 (Group I reference cards) and
+  // `cincinnati` in spec-v948 (a duplicate of `cpss`, which is Group G and so
+  // carries no field notice). The notice is a GROUP I renderer's, so this has
+  // to name a live Group I tile: `field-triage` calls the same noticeBlock().
+  await page.goto('/#field-triage');
   await expect(page.getByText('Local protocols, medical direction, and clinician judgment')).toBeVisible();
 });
 
