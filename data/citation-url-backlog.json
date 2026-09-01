@@ -16,10 +16,8 @@
     "device-day-counter",
     "ecmo-titration",
     "ecog-karnofsky",
-    "electrolyte-replacement",
     "em-time",
     "ews-escalation",
-    "fena-feurea",
     "field-triage",
     "heatstroke-decision",
     "lab-interpret",
@@ -33,13 +31,9 @@
     "qtc",
     "qtc-suite",
     "rabies-pep",
-    "ranson-bisap",
     "retic-index",
-    "saag",
-    "sepsis-bundle-clock",
     "start-triage",
     "tetanus",
-    "ttkg",
     "vip-extravasation"
   ]
 }

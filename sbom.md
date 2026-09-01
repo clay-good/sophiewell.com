@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `67c591a09c737478`
-Generated: 2026-09-01T21:41:53.546Z
+Build ID: `ff72d2f95911c884`
+Generated: 2026-09-01T21:59:38.284Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -179,7 +179,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/cleveland-constipation-v665.js` | 4841 | `b5e66d05b1f5b2258281a9dc3246f35e6e83de248cabe44a914d2cbe72fd6400` |
 | `lib/clinical-obesity-v838.js` | 8584 | `742a529bbd6a43b4a9f695f82f2134c5bf24b16ae67e2e8cbdffb39f4b198cb3` |
 | `lib/clinical-v4.js` | 13481 | `2434fa8ccf04a471d1d7ecf0075e6c279a2025b1eac834c06efb70c923a62e5e` |
-| `lib/clinical-v5.js` | 23983 | `4212647f6da1a419f3955f7d576140cd1cac435b08be0e160d9f23980efdea44` |
+| `lib/clinical-v5.js` | 24026 | `8a605967e4157f02f76dbf92a18452170537a3563c8f45531371535438d9557d` |
 | `lib/clinical-v6.js` | 16042 | `69c1de74d7f171a3c6e87329c1cb69324758a368a34f1961e6201caec0470f8d` |
 | `lib/clinical-v7.js` | 17904 | `eee459b4679ba5fe4c86a4a615fafe1de18613351276d0ed73eaa5092d3e9c7e` |
 | `lib/clinical-v8.js` | 18032 | `85e8b20be2633595849a5f194e36e2968dbb1375535360da93503735916a69dc` |
@@ -509,7 +509,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/membranous-risk-v878.js` | 10326 | `ff774f72e82303f0c83c8091aaa6ea2bb3b4deeba5c6323985d910dd003d53f4` |
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2448813 | `952335c9aae786268e2943bab8d2e9fa4e4a53d7b1d56e276d6bb46295d88f59` |
+| `lib/meta.js` | 2450720 | `0fa52183a15329bb2dc8515f94a168c547e15b396c4f9356a9cc54bc3529cdb1` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |

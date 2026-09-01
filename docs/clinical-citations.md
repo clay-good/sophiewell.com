@@ -360,7 +360,7 @@ trait.
 Citation: Runyon BA, Montano AA, Akriviadis EA, Antillon MR, Irving MA,
 McHutchison JG. The serum-ascites albumin gradient is superior to the
 exudate-transudate concept in the differential diagnosis of ascites. Ann
-Intern Med. 1992;117(3):215-220 (continuation series Hepatology 1992;16:240-245).
+Intern Med. 1992;117(3):215-220.
 Formula: SAAG = serum_albumin − ascites_albumin (g/dL). >= 1.1 portal
 hypertension; < 1.1 non-portal etiology.
 Worked example: serum 3.5, ascites 1.5. SAAG = 2.0 g/dL -> portal HTN.
