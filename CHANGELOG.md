@@ -45,6 +45,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   state remains shareable in the URL fragment without persistent device
   storage.
 
+### Fixed
+
+- **Typing a calculator's own abbreviation now finds it.** The search's
+  exact-phrase bonus was a raw substring test, so it fired in the middle of
+  unrelated words — and a buried match collected both the name bonus and the
+  description bonus, outscoring the tile the reader was actually naming.
+  Searching `psi` returned Alpha-1 Antitrypsin Level and Genotype (antitry**psi**n),
+  with the Pneumonia Severity Index at rank 16; `anc` returned the ABC Balance
+  Confidence Scale (bal**anc**e), with Absolute Neutrophil Count at rank 81 of
+  256; `abi` matched prob**abi**lity and `vis` matched re**vis**ed. Across the
+  catalog, 28 abbreviations printed in exactly one tile's own name did not reach
+  that tile at all. The bonus is now whole-word containment — the rule the
+  synonym matcher already used — and those 28 are down to 1 (`DOSE`, which is
+  also an ordinary word). A new whole-catalog check keeps it that way. See
+  `docs/spec-v974.md`.
+
 ### Added
 
 - **The duplicate-tile finder now reads the citation, and found four more tiles
