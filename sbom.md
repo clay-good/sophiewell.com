@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `11f3edc254b2319c`
-Generated: 2026-09-02T15:42:09.621Z
+Build ID: `c40c6aef93705d11`
+Generated: 2026-09-02T16:28:41.884Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -25,9 +25,9 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 109103 | `6d5bd613916bde11b33a708ef3e00372d582e955e5a6b844c51bc296f4b5ef0f` |
+| `index.html` | 109205 | `49e5dd7e4e46af777067383d6dbe85e3f0d6ad5a7a8a32f0cba6cb198bf23d81` |
 | `styles.css` | 67715 | `593e82ed754eace37758d2c9d6fcd3bf0abf98aa38286c94a36c7155274fdd19` |
-| `app.js` | 502022 | `7e02db47d3cabfdde4603e798b7738ac1b503a33fa199d5dcf4898889c3a3aab` |
+| `app.js` | 502124 | `ecee8290c03f704352f45e0650e1deb4459eff7b1a30a06783a54d4e83ec501d` |
 | `report-feedback.js` | 12178 | `955e5cb542c7b13dcbb85a75ecf4ccf2dc0b2dffecd84daac1d607bd6acc7cd2` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 | `theme.js` | 3132 | `6910af0b4c65869c6a3d24d17842bb2cc88c7d23f8fb32506fcdbfeec70ce979` |
@@ -38,17 +38,17 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `sitemap.xml` | 261616 | `c8a9b2a2123462149c791e33a8d1dd14c9266cad72de0d0bceaa7d233d5ca37e` |
 | `_headers` | 2050 | `3874f05a080b8cab13ff022e6e6147c7e1057420a2d9cbc7834bac6b421d4011` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
-| `favicon.ico` | 3682 | `8dd13c4dd66de0c9ec93c2c1561e5fec1902f144b677d3581cf56b124b04a1b8` |
-| `favicon-16x16.png` | 434 | `048382388a01dabe029443f89e0e7396ff26fafa156cdd68a8e26256e3929f81` |
-| `favicon-32x32.png` | 1112 | `fbcbde6664e83fed988e81ebeb2bd107fc86530e0422475db0bfa11058693a12` |
-| `apple-touch-icon.png` | 11875 | `d0e9b629aa93f9c5b8f14380585c8f3a064d43494f00abeaaa01f5261f1bc999` |
+| `favicon.ico` | 7411 | `407fde0ca2788409e87e11f596fa02e6a0b121817fcea7fd995beec1801e287b` |
+| `favicon-16x16.png` | 1812 | `d8ab9268c1d9c99912dc9c2b57873efd2641a28aee8f12b65cec8cee1d79a653` |
+| `favicon-32x32.png` | 2397 | `a2f623e5e34259a4886cdef2bc7cfeaf23894393fff7717dee5bf2732ccf083d` |
+| `apple-touch-icon.png` | 11142 | `29cdc69c3bbec5245236d27dc6814f351b1734f0fa4683ce2411de9837b56368` |
 
 ## Report Worker runtime hashes (SHA-256)
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
 | `report-worker.mjs` | 13434 | `bcbebe960bf79e0cb2038f7ddc216dfb0753a9665f071fa32966d5d460ffc794` |
-| `report-catalog.js` | 95233 | `1ec9a5328e81a27744e5c49f33a15884af3bacba2f8ebaae2172881ef006b17f` |
+| `report-catalog.js` | 95335 | `e5996ceddbf0c464372336b9282c067166c77c58f526efdc045fcfae776202a9` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 
 ## Source-of-truth modules (lib + views)
@@ -676,7 +676,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/priapism-gas-v859.js` | 10757 | `64a551a208b4f1430a62b0d16669339f61c853a2af7db33e5612ce32a559d6cf` |
 | `lib/print.js` | 4179 | `84053c26cd3859b4156ddf0cc33bc546656c7ce4b01651de786d1dced7cf4d3c` |
 | `lib/prognostic-v231.js` | 5562 | `0bd8d6d5916244b3897dd52156e6833f877142fb93f7a34f4f5435e7944ff5f3` |
-| `lib/prompt.js` | 23406 | `4dd7f28cbc1958276bfc49eb2a607161309f38a82c4f2c1e903b309ba6cc5013` |
+| `lib/prompt.js` | 24566 | `6ac7cb9eb6f39add15dbb08809f3b899180938124e7e61c5058b20f153331d95` |
 | `lib/propkd-v564.js` | 12565 | `a92acd4c8f065df50dcfffd0ad8dde4a6d1a6a9dddf8118bc4351307633d5c25` |
 | `lib/prostate-health-index-v714.js` | 3788 | `c73d17188461e047dbf1658447de06c9474dda8ff88e9b92b13845d53d2561a1` |
 | `lib/proteins-v274.js` | 3182 | `124b907ef2e82939179df0c4d15ebd08e2132481feb6b980a73b2e9170e6a315` |

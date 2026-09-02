@@ -868,7 +868,7 @@ const UTILITIES = [
   // line after every reduction. Deterministic, cited, integer-cents money;
   // input-or-bundled-data (doctrine clause 2). views/group-b.js, lib/billing-v78.js.
   { id: 'rvu-payment', name: 'MPFS Allowed Amount (RVU x GPCI x CF)', group: 'B', audiences: ['billers'], clinical: false },
-  { id: 'mppr', name: 'Multiple-Procedure Payment Reduction', group: 'B', audiences: ['billers'], clinical: false },
+  { id: 'mppr', name: 'Multiple-Procedure Payment Reduction (MPPR)', group: 'B', audiences: ['billers'], clinical: false },
   { id: 'bilateral-pay', name: 'Bilateral (Modifier 50) Payment by Indicator', group: 'B', audiences: ['billers'], clinical: false },
   { id: 'multi-surgeon-pay', name: 'Assistant / Co- / Team-Surgeon Payment', group: 'B', audiences: ['billers'], clinical: false },
   { id: 'sequestration-adjust', name: 'Medicare 2% Sequestration Adjustment', group: 'B', audiences: ['billers'], clinical: false },
@@ -938,7 +938,7 @@ const UTILITIES = [
   // Group E: Clinical Math and Conversions
   { id: 'unit-converter', name: 'Unit Converter', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'bmi', name: 'BMI Calculator', group: 'E', audiences: ['patients', 'clinicians', 'educators'], clinical: true },
-  { id: 'bsa', name: 'Body Surface Area', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'bsa', name: 'Body Surface Area (BSA)', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'map', name: 'Mean Arterial Pressure', group: 'E', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'anion-gap', name: 'Anion Gap', group: 'E', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'corrected-calcium', name: 'Corrected Calcium for Albumin', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
@@ -1097,7 +1097,7 @@ const UTILITIES = [
   { id: 'r-factor',           name: 'R-Factor (Drug-Induced Liver Injury Pattern)',     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'kdigo-aki',          name: 'KDIGO AKI Staging',                                group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'sgarbossa',          name: 'Modified Sgarbossa Criteria (Smith)',              group: 'G', audiences: ['clinicians', 'educators', 'field'], clinical: true },
-  { id: 'rcri',               name: 'Revised Cardiac Risk Index (Lee)',                 group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'rcri',               name: 'Revised Cardiac Risk Index (RCRI, Lee)',                 group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'pews',               name: 'Pediatric Early Warning Score (PEWS)',             group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'em-time',            name: 'Time-Based E/M Code Selector (2021)',              group: 'A', audiences: ['billers', 'clinicians', 'educators'], clinical: false },
   { id: 'em-mdm',             name: 'MDM-Based E/M Code Selector (2021)',               group: 'A', audiences: ['billers', 'clinicians', 'educators'], clinical: false },
@@ -1147,7 +1147,7 @@ const UTILITIES = [
   { id: 'apri',                name: 'APRI (AST to Platelet Ratio Index)',               group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'maddrey-lille',       name: 'Maddrey DF and Lille Model (alcoholic hepatitis)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   // spec-v12 §3.5 wave 12-5: imaging-decision bundle.
-  { id: 'ccsr',                name: 'Canadian C-Spine Rule',                            group: 'G', audiences: ['clinicians', 'educators', 'field'], clinical: true },
+  { id: 'ccsr',                name: 'Canadian C-Spine Rule (CCR)',                            group: 'G', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'pecarn-head',         name: 'PECARN Pediatric Head Injury Rule',                group: 'N', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'ottawa-ankle',        name: 'Ottawa Ankle Rules',                               group: 'G', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'ottawa-sah',          name: 'Ottawa Subarachnoid Hemorrhage Rule',              group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
@@ -1156,7 +1156,7 @@ const UTILITIES = [
   { id: 'lace',                name: 'LACE Index for 30-Day Readmission / Death',        group: 'H', audiences: ['clinicians', 'educators'], clinical: true },
   // spec-v12 §3.7 wave 12-7: comorbidity, frailty & performance status.
   { id: 'charlson',            name: 'Charlson Comorbidity Index (age-adjusted)',        group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
-  { id: 'cfs',                 name: 'Clinical Frailty Scale (Rockwood)',                group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'cfs',                 name: 'Clinical Frailty Scale (CFS, Rockwood)',                group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'ecog-karnofsky',      name: 'ECOG and Karnofsky Performance Status',            group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   // spec-v12 §3.8 wave 12-8: cardiology + §3.9: critical-care.
   { id: 'killip',              name: 'Killip Classification (acute MI)',                 group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
@@ -1225,7 +1225,7 @@ const UTILITIES = [
   { id: 'philadelphia',        name: 'Philadelphia Criteria (febrile infant)',           group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'boston-febrile',      name: 'Boston Criteria (febrile infant)',                 group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'step-by-step',        name: 'Step-by-Step Approach (febrile infant)',           group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
-  { id: 'yos',                 name: 'Yale Observation Scale',                           group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'yos',                 name: 'Yale Observation Scale (YOS)',                           group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   // spec-v15 §3.3 wave 15-3: pediatric respiratory + neurologic.
   { id: 'westley',             name: 'Westley Croup Score',                              group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'pram-asthma',         name: 'PRAM (pediatric asthma severity)',                 group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
@@ -1393,7 +1393,7 @@ const UTILITIES = [
   // index. They join the acute neuro cluster (nihss, ich-score,
   // hunt-hess-wfns, four-score, abcd2) with the longitudinal layer the same
   // patient is followed with. views/group-v21.js, lib/neuro-v95.js.
-  { id: 'mrs',                    name: 'Modified Rankin Scale (stroke outcome)',           group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'mrs',                    name: 'Modified Rankin Scale (mRS, stroke outcome)',           group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'gose',                   name: 'Glasgow Outcome Scale - Extended (GOS-E)',         group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'hoehn-yahr',             name: 'Hoehn & Yahr Parkinson Disease Staging',           group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'spetzler-martin',        name: 'Spetzler-Martin AVM Grade (+ Lawton-Young)',       group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
@@ -1451,7 +1451,7 @@ const UTILITIES = [
   { id: 'hamd',                   name: 'Hamilton Depression Rating Scale (HAM-D, 17-item)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'hama',                   name: 'Hamilton Anxiety Rating Scale (HAM-A, 14-item)',   group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'madrs',                  name: 'Montgomery-Asberg Depression Rating Scale (MADRS)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
-  { id: 'mdq',                    name: 'Mood Disorder Questionnaire (bipolar screen)',     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'mdq',                    name: 'Mood Disorder Questionnaire (MDQ, bipolar screen)',     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'ybocs',                  name: 'Yale-Brown Obsessive Compulsive Scale (Y-BOCS)',   group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'pcl5',                   name: 'PTSD Checklist for DSM-5 (PCL-5, 20-item)',        group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 
@@ -2168,7 +2168,7 @@ const UTILITIES = [
   // nitrogen-balance is Medication & Infusion (Group F, nutrition-support
   // context). views/group-v161.js, lib/endo-metab-v161.js (RV161).
   // calcium-phosphate-product cites KDIGO -> documentation-only staleness row.
-  { id: 'arr',                    name: 'Aldosterone-Renin Ratio (primary-aldosteronism screen)', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'arr',                    name: 'Aldosterone-Renin Ratio (ARR, primary-aldosteronism screen)', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'calcium-phosphate-product', name: 'Calcium-Phosphate Product (CKD-MBD)',          group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'free-thyroxine-index',   name: 'Free Thyroxine Index (FTI / T7)',                  group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'nitrogen-balance',       name: 'Nitrogen Balance (nutrition support)',             group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
@@ -2182,7 +2182,7 @@ const UTILITIES = [
   // Textbook-standard formulas cross-verified to >= 2 sources (spec-v97).
   { id: 'fagan-post-test',    name: 'Fagan Post-Test Probability (likelihood ratio)',    group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'diagnostic-2x2',     name: 'Diagnostic Test 2×2 (sens / spec / PV / LR)',       group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
-  { id: 'nnt-arr',            name: 'Number Needed to Treat / Absolute Risk Reduction',  group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'nnt-arr',            name: 'Number Needed to Treat / Absolute Risk Reduction (NNT, ARR)',  group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v164 (second feature spec of the spec-v162 program): three
   // ophthalmology computes filling a zero-tile gap. iol-power (SRK II) and
@@ -2538,7 +2538,7 @@ const UTILITIES = [
   // staleness row); the copyrighted psychiatry instruments (BDI, PANSS, MoCA, ...)
   // stay on the spec-v100 §8 exclusion list. views/group-v123.js, lib/psych-v123.js.
   { id: 'aims-tardive',           name: 'AIMS (tardive dyskinesia severity)',               group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
-  { id: 'bfcrs',                  name: 'Bush-Francis Catatonia Rating Scale',              group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'bfcrs',                  name: 'Bush-Francis Catatonia Rating Scale (BFCRS)',              group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'bars-akathisia',         name: 'Barnes Akathisia Rating Scale',                    group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'scoff',                  name: 'SCOFF (eating-disorder screen)',                   group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'ces-d',                  name: 'CES-D (depression scale)',                         group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
@@ -2746,7 +2746,7 @@ const UTILITIES = [
   // scale call the same angiogram a success and a failure. views/group-v960.js,
   // lib/tici-v960.js, mcp/adapters/tici-v960.js.
   { id: 'tici', name: 'mTICI reperfusion grade (stroke thrombectomy)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
-  { id: 'gahs',                   name: 'Glasgow Alcoholic Hepatitis Score',                group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'gahs',                   name: 'Glasgow Alcoholic Hepatitis Score (GAHS)',                group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'west-haven-he',          name: 'West Haven HE grade (hepatic encephalopathy)',     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'hepatic-steatosis-index', name: 'Hepatic Steatosis Index (NAFLD screen)',          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 
@@ -3119,7 +3119,7 @@ const UTILITIES = [
   // spec-v55: bedside hematology, renal/acid-base, and oxygenation math (13 tiles).
   { id: 'anc',                 name: 'Absolute Neutrophil Count (ANC) + neutropenia grade', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'retic-index',         name: 'Reticulocyte Production Index (corrected retic)',  group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
-  { id: 'tsat',                name: 'Transferrin Saturation + iron-studies interpreter', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'tsat',                name: 'Transferrin Saturation (TSAT) + iron-studies interpreter', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'cci-platelet',        name: 'Corrected Count Increment (platelet refractoriness)', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'ldl-calc',            name: 'Calculated LDL (Friedewald + NIH)',                group: 'E', audiences: ['clinicians', 'educators', 'patients'], clinical: true },
   { id: 'eag-a1c',             name: 'Estimated Average Glucose from A1c (eAG)',         group: 'E', audiences: ['clinicians', 'educators', 'patients'], clinical: true },
@@ -3196,7 +3196,7 @@ const UTILITIES = [
   { id: 'braden-q',             name: 'Braden Q (pediatric pressure-injury risk)',        group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   // spec-v61 §3: 12 bedside medication-safety, electrolyte/fluid, and OB/peds tiles.
   { id: 'urine-output',         name: 'Urine output rate + KDIGO oliguria flag',          group: 'E', audiences: ['clinicians', 'educators', 'field'], clinical: true },
-  { id: 'gir',                  name: 'Glucose Infusion Rate (mg/kg/min)',                group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'gir',                  name: 'Glucose Infusion Rate (GIR, mg/kg/min)',                group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'ebv-mabl',             name: 'Estimated blood volume + max allowable blood loss', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'corrected-phenytoin',  name: 'Albumin-corrected phenytoin (Sheiner-Tozer)',      group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'potassium-deficit',    name: 'Potassium deficit + replacement guidance',         group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
@@ -3566,7 +3566,7 @@ const UTILITIES = [
   // lib/hematology-v229.js, RV229. Each verified absent (spec-v85 §6.2); each
   // computes a lab value from CBC inputs, none diagnoses or orders (spec-v11 §5.3).
   // Formulas/bands >= 2-source verified (spec-v97).
-  { id: 'aec',                  name: 'Absolute Eosinophil Count (Eosinophilia Grading)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'aec',                  name: 'Absolute Eosinophil Count (AEC, eosinophilia grading)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'nlr',                  name: 'Neutrophil-to-Lymphocyte Ratio (NLR)',             group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'plr',                  name: 'Platelet-to-Lymphocyte Ratio (PLR)',               group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'sii',                  name: 'Systemic Immune-Inflammation Index (SII)',         group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
@@ -3703,7 +3703,7 @@ const UTILITIES = [
   // none diagnoses or orders (spec-v11 5.3). Point systems >= 2-source verified
   // (spec-v97).
   { id: 'sccai',                name: 'Simple Clinical Colitis Activity Index (SCCAI)',   group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
-  { id: 'pucai',                name: 'Pediatric Ulcerative Colitis Activity Index',      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'pucai',                name: 'Pediatric Ulcerative Colitis Activity Index (PUCAI)',      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'bbps-boston',          name: 'Boston Bowel Preparation Scale (BBPS)',            group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'simplified-aih',       name: 'Simplified Autoimmune Hepatitis Criteria',         group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   // spec-v247: pediatric acute-care + toxicology tools. lib/pedstox-v247.js, RV247.

@@ -47,6 +47,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Sixteen calculators now print the abbreviation a clinician types.** The
+  Revised Cardiac Risk Index did not say RCRI anywhere in its name, Transferrin
+  Saturation did not say TSAT, Body Surface Area did not say BSA — so typing the
+  abbreviation found something else, or nothing. Each now carries it in
+  parentheses the way 778 other tools already do, which also fixes the browser
+  tab and the row you scan in the results. Fourteen return their own tool first;
+  `bsa` and `mrs` are genuine ambiguities the catalog owns (Body Surface Area
+  against the Body Weight & BSA Suite; the Modified Rankin Scale against the
+  Menopause Rating Scale) and now appear second where they used to be absent.
+  See `docs/spec-v975.md`.
 - **Typing a calculator's own abbreviation now finds it.** The search's
   exact-phrase bonus was a raw substring test, so it fired in the middle of
   unrelated words — and a buried match collected both the name bonus and the
