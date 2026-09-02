@@ -58,7 +58,15 @@ async function regenerate() {
   // spec-v753: build-field-index writes data/fields/, which the copy step below
   // picks up with the rest of data/. It runs before build-sbom so the shards are
   // on disk when the bill of materials counts source files.
-  for (const script of ['build-favicons.mjs', 'build-search-corpus.mjs', 'build-field-index.mjs', 'build-report-catalog.mjs', 'build-ld.mjs', 'build-sitemap.mjs', 'build-sbom.mjs']) {
+  // spec-v990: `build-favicons.mjs` is NOT in this list. It writes the five
+  // icon files back into the repo root, and its output bytes depend on which
+  // image backend is present -- `sharp`, which reaches us only as a transitive
+  // dependency of miniflare inside wrangler, or the macOS `sips` fallback. So
+  // running the documented build dirtied five tracked files, and the icons the
+  // site deployed were never the icons committed here. The icons are committed
+  // artifacts now; regenerate them deliberately with `npm run favicons` when
+  // logo.png changes.
+  for (const script of ['build-search-corpus.mjs', 'build-field-index.mjs', 'build-report-catalog.mjs', 'build-ld.mjs', 'build-sitemap.mjs', 'build-sbom.mjs']) {
     const r = spawnSync(process.execPath, [join(ROOT, 'scripts', script)], { stdio: 'inherit' });
     if (r.status !== 0) throw new Error(`${script} exited with status ${r.status}`);
   }
@@ -72,10 +80,16 @@ async function main() {
     await copyFile(join(ROOT, f), join(DIST, f));
   }
   for (const d of COPY_DIRS) await copyTree(join(ROOT, d));
-  // Copy favicon assets if present (created by build-favicons.mjs in v4.7).
+  // Copy the committed favicon set. spec-v990: these are required, not
+  // optional. They used to be generated a few lines above, so "if present"
+  // could never fail; now that they are checked-in artifacts, a missing one
+  // means the site deploys with no icon and should stop the build instead.
   for (const f of ['favicon.ico', 'favicon-16x16.png', 'favicon-32x32.png', 'apple-touch-icon.png', 'logo.png']) {
     const src = join(ROOT, f);
-    if (existsSync(src)) await copyFile(src, join(DIST, f));
+    if (!existsSync(src)) {
+      throw new Error(`build: ${f} is missing. It is a committed artifact -- run \`npm run favicons\` to regenerate the set from logo.png.`);
+    }
+    await copyFile(src, join(DIST, f));
   }
 
   // Inject sha256 hashes for the inline <script> blocks in the built

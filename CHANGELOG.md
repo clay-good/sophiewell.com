@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed
+
+- **The favicons the site served were never the favicons in the repository.**
+  `npm run build` regenerated the icon set into the repo root on every run, so
+  the documented build left five tracked binary files modified — and all four
+  derived icons differed from what was committed. The bytes depended on whether
+  `sharp` could be imported, and `sharp` is not a declared dependency: it
+  arrived transitively through `wrangler`, so the encoder behind the site's
+  icons was whichever version the Cloudflare CLI vendored. The icons are
+  committed artifacts now, regenerated deliberately with `npm run favicons`;
+  the build copies them and fails if one is missing; and CI fails if a build
+  ever rewrites them again. Nothing a user sees changes — the committed files
+  are now byte-identical to what production was already serving. See
+  `docs/spec-v990.md`.
+
 ### Security
 
 - **Every dependency override is now a patched floor rather than an exact pin.**

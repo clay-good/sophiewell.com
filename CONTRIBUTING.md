@@ -95,6 +95,13 @@ it. A "related tools" list you never touched can change order, so
 **Not a step:** `docs/audits/` is a historical record from earlier waves. Its
 last entry is from July 2026 and roughly 860 calculators ago. Do not add to it.
 
+**Also not a step:** the five icon files at the repo root — `logo.png`,
+`favicon.ico`, `favicon-16x16.png`, `favicon-32x32.png`, `apple-touch-icon.png`.
+They are committed artifacts, and `npm run build` copies them rather than
+regenerating them. Change `logo.png` and run `npm run favicons` to rebuild the
+set deliberately; CI fails if a build rewrites any of them
+(`docs/spec-v990.md`).
+
 ## The gates, and what each is for
 
 `npm run release:check` runs the same chain CI does. When one fails it names

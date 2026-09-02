@@ -52,6 +52,13 @@ jobs:
         run: npm run test:a11y
       - name: Static build
         run: npm run build
+      - name: The build must not rewrite the committed icons
+        # spec-v990: `npm run build` used to regenerate the five icon files into
+        # the repo root, with bytes that depended on whether `sharp` happened to
+        # be in the dependency tree. Every one of them differed from what was
+        # committed. They are checked-in artifacts now; this fails if anything
+        # puts a generator back into the build path.
+        run: git diff --exit-code -- favicon.ico favicon-16x16.png favicon-32x32.png apple-touch-icon.png logo.png
 
   # spec-v183: the optional stdio MCP surface. Independent of the site jobs.
   mcp:
