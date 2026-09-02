@@ -82,6 +82,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   verified on its own, and a scheme that grouped them together would silently
   drop one. See `docs/spec-v983.md`.
 
+### Fixed
+
+- **The weekly dataset refresh was shipping unrelated search-index files, which
+  made it go stale before anyone could merge it.** The workflow rebuilt the
+  search index on the grounds that a data refresh can change it — it cannot;
+  the index is built from the calculator catalog, not from the bundled datasets,
+  as a rebuild-after-editing-a-dataset now confirms byte for byte. What it
+  actually picked up was catalog work that had landed in the meantime, so every
+  weekly pull request carried a snapshot of something unrelated and expired the
+  next time anyone touched a calculator. It no longer carries it. See
+  `docs/spec-v987.md`.
+
 ### Added
 
 - **The promise that calculators keep working offline is now tested.** Two

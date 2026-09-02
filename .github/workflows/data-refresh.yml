@@ -32,9 +32,20 @@ jobs:
       - name: Verify integrity
         run: node scripts/verify-integrity.mjs
 
-      # The search corpus is derived from data/, so a refresh can change its
-      # bytes. Rebuild it here or the committed manifest hash drifts from
-      # corpus.json and the unit job fails on main after the PR merges.
+      # spec-v987: rebuilt so THIS job's own lint and determinism checks pass on
+      # the branch -- and deliberately kept out of the pull request below.
+      #
+      # The comment here used to say the corpus is derived from data/ and that a
+      # refresh can change its bytes. It is not, and it cannot:
+      # build-search-corpus.mjs reads app.js, lib/meta.js, mcp/catalog.js and
+      # data/tool-copy/, all of them catalog, none of them fetched weekly.
+      # Editing a dataset and rebuilding leaves corpus.json byte-identical.
+      #
+      # What the rebuild actually picks up is CATALOG drift that landed on main
+      # since the corpus was last committed -- and shipping that inside a DATA
+      # pull request is what makes the PR go stale. #13 sat open across a day of
+      # catalog work and could no longer merge: its dataset content was
+      # unchanged, and its two corpus byte counts were four days old.
       - name: Rebuild search corpus
         run: node scripts/build-search-corpus.mjs
 
@@ -51,8 +62,10 @@ jobs:
           npm run test:unit
           npm run test:a11y
 
+      # ':!data/search-corpus' -- see the rebuild step. The corpus belongs to
+      # whoever changed the catalog; a data refresh must not carry it.
       - name: Package reviewed changes
-        run: git diff --binary -- data scripts/expected-hashes.json > data-refresh.patch
+        run: git diff --binary -- data scripts/expected-hashes.json ':!data/search-corpus' > data-refresh.patch
 
       - name: Upload reviewed changes
         uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5
@@ -89,4 +102,5 @@ jobs:
           body-path: .data-refresh/data-refresh-summary.md
           add-paths: |
             data/**
+            :!data/search-corpus/**
             scripts/expected-hashes.json
