@@ -73,6 +73,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Two blood-loss tools credited one paper with two different tables.** Both
+  cite Gross 1983 for the maximum-allowable-blood-loss formula — correctly — and
+  both also credited it with the per-kilogram blood-volume factors, which are not
+  in that paper. It takes the blood volume as an input. The two tables disagree:
+  a 3 kg term neonate is 90 mL/kg on one tool and 85 on the other, so 270 mL of
+  estimated blood volume against 255. No source that publishes the bands has been
+  located, and under the project's own rule a disagreement between sources is a
+  reason not to pick a side — so the numbers are unchanged and the divergence is
+  now stated instead of hidden: Gross is credited with the formula only, each
+  tool says the factor is a conventional reference value that differs between
+  references, and the two tools link to each other. See `docs/spec-v978.md`.
+
 - **A related-tools test froze a derived ranking and went red for a change that
   did nothing to it.** `abg` offered the same four neighbours it always had,
   in a different order, because retiring four duplicate tiles reweighted the
