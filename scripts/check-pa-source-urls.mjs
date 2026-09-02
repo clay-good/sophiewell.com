@@ -118,7 +118,14 @@ async function mapLimit(items, limit, fn) {
 async function main() {
   const ledger = JSON.parse(readFileSync(LEDGER, 'utf8'));
   const acked = new Set((ledger.acknowledgments || []).map((a) => a.id));
-  const sources = (ledger.sources || []).map((s) => ({ id: s.id, label: s.label, url: s.url }));
+  // spec-v981: alsoCited is the rest of what a reader can click. A rule's
+  // citation carries its own URL, those are registered on their source's row,
+  // and a link check that fetched only `url` would leave seven of them
+  // unchecked -- including two Aetna Clinical Policy Bulletins.
+  const sources = (ledger.sources || []).flatMap((s) => [
+    { id: s.id, label: s.label, url: s.url },
+    ...(s.alsoCited || []).map((u, i) => ({ id: `${s.id}[alsoCited ${i + 1}]`, label: s.label, url: u })),
+  ]);
 
   const results = (await mapLimit(sources, CONCURRENCY, probe)).map((r) => ({
     ...r,

@@ -73,6 +73,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **The source links a biller actually clicks were still dead.** Each source URL
+  lives twice: once in the freshness ledger, and once inside every rule's own
+  citation — and the citation is what prints in the report. The previous fix
+  reached the ledger only, so **133 rule citations kept pointing at pages already
+  known to be gone**, and it was invisible from the ledger because a ledger row
+  names two rules while a payer has about twenty. All 133 now point at the
+  corrected page, and a new check in `npm run lint` requires every URL a rule
+  cites to be one the ledger carries — so a link can no longer be fixed in one
+  place only, and the monthly check now covers every URL a reader can click (91,
+  up from 84; the seven it had never seen were all alive). See
+  `docs/spec-v981.md`.
+
 - **The source-link checker can no longer be told a page exists when it doesn't.**
   A site is free to serve its "page not found" screen with a success code, and a
   checker that reads only the status code would call that fine forever. It now

@@ -886,7 +886,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Anthem prior authorization: supporting medical records / clinical documentation attached",
-      "citation": "Anthem requires the clinical information that supports medical necessity to be submitted with the prior-authorization request; a request with no clinical document attached cannot be reviewed on the merits. <https://www.anthem.com/provider/prior-authorization/>",
+      "citation": "Anthem requires the clinical information that supports medical necessity to be submitted with the prior-authorization request; a request with no clinical document attached cannot be reviewed on the merits. <https://www.anthem.com/provider/individual-commercial/prior-authorization>",
       "evidence": "Not an Anthem packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -896,7 +896,7 @@
       "severity": "info",
       "status": "pass",
       "description": "Anthem prior authorization: submission channel (Availity / Interactive Care Reviewer / phone on member ID card) indicated",
-      "citation": "Anthem directs providers to submit prior-authorization requests through the Availity Essentials portal's Interactive Care Reviewer (ICR), by 278 EDI transaction, or by phone using the number on the member ID card. Informational: a cover sheet that names the channel speeds routing. <https://www.anthem.com/provider/prior-authorization/>",
+      "citation": "Anthem directs providers to submit prior-authorization requests through the Availity Essentials portal's Interactive Care Reviewer (ICR), by 278 EDI transaction, or by phone using the number on the member ID card. Informational: a cover sheet that names the channel speeds routing. <https://www.anthem.com/provider/individual-commercial/prior-authorization>",
       "evidence": "Not an Anthem packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -906,7 +906,7 @@
       "severity": "info",
       "status": "pass",
       "description": "Anthem prior authorization: requested service is on Anthem's prior-authorization requirement list",
-      "citation": "Anthem prior authorization applies only to services on its published prior-authorization requirement lists; requesting authorization for a non-listed service is unnecessary. ships no bundled list, so the rule is vacuously satisfied with a pointer to the list (it mirrors core R-PA-053 and the Aetna / UHC -004 rules; a later wave bundles the list and flips this to a real membership test). <https://www.anthem.com/provider/prior-authorization/>",
+      "citation": "Anthem prior authorization applies only to services on its published prior-authorization requirement lists; requesting authorization for a non-listed service is unnecessary. ships no bundled list, so the rule is vacuously satisfied with a pointer to the list (it mirrors core R-PA-053 and the Aetna / UHC -004 rules; a later wave bundles the list and flips this to a real membership test). <https://www.anthem.com/provider/individual-commercial/prior-authorization>",
       "evidence": "Not an Anthem packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -916,7 +916,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Anthem prior authorization: authorization is referenced for a service that requires it before the service date",
-      "citation": "Anthem requires prior authorization to be obtained before a service on its requirement list is rendered; a packet for an authorization-required service should show the authorization / reference number rather than relying on post-service review. <https://www.anthem.com/provider/prior-authorization/>",
+      "citation": "Anthem requires prior authorization to be obtained before a service on its requirement list is rendered; a packet for an authorization-required service should show the authorization / reference number rather than relying on post-service review. <https://www.anthem.com/provider/individual-commercial/prior-authorization>",
       "evidence": "Not an Anthem packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -926,7 +926,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Anthem inpatient prior authorization: admission notification + concurrent / continued-stay clinical review documentation present",
-      "citation": "Anthem requires admission notification and conducts concurrent (continued-stay) review for inpatient admissions, collecting the clinical update and discharge plan; an inpatient request should carry that documentation. <https://www.anthem.com/provider/prior-authorization/>",
+      "citation": "Anthem requires admission notification and conducts concurrent (continued-stay) review for inpatient admissions, collecting the clinical update and discharge plan; an inpatient request should carry that documentation. <https://www.anthem.com/provider/individual-commercial/prior-authorization>",
       "evidence": "Not an Anthem packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -936,7 +936,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Anthem advanced-imaging review: outpatient MRI / CT / PET carries the clinical indication for the Carelon (AIM) imaging program",
-      "citation": "Anthem delegates outpatient advanced-imaging (MRI / CT / PET / nuclear cardiology) prior authorization to Carelon Medical Benefits Management (formerly AIM Specialty Health); the request should carry the clinical indication that supports the study. <https://www.anthem.com/provider/prior-authorization/>",
+      "citation": "Anthem delegates outpatient advanced-imaging (MRI / CT / PET / nuclear cardiology) prior authorization to Carelon Medical Benefits Management (formerly AIM Specialty Health); the request should carry the clinical indication that supports the study. <https://www.anthem.com/provider/individual-commercial/prior-authorization>",
       "evidence": "Not an Anthem packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -946,7 +946,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Anthem expedited / urgent prior authorization: clinical urgency justification present",
-      "citation": "Anthem processes an expedited prior-authorization review when a standard timeframe could seriously jeopardize the member's life, health, or ability to regain maximum function. A request that asks for expedited handling should state that clinical urgency. <https://www.anthem.com/provider/prior-authorization/>",
+      "citation": "Anthem processes an expedited prior-authorization review when a standard timeframe could seriously jeopardize the member's life, health, or ability to regain maximum function. A request that asks for expedited handling should state that clinical urgency. <https://www.anthem.com/provider/individual-commercial/prior-authorization>",
       "evidence": "Not an Anthem packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -966,7 +966,7 @@
       "severity": "info",
       "status": "pass",
       "description": "Anthem prior authorization: NDC documented for a physician-administered (J-code) drug request",
-      "citation": "Anthem / CarelonRx review of physician-administered (buy-and-bill) drugs maps the request to a specific product and dose via the National Drug Code in addition to the HCPCS J-code. Informational: a J-code request without an NDC routes more slowly. <https://www.anthem.com/provider/prior-authorization/>",
+      "citation": "Anthem / CarelonRx review of physician-administered (buy-and-bill) drugs maps the request to a specific product and dose via the National Drug Code in addition to the HCPCS J-code. Informational: a J-code request without an NDC routes more slowly. <https://www.anthem.com/provider/individual-commercial/prior-authorization>",
       "evidence": "Not an Anthem packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -1006,7 +1006,7 @@
       "severity": "info",
       "status": "pass",
       "description": "Anthem retrospective / retroactive request: a retro-review justification is documented",
-      "citation": "Anthem considers a retrospective review only when the service was already rendered for a documented reason (e.g. emergent care, member eligibility not known at the time). A retro request should state that reason. Informational. <https://www.anthem.com/provider/prior-authorization/>",
+      "citation": "Anthem considers a retrospective review only when the service was already rendered for a documented reason (e.g. emergent care, member eligibility not known at the time). A retro request should state that reason. Informational. <https://www.anthem.com/provider/individual-commercial/prior-authorization>",
       "evidence": "Not an Anthem packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -1016,7 +1016,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Anthem DME / home-health prior authorization: a signed, dated written order / plan of care accompanies the request",
-      "citation": "Anthem prior authorization for durable medical equipment and home-health services requires a written order / plan of care, signed and dated by the ordering provider, before the item / service is dispensed. <https://www.anthem.com/provider/prior-authorization/>",
+      "citation": "Anthem prior authorization for durable medical equipment and home-health services requires a written order / plan of care, signed and dated by the ordering provider, before the item / service is dispensed. <https://www.anthem.com/provider/individual-commercial/prior-authorization>",
       "evidence": "Not an Anthem packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -1036,7 +1036,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Anthem transplant prior authorization: routed through the Anthem transplant network / Blue Distinction Centers with a transplant-center evaluation",
-      "citation": "Anthem directs solid-organ and hematopoietic stem-cell transplants through its transplant network / Blue Distinction Centers for Transplants; a transplant prior authorization should reference that routing and carry the transplant-center evaluation. <https://www.anthem.com/provider/prior-authorization/>",
+      "citation": "Anthem directs solid-organ and hematopoietic stem-cell transplants through its transplant network / Blue Distinction Centers for Transplants; a transplant prior authorization should reference that routing and carry the transplant-center evaluation. <https://www.anthem.com/provider/individual-commercial/prior-authorization>",
       "evidence": "Not an Anthem packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -1056,7 +1056,7 @@
       "severity": "info",
       "status": "pass",
       "description": "Anthem reconsideration / appeal: references the original determination and adds new clinical information",
-      "citation": "When a prior authorization is resubmitted as a reconsideration or appeal, Anthem asks the provider to reference the original determination and supply additional clinical information that addresses the denial reason. Informational. <https://www.anthem.com/provider/prior-authorization/>",
+      "citation": "When a prior authorization is resubmitted as a reconsideration or appeal, Anthem asks the provider to reference the original determination and supply additional clinical information that addresses the denial reason. Informational. <https://www.anthem.com/provider/individual-commercial/prior-authorization>",
       "evidence": "Not an Anthem packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -1066,7 +1066,7 @@
       "severity": "info",
       "status": "pass",
       "description": "Anthem out-of-network / network-gap request: a continuity-of-care or network-gap justification is documented",
-      "citation": "Anthem reviews out-of-network prior authorization for a documented network gap or continuity-of-care reason (no participating provider with the required expertise, an active course of treatment). An out-of-network request should state that justification. Informational. <https://www.anthem.com/provider/prior-authorization/>",
+      "citation": "Anthem reviews out-of-network prior authorization for a documented network gap or continuity-of-care reason (no participating provider with the required expertise, an active course of treatment). An out-of-network request should state that justification. Informational. <https://www.anthem.com/provider/individual-commercial/prior-authorization>",
       "evidence": "Not an Anthem packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -1476,7 +1476,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Blue Cross and Blue Shield of Louisiana prior authorization: coverage criteria (Blue Cross and Blue Shield of Louisiana Medical Policy / MCG) referenced",
-      "citation": "Blue Cross and Blue Shield of Louisiana adjudicates prior-authorization requests against its published Medical Policies (and MCG care guidelines); a request should cite the policy it is being judged against so the reviewer can map it to the coverage criteria. <https://www.bcbsla.com/providers>",
+      "citation": "Blue Cross and Blue Shield of Louisiana adjudicates prior-authorization requests against its published Medical Policies (and MCG care guidelines); a request should cite the policy it is being judged against so the reviewer can map it to the coverage criteria. <https://www.lablue.com/providers>",
       "evidence": "Not a Blue Cross and Blue Shield of Louisiana packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -1486,7 +1486,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Blue Cross and Blue Shield of Louisiana prior authorization: supporting medical records / clinical documentation attached",
-      "citation": "Blue Cross and Blue Shield of Louisiana requires the clinical information that supports medical necessity to be submitted with the prior-authorization request; a request with no clinical document attached cannot be reviewed on the merits. <https://www.bcbsla.com/providers>",
+      "citation": "Blue Cross and Blue Shield of Louisiana requires the clinical information that supports medical necessity to be submitted with the prior-authorization request; a request with no clinical document attached cannot be reviewed on the merits. <https://www.lablue.com/providers>",
       "evidence": "Not a Blue Cross and Blue Shield of Louisiana packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -1496,7 +1496,7 @@
       "severity": "info",
       "status": "pass",
       "description": "Blue Cross and Blue Shield of Louisiana prior authorization: submission channel (iLinkBlue / Availity / phone on member ID card) indicated",
-      "citation": "Blue Cross and Blue Shield of Louisiana directs providers to submit prior-authorization requests through the iLinkBlue provider portal or Availity, by 278 EDI transaction, or by phone using the number on the member ID card. Informational: a cover sheet that names the channel speeds routing. <https://www.bcbsla.com/providers>",
+      "citation": "Blue Cross and Blue Shield of Louisiana directs providers to submit prior-authorization requests through the iLinkBlue provider portal or Availity, by 278 EDI transaction, or by phone using the number on the member ID card. Informational: a cover sheet that names the channel speeds routing. <https://www.lablue.com/providers>",
       "evidence": "Not a Blue Cross and Blue Shield of Louisiana packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -1506,7 +1506,7 @@
       "severity": "info",
       "status": "pass",
       "description": "Blue Cross and Blue Shield of Louisiana prior authorization: requested service is on Blue Cross and Blue Shield of Louisiana's prior-authorization / notification requirement list",
-      "citation": "Blue Cross and Blue Shield of Louisiana prior authorization applies only to services on its published prior-authorization and notification lists; requesting authorization for a non-listed service is unnecessary. ships no bundled list, so the rule is vacuously satisfied with a pointer to the list (it mirrors core R-PA-053 and the Aetna / UHC / Anthem / Cigna / Humana / HCSC / Highmark / Florida Blue / BCBSM / Blue Shield of California / Independence Blue Cross / CareFirst / Blue Cross NC / Horizon / BCBS Tennessee / BCBS Massachusetts / BCBS Alabama / BCBS South Carolina / Arkansas BCBS / BCBS Kansas City / BCBS Minnesota -004 rules; a later wave bundles the list and flips this to a real membership test). <https://www.bcbsla.com/providers>",
+      "citation": "Blue Cross and Blue Shield of Louisiana prior authorization applies only to services on its published prior-authorization and notification lists; requesting authorization for a non-listed service is unnecessary. ships no bundled list, so the rule is vacuously satisfied with a pointer to the list (it mirrors core R-PA-053 and the Aetna / UHC / Anthem / Cigna / Humana / HCSC / Highmark / Florida Blue / BCBSM / Blue Shield of California / Independence Blue Cross / CareFirst / Blue Cross NC / Horizon / BCBS Tennessee / BCBS Massachusetts / BCBS Alabama / BCBS South Carolina / Arkansas BCBS / BCBS Kansas City / BCBS Minnesota -004 rules; a later wave bundles the list and flips this to a real membership test). <https://www.lablue.com/providers>",
       "evidence": "Not a Blue Cross and Blue Shield of Louisiana packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -1516,7 +1516,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Blue Cross and Blue Shield of Louisiana prior authorization: authorization is referenced for a service that requires it before the service date",
-      "citation": "Blue Cross and Blue Shield of Louisiana requires prior authorization to be obtained before a service on its requirement list is rendered; a packet for an authorization-required service should show the authorization / reference number rather than relying on post-service review. <https://www.bcbsla.com/providers>",
+      "citation": "Blue Cross and Blue Shield of Louisiana requires prior authorization to be obtained before a service on its requirement list is rendered; a packet for an authorization-required service should show the authorization / reference number rather than relying on post-service review. <https://www.lablue.com/providers>",
       "evidence": "Not a Blue Cross and Blue Shield of Louisiana packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -1526,7 +1526,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Blue Cross and Blue Shield of Louisiana inpatient prior authorization: admission notification + concurrent / continued-stay clinical review documentation present",
-      "citation": "Blue Cross and Blue Shield of Louisiana requires admission notification and conducts concurrent (continued-stay) review for inpatient admissions, collecting the clinical update and discharge plan; an inpatient request should carry that documentation. <https://www.bcbsla.com/providers>",
+      "citation": "Blue Cross and Blue Shield of Louisiana requires admission notification and conducts concurrent (continued-stay) review for inpatient admissions, collecting the clinical update and discharge plan; an inpatient request should carry that documentation. <https://www.lablue.com/providers>",
       "evidence": "Not a Blue Cross and Blue Shield of Louisiana packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -1536,7 +1536,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Blue Cross and Blue Shield of Louisiana advanced-imaging review: outpatient MRI / CT / PET carries the clinical indication for Blue Cross and Blue Shield of Louisiana's advanced-imaging utilization-management program",
-      "citation": "Blue Cross and Blue Shield of Louisiana delegates outpatient advanced-imaging (MRI / CT / PET / nuclear cardiology) prior authorization to its advanced-imaging utilization-management program; the request should carry the clinical indication that supports the study. <https://www.bcbsla.com/providers>",
+      "citation": "Blue Cross and Blue Shield of Louisiana delegates outpatient advanced-imaging (MRI / CT / PET / nuclear cardiology) prior authorization to its advanced-imaging utilization-management program; the request should carry the clinical indication that supports the study. <https://www.lablue.com/providers>",
       "evidence": "Not a Blue Cross and Blue Shield of Louisiana packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -1546,7 +1546,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Blue Cross and Blue Shield of Louisiana expedited / urgent prior authorization: clinical urgency justification present",
-      "citation": "Blue Cross and Blue Shield of Louisiana processes an expedited prior-authorization review when a standard timeframe could seriously jeopardize the member's life, health, or ability to regain maximum function. A request that asks for expedited handling should state that clinical urgency. <https://www.bcbsla.com/providers>",
+      "citation": "Blue Cross and Blue Shield of Louisiana processes an expedited prior-authorization review when a standard timeframe could seriously jeopardize the member's life, health, or ability to regain maximum function. A request that asks for expedited handling should state that clinical urgency. <https://www.lablue.com/providers>",
       "evidence": "Not a Blue Cross and Blue Shield of Louisiana packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -1556,7 +1556,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Blue Cross and Blue Shield of Louisiana site-of-care review: outpatient surgery / imaging addresses the hospital-outpatient vs. ASC / freestanding site-of-care requirement",
-      "citation": "Blue Cross and Blue Shield of Louisiana's site-of-care medical policy directs certain outpatient surgical and imaging services to an ambulatory surgical center or freestanding facility unless hospital-outpatient care is medically necessary; a hospital-outpatient request should document why that site is required. <https://www.bcbsla.com/providers>",
+      "citation": "Blue Cross and Blue Shield of Louisiana's site-of-care medical policy directs certain outpatient surgical and imaging services to an ambulatory surgical center or freestanding facility unless hospital-outpatient care is medically necessary; a hospital-outpatient request should document why that site is required. <https://www.lablue.com/providers>",
       "evidence": "Not a Blue Cross and Blue Shield of Louisiana packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -1566,7 +1566,7 @@
       "severity": "info",
       "status": "pass",
       "description": "Blue Cross and Blue Shield of Louisiana prior authorization: NDC documented for a physician-administered (J-code) drug request",
-      "citation": "Blue Cross and Blue Shield of Louisiana review of physician-administered (buy-and-bill) drugs maps the request to a specific product and dose via the National Drug Code in addition to the HCPCS J-code. Informational: a J-code request without an NDC routes more slowly. <https://www.bcbsla.com/providers>",
+      "citation": "Blue Cross and Blue Shield of Louisiana review of physician-administered (buy-and-bill) drugs maps the request to a specific product and dose via the National Drug Code in addition to the HCPCS J-code. Informational: a J-code request without an NDC routes more slowly. <https://www.lablue.com/providers>",
       "evidence": "Not a Blue Cross and Blue Shield of Louisiana packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -1576,7 +1576,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Blue Cross and Blue Shield of Louisiana drug prior authorization: step-therapy prior-trial documentation (drugs tried + therapeutic failure) present",
-      "citation": "For drugs subject to step therapy Blue Cross and Blue Shield of Louisiana pharmacy management requires documentation of the prerequisite drugs tried and the therapeutic failure / intolerance for each before the requested agent is approved. <https://www.bcbsla.com/providers>",
+      "citation": "For drugs subject to step therapy Blue Cross and Blue Shield of Louisiana pharmacy management requires documentation of the prerequisite drugs tried and the therapeutic failure / intolerance for each before the requested agent is approved. <https://www.lablue.com/providers>",
       "evidence": "Not a Blue Cross and Blue Shield of Louisiana packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -1586,7 +1586,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Blue Cross and Blue Shield of Louisiana genetic / molecular testing: the specific test and indication are documented for Blue Cross and Blue Shield of Louisiana's genetic / molecular lab-management program",
-      "citation": "Blue Cross and Blue Shield of Louisiana delegates genetic / molecular testing prior authorization to its lab-management program, which requires the specific test name (and, where applicable, the unique test identifier) plus the clinical indication. <https://www.bcbsla.com/providers>",
+      "citation": "Blue Cross and Blue Shield of Louisiana delegates genetic / molecular testing prior authorization to its lab-management program, which requires the specific test name (and, where applicable, the unique test identifier) plus the clinical indication. <https://www.lablue.com/providers>",
       "evidence": "Not a Blue Cross and Blue Shield of Louisiana packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -1596,7 +1596,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Blue Cross and Blue Shield of Louisiana specialty / oncology drug: the supporting diagnosis is documented for the applicable Medical Policy",
-      "citation": "Blue Cross and Blue Shield of Louisiana specialty and oncology drug coverage is governed by drug-specific Medical Policies that condition coverage on a supporting diagnosis (ICD-10) matching the policy's indication; the request should carry that diagnosis. <https://www.bcbsla.com/providers>",
+      "citation": "Blue Cross and Blue Shield of Louisiana specialty and oncology drug coverage is governed by drug-specific Medical Policies that condition coverage on a supporting diagnosis (ICD-10) matching the policy's indication; the request should carry that diagnosis. <https://www.lablue.com/providers>",
       "evidence": "Not a Blue Cross and Blue Shield of Louisiana packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -1606,7 +1606,7 @@
       "severity": "info",
       "status": "pass",
       "description": "Blue Cross and Blue Shield of Louisiana retrospective / retroactive request: a retro-review justification is documented",
-      "citation": "Blue Cross and Blue Shield of Louisiana considers a retrospective review only when the service was already rendered for a documented reason (e.g. emergent care, member eligibility not known at the time). A retro request should state that reason. Informational. <https://www.bcbsla.com/providers>",
+      "citation": "Blue Cross and Blue Shield of Louisiana considers a retrospective review only when the service was already rendered for a documented reason (e.g. emergent care, member eligibility not known at the time). A retro request should state that reason. Informational. <https://www.lablue.com/providers>",
       "evidence": "Not a Blue Cross and Blue Shield of Louisiana packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -1616,7 +1616,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Blue Cross and Blue Shield of Louisiana DME / home-health prior authorization: a signed, dated written order / plan of care accompanies the request",
-      "citation": "Blue Cross and Blue Shield of Louisiana prior authorization for durable medical equipment and home-health services requires a written order / plan of care, signed and dated by the ordering provider, before the item / service is dispensed. <https://www.bcbsla.com/providers>",
+      "citation": "Blue Cross and Blue Shield of Louisiana prior authorization for durable medical equipment and home-health services requires a written order / plan of care, signed and dated by the ordering provider, before the item / service is dispensed. <https://www.lablue.com/providers>",
       "evidence": "Not a Blue Cross and Blue Shield of Louisiana packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -1626,7 +1626,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Blue Cross and Blue Shield of Louisiana behavioral health: level-of-care criteria documentation present",
-      "citation": "Blue Cross and Blue Shield of Louisiana behavioral-health prior authorization reviews the requested level of care against published level-of-care guidelines (e.g. MCG behavioral-health care guidelines, ASAM criteria); the request should document the criteria that support the level requested. <https://www.bcbsla.com/providers>",
+      "citation": "Blue Cross and Blue Shield of Louisiana behavioral-health prior authorization reviews the requested level of care against published level-of-care guidelines (e.g. MCG behavioral-health care guidelines, ASAM criteria); the request should document the criteria that support the level requested. <https://www.lablue.com/providers>",
       "evidence": "Not a Blue Cross and Blue Shield of Louisiana packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -1636,7 +1636,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Blue Cross and Blue Shield of Louisiana transplant prior authorization: routed through the Blue Distinction Centers for Transplant with a transplant-center evaluation",
-      "citation": "Blue Cross and Blue Shield of Louisiana directs solid-organ and hematopoietic stem-cell transplants through the Blue Distinction Centers for Transplant network; a transplant prior authorization should reference that routing and carry the transplant-center evaluation. <https://www.bcbsla.com/providers>",
+      "citation": "Blue Cross and Blue Shield of Louisiana directs solid-organ and hematopoietic stem-cell transplants through the Blue Distinction Centers for Transplant network; a transplant prior authorization should reference that routing and carry the transplant-center evaluation. <https://www.lablue.com/providers>",
       "evidence": "Not a Blue Cross and Blue Shield of Louisiana packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -1646,7 +1646,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Blue Cross and Blue Shield of Louisiana experimental / investigational determination: peer-reviewed evidence or a documented policy exception is present",
-      "citation": "Blue Cross and Blue Shield of Louisiana excludes services its Medical Policy classifies as experimental, investigational, or unproven; a request for such a service must carry the peer-reviewed evidence or the documented exception the policy allows, or it will be denied. <https://www.bcbsla.com/providers>",
+      "citation": "Blue Cross and Blue Shield of Louisiana excludes services its Medical Policy classifies as experimental, investigational, or unproven; a request for such a service must carry the peer-reviewed evidence or the documented exception the policy allows, or it will be denied. <https://www.lablue.com/providers>",
       "evidence": "Not a Blue Cross and Blue Shield of Louisiana packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -1656,7 +1656,7 @@
       "severity": "info",
       "status": "pass",
       "description": "Blue Cross and Blue Shield of Louisiana reconsideration / appeal: references the original determination and adds new clinical information",
-      "citation": "When a prior authorization is resubmitted as a reconsideration or appeal, Blue Cross and Blue Shield of Louisiana asks the provider to reference the original determination and supply additional clinical information that addresses the denial reason. Informational. <https://www.bcbsla.com/providers>",
+      "citation": "When a prior authorization is resubmitted as a reconsideration or appeal, Blue Cross and Blue Shield of Louisiana asks the provider to reference the original determination and supply additional clinical information that addresses the denial reason. Informational. <https://www.lablue.com/providers>",
       "evidence": "Not a Blue Cross and Blue Shield of Louisiana packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -1666,7 +1666,7 @@
       "severity": "info",
       "status": "pass",
       "description": "Blue Cross and Blue Shield of Louisiana out-of-network / network-gap request: a continuity-of-care or network-gap justification is documented",
-      "citation": "Blue Cross and Blue Shield of Louisiana reviews out-of-network prior authorization for a documented network gap or continuity-of-care reason (no participating provider with the required expertise, an active course of treatment). An out-of-network request should state that justification. Informational. <https://www.bcbsla.com/providers>",
+      "citation": "Blue Cross and Blue Shield of Louisiana reviews out-of-network prior authorization for a documented network gap or continuity-of-care reason (no participating provider with the required expertise, an active course of treatment). An out-of-network request should state that justification. Informational. <https://www.lablue.com/providers>",
       "evidence": "Not a Blue Cross and Blue Shield of Louisiana packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -2476,7 +2476,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Blue Cross Blue Shield of South Carolina prior authorization: coverage criteria (Blue Cross Blue Shield of South Carolina Medical Policy / MCG) referenced",
-      "citation": "Blue Cross Blue Shield of South Carolina adjudicates prior-authorization requests against its published Medical Policies (and MCG care guidelines); a request should cite the policy it is being judged against so the reviewer can map it to the coverage criteria. <https://www.southcarolinablues.com/web/public/brands/sc/providers/>",
+      "citation": "Blue Cross Blue Shield of South Carolina adjudicates prior-authorization requests against its published Medical Policies (and MCG care guidelines); a request should cite the policy it is being judged against so the reviewer can map it to the coverage criteria. <https://www.southcarolinablues.com/en/home/providers.html>",
       "evidence": "Not a Blue Cross Blue Shield of South Carolina packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -2486,7 +2486,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Blue Cross Blue Shield of South Carolina prior authorization: supporting medical records / clinical documentation attached",
-      "citation": "Blue Cross Blue Shield of South Carolina requires the clinical information that supports medical necessity to be submitted with the prior-authorization request; a request with no clinical document attached cannot be reviewed on the merits. <https://www.southcarolinablues.com/web/public/brands/sc/providers/>",
+      "citation": "Blue Cross Blue Shield of South Carolina requires the clinical information that supports medical necessity to be submitted with the prior-authorization request; a request with no clinical document attached cannot be reviewed on the merits. <https://www.southcarolinablues.com/en/home/providers.html>",
       "evidence": "Not a Blue Cross Blue Shield of South Carolina packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -2496,7 +2496,7 @@
       "severity": "info",
       "status": "pass",
       "description": "Blue Cross Blue Shield of South Carolina prior authorization: submission channel (My Insurance Manager / Availity / phone on member ID card) indicated",
-      "citation": "Blue Cross Blue Shield of South Carolina directs providers to submit prior-authorization requests through the My Insurance Manager provider portal or Availity, by 278 EDI transaction, or by phone using the number on the member ID card. Informational: a cover sheet that names the channel speeds routing. <https://www.southcarolinablues.com/web/public/brands/sc/providers/>",
+      "citation": "Blue Cross Blue Shield of South Carolina directs providers to submit prior-authorization requests through the My Insurance Manager provider portal or Availity, by 278 EDI transaction, or by phone using the number on the member ID card. Informational: a cover sheet that names the channel speeds routing. <https://www.southcarolinablues.com/en/home/providers.html>",
       "evidence": "Not a Blue Cross Blue Shield of South Carolina packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -2506,7 +2506,7 @@
       "severity": "info",
       "status": "pass",
       "description": "Blue Cross Blue Shield of South Carolina prior authorization: requested service is on Blue Cross Blue Shield of South Carolina's prior-authorization / notification requirement list",
-      "citation": "Blue Cross Blue Shield of South Carolina prior authorization applies only to services on its published prior-authorization and notification lists; requesting authorization for a non-listed service is unnecessary. ships no bundled list, so the rule is vacuously satisfied with a pointer to the list (it mirrors core R-PA-053 and the Aetna / UHC / Anthem / Cigna / Humana / HCSC / Highmark / Florida Blue / BCBSM / Blue Shield of California / Independence Blue Cross / CareFirst / Blue Cross NC / Horizon / BCBS Tennessee / BCBS Massachusetts / BCBS Alabama -004 rules; a later wave bundles the list and flips this to a real membership test). <https://www.southcarolinablues.com/web/public/brands/sc/providers/>",
+      "citation": "Blue Cross Blue Shield of South Carolina prior authorization applies only to services on its published prior-authorization and notification lists; requesting authorization for a non-listed service is unnecessary. ships no bundled list, so the rule is vacuously satisfied with a pointer to the list (it mirrors core R-PA-053 and the Aetna / UHC / Anthem / Cigna / Humana / HCSC / Highmark / Florida Blue / BCBSM / Blue Shield of California / Independence Blue Cross / CareFirst / Blue Cross NC / Horizon / BCBS Tennessee / BCBS Massachusetts / BCBS Alabama -004 rules; a later wave bundles the list and flips this to a real membership test). <https://www.southcarolinablues.com/en/home/providers.html>",
       "evidence": "Not a Blue Cross Blue Shield of South Carolina packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -2516,7 +2516,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Blue Cross Blue Shield of South Carolina prior authorization: authorization is referenced for a service that requires it before the service date",
-      "citation": "Blue Cross Blue Shield of South Carolina requires prior authorization to be obtained before a service on its requirement list is rendered; a packet for an authorization-required service should show the authorization / reference number rather than relying on post-service review. <https://www.southcarolinablues.com/web/public/brands/sc/providers/>",
+      "citation": "Blue Cross Blue Shield of South Carolina requires prior authorization to be obtained before a service on its requirement list is rendered; a packet for an authorization-required service should show the authorization / reference number rather than relying on post-service review. <https://www.southcarolinablues.com/en/home/providers.html>",
       "evidence": "Not a Blue Cross Blue Shield of South Carolina packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -2526,7 +2526,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Blue Cross Blue Shield of South Carolina inpatient prior authorization: admission notification + concurrent / continued-stay clinical review documentation present",
-      "citation": "Blue Cross Blue Shield of South Carolina requires admission notification and conducts concurrent (continued-stay) review for inpatient admissions, collecting the clinical update and discharge plan; an inpatient request should carry that documentation. <https://www.southcarolinablues.com/web/public/brands/sc/providers/>",
+      "citation": "Blue Cross Blue Shield of South Carolina requires admission notification and conducts concurrent (continued-stay) review for inpatient admissions, collecting the clinical update and discharge plan; an inpatient request should carry that documentation. <https://www.southcarolinablues.com/en/home/providers.html>",
       "evidence": "Not a Blue Cross Blue Shield of South Carolina packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -2536,7 +2536,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Blue Cross Blue Shield of South Carolina advanced-imaging review: outpatient MRI / CT / PET carries the clinical indication for Blue Cross Blue Shield of South Carolina's advanced-imaging utilization-management program",
-      "citation": "Blue Cross Blue Shield of South Carolina delegates outpatient advanced-imaging (MRI / CT / PET / nuclear cardiology) prior authorization to its advanced-imaging utilization-management program; the request should carry the clinical indication that supports the study. <https://www.southcarolinablues.com/web/public/brands/sc/providers/>",
+      "citation": "Blue Cross Blue Shield of South Carolina delegates outpatient advanced-imaging (MRI / CT / PET / nuclear cardiology) prior authorization to its advanced-imaging utilization-management program; the request should carry the clinical indication that supports the study. <https://www.southcarolinablues.com/en/home/providers.html>",
       "evidence": "Not a Blue Cross Blue Shield of South Carolina packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -2546,7 +2546,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Blue Cross Blue Shield of South Carolina expedited / urgent prior authorization: clinical urgency justification present",
-      "citation": "Blue Cross Blue Shield of South Carolina processes an expedited prior-authorization review when a standard timeframe could seriously jeopardize the member's life, health, or ability to regain maximum function. A request that asks for expedited handling should state that clinical urgency. <https://www.southcarolinablues.com/web/public/brands/sc/providers/>",
+      "citation": "Blue Cross Blue Shield of South Carolina processes an expedited prior-authorization review when a standard timeframe could seriously jeopardize the member's life, health, or ability to regain maximum function. A request that asks for expedited handling should state that clinical urgency. <https://www.southcarolinablues.com/en/home/providers.html>",
       "evidence": "Not a Blue Cross Blue Shield of South Carolina packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -2556,7 +2556,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Blue Cross Blue Shield of South Carolina site-of-care review: outpatient surgery / imaging addresses the hospital-outpatient vs. ASC / freestanding site-of-care requirement",
-      "citation": "Blue Cross Blue Shield of South Carolina's site-of-care medical policy directs certain outpatient surgical and imaging services to an ambulatory surgical center or freestanding facility unless hospital-outpatient care is medically necessary; a hospital-outpatient request should document why that site is required. <https://www.southcarolinablues.com/web/public/brands/sc/providers/>",
+      "citation": "Blue Cross Blue Shield of South Carolina's site-of-care medical policy directs certain outpatient surgical and imaging services to an ambulatory surgical center or freestanding facility unless hospital-outpatient care is medically necessary; a hospital-outpatient request should document why that site is required. <https://www.southcarolinablues.com/en/home/providers.html>",
       "evidence": "Not a Blue Cross Blue Shield of South Carolina packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -2566,7 +2566,7 @@
       "severity": "info",
       "status": "pass",
       "description": "Blue Cross Blue Shield of South Carolina prior authorization: NDC documented for a physician-administered (J-code) drug request",
-      "citation": "Blue Cross Blue Shield of South Carolina review of physician-administered (buy-and-bill) drugs maps the request to a specific product and dose via the National Drug Code in addition to the HCPCS J-code. Informational: a J-code request without an NDC routes more slowly. <https://www.southcarolinablues.com/web/public/brands/sc/providers/>",
+      "citation": "Blue Cross Blue Shield of South Carolina review of physician-administered (buy-and-bill) drugs maps the request to a specific product and dose via the National Drug Code in addition to the HCPCS J-code. Informational: a J-code request without an NDC routes more slowly. <https://www.southcarolinablues.com/en/home/providers.html>",
       "evidence": "Not a Blue Cross Blue Shield of South Carolina packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -2576,7 +2576,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Blue Cross Blue Shield of South Carolina drug prior authorization: step-therapy prior-trial documentation (drugs tried + therapeutic failure) present",
-      "citation": "For drugs subject to step therapy Blue Cross Blue Shield of South Carolina pharmacy management requires documentation of the prerequisite drugs tried and the therapeutic failure / intolerance for each before the requested agent is approved. <https://www.southcarolinablues.com/web/public/brands/sc/providers/>",
+      "citation": "For drugs subject to step therapy Blue Cross Blue Shield of South Carolina pharmacy management requires documentation of the prerequisite drugs tried and the therapeutic failure / intolerance for each before the requested agent is approved. <https://www.southcarolinablues.com/en/home/providers.html>",
       "evidence": "Not a Blue Cross Blue Shield of South Carolina packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -2586,7 +2586,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Blue Cross Blue Shield of South Carolina genetic / molecular testing: the specific test and indication are documented for Blue Cross Blue Shield of South Carolina's genetic / molecular lab-management program",
-      "citation": "Blue Cross Blue Shield of South Carolina delegates genetic / molecular testing prior authorization to its lab-management program, which requires the specific test name (and, where applicable, the unique test identifier) plus the clinical indication. <https://www.southcarolinablues.com/web/public/brands/sc/providers/>",
+      "citation": "Blue Cross Blue Shield of South Carolina delegates genetic / molecular testing prior authorization to its lab-management program, which requires the specific test name (and, where applicable, the unique test identifier) plus the clinical indication. <https://www.southcarolinablues.com/en/home/providers.html>",
       "evidence": "Not a Blue Cross Blue Shield of South Carolina packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -2596,7 +2596,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Blue Cross Blue Shield of South Carolina specialty / oncology drug: the supporting diagnosis is documented for the applicable Medical Policy",
-      "citation": "Blue Cross Blue Shield of South Carolina specialty and oncology drug coverage is governed by drug-specific Medical Policies that condition coverage on a supporting diagnosis (ICD-10) matching the policy's indication; the request should carry that diagnosis. <https://www.southcarolinablues.com/web/public/brands/sc/providers/>",
+      "citation": "Blue Cross Blue Shield of South Carolina specialty and oncology drug coverage is governed by drug-specific Medical Policies that condition coverage on a supporting diagnosis (ICD-10) matching the policy's indication; the request should carry that diagnosis. <https://www.southcarolinablues.com/en/home/providers.html>",
       "evidence": "Not a Blue Cross Blue Shield of South Carolina packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -2606,7 +2606,7 @@
       "severity": "info",
       "status": "pass",
       "description": "Blue Cross Blue Shield of South Carolina retrospective / retroactive request: a retro-review justification is documented",
-      "citation": "Blue Cross Blue Shield of South Carolina considers a retrospective review only when the service was already rendered for a documented reason (e.g. emergent care, member eligibility not known at the time). A retro request should state that reason. Informational. <https://www.southcarolinablues.com/web/public/brands/sc/providers/>",
+      "citation": "Blue Cross Blue Shield of South Carolina considers a retrospective review only when the service was already rendered for a documented reason (e.g. emergent care, member eligibility not known at the time). A retro request should state that reason. Informational. <https://www.southcarolinablues.com/en/home/providers.html>",
       "evidence": "Not a Blue Cross Blue Shield of South Carolina packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -2616,7 +2616,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Blue Cross Blue Shield of South Carolina DME / home-health prior authorization: a signed, dated written order / plan of care accompanies the request",
-      "citation": "Blue Cross Blue Shield of South Carolina prior authorization for durable medical equipment and home-health services requires a written order / plan of care, signed and dated by the ordering provider, before the item / service is dispensed. <https://www.southcarolinablues.com/web/public/brands/sc/providers/>",
+      "citation": "Blue Cross Blue Shield of South Carolina prior authorization for durable medical equipment and home-health services requires a written order / plan of care, signed and dated by the ordering provider, before the item / service is dispensed. <https://www.southcarolinablues.com/en/home/providers.html>",
       "evidence": "Not a Blue Cross Blue Shield of South Carolina packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -2626,7 +2626,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Blue Cross Blue Shield of South Carolina behavioral health: level-of-care criteria documentation present",
-      "citation": "Blue Cross Blue Shield of South Carolina behavioral-health prior authorization reviews the requested level of care against published level-of-care guidelines (e.g. MCG behavioral-health care guidelines, ASAM criteria); the request should document the criteria that support the level requested. <https://www.southcarolinablues.com/web/public/brands/sc/providers/>",
+      "citation": "Blue Cross Blue Shield of South Carolina behavioral-health prior authorization reviews the requested level of care against published level-of-care guidelines (e.g. MCG behavioral-health care guidelines, ASAM criteria); the request should document the criteria that support the level requested. <https://www.southcarolinablues.com/en/home/providers.html>",
       "evidence": "Not a Blue Cross Blue Shield of South Carolina packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -2636,7 +2636,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Blue Cross Blue Shield of South Carolina transplant prior authorization: routed through the Blue Distinction Centers for Transplant with a transplant-center evaluation",
-      "citation": "Blue Cross Blue Shield of South Carolina directs solid-organ and hematopoietic stem-cell transplants through the Blue Distinction Centers for Transplant network; a transplant prior authorization should reference that routing and carry the transplant-center evaluation. <https://www.southcarolinablues.com/web/public/brands/sc/providers/>",
+      "citation": "Blue Cross Blue Shield of South Carolina directs solid-organ and hematopoietic stem-cell transplants through the Blue Distinction Centers for Transplant network; a transplant prior authorization should reference that routing and carry the transplant-center evaluation. <https://www.southcarolinablues.com/en/home/providers.html>",
       "evidence": "Not a Blue Cross Blue Shield of South Carolina packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -2646,7 +2646,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Blue Cross Blue Shield of South Carolina experimental / investigational determination: peer-reviewed evidence or a documented policy exception is present",
-      "citation": "Blue Cross Blue Shield of South Carolina excludes services its Medical Policy classifies as experimental, investigational, or unproven; a request for such a service must carry the peer-reviewed evidence or the documented exception the policy allows, or it will be denied. <https://www.southcarolinablues.com/web/public/brands/sc/providers/>",
+      "citation": "Blue Cross Blue Shield of South Carolina excludes services its Medical Policy classifies as experimental, investigational, or unproven; a request for such a service must carry the peer-reviewed evidence or the documented exception the policy allows, or it will be denied. <https://www.southcarolinablues.com/en/home/providers.html>",
       "evidence": "Not a Blue Cross Blue Shield of South Carolina packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -2656,7 +2656,7 @@
       "severity": "info",
       "status": "pass",
       "description": "Blue Cross Blue Shield of South Carolina reconsideration / appeal: references the original determination and adds new clinical information",
-      "citation": "When a prior authorization is resubmitted as a reconsideration or appeal, Blue Cross Blue Shield of South Carolina asks the provider to reference the original determination and supply additional clinical information that addresses the denial reason. Informational. <https://www.southcarolinablues.com/web/public/brands/sc/providers/>",
+      "citation": "When a prior authorization is resubmitted as a reconsideration or appeal, Blue Cross Blue Shield of South Carolina asks the provider to reference the original determination and supply additional clinical information that addresses the denial reason. Informational. <https://www.southcarolinablues.com/en/home/providers.html>",
       "evidence": "Not a Blue Cross Blue Shield of South Carolina packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -2666,7 +2666,7 @@
       "severity": "info",
       "status": "pass",
       "description": "Blue Cross Blue Shield of South Carolina out-of-network / network-gap request: a continuity-of-care or network-gap justification is documented",
-      "citation": "Blue Cross Blue Shield of South Carolina reviews out-of-network prior authorization for a documented network gap or continuity-of-care reason (no participating provider with the required expertise, an active course of treatment). An out-of-network request should state that justification. Informational. <https://www.southcarolinablues.com/web/public/brands/sc/providers/>",
+      "citation": "Blue Cross Blue Shield of South Carolina reviews out-of-network prior authorization for a documented network gap or continuity-of-care reason (no participating provider with the required expertise, an active course of treatment). An out-of-network request should state that justification. Informational. <https://www.southcarolinablues.com/en/home/providers.html>",
       "evidence": "Not a Blue Cross Blue Shield of South Carolina packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -3526,7 +3526,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Cigna prior authorization: coverage criteria (Cigna Medical Coverage Policy / MCG) referenced",
-      "citation": "Cigna adjudicates prior-authorization requests against its published Medical Coverage Policies (and MCG care guidelines); a request should cite the policy it is being judged against so the reviewer can map it to the coverage criteria. <https://www.cigna.com/health-care-providers/coverage-and-claims/prior-authorization>",
+      "citation": "Cigna adjudicates prior-authorization requests against its published Medical Coverage Policies (and MCG care guidelines); a request should cite the policy it is being judged against so the reviewer can map it to the coverage criteria. <https://www.cigna.com/health-care-providers/coverage-and-claims/precertification>",
       "evidence": "Not a Cigna packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -3536,7 +3536,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Cigna prior authorization: supporting medical records / clinical documentation attached",
-      "citation": "Cigna requires the clinical information that supports medical necessity to be submitted with the prior-authorization request; a request with no clinical document attached cannot be reviewed on the merits. <https://www.cigna.com/health-care-providers/coverage-and-claims/prior-authorization>",
+      "citation": "Cigna requires the clinical information that supports medical necessity to be submitted with the prior-authorization request; a request with no clinical document attached cannot be reviewed on the merits. <https://www.cigna.com/health-care-providers/coverage-and-claims/precertification>",
       "evidence": "Not a Cigna packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -3546,7 +3546,7 @@
       "severity": "info",
       "status": "pass",
       "description": "Cigna prior authorization: submission channel (CignaforHCP provider portal / Availity / phone on member ID card) indicated",
-      "citation": "Cigna directs providers to submit prior-authorization requests through the CignaforHCP provider portal, the Availity Essentials portal, by 278 EDI transaction, or by phone using the number on the member ID card. Informational: a cover sheet that names the channel speeds routing. <https://www.cigna.com/health-care-providers/coverage-and-claims/prior-authorization>",
+      "citation": "Cigna directs providers to submit prior-authorization requests through the CignaforHCP provider portal, the Availity Essentials portal, by 278 EDI transaction, or by phone using the number on the member ID card. Informational: a cover sheet that names the channel speeds routing. <https://www.cigna.com/health-care-providers/coverage-and-claims/precertification>",
       "evidence": "Not a Cigna packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -3556,7 +3556,7 @@
       "severity": "info",
       "status": "pass",
       "description": "Cigna prior authorization: requested service is on Cigna's precertification / prior-authorization requirement list",
-      "citation": "Cigna precertification applies only to services on its published prior-authorization requirement lists; requesting authorization for a non-listed service is unnecessary. ships no bundled list, so the rule is vacuously satisfied with a pointer to the list (it mirrors core R-PA-053 and the Aetna / UHC / Anthem -004 rules; a later wave bundles the list and flips this to a real membership test). <https://www.cigna.com/health-care-providers/coverage-and-claims/prior-authorization>",
+      "citation": "Cigna precertification applies only to services on its published prior-authorization requirement lists; requesting authorization for a non-listed service is unnecessary. ships no bundled list, so the rule is vacuously satisfied with a pointer to the list (it mirrors core R-PA-053 and the Aetna / UHC / Anthem -004 rules; a later wave bundles the list and flips this to a real membership test). <https://www.cigna.com/health-care-providers/coverage-and-claims/precertification>",
       "evidence": "Not a Cigna packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -3566,7 +3566,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Cigna prior authorization: authorization is referenced for a service that requires it before the service date",
-      "citation": "Cigna requires precertification to be obtained before a service on its requirement list is rendered; a packet for an authorization-required service should show the authorization / reference number rather than relying on post-service review. <https://www.cigna.com/health-care-providers/coverage-and-claims/prior-authorization>",
+      "citation": "Cigna requires precertification to be obtained before a service on its requirement list is rendered; a packet for an authorization-required service should show the authorization / reference number rather than relying on post-service review. <https://www.cigna.com/health-care-providers/coverage-and-claims/precertification>",
       "evidence": "Not a Cigna packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -3576,7 +3576,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Cigna inpatient prior authorization: admission notification + concurrent / continued-stay clinical review documentation present",
-      "citation": "Cigna requires admission notification and conducts concurrent (continued-stay) review for inpatient admissions, collecting the clinical update and discharge plan; an inpatient request should carry that documentation. <https://www.cigna.com/health-care-providers/coverage-and-claims/prior-authorization>",
+      "citation": "Cigna requires admission notification and conducts concurrent (continued-stay) review for inpatient admissions, collecting the clinical update and discharge plan; an inpatient request should carry that documentation. <https://www.cigna.com/health-care-providers/coverage-and-claims/precertification>",
       "evidence": "Not a Cigna packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -3586,7 +3586,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Cigna advanced-imaging review: outpatient MRI / CT / PET carries the clinical indication for the eviCore imaging program",
-      "citation": "Cigna delegates outpatient advanced-imaging (MRI / CT / PET / nuclear cardiology) prior authorization to eviCore by Evernorth; the request should carry the clinical indication that supports the study. <https://www.cigna.com/health-care-providers/coverage-and-claims/prior-authorization>",
+      "citation": "Cigna delegates outpatient advanced-imaging (MRI / CT / PET / nuclear cardiology) prior authorization to eviCore by Evernorth; the request should carry the clinical indication that supports the study. <https://www.cigna.com/health-care-providers/coverage-and-claims/precertification>",
       "evidence": "Not a Cigna packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -3596,7 +3596,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Cigna expedited / urgent prior authorization: clinical urgency justification present",
-      "citation": "Cigna processes an expedited prior-authorization review when a standard timeframe could seriously jeopardize the member's life, health, or ability to regain maximum function. A request that asks for expedited handling should state that clinical urgency. <https://www.cigna.com/health-care-providers/coverage-and-claims/prior-authorization>",
+      "citation": "Cigna processes an expedited prior-authorization review when a standard timeframe could seriously jeopardize the member's life, health, or ability to regain maximum function. A request that asks for expedited handling should state that clinical urgency. <https://www.cigna.com/health-care-providers/coverage-and-claims/precertification>",
       "evidence": "Not a Cigna packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -3606,7 +3606,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Cigna site-of-care review: outpatient surgery / imaging addresses the hospital-outpatient vs. ASC / freestanding site-of-care requirement",
-      "citation": "Cigna's site-of-care medical coverage policy directs certain outpatient surgical and imaging services to an ambulatory surgical center or freestanding facility unless hospital-outpatient care is medically necessary; a hospital-outpatient request should document why that site is required. <https://www.cigna.com/health-care-providers/coverage-and-claims/prior-authorization>",
+      "citation": "Cigna's site-of-care medical coverage policy directs certain outpatient surgical and imaging services to an ambulatory surgical center or freestanding facility unless hospital-outpatient care is medically necessary; a hospital-outpatient request should document why that site is required. <https://www.cigna.com/health-care-providers/coverage-and-claims/precertification>",
       "evidence": "Not a Cigna packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -3616,7 +3616,7 @@
       "severity": "info",
       "status": "pass",
       "description": "Cigna prior authorization: NDC documented for a physician-administered (J-code) drug request",
-      "citation": "Cigna / Accredo review of physician-administered (buy-and-bill) drugs maps the request to a specific product and dose via the National Drug Code in addition to the HCPCS J-code. Informational: a J-code request without an NDC routes more slowly. <https://www.cigna.com/health-care-providers/coverage-and-claims/prior-authorization>",
+      "citation": "Cigna / Accredo review of physician-administered (buy-and-bill) drugs maps the request to a specific product and dose via the National Drug Code in addition to the HCPCS J-code. Informational: a J-code request without an NDC routes more slowly. <https://www.cigna.com/health-care-providers/coverage-and-claims/precertification>",
       "evidence": "Not a Cigna packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -3626,7 +3626,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Cigna drug prior authorization: step-therapy prior-trial documentation (drugs tried + therapeutic failure) present",
-      "citation": "For drugs subject to step therapy Cigna / Express Scripts requires documentation of the prerequisite drugs tried and the therapeutic failure / intolerance for each before the requested agent is approved. <https://www.cigna.com/health-care-providers/coverage-and-claims/prior-authorization>",
+      "citation": "For drugs subject to step therapy Cigna / Express Scripts requires documentation of the prerequisite drugs tried and the therapeutic failure / intolerance for each before the requested agent is approved. <https://www.cigna.com/health-care-providers/coverage-and-claims/precertification>",
       "evidence": "Not a Cigna packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -3636,7 +3636,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Cigna genetic / molecular testing: the specific test and indication are documented for the eviCore lab-management program",
-      "citation": "Cigna delegates genetic / molecular testing prior authorization to eviCore by Evernorth, which requires the specific test name (and, where applicable, the unique test identifier) plus the clinical indication. <https://www.cigna.com/health-care-providers/coverage-and-claims/prior-authorization>",
+      "citation": "Cigna delegates genetic / molecular testing prior authorization to eviCore by Evernorth, which requires the specific test name (and, where applicable, the unique test identifier) plus the clinical indication. <https://www.cigna.com/health-care-providers/coverage-and-claims/precertification>",
       "evidence": "Not a Cigna packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -3646,7 +3646,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Cigna specialty / injectable drug: the supporting diagnosis is documented for the applicable Coverage Policy",
-      "citation": "Cigna specialty and injectable drug coverage is governed by drug-specific Coverage Policies (administered with Accredo / Express Scripts) that condition coverage on a supporting diagnosis (ICD-10) matching the policy's indication; the request should carry that diagnosis. <https://www.cigna.com/health-care-providers/coverage-and-claims/prior-authorization>",
+      "citation": "Cigna specialty and injectable drug coverage is governed by drug-specific Coverage Policies (administered with Accredo / Express Scripts) that condition coverage on a supporting diagnosis (ICD-10) matching the policy's indication; the request should carry that diagnosis. <https://www.cigna.com/health-care-providers/coverage-and-claims/precertification>",
       "evidence": "Not a Cigna packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -3656,7 +3656,7 @@
       "severity": "info",
       "status": "pass",
       "description": "Cigna retrospective / retroactive request: a retro-review justification is documented",
-      "citation": "Cigna considers a retrospective review only when the service was already rendered for a documented reason (e.g. emergent care, member eligibility not known at the time). A retro request should state that reason. Informational. <https://www.cigna.com/health-care-providers/coverage-and-claims/prior-authorization>",
+      "citation": "Cigna considers a retrospective review only when the service was already rendered for a documented reason (e.g. emergent care, member eligibility not known at the time). A retro request should state that reason. Informational. <https://www.cigna.com/health-care-providers/coverage-and-claims/precertification>",
       "evidence": "Not a Cigna packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -3666,7 +3666,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Cigna DME / home-health prior authorization: a signed, dated written order / plan of care accompanies the request",
-      "citation": "Cigna prior authorization for durable medical equipment and home-health services requires a written order / plan of care, signed and dated by the ordering provider, before the item / service is dispensed. <https://www.cigna.com/health-care-providers/coverage-and-claims/prior-authorization>",
+      "citation": "Cigna prior authorization for durable medical equipment and home-health services requires a written order / plan of care, signed and dated by the ordering provider, before the item / service is dispensed. <https://www.cigna.com/health-care-providers/coverage-and-claims/precertification>",
       "evidence": "Not a Cigna packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -3676,7 +3676,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Cigna behavioral health: level-of-care criteria documentation present",
-      "citation": "Cigna behavioral-health prior authorization (administered by Evernorth Behavioral Health) reviews the requested level of care against published level-of-care guidelines (e.g. MCG behavioral-health care guidelines, ASAM criteria); the request should document the criteria that support the level requested. <https://www.cigna.com/health-care-providers/coverage-and-claims/prior-authorization>",
+      "citation": "Cigna behavioral-health prior authorization (administered by Evernorth Behavioral Health) reviews the requested level of care against published level-of-care guidelines (e.g. MCG behavioral-health care guidelines, ASAM criteria); the request should document the criteria that support the level requested. <https://www.cigna.com/health-care-providers/coverage-and-claims/precertification>",
       "evidence": "Not a Cigna packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -3686,7 +3686,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Cigna transplant prior authorization: routed through the Cigna LifeSOURCE Transplant Network / Centers of Excellence with a transplant-center evaluation",
-      "citation": "Cigna directs solid-organ and hematopoietic stem-cell transplants through the Cigna LifeSOURCE Transplant Network / Centers of Excellence; a transplant prior authorization should reference that routing and carry the transplant-center evaluation. <https://www.cigna.com/health-care-providers/coverage-and-claims/prior-authorization>",
+      "citation": "Cigna directs solid-organ and hematopoietic stem-cell transplants through the Cigna LifeSOURCE Transplant Network / Centers of Excellence; a transplant prior authorization should reference that routing and carry the transplant-center evaluation. <https://www.cigna.com/health-care-providers/coverage-and-claims/precertification>",
       "evidence": "Not a Cigna packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -3696,7 +3696,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Cigna experimental / investigational determination: peer-reviewed evidence or a documented policy exception is present",
-      "citation": "Cigna excludes services its Medical Coverage Policy classifies as experimental, investigational, or unproven; a request for such a service must carry the peer-reviewed evidence or the documented exception the policy allows, or it will be denied. <https://www.cigna.com/health-care-providers/coverage-and-claims/prior-authorization>",
+      "citation": "Cigna excludes services its Medical Coverage Policy classifies as experimental, investigational, or unproven; a request for such a service must carry the peer-reviewed evidence or the documented exception the policy allows, or it will be denied. <https://www.cigna.com/health-care-providers/coverage-and-claims/precertification>",
       "evidence": "Not a Cigna packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -3706,7 +3706,7 @@
       "severity": "info",
       "status": "pass",
       "description": "Cigna reconsideration / appeal: references the original determination and adds new clinical information",
-      "citation": "When a prior authorization is resubmitted as a reconsideration or appeal, Cigna asks the provider to reference the original determination and supply additional clinical information that addresses the denial reason. Informational. <https://www.cigna.com/health-care-providers/coverage-and-claims/prior-authorization>",
+      "citation": "When a prior authorization is resubmitted as a reconsideration or appeal, Cigna asks the provider to reference the original determination and supply additional clinical information that addresses the denial reason. Informational. <https://www.cigna.com/health-care-providers/coverage-and-claims/precertification>",
       "evidence": "Not a Cigna packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -3716,7 +3716,7 @@
       "severity": "info",
       "status": "pass",
       "description": "Cigna out-of-network / network-gap request: a continuity-of-care or network-gap justification is documented",
-      "citation": "Cigna reviews out-of-network prior authorization for a documented network gap or continuity-of-care reason (no participating provider with the required expertise, an active course of treatment). An out-of-network request should state that justification. Informational. <https://www.cigna.com/health-care-providers/coverage-and-claims/prior-authorization>",
+      "citation": "Cigna reviews out-of-network prior authorization for a documented network gap or continuity-of-care reason (no participating provider with the required expertise, an active course of treatment). An out-of-network request should state that justification. Informational. <https://www.cigna.com/health-care-providers/coverage-and-claims/precertification>",
       "evidence": "Not a Cigna packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -5026,7 +5026,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Humana prior authorization: coverage criteria (Humana Medical Coverage Policy / MCG) referenced",
-      "citation": "Humana adjudicates prior-authorization requests against its published Medical Coverage Policies (and MCG care guidelines); a request should cite the policy it is being judged against so the reviewer can map it to the coverage criteria. <https://www.humana.com/provider/medical-resources/authorizations-referrals>",
+      "citation": "Humana adjudicates prior-authorization requests against its published Medical Coverage Policies (and MCG care guidelines); a request should cite the policy it is being judged against so the reviewer can map it to the coverage criteria. <https://provider.humana.com/coverage-claims/prior-authorizations>",
       "evidence": "Not a Humana packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -5036,7 +5036,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Humana prior authorization: supporting medical records / clinical documentation attached",
-      "citation": "Humana requires the clinical information that supports medical necessity to be submitted with the prior-authorization request; a request with no clinical document attached cannot be reviewed on the merits. <https://www.humana.com/provider/medical-resources/authorizations-referrals>",
+      "citation": "Humana requires the clinical information that supports medical necessity to be submitted with the prior-authorization request; a request with no clinical document attached cannot be reviewed on the merits. <https://provider.humana.com/coverage-claims/prior-authorizations>",
       "evidence": "Not a Humana packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -5046,7 +5046,7 @@
       "severity": "info",
       "status": "pass",
       "description": "Humana prior authorization: submission channel (Availity Essentials / phone on member ID card) indicated",
-      "citation": "Humana directs providers to submit prior-authorization requests through the Availity Essentials portal, by 278 EDI transaction, or by phone using the number on the member ID card. Informational: a cover sheet that names the channel speeds routing. <https://www.humana.com/provider/medical-resources/authorizations-referrals>",
+      "citation": "Humana directs providers to submit prior-authorization requests through the Availity Essentials portal, by 278 EDI transaction, or by phone using the number on the member ID card. Informational: a cover sheet that names the channel speeds routing. <https://provider.humana.com/coverage-claims/prior-authorizations>",
       "evidence": "Not a Humana packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -5056,7 +5056,7 @@
       "severity": "info",
       "status": "pass",
       "description": "Humana prior authorization: requested service is on Humana's preauthorization / notification requirement list",
-      "citation": "Humana preauthorization applies only to services on its published preauthorization and notification lists; requesting authorization for a non-listed service is unnecessary. ships no bundled list, so the rule is vacuously satisfied with a pointer to the list (it mirrors core R-PA-053 and the Aetna / UHC / Anthem / Cigna -004 rules; a later wave bundles the list and flips this to a real membership test). <https://www.humana.com/provider/medical-resources/authorizations-referrals>",
+      "citation": "Humana preauthorization applies only to services on its published preauthorization and notification lists; requesting authorization for a non-listed service is unnecessary. ships no bundled list, so the rule is vacuously satisfied with a pointer to the list (it mirrors core R-PA-053 and the Aetna / UHC / Anthem / Cigna -004 rules; a later wave bundles the list and flips this to a real membership test). <https://provider.humana.com/coverage-claims/prior-authorizations>",
       "evidence": "Not a Humana packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -5066,7 +5066,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Humana prior authorization: authorization is referenced for a service that requires it before the service date",
-      "citation": "Humana requires preauthorization to be obtained before a service on its requirement list is rendered; a packet for an authorization-required service should show the authorization / reference number rather than relying on post-service review. <https://www.humana.com/provider/medical-resources/authorizations-referrals>",
+      "citation": "Humana requires preauthorization to be obtained before a service on its requirement list is rendered; a packet for an authorization-required service should show the authorization / reference number rather than relying on post-service review. <https://provider.humana.com/coverage-claims/prior-authorizations>",
       "evidence": "Not a Humana packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -5076,7 +5076,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Humana inpatient prior authorization: admission notification + concurrent / continued-stay clinical review documentation present",
-      "citation": "Humana requires admission notification and conducts concurrent (continued-stay) review for inpatient admissions, collecting the clinical update and discharge plan; an inpatient request should carry that documentation. <https://www.humana.com/provider/medical-resources/authorizations-referrals>",
+      "citation": "Humana requires admission notification and conducts concurrent (continued-stay) review for inpatient admissions, collecting the clinical update and discharge plan; an inpatient request should carry that documentation. <https://provider.humana.com/coverage-claims/prior-authorizations>",
       "evidence": "Not a Humana packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -5086,7 +5086,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Humana advanced-imaging review: outpatient MRI / CT / PET carries the clinical indication for Humana's advanced-imaging utilization-management program",
-      "citation": "Humana delegates outpatient advanced-imaging (MRI / CT / PET / nuclear cardiology) prior authorization to its advanced-imaging utilization-management program; the request should carry the clinical indication that supports the study. <https://www.humana.com/provider/medical-resources/authorizations-referrals>",
+      "citation": "Humana delegates outpatient advanced-imaging (MRI / CT / PET / nuclear cardiology) prior authorization to its advanced-imaging utilization-management program; the request should carry the clinical indication that supports the study. <https://provider.humana.com/coverage-claims/prior-authorizations>",
       "evidence": "Not a Humana packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -5096,7 +5096,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Humana expedited / urgent prior authorization: clinical urgency justification present",
-      "citation": "Humana processes an expedited prior-authorization review when a standard timeframe could seriously jeopardize the member's life, health, or ability to regain maximum function. A request that asks for expedited handling should state that clinical urgency. <https://www.humana.com/provider/medical-resources/authorizations-referrals>",
+      "citation": "Humana processes an expedited prior-authorization review when a standard timeframe could seriously jeopardize the member's life, health, or ability to regain maximum function. A request that asks for expedited handling should state that clinical urgency. <https://provider.humana.com/coverage-claims/prior-authorizations>",
       "evidence": "Not a Humana packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -5106,7 +5106,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Humana site-of-care review: outpatient surgery / imaging addresses the hospital-outpatient vs. ASC / freestanding site-of-care requirement",
-      "citation": "Humana's site-of-care medical coverage policy directs certain outpatient surgical and imaging services to an ambulatory surgical center or freestanding facility unless hospital-outpatient care is medically necessary; a hospital-outpatient request should document why that site is required. <https://www.humana.com/provider/medical-resources/authorizations-referrals>",
+      "citation": "Humana's site-of-care medical coverage policy directs certain outpatient surgical and imaging services to an ambulatory surgical center or freestanding facility unless hospital-outpatient care is medically necessary; a hospital-outpatient request should document why that site is required. <https://provider.humana.com/coverage-claims/prior-authorizations>",
       "evidence": "Not a Humana packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -5116,7 +5116,7 @@
       "severity": "info",
       "status": "pass",
       "description": "Humana prior authorization: NDC documented for a physician-administered (J-code) drug request",
-      "citation": "Humana review of physician-administered (buy-and-bill) drugs maps the request to a specific product and dose via the National Drug Code in addition to the HCPCS J-code. Informational: a J-code request without an NDC routes more slowly. <https://www.humana.com/provider/medical-resources/authorizations-referrals>",
+      "citation": "Humana review of physician-administered (buy-and-bill) drugs maps the request to a specific product and dose via the National Drug Code in addition to the HCPCS J-code. Informational: a J-code request without an NDC routes more slowly. <https://provider.humana.com/coverage-claims/prior-authorizations>",
       "evidence": "Not a Humana packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -5126,7 +5126,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Humana drug prior authorization: step-therapy prior-trial documentation (drugs tried + therapeutic failure) present",
-      "citation": "For drugs subject to step therapy Humana / CenterWell Pharmacy requires documentation of the prerequisite drugs tried and the therapeutic failure / intolerance for each before the requested agent is approved. <https://www.humana.com/provider/medical-resources/authorizations-referrals>",
+      "citation": "For drugs subject to step therapy Humana / CenterWell Pharmacy requires documentation of the prerequisite drugs tried and the therapeutic failure / intolerance for each before the requested agent is approved. <https://provider.humana.com/coverage-claims/prior-authorizations>",
       "evidence": "Not a Humana packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -5136,7 +5136,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Humana genetic / molecular testing: the specific test and indication are documented for Humana's genetic / molecular lab-management program",
-      "citation": "Humana delegates genetic / molecular testing prior authorization to its lab-management program, which requires the specific test name (and, where applicable, the unique test identifier) plus the clinical indication. <https://www.humana.com/provider/medical-resources/authorizations-referrals>",
+      "citation": "Humana delegates genetic / molecular testing prior authorization to its lab-management program, which requires the specific test name (and, where applicable, the unique test identifier) plus the clinical indication. <https://provider.humana.com/coverage-claims/prior-authorizations>",
       "evidence": "Not a Humana packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -5146,7 +5146,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Humana specialty / oncology drug: the supporting diagnosis is documented for the applicable Coverage Policy (Evolent / New Century Health oncology)",
-      "citation": "Humana specialty and oncology drug coverage is governed by drug-specific Medical Coverage Policies (oncology administered with Evolent / New Century Health) that condition coverage on a supporting diagnosis (ICD-10) matching the policy's indication; the request should carry that diagnosis. <https://www.humana.com/provider/medical-resources/authorizations-referrals>",
+      "citation": "Humana specialty and oncology drug coverage is governed by drug-specific Medical Coverage Policies (oncology administered with Evolent / New Century Health) that condition coverage on a supporting diagnosis (ICD-10) matching the policy's indication; the request should carry that diagnosis. <https://provider.humana.com/coverage-claims/prior-authorizations>",
       "evidence": "Not a Humana packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -5156,7 +5156,7 @@
       "severity": "info",
       "status": "pass",
       "description": "Humana retrospective / retroactive request: a retro-review justification is documented",
-      "citation": "Humana considers a retrospective review only when the service was already rendered for a documented reason (e.g. emergent care, member eligibility not known at the time). A retro request should state that reason. Informational. <https://www.humana.com/provider/medical-resources/authorizations-referrals>",
+      "citation": "Humana considers a retrospective review only when the service was already rendered for a documented reason (e.g. emergent care, member eligibility not known at the time). A retro request should state that reason. Informational. <https://provider.humana.com/coverage-claims/prior-authorizations>",
       "evidence": "Not a Humana packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -5166,7 +5166,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Humana DME / home-health prior authorization: a signed, dated written order / plan of care accompanies the request",
-      "citation": "Humana prior authorization for durable medical equipment and home-health services requires a written order / plan of care, signed and dated by the ordering provider, before the item / service is dispensed. <https://www.humana.com/provider/medical-resources/authorizations-referrals>",
+      "citation": "Humana prior authorization for durable medical equipment and home-health services requires a written order / plan of care, signed and dated by the ordering provider, before the item / service is dispensed. <https://provider.humana.com/coverage-claims/prior-authorizations>",
       "evidence": "Not a Humana packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -5176,7 +5176,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Humana behavioral health: level-of-care criteria documentation present",
-      "citation": "Humana behavioral-health prior authorization (administered by Humana Behavioral Health) reviews the requested level of care against published level-of-care guidelines (e.g. MCG behavioral-health care guidelines, ASAM criteria); the request should document the criteria that support the level requested. <https://www.humana.com/provider/medical-resources/authorizations-referrals>",
+      "citation": "Humana behavioral-health prior authorization (administered by Humana Behavioral Health) reviews the requested level of care against published level-of-care guidelines (e.g. MCG behavioral-health care guidelines, ASAM criteria); the request should document the criteria that support the level requested. <https://provider.humana.com/coverage-claims/prior-authorizations>",
       "evidence": "Not a Humana packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -5186,7 +5186,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Humana transplant prior authorization: routed through the Humana National Transplant Network / Centers of Excellence with a transplant-center evaluation",
-      "citation": "Humana directs solid-organ and hematopoietic stem-cell transplants through the Humana National Transplant Network / Centers of Excellence; a transplant prior authorization should reference that routing and carry the transplant-center evaluation. <https://www.humana.com/provider/medical-resources/authorizations-referrals>",
+      "citation": "Humana directs solid-organ and hematopoietic stem-cell transplants through the Humana National Transplant Network / Centers of Excellence; a transplant prior authorization should reference that routing and carry the transplant-center evaluation. <https://provider.humana.com/coverage-claims/prior-authorizations>",
       "evidence": "Not a Humana packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -5196,7 +5196,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Humana experimental / investigational determination: peer-reviewed evidence or a documented policy exception is present",
-      "citation": "Humana excludes services its Medical Coverage Policy classifies as experimental, investigational, or unproven; a request for such a service must carry the peer-reviewed evidence or the documented exception the policy allows, or it will be denied. <https://www.humana.com/provider/medical-resources/authorizations-referrals>",
+      "citation": "Humana excludes services its Medical Coverage Policy classifies as experimental, investigational, or unproven; a request for such a service must carry the peer-reviewed evidence or the documented exception the policy allows, or it will be denied. <https://provider.humana.com/coverage-claims/prior-authorizations>",
       "evidence": "Not a Humana packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -5206,7 +5206,7 @@
       "severity": "info",
       "status": "pass",
       "description": "Humana reconsideration / appeal: references the original determination and adds new clinical information",
-      "citation": "When a prior authorization is resubmitted as a reconsideration or appeal, Humana asks the provider to reference the original determination and supply additional clinical information that addresses the denial reason. Informational. <https://www.humana.com/provider/medical-resources/authorizations-referrals>",
+      "citation": "When a prior authorization is resubmitted as a reconsideration or appeal, Humana asks the provider to reference the original determination and supply additional clinical information that addresses the denial reason. Informational. <https://provider.humana.com/coverage-claims/prior-authorizations>",
       "evidence": "Not a Humana packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -5216,7 +5216,7 @@
       "severity": "info",
       "status": "pass",
       "description": "Humana out-of-network / network-gap request: a continuity-of-care or network-gap justification is documented",
-      "citation": "Humana reviews out-of-network prior authorization for a documented network gap or continuity-of-care reason (no participating provider with the required expertise, an active course of treatment). An out-of-network request should state that justification. Informational. <https://www.humana.com/provider/medical-resources/authorizations-referrals>",
+      "citation": "Humana reviews out-of-network prior authorization for a documented network gap or continuity-of-care reason (no participating provider with the required expertise, an active course of treatment). An out-of-network request should state that justification. Informational. <https://provider.humana.com/coverage-claims/prior-authorizations>",
       "evidence": "Not a Humana packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -5226,7 +5226,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Independence Blue Cross prior authorization: coverage criteria (Independence Blue Cross Medical Policy / MCG) referenced",
-      "citation": "Independence Blue Cross adjudicates prior-authorization requests against its published Medical Policies (and MCG care guidelines); a request should cite the policy it is being judged against so the reviewer can map it to the coverage criteria. <https://www.ibx.com/resources/for-providers/authorizations>",
+      "citation": "Independence Blue Cross adjudicates prior-authorization requests against its published Medical Policies (and MCG care guidelines); a request should cite the policy it is being judged against so the reviewer can map it to the coverage criteria. <https://www.ibx.com/resources/for-providers/policies-and-guidelines>",
       "evidence": "Not a Independence Blue Cross packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -5236,7 +5236,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Independence Blue Cross prior authorization: supporting medical records / clinical documentation attached",
-      "citation": "Independence Blue Cross requires the clinical information that supports medical necessity to be submitted with the prior-authorization request; a request with no clinical document attached cannot be reviewed on the merits. <https://www.ibx.com/resources/for-providers/authorizations>",
+      "citation": "Independence Blue Cross requires the clinical information that supports medical necessity to be submitted with the prior-authorization request; a request with no clinical document attached cannot be reviewed on the merits. <https://www.ibx.com/resources/for-providers/policies-and-guidelines>",
       "evidence": "Not a Independence Blue Cross packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -5246,7 +5246,7 @@
       "severity": "info",
       "status": "pass",
       "description": "Independence Blue Cross prior authorization: submission channel (Availity Essentials / Provider Resource Center / phone on member ID card) indicated",
-      "citation": "Independence Blue Cross directs providers to submit prior-authorization requests through the Availity Essentials portal or the Provider Resource Center, by 278 EDI transaction, or by phone using the number on the member ID card. Informational: a cover sheet that names the channel speeds routing. <https://www.ibx.com/resources/for-providers/authorizations>",
+      "citation": "Independence Blue Cross directs providers to submit prior-authorization requests through the Availity Essentials portal or the Provider Resource Center, by 278 EDI transaction, or by phone using the number on the member ID card. Informational: a cover sheet that names the channel speeds routing. <https://www.ibx.com/resources/for-providers/policies-and-guidelines>",
       "evidence": "Not a Independence Blue Cross packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -5256,7 +5256,7 @@
       "severity": "info",
       "status": "pass",
       "description": "Independence Blue Cross prior authorization: requested service is on Independence Blue Cross's prior-authorization / notification requirement list",
-      "citation": "Independence Blue Cross prior authorization applies only to services on its published prior-authorization and notification lists; requesting authorization for a non-listed service is unnecessary. ships no bundled list, so the rule is vacuously satisfied with a pointer to the list (it mirrors core R-PA-053 and the Aetna / UHC / Anthem / Cigna / Humana / HCSC / Highmark / Florida Blue / BCBSM / Blue Shield of California -004 rules; a later wave bundles the list and flips this to a real membership test). <https://www.ibx.com/resources/for-providers/authorizations>",
+      "citation": "Independence Blue Cross prior authorization applies only to services on its published prior-authorization and notification lists; requesting authorization for a non-listed service is unnecessary. ships no bundled list, so the rule is vacuously satisfied with a pointer to the list (it mirrors core R-PA-053 and the Aetna / UHC / Anthem / Cigna / Humana / HCSC / Highmark / Florida Blue / BCBSM / Blue Shield of California -004 rules; a later wave bundles the list and flips this to a real membership test). <https://www.ibx.com/resources/for-providers/policies-and-guidelines>",
       "evidence": "Not a Independence Blue Cross packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -5266,7 +5266,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Independence Blue Cross prior authorization: authorization is referenced for a service that requires it before the service date",
-      "citation": "Independence Blue Cross requires prior authorization to be obtained before a service on its requirement list is rendered; a packet for an authorization-required service should show the authorization / reference number rather than relying on post-service review. <https://www.ibx.com/resources/for-providers/authorizations>",
+      "citation": "Independence Blue Cross requires prior authorization to be obtained before a service on its requirement list is rendered; a packet for an authorization-required service should show the authorization / reference number rather than relying on post-service review. <https://www.ibx.com/resources/for-providers/policies-and-guidelines>",
       "evidence": "Not a Independence Blue Cross packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -5276,7 +5276,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Independence Blue Cross inpatient prior authorization: admission notification + concurrent / continued-stay clinical review documentation present",
-      "citation": "Independence Blue Cross requires admission notification and conducts concurrent (continued-stay) review for inpatient admissions, collecting the clinical update and discharge plan; an inpatient request should carry that documentation. <https://www.ibx.com/resources/for-providers/authorizations>",
+      "citation": "Independence Blue Cross requires admission notification and conducts concurrent (continued-stay) review for inpatient admissions, collecting the clinical update and discharge plan; an inpatient request should carry that documentation. <https://www.ibx.com/resources/for-providers/policies-and-guidelines>",
       "evidence": "Not a Independence Blue Cross packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -5286,7 +5286,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Independence Blue Cross advanced-imaging review: outpatient MRI / CT / PET carries the clinical indication for Independence Blue Cross's advanced-imaging utilization-management program",
-      "citation": "Independence Blue Cross delegates outpatient advanced-imaging (MRI / CT / PET / nuclear cardiology) prior authorization to its advanced-imaging utilization-management program; the request should carry the clinical indication that supports the study. <https://www.ibx.com/resources/for-providers/authorizations>",
+      "citation": "Independence Blue Cross delegates outpatient advanced-imaging (MRI / CT / PET / nuclear cardiology) prior authorization to its advanced-imaging utilization-management program; the request should carry the clinical indication that supports the study. <https://www.ibx.com/resources/for-providers/policies-and-guidelines>",
       "evidence": "Not a Independence Blue Cross packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -5296,7 +5296,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Independence Blue Cross expedited / urgent prior authorization: clinical urgency justification present",
-      "citation": "Independence Blue Cross processes an expedited prior-authorization review when a standard timeframe could seriously jeopardize the member's life, health, or ability to regain maximum function. A request that asks for expedited handling should state that clinical urgency. <https://www.ibx.com/resources/for-providers/authorizations>",
+      "citation": "Independence Blue Cross processes an expedited prior-authorization review when a standard timeframe could seriously jeopardize the member's life, health, or ability to regain maximum function. A request that asks for expedited handling should state that clinical urgency. <https://www.ibx.com/resources/for-providers/policies-and-guidelines>",
       "evidence": "Not a Independence Blue Cross packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -5306,7 +5306,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Independence Blue Cross site-of-care review: outpatient surgery / imaging addresses the hospital-outpatient vs. ASC / freestanding site-of-care requirement",
-      "citation": "Independence Blue Cross's site-of-care medical policy directs certain outpatient surgical and imaging services to an ambulatory surgical center or freestanding facility unless hospital-outpatient care is medically necessary; a hospital-outpatient request should document why that site is required. <https://www.ibx.com/resources/for-providers/authorizations>",
+      "citation": "Independence Blue Cross's site-of-care medical policy directs certain outpatient surgical and imaging services to an ambulatory surgical center or freestanding facility unless hospital-outpatient care is medically necessary; a hospital-outpatient request should document why that site is required. <https://www.ibx.com/resources/for-providers/policies-and-guidelines>",
       "evidence": "Not a Independence Blue Cross packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -5316,7 +5316,7 @@
       "severity": "info",
       "status": "pass",
       "description": "Independence Blue Cross prior authorization: NDC documented for a physician-administered (J-code) drug request",
-      "citation": "Independence Blue Cross review of physician-administered (buy-and-bill) drugs maps the request to a specific product and dose via the National Drug Code in addition to the HCPCS J-code. Informational: a J-code request without an NDC routes more slowly. <https://www.ibx.com/resources/for-providers/authorizations>",
+      "citation": "Independence Blue Cross review of physician-administered (buy-and-bill) drugs maps the request to a specific product and dose via the National Drug Code in addition to the HCPCS J-code. Informational: a J-code request without an NDC routes more slowly. <https://www.ibx.com/resources/for-providers/policies-and-guidelines>",
       "evidence": "Not a Independence Blue Cross packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -5326,7 +5326,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Independence Blue Cross drug prior authorization: step-therapy prior-trial documentation (drugs tried + therapeutic failure) present",
-      "citation": "For drugs subject to step therapy Independence Blue Cross pharmacy management requires documentation of the prerequisite drugs tried and the therapeutic failure / intolerance for each before the requested agent is approved. <https://www.ibx.com/resources/for-providers/authorizations>",
+      "citation": "For drugs subject to step therapy Independence Blue Cross pharmacy management requires documentation of the prerequisite drugs tried and the therapeutic failure / intolerance for each before the requested agent is approved. <https://www.ibx.com/resources/for-providers/policies-and-guidelines>",
       "evidence": "Not a Independence Blue Cross packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -5336,7 +5336,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Independence Blue Cross genetic / molecular testing: the specific test and indication are documented for Independence Blue Cross's genetic / molecular lab-management program",
-      "citation": "Independence Blue Cross delegates genetic / molecular testing prior authorization to its lab-management program, which requires the specific test name (and, where applicable, the unique test identifier) plus the clinical indication. <https://www.ibx.com/resources/for-providers/authorizations>",
+      "citation": "Independence Blue Cross delegates genetic / molecular testing prior authorization to its lab-management program, which requires the specific test name (and, where applicable, the unique test identifier) plus the clinical indication. <https://www.ibx.com/resources/for-providers/policies-and-guidelines>",
       "evidence": "Not a Independence Blue Cross packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -5346,7 +5346,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Independence Blue Cross specialty / oncology drug: the supporting diagnosis is documented for the applicable Medical Policy",
-      "citation": "Independence Blue Cross specialty and oncology drug coverage is governed by drug-specific Medical Policies that condition coverage on a supporting diagnosis (ICD-10) matching the policy's indication; the request should carry that diagnosis. <https://www.ibx.com/resources/for-providers/authorizations>",
+      "citation": "Independence Blue Cross specialty and oncology drug coverage is governed by drug-specific Medical Policies that condition coverage on a supporting diagnosis (ICD-10) matching the policy's indication; the request should carry that diagnosis. <https://www.ibx.com/resources/for-providers/policies-and-guidelines>",
       "evidence": "Not a Independence Blue Cross packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -5356,7 +5356,7 @@
       "severity": "info",
       "status": "pass",
       "description": "Independence Blue Cross retrospective / retroactive request: a retro-review justification is documented",
-      "citation": "Independence Blue Cross considers a retrospective review only when the service was already rendered for a documented reason (e.g. emergent care, member eligibility not known at the time). A retro request should state that reason. Informational. <https://www.ibx.com/resources/for-providers/authorizations>",
+      "citation": "Independence Blue Cross considers a retrospective review only when the service was already rendered for a documented reason (e.g. emergent care, member eligibility not known at the time). A retro request should state that reason. Informational. <https://www.ibx.com/resources/for-providers/policies-and-guidelines>",
       "evidence": "Not a Independence Blue Cross packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -5366,7 +5366,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Independence Blue Cross DME / home-health prior authorization: a signed, dated written order / plan of care accompanies the request",
-      "citation": "Independence Blue Cross prior authorization for durable medical equipment and home-health services requires a written order / plan of care, signed and dated by the ordering provider, before the item / service is dispensed. <https://www.ibx.com/resources/for-providers/authorizations>",
+      "citation": "Independence Blue Cross prior authorization for durable medical equipment and home-health services requires a written order / plan of care, signed and dated by the ordering provider, before the item / service is dispensed. <https://www.ibx.com/resources/for-providers/policies-and-guidelines>",
       "evidence": "Not a Independence Blue Cross packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -5376,7 +5376,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Independence Blue Cross behavioral health: level-of-care criteria documentation present",
-      "citation": "Independence Blue Cross behavioral-health prior authorization reviews the requested level of care against published level-of-care guidelines (e.g. MCG behavioral-health care guidelines, ASAM criteria); the request should document the criteria that support the level requested. <https://www.ibx.com/resources/for-providers/authorizations>",
+      "citation": "Independence Blue Cross behavioral-health prior authorization reviews the requested level of care against published level-of-care guidelines (e.g. MCG behavioral-health care guidelines, ASAM criteria); the request should document the criteria that support the level requested. <https://www.ibx.com/resources/for-providers/policies-and-guidelines>",
       "evidence": "Not a Independence Blue Cross packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -5386,7 +5386,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Independence Blue Cross transplant prior authorization: routed through the Blue Distinction Centers for Transplant with a transplant-center evaluation",
-      "citation": "Independence Blue Cross directs solid-organ and hematopoietic stem-cell transplants through the Blue Distinction Centers for Transplant network; a transplant prior authorization should reference that routing and carry the transplant-center evaluation. <https://www.ibx.com/resources/for-providers/authorizations>",
+      "citation": "Independence Blue Cross directs solid-organ and hematopoietic stem-cell transplants through the Blue Distinction Centers for Transplant network; a transplant prior authorization should reference that routing and carry the transplant-center evaluation. <https://www.ibx.com/resources/for-providers/policies-and-guidelines>",
       "evidence": "Not a Independence Blue Cross packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -5396,7 +5396,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Independence Blue Cross experimental / investigational determination: peer-reviewed evidence or a documented policy exception is present",
-      "citation": "Independence Blue Cross excludes services its Medical Policy classifies as experimental, investigational, or unproven; a request for such a service must carry the peer-reviewed evidence or the documented exception the policy allows, or it will be denied. <https://www.ibx.com/resources/for-providers/authorizations>",
+      "citation": "Independence Blue Cross excludes services its Medical Policy classifies as experimental, investigational, or unproven; a request for such a service must carry the peer-reviewed evidence or the documented exception the policy allows, or it will be denied. <https://www.ibx.com/resources/for-providers/policies-and-guidelines>",
       "evidence": "Not a Independence Blue Cross packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -5406,7 +5406,7 @@
       "severity": "info",
       "status": "pass",
       "description": "Independence Blue Cross reconsideration / appeal: references the original determination and adds new clinical information",
-      "citation": "When a prior authorization is resubmitted as a reconsideration or appeal, Independence Blue Cross asks the provider to reference the original determination and supply additional clinical information that addresses the denial reason. Informational. <https://www.ibx.com/resources/for-providers/authorizations>",
+      "citation": "When a prior authorization is resubmitted as a reconsideration or appeal, Independence Blue Cross asks the provider to reference the original determination and supply additional clinical information that addresses the denial reason. Informational. <https://www.ibx.com/resources/for-providers/policies-and-guidelines>",
       "evidence": "Not a Independence Blue Cross packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -5416,7 +5416,7 @@
       "severity": "info",
       "status": "pass",
       "description": "Independence Blue Cross out-of-network / network-gap request: a continuity-of-care or network-gap justification is documented",
-      "citation": "Independence Blue Cross reviews out-of-network prior authorization for a documented network gap or continuity-of-care reason (no participating provider with the required expertise, an active course of treatment). An out-of-network request should state that justification. Informational. <https://www.ibx.com/resources/for-providers/authorizations>",
+      "citation": "Independence Blue Cross reviews out-of-network prior authorization for a documented network gap or continuity-of-care reason (no participating provider with the required expertise, an active course of treatment). An out-of-network request should state that justification. Informational. <https://www.ibx.com/resources/for-providers/policies-and-guidelines>",
       "evidence": "Not a Independence Blue Cross packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -6126,7 +6126,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Florida Medicaid prior authorization: coverage criteria (Florida Medicaid Medical Policy / MCG) referenced",
-      "citation": "Florida Medicaid adjudicates prior-authorization requests against its published Medical Policies (and MCG care guidelines); a request should cite the policy it is being judged against so the reviewer can map it to the coverage criteria. <https://ahca.myflorida.com/medicaid>",
+      "citation": "Florida Medicaid adjudicates prior-authorization requests against its published Medical Policies (and MCG care guidelines); a request should cite the policy it is being judged against so the reviewer can map it to the coverage criteria. <https://ahca.myflorida.com/medicaid.html>",
       "evidence": "Not a Florida Medicaid packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -6136,7 +6136,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Florida Medicaid prior authorization: supporting medical records / clinical documentation attached",
-      "citation": "Florida Medicaid requires the clinical information that supports medical necessity to be submitted with the prior-authorization request; a request with no clinical document attached cannot be reviewed on the merits. <https://ahca.myflorida.com/medicaid>",
+      "citation": "Florida Medicaid requires the clinical information that supports medical necessity to be submitted with the prior-authorization request; a request with no clinical document attached cannot be reviewed on the merits. <https://ahca.myflorida.com/medicaid.html>",
       "evidence": "Not a Florida Medicaid packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -6146,7 +6146,7 @@
       "severity": "info",
       "status": "pass",
       "description": "Florida Medicaid prior authorization: submission channel (Florida Medicaid Web Portal / FMMIS / phone) indicated",
-      "citation": "Florida Medicaid directs providers to submit prior-authorization requests through the Florida Medicaid Web Portal (FMMIS), by 278 EDI transaction, or by phone using the number on the member ID card. Informational: a cover sheet that names the channel speeds routing. <https://ahca.myflorida.com/medicaid>",
+      "citation": "Florida Medicaid directs providers to submit prior-authorization requests through the Florida Medicaid Web Portal (FMMIS), by 278 EDI transaction, or by phone using the number on the member ID card. Informational: a cover sheet that names the channel speeds routing. <https://ahca.myflorida.com/medicaid.html>",
       "evidence": "Not a Florida Medicaid packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -6156,7 +6156,7 @@
       "severity": "info",
       "status": "pass",
       "description": "Florida Medicaid prior authorization: requested service is on Florida Medicaid's prior-authorization / notification requirement list",
-      "citation": "Florida Medicaid prior authorization applies only to services on its published prior-authorization and notification lists; requesting authorization for a non-listed service is unnecessary. ships no bundled list, so the rule is vacuously satisfied with a pointer to the list (it mirrors core R-PA-053 and the the commercial overlay (Aetna through HMSA) and the California / New York / Texas Medicaid -004 rules; a later wave bundles the list and flips this to a real membership test). <https://ahca.myflorida.com/medicaid>",
+      "citation": "Florida Medicaid prior authorization applies only to services on its published prior-authorization and notification lists; requesting authorization for a non-listed service is unnecessary. ships no bundled list, so the rule is vacuously satisfied with a pointer to the list (it mirrors core R-PA-053 and the the commercial overlay (Aetna through HMSA) and the California / New York / Texas Medicaid -004 rules; a later wave bundles the list and flips this to a real membership test). <https://ahca.myflorida.com/medicaid.html>",
       "evidence": "Not a Florida Medicaid packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -6166,7 +6166,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Florida Medicaid prior authorization: authorization is referenced for a service that requires it before the service date",
-      "citation": "Florida Medicaid requires prior authorization to be obtained before a service on its requirement list is rendered; a packet for an authorization-required service should show the authorization / reference number rather than relying on post-service review. <https://ahca.myflorida.com/medicaid>",
+      "citation": "Florida Medicaid requires prior authorization to be obtained before a service on its requirement list is rendered; a packet for an authorization-required service should show the authorization / reference number rather than relying on post-service review. <https://ahca.myflorida.com/medicaid.html>",
       "evidence": "Not a Florida Medicaid packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -6176,7 +6176,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Florida Medicaid inpatient prior authorization: admission notification + concurrent / continued-stay clinical review documentation present",
-      "citation": "Florida Medicaid requires admission notification and conducts concurrent (continued-stay) review for inpatient admissions, collecting the clinical update and discharge plan; an inpatient request should carry that documentation. <https://ahca.myflorida.com/medicaid>",
+      "citation": "Florida Medicaid requires admission notification and conducts concurrent (continued-stay) review for inpatient admissions, collecting the clinical update and discharge plan; an inpatient request should carry that documentation. <https://ahca.myflorida.com/medicaid.html>",
       "evidence": "Not a Florida Medicaid packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -6186,7 +6186,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Florida Medicaid advanced-imaging review: outpatient MRI / CT / PET carries the clinical indication for Florida Medicaid's advanced-imaging utilization-management program",
-      "citation": "Florida Medicaid delegates outpatient advanced-imaging (MRI / CT / PET / nuclear cardiology) prior authorization to its advanced-imaging utilization-management program; the request should carry the clinical indication that supports the study. <https://ahca.myflorida.com/medicaid>",
+      "citation": "Florida Medicaid delegates outpatient advanced-imaging (MRI / CT / PET / nuclear cardiology) prior authorization to its advanced-imaging utilization-management program; the request should carry the clinical indication that supports the study. <https://ahca.myflorida.com/medicaid.html>",
       "evidence": "Not a Florida Medicaid packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -6196,7 +6196,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Florida Medicaid expedited / urgent prior authorization: clinical urgency justification present",
-      "citation": "Florida Medicaid processes an expedited prior-authorization review when a standard timeframe could seriously jeopardize the member's life, health, or ability to regain maximum function. A request that asks for expedited handling should state that clinical urgency. <https://ahca.myflorida.com/medicaid>",
+      "citation": "Florida Medicaid processes an expedited prior-authorization review when a standard timeframe could seriously jeopardize the member's life, health, or ability to regain maximum function. A request that asks for expedited handling should state that clinical urgency. <https://ahca.myflorida.com/medicaid.html>",
       "evidence": "Not a Florida Medicaid packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -6206,7 +6206,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Florida Medicaid site-of-care review: outpatient surgery / imaging addresses the hospital-outpatient vs. ASC / freestanding site-of-care requirement",
-      "citation": "Florida Medicaid's site-of-care medical policy directs certain outpatient surgical and imaging services to an ambulatory surgical center or freestanding facility unless hospital-outpatient care is medically necessary; a hospital-outpatient request should document why that site is required. <https://ahca.myflorida.com/medicaid>",
+      "citation": "Florida Medicaid's site-of-care medical policy directs certain outpatient surgical and imaging services to an ambulatory surgical center or freestanding facility unless hospital-outpatient care is medically necessary; a hospital-outpatient request should document why that site is required. <https://ahca.myflorida.com/medicaid.html>",
       "evidence": "Not a Florida Medicaid packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -6216,7 +6216,7 @@
       "severity": "info",
       "status": "pass",
       "description": "Florida Medicaid prior authorization: NDC documented for a physician-administered (J-code) drug request",
-      "citation": "Florida Medicaid review of physician-administered (buy-and-bill) drugs maps the request to a specific product and dose via the National Drug Code in addition to the HCPCS J-code. Informational: a J-code request without an NDC routes more slowly. <https://ahca.myflorida.com/medicaid>",
+      "citation": "Florida Medicaid review of physician-administered (buy-and-bill) drugs maps the request to a specific product and dose via the National Drug Code in addition to the HCPCS J-code. Informational: a J-code request without an NDC routes more slowly. <https://ahca.myflorida.com/medicaid.html>",
       "evidence": "Not a Florida Medicaid packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -6226,7 +6226,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Florida Medicaid drug prior authorization: step-therapy prior-trial documentation (drugs tried + therapeutic failure) present",
-      "citation": "For drugs subject to step therapy Florida Medicaid pharmacy management requires documentation of the prerequisite drugs tried and the therapeutic failure / intolerance for each before the requested agent is approved. <https://ahca.myflorida.com/medicaid>",
+      "citation": "For drugs subject to step therapy Florida Medicaid pharmacy management requires documentation of the prerequisite drugs tried and the therapeutic failure / intolerance for each before the requested agent is approved. <https://ahca.myflorida.com/medicaid.html>",
       "evidence": "Not a Florida Medicaid packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -6236,7 +6236,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Florida Medicaid genetic / molecular testing: the specific test and indication are documented for Florida Medicaid's genetic / molecular lab-management program",
-      "citation": "Florida Medicaid delegates genetic / molecular testing prior authorization to its lab-management program, which requires the specific test name (and, where applicable, the unique test identifier) plus the clinical indication. <https://ahca.myflorida.com/medicaid>",
+      "citation": "Florida Medicaid delegates genetic / molecular testing prior authorization to its lab-management program, which requires the specific test name (and, where applicable, the unique test identifier) plus the clinical indication. <https://ahca.myflorida.com/medicaid.html>",
       "evidence": "Not a Florida Medicaid packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -6246,7 +6246,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Florida Medicaid specialty / oncology drug: the supporting diagnosis is documented for the applicable Medical Policy",
-      "citation": "Florida Medicaid specialty and oncology drug coverage is governed by drug-specific Medical Policies that condition coverage on a supporting diagnosis (ICD-10) matching the policy's indication; the request should carry that diagnosis. <https://ahca.myflorida.com/medicaid>",
+      "citation": "Florida Medicaid specialty and oncology drug coverage is governed by drug-specific Medical Policies that condition coverage on a supporting diagnosis (ICD-10) matching the policy's indication; the request should carry that diagnosis. <https://ahca.myflorida.com/medicaid.html>",
       "evidence": "Not a Florida Medicaid packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -6256,7 +6256,7 @@
       "severity": "info",
       "status": "pass",
       "description": "Florida Medicaid retrospective / retroactive request: a retro-review justification is documented",
-      "citation": "Florida Medicaid considers a retrospective review only when the service was already rendered for a documented reason (e.g. emergent care, member eligibility not known at the time). A retro request should state that reason. Informational. <https://ahca.myflorida.com/medicaid>",
+      "citation": "Florida Medicaid considers a retrospective review only when the service was already rendered for a documented reason (e.g. emergent care, member eligibility not known at the time). A retro request should state that reason. Informational. <https://ahca.myflorida.com/medicaid.html>",
       "evidence": "Not a Florida Medicaid packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -6266,7 +6266,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Florida Medicaid DME / home-health prior authorization: a signed, dated written order / plan of care accompanies the request",
-      "citation": "Florida Medicaid prior authorization for durable medical equipment and home-health services requires a written order / plan of care, signed and dated by the ordering provider, before the item / service is dispensed. <https://ahca.myflorida.com/medicaid>",
+      "citation": "Florida Medicaid prior authorization for durable medical equipment and home-health services requires a written order / plan of care, signed and dated by the ordering provider, before the item / service is dispensed. <https://ahca.myflorida.com/medicaid.html>",
       "evidence": "Not a Florida Medicaid packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -6276,7 +6276,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Florida Medicaid behavioral health: level-of-care criteria documentation present",
-      "citation": "Florida Medicaid behavioral-health prior authorization reviews the requested level of care against published level-of-care guidelines (e.g. MCG behavioral-health care guidelines, ASAM criteria); the request should document the criteria that support the level requested. <https://ahca.myflorida.com/medicaid>",
+      "citation": "Florida Medicaid behavioral-health prior authorization reviews the requested level of care against published level-of-care guidelines (e.g. MCG behavioral-health care guidelines, ASAM criteria); the request should document the criteria that support the level requested. <https://ahca.myflorida.com/medicaid.html>",
       "evidence": "Not a Florida Medicaid packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -6286,7 +6286,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Florida Medicaid transplant prior authorization: routed through a Medicaid-designated transplant center with a transplant-center evaluation",
-      "citation": "Florida Medicaid directs solid-organ and hematopoietic stem-cell transplants through a Medicaid-designated transplant center / Center of Excellence; a transplant prior authorization should reference that routing and carry the transplant-center evaluation. <https://ahca.myflorida.com/medicaid>",
+      "citation": "Florida Medicaid directs solid-organ and hematopoietic stem-cell transplants through a Medicaid-designated transplant center / Center of Excellence; a transplant prior authorization should reference that routing and carry the transplant-center evaluation. <https://ahca.myflorida.com/medicaid.html>",
       "evidence": "Not a Florida Medicaid packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -6296,7 +6296,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Florida Medicaid experimental / investigational determination: peer-reviewed evidence or a documented policy exception is present",
-      "citation": "Florida Medicaid excludes services its Medical Policy classifies as experimental, investigational, or unproven; a request for such a service must carry the peer-reviewed evidence or the documented exception the policy allows, or it will be denied. <https://ahca.myflorida.com/medicaid>",
+      "citation": "Florida Medicaid excludes services its Medical Policy classifies as experimental, investigational, or unproven; a request for such a service must carry the peer-reviewed evidence or the documented exception the policy allows, or it will be denied. <https://ahca.myflorida.com/medicaid.html>",
       "evidence": "Not a Florida Medicaid packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -6306,7 +6306,7 @@
       "severity": "info",
       "status": "pass",
       "description": "Florida Medicaid appeal / reconsideration / state fair hearing: references the original determination and adds new clinical information",
-      "citation": "When a prior authorization is resubmitted as an appeal, reconsideration, or state fair hearing, Florida Medicaid asks the provider to reference the original determination and supply additional clinical information that addresses the denial reason. Informational. <https://ahca.myflorida.com/medicaid>",
+      "citation": "When a prior authorization is resubmitted as an appeal, reconsideration, or state fair hearing, Florida Medicaid asks the provider to reference the original determination and supply additional clinical information that addresses the denial reason. Informational. <https://ahca.myflorida.com/medicaid.html>",
       "evidence": "Not a Florida Medicaid packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -6316,7 +6316,7 @@
       "severity": "info",
       "status": "pass",
       "description": "Florida Medicaid out-of-network / network-gap request: a continuity-of-care or network-gap justification is documented",
-      "citation": "Florida Medicaid reviews out-of-network prior authorization for a documented network gap or continuity-of-care reason (no participating provider with the required expertise, an active course of treatment). An out-of-network request should state that justification. Informational. <https://ahca.myflorida.com/medicaid>",
+      "citation": "Florida Medicaid reviews out-of-network prior authorization for a documented network gap or continuity-of-care reason (no participating provider with the required expertise, an active course of treatment). An out-of-network request should state that justification. Informational. <https://ahca.myflorida.com/medicaid.html>",
       "evidence": "Not a Florida Medicaid packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null

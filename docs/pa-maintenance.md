@@ -47,6 +47,16 @@ Each `sources[]` entry names one external authority, the rule ids it
 backs, its canonical URL, and the ISO date the maintainer last confirmed
 the URL resolves and the rule still reflects it.
 
+An entry may also carry **`alsoCited`**: further URLs on that same authority
+that individual rules link to — an Aetna Clinical Policy Bulletin for obesity
+surgery, say, beside the general precertification page. They exist because a
+rule's `citation` string in `lib/pa/rules.js` carries its own copy of the URL it
+shows the reader, and that copy has to be somewhere the ledger can see it.
+`scripts/check-pa-rule-citations.mjs` (spec-v981, in `npm run lint`) fails when a
+rule cites a URL the ledger does not know, and the monthly link check fetches
+`alsoCited` alongside `url`. **Every URL a reader can click in a pa-lint report
+is in this file.**
+
 ### Non-PA operations rule families (spec-v63 OA4)
 
 The ledger is no longer PA-only. spec-v63 OA4 extended it to the
