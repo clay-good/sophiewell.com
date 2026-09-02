@@ -71,7 +71,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   also an ordinary word). A new whole-catalog check keeps it that way. See
   `docs/spec-v974.md`.
 
+### Fixed
+
+- **A related-tools test froze a derived ranking and went red for a change that
+  did nothing to it.** `abg` offered the same four neighbours it always had,
+  in a different order, because retiring four duplicate tiles reweighted the
+  token rarity the fill ranks by. The test now asserts the set, that a tile is
+  not its own neighbour, and — stronger than the frozen list ever was — that the
+  in-app list and the pre-rendered page name the same neighbours, which is what
+  both calling `lib/related.js` was for. See `docs/spec-v977.md`.
+
 ### Added
+
 
 - **The duplicate-tile finder now reads the citation, and found four more tiles
   built twice.** It had only the tile name to go on, and the name misses a
