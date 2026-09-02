@@ -35,28 +35,89 @@ Sophie rejects contributions that:
 - Add a tile that recommends a treatment, an order, or a disposition.
   Sophie computes; it does not prescribe.
 
-## How to add a new tile
+## How to add a calculator
 
-1. Write a one-page spec wave doc under `docs/spec-vN.md` (or a
-   wave-N section in an existing spec). Cite the primary source.
-   List the worked examples that will pin the boundaries.
-2. Implement the scoring / computation in `lib/scoring-v4.js` (or
-   the appropriate lib module). Add unit tests in
-   `test/unit/<tile>.test.js` covering the spec-v11 §3.2 boundary
-   set plus rejection of invalid inputs.
-3. Add the META entry in [lib/meta.js](lib/meta.js) with citation,
-   specialties, audiences, the prefilled worked example, and the
-   interpretation bands per spec-v11 §5.
-4. Add the renderer in the appropriate `views/group-*.js` using
-   the standard input helpers (no `innerHTML`; the grep-check
-   forbids it).
-5. Append the tile to `UTILITIES` in [app.js](app.js).
-6. Add an audit log at `docs/audits/v11/<tile-id>.md`.
-7. Update `README.md`, `package.json`'s `description`, the close-line
-   in `docs/scope-mdcalc-parity.md`, and the index-page surfaces.
-   The catalog-truth check (spec-v46) will fail CI if any drift.
-8. Add a CHANGELOG entry under `## [Unreleased]` describing what
-   shipped, what changed, and the new `UTILITIES.length`.
+This list is the file set of a real one — the mTICI reperfusion grade, `spec-v960` —
+rather than a description of how it ought to work. Every path here was touched
+by that change.
+
+**Write these by hand:**
+
+1. **A one-page spec** at `docs/spec-vN.md`. Cite the primary source, and say
+   which worked examples will pin the boundaries. If two sources disagree on a
+   number, that is a reason to **skip** the calculator, not to pick a side
+   (`docs/spec-v97.md`).
+2. **The scoring function**, in its own module: `lib/<name>-vN.js`. Pure — no
+   DOM, no clock, no network. Older tiles share `lib/scoring-v4.js` and
+   `lib/clinical-v4.js`; new ones do not join them.
+3. **Unit tests** at `test/unit/<name>.test.js`: the boundary set from your
+   spec, plus rejection of invalid input.
+4. **The META entry** in `lib/meta.js` — citation, `citationUrl`, specialties,
+   the prefilled worked example, and the source's interpretation bands. A band
+   claims to be the **source's own words** (`sourceQuoted`), so anything the
+   source did not print belongs in the tool's note instead.
+5. **The renderer** in `views/group-vN.js`, using the standard input helpers.
+   No `innerHTML`; `grep-check` forbids it.
+6. **`app.js`** — the row in `UTILITIES`, *and* the renderer import and its
+   spread into `RENDERERS`. Forgetting the second is a tile that routes to a
+   blank page.
+7. **The MCP adapter** at `mcp/adapters/<name>-vN.js`, its registration in
+   `mcp/catalog.js`, and its row in `docs/mcp-coverage.md`. This is not
+   optional: `check-mcp-catalog` fails a clinical tile that is neither exposed
+   to agents nor waived in `docs/mcp-waivers.md`.
+8. **Plain-language phrases** in `data/synonyms.json`, so someone who does not
+   know the instrument's name can still reach it. One shape only —
+   `{ phrases: [...], tile: "<id>", audience: "..." }` inside `entries`.
+9. **The count surfaces**: `README.md`, `package.json`'s `description`,
+   `docs/scope-mdcalc-parity.md`, and `index.html`. `check-catalog-truth` fails
+   CI on any that drift, and names the one that did.
+10. **A CHANGELOG entry** under `## [Unreleased]`.
+
+**Then regenerate — do not hand-edit these:**
+
+```bash
+node scripts/build-search-corpus.mjs
+node scripts/build-field-index.mjs
+node scripts/build-report-catalog.mjs
+```
+
+`data/search-corpus/`, `data/fields/`, `report-catalog.js`, `sitemap.xml` and
+the SBOM are all generated. Avoid `npm run data:refresh` unless you changed a
+dataset: it re-stamps dozens of unrelated `data/**` manifests and buries your
+change.
+
+**One thing that will surprise you.** Adding a calculator reorders every ranking
+derived from the whole catalog, because they weight how rare a word is across
+it. A "related tools" list you never touched can change order, so
+`test/mcp/mcp-not-exposed.test.js` and friends may need updating — assert the
+**set**, never the order (`docs/spec-v977.md`).
+
+**Not a step:** `docs/audits/` is a historical record from earlier waves. Its
+last entry is from July 2026 and roughly 860 calculators ago. Do not add to it.
+
+## The gates, and what each is for
+
+`npm run release:check` runs the same chain CI does. When one fails it names
+itself; this is where to look it up.
+
+| Check | Refuses |
+| --- | --- |
+| `grep-check.mjs` | `innerHTML`, cookies, network calls, third-party scripts |
+| `check-us-english.mjs` | British spellings in anything a reader sees |
+| `check-lede-copy.mjs` | an opening line that does not read as a sentence |
+| `check-output-safety.mjs` | a result that can print `NaN`, `Infinity`, or an order |
+| `check-tile-copy.mjs` | in-house words on screen — a raw tile id, "tile", "catalog" |
+| `check-citations.mjs` | an undated guideline citation, or one missing from the staleness ledger |
+| `check-catalog-truth.mjs` | a count, group label or worked example that drifted between surfaces |
+| `check-issue-templates.mjs` | an issue form that contradicts CONTRIBUTING or SECURITY |
+| `check-test-tile-ids.mjs` | a test naming a tile id that no longer exists |
+| `check-commitments.mjs` | a change that breaks one of the eight public commitments |
+| `check-mcp-catalog.mjs` | a calculator agents cannot reach, and no waiver for it |
+| `check-pa-staleness.mjs` | a prior-auth source unverified past its window |
+| `check-pa-rule-citations.mjs` | a rule citing a URL the staleness ledger does not carry |
+| `audit-pa.mjs` | a change to prior-auth output that the golden reports did not expect |
+| `check-gates-documented.mjs` | a gate joining this chain without a row in this table |
+| `build-report-catalog.mjs --check` | the report Worker's id/name map out of date with the catalog |
 
 Before opening a PR, run `npm run release:check` locally. This is the
 same gate that runs in CI.

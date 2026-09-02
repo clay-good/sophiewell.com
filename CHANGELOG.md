@@ -73,6 +73,17 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **The contribution guide described a process the project abandoned 860
+  calculators ago.** Now that the repository is public, `CONTRIBUTING.md` is what
+  a stranger reads first — and it told them to add an audit file to a directory
+  last written in July 2026, while never mentioning the step that actually fails
+  CI for a new calculator (registering it for AI agents). The recipe is now the
+  file set of a real calculator rather than a description of how it ought to
+  work, and there is a table explaining what every gate in the build refuses,
+  because two of them were explained nowhere at all — a contributor whose PR was
+  stopped by one had no way to find out what it wanted. A new check keeps any
+  future gate from being anonymous. See `docs/spec-v982.md`.
+
 - **The source links a biller actually clicks were still dead.** Each source URL
   lives twice: once in the freshness ledger, and once inside every rule's own
   citation — and the citation is what prints in the report. The previous fix
