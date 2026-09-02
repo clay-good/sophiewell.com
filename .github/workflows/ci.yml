@@ -6,6 +6,18 @@ on:
   pull_request:
     branches: [main, develop]
 
+# spec-v983: the e2e job takes about 57 minutes. Without a concurrency group, a
+# contributor pushing a fixup to their own pull request leaves the superseded run
+# grinding through the full browser matrix for another hour, and four pushes queue
+# four hours of runner time to verify code that no longer exists.
+#
+# Superseded PR runs are cancelled. Runs on `main` are NOT: the deployed site
+# tracks `main`, so every commit on it is a deploy candidate and has to be
+# verified on its own. They queue behind each other instead.
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.sha }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 permissions:
   contents: read
 

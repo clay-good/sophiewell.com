@@ -71,6 +71,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   also an ordinary word). A new whole-catalog check keeps it that way. See
   `docs/spec-v974.md`.
 
+### Changed
+
+- **CI no longer spends an hour verifying a pull request you already fixed.**
+  The browser test job takes about 57 minutes, and nothing cancelled a
+  superseded run — so pushing a few fixups to one pull request would queue
+  hours of work on code that no longer existed. Superseded pull-request runs
+  are now cancelled. Runs on the main branch are deliberately **not**: the
+  deployed site tracks it, so every commit there is a deploy candidate and gets
+  verified on its own. See `docs/spec-v983.md`.
+
 ### Fixed
 
 - **The contribution guide described a process the project abandoned 860
