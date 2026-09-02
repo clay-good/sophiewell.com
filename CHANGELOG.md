@@ -73,6 +73,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Eighteen of the prior-auth linter's 84 source links were dead, and nothing
+  had been checking.** The maintenance procedure's first monthly step is "open
+  each source URL and confirm it still resolves" — and no tool did the resolving.
+  These are not internal notes: the URLs are printed into the prior-auth report a
+  biller reads, so someone following a source link was handed a 404. Eighteen are
+  now fixed, all verified rather than guessed — two Federal Register documents
+  resolved exactly by document number through that site's API (one had the wrong
+  publication date in its path), three eCFR sections, the Medicaid EPSDT page,
+  several CMS restructures, and five payer rebrands. Six redirects were
+  deliberately not followed: one goes to a login wall, one back to an older
+  domain, and the declared address is better. Thirteen payer and CMS pages remain
+  dead and now surface every month instead of never. No source's "last verified"
+  date was moved: a link fix is not a policy re-verification. See
+  `docs/spec-v979.md`.
+
 - **Two blood-loss tools credited one paper with two different tables.** Both
   cite Gross 1983 for the maximum-allowable-blood-loss formula — correctly — and
   both also credited it with the per-kilogram blood-volume factors, which are not

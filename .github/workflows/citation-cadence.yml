@@ -27,3 +27,11 @@ jobs:
           node-version-file: .nvmrc
       - name: Check citation cadence (warn-only)
         run: node scripts/check-citation-cadence.mjs
+
+      # spec-v979: the first step of the monthly pass in docs/pa-maintenance.md is
+      # "open each sources[].url and confirm it still resolves". Nothing did the
+      # resolving, and 18 of the ledger's 84 authorities had gone to a 404. This
+      # does the half a machine can do. Warn-only and NETWORK, which is why it lives
+      # here and not in `npm run lint` -- lint stays offline and deterministic.
+      - name: Check PA source URLs still resolve (warn-only)
+        run: node scripts/check-pa-source-urls.mjs

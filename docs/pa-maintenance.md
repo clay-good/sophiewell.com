@@ -68,6 +68,18 @@ calendar year, that is a content change — update the constant in
 
 On the cadence in spec-v52 §1.3 (monthly payer-policy pulls):
 
+0. Run `node scripts/check-pa-source-urls.mjs` (spec-v979). It fetches every
+   `sources[].url` and sorts them into OK, MOVED (a redirect, so the ledger
+   should carry the destination), BLOCKED (403/429 — a bot wall, fine in a
+   browser) and DEAD (404/410 or a failed request). It runs monthly, warn-only,
+   in `.github/workflows/citation-cadence.yml`, and never in `npm run lint`:
+   it is a network check, and lint stays offline and deterministic.
+
+   It does the half a machine can do. It cannot read a policy page and decide
+   the rules still reflect it, which is step 1 and stays a maintainer's
+   judgment. **A link fix is not a policy re-verification** — correcting a
+   `url` from the checker's output does not earn a `lastVerified` bump.
+
 1. Open each `sources[].url` and confirm it still resolves and still says
    what the backing rules assume.
 2. If it is unchanged, bump that entry's `lastVerified` to today (ISO

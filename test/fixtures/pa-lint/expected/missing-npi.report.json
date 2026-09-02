@@ -9874,7 +9874,7 @@
         {
           "id": "cms-iom-100-08",
           "label": "CMS Internet-Only Manual Pub 100-08 (Program Integrity)",
-          "url": "https://www.cms.gov/regulations-and-guidance/guidance/manuals/internet-only-manuals-ioms",
+          "url": "https://www.cms.gov/medicare/regulations-guidance/manuals/internet-only-manuals-ioms",
           "ruleFamily": "cms-ffs",
           "lastVerified": "2026-05-28"
         },
@@ -9888,7 +9888,7 @@
         {
           "id": "medicaid-core",
           "label": "Medicaid program requirements (state-agnostic core, EPSDT)",
-          "url": "https://www.medicaid.gov/medicaid/benefits/early-and-periodic-screening-diagnostic-and-treatment/index.html",
+          "url": "https://www.medicaid.gov/medicaid/benefits/early-and-periodic-screening-diagnostic-and-treatment",
           "ruleFamily": "medicaid-core",
           "lastVerified": "2026-05-28"
         },
@@ -9944,21 +9944,21 @@
         {
           "id": "anthem-precert",
           "label": "Anthem Blue Cross Blue Shield (Elevance Health) prior-authorization requirements, Clinical UM Guidelines, and Medical Policies",
-          "url": "https://www.anthem.com/provider/prior-authorization/",
+          "url": "https://www.anthem.com/provider/individual-commercial/prior-authorization",
           "ruleFamily": "commercial-anthem",
           "lastVerified": "2026-06-01"
         },
         {
           "id": "cigna-precert",
           "label": "Cigna prior-authorization / precertification requirements, Medical Coverage Policies, and eviCore / Evernorth program requirements",
-          "url": "https://www.cigna.com/health-care-providers/coverage-and-claims/prior-authorization",
+          "url": "https://www.cigna.com/health-care-providers/coverage-and-claims/precertification",
           "ruleFamily": "commercial-cigna",
           "lastVerified": "2026-06-01"
         },
         {
           "id": "humana-precert",
           "label": "Humana prior-authorization / preauthorization requirements, Medical Coverage Policies, and utilization-management / CenterWell program requirements",
-          "url": "https://www.humana.com/provider/medical-resources/authorizations-referrals",
+          "url": "https://provider.humana.com/coverage-claims/prior-authorizations",
           "ruleFamily": "commercial-humana",
           "lastVerified": "2026-06-02"
         },
@@ -10049,7 +10049,7 @@
         {
           "id": "bcbssc-precert",
           "label": "Blue Cross Blue Shield of South Carolina prior-authorization requirements, Medical Policies, and utilization-management / pharmacy program requirements",
-          "url": "https://www.southcarolinablues.com/web/public/brands/sc/providers/",
+          "url": "https://www.southcarolinablues.com/en/home/providers.html",
           "ruleFamily": "commercial-bcbssc",
           "lastVerified": "2026-06-05"
         },
@@ -10077,7 +10077,7 @@
         {
           "id": "bcbsla-precert",
           "label": "Blue Cross and Blue Shield of Louisiana prior-authorization requirements, Medical Policies, and utilization-management / pharmacy program requirements",
-          "url": "https://www.bcbsla.com/providers",
+          "url": "https://www.lablue.com/providers",
           "ruleFamily": "commercial-bcbsla",
           "lastVerified": "2026-06-05"
         },
@@ -10112,7 +10112,7 @@
         {
           "id": "fl-medicaid-precert",
           "label": "Florida Medicaid (AHCA -- Agency for Health Care Administration / FMMIS) prior-authorization requirements, provider manuals, and utilization-management / pharmacy program requirements",
-          "url": "https://ahca.myflorida.com/medicaid",
+          "url": "https://ahca.myflorida.com/medicaid.html",
           "ruleFamily": "medicaid-fl",
           "lastVerified": "2026-06-05"
         },
@@ -10203,28 +10203,28 @@
         {
           "id": "ops-medicare-appeal-deadlines",
           "label": "Medicare claim appeal-level filing deadlines (42 CFR Part 405 Subpart I: redetermination 120 d, QIC 180 d, ALJ/OMHA 60 d, Council 60 d, federal court 60 d) backing appeal-deadline and the OA2 denial routing",
-          "url": "https://www.ecfr.gov/current/title-42/part-405/subpart-I",
+          "url": "https://www.ecfr.gov/current/title-42/chapter-IV/subchapter-B/part-405/subpart-I",
           "ruleFamily": "ops-v63",
           "lastVerified": "2026-06-10"
         },
         {
           "id": "ops-medicare-aic",
           "label": "Medicare appeal amount-in-controversy thresholds (CY2026: ALJ $200, federal court $1,960; annually indexed, Fed Reg 2025-21879) backing appeal-deadline",
-          "url": "https://www.federalregister.gov/documents/2025/11/01/2025-21879/",
+          "url": "https://www.federalregister.gov/documents/2025/12/04/2025-21879/medicare-program-medicare-appeals-adjustment-to-the-amount-in-controversy-threshold-amounts-for",
           "ruleFamily": "ops-v63",
           "lastVerified": "2026-06-10"
         },
         {
           "id": "ops-medicare-timely-filing",
           "label": "Medicare claim timely-filing one-calendar-year basis (42 CFR 424.44; ACA 6404) backing timely-filing",
-          "url": "https://www.ecfr.gov/current/title-42/section-424.44",
+          "url": "https://www.ecfr.gov/current/title-42/chapter-IV/subchapter-B/part-424/subpart-C/section-424.44",
           "ruleFamily": "ops-v63",
           "lastVerified": "2026-06-10"
         },
         {
           "id": "ops-cms-0057f-pa-windows",
           "label": "CMS Interoperability and Prior Authorization Final Rule (CMS-0057-F, 2024) decision windows (standard 7 calendar days, expedited 72 hours; effective 2026 for impacted payers) backing pa-turnaround",
-          "url": "https://www.federalregister.gov/documents/2024/02/08/2024-00895/",
+          "url": "https://www.federalregister.gov/documents/2024/02/08/2024-00895/medicare-and-medicaid-programs-patient-protection-and-affordable-care-act-advancing-interoperability",
           "ruleFamily": "ops-v63",
           "lastVerified": "2026-06-10"
         },
@@ -10238,7 +10238,7 @@
         {
           "id": "ops-medicare-overpayment-60day",
           "label": "Medicare 60-day overpayment report-and-return rule (42 CFR 401.305; ACA 6402(a) / 42 U.S.C. 1320a-7k(d)) backing overpayment-60day",
-          "url": "https://www.ecfr.gov/current/title-42/section-401.305",
+          "url": "https://www.ecfr.gov/current/title-42/chapter-IV/subchapter-A/part-401/subpart-D/section-401.305",
           "ruleFamily": "ops-v63",
           "lastVerified": "2026-06-10"
         },
@@ -10280,21 +10280,21 @@
         {
           "id": "billing-mue-mai-semantics",
           "label": "MUE Adjudication Indicator (MAI) semantics (1 = claim-line edit; 2 = date-of-service absolute, never payable; 3 = date-of-service reviewable with documentation) backing mue-check. CMS Medically Unlikely Edits program. No MUE value table ships -- the value and MAI are entered.",
-          "url": "https://www.cms.gov/medicare/coding-billing/national-correct-coding-initiative-ncci-edits/medicare-ncci-medically-unlikely-edits",
+          "url": "https://www.cms.gov/medicare/coding-billing/national-correct-coding-initiative-ncci-edits/medicare-ncci-medically-unlikely-edits-mues",
           "ruleFamily": "billing-v79",
           "lastVerified": "2026-06-13"
         },
         {
           "id": "billing-modifier-59-xepsu",
           "label": "The 59 / X{EPSU} distinct-procedural-service hierarchy (XE separate encounter, XS separate structure, XP separate practitioner, XU unusual non-overlapping; 59 only when no X-modifier fits) backing modifier-x-selector. CMS MLN 'Proper Use of Modifiers 59 & X{EPSU}'.",
-          "url": "https://www.cms.gov/files/document/proper-use-modifiers-59-xepsu.pdf",
+          "url": "https://www.cms.gov/files/document/mln1783722-proper-use-modifiers-59-xe-xp-xs-xu.pdf",
           "ruleFamily": "billing-v79",
           "lastVerified": "2026-06-13"
         },
         {
           "id": "billing-global-surgery-days",
           "label": "MPFS GLOB DAYS definitions (000/010/090 = 0/10/90 postoperative days, 090 adds 1 preoperative day; XXX/YYY/ZZZ/MMM non-numeric) and the global-package modifiers (24/25/57/58/78/79) backing global-period. CMS Pub. 100-04 Ch. 12 40; MLN Global Surgery Booklet.",
-          "url": "https://www.cms.gov/outreach-and-education/medicare-learning-network-mln/mlnproducts/downloads/globallsurgery-icn907166.pdf",
+          "url": "https://www.cms.gov/files/document/mln907166-global-surgery-booklet.pdf",
           "ruleFamily": "billing-v79",
           "lastVerified": "2026-06-13"
         },
@@ -10378,7 +10378,7 @@
         {
           "id": "billing-cob-msp-methods",
           "label": "The coordination-of-benefits methods (lesser-of, come-out-whole / benefits-less-paid, non-duplication) and the Medicare Secondary Payer calculation backing cob-calc. 42 CFR Part 411; CMS Pub. 100-05 (Medicare Secondary Payer Manual).",
-          "url": "https://www.cms.gov/medicare/coordination-benefits-recovery",
+          "url": "https://www.cms.gov/medicare/coordination-benefits-recovery/overview",
           "ruleFamily": "billing-v82",
           "lastVerified": "2026-06-15"
         },
@@ -10406,7 +10406,7 @@
         {
           "id": "billing-mbi-grammar",
           "label": "The CMS Medicare Beneficiary Identifier (MBI) 11-character position grammar (numeric / alphabetic / alphanumeric by position) and the excluded-letter set S, L, O, I, B, Z backing mbi-validate. Validates format only, not active entitlement. CMS new Medicare card specification.",
-          "url": "https://www.cms.gov/medicare/new-medicare-card",
+          "url": "https://www.cms.gov/training-education/partner-outreach-resources/new-medicare-card/medical-beneficiary-identifiers-mbis",
           "ruleFamily": "billing-v83",
           "lastVerified": "2026-06-15"
         }
