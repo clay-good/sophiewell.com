@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Security vulnerability
+    url: https://github.com/clay-good/sophiewell.com/blob/main/SECURITY.md
+    about: Do NOT open a public issue. Email hi@claygood.com; see SECURITY.md for what to include and the response times.
+  - name: How Sophie is built and what it will not do
+    url: https://github.com/clay-good/sophiewell.com/blob/main/CONTRIBUTING.md
+    about: What kinds of change are accepted, the eight commitments, and how to add a calculator.

@@ -1,0 +1,26 @@
+name: Something else is broken
+description: A page, a link, the search, the offline behavior, an MCP tool.
+title: "<what is broken>"
+labels: ["bug"]
+body:
+  - type: input
+    id: where
+    attributes:
+      label: Where
+      description: A URL, or the MCP tool name.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: What you did, what happened, what you expected
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: Browser and device
+      description: Skip for MCP reports.
+      placeholder: "Safari 18, iPhone"
+    validations:
+      required: false

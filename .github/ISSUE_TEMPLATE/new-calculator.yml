@@ -1,0 +1,43 @@
+name: Propose a calculator
+description: An instrument Sophie does not carry yet.
+title: "new calculator: <instrument name>"
+labels: ["new-calculator"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before opening this, please search the catalog — an instrument is often already
+        there under its other name, or as one input of a larger tool. `CPSS` and
+        `Cincinnati Prehospital Stroke Scale` are the same thing; the Mayo endoscopic
+        subscore is one of four inputs to the Mayo score.
+  - type: input
+    id: name
+    attributes:
+      label: Instrument name
+      description: Every name it goes by, including the acronym.
+      placeholder: "T-MACS (Troponin-only Manchester Acute Coronary Syndromes)"
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: The derivation paper
+      description: >
+        A peer-reviewed primary source with a DOI or PubMed id — not a review, a
+        calculator site, or a textbook. Sophie needs the numbers themselves: the
+        coefficients or the item weights, and the cut-points. Those usually live in
+        a table or a figure caption rather than the abstract, so please say where.
+      placeholder: "PMID 28363994 (Emerg Med J 2017;34:517-523), Table 3"
+    validations:
+      required: true
+  - type: textarea
+    id: misread
+    attributes:
+      label: What gets misread about it
+      description: >
+        Optional, and the most useful thing in this form. Original TICI puts grade 2b
+        at more than two thirds and the modified scale at more than half, so one
+        angiogram is a success on one scale and a failure on the other. If the
+        instrument has a trap like that, name it — the tool will say so on the page.
+    validations:
+      required: false

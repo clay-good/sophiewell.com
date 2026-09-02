@@ -72,6 +72,12 @@ Setup is in [mcp/README.md](mcp/README.md).
 - [mcp/README.md](mcp/README.md): use the calculators from an MCP client
 - [docs/architecture.md](docs/architecture.md): how it's built
 - [docs/product-decisions.md](docs/product-decisions.md): durable interface decisions
+- [CONTRIBUTING.md](CONTRIBUTING.md): what changes are accepted, and how to add a calculator
+- [SECURITY.md](SECURITY.md): report a vulnerability privately, not as an issue
+
+If a calculator disagrees with the source it cites, that is the highest-priority
+report the project takes:
+[open a wrong-number issue](https://github.com/clay-good/sophiewell.com/issues/new?template=wrong-number.yml).
 
 ## License
 

@@ -1,0 +1,38 @@
+name: Commitment bypass
+description: A way to violate one of Sophie's eight commitments without tripping CI.
+title: "commitment-bypass: <what the bypass is>"
+labels: ["commitment-bypass", "security-class"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Sophie makes eight public commitments — no accounts, no telemetry, no third-party
+        network calls, no AI, no persistent device storage outside an allowlist, MIT license.
+        They are listed on [/commitments/](https://sophiewell.com/commitments/) and in
+        `docs/spec-v50.md` §3, and each is enforced by a check in `scripts/`.
+
+        A way around one of those checks is treated as a security-class defect. If the
+        bypass also exposes user data, follow [SECURITY.md](https://github.com/clay-good/sophiewell.com/blob/main/SECURITY.md)
+        and email it privately instead of opening this issue.
+  - type: input
+    id: commitment
+    attributes:
+      label: Which commitment
+      description: The section number from docs/spec-v50.md §3, or the wording from /commitments/.
+      placeholder: "spec-v50 §3.4 — no telemetry"
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: The smallest example that demonstrates the bypass
+      description: A diff, a snippet, or the steps. Smallest is the point — it becomes the failing test.
+    validations:
+      required: true
+  - type: input
+    id: check
+    attributes:
+      label: Which check should have caught it
+      description: e.g. scripts/check-commitments.mjs, scripts/grep-check.mjs — or "none, that is the gap".
+    validations:
+      required: true

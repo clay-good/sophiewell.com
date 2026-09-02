@@ -1,0 +1,55 @@
+name: A calculator returns the wrong number
+description: A tool computes, bands, or interprets a value differently from the source it cites.
+title: "wrong number: <calculator name>"
+labels: ["wrong-number"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This is the highest-priority report Sophie takes. Everything here runs in your
+        browser, so nothing is sent anywhere when you use a calculator — please paste
+        the values yourself below.
+
+        **Do not paste patient identifiers.** Real values are fine; a name, MRN, or date
+        of birth is not, and this issue is public.
+  - type: input
+    id: url
+    attributes:
+      label: Which calculator
+      description: The page URL or the name shown at the top of the tool.
+      placeholder: https://sophiewell.com/tools/wells-pe/
+    validations:
+      required: true
+  - type: textarea
+    id: inputs
+    attributes:
+      label: What you entered
+      description: Every field you filled, with units.
+      placeholder: |
+        QT interval: 400 ms
+        Heart rate: 60 bpm
+    validations:
+      required: true
+  - type: input
+    id: got
+    attributes:
+      label: What it returned
+    validations:
+      required: true
+  - type: input
+    id: expected
+    attributes:
+      label: What it should have returned
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: The source that says so
+      description: >
+        A DOI, PubMed link, or guideline section — and the table, figure, or page
+        the number is on. A disagreement between two published sources is a reason
+        to leave the tool alone, so naming the exact place matters.
+      placeholder: "Lo GK, et al. J Thromb Haemost. 2006;4(4):759-765, Table 2. https://doi.org/10.1111/j.1538-7836.2006.01787.x"
+    validations:
+      required: true

@@ -83,6 +83,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Issue and pull-request templates, now that the repository is public.** The
+  most important report anyone can send is *a calculator disagrees with the
+  source it cites*, and it is useless without the one hard part: not "the
+  cut-off is 12.3" but "Cross 2009, Table 3" — because two published sources
+  disagreeing is a reason to leave the tool alone. The wrong-number form asks
+  for that, and says plainly that nothing was sent anywhere when you used the
+  calculator, so please do not paste identifiers into a public issue. There are
+  also forms for a commitment bypass, for proposing a calculator, and for
+  everything else, and security reports are routed to the private path
+  SECURITY.md requires. `npm run lint` now holds the templates in step with what
+  CONTRIBUTING and SECURITY actually promise. See `docs/spec-v976.md`.
+
 
 - **The duplicate-tile finder now reads the citation, and found four more tiles
   built twice.** It had only the tile name to go on, and the name misses a
