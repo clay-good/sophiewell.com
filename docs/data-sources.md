@@ -167,43 +167,54 @@ that drives the hero search (spec-v7 §3.2). It is consumed by
 
 The spec-v29 wave 29-2 nurse-first prune and the spec-v10 clinical pivot retired
 a large set of tiles. **Retiring a tile did not delete its dataset.** Of the
-forty data folders those waves named, twelve are gone and twenty-eight are still
-on disk — still produced by `scripts/build-data.mjs`, still hashed into a
-manifest, still verified by `npm run data:verify`, still copied into `dist/`, and
-still re-stamped by the weekly refresh. This section used to list all forty
-together as "retired", which is why nobody noticed. Three more folders in the
-same state — `hcpcs-modifiers/`, `pos-codes/` and `revenue-codes/`, the pieces
-the old `crosswalks/` dataset was split into — were named in no list at all, and
-the coverage check below is what found them.
+forty data folders those waves named, twelve are gone, three were never retired
+at all, and twenty-five are still on disk — still produced by
+`scripts/build-data.mjs`, still hashed into a manifest, still verified by
+`npm run data:verify`, still copied into `dist/`, and still re-stamped by the
+weekly refresh. This section used to list all forty together as "retired", which
+is why nobody noticed. Three more folders in the same state —
+`hcpcs-modifiers/`, `pos-codes/` and `revenue-codes/`, the pieces the old
+`crosswalks/` dataset was split into — were named in no list at all, and the
+coverage check below is what found them.
 
-`test/unit/retired-datasets.test.js` holds both lists to the tree: a folder
-listed as deleted must not exist, a folder listed as still-built must, and every
-folder under `data/` must be accounted for by one list, by a tile that reads it,
-or by the build-time set.
+`test/unit/retired-datasets.test.js` holds the lists to the tree: a folder
+listed as deleted must not exist, a folder listed as still-built must exist
+**and must be unreachable**, a folder a tile can actually load must not be on
+that list, and every folder under `data/` must be accounted for by one list, by
+a tile that reads it, or by the build-time set.
 
 **Deleted — the folder is gone (12):**
 `coverage/` (LCD / NCD), `enforcement/` (OIG exclusions, Medicare opt-out),
 `hospital-prices/`, `ihs-eligibility/`, `medicaid-state/`, `mue/`, `nadac/`,
 `ncci/`, `npi/`, `state-rights/`, `tricare-plans/`, `va-eligibility/`.
 
-**Tile retired, data still built and shipped (31):**
+**Tile retired, data still built and shipped (28):**
 `aha-reference/`, `apc/`, `cms-1500-fields/`, `cpr-aha-numeric/`,
-`cpt-summaries/`, `crosswalks/`, `dot-erg/`, `drg/`, `environmental/`,
-`eob-glossary/`, `hcpcs/`, `hcpcs-modifiers/`, `icd10-pcs/`, `icd10cm/`,
-`iv-to-po/`, `lab-ranges-adult/`, `lab-ranges-peds/`, `mpfs/`, `ndc/`,
-`niosh-pg/`, `no-surprises/`, `nubc-special-codes/`, `pos-codes/`,
-`revenue-codes/`, `rxnorm/`, `tccc/`, `therapeutic-drug-levels/`, `tob-codes/`,
-`tox-levels/`, `toxidromes/`, `ub04-fields/`. Together they are 50.2 KB.
+`cpt-summaries/`, `crosswalks/`, `dot-erg/`, `environmental/`, `eob-glossary/`,
+`hcpcs/`, `hcpcs-modifiers/`, `icd10-pcs/`, `iv-to-po/`, `lab-ranges-adult/`,
+`lab-ranges-peds/`, `ndc/`, `niosh-pg/`, `no-surprises/`,
+`nubc-special-codes/`, `pos-codes/`, `revenue-codes/`, `rxnorm/`, `tccc/`,
+`therapeutic-drug-levels/`, `tob-codes/`, `tox-levels/`, `toxidromes/`,
+`ub04-fields/`. Together they are 44.9 KB.
 
-Sixteen of the thirty-one are not mentioned anywhere in `app.js`, `lib/` or
-`views/` — 28.1 KB of it. The rest are mentioned, but a mention is not proof of a
-fetch: several are source identifiers in the prior-auth ledger rather than data
-loads, and `toxidromes/` is read by a live tile through a path other than
-`META.source.dataset`. **Deciding which of the thirty-one can be deleted needs a
-per-dataset check of how each is loaded, not a grep**, which is why this section
-records the state rather than acting on it. The prize for doing that work is not
-mainly the 50 KB: thirty-one of the forty-six datasets the weekly refresh
-re-stamps are in this list, which is most of what makes that pull request noise.
+**All twenty-eight are unreachable, and that is now checked rather than
+asserted.** A dataset reaches the browser one of two ways: a `loadFile` /
+`loadShard` / `loadAllShards` / `loadManifest` call in `app.js`, `lib/` or
+`views/`, or a `META[id].source.dataset` declaration. None of these has either.
+Every apparent mention of one of them in `app.js` is its *tile* id inside a
+`REMOVED_V29_IDS` tombstone list, which is what made a grep-based answer
+misleading the first time this was measured.
+
+Three folders that were on this list are not retired at all: `mpfs/`, `icd10cm/`
+and `drg/` are loaded by the live `rvu-payment`, `icd10-validate` and
+`drg-payment` tiles. The reachability check moved them out.
+
+**Keeping the twenty-eight is a deliberate decision** (2026-09-02), not an
+oversight: they are seeds a future tile can be built against, and several are
+CMS code sets a billing tile would want. The cost is recorded so the decision
+can be revisited with the numbers in hand: 44.9 KB in the bundle, twenty-eight
+manifests through `npm run data:verify` on every run, and twenty-eight of the
+forty-six datasets the weekly refresh re-stamps.
 
 Some individual files inside surviving folders were removed with their tiles:
 `data/clinical/lab-ranges.json`, `data/clinical/ismp-high-alert.json`,

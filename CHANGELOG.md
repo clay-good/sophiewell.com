@@ -17,6 +17,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   and fails if a new step in either reproducible job is missing from the local
   chain, so the sentence cannot go stale again. See `docs/spec-v997.md`.
 
+- **Three datasets listed as retired are read by live calculators.** `mpfs/`,
+  `icd10cm/` and `drg/` are loaded at render time by the RVU payment, ICD-10
+  validation and DRG payment tools, and the data document had them filed under
+  "tile retired". Found by checking reachability rather than asserting it; the
+  remaining twenty-eight are confirmed unreachable and are kept deliberately,
+  with the cost of keeping them written down. See `docs/spec-v998.md`.
 - **The data document said forty datasets were retired; twenty-eight of them are
   still built and shipped.** Retiring a tile in the spec-v29 prune did not delete
   its dataset — those folders are still produced by the build, hashed, verified,
