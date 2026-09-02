@@ -6,6 +6,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed
+
+- **The data document said forty datasets were retired; twenty-eight of them are
+  still built and shipped.** Retiring a tile in the spec-v29 prune did not delete
+  its dataset — those folders are still produced by the build, hashed, verified,
+  copied into `dist/` and re-stamped by the weekly refresh. Three more in the
+  same state were listed nowhere at all. The section is now two lists, deleted
+  and still-built, with a check that holds both to the tree and fails if any
+  `data/` folder is unaccounted for. Nothing is deleted: which of the
+  thirty-one can go needs a per-dataset check of how each is loaded, and the
+  first grep-based answer was wrong. See `docs/spec-v996.md`.
+
 ### Security
 
 - **The licensing guarantee in the docs was enforced by two tests that had not

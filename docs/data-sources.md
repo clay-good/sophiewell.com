@@ -163,45 +163,55 @@ in a future cleanup pass.
 that drives the hero search (spec-v7 §3.2). It is consumed by
 `lib/synonyms.js` at boot. Project-author original, MIT-licensed.
 
-## Retired datasets
+## Retired tiles, and what happened to their data
 
-The following data folders were bundled in v1-v8 and have been
-retired:
+The spec-v29 wave 29-2 nurse-first prune and the spec-v10 clinical pivot retired
+a large set of tiles. **Retiring a tile did not delete its dataset.** Of the
+forty data folders those waves named, twelve are gone and twenty-eight are still
+on disk — still produced by `scripts/build-data.mjs`, still hashed into a
+manifest, still verified by `npm run data:verify`, still copied into `dist/`, and
+still re-stamped by the weekly refresh. This section used to list all forty
+together as "retired", which is why nobody noticed. Three more folders in the
+same state — `hcpcs-modifiers/`, `pos-codes/` and `revenue-codes/`, the pieces
+the old `crosswalks/` dataset was split into — were named in no list at all, and
+the coverage check below is what found them.
 
-- **Code lookups (spec-v29 wave 29-2 §2.1):** `icd10cm/`, `hcpcs/`,
-  `cpt-summaries/`, `ndc/`, `crosswalks/` (POS, modifier, revenue,
-  CARC, RARC), `tob-codes/`, `nubc-special-codes/`, `drg/`, `apc/`,
-  `icd10-pcs/`, `rxnorm/`, `npi/`.
-- **Patient-administrative infographics (spec-v29 wave 29-2 §2.2):**
-  `cms-1500-fields/`, `ub04-fields/`, `eob-glossary/`, plus the
-  `lib/decoder.js` regex pipeline.
-- **Field-medicine reference cards (spec-v29 wave 29-2 §2.3):**
-  `aha-reference/`, `cpr-aha-numeric/`, `tccc/`, `toxidromes/`,
-  `dot-erg/`, `niosh-pg/`, `environmental/` (hypothermia / heat-
-  illness staging tables).
-- **Lab and pharmacy reference tables (spec-v29 wave 29-2 §2.4):**
-  `lab-ranges-adult/`, `lab-ranges-peds/`,
-  `therapeutic-drug-levels/`, `tox-levels/`, `iv-to-po/`,
-  plus the `data/clinical/lab-ranges.json` and
-  `data/clinical/ismp-high-alert.json` files inside the clinical
-  folder.
-- **Pricing / coverage / enforcement (spec-v10 + spec-v29):**
-  `mpfs/`-driven Medicare Fee Lookup, `nadac/`, `ncci/`, `mue/`,
-  `coverage/` (LCD / NCD), `enforcement/` (OIG exclusions,
-  Medicare opt-out), `hospital-prices/`, `no-surprises/`,
-  `state-rights/`. Some folders linger on disk but no tile
-  reads them.
-- **Eligibility & benefits (spec-v29 wave 29-2 §2.2):**
-  `medicaid-state/`, `va-eligibility/`, `tricare-plans/`,
-  `ihs-eligibility/`.
-- **Other (spec-v29 wave 29-2):** Beers Criteria
-  (`data/clinical/beers.json`), pediatric vitals
-  (`data/clinical/pediatric-vitals.json`), ASA status
-  (`data/clinical/asa-status.json`), Mallampati class
-  (`data/clinical/mallampati.json`).
+`test/unit/retired-datasets.test.js` holds both lists to the tree: a folder
+listed as deleted must not exist, a folder listed as still-built must, and every
+folder under `data/` must be accounted for by one list, by a tile that reads it,
+or by the build-time set.
 
-Every retirement is recorded in `CHANGELOG.md` under the
-appropriate spec-v29 wave 29-2 entry.
+**Deleted — the folder is gone (12):**
+`coverage/` (LCD / NCD), `enforcement/` (OIG exclusions, Medicare opt-out),
+`hospital-prices/`, `ihs-eligibility/`, `medicaid-state/`, `mue/`, `nadac/`,
+`ncci/`, `npi/`, `state-rights/`, `tricare-plans/`, `va-eligibility/`.
+
+**Tile retired, data still built and shipped (31):**
+`aha-reference/`, `apc/`, `cms-1500-fields/`, `cpr-aha-numeric/`,
+`cpt-summaries/`, `crosswalks/`, `dot-erg/`, `drg/`, `environmental/`,
+`eob-glossary/`, `hcpcs/`, `hcpcs-modifiers/`, `icd10-pcs/`, `icd10cm/`,
+`iv-to-po/`, `lab-ranges-adult/`, `lab-ranges-peds/`, `mpfs/`, `ndc/`,
+`niosh-pg/`, `no-surprises/`, `nubc-special-codes/`, `pos-codes/`,
+`revenue-codes/`, `rxnorm/`, `tccc/`, `therapeutic-drug-levels/`, `tob-codes/`,
+`tox-levels/`, `toxidromes/`, `ub04-fields/`. Together they are 50.2 KB.
+
+Sixteen of the thirty-one are not mentioned anywhere in `app.js`, `lib/` or
+`views/` — 28.1 KB of it. The rest are mentioned, but a mention is not proof of a
+fetch: several are source identifiers in the prior-auth ledger rather than data
+loads, and `toxidromes/` is read by a live tile through a path other than
+`META.source.dataset`. **Deciding which of the thirty-one can be deleted needs a
+per-dataset check of how each is loaded, not a grep**, which is why this section
+records the state rather than acting on it. The prize for doing that work is not
+mainly the 50 KB: thirty-one of the forty-six datasets the weekly refresh
+re-stamps are in this list, which is most of what makes that pull request noise.
+
+Some individual files inside surviving folders were removed with their tiles:
+`data/clinical/lab-ranges.json`, `data/clinical/ismp-high-alert.json`,
+`data/clinical/beers.json`, `data/clinical/pediatric-vitals.json`,
+`data/clinical/asa-status.json` and `data/clinical/mallampati.json`.
+
+Every retirement is recorded in `CHANGELOG.md` under the appropriate spec-v29
+wave 29-2 entry.
 
 ## Manifests
 
