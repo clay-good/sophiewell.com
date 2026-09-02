@@ -38,6 +38,20 @@ export default defineConfig({
       reuseExistingServer: !process.env.CI,
       timeout: 30000,
     },
+    // spec-v986: the same dist, with the REAL service worker.
+    //
+    // scripts/serve.mjs answers /sw.js with a self-unregistering stub unless
+    // SERVE_SW is set, because the shell cache keys on a build hash that is the
+    // literal string "dev" in the source tree -- without the stub every local
+    // edit is served from a stale copy. The escape hatch has been there since
+    // the stub was written, "when the offline behavior itself is what you are
+    // testing", and nothing had ever used it. works-offline.spec.js does.
+    {
+      command: 'SERVE_ROOT=dist SERVE_SW=1 PORT=4175 node scripts/serve.mjs',
+      url: 'http://localhost:4175/commitments/',
+      reuseExistingServer: !process.env.CI,
+      timeout: 30000,
+    },
   ],
   projects: [
     { name: 'chromium', use: { ...devices['Desktop Chrome'] } },

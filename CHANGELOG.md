@@ -82,6 +82,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   verified on its own, and a scheme that grouped them together would silently
   drop one. See `docs/spec-v983.md`.
 
+### Added
+
+- **The promise that calculators keep working offline is now tested.** Two
+  checks guarded the machinery around it — one proving nothing leaves your
+  device, one proving the offline file list matches the page — and neither
+  touched the promise itself. The install step ignores individual download
+  failures by design, so a file that failed to save was simply missing, and
+  nothing noticed. There is now a test that reads the offline store directly and
+  fails when anything the list promises is absent. Two ways of simulating "no
+  network" were tried first and both passed even with the store emptied, so
+  neither shipped. See `docs/spec-v986.md`.
+
 ### Fixed
 
 - **Two more checks could have gone the same way, and now cannot.** After the
