@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Security
+
+- **Every dependency override is now a patched floor rather than an exact pin.**
+  Eleven Dependabot advisories were open on `main` (nine high), and eight of them
+  existed *because* the July fix that was meant to close them wrote exact
+  versions: `"fast-uri": "3.1.5"` held the tree on the vulnerable release when
+  3.1.6 shipped the patch. `fast-uri`, `qs` and `browserslist` now resolve to
+  patched versions and `npm audit` reports 0 vulnerabilities in both the root and
+  `mcp/` trees. The four remaining exact pins were converted to caret ranges as
+  well, which upgrades nothing today — re-resolving both lockfiles produced no
+  change in resolved versions — but stops the same trap recurring. `npm ci` still
+  installs exact versions, so build determinism is unchanged. None of these
+  packages reaches the shipped site, which bundles no npm code. See
+  `docs/spec-v989.md`.
+
 ### Changed
 
 - **Seven calculators now link straight through to their source paper, and four
