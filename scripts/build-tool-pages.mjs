@@ -1152,7 +1152,7 @@ async function main() {
     // A lede is one sentence, so take the whole first sentence instead; only
     // ellipsize when that single sentence is itself too long to lead with.
     //
-    // The 127 tiles with hand-authored copy print it again under "What this
+    // The tiles with hand-authored copy print it again under "What this
     // is", so a lede lifted from it says the same sentence twice on one
     // screen. Take that sentence out of the section when it fits as a lede;
     // when it is too long to lead with, lead with the adapter summary instead

@@ -121,6 +121,11 @@ async function main() {
   }
   // spec-v46 §6: catalog-count drift rule.
   const truth = await readUtilitiesLength();
+  const blind = assertRuleStillSees(truth);
+  if (blind) {
+    console.error(`grep-check: ${blind}`);
+    process.exit(1);
+  }
   const catalogViolations = await scanCatalogCountDrift(truth);
   for (const v of catalogViolations) violations.push(v);
 
@@ -137,14 +142,69 @@ async function main() {
 
 // spec-v46 §6 ---------------------------------------------------------------
 //
-// A 3-digit decimal literal [100, 999] adjacent to one of the catalog-count
-// words is a "putative tile count" and must equal `UTILITIES.length`. The
-// rule applies to user-facing surfaces only; historical spec docs, the per-
-// tile audit logs under docs/audits/**, and any line carrying the explicit
+// A decimal literal [100, 9999] adjacent to one of the catalog-count words is a
+// "putative tile count" and must equal `UTILITIES.length`. The rule applies to
+// user-facing surfaces only; historical spec docs, the per-tile audit logs under
+// docs/audits/**, and any line carrying the explicit
 // `<!-- catalog-truth:historical -->` escape are exempt.
+//
+// spec-v992: this used to read `\d{3}` with the range capped at 999, so it went
+// blind the day the catalog passed a thousand tiles and stayed blind for the
+// next seven hundred. `docs/architecture.md` said the search ran "over all 1145
+// utilities" and nothing noticed. It also read "1,704" as the number 704,
+// because the lookbehind stopped at digits and let a thousands comma through.
+// Both are fixed: comma-grouped numbers are read whole, and four digits count.
+//
+// The cost of four digits is that years look like counts. A number in
+// YEAR_BAND is skipped -- and because that carve-out is exactly how the rule
+// went blind the first time, `assertRuleStillSees` fails loudly if the catalog
+// itself ever grows into the band, rather than letting the check quietly stop
+// covering its own subject a second time.
 
 const CATALOG_WORDS = /(tiles?|tools?|calculators?|utilit|deterministic)/i;
 const CATALOG_ESCAPE = /catalog-truth:historical/;
+
+// Four-digit numbers beside a catalog word are overwhelmingly publication years
+// -- "CDC 2022", "Ley 2012 point weights", "spec-v61 bedside tiles (added
+// 2026-06-06)". Skip the band they live in. Exported so the unit test can pin
+// both halves: a year is ignored, a count is not.
+export const YEAR_BAND = [1900, 2099];
+export const isYearLike = (n) => n >= YEAR_BAND[0] && n <= YEAR_BAND[1];
+
+// The guard that keeps this rule from going blind the way it did at 999. If the
+// catalog ever grows into YEAR_BAND, every real count becomes indistinguishable
+// from a year and the carve-out above starts hiding the drift it was written to
+// avoid. Fail then, with the remedy, instead of silently passing.
+// driftedCountsOnLine(line, truth) -> [number]. Pure, so a test can prove each
+// half of the rule on a synthetic line rather than on the live repo: a
+// four-digit drift is caught, a comma-grouped count is read whole, a
+// publication year is ignored, and the true count passes.
+export function driftedCountsOnLine(line, truth) {
+  const out = [];
+  // Comma grouping included -- "1,704" is one number, not the number 704.
+  const numRe = /(?<![\d.,])(\d{1,3}(?:,\d{3})+|\d{3,4})(?![\d.,])/g;
+  let m;
+  while ((m = numRe.exec(line)) !== null) {
+    const num = Number(m[1].replace(/,/g, ''));
+    if (num < 100 || num > 9999) continue;
+    if (isYearLike(num)) continue;
+    // Adjacency window: within 40 chars on either side of the number, on the
+    // same line, look for one of the catalog words.
+    const lo = Math.max(0, m.index - 40);
+    const hi = Math.min(line.length, m.index + m[1].length + 40);
+    if (!CATALOG_WORDS.test(line.slice(lo, hi))) continue;
+    if (num === truth) continue;
+    out.push(num);
+  }
+  return out;
+}
+
+export function assertRuleStillSees(truth) {
+  if (isYearLike(truth)) {
+    return `catalog-count rule: the catalog is now ${truth}, inside the ${YEAR_BAND[0]}-${YEAR_BAND[1]} band this rule skips as publication years, so it can no longer see a drifted count. Replace the year carve-out in scripts/grep-check.mjs (for example, require the catalog word to follow the number) before shipping this tile.`;
+  }
+  return null;
+}
 
 async function readUtilitiesLength() {
   const appJs = await readFile(join(ROOT, 'app.js'), 'utf8');
@@ -261,19 +321,7 @@ async function scanCatalogCountDrift(truth) {
       for (let lineNo = from; lineNo <= to; lineNo += 1) {
         const line = lines[lineNo - 1] || '';
         if (escaped.has(lineNo)) continue;
-        // Find every 3-digit literal on the line.
-        const numRe = /(?<![\d.])(\d{3})(?![\d.])/g;
-        let m;
-        while ((m = numRe.exec(line)) !== null) {
-          const num = Number(m[1]);
-          if (num < 100 || num > 999) continue;
-          // Adjacency window: within 40 chars on either side of the number,
-          // on the same line, look for one of the catalog words.
-          const lo = Math.max(0, m.index - 40);
-          const hi = Math.min(line.length, m.index + m[1].length + 40);
-          const window = line.slice(lo, hi);
-          if (!CATALOG_WORDS.test(window)) continue;
-          if (num === truth) continue;
+        for (const num of driftedCountsOnLine(line, truth)) {
           violations.push({
             file: rel,
             line: lineNo,
@@ -287,7 +335,9 @@ async function scanCatalogCountDrift(truth) {
   return violations;
 }
 
-main().catch((err) => {
-  console.error('grep-check: error', err);
-  process.exit(2);
-});
+if (process.argv[1] && process.argv[1].endsWith('grep-check.mjs')) {
+  main().catch((err) => {
+    console.error('grep-check: error', err);
+    process.exit(2);
+  });
+}

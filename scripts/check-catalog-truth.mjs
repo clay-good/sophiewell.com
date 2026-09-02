@@ -58,6 +58,28 @@ function countUtilities(appJsText) {
   return matches.length;
 }
 
+// parseUtilityIds(appJsText) -> [id]. The same walk as countUtilities, but
+// returning the ids rather than counting them, so a check can ask "does a live
+// tile own this file?" instead of the narrower "was this id pruned at v29?".
+export function parseUtilityIds(appJsText) {
+  const start = appJsText.indexOf('const UTILITIES = [');
+  if (start === -1) throw new Error('catalog-truth: cannot locate `const UTILITIES = [` in app.js');
+  let depth = 0;
+  let i = appJsText.indexOf('[', start);
+  let end = -1;
+  for (; i < appJsText.length; i += 1) {
+    const ch = appJsText[i];
+    if (ch === '[') depth += 1;
+    else if (ch === ']') {
+      depth -= 1;
+      if (depth === 0) { end = i; break; }
+    }
+  }
+  if (end === -1) throw new Error('catalog-truth: cannot locate end of UTILITIES array');
+  const body = appJsText.slice(start, end);
+  return [...body.matchAll(/^\s{2}\{ id: '([^']+)',/gm)].map((m) => m[1]);
+}
+
 // Each surface: { name, file, extract: (text) => number | null }
 function makeSurfaces() {
   return [
@@ -238,9 +260,33 @@ async function main() {
   const copyIds = (await readdir(copyDir))
     .filter((f) => f.endsWith('.json'))
     .map((f) => f.replace(/\.json$/, ''));
-  const deadCopy = copyIds.filter((id) => removed.has(id)).sort();
+  // spec-v992: this used to ask only whether the id was in REMOVED_V29_IDS,
+  // which is one way a tile stops existing and not the common one. Four files
+  // -- bsa_burn, qtc-suite, cincinnati, lights -- belonged to tiles retired
+  // LATER, and the summary line below went on printing "0 orphan copy" with
+  // all four on disk. The question is whether a live tile renders the file, so
+  // ask that.
+  const liveIds = new Set(parseUtilityIds(appJs));
+  const deadCopy = copyIds.filter((id) => !liveIds.has(id)).sort();
   if (deadCopy.length > 0) {
-    console.error(`check-catalog-truth: ${deadCopy.length} data/tool-copy/*.json file(s) belong to spec-v29-removed tiles (dead data; build skips them). Delete: ${deadCopy.join(', ')}`);
+    console.error(`check-catalog-truth: ${deadCopy.length} data/tool-copy/*.json file(s) belong to no live tile (dead data; the build skips them). Delete: ${deadCopy.join(', ')}`);
+    process.exit(1);
+  }
+
+  // spec-v992: docs/data-sources.md states how many tiles have hand-authored
+  // per-tile copy. It is not the catalog total, so it carries the
+  // `catalog-truth:historical` escape that exempts it from the blunt
+  // catalog-count rule in grep-check -- and that escape was the ONLY thing
+  // holding it, so it read 122 against a live 124. An escape from one check is
+  // not a licence to go unchecked; gate it here against the real number.
+  const dataSources = await readFile(join(ROOT, 'docs', 'data-sources.md'), 'utf8');
+  const statedCopy = Number((dataSources.match(/for the ([\d,]+) tiles that have bespoke pre-rendered copy/) || [])[1]?.replace(/,/g, ''));
+  if (!Number.isFinite(statedCopy)) {
+    console.error('check-catalog-truth: docs/data-sources.md no longer states how many tiles have hand-authored per-tile copy.');
+    process.exit(1);
+  }
+  if (statedCopy !== copyIds.length) {
+    console.error(`check-catalog-truth: docs/data-sources.md says ${statedCopy} tiles have hand-authored copy; data/tool-copy/ holds ${copyIds.length}.`);
     process.exit(1);
   }
 
@@ -309,10 +355,15 @@ async function main() {
     process.exit(1);
   }
 
-  console.log(`check-catalog-truth: clean (${truth} tiles across ${surfaces.length} surfaces, ${docLinters} document-linter, ${removed.size} v29-removed ids guarded, 0 orphan copy, README example matches, ${Object.keys(labelFiles[0].labels).length} group labels agree across ${labelFiles.length} files, README source-link count ${straightThrough} matches)`);
+  console.log(`check-catalog-truth: clean (${truth} tiles across ${surfaces.length} surfaces, ${docLinters} document-linter, ${removed.size} v29-removed ids guarded, 0 orphan copy, ${copyIds.length} hand-authored copy files stated, README example matches, ${Object.keys(labelFiles[0].labels).length} group labels agree across ${labelFiles.length} files, README source-link count ${straightThrough} matches)`);
 }
 
-main().catch((err) => {
-  console.error('check-catalog-truth: error', err);
-  process.exit(2);
-});
+// spec-v992: only when run as a script. `parseUtilityIds` is imported by
+// test/unit/catalog-count-rule.test.js, and a check that runs at import turns
+// every importer into a second copy of the gate.
+if (process.argv[1] && process.argv[1].endsWith('check-catalog-truth.mjs')) {
+  main().catch((err) => {
+    console.error('check-catalog-truth: error', err);
+    process.exit(2);
+  });
+}

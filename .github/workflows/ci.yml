@@ -57,13 +57,20 @@ jobs:
         # into dist/. It regenerated the five icons with bytes that depended on
         # whether `sharp` happened to be in the dependency tree, and it stamped a
         # fresh clock into the SBOM on every run. Both are fixed; this fails if
-        # a build ever moves one of the paths it writes again. The dataset
-        # manifests are excluded on purpose -- the `Build seed data` step above
-        # re-stamps their fetchDate, which is its job.
+        # a build ever moves one of the paths it writes again.
+        #
+        # Two deliberate exclusions. The dataset manifests: the `Build seed data`
+        # step above re-stamps their fetchDate, which is its job (spec-v987).
+        # And data/search-corpus/manifest.json (spec-v993): its `gzipBytes` is a
+        # measurement taken with the local zlib, so it differs between a
+        # contributor's machine and this runner even when the corpus is
+        # byte-identical -- the `hash` beside it is what actually pins the
+        # content, and corpus.json and corpus-detail.json are checked in full.
         run: >-
           git diff --exit-code --
           index.html sitemap.xml report-catalog.js sbom.json sbom.md
-          data/search-corpus data/fields
+          data/search-corpus/corpus.json data/search-corpus/corpus-detail.json
+          data/fields
           favicon.ico favicon-16x16.png favicon-32x32.png apple-touch-icon.png logo.png
 
   # spec-v183: the optional stdio MCP surface. Independent of the site jobs.

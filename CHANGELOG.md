@@ -8,6 +8,27 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **The new build-idempotence check failed on a number that measures the
+  machine, not the build.** `data/search-corpus/manifest.json` records the
+  gzipped size of the search corpus, which the local zlib decides, so it differs
+  between a contributor's laptop and CI even when the corpus is byte-identical —
+  and it was. The check now covers the corpus files themselves, where a real
+  drift would show, and leaves the platform-dependent byte count out of the
+  assertion. See `docs/spec-v993.md`.
+- **The check that catches a wrong calculator count stopped working at a
+  thousand calculators.** It matched a three-digit number, so the day the
+  catalog passed 999 it went blind — and stayed blind for the next seven hundred
+  tiles, while `docs/architecture.md` told readers the search box covered "all
+  1145 utilities". The same pattern read the house number format "1,704" as the
+  number 704. Both are fixed, with unit tests that pin each half of the rule on
+  a synthetic line and a guard that fails loudly if the catalog ever grows into
+  the range the rule now skips as publication years. Two other stale counts came
+  out with it, and four hand-authored copy files belonging to retired
+  calculators were sitting under a check that reported "0 orphan copy" — three
+  of them carried prose worth keeping, so Light's Criteria, CPSS and
+  Lund-Browder gained the hand-authored page copy they never had. See
+  `docs/spec-v992.md`.
+
 - **The SBOM told you to verify it by regenerating it, and regenerating it never
   matched.** `sbom.md` ends with "re-run `npm run sbom` after a clean checkout
   and compare hashes" — but the generator stamped a fresh clock on every run, so

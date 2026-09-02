@@ -5,7 +5,7 @@
 sophiewell.com is an offline-first single-page application. Calculation remains
 entirely client-side. The browser receives `index.html`, `styles.css`, and
 `app.js` from the same origin, boots a vanilla JavaScript application, and renders the home view (a
-hero-search combobox over all 1145 utilities plus a static browse-by-category
+hero-search combobox over all 1,704 utilities plus a static browse-by-category
 nav). Each utility runs entirely client side and operates either on user-supplied
 input or on bundled reference data served from the same origin.
 

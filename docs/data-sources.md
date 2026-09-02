@@ -133,13 +133,17 @@ original content, MIT-licensed.
 
 `data/tool-copy/` carries the hand-authored lede + intro markdown
 <!-- catalog-truth:historical -->
-for the 122 tiles that have bespoke pre-rendered copy on their
+for the 127 tiles that have bespoke pre-rendered copy on their
 `/tools/<id>/` page (see `scripts/build-tool-pages.mjs`, which
 reports this as "N with hand-authored copy"). Each file is
-project-author original content. The "122" here is the count of
+project-author original content. The "127" here is the count of
 tiles whose id matches a `data/tool-copy/<id>.json` and therefore
-renders that copy — not the catalog total. It grows independently
-as more per-tile prose is written. Every file maps 1:1 to a
+renders that copy — not the catalog total, which is why the line
+carries the escape that exempts it from the blunt catalog-count
+rule. That escape used to be the whole story, and the sentence
+read 122 against a live 124; `check-catalog-truth.mjs` now holds
+it to the real number instead. It still grows independently as
+more per-tile prose is written. Every file maps 1:1 to a
 current tile: `check-catalog-truth.mjs` fails CI if copy lingers
 for a tile removed in the v29 prune (`REMOVED_V29_IDS`), so the
 directory cannot re-accumulate the 57 orphaned files that the v29

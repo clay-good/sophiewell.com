@@ -109,7 +109,7 @@ itself; this is where to look it up.
 
 | Check | Refuses |
 | --- | --- |
-| `grep-check.mjs` | `innerHTML`, cookies, network calls, third-party scripts |
+| `grep-check.mjs` | `innerHTML`, cookies, network calls, third-party scripts, and a calculator count that drifted in any doc |
 | `check-us-english.mjs` | British spellings in anything a reader sees |
 | `check-lede-copy.mjs` | an opening line that does not read as a sentence |
 | `check-output-safety.mjs` | a result that can print `NaN`, `Infinity`, or an order |
