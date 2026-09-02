@@ -59,3 +59,41 @@ export function findLabelDrift(files) {
   }
   return out;
 }
+
+// spec-v994: docs/architecture.md restates the taxonomy as a markdown table --
+// letter, label, tile count. It is the doc a new contributor reads first, and it
+// had drifted badly: five of the six groups it named were named wrongly, and it
+// called three of them retired while they were live. Prose cannot join
+// LABEL_FILES (that parser reads a JS object literal), so parse the table and
+// check it against app.js instead of leaving it unchecked.
+export const ARCHITECTURE_DOC = 'docs/architecture.md';
+
+// parseGroupTable(markdown) -> { A: { label, tiles }, ... } | null when absent.
+export function parseGroupTable(text) {
+  const rows = [...text.matchAll(/^\|\s*([A-Z])\s*\|\s*([^|]+?)\s*\|\s*(\d+)\s*\|\s*$/gm)];
+  if (rows.length === 0) return null;
+  const out = {};
+  for (const [, letter, label, tiles] of rows) out[letter] = { label, tiles: Number(tiles) };
+  return out;
+}
+
+// findGroupTableDrift(table, labels, counts) -> [string].
+export function findGroupTableDrift(table, labels, counts) {
+  const out = [];
+  if (!table) return [`${ARCHITECTURE_DOC} no longer carries the group table`];
+  for (const letter of Object.keys(labels)) {
+    const row = table[letter];
+    if (!row) { out.push(`${ARCHITECTURE_DOC} is missing group ${letter} ("${labels[letter]}")`); continue; }
+    if (row.label !== labels[letter]) {
+      out.push(`${ARCHITECTURE_DOC} calls group ${letter} "${row.label}" where app.js calls it "${labels[letter]}"`);
+    }
+    const live = counts[letter] || 0;
+    if (row.tiles !== live) {
+      out.push(`${ARCHITECTURE_DOC} says group ${letter} holds ${row.tiles} tiles; app.js has ${live}`);
+    }
+  }
+  for (const letter of Object.keys(table)) {
+    if (!(letter in labels)) out.push(`${ARCHITECTURE_DOC} names a group ${letter} that app.js does not declare`);
+  }
+  return out;
+}

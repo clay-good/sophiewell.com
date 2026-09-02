@@ -11,7 +11,7 @@
 import { readFile, readdir } from 'node:fs/promises';
 import { join } from 'node:path';
 import { pathToFileURL } from 'node:url';
-import { LABEL_FILES, parseGroupLabels, findLabelDrift } from './lib/group-labels.mjs';
+import { LABEL_FILES, parseGroupLabels, findLabelDrift, ARCHITECTURE_DOC, parseGroupTable, findGroupTableDrift } from './lib/group-labels.mjs';
 
 const ROOT = process.cwd();
 
@@ -78,6 +78,19 @@ export function parseUtilityIds(appJsText) {
   if (end === -1) throw new Error('catalog-truth: cannot locate end of UTILITIES array');
   const body = appJsText.slice(start, end);
   return [...body.matchAll(/^\s{2}\{ id: '([^']+)',/gm)].map((m) => m[1]);
+}
+
+// countTilesByGroup(appJsText) -> { G: 1344, ... }. Every letter that has at
+// least one tile; a declared label with no tiles is simply absent.
+export function countTilesByGroup(appJsText) {
+  const start = appJsText.indexOf('const UTILITIES = [');
+  if (start === -1) throw new Error('catalog-truth: cannot locate `const UTILITIES = [` in app.js');
+  const body = appJsText.slice(start, appJsText.indexOf('\n];', start));
+  const counts = {};
+  for (const m of body.matchAll(/^  \{ id: '[^']+',[^\n]*group: '([A-Z])'/gm)) {
+    counts[m[1]] = (counts[m[1]] || 0) + 1;
+  }
+  return counts;
 }
 
 // Each surface: { name, file, extract: (text) => number | null }
@@ -355,7 +368,20 @@ async function main() {
     process.exit(1);
   }
 
-  console.log(`check-catalog-truth: clean (${truth} tiles across ${surfaces.length} surfaces, ${docLinters} document-linter, ${removed.size} v29-removed ids guarded, 0 orphan copy, ${copyIds.length} hand-authored copy files stated, README example matches, ${Object.keys(labelFiles[0].labels).length} group labels agree across ${labelFiles.length} files, README source-link count ${straightThrough} matches)`);
+  // spec-v994: the same taxonomy, restated as a table in the architecture doc.
+  const groupCounts = countTilesByGroup(appJs);
+  const tableDrift = findGroupTableDrift(
+    parseGroupTable(await readFile(join(ROOT, ARCHITECTURE_DOC), 'utf8')),
+    labelFiles[0].labels,
+    groupCounts,
+  );
+  if (tableDrift.length) {
+    console.error('check-catalog-truth: the architecture doc\'s group table disagrees with app.js:');
+    for (const d of tableDrift) console.error(`  ${d}`);
+    process.exit(1);
+  }
+
+  console.log(`check-catalog-truth: clean (${truth} tiles across ${surfaces.length} surfaces, ${docLinters} document-linter, ${removed.size} v29-removed ids guarded, 0 orphan copy, ${copyIds.length} hand-authored copy files stated, README example matches, ${Object.keys(labelFiles[0].labels).length} group labels agree across ${labelFiles.length} files, architecture group table agrees, README source-link count ${straightThrough} matches)`);
 }
 
 // spec-v992: only when run as a script. `parseUtilityIds` is imported by

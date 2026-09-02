@@ -4,10 +4,10 @@
 
 sophiewell.com is an offline-first single-page application. Calculation remains
 entirely client-side. The browser receives `index.html`, `styles.css`, and
-`app.js` from the same origin, boots a vanilla JavaScript application, and renders the home view (a
-hero-search combobox over all 1,704 utilities plus a static browse-by-category
-nav). Each utility runs entirely client side and operates either on user-supplied
-input or on bundled reference data served from the same origin.
+`app.js` from the same origin, boots a vanilla JavaScript application, and renders the home view: one
+combobox over all 1,704 utilities, and nothing else. Each utility runs entirely
+client side and operates either on user-supplied input or on bundled reference
+data served from the same origin.
 
 The one hosted write path is an anonymous tool report: a separate API-only
 Cloudflare Worker validates a bounded, user-initiated submission with Turnstile
@@ -60,9 +60,12 @@ only the deliberate feedback form and cannot read or serve the asset tree.
 
 The user navigates to sophiewell.com. The browser receives `index.html`,
 `styles.css`, and `app.js`. The application boots, registers a service worker
-for offline use, and renders the home view: a `#hero-search` combobox and a
-static browse-by-category nav (the spec-v51/v53 redesign replaced the earlier
-tile-grid + audience-filter-chip home). The combobox routes a typed query
+for offline use, and renders the home view: a `#hero-search` combobox, a line
+of example questions, and no other affordance. There is no category nav and no
+tile grid — spec-v51/v53 replaced the tile-grid + audience-filter-chip home, and
+spec-v751–v756 reduced what replaced it to the single box. Focusing the empty
+input lists the whole catalogue A–Z, which is the "browse everything" path the
+retired picker used to provide. The combobox routes a typed query
 through a deterministic name/id ranker plus the `lib/prompt.js` synonym/phrasing
 resolver; an `#a=<audience>` deep-link still biases that resolver toward one of
 the spec-v29 §5.3 audiences (Nurse is the default), but there is no on-page
@@ -133,37 +136,42 @@ does not participate in calculation and fails closed without affecting any
 tool. Keeping those paths separate preserves offline use and constrains the new
 privacy and maintenance surface to one explicit action.
 
-## v4 group expansion (post-v29 surface)
+## Tile groups
 
-spec-v4 originally added six new tile groups (J-O) alongside the existing
-A-I. After the spec-v29 wave 29-2 nurse-first prune, the surviving group
-shape is:
+Every tile carries a single-letter `group`, and `GROUP_LABELS` in `app.js` is the
+source of truth for what that letter is called on screen. The label is declared
+five times — once in `app.js` and once in each builder that renders it onto a
+pre-rendered page, plus the audit report — and `check-catalog-truth.mjs` holds
+all five in step (spec-v953). It holds this table too, both the names and the
+counts (spec-v994), because a taxonomy restated in prose drifts: this section
+used to name five of the six groups it listed incorrectly and call three of them
+retired while they were live.
 
-- **J Public Health & Infectious Disease**: decision trees for
-  tetanus prophylaxis, rabies PEP, bloodborne-pathogen exposure, TB
-  testing interpretation, and STI screening intervals. (The ACIP /
-  Yellow Book traveller schedules were never v29-relevant and remain
-  on the v30 deferred list.)
-- **K Lab Reference** — *retired in spec-v29 wave 29-2 §2.4.* The
-  static adult / pediatric reference-range tables, TDM table, and
-  tox-level table were removed. Calculators that consume these
-  thresholds inside their math (e.g. `lab-interpret`, NEWS2,
-  `abx-renal`) remain and embed the thresholds inline.
-- **L Forms & Numbers Literacy** — *retired in spec-v29 wave 29-2
-  §2.2.* The CMS-1500 and UB-04 field-locator decoders and the EOB
-  jargon glossary were removed. The workflow generators that
-  *assemble* a tailored document (appeal letter, HIPAA Right of
-  Access, HIPAA authorization, ROI, discharge instructions,
-  specialty-visit questions, wallet card, SBAR handoff) stay.
-- **N Literacy Helpers**: universal unit converter, time-to-dose
-  helper, pediatric weight converter — the calculator-shaped tiles
-  in this group stay.
-- **O Patient Safety** — *retired in spec-v29 wave 29-2 §2.4.* The
-  ISMP high-alert wallet card was removed; the safety thresholds it
-  carried are now embedded in the calculators that need them.
+| Group | Label | Tiles |
+| --- | --- | --- |
+| A | Billing & Coding | 3 |
+| B | Billing & Reimbursement | 25 |
+| C | Insurance & Patient Literacy | 11 |
+| E | Clinical Math & Conversions | 188 |
+| F | Medication & Infusion | 63 |
+| G | Clinical Scoring & Risk | 1344 |
+| H | Workflow & Documentation | 26 |
+| I | EMS & Field Medicine | 21 |
+| J | Immunization & Infectious Disease | 5 |
+| K | Reference Ranges | 0 |
+| L | Insurance Glossary | 0 |
+| M | State & Coverage Reference | 0 |
+| N | Pediatrics & Neonatal | 17 |
+| O | High-Alert & Safety | 0 |
+| P | Revenue Cycle & Utilization | 1 |
 
-Each surviving tile reuses the four shared renderers added in v4.0
-(`lib/tree.js`, `lib/screener.js`, `lib/table.js`, `lib/print.js`)
-plus the bundled offline-seed datasets. No new architecture, no new
-runtime dependencies, and no change to the CSP / storage / no-AI
-postures established in v1-v3.
+Four labels survive with no tiles behind them. K, L and O were emptied by the
+spec-v29 wave 29-2 nurse-first prune — the static reference-range, code-locator
+and glossary tables went, and the thresholds they carried are embedded in the
+calculators that need them (`lab-interpret`, NEWS2, `abx-renal`). M went the
+same way. The labels stay declared so a tile can be moved back into one of
+those letters without reintroducing a name, and they are kept in step by the
+same check as the live ones.
+
+There is no group D. It was "Provider & Plan Lookup", and spec-v5 cut it with
+the 38 live-data tiles that were its whole contents; the letter was not reused.

@@ -8,6 +8,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **The architecture document described a different product.** It told a new
+  contributor the home page carries "a static browse-by-category nav" — it does
+  not, and has not since the home became a single ask box — and its tile-group
+  section named five of the six groups it listed incorrectly, called three of
+  them retired while they were live, and left out the group holding 1,344 of the
+  1,704 calculators. The section is now a table of every group with its label and
+  tile count, checked against the code on both columns, so it cannot drift again.
+  See `docs/spec-v994.md`.
+
 - **The new build-idempotence check failed on a number that measures the
   machine, not the build.** `data/search-corpus/manifest.json` records the
   gzipped size of the search corpus, which the local zlib decides, so it differs

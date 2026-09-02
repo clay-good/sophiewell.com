@@ -65,3 +65,59 @@ test('parseUtilityIds returns the live ids the orphan-copy guard needs', () => {
   ].join('\n'));
   assert.deepEqual(ids, ['alpha', 'beta']);
 });
+
+// spec-v994: the architecture doc restates the tile taxonomy as a table. It had
+// drifted to naming five of six groups wrongly and calling three of them
+// retired while they were live, so it is gated now. These pin the detector on
+// synthetic input: a right table passes, a wrong label and a wrong count each
+// fail, and a group present in one and not the other is named.
+
+import { parseGroupTable, findGroupTableDrift } from '../../scripts/lib/group-labels.mjs';
+import { countTilesByGroup } from '../../scripts/check-catalog-truth.mjs';
+
+const DOC = [
+  '| Group | Label | Tiles |',
+  '| --- | --- | --- |',
+  '| A | Billing & Coding | 3 |',
+  '| K | Reference Ranges | 0 |',
+].join('\n');
+const LABELS = { A: 'Billing & Coding', K: 'Reference Ranges' };
+
+test('the group table passes when it matches app.js', () => {
+  assert.deepEqual(findGroupTableDrift(parseGroupTable(DOC), LABELS, { A: 3 }), []);
+});
+
+test('a wrong tile count in the table is caught', () => {
+  const drift = findGroupTableDrift(parseGroupTable(DOC), LABELS, { A: 4 });
+  assert.equal(drift.length, 1);
+  assert.match(drift[0], /group A holds 3 tiles; app\.js has 4/);
+});
+
+test('a wrong label in the table is caught', () => {
+  const drift = findGroupTableDrift(parseGroupTable(DOC), { ...LABELS, A: 'Billing and Coding' }, { A: 3 });
+  assert.equal(drift.length, 1);
+  assert.match(drift[0], /calls group A "Billing & Coding" where app\.js calls it "Billing and Coding"/);
+});
+
+test('a group in only one of the two is named, in both directions', () => {
+  const missing = findGroupTableDrift(parseGroupTable(DOC), { ...LABELS, P: 'Revenue Cycle' }, { A: 3 });
+  assert.ok(missing.some((d) => /missing group P/.test(d)), missing.join('; '));
+  const extra = findGroupTableDrift(parseGroupTable(DOC), { A: 'Billing & Coding' }, { A: 3 });
+  assert.ok(extra.some((d) => /names a group K that app\.js does not declare/.test(d)), extra.join('; '));
+});
+
+test('a doc with no table at all fails rather than passing empty', () => {
+  assert.equal(parseGroupTable('# Architecture\n\nno table here'), null);
+  assert.deepEqual(findGroupTableDrift(null, LABELS, {}), ['docs/architecture.md no longer carries the group table']);
+});
+
+test('countTilesByGroup counts only top-level UTILITIES rows', () => {
+  const counts = countTilesByGroup([
+    'const UTILITIES = [',
+    "  { id: 'a', name: 'A', group: 'G', clinical: true },",
+    "  { id: 'b', name: 'B', group: 'G', clinical: true },",
+    "  { id: 'c', name: 'C', group: 'E', clinical: true },",
+    '];',
+  ].join('\n'));
+  assert.deepEqual(counts, { G: 2, E: 1 });
+});
