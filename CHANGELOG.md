@@ -8,6 +8,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **CONTRIBUTING said `npm run release:check` was "the same gate that runs in
+  CI". It ran about one of CI's three jobs.** It skipped `npm run test:mcp` —
+  421 tests, a whole CI job — and the entire end-to-end suite, which is where
+  this project's CI failures have actually landed. `test:mcp` is in
+  `release:check` now, and CONTRIBUTING says plainly that the e2e suite is not,
+  pointing at the 1.5-minute 320px subset instead. A test parses the CI workflow
+  and fails if a new step in either reproducible job is missing from the local
+  chain, so the sentence cannot go stale again. See `docs/spec-v997.md`.
+
 - **The data document said forty datasets were retired; twenty-eight of them are
   still built and shipped.** Retiring a tile in the spec-v29 prune did not delete
   its dataset — those folders are still produced by the build, hashed, verified,

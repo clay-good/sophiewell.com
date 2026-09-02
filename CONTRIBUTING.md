@@ -104,8 +104,8 @@ set deliberately; CI fails if a build rewrites any of them
 
 ## The gates, and what each is for
 
-`npm run release:check` runs the same chain CI does. When one fails it names
-itself; this is where to look it up.
+`npm run release:check` runs CI's lint and unit chain plus the MCP tool tests.
+When one fails it names itself; this is where to look it up.
 
 | Check | Refuses |
 | --- | --- |
@@ -126,8 +126,18 @@ itself; this is where to look it up.
 | `check-gates-documented.mjs` | a gate joining this chain without a row in this table |
 | `build-report-catalog.mjs --check` | the report Worker's id/name map out of date with the catalog |
 
-Before opening a PR, run `npm run release:check` locally. This is the
-same gate that runs in CI.
+Before opening a PR, run `npm run release:check` locally.
+
+**It is not the whole of CI.** CI runs three jobs — `unit`, `mcp` and `e2e` —
+and `release:check` covers the first two. It **does not run the end-to-end
+suite**, which needs Playwright browsers and about an hour, so a green
+`release:check` is not a green CI. `test/unit/release-check-covers-ci.test.js`
+holds the two reproducible jobs in step with the local chain: a new CI step in
+`unit` or `mcp` either joins `release:check` or is listed there as deliberately
+CI-only, with a reason.
+
+For the e2e half, the section below is the cheap substitute for the failure mode
+that has actually broken this project's CI.
 
 ### If you touched tile text, a label, or CSS, run `npm run test:mobile`
 
