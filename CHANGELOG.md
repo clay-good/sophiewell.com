@@ -77,9 +77,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   The browser test job takes about 57 minutes, and nothing cancelled a
   superseded run — so pushing a few fixups to one pull request would queue
   hours of work on code that no longer existed. Superseded pull-request runs
-  are now cancelled. Runs on the main branch are deliberately **not**: the
+  are now cancelled. Runs on the main branch are deliberately left alone: the
   deployed site tracks it, so every commit there is a deploy candidate and gets
-  verified on its own. See `docs/spec-v983.md`.
+  verified on its own, and a scheme that grouped them together would silently
+  drop one. See `docs/spec-v983.md`.
 
 ### Fixed
 

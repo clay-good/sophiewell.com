@@ -22,14 +22,25 @@ concurrency:
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 ```
 
-**Superseded pull-request runs are cancelled. Runs on `main` are not.**
+**Superseded pull-request runs are cancelled. Runs on `main` are untouched.**
 
-That asymmetry is the whole point and is worth stating plainly, because the tempting version —
-grouping by branch and cancelling everything — would be wrong here. The deployed site tracks `main`,
-so **every commit on `main` is a deploy candidate and has to be verified on its own**. Cancelling a
-superseded `main` run would leave a commit that was never tested sitting in the history of a site
-people use at a bedside. Keying the group on `github.sha` for pushes means each commit gets its own
-group and simply queues.
+That asymmetry is the whole point, so it is worth being exact about what the `main` half does:
+**nothing.** Keying a push's group on `github.sha` gives every commit its own group, so main runs
+never collide — none is cancelled, and none is queued either. The saving is entirely on pull
+requests, which is where the repetition actually is.
+
+Grouping `main` by branch instead is the tempting version and is worse than it looks. The deployed
+site tracks `main`, so every commit on it is a deploy candidate that has to be verified on its own —
+and GitHub keeps only **one** pending run per group. A third push would silently cancel the second
+commit's pending run, leaving a commit that was never tested in the history of a site people use at
+a bedside. Saving runner minutes is not worth that.
+
+## What this does not do
+
+It does not shorten today's five concurrent `main` runs, and it was never going to. The honest
+framing is that the waste this removes is a **contributor's**, not a maintainer's — which is the
+right thing to fix in a repository that has just become public, and the wrong thing to claim credit
+for on `main`.
 
 ## Not changed
 

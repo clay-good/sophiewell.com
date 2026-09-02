@@ -11,9 +11,16 @@ on:
 # grinding through the full browser matrix for another hour, and four pushes queue
 # four hours of runner time to verify code that no longer exists.
 #
-# Superseded PR runs are cancelled. Runs on `main` are NOT: the deployed site
-# tracks `main`, so every commit on it is a deploy candidate and has to be
-# verified on its own. They queue behind each other instead.
+# Superseded PR runs are cancelled. Runs on `main` are untouched -- and that is
+# deliberate, not an oversight. The deployed site tracks `main`, so every commit
+# on it is a deploy candidate that has to be verified on its own.
+#
+# Which is why a push is grouped by `github.sha`: one group per commit means main
+# runs never collide, so nothing of theirs is ever cancelled OR queued. Grouping
+# main by branch instead would be worse than it looks -- GitHub keeps only ONE
+# pending run per group, so a third push would silently cancel the second
+# commit's pending run and leave it unverified in the history of a site people
+# use at a bedside.
 concurrency:
   group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.sha }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
