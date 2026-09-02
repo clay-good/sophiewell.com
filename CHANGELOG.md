@@ -6,6 +6,24 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Removed
+
+- **Four calculators that were the same instrument twice are retired, and the
+  catalog is 1,704.** `qtc-suite` into `qtc`, `kings-score` into `king-score`,
+  `four-ts` into `four-ts-hit`, `bsa_burn` into `lund-browder`. Old links keep
+  working: each retired id redirects to its survivor in the browser and resolves
+  through `data/id-aliases.json` for agents, with a deprecation notice, until
+  2027-09-02. Two are worth naming. `bsa_burn` offered a "Lund-Browder" method
+  that had **no age chart** — it asked the reader to age-adjust the percentages
+  by hand and then summed them, so an entirely burned adult anterior trunk came
+  back as the Rule-of-Nines 18%; the survivor returns the chart's 13% and
+  reports 18% beside it as a cross-check, and scores a burned head at 19% for an
+  infant against 7% for an adult. And `qtc` and `qtc-suite` had been split down
+  the middle: searching "corrected qt" reached one tile while typing the same
+  question as a sentence prefilled the other. The 4Ts show-your-work panel moved
+  to the surviving tile and was rewritten against its scoring function rather
+  than copied. See `docs/spec-v973.md`.
+
 ### Changed
 
 - **The platelet-to-lymphocyte ratio is now read against a measured healthy

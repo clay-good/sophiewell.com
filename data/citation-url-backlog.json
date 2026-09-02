@@ -3,7 +3,6 @@
   "tiles": [
     "blood-compat",
     "bsa",
-    "bsa_burn",
     "bw-bsa-suite",
     "cao2-do2",
     "cci-platelet",
@@ -18,7 +17,6 @@
     "o2-cylinder-duration",
     "pbw-ardsnet",
     "qtc",
-    "qtc-suite",
     "retic-index",
     "start-triage",
     "vip-extravasation"

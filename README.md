@@ -5,7 +5,7 @@
 <h1 align="center">sophiewell.com</h1>
 
 <p align="center">
-  <strong>1708 free healthcare calculators that run entirely in your browser.</strong><br>
+  <strong>1704 free healthcare calculators that run entirely in your browser.</strong><br>
   No accounts, no ads, no telemetry, no AI.
 </p>
 
@@ -17,7 +17,7 @@
 <!--
   Machine-checked count (scripts/check-catalog-truth.mjs reads the line
   below; keep it in sync with UTILITIES.length in app.js):
-  At v960 close the catalog is 1708
+  At v973 close the catalog is 1704
   deterministic tiles.
 -->
 
@@ -36,7 +36,7 @@ Each calculator does one thing:
 |---|---|
 | **In** | The values you already have. It opens pre-filled with a worked example, so you can see the expected format before you type over it. |
 | **Out** | One number or grade, plus how the source says to read it. |
-| **Proof** | The method and primary citations together, one click away under "How this is calculated". 1,622 of the 1,708 link straight through to the source paper, and every one of those links is checked to resolve **and** to open the paper the citation names, not merely a paper. Twelve more say "Search PubMed for this source" because no index carries the book chapter or pre-1946 paper they cite. |
+| **Proof** | The method and primary citations together, one click away under "How this is calculated". 1,620 of the 1,704 link straight through to the source paper, and every one of those links is checked to resolve **and** to open the paper the citation names, not merely a paper. Twelve more say "Search PubMed for this source" because no index carries the book chapter or pre-1946 paper they cite. |
 
 For example, on [Wells Score for PE](https://sophiewell.com/#wells-pe)
 you tick the criteria that apply and get

@@ -1022,17 +1022,6 @@ export default [
     ],
   },
   {
-    id: 'four-ts',
-    summary: '4Ts score for heparin-induced thrombocytopenia (Lo 2006): thrombocytopenia, timing of platelet fall, thrombosis/sequelae, and other causes each graded 0-2; 0-3 low, 4-5 intermediate, 6-8 high pretest probability of HIT.',
-    compute: F.fourTs,
-    fields: [
-      { dom: '4t-thr', arg: 'thrombocytopenia', kind: 'number', required: true, label: 'Thrombocytopenia severity (0-2)' },
-      { dom: '4t-time', arg: 'timingOfFall', kind: 'number', required: true, label: 'Timing of platelet fall (0-2)' },
-      { dom: '4t-throm', arg: 'thrombosis', kind: 'number', required: true, label: 'Thrombosis or other sequelae (0-2)' },
-      { dom: '4t-oth', arg: 'otherCauses', kind: 'number', required: true, label: 'Other causes of thrombocytopenia (0-2)' },
-    ],
-  },
-  {
     id: 'isth-dic',
     summary: 'ISTH overt-DIC score (Taylor 2001): a required underlying-disorder gate, then platelets, fibrin marker, prolonged PT, and fibrinogen graded; total 0-8, >= 5 compatible with overt DIC. If the gate is not met, scoring is not applicable.',
     compute: F.isthDic,

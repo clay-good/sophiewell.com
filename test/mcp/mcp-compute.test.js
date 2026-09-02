@@ -1166,9 +1166,11 @@ test('lib/scoring-v4.js VTE / anticoagulation bleeding + risk worked calls (wave
   const hd = ok('herdoo2', { 'hd-legs': '1', 'hd-dd': '1', 'hd-bmi': '0', 'hd-age': '0' });
   assert.equal(hd.score, 2);
   assert.equal(hd.canDiscontinue, false);
-  const ft = ok('four-ts', { '4t-thr': '2', '4t-time': '2', '4t-throm': '1', '4t-oth': '1' });
+  // spec-v973: four-ts retired into four-ts-hit; the survivor's field ids and
+  // its `probability` key replace the retired tile's `band`.
+  const ft = ok('four-ts-hit', { 'fts-thrombocytopenia': '2', 'fts-timing': '2', 'fts-thrombosis': '1', 'fts-other': '1' });
   assert.equal(ft.score, 6);
-  assert.match(ft.band, /high/);
+  assert.equal(ft.probability, 'high');
   // ISTH DIC: gate met, platelets <50 (2) + strong marker (3) = 5, overt DIC.
   const id = ok('isth-dic', { 'id-gate': '1', 'id-plt': '<50', 'id-fdp': 'strong', 'id-pt': '<3s', 'id-fib': '>1' });
   assert.equal(id.score, 5);
@@ -1583,13 +1585,18 @@ test('lib/idcrit-v99.js Lund-Browder burn worked call (wave 81)', () => {
   assert.equal(lb.ruleOfNines, 25);
 });
 
-test('lib/field.js bsa_burn method-branched worked calls (wave 82)', () => {
-  // Rule of Nines: anterior trunk alone -> 18%.
-  assert.equal(ok('bsa_burn', { 'bb-method': 'nines', 'bb-n-trunk-anterior': '1' }).tbsa, 18);
-  // Rule of Nines: head + one arm -> 18%.
-  assert.equal(ok('bsa_burn', { 'bb-method': 'nines', 'bb-n-head': '1', 'bb-n-arm-left': '1' }).tbsa, 18);
-  // Lund-Browder: entered percents sum.
-  assert.equal(ok('bsa_burn', { 'bb-method': 'lund', 'bb-l-head': '7', 'bb-l-anterior-trunk': '13' }).tbsa, 20);
+// spec-v973: bsa_burn was retired into lund-browder, and the pair of numbers below is
+// why. The retired tile's "Lund-Browder" mode had no age chart: it summed percentages
+// the reader had been asked to age-adjust by hand, so an entirely burned anterior trunk
+// came back as the Rule-of-Nines 18% whatever the age. The survivor returns the chart
+// value, 13%, and reports the 18% separately as an independent cross-check.
+test('lib/idcrit-v99.js lund-browder applies the chart, not the Rule of Nines', () => {
+  const trunk = ok('lund-browder', { 'lb-age': 'adult', 'lb-ant-trunk': '1' });
+  assert.equal(trunk.tbsa, 13, 'the Lund-Browder chart value');
+  assert.equal(trunk.ruleOfNines, 18, 'the Rule of Nines cross-check, reported beside it');
+  // And the head is age-adjusted, which the retired tile could not do at all.
+  assert.equal(ok('lund-browder', { 'lb-age': 'infant', 'lb-head': '1' }).tbsa, 19);
+  assert.equal(ok('lund-browder', { 'lb-age': 'adult', 'lb-head': '1' }).tbsa, 7);
 });
 
 test('lib/scoring-v4.js ventilator SBT readiness + ARDSnet PEEP worked calls (wave 83)', () => {

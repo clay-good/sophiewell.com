@@ -74,7 +74,7 @@ const PROBES = [
   ['insulin sliding scale correction', ['insulin-correction']],
   ['blood transfusion volume child', ['peds-transfusion-volume']],
   ['burn fluid resuscitation parkland', ['burn-fluid']],
-  ['burn surface area rule of nines', ['bsa_burn']],
+  ['burn surface area rule of nines', ['lund-browder']],
   ['endotracheal tube size child', ['peds-ett']],
   ['apgar newborn', ['apgar']],
   ['gestational age due date', ['due-date', 'ballard']],
@@ -130,7 +130,7 @@ const PROBES = [
   // surfaced where the tile existed but the query mis-routed.
   ['serum osmolality calculation', ['osmolal-gap']],
   ['acute kidney injury staging', ['kdigo-aki']],
-  ['heparin induced thrombocytopenia 4t', ['four-ts']],
+  ['heparin induced thrombocytopenia 4t', ['four-ts-hit']],
   ['gestational diabetes screen', ['iadpsg', 'carpenter-coustan']],
   ['metabolic acidosis compensation', ['winters']],
   // spec-v292: the former catalog gap, now a shipped tile + MCP adapter.
@@ -649,7 +649,7 @@ const PROBES = [
   ['cobb angle scoliosis curve severity degrees', ['cobb-angle']],
   ['manning criteria irritable bowel syndrome ibs symptom', ['manning-ibs']],
   ['framingham criteria heart failure diagnosis major minor', ['framingham-hf-criteria']],
-  ['kings score liver fibrosis hepatitis c cirrhosis noninvasive', ['kings-score']],
+  ['kings score liver fibrosis hepatitis c cirrhosis noninvasive', ['king-score']],
   ['quick covid severity index qcsi respiratory decompensation', ['qcsi']],
   ['frontal assessment battery fab executive dysfunction dementia', ['fab']],
   ['malt lymphoma prognostic index ipi marginal zone', ['malt-ipi']],

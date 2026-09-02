@@ -26,7 +26,7 @@ const PROBES = [
   ['bw-bsa-suite', 'ideal body weight 180 cm male'],
   ['cockcroft-gault', 'crcl 72 year old woman 68 kg creatinine 1.4'],
   ['eag-a1c', 'eag a1c 7.5'],
-  ['qtc-suite', 'qtc qt 400 hr 70'],
+  ['qtc', 'qtc qt 400 hr 70'],
   ['aa-gradient', 'a-a gradient fio2 0.21 paco2 40 pao2 80'],
   ['shock-index', 'shock index hr 110 sbp 90'],
   ['maint-fluids', 'maintenance fluids 20 kg'],

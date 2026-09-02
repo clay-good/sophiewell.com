@@ -110,7 +110,10 @@ async function main() {
         if (Object.keys(aliases).length) errors.push('app.js has no RETIRED_TILE_ALIASES map, so a retired id resolves for agents and not for readers');
       } else {
         const body = appSrc.slice(start, appSrc.indexOf(']);', start));
-        const inApp = new Map([...body.matchAll(/\['([a-z0-9-]+)',\s*'([a-z0-9-]+)'\]/g)].map((m) => [m[1], m[2]]));
+        // spec-v973: the class must carry `_`. `bsa_burn` is a live tile id, and without the
+        // underscore this regex read the app map as if the alias were absent and reported a
+        // drift that was not there.
+        const inApp = new Map([...body.matchAll(/\['([a-z0-9_-]+)',\s*'([a-z0-9_-]+)'\]/g)].map((m) => [m[1], m[2]]));
         for (const [oldId, rec] of Object.entries(aliases)) {
           if (!inApp.has(oldId)) errors.push(`id-alias "${oldId}" is in data/id-aliases.json and not in app.js RETIRED_TILE_ALIASES`);
           else if (inApp.get(oldId) !== rec.canonical) errors.push(`id-alias "${oldId}" points at "${rec.canonical}" for agents and "${inApp.get(oldId)}" for readers`);

@@ -173,10 +173,10 @@ test('queryCompute: eAG from A1c (named and bare) matches the ADAG lib', () => {
 
 test('queryCompute: QTc (Bazett + Fridericia) from QT + HR, not tripped by "qtc"', () => {
   const r = queryCompute('qtc qt 440 hr 80');
-  assert.equal(r.tile, 'qtc-suite');
+  assert.equal(r.tile, 'qtc');
   assert.equal(r.value, 508);                          // round(440 / sqrt(0.75))
   assert.match(r.text, /Fridericia 484 ms/);
-  assert.deepEqual(r.inputs, { 'qs-qt': 440, 'qs-hr': 80 });
+  assert.deepEqual(r.inputs, { qt: 440, hr: 80 });
   assert.equal(queryCompute('qtc'), null, 'trigger only');
   assert.equal(queryCompute('qtc qt 440'), null, 'heart rate missing');
 });

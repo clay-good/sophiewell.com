@@ -8,6 +8,8 @@
 import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/four-ts-hit-v836.js';
 import { resultRow } from '../lib/result-copy.js';
+import { renderDerivation, updateDerivationSteps } from '../lib/derivation.js';
+import { META } from '../lib/meta.js';
 
 function checkField(label, id) {
   const wrap = el('p');
@@ -63,14 +65,19 @@ export const renderers = {
 
     const ids = ['fts-thrombocytopenia', 'fts-timing', 'fts-thrombosis', 'fts-other', 'fts-missing'];
     const o = out(); root.appendChild(o);
+    // spec-v973: the show-your-work panel, transplanted from the retired `four-ts`.
+    const deriv = renderDerivation(META['four-ts-hit']);
+    if (deriv) root.appendChild(deriv);
     wire(ids, () => safe(o, () => {
-      const r = M.fourTsHit({
+      const inputs = {
         thrombocytopenia: val('fts-thrombocytopenia'),
         timing: val('fts-timing'),
         thrombosis: val('fts-thrombosis'),
         otherCauses: val('fts-other'),
         keyInformationMissing: checked('fts-missing'),
-      });
+      };
+      const r = M.fourTsHit(inputs);
+      if (deriv) updateDerivationSteps(deriv, META['four-ts-hit'], inputs);
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [
         { text: r.band, cls: r.abnormal ? 'warn' : null },

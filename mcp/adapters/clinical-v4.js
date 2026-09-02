@@ -118,15 +118,6 @@ export default [
     ],
   },
   {
-    id: 'qtc-suite',
-    summary: 'Corrected QT by Bazett, Fridericia, Framingham, and Hodges from QT and heart rate.',
-    compute: F.qtcAll,
-    fields: [
-      { dom: 'qs-qt', arg: 'qtMs', kind: 'number', required: true, label: 'QT', unit: 'ms' },
-      { dom: 'qs-hr', arg: 'hrBpm', kind: 'number', required: true, label: 'Heart rate', unit: 'bpm' },
-    ],
-  },
-  {
     id: 'fib4',
     summary: 'FIB-4 hepatic fibrosis index (Sterling 2006) = age*AST/(platelets*sqrt(ALT)). <1.45 low, >3.25 high risk of advanced fibrosis.',
     compute: F.fib4,

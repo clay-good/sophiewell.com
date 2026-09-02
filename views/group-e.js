@@ -561,22 +561,6 @@ export const renderers = {
     ['mf-w', 'mf-w-unit'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
 
-  'qtc-suite'(root) {
-    root.appendChild(field('QT (ms)', 'qs-qt'));
-    root.appendChild(field('Heart rate (bpm)', 'qs-hr'));
-    const o = out(); root.appendChild(o);
-    const run = () => safe(o, () => {
-      const r = V4.qtcAll({ qtMs: num('qs-qt'), hrBpm: num('qs-hr') });
-      resultRow(o, [
-        { text: `Bazett: ${r.bazett.toFixed(0)} ms` },
-        { text: `Fridericia: ${r.fridericia.toFixed(0)} ms` },
-        { text: `Framingham: ${r.framingham.toFixed(0)} ms` },
-        { text: `Hodges: ${r.hodges.toFixed(0)} ms` },
-      ]);
-    });
-    ['qs-qt', 'qs-hr'].forEach((id) => document.getElementById(id).addEventListener('input', run));
-  },
-
   'preg-dating'(root) {
     root.appendChild(field('LMP date (YYYY-MM-DD, optional)', 'pd-lmp', { type: 'text' }));
     root.appendChild(field('Ultrasound CRL (mm, optional)', 'pd-crl'));

@@ -197,62 +197,6 @@ export const renderers = {
     });
   },
 
-  // ---- Utility 73: Burn surface area -----------------------------------
-  bsa_burn(root) {
-    noticeBlock(root);
-    root.appendChild(selectField('Method', 'bb-method', [
-      { value: 'nines',  text: 'Rule of Nines (adult)' },
-      { value: 'lund',   text: 'Lund-Browder (enter percent affected per region)' },
-    ]));
-    const dyn = el('div', { id: 'bb-dyn' });
-    root.appendChild(dyn);
-    const o = out(); root.appendChild(o);
-
-    function buildNines() {
-      clear(dyn);
-      const ids = [];
-      for (const k of Object.keys(RULE_OF_NINES_ADULT)) {
-        const cbId = `bb-n-${k}`;
-        ids.push(cbId);
-        dyn.appendChild(checkbox(`${k} (${RULE_OF_NINES_ADULT[k]}%)`, cbId));
-      }
-      const run = () => safe(o, () => {
-        const sel = {};
-        for (const k of Object.keys(RULE_OF_NINES_ADULT)) sel[k] = document.getElementById(`bb-n-${k}`).checked;
-        const r = ruleOfNines(sel);
-        o.appendChild(el('p', { class: 'notice', text: `Total burn surface area: ${r.tbsa}%` }));
-      });
-      ids.forEach((id) => document.getElementById(id).addEventListener('change', run));
-      run();
-    }
-    function buildLund() {
-      clear(dyn);
-      const regions = ['head', 'neck', 'anterior trunk', 'posterior trunk', 'arm-left', 'arm-right',
-                       'forearm-left', 'forearm-right', 'hand-left', 'hand-right',
-                       'thigh-left', 'thigh-right', 'leg-left', 'leg-right',
-                       'foot-left', 'foot-right', 'genitalia'];
-      const ids = [];
-      for (const r of regions) {
-        const id = `bb-l-${r.replace(/[^a-z0-9]/gi, '-')}`;
-        ids.push(id);
-        dyn.appendChild(field(`${r} (% affected; age-adjust per chart)`, id, { placeholder: '0' }));
-      }
-      const run = () => safe(o, () => {
-        const sel = {};
-        for (let i = 0; i < regions.length; i += 1) sel[regions[i]] = nv(ids[i]) || 0;
-        const r = lundBrowder(sel);
-        o.appendChild(el('p', { class: 'notice', text: `Total burn surface area: ${r.tbsa}%` }));
-      });
-      ids.forEach((id) => document.getElementById(id).addEventListener('input', run));
-      run();
-    }
-
-    document.getElementById('bb-method').addEventListener('change', () => {
-      if (document.getElementById('bb-method').value === 'nines') buildNines(); else buildLund();
-    });
-    buildNines();
-  },
-
   // ---- Utility 74: Burn fluid resuscitation ----------------------------
   'burn-fluid'(root) {
     noticeBlock(root);

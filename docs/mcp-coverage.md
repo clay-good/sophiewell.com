@@ -7609,9 +7609,6 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/framingham-hf-criteria-v696.js (spec-v696: Framingham heart-failure criteria — clinical disclaimer)
 - `framingham-hf-criteria`
 
-### lib/kings-score-v697.js (spec-v697: King's Score liver fibrosis (HCV) — clinical disclaimer)
-- `kings-score`
-
 ### lib/qcsi-v698.js (spec-v698: Quick COVID-19 Severity Index — clinical disclaimer)
 - `qcsi`
 
@@ -9287,7 +9284,6 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `bw-bsa-suite`
 - `fena-feurea`
 - `maint-fluids`
-- `qtc-suite`
 - `fib4`
 - `apri`
 - `rox`
@@ -9423,7 +9419,6 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `khorana`
 - `dash-vte`
 - `herdoo2`
-- `four-ts`
 - `isth-dic`
 - `dapt-score`
 - `bpp`
@@ -9542,7 +9537,6 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 - `peds-ett`
 - `naloxone`
 - `peds-weight-dose`
-- `bsa_burn`
 - `nexus-cspine`
 - `field-triage`
 

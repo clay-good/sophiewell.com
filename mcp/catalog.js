@@ -608,7 +608,6 @@ import interchestV693 from './adapters/interchest-v693.js';
 import cobbAngleV694 from './adapters/cobb-angle-v694.js';
 import manningIbsV695 from './adapters/manning-ibs-v695.js';
 import framinghamHfCriteriaV696 from './adapters/framingham-hf-criteria-v696.js';
-import kingsScoreV697 from './adapters/kings-score-v697.js';
 import qcsiV698 from './adapters/qcsi-v698.js';
 import fabV699 from './adapters/fab-v699.js';
 import maltIpiV700 from './adapters/malt-ipi-v700.js';
@@ -1398,7 +1397,6 @@ const ADAPTER_MODULES = [
   ['cobb-angle-v694', cobbAngleV694],
   ['manning-ibs-v695', manningIbsV695],
   ['framingham-hf-criteria-v696', framinghamHfCriteriaV696],
-  ['kings-score-v697', kingsScoreV697],
   ['qcsi-v698', qcsiV698],
   ['fab-v699', fabV699],
   ['malt-ipi-v700', maltIpiV700],

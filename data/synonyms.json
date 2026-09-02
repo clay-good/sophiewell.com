@@ -506,17 +506,6 @@
     },
     {
       "phrases": [
-        "hit score",
-        "4t score",
-        "4ts score",
-        "heparin induced thrombocytopenia",
-        "heparin thrombocytopenia"
-      ],
-      "tile": "four-ts",
-      "audience": "clinicians"
-    },
-    {
-      "phrases": [
         "gestational diabetes screen",
         "gdm screen",
         "gdm criteria",
@@ -4913,7 +4902,7 @@
         "noninvasive fibrosis index hcv",
         "kings score fibrosis"
       ],
-      "tile": "kings-score",
+      "tile": "king-score",
       "audience": "clinicians"
     },
     {
@@ -6589,7 +6578,12 @@
     {
       "phrases": [
         "hit probability",
-        "platelets dropped on heparin"
+        "platelets dropped on heparin",
+        "hit score",
+        "4t score",
+        "4ts score",
+        "heparin induced thrombocytopenia",
+        "heparin thrombocytopenia"
       ],
       "tile": "four-ts-hit",
       "audience": "clinicians"

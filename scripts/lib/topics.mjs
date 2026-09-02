@@ -16,11 +16,11 @@ export const TOPICS = {
     description: 'Free cardiology calculators with citations: QTc, Wells PE/DVT, CHA2DS2-VASc, HAS-BLED, HEART, TIMI, GRACE, ASCVD, PREVENT, Sgarbossa. No signup.',
     lede: 'Bedside cardiology math and rule-out scores with the primary citation under every result. QTc by Bazett, Fridericia, Framingham, and Hodges; Wells PE and DVT with the Geneva alternative; CHA2DS2-VASc and HAS-BLED for atrial fibrillation; HEART, TIMI, and GRACE for chest pain risk stratification; ASCVD and PREVENT for primary prevention; Sgarbossa for STEMI in LBBB.',
     tiles: [
-      'qtc', 'qtc-suite', 'wells-pe', 'wells-pe-geneva', 'wells-dvt',
+      'qtc', 'wells-pe', 'wells-pe-geneva', 'wells-dvt',
       'wells-dvt-caprini', 'perc', 'chads', 'hasbled', 'heart', 'timi',
       'timi-stemi', 'grace', 'ascvd', 'prevent', 'sgarbossa', 'rcri',
       'ecg-axis', 'lvh-criteria', 'duke-treadmill', 'cardiac-power-output',
-      'aortic-valve-area', 'cincinnati', 'fast',
+      'aortic-valve-area', 'cpss', 'fast',
     ],
   },
   'medication-safety': {
@@ -47,7 +47,7 @@ export const TOPICS = {
     lede: 'Decision tools for "who is sickest, who goes first, who can wait." START and JumpSTART mass-casualty triage, the 2021 CDC field trauma triage criteria, qSOFA and SOFA, shock index, Cincinnati and FAST stroke screens, NIHSS, ABCD2 for TIA, PEWS for pediatric acuity, AVPU/GCS, and the NEXUS C-spine rule.',
     tiles: [
       'start-triage', 'jumpstart-triage', 'field-triage', 'qsofa-sofa',
-      'shock-index', 'cincinnati', 'fast', 'nihss', 'abcd2', 'pews',
+      'shock-index', 'cpss', 'fast', 'nihss', 'abcd2', 'pews',
       'avpu-gcs', 'gcs', 'nexus-cspine', 'em-time', 'apgar',
     ],
   },

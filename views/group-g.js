@@ -3034,34 +3034,6 @@ export const renderers = {
     run();
   },
 
-  // spec-v14 §3.7.1 wave 14-7: 4Ts Score for HIT (Lo 2006).
-  'four-ts'(root) {
-    const items = [
-      ['Thrombocytopenia: >50% fall + nadir >=20 (2); 30-50% fall or nadir 10-19 (1); <30% fall or nadir <10 (0)', '4t-thr'],
-      ['Timing of platelet fall: clear onset 5-10 d or <=1 d (with prior heparin in last 30 d) (2); consistent 5-10 d but unclear or >10 d (1); <4 d without recent heparin (0)', '4t-time'],
-      ['Thrombosis or other sequelae: new thrombosis, skin necrosis, or acute systemic reaction after IV heparin bolus (2); progressive/recurrent thrombosis or erythematous skin lesion (1); none (0)', '4t-throm'],
-      ['oTher causes of thrombocytopenia: none apparent (2); possible (1); definite (0)', '4t-oth'],
-    ];
-    for (const [l, id] of items) root.appendChild(rangeField(l, id, 0, 2, 0));
-    const o = out(); root.appendChild(o);
-    const deriv = renderDerivation(META['four-ts']);
-    if (deriv) root.appendChild(deriv);
-    const run = () => safe(o, () => {
-      const inputs = {
-        thrombocytopenia: nv('4t-thr'),
-        timingOfFall: nv('4t-time'),
-        thrombosis: nv('4t-throm'),
-        otherCauses: nv('4t-oth'),
-      };
-      const r = S4.fourTs(inputs);
-      o.appendChild(el('h2', { text: `4Ts ${r.score} of 8` }));
-      o.appendChild(el('p', { text: r.band }));
-      if (deriv) updateDerivationSteps(deriv, META['four-ts'], inputs);
-    });
-    items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
-    run();
-  },
-
   // spec-v14 §3.7.3 wave 14-7: ISTH Overt DIC (Taylor 2001).
   'isth-dic'(root) {
     root.appendChild(checkbox('Underlying disorder known to be associated with DIC is present (required gate per Taylor 2001)', 'id-gate'));

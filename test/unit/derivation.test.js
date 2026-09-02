@@ -5,6 +5,7 @@ import assert from 'node:assert/strict';
 import { META } from '../../lib/meta.js';
 import { abcTransfusion } from '../../lib/massive-transfusion-v265.js';
 import { wellsPe, gcs, wellsDvt, chadsVasc, hasBled } from '../../lib/clinical.js';
+import { fourTsHit } from '../../lib/four-ts-hit-v836.js';
 import { qsofa, timi, heart, perc, sofa, news2, meld30, curb65, centor, mcisaac, ciwaAr, fourScore, bisap, cows, icdsc, fourAt, psi, cpot, bps, braden, morseFalls, lawtonIadl, katzAdl, barthel, rosier, cpss, lams, race, sos, flacc, hendrichII, atriaBleeding, orbitBleeding, painad, miniCog, mews, comfortB, wat1, stopBang, fourTs, ichScore, improveVte, khorana, dashVte, herdoo2, hospitalScore, improveBleeding, aldrete, padss, lace, hemorr2hages, daptScore, mustNutrition, crb65, isthDic, alvarado, pediatricAppendicitis, lips, westley, pramAsthma, passAsthma, bishop, mgap, gap, sirs, apfel, aims65 } from '../../lib/scoring-v4.js';
 import { pews as pewsV5 } from '../../lib/clinical-v5.js';
 import { nihss } from '../../lib/clinical.js';
@@ -43,7 +44,7 @@ const WAVE_48_3D_TILES = ['phq9', 'gad7', 'cam', 'cssrs'];
 const WAVE_48_4A_TILES = ['atria-bleeding', 'hendrich-ii', 'flacc', 'auditc'];
 const WAVE_48_4B_TILES = ['orbit-bleeding', 'painad', 'cage', 'mini-cog'];
 const WAVE_48_4C_TILES = ['epds', 'mews', 'comfort-b', 'wat-1'];
-const WAVE_48_4D_TILES = ['stop-bang', 'four-ts', 'abcd2', 'rcri'];
+const WAVE_48_4D_TILES = ['stop-bang', 'four-ts-hit', 'abcd2', 'rcri'];
 const WAVE_48_4E_TILES = ['ich-score', 'improve-vte', 'khorana', 'dash-vte'];
 const WAVE_48_4F_TILES = ['herdoo2', 'hospital-score', 'improve-bleeding', 'aldrete-padss'];
 const WAVE_48_4G_TILES = ['lace', 'hemorr2hages', 'dapt-score', 'must-nutrition'];
@@ -2063,33 +2064,54 @@ test('stop-bang components sum equals stopBang() (max 8)', () => {
   assert.equal(r.score, 8);
 });
 
-test('four-ts components sum equals fourTs() (zero)', () => {
-  const inputs = { thrombocytopenia: 0, timingOfFall: 0, thrombosis: 0, otherCauses: 0 };
-  const r = fourTs(inputs);
-  assert.equal(sumComponents(META['four-ts'], inputs), r.score);
+// spec-v973: the derivation panel moved from the retired `four-ts` onto `four-ts-hit`,
+// and it was TRANSPLANTED rather than copied. fourTs() took `timingOfFall`; the survivor's
+// fourTsHit() takes `timing`, so a copied block would have scored that domain at zero on
+// every input and printed a panel that said nothing while looking right. The counterfactual
+// is pinned below so a future copy cannot pass.
+test('four-ts-hit components sum equals fourTsHit() (zero)', () => {
+  const inputs = { thrombocytopenia: 0, timing: 0, thrombosis: 0, otherCauses: 0 };
+  const r = fourTsHit(inputs);
+  assert.equal(sumComponents(META['four-ts-hit'], inputs), r.score);
   assert.equal(r.score, 0);
 });
 
-test('four-ts components sum equals fourTs() (intermediate band, 4)', () => {
-  const inputs = { thrombocytopenia: 2, timingOfFall: 1, thrombosis: 1, otherCauses: 0 };
-  const r = fourTs(inputs);
-  assert.equal(sumComponents(META['four-ts'], inputs), r.score);
+test('four-ts-hit components sum equals fourTsHit() (intermediate band, 4)', () => {
+  const inputs = { thrombocytopenia: 2, timing: 1, thrombosis: 1, otherCauses: 0 };
+  const r = fourTsHit(inputs);
+  assert.equal(sumComponents(META['four-ts-hit'], inputs), r.score);
   assert.equal(r.score, 4);
+  assert.equal(r.probability, 'intermediate');
 });
 
-test('four-ts components sum equals fourTs() (high band, 7)', () => {
-  const inputs = { thrombocytopenia: 2, timingOfFall: 2, thrombosis: 2, otherCauses: 1 };
-  const r = fourTs(inputs);
-  assert.equal(sumComponents(META['four-ts'], inputs), r.score);
+test('four-ts-hit components sum equals fourTsHit() (high band, 7)', () => {
+  const inputs = { thrombocytopenia: 2, timing: 2, thrombosis: 2, otherCauses: 1 };
+  const r = fourTsHit(inputs);
+  assert.equal(sumComponents(META['four-ts-hit'], inputs), r.score);
   assert.equal(r.score, 7);
+  assert.equal(r.probability, 'high');
 });
 
-test('four-ts components clamp out-of-range input values to 0-2', () => {
-  // The scoring fn clamps via fourTsClamp; the derivation callback mirrors that.
-  for (const v of [-1, 0, 1, 2, 3, 5]) {
-    const inputs = { thrombocytopenia: v, timingOfFall: 0, thrombosis: 0, otherCauses: 0 };
-    const r = fourTs(inputs);
-    assert.equal(sumComponents(META['four-ts'], inputs), r.score, `thrombocytopenia=${v}`);
+test('four-ts-hit components read the SURVIVOR argument name for timing', () => {
+  // The retired tile's key. If the transplanted block still carried it, this
+  // input would score 2 + 0 + 0 + 0 = 2 against a real score of 4.
+  const stale = { thrombocytopenia: 2, timingOfFall: 2, thrombosis: 0, otherCauses: 0 };
+  assert.equal(fourTsHit({ ...stale, timing: 2 }).score, 4);
+  assert.equal(sumComponents(META['four-ts-hit'], { ...stale, timing: 2 }), 4);
+  assert.equal(sumComponents(META['four-ts-hit'], stale), 2, 'the counterfactual a copied block would return');
+});
+
+test('four-ts-hit components clamp out-of-range input values to 0-2', () => {
+  // fourTsHit() rejects anything outside 0-2 outright, so the clamp is asserted
+  // on the derivation callback against the values the select can actually hold.
+  for (const v of [0, 1, 2]) {
+    const inputs = { thrombocytopenia: v, timing: 0, thrombosis: 0, otherCauses: 0 };
+    assert.equal(sumComponents(META['four-ts-hit'], inputs), fourTsHit(inputs).score, `thrombocytopenia=${v}`);
+  }
+  for (const v of [-1, 3, 5]) {
+    const inputs = { thrombocytopenia: v, timing: 0, thrombosis: 0, otherCauses: 0 };
+    assert.equal(fourTsHit(inputs).valid, false, `${v} is rejected, not scored`);
+    assert.ok(sumComponents(META['four-ts-hit'], inputs) <= 2, 'and the panel clamps rather than printing it');
   }
 });
 
