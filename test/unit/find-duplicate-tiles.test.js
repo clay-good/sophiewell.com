@@ -4,7 +4,8 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
-  nameKey, nameKeyWithParens, similarity, nameScore, sharesSource, pairShape, namesTheOther, parenKey, RULED,
+  nameKey, nameKeyWithParens, similarity, nameScore, sharesSource, pairShape, namesTheOther, parenKey,
+  citesTheSame, candidatePairs, RULED,
 } from '../../scripts/find-duplicate-tiles.mjs';
 
 const CINCINNATI = 'Cincinnati Prehospital Stroke Scale';
@@ -109,4 +110,65 @@ test('the two pairs the sharp shape isolated are read and ruled', () => {
   for (const pair of ['cam|cam-icu', 'tyg-bmi|tyg-index']) {
     assert.match(RULED.get(pair) || '', /^DISTINCT/, pair);
   }
+});
+
+// ---- spec-v972: the possessive, and the citation ----
+
+test("an apostrophe is deleted, so King's Score and Kings Score are one name", () => {
+  // Every other punctuation mark separates two words; a possessive does not.
+  // Splitting on it left `king` + `s`, the `s` was dropped for being too short,
+  // and the two tiles scored ZERO against each other.
+  assert.deepEqual(nameKey("King's Score (Non-Invasive Cirrhosis Marker)"), ['kings']);
+  assert.equal(similarity(nameKey("King's Score (Non-Invasive Cirrhosis Marker)"),
+    nameKey('Kings Score (Liver Fibrosis, HCV)')), 1);
+  // The typographic apostrophe reads the same as the typewriter one.
+  assert.deepEqual(nameKey('King’s Score'), nameKey("King's Score"));
+});
+
+test('citesTheSame is containment, not overlap', () => {
+  const long = 'Bazett 1920; Fridericia 1920; Sagie (Framingham) 1992; Hodges 1983. All four formulas reported side by side.';
+  const short = 'Bazett 1920; Fridericia 1920; Sagie (Framingham) 1992; Hodges 1983.';
+  assert.equal(citesTheSame(long, short), true, 'one citation written from the other');
+  assert.equal(citesTheSame(short, long), true, 'and it is symmetric');
+  // Two citations that merely share most of their words are not this shape.
+  assert.equal(citesTheSame(short, 'Bazett 1920; Fridericia 1920; Sagie (Framingham) 1992; Hodges 1985.'), false);
+});
+
+test('a short citation is not contained in everything by accident', () => {
+  // Under the 40-character floor a bare "Bazett 1920." would match every tile
+  // whose citation happens to quote it.
+  assert.equal(citesTheSame('Bazett 1920.', 'Bazett 1920; Fridericia 1920; Sagie 1992; Hodges 1983.'), false);
+});
+
+test('the citation reaches duplicates the name cannot', () => {
+  // Each of these is one instrument built twice, and each scores far under the
+  // 0.55 name floor: 0.33 for the QTc pair, 0.13 for the burn pair.
+  const q = { name: 'QTc Correction', key: nameKey('QTc Correction'), keyParens: nameKeyWithParens('QTc Correction'), citation: 'Bazett 1920; Fridericia 1920; Sagie (Framingham) 1992; Hodges 1983. All four formulas reported side by side.' };
+  const qs = { name: 'QTc Suite (Bazett / Fridericia / Framingham / Hodges)', key: nameKey('QTc Suite (Bazett / Fridericia / Framingham / Hodges)'), keyParens: nameKeyWithParens('QTc Suite (Bazett / Fridericia / Framingham / Hodges)'), citation: 'Bazett 1920; Fridericia 1920; Sagie (Framingham) 1992; Hodges 1983.' };
+  assert.ok(nameScore(q, qs) < 0.55, String(nameScore(q, qs)));
+  assert.equal(pairShape(q, qs), 'ONE CITATION CONTAINS THE OTHER');
+});
+
+test('candidatePairs admits a pair on the citation alone', () => {
+  const corpus = { qtc: { name: 'QTc Correction' }, 'qtc-suite': { name: 'QTc Suite (Bazett / Fridericia / Framingham / Hodges)' } };
+  const meta = {
+    qtc: { citation: 'Bazett 1920; Fridericia 1920; Sagie (Framingham) 1992; Hodges 1983. All four formulas reported side by side.' },
+    'qtc-suite': { citation: 'Bazett 1920; Fridericia 1920; Sagie (Framingham) 1992; Hodges 1983.' },
+  };
+  const pairs = candidatePairs(corpus, 0.55, meta);
+  assert.equal(pairs.length, 1);
+  assert.equal(pairs[0].sameCitation, true);
+  assert.ok(pairs[0].score < 0.55);
+});
+
+test('the four duplicates the citation found are ruled on and name a survivor', () => {
+  for (const pair of ['king-score|kings-score', 'qtc|qtc-suite', 'four-ts|four-ts-hit', 'bsa_burn|lund-browder']) {
+    const verdict = RULED.get(pair);
+    assert.ok(verdict, `${pair} has no ruling`);
+    assert.ok(verdict.startsWith('DUPLICATE --'), verdict);
+    assert.match(verdict, /Survivor \S+/, verdict);
+  }
+  // The fifth pair is the same instrument twice AND the two disagree on a
+  // number, so it is ruled blocked rather than given a survivor.
+  assert.match(RULED.get('ebv-mabl|max-allowable-blood-loss'), /^DUPLICATE, BLOCKED --/);
 });

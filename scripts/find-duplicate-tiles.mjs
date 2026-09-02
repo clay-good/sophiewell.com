@@ -24,6 +24,11 @@
 // floor. It is deliberately noisy -- most hits are legitimate families (ICHD-3 has seven, the
 // RADS reporting systems several) -- and the reader is expected to reject most of them.
 //
+// spec-v972 adds a second way in. The name only works when both authors wrote nearly the same
+// name, and four duplicates in the catalog were named differently enough to score 0.13 to 0.50
+// -- all under the floor. What gave those away is the CITATION: one tile's citation text is the
+// other's, verbatim, with a clause added. A pair now reaches the backlog on either signal.
+//
 // The floor is 0.55 rather than 0.6 because one of the four confirmed duplicates sits at 0.57:
 // "University of Texas Diabetic Foot WOUND Classification" against "University of Texas Diabetic
 // Foot ULCER Class". One word apart on the thing they both name, and a 0.6 floor hid it.
@@ -42,10 +47,18 @@ const STOP = new Set([
   'test', 'assessment', 'calculator', 'model', 'definition', 'definitions',
 ]);
 
+// spec-v972: an apostrophe is DELETED, not turned into a space. Every other punctuation mark
+// separates two words; a possessive does not. "King's Score" split into `king` + `s`, the `s`
+// was dropped for being too short, and the tile scored ZERO against "Kings Score" -- the same
+// instrument, spelled the other way, invisible to every reading of the name. Deleting the mark
+// first makes both read `kings`.
+const APOSTROPHES = /['\u2018\u2019\u02bc]/g;
+
 // The parenthetical is dropped: it is where a tile says which VARIANT it is, and two tiles of
 // the same instrument routinely disagree there while naming the same thing.
 export function nameKey(name) {
-  const base = String(name).toLowerCase().replace(/\([^)]*\)/g, ' ').replace(/[^a-z0-9 ]/g, ' ');
+  const base = String(name).toLowerCase().replace(APOSTROPHES, '')
+    .replace(/\([^)]*\)/g, ' ').replace(/[^a-z0-9 ]/g, ' ');
   return [...new Set(base.split(/\s+/).filter((w) => w.length > 2 && !STOP.has(w)))].sort();
 }
 
@@ -56,7 +69,7 @@ export function nameKey(name) {
 // this one -- and those two tiles are the same instrument, built twice. Every pair is scored
 // both ways and keeps the higher score.
 export function nameKeyWithParens(name) {
-  const base = String(name).toLowerCase().replace(/[^a-z0-9 ]/g, ' ');
+  const base = String(name).toLowerCase().replace(APOSTROPHES, '').replace(/[^a-z0-9 ]/g, ' ');
   return [...new Set(base.split(/\s+/).filter((w) => w.length > 2 && !STOP.has(w)))].sort();
 }
 
@@ -87,6 +100,36 @@ export function nameScore(a, b) {
   return Math.max(similarity(a.key, b.key), similarity(a.keyParens, b.keyParens));
 }
 
+// spec-v972: a THIRD signal, and the only one that reaches a duplicate whose two authors named
+// it differently. `qtc` is "QTc Correction" and `qtc-suite` is "QTc Suite (Bazett / Fridericia /
+// Framingham / Hodges)" -- 0.33 on the name, far under the floor, and the same four formulas on
+// the same two inputs. What gives them away is the CITATION: one tile's citation text is the
+// other's, verbatim, with a sentence added.
+//
+// This is deliberately containment rather than token similarity. Token overlap on citations
+// fires on every guideline family at once (the ACC/AHA valvular guideline alone stages six
+// lesions from one reference) and buries the signal. Whole-string containment says something
+// much narrower: one of these two citations was WRITTEN FROM THE OTHER. It reports 36 pairs
+// across the whole catalog, of which the valve, growth-chart and Tokyo-Guidelines families are
+// the bulk -- a readable backlog rather than a screenful.
+//
+// The 40-character floor keeps out the short citations ("Bazett 1920.") that are contained in
+// dozens of others by accident.
+const CITATION_FLOOR = 40;
+
+export function citationKey(citation) {
+  return String(citation || '').toLowerCase()
+    .replace(APOSTROPHES, '').replace(/[^a-z0-9]+/g, ' ').trim();
+}
+
+// citesTheSame(a, b) -> bool. Is the shorter citation contained whole in the longer?
+export function citesTheSame(aCitation, bCitation) {
+  const a = citationKey(aCitation);
+  const b = citationKey(bCitation);
+  if (a.length < CITATION_FLOOR || b.length < CITATION_FLOOR) return false;
+  return a.length <= b.length ? b.includes(a) : a.includes(b);
+}
+
 // spec-v956: the two readings DISAGREEING is itself the signal, and it points both ways.
 //
 //   dropped high, kept low   the parenthetical is the only thing telling them apart, so it is
@@ -111,7 +154,7 @@ export function outsideKey(name) {
 
 export function parenKey(name) {
   const inside = [...String(name).matchAll(/\(([^)]*)\)/g)].map((m) => m[1]).join(' ');
-  const base = inside.toLowerCase().replace(/[^a-z0-9 ]/g, ' ');
+  const base = inside.toLowerCase().replace(APOSTROPHES, '').replace(/[^a-z0-9 ]/g, ' ');
   return [...new Set(base.split(/\s+/).filter((w) => w.length > 2 && !STOP.has(w)))].sort();
 }
 
@@ -127,21 +170,26 @@ export function namesTheOther(a, b) {
 
 export function pairShape(a, b) {
   if (namesTheOther(a, b)) return 'NAMES THE OTHER IN PARENTHESES';
+  if (citesTheSame(a.citation, b.citation)) return 'ONE CITATION CONTAINS THE OTHER';
   const dropped = similarity(a.key, b.key);
   const kept = similarity(a.keyParens, b.keyParens);
   if (dropped >= 0.8 && kept <= 0.5) return 'ACRONYM COLLISION';
   return '';
 }
 
-export function candidatePairs(corpus, floor = 0.55) {
+export function candidatePairs(corpus, floor = 0.55, meta = META) {
   const rows = Object.entries(corpus).map(([id, r]) => ({
     id, name: r.name, key: nameKey(r.name), keyParens: nameKeyWithParens(r.name),
+    citation: (meta[id] || {}).citation,
   }));
   const out = [];
   for (let i = 0; i < rows.length; i++) {
     for (let j = i + 1; j < rows.length; j++) {
       const score = nameScore(rows[i], rows[j]);
-      if (score >= floor) out.push({ score, a: rows[i], b: rows[j] });
+      // spec-v972: a pair reaches the backlog on EITHER signal. The citation route is what a
+      // name score under the floor cannot do on its own.
+      const sameCitation = citesTheSame(rows[i].citation, rows[j].citation);
+      if (score >= floor || sameCitation) out.push({ score, sameCitation, a: rows[i], b: rows[j] });
     }
   }
   return out.sort((x, y) => y.score - x.score);
@@ -194,6 +242,40 @@ export const RULED = new Map(Object.entries({
   'wells-dvt|wells-dvt-caprini': 'DISTINCT -- the same single-rule / combined-suite shape.',
 
   // spec-v956: the only two unread pairs left in the shape that hides duplicates. Both read.
+  // spec-v972: the pairs the CITATION signal reached. Four of them are the same instrument built
+  // twice -- and not one was visible to the name: the highest name score among them is 0.50 and
+  // the lowest is 0.13. Every verdict below comes from opening both renderers and both library
+  // functions. Retirement of the four is spec-v973.
+  'king-score|kings-score': "DUPLICATE -- one King's Score (Cross 2009): the same four inputs, the same (age x AST x INR) / platelets, the same 12.3 and 16.7 cut-points. Survivor king-score (its three bands are ranges rather than a formula row, and it cites the DOI).",
+  'qtc|qtc-suite': 'DUPLICATE -- one QTc tile twice. Both take a QT in milliseconds and a heart rate and return Bazett, Fridericia, Framingham and Hodges from the same constants; qtc-suite is not the suite half of a single-rule/suite pair, because qtc already returns all four. Survivor qtc (it carries the synonyms, the plain-language prefill template and the shorter id).',
+  'four-ts|four-ts-hit': 'DUPLICATE -- one Lo 2006 4Ts score, the same four criteria scored 0-2 to a total out of 8. Survivor four-ts-hit (each criterion is a select whose options print the level in full, and it carries the rule-out testing advice; four-ts crams all three levels of a criterion into one label). four-ts holds the derivation panel, which must be TRANSPLANTED and not copied -- the two call different scoring functions.',
+  'bsa_burn|lund-browder': "DUPLICATE -- both cite Lund-Browder 1944 for %TBSA. Survivor lund-browder: bsa_burn's Lund-Browder mode carries no age chart at all -- it sums percentages the reader has been asked to age-adjust by hand -- while lund-browder holds the age bands and returns the Rule of Nines cross-check besides.",
+  'ebv-mabl|max-allowable-blood-loss': 'DUPLICATE, BLOCKED -- one Gross 1983 dilution formula, and both tiles return the estimated blood volume and the allowable loss. But their blood-volume factor tables DISAGREE: neonate 85 mL/kg against 90, child 70 against 75. Retiring either changes the answer for those patients, so per spec-v97 this needs a source for the factor table before anything is removed.',
+
+  // The families the citation signal also surfaces. One reference routinely defines several
+  // instruments, so containment is expected here and says nothing about duplication.
+  'aortic-regurgitation-stage|tricuspid-regurgitation-stage': 'DISTINCT -- two lesions staged by one ACC/AHA valvular guideline.',
+  'aortic-regurgitation-stage|mitral-stenosis-stage': 'DISTINCT -- same ACC/AHA valve grid.',
+  'aortic-regurgitation-stage|mitral-regurgitation-stage': 'DISTINCT -- same ACC/AHA valve grid.',
+  'aortic-regurgitation-stage|secondary-mitral-regurgitation-stage': 'DISTINCT -- same ACC/AHA valve grid.',
+  'mitral-regurgitation-stage|mitral-stenosis-stage': 'DISTINCT -- same ACC/AHA valve grid.',
+  'mitral-regurgitation-stage|tricuspid-regurgitation-stage': 'DISTINCT -- same ACC/AHA valve grid.',
+  'mitral-stenosis-stage|secondary-mitral-regurgitation-stage': 'DISTINCT -- same ACC/AHA valve grid.',
+  'secondary-mitral-regurgitation-stage|tricuspid-regurgitation-stage': 'DISTINCT -- same ACC/AHA valve grid.',
+  'aortic-stenosis-stage|tricuspid-regurgitation-stage': 'DISTINCT -- same ACC/AHA valve grid.',
+  'mitral-stenosis-stage|tricuspid-regurgitation-stage': 'DISTINCT -- same ACC/AHA valve grid.',
+  'aortic-stenosis-stage|mitral-regurgitation-stage': 'DISTINCT -- same ACC/AHA valve grid.',
+  'aortic-stenosis-stage|secondary-mitral-regurgitation-stage': 'DISTINCT -- same ACC/AHA valve grid.',
+  'cdc-stature-for-age|peds-bmi-percentile': 'DISTINCT -- three charts from one CDC 2000 reference; the third is BMI-for-age.',
+  'cdc-weight-for-age|peds-bmi-percentile': 'DISTINCT -- three charts from one CDC 2000 reference.',
+  'abi|toe-brachial-index': 'DISTINCT -- the ankle and the toe index from one measurement standard. The toe index is what is read when medial calcification makes the ankle pressure incompressible, which is the case the ankle index cannot answer.',
+  'dka-hhs|dka-resolution': 'DISTINCT -- one Kitabchi 2009 paper, two questions: which hyperglycemic crisis this is and how severe on arrival, against whether it has resolved.',
+  'dka-resolution|effective-osmolality': 'DISTINCT -- the resolution checklist against the single tonicity value the HHS criteria turn on.',
+  'pfdi20|pfiq7': 'DISTINCT -- the Barber 2005 pair of short forms: the distress inventory and the impact questionnaire measure different things and are scored separately.',
+  'crs-grade|icans-grade': 'DISTINCT -- ASTCT grades cytokine release syndrome and neurotoxicity on two separate scales in one consensus.',
+  'atlanta-pancreatitis|modified-marshall': 'DISTINCT -- the revised Atlanta severity class against the organ-failure score it takes as an input.',
+  'completeness-cytoreduction|peritoneal-cancer-index': 'DISTINCT -- Sugarbaker measures extent of disease before the operation and residual disease after it.',
+
   'cam|cam-icu': 'DISTINCT -- Inouye 1990 for a patient who can be interviewed, Ely 2001 for a ventilated one who cannot. Different papers, different validation populations, different fields.',
   'tyg-bmi|tyg-index': 'DISTINCT -- Simental-Mendia 2008 takes two inputs and returns ~8.9; Er 2016 multiplies by BMI, takes three, and returns ~223. One is the other times a third variable, which makes it a different instrument on a different scale.',
 }));

@@ -29,6 +29,25 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **The duplicate-tile finder now reads the citation, and found four more tiles
+  built twice.** It had only the tile name to go on, and the name misses a
+  duplicate whose two authors named it differently: "QTc Correction" scores 0.33
+  against "QTc Suite (Bazett / Fridericia / Framingham / Hodges)" and "Burn
+  Surface Area Calculator" scores 0.13 against "Lund-Browder Chart + Rule of
+  Nines", both far under the floor, and both pairs are one instrument. The
+  finder now also reports pairs where **one tile's citation text is the other's
+  verbatim** — a much narrower claim than two citations sharing most of their
+  words, which fires on every guideline family at once. It surfaces 36 pairs
+  across 1,708 tiles, all of them now ruled on. Separately, an apostrophe is no
+  longer treated as a word boundary: "King's Score" had been splitting into
+  `king` + a discarded `s` and scoring **zero** against "Kings Score", the same
+  instrument spelled the other way. Confirmed duplicates: `kings-score`,
+  `qtc-suite`, `four-ts` and `bsa_burn`, each to be retired in spec-v973. A
+  fifth pair (`ebv-mabl` / `max-allowable-blood-loss`) is the same Gross 1983
+  formula with **disagreeing blood-volume factor tables** — neonate 85 mL/kg
+  against 90, child 70 against 75 — and is held rather than retired. See
+  `docs/spec-v972.md`.
+
 - **Every interactive tool now has a clinician-friendly problem report.** The
   shared **Report a problem** control sends the tool URL and an optional
   160-character expectation note to a private D1 queue
