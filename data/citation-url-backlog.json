@@ -2,23 +2,16 @@
   "note": "spec-v938 backlog: tiles whose citation names a dated source but carry no citationUrl, so a reader has no way to reach the paper. Frozen set - a NEW tile may not join it, and a tile that gains a citationUrl must be removed from this list. Shrink only.",
   "tiles": [
     "blood-compat",
-    "bsa",
-    "bw-bsa-suite",
     "cao2-do2",
     "cci-platelet",
     "corrected-phenytoin",
     "ecmo-titration",
     "em-time",
-    "field-triage",
     "lab-interpret",
     "minute-ventilation",
-    "mtp-tracker",
     "norton-push",
     "o2-cylinder-duration",
-    "pbw-ardsnet",
-    "qtc",
     "retic-index",
-    "start-triage",
-    "vip-extravasation"
+    "start-triage"
   ]
 }

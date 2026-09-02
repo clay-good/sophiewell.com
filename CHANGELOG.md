@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed
+
+- **Seven calculators now link straight through to their source paper, and four
+  citations now say what the link opens.** `pbw-ardsnet`, `mtp-tracker`,
+  `vip-extravasation`, `field-triage`, `bsa`, `bw-bsa-suite` and `qtc` named a
+  dated source and gave the reader no way to reach it; every one of them cites a
+  paper PubMed indexes. The frozen source-link backlog goes 19 → 12, and 1,627
+  of the 1,704 calculators now open their source in one click. Four of the seven
+  needed the citation fixed, not just a link added: three cite papers older than
+  MEDLINE (Du Bois 1916, Fridericia 1920) whose indexed record is a later
+  verbatim reprint, so each citation now names the reprint and its year and
+  pages beside the original rather than sending a reader who clicked "Du Bois
+  1916" to a 1989 record. `field-triage` was cited corporate-style with no
+  author, journal or pages; it now leads with the peer-reviewed publication of
+  the guideline. See `docs/spec-v988.md`.
+
 ### Removed
 
 - **Four calculators that were the same instrument twice are retired, and the

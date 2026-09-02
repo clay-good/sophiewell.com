@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `ab8ddd724e3797a5`
-Generated: 2026-09-02T18:18:53.746Z
+Build ID: `17405082b0928eee`
+Generated: 2026-09-02T21:19:07.850Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -509,7 +509,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/membranous-risk-v878.js` | 10326 | `ff774f72e82303f0c83c8091aaa6ea2bb3b4deeba5c6323985d910dd003d53f4` |
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2451812 | `d3bec44f87c42669ad03f3ae19f00857da169b495863b769fe28bd1b1d798497` |
+| `lib/meta.js` | 2453470 | `db378e6f4617de24e6299b96c98e2c93f6554fb3f4f38e9214f9fd058beedf44` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -617,8 +617,8 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/pa/redact.js` | 7659 | `4cc5e42a80ff320126cce006231c2ade1f57f0cb1fb18a25f583256ce3726f05` |
 | `lib/pa/report.js` | 9684 | `7f0d42557ada83b28106a053d983a54f6b0a4e10465ead58eda5f6786e2d0451` |
 | `lib/pa/rule-sources.js` | 8399 | `6b12a7f0cca1e5c50dc023dc058eb8511c0573a935d9bb109439343bddcfd021` |
-| `lib/pa/rules.js` | 1569004 | `02887004b05927dfc1079dcdfa9ccd327998f31a4f2fb41caf030e316d2e49ac` |
-| `lib/pa/staleness-ledger.js` | 39392 | `2828590419b53ab3be5c64a9d5884c51f6e47d67cc1feb3c8d243444ed200ff9` |
+| `lib/pa/rules.js` | 1569117 | `ac8b01dae661e365a2c5272727fcec4bb7643052dd8b84b1f342d788e82c0894` |
+| `lib/pa/staleness-ledger.js` | 40398 | `ad2242c68428e0fc20c410e5afe55b33ccac18ab2cf05269922f2be2a4495fc8` |
 | `lib/pa/staleness.js` | 9310 | `99249cde34d35bb57ea644fced966019d1373b34f792f1ea9b42b586b94454df` |
 | `lib/page-title.js` | 1458 | `575f7d045fda35d9bc5c6a04f70fd76dbf3364a987983ccde90d84fa54b12925` |
 | `lib/painscore-v235.js` | 7238 | `2350c90eb23bd3fdd62a55bf993e502e1120b047ee16d14619829c8d0659a0dc` |
@@ -2386,7 +2386,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v833.js` | 3958 | `5744db195a83b587e3495c93070b340b0d4a41844b5e25df5f62ed5fa6848eeb` |
 | `views/group-v834.js` | 4491 | `2e297a41e6304ae7482d6fb52e092fc2b8902e07a76b2882bba835d6a53ccb47` |
 | `views/group-v835.js` | 4700 | `16fd75de38ceb1d46e389ebb3068dbba2e19e71d00a1de699ee11b9e55aa1276` |
-| `views/group-v836.js` | 4752 | `13d2be9d2575db24e4a6e0ae11b662a028837e7e206e088118161fbe8ab92a07` |
+| `views/group-v836.js` | 4911 | `beda39e4301f62aa5e1b68bd046ab154eb284bfe8c439b1d81c50b1bdaaef970` |
 | `views/group-v837.js` | 6261 | `6854e74d6b6ab5a4f284e4fec97df8d5e48fa51a75a2d097b2da00117dbe8f49` |
 | `views/group-v838.js` | 4300 | `4dd62631bf1977b59265d65fc6c2bc7f5b29ac371b28c39529b62489ea38a682` |
 | `views/group-v839.js` | 4305 | `c3ac2a9b49109775966e8a74e0406749a0da782cbe1f64fc33bd892be04220f6` |
