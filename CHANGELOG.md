@@ -8,6 +8,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **The SBOM told you to verify it by regenerating it, and regenerating it never
+  matched.** `sbom.md` ends with "re-run `npm run sbom` after a clean checkout
+  and compare hashes" — but the generator stamped a fresh clock on every run, so
+  two runs a second apart produced different documents and a reader could not
+  tell a real difference from the time of day. Everything else in the file is
+  already derived from the contents it attests, so the timestamp now means *when
+  this bill of materials last changed* and is carried forward when nothing else
+  moved. Regenerating it also caught the SBOM describing files the repository no
+  longer contained: it still recorded the pre-`spec-v990` favicons, `favicon.ico`
+  at 7,411 bytes against the real 3,682. `npm run build` is now idempotent over
+  every path it writes, and CI fails if that stops being true. See
+  `docs/spec-v991.md`.
+
 - **The favicons the site served were never the favicons in the repository.**
   `npm run build` regenerated the icon set into the repo root on every run, so
   the documented build left five tracked binary files modified — and all four

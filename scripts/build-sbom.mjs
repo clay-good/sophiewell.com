@@ -162,7 +162,12 @@ const sbom = {
   serialNumber: `urn:uuid:${serialUuid}`,
   version: 1,
   metadata: {
-    timestamp: new Date().toISOString(),
+    // spec-v991: filled in below. A fresh clock here made every run of
+    // `npm run build` rewrite sbom.json and sbom.md with a new timestamp and
+    // otherwise identical bytes, so the documented build always left a dirty
+    // tree -- and this file's own instruction, "re-run `npm run sbom` after a
+    // clean checkout and compare hashes", could never succeed.
+    timestamp: null,
     tools: [{ name: 'scripts/build-sbom.mjs', version: pkg.version }],
     component: {
       'bom-ref': 'pkg:application/sophiewell',
@@ -228,7 +233,25 @@ const sbom = {
   ],
 };
 
-await writeFile(resolve(ROOT, 'sbom.json'), JSON.stringify(sbom, null, 2) + '\n');
+// spec-v991: the timestamp is the ONLY part of this document that is not
+// derived from the contents it attests -- buildId is a digest of every file
+// hash. So it means "when this bill of materials last changed", and it is
+// carried forward unchanged when nothing else moved. A real content change
+// still stamps the moment it was generated.
+sbom.metadata.timestamp = new Date().toISOString();
+const sbomPath = resolve(ROOT, 'sbom.json');
+if (existsSync(sbomPath)) {
+  try {
+    const prev = JSON.parse(await readFile(sbomPath, 'utf8'));
+    const prevStamp = prev.metadata?.timestamp;
+    if (prevStamp) {
+      const compare = (o) => JSON.stringify({ ...o, metadata: { ...o.metadata, timestamp: null } });
+      if (compare(prev) === compare(sbom)) sbom.metadata.timestamp = prevStamp;
+    }
+  } catch { /* an unreadable or non-JSON sbom.json is simply replaced */ }
+}
+
+await writeFile(sbomPath, JSON.stringify(sbom, null, 2) + '\n');
 
 // Human-readable companion
 const lines = [];
