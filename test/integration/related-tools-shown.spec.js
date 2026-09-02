@@ -36,8 +36,8 @@ for (const id of NO_CURATED) {
     await expect(links).toHaveCount(FILL_COUNT);
     const inApp = (await hrefsOf(page, '.related-tools .related-link', 'href')).map((h) => h.replace(/^#/, ''));
 
-    expect(inApp).not.toContain(id, 'a tile is not its own neighbour');
-    expect(new Set(inApp).size).toBe(FILL_COUNT, 'no duplicate neighbours');
+    expect(inApp, 'a tile is not its own neighbour').not.toContain(id);
+    expect(new Set(inApp).size, 'no duplicate neighbours').toBe(FILL_COUNT);
 
     // The pre-rendered page for the same tile, served from dist on :4174.
     await page.goto(`http://localhost:4174/tools/${id}/`);
@@ -45,7 +45,7 @@ for (const id of NO_CURATED) {
       .map((h) => (h.match(/\/tools\/([a-z0-9_-]+)\//) || [])[1])
       .filter(Boolean);
 
-    expect(new Set(inApp)).toEqual(new Set(onPage));
+    expect(new Set(inApp), 'the in-app list and the pre-rendered page name the same neighbours').toEqual(new Set(onPage));
   });
 }
 

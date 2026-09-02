@@ -29,7 +29,14 @@ import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
+// spec-v984: two regexes, because a /g regex carries `lastIndex` and `.test()`
+// advances it. The first cut called `.test()` on the global one inside a filter
+// over 876 rules, where consecutive calls on matching strings alternate
+// true/false; it only gave the right count because a redundant non-global test
+// sat beside it catching every miss. `matchAll` clones its regex and is safe,
+// so the global form is used only there.
 const URL_IN_CITATION = /<(https?:\/\/[^>\s]+)>/g;
+const HAS_URL = /<https?:\/\//;
 
 export function ledgerUrls(ledger) {
   const out = new Set();
@@ -73,7 +80,7 @@ async function main() {
 
   const known = ledgerUrls(ledger);
   const cited = citedUrls(STARTER_RULES);
-  const withUrl = STARTER_RULES.filter((r) => URL_IN_CITATION.test(String(r.citation || '')) || /<https?:/.test(String(r.citation || ''))).length;
+  const withUrl = STARTER_RULES.filter((r) => HAS_URL.test(String(r.citation || ''))).length;
   console.log(`check-pa-rule-citations: clean (${cited.size} distinct urls across ${withUrl} rule citations, all ${known.size} registered in the ledger).`);
 }
 

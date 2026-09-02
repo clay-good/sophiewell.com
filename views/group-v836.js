@@ -77,8 +77,10 @@ export const renderers = {
         keyInformationMissing: checked('fts-missing'),
       };
       const r = M.fourTsHit(inputs);
-      if (deriv) updateDerivationSteps(deriv, META['four-ts-hit'], inputs);
+      // spec-v984: only after the scorer accepts them. Updating first printed a
+      // panel total beside an error message, for inputs the library refused.
       if (!r.valid) { note(o, r.message); return; }
+      if (deriv) updateDerivationSteps(deriv, META['four-ts-hit'], inputs);
       resultRow(o, [
         { text: r.band, cls: r.abnormal ? 'warn' : null },
         { label: 'Score', value: `${r.score}/8` },

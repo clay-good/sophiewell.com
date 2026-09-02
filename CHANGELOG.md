@@ -84,6 +84,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A check reported "clean" while the problem it looks for was present.** The
+  check that keeps GitHub issue forms usable verifies every field has an id —
+  without one, GitHub silently throws away what someone typed. It found the
+  fields by assuming one particular indentation, and a form written with any
+  other passed inspection with a broken field. A gate that reports clean while
+  the defect is there is worse than no gate. It now reads whatever indentation
+  the file uses, and has the unit test it could not have before, because the
+  script used to run itself the moment anything imported it. Three smaller
+  issues found in the same review: a stateful regex whose count was right only
+  by accident, test failure messages Playwright was silently dropping, and a
+  show-your-work panel that could print a total beside an error. See
+  `docs/spec-v984.md`.
+
 - **The contribution guide described a process the project abandoned 860
   calculators ago.** Now that the repository is public, `CONTRIBUTING.md` is what
   a stranger reads first — and it told them to add an audit file to a directory

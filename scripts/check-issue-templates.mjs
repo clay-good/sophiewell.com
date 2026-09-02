@@ -28,9 +28,45 @@ import { join } from 'node:path';
 
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
 const DIR = join(ROOT, '.github', 'ISSUE_TEMPLATE');
-const errors = [];
 
 const read = (p) => readFileSync(join(ROOT, p), 'utf8');
+
+// spec-v984: read the body's fields at WHATEVER indentation the file uses.
+//
+// The first cut split on the literal `\n  - type: `, which is two spaces because
+// that is how these files happen to be written. Four-space indentation is equally
+// valid YAML -- and under it the split matched nothing, the loop never ran, and a
+// form with a required field and NO `id:` was reported clean. A gate that reports
+// clean while the defect it exists to catch is present is worse than no gate.
+//
+// So: find the `body:` key, take the indentation of its first `- ` item as this
+// file's list indent, and read each item's keys at that indent + 2.
+export function bodyFields(text) {
+  const lines = String(text).split('\n');
+  const bodyAt = lines.findIndex((l) => /^body:\s*$/.test(l));
+  if (bodyAt === -1) return null;
+
+  const out = [];
+  let indent = null;
+  let current = null;
+  for (const line of lines.slice(bodyAt + 1)) {
+    if (/^\S/.test(line) && line.trim()) break;          // back to a top-level key
+    const item = line.match(/^(\s*)-\s+type:\s*(\S+)/);
+    if (item) {
+      if (indent === null) indent = item[1].length;
+      if (item[1].length !== indent) continue;            // a nested list, not a field
+      current = { type: item[2], hasId: false, indent };
+      out.push(current);
+      continue;
+    }
+    if (!current) continue;
+    const key = line.match(/^(\s*)([A-Za-z_]+):/);
+    if (key && key[1].length === current.indent + 2 && key[2] === 'id') current.hasId = true;
+  }
+  return out;
+}
+
+const errors = [];
 
 if (!existsSync(DIR)) {
   console.error('check-issue-templates: .github/ISSUE_TEMPLATE/ is missing.');
@@ -45,15 +81,17 @@ for (const f of forms) {
   const text = readFileSync(join(DIR, f), 'utf8');
   if (!/^name:\s*\S/m.test(text)) errors.push(`${f}: no top-level name:, so GitHub will not offer it`);
   if (!/^description:\s*\S/m.test(text)) errors.push(`${f}: no top-level description:`);
-  if (!/^body:\s*$/m.test(text)) errors.push(`${f}: no body:, so the form renders empty`);
-  // Every block that asks for input needs an id, or the answer is dropped.
-  const blocks = text.split(/\n  - type: /).slice(1);
-  for (const b of blocks) {
-    const type = b.split('\n')[0].trim();
-    if (type === 'markdown') continue;
-    if (!/^\s{4}id:\s*\S/m.test(b)) errors.push(`${f}: a "${type}" field has no id:, so its answer is discarded`);
+  const fields = bodyFields(text);
+  if (fields === null) errors.push(`${f}: no body:, so the form renders empty`);
+  else if (!fields.length) errors.push(`${f}: body: has no "- type:" fields`);
+  else {
+    // Every block that asks for input needs an id, or the answer is dropped.
+    for (const fld of fields) {
+      if (fld.type === 'markdown') continue;
+      if (!fld.hasId) errors.push(`${f}: a "${fld.type}" field has no id:, so its answer is discarded`);
+    }
   }
-  if (/\btabs?\t/.test(text) || /\t/.test(text)) errors.push(`${f}: contains a tab; YAML forbids tabs for indentation`);
+  if (/\t/.test(text)) errors.push(`${f}: contains a tab; YAML forbids tabs for indentation`);
 }
 
 // 1. The prefix CONTRIBUTING documents.
@@ -102,9 +140,17 @@ for (const s of stated) {
   if (n !== count) errors.push(`an issue template says "${s} commitments"; build-commitments-page.mjs ships ${count}`);
 }
 
-if (errors.length) {
-  console.error('check-issue-templates: violations.');
-  for (const e of errors) console.error(`  ${e}`);
-  process.exit(1);
+// Only report when run directly. Imported (by its unit test) this module exposes
+// `bodyFields` and nothing else happens -- the three sibling gates added with it
+// all guard the same way, and without the guard a test that imported this would
+// `process.exit(1)` out of the runner on the first violation.
+function report() {
+  if (errors.length) {
+    console.error('check-issue-templates: violations.');
+    for (const e of errors) console.error(`  ${e}`);
+    process.exit(1);
+  }
+  console.log(`check-issue-templates: clean (${forms.length} forms, prefix "${prefix}" matches CONTRIBUTING, security reports routed to ${email}, ${count} commitments stated consistently).`);
 }
-console.log(`check-issue-templates: clean (${forms.length} forms, prefix "${prefix}" matches CONTRIBUTING, security reports routed to ${email}, ${count} commitments stated consistently).`);
+
+if (process.argv[1] && process.argv[1].endsWith('check-issue-templates.mjs')) report();
