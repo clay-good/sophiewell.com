@@ -15,5 +15,6 @@
       "records": 8,
       "bytes": 314
     }
-  ]
+  ],
+  "notes": "Numeric equivalence values only, with attribution. Ashton Manual prose is not bundled. See docs/legal.md."
 }

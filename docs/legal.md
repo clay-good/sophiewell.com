@@ -221,7 +221,11 @@ licensing posture with one of these explicit values:
   Ashton manual, CoTCCC). The `cpr-aha-numeric` and `aha-reference`
   datasets specifically carry only the numeric AHA values; the
   flowchart imagery and prose are NOT reproduced. The
-  `aha-no-flowchart` test enforces this on every commit.
+  `aha-no-flowchart` test enforces this on every commit, and
+  `test/unit/restricted-source-attribution.test.js` holds the whole
+  category: every dataset declaring this status must state what it
+  does and does not reproduce, and a new one cannot join the status
+  without being added to that guard deliberately (spec-v995).
 - **`mit-original`** -- original plain-English summaries authored by
   the project (cpt-summaries, cms-1500-fields, ub04-fields,
   eob-glossary, steroid-equiv, tpn-rules, iv-to-po). MIT-licensed

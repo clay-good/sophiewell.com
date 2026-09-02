@@ -15,5 +15,6 @@
       "records": 10,
       "bytes": 792
     }
-  ]
+  ],
+  "notes": "Numeric revenue codes plus brief original category labels by the project author. NUBC manual prose is not bundled. See docs/legal.md."
 }

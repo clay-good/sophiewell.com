@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Security
+
+- **The licensing guarantee in the docs was enforced by two tests that had not
+  existed for about a year.** `docs/legal.md`, `docs/threat-model.md` and
+  `docs/operations.md` each name a CI check by path as the proof that AHA
+  flowchart prose and AMA CPT descriptors are not bundled. Both files were
+  deleted by the spec-v29 prune along with the tiles that used them, while the
+  data they guarded stayed in the repository and in the shipped bundle. Both are
+  restored, and both pass on today's data unmodified — the compliance was real,
+  only the enforcement was gone. A third check now covers the whole category
+  rather than the two datasets those tests were written for: seven datasets
+  declare the restricted-prose status and four of them carried no attribution at
+  all, which is the one thing that status is named for. See
+  `docs/spec-v995.md`.
+
 ### Fixed
 
 - **The architecture document described a different product.** It told a new

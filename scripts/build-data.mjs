@@ -1131,6 +1131,9 @@ const v4Datasets = [
     id: 'revenue-codes', label: 'NUBC Revenue Code summary',
     sourceUrl: 'https://www.nubc.org/', agency: 'NUBC (numeric only)', status: 'numeric-facts-with-attribution',
     cadence: 'as-needed', shardName: 'revenue.json',
+    notes:
+      'Numeric revenue codes plus brief original category labels by the project author. '
+      + 'NUBC manual prose is not bundled. See docs/legal.md.',
     seed: [
       { code: '0250', category: 'Pharmacy', typicalPairing: 'General pharmacy' },
       { code: '0260', category: 'IV Therapy', typicalPairing: 'Infusion supplies' },
@@ -1146,6 +1149,9 @@ const v4Datasets = [
   }),
   v4TableDataset({
     id: 'nubc-special-codes', label: 'NUBC Condition / Occurrence / Value codes',
+    notes:
+      'Numeric condition, occurrence and value codes plus brief original labels by the project '
+      + 'author. NUBC manual prose is not bundled. See docs/legal.md.',
     sourceUrl: 'https://www.nubc.org/', agency: 'NUBC (numeric only)', status: 'numeric-facts-with-attribution',
     cadence: 'as-needed', shardName: 'special.json',
     seed: {
@@ -1442,6 +1448,9 @@ const v4Datasets = [
     id: 'tccc', label: 'TCCC tourniquet & wound-packing reference',
     sourceUrl: 'https://www.deployedmedicine.com/', agency: 'CoTCCC (public)', status: 'numeric-facts-with-attribution',
     cadence: 'annual', shardName: 'tccc.json',
+    notes:
+      'Numeric thresholds plus brief original summaries by the project author. '
+      + 'CoTCCC guideline prose is not reproduced. See docs/legal.md.',
     seed: {
       tourniquet: {
         applyWithin: 'As soon as life-threatening external hemorrhage on a limb is identified',
@@ -1501,6 +1510,9 @@ const v4Datasets = [
   }),
   v4TableDataset({
     id: 'benzo-equiv', label: 'Benzodiazepine equivalence (Ashton)',
+    notes:
+      'Numeric equivalence values only, with attribution. Ashton Manual prose is not bundled. '
+      + 'See docs/legal.md.',
     sourceUrl: 'https://www.benzo.org.uk/manual/', agency: 'Ashton (public)', status: 'numeric-facts-with-attribution',
     cadence: 'static', shardName: 'benzo.json',
     seed: [
