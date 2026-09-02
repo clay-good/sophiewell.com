@@ -35,8 +35,18 @@ const ROOT = fileURLToPath(new URL('..', import.meta.url));
 // true/false; it only gave the right count because a redundant non-global test
 // sat beside it catching every miss. `matchAll` clones its regex and is safe,
 // so the global form is used only there.
-const URL_IN_CITATION = /<(https?:\/\/[^>\s]+)>/g;
-const HAS_URL = /<https?:\/\//;
+// spec-v985: a BARE url counts too. Every one of the 741 citations happens to
+// wrap its url in angle brackets today, so requiring them found everything -- and
+// would go on reporting clean the first time someone wrote "see https://..."
+// without them, leaving that url out of the ledger's registry and out of the
+// monthly link check. Same shape of blindness as spec-v984's two-space indent:
+// the probe was written against the files that existed, not the format.
+const URL_IN_CITATION = /<(https?:\/\/[^>\s]+)>|(https?:\/\/[^\s<>]+)/g;
+const HAS_URL = /https?:\/\//;
+
+// Sentence punctuation is not part of the address. Only the marks that end a
+// sentence are stripped; a trailing `)` or `/` can be a real part of a url.
+const trimUrl = (u) => String(u).replace(/[.,;:]+$/, '');
 
 export function ledgerUrls(ledger) {
   const out = new Set();
@@ -51,8 +61,10 @@ export function citedUrls(rules) {
   const out = new Map();
   for (const r of rules || []) {
     for (const m of String(r.citation || '').matchAll(URL_IN_CITATION)) {
-      if (!out.has(m[1])) out.set(m[1], []);
-      out.get(m[1]).push(r.id);
+      const url = trimUrl(m[1] !== undefined ? m[1] : m[2]);
+      if (!url) continue;
+      if (!out.has(url)) out.set(url, []);
+      if (!out.get(url).includes(r.id)) out.get(url).push(r.id);
     }
   }
   return out;

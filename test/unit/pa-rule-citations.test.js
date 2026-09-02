@@ -27,6 +27,24 @@ test('the ledger knows a source url and everything on its alsoCited', () => {
   ]);
 });
 
+// spec-v985: a bare url counts too. All 741 citations wrap theirs in angle
+// brackets today, so requiring them found everything -- and would report clean
+// the first time someone wrote "see https://..." without them, leaving that url
+// out of the ledger's registry and out of the monthly link check.
+test('a url without angle brackets is still cited', () => {
+  const rules = [{ id: 'R-1', citation: 'bracketed <https://a.example/x> and bare https://b.example/y, then https://c.example/z.' }];
+  const cited = citedUrls(rules);
+  assert.deepEqual([...cited.keys()], ['https://a.example/x', 'https://b.example/y', 'https://c.example/z']);
+  // Sentence punctuation is not part of the address, but a trailing slash is.
+  assert.deepEqual([...citedUrls([{ id: 'R-2', citation: 'see https://d.example/path/ .' }]).keys()], ['https://d.example/path/']);
+});
+
+test('a url written both ways in one citation is one entry, one rule', () => {
+  const cited = citedUrls([{ id: 'R-3', citation: '<https://a.example/x> and again https://a.example/x' }]);
+  assert.deepEqual([...cited.keys()], ['https://a.example/x']);
+  assert.deepEqual(cited.get('https://a.example/x'), ['R-3']);
+});
+
 test('citedUrls reads every angle-bracketed url and names the rules citing it', () => {
   const rules = [
     { id: 'R-1', citation: 'Some text <https://payer.example/prior-auth>' },

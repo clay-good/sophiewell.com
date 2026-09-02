@@ -84,6 +84,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Two more checks could have gone the same way, and now cannot.** After the
+  fix below, the two checks written alongside it were re-read for the same
+  blindness — one only recognised a source link written inside angle brackets,
+  the other only found a build step invoked directly rather than through another
+  one. Both happened to see everything today, and both would have quietly
+  stopped seeing part of it after an ordinary edit. The lesson kept: test a
+  check by varying the *format* it reads, not just the value. See
+  `docs/spec-v985.md`.
+
 - **A check reported "clean" while the problem it looks for was present.** The
   check that keeps GitHub issue forms usable verifies every field has an id —
   without one, GitHub silently throws away what someone typed. It found the

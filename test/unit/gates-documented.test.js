@@ -14,6 +14,27 @@ test('lintChainScripts reads every script out of the chain, once', () => {
   assert.deepEqual(lintChainScripts({ scripts: {} }), []);
 });
 
+// spec-v985: the shape cases. The chain calls every gate directly today, so a
+// probe that only read `scripts/<x>.mjs` out of one string found all of them --
+// and would report clean the first time a step moved behind `npm run <name>`,
+// leaving that gate anonymous again with nothing to say so.
+test('a gate hidden behind npm run is still found', () => {
+  assert.deepEqual(
+    lintChainScripts({ scripts: { lint: 'node scripts/a.mjs && npm run sub', sub: 'node scripts/hidden.mjs' } }),
+    ['a.mjs', 'hidden.mjs'],
+  );
+  assert.deepEqual(
+    lintChainScripts({ scripts: { lint: 'npm run one', one: 'npm run two', two: 'node scripts/deep.mjs' } }),
+    ['deep.mjs'],
+  );
+});
+
+test('indirection that loops or dead-ends does not hang or throw', () => {
+  assert.deepEqual(lintChainScripts({ scripts: { lint: 'npm run lint && node scripts/a.mjs' } }), ['a.mjs']);
+  assert.deepEqual(lintChainScripts({ scripts: { lint: 'npm run nope && node scripts/a.mjs' } }), ['a.mjs']);
+  assert.deepEqual(lintChainScripts({ scripts: { lint: 'npm run b', b: 'npm run lint' } }), []);
+});
+
 test('a gate named nowhere is a violation; one named anywhere is not', () => {
   assert.deepEqual(undocumented(['a.mjs', 'b.mjs'], 'we run scripts/a.mjs to check things'), ['b.mjs']);
   assert.deepEqual(undocumented(['a.mjs'], 'scripts/a.mjs'), []);

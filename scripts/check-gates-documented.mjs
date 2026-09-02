@@ -21,9 +21,29 @@ import { join } from 'node:path';
 
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
 
-export function lintChainScripts(pkgJson) {
-  const chain = (pkgJson.scripts && pkgJson.scripts.lint) || '';
-  return [...new Set([...chain.matchAll(/scripts\/([A-Za-z0-9_-]+\.mjs)/g)].map((m) => m[1]))];
+// spec-v985: follow `npm run <name>` through to the script it names.
+//
+// The chain calls every gate directly today, so reading `scripts/<x>.mjs` out of
+// the one string found all of them -- and would go on reporting clean the first
+// time someone factored a step out behind `npm run check:pa-staleness`, which
+// package.json already defines. A gate hidden behind one level of indirection
+// would become anonymous again with nothing to say so. Same shape of blindness
+// as spec-v984's two-space indent.
+export function lintChainScripts(pkgJson, entry = 'lint') {
+  const scripts = (pkgJson && pkgJson.scripts) || {};
+  const found = [];
+  const seen = new Set();
+  const walk = (name, depth) => {
+    if (depth > 8 || seen.has(name) || !scripts[name]) return;   // depth guard: a script may reference itself
+    seen.add(name);
+    const chain = String(scripts[name]);
+    for (const m of chain.matchAll(/scripts\/([A-Za-z0-9_-]+\.mjs)/g)) {
+      if (!found.includes(m[1])) found.push(m[1]);
+    }
+    for (const m of chain.matchAll(/npm run ([A-Za-z0-9:_-]+)/g)) walk(m[1], depth + 1);
+  };
+  walk(entry, 0);
+  return found;
 }
 
 export function undocumented(scripts, corpus) {
