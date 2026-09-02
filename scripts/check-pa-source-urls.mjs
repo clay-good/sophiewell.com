@@ -27,7 +27,12 @@
 //   BLOCKED  403 / 429. A bot wall, not a dead page. medicaid.gov and asahq.org
 //            refuse scripted requests and are fine in a browser, so reporting
 //            these as dead would train the maintainer to ignore the report.
-//   DEAD     404 / 410, or the request failed. This is the one that matters.
+//   DEAD     404 / 410, the request failed, or the page answered 200 and then said
+//            it was not found. A SOFT 404 is the failure mode a status-code-only
+//            checker exists to be wrong about: the checker's one job is to say
+//            whether the page is there, and several payer sites are happy to
+//            serve their not-found page with a 200. It finds none today; it is
+//            here because a link checker that can be lied to is not a checker.
 
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -48,11 +53,27 @@ const HEADERS = {
 const TIMEOUT_MS = 25000;
 const CONCURRENCY = 8;
 
-export function classify({ status, finalUrl, declaredUrl, error }) {
+// Not-found wording in a page's own <title> or first <h1>. Deliberately narrow:
+// these two elements name what the page IS, so matching there does not fire on a
+// policy page that happens to discuss error codes further down.
+const NOT_FOUND_WORDING = /\b404\b|page not found|can(?:no|')?t find (?:that|the) page|couldn'?t find that page|page (?:you requested|is no longer|has moved|does ?n'?t exist)/i;
+
+const tagText = (html, tag) => {
+  const m = html.match(new RegExp(`<${tag}[^>]*>([\\s\\S]{0,300}?)</${tag}>`, 'i'));
+  return m ? m[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim() : '';
+};
+
+export function looksNotFound(html) {
+  if (!html) return false;
+  return NOT_FOUND_WORDING.test(tagText(html, 'title')) || NOT_FOUND_WORDING.test(tagText(html, 'h1'));
+}
+
+export function classify({ status, finalUrl, declaredUrl, error, softNotFound }) {
   if (error) return 'DEAD';
   if (status === 403 || status === 429) return 'BLOCKED';
   if (status >= 400) return 'DEAD';
   if (status >= 200 && status < 400) {
+    if (softNotFound) return 'DEAD';
     const same = (a, b) => a.replace(/\/+$/, '') === b.replace(/\/+$/, '');
     return finalUrl && !same(finalUrl, declaredUrl) ? 'MOVED' : 'OK';
   }
@@ -66,7 +87,13 @@ async function probe(source) {
     // GET rather than HEAD: several of these hosts answer HEAD with a 405 or a
     // 404 they would not give a real reader.
     const res = await fetch(source.url, { headers: HEADERS, redirect: 'follow', signal: ctrl.signal });
-    return { ...source, status: res.status, finalUrl: res.url };
+    // Only an HTML 200 can lie about being there. A PDF cannot soft-404, and the
+    // body of a real error status tells us nothing we do not already know.
+    let softNotFound = false;
+    if (res.status === 200 && /html/i.test(res.headers.get('content-type') || '')) {
+      softNotFound = looksNotFound((await res.text()).slice(0, 200000));
+    }
+    return { ...source, status: res.status, finalUrl: res.url, softNotFound };
   } catch (err) {
     return { ...source, status: 0, finalUrl: null, error: String(err && err.message ? err.message : err) };
   } finally {
@@ -95,7 +122,7 @@ async function main() {
 
   const results = (await mapLimit(sources, CONCURRENCY, probe)).map((r) => ({
     ...r,
-    verdict: classify({ status: r.status, finalUrl: r.finalUrl, declaredUrl: r.url, error: r.error }),
+    verdict: classify({ status: r.status, finalUrl: r.finalUrl, declaredUrl: r.url, error: r.error, softNotFound: r.softNotFound }),
     acknowledged: acked.has(r.id),
   }));
 
@@ -110,7 +137,8 @@ async function main() {
       for (const r of rows) {
         const ack = r.acknowledged ? ' [acknowledged]' : '';
         const to = r.verdict === 'MOVED' ? `\n      -> ${r.finalUrl}` : '';
-        console.log(`  ${r.id}${ack}  ${r.error || r.status}  ${r.url}${to}`);
+        const why = r.softNotFound ? '200-but-says-not-found' : (r.error || r.status);
+        console.log(`  ${r.id}${ack}  ${why}  ${r.url}${to}`);
       }
     }
     const dead = by('DEAD').filter((r) => !r.acknowledged);

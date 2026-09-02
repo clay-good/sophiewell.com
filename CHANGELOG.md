@@ -73,6 +73,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **The source-link checker can no longer be told a page exists when it doesn't.**
+  A site is free to serve its "page not found" screen with a success code, and a
+  checker that reads only the status code would call that fine forever. It now
+  reads the page's own title and heading too. It finds none today, which also
+  confirms the eighteen links fixed above are real. One more payer link was
+  corrected (Independence Blue Cross), leaving twelve — candidates were found for
+  most of the rest and deliberately not applied, because none was the page the
+  rules were written against, and a link that reads as authoritative while being
+  wrong is worse than one that is visibly dead. See `docs/spec-v980.md`.
+
 - **Eighteen of the prior-auth linter's 84 source links were dead, and nothing
   had been checking.** The maintenance procedure's first monthly step is "open
   each source URL and confirm it still resolves" — and no tool did the resolving.
