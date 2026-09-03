@@ -1,17 +1,47 @@
 # Performance Budget
 
-Per spec-v2.md section 2.1. The accessibility / best-practices / SEO score
-floors below are **hard CI gates** (assertion level `error` — they fail the
-build). The performance score and the individual timing metrics are tracked as
-Lighthouse `warn` assertions (surfaced on every run, non-blocking), and the
-transfer-size budgets are design targets measured at build time; they are
-tightened over time rather than auto-failed.
+Per spec-v2.md section 2.1.
 
-## Field Targets (desktop form factor, Slow-4G-class throttling)
+## What actually gates CI today
 
-Lighthouse runs `preset: "desktop"` with simulated throttling of ~1.6 Mbps /
-150 ms RTT / 4× CPU slowdown (`.lighthouserc.json`). These metrics are `warn`
-assertions:
+**Lighthouse does not run in CI.** It used to: `.github/workflows/ci.yml` carried a `lighthouse`
+job invoking `@lhci/cli` until commit `120bacd7` (2026-08-23, *"fix(security): harden problem report
+pipeline"*) deleted it along with thirty-one other lines, without a word in the commit message.
+For the next eleven days this document went on describing the Lighthouse assertions as blocking
+gates that a failing score would stop the build on. That is the same defect as spec-v995 and
+spec-v997: a document naming an automated check that is not there.
+`test/unit/performance-claims.test.js` now holds this section to the workflow, so the two cannot
+disagree again.
+
+Accessibility **is** enforced, by two checks that do run:
+
+| Check | Runs in | Catches |
+|---|---|---|
+| `scripts/a11y-check.mjs` | `npm test`, CI `unit` job | missing `<html lang>`, duplicate `<h1>`, heading-level skips, an `<input>` with no `<label for>`, an `<img>` with no `alt`, an empty `<a>` |
+| `test/integration/all-tools.spec.js` | CI `e2e` job | every form control in every rendered tile view has an accessible name |
+
+Best-practices and SEO category scores are **not** gated by anything at present.
+
+## The Lighthouse config, and how to run it
+
+`.lighthouserc.json` is kept and current: `preset: "desktop"` with simulated throttling of
+~1.6 Mbps / 150 ms RTT / 4x CPU slowdown, sampling the home view and four real tile routes. Run it
+against a built `dist/` on demand:
+
+```bash
+npm run perf
+```
+
+It writes its report to `.lighthouseci/` on disk. The config previously uploaded to
+`temporary-public-storage`, a third-party bucket; for a project whose first commitment is that
+nothing leaves the reader's device, publishing a report of the site from every run should be a
+decision someone makes deliberately rather than a default in a dormant file, so the target is now
+the filesystem.
+
+### Its assertions
+
+`error` (would fail a run) on the accessibility, best-practices and SEO category floors at 0.95.
+`warn` (reported, non-blocking) on the performance category floor and on every timing metric:
 
 | Metric                       | Budget   |
 |------------------------------|----------|
@@ -23,23 +53,14 @@ assertions:
 
 ## Transfer Size
 
+Design targets measured at build time, tightened over time rather than auto-failed. The config
+asserts no `resource-summary` byte budget.
+
 | Surface                                   | Budget (gzip) |
 |-------------------------------------------|---------------|
 | Home view (HTML + CSS + app.js)           | < 100 KB      |
 <!-- catalog-truth:historical -->
 | Single utility view incl. primary shard   | < 250 KB      |
-
-## Lighthouse CI Score Floors
-
-The build **fails** (assertion level `error`, minScore 0.95) if any of these
-drops below 95 on the home view or any sampled utility view:
-
-- Accessibility
-- Best Practices
-- SEO
-
-The **Performance** category floor (0.95) is asserted at `warn` level — it is
-reported but does not fail the build.
 
 ## Type-ahead and Calculator Latency
 

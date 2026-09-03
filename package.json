@@ -31,6 +31,7 @@
     "check:citation-cadence": "node scripts/check-citation-cadence.mjs",
     "audit:pa": "node scripts/audit-pa.mjs",
     "refresh:pa-rules": "node scripts/refresh-pa-rules.mjs",
+    "perf": "npm run build && npx --yes @lhci/cli@0.13.x autorun",
     "favicons": "node scripts/build-favicons.mjs",
     "data:refresh": "node scripts/build-data.mjs",
     "data:verify": "node scripts/verify-integrity.mjs",

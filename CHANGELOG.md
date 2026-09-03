@@ -8,6 +8,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A security commit deleted a CI job and the documentation kept promising it.**
+  `docs/performance.md` described the Lighthouse accessibility, best-practices
+  and SEO floors as gates that fail the build; the job running them was removed
+  on 2026-08-23 inside a commit about the problem-report pipeline, unmentioned in
+  its message. The document now says what is true, names the two checks that
+  really do enforce accessibility, and `npm run perf` runs the config by hand.
+  The job is deliberately not restored — it uploaded a report of the site to a
+  third-party bucket and carried a token, and reversing a security decision is
+  the maintainer's call. That dormant upload target is changed to the filesystem
+  regardless. A test binds the document to the workflows in both directions. See
+  `docs/spec-v1005.md`.
+
 - **The monthly link check had been reporting dead links to nobody.** The twelve
   dead prior-auth sources fixed a moment ago had been dead for months, and the
   job that finds them had been running on the first of every month and writing
