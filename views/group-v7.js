@@ -31,6 +31,21 @@ function selectField(label, id, options) {
 }
 function out() { return el('div', { id: 'q-results', 'aria-live': 'polite' }); }
 function val(id) { return Number(document.getElementById(id).value); }
+// spec-v1014: the second wave of "a calculation with no inputs is not a result of
+// zero" (spec-v1013). `val()` is Number(input.value) and Number('') is 0, so an
+// empty form told a reader "ANC: 0 cells/uL / Severe neutropenia (< 500/uL,
+// CTCAE grade 4) / Neutropenic precautions; fever in this range is an emergency"
+// and "Urine anion gap: 0 mEq/L / Positive UAG: impaired renal ammonium excretion
+// (renal tubular acidosis)" -- a diagnosis and an isolation order for a patient
+// with no labs.
+function needValues(o, pairs) {
+  const missing = pairs.filter(([, v]) => v == null || Number.isNaN(v)).map(([label]) => label);
+  if (!missing.length) return false;
+  const list_ = missing.length === 1 ? missing[0]
+    : `${missing.slice(0, -1).join(', ')} and ${missing[missing.length - 1]}`;
+  o.appendChild(el('p', { class: 'muted', text: `Enter ${list_} to calculate.` }));
+  return true;
+}
 function str(id) { return document.getElementById(id).value; }
 function optNum(id) {
   const v = document.getElementById(id).value;
@@ -61,7 +76,10 @@ export const renderers = {
     root.appendChild(field('Bands (%)', 'anc-bands', { min: 0, max: 100, placeholder: 'e.g. 5' }));
     const o = out(); root.appendChild(o);
     wire(['anc-wbc', 'anc-segs', 'anc-bands'], () => safe(o, () => {
-      const r = V6.anc({ wbc: val('anc-wbc'), segs: val('anc-segs'), bands: val('anc-bands') });
+      const wbc = optNum('anc-wbc'), segs = optNum('anc-segs'), bands = optNum('anc-bands');
+      if (needValues(o, [['a white cell count', wbc], ['a segmented-neutrophil percentage', segs],
+        ['a band percentage', bands]])) return;
+      const r = V6.anc({ wbc, segs, bands });
       o.appendChild(list([
         li(`ANC: ${fmt(r.anc, { fallback: '(enter values)' })} cells/uL`),
         li(r.grade),
@@ -227,7 +245,10 @@ export const renderers = {
     root.appendChild(field('Urine Cl (mEq/L)', 'uag-cl', { placeholder: 'e.g. 90' }));
     const o = out(); root.appendChild(o);
     wire(['uag-na', 'uag-k', 'uag-cl'], () => safe(o, () => {
-      const r = V6.urineAnionGap({ urineNa: val('uag-na'), urineK: val('uag-k'), urineCl: val('uag-cl') });
+      const urineNa = optNum('uag-na'), urineK = optNum('uag-k'), urineCl = optNum('uag-cl');
+      if (needValues(o, [['a urine sodium', urineNa], ['a urine potassium', urineK],
+        ['a urine chloride', urineCl]])) return;
+      const r = V6.urineAnionGap({ urineNa, urineK, urineCl });
       o.appendChild(list([
         li(`Urine anion gap: ${fmt(r.uag, { fallback: '(enter values)' })} mEq/L`),
         li(r.band),

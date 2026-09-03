@@ -49,6 +49,66 @@ for (const id of TILES) {
   });
 }
 
+// spec-v1014: the second wave, from the same sweep read to the end. These are the
+// tiles where the empty form did not just print a zero but reached a DECISION:
+//
+//   centor              a blank age earned the McIsaac under-15 point, pushing the
+//                       band toward "consider empiric or test" -- antibiotics
+//   psi                 "PSI 20 - Class II (outpatient)" -- a decision to send
+//                       someone home, from a library that has refused a missing
+//                       age since spec-v931 behind an nv() that never let it
+//   peds-ett            "Tube size: 4 mm ... Depth of insertion: 12 cm at the lip"
+//   oxytocin-titration  "Ordered dose -> pump rate: 0 mL/hr"
+//   electrolyte-repl.   "K: 80 mEq" with an infusion rate and a recheck interval
+//   anc                 "0 cells/uL / Severe neutropenia (CTCAE grade 4) /
+//                       Neutropenic precautions; fever in this range is an emergency"
+//   urine-anion-gap     "Positive UAG: impaired renal ammonium excretion (renal
+//                       tubular acidosis)" -- a diagnosis from three blank labs
+//   qbl-pph             "0 mL / Below the postpartum-hemorrhage threshold"
+const WAVE_2 = [
+  ['psi', /Enter the patient age to score/],
+  ['peds-ett', /Enter the patient age/],
+  ['oxytocin-titration', /Enter an ordered dose/],
+  ['electrolyte-replacement', /Enter the serum level/],
+  ['anc', /Enter a white cell count/],
+  ['urine-anion-gap', /Enter a urine sodium/],
+  ['qbl-pph', /Enter the measured blood volume/],
+];
+
+for (const [id, want] of WAVE_2) {
+  test(`${id}: an empty form is asked to fill in, not answered`, async ({ page }) => {
+    await page.goto(`/#${id}`);
+    await page.waitForSelector('#q-results');
+    await page.waitForTimeout(350);
+    await page.evaluate(() => {
+      for (const n of document.querySelectorAll('#tool-body input[type=number]')) {
+        n.value = '';
+        n.dispatchEvent(new Event('input', { bubbles: true }));
+        n.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+    });
+    await page.waitForTimeout(200);
+    const text = (await page.locator('#q-results').innerText()).replace(/\s+/g, ' ');
+    expect(text, `${id} answered an empty form`).toMatch(want);
+  });
+}
+
+// centor keeps its Centor score (its four criteria are checkboxes, and unchecked
+// is an answer) and withholds only the age-dependent McIsaac line.
+test('centor: a blank age withholds McIsaac, not Centor', async ({ page }) => {
+  await page.goto('/#centor');
+  await page.waitForSelector('#q-results');
+  await page.waitForTimeout(350);
+  await page.evaluate(() => {
+    const n = document.getElementById('ce-age');
+    n.value = '';
+    n.dispatchEvent(new Event('input', { bubbles: true }));
+  });
+  const text = await page.locator('#q-results').innerText();
+  expect(text).toMatch(/Centor: \d/);
+  expect(text).toMatch(/Enter an age for the McIsaac score/);
+});
+
 // The prompt is not a dead end: entering the values brings the answer back.
 test('a filled form still answers', async ({ page }) => {
   await page.goto('/#map');

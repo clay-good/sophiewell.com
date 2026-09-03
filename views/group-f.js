@@ -718,9 +718,17 @@ export const renderers = {
     root.appendChild(renalWrap);
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
+      const level = nvOrNull('er-l');
+      // spec-v1014: a blank serum level read as 0 is the most deficient patient
+      // the ladder knows, so an empty form answered "K: 80 mEq" with an infusion
+      // rate and a recheck interval.
+      if (level == null) {
+        o.appendChild(el('p', { class: 'muted', text: 'Enter the serum level to size the replacement.' }));
+        return;
+      }
       const r = electrolyteReplacement({
         electrolyte:   document.getElementById('er-e').value,
-        level:         nv('er-l'),
+        level,
         route:         document.getElementById('er-r').value,
         renalImpaired: document.getElementById('er-renal').checked,
       });

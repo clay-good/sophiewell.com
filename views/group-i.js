@@ -41,6 +41,14 @@ function checkbox(label, id) {
 }
 function out() { return el('div', { id: 'q-results', 'aria-live': 'polite' }); }
 function nv(id) { return Number(document.getElementById(id).value); }
+// spec-v1014: a blank age is not an age of zero. Read as 0, the pediatric airway
+// formulas answered "Tube size: 4 mm internal diameter / Depth of insertion: 12
+// cm at the lip" -- equipment sizing for a child nobody had described.
+function nvOrNull(id) {
+  const n = document.getElementById(id);
+  if (!n || String(n.value).trim() === '') return null;
+  return Number(n.value);
+}
 function checked(id) { return document.getElementById(id).checked; }
 function safe(o, fn) { clear(o); try { fn(); } catch (err) { o.appendChild(el('p', { class: 'muted', text: err.message })); } }
 
@@ -241,7 +249,12 @@ export const renderers = {
     ]));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
-      const r = pediatricEtt({ ageYears: nv('pet-age'), cuffed: document.getElementById('pet-cuffed').value === 'cuffed' });
+      const ageYears = nvOrNull('pet-age');
+      if (ageYears == null) {
+        o.appendChild(el('p', { class: 'muted', text: 'Enter the patient age in years to size the tube.' }));
+        return;
+      }
+      const r = pediatricEtt({ ageYears, cuffed: document.getElementById('pet-cuffed').value === 'cuffed' });
       resultRow(o, [
         { label: 'Tube size', value: `${r.sizeMm} mm internal diameter (${r.cuffed ? 'cuffed' : 'uncuffed'})` },
         { label: 'Depth of insertion', value: `${r.depthCm} cm at the lip` },

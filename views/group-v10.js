@@ -50,6 +50,12 @@ function rangeField(label, id, min, max) {
 function pointField(label, id, options) { return selectField(label, id, options); }
 function out() { return el('div', { id: 'q-results', 'aria-live': 'polite' }); }
 function val(id) { return Number(document.getElementById(id).value); }
+// spec-v1014: see spec-v1013. A blank field is not a zero, and `Number('')` is.
+function optNum(id) {
+  const n = document.getElementById(id);
+  if (!n || String(n.value).trim() === '') return null;
+  return Number(n.value);
+}
 function chk(id) { return document.getElementById(id).checked; }
 function safe(o, fn) {
   clear(o);
@@ -229,8 +235,16 @@ export const renderers = {
     root.appendChild(rangeField('CMQCC admission risk factors (count)', 'qp-risk', 0, 6));
     const o = out(); root.appendChild(o);
     wire(['qp-measured', 'qp-pad', 'qp-tare', 'qp-vaginal', 'qp-unstable', 'qp-risk'], () => safe(o, () => {
+      const measuredMl = optNum('qp-measured');
+      const padGrams = optNum('qp-pad');
+      // "Quantitative blood loss: 0 mL / Below the postpartum-hemorrhage
+      // threshold" is a rule-out, and an unweighed pad is not an empty one.
+      if (measuredMl == null && padGrams == null) {
+        note(o, 'Enter the measured blood volume, the weighed pads and drapes, or both. A quantitative blood loss cannot be read from an unweighed field.');
+        return;
+      }
       const r = S.qblPph({
-        measuredMl: val('qp-measured') || 0, padGrams: val('qp-pad') || 0, dryTareGrams: val('qp-tare') || 0,
+        measuredMl: measuredMl || 0, padGrams: padGrams || 0, dryTareGrams: val('qp-tare') || 0,
         vaginal: chk('qp-vaginal'), unstable: chk('qp-unstable'), riskFactors: val('qp-risk') || 0,
       });
       o.appendChild(list([
@@ -519,10 +533,18 @@ export const renderers = {
     root.appendChild(field('Pump rate (mL/hr)', 'oxy-rate', { placeholder: '12' }));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
+      const dose = optNum('oxy-dose');
+      const rate = optNum('oxy-rate');
+      // Each direction of the conversion needs its own number; with neither the
+      // tile used to answer "Ordered dose -> pump rate: 0 mL/hr".
+      if (dose == null && rate == null) {
+        note(o, 'Enter an ordered dose in mU/min, a pump rate in mL/hr, or both: each converts to the other.');
+        return;
+      }
       const r = C8.oxytocinConvert({
         milliunitsPerMl: Number(document.getElementById('oxy-conc').value),
-        doseMilliunitsMin: val('oxy-dose') || 0,
-        rateMlHr: val('oxy-rate') || 0,
+        doseMilliunitsMin: dose || 0,
+        rateMlHr: rate || 0,
       });
       o.appendChild(list([
         li(`Ordered dose -> pump rate: ${fmt(r.rateFromDoseMlHr)} mL/hr`),

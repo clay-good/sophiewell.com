@@ -497,7 +497,12 @@ export const renderers = {
     const numOpt = (id) => { const v = document.getElementById(id).value; return v === '' ? null : Number(v); };
     const run = () => safe(o, () => {
       const inputs = {
-        age: nv('ps-age'), sex: document.getElementById('ps-sex').value,
+        // spec-v1014: nvOrNull, not nv. The library has refused a missing age
+        // since spec-v931 -- "with no age there is no score, only the prompt" --
+        // but nv() reads a cleared field as 0, so the guard never fired and a
+        // blank form answered "PSI 20 - Class II (outpatient)", which is a
+        // decision to send someone home.
+        age: nvOrNull('ps-age'), sex: document.getElementById('ps-sex').value,
         nursingHome: checked('ps-nh'), neoplasm: checked('ps-neo'),
         liverDisease: checked('ps-liv'), chf: checked('ps-chf'),
         cerebrovascular: checked('ps-cva'), renalDisease: checked('ps-ren'),
@@ -680,11 +685,19 @@ export const renderers = {
         feverHistory: checked('ce-fever'), absenceOfCough: checked('ce-cough'),
       };
       const c = S4.centor(args);
-      const m = S4.mcisaac({ ...args, ageYears: nv('ce-age') });
+      // spec-v1014: a blank age is not a newborn. Read as 0 it earned the
+      // McIsaac under-15 modifier, so clearing the age ADDED a point and pushed
+      // the band toward "consider empiric or test" -- an antibiotic decision.
+      const ageYears = nvOrNull('ce-age');
+      const m = ageYears == null ? null : S4.mcisaac({ ...args, ageYears });
       o.appendChild(el('h2', { text: `Centor: ${c.score} - ${c.band}` }));
-      o.appendChild(el('p', { text: `McIsaac (age ${nv('ce-age')}): ${m.score} (modifier ${m.ageModifier >= 0 ? '+' : ''}${m.ageModifier}) - ${m.band}` }));
+      o.appendChild(el('p', {
+        text: m == null
+          ? 'Enter an age for the McIsaac score: it adds a point under 15 and subtracts one at 45 or over.'
+          : `McIsaac (age ${ageYears}): ${m.score} (modifier ${m.ageModifier >= 0 ? '+' : ''}${m.ageModifier}) - ${m.band}`,
+      }));
       if (deriv) updateDerivationSteps(deriv, META.centor, args);
-      if (derivMcisaac) updateDerivationSteps(derivMcisaac, { derivation: META.centor.derivationMcisaac }, { ...args, ageYears: nv('ce-age') });
+      if (derivMcisaac && ageYears != null) updateDerivationSteps(derivMcisaac, { derivation: META.centor.derivationMcisaac }, { ...args, ageYears });
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
     document.getElementById('ce-age').addEventListener('input', run);

@@ -8,6 +8,17 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Eight more, and these reached a decision.** Reading the same sweep to the end
+  found tools that did not just print a zero from an empty form: the Centor score
+  gave a blank age the under-15 point and pushed toward "consider empiric or
+  test", the pneumonia severity index answered "Class II (outpatient)", the
+  pediatric airway tool sized a tube and gave a depth at the lip, the electrolyte
+  tool ordered "K: 80 mEq" with an infusion rate, and the absolute neutrophil
+  count reported severe neutropenia with isolation precautions. Each now asks for
+  what it needs. The pneumonia one is the sharp lesson: its calculation had
+  refused a missing age for months, and the refusal never reached the screen
+  because the form read a blank box as a zero. See `docs/spec-v1014.md`.
+
 - **Fourteen calculators answered a form with nothing in it.** Body surface area
   said "0 m²", the corrected-sodium tool reported a *negative* sodium, the
   ideal-body-weight suite produced "IBW (Devine): 50.0 kg" from a blank height —
