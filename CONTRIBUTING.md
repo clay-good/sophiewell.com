@@ -127,6 +127,22 @@ When one fails it names itself; this is where to look it up.
 | `check-gates-documented.mjs` | a gate joining this chain without a row in this table |
 | `build-report-catalog.mjs --check` | the report Worker's id/name map out of date with the catalog |
 
+One gate does not run in that chain because it needs a browser. The end-to-end
+suite carries `no-answer-from-nothing-sweep.spec.js`, which clears every field of
+every calculator and fails on any tile that still produces a reading. A tile that
+legitimately answers an empty form — a checklist where nobody ticking anything
+really is a score of 0 — belongs in `test/integration/empty-form-ledger.js`, with
+a sentence in the pull request saying which it is: a criterion the clinician
+answered "no" to, or a measurement nobody took (`docs/spec-v1019.md`).
+
+One gate does not run in that chain because it needs a browser. The end-to-end
+suite carries `no-answer-from-nothing-sweep.spec.js`, which clears every field of
+every calculator and fails on any tile that still produces a reading. A tile that
+legitimately answers an empty form -- a checklist where nobody ticking anything
+really is a score of 0 -- belongs in `test/integration/empty-form-ledger.js`,
+with a sentence in the pull request saying which it is: a criterion the clinician
+answered "no" to, or a measurement nobody took (`docs/spec-v1019.md`).
+
 Two more checks are **network** and therefore not in that chain, because a
 publisher's outage must not fail a build for a reason unrelated to the change.
 They run on the monthly cadence workflow and can be run by hand:

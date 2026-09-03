@@ -16,6 +16,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   which direction the scale runs), and a checkbox is an answer while a blank
   measurement is a gap.
 
+### Added
+
+- **A check that stops the next calculator from answering an empty form.** Ten
+  changes fixed thirty-odd tools that did, each pinned by its own test — and a
+  tool that does not exist yet is in no list, so the whole program protected the
+  past and nothing else. The end-to-end suite now clears every field of every
+  calculator and fails on any that still produces a reading, with a ledger for
+  the ones that legitimately do (a checklist nobody has ticked really is a 0).
+  Fifteen seconds for the whole catalog. See `docs/spec-v1019.md`.
+
 ### Fixed
 
 - **A pregnancy-dating comparison was made on the wrong day, and would have been
