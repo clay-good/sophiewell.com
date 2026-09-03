@@ -4685,7 +4685,18 @@ function showExampleHint(body, exampleFields = null) {
     // including when what they edited was a field the example never seeded,
     // which is the NIHSS case. "These are example values" is no longer true of
     // the whole form, so say how much of it is still ours.
-    hint.textContent = EXAMPLE_PARTIAL_TEXT(left);
+    //
+    // Only ever WRITE a text that differs. Assigning the same string still
+    // replaces the text node, and a childList mutation inside the tool body is
+    // exactly what watchRestore's observer is listening for: it re-applies the
+    // example, whose own dispatched input events land back here, which wrote the
+    // text again. That loop burned the 40-mutation retry budget in milliseconds,
+    // and the three tiles that build their picklist from a fetch --
+    // steroid-equiv, benzo-equiv, vasopressor -- had their retry spent before
+    // the network answered, so they opened without their example at all. CI's
+    // example-fills sweep caught it; nothing I ran locally did.
+    const next = EXAMPLE_PARTIAL_TEXT(left);
+    if (hint.textContent !== next) hint.textContent = next;
   };
   body.addEventListener('input', onEdit, true);
   body.addEventListener('change', onEdit, true);
