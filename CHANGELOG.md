@@ -8,6 +8,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A fix to the out-of-range warning broke three other checks, and CI caught
+  it.** Making the warning a permanent hidden element parked an empty paragraph
+  between a calculator's explanation and its answer — which is exactly what three
+  suites are about. The warning is created when there is something to say again;
+  the parts that mattered (a polite announcement instead of an interrupting one,
+  and the message tied to its field) are kept. See `docs/spec-v1027.md`.
+
+
 - **The empty-form check was reading calculators before they had finished
   answering.** It waited 25 milliseconds, which is not long enough for a tool
   that loads part of itself on demand, so two runs of the same commit disagreed

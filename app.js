@@ -4780,31 +4780,21 @@ const RANGE_WARNING_ID = 'range-warning';
 function watchDeclaredRanges(body) {
   if (!body) return;
 
-  // spec-v1022: the region exists from the start, empty. docs/accessibility.md
-  // says results announce through a POLITE live region, and that validation
-  // errors are tied to their input with aria-describedby; spec-v1009 shipped
-  // this as a `role="alert"` inserted on the fly, which is assertive -- it
-  // interrupts a screen reader mid-sentence, and it did so again on every
-  // keystroke while a value stayed out of range. A live region also has to be in
-  // the DOM before its text changes for the change to be announced at all, so
-  // creating it on the first offence was the wrong shape twice over.
-  const warning = el('p', {
-    id: RANGE_WARNING_ID,
-    class: RANGE_WARNING_CLASS,
-    'aria-live': 'polite',
-    hidden: true,
-  });
-  // Placed in a task, not synchronously: hoistResults() moves #q-results to the
-  // top of the body on its own setTimeout(0), and a warning inserted before that
-  // ran ended up BELOW the answer it is about. Registered after the hoist, so it
-  // runs after it -- and still long before the reader can type.
-  const place = () => {
-    const results = body.querySelector('#q-results');
-    if (results) body.insertBefore(warning, results);
-    else body.insertBefore(warning, body.firstChild);
-  };
-  place();
-  setTimeout(place, 0);
+  // spec-v1022: politeness and association, per docs/accessibility.md -- results
+  // announce through a POLITE live region, and a validation message is tied to
+  // its input with aria-describedby. spec-v1009 had shipped this as a
+  // `role="alert"`, which is assertive: it interrupts a screen reader
+  // mid-sentence, and did so again on every keystroke while a value stayed out
+  // of range.
+  //
+  // spec-v1027: the element is created ON DEMAND again, as spec-v1009 had it.
+  // spec-v1022 made it permanent and hidden, on the reasoning that a live region
+  // must exist before its text changes -- but a node inserted WITH its text is
+  // announced the same way `role="alert"` is, and keeping an empty paragraph
+  // between the hoisted explanation and #q-results broke three suites that
+  // assert what sits either side of the answer. The politeness and the
+  // association were the fixes worth having; the permanence was not.
+  let warning = null;
 
   const describe = (input, on) => {
     const current = (input.getAttribute('aria-describedby') || '').split(/\s+/).filter(Boolean);
@@ -4827,12 +4817,19 @@ function watchDeclaredRanges(body) {
       describe(input, bad);
     }
     if (!offenders.length) {
-      if (warning.textContent) warning.textContent = '';
-      warning.hidden = true;
+      if (warning) { warning.remove(); warning = null; }
       return;
     }
     const text = rangeMessage(body, offenders);
-    warning.hidden = false;
+    if (!warning) {
+      warning = el('p', {
+        id: RANGE_WARNING_ID, class: RANGE_WARNING_CLASS, 'aria-live': 'polite', text,
+      });
+      const results = body.querySelector('#q-results');
+      if (results) body.insertBefore(warning, results);
+      else body.insertBefore(warning, body.firstChild);
+      return;
+    }
     if (warning.textContent !== text) warning.textContent = text;
   };
   body.addEventListener('input', check, true);

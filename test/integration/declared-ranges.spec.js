@@ -34,12 +34,13 @@ for (const [tile, id, value, want, good] of CASES) {
     await page.goto(`/#${tile}`);
     await page.waitForSelector('#q-results');
     await page.waitForTimeout(300);
-    // spec-v1022: the region is in the DOM from the start so a change to it can
-    // be announced at all; empty and hidden until there is something to say.
-    await expect(page.locator('.range-warning')).toBeHidden();
+    // spec-v1027: created on demand, so it is absent until there is something to
+    // say. spec-v1022 kept it permanently in the DOM and that put an empty
+    // paragraph between the hoisted explanation and the answer, which three
+    // other suites assert about.
+    await expect(page.locator('.range-warning')).toHaveCount(0);
 
     await page.locator(`#${id}`).fill(String(value));
-    await expect(page.locator('.range-warning')).toBeVisible();
     await expect(page.locator('.range-warning')).toHaveText(want);
     // Above the answer, never inside it: #q-results is an aria-live region and
     // this is not part of the reading.
@@ -54,7 +55,7 @@ for (const [tile, id, value, want, good] of CASES) {
 
     // Correcting the value takes the warning away again.
     await page.locator(`#${id}`).fill(good);
-    await expect(page.locator('.range-warning')).toBeHidden();
+    await expect(page.locator('.range-warning')).toHaveCount(0);
     await expect(page.locator(`#${id}`)).not.toHaveAttribute('aria-invalid', 'true');
   });
 }
@@ -64,7 +65,7 @@ test('an in-range value is never flagged', async ({ page }) => {
   await page.waitForSelector('#q-results');
   await page.locator('#saps-age').fill('72');
   await page.waitForTimeout(200);
-  await expect(page.locator('.range-warning')).toBeHidden();
+  await expect(page.locator('.range-warning')).toHaveCount(0);
 });
 
 test('two bad values are named in one sentence', async ({ page }) => {
@@ -86,17 +87,15 @@ test('the warning follows the house live-region pattern', async ({ page }) => {
   await page.goto('/#saps-ii');
   await page.waitForSelector('#q-results');
   await page.waitForTimeout(300);
+  await page.locator('#saps-age').fill('1307');
   const region = page.locator('.range-warning');
   await expect(region).toHaveAttribute('aria-live', 'polite');
   await expect(region).not.toHaveAttribute('role', 'alert');
-
-  await page.locator('#saps-age').fill('1307');
-  await expect(region).toBeVisible();
   // The sentence about the value is attached to the field it is about.
   await expect(page.locator('#saps-age')).toHaveAttribute('aria-describedby', /range-warning/);
   await expect(page.locator('#saps-age')).toHaveAttribute('aria-invalid', 'true');
 
   await page.locator('#saps-age').fill('72');
-  await expect(region).toBeHidden();
+  await expect(region).toHaveCount(0);
   await expect(page.locator('#saps-age')).not.toHaveAttribute('aria-describedby', /range-warning/);
 });
