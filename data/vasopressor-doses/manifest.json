@@ -1,7 +1,7 @@
 {
   "dataset": "vasopressor-doses",
   "label": "Vasopressor dose / concentration reference",
-  "sourceUrl": "FDA labels (subset)",
+  "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/",
   "agency": "FDA",
   "status": "public-domain",
   "cadence": "annual",

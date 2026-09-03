@@ -8,6 +8,17 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Seven calculators linked their source to a sentence.** A dataset's "Source:"
+  line becomes a link when the manifest carries a `sourceUrl`, and eleven
+  manifests carried prose there — "FDA labels via DailyMed", "standard nutrition
+  references" — so clicking it opened `sophiewell.com/FDA%20labels%20via%20DailyMed`
+  in a new tab. One carried a real address with a note appended, which opened a
+  404 on the real domain. The app now refuses to link anything that is not an
+  absolute http(s) address, the manifests carry a real page where one exists and
+  nothing where one does not, and a new check keeps prose out of that field. The
+  pre-rendered pages were never affected — they print the label as plain text.
+  See `docs/spec-v1003.md`.
+
 - **Twelve of the prior-authorization linter's source links were dead, and those
   links print into the report a biller reads.** Nine payer provider portals had
   reorganized and three CMS pages had moved; every one was confirmed dead with a

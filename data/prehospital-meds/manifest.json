@@ -1,6 +1,6 @@
 {
   "dataset": "prehospital-meds",
-  "sourceUrl": "FDA DailyMed labeling",
+  "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/",
   "agency": "FDA",
   "status": "public-domain",
   "cadence": "as-needed",

@@ -1,6 +1,6 @@
 {
   "dataset": "toxidromes",
-  "sourceUrl": "CDC Agency for Toxic Substances and Disease Registry (ATSDR)",
+  "sourceUrl": "https://www.atsdr.cdc.gov/",
   "agency": "ATSDR / CDC",
   "status": "public-domain",
   "cadence": "as-needed",

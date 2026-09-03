@@ -4253,6 +4253,16 @@ function appendLinkified(parent, str) {
 export const PROOF_SUMMARY = 'How this is calculated';
 
 // and the universal "Copy all" affordance.
+// isHttpUrl(v) -> bool. A dataset manifest's `sourceUrl` becomes an href, so a
+// value that is not an absolute http(s) URL must never be linked (spec-v1003).
+function isHttpUrl(v) {
+  if (typeof v !== 'string' || /\s/.test(v)) return false;
+  try {
+    const u = new URL(v);
+    return u.protocol === 'https:' || u.protocol === 'http:';
+  } catch { return false; }
+}
+
 function renderMetaBlock(util) {
   const meta = META[util.id];
   if (!meta) return null;
@@ -4357,12 +4367,19 @@ function renderMetaBlock(util) {
     const stamp = el('p', { class: 'source-stamp', text: `Source: ${meta.source.label} (loading version...)` });
     proof.appendChild(stamp);
     fetchJson(`data/${meta.source.dataset}/manifest.json`).then((m) => {
-      // When the dataset manifest carries a vetted sourceUrl (the agency's
-      // canonical page, verified by the data pipeline), make the label a
+      // When the dataset manifest carries a sourceUrl, make the label a
       // clickable link so the citation points at its primary source.
+      //
+      // spec-v1003: it must actually BE a URL. Eleven manifests carried a
+      // sentence there -- "FDA labels via DailyMed", "standard nutrition
+      // references" -- and this rendered it as an href, so seven live tiles
+      // sent a reader to sophiewell.com/FDA%20labels%20via%20DailyMed in a new
+      // tab. The comment above used to say "verified by the data pipeline";
+      // nothing verified it. The `else` branch renders the label as plain text,
+      // which is the right answer when there is no page to point at.
       clear(stamp);
       stamp.appendChild(document.createTextNode('Source: '));
-      if (m && m.sourceUrl) {
+      if (m && isHttpUrl(m.sourceUrl)) {
         stamp.appendChild(el('a', {
           class: 'source-link', href: m.sourceUrl, target: '_blank', rel: 'noopener noreferrer', text: meta.source.label,
         }));

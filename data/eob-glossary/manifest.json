@@ -1,7 +1,7 @@
 {
   "dataset": "eob-glossary",
   "label": "EOB jargon glossary",
-  "sourceUrl": "project-author-original-content",
+  "sourceUrl": null,
   "agency": "sophiewell.com",
   "status": "mit-original",
   "cadence": "static",

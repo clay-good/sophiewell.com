@@ -1,6 +1,6 @@
 {
   "dataset": "clinical",
-  "sourceUrl": "published clinical literature (citations only; computations live in app.js)",
+  "sourceUrl": null,
   "agency": "various; see docs/clinical-citations.md",
   "status": "public-formulas-and-original-notes",
   "cadence": "as-needed",

@@ -1,6 +1,6 @@
 {
   "dataset": "mci-triage",
-  "sourceUrl": "https://www.start-triage.com/ ; JumpSTART (CHOC Children's)",
+  "sourceUrl": "https://www.start-triage.com/",
   "agency": "Public-domain MCI triage algorithms",
   "status": "public-domain",
   "cadence": "as-published",

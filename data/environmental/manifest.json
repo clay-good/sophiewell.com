@@ -1,6 +1,6 @@
 {
   "dataset": "environmental",
-  "sourceUrl": "Wilderness Medical Society practice guidelines; standard medical literature",
+  "sourceUrl": "https://wms.org/WMS/WMS/Research/WEM/CPG.aspx",
   "agency": "Wilderness Medical Society / standard medical literature",
   "status": "public-formulas-and-original-notes",
   "cadence": "as-needed",

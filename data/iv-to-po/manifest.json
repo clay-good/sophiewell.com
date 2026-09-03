@@ -1,7 +1,7 @@
 {
   "dataset": "iv-to-po",
   "label": "IV-to-PO conversion reference",
-  "sourceUrl": "FDA labels",
+  "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/",
   "agency": "sophiewell.com (numeric)",
   "status": "mit-original",
   "cadence": "annual",

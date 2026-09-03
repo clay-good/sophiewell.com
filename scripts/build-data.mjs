@@ -257,7 +257,7 @@ const datasets = [
   // ----- CPT summaries (project author's original plain-English summaries)
   {
     id: 'cpt-summaries',
-    sourceUrl: 'project-author-original-content',
+    sourceUrl: null,
     agency: 'sophiewell.com (Clay Good)',
     status: 'mit-original',
     cadence: 'as-needed',
@@ -442,7 +442,7 @@ const datasets = [
   // ----- Crosswalks (POS, modifier, revenue, CARC, RARC) -----------------
   {
     id: 'crosswalks',
-    sourceUrl: 'CMS publications and X12 external code lists',
+    sourceUrl: null,
     agency: 'CMS, X12',
     status: 'public-domain',
     cadence: 'as-published',
@@ -602,7 +602,7 @@ const datasets = [
   // ----- Clinical reference data ----------------------------------------
   {
     id: 'clinical',
-    sourceUrl: 'published clinical literature (citations only; computations live in app.js)',
+    sourceUrl: null,
     agency: 'various; see docs/clinical-citations.md',
     status: 'public-formulas-and-original-notes',
     cadence: 'as-needed',
@@ -819,7 +819,7 @@ const datasets = [
   // ----- Field Medicine: START / JumpSTART triage algorithms ---------------
   {
     id: 'mci-triage',
-    sourceUrl: 'https://www.start-triage.com/ ; JumpSTART (CHOC Children\'s)',
+    sourceUrl: 'https://www.start-triage.com/',
     agency: 'Public-domain MCI triage algorithms',
     status: 'public-domain',
     cadence: 'as-published',
@@ -864,7 +864,7 @@ const datasets = [
   // ----- Field Medicine: FDA prehospital drug labeling subset --------------
   {
     id: 'prehospital-meds',
-    sourceUrl: 'FDA DailyMed labeling',
+    sourceUrl: 'https://dailymed.nlm.nih.gov/dailymed/',
     agency: 'FDA',
     status: 'public-domain',
     cadence: 'as-needed',
@@ -910,7 +910,7 @@ const datasets = [
   // ----- Field Medicine: AHA reference (numeric facts, no flowcharts) ------
   {
     id: 'aha-reference',
-    sourceUrl: 'AHA ECC 2020 guidelines (numeric reference facts only; no flowchart text)',
+    sourceUrl: 'https://cpr.heart.org/en/resuscitation-science/cpr-and-ecc-guidelines',
     agency: 'American Heart Association (numeric reference)',
     status: 'numeric-facts-with-attribution',
     cadence: 'as-published',
@@ -959,7 +959,7 @@ const datasets = [
   // ----- Field Medicine: environmental staging (hypothermia, heat illness) -
   {
     id: 'environmental',
-    sourceUrl: 'Wilderness Medical Society practice guidelines; standard medical literature',
+    sourceUrl: 'https://wms.org/WMS/WMS/Research/WEM/CPG.aspx',
     agency: 'Wilderness Medical Society / standard medical literature',
     status: 'public-formulas-and-original-notes',
     cadence: 'as-needed',
@@ -993,7 +993,7 @@ const datasets = [
   // ----- Field Medicine: ATSDR toxidrome reference --------------------------
   {
     id: 'toxidromes',
-    sourceUrl: 'CDC Agency for Toxic Substances and Disease Registry (ATSDR)',
+    sourceUrl: 'https://www.atsdr.cdc.gov/',
     agency: 'ATSDR / CDC',
     status: 'public-domain',
     cadence: 'as-needed',
@@ -1403,7 +1403,7 @@ const v4Datasets = [
   }),
   v4TableDataset({
     id: 'eob-glossary', label: 'EOB jargon glossary',
-    sourceUrl: 'project-author-original-content', agency: 'sophiewell.com', status: 'mit-original',
+    sourceUrl: null, agency: 'sophiewell.com', status: 'mit-original',
     cadence: 'static', shardName: 'glossary.json',
     seed: [
       { term: 'Allowed amount', plain: 'The maximum the insurer will pay for a covered service.' },
@@ -1495,7 +1495,7 @@ const v4Datasets = [
   }),
   v4TableDataset({
     id: 'steroid-equiv', label: 'Glucocorticoid equivalence (numeric)',
-    sourceUrl: 'standard pharmacology references; original by project author',
+    sourceUrl: null,
     agency: 'sophiewell.com', status: 'mit-original', cadence: 'static', shardName: 'steroid.json',
     seed: [
       { drug: 'hydrocortisone', equivDoseMg: 20, mineralocorticoid: 'Yes' },
@@ -1528,7 +1528,7 @@ const v4Datasets = [
   }),
   v4TableDataset({
     id: 'abx-renal', label: 'Antibiotic renal dose adjustment subset',
-    sourceUrl: 'FDA labels via DailyMed', agency: 'FDA / NLM DailyMed', status: 'public-domain',
+    sourceUrl: 'https://dailymed.nlm.nih.gov/dailymed/', agency: 'FDA / NLM DailyMed', status: 'public-domain',
     cadence: 'quarterly', shardName: 'abx.json',
     seed: [
       { drug: 'cefepime', crClBands: [
@@ -1554,7 +1554,7 @@ const v4Datasets = [
   }),
   v4TableDataset({
     id: 'vasopressor-doses', label: 'Vasopressor dose / concentration reference',
-    sourceUrl: 'FDA labels (subset)', agency: 'FDA', status: 'public-domain',
+    sourceUrl: 'https://dailymed.nlm.nih.gov/dailymed/', agency: 'FDA', status: 'public-domain',
     cadence: 'annual', shardName: 'vasopressors.json',
     seed: [
       { drug: 'norepinephrine', units: 'mcg/min',          typicalRange: '2-20 mcg/min',     defaultBag: { mg: 4, mL: 250 } },
@@ -1567,7 +1567,7 @@ const v4Datasets = [
   }),
   v4TableDataset({
     id: 'tpn-rules', label: 'TPN macronutrient reference',
-    sourceUrl: 'standard nutrition references', agency: 'sophiewell.com (numeric)', status: 'mit-original',
+    sourceUrl: null, agency: 'sophiewell.com (numeric)', status: 'mit-original',
     cadence: 'annual', shardName: 'tpn.json',
     seed: {
       kcalPerGram: { dextrose: 3.4, aminoAcid: 4.0, lipid20pct: 2.0 },
@@ -1577,7 +1577,7 @@ const v4Datasets = [
   }),
   v4TableDataset({
     id: 'iv-to-po', label: 'IV-to-PO conversion reference',
-    sourceUrl: 'FDA labels', agency: 'sophiewell.com (numeric)', status: 'mit-original',
+    sourceUrl: 'https://dailymed.nlm.nih.gov/dailymed/', agency: 'sophiewell.com (numeric)', status: 'mit-original',
     cadence: 'annual', shardName: 'iv-po.json',
     seed: [
       { drug: 'levofloxacin', bioavailability: 0.99, ratio: '1:1' },

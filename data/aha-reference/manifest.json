@@ -1,6 +1,6 @@
 {
   "dataset": "aha-reference",
-  "sourceUrl": "AHA ECC 2020 guidelines (numeric reference facts only; no flowchart text)",
+  "sourceUrl": "https://cpr.heart.org/en/resuscitation-science/cpr-and-ecc-guidelines",
   "agency": "American Heart Association (numeric reference)",
   "status": "numeric-facts-with-attribution",
   "cadence": "as-published",

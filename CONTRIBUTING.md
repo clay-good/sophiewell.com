@@ -115,6 +115,7 @@ When one fails it names itself; this is where to look it up.
 | `check-output-safety.mjs` | a result that can print `NaN`, `Infinity`, or an order |
 | `check-tile-copy.mjs` | in-house words on screen — a raw tile id, "tile", "catalog" |
 | `check-citations.mjs` | an undated guideline citation, or one missing from the staleness ledger |
+| `check-source-urls.mjs` | a dataset manifest whose `sourceUrl` is prose rather than a URL, because the app renders it as a link |
 | `check-catalog-truth.mjs` | a count, group label or worked example that drifted between surfaces |
 | `check-issue-templates.mjs` | an issue form that contradicts CONTRIBUTING or SECURITY |
 | `check-test-tile-ids.mjs` | a test naming a tile id that no longer exists |
