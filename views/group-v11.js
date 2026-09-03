@@ -15,7 +15,7 @@ import { fmt } from '../lib/num.js';
 import { boundsAdvisory } from '../lib/bounds.js';
 import { resultRow } from '../lib/result-copy.js';
 import * as C from '../lib/clinical-v7.js';
-import { unitField, unitNum, WEIGHT_UNITS, MAGNESIUM_UNITS } from '../lib/field-units.js';
+import { unitField, unitNum, unitNumOpt, WEIGHT_UNITS, MAGNESIUM_UNITS } from '../lib/field-units.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -45,6 +45,25 @@ function checkField(label, id) {
 }
 function out() { return el('div', { id: 'q-results', 'aria-live': 'polite' }); }
 function val(id) { return Number(document.getElementById(id).value); }
+// spec-v1017: the fourth wave of "a calculation with no inputs is not a result of
+// zero" (spec-v1013). Three of these reached a conclusion from an empty form:
+// "Corrected level below the 10-20 ug/mL therapeutic range", "Serum K is at or
+// above target -- no deficit by this estimate", and "0 mOsm/L -- below ~900
+// mOsm/L; peripheral administration is generally acceptable", which is a
+// line-selection decision. A typed 0 still means zero.
+function optNum(id) {
+  const n = document.getElementById(id);
+  if (!n || String(n.value).trim() === '') return null;
+  return Number(n.value);
+}
+function needValues(o, pairs) {
+  const missing = pairs.filter(([, v]) => v == null || Number.isNaN(v)).map(([label]) => label);
+  if (!missing.length) return false;
+  const list_ = missing.length === 1 ? missing[0]
+    : `${missing.slice(0, -1).join(', ')} and ${missing[missing.length - 1]}`;
+  o.appendChild(el('p', { class: 'muted', text: `Enter ${list_} to calculate.` }));
+  return true;
+}
 function chk(id) { return document.getElementById(id).checked; }
 function safe(o, fn) {
   clear(o);
@@ -146,7 +165,9 @@ export const renderers = {
     root.appendChild(checkField('CrCl <10 mL/min / ESRD (use 0.1 factor)', 'cp-esrd'));
     const o = out(); root.appendChild(o);
     wire(['cp-meas', 'cp-alb', 'cp-esrd'], () => safe(o, () => {
-      const r = C.correctedPhenytoin({ measured: val('cp-meas'), albumin: val('cp-alb'), esrd: chk('cp-esrd') });
+      const measured = optNum('cp-meas'), albumin = optNum('cp-alb');
+      if (needValues(o, [['a measured phenytoin level', measured], ['a serum albumin', albumin]])) return;
+      const r = C.correctedPhenytoin({ measured, albumin, esrd: chk('cp-esrd') });
       if (!r) { o.appendChild(el('p', { class: 'muted', text: 'Enter a measured level and albumin.' })); return; }
       o.appendChild(list([
         li(`Corrected phenytoin: ${fmt(r.corrected, { digits: 1, unit: 'µg/mL' })}`),
@@ -165,7 +186,9 @@ export const renderers = {
     root.appendChild(field('Target potassium (mEq/L)', 'kd-target', { placeholder: 'e.g. 4.0' }));
     const o = out(); root.appendChild(o);
     wire(['kd-k', 'kd-wt', 'kd-wt-unit', 'kd-target'], () => safe(o, () => {
-      const r = C.potassiumDeficit({ serumK: val('kd-k'), weightKg: unitNum('kd-wt'), targetK: val('kd-target') });
+      const serumK = optNum('kd-k'), weightKg = unitNumOpt('kd-wt'), targetK = optNum('kd-target');
+      if (needValues(o, [['a serum potassium', serumK], ['a weight', weightKg], ['a target potassium', targetK]])) return;
+      const r = C.potassiumDeficit({ serumK, weightKg, targetK });
       o.appendChild(list([
         li(`Estimated total-body K deficit: ${fmt(r.deficit, { unit: 'mEq' })}`),
         li(r.band),
@@ -281,7 +304,19 @@ export const renderers = {
     root.appendChild(field('Potassium additives (mEq/L)', 'io-k', { placeholder: 'e.g. 20' }));
     const o = out(); root.appendChild(o);
     wire(['io-dex', 'io-aa', 'io-na', 'io-k'], () => safe(o, () => {
-      const r = C.ivOsmolarity({ dextrosePct: val('io-dex'), aminoAcidPct: val('io-aa'), naMeqL: val('io-na'), kMeqL: val('io-k') });
+      const dextrosePct = optNum('io-dex'), aminoAcidPct = optNum('io-aa');
+      const naMeqL = optNum('io-na'), kMeqL = optNum('io-k');
+      // Every component is optional on its own -- a bag can be dextrose only --
+      // but an empty bag has no osmolarity, and "peripheral administration is
+      // generally acceptable" is a decision about where the line goes.
+      if (dextrosePct == null && aminoAcidPct == null && naMeqL == null && kMeqL == null) {
+        o.appendChild(el('p', { class: 'muted', text: 'Enter at least one component of the bag: dextrose, amino acids, sodium or potassium.' }));
+        return;
+      }
+      const r = C.ivOsmolarity({
+        dextrosePct: dextrosePct || 0, aminoAcidPct: aminoAcidPct || 0,
+        naMeqL: naMeqL || 0, kMeqL: kMeqL || 0,
+      });
       o.appendChild(list([
         li(`Estimated osmolarity: ${fmt(r.osmolarity, { unit: 'mOsm/L' })}`, r.central ? 'warn' : null),
         li(r.band, r.central ? 'warn' : null),
@@ -297,7 +332,9 @@ export const renderers = {
     root.appendChild(checkField('Electrical injury / pigmenturia', 'bu-elec'));
     const o = out(); root.appendChild(o);
     wire(['bu-wt', 'bu-wt-unit', 'bu-peds', 'bu-elec'], () => safe(o, () => {
-      const r = C.burnUopTarget({ weightKg: unitNum('bu-wt'), pediatric: chk('bu-peds'), electrical: chk('bu-elec') });
+      const weightKg = unitNumOpt('bu-wt');
+      if (needValues(o, [['a weight', weightKg]])) return;
+      const r = C.burnUopTarget({ weightKg, pediatric: chk('bu-peds'), electrical: chk('bu-elec') });
       const target = r.targetLowMlHr === r.targetHighMlHr
         ? fmt(r.targetLowMlHr, { digits: 1, unit: 'mL/hr' })
         : `${fmt(r.targetLowMlHr, { digits: 1 })}-${fmt(r.targetHighMlHr, { digits: 1, unit: 'mL/hr' })}`;
@@ -317,7 +354,9 @@ export const renderers = {
     root.appendChild(unitField('Weight (optional)', 'fb-wt', WEIGHT_UNITS, { placeholder: 'e.g. 80' }));
     const o = out(); root.appendChild(o);
     wire(['fb-in', 'fb-out', 'fb-wt', 'fb-wt-unit'], () => safe(o, () => {
-      const r = C.fluidBalance({ intakeMl: val('fb-in'), outputMl: val('fb-out'), weightKg: unitNum('fb-wt') });
+      const intakeMl = optNum('fb-in'), outputMl = optNum('fb-out');
+      if (needValues(o, [['a total intake', intakeMl], ['a total output', outputMl]])) return;
+      const r = C.fluidBalance({ intakeMl, outputMl, weightKg: unitNumOpt('fb-wt') });
       const items = [{ label: 'Net fluid balance', value: fmt(r.netMl), units: 'mL', cls: (r.pctBodyWeight !== null && r.pctBodyWeight >= 10) ? 'warn' : null }];
       if (r.pctBodyWeight !== null) items.push({ label: 'As percent of body weight', value: fmt(r.pctBodyWeight, { digits: 1 }), units: '%', cls: r.pctBodyWeight >= 10 ? 'warn' : null });
       items.push({ text: r.band });

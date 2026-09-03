@@ -50,7 +50,10 @@ test('fmt() never emits the banned literal tokens for any of the adversarial val
 
 test('boundsAdvisory flags an impossible serum creatinine (Cockcroft-Gault Class-B site)', () => {
   const adv = boundsAdvisory('scr', 0.01);
-  assert.ok(adv && adv.includes('scr'));
+  // spec-v1017: the advisory is read by a nurse, so it names the quantity the
+  // way the label does ("serum creatinine") rather than the variable ("scr").
+  assert.ok(adv && adv.includes('serum creatinine'));
+  assert.ok(!/\bscr\b/.test(adv));
   assert.equal(boundsAdvisory('scr', 1.0), null); // a normal creatinine is not flagged
 });
 

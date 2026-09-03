@@ -160,3 +160,46 @@ for (const [id, want] of WAVE_3) {
     expect(text, `${id} answered an empty form`).toMatch(want);
   });
 }
+
+// spec-v1017: the fourth wave. Three of these reached a conclusion, not just a
+// zero: "Corrected level below the 10-20 ug/mL therapeutic range", "Serum K is
+// at or above target - no deficit by this estimate", and "0 mOsm/L - below ~900
+// mOsm/L; peripheral administration is generally acceptable", which is a
+// decision about whether the infusion needs a central line.
+const WAVE_4 = [
+  ['corrected-phenytoin', /Enter a measured phenytoin level/],
+  ['potassium-deficit', /Enter a serum potassium/],
+  ['iv-osmolarity', /Enter at least one component of the bag/],
+  ['burn-uop-target', /Enter a weight to calculate/],
+  ['fluid-balance', /Enter a total intake/],
+];
+
+for (const [id, want] of WAVE_4) {
+  test(`${id}: an empty form is asked to fill in, not answered`, async ({ page }) => {
+    await page.goto(`/#${id}`);
+    await page.waitForSelector('#q-results');
+    await page.waitForTimeout(350);
+    await page.evaluate(() => {
+      for (const n of document.querySelectorAll('#tool-body input[type=number]')) {
+        n.value = '';
+        n.dispatchEvent(new Event('input', { bubbles: true }));
+        n.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+    });
+    await page.waitForTimeout(250);
+    const text = (await page.locator('#q-results').innerText()).replace(/\s+/g, ' ');
+    expect(text, `${id} answered an empty form`).toMatch(want);
+  });
+}
+
+// spec-v1017: and the advisory that sits beside these answers names the quantity
+// the way the label does, not the way the code does.
+test('the plausible-range advisory names the quantity, not the variable', async ({ page }) => {
+  await page.goto('/#potassium-deficit');
+  await page.waitForSelector('#q-results');
+  await page.waitForTimeout(350);
+  await page.locator('#kd-wt').fill('0.1');
+  const text = (await page.locator('#q-results').innerText()).replace(/\s+/g, ' ');
+  expect(text).toMatch(/plausible range for weight \(0.3 to 500 kg\)/);
+  expect(text).not.toMatch(/weightKg/);
+});

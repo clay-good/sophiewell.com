@@ -18,6 +18,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Five more from the sweep, three of them making a decision.** With nothing
+  entered, the corrected-phenytoin tool reported a level "below the 10-20 µg/mL
+  therapeutic range", the potassium-deficit tool reported "no deficit by this
+  estimate", and the IV osmolarity tool said "peripheral administration is
+  generally acceptable" — a decision about whether an infusion needs a central
+  line, made from an empty bag. The advisory printed beside those answers also
+  still named the field the way the code does ("the plausible range for
+  weightKg"); it now says "weight", finishing what the stack-trace entry below
+  started. See `docs/spec-v1017.md`.
+
 - **The last four from the empty-form sweep, and one rule that runs backwards.**
   SNAPPE-II read "lower illness severity" from ten blank measurements, SCORAD
   banded a severity with the extent uncharted, and the Lund-Browder burn chart
