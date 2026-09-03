@@ -18,6 +18,17 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A pregnancy-dating comparison was made on the wrong day, and would have been
+  wrong the day it shipped.** The tool compared the LMP-derived gestational age
+  *measured today* with the ultrasound age *measured at the scan*, so the
+  difference between them grew with the calendar: its own worked example reported
+  a 172-day discordance and advised redating to the ultrasound, when the real
+  difference on the day of the scan is 3 days and the advice is not to redate.
+  The comparison is now made as of the ultrasound date. Found while fixing three
+  readings that had run away from their examples — a due-date tool reporting
+  "gestational age: 87 weeks" and a code-blue clock reporting 107 days of CPR.
+  See `docs/spec-v1018.md`.
+
 - **Five more from the sweep, three of them making a decision.** With nothing
   entered, the corrected-phenytoin tool reported a level "below the 10-20 µg/mL
   therapeutic range", the potassium-deficit tool reported "no deficit by this

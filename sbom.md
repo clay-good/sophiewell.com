@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `0f3d5a8a4ef920ac`
-Generated: 2026-09-03T18:35:44.659Z
+Build ID: `732503f15acbcad9`
+Generated: 2026-09-03T19:22:34.968Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -178,12 +178,12 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/clavien-dindo-v320.js` | 5404 | `ae140f525e3d1f6103581f1d1e2eeed46813f69ada14d9c764ed867d51bda76b` |
 | `lib/cleveland-constipation-v665.js` | 4841 | `b5e66d05b1f5b2258281a9dc3246f35e6e83de248cabe44a914d2cbe72fd6400` |
 | `lib/clinical-obesity-v838.js` | 8584 | `742a529bbd6a43b4a9f695f82f2134c5bf24b16ae67e2e8cbdffb39f4b198cb3` |
-| `lib/clinical-v4.js` | 13489 | `d8d98f5aa2652e7f27a922def7a40a3260a11bd1c389b823da72d8569ba83adb` |
+| `lib/clinical-v4.js` | 14138 | `772a03df47de49dd24c2504750ae4148c32608e8f061c471e0395095564ae458` |
 | `lib/clinical-v5.js` | 24032 | `5215a0f4373dd36d104b19874a0734a662abe70f5887fcfae7cb1dcc1e3bcf0d` |
 | `lib/clinical-v6.js` | 16042 | `69c1de74d7f171a3c6e87329c1cb69324758a368a34f1961e6201caec0470f8d` |
 | `lib/clinical-v7.js` | 18510 | `91639297dbcafd2850ea5bb17d4e7219ae912e30305349d7423af72484e68365` |
 | `lib/clinical-v8.js` | 18032 | `85e8b20be2633595849a5f194e36e2968dbb1375535360da93503735916a69dc` |
-| `lib/clinical.js` | 17323 | `80f92a2dd462e178157a2056e214464f06315c3d736650fa0d86a3e939ab6047` |
+| `lib/clinical.js` | 18340 | `808100ed6c2d253ac537e95e29c2524b9ca90cdcbe82d0b89554b60d1d3a9a91` |
 | `lib/clipboard.js` | 2907 | `951c41df24f58df747734474d383d6f75f52d22d2c4d0a370ef5bfb269a15147` |
 | `lib/cluster-headache-ichd3-v814.js` | 7692 | `1ba3ed3aa2a203e13da4152325e29fda8ae0a533b2d4f1881c9a878655847045` |
 | `lib/coagscore-v232.js` | 3053 | `aff9e82479da5b38deeaf70ade27caa7f5d1a0f21b01d74f764ca147e9846bd8` |
@@ -760,7 +760,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/schobinger-avm-v497.js` | 3484 | `fd7d680fede1965fd9a9026d0977e4f2c1970e30d33718df3daaca235dfed009` |
 | `lib/schofield-v779.js` | 4325 | `7c398e3b1dc2df66c5323baee0f73ff66c28927fb47a72ede85dfd51d2de4931` |
 | `lib/schwab-england-v385.js` | 4331 | `caddd0709826db63186ebf0a5f8b60fd9a3e00fa934bddc3e0331977f70c5e4b` |
-| `lib/scoring-v4.js` | 239022 | `bab84ea595d4daf8dbb8ef050b936b32499b5140a1e11bdf2db2c99df884eb9f` |
+| `lib/scoring-v4.js` | 239819 | `8fa1ac01e30835cd68638ad7c8f558d5cfa63ff9e29ea4f6df545dba26bc53dd` |
 | `lib/scoring-v5.js` | 12551 | `2e7854ebd83d2aecf3413aefde44cde85f11b1640587d6c1122d493209e00a42` |
 | `lib/scoring-v6.js` | 27427 | `ed570d8507d63371de2181a97743f8ee1f40e2042eedba9dac2216ed247d6fad` |
 | `lib/scp-pushing-v562.js` | 12399 | `6da019a04668722b7a8d448b4d7bf9908717629b72e4a162088e74363ad62360` |
@@ -1701,10 +1701,10 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-a.js` | 577 | `eed37c656d1fa00c097a07f07db4b1b6ac7a0a74bafc210978265a1d90856bd7` |
 | `views/group-b.js` | 74408 | `522243d08548bc3f263a37b5c8bfb88bc21a057503012bc16284cf78df1949f9` |
 | `views/group-c.js` | 24124 | `4517f2f966279a4af40b98aa5197db7d2fee3b014785cb6e6ac317fd2157cbf5` |
-| `views/group-e.js` | 41482 | `394284c7d76349b8fca55638f486c2c8d9437e2ce678b095e9ee2e123cedb4c5` |
+| `views/group-e.js` | 42911 | `924ca8faf01277b8e3ff5e9d0ed82559905b850dd05fb9864cba94a7f15e5154` |
 | `views/group-f.js` | 48460 | `806c632bd93f3f7af976dd88649e7dc4aea379d21baea1e938ca6d5c660daac0` |
 | `views/group-g.js` | 232347 | `7f0617ef088ebea14b2ff2ca79a6b6b839f8821a82415f7f9c57819128200164` |
-| `views/group-h.js` | 28477 | `f9a8dc4ddbf7987b39a6bb88908d3523599eddaca1d6fcde22dbd847b4594b14` |
+| `views/group-h.js` | 28736 | `a1229d2f251e2fb480c1424cfd56d1bf013fca3697ea6de3b46ad8d721ccb6e2` |
 | `views/group-i.js` | 24217 | `e8319c063517ef37d78d1186c99302b9dd7a2d2b87a9e0d82d4e5701efef4180` |
 | `views/group-j.js` | 8989 | `521f4c30cd952ee6d9845a843735b519a6acd21e495135d9d7f34747270a4373` |
 | `views/group-klmno.js` | 7372 | `c861d44056fed12dd72a01398ea556e5ed560af424f8c0a20ccfee12bc56eeaf` |

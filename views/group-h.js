@@ -380,7 +380,10 @@ export const renderers = {
     });
     const run = () => safe29d(o, () => {
       const r = compute();
-      o.appendChild(el('h2', { text: `Code time: ${r.minutesFromStart} min, ${r.cycleCount} cycles` }));
+      // spec-v1018: an elapsed code time that has run past a day is a stale start
+      // timestamp, not a reading. The interval targets below still stand.
+      if (r.startRunaway) o.appendChild(el('p', { class: 'muted', text: r.startRunawayNote }));
+      else o.appendChild(el('h2', { text: `Code time: ${r.minutesFromStart} min, ${r.cycleCount} cycles` }));
       o.appendChild(el('p', { text: `Next rhythm check: ${r.nextRhythmCheckIso}` }));
       if (r.nextEpiIso) o.appendChild(el('p', { text: `Next epinephrine due: ${r.nextEpiIso}` }));
       if (r.lastShockJ !== null) o.appendChild(el('p', { text: `Last shock: ${r.lastShockJ} J` }));

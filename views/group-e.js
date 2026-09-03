@@ -350,9 +350,13 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       const r = C.naegele({ lmpIso: document.getElementById('lmp').value });
+      // spec-v1018: the due date always stands; the age measured from today does
+      // not, once the date entered has run past what a pregnancy can be.
       o.appendChild(el('ul', {}, [
         el('li', { text: `Estimated due date: ${usDate(r.dueDate)} (${r.dueDate})` }),
-        el('li', { text: `Current gestational age: ${r.gestationalWeeks} weeks ${r.gestationalDays} days` }),
+        r.gestationalAgePlausible
+          ? el('li', { text: `Current gestational age: ${r.gestationalWeeks} weeks ${r.gestationalDays} days` })
+          : el('li', { class: 'muted', text: r.gestationalAgeNote }),
       ]));
     });
     document.getElementById('lmp').addEventListener('input', run);
@@ -629,15 +633,33 @@ export const renderers = {
       let lmpRes = null, usRes = null;
       if (lmp) {
         lmpRes = V4.eddFromLmp({ lmpIso: lmp });
-        lines.push(el('li', { text: `LMP-derived EDD: ${lmpRes.edd}; current GA ${lmpRes.gaWeeks}w ${lmpRes.gaRemainderDays}d` }));
+        // spec-v1018: the EDD always stands; the age measured from today does not
+        // once the LMP has run past what a pregnancy can be, and the redating
+        // comparison that depends on that age goes with it.
+        lines.push(el('li', {
+          text: lmpRes.gaPlausible
+            ? `LMP-derived EDD: ${lmpRes.edd}; current GA ${lmpRes.gaWeeks}w ${lmpRes.gaRemainderDays}d`
+            : `LMP-derived EDD: ${lmpRes.edd}. The LMP entered is ${lmpRes.gaWeeks} weeks ago, past the ~42 weeks a pregnancy is dated to, so no current gestational age is shown.`,
+        }));
       }
       if (crl > 0) {
         usRes = V4.gaFromCrl({ crlMm: crl, ultrasoundDateIso: us || undefined });
         lines.push(el('li', { text: `CRL-derived GA at ultrasound: ${usRes.gaWeeks}w ${usRes.gaRemainderDays}d; implied EDD ${usRes.edd}` }));
       }
       if (lmpRes && usRes) {
-        const d = V4.pregnancyDiscordance({ lmpGaDays: lmpRes.gaDays, usGaDays: usRes.gaDays });
-        lines.push(el('li', { text: `Discordance: ${d.differenceDays} days (T${d.trimester} threshold ${d.redateThreshold}). ${d.discordant ? 'Consider redating to ultrasound.' : 'Within accepted limit.'}` }));
+        // spec-v1018: the two ages have to be measured on the SAME DAY. The LMP
+        // age here was as-of-today and the ultrasound age is as-of-the-scan, so
+        // the comparison drifted by however long ago the scan was: the worked
+        // example (LMP 2025-12-23, a scan on 2026-03-12) reported "Discordance:
+        // 172 days ... Consider redating to ultrasound" when the real difference
+        // at the scan is 3 days, inside the 7-day first-trimester limit. That is
+        // a redating decision, and it was being made on an artifact of the clock.
+        const atScan = us ? V4.eddFromLmp({ lmpIso: lmp, todayIso: us }) : lmpRes;
+        const d = V4.pregnancyDiscordance({ lmpGaDays: atScan.gaDays, usGaDays: usRes.gaDays });
+        lines.push(el('li', {
+          text: `Discordance at the ultrasound date: ${d.differenceDays} days (T${d.trimester} threshold ${d.redateThreshold}). `
+            + `${d.discordant ? 'Consider redating to ultrasound.' : 'Within accepted limit.'}`,
+        }));
       }
       o.appendChild(el('ul', {}, lines));
     });
