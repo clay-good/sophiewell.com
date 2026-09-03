@@ -49,7 +49,7 @@ export const renderers = {
     postureNote(root);
   },
   'nmr'(root) {
-    note(root, 'Neutrophil-to-monocyte ratio = ANC / AMC. Higher = less favorable.');
+    note(root, 'Neutrophil-to-monocyte ratio = ANC / AMC. Higher values are reported as less favorable, but there is no universal cutoff: published thresholds come from individual disease cohorts and differ between them.');
     root.appendChild(num('Absolute neutrophil count (10³/µL)', 'nmr-anc', { min: '0' }));
     root.appendChild(num('Absolute monocyte count (10³/µL)', 'nmr-amc', { min: '0' }));
     const o = out(); root.appendChild(o);

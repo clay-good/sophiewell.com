@@ -8,6 +8,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **The neutrophil-to-monocyte ratio credited an author with no such paper.**
+  Its citation read "prognostic value reviewed across oncology and cardiovascular
+  cohorts (e.g. Chen L, et al.)" and PubMed carries nothing by that author on
+  that ratio. The citation now says plainly that the ratio has no single
+  derivation paper and that cutoffs are cohort-specific. The same tile also
+  declared an interpretation block marked as the source's own words while
+  asserting a prognostic direction and a cutoff policy no source published; that
+  text moved to the tool's note, where project-authored prose belongs, and the
+  note gained the "no universal cutoff" caveat. A new citation rule rejects the
+  shape that let it in — an attribution introduced by "e.g.", "such as" or
+  "including" — with tests on both sides, and a catalog sweep confirmed no other
+  calculator names an author who cannot be found. See `docs/spec-v1000.md`.
+
 - **Four of the twelve "Search PubMed for this source" links opened an empty
   results page.** Those twelve calculators cite a book chapter or a pre-1946
   paper no index carries, so they offer a search instead of a link — and the

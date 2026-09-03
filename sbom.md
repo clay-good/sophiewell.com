@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `43a4cf5c431efa45`
-Generated: 2026-09-03T00:32:20.938Z
+Build ID: `ba3f5e76d505bb6e`
+Generated: 2026-09-03T00:46:55.096Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -509,7 +509,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/membranous-risk-v878.js` | 10326 | `ff774f72e82303f0c83c8091aaa6ea2bb3b4deeba5c6323985d910dd003d53f4` |
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2453422 | `b84ff833dca5d74c9a1f015079af4c82ef5e04496ba206d140287860a9a4d44a` |
+| `lib/meta.js` | 2453920 | `2964b31332c108bc7678f76fc27fb8f04aee18c87e743c17c7a003a84b18dc8e` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -1827,7 +1827,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v229.js` | 4406 | `d131e6b19719d2c0847175288dbc99b49f594f425536c8d345a0b5204c1b1043` |
 | `views/group-v23.js` | 14725 | `5b5270fee62e0915f4596e11ea46831f7055ad3bb5039a2c4fe96af83382d305` |
 | `views/group-v230.js` | 4529 | `d99ecdb819f2174de723ac8c0b86cde4892148031a62035d11ff080ab71e2ed7` |
-| `views/group-v231.js` | 3856 | `03bfcd6a7498a8bc3ff75bfc099f2357bb47db928c6094d2b82cb278c8e6baeb` |
+| `views/group-v231.js` | 3994 | `5f089df01adcda11f8398d33554c6057ec78a2dcd63ba4940b5e793f444a9feb` |
 | `views/group-v232.js` | 3609 | `9262ffb9171861ed5868884a4e22571b91e90d9be8281cb43a8a9825c9370e4e` |
 | `views/group-v233.js` | 4992 | `efd575d014a5fa10127e6c8000a3e10d6d7e6d84e0710eb600641e947c19886a` |
 | `views/group-v234.js` | 6354 | `a58314ec55429dfd2c3918a9afbd1967d089f09cbeb01cc43defc04f987d01c2` |

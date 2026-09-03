@@ -18,6 +18,10 @@
 //      docs/citation-staleness.md.
 //   5. No `citation` contains the unpinned phrases "current edition",
 //      "latest version", or "most recent".
+//   8. (spec-v1000) No `citation` hedges an attribution -- "e.g. Chen L, et al."
+//      names a source the citation does not commit to and a reader cannot check
+//      (PubMed carried no such paper). Name the paper, or say plainly that the
+//      instrument has no single derivation.
 //   7. (spec-v943) No source link is a search-results page. "Read the source"
 //      promises the paper; a `?term=` URL delivers a result list that may hold
 //      the paper, six unrelated ones, or none. Eight tiles whose source is a
@@ -47,6 +51,13 @@ export const ISSUER_PATTERN =
 
 // Unpinned-edition phrases banned by rule 5.
 const UNPINNED = /current edition|latest version|most recent/i;
+
+// Rule 8 (spec-v1000). An attribution introduced by "e.g." or "such as" names a
+// source the citation does not commit to, and a reader cannot check it. `nmr`
+// credited "e.g. Chen L, et al. and subsequent validations" -- PubMed carries no
+// paper by that author on that ratio, so the search returns zero. Either name a
+// paper properly, or say plainly that there is no single source; do not gesture.
+const HEDGED_ATTRIBUTION = /\b(?:e\.?g\.?|such as|including)[\s,]+[A-Z][A-Za-z'-]+\s+[A-Z]{1,3}\b/;
 
 // A four-digit year is what separates "Wells PJ, et al. Thromb Haemost. 2000"
 // -- a paper someone can go read -- from "MAP = ((2 * DBP) + SBP) / 3", which
@@ -160,6 +171,11 @@ export function findCitationViolations({
     const links = [m.citationUrl, ...(Array.isArray(m.citationUrls) ? m.citationUrls.map((e) => e && e.url) : [])];
     if (links.some((u) => u && isSearchUrl(u)) && !searchUrlIds.has(t.id)) {
       out.push(`${t.id}: rule 7 - source link is a search-results page, not the source (link the record, not the query)`);
+    }
+
+    // Rule 8: no hedged attribution.
+    if (HEDGED_ATTRIBUTION.test(citation)) {
+      out.push(`${t.id}: rule 8 - hedged attribution ("e.g. <Author> ..."); name the paper or say there is no single source`);
     }
 
     // Rule 5: no unpinned-edition phrase.

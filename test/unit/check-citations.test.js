@@ -290,3 +290,40 @@ test('rule 7 - the shipped grandfathered set matches the catalog exactly', async
   assert.deepEqual([...SEARCH_URL_GRANDFATHERED].sort(), actual,
     'SEARCH_URL_GRANDFATHERED has drifted from lib/meta.js');
 });
+
+// spec-v1000: rule 8. `nmr` credited "e.g. Chen L, et al. and subsequent
+// validations of the neutrophil-to-monocyte ratio" -- PubMed carries no paper by
+// that author on that ratio, so a reader following the citation found nothing.
+// The rule catches the SHAPE that let it in: an attribution the citation
+// gestures at rather than commits to.
+
+test('rule 8 - a hedged "e.g. <Author>" attribution fails', () => {
+  const b = baseline();
+  b.meta['kdigo-aki'].citation = 'Prognostic value reviewed across cohorts (e.g. Chen L, et al.).';
+  const v = findCitationViolations(b);
+  assert.ok(v.some((x) => /rule 8/.test(x)), v.join('; '));
+});
+
+test('rule 8 - "such as" and "including" hedge the same way', () => {
+  for (const hedge of ['such as Smith AB', 'including Smith AB']) {
+    const b = baseline();
+    b.meta['kdigo-aki'].citation = `Reviewed across cohorts, ${hedge}, and others.`;
+    assert.ok(findCitationViolations(b).some((x) => /rule 8/.test(x)), hedge);
+  }
+});
+
+test('rule 8 - a properly named paper is not a hedge', () => {
+  // The rule must not fire on a citation that actually names its source, nor on
+  // an "e.g." that introduces something other than an author.
+  for (const ok of [
+    'Chen L, Wang Y, Zhang Q. A cohort study. Blood. 2019;133(4):301-310.',
+    'Standard infusion arithmetic (e.g. mL/hr from a dose per minute).',
+    'KDIGO AKI staging, e.g. stage 2 and stage 3 thresholds.',
+  ]) {
+    const b = baseline();
+    b.meta['kdigo-aki'].citation = ok;
+    assert.deepEqual(
+      findCitationViolations(b).filter((x) => /rule 8/.test(x)), [], ok,
+    );
+  }
+});
