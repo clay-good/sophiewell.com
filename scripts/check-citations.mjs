@@ -24,10 +24,12 @@
 //      instrument has no single derivation.
 //   7. (spec-v943) No source link is a search-results page. "Read the source"
 //      promises the paper; a `?term=` URL delivers a result list that may hold
-//      the paper, six unrelated ones, or none. Eight tiles whose source is a
-//      book chapter, a meeting abstract or a pre-1946 paper that no index
-//      carries are grandfathered, and render as "Search PubMed" rather than
-//      "Read the source". The list shrinks only.
+//      the paper, six unrelated ones, or none. The tiles whose source is a book
+//      chapter, a meeting abstract or a pre-1946 paper that no index carries are
+//      grandfathered in `SEARCH_URL_GRANDFATHERED` below, and render as "Search
+//      PubMed" rather than "Read the source". The list shrinks only. (It said
+//      "Eight" here long after the set held twelve -- spec-v1001: a count
+//      restated in prose beside the list it counts is a second copy.)
 //   6. (spec-v938) A citation that names a year names a real, findable paper.
 //      Every such tile carries a `citationUrl` (or `citationUrls`) unless its id is in the frozen
 //      backlog `data/citation-url-backlog.json`. The backlog may only shrink:

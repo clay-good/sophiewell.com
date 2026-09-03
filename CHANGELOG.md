@@ -8,6 +8,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **The checks that catch drifting numbers had drifting numbers in their own
+  comments.** One said eight tiles were grandfathered thirty lines above a list
+  of twelve; another said "the remaining 254 tiles" with 1,704 in the catalog.
+  Both are deleted rather than corrected, because a count restated beside the
+  thing it counts is a second copy. The one copy that was load-bearing is gone
+  too: the number of "Search PubMed" tiles lived in the README, in a literal in
+  the truth check, and in the list itself, and the check now reads the list and
+  holds the README's wording to it. See `docs/spec-v1001.md`.
+
 - **The neutrophil-to-monocyte ratio credited an author with no such paper.**
   Its citation read "prognostic value reviewed across oncology and cardiovascular
   cohorts (e.g. Chen L, et al.)" and PubMed carries nothing by that author on

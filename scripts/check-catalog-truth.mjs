@@ -12,6 +12,7 @@ import { readFile, readdir } from 'node:fs/promises';
 import { join } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { LABEL_FILES, parseGroupLabels, findLabelDrift, ARCHITECTURE_DOC, parseGroupTable, findGroupTableDrift } from './lib/group-labels.mjs';
+import { SEARCH_URL_GRANDFATHERED } from './check-citations.mjs';
 
 const ROOT = process.cwd();
 
@@ -204,11 +205,13 @@ function lastCapture(text, re) {
 }
 
 // spec-v52 §3.4 + §8.2: at v52-1b close exactly one tile carries the new
-// `shape: 'document-linter'` field. The remaining 254 tiles default to
-// `shape: 'numeric'` and have no explicit `shape:` field; counting the
-// explicit `shape: 'document-linter'` occurrences in the UTILITIES body
-// is sufficient. Raise the expected count as additional document-linter
-// tiles are registered.
+// `shape: 'document-linter'` field. Every other tile defaults to
+// `shape: 'numeric'` and has no explicit `shape:` field, so counting the
+// explicit `shape: 'document-linter'` occurrences in the UTILITIES body is
+// sufficient. Raise the expected count as additional document-linter tiles are
+// registered. (This said "the remaining 254 tiles" until spec-v1001, roughly
+// 1,450 tiles after that was true; the number was never load-bearing, so it is
+// gone rather than corrected.)
 function countDocumentLinterTiles(appJsText) {
   const start = appJsText.indexOf('const UTILITIES = [');
   if (start === -1) return 0;
@@ -330,7 +333,14 @@ async function main() {
   // checked without a dist/ on disk. Twelve tiles link a PubMed search rather
   // than the paper (spec-v943), and the sentence counts them separately.
   const readmeLinked = Number((readmeText.match(/([\d,]+) of the [\d,]+ link straight through to the source paper/) || [])[1]?.replace(/,/g, ''));
-  const readmeSearch = /Twelve more say "Search PubMed for this source"/.test(readmeText);
+  // spec-v1001: the README states this one in words. The number had three
+  // copies -- the README's word, a literal 12 here, and the grandfather set in
+  // check-citations.mjs -- so two of them are gone: the set is the truth and the
+  // word is checked against its size.
+  const NUMBER_WORDS = ['zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen'];
+  const expectedWord = NUMBER_WORDS[SEARCH_URL_GRANDFATHERED.size];
+  const readmeSearch = expectedWord
+    && new RegExp(`${expectedWord} more say "Search PubMed for this source"`).test(readmeText);
   const searchUrl = (u) => { try { return ['term', 'q', 'query', 'search'].some((k) => new URL(u).searchParams.has(k)); } catch { return false; } };
   let straightThrough = 0;
   let searchLinks = 0;
@@ -347,8 +357,8 @@ async function main() {
     console.error(`check-catalog-truth: README says ${readmeLinked} tiles link straight through to the source paper; META has ${straightThrough}.`);
     process.exit(1);
   }
-  if (searchLinks !== 12 || !readmeSearch) {
-    console.error(`check-catalog-truth: README says twelve tiles link a PubMed search; META has ${searchLinks}.`);
+  if (searchLinks !== SEARCH_URL_GRANDFATHERED.size || !readmeSearch) {
+    console.error(`check-catalog-truth: the README should say "${expectedWord} more say ..." for the ${SEARCH_URL_GRANDFATHERED.size} grandfathered search links; META has ${searchLinks} search links.`);
     process.exit(1);
   }
 
