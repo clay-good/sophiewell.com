@@ -203,3 +203,55 @@ test('the plausible-range advisory names the quantity, not the variable', async 
   expect(text).toMatch(/plausible range for weight \(0.3 to 500 kg\)/);
   expect(text).not.toMatch(/weightKg/);
 });
+
+// spec-v1020: the same rule on the likelier form -- not an empty page, but a page
+// with a couple of values in it. This is how lrinec said "low risk" from a single
+// CRP (spec-v1006), and it is what the whole-catalog sweep in spec-v1019 says it
+// does not cover.
+//
+//   smart-cop  an age alone answered "SMART-COP 0: low risk" -- a prediction
+//              about needing vasopressors or ventilation, from a patient nobody
+//              had examined. Its checkboxes are criteria, but the respiratory
+//              rate and the oxygenation trio are measurements.
+//   lace       a length of stay alone answered "LACE 1: low risk of 30-day death
+//              or unplanned readmission". The Charlson index and the emergency
+//              visits are counts somebody has to look up.
+test('smart-cop: an age alone does not read as low risk', async ({ page }) => {
+  await page.goto('/#smart-cop');
+  await page.waitForSelector('#q-results');
+  await page.waitForTimeout(350);
+  await page.evaluate(() => {
+    for (const n of document.querySelectorAll('#tool-body input[type=number]')) {
+      n.value = '';
+      n.dispatchEvent(new Event('input', { bubbles: true }));
+      n.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+  });
+  await page.locator('#sc-age').fill('50');
+  const text = (await page.locator('#q-results').innerText()).replace(/\s+/g, ' ');
+  expect(text).toMatch(/at least 0 so far/);
+  expect(text).toMatch(/respiratory rate/);
+  expect(text).not.toMatch(/low risk per Charles/);
+
+  // The measurements entered, the low-risk reading is available again.
+  await page.locator('#sc-rr').fill('18');
+  await page.locator('#sc-spo2').fill('97');
+  await expect(page.locator('#q-results')).toContainText('low risk per Charles');
+});
+
+test('lace: a length of stay alone does not read as low risk', async ({ page }) => {
+  await page.goto('/#lace');
+  await page.waitForSelector('#q-results');
+  await page.waitForTimeout(350);
+  await page.evaluate(() => {
+    for (const n of document.querySelectorAll('#tool-body input[type=number]')) {
+      n.value = '';
+      n.dispatchEvent(new Event('input', { bubbles: true }));
+      n.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+  });
+  await page.locator('#lc-los').fill('1');
+  const text = (await page.locator('#q-results').innerText()).replace(/\s+/g, ' ');
+  expect(text).toMatch(/at least 1 so far/);
+  expect(text).not.toMatch(/low risk of 30-day death/);
+});

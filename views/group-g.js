@@ -1776,13 +1776,17 @@ export const renderers = {
     if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
       const inputs = {
-        losDays: nv('lc-los'),
+        // spec-v1020: nvOrNull, not nv. Three of LACE's four terms are counts
+        // somebody has to look up, and Number('') is 0 -- so the library's guard
+        // was handed three zeros and a length of stay, and never fired. Same
+        // trap, same fix, as psi at spec-v1014.
+        losDays: nvOrNull('lc-los'),
         acuteAdmission: checked('lc-acute'),
-        charlsonScore: nv('lc-charlson'),
-        edVisits6mo: nv('lc-ed'),
+        charlsonScore: nvOrNull('lc-charlson'),
+        edVisits6mo: nvOrNull('lc-ed'),
       };
       const r = S4.lace(inputs);
-      o.appendChild(el('h2', { text: `LACE ${r.score}` }));
+      if (!r.awaiting) o.appendChild(el('h2', { text: `LACE ${r.score}` }));
       o.appendChild(el('p', { text: r.band }));
       const p = r.parts;
       o.appendChild(el('p', { class: 'muted',

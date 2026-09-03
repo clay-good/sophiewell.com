@@ -16,6 +16,17 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   which direction the scale runs), and a checkbox is an answer while a blank
   measurement is a gap.
 
+### Fixed
+
+- **Two tools called a patient low-risk on one number.** Nobody opens a
+  calculator and types nothing — they type the number they have. With an age
+  alone, SMART-COP answered "0: low risk", a prediction about needing
+  vasopressors or ventilation for a patient nobody had examined; with a length of
+  stay alone, LACE answered "low risk of 30-day death or unplanned readmission".
+  Both now report the score as a floor and name what the reassuring reading is
+  waiting for, while the alarming bands stand on whatever has been entered. See
+  `docs/spec-v1020.md`.
+
 ### Added
 
 - **A check that stops the next calculator from answering an empty form.** Ten
