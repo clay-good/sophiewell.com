@@ -161,6 +161,8 @@ export const renderers = {
         oozing: selVal('scorad-oozing'), excoriation: selVal('scorad-excoriation'), lichenification: selVal('scorad-lichenification'),
         dryness: selVal('scorad-dryness'), pruritus: optNum('scorad-pruritus'), sleeplessness: optNum('scorad-sleeplessness'),
       });
+      // spec-v1016: without the extent there is no severity, only the prompt.
+      if (r.score == null) { note(o, r.band); note(o, r.detail); return; }
       resultRow(o, [
         { text: r.band, cls: r.abnormal ? 'warn' : null },
         { label: 'SCORAD', value: `${r.score}/103` },

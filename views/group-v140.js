@@ -128,6 +128,8 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     wire(['sn-map', 'sn-temp', 'sn-temp-unit', 'sn-pao2', 'sn-fio2', 'sn-ph', 'sn-seiz', 'sn-urine', 'sn-bw', 'sn-sga', 'sn-apgar'], () => safe(o, () => {
       const r = M.snappeII({ map: optNum('sn-map'), temp: unitNumOpt('sn-temp'), pao2: optNum('sn-pao2'), fio2: optNum('sn-fio2'), ph: optNum('sn-ph'), seizures: chk('sn-seiz'), urine: optNum('sn-urine'), bw: optNum('sn-bw'), sga: chk('sn-sga'), apgar5: optNum('sn-apgar') });
+      // spec-v1016: with nothing measured there is no score, only the prompt.
+      if (r.score == null) { note(o, r.band); return; }
       resultRow(o, [
         { text: r.band, cls: r.abnormal ? 'warn' : null },
         { label: 'SNAPPE-II', value: `${r.score}/162` },

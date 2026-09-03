@@ -117,3 +117,46 @@ test('a filled form still answers', async ({ page }) => {
   await page.locator('#d').fill('80');
   await expect(page.locator('#q-results')).toContainText('MAP: 93.3 mmHg');
 });
+
+// spec-v1016: the score-shaped remainder of the same sweep, and the case where
+// the lower-bound argument runs the other way.
+//
+//   snappe-ii     "SNAPPE-II 0/162: lower illness severity" from ten blank
+//                 measurements -- the tile even says "items left blank score
+//                 their normal (0-point) band", which is fair for a partly
+//                 charted neonate and still cannot mean an unmeasured one is well
+//   scorad        "SCORAD 28/103 - moderate atopic dermatitis" with "extent A 0%"
+//                 printed underneath: the extent is a measurement and it is a
+//                 fifth of the score
+//   lund-browder  "%TBSA: 0%" from an unmarked burn chart -- and %TBSA is what
+//                 the fluid resuscitation is calculated from
+//   slums         "SLUMS 0 of 30 - dementia", labelling an exam nobody performed.
+//                 Here a HIGHER score is a better one, so an unscored item can
+//                 only ADD points: a partial total is a floor on the score and a
+//                 CEILING on the severity. An incomplete SLUMS can be read as
+//                 normal once it has earned enough points, and can never be read
+//                 as impaired.
+const WAVE_3 = [
+  ['snappe-ii', /Enter at least one SNAPPE-II measurement/],
+  ['scorad', /Enter the extent/],
+  ['lund-browder', /at least one region/],
+  ['slums', /Score the remaining/],
+];
+
+for (const [id, want] of WAVE_3) {
+  test(`${id}: an empty form is asked to fill in, not answered`, async ({ page }) => {
+    await page.goto(`/#${id}`);
+    await page.waitForSelector('#q-results');
+    await page.waitForTimeout(350);
+    await page.evaluate(() => {
+      for (const n of document.querySelectorAll('#tool-body input[type=number]')) {
+        n.value = '';
+        n.dispatchEvent(new Event('input', { bubbles: true }));
+        n.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+    });
+    await page.waitForTimeout(250);
+    const text = (await page.locator('#q-results').innerText()).replace(/\s+/g, ' ');
+    expect(text, `${id} answered an empty form`).toMatch(want);
+  });
+}

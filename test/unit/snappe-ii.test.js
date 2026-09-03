@@ -12,9 +12,19 @@ test('worked example -> 89/162, high severity', () => {
   assert.match(r.band, /high illness severity/);
 });
 
-test('all-normal / blank -> 0 and lower severity', () => {
-  assert.equal(snappeII({}).score, 0);
-  assert.match(snappeII({}).band, /lower illness severity/);
+// spec-v1016: this asserted the defect. Every SNAPPE-II item adds points or
+// leaves them alone, so a partial total is a floor -- safe to call an infant
+// sick, never safe to call one well. A form with nothing measured now says so;
+// a form with normal values measured still scores 0 and reads lower severity.
+test('nothing measured has no score; measured-normal is 0 and lower severity', () => {
+  const empty = snappeII({});
+  assert.equal(empty.score, null);
+  assert.equal(empty.valid, false);
+  assert.match(empty.band, /Enter at least one SNAPPE-II measurement/);
+
+  const normal = snappeII({ map: 45, temp: 36.5, pao2: 90, fio2: 21, ph: 7.35, urine: 2, bw: 3200, apgar5: 9 });
+  assert.equal(normal.score, 0);
+  assert.match(normal.band, /lower illness severity/);
 });
 
 test('max physiology bands sum correctly', () => {
@@ -37,6 +47,11 @@ test('zero FiO2 is guarded (oxygenation scores 0, no divide-by-zero)', () => {
 });
 
 test('SGA and multiple seizures are checkbox add-ons', () => {
-  assert.equal(snappeII({ sga: true }).score, 12);
-  assert.equal(snappeII({ seizures: true }).score, 19);
+  // spec-v1016: a checkbox alone is not a measured infant, so the pair is scored
+  // alongside one measured value -- the arithmetic under test is unchanged.
+  const measured = { ph: 7.35 };
+  assert.equal(snappeII({ ...measured, sga: true }).score, 12);
+  assert.equal(snappeII({ ...measured, seizures: true }).score, 19);
+  // And on their own they are still not a score.
+  assert.equal(snappeII({ sga: true }).score, null);
 });

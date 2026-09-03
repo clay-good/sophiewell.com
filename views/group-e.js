@@ -531,18 +531,25 @@ export const renderers = {
       const weightKg = unitNumOpt('bw-kg');
       // A blank height used to give "IBW (Devine): 50.0 kg" -- the formula's
       // constant, a plausible-looking dosing weight for nobody.
-      if (needValues(o, [['a height', heightIn], ['a weight', weightKg]])) return;
+      //
+      // spec-v1016: but the four outputs do not need the same inputs, and the
+      // first version of this guard demanded both. Ideal body weight is height
+      // and sex alone, so "ideal body weight 180 cm male" -- a question the
+      // inline-compute templates promise an answer to -- was met with "Enter a
+      // weight to calculate." Each row now waits for its own inputs.
+      if (needValues(o, [['a height', heightIn]])) return;
       const ibw = V4.ibwDevine({ heightInches: heightIn, sex });
-      const adj = V4.adjBW({ ibw, actualKg: weightKg });
       const heightCm = heightIn * 2.54;
-      const bsaM = C.bsaMosteller({ weightKg, heightCm });
-      const bsaD = C.bsaDuBois({ weightKg, heightCm });
-      resultRow(o, [
-        { text: `IBW (Devine): ${ibw.toFixed(1)} kg` },
-        { text: `AdjBW (40% rule): ${adj.toFixed(1)} kg` },
-        { text: `BSA Mosteller: ${bsaM.toFixed(2)} m^2` },
-        { text: `BSA Du Bois: ${bsaD.toFixed(2)} m^2` },
-      ]);
+      const rows = [{ text: `IBW (Devine): ${ibw.toFixed(1)} kg` }];
+      if (weightKg != null) {
+        rows.push({ text: `AdjBW (40% rule): ${V4.adjBW({ ibw, actualKg: weightKg }).toFixed(1)} kg` });
+        rows.push({ text: `BSA Mosteller: ${C.bsaMosteller({ weightKg, heightCm }).toFixed(2)} m^2` });
+        rows.push({ text: `BSA Du Bois: ${C.bsaDuBois({ weightKg, heightCm }).toFixed(2)} m^2` });
+      }
+      resultRow(o, rows);
+      if (weightKg == null) {
+        o.appendChild(el('p', { class: 'muted', text: 'Enter a weight for the adjusted body weight and the two body-surface-area estimates.' }));
+      }
     });
     ['bw-hin', 'bw-kg', 'bw-kg-unit', 'bw-sex'].forEach((id) => document.getElementById(id).addEventListener(id === 'bw-sex' ? 'change' : 'input', run));
   },

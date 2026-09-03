@@ -8,6 +8,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **The last four from the empty-form sweep, and one rule that runs backwards.**
+  SNAPPE-II read "lower illness severity" from ten blank measurements, SCORAD
+  banded a severity with the extent uncharted, and the Lund-Browder burn chart
+  reported "%TBSA: 0%" — the number a burn resuscitation is calculated from —
+  from a chart nobody had marked. SLUMS is the interesting one: it labelled an
+  unperformed exam "dementia", and because a *higher* SLUMS is a better one, an
+  unscored item can only add points. An incomplete exam can be read as normal
+  once it has earned enough, and can never be read as impaired. See
+  `docs/spec-v1016.md`.
+
 - **Refusals written in the words of a stack trace.** When a value was outside a
   tool's plausible range the tool said so — as "weightKg out of range [0.3,
   500]", printed where the answer goes. The refusals were right; the language was

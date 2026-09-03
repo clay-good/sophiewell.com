@@ -14,11 +14,20 @@ test('tile example: A/5 + 7B/2 + C composite -> 42 (oSCORAD 34) moderate', () =>
   assert.equal(r.bandLabel, 'Moderate');
 });
 
-test('all-zero -> SCORAD 0 mild', () => {
-  const r = scorad({});
-  assert.equal(r.score, 0);
-  assert.equal(r.oscorad, 0);
-  assert.equal(r.bandLabel, 'Mild');
+// spec-v1016: this asserted the defect. The extent (A) is a measurement and a
+// fifth of the score, so with no extent there is no severity to read -- an
+// uncharted extent is not clear skin. A charted extent of 0 with no intensity
+// still scores 0 and bands mild, which is the reading this test meant.
+test('a missing extent has no severity; a charted zero is mild', () => {
+  const missing = scorad({});
+  assert.equal(missing.valid, false);
+  assert.equal(missing.score, null);
+  assert.match(missing.band, /Enter the extent/);
+
+  const charted = scorad({ extent: 0 });
+  assert.equal(charted.score, 0);
+  assert.equal(charted.oscorad, 0);
+  assert.equal(charted.bandLabel, 'Mild');
 });
 
 test('mild/moderate boundary at 25 and moderate/severe at 50', () => {
