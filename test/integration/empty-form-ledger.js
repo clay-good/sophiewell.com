@@ -16,18 +16,22 @@
 //
 // Removing a line is a fix and needs nothing. ADDING one needs a sentence in the
 // pull request saying which of those two it is.
+//
+// spec-v1026: and the sweep now removes lines FOR you, by failing when one of
+// these ids has stopped answering. Nine were stale the day that check was added
+// -- every one a tile fixed between spec-v1013 and spec-v1025 whose line nobody
+// went back to delete, which left nine tiles exempt from the gate that was meant
+// to be protecting them.
 export const ANSWERS_AN_EMPTY_FORM = new Set([
   // Its six clinical factors are pickers, and "no" is an answer: a patient with
   // congestive heart failure and diabetes scores 8 whether or not the contrast
   // volume has been decided yet. The two measurements it does need are guarded
   // in the library (spec-v1007).
   "mehran-cin",
-  "aa-gradient",
   "aat-deficiency",
   "abc-scale",
   "acromegaly-biochem",
   "add-rs",
-  "anion-gap-dd",
   "arc-hbr",
   "ascvd",
   "autoimmune-encephalitis",
@@ -39,7 +43,6 @@ export const ANSWERS_AN_EMPTY_FORM = new Set([
   "cf-diagnosis",
   "charlson",
   "ciwa",
-  "code-blue-clock",
   "corrected-age",
   "cows",
   "digoxin",
@@ -57,18 +60,15 @@ export const ANSWERS_AN_EMPTY_FORM = new Set([
   "hlh-2004",
   "hospital-score",
   "hpa-glaucoma",
-  "hypothermia-rewarm",
   "igg4-rd-2020",
   "ihs4",
   "indomethacin-headache-ichd3",
   "intubation-difficulty-scale",
   "isth-bat",
   "kings-college",
-  "lace",
   "magnesium-replacement",
   "masld-criteria",
   "mchat-rf",
-  "meld-childpugh",
   "membranous-risk",
   "meows",
   "midas",
@@ -92,18 +92,15 @@ export const ANSWERS_AN_EMPTY_FORM = new Set([
   "pews",
   "posas-observer-scar",
   "posas-patient-scar",
-  "preg-dating",
   "prevent",
   "quintero-ttts",
   "restraint-timer",
-  "rhig-dose",
   "rivermead-mobility-index",
   "roland-morris-disability",
   "rudas",
   "salt-score",
   "sea-guideline",
   "sepsis-bundle-clock",
-  "smart-cop",
   "systemic-mastocytosis",
   "tension-headache-ichd3",
   "timely-filing",

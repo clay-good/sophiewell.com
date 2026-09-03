@@ -6,6 +6,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed
+
+- **The empty-form check was reading calculators before they had finished
+  answering.** It waited 25 milliseconds, which is not long enough for a tool
+  that loads part of itself on demand, so two runs of the same commit disagreed
+  about four of them. It now waits 120 ms, knows one more word that a refusal
+  uses ("outstanding"), and passes three runs in a row. Nine calculators fixed
+  over the past week were still listed as exceptions and are now covered by the
+  check instead. See `docs/spec-v1026.md`.
+
 ### Added
 
 - **One page that maps the whole input-safety program.** Twenty changes since
