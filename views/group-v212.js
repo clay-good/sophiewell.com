@@ -40,7 +40,7 @@ export const renderers = {
   // ----- 2.3 king-score ------------------------------------------------------
   'king-score'(root) {
     note(root, 'King’s Score (Cross 2009): a simple four-variable non-invasive marker of cirrhosis — King’s Score = (age × AST × INR) / platelets (×10⁹/L). A score ≥ 16.7 rules cirrhosis in (sensitivity 86%, specificity 80%, NPV 96%); ≥ 12.3 marks significant fibrosis (F3-6); < 12.3 rules it out. Used alongside FIB-4 and APRI.');
-    root.appendChild(num('Age (years)', 'king-age', { min: '0' }));
+    root.appendChild(num('Age (years)', 'king-age', { max: 130, min: '0' }));
     root.appendChild(num('AST (IU/L)', 'king-ast', { min: '0' }));
     root.appendChild(num('INR', 'king-inr', { min: '0' }));
     root.appendChild(num('Platelet count (×10⁹/L)', 'king-plt', { min: '0' }));

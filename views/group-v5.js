@@ -501,10 +501,10 @@ export const renderers = {
 
   // ----- T18: Albumin-corrected anion gap (Figge) -------------------------
   'corrected-anion-gap'(root) {
-    root.appendChild(field('Sodium (mEq/L)', 'na', { value: 140 }));
+    root.appendChild(field('Sodium (mEq/L)', 'na', { min: 0, max: 200, value: 140 }));
     root.appendChild(field('Chloride (mEq/L)', 'cl', { value: 104 }));
     root.appendChild(field('Bicarbonate / HCO3 (mEq/L)', 'hco3', { value: 24 }));
-    root.appendChild(field('Albumin (g/dL)', 'alb', { value: 4.0 }));
+    root.appendChild(field('Albumin (g/dL)', 'alb', { min: 0, value: 4.0 }));
     root.appendChild(checkField('Include potassium in AG (some labs do)', 'usek'));
     root.appendChild(field('Potassium (mEq/L, only if box checked)', 'k'));
     const o = out(); root.appendChild(o);

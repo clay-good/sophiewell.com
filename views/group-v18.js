@@ -173,7 +173,7 @@ export const renderers = {
   'ckd-epi-cystatin'(root) {
     root.appendChild(field('Serum cystatin C (mg/L) — must be > 0', 'cc-cys', { placeholder: 'e.g. 1.5', inputmode: 'decimal' }));
     root.appendChild(field('Serum creatinine (mg/dL) — optional, for the combined estimate', 'cc-cr', { placeholder: 'e.g. 1.1', inputmode: 'decimal' }));
-    root.appendChild(field('Age (years)', 'cc-age', { placeholder: 'e.g. 70', inputmode: 'numeric' }));
+    root.appendChild(field('Age (years)', 'cc-age', { min: 0, max: 130, placeholder: 'e.g. 70', inputmode: 'numeric' }));
     root.appendChild(selectField('Sex', 'cc-sex', [
       { value: 'male', text: 'Male' },
       { value: 'female', text: 'Female' },

@@ -8,6 +8,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **The plausible ranges the site already knew, applied where they were
+  missing.** Systolic blood pressure was capped at 300 mmHg on nine tools and
+  uncapped on twelve others; hemoglobin capped on four and uncapped on twelve;
+  age capped on 31 and uncapped on 69. Same quantity, same unit, two different
+  answers to whether 3007 is a plausible number. Each unbounded field now takes
+  the bound the site already uses elsewhere — 132 maximums and 63 minimums —
+  always the most permissive one, never narrowing a bound a tool already
+  declared. Together with the warning added above, a transposed digit now gets
+  caught in far more places. See `docs/spec-v1010.md`.
+
 - **A transposed digit got a confident answer.** Fields across the site declare
   the range they accept — 0 to 300 for a heart rate, 3 to 15 for a GCS — and a
   browser enforces that only when a form is submitted, which these tools never

@@ -70,8 +70,8 @@ export const renderers = {
   },
   'batt'(root) {
     note(root, 'BATT score (Ageron 2019): age, SBP, GCS bands + RR/SpO2, HR, penetrating, high-energy (0-27). >= 2 has guided TXA.');
-    root.appendChild(num('Age (years)', 'batt-age', { min: '0' }));
-    root.appendChild(num('Systolic BP (mmHg)', 'batt-sbp', { min: '0' }));
+    root.appendChild(num('Age (years)', 'batt-age', { max: 130, min: '0' }));
+    root.appendChild(num('Systolic BP (mmHg)', 'batt-sbp', { max: 300, min: '0' }));
     root.appendChild(num('GCS (3-15)', 'batt-gcs', { min: '3', max: '15' }));
     root.appendChild(check('Respiratory rate < 10 or >= 30, or SpO2 < 90% (+2)', 'batt-rr'));
     root.appendChild(check('Heart rate > 100 (+1)', 'batt-hr'));
@@ -101,8 +101,8 @@ export const renderers = {
   },
   'ets'(root) {
     note(root, 'Emergency Transfusion Score (Ruchholtz 2006): SBP band, free fluid, unstable pelvis, age band, from scene, traffic, fall > 3 m. >= 3 flags need for blood.');
-    root.appendChild(num('Systolic BP (mmHg)', 'ets-sbp', { min: '0' }));
-    root.appendChild(num('Age (years)', 'ets-age', { min: '0' }));
+    root.appendChild(num('Systolic BP (mmHg)', 'ets-sbp', { max: 300, min: '0' }));
+    root.appendChild(num('Age (years)', 'ets-age', { max: 130, min: '0' }));
     root.appendChild(check('Free intra-abdominal fluid on ultrasound (+2.0)', 'ets-fluid'));
     root.appendChild(check('Unstable pelvic ring (+1.5)', 'ets-pelvis'));
     root.appendChild(check('Admission directly from the scene (+1.0)', 'ets-scene'));

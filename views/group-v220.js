@@ -46,7 +46,7 @@ export const renderers = {
     note(root, 'FIPS (Bettinger 2021): FIPS = 1.43·log10(bili) − 1.71·(1/creatinine) + 0.02·age − 0.02·albumin + 0.8074 (mg/dL, g/dL). >= 0.92 = high post-TIPS mortality.');
     root.appendChild(num('Total bilirubin (mg/dL)', 'fips-bili', { min: '0' }));
     root.appendChild(num('Creatinine (mg/dL)', 'fips-cr', { min: '0' }));
-    root.appendChild(num('Age (years)', 'fips-age', { min: '0' }));
+    root.appendChild(num('Age (years)', 'fips-age', { max: 130, min: '0' }));
     root.appendChild(num('Albumin (g/dL)', 'fips-alb', { min: '0' }));
     const o = out(); root.appendChild(o);
     wire(['fips-bili', 'fips-cr', 'fips-age', 'fips-alb'], () => safe(o, () => {
@@ -81,7 +81,7 @@ export const renderers = {
   },
   'amap-score'(root) {
     note(root, 'aMAP score (Fan 2020): age, sex, ALBI, platelets → HCC risk. < 50 low, 50-60 medium, > 60 high.');
-    root.appendChild(num('Age (years)', 'amap-age', { min: '0' }));
+    root.appendChild(num('Age (years)', 'amap-age', { max: 130, min: '0' }));
     root.appendChild(num('Total bilirubin (µmol/L)', 'amap-bili', { min: '0' }));
     root.appendChild(num('Albumin (g/L)', 'amap-alb', { min: '0' }));
     root.appendChild(num('Platelet count (×10⁹/L)', 'amap-plt', { min: '0' }));
@@ -108,7 +108,7 @@ export const renderers = {
   },
   'fibroq'(root) {
     note(root, 'FibroQ (Hsieh 2009): FibroQ = 10 × (age × AST × INR) / (ALT × platelets). > 1.6 predicts significant fibrosis (≥ F2).');
-    root.appendChild(num('Age (years)', 'fq-age', { min: '0' }));
+    root.appendChild(num('Age (years)', 'fq-age', { max: 130, min: '0' }));
     root.appendChild(num('AST (IU/L)', 'fq-ast', { min: '0' }));
     root.appendChild(num('INR', 'fq-inr', { min: '0' }));
     root.appendChild(num('ALT (IU/L)', 'fq-alt', { min: '0' }));

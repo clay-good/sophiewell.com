@@ -94,10 +94,10 @@ export const renderers = {
   // ----- 2.3 forns-index ------------------------------------------------
   'forns-index'(root) {
     note(root, 'Forns index for HCV fibrosis (Forns 2002): a four-variable serum estimate. Enter age, GGT, platelets, and total cholesterol in mg/dL. Below 4.2 rules out significant fibrosis; above 6.9 rules it in; between is indeterminate.');
-    root.appendChild(field('Age (years)', 'fo-age', { step: '1', min: 0, placeholder: 'e.g. 50' }));
+    root.appendChild(field('Age (years)', 'fo-age', { max: 130, step: '1', min: 0, placeholder: 'e.g. 50' }));
     root.appendChild(field('GGT (U/L)', 'fo-ggt', { step: '1', min: 0, placeholder: 'e.g. 80' }));
     root.appendChild(field('Platelet count (×10⁹/L)', 'fo-plt', { step: '1', min: 0, placeholder: 'e.g. 150' }));
-    root.appendChild(field('Total cholesterol (mg/dL)', 'fo-chol', { step: '1', min: 0, placeholder: 'e.g. 200' }));
+    root.appendChild(field('Total cholesterol (mg/dL)', 'fo-chol', { max: 600, step: '1', min: 0, placeholder: 'e.g. 200' }));
     const o = out(); root.appendChild(o);
     wire(['fo-age', 'fo-ggt', 'fo-plt', 'fo-chol'], () => safe(o, () => {
       const r = M.fornsIndex({ age: optNum('fo-age'), ggt: optNum('fo-ggt'), platelets: optNum('fo-plt'), cholesterol: optNum('fo-chol') });

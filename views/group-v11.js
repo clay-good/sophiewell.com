@@ -142,7 +142,7 @@ export const renderers = {
   // ----- 3.4 corrected-phenytoin -----------------------------------------
   'corrected-phenytoin'(root) {
     root.appendChild(field('Measured total phenytoin (µg/mL)', 'cp-meas', { placeholder: 'e.g. 8' }));
-    root.appendChild(field('Serum albumin (g/dL)', 'cp-alb', { placeholder: 'e.g. 2.0' }));
+    root.appendChild(field('Serum albumin (g/dL)', 'cp-alb', { min: 0, placeholder: 'e.g. 2.0' }));
     root.appendChild(checkField('CrCl <10 mL/min / ESRD (use 0.1 factor)', 'cp-esrd'));
     const o = out(); root.appendChild(o);
     wire(['cp-meas', 'cp-alb', 'cp-esrd'], () => safe(o, () => {

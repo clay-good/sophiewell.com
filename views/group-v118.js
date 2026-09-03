@@ -166,7 +166,7 @@ export const renderers = {
       { value: 'finnish', text: 'Finnish (+5)' },
     ]));
     root.appendChild(checkField('Hypertension -- +1', 'ph-htn'));
-    root.appendChild(field('Age (years)', 'ph-age', { min: 0, placeholder: 'e.g. 72' }));
+    root.appendChild(field('Age (years)', 'ph-age', { max: 130, min: 0, placeholder: 'e.g. 72' }));
     root.appendChild(field('Aneurysm size (mm)', 'ph-size', { step: '0.1', min: 0, placeholder: 'e.g. 8' }));
     root.appendChild(checkField('Earlier SAH from a different aneurysm -- +1', 'ph-sah'));
     root.appendChild(selectField('Site of aneurysm', 'ph-site', [
@@ -204,7 +204,7 @@ export const renderers = {
       { value: 'mca', text: 'Middle cerebral artery (+3)' },
       { value: 'pcomPost', text: 'PCOM / posterior circulation (+5)' },
     ]));
-    root.appendChild(field('Age (years)', 'el-age', { min: 0, placeholder: 'e.g. 60' }));
+    root.appendChild(field('Age (years)', 'el-age', { max: 130, min: 0, placeholder: 'e.g. 60' }));
     root.appendChild(selectField('Population', 'el-pop', [
       { value: 'na', text: 'North America / China / Europe (0)' },
       { value: 'japan', text: 'Japan (+1)' },

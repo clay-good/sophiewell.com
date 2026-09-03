@@ -68,7 +68,7 @@ export const renderers = {
   },
   'simon-broome-fh'(root) {
     note(root, 'Simon Broome criteria (1991): a cholesterol criterion (adult TC > 7.5 or LDL > 4.9; child TC > 6.7 or LDL > 4.0 mmol/L) plus tendon xanthoma / DNA mutation (definite) or family history of premature MI / raised cholesterol (possible).');
-    root.appendChild(num('Total cholesterol (mmol/L)', 'sb-tc', { min: '0' }));
+    root.appendChild(num('Total cholesterol (mmol/L)', 'sb-tc', { max: 20, min: '0' }));
     root.appendChild(num('LDL-C (mmol/L)', 'sb-ldl', { min: '0' }));
     root.appendChild(check('Child (< 16 years) thresholds', 'sb-child'));
     root.appendChild(check('Tendon xanthoma (patient or relative)', 'sb-xanthoma'));
@@ -84,7 +84,7 @@ export const renderers = {
   'padit-score'(root) {
     note(root, 'PADIT score (Birnie 2019): prior procedures, age band, eGFR < 30, immunocompromised, procedure type. Low 0-4, intermediate 5-6, high >= 7 for CIED infection.');
     root.appendChild(select('Prior CIED procedures', 'padit-prior', [['0', 'None (0)'], ['1', '1 prior (1)'], ['4', '>= 2 prior (4)']]));
-    root.appendChild(num('Age (years)', 'padit-age', { min: '0' }));
+    root.appendChild(num('Age (years)', 'padit-age', { max: 130, min: '0' }));
     root.appendChild(select('Procedure type', 'padit-type', [['0', 'Generator change / de novo pacemaker (0)'], ['2', 'ICD (2)'], ['4', 'CRT (4)'], ['5', 'Revision / upgrade (5)']]));
     root.appendChild(check('Depressed renal function (eGFR < 30) (+1)', 'padit-egfr'));
     root.appendChild(check('Immunocompromised (+3)', 'padit-immuno'));

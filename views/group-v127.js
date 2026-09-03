@@ -71,7 +71,7 @@ export const renderers = {
       { value: '4', text: '4-variable (age, sex, eGFR, ACR)' },
       { value: '8', text: '8-variable (+ Ca, PO4, HCO3, albumin)' },
     ]));
-    root.appendChild(field('Age (years)', 'kf-age', { min: 0, placeholder: 'e.g. 60' }));
+    root.appendChild(field('Age (years)', 'kf-age', { max: 130, min: 0, placeholder: 'e.g. 60' }));
     root.appendChild(checkField('Male', 'kf-male'));
     root.appendChild(field('eGFR (mL/min/1.73m²)', 'kf-egfr', { step: '0.1', min: 0, placeholder: 'e.g. 30' }));
     root.appendChild(field('Urine albumin-to-creatinine ratio (mg/g)', 'kf-acr', { step: '1', min: 0, placeholder: 'e.g. 300' }));

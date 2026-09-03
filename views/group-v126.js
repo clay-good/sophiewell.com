@@ -74,7 +74,7 @@ export const renderers = {
       { value: '0', text: 'None (0)' }, { value: '2', text: 'Questionable (2)' }, { value: '5', text: 'Definite (5)' },
     ]));
     root.appendChild(checkField('Female (hematocrit standard 42 vs 47)', 'cd-female'));
-    root.appendChild(field('Hematocrit (%)', 'cd-hct', { step: '0.1', min: 0, placeholder: 'e.g. 40' }));
+    root.appendChild(field('Hematocrit (%)', 'cd-hct', { max: 100, step: '0.1', min: 0, placeholder: 'e.g. 40' }));
     root.appendChild(field('Body weight (kg)', 'cd-wt', { step: '0.1', min: 0, placeholder: 'e.g. 60' }));
     root.appendChild(field('Standard/ideal body weight (kg)', 'cd-std', { step: '0.1', min: 0, placeholder: 'e.g. 70' }));
     const o = out(); root.appendChild(o);
@@ -145,7 +145,7 @@ export const renderers = {
     note(root, 'Harmless Acute Pancreatitis Score (Lankisch 2009): a three-criterion admission gate. All three normal predicts a harmless (non-severe) course; any abnormal does not rule severity in.');
     root.appendChild(checkField('Rebound tenderness or guarding present (peritonitis)', 'ha-perit'));
     root.appendChild(checkField('Female (hematocrit threshold 39.6 vs 43)', 'ha-female'));
-    root.appendChild(field('Hematocrit (%)', 'ha-hct', { step: '0.1', min: 0, placeholder: 'e.g. 40' }));
+    root.appendChild(field('Hematocrit (%)', 'ha-hct', { max: 100, step: '0.1', min: 0, placeholder: 'e.g. 40' }));
     root.appendChild(field('Serum creatinine (mg/dL)', 'ha-creat', { step: '0.1', min: 0, placeholder: 'e.g. 1.0' }));
     const o = out(); root.appendChild(o);
     wire(['ha-perit', 'ha-female', 'ha-hct', 'ha-creat'], () => safe(o, () => {

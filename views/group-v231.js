@@ -39,7 +39,7 @@ export const renderers = {
   'naples-prognostic-score'(root) {
     note(root, 'Naples Prognostic Score (Galizia 2017): albumin < 4 g/dL, cholesterol <= 180, NLR > 2.96, LMR <= 4.44 each +1. Group 0 (0), 1 (1-2), 2 (3-4).');
     root.appendChild(num('Serum albumin (g/dL)', 'nap-alb', { min: '0' }));
-    root.appendChild(num('Total cholesterol (mg/dL)', 'nap-chol', { min: '0' }));
+    root.appendChild(num('Total cholesterol (mg/dL)', 'nap-chol', { max: 600, min: '0' }));
     root.appendChild(num('Neutrophil-to-lymphocyte ratio (NLR)', 'nap-nlr', { min: '0' }));
     root.appendChild(num('Lymphocyte-to-monocyte ratio (LMR)', 'nap-lmr', { min: '0' }));
     const o = out(); root.appendChild(o);

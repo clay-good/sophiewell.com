@@ -101,7 +101,7 @@ export const renderers = {
   // ----- 2.3 ocular-perfusion-pressure ---------------------------------------
   'ocular-perfusion-pressure'(root) {
     note(root, 'Ocular perfusion pressure (Costa 2014): MAP = DBP + ⅓·(SBP − DBP); mean OPP = ⅔·MAP − IOP; systolic OPP = SBP − IOP; diastolic OPP = DBP − IOP. A low mean OPP (≈ below 50 mmHg) is one of several vascular associations with glaucoma risk.');
-    root.appendChild(num('Systolic BP (mmHg)', 'opp-sbp', { min: '0' }));
+    root.appendChild(num('Systolic BP (mmHg)', 'opp-sbp', { max: 300, min: '0' }));
     root.appendChild(num('Diastolic BP (mmHg)', 'opp-dbp', { min: '0' }));
     root.appendChild(num('Intraocular pressure IOP (mmHg)', 'opp-iop', { min: '0' }));
     const o = out(); root.appendChild(o);

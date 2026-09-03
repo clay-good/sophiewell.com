@@ -66,7 +66,7 @@ export const renderers = {
   },
   'mdacc-cll-index'(root) {
     note(root, 'MDACC CLL index (Wierda 2007): age, beta-2-microglobulin band, ALC, male, Rai III-IV, >= 3 nodal groups (0-9). Low <= 3, intermediate 4-7, high >= 8.');
-    root.appendChild(num('Age (years)', 'mdacc-age', { min: '0' }));
+    root.appendChild(num('Age (years)', 'mdacc-age', { max: 130, min: '0' }));
     root.appendChild(select('Beta-2-microglobulin', 'mdacc-b2m', [['0', '< upper limit of normal (0)'], ['1', '1-2x ULN (1)'], ['2', '> 2x ULN (2)']]));
     root.appendChild(num('Absolute lymphocyte count (×10⁹/L)', 'mdacc-alc', { min: '0' }));
     root.appendChild(check('Male sex (+1)', 'mdacc-male'));
@@ -105,7 +105,7 @@ export const renderers = {
   },
   'durie-salmon'(root) {
     note(root, 'Durie-Salmon staging (Durie 1975): stage from hemoglobin, calcium, bone lesions, and M-protein burden; subclass A/B by creatinine.');
-    root.appendChild(num('Hemoglobin (g/dL)', 'ds-hb', { min: '0' }));
+    root.appendChild(num('Hemoglobin (g/dL)', 'ds-hb', { max: 25, min: '0' }));
     root.appendChild(num('Serum calcium (mg/dL)', 'ds-ca', { min: '0' }));
     root.appendChild(num('Number of lytic bone lesions', 'ds-lesions', { min: '0' }));
     root.appendChild(select('M-protein burden', 'ds-mprot', [['0', 'Low (IgG < 5, IgA < 3 g/dL; urine BJ < 4 g/24h)'], ['1', 'Intermediate'], ['2', 'High (IgG > 7, IgA > 5 g/dL; urine BJ > 12 g/24h)']]));

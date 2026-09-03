@@ -56,7 +56,7 @@ export const renderers = {
   // ----- 2.5 essen-stroke-risk -----------------------------------------------
   'essen-stroke-risk'(root) {
     note(root, 'Essen Stroke Risk Score (Weimar 2009): a simple bedside score for recurrent vascular events after ischemic stroke / TIA. Age (< 65 → 0, 65–75 → 1, > 75 → 2) plus one point each for the vascular risk factors; total 0–9. Low risk < 3, high risk ≥ 3.');
-    root.appendChild(num('Age (years)', 'essen-age', { min: '0' }));
+    root.appendChild(num('Age (years)', 'essen-age', { max: 130, min: '0' }));
     root.appendChild(checkField('Hypertension (+1)', 'essen-htn'));
     root.appendChild(checkField('Diabetes mellitus (+1)', 'essen-dm'));
     root.appendChild(checkField('Prior myocardial infarction (+1)', 'essen-mi'));
@@ -127,7 +127,7 @@ export const renderers = {
   'func-score'(root) {
     note(root, 'FUNC score (Rost 2008): a point model for the likelihood of functional independence (GOS ≥ 4) at 90 days after primary ICH — ICH volume, age, location, GCS, and pre-ICH cognitive impairment; total 0–11. No patient with ≤ 4 reached independence; > 80% of those with 11 did.');
     root.appendChild(num('ICH volume (cc)', 'func-vol', { min: '0' }));
-    root.appendChild(num('Age (years)', 'func-age', { min: '0' }));
+    root.appendChild(num('Age (years)', 'func-age', { max: 130, min: '0' }));
     root.appendChild(selectField('ICH location', 'func-loc', [
       { value: 'lobar', text: 'Lobar (+2)' },
       { value: 'deep', text: 'Deep (+1)' },

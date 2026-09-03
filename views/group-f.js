@@ -157,7 +157,7 @@ export const renderers = {
       { value: 'heparin-ufh', text: 'Heparin, UFH (protamine)' },
     ]));
     root.appendChild(unitField('Weight', 'ar-w', WEIGHT_UNITS, { placeholder: '80' }));
-    root.appendChild(field('INR (warfarin only)', 'ar-inr', { placeholder: '5' }));
+    root.appendChild(field('INR (warfarin only)', 'ar-inr', { min: 0, placeholder: '5' }));
     root.appendChild(field('Heparin units in last 2-3 h (UFH only)', 'ar-heparin', { placeholder: '4000' }));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {

@@ -40,7 +40,7 @@ export const renderers = {
     note(root, 'England & Fraser (1973): DF = MCV - RBC - (5 x Hb) - 3.4. < 0 favors beta-thalassemia trait, > 0 favors iron deficiency.');
     root.appendChild(num('MCV (fL)', 'ef-mcv', { min: '0' }));
     root.appendChild(num('RBC count (10^6/µL)', 'ef-rbc', { min: '0' }));
-    root.appendChild(num('Hemoglobin (g/dL)', 'ef-hb', { min: '0' }));
+    root.appendChild(num('Hemoglobin (g/dL)', 'ef-hb', { max: 25, min: '0' }));
     const o = out(); root.appendChild(o);
     wire(['ef-mcv', 'ef-rbc', 'ef-hb'], () => safe(o, () => {
       render(o, M.englandFraser({ mcv: val('ef-mcv'), rbc: val('ef-rbc'), hb: val('ef-hb') }));
@@ -51,7 +51,7 @@ export const renderers = {
     note(root, 'Sirdah (2008): MCV - RBC - (3 x Hb). < 27 favors beta-thalassemia trait, > 27 favors iron deficiency.');
     root.appendChild(num('MCV (fL)', 'sd-mcv', { min: '0' }));
     root.appendChild(num('RBC count (10^6/µL)', 'sd-rbc', { min: '0' }));
-    root.appendChild(num('Hemoglobin (g/dL)', 'sd-hb', { min: '0' }));
+    root.appendChild(num('Hemoglobin (g/dL)', 'sd-hb', { max: 25, min: '0' }));
     const o = out(); root.appendChild(o);
     wire(['sd-mcv', 'sd-rbc', 'sd-hb'], () => safe(o, () => {
       render(o, M.sirdah({ mcv: val('sd-mcv'), rbc: val('sd-rbc'), hb: val('sd-hb') }));

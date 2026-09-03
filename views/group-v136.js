@@ -112,9 +112,9 @@ export const renderers = {
     root.appendChild(field('Waist circumference (cm)', 'ms-waist', { step: '0.1', min: 0, placeholder: 'e.g. 104' }));
     root.appendChild(field('Triglycerides (mg/dL)', 'ms-tg', { step: '1', min: 0, placeholder: 'e.g. 160' }));
     root.appendChild(selectField('On treatment for high triglycerides?', 'ms-tgtx', OPT_YN));
-    root.appendChild(field('HDL cholesterol (mg/dL)', 'ms-hdl', { step: '1', min: 0, placeholder: 'e.g. 45' }));
+    root.appendChild(field('HDL cholesterol (mg/dL)', 'ms-hdl', { max: 200, step: '1', min: 0, placeholder: 'e.g. 45' }));
     root.appendChild(selectField('On treatment for low HDL?', 'ms-hdltx', OPT_YN));
-    root.appendChild(field('Systolic BP (mmHg)', 'ms-sbp', { step: '1', min: 0, placeholder: 'e.g. 128' }));
+    root.appendChild(field('Systolic BP (mmHg)', 'ms-sbp', { max: 300, step: '1', min: 0, placeholder: 'e.g. 128' }));
     root.appendChild(field('Diastolic BP (mmHg)', 'ms-dbp', { step: '1', min: 0, placeholder: 'e.g. 82' }));
     root.appendChild(selectField('On antihypertensive treatment?', 'ms-bptx', OPT_YN));
     root.appendChild(field('Fasting glucose (mg/dL)', 'ms-glu', { step: '1', min: 0, placeholder: 'e.g. 105' }));
@@ -137,7 +137,7 @@ export const renderers = {
   // ----- 2.5 osteoporosis-prescreen -------------------------------------
   'osteoporosis-prescreen'(root) {
     note(root, 'OST / ORAI DXA pre-screen (Koh 2001 OST/OSTA; Cadarette 2000 ORAI): two free indices that flag postmenopausal women who warrant bone densitometry. OST index = (weight kg − age yr) × 0.2, truncated toward zero; index < 2 flags increased risk (Caucasian cutoff). ORAI sums age/weight/estrogen bands; score ≥ 9 selects for DXA. The licensed FRAX is excluded; this is the free substitute.');
-    root.appendChild(field('Age (years)', 'ost-age', { step: '1', min: 0, placeholder: 'e.g. 60' }));
+    root.appendChild(field('Age (years)', 'ost-age', { max: 130, step: '1', min: 0, placeholder: 'e.g. 60' }));
     root.appendChild(unitField('Weight', 'ost-weight', WEIGHT_UNITS, { placeholder: 'e.g. 72' }));
     root.appendChild(selectField('Currently using estrogen?', 'ost-estrogen', YN));
     const o = out(); root.appendChild(o);

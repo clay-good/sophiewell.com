@@ -38,9 +38,9 @@ function render(o, r, valueLabel) {
 export const renderers = {
   'castelli-index'(root) {
     note(root, 'Castelli Risk Index-I = TC/HDL, Risk Index-II = LDL/HDL (Castelli 1983). Higher ratios mark a more atherogenic profile. Enter all three in the same units.');
-    root.appendChild(num('Total cholesterol (mg/dL)', 'cast-tc', { min: '0' }));
+    root.appendChild(num('Total cholesterol (mg/dL)', 'cast-tc', { max: 600, min: '0' }));
     root.appendChild(num('LDL cholesterol (mg/dL)', 'cast-ldl', { min: '0' }));
-    root.appendChild(num('HDL cholesterol (mg/dL)', 'cast-hdl', { min: '0' }));
+    root.appendChild(num('HDL cholesterol (mg/dL)', 'cast-hdl', { max: 200, min: '0' }));
     const o = out(); root.appendChild(o);
     wire(['cast-tc', 'cast-ldl', 'cast-hdl'], () => safe(o, () => {
       render(o, M.castelli({ tc: val('cast-tc'), ldl: val('cast-ldl'), hdl: val('cast-hdl') }), 'CRI-I');

@@ -69,7 +69,7 @@ export const renderers = {
   // ----- 2.2 mipi ------------------------------------------------------------
   mipi(root) {
     note(root, 'Mantle Cell Lymphoma International Prognostic Index (Hoster 2008): 0.03535·age + 0.6978·(ECOG 2–4) + 1.367·log₁₀(LDH/ULN) + 0.9393·log₁₀(WBC per µL). Bands low < 5.7, intermediate 5.7 to < 6.2, high ≥ 6.2. Enter WBC as the absolute count per microliter (e.g. 8000), not thousands.');
-    root.appendChild(field('Age (years)', 'mipi-age', { type: 'number', min: '0', step: '1', inputmode: 'numeric' }));
+    root.appendChild(field('Age (years)', 'mipi-age', { max: 130, type: 'number', min: '0', step: '1', inputmode: 'numeric' }));
     root.appendChild(pickField('ECOG performance status', 'mipi-ecog', ECOG_OPTS));
     root.appendChild(field('Serum LDH (U/L)', 'mipi-ldh', { type: 'number', min: '0', step: 'any', inputmode: 'decimal' }));
     root.appendChild(field('LDH upper limit of normal (U/L)', 'mipi-uln', { type: 'number', min: '0', step: 'any', inputmode: 'decimal' }));

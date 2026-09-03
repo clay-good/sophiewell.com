@@ -98,7 +98,7 @@ export const renderers = {
   'chair-stand-30s'(root) {
     note(root, '30-Second Chair Stand (CDC STEADI): the count of full sit-to-stands in 30 seconds, compared with the CDC STEADI below-average cut-point for age and sex. A count below the cut-point is below average and indicates increased fall risk. Norm bands cover ages 60–94.');
     root.appendChild(numField('Full stands completed in 30 seconds', 'chair-stands', { min: 0, placeholder: 'e.g. 10' }));
-    root.appendChild(numField('Age (years)', 'chair-age', { min: 0, placeholder: 'e.g. 75' }));
+    root.appendChild(numField('Age (years)', 'chair-age', { max: 130, min: 0, placeholder: 'e.g. 75' }));
     root.appendChild(pickField('Sex', 'chair-sex', SEX));
     const o = out(); root.appendChild(o);
     wire(['chair-stands', 'chair-age', 'chair-sex'], () => safe(o, () => {
@@ -128,7 +128,7 @@ export const renderers = {
   'functional-reach'(root) {
     note(root, 'Functional Reach Test (Duncan 1990): the maximum forward reach with a fixed base of support. Under 15.24 cm (6 in) is a markedly increased (~4×) fall risk, 15.24–25.40 cm (6–10 in) an increased (~2×) risk, over 25.40 cm a lower risk. The age/sex normative mean is shown for context (ages 20–87).');
     root.appendChild(unitField('Forward reach distance', 'reach-distance', HEIGHT_UNITS, { placeholder: 'e.g. 18' }));
-    root.appendChild(numField('Age (years)', 'reach-age', { min: 0, placeholder: 'e.g. 75' }));
+    root.appendChild(numField('Age (years)', 'reach-age', { max: 130, min: 0, placeholder: 'e.g. 75' }));
     root.appendChild(pickField('Sex', 'reach-sex', SEX));
     const o = out(); root.appendChild(o);
     wire(['reach-distance', 'reach-distance-unit', 'reach-age', 'reach-sex'], () => safe(o, () => {

@@ -130,7 +130,7 @@ export const renderers = {
     root.appendChild(field('Age (years)', 'vacs-age', { min: 0, max: 130, placeholder: 'e.g. 55' }));
     root.appendChild(field('CD4 count (cells/µL)', 'vacs-cd4', { min: 0, placeholder: 'e.g. 250' }));
     root.appendChild(field('HIV-1 RNA (copies/mL)', 'vacs-rna', { min: 0, placeholder: 'e.g. 1000' }));
-    root.appendChild(field('Hemoglobin (g/dL)', 'vacs-hgb', { step: '0.1', min: 0, placeholder: 'e.g. 11' }));
+    root.appendChild(field('Hemoglobin (g/dL)', 'vacs-hgb', { max: 25, step: '0.1', min: 0, placeholder: 'e.g. 11' }));
     root.appendChild(field('AST (U/L)', 'vacs-ast', { min: 0, placeholder: 'e.g. 40' }));
     root.appendChild(field('ALT (U/L)', 'vacs-alt', { min: 0, placeholder: 'e.g. 30' }));
     root.appendChild(field('Platelets (×10⁹/L)', 'vacs-plt', { min: 0, placeholder: 'e.g. 150' }));

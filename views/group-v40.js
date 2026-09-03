@@ -65,7 +65,7 @@ export const renderers = {
   // ----- 2.1 mayo-spn ---------------------------------------------------
   'mayo-spn'(root) {
     note(root, 'Mayo Clinic SPN model: a logistic estimate of the probability of malignancy in an incidental solitary pulmonary nodule. Enter the age and nodule diameter and mark the clinical/radiographic items.');
-    root.appendChild(field('Age (years)', 'ms-age', { min: 0, placeholder: 'e.g. 60' }));
+    root.appendChild(field('Age (years)', 'ms-age', { max: 130, min: 0, placeholder: 'e.g. 60' }));
     root.appendChild(field('Nodule diameter (mm)', 'ms-diam', { step: '0.1', min: 0, placeholder: 'e.g. 12' }));
     root.appendChild(checkField('Current or former smoker', 'ms-smoke'));
     root.appendChild(checkField('Prior extrathoracic cancer diagnosed > 5 years ago', 'ms-cancer'));
@@ -92,7 +92,7 @@ export const renderers = {
   // ----- 2.2 brock-nodule -----------------------------------------------
   'brock-nodule'(root) {
     note(root, 'Brock University / PanCan model: a logistic estimate of cancer probability validated on lung-screening cohorts. Enter the age, nodule size, and nodule count, choose the type, and mark the items.');
-    root.appendChild(field('Age (years)', 'bn-age', { min: 0, placeholder: 'e.g. 65' }));
+    root.appendChild(field('Age (years)', 'bn-age', { max: 130, min: 0, placeholder: 'e.g. 65' }));
     root.appendChild(field('Nodule size (mm)', 'bn-size', { step: '0.1', min: 0, placeholder: 'e.g. 15' }));
     root.appendChild(field('Number of nodules', 'bn-count', { min: 1, placeholder: 'e.g. 1' }));
     root.appendChild(selectField('Nodule type', 'bn-type', [
@@ -167,8 +167,8 @@ export const renderers = {
       { value: '3', text: 'Class III (+1)' },
       { value: '4', text: 'Class IV (+2)' },
     ]));
-    root.appendChild(field('Systolic BP (mm Hg)', 'rv-sbp', { step: '1', min: 0, placeholder: 'e.g. 104' }));
-    root.appendChild(field('Heart rate (beats/min)', 'rv-hr', { step: '1', min: 0, placeholder: 'e.g. 88' }));
+    root.appendChild(field('Systolic BP (mm Hg)', 'rv-sbp', { max: 300, step: '1', min: 0, placeholder: 'e.g. 104' }));
+    root.appendChild(field('Heart rate (beats/min)', 'rv-hr', { max: 300, step: '1', min: 0, placeholder: 'e.g. 88' }));
     root.appendChild(field('6-minute walk distance (m)', 'rv-mwd', { step: '1', min: 0, placeholder: 'e.g. 300' }));
     root.appendChild(selectField('BNP / NT-proBNP band', 'rv-bnp', [
       { value: 'low', text: 'BNP < 50 / NT-proBNP < 300 pg/mL (-2)' },
@@ -202,7 +202,7 @@ export const renderers = {
       { value: 'mid', text: '5-8 mmol/L (+1)' },
       { value: 'high', text: '> 8 mmol/L (+2)' },
     ]));
-    root.appendChild(field('Age (years)', 'rp-age', { min: 0, placeholder: 'e.g. 74' }));
+    root.appendChild(field('Age (years)', 'rp-age', { max: 130, min: 0, placeholder: 'e.g. 74' }));
     root.appendChild(field('Serum albumin (g/L)', 'rp-alb', { step: '0.1', min: 0, placeholder: 'e.g. 24' }));
     root.appendChild(checkField('Non-purulent pleural fluid -- +1', 'rp-nonpur'));
     root.appendChild(checkField('Hospital-acquired infection -- +1', 'rp-hosp'));

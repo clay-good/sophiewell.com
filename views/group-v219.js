@@ -54,7 +54,7 @@ function render(o, r, valueLabel, value) {
 export const renderers = {
   'ada-diabetes-risk-test'(root) {
     note(root, 'ADA / Bang diabetes-risk score (Bang 2009): age band, male, prior GDM, family history, hypertension, inactivity, BMI band (0-13). >= 5 = high risk, screen.');
-    root.appendChild(num('Age (years)', 'ada-age', { min: '0' }));
+    root.appendChild(num('Age (years)', 'ada-age', { max: 130, min: '0' }));
     root.appendChild(num('BMI (kg/m²)', 'ada-bmi', { min: '0' }));
     root.appendChild(check('Male sex (+1)', 'ada-male'));
     root.appendChild(check('Prior gestational diabetes (+1)', 'ada-gdm'));
@@ -70,7 +70,7 @@ export const renderers = {
   },
   'cambridge-diabetes-risk'(root) {
     note(root, 'Cambridge Diabetes Risk Score (Griffin 2000): logistic probability of undiagnosed type 2 diabetes from age, sex, BMI, family history, smoking, antihypertensive / steroid use.');
-    root.appendChild(num('Age (years)', 'camb-age', { min: '0' }));
+    root.appendChild(num('Age (years)', 'camb-age', { max: 130, min: '0' }));
     root.appendChild(num('BMI (kg/m²)', 'camb-bmi', { min: '0' }));
     root.appendChild(check('Female sex', 'camb-female'));
     root.appendChild(check('On antihypertensive medication', 'camb-htn'));
@@ -101,7 +101,7 @@ export const renderers = {
     root.appendChild(num('Waist circumference (cm)', 'vai-wc', { min: '0' }));
     root.appendChild(num('BMI (kg/m²)', 'vai-bmi', { min: '0' }));
     root.appendChild(num('Triglycerides (mmol/L)', 'vai-tg', { min: '0' }));
-    root.appendChild(num('HDL cholesterol (mmol/L)', 'vai-hdl', { min: '0' }));
+    root.appendChild(num('HDL cholesterol (mmol/L)', 'vai-hdl', { max: 5, min: '0' }));
     root.appendChild(check('Female sex', 'vai-female'));
     const o = out(); root.appendChild(o);
     wire(['vai-wc', 'vai-bmi', 'vai-tg', 'vai-hdl', 'vai-female'], () => safe(o, () => {

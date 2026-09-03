@@ -91,7 +91,7 @@ export const renderers = {
   // ----- 2.1 warfarin-iwpc ----------------------------------------------
   'warfarin-iwpc'(root) {
     note(root, 'IWPC pharmacogenetic warfarin dose (Klein 2009): predicts the stable weekly maintenance dose from age, height, weight, race, enzyme-inducer and amiodarone use, and the entered VKORC1 (-1639 G>A) and CYP2C9 genotypes. It regresses the square root of the weekly dose; this tool squares the result. A starting-point estimate — titrate to the measured INR.');
-    root.appendChild(field('Age (years)', 'iw-age', { step: '1', min: 0, placeholder: 'e.g. 65' }));
+    root.appendChild(field('Age (years)', 'iw-age', { max: 130, step: '1', min: 0, placeholder: 'e.g. 65' }));
     root.appendChild(unitField('Height', 'iw-ht', HEIGHT_UNITS, { placeholder: 'e.g. 170' }));
     root.appendChild(unitField('Weight', 'iw-wt', WEIGHT_UNITS, { placeholder: 'e.g. 70' }));
     root.appendChild(selectField('VKORC1 (-1639 G>A) genotype', 'iw-vk', VKORC1_OPTS));
@@ -113,7 +113,7 @@ export const renderers = {
   // ----- 2.2 warfarin-gage ----------------------------------------------
   'warfarin-gage'(root) {
     note(root, 'Gage pharmacogenomic warfarin dose (Gage 2008): predicts the therapeutic daily dose from body-surface area (DuBois), age, target INR, smoking, amiodarone use, race, the DVT/PE indication, and the entered CYP2C9 + VKORC1 genotypes. Exponential model — predicts mg/day directly. The original 2008 model has no CYP4F2 term. A starting-point estimate — titrate to the measured INR.');
-    root.appendChild(field('Age (years)', 'ga-age', { step: '1', min: 0, placeholder: 'e.g. 60' }));
+    root.appendChild(field('Age (years)', 'ga-age', { max: 130, step: '1', min: 0, placeholder: 'e.g. 60' }));
     root.appendChild(unitField('Height', 'ga-ht', HEIGHT_UNITS, { placeholder: 'e.g. 175' }));
     root.appendChild(unitField('Weight', 'ga-wt', WEIGHT_UNITS, { placeholder: 'e.g. 70' }));
     root.appendChild(field('Target INR (midpoint)', 'ga-inr', { step: '0.1', min: 0, placeholder: 'e.g. 2.5' }));

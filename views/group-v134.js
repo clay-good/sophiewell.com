@@ -129,9 +129,9 @@ export const renderers = {
   // ----- 2.5 dipss-mf ---------------------------------------------------
   'dipss-mf'(root) {
     note(root, 'DIPSS for primary myelofibrosis (Passamonti 2010): a dynamic survival score. Age >65 = 1, WBC >25 ×10⁹/L = 1, hemoglobin <10 g/dL = 2 (weighted), peripheral blasts ≥1% = 1, constitutional symptoms = 1. Total 0–6 → low (0), int-1 (1–2), int-2 (3–4), high (5–6). Median survival not-reached / 14.2 / 4 / 1.5 years. Cross-links DIPSS-Plus.');
-    root.appendChild(field('Age (years)', 'dp-age', { step: '1', min: 0, placeholder: 'e.g. 68' }));
+    root.appendChild(field('Age (years)', 'dp-age', { max: 130, step: '1', min: 0, placeholder: 'e.g. 68' }));
     root.appendChild(field('WBC (×10⁹/L)', 'dp-wbc', { step: '0.1', min: 0, placeholder: 'e.g. 12' }));
-    root.appendChild(field('Hemoglobin (g/dL)', 'dp-hgb', { step: '0.1', min: 0, placeholder: 'e.g. 9.5' }));
+    root.appendChild(field('Hemoglobin (g/dL)', 'dp-hgb', { max: 25, step: '0.1', min: 0, placeholder: 'e.g. 9.5' }));
     root.appendChild(field('Peripheral blood blasts (%)', 'dp-blast', { step: '0.1', min: 0, placeholder: 'e.g. 1' }));
     root.appendChild(selectField('Constitutional symptoms (weight loss, fever, night sweats)?', 'dp-const', YN));
     const o = out(); root.appendChild(o);

@@ -89,8 +89,8 @@ export const renderers = {
   // ----- 2.3 abcd3-i ---------------------------------------------------------
   'abcd3-i'(root) {
     note(root, 'ABCD3-I score (Merwick 2010): the imaging-augmented refinement of ABCD² for early stroke risk after TIA — the ABCD² items plus dual TIA within 7 days (+2), ipsilateral ≥ 50% carotid stenosis (+2), and abnormal DWI (+2), total 0–13. Strata: low 0–3, medium 4–7, high 8–13.');
-    root.appendChild(numField('Age (years)', 'abcd3i-age', { min: '0' }));
-    root.appendChild(numField('Systolic BP (mmHg)', 'abcd3i-sbp', { min: '30' }));
+    root.appendChild(numField('Age (years)', 'abcd3i-age', { max: 130, min: '0' }));
+    root.appendChild(numField('Systolic BP (mmHg)', 'abcd3i-sbp', { max: 300, min: '30' }));
     root.appendChild(numField('Diastolic BP (mmHg)', 'abcd3i-dbp', { min: '10' }));
     root.appendChild(selectField('Clinical features', 'abcd3i-clinical', [
       { value: 'weakness', text: 'Unilateral weakness (+2)' },
@@ -132,7 +132,7 @@ export const renderers = {
       { value: 'urgent', text: 'Urgent (+1.657)' },
       { value: 'immediate', text: 'Immediate (+2.452)' },
     ]));
-    root.appendChild(numField('Age (years)', 'sort-age', { min: '0' }));
+    root.appendChild(numField('Age (years)', 'sort-age', { max: 130, min: '0' }));
     root.appendChild(checkField('High-risk specialty — GI, thoracic, or vascular (+0.712)', 'sort-highrisk'));
     root.appendChild(checkField('Surgical severity major / complex (+0.381)', 'sort-major'));
     root.appendChild(checkField('Cancer / malignancy (+0.667)', 'sort-cancer'));

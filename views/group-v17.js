@@ -93,7 +93,7 @@ export const renderers = {
   // ----- 2.2 bode-index --------------------------------------------------
   'bode-index'(root) {
     root.appendChild(field('Body-mass index (BMI, kg/m²)', 'bo-bmi', { placeholder: 'e.g. 24', inputmode: 'decimal' }));
-    root.appendChild(field('FEV1 (% predicted)', 'bo-pct', { placeholder: 'e.g. 45', inputmode: 'decimal' }));
+    root.appendChild(field('FEV1 (% predicted)', 'bo-pct', { min: 0, placeholder: 'e.g. 45', inputmode: 'decimal' }));
     root.appendChild(selectField('mMRC dyspnea grade', 'bo-mmrc', MMRC_OPTIONS));
     root.appendChild(field('6-minute walk distance (m)', 'bo-6mwd', { placeholder: 'e.g. 300', inputmode: 'numeric' }));
     const o = out(); root.appendChild(o);
@@ -120,7 +120,7 @@ export const renderers = {
       { value: 'male', text: 'Male (Gender point = 1)' },
       { value: 'female', text: 'Female (Gender point = 0)' },
     ]));
-    root.appendChild(field('Age (years)', 'gp-age', { placeholder: 'e.g. 68', inputmode: 'numeric' }));
+    root.appendChild(field('Age (years)', 'gp-age', { min: 0, max: 130, placeholder: 'e.g. 68', inputmode: 'numeric' }));
     root.appendChild(field('FVC (% predicted)', 'gp-fvc', { placeholder: 'e.g. 60', inputmode: 'decimal' }));
     root.appendChild(field('DLCO (% predicted)', 'gp-dlco', { placeholder: 'e.g. 40', inputmode: 'decimal' }));
     root.appendChild(selectField('DLCO cannot be performed', 'gp-dlco-cannot', [

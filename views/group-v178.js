@@ -137,7 +137,7 @@ export const renderers = {
   conut(root) {
     note(root, 'CONUT (Ignacio de Ulíbarri 2005): points from albumin, total cholesterol, and lymphocyte count → 0–12. 0–1 normal, 2–4 mild, 5–8 moderate, 9–12 severe nutritional risk. A lab-only nutritional-status screen.');
     root.appendChild(numField('Serum albumin (g/dL)', 'conut-albumin', { step: '0.1', min: 0, placeholder: 'e.g. 3.2' }));
-    root.appendChild(numField('Total cholesterol (mg/dL)', 'conut-chol', { step: '1', min: 0, placeholder: 'e.g. 150' }));
+    root.appendChild(numField('Total cholesterol (mg/dL)', 'conut-chol', { max: 600, step: '1', min: 0, placeholder: 'e.g. 150' }));
     root.appendChild(numField('Total lymphocyte count (per mm³)', 'conut-lymph', { step: '1', min: 0, placeholder: 'e.g. 1000' }));
     const o = out(); root.appendChild(o);
     wire(['conut-albumin', 'conut-chol', 'conut-lymph'], () => safe(o, () => {

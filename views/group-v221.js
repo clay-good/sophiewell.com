@@ -54,7 +54,7 @@ function render(o, r, valueLabel, value) {
 export const renderers = {
   'simplified-revised-geneva'(root) {
     note(root, 'Simplified Revised Geneva (Klok 2008): age > 65, previous DVT/PE, surgery/fracture, malignancy, limb pain, hemoptysis, palpation pain + edema, HR band (0-8). Unlikely 0-2, likely >= 3.');
-    root.appendChild(num('Heart rate (bpm)', 'sg-hr', { min: '0' }));
+    root.appendChild(num('Heart rate (bpm)', 'sg-hr', { max: 400, min: '0' }));
     const items = [['sg-age', 'ageOver65', 'Age > 65 (+1)'], ['sg-vte', 'priorVte', 'Previous DVT/PE (+1)'], ['sg-surg', 'surgeryFracture', 'Surgery or fracture <= 1 month (+1)'], ['sg-malig', 'malignancy', 'Active malignancy (+1)'], ['sg-limb', 'limbPain', 'Unilateral lower-limb pain (+1)'], ['sg-hemo', 'hemoptysis', 'Hemoptysis (+1)'], ['sg-palp', 'palpationEdema', 'Pain on deep venous palpation + unilateral edema (+1)']];
     for (const [id, , label] of items) root.appendChild(check(label, id));
     const o = out(); root.appendChild(o);
@@ -117,7 +117,7 @@ export const renderers = {
   },
   'du-bois-ipf'(root) {
     note(root, 'du Bois IPF score (du Bois 2011): age, respiratory hospitalization, baseline FVC %pred, and 24-week FVC change → 1-year mortality (0-61).');
-    root.appendChild(num('Age (years)', 'db-age', { min: '0' }));
+    root.appendChild(num('Age (years)', 'db-age', { max: 130, min: '0' }));
     root.appendChild(num('Baseline FVC % predicted', 'db-fvc', { min: '0' }));
     root.appendChild(num('24-week change in FVC % predicted (signed)', 'db-dfvc', { step: 'any' }));
     root.appendChild(check('Respiratory hospitalization in prior 6 months (+14)', 'db-hosp'));

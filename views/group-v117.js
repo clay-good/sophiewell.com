@@ -125,7 +125,7 @@ export const renderers = {
       { value: 'both', text: 'Both present (+2)' },
     ]));
     root.appendChild(checkField('Prestroke modified Rankin Scale > 1 -- +1', 'dr-mrs'));
-    root.appendChild(field('Age (years)', 'dr-age', { min: 0, placeholder: 'e.g. 72' }));
+    root.appendChild(field('Age (years)', 'dr-age', { max: 130, min: 0, placeholder: 'e.g. 72' }));
     root.appendChild(checkField('Baseline glucose > 8 mmol/L (> 144 mg/dL) -- +1', 'dr-glu'));
     root.appendChild(field('Onset-to-treatment time (min)', 'dr-ott', { min: 0, placeholder: 'e.g. 120' }));
     root.appendChild(field('Baseline NIHSS', 'dr-nihss', { min: 0, placeholder: 'e.g. 12' }));
@@ -182,7 +182,7 @@ export const renderers = {
     ]));
     root.appendChild(checkField('Early infarct signs on admission CT -- +1', 'se-early'));
     root.appendChild(checkField('(hyper)dense cerebral artery sign -- +1', 'se-dense'));
-    root.appendChild(field('Age (years)', 'se-age', { min: 0, placeholder: 'e.g. 80' }));
+    root.appendChild(field('Age (years)', 'se-age', { max: 130, min: 0, placeholder: 'e.g. 80' }));
     root.appendChild(field('Baseline NIHSS', 'se-nihss', { min: 0, placeholder: 'e.g. 12' }));
     const o = out(); root.appendChild(o);
     wire(['se-glu', 'se-early', 'se-dense', 'se-age', 'se-nihss'], () => safe(o, () => {
@@ -206,7 +206,7 @@ export const renderers = {
   'thrive-stroke'(root) {
     note(root, 'THRIVE score: long-term outcome after ischemic stroke. Enter the baseline NIHSS and age, and mark the hypertension, diabetes, and atrial-fibrillation items. Total 0-9.');
     root.appendChild(field('Baseline NIHSS', 'tv-nihss', { min: 0, placeholder: 'e.g. 16' }));
-    root.appendChild(field('Age (years)', 'tv-age', { min: 0, placeholder: 'e.g. 78' }));
+    root.appendChild(field('Age (years)', 'tv-age', { max: 130, min: 0, placeholder: 'e.g. 78' }));
     root.appendChild(checkField('Hypertension -- +1', 'tv-htn'));
     root.appendChild(checkField('Diabetes mellitus -- +1', 'tv-dm'));
     root.appendChild(checkField('Atrial fibrillation -- +1', 'tv-af'));

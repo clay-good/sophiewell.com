@@ -591,9 +591,9 @@ export const renderers = {
 
   // spec-v12 §3.4.1 wave 12-4: FIB-4 Index (Sterling 2006).
   fib4(root) {
-    root.appendChild(field('Age (years)', 'fib4-age', { value: 55 }));
-    root.appendChild(field('AST (U/L)', 'fib4-ast', { value: 60 }));
-    root.appendChild(field('ALT (U/L)', 'fib4-alt', { value: 40 }));
+    root.appendChild(field('Age (years)', 'fib4-age', { min: 0, max: 130, value: 55 }));
+    root.appendChild(field('AST (U/L)', 'fib4-ast', { min: 0, value: 60 }));
+    root.appendChild(field('ALT (U/L)', 'fib4-alt', { min: 0, value: 40 }));
     root.appendChild(field('Platelets (x10^9/L)', 'fib4-plt', { value: 150 }));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
@@ -614,7 +614,7 @@ export const renderers = {
   rox(root) {
     root.appendChild(field('SpO2 (%)', 'rx-spo2', { value: 94 }));
     root.appendChild(field('FiO2 (decimal, e.g., 0.5)', 'rx-fio2', { value: 0.5 }));
-    root.appendChild(field('Respiratory rate (breaths/min)', 'rx-rr', { value: 24 }));
+    root.appendChild(field('Respiratory rate (breaths/min)', 'rx-rr', { min: 0, value: 24 }));
     root.appendChild(field('Hours after HFNC start (2 / 6 / 12)', 'rx-hr', { value: 12 }));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
@@ -663,7 +663,7 @@ export const renderers = {
 
   // spec-v12 §3.4.2 wave 12-4: APRI (Wai 2003).
   apri(root) {
-    root.appendChild(field('AST (U/L)', 'apri-ast', { value: 60 }));
+    root.appendChild(field('AST (U/L)', 'apri-ast', { min: 0, value: 60 }));
     root.appendChild(field('AST upper limit of normal (U/L)', 'apri-uln', { value: 40 }));
     root.appendChild(field('Platelets (x10^9/L)', 'apri-plt', { value: 150 }));
     const o = out(); root.appendChild(o);
@@ -740,7 +740,7 @@ export const renderers = {
   // spec-v15 §3.5.5 wave 15-5: BIG Score (Borgman 2011).
   big(root) {
     root.appendChild(field('Base deficit (mEq/L)', 'big-bd', { value: 0 }));
-    root.appendChild(field('INR', 'big-inr', { value: 1 }));
+    root.appendChild(field('INR', 'big-inr', { min: 0, value: 1 }));
     root.appendChild(field('GCS (3-15)', 'big-gcs', { value: 15 }));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {

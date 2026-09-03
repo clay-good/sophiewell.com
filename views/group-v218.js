@@ -138,7 +138,7 @@ export const renderers = {
     root.appendChild(check('Migration/relocation of pain to RLQ (+2)', 'aas-reloc'));
     root.appendChild(check('RLQ tenderness present', 'aas-tender'));
     root.appendChild(check('Female sex (16-49 years scores tenderness lower)', 'aas-female'));
-    root.appendChild(num('Age (years)', 'aas-age', { min: '0' }));
+    root.appendChild(num('Age (years)', 'aas-age', { max: 130, min: '0' }));
     root.appendChild(select('Guarding', 'aas-guard', [['0', 'None (0)'], ['2', 'Mild (2)'], ['4', 'Moderate or severe (4)']]));
     root.appendChild(num('WBC (×10⁹/L)', 'aas-wbc', { min: '0' }));
     root.appendChild(num('Neutrophil percentage (%)', 'aas-pmn', { min: '0', max: '100' }));

@@ -53,9 +53,9 @@ export const renderers = {
   oasis(root) {
     note(root, 'OASIS (Johnson 2013): a 10-variable ICU severity score needing no lab panel. Banded per the published grid to 0–75; the total drives predicted in-hospital mortality. A low-input alternative to APACHE II / SAPS II.');
     root.appendChild(num('Pre-ICU length of stay (hours)', 'oasis-preicu', { min: '0' }));
-    root.appendChild(num('Age (years)', 'oasis-age', { min: '0' }));
+    root.appendChild(num('Age (years)', 'oasis-age', { max: 130, min: '0' }));
     root.appendChild(num('Glasgow Coma Scale (3–15)', 'oasis-gcs', { min: '3', max: '15' }));
-    root.appendChild(num('Heart rate (bpm)', 'oasis-hr', { min: '0' }));
+    root.appendChild(num('Heart rate (bpm)', 'oasis-hr', { max: 400, min: '0' }));
     root.appendChild(num('Mean arterial pressure (mmHg)', 'oasis-map', { min: '0' }));
     root.appendChild(num('Respiratory rate (breaths/min)', 'oasis-rr', { min: '0' }));
     root.appendChild(num('Temperature (°C)', 'oasis-temp', { min: '20', max: '45' }));
@@ -81,8 +81,8 @@ export const renderers = {
   lods(root) {
     note(root, 'LODS (Le Gall 1996): a six-system organ-dysfunction model. The worst first-24-hour value in each system maps to 0/1/3/5; total 0–22 drives predicted hospital mortality. A calibrated complement to SOFA.');
     root.appendChild(num('Glasgow Coma Scale (3–15)', 'lods-gcs', { min: '3', max: '15' }));
-    root.appendChild(num('Heart rate (bpm)', 'lods-hr', { min: '0' }));
-    root.appendChild(num('Systolic BP (mmHg)', 'lods-sbp', { min: '0' }));
+    root.appendChild(num('Heart rate (bpm)', 'lods-hr', { max: 400, min: '0' }));
+    root.appendChild(num('Systolic BP (mmHg)', 'lods-sbp', { max: 300, min: '0' }));
     root.appendChild(num('BUN (mg/dL)', 'lods-bun', { min: '0' }));
     root.appendChild(num('Creatinine (mg/dL)', 'lods-creat', { min: '0' }));
     root.appendChild(num('Urine output (L / day)', 'lods-urine', { min: '0' }));
@@ -110,7 +110,7 @@ export const renderers = {
   // ----- 2.4 delta-gap -------------------------------------------------------
   'delta-gap'(root) {
     note(root, 'Delta gap / delta ratio (Wrenn 1990; Rastegar 2007): flags a mixed metabolic disorder behind a high anion gap. Delta ratio = (AG − normal AG) / (normal HCO₃ − HCO₃).');
-    root.appendChild(num('Sodium (mEq/L)', 'dg-na', { min: '0' }));
+    root.appendChild(num('Sodium (mEq/L)', 'dg-na', { max: 200, min: '0' }));
     root.appendChild(num('Chloride (mEq/L)', 'dg-cl', { min: '0' }));
     root.appendChild(num('Bicarbonate (mEq/L)', 'dg-hco3', { min: '0' }));
     root.appendChild(num('Albumin (g/dL) — optional, for corrected AG', 'dg-alb', { min: '0' }));
@@ -130,7 +130,7 @@ export const renderers = {
   // ----- 2.5 apps-ards -------------------------------------------------------
   'apps-ards'(root) {
     note(root, 'APPS score (Villar 2016): a simple ARDS outcome stratifier from three bedside variables at 24 h — age, PaO₂/FiO₂, and plateau pressure. Total 3–9; low 3–4, intermediate 5–7, high 8–9.');
-    root.appendChild(num('Age (years)', 'apps-age', { min: '0' }));
+    root.appendChild(num('Age (years)', 'apps-age', { max: 130, min: '0' }));
     root.appendChild(num('PaO₂/FiO₂ ratio (mmHg)', 'apps-pf', { min: '0' }));
     root.appendChild(num('Plateau pressure (cmH₂O)', 'apps-plateau', { min: '0' }));
     const o = out(); root.appendChild(o);

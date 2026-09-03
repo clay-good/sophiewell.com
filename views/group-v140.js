@@ -222,7 +222,7 @@ export const renderers = {
   // ----- 2.5 koff-bladder-capacity --------------------------------------
   'koff-bladder-capacity'(root) {
     note(root, 'Koff expected bladder capacity (Koff 1983): expected bladder capacity (mL) = (age in years + 2) × 30. The standard reference estimate for children roughly 1–12 years.');
-    root.appendChild(field('Age (years)', 'kb-age', { step: '0.5', min: 0, placeholder: 'e.g. 4' }));
+    root.appendChild(field('Age (years)', 'kb-age', { max: 130, step: '0.5', min: 0, placeholder: 'e.g. 4' }));
     const o = out(); root.appendChild(o);
     wire(['kb-age'], () => safe(o, () => {
       const r = M.koffBladderCapacity({ age: optNum('kb-age') });

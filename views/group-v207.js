@@ -81,9 +81,9 @@ export const renderers = {
   // ----- 2.5 rems ------------------------------------------------------------
   rems(root) {
     note(root, 'Rapid Emergency Medicine Score (Olsson 2004): an abbreviated-APACHE-II in-hospital-mortality score needing no labs — age, MAP, heart rate, respiratory rate, SpO₂, and GCS (age 0–6, the five physiologic variables 0–4 each; total 0–26). Risk: low < 6, medium 6–13, high > 13.');
-    root.appendChild(num('Age (years)', 'rems-age', { min: '0' }));
+    root.appendChild(num('Age (years)', 'rems-age', { max: 130, min: '0' }));
     root.appendChild(num('Mean arterial pressure (mmHg)', 'rems-map', { min: '0' }));
-    root.appendChild(num('Heart rate (bpm)', 'rems-hr', { min: '0' }));
+    root.appendChild(num('Heart rate (bpm)', 'rems-hr', { max: 400, min: '0' }));
     root.appendChild(num('Respiratory rate (breaths/min)', 'rems-rr', { min: '0' }));
     root.appendChild(num('SpO₂ (%)', 'rems-spo2', { min: '0', max: '100' }));
     root.appendChild(num('Glasgow Coma Scale (3–15)', 'rems-gcs', { min: '3', max: '15' }));
@@ -102,9 +102,9 @@ export const renderers = {
   'cart-score'(root) {
     note(root, 'Cardiac Arrest Risk Triage (Churpek 2012): a vital-sign early-warning model from four ward observations — respiratory rate, heart rate, diastolic BP, and age — banded to 0–57. A score > 20 marks markedly elevated risk of ward cardiac arrest within 48 hours; it outperformed MEWS in its derivation.');
     root.appendChild(num('Respiratory rate (breaths/min)', 'cart-rr', { min: '0' }));
-    root.appendChild(num('Heart rate (bpm)', 'cart-hr', { min: '0' }));
+    root.appendChild(num('Heart rate (bpm)', 'cart-hr', { max: 400, min: '0' }));
     root.appendChild(num('Diastolic blood pressure (mmHg)', 'cart-dbp', { min: '0' }));
-    root.appendChild(num('Age (years)', 'cart-age', { min: '0' }));
+    root.appendChild(num('Age (years)', 'cart-age', { max: 130, min: '0' }));
     const o = out(); root.appendChild(o);
     const ids = ['cart-rr', 'cart-hr', 'cart-dbp', 'cart-age'];
     wire(ids, () => safe(o, () => {

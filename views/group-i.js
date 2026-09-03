@@ -141,7 +141,7 @@ export const renderers = {
       { value: 'yes',  text: 'Yes (breathing returned)' },
       { value: 'no',   text: 'No (apnea persists)' },
     ]));
-    root.appendChild(field('Respiratory rate (breaths/min)', 'st-rr', { placeholder: '24' }));
+    root.appendChild(field('Respiratory rate (breaths/min)', 'st-rr', { min: 0, placeholder: '24' }));
     root.appendChild(checkbox('Radial pulse present and capillary refill < 2s', 'st-perf'));
     root.appendChild(checkbox('Patient follows simple commands', 'st-cmd'));
     const o = out(); root.appendChild(o);
@@ -174,7 +174,7 @@ export const renderers = {
       { value: 'yes',  text: 'Yes (breathing returned)' },
       { value: 'no',   text: 'No (apnea persists)' },
     ]));
-    root.appendChild(field('Respiratory rate (breaths/min)', 'js-rr', { placeholder: '30' }));
+    root.appendChild(field('Respiratory rate (breaths/min)', 'js-rr', { min: 0, placeholder: '30' }));
     root.appendChild(checkbox('Palpable peripheral pulse', 'js-pulse'));
     root.appendChild(checkbox('AVPU appropriate (A, V, or appropriate P)', 'js-avpu'));
     const o = out(); root.appendChild(o);

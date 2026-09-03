@@ -83,7 +83,7 @@ export const renderers = {
     root.appendChild(field('Ferritin (ng/mL)', 'hs-fer', { placeholder: 'e.g. 4000', inputmode: 'decimal' }));
     root.appendChild(field('Triglyceride (mmol/L)', 'hs-tg', { placeholder: 'e.g. 3', inputmode: 'decimal' }));
     root.appendChild(field('Fibrinogen (g/L)', 'hs-fib', { placeholder: 'e.g. 2', inputmode: 'decimal' }));
-    root.appendChild(field('AST (U/L)', 'hs-ast', { placeholder: 'e.g. 100', inputmode: 'decimal' }));
+    root.appendChild(field('AST (U/L)', 'hs-ast', { min: 0, placeholder: 'e.g. 100', inputmode: 'decimal' }));
     root.appendChild(selectField('Hemophagocytosis on marrow aspirate', 'hs-hemo', YESNO));
     const o = out(); root.appendChild(o);
     const ids = ['hs-immuno', 'hs-temp', 'hs-temp-unit', 'hs-organ', 'hs-cyto', 'hs-fer', 'hs-tg', 'hs-fib', 'hs-ast', 'hs-hemo'];
@@ -117,9 +117,9 @@ export const renderers = {
       { value: 'very-poor', text: 'Very poor' },
     ]));
     root.appendChild(field('Bone-marrow blasts (%)', 'ir-blasts', { placeholder: 'e.g. 7', inputmode: 'decimal' }));
-    root.appendChild(field('Hemoglobin (g/dL)', 'ir-hgb', { placeholder: 'e.g. 9', inputmode: 'decimal' }));
-    root.appendChild(field('Platelets (×10⁹/L)', 'ir-plt', { placeholder: 'e.g. 150', inputmode: 'decimal' }));
-    root.appendChild(field('Absolute neutrophil count (×10⁹/L)', 'ir-anc', { placeholder: 'e.g. 1.5', inputmode: 'decimal' }));
+    root.appendChild(field('Hemoglobin (g/dL)', 'ir-hgb', { min: 0, max: 25, placeholder: 'e.g. 9', inputmode: 'decimal' }));
+    root.appendChild(field('Platelets (×10⁹/L)', 'ir-plt', { min: 0, placeholder: 'e.g. 150', inputmode: 'decimal' }));
+    root.appendChild(field('Absolute neutrophil count (×10⁹/L)', 'ir-anc', { min: 0, placeholder: 'e.g. 1.5', inputmode: 'decimal' }));
     const o = out(); root.appendChild(o);
     wire(['ir-cyto', 'ir-blasts', 'ir-hgb', 'ir-plt', 'ir-anc'], () => safe(o, () => {
       const r = M.ipssrMds({
@@ -202,7 +202,7 @@ export const renderers = {
 
   // ----- 2.5 sokal-cml ---------------------------------------------------
   'sokal-cml'(root) {
-    root.appendChild(field('Age (years)', 'sk-age', { placeholder: 'e.g. 50', inputmode: 'numeric' }));
+    root.appendChild(field('Age (years)', 'sk-age', { min: 0, max: 130, placeholder: 'e.g. 50', inputmode: 'numeric' }));
     root.appendChild(field('Spleen (cm below costal margin)', 'sk-spleen', { placeholder: 'e.g. 5', inputmode: 'decimal' }));
     root.appendChild(field('Platelet count (×10⁹/L) — must be > 0', 'sk-plt', { placeholder: 'e.g. 300', inputmode: 'decimal' }));
     root.appendChild(field('Peripheral-blood blasts (%)', 'sk-blasts', { placeholder: 'e.g. 2', inputmode: 'decimal' }));

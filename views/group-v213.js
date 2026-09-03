@@ -113,7 +113,7 @@ export const renderers = {
   // ----- 2.4 baux-score ------------------------------------------------------
   'baux-score'(root) {
     note(root, 'Baux score (Baux 1961): burn mortality estimate = age + burned %TBSA. A score near 100 was near-universally fatal in the pre-modern era; modern burn care shifts survivable thresholds higher.');
-    root.appendChild(num('Age (years)', 'bx-age', { min: '0' }));
+    root.appendChild(num('Age (years)', 'bx-age', { max: 130, min: '0' }));
     root.appendChild(num('Burned total body surface area (%TBSA, 0-100)', 'bx-tbsa', { min: '0', max: '100' }));
     const o = out(); root.appendChild(o);
     const ids = ['bx-age', 'bx-tbsa'];
@@ -129,7 +129,7 @@ export const renderers = {
   // ----- 2.5 revised-baux ----------------------------------------------------
   'revised-baux'(root) {
     note(root, 'Revised Baux score (Osler 2010): age + burned %TBSA + 17 if inhalation injury is present. The LD50 in the best modern burn units is a score of ~130-140. Reports the classic Baux too.');
-    root.appendChild(num('Age (years)', 'rbx-age', { min: '0' }));
+    root.appendChild(num('Age (years)', 'rbx-age', { max: 130, min: '0' }));
     root.appendChild(num('Burned total body surface area (%TBSA, 0-100)', 'rbx-tbsa', { min: '0', max: '100' }));
     root.appendChild(check('Inhalation injury present (+17)', 'rbx-inh'));
     const o = out(); root.appendChild(o);

@@ -101,7 +101,7 @@ export const renderers = {
     root.appendChild(selectField('Coagulation — INR', 'cl-coag', OF3('< 2.0', '2.0 to < 2.5', '≥ 2.5')));
     root.appendChild(selectField('Circulation — MAP / pressors', 'cl-circ', OF3('MAP ≥ 70', 'MAP < 70', 'vasopressors')));
     root.appendChild(selectField('Respiratory — PaO₂/FiO₂', 'cl-resp', OF3('> 300', '> 200 to ≤ 300', '≤ 200')));
-    root.appendChild(field('Age (years)', 'cl-age', { step: '1', min: 0, placeholder: 'e.g. 55' }));
+    root.appendChild(field('Age (years)', 'cl-age', { max: 130, step: '1', min: 0, placeholder: 'e.g. 55' }));
     root.appendChild(field('White-cell count (×10⁹/L)', 'cl-wbc', { step: '0.1', min: 0, placeholder: 'e.g. 12' }));
     const o = out(); root.appendChild(o);
     wire(['cl-liver', 'cl-kidney', 'cl-brain', 'cl-coag', 'cl-circ', 'cl-resp', 'cl-age', 'cl-wbc'], () => safe(o, () => {
@@ -124,7 +124,7 @@ export const renderers = {
   // ----- 2.3 gahs -------------------------------------------------------
   gahs(root) {
     note(root, 'Glasgow Alcoholic Hepatitis Score (Forrest 2005): five banded items. Note the UK/SI units — blood urea in mmol/L and bilirubin in µmol/L (not BUN or mg/dL). Total 5-12; ≥ 9 marks higher 28/84-day mortality and the corticosteroid-benefit cohort.');
-    root.appendChild(field('Age (years)', 'ga-age', { step: '1', min: 0, placeholder: 'e.g. 55' }));
+    root.appendChild(field('Age (years)', 'ga-age', { max: 130, step: '1', min: 0, placeholder: 'e.g. 55' }));
     root.appendChild(field('White-cell count (×10⁹/L)', 'ga-wbc', { step: '0.1', min: 0, placeholder: 'e.g. 16' }));
     root.appendChild(field('Blood urea (mmol/L)', 'ga-urea', { step: '0.1', min: 0, placeholder: 'e.g. 8' }));
     root.appendChild(field('INR (or PT ratio)', 'ga-inr', { step: '0.1', min: 0, placeholder: 'e.g. 2.2' }));

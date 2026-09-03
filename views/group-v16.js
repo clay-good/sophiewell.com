@@ -115,7 +115,7 @@ export const renderers = {
 
   // ----- 2.3 timi-stemi ---------------------------------------------------
   'timi-stemi'(root) {
-    root.appendChild(field('Age (years)', 'ts-age', { placeholder: 'e.g. 70' }));
+    root.appendChild(field('Age (years)', 'ts-age', { min: 0, max: 130, placeholder: 'e.g. 70' }));
     root.appendChild(selectField('History of diabetes, hypertension, or angina', 'ts-hist', YESNO));
     root.appendChild(selectField('Systolic BP < 100 mmHg', 'ts-sbp', YESNO));
     root.appendChild(selectField('Heart rate > 100 bpm', 'ts-hr', YESNO));
@@ -173,7 +173,7 @@ export const renderers = {
 
   // ----- 2.5 cardiac-power-output ----------------------------------------
   'cardiac-power-output'(root) {
-    root.appendChild(field('Mean arterial pressure (mmHg)', 'cp-map', { placeholder: 'e.g. 80' }));
+    root.appendChild(field('Mean arterial pressure (mmHg)', 'cp-map', { min: 0, placeholder: 'e.g. 80' }));
     root.appendChild(field('Cardiac output (L/min)', 'cp-co', { placeholder: 'e.g. 5' }));
     const o = out(); root.appendChild(o);
     wire(['cp-map', 'cp-co'], () => safe(o, () => {

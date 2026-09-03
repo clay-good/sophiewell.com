@@ -246,11 +246,11 @@ export const renderers = {
   // ----- 2.7 pelod2 ------------------------------------------------------
   pelod2(root) {
     root.appendChild(el('p', { class: 'muted', text: 'MAP and creatinine cutoffs are applied automatically from the entered age.' }));
-    root.appendChild(field('Age (months)', 'p2-age', { placeholder: 'e.g. 24' }));
-    root.appendChild(field('Glasgow Coma Scale (3-15)', 'p2-gcs', { placeholder: 'e.g. 12' }));
+    root.appendChild(field('Age (months)', 'p2-age', { min: 0, max: 300, placeholder: 'e.g. 24' }));
+    root.appendChild(field('Glasgow Coma Scale (3-15)', 'p2-gcs', { min: 3, max: 15, placeholder: 'e.g. 12' }));
     root.appendChild(checkField('Both pupils fixed', 'p2-pupils'));
     root.appendChild(unitField('Lactate', 'p2-lactate', LACTATE_UNITS, { placeholder: 'e.g. 6' }));
-    root.appendChild(field('Mean arterial pressure (mmHg)', 'p2-map', { placeholder: 'e.g. 50' }));
+    root.appendChild(field('Mean arterial pressure (mmHg)', 'p2-map', { min: 0, placeholder: 'e.g. 50' }));
     root.appendChild(field('Creatinine (umol/L)', 'p2-creat', { placeholder: 'e.g. 60' }));
     root.appendChild(field('PaO2/FiO2 (mmHg)', 'p2-pf', { placeholder: 'e.g. 300' }));
     root.appendChild(field('PaCO2 (mmHg)', 'p2-paco2', { placeholder: 'e.g. 40' }));
@@ -282,15 +282,15 @@ export const renderers = {
   // ----- 2.8 psofa -------------------------------------------------------
   psofa(root) {
     root.appendChild(el('p', { class: 'muted', text: 'Cardiovascular and renal cutoffs are applied automatically from the entered age.' }));
-    root.appendChild(field('Age (months)', 'ps-age', { placeholder: 'e.g. 24' }));
+    root.appendChild(field('Age (months)', 'ps-age', { min: 0, max: 300, placeholder: 'e.g. 24' }));
     root.appendChild(field('PaO2/FiO2 (mmHg)', 'ps-pf', { placeholder: 'e.g. 250' }));
     root.appendChild(checkField('Mechanically ventilated', 'ps-vent'));
     root.appendChild(field('Platelets (x10^3/uL)', 'ps-plt', { placeholder: 'e.g. 120' }));
     root.appendChild(unitField('Bilirubin', 'ps-bili', BILIRUBIN_UNITS, { placeholder: 'e.g. 1.5' }));
-    root.appendChild(field('Mean arterial pressure (mmHg)', 'ps-map', { placeholder: 'e.g. 50' }));
+    root.appendChild(field('Mean arterial pressure (mmHg)', 'ps-map', { min: 0, placeholder: 'e.g. 50' }));
     root.appendChild(rangeField('Vasoactive grade (0 none .. 4 high-dose)', 'ps-vaso', 0, 4));
-    root.appendChild(field('Glasgow Coma Scale (3-15)', 'ps-gcs', { placeholder: 'e.g. 13' }));
-    root.appendChild(field('Creatinine (mg/dL)', 'ps-creat', { placeholder: 'e.g. 0.7' }));
+    root.appendChild(field('Glasgow Coma Scale (3-15)', 'ps-gcs', { min: 3, max: 15, placeholder: 'e.g. 13' }));
+    root.appendChild(field('Creatinine (mg/dL)', 'ps-creat', { min: 0, placeholder: 'e.g. 0.7' }));
     const o = out(); root.appendChild(o);
     const deriv = renderDerivation(META.psofa);
     if (deriv) root.appendChild(deriv);
@@ -386,18 +386,18 @@ export const renderers = {
   apache2(root) {
     root.appendChild(el('p', { class: 'muted', text: 'Enter the worst value in the first 24 ICU hours for each variable.' }));
     root.appendChild(unitField('Temperature', 'ap-temp', TEMP_UNITS, { placeholder: 'e.g. 39' }));
-    root.appendChild(field('Mean arterial pressure (mmHg)', 'ap-map', { placeholder: 'e.g. 60' }));
-    root.appendChild(field('Heart rate (bpm)', 'ap-hr', { placeholder: 'e.g. 120' }));
+    root.appendChild(field('Mean arterial pressure (mmHg)', 'ap-map', { min: 0, placeholder: 'e.g. 60' }));
+    root.appendChild(field('Heart rate (bpm)', 'ap-hr', { min: 0, max: 400, placeholder: 'e.g. 120' }));
     root.appendChild(field('Respiratory rate (/min)', 'ap-rr', { placeholder: 'e.g. 30' }));
     root.appendChild(field('Oxygenation: PaO2 (mmHg)', 'ap-oxy', { placeholder: 'e.g. 65' }));
-    root.appendChild(field('Arterial pH', 'ap-ph', { placeholder: 'e.g. 7.3' }));
+    root.appendChild(field('Arterial pH', 'ap-ph', { min: 0, placeholder: 'e.g. 7.3' }));
     root.appendChild(field('Serum sodium (mmol/L)', 'ap-na', { placeholder: 'e.g. 150' }));
     root.appendChild(field('Serum potassium (mmol/L)', 'ap-k', { placeholder: 'e.g. 5.6' }));
-    root.appendChild(field('Serum creatinine (mg/dL)', 'ap-creat', { placeholder: 'e.g. 2' }));
-    root.appendChild(field('Hematocrit (%)', 'ap-hct', { placeholder: 'e.g. 48' }));
+    root.appendChild(field('Serum creatinine (mg/dL)', 'ap-creat', { min: 0, placeholder: 'e.g. 2' }));
+    root.appendChild(field('Hematocrit (%)', 'ap-hct', { min: 0, max: 100, placeholder: 'e.g. 48' }));
     root.appendChild(field('WBC (x10^3/uL)', 'ap-wbc', { placeholder: 'e.g. 18' }));
-    root.appendChild(field('Glasgow Coma Scale (3-15)', 'ap-gcs', { placeholder: 'e.g. 13' }));
-    root.appendChild(field('Age (years)', 'ap-age', { placeholder: 'e.g. 60' }));
+    root.appendChild(field('Glasgow Coma Scale (3-15)', 'ap-gcs', { min: 3, max: 15, placeholder: 'e.g. 13' }));
+    root.appendChild(field('Age (years)', 'ap-age', { min: 0, max: 130, placeholder: 'e.g. 60' }));
     root.appendChild(checkField('Severe chronic-organ insufficiency / immunocompromise', 'ap-chronic'));
     root.appendChild(checkField('Nonoperative or emergency postoperative admission', 'ap-nonop'));
     const o = out(); root.appendChild(o);

@@ -66,13 +66,13 @@ const ord = (max, labels) => Array.from({ length: max + 1 }, (_, i) => ({ value:
 export const renderers = {
   // ----- 2.1 nafld-fibrosis ----------------------------------------------
   'nafld-fibrosis'(root) {
-    root.appendChild(field('Age (years)', 'nf-age', { placeholder: 'e.g. 60', inputmode: 'numeric' }));
-    root.appendChild(field('BMI (kg/m²)', 'nf-bmi', { placeholder: 'e.g. 30', inputmode: 'decimal' }));
+    root.appendChild(field('Age (years)', 'nf-age', { min: 0, max: 130, placeholder: 'e.g. 60', inputmode: 'numeric' }));
+    root.appendChild(field('BMI (kg/m²)', 'nf-bmi', { min: 0, placeholder: 'e.g. 30', inputmode: 'decimal' }));
     root.appendChild(selectField('Impaired fasting glucose or diabetes', 'nf-ifg', YESNO));
-    root.appendChild(field('AST (U/L)', 'nf-ast', { placeholder: 'e.g. 60', inputmode: 'decimal' }));
+    root.appendChild(field('AST (U/L)', 'nf-ast', { min: 0, placeholder: 'e.g. 60', inputmode: 'decimal' }));
     root.appendChild(field('ALT (U/L) — must be > 0', 'nf-alt', { placeholder: 'e.g. 40', inputmode: 'decimal' }));
-    root.appendChild(field('Platelet count (×10⁹/L)', 'nf-plt', { placeholder: 'e.g. 200', inputmode: 'decimal' }));
-    root.appendChild(field('Albumin (g/dL)', 'nf-alb', { placeholder: 'e.g. 4.0', inputmode: 'decimal' }));
+    root.appendChild(field('Platelet count (×10⁹/L)', 'nf-plt', { min: 0, placeholder: 'e.g. 200', inputmode: 'decimal' }));
+    root.appendChild(field('Albumin (g/dL)', 'nf-alb', { min: 0, placeholder: 'e.g. 4.0', inputmode: 'decimal' }));
     const o = out(); root.appendChild(o);
     wire(['nf-age', 'nf-bmi', 'nf-ifg', 'nf-ast', 'nf-alt', 'nf-plt', 'nf-alb'], () => safe(o, () => {
       const r = M.nafldFibrosis({
@@ -130,8 +130,8 @@ export const renderers = {
       { value: 'present', text: 'Present' },
     ]));
     root.appendChild(unitField('Temperature', 'tw-temp', TEMP_UNITS, { placeholder: 'e.g. 38' }));
-    root.appendChild(field('Heart rate (bpm)', 'tw-hr', { placeholder: 'e.g. 100', inputmode: 'numeric' }));
-    root.appendChild(field('Hemoglobin (g/dL)', 'tw-hgb', { placeholder: 'e.g. 9.5', inputmode: 'decimal' }));
+    root.appendChild(field('Heart rate (bpm)', 'tw-hr', { min: 0, max: 400, placeholder: 'e.g. 100', inputmode: 'numeric' }));
+    root.appendChild(field('Hemoglobin (g/dL)', 'tw-hgb', { min: 0, max: 25, placeholder: 'e.g. 9.5', inputmode: 'decimal' }));
     root.appendChild(field('ESR (mm/h)', 'tw-esr', { placeholder: 'e.g. 40', inputmode: 'decimal' }));
     const o = out(); root.appendChild(o);
     wire(['tw-stools', 'tw-bleed', 'tw-temp', 'tw-temp-unit', 'tw-hr', 'tw-hgb', 'tw-esr'], () => safe(o, () => {

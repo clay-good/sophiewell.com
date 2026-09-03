@@ -68,7 +68,7 @@ export const renderers = {
   },
   'age-adjusted-d-dimer'(root) {
     note(root, 'Age-adjusted D-dimer (ADJUST-PE, JAMA 2014): cutoff = 500 ug/L up to age 50, else age x 10 ug/L. Use only with a non-high pretest probability.');
-    root.appendChild(num('Age (years)', 'add-age', { min: '0' }));
+    root.appendChild(num('Age (years)', 'add-age', { max: 130, min: '0' }));
     root.appendChild(num('D-dimer (ug/L FEU)', 'add-dd', { min: '0' }));
     const o = out(); root.appendChild(o);
     wire(['add-age', 'add-dd'], () => safe(o, () => {
@@ -78,8 +78,8 @@ export const renderers = {
   },
   'deurenberg-body-fat'(root) {
     note(root, 'Deurenberg body-fat % (Br J Nutr 1991) = 1.20 x BMI + 0.23 x age - 10.8 x sex - 5.4 (male = 1, female = 0). Categories per ACE. A BMI-based estimate, not a measured composition.');
-    root.appendChild(num('BMI (kg/m^2)', 'db-bmi', { min: '0' }));
-    root.appendChild(num('Age (years)', 'db-age', { min: '0' }));
+    root.appendChild(num('BMI (kg/m^2)', 'db-bmi', { max: 80, min: '0' }));
+    root.appendChild(num('Age (years)', 'db-age', { max: 130, min: '0' }));
     root.appendChild(select('Sex', 'db-sex', [['male', 'Male'], ['female', 'Female']]));
     const o = out(); root.appendChild(o);
     wire(['db-bmi', 'db-age', 'db-sex'], () => safe(o, () => {

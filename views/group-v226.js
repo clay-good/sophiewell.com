@@ -46,7 +46,7 @@ function render(o, r, valueLabel, value) {
 export const renderers = {
   'watson-tbw'(root) {
     note(root, 'Watson total body water (Watson 1980): sex-specific equation from age, height, and weight. Feeds sodium and dosing calculations.');
-    root.appendChild(num('Age (years)', 'wt-age', { min: '0' }));
+    root.appendChild(num('Age (years)', 'wt-age', { max: 130, min: '0' }));
     root.appendChild(num('Height (cm)', 'wt-ht', { min: '0' }));
     root.appendChild(num('Weight (kg)', 'wt-wt', { min: '0' }));
     root.appendChild(check('Female', 'wt-female'));
@@ -59,7 +59,7 @@ export const renderers = {
   },
   'salazar-corcoran'(root) {
     note(root, 'Salazar-Corcoran CrCl (Salazar & Corcoran 1988): estimate for obese patients where Cockcroft-Gault overestimates.');
-    root.appendChild(num('Age (years)', 'sc-age', { min: '0' }));
+    root.appendChild(num('Age (years)', 'sc-age', { max: 130, min: '0' }));
     root.appendChild(num('Weight (kg)', 'sc-wt', { min: '0' }));
     root.appendChild(num('Height (cm)', 'sc-ht', { min: '0' }));
     root.appendChild(num('Serum creatinine (mg/dL)', 'sc-scr', { min: '0' }));
@@ -74,7 +74,7 @@ export const renderers = {
   'epvs'(root) {
     note(root, 'Estimated plasma volume status (Duarte 2015): ePVS = 100 × (1 − hematocrit fraction) / hemoglobin. Higher = more congestion.');
     root.appendChild(num('Hematocrit (%)', 'ep-hct', { min: '0', max: '100' }));
-    root.appendChild(num('Hemoglobin (g/dL)', 'ep-hb', { min: '0' }));
+    root.appendChild(num('Hemoglobin (g/dL)', 'ep-hb', { max: 25, min: '0' }));
     const o = out(); root.appendChild(o);
     wire(['ep-hct', 'ep-hb'], () => safe(o, () => {
       const r = M.epvs({ hematocrit: val('ep-hct'), hemoglobin: val('ep-hb') });

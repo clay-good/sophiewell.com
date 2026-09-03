@@ -75,7 +75,7 @@ export const renderers = {
   // ----- 2.2 nccn-ipi ---------------------------------------------------
   'nccn-ipi'(root) {
     note(root, 'NCCN-IPI for DLBCL (Zhou 2014): a banded, rituximab-era IPI. Age >40–60 = 1, >60–75 = 2, >75 = 3; LDH normalized ratio >1–3× = 1, >3× = 2; stage III–IV = 1; ECOG ≥2 = 1; major-site extranodal (marrow, CNS, liver/GI, lung) = 1. Total 0–8 → low (0–1), low-int (2–3), high-int (4–5), high (6–8). 5-yr OS ~96 / 82 / 64 / 33%. Cross-links the R-IPI.');
-    root.appendChild(field('Age (years)', 'nccn-age', { step: '1', min: 0, placeholder: 'e.g. 70' }));
+    root.appendChild(field('Age (years)', 'nccn-age', { max: 130, step: '1', min: 0, placeholder: 'e.g. 70' }));
     root.appendChild(field('LDH normalized ratio (measured ÷ upper limit of normal)', 'nccn-ldh', { step: '0.1', min: 0, placeholder: 'e.g. 2.5' }));
     root.appendChild(selectField('Ann Arbor stage III–IV?', 'nccn-stage', YN));
     root.appendChild(selectField('ECOG performance status ≥ 2?', 'nccn-ecog', YN));
@@ -98,7 +98,7 @@ export const renderers = {
     root.appendChild(selectField('Systemic (B) symptoms?', 'gelf-bsymp', YN));
     root.appendChild(selectField('Symptomatic splenomegaly?', 'gelf-spleen', YN));
     root.appendChild(selectField('Pleural or peritoneal effusion?', 'gelf-effusion', YN));
-    root.appendChild(field('Hemoglobin (g/dL)', 'gelf-hgb', { step: '0.1', min: 0, placeholder: 'e.g. 12' }));
+    root.appendChild(field('Hemoglobin (g/dL)', 'gelf-hgb', { max: 25, step: '0.1', min: 0, placeholder: 'e.g. 12' }));
     root.appendChild(field('Platelet count (×10⁹/L)', 'gelf-plt', { step: '1', min: 0, placeholder: 'e.g. 220' }));
     root.appendChild(selectField('Leukemic phase (> 5.0 ×10⁹/L circulating malignant cells)?', 'gelf-leuk', YN));
     const o = out(); root.appendChild(o);
@@ -115,9 +115,9 @@ export const renderers = {
   'hodgkin-ips'(root) {
     note(root, 'Hasenclever IPS for advanced Hodgkin lymphoma (Hasenclever & Diehl 1998): seven adverse factors, one each — albumin <4 g/dL, hemoglobin <10.5 g/dL, male sex, age ≥45, stage IV, WBC ≥15 ×10⁹/L, lymphocytopenia (<600/µL or <8% of WBC). Each factor lowers 5-yr freedom from progression ~7–8% (~84% at 0 down to ~42% at ≥5). Cross-links FLIPI and the R-IPI.');
     root.appendChild(field('Serum albumin (g/dL)', 'hips-alb', { step: '0.1', min: 0, placeholder: 'e.g. 3.5' }));
-    root.appendChild(field('Hemoglobin (g/dL)', 'hips-hgb', { step: '0.1', min: 0, placeholder: 'e.g. 10' }));
+    root.appendChild(field('Hemoglobin (g/dL)', 'hips-hgb', { max: 25, step: '0.1', min: 0, placeholder: 'e.g. 10' }));
     root.appendChild(selectField('Male sex?', 'hips-male', YN));
-    root.appendChild(field('Age (years)', 'hips-age', { step: '1', min: 0, placeholder: 'e.g. 48' }));
+    root.appendChild(field('Age (years)', 'hips-age', { max: 130, step: '1', min: 0, placeholder: 'e.g. 48' }));
     root.appendChild(selectField('Ann Arbor stage IV?', 'hips-stage', YN));
     root.appendChild(field('WBC (×10⁹/L)', 'hips-wbc', { step: '0.1', min: 0, placeholder: 'e.g. 16' }));
     root.appendChild(field('Lymphocyte count (cells/µL)', 'hips-lymphct', { step: '1', min: 0, placeholder: 'e.g. 500' }));

@@ -39,7 +39,7 @@ export const renderers = {
   'cmi'(root) {
     note(root, 'Cardiometabolic Index = (TG / HDL) x (waist / height) (Wakabayashi 2015). Higher marks a worse cardiometabolic profile. Enter TG and HDL in the same units, waist and height in the same units.');
     root.appendChild(num('Triglycerides (mg/dL)', 'cmi-tg', { min: '0' }));
-    root.appendChild(num('HDL cholesterol (mg/dL)', 'cmi-hdl', { min: '0' }));
+    root.appendChild(num('HDL cholesterol (mg/dL)', 'cmi-hdl', { max: 200, min: '0' }));
     root.appendChild(num('Waist circumference (cm)', 'cmi-waist', { min: '0' }));
     root.appendChild(num('Height (cm)', 'cmi-height', { min: '0' }));
     const o = out(); root.appendChild(o);

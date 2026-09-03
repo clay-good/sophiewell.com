@@ -111,7 +111,7 @@ export const renderers = {
   // ----- 2.2 ado-index -------------------------------------------------------
   'ado-index'(root) {
     note(root, 'ADO index (Puhan 2009): a primary-care-friendly COPD mortality index needing no 6-minute walk test — age, mMRC dyspnea, and FEV₁ % predicted; total 0–10. Higher scores predict higher 3-year all-cause mortality.');
-    root.appendChild(num('Age (years)', 'ado-age', { min: '0' }));
+    root.appendChild(num('Age (years)', 'ado-age', { max: 130, min: '0' }));
     root.appendChild(selectField('mMRC dyspnea grade', 'ado-mmrc', [
       { value: '0', text: '0 — breathless with strenuous exercise (+0)' },
       { value: '1', text: '1 — short of breath hurrying/slight hill (+0)' },

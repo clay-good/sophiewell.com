@@ -73,7 +73,7 @@ export const renderers = {
   // ----- 2.2 retic-index --------------------------------------------------
   'retic-index'(root) {
     root.appendChild(field('Reticulocyte (%)', 'ri-retic', { placeholder: 'e.g. 5' }));
-    root.appendChild(field('Hematocrit (%)', 'ri-hct', { placeholder: 'e.g. 30' }));
+    root.appendChild(field('Hematocrit (%)', 'ri-hct', { min: 0, max: 100, placeholder: 'e.g. 30' }));
     const o = out(); root.appendChild(o);
     wire(['ri-retic', 'ri-hct'], () => safe(o, () => {
       const r = V6.reticIndex({ reticPct: val('ri-retic'), hct: val('ri-hct') });
@@ -120,9 +120,9 @@ export const renderers = {
 
   // ----- 2.5 ldl-calc -----------------------------------------------------
   'ldl-calc'(root) {
-    root.appendChild(field('Total cholesterol (mg/dL)', 'ldl-tc', { placeholder: 'e.g. 200' }));
-    root.appendChild(field('HDL cholesterol (mg/dL)', 'ldl-hdl', { placeholder: 'e.g. 50' }));
-    root.appendChild(field('Triglycerides (mg/dL)', 'ldl-tg', { placeholder: 'e.g. 150' }));
+    root.appendChild(field('Total cholesterol (mg/dL)', 'ldl-tc', { min: 0, max: 600, placeholder: 'e.g. 200' }));
+    root.appendChild(field('HDL cholesterol (mg/dL)', 'ldl-hdl', { min: 0, max: 200, placeholder: 'e.g. 50' }));
+    root.appendChild(field('Triglycerides (mg/dL)', 'ldl-tg', { min: 0, placeholder: 'e.g. 150' }));
     const o = out(); root.appendChild(o);
     wire(['ldl-tc', 'ldl-hdl', 'ldl-tg'], () => safe(o, () => {
       const r = V6.ldlCalc({ totalChol: val('ldl-tc'), hdl: val('ldl-hdl'), tg: val('ldl-tg') });
@@ -151,7 +151,7 @@ export const renderers = {
 
   // ----- 2.7 cao2-do2 -----------------------------------------------------
   'cao2-do2'(root) {
-    root.appendChild(field('Hemoglobin (g/dL)', 'cao2-hb', { placeholder: 'e.g. 15' }));
+    root.appendChild(field('Hemoglobin (g/dL)', 'cao2-hb', { min: 0, max: 25, placeholder: 'e.g. 15' }));
     root.appendChild(field('SaO2 (%)', 'cao2-sao2', { placeholder: 'e.g. 98' }));
     root.appendChild(field('PaO2 (mmHg)', 'cao2-pao2', { placeholder: 'e.g. 100' }));
     root.appendChild(field('Cardiac output (L/min, optional for DO2)', 'cao2-co', { placeholder: 'optional' }));
@@ -242,7 +242,7 @@ export const renderers = {
       { value: 'M', text: 'Male (0.6)' },
       { value: 'F', text: 'Female (0.5)' },
     ]));
-    root.appendChild(field('Measured HCO3 (mEq/L)', 'abd-mhco3', { placeholder: 'e.g. 14' }));
+    root.appendChild(field('Measured HCO3 (mEq/L)', 'abd-mhco3', { min: 0, placeholder: 'e.g. 14' }));
     root.appendChild(field('Target HCO3 (mEq/L)', 'abd-thco3', { placeholder: 'e.g. 24' }));
     root.appendChild(field('Measured Na (mEq/L)', 'abd-mna', { placeholder: 'e.g. 120' }));
     root.appendChild(field('Target Na (mEq/L)', 'abd-tna', { placeholder: 'e.g. 135' }));
@@ -267,7 +267,7 @@ export const renderers = {
   // ----- 2.13 schwartz-egfr -----------------------------------------------
   'schwartz-egfr'(root) {
     root.appendChild(unitField('Height', 'se-ht', HEIGHT_UNITS, { placeholder: 'e.g. 100' }));
-    root.appendChild(field('Serum creatinine (mg/dL)', 'se-scr', { placeholder: 'e.g. 0.5' }));
+    root.appendChild(field('Serum creatinine (mg/dL)', 'se-scr', { min: 0, placeholder: 'e.g. 0.5' }));
     const o = out(); root.appendChild(o);
     wire(['se-ht', 'se-ht-unit', 'se-scr'], () => safe(o, () => {
       const r = V6.schwartzEgfr({ heightCm: unitNum('se-ht'), scr: val('se-scr') });

@@ -138,7 +138,7 @@ export const renderers = {
     root.appendChild(field('Measured serum osmolality (mOsm/kg)', 'ta-osm', { placeholder: 'e.g. 305' }));
     root.appendChild(field('Serum sodium (mEq/L)', 'ta-na', { placeholder: 'e.g. 140' }));
     root.appendChild(field('Glucose (mg/dL)', 'ta-glu', { placeholder: 'e.g. 90' }));
-    root.appendChild(field('BUN (mg/dL)', 'ta-bun', { placeholder: 'e.g. 14' }));
+    root.appendChild(field('BUN (mg/dL)', 'ta-bun', { min: 0, placeholder: 'e.g. 14' }));
     root.appendChild(field('Serum ethanol (mg/dL, optional)', 'ta-etoh', { placeholder: 'e.g. 0' }));
     root.appendChild(field('Arterial pH (optional)', 'ta-ph', { placeholder: 'e.g. 7.25' }));
     root.appendChild(field('Serum bicarbonate (mEq/L, optional)', 'ta-bicarb', { placeholder: 'e.g. 18' }));

@@ -59,8 +59,8 @@ function metTag(b) { return b === true ? 'met' : (b === false ? 'not met' : '—
 export const renderers = {
   // ----- 2.1 das28 --------------------------------------------------------
   das28(root) {
-    root.appendChild(field('Tender 28-joint count (TJC28, 0–28)', 'da-tjc', { placeholder: 'e.g. 8' }));
-    root.appendChild(field('Swollen 28-joint count (SJC28, 0–28)', 'da-sjc', { placeholder: 'e.g. 4' }));
+    root.appendChild(field('Tender 28-joint count (TJC28, 0–28)', 'da-tjc', { min: 0, max: 28, placeholder: 'e.g. 8' }));
+    root.appendChild(field('Swollen 28-joint count (SJC28, 0–28)', 'da-sjc', { min: 0, max: 28, placeholder: 'e.g. 4' }));
     root.appendChild(selectField('Inflammatory marker form', 'da-form', [
       { value: 'esr', text: 'ESR (DAS28-ESR)' },
       { value: 'crp', text: 'CRP (DAS28-CRP)' },
@@ -88,10 +88,10 @@ export const renderers = {
 
   // ----- 2.2 kings-college ------------------------------------------------
   'kings-college'(root) {
-    root.appendChild(field('Arterial pH (after fluid resuscitation)', 'kc-ph', { placeholder: 'e.g. 7.25' }));
-    root.appendChild(field('INR', 'kc-inr', { placeholder: 'e.g. 7.0' }));
+    root.appendChild(field('Arterial pH (after fluid resuscitation)', 'kc-ph', { min: 0, placeholder: 'e.g. 7.25' }));
+    root.appendChild(field('INR', 'kc-inr', { min: 0, placeholder: 'e.g. 7.0' }));
     root.appendChild(field('PT (seconds — alternative to INR)', 'kc-pt', { placeholder: 'e.g. 110' }));
-    root.appendChild(field('Serum creatinine', 'kc-cr', { placeholder: 'e.g. 4.0' }));
+    root.appendChild(field('Serum creatinine', 'kc-cr', { min: 0, placeholder: 'e.g. 4.0' }));
     root.appendChild(selectField('Creatinine unit', 'kc-crunit', [
       { value: 'mg/dl', text: 'mg/dL (threshold > 3.4)' },
       { value: 'umol/l', text: 'µmol/L (threshold > 300)' },

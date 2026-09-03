@@ -60,7 +60,7 @@ export const renderers = {
   // ----- 2.1 stewart-sid-sig --------------------------------------------
   'stewart-sid-sig'(root) {
     note(root, 'Stewart strong ion difference / strong ion gap (Stewart 1983; Figge 1992). Apparent SID = (Na + K + Ca + Mg) − (Cl + lactate); effective SID = HCO3 + albumin charge + phosphate charge (Figge weak-acid charges evaluated at pH 7.4). SIG = apparent − effective; above ~2 mEq/L suggests unmeasured strong anions. Enter ionized Ca and Mg in mEq/L.');
-    root.appendChild(field('Sodium (mEq/L)', 'ss-na', { step: '1', placeholder: 'e.g. 140' }));
+    root.appendChild(field('Sodium (mEq/L)', 'ss-na', { min: 0, max: 200, step: '1', placeholder: 'e.g. 140' }));
     root.appendChild(field('Potassium (mEq/L)', 'ss-k', { step: '0.1', placeholder: 'e.g. 4.0' }));
     root.appendChild(field('Ionized calcium (mEq/L)', 'ss-ca', { step: '0.1', min: 0, placeholder: 'e.g. 2.4' }));
     root.appendChild(field('Ionized magnesium (mEq/L)', 'ss-mg', { step: '0.1', min: 0, placeholder: 'e.g. 1.0' }));
@@ -84,7 +84,7 @@ export const renderers = {
     note(root, 'Standard base excess (Siggaard-Andersen Van Slyke equation, NCCLS constants): BE = (1 − 0.0143 × Hb) × (HCO3 − 24.8 + (9.5 + 1.63 × Hb) × (pH − 7.4)). Negative = base deficit (metabolic acidosis); positive = base excess (metabolic alkalosis). The sign flips at zero.');
     root.appendChild(field('Arterial pH', 'be-ph', { step: '0.01', min: 0, placeholder: 'e.g. 7.40' }));
     root.appendChild(field('Bicarbonate (mEq/L)', 'be-hco3', { step: '0.1', min: 0, placeholder: 'e.g. 24.8' }));
-    root.appendChild(field('Hemoglobin (g/dL)', 'be-hb', { step: '0.1', min: 0, placeholder: 'e.g. 15' }));
+    root.appendChild(field('Hemoglobin (g/dL)', 'be-hb', { max: 25, step: '0.1', min: 0, placeholder: 'e.g. 15' }));
     const o = out(); root.appendChild(o);
     wire(['be-ph', 'be-hco3', 'be-hb'], () => safe(o, () => {
       const r = M.baseExcess({ ph: optNum('be-ph'), bicarbonate: optNum('be-hco3'), hemoglobin: optNum('be-hb') });

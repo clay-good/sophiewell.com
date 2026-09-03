@@ -61,7 +61,7 @@ export const renderers = {
   // ----- 2.1 hemodynamic-suite -------------------------------------------
   'hemodynamic-suite'(root) {
     root.appendChild(field('Cardiac output (L/min)', 'hs-co', { placeholder: 'e.g. 5' }));
-    root.appendChild(field('Heart rate (bpm, for stroke volume)', 'hs-hr', { placeholder: 'e.g. 80' }));
+    root.appendChild(field('Heart rate (bpm, for stroke volume)', 'hs-hr', { min: 0, max: 400, placeholder: 'e.g. 80' }));
     root.appendChild(field('Body surface area (m^2, for indexed values)', 'hs-bsa', { placeholder: 'e.g. 1.9' }));
     root.appendChild(field('Mean arterial pressure (mmHg, for SVR)', 'hs-map', { placeholder: 'e.g. 90' }));
     root.appendChild(field('Central venous pressure (mmHg, for SVR)', 'hs-cvp', { placeholder: 'e.g. 8' }));
@@ -91,7 +91,7 @@ export const renderers = {
 
   // ----- 2.2 mechanical-power --------------------------------------------
   'mechanical-power'(root) {
-    root.appendChild(field('Respiratory rate (breaths/min)', 'mp-rr', { placeholder: 'e.g. 22' }));
+    root.appendChild(field('Respiratory rate (breaths/min)', 'mp-rr', { min: 0, placeholder: 'e.g. 22' }));
     root.appendChild(field('Tidal volume (mL)', 'mp-vt', { placeholder: 'e.g. 420' }));
     root.appendChild(field('Plateau pressure (cmH2O)', 'mp-plat', { placeholder: 'e.g. 26' }));
     root.appendChild(field('PEEP (cmH2O)', 'mp-peep', { placeholder: 'e.g. 12' }));

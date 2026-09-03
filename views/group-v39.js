@@ -115,8 +115,8 @@ export const renderers = {
   // ----- 2.3 bronchiectasis-bsi -----------------------------------------
   'bronchiectasis-bsi'(root) {
     note(root, 'Bronchiectasis Severity Index: nine weighted items. Enter the values, mark the colonization and radiology items, and read the low 0-4 / intermediate 5-8 / high >= 9 band.');
-    root.appendChild(field('Age (years)', 'bs-age', { min: 0, placeholder: 'e.g. 72' }));
-    root.appendChild(field('BMI (kg/m^2)', 'bs-bmi', { step: '0.1', min: 0, placeholder: 'e.g. 17' }));
+    root.appendChild(field('Age (years)', 'bs-age', { max: 130, min: 0, placeholder: 'e.g. 72' }));
+    root.appendChild(field('BMI (kg/m^2)', 'bs-bmi', { max: 80, step: '0.1', min: 0, placeholder: 'e.g. 17' }));
     root.appendChild(field('FEV1 (% predicted)', 'bs-fev1', { step: '1', min: 0, placeholder: 'e.g. 45' }));
     root.appendChild(field('Exacerbations in the prior year', 'bs-exac', { min: 0, placeholder: 'e.g. 3' }));
     root.appendChild(selectField('MRC dyspnea score (1-5 scale)', 'bs-mrc', [
@@ -152,7 +152,7 @@ export const renderers = {
   'faced-bronchiectasis'(root) {
     note(root, 'FACED score: FEV1, Age, Pseudomonas Colonization, radiological Extension, and Dyspnea. Total 0-7, banded mild 0-2 / moderate 3-4 / severe 5-7.');
     root.appendChild(field('FEV1 (% predicted)', 'fa-fev1', { step: '1', min: 0, placeholder: 'e.g. 45' }));
-    root.appendChild(field('Age (years)', 'fa-age', { min: 0, placeholder: 'e.g. 72' }));
+    root.appendChild(field('Age (years)', 'fa-age', { max: 130, min: 0, placeholder: 'e.g. 72' }));
     root.appendChild(checkField('Chronic Pseudomonas aeruginosa colonization -- +1', 'fa-ps'));
     root.appendChild(checkField('Extension >= 3 lobes involved -- +1', 'fa-ext'));
     root.appendChild(checkField('Dyspnea mMRC >= 3 -- +1', 'fa-dys'));
@@ -178,8 +178,8 @@ export const renderers = {
   'nosas-score'(root) {
     note(root, 'NoSAS score: neck, obesity (BMI), snoring, age, and sex. Total 0-17; a score of >= 8 flags a high probability of sleep-disordered breathing. Complementary to STOP-BANG.');
     root.appendChild(field('Neck circumference (cm)', 'no-neck', { step: '0.5', min: 0, placeholder: 'e.g. 42' }));
-    root.appendChild(field('BMI (kg/m^2)', 'no-bmi', { step: '0.1', min: 0, placeholder: 'e.g. 31' }));
-    root.appendChild(field('Age (years)', 'no-age', { min: 0, placeholder: 'e.g. 58' }));
+    root.appendChild(field('BMI (kg/m^2)', 'no-bmi', { max: 80, step: '0.1', min: 0, placeholder: 'e.g. 31' }));
+    root.appendChild(field('Age (years)', 'no-age', { max: 130, min: 0, placeholder: 'e.g. 58' }));
     root.appendChild(checkField('Snoring -- +2', 'no-snore'));
     root.appendChild(checkField('Male sex -- +2', 'no-male'));
     const o = out(); root.appendChild(o);

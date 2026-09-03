@@ -79,7 +79,7 @@ export const renderers = {
   },
   'astral-score'(root) {
     note(root, 'ASTRAL score (Ntaios 2012): 1 pt/5 y age + 1 pt/NIHSS point + onset > 3 h +2 + visual defect +2 + glucose out of range +1 + impaired consciousness +3. Higher = worse 90-day outcome.');
-    root.appendChild(num('Age (years)', 'ast-age', { min: '0' }));
+    root.appendChild(num('Age (years)', 'ast-age', { max: 130, min: '0' }));
     root.appendChild(num('Admission NIHSS (0-42)', 'ast-nihss', { min: '0', max: '42' }));
     root.appendChild(check('Onset-to-admission > 3 hours (or unknown) (+2)', 'ast-onset'));
     root.appendChild(check('Any new visual-field defect (+2)', 'ast-visual'));
@@ -107,7 +107,7 @@ export const renderers = {
   },
   'plan-score'(root) {
     note(root, 'PLAN score (O’Donnell 2012): preadmission comorbidities + level of consciousness + age + neurologic deficits (0-25). Higher = higher 30-day mortality.');
-    root.appendChild(num('Age (years)', 'plan-age', { min: '0' }));
+    root.appendChild(num('Age (years)', 'plan-age', { max: 130, min: '0' }));
     root.appendChild(check('Preadmission dependence (+1.5)', 'plan-dep'));
     root.appendChild(check('Cancer (+1.5)', 'plan-cancer'));
     root.appendChild(check('Congestive heart failure (+1)', 'plan-chf'));
@@ -128,9 +128,9 @@ export const renderers = {
     root.appendChild(select('Antiplatelet therapy', 'sits-ap', [['0', 'None (0)'], ['1', 'Aspirin alone (1)'], ['2', 'Aspirin + clopidogrel (2)']]));
     root.appendChild(num('Admission NIHSS', 'sits-nihss', { min: '0', max: '42' }));
     root.appendChild(num('Blood glucose (mg/dL)', 'sits-glu', { min: '0' }));
-    root.appendChild(num('Systolic BP (mmHg)', 'sits-sbp', { min: '0' }));
+    root.appendChild(num('Systolic BP (mmHg)', 'sits-sbp', { max: 300, min: '0' }));
     root.appendChild(num('Weight (kg)', 'sits-wt', { min: '0' }));
-    root.appendChild(num('Age (years)', 'sits-age', { min: '0' }));
+    root.appendChild(num('Age (years)', 'sits-age', { max: 130, min: '0' }));
     root.appendChild(check('Onset-to-treatment >= 180 minutes (+1)', 'sits-onset'));
     root.appendChild(check('History of hypertension (+1)', 'sits-htn'));
     const o = out(); root.appendChild(o);

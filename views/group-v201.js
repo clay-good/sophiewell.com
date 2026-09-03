@@ -67,7 +67,7 @@ export const renderers = {
       { value: 'female', text: 'Female' },
     ]));
     root.appendChild(num('Hemoglobin (g/dL)', 'gbs-hb', { min: '1', max: '25' }));
-    root.appendChild(num('Systolic BP (mmHg)', 'gbs-sbp', { min: '20' }));
+    root.appendChild(num('Systolic BP (mmHg)', 'gbs-sbp', { max: 300, min: '20' }));
     root.appendChild(checkField('Pulse ≥ 100 /min (+1)', 'gbs-pulse'));
     root.appendChild(checkField('Presentation with melena (+1)', 'gbs-melena'));
     root.appendChild(checkField('Presentation with syncope (+2)', 'gbs-syncope'));
@@ -90,7 +90,7 @@ export const renderers = {
   // ----- 2.2 clif-c-ad -------------------------------------------------------
   'clif-c-ad'(root) {
     note(root, 'CLIF-C AD score (Jalan 2015): a mortality model for the hospitalised decompensated cirrhotic without acute-on-chronic liver failure. CLIF-C ADs = 10 × [0.03·age + 0.66·ln(creatinine) + 1.71·ln(INR) + 0.88·ln(WBC) − 0.05·sodium + 8]. Bands: < 50 low, 50–59 intermediate, ≥ 60 high.');
-    root.appendChild(num('Age (years)', 'clifad-age', { min: '0' }));
+    root.appendChild(num('Age (years)', 'clifad-age', { max: 130, min: '0' }));
     root.appendChild(num('Creatinine (mg/dL)', 'clifad-creat', { min: '0' }));
     root.appendChild(num('INR', 'clifad-inr', { min: '0' }));
     root.appendChild(num('WBC (×10⁹/L)', 'clifad-wbc', { min: '0' }));
@@ -109,7 +109,7 @@ export const renderers = {
   // ----- 2.3 hepamet-fibrosis ------------------------------------------------
   'hepamet-fibrosis'(root) {
     note(root, 'Hepamet Fibrosis Score (Ampuero 2020): a non-invasive advanced-fibrosis score for NAFLD from age, sex, AST, albumin, HOMA-IR, diabetes, and platelets. Cut-points: < 0.12 rules OUT, ≥ 0.47 rules IN, 0.12–0.47 indeterminate. Built to shrink the FIB-4 / NFS gray zone.');
-    root.appendChild(num('Age (years)', 'hep-age', { min: '0' }));
+    root.appendChild(num('Age (years)', 'hep-age', { max: 130, min: '0' }));
     root.appendChild(selectField('Sex', 'hep-sex', [
       { value: 'male', text: 'Male' },
       { value: 'female', text: 'Female' },
@@ -163,7 +163,7 @@ export const renderers = {
     root.appendChild(num('AST (IU/L)', 'agile-ast', { min: '0' }));
     root.appendChild(num('ALT (IU/L)', 'agile-alt', { min: '0' }));
     root.appendChild(num('Platelets (×10⁹/L)', 'agile-plt', { min: '0' }));
-    root.appendChild(num('Age (years)', 'agile-age', { min: '0' }));
+    root.appendChild(num('Age (years)', 'agile-age', { max: 130, min: '0' }));
     root.appendChild(selectField('Sex', 'agile-sex', [
       { value: 'male', text: 'Male' },
       { value: 'female', text: 'Female' },
