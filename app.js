@@ -4735,11 +4735,33 @@ function fieldName(body, input) {
   return text.replace(/\s+/g, ' ').trim().replace(/[:*]\s*$/, '');
 }
 
+// spec-v1012: the ceiling every field has whether it says so or not. No quantity
+// this site measures -- a lab value, a pressure, a dose, a count, a duration --
+// reaches a billion in its own unit; the largest bound any tile declares is
+// 100,000. A number past this is not an out-of-range measurement, it is a typo or
+// a paste, and it is how exponent notation gets into an answer: a `type=number`
+// input accepts "7e70" as a number, so a reader who types 7e in front of an
+// existing 70 gets 7 x 10^70 and a renderer reads it out. Measured over the
+// catalog, 87 of 1704 tiles echo a 1e308 straight into their answer -- "BMI:
+// 2.28e+70 kg/m^2 (Obesity class III)", "Creatinine clearance:
+// -6.8e+129 mL/min" -- while the gate whose first line is "The page never states
+// a number that does not exist" passed, because 1e+308 is a number that exists.
+const IMPLAUSIBLE_MAGNITUDE = 1e9;
+
+function isImplausible(input) {
+  if (input.value === '') return false;
+  const n = Number(input.value);
+  return Number.isFinite(n) && Math.abs(n) >= IMPLAUSIBLE_MAGNITUDE;
+}
+
 function rangeMessage(body, offenders) {
   const parts = offenders.map((input) => {
     const name = fieldName(body, input);
     const lo = input.getAttribute('min');
     const hi = input.getAttribute('max');
+    if (isImplausible(input) && lo === null && hi === null) {
+      return `${name} is ${input.value}, far beyond any value this tool can be measuring`;
+    }
     const bounds = (lo !== null && hi !== null) ? `${lo} to ${hi}`
       : (hi !== null ? `no more than ${hi}` : `at least ${lo}`);
     return `${name} is ${input.value}, outside the ${bounds} this field accepts`;
@@ -4756,8 +4778,11 @@ function watchDeclaredRanges(body) {
   const check = () => {
     const offenders = [];
     for (const input of body.querySelectorAll('input[type="number"]')) {
-      const bad = input.value !== '' && input.validity
-        && (input.validity.rangeOverflow || input.validity.rangeUnderflow);
+      const bad = input.value !== '' && ((input.validity
+        && (input.validity.rangeOverflow || input.validity.rangeUnderflow))
+        // spec-v1012: and the ceiling that holds even where the field declares
+        // nothing, which is where the exponent-notation answers came from.
+        || isImplausible(input));
       if (bad) { offenders.push(input); input.setAttribute('aria-invalid', 'true'); }
       else input.removeAttribute('aria-invalid');
     }

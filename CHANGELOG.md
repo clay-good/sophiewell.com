@@ -8,6 +8,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A test named "the page never states a number that does not exist" was
+  passing while 87 tools stated 1e+308.** Number fields accept scientific
+  notation, so typing "7e" in front of an existing 70 enters 7 x 10^70 and
+  nothing about the box looks wrong — which is how "BMI: 2.28e+70 kg/m^2
+  (Obesity class III)" and a creatinine clearance of -6.8e+129 mL/min reached
+  the screen. Every field now has a ceiling whether it declares one or not
+  (nothing this site measures reaches a billion in its own unit), and the test
+  now also fails if an exponent reaches an answer with nothing on screen saying
+  why. See `docs/spec-v1012.md`.
+
 - **A percentage now stops at what it is a percentage of.** 44 fields whose label
   carries a % had no maximum, so an oxygen saturation of 1007% or a burn covering
   1007% of the body was accepted without comment. The 29 that measure a part of a
