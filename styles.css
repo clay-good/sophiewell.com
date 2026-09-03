@@ -1436,6 +1436,21 @@ main h1 {
   #q-results li.result-primary { font-size: 1.7rem; }
 }
 
+/* spec-v1009: a value outside the range its own field declares. Sits above the
+   answer, not inside the live region, and uses the same abnormal-result accent
+   the result pills use so the two read as one signal. */
+.range-warning {
+  margin: 0 0 var(--space-4);
+  padding: var(--space-2) 12px;
+  border-left: 3px solid var(--accent-pop-strong);
+  background: var(--accent-pop-tint);
+  font-size: 0.95rem;
+  overflow-wrap: break-word;
+}
+input[aria-invalid="true"] {
+  border-color: var(--accent-pop-strong);
+}
+
 /* spec-v752: the one sentence left from the old example lede, now sitting
    between the answer and the fields. Removed on the reader's first edit. */
 .example-hint {

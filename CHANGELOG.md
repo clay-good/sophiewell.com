@@ -8,6 +8,17 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A transposed digit got a confident answer.** Fields across the site declare
+  the range they accept — 0 to 300 for a heart rate, 3 to 15 for a GCS — and a
+  browser enforces that only when a form is submitted, which these tools never
+  do. So about half of them computed from whatever was typed: a heart rate of
+  3007 gave RABT a shock index of 30.07 and predicted a massive transfusion, an
+  age of 1307 gave SAPS II a 79.9% predicted mortality, and an insulin bolus of
+  17 units/kg printed a dose from a field that allows 1. Every tool now says so
+  above the answer ("Check the highlighted value: Heart rate (bpm) is 3007,
+  outside the 0 to 300 this field accepts") and marks the field for screen
+  readers. See `docs/spec-v1009.md`.
+
 - **A form holding one of your numbers and four of ours said nothing about it.**
   Every tile with a worked example loads with that example in its fields and a
   sentence saying so — and the sentence was removed the moment you edited

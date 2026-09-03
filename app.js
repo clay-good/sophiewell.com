@@ -4691,6 +4691,80 @@ function showExampleHint(body, exampleFields = null) {
   body.addEventListener('change', onEdit, true);
 }
 
+// spec-v1009: a number outside the range the field itself declares must not get a
+// confident answer.
+//
+// 207 numeric inputs across 99 tiles carry a `max`, and roughly half the tiles
+// enforce it -- "Enter a Glasgow Coma Scale total between 3 and 15", "Parent
+// heights should be between 100 and 230 cm". The other half compute anyway,
+// because `min`/`max` on an input are only enforced by a browser at form
+// submission and these tiles never submit. Measured on the live pages, a heart
+// rate of 3007 gave RABT a shock index of 30.07 and predicted a massive
+// transfusion; an FiO2 of 1007% scored SNAPPE-II 101 of 162 as "high illness
+// severity"; an age of 1307 gave SAPS II a 79.9% predicted hospital mortality;
+// a D-dimer of 500007 sent PEGeD to CT pulmonary angiography; and an insulin
+// bolus of 17 units/kg where the field allows 1 printed a dose.
+//
+// A transposed digit is the commonest data-entry error there is, so this is the
+// likeliest way a reader gets a wrong number: not a wrong formula, a wrong key.
+// The range is already declared on the field; the browser already knows the value
+// violates it (`validity.rangeOverflow` / `rangeUnderflow`). All that was missing
+// was saying so.
+//
+// One hook for every tile, above the answer rather than inside it -- `#q-results`
+// is an aria-live region and this is not part of the reading. The answer stays on
+// screen: a reader who meant 3007 and knows why should still see what it gives,
+// and suppressing a renderer's output centrally would mean guessing which of 1704
+// tiles can survive being told to render nothing.
+export const RANGE_WARNING_CLASS = 'range-warning';
+
+function fieldName(body, input) {
+  const lab = body.querySelector(`label[for="${CSS.escape(input.id)}"]`);
+  const text = (lab && lab.textContent) || input.getAttribute('aria-label') || input.id;
+  return text.replace(/\s+/g, ' ').trim().replace(/[:*]\s*$/, '');
+}
+
+function rangeMessage(body, offenders) {
+  const parts = offenders.map((input) => {
+    const name = fieldName(body, input);
+    const lo = input.getAttribute('min');
+    const hi = input.getAttribute('max');
+    const bounds = (lo !== null && hi !== null) ? `${lo} to ${hi}`
+      : (hi !== null ? `no more than ${hi}` : `at least ${lo}`);
+    return `${name} is ${input.value}, outside the ${bounds} this field accepts`;
+  });
+  // No claim about what the answer below did with it: roughly half these tiles
+  // refuse an out-of-range value themselves and half compute from it, and a
+  // sentence that guessed wrong either way would be worse than the plain fact.
+  return `Check the highlighted ${offenders.length === 1 ? 'value' : 'values'}: `
+    + `${parts.join('; ')}.`;
+}
+
+function watchDeclaredRanges(body) {
+  if (!body) return;
+  const check = () => {
+    const offenders = [];
+    for (const input of body.querySelectorAll('input[type="number"]')) {
+      const bad = input.value !== '' && input.validity
+        && (input.validity.rangeOverflow || input.validity.rangeUnderflow);
+      if (bad) { offenders.push(input); input.setAttribute('aria-invalid', 'true'); }
+      else input.removeAttribute('aria-invalid');
+    }
+    const existing = body.querySelector(`.${RANGE_WARNING_CLASS}`);
+    if (!offenders.length) { if (existing) existing.remove(); return; }
+    const text = rangeMessage(body, offenders);
+    if (existing) { existing.textContent = text; return; }
+    const warning = el('p', { class: RANGE_WARNING_CLASS, role: 'alert', text });
+    const results = body.querySelector('#q-results');
+    if (results) body.insertBefore(warning, results);
+    else body.insertBefore(warning, body.firstChild);
+  };
+  body.addEventListener('input', check, true);
+  body.addEventListener('change', check, true);
+  // A deep link or a prefill can arrive out of range without the reader typing.
+  setTimeout(check, 0);
+}
+
 // spec-v754: put a field's unit select back on its canonical option, so a
 // value expressed in canonical units is read as canonical units. Mirrors the
 // reset in applyExample; only unitField selects are touched, identified by the
@@ -5173,6 +5247,9 @@ function renderToolView(util) {
         if (hasExample && !fromQuery && !domFilled && hashKeys.size === 0) {
           showExampleHint(body, (META[util.id]?.example?.fields) || null);
         }
+        // spec-v1009: after the fills, so a prefilled out-of-range value is
+        // caught too.
+        watchDeclaredRanges(body);
       });
     } catch (err) {
       console.error(`[sophiewell] renderer threw for tool "${util.id}":`, err);
