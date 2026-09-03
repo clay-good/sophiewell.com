@@ -6,6 +6,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+
+- **One page that maps the whole input-safety program.** Twenty changes since
+  spec-v1006 fixed thirty-five calculators that answered questions nobody asked
+  them, and the only way to follow that was to read twenty separate specs.
+  `docs/incomplete-input-program.md` states the defect, the five rules that came
+  out of it, every spec in order, the four checks that now hold it, and the three
+  things still open. Linked from the README and from the product-decisions entry.
+
 ### Fixed
 
 - **Four more tools computed without the values they say they need.** The agent

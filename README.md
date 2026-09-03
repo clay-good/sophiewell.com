@@ -73,6 +73,7 @@ Setup is in [mcp/README.md](mcp/README.md).
 - [mcp/README.md](mcp/README.md): use the calculators from an MCP client
 - [docs/architecture.md](docs/architecture.md): how it's built
 - [docs/product-decisions.md](docs/product-decisions.md): durable interface decisions
+- [docs/incomplete-input-program.md](docs/incomplete-input-program.md): what a tool does with a value it was not given
 - [CONTRIBUTING.md](CONTRIBUTING.md): what changes are accepted, and how to add a calculator
 - [SECURITY.md](SECURITY.md): report a vulnerability privately, not as an issue
 

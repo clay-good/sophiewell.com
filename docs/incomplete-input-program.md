@@ -1,0 +1,81 @@
+# What a tool does with a value it was not given
+
+One defect class, worked from one end to the other between spec-v1006 and spec-v1025. This page is
+the map; each spec is the detail.
+
+## The defect
+
+`Number('')` is `0`. Every renderer that reads a field with `Number(input.value)` therefore hands a
+formula a *measurement of zero* where the reader left a gap — and a calculator that treats a gap as
+a zero answers questions nobody asked it. Thirty-five tools did, and the answers were not harmless:
+
+> "LRINEC 0: low risk of necrotizing fasciitis" — with no labs entered
+> "IBW (Devine): 50.0 kg" — the formula's constant, from a blank height
+> "RhIG dose: 1 standard 300 µg vial(s)" — from a Kleihauer-Betke nobody ran
+> "MELD-3.0: 20 — High; Child-Pugh: 8 — Class B" — from five cleared labs
+> "Remaining to ceiling: 4000 mg" — acetaminophen headroom nobody had measured
+> "PSI 20 — Class II (outpatient)" — a decision to send someone home
+
+## The rules that came out of it
+
+Stated in full in [product-decisions.md](product-decisions.md); in one line each:
+
+1. **A blank field is a gap, not a zero.** A typed `0` still means zero.
+2. **A calculation with no inputs is not a result of zero.** Ask for what is missing, by the names
+   on the labels.
+3. **An incomplete score may rule in; it must never rule out.** These scores are monotone, so a
+   partial total is a bound — and *which* reading is the reassuring one depends on which direction
+   the scale runs (SLUMS and NIHSS refuse opposite readings for the same reason).
+4. **A checkbox is an answer; a blank measurement is a gap.** Only the measurements withhold, and
+   only the reading they could change.
+5. **A value that IS given, but impossible, is named above the answer** — the range its field
+   declares, or the billion no quantity here reaches.
+
+## The specs
+
+| Spec | What it fixed |
+| --- | --- |
+| [v1006](spec-v1006.md) | The rule, and the first seven scores that ruled out |
+| [v1007](spec-v1007.md) | Eight more, where measurements mix with checklist criteria |
+| [v1008](spec-v1008.md) | A form holding your number and four of ours, saying nothing |
+| [v1009](spec-v1009.md) | A transposed digit got a confident answer |
+| [v1010](spec-v1010.md) | 195 bounds the site already knew, applied where missing |
+| [v1011](spec-v1011.md) | A percentage is bounded by what it is a percentage of |
+| [v1012](spec-v1012.md) | A gate that passed while 87 calculators stated an impossible number |
+| [v1013](spec-v1013.md) | Fourteen arithmetic tiles answering an empty form |
+| [v1014](spec-v1014.md) | Eight more, where the empty form reached a decision |
+| [v1015](spec-v1015.md) | Refusals written in the words of a stack trace |
+| [v1016](spec-v1016.md) | The score-shaped remainder, and the rule inverted |
+| [v1017](spec-v1017.md) | Five more, and the other half of the stack-trace fix |
+| [v1018](spec-v1018.md) | A reading measured from "now", and a comparison made on the wrong day |
+| [v1019](spec-v1019.md) | **Gate**: no new calculator answers an empty form |
+| [v1020](spec-v1020.md) | One value, not none — the likelier case |
+| [v1021](spec-v1021.md) | Two refusals that reached agents as answers |
+| [v1022](spec-v1022.md) | The warning broke this project's own accessibility rule |
+| [v1023](spec-v1023.md) | An exemption granted for one number covered a whole sentence |
+| [v1024](spec-v1024.md) | **Gate**: no calculator silently answers from the clock |
+| [v1025](spec-v1025.md) | The browser had no idea which fields were required |
+
+## What holds it now
+
+| Gate | Asks | Cost |
+| --- | --- | --- |
+| `no-answer-from-nothing-sweep.spec.js` | does any calculator answer a cleared form? | 15 s |
+| `clock-dependent.spec.js` | does any calculator answer differently a year later, from the same inputs? | 1.3 min |
+| `no-answer-from-nothing.spec.js` | do the 35 fixed calculators still refuse, and still answer when filled? | 35 s |
+| `declared-ranges.spec.js` | is an out-of-range value named, above the answer and tied to its field? | 12 s |
+
+Each has a ledger for the tiles that legitimately do the thing it looks for, and each was verified
+by reintroducing the defect and watching it fail.
+
+## What is still open
+
+- **A form with one value in it** has no gate. spec-v1020 fixed two by hand; the signal ("does this
+  read reassuringly?") is fuzzier than "did it answer nothing at all", and a gate that cries wolf
+  teaches people to silence it.
+- **Two ledgers make different claims.** A tile can be legitimate under "answers an empty form" and
+  still be wrong under "answers without a field the agent surface calls required" — 40 tiles sit in
+  that gap, and each needs the measurement-versus-criterion judgment applied one more time.
+- **`example-correctness` matches numbers loosely.** It asks whether each documented number appears
+  somewhere in the output, which a wrong answer can satisfy by coincidence (spec-v1023 proves it on
+  a real case).

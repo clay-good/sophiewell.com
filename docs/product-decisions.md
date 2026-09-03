@@ -32,8 +32,10 @@ calculation, and preserves the site's client-side privacy model.
 - **Date:** September 3, 2026
 - **Status:** Accepted
 
-Established across spec-v1006 through spec-v1016, after a catalog sweep found
-tools answering forms with nothing in them. Four rules, in the order they are
+Established across spec-v1006 through spec-v1025, after a catalog sweep found
+tools answering forms with nothing in them. The whole program, its specs and the
+checks that hold it are mapped in
+[incomplete-input-program.md](incomplete-input-program.md). Four rules, in the order they are
 applied:
 
 **A blank field is a gap, not a zero.** `Number('')` is `0`, so a cleared input
