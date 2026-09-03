@@ -1439,7 +1439,7 @@ main h1 {
 /* spec-v1009: a value outside the range its own field declares. Sits above the
    answer, not inside the live region, and uses the same abnormal-result accent
    the result pills use so the two read as one signal. */
-.range-warning {
+.range-warning:not([hidden]) {
   margin: 0 0 var(--space-4);
   padding: var(--space-2) 12px;
   border-left: 3px solid var(--accent-pop-strong);

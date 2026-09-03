@@ -4773,8 +4773,47 @@ function rangeMessage(body, offenders) {
     + `${parts.join('; ')}.`;
 }
 
+// spec-v1022: the id the offending inputs point at, so the sentence about a value
+// is attached to the field it is about.
+const RANGE_WARNING_ID = 'range-warning';
+
 function watchDeclaredRanges(body) {
   if (!body) return;
+
+  // spec-v1022: the region exists from the start, empty. docs/accessibility.md
+  // says results announce through a POLITE live region, and that validation
+  // errors are tied to their input with aria-describedby; spec-v1009 shipped
+  // this as a `role="alert"` inserted on the fly, which is assertive -- it
+  // interrupts a screen reader mid-sentence, and it did so again on every
+  // keystroke while a value stayed out of range. A live region also has to be in
+  // the DOM before its text changes for the change to be announced at all, so
+  // creating it on the first offence was the wrong shape twice over.
+  const warning = el('p', {
+    id: RANGE_WARNING_ID,
+    class: RANGE_WARNING_CLASS,
+    'aria-live': 'polite',
+    hidden: true,
+  });
+  // Placed in a task, not synchronously: hoistResults() moves #q-results to the
+  // top of the body on its own setTimeout(0), and a warning inserted before that
+  // ran ended up BELOW the answer it is about. Registered after the hoist, so it
+  // runs after it -- and still long before the reader can type.
+  const place = () => {
+    const results = body.querySelector('#q-results');
+    if (results) body.insertBefore(warning, results);
+    else body.insertBefore(warning, body.firstChild);
+  };
+  place();
+  setTimeout(place, 0);
+
+  const describe = (input, on) => {
+    const current = (input.getAttribute('aria-describedby') || '').split(/\s+/).filter(Boolean);
+    const without = current.filter((t) => t !== RANGE_WARNING_ID);
+    const next = on ? [...without, RANGE_WARNING_ID] : without;
+    if (next.length) input.setAttribute('aria-describedby', next.join(' '));
+    else input.removeAttribute('aria-describedby');
+  };
+
   const check = () => {
     const offenders = [];
     for (const input of body.querySelectorAll('input[type="number"]')) {
@@ -4785,15 +4824,16 @@ function watchDeclaredRanges(body) {
         || isImplausible(input));
       if (bad) { offenders.push(input); input.setAttribute('aria-invalid', 'true'); }
       else input.removeAttribute('aria-invalid');
+      describe(input, bad);
     }
-    const existing = body.querySelector(`.${RANGE_WARNING_CLASS}`);
-    if (!offenders.length) { if (existing) existing.remove(); return; }
+    if (!offenders.length) {
+      if (warning.textContent) warning.textContent = '';
+      warning.hidden = true;
+      return;
+    }
     const text = rangeMessage(body, offenders);
-    if (existing) { existing.textContent = text; return; }
-    const warning = el('p', { class: RANGE_WARNING_CLASS, role: 'alert', text });
-    const results = body.querySelector('#q-results');
-    if (results) body.insertBefore(warning, results);
-    else body.insertBefore(warning, body.firstChild);
+    warning.hidden = false;
+    if (warning.textContent !== text) warning.textContent = text;
   };
   body.addEventListener('input', check, true);
   body.addEventListener('change', check, true);

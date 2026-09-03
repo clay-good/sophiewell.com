@@ -34,9 +34,12 @@ for (const [tile, id, value, want, good] of CASES) {
     await page.goto(`/#${tile}`);
     await page.waitForSelector('#q-results');
     await page.waitForTimeout(300);
-    await expect(page.locator('.range-warning')).toHaveCount(0);
+    // spec-v1022: the region is in the DOM from the start so a change to it can
+    // be announced at all; empty and hidden until there is something to say.
+    await expect(page.locator('.range-warning')).toBeHidden();
 
     await page.locator(`#${id}`).fill(String(value));
+    await expect(page.locator('.range-warning')).toBeVisible();
     await expect(page.locator('.range-warning')).toHaveText(want);
     // Above the answer, never inside it: #q-results is an aria-live region and
     // this is not part of the reading.
@@ -51,7 +54,7 @@ for (const [tile, id, value, want, good] of CASES) {
 
     // Correcting the value takes the warning away again.
     await page.locator(`#${id}`).fill(good);
-    await expect(page.locator('.range-warning')).toHaveCount(0);
+    await expect(page.locator('.range-warning')).toBeHidden();
     await expect(page.locator(`#${id}`)).not.toHaveAttribute('aria-invalid', 'true');
   });
 }
@@ -61,7 +64,7 @@ test('an in-range value is never flagged', async ({ page }) => {
   await page.waitForSelector('#q-results');
   await page.locator('#saps-age').fill('72');
   await page.waitForTimeout(200);
-  await expect(page.locator('.range-warning')).toHaveCount(0);
+  await expect(page.locator('.range-warning')).toBeHidden();
 });
 
 test('two bad values are named in one sentence', async ({ page }) => {
@@ -71,4 +74,29 @@ test('two bad values are named in one sentence', async ({ page }) => {
   await page.locator('#lr-hb').fill('257');
   await page.locator('#lr-wbc').fill('-4');
   await expect(page.locator('.range-warning')).toHaveText(/Check the highlighted values:.*;/);
+});
+
+// spec-v1022: docs/accessibility.md says results announce through a POLITE live
+// region and that a validation message is tied to its input with
+// aria-describedby. spec-v1009 shipped this warning as a role="alert" created on
+// the first offence: assertive, so it interrupts a screen reader mid-sentence,
+// and re-created rather than updated, so on some readers it would not have been
+// announced at all.
+test('the warning follows the house live-region pattern', async ({ page }) => {
+  await page.goto('/#saps-ii');
+  await page.waitForSelector('#q-results');
+  await page.waitForTimeout(300);
+  const region = page.locator('.range-warning');
+  await expect(region).toHaveAttribute('aria-live', 'polite');
+  await expect(region).not.toHaveAttribute('role', 'alert');
+
+  await page.locator('#saps-age').fill('1307');
+  await expect(region).toBeVisible();
+  // The sentence about the value is attached to the field it is about.
+  await expect(page.locator('#saps-age')).toHaveAttribute('aria-describedby', /range-warning/);
+  await expect(page.locator('#saps-age')).toHaveAttribute('aria-invalid', 'true');
+
+  await page.locator('#saps-age').fill('72');
+  await expect(region).toBeHidden();
+  await expect(page.locator('#saps-age')).not.toHaveAttribute('aria-describedby', /range-warning/);
 });

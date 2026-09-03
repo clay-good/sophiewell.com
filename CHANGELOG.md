@@ -18,6 +18,17 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **The out-of-range warning interrupted screen readers, and was not attached to
+  the field it described.** It shipped as an assertive alert created the moment a
+  value went out of range — so it cut across whatever a screen reader was saying,
+  did it again on every keystroke, and on some readers would not have been
+  announced at all, since a live region has to exist before its text changes. It
+  is now a polite region present from the start, and the offending input points
+  at it with `aria-describedby`, which is what this project's own accessibility
+  document said to do. See `docs/spec-v1022.md`.
+
+### Fixed
+
 - **Two refusals reached agents as answers.** Every "enter the values first"
   message added over the last two weeks was checked in the browser; checking them
   on the agent interface found two that disagreed with themselves. The NIH Stroke
