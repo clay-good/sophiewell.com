@@ -6,6 +6,17 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+
+- **A check that catches a tool whose answer depends on when you read it.** Four
+  were found by eye last week — a due-date tool reporting a gestational age of 87
+  weeks, a code clock reporting 107 days of CPR — and nothing would have caught
+  the next one. Every calculator is now rendered twice a year apart on a fake
+  clock, with its inputs untouched, and any that reads differently must be listed
+  with a reason. Eight are, and all eight earn it: filing deadlines counting down,
+  device-days since insertion, and the three that now say out loud that they are
+  reading from the clock. See `docs/spec-v1024.md`.
+
 ### Changed
 
 - **The README and the product-decisions doc now describe what a tool does with
