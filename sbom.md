@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `9b9e7691cca15eb5`
-Generated: 2026-09-03T01:41:34.349Z
+Build ID: `4db56e548bb828bb`
+Generated: 2026-09-03T03:06:22.593Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -735,7 +735,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/rls-criteria-v856.js` | 8355 | `fa9a6c8ac7d11012acd1e913066ed4f13df1adec66715feff2befed2be0994f1` |
 | `lib/robarts-index-v579.js` | 13762 | `f8e57aaf600677121744736a35d419fef7f669eff8bbea269931ff674c56864c` |
 | `lib/rockwood-ac-v487.js` | 4114 | `86eca56af675219c672040d3b2a187e02633e255e45db01c91b93efccb980cfb` |
-| `lib/rome-ecopd-v804.js` | 6143 | `5032d4cd52371acfa2cf85ef0e3db44e560c7df4626e26fe6e78ce10012e9f64` |
+| `lib/rome-ecopd-v804.js` | 8004 | `acc2ff0efb96e79e9c26870d8fc3e47e5de5c88365f4b90c4a9d92af4540eb00` |
 | `lib/rop-stage-v446.js` | 3594 | `43991004160342a2c6eda1fab7bb7775d7cd9743f90f396012f99ed941487c62` |
 | `lib/rope-score-v850.js` | 7646 | `dd0aee5dfbafbf71812b43b5c65351b34637ea1714c2eaa3bdd31a63710a3c18` |
 | `lib/ross-hf-peds-v368.js` | 3656 | `fad8260eae2c6c117dfee9177dfbf5f2a20042e72b049799b94588ae426449ce` |
@@ -760,7 +760,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/schobinger-avm-v497.js` | 3484 | `fd7d680fede1965fd9a9026d0977e4f2c1970e30d33718df3daaca235dfed009` |
 | `lib/schofield-v779.js` | 4325 | `7c398e3b1dc2df66c5323baee0f73ff66c28927fb47a72ede85dfd51d2de4931` |
 | `lib/schwab-england-v385.js` | 4331 | `caddd0709826db63186ebf0a5f8b60fd9a3e00fa934bddc3e0331977f70c5e4b` |
-| `lib/scoring-v4.js` | 233169 | `c076aa89c4de3e18a01ca075a8a2c7dd786fc98995ceef5bd8702d8e68657d4d` |
+| `lib/scoring-v4.js` | 238967 | `845cf1efa02191ca51431824e171c79627a6bf65d9e34ab46367e0aa437eb5f6` |
 | `lib/scoring-v5.js` | 12551 | `2e7854ebd83d2aecf3413aefde44cde85f11b1640587d6c1122d493209e00a42` |
 | `lib/scoring-v6.js` | 27427 | `ed570d8507d63371de2181a97743f8ee1f40e2042eedba9dac2216ed247d6fad` |
 | `lib/scp-pushing-v562.js` | 12399 | `6da019a04668722b7a8d448b4d7bf9908717629b72e4a162088e74363ad62360` |
@@ -833,7 +833,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/tox-v86.js` | 9271 | `a4827e971709a1b52494fd7a4cb6fe10db9a6c7ddeb4478cd39ee1c37b355326` |
 | `lib/transfusion-v292.js` | 5990 | `2b6860941accfff047ddfc6f48801e8fc06cc73beb57801e27b7b83ee8f4a922` |
 | `lib/trauma-v108.js` | 15758 | `57f71fae11d37c133cf79a8008d2d6c3bc73d8d5d982365d872c9d5a160084b0` |
-| `lib/traumaclass-v109.js` | 17479 | `588e33486fa7542719b3aae1c20af52eb3539d01e42fad306bf08de5740b4ff9` |
+| `lib/traumaclass-v109.js` | 18978 | `01d52fe3f80710970319615f52ef562a96b5d86371bffe48361dafe2a21f4ab5` |
 | `lib/traynelis-v448.js` | 2912 | `9d4abfa8bb4d994648678605ccd5e3e4749993a66f49f232310d39cd8cfd4cad` |
 | `lib/tree.js` | 5187 | `947cd24aa948c81432844601adc03446917bcb5e32ac187f66491bcd3420df08` |
 | `lib/trend.js` | 2889 | `6a34ffbc9758a99976d15e9c09e69d03c21771e827f5e5310e8ae51473a5fb3d` |
@@ -1703,7 +1703,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-c.js` | 24124 | `4517f2f966279a4af40b98aa5197db7d2fee3b014785cb6e6ac317fd2157cbf5` |
 | `views/group-e.js` | 38196 | `0c41e3e60649e244e810adbf9c445091ae80e0f447004f9ff063619ab63bac22` |
 | `views/group-f.js` | 46226 | `eca9d61d652f8a509ea9ecec361940fa16acbfb6f197e21992aee1cef4edcf77` |
-| `views/group-g.js` | 230821 | `96aa0a2de18da3859b59d7150943b8262a0aa18d2433026eafc589ca82c3942b` |
+| `views/group-g.js` | 231546 | `aa7b5a97757aece27687cbe3b288d2c99f798478f18287dab9786323c3d7540a` |
 | `views/group-h.js` | 28477 | `f9a8dc4ddbf7987b39a6bb88908d3523599eddaca1d6fcde22dbd847b4594b14` |
 | `views/group-i.js` | 23606 | `d77c57a7cc659affc0146b3a71fe4b7fa7166c03db876979952f8930664c9e0e` |
 | `views/group-j.js` | 8989 | `521f4c30cd952ee6d9845a843735b519a6acd21e495135d9d7f34747270a4373` |
@@ -1933,7 +1933,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v337.js` | 3080 | `a82f7c80d2ebac4d0872e804d10ff4302057ccffeaee85651cb7593f0269aa66` |
 | `views/group-v338.js` | 3117 | `b6ed301e7289c9de4fa1826d57a66a57c5e56e8e15fb756195783253af59d482` |
 | `views/group-v339.js` | 2982 | `202e94e9248d6cc675f6d345d2bfb6085711477bce586af9491fa9a363ac9293` |
-| `views/group-v34.js` | 14778 | `1eabda9aad5bf2728a8e49da8cfb227ce2a0560bea68a952ab259e60a8fc60b9` |
+| `views/group-v34.js` | 14979 | `9a8c624e230adb4436f10be3e239cad39f07e7ae297fcf8acd6e4f50051ec15c` |
 | `views/group-v340.js` | 2943 | `71fe64d1186fce528f6c44587d10e357b876dfc7e5764004ccbc034a2c07efc2` |
 | `views/group-v341.js` | 3016 | `d7400079c3c1241e350600a1eba95f49866d850b2ad350c3dd5c6ecfcc55bf76` |
 | `views/group-v342.js` | 3152 | `fbd3f0df605868d3ad092f54b6b94a935882e756ac665384ec86ed4bc5bd946b` |

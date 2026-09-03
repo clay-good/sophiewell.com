@@ -1994,6 +1994,9 @@ export const renderers = {
         gcs: nvOrNull('mods-gcs'),
       };
       const r = S4.mods(inputs);
+      // spec-v1006: an incomplete MODS refuses to band rather than reading
+      // unmeasured organ systems as normal ones.
+      if (r.score == null) { o.appendChild(el('p', { class: 'muted', text: r.band })); return; }
       o.appendChild(el('h2', { text: `MODS ${r.score} of 24` }));
       o.appendChild(el('p', { text: r.band }));
       o.appendChild(el('p', { text: `Per-organ subscores: respiratory ${r.parts.respiratory}, renal ${r.parts.renal}, hepatic ${r.parts.hepatic}, cardiovascular ${r.parts.cardiovascular}, hematologic ${r.parts.hematologic}, neurologic ${r.parts.neurologic}.` }));
@@ -2267,11 +2270,12 @@ export const renderers = {
     if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
       const inputs = {
-        ageYears: nv('nt-age'), apache2: nv('nt-apache'), sofa: nv('nt-sofa'),
-        comorbidities: nv('nt-comorb'), daysHospitalToIcu: nv('nt-days'),
-        il6Pg: nv('nt-il6'),
+        ageYears: nvOrNull('nt-age'), apache2: nvOrNull('nt-apache'), sofa: nvOrNull('nt-sofa'),
+        comorbidities: nvOrNull('nt-comorb'), daysHospitalToIcu: nvOrNull('nt-days'),
+        il6Pg: nvOrNull('nt-il6'),
       };
       const r = S4.nutric(inputs);
+      if (r.score == null) { o.appendChild(el('p', { class: 'muted', text: r.band })); return; }
       o.appendChild(el('h2', { text: `NUTRIC ${r.score} of 10` }));
       o.appendChild(el('p', { text: r.band }));
       if (deriv) updateDerivationSteps(deriv, META.nutric, inputs);
@@ -2300,10 +2304,11 @@ export const renderers = {
     if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
       const inputs = {
-        ageYears: nv('mn-age'), apache2: nv('mn-apache'), sofa: nv('mn-sofa'),
-        comorbidities: nv('mn-comorb'), daysHospitalToIcu: nv('mn-days'),
+        ageYears: nvOrNull('mn-age'), apache2: nvOrNull('mn-apache'), sofa: nvOrNull('mn-sofa'),
+        comorbidities: nvOrNull('mn-comorb'), daysHospitalToIcu: nvOrNull('mn-days'),
       };
       const r = S4.mnutric(inputs);
+      if (r.score == null) { o.appendChild(el('p', { class: 'muted', text: r.band })); return; }
       o.appendChild(el('h2', { text: `mNUTRIC ${r.score} of 9` }));
       o.appendChild(el('p', { text: r.band }));
       if (deriv) updateDerivationSteps(deriv, META.mnutric, inputs);
@@ -3348,11 +3353,12 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       const r = S4.carpenterCoustan({
-        fasting: nv('cc-f'),
-        oneHour: nv('cc-1h'),
-        twoHour: nv('cc-2h'),
-        threeHour: nv('cc-3h'),
+        fasting: nvOrNull('cc-f'),
+        oneHour: nvOrNull('cc-1h'),
+        twoHour: nvOrNull('cc-2h'),
+        threeHour: nvOrNull('cc-3h'),
       });
+      if (r.exceeded == null) { o.appendChild(el('p', { class: 'muted', text: r.band })); return; }
       o.appendChild(el('h2', { text: `Carpenter-Coustan: ${r.exceeded} of 4 abnormal` }));
       o.appendChild(el('p', { text: r.band }));
     });
@@ -3377,10 +3383,11 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       const r = S4.iadpsg({
-        fasting: nv('ia-f'),
-        oneHour: nv('ia-1h'),
-        twoHour: nv('ia-2h'),
+        fasting: nvOrNull('ia-f'),
+        oneHour: nvOrNull('ia-1h'),
+        twoHour: nvOrNull('ia-2h'),
       });
+      if (r.exceeded == null) { o.appendChild(el('p', { class: 'muted', text: r.band })); return; }
       o.appendChild(el('h2', { text: `IADPSG: ${r.exceeded} of 3 abnormal` }));
       o.appendChild(el('p', { text: r.band }));
     });

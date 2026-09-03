@@ -43,8 +43,29 @@ test('carpenter-coustan one below cutoff -> not flagged', () => {
   assert.equal(r.exceeded, 0);
 });
 
-test('carpenter-coustan blank inputs -> not diagnostic (NaN comparisons false)', () => {
+test('carpenter-coustan blank inputs do not read as a normal test', () => {
+  // spec-v1006: this test used to assert `exceeded: 0, gdm: false` on an empty
+  // form -- which is the defect written down as an expectation. A missing draw is
+  // not a normal draw, and "not diagnostic of GDM" from no values at all is the
+  // unsafe direction to fail in. Two values over cutoff still diagnose, so an
+  // incomplete OGTT can rule GDM in; it cannot rule it out.
   const r = carpenterCoustan({});
-  assert.equal(r.exceeded, 0);
-  assert.equal(r.gdm, false);
+  assert.equal(r.gdm, null);
+  assert.equal(r.exceeded, null);
+  assert.match(r.band, /Enter all four Carpenter-Coustan draws/);
+  assert.doesNotMatch(r.band, /not diagnostic/);
+});
+
+test('carpenter-coustan: two values over cutoff diagnose before the test is finished', () => {
+  const r = carpenterCoustan({ fasting: 100, oneHour: 200 });
+  assert.equal(r.gdm, true);
+  assert.equal(r.exceeded, 2);
+  assert.match(r.band, /GDM diagnosed/);
+  assert.match(r.band, /Read from 2 of 4 draws/);
+});
+
+test('carpenter-coustan: one normal value is not a negative test', () => {
+  const r = carpenterCoustan({ fasting: 80 });
+  assert.equal(r.gdm, null);
+  assert.match(r.band, /Missing: 1-hour, 2-hour, 3-hour/);
 });

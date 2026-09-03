@@ -246,6 +246,9 @@ export const renderers = {
         crp: optNum('lr-crp'), wbc: optNum('lr-wbc'), hemoglobin: optNum('lr-hb'),
         sodium: optNum('lr-na'), creatinine: optNum('lr-cr'), glucose: optNum('lr-glu'),
       });
+      // spec-v1006: a partial LRINEC below the suspicion threshold has no total
+      // and no band -- the unentered labs can only add points.
+      if (r.total == null) { note(o, r.band); return; }
       resultRow(o, [
         { text: r.band, cls: r.abnormal ? 'warn' : null },
         { label: 'LRINEC', value: String(r.total) },

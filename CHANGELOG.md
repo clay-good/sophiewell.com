@@ -8,6 +8,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Seven calculators gave a reassuring answer to a form with nothing in it.**
+  LRINEC reported "low risk of necrotizing fasciitis" with no labs entered, and
+  still said "low risk" with only a C-reactive protein of 200 typed in while five
+  labs worth nine points sat blank. MODS reported "ICU mortality 0%" from an
+  empty form and "~1-2%" from a single creatinine. Both gestational-diabetes
+  tests read an empty form as "not diagnostic". Every one of these scores only
+  ever adds points, so a partial total is a floor, not an answer: they now hold
+  back the reassuring reading until the values are there, while still flagging
+  risk the moment the entered values justify it, and each says which inputs it is
+  waiting for. Four of the tiles also read a cleared field as a zero, so the fix
+  had to reach the browser as well as the calculation. See `docs/spec-v1006.md`.
+
 - **A security commit deleted a CI job and the documentation kept promising it.**
   `docs/performance.md` described the Lighthouse accessibility, best-practices
   and SEO floors as gates that fail the build; the job running them was removed
