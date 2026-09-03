@@ -14,7 +14,7 @@ import { META } from '../lib/meta.js';
 import { renderDerivation, updateDerivationSteps } from '../lib/derivation.js';
 import { inchesToCm, labConvert } from '../lib/unit-convert.js';
 import { resultRow } from '../lib/result-copy.js';
-import { unitField, unitNum, WEIGHT_UNITS, GLUCOSE_UNITS, BUN_UNITS, CALCIUM_UNITS, ALBUMIN_UNITS } from '../lib/field-units.js';
+import { unitField, unitNum, unitNumOpt, WEIGHT_UNITS, GLUCOSE_UNITS, BUN_UNITS, CALCIUM_UNITS, ALBUMIN_UNITS } from '../lib/field-units.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -40,6 +40,31 @@ function selectField(label, id, options) {
 
 function out() { return el('div', { id: 'q-results', 'aria-live': 'polite' }); }
 function num(id) { return Number(document.getElementById(id).value); }
+// spec-v1013: a calculation with no inputs is not a result of zero.
+//
+// `num()` is `Number(input.value)` and `Number('')` is 0, so an empty form
+// reached these formulas as a patient made entirely of zeros and they answered:
+// "Du Bois: 0 m^2", "Anion gap: 0", "MAP: 0 mmHg", "Corrected Na (factor 1.6):
+// -1.6 mEq/L". Those are not results, and a reader who has entered nothing has
+// asked nothing.
+//
+// `numOrNull` reads a genuinely empty field as null while a typed 0 still reads
+// as 0 -- the same distinction spec-v930 drew for the scores. `needValues`
+// prints what is still missing, by the name the reader sees on the label, and
+// tells the caller to stop.
+function numOrNull(id) {
+  const n = document.getElementById(id);
+  if (!n || String(n.value).trim() === '') return null;
+  return Number(n.value);
+}
+function needValues(o, pairs) {
+  const missing = pairs.filter(([, v]) => v == null || Number.isNaN(v)).map(([label]) => label);
+  if (!missing.length) return false;
+  const list = missing.length === 1 ? missing[0]
+    : `${missing.slice(0, -1).join(', ')} and ${missing[missing.length - 1]}`;
+  o.appendChild(el('p', { class: 'muted', text: `Enter ${list} to calculate.` }));
+  return true;
+}
 // spec-v59 §2.5: surface a physiologic-plausibility advisory for each entered
 // value that falls outside its BOUNDS envelope. The advisory never changes the
 // computed number; it flags a frankly-impossible input (e.g. glucose 1e9).
@@ -110,7 +135,8 @@ export const renderers = {
     ]));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
-      const w = unitNum('w'), h = unitNum('h');
+      const w = unitNumOpt('w'), h = unitNumOpt('h');
+      if (needValues(o, [['a weight', w], ['a height', h]])) return;
       resultRow(o, [
         { label: 'Du Bois', value: C.bsaDuBois({ weightKg: w, heightCm: h }), units: 'm^2' },
         { label: 'Mosteller', value: C.bsaMosteller({ weightKg: w, heightCm: h }), units: 'm^2' },
@@ -124,7 +150,8 @@ export const renderers = {
     root.appendChild(field('Diastolic BP (mmHg)', 'd'));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
-      const sbp = num('s'), dbp = num('d');
+      const sbp = numOrNull('s'), dbp = numOrNull('d');
+      if (needValues(o, [['a systolic BP', sbp], ['a diastolic BP', dbp]])) return;
       o.appendChild(el('p', { text: `MAP: ${C.map({ sbp, dbp })} mmHg` }));
       adviseAll(o, [['sbp', sbp], ['dbp', dbp]]);
     });
@@ -201,7 +228,9 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       const albRaw = document.getElementById('alb').value;
-      const r = C.anionGap({ sodium: num('na'), chloride: num('cl'), bicarbonate: num('hco3'), albuminGdl: albRaw === '' ? null : unitNum('alb') });
+      const na = numOrNull('na'), cl = numOrNull('cl'), hco3 = numOrNull('hco3');
+      if (needValues(o, [['a sodium', na], ['a chloride', cl], ['a bicarbonate', hco3]])) return;
+      const r = C.anionGap({ sodium: na, chloride: cl, bicarbonate: hco3, albuminGdl: albRaw === '' ? null : unitNum('alb') });
       const items = [{ label: 'Anion gap', value: r.anionGap }];
       if (r.correctedAnionGap != null) items.push({ label: 'Albumin-corrected', value: r.correctedAnionGap });
       resultRow(o, items);
@@ -214,7 +243,8 @@ export const renderers = {
     root.appendChild(unitField('Albumin', 'alb', ALBUMIN_UNITS));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
-      const measuredCa = unitNum('ca'), albuminGdl = unitNum('alb');
+      const measuredCa = unitNumOpt('ca'), albuminGdl = unitNumOpt('alb');
+      if (needValues(o, [['a measured calcium', measuredCa], ['an albumin', albuminGdl]])) return;
       o.appendChild(el('p', { text: `Corrected calcium: ${C.correctedCalcium({ measuredCa, albuminGdl })} mg/dL` }));
       adviseAll(o, [['calcium', measuredCa], ['albumin', albuminGdl]]);
     });
@@ -228,7 +258,8 @@ export const renderers = {
     const deriv = renderDerivation(META['corrected-sodium']);
     if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const measuredNa = num('na'), glucose = unitNum('g');
+      const measuredNa = numOrNull('na'), glucose = unitNumOpt('g');
+      if (needValues(o, [['a measured sodium', measuredNa], ['a glucose', glucose]])) return;
       const inputs = { measuredNa, glucose };
       const r = C.correctedSodium(inputs);
       resultRow(o, [
@@ -307,7 +338,9 @@ export const renderers = {
     root.appendChild(field('Years smoked', 'y'));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
-      o.appendChild(el('p', { text: `Pack-years: ${C.packYears({ packsPerDay: num('p'), years: num('y') })}` }));
+      const packs = numOrNull('p'), years = numOrNull('y');
+      if (needValues(o, [['packs per day', packs], ['years smoked', years]])) return;
+      o.appendChild(el('p', { text: `Pack-years: ${C.packYears({ packsPerDay: packs, years })}` }));
     });
     ['p', 'y'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
@@ -330,7 +363,9 @@ export const renderers = {
     root.appendChild(field('Heart rate (bpm)', 'hr'));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
-      const r = C.qtc({ qtMs: num('qt'), hrBpm: num('hr') });
+      const qtMs = numOrNull('qt'), hrBpm = numOrNull('hr');
+      if (needValues(o, [['a QT interval', qtMs], ['a heart rate', hrBpm]])) return;
+      const r = C.qtc({ qtMs, hrBpm });
       o.appendChild(el('ul', {}, [
         el('li', { text: `Bazett: ${r.bazett} ms` }),
         el('li', { text: `Fridericia: ${r.fridericia} ms` }),
@@ -411,7 +446,13 @@ export const renderers = {
     const deriv = renderDerivation(META['osmolal-gap']);
     if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const inputs = { measuredOsm: num('measured'), sodium: num('og-na'), glucoseMgDl: unitNum('og-glu'), bunMgDl: unitNum('og-bun'), etohMgDl: num('og-etoh') || 0 };
+      const measuredOsm = numOrNull('measured');
+      const sodium = numOrNull('og-na');
+      const glucoseMgDl = unitNumOpt('og-glu');
+      const bunMgDl = unitNumOpt('og-bun');
+      if (needValues(o, [['a measured osmolality', measuredOsm], ['a sodium', sodium],
+        ['a glucose', glucoseMgDl], ['a BUN', bunMgDl]])) return;
+      const inputs = { measuredOsm, sodium, glucoseMgDl, bunMgDl, etohMgDl: numOrNull('og-etoh') || 0 };
       const r = V4.osmolalGap(inputs);
       resultRow(o, [
         { text: `Calculated osm: ${r.calculatedOsm.toFixed(1)}` },
@@ -448,7 +489,9 @@ export const renderers = {
     const deriv = renderDerivation(META.winters);
     if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const inputs = { hco3: num('wf-hco3'), measuredPaco2: num('wf-paco2') || NaN };
+      const hco3 = numOrNull('wf-hco3');
+      if (needValues(o, [['a bicarbonate', hco3]])) return;
+      const inputs = { hco3, measuredPaco2: numOrNull('wf-paco2') ?? NaN };
       const r = V4.wintersFormula(inputs);
       resultRow(o, [
         { text: `Expected PaCO2: ${r.expectedPaco2Low.toFixed(1)} to ${r.expectedPaco2High.toFixed(1)} mmHg` },
@@ -484,11 +527,16 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       const sex = document.getElementById('bw-sex').value;
-      const ibw = V4.ibwDevine({ heightInches: num('bw-hin'), sex });
-      const adj = V4.adjBW({ ibw, actualKg: unitNum('bw-kg') });
-      const heightCm = num('bw-hin') * 2.54;
-      const bsaM = C.bsaMosteller({ weightKg: unitNum('bw-kg'), heightCm });
-      const bsaD = C.bsaDuBois({ weightKg: unitNum('bw-kg'), heightCm });
+      const heightIn = numOrNull('bw-hin');
+      const weightKg = unitNumOpt('bw-kg');
+      // A blank height used to give "IBW (Devine): 50.0 kg" -- the formula's
+      // constant, a plausible-looking dosing weight for nobody.
+      if (needValues(o, [['a height', heightIn], ['a weight', weightKg]])) return;
+      const ibw = V4.ibwDevine({ heightInches: heightIn, sex });
+      const adj = V4.adjBW({ ibw, actualKg: weightKg });
+      const heightCm = heightIn * 2.54;
+      const bsaM = C.bsaMosteller({ weightKg, heightCm });
+      const bsaD = C.bsaDuBois({ weightKg, heightCm });
       resultRow(o, [
         { text: `IBW (Devine): ${ibw.toFixed(1)} kg` },
         { text: `AdjBW (40% rule): ${adj.toFixed(1)} kg` },

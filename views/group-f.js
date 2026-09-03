@@ -15,7 +15,7 @@ import {
   insulinCorrection, electrolyteReplacement, crrtDose, ecmoTitration,
 } from '../lib/scoring-v4.js';
 import { insulinDripRate } from '../lib/insulin-drip.js';
-import { unitField, unitNum, WEIGHT_UNITS, CALCIUM_MMOL_UNITS } from '../lib/field-units.js';
+import { unitField, unitNum, unitNumOpt, WEIGHT_UNITS, CALCIUM_MMOL_UNITS } from '../lib/field-units.js';
 import { resultRow } from '../lib/result-copy.js';
 import { META } from '../lib/meta.js';
 import { renderDerivation, updateDerivationSteps } from '../lib/derivation.js';
@@ -41,6 +41,25 @@ function selectField(label, id, options) {
 }
 function out() { return el('div', { id: 'q-results', 'aria-live': 'polite' }); }
 function nv(id) { return Number(document.getElementById(id).value); }
+// spec-v1013: a calculation with no inputs is not a result of zero. `nv()` is
+// `Number(input.value)` and `Number('')` is 0, so an empty form asked these
+// formulas about a patient made of zeros and they answered -- "Total dose: 0 mg",
+// "Suggested rate (example only): 0 units/hr", "24-hour acetaminophen total: 0
+// mg / Remaining to ceiling: 4000 mg". The last is the worst shape: it reports
+// headroom nobody has measured. A typed 0 still reads as 0.
+function nvOrNull(id) {
+  const n = document.getElementById(id);
+  if (!n || String(n.value).trim() === '') return null;
+  return Number(n.value);
+}
+function needValues(o, pairs) {
+  const missing = pairs.filter(([, v]) => v == null || Number.isNaN(v)).map(([label]) => label);
+  if (!missing.length) return false;
+  const list = missing.length === 1 ? missing[0]
+    : `${missing.slice(0, -1).join(', ')} and ${missing[missing.length - 1]}`;
+  o.appendChild(el('p', { class: 'muted', text: `Enter ${list} to calculate.` }));
+  return true;
+}
 function safe(o, fn) { clear(o); try { fn(); } catch (err) { o.appendChild(el('p', { class: 'muted', text: err.message })); } }
 
 export const renderers = {
@@ -69,8 +88,10 @@ export const renderers = {
     root.appendChild(field('Dose unit (e.g. mg/kg, mcg/kg)', 'u', { type: 'text', placeholder: 'mg/kg' }));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
-      const weightKg = unitNum('w');
-      const total = C.weightDose({ weightKg, dosePerKg: nv('d') });
+      const weightKg = unitNumOpt('w');
+      const dosePerKg = nvOrNull('d');
+      if (needValues(o, [['a weight', weightKg], ['a dose per kg', dosePerKg]])) return;
+      const total = C.weightDose({ weightKg, dosePerKg });
       const unit = document.getElementById('u').value.trim().replace(/\/kg$/, '') || 'units';
       o.appendChild(el('p', { text: `Total dose: ${total} ${unit}` }));
       // Sanity bounds (general adult heuristic): warn when computed exceeds 5x typical adult dose.
@@ -138,7 +159,7 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       clear(o);
-      const r = insulinDripRate({ protocol: document.getElementById('p').value, bg: nv('bg') });
+      const r = insulinDripRate({ protocol: document.getElementById('p').value, bg: nvOrNull('bg') });
       if (!r) { o.appendChild(el('p', { class: 'muted', text: 'Enter a current blood glucose.' })); return; }
       o.appendChild(el('p', { text: `Suggested rate (example only): ${r.rate} units/hr` }));
       o.appendChild(el('p', { class: 'muted', text: 'Example data only. Always follow the active institution protocol and verify with the bedside RN/MD.' }));
@@ -271,7 +292,12 @@ export const renderers = {
     root.appendChild(field('Daily free-water goal (mL)', 'efw-goal', { placeholder: '1500' }));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
-      const r = C8.enteralFreeWater({ dailyVolumeMl: nv('efw-vol'), freeWaterPct: nv('efw-fw'), goalMl: nv('efw-goal') });
+      const dailyVolumeMl = nvOrNull('efw-vol');
+      const freeWaterPct = nvOrNull('efw-fw');
+      const goalMl = nvOrNull('efw-goal');
+      if (needValues(o, [['a daily formula volume', dailyVolumeMl],
+        ['a free-water fraction', freeWaterPct], ['a daily free-water goal', goalMl]])) return;
+      const r = C8.enteralFreeWater({ dailyVolumeMl, freeWaterPct, goalMl });
       resultRow(o, [
         { label: 'Free water in formula', value: fmt(r.freeWaterFromFormulaMl), units: 'mL/day' },
         { label: 'Additional flush needed', value: fmt(r.additionalFlushMl), units: 'mL/day' },
@@ -297,10 +323,17 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       let total = 0;
+      let sources = 0;
       for (const [d, n] of [['apap-d1', 'apap-n1'], ['apap-d2', 'apap-n2'], ['apap-d3', 'apap-n3']]) {
-        const dose = nv(d);
-        const freq = nv(n);
-        if (dose > 0 && freq > 0) total += C8.apapSourceTotal({ doseMg: dose, dosesPerDay: freq }).totalMg;
+        const dose = nvOrNull(d);
+        const freq = nvOrNull(n);
+        if (dose > 0 && freq > 0) { sources += 1; total += C8.apapSourceTotal({ doseMg: dose, dosesPerDay: freq }).totalMg; }
+      }
+      // "Remaining to ceiling: 4000 mg" from an empty form reads as headroom
+      // somebody has checked for. Nobody has.
+      if (!sources) {
+        o.appendChild(el('p', { class: 'muted', text: 'Add at least one source: its milligrams per dose and how many doses in the last 24 hours.' }));
+        return;
       }
       const ceiling = Number(document.getElementById('apap-ceiling').value);
       const r = C8.apapCeilingCheck({ totalMg: total, ceilingMg: ceiling });

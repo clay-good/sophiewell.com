@@ -8,6 +8,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Fourteen calculators answered a form with nothing in it.** Body surface area
+  said "0 m²", the corrected-sodium tool reported a *negative* sodium, the
+  ideal-body-weight suite produced "IBW (Devine): 50.0 kg" from a blank height —
+  the formula's constant, a plausible-looking dosing weight for nobody — and four
+  dose tools answered too, the acetaminophen tally reporting "Remaining to
+  ceiling: 4000 mg" of headroom nobody had measured. Each now asks for the values
+  it needs, by the names on its own labels, and answers as before once they are
+  there. See `docs/spec-v1013.md`.
+
 - **A test named "the page never states a number that does not exist" was
   passing while 87 tools stated 1e+308.** Number fields accept scientific
   notation, so typing "7e" in front of an existing 70 enters 7 x 10^70 and

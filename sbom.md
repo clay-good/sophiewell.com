@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `122f489c9b169eab`
-Generated: 2026-09-03T15:40:06.329Z
+Build ID: `217ee1d5b3f29f3d`
+Generated: 2026-09-03T16:03:15.209Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -402,7 +402,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/inflam-v230.js` | 6411 | `bf7c4bf274d5eb4ccffdd80ea334f09b85a94f9357dd6aeae093f321845da0ef` |
 | `lib/inflam-v267.js` | 3039 | `e45a593d4423f6958e9a7bfe34b57f3b2c09df7a54083d602f224fddd1b7e15d` |
 | `lib/inflam-v268.js` | 3148 | `f1f23e1e817f4b4761a70c83c2662269970db006d974607329160c2acbf9f021` |
-| `lib/insulin-drip.js` | 1130 | `d5143980d2697143a2c2e45f5a71042571d668288883aa9daaa24681ef06c600` |
+| `lib/insulin-drip.js` | 1538 | `4ebceacf967b510f03fb40afc682bb2b2e221e0fe78701f1cef3e326bff015c6` |
 | `lib/interchest-v693.js` | 4205 | `a3e8e532e8f39429f920c0bafc659368ac8667e17d1743668aeb2cbcf41ae455` |
 | `lib/intermacs-profile-v494.js` | 4333 | `4b56fe0900a9e1f9441ee1c8259959e261405815f4b3f1e168e6b983ea897fab` |
 | `lib/intertak-v788.js` | 4902 | `499372b9e1c30ec0e4bc2cf6558b1fd0424846b0e38b9d086906d7f6b0f58893` |
@@ -1701,8 +1701,8 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-a.js` | 577 | `eed37c656d1fa00c097a07f07db4b1b6ac7a0a74bafc210978265a1d90856bd7` |
 | `views/group-b.js` | 74408 | `522243d08548bc3f263a37b5c8bfb88bc21a057503012bc16284cf78df1949f9` |
 | `views/group-c.js` | 24124 | `4517f2f966279a4af40b98aa5197db7d2fee3b014785cb6e6ac317fd2157cbf5` |
-| `views/group-e.js` | 38272 | `cf95f6e97681ebe6314b2eedfaf02511a6621cd7d76c55e0cabc5db6e45443a4` |
-| `views/group-f.js` | 46306 | `5c9b9e089fc7b0b7a51bb1fbac090ee57584733325ee52be8db21be1e9e988b7` |
+| `views/group-e.js` | 40921 | `f63d2c942b3a081e318aa15f46c9cf33002af08f1e7896bb8d4b15a275527719` |
+| `views/group-f.js` | 48082 | `31f6fa8908d1600e9a5ac84af95b78c2ae162fb00cf593a8c30649999a7e3268` |
 | `views/group-g.js` | 231546 | `aa7b5a97757aece27687cbe3b288d2c99f798478f18287dab9786323c3d7540a` |
 | `views/group-h.js` | 28477 | `f9a8dc4ddbf7987b39a6bb88908d3523599eddaca1d6fcde22dbd847b4594b14` |
 | `views/group-i.js` | 23640 | `c4f690dc1168b83ab72633c8b853ad8ba806b4aad48d173f631f40dfb164bc61` |
