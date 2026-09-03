@@ -6,6 +6,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed
+
+- **The README and the product-decisions doc now describe what a tool does with
+  a value it has not been given.** Ten changes established the behavior and only
+  the per-change specs recorded it: a blank field is a gap and not a zero, a
+  calculation with no inputs is not a result of zero, an incomplete score may
+  rule in and never rule out (and which reading is the reassuring one depends on
+  which direction the scale runs), and a checkbox is an answer while a blank
+  measurement is a gap.
+
 ### Fixed
 
 - **The last four from the empty-form sweep, and one rule that runs backwards.**
