@@ -255,3 +255,43 @@ test('lace: a length of stay alone does not read as low risk', async ({ page }) 
   expect(text).toMatch(/at least 1 so far/);
   expect(text).not.toMatch(/low risk of 30-day death/);
 });
+
+// spec-v1025: found by a different question -- which tiles compute without the
+// fields the AGENT surface declares required? The MCP registry marks a field
+// `required`, and computeCalculator refuses without it; the browser had no such
+// contract, and 44 tiles answered anyway. Most are the checklist family the
+// empty-form ledger already carries, and four were not:
+//
+//   aa-gradient      "PAO2: 0 mmHg, A-a gradient: 0 mmHg"
+//   anion-gap-dd     "Anion gap: 0 ... delta/delta ratio = -0.50, Pure non-AG
+//                    metabolic acidosis" -- a named acid-base diagnosis. Its
+//                    sibling anion-gap was guarded at spec-v1013; this one was
+//                    missed because it lives in a different renderer.
+//   rhig-dose        "RhIG dose: 1 standard 300 ug vial(s)" -- a dose, from a
+//                    Kleihauer-Betke nobody had run
+//   meld-childpugh   "MELD-3.0: 20 - High; Child-Pugh: 8 - Class B" -- a
+//                    transplant-priority score from five cleared labs
+const WAVE_5 = [
+  ['aa-gradient', /Enter an FiO2/],
+  ['anion-gap-dd', /Enter a sodium/],
+  ['rhig-dose', /Enter a maternal blood volume/],
+  ['meld-childpugh', /Enter a bilirubin/],
+];
+
+for (const [id, want] of WAVE_5) {
+  test(`${id}: an empty form is asked to fill in, not answered`, async ({ page }) => {
+    await page.goto(`/#${id}`);
+    await page.waitForSelector('#q-results');
+    await page.waitForTimeout(350);
+    await page.evaluate(() => {
+      for (const n of document.querySelectorAll('#tool-body input[type=number]')) {
+        n.value = '';
+        n.dispatchEvent(new Event('input', { bubbles: true }));
+        n.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+    });
+    await page.waitForTimeout(250);
+    const text = (await page.locator('#q-results').innerText()).replace(/\s+/g, ' ');
+    expect(text, `${id} answered an empty form`).toMatch(want);
+  });
+}

@@ -8,7 +8,7 @@ import { META } from '../lib/meta.js';
 import { renderDerivation, updateDerivationSteps } from '../lib/derivation.js';
 import { fmt } from '../lib/num.js';
 import { trend } from '../lib/trend.js';
-import { unitField, unitNum, BILIRUBIN_UNITS, TEMP_UNITS } from '../lib/field-units.js';
+import { unitField, unitNum, unitNumOpt, BILIRUBIN_UNITS, TEMP_UNITS } from '../lib/field-units.js';
 
 function rangeField(label, id, min, max, value) {
   const wrap = el('p');
@@ -604,13 +604,32 @@ export const renderers = {
     const deriv = renderDerivation(META['meld-childpugh']);
     if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
+      // spec-v1025: five values the agent surface declares required, read here
+      // with nv() -- so a cleared form answered "MELD-3.0: 20 - High;
+      // Child-Pugh: 8 - Class B", a transplant-priority score and a cirrhosis
+      // class for a patient with no labs at all.
+      const bilirubin = unitNumOpt('m-bili');
+      const inr = nvOrNull('m-inr');
+      const creatinine = nvOrNull('m-cr');
+      const sodium = nvOrNull('m-na');
+      const albumin = nvOrNull('m-alb');
+      const missing = [
+        ['a bilirubin', bilirubin], ['an INR', inr], ['a creatinine', creatinine],
+        ['a sodium', sodium], ['an albumin', albumin],
+      ].filter(([, v]) => v == null).map(([label]) => label);
+      if (missing.length) {
+        const list = missing.length === 1 ? missing[0]
+          : `${missing.slice(0, -1).join(', ')} and ${missing[missing.length - 1]}`;
+        o.appendChild(el('p', { class: 'muted', text: `Enter ${list} to score. Both MELD-3.0 and Child-Pugh are read from these labs.` }));
+        return;
+      }
       const m = S4.meld30({
-        bilirubin: unitNum('m-bili'), inr: nv('m-inr'), creatinine: nv('m-cr'),
-        sodium: nv('m-na'), albumin: nv('m-alb'),
+        bilirubin, inr, creatinine,
+        sodium, albumin,
         sex: document.getElementById('m-sex').value, hadDialysisTwiceLastWeek: checked('m-dial'),
       });
       const cp = S4.childPugh({
-        bilirubin: unitNum('m-bili'), albumin: nv('m-alb'), inr: nv('m-inr'),
+        bilirubin, albumin, inr,
         ascites: document.getElementById('cp-asc').value,
         encephalopathy: document.getElementById('cp-enc').value,
       });

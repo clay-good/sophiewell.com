@@ -261,7 +261,15 @@ export const renderers = {
     root.appendChild(field('Fetal cells on Kleihauer-Betke (%)', 'rh-kb', { min: 0, max: 100, placeholder: 'e.g. 1.5' }));
     const o = out(); root.appendChild(o);
     wire(['rh-bv', 'rh-kb'], () => safe(o, () => {
-      const r = C.rhigDose({ maternalBloodVolumeMl: val('rh-bv'), fetalCellPct: val('rh-kb') });
+      const maternalBloodVolumeMl = optNum('rh-bv');
+      const fetalCellPct = optNum('rh-kb');
+      // spec-v1025: both are declared required on the agent surface. Read as
+      // zeros the tile answered "Estimated fetomaternal hemorrhage: 0.0 mL /
+      // RhIG dose: 1 standard 300 ug vial(s)" -- a dose, from a Kleihauer-Betke
+      // nobody had run.
+      if (needValues(o, [['a maternal blood volume', maternalBloodVolumeMl],
+        ['the fetal-cell percentage', fetalCellPct]])) return;
+      const r = C.rhigDose({ maternalBloodVolumeMl, fetalCellPct });
       resultRow(o, [
         { label: 'Estimated fetomaternal hemorrhage', value: fmt(r.fmhMl, { digits: 1 }), units: 'mL' },
         { label: 'RhIG dose', value: fmt(r.vials), units: 'standard 300 µg vial(s)', cls: 'warn' },

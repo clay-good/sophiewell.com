@@ -6,6 +6,17 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed
+
+- **Four more tools computed without the values they say they need.** The agent
+  interface refuses a calculation when a field it marks required is missing; the
+  browser had no such contract, and 44 tools answered anyway. Most were
+  checklists where nothing ticked really is a zero — but the A-a gradient
+  returned "0 mmHg", the delta-delta tool named an acid-base diagnosis, the RhIG
+  tool gave a dose from a Kleihauer-Betke nobody ran, and MELD/Child-Pugh
+  returned a transplant-priority score from five cleared labs. See
+  `docs/spec-v1025.md`.
+
 ### Added
 
 - **A check that catches a tool whose answer depends on when you read it.** Four

@@ -281,7 +281,11 @@ export const renderers = {
     const deriv = renderDerivation(META['aa-gradient']);
     if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const fio2 = num('fio2'), paco2 = num('paco2'), pao2 = num('pao2');
+      const fio2 = numOrNull('fio2'), paco2 = numOrNull('paco2'), pao2 = numOrNull('pao2');
+      // spec-v1025: all three are declared required on the agent surface, which
+      // refuses without them; the browser read them as zeros and answered
+      // "PAO2: 0 mmHg, A-a gradient: 0 mmHg".
+      if (needValues(o, [['an FiO2', fio2], ['a PaCO2', paco2], ['a PaO2', pao2]])) return;
       const inputs = { fio2, paco2, pao2 };
       const r = C.aaGradient(inputs);
       resultRow(o, [
@@ -400,9 +404,15 @@ export const renderers = {
     root.appendChild(unitField('Albumin (optional)', 'alb', ALBUMIN_UNITS));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
-      const ag = C.anionGap({ sodium: num('na'), chloride: num('cl'), bicarbonate: num('hco3'), albuminGdl: unitNum('alb') || undefined });
+      const sodium = numOrNull('na'), chloride = numOrNull('cl'), bicarbonate = numOrNull('hco3');
+      // spec-v1025: the sibling anion-gap tile was guarded at spec-v1013 and this
+      // one was not, so it kept answering "Anion gap: 0 ... delta/delta ratio =
+      // -0.50, Pure non-AG metabolic acidosis" -- a named acid-base diagnosis
+      // from three empty fields.
+      if (needValues(o, [['a sodium', sodium], ['a chloride', chloride], ['a bicarbonate', bicarbonate]])) return;
+      const ag = C.anionGap({ sodium, chloride, bicarbonate, albuminGdl: unitNumOpt('alb') || undefined });
       const baseAg = ag.correctedAnionGap != null ? ag.correctedAnionGap : ag.anionGap;
-      const dd = V4.deltaDelta({ anionGap: baseAg, hco3: num('hco3') });
+      const dd = V4.deltaDelta({ anionGap: baseAg, hco3: bicarbonate });
       resultRow(o, [
         { label: 'Anion gap', value: ag.anionGap },
         ag.correctedAnionGap != null ? { label: 'Albumin-corrected AG', value: ag.correctedAnionGap } : null,
