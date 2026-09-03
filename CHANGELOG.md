@@ -8,6 +8,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Twelve of the prior-authorization linter's source links were dead, and those
+  links print into the report a biller reads.** Nine payer provider portals had
+  reorganized and three CMS pages had moved; every one was confirmed dead with a
+  real browser user-agent, not just a scripted request. All twelve now resolve,
+  and the six that had merely redirected point at their destination so a reader
+  lands in one hop — 72 ok / 6 moved / 12 dead becomes 90 ok / 0 moved / 0 dead.
+  The fix had to reach three copies, not one: the ledger, its generated module,
+  and 281 rule citations that carry the URL a second time. `lastVerified` was
+  deliberately not bumped: a working link is not a re-read policy, and twenty
+  rows stay in warning because that re-read is still owed. See
+  `docs/spec-v1002.md`.
+
 - **The checks that catch drifting numbers had drifting numbers in their own
   comments.** One said eight tiles were grandfathered thirty lines above a list
   of twelve; another said "the remaining 254 tiles" with 1,704 in the catalog.
