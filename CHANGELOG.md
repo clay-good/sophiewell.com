@@ -16,6 +16,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   which direction the scale runs), and a checkbox is an answer while a blank
   measurement is a gap.
 
+### Changed
+
+- **An exemption granted for one number was covering a whole sentence.** The
+  check that every worked example still produces its documented numbers lets a
+  tool opt out when its example text contains numbers the tool never computes.
+  Pregnancy dating was opted out because "T1 discordance" is a trimester label —
+  which also exempted the "~3 days" in the same sentence, the figure that was
+  printing as 172 days for two years. A digit glued to a letter is now skipped as
+  a token rather than buying the whole tool a pass. Reported honestly in
+  `docs/spec-v1023.md`: this narrows the exemption but would not have caught that
+  bug, because the check asks only whether each number appears somewhere.
+
 ### Fixed
 
 - **The out-of-range warning interrupted screen readers, and was not attached to

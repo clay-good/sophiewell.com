@@ -56,6 +56,12 @@ function numericFacts(s) {
     const value = Number(m[2]);
     // Skip 4-digit year-shaped integers (citation years).
     if (Number.isInteger(value) && value >= 1900 && value <= 2100 && /^\d{4}$/.test(m[2])) continue;
+    // spec-v1023: a digit glued to a letter is part of a LABEL, not a value --
+    // "T1 discordance" is a trimester, "G2" a GOLD grade, "S3" a heart sound.
+    // Those were the reason whole tiles sat in SCENARIO_ONLY below, which
+    // exempted every real number in the same sentence along with them.
+    const before = s[m.index + (m[1] ? m[1].length : 0) - 1];
+    if (before && /[A-Za-z]/.test(before)) continue;
     facts.push({
       value,
       raw,
@@ -100,8 +106,14 @@ const SCENARIO_ONLY = new Set([
   //   hipaa-auth          "45 CFR 164.508" is the regulation the letter cites
   //   vent-sbt-peep       "all 5 Boles 2007 criteria" counts the source's list
   //   sepsis-bundle-clock "hour-1 elements", "at 6 h" name SSC bundle windows
-  //   preg-dating         "T1 discordance" is a trimester label
-  'hipaa-auth', 'vent-sbt-peep', 'sepsis-bundle-clock', 'preg-dating',
+  //
+  // spec-v1023: preg-dating is NO LONGER HERE. Its skip was granted for the "1"
+  // inside the trimester label "T1", and it exempted the rest of the sentence
+  // with it -- including "~3 days", the discordance the tile actually computes.
+  // The tile printed 172 days for two years (spec-v1018) and this sweep had
+  // nothing to say, because one label had bought the whole tile a pass. A digit
+  // glued to a letter is now skipped as a token, not as a tile.
+  'hipaa-auth', 'vent-sbt-peep', 'sepsis-bundle-clock',
   // expected includes derivation breakdown the tool doesn't echo
   'maint-fluids', 'iron-ganzoni',
   // expected hour-band is local-tz-dependent (datetime-local input,
