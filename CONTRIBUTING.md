@@ -127,6 +127,22 @@ When one fails it names itself; this is where to look it up.
 | `check-gates-documented.mjs` | a gate joining this chain without a row in this table |
 | `build-report-catalog.mjs --check` | the report Worker's id/name map out of date with the catalog |
 
+Two more checks are **network** and therefore not in that chain, because a
+publisher's outage must not fail a build for a reason unrelated to the change.
+They run on the monthly cadence workflow and can be run by hand:
+
+```bash
+node scripts/check-citation-links.mjs
+```
+
+`check-citation-links` asks whether every source link a calculator offers still
+resolves; `check-citation-agreement` asks the harder question of whether it opens
+the paper the citation names; `check-pa-source-urls` does the same for the
+prior-auth ledger; and `check-doc-links` does it for the documents in this
+repository. All four are warn-only, and since spec-v1004 the monthly job files an
+issue when any of them finds a dead link, because the previous arrangement
+reported into a log nobody opened while twelve authorities sat dead for months.
+
 Before opening a PR, run `npm run release:check` locally.
 
 **It is not the whole of CI.** CI runs three jobs — `unit`, `mcp` and `e2e` —

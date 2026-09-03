@@ -54,7 +54,7 @@ or with `curl -I https://sophiewell.com/`:
 - `Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), accelerometer=()`
 
 External grades to check:
-- https://observatory.mozilla.org/analyze/sophiewell.com (target A+)
+- https://developer.mozilla.org/en-US/observatory/analyze?host=sophiewell.com (target A+)
 - https://securityheaders.com/?q=sophiewell.com (target A+)
 - https://hstspreload.org/?domain=sophiewell.com (after deploy)
 

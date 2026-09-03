@@ -14,6 +14,9 @@ on:
 
 permissions:
   contents: read
+  # spec-v1004: so a dead-link finding can be filed as an issue rather than
+  # printed into a log nobody opens.
+  issues: write
 
 jobs:
   cadence:
@@ -33,5 +36,52 @@ jobs:
       # resolving, and 18 of the ledger's 84 authorities had gone to a 404. This
       # does the half a machine can do. Warn-only and NETWORK, which is why it lives
       # here and not in `npm run lint` -- lint stays offline and deterministic.
+      # spec-v1002 found twelve dead authorities in one run of the step below.
+      # They had been dead for months while this job faithfully reported them --
+      # into a log nobody opens. Warn-only is still right (a publisher outage
+      # must not fail CI), but the report has to reach a person, so the results
+      # are captured and, if anything is DEAD, filed as an issue.
       - name: Check PA source URLs still resolve (warn-only)
-        run: node scripts/check-pa-source-urls.mjs
+        id: pa_urls
+        run: |
+          node scripts/check-pa-source-urls.mjs | tee /tmp/pa-urls.txt
+
+      # spec-v1004: the same question for the documents a contributor reads.
+      # docs/legal.md had cited NADAC at a path that moved.
+      - name: Check living-doc links still resolve (warn-only)
+        run: |
+          node scripts/check-doc-links.mjs | tee /tmp/doc-links.txt
+
+      - name: File an issue if any source link is dead
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          dead=0
+          for f in /tmp/pa-urls.txt /tmp/doc-links.txt; do
+            [ -f "$f" ] || continue
+            grep -qE '^[A-Za-z-]* ?DEAD \(' "$f" && dead=1 || true
+            grep -qE '[1-9][0-9]* dead' "$f" && dead=1 || true
+          done
+          {
+            echo "## Monthly source-link check"
+            echo
+            echo '```'
+            cat /tmp/pa-urls.txt /tmp/doc-links.txt 2>/dev/null || true
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+          if [ "$dead" = "0" ]; then
+            echo "no dead links; nothing to file"
+            exit 0
+          fi
+          title="chore: dead source links found by the monthly check"
+          existing=$(gh issue list --state open --search "$title in:title" --json number --jq '.[0].number' || echo "")
+          body=$(printf '%s\n\n```\n%s\n```\n' \
+            "The monthly link check found at least one dead source link. A rule or citation that points at a dead page reads as authoritative while being wrong. Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
+            "$(cat /tmp/pa-urls.txt /tmp/doc-links.txt 2>/dev/null)")
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --body "$body"
+          else
+            gh issue create --title "$title" --body "$body"
+          fi

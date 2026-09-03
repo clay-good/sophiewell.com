@@ -22,7 +22,7 @@ Citation: https://www.cms.gov/medicare/payment/fee-schedules/physician
 
 NADAC. National Average Drug Acquisition Cost. Published by CMS. Public
 domain. Weekly release.
-Citation: https://data.medicaid.gov/dataset/nadac-national-average-drug-acquisition-cost
+Citation: https://www.medicaid.gov/medicaid/nadac
 
 NDC Directory. Published by the FDA. Public domain. Daily release.
 Citation: https://www.fda.gov/drugs/drug-approvals-and-databases/national-drug-code-directory

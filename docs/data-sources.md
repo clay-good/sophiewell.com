@@ -72,7 +72,7 @@ toxidromes table) were retired in spec-v29 wave 29-2 §2.3.
 
 ### FDA Prehospital Drug Labeling subset
 
-- Source URL: https://dailymed.nlm.nih.gov/
+- Source URL: https://dailymed.nlm.nih.gov/dailymed/
 - Publishing agency: FDA (DailyMed)
 - Status: Public domain
 - Cadence: As needed (manual review)

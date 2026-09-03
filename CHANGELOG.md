@@ -8,6 +8,17 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **The monthly link check had been reporting dead links to nobody.** The twelve
+  dead prior-auth sources fixed a moment ago had been dead for months, and the
+  job that finds them had been running on the first of every month and writing
+  its findings into a workflow log. It now writes them to the run summary and
+  opens an issue when anything is dead. A second check joins it for the
+  documents in this repository, which had never been swept: it found `legal.md`
+  citing NADAC at a page that moved, plus three relocations now pointing at
+  their destination. It reports a bot wall as a bot wall and does not call a
+  trailing slash a relocation, because a report that cries wolf is one people
+  stop reading. See `docs/spec-v1004.md`.
+
 - **Seven calculators linked their source to a sentence.** A dataset's "Source:"
   line becomes a link when the manifest carries a `sourceUrl`, and eleven
   manifests carried prose there — "FDA labels via DailyMed", "standard nutrition

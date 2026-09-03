@@ -35,7 +35,7 @@ zero-dependency posture, spec-v10 §6). Shape:
       "label": "CMS Medicare Coverage Database (NCDs, LCDs, LCAs)",
       "ruleFamily": "cms-ffs",
       "rules": ["R-PA-CMS-001", "R-PA-CMS-005"],
-      "url": "https://www.cms.gov/medicare-coverage-database/",
+      "url": "https://www.cms.gov/medicare-coverage-database/search.aspx",
       "lastVerified": "2026-05-28"
     }
   ],
@@ -492,7 +492,7 @@ and why:
   "label": "CMS Medicare Coverage Database (NCDs, LCDs, LCAs)",
   "ruleFamily": "cms-ffs",
   "rules": ["R-PA-CMS-001"],
-  "url": "https://www.cms.gov/medicare-coverage-database/",
+  "url": "https://www.cms.gov/medicare-coverage-database/search.aspx",
   "lastVerified": "2026-05-28",
   "disabled": { "since": "2026-06-01", "reason": "CMS Medicare Coverage Database URL returned 404 on 2026-06-01; re-point pending" }
 }
