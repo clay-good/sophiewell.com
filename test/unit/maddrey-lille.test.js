@@ -56,5 +56,5 @@ test('lille high (non-responder): renal insufficiency, no bili drop', () => {
 
 test('lille rejects zero PT', () => {
   assert.throws(() => lille({ ageYears: 50, albuminGDl: 3.0, creatinineMgDl: 0.9,
-    bilirubinDay0MgDl: 10, bilirubinDay7MgDl: 6, ptSec: 0 }), /ptSec/);
+    bilirubinDay0MgDl: 10, bilirubinDay7MgDl: 6, ptSec: 0 }), /pt\ssec/);
 });

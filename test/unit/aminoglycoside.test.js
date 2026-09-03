@@ -27,5 +27,5 @@ test('REFUSES dialysis and CrCl <20 (validity-window guard)', () => {
 
 test('rejects unknown drug and impossible weight', () => {
   assert.throws(() => aminoglycoside({ drug: 'vancomycin', weightKg: 70, crCl: 80 }), /drug must be/);
-  assert.throws(() => aminoglycoside({ drug: 'gentamicin', weightKg: 0, crCl: 80 }), /weightKg/);
+  assert.throws(() => aminoglycoside({ drug: 'gentamicin', weightKg: 0, crCl: 80 }), /weight\skg/);
 });

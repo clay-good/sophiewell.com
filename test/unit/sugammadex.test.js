@@ -24,5 +24,5 @@ test('immediate reversal: 16 mg/kg', () => {
 
 test('rejects unknown depth and impossible weight', () => {
   assert.throws(() => sugammadex({ weightKg: 70, depth: 'deep' }), /depth/);
-  assert.throws(() => sugammadex({ weightKg: 0, depth: 't2' }), /weightKg/);
+  assert.throws(() => sugammadex({ weightKg: 0, depth: 't2' }), /weight\skg/);
 });

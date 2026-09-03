@@ -54,6 +54,6 @@ test('timing warning when level drawn <6 h post-dose', () => {
 });
 
 test('rejects impossible CrCl / level', () => {
-  assert.throws(() => digoxin({ crCl: NaN }), /crCl/);
-  assert.throws(() => digoxin({ crCl: 60, levelNgMl: 99 }), /levelNgMl/);
+  assert.throws(() => digoxin({ crCl: NaN }), /cr\scl/);
+  assert.throws(() => digoxin({ crCl: 60, levelNgMl: 99 }), /level\sng\sml/);
 });

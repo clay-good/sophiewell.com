@@ -42,6 +42,6 @@ test('heparin weight cap at 150 kg surfaces a flag', () => {
 });
 
 test('heparin rejects impossible input', () => {
-  assert.throws(() => heparinNomogram({ weightKg: 0, indication: 'vte' }), /weightKg/);
-  assert.throws(() => heparinNomogram({ weightKg: NaN }), /weightKg/);
+  assert.throws(() => heparinNomogram({ weightKg: 0, indication: 'vte' }), /weight\skg/);
+  assert.throws(() => heparinNomogram({ weightKg: NaN }), /weight\skg/);
 });

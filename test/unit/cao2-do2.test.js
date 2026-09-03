@@ -26,5 +26,5 @@ test('cao2 high delivery: Hb 12, SaO2 100, PaO2 200, CO 8', () => {
 
 test('cao2 rejects impossible input', () => {
   assert.throws(() => cao2Do2({ hb: 0, sao2: 98, pao2: 100 }), /hb/);
-  assert.throws(() => cao2Do2({ hb: 15, sao2: 98, pao2: 100, cardiacOutput: 0 }), /cardiacOutput/);
+  assert.throws(() => cao2Do2({ hb: 15, sao2: 98, pao2: 100, cardiacOutput: 0 }), /cardiac\soutput/);
 });

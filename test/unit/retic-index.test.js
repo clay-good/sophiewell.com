@@ -33,5 +33,5 @@ test('retic severe anemia: 3% at Hct 15 -> factor 2.5, RPI 0.4', () => {
 
 test('retic rejects impossible input', () => {
   assert.throws(() => reticIndex({ reticPct: 5, hct: 0 }), /hct/);
-  assert.throws(() => reticIndex({ reticPct: NaN, hct: 30 }), /reticPct/);
+  assert.throws(() => reticIndex({ reticPct: NaN, hct: 30 }), /retic\spct/);
 });

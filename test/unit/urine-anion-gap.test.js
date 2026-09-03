@@ -22,5 +22,5 @@ test('uag zero boundary: 30 + 25 - 55 = 0 (impaired-excretion side)', () => {
 });
 
 test('uag rejects impossible input', () => {
-  assert.throws(() => urineAnionGap({ urineNa: NaN, urineK: 25, urineCl: 55 }), /urineNa/);
+  assert.throws(() => urineAnionGap({ urineNa: NaN, urineK: 25, urineCl: 55 }), /urine\sna/);
 });

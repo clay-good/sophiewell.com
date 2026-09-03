@@ -33,5 +33,5 @@ test('dp invalid: plateau <= PEEP returns null with guard note', () => {
 });
 
 test('driving-pressure rejects impossible input', () => {
-  assert.throws(() => drivingPressure({ plateau: 25, peep: 10, tidalVolume: 0 }), /tidalVolume/);
+  assert.throws(() => drivingPressure({ plateau: 25, peep: 10, tidalVolume: 0 }), /tidal\svolume/);
 });

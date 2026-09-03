@@ -40,5 +40,5 @@ test('ttkg invalid when urine Na <= 25: surfaced guard, no number', () => {
 });
 
 test('ttkg rejects impossible input', () => {
-  assert.throws(() => ttkg({ urineK: 40, plasmaK: 0, urineOsm: 600, plasmaOsm: 290, urineNa: 40 }), /plasmaK/);
+  assert.throws(() => ttkg({ urineK: 40, plasmaK: 0, urineOsm: 600, plasmaOsm: 290, urineNa: 40 }), /plasma\sK/);
 });

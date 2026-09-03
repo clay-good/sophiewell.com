@@ -41,5 +41,5 @@ test('hypernatremia: lowering Na by exactly 10 mEq/L does not warn', () => {
 });
 
 test('acid-base-deficit rejects impossible input', () => {
-  assert.throws(() => acidBaseDeficit({ weightKg: 0, sex: 'M', measuredHco3: 14, targetHco3: 24, measuredNa: 120, targetNa: 135 }), /weightKg/);
+  assert.throws(() => acidBaseDeficit({ weightKg: 0, sex: 'M', measuredHco3: 14, targetHco3: 24, measuredNa: 120, targetNa: 135 }), /weight\skg/);
 });

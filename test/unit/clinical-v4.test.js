@@ -74,12 +74,12 @@ test("Winter's: detects respiratory alkalosis", () => {
 // Regression: a blank/non-finite required input must throw (caught by the
 // renderer's safe() wrapper) instead of rendering "NaN" to a clinician.
 test("Winter's: missing HCO3 throws, not NaN", () => {
-  assert.throws(() => wintersFormula({ measuredPaco2: 30 }), /HCO3 must be a finite number/);
-  assert.throws(() => wintersFormula({ hco3: NaN, measuredPaco2: 30 }), /finite/);
+  assert.throws(() => wintersFormula({ measuredPaco2: 30 }), /HCO3 must be a number/);
+  assert.throws(() => wintersFormula({ hco3: NaN, measuredPaco2: 30 }), /must be a number/);
 });
 test('osmolalGap: missing measured osmolality throws, not NaN', () => {
-  assert.throws(() => osmolalGap({ sodium: 140, glucoseMgDl: 90, bunMgDl: 14 }), /finite number/);
-  assert.throws(() => osmolalGap({ measuredOsm: 300, sodium: 140, glucoseMgDl: NaN, bunMgDl: 14 }), /finite/);
+  assert.throws(() => osmolalGap({ sodium: 140, glucoseMgDl: 90, bunMgDl: 14 }), /must be a number/);
+  assert.throws(() => osmolalGap({ measuredOsm: 300, sodium: 140, glucoseMgDl: NaN, bunMgDl: 14 }), /must be a number/);
 });
 
 // --- 122 PP / SI / MSI --------------------------------------------------
@@ -146,8 +146,8 @@ test('qtcAll: returns all four', () => {
 // A blank QT with a valid rate is a normal mid-entry state; it must throw
 // (so safe() renders an error) rather than leak "NaN ms" to every formula row.
 test('qtcAll: missing QT throws, not NaN', () => {
-  assert.throws(() => qtcAll({ hrBpm: 60 }), /finite number/);
-  assert.throws(() => qtcAll({ qtMs: NaN, hrBpm: 60 }), /finite/);
+  assert.throws(() => qtcAll({ hrBpm: 60 }), /must be a number/);
+  assert.throws(() => qtcAll({ qtMs: NaN, hrBpm: 60 }), /must be a number/);
 });
 
 // --- 128 Pregnancy dating -----------------------------------------------

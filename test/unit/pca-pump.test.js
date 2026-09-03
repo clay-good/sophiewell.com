@@ -29,6 +29,6 @@ test('1-h limit below lockout maximum binds', () => {
 });
 
 test('rejects impossible lockout / concentration', () => {
-  assert.throws(() => pcaPump({ concMgPerMl: 0, demandMg: 1, lockoutMin: 10 }), /concMgPerMl/);
-  assert.throws(() => pcaPump({ concMgPerMl: 1, demandMg: 1, lockoutMin: 0 }), /lockoutMin/);
+  assert.throws(() => pcaPump({ concMgPerMl: 0, demandMg: 1, lockoutMin: 10 }), /conc\smg\sper\sml/);
+  assert.throws(() => pcaPump({ concMgPerMl: 1, demandMg: 1, lockoutMin: 0 }), /lockout\smin/);
 });

@@ -23,6 +23,6 @@ test('renal impairment halves the maintenance default', () => {
 });
 
 test('rejects impossible concentration / rate', () => {
-  assert.throws(() => mgso4Preeclampsia({ loadG: 4, maintGPerH: 2, concGPerMl: 0 }), /concGPerMl/);
-  assert.throws(() => mgso4Preeclampsia({ loadG: 4, maintGPerH: NaN, concGPerMl: 0.04 }), /maintGPerH/);
+  assert.throws(() => mgso4Preeclampsia({ loadG: 4, maintGPerH: 2, concGPerMl: 0 }), /conc\sGPer\sml/);
+  assert.throws(() => mgso4Preeclampsia({ loadG: 4, maintGPerH: NaN, concGPerMl: 0.04 }), /maint\sGPer\sH/);
 });

@@ -20,5 +20,5 @@ test('1 item, D-dimer 400 < 500 -> excluded', () => {
   assert.equal(r.threshold, 500); assert.equal(r.excluded, true);
 });
 test('rejects bad D-dimer', () => {
-  assert.throws(() => yearsPe({ dDimer: NaN }), /dDimer/);
+  assert.throws(() => yearsPe({ dDimer: NaN }), /d\sdimer/);
 });

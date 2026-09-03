@@ -24,6 +24,6 @@ test('4-2-1 maintenance: 25 kg -> 65 mL/h', () => {
 });
 
 test('rejects impossible weight / dehydration', () => {
-  assert.throws(() => pedsFluidDeficit({ weightKg: 0, dehydrationPct: 5 }), /weightKg/);
-  assert.throws(() => pedsFluidDeficit({ weightKg: 12, dehydrationPct: 30 }), /dehydrationPct/);
+  assert.throws(() => pedsFluidDeficit({ weightKg: 0, dehydrationPct: 5 }), /weight\skg/);
+  assert.throws(() => pedsFluidDeficit({ weightKg: 12, dehydrationPct: 30 }), /dehydration\spct/);
 });

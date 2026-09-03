@@ -29,5 +29,5 @@ test('cci no rise: post equals pre -> 0, refractory', () => {
 });
 
 test('cci rejects impossible input', () => {
-  assert.throws(() => cciPlatelet({ prePlt: 10, postPlt: 40, bsaM2: 1.8, doseE11: 0 }), /doseE11/);
+  assert.throws(() => cciPlatelet({ prePlt: 10, postPlt: 40, bsaM2: 1.8, doseE11: 0 }), /dose\sE11/);
 });

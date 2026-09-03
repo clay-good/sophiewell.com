@@ -8,6 +8,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Refusals written in the words of a stack trace.** When a value was outside a
+  tool's plausible range the tool said so — as "weightKg out of range [0.3,
+  500]", printed where the answer goes. The refusals were right; the language was
+  an exception message. They now read as sentences ("weight kg must be between
+  0.3 and 500. Check the value entered."), across roughly 800 checks behind one
+  shared guard plus 67 hand-written messages. See `docs/spec-v1015.md`.
+
 - **Eight more, and these reached a decision.** Reading the same sweep to the end
   found tools that did not just print a zero from an empty form: the Centor score
   gave a blank age the under-15 point and pushed toward "consider empiric or

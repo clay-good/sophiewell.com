@@ -27,6 +27,6 @@ test('weight capped at 50 kg adult dose', () => {
 });
 
 test('rejects impossible weight / rate', () => {
-  assert.throws(() => pedsResus({ weightKg: 0, mlPerKg: 20 }), /weightKg/);
-  assert.throws(() => pedsResus({ weightKg: 15, mlPerKg: 50 }), /mlPerKg/);
+  assert.throws(() => pedsResus({ weightKg: 0, mlPerKg: 20 }), /weight\skg/);
+  assert.throws(() => pedsResus({ weightKg: 15, mlPerKg: 50 }), /ml\sper\skg/);
 });

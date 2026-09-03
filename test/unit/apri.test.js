@@ -37,5 +37,5 @@ test('apri cirrhosis cutoff: score 1.05 -> cirrhosis band', () => {
 
 // Invalid input rejection.
 test('apri rejects zero AST ULN', () => {
-  assert.throws(() => apri({ ast: 60, astUln: 0, plateletsK: 150 }), /astUln/);
+  assert.throws(() => apri({ ast: 60, astUln: 0, plateletsK: 150 }), /ast\suln/);
 });

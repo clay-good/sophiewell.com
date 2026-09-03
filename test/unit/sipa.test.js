@@ -22,5 +22,5 @@ test('age outside 4-16 -> no cutoff, caution band', () => {
 });
 test('rejects impossible vitals', () => {
   assert.throws(() => sipa({ ageYears: 5, hr: 140, sbp: 0 }), /sbp/);
-  assert.throws(() => sipa({ ageYears: NaN, hr: 140, sbp: 100 }), /ageYears/);
+  assert.throws(() => sipa({ ageYears: NaN, hr: 140, sbp: 100 }), /age\syears/);
 });

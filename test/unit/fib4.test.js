@@ -37,5 +37,5 @@ test('fib4 indeterminate band: score in [1.45, 3.25]', () => {
 // Invalid input rejection.
 test('fib4 rejects zero platelets', () => {
   assert.throws(() => fib4({ ageYears: 50, ast: 50, alt: 50, plateletsK: 0 }),
-    /plateletsK/);
+    /platelets\sK/);
 });

@@ -31,5 +31,5 @@ test('weight capped at 100 kg surfaces a flag', () => {
 
 test('rejects unknown agent and impossible concentration', () => {
   assert.throws(() => localAnestheticMax({ agent: 'cocaine', weightKg: 70, concPct: 1 }), /unknown/);
-  assert.throws(() => localAnestheticMax({ agent: 'lidocaine', weightKg: 70, concPct: 0 }), /concPct/);
+  assert.throws(() => localAnestheticMax({ agent: 'lidocaine', weightKg: 70, concPct: 0 }), /conc\spct/);
 });

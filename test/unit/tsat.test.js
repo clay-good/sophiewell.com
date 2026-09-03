@@ -32,5 +32,5 @@ test('tsat overload pattern: TSAT > 50%', () => {
 });
 
 test('tsat rejects impossible input', () => {
-  assert.throws(() => tsat({ ironUgDl: 50, tibcUgDl: 0 }), /tibcUgDl/);
+  assert.throws(() => tsat({ ironUgDl: 50, tibcUgDl: 0 }), /tibc\sug\sdl/);
 });
