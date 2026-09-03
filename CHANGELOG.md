@@ -8,6 +8,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Four of the twelve "Search PubMed for this source" links opened an empty
+  results page.** Those twelve calculators cite a book chapter or a pre-1946
+  paper no index carries, so they offer a search instead of a link — and the
+  link checker passed them because a search URL answers 200 whatever it finds.
+  Running the reader's own query found four that returned nothing. All four now
+  reach the literature they promise, and the checker runs the query and fails on
+  a zero count. Separately, plain web links are retried before being called
+  dead: three consecutive runs produced three different "failures" that all
+  answered 200 on retry. See `docs/spec-v999.md`.
+
 - **CONTRIBUTING said `npm run release:check` was "the same gate that runs in
   CI". It ran about one of CI's three jobs.** It skipped `npm run test:mcp` —
   421 tests, a whole CI job — and the entire end-to-end suite, which is where

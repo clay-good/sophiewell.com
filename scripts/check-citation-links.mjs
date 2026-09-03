@@ -24,6 +24,7 @@ import { META } from '../lib/meta.js';
 
 const HANDLE = 'https://doi.org/api/handles/';
 const ESUMMARY = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&retmode=json&id=';
+const ESEARCH = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=1&term=';
 const UA = 'sophiewell-citation-linkcheck/1.0 (https://sophiewell.com)';
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -38,11 +39,42 @@ export function linkPairs(meta = META) {
   return out;
 }
 
-// kindOf(url) -> 'doi' | 'pubmed' | 'web'.
+// kindOf(url) -> 'doi' | 'pubmed' | 'pubmed-search' | 'web'.
+//
+// spec-v999: 'pubmed-search' is its own kind because a search URL always
+// answers 200, whatever it finds. Twelve tiles cite a book chapter or a
+// pre-1946 paper no index carries and render "Search PubMed for this source"
+// instead of a direct link (spec-v943); FOUR of those searches returned an
+// EMPTY results page. A 200 is not proof the page is useful, the same way a
+// 200 was not proof a prior-auth source was there (spec-v980).
 export function kindOf(url) {
   if (url.startsWith('https://doi.org/')) return 'doi';
   if (/^https:\/\/pubmed\.ncbi\.nlm\.nih\.gov\/\d+\/?$/.test(url)) return 'pubmed';
+  if (/^https:\/\/pubmed\.ncbi\.nlm\.nih\.gov\/\?term=/.test(url)) return 'pubmed-search';
   return 'web';
+}
+
+// termOf(url) -> string | null. The query a 'pubmed-search' link runs.
+export function termOf(url) {
+  try { return new URL(url).searchParams.get('term'); } catch { return null; }
+}
+
+// checkPubmedSearch(url) -> string | null. Runs the reader's own query and
+// fails when it returns nothing, so "Search PubMed for this source" cannot
+// quietly become "here is an empty page".
+async function checkPubmedSearch(url) {
+  const term = termOf(url);
+  if (!term) return 'search link carries no term';
+  for (let a = 0; a < 3; a++) {
+    try {
+      const res = await fetch(`${ESEARCH}${encodeURIComponent(term)}`, { headers: { 'User-Agent': UA } });
+      const j = await res.json();
+      const count = Number(j.esearchresult?.count);
+      if (!Number.isFinite(count)) { await sleep(1000 * (a + 1)); continue; }
+      return count > 0 ? null : 'PubMed search returns no results';
+    } catch { await sleep(1000 * (a + 1)); }
+  }
+  return 'PubMed search check failed after 3 attempts';
 }
 
 // pmidOf(url) -> string | null.
@@ -66,14 +98,26 @@ async function checkDoi(url) {
 // this check asks is "can a reader open this page", so it asks as a browser.
 const BROWSER_UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0 Safari/537.36';
 
+// spec-v999: 404 and 410 are the server saying the document is gone, and are
+// believed the first time. A 5xx or a dropped connection is the server having a
+// bad moment -- three runs of this checker in a row produced three different
+// "failures" (an esummary batch, apps.who.int, federalregister.gov), and every
+// one of them answered 200 on retry. Reporting those as dead links teaches the
+// reader of this report to ignore it, so retry them before believing them.
 async function checkWeb(url) {
-  try {
-    const res = await fetch(url, { redirect: 'follow', headers: { 'User-Agent': BROWSER_UA } });
-    if (res.status === 404 || res.status === 410 || res.status >= 500) return `HTTP ${res.status}`;
-    return null;
-  } catch (e) {
-    return `request failed (${e.message})`;
+  let last = null;
+  for (let a = 0; a < 3; a++) {
+    try {
+      const res = await fetch(url, { redirect: 'follow', headers: { 'User-Agent': BROWSER_UA } });
+      if (res.status === 404 || res.status === 410) return `HTTP ${res.status}`;
+      if (res.status < 500) return null;
+      last = `HTTP ${res.status}`;
+    } catch (e) {
+      last = `request failed (${e.message})`;
+    }
+    await sleep(1500 * (a + 1));
   }
+  return `${last} on three attempts`;
 }
 
 async function main() {
@@ -108,6 +152,11 @@ async function main() {
     const bad = await checkDoi(u);
     if (bad) problems.push(`${seen.get(u).join(', ')}: ${bad} -- ${u}`);
     await sleep(60);
+  }
+  for (const u of [...seen.keys()].filter((x) => kindOf(x) === 'pubmed-search')) {
+    const bad = await checkPubmedSearch(u);
+    if (bad) problems.push(`${seen.get(u).join(', ')}: ${bad} -- ${u}`);
+    await sleep(400);
   }
   for (const u of [...seen.keys()].filter((x) => kindOf(x) === 'web')) {
     const bad = await checkWeb(u);
