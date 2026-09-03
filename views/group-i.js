@@ -201,7 +201,7 @@ export const renderers = {
   'burn-fluid'(root) {
     noticeBlock(root);
     root.appendChild(field('Patient weight (kg)', 'bf-w', { placeholder: '70' }));
-    root.appendChild(field('Burn surface area (% TBSA)', 'bf-bsa', { placeholder: '20' }));
+    root.appendChild(field('Burn surface area (% TBSA)', 'bf-bsa', { min: 0, max: 100, placeholder: '20' }));
     root.appendChild(field('Hours since injury (optional, 0-8)', 'bf-h', { placeholder: '0' }));
     const o = out(); root.appendChild(o);
     const deriv = renderDerivation(META['burn-fluid']);

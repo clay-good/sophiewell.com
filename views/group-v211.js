@@ -47,7 +47,7 @@ export const renderers = {
   // ----- 2.1 eutos -----------------------------------------------------------
   eutos(root) {
     note(root, 'EUTOS score (Hasford 2011): a simple two-variable prognostic score for CML on front-line imatinib — EUTOS = 7 × basophils (%) + 4 × spleen size (cm below the costal margin). > 87 high risk, ≤ 87 low risk, for the 18-month complete cytogenetic response and progression-free survival.');
-    root.appendChild(num('Basophils (% of peripheral blood)', 'eutos-baso', { min: '0' }));
+    root.appendChild(num('Basophils (% of peripheral blood)', 'eutos-baso', { max: 100, min: '0' }));
     root.appendChild(num('Spleen size (cm below costal margin; 0 if not palpable)', 'eutos-spleen', { min: '0' }));
     const o = out(); root.appendChild(o);
     const ids = ['eutos-baso', 'eutos-spleen'];

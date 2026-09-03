@@ -186,7 +186,7 @@ export const renderers = {
   'modified-marshall'(root) {
     note(root, 'Modified Marshall organ-dysfunction score (Banks 2013, Revised Atlanta): scores three organ systems 0-4. Organ failure is a score ≥ 2 in any assessed system (the threshold separating moderately-severe from severe acute pancreatitis). Leave a system blank if not assessed.');
     root.appendChild(field('Respiratory — PaO₂ (mmHg)', 'mm-pao2', { step: '1', min: 0, placeholder: 'e.g. 200' }));
-    root.appendChild(field('Respiratory — FiO₂ (%)', 'mm-fio2', { step: '1', min: 0, placeholder: 'e.g. 100' }));
+    root.appendChild(field('Respiratory — FiO₂ (%)', 'mm-fio2', { max: 100, step: '1', min: 0, placeholder: 'e.g. 100' }));
     root.appendChild(field('Renal — serum creatinine (mg/dL)', 'mm-creat', { step: '0.1', min: 0, placeholder: 'e.g. 2.0' }));
     root.appendChild(selectField('Cardiovascular (systolic BP / fluid / pH)', 'mm-cv', [
       { value: '', text: 'Not assessed' },

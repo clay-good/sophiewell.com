@@ -267,7 +267,7 @@ export const renderers = {
 
   'enteral-free-water'(root) {
     root.appendChild(field('Daily formula volume (mL/day)', 'efw-vol', { placeholder: '1200' }));
-    root.appendChild(field('Formula free-water fraction (%, ~84 for 1.0 kcal/mL)', 'efw-fw', { placeholder: '84' }));
+    root.appendChild(field('Formula free-water fraction (%, ~84 for 1.0 kcal/mL)', 'efw-fw', { min: 0, max: 100, placeholder: '84' }));
     root.appendChild(field('Daily free-water goal (mL)', 'efw-goal', { placeholder: '1500' }));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
@@ -599,9 +599,9 @@ export const renderers = {
 
   'tpn-macro'(root) {
     root.appendChild(field('Final volume (mL)', 'tpn-vol', { placeholder: '1500' }));
-    root.appendChild(field('Dextrose (% final)', 'tpn-d', { placeholder: '20' }));
-    root.appendChild(field('Amino acid (% final)', 'tpn-aa', { placeholder: '5' }));
-    root.appendChild(field('Lipid 20% (mL as % of final volume)', 'tpn-lipid', { placeholder: '10' }));
+    root.appendChild(field('Dextrose (% final)', 'tpn-d', { min: 0, max: 100, placeholder: '20' }));
+    root.appendChild(field('Amino acid (% final)', 'tpn-aa', { min: 0, max: 100, placeholder: '5' }));
+    root.appendChild(field('Lipid 20% (mL as % of final volume)', 'tpn-lipid', { min: 0, max: 100, placeholder: '10' }));
     const out = el('div', { id: 'q-results', 'aria-live': 'polite' });
     root.appendChild(out);
     const run = () => {

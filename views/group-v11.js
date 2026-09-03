@@ -97,7 +97,7 @@ export const renderers = {
 
   // ----- 3.2 gir ---------------------------------------------------------
   gir(root) {
-    root.appendChild(field('Dextrose concentration (%)', 'gir-dex', { placeholder: 'e.g. 10' }));
+    root.appendChild(field('Dextrose concentration (%)', 'gir-dex', { min: 0, max: 100, placeholder: 'e.g. 10' }));
     root.appendChild(field('Infusion rate (mL/hr)', 'gir-rate', { placeholder: 'e.g. 15' }));
     root.appendChild(unitField('Weight', 'gir-wt', WEIGHT_UNITS, { placeholder: 'e.g. 3' }));
     const o = out(); root.appendChild(o);
@@ -123,8 +123,8 @@ export const renderers = {
       { value: '75', text: 'Child / adult male (75)' },
       { value: '65', text: 'Adult female (65)' },
     ]));
-    root.appendChild(field('Starting hematocrit (%)', 'em-start', { placeholder: 'e.g. 45' }));
-    root.appendChild(field('Minimum acceptable hematocrit (%)', 'em-min', { placeholder: 'e.g. 30' }));
+    root.appendChild(field('Starting hematocrit (%)', 'em-start', { min: 0, max: 100, placeholder: 'e.g. 45' }));
+    root.appendChild(field('Minimum acceptable hematocrit (%)', 'em-min', { min: 0, max: 100, placeholder: 'e.g. 30' }));
     const o = out(); root.appendChild(o);
     wire(['em-wt', 'em-wt-unit', 'em-factor', 'em-start', 'em-min'], () => safe(o, () => {
       const r = C.ebvMabl({ weightKg: unitNum('em-wt'), ebvFactor: val('em-factor'), startHct: val('em-start'), minHct: val('em-min') });
@@ -235,7 +235,7 @@ export const renderers = {
   // ----- 3.7 rhig-dose ---------------------------------------------------
   'rhig-dose'(root) {
     root.appendChild(field('Maternal blood volume (mL)', 'rh-bv', { placeholder: 'e.g. 5000' }));
-    root.appendChild(field('Fetal cells on Kleihauer-Betke (%)', 'rh-kb', { placeholder: 'e.g. 1.5' }));
+    root.appendChild(field('Fetal cells on Kleihauer-Betke (%)', 'rh-kb', { min: 0, max: 100, placeholder: 'e.g. 1.5' }));
     const o = out(); root.appendChild(o);
     wire(['rh-bv', 'rh-kb'], () => safe(o, () => {
       const r = C.rhigDose({ maternalBloodVolumeMl: val('rh-bv'), fetalCellPct: val('rh-kb') });
@@ -275,8 +275,8 @@ export const renderers = {
 
   // ----- 3.9 iv-osmolarity -----------------------------------------------
   'iv-osmolarity'(root) {
-    root.appendChild(field('Dextrose (%)', 'io-dex', { placeholder: 'e.g. 5' }));
-    root.appendChild(field('Amino acids (%)', 'io-aa', { placeholder: 'e.g. 2.5' }));
+    root.appendChild(field('Dextrose (%)', 'io-dex', { min: 0, max: 100, placeholder: 'e.g. 5' }));
+    root.appendChild(field('Amino acids (%)', 'io-aa', { min: 0, max: 100, placeholder: 'e.g. 2.5' }));
     root.appendChild(field('Sodium additives (mEq/L)', 'io-na', { placeholder: 'e.g. 30' }));
     root.appendChild(field('Potassium additives (mEq/L)', 'io-k', { placeholder: 'e.g. 20' }));
     const o = out(); root.appendChild(o);

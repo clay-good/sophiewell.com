@@ -612,7 +612,7 @@ export const renderers = {
 
   // spec-v13 §3.5.1 wave 13-5: ROX Index (Roca 2019).
   rox(root) {
-    root.appendChild(field('SpO2 (%)', 'rx-spo2', { value: 94 }));
+    root.appendChild(field('SpO2 (%)', 'rx-spo2', { min: 0, max: 100, value: 94 }));
     root.appendChild(field('FiO2 (decimal, e.g., 0.5)', 'rx-fio2', { value: 0.5 }));
     root.appendChild(field('Respiratory rate (breaths/min)', 'rx-rr', { min: 0, value: 24 }));
     root.appendChild(field('Hours after HFNC start (2 / 6 / 12)', 'rx-hr', { value: 12 }));

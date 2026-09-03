@@ -61,7 +61,7 @@ export const renderers = {
   'rdw-index'(root) {
     note(root, 'RDW Index / RDWI (Jayabose 1999): (MCV x RDW) / RBC. < 220 favors beta-thalassemia trait, > 220 favors iron deficiency.');
     root.appendChild(num('MCV (fL)', 'rdwi-mcv', { min: '0' }));
-    root.appendChild(num('RDW (%)', 'rdwi-rdw', { min: '0' }));
+    root.appendChild(num('RDW (%)', 'rdwi-rdw', { max: 100, min: '0' }));
     root.appendChild(num('RBC count (10^6/µL)', 'rdwi-rbc', { min: '0' }));
     const o = out(); root.appendChild(o);
     wire(['rdwi-mcv', 'rdwi-rdw', 'rdwi-rbc'], () => safe(o, () => {

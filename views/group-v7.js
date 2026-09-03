@@ -57,8 +57,8 @@ export const renderers = {
   // ----- 2.1 anc ----------------------------------------------------------
   anc(root) {
     root.appendChild(field('WBC (x10^9/L = K/uL)', 'anc-wbc', { placeholder: 'e.g. 5' }));
-    root.appendChild(field('Segmented neutrophils (%)', 'anc-segs', { placeholder: 'e.g. 60' }));
-    root.appendChild(field('Bands (%)', 'anc-bands', { placeholder: 'e.g. 5' }));
+    root.appendChild(field('Segmented neutrophils (%)', 'anc-segs', { min: 0, max: 100, placeholder: 'e.g. 60' }));
+    root.appendChild(field('Bands (%)', 'anc-bands', { min: 0, max: 100, placeholder: 'e.g. 5' }));
     const o = out(); root.appendChild(o);
     wire(['anc-wbc', 'anc-segs', 'anc-bands'], () => safe(o, () => {
       const r = V6.anc({ wbc: val('anc-wbc'), segs: val('anc-segs'), bands: val('anc-bands') });
@@ -72,7 +72,7 @@ export const renderers = {
 
   // ----- 2.2 retic-index --------------------------------------------------
   'retic-index'(root) {
-    root.appendChild(field('Reticulocyte (%)', 'ri-retic', { placeholder: 'e.g. 5' }));
+    root.appendChild(field('Reticulocyte (%)', 'ri-retic', { min: 0, max: 100, placeholder: 'e.g. 5' }));
     root.appendChild(field('Hematocrit (%)', 'ri-hct', { min: 0, max: 100, placeholder: 'e.g. 30' }));
     const o = out(); root.appendChild(o);
     wire(['ri-retic', 'ri-hct'], () => safe(o, () => {
@@ -137,7 +137,7 @@ export const renderers = {
 
   // ----- 2.6 eag-a1c ------------------------------------------------------
   'eag-a1c'(root) {
-    root.appendChild(field('HbA1c (%)', 'eag-a1c', { placeholder: 'e.g. 7' }));
+    root.appendChild(field('HbA1c (%)', 'eag-a1c', { min: 0, max: 100, placeholder: 'e.g. 7' }));
     const o = out(); root.appendChild(o);
     wire(['eag-a1c'], () => safe(o, () => {
       const r = V6.eagA1c({ a1c: val('eag-a1c') });
@@ -152,7 +152,7 @@ export const renderers = {
   // ----- 2.7 cao2-do2 -----------------------------------------------------
   'cao2-do2'(root) {
     root.appendChild(field('Hemoglobin (g/dL)', 'cao2-hb', { min: 0, max: 25, placeholder: 'e.g. 15' }));
-    root.appendChild(field('SaO2 (%)', 'cao2-sao2', { placeholder: 'e.g. 98' }));
+    root.appendChild(field('SaO2 (%)', 'cao2-sao2', { min: 0, max: 100, placeholder: 'e.g. 98' }));
     root.appendChild(field('PaO2 (mmHg)', 'cao2-pao2', { placeholder: 'e.g. 100' }));
     root.appendChild(field('Cardiac output (L/min, optional for DO2)', 'cao2-co', { placeholder: 'optional' }));
     const o = out(); root.appendChild(o);
@@ -171,7 +171,7 @@ export const renderers = {
     root.appendChild(field('FiO2 (0.21-1.0)', 'oi-fio2', { placeholder: 'e.g. 0.6' }));
     root.appendChild(field('Mean airway pressure (cmH2O)', 'oi-map', { placeholder: 'e.g. 15' }));
     root.appendChild(field('PaO2 (mmHg, for OI)', 'oi-pao2', { placeholder: 'optional' }));
-    root.appendChild(field('SpO2 (%, for OSI)', 'oi-spo2', { placeholder: 'optional' }));
+    root.appendChild(field('SpO2 (%, for OSI)', 'oi-spo2', { min: 0, max: 100, placeholder: 'optional' }));
     const o = out(); root.appendChild(o);
     wire(['oi-fio2', 'oi-map', 'oi-pao2', 'oi-spo2'], () => safe(o, () => {
       const r = V6.oxygenationIndex({ fio2: val('oi-fio2'), map: val('oi-map'), pao2: optNum('oi-pao2'), spo2: optNum('oi-spo2') });

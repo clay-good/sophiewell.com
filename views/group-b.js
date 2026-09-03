@@ -1046,7 +1046,7 @@ export const renderers = {
     root.appendChild(el('p', { class: 'muted', text: 'Status indicators: T = significant procedure (discounted); J1 = comprehensive APC; S / V = separately payable, not discounted; N = packaged ($0).' }));
     root.appendChild(moneyField('OPPS conversion factor ($ per relative-weight unit)', 'apc-cf', '87.00'));
     root.appendChild(moneyField('Wage index', 'apc-wage', '1.0'));
-    root.appendChild(field('Multiple-procedure discount (%)', 'apc-disc', { type: 'number', inputmode: 'numeric', placeholder: '50', value: '50' }));
+    root.appendChild(field('Multiple-procedure discount (%)', 'apc-disc', { min: 0, max: 100, type: 'number', inputmode: 'numeric', placeholder: '50', value: '50' }));
     const o = out(); root.appendChild(o);
     wire(['apc-list', 'apc-cf', 'apc-wage', 'apc-disc'], () => safe(o, () => {
       const raw = str('apc-list').split('\n').map((s) => s.trim()).filter(Boolean);

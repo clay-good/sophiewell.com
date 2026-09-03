@@ -8,6 +8,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A percentage now stops at what it is a percentage of.** 44 fields whose label
+  carries a % had no maximum, so an oxygen saturation of 1007% or a burn covering
+  1007% of the body was accepted without comment. The 29 that measure a part of a
+  whole — saturations, burn surface area, blast and differential percentages,
+  hematocrit, solution concentrations — are now bounded 0 to 100. The 11 that
+  measure a percent of a *predicted* value are deliberately left alone: a healthy
+  person's FEV1 is routinely above 100% of predicted, and capping those would
+  have flagged the commonest normal reading there is. See `docs/spec-v1011.md`.
+
 - **The plausible ranges the site already knew, applied where they were
   missing.** Systolic blood pressure was capped at 300 mmHg on nine tools and
   uncapped on twelve others; hemoglobin capped on four and uncapped on twelve;

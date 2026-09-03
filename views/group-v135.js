@@ -121,7 +121,7 @@ export const renderers = {
     root.appendChild(selectField('Ann Arbor stage IV?', 'hips-stage', YN));
     root.appendChild(field('WBC (×10⁹/L)', 'hips-wbc', { step: '0.1', min: 0, placeholder: 'e.g. 16' }));
     root.appendChild(field('Lymphocyte count (cells/µL)', 'hips-lymphct', { step: '1', min: 0, placeholder: 'e.g. 500' }));
-    root.appendChild(field('Lymphocytes (% of WBC)', 'hips-lymphpct', { step: '0.1', min: 0, placeholder: 'e.g. 7' }));
+    root.appendChild(field('Lymphocytes (% of WBC)', 'hips-lymphpct', { max: 100, step: '0.1', min: 0, placeholder: 'e.g. 7' }));
     const o = out(); root.appendChild(o);
     wire(['hips-alb', 'hips-hgb', 'hips-male', 'hips-age', 'hips-stage', 'hips-wbc', 'hips-lymphct', 'hips-lymphpct'], () => safe(o, () => {
       const r = M.hodgkinIps({ albumin: optNum('hips-alb'), hgb: optNum('hips-hgb'), male: selVal('hips-male'), age: optNum('hips-age'), stage4: selVal('hips-stage'), wbc: optNum('hips-wbc'), lymphCount: optNum('hips-lymphct'), lymphPct: optNum('hips-lymphpct') });

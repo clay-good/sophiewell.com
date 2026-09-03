@@ -193,7 +193,7 @@ export const renderers = {
       { value: 'ropivacaine', text: 'Ropivacaine (3 mg/kg)' },
     ]));
     root.appendChild(unitField('Weight', 'la-wt', WEIGHT_UNITS, { placeholder: 'e.g. 70' }));
-    root.appendChild(field('Solution concentration (%)', 'la-conc', { placeholder: 'e.g. 1' }));
+    root.appendChild(field('Solution concentration (%)', 'la-conc', { min: 0, max: 100, placeholder: 'e.g. 1' }));
     const o = out(); root.appendChild(o);
     wire(['la-agent', 'la-wt', 'la-wt-unit', 'la-conc'], () => safe(o, () => {
       const r = M5.localAnestheticMax({ agent: str('la-agent'), weightKg: unitNum('la-wt'), concPct: val('la-conc') });
@@ -301,7 +301,7 @@ export const renderers = {
   // ----- 2.11 peds-fluid-deficit -----------------------------------------
   'peds-fluid-deficit'(root) {
     root.appendChild(unitField('Weight', 'pfd-wt', WEIGHT_UNITS, { placeholder: 'e.g. 12' }));
-    root.appendChild(field('Estimated dehydration (%)', 'pfd-pct', { placeholder: 'e.g. 10' }));
+    root.appendChild(field('Estimated dehydration (%)', 'pfd-pct', { min: 0, max: 100, placeholder: 'e.g. 10' }));
     const o = out(); root.appendChild(o);
     wire(['pfd-wt', 'pfd-wt-unit', 'pfd-pct'], () => safe(o, () => {
       const r = M5.pedsFluidDeficit({ weightKg: unitNum('pfd-wt'), dehydrationPct: val('pfd-pct') });
