@@ -31,8 +31,12 @@ test('total clamps to 0-4 and tolerates missing AST/ALT', () => {
   assert.equal(r.ratio, null);
 });
 
-test('scalar fuzz arg -> valid 0/4, never NaN', () => {
+// spec-v1007: a fuzz argument carries no components, so BARD refuses rather than
+// reporting the rule-out it used to ("0 to 1 -- advanced fibrosis is robustly
+// ruled out"). It still never leaks NaN.
+test('scalar fuzz arg -> refuses to rule out, never NaN', () => {
   const r = bardScore(9);
-  assert.equal(r.valid, true);
-  assert.equal(Number.isFinite(r.total), true);
+  assert.equal(r.valid, false);
+  assert.equal(r.total, null);
+  assert.match(r.band, /cannot rule advanced fibrosis out/);
 });

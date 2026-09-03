@@ -139,6 +139,9 @@ export const renderers = {
         hb: optNum('ta-hb'), baseExcess: optNum('ta-be'), sbp: optNum('ta-sbp'), hr: optNum('ta-hr'),
         fast: chk('ta-fast'), pelvis: chk('ta-pelvis'), femur: chk('ta-femur'), male: chk('ta-male'),
       });
+      // spec-v1007: a partial TASH below the activation threshold has no total and
+      // no probability -- the unentered measurements can only add points.
+      if (r.total == null) { note(o, r.band); return; }
       resultRow(o, [
         { text: r.band, cls: r.abnormal ? 'warn' : null },
         { label: 'TASH score', value: String(r.total) },
@@ -164,6 +167,9 @@ export const renderers = {
         hr: optNum('ra-hr'), sbp: optNum('ra-sbp'),
         pelvis: chk('ra-pelvis'), penetrating: chk('ra-pen'), fast: chk('ra-fast'),
       });
+      // spec-v1007: without both vitals there is no shock index, and a RABT below
+      // the activation threshold cannot be read as below it.
+      if (r.total == null) { note(o, r.band); return; }
       resultRow(o, [
         { text: r.band, cls: r.abnormal ? 'warn' : null },
         { label: 'RABT score', value: String(r.total) },

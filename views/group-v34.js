@@ -270,6 +270,9 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     wire(['al-asym', 'al-wbc', 'al-hr', 'al-age'], () => safe(o, () => {
       const r = M.alt70({ asymmetry: chk('al-asym'), wbc: optNum('al-wbc'), hr: optNum('al-hr'), age: optNum('al-age') });
+      // spec-v1007: a partial ALT-70 below the cellulitis-likely band has no total
+      // -- the unentered measurements can only add points.
+      if (r.total == null) { note(o, r.band); return; }
       resultRow(o, [
         { text: r.band, cls: r.abnormal ? 'warn' : null },
         { label: 'ALT-70', value: String(r.total) },

@@ -12,8 +12,9 @@ test('worked example: CHF + diabetes + 300 mL contrast + eGFR 30 -> 15 (high)', 
 });
 
 test('band edge 5/6: 5 = low, 6 = moderate', () => {
-  // anemia 3 + eGFR(40-60) 2 = 5
-  assert.equal(mehranCin({ anemia: true, egfr: 50 }).riskKey, 'low');
+  // anemia 3 + eGFR(40-60) 2 = 5. Contrast volume is entered (0 mL, no points) so
+  // the low band can be stated at all (spec-v1007).
+  assert.equal(mehranCin({ anemia: true, egfr: 50, contrastVolume: 0 }).riskKey, 'low');
   // CHF 5 + contrast 100 mL (1) = 6
   assert.equal(mehranCin({ chf: true, contrastVolume: 100 }).riskKey, 'moderate');
 });
@@ -35,9 +36,17 @@ test('contrast volume = 1 point per 100 mL; eGFR band term clamps', () => {
   assert.equal(mehranCin({ egfr: 80 }).points.egfr, 0);
 });
 
-test('blank optional factor contributes 0', () => {
+// spec-v1007: this test used to assert the defect -- an empty form answering
+// "low risk: ~7.5% contrast-induced nephropathy". Contrast volume and eGFR are
+// the two unbounded terms; without them the low band cannot be claimed.
+test('blank measurements -> the low band is withheld, not asserted', () => {
   const r = mehranCin({});
-  assert.equal(r.total, 0);
-  assert.equal(r.riskKey, 'low');
-  assert.equal(r.valid, true);
+  assert.equal(r.valid, false);
+  assert.equal(r.total, null);
+  assert.equal(r.riskKey, null);
+  assert.match(r.band, /contrast volume and eGFR/);
+  // With both entered, a genuinely zero-risk patient still bands low.
+  const complete = mehranCin({ contrastVolume: 0, egfr: 90 });
+  assert.equal(complete.valid, true);
+  assert.equal(complete.riskKey, 'low');
 });

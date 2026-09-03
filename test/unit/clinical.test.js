@@ -188,8 +188,17 @@ test('hasBled: 4 items = 4 high risk', () => {
   assert.equal(r.total, 4);
   assert.equal(r.risk, 'High');
 });
-test('nihss: all zeros = 0 no symptoms', () => {
+// spec-v1007: an unexamined patient is not a patient without stroke symptoms.
+test('nihss: no items scored -> refuses "No stroke symptoms"', () => {
   const r = C.nihss({});
+  assert.equal(r.total, 0);
+  assert.equal(r.complete, false);
+  assert.equal(r.itemsScored, 0);
+  assert.match(r.severity, /unscored exam is not a normal exam/);
+});
+
+test('nihss: all thirteen items scored 0 = 0, no symptoms', () => {
+  const r = C.nihss(Object.fromEntries(C.NIHSS_ITEMS.map((i) => [i.id, 0])));
   assert.equal(r.total, 0);
   assert.equal(r.severity, 'No stroke symptoms');
 });

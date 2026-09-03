@@ -8,6 +8,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Eight more calculators did the same thing, and this time the field types were
+  mixed.** The previous pass could only see scores where every input is a
+  measurement. Widening it found eight built from a mix of measurements and
+  yes/no criteria, all answering reassuringly from nothing: BARD said advanced
+  liver fibrosis was "robustly ruled out" with no BMI and no liver enzymes, the
+  HScore put reactive HLH under 1%, TASH and RABT both put a massive transfusion
+  below their activation thresholds with no vital signs, ALT-70 called cellulitis
+  unlikely, Mehran called contrast nephropathy low risk before a drop of contrast
+  was entered, TIMI-STEMI read a 0.8% 30-day mortality off a blank age, and the
+  NIH Stroke Scale reported "No stroke symptoms" for an exam nobody performed.
+  The line now drawn: an unchecked box is an answer, a blank lab is a gap. Each
+  withholds only the reassuring reading, only until its measurements are entered,
+  and still rules risk in the moment the entered values justify it — two RABT
+  flags still predict a massive transfusion with no vitals at all. See
+  `docs/spec-v1007.md`.
+
 - **Seven calculators gave a reassuring answer to a form with nothing in it.**
   LRINEC reported "low risk of necrotizing fasciitis" with no labs entered, and
   still said "low risk" with only a C-reactive protein of 200 typed in while five

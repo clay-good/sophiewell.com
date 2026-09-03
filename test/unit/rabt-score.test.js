@@ -3,10 +3,14 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { rabtScore } from '../../lib/trauma-v108.js';
 
-test('no inputs -> 0, below threshold', () => {
+// spec-v1007: this test used to assert the defect -- "RABT score 0: below the
+// massive-transfusion threshold" with no vitals and no shock index at all.
+test('no inputs -> no score, and the refusal names the missing vitals', () => {
   const r = rabtScore({});
-  assert.equal(r.total, 0);
+  assert.equal(r.total, null);
   assert.equal(r.mt, false);
+  assert.equal(r.shockIndex, null);
+  assert.match(r.band, /heart rate and systolic BP/);
 });
 
 test('shock index > 1 scores a point; <= 1 does not', () => {

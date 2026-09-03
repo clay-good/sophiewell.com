@@ -11,11 +11,17 @@ test('worked example: age 70 + anterior STE + time > 4 h = 4 points, 7.3% mortal
   assert.equal(r.mortality, 7.3);
 });
 
-test('the 0 extreme: no risk factors, blank age -> 0.8% mortality', () => {
+// spec-v1007: this test used to assert the defect -- a blank age reading 0.8%
+// 30-day mortality off the bottom of the Morrow table. Age carries up to 3 of the
+// 14 points, so with it blank the total is a floor and the mortality is withheld.
+test('the 0 extreme: no risk factors, blank age -> no mortality figure', () => {
   const r = timiStemi({});
   assert.equal(r.total, 0);
-  assert.equal(r.mortality, 0.8);
+  assert.equal(r.mortality, null);
   assert.equal(r.ageProvided, false);
+  assert.match(r.band, /at least 0 of 14/);
+  // Entering the age is all it takes to read the band.
+  assert.equal(timiStemi({ age: 60 }).mortality, 0.8);
 });
 
 test('the 14 extreme: every variable positive at the top age band', () => {
@@ -50,4 +56,13 @@ test('the weighted variables carry their published point values', () => {
   assert.equal(timiStemi({ hrHigh: 'yes' }).total, 2);
   assert.equal(timiStemi({ killip24: 'yes' }).total, 2);
   assert.equal(timiStemi({ weightLow: 'yes' }).total, 1);
+});
+
+// spec-v1007: a score is still reported with a blank age -- the answered risk
+// factors are real and the total is a valid floor. Only the mortality waits.
+test('blank age still scores the answered risk factors', () => {
+  const r = timiStemi({ sbpLow: 'yes', killip24: 'yes' });
+  assert.equal(r.total, 5);
+  assert.equal(r.mortality, null);
+  assert.match(r.note, /Age was left blank/);
 });

@@ -3,11 +3,16 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { tashScore } from '../../lib/trauma-v108.js';
 
-test('no inputs -> score 0, low probability, valid', () => {
+// spec-v1007: this test used to assert the defect -- an empty form answering
+// "~0.7% probability of mass transfusion". The four unentered measurements carry
+// 18 of the 31 points, so a partial TASH cannot rule a massive transfusion out.
+test('no inputs -> no probability, and the refusal names what is missing', () => {
   const r = tashScore({});
-  assert.equal(r.total, 0);
+  assert.equal(r.total, null);
+  assert.equal(r.pct, null);
   assert.equal(r.abnormal, false);
-  assert.ok(r.pct < 1); // ~0.7%
+  assert.match(r.band, /hemoglobin, base excess, systolic BP, heart rate/);
+  assert.match(r.band, /can only add points/);
 });
 
 test('tile example: Hb 9.5 (4) + BE -7 (3) + SBP 95 (4) + HR 130 (2) + FAST (3) = 16, ~47.5%', () => {
@@ -27,8 +32,11 @@ test('band flip: probability crossing 50% (>= 50%) high flag', () => {
 });
 
 test('hemoglobin bands: < 7 = 8 points', () => {
-  assert.equal(tashScore({ hb: 6 }).total, 8);
-  assert.equal(tashScore({ hb: 12 }).total, 0);
+  // The other three measurements are entered at non-scoring values so the score
+  // is complete and the hemoglobin band is what is under test (spec-v1007).
+  const rest = { baseExcess: 0, sbp: 130, hr: 80 };
+  assert.equal(tashScore({ hb: 6, ...rest }).total, 8);
+  assert.equal(tashScore({ hb: 12, ...rest }).total, 0);
 });
 
 test('all variables clamp to the published 0-31 maximum', () => {

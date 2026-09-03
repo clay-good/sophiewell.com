@@ -121,6 +121,9 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     wire(['bd-bmi', 'bd-ast', 'bd-alt', 'bd-dm'], () => safe(o, () => {
       const r = M.bardScore({ bmi: optNum('bd-bmi'), ast: optNum('bd-ast'), alt: optNum('bd-alt'), diabetes: chk('bd-dm') });
+      // spec-v1007: a partial BARD under 2 has no total -- the unentered
+      // components can only add points, so it cannot rule advanced fibrosis out.
+      if (r.total == null) { note(o, r.band); return; }
       resultRow(o, [
         { text: r.band, cls: r.abnormal ? 'warn' : null },
         { label: 'BARD', value: `${r.total}/4` },

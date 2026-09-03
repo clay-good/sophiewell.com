@@ -134,8 +134,10 @@ export const renderers = {
       resultRow(o, [
         { text: r.band, cls: r.total >= 5 ? 'warn' : null },
         { label: 'Total score', value: `${r.total} of 14` },
-        { label: '30-day mortality (Morrow)', value: `${fmt(r.mortality, { fallback: '--' })}%` },
-        ...(r.ageProvided ? [] : [{ label: 'Age', value: 'left blank (0 age points)' }]),
+        // spec-v1007: with age blank the total is a floor and the mortality band
+        // it would be read off is an underestimate, so the figure is withheld.
+        ...(r.mortality == null ? [] : [{ label: '30-day mortality (Morrow)', value: `${fmt(r.mortality, { fallback: '--' })}%` }]),
+        ...(r.ageProvided ? [] : [{ label: 'Age', value: 'left blank -- enter it for the 30-day mortality' }]),
       ]);
       note(o, r.note);
     }));

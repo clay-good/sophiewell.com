@@ -22,12 +22,38 @@ const CASES = [
   ['mnutric', 'Enter the mNUTRIC inputs'],
   ['rome-ecopd', 'Measure all five Rome variables'],
 ];
-for (const [id, want] of CASES) {
+// spec-v1007: the second wave. These six renderers already read with `optNum`, so
+// what is proved here is the other half -- that the view prints the refusal rather
+// than a `null` total or a `NaN` percentage where the reading used to be.
+//
+// Two of them mix in pickers, and a picker is an ANSWER, not a gap -- so clearing
+// the inputs alone leaves `mehran-cin` with its example's "congestive heart
+// failure: yes" and 8 real points, which correctly still bands. These cases send
+// every picker back to its first option (the negative answer) as well, which is
+// the state a reader who has answered the questions but has no labs is in.
+const CASES_V1007 = [
+  ['bard-score', 'Enter the rest of BARD'],
+  ['hscore-hlh', 'Enter the HScore measurements'],
+  ['tash-score', 'Enter the four TASH measurements'],
+  ['rabt-score', 'to compute the shock index'],
+  ['alt-70', 'Enter the three ALT-70 measurements'],
+  ['mehran-cin', 'Enter the rest of the Mehran score'],
+];
+const RESET_PICKERS = new Set(CASES_V1007.map(([id]) => id));
+for (const [id, want] of [...CASES, ...CASES_V1007]) {
   test(`${id}: clearing every field shows a prompt`, async ({ page }) => {
     await page.goto(`/#${id}`);
     await page.waitForSelector('#q-results');
     await page.waitForTimeout(400);
-    await page.evaluate(() => {
+    await page.evaluate((resetPickers) => {
+      if (resetPickers) {
+        for (const sel of document.querySelectorAll('#q-view select, #tool select, select')) {
+          if (sel.closest('form[role="search"]') || !sel.options.length) continue;
+          sel.selectedIndex = 0;
+          sel.dispatchEvent(new Event('input', { bubbles: true }));
+          sel.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+      }
       const skip = new Set(['hero-search', 'topbar-search', 'q']);
       for (const el of document.querySelectorAll('input')) {
         if (skip.has(el.id) || el.type === 'search' || el.closest('form[role="search"]')) continue;
@@ -36,7 +62,7 @@ for (const [id, want] of CASES) {
         el.dispatchEvent(new Event('input', { bubbles: true }));
         el.dispatchEvent(new Event('change', { bubbles: true }));
       }
-    });
+    }, RESET_PICKERS.has(id));
     await page.waitForTimeout(300);
     const text = await page.locator('#q-results').innerText();
     expect(text, `${id} output`).toContain(want);
