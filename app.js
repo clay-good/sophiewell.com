@@ -4626,24 +4626,69 @@ function hoistResults(body) {
 // holds PROOF_SUMMARY.
 export const EXAMPLE_HINT_TEXT = 'These are example values. Replace them with your own.';
 
+// spec-v1008: the sentence for a form the reader has started to make their own
+// while some of the example's values are still sitting in it. It keeps the words
+// "example values" so a reader scanning for them, and the check that holds this
+// text, both still find it.
+export const EXAMPLE_PARTIAL_TEXT = (n) => `${n} field${n === 1 ? '' : 's'} below `
+  + `${n === 1 ? 'still holds an example value' : 'still hold example values'}, not yours. `
+  + `Replace ${n === 1 ? 'it' : 'them'} before reading the answer.`;
+
 // Render the example hint between the answer and the fields, and take it away
-// the moment the reader edits anything -- after the first keystroke the values
-// are theirs, not ours. Attached after applyExample has finished dispatching
-// its own input events, so the hint does not remove itself on arrival.
-function showExampleHint(body) {
+// once the values on screen are the reader's own. Attached after applyExample has
+// finished dispatching its own input events, so the hint does not remove itself
+// on arrival.
+//
+// spec-v1008: "the reader's own" is per FIELD, not per tile. This used to drop
+// the whole sentence on the first edit anywhere in the form -- "after the first
+// keystroke the values are theirs, not ours" -- which is true of the field they
+// touched and false of every field they did not. On NIHSS, whose 13 items are
+// RANGE SLIDERS and so cannot be cleared, a reader who scored one item as 3 on
+// their own patient was shown "NIHSS total: 8" with the banner gone: five of
+// those points were the example patient's deficits, and nothing on screen said
+// so. It is the same mixing spec-v754 caught on the query-prefill path, on the
+// path a reader takes by hand. The per-field pattern next door in
+// markAutofilled is the one that was right.
+//
+// A field counts as the reader's when its value no longer matches what the
+// example put there, which is also why a re-apply from watchRestore cannot clear
+// the sentence by dispatching its own events.
+function showExampleHint(body, exampleFields = null) {
   if (!body || body.querySelector('.example-hint')) return;
   const hint = el('p', { class: 'example-hint', text: EXAMPLE_HINT_TEXT });
   const results = body.querySelector('#q-results');
   if (results && results.nextSibling) body.insertBefore(hint, results.nextSibling);
   else if (results) body.appendChild(hint);
   else body.insertBefore(hint, body.firstChild);
-  const drop = () => {
-    hint.remove();
-    body.removeEventListener('input', drop);
-    body.removeEventListener('change', drop);
+
+  const seeded = [];
+  for (const [id, value] of Object.entries(exampleFields || {})) {
+    const node = body.querySelector(`#${CSS.escape(id)}`);
+    if (node) seeded.push([node, value]);
+  }
+  const stillExample = () => seeded.filter(([node, value]) => (node.type === 'checkbox'
+    ? node.checked === (value === '1' || value === true || value === 'true')
+    : String(node.value) === String(value))).length;
+
+  const onEdit = () => {
+    // No seeded field we can find is the old behavior's case, and dropping the
+    // sentence on the first edit is the honest answer there: nothing is left to
+    // describe.
+    const left = seeded.length ? stillExample() : 0;
+    if (!left) {
+      hint.remove();
+      body.removeEventListener('input', onEdit, true);
+      body.removeEventListener('change', onEdit, true);
+      return;
+    }
+    // The reader has started, and some of the example is still in the form --
+    // including when what they edited was a field the example never seeded,
+    // which is the NIHSS case. "These are example values" is no longer true of
+    // the whole form, so say how much of it is still ours.
+    hint.textContent = EXAMPLE_PARTIAL_TEXT(left);
   };
-  body.addEventListener('input', drop);
-  body.addEventListener('change', drop);
+  body.addEventListener('input', onEdit, true);
+  body.addEventListener('change', onEdit, true);
 }
 
 // spec-v754: put a field's unit select back on its canonical option, so a
@@ -5126,7 +5171,7 @@ function renderToolView(util) {
         // hash state means the values on screen are the reader's own, and
         // calling those an example would be a lie.
         if (hasExample && !fromQuery && !domFilled && hashKeys.size === 0) {
-          showExampleHint(body);
+          showExampleHint(body, (META[util.id]?.example?.fields) || null);
         }
       });
     } catch (err) {

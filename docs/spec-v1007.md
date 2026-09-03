@@ -76,11 +76,14 @@ the library guard reaches the reader; they needed only a guard to print the refu
 
 ## Left open
 
-`nihss` renders its 13 items as **range sliders**, and a slider has no empty state: at rest every
-item reads a present, deliberate `0`. The library fix therefore lands on the agent surface, where a
-caller can genuinely omit items, and the browser still shows "No stroke symptoms" on an untouched
-form. Making that honest means changing the input control, not the score, and it is a UI change
-worth doing on its own — with the same question asked of every other slider-rendered instrument in
-the catalog.
+`nihss` renders its 13 items as **range sliders**, and a slider has no empty state: there is no way
+for a reader to say "I have not scored this item". The library fix therefore lands on the agent
+surface, where a caller can genuinely omit items.
+
+What the browser does instead is show the worked example, labeled — measured after this spec was
+written, and it corrects an earlier draft of this paragraph that claimed an untouched NIHSS form
+answered "No stroke symptoms". It does not; it answers the example, over the sentence "These are
+example values." The real hazard on that path turned out to be a different one, and
+`docs/spec-v1008.md` is it.
 
 The wider `nv(id)` audit named by spec-v1006 also remains open.

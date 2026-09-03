@@ -8,6 +8,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A form holding one of your numbers and four of ours said nothing about it.**
+  Every tile with a worked example loads with that example in its fields and a
+  sentence saying so — and the sentence was removed the moment you edited
+  anything, on the reasoning that after the first keystroke the values are yours.
+  They are, in the field you touched. The NIH Stroke Scale shows the cost: its 13
+  items are sliders that cannot be cleared, so scoring one item on your own
+  patient produced "NIHSS total: 8" with the sentence gone, and five of those
+  points were the example patient's deficits. The sentence now tracks the
+  example's own fields: it stays while any of them is untouched, says how many
+  are still ours once you have started ("4 fields below still hold example
+  values, not yours"), and goes away when the last one is replaced. See
+  `docs/spec-v1008.md`.
+
 - **Eight more calculators did the same thing, and this time the field types were
   mixed.** The previous pass could only see scores where every input is a
   measurement. Widening it found eight built from a mix of measurements and
