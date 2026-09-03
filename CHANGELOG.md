@@ -18,6 +18,17 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Two refusals reached agents as answers.** Every "enter the values first"
+  message added over the last two weeks was checked in the browser; checking them
+  on the agent interface found two that disagreed with themselves. The NIH Stroke
+  Scale and TIMI-STEMI returned "not scored" and "enter age" inside a
+  valid-looking result, so software reading the validity flag — which is what the
+  flag is for — would relay the sentence as a reading. With nothing entered they
+  are now invalid on both surfaces; with something entered the partial score
+  still stands, because it is a real floor. See `docs/spec-v1021.md`.
+
+### Fixed
+
 - **Two tools called a patient low-risk on one number.** Nobody opens a
   calculator and types nothing — they type the number they have. With an age
   alone, SMART-COP answered "0: low risk", a prediction about needing

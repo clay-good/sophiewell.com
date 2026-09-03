@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `2e876f6ab813bdab`
-Generated: 2026-09-03T19:58:24.705Z
+Build ID: `9110e37a71c5b79a`
+Generated: 2026-09-03T20:21:19.688Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -149,7 +149,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/cardio-v101.js` | 12751 | `629d5ae5fd15255af72cd65585d5b25ad079e85981772fc33d72ce6694b95940` |
 | `lib/cardio-v102.js` | 14060 | `951e823be2d85075c7532cd7fbf7f59b6b261dba4d9f63de1db4267610e45c0e` |
 | `lib/cardio-v104.js` | 14365 | `581150411141a634b4314d5ccf1fe560c96ce8d5c9b8d2555c2a840a2af873f3` |
-| `lib/cardio-v90.js` | 16522 | `59011e32afda4d3044976723867aea9b6680c331929b11f27a742d45797b66d1` |
+| `lib/cardio-v90.js` | 17067 | `7da5eb75619116d3c187115828de8665ae66b26f63ad2f7621a25a2b10dd8241` |
 | `lib/cardioecho-v237.js` | 8749 | `74102ce8e4ea9a0eb112fbfab36884663650f80dbce62b20b0a6ab86ece79024` |
 | `lib/cardiology-risk-v209.js` | 7709 | `995d41b33272eb9bdfcb07231a7c05897179c68cf969d6339dfe168aa3cdf9d9` |
 | `lib/cardiology-risk-v214.js` | 13668 | `57e82f2ed5ddee8578af62b3291013d254fd1c51359457e14ba0cd2533220c9a` |
@@ -183,7 +183,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/clinical-v6.js` | 16042 | `69c1de74d7f171a3c6e87329c1cb69324758a368a34f1961e6201caec0470f8d` |
 | `lib/clinical-v7.js` | 18510 | `91639297dbcafd2850ea5bb17d4e7219ae912e30305349d7423af72484e68365` |
 | `lib/clinical-v8.js` | 18032 | `85e8b20be2633595849a5f194e36e2968dbb1375535360da93503735916a69dc` |
-| `lib/clinical.js` | 18340 | `808100ed6c2d253ac537e95e29c2524b9ca90cdcbe82d0b89554b60d1d3a9a91` |
+| `lib/clinical.js` | 18971 | `a652114945dd9bbbad9f8a966462580b3260fa7a779fb23c92ecaeb92f82cc7a` |
 | `lib/clipboard.js` | 2907 | `951c41df24f58df747734474d383d6f75f52d22d2c4d0a370ef5bfb269a15147` |
 | `lib/cluster-headache-ichd3-v814.js` | 7692 | `1ba3ed3aa2a203e13da4152325e29fda8ae0a533b2d4f1881c9a878655847045` |
 | `lib/coagscore-v232.js` | 3053 | `aff9e82479da5b38deeaf70ade27caa7f5d1a0f21b01d74f764ca147e9846bd8` |
