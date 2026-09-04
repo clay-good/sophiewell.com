@@ -1,6 +1,6 @@
 # What a tool does with a value it was not given
 
-One defect class, worked from one end to the other between spec-v1006 and spec-v1025. This page is
+One defect class, worked from one end to the other between spec-v1006 and spec-v1035. This page is
 the map; each spec is the detail.
 
 ## The defect
@@ -55,6 +55,25 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1023](spec-v1023.md) | An exemption granted for one number covered a whole sentence |
 | [v1024](spec-v1024.md) | **Gate**: no calculator silently answers from the clock |
 | [v1025](spec-v1025.md) | The browser had no idea which fields were required |
+| [v1026](spec-v1026.md) | The sweep read tiles before they had finished answering |
+| [v1027](spec-v1027.md) | The warning's permanence broke three suites about its neighbours |
+| [v1028](spec-v1028.md) | Two withdrawal scales opened already scored |
+| [v1029](spec-v1029.md) | What the empty-form ledger was hiding: five scores with a measurement inside |
+| [v1032](spec-v1032.md) | The impossible-number guard was reading the wrong live region |
+
+### And the same question from the other side
+
+A tile can refuse a blank field correctly and still *display* a rule-out, because its worked example
+says nothing. Forty-seven shipped an example of every field at zero, so the tile opened on its most
+reassuring band — "Rule out SAH", "CT not recommended", "no pain", "low bleed risk" — before anyone
+had described a patient.
+
+| Spec | What it fixed |
+| --- | --- |
+| [v1031](spec-v1031.md) | The nine highest-stakes rule-outs |
+| [v1033](spec-v1033.md) | Nine bedside pain, delirium and withdrawal scales |
+| [v1034](spec-v1034.md) | Ten bleeding, clotting and severity scores |
+| [v1035](spec-v1035.md) | The last sixteen, and the three left all-zero on purpose |
 
 ## What holds it now
 
@@ -62,8 +81,9 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | --- | --- | --- |
 | `no-answer-from-nothing-sweep.spec.js` | does any calculator answer a cleared form? | 15 s |
 | `clock-dependent.spec.js` | does any calculator answer differently a year later, from the same inputs? | 1.3 min |
-| `no-answer-from-nothing.spec.js` | do the 35 fixed calculators still refuse, and still answer when filled? | 35 s |
+| `no-answer-from-nothing.spec.js` | do the 40 fixed calculators still refuse, and still answer when filled? | 49 s |
 | `declared-ranges.spec.js` | is an out-of-range value named, above the answer and tied to its field? | 12 s |
+| `no-impossible-number.spec.js` | does any tile state NaN, Infinity or an unexplained exponent? | 1.6 min |
 
 Each has a ledger for the tiles that legitimately do the thing it looks for, and each was verified
 by reintroducing the defect and watching it fail.
@@ -73,6 +93,11 @@ by reintroducing the defect and watching it fail.
 - **A form with one value in it** has no gate. spec-v1020 fixed two by hand; the signal ("does this
   read reassuringly?") is fuzzier than "did it answer nothing at all", and a gate that cries wolf
   teaches people to silence it.
+- **The ledger exempts a tile, and the judgment behind it was per field.** spec-v1029 found five
+  scores whose checkbox exemption was covering a measurement too; eleven more ledger entries read a
+  number and were judged legitimate one at a time. A tile-level exemption cannot express "these
+  seven fields are criteria and that one is a measurement", and nothing checks that it was ever
+  asked field by field.
 - **Two ledgers make different claims.** A tile can be legitimate under "answers an empty form" and
   still be wrong under "answers without a field the agent surface calls required" — 40 tiles sit in
   that gap, and each needs the measurement-versus-criterion judgment applied one more time.
