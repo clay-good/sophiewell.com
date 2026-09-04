@@ -8,6 +8,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Nine tools opened on a rule-out nobody had earned.** Their worked example
+  was all zeros, so the tile displayed "Rule out SAH", "cervical-spine imaging
+  not indicated", "very low risk for bacterial meningitis" and "negative
+  screen" before anyone had entered anything. Each example now describes a
+  patient, which is also what the README promises an example is for. See
+  docs/spec-v1031.md.
 - **Five scores reassured from a measurement nobody entered.** They sat on the
   empty-form ledger, which exempts a tile from the whole-catalog sweep -- but
   the exemption was written for their checkboxes and was covering a number as
