@@ -86,7 +86,9 @@ export const ANSWERS_AN_EMPTY_FORM = new Set([
   "systemic-mastocytosis",
   "tension-headache-ichd3",
   "timely-filing",
-  "triple-i",
+  // spec-v1063 removed "triple-i": every category in that framework begins with
+  // fever, so with no temperature entered it now refuses instead of answering
+  // "No category met on these entries".
   "unit-converter-v4",
   "vasi",
   "vis",
