@@ -51,7 +51,7 @@ from CI, so it costs the pipeline nothing.
 
 ## What was fixed here
 
-Eleven tiles, worst first. The test in brackets pins each one.
+Twelve, worst first. The test in brackets pins each one.
 
 | Tile | With one field blank, it said | Now |
 |---|---|---|
@@ -65,6 +65,7 @@ Eleven tiles, worst first. The test in brackets pins each one.
 | `triple-i` | "**No category met**" with no temperature; "without any of the supporting features" with the fetal heart rate blank | Refuses without a temperature; names the features nobody measured [`triple-i.test.js`] |
 | `membranous-risk` | "Moderate risk ... and **none of the high-risk features**" with the albumin blank | Says which tests would move it to high risk [`membranous-risk.test.js`] |
 | `conc-rate` | "Infusion rate: **0 mL/hr**" with a per-kilogram dose and no weight | Asks for the weight when the dose is per kilogram |
+| `peds-transfusion-volume` | "PRBC transfusion volume: **0 mL**" with the desired haemoglobin rise blank — a transfusion order of nothing | Asks for the desired rise |
 | `scorten` | SCORTEN 2, "mortality ≈ **12.1%**", where the full set gave 3 and 35.3% | Reports the floor and says how many measurements it had [`dermuro-v191.test.js`] |
 
 Two shapes of fix, and which one applies is a judgment about the instrument, not
