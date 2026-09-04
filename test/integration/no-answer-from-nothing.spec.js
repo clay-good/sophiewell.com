@@ -339,3 +339,76 @@ test('cows: an unrated assessment is not "no active withdrawal"', async ({ page 
   expect(text).toMatch(/at least 0 from 0 of 11 items/);
   expect(text).not.toMatch(/No active withdrawal/);
 });
+
+// ---------------------------------------------------------------------------
+// spec-v1029, wave 6: the tiles the LEDGER was hiding.
+//
+// The whole-catalog sweep exempts every id in empty-form-ledger.js, and the
+// ledger was seeded on the reasoning that an unticked checklist really does
+// score zero. Five of those tiles also read a number, and a blank one arrived
+// as zero -- an age of 0, a pulse of 0, no prior admissions -- each time making
+// the reading more reassuring than the form supported.
+// ---------------------------------------------------------------------------
+
+async function clearNumbers(page, id) {
+  await page.goto(`/#${id}`);
+  await page.waitForSelector('#q-results');
+  await page.waitForTimeout(300);
+  await page.evaluate(() => {
+    for (const n of document.querySelectorAll('#tool-body input[type=number]')) {
+      n.value = '';
+      n.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+  });
+  await page.waitForTimeout(120);
+  return (await page.locator('#q-results').innerText()).replace(/\s+/g, ' ');
+}
+
+// PESI is the age in years plus the criteria points, so a blank age removed the
+// larger term and left "Class I (very low risk)" -- the reading that sends a
+// pulmonary embolism home.
+test('pesi: a blank age is not a very-low-risk pulmonary embolism', async ({ page }) => {
+  const text = await clearNumbers(page, 'pesi');
+  expect(text).toMatch(/Enter the age/);
+  expect(text).not.toMatch(/Class I \(very low risk/);
+});
+
+test('charlson: a blank age does not estimate ten-year survival', async ({ page }) => {
+  const text = await clearNumbers(page, 'charlson');
+  expect(text).toMatch(/Enter the age/);
+  expect(text).not.toMatch(/survival ~98%/);
+});
+
+test('hospital-score: no low-risk readmission reading without the admission count', async ({ page }) => {
+  const text = await clearNumbers(page, 'hospital-score');
+  expect(text).toMatch(/admissions in the past 12 months/);
+  expect(text).not.toMatch(/low risk/);
+});
+
+// The Wells half of this tile is all checkboxes and still answers; only the
+// Geneva half waits, and it waits for one number.
+test('wells-pe-geneva: the Geneva half waits for the heart rate', async ({ page }) => {
+  const text = await clearNumbers(page, 'wells-pe-geneva');
+  expect(text).toMatch(/Wells PE:/);
+  expect(text).toMatch(/Enter the heart rate/);
+  expect(text).not.toMatch(/Geneva: 0/);
+});
+
+// PECARN's age does not add points -- it picks which of two rules applies. A
+// blank one silently ran the under-2 rule.
+test('pecarn-head: the two rules disagreeing is not a tier', async ({ page }) => {
+  await page.goto('/#pecarn-head');
+  await page.waitForSelector('#q-results');
+  await page.waitForTimeout(300);
+  await page.evaluate(() => {
+    for (const n of document.querySelectorAll('#tool-body input[type=number]')) {
+      n.value = '';
+      n.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+  });
+  await page.locator('#ph-vom').check();
+  await page.waitForTimeout(120);
+  const text = (await page.locator('#q-results').innerText()).replace(/\s+/g, ' ');
+  expect(text).toMatch(/Enter the age to choose the rule/);
+  expect(text).not.toMatch(/PECARN risk tier:/);
+});

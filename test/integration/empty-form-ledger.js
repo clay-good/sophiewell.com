@@ -28,6 +28,12 @@ export const ANSWERS_AN_EMPTY_FORM = new Set([
   // volume has been decided yet. The two measurements it does need are guarded
   // in the library (spec-v1007).
   "mehran-cin",
+  // spec-v1029 removed six lines from this list: ciwa, cows, pesi, charlson,
+  // hospital-score and wells-pe-geneva. Each was a checklist with a MEASUREMENT
+  // in it -- an age, a pulse, a count of admissions -- and the exemption written
+  // for the checklist was covering the measurement too. A line here says the
+  // blanks are answered criteria; check that it is true of every field, not the
+  // ones that gave the tile its name.
   "aat-deficiency",
   "abc-scale",
   "acromegaly-biochem",
@@ -41,10 +47,7 @@ export const ANSWERS_AN_EMPTY_FORM = new Set([
   "cdc-stature-for-age",
   "cdc-weight-for-age",
   "cf-diagnosis",
-  "charlson",
-  "ciwa",
   "corrected-age",
-  "cows",
   "digoxin",
   "easi",
   "em-time",
@@ -58,7 +61,6 @@ export const ANSWERS_AN_EMPTY_FORM = new Set([
   "hf-ef-classification",
   "hiv-pep-occupational",
   "hlh-2004",
-  "hospital-score",
   "hpa-glaucoma",
   "igg4-rd-2020",
   "ihs4",
@@ -84,11 +86,14 @@ export const ANSWERS_AN_EMPTY_FORM = new Set([
   "pa-turnaround",
   "pasi",
   "pbac-hmb",
+  // spec-v1029: it stays, and now it earns the line. Every finding here is a
+  // criterion, so an untouched form really is a form of negatives; only the age
+  // was being invented, and the tile no longer quotes an age-specific rate
+  // without one.
   "pecarn-head",
   "peds-bmi-percentile",
   "peds-weight-conv",
   "pertussis-case-def",
-  "pesi",
   "pews",
   "posas-observer-scar",
   "posas-patient-scar",
@@ -110,7 +115,6 @@ export const ANSWERS_AN_EMPTY_FORM = new Set([
   "vent-sbt-peep",
   "vis",
   "wat-1",
-  "wells-pe-geneva",
   "who-severe-malaria",
   "years-pe"
 ]);

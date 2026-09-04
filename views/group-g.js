@@ -432,10 +432,11 @@ export const renderers = {
         age65: checked('gv-age'), priorVte: checked('gv-vte'),
         recentSurgery: checked('gv-surg'), activeMalignancy: checked('gv-mal'),
         unilateralLegPain: checked('gv-leg'), hemoptysis: checked('gv-hemo'),
-        hr: nv('gv-hr'), lowerLimbExam: checked('gv-exam'),
+        hr: nvOrNull('gv-hr'), lowerLimbExam: checked('gv-exam'),
       });
       o.appendChild(el('h2', { text: `Wells PE: ${w.score} - ${w.band}` }));
-      o.appendChild(el('p', { text: `Geneva: ${g.score} - ${g.band}` }));
+      // spec-v1029: with no pulse entered the Geneva half read "Low (~8%)".
+      o.appendChild(el('p', { text: g.incomplete ? g.band : `Geneva: ${g.score} - ${g.band}` }));
     });
     [...wp, ...gv].forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
     document.getElementById('gv-hr').addEventListener('input', run);
@@ -1200,7 +1201,7 @@ export const renderers = {
     if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
       const inputs = {
-        age: nv('pe-age'),
+        age: nvOrNull('pe-age'),
         sex: document.getElementById('pe-sex').value,
         cancer: checked('pe-ca'),
         heartFailure: checked('pe-hf'),
@@ -1213,7 +1214,8 @@ export const renderers = {
         sao2Lt90: checked('pe-sao2'),
       };
       const r = S4.pesi(inputs);
-      o.appendChild(el('h2', { text: `PESI ${r.score} - Class ${r.class}` }));
+      // spec-v1029: no class until the age is entered -- the score is mostly the age.
+      if (!r.incomplete) o.appendChild(el('h2', { text: `PESI ${r.score} - Class ${r.class}` }));
       o.appendChild(el('p', { text: r.band }));
       if (deriv) updateDerivationSteps(deriv, META.pesi, inputs);
     });
@@ -1652,7 +1654,7 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       const r = S4.pecarnHead({
-        ageYears: nv('ph-age'),
+        ageYears: nvOrNull('ph-age'),
         gcs15: checked('ph-gcs15'),
         palpableSkullFx: checked('ph-skfx'),
         basalSkullFxSigns: checked('ph-basal'),
@@ -1664,7 +1666,8 @@ export const renderers = {
         notActingNormally: !checked('ph-acting'),
         severeHeadache: checked('ph-hd'),
       });
-      o.appendChild(el('h2', { text: `PECARN risk tier: ${r.tier}` }));
+      // spec-v1029: the age picks the rule, so there is no tier while the two rules disagree.
+      if (!r.incomplete) o.appendChild(el('h2', { text: `PECARN risk tier: ${r.tier}` }));
       o.appendChild(el('p', { text: r.band }));
     });
     document.querySelectorAll('input').forEach((n) => n.addEventListener(n.type === 'checkbox' ? 'change' : 'input', run));
@@ -1767,11 +1770,12 @@ export const renderers = {
         sodiumLt135: checked('hs-na'),
         anyProcedure: checked('hs-proc'),
         urgentAdmission: checked('hs-urg'),
-        priorAdmissions12mo: nv('hs-prior'),
+        priorAdmissions12mo: nvOrNull('hs-prior'),
         losGe5: checked('hs-los'),
       };
       const r = S4.hospitalScore(inputs);
-      o.appendChild(el('h2', { text: `HOSPITAL ${r.score}` }));
+      // spec-v1029: prior admissions are worth up to 5 points; no band without them.
+      if (!r.incomplete) o.appendChild(el('h2', { text: `HOSPITAL ${r.score}` }));
       o.appendChild(el('p', { text: r.band }));
       const p = r.parts;
       o.appendChild(el('p', { class: 'muted',
@@ -1874,12 +1878,15 @@ export const renderers = {
     const run = () => safe(o, () => {
       const items = {};
       for (const [k, id] of Object.entries(map)) items[k] = checked(id);
-      const ageYears = nv('ch-age');
+      const ageYears = nvOrNull('ch-age');
       const r = S4.charlson({ items, ageYears });
-      o.appendChild(el('h2', { text: `Charlson (age-adjusted) ${r.score}` }));
+      // spec-v1029: the age adjustment is worth up to 4 points, so no survival estimate without it.
+      if (!r.incomplete) o.appendChild(el('h2', { text: `Charlson (age-adjusted) ${r.score}` }));
       o.appendChild(el('p', { text: r.band }));
       o.appendChild(el('p', { class: 'muted',
-        text: `Comorbidity component: ${r.comorbidity}; age adjustment: ${r.ageAdj}.` }));
+        text: r.incomplete
+          ? `Comorbidity component: ${r.comorbidity}; age adjustment: not yet entered.`
+          : `Comorbidity component: ${r.comorbidity}; age adjustment: ${r.ageAdj}.` }));
       if (deriv) updateDerivationSteps(deriv, META.charlson, { ...items, ageYears });
     });
     document.querySelectorAll('input').forEach((n) => n.addEventListener(n.type === 'checkbox' ? 'change' : 'input', run));

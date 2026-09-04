@@ -28,7 +28,7 @@ test.skip(({ browserName }) => browserName !== 'chromium', 'whole-catalog sweep 
 // reading those tiles before that sentence existed. A refusal that
 // says none of these is a refusal the reader cannot act on, which is its own
 // defect -- see spec-v1015.
-const ASKING = /enter |choose |select |complete |provide |missing|required|not scored|score all|rate all|measure |awaiting|fill |add at least|must be |out of range|cannot be|no criteria|unscored|check the value|blank|outstanding/i;
+const ASKING = /enter |choose |select |complete |provide |missing|required|not scored|score all|rate all|measure |awaiting|fill |add at least|must be |out of range|cannot be|no criteria|unscored|check the value|blank|outstanding|rate the remaining/i;
 
 for (let shard = 0; shard < SHARDS; shard += 1) {
   test(`no new tile answers a cleared form (shard ${shard + 1} of ${SHARDS})`, async ({ page }) => {

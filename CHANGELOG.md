@@ -8,6 +8,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Five scores reassured from a measurement nobody entered.** They sat on the
+  empty-form ledger, which exempts a tile from the whole-catalog sweep -- but
+  the exemption was written for their checkboxes and was covering a number as
+  well. An untouched PESI read "Class I (very low risk)", and PECARN read "CT
+  not recommended" for a child whose age nobody had given. Each now answers
+  only as far as the entered fields carry it. Six ledger lines removed. See
+  docs/spec-v1029.md.
 - **The build failed because of the calendar.** Every sitemap URL carried a
   `<lastmod>` stamped from the clock, so a commit made on one UTC date and
   built by CI on the next failed the "build must be idempotent" job on 1,721
