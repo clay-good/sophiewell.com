@@ -8,6 +8,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Ten risk scores opened on their low-risk band.** ATRIA, ORBIT,
+  HEMORR2HAGES, IMPROVE-VTE, Padua, DASH, HERDOO2, sPESI, AIMS65 and SIRS all
+  shipped a worked example of every field at zero, so each opened saying some
+  version of "low risk" -- and a reader comparing a bleeding score with a
+  clotting score saw two opposite reassurances, neither from a patient. See
+  docs/spec-v1034.md.
 - **Nine bedside scales opened saying the patient was fine.** CAM-ICU negative,
   FLACC relaxed, PAINAD no pain, CRIES no significant pain -- each from a worked
   example that was every field at zero. Six of the nine score patients who
