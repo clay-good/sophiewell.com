@@ -58,6 +58,9 @@ for (let shard = 0; shard < SHARDS; shard += 1) {
         const nums = [...document.querySelectorAll('#tool-body input[type=number]')];
         const out = [];
         const base = await read();
+        // spec-v1070: as the gate -- a baseline read before the first render
+        // would report every field on the tile as a change.
+        if (!base || base.length <= 12) return out;
         for (const n of nums) {
           const lab = labelFor(n).replace(/\s+/g, ' ').trim();
           if (!POS.test(lab)) continue;

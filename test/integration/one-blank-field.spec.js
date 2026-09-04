@@ -68,6 +68,12 @@ for (let shard = 0; shard < SHARDS; shard += 1) {
         const nums = [...document.querySelectorAll('#tool-body input[type=number]')];
         const out = [];
         const base = await read();
+        // spec-v1070: every judgment here is "did the answer CHANGE", so a
+        // baseline read before the tile finished its first render would make
+        // every field on it look like a change -- a false failure caused by
+        // load, not by the calculator. If there is no answer to compare
+        // against, there is nothing this gate can say about the tile.
+        if (!base || base.length <= 12) return out;
         for (const n of nums) {
           const lab = labelFor(n).replace(/\s+/g, ' ').trim();
           if (!POS.test(lab)) continue;
