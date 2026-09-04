@@ -272,8 +272,13 @@ test('childPugh: 6 -> Class A boundary', () => {
 });
 
 // --- 145 Ranson ---------------------------------------------------------
-test('ranson: 0 admission + 0 48h -> very low', () => {
-  assert.match(ranson({ admission: {}, fortyEightHour: {} }).band, /<1%/);
+test('ranson: 0 admission + 0 48h -> the source\'s lowest band', () => {
+  // spec-v1048: was /<1%/. That figure disagreed with this tile's own
+  // interpretation table -- shown to the reader on the same page -- and with the
+  // three bands above it, which carry the numbers Ranson 1974 is cited for
+  // (15%, 40%, 100%). The example check had been passing the mismatch because
+  // the "2" of the score satisfied the "2%" of the mortality.
+  assert.match(ranson({ admission: {}, fortyEightHour: {} }).band, /~2% mortality/);
 });
 test('ranson: 3 -> ~15%', () => {
   const r = ranson({ admission: { age55: true, wbc16: true, glu200: true }, fortyEightHour: {} });

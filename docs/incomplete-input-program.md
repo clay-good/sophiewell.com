@@ -111,17 +111,28 @@ by reintroducing the defect and watching it fail.
 
 ## What is still open
 
-- **A form with one value in it** has no gate. spec-v1020 fixed two by hand; the signal ("does this
-  read reassuringly?") is fuzzier than "did it answer nothing at all", and a gate that cries wolf
-  teaches people to silence it.
+- ~~**A form with one value in it** has no gate.~~ **Closed by spec-v1037**: the oracle turned out to
+  be already in the repo. `mcp/fields.js` marks inputs `required`, so the sweep clears exactly one of
+  those and leaves the worked example everywhere else — no "does this read reassuringly?" heuristic
+  needed.
 - **The ledger exempts a tile, and the judgment behind it was per field.** spec-v1029 found five
   scores whose checkbox exemption was covering a measurement too; eleven more ledger entries read a
   number and were judged legitimate one at a time. A tile-level exemption cannot express "these
   seven fields are criteria and that one is a measurement", and nothing checks that it was ever
   asked field by field.
-- **Two ledgers make different claims**, and the gap has now been measured: seventy-five calculators
-  answered without a field the agent surface calls required (spec-v1037). Ten are fixed and 65 are carried in
-  `required-field-ledger.js`, each needing the measurement-versus-criterion judgment one more time.
-- **`example-correctness` matches numbers loosely.** It asks whether each documented number appears
-  somewhere in the output, which a wrong answer can satisfy by coincidence (spec-v1023 proves it on
-  a real case).
+- ~~**Two ledgers make different claims.**~~ **Drained**: seventy-five calculators answered without a
+  field the agent surface calls required (spec-v1037); sixty-one are fixed across spec-v1037 to
+  spec-v1047, and the fifteen still carried in `required-field-ledger.js` are all category 3 — a tile
+  answering about what was actually entered, and saying so.
+- ~~**`example-correctness` matches numbers loosely.**~~ **Closed by spec-v1048**: each documented
+  number must now have a number of its *own* in the output. It found a tile whose documented "2%
+  mortality" was being satisfied by the "2" of its own score, while the tile printed "<1%".
+
+What is left is narrower than when this page was written:
+
+- **A ledger exempts a TILE, and the judgment behind it is per FIELD.** spec-v1029 found five scores
+  whose checkbox exemption was covering a measurement too. Nothing checks that the question was ever
+  asked field by field.
+- **146 coercion helpers cannot tell a blank from a zero** (`scripts/probe-blank-coercions.mjs`).
+  Most are harmless; which ones are not depends on what their renderer sends, so the report is a
+  reading aid rather than a gate (spec-v1040).

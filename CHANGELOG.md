@@ -8,6 +8,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A calculator disagreed with its own reference table, and the check that
+  should have caught it passed on a coincidence.** Ranson-BISAP printed "<1%
+  mortality" while its own interpretation table, on the same page, said
+  "roughly 2%" -- and the example check accepted it because the "2" from the
+  score satisfied the "2%" from the mortality. Every documented number must now
+  have a number of its own in the output. See docs/spec-v1048.md.
 - **WAT-1 opened saying a child had no withdrawal.** The paediatric sibling of
   CIWA-Ar and COWS had the same defect those two lost earlier, and kept it,
   because its ten items were sliders -- a control that cannot be blank, so no

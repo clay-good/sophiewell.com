@@ -73,7 +73,7 @@ function numericFacts(s) {
   return facts;
 }
 
-function findNumberNear(haystack, fact) {
+function toleranceWindow(fact) {
   // Tolerance: explicit ~ means +/-15%; ranges accept any value in range;
   // otherwise +/-2% relative or 0.05 absolute (whichever is larger), so
   // 5.0 matches 5 and 2.0 matches 2 and 22.86 matches 22.9.
@@ -81,6 +81,43 @@ function findNumberNear(haystack, fact) {
             : Math.max(Math.abs(fact.value) * 0.02, 0.05);
   const lo = fact.rangeEnd != null ? Math.min(fact.value, fact.rangeEnd) - tol : fact.value - tol;
   const hi = fact.rangeEnd != null ? Math.max(fact.value, fact.rangeEnd) + tol : fact.value + tol;
+  return [lo, hi];
+}
+
+// spec-v1048: every documented number needs its OWN number in the output.
+//
+// This used to ask, of each expected fact independently, "does SOME number in
+// the output fall in its window?" -- so one output number could satisfy several
+// expected ones. ranson-bisap documented "Ranson 2 - roughly 2% mortality" while
+// the tile printed "Ranson 2 - <1% mortality", and the sweep passed it for two
+// years: the 2 from the SCORE satisfied the 2 from the MORTALITY. The tile
+// disagreed with its own interpretation table, printed directly beneath.
+//
+// A matching, not a search. Each fact is an edge to the output numbers it could
+// be, and the assertion is that a perfect matching exists on the facts' side --
+// standard augmenting-path search, on lists of at most a few dozen.
+function allFactsMatchDistinctly(haystack, facts) {
+  const nums = [...haystack.matchAll(/\d+(?:\.\d+)?/g)].map((x) => Number(x[0]));
+  const windows = facts.map(toleranceWindow);
+  const takenBy = new Array(nums.length).fill(-1);
+  const augment = (fi, seen) => {
+    for (let ni = 0; ni < nums.length; ni += 1) {
+      if (seen[ni]) continue;
+      const [lo, hi] = windows[fi];
+      if (!(nums[ni] >= lo && nums[ni] <= hi)) continue;
+      seen[ni] = true;
+      if (takenBy[ni] === -1 || augment(takenBy[ni], seen)) { takenBy[ni] = fi; return true; }
+    }
+    return false;
+  };
+  for (let fi = 0; fi < facts.length; fi += 1) {
+    if (!augment(fi, new Array(nums.length).fill(false))) return facts[fi];
+  }
+  return null;
+}
+
+function findNumberNear(haystack, fact) {
+  const [lo, hi] = toleranceWindow(fact);
   const found = [...haystack.matchAll(/\d+(?:\.\d+)?/g)].map((x) => Number(x[0]));
   return found.some((n) => n >= lo && n <= hi);
 }
@@ -132,6 +169,14 @@ const SCENARIO_ONLY = new Set([
   // select radios, so the example is driven through the mcp round-trip and the
   // scoring-v4 screener unit tests instead.
   'phq9', 'gad7', 'epds', 'auditc', 'cage',
+  // spec-v1048: lab-interpret renders nothing until "Interpret values" is
+  // clicked, so this sweep -- which fills the example and reads -- has never
+  // seen its output. It looked like it was passing because the documented range
+  // "(4.0-5.6%)" fell within tolerance of the 5.4 sitting in the A1C INPUT, and
+  // the fallback haystack includes input values. The distinct-matching rule
+  // surfaced it: two documented numbers, one number to be. Its math is covered
+  // by the unit tests and the MCP round-trip.
+  'lab-interpret',
 ]);
 
 // Pull META.example payloads out of the live module so the test stays in
@@ -171,7 +216,16 @@ async function checkTile(page, id, expected) {
 
   const text = await page.locator('main').innerText();
   const cleaned = text.replace(/Expected:[^\n]*/g, '');
-  let missing = facts.filter((f) => !findNumberNear(cleaned, f)).map((f) => f.raw);
+  const unmatched = (haystack) => {
+    const loose = facts.filter((f) => !findNumberNear(haystack, f)).map((f) => f.raw);
+    if (loose.length) return loose;
+    // spec-v1048: every fact accounted for individually, but do they have
+    // DISTINCT numbers to be? If not, one output number is standing in for two
+    // documented ones and the sweep is passing on a coincidence.
+    const clash = allFactsMatchDistinctly(haystack, facts);
+    return clash ? [`${clash.raw} (no number of its own; another documented value is using it)`] : [];
+  };
+  let missing = unmatched(cleaned);
 
   // spec-v752: an example's documented output routinely names its own INPUTS
   // -- "15 kg x 20 mL/kg = 300 mL bolus" -- and an input's value is not text,
@@ -198,7 +252,7 @@ async function checkTile(page, id, expected) {
       }
       return parts.join(' \n');
     });
-    missing = facts.filter((f) => !findNumberNear(`${cleaned}\n${values}`, f)).map((f) => f.raw);
+    missing = unmatched(`${cleaned}\n${values}`);
   }
 
   if (missing.length) {
