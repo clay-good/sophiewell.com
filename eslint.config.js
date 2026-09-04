@@ -92,6 +92,13 @@ export default [
       // above had been maintained all along for this rule; the rule itself was
       // never turned on.
       "no-undef": "error",
+      // spec-v1068: a duplicate key silently drops the earlier value. Harmless
+      // in the four places it fired, but the shape it would hide is a second
+      // renderer for a tile id that already has one, where the first simply
+      // stops existing. no-control-regex is deliberately NOT enabled:
+      // report-worker.mjs matches control characters on purpose.
+      "no-dupe-keys": "error",
+      "no-regex-spaces": "error",
       "no-eval": "error",
       "no-implied-eval": "error",
       "no-new-func": "error",

@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `7853a35ef3657984`
-Generated: 2026-09-04T17:52:41.759Z
+Build ID: `651d1acfa593c9aa`
+Generated: 2026-09-04T18:41:11.280Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -279,12 +279,12 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/fabq-v782.js` | 4825 | `37d2130110cb36da3e67c8cc92c76fb4b6f5cae77382edc1027cbed06fce1a40` |
 | `lib/fast-dementia-v294.js` | 5928 | `ca241cbeef3ca9c9ba2a8d46c024d617b2691c1519265d5454caa2d5887af661` |
 | `lib/fazekas-v349.js` | 3945 | `21bb6a7dee337f80109349b3a983b97ffff33057f2a96cda79cef09cd91ddfed` |
-| `lib/feno-v888.js` | 7756 | `4e9ac8ae71097085aa70f697a1e28f1f74e1866f9f3e25adbfe54650e1e6a744` |
+| `lib/feno-v888.js` | 8140 | `5b4509abf99c1d5d24a7c116477d8a13fa523f95fb49218a49ad10f09102911b` |
 | `lib/fernandez-radius-v489.js` | 3424 | `ba068bf9d2eccfe4c35d61a30f5ed1d73146698a65fc68f43940ba6d264622ee` |
 | `lib/ffs-1996-v590.js` | 11730 | `1d34a96d7576fd07ea0408a9b207147b3a0ee5307355d6a398aa85d93081e239` |
 | `lib/fgsi-v667.js` | 5493 | `8d04462986eadc0e971e5892ca0376658d80110beff1d6486f8c96db6999e899` |
 | `lib/fibrosis-v275.js` | 2577 | `2d43ffb3616e1d1cf98df08e2def7ef97046d61755cfe4f52af8819b3a8f0324` |
-| `lib/ficat-arlet-v344.js` | 4921 | `a055326850836eb72bf210ce9e62fa7c406cf669a5dd231368a7b6ae020a8496` |
+| `lib/ficat-arlet-v344.js` | 5068 | `b2a0a4605b73d91ecf8b98bef1975be59c0daa8b35f9a65777724edb5a542810` |
 | `lib/field-bucket.js` | 506 | `b5ff024f9cfdcfc048948094fe6da7099758d52f6c6d8971a941c206a9aa3855` |
 | `lib/field-units.js` | 6787 | `d6717b020d7f2b7385252a1a726e398994adcf0cf96720a46787db2c018ef48d` |
 | `lib/field.js` | 13513 | `cbe15d4b105da144ed2c465e525fb1a49a626b50df7fc402f80830fa8efa0996` |
@@ -604,7 +604,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/osi-onychomycosis-v674.js` | 3577 | `cdc4873826dd624fe21fbb25d9cbc2b446af8815030a15e176db5ee08160d8f9` |
 | `lib/oswestry-v643.js` | 4727 | `1dccac04347831c73b9f45bf744c6242bcb2f4cfb3e78d3f5685ef7afaade004` |
 | `lib/ottawa-bowel-prep-v670.js` | 3829 | `230547b220183ed6b5bd4bfc719c2c5119c4b54e96a1c1bafec86dade709d2f8` |
-| `lib/outerbridge-v337.js` | 4106 | `7208f5e889ea571cda441f4e88f738c2c92edd0a23e1a907277163b800d922e9` |
+| `lib/outerbridge-v337.js` | 4253 | `ad534eb30540f5c20eba3ed176649fbc040b2772ac9d2de4d81d73db68d68311` |
 | `lib/output-guard.js` | 3563 | `cb43b387537fb4e75d797e47246348263797ef8e33cd08d974ef71c0b66238fb` |
 | `lib/pa/classify.js` | 3432 | `a7958e40890ad63ebf68ce5a0107fe7ab5a5b0c9e877e2669e8f44ecfb7f34ca` |
 | `lib/pa/cms-opd-pa-list.js` | 3701 | `d142fdc90cc782bb472d729df2ee6d0e89429cba2ecf0cfc7857a4e7e471b454` |

@@ -397,7 +397,9 @@ test('correctedAnionGap: K-included variant uses 12-16 reference', () => {
 });
 test('correctedAnionGap: rejects out-of-range inputs', () => {
   assert.throws(() => V5.correctedAnionGap({ na: 140, cl: 104, hco3: 24, albuminGdl: 0 }));
-  assert.throws(() => V5.correctedAnionGap({ na: 140, cl: 104, hco3: 24, albuminGdl: 4.0, k: 4, includePotassium: true, na: 'high' }));
+  // spec-v1068: this had `na` twice and the later one won, so the assertion was
+  // always about a non-numeric sodium. Written as it actually behaves.
+  assert.throws(() => V5.correctedAnionGap({ na: 'high', cl: 104, hco3: 24, albuminGdl: 4.0, k: 4, includePotassium: true }));
 });
 test('correctedAnionGap: requires K when includePotassium=true', () => {
   assert.throws(() => V5.correctedAnionGap({ na: 140, cl: 104, hco3: 24, albuminGdl: 4.0, includePotassium: true }), /k required/);

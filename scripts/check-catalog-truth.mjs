@@ -88,7 +88,7 @@ export function countTilesByGroup(appJsText) {
   if (start === -1) throw new Error('catalog-truth: cannot locate `const UTILITIES = [` in app.js');
   const body = appJsText.slice(start, appJsText.indexOf('\n];', start));
   const counts = {};
-  for (const m of body.matchAll(/^  \{ id: '[^']+',[^\n]*group: '([A-Z])'/gm)) {
+  for (const m of body.matchAll(/^ {2}\{ id: '[^']+',[^\n]*group: '([A-Z])'/gm)) {
     counts[m[1]] = (counts[m[1]] || 0) + 1;
   }
   return counts;
