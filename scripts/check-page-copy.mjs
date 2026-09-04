@@ -139,6 +139,17 @@ const count = (s, ch) => s.split(ch).length - 1;
 // Two labels reading as the same question. Provenance words are what made the
 // old pair indistinguishable, so a label is "about the source" if it carries
 // any of them, and two such labels next to each other is the failure.
+//
+// spec-v1068: NOT WIRED IN, and measured before that was written down. Running
+// it over all 1,706 tool pages flags four, and all four are false: in this
+// catalog "source" nearly always means the drug being converted FROM ("Source
+// opioid and route", "Source benzodiazepine", "Source 1 dose" on the
+// paracetamol tile), and hlh-2004 uses "reference" and "evidence" clinically
+// ("by local laboratory reference", "No evidence of malignancy"). Zero true
+// positives. The identical-label check below (`duplicateLabels`) plus the
+// de-collision work it drove already covers the pair this was written for.
+// Left in place rather than deleted so the next reader finds the measurement
+// instead of repeating it; do not enable it without a better word list.
 const PROVENANCE = /\b(source|sources|citation|citations|reference|references|come from|comes from|where from|proof|evidence)\b/i;
 const overlaps = (a, b) => PROVENANCE.test(a) && PROVENANCE.test(b);
 

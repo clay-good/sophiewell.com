@@ -59,3 +59,37 @@ count over the same catalog.
 of stored report text. Enabling the rule would mean an inline disable comment on
 a line whose whole job is the thing being warned about — a rule that has to be
 suppressed where it fires is not earning its place.
+
+## What `no-unused-vars` turned up before it was set aside
+
+The 91 hits were not enabled, but they were read. Seventy are dead local helpers
+(`r2`, `fin`, `on`, `pos` imported and never called) — cosmetic. The other
+twenty-one are *values computed and then discarded*, which is where a dropped
+condition would hide. One of them was worth the look.
+
+**`scripts/check-page-copy.mjs` defines a check it never runs.** `PROVENANCE` and
+`overlaps()` were written to catch two labels on one page that read as the same
+question — "provenance words are what made the old pair indistinguishable" — and
+nothing ever calls `overlaps`. A check that exists, carries a comment explaining
+the failure it prevents, and is never invoked is the same shape as `no-undef`
+being off: the guard reads as present.
+
+This one, though, should stay off. Run over all 1,706 tool pages it flags four,
+and all four are false positives:
+
+| Page | Labels it pairs | Why it is wrong |
+|---|---|---|
+| `opioid-conversion` | "Source opioid and route", "Total source daily dose" | "source" is the drug being converted **from** |
+| `benzodiazepine-equivalence` | "Source benzodiazepine", "Source dose" | same |
+| `apap-24h-max` | "Source 1 dose", "Source 2 dose", … | a paracetamol-containing **product** |
+| `hlh-2004` | "NK-cell activity LOW OR ABSENT by local laboratory reference", "No evidence of malignancy" | "reference" and "evidence" used clinically |
+
+Zero true positives, because the word list assumes "source" means citation and in
+this catalog it usually means a drug. The identical-label check beside it
+(`duplicateLabels`) and the de-collision work it drove already cover the pair
+this was written for.
+
+So it is **left in place, annotated with the measurement**, rather than deleted
+or enabled — the next reader finds the number instead of re-deriving it. That is
+the difference between this and `no-undef`: both guards were absent in effect,
+but only one of them was worth switching on.
