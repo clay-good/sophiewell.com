@@ -8,6 +8,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A gate nearly learned to ignore its own defect.** The required-field sweep
+  skips readings that ask for a value rather than answering, and "not reached"
+  was nearly added to that list -- a phrase one tile uses to report a criterion
+  nobody measured as one that was not met. Removed, with the reason written
+  down, plus eight stale ledger lines that exempted tiles for nothing. See
+  docs/spec-v1039.md.
 - **Thirteen more calculators that answered without a value they need.** Six
   printed a dose or pump rate of zero, two scored a child against a neonate's
   age-band thresholds, two ruled out from a partial sum, and one listed a

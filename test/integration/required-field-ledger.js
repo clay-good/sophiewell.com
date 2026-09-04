@@ -7,7 +7,7 @@
 // age, a BMI of 0 reported as "Underweight"). spec-v1038 took the next thirteen:
 // the infusion rates and insulin doses that came out as zero, the age bands that
 // silently selected the neonatal cut-offs, and the ventilator criterion that
-// printed "no" for a measurement nobody had taken. These 51 are what is left.
+// printed "no" for a measurement nobody had taken. These 44 are what is left.
 //
 // Each line is one of three things, and telling them apart is the work:
 //
@@ -23,13 +23,10 @@
 // The gate's job while this drains is to stop NEW ones. Adding a line needs a
 // sentence in the pull request saying which of the three it is.
 export const ANSWERS_WITHOUT_A_REQUIRED_FIELD = new Set([
-  "abc-scale",
   "abcd2",
   "anticholinergic-burden",
   "anticholinergic-risk-scale",
   "apap-24h-max",
-  "arc-hbr",
-  "ascvd",
   "bard-score",
   "bess-balance-error",
   "big",
@@ -39,7 +36,6 @@ export const ANSWERS_WITHOUT_A_REQUIRED_FIELD = new Set([
   "cob-calc",
   "cohens-kappa",
   "corrected-ca-na",
-  "cows",
   "delta-check",
   "digoxin",
   "em-time",
@@ -60,15 +56,15 @@ export const ANSWERS_WITHOUT_A_REQUIRED_FIELD = new Set([
   "modifier-order",
   "mtp-tracker",
   "niss",
+  // A one-way conversion answering the direction it has a number for. With a
+  // pump rate entered and the ordered dose blank it prints the delivered dose
+  // and nothing about the other direction (spec-v1038). Category 3.
+  "oxytocin-titration",
   "norepi-equiv",
   "popq-staging",
-  "posas-observer-scar",
-  "posas-patient-scar",
-  "prevent",
   "restraint-timer",
   "rivermead-mobility-index",
   "roland-morris-disability",
-  "rudas",
   "rvu-payment",
   "salt-score",
   "stewart-sid-sig",
