@@ -37,6 +37,22 @@ function out() { return el('div', { id: 'q-results', 'aria-live': 'polite' }); }
 function val(id) { const n = document.getElementById(id); return n ? n.value : ''; }
 function chk(id) { const n = document.getElementById(id); return n ? n.checked : false; }
 function safe(o, fn) { clear(o); try { fn(); } catch (err) { o.appendChild(el('p', { class: 'muted', text: err.message })); } }
+// spec-v1044: an item nobody rated is not an item rated zero. These scales total
+// their items, so a blank one silently lowers the total (and on the scales where
+// higher is better, silently makes the patient look worse). A clinician who means
+// zero types zero, which still means zero -- see docs/product-decisions.md.
+function needItems(o, entries) {
+  const missing = entries.filter(([, id]) => {
+    const n = document.getElementById(id);
+    return !n || String(n.value).trim() === '';
+  }).map(([label]) => label);
+  if (!missing.length) return false;
+  const list_ = missing.length === 1 ? missing[0]
+    : `${missing.slice(0, -1).join(', ')} and ${missing[missing.length - 1]}`;
+  o.appendChild(el('p', { class: 'muted', text:
+    `Rate ${list_}: the total is the sum of the items, so one left blank is not an item scoring zero.` }));
+  return true;
+}
 function note(root, text) { if (text) root.appendChild(el('p', { class: 'muted', text })); }
 function postureNote(root) {
   root.appendChild(el('p', { class: 'muted', text: 'Decision support, not a verdict. The result is the cited source’s, computed from the inputs you enter. The diagnosis and treatment stay with the clinician and the patient.' }));
@@ -83,6 +99,8 @@ export const renderers = {
     root.appendChild(numInput('Range of motion (0-5)', 'hh-rom', { min: '0', max: '5' }));
     const o = out(); root.appendChild(o);
     wire(['hh-pain', 'hh-func', 'hh-def', 'hh-rom'], () => safe(o, () => {
+      if (needItems(o, [['pain', 'hh-pain'], ['function', 'hh-func'],
+        ['absence of deformity', 'hh-def'], ['range of motion', 'hh-rom']])) return;
       render(o, M.harrisHipScore({ pain: val('hh-pain'), function: val('hh-func'), deformity: val('hh-def'), rom: val('hh-rom') }), 'HHS');
     }));
     postureNote(root);

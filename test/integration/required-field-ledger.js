@@ -6,9 +6,9 @@
 // example in place everywhere else, and see whether the tile still answers. An
 // agent omitting that input gets MISSING_INPUT and no number.
 //
-// Seventy-five tiles answered. Forty-eight have been fixed since, across
-// spec-v1037 to spec-v1043. These 27 are what is left, and spec-v1043 wrote a
-// reason beside each, because a bare id is a list of tiles somebody once looked
+// Seventy-five tiles answered. Fifty-seven have been fixed since, across
+// spec-v1037 to spec-v1044. These 18 are what is left, and each carries the
+// reason it is there, because a bare id is a list of tiles somebody once looked
 // at rather than a list of decisions.
 //
 // Each line is one of three things:
@@ -46,21 +46,6 @@ export const ANSWERS_WITHOUT_A_REQUIRED_FIELD = new Set([
   // With a pump rate entered and the ordered dose blank it prints the delivered
   // dose and nothing about the other direction (spec-v1038).
   "oxytocin-titration",
-
-  // --- 1: rating scales that total their items without saying how many they
-  // scored. A blank item reads as an item rated zero, which understates the
-  // total silently. None of them crosses a treatment threshold on that alone,
-  // so this is a truthfulness fix rather than a safety one -- the shape to copy
-  // is CIWA's "Scored from N of M items".
-  "bess-balance-error",
-  "esas-symptom-assessment",
-  "harris-hip-score",
-  "harvey-bradshaw",
-  "ihs4",
-  "intubation-difficulty-scale",
-  "midas",
-  "mmt8-myositis",
-  "salt-score",
 
   // --- 1, blocked on a control change: WAT-1's ten items are SLIDERS, which
   // cannot be blank -- a slider parked at 0 looks like a rating somebody made.

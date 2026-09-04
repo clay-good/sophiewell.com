@@ -8,6 +8,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Nine rating scales totalled items nobody had rated.** ESAS, BESS, MMT-8,
+  the Harris hip score, Harvey-Bradshaw, IHS4, the intubation difficulty scale,
+  MIDAS and SALT each summed their items with a blank one counted as zero --
+  which on the scales where higher is better made the patient look worse, not
+  better. Each now names the items still to rate. See docs/spec-v1044.md.
 - **The restraint timer used the under-9 intervals for a blank age.** Renewal
   and re-assessment intervals are set by age band, and a blank age read as zero
   years. The E/M time selector had the same shape, answering "below the

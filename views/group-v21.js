@@ -44,6 +44,22 @@ function safe(o, fn) {
   clear(o);
   try { fn(); } catch (err) { o.appendChild(el('p', { class: 'muted', text: err.message })); }
 }
+// spec-v1044: an item nobody rated is not an item rated zero. These scales total
+// their items, so a blank one silently lowers the total (and on the scales where
+// higher is better, silently makes the patient look worse). A clinician who means
+// zero types zero, which still means zero -- see docs/product-decisions.md.
+function needItems(o, entries) {
+  const missing = entries.filter(([, id]) => {
+    const n = document.getElementById(id);
+    return !n || String(n.value).trim() === '';
+  }).map(([label]) => label);
+  if (!missing.length) return false;
+  const list_ = missing.length === 1 ? missing[0]
+    : `${missing.slice(0, -1).join(', ')} and ${missing[missing.length - 1]}`;
+  o.appendChild(el('p', { class: 'muted', text:
+    `Rate ${list_}: the total is the sum of the items, so one left blank is not an item scoring zero.` }));
+  return true;
+}
 function note(root, text) { if (text) root.appendChild(el('p', { class: 'muted', text })); }
 function postureNote(root) {
   root.appendChild(el('p', { class: 'muted', text: 'Decision support, not an order. The grade, band, and descriptor are the cited source’s; the outcome interpretation and any care decision stay with the clinician and local protocol.' }));
@@ -216,6 +232,11 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     const ids = ['mi-q1', 'mi-q2', 'mi-q3', 'mi-q4', 'mi-q5', 'mi-freq', 'mi-int'];
     wire(ids, () => safe(o, () => {
+      if (needItems(o, [['Q1, missed work or school days', 'mi-q1'],
+        ['Q2, reduced-productivity work days', 'mi-q2'],
+        ['Q3, missed household-work days', 'mi-q3'],
+        ['Q4, reduced-productivity household days', 'mi-q4'],
+        ['Q5, missed family or leisure days', 'mi-q5']])) return;
       const r = M.midas({
         q1: optNum('mi-q1'), q2: optNum('mi-q2'), q3: optNum('mi-q3'),
         q4: optNum('mi-q4'), q5: optNum('mi-q5'),

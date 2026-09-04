@@ -37,6 +37,22 @@ function out() { return el('div', { id: 'q-results', 'aria-live': 'polite' }); }
 function val(id) { const n = document.getElementById(id); return n ? n.value : ''; }
 function chk(id) { const n = document.getElementById(id); return n ? n.checked : false; }
 function safe(o, fn) { clear(o); try { fn(); } catch (err) { o.appendChild(el('p', { class: 'muted', text: err.message })); } }
+// spec-v1044: an item nobody rated is not an item rated zero. These scales total
+// their items, so a blank one silently lowers the total (and on the scales where
+// higher is better, silently makes the patient look worse). A clinician who means
+// zero types zero, which still means zero -- see docs/product-decisions.md.
+function needItems(o, entries) {
+  const missing = entries.filter(([, id]) => {
+    const n = document.getElementById(id);
+    return !n || String(n.value).trim() === '';
+  }).map(([label]) => label);
+  if (!missing.length) return false;
+  const list_ = missing.length === 1 ? missing[0]
+    : `${missing.slice(0, -1).join(', ')} and ${missing[missing.length - 1]}`;
+  o.appendChild(el('p', { class: 'muted', text:
+    `Rate ${list_}: the total is the sum of the items, so one left blank is not an item scoring zero.` }));
+  return true;
+}
 function note(root, text) { if (text) root.appendChild(el('p', { class: 'muted', text })); }
 function postureNote(root) {
   root.appendChild(el('p', { class: 'muted', text: 'Decision support, not a verdict. The result is the cited source’s, computed from the inputs you enter. The diagnosis and treatment stay with the clinician and the patient.' }));
@@ -69,6 +85,7 @@ export const renderers = {
     for (const [id, , label] of items) root.appendChild(numInput(`${label} (0-10)`, id, { min: '0', max: '10' }));
     const o = out(); root.appendChild(o);
     wire(items.map((i) => i[0]), () => safe(o, () => {
+      if (needItems(o, items.map(([id, , label]) => [label.toLowerCase(), id]))) return;
       const inp = {}; for (const [id, key] of items) inp[key] = val(id);
       render(o, M.mmt8(inp), 'MMT-8');
     }));
@@ -85,6 +102,9 @@ export const renderers = {
     root.appendChild(check('Vocal cords adducted / closed (N7)', 'ids-cords'));
     const o = out(); root.appendChild(o);
     wire(['ids-attempts', 'ids-operators', 'ids-tech', 'ids-cormack', 'ids-force', 'ids-pressure', 'ids-cords'], () => safe(o, () => {
+      if (needItems(o, [['the attempts beyond the first', 'ids-attempts'],
+        ['the operators beyond the first', 'ids-operators'],
+        ['the alternative techniques used', 'ids-tech']])) return;
       render(o, M.intubationDifficultyScale({ extraAttempts: val('ids-attempts'), extraOperators: val('ids-operators'), altTechniques: val('ids-tech'), cormack: val('ids-cormack'), liftingForce: chk('ids-force'), laryngealPressure: chk('ids-pressure'), cordsAdducted: chk('ids-cords') }), 'IDS');
     }));
     postureNote(root);
