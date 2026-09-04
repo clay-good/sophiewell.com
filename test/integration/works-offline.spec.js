@@ -43,11 +43,21 @@ import { fileURLToPath } from 'node:url';
 const DIST = 'http://localhost:4175';
 
 // The list the worker promises to precache, read from the worker itself.
+//
+// spec-v1059: this used to end `.filter((p) => p.startsWith('./'))`, so an entry
+// written any other way -- `'/styles.css'`, or double-quoted -- was silently
+// dropped and never checked. The test would still pass, having quietly examined
+// a shorter list than the worker actually promises. I found it by injecting a
+// broken asset in the wrong format and watching the suite go green.
+//
+// So nothing is filtered now. Every string literal in the block is returned, and
+// the caller asserts the shape it expects. A gate's coverage must not depend on
+// a formatting convention in the file it reads.
 function shellAssets() {
   const src = readFileSync(fileURLToPath(new URL('../../sw.js', import.meta.url)), 'utf8');
   const body = src.slice(src.indexOf('const SHELL_ASSETS = ['));
   const list = body.slice(0, body.indexOf('\n];'));
-  return [...list.matchAll(/'([^']+)'/g)].map((m) => m[1]).filter((p) => p.startsWith('./'));
+  return [...list.matchAll(/['"]([^'"]+)['"]/g)].map((m) => m[1]);
 }
 
 // Register, then wait for the worker to control the page. A reload after
@@ -69,6 +79,13 @@ test.describe('offline', () => {
 
     const promised = shellAssets();
     expect(promised.length, 'the worker names a shell to precache').toBeGreaterThan(5);
+    // spec-v1059: every entry is relative to the worker's scope. This is not
+    // style policing -- it is the assertion that replaces the filter that used to
+    // hide entries of any other shape from the check below.
+    expect(
+      promised.filter((p) => !p.startsWith('./')),
+      'every shell asset is written relative to the worker scope, so none is skipped here',
+    ).toEqual([]);
 
     const cached = await page.evaluate(async (paths) => {
       const names = await caches.keys();

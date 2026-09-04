@@ -8,6 +8,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **The offline check could silently examine a shorter list than it printed.**
+  It filtered the service worker's precache list to entries written one
+  particular way, so an asset written any other way was dropped without
+  mention -- the test passing while covering less. It now asserts the shape
+  instead of filtering. The underlying offline guarantee was verified sound.
+  See docs/spec-v1059.md.
 - **The architecture document denied part of the runtime.** It stated that no
   Web Workers remain, while the prior-authorization linter has run its on-device
   OCR in one since spec-v52 -- and the whole linter subsystem, fourteen modules
