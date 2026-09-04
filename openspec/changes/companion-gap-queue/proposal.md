@@ -132,3 +132,31 @@ use the score and the five variables agree across them — gestation, birth weig
 temperature and base excess (PMC11672052 states all five) — but none reproduces the weighted table
 that turns them into points, which is the whole calculator. Blocked on the table, not on the
 variables.
+
+## Correction, spec-v1072: PRISM III and GARFIELD-AF, and the shape all five blockers share
+
+The last two unattempted rows, checked with the same technique. Both stay unbuilt, and both
+blockers are now named precisely.
+
+**PRISM III — the seventeen variables are corroborated; the point table is not.** PMC12705631 lists
+all seventeen in one sentence (systolic blood pressure, heart rate, temperature, pupillary reflex,
+mental status, acidosis, total CO2, pH, PaO2, PaCO2, glucose, potassium, creatinine, blood urea
+nitrogen, white cell count, prothrombin time, platelets) and states that each is scored 1 to 10 by
+severity. Three searches did not find a paper reproducing the age-banded thresholds and the points
+they carry, which is the whole calculator.
+
+**GARFIELD-AF — the derivation is open access and still not enough.** PMC8888127 (Fox and
+colleagues, 2022) is the derivation, and Tables 2 and 3 give the hazard ratios for each component of
+the mortality, stroke and bleeding models. What turns a linear predictor into an absolute two-year
+probability is the **base hazard**, and the paper does not print it: it says the equations "using the
+base hazard and coefficients provide predicted probabilities ... These same equations are used in an
+online risk tool", with the values in supplementary material that the PMC record does not carry.
+Hazard ratios alone give a ranking, not the percentage the tile would have to state.
+
+**The shape all five share.** T-MACS, CRIB-II, OOWS, Kramer, PRISM III and GARFIELD-AF are each
+blocked on ONE missing piece, and in every case it is the piece that turns a corroborated structure
+into a number: a unit (T-MACS), a weight table (CRIB-II, PRISM III), a sign list (OOWS), a band table
+whose sources disagree (Kramer), a base hazard (GARFIELD-AF). The variables, the item counts and the
+strata are all findable in papers that USED the instrument. **What a citing paper reproduces is what
+it needed to describe its own cohort, and that is never the arithmetic.** A build attempt that starts
+by looking for the arithmetic will know within three searches whether it is possible.

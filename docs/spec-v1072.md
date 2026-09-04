@@ -49,3 +49,19 @@ and nothing else, and no call site now passes a blank-unsafe reader into one.
 Pinned in `no-answer-from-nothing.spec.js`, which asserts both halves — that a
 blank haemoglobin invents no trend and no bleeding warning, **and** that entering
 one brings the trend back, so the guard has not simply switched the widget off.
+
+## The third surface, measured and clean
+
+A tile page has three places a number can appear: the live region, the "show
+your work" panel (spec-v1071), and the **clipboard**. The copy affordance was
+re-checked after all of these guards landed, because a refusal that leaves a
+"Copy results" button behind would put the withheld number on someone's
+clipboard.
+
+It is clean, and for a structural reason: `resultRow()` builds the copy button
+out of the rows it is given, inside the results region that `safe()` clears
+first — so a refusal that never calls it leaves no button. Measured on four
+guarded calculators: the button count goes **1 → 0** on refusal
+(`ebv-mabl`, `vte-prophylaxis-dose`), stays **0 → 0** where there never was one
+(`saag`), and stays **1 → 1** only on `abi`, which still answers, with the
+disclosure spec-v1067 gave it.
