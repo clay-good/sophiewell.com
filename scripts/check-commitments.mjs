@@ -236,6 +236,75 @@ async function checkLicenseFile() {
   return violations;
 }
 
+// spec-v1051: §3.8's second half. The commitments page tells readers that the
+// vendored third-party components "carry their own permissive licenses
+// (Apache-2.0, BSD-2, MIT) and ship from the same origin", under a preamble
+// promising that every commitment has "an automated check that fails CI on every
+// commit". Nothing checked that sentence. A vendored directory could arrive with
+// no LICENSE file, or a copyleft one, and the page would go on saying otherwise
+// -- the failure spec-v1005 found when two documents named licensing tests that
+// had been deleted a year earlier.
+//
+// Three assertions, per directory under vendored/:
+//   1. a LICENSE file exists and is not empty;
+//   2. its _vendored.md provenance record names a license;
+//   3. that name is on the permissive allowlist, and the LICENSE text agrees
+//      with it -- so renaming the record without replacing the file fails.
+const PERMISSIVE_LICENSES = new Map([
+  ['apache license 2.0', /Apache License\s+Version 2\.0/i],
+  ['apache-2.0', /Apache License\s+Version 2\.0/i],
+  ['bsd-2-clause', /Redistribution and use in source and binary forms/i],
+  ['bsd-3-clause', /Redistribution and use in source and binary forms/i],
+  ['mit', /MIT License|Permission is hereby granted, free of charge/i],
+]);
+
+async function checkVendoredLicenses() {
+  const violations = [];
+  const vendoredRoot = join(ROOT, 'vendored');
+  let dirs;
+  try {
+    dirs = (await readdir(vendoredRoot, { withFileTypes: true })).filter((e) => e.isDirectory());
+  } catch {
+    return violations; // no vendored tree is not a violation
+  }
+  for (const dir of dirs) {
+    const rel = `vendored/${dir.name}`;
+    let licenseText = '';
+    try {
+      licenseText = await readFile(join(vendoredRoot, dir.name, 'LICENSE'), 'utf8');
+    } catch {
+      violations.push({ file: rel, line: 0, msg: `no LICENSE file (spec-v50 §3.8: every vendored component ships its license text)` });
+      continue;
+    }
+    if (!licenseText.trim()) {
+      violations.push({ file: `${rel}/LICENSE`, line: 0, msg: 'LICENSE file is empty (spec-v50 §3.8)' });
+      continue;
+    }
+    let record = '';
+    try {
+      record = await readFile(join(vendoredRoot, dir.name, '_vendored.md'), 'utf8');
+    } catch {
+      violations.push({ file: rel, line: 0, msg: 'no _vendored.md provenance record naming the license (spec-v50 §3.8)' });
+      continue;
+    }
+    const named = record.match(/\|\s*License\s*\|\s*([^|\n]+?)\s*(?:\(|\||$)/i);
+    if (!named) {
+      violations.push({ file: `${rel}/_vendored.md`, line: 0, msg: 'provenance record names no license (spec-v50 §3.8)' });
+      continue;
+    }
+    const claim = named[1].trim().toLowerCase().replace(/\s+/g, ' ');
+    const match = [...PERMISSIVE_LICENSES.entries()].find(([name]) => claim.startsWith(name));
+    if (!match) {
+      violations.push({ file: `${rel}/_vendored.md`, line: 0, msg: `license "${named[1].trim()}" is not on the permissive allowlist (spec-v50 §3.8)` });
+      continue;
+    }
+    if (!match[1].test(licenseText)) {
+      violations.push({ file: `${rel}/LICENSE`, line: 0, msg: `LICENSE text does not read as ${match[0]}, which _vendored.md claims (spec-v50 §3.8)` });
+    }
+  }
+  return violations;
+}
+
 async function checkHeadersCsp() {
   const violations = [];
   const text = await readFile(join(ROOT, '_headers'), 'utf8');
@@ -279,13 +348,14 @@ async function main() {
     checkAiVendorSubstrings,
     checkPackageJson,
     checkLicenseFile,
+    checkVendoredLicenses,
     checkHeadersCsp,
   ]) {
     const v = await fn();
     for (const item of v) all.push(item);
   }
   if (all.length === 0) {
-    console.log('check-commitments: clean (storage allowlist + AI/auth deny + license + CSP).');
+    console.log('check-commitments: clean (storage allowlist + AI/auth deny + license + vendored licenses + CSP).');
     process.exit(0);
   }
   console.error('check-commitments: violations.');

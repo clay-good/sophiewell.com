@@ -8,6 +8,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **One of the eight public commitments had no check behind it.** The
+  commitments page promises that every guarantee carries "an automated check
+  that fails CI on every commit" -- and nothing was checking the sentence about
+  the vendored libraries carrying permissive licenses. A vendored directory
+  could have arrived with no LICENSE, or a copyleft one, and the page would
+  have gone on saying otherwise. Now checked, three ways. See
+  docs/spec-v1051.md.
 - **A commitment page promised readers a route that was removed months ago.**
   docs/stability.md said the changelog was "linked from the footer and viewable
   in-site at #changelog"; neither was true, and the dead anchor was the only
