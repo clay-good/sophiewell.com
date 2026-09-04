@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `f98942768d6ee9aa`
-Generated: 2026-09-04T01:41:48.354Z
+Build ID: `60ce2d716e0b9f86`
+Generated: 2026-09-04T02:08:49.340Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -509,7 +509,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/membranous-risk-v878.js` | 10326 | `ff774f72e82303f0c83c8091aaa6ea2bb3b4deeba5c6323985d910dd003d53f4` |
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2457297 | `c504227f715f2fa5f5a58e28f36df0988fe02419d2d1246e701acbc22a5495c9` |
+| `lib/meta.js` | 2458822 | `42b1c7225b9a1d7de31093b6c566f0daa59769bea6fceb5a39e5e0228e0e9d21` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 12659 | `1553b641668c121661a66647da71a4aaaa023e9f3a6b7a753efbcdab27cdba81` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |

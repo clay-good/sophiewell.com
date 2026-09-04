@@ -8,6 +8,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **The last sixteen all-zero examples.** CRB-65 "outpatient management likely
+  appropriate", LEMON "no predictors of difficult intubation", STOP-BANG "low
+  risk", Ottawa Ankle "No imaging indicated" -- each from a worked example of
+  every field at zero. No tile now opens on a reassuring band it computed from
+  nothing; the three febrile-infant rules keep theirs on purpose, because for
+  them zero criteria met is the alarming reading. See docs/spec-v1035.md.
 - **Ten risk scores opened on their low-risk band.** ATRIA, ORBIT,
   HEMORR2HAGES, IMPROVE-VTE, Padua, DASH, HERDOO2, sPESI, AIMS65 and SIRS all
   shipped a worked example of every field at zero, so each opened saying some
