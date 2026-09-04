@@ -8,6 +8,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A tile could still state an impossible number.** The guard that removes a
+  reading like "Cardiac power output Infinity W" scanned the first live region
+  in the tool body, and since the out-of-range field warning was added there
+  have been two -- so it read the warning, found nothing wrong, and left the
+  answer standing. It now scans every live region. See docs/spec-v1032.md.
 - **Nine tools opened on a rule-out nobody had earned.** Their worked example
   was all zeros, so the tile displayed "Rule out SAH", "cervical-spine imaging
   not indicated", "very low risk for bacterial meningitis" and "negative
