@@ -56,3 +56,20 @@ test("guys-stone-score: grades I-IV with SFR", () => {
   assert.equal(guysStoneScore({}).valid, false);
   assert.equal(guysStoneScore({ grade: 5 }).valid, false);
 });
+
+test('scorten: a partial total is a floor, and says so (spec-v1063)', () => {
+  // Each measurement adds a point or leaves the total alone, so a total scored
+  // from some of them can only rise. With age, heart rate and BUN blank this
+  // returned SCORTEN 2 and "approximately 12.1%" where the full set gave 3 and
+  // 35.3%, with nothing on screen saying three fields were empty.
+  const partial = scorten({ bsaDetached: 30, bicarbonate: 18, glucose: 300 });
+  assert.equal(partial.partial, true);
+  assert.equal(partial.measured, 3);
+  assert.match(partial.band, /Scored from 3 of the 6 measurements/);
+  assert.match(partial.band, /can only raise it/);
+
+  const full = scorten({ age: 55, heartRate: 130, bsaDetached: 30, bun: 35, bicarbonate: 18, glucose: 300 });
+  assert.equal(full.partial, false);
+  assert.equal(full.measured, 6);
+  assert.doesNotMatch(full.band, /Scored from/);
+});

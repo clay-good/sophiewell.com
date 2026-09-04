@@ -161,7 +161,13 @@ export const renderers = {
     root.appendChild(field('Minimum acceptable hematocrit (%)', 'em-min', { min: 0, max: 100, placeholder: 'e.g. 30' }));
     const o = out(); root.appendChild(o);
     wire(['em-wt', 'em-wt-unit', 'em-factor', 'em-start', 'em-min'], () => safe(o, () => {
-      const r = C.ebvMabl({ weightKg: unitNum('em-wt'), ebvFactor: val('em-factor'), startHct: val('em-start'), minHct: val('em-min') });
+      // spec-v1063: the minimum acceptable hematocrit was read through val(), so a
+      // blank one arrived as 0 and (startHct - 0) / startHct = 1 -- the maximum
+      // allowable blood loss came back equal to the WHOLE estimated blood volume.
+      const emStart = optNum('em-start');
+      const emMin = optNum('em-min');
+      if (needValues(o, [['a starting hematocrit', emStart], ['a minimum acceptable hematocrit', emMin]])) return;
+      const r = C.ebvMabl({ weightKg: unitNum('em-wt'), ebvFactor: val('em-factor'), startHct: emStart, minHct: emMin });
       if (!r) { o.appendChild(el('p', { class: 'muted', text: 'Enter weight and a starting hematocrit.' })); return; }
       resultRow(o, [
         { label: 'Estimated blood volume', value: fmt(r.ebv), units: 'mL' },
@@ -310,7 +316,11 @@ export const renderers = {
     ]));
     const o = out(); root.appendChild(o);
     wire(['pt-wt', 'pt-wt-unit', 'pt-rise', 'pt-hct'], () => safe(o, () => {
-      const r = C.pedsTransfusionVolume({ weightKg: unitNum('pt-wt'), hbRise: val('pt-rise'), productHctPct: val('pt-hct') });
+      // spec-v1063: a blank desired rise was read as 0 g/dL, and the tile answered
+      // "PRBC transfusion volume: 0 mL" -- a transfusion order of nothing.
+      const ptRise = optNum('pt-rise');
+      if (needValues(o, [['a desired hemoglobin rise', ptRise]])) return;
+      const r = C.pedsTransfusionVolume({ weightKg: unitNum('pt-wt'), hbRise: ptRise, productHctPct: val('pt-hct') });
       if (!r) { o.appendChild(el('p', { class: 'muted', text: 'Enter weight and a desired Hb rise.' })); return; }
       resultRow(o, [
         { label: 'PRBC transfusion volume', value: fmt(r.volumeMl), units: 'mL' },
@@ -408,9 +418,15 @@ export const renderers = {
       const ciCarbs = optNum('ci-carbs');
       const ciRatio = optNum('ci-ic');
       const ciCur = optNum('ci-cur');
+      // spec-v1063: v1038 guarded three of the five fields and left the two the
+      // CORRECTION half is computed from. A blank target glucose arrived as 0, so
+      // the correction dose was (current - 0) / ISF -- 3.6 units where 1.2 was
+      // right, on a form that otherwise looked complete.
+      const ciIsf = optNum('ci-isf');
+      const ciTgt = optNum('ci-tgt');
       if (needValues(o, [['a carbohydrate amount', ciCarbs], ['an insulin-to-carb ratio', ciRatio],
-        ['a current glucose', ciCur]])) return;
-      const r = C.carbInsulinBolus({ carbsG: ciCarbs, icRatio: ciRatio, isf: val('ci-isf'), currentGlucose: ciCur, targetGlucose: val('ci-tgt') });
+        ['a current glucose', ciCur], ['a correction factor (ISF)', ciIsf], ['a target glucose', ciTgt]])) return;
+      const r = C.carbInsulinBolus({ carbsG: ciCarbs, icRatio: ciRatio, isf: ciIsf, currentGlucose: ciCur, targetGlucose: ciTgt });
       if (!r) { o.appendChild(el('p', { class: 'muted', text: 'Enter carbs, an IC ratio, and an ISF.' })); return; }
       resultRow(o, [
         { label: 'Meal bolus', value: fmt(r.mealBolus, { digits: 1 }), units: 'units' },

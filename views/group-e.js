@@ -539,7 +539,12 @@ export const renderers = {
     root.appendChild(field('Heart rate (bpm)', 'si-hr'));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
-      const sbp = num('si-sbp'), dbp = num('si-dbp'), hr = num('si-hr');
+      // spec-v1063: shockIndex returns hr/sbp, and a blank heart rate arrived as
+      // 0, so the tile printed "Shock index (HR/SBP): 0.00" -- the most reassuring
+      // number the field can take -- beside a real MAP from the two pressures the
+      // reader HAD entered. The fmt fallback never fired because 0 is not null.
+      const sbp = numOrNull('si-sbp'), dbp = numOrNull('si-dbp'), hr = numOrNull('si-hr');
+      if (needValues(o, [['a systolic pressure', sbp], ['a diastolic pressure', dbp], ['a heart rate', hr]])) return;
       const mapV = C.map({ sbp, dbp });
       resultRow(o, [
         { text: `MAP: ${mapV.toFixed(1)} mmHg` },

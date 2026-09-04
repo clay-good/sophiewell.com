@@ -59,7 +59,9 @@ test('triple i: any ONE supporting feature makes it suspected', () => {
 
 test('triple i: confirmed requires suspected first, not just a positive test', () => {
   // Placental histology without the fever and a supporting feature is not confirmed.
-  assert.equal(ti({ placentalHistology: true }).confirmed, false);
+  // spec-v1063: entered as a recorded temperature that is not a fever, because a
+  // BLANK temperature is now a refusal rather than a category of its own.
+  assert.equal(ti({ temperature: 37, placentalHistology: true }).confirmed, false);
   assert.equal(ti({ temperature: 39.2, placentalHistology: true }).category, 'Isolated maternal fever');
   assert.equal(ti({ temperature: 39.2, purulentDischarge: true, positiveGramStain: true }).confirmed, true);
 });
@@ -72,14 +74,39 @@ test('triple i: Fahrenheit converts exactly, unlike some paired clinical thresho
 });
 
 test('triple i: empty, invalid and out-of-range input', () => {
+  // spec-v1063: an empty form used to come back valid with a null category, which
+  // the renderer printed as "No category met on these entries" -- a rule-out from
+  // no data. A temperature that IS entered and is not a fever still gets that
+  // sentence, because there the entry really was made.
   const empty = ti({});
-  assert.equal(empty.valid, true);
-  assert.equal(empty.category, null);
-  assert.equal(empty.feverNote, null);
+  assert.equal(empty.valid, false);
+  assert.match(empty.message, /Enter a maternal temperature/);
+  const afebrile = ti({ temperature: 37 });
+  assert.equal(afebrile.valid, true);
+  assert.equal(afebrile.category, null);
+  assert.equal(afebrile.feverNote, null);
   assert.equal(ti({ temperature: 60 }).valid, false);
   assert.equal(ti({ temperature: 1e308 }).valid, false);
   assert.equal(ti({ temperatureUnit: 'kelvin' }).valid, false);
   assert.equal(ti({ fetalHeartRate: 1e308 }).valid, false);
-  assert.equal(ti().valid, true);
+  assert.equal(ti().valid, false);
   assert.doesNotMatch(JSON.stringify(ti({ temperature: 39.2, fetalHeartRate: 175 })), /NaN|Infinity/);
+});
+
+test('triple i: a supporting feature nobody measured is not a feature that is absent (spec-v1063)', () => {
+  // One supporting feature is all that separates isolated maternal fever from
+  // suspected Triple I, so declaring "without any of the supporting features"
+  // while the fetal heart rate is blank rules the diagnosis out on an unmeasured
+  // value.
+  const blank = ti({ temperature: 39.2, temperatureUnit: 'c' });
+  assert.equal(blank.category, 'Isolated maternal fever');
+  assert.deepEqual(blank.unassessedSupporting, ['a fetal heart rate', 'a maternal white cell count']);
+  assert.match(blank.band, /was not entered|were not entered/);
+  assert.doesNotMatch(blank.band, /without any of the supporting features/);
+
+  // With both measured and neither meeting its threshold, the plain sentence is
+  // correct again and must come back.
+  const measured = ti({ temperature: 39.2, temperatureUnit: 'c', fetalHeartRate: 140, whiteCellCount: 9000 });
+  assert.deepEqual(measured.unassessedSupporting, []);
+  assert.match(measured.band, /without any of the supporting features/);
 });

@@ -80,6 +80,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1045](spec-v1045.md) | The panel that refused what it could answer |
 | [v1046](spec-v1046.md) | Money from a blank field, and a note that fooled the gate |
 | [v1047](spec-v1047.md) | The sibling that needed a different control |
+| [v1063](spec-v1063.md) | The field a reader leaves blank, on a form that otherwise looks complete |
 
 ### And the same question from the other side
 
@@ -132,7 +133,15 @@ What is left is narrower than when this page was written:
 
 - **A ledger exempts a TILE, and the judgment behind it is per FIELD.** spec-v1029 found five scores
   whose checkbox exemption was covering a measurement too. Nothing checks that the question was ever
-  asked field by field.
+  asked field by field. **spec-v1063 attacks this from the other side**: instead of auditing the
+  ledger, its probe fills each tile from its own example and clears ONE field, so the question is
+  asked per field by construction. It found 81 field/tile pairs that move their answer, and the
+  first eleven tiles are fixed. Until the rest of that list is classified there is no gate — a ledger
+  seeded with unexamined lines documents the defect instead of catching it.
+- **A guard on one field silences the all-fields sweeps for every other field on that tile.** The
+  two that an earlier wave half-fixed kept a live defect for weeks afterwards: `carb-insulin-bolus`
+  dosed insulin from a blank target glucose, and `bhutani-bilirubin` read a blank bilirubin as low
+  risk. Guard every measurement a tile reads, not the one the sweep pointed at.
 - **146 coercion helpers cannot tell a blank from a zero** (`scripts/probe-blank-coercions.mjs`).
   Most are harmless; which ones are not depends on what their renderer sends, so the report is a
   reading aid rather than a gate (spec-v1040).

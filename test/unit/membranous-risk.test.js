@@ -82,3 +82,19 @@ test('membranous-risk: the documented example', () => {
   assert.equal(r.category, 'high');
   assert.match(r.band, /serum albumin of 2.2 g\/dL/);
 });
+
+test('membranous-risk: "none of the high-risk features" needs them all looked at (spec-v1063)', () => {
+  // The three high-risk add-ons are a disjunction. The urinary-marker checkbox is
+  // an answer either way, but a blank albumin or anti-PLA2R is a test nobody ran
+  // -- and this said "Moderate risk ... and none of the high-risk features" for a
+  // patient whose albumin might have been below 2.5 and high risk.
+  const missing = m({ egfr: 80, proteinuria: 4.2, albumin: '', pla2r: '' });
+  assert.equal(missing.category, 'moderate');
+  assert.match(missing.band, /has not been entered|have not been entered/);
+  assert.doesNotMatch(missing.band, /none of the high-risk features/);
+
+  // Both measured and neither abnormal: the plain sentence is true again.
+  const measured = m({ egfr: 80, proteinuria: 4.2, albumin: 3.4, pla2r: 20 });
+  assert.equal(measured.category, 'moderate');
+  assert.match(measured.band, /none of the high-risk features/);
+});

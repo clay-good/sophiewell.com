@@ -45,6 +45,21 @@ function scaleField(label, id, max) {
 }
 function out() { return el('div', { id: 'q-results', 'aria-live': 'polite' }); }
 function val(id) { return Number(document.getElementById(id).value); }
+// spec-v1063: the canonical blank-vs-zero pair (scripts/check-helper-drift.mjs
+// requires every copy to share one body).
+function numOrNull(id) {
+  const n = document.getElementById(id);
+  if (!n || String(n.value).trim() === '') return null;
+  return Number(n.value);
+}
+function needValues(o, pairs) {
+  const missing = pairs.filter(([, v]) => v == null || Number.isNaN(v)).map(([label]) => label);
+  if (!missing.length) return false;
+  const phrase = missing.length === 1 ? missing[0]
+    : `${missing.slice(0, -1).join(', ')} and ${missing[missing.length - 1]}`;
+  o.appendChild(el('p', { class: 'muted', text: `Enter ${phrase} to calculate.` }));
+  return true;
+}
 function str(id) { return document.getElementById(id).value; }
 function chk(id) { return document.getElementById(id).checked; }
 function safe(o, fn) {
@@ -378,7 +393,12 @@ export const renderers = {
     root.appendChild(field('Systolic BP (mmHg)', 'sp-sbp', { min: 0, max: 300, placeholder: 'e.g. 100' }));
     const o = out(); root.appendChild(o);
     wire(['sp-age', 'sp-hr', 'sp-sbp'], () => safe(o, () => {
-      const r = S.sipa({ ageYears: val('sp-age'), hr: val('sp-hr'), sbp: val('sp-sbp') });
+      // spec-v1063: a blank heart rate made the shock index 0, and 0 is below every
+      // age band -- so the tile answered "Within age-adjusted range", ruling the
+      // child OUT of the injury-severity flag on a measurement nobody had taken.
+      const spAge = numOrNull('sp-age'), spHr = numOrNull('sp-hr'), spSbp = numOrNull('sp-sbp');
+      if (needValues(o, [['an age', spAge], ['a heart rate', spHr], ['a systolic pressure', spSbp]])) return;
+      const r = S.sipa({ ageYears: spAge, hr: spHr, sbp: spSbp });
       o.appendChild(list([
         li(`Shock index (HR/SBP): ${fmt(r.shockIndex, { fallback: '(enter HR & SBP)' })}`),
         r.cutoff != null ? li(`Age-adjusted elevated cutoff: ${r.cutoff}`) : null,

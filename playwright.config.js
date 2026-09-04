@@ -4,6 +4,11 @@ import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
   testDir: 'test/integration',
+  // spec-v1063: *-probe.spec.js files are FINDERS, not gates. They sweep the
+  // catalog and print what they found; they assert nothing, so running them in
+  // CI would buy a few minutes of wall clock and no signal. Run one by naming
+  // it: npx playwright test test/integration/<name>-probe.spec.js --project=chromium
+  testIgnore: '**/*-probe.spec.js',
   timeout: 30000,
   expect: { timeout: 5000 },
   fullyParallel: true,

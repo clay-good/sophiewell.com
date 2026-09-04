@@ -131,10 +131,18 @@ export const renderers = {
       // rate: 0 mL/hr" -- a pump setting for a drip nobody had ordered.
       const doseValue = nvOrNull('dv');
       const concentrationValue = nvOrNull('cv');
-      if (needValues(o, [['a dose', doseValue], ['a concentration', concentrationValue]])) return;
+      // spec-v1063: v1038 guarded the dose and the concentration but not the
+      // weight, and a weight-based order is the weight times the rest -- so with
+      // a mcg/kg/min dose entered and the weight blank the pump setting came back
+      // "Infusion rate: 0 mL/hr" again, by the other route.
+      const doseUnit = document.getElementById('du').value;
+      const weightKg = unitNumOpt('w');
+      const perKg = String(doseUnit).includes('/kg');
+      if (needValues(o, [['a dose', doseValue], ['a concentration', concentrationValue],
+        ...(perKg ? [['a patient weight (the dose is per kilogram)', weightKg]] : [])])) return;
       const r = C.concentrationToRate({
-        doseValue, doseUnit: document.getElementById('du').value,
-        weightKg: unitNum('w'), concentrationValue,
+        doseValue, doseUnit,
+        weightKg, concentrationValue,
         concentrationUnit: document.getElementById('cu').value,
       });
       o.appendChild(el('p', { text: `Infusion rate: ${r.mlPerHr} mL/hr` }));

@@ -12,7 +12,7 @@ import * as S from '../lib/scoring-v6.js';
 import * as C8 from '../lib/clinical-v8.js';
 import { META } from '../lib/meta.js';
 import { renderDerivation, updateDerivationSteps } from '../lib/derivation.js';
-import { unitField, unitNum, BILIRUBIN_UNITS, LACTATE_UNITS, TEMP_UNITS, WEIGHT_UNITS } from '../lib/field-units.js';
+import { unitField, unitNum, unitNumOpt, BILIRUBIN_UNITS, LACTATE_UNITS, TEMP_UNITS, WEIGHT_UNITS } from '../lib/field-units.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -225,11 +225,17 @@ export const renderers = {
       // spec-v1038: every Bhutani percentile is hour-specific, so an age read as
       // 0 h compares the bilirubin against the newborn's first hour and reported
       // "High-risk zone (>95th percentile)" for a baby whose age nobody entered.
+      // spec-v1063: v1038 guarded the two fields it was pointed at and left the
+      // bilirubin itself on unitNum, so a blank TSB converted to 0 and landed in
+      // the "Low-risk zone (<40th percentile)" -- the reassuring end of the scale,
+      // reported for the one number the tile exists to interpret.
       const bbHours = optNum('bb-hours');
       const bbGa = optNum('bb-ga');
-      if (needValues(o, [['an age in hours', bbHours], ['a gestational age', bbGa]])) return;
+      const bbTsb = unitNumOpt('bb-tsb');
+      if (needValues(o, [['an age in hours', bbHours], ['a gestational age', bbGa],
+        ['a total serum bilirubin', bbTsb]])) return;
       const r = S.bhutaniBilirubin({
-        ageHours: bbHours, tsb: unitNum('bb-tsb'), gaWeeks: bbGa, riskFactors: chk('bb-risk'),
+        ageHours: bbHours, tsb: bbTsb, gaWeeks: bbGa, riskFactors: chk('bb-risk'),
       });
       o.appendChild(list([
         li(`Bhutani zone: ${r.zone}`, r.abovePhoto ? 'warn' : null),
@@ -505,9 +511,17 @@ export const renderers = {
     root.appendChild(checkField('Neurotoxicity risk factor(s) present', 'np-risk'));
     const o = out(); root.appendChild(o);
     wire(['np-ga', 'np-hours', 'np-tsb', 'np-tsb-unit', 'np-risk'], () => safe(o, () => {
-      const tsb = unitNum('np-tsb');
+      // spec-v1063: nothing here was guarded. A blank bilirubin printed "TSB 0 is
+      // 16 mg/dL below the phototherapy line", and a blank age moved the threshold
+      // itself (9 mg/dL against the first hour of life, where 16 was right) -- a
+      // treatment line quoted for a baby whose age nobody had entered.
+      const tsb = unitNumOpt('np-tsb');
+      const npGa = optNum('np-ga');
+      const npHours = optNum('np-hours');
+      if (needValues(o, [['a gestational age', npGa], ['an age in hours', npHours],
+        ['a total serum bilirubin', tsb]])) return;
       const r = S.neoPhototherapy({
-        gaWeeks: val('np-ga'), ageHours: val('np-hours'), tsb, riskFactors: chk('np-risk'),
+        gaWeeks: npGa, ageHours: npHours, tsb, riskFactors: chk('np-risk'),
       });
       const marginText = r.atPhoto
         ? `TSB ${fmt(tsb)} is ${fmt(r.marginToPhoto)} mg/dL above the phototherapy line`
