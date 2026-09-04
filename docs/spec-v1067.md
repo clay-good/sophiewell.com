@@ -15,7 +15,13 @@ answer neither asks for the value (`ASKING`) nor says what it is missing
 (`DISCLOSING`). Dropping the dependent line entirely also passes — then the
 number computed from a zero is not on screen at all.
 
-Runtime is 1.6 minutes across four shards, chromium only.
+Runtime is 1.6 minutes across four shards, chromium only — and **nothing
+measurable in CI**: the whole workflow took 85 minutes on the commit before this
+gate existed and 85 minutes on the commit after it, because the e2e job runs its
+files in parallel and four short shards fit inside the existing critical path.
+Confirmed to actually run there, too, which is not the same as being committed:
+the CI log lists `one-blank-field.spec.js` and lists no `*-probe.spec.js`, so the
+`testIgnore` behaves the same way on the runner as it does locally.
 
 ## Why it is not the sweeps we already had
 
