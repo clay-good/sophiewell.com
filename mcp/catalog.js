@@ -762,6 +762,7 @@ import airwayResistanceV927 from './adapters/airway-resistance-v927.js';
 import autoPeepV928 from './adapters/auto-peep-v928.js';
 import hepaticIronIndexV932 from './adapters/hepatic-iron-index-v932.js';
 import vexusV958 from './adapters/vexus-v958.js';
+import sowsV1061 from './adapters/sows-v1061.js';
 import ticiV960 from './adapters/tici-v960.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
@@ -1551,6 +1552,7 @@ const ADAPTER_MODULES = [
   ['auto-peep-v928', autoPeepV928],
   ['hepatic-iron-index-v932', hepaticIronIndexV932],
   ['vexus-v958', vexusV958],
+  ['sows-v1061', sowsV1061],
   ['tici-v960', ticiV960],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],

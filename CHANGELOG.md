@@ -4,6 +4,13 @@ All notable changes to sophiewell.com are documented here. The format
 follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the
 project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+### Added
+
+- **SOWS (Short Opiate Withdrawal Scale).** The patient-reported companion to COWS:
+  ten withdrawal symptoms rated none to severe, 0-30 total. It states no severity
+  band, because Gossop 1990 publishes none -- and says so, since a reader
+  arriving from COWS will expect four. See docs/spec-v1061.md.
+
 ## [Unreleased]
 
 ### Fixed

@@ -8071,6 +8071,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/vexus-v958.js (spec-v958: VExUS venous congestion grade — clinical disclaimer)
 - `vexus`
 
+### lib/sows-v1061.js (spec-v1061: Short Opiate Withdrawal Scale — clinical disclaimer)
+- `sows`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

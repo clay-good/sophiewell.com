@@ -7541,6 +7541,18 @@
       ],
       "tile": "tici",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "sows",
+        "short opiate withdrawal scale",
+        "short opioid withdrawal scale",
+        "patient rated opioid withdrawal",
+        "self report opioid withdrawal score",
+        "how bad is my withdrawal"
+      ],
+      "tile": "sows",
+      "audience": "clinicians"
     }
   ]
 }
