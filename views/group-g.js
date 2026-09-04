@@ -102,6 +102,14 @@ function hgbTrendInputs(root, prefix) {
   ]));
 }
 function renderHgbTrend(o, prefix, currentHgb) {
+  // spec-v1072: there is no trend without a current hemoglobin. Called through
+  // nv(), a blank one arrived as 0 and the widget computed the drop against it:
+  // oakland refused to score AND printed "Hemoglobin trend: falling 12 g/dL over
+  // 6 h (2 g/dL per hour). A falling hemoglobin suggests ongoing blood loss" --
+  // an active-bleeding warning invented from an empty field, beside the refusal.
+  // The mirror of the reassuring readings the blank-field waves removed, and
+  // worse: this one raises an alarm rather than lowering one.
+  if (currentHgb == null || !Number.isFinite(currentHgb)) return;
   const priorEl = document.getElementById(`${prefix}-prior`);
   const hoursEl = document.getElementById(`${prefix}-hours`);
   if (!priorEl || !hoursEl) return;
@@ -1435,7 +1443,7 @@ export const renderers = {
       o.appendChild(el('p', { class: 'muted',
         text: `Per-parameter: BUN ${p.bun}, hemoglobin ${p.hgb}, SBP ${p.sbp}, pulse ${p.pulse}, melena ${p.melena}, syncope ${p.syncope}, hepatic disease ${p.hepaticDisease}, cardiac failure ${p.cardiacFailure}.` }));
       if (deriv) updateDerivationSteps(deriv, META.gbs, inputs);
-      renderHgbTrend(o, 'gb-hgbtrend', nv('gb-hgb'));
+      renderHgbTrend(o, 'gb-hgbtrend', nvOrNull('gb-hgb'));
     });
     document.querySelectorAll('input, select').forEach((n) => n.addEventListener(n.type === 'checkbox' || n.tagName === 'SELECT' ? 'change' : 'input', run));
     run();
@@ -1557,7 +1565,7 @@ export const renderers = {
           text: `Per-parameter: age ${p.age}, sex ${p.sex}, prior LGIB ${p.priorLgibAdmission}, DRE blood ${p.dreBlood}, HR ${p.hr}, SBP ${p.sbp}, hemoglobin ${p.hgb}.` }));
       }
       if (deriv) updateDerivationSteps(deriv, META.oakland, inputs);
-      renderHgbTrend(o, 'ok-hgbtrend', nv('ok-hgb'));
+      renderHgbTrend(o, 'ok-hgbtrend', nvOrNull('ok-hgb'));
     });
     document.querySelectorAll('input, select').forEach((n) => n.addEventListener(n.type === 'checkbox' || n.tagName === 'SELECT' ? 'change' : 'input', run));
     run();

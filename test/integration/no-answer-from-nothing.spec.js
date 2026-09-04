@@ -505,3 +505,43 @@ for (const [id, prefix, field] of [['mews', 'me', 'me-sbp'], ['news2', 'n2', 'n2
     expect(withTrend).not.toMatch(/Cannot read properties|must be a number|undefined/);
   });
 }
+
+// spec-v1072: an optional trend widget must not invent a trend from a blank.
+//
+// oakland refused to score AND printed "Hemoglobin trend: falling 12 g/dL over
+// 6 h (2 g/dL per hour). A falling hemoglobin suggests ongoing blood loss" --
+// an active-bleeding warning computed entirely from an empty field read as 0.
+// The mirror of the reassuring readings this file exists to prevent, and worse:
+// it raises an alarm rather than lowering one.
+test('oakland: a blank hemoglobin invents no trend and no bleeding warning', async ({ page }) => {
+  await page.goto('/#oakland');
+  await page.waitForSelector('#q-results');
+  await page.waitForTimeout(300);
+  await page.evaluate(async () => {
+    for (const [id, v] of [['ok-hgbtrend-prior', '12'], ['ok-hgbtrend-hours', '6']]) {
+      const n = document.getElementById(id);
+      n.value = v;
+      n.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+    await new Promise((r) => setTimeout(r, 150));
+    const h = document.getElementById('ok-hgb');
+    h.value = '';
+    h.dispatchEvent(new Event('input', { bubbles: true }));
+    await new Promise((r) => setTimeout(r, 200));
+  });
+  const text = (await page.locator('#q-results').innerText()).replace(/\s+/g, ' ');
+  expect(text).toMatch(/to score\./);
+  expect(text).not.toMatch(/Hemoglobin trend/);
+  expect(text).not.toMatch(/ongoing blood loss/);
+
+  // With the hemoglobin entered the trend comes back, so the guard has not
+  // simply turned the widget off.
+  await page.evaluate(async () => {
+    const h = document.getElementById('ok-hgb');
+    h.value = '7';
+    h.dispatchEvent(new Event('input', { bubbles: true }));
+    await new Promise((r) => setTimeout(r, 200));
+  });
+  const withHgb = (await page.locator('#q-results').innerText()).replace(/\s+/g, ' ');
+  expect(withHgb).toMatch(/Hemoglobin trend: falling 5 g\/dL over 6 h/);
+});

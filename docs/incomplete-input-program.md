@@ -86,6 +86,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1066](spec-v1066.md) | Not met, or not measured: the third state a criteria count was missing |
 | [v1067](spec-v1067.md) | The gate, keyed by field, and the ledger that was quiet because I guessed at it |
 | [v1071](spec-v1071.md) | The answer refused; the "show your work" panel below it did not |
+| [v1072](spec-v1072.md) | A trend widget that invented a 12 g/dL haemorrhage from a blank field |
 
 ### And the same question from the other side
 
