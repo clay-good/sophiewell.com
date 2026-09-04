@@ -82,7 +82,7 @@ input-→-computed-output scope test.
 
 ## 3. The pathway DSL
 
-A new module [lib/pathway.js](../lib/pathway.js) exports the
+A new module `lib/pathway.js` exports the
 pathway runtime. A pathway is:
 
 ```js

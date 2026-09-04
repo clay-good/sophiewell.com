@@ -102,7 +102,8 @@ specifically defers:
 - **Group:** Clinical Scoring & Risk (`G`).
 - **Specialties:** `neonatology`, `pediatrics`, `family-medicine`.
 - **Inputs:** Cephalo-caudal extent of visible jaundice (Zone 1–5).
-- **Output:** Approximate TSB range per zone; banner requires confirmation with TcB / TSB and the [Bhutani nomogram](bhutani-nomogram).
+- **Output:** Approximate TSB range per zone; banner requires confirmation with TcB / TSB and the [Bhutani nomogram](https://sophiewell.com/tools/bhutani-bilirubin/). *(It shipped as
+  `bhutani-bilirubin`, not the `bhutani-nomogram` written here.)*
 
 #### 3.1.5 `finnegan-nas` — Modified Finnegan Neonatal Abstinence Score
 

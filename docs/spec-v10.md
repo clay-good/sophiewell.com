@@ -18,6 +18,11 @@
 > `lib/artifact-route.js`, `lib/artifact-handoff.js`) remain in the
 > tree as reusable pure-function modules for any future clinical-input
 > surface per §3.3.
+>
+> **Correction, spec-v1049:** they do not. All three were deleted at some
+> point after this note was written, and nothing recorded it — the note
+> was still promising a reader they were there, with links, until a
+> dead-link sweep found the links pointing at nothing.
 
 ## 1. The thesis
 
@@ -226,7 +231,7 @@ in v10** for the following reasons:
   detect classifier, §3.4 collapsed tile-grid disclosure — **all
   retained** (shipped 2026-05-14 through 2026-05-17, see
   [spec-v7](spec-v7.md) status header).
-- The text-paste handoff in [lib/artifact-handoff.js](../lib/artifact-handoff.js)
+- The text-paste handoff in `lib/artifact-handoff.js`
   → existing decoder tiles — **retained** as the final artifact-
   ingestion surface. Plain text in, existing tile out. No DOCX
   output.

@@ -8,6 +8,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Thirteen documentation links pointed at nothing.** The repository is public,
+  so a relative markdown link is one a reader clicks on GitHub -- and nothing
+  had ever checked them, because the existing link checks are about external
+  citation URLs. Worst of them: a spec page still telling readers that three
+  modules "remain in the tree", with links, long after all three were deleted.
+  A new lint-chain gate fails on any dead one. See docs/spec-v1049.md.
 - **A calculator disagreed with its own reference table, and the check that
   should have caught it passed on a coincidence.** Ranson-BISAP printed "<1%
   mortality" while its own interpretation table, on the same page, said
@@ -18818,7 +18824,8 @@ waves originally shipped.
   (2019 ATS/IDSA endorsement for risk-adjusted empiric coverage).
   Audit log: [docs/audits/v11/drip.md](docs/audits/v11/drip.md).
   Worked examples in
-  [test/unit/drip.test.js](test/unit/drip.test.js).
+  [test/unit/clinical.test.js](test/unit/clinical.test.js) (the file this entry
+  named was later folded into it).
 
 ### Added (spec-v13 wave 13-6 — vasoactive load: VIS)
 
@@ -19094,7 +19101,9 @@ waves originally shipped.
   GCS 13-15 blunt head injury with witnessed LOC, definite amnesia,
   or witnessed disorientation. Audit log:
   [docs/audits/v11/cthr.md](docs/audits/v11/cthr.md). Worked
-  examples in [test/unit/cthr.test.js](test/unit/cthr.test.js).
+  examples in
+  [test/unit/decision-rules-v258.test.js](test/unit/decision-rules-v258.test.js)
+  (the file this entry named was later folded into it).
 - **`ccsr` — Canadian C-Spine Rule** (Stiell IG, et al. *The
   Canadian C-Spine Rule for radiography in alert and stable
   trauma patients.* JAMA. 2001;286(15):1841-1848). Three-step

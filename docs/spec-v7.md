@@ -9,7 +9,7 @@
 > Section 3.1 dropzone shell landed 2026-05-17. The home view now
 > renders an artifact dropzone under the task hero
 > ([index.html](../index.html)) backed by a small kind→tile routing
-> table ([lib/artifact-route.js](../lib/artifact-route.js)) and the
+> table (`lib/artifact-route.js`) and the
 > existing classifier. The shell accepts a plain-text file drop
 > (`.txt`) or pasted document text, runs `detectArtifact()` over the
 > input, and either routes to the matching decoder tile
@@ -24,7 +24,7 @@
 >
 > Same-day follow-on (2026-05-17): text payload now hands off into
 > the destination decoder's primary textarea. A new
-> [lib/artifact-handoff.js](../lib/artifact-handoff.js) holds a
+> `lib/artifact-handoff.js` holds a
 > single in-memory pending payload (no storage); the dropzone stashes
 > the detected text before navigating; the route() post-render
 > microtask in [app.js](../app.js) calls `applyPendingDrop()` which
@@ -40,10 +40,10 @@
 > - Dropzone now accepts any plain-text file FileReader can read
 >   (text/* MIME, application/json, plus .txt/.text/.log/.csv/.tsv/
 >   .md/.markdown/.json extensions). The accept predicate lives in
->   [lib/artifact-route.js](../lib/artifact-route.js) as the pure
+>   `lib/artifact-route.js` as the pure
 >   `isLikelyTextFile` helper so the file-input `accept=` attribute
 >   and the runtime predicate stay in lockstep. A CI assertion in
->   [test/unit/artifact-route.test.js](../test/unit/artifact-route.test.js)
+>   `test/unit/artifact-route.test.js`
 >   reads `index.html` and fails if the picker's `accept=` list ever
 >   drifts from `TEXT_EXTENSIONS` / `application/json` / `text/*`.
 > - Result line now surfaces the classifier hits that fired
@@ -92,7 +92,7 @@
 > spec-v10's clinical-first wedge. The dropzone shell, synonym-routed
 > prompt, artifact-detect classifier, and collapsed tile grid
 > (§3.1–§3.4) all remain in force; the text-paste handoff in
-> [lib/artifact-handoff.js](../lib/artifact-handoff.js) is the final
+> `lib/artifact-handoff.js` is the final
 > artifact-ingestion surface. Sections §4.1–§4.6 below are retained
 > verbatim for historical context but are not the roadmap.
 >

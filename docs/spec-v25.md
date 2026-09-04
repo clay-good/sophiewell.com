@@ -131,7 +131,9 @@ listed.
 - **Group:** Clinical Scoring & Risk (`G`).
 - **Specialties:** `hepatology`, `surgical-oncology`, `medical-oncology`.
 - **Inputs:** T (single ≤2/>2/with vascular invasion; multifocal; major-vessel invasion), N, M.
-- **Output:** Stage group IA–IVB. Banner cross-references prognostic algorithms in [BCLC](bclc) and [Milan-HCC](milan-hcc).
+- **Output:** Stage group IA–IVB. Banner cross-references prognostic algorithms in [BCLC](https://sophiewell.com/tools/bclc-hcc/) and
+  [Milan criteria](https://sophiewell.com/tools/milan-criteria/). *(Both shipped under those
+  ids rather than the `bclc` / `milan-hcc` written here.)*
 
 #### 3.2.6 `tnm8-cholangio-intrahepatic` — Intrahepatic cholangiocarcinoma TNM 8 (Chapter 23)
 

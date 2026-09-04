@@ -16,7 +16,7 @@
 > independently shippable:
 > - **Wave 1 — Cardiology / EP / vascular / lipids** ([v101](spec-v101.md)–[v105](spec-v105.md)): **+26**, 432 → 458.
 > - **Wave 2 — Emergency / trauma / toxicology / environmental** ([v106](spec-v106.md)–[v111](spec-v111.md)): **+30**, 458 → 488.
-> - **Wave 3 — Critical care & pulmonary** ([v112](spec-v112.md)–[v116](spec-v116.md)): **+19**, 488 → 507.
+> - **Wave 3 — Critical care & pulmonary** ([v112](spec-v112.md)–v116; v116 was folded into its neighbours and has no page of its own): **+19**, 488 → 507.
 > - **Wave 4 — Neurology / neurosurgery / psychiatry** ([v117](spec-v117.md)–[v123](spec-v123.md)): **+32**, 507 → 539.
 > - **Wave 5 — GI / hepatology / nephrology / acid-base / urology** ([v124](spec-v124.md)–[v131](spec-v131.md)): **+44**, 539 → 583.
 > - **Wave 6 — Heme / onc / endocrine / ID** ([v132](spec-v132.md)–[v137](spec-v137.md)): **+30**, 583 → 613.
