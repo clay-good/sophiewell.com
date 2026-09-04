@@ -7,7 +7,7 @@
 // age, a BMI of 0 reported as "Underweight"). spec-v1038 took the next thirteen:
 // the infusion rates and insulin doses that came out as zero, the age bands that
 // silently selected the neonatal cut-offs, and the ventilator criterion that
-// printed "no" for a measurement nobody had taken. These 34 are what is left.
+// printed "no" for a measurement nobody had taken. These 29 are what is left.
 //
 // Each line is one of three things, and telling them apart is the work:
 //
@@ -34,7 +34,6 @@ export const ANSWERS_WITHOUT_A_REQUIRED_FIELD = new Set([
   "em-time",
   "esas-symptom-assessment",
   "glasgow-imrie",
-  "groningen-frailty-indicator",
   "harris-hip-score",
   "harvey-bradshaw",
   "hscore-hlh",
@@ -46,16 +45,12 @@ export const ANSWERS_WITHOUT_A_REQUIRED_FIELD = new Set([
   "mmt8-myositis",
   "modifier-order",
   "mtp-tracker",
-  "niss",
   // A one-way conversion answering the direction it has a number for. With a
   // pump rate entered and the ordered dose blank it prints the delivered dose
   // and nothing about the other direction (spec-v1038). Category 3.
   "oxytocin-titration",
   "norepi-equiv",
-  "popq-staging",
   "restraint-timer",
-  "rivermead-mobility-index",
-  "roland-morris-disability",
   "rvu-payment",
   "salt-score",
   "vis",

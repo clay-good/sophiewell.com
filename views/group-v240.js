@@ -63,6 +63,13 @@ export const renderers = {
     root.appendChild(numInput('Number of items achieved (0-15)', 'rmi-count', { min: '0', max: '15' }));
     const o = out(); root.appendChild(o);
     wire(['rmi-count'], () => safe(o, () => {
+      // spec-v1042: one count is the instrument. Blank, it read as 0 of 15 -- which
+      // on this scale is the worst possible mobility, reported for a patient nobody
+      // had assessed.
+      if (val('rmi-count').trim() === '') {
+        note(o, 'Enter the number of items achieved (0-15): an assessment nobody has done is not an assessment scoring zero.');
+        return;
+      }
       render(o, M.rivermead({ count: val('rmi-count') }), 'RMI');
     }));
     postureNote(root);

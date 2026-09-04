@@ -51,6 +51,12 @@ export const renderers = {
     root.appendChild(numInput('Total items positive (0-15)', 'gfi-count', { min: '0', max: '15' }));
     const o = out(); root.appendChild(o);
     wire(['gfi-count'], () => safe(o, () => {
+      // spec-v1042: the whole instrument is this one count, and `Number('')` is 0,
+      // so an unentered count answered "0 of 15 - not frail (< 4)".
+      if (val('gfi-count').trim() === '') {
+        note(o, 'Enter the number of items positive (0-15): a count nobody has taken is not a count of none.');
+        return;
+      }
       render(o, M.groningen({ count: val('gfi-count') }), 'GFI');
     }));
     postureNote(root);

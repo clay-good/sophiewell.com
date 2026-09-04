@@ -80,6 +80,12 @@ export const renderers = {
     root.appendChild(numInput('Number of applicable statements (0-24)', 'rmdq-count', { min: '0', max: '24' }));
     const o = out(); root.appendChild(o);
     wire(['rmdq-count'], () => safe(o, () => {
+      // spec-v1042: see the Groningen indicator -- one count is the instrument, and
+      // a blank one read as 0 answered "Roland-Morris 0 of 24", no disability.
+      if (val('rmdq-count').trim() === '') {
+        note(o, 'Enter the number of applicable statements (0-24): a questionnaire nobody has filled in is not a questionnaire scoring zero.');
+        return;
+      }
       render(o, M.rolandMorris({ count: val('rmdq-count') }), 'RMDQ');
     }));
     postureNote(root);

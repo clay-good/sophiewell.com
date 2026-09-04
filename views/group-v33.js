@@ -112,10 +112,11 @@ export const renderers = {
     wire(['ni-a1', 'ni-a2', 'ni-a3'], () => safe(o, () => {
       const r = M.niss({ ais1: optNum('ni-a1'), ais2: optNum('ni-a2'), ais3: optNum('ni-a3') });
       if (!r.valid) { note(o, r.band); note(o, r.note); return; }
+      // spec-v1042: with fewer than three AIS entered there is no "no" to print.
       resultRow(o, [
         { text: r.band, cls: r.abnormal ? 'warn' : null },
-        { label: 'NISS', value: String(r.score) },
-        { label: 'Major trauma', value: r.major ? 'yes (>= 16)' : 'no' },
+        { label: 'NISS', value: r.partial ? `at least ${r.score}` : String(r.score) },
+        { label: 'Major trauma', value: r.major === null ? 'not yet determined' : (r.major ? 'yes (>= 16)' : 'no') },
       ]);
       derivation(o, 'Three worst AIS, squared:', r.terms);
       note(o, r.note);

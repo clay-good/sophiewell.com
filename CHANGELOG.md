@@ -8,6 +8,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Five more, including three scales whose whole instrument is one count.**
+  The Groningen frailty indicator, Roland-Morris and the Rivermead mobility
+  index each take a single "how many items" field, and a blank one read as
+  zero -- the reassuring end of two of those scales and the alarming end of the
+  third. NISS printed "Major trauma: no" from two of three AIS severities, and
+  POP-Q staged a prolapse from an unmeasured point placed at the hymen. See
+  docs/spec-v1042.md.
 - **Five more calculators that answered without a value they need.** BIG said
   "below the high-mortality threshold" with no base deficit, Murray LIS said
   "no lung injury" with the chest film unscored, the platelet CCI said the
