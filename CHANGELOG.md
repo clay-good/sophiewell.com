@@ -8,6 +8,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Two tiles raised an alarm from an empty form.** An untouched MEOWS said
+  "trigger (5 red) -- activate the obstetric MEOWS response", and an untouched
+  Mini-Cog reported a positive dementia screen. Both are the safer direction
+  and neither is harmless: one calls a team to a bedside nobody assessed, the
+  other starts a workup on a patient who was never asked to recall a word.
+  Both now ask for what they need. See docs/spec-v1036.md.
 - **The last sixteen all-zero examples.** CRB-65 "outpatient management likely
   appropriate", LEMON "no predictors of difficult intubation", STOP-BANG "low
   risk", Ottawa Ankle "No imaging indicated" -- each from a worked example of

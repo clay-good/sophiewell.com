@@ -947,9 +947,10 @@ export const renderers = {
     const deriv = renderDerivation(META['mini-cog']);
     if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const inputs = { wordsRecalled: nv('mc-w'), clockNormal: checked('mc-clock') };
+      const inputs = { wordsRecalled: nvOrNull('mc-w'), clockNormal: checked('mc-clock') };
       const r = S4.miniCog(inputs);
-      o.appendChild(el('h2', { text: `Mini-Cog: ${r.score}/5` }));
+      // spec-v1036: no screen result until the recall has been administered.
+      if (!r.incomplete) o.appendChild(el('h2', { text: `Mini-Cog: ${r.score}/5` }));
       o.appendChild(el('p', { text: r.band }));
       if (deriv) updateDerivationSteps(deriv, META['mini-cog'], inputs);
     });
@@ -4619,12 +4620,15 @@ export const renderers = {
     const deriv = renderDerivation(META.meows);
     if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
+      // spec-v1036: nvOrNull, not nv. Read as 0, an untaken observation set scored
+      // red on five parameters and called the obstetric rapid-response team.
       const r = S4.meows({
-        rr: nv('mw-rr'), spo2: nv('mw-spo2'), temp: unitNum('mw-temp'),
-        sbp: nv('mw-sbp'), dbp: nv('mw-dbp'), hr: nv('mw-hr'),
+        rr: nvOrNull('mw-rr'), spo2: nvOrNull('mw-spo2'), temp: unitNumOpt('mw-temp'),
+        sbp: nvOrNull('mw-sbp'), dbp: nvOrNull('mw-dbp'), hr: nvOrNull('mw-hr'),
         neuro: document.getElementById('mw-neuro').value,
         pain: nv('mw-pain'),
       });
+      if (r.missing) { o.appendChild(el('p', { text: r.text })); return; }
       o.appendChild(el('h2', { text: `MEOWS: ${r.band} (${r.redCount} red, ${r.yellowCount} yellow)` }));
       o.appendChild(el('p', { text: r.text }));
       const f = r.flags;

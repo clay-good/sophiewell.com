@@ -76,8 +76,14 @@ test('meows rejects invalid neuro and out-of-range pain', () => {
   assert.throws(() => meows({ ...normal, pain: 1.5 }));
 });
 
-test('meows rejects non-finite and implausible vitals', () => {
-  assert.throws(() => meows({ ...normal, rr: NaN }));
+test('meows rejects implausible vitals, and asks for the ones it does not have', () => {
+  // spec-v1036: a non-finite respiratory rate is an observation that is not
+  // there, not an implausible one. It used to throw; it now returns the same
+  // prompt a blank field does, because that is what the reader has to act on.
+  const notTaken = meows({ ...normal, rr: NaN });
+  assert.deepEqual(notTaken.missing, ['rr']);
+  assert.match(notTaken.text, /Enter respiratory rate/);
+  // A value that IS there and cannot be true still throws.
   assert.throws(() => meows({ ...normal, hr: -5 }));
   assert.throws(() => meows({ ...normal, spo2: 105 }));
 });

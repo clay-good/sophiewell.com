@@ -412,3 +412,25 @@ test('pecarn-head: the two rules disagreeing is not a tier', async ({ page }) =>
   expect(text).toMatch(/Enter the age to choose the rule/);
   expect(text).not.toMatch(/PECARN risk tier:/);
 });
+
+// ---------------------------------------------------------------------------
+// spec-v1036: an alarm from nothing is not the safe direction.
+//
+// The rule of spec-v1006 is about ruling OUT, and both of these ruled IN -- an
+// empty MEOWS called the obstetric rapid-response team, and an empty Mini-Cog
+// reported a positive dementia screen. Neither is harmless. A false alarm sends
+// a team to a bedside nobody assessed, and a positive screen starts a workup on
+// a patient who was never asked to recall a word.
+// ---------------------------------------------------------------------------
+
+test('meows: an untaken observation set does not call the rapid-response team', async ({ page }) => {
+  const text = await clearNumbers(page, 'meows');
+  expect(text).toMatch(/Enter respiratory rate/);
+  expect(text).not.toMatch(/MEOWS: trigger|Activate the obstetric/);
+});
+
+test('mini-cog: an unadministered recall is not a positive screen', async ({ page }) => {
+  const text = await clearNumbers(page, 'mini-cog');
+  expect(text).toMatch(/Enter the number of words recalled/);
+  expect(text).not.toMatch(/Positive screen/);
+});
