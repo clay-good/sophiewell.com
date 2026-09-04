@@ -53,5 +53,34 @@ no total, only what is outstanding.
 Every item is `required` on the agent surface too, so an agent omitting one gets `MISSING_INPUT` with
 the field named rather than a lower bound presented as a score.
 
-Catalog 1,704 → 1,705. Five of spec-v957's seven remain: T-MACS, GARFIELD-AF, CRIB-II, PRISM III and
-the Kramer icterus zones.
+## Two scales abbreviate to SOWS, and the queue meant the other one
+
+The build queue's SOWS row cites **Handelsman 1987** — the *Subjective* Opiate Withdrawal Scale,
+sixteen items, with an observer companion called the OOWS. What is built here is **Gossop 1990's
+*Short* Opiate Withdrawal Scale**, ten items. Same acronym, different instrument, and their totals
+are not comparable.
+
+Nothing shipped is mislabelled: the tile is named "Short", cites Gossop, and its synonyms do not
+claim the word "subjective". But **the queue row is not closed by it**, and I said otherwise in the
+commit that added the tile. Handelsman's SOWS and its OOWS companion are both still absent, both
+still blocked on an item list in a 1987 paper that is not open access. The queue has six items left,
+not five.
+
+The tile now says which scale it is in its first sentence rather than in a footnote, because a reader
+who meant the sixteen-item one should find that out before they finish reading the total.
+
+## And T-MACS is blocked on less than the queue records
+
+Chasing the next build turned up the T-MACS model in open access (PMC8499458), which the queue lists
+as missing:
+
+> l = 1.713·x_e + 0.847·x_a + 0.607·x_r + 1.417·x_v + 2.058·x_s + 1.208·x_h + 0.089·x_t − 4.766
+
+The four risk strata are in PMC10599640. **One thing is still missing: the unit of x_t**, the
+high-sensitivity troponin T. No source found states it, and at a coefficient of 0.089 the choice
+between ng/L and anything else moves a patient between "discharge" and "admit". Plausibility argues
+for ng/L. Plausibility is not a source, and this is a chest-pain rule-out — the exact class of
+reading spec-v1006 through spec-v1057 exist to stop a tile from producing on a guess. Not built, on
+purpose, and the queue now records the equation so the next attempt starts from it.
+
+Catalog 1,704 → 1,705.

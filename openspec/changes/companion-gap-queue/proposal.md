@@ -30,7 +30,7 @@ genuinely absent while their siblings are built.
 | **GARFIELD-AF** bleeding/stroke risk | `cha2ds2-vasc`, `has-bled`, `orbit-bleeding`, `atria-bleeding` | *Eur Heart J Qual Care Clin Outcomes.* 2022;8:214-227 (PMID 33892489) |
 | **CRIB-II** (neonatal mortality) | `snappe-ii`, `pim3` | derivation not yet located; validations are plentiful (e.g. PMID 41543649) |
 | **PRISM III** (paediatric ICU mortality) | `pim3`, `pelod2`, `psofa`, `phoenix-sepsis` | derivation not yet located; compared against PIM/PELOD in PMID 41918661 |
-| **SOWS** (subjective opiate withdrawal) | `cows` — the clinician-rated half of the same pair | Handelsman L, et al. 1987; Dutch validation *Eur Addict Res.* 2007;13:81-88 (PMID 17356279) |
+| **SOWS** (subjective opiate withdrawal, Handelsman 1987 — **still absent**; see the correction below) | `cows` — the clinician-rated half of the same pair | Handelsman L, et al. 1987; Dutch validation *Eur Addict Res.* 2007;13:81-88 (PMID 17356279) |
 | **Kramer** dermal icterus zones | `bhutani-bilirubin`, `neo-phototherapy` | derivation not yet located |
 
 ## What each of the remaining six is blocked on, after checking PMC
@@ -56,3 +56,43 @@ between sources is a reason to skip the tile, not to pick one.
 
 This proposes no code. It records seven verified absences with their sources so the next
 session does not re-derive them, and states plainly why none was built.
+
+
+## Correction, spec-v1061: two scales abbreviate to SOWS
+
+This row names **Handelsman 1987's SUBJECTIVE Opiate Withdrawal Scale** — sixteen items, with a
+companion observer scale, the OOWS. spec-v1061 built a *different* instrument that carries the same
+acronym: **Gossop 1990's SHORT Opiate Withdrawal Scale**, ten items, 0–30.
+
+That was not a substitution. Gossop's scale is sourced, named "Short" on its face, and cites Gossop —
+but **this queue row is not closed by it.** Handelsman's SOWS and its OOWS companion are both still
+absent from the catalog, and both are still blocked on the same thing this table records: the item
+list, in a 1987 paper that is not open access.
+
+The collision is worth recording on its own account. A reader or an agent asking for "SOWS" may mean
+either scale, and their totals are not comparable — sixteen items against ten. The built tile says so
+in its first sentence rather than in a footnote, and its synonyms deliberately do not claim the word
+"subjective".
+
+Six items remain on this queue, not five: T-MACS, GARFIELD-AF, CRIB-II, PRISM III, the Kramer zones,
+and Handelsman's SOWS/OOWS pair.
+
+## Correction, spec-v1061: T-MACS is blocked on less than this says
+
+The table below says T-MACS needs "the logistic model's coefficients". **They are open access** —
+PMC8499458 states the model outright:
+
+> l = 1.713·x_e + 0.847·x_a + 0.607·x_r + 1.417·x_v + 2.058·x_s + 1.208·x_h + 0.089·x_t − 4.766
+
+with x_e ECG ischaemia, x_a crescendo angina, x_r pain radiating to the right arm, x_v pain with
+vomiting, x_s sweating observed, x_h hypotension, x_t high-sensitivity troponin T on arrival. The
+four risk strata are stated in PMC10599640 (<0.02 very low, 0.02–<0.05 low, 0.05–<0.95 moderate,
+≥0.95 high), and the equation paper corroborates the first of them in words ("<2% probability ...
+'very low risk'").
+
+**What blocks it now is one unit.** No source found states whether x_t is in ng/L, and at a
+coefficient of 0.089 the choice moves the answer from "rule out" to "admit". Plausibility argues for
+ng/L; plausibility is not a source, and this is a chest-pain rule-out. Not built, on purpose.
+
+That is a smaller blocker than "the coefficients", and the next attempt should start from the
+equation above rather than rediscover it.
