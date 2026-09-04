@@ -40,6 +40,16 @@ function nvOrNull(id) {
   if (!n || String(n.value).trim() === '') return null;
   return Number(n.value);
 }
+// spec-v1065: the canonical complete-the-fields reader, one body across every
+// module (scripts/check-helper-drift.mjs enforces that).
+function needValues(o, pairs) {
+  const missing = pairs.filter(([, v]) => v == null || Number.isNaN(v)).map(([label]) => label);
+  if (!missing.length) return false;
+  const phrase = missing.length === 1 ? missing[0]
+    : `${missing.slice(0, -1).join(', ')} and ${missing[missing.length - 1]}`;
+  o.appendChild(el('p', { class: 'muted', text: `Enter ${phrase} to calculate.` }));
+  return true;
+}
 function checked(id) { return document.getElementById(id).checked; }
 function safe(o, fn) { clear(o); try { fn(); } catch (err) { o.appendChild(el('p', { class: 'muted', text: err.message })); } }
 
@@ -1572,20 +1582,43 @@ export const renderers = {
     ]));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
-      const df = S4.maddreyDf({
-        patientPtSec: nv('ml-pt'),
-        controlPtSec: nv('ml-ctrl'),
-        bilirubinMgDl: unitNum('ml-bili'),
-      });
-      o.appendChild(el('h2', { text: `Maddrey DF: ${df.df.toFixed(1)}` }));
-      o.appendChild(el('p', { text: df.band }));
+      // spec-v1065: every term of both models was read as 0 when blank, and both
+      // models decide about steroids. A blank bilirubin took the discriminant
+      // function from 46.8 to 36.8, and a blank day-7 bilirubin took Lille to
+      // 0.017 -- comfortably under the 0.45 responder line, which is the reading
+      // that says "carry on with the corticosteroids". The two models are guarded
+      // separately so a reader who has only one set of values still gets it.
+      const dfPt = nvOrNull('ml-pt');
+      const dfCtrl = nvOrNull('ml-ctrl');
+      const dfBili = unitNumOpt('ml-bili');
+      if (needValues(o, [['a patient prothrombin time', dfPt], ['a control prothrombin time', dfCtrl],
+        ['a bilirubin', dfBili]])) {
+        // fall through to the Lille half; the DF half has said what it needs.
+      } else {
+        const df = S4.maddreyDf({
+          patientPtSec: dfPt,
+          controlPtSec: dfCtrl,
+          bilirubinMgDl: dfBili,
+        });
+        o.appendChild(el('h2', { text: `Maddrey DF: ${df.df.toFixed(1)}` }));
+        o.appendChild(el('p', { text: df.band }));
+      }
+      const lilleAge = nvOrNull('ml-age');
+      const lilleAlb = nvOrNull('ml-alb');
+      const lilleCr = nvOrNull('ml-cr');
+      const lilleB0 = unitNumOpt('ml-b0');
+      const lilleB7 = unitNumOpt('ml-b7');
+      const lillePt = nvOrNull('ml-ptl');
+      if (needValues(o, [['an age', lilleAge], ['an albumin', lilleAlb], ['a creatinine', lilleCr],
+        ['a day-0 bilirubin', lilleB0], ['a day-7 bilirubin', lilleB7],
+        ['a prothrombin time', lillePt]])) return;
       const li = S4.lille({
-        ageYears: nv('ml-age'),
-        albuminGDl: nv('ml-alb'),
-        creatinineMgDl: nv('ml-cr'),
-        bilirubinDay0MgDl: unitNum('ml-b0'),
-        bilirubinDay7MgDl: unitNum('ml-b7'),
-        ptSec: nv('ml-ptl'),
+        ageYears: lilleAge,
+        albuminGDl: lilleAlb,
+        creatinineMgDl: lilleCr,
+        bilirubinDay0MgDl: lilleB0,
+        bilirubinDay7MgDl: lilleB7,
+        ptSec: lillePt,
       });
       o.appendChild(el('h2', { text: `Lille Model: ${li.score.toFixed(3)}` }));
       o.appendChild(el('p', { text: li.band }));

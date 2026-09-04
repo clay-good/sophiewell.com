@@ -47,6 +47,14 @@ function optNum(id) {
   if (!n || String(n.value).trim() === '') return null;
   return Number(n.value);
 }
+function needValues(o, pairs) {
+  const missing = pairs.filter(([, v]) => v == null || Number.isNaN(v)).map(([label]) => label);
+  if (!missing.length) return false;
+  const phrase = missing.length === 1 ? missing[0]
+    : `${missing.slice(0, -1).join(', ')} and ${missing[missing.length - 1]}`;
+  o.appendChild(el('p', { class: 'muted', text: `Enter ${phrase} to calculate.` }));
+  return true;
+}
 function safe(o, fn) {
   clear(o);
   try { fn(); } catch (err) { o.appendChild(el('p', { class: 'muted', text: err.message })); }
@@ -136,7 +144,16 @@ export const renderers = {
     root.appendChild(checkboxField('On dialysis', 'ag-dialysis'));
     const o = out(); root.appendChild(o);
     wire(['ag-drug', 'ag-wt', 'ag-crcl', 'ag-dialysis'], () => safe(o, () => {
-      const r = M5.aminoglycoside({ drug: str('ag-drug'), weightKg: val('ag-wt'), crCl: val('ag-crcl'), dialysis: checked('ag-dialysis') });
+      // spec-v1065: a blank creatinine clearance read as 0, and the tile refused --
+      // which is the safe direction -- but gave a REASON that was a fabrication
+      // about the patient: "CrCl <20 mL/min: extended-interval dosing not
+      // validated". A reader who does not have the clearance is told their
+      // patient has a bad one. Refusing is right; saying why in terms of a number
+      // nobody entered is not.
+      const agWt = optNum('ag-wt');
+      const agCrcl = optNum('ag-crcl');
+      if (needValues(o, [['a dosing weight', agWt], ['a creatinine clearance', agCrcl]])) return;
+      const r = M5.aminoglycoside({ drug: str('ag-drug'), weightKg: agWt, crCl: agCrcl, dialysis: checked('ag-dialysis') });
       o.appendChild(list([
         li(`Extended-interval dose: ${fmt(r.doseMg, { fallback: '(enter weight)' })} mg (${r.mgkg} mg/kg)`),
         li(`Starting interval (from CrCl): ${r.interval}`),

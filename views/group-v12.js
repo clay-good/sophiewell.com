@@ -40,6 +40,21 @@ function checkField(label, id) {
 }
 function out() { return el('div', { id: 'q-results', 'aria-live': 'polite' }); }
 function val(id) { return Number(document.getElementById(id).value); }
+// spec-v1065: the canonical blank-vs-zero pair (one body across every module --
+// scripts/check-helper-drift.mjs enforces it).
+function optNum(id) {
+  const n = document.getElementById(id);
+  if (!n || String(n.value).trim() === '') return null;
+  return Number(n.value);
+}
+function needValues(o, pairs) {
+  const missing = pairs.filter(([, v]) => v == null || Number.isNaN(v)).map(([label]) => label);
+  if (!missing.length) return false;
+  const phrase = missing.length === 1 ? missing[0]
+    : `${missing.slice(0, -1).join(', ')} and ${missing[missing.length - 1]}`;
+  o.appendChild(el('p', { class: 'muted', text: `Enter ${phrase} to calculate.` }));
+  return true;
+}
 function selVal(id) { return document.getElementById(id).value; }
 function chk(id) { return document.getElementById(id).checked; }
 function safe(o, fn) {
@@ -147,11 +162,23 @@ export const renderers = {
     root.appendChild(checkField('Strong clinical suspicion', 'ta-suspicion'));
     const o = out(); root.appendChild(o);
     wire(['ta-osm', 'ta-na', 'ta-glu', 'ta-bun', 'ta-etoh', 'ta-ph', 'ta-bicarb', 'ta-level', 'ta-recent', 'ta-suspicion'], () => safe(o, () => {
+      // spec-v1065: glucose and BUN are terms in the calculated osmolality, and a
+      // blank one entered as 0 makes the CALCULATED value too low -- which makes
+      // the osmolar gap too WIDE (20 where the entered labs gave 15). The gap is
+      // an indication limb for fomepizole, so a missing chemistry pushed toward
+      // treating. The ethanol, pH, bicarbonate and level fields stay optional:
+      // each is marked so on screen, and a real zero ethanol is meaningful.
+      const taOsm = optNum('ta-osm');
+      const taNa = optNum('ta-na');
+      const taGlu = optNum('ta-glu');
+      const taBun = optNum('ta-bun');
+      if (needValues(o, [['a measured osmolality', taOsm], ['a serum sodium', taNa],
+        ['a glucose', taGlu], ['a BUN', taBun]])) return;
       const r = T.toxicAlcohol({
-        measuredOsm: val('ta-osm'),
-        sodium: val('ta-na'),
-        glucose: val('ta-glu'),
-        bun: val('ta-bun'),
+        measuredOsm: taOsm,
+        sodium: taNa,
+        glucose: taGlu,
+        bun: taBun,
         ethanol: val('ta-etoh'),
         pH: val('ta-ph'),
         bicarbonate: val('ta-bicarb'),

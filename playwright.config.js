@@ -7,8 +7,11 @@ export default defineConfig({
   // spec-v1063: *-probe.spec.js files are FINDERS, not gates. They sweep the
   // catalog and print what they found; they assert nothing, so running them in
   // CI would buy a few minutes of wall clock and no signal. Run one by naming
-  // it: npx playwright test test/integration/<name>-probe.spec.js --project=chromium
-  testIgnore: '**/*-probe.spec.js',
+  // it. spec-v1065: naming the file on the command line does NOT beat testIgnore
+  // -- the run reports "No tests found", which reads exactly like a clean sweep,
+  // and I read one as a passing verification. So the exclusion is opt-out:
+  //   RUN_PROBES=1 npx playwright test test/integration/<name>-probe.spec.js --project=chromium
+  testIgnore: process.env.RUN_PROBES ? [] : '**/*-probe.spec.js',
   timeout: 30000,
   expect: { timeout: 5000 },
   fullyParallel: true,

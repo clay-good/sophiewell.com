@@ -59,6 +59,20 @@ function optNum(id) {
 function chk(id) { return document.getElementById(id).checked; }
 // spec-v1038: the same helper the other view modules carry -- name the values a
 // calculation is short of, in the words on the labels.
+// spec-v1065: the complete-panel ask. Used by the three scores here whose blank
+// field is read as the literal value 0, where 0 is profoundly deranged for one
+// measurement (a mean arterial pressure) and perfectly normal for another (a
+// bilirubin). A partial total is not a floor -- it can sit either side of the
+// real score depending on which field is empty -- so there is no honest sentence
+// to print beside the number, and the panel is asked for instead.
+function needPanel(o, name, pairs) {
+  const missing = pairs.filter(([, v]) => v == null || Number.isNaN(v)).map(([label]) => label);
+  if (!missing.length) return false;
+  o.appendChild(el('p', { class: 'muted', text: missing.length > 3
+    ? `${name} is scored from a complete panel. Enter the ${missing.length} measurements still empty, starting with ${missing.slice(0, 3).join(', ')}.`
+    : `Enter ${missing.length === 1 ? missing[0] : `${missing.slice(0, -1).join(', ')} and ${missing[missing.length - 1]}`} to score.` }));
+  return true;
+}
 function needValues(o, pairs) {
   const missing = pairs.filter(([, v]) => v == null || Number.isNaN(v)).map(([label]) => label);
   if (!missing.length) return false;
@@ -308,12 +322,23 @@ export const renderers = {
       // spec-v1038: PELOD-2 applies a different MAP and creatinine cut-off in each
       // of five age bands. Read as 0 the age silently selected "<1 mo", so a
       // teenager's numbers were scored against a neonate's thresholds.
+      // spec-v1065: v1038 guarded the age -- the field the all-fields sweep pointed
+      // at -- and left the other seven measurements reading 0 when blank. Clearing
+      // the creatinine alone took the score from 9 to 7.
       const p2Age = optNum('p2-age');
-      if (needValues(o, [['an age in months', p2Age]])) return;
+      const p2 = {
+        gcs: optNum('p2-gcs'), lactate: unitNumOpt('p2-lactate'), map: optNum('p2-map'),
+        creat: optNum('p2-creat'), pf: optNum('p2-pf'), paco2: optNum('p2-paco2'),
+        wbc: optNum('p2-wbc'), plt: optNum('p2-plt'),
+      };
+      if (needPanel(o, 'PELOD-2', [['an age in months', p2Age], ['a Glasgow Coma Scale', p2.gcs],
+        ['a lactate', p2.lactate], ['a mean arterial pressure', p2.map], ['a creatinine', p2.creat],
+        ['a PaO2/FiO2', p2.pf], ['a PaCO2', p2.paco2], ['a white cell count', p2.wbc],
+        ['a platelet count', p2.plt]])) return;
       const inputs = {
-        ageMonths: p2Age, gcs: val('p2-gcs'), pupilsFixed: chk('p2-pupils'), lactate: unitNum('p2-lactate'),
-        map: val('p2-map'), creatinine: val('p2-creat'), pao2fio2: val('p2-pf'), paco2: val('p2-paco2'),
-        invasiveVent: chk('p2-vent'), wbc: val('p2-wbc'), platelets: val('p2-plt'),
+        ageMonths: p2Age, gcs: p2.gcs, pupilsFixed: chk('p2-pupils'), lactate: p2.lactate,
+        map: p2.map, creatinine: p2.creat, pao2fio2: p2.pf, paco2: p2.paco2,
+        invasiveVent: chk('p2-vent'), wbc: p2.wbc, platelets: p2.plt,
       };
       const r = S.pelod2(inputs);
       o.appendChild(list([
@@ -346,11 +371,20 @@ export const renderers = {
     wire(ids, () => safe(o, () => {
       // spec-v1038: like PELOD-2 above, pSOFA reads its MAP and creatinine
       // cut-offs out of an age band, and a blank age selected the neonatal one.
+      // spec-v1065: the same half-fix as PELOD-2 above. A blank bilirubin scored
+      // the hepatic organ 0 -- a normal liver -- and a blank creatinine did the
+      // same to the kidney, each taking pSOFA from 7 to 6.
       const psAge = optNum('ps-age');
-      if (needValues(o, [['an age in months', psAge]])) return;
+      const ps = {
+        pf: optNum('ps-pf'), plt: optNum('ps-plt'), bili: unitNumOpt('ps-bili'),
+        map: optNum('ps-map'), vaso: optNum('ps-vaso'), gcs: optNum('ps-gcs'), creat: optNum('ps-creat'),
+      };
+      if (needPanel(o, 'pSOFA', [['an age in months', psAge], ['a PaO2/FiO2', ps.pf],
+        ['a platelet count', ps.plt], ['a bilirubin', ps.bili], ['a mean arterial pressure', ps.map],
+        ['a vasoactive score', ps.vaso], ['a Glasgow Coma Scale', ps.gcs], ['a creatinine', ps.creat]])) return;
       const inputs = {
-        ageMonths: psAge, pao2fio2: val('ps-pf'), vent: chk('ps-vent'), platelets: val('ps-plt'),
-        bilirubin: unitNum('ps-bili'), map: val('ps-map'), vasoactive: val('ps-vaso'), gcs: val('ps-gcs'), creatinine: val('ps-creat'),
+        ageMonths: psAge, pao2fio2: ps.pf, vent: chk('ps-vent'), platelets: ps.plt,
+        bilirubin: ps.bili, map: ps.map, vasoactive: ps.vaso, gcs: ps.gcs, creatinine: ps.creat,
       };
       const r = S.psofa(inputs);
       o.appendChild(list([
@@ -473,13 +507,7 @@ export const renderers = {
         ['a white cell count', optNum('ap-wbc')], ['a Glasgow Coma Scale', optNum('ap-gcs')],
         ['an age', optNum('ap-age')],
       ];
-      const apMissing = apFields.filter(([, v]) => v == null || Number.isNaN(v)).map(([l]) => l);
-      if (apMissing.length) {
-        o.appendChild(el('p', { class: 'muted', text: apMissing.length > 3
-          ? `APACHE II is scored from a complete physiologic panel. Enter the ${apMissing.length} measurements still empty, starting with ${apMissing.slice(0, 3).join(', ')}.`
-          : `Enter ${apMissing.length === 1 ? apMissing[0] : `${apMissing.slice(0, -1).join(', ')} and ${apMissing[apMissing.length - 1]}`} to score.` }));
-        return;
-      }
+      if (needPanel(o, 'APACHE II', apFields)) return;
       const inputs = {
         temp: unitNumOpt('ap-temp'), map: optNum('ap-map'), hr: optNum('ap-hr'), rr: optNum('ap-rr'), oxy: optNum('ap-oxy'),
         ph: optNum('ap-ph'), na: optNum('ap-na'), k: optNum('ap-k'), creatinine: optNum('ap-creat'), hct: optNum('ap-hct'),

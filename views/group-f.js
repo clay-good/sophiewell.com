@@ -410,9 +410,18 @@ export const renderers = {
     ]));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
+      // spec-v1065: a blank creatinine clearance read as 0 mL/min, which is below
+      // every renal threshold -- so the tile quietly halved the frequency to q24h
+      // and printed "CrCl <30 mL/min: renal reduction applied" as a statement of
+      // fact about a patient whose clearance nobody had entered. An anticoagulant
+      // dose is the wrong place to guess, in either direction.
+      const vteWeight = unitNumOpt('vte-w');
+      const vteCrcl = nvOrNull('vte-crcl');
+      clear(o);
+      if (needValues(o, [['a weight', vteWeight], ['a creatinine clearance', vteCrcl]])) return;
       const r = C8.enoxaparinDose({
-        weightKg: unitNum('vte-w'),
-        crcl: nv('vte-crcl'),
+        weightKg: vteWeight,
+        crcl: vteCrcl,
         indication: document.getElementById('vte-ind').value,
         regimen: document.getElementById('vte-reg').value,
       });
