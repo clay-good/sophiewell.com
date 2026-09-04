@@ -72,6 +72,19 @@ The lesson is narrower than "do not over-guard". **A tile that prints several
 results is several calculators, and the panel-wide ask is only right when the
 outputs genuinely share a panel.** `apache2` does; this one does not.
 
+## Coverage
+
+The gate starts from a worked example, so a calculator without one is invisible
+to it. Measured: **five** of the catalog have no `META.example.fields` —
+`co-cn-antidote`, `tetanus`, `rabies-pep`, `bbp-exposure`, `sti-screening`. All
+five are protocol checklists driven by selects and checkboxes rather than
+measurements (`co-cn-antidote` has **zero** number inputs), and none is exposed
+on the agent surface either. There is nothing for this gate to ask them.
+
+So the gate covers every calculator that has both a worked example and a field
+whose label names a quantity that cannot be zero — which is the whole population
+the question applies to.
+
 ## Verification
 
 Negative-tested by removing the `egfr` age guard from spec-v1064 and confirming
