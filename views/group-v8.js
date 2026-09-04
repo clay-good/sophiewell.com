@@ -173,7 +173,16 @@ export const renderers = {
     root.appendChild(field('Hours post-dose (optional)', 'dig-hrs', { placeholder: 'optional' }));
     const o = out(); root.appendChild(o);
     wire(['dig-crcl', 'dig-age', 'dig-ind', 'dig-lvl', 'dig-hrs'], () => safe(o, () => {
-      const r = M5.digoxin({ crCl: val('dig-crcl'), ageYears: optNum('dig-age'), indication: str('dig-ind'), levelNgMl: optNum('dig-lvl'), hoursPostDose: optNum('dig-hrs') });
+      // spec-v1041: `val` is Number(''), so a blank creatinine clearance arrived as
+      // 0 mL/min -- anuric -- and the tile answered with the reduced-clearance
+      // maintenance dose. A renal dose is not the safe default for a renal
+      // function nobody measured; it is a different wrong dose.
+      const digCrCl = optNum('dig-crcl');
+      if (digCrCl == null) {
+        o.appendChild(el('p', { class: 'muted', text: 'Enter the creatinine clearance: the maintenance dose is banded on it, and a blank one is not a clearance of zero.' }));
+        return;
+      }
+      const r = M5.digoxin({ crCl: digCrCl, ageYears: optNum('dig-age'), indication: str('dig-ind'), levelNgMl: optNum('dig-lvl'), hoursPostDose: optNum('dig-hrs') });
       o.appendChild(list([
         li(r.doseGuidance),
         r.levelInterp ? li(r.levelInterp, /toxic|above/.test(r.levelInterp) ? 'warn' : null) : null,

@@ -849,10 +849,12 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       const r = S4.big({
-        baseDeficit: num('big-bd'),
+        baseDeficit: numOrNull('big-bd'),
         inr: num('big-inr'),
         gcs: num('big-gcs'),
       });
+      // spec-v1041: no total until the blood gas is entered.
+      if (r.incomplete) { o.appendChild(el('p', { text: r.band })); return; }
       o.appendChild(el('h2', { text: `BIG ${r.score.toFixed(1)}` }));
       o.appendChild(el('p', { text: r.band }));
     });

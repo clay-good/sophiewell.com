@@ -7,7 +7,7 @@
 // age, a BMI of 0 reported as "Underweight"). spec-v1038 took the next thirteen:
 // the infusion rates and insulin doses that came out as zero, the age bands that
 // silently selected the neonatal cut-offs, and the ventilator criterion that
-// printed "no" for a measurement nobody had taken. These 39 are what is left.
+// printed "no" for a measurement nobody had taken. These 34 are what is left.
 //
 // Each line is one of three things, and telling them apart is the work:
 //
@@ -23,18 +23,14 @@
 // The gate's job while this drains is to stop NEW ones. Adding a line needs a
 // sentence in the pull request saying which of the three it is.
 export const ANSWERS_WITHOUT_A_REQUIRED_FIELD = new Set([
-  "abcd2",
   "anticholinergic-burden",
   "anticholinergic-risk-scale",
   "apap-24h-max",
   "bard-score",
   "bess-balance-error",
-  "big",
-  "cci-platelet",
   "ciwa",
   "cob-calc",
   "corrected-ca-na",
-  "digoxin",
   "em-time",
   "esas-symptom-assessment",
   "glasgow-imrie",
@@ -45,7 +41,6 @@ export const ANSWERS_WITHOUT_A_REQUIRED_FIELD = new Set([
   "ihs4",
   "intubation-difficulty-scale",
   "iv-osmolarity",
-  "lis-murray",
   "lrinec",
   "midas",
   "mmt8-myositis",

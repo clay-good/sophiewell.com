@@ -8,6 +8,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Five more calculators that answered without a value they need.** BIG said
+  "below the high-mortality threshold" with no base deficit, Murray LIS said
+  "no lung injury" with the chest film unscored, the platelet CCI said the
+  transfusion had worked with no pre-transfusion count, and digoxin gave the
+  renal maintenance dose for a clearance nobody had measured. See
+  docs/spec-v1041.md.
 - **`Number(null)` is 0, and five missing-input guards had quietly stopped
   working because of it.** As renderers were converted to pass null for a blank
   field, guards written against `Number('')` -- which is NaN -- stopped firing,

@@ -138,7 +138,18 @@ export const renderers = {
     root.appendChild(field('Platelet dose (x10^11)', 'cci-dose', { placeholder: 'e.g. 3.0' }));
     const o = out(); root.appendChild(o);
     wire(['cci-pre', 'cci-post', 'cci-bsa', 'cci-dose'], () => safe(o, () => {
-      const r = V6.cciPlatelet({ prePlt: val('cci-pre'), postPlt: val('cci-post'), bsaM2: val('cci-bsa'), doseE11: val('cci-dose') });
+      // spec-v1041: the increment is post minus pre. With the pre-transfusion count
+      // blank and read as 0, the whole post-transfusion count became the increment
+      // and the tile answered "CCI 24000: adequate increment for this transfusion"
+      // -- the reading that says the platelets worked and no refractoriness
+      // work-up is needed.
+      const prePlt = optNum('cci-pre');
+      const postPlt = optNum('cci-post');
+      const bsaM2 = optNum('cci-bsa');
+      const doseE11 = optNum('cci-dose');
+      if (needValues(o, [['a pre-transfusion platelet count', prePlt], ['a post-transfusion count', postPlt],
+        ['a body surface area', bsaM2], ['a platelet dose', doseE11]])) return;
+      const r = V6.cciPlatelet({ prePlt, postPlt, bsaM2, doseE11 });
       o.appendChild(list([
         li(`Count increment: ${fmt(r.increment, { fallback: '--' })} x10^9/L`),
         li(`Corrected count increment (CCI): ${fmt(r.cci, { fallback: '(enter values)' })}`),

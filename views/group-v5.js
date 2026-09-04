@@ -555,6 +555,19 @@ export const renderers = {
     const deriv = renderDerivation(META.abcd2);
     if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
+      // spec-v1041: three of ABCD2's five letters are measurements -- the age, the
+      // blood pressure, the duration. Read as zero they each score their absent
+      // band silently, so a form missing the age was scored as a patient under 60
+      // rather than a patient whose age nobody had asked.
+      const abcd2Missing = ['age', 'sbp', 'dbp', 'dur']
+        .filter((id) => document.getElementById(id).value.trim() === '');
+      if (abcd2Missing.length) {
+        const labels = { age: 'the age', sbp: 'the systolic BP', dbp: 'the diastolic BP', dur: 'the symptom duration' };
+        o.appendChild(el('p', { class: 'muted', text:
+          `Enter ${abcd2Missing.map((id) => labels[id]).join(', ')}: each scores a band of its own, `
+          + 'so a stroke-risk reading cannot be given without them.' }));
+        return;
+      }
       const inputs = {
         age: num('age'), sbp: num('sbp'), dbp: num('dbp'),
         clinicalFeatures: str('clin'),
