@@ -169,14 +169,8 @@ const SCENARIO_ONLY = new Set([
   // select radios, so the example is driven through the mcp round-trip and the
   // scoring-v4 screener unit tests instead.
   'phq9', 'gad7', 'epds', 'auditc', 'cage',
-  // spec-v1048: lab-interpret renders nothing until "Interpret values" is
-  // clicked, so this sweep -- which fills the example and reads -- has never
-  // seen its output. It looked like it was passing because the documented range
-  // "(4.0-5.6%)" fell within tolerance of the 5.4 sitting in the A1C INPUT, and
-  // the fallback haystack includes input values. The distinct-matching rule
-  // surfaced it: two documented numbers, one number to be. Its math is covered
-  // by the unit tests and the MCP round-trip.
-  'lab-interpret',
+  // spec-v1048 exempted lab-interpret here; spec-v1054 un-exempted it by pressing
+  // the button the tile asks you to press. It is checked like any other tile now.
 ]);
 
 // Pull META.example payloads out of the live module so the test stays in
@@ -213,6 +207,31 @@ async function checkTile(page, id, expected) {
   }
   await resetLink.click();
   await page.waitForTimeout(120);
+
+  // spec-v1054: a tile that renders nothing until a button is pressed was being
+  // "verified" against the values in its own input boxes.
+  //
+  // Eleven tiles compute on a click rather than on input -- ten document builders
+  // ("Build printable letter") and lab-interpret ("Interpret values"). This sweep
+  // filled the example, read a result region that was still empty, fell through to
+  // the input-value haystack (added in spec-v752 for examples that name their own
+  // inputs), matched the numbers there, and passed. lab-interpret's documented
+  // range "(4.0-5.6%)" was being satisfied by the 5.4 sitting in the A1C field.
+  //
+  // So press the button. One click, only when the region is empty, on a label the
+  // tile itself chose -- which turns eleven tiles from silently unverified into
+  // actually checked.
+  const resultEmpty = await page.evaluate(() => {
+    const q = document.querySelector('#q-results') || document.querySelector('.screener-result');
+    return !q || !(q.textContent || '').trim();
+  });
+  if (resultEmpty) {
+    const generate = page.locator('#tool-body button', { hasText: /^(Build|Generate|Interpret)/ }).first();
+    if (await generate.count()) {
+      await generate.click().catch(() => {});
+      await page.waitForTimeout(200);
+    }
+  }
 
   const text = await page.locator('main').innerText();
   const cleaned = text.replace(/Expected:[^\n]*/g, '');

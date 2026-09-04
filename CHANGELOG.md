@@ -8,6 +8,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A calculator that rendered nothing could pass the example check.** It fell
+  back to reading the values in the tile's own input boxes, so eleven tiles that
+  compute on a button press were never actually verified. The sweep now presses
+  the button, and the lab-result interpreter is checked for real rather than
+  exempted. See docs/spec-v1054.md.
 - **A tile stopped demonstrating itself.** The intubation difficulty scale
   opened asking for two values instead of showing its worked example -- the new
   unrated-item guard firing on the example itself, which filled only two of
