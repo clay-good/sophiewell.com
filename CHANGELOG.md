@@ -8,6 +8,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A tile stopped demonstrating itself.** The intubation difficulty scale
+  opened asking for two values instead of showing its worked example -- the new
+  unrated-item guard firing on the example itself, which filled only two of
+  four items. It now types the zeros it means. Also: the pre-rendered Wells PE
+  page and the README quoted a sentence the app never prints; all three now say
+  the same thing. See docs/spec-v1053.md.
 - **The commitments page could have gone on describing three vendored libraries
   while shipping four.** The published list of third-party code was
   hand-written under a comment saying it "MUST stay in sync" with the ledger,

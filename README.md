@@ -41,7 +41,7 @@ Each calculator does one thing:
 
 For example, on [Wells Score for PE](https://sophiewell.com/#wells-pe)
 you tick the criteria that apply and get
-`Wells PE total 4.5 (PE-likely group, moderate probability)`.
+`Wells PE total: 4.5 (Moderate probability)`.
 
 Calculations run locally and keep working offline. Nothing leaves your device
 unless you deliberately choose **Report a problem**; that action sends the
