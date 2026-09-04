@@ -8,6 +8,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **The two withdrawal scales opened already scored.** CIWA-Ar and COWS
+  rendered every item at zero, so an untouched form read "Mild withdrawal
+  (<8): supportive care" and "No active withdrawal" -- the two sentences a
+  protocol uses to withhold a benzodiazepine and to postpone a buprenorphine
+  induction. Both now count their unrated items and say what is outstanding
+  until enough of the scale has actually been observed. A rated zero still
+  reads as before. See docs/spec-v1028.md.
 - **A fix to the out-of-range warning broke three other checks, and CI caught
   it.** Making the warning a permanent hidden element parked an empty paragraph
   between a calculator's explanation and its answer — which is exactly what three

@@ -9,11 +9,26 @@ import { ciwaAr, cows, ascvdPce, prevent10yr } from '../../lib/scoring-v4.js';
 const close = (a, b, eps = 1) => assert.ok(Math.abs(a - b) <= eps, `expected ~${b}, got ${a}`);
 
 // --- 157 CIWA-Ar -------------------------------------------------------
-test('ciwaAr: all zero -> Mild (<8)', () => {
-  const r = ciwaAr({}); assert.equal(r.score, 0); assert.match(r.band, /Mild/);
+// spec-v1028: these asserted the defect. CIWA-Ar gates a benzodiazepine, and
+// "Mild withdrawal (<8): supportive care" is the reading that withholds one -- so
+// it waits until all ten items are rated. A fully rated calm patient still reads
+// mild; an unrated form does not.
+const CIWA_ZEROED = {
+  nausea: 0, tremor: 0, sweats: 0, anxiety: 0, agitation: 0,
+  tactile: 0, auditory: 0, visual: 0, headache: 0, orientation: 0,
+};
+test('ciwaAr: an unrated assessment is not a mild one', () => {
+  const r = ciwaAr({});
+  assert.equal(r.score, 0);
+  assert.equal(r.incomplete, true);
+  assert.match(r.band, /at least 0 from 0 of 10 items/);
+  assert.doesNotMatch(r.band, /Mild withdrawal/);
+});
+test('ciwaAr: all ten rated zero -> Mild (<8)', () => {
+  const r = ciwaAr(CIWA_ZEROED); assert.equal(r.score, 0); assert.match(r.band, /Mild/);
 });
 test('ciwaAr: 7 -> Mild boundary', () => {
-  const r = ciwaAr({ tremor: 7 }); assert.equal(r.score, 7); assert.match(r.band, /Mild/);
+  const r = ciwaAr({ ...CIWA_ZEROED, tremor: 7 }); assert.equal(r.score, 7); assert.match(r.band, /Mild/);
 });
 test('ciwaAr: 10 -> Moderate', () => {
   const r = ciwaAr({ tremor: 5, anxiety: 5 }); assert.match(r.band, /Moderate/);
@@ -31,7 +46,18 @@ test('ciwaAr: clamps each item', () => {
 });
 
 // --- 158 COWS ----------------------------------------------------------
-test('cows: 0 -> No active withdrawal', () => assert.match(cows({}).band, /No active/));
+// spec-v1028: the same, on the scale that times a buprenorphine induction.
+const COWS_ZEROED = {
+  pulse: 0, sweating: 0, restlessness: 0, pupil: 0, jointAches: 0,
+  runnyNose: 0, gi: 0, tremor: 0, yawning: 0, anxiety: 0, gooseflesh: 0,
+};
+test('cows: an unrated assessment is not "no active withdrawal"', () => {
+  const r = cows({});
+  assert.equal(r.incomplete, true);
+  assert.match(r.band, /at least 0 from 0 of 11 items/);
+  assert.doesNotMatch(r.band, /No active/);
+});
+test('cows: all eleven rated zero -> No active withdrawal', () => assert.match(cows(COWS_ZEROED).band, /No active/));
 test('cows: 5 -> Mild', () => assert.match(cows({ pulse: 1, sweating: 1, restlessness: 1, pupil: 2 }).band, /Mild/));
 test('cows: 14 -> Moderate', () => assert.match(cows({ pulse: 4, sweating: 4, restlessness: 3, pupil: 1, anxiety: 2 }).band, /Moderate/));
 test('cows: 26 -> Moderately severe', () => {

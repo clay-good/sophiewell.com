@@ -970,7 +970,10 @@ export const renderers = {
     for (const [l, id] of items7) {
       root.appendChild(el('p', {}, [
         el('label', { for: id, text: l }), el('br'),
-        el('input', { id, type: 'number', min: '0', max: '7', step: '1', value: '0' }),
+        // spec-v1028: no value='0'. An item that opens at zero cannot be told
+        // apart from one a clinician rated zero, and this scale gates a
+        // benzodiazepine.
+        el('input', { id, type: 'number', min: '0', max: '7', step: '1', placeholder: '0' }),
       ]));
     }
     root.appendChild(el('p', {}, [
@@ -982,13 +985,15 @@ export const renderers = {
     if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
       const inputs = {
-        nausea: nv('cw-nau'), tremor: nv('cw-tre'), sweats: nv('cw-swt'),
-        anxiety: nv('cw-anx'), agitation: nv('cw-agi'), tactile: nv('cw-tac'),
-        auditory: nv('cw-aud'), visual: nv('cw-vis'), headache: nv('cw-hea'),
-        orientation: nv('cw-ori'),
+        nausea: nvOrNull('cw-nau'), tremor: nvOrNull('cw-tre'), sweats: nvOrNull('cw-swt'),
+        anxiety: nvOrNull('cw-anx'), agitation: nvOrNull('cw-agi'), tactile: nvOrNull('cw-tac'),
+        auditory: nvOrNull('cw-aud'), visual: nvOrNull('cw-vis'), headache: nvOrNull('cw-hea'),
+        orientation: nvOrNull('cw-ori'),
       };
       const r = S4.ciwaAr(inputs);
-      o.appendChild(el('h2', { text: `CIWA-Ar: ${r.score}` }));
+      // spec-v1028: below the treatment threshold an unrated item withholds the
+      // reading, so there is a prompt rather than a heading.
+      if (!r.incomplete) o.appendChild(el('h2', { text: `CIWA-Ar: ${r.score}` }));
       o.appendChild(el('p', { text: r.band }));
       o.appendChild(el('p', { class: 'muted', text: 'Screening / monitoring tool. Local protocols govern symptom-triggered medication.' }));
       if (deriv) updateDerivationSteps(deriv, META.ciwa, inputs);
@@ -1009,7 +1014,9 @@ export const renderers = {
     for (const [l, id] of items) {
       root.appendChild(el('p', {}, [
         el('label', { for: id, text: l }), el('br'),
-        el('input', { id, type: 'number', min: '0', max: '5', step: '1', value: '0' }),
+        // spec-v1028: blank, not zero -- this scale times a buprenorphine
+        // induction.
+        el('input', { id, type: 'number', min: '0', max: '5', step: '1', placeholder: '0' }),
       ]));
     }
     const o = out(); root.appendChild(o);
@@ -1017,13 +1024,13 @@ export const renderers = {
     if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
       const inputs = {
-        pulse: nv('co-pul'), sweating: nv('co-swt'), restlessness: nv('co-rest'),
-        pupil: nv('co-pup'), jointAches: nv('co-jt'), runnyNose: nv('co-rn'),
-        gi: nv('co-gi'), tremor: nv('co-tre'), yawning: nv('co-yaw'),
-        anxiety: nv('co-anx'), gooseflesh: nv('co-goose'),
+        pulse: nvOrNull('co-pul'), sweating: nvOrNull('co-swt'), restlessness: nvOrNull('co-rest'),
+        pupil: nvOrNull('co-pup'), jointAches: nvOrNull('co-jt'), runnyNose: nvOrNull('co-rn'),
+        gi: nvOrNull('co-gi'), tremor: nvOrNull('co-tre'), yawning: nvOrNull('co-yaw'),
+        anxiety: nvOrNull('co-anx'), gooseflesh: nvOrNull('co-goose'),
       };
       const r = S4.cows(inputs);
-      o.appendChild(el('h2', { text: `COWS: ${r.score}` }));
+      if (!r.incomplete) o.appendChild(el('h2', { text: `COWS: ${r.score}` }));
       o.appendChild(el('p', { text: r.band }));
       if (deriv) updateDerivationSteps(deriv, META.cows, inputs);
     });

@@ -295,3 +295,47 @@ for (const [id, want] of WAVE_5) {
     expect(text, `${id} answered an empty form`).toMatch(want);
   });
 }
+
+// spec-v1028: the two withdrawal scales, which gate medication.
+//
+// CIWA-Ar's ten items opened AT ZERO, so a form nobody had filled in read
+// "CIWA-Ar: 0 -- Mild withdrawal (<8): supportive care" -- the sentence a
+// symptom-triggered protocol uses to WITHHOLD a benzodiazepine. COWS read "0 --
+// No active withdrawal", which is the reading that says not to start a
+// buprenorphine induction. Both are monotone, so the alarming bands stand on
+// what has been rated and only the reassuring one waits.
+test('ciwa: an unrated assessment is not a mild one', async ({ page }) => {
+  await page.goto('/#ciwa');
+  await page.waitForSelector('#q-results');
+  await page.waitForTimeout(350);
+  await page.evaluate(() => {
+    for (const n of document.querySelectorAll('#tool-body input[type=number]')) {
+      n.value = '';
+      n.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+  });
+  const text = (await page.locator('#q-results').innerText()).replace(/\s+/g, ' ');
+  expect(text).toMatch(/at least 0 from 0 of 10 items/);
+  expect(text).not.toMatch(/Mild withdrawal/);
+
+  // Two items rated high already argue for treatment, and that reading stands.
+  await page.locator('#cw-nau').fill('7');
+  await page.locator('#cw-tre').fill('7');
+  await expect(page.locator('#q-results')).toContainText('Moderate (8-15)');
+  await expect(page.locator('#q-results')).toContainText('Scored from 2 of 10 items');
+});
+
+test('cows: an unrated assessment is not "no active withdrawal"', async ({ page }) => {
+  await page.goto('/#cows');
+  await page.waitForSelector('#q-results');
+  await page.waitForTimeout(350);
+  await page.evaluate(() => {
+    for (const n of document.querySelectorAll('#tool-body input[type=number]')) {
+      n.value = '';
+      n.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+  });
+  const text = (await page.locator('#q-results').innerText()).replace(/\s+/g, ' ');
+  expect(text).toMatch(/at least 0 from 0 of 11 items/);
+  expect(text).not.toMatch(/No active withdrawal/);
+});
