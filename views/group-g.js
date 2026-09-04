@@ -2625,6 +2625,10 @@ export const renderers = {
         confusion: checked('sc-conf'),
         phLt735: checked('sc-ph'),
       });
+      // spec-v1037: with no age there are no thresholds, so there is no score line
+      // and no per-parameter breakdown either -- both would be scored against the
+      // wrong cut-offs.
+      if (r.incomplete) { o.appendChild(el('p', { text: r.band })); return; }
       o.appendChild(el('h2', { text: `SMART-COP ${r.score}` }));
       o.appendChild(el('p', { text: r.band }));
       const p = r.parts;

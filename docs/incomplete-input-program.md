@@ -60,6 +60,8 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1028](spec-v1028.md) | Two withdrawal scales opened already scored |
 | [v1029](spec-v1029.md) | What the empty-form ledger was hiding: five scores with a measurement inside |
 | [v1032](spec-v1032.md) | The impossible-number guard was reading the wrong live region |
+| [v1036](spec-v1036.md) | An alarm from nothing is not the safe direction |
+| [v1037](spec-v1037.md) | **Gate**: the browser answers nothing the agent surface refuses |
 
 ### And the same question from the other side
 
@@ -83,6 +85,7 @@ had described a patient.
 | `clock-dependent.spec.js` | does any calculator answer differently a year later, from the same inputs? | 1.3 min |
 | `no-answer-from-nothing.spec.js` | do the 40 fixed calculators still refuse, and still answer when filled? | 49 s |
 | `declared-ranges.spec.js` | is an out-of-range value named, above the answer and tied to its field? | 12 s |
+| `required-field-agreement.spec.js` | does the browser answer a question the agent surface refuses? | 28 s |
 | `no-impossible-number.spec.js` | does any tile state NaN, Infinity or an unexplained exponent? | 1.6 min |
 
 Each has a ledger for the tiles that legitimately do the thing it looks for, and each was verified
@@ -98,9 +101,9 @@ by reintroducing the defect and watching it fail.
   number and were judged legitimate one at a time. A tile-level exemption cannot express "these
   seven fields are criteria and that one is a measurement", and nothing checks that it was ever
   asked field by field.
-- **Two ledgers make different claims.** A tile can be legitimate under "answers an empty form" and
-  still be wrong under "answers without a field the agent surface calls required" — 40 tiles sit in
-  that gap, and each needs the measurement-versus-criterion judgment applied one more time.
+- **Two ledgers make different claims**, and the gap has now been measured: seventy-five calculators
+  answered without a field the agent surface calls required (spec-v1037). Ten are fixed and 65 are carried in
+  `required-field-ledger.js`, each needing the measurement-versus-criterion judgment one more time.
 - **`example-correctness` matches numbers loosely.** It asks whether each documented number appears
   somewhere in the output, which a wrong answer can satisfy by coincidence (spec-v1023 proves it on
   a real case).

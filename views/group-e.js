@@ -118,8 +118,13 @@ export const renderers = {
     ]));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
-      const heightM = unitNum('h');
-      const r = C.bmi({ weightKg: unitNum('w'), heightM });
+      // spec-v1037: the sibling below (bsa) has asked for its two values since
+      // spec-v1014 and this one never did, so a blank weight read as 0 kg and the
+      // tile answered "BMI: 0 kg/m^2 (Underweight)".
+      const heightM = unitNumOpt('h');
+      const weightKg = unitNumOpt('w');
+      if (needValues(o, [['a weight', weightKg], ['a height', heightM]])) return;
+      const r = C.bmi({ weightKg, heightM });
       o.appendChild(el('p', { text: `BMI: ${r.bmi} kg/m^2 (${r.category})` }));
       const adv = boundsAdvisory('heightM', heightM);
       if (adv) o.appendChild(el('p', { class: 'warn', text: adv }));
@@ -326,8 +331,14 @@ export const renderers = {
     const deriv = renderDerivation(META['cockcroft-gault']);
     if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const scr = unitNum('scr');
-      const inputs = { age: num('age'), weightKg: unitNum('w'), scr, sex: document.getElementById('sex').value };
+      // spec-v1037: with a blank age read as 0 the formula returns a clearance --
+      // "155.56 mL/min" on the example's weight and creatinine -- which is a
+      // dosing number for a patient whose age nobody entered.
+      const scr = unitNumOpt('scr');
+      const age = numOrNull('age');
+      const weightKg = unitNumOpt('w');
+      if (needValues(o, [['an age', age], ['a weight', weightKg], ['a serum creatinine', scr]])) return;
+      const inputs = { age, weightKg, scr, sex: document.getElementById('sex').value };
       const v = C.cockcroftGault(inputs);
       o.appendChild(el('p', { text: `Creatinine clearance: ${v} mL/min` }));
       const adv = boundsAdvisory('scr', scr);
@@ -389,7 +400,13 @@ export const renderers = {
     root.appendChild(field('FiO2 (0-1)', 'fio2'));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
-      const r = C.pfRatio({ pao2: num('pao2'), fio2: num('fio2') });
+      // spec-v1037: read as zero, a blank PaO2 gave "P/F ratio: 0 (Severe ARDS
+      // (Berlin))" -- the most severe category the Berlin definition has, from a
+      // blood gas nobody had drawn.
+      const pao2 = numOrNull('pao2');
+      const fio2 = numOrNull('fio2');
+      if (needValues(o, [['a PaO2', pao2], ['an FiO2', fio2]])) return;
+      const r = C.pfRatio({ pao2, fio2 });
       o.appendChild(el('p', { text: `P/F ratio: ${r.ratio} (${r.category})` }));
     });
     ['pao2', 'fio2'].forEach((id) => document.getElementById(id).addEventListener('input', run));

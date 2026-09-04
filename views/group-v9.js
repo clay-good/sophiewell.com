@@ -286,7 +286,9 @@ export const renderers = {
     root.appendChild(field('D-dimer (ng/mL, FEU)', 'yp-ddimer', { placeholder: 'e.g. 400' }));
     const o = out(); root.appendChild(o);
     wire(['yp-dvt', 'yp-hemo', 'yp-likely', 'yp-ddimer'], () => safe(o, () => {
-      const r = S.yearsPe({ dvtSigns: chk('yp-dvt'), hemoptysis: chk('yp-hemo'), peMostLikely: chk('yp-likely'), dDimer: val('yp-ddimer') });
+      // spec-v1037: `val` is Number(''), and 0 is below every YEARS threshold.
+      const dd = document.getElementById('yp-ddimer').value.trim();
+      const r = S.yearsPe({ dvtSigns: chk('yp-dvt'), hemoptysis: chk('yp-hemo'), peMostLikely: chk('yp-likely'), dDimer: dd === '' ? null : Number(dd) });
       o.appendChild(list([
         li(`YEARS items: ${fmt(r.itemCount, { fallback: '--' })} / 3; D-dimer threshold: ${fmt(r.threshold, { fallback: '--' })} ng/mL`),
         li(r.band, r.excluded ? null : 'warn'),

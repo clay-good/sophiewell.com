@@ -248,6 +248,13 @@ export const renderers = {
     root.appendChild(field('ALP ULN (U/L)', 'alpu', { value: 120 }));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
+      // spec-v1037: a blank ALT read as 0 made R = 0 and the tile named a pattern
+      // -- "Pattern: Cholestatic" -- from one of the two enzymes it compares.
+      const rf = ['alt', 'altu', 'alp', 'alpu'].map((id) => document.getElementById(id).value.trim());
+      if (rf.some((v) => v === '')) {
+        o.appendChild(el('p', { class: 'muted', text: 'Enter the ALT and ALP with their upper limits of normal: R is a ratio of the two, so a missing enzyme has no pattern.' }));
+        return;
+      }
       const r = V5.rFactorLiver({ alt: num('alt'), altUln: num('altu'), alp: num('alp'), alpUln: num('alpu') });
       o.appendChild(el('ul', {}, [
         el('li', { text: `R: ${r.rFactor}` }),

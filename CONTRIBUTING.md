@@ -127,13 +127,21 @@ When one fails it names itself; this is where to look it up.
 | `check-gates-documented.mjs` | a gate joining this chain without a row in this table |
 | `build-report-catalog.mjs --check` | the report Worker's id/name map out of date with the catalog |
 
-Two gates do not run in that chain because they need a browser. The end-to-end
+Three gates do not run in that chain because they need a browser. The end-to-end
 suite carries `no-answer-from-nothing-sweep.spec.js`, which clears every field of
 every calculator and fails on any tile that still produces a reading. A tile that
 legitimately answers an empty form -- a checklist where nobody ticking anything
 really is a score of 0 -- belongs in `test/integration/empty-form-ledger.js`,
 with a sentence in the pull request saying which it is: a criterion the clinician
 answered "no" to, or a measurement nobody took (`docs/spec-v1019.md`).
+
+It also carries `required-field-agreement.spec.js`, which clears exactly ONE
+field -- the first that `mcp/fields.js` marks `required` -- and leaves the worked
+example in place everywhere else. An agent omitting that input gets
+`MISSING_INPUT` and no number, so a browser that answers anyway gives two
+customers two answers to one question. A legitimate exception belongs in
+`test/integration/required-field-ledger.js`; its header sets out the three things
+a line can honestly be (`docs/spec-v1037.md`).
 
 It also carries `clock-dependent.spec.js`, which renders every calculator twice a
 year apart on a fake clock and fails on any whose answer changed while its inputs

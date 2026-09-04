@@ -8,6 +8,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A missing lab refused an agent and answered a nurse.** The agent surface
+  has always refused a calculation missing a required input; the browser read
+  the same blank field as zero and answered -- "PE excluded" on a D-dimer
+  nobody had, "Severe ARDS" on a blank blood gas, a creatinine clearance with
+  no age, "BMI 0 (Underweight)". Ten fixed, and a sweep over all 1,068
+  calculators that declare a required field now runs on every push. See
+  docs/spec-v1037.md.
 - **Two tiles raised an alarm from an empty form.** An untouched MEOWS said
   "trigger (5 red) -- activate the obstetric MEOWS response", and an untouched
   Mini-Cog reported a positive dementia screen. Both are the safer direction

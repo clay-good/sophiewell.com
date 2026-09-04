@@ -103,7 +103,16 @@ export const renderers = {
     root.appendChild(unitField('Weight', 'uo-wt', WEIGHT_UNITS, { placeholder: 'e.g. 60' }));
     const o = out(); root.appendChild(o);
     wire(['uo-vol', 'uo-int', 'uo-wt', 'uo-wt-unit'], () => safe(o, () => {
-      const r = C.urineOutput({ volumeMl: val('uo-vol'), intervalHr: val('uo-int'), weightKg: unitNum('uo-wt') });
+      // spec-v1037: `val` is Number(''), so a blank volume was a measured zero and
+      // the tile answered "0.00 mL/kg/hr -- meets the KDIGO Stage 3 urine-output
+      // criterion". The guard below only fired when the LIBRARY returned nothing,
+      // and with three zeros it returned a rate.
+      const volumeMl = optNum('uo-vol');
+      const intervalHr = optNum('uo-int');
+      const weightKg = unitNumOpt('uo-wt');
+      if (needValues(o, [['a urine volume', volumeMl], ['a collection interval', intervalHr],
+        ['a weight', weightKg]])) return;
+      const r = C.urineOutput({ volumeMl, intervalHr, weightKg });
       if (!r) { o.appendChild(el('p', { class: 'muted', text: fmt(null, { fallback: 'Enter volume, interval, and weight.' }) })); return; }
       o.appendChild(list([
         li(`Urine output: ${fmt(r.rate, { digits: 2, unit: 'mL/kg/hr' })}`, r.oliguria ? 'warn' : null),
@@ -121,7 +130,13 @@ export const renderers = {
     root.appendChild(unitField('Weight', 'gir-wt', WEIGHT_UNITS, { placeholder: 'e.g. 3' }));
     const o = out(); root.appendChild(o);
     wire(['gir-dex', 'gir-rate', 'gir-wt', 'gir-wt-unit'], () => safe(o, () => {
-      const r = C.gir({ dextrosePct: val('gir-dex'), rateMlHr: val('gir-rate'), weightKg: unitNum('gir-wt') });
+      // spec-v1037: the same, on a tile that answers in mg/kg/min of dextrose.
+      const dextrosePct = optNum('gir-dex');
+      const rateMlHr = optNum('gir-rate');
+      const girWeight = unitNumOpt('gir-wt');
+      if (needValues(o, [['a dextrose concentration', dextrosePct], ['an infusion rate', rateMlHr],
+        ['a weight', girWeight]])) return;
+      const r = C.gir({ dextrosePct, rateMlHr, weightKg: girWeight });
       if (!r) { o.appendChild(el('p', { class: 'muted', text: 'Enter dextrose %, rate, and weight.' })); return; }
       o.appendChild(list([
         li(`GIR: ${fmt(r.gir, { digits: 2, unit: 'mg/kg/min' })}`),

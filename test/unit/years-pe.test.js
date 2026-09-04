@@ -19,6 +19,16 @@ test('1 item, D-dimer 400 < 500 -> excluded', () => {
   const r = yearsPe({ hemoptysis: true, dDimer: 400 });
   assert.equal(r.threshold, 500); assert.equal(r.excluded, true);
 });
-test('rejects bad D-dimer', () => {
-  assert.throws(() => yearsPe({ dDimer: NaN }), /d\sdimer/);
+test('a D-dimer that is not there is asked for, not rejected', () => {
+  // spec-v1037: NaN here is a result that has not come back, and the reader has
+  // to be told which one is missing. A value that IS present and impossible
+  // still throws, below.
+  const r = yearsPe({ dDimer: NaN });
+  assert.equal(r.excluded, null);
+  assert.equal(r.incomplete, true);
+  assert.match(r.band, /Enter the D-dimer/);
+});
+test('rejects an impossible D-dimer', () => {
+  assert.throws(() => yearsPe({ dDimer: -5 }), /d\sdimer/);
+  assert.throws(() => yearsPe({ dDimer: 500000 }), /d\sdimer/);
 });

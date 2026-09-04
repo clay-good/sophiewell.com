@@ -94,7 +94,13 @@ export const renderers = {
     root.appendChild(field('Hematocrit (%)', 'ri-hct', { min: 0, max: 100, placeholder: 'e.g. 30' }));
     const o = out(); root.appendChild(o);
     wire(['ri-retic', 'ri-hct'], () => safe(o, () => {
-      const r = V6.reticIndex({ reticPct: val('ri-retic'), hct: val('ri-hct') });
+      // spec-v1037: a blank reticulocyte read as 0% and the tile answered "RPI 0:
+      // inadequate marrow response" -- a bone-marrow reading from a count nobody
+      // had run.
+      const reticPct = optNum('ri-retic');
+      const hct = optNum('ri-hct');
+      if (needValues(o, [['a reticulocyte percentage', reticPct], ['a hematocrit', hct]])) return;
+      const r = V6.reticIndex({ reticPct, hct });
       o.appendChild(list([
         li(`Corrected reticulocyte: ${fmt(r.correctedRetic, { fallback: '(enter values)' })}%`),
         li(`Maturation factor: ${r.maturationFactor}`),
@@ -111,7 +117,12 @@ export const renderers = {
     root.appendChild(field('Ferritin (ng/mL, optional)', 'ts-ferritin', { placeholder: 'optional' }));
     const o = out(); root.appendChild(o);
     wire(['ts-iron', 'ts-tibc', 'ts-ferritin'], () => safe(o, () => {
-      const r = V6.tsat({ ironUgDl: val('ts-iron'), tibcUgDl: val('ts-tibc'), ferritinNgMl: optNum('ts-ferritin') });
+      // spec-v1037: a blank serum iron read as 0 and gave "0% -- absolute iron
+      // deficiency", a diagnosis from one lab that had not been drawn.
+      const ironUgDl = optNum('ts-iron');
+      const tibcUgDl = optNum('ts-tibc');
+      if (needValues(o, [['a serum iron', ironUgDl], ['a TIBC', tibcUgDl]])) return;
+      const r = V6.tsat({ ironUgDl, tibcUgDl, ferritinNgMl: optNum('ts-ferritin') });
       o.appendChild(list([
         li(`Transferrin saturation: ${fmt(r.tsat, { fallback: '(enter iron & TIBC)' })}%`),
         li(r.pattern),
@@ -229,7 +240,17 @@ export const renderers = {
     root.appendChild(field('Urine Na (mEq/L)', 'ttkg-una', { placeholder: 'e.g. 40' }));
     const o = out(); root.appendChild(o);
     wire(['ttkg-uk', 'ttkg-pk', 'ttkg-uosm', 'ttkg-posm', 'ttkg-una'], () => safe(o, () => {
-      const r = V6.ttkg({ urineK: val('ttkg-uk'), plasmaK: val('ttkg-pk'), urineOsm: val('ttkg-uosm'), plasmaOsm: val('ttkg-posm'), urineNa: val('ttkg-una') });
+      // spec-v1037: the urine-anion-gap tile below has asked for its three values
+      // since spec-v1014; this one read a blank urine potassium as 0 and answered
+      // "TTKG: 0 -- appropriate renal K conservation", which is the reading that
+      // says the kidney is not the source of the loss.
+      const urineK = optNum('ttkg-uk');
+      const plasmaK = optNum('ttkg-pk');
+      const urineOsm = optNum('ttkg-uosm');
+      const plasmaOsm = optNum('ttkg-posm');
+      if (needValues(o, [['a urine potassium', urineK], ['a plasma potassium', plasmaK],
+        ['a urine osmolality', urineOsm], ['a plasma osmolality', plasmaOsm]])) return;
+      const r = V6.ttkg({ urineK, plasmaK, urineOsm, plasmaOsm, urineNa: optNum('ttkg-una') });
       if (!r.valid) { o.appendChild(list([li(r.note, 'warn')])); return; }
       o.appendChild(list([
         li(`TTKG: ${fmt(r.ttkg, { fallback: '--' })}`),
