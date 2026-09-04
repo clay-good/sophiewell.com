@@ -457,10 +457,33 @@ export const renderers = {
     if (deriv) root.appendChild(deriv);
     const ids = ['ap-temp', 'ap-temp-unit', 'ap-map', 'ap-hr', 'ap-rr', 'ap-oxy', 'ap-ph', 'ap-na', 'ap-k', 'ap-creat', 'ap-hct', 'ap-wbc', 'ap-gcs', 'ap-age', 'ap-chronic', 'ap-nonop'];
     wire(ids, () => safe(o, () => {
+      // spec-v1064: APACHE II is scored over a COMPLETE physiologic panel, and a
+      // blank field does not fail in one direction here -- it is read as the
+      // literal value 0, which is profoundly deranged for a heart rate (+4) and
+      // perfectly normal for an age (+0). Blanking the heart rate raised the
+      // total from 23 to 26 and the quoted mortality from about 25% to about 55%;
+      // blanking the age lowered it to 20. Neither the rule-in nor the rule-out
+      // reading is safe, so the panel is asked for rather than guessed at.
+      const apFields = [
+        ['a temperature', unitNumOpt('ap-temp')], ['a mean arterial pressure', optNum('ap-map')],
+        ['a heart rate', optNum('ap-hr')], ['a respiratory rate', optNum('ap-rr')],
+        ['a PaO2', optNum('ap-oxy')], ['an arterial pH', optNum('ap-ph')],
+        ['a sodium', optNum('ap-na')], ['a potassium', optNum('ap-k')],
+        ['a creatinine', optNum('ap-creat')], ['a hematocrit', optNum('ap-hct')],
+        ['a white cell count', optNum('ap-wbc')], ['a Glasgow Coma Scale', optNum('ap-gcs')],
+        ['an age', optNum('ap-age')],
+      ];
+      const apMissing = apFields.filter(([, v]) => v == null || Number.isNaN(v)).map(([l]) => l);
+      if (apMissing.length) {
+        o.appendChild(el('p', { class: 'muted', text: apMissing.length > 3
+          ? `APACHE II is scored from a complete physiologic panel. Enter the ${apMissing.length} measurements still empty, starting with ${apMissing.slice(0, 3).join(', ')}.`
+          : `Enter ${apMissing.length === 1 ? apMissing[0] : `${apMissing.slice(0, -1).join(', ')} and ${apMissing[apMissing.length - 1]}`} to score.` }));
+        return;
+      }
       const inputs = {
-        temp: unitNum('ap-temp'), map: val('ap-map'), hr: val('ap-hr'), rr: val('ap-rr'), oxy: val('ap-oxy'),
-        ph: val('ap-ph'), na: val('ap-na'), k: val('ap-k'), creatinine: val('ap-creat'), hct: val('ap-hct'),
-        wbc: val('ap-wbc'), gcs: val('ap-gcs'), age: val('ap-age'),
+        temp: unitNumOpt('ap-temp'), map: optNum('ap-map'), hr: optNum('ap-hr'), rr: optNum('ap-rr'), oxy: optNum('ap-oxy'),
+        ph: optNum('ap-ph'), na: optNum('ap-na'), k: optNum('ap-k'), creatinine: optNum('ap-creat'), hct: optNum('ap-hct'),
+        wbc: optNum('ap-wbc'), gcs: optNum('ap-gcs'), age: optNum('ap-age'),
         chronicHealth: chk('ap-chronic'), nonoperativeOrEmergency: chk('ap-nonop'),
       };
       const r = S.apache2(inputs);

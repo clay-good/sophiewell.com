@@ -26,3 +26,16 @@ test('rejects out-of-range AIS / vitals', () => {
   assert.throws(() => issRts({ ais1: 7, ais2: 0, ais3: 0, gcs: 15, sbp: 120, rr: 16 }), /ais1/);
   assert.throws(() => issRts({ ais1: 3, ais2: 0, ais3: 0, gcs: 2, sbp: 120, rr: 16 }), /gcs/);
 });
+
+test('the anatomic score stands without the physiology (spec-v1064)', () => {
+  // Each RTS vital is coded into a band, so a blank systolic pressure was coded
+  // as 0 mmHg -- the bottom band -- and the RTS fell from 7.84 to 4.91 beside an
+  // unchanged ISS: a worse-looking patient invented by an empty field.
+  const noSbp = issRts({ ais1: 5, ais2: 2, ais3: 0, gcs: 14, sbp: null, rr: 18 });
+  assert.equal(noSbp.iss, 29);
+  assert.equal(noSbp.rts, null);
+
+  const full = issRts({ ais1: 5, ais2: 2, ais3: 0, gcs: 14, sbp: 120, rr: 18 });
+  assert.equal(full.iss, 29);
+  assert.equal(full.rts, 7.84);
+});

@@ -13,7 +13,18 @@ import { renderDerivation, updateDerivationSteps } from '../lib/derivation.js';
 import { renderPrintable, renderCompleteness } from '../lib/print.js';
 import { resultRow } from '../lib/result-copy.js';
 import { correctionRate, trend } from '../lib/trend.js';
-import { unitField, unitNum, ALBUMIN_UNITS, HEIGHT_UNITS, WEIGHT_UNITS } from '../lib/field-units.js';
+import { unitField, unitNum, unitNumOpt, ALBUMIN_UNITS, HEIGHT_UNITS, WEIGHT_UNITS } from '../lib/field-units.js';
+
+// spec-v1064: the canonical complete-the-fields reader (one body across every
+// module -- scripts/check-helper-drift.mjs enforces it).
+function needValues(o, pairs) {
+  const missing = pairs.filter(([, v]) => v == null || Number.isNaN(v)).map(([label]) => label);
+  if (!missing.length) return false;
+  const phrase = missing.length === 1 ? missing[0]
+    : `${missing.slice(0, -1).join(', ')} and ${missing[missing.length - 1]}`;
+  o.appendChild(el('p', { class: 'muted', text: `Enter ${phrase} to calculate.` }));
+  return true;
+}
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -231,7 +242,14 @@ export const renderers = {
     root.appendChild(unitField('Ascites albumin', 'aa', ALBUMIN_UNITS));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
-      const r = V5.saag({ serumAlbumin: unitNum('sa'), ascitesAlbumin: unitNum('aa') });
+      // spec-v1064: the gradient is one albumin minus the other, so a blank ascites
+      // albumin made SAAG equal to the serum albumin -- 3.5 g/dL where the pair
+      // gave 2 -- and every value above 1.1 reads as portal hypertension, so the
+      // classification looked unchanged while the number was wrong.
+      const saSerum = unitNumOpt('sa');
+      const saAscites = unitNumOpt('aa');
+      if (needValues(o, [['a serum albumin', saSerum], ['an ascites albumin', saAscites]])) return;
+      const r = V5.saag({ serumAlbumin: saSerum, ascitesAlbumin: saAscites });
       o.appendChild(el('ul', {}, [
         el('li', { text: `SAAG: ${r.saag} g/dL` }),
         el('li', { text: `Classification: ${r.classification}` }),

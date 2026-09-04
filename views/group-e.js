@@ -311,7 +311,14 @@ export const renderers = {
     const deriv = renderDerivation(META.egfr);
     if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const inputs = { scr: num('scr'), age: num('age'), sex: document.getElementById('sex').value };
+      // spec-v1064: CKD-EPI falls with age, so a blank age entered the formula as
+      // a newborn and returned the HIGHEST eGFR the creatinine allows -- 93.7
+      // where the patient's own age gave 64.5. A reassuring kidney function for
+      // someone whose age nobody had typed.
+      const egScr = numOrNull('scr');
+      const egAge = numOrNull('age');
+      if (needValues(o, [['a serum creatinine', egScr], ['an age', egAge]])) return;
+      const inputs = { scr: egScr, age: egAge, sex: document.getElementById('sex').value };
       const v = C.egfrCkdEpi2021(inputs);
       o.appendChild(el('p', { text: `eGFR: ${v} mL/min/1.73 m^2 (CKD-EPI 2021 race-free)` }));
       if (deriv) updateDerivationSteps(deriv, META.egfr, inputs);

@@ -375,7 +375,11 @@ export const renderers = {
     root.appendChild(field('Respiratory rate (/min)', 'ir-rr', { placeholder: 'e.g. 18' }));
     const o = out(); root.appendChild(o);
     wire(['ir-ais1', 'ir-ais2', 'ir-ais3', 'ir-gcs', 'ir-sbp', 'ir-rr'], () => safe(o, () => {
-      const r = S.issRts({ ais1: val('ir-ais1'), ais2: val('ir-ais2'), ais3: val('ir-ais3'), gcs: val('ir-gcs'), sbp: val('ir-sbp'), rr: val('ir-rr') });
+      // spec-v1064: null, not 0 -- a blank vital is not a vital of zero.
+      const r = S.issRts({
+        ais1: val('ir-ais1'), ais2: val('ir-ais2'), ais3: val('ir-ais3'),
+        gcs: numOrNull('ir-gcs'), sbp: numOrNull('ir-sbp'), rr: numOrNull('ir-rr'),
+      });
       o.appendChild(list([
         li(`ISS: ${fmt(r.iss, { fallback: '--' })} / 75`),
         li(r.issBand, r.majorTrauma ? 'warn' : null),

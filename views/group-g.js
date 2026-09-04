@@ -1160,7 +1160,12 @@ export const renderers = {
         scale2: checked('n2-scale2'), onO2: checked('n2-o2'),
         sbp: nvOrNull('n2-sbp'), pulse: nvOrNull('n2-pulse'),
         acvpu: document.getElementById('n2-acvpu').value,
-        temp: unitNum('n2-temp'),
+        // spec-v1064: spec-v930 moved the four plain number fields to nvOrNull and
+        // left the temperature, which is a unit field, on unitNum. A blank one
+        // converted to 0 C -- the bottom band, worth 3 points -- so clearing it
+        // alone took NEWS2 from 0 "continue routine monitoring" to 3 "urgent
+        // review", on an observation nobody had taken.
+        temp: unitNumOpt('n2-temp'),
       };
       const r = S4.news2(inputs);
       // spec-v930: with an observation missing there is no score, only the prompt.
@@ -1333,7 +1338,9 @@ export const renderers = {
       // spec-v930: nvOrNull, not nv -- an empty observation set is not a deteriorating patient.
       const inputs = {
         sbp: nvOrNull('me-sbp'), pulse: nvOrNull('me-pulse'),
-        rr: nvOrNull('me-rr'), temp: unitNum('me-temp'),
+        // spec-v1064: same miss as NEWS2 -- the unit field was left behind when the
+        // plain ones were fixed, and a blank temperature scored the 0 C band.
+        rr: nvOrNull('me-rr'), temp: unitNumOpt('me-temp'),
         avpu: document.getElementById('me-avpu').value,
       };
       const r = S4.mews(inputs);
