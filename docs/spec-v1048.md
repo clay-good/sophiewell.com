@@ -45,3 +45,22 @@ people will keep.
 **A gate that checks each fact independently can be satisfied by one fact doing several jobs.** The
 question to ask of any "does the output contain X" check is not whether X is there, but whether X
 has something of *its own* to be.
+
+## One probe measured and rejected
+
+The `ranson-bisap` find raised an obvious follow-up: *does any other tile print a figure that
+contradicts its own interpretation table?* I swept all 1,529 tiles that declare bands, comparing
+every percentage in the rendered answer against every percentage in the tile's own table.
+
+**23 suspects, none of them defects.** The rule cannot distinguish the two reasons an answer's
+percentage is absent from the table:
+
+- the table lists **thresholds** and the answer states a **computed value** — `navy-body-fat` says
+  11.1% body fat against a table of category cut-offs, `ascvd` says a 5.4% ten-year risk against
+  bands at 5% and 7.5%, `hiscr` says a 62.5% lesion reduction against a 50% threshold;
+- or the two genuinely disagree, which is what `ranson-bisap` was.
+
+Twenty-three false positives to find zero further defects is a gate nobody would keep. Recorded here
+so the next person does not re-run it: **what made the Ranson case findable was that its answer
+quoted a band LABEL, not a computed value** — and `example-correctness` catches that class already,
+now that each documented number needs one of its own.
