@@ -30,6 +30,11 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
    only the reading they could change.
 5. **A value that IS given, but impossible, is named above the answer** — the range its field
    declares, or the billion no quantity here reaches.
+6. **An alarm from nothing is not the safe direction** (spec-v1036). "May rule in, never rule out"
+   says which direction is *safer*, not that the alarming answer may be invented.
+7. **A guard against a missing value is a guard against one SHAPE of missing value** (spec-v1040).
+   `Number('')` and `Number(null)` are both 0; when a renderer changes which one it sends, every
+   guard downstream is guarding against the old shape until someone checks.
 
 ## The specs
 
@@ -62,6 +67,10 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1032](spec-v1032.md) | The impossible-number guard was reading the wrong live region |
 | [v1036](spec-v1036.md) | An alarm from nothing is not the safe direction |
 | [v1037](spec-v1037.md) | **Gate**: the browser answers nothing the agent surface refuses |
+| [v1038](spec-v1038.md) | Thirteen more: doses of zero, age bands chosen by a blank, not-met vs not-measured |
+| [v1039](spec-v1039.md) | The sweep almost learned to ignore its own defect |
+| [v1040](spec-v1040.md) | `Number(null)` is 0, and five guards had stopped firing because of it |
+| [v1041](spec-v1041.md) | Five more, and a gate that caught the trap inside the fix for the trap |
 
 ### And the same question from the other side
 

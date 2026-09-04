@@ -32,10 +32,10 @@ calculation, and preserves the site's client-side privacy model.
 - **Date:** September 3, 2026
 - **Status:** Accepted
 
-Established across spec-v1006 through spec-v1025, after a catalog sweep found
+Established across spec-v1006 through spec-v1041, after a catalog sweep found
 tools answering forms with nothing in them. The whole program, its specs and the
 checks that hold it are mapped in
-[incomplete-input-program.md](incomplete-input-program.md). Four rules, in the order they are
+[incomplete-input-program.md](incomplete-input-program.md). Six rules, in the order they are
 applied:
 
 **A blank field is a gap, not a zero.** `Number('')` is `0`, so a cleared input
@@ -65,6 +65,30 @@ unchecked "positive FAST" is a negative FAST, and a Centor score with nothing
 ticked is a real 0. Only the unentered measurements withhold a reading, and only
 the reading they could change.
 
-A fifth rule governs values that *are* given: a number outside the range its own
+**An alarm from nothing is not the safe direction.** "May rule in, never rule
+out" says which direction is *safer*, not that the alarming answer may be
+invented. An untouched MEOWS calling an obstetric rapid-response team, or a
+Mini-Cog reporting a positive dementia screen on a patient who was never asked
+to recall a word, is a false answer that costs a real response (spec-v1036).
+
+**A guard against a missing value guards against one SHAPE of missing value.**
+`Number('')` and `Number(null)` are both `0`, which is finite — so a guard
+written as `Number.isFinite(Number(v))` stops working the day a renderer starts
+sending `null` instead of `''`. Five deliberate missing-input guards had been
+silently disabled this way, by the very change that made their renderers
+blank-aware. Write both: `isBlank(v) || !Number.isFinite(Number(v))`
+(spec-v1040).
+
+A further rule governs values that *are* given: a number outside the range its own
 field declares, or beyond the billion no quantity here reaches, is named above
 the answer rather than silently computed from (spec-v1009 through spec-v1012).
+
+### What holds these now
+
+Four browser-side sweeps run on every push. Three ask what a tile does with
+nothing: `no-answer-from-nothing-sweep` clears every field,
+`required-field-agreement` clears exactly one that the agent surface calls
+required, and `clock-dependent` renders each tile twice a year apart. The fourth,
+`no-impossible-number`, catches a stated `NaN` or `Infinity`. Each carries a
+ledger of legitimate exceptions, and each was verified by reintroducing the
+defect it looks for.
