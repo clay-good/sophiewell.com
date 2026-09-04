@@ -78,8 +78,11 @@ const COMMITMENTS = [
 // /commitments/ page surfaces the actual provenance + licenses of the
 // non-MIT code shipping under /vendored/, alongside the eight commitments.
 // Each entry MUST stay in sync with the corresponding _vendored.md ledger
-// (vendored/<name>/_vendored.md).
-const VENDORED = [
+// (vendored/<name>/_vendored.md) -- which, until spec-v1052, was a MUST with
+// nothing behind it. `checkVendoredDisclosure()` in scripts/check-commitments.mjs
+// now reads both and fails the lint chain when they disagree, so this list is
+// exported rather than private.
+export const VENDORED = [
   {
     name: 'Mozilla pdf.js',
     path: '/vendored/pdfjs/',
@@ -244,4 +247,11 @@ async function main() {
   console.log(`build-commitments-page: wrote /commitments/ (${COMMITMENTS.length} commitments).`);
 }
 
-main().catch((err) => { console.error('build-commitments-page: failed', err); process.exit(1); });
+// spec-v1052: run only when invoked as a script. scripts/build.mjs spawns this
+// as a subprocess, so nothing changes there -- but check-commitments.mjs now
+// IMPORTS the VENDORED list to compare it against the ledger, and a checker that
+// rewrites the page as a side effect of reading it is a checker that can never
+// report the page is stale.
+if (process.argv[1] && process.argv[1].endsWith('build-commitments-page.mjs')) {
+  main().catch((err) => { console.error('build-commitments-page: failed', err); process.exit(1); });
+}

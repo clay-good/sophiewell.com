@@ -305,6 +305,73 @@ async function checkVendoredLicenses() {
   return violations;
 }
 
+// spec-v1052: the published disclosure must match the ledger it says it matches.
+//
+// The /commitments/ page lists each vendored library with its upstream, version
+// and license. That list is hand-written in scripts/build-commitments-page.mjs
+// under a comment saying each entry "MUST stay in sync with the corresponding
+// _vendored.md ledger" -- a MUST with nothing behind it. Add a fourth vendored
+// library and the public page goes on describing three; bump a version in the
+// ledger and the page keeps quoting the old one.
+//
+// Both directions are checked: every directory under vendored/ appears on the
+// page, and every page entry names a directory that exists.
+async function checkVendoredDisclosure() {
+  const violations = [];
+  const vendoredRoot = join(ROOT, 'vendored');
+  let dirs;
+  try {
+    dirs = (await readdir(vendoredRoot, { withFileTypes: true })).filter((e) => e.isDirectory()).map((e) => e.name);
+  } catch {
+    return violations;
+  }
+  const { VENDORED } = await import('./build-commitments-page.mjs');
+  const byDir = new Map();
+  for (const entry of VENDORED) {
+    const dir = String(entry.path || '').replace(/^\/vendored\//, '').replace(/\/$/, '');
+    byDir.set(dir, entry);
+    if (!dirs.includes(dir)) {
+      violations.push({ file: 'scripts/build-commitments-page.mjs', line: 0, msg: `/commitments/ lists "${entry.name}" at ${entry.path}, which is not a directory under vendored/ (spec-v50 §5.2)` });
+    }
+  }
+  for (const dir of dirs) {
+    if (!byDir.has(dir)) {
+      violations.push({ file: `vendored/${dir}`, line: 0, msg: `ships to readers but /commitments/ does not disclose it -- add it to VENDORED in scripts/build-commitments-page.mjs (spec-v50 §5.2)` });
+      continue;
+    }
+    const entry = byDir.get(dir);
+    let record = '';
+    try {
+      record = await readFile(join(vendoredRoot, dir, '_vendored.md'), 'utf8');
+    } catch {
+      continue; // checkVendoredLicenses already reports a missing ledger
+    }
+    const row = (label) => {
+      const m = record.match(new RegExp(`\\|\\s*${label}\\s*\\|\\s*([^|\\n]+?)\\s*\\|`, 'i'));
+      return m ? m[1].trim() : null;
+    };
+    // The license family, compared loosely: the page says "Apache-2.0" where the
+    // ledger says "Apache License 2.0 (see LICENSE in this directory)".
+    const ledgerLicense = (row('License') || '').toLowerCase();
+    const pageLicense = String(entry.license || '').toLowerCase();
+    const family = (s2) => (/apache/.test(s2) ? 'apache' : /bsd-2/.test(s2) ? 'bsd-2' : /bsd-3/.test(s2) ? 'bsd-3' : /mit/.test(s2) ? 'mit' : s2.split(/[\s(]/)[0]);
+    if (ledgerLicense && family(ledgerLicense) !== family(pageLicense)) {
+      violations.push({ file: `vendored/${dir}/_vendored.md`, line: 0, msg: `ledger license "${row('License')}" does not match the "${entry.license}" published on /commitments/ (spec-v50 §5.2)` });
+    }
+    const upstream = row('Upstream repo');
+    if (upstream && entry.upstream && upstream.replace(/\/$/, '') !== String(entry.upstream).replace(/\/$/, '')) {
+      violations.push({ file: `vendored/${dir}/_vendored.md`, line: 0, msg: `ledger upstream "${upstream}" does not match the "${entry.upstream}" published on /commitments/ (spec-v50 §5.2)` });
+    }
+    // The release tag appears in the page's version string, which may carry more
+    // (tesseract publishes "5.1.1 (+ tesseract.js-core 5.1.0, tessdata_fast eng)").
+    const tag = (row('Release tag') || '').replace(/[`v]/g, '').trim();
+    if (tag && entry.version && !String(entry.version).replace(/[`v]/g, '').includes(tag)) {
+      violations.push({ file: `vendored/${dir}/_vendored.md`, line: 0, msg: `ledger release tag "${row('Release tag')}" does not appear in the "${entry.version}" published on /commitments/ (spec-v50 §5.2)` });
+    }
+  }
+  return violations;
+}
+
 async function checkHeadersCsp() {
   const violations = [];
   const text = await readFile(join(ROOT, '_headers'), 'utf8');
@@ -349,13 +416,14 @@ async function main() {
     checkPackageJson,
     checkLicenseFile,
     checkVendoredLicenses,
+    checkVendoredDisclosure,
     checkHeadersCsp,
   ]) {
     const v = await fn();
     for (const item of v) all.push(item);
   }
   if (all.length === 0) {
-    console.log('check-commitments: clean (storage allowlist + AI/auth deny + license + vendored licenses + CSP).');
+    console.log('check-commitments: clean (storage allowlist + AI/auth deny + license + vendored licenses + disclosure + CSP).');
     process.exit(0);
   }
   console.error('check-commitments: violations.');

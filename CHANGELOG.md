@@ -8,6 +8,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **The commitments page could have gone on describing three vendored libraries
+  while shipping four.** The published list of third-party code was
+  hand-written under a comment saying it "MUST stay in sync" with the ledger,
+  and nothing enforced it. Now checked both ways -- presence, upstream, version
+  and license. See docs/spec-v1052.md.
 - **One of the eight public commitments had no check behind it.** The
   commitments page promises that every guarantee carries "an automated check
   that fails CI on every commit" -- and nothing was checking the sentence about
