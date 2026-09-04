@@ -28,3 +28,26 @@ test('>= 6 stools without bleeding is not severe', () => {
 test('missing stool count returns a surfaced guard', () => {
   assert.equal(trueloveWitts({}).valid, false);
 });
+
+test('a systemic criterion nobody measured is not one that is absent (spec-v1066)', () => {
+  // One of the four systemic criteria is all that separates severe from
+  // moderate, so with six bloody stools and every systemic value blank this
+  // graded moderate and said "No systemic toxicity criterion met" -- a rule-out
+  // on four labs nobody had taken, ahead of an admission decision.
+  const blank = trueloveWitts({ stools: 8, bleeding: 'present' });
+  assert.deepEqual(blank.unmeasuredSystemic,
+    ['a temperature', 'a heart rate', 'a hemoglobin', 'an ESR']);
+  assert.match(blank.band, /cannot yet rule severe colitis out/);
+  assert.doesNotMatch(blank.band, /No systemic toxicity criterion met\./);
+
+  // It still rules IN on one met criterion, with no caveat appended.
+  const severe = trueloveWitts({ stools: 8, bleeding: 'present', heartRate: 110 });
+  assert.equal(severe.severe, true);
+  assert.doesNotMatch(severe.band, /cannot yet rule/);
+
+  // All four measured and none met: the plain sentence is true again.
+  const measured = trueloveWitts({ stools: 8, bleeding: 'present', temp: 37, heartRate: 80, hemoglobin: 12, esr: 10 });
+  assert.deepEqual(measured.unmeasuredSystemic, []);
+  assert.match(measured.band, /among those entered/);
+  assert.doesNotMatch(measured.band, /cannot yet rule/);
+});

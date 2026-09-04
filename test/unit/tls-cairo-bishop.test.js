@@ -64,3 +64,18 @@ test('no metabolic labs surfaces a guarded fallback', () => {
   const r = tlsCairoBishop({ creatinine: 3, creatinineUln: 1 });
   assert.equal(r.valid, false);
 });
+
+test('a lab nobody ran does not rule laboratory TLS out (spec-v1066)', () => {
+  // The tile invites partial entry ("enter the ones available"), and two of the
+  // four criteria are all it takes -- so a count taken over one value must not
+  // be reported as a count over four.
+  const partial = tlsCairoBishop({ uricAcid: 5 });
+  assert.equal(partial.labTls, false);
+  assert.match(partial.band, /0 of 1 criteria assessed/);
+  assert.match(partial.band, /does not rule laboratory TLS out/);
+
+  // With all four entered and none met, the plain sentence stands.
+  const full = tlsCairoBishop({ uricAcid: 5, potassium: 4, phosphate: 3, calcium: 9 });
+  assert.match(full.band, /4 metabolic criteria present/);
+  assert.doesNotMatch(full.band, /does not rule/);
+});
