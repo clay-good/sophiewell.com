@@ -8,6 +8,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Nine bedside scales opened saying the patient was fine.** CAM-ICU negative,
+  FLACC relaxed, PAINAD no pain, CRIES no significant pain -- each from a worked
+  example that was every field at zero. Six of the nine score patients who
+  cannot report pain themselves, where "no pain" is the reading that withholds
+  analgesia. Each example now describes an observation. See docs/spec-v1033.md.
 - **A tile could still state an impossible number.** The guard that removes a
   reading like "Cardiac power output Infinity W" scanned the first live region
   in the tool body, and since the out-of-range field warning was added there
