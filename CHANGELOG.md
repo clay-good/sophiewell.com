@@ -8,6 +8,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **The build failed because of the calendar.** Every sitemap URL carried a
+  `<lastmod>` stamped from the clock, so a commit made on one UTC date and
+  built by CI on the next failed the "build must be idempotent" job on 1,721
+  lines with nothing wrong in the change. The date is gone -- it claimed the
+  whole catalog changed daily, which was never true -- and a test fails if one
+  comes back. See docs/spec-v1030.md.
 - **The two withdrawal scales opened already scored.** CIWA-Ar and COWS
   rendered every item at zero, so an untouched form read "Mild withdrawal
   (<8): supportive care" and "No active withdrawal" -- the two sentences a

@@ -48,25 +48,43 @@ const TOPIC_SLUGS = [
   'patient-literacy',
 ];
 
-const today = new Date().toISOString().slice(0, 10);
+// spec-v1030: there is no date in this file any more.
+//
+// Every URL used to carry `<lastmod>` stamped from `new Date()`. That made the
+// build non-idempotent across a UTC date boundary: spec-v1028 was committed on
+// the 3rd, its CI build ran at 00:09 on the 4th, and the "build must be
+// idempotent" job failed on 1,700 changed lines with nothing wrong in the
+// change. It is the rule spec-v993 wrote down for the corpus manifest's
+// gzipBytes -- never diff a value the environment stamps -- reaching a second
+// file.
+//
+// The date could not simply be pinned to a commit either: any git-derived date
+// is one commit behind at build time and current when CI rebuilds the commit
+// that carries it, which is the same failure with extra machinery.
+//
+// So it is gone. A `lastmod` of "today" on all 1,704 URLs on every build was
+// never true anyway -- it told crawlers the entire catalog changed daily, which
+// is why sitemaps with unreliable lastmod get discounted (docs/spec-seo.md
+// already listed the undifferentiated stamp as a weakness). Without it the file
+// changes when the URL SET changes, which is the only thing it actually knows.
 const urls = [
-  `  <url><loc>${SITE}/</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>`,
+  `  <url><loc>${SITE}/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>`,
   // spec-v51: /commitments/ is unlinked from the minimal homepage but
   // remains a real route. It must stay in the sitemap so crawlers find
   // the eight public-infrastructure commitments codified in spec-v50.
-  `  <url><loc>${SITE}/commitments/</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>`,
+  `  <url><loc>${SITE}/commitments/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>`,
   // spec-v757: the full catalog listing. Linked from the footer, and the only
   // internal hub that reaches every pre-rendered /tools/<id>/ page.
-  `  <url><loc>${SITE}/tools/</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>`,
-  `  <url><loc>${SITE}/topics/</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>`,
+  `  <url><loc>${SITE}/tools/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>`,
+  `  <url><loc>${SITE}/topics/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>`,
   ...HUB_SLUGS.map((slug) =>
-    `  <url><loc>${SITE}/for/${slug}/</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>`
+    `  <url><loc>${SITE}/for/${slug}/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>`
   ),
   ...TOPIC_SLUGS.map((slug) =>
-    `  <url><loc>${SITE}/topics/${slug}/</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>`
+    `  <url><loc>${SITE}/topics/${slug}/</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>`
   ),
   ...ids.map((id) =>
-    `  <url><loc>${SITE}/tools/${id}/</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>`
+    `  <url><loc>${SITE}/tools/${id}/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>`
   ),
 ];
 const tileCount = ids.length;
