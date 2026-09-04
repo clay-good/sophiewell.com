@@ -2874,3 +2874,25 @@ test('renderDerivation throws on a malformed derivation block', async () => {
     else delete globalThis.document;
   }
 });
+
+test('clearDerivationSteps is a no-op without a panel (spec-v1071)', () => {
+  // The behaviour that matters -- a refusing calculator must not leave its
+  // working on screen -- is asserted over the whole catalog by
+  // test/integration/derivation-agrees.spec.js, which needs a real DOM. What is
+  // worth pinning here is that the refusal path cannot itself throw: it runs
+  // inside safe(), where an exception would be printed into the answer.
+  const originalDocument = globalThis.document;
+  globalThis.document = { createElement() { return { appendChild() {}, setAttribute() {} }; } };
+  try {
+    return import('../../lib/derivation.js').then(({ clearDerivationSteps }) => {
+      assert.doesNotThrow(() => clearDerivationSteps(null));
+      assert.doesNotThrow(() => clearDerivationSteps(undefined));
+      // A panel with no steps element (a derivation with no components and no
+      // substituted function) is left alone rather than erroring.
+      assert.doesNotThrow(() => clearDerivationSteps({ querySelector: () => null }));
+    });
+  } finally {
+    if (originalDocument) globalThis.document = originalDocument;
+    else delete globalThis.document;
+  }
+});

@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `ef378df1709e2562`
-Generated: 2026-09-04T18:53:01.287Z
+Build ID: `39e9cfcdc386ecd8`
+Generated: 2026-09-04T20:43:42.709Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -219,7 +219,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/delbet-femoral-neck-v378.js` | 3870 | `be1d4650275a314e54cacb832804c6b41af08843d296ec4938c2c22ac7db42cc` |
 | `lib/delta-check-v925.js` | 8560 | `abf5710ac31ccbf152531f1986ae2cfce6cfa564560ae6bd9bbe82bc24a6ab68` |
 | `lib/denis-sacral-v376.js` | 3688 | `fc489399a839b38692a0f716910e6e31f30ff38407b35cc4e160ef595baad540` |
-| `lib/derivation.js` | 7056 | `5288dbaac973b6219d70c30a7802d4f1f82ecbcfda83bbc5636a10cb33db668b` |
+| `lib/derivation.js` | 8016 | `a0fcfa34306bef8683031d8e2757bc08f3448235b2f69649ef3354afdba7edec` |
 | `lib/derm-v151.js` | 15364 | `d7146870637b7baf5f1f2cdc7181ee189ef5fee0c488e0c0baa6855de0a77c42` |
 | `lib/dermatology-v223.js` | 13207 | `b0664bf97310df895e03501102ab3504d890636210525de6b8046f434e97f56d` |
 | `lib/dermscore-v234.js` | 7891 | `bc3594b69d62b10208190ba28e89a4412d3be45118e5e3836568902c37301b8c` |
@@ -1705,14 +1705,14 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-a.js` | 577 | `eed37c656d1fa00c097a07f07db4b1b6ac7a0a74bafc210978265a1d90856bd7` |
 | `views/group-b.js` | 75641 | `ef51504da5c8760989b47fafba242b4cdbbea34a99407393ebef2eba16e683c8` |
 | `views/group-c.js` | 24555 | `82ebad28ab001aacbbb39459436ed2f9f3df86971209a4bb178ad2f108a98742` |
-| `views/group-e.js` | 46523 | `3322ecb1dd5087a58b28661601c05948efa21dbc0a57860e918fb2b4b479d60b` |
-| `views/group-f.js` | 50555 | `b28d2f5d9001462ed8cf79c52a790fa5c5447ffb38c8998f84db0afa52033466` |
-| `views/group-g.js` | 238754 | `8f05396007bce65be6d041fb771f8fe8a83ba9aecbdcf3687514760d6a1cb76d` |
+| `views/group-e.js` | 47145 | `7b189991aaaac3dc4be3aad8e5c83c8673e053eae32e74aee12740f4957ae887` |
+| `views/group-f.js` | 50610 | `2a10d419be69c01c51cbf0100f9284fc06e239217cb87f12b123b33e524bd334` |
+| `views/group-g.js` | 239524 | `5b7cf2a172a6cb62ec421500b4f6383be671e7174f4fb49711b8ae14798edd11` |
 | `views/group-h.js` | 30041 | `ef2d74336a9ab03aa5fc8307f4d76ae8023dc6ecc80347c561e1269bc539fcea` |
-| `views/group-i.js` | 24217 | `e8319c063517ef37d78d1186c99302b9dd7a2d2b87a9e0d82d4e5701efef4180` |
+| `views/group-i.js` | 24531 | `45e211a606ce652d195bf21276842a34213384c8f34d650785802db20c3401b5` |
 | `views/group-j.js` | 9024 | `7d8ad642f932ac040e85c1c2c4b35cc0b20acd2d81415ad7740e547b845fdae2` |
 | `views/group-klmno.js` | 7372 | `c861d44056fed12dd72a01398ea556e5ed560af424f8c0a20ccfee12bc56eeaf` |
-| `views/group-v10.js` | 37747 | `e87b82352dc283558b545e54469056c4986ac34f58e6be321ec35bf3b0825d7f` |
+| `views/group-v10.js` | 37868 | `b4b3323bb786717dc0e695306634f11a770f410252f7a0c2e489ec615aecc195` |
 | `views/group-v1061.js` | 2720 | `89e9eb196bceb0f67c97c0f9b9aefd0c0820f913ffc6b556d7a5aa809c7b9d25` |
 | `views/group-v1062.js` | 2586 | `ffbf32df0ae17e753e06b756f32e36e7c1f7dcbeb98c6bdefd26e1e342950eca` |
 | `views/group-v11.js` | 23792 | `32fc117048d10d745c9e7cf9ff7919c3937974c2f06e9231fac757aa6180d9a3` |
@@ -2105,7 +2105,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v497.js` | 3205 | `c0b474c55700753713879acb24c3ca8e008329768ee39292e226e9c2cc5dfb87` |
 | `views/group-v498.js` | 3038 | `000f88258d700e6932fcf5c05aca71b775b064948189bfb5e28b3d1d1f14d82c` |
 | `views/group-v499.js` | 2989 | `9c032b263cf8f8693b763d34f11144c9f86aa087c52abf7dd53eb6bbcdc3b943` |
-| `views/group-v5.js` | 34765 | `046db087991557a45fb70d7b7dfa64359a7e8eafb579e3ec96533e1f745be93f` |
+| `views/group-v5.js` | 34824 | `23c7e94a3173e7ba945435c64ece561e37c23e88ca01bd6909aa4cc6d751cce1` |
 | `views/group-v500.js` | 3558 | `910b8e2e06e543d8a8cbd1ec8894a227316a3988f854041807205e6c04afcfba` |
 | `views/group-v501.js` | 3015 | `53f20f7cc95df9d4e795b66164f44a5dd13ee0ba4c42f6d5b304fdca8f1b6031` |
 | `views/group-v502.js` | 3455 | `58a0e11fbcd4fb53e5a2b755890dcf7c51bcca93c2b3c41922847bb12889596f` |

@@ -129,7 +129,7 @@ When one fails it names itself; this is where to look it up.
 | `check-gates-documented.mjs` | a gate joining this chain without a row in this table |
 | `build-report-catalog.mjs --check` | the report Worker's id/name map out of date with the catalog |
 
-Four gates do not run in that chain because they need a browser. The end-to-end
+Five gates do not run in that chain because they need a browser. The end-to-end
 suite carries `no-answer-from-nothing-sweep.spec.js`, which clears every field of
 every calculator and fails on any tile that still produces a reading. A tile that
 legitimately answers an empty form -- a checklist where nobody ticking anything
@@ -162,6 +162,15 @@ Probes assert nothing and are excluded from CI, so run one by hand with:
 ```bash
 RUN_PROBES=1 npx playwright test test/integration/one-blank-field-probe.spec.js --project=chromium
 ```
+
+It also carries `derivation-agrees.spec.js`. A hundred-odd calculators ship a
+live "show your work" panel, and a calculator that REFUSES has to take its
+working with it -- the refusal path is an early return, and returning before the
+panel is re-filled left `cockcroft-gault` answering "Enter an age to calculate"
+above a panel still reading "CrCl = (140 - 60) x 80 kg / ... = 88.89 mL/min",
+showing both the age just cleared and the number the refusal was withholding.
+Call `clearDerivationSteps(deriv)` on the refusal path; where the refusal is a
+throw, pass the panel to `safe()` and its catch does it (`docs/spec-v1071.md`).
 
 It also carries `clock-dependent.spec.js`, which renders every calculator twice a
 year apart on a fake clock and fails on any whose answer changed while its inputs

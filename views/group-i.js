@@ -10,7 +10,7 @@ import { fetchJson } from '../lib/data.js';
 import { hypothermiaRewarm, heatstrokeDecision } from '../lib/scoring-v4.js';
 import { resultRow } from '../lib/result-copy.js';
 import { META } from '../lib/meta.js';
-import { renderDerivation, updateDerivationSteps } from '../lib/derivation.js';
+import { renderDerivation, updateDerivationSteps, clearDerivationSteps } from '../lib/derivation.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -50,7 +50,16 @@ function nvOrNull(id) {
   return Number(n.value);
 }
 function checked(id) { return document.getElementById(id).checked; }
-function safe(o, fn) { clear(o); try { fn(); } catch (err) { o.appendChild(el('p', { class: 'muted', text: err.message })); } }
+// spec-v1071: as group-e -- a throw is a refusal, and the working must go with
+// it. burn-fluid printed "weight kg must be between 0.1 and 400" above a panel
+// still reading "Parkland = 4 mL x 70 kg x 20% = 5600 mL/24h".
+function safe(o, fn, deriv) {
+  clear(o);
+  try { fn(); } catch (err) {
+    o.appendChild(el('p', { class: 'muted', text: err.message }));
+    if (deriv) clearDerivationSteps(deriv);
+  }
+}
 
 const FIELD_NOTICE = 'This is a math aid for verification. Local protocols, medical direction, and clinician judgment govern any clinical decision.';
 
@@ -233,7 +242,7 @@ export const renderers = {
         r.brooke.remainingInFirst8h != null ? { label: 'Remaining for first 8h window', value: `${r.brooke.remainingInFirst8h} mL (${r.brooke.ratePerHourRemainingFirst8h} mL/hr)` } : null,
       ]);
       if (deriv) updateDerivationSteps(deriv, META['burn-fluid'], inputs);
-    });
+    }, deriv);
     ['bf-w', 'bf-bsa', 'bf-h'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
 

@@ -18,7 +18,7 @@ import { insulinDripRate } from '../lib/insulin-drip.js';
 import { unitField, unitNum, unitNumOpt, WEIGHT_UNITS, CALCIUM_MMOL_UNITS } from '../lib/field-units.js';
 import { resultRow } from '../lib/result-copy.js';
 import { META } from '../lib/meta.js';
-import { renderDerivation, updateDerivationSteps } from '../lib/derivation.js';
+import { renderDerivation, updateDerivationSteps, clearDerivationSteps } from '../lib/derivation.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -76,7 +76,7 @@ export const renderers = {
       const volumeMl = nvOrNull('v');
       const durationMin = nvOrNull('t');
       const dropFactor = nvOrNull('df');
-      if (needValues(o, [['a volume', volumeMl], ['a duration', durationMin], ['a drop factor', dropFactor]])) return;
+      if (needValues(o, [['a volume', volumeMl], ['a duration', durationMin], ['a drop factor', dropFactor]])) { clearDerivationSteps(deriv); return; }
       const inputs = { volumeMl, durationMin, dropFactor };
       const r = C.dripRate(inputs);
       resultRow(o, [

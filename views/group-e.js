@@ -11,7 +11,7 @@ import * as C8 from '../lib/clinical-v8.js';
 import * as V4 from '../lib/clinical-v4.js';
 import * as S4 from '../lib/scoring-v4.js';
 import { META } from '../lib/meta.js';
-import { renderDerivation, updateDerivationSteps } from '../lib/derivation.js';
+import { renderDerivation, updateDerivationSteps, clearDerivationSteps } from '../lib/derivation.js';
 import { inchesToCm, labConvert } from '../lib/unit-convert.js';
 import { resultRow } from '../lib/result-copy.js';
 import { unitField, unitNum, unitNumOpt, WEIGHT_UNITS, GLUCOSE_UNITS, BUN_UNITS, CALCIUM_UNITS, ALBUMIN_UNITS } from '../lib/field-units.js';
@@ -75,9 +75,17 @@ function adviseAll(o, pairs) {
   }
 }
 
-function safe(out, fn) {
+// spec-v1071: a calculator that refuses by THROWING -- a range check in the
+// library -- also has to take its working with it. mgap and gap answered
+// "GCS must be 3-15" above a panel still reading "+15 - GCS (3-15) (input: 15)",
+// the value the reader had just cleared. Pass the derivation element and the
+// catch clears it.
+function safe(out, fn, deriv) {
   clear(out);
-  try { fn(); } catch (err) { out.appendChild(el('p', { class: 'muted', text: err.message })); }
+  try { fn(); } catch (err) {
+    out.appendChild(el('p', { class: 'muted', text: err.message }));
+    if (deriv) clearDerivationSteps(deriv);
+  }
 }
 
 // spec-v61 §2 A3: chart-ready labeled copy via the shared resultRow helper
@@ -264,7 +272,7 @@ export const renderers = {
     if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
       const measuredNa = numOrNull('na'), glucose = unitNumOpt('g');
-      if (needValues(o, [['a measured sodium', measuredNa], ['a glucose', glucose]])) return;
+      if (needValues(o, [['a measured sodium', measuredNa], ['a glucose', glucose]])) { clearDerivationSteps(deriv); return; }
       const inputs = { measuredNa, glucose };
       const r = C.correctedSodium(inputs);
       resultRow(o, [
@@ -290,7 +298,7 @@ export const renderers = {
       // spec-v1025: all three are declared required on the agent surface, which
       // refuses without them; the browser read them as zeros and answered
       // "PAO2: 0 mmHg, A-a gradient: 0 mmHg".
-      if (needValues(o, [['an FiO2', fio2], ['a PaCO2', paco2], ['a PaO2', pao2]])) return;
+      if (needValues(o, [['an FiO2', fio2], ['a PaCO2', paco2], ['a PaO2', pao2]])) { clearDerivationSteps(deriv); return; }
       const inputs = { fio2, paco2, pao2 };
       const r = C.aaGradient(inputs);
       resultRow(o, [
@@ -317,7 +325,7 @@ export const renderers = {
       // someone whose age nobody had typed.
       const egScr = numOrNull('scr');
       const egAge = numOrNull('age');
-      if (needValues(o, [['a serum creatinine', egScr], ['an age', egAge]])) return;
+      if (needValues(o, [['a serum creatinine', egScr], ['an age', egAge]])) { clearDerivationSteps(deriv); return; }
       const inputs = { scr: egScr, age: egAge, sex: document.getElementById('sex').value };
       const v = C.egfrCkdEpi2021(inputs);
       o.appendChild(el('p', { text: `eGFR: ${v} mL/min/1.73 m^2 (CKD-EPI 2021 race-free)` }));
@@ -344,7 +352,7 @@ export const renderers = {
       const scr = unitNumOpt('scr');
       const age = numOrNull('age');
       const weightKg = unitNumOpt('w');
-      if (needValues(o, [['an age', age], ['a weight', weightKg], ['a serum creatinine', scr]])) return;
+      if (needValues(o, [['an age', age], ['a weight', weightKg], ['a serum creatinine', scr]])) { clearDerivationSteps(deriv); return; }
       const inputs = { age, weightKg, scr, sex: document.getElementById('sex').value };
       const v = C.cockcroftGault(inputs);
       o.appendChild(el('p', { text: `Creatinine clearance: ${v} mL/min` }));
@@ -489,7 +497,7 @@ export const renderers = {
       const glucoseMgDl = unitNumOpt('og-glu');
       const bunMgDl = unitNumOpt('og-bun');
       if (needValues(o, [['a measured osmolality', measuredOsm], ['a sodium', sodium],
-        ['a glucose', glucoseMgDl], ['a BUN', bunMgDl]])) return;
+        ['a glucose', glucoseMgDl], ['a BUN', bunMgDl]])) { clearDerivationSteps(deriv); return; }
       const inputs = { measuredOsm, sodium, glucoseMgDl, bunMgDl, etohMgDl: numOrNull('og-etoh') || 0 };
       const r = V4.osmolalGap(inputs);
       resultRow(o, [
@@ -528,7 +536,7 @@ export const renderers = {
     if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
       const hco3 = numOrNull('wf-hco3');
-      if (needValues(o, [['a bicarbonate', hco3]])) return;
+      if (needValues(o, [['a bicarbonate', hco3]])) { clearDerivationSteps(deriv); return; }
       const inputs = { hco3, measuredPaco2: numOrNull('wf-paco2') ?? NaN };
       const r = V4.wintersFormula(inputs);
       resultRow(o, [
@@ -831,7 +839,7 @@ export const renderers = {
       o.appendChild(el('h2', { text: `MGAP ${r.score}` }));
       o.appendChild(el('p', { text: r.band }));
       if (deriv) updateDerivationSteps(deriv, META.mgap, inputs);
-    });
+    }, deriv);
     ['mgap-mech', 'mgap-gcs', 'mgap-age', 'mgap-sbp'].forEach((id) => document.getElementById(id).addEventListener('input', run));
     run();
   },
@@ -857,7 +865,7 @@ export const renderers = {
       o.appendChild(el('h2', { text: `GAP ${r.score}` }));
       o.appendChild(el('p', { text: r.band }));
       if (deriv) updateDerivationSteps(deriv, META.gap, inputs);
-    });
+    }, deriv);
     ['gap-gcs', 'gap-age', 'gap-sbp'].forEach((id) => document.getElementById(id).addEventListener('input', run));
     run();
   },

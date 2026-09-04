@@ -85,6 +85,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1065](spec-v1065.md) | Eight more, a third half-fix, and the calculators that were right all along |
 | [v1066](spec-v1066.md) | Not met, or not measured: the third state a criteria count was missing |
 | [v1067](spec-v1067.md) | The gate, keyed by field, and the ledger that was quiet because I guessed at it |
+| [v1071](spec-v1071.md) | The answer refused; the "show your work" panel below it did not |
 
 ### And the same question from the other side
 
@@ -111,6 +112,7 @@ had described a patient.
 | `required-field-agreement.spec.js` | does the browser answer a question the agent surface refuses? | 28 s |
 | `no-impossible-number.spec.js` | does any tile state NaN, Infinity or an unexplained exponent? | 1.6 min |
 | `one-blank-field.spec.js` | with a calculator filled from its example, does clearing ONE measurement change the answer without asking for it or disclosing it? | 1.6 min |
+| `derivation-agrees.spec.js` | when a calculator refuses, does the "show your work" panel below still display the calculation? | 13 s |
 
 Each has a ledger for the tiles that legitimately do the thing it looks for, and each was verified
 by reintroducing the defect and watching it fail.

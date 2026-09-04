@@ -11,7 +11,7 @@ import { fmt } from '../lib/num.js';
 import * as S from '../lib/scoring-v6.js';
 import * as C8 from '../lib/clinical-v8.js';
 import { META } from '../lib/meta.js';
-import { renderDerivation, updateDerivationSteps } from '../lib/derivation.js';
+import { renderDerivation, updateDerivationSteps, clearDerivationSteps } from '../lib/derivation.js';
 import { unitField, unitNum, unitNumOpt, BILIRUBIN_UNITS, LACTATE_UNITS, TEMP_UNITS, WEIGHT_UNITS } from '../lib/field-units.js';
 
 function field(label, id, opts = {}) {
@@ -334,7 +334,7 @@ export const renderers = {
       if (needPanel(o, 'PELOD-2', [['an age in months', p2Age], ['a Glasgow Coma Scale', p2.gcs],
         ['a lactate', p2.lactate], ['a mean arterial pressure', p2.map], ['a creatinine', p2.creat],
         ['a PaO2/FiO2', p2.pf], ['a PaCO2', p2.paco2], ['a white cell count', p2.wbc],
-        ['a platelet count', p2.plt]])) return;
+        ['a platelet count', p2.plt]])) { clearDerivationSteps(deriv); return; }
       const inputs = {
         ageMonths: p2Age, gcs: p2.gcs, pupilsFixed: chk('p2-pupils'), lactate: p2.lactate,
         map: p2.map, creatinine: p2.creat, pao2fio2: p2.pf, paco2: p2.paco2,
@@ -381,7 +381,7 @@ export const renderers = {
       };
       if (needPanel(o, 'pSOFA', [['an age in months', psAge], ['a PaO2/FiO2', ps.pf],
         ['a platelet count', ps.plt], ['a bilirubin', ps.bili], ['a mean arterial pressure', ps.map],
-        ['a vasoactive score', ps.vaso], ['a Glasgow Coma Scale', ps.gcs], ['a creatinine', ps.creat]])) return;
+        ['a vasoactive score', ps.vaso], ['a Glasgow Coma Scale', ps.gcs], ['a creatinine', ps.creat]])) { clearDerivationSteps(deriv); return; }
       const inputs = {
         ageMonths: psAge, pao2fio2: ps.pf, vent: chk('ps-vent'), platelets: ps.plt,
         bilirubin: ps.bili, map: ps.map, vasoactive: ps.vaso, gcs: ps.gcs, creatinine: ps.creat,
@@ -507,7 +507,7 @@ export const renderers = {
         ['a white cell count', optNum('ap-wbc')], ['a Glasgow Coma Scale', optNum('ap-gcs')],
         ['an age', optNum('ap-age')],
       ];
-      if (needPanel(o, 'APACHE II', apFields)) return;
+      if (needPanel(o, 'APACHE II', apFields)) { clearDerivationSteps(deriv); return; }
       const inputs = {
         temp: unitNumOpt('ap-temp'), map: optNum('ap-map'), hr: optNum('ap-hr'), rr: optNum('ap-rr'), oxy: optNum('ap-oxy'),
         ph: optNum('ap-ph'), na: optNum('ap-na'), k: optNum('ap-k'), creatinine: optNum('ap-creat'), hct: optNum('ap-hct'),

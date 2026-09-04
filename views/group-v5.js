@@ -9,7 +9,7 @@ import * as V5 from '../lib/clinical-v5.js';
 import * as Code from '../lib/coding-v5.js';
 import { breachNotificationDeadlines, lintGenerator } from '../lib/regulatory.js';
 import { META } from '../lib/meta.js';
-import { renderDerivation, updateDerivationSteps } from '../lib/derivation.js';
+import { renderDerivation, updateDerivationSteps, clearDerivationSteps } from '../lib/derivation.js';
 import { renderPrintable, renderCompleteness } from '../lib/print.js';
 import { resultRow } from '../lib/result-copy.js';
 import { correctionRate, trend } from '../lib/trend.js';
@@ -592,6 +592,7 @@ export const renderers = {
         o.appendChild(el('p', { class: 'muted', text:
           `Enter ${abcd2Missing.map((id) => labels[id]).join(', ')}: each scores a band of its own, `
           + 'so a stroke-risk reading cannot be given without them.' }));
+        clearDerivationSteps(deriv);
         return;
       }
       const inputs = {
