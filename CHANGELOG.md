@@ -8,6 +8,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **The architecture document denied part of the runtime.** It stated that no
+  Web Workers remain, while the prior-authorization linter has run its on-device
+  OCR in one since spec-v52 -- and the whole linter subsystem, fourteen modules
+  and three vendored libraries, was missing from the document entirely. Both
+  fixed. See docs/spec-v1058.md.
 - **A field holding only a space was read as zero by most calculators.** The
   helper that decides whether an input is blank existed in 64 view modules with
   three different behaviours; 62 of them treated whitespace as a measurement of

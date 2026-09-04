@@ -74,14 +74,49 @@ filter bar. Selecting a tile loads only the data shards relevant to that utility
 No data is loaded eagerly. Most tiles ship no shard at all — the formula
 is in `app.js` / `lib/*.js` and the citation is in `lib/meta.js`.
 
-All computation runs in the main thread. The two Web-Worker tiles from
-earlier specs (Medical Bill Decoder, Hospital Price Transparency Lookup)
-were retired in the spec-v10 clinical pivot and the spec-v29 wave 29-2
-prune; no Web Workers remain at runtime.
+Calculation runs in the main thread. The two Web-Worker *tiles* from earlier
+specs (Medical Bill Decoder, Hospital Price Transparency Lookup) were retired in
+the spec-v10 clinical pivot and the spec-v29 wave 29-2 prune.
+
+**One Web Worker does run**, and this section said the opposite until spec-v1058.
+The prior-authorization packet linter (`pa-lint`, spec-v52) offers optional
+on-device OCR, and `tesseract.js` runs its engine in a worker in the tab. Nothing
+about it is eager or off-origin — see the next section — but a contributor
+reasoning about threading, the CSP, or the offline story needs to know it is
+there. It is the one part of the runtime that does not look like the rest, and it
+was the one part this document did not mention.
 
 The service worker caches the application shell on first load. Data shards are
 cached on first access. The cache version is keyed to the build hash, so a new
 deployment invalidates old caches cleanly.
+
+## The document linter (`pa-lint`)
+
+One tile is shaped unlike every other, and it is worth a paragraph because it is
+the only place the runtime departs from "a formula and a citation".
+
+`pa-lint` reads a prior-authorization packet the user drops in — PDF, DOCX, plain
+text, or an image — and checks it against a deterministic rule set
+(`lib/pa/`, fourteen modules: extraction, classification, redaction, the rule
+engine, the source-staleness ledger, the report writer). Three vendored libraries
+do the reading: `pdfjs` for PDFs, `mammoth` for DOCX, `tesseract.js` for OCR of
+scans. All three are same-origin under `/vendored/`, disclosed with their
+licenses on `/commitments/`, and checked by `check-commitments.mjs` (spec-v1051,
+spec-v1052).
+
+Three properties keep it inside the posture the rest of the site holds:
+
+- **Lazy.** None of it loads until a file is dropped, and the ~9 MB OCR engine
+  not until the user clicks *Run on-device OCR*. An idle page costs nothing.
+- **Same-origin.** Worker, WASM core and language data all ship from
+  `/vendored/tesseract/`; the CSP's `script-src 'self' 'wasm-unsafe-eval'`
+  admits them and nothing else.
+- **On-device.** The document never leaves the tab. That is what lets the tile
+  accept a patient's paperwork at all — see spec-v52 §4.7 on the PHI posture.
+
+The rule engine is the deterministic part: OCR is an *input adapter* that
+produces the text a human would otherwise type, and makes no determination of
+its own.
 
 ## Data Pipeline (Build Time Only)
 
