@@ -165,7 +165,7 @@ CHANGELOG.md                           (Unreleased: v81 entry, +3)
 - `lib/billing-v81.js` is in the fuzz harness with zero non-finite leaks;
   `UTILITIES.length` is **356** and catalog-truth surfaces agree.
 - `npm run lint`, `npm run test`, `npm run sbom`, `npm run build`,
-  `npm run check-pa-staleness` pass; CHANGELOG records v81 with +3.
+  `npm run check:pa-staleness` pass; CHANGELOG records v81 with +3.
 
 ## 6. Out of scope for v81
 

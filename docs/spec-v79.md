@@ -227,7 +227,7 @@ CHANGELOG.md                           (Unreleased: v79 entry, +5)
 - `lib/billing-v79.js` is in the fuzz harness with zero non-finite / `Invalid Date`
   leaks; `UTILITIES.length` is **347** and catalog-truth surfaces agree.
 - `npm run lint`, `npm run test`, `npm run sbom`, `npm run build`,
-  `npm run check-pa-staleness` pass; CHANGELOG records v79 with +5.
+  `npm run check:pa-staleness` pass; CHANGELOG records v79 with +5.
 
 ## 6. Out of scope for v79
 

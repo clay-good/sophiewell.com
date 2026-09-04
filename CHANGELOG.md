@@ -8,6 +8,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A commitment page promised readers a route that was removed months ago.**
+  docs/stability.md said the changelog was "linked from the footer and viewable
+  in-site at #changelog"; neither was true, and the dead anchor was the only
+  visible trace. Also fixed eight documents telling contributors to run an npm
+  script that does not exist. The link gate now checks anchors and npm-script
+  names as well as file paths. See docs/spec-v1050.md.
 - **Thirteen documentation links pointed at nothing.** The repository is public,
   so a relative markdown link is one a reader clicks on GitHub -- and nothing
   had ever checked them, because the existing link checks are about external

@@ -93,9 +93,15 @@ empty.)
 ## Semantic versioning and a public changelog
 
 Every release is tagged in git with a semantic version. Every release
-has a changelog entry describing user-visible changes. The changelog
-is linked from the footer and viewable in-site at
-[#changelog](#changelog).
+has a changelog entry describing user-visible changes. The changelog is
+[CHANGELOG.md](../CHANGELOG.md) in the public repository, which the
+footer links to.
+
+*(Corrected spec-v1050: this said the changelog was "linked from the
+footer and viewable in-site at #changelog". Neither had been true since
+the in-site `#changelog` route was removed — the anchor went nowhere and
+the footer linked the repository, not the changelog. A page that
+promises a reader a route has to be checked when the route goes.)*
 
 ## Formula version transparency
 

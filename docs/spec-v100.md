@@ -64,7 +64,7 @@ US healthcare worker can reach. MDCalc carries instruments this catalog will not
 §8 licensed and gestalt tools). After this program, the catalog carries the *actionable
 deterministic subset MDCalc has* plus the billing/coding/regulatory surface MDCalc
 lacks. At **679 tiles** it is, on the actionable-and-free axis, the larger catalog —
-which is the only axis the [reciprocal commitment](scope-mdcalc-parity.md#7) cares about.
+which is the only axis the [reciprocal commitment](scope-mdcalc-parity.md#7-the-reciprocal-commitment) cares about.
 
 This is the same audience the catalog already serves: the nurse running NEWS2 and the
 drip-rate tool on the same shift the resident runs HEART and the intensivist runs SOFA.

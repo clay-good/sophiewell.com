@@ -124,7 +124,7 @@ When one fails it names itself; this is where to look it up.
 | `check-pa-staleness.mjs` | a prior-auth source unverified past its window |
 | `check-pa-rule-citations.mjs` | a rule citing a URL the staleness ledger does not carry |
 | `audit-pa.mjs` | a change to prior-auth output that the golden reports did not expect |
-| `check-doc-internal-links.mjs` | a markdown link pointing at a file that is not there |
+| `check-doc-internal-links.mjs` | a markdown link pointing at a file, heading or npm script that is not there |
 | `check-gates-documented.mjs` | a gate joining this chain without a row in this table |
 | `build-report-catalog.mjs --check` | the report Worker's id/name map out of date with the catalog |
 

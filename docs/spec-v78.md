@@ -222,7 +222,7 @@ scripts/build-tool-pages.mjs           (classify the 5 calculators as MedicalCal
 - `UTILITIES.length` is **342** and all catalog-truth surfaces
   ([spec-v46](spec-v46.md)) agree; Group B renders a group card and a `group-b.js`
   view. `npm run lint`, `npm run test`, `npm run sbom`, `npm run build`,
-  `npm run check-pa-staleness` all pass.
+  `npm run check:pa-staleness` all pass.
 - CHANGELOG records v78 with the +5 delta.
 
 ## 6. Out of scope for v78

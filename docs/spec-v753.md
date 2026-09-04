@@ -167,6 +167,7 @@ unrelated to this program. This spec works around it in the index build and leav
   kind; and the corpus below.
 - `test/fixtures/queries.txt` — 24 phrasings including the safety cases. This replaces query
   telemetry: the home page says *no tracking*, so the ledger is a file, not a log.
-- `npm run check:mcp-catalog` unchanged — 1540 adapters, the index is derived, never
+- `node scripts/check-mcp-catalog.mjs` (it runs inside `npm run lint`; there has never
+  been a `check:mcp-catalog` script) unchanged — 1540 adapters, the index is derived, never
   authoritative.
 - Full chain green: `lint`, `test:unit` (11444, up from 11426), `test:mcp` (395), `test:a11y`.

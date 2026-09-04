@@ -234,7 +234,7 @@ scripts/build-tool-pages.mjs           (classify validators as MedicalCalculator
   ([spec-v46](spec-v46.md)) agree; Group B holds the full Billing & Reimbursement
   suite.
 - `npm run lint`, `npm run test`, `npm run sbom`, `npm run build`,
-  `npm run check-pa-staleness` pass; CHANGELOG records v83 with +6 and the program
+  `npm run check:pa-staleness` pass; CHANGELOG records v83 with +6 and the program
   total of **+29 (337 → 366)**.
 
 ## 6. Out of scope for v83

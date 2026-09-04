@@ -345,7 +345,7 @@ v63 is fully shipped when:
 - `UTILITIES.length` is 333 and all catalog-truth surfaces
   ([spec-v46](spec-v46.md)) agree.
 - `npm run lint`, `npm run test`, `npm run sbom`, `npm run build`, and
-  `npm run check-pa-staleness` all pass.
+  `npm run check:pa-staleness` all pass.
 - The CHANGELOG records v63 with the +5 delta and the Part A ops-depth
   capabilities.
 
