@@ -146,7 +146,7 @@ find something and did not. Recorded so they are not re-run.
 | --- | --- |
 | Does any tile print a **percentage its own interpretation table contradicts**? | 23 suspects, **zero defects**. The rule cannot tell a computed value from a threshold — `navy-body-fat` states 11.1% body fat against a table of category cut-offs. What made `ranson-bisap` findable was that its answer quoted a band *label*, which `example-correctness` now catches. |
 | Does any tile's documented `expected` assert the **opposite verdict** to what it renders — "low risk" against "high risk", "not indicated" against "indicated"? | **Zero clashes** across all 1,699 examples. |
-| Does the **clipboard** carry a number the tile is not showing? | **Zero**, across the 1,390 tiles that offer a copy button. |
+| Does the **clipboard** carry a number the tile is not showing? | **Zero**. Every calculator that offers a copy button was checked — about eight in ten of them. |
 
 The third is worth keeping in mind rather than repeating: what a tile puts on the clipboard is what
-gets pasted into a chart, and it currently matches the screen everywhere.
+gets pasted into a chart, and it currently matches the screen everywhere it offers one.
