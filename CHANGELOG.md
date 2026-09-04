@@ -8,6 +8,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Two copies of one checking rule had drifted apart.** The browser and agent
+  surfaces each verify that a calculator produces the numbers its example
+  documents, and each had its own copy of the rule -- so a fix made to one
+  never reached the other, and both were reading phantom numbers out of units
+  like "m^2". Now a single shared definition, pinned by its own tests. See
+  docs/spec-v1055.md.
 - **A calculator that rendered nothing could pass the example check.** It fell
   back to reading the values in the tile's own input boxes, so eleven tiles that
   compute on a button press were never actually verified. The sweep now presses

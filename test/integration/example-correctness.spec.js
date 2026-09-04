@@ -30,6 +30,7 @@
 // cheap, non-reactive knob; the old single timeout was not.
 
 import { test, expect } from '@playwright/test';
+import { numericFacts, matchesLoosely, firstFactWithoutItsOwnNumber } from '../lib/numeric-facts.js';
 
 // Split the catalog this many ways. Each shard visits every SHARDS-th tile.
 const SHARDS = 4;
@@ -43,85 +44,9 @@ const SHARD_TIMEOUT_MS = 900_000;
 // (see test/integration/tool-interactions.spec.js for the same rationale).
 test.skip(({ browserName }) => browserName !== 'chromium', 'numeric sweep is chromium-only');
 
-// Pull all numeric values out of a string, returning [{value, raw, isApprox,
-// isPercent, rangeEnd}]. Skips citation years and explicit ranges' second
-// halves, and recognizes "~" / "approx" markers.
-function numericFacts(s) {
-  const facts = [];
-  // Match optional ~ then a number then optional % or range "-N"
-  const re = /(~)?(\d+(?:\.\d+)?)(?:\s*-\s*(\d+(?:\.\d+)?))?(\s*%)?/g;
-  let m;
-  while ((m = re.exec(s)) !== null) {
-    const raw = m[0];
-    const value = Number(m[2]);
-    // Skip 4-digit year-shaped integers (citation years).
-    if (Number.isInteger(value) && value >= 1900 && value <= 2100 && /^\d{4}$/.test(m[2])) continue;
-    // spec-v1023: a digit glued to a letter is part of a LABEL, not a value --
-    // "T1 discordance" is a trimester, "G2" a GOLD grade, "S3" a heart sound.
-    // Those were the reason whole tiles sat in SCENARIO_ONLY below, which
-    // exempted every real number in the same sentence along with them.
-    const before = s[m.index + (m[1] ? m[1].length : 0) - 1];
-    if (before && /[A-Za-z]/.test(before)) continue;
-    facts.push({
-      value,
-      raw,
-      isApprox: !!m[1],
-      rangeEnd: m[3] ? Number(m[3]) : null,
-      isPercent: !!m[4],
-    });
-  }
-  return facts;
-}
-
-function toleranceWindow(fact) {
-  // Tolerance: explicit ~ means +/-15%; ranges accept any value in range;
-  // otherwise +/-2% relative or 0.05 absolute (whichever is larger), so
-  // 5.0 matches 5 and 2.0 matches 2 and 22.86 matches 22.9.
-  const tol = fact.isApprox ? Math.max(Math.abs(fact.value) * 0.15, 1)
-            : Math.max(Math.abs(fact.value) * 0.02, 0.05);
-  const lo = fact.rangeEnd != null ? Math.min(fact.value, fact.rangeEnd) - tol : fact.value - tol;
-  const hi = fact.rangeEnd != null ? Math.max(fact.value, fact.rangeEnd) + tol : fact.value + tol;
-  return [lo, hi];
-}
-
-// spec-v1048: every documented number needs its OWN number in the output.
-//
-// This used to ask, of each expected fact independently, "does SOME number in
-// the output fall in its window?" -- so one output number could satisfy several
-// expected ones. ranson-bisap documented "Ranson 2 - roughly 2% mortality" while
-// the tile printed "Ranson 2 - <1% mortality", and the sweep passed it for two
-// years: the 2 from the SCORE satisfied the 2 from the MORTALITY. The tile
-// disagreed with its own interpretation table, printed directly beneath.
-//
-// A matching, not a search. Each fact is an edge to the output numbers it could
-// be, and the assertion is that a perfect matching exists on the facts' side --
-// standard augmenting-path search, on lists of at most a few dozen.
-function allFactsMatchDistinctly(haystack, facts) {
-  const nums = [...haystack.matchAll(/\d+(?:\.\d+)?/g)].map((x) => Number(x[0]));
-  const windows = facts.map(toleranceWindow);
-  const takenBy = new Array(nums.length).fill(-1);
-  const augment = (fi, seen) => {
-    for (let ni = 0; ni < nums.length; ni += 1) {
-      if (seen[ni]) continue;
-      const [lo, hi] = windows[fi];
-      if (!(nums[ni] >= lo && nums[ni] <= hi)) continue;
-      seen[ni] = true;
-      if (takenBy[ni] === -1 || augment(takenBy[ni], seen)) { takenBy[ni] = fi; return true; }
-    }
-    return false;
-  };
-  for (let fi = 0; fi < facts.length; fi += 1) {
-    if (!augment(fi, new Array(nums.length).fill(false))) return facts[fi];
-  }
-  return null;
-}
-
-function findNumberNear(haystack, fact) {
-  const [lo, hi] = toleranceWindow(fact);
-  const found = [...haystack.matchAll(/\d+(?:\.\d+)?/g)].map((x) => Number(x[0]));
-  return found.some((n) => n >= lo && n <= hi);
-}
-
+// spec-v1055: the extraction and tolerance rules live in one module now, shared
+// with the agent-surface round-trip in test/mcp/mcp-compute.test.js. The two had
+// their own copies and the copies had drifted -- see test/lib/numeric-facts.js.
 // META examples whose `expected` text describes scenario inputs or
 // citation-derived reference numbers rather than the calculator's actual
 // output. The numeric sweep can't validate these without misfiring; the
@@ -236,12 +161,12 @@ async function checkTile(page, id, expected) {
   const text = await page.locator('main').innerText();
   const cleaned = text.replace(/Expected:[^\n]*/g, '');
   const unmatched = (haystack) => {
-    const loose = facts.filter((f) => !findNumberNear(haystack, f)).map((f) => f.raw);
+    const loose = facts.filter((f) => !matchesLoosely(haystack, f)).map((f) => f.raw);
     if (loose.length) return loose;
     // spec-v1048: every fact accounted for individually, but do they have
     // DISTINCT numbers to be? If not, one output number is standing in for two
     // documented ones and the sweep is passing on a coincidence.
-    const clash = allFactsMatchDistinctly(haystack, facts);
+    const clash = firstFactWithoutItsOwnNumber(haystack, facts);
     return clash ? [`${clash.raw} (no number of its own; another documented value is using it)`] : [];
   };
   let missing = unmatched(cleaned);

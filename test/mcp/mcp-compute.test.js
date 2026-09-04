@@ -3,6 +3,7 @@
 // example-correctness numeric contract on the JSON tool surface.
 
 import { test } from 'node:test';
+import { numericFacts, matchesLoosely } from '../lib/numeric-facts.js';
 import assert from 'node:assert/strict';
 
 import { META } from '../../lib/meta.js';
@@ -4280,32 +4281,25 @@ test('lib/severin-ddh-v491.js worked calls', () => {
 });
 
 test('every exposed example round-trips to its META.example.expected numbers', () => {
-  function numericFacts(s) {
-    const facts = [];
-    const re = /(~)?(\d+(?:\.\d+)?)(?:\s*-\s*(\d+(?:\.\d+)?))?(\s*%)?/g;
-    let m;
-    while ((m = re.exec(s)) !== null) {
-      const value = Number(m[2]);
-      if (Number.isInteger(value) && value >= 1900 && value <= 2100 && /^\d{4}$/.test(m[2])) continue;
-      facts.push({ value, raw: m[0], isApprox: !!m[1], rangeEnd: m[3] ? Number(m[3]) : null });
-    }
-    return facts;
-  }
-  function near(haystack, f) {
-    const tol = f.isApprox ? Math.max(Math.abs(f.value) * 0.15, 1) : Math.max(Math.abs(f.value) * 0.02, 0.05);
-    const lo = (f.rangeEnd != null ? Math.min(f.value, f.rangeEnd) : f.value) - tol;
-    const hi = (f.rangeEnd != null ? Math.max(f.value, f.rangeEnd) : f.value) + tol;
-    return [...haystack.matchAll(/\d+(?:\.\d+)?/g)].map((x) => Number(x[0])).some((n) => n >= lo && n <= hi);
-  }
-  // spec-v635: list_calculators is now paginated, so iterate the full manifest
-  // to keep this an every-exposed-tile sweep.
+  // spec-v1055: the extractor and tolerance rule are shared with the browser
+  // sweep now (test/lib/numeric-facts.js). This copy had never learned
+  // spec-v1023's rule that a digit glued to a letter is a label, so it was
+  // asserting that sugammadex's result must contain a 2 because its example
+  // names the train-of-four count "T2" -- and neither copy skipped the digit in
+  // a unit, so `bsa`'s "1.85 m^2; 1.84 m^2" produced two phantom facts of 2.
+  //
+  // Matching stays LOOSE here, deliberately. The browser sweep requires each
+  // documented number to have one of its own, because it reads rendered prose
+  // where a repeated number is repeated text. This reads a JSON result object,
+  // where a conversion legitimately states one value once -- oxytocin's
+  // "6 mU/min = 6 mL/hr" is two mentions of one field.
   for (const row of getCatalogManifest().calculators) {
     const ex = META[row.id].example;
     const r = computeCalculator({ id: row.id, inputs: ex.fields });
     assert.equal(r.valid, true, `${row.id} example must compute`);
     const ser = JSON.stringify(r.result);
     for (const f of numericFacts(ex.expected)) {
-      assert.ok(near(ser, f), `${row.id}: expected number ${f.raw} missing from result`);
+      assert.ok(matchesLoosely(ser, f), `${row.id}: expected number ${f.raw} missing from result`);
     }
   }
 });
