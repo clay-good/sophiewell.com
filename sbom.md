@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `2c7ce53e77360d18`
-Generated: 2026-09-04T05:49:19.444Z
+Build ID: `7a1bf1c90a217578`
+Generated: 2026-09-04T06:13:17.048Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -1014,12 +1014,12 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/clavien-dindo-v320.js` | 1463 | `7d98cc04ea4d21756497e4a30ba83a3ffae2002e60a8c8895014588478d4a352` |
 | `mcp/adapters/cleveland-constipation-v665.js` | 2348 | `39bbb867c1e4258957d5be2e63e77b711e483906066420a5d8700dbc82a4d93f` |
 | `mcp/adapters/clinical-obesity-v838.js` | 1999 | `aa1e48cb5974a086c583469b65b330c762c91ea793b1669b04a3acf893990575` |
-| `mcp/adapters/clinical-v4.js` | 9575 | `4b5218c73748da82b9857cac94b7a5f7c093d281337c362f929017002636b446` |
+| `mcp/adapters/clinical-v4.js` | 10627 | `7a5ecaa5eeb6bf11963f491d2ad405cda37fc216aa64f82f9dbb9659781b15e6` |
 | `mcp/adapters/clinical-v5.js` | 12043 | `64bb75061d67e1bf07dae3f04e9ac2d4638b4f37d61001ee750a9caff98df78c` |
 | `mcp/adapters/clinical-v6.js` | 8455 | `64db47df667ae16351605984cad29528ff73759453b2b17d7ed0d3bf6124952b` |
 | `mcp/adapters/clinical-v7.js` | 8069 | `083a2078dba3877d854e781c9adc4bfdd49beda72fa8cf735360afde1c9b1d54` |
 | `mcp/adapters/clinical-v8.js` | 14727 | `4e4b7a285367bc840053f9470812d98257e11b0af769209bbecfc5d4400b281e` |
-| `mcp/adapters/clinical.js` | 22716 | `5cb7f96942f85e5bf79974d80fcf8a0b629a5470dba05d656abd385c3a1df852` |
+| `mcp/adapters/clinical.js` | 24689 | `ff8ec80cad183654ac9a5e440e8281ff970d87361575d9651c6972d1ec631276` |
 | `mcp/adapters/cluster-headache-ichd3-v814.js` | 2395 | `688cb24e3cb10dabf00993f5b28ccbda26d33a89d6b1e5b679f2f28e88846048` |
 | `mcp/adapters/coagscore-v232.js` | 2450 | `29d9720d14256b871c8c9752ecadd8f5df16342529bf67afacbc1028ed2c3d0c` |
 | `mcp/adapters/cobb-angle-v694.js` | 955 | `efdf4e8553a15070d3c7c82e3feeb677fcc0ec9ad2df5dc35462dc7499f38f76` |

@@ -54,14 +54,23 @@ export const ANSWERS_WITHOUT_A_REQUIRED_FIELD = new Set([
   // See the closing section of docs/spec-v1029.md.
   "wat-1",
 
-  // --- 2, probably: billing tiles whose `required` list is wider than the
-  // calculation. cob-calc already refuses without the primary allowed and paid
-  // amounts, and answers about the rest; corrected-ca-na prints the sodium
-  // correction when the calcium is blank and the calcium correction when the
-  // sodium is. Each needs the declaration read against the formula before a
-  // line here is deleted.
-  "cob-calc",
+  // --- 3: corrected-ca-na is two independent corrections in one tile, and the
+  // browser has always printed whichever half it has. spec-v1045 read the
+  // declaration against the formula and found the DECLARATION was the defect:
+  // every field was required, so an agent holding a sodium and a glucose was
+  // refused a corrected sodium. Fixed on the agent side; the browser was right.
   "corrected-ca-na",
+
+  // --- 3: modifier-order puts the modifiers it was given in claim order. With
+  // the first blank and the second filled it orders the one it has, which is an
+  // answer about what was entered.
   "modifier-order",
+
+  // --- 1: billing tiles that compute money from a blank field. cob-calc
+  // refuses without the primary allowed and paid amounts but reads a blank
+  // billed charge as $0, and rvu-payment multiplies a blank RVU component by
+  // its GPCI and reports a dollar allowance. Each needs the same treatment the
+  // clinical tiles got.
+  "cob-calc",
   "rvu-payment",
 ]);

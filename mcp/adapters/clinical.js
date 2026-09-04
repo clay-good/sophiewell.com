@@ -160,49 +160,78 @@ export default [
     id: 'corrected-ca-na',
     summary: 'Combined electrolyte-correction panel: albumin-corrected calcium plus glucose-corrected sodium (Katz factor 1.6 and Hillier factor 2.4).',
     compute: (a) => {
-      const correctedCa = F.correctedCalcium({ measuredCa: a.measuredCa, albuminGdl: a.albuminGdl });
-      const correctedNa = F.correctedSodium({ measuredNa: a.measuredNa, glucose: a.glucose });
+      // spec-v1045: each half is computed only when ITS OWN pair is present. The
+      // library functions throw on a missing argument rather than returning null,
+      // so the `== null` test below never described what actually happened -- and
+      // with every field declared required, nothing reached it anyway. Errors
+      // other than absence still propagate: this checks for a value that is not
+      // there, it does not swallow a value that is wrong.
+      const have = (...vs) => vs.every((v) => v !== null && v !== undefined && v !== '');
+      const correctedCa = have(a.measuredCa, a.albuminGdl)
+        ? F.correctedCalcium({ measuredCa: a.measuredCa, albuminGdl: a.albuminGdl }) : null;
+      const correctedNa = have(a.measuredNa, a.glucose)
+        ? F.correctedSodium({ measuredNa: a.measuredNa, glucose: a.glucose }) : null;
       return correctedCa == null && correctedNa == null ? null : { correctedCa, correctedNa };
     },
+    // spec-v1045: none of the four is required on its own. This is two
+    // independent corrections in one tile -- calcium needs the albumin, sodium
+    // needs the glucose -- and `compute` above already returns whichever half it
+    // can. Declaring all four required meant an agent holding a sodium and a
+    // glucose was refused a corrected sodium the browser computes happily; when
+    // neither pair is complete, compute returns null and the caller gets
+    // INCOMPLETE.
     fields: [
-      { dom: 'ca', arg: 'measuredCa', kind: 'number', required: true, label: 'Measured calcium', unit: 'mg/dL' },
-      { dom: 'cca-alb', arg: 'albuminGdl', kind: 'number', required: true, label: 'Albumin', unit: 'g/dL' },
-      { dom: 'csna-na', arg: 'measuredNa', kind: 'number', required: true, label: 'Measured sodium', unit: 'mEq/L' },
-      { dom: 'glu', arg: 'glucose', kind: 'number', required: true, label: 'Glucose', unit: 'mg/dL' },
+      { dom: 'ca', arg: 'measuredCa', kind: 'number', label: 'Measured calcium', unit: 'mg/dL' },
+      { dom: 'cca-alb', arg: 'albuminGdl', kind: 'number', label: 'Albumin', unit: 'g/dL' },
+      { dom: 'csna-na', arg: 'measuredNa', kind: 'number', label: 'Measured sodium', unit: 'mEq/L' },
+      { dom: 'glu', arg: 'glucose', kind: 'number', label: 'Glucose', unit: 'mg/dL' },
     ],
   },
   {
     id: 'aa-pf-suite',
     summary: 'Combined oxygenation panel: A-a gradient, the age-expected A-a gradient (age/4 + 4), and the PaO2/FiO2 ratio with ARDS category.',
     compute: (a) => {
-      const aa = F.aaGradient({ fio2: a.fio2, paco2: a.paco2, pao2: a.pao2 });
-      const pf = F.pfRatio({ pao2: a.pao2, fio2: a.fio2 });
+      // spec-v1045: see corrected-ca-na. The A-a gradient needs the PaCO2; the
+      // P/F ratio does not.
+      const have = (...vs) => vs.every((v) => v !== null && v !== undefined && v !== '');
+      const aa = have(a.fio2, a.paco2, a.pao2) ? F.aaGradient({ fio2: a.fio2, paco2: a.paco2, pao2: a.pao2 }) : null;
+      const pf = have(a.pao2, a.fio2) ? F.pfRatio({ pao2: a.pao2, fio2: a.fio2 }) : null;
       if (aa == null && pf == null) return null;
       // The renderer computes the age-expected gradient inline as age/4 + 4.
       const expectedAaForAge = a.age == null ? null : a.age / 4 + 4;
       return { aaGradient: aa, expectedAaForAge, pfRatio: pf };
     },
+    // spec-v1045: PaO2 and FiO2 feed both outputs and stay required. The PaCO2
+    // is only in the A-a gradient and the age only in the age-expected value, so
+    // an agent with a blood gas and no age still gets a P/F ratio.
     fields: [
       { dom: 'sf-fio2', arg: 'fio2', kind: 'number', required: true, label: 'FiO2 (0-1)' },
       { dom: 'sf-pao2', arg: 'pao2', kind: 'number', required: true, label: 'PaO2', unit: 'mmHg' },
-      { dom: 'sf-paco2', arg: 'paco2', kind: 'number', required: true, label: 'PaCO2', unit: 'mmHg' },
-      { dom: 'sf-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'sf-paco2', arg: 'paco2', kind: 'number', label: 'PaCO2', unit: 'mmHg' },
+      { dom: 'sf-age', arg: 'age', kind: 'number', label: 'Age', unit: 'years' },
     ],
   },
   {
     id: 'egfr-suite',
     summary: 'Renal-function panel: CKD-EPI 2021 eGFR, MDRD eGFR, and Cockcroft-Gault creatinine clearance side by side.',
     compute: (a) => {
+      // spec-v1045: Cockcroft-Gault is the only one of the three that needs a
+      // weight, and it was holding the other two hostage.
+      const have = (...vs) => vs.every((v) => v !== null && v !== undefined && v !== '');
       const ckdEpi2021 = F.egfrCkdEpi2021({ scr: a.scr, age: a.age, sex: a.sex });
       const mdrd = V4.egfrMdrd({ scr: a.scr, age: a.age, sex: a.sex });
-      const cockcroftGault = F.cockcroftGault({ age: a.age, weightKg: a.weightKg, scr: a.scr, sex: a.sex });
+      const cockcroftGault = have(a.weightKg)
+        ? F.cockcroftGault({ age: a.age, weightKg: a.weightKg, scr: a.scr, sex: a.sex }) : null;
       return ckdEpi2021 == null && mdrd == null && cockcroftGault == null
         ? null : { ckdEpi2021, mdrd, cockcroftGault };
     },
     fields: [
       { dom: 'es-scr', arg: 'scr', kind: 'number', required: true, label: 'Serum creatinine', unit: 'mg/dL' },
       { dom: 'es-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
-      { dom: 'es-w', arg: 'weightKg', kind: 'number', required: true, label: 'Weight (Cockcroft-Gault only)', unit: 'kg' },
+      // spec-v1045: the label already says it -- the weight is Cockcroft-Gault's
+      // alone, so requiring it withheld both eGFRs from an agent that had no
+      // weight to give.
+      { dom: 'es-w', arg: 'weightKg', kind: 'number', label: 'Weight (Cockcroft-Gault only)', unit: 'kg' },
       { dom: 'es-sex', arg: 'sex', kind: 'enum', values: ['M', 'F'], required: true, label: 'Sex' },
     ],
   },

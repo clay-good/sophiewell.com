@@ -51,17 +51,27 @@ export default [
     id: 'shock-index',
     summary: 'Perfusion panel: shock index (HR/SBP, concerning >= 0.9), modified shock index (HR/MAP), MAP, and pulse pressure from SBP/DBP/HR.',
     compute: (a) => {
-      const mapV = C.map({ sbp: a.sbp, dbp: a.dbp });
-      const pulsePressure = F.pulsePressure({ sbp: a.sbp, dbp: a.dbp });
-      const shockIndex = F.shockIndex({ hr: a.hr, sbp: a.sbp });
-      const modifiedShockIndex = F.modifiedShockIndex({ hr: a.hr, sbp: a.sbp, dbp: a.dbp });
+      // spec-v1045: each output is computed only when its own inputs are present.
+      // The libraries throw on a missing argument, so a panel that means to
+      // return "whichever of these four I can" has to check first.
+      const have = (...vs) => vs.every((v) => v !== null && v !== undefined && v !== '');
+      const mapV = have(a.sbp, a.dbp) ? C.map({ sbp: a.sbp, dbp: a.dbp }) : null;
+      const pulsePressure = have(a.sbp, a.dbp) ? F.pulsePressure({ sbp: a.sbp, dbp: a.dbp }) : null;
+      const shockIndex = have(a.hr, a.sbp) ? F.shockIndex({ hr: a.hr, sbp: a.sbp }) : null;
+      const modifiedShockIndex = have(a.hr, a.sbp, a.dbp)
+        ? F.modifiedShockIndex({ hr: a.hr, sbp: a.sbp, dbp: a.dbp }) : null;
       return mapV == null && shockIndex == null ? null
         : { map: mapV, pulsePressure, shockIndex, modifiedShockIndex };
     },
     fields: [
+      // spec-v1045: the systolic pressure is in all four outputs and stays
+      // required. The diastolic gives the MAP, the pulse pressure and the
+      // modified shock index; the heart rate gives the two shock indices. An
+      // agent with a pressure and a pulse gets the shock index without having to
+      // invent a diastolic.
       { dom: 'si-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg' },
-      { dom: 'si-dbp', arg: 'dbp', kind: 'number', required: true, label: 'Diastolic BP', unit: 'mmHg' },
-      { dom: 'si-hr', arg: 'hr', kind: 'number', required: true, label: 'Heart rate', unit: 'bpm' },
+      { dom: 'si-dbp', arg: 'dbp', kind: 'number', label: 'Diastolic BP', unit: 'mmHg' },
+      { dom: 'si-hr', arg: 'hr', kind: 'number', label: 'Heart rate', unit: 'bpm' },
     ],
   },
   {
@@ -91,12 +101,17 @@ export default [
       return feNa == null && feUrea == null ? null : { feNaPct: feNa, feUreaPct: feUrea };
     },
     fields: [
-      { dom: 'fn-una', arg: 'urineNa', kind: 'number', required: true, label: 'Urine sodium', unit: 'mEq/L' },
-      { dom: 'fn-pna', arg: 'plasmaNa', kind: 'number', required: true, label: 'Plasma sodium', unit: 'mEq/L' },
+      // spec-v1045: the two creatinines are in both fractions and stay required.
+      // The sodium pair is FeNa's alone and the urea pair FeUrea's, and `compute`
+      // already returns whichever fraction it can -- which matters here, because
+      // FeUrea exists precisely for the patient who has had a diuretic and whose
+      // FeNa is not interpretable.
+      { dom: 'fn-una', arg: 'urineNa', kind: 'number', label: 'Urine sodium', unit: 'mEq/L' },
+      { dom: 'fn-pna', arg: 'plasmaNa', kind: 'number', label: 'Plasma sodium', unit: 'mEq/L' },
       { dom: 'fn-ucr', arg: 'urineCr', kind: 'number', required: true, label: 'Urine creatinine', unit: 'mg/dL' },
       { dom: 'fn-pcr', arg: 'plasmaCr', kind: 'number', required: true, label: 'Plasma creatinine', unit: 'mg/dL' },
-      { dom: 'fu-uu', arg: 'urineUrea', kind: 'number', required: true, label: 'Urine urea', unit: 'mg/dL' },
-      { dom: 'fu-pu', arg: 'plasmaUrea', kind: 'number', required: true, label: 'Plasma urea (BUN)', unit: 'mg/dL' },
+      { dom: 'fu-uu', arg: 'urineUrea', kind: 'number', label: 'Urine urea', unit: 'mg/dL' },
+      { dom: 'fu-pu', arg: 'plasmaUrea', kind: 'number', label: 'Plasma urea (BUN)', unit: 'mg/dL' },
     ],
   },
   {

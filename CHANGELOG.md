@@ -8,6 +8,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Five agent-facing panels refused inputs they could answer.** Each computes
+  two or more independent things -- a corrected calcium and a corrected sodium,
+  an A-a gradient and a P/F ratio -- and each was written to return whichever
+  half it could, but declared every field required. An agent holding a sodium
+  and a glucose was refused a corrected sodium the browser has always printed.
+  See docs/spec-v1045.md.
 - **Nine rating scales totalled items nobody had rated.** ESAS, BESS, MMT-8,
   the Harris hip score, Harvey-Bradshaw, IHS4, the intubation difficulty scale,
   MIDAS and SALT each summed their items with a blank one counted as zero --
