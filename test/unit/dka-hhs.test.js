@@ -57,3 +57,22 @@ test('without ketones, a strict DKA classification is withheld', () => {
   assert.equal(r.criteria.ketosis, null);
   assert.match(r.band, /beta-hydroxybutyrate/i);
 });
+
+test('mental status is a row of the severity table, not decoration (spec-v1069)', () => {
+  // Both surfaces collect it -- a three-option picker in the browser, the same
+  // enum on the agent surface -- and it reached the function as an argument
+  // nothing read, so "Stupor / coma" graded a patient exactly as "Alert" did.
+  const chem = { glucose: 450, ph: 7.28, bicarbonate: 16, betaHydroxybutyrate: 4, sodium: 135, chloride: 100 };
+  assert.equal(dkaHhs({ ...chem, mental: 'alert' }).grade, 'mild');
+  assert.equal(dkaHhs({ ...chem, mental: 'drowsy' }).grade, 'moderate');
+  assert.equal(dkaHhs({ ...chem, mental: 'stupor' }).grade, 'severe');
+
+  // Alert appears in the mild AND the moderate row of the table, so it can
+  // never pull down a grade the chemistry has already earned.
+  const severeChem = { glucose: 600, ph: 6.95, bicarbonate: 6, betaHydroxybutyrate: 6, sodium: 135, chloride: 100 };
+  assert.equal(dkaHhs({ ...severeChem, mental: 'alert' }).grade, 'severe');
+
+  // Omitting it entirely leaves the chemistry-only grade exactly as it was.
+  assert.equal(dkaHhs(chem).grade, 'mild');
+  assert.equal(dkaHhs(severeChem).grade, 'severe');
+});

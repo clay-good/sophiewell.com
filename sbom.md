@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `651d1acfa593c9aa`
-Generated: 2026-09-04T18:41:11.280Z
+Build ID: `ef378df1709e2562`
+Generated: 2026-09-04T18:53:01.287Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -511,7 +511,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
 | `lib/meta.js` | 2462269 | `679183fdf45312444984816a118de562dce3fa678456bef35a2d0a5256e3bdee` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
-| `lib/metabolic-onc-v88.js` | 13440 | `a3c6169ae1e397624a22d13f79699e0ab6f5638e77b5d50d6497fd26eb2e7775` |
+| `lib/metabolic-onc-v88.js` | 14732 | `d5ead6ad019160f71df636a4c9f0c316f439a1e049849cf1dde8efa530b72ff2` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
 | `lib/metabolic-v273.js` | 2945 | `974e98d9a3671ad62526e2212dfae812221ff72dce8046f65a2db904eb4ec881` |
 | `lib/metavir-activity-v505.js` | 3062 | `750a1451913ae545ea922fdb3584efd83e1043cafdb85259a78d4d3c72f6b6a2` |
