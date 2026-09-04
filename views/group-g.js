@@ -70,6 +70,12 @@ function ewsTrendInputs(root, prefix) {
   ]));
 }
 function renderEwsTrend(o, prefix, currentScore) {
+  // spec-v1071: there is no trend without a current score. With an observation
+  // missing the score is null, and passing that to trend() threw "current must
+  // be a number" -- which safe() then printed as the answer, underneath the
+  // prompt asking for the observation. The r.parts guard above fixed one
+  // consumer of the null score; this is the other one.
+  if (currentScore == null) return;
   const priorEl = document.getElementById(`${prefix}-prior`);
   const hoursEl = document.getElementById(`${prefix}-hours`);
   if (!priorEl || !hoursEl) return;

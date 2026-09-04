@@ -465,3 +465,43 @@ test('wat-1: three points still read as withdrawal, from three items', async ({ 
   expect(text).toMatch(/iatrogenic withdrawal present/);
   expect(text).toMatch(/Scored from 3 of 10 items/);
 });
+
+// spec-v1071: a refusal must not print a JavaScript error under the prompt.
+//
+// mews and news2 return no score AND no per-parameter breakdown when an
+// observation is missing. The renderer read r.parts anyway, and safe() printed
+// the exception AS THE ANSWER: "Enter systolic BP, pulse, respiratory rate and
+// temperature to score.Cannot read properties of undefined (reading 'sbp')".
+// The optional trend widget was the second consumer of the same null score and
+// threw "current must be a number" by the same route.
+for (const [id, prefix, field] of [['mews', 'me', 'me-sbp'], ['news2', 'n2', 'n2-rr']]) {
+  test(`${id}: a missing observation refuses without an error, with or without a trend`, async ({ page }) => {
+    await page.goto(`/#${id}`);
+    await page.waitForSelector('#q-results');
+    await page.waitForTimeout(300);
+
+    // Without the optional trend fields.
+    await page.evaluate((f) => {
+      const n = document.getElementById(f);
+      n.value = '';
+      n.dispatchEvent(new Event('input', { bubbles: true }));
+    }, field);
+    await page.waitForTimeout(200);
+    const plain = (await page.locator('#q-results').innerText()).replace(/\s+/g, ' ');
+    expect(plain).toMatch(/to score\./);
+    expect(plain).not.toMatch(/Cannot read properties|must be a number|undefined/);
+
+    // And with them filled, which is what reached trend() with a null score.
+    await page.evaluate(({ p }) => {
+      for (const [i, v] of [[`${p}-prior`, '2'], [`${p}-hours`, '4']]) {
+        const n = document.getElementById(i);
+        n.value = v;
+        n.dispatchEvent(new Event('input', { bubbles: true }));
+      }
+    }, { p: prefix });
+    await page.waitForTimeout(220);
+    const withTrend = (await page.locator('#q-results').innerText()).replace(/\s+/g, ' ');
+    expect(withTrend).toMatch(/to score\./);
+    expect(withTrend).not.toMatch(/Cannot read properties|must be a number|undefined/);
+  });
+}

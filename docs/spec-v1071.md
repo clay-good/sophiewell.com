@@ -54,6 +54,20 @@ exception message into the live region. Both tiles, on every field. Two of the
 four paths pre-dated this session; the other two became reachable when
 spec-v1064 made a blank **temperature** produce a null score for the first time.
 
+## The second consumer of the same null score
+
+Fixing `r.parts` was not enough. The optional trend widget on both tiles takes
+the score too, and `renderEwsTrend` passed a null one straight to `trend()`,
+which throws `current must be a number` — printed, again, as the answer:
+
+> Enter systolic BP, pulse, respiratory rate and temperature to score.**current
+> must be a number.**
+
+It only fires when the reader has filled the optional prior-score and hours
+fields, which is why the first pass missed it. The lesson generalises:
+**when a guard newly makes a result null, grep the renderer for every consumer
+of that result, not the one the bug report named.** There were two.
+
 ## The fix and the gate
 
 `lib/derivation.js` gains `clearDerivationSteps(detailsEl, message)`, called on
@@ -66,6 +80,14 @@ calculator that has a steps panel and fails when the tile refuses in its answer
 while the panel still shows what it showed before. Two shards, **13 seconds**.
 Negative-tested by removing the `egfr` guard's clear and watching it fail with
 `egfr|scr`.
+
+That sweep already clears a field on 121 calculators and reads the answer, so it
+also now asserts — free of charge — that **no JavaScript runtime error ever
+reaches the live region**. `safe()` catches exceptions and prints `err.message`
+as the answer, so a renderer reading a property of a result the library withheld
+shows the reader a `TypeError`. Both early-warning tiles carry named regression
+tests in `no-answer-from-nothing.spec.js`, with and without the trend fields
+filled.
 
 One exception, keyed `tileId|fieldId` like the ledger beside it: **`centor`**
 scores its four criteria on its own and asks for an age only to add the McIsaac

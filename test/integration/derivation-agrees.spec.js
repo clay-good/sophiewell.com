@@ -74,6 +74,17 @@ for (let shard = 0; shard < SHARDS; shard += 1) {
         return { field, before, after };
       });
       if (!r) continue;
+      // spec-v1071: free of charge, since this sweep already clears a field on
+      // every tile with a steps panel and reads the answer. A JavaScript runtime
+      // error must never reach the live region: safe() catches exceptions and
+      // prints err.message AS THE ANSWER, so a renderer that reads a property of
+      // a result the library withheld shows the reader "Cannot read properties
+      // of undefined (reading 'sbp')" under the prompt. That is exactly what
+      // mews and news2 did.
+      if (/Cannot read properties|is not a function|is not defined|undefined is not/.test(r.after.answer)) {
+        offenders.push(`${id}|${r.field}  A JAVASCRIPT ERROR REACHED THE ANSWER\n    ${r.after.answer.slice(0, 120)}`);
+        continue;
+      }
       // Only tiles that actually refuse are in scope. A tile that still answers
       // is the one-blank-field gate's business, not this one.
       if (!ASKING.test(r.after.answer)) continue;
