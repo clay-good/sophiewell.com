@@ -8,6 +8,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Two billing tiles computed money from a blank field.** A blank RVU
+  component was counted as zero and still produced a dollar allowance, and a
+  blank billed charge was counted as $0 -- which under the lesser-of method
+  makes the patient owe less than they do. Both now ask, and a typed 0 still
+  means zero. See docs/spec-v1046.md.
 - **Five agent-facing panels refused inputs they could answer.** Each computes
   two or more independent things -- a corrected calcium and a corrected sodium,
   an A-a gradient and a P/F ratio -- and each was written to return whichever

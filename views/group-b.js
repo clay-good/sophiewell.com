@@ -176,8 +176,26 @@ export const renderers = {
         if (rawEmpty('rvu-work') && rawEmpty('rvu-penf') && rawEmpty('rvu-pef') && rawEmpty('rvu-mp')) {
           o.appendChild(el('p', { class: 'muted', text: 'Enter a CPT/HCPCS code or the RVU components.' })); return;
         }
+        // spec-v1046: and a component left blank while the others are filled is
+        // treated as 0 RVUs -- right for a code that genuinely has none, wrong for
+        // one nobody filled in, and the difference is a dollar figure on a claim.
+        // A typed 0 still means zero, which is how you say the code carries none.
         if (!(numv('rvu-wg') > 0) || !(numv('rvu-peg') > 0) || !(numv('rvu-mpg') > 0)) {
           o.appendChild(el('p', { class: 'muted', text: 'Enter the GPCI triplet (or pick a locality).' })); return;
+        }
+        // spec-v1046: a component left blank is treated as 0 RVUs, which is right
+        // for a code that genuinely has none and wrong for one nobody filled in --
+        // and the difference is a dollar figure. A typed 0 still means zero; the
+        // blanks are named instead of being counted silently.
+        const rvuBlank = [
+          ['the work RVU', 'rvu-work'], ['the non-facility PE RVU', 'rvu-penf'],
+          ['the facility PE RVU', 'rvu-pef'], ['the malpractice RVU', 'rvu-mp'],
+        ].filter(([, id]) => rawEmpty(id)).map(([label]) => label);
+        if (rvuBlank.length) {
+          o.appendChild(el('p', { class: 'muted', text:
+            `Enter ${rvuBlank.join(', ')}, or 0 to say the code carries none. `
+            + 'A blank component would be counted as 0 RVUs, and the allowed amount would be short by whatever it should have been.' }));
+          return;
         }
         const r = Bill.rvuPayment({
           workRvu: numv('rvu-work') || 0,

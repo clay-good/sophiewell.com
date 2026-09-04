@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `7a1bf1c90a217578`
-Generated: 2026-09-04T06:13:17.048Z
+Build ID: `97d2453deb54803c`
+Generated: 2026-09-04T06:21:16.217Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -1699,8 +1699,8 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `vendored/tesseract/tesseract.min.js` | 66695 | `a8e29918d098b2b06e1012bdaeffb4aec0445c5d5654709023e0bd1f442a80e8` |
 | `vendored/tesseract/worker.min.js` | 123724 | `aca1229639fc9907d86f96e825955a2b7c5716d17f3bc3acd71f9c7ab66181fc` |
 | `views/group-a.js` | 577 | `eed37c656d1fa00c097a07f07db4b1b6ac7a0a74bafc210978265a1d90856bd7` |
-| `views/group-b.js` | 74408 | `522243d08548bc3f263a37b5c8bfb88bc21a057503012bc16284cf78df1949f9` |
-| `views/group-c.js` | 24124 | `4517f2f966279a4af40b98aa5197db7d2fee3b014785cb6e6ac317fd2157cbf5` |
+| `views/group-b.js` | 75641 | `ef51504da5c8760989b47fafba242b4cdbbea34a99407393ebef2eba16e683c8` |
+| `views/group-c.js` | 24555 | `82ebad28ab001aacbbb39459436ed2f9f3df86971209a4bb178ad2f108a98742` |
 | `views/group-e.js` | 44860 | `e884a75126ec63a13a9f9a2862892cad3d1599df527371c4c378aa9ddbe9f6bf` |
 | `views/group-f.js` | 49474 | `e5715c581e92c22599529886d09df8c993f202dd7935c8b5a01ca1bf660fd225` |
 | `views/group-g.js` | 235731 | `7751f371dcf55200d08c97139566a5ffd618792709a68db66c6a523b80a6b5ed` |

@@ -286,6 +286,13 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     wire(['cob-method', 'cob-charge', 'cob-pri-allowed', 'cob-pri-paid', 'cob-sec-allowed', 'cob-sec-would'], () => safe(o, () => {
       if (rawEmpty('cob-pri-allowed') || rawEmpty('cob-pri-paid')) { o.appendChild(el('p', { class: 'muted', text: 'Enter the primary allowed and paid amounts.' })); return; }
+      // spec-v1046: the billed charge caps what the secondary pays under
+      // lesser-of, and a blank one was counted as a charge of $0 -- which makes
+      // the patient's residual look smaller than it is.
+      if (rawEmpty('cob-charge')) {
+        o.appendChild(el('p', { class: 'muted', text: 'Enter the billed charge: it caps what the secondary pays, so a blank one is not a charge of zero.' }));
+        return;
+      }
       const r = Pat.cobCalc({
         method: str('cob-method') || 'lesser-of',
         billedChargeCents: Pat.dollarsToCents(numv('cob-charge') || 0),
