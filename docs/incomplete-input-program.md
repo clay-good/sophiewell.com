@@ -102,6 +102,24 @@ had described a patient.
 | [v1034](spec-v1034.md) | Ten bleeding, clotting and severity scores |
 | [v1035](spec-v1035.md) | The last sixteen, and the three left all-zero on purpose |
 
+## The promise on the front page, clause by clause
+
+The README's "Or not" row is the reader-facing statement of everything on this
+page. It was written in spec-v1060 — **before the waves below made all of it
+true** — which is the same trap the public-promise audit found elsewhere: a
+published guarantee with nothing checking it. Each clause now maps to a gate.
+
+| The README says | What holds it |
+|---|---|
+| "When a value it needs is missing, it says which one instead of answering." | `no-answer-from-nothing-sweep.spec.js` (every field cleared) and `one-blank-field.spec.js` (one field cleared, from the worked example) |
+| "A score that only adds points will still flag risk on what you have entered" | the monotone-disclosure fixes, pinned per calculator (`lrinec`, `scorten`, `snappe-ii`, `glasgow-imrie`, `wat-1`) |
+| "but it will not call a patient well on measurements nobody took" | spec-v1006's rule, enforced by both sweeps above |
+| "and it will not raise an alarm from an empty form either" | **the newest**: `oakland` printed "falling 12 g/dL ... suggests ongoing blood loss" from a blank haemoglobin until [spec-v1072](spec-v1072.md) |
+| "When it does answer on a partly filled form, it says how much of the form it used." | the disclosure vocabulary in `test/lib/asking-language.js`, and `derivation-agrees.spec.js` for the panel that used to contradict it |
+
+The fourth row is the one worth remembering. The sentence was published, and the
+calculator doing the opposite of it was three clicks away.
+
 ## What holds it now
 
 | Gate | Asks | Cost |
