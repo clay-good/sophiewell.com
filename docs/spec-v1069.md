@@ -53,3 +53,40 @@ same shape and are **not** defects:
 
 So the rule that produced 91 hits, and was rejected as a gate, still paid for
 itself once: **one input, on two surfaces, that changed nothing.**
+
+## A probe measured and rejected: "which enum fields are inert?"
+
+The obvious way to mechanize this finding is dynamic: take each calculator's
+worked example, vary one enum field through every value it declares, and flag the
+fields where the answer never moves. It was written and run over the whole agent
+surface — **2,117 enum fields across 1,682 calculators**.
+
+It flags **38**, and the flags are noise. The reason is visible in the very
+defect that prompted it: `dka-hhs|mental` is still on the list *after* the fix,
+because that tile's example has a pH of 6.95, and chemistry that severe forces
+the severe grade whatever the mental status says. A field that is inert **on one
+patient** is not an inert field.
+
+Four were opened and every one is correct behaviour:
+
+| Flagged | Why it is right |
+|---|---|
+| `isaric-4c-mortality\|ureaUnit` | works fine — the example's urea is 5, which scores 0 in **both** units. At 20 the units give 11 and 9. |
+| `gustilo-anderson\|wound` | the example is Type IIIC, which is **defined** by arterial injury regardless of wound size |
+| `fleischner-2017\|risk` | the example nodule is > 8 mm, where the guideline gives the same recommendation to both risk categories |
+| `dka-hhs\|mental` | fixed above; the example's chemistry already forces severe |
+
+The rest of the list is the same shape: sums past a threshold (`mdq`'s seven
+symptom items, `ses-cd`'s per-segment scores), and criteria overridden by a
+stronger one on that particular patient.
+
+**The static check is the one that works.** `no-unused-vars` with `args: "all"`
+asks whether the function body references the argument *at all*, which is a
+property of the code rather than of one example. It found `mental`, and it found
+the one other candidate (`ecgAxis`'s `leadII`, documented and therefore fine).
+Two hits, one real defect, no noise.
+
+Do not re-run the dynamic version. If it is ever revisited, the fix is to vary
+the enum from a **minimal** baseline rather than from the worked example, so
+nothing else is already saturating the answer — and even then it can only say
+"inert for these inputs".
