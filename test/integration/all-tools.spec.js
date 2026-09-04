@@ -131,10 +131,21 @@ test('no tool view skips a heading level (h1 -> h3 with no h2)', async ({ page, 
   expect(offenders, `heading-level skips:\n${offenders.join('\n')}`).toEqual([]);
 });
 
-test('every tool route exposes a working back button to home', async ({ page }) => {
+test('a sampled tool route exposes a working back button to home', async ({ page }) => {
   test.setTimeout(120_000);
   const ids = await discoverIds(page);
-  // Sample to keep runtime sane; the contract is identical across views.
+  // spec-v1060: this was called "every tool route ..." and checks one in eight.
+  //
+  // The sampling is sound and stays: the button is created once, in
+  // renderToolView() in app.js, on the same path that produces the <h1> the test
+  // above checks on EVERY route. If a view rendered without it, that test would
+  // have failed first. So this is a click-through of the shell contract, not a
+  // per-tile assertion, and 213 routes exercise it as well as 1,704 would.
+  //
+  // The name is what was wrong. A test list is read as an inventory of what is
+  // covered, and "every" in a title that checks an eighth is the cheapest way to
+  // overstate it -- the same shape as a gate that filters its input silently
+  // (spec-v1059).
   const sample = ids.filter((_, i) => i % 8 === 0);
   for (const id of sample) {
     await page.goto('/#' + id);

@@ -8,6 +8,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A test said "every tool route" and checked one in eight.** The sampling is
+  sound -- the back button is rendered once by the shell, on the path a
+  full-catalog test already walks -- but the name overstated it, and a test
+  list is read as an inventory of what is covered. Renamed, with the reasoning
+  written down. The README's description of what a calculator does with a
+  missing value now covers the two rules added since it was written. See
+  docs/spec-v1060.md.
 - **The offline check could silently examine a shorter list than it printed.**
   It filtered the service worker's precache list to entries written one
   particular way, so an asset written any other way was dropped without

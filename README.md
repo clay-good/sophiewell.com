@@ -36,7 +36,7 @@ Each calculator does one thing:
 |---|---|
 | **In** | The values you already have. It opens pre-filled with a worked example — a described patient, not a form of zeros — so you can see the expected format before you type over it. |
 | **Out** | One number or grade, plus how the source says to read it. |
-| **Or not** | When a value it needs is missing, it says which one instead of answering. A score that only adds points will still flag risk on what you have entered, but it will not call a patient well on measurements nobody took. |
+| **Or not** | When a value it needs is missing, it says which one instead of answering. A score that only adds points will still flag risk on what you have entered, but it will not call a patient well on measurements nobody took — and it will not raise an alarm from an empty form either. When it does answer on a partly filled form, it says how much of the form it used. |
 | **Proof** | The method and primary citations together, one click away under "How this is calculated". 1,627 of the 1,704 link straight through to the source paper, and every one of those links is checked to resolve **and** to open the paper the citation names, not merely a paper. Twelve more say "Search PubMed for this source" because no index carries the book chapter or pre-1946 paper they cite. |
 
 For example, on [Wells Score for PE](https://sophiewell.com/#wells-pe)
