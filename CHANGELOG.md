@@ -8,6 +8,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **`Number(null)` is 0, and five missing-input guards had quietly stopped
+  working because of it.** As renderers were converted to pass null for a blank
+  field, guards written against `Number('')` -- which is NaN -- stopped firing,
+  so HACOR scored a missing heart rate as its best band and Hy's Law reported a
+  bilirubin nobody had drawn in the same sentence it uses for one that came
+  back low. See docs/spec-v1040.md.
 - **A gate nearly learned to ignore its own defect.** The required-field sweep
   skips readings that ask for a value rather than answering, and "not reached"
   was nearly added to that list -- a phrase one tile uses to report a criterion

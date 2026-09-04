@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `6028e09a4ac9e090`
-Generated: 2026-09-04T03:57:58.285Z
+Build ID: `698bb19ce62c81ac`
+Generated: 2026-09-04T04:20:15.567Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -59,7 +59,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/abc-scale-v729.js` | 2969 | `216800e61da667543101c6a175111dbf2fca98617f1b15d6b420cf00bff18eaf` |
 | `lib/ablett-tetanus-v576.js` | 11571 | `55c0a29b6ed65dab28caa723322ce513f4017217113429dbfd926bd8fdc8f0af` |
 | `lib/acef-v595.js` | 11727 | `7f6eb09e8e47d18db22b488a037178a3a3af2cdf20a71e56fccbe0af0454d45a` |
-| `lib/acidbase-v129.js` | 15449 | `7356c25e7883a3b36053121ef8fcb53dd59b0ecb90dc68039083aa3c69028934` |
+| `lib/acidbase-v129.js` | 15987 | `0fbea8a4021652b3af76d078ab952b5ecff82db15a2d44a545716937af0764f8` |
 | `lib/acr-eular-boolean-v671.js` | 4453 | `79e79312ee4df6fc97bcb44e121482e68c9d62323446f27087d26beac5478fba` |
 | `lib/acromegaly-biochem-v835.js` | 9541 | `3dcd6eec4c8be684e05c0f87baf0eb7fb27d356dfc3fd44beb33704700062d4f` |
 | `lib/acs-v193.js` | 15400 | `219926127d8100963f60bd083fb4a77fa33e1f806b7d581dc78dea821b819d52` |
@@ -68,7 +68,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/adiposity-v270.js` | 3145 | `bafc017e4974f5c7180e5a2a6160c50fb8d837bccd6f45d0eaaf6bb6ada87ce9` |
 | `lib/af-stages-2023-v839.js` | 7872 | `9dad7e65b3ccc86ad22937b40e670e055da6855583cd1cc4bd188325e04c2fe7` |
 | `lib/ahlback-knee-oa-v480.js` | 3309 | `c7e76a2794a1764fc50dd4f467219d7b5f9a6f19c98a5bc241cd43a85a810239` |
-| `lib/airway-resistance-v927.js` | 7748 | `64beaeb807c012eb1d1f164b583c6a1ee28cac1822bb9a87f13d20fdd1e3a863` |
+| `lib/airway-resistance-v927.js` | 8081 | `22a85a2674f7b2ccc567fe07d6f47944657fca52d517831cb0d564484c04a3b9` |
 | `lib/alsfrs-r-v537.js` | 12461 | `03eee4c606f4b4635d52d18f7b8af8b278dbb184bf6216a017126ee755a0c3e0` |
 | `lib/amsler-krumeich-v707.js` | 4359 | `3f4165e4691de952a94d4925cbcbdb9da21d88fdac32d1f1460864230aa004b7` |
 | `lib/amsterdam-ii-v592.js` | 12218 | `26cf7e2a336259e90436d1bf8348ebcb252359c0ec988e9b0359a0d091b1d122` |
@@ -120,9 +120,9 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/billing-v82.js` | 20714 | `7ddc478b78fb05bc760cd771348f7ccaa961d6d503b127cba10832d8ab4b98c8` |
 | `lib/billing-v83.js` | 20695 | `01e2eeca24df35dbac0a61fd0ca7681d3aa04cf7411ed774726191985023f7aa` |
 | `lib/bilsky-escc-v604.js` | 10899 | `001a75fe88ef711e5693d88ff5bdd4c9a4656fc04c5a0c8b6977567c562acc6a` |
-| `lib/biological-variation-goals-v923.js` | 7561 | `96cfff402e11e7346c313ff14e7dabba59cdd1a2f0e6953a9e199008e3b94a01` |
+| `lib/biological-variation-goals-v923.js` | 7894 | `6905603246b9b3305ad2ef4e0aaab94a7e043c907533e3f983025f0cb2eabaf1` |
 | `lib/bismuth-corlette-v399.js` | 4794 | `f7884e0732444c307302a8a7b6e14c583a70106ec23f27066fda87049d196a26` |
-| `lib/bland-altman-v924.js` | 7681 | `626097615fc3da7cc5dd2cf9659e9b7abbb069ed1fe724b4b9cce4af1e4885ae` |
+| `lib/bland-altman-v924.js` | 8014 | `b504a3d25637493e2e8779c4c49f8fb8d16e8f272b46d791545fcf96e3a4bccf` |
 | `lib/bologna-por-v588.js` | 13342 | `b6766bf13cccfab7efde618b69ade750a94cc33f2399c564682c1e2974547c07` |
 | `lib/borden-davf-v441.js` | 3109 | `d08c660355725cc46ea8461c2706155f110f269ad2aba82522745e71ecc16e44` |
 | `lib/borrmann-gastric-v394.js` | 3865 | `df918e05475876bcc710c4fc8997aa67ee7d4832f352f1ae062fa1ab3d4678b1` |
@@ -189,7 +189,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/coagscore-v232.js` | 3053 | `aff9e82479da5b38deeaf70ade27caa7f5d1a0f21b01d74f764ca147e9846bd8` |
 | `lib/cobb-angle-v694.js` | 3885 | `c51f18d33e692edaf7490e8c3d849bc589a8e4daa5526c46535bf93c997333e3` |
 | `lib/coding-v5.js` | 12121 | `c312ab0cf076b4ad7770050c0ddf8de37b9dd13ca9b83b48dcabdd0d5b407ef7` |
-| `lib/cohens-kappa-v922.js` | 7974 | `8dff9c7ee5b36dbe8acc005b4f9bc8d4e5211ed5abefc30a225c73a0e8891bad` |
+| `lib/cohens-kappa-v922.js` | 8230 | `0044972b4e40f1f171904ff3f9750d98922d118a1860a0b9148a7f2fbf2e1e3a` |
 | `lib/columbia-fsgs-v532.js` | 11989 | `28d8b6d7b02e2a089ce151e7aab0a269efe8181262a34f4884f5df7102140e41` |
 | `lib/compera-2-v574.js` | 13638 | `af39867be80911c28ccb674bdc4cf61360c3aa8a890b0d2cc3d8acf43e1ea4ad` |
 | `lib/completeness-cytoreduction-v655.js` | 3731 | `af132705e335c78d95b7767dbce546d37d3a8737d9945bea15cf25537d3a80a1` |
@@ -217,7 +217,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/decision-rules-v258.js` | 7948 | `b2b50a85b4bd82e4ce22f014f4651a5c1e6195836db8ec526edab9797c68f23d` |
 | `lib/dejour-trochlea-v485.js` | 3370 | `e24e2cb02e597a2dd73c81b424a1305b3423609993c79e142fb1aa0f4a010e31` |
 | `lib/delbet-femoral-neck-v378.js` | 3870 | `be1d4650275a314e54cacb832804c6b41af08843d296ec4938c2c22ac7db42cc` |
-| `lib/delta-check-v925.js` | 8227 | `d0251563feb9662c40523e9617b64531404a5bc8c3a0d99a1b0c027237bd6453` |
+| `lib/delta-check-v925.js` | 8560 | `abf5710ac31ccbf152531f1986ae2cfce6cfa564560ae6bd9bbe82bc24a6ab68` |
 | `lib/denis-sacral-v376.js` | 3688 | `fc489399a839b38692a0f716910e6e31f30ff38407b35cc4e160ef595baad540` |
 | `lib/derivation.js` | 7056 | `5288dbaac973b6219d70c30a7802d4f1f82ecbcfda83bbc5636a10cb33db668b` |
 | `lib/derm-v151.js` | 15364 | `d7146870637b7baf5f1f2cdc7181ee189ef5fee0c488e0c0baa6855de0a77c42` |
@@ -387,7 +387,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/hpa-glaucoma-v801.js` | 6640 | `8ad5db7d6d59115656770c58c4018f2e45d94d838ece210b4e959a331dc53c2b` |
 | `lib/hrs-aki-v808.js` | 5530 | `1c0f95ac894d64cfa61e232142bcea6c972b1eb9d79dd7ce9a9a2bc88d44d40b` |
 | `lib/hughes-gbs-v800.js` | 3821 | `7eccbcbfa3b119a77f179e32c09a0d60436e093d390a0cbcdcd2c615e53964fa` |
-| `lib/hys-law-v908.js` | 8849 | `02edce786bef2618b9314eefd8f44d3538b14521d2ecda677ae14a6406fd0f18` |
+| `lib/hys-law-v908.js` | 9417 | `be27f87e76c3121e0b8efd58735cafce94409f2105047d60fd21461dfbde99b6` |
 | `lib/iad-globiad-v901.js` | 7293 | `9dceb0d31486938d1741281b42b39ecee8567de4db8d70fe7c2154ce2cbeedb2` |
 | `lib/ibd-v246.js` | 6924 | `ff47b0c4c160ca6db81dc89d6b4cdf2a596bf6d77869aa9399015ac713697b5a` |
 | `lib/ibfat-v731.js` | 2775 | `83f8a24c522e10f435e3bdea1b89068ce97699f41346ceff945e035049807cd1` |
@@ -636,8 +636,8 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/pederson-difficulty-v717.js` | 3469 | `5f7fb47b29141583014bbf6142329bfc1e95da75272b063d20479f5631849b8e` |
 | `lib/pediatric-acute-v262.js` | 7528 | `b1fd39e3e4b0c63b79c355fa740035c3deb7a574783ad5ad1d0cee8fa2416696` |
 | `lib/pedis-v613.js` | 8884 | `f158474599314efcff28d525a5512b83d595a7fc21d75bb30dac2620d741b6b9` |
-| `lib/peds-growth-v141.js` | 12800 | `d88ff256e715181dc4b0c611584d2542968bd1f2e3cb66bab2f5ad5cab522f1d` |
-| `lib/peds-percentile-v169.js` | 8081 | `f4f77722f256c375a17e4910a4ee7a30253c62c45a0ee4c88afe2a7377cb06ed` |
+| `lib/peds-growth-v141.js` | 13014 | `47eb194a4f8eb9cc7007429c7843e48cd7fa8780ebcd8a2201bd119f78eb154d` |
+| `lib/peds-percentile-v169.js` | 8290 | `dbaec78619e7c9190044c9cdb8ecd8a2bb03a871f351e0454a06e1c5b816e9b0` |
 | `lib/peds-sepsis-v278.js` | 8360 | `8611b803d3273833b65d5d11eb7de6dc14af6fa36a739cc72700290606b8ef83` |
 | `lib/peds-v140.js` | 19548 | `9cdb52162767466d9f79bef4cdd351ae7f0b616d00c5013cc86a7cfef51e631f` |
 | `lib/peds-v98.js` | 16874 | `2e6e709332d5911144e0a93dd6ebb5fd0d0719d7c71e90ea4031849701a49cdb` |
@@ -777,7 +777,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/shanghai-brugada-v581.js` | 14881 | `8038885cb87cd4d6a78206a53fec0f593d22955e15beb087c0c77ba462586c4b` |
 | `lib/sievers-bav-v396.js` | 2890 | `338e3c724523816bf4e7f055ecc6da9ac807f5adf1cf4ffa7d24f6a42866b7a1` |
 | `lib/siewert-v323.js` | 3414 | `dd142653b120d3c76b1f92370828ec9a80e6a45e0b808bc1d98bad626b3571c8` |
-| `lib/sigma-metric-v921.js` | 6897 | `ea25a5b6fae77cc02900189c34afa9ae4437ab5695d6ef222930341038041abf` |
+| `lib/sigma-metric-v921.js` | 7230 | `7fbc1b15225fdcc7ab0cecdd96eb6bc13c06c88f19a94a439c0d4203dcc874fc` |
 | `lib/silness-loe-plaque-index-v723.js` | 3720 | `e214308a870b0c819003324165c234f70785402876a0132a4bb7c7f4c81d33f1` |
 | `lib/simple-shoulder-test-v793.js` | 4062 | `7a19914366d9a65e01a55920d42ceeefa143f6b11ecb3ccc6125e79ae61626c5` |
 | `lib/simpson-angus-v515.js` | 4076 | `ac4c0ab6135693d8e2ae1d91e8bbd2d3f176262bf2be9107be355d942d0a2ca1` |
@@ -844,7 +844,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/tscherne-closed-v350.js` | 4710 | `abc1bfdfe56b3697d95e667db5677d8b54ed8bd45f11956bd8930705e2091c8c` |
 | `lib/twstrs-severity-v542.js` | 11802 | `d0e1f92f25a8ae77daf0a459cfb99d8a70de46c72b335d6029d6df08bb33afb0` |
 | `lib/ucsf-hcc-v686.js` | 4651 | `e3ab017b2a8c51ff6885b2fbc5cc002d26cd8372d3ca08ce0cc5929453283d70` |
-| `lib/udca-response-v909.js` | 10538 | `f0f07fe22eb3b1a051e9cff63f22d13fa747d08af0251f0b915d0e35b94624eb` |
+| `lib/udca-response-v909.js` | 10871 | `bfa1ab086e2a735605887dd97bcc14e490e62f981087f0973b88d60c8a83ed38` |
 | `lib/unit-convert.js` | 2601 | `642818802952c2c5e87338bc035dcd9d5ff07dec1e8b97a31ca09b0be38c14d2` |
 | `lib/up-to-seven-v586.js` | 11393 | `4a379fbb63e617cb741a5369394d693751912101492558fdda03ca9c478ff06b` |
 | `lib/uro-v130.js` | 12895 | `370c7f4f91e8adeff37012c9d024e2bab403330eaffeecee756d06a61fb30c21` |

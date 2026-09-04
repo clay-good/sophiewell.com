@@ -7,7 +7,7 @@
 // age, a BMI of 0 reported as "Underweight"). spec-v1038 took the next thirteen:
 // the infusion rates and insulin doses that came out as zero, the age bands that
 // silently selected the neonatal cut-offs, and the ventilator criterion that
-// printed "no" for a measurement nobody had taken. These 44 are what is left.
+// printed "no" for a measurement nobody had taken. These 39 are what is left.
 //
 // Each line is one of three things, and telling them apart is the work:
 //
@@ -30,13 +30,10 @@ export const ANSWERS_WITHOUT_A_REQUIRED_FIELD = new Set([
   "bard-score",
   "bess-balance-error",
   "big",
-  "bland-altman",
   "cci-platelet",
   "ciwa",
   "cob-calc",
-  "cohens-kappa",
   "corrected-ca-na",
-  "delta-check",
   "digoxin",
   "em-time",
   "esas-symptom-assessment",
@@ -45,7 +42,6 @@ export const ANSWERS_WITHOUT_A_REQUIRED_FIELD = new Set([
   "harris-hip-score",
   "harvey-bradshaw",
   "hscore-hlh",
-  "hys-law",
   "ihs4",
   "intubation-difficulty-scale",
   "iv-osmolarity",
@@ -67,7 +63,6 @@ export const ANSWERS_WITHOUT_A_REQUIRED_FIELD = new Set([
   "roland-morris-disability",
   "rvu-payment",
   "salt-score",
-  "stewart-sid-sig",
   "vis",
   "wat-1",
 ]);
