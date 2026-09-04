@@ -40,6 +40,13 @@ function s29d(label, id, options) {
 function safe29d(o, fn) { clear(o); try { fn(); } catch (err) { o.appendChild(el('p', { class: 'muted', text: err.message })); } }
 function v29d(id) { return document.getElementById(id).value; }
 function nv29d(id) { return Number(document.getElementById(id).value); }
+// spec-v1038: the blank-aware companion. `Number('')` is 0, so nv29d cannot tell
+// a measurement of zero from a measurement nobody took.
+function nvOrNull29d(id) {
+  const n = document.getElementById(id);
+  if (!n || String(n.value).trim() === '') return null;
+  return Number(n.value);
+}
 
 export const renderers = {
   prep(root) {
@@ -540,17 +547,26 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     const run = () => safe29d(o, () => {
       const r = ventSbtPeep({
-        pao2FiO2:         nv29d('vs-pf'),
-        peep:             nv29d('vs-peep'),
-        fio2:             nv29d('vs-fio2'),
+        pao2FiO2:         nvOrNull29d('vs-pf'),
+        peep:             nvOrNull29d('vs-peep'),
+        fio2:             nvOrNull29d('vs-fio2'),
         vasopressors:     document.getElementById('vs-vaso').checked,
         awakeCooperative: document.getElementById('vs-awake').checked,
         ardsArm:          v29d('vs-arm'),
         lookupFiO2:       v29d('vs-lf'),
       });
-      o.appendChild(el('h2', { text: r.sbtReady ? 'SBT ready (Boles 2007)' : 'SBT not ready' }));
+      // spec-v1038: a criterion nobody measured printed as "no", which reads as a
+      // measured reason to keep the patient ventilated. It says so instead, and
+      // the heading distinguishes not-assessed from not-ready.
+      const unmeasured = r.unmeasuredCriteria || [];
+      o.appendChild(el('h2', {
+        text: r.sbtReady ? 'SBT ready (Boles 2007)'
+          : (r.failedCriteria.length ? 'SBT not ready' : 'SBT readiness not assessed'),
+      }));
       const ul = el('ul');
-      for (const [label, ok] of Object.entries(r.sbtChecks)) ul.appendChild(el('li', { text: `${label}: ${ok ? 'ok' : 'no'}` }));
+      for (const [label, ok] of Object.entries(r.sbtChecks)) {
+        ul.appendChild(el('li', { text: `${label}: ${unmeasured.includes(label) ? 'not measured' : (ok ? 'ok' : 'no')}` }));
+      }
       o.appendChild(ul);
       if (r.suggestedPeep !== null) o.appendChild(el('p', { text: `ARDSnet ${r.ardsArm}-PEEP arm at FiO2 ${r.lookupFiO2}: PEEP ${r.suggestedPeep} cm H2O.` }));
       for (const b of r.banners) o.appendChild(el('p', { class: 'clinical-notice', text: b }));

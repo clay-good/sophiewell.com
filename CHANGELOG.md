@@ -8,6 +8,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Thirteen more calculators that answered without a value they need.** Six
+  printed a dose or pump rate of zero, two scored a child against a neonate's
+  age-band thresholds, two ruled out from a partial sum, and one listed a
+  ventilator criterion nobody had measured as one that had failed. Also fixes
+  a guard that had stopped working: `Number(null)` is 0, so a blank-safety
+  change had quietly disabled HACOR's missing-input check. See
+  docs/spec-v1038.md.
 - **A missing lab refused an agent and answered a nurse.** The agent surface
   has always refused a calculation missing a required input; the browser read
   the same blank field as zero and answered -- "PE excluded" on a D-dimer

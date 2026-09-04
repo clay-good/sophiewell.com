@@ -2428,6 +2428,9 @@ export const renderers = {
         acuteDiseaseNoIntakeGt5d: checked('mu-acute'),
       };
       const r = S4.mustNutrition(inputs);
+      // spec-v1038: no total while a component is unmeasured and the reading would
+      // be the reassuring one.
+      if (r.incomplete) { o.appendChild(el('p', { text: r.band })); return; }
       o.appendChild(el('h2', { text: `MUST ${r.score}` }));
       o.appendChild(el('p', { text: r.band }));
       if (deriv) updateDerivationSteps(deriv, META['must-nutrition'], inputs);

@@ -71,7 +71,13 @@ export const renderers = {
     const deriv = renderDerivation(META['drip-rate']);
     if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
-      const inputs = { volumeMl: nv('v'), durationMin: nv('t'), dropFactor: nv('df') };
+      // spec-v1038: a blank volume read as 0 mL and the tile answered "Rate: 0
+      // mL/hr, Drops: 0 gtts/min" -- a pump setting, from a bag nobody had sized.
+      const volumeMl = nvOrNull('v');
+      const durationMin = nvOrNull('t');
+      const dropFactor = nvOrNull('df');
+      if (needValues(o, [['a volume', volumeMl], ['a duration', durationMin], ['a drop factor', dropFactor]])) return;
+      const inputs = { volumeMl, durationMin, dropFactor };
       const r = C.dripRate(inputs);
       resultRow(o, [
         { label: 'Rate', value: r.mlPerHr, units: 'mL/hr' },
@@ -121,9 +127,14 @@ export const renderers = {
     root.appendChild(presets);
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
+      // spec-v1038: a blank ordered dose read as 0 and the tile answered "Infusion
+      // rate: 0 mL/hr" -- a pump setting for a drip nobody had ordered.
+      const doseValue = nvOrNull('dv');
+      const concentrationValue = nvOrNull('cv');
+      if (needValues(o, [['a dose', doseValue], ['a concentration', concentrationValue]])) return;
       const r = C.concentrationToRate({
-        doseValue: nv('dv'), doseUnit: document.getElementById('du').value,
-        weightKg: unitNum('w'), concentrationValue: nv('cv'),
+        doseValue, doseUnit: document.getElementById('du').value,
+        weightKg: unitNum('w'), concentrationValue,
         concentrationUnit: document.getElementById('cu').value,
       });
       o.appendChild(el('p', { text: `Infusion rate: ${r.mlPerHr} mL/hr` }));
@@ -676,9 +687,14 @@ export const renderers = {
     root.appendChild(field('Insulin-to-carb ratio (g per unit)', 'ic-icr'));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
+      // spec-v1038: a blank glucose read as 0 mg/dL, which is not a reading any
+      // patient survives, and the tile still returned a total insulin dose.
+      const currentBG = nvOrNull('ic-bg');
+      const targetBG = nvOrNull('ic-target');
+      if (needValues(o, [['a current blood glucose', currentBG], ['a target', targetBG]])) return;
       const r = insulinCorrection({
-        currentBG: nv('ic-bg'),
-        targetBG:  nv('ic-target'),
+        currentBG,
+        targetBG,
         isf:       nv('ic-isf'),
         totalDailyDose: nv('ic-tdd'),
         isfRule:   document.getElementById('ic-rule').value,

@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `fb54e3efb053eb52`
-Generated: 2026-09-04T03:23:30.364Z
+Build ID: `6028e09a4ac9e090`
+Generated: 2026-09-04T03:57:58.285Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -760,7 +760,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/schobinger-avm-v497.js` | 3484 | `fd7d680fede1965fd9a9026d0977e4f2c1970e30d33718df3daaca235dfed009` |
 | `lib/schofield-v779.js` | 4325 | `7c398e3b1dc2df66c5323baee0f73ff66c28927fb47a72ede85dfd51d2de4931` |
 | `lib/schwab-england-v385.js` | 4331 | `caddd0709826db63186ebf0a5f8b60fd9a3e00fa934bddc3e0331977f70c5e4b` |
-| `lib/scoring-v4.js` | 252260 | `60007e4422d6ea19bff1f111a4261c231011117c1c40e10d91012e41f5e23018` |
+| `lib/scoring-v4.js` | 254637 | `6870bab29d7de910fd45bf1a88c14518441ee1deb3c0bf870ab5144dc11a33d8` |
 | `lib/scoring-v5.js` | 13266 | `88364077a6f61dd6dcd3f7ea1791185515ac6b92b95ac025aebf0b3c895bf9ec` |
 | `lib/scoring-v6.js` | 27427 | `ed570d8507d63371de2181a97743f8ee1f40e2042eedba9dac2216ed247d6fad` |
 | `lib/scp-pushing-v562.js` | 12399 | `6da019a04668722b7a8d448b4d7bf9908717629b72e4a162088e74363ad62360` |
@@ -1702,14 +1702,14 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-b.js` | 74408 | `522243d08548bc3f263a37b5c8bfb88bc21a057503012bc16284cf78df1949f9` |
 | `views/group-c.js` | 24124 | `4517f2f966279a4af40b98aa5197db7d2fee3b014785cb6e6ac317fd2157cbf5` |
 | `views/group-e.js` | 44714 | `4d8c890c47ac3dfffe59a51391722607221f18ba45987430d26d56e36ba11a59` |
-| `views/group-f.js` | 48460 | `806c632bd93f3f7af976dd88649e7dc4aea379d21baea1e938ca6d5c660daac0` |
-| `views/group-g.js` | 235537 | `9a941e0765b234a1da3c8bc68dd558bb75716b8eb06cf0dbf051685144e74409` |
-| `views/group-h.js` | 28736 | `a1229d2f251e2fb480c1424cfd56d1bf013fca3697ea6de3b46ad8d721ccb6e2` |
+| `views/group-f.js` | 49474 | `e5715c581e92c22599529886d09df8c993f202dd7935c8b5a01ca1bf660fd225` |
+| `views/group-g.js` | 235731 | `7751f371dcf55200d08c97139566a5ffd618792709a68db66c6a523b80a6b5ed` |
+| `views/group-h.js` | 29476 | `471089e63a0b8aa4113f2b78da5bbff99d4719fdbcde7fb77466c884dd4ce50c` |
 | `views/group-i.js` | 24217 | `e8319c063517ef37d78d1186c99302b9dd7a2d2b87a9e0d82d4e5701efef4180` |
 | `views/group-j.js` | 8989 | `521f4c30cd952ee6d9845a843735b519a6acd21e495135d9d7f34747270a4373` |
 | `views/group-klmno.js` | 7372 | `c861d44056fed12dd72a01398ea556e5ed560af424f8c0a20ccfee12bc56eeaf` |
-| `views/group-v10.js` | 30840 | `88859ef411e4eb2642f7c44bcd2a60f8457aad8d3497346a5ac09ac96d0d03f0` |
-| `views/group-v11.js` | 21912 | `6d05e77ce9c51df937dd1ce6a2c9299e6f64b41332cf873f80f94861005a7298` |
+| `views/group-v10.js` | 33266 | `2e6ec749c545ceaa8d059dc538b387e94b97f2757f96ef35d514d07052677f4b` |
+| `views/group-v11.js` | 22668 | `8b1a0a15f26ef81ffe7c941e09579d2609bf9309a34d3e287288791cc87acf90` |
 | `views/group-v117.js` | 12135 | `8fa7548c058e29df7225b915dd09d9abff42a06bb63562cc0271d6b6632192cf` |
 | `views/group-v118.js` | 11856 | `edded5915d860f7b1ca133f11fddca45c9af3c13b47f5137340e0369e1ebe623` |
 | `views/group-v119.js` | 9513 | `1f10862d9aab600674449534502faf78e810ea756704d37066ac0ca7347bf580` |

@@ -57,6 +57,16 @@ function optNum(id) {
   return Number(n.value);
 }
 function chk(id) { return document.getElementById(id).checked; }
+// spec-v1038: the same helper the other view modules carry -- name the values a
+// calculation is short of, in the words on the labels.
+function needValues(o, pairs) {
+  const missing = pairs.filter(([, v]) => v == null || Number.isNaN(v)).map(([label]) => label);
+  if (!missing.length) return false;
+  const list_ = missing.length === 1 ? missing[0]
+    : `${missing.slice(0, -1).join(', ')} and ${missing[missing.length - 1]}`;
+  o.appendChild(el('p', { class: 'muted', text: `Enter ${list_} to calculate.` }));
+  return true;
+}
 function safe(o, fn) {
   clear(o);
   try { fn(); } catch (err) { o.appendChild(el('p', { class: 'muted', text: err.message })); }
@@ -212,8 +222,14 @@ export const renderers = {
     root.appendChild(checkField('Neurotoxicity risk factor(s) present', 'bb-risk'));
     const o = out(); root.appendChild(o);
     wire(['bb-hours', 'bb-tsb', 'bb-tsb-unit', 'bb-ga', 'bb-risk'], () => safe(o, () => {
+      // spec-v1038: every Bhutani percentile is hour-specific, so an age read as
+      // 0 h compares the bilirubin against the newborn's first hour and reported
+      // "High-risk zone (>95th percentile)" for a baby whose age nobody entered.
+      const bbHours = optNum('bb-hours');
+      const bbGa = optNum('bb-ga');
+      if (needValues(o, [['an age in hours', bbHours], ['a gestational age', bbGa]])) return;
       const r = S.bhutaniBilirubin({
-        ageHours: val('bb-hours'), tsb: unitNum('bb-tsb'), gaWeeks: val('bb-ga'), riskFactors: chk('bb-risk'),
+        ageHours: bbHours, tsb: unitNum('bb-tsb'), gaWeeks: bbGa, riskFactors: chk('bb-risk'),
       });
       o.appendChild(list([
         li(`Bhutani zone: ${r.zone}`, r.abovePhoto ? 'warn' : null),
@@ -247,9 +263,16 @@ export const renderers = {
         measuredMl: measuredMl || 0, padGrams: padGrams || 0, dryTareGrams: val('qp-tare') || 0,
         vaginal: chk('qp-vaginal'), unstable: chk('qp-unstable'), riskFactors: val('qp-risk') || 0,
       });
+      // spec-v1038: QBL is a SUM, so a missing component makes it a lower bound.
+      // With the suction canister blank and the pads weighed, the tile answered
+      // "800 mL -- Below the postpartum-hemorrhage threshold": a rule-out on
+      // blood that had been lost into a container nobody had measured.
+      const qblPartial = measuredMl == null || padGrams == null;
       o.appendChild(list([
-        li(`Quantitative blood loss: ${fmt(r.qbl, { unit: 'mL' })}`, r.pphFlag ? 'warn' : null),
-        li(r.pphBand, r.pphFlag ? 'warn' : null),
+        li(`Quantitative blood loss: ${qblPartial ? 'at least ' : ''}${fmt(r.qbl, { unit: 'mL' })}`, r.pphFlag ? 'warn' : null),
+        qblPartial && !r.pphFlag
+          ? li('Enter both the measured/collected blood and the weighed pads: this total counts only what has been entered, so it cannot put the loss below the postpartum-hemorrhage threshold.')
+          : li(r.pphBand, r.pphFlag ? 'warn' : null),
         li(`Risk tier: ${r.tier}`),
       ]));
       note(o, r.note);
@@ -276,8 +299,13 @@ export const renderers = {
     if (deriv) root.appendChild(deriv);
     const ids = ['p2-age', 'p2-gcs', 'p2-pupils', 'p2-lactate', 'p2-lactate-unit', 'p2-map', 'p2-creat', 'p2-pf', 'p2-paco2', 'p2-vent', 'p2-wbc', 'p2-plt'];
     wire(ids, () => safe(o, () => {
+      // spec-v1038: PELOD-2 applies a different MAP and creatinine cut-off in each
+      // of five age bands. Read as 0 the age silently selected "<1 mo", so a
+      // teenager's numbers were scored against a neonate's thresholds.
+      const p2Age = optNum('p2-age');
+      if (needValues(o, [['an age in months', p2Age]])) return;
       const inputs = {
-        ageMonths: val('p2-age'), gcs: val('p2-gcs'), pupilsFixed: chk('p2-pupils'), lactate: unitNum('p2-lactate'),
+        ageMonths: p2Age, gcs: val('p2-gcs'), pupilsFixed: chk('p2-pupils'), lactate: unitNum('p2-lactate'),
         map: val('p2-map'), creatinine: val('p2-creat'), pao2fio2: val('p2-pf'), paco2: val('p2-paco2'),
         invasiveVent: chk('p2-vent'), wbc: val('p2-wbc'), platelets: val('p2-plt'),
       };
@@ -310,8 +338,12 @@ export const renderers = {
     if (deriv) root.appendChild(deriv);
     const ids = ['ps-age', 'ps-pf', 'ps-vent', 'ps-plt', 'ps-bili', 'ps-bili-unit', 'ps-map', 'ps-vaso', 'ps-gcs', 'ps-creat'];
     wire(ids, () => safe(o, () => {
+      // spec-v1038: like PELOD-2 above, pSOFA reads its MAP and creatinine
+      // cut-offs out of an age band, and a blank age selected the neonatal one.
+      const psAge = optNum('ps-age');
+      if (needValues(o, [['an age in months', psAge]])) return;
       const inputs = {
-        ageMonths: val('ps-age'), pao2fio2: val('ps-pf'), vent: chk('ps-vent'), platelets: val('ps-plt'),
+        ageMonths: psAge, pao2fio2: val('ps-pf'), vent: chk('ps-vent'), platelets: val('ps-plt'),
         bilirubin: unitNum('ps-bili'), map: val('ps-map'), vasoactive: val('ps-vaso'), gcs: val('ps-gcs'), creatinine: val('ps-creat'),
       };
       const r = S.psofa(inputs);
@@ -546,9 +578,12 @@ export const renderers = {
         doseMilliunitsMin: dose || 0,
         rateMlHr: rate || 0,
       });
+      // spec-v1038: with only one of the two entered, the other direction was
+      // computed from a zero and printed as a real setting -- "Ordered dose ->
+      // pump rate: 0 mL/hr" beside a delivered dose of 12 mU/min.
       o.appendChild(list([
-        li(`Ordered dose -> pump rate: ${fmt(r.rateFromDoseMlHr)} mL/hr`),
-        li(`Pump rate -> delivered dose: ${fmt(r.doseFromRateMuMin)} mU/min`),
+        dose == null ? null : li(`Ordered dose -> pump rate: ${fmt(r.rateFromDoseMlHr)} mL/hr`),
+        rate == null ? null : li(`Pump rate -> delivered dose: ${fmt(r.doseFromRateMuMin)} mU/min`),
       ]));
       note(o, 'Typical titration: low-dose 1-2 mU/min q15-40 min; high-dose 3-6 mU/min. ACOG Induction of Labor.');
     });

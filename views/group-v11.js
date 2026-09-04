@@ -225,7 +225,11 @@ export const renderers = {
     ]));
     const o = out(); root.appendChild(o);
     wire(['mg-serum', 'mg-serum-unit', 'mg-sev'], () => safe(o, () => {
-      const serumMg = unitNum('mg-serum');
+      // spec-v1038: the severity band and the dose both come from the level. Read
+      // as 0 mg/dL -- a magnesium nobody had drawn -- the tile answered "Magnesium
+      // sulfate: 2-4 g IV".
+      const serumMg = unitNumOpt('mg-serum');
+      if (needValues(o, [['a serum magnesium', serumMg]])) return;
       const r = C.magnesiumReplacement({ serumMg, severity: val('mg-sev') });
       if (!r) { o.appendChild(el('p', { class: 'muted', text: 'Choose a severity band.' })); return; }
       o.appendChild(list([
@@ -398,7 +402,15 @@ export const renderers = {
     root.appendChild(field('Target glucose (mg/dL)', 'ci-tgt', { placeholder: 'e.g. 120' }));
     const o = out(); root.appendChild(o);
     wire(['ci-carbs', 'ci-ic', 'ci-isf', 'ci-cur', 'ci-tgt'], () => safe(o, () => {
-      const r = C.carbInsulinBolus({ carbsG: val('ci-carbs'), icRatio: val('ci-ic'), isf: val('ci-isf'), currentGlucose: val('ci-cur'), targetGlucose: val('ci-tgt') });
+      // spec-v1038: with the carbohydrate count blank the meal half of the bolus
+      // was computed from 0 g and printed as "Meal bolus: 0.0 units" beside a real
+      // correction dose -- an insulin order with one term missing, not zero.
+      const ciCarbs = optNum('ci-carbs');
+      const ciRatio = optNum('ci-ic');
+      const ciCur = optNum('ci-cur');
+      if (needValues(o, [['a carbohydrate amount', ciCarbs], ['an insulin-to-carb ratio', ciRatio],
+        ['a current glucose', ciCur]])) return;
+      const r = C.carbInsulinBolus({ carbsG: ciCarbs, icRatio: ciRatio, isf: val('ci-isf'), currentGlucose: ciCur, targetGlucose: val('ci-tgt') });
       if (!r) { o.appendChild(el('p', { class: 'muted', text: 'Enter carbs, an IC ratio, and an ISF.' })); return; }
       resultRow(o, [
         { label: 'Meal bolus', value: fmt(r.mealBolus, { digits: 1 }), units: 'units' },

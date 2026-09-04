@@ -4,7 +4,10 @@
 // empty-form-ledger.js, and seeded the same way: from the sweep that found them.
 // spec-v1037 fixed the ten whose answer was a decision (a PE excluded on a blank
 // D-dimer, "Severe ARDS" on a blank blood gas, a creatinine clearance with no
-// age, a BMI of 0 reported as "Underweight"). These 65 are what is left.
+// age, a BMI of 0 reported as "Underweight"). spec-v1038 took the next thirteen:
+// the infusion rates and insulin doses that came out as zero, the age bands that
+// silently selected the neonatal cut-offs, and the ventilator criterion that
+// printed "no" for a measurement nobody had taken. These 51 are what is left.
 //
 // Each line is one of three things, and telling them apart is the work:
 //
@@ -29,51 +32,39 @@ export const ANSWERS_WITHOUT_A_REQUIRED_FIELD = new Set([
   "ascvd",
   "bard-score",
   "bess-balance-error",
-  "bhutani-bilirubin",
   "big",
   "bland-altman",
-  "carb-insulin-bolus",
   "cci-platelet",
   "ciwa",
   "cob-calc",
   "cohens-kappa",
-  "conc-rate",
   "corrected-ca-na",
   "cows",
   "delta-check",
   "digoxin",
-  "drip-rate",
   "em-time",
   "esas-symptom-assessment",
   "glasgow-imrie",
   "groningen-frailty-indicator",
-  "hacor",
   "harris-hip-score",
   "harvey-bradshaw",
   "hscore-hlh",
   "hys-law",
   "ihs4",
-  "insulin-correction",
   "intubation-difficulty-scale",
   "iv-osmolarity",
   "lis-murray",
   "lrinec",
-  "magnesium-replacement",
   "midas",
   "mmt8-myositis",
   "modifier-order",
   "mtp-tracker",
-  "must-nutrition",
   "niss",
   "norepi-equiv",
-  "oxytocin-titration",
-  "pelod2",
   "popq-staging",
   "posas-observer-scar",
   "posas-patient-scar",
   "prevent",
-  "psofa",
-  "qbl-pph",
   "restraint-timer",
   "rivermead-mobility-index",
   "roland-morris-disability",
@@ -81,7 +72,6 @@ export const ANSWERS_WITHOUT_A_REQUIRED_FIELD = new Set([
   "rvu-payment",
   "salt-score",
   "stewart-sid-sig",
-  "vent-sbt-peep",
   "vis",
   "wat-1",
 ]);
