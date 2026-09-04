@@ -387,6 +387,14 @@ export const renderers = {
     root.appendChild(field('Total time on date of encounter (minutes)', 't'));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
+      // spec-v1043: a blank time read as 0 minutes, so the tile answered "Below the
+      // 15-minute floor for outpatient new-patient E/M (99202)" -- a coding verdict
+      // about an encounter whose time nobody had entered.
+      if (str('t').trim() === '') {
+        o.appendChild(el('p', { text: 'Enter the total time on the date of the encounter: the code is selected from it, and a blank field is not zero minutes.' }));
+        o.appendChild(el('p', { class: 'muted', text: 'Time bands per AMA 2021 office/outpatient E/M guidelines. Code descriptors are owned by the AMA and not bundled.' }));
+        return;
+      }
       const r = Code.emTimeSelector({ totalMinutes: num('t'), encounterType: str('enc') });
       if (r.code) {
         o.appendChild(el('p', { text: `Code: ${r.code} (${r.minutes} min, ${r.encounterType} patient)` }));

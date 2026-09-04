@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `f17cfaa1f4080209`
-Generated: 2026-09-04T05:30:53.225Z
+Build ID: `283b9d30068045e2`
+Generated: 2026-09-04T05:41:49.951Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -1704,7 +1704,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-e.js` | 44860 | `e884a75126ec63a13a9f9a2862892cad3d1599df527371c4c378aa9ddbe9f6bf` |
 | `views/group-f.js` | 49474 | `e5715c581e92c22599529886d09df8c993f202dd7935c8b5a01ca1bf660fd225` |
 | `views/group-g.js` | 235731 | `7751f371dcf55200d08c97139566a5ffd618792709a68db66c6a523b80a6b5ed` |
-| `views/group-h.js` | 29476 | `471089e63a0b8aa4113f2b78da5bbff99d4719fdbcde7fb77466c884dd4ce50c` |
+| `views/group-h.js` | 30041 | `ef2d74336a9ab03aa5fc8307f4d76ae8023dc6ecc80347c561e1269bc539fcea` |
 | `views/group-i.js` | 24217 | `e8319c063517ef37d78d1186c99302b9dd7a2d2b87a9e0d82d4e5701efef4180` |
 | `views/group-j.js` | 8989 | `521f4c30cd952ee6d9845a843735b519a6acd21e495135d9d7f34747270a4373` |
 | `views/group-klmno.js` | 7372 | `c861d44056fed12dd72a01398ea556e5ed560af424f8c0a20ccfee12bc56eeaf` |
@@ -2099,7 +2099,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v497.js` | 3205 | `c0b474c55700753713879acb24c3ca8e008329768ee39292e226e9c2cc5dfb87` |
 | `views/group-v498.js` | 3038 | `000f88258d700e6932fcf5c05aca71b775b064948189bfb5e28b3d1d1f14d82c` |
 | `views/group-v499.js` | 2989 | `9c032b263cf8f8693b763d34f11144c9f86aa087c52abf7dd53eb6bbcdc3b943` |
-| `views/group-v5.js` | 33100 | `a479e4a044da70029c7db514f4c8cebc9217f95505b81a16ce378fff03aafb96` |
+| `views/group-v5.js` | 33728 | `9d1ba42ad373895d55dd4ba4aa95e8fa8070b87a5a0493b69d590efc6e9e6cc3` |
 | `views/group-v500.js` | 3558 | `910b8e2e06e543d8a8cbd1ec8894a227316a3988f854041807205e6c04afcfba` |
 | `views/group-v501.js` | 3015 | `53f20f7cc95df9d4e795b66164f44a5dd13ee0ba4c42f6d5b304fdca8f1b6031` |
 | `views/group-v502.js` | 3455 | `58a0e11fbcd4fb53e5a2b755890dcf7c51bcca93c2b3c41922847bb12889596f` |

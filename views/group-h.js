@@ -323,9 +323,18 @@ export const renderers = {
     root.appendChild(f29d('Restraint order at (timestamp)', 'rt-ts', { type: 'datetime-local' }));
     const o = out(); root.appendChild(o);
     const run = () => safe29d(o, () => {
+      // spec-v1043: the renewal interval is banded on the age -- 4 h at 18 and
+      // over, 2 h from 9 to 17, 1 h under 9 for a violent restraint. `nv29d` is
+      // Number(''), so a blank age read as 0 years and the tile issued the
+      // under-9 interval for whoever was in the restraint.
+      const rtAge = nvOrNull29d('rt-age');
+      if (rtAge === null) {
+        o.appendChild(el('p', { class: 'muted', text: 'Enter the patient age: the renewal and re-assessment intervals are set by age band, so a blank age is not an age of zero.' }));
+        return;
+      }
       const r = restraintTimer({
         type:           v29d('rt-type'),
-        ageYears:       nv29d('rt-age'),
+        ageYears:       rtAge,
         orderTimestamp: v29d('rt-ts'),
       });
       o.appendChild(el('h2', { text: `Next renewal: ${r.nextRenewalIso}` }));

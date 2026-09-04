@@ -8,6 +8,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **The restraint timer used the under-9 intervals for a blank age.** Renewal
+  and re-assessment intervals are set by age band, and a blank age read as zero
+  years. The E/M time selector had the same shape, answering "below the
+  15-minute floor" for an encounter whose time nobody had entered. Both now
+  ask, and the 27 tiles still on the required-field ledger each carry the
+  reason they are there. See docs/spec-v1043.md.
 - **Five more, including three scales whose whole instrument is one count.**
   The Groningen frailty indicator, Roland-Morris and the Rivermead mobility
   index each take a single "how many items" field, and a blank one read as
