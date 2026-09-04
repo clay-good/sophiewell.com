@@ -55,7 +55,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1023](spec-v1023.md) | An exemption granted for one number covered a whole sentence |
 | [v1024](spec-v1024.md) | **Gate**: no calculator silently answers from the clock |
 | [v1025](spec-v1025.md) | The browser had no idea which fields were required |
-| [v1026](spec-v1026.md) | The sweep read tiles before they had finished answering |
+| [v1026](spec-v1026.md) | The sweep read each answer before it had finished rendering |
 | [v1027](spec-v1027.md) | The warning's permanence broke three suites about its neighbours |
 | [v1028](spec-v1028.md) | Two withdrawal scales opened already scored |
 | [v1029](spec-v1029.md) | What the empty-form ledger was hiding: five scores with a measurement inside |
