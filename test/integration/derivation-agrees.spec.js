@@ -81,7 +81,13 @@ for (let shard = 0; shard < SHARDS; shard += 1) {
       // a result the library withheld shows the reader "Cannot read properties
       // of undefined (reading 'sbp')" under the prompt. That is exactly what
       // mews and news2 did.
-      if (/Cannot read properties|is not a function|is not defined|undefined is not/.test(r.after.answer)) {
+      // "is not defined" is deliberately NOT in this list. It is how a
+      // ReferenceError reads, but it is also ordinary English: rope-score
+      // refuses with "The score is not defined without it, and age supplies up
+      // to 5 of its 10 points", which a sweep using that phrase flags as a
+      // crash. eslint's no-undef (spec-v1067) catches undefined identifiers
+      // statically anyway. The three left are unambiguous V8 runtime errors.
+      if (/Cannot read propert|is not a function|undefined is not/.test(r.after.answer)) {
         offenders.push(`${id}|${r.field}  A JAVASCRIPT ERROR REACHED THE ANSWER\n    ${r.after.answer.slice(0, 120)}`);
         continue;
       }

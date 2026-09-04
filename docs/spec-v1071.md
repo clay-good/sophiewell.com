@@ -89,6 +89,18 @@ shows the reader a `TypeError`. Both early-warning tiles carry named regression
 tests in `no-answer-from-nothing.spec.js`, with and without the trend fields
 filled.
 
+A whole-catalog probe (`js-error-probe.spec.js`) then cleared every field on all
+1,706 calculators looking for the same thing. **Zero** — the two early-warning
+tiles were the only ones, and they are fixed.
+
+It did catch me, though. The first word list included `is not defined`, which is
+how a `ReferenceError` reads and is also ordinary English: `rope-score` refuses
+with "The score **is not defined** without it, and age supplies up to 5 of its 10
+points". A sweep using that phrase reports a crash where there is none, and the
+same pattern had already gone into the gate, where it would have failed a build
+on correct copy. Both now match only unambiguous V8 runtime errors; `no-undef`
+(spec-v1067) catches undefined identifiers statically anyway.
+
 One exception, keyed `tileId|fieldId` like the ledger beside it: **`centor`**
 scores its four criteria on its own and asks for an age only to add the McIsaac
 modifier. Clearing the age leaves a real Centor score on screen beside the
