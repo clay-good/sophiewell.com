@@ -8074,6 +8074,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/sows-v1061.js (spec-v1061: Short Opiate Withdrawal Scale — clinical disclaimer)
 - `sows`
 
+### lib/sows-subjective-v1062.js (spec-v1062: Subjective Opiate Withdrawal Scale — clinical disclaimer)
+- `sows-subjective`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

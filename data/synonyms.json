@@ -7553,6 +7553,17 @@
       ],
       "tile": "sows",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "subjective opiate withdrawal scale",
+        "subjective opioid withdrawal scale",
+        "handelsman withdrawal scale",
+        "16 item opioid withdrawal self report",
+        "sows handelsman"
+      ],
+      "tile": "sows-subjective",
+      "audience": "clinicians"
     }
   ]
 }

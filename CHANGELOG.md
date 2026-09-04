@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **SOWS (Subjective Opiate Withdrawal Scale, Handelsman 1987).** The sixteen-item
+  self-report scale that shares an acronym with the ten-item Short scale added
+  alongside it. Both tiles name the other, and a search for "sows" offers both,
+  because the acronym does not say which one you meant. See docs/spec-v1062.md.
+
 - **SOWS (Short Opiate Withdrawal Scale).** The patient-reported companion to COWS:
   ten withdrawal symptoms rated none to severe, 0-30 total. It states no severity
   band, because Gossop 1990 publishes none -- and says so, since a reader
