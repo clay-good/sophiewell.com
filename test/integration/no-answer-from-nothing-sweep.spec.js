@@ -16,19 +16,17 @@
 
 import { test, expect } from '@playwright/test';
 import { ANSWERS_AN_EMPTY_FORM } from './empty-form-ledger.js';
+import { ASKING } from '../lib/asking-language.js';
 
 const SHARDS = 4;
 const SHARD_TIMEOUT_MS = 900_000;
 
 test.skip(({ browserName }) => browserName !== 'chromium', 'whole-catalog sweep is chromium-only');
 
-// The words a tile uses when it is asking rather than answering. "outstanding"
-// earns its place: eleven libraries phrase a refusal as "not met -- outstanding:
-// the age; at least 4 months of amenorrhea", and at a 25 ms settle the sweep was
-// reading those tiles before that sentence existed. A refusal that
-// says none of these is a refusal the reader cannot act on, which is its own
-// defect -- see spec-v1015.
-const ASKING = /enter |choose |select |complete |provide |missing|required|not scored|score all|rate all|measure |awaiting|fill |add at least|must be |out of range|cannot be|no criteria|unscored|check the value|blank|outstanding|rate the remaining/i;
+// spec-v1056: the asking vocabulary is shared with the required-field sweep now
+// (test/lib/asking-language.js). The two had a copy each and the copies had
+// drifted -- and the drift was being paid for in ledger lines, because a phrase
+// missing here makes this sweep flag a tile that is refusing correctly.
 
 for (let shard = 0; shard < SHARDS; shard += 1) {
   test(`no new tile answers a cleared form (shard ${shard + 1} of ${SHARDS})`, async ({ page }) => {

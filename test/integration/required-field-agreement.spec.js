@@ -21,6 +21,7 @@
 import { test, expect } from '@playwright/test';
 import { allCalculators } from '../../mcp/catalog.js';
 import { ANSWERS_WITHOUT_A_REQUIRED_FIELD } from './required-field-ledger.js';
+import { ASKING } from '../lib/asking-language.js';
 
 const SHARDS = 4;
 const SHARD_TIMEOUT_MS = 900_000;
@@ -29,16 +30,8 @@ test.skip(({ browserName }) => browserName !== 'chromium', 'whole-catalog sweep 
 
 // Shared with no-answer-from-nothing-sweep.spec.js: the words a tile uses when
 // it is asking rather than answering.
-// Two of these earn a note. "rate|score X from N" is how the rating tiles ask
-// for an item (`Rate vascularity on the 1-10 scale`), and it is written as a
-// pattern rather than the bare word so it cannot swallow "heart rate 80".
-//
-// And "not reached" is deliberately NOT here. spec-v1038 nearly added it, on the
-// strength of hys-law saying "the rule is not reached" -- which is exactly the
-// defect this sweep is for: a criterion nobody measured, reported as one that
-// was not met. A gate's asking-list must not learn to recognise the answers it
-// exists to catch.
-const ASKING = /enter |choose |select |complete |provide |missing|still needed|not scored|score all|rate all|(?:rate|score) [a-z0-9 ]{1,30}\b(?:from|on the) \d|measure |awaiting|fill |add at least|must be |out of range|cannot be|no criteria|unscored|check the value|blank|outstanding|rate the remaining|valid for ages|is required/i;
+// spec-v1056: shared with the empty-form sweep (test/lib/asking-language.js),
+// which also carries the two rules about editing it.
 
 const REQUIRED = (() => {
   const map = {};

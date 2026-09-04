@@ -22,6 +22,18 @@
 // -- every one a tile fixed between spec-v1013 and spec-v1025 whose line nobody
 // went back to delete, which left nine tiles exempt from the gate that was meant
 // to be protecting them.
+//
+// spec-v1056: thirty-five more went, and 78 became 43. Two causes. Most were
+// tiles fixed across spec-v1029 to spec-v1047, whose lines nobody deleted. The
+// rest were never defects at all: this sweep's asking-vocabulary had drifted
+// from the required-field sweep's copy, so refusals it did not recognise --
+// "PCE valid for ages 40-79 only", "Still needed: hemoglobin" -- looked like
+// answers, and the way a flagged tile gets quiet is a line here. The vocabulary
+// is shared now (test/lib/asking-language.js).
+//
+// The lesson is about ledgers generally: an exemption is the cheapest way to
+// silence a gate, so a gate whose judgment is slightly wrong does not look
+// wrong -- it looks like a longer ledger.
 export const ANSWERS_AN_EMPTY_FORM = new Set([
   // Its six clinical factors are pickers, and "no" is an answer: a patient with
   // congestive heart failure and diabetes scores 8 whether or not the contrast
@@ -35,50 +47,28 @@ export const ANSWERS_AN_EMPTY_FORM = new Set([
   // blanks are answered criteria; check that it is true of every field, not the
   // ones that gave the tile its name.
   "aat-deficiency",
-  "abc-scale",
   "acromegaly-biochem",
   "add-rs",
-  "arc-hbr",
-  "ascvd",
   "autoimmune-encephalitis",
-  "bess-balance-error",
   "bristol-girth",
   "cancer-cachexia",
-  "cdc-stature-for-age",
-  "cdc-weight-for-age",
-  "cf-diagnosis",
-  "corrected-age",
-  "digoxin",
   "easi",
-  "em-time",
-  "esas-symptom-assessment",
   "ewgsop2",
   "ews-escalation",
   "ghent-marfan",
-  "groningen-frailty-indicator",
-  "harris-hip-score",
-  "harvey-bradshaw",
   "hf-ef-classification",
   "hiv-pep-occupational",
-  "hlh-2004",
   "hpa-glaucoma",
   "igg4-rd-2020",
-  "ihs4",
   "indomethacin-headache-ichd3",
-  "intubation-difficulty-scale",
   "isth-bat",
   "kings-college",
-  "magnesium-replacement",
   "masld-criteria",
   "mchat-rf",
   "membranous-risk",
-  "midas",
   "migraine-ichd3",
-  "mmt8-myositis",
-  "moh-ichd3",
   "mswat",
   "mtp-tracker",
-  "must-nutrition",
   "naloxone",
   "nhsn-vae",
   "pa-turnaround",
@@ -88,20 +78,9 @@ export const ANSWERS_AN_EMPTY_FORM = new Set([
   // criterion, so an untouched form really is a form of negatives; only the age
   // was being invented, and the tile no longer quotes an age-specific rate
   // without one.
-  "pecarn-head",
-  "peds-bmi-percentile",
   "peds-weight-conv",
   "pertussis-case-def",
   "pews",
-  "posas-observer-scar",
-  "posas-patient-scar",
-  "prevent",
-  "quintero-ttts",
-  "restraint-timer",
-  "rivermead-mobility-index",
-  "roland-morris-disability",
-  "rudas",
-  "salt-score",
   "sea-guideline",
   "sepsis-bundle-clock",
   "systemic-mastocytosis",
@@ -110,9 +89,7 @@ export const ANSWERS_AN_EMPTY_FORM = new Set([
   "triple-i",
   "unit-converter-v4",
   "vasi",
-  "vent-sbt-peep",
   "vis",
-  "wat-1",
   "who-severe-malaria",
   "years-pe"
 ]);

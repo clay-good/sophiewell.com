@@ -8,6 +8,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Thirty-five calculators were exempted from a safety check for no reason.**
+  Two catalog sweeps each had their own copy of "what a tile asking for a value
+  sounds like", and the copies had drifted -- so refusals one sweep understood
+  and the other did not looked like answers, and the way a flagged tile gets
+  quiet is an exemption. The vocabulary is shared now and the exemption list
+  went from 78 to 43. See docs/spec-v1056.md.
 - **Two copies of one checking rule had drifted apart.** The browser and agent
   surfaces each verify that a calculator produces the numbers its example
   documents, and each had its own copy of the rule -- so a fix made to one
