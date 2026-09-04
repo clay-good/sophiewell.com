@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `e950ebaf3fbd77bf`
-Generated: 2026-09-04T17:18:23.493Z
+Build ID: `7853a35ef3657984`
+Generated: 2026-09-04T17:52:41.759Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -857,7 +857,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/van-herick-v435.js` | 3423 | `1df5f89865068a14369482f3bd141c7ef8999a49e9e3b6ada87ebcffb36cdd15` |
 | `lib/van-nuys-vnpi-v652.js` | 5583 | `59049426b6b97b137e2c28ae2072640f2310ed548c27027eac6e069e334ddcaf` |
 | `lib/vancouver-periprosthetic-v483.js` | 3496 | `49ecf63cc801a1b465268edd621659b820dad6556472ff09b40e428eb12575bf` |
-| `lib/vascular-v105.js` | 14700 | `316e2027c3d3f0d2d7c4ae203c4ae3e71a53c2e055a2afc762734d36d319be04` |
+| `lib/vascular-v105.js` | 15623 | `2449631a3b0b038fed08cb091f8250bcc48da1301d1abf1339e4873024bd14db` |
 | `lib/vasi-v556.js` | 12179 | `dd7c896bdaac1ca23377d91c307dc02c77738962f87efff83196db3dc8874e39` |
 | `lib/vaughan-williams-v427.js` | 4207 | `241cb6fc10d5a9b15a3a849ab44f7887e7508a99daa8a9c55567feb737b1893d` |
 | `lib/vent-v195.js` | 9473 | `9f8fd14cdaa7e971da29cc8bdc6247bf8c7e3974daae70bc597e2269c400c110` |
@@ -1705,7 +1705,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-a.js` | 577 | `eed37c656d1fa00c097a07f07db4b1b6ac7a0a74bafc210978265a1d90856bd7` |
 | `views/group-b.js` | 75641 | `ef51504da5c8760989b47fafba242b4cdbbea34a99407393ebef2eba16e683c8` |
 | `views/group-c.js` | 24555 | `82ebad28ab001aacbbb39459436ed2f9f3df86971209a4bb178ad2f108a98742` |
-| `views/group-e.js` | 45769 | `1ceabb6100ddd9fca88d662f11fcd2937e6ae911cf13c31390e83a6b1dbb737a` |
+| `views/group-e.js` | 46523 | `3322ecb1dd5087a58b28661601c05948efa21dbc0a57860e918fb2b4b479d60b` |
 | `views/group-f.js` | 50555 | `b28d2f5d9001462ed8cf79c52a790fa5c5447ffb38c8998f84db0afa52033466` |
 | `views/group-g.js` | 238754 | `8f05396007bce65be6d041fb771f8fe8a83ba9aecbdcf3687514760d6a1cb76d` |
 | `views/group-h.js` | 30041 | `ef2d74336a9ab03aa5fc8307f4d76ae8023dc6ecc80347c561e1269bc539fcea` |

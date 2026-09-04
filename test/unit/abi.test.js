@@ -42,3 +42,29 @@ test('blank / zero brachial -> surfaced fallback, no divide-by-zero', () => {
 test('no ankle measured -> surfaced fallback', () => {
   assert.equal(abi({ rightBrachial: 120 }).valid, false);
 });
+
+test('one ankle pressure is one leg, not the lower of two (spec-v1067)', () => {
+  // With only one ankle entered there is no "lower of the two" -- there is one
+  // index and one uncalculated leg. Claiming the comparison was made let a
+  // normal single leg read as "normal (1.00-1.40)" for a patient whose other
+  // leg nobody had measured, and peripheral artery disease is often one-sided.
+  const rightMissing = abi({ leftAnkle: 132, rightBrachial: 110, leftBrachial: 110 });
+  assert.equal(rightMissing.onlyOneLeg, true);
+  assert.match(rightMissing.band, /the only leg calculated/);
+  assert.doesNotMatch(rightMissing.band, /lower index governs/);
+  assert.match(rightMissing.band, /right ankle pressure was not entered/);
+  assert.match(rightMissing.band, /does not exclude disease in it/);
+
+  // When the one calculated leg is already abnormal the verdict rules in, so no
+  // exclusion caveat is owed -- the missing side is still named.
+  const leftMissing = abi({ rightAnkle: 99, rightBrachial: 110, leftBrachial: 110 });
+  assert.equal(leftMissing.onlyOneLeg, true);
+  assert.match(leftMissing.band, /left ankle pressure was not entered/);
+  assert.doesNotMatch(leftMissing.band, /does not exclude disease in it/);
+
+  // Both legs: the original sentence, unchanged.
+  const both = abi({ rightAnkle: 99, leftAnkle: 132, rightBrachial: 110, leftBrachial: 110 });
+  assert.equal(both.onlyOneLeg, false);
+  assert.match(both.band, /lower index governs/);
+  assert.doesNotMatch(both.band, /not entered/);
+});

@@ -551,13 +551,22 @@ export const renderers = {
       // number the field can take -- beside a real MAP from the two pressures the
       // reader HAD entered. The fmt fallback never fired because 0 is not null.
       const sbp = numOrNull('si-sbp'), dbp = numOrNull('si-dbp'), hr = numOrNull('si-hr');
-      if (needValues(o, [['a systolic pressure', sbp], ['a diastolic pressure', dbp], ['a heart rate', hr]])) return;
-      const mapV = C.map({ sbp, dbp });
+      // spec-v1067: guarded per LINE, not for the panel. This tile prints four
+      // things and they do not need the same inputs -- the shock index is HR/SBP
+      // and has no diastolic term in it at all. v1063 required all three, which
+      // fixed the blank-heart-rate defect and broke the search template "shock
+      // index hr 110 sbp 90", a query that names exactly what the shock index
+      // needs. Each line now appears when its own inputs are there.
+      const havePressures = sbp != null && dbp != null;
+      const haveSi = hr != null && sbp != null;
+      if (needValues(o, [['a systolic pressure', sbp]])) return;
+      if (!haveSi && !havePressures) { needValues(o, [['a heart rate or a diastolic pressure', null]]); return; }
+      const mapV = havePressures ? C.map({ sbp, dbp }) : null;
       resultRow(o, [
-        { text: `MAP: ${mapV.toFixed(1)} mmHg` },
-        { text: `Pulse pressure: ${V4.pulsePressure({ sbp, dbp })} mmHg` },
-        { text: `Shock index (HR/SBP): ${fmt(V4.shockIndex({ hr, sbp }), { digits: 2, fallback: '(enter HR & SBP > 0)' })}` },
-        { text: `Modified shock index (HR/MAP): ${fmt(V4.modifiedShockIndex({ hr, sbp, dbp }), { digits: 2, fallback: '(enter HR, SBP & DBP > 0)' })}` },
+        havePressures ? { text: `MAP: ${mapV.toFixed(1)} mmHg` } : null,
+        havePressures ? { text: `Pulse pressure: ${V4.pulsePressure({ sbp, dbp })} mmHg` } : null,
+        haveSi ? { text: `Shock index (HR/SBP): ${fmt(V4.shockIndex({ hr, sbp }), { digits: 2, fallback: '(enter HR & SBP > 0)' })}` } : null,
+        haveSi && havePressures ? { text: `Modified shock index (HR/MAP): ${fmt(V4.modifiedShockIndex({ hr, sbp, dbp }), { digits: 2, fallback: '(enter HR, SBP & DBP > 0)' })}` } : null,
       ]);
     });
     ['si-sbp', 'si-dbp', 'si-hr'].forEach((id) => document.getElementById(id).addEventListener('input', run));

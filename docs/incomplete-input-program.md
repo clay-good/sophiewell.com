@@ -84,6 +84,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1064](spec-v1064.md) | Seven more, and the unit-field reader every earlier wave walked past |
 | [v1065](spec-v1065.md) | Eight more, a third half-fix, and the calculators that were right all along |
 | [v1066](spec-v1066.md) | Not met, or not measured: the third state a criteria count was missing |
+| [v1067](spec-v1067.md) | The gate, keyed by field, and the ledger that was quiet because I guessed at it |
 
 ### And the same question from the other side
 
@@ -109,6 +110,7 @@ had described a patient.
 | `declared-ranges.spec.js` | is an out-of-range value named, above the answer and tied to its field? | 12 s |
 | `required-field-agreement.spec.js` | does the browser answer a question the agent surface refuses? | 28 s |
 | `no-impossible-number.spec.js` | does any tile state NaN, Infinity or an unexplained exponent? | 1.6 min |
+| `one-blank-field.spec.js` | with a calculator filled from its example, does clearing ONE measurement change the answer without asking for it or disclosing it? | 1.6 min |
 
 Each has a ledger for the tiles that legitimately do the thing it looks for, and each was verified
 by reintroducing the defect and watching it fail.
@@ -134,13 +136,11 @@ by reintroducing the defect and watching it fail.
 
 What is left is narrower than when this page was written:
 
-- **A ledger exempts a TILE, and the judgment behind it is per FIELD.** spec-v1029 found five scores
-  whose checkbox exemption was covering a measurement too. Nothing checks that the question was ever
-  asked field by field. **spec-v1063 attacks this from the other side**: instead of auditing the
-  ledger, its probe fills each tile from its own example and clears ONE field, so the question is
-  asked per field by construction. It found 81 field/tile pairs that move their answer; twenty-eight calculators are
-  fixed across spec-v1063 to spec-v1066. Until the rest of that list is classified there is no gate — a ledger
-  seeded with unexamined lines documents the defect instead of catching it.
+- ~~**A ledger exempts a TILE, and the judgment behind it is per FIELD.**~~ **Closed by spec-v1067.**
+  Its gate fills each calculator from its own example and clears ONE field, so the question is asked
+  per field by construction, and its ledger is keyed `tileId|fieldId` — exempting one field leaves
+  every other field on that calculator guarded. Twenty-nine of them were fixed by hand over the four
+  waves that preceded it; the gate now holds the rest.
 - **A guard on one field silences the all-fields sweeps for every other field on that tile.** The
   two that an earlier wave half-fixed kept a live defect for weeks afterwards: `carb-insulin-bolus`
   dosed insulin from a blank target glucose, and `bhutani-bilirubin` read a blank bilirubin as low

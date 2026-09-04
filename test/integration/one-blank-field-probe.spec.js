@@ -75,7 +75,7 @@ for (let shard = 0; shard < SHARDS; shard += 1) {
           if (ASK.test(r)) continue;
           if (!/(?:^|[^\d.,])\d+(?:\.\d+)?(?![\d.,]*\s*(?:19|20)\d\d)/.test(r.replace(/\(.*?\)/g, ''))) continue;
           if (r === base) continue;
-          out.push(`${lab.slice(0, 40)} :: WAS ${base.slice(0, 210)} :: NOW ${r.slice(0, 210)}`);
+          out.push(`${lab.slice(0, 40)} :: WAS ${base.slice(0, 900)} :: NOW ${r.slice(0, 900)}`);
         }
         return out;
       }, { source: ASKING.source, flags: ASKING.flags.replace('g', '') });

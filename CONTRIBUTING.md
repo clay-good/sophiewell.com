@@ -129,7 +129,7 @@ When one fails it names itself; this is where to look it up.
 | `check-gates-documented.mjs` | a gate joining this chain without a row in this table |
 | `build-report-catalog.mjs --check` | the report Worker's id/name map out of date with the catalog |
 
-Three gates do not run in that chain because they need a browser. The end-to-end
+Four gates do not run in that chain because they need a browser. The end-to-end
 suite carries `no-answer-from-nothing-sweep.spec.js`, which clears every field of
 every calculator and fails on any tile that still produces a reading. A tile that
 legitimately answers an empty form -- a checklist where nobody ticking anything
@@ -144,6 +144,24 @@ example in place everywhere else. An agent omitting that input gets
 customers two answers to one question. A legitimate exception belongs in
 `test/integration/required-field-ledger.js`; its header sets out the three things
 a line can honestly be (`docs/spec-v1037.md`).
+
+It also carries `one-blank-field.spec.js`, which fills a calculator from its own
+worked example and then clears a SINGLE field -- only ones whose label names a
+quantity that cannot be zero in a living patient, so a blank read as 0 is never
+what the reader meant. It fails when that changes the answer and the new answer
+neither asks for the value nor says it is missing. This is the state a reader
+actually reaches: nine values to hand and the tenth still in the analyser. Its
+ledger, `test/integration/one-blank-field-ledger.js`, is keyed `tileId|fieldId`,
+so exempting one field leaves the rest of that calculator guarded; the four
+groups a line can honestly belong to are set out in its header
+(`docs/spec-v1067.md`).
+
+The finder behind it is still in the tree as `one-blank-field-probe.spec.js`.
+Probes assert nothing and are excluded from CI, so run one by hand with:
+
+```bash
+RUN_PROBES=1 npx playwright test test/integration/one-blank-field-probe.spec.js --project=chromium
+```
 
 It also carries `clock-dependent.spec.js`, which renders every calculator twice a
 year apart on a fake clock and fails on any whose answer changed while its inputs

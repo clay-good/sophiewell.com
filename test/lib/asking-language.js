@@ -38,3 +38,25 @@ export const ASKING = new RegExp([
   // A tile refusing because the instrument does not apply to the value given.
   'valid for ages',
 ].join('|'), 'i');
+
+// spec-v1067: the OTHER half of owning up, and deliberately a separate export.
+//
+// ASKING above is "this tile is refusing to answer". DISCLOSING is "this tile
+// answered, and said what it was missing" -- the monotone-score response the
+// one-blank-field programme settled on ("scored from 3 of the 6 measurements;
+// the ones still blank can only raise it").
+//
+// They are kept apart because the two whole-catalog sweeps that use ASKING are
+// asking a different question: a tile that ANSWERS an empty form has not been
+// excused by disclosing, because with nothing entered there is nothing to
+// disclose about. Merging the two would exempt every tile that says "scored
+// from 0 of 6" and then prints a total. Only the one-blank-field gate, which
+// starts from a complete example, accepts a disclosure as sufficient.
+export const DISCLOSING = new RegExp([
+  'scored from', 'can only raise', 'not entered', 'was not entered',
+  'were not entered', 'has not been entered', 'have not been entered',
+  'not assessed', 'among those entered', 'not enough entered',
+  'does not rule', 'cannot yet rule', 'items assessed',
+  // "3 of 6 components", "7 of 8 items", "0 of 1 criteria assessed"
+  'of \\d+ (?:items|components|measurements|criteria)',
+].join('|'), 'i');
