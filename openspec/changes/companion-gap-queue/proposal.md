@@ -96,3 +96,39 @@ ng/L; plausibility is not a source, and this is a chest-pain rule-out. Not built
 
 That is a smaller blocker than "the coefficients", and the next attempt should start from the
 equation above rather than rediscover it.
+
+## Correction, spec-v1067: Kramer dermal zones, and OOWS and CRIB-II
+
+Three more rows re-examined with the sourcing technique that unblocked both SOWS scales (search PMC
+full text for the instrument name plus a distinctive item, and read it out of a paper that USED it).
+All three stay unbuilt, but each blocker is now smaller and named.
+
+**Kramer dermal zones — blocked on the numeric ranges, not the zones.** The five zones are
+corroborated in open access (PMC11884148): head and neck; upper trunk; lower trunk and thighs; arms
+and lower legs; palms and soles, following Kramer's cephalocaudal progression. The bilirubin ranges
+are the problem. PMC11118406 gives zone 1 4–6, zone 2 6–8, zone 3 8–12, zone 4 12–14, zone 5 above
+15 mg/dL. Those contradict the figures that circulate elsewhere for the same zones (roughly 4–8,
+5–12, 8–16, 11–18, above 15). One open-access source, contradicted, is exactly the spec-v97 skip
+condition, and quoting a cutoff a second source disputes is the defect the threshold audit exists to
+prevent.
+
+Worth noting for whoever picks this up: the papers themselves say visual estimation correlates only
+moderately with total serum bilirubin, and the correlation is "substantially lower in preterm and
+dark skin tone neonates". A zone-only tile that returns the zone, refuses to give a number, and
+states that limitation would encode a real documented misread — trusting a look at the skin instead
+of measuring. That is an owner's call on whether it earns a tile, not a sourcing problem.
+
+**OOWS — the scoring rule is now known; the sign list is not.** PMC7686602 states the method
+outright: the scale "consists of 13 items describing withdrawal symptoms. For each symptom that was
+present during a 5-minute period and fit the given criteria, 1 point was scored." So the structure
+is a 0–13 count over a five-minute observation. Three PMC searches (the scale name with "13 items",
+with mydriasis, and with gooseflesh plus rhinorrhoea) did not turn up a paper reproducing the
+thirteen signs; only three of them are named anywhere found (yawning, mydriasis, restlessness).
+Still blocked, on a shorter list than before.
+
+**CRIB-II — the variables are corroborated; the point weights are not.** The derivation is Parry,
+Tucker and Tarnow-Mordi, Lancet 2003 (PMID 12781540), and it is paywalled. Eighty-four PMC papers
+use the score and the five variables agree across them — gestation, birth weight, sex, admission
+temperature and base excess (PMC11672052 states all five) — but none reproduces the weighted table
+that turns them into points, which is the whole calculator. Blocked on the table, not on the
+variables.
