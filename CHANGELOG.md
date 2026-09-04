@@ -8,6 +8,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **WAT-1 opened saying a child had no withdrawal.** The paediatric sibling of
+  CIWA-Ar and COWS had the same defect those two lost earlier, and kept it,
+  because its ten items were sliders -- a control that cannot be blank, so no
+  null check could have fixed it. They are now the same number inputs its
+  siblings use, and the scale says what is still to rate. See
+  docs/spec-v1047.md.
 - **Two billing tiles computed money from a blank field.** A blank RVU
   component was counted as zero and still produced a dollar allowance, and a
   blank billed charge was counted as $0 -- which under the lesser-of method

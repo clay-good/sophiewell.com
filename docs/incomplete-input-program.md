@@ -35,6 +35,9 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 7. **A guard against a missing value is a guard against one SHAPE of missing value** (spec-v1040).
    `Number('')` and `Number(null)` are both 0; when a renderer changes which one it sends, every
    guard downstream is guarding against the old shape until someone checks.
+8. **A control that cannot express "not answered" will be read as an answer** (spec-v1047). A slider
+   sits at its minimum and looks like a rating somebody made. Where the value matters, being empty
+   has to be possible — a constraint on the input, not only on the reader.
 
 ## The specs
 
@@ -71,6 +74,12 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1039](spec-v1039.md) | The sweep almost learned to ignore its own defect |
 | [v1040](spec-v1040.md) | `Number(null)` is 0, and five guards had stopped firing because of it |
 | [v1041](spec-v1041.md) | Five more, and a gate that caught the trap inside the fix for the trap |
+| [v1042](spec-v1042.md) | The instrument that is one number |
+| [v1043](spec-v1043.md) | Two more, and a ledger that says why |
+| [v1044](spec-v1044.md) | Nine rating scales that did not say how many items they scored |
+| [v1045](spec-v1045.md) | The panel that refused what it could answer |
+| [v1046](spec-v1046.md) | Money from a blank field, and a note that fooled the gate |
+| [v1047](spec-v1047.md) | The sibling that needed a different control |
 
 ### And the same question from the other side
 

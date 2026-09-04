@@ -434,3 +434,34 @@ test('mini-cog: an unadministered recall is not a positive screen', async ({ pag
   expect(text).toMatch(/Enter the number of words recalled/);
   expect(text).not.toMatch(/Positive screen/);
 });
+
+// spec-v1047: WAT-1, the paediatric sibling of CIWA-Ar and COWS. It had the same
+// defect those two lost in spec-v1028 and kept it eighteen specs longer, because
+// its items were SLIDERS -- a control that cannot be blank, so no null check
+// could have fixed it.
+test('wat-1: an unrated assessment is not "no significant withdrawal"', async ({ page }) => {
+  const text = await clearNumbers(page, 'wat-1');
+  expect(text).toMatch(/Rate the remaining/);
+  expect(text).not.toMatch(/no significant withdrawal/);
+});
+
+test('wat-1: three points still read as withdrawal, from three items', async ({ page }) => {
+  await page.goto('/#wat-1');
+  await page.waitForSelector('#q-results');
+  await page.waitForTimeout(300);
+  await page.evaluate(async () => {
+    for (const n of document.querySelectorAll('#tool-body input[type=number]')) {
+      n.value = '';
+      n.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+    for (const id of ['w1-ls', 'w1-tr', 'w1-ys']) {
+      const n = document.getElementById(id);
+      n.value = '1';
+      n.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+    await new Promise((r) => setTimeout(r, 150));
+  });
+  const text = (await page.locator('#q-results').innerText()).replace(/\s+/g, ' ');
+  expect(text).toMatch(/iatrogenic withdrawal present/);
+  expect(text).toMatch(/Scored from 3 of 10 items/);
+});

@@ -4505,25 +4505,35 @@ export const renderers = {
       ['Startle to touch (0 none/mild - 1 moderate/severe)',       'w1-st'],
       ['Increased muscle tone (0 normal - 1 increased)',           'w1-mt'],
     ];
-    for (const [l, id] of items) root.appendChild(rangeField(l, id, 0, 1, 0));
+    // spec-v1047: number inputs with a placeholder, not sliders. A slider cannot
+    // be blank -- it sits at 0 and looks like a rating somebody made -- and this
+    // scale opened on "no significant withdrawal" because of it. Same control
+    // CIWA-Ar and COWS took in spec-v1028.
+    for (const [l, id] of items) {
+      root.appendChild(el('p', {}, [
+        el('label', { for: id, text: `${l} (0-1)` }), el('br'),
+        el('input', { id, type: 'number', min: '0', max: '1', step: '1', placeholder: '0' }),
+      ]));
+    }
     const rm = el('p');
     rm.appendChild(el('label', { for: 'w1-rm', text: 'Minutes to regain calm state after stimulus (<2 = 0, 2-5 = 1, >5 = 2)' }));
     rm.appendChild(el('br'));
-    rm.appendChild(el('input', { id: 'w1-rm', type: 'number', min: '0', max: '60', step: '1', value: '0' }));
+    rm.appendChild(el('input', { id: 'w1-rm', type: 'number', min: '0', max: '60', step: '1', placeholder: '0' }));
     root.appendChild(rm);
     const o = out(); root.appendChild(o);
     const deriv = renderDerivation(META['wat-1']);
     if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
       const inputs = {
-        looseStools: nv('w1-ls'), vomiting: nv('w1-vo'), fever: nv('w1-fe'),
-        sbsStatePositive: nv('w1-sb'), tremor: nv('w1-tr'), sweating: nv('w1-sw'),
-        uncoordinatedMovement: nv('w1-um'), yawnSneeze: nv('w1-ys'),
-        startleToTouch: nv('w1-st'), increasedMuscleTone: nv('w1-mt'),
-        recoveryMinutes: nv('w1-rm'),
+        looseStools: nvOrNull('w1-ls'), vomiting: nvOrNull('w1-vo'), fever: nvOrNull('w1-fe'),
+        sbsStatePositive: nvOrNull('w1-sb'), tremor: nvOrNull('w1-tr'), sweating: nvOrNull('w1-sw'),
+        uncoordinatedMovement: nvOrNull('w1-um'), yawnSneeze: nvOrNull('w1-ys'),
+        startleToTouch: nvOrNull('w1-st'), increasedMuscleTone: nvOrNull('w1-mt'),
+        recoveryMinutes: nvOrNull('w1-rm'),
       };
       const r = S4.wat1(inputs);
-      o.appendChild(el('h2', { text: `WAT-1 ${r.score} of 12 (${r.band})` }));
+      // spec-v1047: no total while the assessment is short of the threshold.
+      if (!r.incomplete) o.appendChild(el('h2', { text: `WAT-1 ${r.score} of 12 (${r.band})` }));
       o.appendChild(el('p', { text: r.text }));
       if (deriv) updateDerivationSteps(deriv, META['wat-1'], inputs);
     });

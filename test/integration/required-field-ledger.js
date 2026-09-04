@@ -6,10 +6,10 @@
 // example in place everywhere else, and see whether the tile still answers. An
 // agent omitting that input gets MISSING_INPUT and no number.
 //
-// Seventy-five tiles answered. Sixty have been fixed since, across spec-v1037
-// to spec-v1046. These 15 are what is left, and each carries the reason it is
-// there, because a bare id is a list of tiles somebody once looked at rather
-// than a list of decisions.
+// Seventy-five tiles answered. Sixty-one have been fixed since, across
+// spec-v1037 to spec-v1047. These 15 are what is left -- every one of them
+// category 3 -- and each carries the reason it is there, because a bare id is a
+// list of tiles somebody once looked at rather than a list of decisions.
 //
 // Each line is one of three things:
 //
@@ -41,18 +41,17 @@ export const ANSWERS_WITHOUT_A_REQUIRED_FIELD = new Set([
   "glasgow-imrie",
   "hscore-hlh",
   "lrinec",
+  // spec-v1047 moved wat-1 into this group. It used to be here because its
+  // items were sliders and could not be blank; now they can, and with one item
+  // cleared it reads "WAT-1 4 of 12: iatrogenic withdrawal present ... Scored
+  // from 9 of 10 items". That is the rule-in direction on a monotone scale,
+  // stated with its own footing -- the same reason ciwa is on this list.
+  "wat-1",
 
   // --- 3: a one-way conversion answering the direction it has a number for.
   // With a pump rate entered and the ordered dose blank it prints the delivered
   // dose and nothing about the other direction (spec-v1038).
   "oxytocin-titration",
-
-  // --- 1, blocked on a control change: WAT-1's ten items are SLIDERS, which
-  // cannot be blank -- a slider parked at 0 looks like a rating somebody made.
-  // The fix is a different control (a select with an unrated option), which
-  // takes the field ids into the MCP registry and the example fills with it.
-  // See the closing section of docs/spec-v1029.md.
-  "wat-1",
 
   // --- 3: modifier-order puts the modifiers it was given in claim order. With
   // the first blank and the second filled it orders the one it has, which is an

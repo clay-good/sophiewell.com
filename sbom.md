@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `97d2453deb54803c`
-Generated: 2026-09-04T06:21:16.217Z
+Build ID: `7f54378aac07fc02`
+Generated: 2026-09-04T06:42:40.494Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -760,7 +760,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/schobinger-avm-v497.js` | 3484 | `fd7d680fede1965fd9a9026d0977e4f2c1970e30d33718df3daaca235dfed009` |
 | `lib/schofield-v779.js` | 4325 | `7c398e3b1dc2df66c5323baee0f73ff66c28927fb47a72ede85dfd51d2de4931` |
 | `lib/schwab-england-v385.js` | 4331 | `caddd0709826db63186ebf0a5f8b60fd9a3e00fa934bddc3e0331977f70c5e4b` |
-| `lib/scoring-v4.js` | 256415 | `554f37359b8dae95c3727f8ce1413a92ae5c2137b2bbf87919bada0ec61f00e0` |
+| `lib/scoring-v4.js` | 258297 | `c8cb62373259ffb8f7209d9f90b4f3457a0c03d847f4ba59f15c40518ccacb2c` |
 | `lib/scoring-v5.js` | 13266 | `88364077a6f61dd6dcd3f7ea1791185515ac6b92b95ac025aebf0b3c895bf9ec` |
 | `lib/scoring-v6.js` | 27427 | `ed570d8507d63371de2181a97743f8ee1f40e2042eedba9dac2216ed247d6fad` |
 | `lib/scp-pushing-v562.js` | 12399 | `6da019a04668722b7a8d448b4d7bf9908717629b72e4a162088e74363ad62360` |
@@ -1703,7 +1703,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-c.js` | 24555 | `82ebad28ab001aacbbb39459436ed2f9f3df86971209a4bb178ad2f108a98742` |
 | `views/group-e.js` | 44860 | `e884a75126ec63a13a9f9a2862892cad3d1599df527371c4c378aa9ddbe9f6bf` |
 | `views/group-f.js` | 49474 | `e5715c581e92c22599529886d09df8c993f202dd7935c8b5a01ca1bf660fd225` |
-| `views/group-g.js` | 235731 | `7751f371dcf55200d08c97139566a5ffd618792709a68db66c6a523b80a6b5ed` |
+| `views/group-g.js` | 236355 | `4ba9ef41613e1c20478216f8fcadb009076e77494ced742b8b0a2e0603095408` |
 | `views/group-h.js` | 30041 | `ef2d74336a9ab03aa5fc8307f4d76ae8023dc6ecc80347c561e1269bc539fcea` |
 | `views/group-i.js` | 24217 | `e8319c063517ef37d78d1186c99302b9dd7a2d2b87a9e0d82d4e5701efef4180` |
 | `views/group-j.js` | 8989 | `521f4c30cd952ee6d9845a843735b519a6acd21e495135d9d7f34747270a4373` |
