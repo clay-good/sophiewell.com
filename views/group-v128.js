@@ -27,7 +27,11 @@ function field(label, id, opts = {}) {
   return wrap;
 }
 function out() { return el('div', { id: 'q-results', 'aria-live': 'polite' }); }
-function optNum(id) { const n = document.getElementById(id); return n && n.value !== '' ? Number(n.value) : null; }
+function optNum(id) {
+  const n = document.getElementById(id);
+  if (!n || String(n.value).trim() === '') return null;
+  return Number(n.value);
+}
 function safe(o, fn) { clear(o); try { fn(); } catch (err) { o.appendChild(el('p', { class: 'muted', text: err.message })); } }
 function note(root, text) { if (text) root.appendChild(el('p', { class: 'muted', text })); }
 function postureNote(root) {

@@ -41,7 +41,11 @@ function numField(label, id, opts = {}) {
 }
 function out() { return el('div', { id: 'q-results', 'aria-live': 'polite' }); }
 function selVal(id) { const n = document.getElementById(id); return n ? n.value : ''; }
-function optNum(id) { const n = document.getElementById(id); return n && n.value !== '' ? Number(n.value) : null; }
+function optNum(id) {
+  const n = document.getElementById(id);
+  if (!n || String(n.value).trim() === '') return null;
+  return Number(n.value);
+}
 function checkVal(id) { const n = document.getElementById(id); return n ? n.checked : false; }
 function safe(o, fn) { clear(o); try { fn(); } catch (err) { o.appendChild(el('p', { class: 'muted', text: err.message })); } }
 function note(root, text) { if (text) root.appendChild(el('p', { class: 'muted', text })); }

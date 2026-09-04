@@ -15,7 +15,11 @@ function out() { return el('div', { id: 'q-results', 'aria-live': 'polite' }); }
 function num(id) { return Number(document.getElementById(id).value); }
 // spec-v930: a blank field read as 0 before the library ever saw it, so a cleared form
 // scored as a form full of zeros. A present "0" still reads as 0.
-function numOrNull(id) { const s = document.getElementById(id).value; return s.trim() === '' ? null : Number(s); }
+function numOrNull(id) {
+  const n = document.getElementById(id);
+  if (!n || String(n.value).trim() === '') return null;
+  return Number(n.value);
+}
 
 export const renderers = {
   tetanus(root) {

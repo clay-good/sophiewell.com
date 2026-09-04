@@ -45,7 +45,11 @@ function checkField(label, id) {
   return wrap;
 }
 function out() { return el('div', { id: 'q-results', 'aria-live': 'polite' }); }
-function optNum(id) { const n = document.getElementById(id); return n && n.value !== '' ? Number(n.value) : null; }
+function optNum(id) {
+  const n = document.getElementById(id);
+  if (!n || String(n.value).trim() === '') return null;
+  return Number(n.value);
+}
 function selVal(id) { const n = document.getElementById(id); return n ? n.value : ''; }
 function chk(id) { const n = document.getElementById(id); return n ? n.checked : false; }
 function safe(o, fn) {

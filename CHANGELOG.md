@@ -8,6 +8,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A field holding only a space was read as zero by most calculators.** The
+  helper that decides whether an input is blank existed in 64 view modules with
+  three different behaviours; 62 of them treated whitespace as a measurement of
+  zero -- the defect the helper exists to prevent. All copies now agree, and a
+  new check fails the build if they diverge again. See docs/spec-v1057.md.
 - **Thirty-five calculators were exempted from a safety check for no reason.**
   Two catalog sweeps each had their own copy of "what a tile asking for a value
   sounds like", and the copies had drifted -- so refusals one sweep understood

@@ -36,8 +36,9 @@ function selectField(label, id, options) {
 const YESNO = [{ value: 'no', text: 'No' }, { value: 'yes', text: 'Yes' }];
 function out() { return el('div', { id: 'q-results', 'aria-live': 'polite' }); }
 function optNum(id) {
-  const v = document.getElementById(id).value;
-  return v === '' ? null : Number(v);
+  const n = document.getElementById(id);
+  if (!n || String(n.value).trim() === '') return null;
+  return Number(n.value);
 }
 function selVal(id) { return document.getElementById(id).value; }
 function safe(o, fn) {

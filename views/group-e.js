@@ -60,9 +60,9 @@ function numOrNull(id) {
 function needValues(o, pairs) {
   const missing = pairs.filter(([, v]) => v == null || Number.isNaN(v)).map(([label]) => label);
   if (!missing.length) return false;
-  const list = missing.length === 1 ? missing[0]
+  const phrase = missing.length === 1 ? missing[0]
     : `${missing.slice(0, -1).join(', ')} and ${missing[missing.length - 1]}`;
-  o.appendChild(el('p', { class: 'muted', text: `Enter ${list} to calculate.` }));
+  o.appendChild(el('p', { class: 'muted', text: `Enter ${phrase} to calculate.` }));
   return true;
 }
 // spec-v59 §2.5: surface a physiologic-plausibility advisory for each entered

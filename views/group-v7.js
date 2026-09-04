@@ -41,15 +41,16 @@ function val(id) { return Number(document.getElementById(id).value); }
 function needValues(o, pairs) {
   const missing = pairs.filter(([, v]) => v == null || Number.isNaN(v)).map(([label]) => label);
   if (!missing.length) return false;
-  const list_ = missing.length === 1 ? missing[0]
+  const phrase = missing.length === 1 ? missing[0]
     : `${missing.slice(0, -1).join(', ')} and ${missing[missing.length - 1]}`;
-  o.appendChild(el('p', { class: 'muted', text: `Enter ${list_} to calculate.` }));
+  o.appendChild(el('p', { class: 'muted', text: `Enter ${phrase} to calculate.` }));
   return true;
 }
 function str(id) { return document.getElementById(id).value; }
 function optNum(id) {
-  const v = document.getElementById(id).value;
-  return v === '' ? null : Number(v);
+  const n = document.getElementById(id);
+  if (!n || String(n.value).trim() === '') return null;
+  return Number(n.value);
 }
 function safe(o, fn) {
   clear(o);

@@ -35,7 +35,11 @@ function nv(id) { return Number(document.getElementById(id).value); }
 // spec-v59 §2.2: blank-aware reader. A genuinely empty field reads as null (not
 // 0), so a compute function can refuse to score an empty instrument instead of
 // substituting a clinically-loaded default. A present "0" still reads as 0.
-function nvOrNull(id) { const s = document.getElementById(id).value; return s.trim() === '' ? null : Number(s); }
+function nvOrNull(id) {
+  const n = document.getElementById(id);
+  if (!n || String(n.value).trim() === '') return null;
+  return Number(n.value);
+}
 function checked(id) { return document.getElementById(id).checked; }
 function safe(o, fn) { clear(o); try { fn(); } catch (err) { o.appendChild(el('p', { class: 'muted', text: err.message })); } }
 

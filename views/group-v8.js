@@ -43,8 +43,9 @@ function val(id) { return Number(document.getElementById(id).value); }
 function str(id) { return document.getElementById(id).value; }
 function checked(id) { return document.getElementById(id).checked; }
 function optNum(id) {
-  const v = document.getElementById(id).value;
-  return v === '' ? null : Number(v);
+  const n = document.getElementById(id);
+  if (!n || String(n.value).trim() === '') return null;
+  return Number(n.value);
 }
 function safe(o, fn) {
   clear(o);
