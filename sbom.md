@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `bf2295bbb9a84e76`
-Generated: 2026-09-05T16:16:44.144Z
+Build ID: `615d42b5df439c64`
+Generated: 2026-09-05T16:33:37.049Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -324,7 +324,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/gerdq-v679.js` | 4410 | `1b59ff708ec0a30c39ae0bc7ed356bf1704dac46be643eb922ec1376759df951` |
 | `lib/geri-v241.js` | 6715 | `1debe98a4e5480baaaf503b9f4e9e093f0bdfaede8ce2741f9744b862ae52f98` |
 | `lib/ghent-marfan-v821.js` | 12318 | `855285066a558cf50ad9e937c7717195d86bc71bbe51e47913f4dfa811f8ce39` |
-| `lib/gi-v126.js` | 15336 | `4f3d35f89a4321f167170e7916646aedf7472b01315e9df2bcc9bc1afa6b3558` |
+| `lib/gi-v126.js` | 16755 | `1d5c20c208de3a793100eefbf0b23cbe9041cdc1adb72bb2bff792173bde1117` |
 | `lib/gisurg-v239.js` | 7913 | `d6da27d87f1f1c9ae3ba497127080931bfe66fd1e29c66d5e5b6b21a586761d0` |
 | `lib/glass-stage-v550.js` | 13408 | `42ec4b461aa71b8aa586f00d20f9088773dbf3a478e9847e590af687b2c2acf5` |
 | `lib/gli-2012-data.js` | 41979 | `0fa7440b8d9ab03028185d56c7a6bc9e1e753fe3ac396c208eb06f80991ba125` |

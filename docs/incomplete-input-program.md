@@ -95,6 +95,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1074](spec-v1074.md) | An `if (!any)` guard that hid a tile from the sweep keyed on the empty call |
 | [v1075](spec-v1075.md) | The gate excused a tile because its static note contained the word "missing" |
 | [v1076](spec-v1076.md) | Three ICHD-3 headache tiles ruled a diagnosis out on counts nobody entered |
+| [v1077](spec-v1077.md) | A CDAI diary item nobody filled in read as a symptom-free week |
 
 ### And the same question from the other side
 
@@ -192,10 +193,10 @@ What is left is narrower than when this page was written:
   that system as "pulmonary 0". The half of the question that needs no judgment — fields the
   browser renders as a `<select>`, which always carries a value — is now gated per field.
 
-- **99 fields still change the AGENT's answer when omitted, without saying so**
+- **95 fields still change the AGENT's answer when omitted, without saying so**
   (`scripts/probe-omitted-item.mjs`, spec-v1073; the count was read as 93 until spec-v1075 stopped
   the probe accepting a tile's static footnote as a disclosure, and 107 before spec-v1076 drained
-  the ICHD-3 headache family). The gate that wave shipped covers instruments
+  the ICHD-3 headache family and spec-v1077 the CDAI diary). The gate that wave shipped covers instruments
   built entirely of rated items; what is left is the mixed kind, where checklist criteria sit
   beside measurements and a blanket `required` would refuse calls that are legitimately partial.
   `snakebite-severity` prints "pulmonary 0" for a system nobody examined.

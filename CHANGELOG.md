@@ -20,6 +20,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A Crohn's score read an unfilled diary as a symptom-free week.** Four of the
+  CDAI's eight items are a seven-day patient diary, and a blank one was scored
+  as zero: omitting just the stool count moved the worked example from "CDAI
+  265: moderate disease" to "CDAI 215: mild disease", a band boundary crossed
+  downwards. A typed 0 still means zero -- a remission week is a real answer --
+  but a blank is now named, with the total called a floor. See
+  docs/spec-v1077.md.
 - **Three headache calculators ruled a diagnosis out on numbers nobody had
   entered.** With the attack count left blank, the migraine tile answered
   "Neither ICHD-3 migraine criteria set is met -- for 1.1: at least 5 attacks",
