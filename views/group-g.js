@@ -4842,19 +4842,23 @@ export const renderers = {
       ['Responsibility for own medications (1 independent / 0 needs help)', 'lw-med', 'medications'],
       ['Ability to handle finances (1 independent / 0 needs help)',       'lw-fin',   'finances'],
     ];
-    for (const [label, id] of items) root.appendChild(rangeField(label, id, 0, 1, 1));
+    // spec-v1081: a slider parked at 1 reads as "independent" for an item nobody
+    // rated. Number inputs, and an unrated item stays unrated.
+    for (const [label, id] of items) root.appendChild(scoredItemField(label.replace(/ \(1[^)]*\)$/, ''), id, 1));
     const o = out(); root.appendChild(o);
     const deriv = renderDerivation(META['lawton-iadl']);
     if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
       const input = {};
-      for (const [, id, key] of items) input[key] = Math.trunc(nv(id));
+      for (const [, id, key] of items) { const v = nvOrNull(id); input[key] = v === null ? null : Math.trunc(v); }
       const r = S4.lawtonIadl(input);
-      o.appendChild(el('h2', { text: `Lawton IADL ${r.score} of 8 (${r.band})` }));
+      if (r.valid) o.appendChild(el('h2', { text: `Lawton IADL ${r.score} of 8 (${r.band})` }));
       o.appendChild(el('p', { text: r.text }));
-      const dep = items.filter(([, , key]) => r.parts[key] === 0).map(([label]) => label.split(' (')[0].toLowerCase());
-      const muted = dep.length > 0 ? `Needs help with: ${dep.join(', ')}.` : 'No reported IADL dependence.';
-      o.appendChild(el('p', { class: 'muted', text: muted }));
+      if (r.valid) {
+        const dep = items.filter(([, , key]) => r.parts[key] === 0).map(([label]) => label.split(' (')[0].toLowerCase());
+        const muted = dep.length > 0 ? `Needs help with: ${dep.join(', ')}.` : 'No reported IADL dependence.';
+        o.appendChild(el('p', { class: 'muted', text: muted }));
+      }
       if (deriv) updateDerivationSteps(deriv, META['lawton-iadl'], input);
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
@@ -4871,20 +4875,23 @@ export const renderers = {
       ['Continence (1 independent / 0 dependent)',    'kz-cont',  'continence'],
       ['Feeding (1 independent / 0 dependent)',       'kz-feed',  'feeding'],
     ];
-    for (const [label, id] of items) root.appendChild(rangeField(label, id, 0, 1, 1));
+    // spec-v1081: as lawton-iadl.
+    for (const [label, id] of items) root.appendChild(scoredItemField(label.replace(/ \(1[^)]*\)$/, ''), id, 1));
     const o = out(); root.appendChild(o);
     const deriv = renderDerivation(META['katz-adl']);
     if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
       const input = {};
-      for (const [, id, key] of items) input[key] = Math.trunc(nv(id));
+      for (const [, id, key] of items) { const v = nvOrNull(id); input[key] = v === null ? null : Math.trunc(v); }
       const r = S4.katzAdl(input);
-      o.appendChild(el('h2', { text: `Katz ADL ${r.score} of 6 (${r.band})` }));
+      if (r.valid) o.appendChild(el('h2', { text: `Katz ADL ${r.score} of 6 (${r.band})` }));
       o.appendChild(el('p', { text: r.text }));
-      const indep = items.filter(([, id, key]) => r.parts[key] === 1).map(([label]) => label.split(' (')[0].toLowerCase());
-      const dep = items.filter(([, id, key]) => r.parts[key] === 0).map(([label]) => label.split(' (')[0].toLowerCase());
-      const muted = `Independent in: ${indep.length > 0 ? indep.join(', ') : '(none)'}. Dependent in: ${dep.length > 0 ? dep.join(', ') : '(none)'}.`;
-      o.appendChild(el('p', { class: 'muted', text: muted }));
+      if (r.valid) {
+        const indep = items.filter(([, id, key]) => r.parts[key] === 1).map(([label]) => label.split(' (')[0].toLowerCase());
+        const dep = items.filter(([, id, key]) => r.parts[key] === 0).map(([label]) => label.split(' (')[0].toLowerCase());
+        const muted = `Independent in: ${indep.length > 0 ? indep.join(', ') : '(none)'}. Dependent in: ${dep.length > 0 ? dep.join(', ') : '(none)'}.`;
+        o.appendChild(el('p', { class: 'muted', text: muted }));
+      }
       if (deriv) updateDerivationSteps(deriv, META['katz-adl'], input);
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));

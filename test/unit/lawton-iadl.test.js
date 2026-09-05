@@ -54,10 +54,21 @@ test('lawtonIadl text mentions Lawton 1969', () => {
   assert.match(lawtonIadl(all(0)).text, /Lawton 1969/);
 });
 
-test('lawtonIadl rejects bad inputs', () => {
+test('lawtonIadl rejects a value that is not 0 or 1', () => {
   assert.throws(() => lawtonIadl({ ...all(1), telephone: 2 }));
   assert.throws(() => lawtonIadl({ ...all(1), telephone: -1 }));
   assert.throws(() => lawtonIadl({ ...all(1), telephone: 0.5 }));
   assert.throws(() => lawtonIadl({ ...all(1), telephone: NaN }));
-  assert.throws(() => lawtonIadl({ telephone: 1, shopping: 1 })); // missing items
+});
+
+// spec-v1081: as katz-adl. A missing item used to throw; an activity nobody
+// rated is an ordinary state of a form being filled in, not a caller error, so
+// it returns a refusal the tile can render. A present-but-impossible value still
+// throws.
+test('lawtonIadl returns a refusal, not a throw, for an unrated activity', () => {
+  const r = lawtonIadl({ telephone: 1, shopping: 1 });
+  assert.equal(r.valid, false);
+  assert.equal(r.itemsScored, 2);
+  assert.equal(r.itemsTotal, 8);
+  assert.doesNotMatch(r.text, /full independence/);
 });

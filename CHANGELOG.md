@@ -20,6 +20,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Two daily-living indices reported "full independence" for a patient nobody
+  had assessed.** The Katz ADL and Lawton IADL count the activities a patient
+  manages alone, so sliders parked at "independent" read as a fully independent
+  patient, and adding up only the rated items would read as more impairment than
+  they have. Both now ask for the activities they have not been given, and both
+  return that as a result the page can show rather than throwing. Their worked
+  examples, and P-POSSUM's, also opened on their most reassuring reading -- a
+  surgical-mortality predictor started at 0.2%. See docs/spec-v1081.md.
 - **A pressure-injury risk scale said "not at risk" before anyone assessed the
   patient.** The Braden runs the other way from most scores -- a higher total
   means less risk -- so six sliders parked at their best gave 23 of 23, and
