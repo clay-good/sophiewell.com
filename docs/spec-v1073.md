@@ -113,8 +113,11 @@ needs judgment. `scripts/probe-omitted-item.mjs` runs it:
 node scripts/probe-omitted-item.mjs
 ```
 
-With this wave landed it still finds **93 fields across 43 calculators**. What
-is left is the mixed kind — instruments where checklist
+With this wave landed it finds **107 fields across 56 calculators**. (This page
+first said 93. The probe was excusing any tile whose static footnote happened to
+contain a word from the asking vocabulary, which hid 21 fields on 14 calculators
+until [spec-v1075](spec-v1075.md); none of them are new.) What is left is the
+mixed kind — instruments where checklist
 criteria sit beside measurements — so a blanket `required` would refuse calls
 that are legitimately partial. Some of it is plainly wrong:
 

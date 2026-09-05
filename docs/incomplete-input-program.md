@@ -191,8 +191,9 @@ What is left is narrower than when this page was written:
   that system as "pulmonary 0". The half of the question that needs no judgment — fields the
   browser renders as a `<select>`, which always carries a value — is now gated per field.
 
-- **93 fields still change the AGENT's answer when omitted, without saying so**
-  (`scripts/probe-omitted-item.mjs`, spec-v1073). The gate that wave shipped covers instruments
+- **107 fields still change the AGENT's answer when omitted, without saying so**
+  (`scripts/probe-omitted-item.mjs`, spec-v1073; the count was read as 93 until spec-v1075 stopped
+  the probe accepting a tile's static footnote as a disclosure). The gate that wave shipped covers instruments
   built entirely of rated items; what is left is the mixed kind, where checklist criteria sit
   beside measurements and a blanket `required` would refuse calls that are legitimately partial.
   `snakebite-severity` prints "pulmonary 0" for a system nobody examined.

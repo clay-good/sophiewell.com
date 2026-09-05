@@ -93,6 +93,18 @@ strings. Verified by reintroducing each defect: restoring `note` to the reading
 re-excuses `four-ts-hit`; making `graeb-ivh`'s compartments optional fails
 naming them.
 
+## Two numbers this corrects
+
+`scripts/probe-omitted-item.mjs` shares the fix, because it shared the bug. It
+was published at **93 fields across 43 calculators** in spec-v1073 and on the
+programme page. The honest reading is **107 across 56**.
+
+Measured rather than inferred, by running the probe both ways against the tree
+as it stands: counting `note` gives 86 across 42, ignoring it gives 107 across
+56. So **the footnote was hiding 21 fields on 14 calculators**, and the waves in
+between have since fixed enough to bring the published 93 down to that 86. Both
+pages now carry the larger, true number.
+
 ## The lesson
 
 > **A vocabulary match over a tile's whole output is a match against its
