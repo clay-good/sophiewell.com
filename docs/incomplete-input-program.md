@@ -93,6 +93,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1072](spec-v1072.md) | A trend widget that invented a 12 g/dL haemorrhage from a blank field |
 | [v1073](spec-v1073.md) | The agent surface scored an unanswered questionnaire item as zero |
 | [v1074](spec-v1074.md) | An `if (!any)` guard that hid a tile from the sweep keyed on the empty call |
+| [v1075](spec-v1075.md) | The gate excused a tile because its static note contained the word "missing" |
 
 ### And the same question from the other side
 
@@ -179,6 +180,12 @@ What is left is narrower than when this page was written:
   two that an earlier wave half-fixed kept a live defect for weeks afterwards: `carb-insulin-bolus`
   dosed insulin from a blank target glucose, and `bhutani-bilirubin` read a blank bilirubin as low
   risk. Guard every measurement a tile reads, not the one the sweep pointed at.
+- **A vocabulary match over a tile's whole output is a match against its boilerplate** (spec-v1075).
+  `four-ts-hit`'s static note says "where key information is missing the Society advises erring
+  towards a higher score"; the bare word `missing` is in ASKING, so the gate excused a tile that
+  was scoring an unanswered domain as zero. Reading only what the tile computed for THESE inputs
+  surfaced 13 fields it had been passing.
+
 - **A sweep keyed on the empty form inherits every `if (!any)` guard in the catalog** (spec-v1074).
   `snakebite-severity` refuses a call with nothing in it and, missing one of six systems, prints
   that system as "pulmonary 0". The half of the question that needs no judgment — fields the

@@ -35,12 +35,25 @@ const only = (() => {
   return i > -1 ? process.argv[i + 1] : null;
 })();
 
-// Every string anywhere in the result: the band, the note, the per-item labels.
-// A disclosure can live in any of them.
-function texts(v, out = []) {
+// Every string in the result -- the band, the detail, the per-item labels --
+// because a disclosure can live in any of them.
+//
+// `note` is skipped deliberately. It is the tile's STATIC explanatory prose --
+// the same sentences on every call, hoisted from a module constant -- and
+// concatenating it into the reading silences the gate on a coincidence:
+// `four-ts-hit`'s note says "where key information is missing the Society
+// advises erring towards a higher score", and the word `missing` alone matched
+// ASKING, so the tile was excused for prose that has nothing to do with this
+// call. A disclosure has to be in what the tile SAID ABOUT THESE INPUTS.
+function texts(v, out = [], top = true) {
   if (typeof v === 'string') out.push(v);
-  else if (Array.isArray(v)) v.forEach((x) => texts(x, out));
-  else if (v && typeof v === 'object') Object.values(v).forEach((x) => texts(x, out));
+  else if (Array.isArray(v)) v.forEach((x) => texts(x, out, false));
+  else if (v && typeof v === 'object') {
+    for (const [k, x] of Object.entries(v)) {
+      if (top && k === 'note') continue;
+      texts(x, out, false);
+    }
+  }
   return out;
 }
 

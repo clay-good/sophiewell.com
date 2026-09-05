@@ -12,8 +12,13 @@ import { scaleValues } from '../fields.js';
 
 const YESNO = ['no', 'yes'];
 
+// spec-v1075: the fill grade is required, the expansion checkbox is not. Both
+// are on screen for every compartment, but only the grade is a <select> that
+// always carries a value -- an omitted grade used to score 0 and take the
+// Modified Graeb total from 32 to 27 without saying which compartment was
+// unread.
 const graebCompartment = (dom, arg, label, max) => ([
-  { dom, arg, kind: 'number', label, values: scaleValues(max) },
+  { dom, arg, kind: 'number', required: true, label, values: scaleValues(max) },
   { dom: `${dom}-exp`, arg: `${arg}Exp`, kind: 'bool', label: `${label}: expanded by clot (+1)` },
 ]);
 

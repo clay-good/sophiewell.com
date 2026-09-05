@@ -8,17 +8,32 @@ import * as F from '../../lib/surg-v142.js';
 // The 18 shared POSSUM grade variables, each an integer point grade whose
 // select value the lib coerces and range-checks; the dom prefix differs by tile
 // (ps- for POSSUM, pp- for P-POSSUM) but the arg names are identical.
+// spec-v1075: the grade set is per variable, and not contiguous -- age and the
+// white-cell count offer 1/2/4, the ECG, procedure count and urgency 1/4/8, the
+// rest 1/2/4/8. Declared so an agent can read them, and so validateInputs
+// refuses a grade the form does not offer.
 const POSSUM_VARS = [
-  ['age', 'Age'], ['cardiac', 'Cardiac status'], ['respiratory', 'Respiratory status'],
-  ['sbp', 'Systolic blood pressure'], ['pulse', 'Pulse'], ['gcs', 'Glasgow Coma Score'],
-  ['hb', 'Hemoglobin'], ['wcc', 'White-cell count'], ['urea', 'Urea'],
-  ['sodium', 'Sodium'], ['potassium', 'Potassium'], ['ecg', 'ECG'],
-  ['opSeverity', 'Operative severity'], ['procedures', 'Number of procedures'],
-  ['bloodLoss', 'Blood loss'], ['soiling', 'Peritoneal soiling'],
-  ['malignancy', 'Malignancy'], ['urgency', 'Urgency'],
+  ['age', 'Age', ['1', '2', '4']],
+  ['cardiac', 'Cardiac status', ['1', '2', '4', '8']],
+  ['respiratory', 'Respiratory status', ['1', '2', '4', '8']],
+  ['sbp', 'Systolic blood pressure', ['1', '2', '4', '8']],
+  ['pulse', 'Pulse', ['1', '2', '4', '8']],
+  ['gcs', 'Glasgow Coma Score', ['1', '2', '4', '8']],
+  ['hb', 'Hemoglobin', ['1', '2', '4', '8']],
+  ['wcc', 'White-cell count', ['1', '2', '4']],
+  ['urea', 'Urea', ['1', '2', '4', '8']],
+  ['sodium', 'Sodium', ['1', '2', '4', '8']],
+  ['potassium', 'Potassium', ['1', '2', '4', '8']],
+  ['ecg', 'ECG', ['1', '4', '8']],
+  ['opSeverity', 'Operative severity', ['1', '2', '4', '8']],
+  ['procedures', 'Number of procedures', ['1', '4', '8']],
+  ['bloodLoss', 'Blood loss', ['1', '2', '4', '8']],
+  ['soiling', 'Peritoneal soiling', ['1', '2', '4', '8']],
+  ['malignancy', 'Malignancy', ['1', '2', '4', '8']],
+  ['urgency', 'Urgency', ['1', '4', '8']],
 ];
-const possumFields = (prefix) => POSSUM_VARS.map(([arg, label]) => ({
-  dom: `${prefix}-${arg}`, arg, kind: 'number', required: true, label: `${label} (point grade)`,
+const possumFields = (prefix) => POSSUM_VARS.map(([arg, label, values]) => ({
+  dom: `${prefix}-${arg}`, arg, kind: 'number', required: true, label: `${label} (point grade)`, values,
 }));
 
 export default [

@@ -36,6 +36,9 @@ export default [
       })),
       {
         dom: 'puqe-wellbeing', arg: 'wellbeing', kind: 'number', unit: 'points', required: false,
+        // spec-v1075: a 0-10 select on the form; optional here because it is
+        // never summed, so omitting it moves no total.
+        values: Array.from({ length: 11 }, (_, i) => String(i)),
         label: 'Optional, NEVER SUMMED. The patient rating of her own well-being from 0, the worst possible, to 10, as good as she felt before pregnancy. It is NOT part of the total and runs in the OPPOSITE direction to the score: higher is better here, while a higher PUQE score is worse.',
       },
     ],

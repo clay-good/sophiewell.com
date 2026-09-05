@@ -138,13 +138,26 @@ test('spec-v1073: the screener computes refuse an absent item on their own', () 
 // every numeric field, where the judgment is real and this one's is not.
 
 const OPTIONAL_PICKLIST_OK = new Map(Object.entries({
+  'ipss|ipss-qol': 'the bother question is labelled "optional, not summed" on the form and is reported beside the symptom score, never in it -- omitting it leaves IPSS 8/35 untouched and drops the "Quality of life 2/6" sentence entirely. A dependent line disappearing in PROSE is not caught by the numeric test above',
   'mayo-uc|mu-en': 'the endoscopy subscore is optional by design -- its own label says so, and without it the tile reports the "partial Mayo" subset by name rather than a full Mayo score',
 }));
 
-function allStrings(v, out = []) {
+// `note` is skipped deliberately. It is the tile's STATIC explanatory prose --
+// the same sentences on every call, hoisted from a module constant -- and
+// concatenating it into the reading silences the gate on a coincidence:
+// `four-ts-hit`'s note says "where key information is missing the Society
+// advises erring towards a higher score", and the word `missing` alone matched
+// ASKING, so the tile was excused for prose that has nothing to do with this
+// call. A disclosure has to be in what the tile SAID ABOUT THESE INPUTS.
+function allStrings(v, out = [], top = true) {
   if (typeof v === 'string') out.push(v);
-  else if (Array.isArray(v)) v.forEach((x) => allStrings(x, out));
-  else if (v && typeof v === 'object') Object.values(v).forEach((x) => allStrings(x, out));
+  else if (Array.isArray(v)) v.forEach((x) => allStrings(x, out, false));
+  else if (v && typeof v === 'object') {
+    for (const [k, x] of Object.entries(v)) {
+      if (top && k === 'note') continue;
+      allStrings(x, out, false);
+    }
+  }
   return out;
 }
 

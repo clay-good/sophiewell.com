@@ -86,15 +86,22 @@ the SBOM are all generated. Avoid `npm run data:refresh` unless you changed a
 dataset: it re-stamps dozens of unrelated `data/**` manifests and buries your
 change.
 
-**Those three are a step of editing an adapter at all, not only of adding a
-calculator.** `data/fields/` is built from the adapter field lists, `required`
-flags included, and `corpus-detail.json` carries each adapter's `summary` -- so
-adding one `required: true` makes both stale. The local suites will not tell
-you: `npm run test:unit` passes with `data/fields/` out of date, because nothing
-in `release:check` diffs a generated file against HEAD. The CI `unit` job ends
-with a `git diff --exit-code` over all of them, and that is where it surfaces
-(spec-v1073 pushed a red main this way). A rebuild has to be a no-op before you
-push.
+**Regenerating is a step of editing an adapter at all, not only of adding a
+calculator, and the three scripts above are not the whole set.** `data/fields/`
+is built from the adapter field lists, `required` flags included;
+`corpus-detail.json` carries each adapter's `summary`; and **`sbom.json` /
+`sbom.md` carry a size and SHA-256 for every one of the 2,400-odd source files**,
+so any edit at all moves them. `npm run sbom` is the fourth command, which is
+one reason to run `npm run release:check` rather than the scripts by hand -- it
+is `lint && test && test:mcp && sbom && build`.
+
+The local test suites will not tell you: `npm run test:unit` passes with
+`data/fields/` and the SBOM both out of date, because nothing in it diffs a
+generated file against HEAD. The CI `unit` job ends with a `git diff
+--exit-code` over all of them, and that is where it surfaces -- spec-v1073 and
+spec-v1074 each pushed a red main this way, the second after regenerating the
+three data files and missing the SBOM. A stray `M sbom.json` in `git status`
+after a build is the tell. A rebuild has to be a no-op before you push.
 
 **One thing that will surprise you.** Adding a calculator reorders every ranking
 derived from the whole catalog, because they weight how rare a word is across
@@ -195,7 +202,19 @@ whose inputs are counts or measurements rather than grades belongs in that file'
 in the same file asks the narrower version per field: a `kind: 'number'` field
 carrying a `values` picklist is a `<select>` on screen, so omitting it must not
 move the answer silently. Exemptions there are keyed `tileId|fieldId` in
-`OPTIONAL_PICKLIST_OK` (`docs/spec-v1074.md`). Its finder is
+`OPTIONAL_PICKLIST_OK` (`docs/spec-v1074.md`). Both assertions read only what the
+tile computed for the inputs given, never its `note`: that field is static prose
+printed on every call, and matching the asking vocabulary against it excused a
+tile for the word "missing" in a footnote (`docs/spec-v1075.md`).
+
+A `<select>` the registry describes as a bare `kind: 'number'` is invisible to
+that assertion and to `field-values-match-dom` alike, since both find picklists
+by the declared `values`. `test/integration/undeclared-picklist-probe.spec.js`
+is the finder; it asserts nothing and is excluded from CI:
+
+```bash
+RUN_PROBES=1 npx playwright test test/integration/undeclared-picklist-probe.spec.js --project=chromium
+``` Its finder is
 `scripts/probe-omitted-item.mjs`, which asks the wider question the gate cannot
 -- drop one number from a worked example and see whether the answer moves without
 saying so. It asserts nothing and is not in CI; run it by hand:

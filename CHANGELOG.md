@@ -20,6 +20,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Two calculators accepted a score their own form does not offer.** AUDIT
+  items 9 and 10 are scored 0, 2 or 4; the agent surface took a 3.7 and reported
+  "AUDIT total 13.7: Zone II hazardous use". SPADI did the same on its 0-10
+  items. Both now name the options they accept, along with 81 other fields that
+  are a picklist on screen and were described to agents as a bare number. See
+  docs/spec-v1075.md.
+- **A gate excused a calculator because of a word in its footnote.** The check
+  that a missing item is owned up to was reading the tile's static explanatory
+  prose as well as its answer, and "where key information is missing" was enough
+  to pass. Reading only what the tile computed for the inputs given found 13
+  fields it had been letting through, including a ventricular-hemorrhage score
+  that dropped from 32/32 to 27/32 on an unread compartment. See
+  docs/spec-v1075.md.
 - **A snakebite score printed "pulmonary 0" for a system nobody examined.** Its
   library refused a call with nothing in it, so the sweep that had just landed
   read it as fixed -- but a call missing one of six body systems scored that

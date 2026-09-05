@@ -42,7 +42,13 @@ export default [
     summary: 'Full AUDIT alcohol-use screen (WHO): ten items (1-8 each 0-4, 9-10 each 0/2/4); total 0-40 with zones (0-7 low, 8-15 hazardous, 16-19 harmful, 20+ likely dependence).',
     compute: F.auditFull,
     toArgs: (inputs) => ({ items: itemArray(inputs, 'af-', 10, toNum, 0) }),
-    fields: Array.from({ length: 10 }, (_, i) => ({ dom: `af-${i + 1}`, arg: `af-${i + 1}`, kind: 'number', required: true, label: `AUDIT item ${i + 1}` })),
+    // spec-v1075: items 1-8 score 0-4; items 9 and 10 score 0, 2 or 4 only, which
+    // is the WHO scoring and not a range. Undeclared, the surface accepted a 3
+    // for item 9 and summed it.
+    fields: Array.from({ length: 10 }, (_, i) => ({
+      dom: `af-${i + 1}`, arg: `af-${i + 1}`, kind: 'number', required: true, label: `AUDIT item ${i + 1}`,
+      values: i >= 8 ? ['0', '2', '4'] : ['0', '1', '2', '3', '4'],
+    })),
   },
   {
     id: 'dast10',
