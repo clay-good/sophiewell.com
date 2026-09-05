@@ -32,6 +32,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { allCalculators } from '../../mcp/catalog.js';
 import { computeCalculator } from '../../mcp/tools.js';
+import { ASKING, DISCLOSING } from '../lib/asking-language.js';
 
 // tileId -> why an empty call may still answer.
 const COUNTS_NOT_GRADES = {
@@ -115,4 +116,81 @@ test('spec-v1073: the screener computes refuse an absent item on their own', () 
     assert.equal(r.valid, false, `${id} scored ${n - 1} of ${n} items`);
     assert.match(r.message, /unanswered/, `${id} refusal does not say what is unanswered`);
   }
+});
+
+// spec-v1074: the same question, asked of a picklist rather than a whole tile.
+//
+// The sweep above only catches an instrument built ENTIRELY of rated items, and
+// `snakebite-severity` slipped past it for a reason worth writing down: its lib
+// carries an `if (!any)` guard, so a call with NOTHING in it is refused
+// correctly -- and a call missing ONE system is not. That is the half-fix trap
+// spec-v1063 paid for on the browser side, and it hides a tile from any sweep
+// keyed on the empty call.
+//
+// So this asks it per field, and only of fields the browser renders as a
+// <select>: a `kind: 'number'` field carrying a `values` picklist. Such a
+// control always has a value on screen, so the reader can never reach the state
+// this refuses -- which makes `required` the whole fix, with nothing to weigh.
+//
+// It fills each calculator from its own worked example, drops one picklist item,
+// and fails when the answer moves without asking for the value or disclosing
+// that it is missing. `scripts/probe-omitted-item.mjs` is the same walk over
+// every numeric field, where the judgment is real and this one's is not.
+
+const OPTIONAL_PICKLIST_OK = new Map(Object.entries({
+  'mayo-uc|mu-en': 'the endoscopy subscore is optional by design -- its own label says so, and without it the tile reports the "partial Mayo" subset by name rather than a full Mayo score',
+}));
+
+function allStrings(v, out = []) {
+  if (typeof v === 'string') out.push(v);
+  else if (Array.isArray(v)) v.forEach((x) => allStrings(x, out));
+  else if (v && typeof v === 'object') Object.values(v).forEach((x) => allStrings(x, out));
+  return out;
+}
+
+function allNumbers(v, path = '', out = {}) {
+  if (typeof v === 'number' || v === null) out[path] = v;
+  else if (Array.isArray(v)) v.forEach((x, i) => allNumbers(x, `${path}[${i}]`, out));
+  else if (v && typeof v === 'object') for (const [k, x] of Object.entries(v)) allNumbers(x, `${path}.${k}`, out);
+  return out;
+}
+
+test('spec-v1074: omitting one picklist item does not silently move the answer', async () => {
+  const { META } = await import('../../lib/meta.js');
+  const offenders = [];
+  for (const tool of allCalculators()) {
+    const ex = META[tool.id]?.example?.fields;
+    if (!ex) continue;
+    const full = computeCalculator({ id: tool.id, inputs: { ...ex } });
+    if (full?.valid !== true) continue;
+
+    for (const f of tool.fields || []) {
+      if (f.kind !== 'number' || !Array.isArray(f.values)) continue;
+      const v = ex[f.dom];
+      if (v === undefined || String(v).trim() === '') continue;
+      const partial = { ...ex };
+      delete partial[f.dom];
+      const got = computeCalculator({ id: tool.id, inputs: partial });
+      if (got?.valid !== true) continue;                                       // refused
+      if (JSON.stringify(got.result) === JSON.stringify(full.result)) continue; // no effect
+
+      const after = allStrings(got.result).join(' ');
+      if (ASKING.test(after) || DISCLOSING.test(after)) continue;               // said so
+
+      const a = allNumbers(full.result);
+      const b = allNumbers(got.result);
+      const moved = Object.keys(b).filter((k) => k in a && a[k] !== b[k]);
+      if (moved.length && moved.every((k) => b[k] === null)) continue;          // line dropped
+
+      const key = `${tool.id}|${f.dom}`;
+      if (OPTIONAL_PICKLIST_OK.has(key)) continue;
+      offenders.push(`${key}  (${String(f.label).slice(0, 46)})\n      -> ${after.slice(0, 130)}`);
+    }
+  }
+  assert.deepEqual(offenders, [],
+    `${offenders.length} picklist item(s) were scored as their lowest option when omitted:\n`
+    + `${offenders.join('\n')}\n`
+    + 'The browser renders these as selects, which always carry a value, so declaring the field\n'
+    + '`required` refuses nothing a reader can reach. If the item is genuinely optional, add the\n'
+    + '`tileId|fieldId` key to OPTIONAL_PICKLIST_OK with the sentence that says why.');
 });

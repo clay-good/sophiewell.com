@@ -92,6 +92,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1071](spec-v1071.md) | The answer refused; the "show your work" panel below it did not |
 | [v1072](spec-v1072.md) | A trend widget that invented a 12 g/dL haemorrhage from a blank field |
 | [v1073](spec-v1073.md) | The agent surface scored an unanswered questionnaire item as zero |
+| [v1074](spec-v1074.md) | An `if (!any)` guard that hid a tile from the sweep keyed on the empty call |
 
 ### And the same question from the other side
 
@@ -137,7 +138,7 @@ calculator doing the opposite of it was three clicks away.
 | `no-impossible-number.spec.js` | does any tile state NaN, Infinity or an unexplained exponent? | 1.6 min |
 | `one-blank-field.spec.js` | with a calculator filled from its example, does clearing ONE measurement change the answer without asking for it or disclosing it? | 1.6 min |
 | `derivation-agrees.spec.js` | when a calculator refuses, does the "show your work" panel below still display the calculation? | 13 s |
-| `rated-items-are-required.test.js` | does an instrument built only of rated items answer a call carrying none of them? | 7 s |
+| `rated-items-are-required.test.js` | does an instrument built only of rated items answer a call carrying none of them, and does omitting one picklist item silently move an answer? | 7 s |
 
 Each has a ledger for the tiles that legitimately do the thing it looks for, and each was verified
 by reintroducing the defect and watching it fail.
@@ -178,6 +179,11 @@ What is left is narrower than when this page was written:
   two that an earlier wave half-fixed kept a live defect for weeks afterwards: `carb-insulin-bolus`
   dosed insulin from a blank target glucose, and `bhutani-bilirubin` read a blank bilirubin as low
   risk. Guard every measurement a tile reads, not the one the sweep pointed at.
+- **A sweep keyed on the empty form inherits every `if (!any)` guard in the catalog** (spec-v1074).
+  `snakebite-severity` refuses a call with nothing in it and, missing one of six systems, prints
+  that system as "pulmonary 0". The half of the question that needs no judgment — fields the
+  browser renders as a `<select>`, which always carries a value — is now gated per field.
+
 - **93 fields still change the AGENT's answer when omitted, without saying so**
   (`scripts/probe-omitted-item.mjs`, spec-v1073). The gate that wave shipped covers instruments
   built entirely of rated items; what is left is the mixed kind, where checklist criteria sit

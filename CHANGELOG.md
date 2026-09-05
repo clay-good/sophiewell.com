@@ -20,6 +20,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A snakebite score printed "pulmonary 0" for a system nobody examined.** Its
+  library refused a call with nothing in it, so the sweep that had just landed
+  read it as fixed -- but a call missing one of six body systems scored that
+  system as zero and named it in the band. Picklist items, which the browser
+  renders as selects that always carry a value, are now gated one field at a
+  time. See docs/spec-v1074.md.
 - **An empty PHQ-9 call answered "Minimal depression".** Seventeen rating
   instruments read an item an agent did not send as a zero and reported a band
   anyway -- `cage` returned "Negative", `epds` "Low likelihood", `mnihss` "no

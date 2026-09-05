@@ -31,15 +31,15 @@ export default [
   },
   {
     id: 'snakebite-severity',
-    summary: 'Snakebite Severity Score (Dart 1996): sums six organ-system sub-scores (pulmonary, cardiovascular, local wound, gastrointestinal, hematologic, CNS) into a 0–20 continuous severity index.',
+    summary: 'Snakebite Severity Score (Dart 1996): sums six organ-system sub-scores (pulmonary, cardiovascular, local wound, gastrointestinal, hematologic, CNS) into a 0–20 continuous severity index. Every system is required: an unexamined system is not a system scored 0.',
     compute: F.snakebiteSeverity,
     fields: [
-      { dom: 'ss-pul', arg: 'pulmonary', kind: 'number', label: 'Pulmonary (0–3)', values: ['0', '1', '2', '3'] },
-      { dom: 'ss-cv', arg: 'cardiovascular', kind: 'number', label: 'Cardiovascular (0–3)', values: ['0', '1', '2', '3'] },
-      { dom: 'ss-loc', arg: 'local', kind: 'number', label: 'Local wound (0–4)', values: ['0', '1', '2', '3', '4'] },
-      { dom: 'ss-gi', arg: 'gi', kind: 'number', label: 'Gastrointestinal (0–3)', values: ['0', '1', '2', '3'] },
-      { dom: 'ss-hem', arg: 'hematologic', kind: 'number', label: 'Hematologic (0–4)', values: ['0', '1', '2', '3', '4'] },
-      { dom: 'ss-cns', arg: 'cns', kind: 'number', label: 'CNS (0–3)', values: ['0', '1', '2', '3'] },
+      { dom: 'ss-pul', arg: 'pulmonary', kind: 'number', required: true, label: 'Pulmonary (0–3)', values: ['0', '1', '2', '3'] },
+      { dom: 'ss-cv', arg: 'cardiovascular', kind: 'number', required: true, label: 'Cardiovascular (0–3)', values: ['0', '1', '2', '3'] },
+      { dom: 'ss-loc', arg: 'local', kind: 'number', required: true, label: 'Local wound (0–4)', values: ['0', '1', '2', '3', '4'] },
+      { dom: 'ss-gi', arg: 'gi', kind: 'number', required: true, label: 'Gastrointestinal (0–3)', values: ['0', '1', '2', '3'] },
+      { dom: 'ss-hem', arg: 'hematologic', kind: 'number', required: true, label: 'Hematologic (0–4)', values: ['0', '1', '2', '3', '4'] },
+      { dom: 'ss-cns', arg: 'cns', kind: 'number', required: true, label: 'CNS (0–3)', values: ['0', '1', '2', '3'] },
     ],
   },
   {

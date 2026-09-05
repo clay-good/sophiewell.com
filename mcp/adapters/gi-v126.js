@@ -33,7 +33,7 @@ export default [
       { dom: 'cd-well', arg: 'wellbeing', kind: 'number', label: 'General well-being (sum of daily 0-4 over 7 days)' },
       { dom: 'cd-comp', arg: 'complications', kind: 'number', label: 'Number of complications (0-6)' },
       { dom: 'cd-anti', arg: 'antidiarrheal', kind: 'bool', label: 'Antidiarrheal use' },
-      { dom: 'cd-mass', arg: 'abdMass', kind: 'number', label: 'Abdominal mass (0 none, 2 questionable, 5 definite)', values: ['0', '2', '5'] },
+      { dom: 'cd-mass', arg: 'abdMass', kind: 'number', required: true, label: 'Abdominal mass (0 none, 2 questionable, 5 definite)', values: ['0', '2', '5'] },
       { dom: 'cd-female', arg: 'female', kind: 'bool', label: 'Female (sets the hematocrit reference to 42)' },
       { dom: 'cd-hct', arg: 'hct', kind: 'number', required: true, label: 'Hematocrit', unit: '%' },
       { dom: 'cd-wt', arg: 'weight', kind: 'number', required: true, label: 'Current weight', unit: 'kg' },
