@@ -86,6 +86,16 @@ the SBOM are all generated. Avoid `npm run data:refresh` unless you changed a
 dataset: it re-stamps dozens of unrelated `data/**` manifests and buries your
 change.
 
+**Those three are a step of editing an adapter at all, not only of adding a
+calculator.** `data/fields/` is built from the adapter field lists, `required`
+flags included, and `corpus-detail.json` carries each adapter's `summary` -- so
+adding one `required: true` makes both stale. The local suites will not tell
+you: `npm run test:unit` passes with `data/fields/` out of date, because nothing
+in `release:check` diffs a generated file against HEAD. The CI `unit` job ends
+with a `git diff --exit-code` over all of them, and that is where it surfaces
+(spec-v1073 pushed a red main this way). A rebuild has to be a no-op before you
+push.
+
 **One thing that will surprise you.** Adding a calculator reorders every ranking
 derived from the whole catalog, because they weight how rare a word is across
 it. A "related tools" list you never touched can change order, so
@@ -181,7 +191,11 @@ depression" while the browser beside it showed nothing until every item was
 answered. Fixing one means declaring its items `required`, which refuses nothing
 a reader can reach, since a graded select always carries a value. An instrument
 whose inputs are counts or measurements rather than grades belongs in that file's
-`COUNTS_NOT_GRADES` map with the reason (`docs/spec-v1073.md`). Its finder is
+`COUNTS_NOT_GRADES` map with the reason (`docs/spec-v1073.md`). A fifth assertion
+in the same file asks the narrower version per field: a `kind: 'number'` field
+carrying a `values` picklist is a `<select>` on screen, so omitting it must not
+move the answer silently. Exemptions there are keyed `tileId|fieldId` in
+`OPTIONAL_PICKLIST_OK` (`docs/spec-v1074.md`). Its finder is
 `scripts/probe-omitted-item.mjs`, which asks the wider question the gate cannot
 -- drop one number from a worked example and see whether the answer moves without
 saying so. It asserts nothing and is not in CI; run it by hand:
