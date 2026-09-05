@@ -20,6 +20,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Surveyed every slider in the catalog.** After the stroke-scale fix below,
+  thirteen more tiles turned out to read as the healthiest possible patient
+  before anyone touches them, because a slider cannot be blank: a swallow screen
+  offering "normal diet, normal liquids", a pressure-injury score saying "not at
+  risk", two daily-living scales saying "full independence". Written up with the
+  triage and a runnable finder; the fixes are queued rather than rushed, and one
+  of them needs a decision about the GCS first. See docs/spec-v1079.md.
 - **Both stroke scales reported "no stroke symptoms" for a patient nobody had
   examined.** The NIH Stroke Scale rendered its thirteen items as sliders, and a
   slider cannot be blank -- it sits at zero and looks like a rating somebody

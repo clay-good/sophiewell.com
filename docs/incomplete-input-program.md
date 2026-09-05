@@ -99,6 +99,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1076](spec-v1076.md) | Three ICHD-3 headache tiles ruled a diagnosis out on counts nobody entered |
 | [v1077](spec-v1077.md) | A CDAI diary item nobody filled in read as a symptom-free week |
 | [v1078](spec-v1078.md) | Both stroke scales said "no stroke symptoms" for a patient nobody examined |
+| [v1079](spec-v1079.md) | **Survey**: every slider in the catalog, and what it says untouched |
 
 ### And the same question from the other side
 
@@ -195,6 +196,13 @@ What is left is narrower than when this page was written:
   `snakebite-severity` refuses a call with nothing in it and, missing one of six systems, prints
   that system as "pulmonary 0". The half of the question that needs no judgment — fields the
   browser renders as a `<select>`, which always carries a value — is now gated per field.
+
+- **Thirteen tiles read as reassuring before anyone touches them** (spec-v1079, measured by
+  `slider-default-probe.spec.js`). A slider cannot be blank, so the control answers for the reader:
+  `guss` clears a stroke patient for "normal diet, normal liquids", `braden` says "not at risk",
+  `katz-adl` and `lawton-iadl` say "full independence". Eight take the spec-v1047 fix directly;
+  `guss` needs its staged gating thought through first, and the GCS pair needs a decision rather
+  than a fix.
 
 - **95 fields still change the AGENT's answer when omitted, without saying so**
   (`scripts/probe-omitted-item.mjs`, spec-v1073; the count was read as 93 until spec-v1075 stopped
