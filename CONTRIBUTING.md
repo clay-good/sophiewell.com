@@ -172,6 +172,24 @@ showing both the age just cleared and the number the refusal was withholding.
 Call `clearDerivationSteps(deriv)` on the refusal path; where the refusal is a
 throw, pass the panel to `safe()` and its catch does it (`docs/spec-v1071.md`).
 
+One gate on the same question runs in the `mcp` job instead, because it needs no
+browser: `test/mcp/rated-items-are-required.test.js`. A calculator all of whose
+inputs are rated items -- every field a number, none of them `required` -- must
+not answer a `compute_calculator` call carrying no inputs at all. Seventeen did,
+and they answered reassuringly: an empty `phq9` call returned "Minimal
+depression" while the browser beside it showed nothing until every item was
+answered. Fixing one means declaring its items `required`, which refuses nothing
+a reader can reach, since a graded select always carries a value. An instrument
+whose inputs are counts or measurements rather than grades belongs in that file's
+`COUNTS_NOT_GRADES` map with the reason (`docs/spec-v1073.md`). Its finder is
+`scripts/probe-omitted-item.mjs`, which asks the wider question the gate cannot
+-- drop one number from a worked example and see whether the answer moves without
+saying so. It asserts nothing and is not in CI; run it by hand:
+
+```bash
+node scripts/probe-omitted-item.mjs
+```
+
 It also carries `clock-dependent.spec.js`, which renders every calculator twice a
 year apart on a fake clock and fails on any whose answer changed while its inputs
 did not. A tool that measures elapsed time -- a filing deadline, a device-day

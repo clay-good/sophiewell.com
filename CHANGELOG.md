@@ -20,6 +20,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **An empty PHQ-9 call answered "Minimal depression".** Seventeen rating
+  instruments read an item an agent did not send as a zero and reported a band
+  anyway -- `cage` returned "Negative", `epds` "Low likelihood", `mnihss` "no
+  stroke symptoms" -- while the browser beside them showed nothing until every
+  item was answered. Every item is now required on both surfaces, and four
+  worked examples that documented only their abnormal items now name all of
+  them (no total moved). See docs/spec-v1073.md.
 - **A test said "every tool route" and checked one in eight.** The sampling is
   sound -- the back button is rendered once by the shell, on the path a
   full-catalog test already walks -- but the name overstated it, and a test

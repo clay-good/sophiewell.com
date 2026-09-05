@@ -38,6 +38,10 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 8. **A control that cannot express "not answered" will be read as an answer** (spec-v1047). A slider
    sits at its minimum and looks like a rating somebody made. Where the value matters, being empty
    has to be possible — a constraint on the input, not only on the reader.
+9. **A surface that cannot show a control still has to ask the question it represents**
+   (spec-v1073). A graded select always carries a value, so the renderer never meets an unanswered
+   item; an API caller omits keys by default. Where the browser makes an answer unavoidable, the
+   adapter has to declare it required.
 
 ## The specs
 
@@ -87,6 +91,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1067](spec-v1067.md) | The gate, keyed by field, and the ledger that was quiet because I guessed at it |
 | [v1071](spec-v1071.md) | The answer refused; the "show your work" panel below it did not |
 | [v1072](spec-v1072.md) | A trend widget that invented a 12 g/dL haemorrhage from a blank field |
+| [v1073](spec-v1073.md) | The agent surface scored an unanswered questionnaire item as zero |
 
 ### And the same question from the other side
 
@@ -132,6 +137,7 @@ calculator doing the opposite of it was three clicks away.
 | `no-impossible-number.spec.js` | does any tile state NaN, Infinity or an unexplained exponent? | 1.6 min |
 | `one-blank-field.spec.js` | with a calculator filled from its example, does clearing ONE measurement change the answer without asking for it or disclosing it? | 1.6 min |
 | `derivation-agrees.spec.js` | when a calculator refuses, does the "show your work" panel below still display the calculation? | 13 s |
+| `rated-items-are-required.test.js` | does an instrument built only of rated items answer a call carrying none of them? | 7 s |
 
 Each has a ledger for the tiles that legitimately do the thing it looks for, and each was verified
 by reintroducing the defect and watching it fail.
@@ -162,10 +168,22 @@ What is left is narrower than when this page was written:
   per field by construction, and its ledger is keyed `tileId|fieldId` — exempting one field leaves
   every other field on that calculator guarded. Twenty-eight were fixed by hand over the four waves
   that preceded it; the gate now holds the rest.
+- ~~**Only one direction of the two-surface question was ever asked.**~~ **Closed by
+  [spec-v1073](spec-v1073.md)**: spec-v1037 asked whether the browser answers what the agent surface
+  refuses, and drained it. The mirror — whether the agent surface answers what the browser refuses —
+  had never been run, and seventeen rating instruments were scoring an unanswered item as zero. An
+  empty `phq9` call returned "Minimal depression".
+
 - **A guard on one field silences the all-fields sweeps for every other field on that tile.** The
   two that an earlier wave half-fixed kept a live defect for weeks afterwards: `carb-insulin-bolus`
   dosed insulin from a blank target glucose, and `bhutani-bilirubin` read a blank bilirubin as low
   risk. Guard every measurement a tile reads, not the one the sweep pointed at.
+- **93 fields still change the AGENT's answer when omitted, without saying so**
+  (`scripts/probe-omitted-item.mjs`, spec-v1073). The gate that wave shipped covers instruments
+  built entirely of rated items; what is left is the mixed kind, where checklist criteria sit
+  beside measurements and a blanket `required` would refuse calls that are legitimately partial.
+  `snakebite-severity` prints "pulmonary 0" for a system nobody examined.
+
 - **146 coercion helpers cannot tell a blank from a zero** (`scripts/probe-blank-coercions.mjs`).
   Most are harmless; which ones are not depends on what their renderer sends, so the report is a
   reading aid rather than a gate (spec-v1040).
