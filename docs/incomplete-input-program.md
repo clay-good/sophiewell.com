@@ -100,6 +100,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1077](spec-v1077.md) | A CDAI diary item nobody filled in read as a symptom-free week |
 | [v1078](spec-v1078.md) | Both stroke scales said "no stroke symptoms" for a patient nobody examined |
 | [v1079](spec-v1079.md) | **Survey**: every slider in the catalog, and what it says untouched |
+| [v1080](spec-v1080.md) | The Braden runs the other way, so both readings of a partial were unsupportable |
 
 ### And the same question from the other side
 
@@ -114,6 +115,7 @@ had described a patient.
 | [v1033](spec-v1033.md) | Nine bedside pain, delirium and withdrawal scales |
 | [v1034](spec-v1034.md) | Ten bleeding, clotting and severity scores |
 | [v1035](spec-v1035.md) | The last sixteen, and the three left all-zero on purpose |
+| [v1080](spec-v1080.md) | The mirror the all-zero sweep could not see: two examples at every field's MAXIMUM |
 
 ## The promise on the front page, clause by clause
 
@@ -199,8 +201,8 @@ What is left is narrower than when this page was written:
 
 - **Thirteen tiles read as reassuring before anyone touches them** (spec-v1079, measured by
   `slider-default-probe.spec.js`). A slider cannot be blank, so the control answers for the reader:
-  `guss` clears a stroke patient for "normal diet, normal liquids", `braden` says "not at risk",
-  `katz-adl` and `lawton-iadl` say "full independence". Eight take the spec-v1047 fix directly;
+  `guss` clears a stroke patient for "normal diet, normal liquids", `katz-adl` and `lawton-iadl` say
+  "full independence". `braden` is fixed (spec-v1080); seven take the spec-v1047 fix directly;
   `guss` needs its staged gating thought through first, and the GCS pair needs a decision rather
   than a fix.
 

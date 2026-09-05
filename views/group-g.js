@@ -3956,17 +3956,25 @@ export const renderers = {
       ['Nutrition (1 very poor - 4 excellent)', 'br-nutr', 4],
       ['Friction and shear (1 problem - 3 no apparent problem)', 'br-fric', 3],
     ];
-    for (const [l, id, max] of items) root.appendChild(rangeField(l, id, 1, max, max));
+    // spec-v1080: number inputs, not sliders parked at their best value. Each
+    // subscale starts at 1, so the placeholder shows the range rather than a
+    // default somebody might read as a rating.
+    for (const [l, id, max] of items) {
+      root.appendChild(el('p', {}, [
+        el('label', { for: id, text: l }), el('br'),
+        el('input', { id, type: 'number', min: '1', max: String(max), step: '1', inputmode: 'numeric', placeholder: `1-${max}` }),
+      ]));
+    }
     const o = out(); root.appendChild(o);
     const deriv = renderDerivation(META.braden);
     if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
       const inputs = {
-        sensory: nv('br-sens'), moisture: nv('br-moist'), activity: nv('br-act'),
-        mobility: nv('br-mob'), nutrition: nv('br-nutr'), friction: nv('br-fric'),
+        sensory: nvOrNull('br-sens'), moisture: nvOrNull('br-moist'), activity: nvOrNull('br-act'),
+        mobility: nvOrNull('br-mob'), nutrition: nvOrNull('br-nutr'), friction: nvOrNull('br-fric'),
       };
       const r = S4.braden(inputs);
-      o.appendChild(el('h2', { text: `Braden ${r.score} (${r.band})` }));
+      if (r.valid) o.appendChild(el('h2', { text: `Braden ${r.score} (${r.band})` }));
       o.appendChild(el('p', { text: r.text }));
       if (deriv) updateDerivationSteps(deriv, META.braden, inputs);
     });

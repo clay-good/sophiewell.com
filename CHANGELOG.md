@@ -20,6 +20,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A pressure-injury risk scale said "not at risk" before anyone assessed the
+  patient.** The Braden runs the other way from most scores -- a higher total
+  means less risk -- so six sliders parked at their best gave 23 of 23, and
+  simply adding up whichever subscales were rated would have read as more risk
+  than the patient has. Neither is honest, so it now asks for the subscales it
+  has not been given. Its worked example, and the Barthel Index's, also sat at
+  every field's best value; both now show a patient with something to plan for.
+  See docs/spec-v1080.md.
 - **Surveyed every slider in the catalog.** After the stroke-scale fix below,
   thirteen more tiles turned out to read as the healthiest possible patient
   before anyone touches them, because a slider cannot be blank: a swallow screen

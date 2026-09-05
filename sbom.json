@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:c13f6e6d-99aa-5363-81c9-07d97c7b1080",
+  "serialNumber": "urn:uuid:c36e6d01-f199-5bb3-8f78-7511c54d562c",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-05T16:42:32.818Z",
+    "timestamp": "2026-09-05T18:45:02.387Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -10016,7 +10016,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "826a143687100d826e0627eac60ce45d583d9cdb204b863fc72cef8519c81030"
+          "content": "d304930fec562ebcc98fe0e002872d75f12c65842cb37603b3d25a76366c85b5"
         }
       ],
       "properties": [
@@ -10026,7 +10026,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2463690"
+          "value": "2464612"
         }
       ]
     },
@@ -15287,7 +15287,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "11c0c992b038d3ba5bae890190c5e5557b2b5395ef3cbacb19e9c9ade0bdbee6"
+          "content": "80919a04f3b9091156691304915fd593bb5329fc909eadd17fd96a03fd503af9"
         }
       ],
       "properties": [
@@ -15297,7 +15297,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "259856"
+          "value": "261311"
         }
       ]
     },
@@ -35174,7 +35174,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f136d02fc4d44000aee17e5c516d100f0af9ec986267589abca5a2ebbf7c4f2c"
+          "content": "b7b80ef953c35b68021a8161495929f5e50c1b5b90a31e0a73b696d73bb31601"
         }
       ],
       "properties": [
@@ -35184,7 +35184,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "242365"
+          "value": "242809"
         }
       ]
     },
@@ -69596,7 +69596,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "c13f6e6d99aaf363"
+      "value": "c36e6d01f1990bb3"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
