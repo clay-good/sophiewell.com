@@ -20,6 +20,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Three headache calculators ruled a diagnosis out on numbers nobody had
+  entered.** With the attack count left blank, the migraine tile answered
+  "Neither ICHD-3 migraine criteria set is met -- for 1.1: at least 5 attacks",
+  which is the identical sentence it gives a patient who has genuinely had
+  three. The tension-type and indomethacin-responsive tiles did the same. Each
+  now separates "not measured" from "not met" and declines to rule out while a
+  required number is outstanding -- per criteria set, since chronic tension-type
+  headache asks for no episode count at all. Fixed in the shared library, so the
+  page and the agent tool both change, and all three have left the empty-form
+  exemption list they had been on. See docs/spec-v1076.md.
 - **Two calculators accepted a score their own form does not offer.** AUDIT
   items 9 and 10 are scored 0, 2 or 4; the agent surface took a 3.7 and reported
   "AUDIT total 13.7: Zone II hazardous use". SPADI did the same on its 0-10

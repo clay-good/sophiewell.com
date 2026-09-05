@@ -60,13 +60,11 @@ export const ANSWERS_AN_EMPTY_FORM = new Set([
   "hiv-pep-occupational",
   "hpa-glaucoma",
   "igg4-rd-2020",
-  "indomethacin-headache-ichd3",
   "isth-bat",
   "kings-college",
   "masld-criteria",
   "mchat-rf",
   "membranous-risk",
-  "migraine-ichd3",
   "mswat",
   "mtp-tracker",
   "naloxone",
@@ -84,7 +82,6 @@ export const ANSWERS_AN_EMPTY_FORM = new Set([
   "sea-guideline",
   "sepsis-bundle-clock",
   "systemic-mastocytosis",
-  "tension-headache-ichd3",
   "timely-filing",
   // spec-v1063 removed "triple-i": every category in that framework begins with
   // fever, so with no temperature entered it now refuses instead of answering

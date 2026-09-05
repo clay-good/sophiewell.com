@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { ASKING } from '../lib/asking-language.js';
 import { tensionHeadacheIchd3 as tth } from '../../lib/tension-headache-ichd3-v818.js';
 
 const core = { bilateral: true, pressing: true, noBetterExplanation: true };
@@ -86,4 +87,22 @@ test('tension: empty, out-of-range and unrecognized input', () => {
   assert.equal(tth({ nausea: 'terrible' }).valid, false);
   assert.equal(tth().valid, true);
   assert.doesNotMatch(JSON.stringify(tth({ episodeCount: 1e308 })), /NaN|Infinity/);
+});
+
+// spec-v1076: the same third state. Every frequency test reads `x !== null &&
+// ...`, so a blank headache-days figure made all three subtypes unmet and the
+// tile answered "No ICHD-3 tension-type headache subtype is met on these
+// entries" -- a rule-out written from a field nobody filled in.
+test('spec-v1076: a blank headache-days count does not rule tension-type out', () => {
+  const base = {
+    episodeCount: '12', monthsOfPattern: '6', duration: 'hours-to-7-days',
+    pressing: true, bilateral: true, noBetterExplanation: true,
+  };
+  const blank = tth({ ...base, headacheDaysPerMonth: '' });
+  const entered = tth({ ...base, headacheDaysPerMonth: '20' });
+
+  assert.ok(blank.notEntered.includes('headache days per month'));
+  assert.ok(ASKING.test(blank.band), `blank reading does not ask: ${blank.band}`);
+  assert.match(blank.band, /ruled out/);
+  assert.notEqual(blank.band, entered.band, 'not measured must not read as not met');
 });

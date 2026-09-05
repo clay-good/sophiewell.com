@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { ASKING } from '../lib/asking-language.js';
 import { migraineIchd3 } from '../../lib/migraine-ichd3-v815.js';
 
 const noAuraCore = {
@@ -95,4 +96,34 @@ test('migraine: empty and invalid input', () => {
   assert.equal(migraineIchd3({ attackCount: -1 }).valid, false);
   assert.equal(migraineIchd3({ headacheHours: -1 }).valid, false);
   assert.equal(migraineIchd3().valid, true);
+});
+
+// spec-v1076: not met, or not measured -- the third state, on the ICHD-3 family.
+//
+// `attacks === null` and `attacks < 5` both made criterion A unmet, and the tile
+// printed the same sentence for each under the verdict "Neither ICHD-3 migraine
+// criteria set is met". A blank attack count therefore ruled migraine OUT in the
+// same words as a patient who has genuinely had three attacks.
+test('spec-v1076: a blank attack count does not rule migraine out', () => {
+  const base = {
+    headacheHours: '24', unilateral: true, pulsating: true, severity: true,
+    activity: true, nauseaVomiting: true, noBetterExplanation: true,
+  };
+  const blank = migraineIchd3({ ...base, attackCount: '' });
+  const short = migraineIchd3({ ...base, attackCount: '3' });
+  const meets = migraineIchd3({ ...base, attackCount: '5' });
+
+  // Three states, three readings.
+  assert.equal(meets.criteriaMet, true);
+  assert.deepEqual(meets.notEntered, []);
+
+  assert.deepEqual(short.notEntered, [], 'a count that was entered is not outstanding');
+  assert.match(short.band, /Neither ICHD-3 migraine criteria set is met/);
+
+  assert.deepEqual(blank.notEntered, ['the number of attacks']);
+  // Asserted against the shared vocabulary, not a phrase: what matters is that
+  // the reading ASKS, which is what the empty-form sweep next door recognises.
+  assert.ok(ASKING.test(blank.band), `blank reading does not ask: ${blank.band}`);
+  assert.match(blank.band, /cannot be ruled out|can be ruled out/);
+  assert.notEqual(blank.band, short.band, 'not measured must not read as not met');
 });

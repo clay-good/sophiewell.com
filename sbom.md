@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `7196005a27bcae90`
-Generated: 2026-09-05T15:55:15.325Z
+Build ID: `bf2295bbb9a84e76`
+Generated: 2026-09-05T16:16:44.144Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -398,7 +398,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/ideberg-glenoid-v409.js` | 4070 | `b7cde0877f7d560cb68fc68b7e39b1f8867024c9bccdb1a3fedd89300faff0a9` |
 | `lib/igcccg-v567.js` | 15655 | `279f4fffa68503aa75dd91ac700755e7e016bb42f4dc8377abc5d53eb62356a8` |
 | `lib/igg4-rd-2020-v825.js` | 8113 | `9a508c9597e17f30bc65156b09c5d5baf29116bca796c85070e050101c1614a0` |
-| `lib/indomethacin-headache-ichd3-v819.js` | 9315 | `a5410327d8d7bb9ad4261b27bc914c8796a28fb91e0ee9ccb6676c6b9bc97b34` |
+| `lib/indomethacin-headache-ichd3-v819.js` | 10371 | `64c156e0d8e4450cbbb047a94b089e7b617fd7a3403c1b465055cc94ad6cd2bd` |
 | `lib/inflam-v230.js` | 6411 | `bf7c4bf274d5eb4ccffdd80ea334f09b85a94f9357dd6aeae093f321845da0ef` |
 | `lib/inflam-v267.js` | 3039 | `e45a593d4423f6958e9a7bfe34b57f3b2c09df7a54083d602f224fddd1b7e15d` |
 | `lib/inflam-v268.js` | 3148 | `f1f23e1e817f4b4761a70c83c2662269970db006d974607329160c2acbf9f021` |
@@ -520,7 +520,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/methemoglobin-v864.js` | 10471 | `eecfdc7ce8e1d1540710c0a709a42b2b7fa516dfd8bcd8a38e4fce55b62b6ea9` |
 | `lib/meyers-mckeever-v408.js` | 3443 | `2e1194940bf147d4cb84ef46856ec0dbf67dbabaf76aeea1b45fa1b53d8df1b7` |
 | `lib/mh-grading-scale-v860.js` | 10650 | `12d4c73d2cc090e044efa0e5a6df2f19c4759b3686146b060798f9ad53efc4f7` |
-| `lib/migraine-ichd3-v815.js` | 9132 | `6e2a360cec0c9bc45092b155ddbf12557e71bfc62c1ddab679973317a4a3de44` |
+| `lib/migraine-ichd3-v815.js` | 10346 | `2d8f5828599b247771e72f31686801a06caeee5c5dae8a41d39243370ea501ce` |
 | `lib/milch-condyle-v418.js` | 3230 | `bd203011afad9a6b64e11d891667f379ff974ef02b8f2f01f97d0223bc1a754c` |
 | `lib/miller-gingival-recession-v724.js` | 4057 | `b1d11e492848c3dd47c988a4e603929084939dac5cad8042402014dba90366f3` |
 | `lib/mis-c-v795.js` | 5510 | `aebe68b4bd5f98d48ddb51cf2a35e0a15ebb97f435a18010a2005382dbebfdbe` |
@@ -822,7 +822,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/tb-testing.js` | 1648 | `cc73aea69ef4256ba44fab37bcff1dc497c553784de852a4f9cf12c7a9b1d7cb` |
 | `lib/tbi-stroke-v206.js` | 13545 | `7f56c16239081d17db7cdc841957c5c6dcb6c15a2dbe4abfa84aefbaec7fef5d` |
 | `lib/tegner-activity-v500.js` | 4131 | `db8258facb99a0cde768edff7c6b13fa9a513d97da08812e804f5a7398e6e8d3` |
-| `lib/tension-headache-ichd3-v818.js` | 9090 | `f90aaa946b3c4d27b8c9fc05dbd1594ce45a1d63c3d85a7f6b91a05e0fafc74d` |
+| `lib/tension-headache-ichd3-v818.js` | 10132 | `108a31557345f9aa91f474db3e73c887346a6bc5d145bda4f4206ce0d9441bf8` |
 | `lib/thakar-aki-v568.js` | 12602 | `62fcf74616b811d48115fa3c9122bc5e364d275b402935a37fdad39af6256e07` |
 | `lib/thi-v555.js` | 11195 | `d55b2f2f862ca6e733596598a66b327cbd14ca7da573a5ea7c1eeb5c8d407bbb` |
 | `lib/thompson-epstein-v459.js` | 3276 | `3952607d4d19cb032c2a30aa175392e917a89ea63555efc8177e76d727b61155` |

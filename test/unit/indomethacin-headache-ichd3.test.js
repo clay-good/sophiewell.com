@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { ASKING } from '../lib/asking-language.js';
 import { indomethacinHeadacheIchd3 as ind } from '../../lib/indomethacin-headache-ichd3-v819.js';
 
 const ph = { attackCount: 30, attackMinutes: 15, attacksPerDay: 8, miosisPtosis: true, indomethacinResponse: true, noBetterExplanation: true };
@@ -76,4 +77,20 @@ test('indomethacin TACs: empty and out-of-range input', () => {
   assert.equal(ind({ attacksPerDay: -1 }).valid, false);
   assert.equal(ind().valid, true);
   assert.doesNotMatch(JSON.stringify(ind({ attackCount: 1e308 })), /NaN|Infinity/);
+});
+
+// spec-v1076: the same third state, split per criteria set -- only 3.2 reads the
+// attack count, duration and daily frequency; only 3.4 reads the months.
+test('spec-v1076: a blank attack duration does not rule the indomethacin sets out', () => {
+  const base = {
+    attackCount: '25', attacksPerDay: '8', monthsContinuous: '9',
+    conjunctival: true, indomethacinResponse: false, noBetterExplanation: true,
+  };
+  const blank = ind({ ...base, attackMinutes: '' });
+  const entered = ind({ ...base, attackMinutes: '45' });
+
+  assert.ok(blank.notEntered.includes('the attack duration'));
+  assert.ok(ASKING.test(blank.band), `blank reading does not ask: ${blank.band}`);
+  assert.deepEqual(entered.notEntered, [], 'a duration that was entered is not outstanding');
+  assert.notEqual(blank.band, entered.band, 'not measured must not read as not met');
 });
