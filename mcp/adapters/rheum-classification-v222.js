@@ -78,7 +78,7 @@ export default [
     summary: 'Modified Rodnan skin score (Clements 1995): skin thickness graded 0–3 at 17 body sites gives a 0–51 total; a higher score marks more extensive skin involvement in systemic sclerosis.',
     compute: F.mrss,
     fields: MRSS_SITES.map((key) => ({
-      dom: `mrss-${key}`, arg: key, kind: 'number', required: false, label: `${key} skin thickness (0–3)`, values: scaleValues(3),
+      dom: `mrss-${key}`, arg: key, kind: 'number', required: true, label: `${key} skin thickness (0–3)`, values: scaleValues(3),
     })),
   },
   {

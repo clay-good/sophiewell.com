@@ -22,7 +22,11 @@ const KU_ITEMS = [['ku-flush', 'hotFlushes'], ['ku-par', 'paresthesia'], ['ku-in
 function gradeFields(pairs, max) {
   return pairs.map(([dom, arg, ownMax]) => {
     const top = ownMax == null ? max : ownMax;
-    return { dom, arg, kind: 'number', required: false, label: `${arg} (0-${top})`, values: scaleValues(top) };
+    // spec-v1073: every item of a rating instrument is required. The browser
+    // renders these as graded selects, which always carry a value; an agent
+    // that omits one used to have it summed as 0, so a Thompson score built
+    // from no signs read "Thompson 0 -- mild".
+    return { dom, arg, kind: 'number', required: true, label: `${arg} (0-${top})`, values: scaleValues(top) };
   });
 }
 
@@ -52,7 +56,7 @@ export default [
     id: 'ferriman-gallwey',
     summary: 'Modified Ferriman-Gallwey score (1961/1981): terminal-hair grades 0–4 over nine body areas give a 0–36 total; ≥ 8 indicates hirsutism.',
     compute: F.ferrimanGallwey,
-    fields: FG_DOMS.map((dom, i) => ({ dom, arg: FG_AREAS[i], kind: 'number', required: false, label: `${FG_AREAS[i]} hair grade (0-4)`, values: scaleValues(4) })),
+    fields: FG_DOMS.map((dom, i) => ({ dom, arg: FG_AREAS[i], kind: 'number', required: true, label: `${FG_AREAS[i]} hair grade (0-4)`, values: scaleValues(4) })),
   },
   {
     id: 'pbac-hmb',

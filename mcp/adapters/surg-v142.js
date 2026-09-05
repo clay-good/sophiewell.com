@@ -55,11 +55,11 @@ export default [
     summary: 'Wilson Risk Sum Score (0–10) for difficult intubation: body weight, head/neck movement, jaw movement, receding mandible, and buck teeth each scored 0–2; ≥ 2 is the common sensitive screen.',
     compute: F.wilsonAirway,
     fields: [
-      { dom: 'wil-weight', arg: 'weight', kind: 'number', required: false, label: 'Body weight (0–2)', values: ['0', '1', '2'] },
-      { dom: 'wil-headneck', arg: 'headneck', kind: 'number', required: false, label: 'Head and neck movement (0–2)', values: ['0', '1', '2'] },
-      { dom: 'wil-jaw', arg: 'jaw', kind: 'number', required: false, label: 'Jaw movement (0–2)', values: ['0', '1', '2'] },
-      { dom: 'wil-mandible', arg: 'mandible', kind: 'number', required: false, label: 'Receding mandible (0–2)', values: ['0', '1', '2'] },
-      { dom: 'wil-teeth', arg: 'teeth', kind: 'number', required: false, label: 'Buck teeth (0–2)', values: ['0', '1', '2'] },
+      { dom: 'wil-weight', arg: 'weight', kind: 'number', required: true, label: 'Body weight (0–2)', values: ['0', '1', '2'] },
+      { dom: 'wil-headneck', arg: 'headneck', kind: 'number', required: true, label: 'Head and neck movement (0–2)', values: ['0', '1', '2'] },
+      { dom: 'wil-jaw', arg: 'jaw', kind: 'number', required: true, label: 'Jaw movement (0–2)', values: ['0', '1', '2'] },
+      { dom: 'wil-mandible', arg: 'mandible', kind: 'number', required: true, label: 'Receding mandible (0–2)', values: ['0', '1', '2'] },
+      { dom: 'wil-teeth', arg: 'teeth', kind: 'number', required: true, label: 'Buck teeth (0–2)', values: ['0', '1', '2'] },
     ],
   },
   {

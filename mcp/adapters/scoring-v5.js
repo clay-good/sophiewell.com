@@ -42,7 +42,7 @@ export default [
     summary: 'Full AUDIT alcohol-use screen (WHO): ten items (1-8 each 0-4, 9-10 each 0/2/4); total 0-40 with zones (0-7 low, 8-15 hazardous, 16-19 harmful, 20+ likely dependence).',
     compute: F.auditFull,
     toArgs: (inputs) => ({ items: itemArray(inputs, 'af-', 10, toNum, 0) }),
-    fields: Array.from({ length: 10 }, (_, i) => ({ dom: `af-${i + 1}`, arg: `af-${i + 1}`, kind: 'number', label: `AUDIT item ${i + 1}` })),
+    fields: Array.from({ length: 10 }, (_, i) => ({ dom: `af-${i + 1}`, arg: `af-${i + 1}`, kind: 'number', required: true, label: `AUDIT item ${i + 1}` })),
   },
   {
     id: 'dast10',

@@ -648,7 +648,8 @@ test('lib/rheum-classification-v222.js worked calls (wave 44)', () => {
   assert.equal(bp.count, 3);
   assert.equal(bp.rash, true);
   assert.equal(ok('acr-eular-2013-systemic-sclerosis', { 'ssc-skin': '4', 'ssc-tip': '0', 'ssc-ray': '1', 'ssc-ab': '1' }).score, 10);
-  assert.equal(ok('mrss-modified-rodnan-skin-score', { 'mrss-fingersR': '2', 'mrss-fingersL': '2', 'mrss-face': '1', 'mrss-chest': '3' }).score, 8);
+  // spec-v1073: all 17 sites are graded; the thirteen unaffected ones score 0.
+  assert.equal(ok('mrss-modified-rodnan-skin-score', { 'mrss-fingersR': '2', 'mrss-fingersL': '2', 'mrss-handsR': '0', 'mrss-handsL': '0', 'mrss-forearmsR': '0', 'mrss-forearmsL': '0', 'mrss-upperArmsR': '0', 'mrss-upperArmsL': '0', 'mrss-face': '1', 'mrss-chest': '3', 'mrss-abdomen': '0', 'mrss-thighsR': '0', 'mrss-thighsL': '0', 'mrss-legsR': '0', 'mrss-legsL': '0', 'mrss-feetR': '0', 'mrss-feetL': '0' }).score, 8);
   assert.equal(ok('acr-eular-2016-sjogren', { 'sj-focus': '1', 'sj-ssa': '1' }).score, 6);
   assert.equal(ok('esspri', { 'esp-dry': '6', 'esp-fat': '5', 'esp-pain': '4' }).score, 5);
 });
@@ -657,7 +658,7 @@ test('lib/dermatology-v223.js worked calls (wave 45)', () => {
   assert.equal(ok('uas7', { 'uas-wheal': '10', 'uas-itch': '8' }).score, 18);
   assert.equal(ok('hiscr', { 'hs-bab': '2', 'hs-bnod': '6', 'hs-bfist': '1', 'hs-cab': '1', 'hs-cnod': '2', 'hs-cfist': '1' }).achieved, true);
   assert.equal(ok('hurley-stage', { 'hur-tract': '1' }).stage, 'II');
-  assert.equal(ok('poem', { 'poem-itch': '3', 'poem-sleep': '2', 'poem-flake': '2', 'poem-dry': '4' }).score, 11);
+  assert.equal(ok('poem', { 'poem-itch': '3', 'poem-sleep': '2', 'poem-bleed': '0', 'poem-weep': '0', 'poem-crack': '0', 'poem-flake': '2', 'poem-dry': '4' }).score, 11);
   assert.equal(ok('alden', { 'ald-delay': '3', 'ald-present': '0', 'ald-chal': '0', 'ald-dechal': '0', 'ald-not': '3' }).score, 6);
   assert.equal(ok('pest', { 'pest-swollen': '1', 'pest-nail': '1', 'pest-heel': '1' }).score, 3);
   assert.equal(ok('glasgow-7-point-checklist', { 'g7-size': '1', 'g7-color': '1' }).score, 4);
@@ -676,11 +677,11 @@ test('lib/neurology-v224.js worked calls (wave 46)', () => {
 test('lib/obgyn-v225.js worked calls (wave 47)', () => {
   assert.equal(ok('nugent-score', { 'nug-lacto': '4', 'nug-gard': '4', 'nug-mob': '1' }).score, 9);
   assert.equal(ok('amsel-criteria', { 'ams-disch': '1', 'ams-ph': '1', 'ams-whiff': '1' }).score, 3);
-  assert.equal(ok('ferriman-gallwey', { 'fg-lip': '2', 'fg-chin': '2', 'fg-chest': '2', 'fg-thigh': '2' }).score, 8);
+  assert.equal(ok('ferriman-gallwey', { 'fg-lip': '2', 'fg-chin': '2', 'fg-chest': '2', 'fg-uabd': '0', 'fg-labd': '0', 'fg-arm': '0', 'fg-thigh': '2', 'fg-uback': '0', 'fg-lback': '0' }).score, 8);
   assert.equal(ok('pbac-hmb', { 'pb-mp': '4', 'pb-sp': '5', 'pb-lc': '2' }).score, 130);
-  assert.equal(ok('thompson-hie', { 'th-tone': '2', 'th-cons': '2', 'th-post': '2', 'th-resp': '2' }).score, 8);
-  assert.equal(ok('menopause-rating-scale', { 'mrs-flush': '3', 'mrs-sleep': '2', 'mrs-depr': '2', 'mrs-irr': '2' }).score, 9);
-  assert.equal(ok('kupperman-index', { 'ku-flush': '3', 'ku-ins': '2', 'ku-nerv': '2' }).score, 20);
+  assert.equal(ok('thompson-hie', { 'th-tone': '2', 'th-cons': '2', 'th-seiz': '0', 'th-post': '2', 'th-moro': '0', 'th-grasp': '0', 'th-suck': '0', 'th-resp': '2', 'th-font': '0' }).score, 8);
+  assert.equal(ok('menopause-rating-scale', { 'mrs-flush': '3', 'mrs-heart': '0', 'mrs-sleep': '2', 'mrs-depr': '2', 'mrs-irr': '2', 'mrs-anx': '0', 'mrs-exh': '0', 'mrs-sex': '0', 'mrs-blad': '0', 'mrs-dry': '0', 'mrs-joint': '0' }).score, 9);
+  assert.equal(ok('kupperman-index', { 'ku-flush': '3', 'ku-par': '0', 'ku-ins': '2', 'ku-nerv': '2', 'ku-mel': '0', 'ku-ver': '0', 'ku-weak': '0', 'ku-arth': '0', 'ku-head': '0', 'ku-palp': '0', 'ku-form': '0' }).score, 20);
 });
 
 test('lib/nephrology-v226.js worked calls (wave 48)', () => {
@@ -1267,7 +1268,7 @@ test('lib/scoring-v4.js falls-risk + neuro-assessment worked calls (wave 63)', (
   assert.equal(hh.huntHess, 3);
   assert.equal(hh.wfns, 3);
   // mNIHSS: gaze 2 + arm-left 4 + language 2 = 8, moderate.
-  const mn = ok('mnihss', { 'mn-gaze': '2', 'mn-arm-l': '4', 'mn-lang': '2' });
+  const mn = ok('mnihss', { 'mn-loc-q': '0', 'mn-loc-c': '0', 'mn-gaze': '2', 'mn-vf': '0', 'mn-arm-l': '4', 'mn-arm-r': '0', 'mn-leg-l': '0', 'mn-leg-r': '0', 'mn-sens': '0', 'mn-lang': '2', 'mn-ext': '0' });
   assert.equal(mn.total, 8);
   assert.equal(mn.severity, 'moderate stroke');
   const fs = ok('four-score', { 'fs-eye': '2', 'fs-motor': '3', 'fs-brain': '4', 'fs-resp': '3' });
@@ -1519,7 +1520,7 @@ test('lib/scoring-v5.js group-v9 screening / decision worked calls (wave 76)', (
   assert.equal(pg.phq2, 4);
   assert.equal(pg.gad2, 2);
   assert.equal(pg.phqPositive, true);
-  assert.equal(ok('audit-full', { 'af-1': '4', 'af-2': '4', 'af-3': '2' }).total, 10);
+  assert.equal(ok('audit-full', { 'af-1': '4', 'af-2': '4', 'af-3': '2', 'af-4': '0', 'af-5': '0', 'af-6': '0', 'af-7': '0', 'af-8': '0', 'af-9': '0', 'af-10': '0' }).total, 10);
   // DAST-10: two items + reverse-scored item 3 unchecked -> 3.
   const dt = ok('dast10', { 'dt-1': '1', 'dt-2': '1' });
   assert.equal(dt.total, 3);

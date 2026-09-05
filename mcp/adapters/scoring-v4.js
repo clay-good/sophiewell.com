@@ -10,6 +10,35 @@ import * as F from '../../lib/scoring-v4.js';
 import { wellsDvt as clinicalWellsDvt } from '../../lib/clinical.js';
 import { scoreScreener, bandFor } from '../../lib/screener.js';
 
+// spec-v1073: an unanswered item is not a "not at all".
+//
+// The five generic screeners below (PHQ-9, GAD-7, EPDS, AUDIT-C, CAGE) read
+// their items with `Number(a[`i${i}`]) || 0`, so an item an agent did not send
+// was summed as a zero and the instrument reported a band anyway: an empty
+// compute_calculator call on `phq9` answered "Minimal depression". The browser
+// has never done this -- lib/screener.js renders no result at all until
+// isComplete() is true -- so the two surfaces disagreed, in the reassuring
+// direction, on a suicide-item screen.
+//
+// Every item is now declared `required`, which is what stops an MCP caller
+// before compute runs. This guard is the second half: adapters are also called
+// directly (test/mcp/blank-is-absent.test.js does), and a NaN would otherwise
+// still fall through `|| 0`.
+function screenerAnswers(a, count) {
+  const answers = [];
+  const missing = [];
+  for (let i = 0; i < count; i += 1) {
+    const v = a[`i${i}`];
+    const n = v === '' || v == null ? NaN : Number(v);
+    if (!Number.isFinite(n)) missing.push(i + 1);
+    else answers.push(n);
+  }
+  if (missing.length) {
+    return { valid: false, message: `Not scored: ${missing.length} of ${count} items unanswered (item${missing.length > 1 ? 's' : ''} ${missing.join(', ')}). An unanswered item is not a zero -- answer every item to read the total.` };
+  }
+  return answers;
+}
+
 export default [
   {
     id: 'mgap',
@@ -1328,20 +1357,20 @@ export default [
   },
   {
     id: 'mnihss',
-    summary: 'Modified NIH Stroke Scale (Meyer 2002): the eleven retained items (LOC questions/commands, gaze, visual fields, motor arm L/R, motor leg L/R, sensory as 0/1, language, extinction) each 0 to its item max; total 0-31 with the stroke-severity band. Unscored items count as 0.',
+    summary: 'Modified NIH Stroke Scale (Meyer 2002): the eleven retained items (LOC questions/commands, gaze, visual fields, motor arm L/R, motor leg L/R, sensory as 0/1, language, extinction) each 0 to its item max; total 0-31 with the stroke-severity band. Every item is required: an unscored exam is not a normal exam.',
     compute: F.mnihss,
     fields: [
-      { dom: 'mn-loc-q', arg: 'locQuestions', kind: 'number', label: 'LOC questions (0-2)' },
-      { dom: 'mn-loc-c', arg: 'locCommands', kind: 'number', label: 'LOC commands (0-2)' },
-      { dom: 'mn-gaze', arg: 'gaze', kind: 'number', label: 'Best gaze (0-2)' },
-      { dom: 'mn-vf', arg: 'visualFields', kind: 'number', label: 'Visual fields (0-3)' },
-      { dom: 'mn-arm-l', arg: 'motorArmL', kind: 'number', label: 'Motor arm left (0-4)' },
-      { dom: 'mn-arm-r', arg: 'motorArmR', kind: 'number', label: 'Motor arm right (0-4)' },
-      { dom: 'mn-leg-l', arg: 'motorLegL', kind: 'number', label: 'Motor leg left (0-4)' },
-      { dom: 'mn-leg-r', arg: 'motorLegR', kind: 'number', label: 'Motor leg right (0-4)' },
-      { dom: 'mn-sens', arg: 'sensory', kind: 'number', label: 'Sensory (0 normal / 1 abnormal)' },
-      { dom: 'mn-lang', arg: 'language', kind: 'number', label: 'Best language (0-3)' },
-      { dom: 'mn-ext', arg: 'extinction', kind: 'number', label: 'Extinction / neglect (0-2)' },
+      { dom: 'mn-loc-q', arg: 'locQuestions', kind: 'number', required: true, label: 'LOC questions (0-2)' },
+      { dom: 'mn-loc-c', arg: 'locCommands', kind: 'number', required: true, label: 'LOC commands (0-2)' },
+      { dom: 'mn-gaze', arg: 'gaze', kind: 'number', required: true, label: 'Best gaze (0-2)' },
+      { dom: 'mn-vf', arg: 'visualFields', kind: 'number', required: true, label: 'Visual fields (0-3)' },
+      { dom: 'mn-arm-l', arg: 'motorArmL', kind: 'number', required: true, label: 'Motor arm left (0-4)' },
+      { dom: 'mn-arm-r', arg: 'motorArmR', kind: 'number', required: true, label: 'Motor arm right (0-4)' },
+      { dom: 'mn-leg-l', arg: 'motorLegL', kind: 'number', required: true, label: 'Motor leg left (0-4)' },
+      { dom: 'mn-leg-r', arg: 'motorLegR', kind: 'number', required: true, label: 'Motor leg right (0-4)' },
+      { dom: 'mn-sens', arg: 'sensory', kind: 'number', required: true, label: 'Sensory (0 normal / 1 abnormal)' },
+      { dom: 'mn-lang', arg: 'language', kind: 'number', required: true, label: 'Best language (0-3)' },
+      { dom: 'mn-ext', arg: 'extinction', kind: 'number', required: true, label: 'Extinction / neglect (0-2)' },
     ],
   },
   {
@@ -2015,57 +2044,62 @@ export default [
     // is in the JSON and the numeric round-trip does not depend on the "PHQ-9" 9.
     summary: 'PHQ-9 depression screen (Kroenke 2001): nine items each 0-3 over the last two weeks; total 0-27 with severity bands (0-4 minimal, 5-9 mild, 10-14 moderate, 15-19 moderately severe, 20-27 severe). Item 9 asks about thoughts of self-harm. A validated screening tool, not a diagnosis.',
     compute: (a) => {
-      const answers = Array.from({ length: 9 }, (_, i) => Number(a[`i${i}`]) || 0);
+      const answers = screenerAnswers(a, 9);
+      if (!Array.isArray(answers)) return answers;
       const score = scoreScreener(F.PHQ9_CONFIG.items, answers);
       const band = bandFor(F.PHQ9_CONFIG.severityBands, score);
       return { score, maxScore: 27, severity: band ? band.label : null };
     },
-    fields: Array.from({ length: 9 }, (_, i) => ({ dom: `phq9-${i}`, arg: `i${i}`, kind: 'number', label: `PHQ-9 item ${i + 1} (0-3)` })),
+    fields: Array.from({ length: 9 }, (_, i) => ({ dom: `phq9-${i}`, arg: `i${i}`, kind: 'number', required: true, label: `PHQ-9 item ${i + 1} (0-3)` })),
   },
   {
     id: 'gad7',
     // Same generic-screener pattern as phq9, over the exported GAD7_CONFIG.
     summary: 'GAD-7 generalized-anxiety screen (Spitzer 2006): seven items each 0-3 over the last two weeks; total 0-21 with severity bands (0-4 minimal, 5-9 mild, 10-14 moderate, 15-21 severe). A validated screening tool, not a diagnosis.',
     compute: (a) => {
-      const answers = Array.from({ length: 7 }, (_, i) => Number(a[`i${i}`]) || 0);
+      const answers = screenerAnswers(a, 7);
+      if (!Array.isArray(answers)) return answers;
       const score = scoreScreener(F.GAD7_CONFIG.items, answers);
       const band = bandFor(F.GAD7_CONFIG.severityBands, score);
       return { score, maxScore: 21, severity: band ? band.label : null };
     },
-    fields: Array.from({ length: 7 }, (_, i) => ({ dom: `gad7-${i}`, arg: `i${i}`, kind: 'number', label: `GAD-7 item ${i + 1} (0-3)` })),
+    fields: Array.from({ length: 7 }, (_, i) => ({ dom: `gad7-${i}`, arg: `i${i}`, kind: 'number', required: true, label: `GAD-7 item ${i + 1} (0-3)` })),
   },
   {
     id: 'epds',
     // Same generic-screener pattern, over the exported EPDS_CONFIG (perinatal).
     summary: 'Edinburgh Postnatal Depression Scale (EPDS, Cox 1987): ten items each 0-3 for perinatal depression; total 0-30 (0-9 low likelihood, 10-12 possible depression, 13+ likely depression - clinical evaluation indicated). Item 10 asks about self-harm. A validated screening tool, not a diagnosis.',
     compute: (a) => {
-      const answers = Array.from({ length: 10 }, (_, i) => Number(a[`i${i}`]) || 0);
+      const answers = screenerAnswers(a, 10);
+      if (!Array.isArray(answers)) return answers;
       const score = scoreScreener(F.EPDS_CONFIG.items, answers);
       const band = bandFor(F.EPDS_CONFIG.severityBands, score);
       return { score, maxScore: 30, severity: band ? band.label : null };
     },
-    fields: Array.from({ length: 10 }, (_, i) => ({ dom: `epds-${i}`, arg: `i${i}`, kind: 'number', label: `EPDS item ${i + 1} (0-3)` })),
+    fields: Array.from({ length: 10 }, (_, i) => ({ dom: `epds-${i}`, arg: `i${i}`, kind: 'number', required: true, label: `EPDS item ${i + 1} (0-3)` })),
   },
   {
     id: 'auditc',
     summary: 'AUDIT-C brief alcohol-use screen (Bush 1998): three items each 0-4 (frequency, typical quantity, binge frequency); total 0-12. A total >= 4 (men) / >= 3 (women) indicates risky drinking; >= 8 is high risk for an alcohol use disorder. A validated screening tool, not a diagnosis.',
     compute: (a) => {
-      const answers = Array.from({ length: 3 }, (_, i) => Number(a[`i${i}`]) || 0);
+      const answers = screenerAnswers(a, 3);
+      if (!Array.isArray(answers)) return answers;
       const score = scoreScreener(F.AUDITC_CONFIG.items, answers);
       const band = bandFor(F.AUDITC_CONFIG.severityBands, score);
       return { score, maxScore: 12, severity: band ? band.label : null };
     },
-    fields: Array.from({ length: 3 }, (_, i) => ({ dom: `auditc-${i}`, arg: `i${i}`, kind: 'number', label: `AUDIT-C item ${i + 1} (0-4)` })),
+    fields: Array.from({ length: 3 }, (_, i) => ({ dom: `auditc-${i}`, arg: `i${i}`, kind: 'number', required: true, label: `AUDIT-C item ${i + 1} (0-4)` })),
   },
   {
     id: 'cage',
     summary: 'CAGE alcohol-use screen (Ewing 1984): four yes/no items (Cut down, Annoyed, Guilty, Eye-opener), each 0 or 1; total 0-4. A total >= 2 raises clinically significant suspicion of an alcohol use disorder. A validated screening tool, not a diagnosis.',
     compute: (a) => {
-      const answers = Array.from({ length: 4 }, (_, i) => Number(a[`i${i}`]) || 0);
+      const answers = screenerAnswers(a, 4);
+      if (!Array.isArray(answers)) return answers;
       const score = scoreScreener(F.CAGE_CONFIG.items, answers);
       const band = bandFor(F.CAGE_CONFIG.severityBands, score);
       return { score, maxScore: 4, severity: band ? band.label : null };
     },
-    fields: Array.from({ length: 4 }, (_, i) => ({ dom: `cage-${i}`, arg: `i${i}`, kind: 'number', label: `CAGE item ${i + 1} (0 or 1)` })),
+    fields: Array.from({ length: 4 }, (_, i) => ({ dom: `cage-${i}`, arg: `i${i}`, kind: 'number', required: true, label: `CAGE item ${i + 1} (0 or 1)` })),
   },
 ];
