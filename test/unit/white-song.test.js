@@ -48,3 +48,39 @@ test('white-song clamps per-domain out-of-range to [0, 2]', () => {
   // physicalActivity = 0 means per-domain floor fails
   assert.equal(r.fastTrackEligible, false);
 });
+
+// spec-v1082: a discharge decision is not made by a form nobody filled in.
+//
+// The tile rendered seven sliders parked at 2, so an untouched form read
+// "White-Song 14 of 14: fast-track eligible" -- a post-anaesthesia DISCHARGE
+// routing, for a patient nobody had looked at. Summing only the rated domains is
+// the mirror error, and worse here than on a plain monotone score: the rule
+// fails a patient on ANY single domain below 1, so a partial can manufacture an
+// ineligibility as readily as an eligibility.
+test('spec-v1082: an unrated domain is asked for, not scored either way', () => {
+  const complete = {
+    loc: 2, physicalActivity: 2, hemodynamicStability: 2, respiratoryStability: 2,
+    oxygenSaturation: 2, postoperativePain: 0, postoperativeEmesis: 2,
+  };
+  const full = whiteSong(complete);
+  assert.equal(full.valid, true);
+  assert.equal(full.score, 12);
+  // The branch worth demonstrating: over the numeric cutoff and still not
+  // eligible, because one domain is below 1.
+  assert.equal(full.fastTrackEligible, false);
+  assert.equal(full.anyDomainLt1, true);
+
+  const none = whiteSong({});
+  assert.equal(none.valid, false);
+  assert.equal(none.score, null, 'a score from nothing is the defect');
+  assert.equal(none.fastTrackEligible, null, 'and an eligibility from nothing is the worse one');
+  assert.equal(none.unrated.length, 7);
+  assert.doesNotMatch(none.band, /fast-track eligible per/);
+
+  const { postoperativeEmesis, ...six } = complete;
+  void postoperativeEmesis;
+  const partial = whiteSong(six);
+  assert.equal(partial.valid, false);
+  assert.equal(partial.domainsScored, 6);
+  assert.match(partial.band, /postoperative emetic symptoms/);
+});

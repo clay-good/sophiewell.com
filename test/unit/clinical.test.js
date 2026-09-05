@@ -238,3 +238,34 @@ test('abgInterpret: with PaO2/FiO2 reports A-a and PF', () => {
   assert.ok(Number.isFinite(r.aaGradient));
   assert.ok(Number.isFinite(r.pfRatio));
 });
+
+// spec-v1082: five signs, looked for together.
+//
+// The tile rendered five sliders parked at 2, so a newborn nobody had assessed
+// read "APGAR: 10 (Normal)". Adding up only the rated signs is the other error:
+// it understates the total and reads as a more depressed newborn than the one in
+// front of you. A newborn genuinely scored 0 across is still severely depressed,
+// which is the reading that has to survive the fix.
+test('spec-v1082: an unassessed sign is asked for; a real zero still scores', () => {
+  const full = C.apgar({ appearance: 1, pulse: 2, grimace: 2, activity: 2, respiration: 2 });
+  assert.equal(full.valid, true);
+  assert.equal(full.total, 9);
+  assert.equal(full.category, 'Normal');
+
+  const flat = C.apgar({ appearance: 0, pulse: 0, grimace: 0, activity: 0, respiration: 0 });
+  assert.equal(flat.valid, true);
+  assert.equal(flat.total, 0);
+  assert.equal(flat.category, 'Severely depressed', 'a real zero is an emergency, not a gap');
+
+  const none = C.apgar({});
+  assert.equal(none.valid, false);
+  assert.equal(none.total, null);
+  assert.equal(none.category, null);
+  assert.equal(none.signsScored, 0);
+  assert.doesNotMatch(none.text, /Normal/);
+
+  const partial = C.apgar({ appearance: 1, pulse: 2, grimace: 2 });
+  assert.equal(partial.valid, false);
+  assert.equal(partial.signsScored, 3);
+  assert.match(partial.text, /activity \(tone\), respiration/);
+});

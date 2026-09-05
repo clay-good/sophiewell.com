@@ -20,6 +20,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A discharge score, an Apgar and a neonatal pain scale answered before anyone
+  assessed the patient.** An untouched White-Song form read "fast-track
+  eligible", an untouched Apgar read 10 (Normal), and N-PASS -- whose items run
+  from -2 for sedation to +2 for pain -- read "no significant pain, no sedation"
+  because a slider sitting in the middle of that range is itself a finding. All
+  three now ask. A newborn genuinely scored 0 on every sign still reads
+  "severely depressed". See docs/spec-v1082.md.
 - **Two daily-living indices reported "full independence" for a patient nobody
   had assessed.** The Katz ADL and Lawton IADL count the activities a patient
   manages alone, so sliders parked at "independent" read as a fully independent

@@ -3398,7 +3398,8 @@ export const renderers = {
         postoperativePain: nv('ws-pain'),
         postoperativeEmesis: nv('ws-eme'),
       });
-      o.appendChild(el('h2', { text: `White-Song ${r.score} of 14` }));
+      // With a domain unrated there is no score to head the panel with.
+      if (r.valid) o.appendChild(el('h2', { text: `White-Song ${r.score} of 14` }));
       o.appendChild(el('p', { text: r.band }));
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
@@ -4499,7 +4500,16 @@ export const renderers = {
       ['Extremities / Tone',                        'np-ext'],
       ['Vital signs (HR / RR / BP / SaO2)',         'np-vit'],
     ];
-    for (const [l, id] of items) root.appendChild(signedRange(l, id));
+    // spec-v1082: number inputs, not sliders sitting at 0 -- on this scale 0 is
+    // the middle (neither pain nor sedation), so an untouched slider reads as an
+    // assessment that found nothing.
+    for (const [l, id] of items) {
+      root.appendChild(el('p', {}, [
+        el('label', { for: id, text: `${l} (-2 to +2)` }), el('br'),
+        el('input', { id, type: 'number', min: '-2', max: '2', step: '1', inputmode: 'numeric', placeholder: '-2 to +2' }),
+      ]));
+    }
+    void signedRange;
     // Gestational age (weeks): preterm <30 wk adds +1/week to pain side.
     const ga = el('p');
     ga.appendChild(el('label', { for: 'np-ga', text: 'Gestational age (weeks, 20-44)' }));
@@ -4509,11 +4519,11 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       const r = S4.npass({
-        crying: nv('np-cry'), behavior: nv('np-beh'), facial: nv('np-fac'),
-        extremities: nv('np-ext'), vitals: nv('np-vit'),
-        gestationalAgeWeeks: nv('np-ga'),
+        crying: nvOrNull('np-cry'), behavior: nvOrNull('np-beh'), facial: nvOrNull('np-fac'),
+        extremities: nvOrNull('np-ext'), vitals: nvOrNull('np-vit'),
+        gestationalAgeWeeks: nvOrNull('np-ga'),
       });
-      o.appendChild(el('h2', { text: `Pain ${r.painScore} (${r.painBand}); sedation ${r.sedationScore} (${r.sedationBand})` }));
+      if (r.valid) o.appendChild(el('h2', { text: `Pain ${r.painScore} (${r.painBand}); sedation ${r.sedationScore} (${r.sedationBand})` }));
       o.appendChild(el('p', { text: r.text }));
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));

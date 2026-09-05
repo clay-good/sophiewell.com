@@ -70,3 +70,25 @@ test('npass rejects non-integer item and out-of-range GA', () => {
   assert.throws(() => npass({ crying: 0, behavior: 0, facial: 0, extremities: 0, vitals: 0, gestationalAgeWeeks: 15 }));
   assert.throws(() => npass({ crying: 0, behavior: 0, facial: 0, extremities: 0, vitals: 0, gestationalAgeWeeks: 50 }));
 });
+
+// spec-v1082: on N-PASS, zero is the middle of the scale, not the absence of an
+// answer. Each item runs -2 (sedation) to +2 (pain), so five sliders sitting at
+// 0 read "pain 0 (no significant pain); sedation 0 (no sedation)" -- an
+// assessment that found nothing, about a neonate nobody had assessed.
+test('spec-v1082: an unrated item is not a zero, and zero is a real answer', () => {
+  const rated = {
+    crying: 0, behavior: 0, facial: 0, extremities: 0, vitals: 0, gestationalAgeWeeks: 38,
+  };
+  const assessed = npass(rated);
+  assert.equal(assessed.valid, true);
+  assert.equal(assessed.painScore, 0);
+  assert.equal(assessed.sedationScore, 0);
+  assert.match(assessed.text, /no significant pain/, 'a neonate genuinely rated 0 across is comfortable');
+
+  const none = npass({ gestationalAgeWeeks: 38 });
+  assert.equal(none.valid, false);
+  assert.equal(none.painScore, null);
+  assert.equal(none.sedationScore, null);
+  assert.equal(none.itemsScored, 0);
+  assert.doesNotMatch(none.text, /no significant pain/);
+});
