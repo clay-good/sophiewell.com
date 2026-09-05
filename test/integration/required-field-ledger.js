@@ -41,6 +41,17 @@ export const ANSWERS_WITHOUT_A_REQUIRED_FIELD = new Set([
   "glasgow-imrie",
   "hscore-hlh",
   "lrinec",
+  // spec-v1078 puts mnihss here for the same reason, and by the same route. Its
+  // eleven items were sliders, so spec-v1073 declared them `required` on the
+  // agent surface -- the only safe call while the library read an unrated item
+  // as a zero. The library now tells absent from zero and states its footing,
+  // so with one item cleared the tile reads "mNIHSS 11 of 31: moderate stroke
+  // ... Scored from 10 of 11 items; each unrated item can only raise the
+  // total". That is the rule-in direction on a monotone scale, which is a
+  // better answer than a refusal, so the browser keeps it and the declaration
+  // stays strict for callers who cannot see a form.
+  "mnihss",
+
   // spec-v1047 moved wat-1 into this group. It used to be here because its
   // items were sliders and could not be blank; now they can, and with one item
   // cleared it reads "WAT-1 4 of 12: iatrogenic withdrawal present ... Scored

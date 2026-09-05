@@ -20,6 +20,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Both stroke scales reported "no stroke symptoms" for a patient nobody had
+  examined.** The NIH Stroke Scale rendered its thirteen items as sliders, and a
+  slider cannot be blank -- it sits at zero and looks like a rating somebody
+  made -- so the exam always looked complete and the library's own guard against
+  exactly this reading could never fire. Both scales now use the number inputs
+  WAT-1 was given for the same reason, and say how many items were rated. An exam
+  where all thirteen items are genuinely normal still reads "No stroke symptoms".
+  See docs/spec-v1078.md.
 - **A Crohn's score read an unfilled diary as a symptom-free week.** Four of the
   CDAI's eight items are a seven-day patient diary, and a blank one was scored
   as zero: omitting just the stool count moved the worked example from "CDAI

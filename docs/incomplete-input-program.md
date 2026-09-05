@@ -35,7 +35,9 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 7. **A guard against a missing value is a guard against one SHAPE of missing value** (spec-v1040).
    `Number('')` and `Number(null)` are both 0; when a renderer changes which one it sends, every
    guard downstream is guarding against the old shape until someone checks.
-8. **A control that cannot express "not answered" will be read as an answer** (spec-v1047). A slider
+8. **A control that cannot express "not answered" will be read as an answer** (spec-v1047, and
+   again in spec-v1078, where it had made the library's own seventy-spec-old guard unreachable on
+   the NIH Stroke Scale). A slider
    sits at its minimum and looks like a rating somebody made. Where the value matters, being empty
    has to be possible — a constraint on the input, not only on the reader.
 9. **A surface that cannot show a control still has to ask the question it represents**
@@ -96,6 +98,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1075](spec-v1075.md) | The gate excused a tile because its static note contained the word "missing" |
 | [v1076](spec-v1076.md) | Three ICHD-3 headache tiles ruled a diagnosis out on counts nobody entered |
 | [v1077](spec-v1077.md) | A CDAI diary item nobody filled in read as a symptom-free week |
+| [v1078](spec-v1078.md) | Both stroke scales said "no stroke symptoms" for a patient nobody examined |
 
 ### And the same question from the other side
 

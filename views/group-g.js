@@ -22,6 +22,24 @@ function rangeField(label, id, min, max, value) {
   wrap.appendChild(out);
   return wrap;
 }
+// spec-v1078: a scored exam item, as a number input rather than a slider.
+//
+// A slider cannot be blank. It sits at its minimum and looks exactly like a
+// rating somebody made, which is why WAT-1 opened on "no significant
+// withdrawal" until spec-v1047 changed its control. The two stroke scales kept
+// theirs, so an unexamined patient read "NIHSS total: 0 (No stroke symptoms)"
+// -- the reading the library's own spec-v1007 guard exists to prevent, defeated
+// because 13 sliders always send a value and the exam therefore always looked
+// complete.
+function scoredItemField(label, id, max) {
+  const wrap = el('p');
+  wrap.appendChild(el('label', { for: id, text: `${label} (0-${max})` }));
+  wrap.appendChild(el('br'));
+  wrap.appendChild(el('input', {
+    id, type: 'number', min: '0', max: String(max), step: '1', inputmode: 'numeric', placeholder: '0',
+  }));
+  return wrap;
+}
 function checkbox(label, id) {
   const wrap = el('p');
   const cb = el('input', { id, type: 'checkbox' });
@@ -286,15 +304,27 @@ export const renderers = {
   },
 
   nihss(root) {
-    for (const item of C.NIHSS_ITEMS) root.appendChild(rangeField(`${item.id}: ${item.name}`, item.id, 0, item.max, 0));
+    for (const item of C.NIHSS_ITEMS) root.appendChild(scoredItemField(`${item.id}: ${item.name}`, item.id, item.max));
     const o = out(); root.appendChild(o);
     const deriv = renderDerivation(META.nihss);
     if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
       const ans = {};
-      for (const item of C.NIHSS_ITEMS) ans[item.id] = nv(item.id);
+      // spec-v1078: an unrated item is absent, not a zero. The library already
+      // refuses to call an incomplete exam normal; it never got the chance.
+      for (const item of C.NIHSS_ITEMS) ans[item.id] = nvOrNull(item.id);
       const r = C.nihss(ans);
-      o.appendChild(el('p', { text: `NIHSS total: ${r.total} (${r.severity})` }));
+      // Nothing rated is a refusal, not a total of nought: printing
+      // "NIHSS total: 0" in front of it puts the number back on screen that the
+      // refusal exists to withhold.
+      if (r.itemsScored === 0) {
+        o.appendChild(el('p', { text: r.severity }));
+      } else {
+        o.appendChild(el('p', { text: `NIHSS total: ${r.total} (${r.severity})` }));
+        if (!r.complete) {
+          o.appendChild(el('p', { text: `Scored from ${r.itemsScored} of ${r.itemsTotal} items; each unrated item can only raise the total, so treat this as a floor.` }));
+        }
+      }
       if (deriv) updateDerivationSteps(deriv, META.nihss, ans);
     });
     C.NIHSS_ITEMS.forEach((item) => document.getElementById(item.id).addEventListener('input', run));
@@ -4192,26 +4222,28 @@ export const renderers = {
       ['Best language (0-3)',         'mn-lang',   3],
       ['Extinction / neglect (0-2)',  'mn-ext',    2],
     ];
-    for (const [l, id, max] of items) root.appendChild(rangeField(l, id, 0, max, 0));
+    for (const [l, id, max] of items) root.appendChild(scoredItemField(l.replace(/ \(0[^)]*\)$/, ''), id, max));
     const o = out(); root.appendChild(o);
     const deriv = renderDerivation(META.mnihss);
     if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
       const inputs = {
-        locQuestions: nv('mn-loc-q'),
-        locCommands:  nv('mn-loc-c'),
-        gaze:         nv('mn-gaze'),
-        visualFields: nv('mn-vf'),
-        motorArmL:    nv('mn-arm-l'),
-        motorArmR:    nv('mn-arm-r'),
-        motorLegL:    nv('mn-leg-l'),
-        motorLegR:    nv('mn-leg-r'),
-        sensory:      nv('mn-sens'),
-        language:     nv('mn-lang'),
-        extinction:   nv('mn-ext'),
+        locQuestions: nvOrNull('mn-loc-q'),
+        locCommands:  nvOrNull('mn-loc-c'),
+        gaze:         nvOrNull('mn-gaze'),
+        visualFields: nvOrNull('mn-vf'),
+        motorArmL:    nvOrNull('mn-arm-l'),
+        motorArmR:    nvOrNull('mn-arm-r'),
+        motorLegL:    nvOrNull('mn-leg-l'),
+        motorLegR:    nvOrNull('mn-leg-r'),
+        sensory:      nvOrNull('mn-sens'),
+        language:     nvOrNull('mn-lang'),
+        extinction:   nvOrNull('mn-ext'),
       };
       const r = S4.mnihss(inputs);
-      o.appendChild(el('h2', { text: `mNIHSS ${r.total} of 31` }));
+      // As nihss: with nothing rated, "mNIHSS 0 of 31" in front of the refusal
+      // puts back the number the refusal is withholding.
+      if (r.itemsScored > 0) o.appendChild(el('h2', { text: `mNIHSS ${r.total} of 31` }));
       o.appendChild(el('p', { text: r.band }));
       if (deriv) updateDerivationSteps(deriv, META.mnihss, inputs);
     });
