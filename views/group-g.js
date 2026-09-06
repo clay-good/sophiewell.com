@@ -4959,7 +4959,9 @@ export const renderers = {
       ['No drooling (1) vs drooling (0)',                    'gu-dr',  'salivaNoDrool'],
       ['No voice change (1) vs voice change (0)',            'gu-vc',  'salivaNoVoiceChange'],
     ];
-    for (const [label, id] of stage1) root.appendChild(rangeField(label, id, 0, 1, 1));
+    // spec-v1084: seventeen sliders, each parked at its best value, meant an
+    // untouched form read "GUSS 20 of 20 ... Normal diet, normal liquids".
+    for (const [label, id] of stage1) root.appendChild(scoredItemField(label.replace(/ \(1[^)]*\)$/, ''), id, 1));
     const consistencies = [
       ['Semisolid', 'ss', 'semisolid'],
       ['Liquid',    'li', 'liquid'],
@@ -4967,10 +4969,10 @@ export const renderers = {
     ];
     for (const [label, prefix] of consistencies) {
       root.appendChild(el('h2', { text: `Stage 2: ${label} (must score 5 to advance to next consistency)` }));
-      root.appendChild(rangeField('Deglutition (0 not possible - 1 delayed - 2 successful)', `gu-${prefix}Sw`, 0, 2, 2));
-      root.appendChild(rangeField('No involuntary cough (1) vs cough (0)',                    `gu-${prefix}Cg`, 0, 1, 1));
-      root.appendChild(rangeField('No drooling (1) vs drooling (0)',                          `gu-${prefix}Dr`, 0, 1, 1));
-      root.appendChild(rangeField('No voice change (1) vs voice change (0)',                  `gu-${prefix}Vc`, 0, 1, 1));
+      root.appendChild(scoredItemField('Deglutition (0 not possible - 1 delayed - 2 successful)', `gu-${prefix}Sw`, 2));
+      root.appendChild(scoredItemField('No involuntary cough (1) vs cough (0)',                    `gu-${prefix}Cg`, 1));
+      root.appendChild(scoredItemField('No drooling (1) vs drooling (0)',                          `gu-${prefix}Dr`, 1));
+      root.appendChild(scoredItemField('No voice change (1) vs voice change (0)',                  `gu-${prefix}Vc`, 1));
     }
     const allIds = [
       ...stage1.map(([, id]) => id),
@@ -4981,28 +4983,37 @@ export const renderers = {
     if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
       const r = S4.guss({
-        vigilance: nv('gu-vig'),
-        coughClear: nv('gu-cgh'),
-        salivaSwallow: nv('gu-sw'),
-        salivaNoDrool: nv('gu-dr'),
-        salivaNoVoiceChange: nv('gu-vc'),
-        semisolidSwallow: nv('gu-ssSw'),
-        semisolidNoCough: nv('gu-ssCg'),
-        semisolidNoDrool: nv('gu-ssDr'),
-        semisolidNoVoiceChange: nv('gu-ssVc'),
-        liquidSwallow: nv('gu-liSw'),
-        liquidNoCough: nv('gu-liCg'),
-        liquidNoDrool: nv('gu-liDr'),
-        liquidNoVoiceChange: nv('gu-liVc'),
-        solidSwallow: nv('gu-soSw'),
-        solidNoCough: nv('gu-soCg'),
-        solidNoDrool: nv('gu-soDr'),
-        solidNoVoiceChange: nv('gu-soVc'),
+        vigilance: nvOrNull('gu-vig'),
+        coughClear: nvOrNull('gu-cgh'),
+        salivaSwallow: nvOrNull('gu-sw'),
+        salivaNoDrool: nvOrNull('gu-dr'),
+        salivaNoVoiceChange: nvOrNull('gu-vc'),
+        semisolidSwallow: nvOrNull('gu-ssSw'),
+        semisolidNoCough: nvOrNull('gu-ssCg'),
+        semisolidNoDrool: nvOrNull('gu-ssDr'),
+        semisolidNoVoiceChange: nvOrNull('gu-ssVc'),
+        liquidSwallow: nvOrNull('gu-liSw'),
+        liquidNoCough: nvOrNull('gu-liCg'),
+        liquidNoDrool: nvOrNull('gu-liDr'),
+        liquidNoVoiceChange: nvOrNull('gu-liVc'),
+        solidSwallow: nvOrNull('gu-soSw'),
+        solidNoCough: nvOrNull('gu-soCg'),
+        solidNoDrool: nvOrNull('gu-soDr'),
+        solidNoVoiceChange: nvOrNull('gu-soVc'),
       });
-      o.appendChild(el('h2', { text: `GUSS ${r.score} of 20 (${r.band})` }));
+      // A stopped protocol has a score; an interrupted one does not.
+      if (r.valid) o.appendChild(el('h2', { text: `GUSS ${r.score} of 20 (${r.band})` }));
       o.appendChild(el('p', { text: r.text }));
-      o.appendChild(el('p', { class: 'muted',
-        text: `Per-stage: preliminary ${r.stage1}/5, semisolid ${r.semisolid}/5, liquid ${r.liquid}/5, solid ${r.solid}/5.` }));
+      if (r.stage1 !== null) {
+        const per = [`preliminary ${r.stage1}/5`];
+        for (const [label, v] of [['semisolid', r.semisolid], ['liquid', r.liquid], ['solid', r.solid]]) {
+          if (v !== null) per.push(`${label} ${v}/5`);
+        }
+        o.appendChild(el('p', { class: 'muted', text: `Per-stage: ${per.join(', ')}.` }));
+      }
+      if (r.pending && r.pending.length > 0) {
+        o.appendChild(el('p', { class: 'muted', text: `Not reached yet: ${r.pending.join(', ')}.` }));
+      }
       if (r.gated.length > 0) {
         o.appendChild(el('p', { class: 'muted', text: `Not performed (gated per Trapl 2007): ${r.gated.join(', ')}.` }));
       }

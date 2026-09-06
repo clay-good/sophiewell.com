@@ -20,6 +20,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A swallow screen cleared a stroke patient for a normal diet before anyone
+  gave them water.** GUSS rendered its seventeen items as sliders parked at
+  their best values, so an untouched form read "20 of 20 ... Normal diet, normal
+  liquids; no further investigation". The screen is a staged protocol that stops
+  on purpose -- fail the first swallow and the trials that follow are correctly
+  not performed -- so it now separates a protocol that STOPPED (a finished
+  assessment with a real score) from one that was INTERRUPTED (no score yet).
+  See docs/spec-v1084.md.
 - **A pressure-injury tile reported no risk and a healed wound at once.** Two
   tiles carry two instruments each -- Norton with PUSH, and the phlebitis scale
   with the infiltration grade -- and both opened on the most reassuring reading
