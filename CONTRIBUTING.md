@@ -180,6 +180,17 @@ Probes assert nothing and are excluded from CI, so run one by hand with:
 RUN_PROBES=1 npx playwright test test/integration/one-blank-field-probe.spec.js --project=chromium
 ```
 
+**That exclusion is a rule, not an accident, and it is worth knowing what it
+costs.** `playwright.config.js` carries `testIgnore: '**/*-probe.spec.js'` unless
+`RUN_PROBES` is set, so a green end-to-end run has skipped every probe in the
+tree. Three of them ask questions the suites structurally cannot:
+
+| Probe | Run it after |
+|---|---|
+| `js-error-probe` | changing what a **library returns**. `safe()` catches an exception and renders `err.message` AS the answer, so a view that reads `r.score` on a path where the library now withholds it shows the reader a TypeError. About a minute over the whole catalog. |
+| `slider-default-probe` | changing a **rendered control**. Every sweep here works by clearing a field, so a control that cannot be cleared is invisible to all of them (`docs/spec-v1086.md`). |
+| `prefilled-default-probe` | the same, for a number input rendered with a `value` instead of a `placeholder` -- a form that opens already answered (`docs/spec-v1087.md`). |
+
 It also carries `derivation-agrees.spec.js`. A hundred-odd calculators ship a
 live "show your work" panel, and a calculator that REFUSES has to take its
 working with it -- the refusal path is an early return, and returning before the
