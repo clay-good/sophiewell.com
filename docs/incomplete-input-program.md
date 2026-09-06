@@ -109,6 +109,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1085](spec-v1085.md) | The GCS pair: an example defect, and one control decision across three tiles |
 | [v1086](spec-v1086.md) | Reading the labels: a stripped key, two "fixes" that never landed, and the last two sliders |
 | [v1087](spec-v1087.md) | The fix's clothes: a number input pre-filled with 0 is a form already answered |
+| [v1088](spec-v1088.md) | The footing belonged to the library, and the backlog as shapes rather than a number |
 
 ### And the same question from the other side
 
@@ -234,7 +235,15 @@ What is left is narrower than when this page was written:
   spec-v1085; whether a GCS component should be able to say "not assessed" is one open decision
   across all three, with the argument each way written down.
 
-- **95 fields still change the AGENT's answer when omitted, without saying so**
+- **91 fields still change the AGENT's answer when omitted** — and [spec-v1088](spec-v1088.md)
+  breaks that into shapes rather than leaving it a count. **34 name the absence in wording the
+  shared vocabulary does not carry**; of the 57 that say nothing, most are a region with no disease
+  in it, a count, a unit conversion or a dependent line that simply disappears. **17 across 14
+  tiles are genuinely open, and that table is where to start** -- `pim3` prints the absolute
+  base-excess term of its own regression as `(0)`, and the three valve-stage tiles all drop an echo
+  measurement silently.
+
+- ~~**95 fields still change the AGENT's answer when omitted, without saying so**~~
   (`scripts/probe-omitted-item.mjs`, spec-v1073; the count was read as 93 until spec-v1075 stopped
   the probe accepting a tile's static footnote as a disclosure, and 107 before spec-v1076 drained
   the ICHD-3 headache family and spec-v1077 the CDAI diary). The gate that wave shipped covers instruments

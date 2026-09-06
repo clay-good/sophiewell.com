@@ -20,6 +20,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **The stroke scale told the page it was working from a partial exam and did
+  not tell an agent.** NIHSS reported how many items were scored as separate
+  fields, and only the page turned those into a sentence; the sentence now comes
+  from the shared library, so both surfaces say the same thing.
 - **A bleeding-disorder screen opened as a form already answered.** The ISTH
   bleeding assessment tool rendered its fourteen domains as number boxes
   pre-filled with 0, so a patient nobody had interviewed read "within the normal

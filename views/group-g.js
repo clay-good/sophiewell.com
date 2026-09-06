@@ -332,9 +332,9 @@ export const renderers = {
         o.appendChild(el('p', { text: r.severity }));
       } else {
         o.appendChild(el('p', { text: `NIHSS total: ${r.total} (${r.severity})` }));
-        if (!r.complete) {
-          o.appendChild(el('p', { text: `Scored from ${r.itemsScored} of ${r.itemsTotal} items; each unrated item can only raise the total, so treat this as a floor.` }));
-        }
+        // spec-v1088: the sentence comes from the library now, so both surfaces
+        // carry the same footing.
+        if (r.footing) o.appendChild(el('p', { text: r.footing }));
       }
       if (deriv) updateDerivationSteps(deriv, META.nihss, ans);
     });
