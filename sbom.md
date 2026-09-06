@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `8a062d54ac64f6e1`
-Generated: 2026-09-06T10:11:13.446Z
+Build ID: `d1b034824b8303d0`
+Generated: 2026-09-06T11:43:13.878Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -82,7 +82,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/anthro-v238.js` | 7554 | `ab4ac8a758bfa2c72f22a29bf3df91b2e5d49991a9d8e2fc4f5343a6428c3512` |
 | `lib/anthro-v272.js` | 2988 | `0c8ae06f40b6747996c3069ca3eed48dd37fcb32d0b211bee0ada6ec113c1f53` |
 | `lib/aom-criteria-v857.js` | 10341 | `d7cba14bf1182a24929931232357fed8c9c05930140d051dbd6fb2634f4d2983` |
-| `lib/aortic-regurgitation-stage-v846.js` | 12048 | `2d0a184f7928ff430da10f5226b0aa19d538654b6c5d0a466559372c1a7891c0` |
+| `lib/aortic-regurgitation-stage-v846.js` | 13581 | `939282153bc25fd3c5d4dac04f8601839f52a82ec5e7f3d7301e5c34ef534478` |
 | `lib/aortic-stenosis-stage-v844.js` | 13972 | `11af6b1781cdcfd8d18050ee5e767387fd3e1940355e6d4057adb1e32d84f9f7` |
 | `lib/arc-hbr-v594.js` | 16008 | `88c72c385e4018fc0d2cddba66606c2f136b52091d4f7e2b4f9dfc656fcdb7f9` |
 | `lib/areds-v615.js` | 11067 | `7da2179ea02ee6b4f983417d4fedc03f50d680c2b945213a0cf75fefd6411857` |
@@ -525,7 +525,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/miller-gingival-recession-v724.js` | 4057 | `b1d11e492848c3dd47c988a4e603929084939dac5cad8042402014dba90366f3` |
 | `lib/mis-c-v795.js` | 5510 | `aebe68b4bd5f98d48ddb51cf2a35e0a15ebb97f435a18010a2005382dbebfdbe` |
 | `lib/mitral-regurgitation-stage-v847.js` | 11352 | `ba47ad4c74266e61fca7cba3ebf57759abc04349542c5e225caa206e81633e3c` |
-| `lib/mitral-stenosis-stage-v845.js` | 9235 | `c93977ffc80b48b99a9ea70a82c353d9ee4e4436301fd3a7973da098d471d6cd` |
+| `lib/mitral-stenosis-stage-v845.js` | 10237 | `c7e9a9b1f16a458f0ca2448a2ccab7dc283556c39e1887de682c0119bacc4213` |
 | `lib/mixed-v227.js` | 12795 | `3256771ee5a250a8d28391563107d1c1d43f089f7cfca7aa9ee8df1a487f91ce` |
 | `lib/mixed-v228.js` | 8553 | `7dc7411b28726f4e9a9e337da6ef5ce4194ae4b682fe72975f823242e9a4e5d7` |
 | `lib/mna-sf-v712.js` | 4069 | `ba533e0cae11b180905f08b01f990e6da7b4041109cc21f5c99241cb9417be02` |
@@ -2401,8 +2401,8 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v842.js` | 3917 | `b0fcd975d5f2ef123b5840c58aee005e37ed2724213301f55562fd27d5c8faa6` |
 | `views/group-v843.js` | 2559 | `bbaeff62ee1b91984d853638b609b4300bfc7da6399f40eba08803a0d31e3819` |
 | `views/group-v844.js` | 4296 | `fe9921a43eea13b088e97a29590c848f2f4b555da260a437d79a69d675ad9f9d` |
-| `views/group-v845.js` | 4545 | `c43e8895ef5478bd11cf415bd05d25987b9cf0346dd63f532fe6ff2d96d1a8ea` |
-| `views/group-v846.js` | 4796 | `c874a8f0e2fdc6736f80c9b7625f62647ad4953e43535e402351eb932f5c3084` |
+| `views/group-v845.js` | 4586 | `98e5136b257e290c36baba52108a92943064eb8eb1e65fd98f9f9ecdf7f766c5` |
+| `views/group-v846.js` | 4837 | `8ac3083f737915e5d1bf4cf4a985bd6fb42ca8b22dea2356c46ab07b08b2f34c` |
 | `views/group-v847.js` | 4416 | `1493ea0838e72bc110b61705ccd5a1c9c7466774490b285cde3775efe9c650dd` |
 | `views/group-v848.js` | 5147 | `91b303662fbb1a518971b698096c256e59c20d4ea849faf1fc8e6eb909a36e9a` |
 | `views/group-v849.js` | 4495 | `d9a1c53b0a9031ae60f23d417637974c56ec3643049318aa66454a314d9ef920` |

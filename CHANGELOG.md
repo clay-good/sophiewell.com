@@ -20,6 +20,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Mitral stenosis and aortic regurgitation staged from a partial study.** Both
+  tiles grade severity by taking the worst of several independent echo
+  measurements, so a study missing one of them can only under-call. The same
+  patient read "asymptomatic severe" with every measurement entered and
+  "progressive moderate" — or "no severe obstruction" — with one absent, and
+  nothing said which measurement had never been taken. Each now states how many
+  criteria it graded from and that a missing one can only raise the grade. No
+  stage changes. See docs/spec-v1091.md.
+
 - **An aortic stenosis grade fell from severe to moderate when the valve area
   was left out.** The severe low-gradient stages are reached through the area, so
   without one the tile skipped them and landed on "moderate progressive

@@ -69,6 +69,7 @@ export const renderers = {
       });
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }]);
+      if (r.footing) note(o, r.footing);
       if (r.ventricleNote) note(o, r.ventricleNote);
       if (r.indexedOnlyNote) note(o, r.indexedOnlyNote);
       if (r.indexedMissingNote) note(o, r.indexedMissingNote);

@@ -70,3 +70,27 @@ test('ms stage: guards', () => {
   assert.equal(ms({ valveArea: 1.2, heartRate: 500 }).valid, false);
   assert.doesNotMatch(JSON.stringify(ms({ valveArea: 1.2, symptoms: true })), /NaN|Infinity/);
 });
+
+// spec-v1091: severe is met by the area OR the half-time, so a reading taken
+// from one of them is a floor, and "no severe obstruction" is a claim about a
+// measurement the tile may not have. The same patient reads stage C with both
+// numbers and stage B with only the area; the second reading now says which
+// measurement is missing and which way it can move.
+test('spec-v1091: a stage read from one of the two measurements says so', () => {
+  const both = ms({ valveArea: 1.8, pressureHalfTime: 160, anatomy: 'fusion' });
+  assert.equal(both.stage, 'C', 'the half-time alone reaches severe');
+  assert.equal(both.footing, null, 'nothing is missing, so there is nothing to disclose');
+
+  const areaOnly = ms({ valveArea: 1.8, anatomy: 'fusion' });
+  assert.equal(areaOnly.stage, 'B', 'the stage itself is unchanged; only the footing is new');
+  assert.match(areaOnly.footing, /1 of 2 measurements/);
+  assert.match(areaOnly.footing, /pressure half-time was not entered/);
+  assert.match(areaOnly.footing, /can only raise this reading, never lower it/);
+
+  const halfTimeOnly = ms({ pressureHalfTime: 120, anatomy: 'fusion' });
+  assert.match(halfTimeOnly.footing, /valve area was not entered/);
+
+  // A severe reading is already the floor, so it discloses nothing.
+  assert.equal(ms({ valveArea: 1.2 }).footing, null);
+  assert.equal(ms({ pressureHalfTime: 230 }).footing, null);
+});

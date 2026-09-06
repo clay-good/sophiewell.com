@@ -86,3 +86,30 @@ test('ar stage: guards', () => {
   assert.equal(ar({ venaContracta: 0.8, endSystolicDiameter: 500 }).valid, false);
   assert.doesNotMatch(JSON.stringify(ar({ venaContracta: 0.8, ejectionFraction: 48 })), /NaN|Infinity/);
 });
+
+// spec-v1091: the grade is the most severe of the criteria MEASURED, so a grade
+// from a subset is a floor. A vena contracta of 0.5 cm alone reads "progressive
+// moderate"; add a regurgitant volume of 65 mL and the same patient is severe.
+// `disagreeNote` cannot cover this -- it needs two criteria before it fires.
+test('spec-v1091: a grade read from a subset of the criteria says how many', () => {
+  const one = ar({ venaContracta: 0.5 });
+  assert.equal(one.stage, 'B', 'the stage itself is unchanged; only the footing is new');
+  assert.equal(one.severity, 'moderate');
+  assert.equal(one.disagreeNote, null, 'one criterion cannot disagree with itself');
+  assert.match(one.footing, /1 of 4 severity criteria/);
+  assert.match(one.footing, /regurgitant volume, regurgitant fraction and effective regurgitant orifice were not entered/);
+  assert.match(one.footing, /can only raise it/);
+
+  // The same patient with the volume measured is severe, which is what the
+  // footing on the reading above is warning the reader about.
+  assert.equal(ar({ venaContracta: 0.5, regurgitantVolume: 65 }).severity, 'severe');
+
+  // Singular reads as singular.
+  assert.match(ar({ venaContracta: 0.5, regurgitantVolume: 45, regurgitantFraction: 40 }).footing,
+    /3 of 4 severity criteria; the effective regurgitant orifice was not entered/);
+
+  // Nothing missing, and nothing to disclose.
+  assert.equal(ar({ venaContracta: 0.5, regurgitantVolume: 45, regurgitantFraction: 40, regurgitantOrifice: 0.2 }).footing, null);
+  // A severe grade is already the floor.
+  assert.equal(ar({ venaContracta: 0.8 }).footing, null);
+});
