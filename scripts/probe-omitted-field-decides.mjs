@@ -1,0 +1,196 @@
+#!/usr/bin/env node
+// spec-v1092: could the field nobody entered have changed the CONCLUSION?
+//
+// The probe beside this (scripts/probe-omitted-item.mjs) drops one field from a
+// tile's worked example and asks whether the answer MOVED. That question is
+// bounded by the example: it can only reach the readings the example's own
+// values reach, and worked examples are written alarming, so dropping a field
+// usually leaves an alarming reading standing -- which is the floor, and the
+// safe direction.
+//
+// spec-v1091 was found by hand for exactly that reason. `mitral-stenosis-stage`
+// and `aortic-regurgitation-stage` both graded from a subset of criteria and
+// called it "no severe obstruction", and the older probe saw nothing wrong with
+// either, because both examples are severe on every criterion. The defect lives
+// on the REASSURING side of the threshold, where the example never goes.
+//
+// So this probe asks a question the example cannot bound. Drop one field, then
+// try plausible values IN that field -- scaled from the example's own value, so
+// each tile's range guards throw out the implausible ones -- and ask whether any
+// of them would have changed the verdict. If one would, then omitting the field
+// silently is a rule-out from a subset, and the tile owes the reader a word.
+//
+// Two sections, and the first is the one to read:
+//
+//   RULED OUT FROM A SUBSET -- the omitted reading is `abnormal: false` and some
+//     value of the missing field makes it `abnormal: true`. This is the
+//     spec-v1091 shape and it is the one that can hurt.
+//   VERDICT COULD CHANGE -- the band or stage moves but `abnormal` does not, or
+//     the tile does not carry `abnormal`. Weaker; read against the tile.
+//
+// A row is a suspect, not a defect. A tile is right to answer from a subset when
+// the criteria are genuinely independent tests of different things; what it owes
+// is the footing, not a refusal (see docs/spec-v1091.md).
+//
+// Asserts nothing; prints a report.
+//
+//   node scripts/probe-omitted-field-decides.mjs
+//   node scripts/probe-omitted-field-decides.mjs --tile mitral-stenosis-stage
+
+import { allCalculators } from '../mcp/catalog.js';
+import { computeCalculator } from '../mcp/tools.js';
+import { META } from '../lib/meta.js';
+import { ASKING, DISCLOSING } from '../test/lib/asking-language.js';
+
+const only = (() => {
+  const i = process.argv.indexOf('--tile');
+  return i > -1 ? process.argv[i + 1] : null;
+})();
+
+// Same rule as the older probe: a disclosure has to be in what the tile said
+// about THESE inputs, not in its static explanatory prose.
+function texts(v, out = [], top = true) {
+  if (typeof v === 'string') out.push(v);
+  else if (Array.isArray(v)) v.forEach((x) => texts(x, out, false));
+  else if (v && typeof v === 'object') {
+    for (const [k, x] of Object.entries(v)) {
+      if (top && k === 'note') continue;
+      texts(x, out, false);
+    }
+  }
+  return out;
+}
+
+// The conclusion, not the arithmetic. Raw numbers move on almost every call and
+// say nothing about whether the reader would act differently; a band, a stage or
+// a severity is what the reader takes away.
+// The comparison strips digits. `band` embeds the score itself, so comparing the
+// raw strings counted "SCORAD 37/103 -- moderate" against "SCORAD 38/103 --
+// moderate" as a changed verdict: one point of arithmetic reported as if the
+// reader's conclusion had moved. What matters is the category around the number.
+function verdictKey(v) {
+  return v === null ? null : v.replace(/[\d.]+/g, '');
+}
+
+function verdict(r) {
+  if (!r || typeof r !== 'object') return null;
+  const parts = [];
+  for (const k of ['bandLabel', 'band', 'stage', 'severity', 'grade', 'risk', 'category', 'class']) {
+    if (typeof r[k] === 'string' && r[k]) parts.push(`${k}=${r[k]}`);
+  }
+  return parts.length ? parts.join(' | ') : null;
+}
+
+// Values to try in the dropped field. Scaled from the example's own value so
+// they stay in the right order of magnitude for that measurement, and each
+// tile's own range guards reject whatever is still implausible.
+function candidates(v) {
+  const n = Number(v);
+  if (!Number.isFinite(n) || n === 0) return [0, 1, 5, 10, 50, 100];
+  const out = new Set([0, 1]);
+  for (const m of [0.1, 0.25, 0.5, 0.75, 1.5, 2, 4, 10]) {
+    const c = Number((n * m).toPrecision(4));
+    if (Number.isFinite(c) && c >= 0) out.add(c);
+  }
+  return [...out];
+}
+
+const ruledOut = [];
+const couldChange = [];
+
+// Reaching the reassuring side of the threshold.
+//
+// The first version of this probe started from the worked example and found
+// NOTHING -- including on `mitral-stenosis-stage`, the tile it was written for.
+// The example is severe on both measurements, so dropping one leaves a severe
+// reading standing, and severe is the floor. The example bounds this probe the
+// same way it bounds the older one.
+//
+// So before asking whether the dropped field could flip the verdict, push the
+// REMAINING fields toward a reading that is not already alarming. Scaling them
+// together is crude but it is enough: a tile that grades on a threshold has a
+// reassuring side, and a uniform scale reaches it. Both directions are tried
+// because "reassuring" is not always "smaller" -- a valve AREA is worse small.
+const SCALES = [1, 0.5, 0.25, 0.1, 2, 4, 10];
+
+function scaleOthers(ex, exclude, numericDoms, k) {
+  const out = { ...ex };
+  delete out[exclude];
+  if (k === 1) return out;
+  for (const d of numericDoms) {
+    if (d === exclude) continue;
+    const n = Number(ex[d]);
+    if (Number.isFinite(n) && n !== 0) out[d] = Number((n * k).toPrecision(4));
+  }
+  return out;
+}
+
+for (const tool of allCalculators()) {
+  if (only && tool.id !== only) continue;
+  const ex = META[tool.id]?.example?.fields;
+  if (!ex) continue;
+  const full = computeCalculator({ id: tool.id, inputs: { ...ex } });
+  if (full?.valid !== true) continue;
+
+  const numericDoms = (tool.fields || [])
+    .filter((f) => f.kind === 'number' && ex[f.dom] !== undefined && String(ex[f.dom]).trim() !== '')
+    .map((f) => f.dom);
+
+  for (const f of tool.fields || []) {
+    if (f.kind !== 'number') continue;
+    const v = ex[f.dom];
+    if (v === undefined || String(v).trim() === '') continue;
+
+    let hit = null;
+    for (const k of SCALES) {
+      const partial = scaleOthers(ex, f.dom, numericDoms, k);
+      const base = computeCalculator({ id: tool.id, inputs: partial });
+      if (base?.valid !== true) continue;                    // refused: correct
+
+      const said = texts(base.result).join(' ');
+      if (ASKING.test(said) || DISCLOSING.test(said)) continue;  // said so
+
+      const baseVerdict = verdict(base.result);
+      const baseAbnormal = base.result?.abnormal;
+
+      for (const c of candidates(v)) {
+        const got = computeCalculator({ id: tool.id, inputs: { ...partial, [f.dom]: c } });
+        if (got?.valid !== true) continue;
+        const gotVerdict = verdict(got.result);
+        const flip = baseAbnormal === false && got.result?.abnormal === true;
+        const moved = baseVerdict && gotVerdict && verdictKey(gotVerdict) !== verdictKey(baseVerdict);
+        if (!flip && !moved) continue;
+        const row = {
+          id: tool.id,
+          field: f.dom,
+          label: String(f.label || '').slice(0, 46),
+          scale: k,
+          base: (baseVerdict || said).slice(0, 110),
+          value: c,
+          verdict: gotVerdict,
+          flip,
+        };
+        if (flip) { hit = row; break; }
+        if (!hit) hit = row;
+      }
+      if (hit && hit.flip) break;
+    }
+    if (hit && hit.flip) ruledOut.push(hit);
+    else if (hit) couldChange.push(hit);
+  }
+}
+
+function report(title, rows) {
+  const tiles = new Set(rows.map((r) => r.id));
+  console.log(`\n${title}: ${rows.length} field(s) across ${tiles.size} calculator(s)\n`);
+  for (const r of rows) {
+    console.log(`  ${r.id}|${r.field}  (${r.label})`);
+    console.log(`      omitted -> ${r.base}${r.scale !== 1 ? `   [others x${r.scale}]` : ''}`);
+    console.log(`      but ${r.field}=${r.value} -> ${String(r.verdict).slice(0, 110)}`);
+  }
+}
+
+console.log('Dropping one field from each worked example, then asking whether any plausible');
+console.log('value of that field would have changed the verdict -- without the tile saying so.');
+report('RULED OUT FROM A SUBSET (read these first)', ruledOut);
+report('VERDICT COULD CHANGE', couldChange);

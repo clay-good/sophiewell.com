@@ -20,6 +20,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **PASI and EASI scored a body region nobody examined as a region with no
+  disease.** Both sum four regions, and an absent area contributes exactly what a
+  clear one does, so a partial examination could only under-state severity —
+  dropping one region's area moved PASI from moderate to mild. Each now states
+  how many regions it scored from and that the total is a floor. Scores are
+  unchanged, and a region entered as 0% still reads as examined and clear. See
+  docs/spec-v1092.md.
+
 - **Mitral stenosis and aortic regurgitation staged from a partial study.** Both
   tiles grade severity by taking the worst of several independent echo
   measurements, so a study missing one of them can only under-call. The same

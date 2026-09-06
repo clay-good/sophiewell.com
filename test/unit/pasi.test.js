@@ -51,3 +51,40 @@ test('max all-severe full-area = 72', () => {
   });
   assert.equal(r.score, 72);
 });
+
+// spec-v1092: a region nobody examined is not a region with no disease.
+//
+// `areaGrade` returns 0 for an absent area, so an unassessed region contributes
+// exactly what a clear one does, and `detail` lists only regions scoring above
+// 0 -- so the two print identically, as nothing at all. The score is a sum of
+// non-negative terms, so a partial examination can only under-state it, which
+// puts the error on the reassuring side: dropping one region's area moved PASI
+// from moderate to mild, and mild is the side of the line where systemic
+// therapy is not discussed.
+test('spec-v1092: a PASI scored from some of the regions says which are missing', () => {
+  const all = {
+    headE: 2, headI: 2, headD: 2, headArea: 20,
+    upperE: 2, upperI: 2, upperD: 2, upperArea: 20,
+    trunkE: 2, trunkI: 2, trunkD: 2, trunkArea: 20,
+    lowerE: 2, lowerI: 2, lowerD: 2, lowerArea: 20,
+  };
+  assert.equal(pasi(all).footing, null, 'every region examined, nothing to disclose');
+
+  const noHead = { ...all };
+  delete noHead.headArea;
+  assert.match(pasi(noHead).footing, /Scored from 3 of 4 regions/);
+  assert.match(pasi(noHead).footing, /head\/neck was not entered/);
+  assert.match(pasi(noHead).footing, /can only rise/);
+
+  const noTwo = { ...all };
+  delete noTwo.headArea;
+  delete noTwo.trunkArea;
+  assert.match(pasi(noTwo).footing, /2 of 4 regions; head\/neck and trunk were not entered/);
+
+  // The distinction the footing exists to draw: examined and clear is NOT the
+  // same as never examined, even though both contribute 0.
+  assert.equal(pasi({ ...all, headArea: 0 }).footing, null);
+
+  // The score itself is untouched.
+  assert.equal(pasi(all).score, pasi({ ...all }).score);
+});

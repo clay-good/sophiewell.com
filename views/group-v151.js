@@ -103,6 +103,7 @@ export const renderers = {
         { label: 'PASI', value: `${r.score}/72` },
         { label: 'Severity', value: r.bandLabel },
       ]);
+      if (r.footing) note(o, r.footing);
       note(o, r.detail);
       note(o, r.note);
     }));
@@ -139,6 +140,7 @@ export const renderers = {
         { label: 'EASI', value: `${r.score}/72` },
         { label: 'Severity', value: r.bandLabel },
       ]);
+      if (r.footing) note(o, r.footing);
       note(o, r.detail);
       note(o, r.note);
     }));

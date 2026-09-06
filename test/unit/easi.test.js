@@ -50,3 +50,25 @@ test('max all-severe full-area = 72 (very severe)', () => {
   assert.equal(r.score, 72);
   assert.equal(r.bandLabel, 'Very severe');
 });
+
+// spec-v1092: the same defect as PASI, and the same fix. See test/unit/pasi.test.js.
+test('spec-v1092: an EASI scored from some of the regions says which are missing', () => {
+  const all = {
+    headE: 2, headEd: 2, headEx: 2, headL: 2, headArea: 20,
+    upperE: 2, upperEd: 2, upperEx: 2, upperL: 2, upperArea: 20,
+    trunkE: 2, trunkEd: 2, trunkEx: 2, trunkL: 2, trunkArea: 20,
+    lowerE: 2, lowerEd: 2, lowerEx: 2, lowerL: 2, lowerArea: 20,
+  };
+  assert.equal(easi(all).footing, null);
+
+  const noLower = { ...all };
+  delete noLower.lowerArea;
+  assert.match(easi(noLower).footing, /Scored from 3 of 4 regions; lower limbs was not entered/);
+  assert.match(easi(noLower).footing, /can only rise/);
+
+  // Examined and clear is not the same as never examined.
+  assert.equal(easi({ ...all, lowerArea: 0 }).footing, null);
+  // Lower limbs carry the heaviest adult weight, so this is the region whose
+  // absence moves the total most: 0.4 of every point scored there.
+  assert.ok(easi(all).score > easi(noLower).score);
+});
