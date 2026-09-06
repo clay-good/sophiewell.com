@@ -20,6 +20,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A mortality model could not say which zero it meant.** PIM3 enters a
+  variable nobody measured as zero, which is how the model is built -- but the
+  working it showed printed "|Base excess| (0)", which is also what a base
+  excess drawn and found normal looks like. It now says "not entered, so 0" and
+  names what the figure was computed without. No number changed.
 - **The stroke scale told the page it was working from a partial exam and did
   not tell an agent.** NIHSS reported how many items were scored as separate
   fields, and only the page turned those into a sentence; the sentence now comes

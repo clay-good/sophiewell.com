@@ -37,3 +37,33 @@ test('FiO2*100/PaO2 only contributes when both gas values are present', () => {
   const withGas = pim3({ sbp: 90, fio2: 0.6, paO2: 60, riskCategory: 'none' });
   assert.ok(withGas.risk > without.risk);
 });
+
+// spec-v1089: which zero is the reader looking at?
+//
+// PIM3 enters an unmeasured variable as zero -- the convention the FiO2/PaO2
+// comment in the library already records -- so a base excess nobody drew
+// contributing 0 is the instrument working as designed. The defect was the
+// label: "|Base excess| (0)" is also what a MEASURED base excess of 0 prints,
+// and 0 is a normal base excess. Two different clinical states, one label.
+//
+// The arithmetic is deliberately unchanged; only the reader's ability to tell
+// them apart is new.
+test('spec-v1089: an unmeasured zero reads differently from a measured one', () => {
+  const base = { sbp: 90, recovery: 'none', riskCategory: 'none' };
+
+  const absent = pim3(base);
+  const measured = pim3({ ...base, baseExcess: 0 });
+
+  // Same term, same logit: the model's convention is untouched.
+  assert.equal(absent.terms[4].value, measured.terms[4].value);
+  assert.equal(absent.x, measured.x);
+
+  // But the reader can tell which is which.
+  assert.match(absent.terms[4].label, /not entered, so 0/);
+  assert.equal(measured.terms[4].label, '|Base excess| (0)');
+
+  assert.ok(absent.notEntered.includes('base excess'));
+  assert.ok(!measured.notEntered.includes('base excess'));
+  assert.match(absent.band, /Computed without base excess/);
+  assert.doesNotMatch(measured.band, /Computed without base excess/);
+});

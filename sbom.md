@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `6dd30d01c8bb23e2`
-Generated: 2026-09-06T07:46:06.861Z
+Build ID: `9bce73376119ac47`
+Generated: 2026-09-06T08:50:22.927Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -640,7 +640,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/peds-percentile-v169.js` | 8290 | `dbaec78619e7c9190044c9cdb8ecd8a2bb03a871f351e0454a06e1c5b816e9b0` |
 | `lib/peds-sepsis-v278.js` | 8360 | `8611b803d3273833b65d5d11eb7de6dc14af6fa36a739cc72700290606b8ef83` |
 | `lib/peds-v140.js` | 19548 | `9cdb52162767466d9f79bef4cdd351ae7f0b616d00c5013cc86a7cfef51e631f` |
-| `lib/peds-v98.js` | 16874 | `2e6e709332d5911144e0a93dd6ebb5fd0d0719d7c71e90ea4031849701a49cdb` |
+| `lib/peds-v98.js` | 17977 | `34cd4b31d15b01023b31b4f91ae4a6bd21fc2e809798b6e91fc5551952db3063` |
 | `lib/pedstox-v247.js` | 7629 | `9ffa2359f05cf582c46fc4d77d02a7906b0f0e62b6b5a952bafaebd45ef4b4a6` |
 | `lib/pef-zones-v891.js` | 6826 | `3d6f9c84c5641a3d89998e5e0a3305468f0607125d9a2ca5fdc0350b84af1ffc` |
 | `lib/peradeniya-op-v575.js` | 13708 | `e805988341b151b231b4db54a8e82e3b95f19f980bf2d3b394c97a4c05254aa8` |
