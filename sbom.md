@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `75b4c8547c510437`
-Generated: 2026-09-06T04:08:34.618Z
+Build ID: `62e3ac024317b768`
+Generated: 2026-09-06T05:16:38.582Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -509,7 +509,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/membranous-risk-v878.js` | 11351 | `882c36c07e46543e32f1114792c1124ee9f9ff6b384084fc0a8c221e7dd62062` |
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2467619 | `35d93fecb08af4dfb177593a040d9bce59e3e4e773fe4df49d3bfccf756c5438` |
+| `lib/meta.js` | 2467898 | `5310b94fe0983e97cc5f1ec27113f5efc891ae0f6164cef8fd046849891add9d` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 14732 | `d5ead6ad019160f71df636a4c9f0c316f439a1e049849cf1dde8efa530b72ff2` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -806,7 +806,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/stroke-prognosis-v210.js` | 3431 | `75a4782a4abb9bdd584da9827074740c9773fb41fc0e25d961b79696cd1e8a3c` |
 | `lib/stroke-risk-v217.js` | 14688 | `92b225643e71019f940bb43d21357611555bfd443077b9c5747023ad6b7b372b` |
 | `lib/stulberg-v457.js` | 3492 | `72b91cf6d020a3d4e58cdedd907a7f84fb1e3736cfcd19ae3ed300f9a7b9793f` |
-| `lib/subspecialty-v198.js` | 13272 | `d9697591365cfe0a613057d5b9345aa894f8631ffeaf4257d2b8299d77efd09e` |
+| `lib/subspecialty-v198.js` | 15043 | `5ad66d11621213cb0f55b78adfbfd56a0ea3c64d898d25989c38ffecfbd0c1bb` |
 | `lib/suites-v155.js` | 13422 | `8dcd9ee6cb60524bed730715b875ace734c5c8f4b9d3ec5eb1ad19370eae577e` |
 | `lib/sun-ac-cell-v421.js` | 3663 | `2e98fadd5a5b0b497a827fe2fc7cd3c2dbe6b1c00cc2f6e465f50cc2e389fb55` |
 | `lib/sun-ac-flare-v422.js` | 3437 | `c372e87d2726c6e87123b9971c50eed8b5d23a434bd99dc6dad494e10005b30c` |
@@ -1796,7 +1796,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v195.js` | 5560 | `b93f295af8352adb380945c07c8ada70810d2224012d64938d2efee406d42762` |
 | `views/group-v196.js` | 8641 | `18435b72abf3ea2f1f13ac2cdd25049b836f821be10bd6a1b25f36b5bafee673` |
 | `views/group-v197.js` | 6569 | `638a7cf160ff84008c4f1f1ef56f6f541e2b3cb379a0b7699de61c1958b69bbb` |
-| `views/group-v198.js` | 11653 | `23ada0a2fe7e80e4988f34b18ff2f50d341c7a54e84af02f7da865981c900a01` |
+| `views/group-v198.js` | 12174 | `0ce20721ab32f237b6c5ca87719ae2100334e387cb3511fd0db962e2f55e90a8` |
 | `views/group-v199.js` | 10533 | `75b0043db03eedfd0baaf936477457a31208563cc1f2f0eea4bdc10dab04e6ab` |
 | `views/group-v20.js` | 11782 | `ca6b2afa5f1e218f945d768bce50a569e3994223d8d99d9d10baffb166acbe66` |
 | `views/group-v200.js` | 9409 | `0959db6cba65f267dbefb03f50cc89c1c971551f80bd11f18df09ff18d5b4747` |

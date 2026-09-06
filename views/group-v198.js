@@ -33,8 +33,14 @@ function pickField(label, id, options) {
 function num(label, id, attrs = {}) {
   return field(label, id, { type: 'number', min: '0', step: 'any', inputmode: 'decimal', ...attrs });
 }
+// spec-v1087: a placeholder, not a value. Rendered with `value: '0'` these
+// fourteen domains opened as a form already answered -- the reader would have to
+// delete fourteen zeros to say "I have not asked about any of this" -- and the
+// tile read "ISTH-BAT 0: within the normal range" for a patient nobody had
+// interviewed. A number input can express "not answered", but only if it is
+// rendered blank.
 function scoreField(label, id) {
-  return field(label, id, { type: 'number', min: '0', max: '4', step: '1', inputmode: 'numeric', value: '0' });
+  return field(label, id, { type: 'number', min: '0', max: '4', step: '1', inputmode: 'numeric', placeholder: '0-4' });
 }
 function checkField(label, id) {
   const wrap = el('p');
@@ -97,6 +103,8 @@ export const renderers = {
     const ids = ['isth-group', ...ISTHBAT_UI.map(([k]) => 'isth-' + k)];
     wire(ids, () => safe(o, () => {
       const payload = { group: val('isth-group') };
+      // An empty box stays empty: the library tells an unrated domain from a
+      // domain rated 0.
       for (const [key] of ISTHBAT_UI) payload[key] = val('isth-' + key);
       const r = M.isthBat(payload);
       if (!r.valid) { showInvalid(o, r); return; }

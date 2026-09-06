@@ -20,6 +20,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A bleeding-disorder screen opened as a form already answered.** The ISTH
+  bleeding assessment tool rendered its fourteen domains as number boxes
+  pre-filled with 0, so a patient nobody had interviewed read "within the normal
+  range", and leaving one question out took the worked example from "abnormal
+  bleeding score" to normal. The boxes now open empty. A history actually taken
+  and negative throughout still reads normal. See docs/spec-v1087.md.
 - **A sleepiness scale and a maternity early-warning chart still answered from
   untouched sliders.** The Epworth read "normal daytime sleepiness" before anyone
   answered a question, and the MEOWS pain score -- the one observation left out

@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:75b4c854-7c51-5437-8e3a-f4e9aabb9247",
+  "serialNumber": "urn:uuid:62e3ac02-4317-5768-89dc-5b53667c54e3",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-06T04:08:34.618Z",
+    "timestamp": "2026-09-06T05:16:38.582Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -10016,7 +10016,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "35d93fecb08af4dfb177593a040d9bce59e3e4e773fe4df49d3bfccf756c5438"
+          "content": "5310b94fe0983e97cc5f1ec27113f5efc891ae0f6164cef8fd046849891add9d"
         }
       ],
       "properties": [
@@ -10026,7 +10026,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2467619"
+          "value": "2467898"
         }
       ]
     },
@@ -16253,7 +16253,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d9697591365cfe0a613057d5b9345aa894f8631ffeaf4257d2b8299d77efd09e"
+          "content": "5ad66d11621213cb0f55b78adfbfd56a0ea3c64d898d25989c38ffecfbd0c1bb"
         }
       ],
       "properties": [
@@ -16263,7 +16263,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "13272"
+          "value": "15043"
         }
       ]
     },
@@ -37043,7 +37043,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "23ada0a2fe7e80e4988f34b18ff2f50d341c7a54e84af02f7da865981c900a01"
+          "content": "0ce20721ab32f237b6c5ca87719ae2100334e387cb3511fd0db962e2f55e90a8"
         }
       ],
       "properties": [
@@ -37053,7 +37053,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "11653"
+          "value": "12174"
         }
       ]
     },
@@ -69596,7 +69596,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "75b4c8547c510437"
+      "value": "62e3ac024317b768"
     },
     {
       "name": "sophiewell:runtimeAssetCount",

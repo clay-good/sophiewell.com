@@ -35,7 +35,8 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 7. **A guard against a missing value is a guard against one SHAPE of missing value** (spec-v1040).
    `Number('')` and `Number(null)` are both 0; when a renderer changes which one it sends, every
    guard downstream is guarding against the old shape until someone checks.
-8. **A control that cannot express "not answered" will be read as an answer** (spec-v1047, and
+8. **A control that cannot express "not answered" will be read as an answer** — a slider, or a
+   number input rendered with a `value` rather than a `placeholder` (spec-v1087). (spec-v1047, and
    again in spec-v1078, where it had made the library's own seventy-spec-old guard unreachable on
    the NIH Stroke Scale). A slider
    sits at its minimum and looks like a rating somebody made. Where the value matters, being empty
@@ -107,6 +108,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1084](spec-v1084.md) | A staged swallow screen: stopped on purpose is not the same as interrupted |
 | [v1085](spec-v1085.md) | The GCS pair: an example defect, and one control decision across three tiles |
 | [v1086](spec-v1086.md) | Reading the labels: a stripped key, two "fixes" that never landed, and the last two sliders |
+| [v1087](spec-v1087.md) | The fix's clothes: a number input pre-filled with 0 is a form already answered |
 
 ### And the same question from the other side
 
