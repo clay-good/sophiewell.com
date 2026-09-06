@@ -20,6 +20,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Two coma-scale tiles opened on the healthiest patient they can describe.**
+  The paediatric GCS opened at 15 of 15 and the Hunt-Hess grader at grade 1,
+  while the adult GCS tile beside them opens on a realistic 12. Both now show a
+  drowsy, confused patient; the Hunt-Hess example also shows its two scales
+  diverging, which a grade-1 example cannot. See docs/spec-v1085.md.
 - **A swallow screen cleared a stroke patient for a normal diet before anyone
   gave them water.** GUSS rendered its seventeen items as sliders parked at
   their best values, so an untouched form read "20 of 20 ... Normal diet, normal

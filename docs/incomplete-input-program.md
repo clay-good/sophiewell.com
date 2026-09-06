@@ -105,6 +105,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1082](spec-v1082.md) | A discharge decision, a newborn, and a scale whose default sits in the middle |
 | [v1083](spec-v1083.md) | Two instruments on one tile: answer with the halves you have |
 | [v1084](spec-v1084.md) | A staged swallow screen: stopped on purpose is not the same as interrupted |
+| [v1085](spec-v1085.md) | The GCS pair: an example defect, and one control decision across three tiles |
 
 ### And the same question from the other side
 
@@ -209,8 +210,9 @@ What is left is narrower than when this page was written:
   `braden` is fixed (spec-v1080),
   `katz-adl` and `lawton-iadl` in spec-v1081, `white-song`, `apgar` and `npass` in spec-v1082. `norton-push` and `vip-extravasation` in spec-v1083, which took spec-v1045's "answer with the
   halves you have" shape because each is two instruments on one tile;
-  `guss` is fixed in spec-v1084, which needed the staged gating designed rather than assumed; the GCS
-  pair still needs a decision rather than a fix.
+  `guss` is fixed in spec-v1084, which needed the staged gating designed rather than assumed; the GCS pair turned out to differ from the adult `gcs` tile only in their worked EXAMPLES, fixed in
+  spec-v1085; whether a GCS component should be able to say "not assessed" is one open decision
+  across all three, with the argument each way written down.
 
 - **95 fields still change the AGENT's answer when omitted, without saying so**
   (`scripts/probe-omitted-item.mjs`, spec-v1073; the count was read as 93 until spec-v1075 stopped
