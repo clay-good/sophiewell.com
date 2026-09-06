@@ -115,3 +115,23 @@ test('the scope note separates skin burden from staging and names the blood comp
   assert.match(r.note, /blood involvement this instrument cannot see/);
   assert.match(r.note, /does not select therapy/);
 });
+
+// spec-v1093: a blank body-surface area reads as 0 percent, exactly as a
+// category examined and found absent does. mSWAT weights tumor most heavily, so
+// the category most likely to be left blank is the one that moves the total most.
+test('spec-v1093: an mSWAT scored from some of the three categories says which are missing', () => {
+  const all = { erythrodermic: 'no', weight1: 10, weight2: 10, weight4: 10 };
+  assert.equal(mswat(all).footing, null);
+
+  const noTumor = { ...all };
+  delete noTumor.weight4;
+  const r = mswat(noTumor);
+  assert.match(r.footing, /Scored from 2 of 3 lesion categories/);
+  assert.match(r.footing, /was not entered/);
+  assert.match(r.footing, /can only rise/);
+  assert.doesNotMatch(r.footing, /categorie /, 'the singular is spelled, not derived');
+  assert.ok(mswat(all).total > r.total);
+
+  // Entered as 0% is a finding: examined, none present.
+  assert.equal(mswat({ ...all, weight4: 0 }).footing, null);
+});

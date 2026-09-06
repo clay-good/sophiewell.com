@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `2fc3ed1e833b765d`
-Generated: 2026-09-06T14:39:06.072Z
+Build ID: `7acdba099301b798`
+Generated: 2026-09-06T17:10:03.265Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -220,7 +220,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/delta-check-v925.js` | 8560 | `abf5710ac31ccbf152531f1986ae2cfce6cfa564560ae6bd9bbe82bc24a6ab68` |
 | `lib/denis-sacral-v376.js` | 3688 | `fc489399a839b38692a0f716910e6e31f30ff38407b35cc4e160ef595baad540` |
 | `lib/derivation.js` | 8016 | `a0fcfa34306bef8683031d8e2757bc08f3448235b2f69649ef3354afdba7edec` |
-| `lib/derm-v151.js` | 17852 | `a78296f79f04e29092dd289aa36601fb3ded04456cbdf0a619e457a13b3047e8` |
+| `lib/derm-v151.js` | 17628 | `5a02e73e2087722ace0f409c9e17f1cd0e2988908a620a860f3cea13f987b77f` |
 | `lib/dermatology-v223.js` | 13207 | `b0664bf97310df895e03501102ab3504d890636210525de6b8046f434e97f56d` |
 | `lib/dermscore-v234.js` | 7891 | `bc3594b69d62b10208190ba28e89a4412d3be45118e5e3836568902c37301b8c` |
 | `lib/dermuro-v191.js` | 12433 | `323b7c1713b3d8c2cd352ed8554058d54d80e171d6a5baf123143d6370f0cd89` |
@@ -534,7 +534,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/montreal-ibd-v328.js` | 4721 | `97f6f837c4fa6c39e29580aad07a5a21bd70abf7faa76fc4bddc3ba1cc113a5c` |
 | `lib/mpa-v640.js` | 3742 | `1e379bc79e1f76f0b189895987cbd9878851637596fc68615024fb8f5cf09310` |
 | `lib/mrc-power-v428.js` | 3225 | `1fb2d34bd33ba632438a2017caac8f57e05274cc3b5f63b364da13faf1f30f3a` |
-| `lib/mswat-v557.js` | 12016 | `ff629f32d5110d9f30f229486c8b9c4cb8d4586e3ac286a2926affadfd6d6ccb` |
+| `lib/mswat-v557.js` | 12726 | `42864d2132d5a9190cb5e39258683442aa5f4f0bf48f1436a0e2e84ebab34b42` |
 | `lib/myeloid-prognosis-v199.js` | 11996 | `d65fe650bc865814907eb9176be30f15bb5db529c5dbd629a78aaae974f6e1a6` |
 | `lib/myxedema-coma-v599.js` | 15439 | `76c6237db1eafb935ba2908633c46d61b59545cb05488f892d4d599eadd17637` |
 | `lib/nac-attr-stage-v583.js` | 12233 | `7cbf9dbc38f5e929d85f09c774fec6a1d46ef015dfb3a5144d592a7e4857f999` |
@@ -707,6 +707,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/rcc-prognosis-v279.js` | 7877 | `65dfbce477ca8b65350799b98f3364d9c2db8bc22f528ced54c19a9e306ab93e` |
 | `lib/reference-change-value-v920.js` | 8688 | `171465315afa19e07e439a5f5306c53c9e2febad5983cb8da9b89936b38b5fe9` |
 | `lib/regan-morrey-v404.js` | 3237 | `6b740bafcf5b1f9e8e306ba3b6863513bc950c73c0f6c46d00a095816929c04a` |
+| `lib/region-footing-v1093.js` | 3587 | `ab6509b0a1999202d9fb7783a94d21f6f8b34146baa1bf65d539800d8b778147` |
 | `lib/regulatory.js` | 8261 | `1a5ca3589e7f1c77429db46bc455aa7a98c59136f90f41b135ce977315fd4c10` |
 | `lib/rehab-v240.js` | 6834 | `98fad9be8c75236525118ca3df7581ab6229ce20e4586fee571ad0045ed019e8` |
 | `lib/reid-bronchiectasis-v450.js` | 3073 | `9809861f8d6ce7f9543cfb95473e2c325891c69181ebe4b3f463f7cdc54c2949` |
@@ -858,7 +859,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/van-nuys-vnpi-v652.js` | 5583 | `59049426b6b97b137e2c28ae2072640f2310ed548c27027eac6e069e334ddcaf` |
 | `lib/vancouver-periprosthetic-v483.js` | 3496 | `49ecf63cc801a1b465268edd621659b820dad6556472ff09b40e428eb12575bf` |
 | `lib/vascular-v105.js` | 15623 | `2449631a3b0b038fed08cb091f8250bcc48da1301d1abf1339e4873024bd14db` |
-| `lib/vasi-v556.js` | 12179 | `dd7c896bdaac1ca23377d91c307dc02c77738962f87efff83196db3dc8874e39` |
+| `lib/vasi-v556.js` | 12850 | `c1e3bdab22509ed3895f5dae68d974242064c27bd047889d8a0d80c1491bd204` |
 | `lib/vaughan-williams-v427.js` | 4207 | `241cb6fc10d5a9b15a3a849ab44f7887e7508a99daa8a9c55567feb737b1893d` |
 | `lib/vent-v195.js` | 9473 | `9f8fd14cdaa7e971da29cc8bdc6247bf8c7e3974daae70bc597e2269c400c110` |
 | `lib/vesikari-v530.js` | 9422 | `4307be628831c30efea4745a9a663ef444521f32d150be71d29a79bb27b80c41` |
@@ -1753,7 +1754,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v148.js` | 19109 | `f34bde6fdff35a3167d9dca89727a221850e5d056a41fe44ff89f90051053dd9` |
 | `views/group-v149.js` | 6365 | `1777a5e89834da85c73e4642fce3f8efc75b026698664a983c4226352b679af3` |
 | `views/group-v15.js` | 9484 | `02ca12568aaf9f325aa95d5eab66735f0f15a247ecb57f5d061d0cf97f6376e7` |
-| `views/group-v151.js` | 12981 | `74b2b0ffea8e702b1d4696c34abadc293f1c3a8337c860f0beb4ebc283f57e23` |
+| `views/group-v151.js` | 13022 | `4a3522af65ca2af806633e27cbec5b5f55f9b30ca72aef838ac2e3509aba6ee9` |
 | `views/group-v152.js` | 12367 | `b801afd93751f4bc75051eb9e2b852094403120b03a2d2da2b4d8ece35405117` |
 | `views/group-v153.js` | 11280 | `ffceef435372350d3a3f391724e3232537e6919c980ba7c4b8e8b7bab2186ee9` |
 | `views/group-v154.js` | 11434 | `4bb47056aa326ce6597e15e6dacfa281adf4230d42df78761125cafac4e8b073` |
@@ -2161,8 +2162,8 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v553.js` | 3927 | `895ca5f88a6f9f06901a73ff6fbda0734eb8e5b9dffdf280fa3513307d7fb3b7` |
 | `views/group-v554.js` | 3517 | `86ac9189039bffd089868699df6891ade416dcfdddab74e43b8095891a656bff` |
 | `views/group-v555.js` | 3391 | `72b58d59f5f6fef37abcac626f702fd565400306f4603a82deb89f1badff0912` |
-| `views/group-v556.js` | 4334 | `4cac23619385b65dddcee0c84e1920e2374794b8db001cd1723d24ddac8cd4e6` |
-| `views/group-v557.js` | 4194 | `ff4957e148423e3da6f23d7c188ba26f89e2814119ed10d27510876efa3c87de` |
+| `views/group-v556.js` | 4375 | `de3dc17a33db7ed1e533573c581e6ca43fabb6d5e8fbf0e37871acc55ef5f68c` |
+| `views/group-v557.js` | 4235 | `168cccf047e2c9ed74c7b0d12a63016c71058f8be41410cbbfe0e1d50d0e00d3` |
 | `views/group-v558.js` | 3656 | `9d617318b51fd78339ee41031a0501a921c174438898129dc240a2dc6e751587` |
 | `views/group-v559.js` | 3907 | `f898169fe9cfe71f7a6844c3099219fc353e1f39374ad3079f78853ff7ef9566` |
 | `views/group-v560.js` | 4195 | `4c03d462e00f0b48a3778d44d87b49116a702d26ff27678473d845b1b70e352c` |

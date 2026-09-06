@@ -68,6 +68,7 @@ export const renderers = {
         { label: 'Total involved', value: `${r.totalBsa}% BSA` },
         { label: 'Contributions', value: r.categories.map((c) => `${c.label} ${c.percent}%×${c.weight}=${c.contribution}`).join(', ') },
       ]);
+      if (r.footing) note(o, r.footing);
       note(o, r.note);
     }));
     postureNote(root);

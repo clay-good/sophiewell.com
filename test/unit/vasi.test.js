@@ -125,3 +125,30 @@ test('the scope note separates extent from activity and refuses to diagnose', ()
   assert.match(r.note, /does not diagnose vitiligo/);
   assert.match(r.note, /does not select therapy or phototherapy dosing/);
 });
+
+// spec-v1093: an unrecorded region reads as 0 hand units, exactly as a region
+// examined and found unaffected does, and T-VASI is a sum of non-negative
+// contributions -- so a partial examination can only under-state it.
+test('spec-v1093: a T-VASI scored from some of the six regions says which are missing', () => {
+  const all = {
+    headNeckArea: 1, headNeckDepigmentation: 100,
+    handsArea: 1, handsDepigmentation: 100,
+    upperExtremitiesArea: 1, upperExtremitiesDepigmentation: 100,
+    trunkArea: 1, trunkDepigmentation: 100,
+    lowerExtremitiesArea: 1, lowerExtremitiesDepigmentation: 100,
+    feetArea: 1, feetDepigmentation: 100,
+  };
+  assert.equal(vasi(all).footing, null, 'all six examined');
+
+  const noFeet = { ...all };
+  delete noFeet.feetArea;
+  delete noFeet.feetDepigmentation;
+  const r = vasi(noFeet);
+  assert.match(r.footing, /Scored from 5 of 6 regions; feet was not entered/);
+  // Lower-cased mid-sentence: the region labels are title-case.
+  assert.doesNotMatch(r.footing, /; Feet/);
+  assert.ok(vasi(all).total > r.total, 'and the total really is lower');
+
+  // Examined and unaffected is not the same as never examined.
+  assert.equal(vasi({ ...all, feetArea: 0, feetDepigmentation: 0 }).footing, null);
+});

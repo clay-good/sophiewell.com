@@ -72,6 +72,7 @@ export const renderers = {
         { label: 'Total involved area', value: `${r.totalHandUnits} hand units (% BSA)` },
         { label: 'Region set', value: r.regionSet },
       ]);
+      if (r.footing) note(o, r.footing);
       note(o, r.note);
     }));
     postureNote(root);

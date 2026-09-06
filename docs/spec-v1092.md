@@ -75,4 +75,5 @@ prints the regions it summed.
 
 Printing the regions that scored is not the same as saying the total is a floor,
 and the judgment was made from the probe's output rather than from the tiles. The
-remaining four are the obvious next wave.
+remaining four are the obvious next wave: `vasi`, `mswat` and `scorad` are fixed in
+[spec-v1093](spec-v1093.md), where `lund-browder` is deliberately left alone.

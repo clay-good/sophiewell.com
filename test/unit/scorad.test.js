@@ -54,3 +54,34 @@ test('oSCORAD drops the subjective C items', () => {
   assert.equal(r.oscorad, 34); // unchanged by C
   assert.equal(r.score, 54); // 34 + 20
 });
+
+// spec-v1093: the subjective half reads a blank VAS as a symptom the patient
+// denies. C is worth up to 20 of the 103, so an unasked pruritus score moved
+// this tile from severe to moderate with nothing said.
+//
+// The extent (A) already refuses without a value (spec-v1016); this is the other
+// half. Unlike the intensity items -- selects, which open on 0 and are never
+// blank -- the two VAS fields are number inputs, so the gap is expressible on
+// both surfaces.
+test('spec-v1093: a SCORAD scored without the subjective half says so', () => {
+  const objective = {
+    extent: 40, erythema: 2, edema: 2, oozing: 2,
+    excoriation: 2, lichenification: 2, dryness: 2,
+  };
+  const both = scorad({ ...objective, pruritus: 7, sleeplessness: 3 });
+  assert.equal(both.footing, null, 'both asked, nothing to disclose');
+
+  const oneOnly = scorad({ ...objective, pruritus: 7 });
+  assert.match(oneOnly.footing, /Scored from 1 of 2 subjective scores; sleeplessness was not entered/);
+
+  // Neither asked is the worst case, and it discloses too.
+  const neither = scorad(objective);
+  assert.match(neither.footing, /Scored from 0 of 2 subjective scores/);
+  assert.match(neither.footing, /pruritus and sleeplessness were not entered/);
+
+  // A patient who reports no itch is not a patient nobody asked.
+  assert.equal(scorad({ ...objective, pruritus: 0, sleeplessness: 0 }).footing, null);
+
+  // The band really does move on the subjective half.
+  assert.ok(both.score > neither.score);
+});

@@ -175,6 +175,7 @@ export const renderers = {
         { label: 'oSCORAD', value: r.oscorad },
         { label: 'Severity', value: r.bandLabel },
       ]);
+      if (r.footing) note(o, r.footing);
       note(o, r.detail);
       note(o, r.note);
     }));

@@ -20,6 +20,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **VASI, mSWAT and SCORAD scored a body part nobody assessed as a body part
+  with nothing wrong.** The same defect fixed in PASI and EASI, across the rest
+  of the family: an unrecorded VASI region reads as 0 hand units, a blank mSWAT
+  category as 0% body surface, and an unasked SCORAD itch or sleeplessness score
+  as a symptom the patient denies — which took one reading from severe (53.5) to
+  moderate (46). Each now states how many parts it scored from and that the total
+  is a floor. The sentence itself now lives in one place. Scores are unchanged,
+  and a value entered as 0 still reads as assessed. See docs/spec-v1093.md.
+
 - **PASI and EASI scored a body region nobody examined as a region with no
   disease.** Both sum four regions, and an absent area contributes exactly what a
   clear one does, so a partial examination could only under-state severity —

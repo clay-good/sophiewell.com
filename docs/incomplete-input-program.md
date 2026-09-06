@@ -114,6 +114,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1090](spec-v1090.md) | The stage the valve area decides, and a guard whose scope is clinical |
 | [v1091](spec-v1091.md) | A grade is only as complete as the study behind it: the two sibling valve tiles |
 | [v1092](spec-v1092.md) | A finder that is not bounded by the worked example, and the first thing it found |
+| [v1093](spec-v1093.md) | The rest of the body-surface family, and the sentence written once |
 
 ### And the same question from the other side
 
