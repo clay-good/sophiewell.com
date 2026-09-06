@@ -80,3 +80,35 @@ test('out-of-range mMRC and CAT are rejected', () => {
   assert.equal(goldAbe({ cat: '41' }).valid, false);
   assert.equal(goldAbe({ mmrc: '2', moderateExacerbations: '-1' }).valid, false);
 });
+
+// spec-v1095: an unentered exacerbation history was coerced to 0 and then
+// PRINTED as "0 moderate exacerbations, none hospitalized in the past year" -- a
+// history asserted rather than taken. Group E is reached by >= 2 moderate OR any
+// hospitalization, so a missing history can only move the group TO E: the
+// low-risk reading is the one it can be wrong about, and A and B are exactly the
+// groups that do not get an inhaled corticosteroid on the GOLD pathway.
+test('spec-v1095: an unentered exacerbation history is not a history of none', () => {
+  const blank = goldAbe({ mmrc: 2 });
+  assert.equal(blank.group, 'B', 'the group still follows from the symptom axis that WAS entered');
+  assert.equal(blank.exacerbationHistoryEntered, false);
+  assert.equal(blank.moderateExacerbations, null, 'do not report a count nobody gave');
+  assert.doesNotMatch(blank.band, /0 moderate exacerbations/, 'never assert the history');
+  assert.match(blank.band, /exacerbation history was not entered/);
+  assert.match(blank.band, /can only raise this/);
+
+  // Entered as 0 is a history: none in the past year.
+  const none = goldAbe({ mmrc: 2, moderateExacerbations: 0 });
+  assert.equal(none.exacerbationHistoryEntered, true);
+  assert.equal(none.moderateExacerbations, 0);
+  assert.match(none.band, /0 moderate exacerbations, none hospitalized/);
+  assert.doesNotMatch(none.band, /was not entered/);
+
+  // Ruling IN is untouched.
+  const e = goldAbe({ mmrc: 2, moderateExacerbations: 2 });
+  assert.equal(e.group, 'E');
+  assert.doesNotMatch(e.band, /was not entered/);
+
+  // A hospitalization alone reaches E, so nothing is missing that matters.
+  const hosp = goldAbe({ mmrc: 2, hospitalizedExacerbation: true });
+  assert.equal(hosp.group, 'E');
+});

@@ -66,3 +66,34 @@ test('an empty form falls back and out-of-range values are rejected', () => {
   assert.equal(gardnerRobertson({ pta: 200 }).field, 'pta');
   assert.equal(gardnerRobertson({ sds: 101 }).field, 'sds');
 });
+
+// spec-v1095: `|| 0` turned a measure nobody took into class 0, so the poorer of
+// the two could never be the missing one. The tile's own detail says serviceable
+// hearing needs a pure tone average of 50 dB or better AND a discrimination of
+// 50 percent or better, "both rather than either" -- so "Serviceable hearing"
+// from one of them contradicts the sentence printed underneath it.
+test('spec-v1095: serviceable hearing is not claimed from one of the two measures', () => {
+  const ptaOnly = gardnerRobertson({ pta: 35 });
+  assert.equal(ptaOnly.serviceable, true);
+  assert.equal(ptaOnly.missingMeasure, 'speech discrimination score');
+  assert.match(ptaOnly.band, /speech discrimination score was not entered/);
+  assert.match(ptaOnly.band, /can only move this to a poorer class/);
+
+  const sdsOnly = gardnerRobertson({ sds: 60 });
+  assert.match(sdsOnly.band, /pure tone average was not entered/);
+
+  // Both entered: nothing to disclose.
+  const both = gardnerRobertson({ pta: 35, sds: 60 });
+  assert.equal(both.missingMeasure, null);
+  assert.doesNotMatch(both.band, /was not entered/);
+
+  // A non-serviceable class already rests on a measure that WAS taken, and the
+  // missing one can only confirm it, so it stays silent.
+  const poor = gardnerRobertson({ pta: 95 });
+  assert.equal(poor.serviceable, false);
+  assert.doesNotMatch(poor.band, /was not entered/);
+
+  // The measure the fix exists for: discrimination of 0 is class V, and dropping
+  // it had returned class II, serviceable.
+  assert.equal(gardnerRobertson({ pta: 35, sds: 0 }).grade, 5);
+});

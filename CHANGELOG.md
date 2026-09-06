@@ -20,6 +20,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Five calculators read an unmeasured input as its most benign value.** ICANS
+  grading treated a blank ICE score as a perfect 10 and printed "No ICANS (ICE
+  10 …)" for a patient nobody had assessed; GOLD group assignment printed "0
+  moderate exacerbations, none hospitalized in the past year" from an
+  exacerbation history that was never taken; ISGPS delayed gastric emptying
+  graded an unrecorded postoperative course as uneventful; Simon Broome said the
+  cholesterol criterion was not met when only one of the two lipids had been
+  measured; and Gardner-Robertson called hearing serviceable from one of the two
+  measures its own explanation says are both required. Each now says what is
+  missing and which way it can move. Ruling in is unchanged, and a value entered
+  as 0 still reads as measured. See docs/spec-v1095.md.
+
 - **A partial menstrual-bleeding chart ruled out heavy bleeding.** The PBAC is a
   weighted tally of eight counts, so it can only rise as the chart is filled in,
   but it read "PBAC score 65 — not in the heavy range" from a chart with three of

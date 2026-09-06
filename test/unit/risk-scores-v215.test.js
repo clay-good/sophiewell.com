@@ -105,3 +105,29 @@ test('protecht: low-intermediate', () => {
   assert.equal(r.score, 2);
   assert.equal(r.abnormal, false);
 });
+
+// spec-v1095: the Simon Broome cholesterol criterion is an OR over two lipids,
+// each tested as "entered AND above threshold", so a lipid nobody measured read
+// as a lipid below threshold. With one entered and below the line the tile said
+// "cholesterol criterion not met" -- a statement about a measurement it did not
+// have. The other lipid at a plausible value takes the same patient to definite
+// FH, which is the difference between a cascade-screening referral and none.
+test('spec-v1095: one lipid below threshold does not settle the cholesterol criterion', () => {
+  const ldlOnly = simonBroomeFh({ ldl: 3 });
+  assert.equal(ldlOnly.cholMet, false);
+  assert.match(ldlOnly.band, /not met on the LDL-C entered/);
+  assert.match(ldlOnly.band, /Total cholesterol was not entered/);
+  assert.match(ldlOnly.band, /does not rule familial hypercholesterolemia out/);
+
+  const tcOnly = simonBroomeFh({ totalChol: 5 });
+  assert.match(tcOnly.band, /LDL-C was not entered/);
+
+  // Both measured and both below: the criterion really is not met.
+  const both = simonBroomeFh({ ldl: 3, totalChol: 5 });
+  assert.match(both.band, /cholesterol criterion not met/);
+  assert.match(both.band, /FH not classified/);
+  assert.doesNotMatch(both.band, /was not entered/);
+
+  // Ruling IN is untouched.
+  assert.equal(simonBroomeFh({ ldl: 5, tendonXanthoma: true }).definite, true);
+});

@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `ab2a03ed01c6b13b`
-Generated: 2026-09-06T20:15:17.417Z
+Build ID: `81cfb091c893c456`
+Generated: 2026-09-06T22:39:55.469Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -314,7 +314,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/gags-v554.js` | 9715 | `198a4b0db19b6ca1368c20697ea8b3c0a2545de5dfa02a1a90aceff7440b3219` |
 | `lib/gapp-v569.js` | 13660 | `2befeec64a61fb7f8d8a38ae8bb35fea7080b9878991477eef4bab5bfe755e64` |
 | `lib/gaps-v185.js` | 23007 | `281d91f2027eb2b40f879f95f59ff86f2371b9f01344ff78e6fb51163bfa5c3a` |
-| `lib/gardner-robertson-v802.js` | 5165 | `52238918856f485748f23fd90f48b6c9d30ae8a7193dd9fbff4e52ddd895b8b4` |
+| `lib/gardner-robertson-v802.js` | 6240 | `fa6f4e0ed73582fe0d82724cee56f2950c107e72e92b13e396f99f03e713e1f6` |
 | `lib/gartland-supracondylar-v377.js` | 4725 | `75c9dd3adaacb34df1e9041fda9aa71520517822e12f3308651aeb99a88ba426` |
 | `lib/gass-macular-hole-v471.js` | 3421 | `dc7d16ffdb39dde5b8e700a6679f2211affc0cf67e58b36be830640b59405b15` |
 | `lib/gastric-emptying-scintigraphy-v854.js` | 8197 | `17b52cc97043b4ec86ab00d8194e4b206f6a9606a33741fcd312bd1154bf950f` |
@@ -332,7 +332,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/global-ards-v570.js` | 16652 | `93ad467c00b2babdc58a0b3224591e338045491ebfc3c05413b9055f19aa4c03` |
 | `lib/glogau-photoaging-v475.js` | 3592 | `957bb3cfaf0c9727fa64db9b8ef00cfdc2c981eb8691eb31a1c93582c1247333` |
 | `lib/gmfcs-v462.js` | 3383 | `e3692e542e23a33ddfc8d5e8c42b2d6d786600ec965e7328f06b873add0828af` |
-| `lib/gold-abe-v316.js` | 6054 | `a76f64af84f4b91f8f2d8ff5c14d47bc2ea71829a5da968f9b79058e398dbce1` |
+| `lib/gold-abe-v316.js` | 7037 | `097255303ada066a282f2ac64a2a76d7077dbe7ac611e9f22922f3d2eee58811` |
 | `lib/gold-coast-als-v811.js` | 6774 | `aded1e0e2df0f998626a41377381646dd7243c5c24ac1acbc5d9c9d0c3c929d9` |
 | `lib/goligher-hemorrhoids-v351.js` | 4200 | `d56eb280ebfb0c86326033d77fde873c379a65c7fb0c796e1cca9b595a398c64` |
 | `lib/goutallier-v437.js` | 2793 | `b13a814c10cd7e21cb70b9edb6fd8adc28f31a9bdda5e75b3532e8baab520d7a` |
@@ -391,7 +391,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/iad-globiad-v901.js` | 7293 | `9dceb0d31486938d1741281b42b39ecee8567de4db8d70fe7c2154ce2cbeedb2` |
 | `lib/ibd-v246.js` | 6924 | `ff47b0c4c160ca6db81dc89d6b4cdf2a596bf6d77869aa9399015ac713697b5a` |
 | `lib/ibfat-v731.js` | 2775 | `83f8a24c522e10f435e3bdea1b89068ce97699f41346ceff945e035049807cd1` |
-| `lib/icans-v306.js` | 4609 | `3c0ac4ff4c07b41cc4855ca19e578ce05ff8fd45fd22b828260efc6618de0526` |
+| `lib/icans-v306.js` | 6071 | `c72bb55d44e3f3fe23fe1eca7a217ca70112b3caeb73b0046d550caa8af19d68` |
 | `lib/icrs-v338.js` | 4467 | `5e29e3d578cccf7cab83c738db4091fe8c9bb8c0c766b3e34e0ec6022499524b` |
 | `lib/id-v137.js` | 21838 | `0cd0ceb5e54d477d240cbfdc819b217ce26539bf22ae5b0b4da4ec04ae12dd17` |
 | `lib/idcrit-v99.js` | 18657 | `f17625adb94ef530fa45e325ad37f8c0d5c601cd3a51cd21140f4a90f5987a65` |
@@ -412,7 +412,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/irecist-v551.js` | 15842 | `5b04f7e6aca6ec9e066f913e4acb2932735ea7bcecc5a0c0b86f0ad59ccc0652` |
 | `lib/isgls-bile-leak-v658.js` | 4025 | `fb4c7549d0efb2005b1fa84384890a89dde860731d852965229df78d254a75ac` |
 | `lib/isgls-phlf-v657.js` | 4429 | `e28133793bc99063706e6cc81e028049bf2d8c5901f3833698b77e824d73adf4` |
-| `lib/isgps-dge-v659.js` | 4349 | `c45d1398a236d02e6310a41e51cda52f854406828aaba02dde67510d4a8d8971` |
+| `lib/isgps-dge-v659.js` | 6098 | `5c214de0e82e115ff6da179301db21fc4b534775b25121820d82b5c62d47002d` |
 | `lib/isgps-popf-v656.js` | 4219 | `eb3e2e2d00ac70fa2fa3b66ac782086eb363c71678daf7d5bcf28c9ed470d025` |
 | `lib/ishlt-rejection-v540.js` | 9254 | `2e5090065d7f5c3687f8f0d33ba7c2e58529ddfe53e5965a94799af450797f4d` |
 | `lib/ishoo-angioedema-v877.js` | 6884 | `2cabdc9989a0cbe96c10c328fd071e1750db0c85473dcc92e786bb89375d7fcd` |
@@ -729,7 +729,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/rheum-v160.js` | 13178 | `6f9c9caad669edb9cdb844015cbb354104dbbf6be91576aa1107e512efee360c` |
 | `lib/rheumcrit-v256.js` | 7930 | `761ffcd908a3560b96656ab09523a41bf5e4f7e643f90da6ef59b5e3b07bc08f` |
 | `lib/ridley-jopling-v534.js` | 13454 | `fb4f0363664d9c1bd23f3d5c8ef32b627ed0c4741342457fb3fdbe253a02c3a2` |
-| `lib/risk-scores-v215.js` | 14797 | `9f212d677fcfeb80b380042387a370b892e3dcba24e7b49ce0003b766693579b` |
+| `lib/risk-scores-v215.js` | 15691 | `4deabf8e55fdd66e0791f9e872512832ccc01df90778f274857f12cae19a04df` |
 | `lib/risk-v192.js` | 12417 | `c0061eab65f6ccfae0c583bc18bd725daf58d31f934d9c2a24eba427f62976b2` |
 | `lib/riskscores-v255.js` | 6924 | `37886240e9d0cf2bbde3b0149eb1b8ff62667a4350dc0bed14dc60631f1a3f39` |
 | `lib/risser-sign-v383.js` | 4009 | `4e29f6eea9c402b63018246ff051741b23b4a2894f8a44abc3c80abdc576a67d` |

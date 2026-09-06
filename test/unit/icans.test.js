@@ -64,3 +64,37 @@ test('the worked example (ICE 1) is grade 3 severe, ICE-driven', () => {
   assert.match(r.band, /ICANS grade 3 of 4/);
   assert.match(r.band, /ICE score/);
 });
+
+// spec-v1095: a blank ICE reads as iceG 0 -- the grade for an ICE of TEN.
+//
+// The band then asserted the measurement it never had: "No ICANS (ICE 10 and no
+// consciousness, seizure, motor, or raised-ICP findings)". Printing a specific
+// score nobody took is worse than a silent zero, and it is printed for a patient
+// under CAR-T neurotoxicity monitoring, where catching the change early is the
+// entire purpose of the ICE.
+test('spec-v1095: an unentered ICE score does not read as a normal one', () => {
+  const blank = icansGrade({});
+  assert.equal(blank.incomplete, true);
+  assert.doesNotMatch(blank.band, /No ICANS/, 'never claim the absence of ICANS from an ICE nobody took');
+  assert.doesNotMatch(blank.band, /ICE 10/, 'and never assert the score itself');
+  assert.match(blank.band, /cannot be excluded/);
+  assert.match(blank.band, /an ICE of 2 or less is grade 3/, 'say how far it could move');
+
+  // Entered as 10 is a normal exam, and still reads as one.
+  const normal = icansGrade({ ice: 10 });
+  assert.equal(normal.incomplete, false);
+  assert.equal(normal.grade, 0);
+  assert.match(normal.band, /No ICANS/);
+
+  // A grade from a domain that WAS assessed stands, with the ICE named as able
+  // to raise it.
+  const fromLoc = icansGrade({ loc: 'voice' });
+  assert.equal(fromLoc.grade, 2);
+  assert.match(fromLoc.band, /ICE score was not entered/);
+  assert.match(fromLoc.band, /can only raise/);
+
+  // At grade 3 or more the ICE cannot change the management line, so no footing.
+  const severe = icansGrade({ motor: true });
+  assert.equal(severe.grade, 4);
+  assert.doesNotMatch(severe.band, /can only raise/);
+});

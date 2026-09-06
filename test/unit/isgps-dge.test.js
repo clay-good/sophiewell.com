@@ -54,3 +54,30 @@ test('negative or non-numeric entry is rejected', () => {
   assert.equal(isgpsDge({ ngtDays: 'x' }).valid, false);
   assert.equal(isgpsDge({ ngtDays: '-1' }).code, 'OUT_OF_RANGE');
 });
+
+// spec-v1095: `num` returns 0 for a blank, and the grade is the MOST SEVERE of
+// three time criteria, so a criterion nobody recorded read as a criterion the
+// patient passed. With all three blank the tile answered "No DGE - no delayed
+// gastric emptying": a postoperative course graded as uneventful because nothing
+// about it had been entered yet.
+test('spec-v1095: an unrecorded postoperative course is not an uneventful one', () => {
+  const blank = isgpsDge({});
+  assert.equal(blank.grade, 0);
+  assert.equal(blank.unrecordedCriteria, 3);
+  assert.doesNotMatch(blank.detail, /no delayed gastric emptying\./, 'do not rule out from nothing');
+  assert.match(blank.detail, /not ruled out/);
+  assert.match(blank.detail, /None of the three time criteria were entered/);
+  assert.match(blank.detail, /can only raise it/);
+
+  // All three recorded as 0 is a course: uneventful, and it says so plainly.
+  const uneventful = isgpsDge({ ngtDays: 0, reinsertionPod: 0, unableSolidsPod: 0 });
+  assert.equal(uneventful.unrecordedCriteria, 0);
+  assert.match(uneventful.detail, /no delayed gastric emptying/);
+
+  // A grade already rests on a criterion that WAS recorded; the rest can only
+  // raise it, and the tile names which are still missing.
+  const gradeC = isgpsDge({ ngtDays: 15 });
+  assert.equal(gradeC.code, 'Grade C');
+  assert.match(gradeC.detail, /Not entered: /);
+  assert.match(gradeC.detail, /can only raise it/);
+});
