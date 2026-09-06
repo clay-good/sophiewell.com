@@ -20,6 +20,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **An aortic stenosis grade fell from severe to moderate when the valve area
+  was left out.** The severe low-gradient stages are reached through the area, so
+  without one the tile skipped them and landed on "moderate progressive
+  stenosis" -- the error the tile was built to prevent, arriving by the back
+  door. It now declines to stage a symptomatic patient at a low gradient until
+  the area is entered, and says why. A velocity in the moderate range with
+  nothing else measured still reads moderate, which is what the guideline says.
+  See docs/spec-v1090.md.
 - **A mortality model could not say which zero it meant.** PIM3 enters a
   variable nobody measured as zero, which is how the model is built -- but the
   working it showed printed "|Base excess| (0)", which is also what a base

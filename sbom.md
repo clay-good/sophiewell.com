@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `9bce73376119ac47`
-Generated: 2026-09-06T08:50:22.927Z
+Build ID: `8a062d54ac64f6e1`
+Generated: 2026-09-06T10:11:13.446Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -83,7 +83,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/anthro-v272.js` | 2988 | `0c8ae06f40b6747996c3069ca3eed48dd37fcb32d0b211bee0ada6ec113c1f53` |
 | `lib/aom-criteria-v857.js` | 10341 | `d7cba14bf1182a24929931232357fed8c9c05930140d051dbd6fb2634f4d2983` |
 | `lib/aortic-regurgitation-stage-v846.js` | 12048 | `2d0a184f7928ff430da10f5226b0aa19d538654b6c5d0a466559372c1a7891c0` |
-| `lib/aortic-stenosis-stage-v844.js` | 12474 | `de1f641aa25e2c4dd3f2aeed490352265c02029de4b351c89e0e9a26f644d0b5` |
+| `lib/aortic-stenosis-stage-v844.js` | 13972 | `11af6b1781cdcfd8d18050ee5e767387fd3e1940355e6d4057adb1e32d84f9f7` |
 | `lib/arc-hbr-v594.js` | 16008 | `88c72c385e4018fc0d2cddba66606c2f136b52091d4f7e2b4f9dfc656fcdb7f9` |
 | `lib/areds-v615.js` | 11067 | `7da2179ea02ee6b4f983417d4fedc03f50d680c2b945213a0cf75fefd6411857` |
 | `lib/arvc-tfc-v786.js` | 4626 | `5093904d4b63d32b6a8b5992ecb1f3726aa8ee9b08ad8e0528a0723cbed65acb` |

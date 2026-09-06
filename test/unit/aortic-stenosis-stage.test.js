@@ -89,3 +89,45 @@ test('as stage: guards', () => {
   assert.equal(as({ meanGradient: 50, ejectionFraction: 60 }).stage, 'C1');
   assert.doesNotMatch(JSON.stringify(as({ peakVelocity: 4.4, ejectionFraction: 60 })), /NaN|Infinity/);
 });
+
+// spec-v1090: the low-gradient severe stages are reached through the AREA.
+//
+// `smallArea` is `ava !== null && ava <= 1.0`, so with no area entered it is
+// false, the D2 and D3 branches are skipped, and a gradient in the moderate
+// range fell straight through to stage B. On the tile's own worked example that
+// turned "D2 -- symptomatic severe stenosis at a low flow and low gradient with
+// a reduced ejection fraction" into "B -- moderate progressive stenosis": an
+// intervention conversation becoming a watch-and-rescan one, on a measurement
+// nobody supplied.
+//
+// The three readings have to stay distinct: absent is not the same as measured
+// and small, and neither is the same as measured and not small.
+test('spec-v1090: a missing valve area does not read as moderate stenosis', () => {
+  const lowGradientSymptomatic = {
+    peakVelocity: 3.2, meanGradient: 28, ejectionFraction: 35, symptoms: true,
+  };
+
+  // Measured and small: the severe low-flow pattern the branch exists for.
+  const severe = as({ ...lowGradientSymptomatic, valveArea: 0.8 });
+  assert.equal(severe.stage, 'D2');
+
+  // Measured and not small: genuinely moderate, and still says so.
+  const moderate = as({ ...lowGradientSymptomatic, valveArea: 1.4 });
+  assert.equal(moderate.stage, 'B');
+  assert.equal(moderate.severity, 'moderate');
+
+  // Not measured: no stage, and the reason names the missing measurement.
+  const absent = as(lowGradientSymptomatic);
+  assert.equal(absent.stage, null, 'a stage from a measurement nobody took is the defect');
+  assert.notEqual(absent.severity, 'moderate');
+  assert.match(absent.pending, /Enter the aortic valve area/);
+  assert.match(absent.pending, /D2 and D3/);
+
+  // And the scoping, which a pre-existing test caught when the first version of
+  // this guard was too broad: a velocity in the moderate range with nothing else
+  // measured really IS stage B by the guideline's velocity criterion. Both D2
+  // and D3 require symptoms, so only a symptomatic patient at a low gradient is
+  // one whose area decides between moderate and severe.
+  assert.equal(as({ peakVelocity: 3.4 }).stage, 'B');
+  assert.equal(as({ peakVelocity: 3.2, meanGradient: 28, ejectionFraction: 35 }).stage, 'B');
+});

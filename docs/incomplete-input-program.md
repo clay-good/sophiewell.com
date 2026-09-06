@@ -111,6 +111,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1087](spec-v1087.md) | The fix's clothes: a number input pre-filled with 0 is a form already answered |
 | [v1088](spec-v1088.md) | The footing belonged to the library, and the backlog as shapes rather than a number |
 | [v1089](spec-v1089.md) | Which zero? A documented convention the tile applied and did not name |
+| [v1090](spec-v1090.md) | The stage the valve area decides, and a guard whose scope is clinical |
 
 ### And the same question from the other side
 
@@ -242,8 +243,9 @@ What is left is narrower than when this page was written:
   in it, a count, a unit conversion or a dependent line that simply disappears. **17 across 14
   tiles are genuinely open, and that table is where to start** -- `pim3` is fixed in
   [spec-v1089](spec-v1089.md), which found the diagnosis behind it was wrong: the arithmetic was a
-  documented convention, and what was missing was the tile SAYING so. The three valve-stage tiles
-  all drop an echo measurement silently and are worth taking together.
+  documented convention, and what was missing was the tile SAYING so. Of the three valve-stage tiles, only `aortic-stenosis-stage` was
+  wrong ([spec-v1090](spec-v1090.md)); the other two drop a sentence written about an entered
+  value and are already ledgered.
 
 - ~~**95 fields still change the AGENT's answer when omitted, without saying so**~~
   (`scripts/probe-omitted-item.mjs`, spec-v1073; the count was read as 93 until spec-v1075 stopped
