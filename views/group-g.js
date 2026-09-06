@@ -4130,23 +4130,36 @@ export const renderers = {
       ['Norton: mobility (1 immobile - 4 full)',            'nr-mob'],
       ['Norton: incontinence (1 doubly - 4 not)',           'nr-inc'],
     ];
-    for (const [l, id] of nortonItems) root.appendChild(rangeField(l, id, 1, 4, 4));
-    root.appendChild(rangeField('PUSH: length x width band (0 closed - 10 >24 cm^2)', 'pu-lw', 0, 10, 0));
-    root.appendChild(rangeField('PUSH: exudate amount (0 none - 3 heavy)', 'pu-ex', 0, 3, 0));
-    root.appendChild(rangeField('PUSH: tissue type (0 closed - 4 necrotic)', 'pu-tt', 0, 4, 0));
+    // spec-v1083: five sliders parked at 4 and three at 0 read "Norton 20 of 20
+    // (low risk); PUSH 0 of 17" -- no pressure-injury risk and a healed wound,
+    // before anyone looked at either. Norton's items start at 1, so its
+    // placeholder shows the range rather than a value.
+    for (const [l, id] of nortonItems) {
+      root.appendChild(el('p', {}, [
+        el('label', { for: id, text: l }), el('br'),
+        el('input', { id, type: 'number', min: '1', max: '4', step: '1', inputmode: 'numeric', placeholder: '1-4' }),
+      ]));
+    }
+    root.appendChild(scoredItemField('PUSH: length x width band (0 closed - 10 >24 cm^2)', 'pu-lw', 10));
+    root.appendChild(scoredItemField('PUSH: exudate amount (0 none - 3 heavy)', 'pu-ex', 3));
+    root.appendChild(scoredItemField('PUSH: tissue type (0 closed - 4 necrotic)', 'pu-tt', 4));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       const r = S4.nortonPush({
-        physicalCondition: nv('nr-pc'),
-        mentalCondition:   nv('nr-mc'),
-        activity:          nv('nr-act'),
-        mobility:          nv('nr-mob'),
-        incontinence:      nv('nr-inc'),
-        lengthWidthBand:   nv('pu-lw'),
-        exudate:           nv('pu-ex'),
-        tissueType:        nv('pu-tt'),
+        physicalCondition: nvOrNull('nr-pc'),
+        mentalCondition:   nvOrNull('nr-mc'),
+        activity:          nvOrNull('nr-act'),
+        mobility:          nvOrNull('nr-mob'),
+        incontinence:      nvOrNull('nr-inc'),
+        lengthWidthBand:   nvOrNull('pu-lw'),
+        exudate:           nvOrNull('pu-ex'),
+        tissueType:        nvOrNull('pu-tt'),
       });
-      o.appendChild(el('h2', { text: `Norton ${r.nortonTotal} of 20 / PUSH ${r.pushTotal} of 17` }));
+      // Head the panel with whichever halves actually have a score.
+      const heads = [];
+      if (r.nortonTotal !== null) heads.push(`Norton ${r.nortonTotal} of 20`);
+      if (r.pushTotal !== null) heads.push(`PUSH ${r.pushTotal} of 17`);
+      if (heads.length) o.appendChild(el('h2', { text: heads.join(' / ') }));
       o.appendChild(el('p', { text: r.text }));
     });
     ['nr-pc', 'nr-mc', 'nr-act', 'nr-mob', 'nr-inc', 'pu-lw', 'pu-ex', 'pu-tt'].forEach((id) => document.getElementById(id).addEventListener('input', run));
@@ -4155,19 +4168,21 @@ export const renderers = {
 
   // spec-v29 §4.6.1 wave 29-3b: VIP + INS infiltration (Jackson 1998; INS 2021).
   'vip-extravasation'(root) {
-    root.appendChild(rangeField('Visual Infusion Phlebitis (VIP) 0-5', 've-vip', 0, 5, 0));
-    root.appendChild(rangeField('INS infiltration / extravasation grade 0-4', 've-ins', 0, 4, 0));
+    // spec-v1083: both sliders rested at 0, which on these scales means "looked
+    // at and clean" rather than "not looked at".
+    root.appendChild(scoredItemField('Visual Infusion Phlebitis (VIP)', 've-vip', 5));
+    root.appendChild(scoredItemField('INS infiltration / extravasation grade', 've-ins', 4));
     root.appendChild(checkbox('Infusate is a known vesicant (chemotherapy, vasopressor, contrast, hypertonic)', 've-ves'));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       const r = S4.vipExtravasation({
-        vip: nv('ve-vip'),
-        insGrade: nv('ve-ins'),
+        vip: nvOrNull('ve-vip'),
+        insGrade: nvOrNull('ve-ins'),
         vesicant: checked('ve-ves'),
       });
       o.appendChild(el('h2', { text: r.text }));
-      o.appendChild(el('p', { text: `VIP ${r.vip}: ${r.vipLabel}` }));
-      o.appendChild(el('p', { text: `INS ${r.insGrade}: ${r.insLabel}` }));
+      if (!r.vipUnrated) o.appendChild(el('p', { text: `VIP ${r.vip}: ${r.vipLabel}` }));
+      if (!r.insUnrated) o.appendChild(el('p', { text: `INS ${r.insGrade}: ${r.insLabel}` }));
       for (const b of r.banners) o.appendChild(el('p', { class: 'clinical-notice', text: b }));
     });
     ['ve-vip', 've-ins'].forEach((id) => document.getElementById(id).addEventListener('input', run));

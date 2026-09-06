@@ -35,3 +35,31 @@ test('clamps out-of-range vip and ins', () => {
   assert.equal(r.vip, 5);
   assert.equal(r.insGrade, 0);
 });
+
+// spec-v1083: on both of these scales, 0 is a finding.
+//
+// VIP 0 is "no signs of phlebitis" and INS grade 0 is "no symptoms" -- readings
+// about a cannula site somebody looked at. Two sliders resting at 0 asserted a
+// clean line before anyone had. They are graded independently, so each reports
+// if it was graded and is asked for if it was not.
+test('spec-v1083: an ungraded scale is asked for; a graded 0 still reports clean', () => {
+  const graded = vipExtravasation({ vip: 0, insGrade: 0 });
+  assert.equal(graded.valid, true);
+  assert.equal(graded.vip, 0);
+  assert.equal(graded.insGrade, 0);
+  assert.match(graded.text, /VIP 0 of 5/, 'a site looked at and found clean still says so');
+
+  const neither = vipExtravasation({});
+  assert.equal(neither.valid, false);
+  assert.equal(neither.vip, null);
+  assert.equal(neither.insGrade, null);
+  assert.doesNotMatch(neither.text, /VIP 0 of 5/);
+
+  // One half graded: it reports, the other is asked for, and the action banner
+  // still fires off the half that was graded.
+  const vipOnly = vipExtravasation({ vip: 4 });
+  assert.equal(vipOnly.vip, 4);
+  assert.equal(vipOnly.insGrade, null);
+  assert.match(vipOnly.text, /INS infiltration \/ extravasation not scored/);
+  assert.ok(vipOnly.banners.some((b) => b.includes('remove cannula')));
+});

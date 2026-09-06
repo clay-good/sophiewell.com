@@ -20,6 +20,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A pressure-injury tile reported no risk and a healed wound at once.** Two
+  tiles carry two instruments each -- Norton with PUSH, and the phlebitis scale
+  with the infiltration grade -- and both opened on the most reassuring reading
+  available on both halves. Because the halves are scored independently (PUSH
+  only applies when there is a wound), each now reports if its own items were
+  rated and asks if they were not, rather than the tile refusing as a whole. A
+  cannula site graded 0 still reports clean. See docs/spec-v1083.md.
 - **A discharge score, an Apgar and a neonatal pain scale answered before anyone
   assessed the patient.** An untouched White-Song form read "fast-track
   eligible", an untouched Apgar read 10 (Normal), and N-PASS -- whose items run

@@ -103,6 +103,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1080](spec-v1080.md) | The Braden runs the other way, so both readings of a partial were unsupportable |
 | [v1081](spec-v1081.md) | Katz and Lawton counted independence nobody had assessed, and threw instead of refusing |
 | [v1082](spec-v1082.md) | A discharge decision, a newborn, and a scale whose default sits in the middle |
+| [v1083](spec-v1083.md) | Two instruments on one tile: answer with the halves you have |
 
 ### And the same question from the other side
 
@@ -205,9 +206,8 @@ What is left is narrower than when this page was written:
 - **Thirteen tiles read as reassuring before anyone touches them** (spec-v1079, measured by
   `slider-default-probe.spec.js`). A slider cannot be blank, so the control answers for the reader:
   `guss` clears a stroke patient for "normal diet, normal liquids". `braden` is fixed (spec-v1080),
-  `katz-adl` and `lawton-iadl` in spec-v1081, `white-song`, `apgar` and `npass` in spec-v1082. Two of
-  the rest (`norton-push`, `vip-extravasation`) are two instruments on one tile, so they take
-  spec-v1045's "answer with the halves you have" shape instead;
+  `katz-adl` and `lawton-iadl` in spec-v1081, `white-song`, `apgar` and `npass` in spec-v1082. `norton-push` and `vip-extravasation` in spec-v1083, which took spec-v1045's "answer with the
+  halves you have" shape because each is two instruments on one tile;
   `guss` needs its staged gating thought through first, and the GCS pair needs a decision rather
   than a fix.
 
