@@ -53,6 +53,8 @@ function wire(ids, run) {
 function render(o, r, valueLabel, value) {
   if (!r.valid) { note(o, r.message || 'Complete the fields.'); return; }
   resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: valueLabel, value }]);
+  // spec-v1094: only tiles that set one have a footing, so this is inert for the rest.
+  if (r.footing) note(o, r.footing);
   note(o, r.detail); note(o, r.note);
 }
 

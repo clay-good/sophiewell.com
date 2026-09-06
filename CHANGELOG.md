@@ -20,6 +20,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A partial menstrual-bleeding chart ruled out heavy bleeding.** The PBAC is a
+  weighted tally of eight counts, so it can only rise as the chart is filled in,
+  but it read "PBAC score 65 — not in the heavy range" from a chart with three of
+  the eight types never entered; one of those, at a plausible count, carried the
+  same patient to 115. Below the threshold with types uncounted it now says so
+  and states how many it counted. Ruling in is unchanged. See docs/spec-v1094.md.
+
 - **VASI, mSWAT and SCORAD scored a body part nobody assessed as a body part
   with nothing wrong.** The same defect fixed in PASI and EASI, across the rest
   of the family: an unrecorded VASI region reads as 0 hand units, a blank mSWAT

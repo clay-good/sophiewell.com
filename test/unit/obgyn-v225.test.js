@@ -65,3 +65,46 @@ test('kupperman: mild below 15', () => {
   assert.equal(kupperman({ headache: '3' }).abnormal, true); // 3, still mild band
   assert.match(kupperman({ headache: '3' }).band, /mild/);
 });
+
+// spec-v1094: the PBAC is a weighted tally of eight counts, so it can only rise
+// as the chart is filled in, and it must not rule out from a partial one.
+//
+// It said "PBAC score 65 - not in the heavy range (<= 100)" from a chart with
+// three of the eight types never entered; one of those at a plausible count
+// carried the same patient to 115, heavy menstrual bleeding likely.
+//
+// spec-v1088 judged this tile correct on the grounds that "no pads counted yet
+// is the normal state of a chart being filled in" -- true about the arithmetic,
+// beside the point about the sentence. A blank may well mean none used; the
+// tile cannot tell that from not yet counted, and only one of those readings
+// supports the words "not in the heavy range".
+test('spec-v1094: a partial PBAC chart does not rule out heavy bleeding', () => {
+  const complete = {
+    lightPads: 10, moderatePads: 5, soakedPads: 1,
+    lightTampons: 5, moderateTampons: 2, soakedTampons: 1,
+    smallClots: 3, largeClots: 1,
+  };
+  const full = pbac(complete);
+  assert.equal(full.abnormal, false);
+  assert.equal(full.footing, null, 'every type counted, so the negative stands unqualified');
+  assert.match(full.band, /not in the heavy range/);
+
+  // The same reading from three of eight types must not say that.
+  const partial = pbac({ lightPads: 10, moderatePads: 5, soakedPads: 1 });
+  assert.equal(partial.abnormal, false);
+  assert.doesNotMatch(partial.band, /not in the heavy range/, 'a total that can only rise must not rule out');
+  assert.match(partial.band, /on the item types counted so far/);
+  assert.match(partial.footing, /Scored from 3 of 8 item types/);
+  assert.match(partial.footing, /can only rise/);
+
+  // Ruling IN is untouched: above the threshold the missing counts cannot lower
+  // it, so a heavy result from a partial chart is already the floor.
+  const heavy = pbac({ soakedPads: 6 });
+  assert.equal(heavy.abnormal, true);
+  assert.equal(heavy.footing, null);
+  assert.match(heavy.band, /heavy menstrual bleeding likely/);
+
+  // A zero someone actually wrote is a count, not a gap.
+  const allCounted = { ...complete, largeClots: 0 };
+  assert.equal(pbac(allCounted).footing, null);
+});

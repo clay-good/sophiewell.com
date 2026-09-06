@@ -53,6 +53,21 @@ export const ASKING = new RegExp([
 // from 0 of 6" and then prints a total. Only the one-blank-field gate, which
 // starts from a complete example, accepts a disclosure as sufficient.
 export const DISCLOSING = new RegExp([
+  // spec-v1094: the house says this rule two ways and the list knew one of them.
+  // `can only raise` appears 28 times across 17 library files; `can only add
+  // points` appears 19 times across 10 -- the same sentence about the same
+  // monotone property, written by different hands, and only the first was
+  // recognised. That is the drift in [[project_duplicated_rule_drift]], not a
+  // tile-specific carve-out, so the fix belongs here rather than in one tile's
+  // wording.
+  //
+  // Measured before adding, as the rule above requires: across every tile and
+  // every numeric field, dropping one field changes exactly ONE tile from
+  // flagged to exempt -- `isth-bat`, which says "each domain still unrated can
+  // only add points, so a partial score cannot yet read as within the normal
+  // range" and then refuses to give the reassuring reading. It is disclosing,
+  // not answering anyway.
+  'can only add',
   'scored from', 'can only raise', 'not entered', 'was not entered',
   'were not entered', 'has not been entered', 'have not been entered',
   'not assessed', 'among those entered', 'not enough entered',

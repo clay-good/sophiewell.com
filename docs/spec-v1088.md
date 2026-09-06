@@ -33,7 +33,7 @@ missing number *is*, because that is what decides the answer:
 | Shape | Fields | Judgment |
 |---|---|---|
 | **A region with no disease in it** — `pasi`, `easi`, `vasi`, `lund-browder`, `scorad`, `mswat` | 13 | ~~0% body surface involved is a real finding, and each of these prints the regions it summed. Likely correct as they stand.~~ **Wrong — see [spec-v1092](spec-v1092.md).** Printing the regions that scored is not the same as saying the total is a floor, and a region nobody examined contributes exactly what a clear one does. `pasi` and `easi` are fixed; the other four are the next wave. |
-| **A count** — `pbac-hmb` | 3 | No pads counted yet is the normal state of a chart being filled in. Correct. |
+| **A count** — `pbac-hmb` | 3 | ~~No pads counted yet is the normal state of a chart being filled in. Correct.~~ **Wrong — see [spec-v1094](spec-v1094.md).** True about the arithmetic, beside the point about the sentence: the tile said "not in the heavy range" from three of eight types, and one uncounted type carried the same patient over the threshold. |
 | **A dependent line that disappears** — `corrected-ca-na`, `aa-pf-suite`, `ipss` | 4 | Already ledgered elsewhere; the number is simply not printed. Correct. |
 | **A unit conversion** — `peds-weight-conv`, `lab-interpret` | 4 | A converter with one side missing converts nothing. Correct. |
 | **Money** — `drg-payment`, `split-shared`, `allowed-amount`, `nsa-cost-share`, `cob-calc`, `anesthesia-units`, `sequestration-adjust` | 10 | A rate or a setting, on arithmetic rather than a clinical rule. Worth reading, low stakes. |
