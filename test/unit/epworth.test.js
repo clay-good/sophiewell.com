@@ -48,3 +48,33 @@ test('epworth clamps per-item out-of-range to [0, 3]', () => {
   assert.equal(r.parts.reading, 3);
   assert.equal(r.parts.tv, 0);
 });
+
+// spec-v1086: an unrated situation is not "would never doze".
+//
+// Eight sliders resting at 0 read "Epworth 0 of 24: normal daytime sleepiness"
+// for somebody who had answered nothing, and epworthClamp reads anything
+// non-finite as 0. The total is a floor and the reassuring band is the low one,
+// so a partial score can only understate the sleepiness.
+test('spec-v1086: an unrated situation is asked for; a rated 0 still scores', () => {
+  const all0 = {
+    reading: 0, tv: 0, publicPlace: 0, carPassenger: 0,
+    lyingDown: 0, sittingTalking: 0, afterLunch: 0, carTraffic: 0,
+  };
+  const rated = epworth(all0);
+  assert.equal(rated.valid, true);
+  assert.equal(rated.score, 0);
+  assert.match(rated.band, /normal daytime sleepiness/, 'someone who never dozes is a real answer');
+
+  const none = epworth({});
+  assert.equal(none.valid, false);
+  assert.equal(none.score, null);
+  assert.equal(none.itemsScored, 0);
+  assert.doesNotMatch(none.text, /normal daytime sleepiness/);
+
+  const { carTraffic, ...seven } = all0;
+  void carTraffic;
+  const partial = epworth(seven);
+  assert.equal(partial.valid, false);
+  assert.equal(partial.itemsScored, 7);
+  assert.match(partial.text, /in a car stopped in traffic/);
+});

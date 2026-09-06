@@ -106,6 +106,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1083](spec-v1083.md) | Two instruments on one tile: answer with the halves you have |
 | [v1084](spec-v1084.md) | A staged swallow screen: stopped on purpose is not the same as interrupted |
 | [v1085](spec-v1085.md) | The GCS pair: an example defect, and one control decision across three tiles |
+| [v1086](spec-v1086.md) | Reading the labels: a stripped key, two "fixes" that never landed, and the last two sliders |
 
 ### And the same question from the other side
 
@@ -140,6 +141,23 @@ published guarantee with nothing checking it. Each clause now maps to a gate.
 
 The fourth row is the one worth remembering. The sentence was published, and the
 calculator doing the opposite of it was three clicks away.
+
+## After a control change, re-run the probe
+
+A green `release:check` and a green chromium suite do **not** prove a control
+changed. Both passed for four waves while `apgar` and `white-song` still rendered
+sliders and their new refusals sat unreachable ([spec-v1086](spec-v1086.md)) --
+because every sweep here works by *clearing a field*, and a slider cannot be
+cleared. The tile that still has the defect is invisible to the tests for it.
+
+So the last step of any wave that changes a control is the probe, not the suite:
+
+```bash
+RUN_PROBES=1 npx playwright test test/integration/slider-default-probe.spec.js --project=chromium
+```
+
+About a minute, and it answers the only question the suites cannot: does this
+tile still render a control with no empty state?
 
 ## What holds it now
 

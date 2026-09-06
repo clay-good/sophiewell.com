@@ -87,3 +87,28 @@ test('meows rejects implausible vitals, and asks for the ones it does not have',
   assert.throws(() => meows({ ...normal, hr: -5 }));
   assert.throws(() => meows({ ...normal, spo2: 105 }));
 });
+
+// spec-v1086: the pain score is an observation too.
+//
+// spec-v1036 gave the six vitals a blank-aware reader after an untaken
+// observation set scored red on five parameters and called the obstetric
+// rapid-response team. The pain score was left out of that set, because its
+// control was a slider with no blank to read. The slider is gone, so it joins
+// them -- an unrecorded pain score is not a pain score of nought.
+test('spec-v1086: an unrecorded pain score is not a pain score of zero', () => {
+  const vitals = { rr: 16, spo2: 98, temp: 37, sbp: 120, dbp: 75, hr: 80, neuro: 'A' };
+
+  const complete = meows({ ...vitals, pain: 0 });
+  assert.equal(complete.band, 'no trigger');
+  assert.match(complete.text, /Continue routine monitoring/);
+
+  const noPain = meows(vitals);
+  assert.equal(noPain.band, 'not scored');
+  assert.deepEqual(noPain.missing, ['pain']);
+  assert.doesNotMatch(noPain.text, /Continue routine monitoring/);
+
+  // The refusal names what is outstanding, not the whole observation set.
+  assert.match(noPain.text, /Enter the pain score:/);
+  const twoOut = meows({ ...vitals, pain: 1, spo2: null, hr: null });
+  assert.match(twoOut.text, /Enter oxygen saturation, heart rate:/);
+});

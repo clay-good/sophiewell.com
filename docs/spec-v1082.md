@@ -48,6 +48,29 @@ value, not a rule-out. It was replaced anyway because an example of every sign a
 full marks demonstrates no scoring at all. It is now the textbook one-minute 9 —
 acrocyanosis, everything else full marks.
 
+## Correction: two of these three did not ship
+
+**This page overstated itself when it was written.** The library changes for
+`apgar` and `white-song` landed; the CONTROL changes did not, so both kept their
+sliders and the new refusals were unreachable — the exact defect
+[spec-v1078](spec-v1078.md) is about, in the two tiles this page claimed to have
+fixed. Only `npass` was actually converted.
+
+The cause is worth recording because it is not a reasoning error. The edit that
+converted the two views was chained behind `check-us-english` with `&&`; the
+check failed on a British spelling in a label I had just written, the `&&`
+short-circuited, and the view edit never ran. Fixing the spelling looked like
+progress, so the dropped edit was never noticed.
+
+Nothing caught it afterwards. `release:check` passed, the full e2e passed, and
+the sweeps passed — because a slider cannot be cleared, so a tile that still has
+sliders is invisible to every sweep that works by clearing fields. **The gap this
+programme exists to describe is also the gap that hid the incomplete fix.**
+
+It was found by [spec-v1086](spec-v1086.md) reading the labels on screen, which
+is [spec-v1053](spec-v1053.md)'s lesson arriving for the second time: open it in
+a browser and read it.
+
 ## What holds it
 
 An assertion per tile covering all three states, including the genuine zero in

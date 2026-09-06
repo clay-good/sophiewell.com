@@ -20,6 +20,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A sleepiness scale and a maternity early-warning chart still answered from
+  untouched sliders.** The Epworth read "normal daytime sleepiness" before anyone
+  answered a question, and the MEOWS pain score -- the one observation left out
+  when the other six were fixed, because a slider has no blank to read -- scored
+  itself 0. Both now ask, and the MEOWS refusal names the observations actually
+  outstanding instead of reciting all six.
+- **A form asked for a number without saying what the number meant.** Converting
+  the Katz ADL and Lawton IADL away from sliders had stripped the half of each
+  label that carried the key, so "Bathing (1 independent / 0 dependent)" became
+  "Bathing (0-1)". Restored, along with a stutter the same helper had introduced
+  on two other tiles.
+- **Two calculators were reported as fixed four waves before they were.** The
+  Apgar and the White-Song fast-track score still used sliders, so the refusals
+  added for them could never appear. Both are converted now; a newborn genuinely
+  scored 0 on every sign still reads "severely depressed". See
+  docs/spec-v1086.md.
 - **Two coma-scale tiles opened on the healthiest patient they can describe.**
   The paediatric GCS opened at 15 of 15 and the Hunt-Hess grader at grade 1,
   while the adult GCS tile beside them opens on a realistic 12. Both now show a

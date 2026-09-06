@@ -33,7 +33,13 @@ function rangeField(label, id, min, max, value) {
 // complete.
 function scoredItemField(label, id, max) {
   const wrap = el('p');
-  wrap.appendChild(el('label', { for: id, text: `${label} (0-${max})` }));
+  // spec-v1086: a label that already explains its own scale keeps its wording.
+  // Appending "(0-2)" to "LOC (awake & oriented = 2, arousable = 1, responsive
+  // only to tactile = 0)" reads as a stutter, and stripping the explanation to
+  // make room for it -- which is what the first pass did to the Katz and Lawton
+  // items -- leaves "Bathing (0-1)" with no way to tell which end is which.
+  const explains = /\)\s*$/.test(label);
+  wrap.appendChild(el('label', { for: id, text: explains ? label : `${label} (0-${max})` }));
   wrap.appendChild(el('br'));
   wrap.appendChild(el('input', {
     id, type: 'number', min: '0', max: String(max), step: '1', inputmode: 'numeric', placeholder: '0',
@@ -157,19 +163,24 @@ export const renderers = {
   },
 
   apgar(root) {
+    // spec-v1086: sliders parked at 2 read "APGAR: 10 (Normal)" for a newborn
+    // nobody had assessed. spec-v1082 changed the library to refuse an
+    // unassessed sign and said it had changed this control too; it had not, so
+    // the refusal was unreachable -- the same shape of defect spec-v1078 fixed
+    // on the stroke scales.
     for (const k of ['appearance', 'pulse', 'grimace', 'activity', 'respiration']) {
-      root.appendChild(rangeField(k.charAt(0).toUpperCase() + k.slice(1), k, 0, 2, 2));
+      root.appendChild(scoredItemField(k.charAt(0).toUpperCase() + k.slice(1), k, 2));
     }
     const o = out(); root.appendChild(o);
     const deriv = renderDerivation(META.apgar);
     if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
       const inputs = {
-        appearance: nv('appearance'), pulse: nv('pulse'), grimace: nv('grimace'),
-        activity: nv('activity'), respiration: nv('respiration'),
+        appearance: nvOrNull('appearance'), pulse: nvOrNull('pulse'), grimace: nvOrNull('grimace'),
+        activity: nvOrNull('activity'), respiration: nvOrNull('respiration'),
       };
       const r = C.apgar(inputs);
-      o.appendChild(el('p', { text: `APGAR: ${r.total} (${r.category})` }));
+      o.appendChild(el('p', { text: r.valid ? `APGAR: ${r.total} (${r.category})` : r.text }));
       if (deriv) updateDerivationSteps(deriv, META.apgar, inputs);
     });
     ['appearance', 'pulse', 'grimace', 'activity', 'respiration'].forEach((id) => document.getElementById(id).addEventListener('input', run));
@@ -2856,24 +2867,26 @@ export const renderers = {
       ['Seated quietly after lunch', 'ep-lunch'],
       ['In a car stopped in traffic', 'ep-traffic'],
     ];
-    for (const [l, id] of items) root.appendChild(rangeField(l, id, 0, 3, 0));
+    // spec-v1086: sliders resting at 0 read "normal daytime sleepiness" for
+    // somebody who had answered nothing.
+    for (const [l, id] of items) root.appendChild(scoredItemField(l, id, 3));
     const o = out(); root.appendChild(o);
     const deriv = renderDerivation(META.epworth);
     if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
       const inputs = {
-        reading: nv('ep-read'),
-        tv: nv('ep-tv'),
-        publicPlace: nv('ep-pub'),
-        carPassenger: nv('ep-car'),
-        lyingDown: nv('ep-lying'),
-        sittingTalking: nv('ep-talk'),
-        afterLunch: nv('ep-lunch'),
-        carTraffic: nv('ep-traffic'),
+        reading: nvOrNull('ep-read'),
+        tv: nvOrNull('ep-tv'),
+        publicPlace: nvOrNull('ep-pub'),
+        carPassenger: nvOrNull('ep-car'),
+        lyingDown: nvOrNull('ep-lying'),
+        sittingTalking: nvOrNull('ep-talk'),
+        afterLunch: nvOrNull('ep-lunch'),
+        carTraffic: nvOrNull('ep-traffic'),
       };
       const r = S4.epworth(inputs);
-      o.appendChild(el('h2', { text: `Epworth ${r.score} of 24` }));
-      o.appendChild(el('p', { text: r.band }));
+      if (r.valid) o.appendChild(el('h2', { text: `Epworth ${r.score} of 24` }));
+      o.appendChild(el('p', { text: r.valid ? r.band : r.text }));
       if (deriv) updateDerivationSteps(deriv, META.epworth, inputs);
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('input', run));
@@ -3386,17 +3399,19 @@ export const renderers = {
       ['Postoperative pain (none/mild = 2, moderate-severe controlled with IV analgesics = 1, persistent severe pain = 0)', 'ws-pain'],
       ['Postoperative emetic symptoms (none/mild nausea + no active vomiting = 2, transient vomiting/retching = 1, persistent moderate-severe N/V = 0)', 'ws-eme'],
     ];
-    for (const [l, id] of items) root.appendChild(rangeField(l, id, 0, 2, 2));
+    // spec-v1086: as apgar -- the control change spec-v1082 described never
+    // landed, so "fast-track eligible" was still what an untouched form said.
+    for (const [l, id] of items) root.appendChild(scoredItemField(l, id, 2));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       const r = S4.whiteSong({
-        loc: nv('ws-loc'),
-        physicalActivity: nv('ws-act'),
-        hemodynamicStability: nv('ws-hd'),
-        respiratoryStability: nv('ws-resp'),
-        oxygenSaturation: nv('ws-o2'),
-        postoperativePain: nv('ws-pain'),
-        postoperativeEmesis: nv('ws-eme'),
+        loc: nvOrNull('ws-loc'),
+        physicalActivity: nvOrNull('ws-act'),
+        hemodynamicStability: nvOrNull('ws-hd'),
+        respiratoryStability: nvOrNull('ws-resp'),
+        oxygenSaturation: nvOrNull('ws-o2'),
+        postoperativePain: nvOrNull('ws-pain'),
+        postoperativeEmesis: nvOrNull('ws-eme'),
       });
       // With a domain unrated there is no score to head the panel with.
       if (r.valid) o.appendChild(el('h2', { text: `White-Song ${r.score} of 14` }));
@@ -4766,7 +4781,10 @@ export const renderers = {
         el('option', { value: 'U', text: 'U - Unresponsive' }),
       ]),
     ]));
-    root.appendChild(rangeField('Pain score', 'mw-pain', 0, 3, 0));
+    // spec-v1086: the last slider on this tile. spec-v1036 gave the six vitals a
+    // blank-aware reader and left the pain score behind, because a slider has no
+    // blank to read.
+    root.appendChild(scoredItemField('Pain score', 'mw-pain', 3));
     const o = out(); root.appendChild(o);
     const deriv = renderDerivation(META.meows);
     if (deriv) root.appendChild(deriv);
@@ -4777,7 +4795,7 @@ export const renderers = {
         rr: nvOrNull('mw-rr'), spo2: nvOrNull('mw-spo2'), temp: unitNumOpt('mw-temp'),
         sbp: nvOrNull('mw-sbp'), dbp: nvOrNull('mw-dbp'), hr: nvOrNull('mw-hr'),
         neuro: document.getElementById('mw-neuro').value,
-        pain: nv('mw-pain'),
+        pain: nvOrNull('mw-pain'),
       });
       if (r.missing) { o.appendChild(el('p', { text: r.text })); return; }
       o.appendChild(el('h2', { text: `MEOWS: ${r.band} (${r.redCount} red, ${r.yellowCount} yellow)` }));
@@ -4869,7 +4887,7 @@ export const renderers = {
     ];
     // spec-v1081: a slider parked at 1 reads as "independent" for an item nobody
     // rated. Number inputs, and an unrated item stays unrated.
-    for (const [label, id] of items) root.appendChild(scoredItemField(label.replace(/ \(1[^)]*\)$/, ''), id, 1));
+    for (const [label, id] of items) root.appendChild(scoredItemField(label, id, 1));
     const o = out(); root.appendChild(o);
     const deriv = renderDerivation(META['lawton-iadl']);
     if (deriv) root.appendChild(deriv);
@@ -4901,7 +4919,7 @@ export const renderers = {
       ['Feeding (1 independent / 0 dependent)',       'kz-feed',  'feeding'],
     ];
     // spec-v1081: as lawton-iadl.
-    for (const [label, id] of items) root.appendChild(scoredItemField(label.replace(/ \(1[^)]*\)$/, ''), id, 1));
+    for (const [label, id] of items) root.appendChild(scoredItemField(label, id, 1));
     const o = out(); root.appendChild(o);
     const deriv = renderDerivation(META['katz-adl']);
     if (deriv) root.appendChild(deriv);
@@ -4961,7 +4979,7 @@ export const renderers = {
     ];
     // spec-v1084: seventeen sliders, each parked at its best value, meant an
     // untouched form read "GUSS 20 of 20 ... Normal diet, normal liquids".
-    for (const [label, id] of stage1) root.appendChild(scoredItemField(label.replace(/ \(1[^)]*\)$/, ''), id, 1));
+    for (const [label, id] of stage1) root.appendChild(scoredItemField(label, id, 1));
     const consistencies = [
       ['Semisolid', 'ss', 'semisolid'],
       ['Liquid',    'li', 'liquid'],
