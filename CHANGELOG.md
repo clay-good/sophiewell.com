@@ -33,6 +33,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **An unadministered autism screen read "negative -- no further action".** The
+  M-CHAT-R/F opens with all twenty items on "Not answered", and it already
+  printed a paragraph saying so -- under a headline calling the screen negative
+  and calling for no further action. An unanswered item scores nothing, so the
+  total can only rise; the tile now says that instead of passing the child, in
+  both places a negative screen could be declared. A high-risk total still
+  refers immediately. See docs/spec-v1108.md.
+- **An unadministered depression scale scored 12 of 60 and read "below the
+  screening threshold".** The CES-D reverse-scores its four positively-worded
+  items, so an unanswered one was worth three points rather than none, and
+  twenty blank questions came to twelve. Reverse scoring also means a partly
+  answered scale is not a floor the way the other partial scores in this release
+  are: an unanswered item can move the total either way. It now reports the
+  range the answers allow, and gives the threshold reading only where the whole
+  range sits on one side of 16.
 - **An 85-year-old described by nothing but their age was low operative risk.**
   EuroSCORE II looks each of its six graded factors up in a coefficient table,
   and a factor that was never stated fell through to 0 -- which is not a neutral

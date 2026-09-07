@@ -189,6 +189,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1105](spec-v1105.md) | The guard was in the adapter, so the page never got it |
 | [v1106](spec-v1106.md) | **Gate**: the one that was already there, asking a third of the question |
 | [v1107](spec-v1107.md) | The reference level is not "not stated" |
+| [v1108](spec-v1108.md) | The same filter, a fourth and fifth time |
 
 ### And the same question from the other side
 
@@ -253,7 +254,7 @@ tile still render a control with no empty state?
 | `no-impossible-number.spec.js` | does any tile state NaN, Infinity or an unexplained exponent? | 1.6 min |
 | `one-blank-field.spec.js` | with a calculator filled from its example, does clearing ONE measurement change the answer without asking for it or disclosing it? | 1.6 min |
 | `derivation-agrees.spec.js` | when a calculator refuses, does the "show your work" panel below still display the calculation? | 13 s |
-| `rated-items-are-required.test.js` | does an instrument built only of rated items answer a call carrying none of them, and does omitting one picklist item silently move an answer? | 7 s |
+| `rated-items-are-required.test.js` | does an instrument built only of rated items answer a call carrying none of them, and does omitting one picklist item silently move an answer? Since spec-v1108 it asks the same of the 263 instruments whose items are declared `enum` rather than `number`. | 7 s |
 | `field-values-match-dom.spec.js` | is every answer the schema offers an agent an option a reader can choose, and the reverse? | 1.8 min |
 
 Each has a ledger for the tiles that legitimately do the thing it looks for, and each was verified
@@ -264,7 +265,7 @@ until someone asks:
 
 | Finder | Asks |
 | --- | --- |
-| `scripts/probe-omitted-item.mjs` | fill a calculator from its worked example, drop one number: does the agent's answer move without saying so? |
+| `scripts/probe-omitted-item.mjs` | fill a calculator from its worked example, drop one number **or graded select**: does the agent's answer move without saying so? Prints its own reach. |
 | `scripts/probe-omitted-field-decides.mjs` | drop one number, then try plausible values *in* it: could any of them have changed the verdict? Prints its own reach. |
 | `scripts/probe-half-guarded.mjs` | does this tile refuse or disclose for one missing input and stay silent on another that moves the answer? |
 

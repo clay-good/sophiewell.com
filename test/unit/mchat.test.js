@@ -107,3 +107,59 @@ test('mchat: the item table carries twenty topics and no instrument wording', ()
   assert.ok(ITEMS.every((i) => i.topic && i.topic.length > 3));
   assert.equal(ITEMS.filter((i) => i.reverse).length, 3);
 });
+
+// --- spec-v1108: the headline said "no further action" while the note disclosed ---
+
+test('spec-v1108: an unadministered M-CHAT-R/F is not a negative screen', () => {
+  // This is how the page opens: twenty selects on "Not answered".
+  const r = mc({});
+  assert.equal(r.answeredCount, 0);
+  assert.equal(r.total, 0);
+  assert.equal(r.screen, null, 'a negative screen for a questionnaire nobody administered');
+  assert.equal(r.bandLabel, 'Not yet scored');
+  assert.doesNotMatch(r.action, /No further action/);
+  assert.match(r.action, /Not yet a screen result/);
+  assert.match(r.action, /can only rise/);
+  // Rule 14: the headline is what gets read, and `band` is the action.
+  assert.equal(r.band, r.action);
+  // The detail that was already right is still there.
+  assert.match(r.unansweredNote, /20 of the 20 items are unanswered/);
+});
+
+test('spec-v1108: one unanswered item is still one too many for a pass', () => {
+  const partial = clean();
+  delete partial.item7;
+  const r = mc(partial);
+  assert.equal(r.answeredCount, 19);
+  assert.equal(r.risk, 'low');
+  assert.equal(r.screen, null);
+  assert.doesNotMatch(r.action, /No further action/);
+});
+
+test('spec-v1108: a completed low-risk sheet still passes', () => {
+  const r = mc(clean());
+  assert.equal(r.answeredCount, 20);
+  assert.equal(r.screen, 'negative');
+  assert.equal(r.bandLabel, 'Low risk');
+  assert.match(r.action, /No further action is called for on this screen/);
+});
+
+test('spec-v1108: high risk rules in and is untouched by unanswered items', () => {
+  // Rule 13: a floor of 8 cannot be talked back down.
+  const partial = flip(clean(), 1, 3, 4, 6, 7, 8, 9, 10);
+  delete partial.item20;
+  const r = mc(partial);
+  assert.equal(r.risk, 'high');
+  assert.equal(r.screen, 'positive');
+  assert.equal(r.bandLabel, 'High risk');
+  assert.match(r.action, /Bypass the Follow-Up and refer now/);
+});
+
+test('spec-v1108: the Follow-Up cannot close an incomplete screen either', () => {
+  const partial = flip(clean(), 1, 3, 4);
+  delete partial.item20;
+  const r = mc({ ...partial, followUp: 0 });
+  assert.equal(r.risk, 'medium');
+  assert.equal(r.screen, null, 'a Follow-Up under 2 closed a screen with an item unanswered');
+  assert.match(r.action, /not yet a negative screen/);
+});

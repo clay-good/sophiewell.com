@@ -65,7 +65,12 @@ const OPTS_0_3_BIN = [
   { value: '0', text: '0 — absent' },
   { value: '3', text: '3 — present' },
 ];
+// spec-v1108: rule 8. The first option was "0 — rarely / none", so twenty selects
+// opened on an answer, and the four reverse-scored items turned that into
+// "CES-D 12/60: below the 16-point screening threshold" before anyone had read a
+// question. A select that cannot say "not answered" answers for the reader.
 const OPTS_CESD = [
+  { value: '', text: 'Not answered' },
   { value: '0', text: '0 — rarely / none (< 1 day)' },
   { value: '1', text: '1 — some / a little (1–2 days)' },
   { value: '2', text: '2 — occasionally / moderate (3–4 days)' },
@@ -239,7 +244,11 @@ export const renderers = {
       const r = M.cesD(payload);
       resultRow(o, [
         { text: r.band, cls: r.abnormal ? 'warn' : null },
-        { label: 'CES-D', value: `${r.total}/60` },
+        // spec-v1108: `total` is null while the 16-point threshold sits inside
+        // the range the unanswered items leave open. Printing "null/60" beside a
+        // refusal is the shape spec-v1015 called a refusal written in the words
+        // of a stack trace.
+        { label: 'CES-D', value: r.total === null ? `${r.low}–${r.high} of 60` : `${r.total}/60` },
       ]);
       note(o, r.note);
     }));

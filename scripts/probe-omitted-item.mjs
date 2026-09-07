@@ -76,7 +76,18 @@ for (const tool of allCalculators()) {
   if (full?.valid !== true) continue;
 
   for (const f of tool.fields || []) {
-    if (f.kind !== 'number') continue;
+    // spec-v1108: the same widening spec-v1102 made to
+    // probe-omitted-field-decides.mjs, which this probe's sibling had and this
+    // one did not -- the fourth thing in this repo found narrowed to `number`
+    // after being written that way (spec-v1102, spec-v1106, and the gate there).
+    //
+    // Booleans stay out on purpose: rule 4 says an unticked checkbox is a real
+    // "no". ENUMS are different -- a select always carries a value so the
+    // browser never sends a blank one, but an API caller omits keys by default,
+    // which is the surface split spec-v1073 is about. `euroscore2` was found by
+    // HAND in spec-v1107 while this probe reported it clean, because all six of
+    // its graded factors are enums.
+    if (f.kind !== 'number' && f.kind !== 'enum') continue;
     const v = ex[f.dom];
     if (v === undefined || String(v).trim() === '') continue;
     const partial = { ...ex };
@@ -106,6 +117,14 @@ for (const tool of allCalculators()) {
 const tiles = new Set(rows.map((r) => r.id));
 console.log(`${rows.length} field(s) across ${tiles.size} calculator(s) changed the agent's answer when omitted,`);
 console.log('without asking for the value or saying it was missing.\n');
+// spec-v1108: a finder's reach is part of its result (spec-v1099).
+const seen = { number: 0, enum: 0, bool: 0, other: 0 };
+for (const tool of allCalculators()) {
+  if (only && tool.id !== only) continue;
+  for (const f of tool.fields || []) seen[f.kind in seen ? f.kind : 'other'] += 1;
+}
+console.log(`Reach: ${seen.number} number and ${seen.enum} enum fields are dropped one at a time.`);
+console.log(`${seen.bool} booleans are excluded (an unticked box is a real "no"), and ${seen.other} others.\n`);
 for (const r of rows) {
   console.log(`  ${r.id}|${r.field}  (${r.label})`);
   if (r.changed) console.log(`      moved: ${r.changed}`);

@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `3e057c7ebc43fed0`
-Generated: 2026-09-07T20:56:46.497Z
+Build ID: `85057ded415db6c3`
+Generated: 2026-09-07T21:40:24.253Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -499,7 +499,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/mayo-olecranon-v739.js` | 4140 | `66676472ba5d7bfdbc1806f1c5c8620fb9be6d1b18f4b2e66c5f6acabaaa507d` |
 | `lib/mccormack-v646.js` | 4125 | `8498079ab8394c03b90998ff4b1de2112042540b2860c69bbbb11acc1159c44f` |
 | `lib/mccormick-v444.js` | 3548 | `226844081eb702e3917925b1fb684495c90fd90d83717106c632f91f09fad0c6` |
-| `lib/mchat-v862.js` | 9185 | `8aaecc04039a25a985d3618008e5c393b9394ea751555623cd4a1a89021e0378` |
+| `lib/mchat-v862.js` | 10797 | `d4679dd64d1f655847d7a7e2a5914b98cb98591f5fe594dc686df8337b1ff003` |
 | `lib/mcmahon-rhabdo-v677.js` | 6279 | `e0553d59c1d99bfbbe33eec0e521d84033772efc547f16215182bb08096ba70f` |
 | `lib/mda-psoriatic-v672.js` | 3497 | `e7c82444dbf39ca9b8e6cac36422ad6d754179545affa74b8779a1469309cc74` |
 | `lib/measles-case-def-v872.js` | 9149 | `81b9f742a3e925d662ce16c4e5d53bcac73d69d494f8df443a7509eeb7bd5554` |
@@ -509,7 +509,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/membranous-risk-v878.js` | 11351 | `882c36c07e46543e32f1114792c1124ee9f9ff6b384084fc0a8c221e7dd62062` |
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2467898 | `5310b94fe0983e97cc5f1ec27113f5efc891ae0f6164cef8fd046849891add9d` |
+| `lib/meta.js` | 2468149 | `89393a9cc9c5df618ae413d873bd32cacd4fcbddee2526beb028fb24caa7b1a2` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 15638 | `8fba14b5f51823f5f13729e0170a9b0de0af72bcd36361d507fbea44fb5585aa` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -681,7 +681,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/prostate-health-index-v714.js` | 3788 | `c73d17188461e047dbf1658447de06c9474dda8ff88e9b92b13845d53d2561a1` |
 | `lib/proteins-v274.js` | 3182 | `124b907ef2e82939179df0c4d15ebd08e2132481feb6b980a73b2e9170e6a315` |
 | `lib/pss10-v806.js` | 3774 | `345503d089cc1e3741f638539279784197b108044da41cfbb2d941e7481c3445` |
-| `lib/psych-v123.js` | 13449 | `79718c5f8a50fe3dd8c0cbd3c21a7ce9120469a922da8185189af26121553159` |
+| `lib/psych-v123.js` | 15816 | `bfd6c449bd7d693c2994cfbbf70c1fee6fa864f4130d8dcd065f2d6aa1f859ef` |
 | `lib/psych-v96.js` | 13290 | `08ac9bdc6f85b457e750cf89f8ffe473beaac830ad8b3b88c67cde4ba5467614` |
 | `lib/pulm-copd-v205.js` | 15657 | `e209ded1a783152b4bf49ac6d693fe097126161d3cb53a09268fe38e9ab9c3bf` |
 | `lib/pulm-v114.js` | 15731 | `579720bd9198af70f6b48e25ba0514e6f1fc52dfd8219d1b58a9456f2eb67476` |
@@ -1724,7 +1724,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v120.js` | 10153 | `fc28e780270117e1a825f43699551f35c7f8b1dbc038e85de25ff6eba20ae423` |
 | `views/group-v121.js` | 10321 | `a78e8bba85c31d61e1e827cfe66627f079484979b90f360c8e065ba49020bd0b` |
 | `views/group-v122.js` | 7422 | `bc238e7c11c081dcdd6514b2b7ba6000d415d21a9abdc35177237e1262cf7b62` |
-| `views/group-v123.js` | 12085 | `e2c8ec39530eb4edf7b4727fe8abb440f30cf7af3ea35ba3797f02c99543989e` |
+| `views/group-v123.js` | 12765 | `49471da56f531c8fe76630434ee7332d79a22bfde3f84ab1e70b4a2856249a21` |
 | `views/group-v124.js` | 10249 | `297b8b570f206999003798564c6934b36c3247a21d862cc019291dd4e23dc35f` |
 | `views/group-v125.js` | 10792 | `6aeb41529d73f437100a089619ad3e82184b13afd357cba1e95887d7a4ad7f8a` |
 | `views/group-v126.js` | 12511 | `13f980cf952c4239ef6d20539678171746f242cf02612f769192b6ad2dd27790` |

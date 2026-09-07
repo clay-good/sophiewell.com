@@ -33,6 +33,7 @@ import assert from 'node:assert/strict';
 import { allCalculators } from '../../mcp/catalog.js';
 import { computeCalculator } from '../../mcp/tools.js';
 import { ASKING, DISCLOSING } from '../lib/asking-language.js';
+import { ENUM_RATED_ANSWERS_EMPTY } from './enum-rated-items-ledger.js';
 
 // tileId -> why an empty call may still answer.
 const COUNTS_NOT_GRADES = {
@@ -68,6 +69,56 @@ const FIXED = [
   'mrss-modified-rodnan-skin-score', 'poem', 'ferriman-gallwey', 'thompson-hie',
   'menopause-rating-scale', 'kupperman-index', 'wexner',
 ];
+
+// spec-v1108: the same question, of the instruments whose items are `kind: 'enum'`.
+//
+// The assertion above filters on `kind === 'number'`, which is how spec-v1073's
+// fix was expressed -- declare the items `required`, and a number field carrying
+// a `values` picklist is what those instruments render. But a graded select can
+// equally be declared `kind: 'enum'`, and 263 tiles are, so they were outside the
+// gate entirely. `ces-d` came back "CES-D 12/60: below the 16-point screening
+// threshold" for a questionnaire nobody administered, and `mchat-rf` returned
+// screen: "negative" with all twenty items unanswered.
+//
+// This one is deliberately WEAKER than its neighbour: it accepts a tile that
+// answers in words which ask or disclose, because that is the shape the two
+// fixed tiles took -- a range, or a floor -- and a blanket `required` would be
+// wrong for an instrument that is honestly scorable in part. What it does not
+// accept is a band, a grade or a verdict presented as a result.
+test('spec-v1108: an instrument built only of graded selects does not answer an empty call', () => {
+  const offenders = [];
+  let inScope = 0;
+  for (const tool of allCalculators()) {
+    const fields = tool.fields || [];
+    if (!fields.length) continue;
+    // The assertion above owns the all-number instruments; this one takes the
+    // rest, which is every instrument with at least one enum item and no
+    // required field of any kind.
+    if (fields.every((f) => f.kind === 'number' && !f.required)) continue;
+    if (!fields.every((f) => (f.kind === 'number' || f.kind === 'enum') && !f.required)) continue;
+    inScope += 1;
+    const r = computeCalculator({ id: tool.id, inputs: {} });
+    if (r?.valid !== true) continue;
+    const text = JSON.stringify(r.result);
+    if (ASKING.test(text) || DISCLOSING.test(text)) continue;
+    if (Object.prototype.hasOwnProperty.call(COUNTS_NOT_GRADES, tool.id)) continue;
+    if (ENUM_RATED_ANSWERS_EMPTY.has(tool.id)) continue;
+    offenders.push(`${tool.id} (${fields.length} items) -> ${text.slice(0, 120)}`);
+  }
+
+  // spec-v1099's rule: the reach is part of the result. This was 0 before the
+  // widening, because every one of these tiles was outside the filter.
+  assert.ok(inScope > 200, `only ${inScope} enum-item instruments were examined`);
+
+  assert.deepEqual(offenders, [],
+    `${offenders.length} instrument(s) built of graded selects reported a result for an empty call:\n`
+    + `${offenders.join('\n')}\n`
+    + 'An unanswered graded item is not a zero. Either refuse, or answer in words that ask for the\n'
+    + 'missing items or disclose how many were scored -- both are accepted here. If the inputs are\n'
+    + 'counts rather than grades, add the id to COUNTS_NOT_GRADES with the reason. To record an\n'
+    + 'existing one while it waits to be fixed, add it to test/mcp/enum-rated-items-ledger.js with\n'
+    + 'the reading it produced.');
+});
 
 test('spec-v1073: each fixed instrument still answers a complete example', async () => {
   const { META } = await import('../../lib/meta.js');
