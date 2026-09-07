@@ -8,8 +8,11 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { gvhdGrade } from '../../lib/gvhd-v309.js';
 
+// spec-v1111: all three organs staged, with the ones under test overridden.
+const staged = (o = {}) => ({ skinStage: '0', liverStage: '0', giStage: '0', ...o });
+
 test('all organ stages 0 is no acute GVHD (grade 0)', () => {
-  const r = gvhdGrade({});
+  const r = gvhdGrade(staged());
   assert.equal(r.grade, 0);
   assert.equal(r.hasGvhd, false);
   assert.equal(r.abnormal, false);
@@ -60,4 +63,28 @@ test('the worked example (liver stage 2) is grade III severe', () => {
   assert.equal(r.gradeRoman, 'III');
   assert.equal(r.severe, true);
   assert.match(r.band, /liver stage 2/);
+});
+
+
+// --- spec-v1111: an unstaged organ was an organ assessed and uninvolved ---
+
+test('spec-v1111: an unstaged patient is not "no acute GVHD"', () => {
+  const r = gvhdGrade({});
+  assert.equal(r.valid, true);
+  assert.equal(r.grade, 0);
+  assert.equal(r.unstaged.length, 3);
+  assert.equal(r.floorOnly, true);
+  assert.doesNotMatch(r.band, /No acute GVHD/);
+  assert.match(r.band, /not yet gradeable/);
+  assert.match(r.band, /can only raise the grade/);
+});
+
+test('spec-v1111: grade III-IV rules in, and still does not invent the other stages', () => {
+  // Rule 13 for the verdict; rule 11 for the line under it.
+  const r = gvhdGrade({ skinStage: '4' });
+  assert.equal(r.grade, 4);
+  assert.equal(r.severe, true);
+  assert.equal(r.floorOnly, false);
+  assert.match(r.band, /skin stage 4, liver not staged, GI not staged/);
+  assert.doesNotMatch(r.band, /liver stage 0/);
 });

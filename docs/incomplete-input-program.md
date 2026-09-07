@@ -192,6 +192,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1108](spec-v1108.md) | The same filter, a fourth and fifth time |
 | [v1109](spec-v1109.md) | The miss-value was the best finding there is |
 | [v1110](spec-v1110.md) | Three scales that opened on an examination nobody performed |
+| [v1111](spec-v1111.md) | Four more, and a correction |
 
 ### And the same question from the other side
 

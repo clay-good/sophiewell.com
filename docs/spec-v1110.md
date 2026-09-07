@@ -69,5 +69,6 @@ helper, and each gained the band assertion it had been missing — which is how
 *"one screen item present → below the ≥ 2 screen threshold"* went from a test
 that would have passed either way to one that checks the words.
 
-Six of the eleven ledger lines are gone. Five remain: `ses-cd`, `hfa-peff`,
-`mdq`, `gvhd-grade`, `peritoneal-cancer-index`, `arvc-tfc`.
+Six of the eleven ledger lines are gone. Six remain: `ses-cd`, `hfa-peff`,
+`mdq`, `gvhd-grade`, `peritoneal-cancer-index`, `arvc-tfc`. (This line said
+"Five" over a list of six until [spec-v1111](spec-v1111.md) counted them.)

@@ -33,6 +33,17 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Four more scores read an unentered finding as the most favourable one.** The
+  SES-CD answered "endoscopic remission" for an endoscopy nobody described, the
+  acute GVHD grader answered "No acute GVHD (all organ stages 0)" for three
+  organs nobody staged, the Peritoneal Cancer Index answered "PCI 0 of 39" for
+  an abdomen nobody explored, and the ARVC Task Force Criteria answered
+  "criteria not met" for six categories nobody assessed. Each of those readings
+  is a decision -- to stop Crohn's therapy, to stop steroids, to offer or refuse
+  cytoreduction, to close a cardiomyopathy workup. Each now reports what is
+  still missing and that the score can only rise. The GVHD grader also stops
+  printing "liver stage 0, GI stage 0" beneath a grade IV verdict, since the
+  verdict standing does not make those two stages real. See docs/spec-v1111.md.
 - **Three psychiatric rating scales opened on an examination nobody performed.**
   The Abnormal Involuntary Movement Scale, the Bush-Francis Catatonia Rating
   Scale and the Barnes Akathisia Rating Scale share one set of picklists, every

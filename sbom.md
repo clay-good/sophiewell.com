@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `f4fce78a64cd92ec`
-Generated: 2026-09-07T22:19:44.654Z
+Build ID: `ca158e1a21494b05`
+Generated: 2026-09-07T22:42:29.515Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -86,7 +86,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/aortic-stenosis-stage-v844.js` | 15072 | `8ce6392d93e26c53e7670581533d4b6bebecf51581dbfbbf0f15fdd3d35fbcdb` |
 | `lib/arc-hbr-v594.js` | 16008 | `88c72c385e4018fc0d2cddba66606c2f136b52091d4f7e2b4f9dfc656fcdb7f9` |
 | `lib/areds-v615.js` | 11067 | `7da2179ea02ee6b4f983417d4fedc03f50d680c2b945213a0cf75fefd6411857` |
-| `lib/arvc-tfc-v786.js` | 4626 | `5093904d4b63d32b6a8b5992ecb1f3726aa8ee9b08ad8e0528a0723cbed65acb` |
+| `lib/arvc-tfc-v786.js` | 5723 | `67907ee3cb99b9310521564d36bec3cf34a73040efb426164348b4bd2c3df4b3` |
 | `lib/asrm-mania-v675.js` | 3304 | `87fd04b0801853da577a43910474e1d44732328cf7df8e4b2fc8a2c91d8fd010` |
 | `lib/asrs-v513.js` | 5231 | `e0cf535b091fbd4ba2715fad03f9224bf6e34f3f4eca6c8ccebb34a9bc5ef5db` |
 | `lib/asthma-control-test-v516.js` | 5724 | `15970db321969412a38f6cf6d0b3c69d6dfd3621b679993e00daf253add26a96` |
@@ -324,7 +324,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/gerdq-v679.js` | 4410 | `1b59ff708ec0a30c39ae0bc7ed356bf1704dac46be643eb922ec1376759df951` |
 | `lib/geri-v241.js` | 6715 | `1debe98a4e5480baaaf503b9f4e9e093f0bdfaede8ce2741f9744b862ae52f98` |
 | `lib/ghent-marfan-v821.js` | 12318 | `855285066a558cf50ad9e937c7717195d86bc71bbe51e47913f4dfa811f8ce39` |
-| `lib/gi-v126.js` | 17396 | `bfce9b38fb881b31e604bd6f7fee7600e554221d59cdd5571187e602540cf1ba` |
+| `lib/gi-v126.js` | 18805 | `dbb664ea69b3fb99c98b945df84c4c55ec2d76996cee59ff55ccb13e0e341de0` |
 | `lib/gisurg-v239.js` | 7913 | `d6da27d87f1f1c9ae3ba497127080931bfe66fd1e29c66d5e5b6b21a586761d0` |
 | `lib/glass-stage-v550.js` | 13408 | `42ec4b461aa71b8aa586f00d20f9088773dbf3a478e9847e590af687b2c2acf5` |
 | `lib/gli-2012-data.js` | 41979 | `0fa7440b8d9ab03028185d56c7a6bc9e1e753fe3ac396c208eb06f80991ba125` |
@@ -340,7 +340,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/gray-weale-v524.js` | 7212 | `40da7dbef79e5870d84108f26fddae6ff7ced15b2e793acb3921f27899a88b7b` |
 | `lib/griffith-vt-v784.js` | 4784 | `0d751f58f7d403867626c8e68343f3b539e80b025dbb19b730256dfb271390dd` |
 | `lib/growth-lms-data.js` | 62247 | `ab55ed9e9b56d47f239bfe21dc9d9811969332de08e595c2773d93538cc505d3` |
-| `lib/gvhd-v309.js` | 3729 | `dbdbf82238cc7b3cfa79ef6fd6980113d2d2382da368b0a976b070132b5c59a2` |
+| `lib/gvhd-v309.js` | 5388 | `37b85e4bb6b94226aaf69a68ed2c9a25ee3fee148eedb34d4e0789366c98c400` |
 | `lib/gyn-v139.js` | 17134 | `9549432fff4f6d3dab54aa2d6bdee880ab46d2ac6e134a106e097d7502e32f9a` |
 | `lib/haggitt-v332.js` | 4932 | `476fb93a3fdb10bd7b2a86967ea43ceea7aaa2ac44adacbb36a35d934983e277` |
 | `lib/hamada-v439.js` | 3168 | `a835158251679b95aa91410427c8c921fde3d956f51af622cda8df5f3e3b96cd` |
@@ -509,7 +509,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/membranous-risk-v878.js` | 11351 | `882c36c07e46543e32f1114792c1124ee9f9ff6b384084fc0a8c221e7dd62062` |
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2468149 | `89393a9cc9c5df618ae413d873bd32cacd4fcbddee2526beb028fb24caa7b1a2` |
+| `lib/meta.js` | 2468314 | `45871633bb800786ae66884eec5518f5ad902c0ec736677590c545bf0a70fa72` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 15638 | `8fba14b5f51823f5f13729e0170a9b0de0af72bcd36361d507fbea44fb5585aa` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -648,7 +648,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/periop-bridging-v899.js` | 7725 | `5b27b5a1bbd6d729d9d3250625cfb11dc7bc466e8d1258e011d413a5145178f9` |
 | `lib/periop-frailty-v203.js` | 10379 | `b93ea1ae7b71a4a89f3c711856a8e0635801a298730c44ce0c54b8b42e6a1079` |
 | `lib/periop-v97.js` | 22791 | `bf6f31ba7a6c64724819387bd8421533216898ec43d7dc92f34552f6d56236c4` |
-| `lib/peritoneal-cancer-index-v654.js` | 3716 | `00a28bd274d343e50931422e7c2a8d5df2759e203abff42d960d108ab6924bcd` |
+| `lib/peritoneal-cancer-index-v654.js` | 4961 | `fddb55c523d5629da5d6dc7a2ef48edfd3586f0285b2d3101f31c4d90c39a676` |
 | `lib/pertussis-case-def-v868.js` | 9756 | `b542e071bc78bd634b448d387f79c2386ea5fd3586664b74903d9988a0456b14` |
 | `lib/pfdi20-v775.js` | 3982 | `5b9b7b749246ec16329fd2edee61832aa29970d49574659b07a29b5005973877` |
 | `lib/pfiq7-v776.js` | 4173 | `e9754014c0aaba1e3e9c0fff5fac31e3ecda4f98cedf365b024bc08e6a2d3e51` |
