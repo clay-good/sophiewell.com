@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `77dbce9dbec79eb4`
-Generated: 2026-09-07T16:27:45.889Z
+Build ID: `270e5b1401d47aef`
+Generated: 2026-09-07T18:11:55.388Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -833,7 +833,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/todani-choledochal-v473.js` | 3608 | `e6e1d1726ce48bafecb6edbad0d7f61300adf435b2c1b1427aeeeb98c8fc21ab` |
 | `lib/tonnis-hip-oa-v354.js` | 3924 | `856bbea20809afb3acd30bbdc56331611ceba4deb17726ba2bcde7a36c87d957` |
 | `lib/tox-v110.js` | 14694 | `ee21ecc4944368eafc4f9017925a06ecd2aa1cb4a80e00bdd9f54abece82901f` |
-| `lib/tox-v86.js` | 9271 | `a4827e971709a1b52494fd7a4cb6fe10db9a6c7ddeb4478cd39ee1c37b355326` |
+| `lib/tox-v86.js` | 11021 | `14f2db4da3d5a3275cdf68927236cd3bc7f6e1ee48704d68d81c559bd0ab3dac` |
 | `lib/transfusion-v292.js` | 5990 | `2b6860941accfff047ddfc6f48801e8fc06cc73beb57801e27b7b83ee8f4a922` |
 | `lib/trauma-v108.js` | 18840 | `8fe289508988dde66cc96ce4b1d2110d046a69a105464234c5983acd84ef557b` |
 | `lib/traumaclass-v109.js` | 20421 | `cd7f9e9c7dbc3447a2e3e4e8507161b9af59fac28aa8a7b55414abd160e4e60f` |
@@ -1624,7 +1624,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/todani-choledochal-v473.js` | 1244 | `06bc5be9d22287ffdc6a28d14186754083b16c9d8abfe51fad9c71aee5ac5c4d` |
 | `mcp/adapters/tonnis-hip-oa-v354.js` | 1427 | `bb8c618503d661a89c00fbfabae469647a8799821c7923a60f91b26aea3207ed` |
 | `mcp/adapters/tox-v110.js` | 3902 | `f759b5ca55f9574d7c8320d7d08dd928a33e8030ebb5d3fec91fd1cd08eb8adc` |
-| `mcp/adapters/tox-v86.js` | 4066 | `1f69365cc497a5d1aeada64e99289bf8de67cb2e4866fc175945ab6415a0585d` |
+| `mcp/adapters/tox-v86.js` | 4261 | `be57be9bae32c5dfe02490a653072b862a131b6fa8573b5a2cbb9591e03bad5b` |
 | `mcp/adapters/transfusion-v292.js` | 1766 | `005b74056d7d62f5f6a33328a06286f48e5f2db99883b90e24fb7d81cb506152` |
 | `mcp/adapters/trauma-v108.js` | 4892 | `ad12010f16d8544a7efad659accbd6890a0540c8b9a4329cc827361386247e9e` |
 | `mcp/adapters/traumaclass-v109.js` | 5242 | `68d398cd79b7c643747be56a5977dfb897ab880eab9a644ab5395df9456c8b82` |
@@ -1720,7 +1720,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v117.js` | 12166 | `bd791807741fd3275c6f46da19f26f8b39e7b1644759811bfdec6b0cc3557839` |
 | `views/group-v118.js` | 11887 | `1ceefd6619cb058f4bcf80c9e03890cd0ccb159204240da2ec6c54ad1940066a` |
 | `views/group-v119.js` | 9513 | `1f10862d9aab600674449534502faf78e810ea756704d37066ac0ca7347bf580` |
-| `views/group-v12.js` | 10086 | `641ad3ccc6278e8445c6e557b87eb472feba68599d1155254f7c4471ce2aa017` |
+| `views/group-v12.js` | 10420 | `31cefaf738ba4a48f41adb16c78d06f1b61d5ea239feb86ea7cd1a20c96c4dc1` |
 | `views/group-v120.js` | 10153 | `fc28e780270117e1a825f43699551f35c7f8b1dbc038e85de25ff6eba20ae423` |
 | `views/group-v121.js` | 10321 | `a78e8bba85c31d61e1e827cfe66627f079484979b90f360c8e065ba49020bd0b` |
 | `views/group-v122.js` | 7422 | `bc238e7c11c081dcdd6514b2b7ba6000d415d21a9abdc35177237e1262cf7b62` |

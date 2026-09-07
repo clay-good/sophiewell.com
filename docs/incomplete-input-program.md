@@ -80,6 +80,13 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
     which 698 of 1,682 tiles never set, so "the section is empty" meant nothing about two fifths of
     the catalog. Any check keying on an *optional* field must print how many subjects carry it.
 
+18. **A guard in a renderer is a guard for one surface** (spec-v1103). `toxic-alcohol` had refused
+    a missing glucose and BUN in `views/group-v12.js` since spec-v1065, with the reasoning written
+    out — and answered every API caller anyway, because the guard was in the renderer and not in
+    the function both surfaces call. This is spec-v1073's split from the other direction: that wave
+    found questions the browser makes unavoidable and the adapter never declared; this is a question
+    the browser *does* insist on, living in the one place only the browser reads.
+
 ## The specs
 
 | Spec | What it fixed |
@@ -158,6 +165,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1100](spec-v1100.md) | The other half of the same divisor, and the weakest section read |
 | [v1101](spec-v1101.md) | A finder for "one tile, two gaps, one guarded" |
 | [v1102](spec-v1102.md) | The finder was only looking at numbers |
+| [v1103](spec-v1103.md) | The guard that only one surface had |
 
 ### And the same question from the other side
 
@@ -318,8 +326,14 @@ What is left is narrower than when this page was written:
   It now prints its own reach, and unflagged tiles get their own section rather than falling
   into a weaker one that reads as "less serious".
 
-  **What is genuinely left** is the finder's third bucket, *verdict could change* — 35 fields across
-  24 calculators — which is a weaker signal by construction: a verdict that moves without `abnormal`
+  [spec-v1103](spec-v1103.md) read the finder's **second** section, *no severity flag, and the
+  verdict moved*: 13 fields across six of them. One defect — `toxic-alcohol` indicated
+  fomepizole from a glucose and a BUN nobody entered, because its guard lived in the renderer and
+  not in the library. The other twelve are correct and the reason for each is written down in that
+  spec, so a later pass recognises them rather than re-investigating.
+
+  **What is genuinely left** is the finder's third bucket, *verdict could change* — 33 fields across
+  23 calculators — which is a weaker signal by construction: a verdict that moves without `abnormal`
   flipping. Worth a pass; not a defect list.
 
 - ~~**95 fields still change the AGENT's answer when omitted, without saying so**~~

@@ -20,6 +20,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **The toxic-alcohol tile indicated fomepizole from two labs nobody entered.**
+  The glucose and the BUN are additive terms in the calculated osmolality, and a
+  blank one was read as zero -- which made the calculated value too low and the
+  osmolar gap, a subtraction, too wide. The AACT indication limbs turn on a gap
+  over 10, and an ordinary glucose and BUN are about 20 mOsm/kg between them, so
+  omitting them turned "No AACT fomepizole indication met" into "Fomepizole
+  indicated" and printed a calculated osmolality it had not observed. The browser
+  had refused this since docs/spec-v1065.md; the library had not, so every API
+  caller got the answer the browser would not give. The refusal now lives in the
+  library, where both surfaces reach it. See docs/spec-v1103.md.
 - **A fetal heart-rate tracing nobody described was graded Category I.** Every
   fallback in the tile was the normal value, so with only a baseline rate it
   asserted moderate variability and absent decelerations and returned the

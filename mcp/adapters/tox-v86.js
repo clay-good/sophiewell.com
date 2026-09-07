@@ -45,8 +45,10 @@ export default [
     fields: [
       { dom: 'ta-osm', arg: 'measuredOsm', kind: 'number', required: true, label: 'Measured serum osmolality', unit: 'mOsm/kg' },
       { dom: 'ta-na', arg: 'sodium', kind: 'number', required: true, label: 'Serum sodium', unit: 'mEq/L' },
-      { dom: 'ta-glu', arg: 'glucose', kind: 'number', label: 'Glucose', unit: 'mg/dL' },
-      { dom: 'ta-bun', arg: 'bun', kind: 'number', label: 'BUN', unit: 'mg/dL' },
+      // spec-v1103: required, like the osmolality and the sodium. Both are terms
+      // in the calculated osmolality, so an omitted one widens the osmolar gap.
+      { dom: 'ta-glu', arg: 'glucose', kind: 'number', required: true, label: 'Glucose', unit: 'mg/dL' },
+      { dom: 'ta-bun', arg: 'bun', kind: 'number', required: true, label: 'BUN', unit: 'mg/dL' },
       { dom: 'ta-etoh', arg: 'ethanol', kind: 'number', label: 'Serum ethanol (optional)', unit: 'mg/dL' },
       { dom: 'ta-ph', arg: 'pH', kind: 'number', label: 'Arterial pH (optional)' },
       { dom: 'ta-bicarb', arg: 'bicarbonate', kind: 'number', label: 'Serum bicarbonate (optional)', unit: 'mEq/L' },

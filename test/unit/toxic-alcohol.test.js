@@ -52,3 +52,50 @@ test('missing osmolality or sodium returns null', () => {
   assert.equal(toxicAlcohol({ sodium: 140 }), null);
   assert.equal(toxicAlcohol({ measuredOsm: 290 }), null);
 });
+
+// --- spec-v1103: the two chemistry terms the library was defaulting to zero ---
+
+test('an omitted glucose does not manufacture an osmolar gap', () => {
+  const withLabs = toxicAlcohol({ measuredOsm: 300, sodium: 140, glucose: 180, bun: 28, recentIngestion: true });
+  // 2*140 + 180/18 + 28/2.8 = 300, so the gap is 0 and nothing is indicated.
+  assert.equal(withLabs.osmolarGap, 0);
+  assert.equal(withLabs.indicated, false);
+
+  // Drop the glucose and the calculated osmolality falls by 10, which is the
+  // whole "gap over 10" limb. It must ask, not answer.
+  const r = toxicAlcohol({ measuredOsm: 300, sodium: 140, bun: 28, recentIngestion: true });
+  assert.equal(r.valid, false);
+  assert.deepEqual(r.missing, ['a glucose']);
+  assert.match(r.band, /Enter a glucose/);
+  assert.equal(r.indicated, undefined);
+  assert.equal(r.osmolarGap, undefined);
+});
+
+test('an omitted BUN does not manufacture an osmolar gap', () => {
+  const r = toxicAlcohol({ measuredOsm: 300, sodium: 140, glucose: 180, recentIngestion: true });
+  assert.equal(r.valid, false);
+  assert.deepEqual(r.missing, ['a BUN']);
+  assert.match(r.band, /Enter a BUN/);
+});
+
+test('both missing are named together, and the refusal says why', () => {
+  const r = toxicAlcohol({ measuredOsm: 300, sodium: 140, recentIngestion: true });
+  assert.equal(r.valid, false);
+  assert.deepEqual(r.missing, ['a glucose', 'a BUN']);
+  assert.match(r.band, /Enter a glucose and a BUN/);
+  assert.match(r.band, /calculated osmolality/);
+});
+
+test('a typed zero is a measurement, not a gap (rule 1)', () => {
+  const r = toxicAlcohol({ measuredOsm: 300, sodium: 140, glucose: 0, bun: 0, recentIngestion: true });
+  assert.equal(r.valid, undefined);
+  assert.equal(r.calcOsm, 280);
+  assert.equal(r.osmolarGap, 20);
+  assert.equal(r.indicated, true);
+});
+
+test('the ethanol stays optional and still defaults out', () => {
+  const r = toxicAlcohol({ measuredOsm: 300, sodium: 140, glucose: 180, bun: 28 });
+  assert.equal(r.calcOsm, 300);
+  assert.match(r.note, /Ethanol defaults to 0/);
+});

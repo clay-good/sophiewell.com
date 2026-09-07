@@ -187,6 +187,10 @@ export const renderers = {
         strongSuspicion: chk('ta-suspicion'),
       });
       if (!r) { o.appendChild(el('p', { class: 'muted', text: 'Enter the measured osmolality and serum sodium.' })); return; }
+      // spec-v1103: the glucose/BUN guard now lives in the library so the agent
+      // surface has it too. needValues above already caught this case; this is
+      // the belt, so a refusal can never fall through to fmt(undefined).
+      if (r.valid === false) { o.appendChild(el('p', { class: 'muted', text: r.band })); return; }
       o.appendChild(list([
         li(`Calculated osmolality: ${fmt(r.calcOsm, { digits: 1, unit: 'mOsm/kg' })} (2 x Na + glucose/18 + BUN/2.8 + ethanol/3.7).`),
         li(`Osmolar gap (measured - calculated): ${fmt(r.osmolarGap, { digits: 1, unit: 'mOsm/kg' })}.`),
