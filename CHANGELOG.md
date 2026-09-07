@@ -33,6 +33,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Three scores reported the best finding there is about determinations nobody
+  made.** A shared lookup pattern falls back to 0 when a factor was not given,
+  and 0 is the most favourable level of every table it reads: so the renal-cell
+  SSIGN score answered "low risk; ~96.8% 5-year cancer-specific survival" for a
+  tumour nobody had staged, a maternal sepsis score answered "low risk of
+  critical-care admission" and printed "all variables normal" for eight vital
+  signs nobody had taken, and the Sjogren's ESSDAI answered "low systemic
+  activity" across twelve unrated organ domains. Each now says what was not
+  determined and that the score is a floor, and withholds the band, the stratum
+  and the survival figure until it is. The most severe reading of each is
+  unchanged, because a missing factor cannot talk it down. See
+  docs/spec-v1109.md.
 - **An unadministered autism screen read "negative -- no further action".** The
   M-CHAT-R/F opens with all twenty items on "Not answered", and it already
   printed a paragraph saying so -- under a headline calling the screen negative

@@ -5,9 +5,19 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { essdai, ESSDAI_DOMAINS } from '../../lib/rheum-ob-v156.js';
 
+// spec-v1109: all twelve domains rated, with the ones under test overridden.
+// The assertions below used to rate one or two and let the other ten fall
+// through to 'No' -- the level meaning "examined and quiet" -- which is the
+// defect that wave fixed, not a test of the weights.
+const rated = (o = {}) => {
+  const all = {};
+  for (const d of ESSDAI_DOMAINS) all[d.key] = 'No';
+  return { ...all, ...o };
+};
+
 test('tile example: the low/moderate 4/5 boundary across multiple weighted domains', () => {
   // articular Moderate (+4) + biological Low (+1) = 5 => moderate (>= 5).
-  const r = essdai({ articular: 'Moderate', biological: 'Low' });
+  const r = essdai(rated({ articular: 'Moderate', biological: 'Low' }));
   assert.equal(r.valid, true);
   assert.equal(r.score, 5);
   assert.equal(r.abnormal, true);
@@ -17,7 +27,7 @@ test('tile example: the low/moderate 4/5 boundary across multiple weighted domai
 
 test('the 4/5 (low/moderate) boundary is exact', () => {
   // articular Moderate alone (+4) is the top of the low band.
-  const four = essdai({ articular: 'Moderate' });
+  const four = essdai(rated({ articular: 'Moderate' }));
   assert.equal(four.score, 4);
   assert.equal(four.bandLabel, 'Low');
   assert.equal(four.abnormal, false);
@@ -25,22 +35,50 @@ test('the 4/5 (low/moderate) boundary is exact', () => {
 
 test('the 13/14 (moderate/high) boundary is exact', () => {
   // muscular Moderate (+12) + biological Low (+1) = 13 => moderate.
-  const thirteen = essdai({ muscular: 'Moderate', biological: 'Low' });
+  const thirteen = essdai(rated({ muscular: 'Moderate', biological: 'Low' }));
   assert.equal(thirteen.score, 13);
   assert.equal(thirteen.bandLabel, 'Moderate');
   // muscular Moderate (+12) + articular Moderate... no, use muscular High (+18) alone = 18 => high.
-  const high = essdai({ muscular: 'High' });
+  const high = essdai(rated({ muscular: 'High' }));
   assert.equal(high.score, 18);
   assert.equal(high.bandLabel, 'High');
   assert.equal(high.abnormal, true);
 });
 
-test('an unselected domain contributes 0, never NaN; all-blank is a valid 0/low', () => {
+test('spec-v1109: an unrated domain is not a quiet one, and never NaN', () => {
   const blank = essdai({});
   assert.equal(blank.valid, true);
   assert.equal(blank.score, 0);
-  assert.equal(blank.bandLabel, 'Low');
+  assert.equal(blank.unrated.length, 12);
+  assert.equal(blank.floorOnly, true);
   assert.ok(!/NaN|undefined/.test(blank.band));
+  assert.match(blank.band, /ESSDAI at least 0 on what was rated/);
+  assert.match(blank.band, /can only raise it/);
+  assert.doesNotMatch(blank.band, /low systemic activity/);
+  assert.doesNotMatch(blank.detail, /No active systemic domain \(total 0\)/);
+  assert.match(blank.detail, /Unrated: /);
+
+  // A fully rated quiet patient still reads as low activity.
+  const quiet = essdai(rated());
+  assert.equal(quiet.bandLabel, 'Low');
+  assert.match(quiet.band, /ESSDAI 0 . low systemic activity/);
+});
+
+test('spec-v1109: high activity rules in even with domains unrated', () => {
+  // Rule 13: an unrated domain cannot bring a floor of 18 back under 14.
+  const r = essdai({ muscular: 'High' });
+  assert.equal(r.score, 18);
+  assert.equal(r.floorOnly, false);
+  assert.equal(r.bandLabel, 'High');
+  assert.match(r.band, /high systemic activity/);
+});
+
+test('spec-v1109: every ESSDAI level is >= 0, which is what makes it a floor', () => {
+  for (const d of ESSDAI_DOMAINS) {
+    for (const [level, points] of Object.entries(d.levels)) {
+      assert.ok(points >= 0, `${d.key}.${level} is ${points}: the floor claim no longer holds`);
+    }
+  }
 });
 
 test('the published domain weights and missing-level structure are intact', () => {

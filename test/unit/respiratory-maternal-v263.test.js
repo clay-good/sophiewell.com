@@ -6,7 +6,7 @@
 // grid triangulated by the 0-28 maximum).
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { mulbsta, ottawaCopd, sepsisObstetricsScore } from '../../lib/respiratory-maternal-v263.js';
+import { mulbsta, ottawaCopd, sepsisObstetricsScore, sosCoefficients } from '../../lib/respiratory-maternal-v263.js';
 
 // --- MuLBSTA ---
 test('mulbsta: no items positive is a zero low-risk score', () => {
@@ -63,16 +63,56 @@ test('ottawa-copd: all ten criteria reach the 16-point maximum', () => {
 });
 
 // --- Sepsis in Obstetrics Score ---
+// spec-v1109: every variable measured and normal, with the ones under test
+// overridden. This assertion used to pass NOTHING and read the eight blanks as
+// eight normal observations, which is the defect that wave fixed.
+const sosNormal = (o = {}) => ({
+  temp: 'normal', sbp: 'normal', hr: 'normal', rr: 'normal',
+  spo2: 'normal', wbc: 'normal', immature: 'normal', lactic: 'normal', ...o,
+});
+
 test('sos: all variables normal is a zero low-risk score', () => {
-  const r = sepsisObstetricsScore({});
+  const r = sepsisObstetricsScore(sosNormal());
   assert.equal(r.valid, true);
   assert.equal(r.score, 0);
   assert.equal(r.abnormal, false);
+  assert.deepEqual(r.unmeasured, []);
   assert.ok(r.band.includes('SOS 0 of 28'));
   assert.ok(r.band.includes('low risk'));
 });
-test('sos: a hypothermic + leukocytotic case crosses the >= 6 cutoff (two-tailed)', () => {
+
+test('spec-v1109: an unrecorded observation set is not a low-risk score', () => {
+  const r = sepsisObstetricsScore({});
+  assert.equal(r.valid, true);
+  assert.equal(r.score, 0);
+  assert.equal(r.unmeasured.length, 8);
+  assert.equal(r.floorOnly, true);
+  assert.match(r.band, /SOS at least 0 of 28 on what was measured/);
+  assert.match(r.band, /can only raise the score/);
+  assert.doesNotMatch(r.band, /low risk of critical-care admission/);
+  // The detail used to say it in words.
+  assert.doesNotMatch(r.detail, /all variables normal/);
+  assert.match(r.detail, /Not recorded: /);
+});
+
+test('spec-v1109: the high-risk reading rules in without waiting for the rest', () => {
+  // Rule 13: an unrecorded variable cannot bring a floor of 6 back under 6.
   const r = sepsisObstetricsScore({ temp: 't30_319', wbc: 'w25_399' });
+  assert.equal(r.score, 6);
+  assert.equal(r.abnormal, true);
+  assert.equal(r.floorOnly, false);
+  assert.match(r.band, /high risk of critical-care admission/);
+});
+
+test('spec-v1109: every SOS point value is >= 0, which is what makes it a floor', () => {
+  for (const [variable, table] of Object.entries(sosCoefficients)) {
+    for (const [level, points] of Object.entries(table)) {
+      assert.ok(points >= 0, `${variable}.${level} is ${points}: the floor claim no longer holds`);
+    }
+  }
+});
+test('sos: a hypothermic + leukocytotic case crosses the >= 6 cutoff (two-tailed)', () => {
+  const r = sepsisObstetricsScore(sosNormal({ temp: 't30_319', wbc: 'w25_399' }));
   // temp 30-31.9 (+3, low tail) + WBC 25-39.9 (+3, high tail) = 6.
   assert.equal(r.score, 6);
   assert.equal(r.abnormal, true);

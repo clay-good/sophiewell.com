@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `85057ded415db6c3`
-Generated: 2026-09-07T21:40:24.253Z
+Build ID: `1ca3a6c81a666ec2`
+Generated: 2026-09-07T21:57:25.404Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -703,7 +703,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/rasrm-stage-v546.js` | 9072 | `c4c7b39d2bbecbf6d2ce31be04de679a418accb5b46d8dd73a86df3acfd35c56` |
 | `lib/rassi-chagas-v851.js` | 6350 | `32fd5c5649daaa93139486e4d909b77c2cb7cb01b7f7861cb1cdf29e5910de62` |
 | `lib/rastelli-avsd-v474.js` | 3480 | `ce357583fded28e0cad061c42d6f72a017763b472552b882ad44a5110b5ab134` |
-| `lib/rcc-prognosis-v266.js` | 4621 | `dd2e544deb3bb3ff78c9454fa9ffb5260860f27f1c2ef4ad3e25e71d9d6bb4f1` |
+| `lib/rcc-prognosis-v266.js` | 6673 | `ff7758911f8c5ff5f0196380c14c1c46f7c49521ca46597e3c878c773208a908` |
 | `lib/rcc-prognosis-v279.js` | 7877 | `65dfbce477ca8b65350799b98f3364d9c2db8bc22f528ced54c19a9e306ab93e` |
 | `lib/reference-change-value-v920.js` | 8688 | `171465315afa19e07e439a5f5306c53c9e2febad5983cb8da9b89936b38b5fe9` |
 | `lib/regan-morrey-v404.js` | 3237 | `6b740bafcf5b1f9e8e306ba3b6863513bc950c73c0f6c46d00a095816929c04a` |
@@ -717,12 +717,12 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/renal-v128.js` | 11142 | `c5e4de65c5edc9d2dad4c7f63d0baf29f47abbfc621f07fca79eea35361c069b` |
 | `lib/renal-v277.js` | 3090 | `08c99f10959b0ec0bc08d9067fb3ab92686a80428d1ddd31ee029c3767dc6574` |
 | `lib/renalpulm-v249.js` | 7088 | `f3a5c749b247759356a20c4f147d62f9b694302882e6d58c3cd05ceae8e5e6d0` |
-| `lib/respiratory-maternal-v263.js` | 9007 | `e983b05aaca13cbc24663ff10b78f9e74842609be7bbddaed82a81bdbac2127c` |
+| `lib/respiratory-maternal-v263.js` | 10799 | `76b727fb9722f26435c63ddfdebab4928ed5b26b370d12d5413671286cbc505d` |
 | `lib/result-copy.js` | 3158 | `33b4ecea181c594f8b9b0631357284f817a4c206e6f367ce0b0be3fd96ddd66d` |
 | `lib/resus-trauma-v207.js` | 10247 | `de821d74c4915f2be35616dce76d9ef07f8237bfd3e2358b73830a5ed5dde55a` |
 | `lib/rheum-classification-v222.js` | 13915 | `95c66ddc0349e0fd38cde0662c0862de9c06e7e0534e4a21bab1108257f5a09b` |
 | `lib/rheum-fn-v280.js` | 8137 | `27469e9bd77ea9899b3446127f132ca1661759f0e860ecd88bc7c2c5a6349534` |
-| `lib/rheum-ob-v156.js` | 16130 | `5c9baf7c3413bc94d4605701c00bb192312e28c44c21b7a1f286b2cf6eb9fd84` |
+| `lib/rheum-ob-v156.js` | 17427 | `00478a61066705ade80bb2d28b90acd3368634aa6bd4ef041210c4beb4b63e1a` |
 | `lib/rheum-periop-v89.js` | 17340 | `1790841f27652b59b42f0b823cebb20ab14903b3962bc1e87d51dbbc46da602e` |
 | `lib/rheum-v147.js` | 28396 | `2684e744e39599fe5bdd32b8447a8078db34ffd2c4fdcba14f7b24c240101040` |
 | `lib/rheum-v148.js` | 29530 | `c4cb0e6ee86e544f6bd1404db9b2d8b477e7b1d95beaa779a33a4ee81dba4f8b` |

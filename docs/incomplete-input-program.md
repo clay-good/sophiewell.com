@@ -190,6 +190,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1106](spec-v1106.md) | **Gate**: the one that was already there, asking a third of the question |
 | [v1107](spec-v1107.md) | The reference level is not "not stated" |
 | [v1108](spec-v1108.md) | The same filter, a fourth and fifth time |
+| [v1109](spec-v1109.md) | The miss-value was the best finding there is |
 
 ### And the same question from the other side
 
