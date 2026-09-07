@@ -8,17 +8,79 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { phoenixSepsis } from '../../lib/peds-sepsis-v278.js';
 
+// spec-v1104: a complete panel, so "below the threshold" is a reading someone
+// earned rather than one four blank fields produced. `support: 'none'` is room
+// air, a real answer, so the respiratory ratio is not owed.
+const ALL_NINE = {
+  support: 'none', vasoactives: 0, lactate: 3, map: 60,
+  platelets: 80, inr: 1, ddimer: 0.5, fibrinogen: 300, gcs: 15,
+};
+
 test('phoenix-sepsis: below the sepsis threshold (score 1)', () => {
   // 60-mo child: MAP 60 (band 60-<144 -> >=49 = 0), lactate 3 (<5 = 0),
   // platelets 80 (<100 = coag 1), GCS 15 (0). Total 1 -> no sepsis.
-  const r = phoenixSepsis({ ageMonths: 60, map: 60, lactate: 3, platelets: 80, gcs: 15 });
+  const r = phoenixSepsis({ ageMonths: 60, ...ALL_NINE });
   assert.equal(r.valid, true);
   assert.equal(r.score, 1);
   assert.equal(r.cardio, 0);
   assert.equal(r.coag, 1);
   assert.equal(r.sepsis, false);
   assert.equal(r.shock, false);
-  assert.ok(r.band.includes('below the Phoenix'));
+  assert.deepEqual(r.missing, []);
+  assert.match(r.bandLabel, /^Phoenix 1 . below sepsis threshold$/);
+  assert.ok(r.band.includes('below the Phoenix >= 2 organ-dysfunction threshold'));
+});
+
+test('spec-v1104: a partial panel does not rule sepsis out', () => {
+  // One normal platelet count used to answer "Phoenix 0/13, below the Phoenix
+  // >= 2 organ-dysfunction threshold for sepsis" about a child.
+  const r = phoenixSepsis({ ageMonths: 60, platelets: 250 });
+  assert.equal(r.valid, true);
+  assert.equal(r.score, 0);
+  assert.equal(r.sepsis, false);
+  assert.equal(r.missing.length, 7);
+  // Rule 14: the headline, not only the detail.
+  assert.match(r.bandLabel, /so far/);
+  assert.doesNotMatch(r.bandLabel, /^Phoenix 0 . below sepsis threshold$/);
+  assert.match(r.band, /scored from 2 of 9 organ-system values/);
+  assert.match(r.band, /can only raise it/);
+  assert.match(r.band, /does not rule sepsis out/);
+  assert.match(r.detail, /Not entered: .*a lactate/);
+});
+
+test('spec-v1104: sepsis rules in without footing, but "not shock" does not', () => {
+  // Phoenix >= 2 is a floor the missing values cannot lower (rule 13), so the
+  // sepsis verdict stands as it is. Shock is a SECOND threshold, on the
+  // cardiovascular limb alone, and calling it absent is a rule-out of its own.
+  const r = phoenixSepsis({
+    ageMonths: 60, support: 'imv', ratioType: 'pf', ratio: 150, platelets: 80, inr: 1.5, gcs: 9,
+  });
+  assert.equal(r.sepsis, true);
+  assert.equal(r.shock, false);
+  assert.match(r.bandLabel, /^Phoenix 5 . sepsis threshold$/);
+  assert.match(r.band, /meets the consensus definition of SEPSIS/);
+  assert.match(r.band, /Septic shock is not ruled out/);
+  for (const owed of ['a vasoactive-medication count', 'a lactate', 'a mean arterial pressure']) {
+    assert.ok(r.band.includes(owed), `the caveat should name ${owed}`);
+  }
+
+  // The same child with a measured MAP of 30 is septic SHOCK, which is what the
+  // caveat was holding the door open for.
+  const withMap = phoenixSepsis({
+    ageMonths: 60, support: 'imv', ratioType: 'pf', ratio: 150, platelets: 80, inr: 1.5, gcs: 9,
+    map: 30, lactate: 1, vasoactives: 0,
+  });
+  assert.equal(withMap.shock, true);
+  assert.doesNotMatch(withMap.band, /not ruled out/);
+});
+
+test('spec-v1104: a cardiovascular limb that WAS measured earns its rule-out', () => {
+  const r = phoenixSepsis({
+    ageMonths: 120, platelets: 80, inr: 1.5, gcs: 10, map: 70, lactate: 2, vasoactives: 0,
+  });
+  assert.equal(r.sepsis, true);
+  assert.equal(r.shock, false);
+  assert.doesNotMatch(r.band, /Septic shock is not ruled out/);
 });
 
 test('phoenix-sepsis: meets sepsis but not shock (cardiovascular 0)', () => {

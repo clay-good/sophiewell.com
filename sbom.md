@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `270e5b1401d47aef`
-Generated: 2026-09-07T18:11:55.388Z
+Build ID: `c90531340e76f561`
+Generated: 2026-09-07T18:54:48.537Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -491,7 +491,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/marsh-oberhuber-v423.js` | 3970 | `283c02c5cf571e22696a6ca0e315a9e4c10b66dd0fd264c08c58fe2ba1589c27` |
 | `lib/marsi-v902.js` | 7682 | `5ca5a0d700bf67bf310126e4db018e74b5b64344ed778d9b70abba140a3b81f2` |
 | `lib/masaoka-v650.js` | 4093 | `33d7955dadbd3ab884dcab9a05d1b88f1fd748d97a16bd3ac31ca97eba9d8cb6` |
-| `lib/masld-criteria-v837.js` | 10568 | `6048d9e1831bf0dc11ffab5dd3115dbdb5ae3c988277073197c8db51ed81477f` |
+| `lib/masld-criteria-v837.js` | 13916 | `e1e69ffb0b0019fccfb9d8bc8b41d5861f7288d52d25a5674198ada783488430` |
 | `lib/mason-radial-head-v341.js` | 4841 | `5f3e5f6a2c2324d646a167f847a587dc1068e54cfb876bc4723212ea057cd4e2` |
 | `lib/massive-transfusion-v265.js` | 3240 | `7ad4d1d86063fdd077546be5d6381ea4a5024ef669389f88abdfe07850903b29` |
 | `lib/mayfield-perilunate-v414.js` | 4219 | `dbec2e4abce7912c621e5cee9f8bdb1fa3555240da1d08a3f75f448fd0297fc4` |
@@ -638,7 +638,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/pedis-v613.js` | 8884 | `f158474599314efcff28d525a5512b83d595a7fc21d75bb30dac2620d741b6b9` |
 | `lib/peds-growth-v141.js` | 13014 | `47eb194a4f8eb9cc7007429c7843e48cd7fa8780ebcd8a2201bd119f78eb154d` |
 | `lib/peds-percentile-v169.js` | 8290 | `dbaec78619e7c9190044c9cdb8ecd8a2bb03a871f351e0454a06e1c5b816e9b0` |
-| `lib/peds-sepsis-v278.js` | 8360 | `8611b803d3273833b65d5d11eb7de6dc14af6fa36a739cc72700290606b8ef83` |
+| `lib/peds-sepsis-v278.js` | 11203 | `e5b4bf2517c6964094b740dc9a30e28ba4e566ceb179dcc53894d9fcc0ad3f21` |
 | `lib/peds-v140.js` | 19548 | `9cdb52162767466d9f79bef4cdd351ae7f0b616d00c5013cc86a7cfef51e631f` |
 | `lib/peds-v98.js` | 17977 | `34cd4b31d15b01023b31b4f91ae4a6bd21fc2e809798b6e91fc5551952db3063` |
 | `lib/pedstox-v247.js` | 7629 | `9ffa2359f05cf582c46fc4d77d02a7906b0f0e62b6b5a952bafaebd45ef4b4a6` |

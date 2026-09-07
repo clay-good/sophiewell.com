@@ -20,6 +20,23 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A single normal platelet count ruled out sepsis in a child.** The Phoenix
+  Sepsis Score is a sum of nine organ-system values, and every limb read a blank
+  one as scoring nothing -- so what had been entered was a floor, and the tile
+  gave the below-threshold reading from any subset of it. It now says how many
+  of the nine were scored and that the blanks can only raise the total, in the
+  headline as well as the detail. Separately, with the whole cardiovascular limb
+  unmeasured a genuine septic shock read as sepsis, because shock turns on that
+  sub-score alone; the tile now says shock is not ruled out and names the values
+  it is waiting for. See docs/spec-v1104.md.
+- **"Cryptogenic SLD" was given without any of the exclusions that define it.**
+  Of the four steatotic liver disease categories, three are reached by something
+  found and one -- cryptogenic -- means steatosis with NONE of the five
+  cardiometabolic criteria. Each criterion was read as absent when it was merely
+  unmeasured, so a form with only the steatosis box ticked produced the same
+  sentence as a complete normal workup. The tile now separates "not met" from
+  "not assessed", asks for the criteria nobody measured, and leaves the
+  rule-in categories alone. See docs/spec-v1104.md.
 - **The toxic-alcohol tile indicated fomepizole from two labs nobody entered.**
   The glucose and the BUN are additive terms in the calculated osmolality, and a
   blank one was read as zero -- which made the calculated value too low and the

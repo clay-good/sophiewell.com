@@ -166,6 +166,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1101](spec-v1101.md) | A finder for "one tile, two gaps, one guarded" |
 | [v1102](spec-v1102.md) | The finder was only looking at numbers |
 | [v1103](spec-v1103.md) | The guard that only one surface had |
+| [v1104](spec-v1104.md) | A diagnosis of exclusion, without the exclusions |
 
 ### And the same question from the other side
 
@@ -332,9 +333,16 @@ What is left is narrower than when this page was written:
   not in the library. The other twelve are correct and the reason for each is written down in that
   spec, so a later pass recognises them rather than re-investigating.
 
-  **What is genuinely left** is the finder's third bucket, *verdict could change* — 33 fields across
-  23 calculators — which is a weaker signal by construction: a verdict that moves without `abnormal`
-  flipping. Worth a pass; not a defect list.
+  ~~**What is genuinely left** is the finder's third bucket, *verdict could change*.~~ **Read** in
+  [spec-v1104](spec-v1104.md): 30 of its 32 remaining rows are correct behaviour and each reason is
+  written down there. The two that were not are `masld-criteria`, which gave *cryptogenic SLD* — the
+  one category in the 2023 nomenclature defined by ABSENCE — without any of the five criteria having
+  been assessed, and `phoenix-sepsis`, which ruled out paediatric sepsis from a single normal
+  platelet count. The second is the larger defect this programme has found in eleven waves, and the
+  bucket that found it was the one graded weakest. **A prioritiser ranks what to read first; it does
+  not rank what is there.**
+
+  With that the finder has no unexplained rows left in any of its three sections.
 
 - ~~**95 fields still change the AGENT's answer when omitted, without saying so**~~
   (`scripts/probe-omitted-item.mjs`, spec-v1073; the count was read as 93 until spec-v1075 stopped
