@@ -38,3 +38,43 @@ test('total 0 reports no envenomation findings', () => {
 test('blank input returns a complete-the-fields fallback', () => {
   assert.equal(snakebiteSeverity({}).valid, false);
 });
+
+// --- spec-v1105: an unexamined system is not a system scored 0 ---
+
+test('spec-v1105: a partial score is a floor, and says which systems were not examined', () => {
+  const r = snakebiteSeverity({ local: 2 });
+  assert.equal(r.valid, true);
+  assert.equal(r.total, 2);
+  assert.deepEqual(r.unscored, ['pulmonary', 'cardiovascular', 'gi', 'hematologic', 'cns']);
+  assert.match(r.band, /a floor, not a severity reading/);
+  assert.match(r.band, /scored from 1 of the 6 body systems/);
+  assert.match(r.band, /can only raise it/);
+  // Rule 11: five system examinations must not be stated as findings of zero.
+  assert.match(r.band, /pulmonary not examined/);
+  assert.doesNotMatch(r.band, /pulmonary 0/);
+  assert.doesNotMatch(r.band, /minimal-mild/);
+});
+
+test('spec-v1105: examined-and-normal reads differently from unexamined', () => {
+  const examined = snakebiteSeverity({ pulmonary: 0, cardiovascular: 0, local: 2, gi: 0, hematologic: 0, cns: 0 });
+  const not = snakebiteSeverity({ local: 2 });
+  assert.equal(examined.total, not.total);
+  assert.notEqual(examined.band, not.band, 'the two states used to produce the identical sentence');
+  assert.match(examined.band, /lower third of the 0-20 range/);
+  assert.deepEqual(examined.unscored, []);
+});
+
+test('spec-v1105: the severe tier rules in and needs no footing', () => {
+  // Rule 13: 14 of 20 is a floor the unexamined systems cannot lower.
+  const r = snakebiteSeverity({ pulmonary: 3, cardiovascular: 3, local: 4, gi: 2, hematologic: 1, cns: 1 });
+  assert.match(r.band, /upper third of the 0-20 range \(severe\)/);
+  assert.doesNotMatch(r.band, /floor/);
+});
+
+test('spec-v1105: "no envenomation findings scored" needs all six examined', () => {
+  assert.match(
+    snakebiteSeverity({ pulmonary: 0, cardiovascular: 0, local: 0, gi: 0, hematologic: 0, cns: 0 }).band,
+    /no envenomation findings scored/,
+  );
+  assert.doesNotMatch(snakebiteSeverity({ pulmonary: 0 }).band, /no envenomation findings scored/);
+});

@@ -20,6 +20,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **The Snakebite Severity Score printed five examinations nobody performed.**
+  Its adapter has required all six body systems of an agent since
+  docs/spec-v1073.md, saying in its own summary that an unexamined system is not
+  a system scored 0; the library read a blank sub-score as a zero anyway, and
+  the page goes through the library. One system entered produced the same
+  sentence as a complete examination with five normal systems. The six picklists
+  also started at 0 with no way to say "not examined", so the tile opened
+  reading "no envenomation findings scored" for a patient nobody had touched.
+  See docs/spec-v1105.md.
+- **A frostbite prognosis was given before the tests it depends on.** The Cauchy
+  grade is the most severe of three findings, so one not yet made can only raise
+  it, and grade 1 read "no amputation, no sequela" with the day-2 bone scan and
+  blisters outstanding. It now says what is outstanding. The bone-scan picklist
+  offered four options where the tool accepts five, because "Not done / normal
+  uptake" conflated two different answers; they are now separate, which is what
+  made an honest footnote possible.
 - **A single normal platelet count ruled out sepsis in a child.** The Phoenix
   Sepsis Score is a sum of nine organ-system values, and every limb read a blank
   one as scoring nothing -- so what had been entered was a floor, and the tile

@@ -57,6 +57,13 @@ const SYMPTOM_OPTS = (label0, label3) => [
   { value: '3', text: `3 -- ${label3}` },
 ];
 const SUB_OPTS = (max) => Array.from({ length: max + 1 }, (_, i) => ({ value: String(i), text: String(i) }));
+// spec-v1105: rule 8 -- a control that cannot say "not answered" will be read as
+// an answer. SUB_OPTS starts at 0 and a select always carries its first option,
+// so the Snakebite Severity tile opened at "SSS 0/20: no envenomation findings
+// scored" for a patient nobody had examined. `selNum` already returns null for an
+// empty value, so an empty first option is all the library's spec-v1105 guard
+// needs to see.
+const SSS_OPTS = (max) => [{ value: '', text: 'Not examined' }, ...SUB_OPTS(max)];
 
 export const renderers = {
   // ----- 2.1 lake-louise-ams --------------------------------------------
@@ -116,12 +123,12 @@ export const renderers = {
   // ----- 2.3 snakebite-severity -----------------------------------------
   'snakebite-severity'(root) {
     note(root, 'Snakebite Severity Score: six body-system subscores summed (total 0-20). A continuous severity index -- Dart 1996 defines no fixed minimal/moderate/severe cutoff; higher is more severe.');
-    root.appendChild(selectField('Pulmonary system (0-3)', 'ss-pul', SUB_OPTS(3)));
-    root.appendChild(selectField('Cardiovascular system (0-3)', 'ss-cv', SUB_OPTS(3)));
-    root.appendChild(selectField('Local wound (0-4)', 'ss-loc', SUB_OPTS(4)));
-    root.appendChild(selectField('Gastrointestinal system (0-3)', 'ss-gi', SUB_OPTS(3)));
-    root.appendChild(selectField('Hematologic system (0-4)', 'ss-hem', SUB_OPTS(4)));
-    root.appendChild(selectField('Central nervous system (0-3)', 'ss-cns', SUB_OPTS(3)));
+    root.appendChild(selectField('Pulmonary system (0-3)', 'ss-pul', SSS_OPTS(3)));
+    root.appendChild(selectField('Cardiovascular system (0-3)', 'ss-cv', SSS_OPTS(3)));
+    root.appendChild(selectField('Local wound (0-4)', 'ss-loc', SSS_OPTS(4)));
+    root.appendChild(selectField('Gastrointestinal system (0-3)', 'ss-gi', SSS_OPTS(3)));
+    root.appendChild(selectField('Hematologic system (0-4)', 'ss-hem', SSS_OPTS(4)));
+    root.appendChild(selectField('Central nervous system (0-3)', 'ss-cns', SSS_OPTS(3)));
     const o = out(); root.appendChild(o);
     wire(['ss-pul', 'ss-cv', 'ss-loc', 'ss-gi', 'ss-hem', 'ss-cns'], () => safe(o, () => {
       const r = M.snakebiteSeverity({
@@ -147,13 +154,21 @@ export const renderers = {
       { value: 'intermediate-proximal', text: 'Intermediate / proximal phalanx' },
       { value: 'carpal-tarsal', text: 'Carpal / tarsal (whole hand or foot)' },
     ]));
+    // spec-v1105: the adapter has declared five bone-scan values since it was
+    // written and this list offered four, because "Not done / normal uptake"
+    // conflated them. They are not the same thing: a normal scan is a finding
+    // that does not upgrade the grade, and an undone one is no finding at all.
+    // While they shared an option no honest footnote was possible -- the tile
+    // could not tell the reader which of the two it had been told.
     root.appendChild(selectField('Day-2 bone scan', 'cf-bone', [
-      { value: 'not-done', text: 'Not done / normal uptake' },
+      { value: 'not-done', text: 'Not done' },
+      { value: 'normal', text: 'Normal uptake' },
       { value: 'hypofixation', text: 'Hypofixation of radiotracer (digit)' },
       { value: 'absent-digit', text: 'Absent uptake in the digit' },
       { value: 'absent-carpal-tarsal', text: 'Absent uptake in the carpal / tarsal area' },
     ]));
     root.appendChild(selectField('Day-2 blisters', 'cf-blist', [
+      { value: '', text: 'Not recorded' },
       { value: 'none', text: 'None' },
       { value: 'clear', text: 'Clear / serous blisters' },
       { value: 'hemorrhagic-digit', text: 'Hemorrhagic blisters on the digit' },

@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `c90531340e76f561`
-Generated: 2026-09-07T18:54:48.537Z
+Build ID: `2567e208bc333bf3`
+Generated: 2026-09-07T19:43:37.884Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -266,7 +266,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/enneking-v460.js` | 3397 | `5f0a323b907db13850e71165ddd2b21e7531734f7a26c12086c36710e01c27e3` |
 | `lib/entsleep-v243.js` | 7779 | `d4d6727b2e242d288f476fe4823fce9799f6c820e5d2e9af8ffc391c3cfad7bc` |
 | `lib/enturopsych-v254.js` | 8040 | `fda74506629d3035d3c24c18a3cf6faf49a5fa79e3807f01d188c73d6720bd83` |
-| `lib/enviro-v111.js` | 14119 | `77ba090d075f4f9fd608f9afc6f30b68fd3612f5c6719addbe75658a7e6a12ae` |
+| `lib/enviro-v111.js` | 17060 | `462ca14ae9d8c6347b450ef69250908cd51f8294aa0bcf2bb3b15d2ef395ff19` |
 | `lib/environ-v242.js` | 7645 | `7fc43e83281b5d7ea301bc962322b3c149ff800873d8494971902291de51cd89` |
 | `lib/eortc-msg-ifd-v869.js` | 9785 | `846502bc39581253f8ffe1cf38dcd5e926144f344ae528fcfab13c02cc24ba01` |
 | `lib/eoss-v713.js` | 3955 | `150229c936465a637e488f83903837324b8752c7051b42903c784ffbae404441` |
@@ -1962,7 +1962,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v357.js` | 3048 | `614779b3f03fec947add94c14905e1db60ed44c8c747fc6da75ecd42aa07537e` |
 | `views/group-v358.js` | 3062 | `fd94280081f924f28f132ce7d2cb32e2c3d1add59533c1b9bd72a92fd2ecf5b4` |
 | `views/group-v359.js` | 3267 | `9c3458bddde835e342bb35e36ba379c5c1d47875422470211b333af2ff0d9cfe` |
-| `views/group-v36.js` | 9701 | `27235c5bd11c79ea046d75fe20f455c2648c6cbc31a1e1f2a9c1fccbcd41c693` |
+| `views/group-v36.js` | 10746 | `deed2e9580bbf89035187dc6843631562057f0377a6b137ad64ea28b2ce42fe8` |
 | `views/group-v360.js` | 2964 | `d27baad7559e1d32ad40ac14017b945ae31475d857aea104e3fdd6b84fd73d33` |
 | `views/group-v361.js` | 3089 | `47de7e00cb53768a8030267662255fca9633bb66d7bcdd6ad7bb7e50f40c4669` |
 | `views/group-v362.js` | 3024 | `8fac3379701ec19a6130943fdb5ff01ee31ec21a8188415708fc20a8ac484162` |

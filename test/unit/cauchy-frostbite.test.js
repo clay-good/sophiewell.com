@@ -43,3 +43,30 @@ test('carpal-tarsal topography -> grade 4 (limb amputation)', () => {
 test('missing topography returns a complete-the-fields fallback', () => {
   assert.equal(cauchyFrostbite({}).valid, false);
 });
+
+// --- spec-v1105: the grade is the most severe of three findings ---
+
+test('spec-v1105: an outstanding day-2 finding makes the grade a floor', () => {
+  const dayZero = cauchyFrostbite({ topography: 'none' });
+  assert.equal(dayZero.grade, 1);
+  assert.deepEqual(dayZero.outstanding, ['the day-2 bone scan', 'the day-2 blister character']);
+  assert.match(dayZero.band, /Graded on what has been recorded/);
+  assert.match(dayZero.band, /can only raise/);
+});
+
+test('spec-v1105: "not done" and "normal uptake" are different answers', () => {
+  // They shared one option on screen, so no honest footnote was possible.
+  const notDone = cauchyFrostbite({ topography: 'none', boneScan: 'not-done', blisters: 'none' });
+  const normal = cauchyFrostbite({ topography: 'none', boneScan: 'normal', blisters: 'none' });
+  assert.equal(notDone.grade, normal.grade);
+  assert.deepEqual(notDone.outstanding, ['the day-2 bone scan']);
+  assert.deepEqual(normal.outstanding, []);
+  assert.match(notDone.band, /the day-2 bone scan is outstanding/);
+  assert.doesNotMatch(normal.band, /outstanding/);
+});
+
+test('spec-v1105: grade 4 is the ceiling and needs no footing', () => {
+  const r = cauchyFrostbite({ topography: 'carpal-tarsal' });
+  assert.equal(r.grade, 4);
+  assert.doesNotMatch(r.band, /outstanding/);
+});

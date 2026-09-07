@@ -80,7 +80,11 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
     which 698 of 1,682 tiles never set, so "the section is empty" meant nothing about two fifths of
     the catalog. Any check keying on an *optional* field must print how many subjects carry it.
 
-18. **A guard in a renderer is a guard for one surface** (spec-v1103). `toxic-alcohol` had refused
+18. **A guard in a renderer is a guard for one surface** (spec-v1103), and in an ADAPTER too
+    (spec-v1105): `snakebite-severity` has required all six body systems of an agent since
+    spec-v1073, with "an unexamined system is not a system scored 0" written in the adapter's own
+    summary, while the library read a blank as a zero and the page printed five examinations nobody
+    performed. `toxic-alcohol` had refused
     a missing glucose and BUN in `views/group-v12.js` since spec-v1065, with the reasoning written
     out — and answered every API caller anyway, because the guard was in the renderer and not in
     the function both surfaces call. This is spec-v1073's split from the other direction: that wave
@@ -167,6 +171,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1102](spec-v1102.md) | The finder was only looking at numbers |
 | [v1103](spec-v1103.md) | The guard that only one surface had |
 | [v1104](spec-v1104.md) | A diagnosis of exclusion, without the exclusions |
+| [v1105](spec-v1105.md) | The guard was in the adapter, so the page never got it |
 
 ### And the same question from the other side
 
@@ -350,7 +355,9 @@ What is left is narrower than when this page was written:
   the ICHD-3 headache family and spec-v1077 the CDAI diary). The gate that wave shipped covers instruments
   built entirely of rated items; what is left is the mixed kind, where checklist criteria sit
   beside measurements and a blanket `required` would refuse calls that are legitimately partial.
-  `snakebite-severity` prints "pulmonary 0" for a system nobody examined.
+  ~~`snakebite-severity` prints "pulmonary 0" for a system nobody examined.~~ Fixed in
+  [spec-v1105](spec-v1105.md), along with its neighbour `cauchy-frostbite` and a bone-scan picklist
+  that offered four of the five values its adapter declares.
 
 - **146 coercion helpers cannot tell a blank from a zero** (`scripts/probe-blank-coercions.mjs`).
   Most are harmless; which ones are not depends on what their renderer sends, so the report is a
