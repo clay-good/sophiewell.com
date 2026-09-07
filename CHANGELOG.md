@@ -20,6 +20,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **The ankle-brachial index divided by a brachial pressure nobody took.** The
+  index divides by the higher of the two brachial pressures, and a missing one
+  counted as zero in that comparison — so a single brachial could only shrink the
+  divisor and inflate the index, and a larger ABI reads as less disease. The tile
+  already carried this caveat for a missing ankle pressure; the brachial half of
+  the same divisor was silent. It now says so, except where the reading is already
+  severe and cannot move further that way. See docs/spec-v1100.md.
+
 - **Hyperosmolar hyperglycemic state was classified from ketones nobody
   measured.** Minimal ketosis is one of the HHS criteria, and the tile asserted
   it in the result text while its other exit already refused for exactly that

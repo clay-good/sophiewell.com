@@ -155,6 +155,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1097](spec-v1097.md) | The same rule, phrased three ways: which belong to the list and which to the tile |
 | [v1098](spec-v1098.md) | The last two, and why the finder's remaining rows are correct |
 | [v1099](spec-v1099.md) | The finder could not see two fifths of the catalog |
+| [v1100](spec-v1100.md) | The other half of the same divisor, and the weakest section read |
 
 ### And the same question from the other side
 

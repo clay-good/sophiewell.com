@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `8f2ae9adfd063a67`
-Generated: 2026-09-07T06:50:11.513Z
+Build ID: `fb420dd1229167d8`
+Generated: 2026-09-07T11:23:10.490Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -858,7 +858,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/van-herick-v435.js` | 3423 | `1df5f89865068a14369482f3bd141c7ef8999a49e9e3b6ada87ebcffb36cdd15` |
 | `lib/van-nuys-vnpi-v652.js` | 5583 | `59049426b6b97b137e2c28ae2072640f2310ed548c27027eac6e069e334ddcaf` |
 | `lib/vancouver-periprosthetic-v483.js` | 3496 | `49ecf63cc801a1b465268edd621659b820dad6556472ff09b40e428eb12575bf` |
-| `lib/vascular-v105.js` | 15623 | `2449631a3b0b038fed08cb091f8250bcc48da1301d1abf1339e4873024bd14db` |
+| `lib/vascular-v105.js` | 16900 | `d28cd9da75d6348a32634ba9fc6b84e6b2c12dd048cbbc7e26db75b9e032f446` |
 | `lib/vasi-v556.js` | 12850 | `c1e3bdab22509ed3895f5dae68d974242064c27bd047889d8a0d80c1491bd204` |
 | `lib/vaughan-williams-v427.js` | 4207 | `241cb6fc10d5a9b15a3a849ab44f7887e7508a99daa8a9c55567feb737b1893d` |
 | `lib/vent-v195.js` | 9473 | `9f8fd14cdaa7e971da29cc8bdc6247bf8c7e3974daae70bc597e2269c400c110` |

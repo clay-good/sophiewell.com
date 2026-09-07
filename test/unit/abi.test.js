@@ -68,3 +68,36 @@ test('one ankle pressure is one leg, not the lower of two (spec-v1067)', () => {
   assert.match(both.band, /lower index governs/);
   assert.doesNotMatch(both.band, /not entered/);
 });
+
+// spec-v1100: the divisor is the HIGHER of the two brachial pressures, and
+// `Math.max(rb || 0, lb || 0)` lets a brachial nobody measured contribute 0. So a
+// single brachial can only make the divisor smaller, which can only make the
+// index LARGER -- and a larger ABI reads as less disease.
+//
+// spec-v1067 already added this caveat for a missing ANKLE. The brachial half of
+// the same divisor was left silent, so one tile guarded one of its two gaps.
+test('spec-v1100: one brachial pressure can only inflate the index, and says so', () => {
+  const oneBrachial = abi({ rightAnkle: 126, rightBrachial: 140 });
+  assert.equal(oneBrachial.onlyOneBrachial, true);
+  assert.match(oneBrachial.band, /Only the right brachial pressure was entered/);
+  assert.match(oneBrachial.band, /can only make this index larger/);
+
+  // The move it warns about: the real higher brachial lowers the index a full
+  // band's worth of ground.
+  const both = abi({ rightAnkle: 126, rightBrachial: 140, leftBrachial: 160 });
+  assert.equal(both.onlyOneBrachial, false);
+  assert.doesNotMatch(both.band, /Only the/);
+  assert.ok(both.governing.value < oneBrachial.governing.value);
+
+  // Silent at the severe end: an index at or below 0.40 cannot be talked
+  // further down by a bigger divisor, so that reading is already the floor.
+  const severe = abi({ rightAnkle: 40, rightBrachial: 140 });
+  assert.equal(severe.governing.band, 'severe PAD');
+  assert.doesNotMatch(severe.band, /Only the/);
+
+  // NOT silent above 1.40: an inflated index reads as non-compressible and
+  // sends the reader to a toe-brachial index they may not need.
+  const high = abi({ rightAnkle: 200, rightBrachial: 130 });
+  assert.equal(high.governing.band, 'non-compressible');
+  assert.match(high.band, /Only the/);
+});
