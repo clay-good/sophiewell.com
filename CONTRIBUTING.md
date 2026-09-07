@@ -218,9 +218,21 @@ tile computed for the inputs given, never its `note`: that field is static prose
 printed on every call, and matching the asking vocabulary against it excused a
 tile for the word "missing" in a footnote (`docs/spec-v1075.md`).
 
-A `<select>` the registry describes as a bare `kind: 'number'` is invisible to
-that assertion and to `field-values-match-dom` alike, since both find picklists
-by the declared `values`. `test/integration/undeclared-picklist-probe.spec.js`
+`field-values-match-dom.spec.js` holds every declared `values` list to the options
+its tile actually renders, in both directions: a value the form does not offer is
+a reader who cannot give an answer the tool accepts, and an option the form offers
+that the tool would reject is the same problem the other way round. It reads each
+select twice, once at rest and once after perturbing every other control, because
+some lists are rebuilt by another field. spec-v1106 widened it to enum fields
+(2,341 of the 2,986 declared lists sit on one), taught the perturbation to move
+number inputs, and stopped it counting the blank "not recorded" option on one side
+only. A select the renderer populates from data the adapter does not have belongs
+in that file's `OFFERS_MORE_THAN_IT_ACCEPTS` map with the reason
+(`docs/spec-v1106.md`).
+
+A `<select>` the registry describes as a bare `kind: 'number'` with no `values` is
+invisible to that assertion and to `field-values-match-dom` alike, since both find
+picklists by the declared `values`. `test/integration/undeclared-picklist-probe.spec.js`
 is the finder; it asserts nothing and is excluded from CI:
 
 ```bash

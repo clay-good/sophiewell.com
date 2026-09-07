@@ -18,6 +18,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed
+
+- **A check that compares what the tool accepts with what the page offers was
+  only looking at a third of the catalog.** A calculator's list of accepted
+  values is published to agents in its input schema, and this check has held it
+  against the picklist on the page for a long time -- while looking only at
+  fields typed as numbers, which is 645 of the 2,986 lists; while skipping the
+  number inputs that the one dynamic case named in its own comments depends on;
+  and while counting the blank "not recorded" option on one side of the
+  comparison but not the other. Widened, it finds the frostbite bone-scan
+  mismatch fixed in this release, and one remaining difference which is correct
+  and is now recorded with the reason. See docs/spec-v1106.md.
+
 ### Fixed
 
 - **The Snakebite Severity Score printed five examinations nobody performed.**

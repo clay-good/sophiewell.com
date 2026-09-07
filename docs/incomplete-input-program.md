@@ -75,7 +75,14 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
     house's, so `test/lib/asking-language.js` was incomplete; `No threshold was entered` (1 file) is
     that tile's idiom, so the tile changed. Widening a list a real gate depends on is the one move
     that can silently un-protect other tiles — measure first, and record the measurement in the file.
-17. **A finder's reach is part of its result** (spec-v1099). Its first section keys on `abnormal`,
+17. **A finder's reach is part of its result** (spec-v1099) — and a GATE's too (spec-v1106).
+    `field-values-match-dom.spec.js` was green while `cauchy-frostbite` was wrong, because it
+    filtered on `kind === 'number'` and 2,341 of the catalog's declared lists sit on enums; because
+    its perturbation skipped the number inputs the one case it names in its own header depends on;
+    and because it stripped the empty option from one side of the comparison only. Widening it took
+    the run from 0 disagreements to 29 to 1. **A gate reporting clean is a claim about its reach,
+    not about the catalog**, so a check that filters its subjects should assert how many it kept.
+    The finder's own version of the same thing: its first section keys on `abnormal`,
     <!-- catalog-truth:historical -->
     which 698 of 1,682 tiles never set, so "the section is empty" meant nothing about two fifths of
     the catalog. Any check keying on an *optional* field must print how many subjects carry it.
@@ -172,6 +179,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1103](spec-v1103.md) | The guard that only one surface had |
 | [v1104](spec-v1104.md) | A diagnosis of exclusion, without the exclusions |
 | [v1105](spec-v1105.md) | The guard was in the adapter, so the page never got it |
+| [v1106](spec-v1106.md) | **Gate**: the one that was already there, asking a third of the question |
 
 ### And the same question from the other side
 
@@ -237,6 +245,7 @@ tile still render a control with no empty state?
 | `one-blank-field.spec.js` | with a calculator filled from its example, does clearing ONE measurement change the answer without asking for it or disclosing it? | 1.6 min |
 | `derivation-agrees.spec.js` | when a calculator refuses, does the "show your work" panel below still display the calculation? | 13 s |
 | `rated-items-are-required.test.js` | does an instrument built only of rated items answer a call carrying none of them, and does omitting one picklist item silently move an answer? | 7 s |
+| `field-values-match-dom.spec.js` | is every answer the schema offers an agent an option a reader can choose, and the reverse? | 1.8 min |
 
 Each has a ledger for the tiles that legitimately do the thing it looks for, and each was verified
 by reintroducing the defect and watching it fail.
