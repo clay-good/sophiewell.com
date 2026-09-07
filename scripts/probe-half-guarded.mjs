@@ -74,7 +74,12 @@ for (const tool of allCalculators()) {
   const silent = [];
 
   for (const f of tool.fields || []) {
-    if (f.kind !== 'number') continue;
+    // spec-v1102: numbers AND enums. Booleans are excluded on purpose -- rule 4
+    // of the programme says an unticked checkbox is a real "no", so a missing
+    // boolean is an answer rather than a gap. An enum is different: the browser
+    // always sends one because a select always has a value, but an API caller
+    // omits keys by default, which is the surface split spec-v1073 is about.
+    if (f.kind !== 'number' && f.kind !== 'enum') continue;
     if (ex[f.dom] === undefined || String(ex[f.dom]).trim() === '') continue;
 
     const partial = { ...ex };

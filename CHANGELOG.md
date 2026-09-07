@@ -20,6 +20,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A fetal heart-rate tracing nobody described was graded Category I.** Every
+  fallback in the tile was the normal value, so with only a baseline rate it
+  asserted moderate variability and absent decelerations and returned the
+  category that means no action is needed; omitting the variability also took a
+  genuine Category III tracing down to Category II. It now says which features
+  were not entered and refuses the categories that need them.
+- **King's College Criteria read an unstated encephalopathy grade as an absent
+  one.** A default parameter fired whenever the argument was missing, so an
+  omitted grade failed the three-part limb and turned "Meets King's College
+  Criteria — refer/list for transplant" into "Does not meet". The limb is now
+  reported incomplete, as it already was for a missing INR or creatinine. See
+  docs/spec-v1102.md.
+
 - **Heart-failure classification named the missing baseline in one band and not
   the other.** The improved-ejection-fraction category needs only a current
   measurement above 40 percent, which covers the preserved range as well as the

@@ -157,6 +157,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1099](spec-v1099.md) | The finder could not see two fifths of the catalog |
 | [v1100](spec-v1100.md) | The other half of the same divisor, and the weakest section read |
 | [v1101](spec-v1101.md) | A finder for "one tile, two gaps, one guarded" |
+| [v1102](spec-v1102.md) | The finder was only looking at numbers |
 
 ### And the same question from the other side
 

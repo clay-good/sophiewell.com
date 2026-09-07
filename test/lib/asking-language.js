@@ -83,5 +83,12 @@ export const DISCLOSING = new RegExp([
   'not assessed', 'among those entered', 'not enough entered',
   'does not rule', 'cannot yet rule', 'items assessed',
   // "3 of 6 components", "7 of 8 items", "0 of 1 criteria assessed"
-  'of \\d+ (?:items|components|measurements|criteria)',
+  //
+  // spec-v1102: the article was not optional, so "N of THE 20 items" did not
+  // match while "N of 20 items" did -- the house writes both, in 7 files. This
+  // is a generalisation of the pattern already here rather than a new phrase,
+  // and it moves exactly one tile from flagged to exempt: `mchat-rf`, which
+  // says "8 of the 20 items are unanswered ... and an unanswered item scores
+  // nothing. That total is over the 12 items that were answered."
+  'of (?:the )?\\d+ (?:items|components|measurements|criteria)',
 ].join('|'), 'i');
