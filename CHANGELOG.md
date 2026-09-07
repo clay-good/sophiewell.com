@@ -20,6 +20,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **The NHSN ventilator-event algorithm said a rise was "unknown" without saying
+  which setting was missing.** Oxygenation qualifies on the FiO2 route or the
+  PEEP route, so an unentered pair can only create an event, and "no
+  ventilator-associated event" is a surveillance figure that gets reported. It
+  now names each absent daily minimum. Aortic stenosis staging gained the same
+  footing under its milder readings, where a symptomatic patient with no valve
+  area entered was staged from the velocity alone. See docs/spec-v1098.md.
+
 - **The Modified Marshall score said "no organ failure" without saying how many
   organ systems it had.** The score is the worst of three, so a system nobody
   assessed can only raise it, and "no organ failure" is the Revised Atlanta line

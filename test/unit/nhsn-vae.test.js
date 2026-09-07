@@ -86,3 +86,32 @@ test('nhsn-vae: the documented example', () => {
   assert.equal(r.fio2Rise, 25);
   assert.match(r.band, /25 points/);
 });
+
+// spec-v1098: "the rise is unknown" said a rise could not be computed and not
+// WHICH measurement was absent. Oxygenation qualifies on the FiO2 route OR the
+// PEEP route, so an unentered pair can only create an event, never remove one --
+// and "no ventilator-associated event" is a surveillance denominator, a number
+// that gets reported.
+test('spec-v1098: an uncomputable rise names the setting that is missing', () => {
+  const noBaselineFio2 = { ...stable, ...flat };
+  delete noBaselineFio2.baselineFio2;
+
+  const r = v(noBaselineFio2);
+  assert.equal(r.tier, 'none');
+  assert.equal(r.fio2Rise, null);
+  assert.match(r.missingNote, /baseline daily minimum FiO2 was not entered/);
+  assert.match(r.missingNote, /either route can still qualify/);
+  assert.doesNotMatch(r.missingNote, /unknown/, 'name the measurement, do not call the rise unknown');
+
+  // Two absent settings read as plural and are both named.
+  const noFio2AtAll = { ...stable, baselinePeep: 5, eventPeep: 5 };
+  assert.match(v(noFio2AtAll).missingNote, /baseline daily minimum FiO2, the event daily minimum FiO2 were not entered/);
+
+  // Everything entered and below threshold: a real negative, with nothing to add.
+  const complete = v({ ...stable, ...flat });
+  assert.equal(complete.tier, 'none');
+  assert.doesNotMatch(complete.missingNote, /was not entered|were not entered/);
+
+  // Ruling IN is untouched.
+  assert.equal(v({ ...stable, ...flat, eventFio2: 60 }).tier, 'vac');
+});

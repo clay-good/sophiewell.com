@@ -131,3 +131,34 @@ test('spec-v1090: a missing valve area does not read as moderate stenosis', () =
   assert.equal(as({ peakVelocity: 3.4 }).stage, 'B');
   assert.equal(as({ peakVelocity: 3.2, meanGradient: 28, ejectionFraction: 35 }).stage, 'B');
 });
+
+// spec-v1098: spec-v1090 refused only at a MODERATE gradient, where the valve
+// area decides moderate against severe. The same gap sits under the milder
+// readings: a symptomatic patient whose velocity reads at-risk or mild, with no
+// area entered, is still one whose severe stages are defined by an area nobody
+// measured -- and severe stenosis at a low velocity is exactly the low-flow
+// pattern D2 and D3 exist to name.
+//
+// A footing here rather than a refusal, because a low velocity with nothing else
+// measured really is stage A or B by the velocity criterion.
+test('spec-v1098: a symptomatic patient with no valve area is told the stage can rise', () => {
+  const lowFlow = { peakVelocity: 1.6, symptoms: true, ejectionFraction: 17 };
+
+  const noArea = as(lowFlow);
+  assert.equal(noArea.stage, 'A', 'the velocity criterion still gives stage A');
+  assert.match(noArea.band, /aortic valve area was not entered/);
+  assert.match(noArea.band, /can only rise once the area is measured/);
+
+  // The same patient with an area is the severe low-flow pattern.
+  assert.equal(as({ ...lowFlow, valveArea: 0.8 }).stage, 'D2');
+
+  // No symptoms, no footing: D2 and D3 both require them, so the area cannot
+  // change this reading.
+  const quiet = as({ peakVelocity: 1.6 });
+  assert.equal(quiet.stage, 'A');
+  assert.doesNotMatch(quiet.band, /was not entered/);
+
+  // spec-v1090's behaviour is unchanged.
+  assert.equal(as({ peakVelocity: 3.4 }).stage, 'B');
+  assert.doesNotMatch(as({ peakVelocity: 3.4 }).band, /was not entered/);
+});

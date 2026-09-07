@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `7bdf555331852b30`
-Generated: 2026-09-07T03:27:27.387Z
+Build ID: `0441a0ccf005f143`
+Generated: 2026-09-07T05:53:27.354Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -83,7 +83,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/anthro-v272.js` | 2988 | `0c8ae06f40b6747996c3069ca3eed48dd37fcb32d0b211bee0ada6ec113c1f53` |
 | `lib/aom-criteria-v857.js` | 10341 | `d7cba14bf1182a24929931232357fed8c9c05930140d051dbd6fb2634f4d2983` |
 | `lib/aortic-regurgitation-stage-v846.js` | 13581 | `939282153bc25fd3c5d4dac04f8601839f52a82ec5e7f3d7301e5c34ef534478` |
-| `lib/aortic-stenosis-stage-v844.js` | 13972 | `11af6b1781cdcfd8d18050ee5e767387fd3e1940355e6d4057adb1e32d84f9f7` |
+| `lib/aortic-stenosis-stage-v844.js` | 15072 | `8ce6392d93e26c53e7670581533d4b6bebecf51581dbfbbf0f15fdd3d35fbcdb` |
 | `lib/arc-hbr-v594.js` | 16008 | `88c72c385e4018fc0d2cddba66606c2f136b52091d4f7e2b4f9dfc656fcdb7f9` |
 | `lib/areds-v615.js` | 11067 | `7da2179ea02ee6b4f983417d4fedc03f50d680c2b945213a0cf75fefd6411857` |
 | `lib/arvc-tfc-v786.js` | 4626 | `5093904d4b63d32b6a8b5992ecb1f3726aa8ee9b08ad8e0528a0723cbed65acb` |
@@ -561,7 +561,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/neuro-v122.js` | 11470 | `93e42d759c472fa1482d12402a5daa370ce1163060374db83e5118c68579707f` |
 | `lib/neuro-v95.js` | 14709 | `7f7e4f5a0877afa8efbf6cc69f8b0549370bcdbcb5d7ed1dfcea1a5ee7266e85` |
 | `lib/neurology-v224.js` | 12458 | `566c9ca892cc749d23708ee97356e5f2016e31248b58551cb7dfdbacec6ebdec` |
-| `lib/nhsn-vae-v876.js` | 9800 | `b9c3ac85dd9401081a3c7c56e114d6247b6a8de728145ef620e6a1e4e4421e75` |
+| `lib/nhsn-vae-v876.js` | 10644 | `8f707c47b76db63a5d19364f2f06aacbd90c09e7ab403a836e7c7889a90d146f` |
 | `lib/ni-rads-v373.js` | 4140 | `80126c64912eaf0c7f60e81f5c78b25dc6b415007fda80987dd4c453dd3777cb` |
 | `lib/nice-v335.js` | 4617 | `2228aaf825a831a865f6baa57e505306b9dd51492d04b6ab5f5de14fa67ddc7e` |
 | `lib/nichd-fhr-v912.js` | 8518 | `5adc499a4c1326a2609f331dff5c41ac4254d36ba0170b84e7e9a0bea36ffcc0` |
