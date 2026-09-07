@@ -69,3 +69,41 @@ test('hf: empty and out-of-range input', () => {
   assert.equal(hf().valid, true);
   assert.doesNotMatch(JSON.stringify(hf({ ...S, currentLvef: 45, baselineLvef: 30 })), /NaN|Infinity/);
 });
+
+// spec-v1101: the single-measurement caveat fired for HFmrEF only.
+//
+// HFimpEF needs the current measurement merely to be ABOVE 40, which is the
+// whole preserved range too -- so a baseline of 30 rising to 55 is HFimpEF, and
+// with the baseline left out the tile called it HFpEF and said nothing, while
+// the identical gap one band down was already spelled out.
+//
+// The file's own header says a tool classifying from a single ejection fraction
+// "will silently call these patients HFmrEF". It silently called them HFpEF too.
+test('spec-v1101: the missing baseline is named in every band that could be HFimpEF', () => {
+  const mildly = hf({ currentLvef: 45, symptomaticHeartFailure: true });
+  assert.equal(mildly.category, 'HFmrEF');
+  assert.match(mildly.singleMeasurementNote, /With no baseline measurement this is HFmrEF/);
+
+  const preserved = hf({ currentLvef: 55, symptomaticHeartFailure: true });
+  assert.equal(preserved.category, 'HFpEF');
+  assert.match(preserved.singleMeasurementNote, /With no baseline measurement this is HFpEF/,
+    'the preserved range can be HFimpEF too, and was silent');
+  assert.match(preserved.singleMeasurementNote, /would be HFimpEF/);
+
+  // The trajectory the caveat exists for.
+  assert.equal(hf({ currentLvef: 55, baselineLvef: 30, symptomaticHeartFailure: true }).category, 'HFimpEF');
+
+  // A current measurement at or below 40 cannot be HFimpEF whatever the
+  // baseline, so there is nothing to disclose.
+  const reduced = hf({ currentLvef: 30, symptomaticHeartFailure: true });
+  assert.equal(reduced.category, 'HFrEF');
+  assert.equal(reduced.singleMeasurementNote, null);
+
+  // With a baseline there is no gap.
+  assert.equal(hf({ currentLvef: 55, baselineLvef: 52, symptomaticHeartFailure: true }).singleMeasurementNote, null);
+
+  // The wording is built from `category` and the constants, so a later band
+  // cannot fall out of it the way the preserved one did.
+  assert.match(preserved.singleMeasurementNote, new RegExp(`at or below ${HFREF_MAX} percent`));
+  assert.match(preserved.singleMeasurementNote, new RegExp(`at least ${IMPROVEMENT_POINTS} points`));
+});

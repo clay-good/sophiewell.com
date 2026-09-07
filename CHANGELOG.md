@@ -20,6 +20,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Heart-failure classification named the missing baseline in one band and not
+  the other.** The improved-ejection-fraction category needs only a current
+  measurement above 40 percent, which covers the preserved range as well as the
+  mildly-reduced one — so a baseline of 30 rising to 55 is HFimpEF, and with no
+  baseline entered the tile called it HFpEF in silence while spelling the same gap
+  out one band down. The caveat is now worded from the category and the published
+  constants rather than naming a band. See docs/spec-v1101.md.
+
 - **The ankle-brachial index divided by a brachial pressure nobody took.** The
   index divides by the higher of the two brachial pressures, and a missing one
   counted as zero in that comparison — so a single brachial could only shrink the

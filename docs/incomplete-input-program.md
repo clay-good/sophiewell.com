@@ -156,6 +156,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1098](spec-v1098.md) | The last two, and why the finder's remaining rows are correct |
 | [v1099](spec-v1099.md) | The finder could not see two fifths of the catalog |
 | [v1100](spec-v1100.md) | The other half of the same divisor, and the weakest section read |
+| [v1101](spec-v1101.md) | A finder for "one tile, two gaps, one guarded" |
 
 ### And the same question from the other side
 
@@ -232,6 +233,7 @@ until someone asks:
 | --- | --- |
 | `scripts/probe-omitted-item.mjs` | fill a calculator from its worked example, drop one number: does the agent's answer move without saying so? |
 | `scripts/probe-omitted-field-decides.mjs` | drop one number, then try plausible values *in* it: could any of them have changed the verdict? Prints its own reach. |
+| `scripts/probe-half-guarded.mjs` | does this tile refuse or disclose for one missing input and stay silent on another that moves the answer? |
 
 The second exists because the first is bounded by the worked example, which is written alarming —
 so a dropped field usually leaves an alarming reading standing, and the defect lives on the

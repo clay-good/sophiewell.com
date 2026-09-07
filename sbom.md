@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `fb420dd1229167d8`
-Generated: 2026-09-07T11:23:10.490Z
+Build ID: `ceeb6cef42e2dd32`
+Generated: 2026-09-07T13:51:48.627Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -375,7 +375,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/hepgi-v190.js` | 11863 | `18fdde7face8dec98d83118b4840f01f3e93a7594a0cade787ab75771707e239` |
 | `lib/hepgi-v93.js` | 17560 | `e6f4c05d7e8d3890b1cb6097928235717c096d894726cff44a77d457da1d6667` |
 | `lib/herring-pillar-v347.js` | 4295 | `5402d155c338948987f458750b247521fc6ba36f5a20d9501eb4b97e6ae52794` |
-| `lib/hf-ef-classification-v840.js` | 7597 | `64147772fb8033adeee8a173dbce1e7e059630be4379681f6a5bf1a4df2b9310` |
+| `lib/hf-ef-classification-v840.js` | 8378 | `4ba17b89bcb66c65f821f7cb6335cab5c57e428fcf22c2da876fa636ce7a972e` |
 | `lib/hf-stages-abcd-v842.js` | 7839 | `93bde8395e5ff6baf50da213ef74c1358b09d224c3fdcc6fae245eb1dc8024c2` |
 | `lib/hhie-s-v728.js` | 3138 | `8fb3d7ef12c6fa87552661922e77886a64e03def7f92dbd5fd4f74895bb275d5` |
 | `lib/hijdra-v609.js` | 10151 | `c1ab35e0a425645ccad04f5c61dbf4f59370122a8ff92cf26e2511efb822e998` |
