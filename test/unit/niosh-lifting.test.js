@@ -87,3 +87,32 @@ test('niosh-lifting: the required measurements and the ranges', () => {
   // Unknown enum values fall back rather than throwing.
   assert.equal(n({ ...base, duration: 'made-up', coupling: 'made-up' }).valid, true);
 });
+
+// spec-v1096: a blank lift rate takes the frequency multiplier as 1.00, the BEST
+// value in the published table -- the multiplier for a task with no frequency
+// penalty at all. Every real rate reduces it, so the recommended weight limit
+// sits at its maximum and the lifting index at its minimum, on the wrong side of
+// the 1.0 line the whole number exists to sit against.
+test('spec-v1096: a blank lift rate is not a task lifted once', () => {
+  const noRate = { ...base };
+  delete noRate.liftsPerMinute;
+
+  const r = n(noRate);
+  assert.equal(r.frequencyEntered, false);
+  assert.equal(r.multipliers.fm, 1.00, 'the best multiplier in the table');
+  assert.match(r.band, /lifting frequency was not entered/);
+  assert.match(r.band, /raises the lifting index/);
+
+  // The move it warns about: the same task at one lift per minute crosses 1.0.
+  const withRate = n(base);
+  assert.equal(withRate.frequencyEntered, true);
+  assert.equal(withRate.frequencyNote, null);
+  assert.ok(r.li < 1 && withRate.li > 1, 'the missing rate is what put this below the line');
+  assert.ok(r.rwl > withRate.rwl, 'and it inflated the recommended weight limit');
+
+  // Already above 1.0: the frequency multiplier can only push further that way,
+  // so the reading is already the floor and the tile stays quiet.
+  const heavy = { ...noRate, loadWeightLb: 60 };
+  assert.ok(n(heavy).li > 1);
+  assert.equal(n(heavy).frequencyNote, null);
+});

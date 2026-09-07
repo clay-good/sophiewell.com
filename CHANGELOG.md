@@ -20,6 +20,17 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Three gradings treated an optional parameter's absence as a reassuring
+  result.** The WHO neuroendocrine grade follows whichever of Ki-67 and the
+  mitotic count is higher, so a missing index held a tumor at G1 that a Ki-67 of
+  6% makes G2; Amsler-Krumeich staged keratoconus as moderate rather than severe
+  when the refraction was not recorded; and the NIOSH lifting equation took a
+  blank lift rate as the best frequency multiplier in the published table,
+  putting the lifting index below 1.0 where a rate of one lift per minute puts it
+  above. Each now names the missing parameter and the direction it can move the
+  answer, and each stays silent once it can no longer change it. See
+  docs/spec-v1096.md.
+
 - **Five calculators read an unmeasured input as its most benign value.** ICANS
   grading treated a blank ICE score as a perfect 10 and printed "No ICANS (ICE
   10 …)" for a patient nobody had assessed; GOLD group assignment printed "0

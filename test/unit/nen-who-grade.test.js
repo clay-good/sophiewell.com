@@ -59,3 +59,34 @@ test('out-of-range values and an unknown differentiation are rejected', () => {
   assert.equal(nenWhoGrade({ mitoses: -1 }).field, 'mitoses');
   assert.equal(nenWhoGrade({ ki67: 5, differentiation: 'moderate' }).field, 'differentiation');
 });
+
+// spec-v1096: the WHO grade is whichever index is HIGHER, so an index nobody
+// reported reads as an index that did not raise the grade. "Graded on the
+// mitotic count alone" names which one is present and says nothing about which
+// way the missing one could move it -- and it can only move it up. Adding a
+// Ki-67 of 6 percent took a G1 to G2, the difference between surveillance and
+// treatment on most NET pathways.
+test('spec-v1096: a grade from one index says the other can only raise it', () => {
+  const mitosesOnly = nenWhoGrade({ mitoses: 1 });
+  assert.equal(mitosesOnly.grade, 1);
+  assert.equal(mitosesOnly.missingIndex, 'Ki-67 index');
+  assert.match(mitosesOnly.band, /Ki-67 index was not entered/);
+  assert.match(mitosesOnly.band, /can only raise this grade/);
+
+  const ki67Only = nenWhoGrade({ ki67: 1 });
+  assert.match(ki67Only.band, /mitotic count was not entered/);
+
+  // Both reported: nothing to disclose.
+  const both = nenWhoGrade({ mitoses: 1, ki67: 1 });
+  assert.equal(both.missingIndex, null);
+  assert.doesNotMatch(both.band, /was not entered/);
+
+  // The move the footing warns about really happens.
+  assert.equal(nenWhoGrade({ mitoses: 1, ki67: 6 }).grade, 2);
+
+  // G3 is the top grade for a well-differentiated NET, so the missing index
+  // cannot raise it and the tile stays quiet.
+  const g3 = nenWhoGrade({ ki67: 40 });
+  assert.equal(g3.grade, 3);
+  assert.doesNotMatch(g3.band, /was not entered/);
+});

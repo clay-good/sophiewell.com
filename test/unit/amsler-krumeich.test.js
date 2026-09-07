@@ -42,3 +42,27 @@ test('inputs are validated', () => {
   assert.equal(amslerKrumeich({}).code, 'MISSING_INPUT');
   assert.equal(amslerKrumeich({ meanK: '50' }).field, 'thinnestThickness');
 });
+
+// spec-v1096: the stage is the MOST ADVANCED parameter, so a parameter nobody
+// entered reads as one that did not advance it. Refraction is genuinely optional
+// -- it is "not measurable" at stage 4, which is why -- but that reasoning only
+// holds once the stage IS 4. Below it, a refraction nobody recorded took a
+// stage 3 cornea to stage 2.
+test('spec-v1096: an unrecorded refraction does not hold the stage down', () => {
+  const noRefraction = amslerKrumeich({ meanK: 50, thinnestThickness: 420 });
+  assert.equal(noRefraction.stage, 2);
+  assert.equal(noRefraction.refractionEntered, false);
+  assert.match(noRefraction.band, /refraction was not entered/);
+  assert.match(noRefraction.band, /can only raise this/);
+
+  // The move it warns about.
+  const withRefraction = amslerKrumeich({ meanK: 50, thinnestThickness: 420, refraction: 9 });
+  assert.equal(withRefraction.stage, 3);
+  assert.doesNotMatch(withRefraction.band, /was not entered/);
+
+  // At stage 4 the refraction is unmeasurable by definition and cannot raise
+  // anything, so the tile stays quiet.
+  const stage4 = amslerKrumeich({ meanK: 50, thinnestThickness: 420, centralScar: true });
+  assert.equal(stage4.stage, 4);
+  assert.doesNotMatch(stage4.band, /was not entered/);
+});

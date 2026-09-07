@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `81cfb091c893c456`
-Generated: 2026-09-06T22:39:55.469Z
+Build ID: `afe3a7a0406e826a`
+Generated: 2026-09-07T01:06:15.332Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -70,7 +70,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/ahlback-knee-oa-v480.js` | 3309 | `c7e76a2794a1764fc50dd4f467219d7b5f9a6f19c98a5bc241cd43a85a810239` |
 | `lib/airway-resistance-v927.js` | 8081 | `22a85a2674f7b2ccc567fe07d6f47944657fca52d517831cb0d564484c04a3b9` |
 | `lib/alsfrs-r-v537.js` | 12461 | `03eee4c606f4b4635d52d18f7b8af8b278dbb184bf6216a017126ee755a0c3e0` |
-| `lib/amsler-krumeich-v707.js` | 4359 | `3f4165e4691de952a94d4925cbcbdb9da21d88fdac32d1f1460864230aa004b7` |
+| `lib/amsler-krumeich-v707.js` | 5120 | `8f54b51716d231fbe663bb35bfa087367d90e30cc26de8910fd24c852c5fd3f9` |
 | `lib/amsterdam-ii-v592.js` | 12218 | `26cf7e2a336259e90436d1bf8348ebcb252359c0ec988e9b0359a0d091b1d122` |
 | `lib/amts-v805.js` | 4385 | `d89e7931345da27e8df7b4b084ab3bcd7bcd89eeb02a710c31baf23dc1c29857` |
 | `lib/anaphylaxis-criteria-v803.js` | 4952 | `43bb47b10fe03fa200c26f8ee54d45923b26d28540016f6e32a8ed8a4422d8ee` |
@@ -545,7 +545,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/nash-moe-rotation-v476.js` | 3250 | `f93c53ace03d4639ba7a6995c1860bddb90842f4075a94632a201017fde9c1ad` |
 | `lib/neck-zone-v366.js` | 4104 | `f8a37aad930c4430dc8f51a359936800f596919443223714e8fb03b7bbab1f1f` |
 | `lib/nems-v544.js` | 11573 | `3b1da51d50862b8f61dc6429d1784a082c7ca9179a55dd122dfe4d6371fc8edf` |
-| `lib/nen-who-grade-v797.js` | 5714 | `1d253b105c829bc1065c062bc852f1d79a096b68fb213003074476c9712cd6d7` |
+| `lib/nen-who-grade-v797.js` | 6640 | `0ac9db4c7a4a559efec4c79b03b2ea8eeab356349ec037fc01c0862e1a790536` |
 | `lib/neos-v538.js` | 9054 | `f59d15ba97d1a630c20186f69efc1d6685a39356264be1c5842f91fa37809d3c` |
 | `lib/nephro-fluids-v204.js` | 16771 | `5dbb536322bc68672b2a642dc16c0f06389c7e3cc4404e029794f0500687fbe1` |
 | `lib/nephro-v127.js` | 11754 | `9b215f35574325f20d5599504d2ffc455396f88bd86be64a0baed44ac282a4e3` |
@@ -566,7 +566,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/nice-v335.js` | 4617 | `2228aaf825a831a865f6baa57e505306b9dd51492d04b6ab5f5de14fa67ddc7e` |
 | `lib/nichd-fhr-v912.js` | 8518 | `5adc499a4c1326a2609f331dff5c41ac4254d36ba0170b84e7e9a0bea36ffcc0` |
 | `lib/nih-cpsi-v566.js` | 14020 | `58ca072a2f1bd2ea64a389429867ca42f12c3ab9e501efdbdc2db1932a33861f` |
-| `lib/niosh-lifting-v885.js` | 11882 | `573674f0758940200e9f1d94c93d635705d41e094698113adf5732129316f7a5` |
+| `lib/niosh-lifting-v885.js` | 13026 | `c2f5effd9b6e6eccdb458918bd50d302c3f517a5face4f94236f39d0e7878376` |
 | `lib/nmosd-2015-v823.js` | 9091 | `1a3ac685cc57b8cc6a9db1415144bbc18aea289b5c634bb72500c90e349acca0` |
 | `lib/nms-criteria-v870.js` | 8245 | `22f0472ea8e35a034d5bdeaa6db6cfc2da75ade7e83aa3baef0b46047e6b54b9` |
 | `lib/nohria-stevenson-v369.js` | 4429 | `26571c3b11db66d7650f7f044e6f5e99134ec131fb7a5d7bf12eb8c19d3c5a96` |
