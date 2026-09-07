@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `ca158e1a21494b05`
-Generated: 2026-09-07T22:42:29.515Z
+Build ID: `5e22b9d057121ce9`
+Generated: 2026-09-07T23:08:10.026Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -147,7 +147,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/carboxyhemoglobin-v865.js` | 9909 | `fb15cab8e571e1b0fe8506e1db9f553d82e22ec67bdebd538a8a664f5f1f8b93` |
 | `lib/cardiac-sarcoidosis-v791.js` | 5366 | `8c0e0450b93ebe15170e42ca7716bd27d364bf9305c542ef7845479e541a9e29` |
 | `lib/cardio-v101.js` | 12751 | `629d5ae5fd15255af72cd65585d5b25ad079e85981772fc33d72ce6694b95940` |
-| `lib/cardio-v102.js` | 14060 | `951e823be2d85075c7532cd7fbf7f59b6b261dba4d9f63de1db4267610e45c0e` |
+| `lib/cardio-v102.js` | 15369 | `73550725a00aef254510f776ec1c3765edad60204b0bebe674e8ed66e7b648ad` |
 | `lib/cardio-v104.js` | 14365 | `581150411141a634b4314d5ccf1fe560c96ce8d5c9b8d2555c2a840a2af873f3` |
 | `lib/cardio-v90.js` | 17067 | `7da5eb75619116d3c187115828de8665ae66b26f63ad2f7621a25a2b10dd8241` |
 | `lib/cardioecho-v237.js` | 8749 | `74102ce8e4ea9a0eb112fbfab36884663650f80dbce62b20b0a6ab86ece79024` |
@@ -648,7 +648,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/periop-bridging-v899.js` | 7725 | `5b27b5a1bbd6d729d9d3250625cfb11dc7bc466e8d1258e011d413a5145178f9` |
 | `lib/periop-frailty-v203.js` | 10379 | `b93ea1ae7b71a4a89f3c711856a8e0635801a298730c44ce0c54b8b42e6a1079` |
 | `lib/periop-v97.js` | 22791 | `bf6f31ba7a6c64724819387bd8421533216898ec43d7dc92f34552f6d56236c4` |
-| `lib/peritoneal-cancer-index-v654.js` | 4961 | `fddb55c523d5629da5d6dc7a2ef48edfd3586f0285b2d3101f31c4d90c39a676` |
+| `lib/peritoneal-cancer-index-v654.js` | 4959 | `dfb0ac27e4ead48e52fe8dcdc2504191d6af91648b178e0bd4e5158a82787152` |
 | `lib/pertussis-case-def-v868.js` | 9756 | `b542e071bc78bd634b448d387f79c2386ea5fd3586664b74903d9988a0456b14` |
 | `lib/pfdi20-v775.js` | 3982 | `5b9b7b749246ec16329fd2edee61832aa29970d49574659b07a29b5005973877` |
 | `lib/pfiq7-v776.js` | 4173 | `e9754014c0aaba1e3e9c0fff5fac31e3ecda4f98cedf365b024bc08e6a2d3e51` |
@@ -682,7 +682,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/proteins-v274.js` | 3182 | `124b907ef2e82939179df0c4d15ebd08e2132481feb6b980a73b2e9170e6a315` |
 | `lib/pss10-v806.js` | 3774 | `345503d089cc1e3741f638539279784197b108044da41cfbb2d941e7481c3445` |
 | `lib/psych-v123.js` | 21179 | `8f21d7a80bebfbeead0b6a9b1d0de6a9bb92625fa79be7742676942107c0b9fb` |
-| `lib/psych-v96.js` | 13290 | `08ac9bdc6f85b457e750cf89f8ffe473beaac830ad8b3b88c67cde4ba5467614` |
+| `lib/psych-v96.js` | 15914 | `dec181561e8e87d317af9d9854989c13cdcbe75c93a99a2ea288da1268520845` |
 | `lib/pulm-copd-v205.js` | 15657 | `e209ded1a783152b4bf49ac6d693fe097126161d3cb53a09268fe38e9ab9c3bf` |
 | `lib/pulm-v114.js` | 15731 | `579720bd9198af70f6b48e25ba0514e6f1fc52dfd8219d1b58a9456f2eb67476` |
 | `lib/pulm-v91.js` | 16605 | `f5135df1056f7cbcc56d50e5a2ca8a0d82bb08155e31c572f3211cc0a499ea63` |
@@ -1821,7 +1821,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v217.js` | 10677 | `ab62b3cf6c94e613a6d79e8dd9fb33fc8fec732b0221ff92499ba7b14a26315e` |
 | `views/group-v218.js` | 10829 | `9b045882134b2abb7576c6a25fcc483d69b6749f3ea83e6480e224b13ef6c7a6` |
 | `views/group-v219.js` | 8996 | `8c52b01983c8954d403b3d17a3f71c1cbad79d57ad5e3dd92ed4227ca4416846` |
-| `views/group-v22.js` | 11526 | `b4fe9fa91c25871edfc170724460c3b162ca04e9d6f1f1b736a3961ba054adf4` |
+| `views/group-v22.js` | 12131 | `7e1336f5733e9497c54e7a988aec25b1cb6620185f99892dfdbe6399a7dfce02` |
 | `views/group-v220.js` | 7328 | `d7bdafaafb44b47108158400547b9a021f8b075350aa8a55e15295f09b149811` |
 | `views/group-v221.js` | 10149 | `4d5964353fc967a08a5b7ea84c07226a41b86d3b4ae7ce31abc3385c15562d54` |
 | `views/group-v222.js` | 10239 | `1951804618844cee87dc55e27c30f557cb2574a60d4e4845d5de5dc760f7a770` |

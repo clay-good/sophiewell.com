@@ -59,7 +59,7 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   made.** A shared lookup pattern falls back to 0 when a factor was not given,
   and 0 is the most favourable level of every table it reads: so the renal-cell
   SSIGN score answered "low risk; ~96.8% 5-year cancer-specific survival" for a
-  tumour nobody had staged, a maternal sepsis score answered "low risk of
+  tumor nobody had staged, a maternal sepsis score answered "low risk of
   critical-care admission" and printed "all variables normal" for eight vital
   signs nobody had taken, and the Sjogren's ESSDAI answered "low systemic
   activity" across twelve unrated organ domains. Each now says what was not
