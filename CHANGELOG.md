@@ -33,6 +33,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A heart-failure diagnosis was excluded without the workup, and a bipolar
+  screen read negative before anyone answered it.** The HFA-PEFF scored each of
+  its three unassessed domains as meeting no criterion and answered "HFpEF
+  unlikely"; it now reports a floor and neither confirms nor excludes until the
+  domains are assessed. The Mood Disorder Questionnaire's thirteen symptom items
+  and its co-occurrence question are yes/no picklists that opened on "No", so
+  the tile opened on a negative screen; they now open on "Not answered", the
+  symptom gate is only failed once seven YES answers are out of reach, and a
+  gate nobody answered is no longer treated as a gate that failed. See
+  docs/spec-v1112.md.
 - **Four more scores read an unentered finding as the most favourable one.** The
   SES-CD answered "endoscopic remission" for an endoscopy nobody described, the
   acute GVHD grader answered "No acute GVHD (all organ stages 0)" for three

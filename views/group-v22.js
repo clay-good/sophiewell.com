@@ -126,7 +126,12 @@ const MDQ_SYMPTOMS = [
   'Did things unusual for you or that others thought excessive/risky',
   'Spending money got you or your family into trouble',
 ];
-const YESNO = [{ value: 'no', text: 'No' }, { value: 'yes', text: 'Yes' }];
+// spec-v1112: used only by the MDQ, whose thirteen symptom items and
+// co-occurrence question are yes/no SELECTS -- not checkboxes. They defaulted to
+// "No", so the tile opened reading "Negative screen: 0 of 13 symptoms YES" for a
+// bipolar screener nobody had administered. Rule 4 says an unticked CHECKBOX is
+// a real "no"; a select that opens on "No" is answering for the reader (rule 8).
+const YESNO = [{ value: '', text: 'Not answered' }, { value: 'no', text: 'No' }, { value: 'yes', text: 'Yes' }];
 
 export const renderers = {
   // ----- 2.1 hamd --------------------------------------------------------
@@ -214,7 +219,9 @@ export const renderers = {
       resultRow(o, [
         { text: r.band, cls: r.positive ? 'warn' : null },
         { label: 'Symptoms endorsed', value: `${r.yesCount} of 13` },
-        { label: 'Screen', value: r.positive ? 'positive (all 3 gates)' : 'negative' },
+        // spec-v1112: "negative" is a verdict, and it is not the one a screen
+        // with an unanswered gate has reached.
+        { label: 'Screen', value: r.positive ? 'positive (all 3 gates)' : (r.blockedOnUnrated ? 'not yet answered' : 'negative') },
       ]);
       note(o, r.note);
     }));

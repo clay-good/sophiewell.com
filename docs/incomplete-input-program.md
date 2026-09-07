@@ -193,6 +193,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1109](spec-v1109.md) | The miss-value was the best finding there is |
 | [v1110](spec-v1110.md) | Three scales that opened on an examination nobody performed |
 | [v1111](spec-v1111.md) | Four more, and a correction |
+| [v1112](spec-v1112.md) | The last two, and a prediction that was half wrong |
 
 ### And the same question from the other side
 
@@ -370,6 +371,15 @@ What is left is narrower than when this page was written:
   not rank what is there.**
 
   With that the finder has no unexplained rows left in any of its three sections.
+
+- ~~**Thirteen instruments built of graded selects answered a call carrying no inputs**~~
+  **Closed**, across [spec-v1108](spec-v1108.md) to [spec-v1112](spec-v1112.md). They were
+  invisible because `rated-items-are-required.test.js` selected its subjects with
+  `kind === 'number'`, while 263 of them declare their graded items as `enum`. Ten of the thirteen were
+  one defect — a lookup whose miss-value is the table's most favourable level. The other three
+  needed the instrument read rather than the pattern applied, and one of those (`mdq`) was fixed
+  wrongly the first time because the library gives no clue whether a field's control is a checkbox
+  or a select that opens on an answer. `test/mcp/enum-rated-items-ledger.js` is empty and kept.
 
 - ~~**95 fields still change the AGENT's answer when omitted, without saying so**~~
   (`scripts/probe-omitted-item.mjs`, spec-v1073; the count was read as 93 until spec-v1075 stopped
