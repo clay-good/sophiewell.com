@@ -48,7 +48,13 @@ function wire(ids, run) {
   run();
 }
 
+// spec-v1110: rule 8, on the three rating scales that share these lists. Every
+// select opened on "0", which on each of these scales is a FINDING -- no
+// abnormal movement, no catatonic sign, akathisia absent -- so the tiles opened
+// on an examination nobody had performed. `selVal` returns '' for the blank
+// option and each library now treats that as unrated rather than as zero.
 const OPTS_0_4 = [
+  { value: '', text: 'Not rated' },
   { value: '0', text: '0 — none' },
   { value: '1', text: '1 — minimal' },
   { value: '2', text: '2 — mild' },
@@ -56,12 +62,14 @@ const OPTS_0_4 = [
   { value: '4', text: '4 — severe' },
 ];
 const OPTS_0_3 = [
+  { value: '', text: 'Not rated' },
   { value: '0', text: '0 — absent' },
   { value: '1', text: '1 — mild/occasional' },
   { value: '2', text: '2 — moderate/frequent' },
   { value: '3', text: '3 — severe/constant' },
 ];
 const OPTS_0_3_BIN = [
+  { value: '', text: 'Not rated' },
   { value: '0', text: '0 — absent' },
   { value: '3', text: '3 — present' },
 ];
@@ -156,7 +164,7 @@ export const renderers = {
       const r = M.aimsTardive(payload);
       resultRow(o, [
         { text: r.band, cls: r.abnormal ? 'warn' : null },
-        { label: 'AIMS movement', value: `${r.total}/28` },
+        { label: 'AIMS movement', value: r.floorOnly ? `at least ${r.total}/28` : `${r.total}/28` },
       ]);
       note(o, `Movements present: ${r.counted}.`);
       note(o, r.note);
@@ -175,8 +183,8 @@ export const renderers = {
       const r = M.bfcrs(payload);
       resultRow(o, [
         { text: r.band, cls: r.abnormal ? 'warn' : null },
-        { label: 'Screen', value: `${r.screenCount}/14` },
-        { label: 'Severity', value: `${r.severity}/69` },
+        { label: 'Screen', value: r.floorOnly ? `${r.screenCount} so far of 14` : `${r.screenCount}/14` },
+        { label: 'Severity', value: r.floorOnly ? `at least ${r.severity}/69` : `${r.severity}/69` },
       ]);
       note(o, `Signs elicited: ${r.counted}.`);
       note(o, r.note);
@@ -191,6 +199,7 @@ export const renderers = {
     root.appendChild(selectField('Subjective awareness of restlessness', 'ba-aware', OPTS_0_3));
     root.appendChild(selectField('Subjective distress related to restlessness', 'ba-distress', OPTS_0_3));
     root.appendChild(selectField('Global clinical assessment of akathisia', 'ba-global', [
+      { value: '', text: 'Not rated' },
       { value: '0', text: '0 — absent' },
       { value: '1', text: '1 — questionable' },
       { value: '2', text: '2 — mild akathisia' },
@@ -203,8 +212,8 @@ export const renderers = {
       const r = M.barsAkathisia({ objective: selVal('ba-obj'), awareness: selVal('ba-aware'), distress: selVal('ba-distress'), global: selVal('ba-global') });
       resultRow(o, [
         { text: r.band, cls: r.abnormal ? 'warn' : null },
-        { label: 'Global', value: `${r.global}/5` },
-        { label: 'Subtotal', value: `${r.subtotal}/9` },
+        { label: 'Global', value: r.global === null ? 'not rated' : `${r.global}/5` },
+        { label: 'Subtotal', value: r.subtotal === null ? 'incomplete' : `${r.subtotal}/9` },
       ]);
       note(o, `Components: ${r.counted}.`);
       note(o, r.note);

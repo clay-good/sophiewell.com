@@ -33,6 +33,17 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Three psychiatric rating scales opened on an examination nobody performed.**
+  The Abnormal Involuntary Movement Scale, the Bush-Francis Catatonia Rating
+  Scale and the Barnes Akathisia Rating Scale share one set of picklists, every
+  one of which opened on 0 -- and 0 on these scales is a finding, not a blank: no
+  abnormal movement, no catatonic sign, akathisia absent. So each tile read
+  "below the threshold" or "absent" for a patient nobody had examined, and said
+  so again in its list of findings. The picklists now open on "Not rated". The
+  two threshold scales report how many areas were rated and that the rest can
+  only add; the Barnes scale, whose verdict is a single clinician rating rather
+  than a total, asks for it instead. The alarming readings are unchanged. See
+  docs/spec-v1110.md.
 - **Three scores reported the best finding there is about determinations nobody
   made.** A shared lookup pattern falls back to 0 when a factor was not given,
   and 0 is the most favourable level of every table it reads: so the renal-cell
