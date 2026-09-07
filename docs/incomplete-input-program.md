@@ -45,6 +45,40 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
    (spec-v1073). A graded select always carries a value, so the renderer never meets an unanswered
    item; an API caller omits keys by default. Where the browser makes an answer unavoidable, the
    adapter has to declare it required.
+10. **A sum and a mean fail differently — check monotonicity, never assume it** (spec-v1098). Every
+    rule above rests on the score being monotone in the number of inputs. `loe-silness-gingival-index`
+    looks exactly like the body-surface family fixed in spec-v1093 and is not one: it is a *mean*, so
+    omitting the surfaces that scored 2 lowers the index while omitting those that scored 0 raises it.
+    There is no direction to disclose, and "can only rise" would be false.
+11. **Asserting the measurement is worse than assuming it** (spec-v1095). `icans-grade` printed
+    "No ICANS (**ICE 10** and …)" and `gold-abe` printed "**0 moderate exacerbations, none
+    hospitalized in the past year**" — about patients nobody asked. A silent zero is a bug in the
+    arithmetic; a *stated* value is a fabricated observation in the record, and the reader cannot
+    tell it from one that was taken. Fix these first.
+12. **Disclose or refuse, and the test is whether the missing value is expected to be there**
+    (spec-v1091). An aortic valve area at a low gradient decides moderate against severe, and its
+    absence is a gap in the workup — refuse. Three unquantified regurgitation criteria are what a
+    normal echo report looks like — disclose. Refusing the second breaks the ordinary case rather
+    than the defective one.
+13. **A reading that already rules IN needs no footing.** It is the floor, and the missing value
+    cannot lower it. The disclosure belongs to the reassuring reading, which is the one that can be
+    wrong.
+14. **Fix the headline, not only the detail** (spec-v1095). `isgps-dge` puts its message in `detail`
+    and its verdict in `bandLabel`; fixing one leaves "No DGE" in large type above a paragraph
+    saying the course was never recorded. Two disagreeing statements on one page, and the headline
+    is what gets read.
+15. **A fix scoped by one worked case is scoped to that case** (spec-v1098). spec-v1090 guarded only
+    the moderate-gradient reading it was found on, and spec-v1098 had to extend it to the milder
+    ones. Three occurrences in this programme.
+16. **When a tile and the shared vocabulary disagree, count where the phrasing is used**
+    (spec-v1094, spec-v1097). `can only add points` (10 files) and `is needed` (20 files) are the
+    house's, so `test/lib/asking-language.js` was incomplete; `No threshold was entered` (1 file) is
+    that tile's idiom, so the tile changed. Widening a list a real gate depends on is the one move
+    that can silently un-protect other tiles — measure first, and record the measurement in the file.
+17. **A finder's reach is part of its result** (spec-v1099). Its first section keys on `abnormal`,
+    <!-- catalog-truth:historical -->
+    which 698 of 1,682 tiles never set, so "the section is empty" meant nothing about two fifths of
+    the catalog. Any check keying on an *optional* field must print how many subjects carry it.
 
 ## The specs
 
@@ -190,6 +224,18 @@ tile still render a control with no empty state?
 Each has a ledger for the tiles that legitimately do the thing it looks for, and each was verified
 by reintroducing the defect and watching it fail.
 
+Two **finders** sit beside them. They assert nothing and are not run in CI, so they cost nothing
+until someone asks:
+
+| Finder | Asks |
+| --- | --- |
+| `scripts/probe-omitted-item.mjs` | fill a calculator from its worked example, drop one number: does the agent's answer move without saying so? |
+| `scripts/probe-omitted-field-decides.mjs` | drop one number, then try plausible values *in* it: could any of them have changed the verdict? Prints its own reach. |
+
+The second exists because the first is bounded by the worked example, which is written alarming —
+so a dropped field usually leaves an alarming reading standing, and the defect lives on the
+reassuring side of the threshold where the example never goes (spec-v1092).
+
 ## What is still open
 
 - ~~**A form with one value in it** has no gate.~~ **Closed by spec-v1037**: the oracle turned out to
@@ -246,21 +292,31 @@ What is left is narrower than when this page was written:
   spec-v1085; whether a GCS component should be able to say "not assessed" is one open decision
   across all three, with the argument each way written down.
 
-- **91 fields still change the AGENT's answer when omitted** — and [spec-v1088](spec-v1088.md)
-  breaks that into shapes rather than leaving it a count. **34 name the absence in wording the
-  shared vocabulary does not carry**; of the 57 that say nothing, most are a region with no disease
-  in it, a count, a unit conversion or a dependent line that simply disappears. **17 across 14
-  tiles are genuinely open, and that table is where to start** -- `pim3` is fixed in
-  [spec-v1089](spec-v1089.md), which found the diagnosis behind it was wrong: the arithmetic was a
-  documented convention, and what was missing was the tile SAYING so. All three valve-stage tiles were wrong, and the reading that said
-  otherwise was taken from the probe rather than from the tiles. The probe walks a tile's WORKED
-  EXAMPLE, and both siblings' examples are severe on every criterion -- so dropping one field left
-  a severe reading standing, which is the floor and the safe direction. The defect is on the
-  reassuring side of the threshold, where the example never goes: reached by hand,
-  `mitral-stenosis-stage` and `aortic-regurgitation-stage` both grade from a subset of criteria and
-  call it "no severe obstruction" ([spec-v1091](spec-v1091.md)). **A finder that starts from a
-  worked example can only ask the questions that example reaches** -- the same lesson
-  [spec-v1088](spec-v1088.md) drew when completing the NIHSS example raised the count.
+- ~~**91 fields still change the AGENT's answer when omitted**~~ **Closed**, across
+  [spec-v1090](spec-v1090.md) to [spec-v1099](spec-v1099.md),
+  with two dozen calculators fixed. The count that mattered came from the finder built in
+  [spec-v1092](spec-v1092.md): it went from **47 flagged fields across nineteen
+  calculators to 2 across 2** — and both survivors are correct, documented in
+  [spec-v1098](spec-v1098.md) so a later pass recognises them instead of re-investigating.
+
+  Three things in [spec-v1088](spec-v1088.md)'s triage were **wrong**, and each was overturned by
+  reading the tile rather than the probe's output: the two sibling valve-stage tiles
+  ([spec-v1091](spec-v1091.md)), the six body-surface ones
+  ([spec-v1092](spec-v1092.md), [spec-v1093](spec-v1093.md)),
+  and `pbac-hmb` ([spec-v1094](spec-v1094.md)). **A finder that starts
+  from a worked example can only ask the questions that example reaches**, because examples are
+  written alarming and the defect lives on the reassuring side of the threshold.
+
+  And the finder itself was blind to two fifths of the catalog until
+  [spec-v1099](spec-v1099.md) — its first section keys on `abnormal`, which most of the catalog
+  <!-- catalog-truth:historical -->
+  never sets (984 of 1,682 tiles do; the rest do not).
+  It now prints its own reach, and unflagged tiles get their own section rather than falling
+  into a weaker one that reads as "less serious".
+
+  **What is genuinely left** is the finder's third bucket, *verdict could change* — 35 fields across
+  24 calculators — which is a weaker signal by construction: a verdict that moves without `abnormal`
+  flipping. Worth a pass; not a defect list.
 
 - ~~**95 fields still change the AGENT's answer when omitted, without saying so**~~
   (`scripts/probe-omitted-item.mjs`, spec-v1073; the count was read as 93 until spec-v1075 stopped
