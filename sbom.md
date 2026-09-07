@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `2567e208bc333bf3`
-Generated: 2026-09-07T20:40:02.564Z
+Build ID: `3e057c7ebc43fed0`
+Generated: 2026-09-07T20:56:46.497Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -858,7 +858,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/van-herick-v435.js` | 3423 | `1df5f89865068a14369482f3bd141c7ef8999a49e9e3b6ada87ebcffb36cdd15` |
 | `lib/van-nuys-vnpi-v652.js` | 5583 | `59049426b6b97b137e2c28ae2072640f2310ed548c27027eac6e069e334ddcaf` |
 | `lib/vancouver-periprosthetic-v483.js` | 3496 | `49ecf63cc801a1b465268edd621659b820dad6556472ff09b40e428eb12575bf` |
-| `lib/vascular-v105.js` | 16900 | `d28cd9da75d6348a32634ba9fc6b84e6b2c12dd048cbbc7e26db75b9e032f446` |
+| `lib/vascular-v105.js` | 19387 | `9c691ef2c467ded9825895ce816c4aaba299afc1b28948efdb686543828fa094` |
 | `lib/vasi-v556.js` | 12850 | `c1e3bdab22509ed3895f5dae68d974242064c27bd047889d8a0d80c1491bd204` |
 | `lib/vaughan-williams-v427.js` | 4207 | `241cb6fc10d5a9b15a3a849ab44f7887e7508a99daa8a9c55567feb737b1893d` |
 | `lib/vent-v195.js` | 9473 | `9f8fd14cdaa7e971da29cc8bdc6247bf8c7e3974daae70bc597e2269c400c110` |
@@ -1896,7 +1896,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v297.js` | 3218 | `5df3f341d37f36394281b24afa7922dea034a0fd663e9cd07ba4923c6c94041e` |
 | `views/group-v298.js` | 3176 | `4c81173db70bdb4a217c87cc46c09718276876cae2dcd046ed13bd9c248c2557` |
 | `views/group-v299.js` | 3252 | `43f6595cb43e0e2cbd38ea08f02c4484da5c17c20d8b151cc17f8939b4fbebf5` |
-| `views/group-v30.js` | 11659 | `b26a3c3432bd8cd4a726b64621edc9b07b5fd5e2cf974528a9b5571ad39ef237` |
+| `views/group-v30.js` | 12381 | `1cff715f9379188dac24129577cdc81a3c5f40ba510e3349fe460886036c9f3b` |
 | `views/group-v300.js` | 3089 | `f9489f1a0dc16cb02a628527e007ad9e77bc083af54a1a1d993dcf78b8d98c37` |
 | `views/group-v301.js` | 3358 | `fd5c32554320d1caf3d1134e7c388f3ca850d568b4dd57cc17d0afd952c307b4` |
 | `views/group-v302.js` | 3275 | `5aa4e0756e801f8aabca6d36d22a85d6f1512527ee22b0d3bc39cfcff3a61b1b` |

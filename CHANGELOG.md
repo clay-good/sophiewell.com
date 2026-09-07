@@ -33,6 +33,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **An 85-year-old described by nothing but their age was low operative risk.**
+  EuroSCORE II looks each of its six graded factors up in a coefficient table,
+  and a factor that was never stated fell through to 0 -- which is not a neutral
+  fallback but the REFERENCE level of every one of them: NYHA I, good left
+  ventricle, normal pulmonary pressure, normal kidneys, elective, isolated
+  bypass. So an unstated factor was scored as the healthiest patient the model
+  can describe, a mistyped one silently too, and all six picklists opened on
+  that same first option. The estimate now says what was not stated and that it
+  is a floor, and does not name a risk tier until the six are answered. See
+  docs/spec-v1107.md.
 - **The Snakebite Severity Score printed five examinations nobody performed.**
   Its adapter has required all six body systems of an agent since
   docs/spec-v1073.md, saying in its own summary that an unexamined system is not

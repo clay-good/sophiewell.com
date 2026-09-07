@@ -159,7 +159,14 @@ export const renderers = {
   euroscore2(root) {
     root.appendChild(field('Age (years)', 'es-age', { min: 0, max: 120, placeholder: '70' }));
     root.appendChild(checkField('Female sex', 'es-female'));
+    // spec-v1107: every one of these six opened on its REFERENCE level -- NYHA I,
+    // good LV, normal PA pressure, normal renal function, elective, isolated CABG
+    // -- which is the healthiest patient EuroSCORE II can describe. With an age
+    // entered and nothing else touched, the tile answered "1.01% (low predicted
+    // operative risk)" about an 85-year-old nobody had described. Rule 8: a
+    // control that cannot say "not stated" will be read as an answer.
     root.appendChild(selectField('NYHA class', 'es-nyha', [
+      { value: '', text: 'Not stated' },
       { value: '1', text: 'I' }, { value: '2', text: 'II' }, { value: '3', text: 'III' }, { value: '4', text: 'IV' },
     ]));
     root.appendChild(checkField('CCS class 4 angina', 'es-ccs4'));
@@ -173,29 +180,34 @@ export const renderers = {
     root.appendChild(checkField('Recent MI (within 90 days)', 'es-mi'));
     root.appendChild(checkField('Surgery on thoracic aorta', 'es-aorta'));
     root.appendChild(selectField('LV function / ejection fraction', 'es-lv', [
+      { value: '', text: 'Not stated' },
       { value: 'good', text: 'Good (> 50%)' },
       { value: 'moderate', text: 'Moderate (31-50%)' },
       { value: 'poor', text: 'Poor (21-30%)' },
       { value: 'very-poor', text: 'Very poor (<= 20%)' },
     ]));
     root.appendChild(selectField('Pulmonary artery systolic pressure', 'es-pa', [
+      { value: '', text: 'Not stated' },
       { value: 'none', text: 'Normal (< 31 mmHg)' },
       { value: 'moderate', text: 'Moderate (31-55 mmHg)' },
       { value: 'severe', text: 'Severe (> 55 mmHg)' },
     ]));
     root.appendChild(selectField('Renal impairment (Cockcroft-Gault CrCl)', 'es-renal', [
+      { value: '', text: 'Not stated' },
       { value: 'normal', text: 'CrCl > 85 mL/min' },
       { value: 'cc51-85', text: 'CrCl 51-85 mL/min' },
       { value: 'cc-le50', text: 'CrCl <= 50 mL/min (not on dialysis)' },
       { value: 'dialysis', text: 'On dialysis (any CrCl)' },
     ]));
     root.appendChild(selectField('Urgency', 'es-urg', [
+      { value: '', text: 'Not stated' },
       { value: 'elective', text: 'Elective' },
       { value: 'urgent', text: 'Urgent' },
       { value: 'emergency', text: 'Emergency' },
       { value: 'salvage', text: 'Salvage' },
     ]));
     root.appendChild(selectField('Weight of intervention', 'es-wt', [
+      { value: '', text: 'Not stated' },
       { value: 'cabg', text: 'Isolated CABG' },
       { value: 'single', text: 'Single non-CABG procedure' },
       { value: 'two', text: 'Two procedures' },

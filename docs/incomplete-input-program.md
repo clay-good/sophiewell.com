@@ -98,6 +98,14 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
     found questions the browser makes unavoidable and the adapter never declared; this is a question
     the browser *does* insist on, living in the one place only the browser reads.
 
+19. **A disclosure that asserts a property of the model is a claim the suite has to hold**
+    (spec-v1107). Every footing in this programme rests on the score being monotone, and until
+    `euroscore2` that was assumed. Its footing says *"every coefficient in this model is zero or
+    positive, so each can only raise it"* — a sentence that becomes false the day a negative
+    coefficient is added, with nothing else in the suite to notice. The coefficient table is now
+    exported and a test walks it. Rule 10 says check monotonicity rather than assume it; this is
+    the other half — keep checking it.
+
 ## The specs
 
 | Spec | What it fixed |
@@ -180,6 +188,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1104](spec-v1104.md) | A diagnosis of exclusion, without the exclusions |
 | [v1105](spec-v1105.md) | The guard was in the adapter, so the page never got it |
 | [v1106](spec-v1106.md) | **Gate**: the one that was already there, asking a third of the question |
+| [v1107](spec-v1107.md) | The reference level is not "not stated" |
 
 ### And the same question from the other side
 
