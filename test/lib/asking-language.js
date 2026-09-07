@@ -27,6 +27,16 @@
 export const ASKING = new RegExp([
   'enter ', 'choose ', 'select ', 'complete ', 'provide ',
   'missing', 'still needed', 'is required', 'required',
+  // spec-v1097: the house refuses two ways. "is required" was on the list and
+  // "is needed" was not, though it appears 26 times across 20 library files --
+  // the same drift as `can only add` in spec-v1094, where the list knew one of
+  // two synonymous house phrasings.
+  //
+  // Measured before adding, as the rule above requires: exactly ONE tile moves
+  // from flagged to exempt, `hf-ef-classification`, which answers "Not
+  // classified: an ejection fraction is needed" and gives no reading at all.
+  // The other nineteen files were already exempt on other phrases.
+  'is needed',
   'not scored', 'unscored', 'score all', 'rate all', 'rate the remaining',
   // How the rating tiles ask for one item: "Rate vascularity on the 1-10 scale",
   // "Score memory from 0 to 8". Written as a pattern rather than the bare verb

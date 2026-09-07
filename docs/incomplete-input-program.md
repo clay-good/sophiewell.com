@@ -118,6 +118,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1094](spec-v1094.md) | A tally that can only rise, and a rule the house wrote twice |
 | [v1095](spec-v1095.md) | An unmeasured input read as its most benign value, across five tiles |
 | [v1096](spec-v1096.md) | Three gradings where the missing parameter was the deciding one |
+| [v1097](spec-v1097.md) | The same rule, phrased three ways: which belong to the list and which to the tile |
 
 ### And the same question from the other side
 

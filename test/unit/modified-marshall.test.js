@@ -37,3 +37,26 @@ test('FiO2 guard and no-system -> valid:false', () => {
   assert.equal(modifiedMarshall({}).valid, false);
   assert.equal(modifiedMarshall(9).valid, false);
 });
+
+// spec-v1097: "all assessed systems below 2" was honest about WHICH systems it
+// had and silent about the direction the others can move it. The score is the
+// worst of three organ systems, so a system nobody assessed can only raise it --
+// and "no organ failure" is the Revised Atlanta line between mild and moderately
+// severe pancreatitis.
+test('spec-v1097: no organ failure from one system says the others can only raise it', () => {
+  const renalOnly = modifiedMarshall({ creatinine: 1.0 });
+  assert.equal(renalOnly.organFailure, false);
+  assert.match(renalOnly.band, /among the systems entered/);
+  assert.match(renalOnly.band, /2 organ systems were not entered/);
+  assert.match(renalOnly.band, /can only raise it/);
+
+  // All three assessed: the negative stands unqualified.
+  const all = modifiedMarshall({ creatinine: 1.0, pao2: 95, fio2: 21, cardiovascular: 0 });
+  assert.equal(all.organFailure, false);
+  assert.doesNotMatch(all.band, /not entered/);
+
+  // Ruling IN needs no qualifier: the systems still missing cannot lower it.
+  const failed = modifiedMarshall({ creatinine: 3.0 });
+  assert.equal(failed.organFailure, true);
+  assert.doesNotMatch(failed.band, /can only raise/);
+});

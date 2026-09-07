@@ -20,6 +20,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **The Modified Marshall score said "no organ failure" without saying how many
+  organ systems it had.** The score is the worst of three, so a system nobody
+  assessed can only raise it, and "no organ failure" is the Revised Atlanta line
+  between mild and moderately severe pancreatitis. It now names how many systems
+  were not entered and which way they can move the answer. The delta-check
+  laboratory tool's absent-threshold notice was reworded to the wording the rest
+  of the catalog uses. See docs/spec-v1097.md.
+
 - **Three gradings treated an optional parameter's absence as a reassuring
   result.** The WHO neuroendocrine grade follows whichever of Ki-67 and the
   mitotic count is higher, so a missing index held a tumor at G1 that a Ki-67 of

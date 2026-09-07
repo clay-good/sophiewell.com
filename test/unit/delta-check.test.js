@@ -74,3 +74,21 @@ test('delta-check: local thresholds, not-an-error and the RCV pointer print on e
   assert.match(r.scopeNote, /or a specimen problem/);
   assert.match(DELTA_CHECK_NOTE, /flag slow drift and miss fast change/);
 });
+
+// spec-v1097: the tile already disclosed -- it said the threshold was absent and
+// that nothing was flagged because of it -- but phrased as "No threshold WAS
+// entered", which the shared DISCLOSING list does not carry. The list has "not
+// entered", and one file's phrasing is the tile's to change, not the list's:
+// widening a list used by a real gate for a single tile is what
+// test/lib/asking-language.js forbids.
+test('spec-v1097: the absent-threshold disclosure is worded to the shared list', async () => {
+  const { DISCLOSING } = await import('../lib/asking-language.js');
+  const r = deltaCheck({ previousResult: 1.0, currentResult: 2.4, hoursBetween: 12 });
+  assert.match(r.band, /threshold was not entered/);
+  assert.match(r.band, /nothing is flagged/);
+  assert.match(r.band, DISCLOSING, 'the shared vocabulary now recognises it');
+
+  // With a threshold the sentence is gone and the tile flags on its own terms.
+  const flagged = deltaCheck({ previousResult: 1.0, currentResult: 2.4, hoursBetween: 12, absoluteThreshold: 0.5 });
+  assert.doesNotMatch(flagged.band, /threshold was not entered/);
+});
