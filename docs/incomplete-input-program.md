@@ -106,6 +106,13 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
     exported and a test walks it. Rule 10 says check monotonicity rather than assume it; this is
     the other half — keep checking it.
 
+20. **Disclosing in DATA is not disclosing** (spec-v1113). Four mean-scored questionnaires
+    computed the number of items each subscale averaged, stored it in an `answered` field, and
+    rendered a static explanation of the scoring method instead — so a mean of two items and a mean
+    of seven printed identically. A count in the returned object is available to an agent that
+    thinks to look and to nobody reading the page. Every rule in this list is about the sentence,
+    not the payload.
+
 ## The specs
 
 | Spec | What it fixed |
@@ -194,6 +201,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1110](spec-v1110.md) | Three scales that opened on an examination nobody performed |
 | [v1111](spec-v1111.md) | Four more, and a correction |
 | [v1112](spec-v1112.md) | The last two, and a prediction that was half wrong |
+| [v1113](spec-v1113.md) | The denominator was computed and never shown |
 
 ### And the same question from the other side
 

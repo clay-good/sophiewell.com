@@ -67,3 +67,29 @@ test('an out-of-range item is invalid, and an all-blank scale is invalid', () =>
   assert.equal(blank.valid, false);
   assert.equal(blank.field, 'p1');
 });
+
+// --- spec-v1113: a mean of two items printed like a mean of seven ---
+
+test('spec-v1113: the denominator is stated when a scale is short', () => {
+  const all = {};
+  for (const p of ['u', 'c', 'p']) for (let i = 1; i <= 7; i += 1) all[`${p}${i}`] = '1';
+  const complete = pfiq7(all);
+  assert.equal(complete.itemCounts, '', 'nothing to disclose when every scale is complete');
+  assert.doesNotMatch(complete.detail, /Scored from/);
+
+  const { u1, c3, ...partial } = all;
+  const r = pfiq7(partial);
+  assert.deepEqual(r.answered, { uiq: 6, craiq: 6, popiq: 7 });
+  assert.match(r.itemCounts, /UIQ-7 over 6 of its 7 items/);
+  assert.match(r.itemCounts, /CRAIQ-7 over 6 of its 7 items/);
+  assert.doesNotMatch(r.itemCounts, /POPIQ-7/);
+  // The reader sees it: the view prints `detail`.
+  assert.match(r.detail, /^Scored from /);
+});
+
+test('spec-v1113: the score itself is unchanged, because the mean is the published rule', () => {
+  const all = {};
+  for (const p of ['u', 'c', 'p']) for (let i = 1; i <= 7; i += 1) all[`${p}${i}`] = '1';
+  const { u1, ...partial } = all;
+  assert.equal(pfiq7(partial).uiq, pfiq7(all).uiq);
+});

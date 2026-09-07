@@ -78,3 +78,31 @@ test('an off-scale value is rejected, and an entirely blank form falls back', ()
   assert.equal(bad.field, 'p2');
   assert.equal(cbi({}).valid, false);
 });
+
+// --- spec-v1113: three answered items is the minimum, and read like six ---
+
+test('spec-v1113: a reported scale says how many of its items it averaged', () => {
+  const all = {};
+  for (const [p, n] of [['p', 6], ['w', 7], ['c', 6]]) {
+    for (let i = 1; i <= n; i += 1) all[`${p}${i}`] = '50';
+  }
+  const complete = cbi(all);
+  assert.equal(complete.itemCounts, '');
+
+  const { p1, p2, p3, ...partial } = all;
+  const r = cbi(partial);
+  assert.equal(r.answered.personal, 3, 'three is the minimum this scale accepts');
+  assert.match(r.itemCounts, /personal burnout over 3 of its 6 items/);
+  assert.match(r.detail, /^Scored from /);
+});
+
+test('spec-v1113: a scale below its minimum still says so, and is not counted twice', () => {
+  const all = {};
+  for (const [p, n] of [['p', 6], ['w', 7], ['c', 6]]) {
+    for (let i = 1; i <= n; i += 1) all[`${p}${i}`] = '50';
+  }
+  const { p1, p2, p3, p4, ...partial } = all;
+  const r = cbi(partial);
+  assert.equal(r.personal, null);
+  assert.doesNotMatch(r.itemCounts, /personal/);
+});

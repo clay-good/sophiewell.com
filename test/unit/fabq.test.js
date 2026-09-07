@@ -71,3 +71,33 @@ test('an out-of-range value is rejected, including on an unscored item', () => {
   assert.equal(fabq({ ...fill(3), q8: 9 }).field, 'q8');
   assert.equal(fabq({}).valid, false);
 });
+
+// --- spec-v1113: FABQ is a SUM, so a partial subscale is a floor ---
+
+test('spec-v1113: an unanswered item makes its subscale a floor, not a mean', () => {
+  const all = {};
+  for (let i = 1; i <= 16; i += 1) all[`q${i}`] = '4';
+  const complete = fabq(all);
+  assert.match(complete.band, /physical activity 16 of 24, work 28 of 42/);
+  assert.doesNotMatch(complete.detail, /can only raise it/);
+
+  const { q2, ...partial } = all;
+  const r = fabq(partial);
+  assert.equal(r.complete.physicalActivity, false);
+  assert.equal(r.complete.work, true);
+  assert.match(r.band, /physical activity at least 12 of 24 over 3 of its 4 items/);
+  assert.match(r.band, /work 28 of 42/, 'the complete subscale is left alone');
+  assert.match(r.detail, /The physical activity subscale is a sum, so an unanswered item can only raise it/);
+});
+
+test('spec-v1113: an unscored item does not make a subscale partial', () => {
+  // Five of the sixteen items count toward neither subscale.
+  const all = {};
+  for (let i = 1; i <= 16; i += 1) all[`q${i}`] = '4';
+  const without = { ...all };
+  delete without[`q${UNSCORED_ITEMS[0]}`];
+  const r = fabq(without);
+  assert.equal(r.complete.physicalActivity, true);
+  assert.equal(r.complete.work, true);
+  assert.doesNotMatch(r.band, /at least/);
+});

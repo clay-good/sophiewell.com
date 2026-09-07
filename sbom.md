@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `5e22b9d057121ce9`
-Generated: 2026-09-07T23:08:10.026Z
+Build ID: `817df041d24c0a9f`
+Generated: 2026-09-07T23:39:40.217Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -159,7 +159,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/caton-deschamps-v704.js` | 3198 | `b9be7c0dc63de6f287f3fdb77af63d1988443fff204eb0b177ae5ef91fec242a` |
 | `lib/catterall-perthes-v346.js` | 4486 | `63322ecb14b2d99ffe2d6503fcf5c7ff8248f31768b9f6fb830223a43f085340` |
 | `lib/cauti-nhsn-v875.js` | 9667 | `f42fe446fa2358f1f62ea70cce1f68fc52dec338c5d41456bd4adf900c7509de` |
-| `lib/cbi-v780.js` | 5258 | `3c239c73c08055dc6d3ef6a57fb9c938b19f00e005283f8d088e53525845085c` |
+| `lib/cbi-v780.js` | 5958 | `bfaedf3483148b13c05869daa1c00e0971858c4b6355e1e731537faaf755a0bf` |
 | `lib/ccs-angina-v319.js` | 4235 | `9e2d5837e6b90988ba4bcb58a58bdc3286a320aa98e72a08590f0a6f927c20bd` |
 | `lib/cdi-severity-v317.js` | 5240 | `ecdbbb59e2933387e5b504f983dccb3eed85fa16e8c9908d10da4464f8a84ef7` |
 | `lib/ceap-venous-v356.js` | 3969 | `595138549f950b9332bfa4fc3b7e9d2433d432673ad8d5603fdef98b6c36b2ae` |
@@ -276,7 +276,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/eu-tirads-v796.js` | 6187 | `be0b0828b57d4484b44c8f4f13b38ddc856c49c576eb130009c31960b2e66b58` |
 | `lib/ewgsop2-v880.js` | 8917 | `2de496adbda261b7bfb73ead14af89f0761dec6106c64e2246e2f54e8a9d7ec4` |
 | `lib/fab-v699.js` | 3133 | `3d15af628a254c38bbf87e2c0e3a80df7771fb4688d4b62b8ca2e9d6cd1568d7` |
-| `lib/fabq-v782.js` | 4825 | `37d2130110cb36da3e67c8cc92c76fb4b6f5cae77382edc1027cbed06fce1a40` |
+| `lib/fabq-v782.js` | 5927 | `9d8ea59172578b6c0a9122a4e819919d4c3a2ac793980fa9e3f7d98496975bf4` |
 | `lib/fast-dementia-v294.js` | 5928 | `ca241cbeef3ca9c9ba2a8d46c024d617b2691c1519265d5454caa2d5887af661` |
 | `lib/fazekas-v349.js` | 3945 | `21bb6a7dee337f80109349b3a983b97ffff33057f2a96cda79cef09cd91ddfed` |
 | `lib/feno-v888.js` | 8140 | `5b4509abf99c1d5d24a7c116477d8a13fa523f95fb49218a49ad10f09102911b` |
@@ -650,8 +650,8 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/periop-v97.js` | 22791 | `bf6f31ba7a6c64724819387bd8421533216898ec43d7dc92f34552f6d56236c4` |
 | `lib/peritoneal-cancer-index-v654.js` | 4959 | `dfb0ac27e4ead48e52fe8dcdc2504191d6af91648b178e0bd4e5158a82787152` |
 | `lib/pertussis-case-def-v868.js` | 9756 | `b542e071bc78bd634b448d387f79c2386ea5fd3586664b74903d9988a0456b14` |
-| `lib/pfdi20-v775.js` | 3982 | `5b9b7b749246ec16329fd2edee61832aa29970d49574659b07a29b5005973877` |
-| `lib/pfiq7-v776.js` | 4173 | `e9754014c0aaba1e3e9c0fff5fac31e3ecda4f98cedf365b024bc08e6a2d3e51` |
+| `lib/pfdi20-v775.js` | 4586 | `c0823651ebde274a1e242f66497336ab0015e1f1a38125d54423f590262cecc2` |
+| `lib/pfiq7-v776.js` | 5161 | `e03ec8c7c563207cedc8b10a0d7c80dc9622d09aaa8f1cbe738f96cfbb9a8b90` |
 | `lib/pfirrmann-disc-v434.js` | 3552 | `cd219b3462006d853f88f88cb4d271b49d4c254eec61a0af4a228f320351d2c9` |
 | `lib/ph-hemodynamics-2022-v826.js` | 7915 | `70cf4c387cf44e6b5fbab5408c18d2da54ee1684930c7ec611c09f1c984202d8` |
 | `lib/phq15-v734.js` | 2898 | `7b7affd6a2e2f0c972afe4414d12842b9bba4b1d5fba515e994b15a4a5357e1f` |

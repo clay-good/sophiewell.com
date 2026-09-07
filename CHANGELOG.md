@@ -33,6 +33,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Four questionnaires averaged fewer items than they appeared to and never
+  said so.** The PFIQ-7, PFDI-20 and Copenhagen Burnout Inventory score each
+  subscale as the mean of the items that were answered, which is the published
+  rule -- but a mean of two items and a mean of seven printed identically, and
+  each tile had already computed the number it was averaging over and stored it
+  where nobody could see it. All three now state the denominator whenever a
+  subscale is short. The FABQ needed more than a count: it is a SUM, so a
+  subscale missing an item is a floor rather than an average, and it now reads
+  "at least 12 of 24 over 3 of its 4 items" instead of understating by up to
+  six. See docs/spec-v1113.md.
 - **A heart-failure diagnosis was excluded without the workup, and a bipolar
   screen read negative before anyone answered it.** The HFA-PEFF scored each of
   its three unassessed domains as meeting no criterion and answered "HFpEF

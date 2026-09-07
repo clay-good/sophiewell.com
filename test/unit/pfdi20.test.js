@@ -71,3 +71,20 @@ test('an out-of-range item is invalid, and an all-blank subscale is invalid', ()
   assert.equal(blank.valid, false);
   assert.equal(blank.field, 'q15');
 });
+
+// --- spec-v1113: the subscales are different lengths, and none said so ---
+
+test('spec-v1113: a short subscale states its own denominator', () => {
+  const all = {};
+  for (let i = 1; i <= 20; i += 1) all[`q${i}`] = '1';
+  const complete = pfdi20(all);
+  assert.equal(complete.itemCounts, '');
+  assert.doesNotMatch(complete.detail, /Scored from/);
+
+  const { q1, ...partial } = all;
+  const r = pfdi20(partial);
+  assert.match(r.itemCounts, /POPDI-6 over 5 of its 6 items/);
+  assert.match(r.detail, /^Scored from /);
+  // The mean is the published rule, so the number does not move.
+  assert.equal(r.popdi, complete.popdi);
+});
