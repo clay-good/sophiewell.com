@@ -20,6 +20,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Hyperosmolar hyperglycemic state was classified from ketones nobody
+  measured.** Minimal ketosis is one of the HHS criteria, and the tile asserted
+  it in the result text while its other exit already refused for exactly that
+  reason. On the same numbers, significant ketosis makes this a mixed DKA/HHS
+  picture, which is managed differently. It now asks for the measurement rather
+  than assuming it. See docs/spec-v1099.md.
+
 - **The NHSN ventilator-event algorithm said a rise was "unknown" without saying
   which setting was missing.** Oxygenation qualifies on the FiO2 route or the
   PEEP route, so an unentered pair can only create an event, and "no

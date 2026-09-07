@@ -1,5 +1,9 @@
 # spec-v1098 — the last two, and what the finder has left
 
+**Superseded in part by [spec-v1099](spec-v1099.md):** the first section is empty of
+defects *among the tiles it can see*, which is 984 of 1,682. The other 698 set no
+boolean `abnormal`, so its test can never fire for them. Read that page next.
+
 The finder's first section is empty of defects. It read **47 fields across 19
 calculators** when it was written at [spec-v1092](spec-v1092.md) and reads **2
 across 2** now, both of which are correct tiles it cannot help flagging.

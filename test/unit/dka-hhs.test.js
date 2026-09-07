@@ -76,3 +76,37 @@ test('mental status is a row of the severity table, not decoration (spec-v1069)'
   assert.equal(dkaHhs(chem).grade, 'mild');
   assert.equal(dkaHhs(severeChem).grade, 'severe');
 });
+
+// spec-v1099: minimal ketosis is one of the HHS criteria, and the HHS branch
+// asserted it from a ketone measurement nobody took.
+//
+// The tile already refuses for exactly this reason when no classification is
+// reached -- "Enter beta-hydroxybutyrate (or a urine ketone grade) to confirm
+// the ketosis criterion" -- so one tile guarded one of its two exits. It matters
+// more on this path than as a wording slip: the alternative to HHS on these same
+// numbers is a MIXED DKA/HHS picture, which the tile names elsewhere and which is
+// managed differently. Ketones are what separate them.
+test('spec-v1099: HHS is not classified from ketones nobody measured', () => {
+  const hhsShaped = {
+    glucose: 900, ph: 7.35, bicarbonate: 22, mental: 'stupor', sodium: 155, chloride: 110,
+  };
+
+  const noKetones = dkaHhs(hhsShaped);
+  assert.notEqual(noKetones.classification, 'HHS', 'HHS needs the criterion it is missing');
+  assert.doesNotMatch(noKetones.band, /with minimal ketosis/, 'never assert the finding');
+  assert.match(noKetones.band, /no beta-hydroxybutyrate or urine ketone grade was entered/);
+  assert.match(noKetones.band, /mixed DKA\/HHS picture, which is managed differently/);
+
+  // Measured and low: HHS, said plainly.
+  const measured = dkaHhs({ ...hhsShaped, betaHydroxybutyrate: 1 });
+  assert.equal(measured.classification, 'HHS');
+  assert.match(measured.band, /minimal ketosis/);
+
+  // Measured and high on the same hyperosmolality: the mixed picture the
+  // footing warns about.
+  const mixed = dkaHhs({ ...hhsShaped, ph: 7.1, bicarbonate: 12, betaHydroxybutyrate: 5 });
+  assert.equal(mixed.classification, 'mixed');
+
+  // The DKA path was already guarded and stays that way.
+  assert.equal(dkaHhs({ glucose: 520, ph: 6.95, bicarbonate: 6, mental: 'stupor', sodium: 130, chloride: 95 }).classification, 'none');
+});

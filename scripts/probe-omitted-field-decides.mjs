@@ -96,7 +96,22 @@ function candidates(v) {
 }
 
 const ruledOut = [];
+const unflagged = [];
 const couldChange = [];
+
+// spec-v1099: how many tiles this probe's first section can see at all.
+//
+// The "ruled out from a subset" test is `abnormal` going false -> true, and 698
+// of the 1,682 tiles with a worked example -- 41.5% -- never set a boolean
+// `abnormal`. For those the test can NEVER fire, so `smart-cop` going from
+// "SMART-COP 1: low risk" to "SMART-COP 3: moderate risk" landed in the weaker
+// second section: demoted for lacking a flag, not for having a weaker defect.
+//
+// This is the failure spec-v1092 wrote down and then walked into anyway. The
+// count is printed with the report now, because a finder's reach is part of its
+// result.
+let tilesWithFlag = 0;
+let tilesWithoutFlag = 0;
 
 // Reaching the reassuring side of the threshold.
 //
@@ -132,6 +147,9 @@ for (const tool of allCalculators()) {
   const full = computeCalculator({ id: tool.id, inputs: { ...ex } });
   if (full?.valid !== true) continue;
 
+  if (typeof full.result?.abnormal === 'boolean') tilesWithFlag += 1;
+  else tilesWithoutFlag += 1;
+
   const numericDoms = (tool.fields || [])
     .filter((f) => f.kind === 'number' && ex[f.dom] !== undefined && String(ex[f.dom]).trim() !== '')
     .map((f) => f.dom);
@@ -159,6 +177,9 @@ for (const tool of allCalculators()) {
         const gotVerdict = verdict(got.result);
         const flip = baseAbnormal === false && got.result?.abnormal === true;
         const moved = baseVerdict && gotVerdict && verdictKey(gotVerdict) !== verdictKey(baseVerdict);
+        // No flag on either side: the verdict moving is the ONLY signal there
+        // is, so it carries the weight `flip` carries elsewhere.
+        const noFlag = typeof baseAbnormal !== 'boolean' && typeof got.result?.abnormal !== 'boolean';
         if (!flip && !moved) continue;
         const row = {
           id: tool.id,
@@ -169,6 +190,7 @@ for (const tool of allCalculators()) {
           value: c,
           verdict: gotVerdict,
           flip,
+          noFlag: noFlag && moved,
         };
         if (flip) { hit = row; break; }
         if (!hit) hit = row;
@@ -176,6 +198,7 @@ for (const tool of allCalculators()) {
       if (hit && hit.flip) break;
     }
     if (hit && hit.flip) ruledOut.push(hit);
+    else if (hit && hit.noFlag) unflagged.push(hit);
     else if (hit) couldChange.push(hit);
   }
 }
@@ -193,4 +216,7 @@ function report(title, rows) {
 console.log('Dropping one field from each worked example, then asking whether any plausible');
 console.log('value of that field would have changed the verdict -- without the tile saying so.');
 report('RULED OUT FROM A SUBSET (read these first)', ruledOut);
+report('NO SEVERITY FLAG, AND THE VERDICT MOVED (read these next)', unflagged);
 report('VERDICT COULD CHANGE', couldChange);
+console.log(`\nReach: ${tilesWithFlag} tiles set a boolean \`abnormal\` and ${tilesWithoutFlag} do not.`);
+console.log('The first section can only fire on the former; the second exists because of the latter.');
