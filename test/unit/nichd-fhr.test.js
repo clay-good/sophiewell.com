@@ -84,8 +84,34 @@ test('nichd-fhr: the residual, point-in-time and ignored-findings notes always p
   assert.match(r.ignoredNote, /do not change any category/);
   assert.match(r.scopeNote, /does not decide on delivery/);
   assert.match(NICHD_FHR_NOTE, /most tracings fall in it/);
-  assert.equal(VARIABILITY_OPTIONS.length, 4);
-  assert.equal(DECEL_OPTIONS.length, 3);
+  // spec-v1118: each list gained a leading "Not observed" option, without which
+  // spec-v1102's guard could never fire on the page. The published levels are
+  // what the counts below assert; the empty option is not one of them.
+  assert.equal(VARIABILITY_OPTIONS.filter((o) => o.value !== '').length, 4);
+  assert.equal(DECEL_OPTIONS.filter((o) => o.value !== '').length, 3);
+  assert.equal(VARIABILITY_OPTIONS[0].value, '', 'the control must be able to say "not observed"');
+  assert.equal(DECEL_OPTIONS[0].value, '');
+});
+
+test('spec-v1118: the page opens uncategorisable, not on Category I', () => {
+  // Every select used to open on its NORMAL level, so spec-v1102's guard --
+  // correct, and reached by every test because they call the library directly --
+  // never fired on the browser. A baseline and nothing else answered
+  // "Category I ... moderate variability, and neither late nor variable
+  // decelerations": three findings asserted from one number.
+  const asRendered = {
+    baseline: 140,
+    variability: VARIABILITY_OPTIONS[0].value,
+    lateDecels: DECEL_OPTIONS[0].value,
+    variableDecels: DECEL_OPTIONS[0].value,
+  };
+  const r = nichdFhr(asRendered);
+  assert.match(r.band, /Not categorisable yet/);
+  assert.doesNotMatch(r.band, /Category I:/);
+
+  // Chosen explicitly, "absent" still means absent.
+  const rated = nichdFhr({ baseline: 140, variability: 'moderate', lateDecels: 'absent', variableDecels: 'absent' });
+  assert.match(rated.band, /Category I:/);
 });
 
 // spec-v1102: every fallback in this tile is the NORMAL value -- moderate

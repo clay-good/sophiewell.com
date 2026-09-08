@@ -112,6 +112,13 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
     exported and a test walks it. Rule 10 says check monotonicity rather than assume it; this is
     the other half — keep checking it.
 
+22. **A fix to a library is a fix to the surfaces that can REACH it** (spec-v1118). Rule 18 puts
+    the guard in the pure function; that is necessary and not sufficient. The controls decide which
+    states the function is ever called in, and a control with no empty option makes a
+    blank-checking guard dead code on that surface. `nichd-fhr` was fixed in spec-v1102, every one
+    of its tests passed, and the page went on answering "Category I" for a tracing nobody had
+    described — because every test calls the library directly, where the guard works.
+
 21. **A default is not a defect; a SILENT default is** (spec-v1116). `sex = 'male'` in four
     signatures chose an EQUATION rather than a band — the male CKD-EPI, the +1 GAP gender point,
     the 28 mm Cornell cut-off, the male GLI-2012 set. Against that, `ethnicity = 'caucasian'` in
@@ -218,6 +225,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1115](spec-v1115.md) | The seven that turned an alarm into a reassurance |
 | [v1116](spec-v1116.md) | A default parameter that chose the equation |
 | [v1117](spec-v1117.md) | A mortality figure read off a row nobody had earned |
+| [v1118](spec-v1118.md) | **Finder**: a scoring select neither surface can leave unanswered |
 
 ### And the same question from the other side
 
@@ -265,10 +273,18 @@ So the last step of any wave that changes a control is the probe, not the suite:
 
 ```bash
 RUN_PROBES=1 npx playwright test test/integration/slider-default-probe.spec.js --project=chromium
+RUN_PROBES=1 npx playwright test test/integration/scoring-select-probe.spec.js --project=chromium
 ```
 
-About a minute, and it answers the only question the suites cannot: does this
-tile still render a control with no empty state?
+About a minute each, and they answer the only question the suites cannot: does
+this tile still render a control with no empty state?
+
+**And run them after a wave that changes only what a tile ANSWERS, too**
+(spec-v1118). `nichd-fhr` was fixed in spec-v1102 with every test passing, and
+the page went on giving the reading that wave existed to prevent, because its
+four picklists opened on the normal value and the guard never saw a blank. The
+rule above was written for control changes; the failure it missed was a library
+change whose guard depended on a control nobody had looked at.
 
 ## What holds it now
 
@@ -296,6 +312,7 @@ until someone asks:
 | `scripts/probe-omitted-item.mjs` | fill a calculator from its worked example, drop one number **or graded select**: does the agent's answer move without saying so? Prints its own reach. |
 | `scripts/probe-omitted-field-decides.mjs` | drop one number, then try plausible values *in* it: could any of them have changed the verdict? Prints its own reach. |
 | `scripts/probe-half-guarded.mjs` | does this tile refuse or disclose for one missing input and stay silent on another that moves the answer? |
+| `scoring-select-probe.spec.js` | which scoring selects have no empty option AND are not `required`, so neither the reader nor an agent can leave them unanswered — and which of those change the answer? |
 
 The second exists because the first is bounded by the worked example, which is written alarming —
 so a dropped field usually leaves an alarming reading standing, and the defect lives on the

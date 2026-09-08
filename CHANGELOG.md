@@ -33,6 +33,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A fetal heart-rate tracing nobody had described still read "Category I" on
+  the page.** The library was fixed for this earlier in the release and its
+  tests all passed -- but every one of them calls the library directly, and the
+  four picklists on the page opened on the normal value, so the guard could
+  never see a blank. Entering a baseline and touching nothing else asserted
+  moderate variability and no decelerations. They now open on "Not observed",
+  and the page opens saying the tracing is not categorisable yet. Found by a new
+  check that looks for scoring picklists which neither a reader nor an agent can
+  leave unanswered. See docs/spec-v1118.md.
 - **A STEMI mortality figure was read off the bottom row of the table for a
   patient nobody had assessed.** The TIMI score's seven risk factors are yes/no
   picklists that opened on "No", so entering an age and touching nothing else
