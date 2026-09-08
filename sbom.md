@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `a847a7e902356cc0`
-Generated: 2026-09-08T13:36:33.026Z
+Build ID: `22c0d2dbcb44aef8`
+Generated: 2026-09-08T14:28:31.932Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -273,7 +273,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/erefs-v618.js` | 11260 | `1150b196683116439fd890c8db58d5a091ca149b10d74ab0df6cc1efb717bd70` |
 | `lib/erez-dic-v559.js` | 12795 | `e29e69649b85654d9ef1b52e5eac56c390734f9b85da044ddc54e1190314270f` |
 | `lib/estimators-v233.js` | 9102 | `163bd6f013cbd5388f0fc7d0953f1e938182d28e2039d3bfb22f1fccc647283a` |
-| `lib/eu-tirads-v796.js` | 6187 | `be0b0828b57d4484b44c8f4f13b38ddc856c49c576eb130009c31960b2e66b58` |
+| `lib/eu-tirads-v796.js` | 7285 | `a40e8eebb11c40a0d156f4569ad29b72da42a8aa221b28e57a90e7ec017010ad` |
 | `lib/ewgsop2-v880.js` | 8917 | `2de496adbda261b7bfb73ead14af89f0761dec6106c64e2246e2f54e8a9d7ec4` |
 | `lib/fab-v699.js` | 3133 | `3d15af628a254c38bbf87e2c0e3a80df7771fb4688d4b62b8ca2e9d6cd1568d7` |
 | `lib/fabq-v782.js` | 5927 | `9d8ea59172578b6c0a9122a4e819919d4c3a2ac793980fa9e3f7d98496975bf4` |
@@ -2352,7 +2352,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v793.js` | 4484 | `fbecb0e28635029e7ac5483080d7ac9a81038555b26e085fa1e1bace542ef58d` |
 | `views/group-v794.js` | 3266 | `66525a85858e297109acac237d4611bf74a923b3f9a31cffc924d66025724865` |
 | `views/group-v795.js` | 4926 | `451f6ff177500a52c169da19fe890934fd2ed61a7a250bad71fb5e2ba59ed548` |
-| `views/group-v796.js` | 5022 | `a77a5d33f003ec482d7dba6b5561d0a95b93eabeedf2b11231114ed8c3ba3a69` |
+| `views/group-v796.js` | 5283 | `619444b68c78da24fb43040d9962f33772ef1b5ec3dce42e36d3b392c75a1860` |
 | `views/group-v797.js` | 4184 | `a6125219d5781c0694efcd1d5bc1897587a8decf8615b66d209623dead3791c5` |
 | `views/group-v798.js` | 4020 | `911cc802b17f656b5dd475a373a9b465c528a3bc26473c1732808bc8b35c88ae` |
 | `views/group-v799.js` | 3074 | `207697ea9b629a3146172a3efa48090adca2ae9dcd960b72487c7973f111d888` |

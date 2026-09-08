@@ -57,3 +57,33 @@ test('an unknown appearance or an off-scale size is rejected', () => {
   assert.equal(euTirads({ appearance: 'spongy' }).field, 'appearance');
   assert.equal(euTirads({ appearance: 'benign', sizeMm: 500 }).field, 'sizeMm');
 });
+
+test('spec-v1140: an undescribed nodule has no category', () => {
+  // An unstated appearance became 'iso-hyperechoic', so an empty form answered
+  // "EU-TIRADS 3 - low risk" -- a risk category for a nodule nobody had
+  // described, on the tile that decides whether to put a needle in it.
+  const empty = euTirads({});
+  assert.equal(empty.valid, false);
+  assert.equal(empty.field, 'appearance');
+  assert.match(empty.message, /Describe the nodule to read a EU-TIRADS category/);
+  assert.doesNotMatch(String(empty.band || ''), /low risk/);
+
+  // A size on its own is not a description either.
+  assert.equal(euTirads({ sizeMm: 12 }).valid, false);
+});
+
+test('spec-v1140: a high-risk feature rules in without the appearance', () => {
+  // Rule 13: the high-risk features override the basic appearance, so category 5
+  // stands whatever the echogenicity turns out to be, and the tile answers.
+  const r = euTirads({ microcalcifications: true, sizeMm: 12 });
+  assert.equal(r.valid, true);
+  assert.equal(r.category, 5);
+  assert.match(r.band, /high risk/);
+  assert.match(r.band, /Fine-needle aspiration indicated/);
+
+  // Described, every reading is what it always was.
+  assert.equal(euTirads({ appearance: 'iso-hyperechoic', sizeMm: 12 }).category, 3);
+  assert.equal(euTirads({ appearance: 'no-nodule' }).category, 1);
+  // And an unrecognised value is still rejected as invalid, not treated as absent.
+  assert.match(euTirads({ appearance: 'bogus' }).message, /must be no-nodule, benign/);
+});

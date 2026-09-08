@@ -52,7 +52,11 @@ function wire(ids, run) {
   run();
 }
 
+// spec-v1140: the blank comes first. This opened on the category-3 appearance, so
+// an untouched form read "EU-TIRADS 3 - low risk" for a nodule nobody had
+// described -- on the tile that decides whether to biopsy it.
 const APPEARANCE = [
+  { value: '', text: 'Not described' },
   { value: 'iso-hyperechoic', text: 'Ovoid, smooth, iso- or hyperechoic (category 3)' },
   { value: 'mildly-hypoechoic', text: 'Ovoid, smooth, mildly hypoechoic (category 4)' },
   { value: 'benign', text: 'Pure cyst or entirely spongiform (category 2)' },

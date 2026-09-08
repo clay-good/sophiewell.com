@@ -33,6 +33,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A thyroid ultrasound tool gave a risk category for a nodule nobody had
+  described.** EU-TIRADS reads its category off how the nodule looks on
+  ultrasound, and an empty form was answering "EU-TIRADS 3 -- low risk" -- on the
+  tool that decides whether to biopsy. It now asks for the appearance, except
+  where a high-risk feature is present, since those set the category on their own
+  whatever the appearance turns out to be. See docs/spec-v1140.md.
+
 - **A contrast-nephropathy score treated a risk factor nobody had mentioned as
   absent, for callers using the API.** On the page each of the six clinical
   factors shows its answer, so a reader can see what the score assumed. Through

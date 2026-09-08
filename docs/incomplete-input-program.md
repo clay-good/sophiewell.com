@@ -285,6 +285,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1137](spec-v1137.md) | The note said the choice was not inferred |
 | [v1138](spec-v1138.md) | The shortest interval in an aspiration-risk table |
 | [v1139](spec-v1139.md) | The same narrowing, one level down, inside a tile |
+| [v1140](spec-v1140.md) | A risk category for a nodule nobody had described |
 
 ### And the same question from the other side
 
@@ -373,6 +374,7 @@ until someone asks:
 | `scripts/probe-half-guarded.mjs` | does this tile refuse or disclose for one missing input and stay silent on another that moves the answer? |
 | `scoring-select-probe.spec.js` | which scoring selects have no empty option AND are not `required`, so neither the reader nor an agent can leave them unanswered — and which of those change the answer? |
 | `scripts/probe-default-in-answer.mjs` | does a function print a **defaulted parameter's value** into its own answer, so the reading names something nobody entered? A row is a suspect: a default is fine where the control says what it means. |
+| `scripts/probe-missing-list-reach.mjs` | does a tile's own "what is missing" list cover its own inputs, or only the ones the author was fixing? Prints the fields it never names that change the verdict when dropped. |
 
 The second exists because the first is bounded by the worked example, which is written alarming —
 so a dropped field usually leaves an alarming reading standing, and the defect lives on the
