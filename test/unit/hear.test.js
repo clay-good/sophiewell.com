@@ -41,8 +41,50 @@ test('missing age -> complete-the-fields fallback (no band from a partial total)
   assert.match(r.band, /Enter the patient age/);
 });
 
-test('unknown select keys default to the 0 option', () => {
+test('an unknown select key never throws -- and no longer scores as the 0 option', () => {
+  // This test used to assert `total === 0, veryLow === true`, which is how the
+  // spec-v1134 defect was written down and thereby made to look handled: a key
+  // the tile does not recognise was scored as "slightly suspicious / normal ECG /
+  // no risk factors". Robustness was the point and robustness is kept -- nothing
+  // throws -- but an unrecognised key is an ungraded item, not a reassuring one.
   const r = hear({ history: 'bogus', ecg: 'x', age: 30, risk: 'y' });
+  assert.equal(r.valid, false);
   assert.equal(r.total, 0);
-  assert.equal(r.veryLow, true);
+  assert.deepEqual(r.ungraded, ['the history', 'the ECG', 'the risk factors']);
+});
+
+test('spec-v1134: an ungraded item cannot be read as its zero-point level', () => {
+  // `pick(table, key, 'h0')` fell back to the first row of each table, and in all
+  // three that row is the reassuring one: history slightly suspicious, ECG
+  // normal, no risk factors. The only guard was on the age, so a chest-pain form
+  // with nothing in it but a date of birth answered "HEAR score 0: very low risk
+  // -- the troponin-free band".
+  const ageOnly = hear({ age: 30 });
+  assert.equal(ageOnly.valid, false);
+  assert.deepEqual(ageOnly.ungraded, ['the history', 'the ECG', 'the risk factors']);
+  assert.match(ageOnly.band, /grade the history, the ECG and the risk factors/);
+  assert.doesNotMatch(ageOnly.band, /very low risk \(/);
+
+  // One ungraded item is enough: each is worth up to 2 against a cut-off of 1.
+  const oneMissing = hear({ age: 30, history: 'h0', ecg: 'e0' });
+  assert.equal(oneMissing.valid, false);
+  assert.deepEqual(oneMissing.ungraded, ['the risk factors']);
+});
+
+test('spec-v1134: above the cut-off the verdict holds, and the total says it is a floor', () => {
+  // Rule 13 as spec-v1114 refined it: the verdict is exempt, the number under it
+  // is not. Age 65+ alone is 2, already past the very-low-risk line, and the
+  // ungraded items can only add.
+  const r = hear({ age: 70 });
+  assert.equal(r.valid, true);
+  assert.equal(r.veryLow, false);
+  assert.equal(r.floorOnly, true);
+  assert.match(r.band, /HEAR score at least 2/);
+  assert.match(r.band, /HEART scoring with troponin is indicated/);
+
+  // Fully graded, the reading is unchanged from before this wave.
+  const graded = hear({ age: 58, history: 'h1', ecg: 'e1', risk: 'r1' });
+  assert.equal(graded.total, 4);
+  assert.equal(graded.floorOnly, false);
+  assert.match(graded.band, /^HEAR score 4:/);
 });

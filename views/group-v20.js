@@ -170,7 +170,12 @@ export const renderers = {
 
   // ----- 2.4 mascc -------------------------------------------------------
   'mascc'(root) {
+    // spec-v1134: the page opened this on "No or mild symptoms (5)" while the
+    // library read an ungraded burden as 0 -- the value of "severe". Same tile,
+    // opposite assumption, 5 points either side of the line between outpatient
+    // oral management and admission.
     root.appendChild(selectField('Burden of illness', 'ma-burden', [
+      { value: '', text: 'Not graded' },
       { value: 'no-mild', text: 'No or mild symptoms (5)' },
       { value: 'moderate', text: 'Moderate symptoms (3)' },
       { value: 'severe', text: 'Severe symptoms (0)' },
@@ -192,7 +197,7 @@ export const renderers = {
       if (!r.valid) { o.appendChild(el('p', { class: 'muted', text: r.band })); return; }
       resultRow(o, [
         { text: r.band, cls: r.lowRisk ? null : 'warn' },
-        { label: 'MASCC total (max 26)', value: String(r.total) },
+        { label: 'MASCC total (max 26)', value: r.burdenStated ? String(r.total) : `at least ${r.total}` },
         { label: 'Risk', value: r.lowRisk ? 'low risk (≥ 21)' : 'not low risk (< 21)' },
       ]);
       pointsList(o, r.items);

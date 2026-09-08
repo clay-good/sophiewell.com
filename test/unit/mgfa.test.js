@@ -78,3 +78,41 @@ test('spec-v1129: the two classes with no subtype are unaffected', () => {
   assert.equal(mgfa({ severity: 'intubation' }).subtypeOwed, false);
   assert.equal(mgfa({ severity: 'intubation' }).cls, 'V');
 });
+
+test('spec-v1135: an unrated MG-ADL item is not a normal one', () => {
+  // `scored` counted items whose value was ABOVE ZERO, so "(all items at 0)"
+  // printed both when all eight had been rated normal and when none had been
+  // rated at all. For a myasthenic patient those are different statements:
+  // normal swallowing and breathing is a finding, and its absence is not.
+  const none = mgfa({ severity: 'ocular' });
+  assert.equal(none.adlGraded, 0);
+  assert.equal(none.adlComplete, false);
+  assert.match(none.band, /MG-ADL not scored: none of its eight items has been rated/);
+  assert.doesNotMatch(none.band, /MG-ADL 0\/24/);
+
+  const allNormal = mgfa({
+    severity: 'ocular', talking: 0, chewing: 0, swallowing: 0, breathing: 0,
+    hygiene: 0, rising: 0, diplopia: 0, ptosis: 0,
+  });
+  assert.equal(allNormal.adlGraded, 8);
+  assert.equal(allNormal.adlComplete, true);
+  assert.equal(allNormal.adlTotal, 0);
+  assert.match(allNormal.band, /MG-ADL 0\/24\./);
+});
+
+test('spec-v1135: a partial MG-ADL reports a floor and counts what was rated', () => {
+  // The scale is a sum of non-negative items, so what is rated is a floor. The
+  // count goes in the sentence, not only in the returned object (rule 20).
+  const partial = mgfa({ severity: 'severe', subtype: 'b', breathing: 2, swallowing: 2, talking: 1 });
+  assert.equal(partial.adlTotal, 5);
+  assert.equal(partial.adlGraded, 3);
+  assert.match(partial.band, /MG-ADL at least 5\/24 from the 3 of 8 items rated/);
+  assert.match(partial.band, /the other 5 not rated, each worth up to 3/);
+
+  // With three or fewer outstanding, the tile names them.
+  const nearlyDone = mgfa({
+    severity: 'ocular', talking: 1, chewing: 0, swallowing: 0, breathing: 0,
+    hygiene: 0, rising: 1,
+  });
+  assert.match(nearlyDone.band, /double vision, eyelid droop not rated/);
+});

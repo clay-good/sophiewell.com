@@ -80,18 +80,25 @@ function wire(ids, run) {
 export const renderers = {
   // ----- 2.1 hear -------------------------------------------------------
   hear(root) {
+    // spec-v1134: the blank comes first on all three. Each opened on its
+    // zero-point row -- slightly suspicious, normal ECG, no risk factors -- so a
+    // chest-pain form with only an age in it read "very low risk, the
+    // troponin-free band".
     root.appendChild(selectField('History', 'hr-hist', [
+      { value: '', text: 'Not graded' },
       { value: 'h0', text: 'Slightly suspicious -- 0' },
       { value: 'h1', text: 'Moderately suspicious -- 1' },
       { value: 'h2', text: 'Highly suspicious -- 2' },
     ]));
     root.appendChild(selectField('ECG', 'hr-ecg', [
+      { value: '', text: 'Not graded' },
       { value: 'e0', text: 'Normal -- 0' },
       { value: 'e1', text: 'Non-specific repolarization disturbance -- 1' },
       { value: 'e2', text: 'Significant ST deviation -- 2' },
     ]));
     root.appendChild(field('Age (years)', 'hr-age', { min: 0, max: 120, placeholder: '58' }));
     root.appendChild(selectField('Risk factors', 'hr-risk', [
+      { value: '', text: 'Not assessed' },
       { value: 'r0', text: 'None -- 0' },
       { value: 'r1', text: '1-2 risk factors -- 1' },
       { value: 'r2', text: '>= 3 risk factors or known atherosclerotic disease -- 2' },

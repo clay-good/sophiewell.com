@@ -84,7 +84,10 @@ export const renderers = {
   // ----- 2.1 modified-fisher --------------------------------------------
   'modified-fisher'(root) {
     note(root, 'Modified Fisher Scale: grades the radiographic blood burden after aneurysmal subarachnoid hemorrhage to predict symptomatic vasospasm. Choose the cisternal SAH thickness and mark intraventricular hemorrhage. Frontera used a subjective thin-vs-thick read; the < 1 mm / >= 1 mm cutoff is a downstream convention. Grade 0-4.');
+    // spec-v1134: "None" is a finding on a scan somebody has read, so it cannot
+    // also be what the form says before anyone has looked.
     root.appendChild(selectField('Cisternal subarachnoid blood', 'mf-sah', [
+      { value: '', text: 'Not graded' },
       { value: 'none', text: 'None' },
       { value: 'thin', text: 'Thin SAH (focal or diffuse)' },
       { value: 'thick', text: 'Thick SAH (focal or diffuse)' },
@@ -93,6 +96,9 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     wire(['mf-sah', 'mf-ivh'], () => safe(o, () => {
       const r = M.modifiedFisher({ sah: selVal('mf-sah'), ivh: chk('mf-ivh') });
+      // The renderer never read `valid`, so a refusal would have printed
+      // "grade undefined" beside it.
+      if (!r.valid) { note(o, r.band); note(o, r.note); return; }
       resultRow(o, [
         { text: r.band, cls: r.abnormal ? 'warn' : null },
         { label: 'Modified Fisher', value: `grade ${r.grade}` },

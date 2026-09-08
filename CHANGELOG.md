@@ -33,6 +33,36 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A myasthenia gravis symptom scale said "all items at 0" whether all eight had
+  been rated normal or none had been rated at all.** The MG-ADL rates talking,
+  chewing, swallowing, breathing and four other daily activities, and normal
+  swallowing is something somebody checked -- not the same as nobody having asked.
+  The scale now reports how many of the eight items were rated, gives a partial
+  total as a floor, and its items open on "Not rated" rather than on "0 -- normal".
+  See docs/spec-v1135.md.
+
+- **A chest-pain score reported the "no troponin needed" band from a form with
+  nothing in it but an age.** The HEAR score rates the history, the ECG and the
+  patient's risk factors alongside their age, and an item nobody had graded was
+  being scored at its most reassuring level -- so a young patient with three
+  ungraded items read as very low risk, the band used to decide that a troponin
+  can be skipped. Each item can move a patient across that line on its own, so the
+  score now asks for them; above the line, where the answer cannot change, it
+  still answers and says the total is a floor. See docs/spec-v1134.md.
+
+- **A febrile-neutropenia score assumed opposite things on the page and through
+  the API.** The MASCC index turns on whether the total reaches 21, the line
+  between managing someone as an outpatient on oral antibiotics and admitting
+  them. Its burden-of-illness rating is worth five points, and an ungraded one
+  counted as five on the page and as zero through the API. It is now asked for
+  when it could change the answer, and the answer says so when it could not.
+
+- **A CT grading scale graded a scan nobody had read.** The modified Fisher scale
+  reported "grade 0, no subarachnoid or intraventricular hemorrhage" -- with a
+  vasospasm risk under it -- whenever the cisternal blood had not been graded.
+  "None" is a finding somebody reports after looking, so it is now one of the
+  choices rather than what the form says before anyone has.
+
 - **A urine albumin result did not say which unit it had read the albumin in.**
   The two urine albumin units are a factor of ten apart, so the same number could
   be reported as severely increased albuminuria or as moderately increased -- two

@@ -47,7 +47,12 @@ function wire(ids, run) {
   run();
 }
 
+// spec-v1135: all eight MG-ADL items opened on "0 — normal", so a form nobody
+// had filled in and a patient rated normal on all eight produced the same
+// sentence. "Normal swallowing" and "nobody asked about swallowing" are not the
+// same statement about a myasthenic patient.
 const ADL_OPTS = [
+  { value: '', text: 'Not rated' },
   { value: '0', text: '0 — normal' },
   { value: '1', text: '1 — mild' },
   { value: '2', text: '2 — moderate' },

@@ -46,8 +46,34 @@ test('isolated IVH with no SAH -> grade 0 with the out-of-scope note', () => {
   assert.match(r.band, /outside the modified Fisher/);
 });
 
-test('unknown SAH key defaults to none (grade 0), never throws', () => {
+test('an unknown SAH key never throws -- and no longer grades 0', () => {
+  // The old assertion was `grade === 0, valid === true`: a key the tile does not
+  // recognise was graded as a CT showing no blood. Robustness was the point and
+  // is kept -- nothing throws -- but grade 0 is a radiologist's finding, not the
+  // absence of one, so an unrecognised key asks (spec-v1134).
   const r = modifiedFisher({ sah: 'bogus' });
-  assert.equal(r.grade, 0);
-  assert.equal(r.valid, true);
+  assert.equal(r.valid, false);
+  assert.equal(r.grade, undefined);
+  assert.match(r.band, /Grade the cisternal subarachnoid blood/);
+});
+
+test('spec-v1134: an ungraded CT is not a negative CT', () => {
+  // Every value but 'thin'/'thick' mapped to 'none', so an unstated one graded 0
+  // and read "no subarachnoid or intraventricular hemorrhage" -- an assertion
+  // about a scan nobody had read, printed above a vasospasm risk.
+  const ungraded = modifiedFisher({});
+  assert.equal(ungraded.valid, false);
+  assert.match(ungraded.band, /Grade the cisternal subarachnoid blood/);
+  assert.doesNotMatch(ungraded.band, /no subarachnoid or intraventricular hemorrhage/);
+
+  // An IVH checkbox alone does not make the SAH read.
+  assert.equal(modifiedFisher({ ivh: true }).valid, false);
+  // Nor does an unknown value.
+  assert.equal(modifiedFisher({ sah: 'moderate' }).valid, false);
+
+  // "None" stated by someone who looked still grades 0.
+  const stated = modifiedFisher({ sah: 'none' });
+  assert.equal(stated.valid, true);
+  assert.equal(stated.grade, 0);
+  assert.match(stated.band, /no subarachnoid or intraventricular hemorrhage/);
 });
