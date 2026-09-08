@@ -668,11 +668,31 @@ export const renderers = {
     const run = () => {
       clear(out);
       try {
+        // spec-v1147: `|| 0` made a macronutrient nobody ordered read as an order
+        // for none of it -- "Dextrose: 0.0 g (0 kcal)" on a bag whose dextrose
+        // had simply not been typed. A lipid-free bag is real and says so with a
+        // typed 0 (rule 1); a blank is a gap (rule 11: a stated zero is a
+        // fabricated observation, not an arithmetic slip).
+        const pct = (id) => {
+          const n = document.getElementById(id);
+          return String(n.value).trim() === '' ? null : Number(n.value);
+        };
+        const dextrosePct = pct('tpn-d');
+        const aminoAcidPct = pct('tpn-aa');
+        const lipidPctOfVolume = pct('tpn-lipid');
+        const missing = [
+          dextrosePct === null ? 'the dextrose %' : null,
+          aminoAcidPct === null ? 'the amino acid %' : null,
+          lipidPctOfVolume === null ? 'the lipid %' : null,
+        ].filter(Boolean);
+        if (missing.length) {
+          clear(out);
+          out.appendChild(el('p', { class: 'muted', text: `Enter ${missing.join(', ')} to calculate. A blank is not an order for none of it -- type 0 for a component the bag does not contain.` }));
+          return;
+        }
         const r = tpnMacro({
           volumeMl: Number(document.getElementById('tpn-vol').value),
-          dextrosePct: Number(document.getElementById('tpn-d').value) || 0,
-          aminoAcidPct: Number(document.getElementById('tpn-aa').value) || 0,
-          lipidPctOfVolume: Number(document.getElementById('tpn-lipid').value) || 0,
+          dextrosePct, aminoAcidPct, lipidPctOfVolume,
         });
         resultRow(out, [
           { label: 'Total', value: `${r.totalKcal.toFixed(0)} kcal in ${r.volumeMl} mL` },

@@ -666,6 +666,32 @@ copy of the rule. Its reach prints with its result — 2,075 of the 4,226 declar
 fields actually cleared, the rest being selects, checkboxes and sliders, where
 clearing sets a different value rather than removing one.
 
+[spec-v1147](spec-v1147.md) took the first batch out of that backlog — the rows
+where a tile prints a number that is not a measurement. `prevent` is the one to
+remember: **five different ten-year cardiovascular risks for the same patient,
+decided by which lab had not come back.** Its library guards
+`[age, totalChol, hdl, sbp, bmi, egfr].every(Number.isFinite)` and its renderer
+read them with `nv()`, so a blank arrived as 0 and the guard has never fired. A
+total cholesterol nobody drew moved the reading from 4.0% to **2.8% — Low
+(<5%)**, which is a statin conversation that does not happen. `tpn-macro` and
+`peds-fluid-deficit` were the same shape in grams and millilitres.
+
+Two things this wave got wrong first and corrected:
+
+- **A library-level reproduction is not a reading.** `ascvdPce` returns `NaN` from
+  a zeroed cholesterol and the renderer calls `.toFixed(1)` on it, so I wrote that
+  the tile showed *"NaN% — High (>=20%)"*. On the page it does not: the spec-v53
+  output-safety layer catches it, and the reader gets a range complaint instead of
+  the library's own "Enter …" sentence. Still worth fixing, but a badly-shaped
+  message rather than a fabricated risk — and that is the whole distance between
+  it and `prevent`.
+- **A pattern that moves nothing is a claim the next reader has to re-check.** On
+  the strength of that misreading the shared "did it answer?" test nearly grew a
+  `NaN|Infinity` alternative. Measured before adding, as the rule requires: zero
+  rows move, because no tile can render one. Not added.
+
+Backlog 59 → 50.
+
 ## Probes measured and rejected
 
 Three questions asked of the whole catalog after spec-v1048, each of which sounded like it should

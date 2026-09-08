@@ -100,6 +100,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   already guarantee, which can raise the alarm but never withdraw it. See
   docs/spec-v1146.md.
 
+- **The PREVENT cardiovascular risk calculator gave five different answers for one
+  patient, depending on which lab was still blank.** It reads six numbers, and a
+  blank one was read as zero: a total cholesterol nobody had drawn moved the
+  ten-year risk from 4.0% to 2.8% and the reading from borderline to *"Low"*, while
+  a blank eGFR moved it to 27.2% and *"High"*. It now asks for what is missing, as
+  its own code was already written to do. The ASCVD calculator beside it had the
+  same blank-is-zero reading and answered with a confusing complaint that a value
+  was out of range; it now names the missing ones.
+
+  The TPN macronutrient calculator read a blank dextrose, protein or lipid
+  percentage as an order for none of it, and the pediatric dehydration calculator
+  read a blank dehydration estimate as a child who is not dehydrated. Both now ask
+  -- and for a bag that genuinely has no lipid, or a child who genuinely is not
+  dehydrated, a typed 0 still answers. See docs/spec-v1147.md.
+
 ### Changed
 
 - **A check that compares what the tool accepts with what the page offers was

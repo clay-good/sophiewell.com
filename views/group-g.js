@@ -1148,9 +1148,20 @@ export const renderers = {
     root.appendChild(checkbox('Diabetes', 'as-dm'));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
+      // spec-v1147: both risk models guard `Number.isFinite` on their inputs, and
+      // `nv()` is `Number(value)` -- `Number('')` is 0, which IS finite, so
+      // neither guard could ever fire on a blank field. Rule 7: the guard was
+      // against one SHAPE of missing value.
+      //
+      // The PCE's arithmetic gives NaN from a zero, and the spec-v53 output-safety
+      // layer catches that before it reaches the DOM -- so the reader was not
+      // shown a number, but was told "One of these values is too large or too
+      // small for this calculation to have an answer". Nothing is out of range;
+      // something is missing, and the library already has the sentence that says
+      // which. PREVENT is the one that answers (see below).
       const r = S4.ascvdPce({
-        age: nv('as-age'), totalChol: nv('as-tc'), hdl: nv('as-hdl'),
-        sbp: nv('as-sbp'), sex: document.getElementById('as-sex').value,
+        age: nvOrNull('as-age'), totalChol: nvOrNull('as-tc'), hdl: nvOrNull('as-hdl'),
+        sbp: nvOrNull('as-sbp'), sex: document.getElementById('as-sex').value,
         race: document.getElementById('as-race').value,
         treatedSbp: checked('as-trt'), smoker: checked('as-smk'), diabetes: checked('as-dm'),
       });
@@ -1184,9 +1195,15 @@ export const renderers = {
     root.appendChild(checkbox('Diabetes', 'pv-dm'));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
+      // spec-v1147: the same guard, the same blank-is-zero, and no NaN to be
+      // caught -- PREVENT's arithmetic gives a RISK from a zero. Measured on the
+      // page, one blank field at a time: a total cholesterol nobody drew gave
+      // "2.8% -- Low (<5%)", a blank HDL 6.5%, a blank BMI 5.2%, a blank SBP
+      // 28.0% and a blank eGFR 27.2%. Five different ten-year risks for the same
+      // patient, and the reassuring ones are the ones that matter.
       const r = S4.prevent10yr({
-        age: nv('pv-age'), totalChol: nv('pv-tc'), hdl: nv('pv-hdl'),
-        sbp: nv('pv-sbp'), bmi: nv('pv-bmi'), egfr: nv('pv-egfr'),
+        age: nvOrNull('pv-age'), totalChol: nvOrNull('pv-tc'), hdl: nvOrNull('pv-hdl'),
+        sbp: nvOrNull('pv-sbp'), bmi: nvOrNull('pv-bmi'), egfr: nvOrNull('pv-egfr'),
         sex: document.getElementById('pv-sex').value,
         treatedSbp: checked('pv-trt'), smoker: checked('pv-smk'), diabetes: checked('pv-dm'),
       });

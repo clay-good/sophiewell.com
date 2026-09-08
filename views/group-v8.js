@@ -331,7 +331,13 @@ export const renderers = {
     root.appendChild(field('Estimated dehydration (%)', 'pfd-pct', { min: 0, max: 100, placeholder: 'e.g. 10' }));
     const o = out(); root.appendChild(o);
     wire(['pfd-wt', 'pfd-wt-unit', 'pfd-pct'], () => safe(o, () => {
-      const r = M5.pedsFluidDeficit({ weightKg: unitNum('pfd-wt'), dehydrationPct: val('pfd-pct') });
+      // spec-v1147: `val()` is `Number('')` -- 0 -- and `pedsFluidDeficit` allows
+      // a dehydration of 0, so a blank estimate printed "Total fluid deficit: 0
+      // mL" and a first-8-hour rate that was maintenance alone. A euvolemic child
+      // is a typed 0; a blank is an estimate nobody made.
+      const dehydrationPct = optNum('pfd-pct');
+      if (needValues(o, [['an estimated dehydration percentage', dehydrationPct]])) return;
+      const r = M5.pedsFluidDeficit({ weightKg: unitNum('pfd-wt'), dehydrationPct });
       o.appendChild(list([
         li(`Maintenance rate (4-2-1): ${fmt(r.maintPerH, { fallback: '(enter weight)' })} mL/h`),
         li(`Total fluid deficit: ${fmt(r.deficitMl, { fallback: '--' })} mL`),

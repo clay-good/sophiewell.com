@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `777046be45b54c22`
-Generated: 2026-09-08T19:46:47.801Z
+Build ID: `bf186721c90df83c`
+Generated: 2026-09-08T20:13:18.948Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -1707,8 +1707,8 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-b.js` | 77156 | `88cc71d010172716bbb55f6e5773a194945a93d00d5a759697eddd110066c560` |
 | `views/group-c.js` | 26643 | `c139c073fd2c3a107f1865ff5e41dd671e988a06b16fe6d0efb050d6da2e060c` |
 | `views/group-e.js` | 48405 | `17d63394ee917c7ebe0fa1faecd6bb3824796d663fe76005eee2921d14979901` |
-| `views/group-f.js` | 50610 | `2a10d419be69c01c51cbf0100f9284fc06e239217cb87f12b123b33e524bd334` |
-| `views/group-g.js` | 247484 | `16f3efaba936c767acf1e73e7640c910d27b9239c170e344d1d8c35391dc90b3` |
+| `views/group-f.js` | 51616 | `c31bb8d06469cb71e498c8465c15529c76675914007301a9b5318c6d76c26bc6` |
+| `views/group-g.js` | 248770 | `4dd0a602b285c46082e1f9f72394f566b20690f4da942b8579f6dc189f8e6f50` |
 | `views/group-h.js` | 30041 | `ef2d74336a9ab03aa5fc8307f4d76ae8023dc6ecc80347c561e1269bc539fcea` |
 | `views/group-i.js` | 25281 | `2a5d42af02ea24dfbfa7ac442ca7467880239b596ab6312833b5f4eb7d86fd12` |
 | `views/group-j.js` | 9024 | `7d8ad642f932ac040e85c1c2c4b35cc0b20acd2d81415ad7740e547b845fdae2` |
@@ -2356,7 +2356,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v797.js` | 4184 | `a6125219d5781c0694efcd1d5bc1897587a8decf8615b66d209623dead3791c5` |
 | `views/group-v798.js` | 4020 | `911cc802b17f656b5dd475a373a9b465c528a3bc26473c1732808bc8b35c88ae` |
 | `views/group-v799.js` | 3074 | `207697ea9b629a3146172a3efa48090adca2ae9dcd960b72487c7973f111d888` |
-| `views/group-v8.js` | 22176 | `60f0c7ace17edfa56cf37c24ce905184eeb9bbca4e829a87363fd3847f58b091` |
+| `views/group-v8.js` | 22606 | `c1d46711ac414a18ad8cb9088612ef025c61e7243b9e7c40fc37de786c786d93` |
 | `views/group-v800.js` | 3162 | `a7894ea3c03e6cfd3b923da113f1b66079990f2545e20906d326226359860df1` |
 | `views/group-v801.js` | 4538 | `63dd0a780d65c98e0bd7a78f1aa906d461ad43303b3b7799a9e869ebb8ad5d06` |
 | `views/group-v802.js` | 3559 | `2c21752063d89628f4526a6c6d962fcb4d61175367b5db20edf83d886d55e246` |

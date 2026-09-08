@@ -29,6 +29,13 @@ export function requiredFieldsByTile() {
 
 // Did the tile ANSWER, as opposed to refusing or saying nothing? A number that
 // is not a citation year, outside parentheses.
+//
+// spec-v1147 considered widening this to count a `NaN` / `Infinity` reading as an
+// answer, on the strength of `ascvdPce` returning NaN from a zeroed input. It was
+// measured before being added, and it moved ZERO rows: the spec-v53 output-safety
+// layer catches a non-finite value before it reaches the DOM, so no tile renders
+// one. Not added -- a pattern that moves nothing is a claim the next reader has to
+// re-check.
 export function answeredWithANumber(text) {
   return /(?:^|[^\d.,])\d+(?:\.\d+)?(?![\d.,]*\s*(?:19|20)\d\d)/.test(text.replace(/\(.*?\)/g, ''));
 }
