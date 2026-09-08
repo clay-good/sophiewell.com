@@ -33,6 +33,23 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Two acid-base tools decided for themselves that a patient's problem was
+  acute.** Whether respiratory acidosis or alkalosis is acute or chronic changes
+  how much the kidney is expected to have compensated, and so whether a measured
+  bicarbonate reads as appropriate or as a second, added disorder. Both tools
+  assumed acute when nobody had chosen -- and printed the word "acute" in the
+  answer -- while their own explanatory notes said the choice was the reader's and
+  not inferred. They now ask, but only when the two answers differ; where acute
+  and chronic agree, the tool says so and gives both expected values. See
+  docs/spec-v1137.md.
+
+- **A salicylate poisoning tool did not say which unit it had read the level in.**
+  The two units for a salicylate level are a factor of 13.81 apart, so the same
+  number could mean "no dialysis criterion met" or "hemodialysis recommended".
+  The tool still assumes mg/dL, the unit the published thresholds use, but the
+  recommendation now states the level it was read against and says when the unit
+  was assumed rather than given. See docs/spec-v1136.md.
+
 - **A myasthenia gravis symptom scale said "all items at 0" whether all eight had
   been rated normal or none had been rated at all.** The MG-ADL rates talking,
   chewing, swallowing, breathing and four other daily activities, and normal

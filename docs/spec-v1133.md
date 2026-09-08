@@ -7,7 +7,10 @@ prose. This asks the narrower and sharper version:
 
 A defaulted level costs points. A defaulted unit costs a factor — ten here,
 eighty-eight for creatinine — and it applies to a number the caller *did* supply,
-which is the part that makes it easy to miss. The whole library has two:
+which is the part that makes it easy to miss. The whole library has two — **as defaulted parameters in a signature**, which is
+all the grep behind this wave could see. [spec-v1136](spec-v1136.md) corrects the
+reach of that claim: there are 13 optional unit SELECTS, ten of which name the
+unit in their reading and one of which was a real defect. The two here are:
 
 | | Default | Verdict |
 | --- | --- | --- |

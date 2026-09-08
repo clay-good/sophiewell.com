@@ -154,12 +154,31 @@ for (const tool of allCalculators()) {
     .filter((f) => f.kind === 'number' && ex[f.dom] !== undefined && String(ex[f.dom]).trim() !== '')
     .map((f) => f.dom);
 
+  // spec-v1136: this probe filtered `kind === 'number'` and had therefore never
+  // examined a single ENUM -- and every defect spec-v1134 and spec-v1135 fixed
+  // was on an enum select: the HEAR history and ECG, the MASCC burden of
+  // illness, the modified-Fisher cisternal blood, the MG-ADL items. It is the
+  // fifth check in this programme found narrowed the same way (spec-v1106 lists
+  // the others), each written beside a fix expressed in number fields and
+  // inheriting that scope.
+  //
+  // An enum needs no scaling: its plausible values are the ones it declares.
+  const valuesFor = (f) => {
+    if (f.kind === 'number') return null;
+    const vals = Array.isArray(f.values) ? f.values.filter((x) => String(x).trim() !== '') : [];
+    return vals.length ? vals : null;
+  };
+
   for (const f of tool.fields || []) {
-    if (f.kind !== 'number') continue;
+    const enumValues = valuesFor(f);
+    if (f.kind !== 'number' && !enumValues) continue;
     const v = ex[f.dom];
     if (v === undefined || String(v).trim() === '') continue;
 
     let hit = null;
+    // Scaling the OTHER fields is what reaches readings the example does not; an
+    // enum's own candidates are fixed, but the surrounding numbers still need to
+    // move, so both kinds walk the same scale list.
     for (const k of SCALES) {
       const partial = scaleOthers(ex, f.dom, numericDoms, k);
       const base = computeCalculator({ id: tool.id, inputs: partial });
@@ -171,7 +190,7 @@ for (const tool of allCalculators()) {
       const baseVerdict = verdict(base.result);
       const baseAbnormal = base.result?.abnormal;
 
-      for (const c of candidates(v)) {
+      for (const c of (enumValues || candidates(v))) {
         const got = computeCalculator({ id: tool.id, inputs: { ...partial, [f.dom]: c } });
         if (got?.valid !== true) continue;
         const gotVerdict = verdict(got.result);

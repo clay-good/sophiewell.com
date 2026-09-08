@@ -55,7 +55,12 @@ function wire(ids, run) {
 }
 function showInvalid(o, r) { note(o, r.message || 'Enter the required values.'); }
 
+// spec-v1137: the blank comes first. Acute and chronic are compensated at
+// different rates, so this select decides whether a bicarbonate reads as
+// appropriate compensation or as a superimposed metabolic disorder -- and both
+// tiles' notes promise "the acute-versus-chronic choice is yours, not inferred".
 const ACUTE_CHRONIC_OPTS = [
+  { value: '', text: 'Not stated' },
   { value: 'acute', text: 'Acute' },
   { value: 'chronic', text: 'Chronic' },
 ];
@@ -107,7 +112,7 @@ export const renderers = {
     root.appendChild(selectField('Acute or chronic', 'ra-ch', ACUTE_CHRONIC_OPTS));
     const o = out(); root.appendChild(o);
     wire(['ra-paco2', 'ra-hco3', 'ra-ch'], () => safe(o, () => {
-      const r = M.respAcidosisCompensation({ paco2: optNum('ra-paco2'), bicarbonate: optNum('ra-hco3'), chronic: selVal('ra-ch') === 'chronic' });
+      const r = M.respAcidosisCompensation({ paco2: optNum('ra-paco2'), bicarbonate: optNum('ra-hco3'), chronic: selVal('ra-ch') });
       if (!r.valid) { showInvalid(o, r); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Expected HCO3', value: `${r.expected} mEq/L` }]);
       note(o, r.note);
@@ -123,7 +128,7 @@ export const renderers = {
     root.appendChild(selectField('Acute or chronic', 'rl-ch', ACUTE_CHRONIC_OPTS));
     const o = out(); root.appendChild(o);
     wire(['rl-paco2', 'rl-hco3', 'rl-ch'], () => safe(o, () => {
-      const r = M.respAlkalosisCompensation({ paco2: optNum('rl-paco2'), bicarbonate: optNum('rl-hco3'), chronic: selVal('rl-ch') === 'chronic' });
+      const r = M.respAlkalosisCompensation({ paco2: optNum('rl-paco2'), bicarbonate: optNum('rl-hco3'), chronic: selVal('rl-ch') });
       if (!r.valid) { showInvalid(o, r); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Expected HCO3', value: `${r.expected} mEq/L` }]);
       note(o, r.note);

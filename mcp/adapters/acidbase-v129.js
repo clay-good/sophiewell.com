@@ -41,7 +41,10 @@ export default [
     fields: [
       { dom: 'ra-paco2', arg: 'paco2', kind: 'number', required: true, label: 'Measured PaCO2', unit: 'mmHg' },
       { dom: 'ra-hco3', arg: 'bicarbonate', kind: 'number', required: true, label: 'Measured HCO3', unit: 'mEq/L' },
-      { dom: 'ra-ch', arg: 'chronic', kind: 'enum', values: ACUTE_CHRONIC, label: 'Acute or chronic', to: (v) => v === 'chronic' },
+      // spec-v1137: `v === 'chronic'` turns every other value into `false`, which the
+      // library reads as "acute, stated" -- the same trap as Number(''), in boolean
+      // form. The raw value goes through so an absent choice stays absent.
+      { dom: 'ra-ch', arg: 'chronic', kind: 'enum', values: ACUTE_CHRONIC, label: 'Acute or chronic' },
     ],
   },
   {
@@ -51,7 +54,7 @@ export default [
     fields: [
       { dom: 'rl-paco2', arg: 'paco2', kind: 'number', required: true, label: 'Measured PaCO2', unit: 'mmHg' },
       { dom: 'rl-hco3', arg: 'bicarbonate', kind: 'number', required: true, label: 'Measured HCO3', unit: 'mEq/L' },
-      { dom: 'rl-ch', arg: 'chronic', kind: 'enum', values: ACUTE_CHRONIC, label: 'Acute or chronic', to: (v) => v === 'chronic' },
+      { dom: 'rl-ch', arg: 'chronic', kind: 'enum', values: ACUTE_CHRONIC, label: 'Acute or chronic' },
     ],
   },
   {

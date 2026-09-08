@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `a5df5bf517e87601`
-Generated: 2026-09-08T11:51:37.359Z
+Build ID: `116cbb6eed2b736a`
+Generated: 2026-09-08T12:43:25.393Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -59,7 +59,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/abc-scale-v729.js` | 2969 | `216800e61da667543101c6a175111dbf2fca98617f1b15d6b420cf00bff18eaf` |
 | `lib/ablett-tetanus-v576.js` | 11571 | `55c0a29b6ed65dab28caa723322ce513f4017217113429dbfd926bd8fdc8f0af` |
 | `lib/acef-v595.js` | 11727 | `7f6eb09e8e47d18db22b488a037178a3a3af2cdf20a71e56fccbe0af0454d45a` |
-| `lib/acidbase-v129.js` | 15987 | `0fbea8a4021652b3af76d078ab952b5ecff82db15a2d44a545716937af0764f8` |
+| `lib/acidbase-v129.js` | 19816 | `2852668565986f7e38f97d2b2c4cb8d536388f5808a1a1b26e52513c65956954` |
 | `lib/acr-eular-boolean-v671.js` | 4453 | `79e79312ee4df6fc97bcb44e121482e68c9d62323446f27087d26beac5478fba` |
 | `lib/acromegaly-biochem-v835.js` | 9541 | `3dcd6eec4c8be684e05c0f87baf0eb7fb27d356dfc3fd44beb33704700062d4f` |
 | `lib/acs-v193.js` | 15400 | `219926127d8100963f60bd083fb4a77fa33e1f806b7d581dc78dea821b819d52` |
@@ -833,7 +833,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/todani-choledochal-v473.js` | 3608 | `e6e1d1726ce48bafecb6edbad0d7f61300adf435b2c1b1427aeeeb98c8fc21ab` |
 | `lib/tonnis-hip-oa-v354.js` | 3924 | `856bbea20809afb3acd30bbdc56331611ceba4deb17726ba2bcde7a36c87d957` |
 | `lib/tox-v110.js` | 14694 | `ee21ecc4944368eafc4f9017925a06ecd2aa1cb4a80e00bdd9f54abece82901f` |
-| `lib/tox-v86.js` | 11021 | `14f2db4da3d5a3275cdf68927236cd3bc7f6e1ee48704d68d81c559bd0ab3dac` |
+| `lib/tox-v86.js` | 12404 | `9e4736c2508fdda748b587f84de41a3530e274c8cb201cbc7cb8677e51b1d8d0` |
 | `lib/transfusion-v292.js` | 5990 | `2b6860941accfff047ddfc6f48801e8fc06cc73beb57801e27b7b83ee8f4a922` |
 | `lib/trauma-v108.js` | 18840 | `8fe289508988dde66cc96ce4b1d2110d046a69a105464234c5983acd84ef557b` |
 | `lib/traumaclass-v109.js` | 20421 | `cd7f9e9c7dbc3447a2e3e4e8507161b9af59fac28aa8a7b55414abd160e4e60f` |
@@ -900,7 +900,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/abc-scale-v729.js` | 1382 | `620657faa18798fe6abca44520d246eddcd87ade6226df842bcae3c35914e116` |
 | `mcp/adapters/ablett-tetanus-v576.js` | 6221 | `356f2baf442bfd5e54b2b0d248613a94c3556603f0577be49359ed0b698fc388` |
 | `mcp/adapters/acef-v595.js` | 5582 | `c9bbeed367060cdef7fe8ce3ace90bbf7cf6ad916d35e8ce1756edf9ea3b65da` |
-| `mcp/adapters/acidbase-v129.js` | 4714 | `0915aab26f4a4c89276cc3fc88d52047a4b719886c8017bdeae16d0a77678ea9` |
+| `mcp/adapters/acidbase-v129.js` | 4906 | `3ac15656eedb499b176e16da61e6027c8ce4500328cdce0aa57b2ce8921bed88` |
 | `mcp/adapters/acr-eular-boolean-v671.js` | 1494 | `109cee3d66a8eb143bd60c2a6cea6b4c1afeae03e84ef4eae9ec37ffdb138416` |
 | `mcp/adapters/acromegaly-biochem-v835.js` | 1867 | `17352e0a38d9bf268cb930ff8b78635d9262ad689e6358502bf08c8a052c4e8b` |
 | `mcp/adapters/acs-v193.js` | 5379 | `3780a2be6fe11d3e1b6f23a580e27a8acbf64c5a7ed3db3dc28827433772c1ae` |
@@ -1730,7 +1730,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v126.js` | 12511 | `13f980cf952c4239ef6d20539678171746f242cf02612f769192b6ad2dd27790` |
 | `views/group-v127.js` | 9363 | `6e542d40a470397946ceb06492d27c07d69de91b18a9d1c7ecaa43effb14e2b6` |
 | `views/group-v128.js` | 7760 | `53557c149d1f0d643f25bf5e0841c6ed03746c09c9d581d741af50c045125dea` |
-| `views/group-v129.js` | 11626 | `bd853233849df9b948d2f8e4c7f8adbb801ccd405974edc7bb6baf4e8bf94436` |
+| `views/group-v129.js` | 11946 | `df3eb1aacd1525758dc093d6c79733bf6bd95cf40b6ecd4e5bccdcac7ab5472f` |
 | `views/group-v13.js` | 7759 | `f9546e955ddfe2f766b77c85532ca283b16bb2889ae7a9cfeab5290831078e83` |
 | `views/group-v130.js` | 10347 | `f902a1316e845109c1cc0257bfc3df2183317c9dc1d8b221ee0e18615b865a1f` |
 | `views/group-v131.js` | 13363 | `6406166b469f17b930b9f70e33d59093dff6bc03c448cc0786ed9aa62d509255` |

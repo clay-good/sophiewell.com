@@ -37,3 +37,23 @@ test('any blank field -> valid:false', () => {
   assert.equal(respAlkalosisCompensation({ bicarbonate: 21 }).valid, false);
   assert.equal(respAlkalosisCompensation(5).valid, false);
 });
+
+test('spec-v1137: an unstated chronicity is not "acute"', () => {
+  // The same default as its acidosis sibling, and the same promise in its note.
+  const undecided = respAlkalosisCompensation({ paco2: 25, bicarbonate: 21 });
+  assert.equal(undecided.valid, false);
+  assert.match(undecided.message, /Choose acute or chronic/);
+  assert.equal(undecided.expectedAcute, 21);
+  assert.equal(undecided.expectedChronic, 18);
+
+  assert.equal(respAlkalosisCompensation({ paco2: 25, bicarbonate: 21, chronic: 'acute' }).expected, 21);
+  assert.equal(respAlkalosisCompensation({ paco2: 25, bicarbonate: 21, chronic: true }).expected, 18);
+});
+
+test('spec-v1137: where both rates agree, the tile answers', () => {
+  const r = respAlkalosisCompensation({ paco2: 25, bicarbonate: 30 });
+  assert.equal(r.valid, true);
+  assert.equal(r.chronicityStated, false);
+  assert.match(r.band, /21 mEq\/L acute or 18 mEq\/L chronic/);
+  assert.match(r.band, /reads the same either way/);
+});

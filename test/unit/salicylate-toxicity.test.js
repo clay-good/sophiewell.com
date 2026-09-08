@@ -53,3 +53,31 @@ test('the Done nomogram is named only to say it is NOT used', () => {
   assert.doesNotMatch(r.recommendation, /Done nomogram/i);
   assert.match(r.note, /Done nomogram is not used/i);
 });
+
+test('spec-v1136: the recommendation names the level and the unit it was read in', () => {
+  // `unit === 'mmoll' ? x * 13.81 : x` read every other value -- an unstated unit
+  // included -- as mg/dL. A level of 45 was either "no listed EXTRIP criterion
+  // met" or "hemodialysis recommended", and the recommendation named neither the
+  // unit nor the level. The quiet direction is the dangerous one: a mmol/L level
+  // read as mg/dL under-states by 13.81.
+  const assumed = salicylateToxicity({ level: 45 });
+  assert.match(assumed.recommendation, /Read against a salicylate of 45 mg\/dL/);
+  assert.match(assumed.recommendation, /no unit given; mg\/dL assumed/);
+  assert.match(assumed.recommendation, /13\.81 times this/);
+
+  const stated = salicylateToxicity({ level: 45, unit: 'mgdl' });
+  assert.match(stated.recommendation, /Read against a salicylate of 45 mg\/dL\./);
+  assert.doesNotMatch(stated.recommendation, /no unit given/);
+
+  // The conversion itself is unchanged, and the converted value is shown.
+  const mmol = salicylateToxicity({ level: 45, unit: 'mmoll' });
+  assert.equal(mmol.levelMgDl, 621.5);
+  assert.match(mmol.recommendation, /Hemodialysis recommended \(EXTRIP\)/);
+  assert.match(mmol.recommendation, /621\.5 mg\/dL \(45 mmol\/L entered\)/);
+});
+
+test('spec-v1136: with no level there is nothing to disclose', () => {
+  const r = salicylateToxicity({ alteredMentalStatus: true });
+  assert.match(r.recommendation, /Hemodialysis recommended/);
+  assert.doesNotMatch(r.recommendation, /Read against a salicylate/);
+});
