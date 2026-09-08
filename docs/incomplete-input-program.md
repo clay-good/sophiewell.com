@@ -112,6 +112,12 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
     exported and a test walks it. Rule 10 says check monotonicity rather than assume it; this is
     the other half — keep checking it.
 
+21. **A default is not a defect; a SILENT default is** (spec-v1116). `sex = 'male'` in four
+    signatures chose an EQUATION rather than a band — the male CKD-EPI, the +1 GAP gender point,
+    the 28 mm Cornell cut-off, the male GLI-2012 set. Against that, `ethnicity = 'caucasian'` in
+    the same file is correct: GLI-2012 publishes an other/mixed set, the tile falls back to it and
+    prints a note saying it did. Requiring that one broke a passing test, and rightly.
+
 20. **Disclosing in DATA is not disclosing** (spec-v1113). Four mean-scored questionnaires
     computed the number of items each subscale averaged, stored it in an `answered` field, and
     rendered a static explanation of the scoring method instead — so a mean of two items and a mean
@@ -210,6 +216,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1113](spec-v1113.md) | The denominator was computed and never shown |
 | [v1114](spec-v1114.md) | Reading my own eleven waves back through the finder |
 | [v1115](spec-v1115.md) | The seven that turned an alarm into a reassurance |
+| [v1116](spec-v1116.md) | A default parameter that chose the equation |
 
 ### And the same question from the other side
 

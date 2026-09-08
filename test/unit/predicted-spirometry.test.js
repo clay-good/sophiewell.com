@@ -54,3 +54,14 @@ test('missing age/height -> surfaced fallback (no NaN leak)', () => {
   assert.equal(r.valid, false);
   assert.ok(!/NaN|Infinity/.test(r.band));
 });
+
+test('spec-v1116: an unstated sex refuses; the ethnicity fallback is left alone', () => {
+  const r = predictedSpirometry({ age: 40, heightCm: 175 });
+  assert.equal(r.valid, false);
+  assert.match(r.band, /the equations are sex-specific/);
+
+  // The ethnicity fallback is deliberate and surfaced, and still works.
+  const fell = predictedSpirometry({ age: 40, heightCm: 175, sex: 'male', ethnicity: 'martian' });
+  assert.equal(fell.valid, true);
+  assert.equal(fell.ethnicityFallback, true);
+});

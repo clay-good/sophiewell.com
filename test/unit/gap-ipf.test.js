@@ -47,3 +47,16 @@ test('partial input refused; cannot-perform satisfies the DLCO field', () => {
   assert.equal(gapIpf({ sex: 'male', age: 68, fvcPct: 60 }).valid, false);
   assert.equal(gapIpf({ sex: 'male', age: 68, fvcPct: 60, dlcoCannotPerform: true }).valid, true);
 });
+
+test('spec-v1116: an unstated sex is not a male GAP point', () => {
+  // Male is the +1 Gender point, so the default ADDED a point: a woman at 65
+  // with an FVC of 60% and a DLCO of 40% went from stage I to stage II, and
+  // from 16.3% three-year mortality to 42.1% (rule 6, an alarm from nothing).
+  const female = gapIpf({ age: 65, fvcPct: 60, dlcoPct: 40, sex: 'female' });
+  assert.equal(female.valid, true);
+  assert.match(female.band, /stage I\./);
+
+  const r = gapIpf({ age: 65, fvcPct: 60, dlcoPct: 40 });
+  assert.equal(r.valid, false);
+  assert.match(r.band, /Enter sex/);
+});

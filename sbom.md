@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `3bc093b3ea24f5ea`
-Generated: 2026-09-08T00:56:22.659Z
+Build ID: `23ac51c93fc73677`
+Generated: 2026-09-08T01:36:19.728Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -149,7 +149,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/cardio-v101.js` | 12751 | `629d5ae5fd15255af72cd65585d5b25ad079e85981772fc33d72ce6694b95940` |
 | `lib/cardio-v102.js` | 15369 | `73550725a00aef254510f776ec1c3765edad60204b0bebe674e8ed66e7b648ad` |
 | `lib/cardio-v104.js` | 14365 | `581150411141a634b4314d5ccf1fe560c96ce8d5c9b8d2555c2a840a2af873f3` |
-| `lib/cardio-v90.js` | 17067 | `7da5eb75619116d3c187115828de8665ae66b26f63ad2f7621a25a2b10dd8241` |
+| `lib/cardio-v90.js` | 18170 | `7c68d15e545166f293708013d0407fd8c139537ceae47573207db26ea8010d54` |
 | `lib/cardioecho-v237.js` | 8749 | `74102ce8e4ea9a0eb112fbfab36884663650f80dbce62b20b0a6ab86ece79024` |
 | `lib/cardiology-risk-v209.js` | 7709 | `995d41b33272eb9bdfcb07231a7c05897179c68cf969d6339dfe168aa3cdf9d9` |
 | `lib/cardiology-risk-v214.js` | 13668 | `57e82f2ed5ddee8578af62b3291013d254fd1c51359457e14ba0cd2533220c9a` |
@@ -549,7 +549,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/neos-v538.js` | 9054 | `f59d15ba97d1a630c20186f69efc1d6685a39356264be1c5842f91fa37809d3c` |
 | `lib/nephro-fluids-v204.js` | 16771 | `5dbb536322bc68672b2a642dc16c0f06389c7e3cc4404e029794f0500687fbe1` |
 | `lib/nephro-v127.js` | 11754 | `9b215f35574325f20d5599504d2ffc455396f88bd86be64a0baed44ac282a4e3` |
-| `lib/nephro-v92.js` | 17506 | `ca8ca2ce8ff8184ff947509c89c95ac44e1f72ee2af07e83205146655867a139` |
+| `lib/nephro-v92.js` | 18373 | `9a8220a0b8c671815e24c67e6146dab2eab8034c3013f2b1e0b36d7b49b85d86` |
 | `lib/nephrology-v226.js` | 10925 | `a301c1826ab905ceac0abb080ceed6987931bc82642e3f5f064fb80ed5d38985` |
 | `lib/nerve-injury-v297.js` | 4746 | `13741ba46f672eb344024cfed6d066a3bffd6ea90974a2fa578f282407695d00` |
 | `lib/neuro-disability-v159.js` | 15165 | `d2fb8f1306232369b37461eafb26ba7c36c595e67e1f53ad48f48a557d1e1dad` |
@@ -685,7 +685,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/psych-v96.js` | 16837 | `6aa2f2a4550dc4dc0f1e5d486bb8d7e83faac28cc1112a1e299a36d13833fc39` |
 | `lib/pulm-copd-v205.js` | 15657 | `e209ded1a783152b4bf49ac6d693fe097126161d3cb53a09268fe38e9ab9c3bf` |
 | `lib/pulm-v114.js` | 15731 | `579720bd9198af70f6b48e25ba0514e6f1fc52dfd8219d1b58a9456f2eb67476` |
-| `lib/pulm-v91.js` | 16605 | `f5135df1056f7cbcc56d50e5a2ca8a0d82bb08155e31c572f3211cc0a499ea63` |
+| `lib/pulm-v91.js` | 18421 | `15ae847d2ac8b1833d8840263dc4a81c1d0300413c865201e6351feaa35aa101` |
 | `lib/pulmnod-v115.js` | 19420 | `a60c65fc6d99c2137036c549d4c31308a8b635d30277ddb1c524b84b4cb9731d` |
 | `lib/pulmonary-risk-v221.js` | 14238 | `69991f0c4ba63da303e0047c55b6c2f054244ec7e353ba26fde5246edfea1479` |
 | `lib/puqe24-v553.js` | 10456 | `d2593fdc70bc2cc959ddac33b9c0d578d7ac5decf655bfff3e35f1b412b6a781` |

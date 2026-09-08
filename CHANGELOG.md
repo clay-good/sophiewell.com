@@ -33,6 +33,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Four calculators picked an equation for a patient whose sex nobody had
+  stated.** Where the others in this release chose a band, these chose a
+  formula: an unstated sex gave the male CKD-EPI cystatin equation, so a
+  combined eGFR read 50.5 where a woman's is 42.4, on opposite sides of the
+  value dividing chronic kidney disease stage 3a from 3b; it added the male
+  Gender point to the GAP score, moving a woman with pulmonary fibrosis from
+  stage I to stage II; it applied the 28 mm male Cornell threshold, so an ECG
+  sum of 24 mm read as no left-ventricular hypertrophy when in a woman it is;
+  and it selected the male GLI-2012 spirometry reference. Three of the four
+  already asked for the sex in the message they showed when something else was
+  missing. The ECG tile still reports Sokolow-Lyon, which has no sex term, and
+  the Cornell sum itself, since only the comparison needs the sex. See
+  docs/spec-v1116.md.
 - **Six scores called a patient low-risk when the input that would have said
   otherwise was simply missing.** An unstated cytogenetic risk group made a
   myelodysplastic syndrome "Low risk, median overall survival 5.3 years"; an

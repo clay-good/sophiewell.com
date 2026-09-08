@@ -53,3 +53,23 @@ test('a partial limb is reported as unknown, not a false negative', () => {
 test('no amplitudes at all renders the complete-the-fields fallback', () => {
   assert.equal(lvhCriteria({ sex: 'male' }).valid, false);
 });
+
+test('spec-v1116: the Cornell threshold is sex-specific and waits for the sex', () => {
+  // 24 mm is LVH in a woman (> 20) and not in a man (> 28). The default applied
+  // the male cut-off and answered "no LVH voltage criterion met".
+  const leads = { sV1: 10, rV5: 20, sV3: 14, rAVL: 10 };
+  assert.match(lvhCriteria({ ...leads, sex: 'female' }).band, /LVH positive: Cornell voltage/);
+  assert.match(lvhCriteria({ ...leads, sex: 'male' }).band, /No LVH voltage criterion met/);
+
+  const r = lvhCriteria(leads);
+  assert.equal(r.cornellMet, null);
+  assert.equal(r.cornellSum, 24, 'the sum is arithmetic and still reported');
+  assert.match(r.band, /the sex is needed before it can be read/);
+});
+
+test('spec-v1116: Sokolow-Lyon has no sex term and is unaffected', () => {
+  const r = lvhCriteria({ sV1: 20, rV5: 20 });
+  assert.equal(r.sokolowMet, true);
+  assert.match(r.band, /LVH positive: Sokolow-Lyon/);
+  assert.doesNotMatch(r.band, /the sex is needed/);
+});
