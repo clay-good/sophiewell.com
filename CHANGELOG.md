@@ -86,6 +86,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   three. It reports how much of the catalog it covered alongside its result. See
   docs/spec-v1145.md.
 
+### Fixed
+
+- **Three tools answered from a measurement nobody had taken, in the second box down.**
+  The check that stops this clears the first field a tool insists on and then moves to
+  the next tool, so on a tool that insists on two, only the first was ever tested --
+  and in these three the first one happened to be the one already guarded. The A-a
+  gradient and P/F suite read a blank arterial oxygen as zero and called it *"P/F
+  ratio: 0 - Severe ARDS"*; the burn resuscitation calculator read a blank burn area
+  as a burn of 0% and ordered *"Parkland total 24h: 0 mL"*; and the BIG score read a
+  blank INR and a blank GCS as zero and reported *"BIG 0.0: below the high-mortality
+  threshold"*. All three now ask, and the BIG score reports what the entered terms
+  already guarantee, which can raise the alarm but never withdraw it. See
+  docs/spec-v1146.md.
+
 ### Changed
 
 - **A check that compares what the tool accepts with what the page offers was

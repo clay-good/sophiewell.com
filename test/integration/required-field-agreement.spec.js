@@ -17,11 +17,17 @@
 // about which fields "matter": the agent surface already refuses without them.
 //
 // Sharded like the other whole-catalog sweeps; ~1,000 tiles per run.
+//
+// spec-v1146: it clears the first such field and stops, which is ONE field per
+// tile out of the 4,226 the catalog declares required -- 900 tiles declare more
+// than one. Widening it has a backlog, so the wider question lives beside it in
+// required-field-every-probe.spec.js and this gate goes on stopping new
+// first-field offenders while that drains.
 
 import { test, expect } from '@playwright/test';
-import { allCalculators } from '../../mcp/catalog.js';
 import { ANSWERS_WITHOUT_A_REQUIRED_FIELD } from './required-field-ledger.js';
 import { ASKING } from '../lib/asking-language.js';
+import { requiredFieldsByTile, answeredWithANumber } from '../lib/required-fields.js';
 
 const SHARDS = 4;
 const SHARD_TIMEOUT_MS = 900_000;
@@ -33,14 +39,10 @@ test.skip(({ browserName }) => browserName !== 'chromium', 'whole-catalog sweep 
 // spec-v1056: shared with the empty-form sweep (test/lib/asking-language.js),
 // which also carries the two rules about editing it.
 
-const REQUIRED = (() => {
-  const map = {};
-  for (const cal of allCalculators()) {
-    const doms = (cal.fields || []).filter((f) => f.required).map((f) => f.dom).filter(Boolean);
-    if (doms.length) map[cal.id] = doms;
-  }
-  return map;
-})();
+// spec-v1146: shared with required-field-every-probe.spec.js, which asks the
+// same question of EVERY required field rather than the first one this gate
+// reaches. One copy, because a rule written twice drifts.
+const REQUIRED = requiredFieldsByTile();
 
 const IDS = Object.keys(REQUIRED);
 
@@ -77,8 +79,7 @@ for (let shard = 0; shard < SHARDS; shard += 1) {
 
       if (!reading || reading.text.length <= 12) continue;
       if (ASKING.test(reading.text)) continue;
-      // A number that is not a citation year: the tile answered.
-      if (!/(?:^|[^\d.,])\d+(?:\.\d+)?(?![\d.,]*\s*(?:19|20)\d\d)/.test(reading.text.replace(/\(.*?\)/g, ''))) continue;
+      if (!answeredWithANumber(reading.text)) continue;
       if (ANSWERS_WITHOUT_A_REQUIRED_FIELD.has(id)) continue;
       offenders.push(`${id} (cleared ${reading.cleared}): ${reading.text.slice(0, 120)}`);
     }

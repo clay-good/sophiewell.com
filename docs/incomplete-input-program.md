@@ -632,6 +632,40 @@ form finds neither: **no pass subsumes another.** The third prints its own reach
 with its result — 2,613 (tile, field) pairs cleared, and 845 tiles with no filled
 text or number input for it to drop at all.
 
+## The gate that tested one field per tile
+
+[spec-v1146](spec-v1146.md). `required-field-agreement.spec.js` is the best-oracled
+gate in this repo — `mcp/fields.js` already says which inputs are required, so
+there is no heuristic about which fields matter. It clears the first required
+field a tile renders as a text or number input, and then stops.
+
+<!-- catalog-truth:historical -->
+The catalog declares **4,226 required fields across 1,089 tiles, 900 of which
+declare more than one.** At most a quarter of them have ever been cleared, and the
+gate has been green throughout.
+
+What the rest hid was not exotic. In three tiles the FIRST required field had a
+lower bound that rejects zero and the SECOND did not, so the sweep tested the
+guarded half every time:
+
+| Tile | It said |
+| --- | --- |
+| `aa-pf-suite` | *"P/F ratio: **0** - Severe ARDS (Berlin)"* — **the example in spec-v1037's own header**, still live on the second of its two required fields |
+| `burn-fluid` | *"Parkland total 24h: **0 mL**"* — a resuscitation order for a burn nobody had sized |
+| `big` | *"BIG **0.0**: below the high-mortality threshold"* — [spec-v1041](spec-v1041.md) guarded the base deficit and left the INR and the GCS |
+
+`big` is the one to remember: **a half-fix survives when the sweep tests the half
+that was fixed.** Its library already had an `isBlank` check on the INR and GCS,
+and the renderer's `num()` had turned the blank into a zero before the library
+could see it — rule 7, three hundred waves after rule 7 was written down.
+
+The widened question has a backlog of 59 more rows, so it ships as a probe
+(`required-field-every-probe.spec.js`) rather than a widened gate: mass-ledgering
+59 rows to keep a gate green is the opposite of what a gate is for. Both use one
+copy of the rule. Its reach prints with its result — 2,075 of the 4,226 declared
+fields actually cleared, the rest being selects, checkboxes and sliders, where
+clearing sets a different value rather than removing one.
+
 ## Probes measured and rejected
 
 Three questions asked of the whole catalog after spec-v1048, each of which sounded like it should

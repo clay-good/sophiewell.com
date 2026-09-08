@@ -224,8 +224,20 @@ export const renderers = {
     const deriv = renderDerivation(META['burn-fluid']);
     if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
+      // spec-v1146: `burnFluid` guards the weight at a minimum of 0.1 and the
+      // TBSA at 0, so a blank weight was refused and a blank BURN was resuscitated
+      // -- "Parkland total 24h: 0 mL", a fluid order for a burn nobody had sized.
+      const tbsaPercent = nvOrNull('bf-bsa');
+      const weightKg = nvOrNull('bf-w');
+      if (weightKg === null || tbsaPercent === null) {
+        // spec-v1071: a refusal must take its working with it. `safe()` clears
+        // the panel only on a THROW, and this guard returns.
+        if (deriv) clearDerivationSteps(deriv);
+        o.appendChild(el('p', { class: 'muted', text: 'Enter the patient weight and the burn surface area (% TBSA) to calculate. A blank burn area is not a burn of 0%.' }));
+        return;
+      }
       const inputs = {
-        weightKg: nv('bf-w'), tbsaPercent: nv('bf-bsa'),
+        weightKg, tbsaPercent,
         hoursSinceInjury: document.getElementById('bf-h').value === '' ? undefined : nv('bf-h'),
       };
       const r = burnFluid(inputs);

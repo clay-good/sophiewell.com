@@ -516,8 +516,17 @@ export const renderers = {
     root.appendChild(field('Age (years, for expected A-a)', 'sf-age'));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
-      const aa = C.aaGradient({ fio2: num('sf-fio2'), paco2: num('sf-paco2'), pao2: num('sf-pao2') });
-      const pf = C.pfRatio({ pao2: num('sf-pao2'), fio2: num('sf-fio2') });
+      // spec-v1146: `pfRatio` requires an FiO2 of at least 0.01, so a blank FiO2
+      // was already refused -- and a blank PaO2 is allowed at 0, so it printed
+      // "P/F ratio: 0 - Severe ARDS (Berlin)" for a blood gas nobody had drawn.
+      // That reading is the example in spec-v1037's own header, still live
+      // because the sweep there clears only the FIRST required field and this
+      // tile's first one is the guarded one.
+      const pao2 = numOrNull('sf-pao2');
+      const fio2 = numOrNull('sf-fio2');
+      if (needValues(o, [['a PaO2', pao2], ['an FiO2', fio2]])) return;
+      const aa = C.aaGradient({ fio2, paco2: num('sf-paco2'), pao2 });
+      const pf = C.pfRatio({ pao2, fio2 });
       const expectedAa = num('sf-age') ? num('sf-age') / 4 + 4 : null;
       resultRow(o, [
         { text: `A-a gradient: ${aa.aaGradient.toFixed(1)} mmHg (PAO2 ${aa.PAO2.toFixed(1)})` },
@@ -882,10 +891,14 @@ export const renderers = {
     root.appendChild(field('GCS (3-15)', 'big-gcs', { value: 15 }));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
+      // spec-v1146: spec-v1041 fixed the base deficit and left the other two on
+      // `num()`, which is `Number('')` -- 0. The library's own blank check could
+      // never fire on them because the renderer had already turned the blank into
+      // a number (rule 7: a guard against a missing value guards one SHAPE of it).
       const r = S4.big({
         baseDeficit: numOrNull('big-bd'),
-        inr: num('big-inr'),
-        gcs: num('big-gcs'),
+        inr: numOrNull('big-inr'),
+        gcs: numOrNull('big-gcs'),
       });
       // spec-v1041: no total until the blood gas is entered.
       if (r.incomplete) { o.appendChild(el('p', { text: r.band })); return; }
