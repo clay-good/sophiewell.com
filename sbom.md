@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `c0d0bf9acf4ea81a`
-Generated: 2026-09-08T11:04:39.476Z
+Build ID: `7d7eaaa4d9f3211c`
+Generated: 2026-09-08T11:25:40.193Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -509,7 +509,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/membranous-risk-v878.js` | 11351 | `882c36c07e46543e32f1114792c1124ee9f9ff6b384084fc0a8c221e7dd62062` |
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2468424 | `94105a73000c549a9e18d31e90a6729e9b5e9be5ca1eed9c3fea4ff54733adb8` |
+| `lib/meta.js` | 2468453 | `a94bd323a8d52504b1f0a5cb127c0f4dcbdc609e2c9747015689fe47e44636ff` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 15638 | `8fba14b5f51823f5f13729e0170a9b0de0af72bcd36361d507fbea44fb5585aa` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -549,7 +549,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/neos-v538.js` | 9054 | `f59d15ba97d1a630c20186f69efc1d6685a39356264be1c5842f91fa37809d3c` |
 | `lib/nephro-fluids-v204.js` | 16771 | `5dbb536322bc68672b2a642dc16c0f06389c7e3cc4404e029794f0500687fbe1` |
 | `lib/nephro-v127.js` | 11754 | `9b215f35574325f20d5599504d2ffc455396f88bd86be64a0baed44ac282a4e3` |
-| `lib/nephro-v92.js` | 18373 | `9a8220a0b8c671815e24c67e6146dab2eab8034c3013f2b1e0b36d7b49b85d86` |
+| `lib/nephro-v92.js` | 19648 | `e2069bc6cf68d11c4b176d922ad4b47c311cc2e9e7f0ff2f03ce203d59dfa7fd` |
 | `lib/nephrology-v226.js` | 10925 | `a301c1826ab905ceac0abb080ceed6987931bc82642e3f5f064fb80ed5d38985` |
 | `lib/nerve-injury-v297.js` | 4746 | `13741ba46f672eb344024cfed6d066a3bffd6ea90974a2fa578f282407695d00` |
 | `lib/neuro-disability-v159.js` | 15165 | `d2fb8f1306232369b37461eafb26ba7c36c595e67e1f53ad48f48a557d1e1dad` |

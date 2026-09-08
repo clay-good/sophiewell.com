@@ -33,6 +33,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A urine albumin result did not say which unit it had read the albumin in.**
+  The two urine albumin units are a factor of ten apart, so the same number could
+  be reported as severely increased albuminuria or as moderately increased -- two
+  different CKD stages -- depending on a setting the answer never mentioned. The
+  ratio still assumes mg/dL when no unit is given, which is the usual convention,
+  but it now says so in the result and notes that mg/L would be a tenth of it.
+  See docs/spec-v1133.md.
+
 - **A treadmill test quoted a 5-year survival for an exercise angina index
   nobody recorded.** The Duke treadmill score subtracts four points per level of
   exercise angina, and an unrecorded index was being read as "no angina" -- the
