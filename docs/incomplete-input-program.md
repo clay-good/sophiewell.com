@@ -623,6 +623,15 @@ reach.** Twice in three waves now:
 | `probe-omitted-field-decides` ([spec-v1142](spec-v1142.md)) | a boolean flag or a band string | every tile that carries neither |
 | `js-error-probe` | the cleared form | every defect in the reading a tile opens on |
 
+[spec-v1145](spec-v1145.md) added the third starting state — **one field blank**,
+the half-filled form between the other two — and then measured what each can
+reach. With the `derivation()` fix reverted, the untouched form finds both
+offenders, the one-blank form finds one of them (on two fields), and the cleared
+form finds neither: **no pass subsumes another.** The third prints its own reach
+<!-- catalog-truth:historical -->
+with its result — 2,613 (tile, field) pairs cleared, and 845 tiles with no filled
+text or number input for it to drop at all.
+
 ## Probes measured and rejected
 
 Three questions asked of the whole catalog after spec-v1048, each of which sounded like it should

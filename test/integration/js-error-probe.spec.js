@@ -3,7 +3,8 @@
 // so a renderer that reads a property of a result the library withheld shows the
 // reader a TypeError.
 //
-// Two passes, because the first one alone missed a live defect for a long time.
+// Three starting states, because the first one alone missed a live defect for a
+// long time.
 //
 //   CLEARED -- every input emptied. This is the original pass, and it looks for
 //     the renderer that assumed a value the library refused to compute.
@@ -14,6 +15,8 @@
 //     derivation table had never rendered, and the engine's message stood where
 //     the table belongs. Clearing the form was not the way to find that: the
 //     defect is in the ordinary reading, not the empty one.
+//   ONE FIELD BLANK (spec-v1145) -- the half-filled form between the two, where
+//     the library answers partially and the renderer reads what is not there.
 //
 // The lesson is the finder's, not the tile's: a probe that only tests the
 // cleared form can only find the defects that need a cleared form.
@@ -77,6 +80,66 @@ for (let shard = 0; shard < SHARDS; shard += 1) {
     }
     console.log(`JSERROPEN shard${shard} n=${hits.length}`);
     for (const h of hits) console.log('JSERROPENHIT ' + h);
+    expect(true).toBe(true);
+  });
+}
+
+// spec-v1145: the third starting state, and the one between the other two.
+//
+// CLEARED takes every guard to its refusal; AS IT OPENS takes none of them. The
+// crash a renderer is most likely to have is neither: it is the HALF-filled
+// form, where the library answers with a partial result and the renderer reads a
+// property that result does not carry. That is the same "one blank field, not
+// all of them" shape the blank-field waves were built on -- an all-fields sweep
+// goes quiet the moment ONE guard fires, so it never reaches the tile that
+// answers a partial form and then trips over its own answer.
+//
+// Each field is cleared from the COMPLETE worked example and put back before the
+// next one, so what is measured is one blank field rather than an accumulating
+// pile of them -- which is the cleared pass again, and already covered.
+for (let shard = 0; shard < SHARDS; shard += 1) {
+  test(`js errors with one field blank (shard ${shard + 1})`, async ({ page }) => {
+    test.setTimeout(1_800_000);
+    await page.goto('/');
+    const ids = await page.evaluate(async () => Object.keys((await import('/lib/meta.js')).META));
+    const hits = [];
+    // A clean sweep is a claim about its REACH, so the reach is printed with it:
+    // how many (tile, field) pairs were actually cleared, and how many tiles had
+    // no filled text/number input for this pass to drop at all (the ones built
+    // entirely of checkboxes and selects, which it does not reach).
+    let pairs = 0;
+    let tilesWithNoField = 0;
+    for (let i = shard; i < ids.length; i += SHARDS) {
+      const id = ids[i];
+      await page.goto(`/#${id}`);
+      const found = await page.evaluate(async () => {
+        const SEL = '#tool-body input[type=number], #tool-body input[type=text], #tool-body textarea';
+        const filled = [...document.querySelectorAll(SEL)]
+          .filter((n) => n.id && String(n.value).trim() !== '')
+          .map((n) => n.id);
+        const out = [];
+        for (const fieldId of filled) {
+          const node = document.getElementById(fieldId);
+          const kept = node.value;
+          node.value = '';
+          node.dispatchEvent(new Event('input', { bubbles: true }));
+          node.dispatchEvent(new Event('change', { bubbles: true }));
+          await new Promise((r) => setTimeout(r, 90));
+          out.push([fieldId, (document.querySelector('#q-results')?.textContent || '').replace(/\s+/g, ' ')]);
+          node.value = kept;
+          node.dispatchEvent(new Event('input', { bubbles: true }));
+          node.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+        return out;
+      });
+      pairs += found.length;
+      if (!found.length) tilesWithNoField += 1;
+      for (const [fieldId, t] of found) {
+        if (ENGINE_ERROR.test(t)) hits.push(`${id}|${fieldId} :: ${t.slice(0, 130)}`);
+      }
+    }
+    console.log(`JSERRONE shard${shard} n=${hits.length} pairs=${pairs} tilesWithNoField=${tilesWithNoField}`);
+    for (const h of hits) console.log('JSERRONEHIT ' + h);
     expect(true).toBe(true);
   });
 }

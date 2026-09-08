@@ -78,6 +78,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   question a second way, of each tool exactly as a reader first meets it. Across all
   1,706 tools: nothing. See docs/spec-v1144.md.
 
+- **And a third way: with one field left blank.** The half-filled form is where a
+  renderer is most likely to break -- the calculator answers partially and the page
+  reads something the answer does not carry -- and neither of the other two ways
+  reaches it. Checked against the DRG bug with its fix removed, the three ways find
+  different tools and none of them finds everything, which is the reason to run all
+  three. It reports how much of the catalog it covered alongside its result. See
+  docs/spec-v1145.md.
+
 ### Changed
 
 - **A check that compares what the tool accepts with what the page offers was
