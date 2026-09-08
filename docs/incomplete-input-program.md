@@ -127,6 +127,14 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
     of its tests passed, and the page went on answering "Category I" for a tracing nobody had
     described — because every test calls the library directly, where the guard works.
 
+25. **The unit of a guard is a READING, not a field** (spec-v1126). `startback` needed guarding at
+    two totals and nowhere else; `glim-malnutrition` at one combination of criteria; `pi-rads` at
+    four of its twenty zone-by-category states. *"Is this field required?"* is the wrong question to
+    build a guard on and *"which readings can this field move?"* is the right one — and the narrow
+    version is not merely politer. A tile that refuses whenever anything is absent trains its reader
+    to fill fields in to make the refusal go away, and the fields they reach for are the ones they
+    can guess.
+
 24. **The sentence that names a default is the one to distrust** (spec-v1124). In three separate
     libraries a comment described the tile's own silent default accurately and treated the
     description as the justification: `lvh-criteria`'s "beyond the labeled male default", `essdai`'s "contributes 0
@@ -247,6 +255,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1123](spec-v1123.md) | Two grades, on the criterion that takes reading vision |
 | [v1124](spec-v1124.md) | The third author to notice a default and reason past it |
 | [v1125](spec-v1125.md) | The open question from four days ago, answered |
+| [v1126](spec-v1126.md) | A sequence that exists only to upgrade |
 
 ### And the same question from the other side
 

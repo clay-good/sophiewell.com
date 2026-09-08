@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `912458c960a57719`
-Generated: 2026-09-08T06:28:34.420Z
+Build ID: `3525837999ec223d`
+Generated: 2026-09-08T06:55:54.424Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -223,7 +223,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/derm-v151.js` | 20521 | `28b897ae062df57b38d2efad9a52e0676f739cbaad356f55af221f4023ec7a5e` |
 | `lib/dermatology-v223.js` | 13207 | `b0664bf97310df895e03501102ab3504d890636210525de6b8046f434e97f56d` |
 | `lib/dermscore-v234.js` | 7891 | `bc3594b69d62b10208190ba28e89a4412d3be45118e5e3836568902c37301b8c` |
-| `lib/dermuro-v191.js` | 12433 | `323b7c1713b3d8c2cd352ed8554058d54d80e171d6a5baf123143d6370f0cd89` |
+| `lib/dermuro-v191.js` | 13916 | `344223af4f99a37c9d3c332014ce548bcff5e3f9a37cf85b8e1c81706bd49f66` |
 | `lib/diabetes-diagnosis-v841.js` | 10174 | `472972eae7fa430440ff70e0090e2fc22e2c195520a635e866796b1efba44adb` |
 | `lib/diastolic-function-ase-v664.js` | 5179 | `d1c0e03acdda55f16e805b7ebecf3a08d325f41b5ef8be6da27ac60e00f68d0d` |
 | `lib/dimeglio-clubfoot-v387.js` | 4101 | `8351af759d2ea16e3c0fa77d3bf9ff1b21aa38e5ce0af9fddf8f8d70c978ac98` |
@@ -1790,7 +1790,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v189.js` | 10367 | `9ff86604b2b736e3f1380705f223cb2e110df738fe3770122e593fc9b62d8346` |
 | `views/group-v19.js` | 14628 | `0c3fa90f6f75b2755d6346239a57a80dfdbb58de18519b8c4fcf5dff736a5f6b` |
 | `views/group-v190.js` | 8333 | `c2d385a8973c0b7860b8e9e991924104a25a0f9d15964171c19aef997be4ac2d` |
-| `views/group-v191.js` | 8365 | `39f02e7ccda29f469025721b77f6c0f61e21e4f6933e4d5528f34ca44aea74c7` |
+| `views/group-v191.js` | 8603 | `dd5844f01f6cd51a7db17e095f6d113c4f10157c3906ac284b1c6ed416a1db37` |
 | `views/group-v192.js` | 9531 | `0befdfd965d37bb8bfc64e7df87943a18458ad1454247035b840371eaa94fbee` |
 | `views/group-v193.js` | 10266 | `f8b448ea707e29ff8c6d037cd305abd31dbce516f63545356e176333dcb4c01e` |
 | `views/group-v194.js` | 6492 | `4beaaaa1e2e636edbdff0733b8da5d18997fea23fd4f7d2cbbe0762ba24430d6` |

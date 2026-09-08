@@ -57,7 +57,11 @@ const ZONE_OPTS = [
   { value: 'peripheral', text: 'Peripheral zone (DWI dominant)' },
   { value: 'transition', text: 'Transition zone (T2W dominant)' },
 ];
+// spec-v1126: rule 8. This opened on "Negative", so a DWI of 3 was never
+// upgraded for a reader who had not looked at the contrast sequence -- and that
+// upgrade is category 3 against category 4.
 const DCE_OPTS = [
+  { value: '', text: 'Not entered' },
   { value: 'negative', text: 'Negative' },
   { value: 'positive', text: 'Positive (focal early enhancement)' },
 ];

@@ -33,6 +33,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A prostate-MRI category was never upgraded by a sequence nobody entered.**
+  PI-RADS grades from a driver sequence and a second one that exists only to
+  raise the category -- a positive contrast study takes a peripheral-zone 3 to a
+  4, which is equivocal to likely, and watching to biopsying. The second
+  sequence was optional and its picklist opened on "Negative", so the
+  un-upgraded category was reported with nothing said. The tile now says what is
+  outstanding, and only in the four states where that sequence could actually
+  change the category. See docs/spec-v1126.md.
 - **A psoriasis score read twelve ungraded signs as "mild".** PASI and EASI
   already said how many body regions had been examined, but they counted only
   whether each region's affected AREA was entered -- so with the four areas

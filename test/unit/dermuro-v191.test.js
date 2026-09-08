@@ -73,3 +73,33 @@ test('scorten: a partial total is a floor, and says so (spec-v1063)', () => {
   assert.equal(full.measured, 6);
   assert.doesNotMatch(full.band, /Scored from/);
 });
+
+test('spec-v1126: an unstated sequence that could upgrade the category says so', () => {
+  // In both zones a second sequence exists only to UPGRADE, and an unstated one
+  // simply did not upgrade -- so the reading came out at the lower category with
+  // nothing said. Equivocal against likely is watching against biopsying.
+  const noDce = piRads({ zone: 'peripheral', dwi: 3 });
+  assert.equal(noDce.category, 3);
+  assert.ok(noDce.couldUpgrade);
+  assert.match(noDce.band, /PI-RADS at least 3/);
+  assert.match(noDce.band, /Not entered: the dynamic contrast enhancement/);
+
+  const withDce = piRads({ zone: 'peripheral', dwi: 3, dce: 'negative' });
+  assert.equal(withDce.couldUpgrade, null);
+  assert.match(withDce.band, /^PI-RADS 3 ./);
+  assert.doesNotMatch(withDce.band, /at least/);
+
+  const noDwi = piRads({ zone: 'transition', t2w: 3 });
+  assert.match(noDwi.band, /PI-RADS at least 3/);
+  assert.match(noDwi.band, /upgrades a T2W of 3 to category 4/);
+});
+
+test('spec-v1126: the guard is scoped to where the sequence can change the category', () => {
+  // DCE upgrades only a DWI of 3; DWI upgrades only a T2W of 2 or 3. Everywhere
+  // else the missing sequence cannot move the category, and refusing there would
+  // break the ordinary case.
+  assert.equal(piRads({ zone: 'peripheral', dwi: 5 }).couldUpgrade, null);
+  assert.equal(piRads({ zone: 'peripheral', dwi: 2 }).couldUpgrade, null);
+  assert.equal(piRads({ zone: 'transition', t2w: 5 }).couldUpgrade, null);
+  assert.equal(piRads({ zone: 'transition', t2w: 1 }).couldUpgrade, null);
+});
