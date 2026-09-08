@@ -734,6 +734,20 @@ exactly two rows, both that pair. One copy of the filter now, in
 
 Backlog 45 → 40, and the "number that is not a measurement" group is drained.
 
+[spec-v1150](spec-v1150.md) took the *declared required, documented optional*
+group. Four of the five were exactly that — `osmolal-gap`'s ethanol,
+`winters`' measured PaCO2, and the albumin on `anion-gap` and `anion-gap-dd`,
+each labelled *optional* on the page and each an ADDITION to a formula that stands
+without it. The agent surface had been refusing all four; `winters` would not give
+the expected PaCO2 range unless you already had the measured one.
+
+The fifth was not a declaration. `corrected-anion-gap`'s bicarbonate is a TERM of
+the gap (AG = Na − (Cl + HCO3)), so a blank one **inflated** the reading rather
+than softening it: 34 mEq/L where the entered value gives 10, both landing on
+*"Elevated (>12): consider HAGMA workup"* so the band hid it.
+
+Backlog 40 → 35.
+
 ## Probes measured and rejected
 
 Three questions asked of the whole catalog after spec-v1048, each of which sounded like it should

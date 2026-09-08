@@ -150,6 +150,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   trough, and the AUC all moved with it. It asks for each by name now. See
   docs/spec-v1149.md.
 
+- **Four calculators refused agent requests for a value they call optional on their
+  own page.** The osmolal gap tool would not compute without an ethanol level, the
+  Winter's formula tool would not give the expected PaCO2 without the measured one,
+  and both anion gap tools would not compute without an albumin -- while all four
+  pages label exactly those fields "optional", and each is an addition to a formula
+  that stands without it. All four now answer.
+
+- **The albumin-corrected anion gap read a blank bicarbonate as zero, and the
+  bicarbonate is part of the gap.** Leaving it out did not soften the number, it
+  raised it: an anion gap of 34 where the entered value gives 10, with both landing
+  on the same "elevated -- consider a workup" line, so nothing on screen showed the
+  difference. It asks for the three electrolytes by name now. See
+  docs/spec-v1150.md.
+
 ### Changed
 
 - **A check that compares what the tool accepts with what the page offers was

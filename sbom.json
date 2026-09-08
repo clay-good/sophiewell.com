@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:ee987906-ea1f-542d-8285-9f77e15fbdd4",
+  "serialNumber": "urn:uuid:051a1574-0475-5ced-8250-62a57d8244ca",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-08T21:17:10.415Z",
+    "timestamp": "2026-09-08T21:38:04.012Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -20684,7 +20684,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7a5ecaa5eeb6bf11963f491d2ad405cda37fc216aa64f82f9dbb9659781b15e6"
+          "content": "54a78c31dddb9d4652a729b6f7a35a49018673cdd529b88851dc33976231579c"
         }
       ],
       "properties": [
@@ -20694,7 +20694,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "10627"
+          "value": "11667"
         }
       ]
     },
@@ -20789,7 +20789,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ff8ec80cad183654ac9a5e440e8281ff970d87361575d9651c6972d1ec631276"
+          "content": "d1fb519709bfc04976aa65fb1b4c5ae5f1046379cc25b4dbf45129c8d1eb3134"
         }
       ],
       "properties": [
@@ -20799,7 +20799,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "24689"
+          "value": "25011"
         }
       ]
     },
@@ -43553,7 +43553,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "23c7e94a3173e7ba945435c64ece561e37c23e88ca01bd6909aa4cc6d751cce1"
+          "content": "9a418ad57c57288f6e3f6e444cff5552c5ba82a081e14b61eeb74cf34de2d4b3"
         }
       ],
       "properties": [
@@ -43563,7 +43563,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "34824"
+          "value": "35611"
         }
       ]
     },
@@ -69618,7 +69618,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "ee987906ea1ff42d"
+      "value": "051a157404753ced"
     },
     {
       "name": "sophiewell:runtimeAssetCount",

@@ -23,7 +23,11 @@ export default [
       { dom: 'na', arg: 'sodium', kind: 'number', required: true, label: 'Sodium', unit: 'mEq/L' },
       { dom: 'cl', arg: 'chloride', kind: 'number', required: true, label: 'Chloride', unit: 'mEq/L' },
       { dom: 'hco3', arg: 'bicarbonate', kind: 'number', required: true, label: 'HCO3', unit: 'mEq/L' },
-      { dom: 'alb', arg: 'albuminGdl', kind: 'number', required: true, label: 'Albumin', unit: 'g/dL' },
+      // spec-v1150: the albumin is the OPTIONAL correction term -- the summary
+      // above says so, the page label says "Albumin (optional)", and the library
+      // returns the uncorrected gap without it. Declared required, the agent
+      // surface refused every call the browser answers.
+      { dom: 'alb', arg: 'albuminGdl', kind: 'number', label: 'Albumin (optional; omit for the uncorrected gap)', unit: 'g/dL' },
     ],
   },
   {
@@ -35,7 +39,12 @@ export default [
       { dom: 'og-na', arg: 'sodium', kind: 'number', required: true, label: 'Sodium', unit: 'mEq/L' },
       { dom: 'og-glu', arg: 'glucoseMgDl', kind: 'number', required: true, label: 'Glucose', unit: 'mg/dL' },
       { dom: 'og-bun', arg: 'bunMgDl', kind: 'number', required: true, label: 'BUN', unit: 'mg/dL' },
-      { dom: 'og-etoh', arg: 'etohMgDl', kind: 'number', required: true, label: 'EtOH', unit: 'mg/dL' },
+      // spec-v1150: the label on the page reads "EtOH (mg/dL, optional)", and
+      // spec-v1103 recorded that the ethanol stays optional -- the calculated
+      // osmolality without it is the standard formula, and the ethanol term is an
+      // addition for a known ingestion. Declared required, the agent surface was
+      // refusing every call the browser answers.
+      { dom: 'og-etoh', arg: 'etohMgDl', kind: 'number', label: 'EtOH (optional; omit unless an ethanol level is known)', unit: 'mg/dL' },
     ],
   },
   {
@@ -44,7 +53,11 @@ export default [
     compute: F.wintersFormula,
     fields: [
       { dom: 'wf-hco3', arg: 'hco3', kind: 'number', required: true, label: 'HCO3', unit: 'mEq/L' },
-      { dom: 'wf-paco2', arg: 'measuredPaco2', kind: 'number', required: true, label: 'Measured PaCO2', unit: 'mmHg' },
+      // spec-v1150: Winter's formula produces the EXPECTED PaCO2 from the
+      // bicarbonate; the measured one is only for the comparison that names a
+      // secondary disorder. The page label says "optional" and the library
+      // returns the expected range without it.
+      { dom: 'wf-paco2', arg: 'measuredPaco2', kind: 'number', label: 'Measured PaCO2 (optional; only for the compensation comparison)', unit: 'mmHg' },
     ],
   },
   {

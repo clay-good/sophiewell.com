@@ -65,6 +65,16 @@ function textareaField(label, id, rows = 3, placeholder = '') {
 }
 function out() { return el('div', { id: 'q-results', 'aria-live': 'polite' }); }
 function num(id) { return Number(document.getElementById(id).value); }
+// spec-v1150: a blank-aware reader. `num()` is `Number('')` -- 0 -- and every one
+// of these three electrolytes is a term of the anion gap, so a blank bicarbonate
+// did not soften the reading, it INFLATED it: AG = Na - Cl - HCO3, so reading a
+// missing HCO3 as 0 added its whole value to the gap (34 mEq/L where the entered
+// value gives 10) and the band went to "Elevated (>12): consider HAGMA workup".
+function numOrNull(id) {
+  const n = document.getElementById(id);
+  if (!n || String(n.value).trim() === '') return null;
+  return Number(n.value);
+}
 function str(id) { return document.getElementById(id).value; }
 function bool(id) { return !!document.getElementById(id).checked; }
 function safe(o, fn) {
@@ -544,8 +554,13 @@ export const renderers = {
     const run = () => safe(o, () => {
       const usek = bool('usek');
       const kRaw = str('k');
+      const na = numOrNull('na');
+      const cl = numOrNull('cl');
+      const hco3 = numOrNull('hco3');
+      const albuminGdl = numOrNull('alb');
+      if (needValues(o, [['a sodium', na], ['a chloride', cl], ['a bicarbonate', hco3], ['an albumin', albuminGdl]])) return;
       const r = V5.correctedAnionGap({
-        na: num('na'), cl: num('cl'), hco3: num('hco3'), albuminGdl: num('alb'),
+        na, cl, hco3, albuminGdl,
         includePotassium: usek,
         k: usek ? (kRaw === '' ? null : Number(kRaw)) : null,
       });

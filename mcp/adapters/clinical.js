@@ -69,7 +69,11 @@ export default [
       { dom: 'na', arg: 'sodium', kind: 'number', required: true, label: 'Sodium', unit: 'mEq/L' },
       { dom: 'cl', arg: 'chloride', kind: 'number', required: true, label: 'Chloride', unit: 'mEq/L' },
       { dom: 'hco3', arg: 'bicarbonate', kind: 'number', required: true, label: 'Bicarbonate', unit: 'mEq/L' },
-      { dom: 'alb', arg: 'albuminGdl', kind: 'number', required: true, label: 'Albumin', unit: 'g/dL' },
+      // spec-v1150: the albumin is the OPTIONAL correction term -- the summary
+      // above says so, the page label says "Albumin (optional)", and the library
+      // returns the uncorrected gap without it. Declared required, the agent
+      // surface refused every call the browser answers.
+      { dom: 'alb', arg: 'albuminGdl', kind: 'number', label: 'Albumin (optional; omit for the uncorrected gap)', unit: 'g/dL' },
     ],
   },
   {
