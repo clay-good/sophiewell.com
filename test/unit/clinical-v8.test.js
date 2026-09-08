@@ -196,3 +196,27 @@ test('norepinephrineEquivalent: all-zero -> 0; bad input throws (no NaN leak)', 
   assert.throws(() => C.norepinephrineEquivalent({ norepinephrine: NaN }), TypeError);
   assert.throws(() => C.norepinephrineEquivalent({ vasopressin: -1 }), RangeError);
 });
+
+// spec-v1155: the INR is read only on the warfarin path, where it picks the 4F-PCC
+// band. It was required of every agent, and a blank one reaching the warfarin path
+// as 0 gave "INR <2: 4F-PCC dosing not defined by the label band".
+test('anticoag-reversal: the INR is required where it decides and not read elsewhere', () => {
+  for (const blank of [null, undefined, '']) {
+    assert.throws(
+      () => C.anticoagReversalDose({ weightKg: 80, inr: blank, agent: 'warfarin' }),
+      /enter the INR/i,
+      JSON.stringify(blank),
+    );
+  }
+  // A typed INR below 2 is a real reading and keeps its own message.
+  const lowInr = C.anticoagReversalDose({ weightKg: 80, inr: 1.5, agent: 'warfarin' });
+  assert.equal(lowInr.units, null);
+  assert.match(lowInr.note, /INR <2/);
+  // The other agents never read it.
+  for (const agent of ['dabigatran', 'apixaban-rivaroxaban']) {
+    const r = C.anticoagReversalDose({ weightKg: 80, inr: null, agent });
+    assert.ok(r.product, agent);
+  }
+  // And the bands still work.
+  assert.equal(C.anticoagReversalDose({ weightKg: 80, inr: 5, agent: 'warfarin' }).unitsPerKg, 35);
+});

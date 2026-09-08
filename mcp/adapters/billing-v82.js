@@ -69,7 +69,11 @@ export default [
     fields: [
       { dom: 'nsa-cat', arg: 'serviceCategory', kind: 'string', required: true, label: 'Service category (e.g. emergency, non-emergency, air-ambulance)' },
       { dom: 'nsa-qpa', arg: 'qpaCents', kind: 'number', required: true, label: 'Qualifying Payment Amount (QPA)', unit: '$', to: usd },
-      { dom: 'nsa-charge', arg: 'billedChargeCents', kind: 'number', required: true, label: 'Billed charge', unit: '$', to: usd },
+      // spec-v1155: the protected cost-share is computed off the QPA and does not
+      // read the billed charge at all -- the charge decides only the prohibited
+      // balance-bill figure, which is reported as $0 without it. Declared required,
+      // the agent surface refused every call that only wanted the cost-share.
+      { dom: 'nsa-charge', arg: 'billedChargeCents', kind: 'number', label: 'Billed charge (for the prohibited balance-bill amount)', unit: '$', to: usd },
       { dom: 'nsa-coins', arg: 'coinsurancePct', kind: 'number', label: 'In-network coinsurance percentage' },
     ],
   },

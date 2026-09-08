@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `35f37b0439e4baa0`
-Generated: 2026-09-08T23:11:52.841Z
+Build ID: `72015de28e9b166c`
+Generated: 2026-09-08T23:41:16.079Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -117,7 +117,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/billing-v79.js` | 23592 | `38855e98322bcb40f603c1255fdc32f784ecccef5f861e72ae27732a67413d1d` |
 | `lib/billing-v80.js` | 23695 | `8c2e7c4a5cd5cee409aed1536f182c6983903f79eecb06bc2207f31681c4d590` |
 | `lib/billing-v81.js` | 16760 | `a6fab93c9220fdd227e21f3dd6c5f624f246ce3ea0741e6dab46a906ae759c05` |
-| `lib/billing-v82.js` | 24806 | `f5e8e00d38c70eb3dfa5682abceeb035af50cf2c20ef4692dd521cc2c0b61a25` |
+| `lib/billing-v82.js` | 25393 | `3b1fa62195f91b7c21b1b44dee355aa1f16ad9edafa230cc95ea713e4d2d0ab8` |
 | `lib/billing-v83.js` | 21528 | `284251bb90c87242d8982a29c6f05c452e320fc79af24f2a918fd5a2f635b863` |
 | `lib/bilsky-escc-v604.js` | 10899 | `001a75fe88ef711e5693d88ff5bdd4c9a4656fc04c5a0c8b6977567c562acc6a` |
 | `lib/biological-variation-goals-v923.js` | 7894 | `6905603246b9b3305ad2ef4e0aaab94a7e043c907533e3f983025f0cb2eabaf1` |
@@ -182,7 +182,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/clinical-v5.js` | 24032 | `5215a0f4373dd36d104b19874a0734a662abe70f5887fcfae7cb1dcc1e3bcf0d` |
 | `lib/clinical-v6.js` | 16042 | `69c1de74d7f171a3c6e87329c1cb69324758a368a34f1961e6201caec0470f8d` |
 | `lib/clinical-v7.js` | 18510 | `91639297dbcafd2850ea5bb17d4e7219ae912e30305349d7423af72484e68365` |
-| `lib/clinical-v8.js` | 18032 | `85e8b20be2633595849a5f194e36e2968dbb1375535360da93503735916a69dc` |
+| `lib/clinical-v8.js` | 18730 | `e5e7be6c9d5f9e11e433eab822fd96e5e29673ad0e76a97fd5a1754c8877a003` |
 | `lib/clinical.js` | 20774 | `529bdd1e0bb1e3e75f89d91c2602c524afdb13a1fc44fc748cc4db35dcca30c8` |
 | `lib/clipboard.js` | 2907 | `951c41df24f58df747734474d383d6f75f52d22d2c4d0a370ef5bfb269a15147` |
 | `lib/cluster-headache-ichd3-v814.js` | 7692 | `1ba3ed3aa2a203e13da4152325e29fda8ae0a533b2d4f1881c9a878655847045` |
@@ -851,7 +851,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/unit-convert.js` | 2601 | `642818802952c2c5e87338bc035dcd9d5ff07dec1e8b97a31ca09b0be38c14d2` |
 | `lib/up-to-seven-v586.js` | 11393 | `4a379fbb63e617cb741a5369394d693751912101492558fdda03ca9c478ff06b` |
 | `lib/uro-v130.js` | 12895 | `370c7f4f91e8adeff37012c9d024e2bab403330eaffeecee756d06a61fb30c21` |
-| `lib/uro-v131.js` | 15370 | `fffae50df8fc74976eef702690a8ff289ff1d623a606ee973822e235151b9834` |
+| `lib/uro-v131.js` | 16499 | `6cac82ced761a23a89c197d08bd8c274f48c9949b868c12e1a037032319cb6ee` |
 | `lib/urology-v153.js` | 9694 | `700af96b614bda45a67eda2835bb8087c9e2895ac62db7123fa9c765af5b75a9` |
 | `lib/ut-diabetic-foot-v612.js` | 7765 | `b0fd3c983103e81d440686b0a25375741d612dc364f7f90dec0f3843a3c5b284` |
 | `lib/vaizey-v512.js` | 5057 | `8614f31c97bbfc26832a0604f34b3481d3d8991f6c25f2b4c558139f59b7a34c` |
@@ -958,7 +958,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/billing-v79.js` | 3885 | `eab5a72deec4638bbd4140c6d2e3c57dd7a1e84720bd783b2e23eca9f6b77430` |
 | `mcp/adapters/billing-v80.js` | 4673 | `4c3da5ad52cdfcca56329e64d0516faa930255e3e9163ef59f93c1952e2f9733` |
 | `mcp/adapters/billing-v81.js` | 3431 | `2bb3d67725e2cfb8788e5681c256a62b5970c87e6c546db61a5d1e3a1927d2f4` |
-| `mcp/adapters/billing-v82.js` | 4481 | `d9927196f92edca28d14679ed8b335c87262b4524dea8c6b0538b3541b554a92` |
+| `mcp/adapters/billing-v82.js` | 4834 | `bd2748a388fc738ef9bfc82c971747bfbfec415b636804136aa79ad4ed686cda` |
 | `mcp/adapters/billing-v83.js` | 6166 | `ef59979c46a11b55516389d387383a5b08ce5b40ede2a71345aa9c6808b9b04f` |
 | `mcp/adapters/bilsky-escc-v604.js` | 4923 | `6fbc81158f881ba1faf75315a4e11d687980024727881f433a4e25096f919ed7` |
 | `mcp/adapters/biological-variation-goals-v923.js` | 1935 | `bdfd9f2447fcf0be7ee50ff18d9dd21ffb2b714431fbccd0cd18699ab287f58a` |
@@ -1021,8 +1021,8 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/clinical-v5.js` | 12043 | `64bb75061d67e1bf07dae3f04e9ac2d4638b4f37d61001ee750a9caff98df78c` |
 | `mcp/adapters/clinical-v6.js` | 8799 | `aefe0bbf58eb34aa47e7c4a93ed44580acf7ea88b86ca8f5bd90028fb250a4ed` |
 | `mcp/adapters/clinical-v7.js` | 8069 | `083a2078dba3877d854e781c9adc4bfdd49beda72fa8cf735360afde1c9b1d54` |
-| `mcp/adapters/clinical-v8.js` | 15645 | `9dfd204d56ec3fc909cbe5ecd45e4e305de8e1ae9fc6627d0572e4dafe3467ec` |
-| `mcp/adapters/clinical.js` | 25011 | `d1fb519709bfc04976aa65fb1b4c5ae5f1046379cc25b4dbf45129c8d1eb3134` |
+| `mcp/adapters/clinical-v8.js` | 15812 | `40b55f1b4da344f15aea9301a1b111543d35265f8b5671c4467c579faebc32c5` |
+| `mcp/adapters/clinical.js` | 25265 | `c469936828bf9917e8b48695e3f1f686cd7e09319fda3909924ca8b73bad21e3` |
 | `mcp/adapters/cluster-headache-ichd3-v814.js` | 2395 | `688cb24e3cb10dabf00993f5b28ccbda26d33a89d6b1e5b679f2f28e88846048` |
 | `mcp/adapters/coagscore-v232.js` | 2450 | `29d9720d14256b871c8c9752ecadd8f5df16342529bf67afacbc1028ed2c3d0c` |
 | `mcp/adapters/cobb-angle-v694.js` | 955 | `efdf4e8553a15070d3c7c82e3feeb677fcc0ec9ad2df5dc35462dc7499f38f76` |
@@ -1144,7 +1144,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/gadolinium-nsf-v895.js` | 1555 | `b06cd988540c35b39ab198a0aa7a3ef5724892b15fc5ec60a2be791cc0c68e1d` |
 | `mcp/adapters/gags-v554.js` | 4750 | `ca91536ddfbd3ac1d20c08ff3811e15db15e1a146efb648a3738731d985b518e` |
 | `mcp/adapters/gapp-v569.js` | 7368 | `28cc0ba61f51da94019b7457ba2b4865ace278feb07c794e1bc07796d027af93` |
-| `mcp/adapters/gaps-v185.js` | 6848 | `7bc43721ceb36e29b3c434b04f9236d1bf2a6cec5b0a663baeab79f170726ca3` |
+| `mcp/adapters/gaps-v185.js` | 7220 | `b4ddc4e3427679d1005a84476bf51fcf12b26356c034364b24dfe1e34fa604d2` |
 | `mcp/adapters/gardner-robertson-v802.js` | 1218 | `0a1addbb28c2787d7b681d4b62fca7cac1303f553b053c61fb57f8c6d1d2d5a2` |
 | `mcp/adapters/gartland-supracondylar-v377.js` | 1598 | `8903bab27c305b2422ef4b905c0e252ecd841341d3f3b081404d984fa4c5ff55` |
 | `mcp/adapters/gass-macular-hole-v471.js` | 1207 | `3803556ddbe17cc277d9dfa5b902f11bbaff5d9fd1e2bf71fbed9d86c641580d` |
@@ -1707,7 +1707,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-b.js` | 77156 | `88cc71d010172716bbb55f6e5773a194945a93d00d5a759697eddd110066c560` |
 | `views/group-c.js` | 26643 | `c139c073fd2c3a107f1865ff5e41dd671e988a06b16fe6d0efb050d6da2e060c` |
 | `views/group-e.js` | 48659 | `e6b866ac3eeb9816999c73511b71bea2bbdcf13dbb4995dbda4143cff6d2d58e` |
-| `views/group-f.js` | 52672 | `16af08e687af408199ce30ebf34e0164a1e89bc9df0352e08c440b1b88074ba7` |
+| `views/group-f.js` | 53408 | `02ee2e5367c99b2a2243774f0bace8585c12e54dafb9f2abd33ae5a4a0da49a1` |
 | `views/group-g.js` | 249419 | `12471acf5d1d7806065fa92c0be6f0be16fdaea15781420a02bda8cc4c48f53f` |
 | `views/group-h.js` | 30041 | `ef2d74336a9ab03aa5fc8307f4d76ae8023dc6ecc80347c561e1269bc539fcea` |
 | `views/group-i.js` | 25281 | `2a5d42af02ea24dfbfa7ac442ca7467880239b596ab6312833b5f4eb7d86fd12` |
@@ -2356,7 +2356,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v797.js` | 4184 | `a6125219d5781c0694efcd1d5bc1897587a8decf8615b66d209623dead3791c5` |
 | `views/group-v798.js` | 4020 | `911cc802b17f656b5dd475a373a9b465c528a3bc26473c1732808bc8b35c88ae` |
 | `views/group-v799.js` | 3074 | `207697ea9b629a3146172a3efa48090adca2ae9dcd960b72487c7973f111d888` |
-| `views/group-v8.js` | 23890 | `129fac62794935276cf49ce95387ed2610e30d55b7e37dc5742f24fbd845a139` |
+| `views/group-v8.js` | 24538 | `afaf3961f5bd753a39d4fa677c3c538604a73e8dfdf62b17fe77a93441e6ad8c` |
 | `views/group-v800.js` | 3162 | `a7894ea3c03e6cfd3b923da113f1b66079990f2545e20906d326226359860df1` |
 | `views/group-v801.js` | 4538 | `63dd0a780d65c98e0bd7a78f1aa906d461ad43303b3b7799a9e869ebb8ad5d06` |
 | `views/group-v802.js` | 3559 | `2c21752063d89628f4526a6c6d962fcb4d61175367b5db20edf83d886d55e246` |

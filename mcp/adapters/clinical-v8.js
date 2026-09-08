@@ -52,7 +52,9 @@ export default [
     fields: [
       { dom: 'ar-agent', arg: 'agent', kind: 'enum', values: ['warfarin', 'dabigatran', 'apixaban-rivaroxaban', 'heparin-ufh'], required: true, label: 'Anticoagulant' },
       { dom: 'ar-w', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg' },
-      { dom: 'ar-inr', arg: 'inr', kind: 'number', required: true, label: 'INR (warfarin)', to: (v) => v || 0 },
+            // spec-v1155: read only on the warfarin path, where the library now requires
+      // it -- so both surfaces agree in both directions (rule 25).
+      { dom: 'ar-inr', arg: 'inr', kind: 'number', label: 'INR (required for warfarin; not read for the other agents)' },
       { dom: 'ar-heparin', arg: 'heparinUnits', kind: 'number', required: false, label: 'Heparin dose in last 2-3 h (units, UFH branch)' },
     ],
   },

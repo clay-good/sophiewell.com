@@ -216,6 +216,29 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   requests the missing value could not affect were turned away. See
   docs/spec-v1154.md.
 
+- **The acetaminophen nomogram said the antidote was not indicated from a level
+  nobody had drawn.** A missing time since ingestion was already refused, but a
+  missing serum level was read as zero -- which sits below the treatment line at
+  every hour -- so the page reported that acetylcysteine was not indicated. It asks
+  for the level now, and an undetectable level typed as 0 still answers.
+
+- **The CAPRA prostate-cancer score had a guard for a missing biopsy result that
+  could never fire.** The helper that reads the value returned zero rather than
+  nothing for an empty field, so the check written to catch it never ran and a blank
+  positive-core percentage was scored as the favourable result. The same helper in
+  another file had been fixed for exactly this a long time ago; this copy had not.
+
+- **The anticoagulation reversal calculator judged an INR nobody had run.** Its own
+  message said to enter the INR for warfarin and it did not check, so a blank one was
+  read as zero and reported that 4F-PCC dosing was not defined at that INR. It now
+  asks -- for warfarin only, since the other agents do not use the INR at all.
+
+- **Four more calculators refused agent requests the page answers**, including the
+  No Surprises Act tool, which does not use the billed charge for the patient's
+  cost-share at all. With these, every calculator that answered without a value the
+  agent side demanded has now been settled: 62 at the start, none left. See
+  docs/spec-v1155.md.
+
 ### Changed
 
 - **A check that compares what the tool accepts with what the page offers was

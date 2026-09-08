@@ -182,7 +182,16 @@ export const renderers = {
     root.appendChild(field('Serum acetaminophen (ug/mL)', 'apap-lvl', { placeholder: 'e.g. 160' }));
     const o = out(); root.appendChild(o);
     wire(['apap-h', 'apap-lvl'], () => safe(o, () => {
-      const r = M5.acetaminophenNomogram({ hours: val('apap-h'), levelUgMl: val('apap-lvl') });
+      // spec-v1155: `acetaminophenNomogram` bounds the hours at 4 to 24, so a blank
+      // time already threw -- and it bounds the level at `min: 0`, so `val()`
+      // reading a blank as zero passed and the tile answered "Below the treatment
+      // line: NAC not indicated by the nomogram for a single acute ingestion". A
+      // rule-out on the antidote decision, from a paracetamol level nobody had
+      // drawn. An undetectable level is a typed 0 and still answers.
+      const levelUgMl = optNum('apap-lvl');
+      const hours = optNum('apap-h');
+      if (needValues(o, [['the hours since ingestion', hours], ['the serum acetaminophen level', levelUgMl]])) return;
+      const r = M5.acetaminophenNomogram({ hours, levelUgMl });
       o.appendChild(list([
         li(`Treatment line at this time: ${fmt(r.treatmentLine, { fallback: '--' })} ug/mL`),
         li(r.interpretation, r.aboveLine ? 'warn' : null),

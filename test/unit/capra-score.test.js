@@ -35,3 +35,24 @@ test('blank or out-of-range components surface valid:false, never a partial scor
   assert.equal(capraScore({ age: 60, psa: 7, gleasonPrimary: 3, gleasonSecondary: 4, stage: 'T1-T2', cores: 120 }).valid, false);
   assert.equal(capraScore(7).valid, false);
 });
+
+// spec-v1155: `nonNeg` returned 0 for a blank, because `Number(null)` is 0 and 0 is
+// finite and >= 0 -- so the `cores === null` guard beside it could never fire, and a
+// blank positive-core percentage scored the FAVOURABLE level (under 34%, 0 points).
+test('capra-score: a blank positive-core percentage is a gap, not 0%', () => {
+  const base = { age: 60, psa: 7, gleasonPrimary: 3, gleasonSecondary: 4, stage: 'T1-T2' };
+  for (const blank of [null, undefined, '', '   ']) {
+    const r = capraScore({ ...base, cores: blank });
+    assert.equal(r.valid, false, JSON.stringify(blank));
+    assert.match(r.message, /percent of positive biopsy cores/);
+  }
+  // A typed 0 is an answer: no positive cores is a real biopsy result.
+  const zero = capraScore({ ...base, cores: 0 });
+  assert.equal(zero.valid, true);
+  assert.equal(zero.parts.cores, 0);
+  assert.equal(zero.total, 3);
+  // And 34% or more is the point the blank was silently scoring away.
+  const high = capraScore({ ...base, cores: 40 });
+  assert.equal(high.parts.cores, 1);
+  assert.equal(high.total, 4);
+});

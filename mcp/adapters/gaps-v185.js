@@ -97,8 +97,12 @@ export default [
     compute: F.rosendaalTtr,
     fields: [
       { dom: 'ttr-series', arg: 'series', kind: 'string', required: true, label: 'Dated INR values (one per line, YYYY-MM-DD INR)' },
-      { dom: 'ttr-low', arg: 'low', kind: 'number', required: true, label: 'Target INR low' },
-      { dom: 'ttr-high', arg: 'high', kind: 'number', required: true, label: 'Target INR high' },
+      // spec-v1155: the library defaults these to 2.0 and 3.0 -- the standard
+      // warfarin range -- and the reading NAMES the range it used ("16 of 20 days in
+      // range 2-3"), which is the spec-v1133 model: the assumption is visible where
+      // the verdict is. A field with a default cannot be required.
+      { dom: 'ttr-low', arg: 'low', kind: 'number', label: 'Target INR low (defaults to 2.0, which the reading names)' },
+      { dom: 'ttr-high', arg: 'high', kind: 'number', label: 'Target INR high (defaults to 3.0, which the reading names)' },
     ],
   },
 ];

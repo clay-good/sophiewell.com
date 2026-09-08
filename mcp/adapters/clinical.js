@@ -256,7 +256,10 @@ export default [
     fields: [
       { dom: 'w', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg' },
       { dom: 'd', arg: 'dosePerKg', kind: 'number', required: true, label: 'Dose per kg' },
-      { dom: 'u', arg: 'unit', kind: 'string', required: true, label: 'Dose unit (e.g. mg/kg)' },
+      // spec-v1155: the unit is a display LABEL and no part of the arithmetic --
+      // weight x dose per kg is the whole calculation. The page falls back to
+      // "units" and prints it, so the reading says what it used.
+      { dom: 'u', arg: 'unit', kind: 'string', label: 'Dose unit for the printed total (e.g. mg/kg; defaults to "units")' },
     ],
   },
   {

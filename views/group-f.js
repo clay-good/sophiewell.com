@@ -213,6 +213,16 @@ export const renderers = {
         return;
       }
       if (!(unitNum('ar-w') > 0)) { o.appendChild(el('p', { class: 'muted', text: 'Enter weight (and INR for warfarin).' })); return; }
+      // spec-v1155: the message above already said "and INR for warfarin" and the
+      // guard did not require it -- rule 23. `nv('ar-inr') || 0` made a blank INR
+      // an INR of 0, and the 4F-PCC band is chosen by the INR, so the tile
+      // answered "INR <2: 4F-PCC dosing not defined by the label band; reassess
+      // indication" about a coagulation study nobody had run. The INR is read only
+      // for warfarin, so it is required only there (rule 25).
+      if (agent === 'warfarin' && nvOrNull('ar-inr') === null) {
+        o.appendChild(el('p', { class: 'muted', text: 'Enter the INR: the 4F-PCC dose band is chosen by it (25, 35 or 50 units/kg), and a blank one is not an INR of zero.' }));
+        return;
+      }
       const r = C8.anticoagReversalDose({ weightKg: unitNum('ar-w'), inr: nv('ar-inr') || 0, agent });
       if (!r) { o.appendChild(el('p', { class: 'muted', text: 'Select an agent and enter weight (and INR for warfarin).' })); return; }
       const items = [{ label: 'Agent', value: r.product, text: `Agent: ${r.product}` }];

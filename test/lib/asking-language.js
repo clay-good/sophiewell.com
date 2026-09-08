@@ -41,7 +41,18 @@ export const ASKING = new RegExp([
   // How the rating tiles ask for one item: "Rate vascularity on the 1-10 scale",
   // "Score memory from 0 to 8". Written as a pattern rather than the bare verb
   // so it cannot swallow "heart rate 80".
-  '(?:rate|score) [a-z0-9 ]{1,30}\\b(?:from|on the) \\d',
+  //
+  // spec-v1155: the character class had no parentheses, so an item that names
+  // itself and then explains itself in a bracket did not match --
+  // `posas-patient-scar` asks "Rate pliability (stiffness) from 1 to 10" and was
+  // counted as a tile that answered. A generalisation of the pattern already
+  // here rather than a new phrase, like spec-v1102's article and spec-v1114's
+  // adjective before it.
+  //
+  // Measured before adding, as the rule above requires: across every tile and
+  // every required field it moves exactly TWO rows from flagged to exempt, both
+  // `posas-patient-scar`, and it changes nothing in either empty-form sweep.
+  '(?:rate|score) [a-z0-9 ()]{1,30}\\b(?:from|on the) \\d',
   'measure ', 'awaiting', 'fill ', 'add at least',
   'must be ', 'out of range', 'cannot be', 'check the value',
   'no criteria', 'blank', 'outstanding',

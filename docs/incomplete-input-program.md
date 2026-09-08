@@ -840,6 +840,43 @@ the hour cannot change — the opposite of what that wave built.
 
 Backlog 13 → 9.
 
+[spec-v1155](spec-v1155.md) drained the last nine, and the first is rule 7 in its
+purest form. `capraScore` carries exactly the guard this programme asks for —
+`cores === null` → refuse — and its `nonNeg` helper was
+`Number.isFinite(n) && n >= 0 ? n : null`. **`Number(null)` is 0**, which is finite
+and ≥ 0, so the guard could never fire and a blank positive-core percentage scored
+the FAVOURABLE level. The proof is next door: **the identical helper in
+`lib/ob-v138.js` was fixed at [spec-v930](spec-v930.md) with the exact guard this
+copy lacked.** One rule written twice, and only one copy learned.
+
+`acetaminophen-nomogram` bounds the hours at 4 (so a blank time already threw) and
+the level at 0 (so a blank level passed): *"Below the treatment line: **NAC not
+indicated**"* from a paracetamol level nobody had drawn. **The first required field
+guarded and the second not, for the ninth time — and the ninth decides an
+antidote.**
+
+`anticoag-reversal` is rule 23 once more: the message said *"Enter weight (and INR
+for warfarin)"* and checked only the weight. The INR is read only on the warfarin
+path, so it is required there and not read elsewhere, enforced in the LIBRARY so
+both surfaces agree in both directions. Its adapter also carried
+`to: (v) => v || 0`, a coercion that turned the blank into a zero before the library
+saw it.
+
+And the last two rows were the vocabulary, not a tile. `posas-patient-scar` refuses
+in as many words — *"Rate pliability (stiffness) from 1 to 10"* — and the rating
+pattern's character class had **no parentheses**, so an item that names itself and
+then explains itself in a bracket did not match. A generalisation of the pattern
+already there, measured first: two rows move, both that tile, and nothing changes in
+either empty-form sweep or the one-blank-field gate.
+
+<!-- catalog-truth:historical -->
+**Backlog 9 → 0.** Of the 62 rows: **35 were tiles that should have asked** and 27
+were **declarations that should not have required** — nine of them on fields whose
+own label already said *optional*, *default* or *leave blank*. Both halves were
+fixes, and the gate's message said so from the beginning. The gate still tests one
+field per tile and the probe tests all of them; widening the gate is now possible
+without ledgering anything, which is a later wave's choice rather than a debt.
+
 ## Probes measured and rejected
 
 Three questions asked of the whole catalog after spec-v1048, each of which sounded like it should
