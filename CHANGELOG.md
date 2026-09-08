@@ -33,6 +33,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A treadmill test quoted a 5-year survival for an exercise angina index
+  nobody recorded.** The Duke treadmill score subtracts four points per level of
+  exercise angina, and an unrecorded index was being read as "no angina" -- the
+  best of the three levels, worth eight points on a scale whose middle band is
+  fifteen wide. The tool now works out whether the index could change the answer
+  at all: where it cannot, it says so and answers ("high risk whatever the angina
+  index turns out to be"); where it can, it asks for it and says what is at
+  stake. See docs/spec-v1132.md.
+
 - **An echo score answered "favorable for balloon valvuloplasty" for a valve
   nobody had graded.** The Wilkins score rates four features of the mitral valve
   from 1 to 4, and a feature that had not been graded was being read as 1 -- the

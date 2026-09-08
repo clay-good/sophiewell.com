@@ -154,7 +154,11 @@ export const renderers = {
   'duke-treadmill'(root) {
     root.appendChild(field('Exercise time (min, Bruce protocol)', 'dt-time', { placeholder: 'e.g. 7' }));
     root.appendChild(field('Maximal ST-segment deviation (mm)', 'dt-st', { placeholder: 'e.g. 1' }));
+    // spec-v1132: the blank comes first. Without it the index opened on "0 — no
+    // angina", the best of the three levels, and the tile answered with a cited
+    // 5-year survival for a treadmill test nobody had described.
     root.appendChild(selectField('Exercise angina index', 'dt-angina', [
+      { value: '', text: 'Not recorded' },
       { value: '0', text: '0 — no angina' },
       { value: '1', text: '1 — non-limiting angina' },
       { value: '2', text: '2 — exercise-limiting angina' },
@@ -163,7 +167,9 @@ export const renderers = {
     wire(['dt-time', 'dt-st', 'dt-angina'], () => safe(o, () => {
       const r = M.dukeTreadmill({
         exerciseTime: optNum('dt-time'), stDeviation: optNum('dt-st'),
-        anginaIndex: Number(selVal('dt-angina')),
+        // Number('') is 0, which is the very level this guard exists to stop
+        // being assumed, so a blank select must reach the library as null.
+        anginaIndex: selVal('dt-angina') === '' ? null : Number(selVal('dt-angina')),
       });
       if (!r.valid) { o.appendChild(el('p', { class: 'muted', text: r.band })); return; }
       resultRow(o, [

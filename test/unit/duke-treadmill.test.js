@@ -52,3 +52,46 @@ test('a blank input renders the complete-the-fields fallback', () => {
   assert.equal(dukeTreadmill({ exerciseTime: 7 }).valid, false);
   assert.equal(dukeTreadmill({ stDeviation: 1 }).valid, false);
 });
+
+test('spec-v1132: an unstated angina index is not "no angina"', () => {
+  // `anginaIndex = 0` was a default parameter, and 0 is the best of the three
+  // levels -- worth 8 points on a scale whose middle band is 15 wide. Omitting
+  // it answered exactly as a patient who exercised without angina, and quoted a
+  // cited 5-year survival for it.
+  const omitted = dukeTreadmill({ exerciseTime: 12, stDeviation: 0 });
+  assert.equal(omitted.valid, false);
+  assert.match(omitted.band, /Enter the exercise angina index/);
+  assert.match(omitted.band, /between 4 and 12/);
+  assert.match(omitted.band, /moderate risk at one end and low at the other/);
+
+  // Stated, the same test answers as before.
+  const stated = dukeTreadmill({ exerciseTime: 12, stDeviation: 0, anginaIndex: 0 });
+  assert.equal(stated.valid, true);
+  assert.equal(stated.score, 12);
+  assert.equal(stated.risk, 'low');
+});
+
+test('spec-v1132: where the index cannot change the band, the tile answers', () => {
+  // Rule 25: the unit of a guard is a reading, not a field. The index is 0, 1 or
+  // 2, so an unstated one puts the score in a known 8-point range; where both
+  // ends sit in one band the verdict holds whatever the angina was.
+  const moderate = dukeTreadmill({ exerciseTime: 9, stDeviation: 1 });
+  assert.equal(moderate.valid, true);
+  assert.equal(moderate.anginaStated, false);
+  assert.equal(moderate.risk, 'moderate');
+  assert.match(moderate.band, /between -4 and 4/);
+  assert.match(moderate.band, /whatever the angina index turns out to be/);
+
+  const high = dukeTreadmill({ exerciseTime: 2, stDeviation: 4 });
+  assert.equal(high.valid, true);
+  assert.equal(high.risk, 'high');
+  assert.match(high.band, /high risk/);
+});
+
+test('spec-v1132: a blank select is not a zero', () => {
+  // Number('') is 0, which is the level the guard exists to stop being assumed.
+  for (const blank of [null, undefined, '', '  ']) {
+    const r = dukeTreadmill({ exerciseTime: 12, stDeviation: 0, anginaIndex: blank });
+    assert.equal(r.valid, false, `blank ${JSON.stringify(blank)} answered`);
+  }
+});

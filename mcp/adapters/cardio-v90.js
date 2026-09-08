@@ -57,7 +57,9 @@ export default [
     fields: [
       { dom: 'dt-time', arg: 'exerciseTime', kind: 'number', required: true, label: 'Exercise time (Bruce protocol)', unit: 'min' },
       { dom: 'dt-st', arg: 'stDeviation', kind: 'number', required: true, label: 'Maximal ST-segment deviation', unit: 'mm' },
-      { dom: 'dt-angina', arg: 'anginaIndex', kind: 'enum', values: ['0', '1', '2'], label: 'Exercise angina index (0 none, 1 non-limiting, 2 limiting)', to: (v) => Number(v) },
+      // spec-v1132: `Number('')` is 0, and 0 is "no angina" -- the level the library
+      // now refuses to assume. An empty value must stay empty.
+      { dom: 'dt-angina', arg: 'anginaIndex', kind: 'enum', values: ['0', '1', '2'], label: 'Exercise angina index (0 none, 1 non-limiting, 2 limiting)', to: (v) => (v === '' || v == null ? null : Number(v)) },
     ],
   },
   {
