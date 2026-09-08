@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `48d0307caff7381b`
-Generated: 2026-09-08T20:49:38.274Z
+Build ID: `ee987906ea1ff42d`
+Generated: 2026-09-08T21:17:10.415Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -149,7 +149,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/cardio-v101.js` | 12751 | `629d5ae5fd15255af72cd65585d5b25ad079e85981772fc33d72ce6694b95940` |
 | `lib/cardio-v102.js` | 15369 | `73550725a00aef254510f776ec1c3765edad60204b0bebe674e8ed66e7b648ad` |
 | `lib/cardio-v104.js` | 14365 | `581150411141a634b4314d5ccf1fe560c96ce8d5c9b8d2555c2a840a2af873f3` |
-| `lib/cardio-v90.js` | 21775 | `1e26c52d92bc9f8c0927b32013255e3f826033fa184314c7bc951af78e7b27d4` |
+| `lib/cardio-v90.js` | 23285 | `1b05a0869e5d6a22394ea7e73b7ff1445a7c911095f81cf06fb9fe0b7e40fda9` |
 | `lib/cardioecho-v237.js` | 10415 | `7bc5d6c40351c1877dbde161e18d2f16ea9d05b5884ea32985425cf479fb9a4a` |
 | `lib/cardiology-risk-v209.js` | 7709 | `995d41b33272eb9bdfcb07231a7c05897179c68cf969d6339dfe168aa3cdf9d9` |
 | `lib/cardiology-risk-v214.js` | 13668 | `57e82f2ed5ddee8578af62b3291013d254fd1c51359457e14ba0cd2533220c9a` |
@@ -394,7 +394,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/icans-v306.js` | 6071 | `c72bb55d44e3f3fe23fe1eca7a217ca70112b3caeb73b0046d550caa8af19d68` |
 | `lib/icrs-v338.js` | 4467 | `5e29e3d578cccf7cab83c738db4091fe8c9bb8c0c766b3e34e0ec6022499524b` |
 | `lib/id-v137.js` | 21838 | `0cd0ceb5e54d477d240cbfdc819b217ce26539bf22ae5b0b4da4ec04ae12dd17` |
-| `lib/idcrit-v99.js` | 18657 | `f17625adb94ef530fa45e325ad37f8c0d5c601cd3a51cd21140f4a90f5987a65` |
+| `lib/idcrit-v99.js` | 19537 | `4bcef860ee4c9c456d76614d18223f012fd440c05d0e27cc0b41298a91ac26ce` |
 | `lib/ideberg-glenoid-v409.js` | 4070 | `b7cde0877f7d560cb68fc68b7e39b1f8867024c9bccdb1a3fedd89300faff0a9` |
 | `lib/igcccg-v567.js` | 15655 | `279f4fffa68503aa75dd91ac700755e7e016bb42f4dc8377abc5d53eb62356a8` |
 | `lib/igg4-rd-2020-v825.js` | 8113 | `9a508c9597e17f30bc65156b09c5d5baf29116bca796c85070e050101c1614a0` |
@@ -988,7 +988,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/cardio-v101.js` | 5133 | `b280a3bf6868ff99d717c5983e50e44eb7722c264386299534eb997f6f69a0ae` |
 | `mcp/adapters/cardio-v102.js` | 4617 | `377a66961013d7fe64521d605d3f775d3d323337160fd014392b0ebec511eb04` |
 | `mcp/adapters/cardio-v104.js` | 5298 | `9b9c4175b2a439cf95af1ca89056f5a7903708971018214b49282d3c3ed51bb5` |
-| `mcp/adapters/cardio-v90.js` | 5042 | `4d3cf7f27dda086b22981190b86ded9adbf8231b1625eb646a30519ade69b7cf` |
+| `mcp/adapters/cardio-v90.js` | 5606 | `37977226a26ac33d0d969c18380815d70da66de669a39d48f24bda7e18da5c33` |
 | `mcp/adapters/cardioecho-v237.js` | 3602 | `63534e850997b1bc28ff20ae024a4646a33d67f99f3f0ad0c93c23ffd71213ca` |
 | `mcp/adapters/cardiology-risk-v209.js` | 3097 | `fc149dab69aca6c5553b1364efaf4308859a1b93dcfa64d97276747cd15d462e` |
 | `mcp/adapters/cardiology-risk-v214.js` | 7126 | `675203422099c10ae68bebe6a2c73c1efbd244094dabaf5bba547596441f4125` |
@@ -1762,7 +1762,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v156.js` | 10713 | `c8c967d1586f796af986c00cb75804dcb47a8dd40e1e4e1a465e15f4518f8637` |
 | `views/group-v158.js` | 9534 | `25d868e4f0bf1ed1570efd33550e005419a951f02f1453a976a88b8246fc2017` |
 | `views/group-v159.js` | 10723 | `4468620fd3985650302950a1b9070add09e3c8e986791fe4634ff2f50e2c92f1` |
-| `views/group-v16.js` | 11712 | `762ab32a263cdb5f46ad34cb8aed513ff064b0f8ca7e69755bf5f90592e3169c` |
+| `views/group-v16.js` | 11975 | `d8d668a25b40d46d16800aef603fc0a14f41005cbd95ef7258ef8e325e006261` |
 | `views/group-v160.js` | 11685 | `14ef775c5b8ffbe178e1263f27c806d4c99c02fc86dd79d907213aefd3b7b77f` |
 | `views/group-v161.js` | 8025 | `01187902dc8b2523d595b9ff8b8a211db519fb0f1cc00228725b977474c9f4f1` |
 | `views/group-v163.js` | 8143 | `0c4000e57fa5291ce38bd620737125b1a5a309a647fb2283dfd89f2f681731ed` |
@@ -2356,7 +2356,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v797.js` | 4184 | `a6125219d5781c0694efcd1d5bc1897587a8decf8615b66d209623dead3791c5` |
 | `views/group-v798.js` | 4020 | `911cc802b17f656b5dd475a373a9b465c528a3bc26473c1732808bc8b35c88ae` |
 | `views/group-v799.js` | 3074 | `207697ea9b629a3146172a3efa48090adca2ae9dcd960b72487c7973f111d888` |
-| `views/group-v8.js` | 23151 | `5b1607eef1ea7dbe05b328fba0f6dfd1ebcb9aeaa0da6443813dadd93cccd405` |
+| `views/group-v8.js` | 23890 | `129fac62794935276cf49ce95387ed2610e30d55b7e37dc5742f24fbd845a139` |
 | `views/group-v800.js` | 3162 | `a7894ea3c03e6cfd3b923da113f1b66079990f2545e20906d326226359860df1` |
 | `views/group-v801.js` | 4538 | `63dd0a780d65c98e0bd7a78f1aa906d461ad43303b3b7799a9e869ebb8ad5d06` |
 | `views/group-v802.js` | 3559 | `2c21752063d89628f4526a6c6d962fcb4d61175367b5db20edf83d886d55e246` |

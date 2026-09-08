@@ -28,8 +28,15 @@ export default [
     formatResult: (raw) => ({ ...raw, sokolowThreshold: 35 }),
     fields: [
       { dom: 'lv-sv1', arg: 'sV1', kind: 'number', required: true, label: 'S wave in V1', unit: 'mm' },
-      { dom: 'lv-rv5', arg: 'rV5', kind: 'number', required: true, label: 'R wave in V5', unit: 'mm' },
-      { dom: 'lv-rv6', arg: 'rV6', kind: 'number', required: true, label: 'R wave in V6', unit: 'mm' },
+      // spec-v1149: Sokolow-Lyon is SV1 + the LARGER of RV5 and RV6, so these two
+      // are ALTERNATIVES, not two separate requirements -- the library has always
+      // formed the sum from either. Declaring both required refused agent calls
+      // carrying one of them, which the browser answers. Rule 27: optional one at
+      // a time, required as a set, and the set is enforced by the library's own
+      // "enter the precordial and limb-lead amplitudes" refusal when neither is
+      // given.
+      { dom: 'lv-rv5', arg: 'rV5', kind: 'number', label: 'R wave in V5 (RV5 or RV6; the criterion uses the larger)', unit: 'mm' },
+      { dom: 'lv-rv6', arg: 'rV6', kind: 'number', label: 'R wave in V6 (RV5 or RV6; the criterion uses the larger)', unit: 'mm' },
       { dom: 'lv-sv3', arg: 'sV3', kind: 'number', required: true, label: 'S wave in V3', unit: 'mm' },
       { dom: 'lv-ravl', arg: 'rAVL', kind: 'number', required: true, label: 'R wave in aVL', unit: 'mm' },
       { dom: 'lv-sex', arg: 'sex', kind: 'enum', values: ['male', 'female'], label: 'Sex (for the Cornell threshold)' },

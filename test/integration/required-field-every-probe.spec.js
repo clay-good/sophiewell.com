@@ -34,9 +34,8 @@
 //   RUN_PROBES=1 npx playwright test test/integration/required-field-every-probe.spec.js --project=chromium
 
 import { test, expect } from '@playwright/test';
-import { ASKING } from '../lib/asking-language.js';
 import { ANSWERS_WITHOUT_A_REQUIRED_FIELD } from './required-field-ledger.js';
-import { requiredFieldsByTile, answeredWithANumber, clearEachAndRead } from '../lib/required-fields.js';
+import { requiredFieldsByTile, answeredWithANumber, refusedOrDisclosed, clearEachAndRead } from '../lib/required-fields.js';
 
 const SHARDS = 4;
 test.skip(({ browserName }) => browserName !== 'chromium', 'whole-catalog sweep is chromium-only');
@@ -59,7 +58,7 @@ for (let shard = 0; shard < SHARDS; shard += 1) {
       pairs += readings.length;
       for (const r of readings) {
         if (!r || r.text.length <= 12) continue;
-        if (ASKING.test(r.text)) continue;
+        if (refusedOrDisclosed(r.text)) continue;
         if (!answeredWithANumber(r.text)) continue;
         if (ANSWERS_WITHOUT_A_REQUIRED_FIELD.has(id)) continue;
         hits.push(`${id}|${r.cleared} :: ${r.text.slice(0, 110)}`);

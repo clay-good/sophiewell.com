@@ -16,6 +16,7 @@
 // copies of it would answer differently the day one is touched.
 
 import { allCalculators } from '../../mcp/catalog.js';
+import { ASKING, DISCLOSING } from './asking-language.js';
 
 // tileId -> the dom ids of every field the agent surface requires.
 export function requiredFieldsByTile() {
@@ -25,6 +26,26 @@ export function requiredFieldsByTile() {
     if (doms.length) map[cal.id] = doms;
   }
   return map;
+}
+
+// Did the tile decline to answer -- either by asking, or by answering and saying
+// what it was missing?
+//
+// spec-v1149: both sweeps here start from a COMPLETE worked example and clear ONE
+// field, which is exactly the case test/lib/asking-language.js names when it says
+// a disclosure is sufficient: "only the one-blank-field gate, which starts from a
+// complete example, accepts a disclosure as sufficient." The empty-form sweeps
+// must not, because with nothing entered there is nothing to disclose about --
+// but that is not this question. These two had been reading ASKING alone, so a
+// tile that answered honestly with its footing ("SAPS II AT LEAST 55 points ...
+// the PaO2/FiO2 is not entered") still counted as an offender.
+//
+// Measured before changing it, as the house rule requires: across every tile and
+// every required field, accepting DISCLOSING moves exactly TWO rows from flagged
+// to exempt, and both are `saps-ii` disclosing the oxygenation floor spec-v1149
+// gave it.
+export function refusedOrDisclosed(text) {
+  return ASKING.test(text) || DISCLOSING.test(text);
 }
 
 // Did the tile ANSWER, as opposed to refusing or saying nothing? A number that

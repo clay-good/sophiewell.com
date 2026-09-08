@@ -26,8 +26,7 @@
 
 import { test, expect } from '@playwright/test';
 import { ANSWERS_WITHOUT_A_REQUIRED_FIELD } from './required-field-ledger.js';
-import { ASKING } from '../lib/asking-language.js';
-import { requiredFieldsByTile, answeredWithANumber } from '../lib/required-fields.js';
+import { requiredFieldsByTile, answeredWithANumber, refusedOrDisclosed } from '../lib/required-fields.js';
 
 const SHARDS = 4;
 const SHARD_TIMEOUT_MS = 900_000;
@@ -78,7 +77,7 @@ for (let shard = 0; shard < SHARDS; shard += 1) {
       }, REQUIRED[id]);
 
       if (!reading || reading.text.length <= 12) continue;
-      if (ASKING.test(reading.text)) continue;
+      if (refusedOrDisclosed(reading.text)) continue;
       if (!answeredWithANumber(reading.text)) continue;
       if (ANSWERS_WITHOUT_A_REQUIRED_FIELD.has(id)) continue;
       offenders.push(`${id} (cleared ${reading.cleared}): ${reading.text.slice(0, 120)}`);

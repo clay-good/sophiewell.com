@@ -116,10 +116,23 @@ export const renderers = {
     root.appendChild(field('MIC (mg/L)', 'va-mic', { placeholder: 'e.g. 1' }));
     const o = out(); root.appendChild(o);
     wire(['va-peak', 'va-tpeak', 'va-trough', 'va-ttrough', 'va-tinf', 'va-tau', 'va-mic'], () => safe(o, () => {
-      const r = M5.vancAuc({
-        peak: val('va-peak'), tPeak: val('va-tpeak'), trough: val('va-trough'), tTrough: val('va-ttrough'),
-        tInf: val('va-tinf'), tau: val('va-tau'), mic: val('va-mic'),
-      });
+      // spec-v1149: every one of these read through `val()`, which is
+      // `Number('')` -- 0. The elimination constant is ln(peak/trough) divided by
+      // (tTrough - tPeak), so a draw time nobody recorded read as "at the end of
+      // the infusion" and the whole AUC moved with it: a vancomycin dosing answer
+      // built on a timestamp that was never taken.
+      const args = {
+        peak: optNum('va-peak'), tPeak: optNum('va-tpeak'),
+        trough: optNum('va-trough'), tTrough: optNum('va-ttrough'),
+        tInf: optNum('va-tinf'), tau: optNum('va-tau'), mic: optNum('va-mic'),
+      };
+      if (needValues(o, [
+        ['the peak level', args.peak], ['the peak draw time', args.tPeak],
+        ['the trough level', args.trough], ['the trough draw time', args.tTrough],
+        ['the infusion duration', args.tInf], ['the dosing interval', args.tau],
+        ['the MIC', args.mic],
+      ])) return;
+      const r = M5.vancAuc(args);
       o.appendChild(list([
         li(`Elimination constant k: ${fmt(r.k, { fallback: '--' })} /h (t1/2 ${fmt(r.halfLife, { fallback: '--' })} h)`),
         li(`Extrapolated Cmax/Cmin: ${fmt(r.cMax, { fallback: '--' })} / ${fmt(r.cMin, { fallback: '--' })} mg/L`),

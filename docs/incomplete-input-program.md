@@ -708,6 +708,32 @@ always offered both readings; this is the first time the second one won.
 
 Backlog 50 → 45.
 
+[spec-v1149](spec-v1149.md) took the third batch — the rows where the pattern does
+not tell you the answer.
+
+- `saps-ii` scored a ventilated patient's missing blood gas as **0 points**, and
+  `pfPts` is `v < 100 ? 11 : v < 200 ? 9 : 6` — **it cannot return 0.** "Not
+  measured" was scored at a level the instrument does not contain, and the total
+  came out 55 instead of 64, with predicted hospital mortality 57.5% instead of
+  75.3%.
+- `lvh-criteria` ruled OUT from one precordial lead. Sokolow-Lyon is SV1 + the
+  LARGER of RV5 and RV6, so one lead gives a floor — and **an existing unit test
+  asserted the defect**, checking `sokolowMet === false` on a sum formed without
+  RV6.
+- `vanc-auc` read a blank draw time as "at the end of the infusion" and moved the
+  whole AUC with it: a vancomycin dose built on a timestamp nobody took.
+
+And the sweeps themselves were reading **half the vocabulary**. Both filtered on
+`ASKING` alone, so `saps-ii`'s new footing — *"the PaO2/FiO2 is not entered"* —
+still counted as an offender. asking-language.js's own rule says which side they
+are on: *"only the one-blank-field gate, which starts from a complete example,
+accepts a disclosure as sufficient"*, and both of these start from a complete
+example and clear ONE field. Measured before changing: accepting `DISCLOSING` moves
+exactly two rows, both that pair. One copy of the filter now, in
+`test/lib/required-fields.js`.
+
+Backlog 45 → 40, and the "number that is not a measurement" group is drained.
+
 ## Probes measured and rejected
 
 Three questions asked of the whole catalog after spec-v1048, each of which sounded like it should

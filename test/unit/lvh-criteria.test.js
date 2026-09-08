@@ -17,9 +17,16 @@ test('Sokolow-Lyon 35 mm edge is met (>= 35)', () => {
   const at = lvhCriteria({ sV1: 17, rV5: 18, sex: 'male' });
   assert.equal(at.sokolowSum, 35);
   assert.equal(at.sokolowMet, true);
-  const below = lvhCriteria({ sV1: 16, rV5: 18, sex: 'male' });
-  assert.equal(below.sokolowSum, 34);
-  assert.equal(below.sokolowMet, false);
+  // spec-v1149: this case used to assert `false` with RV6 left out, which is the
+  // defect written down as an expectation -- 34 mm from one precordial lead is a
+  // FLOOR, and an RV6 of 20 would meet the criterion. Both halves are asserted
+  // now: undecided on one lead, negative on two.
+  const belowOnOneLead = lvhCriteria({ sV1: 16, rV5: 18, sex: 'male' });
+  assert.equal(belowOnOneLead.sokolowSum, 34);
+  assert.equal(belowOnOneLead.sokolowMet, null);
+  const belowOnBoth = lvhCriteria({ sV1: 16, rV5: 18, rV6: 15, sex: 'male' });
+  assert.equal(belowOnBoth.sokolowSum, 34);
+  assert.equal(belowOnBoth.sokolowMet, false);
 });
 
 test('Cornell threshold is sex-specific: sum 25 is positive for women, negative for men', () => {
@@ -72,4 +79,33 @@ test('spec-v1116: Sokolow-Lyon has no sex term and is unaffected', () => {
   assert.equal(r.sokolowMet, true);
   assert.match(r.band, /LVH positive: Sokolow-Lyon/);
   assert.doesNotMatch(r.band, /the sex is needed/);
+});
+
+// spec-v1149: Sokolow-Lyon is SV1 + the LARGER of RV5 and RV6, so one lead forms
+// a sum -- and that sum is a FLOOR, because the lead nobody measured may be the
+// larger one. Read as a total it ruled OUT.
+test('lvh-criteria: one precordial lead gives a floor, so it may rule in but not out', () => {
+  const common = { sV1: 20, sV3: 12, rAVL: 10, sex: 'male' };
+  // The defect, stated: SV1 20 + RV5 10 = 30 read as "no criterion met", while an
+  // RV6 of 16 makes the real sum 36 and the criterion met.
+  const partialLow = lvhCriteria({ ...common, rV5: 10 });
+  assert.equal(partialLow.sokolowSum, 30);
+  assert.equal(partialLow.sokolowMet, null);
+  assert.equal(partialLow.sokolowPartial, true);
+  assert.equal(partialLow.sokolowMissingLead, 'RV6');
+  assert.match(partialLow.band, /RV6 is not entered/);
+  assert.match(partialLow.band, /30 mm is a floor/);
+  assert.equal(lvhCriteria({ ...common, rV5: 10, rV6: 16 }).sokolowMet, true);
+
+  // At or above the threshold the reading stands whatever the missing lead is.
+  const partialHigh = lvhCriteria({ ...common, rV5: 18 });
+  assert.equal(partialHigh.sokolowMet, true);
+  assert.equal(partialHigh.anyMet, true);
+  assert.match(partialHigh.band, /positive/);
+
+  // Both leads entered and below: a real negative, unchanged.
+  const complete = lvhCriteria({ ...common, rV5: 10, rV6: 9 });
+  assert.equal(complete.sokolowMet, false);
+  assert.equal(complete.sokolowPartial, false);
+  assert.equal(complete.band, 'No LVH voltage criterion met by the entered amplitudes.');
 });

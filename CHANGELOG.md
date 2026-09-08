@@ -129,6 +129,27 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   marked as required for agents, so every correction-only request was turned away.
   They are optional now, on both sides. See docs/spec-v1148.md.
 
+- **SAPS II under-scored every ventilated patient whose blood gas had not been
+  entered.** The oxygenation term was treated as zero when the values were missing,
+  and the score table cannot award zero for that term in a ventilated patient -- its
+  three bands are 6, 9 and 11 points. On the tool's own worked example that is 55
+  points instead of 64, and a predicted hospital mortality of 57.5% instead of
+  75.3%. It now reports both figures as floors and says why they can only rise.
+
+- **The LVH voltage tool called an ECG negative from a single precordial lead.** The
+  Sokolow-Lyon criterion adds the S wave in V1 to the *larger* of the R waves in V5
+  and V6, so with one of those two unmeasured the sum is a floor -- yet a total of
+  30 mm read as "no criterion met" where the unmeasured lead would have carried it
+  past 35. It now names the missing lead and how many millimetres would meet the
+  criterion, and still reports a positive straight away when the entered leads
+  already reach it.
+
+- **The vancomycin AUC calculator built a dose on a timestamp nobody took.** Every
+  input read a blank as zero, so a missing level draw time was treated as "drawn at
+  the end of the infusion" and the elimination constant, the extrapolated peak and
+  trough, and the AUC all moved with it. It asks for each by name now. See
+  docs/spec-v1149.md.
+
 ### Changed
 
 - **A check that compares what the tool accepts with what the page offers was

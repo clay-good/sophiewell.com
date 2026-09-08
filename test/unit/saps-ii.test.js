@@ -49,3 +49,36 @@ test('PaO2/FiO2 only scores when ventilated', () => {
   const notVented = sapsII({ ...SICK, ventilated: false });
   assert.ok(vented.score > notVented.score);
 });
+
+// spec-v1149: the oxygenation term scored 0 for a ventilated patient whose blood
+// gas was not entered -- a level `pfPts` cannot produce. Its three bands are 6, 9
+// and 11.
+test('saps-ii: a ventilated patient with no blood gas gets a floor, not a total', () => {
+  const base = {
+    age: 70, heartRate: 130, sbp: 90, temperature: 38, ventilated: true,
+    paO2: 80, fio2: 0.5, urineOutput: 0.4, bun: 60, sodium: 140, potassium: 4,
+    bicarbonate: 18, bilirubin: 2, wbc: 15, gcs: 12,
+    chronicDisease: 'none', admissionType: 'medical',
+  };
+  const full = sapsII(base);
+  assert.equal(full.pfMissing, false);
+  assert.equal(full.score, 64);
+
+  for (const missing of [{ paO2: null }, { fio2: null }, { paO2: null, fio2: null }]) {
+    const r = sapsII({ ...base, ...missing });
+    assert.equal(r.pfMissing, true, JSON.stringify(missing));
+    // The defect, stated: it scored the blank as 0 and reported the total flat.
+    assert.equal(r.score, 55);
+    assert.match(r.band, /at least 55 points/);
+    assert.match(r.band, /at least 57\.5%/);
+    assert.match(r.band, /6, 9 or 11/);
+    // Nine points and eighteen percentage points of predicted mortality.
+    assert.ok(full.score - r.score === 9);
+  }
+
+  // Not ventilated: the term is genuinely 0 and nothing is outstanding.
+  const notVent = sapsII({ ...base, ventilated: false, paO2: null, fio2: null });
+  assert.equal(notVent.pfMissing, false);
+  assert.equal(notVent.score, 55);
+  assert.doesNotMatch(notVent.band, /at least/);
+});

@@ -110,7 +110,9 @@ export const renderers = {
       resultRow(o, [
         { text: r.band, cls: r.anyMet ? 'warn' : null },
         { label: 'Sokolow-Lyon sum (SV1 + max RV5/RV6)', value: fmt(r.sokolowSum, { fallback: '(enter SV1 and RV5/RV6)' }) },
-        { label: 'Sokolow-Lyon (>= 35 mm)', value: metTag(r.sokolowMet) },
+        // spec-v1149: `null` here is "still being formed", not "no reading" -- the
+        // dash alone read as a missing row rather than an outstanding lead.
+        { label: 'Sokolow-Lyon (>= 35 mm)', value: r.sokolowMet === null && r.sokolowPartial ? `not yet decided (${r.sokolowMissingLead} not entered)` : metTag(r.sokolowMet) },
         { label: `Cornell sum (SV3 + RaVL)`, value: fmt(r.cornellSum, { fallback: '(enter SV3 and RaVL)' }) },
         { label: `Cornell voltage (> ${r.cornellThreshold} mm)`, value: metTag(r.cornellMet) },
       ]);
