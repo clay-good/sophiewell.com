@@ -64,3 +64,40 @@ test('an intermediate total lands in the right risk band (10-14 -> 11.7%/19.3%)'
   assert.equal(r.riskThree, '11.7%');
   assert.equal(r.riskFive, '19.3%');
 });
+
+test('spec-v1141: an unstated location and population are not their zero-point levels', () => {
+  // Both fell back to the zero-point level -- an ICA/ACA/ACOM aneurysm in a North
+  // American cohort -- and together they are worth 12 points against risk bands
+  // five points wide. An age and a size alone answered "ELAPSS 14/40: growth risk
+  // ~11.7% at 3 years" for a patient who could be a 26 and ~42.7%. The tile's own
+  // refusal message already listed both (rule 23).
+  const r = elapss({ age: 60, size: 7 });
+  assert.equal(r.valid, true);
+  assert.deepEqual(r.unstated, ['the location', 'the population']);
+  assert.equal(r.total, 14);
+  assert.equal(r.ceiling, 26);
+  assert.match(r.band, /ELAPSS 14 to 26 of 40/);
+  assert.match(r.band, /worth 12 points/);
+  assert.match(r.band, /between ~11\.7% and ~42\.7% at 3 years/);
+
+  // One stated narrows it, and the sentence names only what is still outstanding.
+  const half = elapss({ age: 60, size: 7, location: 'mca' });
+  assert.deepEqual(half.unstated, ['the population']);
+  assert.match(half.band, /the population is not stated, and it is worth 7 points/);
+});
+
+test('spec-v1141: where the range cannot leave the band, the tile answers', () => {
+  // Rule 25. At the top band every extra point lands in the same row of the
+  // table, so the reading holds whatever the two turn out to be.
+  const top = elapss({ age: 80, size: 25 });
+  assert.equal(top.valid, true);
+  assert.match(top.band, /ELAPSS at least 27\/40/);
+  assert.match(top.band, /~42\.7% at 3 years/);
+  assert.match(top.band, /holds whatever the location and the population turn out to be/);
+
+  // Fully stated, every reading is what it always was.
+  const full = elapss({ age: 60, size: 7, location: 'mca', population: 'na' });
+  assert.equal(full.floorOnly, false);
+  assert.equal(full.total, 17);
+  assert.match(full.band, /^ELAPSS 17\/40:/);
+});

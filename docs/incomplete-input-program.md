@@ -286,6 +286,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1138](spec-v1138.md) | The shortest interval in an aspiration-risk table |
 | [v1139](spec-v1139.md) | The same narrowing, one level down, inside a tile |
 | [v1140](spec-v1140.md) | A risk category for a nodule nobody had described |
+| [v1141](spec-v1141.md) | Twelve points against bands five points wide |
 
 ### And the same question from the other side
 

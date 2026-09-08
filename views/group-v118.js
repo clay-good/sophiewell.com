@@ -209,13 +209,18 @@ export const renderers = {
       { value: 'no', text: 'No (+1)' },
       { value: 'yes', text: 'Yes (0)' },
     ]));
+    // spec-v1141: the blanks come first. Both opened on their zero-point level --
+    // an ICA/ACA/ACOM aneurysm in a North American cohort -- and together they
+    // are worth 12 points against risk bands 5 points wide.
     root.appendChild(selectField('Location of aneurysm', 'el-loc', [
+      { value: '', text: 'Not stated' },
       { value: 'icaAcaAcom', text: 'ICA / ACA / ACOM (0)' },
       { value: 'mca', text: 'Middle cerebral artery (+3)' },
       { value: 'pcomPost', text: 'PCOM / posterior circulation (+5)' },
     ]));
     root.appendChild(field('Age (years)', 'el-age', { max: 130, min: 0, placeholder: 'e.g. 60' }));
     root.appendChild(selectField('Population', 'el-pop', [
+      { value: '', text: 'Not stated' },
       { value: 'na', text: 'North America / China / Europe (0)' },
       { value: 'japan', text: 'Japan (+1)' },
       { value: 'finland', text: 'Finland (+7)' },

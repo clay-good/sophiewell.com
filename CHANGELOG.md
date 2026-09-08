@@ -33,6 +33,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **An aneurysm growth-risk score filled in the two facts that matter most.**
+  Where the aneurysm sits and which population the patient belongs to are worth
+  twelve points between them, against risk bands five points wide -- so the same
+  patient could read as an 11.7% three-year growth risk or a 42.7% one. Both were
+  quietly counted as their lowest-risk options. The score now gives the range and
+  names what is missing, and still answers plainly where the two cannot change
+  the band. See docs/spec-v1141.md.
+
 - **A thyroid ultrasound tool gave a risk category for a nodule nobody had
   described.** EU-TIRADS reads its category off how the nodule looks on
   ultrasound, and an empty form was answering "EU-TIRADS 3 -- low risk" -- on the
