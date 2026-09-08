@@ -72,14 +72,23 @@ test('spec-v1092: a PASI scored from some of the regions says which are missing'
 
   const noHead = { ...all };
   delete noHead.headArea;
-  assert.match(pasi(noHead).footing, /Scored from 3 of 4 regions/);
+  // spec-v1125: the denominator is every gradable slot -- four areas plus their
+  // twelve intensity items -- because the intensity selects opened on 0 too and
+  // twelve ungraded signs read as "mild psoriasis", which is the gate for
+  // systemic and biologic therapy.
+  assert.match(pasi(noHead).footing, /Scored from 15 of 16 regions and intensity items/);
   assert.match(pasi(noHead).footing, /head\/neck was not entered/);
+
+  const noIntensity = { ...all };
+  delete noIntensity.headE;
+  assert.match(pasi(noIntensity).footing, /Scored from 15 of 16/);
+  assert.match(pasi(noIntensity).footing, /head\/neck erythema was not entered/);
   assert.match(pasi(noHead).footing, /can only rise/);
 
   const noTwo = { ...all };
   delete noTwo.headArea;
   delete noTwo.trunkArea;
-  assert.match(pasi(noTwo).footing, /2 of 4 regions; head\/neck and trunk were not entered/);
+  assert.match(pasi(noTwo).footing, /14 of 16 regions and intensity items; head\/neck and trunk were not entered/);
 
   // The distinction the footing exists to draw: examined and clear is NOT the
   // same as never examined, even though both contribute 0.

@@ -63,7 +63,8 @@ test('spec-v1092: an EASI scored from some of the regions says which are missing
 
   const noLower = { ...all };
   delete noLower.lowerArea;
-  assert.match(easi(noLower).footing, /Scored from 3 of 4 regions; lower limbs was not entered/);
+  // spec-v1125: four areas plus their sixteen intensity items.
+  assert.match(easi(noLower).footing, /Scored from 19 of 20 regions and intensity items; lower limbs was not entered/);
   assert.match(easi(noLower).footing, /can only rise/);
 
   // Examined and clear is not the same as never examined.
@@ -71,4 +72,20 @@ test('spec-v1092: an EASI scored from some of the regions says which are missing
   // Lower limbs carry the heaviest adult weight, so this is the region whose
   // absence moves the total most: 0.4 of every point scored there.
   assert.ok(easi(all).score > easi(noLower).score);
+});
+
+
+test('spec-v1125: an ungraded intensity item is disclosed too, not only a missing region', () => {
+  const all = {};
+  for (const k of ['head', 'upper', 'trunk', 'lower']) {
+    all[`${k}Area`] = 20;
+    for (const x of ['E', 'Ed', 'Ex', 'L']) all[`${k}${x}`] = 2;
+  }
+  assert.equal(easi(all).footing, null);
+
+  const noOne = { ...all };
+  delete noOne.headEd;
+  assert.match(easi(noOne).footing, /Scored from 19 of 20/);
+  assert.match(easi(noOne).footing, /head\/neck edema was not entered/);
+  assert.ok(easi(noOne).score < easi(all).score, 'the ungraded item lowered the score');
 });

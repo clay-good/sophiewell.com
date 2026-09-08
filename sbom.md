@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `827d46ef36096228`
-Generated: 2026-09-08T06:05:24.803Z
+Build ID: `912458c960a57719`
+Generated: 2026-09-08T06:28:34.420Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -220,7 +220,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/delta-check-v925.js` | 8569 | `d09a2a0537947b803e21e2cfd7572695628df447124e3a75184bd16621bbc396` |
 | `lib/denis-sacral-v376.js` | 3688 | `fc489399a839b38692a0f716910e6e31f30ff38407b35cc4e160ef595baad540` |
 | `lib/derivation.js` | 8016 | `a0fcfa34306bef8683031d8e2757bc08f3448235b2f69649ef3354afdba7edec` |
-| `lib/derm-v151.js` | 19162 | `bc1de06fcfc6485f17246148d9763266d487e55a01caa3fa565256bdad637baf` |
+| `lib/derm-v151.js` | 20521 | `28b897ae062df57b38d2efad9a52e0676f739cbaad356f55af221f4023ec7a5e` |
 | `lib/dermatology-v223.js` | 13207 | `b0664bf97310df895e03501102ab3504d890636210525de6b8046f434e97f56d` |
 | `lib/dermscore-v234.js` | 7891 | `bc3594b69d62b10208190ba28e89a4412d3be45118e5e3836568902c37301b8c` |
 | `lib/dermuro-v191.js` | 12433 | `323b7c1713b3d8c2cd352ed8554058d54d80e171d6a5baf123143d6370f0cd89` |
@@ -1754,7 +1754,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v148.js` | 19109 | `f34bde6fdff35a3167d9dca89727a221850e5d056a41fe44ff89f90051053dd9` |
 | `views/group-v149.js` | 6365 | `1777a5e89834da85c73e4642fce3f8efc75b026698664a983c4226352b679af3` |
 | `views/group-v15.js` | 9484 | `02ca12568aaf9f325aa95d5eab66735f0f15a247ecb57f5d061d0cf97f6376e7` |
-| `views/group-v151.js` | 13600 | `dd754ef6b8502246e4ade93eee434ed109201dacf82f04ce8a02e9cae7d46be8` |
+| `views/group-v151.js` | 13359 | `0f5eff3a293106878f3c19634996260b9ed65f358fb54c277941ddb9ef93784e` |
 | `views/group-v152.js` | 12367 | `b801afd93751f4bc75051eb9e2b852094403120b03a2d2da2b4d8ece35405117` |
 | `views/group-v153.js` | 11280 | `ffceef435372350d3a3f391724e3232537e6919c980ba7c4b8e8b7bab2186ee9` |
 | `views/group-v154.js` | 11434 | `4bb47056aa326ce6597e15e6dacfa281adf4230d42df78761125cafac4e8b073` |

@@ -246,6 +246,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1122](spec-v1122.md) | Six organ systems, and one point that mattered in one place |
 | [v1123](spec-v1123.md) | Two grades, on the criterion that takes reading vision |
 | [v1124](spec-v1124.md) | The third author to notice a default and reason past it |
+| [v1125](spec-v1125.md) | The open question from four days ago, answered |
 
 ### And the same question from the other side
 

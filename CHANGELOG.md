@@ -33,6 +33,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A psoriasis score read twelve ungraded signs as "mild".** PASI and EASI
+  already said how many body regions had been examined, but they counted only
+  whether each region's affected AREA was entered -- so with the four areas
+  filled in and the twelve (or sixteen) severity picklists left where they open,
+  on 0, the tile answered "PASI 0/72, mild psoriasis" with nothing graded. PASI
+  is the usual gate for systemic and biologic therapy, and mild against moderate
+  is which side of it a patient is on. Both now count every gradable item, and
+  the picklists open on "Not graded". This answers the question the eczema fix
+  above deferred rather than guessing at. See docs/spec-v1125.md.
 - **An eczema severity score read six ungraded signs as six signs found
   absent.** SCORAD's six intensity items are worth up to 63 of its 103 points,
   and their picklists opened on "0 - none". An earlier fix in this release
