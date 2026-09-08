@@ -44,10 +44,18 @@ export default [
     fields: [
       { dom: 'tw-stools', arg: 'stools', kind: 'number', required: true, label: 'Bloody stools per day' },
       { dom: 'tw-bleed', arg: 'bleeding', kind: 'enum', values: ['none', 'present'], label: 'Visible rectal bleeding' },
-      { dom: 'tw-temp', arg: 'temp', kind: 'number', required: true, label: 'Temperature', unit: 'degrees C' },
-      { dom: 'tw-hr', arg: 'heartRate', kind: 'number', required: true, label: 'Heart rate', unit: 'bpm' },
-      { dom: 'tw-hgb', arg: 'hemoglobin', kind: 'number', required: true, label: 'Hemoglobin', unit: 'g/dL' },
-      { dom: 'tw-esr', arg: 'esr', kind: 'number', required: true, label: 'ESR', unit: 'mm/hr' },
+      // spec-v1151: severe acute colitis is >= 6 bloody stools plus AT LEAST ONE
+      // of these four, so they are ALTERNATIVES and not four requirements -- one
+      // met is enough, and spec-v1066 already taught the library to disclose what
+      // was not measured rather than read a blank as a criterion that is absent.
+      // Declared required, the agent surface refused every call carrying a subset,
+      // including the ones that already rule severe colitis IN. Rule 27: optional
+      // one at a time, required as a set, and the set is enforced by the library's
+      // own "cannot yet rule severe colitis out" footing.
+      { dom: 'tw-temp', arg: 'temp', kind: 'number', label: 'Temperature (any one systemic criterion is enough for severe)', unit: 'degrees C' },
+      { dom: 'tw-hr', arg: 'heartRate', kind: 'number', label: 'Heart rate (any one systemic criterion is enough for severe)', unit: 'bpm' },
+      { dom: 'tw-hgb', arg: 'hemoglobin', kind: 'number', label: 'Hemoglobin (any one systemic criterion is enough for severe)', unit: 'g/dL' },
+      { dom: 'tw-esr', arg: 'esr', kind: 'number', label: 'ESR (any one systemic criterion is enough for severe)', unit: 'mm/hr' },
     ],
   },
   {

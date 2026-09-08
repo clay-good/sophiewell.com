@@ -164,6 +164,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   difference. It asks for the three electrolytes by name now. See
   docs/spec-v1150.md.
 
+- **The NUTRIC nutrition-risk score called a patient low risk one point short of the
+  cutoff.** Its IL-6 term is deliberately not waited on, because IL-6 is rarely
+  available -- but it still adds a point, so a total of 5 read as *"low nutritional
+  risk"* where an IL-6 of 500 would have made it 6 and high risk. It now says the
+  total is a floor, and that the modified NUTRIC, which leaves IL-6 out by design,
+  already calls 5 high risk.
+
+- **Four more calculators refused agent requests the page answers.** Severe
+  ulcerative colitis needs six bloody stools plus *at least one* of four systemic
+  findings, and all four were marked required -- so a request carrying enough to
+  call it severe was turned away. The same for the NISS trauma score's second and
+  third injury severities, the NUTRIC IL-6, and the target FiO2 on the ventilator
+  tool, which belongs only to that page's PEEP-table lookup. See
+  docs/spec-v1151.md.
+
 ### Changed
 
 - **A check that compares what the tool accepts with what the page offers was

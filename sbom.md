@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `051a157404753ced`
-Generated: 2026-09-08T21:38:04.012Z
+Build ID: `5c311642cf65c665`
+Generated: 2026-09-08T22:10:56.428Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -761,7 +761,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/schobinger-avm-v497.js` | 3484 | `fd7d680fede1965fd9a9026d0977e4f2c1970e30d33718df3daaca235dfed009` |
 | `lib/schofield-v779.js` | 4325 | `7c398e3b1dc2df66c5323baee0f73ff66c28927fb47a72ede85dfd51d2de4931` |
 | `lib/schwab-england-v385.js` | 4331 | `caddd0709826db63186ebf0a5f8b60fd9a3e00fa934bddc3e0331977f70c5e4b` |
-| `lib/scoring-v4.js` | 277097 | `fd97b54bebdc2d9c67050bfe8d38dd53622e8ac365a1864155e441eca9ffc310` |
+| `lib/scoring-v4.js` | 278291 | `64332ec8194899e3c2b267671d316bfddd03e99ca86fe29f75eb260be19da8e0` |
 | `lib/scoring-v5.js` | 13821 | `89b532534c64d0e47a4c2e7978ec5d68f1a6d101c61ac586056a0764b8d05039` |
 | `lib/scoring-v6.js` | 27427 | `ed570d8507d63371de2181a97743f8ee1f40e2042eedba9dac2216ed247d6fad` |
 | `lib/scp-pushing-v562.js` | 12399 | `6da019a04668722b7a8d448b4d7bf9908717629b72e4a162088e74363ad62360` |
@@ -1201,7 +1201,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/hepatology-gibleed-v201.js` | 5915 | `2e2a91f651a464ba5b6f369ebeab46bfb22777f1145018d60d67f9417ff985b2` |
 | `mcp/adapters/hepatology-prognosis-v220.js` | 4614 | `45a10caf5243b438cbfb064c7680872b63ece28e1e2813038ca86dcef2aaca07` |
 | `mcp/adapters/hepgi-v190.js` | 3488 | `e7058f2c7494b0e390708f12b6ae7173276320d9c94372ef0bb1a97f470199fb` |
-| `mcp/adapters/hepgi-v93.js` | 6166 | `b50e77a45df69989433d1ca6a70d569fb12133696110743236199cb7f84650d4` |
+| `mcp/adapters/hepgi-v93.js` | 6941 | `a83a94291886c3559bdbf77712107a82c3d08b96844615a8ea19603c89c0a4b1` |
 | `mcp/adapters/herring-pillar-v347.js` | 1572 | `7dd67fd475cf24652fa9a7d739e1b056b4fdc8269a8e6b5602f54feca7f60b97` |
 | `mcp/adapters/hf-ef-classification-v840.js` | 1361 | `466c94db77ae9b1c399bc23205c1cb7e2d247a7fb8359e655f2ddb66945e5ddb` |
 | `mcp/adapters/hf-stages-abcd-v842.js` | 1852 | `399ed0e4131296eeee0477708c96458f688a6b4fbc40f957647e1c4f070ba907` |
@@ -1557,7 +1557,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/schobinger-avm-v497.js` | 1471 | `0e96c8f38f6ed7c8f2a129d4349ae06ac6bb152a8bf30b388b2c4941698a5dcc` |
 | `mcp/adapters/schofield-v779.js` | 1203 | `877117e8b9a4659faa3164c628509cfa5855c8a9acdebe84b8e4cf9af11a560a` |
 | `mcp/adapters/schwab-england-v385.js` | 1556 | `125267e4471b20f3f10007b2da0571554dae5b38565b79df05008e9e23a696be` |
-| `mcp/adapters/scoring-v4.js` | 159066 | `ddda9802f1115c4c9346a60f8d413a12849666edb490ce591fb64ad1272f471b` |
+| `mcp/adapters/scoring-v4.js` | 159758 | `93c38c2650816a6bdf5da2331bebb46ff0de920929db62e02a0f62a42dcd41b2` |
 | `mcp/adapters/scoring-v5.js` | 12908 | `896f43c3f88f9c53b1179e785443096da266140f0bd58c076e9823a40075eaae` |
 | `mcp/adapters/scoring-v6.js` | 20279 | `27326c97bbc73fc72e19349719020e64da57d56b46742e4d03f92b42316d9030` |
 | `mcp/adapters/scp-pushing-v562.js` | 5791 | `79ec7c5fbd7258c6647f6679be5fd535867c03246e6fd071d291393ab8705fed` |
@@ -1626,7 +1626,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/tox-v110.js` | 3902 | `f759b5ca55f9574d7c8320d7d08dd928a33e8030ebb5d3fec91fd1cd08eb8adc` |
 | `mcp/adapters/tox-v86.js` | 4261 | `be57be9bae32c5dfe02490a653072b862a131b6fa8573b5a2cbb9591e03bad5b` |
 | `mcp/adapters/transfusion-v292.js` | 1766 | `005b74056d7d62f5f6a33328a06286f48e5f2db99883b90e24fb7d81cb506152` |
-| `mcp/adapters/trauma-v108.js` | 4892 | `ad12010f16d8544a7efad659accbd6890a0540c8b9a4329cc827361386247e9e` |
+| `mcp/adapters/trauma-v108.js` | 5310 | `9189562eca0600aa9f733801c9ada0c5ceb6e499503292999718f50557a39b1e` |
 | `mcp/adapters/traumaclass-v109.js` | 5242 | `68d398cd79b7c643747be56a5977dfb897ab880eab9a644ab5395df9456c8b82` |
 | `mcp/adapters/traynelis-v448.js` | 1112 | `c0b26e28bbf328ee6377be250723d6f8eeac0cde563dbd90cda369a919e7867c` |
 | `mcp/adapters/tricuspid-regurgitation-stage-v848.js` | 2389 | `39526614e055e7b8806dc89951ad0ccf83bb2ac0758eee9a390371068cf084d5` |

@@ -1753,7 +1753,11 @@ export default [
       { dom: 'nt-sofa', arg: 'sofa', kind: 'number', required: true, label: 'SOFA score' },
       { dom: 'nt-comorb', arg: 'comorbidities', kind: 'number', required: true, label: 'Number of comorbidities' },
       { dom: 'nt-days', arg: 'daysHospitalToIcu', kind: 'number', required: true, label: 'Days from hospital to ICU' },
-      { dom: 'nt-il6', arg: 'il6Pg', kind: 'number', required: true, label: 'IL-6', unit: 'pg/mL' },
+      // spec-v1151: IL-6 is rarely available at the bedside -- which is why the
+      // modified NUTRIC exists and ships as its own tile -- and `nutricMissing`
+      // already excludes it from what the score waits for. Declared required, the
+      // agent surface refused every realistic call.
+      { dom: 'nt-il6', arg: 'il6Pg', kind: 'number', label: 'IL-6 (optional; omit for the modified NUTRIC, which is the usual form)', unit: 'pg/mL' },
     ],
   },
   {
@@ -2021,7 +2025,11 @@ export default [
       { dom: 'vs-vaso', arg: 'vasopressors', kind: 'bool', label: 'Vasopressors at more than minimal dose' },
       { dom: 'vs-awake', arg: 'awakeCooperative', kind: 'bool', required: true, label: 'Patient is awake / cooperative' },
       { dom: 'vs-arm', arg: 'ardsArm', kind: 'enum', values: ['low', 'high'], required: true, label: 'ARDSnet arm (low = Brower 2000, high = ALVEOLI 2004)' },
-      { dom: 'vs-lf', arg: 'lookupFiO2', kind: 'number', required: true, label: 'Target FiO2 to look up (fraction 0-1)' },
+      // spec-v1151: this tile is two calculators on one page, and the lookup FiO2
+      // belongs only to the second -- the ARDSnet PEEP table. Dropping it removes
+      // that banner and leaves the SBT-readiness verdict untouched and correct, so
+      // requiring it refused calls that only wanted the SBT answer.
+      { dom: 'vs-lf', arg: 'lookupFiO2', kind: 'number', label: 'Target FiO2 for the ARDSnet PEEP-table lookup (optional; not an SBT criterion)' },
     ],
   },
   {

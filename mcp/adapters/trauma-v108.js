@@ -26,8 +26,13 @@ export default [
     compute: F.niss,
     fields: [
       { dom: 'ni-a1', arg: 'ais1', kind: 'number', required: true, label: 'Highest AIS (1-6)' },
-      { dom: 'ni-a2', arg: 'ais2', kind: 'number', required: true, label: 'Second-highest AIS (1-6)' },
-      { dom: 'ni-a3', arg: 'ais3', kind: 'number', required: true, label: 'Third-highest AIS (1-6)' },
+      // spec-v1151: the library gives a disclosed FLOOR from a subset -- "NISS is
+      // at least 13 from 2 of the three AIS severities ... each can only add to
+      // the total" -- and an AIS 6 forces the maximal 75 on its own. Declaring
+      // these required refused agent calls the browser answers honestly, including
+      // the ones already at the ceiling.
+      { dom: 'ni-a2', arg: 'ais2', kind: 'number', label: 'Second-highest AIS (1-6; a partial total is reported as a floor)' },
+      { dom: 'ni-a3', arg: 'ais3', kind: 'number', label: 'Third-highest AIS (1-6; a partial total is reported as a floor)' },
     ],
   },
   {

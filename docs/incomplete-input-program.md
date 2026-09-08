@@ -748,6 +748,39 @@ than softening it: 34 mEq/L where the entered value gives 10, both landing on
 
 Backlog 40 → 35.
 
+[spec-v1151](spec-v1151.md) took the *criteria that are present or absent* group,
+which looked like a vocabulary problem and was not.
+
+`niss` was flagged and `niss` is right: it reads *"NISS: **at least 75**"* from two
+of three AIS severities. `DISCLOSING` knows *"can only add"* and *"can only raise"*
+and not **`at least`** — which is the phrasing three tiles fixed in this same
+session use. That is the duplicated-rule drift shape exactly, so it was measured
+before anything was added. A bare `at least` appears **553 times across 176 library
+files**, mostly criterion text. The narrow form — the score stated as a floor —
+moves **3 rows catalog-wide, and all three are wrong**: two are `migraine-ichd3`
+printing *"for 1.1: at least 2 of the 4 headache characteristics"*. **Not added.**
+`at least` is how this house writes a floor and also how the sources write a
+threshold, and no pattern separates them. `niss` was then going to be ledgered with
+that reason — until the declaration fix below made the ledger line dead, because the
+probe no longer clears those fields at all. Removed again: **a tile exempted for
+nothing is a tile the gate is not protecting.**
+
+Four more declarations were the wrong half: `truelove-witts`'s four systemic
+criteria (severe colitis needs ≥ 6 bloody stools plus **at least one** of them, so
+they are alternatives — and it refused agent calls that already rule severe colitis
+IN), `niss`'s second and third AIS, `nutric`'s IL-6, and `vent-sbt-peep`'s
+PEEP-table lookup FiO2.
+
+And relaxing one of them uncovered a rule-out. `nutricMissing` leaves IL-6 out on
+purpose, so nothing waited on it — and the IL-6 term adds a point at ≥ 400 pg/mL,
+so *"NUTRIC 5 of 10: low nutritional risk"* was **one point short of the cutoff**,
+with an IL-6 of 500 making it 6 and high risk. The mNUTRIC cut-off is ≥ 5 in any
+case, so the same patient is already high risk on the form that omits IL-6 by
+design. **Relaxing a declaration means reading what the tile does without the
+field; it is not a paperwork change.**
+
+Backlog 35 → 27.
+
 ## Probes measured and rejected
 
 Three questions asked of the whole catalog after spec-v1048, each of which sounded like it should
