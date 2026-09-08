@@ -847,10 +847,11 @@ export const renderers = {
         mechanismBlunt: document.getElementById('mgap-mech').value === 'blunt',
         gcs: num('mgap-gcs'),
         ageLt60: document.getElementById('mgap-age').value === 'lt60',
-        sbp: num('mgap-sbp'),
+        // spec-v1154: `num()` is Number('') -- 0 -- which is the hypotensive band.
+        sbp: numOrNull('mgap-sbp'),
       };
       const r = S4.mgap(inputs);
-      o.appendChild(el('h2', { text: `MGAP ${r.score}` }));
+      o.appendChild(el('h2', { text: r.sbpStated === false ? `MGAP at least ${r.score} of 29` : `MGAP ${r.score}` }));
       o.appendChild(el('p', { text: r.band }));
       if (deriv) updateDerivationSteps(deriv, META.mgap, inputs);
     }, deriv);
@@ -873,10 +874,11 @@ export const renderers = {
       const inputs = {
         gcs: num('gap-gcs'),
         ageLt60: document.getElementById('gap-age').value === 'lt60',
-        sbp: num('gap-sbp'),
+        // spec-v1154: as in mgap above.
+        sbp: numOrNull('gap-sbp'),
       };
       const r = S4.gap(inputs);
-      o.appendChild(el('h2', { text: `GAP ${r.score}` }));
+      o.appendChild(el('h2', { text: r.sbpStated === false ? `GAP at least ${r.score} of 24` : `GAP ${r.score}` }));
       o.appendChild(el('p', { text: r.band }));
       if (deriv) updateDerivationSteps(deriv, META.gap, inputs);
     }, deriv);

@@ -201,6 +201,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   no gas at all; it asks for it now, and a typed 0 still answers, since that is a real
   trial-off setting. See docs/spec-v1153.md.
 
+- **Two trauma scores raised the alarm from a blood pressure nobody had taken.** GAP
+  and MGAP both count upwards for a healthier patient, so reading a blank systolic as
+  zero scored it as profound hypotension -- moving GAP from 24 and *"low risk"* to 18
+  and *"moderate risk"* on the same patient. Both now say that the risk shown is the
+  worst case and what a normal blood pressure would make it, and where the blood
+  pressure cannot change the band at all they say that instead. A typed 0 still
+  scores as hypotension, because it is one.
+
+- **Two more calculators refused agent requests they were built to answer.** The
+  transferrin saturation tool needs no ferritin for the saturation itself and already
+  says so on screen, and the ROX index was taught to ask for the timepoint only where
+  the timepoint changes the answer -- yet both fields were marked required, so even
+  requests the missing value could not affect were turned away. See
+  docs/spec-v1154.md.
+
 ### Changed
 
 - **A check that compares what the tool accepts with what the page offers was

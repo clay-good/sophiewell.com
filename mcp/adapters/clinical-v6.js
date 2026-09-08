@@ -32,7 +32,11 @@ export default [
     fields: [
       { dom: 'ts-iron', arg: 'ironUgDl', kind: 'number', required: true, label: 'Serum iron', unit: 'ug/dL' },
       { dom: 'ts-tibc', arg: 'tibcUgDl', kind: 'number', required: true, label: 'TIBC', unit: 'ug/dL' },
-      { dom: 'ts-ferritin', arg: 'ferritinNgMl', kind: 'number', required: true, label: 'Ferritin', unit: 'ng/mL' },
+      // spec-v1154: the page label reads "Ferritin (ng/mL, optional)" and the
+      // library already discloses without it -- "TSAT <20%: iron-deficient pattern
+      // (check ferritin to separate absolute vs functional)". The saturation itself
+      // is iron / TIBC and needs no ferritin at all.
+      { dom: 'ts-ferritin', arg: 'ferritinNgMl', kind: 'number', label: 'Ferritin (optional; separates absolute from functional deficiency)', unit: 'ng/mL' },
     ],
   },
   {

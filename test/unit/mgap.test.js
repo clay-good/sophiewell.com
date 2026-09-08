@@ -28,3 +28,27 @@ test('mgap rejects out-of-range GCS', () => {
   assert.throws(() => mgap({ mechanismBlunt: true, gcs: 2, ageLt60: true, sbp: 100 }));
   assert.throws(() => mgap({ mechanismBlunt: true, gcs: 16, ageLt60: true, sbp: 100 }));
 });
+
+// spec-v1154: the same shape as gap() -- a blank systolic scored the hypotensive
+// band on a score where higher is better.
+test('mgap: a blank systolic is a gap, and a decided band still stands', () => {
+  const stated = mgap({ mechanismBlunt: true, gcs: 15, ageLt60: true, sbp: 130 });
+  assert.equal(stated.score, 29);
+  assert.equal(stated.risk, 'low');
+
+  // The worked example's band cannot change, so the reading stands (rule 25).
+  const decided = mgap({ mechanismBlunt: true, gcs: 15, ageLt60: true, sbp: null });
+  assert.equal(decided.score, 24);
+  assert.equal(decided.sbpStated, false);
+  assert.equal(decided.risk, 'low');
+  assert.match(decided.band, /every value it could take leaves the band at low/);
+
+  // Where it does change, the worst case is labelled as one.
+  const moves = mgap({ mechanismBlunt: false, gcs: 14, ageLt60: false, sbp: null });
+  assert.equal(moves.risk, null);
+  assert.match(moves.band, /WORST case/);
+  assert.match(moves.band, /Enter the systolic BP/);
+
+  // A typed 0 is an answer.
+  assert.equal(mgap({ mechanismBlunt: true, gcs: 15, ageLt60: true, sbp: 0 }).sbpStated, true);
+});

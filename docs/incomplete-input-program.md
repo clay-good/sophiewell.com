@@ -822,6 +822,24 @@ no gas at all. A typed 0 is a real trial-off state and still answers.
 
 Backlog 18 → 13.
 
+[spec-v1154](spec-v1154.md) took four singles. `gap` and `mgap` are trauma scores
+where **higher is better**, and both bound the systolic BP at `s < 0` — so a blank
+read as 0 and scored the HYPOTENSIVE band. Because the scale runs the other way from
+most, that did not soften the reading, it **invented an alarm**: GAP 24 → 18 and
+*"low risk"* → *"moderate risk"*, on a blood pressure nobody had taken. Rule 6 from
+the other side.
+
+Both now name the worst case as one, and both apply rule 25 — when every value the
+missing field could take lands in the same band, the reading stands rather than
+hedging, which is what `mgap` does on its own worked example.
+
+`tsat` and `rox` were already right and wrongly declared. `rox` is the sharper:
+[spec-v1131](spec-v1131.md) taught it to ask for the timepoint **only in the range
+where the timepoint decides**, and declaring the hour required refused even the calls
+the hour cannot change — the opposite of what that wave built.
+
+Backlog 13 → 9.
+
 ## Probes measured and rejected
 
 Three questions asked of the whole catalog after spec-v1048, each of which sounded like it should
