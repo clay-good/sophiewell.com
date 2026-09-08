@@ -781,6 +781,28 @@ field; it is not a paperwork change.**
 
 Backlog 35 → 27.
 
+[spec-v1152](spec-v1152.md) took the *suites of independent readings* group. One
+defect: `abg` bounds the pH at 6 to 8 (so a blank one already threw) and the PaCO2
+and HCO3 at zero, so a blank bicarbonate gave *"Primary disorder: Metabolic
+acidosis. **Winter formula: expected PaCO2 6 to 10 mmHg**"* — Winter's rule applied
+to a bicarbonate of nothing. The first required field guarded and the others not,
+for the seventh time.
+
+Four were genuinely two calculators sharing a page, and each page said so in its own
+label: `infusion-time-remaining` (*"**Or:** make this volume last (hours)"*),
+`o2-cylinder-duration` (*"**Or:** target transport time"*), `digoxin` and
+`heparin-nomogram`. **The last two had `required: true` beside a label that reads
+"(optional)"**, and `o2-cylinder-duration`'s residual pressure said *"default
+200"* — a field that cannot be required by definition.
+
+That contradiction is mechanical, so it looked like a cheap gate. Measured: **three
+hits, one true.** `heaven-criteria` has the word inside a clinical description and
+`mbi-validate`'s *"hyphens optional"* describes the format. **Not built** — 33%
+precision, and it found nothing the probe had not. It is a thing to read for by hand
+when touching an adapter.
+
+Backlog 27 → 18.
+
 ## Probes measured and rejected
 
 Three questions asked of the whole catalog after spec-v1048, each of which sounded like it should

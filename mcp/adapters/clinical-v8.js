@@ -78,8 +78,14 @@ export default [
     },
     fields: [
       { dom: 'itr-vol', arg: 'volumeMl', kind: 'number', required: true, label: 'Volume remaining', unit: 'mL' },
-      { dom: 'itr-rate', arg: 'rateMlHr', kind: 'number', required: true, label: 'Current rate', unit: 'mL/hr' },
-      { dom: 'itr-hrs', arg: 'hours', kind: 'number', required: true, label: 'Target duration', unit: 'hours' },
+      // spec-v1152: two calculators on one page, and the page says so -- the third
+      // field is labelled "OR: make this volume last (hours)". The rate answers
+      // "time to empty" and the hours answer "rate to last that long"; each is
+      // required only for its own half, and the view guards both on `vol > 0 &&
+      // rate > 0` / `vol > 0 && hrs > 0`. Declared required, the agent surface
+      // refused every call that wanted one of the two.
+      { dom: 'itr-rate', arg: 'rateMlHr', kind: 'number', label: 'Current rate (for the time-to-empty answer)', unit: 'mL/hr' },
+      { dom: 'itr-hrs', arg: 'hours', kind: 'number', label: 'Target duration (for the rate-to-last answer)', unit: 'hours' },
     ],
   },
   {
@@ -183,8 +189,13 @@ export default [
     fields: [
       { dom: 'o2-size', arg: 'size', kind: 'enum', values: ['E', 'D', 'M', 'G', 'H'], required: true, label: 'Cylinder size' },
       { dom: 'o2-psi', arg: 'gaugePsi', kind: 'number', required: true, label: 'Gauge pressure', unit: 'psi' },
-      { dom: 'o2-flow', arg: 'flowLpm', kind: 'number', required: true, label: 'Flow rate', unit: 'L/min' },
-      { dom: 'o2-res', arg: 'residualPsi', kind: 'number', required: true, label: 'Residual pressure (default 200)', unit: 'psi' },
+      // spec-v1152: the same shape. Cylinder size and gauge pressure give the
+      // usable volume; the flow turns that into a time. And a field whose own label
+      // says "default 200" cannot be required -- the view substitutes 200 psi when
+      // it is blank and the reading names it ("above the 200 psi residual"), which
+      // is the spec-v1133 model.
+      { dom: 'o2-flow', arg: 'flowLpm', kind: 'number', label: 'Flow rate (for the duration answer; omit for the usable volume alone)', unit: 'L/min' },
+      { dom: 'o2-res', arg: 'residualPsi', kind: 'number', label: 'Residual pressure (defaults to 200 psi, which the reading names)', unit: 'psi' },
       { dom: 'o2-target', arg: 'targetMinutes', kind: 'number', required: false, label: 'Target duration (optional)', unit: 'minutes' },
     ],
   },

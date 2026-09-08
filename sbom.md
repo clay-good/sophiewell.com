@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `5c311642cf65c665`
-Generated: 2026-09-08T22:10:56.428Z
+Build ID: `8fd9af73c577c5ae`
+Generated: 2026-09-08T22:32:17.731Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -1021,7 +1021,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/clinical-v5.js` | 12043 | `64bb75061d67e1bf07dae3f04e9ac2d4638b4f37d61001ee750a9caff98df78c` |
 | `mcp/adapters/clinical-v6.js` | 8455 | `64db47df667ae16351605984cad29528ff73759453b2b17d7ed0d3bf6124952b` |
 | `mcp/adapters/clinical-v7.js` | 8069 | `083a2078dba3877d854e781c9adc4bfdd49beda72fa8cf735360afde1c9b1d54` |
-| `mcp/adapters/clinical-v8.js` | 14727 | `4e4b7a285367bc840053f9470812d98257e11b0af769209bbecfc5d4400b281e` |
+| `mcp/adapters/clinical-v8.js` | 15645 | `9dfd204d56ec3fc909cbe5ecd45e4e305de8e1ae9fc6627d0572e4dafe3467ec` |
 | `mcp/adapters/clinical.js` | 25011 | `d1fb519709bfc04976aa65fb1b4c5ae5f1046379cc25b4dbf45129c8d1eb3134` |
 | `mcp/adapters/cluster-headache-ichd3-v814.js` | 2395 | `688cb24e3cb10dabf00993f5b28ccbda26d33a89d6b1e5b679f2f28e88846048` |
 | `mcp/adapters/coagscore-v232.js` | 2450 | `29d9720d14256b871c8c9752ecadd8f5df16342529bf67afacbc1028ed2c3d0c` |
@@ -1326,7 +1326,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/mda-psoriatic-v672.js` | 1622 | `f4ffa035cd43ee96dc178c635cacda758c595f034b6592f37545d20c37f71a55` |
 | `mcp/adapters/measles-case-def-v872.js` | 3259 | `1c78e4af19eea2890fea97bf044b5e68268af780c76e820bbd91adb6021179e6` |
 | `mcp/adapters/medication-v4.js` | 9804 | `1807346d6f3976ff240163509d621779627fc494dba1cf48ad333c9cda6ca21d` |
-| `mcp/adapters/medication-v5.js` | 10647 | `4f89ca0abe6d9fcc2c119f0e5f6039d47b24ef43be8a44f211c8921d90dcbba0` |
+| `mcp/adapters/medication-v5.js` | 11290 | `71bbf994882579e2b8b0264da43e4fa93e2c6354c3d13ed9f3be80b79a8c13aa` |
 | `mcp/adapters/meld3-v678.js` | 1809 | `cdd0ac147f46bd4dc5a5ac9f71d3a8fb62e8f008a2609cc05c3369f18f682c33` |
 | `mcp/adapters/membranous-risk-v878.js` | 2992 | `7b6babfdf69026f8522a02f9539b48ebb04e105912e1f4542caacbc00b82d3c5` |
 | `mcp/adapters/meniere-aao-hns-v708.js` | 1323 | `eebbc4b8c31b8cbb2d04595c065ac8bb2aba3d1f4450a43e2d8c48838000d962` |
@@ -1708,7 +1708,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-c.js` | 26643 | `c139c073fd2c3a107f1865ff5e41dd671e988a06b16fe6d0efb050d6da2e060c` |
 | `views/group-e.js` | 48405 | `17d63394ee917c7ebe0fa1faecd6bb3824796d663fe76005eee2921d14979901` |
 | `views/group-f.js` | 51979 | `01e74da351fdf593e8e45b8b13c8bf2412967a0fa1626df7904ad55fa069b909` |
-| `views/group-g.js` | 248770 | `4dd0a602b285c46082e1f9f72394f566b20690f4da942b8579f6dc189f8e6f50` |
+| `views/group-g.js` | 249419 | `12471acf5d1d7806065fa92c0be6f0be16fdaea15781420a02bda8cc4c48f53f` |
 | `views/group-h.js` | 30041 | `ef2d74336a9ab03aa5fc8307f4d76ae8023dc6ecc80347c561e1269bc539fcea` |
 | `views/group-i.js` | 25281 | `2a5d42af02ea24dfbfa7ac442ca7467880239b596ab6312833b5f4eb7d86fd12` |
 | `views/group-j.js` | 9024 | `7d8ad642f932ac040e85c1c2c4b35cc0b20acd2d81415ad7740e547b845fdae2` |

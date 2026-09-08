@@ -203,8 +203,18 @@ export const renderers = {
     root.appendChild(f('FiO2 (0-1, optional)', 'fio2', '0.21'));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
+      // spec-v1152: `abgInterpret` bounds the pH at 6 to 8, so a blank pH already
+      // threw -- and PaCO2 and HCO3 are bounded at `min: 0`, so `nv()` reading
+      // them as zero passed. A blank bicarbonate gave "Primary disorder: Metabolic
+      // acidosis. Winter formula: expected PaCO2 6 to 10 mmHg", which is Winter's
+      // rule applied to a bicarbonate of nothing. The first required field was
+      // guarded and the other two were not: spec-v1146's shape again.
+      const pH = nvOrNull('pH');
+      const paco2 = nvOrNull('paco2');
+      const hco3 = nvOrNull('hco3');
+      if (needValues(o, [['a pH', pH], ['a PaCO2', paco2], ['a bicarbonate', hco3]])) return;
       const r = C.abgInterpret({
-        pH: nv('pH'), paco2: nv('paco2'), hco3: nv('hco3'),
+        pH, paco2, hco3,
         pao2: nv('pao2'), fio2: nv('fio2'),
       });
       const items = [el('li', { text: `Primary disorder: ${r.primary}` })];

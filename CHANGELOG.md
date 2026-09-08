@@ -179,6 +179,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   tool, which belongs only to that page's PEEP-table lookup. See
   docs/spec-v1151.md.
 
+- **The ABG walkthrough applied Winter's formula to a bicarbonate nobody entered.** A
+  blank pH was already refused, but a blank bicarbonate or PaCO2 was read as zero --
+  so the page named a primary acid-base disorder and printed an expected PaCO2 of 6
+  to 10 mmHg from a bicarbonate of nothing. All three values are asked for by name
+  now.
+
+- **Five more calculators refused agent requests the page answers.** Four of them are
+  two calculators sharing a page -- infusion time remaining, oxygen cylinder
+  duration, digoxin, and the heparin nomogram -- where a value needed for one answer
+  was demanded for both. Two of the five were marked required beside a label that
+  says "optional", and one beside a label that gives its own default. All five now
+  answer. See docs/spec-v1152.md.
+
 ### Changed
 
 - **A check that compares what the tool accepts with what the page offers was

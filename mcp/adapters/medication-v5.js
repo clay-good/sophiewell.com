@@ -15,7 +15,11 @@ export default [
     fields: [
       { dom: 'hep-wt', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg' },
       { dom: 'hep-ind', arg: 'indication', kind: 'enum', values: ['vte', 'acs'], required: true, label: 'Indication' },
-      { dom: 'hep-aptt', arg: 'aptt', kind: 'number', required: true, label: 'Current aPTT (optional)', unit: 'seconds' },
+      // spec-v1152: this label already said "(optional)" beside `required: true`,
+      // and the view reads it with `optNum`. The weight-based initial bolus and rate
+      // need only the weight and the indication; the aPTT drives the adjustment
+      // step, which is the second half of the nomogram.
+      { dom: 'hep-aptt', arg: 'aptt', kind: 'number', label: 'Current aPTT (optional; for the adjustment step)', unit: 'seconds' },
     ],
   },
   {
@@ -64,8 +68,12 @@ export default [
       { dom: 'dig-crcl', arg: 'crCl', kind: 'number', required: true, label: 'Creatinine clearance', unit: 'mL/min' },
       { dom: 'dig-age', arg: 'ageYears', kind: 'number', required: false, label: 'Age (optional)', unit: 'years' },
       { dom: 'dig-ind', arg: 'indication', kind: 'enum', values: ['hf', 'af'], required: true, label: 'Indication' },
-      { dom: 'dig-lvl', arg: 'levelNgMl', kind: 'number', required: true, label: 'Measured level (optional)', unit: 'ng/mL' },
-      { dom: 'dig-hrs', arg: 'hoursPostDose', kind: 'number', required: true, label: 'Hours post-dose (optional)', unit: 'h' },
+      // spec-v1152: both labels already said "(optional)" beside `required: true`,
+      // and the view reads both with `optNum`. The maintenance dose comes from the
+      // clearance and the indication; the level interpretation is the second half
+      // and only appears when a level is given.
+      { dom: 'dig-lvl', arg: 'levelNgMl', kind: 'number', label: 'Measured level (optional; for the level interpretation)', unit: 'ng/mL' },
+      { dom: 'dig-hrs', arg: 'hoursPostDose', kind: 'number', label: 'Hours post-dose (optional; for the draw-timing warning)', unit: 'h' },
     ],
   },
   {
