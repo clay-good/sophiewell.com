@@ -33,3 +33,18 @@ test('scalar / empty fuzz arg -> 0, never NaN', () => {
   assert.equal(sesCd(9).total, 0);
   assert.equal(sesCd({}).total, 0);
 });
+
+test('spec-v1114: only SEVERE is the ceiling, so a partial "moderate" is footed', () => {
+  // spec-v1111 exempted every reading with `abnormal` true, which is moderate
+  // AND severe. Moderate is not the top: 9 of 56 over five cells could be 20
+  // once the other fifteen are read, which is severe.
+  const partial = sesCd({ ulcerSize: [3, 3, 3, 0, 0] });
+  assert.equal(partial.floorOnly, true);
+  assert.match(partial.band, /SES-CD at least 9\/56/);
+  assert.doesNotMatch(partial.band, /endoscopic moderate \(/);
+
+  // Severe cannot be raised out of, so it stands as it is.
+  const severe = sesCd({ ulcerSize: [3, 3, 3, 3, 3], ulceratedSurface: [3, 0, 0, 0, 0] });
+  assert.equal(severe.floorOnly, false);
+  assert.match(severe.band, /endoscopic severe/);
+});

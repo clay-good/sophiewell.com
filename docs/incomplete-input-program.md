@@ -60,7 +60,13 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
     absence is a gap in the workup — refuse. Three unquantified regurgitation criteria are what a
     normal echo report looks like — disclose. Refusing the second breaks the ordinary case rather
     than the defective one.
-13. **A reading that already rules IN needs no footing.** It is the floor, and the missing value
+13. **A reading that already rules IN needs no footing — the VERDICT, not the number under it**
+    (spec-v1114). Three fixes in this programme exempted a whole reading at its top band and went
+    on quoting a figure the missing inputs could raise: a predicted mortality percentage, a
+    severity total, and a band (`ses-cd`'s "moderate") that was not the ceiling at all. Check which
+    reading is genuinely unreachable from above, and floor every number that is not.
+
+    **A reading that already rules IN needs no footing.** It is the floor, and the missing value
     cannot lower it. The disclosure belongs to the reassuring reading, which is the one that can be
     wrong.
 14. **Fix the headline, not only the detail** (spec-v1095). `isgps-dge` puts its message in `detail`
@@ -202,6 +208,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1111](spec-v1111.md) | Four more, and a correction |
 | [v1112](spec-v1112.md) | The last two, and a prediction that was half wrong |
 | [v1113](spec-v1113.md) | The denominator was computed and never shown |
+| [v1114](spec-v1114.md) | Reading my own eleven waves back through the finder |
 
 ### And the same question from the other side
 

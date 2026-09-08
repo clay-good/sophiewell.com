@@ -51,7 +51,7 @@ test('spec-v1112: both gates met and the impairment unrated is not a negative sc
   assert.match(r.band, /Not yet a screen result/);
   assert.match(r.band, /A gate that was not answered has not been failed/);
   assert.doesNotMatch(r.band, /^Negative screen/);
-  assert.deepEqual(r.outstanding, ['the functional impairment is not rated']);
+  assert.deepEqual(r.outstanding, ['a functional-impairment rating is needed']);
 });
 
 test('spec-v1112: an unadministered MDQ is not a negative screen either', () => {
@@ -63,7 +63,7 @@ test('spec-v1112: an unadministered MDQ is not a negative screen either', () => 
   assert.equal(r.answeredSymptoms, 0);
   assert.doesNotMatch(r.band, /^Negative screen/);
   assert.match(r.band, /13 of the 13 symptom items are unanswered/);
-  assert.match(r.band, /the co-occurrence question is unanswered/);
+  assert.match(r.band, /an answer to the co-occurrence question is needed/);
 });
 
 test('spec-v1112: the symptom gate settles once 7 YES is out of reach', () => {

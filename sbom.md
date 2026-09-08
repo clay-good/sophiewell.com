@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `817df041d24c0a9f`
-Generated: 2026-09-07T23:39:40.217Z
+Build ID: `e1da916056dc19c2`
+Generated: 2026-09-08T00:29:11.329Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -324,7 +324,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/gerdq-v679.js` | 4410 | `1b59ff708ec0a30c39ae0bc7ed356bf1704dac46be643eb922ec1376759df951` |
 | `lib/geri-v241.js` | 6715 | `1debe98a4e5480baaaf503b9f4e9e093f0bdfaede8ce2741f9744b862ae52f98` |
 | `lib/ghent-marfan-v821.js` | 12318 | `855285066a558cf50ad9e937c7717195d86bc71bbe51e47913f4dfa811f8ce39` |
-| `lib/gi-v126.js` | 18805 | `dbb664ea69b3fb99c98b945df84c4c55ec2d76996cee59ff55ccb13e0e341de0` |
+| `lib/gi-v126.js` | 19116 | `64bb0f519666ec59daef3f9accf62066bd20ca45c8a19b492072b942c403af87` |
 | `lib/gisurg-v239.js` | 7913 | `d6da27d87f1f1c9ae3ba497127080931bfe66fd1e29c66d5e5b6b21a586761d0` |
 | `lib/glass-stage-v550.js` | 13408 | `42ec4b461aa71b8aa586f00d20f9088773dbf3a478e9847e590af687b2c2acf5` |
 | `lib/gli-2012-data.js` | 41979 | `0fa7440b8d9ab03028185d56c7a6bc9e1e753fe3ac396c208eb06f80991ba125` |
@@ -681,8 +681,8 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/prostate-health-index-v714.js` | 3788 | `c73d17188461e047dbf1658447de06c9474dda8ff88e9b92b13845d53d2561a1` |
 | `lib/proteins-v274.js` | 3182 | `124b907ef2e82939179df0c4d15ebd08e2132481feb6b980a73b2e9170e6a315` |
 | `lib/pss10-v806.js` | 3774 | `345503d089cc1e3741f638539279784197b108044da41cfbb2d941e7481c3445` |
-| `lib/psych-v123.js` | 21179 | `8f21d7a80bebfbeead0b6a9b1d0de6a9bb92625fa79be7742676942107c0b9fb` |
-| `lib/psych-v96.js` | 15914 | `dec181561e8e87d317af9d9854989c13cdcbe75c93a99a2ea288da1268520845` |
+| `lib/psych-v123.js` | 21812 | `8a06d1957abe88d594034533c654070b2dad1be4ae172ddbcb7bd96cdef56be0` |
+| `lib/psych-v96.js` | 16837 | `6aa2f2a4550dc4dc0f1e5d486bb8d7e83faac28cc1112a1e299a36d13833fc39` |
 | `lib/pulm-copd-v205.js` | 15657 | `e209ded1a783152b4bf49ac6d693fe097126161d3cb53a09268fe38e9ab9c3bf` |
 | `lib/pulm-v114.js` | 15731 | `579720bd9198af70f6b48e25ba0514e6f1fc52dfd8219d1b58a9456f2eb67476` |
 | `lib/pulm-v91.js` | 16605 | `f5135df1056f7cbcc56d50e5a2ca8a0d82bb08155e31c572f3211cc0a499ea63` |
@@ -858,7 +858,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/van-herick-v435.js` | 3423 | `1df5f89865068a14369482f3bd141c7ef8999a49e9e3b6ada87ebcffb36cdd15` |
 | `lib/van-nuys-vnpi-v652.js` | 5583 | `59049426b6b97b137e2c28ae2072640f2310ed548c27027eac6e069e334ddcaf` |
 | `lib/vancouver-periprosthetic-v483.js` | 3496 | `49ecf63cc801a1b465268edd621659b820dad6556472ff09b40e428eb12575bf` |
-| `lib/vascular-v105.js` | 19387 | `9c691ef2c467ded9825895ce816c4aaba299afc1b28948efdb686543828fa094` |
+| `lib/vascular-v105.js` | 20179 | `4c3beb54af16094b76b94dca42106a56a9436e24959425a592fb6f470ee21e84` |
 | `lib/vasi-v556.js` | 12850 | `c1e3bdab22509ed3895f5dae68d974242064c27bd047889d8a0d80c1491bd204` |
 | `lib/vaughan-williams-v427.js` | 4207 | `241cb6fc10d5a9b15a3a849ab44f7887e7508a99daa8a9c55567feb737b1893d` |
 | `lib/vent-v195.js` | 9473 | `9f8fd14cdaa7e971da29cc8bdc6247bf8c7e3974daae70bc597e2269c400c110` |

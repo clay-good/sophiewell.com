@@ -104,13 +104,26 @@ test('spec-v1107: one unstated factor is named on its own', () => {
   assert.ok(r.mortality < full.mortality, 'an unstated factor lowered the estimate');
 });
 
-test('spec-v1107: the top tier rules in and needs no footing', () => {
-  // Rule 13: an unstated covariate cannot talk "very high" down.
+test('spec-v1107: the top TIER rules in; spec-v1114: the figure is still a floor', () => {
+  // Rule 13: an unstated covariate cannot talk "very high" down, so the tier
+  // stands. It does not follow that the percentage under it is exact -- that
+  // was spec-v1107's over-reach, corrected in spec-v1114.
   const r = euroScore2({ age: 80, nyha: '4', lvFunction: 'very-poor', urgency: 'salvage' });
   assert.equal(r.tier, 'very high');
-  assert.equal(r.floorOnly, false);
+  assert.equal(r.floorOnly, false, 'the tier is not withheld');
   assert.ok(r.unstated.length > 0, 'this call does leave factors unstated');
-  assert.doesNotMatch(r.band, /at least/);
+  assert.match(r.band, /at least/);
+  assert.match(r.band, /very high predicted operative risk, which the unstated factors cannot lower/);
+  assert.match(r.band, /each can only raise the figure/);
+
+  // With everything stated, the figure is exact and nothing is disclosed.
+  const full = euroScore2({
+    age: 80, nyha: '4', lvFunction: 'very-poor', urgency: 'salvage',
+    pulmonaryHypertension: 'none', renal: 'normal', weightOfIntervention: 'cabg',
+  });
+  assert.equal(full.tier, 'very high');
+  assert.deepEqual(full.unstated, []);
+  assert.doesNotMatch(full.band, /at least/);
 });
 
 test('spec-v1107: an unrecognised value is unstated, not the reference level', () => {

@@ -33,6 +33,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Three scores kept quoting an exact number under a verdict that was allowed
+  to stand.** When the most severe reading is reached, a missing input cannot
+  change it, so those readings are left alone -- but the figures beneath them
+  can still move, and three tiles fixed earlier in this release went on printing
+  them as exact: a EuroSCORE II mortality percentage, a Bush-Francis severity
+  total, and the SES-CD's "moderate" band, which is not the most severe one at
+  all. Each now floors the number while leaving the verdict as it was. Found by
+  re-running the finder over the tiles this release had already fixed. See
+  docs/spec-v1114.md.
 - **Four questionnaires averaged fewer items than they appeared to and never
   said so.** The PFIQ-7, PFDI-20 and Copenhagen Burnout Inventory score each
   subscale as the mean of the items that were answered, which is the published

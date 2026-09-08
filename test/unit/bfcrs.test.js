@@ -78,3 +78,18 @@ test('spec-v1110: a screen-positive reading rules in from a subset', () => {
   assert.equal(r.floorOnly, false);
   assert.match(r.band, /catatonia is suggested/);
 });
+
+test('spec-v1114: a screen-positive reading still floors its severity total', () => {
+  // Rule 13 exempts the VERDICT, not a number the reading quotes. spec-v1110
+  // left the whole screen-positive branch alone, so "severity total 5/69"
+  // printed as though all 23 items had been scored.
+  const r = bfcrs({ immobility: '3', mutism: '2' });
+  assert.equal(r.abnormal, true);
+  assert.match(r.band, /catatonia is suggested/);
+  assert.match(r.band, /severity total at least 5\/69 over 2 of the 23 items/);
+  assert.match(r.counted, /Not rated: /);
+
+  const complete = bfcrs(elicited({ immobility: '3', mutism: '2' }));
+  assert.match(complete.band, /severity total 5\/69\./);
+  assert.doesNotMatch(complete.band, /at least/);
+});

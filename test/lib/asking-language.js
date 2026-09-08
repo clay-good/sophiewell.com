@@ -90,5 +90,16 @@ export const DISCLOSING = new RegExp([
   // and it moves exactly one tile from flagged to exempt: `mchat-rf`, which
   // says "8 of the 20 items are unanswered ... and an unanswered item scores
   // nothing. That total is over the 12 items that were answered."
-  'of (?:the )?\\d+ (?:items|components|measurements|criteria)',
+  //
+  // spec-v1114: one optional ADJECTIVE between the number and the noun, because
+  // the house writes "8 of the 20 items" and also "7 of the 13 symptom items",
+  // and only the first matched. A generalisation of the pattern already here
+  // rather than a new phrase.
+  //
+  // Measured before adding, as the rule above requires: across every tile and
+  // every number or graded select, dropping one field moves exactly ONE field
+  // from flagged to exempt -- `masld-criteria`, whose refusal says "5 of them
+  // have not been assessed" after naming the five, and which was already
+  // refusing rather than answering.
+  'of (?:the )?\\d+ (?:[a-z-]+ )?(?:items|components|measurements|criteria)',
 ].join('|'), 'i');
