@@ -596,6 +596,33 @@ ordinary one, and its derivation table had therefore never rendered.
 
 Six rows of the fourth section remain and each is read in that spec.
 
+That last fix came out of verification rather than a finder, and
+[spec-v1144](spec-v1144.md) is the finder's half of it: `js-error-probe` clears
+every input before it looks, so it can only find the defects that need a cleared
+form, and `drg-payment`'s was in the reading its own example shows. A second pass
+now asks the same question of **the tile as it opens** — negative-tested against
+the reverted fix, then run across all 1,706 tiles: zero.
+
+**A probe is a question plus a starting state, and the starting state is half the
+reach.** Twice in three waves the question was right and the starting place was
+the whole of the blind spot.
+
+[spec-v1144](spec-v1144.md) turned the lesson on the OTHER probe.
+`js-error-probe.spec.js` asks whether any tile prints a JavaScript runtime error
+where its answer belongs — and it has always cleared the form first, so it could
+never have found the `derivation()` crash above, which is in the reading
+`drg-payment` OPENS on. A second pass now runs the same question against the tile
+exactly as a reader first meets it. Negative-tested against the reverted fix, and
+then run across all 1,706 tiles: **zero**.
+
+**A probe is a question plus a starting state, and the starting state is half the
+reach.** Twice in three waves now:
+
+| Probe | Started from | Could not see |
+| --- | --- | --- |
+| `probe-omitted-field-decides` ([spec-v1142](spec-v1142.md)) | a boolean flag or a band string | every tile that carries neither |
+| `js-error-probe` | the cleared form | every defect in the reading a tile opens on |
+
 ## Probes measured and rejected
 
 Three questions asked of the whole catalog after spec-v1048, each of which sounded like it should

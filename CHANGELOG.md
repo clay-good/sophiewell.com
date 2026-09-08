@@ -47,6 +47,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   tool did the same whenever no least-waste vial combination was found. Both tables
   render now. See docs/spec-v1143.md.
 
+- **The check for crashes only ever looked at an empty form.** The sweep that asks
+  whether any calculator shows a JavaScript error where its answer belongs clears
+  every input before it looks -- so it could never see the DRG estimate's broken
+  table above, which appeared on the ordinary reading the tile opens with. It now
+  makes a second pass over every tool exactly as a reader first meets it. Across all
+  1,706, nothing else does this. See docs/spec-v1144.md.
+
 - **Two payment tools priced a claim from the top of a table nobody had chosen.** The
   anesthesia unit calculator defaulted the medical-direction modifier to AA
   (personally performed, 100%) -- twice what a medically-directed case pays -- while
@@ -61,6 +68,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   sequestration tool treated a blank beneficiary cost-share as zero, taking the 2% cut
   on the whole allowed. Both remain legitimate ways to run the tool, so both keep the
   default and say so in the reading. See docs/spec-v1143.md.
+
+### Changed
+
+- **The check that looks for crashes in a calculator's answer only ever looked at an
+  empty form.** It clears every field first, which finds the tool that assumed a
+  value it was refused -- but not the one that breaks on the ordinary reading it
+  opens with, which is how the DRG table above went unnoticed. It now asks the same
+  question a second way, of each tool exactly as a reader first meets it. Across all
+  1,706 tools: nothing. See docs/spec-v1144.md.
 
 ### Changed
 
