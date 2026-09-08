@@ -38,7 +38,12 @@ export const renderers = {
     root.appendChild(el('h2', { text: 'The last intake' }));
     // Written out rather than mapped from F.INTAKES: scripts/lib/option-labels.mjs reads option
     // text out of this file statically, and a mapped list is not readable.
+    // spec-v1138: the blank comes first. This opened on clear liquids, the
+    // shortest interval in the table, so a form nobody had answered read "the
+    // interval is met" at three hours -- which is short by one after breast milk
+    // and by five after a fatty meal.
     selectField(root, 'What was taken', 'pf-lastintake', [
+      { value: '', text: 'Not stated' },
       { value: 'clear-liquid', text: 'Clear liquids: water, pulp-free juice, carbonated drinks, black tea or coffee' },
       { value: 'breast-milk', text: 'Breast milk' },
       { value: 'formula', text: 'Infant formula' },

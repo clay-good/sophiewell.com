@@ -283,6 +283,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1135](spec-v1135.md) | "All items at 0" was printed for a form nobody had filled in |
 | [v1136](spec-v1136.md) | The fifth check narrowed to `kind === 'number'` |
 | [v1137](spec-v1137.md) | The note said the choice was not inferred |
+| [v1138](spec-v1138.md) | The shortest interval in an aspiration-risk table |
 
 ### And the same question from the other side
 

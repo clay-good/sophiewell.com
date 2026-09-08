@@ -33,6 +33,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A preoperative fasting check assumed the patient had only had clear liquids.**
+  Clear liquids need two hours before anesthesia; breast milk needs four, formula
+  or a light meal six, and fried or fatty food eight. When nobody had said what
+  was last taken, the tool used the two-hour row -- the shortest in the table --
+  and reported the interval as met. It now asks, unless enough time has passed
+  that every row is served or so little that none is. See docs/spec-v1138.md.
+
+- **A neuroendocrine grading tool assumed the tumor was well differentiated.**
+  Well and poorly differentiated are not two grades of one thing: one is a
+  neuroendocrine tumor graded on its proliferation indices, the other a
+  neuroendocrine carcinoma, high grade by definition and treated differently. The
+  Ki-67 index and mitotic count do not decide between them, so the tool now asks.
+
 - **Two acid-base tools decided for themselves that a patient's problem was
   acute.** Whether respiratory acidosis or alkalosis is acute or chronic changes
   how much the kidney is expected to have compensated, and so whether a measured

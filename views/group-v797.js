@@ -44,7 +44,11 @@ function wire(ids, run) {
   run();
 }
 
+// spec-v1138: the blank comes first. This opened on "well differentiated", which
+// is not a milder reading of the same thing -- it is the difference between a
+// neuroendocrine tumor and a neuroendocrine carcinoma.
 const DIFFERENTIATION = [
+  { value: '', text: 'Not stated' },
   { value: 'well', text: 'Well differentiated (a neuroendocrine tumor, graded below)' },
   { value: 'poor', text: 'Poorly differentiated (a neuroendocrine carcinoma, high grade by definition)' },
 ];

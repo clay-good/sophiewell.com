@@ -63,8 +63,12 @@ test('preop-fasting: with no elapsed time it states the minimum and asks for one
   assert.match(r.band, /Enter the hours elapsed/);
 });
 
-test('preop-fasting: unknown values fall back, and the range is checked', () => {
-  assert.equal(f({ lastIntake: 'made-up' }).lastIntake, 'clear-liquid');
+test('preop-fasting: an unknown intake is unstated, not clear liquids, and the range is checked', () => {
+  // This asserted `lastIntake === 'clear-liquid'` for an unrecognised value --
+  // the shortest interval in an aspiration-risk table, written down as the
+  // expected result. Robustness is kept: nothing throws. spec-v1138.
+  assert.equal(f({ lastIntake: 'made-up' }).lastIntake, null);
+  assert.equal(f({ lastIntake: 'made-up' }).intakeStated, false);
   assert.equal(f({ hoursSinceIntake: -1 }).valid, false);
   assert.equal(f({ hoursSinceIntake: 73 }).valid, false);
 });
@@ -73,4 +77,38 @@ test('preop-fasting: the documented example', () => {
   const r = f({ lastIntake: 'clear-liquid', hoursSinceIntake: '3' });
   assert.equal(r.met, true);
   assert.equal(r.requiredHours, 2);
+});
+
+test('spec-v1138: an unstated intake is not clear liquids', () => {
+  // The fallback was the SHORTEST interval in the table, so a form that did not
+  // say what was last taken read "3 hours since clear liquids, against a minimum
+  // of 2. The interval is met." The same three hours is short by one after breast
+  // milk and by five after a fatty meal.
+  const r = f({ hoursSinceIntake: 3 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /Say what was last taken/);
+  assert.match(r.message, /met for clear liquids/);
+  assert.match(r.message, /not yet for breast milk/);
+
+  // Stated, the readings are what they always were.
+  assert.equal(f({ lastIntake: 'clear-liquid', hoursSinceIntake: 3 }).met, true);
+  assert.equal(f({ lastIntake: 'breast-milk', hoursSinceIntake: 3 }).met, false);
+});
+
+test('spec-v1138: past the longest interval, and short of the shortest, it answers', () => {
+  // Rule 25: the intake only decides between two hours and eight.
+  const past = f({ hoursSinceIntake: 9 });
+  assert.equal(past.valid, true);
+  assert.equal(past.intakeStated, false);
+  assert.equal(past.lastIntake, null);
+  assert.match(past.band, /every interval in the table is met, whatever was last taken/);
+  assert.equal(past.bandLabel, 'Every interval met');
+
+  const under = f({ hoursSinceIntake: 1 });
+  assert.equal(under.valid, true);
+  assert.match(under.band, /no interval in the table is met, whatever was last taken/);
+  assert.equal(under.bandLabel, 'No interval met');
+
+  // And with nothing at all, the label does not name the clear-liquid minimum.
+  assert.equal(f({}).bandLabel, 'What was last taken?');
 });
