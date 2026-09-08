@@ -115,6 +115,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   -- and for a bag that genuinely has no lipid, or a child who genuinely is not
   dehydrated, a typed 0 still answers. See docs/spec-v1147.md.
 
+- **Three more tools answered from a number nobody had typed.** The CRRT dose
+  calculator read a blank prescribed rate as zero and judged the prescription
+  *"below the KDIGO target"*; the PCA pump calculator read a blank bolus dose as
+  zero and reported a maximum hourly opioid delivery of none; and the quantitative
+  blood loss calculator ran the other way, counting the dry weight of unweighed
+  pads as blood and overstating the loss. All three now ask, and each still answers
+  from a typed 0 where zero is a real setting.
+
+- **The insulin correction calculator was refusing agent requests it could have
+  answered.** Its own form says to leave the carbohydrate fields blank for a
+  correction-only dose, which is the ordinary inpatient case -- but both were
+  marked as required for agents, so every correction-only request was turned away.
+  They are optional now, on both sides. See docs/spec-v1148.md.
+
 ### Changed
 
 - **A check that compares what the tool accepts with what the page offers was

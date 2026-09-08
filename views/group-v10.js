@@ -279,8 +279,19 @@ export const renderers = {
         note(o, 'Enter the measured blood volume, the weighed pads and drapes, or both. A quantitative blood loss cannot be read from an unweighed field.');
         return;
       }
+      // spec-v1148: the tare is what the pads weighed DRY, and it is subtracted
+      // from their soaked weight. Blank, `val() || 0` subtracted nothing, so the
+      // dry pad and the irrigation counted as blood -- overstating the loss, and
+      // rule 6 says an alarm from nothing is not the safe direction either. It
+      // matters only when pads were weighed, so it is asked for only then
+      // (rule 25: guard a READING, not a field).
+      const dryTareGrams = optNum('qp-tare');
+      if (padGrams != null && dryTareGrams == null) {
+        note(o, 'Enter the dry-pad and irrigation tare: it is subtracted from the weighed pads, so leaving it blank counts the dry pad itself as blood. Type 0 only if nothing was weighed in with them.');
+        return;
+      }
       const r = S.qblPph({
-        measuredMl: measuredMl || 0, padGrams: padGrams || 0, dryTareGrams: val('qp-tare') || 0,
+        measuredMl: measuredMl || 0, padGrams: padGrams || 0, dryTareGrams: dryTareGrams || 0,
         vaginal: chk('qp-vaginal'), unstable: chk('qp-unstable'), riskFactors: val('qp-risk') || 0,
       });
       // spec-v1038: QBL is a SUM, so a missing component makes it a lower bound.

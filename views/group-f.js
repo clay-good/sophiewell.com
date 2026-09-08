@@ -814,9 +814,14 @@ export const renderers = {
     root.appendChild(unitField('Total Ca (optional)', 'cr-tca', CALCIUM_MMOL_UNITS));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
+      // spec-v1148: `nv()` read a blank prescribed rate as 0 mL/h, and the tile
+      // answered "0 mL/kg/h -- Below the KDIGO 2012 target of 20-25": an
+      // adequacy judgment about a prescription nobody had written down.
+      const effluentRateMlPerHr = nvOrNull('cr-r');
+      if (needValues(o, [['the prescribed effluent rate (mL/h)', effluentRateMlPerHr]])) return;
       const r = crrtDose({
         weightKg:              unitNum('cr-w'),
-        effluentRateMlPerHr:   nv('cr-r'),
+        effluentRateMlPerHr,
         modality:              document.getElementById('cr-mod').value,
         ultrafiltrationMlPerHr: nv('cr-uf'),
         systemicIonisedCa:     unitNum('cr-sca'),

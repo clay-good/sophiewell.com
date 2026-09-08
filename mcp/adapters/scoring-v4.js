@@ -87,8 +87,14 @@ export default [
       { dom: 'ic-isf', arg: 'isf', kind: 'number', required: false, label: 'ISF (mg/dL per unit; blank derives from TDD)', to: (v) => v || 0 },
       { dom: 'ic-tdd', arg: 'totalDailyDose', kind: 'number', required: true, label: 'Total daily insulin dose', unit: 'units' },
       { dom: 'ic-rule', arg: 'isfRule', kind: 'enum', values: ['rapid', 'regular'], required: true, label: 'ISF rule (when derived from TDD)' },
-      { dom: 'ic-carbs', arg: 'carbs', kind: 'number', required: true, label: 'Carbs to be eaten', unit: 'g' },
-      { dom: 'ic-icr', arg: 'icr', kind: 'number', required: true, label: 'Insulin-to-carb ratio', unit: 'g per unit' },
+      // spec-v1148: these two were declared required, and the tile's own label
+      // says "Carbs to be eaten (g; LEAVE BLANK FOR CORRECTION ONLY)". A
+      // correction-only dose is the ordinary inpatient case, so the browser was
+      // right to answer and the declaration was wrong -- which is the other half
+      // of what the required-field sweep is for. The insulin-to-carb ratio is
+      // read only when carbs are entered, so it travels with them.
+      { dom: 'ic-carbs', arg: 'carbs', kind: 'number', label: 'Carbs to be eaten (omit for a correction-only dose)', unit: 'g' },
+      { dom: 'ic-icr', arg: 'icr', kind: 'number', label: 'Insulin-to-carb ratio (only used when carbs are entered)', unit: 'g per unit' },
     ],
   },
   {

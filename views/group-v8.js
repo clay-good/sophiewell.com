@@ -268,8 +268,16 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     wire(['pca-conc', 'pca-demand', 'pca-lockout', 'pca-basal', 'pca-limit'], () => safe(o, () => {
       const basal = optNum('pca-basal');
+      // spec-v1148: `pcaPump` allows a demand dose of 0 (a basal-only order is
+      // real), so `val()` reading a blank as 0 printed "Maximum demand delivery:
+      // 0 mg/h" for an opioid PCA whose bolus had simply not been typed. The
+      // concentration and the lockout have lower bounds that reject zero, which
+      // is why only this one reached the screen -- and why the sweep beside this
+      // never saw it (spec-v1146).
+      const demandMg = optNum('pca-demand');
+      if (needValues(o, [['the demand (bolus) dose in mg', demandMg]])) return;
       const r = M5.pcaPump({
-        concMgPerMl: val('pca-conc'), demandMg: val('pca-demand'), lockoutMin: val('pca-lockout'),
+        concMgPerMl: val('pca-conc'), demandMg, lockoutMin: val('pca-lockout'),
         basalMgPerH: basal == null ? 0 : basal, oneHourLimitMg: optNum('pca-limit'),
       });
       o.appendChild(list([

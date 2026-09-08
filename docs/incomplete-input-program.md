@@ -692,6 +692,22 @@ Two things this wave got wrong first and corrected:
 
 Backlog 59 → 50.
 
+[spec-v1148](spec-v1148.md) took the second batch. `crrt-dose` judged a dialysis
+prescription nobody had written (*"0 mL/kg/h — Below the KDIGO target"*),
+`pca-pump` printed *"Maximum demand delivery: 0 mg/h"* for an opioid PCA whose
+bolus had not been typed, and `qbl-pph` ran the OTHER way — a blank dry-pad tare
+counted the pad and the irrigation as blood, overstating the loss by 100 mL.
+Rule 6 again: an alarm from nothing is not the safe direction either.
+
+And the first row in this programme where **the declaration was the wrong half**.
+`insulin-correction` was flagged on its carbohydrate fields, and the tile's own
+label reads *"Carbs to be eaten (g; leave blank for correction only)"* — a
+correction-only dose is the ordinary inpatient case, so the browser was right and
+the agent surface had been refusing calls it could answer. The gate's message has
+always offered both readings; this is the first time the second one won.
+
+Backlog 50 → 45.
+
 ## Probes measured and rejected
 
 Three questions asked of the whole catalog after spec-v1048, each of which sounded like it should
