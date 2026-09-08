@@ -117,3 +117,30 @@ test('ess: every variable maxed reaches the 29-point maximum', () => {
   assert.equal(r.score, 29);
   assert.ok(r.band.includes('very high predicted 30-day mortality'));
 });
+
+// --- spec-v1115: the ASA class fell through to ASA 1 ---
+
+test('spec-v1115: an unstated ASA class does not make a low-risk PULP', () => {
+  const r = pulp({ ageOver65: true });
+  assert.equal(r.valid, true);
+  assert.equal(r.score, 3);
+  assert.equal(r.asaStated, false);
+  assert.equal(r.floorOnly, true);
+  assert.match(r.band, /PULP at least 3 of 18/);
+  assert.match(r.band, /carries up to 7 points/);
+  assert.doesNotMatch(r.band, /low risk/);
+  assert.doesNotMatch(r.detail, /\(ASA 1\)/);
+
+  // Stated as ASA 1, the low-risk reading is earned.
+  const stated = pulp({ ageOver65: true, asa: 1 });
+  assert.equal(stated.floorOnly, false);
+  assert.match(stated.band, /low risk/);
+});
+
+test('spec-v1115: high risk rules in without the ASA class', () => {
+  const r = pulp({ ageOver65: true, cirrhosis: true, creatinine: true, shock: true });
+  assert.equal(r.score, 8);
+  assert.equal(r.abnormal, true);
+  assert.equal(r.floorOnly, false);
+  assert.match(r.band, /high risk/);
+});

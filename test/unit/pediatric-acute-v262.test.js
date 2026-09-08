@@ -94,3 +94,28 @@ test('egami: all five items reach the 6-point maximum', () => {
   assert.equal(r.score, 6);
   assert.ok(r.band.includes('high risk'));
 });
+
+// --- spec-v1115: an unmeasured biomarker was read as a reassuring one ---
+
+test('spec-v1115: the Lab-score waits for the two biomarkers it is built on', () => {
+  const r = labScore({});
+  assert.equal(r.valid, true);
+  assert.deepEqual(r.unmeasured, ['a CRP', 'a procalcitonin']);
+  assert.equal(r.floorOnly, true);
+  assert.match(r.band, /Lab-score at least 0 of 9/);
+  assert.doesNotMatch(r.band, /low risk of serious bacterial infection/);
+  assert.doesNotMatch(r.detail, /all biomarkers in the low band/);
+
+  const measured = labScore({ crp: 'lt40', pct: 'lt05' });
+  assert.equal(measured.floorOnly, false);
+  assert.match(measured.band, /low risk of serious bacterial infection/);
+});
+
+test('spec-v1115: high risk rules in from one biomarker', () => {
+  // Rule 13: a CRP of 100 or more is four points whatever the procalcitonin is.
+  const r = labScore({ crp: 'high' });
+  assert.equal(r.score, 4);
+  assert.equal(r.abnormal, true);
+  assert.equal(r.floorOnly, false);
+  assert.match(r.band, /high risk of serious bacterial infection/);
+});

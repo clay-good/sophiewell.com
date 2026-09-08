@@ -209,6 +209,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1112](spec-v1112.md) | The last two, and a prediction that was half wrong |
 | [v1113](spec-v1113.md) | The denominator was computed and never shown |
 | [v1114](spec-v1114.md) | Reading my own eleven waves back through the finder |
+| [v1115](spec-v1115.md) | The seven that turned an alarm into a reassurance |
 
 ### And the same question from the other side
 

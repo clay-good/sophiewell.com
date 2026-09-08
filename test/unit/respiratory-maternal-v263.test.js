@@ -138,3 +138,18 @@ test('sos: a single SpO2 < 85 derangement scores +3 and stays below the cutoff',
   assert.equal(r.score, 3);
   assert.equal(r.abnormal, false);
 });
+
+// --- spec-v1115: the smoking history fell through to "never smoked" ---
+
+test('spec-v1115: an unstated smoking history does not make a low-risk MuLBSTA', () => {
+  const r = mulbsta({ multilobar: true });
+  assert.equal(r.smokingStated, false);
+  assert.equal(r.floorOnly, true);
+  assert.match(r.band, /MuLBSTA at least 5 of 20/);
+  assert.doesNotMatch(r.band, /low risk/);
+  assert.match(r.detail, /The smoking history is not stated/);
+
+  const stated = mulbsta({ multilobar: true, smoking: 'never' });
+  assert.equal(stated.floorOnly, false);
+  assert.match(stated.band, /low risk/);
+});

@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `e1da916056dc19c2`
-Generated: 2026-09-08T00:29:11.329Z
+Build ID: `3bc093b3ea24f5ea`
+Generated: 2026-09-08T00:56:22.659Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -63,7 +63,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/acr-eular-boolean-v671.js` | 4453 | `79e79312ee4df6fc97bcb44e121482e68c9d62323446f27087d26beac5478fba` |
 | `lib/acromegaly-biochem-v835.js` | 9541 | `3dcd6eec4c8be684e05c0f87baf0eb7fb27d356dfc3fd44beb33704700062d4f` |
 | `lib/acs-v193.js` | 15400 | `219926127d8100963f60bd083fb4a77fa33e1f806b7d581dc78dea821b819d52` |
-| `lib/acute-abdomen-v261.js` | 10676 | `0c0f7358da57d87ace5ee151a3c599f3e5a4232aaf92da7009bff01ac00fd5d4` |
+| `lib/acute-abdomen-v261.js` | 11553 | `651eca3332ee7973b2cd2b463751c4d3fb77235f12a4ce459f3feba852d8dbc9` |
 | `lib/acute-injury-v213.js` | 11748 | `d0db59b8b86c57a442bfe3b1cd2e9fb50bbb59aa6980810415f4dbbe41985b7d` |
 | `lib/adiposity-v270.js` | 3145 | `bafc017e4974f5c7180e5a2a6160c50fb8d837bccd6f45d0eaaf6bb6ada87ce9` |
 | `lib/af-stages-2023-v839.js` | 7872 | `9dad7e65b3ccc86ad22937b40e670e055da6855583cd1cc4bd188325e04c2fe7` |
@@ -365,7 +365,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/hemederm-v245.js` | 6951 | `8da43afd2f8072c0e3b917b12e1ee8a4770afd7c1a6b2cf3ff5ca94e414a1c2b` |
 | `lib/hemo-v194.js` | 10631 | `8c5d3ad252475a1dd4f8a2ed78a2933173d381ccc44bbd427d63539006e73d24` |
 | `lib/hemodynamics-v87.js` | 8607 | `1bc8bc1408afb3fbc602d2748bfa1c8c68eb89fafabb18dd5e9c1a2589ff0276` |
-| `lib/hemonc-v94.js` | 17047 | `2ff5a8d793273c4dac2d5b4199ebf17787fdf144937f98a50d345e753102996d` |
+| `lib/hemonc-v94.js` | 17848 | `a5aaff5184c5e5620caaff774e78d9c4444e7226323a2e8df339996e653f5617` |
 | `lib/hep-fibrosis-portal-v212.js` | 6585 | `93bb19ad8fac24e2e86c21bd76be22c40b3df7ec8d1a8888002c643453d3223a` |
 | `lib/hep-v124.js` | 13781 | `58ce6172b3d31f9a1aba2b5ed12097042e7f8249acfc7a9dfec6207108075ff6` |
 | `lib/hep-v125.js` | 11783 | `6b9383681fba0eb6b3576be4537ee3e10308b92b4f5e8729d461fa987e7a7391` |
@@ -634,7 +634,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/pcdai-v522.js` | 12145 | `c81c94736ea2a72e05ccc4de3f9293d4a6f37c9291102cd59a9cf1dbb158492c` |
 | `lib/pci-surgery-timing-v898.js` | 7874 | `90b739b591d012a621a3e8d41682371eb7d27c1cc2069239c573938348d72767` |
 | `lib/pederson-difficulty-v717.js` | 3469 | `5f7fb47b29141583014bbf6142329bfc1e95da75272b063d20479f5631849b8e` |
-| `lib/pediatric-acute-v262.js` | 7528 | `b1fd39e3e4b0c63b79c355fa740035c3deb7a574783ad5ad1d0cee8fa2416696` |
+| `lib/pediatric-acute-v262.js` | 8938 | `bdd2b5540c3050cde8707837021041e85d45b358ed7a9c6a6c15b25a0e0c19cf` |
 | `lib/pedis-v613.js` | 8884 | `f158474599314efcff28d525a5512b83d595a7fc21d75bb30dac2620d741b6b9` |
 | `lib/peds-growth-v141.js` | 13014 | `47eb194a4f8eb9cc7007429c7843e48cd7fa8780ebcd8a2201bd119f78eb154d` |
 | `lib/peds-percentile-v169.js` | 8290 | `dbaec78619e7c9190044c9cdb8ecd8a2bb03a871f351e0454a06e1c5b816e9b0` |
@@ -717,7 +717,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/renal-v128.js` | 11142 | `c5e4de65c5edc9d2dad4c7f63d0baf29f47abbfc621f07fca79eea35361c069b` |
 | `lib/renal-v277.js` | 3090 | `08c99f10959b0ec0bc08d9067fb3ab92686a80428d1ddd31ee029c3767dc6574` |
 | `lib/renalpulm-v249.js` | 7088 | `f3a5c749b247759356a20c4f147d62f9b694302882e6d58c3cd05ceae8e5e6d0` |
-| `lib/respiratory-maternal-v263.js` | 10799 | `76b727fb9722f26435c63ddfdebab4928ed5b26b370d12d5413671286cbc505d` |
+| `lib/respiratory-maternal-v263.js` | 11737 | `3bdaec61254f30a6dd896797a997700e082d92ddd86672d5de184c5c8eeff0ee` |
 | `lib/result-copy.js` | 3158 | `33b4ecea181c594f8b9b0631357284f817a4c206e6f367ce0b0be3fd96ddd66d` |
 | `lib/resus-trauma-v207.js` | 10247 | `de821d74c4915f2be35616dce76d9ef07f8237bfd3e2358b73830a5ed5dde55a` |
 | `lib/rheum-classification-v222.js` | 13915 | `95c66ddc0349e0fd38cde0662c0862de9c06e7e0534e4a21bab1108257f5a09b` |
@@ -783,7 +783,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/simple-shoulder-test-v793.js` | 4062 | `7a19914366d9a65e01a55920d42ceeefa143f6b11ecb3ccc6125e79ae61626c5` |
 | `lib/simpson-angus-v515.js` | 4076 | `ac4c0ab6135693d8e2ae1d91e8bbd2d3f176262bf2be9107be355d942d0a2ca1` |
 | `lib/simpson-meningioma-v503.js` | 3590 | `a47197f0a46356bffdb89208d4b780b324ac51000a2f5bdf650db5cd8fb841ca` |
-| `lib/sixcit-v778.js` | 4738 | `3ac916600f8eb1e9af7a59b957bc379379fb762f9e1404c621904cf95ae883db` |
+| `lib/sixcit-v778.js` | 5945 | `7a9b78a159f3a5a89a26f36baa67d5ca830c4255005f963025a7d65b8ffa556e` |
 | `lib/skin-tear-v900.js` | 6149 | `5e0a2d8898a71ed903786981d79ac45820484e044915a112c307f2771900c44c` |
 | `lib/slums-v644.js` | 6237 | `9b2459d9cc261ef5599b8b8092d2a31fbd66511d666a9f2811f366fbd8c49f51` |
 | `lib/smast-v737.js` | 3334 | `15043daafddc1d9e3c9ee3119ccb3f66038d78b1e0289987e77b3aaad262834a` |

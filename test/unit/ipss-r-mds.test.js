@@ -30,3 +30,21 @@ test('missing inputs surface a guard', () => {
   assert.equal(ipssrMds({}).valid, false);
   assert.equal(ipssrMds({ cytogenetics: 'good', blasts: 5, hemoglobin: 9, platelets: 150 }).valid, false);
 });
+
+// --- spec-v1115: the guard asked for cytogenetics and did not require it ---
+
+test('spec-v1115: an unstated cytogenetic group refuses, as the message promised', () => {
+  // `pick` returned 0 for an unknown group, and 0 is `very-good` -- the best
+  // cytogenetics there is, and the widest-range term in the model.
+  const full = { cytogenetics: 'poor', blasts: 3, hemoglobin: 9, platelets: 60, anc: 1 };
+  assert.equal(ipssrMds(full).valid, true);
+  assert.match(ipssrMds(full).band, /High risk/);
+
+  const { cytogenetics, ...without } = full;
+  const r = ipssrMds(without);
+  assert.equal(r.valid, false);
+  assert.match(r.band, /Enter the cytogenetic risk group/);
+
+  // An unrecognised group is refused too, not scored as very-good.
+  assert.equal(ipssrMds({ ...full, cytogenetics: 'excellent' }).valid, false);
+});

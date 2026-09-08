@@ -33,6 +33,17 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Six scores called a patient low-risk when the input that would have said
+  otherwise was simply missing.** An unstated cytogenetic risk group made a
+  myelodysplastic syndrome "Low risk, median overall survival 5.3 years"; an
+  undrawn CRP or procalcitonin made a febrile child "low risk of serious
+  bacterial infection", under a line reading "all biomarkers in the low band"; an
+  unstated ASA class and an unstated smoking history did the same for a
+  perforated ulcer and for pneumonia; and an unadministered cognitive task left
+  the 6CIT in the "normal range". In each tile the checkbox items were already
+  right and it was the graded picklist beside them that fell through to its most
+  favourable value. Each now says what it is waiting for, and the alarming
+  readings are unchanged. See docs/spec-v1115.md.
 - **Three scores kept quoting an exact number under a verdict that was allowed
   to stand.** When the most severe reading is reached, a missing input cannot
   change it, so those readings are left alone -- but the figures beneath them
