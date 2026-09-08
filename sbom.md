@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `3d6579a78c16ad2b`
-Generated: 2026-09-08T05:07:43.254Z
+Build ID: `74b3b5fdf8c2e128`
+Generated: 2026-09-08T05:39:14.103Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -384,7 +384,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/hiv-pep-occupational-v887.js` | 9966 | `4893d5b360db9ff1f1e6a62e8e5d694bd221cb993ffaef8b9001139fc4537379` |
 | `lib/hlh-2004-v582.js` | 15801 | `e4b2ff079ab611bb8431dd40db7ef54a9742c9b56c36e697eddf7da4ce6b4720` |
 | `lib/home-oxygen-v889.js` | 9562 | `c53ca0e0f6f86991569b8759181d88790fc1f6f532d431c73e0044a48f14b242` |
-| `lib/hpa-glaucoma-v801.js` | 6640 | `8ad5db7d6d59115656770c58c4018f2e45d94d838ece210b4e959a331dc53c2b` |
+| `lib/hpa-glaucoma-v801.js` | 8244 | `4e76ca48d042fe39e38531e9d0761785c0a09ba1474425c90cd5f34f9e73973f` |
 | `lib/hrs-aki-v808.js` | 5530 | `1c0f95ac894d64cfa61e232142bcea6c972b1eb9d79dd7ce9a9a2bc88d44d40b` |
 | `lib/hughes-gbs-v800.js` | 3821 | `7eccbcbfa3b119a77f179e32c09a0d60436e093d390a0cbcdcd2c615e53964fa` |
 | `lib/hys-law-v908.js` | 9417 | `be27f87e76c3121e0b8efd58735cafce94409f2105047d60fd21461dfbde99b6` |
@@ -2358,7 +2358,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v799.js` | 3074 | `207697ea9b629a3146172a3efa48090adca2ae9dcd960b72487c7973f111d888` |
 | `views/group-v8.js` | 22176 | `60f0c7ace17edfa56cf37c24ce905184eeb9bbca4e829a87363fd3847f58b091` |
 | `views/group-v800.js` | 3162 | `a7894ea3c03e6cfd3b923da113f1b66079990f2545e20906d326226359860df1` |
-| `views/group-v801.js` | 4187 | `f0d7f9868379c7604478d03eff5391197883a90bc49329785aec747d0ea1a9ce` |
+| `views/group-v801.js` | 4538 | `63dd0a780d65c98e0bd7a78f1aa906d461ad43303b3b7799a9e869ebb8ad5d06` |
 | `views/group-v802.js` | 3559 | `2c21752063d89628f4526a6c6d962fcb4d61175367b5db20edf83d886d55e246` |
 | `views/group-v803.js` | 4192 | `fdab4d237678ba3a816203a62190c0609ea9b77d3d5a2f53f7d7d81eb726f8dd` |
 | `views/group-v804.js` | 4736 | `2b909a331e738cbf760c66fc48dc73c573a59987e899a832d6c7b95df7da66a9` |

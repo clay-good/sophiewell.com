@@ -238,6 +238,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1120](spec-v1120.md) | Two columns nobody looked at, stated as two normal findings |
 | [v1121](spec-v1121.md) | The check rule 23 recommended, and what it found |
 | [v1122](spec-v1122.md) | Six organ systems, and one point that mattered in one place |
+| [v1123](spec-v1123.md) | Two grades, on the criterion that takes reading vision |
 
 ### And the same question from the other side
 

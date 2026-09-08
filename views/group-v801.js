@@ -44,7 +44,12 @@ function wire(ids, run) {
   run();
 }
 
+// spec-v1123: rule 8. This opened on the mildest central finding, and the
+// overall grade is the MOST SEVERE of four criteria -- so the one select on the
+// tile silently supplied a normal reading of the part of the field that takes
+// reading vision, and the tile graded "early" where the answer was "severe".
 const CENTRAL = [
+  { value: '', text: 'Not entered' },
   { value: 'all-above-15', text: 'All central points above 15 dB' },
   { value: 'one-hemifield', text: 'Depressed within 5 degrees, but not in both hemifields' },
   { value: 'both-or-zero', text: 'Depressed in both hemifields within 5 degrees, or any point at 0 dB' },

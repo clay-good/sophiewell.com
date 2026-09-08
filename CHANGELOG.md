@@ -33,6 +33,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A visual-field grade dropped two levels when one picklist was left alone.**
+  The Hodapp-Parrish-Anderson staging takes the most severe of four criteria,
+  and the one that is a picklist opened on "all central points above 15 dB" -- a
+  normal reading of the part of the field that takes reading vision. A field
+  that grades as severe was graded early. It now opens on "Not entered", and a
+  grade set from some of the four says how many were read and that the rest can
+  only raise it. See docs/spec-v1123.md.
 - **A sepsis organ-failure score read six ungraded systems as six healthy
   ones.** The SOFA half of the qSOFA/SOFA tile answered "Low (~10% mortality)"
   before anyone had graded anything, because its six picklists opened on 0 and a

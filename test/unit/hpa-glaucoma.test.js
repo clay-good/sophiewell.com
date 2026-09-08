@@ -5,10 +5,38 @@ import assert from 'node:assert/strict';
 import { hpaGlaucoma } from '../../lib/hpa-glaucoma-v801.js';
 
 test('a clean field on every criterion stages as none', () => {
-  const r = hpaGlaucoma({ meanDeviation: -0.5, percentBelow5: 0, countBelow1: 0 });
+  // spec-v1123: "every criterion" is four, and this passed three. The central
+  // 5 degrees used to fall back to its mildest level, so the name was true only
+  // because the fallback made it true.
+  const r = hpaGlaucoma({ meanDeviation: -0.5, percentBelow5: 0, countBelow1: 0, central: 'all-above-15' });
   assert.equal(r.valid, true);
   assert.equal(r.stage, 'none');
   assert.equal(r.abnormal, false);
+  assert.deepEqual(r.unassessed, []);
+});
+
+test('spec-v1123: an unentered criterion cannot lower the grade, and says so', () => {
+  // The overall grade is the MOST SEVERE of the four, so an unassessed one can
+  // only raise it. On the tile's own example, leaving the central select alone
+  // took the grade from severe to early -- two full grades.
+  const partial = hpaGlaucoma({ meanDeviation: -4 });
+  assert.equal(partial.stage, 'early');
+  assert.equal(partial.floorOnly, true);
+  assert.equal(partial.unassessed.length, 3);
+  assert.match(partial.band, /at least early defect on the 1 of the 4 criteria read/);
+  assert.match(partial.band, /can only raise it/);
+
+  const complete = hpaGlaucoma({ meanDeviation: -4, percentBelow5: 10, countBelow1: 5, central: 'all-above-15' });
+  assert.equal(complete.floorOnly, false);
+  assert.match(complete.band, /early glaucomatous field defect/);
+});
+
+test('spec-v1123: severe rules in from one criterion', () => {
+  // Rule 13: severe is the top level and nothing unassessed can bring it down.
+  const r = hpaGlaucoma({ meanDeviation: -4, central: 'both-or-zero' });
+  assert.equal(r.stage, 'severe');
+  assert.equal(r.floorOnly, false);
+  assert.match(r.band, /severe glaucomatous field defect/);
 });
 
 test('the mean deviation boundaries are -1, -6 and -12', () => {
