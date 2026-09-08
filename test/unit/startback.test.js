@@ -72,3 +72,28 @@ test('spec-v1122: the one graded item is guarded only where it can cross', () =>
   assert.match(startBack({}).band, /low risk/);
   assert.match(startBack({ q1: true, q2: true, q3: true, q4: true }).band, /medium risk/);
 });
+
+
+test('spec-v1124: the bother point crosses TWO boundaries, not one', () => {
+  // spec-v1122 guarded the low/medium boundary at total 3 and missed the
+  // medium/high boundary at subscore 3 -- which is the one the stratified-care
+  // pathway keys on, since high risk is what sends a patient to
+  // psychologically-informed physiotherapy rather than to advice and exercise.
+  const highBoundary = startBack({ q1: true, q2: true, q5: true, q6: true, q7: true });
+  assert.equal(highBoundary.total, 5);
+  assert.equal(highBoundary.subscore, 3);
+  assert.equal(highBoundary.floorOnly, true);
+  assert.match(highBoundary.band, /subscore at least 3 of 5/);
+  assert.match(highBoundary.band, /difference between medium and high risk/);
+  assert.doesNotMatch(highBoundary.band, / . medium risk\./);
+
+  // Stated, the medium reading is earned.
+  const stated = startBack({ q1: true, q2: true, q5: true, q6: true, q7: true, bother: 'not-at-all' });
+  assert.equal(stated.floorOnly, false);
+  assert.match(stated.band, /medium risk/);
+
+  // A subscore already at 4 is high whatever item 9 holds (rule 13).
+  const alreadyHigh = startBack({ q1: true, q5: true, q6: true, q7: true, q8: true });
+  assert.equal(alreadyHigh.floorOnly, false);
+  assert.match(alreadyHigh.band, /high risk/);
+});

@@ -5,6 +5,15 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { scorad } from '../../lib/derm-v151.js';
 
+// spec-v1124: a complete examination, with the items under test overridden. The
+// six intensity items are selects that opened on "0, none", so an assertion
+// passing only some of them was reading the rest as signs the examiner had
+// looked for and not found.
+const examined = (o = {}) => ({
+  erythema: 0, edema: 0, oozing: 0, excoriation: 0, lichenification: 0, dryness: 0,
+  pruritus: 0, sleeplessness: 0, ...o,
+});
+
 test('tile example: A/5 + 7B/2 + C composite -> 42 (oSCORAD 34) moderate', () => {
   // A=30 -> 6; B=2+1+1+2+1+1=8 -> 7×8/2=28; C=5+3=8; SCORAD=42; oSCORAD=34.
   const r = scorad({ extent: 30, erythema: 2, edema: 1, oozing: 1, excoriation: 2, lichenification: 1, dryness: 1, pruritus: 5, sleeplessness: 3 });
@@ -24,19 +33,43 @@ test('a missing extent has no severity; a charted zero is mild', () => {
   assert.equal(missing.score, null);
   assert.match(missing.band, /Enter the extent/);
 
-  const charted = scorad({ extent: 0 });
+  const charted = scorad(examined({ extent: 0 }));
   assert.equal(charted.score, 0);
   assert.equal(charted.oscorad, 0);
   assert.equal(charted.bandLabel, 'Mild');
+  assert.deepEqual(charted.intensityMissing, []);
+});
+
+test('spec-v1124: an ungraded intensity item is not a sign found absent', () => {
+  // B is worth 7B/2 -- up to 63 of the 103. spec-v1093 footed the two
+  // subjective VAS scores and excluded these six, in a comment reading "selects,
+  // which open on 0 and are never blank". That is rule 8, not an exemption.
+  const full = scorad(examined({
+    extent: 30, erythema: 2, edema: 2, oozing: 1, excoriation: 2, lichenification: 1, dryness: 1,
+    pruritus: 5, sleeplessness: 4,
+  }));
+  assert.equal(full.bandLabel, 'Moderate');
+  assert.equal(full.footing, null);
+
+  const { erythema, ...withoutOne } = {
+    extent: 30, erythema: 2, edema: 2, oozing: 1, excoriation: 2, lichenification: 1, dryness: 1,
+    pruritus: 5, sleeplessness: 4,
+  };
+  const partial = scorad(withoutOne);
+  assert.deepEqual(partial.intensityMissing, ['erythema']);
+  assert.match(partial.band, /SCORAD at least/);
+  assert.match(partial.bandLabel, /^At least/);
+  assert.match(partial.footing, /Scored from 5 of 6 intensity items/);
+  assert.ok(partial.score < full.score, 'the missing item lowered the total');
 });
 
 test('mild/moderate boundary at 25 and moderate/severe at 50', () => {
   // A=50 -> 10; B=0; C=15 -> SCORAD 25 (moderate, inclusive)
-  const at25 = scorad({ extent: 50, pruritus: 10, sleeplessness: 5 });
+  const at25 = scorad(examined({ extent: 50, pruritus: 10, sleeplessness: 5 }));
   assert.equal(at25.score, 25);
   assert.equal(at25.bandLabel, 'Moderate');
   // SCORAD 50 stays moderate; >50 severe
-  const at50 = scorad({ extent: 100, erythema: 3, edema: 3, oozing: 0, excoriation: 0, lichenification: 0, dryness: 0, pruritus: 0, sleeplessness: 9 });
+  const at50 = scorad(examined({ extent: 100, erythema: 3, edema: 3, sleeplessness: 9 }));
   // A=100->20; B=6 ->21; C=9 -> 50 moderate
   assert.equal(at50.score, 50);
   assert.equal(at50.bandLabel, 'Moderate');

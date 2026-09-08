@@ -74,6 +74,14 @@ const SEV4 = [
   { value: '3', text: '3 — severe' },
 ];
 
+// spec-v1124: SCORAD's own copy, with the blank option its library now needs.
+// SEV4 above is shared with PASI and EASI, whose intensity items have not been
+// measured for this -- spec-v1110's "a shared control is a shared decision" cuts
+// both ways, and adding a blank to a list whose other consumers read '' as 0
+// would hand their readers a way to reach a defect the browser was hiding. They
+// are recorded as the open question rather than changed unverified.
+const SCORAD_SEV4 = [{ value: '', text: 'Not graded' }, ...SEV4];
+
 const PASI_REGIONS = [['head', 'Head / neck'], ['upper', 'Upper limbs'], ['trunk', 'Trunk'], ['lower', 'Lower limbs']];
 const EASI_REGIONS = PASI_REGIONS;
 
@@ -151,12 +159,12 @@ export const renderers = {
   scorad(root) {
     note(root, 'SCORAD (European Task Force 1993): SCORAD = A/5 + 7B/2 + C, where A is % body-surface extent (0–100), B six intensity items each 0–3 (dryness graded on uninvolved skin), and C two 0–10 VAS (pruritus, sleeplessness). Range 0–103; oSCORAD = A/5 + 7B/2 drops the subjective items. Bands: mild < 25, moderate 25–50, severe > 50.');
     root.appendChild(numField('A — extent: % body surface affected (0–100, rule of nines)', 'scorad-extent', { min: 0, max: 100, placeholder: 'e.g. 30' }));
-    root.appendChild(selectField('B — erythema', 'scorad-erythema', SEV4));
-    root.appendChild(selectField('B — edema / papulation', 'scorad-edema', SEV4));
-    root.appendChild(selectField('B — oozing / crusting', 'scorad-oozing', SEV4));
-    root.appendChild(selectField('B — excoriation', 'scorad-excoriation', SEV4));
-    root.appendChild(selectField('B — lichenification', 'scorad-lichenification', SEV4));
-    root.appendChild(selectField('B — dryness (assessed on uninvolved skin)', 'scorad-dryness', SEV4));
+    root.appendChild(selectField('B — erythema', 'scorad-erythema', SCORAD_SEV4));
+    root.appendChild(selectField('B — edema / papulation', 'scorad-edema', SCORAD_SEV4));
+    root.appendChild(selectField('B — oozing / crusting', 'scorad-oozing', SCORAD_SEV4));
+    root.appendChild(selectField('B — excoriation', 'scorad-excoriation', SCORAD_SEV4));
+    root.appendChild(selectField('B — lichenification', 'scorad-lichenification', SCORAD_SEV4));
+    root.appendChild(selectField('B — dryness (assessed on uninvolved skin)', 'scorad-dryness', SCORAD_SEV4));
     root.appendChild(numField('C — pruritus VAS (0–10)', 'scorad-pruritus', { min: 0, max: 10, placeholder: 'e.g. 5' }));
     root.appendChild(numField('C — sleeplessness VAS (0–10)', 'scorad-sleeplessness', { min: 0, max: 10, placeholder: 'e.g. 3' }));
     const ids = ['scorad-extent', 'scorad-erythema', 'scorad-edema', 'scorad-oozing', 'scorad-excoriation', 'scorad-lichenification', 'scorad-dryness', 'scorad-pruritus', 'scorad-sleeplessness'];

@@ -33,6 +33,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **An eczema severity score read six ungraded signs as six signs found
+  absent.** SCORAD's six intensity items are worth up to 63 of its 103 points,
+  and their picklists opened on "0 - none". An earlier fix in this release
+  footed the two subjective scores beside them and left these out, in a comment
+  saying they "open on 0 and are never blank" -- which is the defect, not a
+  reason to skip it. They now open on "Not graded" and a partial score reads as
+  a floor. Separately, the STarT Back fix earlier in this release guarded one of
+  the two boundaries its single graded item can cross; the other separates
+  medium from high risk, which is what decides the referral, and is guarded now
+  too. See docs/spec-v1124.md.
 - **A visual-field grade dropped two levels when one picklist was left alone.**
   The Hodapp-Parrish-Anderson staging takes the most severe of four criteria,
   and the one that is a picklist opened on "all central points above 15 dB" -- a

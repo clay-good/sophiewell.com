@@ -127,6 +127,12 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
     of its tests passed, and the page went on answering "Category I" for a tracing nobody had
     described — because every test calls the library directly, where the guard works.
 
+24. **The sentence that names a default is the one to distrust** (spec-v1124). In three separate
+    libraries a comment described the tile's own silent default accurately and treated the
+    description as the justification: `lvh-criteria`'s "beyond the labeled male default", `essdai`'s "contributes 0
+    (never NaN)", `scorad`'s "selects, which open on 0 and are never blank". None is careless.
+    Writing a default down is what makes it feel handled.
+
 21. **A default is not a defect; a SILENT default is** (spec-v1116). `sex = 'male'` in four
     signatures chose an EQUATION rather than a band — the male CKD-EPI, the +1 GAP gender point,
     the 28 mm Cornell cut-off, the male GLI-2012 set. Against that, `ethnicity = 'caucasian'` in
@@ -239,6 +245,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1121](spec-v1121.md) | The check rule 23 recommended, and what it found |
 | [v1122](spec-v1122.md) | Six organ systems, and one point that mattered in one place |
 | [v1123](spec-v1123.md) | Two grades, on the criterion that takes reading vision |
+| [v1124](spec-v1124.md) | The third author to notice a default and reason past it |
 
 ### And the same question from the other side
 
