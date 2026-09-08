@@ -33,6 +33,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A myasthenia gravis class reported the wrong subtype for a patient whose
+  subtype nobody stated.** The MGFA letter distinguishes limb-predominant
+  weakness from the oropharyngeal and respiratory form -- the one that involves
+  swallowing and breathing -- and any value that was not "b" became "a", an
+  unstated one included. Classes II, III and IV now wait for the letter and say
+  it is not a default; the two classes that carry no subtype are unchanged. This
+  is the last defect on the picklist review that ran through this release; the
+  rows still listed have each been read and are correct. See docs/spec-v1129.md.
 - **Three more scores reported a figure their inputs could not support.** The
   CLIF-C acute-on-chronic liver failure score graded six ungraded organ systems
   as working and printed a number off the minimum; the HScore for

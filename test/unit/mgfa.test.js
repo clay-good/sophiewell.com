@@ -51,3 +51,30 @@ test('scalar / non-object fuzz arg yields a valid Class I, never NaN', () => {
   assert.equal(r.cls, 'I');
   assert.equal(Number.isFinite(r.adlTotal), true);
 });
+
+test('spec-v1129: the MGFA subtype is not a default', () => {
+  // `=== 'b' ? 'b' : 'a'` made every value that is not 'b' -- an unstated one
+  // included -- into 'a', limb/axial-predominant. 'b' is the oropharyngeal and
+  // respiratory form, the one that threatens the airway.
+  const owed = mgfa({ severity: 'severe' });
+  assert.equal(owed.subtypeOwed, true);
+  assert.equal(owed.cls, 'IV');
+  assert.match(owed.band, /subtype not stated/);
+  assert.match(owed.band, /it is not a default/);
+  // The explanation names both subtypes; what it must not do is ASSERT one.
+  assert.doesNotMatch(owed.band, /weakness, limb\/axial-predominant/);
+
+  // Stated either way, the class is complete.
+  assert.equal(mgfa({ severity: 'severe', subtype: 'b' }).cls, 'IVb');
+  assert.equal(mgfa({ severity: 'severe', subtype: 'a' }).cls, 'IVa');
+  assert.equal(mgfa({ severity: 'severe', subtype: 'a' }).subtypeOwed, false);
+});
+
+test('spec-v1129: the two classes with no subtype are unaffected', () => {
+  // Rule 25: the guard is scoped to the readings the input can move. Class I
+  // (ocular) and Class V (intubation) carry no subtype at all.
+  assert.equal(mgfa({ severity: 'ocular' }).subtypeOwed, false);
+  assert.equal(mgfa({ severity: 'ocular' }).cls, 'I');
+  assert.equal(mgfa({ severity: 'intubation' }).subtypeOwed, false);
+  assert.equal(mgfa({ severity: 'intubation' }).cls, 'V');
+});

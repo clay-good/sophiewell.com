@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `e06e524629355bcd`
-Generated: 2026-09-08T07:59:50.150Z
+Build ID: `65aae8635997eb2c`
+Generated: 2026-09-08T08:23:48.326Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -557,7 +557,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/neuro-v118.js` | 19298 | `ddf8a83ecad9a4183bb0d3c54ce417f87f5b10de9c85366c7fb00fbdcb76a354` |
 | `lib/neuro-v119.js` | 15180 | `7a2ee09ef5a99034461e909ba5ef426376ddfb46ad62a84454c709cee7ee7d39` |
 | `lib/neuro-v120.js` | 16832 | `dff02a8911a4f56a6e9d08411ce1a15085cc73e5774a50827f5b8d7b33643bfb` |
-| `lib/neuro-v121.js` | 17466 | `7f31b15619c2f8fb823c0005a64267a2051bb6a03e0c8afd87adb59062c51da1` |
+| `lib/neuro-v121.js` | 18735 | `ada239a0a5af107e31b489552ac8c0fbffddb53e57f83658bd49d99654d31119` |
 | `lib/neuro-v122.js` | 11470 | `93e42d759c472fa1482d12402a5daa370ce1163060374db83e5118c68579707f` |
 | `lib/neuro-v95.js` | 14709 | `7f7e4f5a0877afa8efbf6cc69f8b0549370bcdbcb5d7ed1dfcea1a5ee7266e85` |
 | `lib/neurology-v224.js` | 12458 | `566c9ca892cc749d23708ee97356e5f2016e31248b58551cb7dfdbacec6ebdec` |
@@ -1722,7 +1722,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v119.js` | 9513 | `1f10862d9aab600674449534502faf78e810ea756704d37066ac0ca7347bf580` |
 | `views/group-v12.js` | 10420 | `31cefaf738ba4a48f41adb16c78d06f1b61d5ea239feb86ea7cd1a20c96c4dc1` |
 | `views/group-v120.js` | 10153 | `fc28e780270117e1a825f43699551f35c7f8b1dbc038e85de25ff6eba20ae423` |
-| `views/group-v121.js` | 10321 | `a78e8bba85c31d61e1e827cfe66627f079484979b90f360c8e065ba49020bd0b` |
+| `views/group-v121.js` | 10591 | `01b63d72ea1bb794f921261cb30920500c32b899ddb788165970409e3bd959e6` |
 | `views/group-v122.js` | 7422 | `bc238e7c11c081dcdd6514b2b7ba6000d415d21a9abdc35177237e1262cf7b62` |
 | `views/group-v123.js` | 13504 | `c0372038e1860f352e62a570fad97c27c9625e0e9955a5bafd92953889f9bad3` |
 | `views/group-v124.js` | 10249 | `297b8b570f206999003798564c6934b36c3247a21d862cc019291dd4e23dc35f` |

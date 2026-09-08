@@ -156,6 +156,10 @@ export const renderers = {
       { value: 'intubation', text: 'Intubation (crisis) — Class V' },
     ]));
     root.appendChild(selectField('Subtype (generalized Classes II–IV)', 'mf-sub', [
+      // spec-v1129: rule 8. This opened on 'a', so a Class II/III/IV patient was
+      // silently reported as limb/axial-predominant -- 'b' is the oropharyngeal
+      // and respiratory form, the one that threatens the airway.
+      { value: '', text: 'Not stated' },
       { value: 'a', text: 'a — limb/axial-predominant' },
       { value: 'b', text: 'b — oropharyngeal/respiratory-predominant' },
     ]));
