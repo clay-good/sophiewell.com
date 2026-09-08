@@ -117,3 +117,62 @@ test('nsa-cost-share: protected emergency caps at the QPA; non-protected refuses
   assert.deepEqual(NSA_CATEGORIES, ['emergency', 'ancillary-in-network-facility', 'non-protected']);
   assert.throws(() => nsaCostShare({ serviceCategory: 'dental', qpaCents: 100, billedChargeCents: 200 }), TypeError);
 });
+
+// ---- spec-v1142: a benefit term nobody entered is not a term of zero --------
+// The three cost-share terms each default to 0 because a real design can have
+// any ONE of them at zero. With ALL THREE blank the tools answered "the patient
+// owes $0.00" and "the plan pays the whole QPA" -- the reassuring reading, from
+// an empty form. Each assertion below is the harmful default, stated.
+test('allowed-amount: no benefit term entered does not make the patient balance zero', () => {
+  const blank = allowedAmount({ billedChargeCents: 100000, allowedCents: 60000 });
+  assert.equal(blank.costShareStated, false);
+  assert.notEqual(blank.patientResponsibilityCents, 0);   // the defect, stated
+  assert.equal(blank.patientResponsibilityCents, null);
+  assert.equal(blank.payerPaymentCents, null);
+  assert.match(blank.note, /Enter the remaining deductible/);
+  // The write-off is contract arithmetic and does not need the benefit terms.
+  assert.equal(blank.contractualWriteOffCents, 40000);
+  assert.equal(blank.balanceBillProhibited, true);
+  // Any ONE of the three is a real design and the tool answers.
+  for (const term of [{ deductibleRemainingCents: 10000 }, { coinsurancePct: 20 }, { copayCents: 2500 }]) {
+    const r = allowedAmount({ billedChargeCents: 100000, allowedCents: 60000, ...term });
+    assert.equal(r.costShareStated, true);
+    assert.equal(typeof r.patientResponsibilityCents, 'number');
+  }
+  // A copay-only design with a stated 0% coinsurance still answers zero, because
+  // a typed 0 is an answer (rule 1).
+  const zeroed = allowedAmount({ billedChargeCents: 100000, allowedCents: 60000, coinsurancePct: 0 });
+  assert.equal(zeroed.costShareStated, true);
+  assert.equal(zeroed.patientResponsibilityCents, 0);
+});
+
+test('nsa-cost-share: no benefit term entered does not make the plan pay the whole QPA', () => {
+  const blank = nsaCostShare({ serviceCategory: 'emergency', qpaCents: 80000, billedChargeCents: 200000 });
+  assert.equal(blank.costShareStated, false);
+  assert.notEqual(blank.patientCostShareCents, 0);        // the defect, stated
+  assert.equal(blank.patientCostShareCents, null);
+  assert.equal(blank.planPaysCents, null);
+  assert.match(blank.note, /Enter the remaining deductible/);
+  // The NSA protection itself does not depend on the benefit terms.
+  assert.equal(blank.prohibitedBalanceBillCents, 120000);
+  const stated = nsaCostShare({ serviceCategory: 'emergency', qpaCents: 80000, billedChargeCents: 200000, copayCents: 5000 });
+  assert.equal(stated.costShareStated, true);
+  assert.equal(stated.patientCostShareCents, 5000);
+});
+
+test('cob-calc: the three methods defined by the secondary would-pay refuse without it', () => {
+  const partial = {
+    billedChargeCents: 100000, primaryAllowedCents: 60000, primaryPaidCents: 48000,
+    secondaryAllowedCents: 50000,
+  };
+  for (const method of ['lesser-of', 'non-duplication', 'msp']) {
+    assert.throws(() => cobCalc({ ...partial, method }), RangeError, method);
+  }
+  // Come-out-whole is benefits-less-paid and never reads the would-pay.
+  const whole = cobCalc({ ...partial, method: 'come-out-whole' });
+  assert.equal(whole.secondaryPaysCents, 2000);
+  // A typed $0 would-pay is an answer, not a blank.
+  const zeroed = cobCalc({ ...partial, method: 'lesser-of', secondaryWouldPayCents: 0 });
+  assert.equal(zeroed.secondaryPaysCents, 0);
+  assert.equal(zeroed.patientResidualCents, 12000);
+});

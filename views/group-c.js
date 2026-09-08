@@ -60,6 +60,10 @@ function out() { return el('div', { id: 'q-results', 'aria-live': 'polite' }); }
 function str(id) { const n = document.getElementById(id); return n ? n.value : ''; }
 function rawEmpty(id) { return str(id).trim() === ''; }
 function numv(id) { return Number(str(id)); }
+// spec-v1142: a blank money field is a blank, not $0. `Pat.dollarsToCents(numv(id) || 0)`
+// could not tell the two apart, so a benefit term nobody entered arrived at the
+// library as a term of zero.
+function money(id) { return rawEmpty(id) ? null : Pat.dollarsToCents(numv(id)); }
 function checked(id) { const n = document.getElementById(id); return !!(n && n.checked); }
 function safe(o, fn) {
   clear(o);
@@ -293,13 +297,19 @@ export const renderers = {
         o.appendChild(el('p', { class: 'muted', text: 'Enter the billed charge: it caps what the secondary pays, so a blank one is not a charge of zero.' }));
         return;
       }
+      // spec-v1142: three of the four methods are defined by this number, and a
+      // blank one made the secondary pay $0 and the patient owe the balance.
+      if ((str('cob-method') || 'lesser-of') !== 'come-out-whole' && rawEmpty('cob-sec-would')) {
+        o.appendChild(el('p', { class: 'muted', text: 'Enter what the secondary would pay as primary: this method is defined by it, so a blank one is not a benefit of zero.' }));
+        return;
+      }
       const r = Pat.cobCalc({
         method: str('cob-method') || 'lesser-of',
         billedChargeCents: Pat.dollarsToCents(numv('cob-charge') || 0),
         primaryAllowedCents: Pat.dollarsToCents(numv('cob-pri-allowed')),
         primaryPaidCents: Pat.dollarsToCents(numv('cob-pri-paid')),
         secondaryAllowedCents: Pat.dollarsToCents(numv('cob-sec-allowed') || 0),
-        secondaryWouldPayCents: Pat.dollarsToCents(numv('cob-sec-would') || 0),
+        secondaryWouldPayCents: rawEmpty('cob-sec-would') ? null : Pat.dollarsToCents(numv('cob-sec-would')),
       });
       o.appendChild(el('h2', { text: `Secondary pays ${usd(r.secondaryPaysCents)}; patient owes ${usd(r.patientResidualCents)}` }));
       verdictLine(o, r.note, r.patientResidualCents > 0 ? 'flag' : null);
@@ -319,31 +329,34 @@ export const renderers = {
     root.appendChild(el('p', { class: 'notice', text: 'Reconciles a single-payer line: the contractual write-off (charge minus the contracted allowed), the patient responsibility (deductible + coinsurance/copay on the ALLOWED, not the charge), and the payer payment. On an in-network claim the charge-minus-allowed gap must be written off, NOT billed to the patient (balance billing is prohibited); out-of-network the tool refuses to invent a write-off.' }));
     root.appendChild(moneyField('Billed charge ($)', 'aa-charge', '1000'));
     root.appendChild(moneyField('Contracted allowed amount ($)', 'aa-allowed', '600'));
-    root.appendChild(moneyField('Deductible remaining ($)', 'aa-ded', '100', '0'));
-    root.appendChild(numField('Coinsurance (%)', 'aa-coins', '20', '0'));
-    root.appendChild(moneyField('Copay ($)', 'aa-copay', '0', '0'));
+    root.appendChild(moneyField('Deductible remaining ($)', 'aa-ded', '100'));
+    root.appendChild(numField('Coinsurance (%)', 'aa-coins', '20'));
+    root.appendChild(moneyField('Copay ($)', 'aa-copay', '0'));
     root.appendChild(checkField('Provider is in-network (write-off required)', 'aa-innet', true));
     const o = out(); root.appendChild(o);
     wire(['aa-charge', 'aa-allowed', 'aa-ded', 'aa-coins', 'aa-copay', 'aa-innet'], () => safe(o, () => {
       if (rawEmpty('aa-charge') || rawEmpty('aa-allowed')) { o.appendChild(el('p', { class: 'muted', text: 'Enter the billed charge and the contracted allowed amount.' })); return; }
+      // spec-v1142: `|| 0` turned a blank benefit term into a term of zero, and
+      // three blanks into "Patient owes $0.00". The library decides now; the
+      // renderer's job is to pass the blank through as one.
       const r = Pat.allowedAmount({
         billedChargeCents: Pat.dollarsToCents(numv('aa-charge')),
         allowedCents: Pat.dollarsToCents(numv('aa-allowed')),
-        deductibleRemainingCents: Pat.dollarsToCents(numv('aa-ded') || 0),
-        coinsurancePct: numv('aa-coins') || 0,
-        copayCents: Pat.dollarsToCents(numv('aa-copay') || 0),
+        deductibleRemainingCents: money('aa-ded'),
+        coinsurancePct: rawEmpty('aa-coins') ? null : numv('aa-coins'),
+        copayCents: money('aa-copay'),
         inNetwork: checked('aa-innet'),
       });
-      o.appendChild(el('h2', { text: `Patient owes ${usd(r.patientResponsibilityCents)}` }));
+      o.appendChild(el('h2', { text: r.costShareStated === false ? 'Patient balance not computed' : `Patient owes ${usd(r.patientResponsibilityCents)}` }));
       verdictLine(o, r.note, r.balanceBillProhibited ? 'flag' : null);
       o.appendChild(derivation([
         ['Network status', r.inNetwork ? 'In-network' : 'Out-of-network'],
         ['Contractual write-off', r.inNetwork ? usd(r.contractualWriteOffCents) : 'none (out-of-network)'],
-        ['Deductible applied', usd(r.deductibleAppliedCents)],
-        ['Coinsurance', usd(r.coinsuranceCents)],
-        ['Copay', usd(r.copayCents)],
-        ['Patient responsibility', usd(r.patientResponsibilityCents)],
-        ['Payer payment', usd(r.payerPaymentCents)],
+        ['Deductible applied', r.costShareStated === false ? 'not entered' : usd(r.deductibleAppliedCents)],
+        ['Coinsurance', r.costShareStated === false ? 'not entered' : usd(r.coinsuranceCents)],
+        ['Copay', r.costShareStated === false ? 'not entered' : usd(r.copayCents)],
+        ['Patient responsibility', r.costShareStated === false ? 'not computed (no benefit terms entered)' : usd(r.patientResponsibilityCents)],
+        ['Payer payment', r.costShareStated === false ? 'not computed (no benefit terms entered)' : usd(r.payerPaymentCents)],
         ['Balance billing the gap', r.balanceBillProhibited ? 'PROHIBITED (must be written off)' : (r.inNetwork ? 'n/a (charge = allowed)' : 'permitted (out-of-network)')],
       ]));
       o.appendChild(postureNote('Third-party-payer contract accounting; the prohibition on balance-billing a contracted allowable. allowed = payer payment + patient responsibility; charge = allowed + write-off. 835 / EOB Remittance Balancing checks that a posted remittance balances; this projects it from the contract.'));
@@ -360,9 +373,9 @@ export const renderers = {
     ]));
     root.appendChild(moneyField('Qualifying Payment Amount / QPA ($)', 'nsa-qpa', '800'));
     root.appendChild(moneyField('Provider billed charge ($)', 'nsa-charge', '1000'));
-    root.appendChild(moneyField('Deductible remaining ($)', 'nsa-ded', '0', '0'));
-    root.appendChild(numField('Coinsurance (%)', 'nsa-coins', '20', '0'));
-    root.appendChild(moneyField('Copay ($)', 'nsa-copay', '0', '0'));
+    root.appendChild(moneyField('Deductible remaining ($)', 'nsa-ded', '0'));
+    root.appendChild(numField('Coinsurance (%)', 'nsa-coins', '20'));
+    root.appendChild(moneyField('Copay ($)', 'nsa-copay', '0'));
     const o = out(); root.appendChild(o);
     wire(['nsa-cat', 'nsa-qpa', 'nsa-charge', 'nsa-ded', 'nsa-coins', 'nsa-copay'], () => safe(o, () => {
       if (rawEmpty('nsa-qpa')) { o.appendChild(el('p', { class: 'muted', text: 'Enter the QPA for the service.' })); return; }
@@ -370,9 +383,9 @@ export const renderers = {
         serviceCategory: str('nsa-cat') || 'emergency',
         qpaCents: Pat.dollarsToCents(numv('nsa-qpa')),
         billedChargeCents: Pat.dollarsToCents(numv('nsa-charge') || 0),
-        deductibleRemainingCents: Pat.dollarsToCents(numv('nsa-ded') || 0),
-        coinsurancePct: numv('nsa-coins') || 0,
-        copayCents: Pat.dollarsToCents(numv('nsa-copay') || 0),
+        deductibleRemainingCents: money('nsa-ded'),
+        coinsurancePct: rawEmpty('nsa-coins') ? null : numv('nsa-coins'),
+        copayCents: money('nsa-copay'),
       });
       if (!r.protected) {
         o.appendChild(el('h2', { text: 'Not NSA-protected' }));
@@ -380,16 +393,17 @@ export const renderers = {
         o.appendChild(postureNote('No Surprises Act (PHSA §2799A-1/§2799A-2; 45 CFR Part 149). The cap applies only to protected services; this is the rule\'s math, not a protection determination.'));
         return;
       }
-      o.appendChild(el('h2', { text: `Patient owes ${usd(r.patientCostShareCents)}` }));
+      const blank = r.costShareStated === false;
+      o.appendChild(el('h2', { text: blank ? 'Patient cost-share not computed' : `Patient owes ${usd(r.patientCostShareCents)}` }));
       verdictLine(o, r.note, 'flag');
       o.appendChild(derivation([
         ['Protected service', r.serviceCategory === 'emergency' ? 'emergency' : 'ancillary at in-network facility'],
         ['Qualifying Payment Amount (QPA)', usd(r.qpaCents)],
-        ['Deductible applied', usd(r.deductibleAppliedCents)],
-        ['Coinsurance', usd(r.coinsuranceCents)],
-        ['Copay', usd(r.copayCents)],
-        ['Patient cost-share (capped at in-network)', usd(r.patientCostShareCents)],
-        ['Plan pays', usd(r.planPaysCents)],
+        ['Deductible applied', blank ? 'not entered' : usd(r.deductibleAppliedCents)],
+        ['Coinsurance', blank ? 'not entered' : usd(r.coinsuranceCents)],
+        ['Copay', blank ? 'not entered' : usd(r.copayCents)],
+        ['Patient cost-share (capped at in-network)', blank ? 'not computed (no benefit terms entered)' : usd(r.patientCostShareCents)],
+        ['Plan pays', blank ? 'not computed (no benefit terms entered)' : usd(r.planPaysCents)],
         ['Prohibited balance bill', usd(r.prohibitedBalanceBillCents)],
       ]));
       o.appendChild(postureNote('No Surprises Act (PHSA §2799A-1/§2799A-2; 45 CFR Part 149). Balance billing the amount above the QPA is prohibited for a protected service. Computes the cost-share number only -- not the NSA/IDR eligibility process.'));

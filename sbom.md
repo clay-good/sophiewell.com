@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `572b0ef0b6af49ba`
-Generated: 2026-09-08T15:04:14.069Z
+Build ID: `12d5e2b347e97c6c`
+Generated: 2026-09-08T17:04:41.049Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -117,7 +117,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/billing-v79.js` | 23592 | `38855e98322bcb40f603c1255fdc32f784ecccef5f861e72ae27732a67413d1d` |
 | `lib/billing-v80.js` | 22078 | `a7b0d6e0ce66225848e537bbdb5b329172caf149e7d4381a684f05ddbe562022` |
 | `lib/billing-v81.js` | 16760 | `a6fab93c9220fdd227e21f3dd6c5f624f246ce3ea0741e6dab46a906ae759c05` |
-| `lib/billing-v82.js` | 20714 | `7ddc478b78fb05bc760cd771348f7ccaa961d6d503b127cba10832d8ab4b98c8` |
+| `lib/billing-v82.js` | 24806 | `f5e8e00d38c70eb3dfa5682abceeb035af50cf2c20ef4692dd521cc2c0b61a25` |
 | `lib/billing-v83.js` | 20695 | `01e2eeca24df35dbac0a61fd0ca7681d3aa04cf7411ed774726191985023f7aa` |
 | `lib/bilsky-escc-v604.js` | 10899 | `001a75fe88ef711e5693d88ff5bdd4c9a4656fc04c5a0c8b6977567c562acc6a` |
 | `lib/biological-variation-goals-v923.js` | 7894 | `6905603246b9b3305ad2ef4e0aaab94a7e043c907533e3f983025f0cb2eabaf1` |
@@ -1705,7 +1705,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `vendored/tesseract/worker.min.js` | 123724 | `aca1229639fc9907d86f96e825955a2b7c5716d17f3bc3acd71f9c7ab66181fc` |
 | `views/group-a.js` | 577 | `eed37c656d1fa00c097a07f07db4b1b6ac7a0a74bafc210978265a1d90856bd7` |
 | `views/group-b.js` | 75641 | `ef51504da5c8760989b47fafba242b4cdbbea34a99407393ebef2eba16e683c8` |
-| `views/group-c.js` | 24555 | `82ebad28ab001aacbbb39459436ed2f9f3df86971209a4bb178ad2f108a98742` |
+| `views/group-c.js` | 26092 | `54657a4a5b453691262e00c395aeddcde77cafdb3bf83da2b2396e16aa1f9cc1` |
 | `views/group-e.js` | 47529 | `371f31e62cdfdd4e094ec6c38641c019cb0012c362e5fe64c44952b007e80ea5` |
 | `views/group-f.js` | 50610 | `2a10d419be69c01c51cbf0100f9284fc06e239217cb87f12b123b33e524bd334` |
 | `views/group-g.js` | 247484 | `16f3efaba936c767acf1e73e7640c910d27b9239c170e344d1d8c35391dc90b3` |

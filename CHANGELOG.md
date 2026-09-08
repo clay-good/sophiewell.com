@@ -18,6 +18,27 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed
+
+- **Three patient-bill tools said the patient owed nothing, from benefits nobody had
+  entered.** A remaining deductible, a coinsurance percentage and a copay each default
+  to zero, and each is right to: a copay-only plan has no coinsurance, a met deductible
+  has nothing left. All three at zero is not a benefit design, it is an empty form --
+  and Contractual Write-Off vs Patient Balance answered it with *"Patient owes $0.00"*
+  and the payer covering the whole allowed, while the No Surprises Act tool said the
+  same and had the plan pay the entire QPA. Both now report the numbers that do not
+  depend on the benefit terms -- the contractual write-off, the prohibited balance bill
+  -- and ask for the terms rather than concluding a balance of zero. State any one of
+  the three and each answers as before; a typed 0% is still an answer.
+
+  Coordination of Benefits had the same shape with a bill at the other end: three of
+  its four methods are defined by what the secondary would pay as primary, and blank,
+  all three said *"Secondary pays $0.00; patient owes $120.00"*. They ask for it now.
+  Come-out-whole never reads it and is unchanged. Six fields on the two cost-share
+  pages were also pre-filled with a `0` rather than a placeholder, so the answer that
+  zeroed the bill was typed into the form before the reader arrived. See
+  docs/spec-v1142.md.
+
 ### Changed
 
 - **A check that compares what the tool accepts with what the page offers was

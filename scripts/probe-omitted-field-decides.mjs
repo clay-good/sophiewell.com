@@ -27,6 +27,16 @@
 //     spec-v1091 shape and it is the one that can hurt.
 //   VERDICT COULD CHANGE -- the band or stage moves but `abnormal` does not, or
 //     the tile does not carry `abnormal`. Weaker; read against the tile.
+//   THE NUMBER IS THE VERDICT -- spec-v1142. 155 tiles carry neither a boolean
+//     `abnormal` nor any of the strings `verdict()` reads, so the three sections
+//     above could never print a row about one of them, and every one of the
+//     catalog's converters, dosing and billing tiles is in that set. For those
+//     the NUMBER is the conclusion, so the test is a finite output moving when a
+//     field is dropped. It found "the patient owes $0.00" on `allowed-amount`
+//     and `nsa-cost-share` from benefit terms nobody entered, and a secondary
+//     payment of $0 on `cob-calc` under three methods defined by the missing
+//     field (spec-v1142). Checkbox criteria dominate this section and are
+//     correct by rule 4 -- an unticked box is a real "no".
 //
 // A row is a suspect, not a defect. A tile is right to answer from a subset when
 // the criteria are genuinely independent tests of different things; what it owes
@@ -98,6 +108,7 @@ function candidates(v) {
 const ruledOut = [];
 const unflagged = [];
 const couldChange = [];
+const numberIsVerdict = [];
 
 // spec-v1099: how many tiles this probe's first section can see at all.
 //
@@ -112,6 +123,18 @@ const couldChange = [];
 // result.
 let tilesWithFlag = 0;
 let tilesWithoutFlag = 0;
+let tilesWithNeither = 0;
+
+// spec-v1142: the finite numbers a result carries, flattened. A tile with no
+// flag and no band says its conclusion in these.
+function numbersIn(r, prefix = '', out = {}) {
+  if (!r || typeof r !== 'object') return out;
+  for (const [k, v] of Object.entries(r)) {
+    if (typeof v === 'number' && Number.isFinite(v)) out[prefix + k] = v;
+    else if (v && typeof v === 'object') numbersIn(v, `${prefix}${k}.`, out);
+  }
+  return out;
+}
 
 // Reaching the reassuring side of the threshold.
 //
@@ -147,8 +170,14 @@ for (const tool of allCalculators()) {
   const full = computeCalculator({ id: tool.id, inputs: { ...ex } });
   if (full?.valid !== true) continue;
 
-  if (typeof full.result?.abnormal === 'boolean') tilesWithFlag += 1;
+  const hasFlag = typeof full.result?.abnormal === 'boolean';
+  if (hasFlag) tilesWithFlag += 1;
   else tilesWithoutFlag += 1;
+  // Neither a flag nor a band: this tile is invisible to all three sections
+  // above, and the number it prints is the whole of what it says.
+  const numericOnly = !hasFlag && verdict(full.result) === null;
+  if (numericOnly) tilesWithNeither += 1;
+  const fullNumbers = numericOnly ? numbersIn(full.result) : null;
 
   const numericDoms = (tool.fields || [])
     .filter((f) => f.kind === 'number' && ex[f.dom] !== undefined && String(ex[f.dom]).trim() !== '')
@@ -171,9 +200,42 @@ for (const tool of allCalculators()) {
 
   for (const f of tool.fields || []) {
     const enumValues = valuesFor(f);
-    if (f.kind !== 'number' && !enumValues) continue;
     const v = ex[f.dom];
     if (v === undefined || String(v).trim() === '') continue;
+
+    // spec-v1142: the numeric arm runs BEFORE the number/enum gate below,
+    // because that gate was written for the candidate-value sections and
+    // narrowing this one by inheritance is how five checks in this programme
+    // went blind (spec-v1106). What it deliberately skips is `boolean`: rule 4
+    // says an unticked checkbox is a real "no" (the kind is `bool`, not
+    // `boolean` -- checked against the catalog, not assumed), so a criterion
+    // changing a total when dropped is the instrument working. Say it here
+    // rather than letting a filter say it silently.
+    if (numericOnly && f.kind !== 'bool') {
+      const dropped = { ...ex };
+      delete dropped[f.dom];
+      const got = computeCalculator({ id: tool.id, inputs: dropped });
+      if (got?.valid === true) {
+        const said = texts(got.result).join(' ');
+        if (!ASKING.test(said) && !DISCLOSING.test(said)) {
+          const after = numbersIn(got.result);
+          const moved = Object.keys(fullNumbers).filter((k) => after[k] !== undefined && after[k] !== fullNumbers[k]);
+          if (moved.length) {
+            numberIsVerdict.push({
+              id: tool.id,
+              field: f.dom,
+              label: String(f.label || '').slice(0, 46),
+              scale: 1,
+              base: moved.slice(0, 3).map((k) => `${k}: ${fullNumbers[k]}`).join(', ').slice(0, 110),
+              value: '(omitted)',
+              verdict: moved.slice(0, 3).map((k) => `${k}: ${after[k]}`).join(', '),
+            });
+          }
+        }
+      }
+    }
+
+    if (f.kind !== 'number' && !enumValues) continue;
 
     let hit = null;
     // Scaling the OTHER fields is what reaches readings the example does not; an
@@ -219,6 +281,7 @@ for (const tool of allCalculators()) {
     if (hit && hit.flip) ruledOut.push(hit);
     else if (hit && hit.noFlag) unflagged.push(hit);
     else if (hit) couldChange.push(hit);
+
   }
 }
 
@@ -237,5 +300,8 @@ console.log('value of that field would have changed the verdict -- without the t
 report('RULED OUT FROM A SUBSET (read these first)', ruledOut);
 report('NO SEVERITY FLAG, AND THE VERDICT MOVED (read these next)', unflagged);
 report('VERDICT COULD CHANGE', couldChange);
+report('THE NUMBER IS THE VERDICT (no flag, no band -- read by rule 4 first)', numberIsVerdict);
 console.log(`\nReach: ${tilesWithFlag} tiles set a boolean \`abnormal\` and ${tilesWithoutFlag} do not.`);
 console.log('The first section can only fire on the former; the second exists because of the latter.');
+console.log(`Of those, ${tilesWithNeither} carry no band/stage/severity string either -- invisible to all`);
+console.log('three sections until spec-v1142 added the fourth, where the number IS the conclusion.');

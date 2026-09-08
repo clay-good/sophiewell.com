@@ -135,6 +135,14 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
     of its tests passed, and the page went on answering "Category I" for a tracing nobody had
     described — because every test calls the library directly, where the guard works.
 
+27. **Optional one at a time, required as a SET** (spec-v1142). `allowed-amount` and
+    `nsa-cost-share` each take three benefit terms — remaining deductible, coinsurance, copay —
+    and each defaults to zero for a good reason: a copay-only plan has no coinsurance, a met
+    deductible has nothing remaining. All three at zero is not a benefit design, it is an empty
+    form, and what it printed was *"Patient owes $0.00"*. When several optional fields are
+    alternatives for the same question, ask whether ANY of them was answered — a per-field
+    `required` flag cannot express that, and a rule 25 reading-level guard is exactly what can.
+
 26. **A disclosure is OUTPUT, and output built from an unvalidated input is a leak**
     (spec-v1133). Adding a sentence that names a parameter turns that parameter into something the
     reader sees, which it was not before — so `uacr-upcr`'s new "reading the albumin as mg/dL"
@@ -533,6 +541,38 @@ value of 0, and a PaO2 of 0 is not a patient ([spec-v1099](spec-v1099.md)).
 **A probe whose every row has been read is not a probe with nothing left to
 say** — the catalog moves, and the rows change with it. It is a probe whose
 current output is spent.
+
+<!-- catalog-truth:historical -->
+## The 155 tiles where the number IS the verdict
+
+[spec-v1142](spec-v1142.md). `probe-omitted-field-decides` grades a dropped field
+by a boolean `abnormal` flipping or a band string moving. The probe prints its own
+<!-- catalog-truth:historical -->
+reach; at this wave **984 tiles set the flag, 543 more carry a band, and 155 carry neither** — the converters, the dosing
+tools and the whole billing family — so none of its three sections could ever
+print a row about one of them.
+
+A fourth section asks the same question of them: drop one field, and does a
+finite output move without the tile saying so? It skips `kind === 'bool'` by rule
+4, stated in the probe rather than inherited from the number/enum filter written
+for the other sections. **44 fields across 20 calculators; three were defects,
+all in the patient-bill family:**
+
+| Tile | It said |
+| --- | --- |
+| `allowed-amount` | *Patient owes **$0.00***, payer pays the whole allowed — from a form with no deductible, no coinsurance and no copay |
+| `nsa-cost-share` | *Patient owes **$0.00***, plan pays the whole QPA — the same three blanks |
+| `cob-calc` | *Secondary pays **$0.00**; patient owes $120.00* — under three methods **defined by** the would-pay nobody entered |
+
+The shape is rule 1 in money: **each of the three cost-share terms is legitimately
+zero on its own, and all three at once is not a benefit design but an empty
+form.** The terms stay optional and the SET is now required; a typed 0% still
+answers zero. The numbers that do not depend on the benefit terms — the
+contractual write-off, the NSA prohibited balance bill — are still reported.
+
+Six of the browser's fields were rendered with a `value` of `0` rather than a
+placeholder, which is rule 8 in a number input: the reassuring answer was
+pre-typed into the form.
 
 ## Probes measured and rejected
 
