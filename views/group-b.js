@@ -94,7 +94,16 @@ const usd = (cents) => '$' + fmt(cents / 100, { digits: 2, fallback: '--' });
 // top-to-bottom on a phone with no sideways scroll.
 function derivation(pairs) {
   const dl = el('dl', { class: 'derivation' });
-  for (const [term, def] of pairs) {
+  // spec-v1143: this guarded a null VALUE and not a null ROW, so the four call
+  // sites that write `cond ? [label, value] : null` threw "null is not
+  // iterable" here -- and `safe()` printed the engine's own message where the
+  // table belongs. `drg-payment` showed it on every non-transfer case, which is
+  // the ordinary one, and `drug-wastage` whenever no least-waste combination
+  // was found. A conditional row is how both are written; skipping it is this
+  // helper's job, not the caller's.
+  for (const row of pairs) {
+    if (!row) continue;
+    const [term, def] = row;
     if (def === null || def === undefined) continue;
     dl.appendChild(el('dt', { text: term }));
     dl.appendChild(el('dd', { text: def }));
@@ -371,10 +380,11 @@ export const renderers = {
       if (!(numv('seq-allowed') > 0)) { o.appendChild(el('p', { class: 'muted', text: 'Enter the Medicare-allowed amount.' })); return; }
       const r = Bill.sequestrationAdjust({
         allowedCents: Math.round(numv('seq-allowed') * 100),
-        patientResponsibilityCents: Math.round((numv('seq-patient') || 0) * 100),
+        patientResponsibilityCents: rawEmpty('seq-patient') ? null : Math.round(numv('seq-patient') * 100),
         seqPct: numv('seq-pct') >= 0 ? numv('seq-pct') : Bill.SEQUESTRATION_PCT,
       });
       o.appendChild(el('h2', { text: `Net Medicare check: ${usd(r.netPaymentCents)}` }));
+      if (r.note) verdictLine(o, r.note, 'flag');
       o.appendChild(derivation([
         ['Program-payment base (allowed - patient cost-share)', usd(r.programPaymentCents)],
         [`Sequestration withheld (${r.seqPct}%)`, usd(r.sequestrationCents)],
@@ -627,12 +637,15 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     wire(['ss-basis', 'ss-phys', 'ss-npp', 'ss-mdmby'], () => safe(o, () => {
       const basis = str('ss-basis');
-      if (basis === 'time' && rawEmpty('ss-phys') && rawEmpty('ss-npp')) {
-        o.appendChild(el('p', { class: 'muted', text: 'Enter the physician and NPP minutes.' })); return;
+      // spec-v1143: `&&` went quiet as soon as ONE was filled, and the blank one
+      // reached the library as a time of zero -- so the tile said the other
+      // provider had performed all of it.
+      if (basis === 'time' && (rawEmpty('ss-phys') || rawEmpty('ss-npp'))) {
+        o.appendChild(el('p', { class: 'muted', text: 'Enter both the physician and the NPP minutes: the rule turns on which is more than half of the total, so a blank one is not a time of zero.' })); return;
       }
       const r = Em.splitShared({
         basis,
-        physicianTime: Math.round(numv('ss-phys') || 0), nppTime: Math.round(numv('ss-npp') || 0),
+        physicianTime: rawEmpty('ss-phys') ? null : Math.round(numv('ss-phys')), nppTime: rawEmpty('ss-npp') ? null : Math.round(numv('ss-npp')),
         mdmBy: str('ss-mdmby'),
       });
       o.appendChild(el('h2', { text: `${r.billingProvider === 'physician' ? 'Physician' : 'NPP'} bills (+ modifier FS)` }));
@@ -721,6 +734,9 @@ export const renderers = {
     root.appendChild(field('Modifying units (physical status / qualifying circumstances)', 'an-mod', { type: 'number', inputmode: 'decimal', placeholder: '0' }));
     root.appendChild(moneyField('Anesthesia conversion factor ($ per unit)', 'an-cf', '20.3178'));
     root.appendChild(selectField('Medical-direction modifier', 'an-dir', [
+      // spec-v1143 (rule 8/9): a select always carries a value, and this one
+      // opened on the highest-paying row of the table. The reader chooses.
+      { value: '', text: '-- choose the modifier --' },
       { value: 'aa', text: 'AA -- personally performed (100%)' },
       { value: 'qz', text: 'QZ -- CRNA, non-medically-directed (100%)' },
       { value: 'qy', text: 'QY -- medical direction of one CRNA (50%)' },
@@ -732,6 +748,9 @@ export const renderers = {
     wire(['an-base', 'an-time', 'an-mod', 'an-cf', 'an-dir'], () => safe(o, () => {
       if (rawEmpty('an-base') || rawEmpty('an-time') || !(numv('an-cf') > 0)) {
         o.appendChild(el('p', { class: 'muted', text: 'Enter base units, time, and the conversion factor.' })); return;
+      }
+      if (!str('an-dir')) {
+        o.appendChild(el('p', { class: 'muted', text: 'Choose the medical-direction modifier: it sets the concurrency percentage, and AA and QK differ by half the payment.' })); return;
       }
       const r = Em.anesthesiaUnits({
         baseUnits: numv('an-base'), timeMinutes: Math.round(numv('an-time')), modifyingUnits: numv('an-mod') || 0,
@@ -1021,7 +1040,7 @@ export const renderers = {
         const r = Integ.drgPayment({
           relativeWeight: numv('drg-weight'),
           operatingBaseCents: Math.round(numv('drg-oper') * 100),
-          capitalBaseCents: Math.round((numv('drg-cap') || 0) * 100),
+          capitalBaseCents: rawEmpty('drg-cap') ? null : Math.round(numv('drg-cap') * 100),
           wageIndex: numv('drg-wage') > 0 ? numv('drg-wage') : 1,
           isTransfer: checked('drg-transfer'),
           lengthOfStay: Math.round(numv('drg-los') || 0),
@@ -1032,7 +1051,7 @@ export const renderers = {
         verdictLine(o, r.note, r.isTransferPriced ? 'flag' : null);
         o.appendChild(derivation([
           ['Relative weight', String(r.relativeWeight)],
-          ['Wage-adjusted base (operating + capital)', usd(r.wageAdjustedBaseCents)],
+          [r.capitalStated ? 'Wage-adjusted base (operating + capital)' : 'Wage-adjusted base (operating only -- no capital entered)', usd(r.wageAdjustedBaseCents)],
           ['Base DRG payment (weight x base)', usd(r.baseDrgCents)],
           r.isTransferPriced ? ['Per-diem rate (base / GMLOS)', usd(r.perDiemCents)] : null,
           r.isTransferPriced ? ['Transfer-adjusted payment', usd(r.transferAdjustedCents)] : null,

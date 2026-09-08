@@ -39,6 +39,29 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   zeroed the bill was typed into the form before the reader arrived. See
   docs/spec-v1142.md.
 
+- **The derivation table on the DRG payment estimate had never rendered.** The helper
+  that builds the "how this was worked out" list skipped a row with no value but not
+  a row that was itself absent, and three of that tile's rows are written to appear
+  only for a transfer case. On every ordinary admission the list threw, and what the
+  reader saw in its place was the JavaScript engine's own error text. The Drug Wastage
+  tool did the same whenever no least-waste vial combination was found. Both tables
+  render now. See docs/spec-v1143.md.
+
+- **Two payment tools priced a claim from the top of a table nobody had chosen.** The
+  anesthesia unit calculator defaulted the medical-direction modifier to AA
+  (personally performed, 100%) -- twice what a medically-directed case pays -- while
+  its own instructions already told the reader to enter it. It asks now, on both
+  surfaces. The split/shared visit tool defaulted both the physician and the NPP
+  minutes to zero and only checked that the total was positive, so leaving one blank
+  had it announce that the other provider had performed the entire visit; it now asks
+  for both, and a typed zero is still an answer.
+
+- **Two more defaults are now stated where the answer is.** The DRG estimate treated a
+  blank capital base rate as zero, quietly paying the operating share alone, and the
+  sequestration tool treated a blank beneficiary cost-share as zero, taking the 2% cut
+  on the whole allowed. Both remain legitimate ways to run the tool, so both keep the
+  default and say so in the reading. See docs/spec-v1143.md.
+
 ### Changed
 
 - **A check that compares what the tool accepts with what the page offers was

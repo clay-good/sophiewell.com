@@ -216,7 +216,20 @@ for (const tool of allCalculators()) {
       delete dropped[f.dom];
       const got = computeCalculator({ id: tool.id, inputs: dropped });
       if (got?.valid === true) {
-        const said = texts(got.result).join(' ');
+        // The numeric arm reads the top-level `note` that `texts()` skips.
+        // That exclusion is spec-v1075's -- a tile's static explanatory prose is
+        // not a disclosure about THESE inputs -- and it is right for the three
+        // sections above, which grade a band. Here there is no band and no flag,
+        // so `note` is the only place a reading can live at all, and excluding
+        // it means the arm can never see a disclosure.
+        //
+        // Measured before changing it, as the house rule requires: across every
+        // tile and every non-bool field, reading the note moves exactly FOUR
+        // rows from flagged to exempt -- `drg-payment` and
+        // `sequestration-adjust`, whose disclosures spec-v1143 wrote, and
+        // `era-balance`'s two adjustment groups, whose reading when one is
+        // dropped IS "OUT OF BALANCE ... a posting line is missing".
+        const said = `${texts(got.result).join(' ')} ${String(got.result?.note || '')}`;
         if (!ASKING.test(said) && !DISCLOSING.test(said)) {
           const after = numbersIn(got.result);
           const moved = Object.keys(fullNumbers).filter((k) => after[k] !== undefined && after[k] !== fullNumbers[k]);

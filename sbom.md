@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `12d5e2b347e97c6c`
-Generated: 2026-09-08T17:04:41.049Z
+Build ID: `eb6e384bfe601379`
+Generated: 2026-09-08T17:38:49.358Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -113,12 +113,12 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/bi-rads-v322.js` | 5295 | `22615c3018830dc91339396fc952be1aa0e111df6eaef1fdb5f223942fdc4ccb` |
 | `lib/biffl-bcvi-v436.js` | 3300 | `a1bfde85051febe4916a21db1bf8850bada786470c51db16ffe7f2aeaccccc0e` |
 | `lib/bigliani-acromion-v488.js` | 2861 | `52b33e049e6db1a656f37ce906fe5035a3ad1a32ba42b68e817b919813f211ae` |
-| `lib/billing-v78.js` | 11573 | `5546db2638b25440d454680fa0293610e5d3a96676b786851db96eebed4c84a2` |
+| `lib/billing-v78.js` | 12344 | `f867d30c9ebbddea0e2dde63839b63515cf138571af83e26760a1d136bcc4bf9` |
 | `lib/billing-v79.js` | 23592 | `38855e98322bcb40f603c1255fdc32f784ecccef5f861e72ae27732a67413d1d` |
-| `lib/billing-v80.js` | 22078 | `a7b0d6e0ce66225848e537bbdb5b329172caf149e7d4381a684f05ddbe562022` |
+| `lib/billing-v80.js` | 23695 | `8c2e7c4a5cd5cee409aed1536f182c6983903f79eecb06bc2207f31681c4d590` |
 | `lib/billing-v81.js` | 16760 | `a6fab93c9220fdd227e21f3dd6c5f624f246ce3ea0741e6dab46a906ae759c05` |
 | `lib/billing-v82.js` | 24806 | `f5e8e00d38c70eb3dfa5682abceeb035af50cf2c20ef4692dd521cc2c0b61a25` |
-| `lib/billing-v83.js` | 20695 | `01e2eeca24df35dbac0a61fd0ca7681d3aa04cf7411ed774726191985023f7aa` |
+| `lib/billing-v83.js` | 21528 | `284251bb90c87242d8982a29c6f05c452e320fc79af24f2a918fd5a2f635b863` |
 | `lib/bilsky-escc-v604.js` | 10899 | `001a75fe88ef711e5693d88ff5bdd4c9a4656fc04c5a0c8b6977567c562acc6a` |
 | `lib/biological-variation-goals-v923.js` | 7894 | `6905603246b9b3305ad2ef4e0aaab94a7e043c907533e3f983025f0cb2eabaf1` |
 | `lib/bismuth-corlette-v399.js` | 4794 | `f7884e0732444c307302a8a7b6e14c583a70106ec23f27066fda87049d196a26` |
@@ -956,7 +956,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/bigliani-acromion-v488.js` | 1174 | `4ac4314dfb60784e8227d224c7f2ff04d86a843670d654ddf996f24111a4d169` |
 | `mcp/adapters/billing-v78.js` | 4928 | `c47f52b41fbaba40e357d8a879d0ec7337e6dd52a6b08d2471da1cb9fb93236a` |
 | `mcp/adapters/billing-v79.js` | 3885 | `eab5a72deec4638bbd4140c6d2e3c57dd7a1e84720bd783b2e23eca9f6b77430` |
-| `mcp/adapters/billing-v80.js` | 4459 | `49511d8ac100d62e47be175430a1784c99cf02ae65fde5f89ba6eaf39be363ea` |
+| `mcp/adapters/billing-v80.js` | 4673 | `4c3da5ad52cdfcca56329e64d0516faa930255e3e9163ef59f93c1952e2f9733` |
 | `mcp/adapters/billing-v81.js` | 3431 | `2bb3d67725e2cfb8788e5681c256a62b5970c87e6c546db61a5d1e3a1927d2f4` |
 | `mcp/adapters/billing-v82.js` | 4481 | `d9927196f92edca28d14679ed8b335c87262b4524dea8c6b0538b3541b554a92` |
 | `mcp/adapters/billing-v83.js` | 6166 | `ef59979c46a11b55516389d387383a5b08ce5b40ede2a71345aa9c6808b9b04f` |
@@ -1704,8 +1704,8 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `vendored/tesseract/tesseract.min.js` | 66695 | `a8e29918d098b2b06e1012bdaeffb4aec0445c5d5654709023e0bd1f442a80e8` |
 | `vendored/tesseract/worker.min.js` | 123724 | `aca1229639fc9907d86f96e825955a2b7c5716d17f3bc3acd71f9c7ab66181fc` |
 | `views/group-a.js` | 577 | `eed37c656d1fa00c097a07f07db4b1b6ac7a0a74bafc210978265a1d90856bd7` |
-| `views/group-b.js` | 75641 | `ef51504da5c8760989b47fafba242b4cdbbea34a99407393ebef2eba16e683c8` |
-| `views/group-c.js` | 26092 | `54657a4a5b453691262e00c395aeddcde77cafdb3bf83da2b2396e16aa1f9cc1` |
+| `views/group-b.js` | 77156 | `88cc71d010172716bbb55f6e5773a194945a93d00d5a759697eddd110066c560` |
+| `views/group-c.js` | 26643 | `c139c073fd2c3a107f1865ff5e41dd671e988a06b16fe6d0efb050d6da2e060c` |
 | `views/group-e.js` | 47529 | `371f31e62cdfdd4e094ec6c38641c019cb0012c362e5fe64c44952b007e80ea5` |
 | `views/group-f.js` | 50610 | `2a10d419be69c01c51cbf0100f9284fc06e239217cb87f12b123b33e524bd334` |
 | `views/group-g.js` | 247484 | `16f3efaba936c767acf1e73e7640c910d27b9239c170e344d1d8c35391dc90b3` |

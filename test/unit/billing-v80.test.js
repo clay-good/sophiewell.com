@@ -189,3 +189,31 @@ test('anesthesia-units: time-unit conversion at the 15-minute boundary; bad inpu
   assert.throws(() => anesthesiaUnits({ baseUnits: -1, timeMinutes: 60, conversionFactor: 22, medicalDirection: 'aa' }), RangeError);
   assert.throws(() => anesthesiaUnits({ baseUnits: 5, timeMinutes: 60, conversionFactor: 22, medicalDirection: 'zz' }), TypeError);
 });
+
+// ---- spec-v1143: the payment-side defaults -----------------------------------
+test('anesthesia-units: the medical-direction modifier is required, not defaulted to AA', () => {
+  const base = { baseUnits: 5, timeMinutes: 60, conversionFactor: 20 };
+  // The defect, stated: AA is the highest-paying row and was the default.
+  assert.throws(() => anesthesiaUnits(base), TypeError);
+  assert.throws(() => anesthesiaUnits({ ...base, medicalDirection: '' }), TypeError);
+  assert.throws(() => anesthesiaUnits({ ...base, medicalDirection: null }), TypeError);
+  // AA and QK differ by half the payment on the same units.
+  const aa = anesthesiaUnits({ ...base, medicalDirection: 'aa' });
+  const qk = anesthesiaUnits({ ...base, medicalDirection: 'qk' });
+  assert.equal(aa.directionPercent, 100);
+  assert.equal(qk.directionPercent, 50);
+  assert.equal(qk.directedPaymentCents * 2, aa.directedPaymentCents);
+});
+
+test('split-shared: a blank time is not a time of zero on the time basis', () => {
+  // The defect, stated: with the physician time blank the tile said the NPP had
+  // performed all of it -- a statement about a physician nobody had timed.
+  assert.throws(() => splitShared({ basis: 'time', nppTime: 20 }), RangeError);
+  assert.throws(() => splitShared({ basis: 'time', physicianTime: 20 }), RangeError);
+  // A typed 0 is still an answer (rule 1).
+  const zeroed = splitShared({ basis: 'time', physicianTime: 0, nppTime: 20 });
+  assert.equal(zeroed.billingProvider, 'npp');
+  assert.equal(zeroed.paymentPercent, NPP_FEE_PERCENT);
+  // The MDM basis never reads the times and is unchanged.
+  assert.equal(splitShared({ basis: 'mdm', mdmBy: 'physician' }).billingProvider, 'physician');
+});

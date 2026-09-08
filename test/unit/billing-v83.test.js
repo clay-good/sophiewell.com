@@ -136,3 +136,19 @@ test('apc-payment: weight x CF, status-indicator packaging, multiple-procedure d
   assert.throws(() => apcPayment({ lines: [], conversionFactorCents: 1 }), RangeError);
   assert.throws(() => apcPayment({ conversionFactorCents: 1 }), TypeError);
 });
+
+// ---- spec-v1143: a silent default is the defect, not the default -------------
+test('drg-payment: an unstated capital base is named in the reading', () => {
+  const blank = drgPayment({ relativeWeight: 1.5, operatingBaseCents: 600000 });
+  assert.equal(blank.capitalStated, false);
+  assert.match(blank.note, /capital standardized amount was not entered/);
+  assert.equal(blank.baseDrgCents, 900000);
+  const stated = drgPayment({ relativeWeight: 1.5, operatingBaseCents: 600000, capitalBaseCents: 50000 });
+  assert.equal(stated.capitalStated, true);
+  assert.doesNotMatch(stated.note, /capital standardized amount was not entered/);
+  assert.equal(stated.baseDrgCents, 975000);
+  // A typed 0 is an answer: the same payment, without the disclosure.
+  const zeroed = drgPayment({ relativeWeight: 1.5, operatingBaseCents: 600000, capitalBaseCents: 0 });
+  assert.equal(zeroed.capitalStated, true);
+  assert.equal(zeroed.baseDrgCents, 900000);
+});

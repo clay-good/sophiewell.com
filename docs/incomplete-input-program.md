@@ -574,6 +574,28 @@ Six of the browser's fields were rendered with a `value` of `0` rather than a
 placeholder, which is rule 8 in a number input: the reassuring answer was
 pre-typed into the form.
 
+[spec-v1143](spec-v1143.md) read the rest of that first run. Two more defaults
+were the **top of their table**: `anesthesia-units` defaulted the medical-direction
+modifier to `aa` — personally performed, 100%, twice what a medically-directed
+case pays — while its own notice already listed the modifier among what to enter
+(rule 23, fourth time); and `split-shared` defaulted both times to 0 and required
+only the TOTAL to be positive, so one blank had it asserting that the other
+provider performed all of the visit (rule 11). The browser guard there was
+`rawEmpty(phys) && rawEmpty(npp)`, which goes quiet as soon as one is filled.
+
+Two more were **silent rather than wrong** and are named in the reading now
+(rule 21): `drg-payment`'s capital standardized amount, and
+`sequestration-adjust`'s beneficiary cost-share.
+
+And verifying that disclosure found a defect nothing in this programme was
+looking for: `derivation()` guarded a null VALUE and not a null ROW, so the four
+call sites that write `cond ? [label, value] : null` threw *"null is not
+iterable"* — and `safe()` printed the engine's own message where the table
+belongs. On `drg-payment` that is **every case that is not a transfer**, the
+ordinary one, and its derivation table had therefore never rendered.
+
+Six rows of the fourth section remain and each is read in that spec.
+
 ## Probes measured and rejected
 
 Three questions asked of the whole catalog after spec-v1048, each of which sounded like it should

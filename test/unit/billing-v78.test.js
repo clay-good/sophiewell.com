@@ -157,3 +157,22 @@ test('dollarsToCents: rounds to the cent and rejects negatives', () => {
   assert.equal(dollarsToCents(0), 0);
   assert.throws(() => dollarsToCents(-1), RangeError);
 });
+
+// ---- spec-v1143: a silent default is the defect, not the default -------------
+test('sequestration-adjust: an unstated cost-share is named in the reading', () => {
+  const blank = sequestrationAdjust({ allowedCents: 10000 });
+  assert.equal(blank.patientStated, false);
+  assert.match(blank.note, /were not entered/);
+  // The whole allowed became the program-payment portion, so the cut is larger.
+  assert.equal(blank.programPaymentCents, 10000);
+  assert.equal(blank.sequestrationCents, 200);
+  const stated = sequestrationAdjust({ allowedCents: 10000, patientResponsibilityCents: 2000 });
+  assert.equal(stated.patientStated, true);
+  assert.equal(stated.note, null);
+  assert.equal(stated.sequestrationCents, 160);
+  // A typed 0 is an answer: same arithmetic as the blank, without the disclosure.
+  const zeroed = sequestrationAdjust({ allowedCents: 10000, patientResponsibilityCents: 0 });
+  assert.equal(zeroed.patientStated, true);
+  assert.equal(zeroed.note, null);
+  assert.equal(zeroed.sequestrationCents, 200);
+});

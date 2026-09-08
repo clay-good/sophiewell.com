@@ -75,7 +75,9 @@ export default [
       { dom: 'an-time', arg: 'timeMinutes', kind: 'number', required: true, label: 'Anesthesia time in minutes' },
       { dom: 'an-mod', arg: 'modifyingUnits', kind: 'number', label: 'Modifying units (physical status / qualifying circumstances)' },
       { dom: 'an-cf', arg: 'conversionFactor', kind: 'number', required: true, label: 'Anesthesia conversion factor ($ per unit)' },
-      { dom: 'an-dir', arg: 'medicalDirection', kind: 'string', label: 'Medical direction: aa, qk, qy, qx, qz' },
+      // spec-v1143: this defaulted to `aa` (100%) in the library, so an agent
+      // that omitted it was quoted twice a medically-directed payment. Required.
+      { dom: 'an-dir', arg: 'medicalDirection', kind: 'string', required: true, label: 'Medical direction: aa, qz (100%), qy, qk, qx (50%), ad (flat 3 base units)' },
     ],
   },
 ];

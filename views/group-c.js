@@ -81,7 +81,16 @@ function wire(ids, run) {
 const usd = (cents) => '$' + fmt(cents / 100, { digits: 2, fallback: '--' });
 function derivation(pairs) {
   const dl = el('dl', { class: 'derivation' });
-  for (const [term, def] of pairs) {
+  // spec-v1143: this guarded a null VALUE and not a null ROW, so the four call
+  // sites that write `cond ? [label, value] : null` threw "null is not
+  // iterable" here -- and `safe()` printed the engine's own message where the
+  // table belongs. `drg-payment` showed it on every non-transfer case, which is
+  // the ordinary one, and `drug-wastage` whenever no least-waste combination
+  // was found. A conditional row is how both are written; skipping it is this
+  // helper's job, not the caller's.
+  for (const row of pairs) {
+    if (!row) continue;
+    const [term, def] = row;
     if (def === null || def === undefined) continue;
     dl.appendChild(el('dt', { text: term }));
     dl.appendChild(el('dd', { text: def }));
