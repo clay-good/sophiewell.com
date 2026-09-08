@@ -236,6 +236,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1118](spec-v1118.md) | **Finder**: a scoring select neither surface can leave unanswered |
 | [v1119](spec-v1119.md) | The first three off the new probe's list |
 | [v1120](spec-v1120.md) | Two columns nobody looked at, stated as two normal findings |
+| [v1121](spec-v1121.md) | The check rule 23 recommended, and what it found |
 
 ### And the same question from the other side
 
@@ -455,6 +456,7 @@ find something and did not. Recorded so they are not re-run.
 | --- | --- |
 | Does any tile print a **percentage its own interpretation table contradicts**? | 23 suspects, **zero defects**. The rule cannot tell a computed value from a threshold — `navy-body-fat` states 11.1% body fat against a table of category cut-offs. What made `ranson-bisap` findable was that its answer quoted a band *label*, which `example-correctness` now catches. |
 | Does any tile's documented `expected` assert the **opposite verdict** to what it renders — "low risk" against "high risk", "not indicated" against "indicated"? | **Zero clashes** across all 1,699 examples. |
+| Does any tile's refusal message **name an input its guard does not require** (rule 23)? <!-- catalog-truth:historical --> | **Zero**, across every tile that refuses with a message (1,385 of them at the time). The five known instances were found and fixed as they arose. `scripts/probe-message-promises.mjs` is kept because the rule is about what an author writes next. Its first run said 28, and all 28 were the finder being wrong: booleans (an unticked box is a real "no"), disjunctive messages ("at least one", "and/or" — naming a field inside a choice is the opposite of requiring it), and scaffolding words like "input" that identify no field ([spec-v1121](spec-v1121.md)). |
 | Does the **clipboard** carry a number the tile is not showing? | **Zero**. Every calculator that offers a copy button was checked — about eight in ten of them. |
 
 The third is worth keeping in mind rather than repeating: what a tile puts on the clipboard is what
