@@ -76,8 +76,13 @@ test('pulp: all variables at ASA 5 reach the 18-point maximum', () => {
 });
 
 // --- Emergency Surgery Score ---
+// spec-v1128: the transfer source and the WBC band are graded SELECTS that fell
+// through to their zero level, so an assertion naming a mortality band was
+// reading two unstated choices as two negatives.
+const essStated = (o = {}) => ({ transfer: 'none', wbc: 'normal', ...o });
+
 test('ess: no variables positive is a zero low-mortality score', () => {
-  const r = emergencySurgeryScore({});
+  const r = emergencySurgeryScore(essStated());
   assert.equal(r.valid, true);
   assert.equal(r.score, 0);
   assert.equal(r.abnormal, false);
@@ -85,13 +90,13 @@ test('ess: no variables positive is a zero low-mortality score', () => {
   assert.ok(r.band.includes('low predicted 30-day mortality'));
 });
 test('ess: a low-score case stays in the low band', () => {
-  const r = emergencySurgeryScore({ hypertension: true, dyspnea: true });
+  const r = emergencySurgeryScore(essStated({ hypertension: true, dyspnea: true }));
   assert.equal(r.score, 2);
   assert.equal(r.abnormal, false);
   assert.ok(r.band.includes('low predicted 30-day mortality'));
 });
 test('ess: a high-score case reports high predicted mortality', () => {
-  const r = emergencySurgeryScore({ ageOver60: true, disseminatedCancer: true, ventilatorDependence: true, creatinine: true, albumin: true, wbc: 'high' });
+  const r = emergencySurgeryScore(essStated({ ageOver60: true, disseminatedCancer: true, ventilatorDependence: true, creatinine: true, albumin: true, wbc: 'high' }));
   // 2 + 3 + 3 + 2 + 1 + 2 = 13.
   assert.equal(r.score, 13);
   assert.equal(r.abnormal, true);
@@ -143,4 +148,19 @@ test('spec-v1115: high risk rules in without the ASA class', () => {
   assert.equal(r.abnormal, true);
   assert.equal(r.floorOnly, false);
   assert.match(r.band, /high risk/);
+});
+
+
+test('spec-v1128: the two graded choices are a floor, not two negatives', () => {
+  const r = emergencySurgeryScore({ ageOver60: true });
+  assert.equal(r.score, 2);
+  assert.equal(r.floorOnly, true);
+  assert.equal(r.unstated.length, 2);
+  assert.match(r.band, /ESS at least 2 of 29 on what was entered/);
+  assert.match(r.band, /cannot be read off this total yet/);
+  assert.doesNotMatch(r.band, /low predicted 30-day mortality/);
+
+  const stated = emergencySurgeryScore(essStated({ ageOver60: true }));
+  assert.equal(stated.floorOnly, false);
+  assert.match(stated.band, /low predicted 30-day mortality/);
 });

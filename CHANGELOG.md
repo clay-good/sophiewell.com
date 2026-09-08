@@ -33,6 +33,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Three more scores reported a figure their inputs could not support.** The
+  CLIF-C acute-on-chronic liver failure score graded six ungraded organ systems
+  as working and printed a number off the minimum; the HScore for
+  haemophagocytic syndrome guarded its five laboratory values and not the two
+  picklists beside them, though its own refusal explains why unentered values
+  matter; and the Emergency Surgery Score read its two picklists as negatives
+  among twenty checkboxes that were right all along. All three now say what is
+  outstanding and that the figure is a floor. See docs/spec-v1128.md.
 - **A myeloma clot-risk score gave a risk band from a form that could not
   support one.** The IMPEDE VTE score has two picklists that pull in opposite
   directions -- steroids raise the score, blood thinners lower it -- and both

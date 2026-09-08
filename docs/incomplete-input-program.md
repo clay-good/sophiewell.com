@@ -263,6 +263,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1125](spec-v1125.md) | The open question from four days ago, answered |
 | [v1126](spec-v1126.md) | A sequence that exists only to upgrade |
 | [v1127](spec-v1127.md) | Checking monotonicity instead of assuming it |
+| [v1128](spec-v1128.md) | The three spec-v1127 deferred |
 
 ### And the same question from the other side
 
