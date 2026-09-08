@@ -32,6 +32,24 @@ test.skip(({ browserName }) => browserName !== 'chromium', 'catalog sweep is chr
 // The words a tile reaches for when an untouched form has been read as normal.
 const REASSURING = /\b(no |none|normal|absent|negative|low risk|minimal|mild|intact|healed|closed|not indicated|unlikely|remission|clear|independent|full)\b/i;
 
+// spec-v1130: match the VERDICT, not the whole reading.
+//
+// These tiles print their band TABLE after the verdict -- "FLACC 6: moderate
+// pain per Merkel 1997 (0 relaxed; 1-3 mild discomfort; 4-6 moderate; 7-10
+// severe)" -- and `mild` in that parenthesis matched. So `flacc`, `painad` and
+// `nips` were reported as reading REASSURING on an untouched form while each
+// actually reads "moderate pain" or "severe pain", which this probe's own header
+// says is not a suspect.
+//
+// That is spec-v1075's rule -- a vocabulary match over a tile's whole output is
+// a match against its boilerplate -- which is written down in this programme's
+// own open-items list, and which this probe had. Drop the parenthetical band
+// tables and keep the first sentence, which is where every one of these tiles
+// puts its verdict.
+const verdictOf = (reading) => String(reading)
+  .replace(/\([^)]*\)/g, ' ')
+  .split(/(?<=[.;])\s/)[0];
+
 test('which slider-scored tiles read as reassuring before anyone touches them', async ({ page }) => {
   test.setTimeout(900_000);
 
@@ -59,7 +77,7 @@ test('which slider-scored tiles read as reassuring before anyone touches them', 
     // A tile that asks, or owns up to what it has not been given, is not this.
     if (ASKING.test(seen.reading) || DISCLOSING.test(seen.reading)) continue;
     if (!seen.reading) continue;
-    if (!REASSURING.test(seen.reading)) continue;
+    if (!REASSURING.test(verdictOf(seen.reading))) continue;
     rows.push({ id, ...seen, reading: seen.reading.slice(0, 160) });
   }
 

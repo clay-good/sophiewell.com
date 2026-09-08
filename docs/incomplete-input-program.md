@@ -265,6 +265,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1127](spec-v1127.md) | Checking monotonicity instead of assuming it |
 | [v1128](spec-v1128.md) | The three spec-v1127 deferred |
 | [v1129](spec-v1129.md) | A subtype letter that decides whether the airway is involved |
+| [v1130](spec-v1130.md) | The probe was matching its subjects' own footnotes |
 
 ### And the same question from the other side
 
@@ -404,7 +405,14 @@ What is left is narrower than when this page was written:
   that system as "pulmonary 0". The half of the question that needs no judgment — fields the
   browser renders as a `<select>`, which always carries a value — is now gated per field.
 
-- **Thirteen tiles read as reassuring before anyone touches them** (spec-v1079, measured by
+- ~~**Thirteen tiles read as reassuring before anyone touches them**~~ **One**, and it is a design
+  decision rather than a defect ([spec-v1130](spec-v1130.md)). Eight were fixed in spec-v1080 to
+  spec-v1085; of the five the probe still printed, three were the probe matching `mild` inside each
+  tile's own band table while the verdict said *moderate pain* or *severe pain* — spec-v1075's rule,
+  in this list, in this probe. Matching the verdict rather than the whole reading leaves
+  `hunt-hess-wfns`, on the wording of Hunt-Hess grade III. The original text follows.
+
+  (spec-v1079, measured by
   `slider-default-probe.spec.js`). A slider cannot be blank, so the control answers for the reader:
   `braden` is fixed (spec-v1080),
   `katz-adl` and `lawton-iadl` in spec-v1081, `white-song`, `apgar` and `npass` in spec-v1082. `norton-push` and `vip-extravasation` in spec-v1083, which took spec-v1045's "answer with the
