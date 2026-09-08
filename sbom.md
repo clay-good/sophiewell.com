@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `cf418259b58acf24`
-Generated: 2026-09-08T04:07:08.827Z
+Build ID: `3d6579a78c16ad2b`
+Generated: 2026-09-08T05:07:43.254Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -761,7 +761,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/schobinger-avm-v497.js` | 3484 | `fd7d680fede1965fd9a9026d0977e4f2c1970e30d33718df3daaca235dfed009` |
 | `lib/schofield-v779.js` | 4325 | `7c398e3b1dc2df66c5323baee0f73ff66c28927fb47a72ede85dfd51d2de4931` |
 | `lib/schwab-england-v385.js` | 4331 | `caddd0709826db63186ebf0a5f8b60fd9a3e00fa934bddc3e0331977f70c5e4b` |
-| `lib/scoring-v4.js` | 275146 | `3eab3e975a82d3d00c48a2f6a64a96fdd4993b6669a1c7d617a375448e9c09ca` |
+| `lib/scoring-v4.js` | 276421 | `6f9fe280e4cbf9ae60923b4cdfaf0e5d43ecd49979d4dcaa56e8ee1606c62ea4` |
 | `lib/scoring-v5.js` | 13821 | `89b532534c64d0e47a4c2e7978ec5d68f1a6d101c61ac586056a0764b8d05039` |
 | `lib/scoring-v6.js` | 27427 | `ed570d8507d63371de2181a97743f8ee1f40e2042eedba9dac2216ed247d6fad` |
 | `lib/scp-pushing-v562.js` | 12399 | `6da019a04668722b7a8d448b4d7bf9908717629b72e4a162088e74363ad62360` |
@@ -799,7 +799,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/spitz-atresia-v479.js` | 2772 | `82c5ecf9649558c4767feb5ae6dac08de927b4ccf53b29a987524255891eb031` |
 | `lib/sportsmsk-v244.js` | 6969 | `4b4589408faef5ff873d2acd2a7593f9c6d6b1ab303bb01bdd35eabd939abd9f` |
 | `lib/stamey-incontinence-v465.js` | 2929 | `e2cded2c8e4b0734d0581d0d1715dad18f8b119eb45175ab59d842b11702f112` |
-| `lib/startback-v781.js` | 4071 | `e56e0ff8dc44d8254e7afbc509a2012c39b69b2266d9ea13a82955c1b396e0c0` |
+| `lib/startback-v781.js` | 5326 | `7e26e6de04dbd1e58d38d0aa68004de76a2998aa583d71883ef4dc14966e8eaa` |
 | `lib/steinberg-avn-v407.js` | 4524 | `ccb1b143de3be3104e76ed0e4250a99d285f9a59a9428fded38d4a5adc07e93f` |
 | `lib/steinbrocker-ra-v469.js` | 3579 | `a2fc9925c8ec0461e7b245f71e15664a453dca69636a548f6cf0f012a185c14f` |
 | `lib/sternbach-v589.js` | 13053 | `720e9250cdc1ad1f9e75485c0a41919c2321c18836f991bcec0ebc3c6cad5e3e` |
@@ -1708,7 +1708,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-c.js` | 24555 | `82ebad28ab001aacbbb39459436ed2f9f3df86971209a4bb178ad2f108a98742` |
 | `views/group-e.js` | 47145 | `7b189991aaaac3dc4be3aad8e5c83c8673e053eae32e74aee12740f4957ae887` |
 | `views/group-f.js` | 50610 | `2a10d419be69c01c51cbf0100f9284fc06e239217cb87f12b123b33e524bd334` |
-| `views/group-g.js` | 246726 | `a1f90f330daa4b2005ee7ffcf5e853e5ad9a3a62f93bc414b2dfd86b15c6acd8` |
+| `views/group-g.js` | 247484 | `16f3efaba936c767acf1e73e7640c910d27b9239c170e344d1d8c35391dc90b3` |
 | `views/group-h.js` | 30041 | `ef2d74336a9ab03aa5fc8307f4d76ae8023dc6ecc80347c561e1269bc539fcea` |
 | `views/group-i.js` | 24531 | `45e211a606ce652d195bf21276842a34213384c8f34d650785802db20c3401b5` |
 | `views/group-j.js` | 9024 | `7d8ad642f932ac040e85c1c2c4b35cc0b20acd2d81415ad7740e547b845fdae2` |

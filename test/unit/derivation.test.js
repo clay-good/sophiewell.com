@@ -2896,3 +2896,28 @@ test('clearDerivationSteps is a no-op without a panel (spec-v1071)', () => {
     else delete globalThis.document;
   }
 });
+
+// --- spec-v1122: six unrated organ systems reported as "Low (~10% mortality)" ---
+
+test('spec-v1122: an ungraded SOFA is not a low-mortality SOFA', () => {
+  const r = sofa({});
+  assert.equal(r.score, 0);
+  assert.equal(r.ungraded.length, 6);
+  assert.equal(r.floorOnly, true);
+  assert.match(r.band, /at least 0 of 24 on what was graded/);
+  assert.match(r.band, /can only add points/);
+  assert.doesNotMatch(r.band, /Low \(~10% mortality\)/);
+
+  // Graded and all zero is a real reading.
+  const graded = sofa({ respiration: 0, coagulation: 0, liver: 0, cardiovascular: 0, cns: 0, renal: 0 });
+  assert.equal(graded.floorOnly, false);
+  assert.match(graded.band, /Low \(~10% mortality\)/);
+});
+
+test('spec-v1122: the higher bands rule in from a subset', () => {
+  // Rule 13: eleven points is eleven whatever the ungraded systems hold.
+  const r = sofa({ respiration: 4, coagulation: 4, liver: 3 });
+  assert.equal(r.score, 11);
+  assert.equal(r.floorOnly, false);
+  assert.match(r.band, /High \(~40-50%\)/);
+});

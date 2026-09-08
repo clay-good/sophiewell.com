@@ -606,7 +606,13 @@ export const renderers = {
     for (const [l, id] of sf) {
       root.appendChild(el('p', {}, [
         el('label', { for: id, text: l }), el('br'),
-        el('select', { id }, [0, 1, 2, 3, 4].map((n) => el('option', { value: String(n), text: String(n) }))),
+        // spec-v1122: rule 8. These opened on "0", which on the SOFA means an
+        // organ system graded and found undysfunctional, so the tile answered
+        // "SOFA 0 - Low (~10% mortality)" before anyone had graded anything.
+        el('select', { id }, [
+          el('option', { value: '', text: 'Not graded' }),
+          ...[0, 1, 2, 3, 4].map((n) => el('option', { value: String(n), text: String(n) })),
+        ]),
       ]));
     }
     const o = out(); root.appendChild(o);
@@ -620,7 +626,13 @@ export const renderers = {
       const sofaInputs = Object.fromEntries(sf.map(([, id]) => [
         id === 's-resp' ? 'respiration' : id === 's-coag' ? 'coagulation' : id === 's-liv' ? 'liver' :
         id === 's-cv' ? 'cardiovascular' : id === 's-cns' ? 'cns' : 'renal',
-        nv(id),
+        // spec-v1122: nvOrNull, not nv. `nv` is `Number(value)`, and Number('')
+        // is 0 -- so the "Not graded" option added above would have arrived at
+        // the library as a grade of 0 and the guard would never have fired. That
+        // is spec-v1040's rule 7 exactly: a guard against a missing value is a
+        // guard against one SHAPE of missing value, and the reader decides which
+        // shape it gets.
+        nvOrNull(id),
       ]));
       const b = S4.sofa(sofaInputs);
       o.appendChild(el('h2', { text: `qSOFA ${a.score} - ${a.band}` }));

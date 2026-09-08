@@ -237,6 +237,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1119](spec-v1119.md) | The first three off the new probe's list |
 | [v1120](spec-v1120.md) | Two columns nobody looked at, stated as two normal findings |
 | [v1121](spec-v1121.md) | The check rule 23 recommended, and what it found |
+| [v1122](spec-v1122.md) | Six organ systems, and one point that mattered in one place |
 
 ### And the same question from the other side
 

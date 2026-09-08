@@ -33,6 +33,17 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A sepsis organ-failure score read six ungraded systems as six healthy
+  ones.** The SOFA half of the qSOFA/SOFA tile answered "Low (~10% mortality)"
+  before anyone had graded anything, because its six picklists opened on 0 and a
+  blank was read as a grade of zero. The qSOFA half beside it was right all
+  along: its three inputs are checkboxes, and an unticked box is a real "no".
+  The picklists now open on "Not graded" and the low-mortality band waits for
+  them; the higher bands are unchanged. Separately, the STarT Back tool's one
+  graded item is now guarded only at the single total where the point it carries
+  can move a patient from low to medium risk -- refusing anywhere else would
+  break the ordinary case to catch a defect that is not there. See
+  docs/spec-v1122.md.
 - **A cytokine-release-syndrome grade reported two findings nobody had made.**
   The ASTCT grade is the more severe of hypotension and hypoxia, and both
   picklists opened on "None", so the tile answered "grade 1 of 4: fever without

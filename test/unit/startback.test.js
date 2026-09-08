@@ -52,3 +52,23 @@ test('an unknown bothersomeness level is rejected, not treated as zero', () => {
   assert.equal(r.valid, false);
   assert.equal(r.field, 'bother');
 });
+
+test('spec-v1122: the one graded item is guarded only where it can cross', () => {
+  // Items 1-8 are checkboxes, so an unticked one is a real answer (rule 4).
+  // Item 9 is a select worth 1 point, and a total of exactly 3 is the only
+  // place that point separates low risk from medium.
+  const three = startBack({ q1: true, q2: true, q3: true });
+  assert.equal(three.botherStated, false);
+  assert.equal(three.floorOnly, true);
+  assert.match(three.band, /at least 3 of 9/);
+  assert.doesNotMatch(three.band, /low risk/);
+
+  // Stated, the low reading is earned.
+  const stated = startBack({ q1: true, q2: true, q3: true, bother: 'not-at-all' });
+  assert.equal(stated.floorOnly, false);
+  assert.match(stated.band, /low risk/);
+
+  // Anywhere else the point cannot cross a boundary, so the tile answers.
+  assert.match(startBack({}).band, /low risk/);
+  assert.match(startBack({ q1: true, q2: true, q3: true, q4: true }).band, /medium risk/);
+});
