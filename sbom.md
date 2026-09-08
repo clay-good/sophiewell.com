@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `3525837999ec223d`
-Generated: 2026-09-08T06:55:54.424Z
+Build ID: `38071d86910f97b1`
+Generated: 2026-09-08T07:37:05.760Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -359,7 +359,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/hematology-v229.js` | 8046 | `4d939895522748f249e51ce0d3e4159bc8fec828297d19e4b706ae3922625404` |
 | `lib/heme-onc-risk-v211.js` | 11804 | `cbe39fe689c3723cd7eef4796c470a780d23dd31ac350a9cbd19bad2a05561c9` |
 | `lib/heme-prognostic-v216.js` | 13013 | `c6389635286fd17370fac65bfe97663eaf3e8ffa1b7852620f7b7011d532b6e8` |
-| `lib/heme-risk-v189.js` | 12298 | `dff84aab9784ab4cda57e923c6f7454447bdd25807742645fe707a03baa29478` |
+| `lib/heme-risk-v189.js` | 13799 | `d94b111f4a8a7efc34646567508d2eaa16eee64ebbe5284faf6935d578d9c2a0` |
 | `lib/heme-staging-v188.js` | 13600 | `85a46011c9dd314e2f9625b04616a14bf9bf2a8e2d47eedcb88f3047d6730dac` |
 | `lib/heme-v132.js` | 15633 | `cdb763411d4705accb2c5f025ac5bb45589d63aa1b7e05411411578d19a615c7` |
 | `lib/hemederm-v245.js` | 6951 | `8da43afd2f8072c0e3b917b12e1ee8a4770afd7c1a6b2cf3ff5ca94e414a1c2b` |
@@ -451,7 +451,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/lead-v863.js` | 7188 | `ca74cb7427f175f7b029ac7c9801abb8549505a8015e5f4e60e15a4b656606e3` |
 | `lib/leddy-packer-v456.js` | 3483 | `28e7739172e81201d43e89616cbbd383e8584d101a7d1375c44e4b6207836793` |
 | `lib/leeds-enthesitis-index-v706.js` | 3052 | `59512421e4f89f211115d4a7a866b3f6d13ee272e75975cc817e0f9cb5123ca9` |
-| `lib/leipzig-wilson-v812.js` | 7641 | `d74baa657f13b14bfed1bd394febf4c65acf9d08a345b8cf4bfb576184e42df2` |
+| `lib/leipzig-wilson-v812.js` | 9441 | `c535b6ce940521e8c1367bb2a89a8bd88e3e70e04e19f784ebcc1c61a0699df0` |
 | `lib/lepine-v596.js` | 11457 | `fdef3da0cbcaf433af572e8b26744d0ca7235c22811a8d44e31ebda325ea934f` |
 | `lib/letournel-acetabulum-v466.js` | 5574 | `689cf7aaae5d4dc8c93260f73203ea0f3c96cea278fc61f8fc822f9418000c87` |
 | `lib/levine-edwards-v411.js` | 4146 | `5b8fad3241eb0819b4f66f2a3229cf0a7b2ae1452ca8ed9a928ae81e7f8514e8` |

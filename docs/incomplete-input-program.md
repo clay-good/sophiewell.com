@@ -45,7 +45,13 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
    (spec-v1073). A graded select always carries a value, so the renderer never meets an unanswered
    item; an API caller omits keys by default. Where the browser makes an answer unavoidable, the
    adapter has to declare it required.
-10. **A sum and a mean fail differently — check monotonicity, never assume it** (spec-v1098). Every
+10. **A sum and a mean fail differently — check monotonicity, never assume it** (spec-v1098), and
+    check it by reading WHICH VALUE THE FALLBACK SELECTS, not by grepping for a negative
+    (spec-v1127). `impede-vte` holds negatives and is genuinely not monotone: its two graded
+    selects pull in opposite directions, so a partial form gives a RANGE. `leipzig-wilson` holds a
+    negative and IS monotone, because an omission lands on a different, zero-point default and can
+    never reach it. A grep would have got the second wrong; an assumption would have got the first
+    wrong. Every
     rule above rests on the score being monotone in the number of inputs. `loe-silness-gingival-index`
     looks exactly like the body-surface family fixed in spec-v1093 and is not one: it is a *mean*, so
     omitting the surfaces that scored 2 lowers the index while omitting those that scored 0 raises it.
@@ -256,6 +262,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1124](spec-v1124.md) | The third author to notice a default and reason past it |
 | [v1125](spec-v1125.md) | The open question from four days ago, answered |
 | [v1126](spec-v1126.md) | A sequence that exists only to upgrade |
+| [v1127](spec-v1127.md) | Checking monotonicity instead of assuming it |
 
 ### And the same question from the other side
 

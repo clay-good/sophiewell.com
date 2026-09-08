@@ -33,6 +33,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A myeloma clot-risk score gave a risk band from a form that could not
+  support one.** The IMPEDE VTE score has two picklists that pull in opposite
+  directions -- steroids raise the score, blood thinners lower it -- and both
+  opened on "none". So an unfilled pair left the score neither too high nor too
+  low but simply unknown, and the tile still named a band. It now reports the
+  range the entries allow, and names a band only when the whole range sits
+  inside one. The Wilson-disease score beside it was checked the same way and is
+  a floor after all, so it says "at least" and how many of its six items were
+  entered. See docs/spec-v1127.md.
 - **A prostate-MRI category was never upgraded by a sequence nobody entered.**
   PI-RADS grades from a driver sequence and a second one that exists only to
   raise the category -- a positive contrast study takes a peripheral-zone 3 to a
