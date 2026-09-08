@@ -511,6 +511,29 @@ What is left is narrower than when this page was written:
   a default parameter and printed it. The remaining 141 fall back to zero, which is spec-v1040's
   question.
 
+## What `probe-omitted-field-decides` prints today, and why each row is left
+
+After [spec-v1141](spec-v1141.md) its first section is 13 rows, and **every one has
+been read**. Recorded so the next reader starts here rather than re-deriving it:
+
+| Row | Why it stands |
+| --- | --- |
+| `homa-ir`, `calcium-phosphate-product`, `vitamin-d-level`, `kings-college` (units) | the reading names the unit it used, which is the [spec-v1133](spec-v1133.md) model: the assumption is visible where the verdict is |
+| `rmi-ovarian` | names the variant in the answer — *"RMI 1 = U(3) x M(3) x CA-125(20)"* |
+| `boston-caa`, `pertussis-case-def`, `hiv-pep-occupational`, `vod-sos` | each says what was **not marked / not recorded / not entered** rather than concluding from it |
+| `glim-malnutrition`, `sea-guideline` | already refuse or ask, in as many words |
+| `migraine-ichd3`, `tension-headache-ichd3`, `indomethacin-headache-ichd3` | the dropped criteria are checkboxes; an unticked box is a real "no" (rule 4) |
+
+The second section's top rows are now the **fixed** tiles showing their new
+disclosures — *"between -6 and 2 … whatever the angina index turns out to be"*,
+*"MASCC at least 21"*, *"Partial Mayo score"* — which is what a working probe
+looks like after a wave. `smart-cop`'s three oxygenation rows turn on a candidate
+value of 0, and a PaO2 of 0 is not a patient ([spec-v1099](spec-v1099.md)).
+
+**A probe whose every row has been read is not a probe with nothing left to
+say** — the catalog moves, and the rows change with it. It is a probe whose
+current output is spent.
+
 ## Probes measured and rejected
 
 Three questions asked of the whole catalog after spec-v1048, each of which sounded like it should
