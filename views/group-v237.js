@@ -51,7 +51,12 @@ function render(o, r, valueLabel) {
   resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: valueLabel, value: `${r.score}` }]);
   note(o, r.detail); note(o, r.note);
 }
-const G14 = [['1', '1 (normal/mild)'], ['2', '2'], ['3', '3'], ['4', '4 (severe)']];
+// spec-v1131: the blank comes first. Without it all four Wilkins characteristics
+// opened on "1 (normal/mild)" -- the best appearance the instrument has -- and the
+// tile answered "Wilkins score 4, favorable for balloon valvuloplasty" about a valve
+// nobody had looked at. The library floors an ungraded characteristic; this is what
+// lets the reader say so on the page (rule 8).
+const G14 = [['', 'Not graded'], ['1', '1 (normal/mild)'], ['2', '2'], ['3', '3'], ['4', '4 (severe)']];
 
 export const renderers = {
   'romhilt-estes'(root) {

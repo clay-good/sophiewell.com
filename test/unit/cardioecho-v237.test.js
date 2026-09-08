@@ -43,3 +43,30 @@ test('rate-pressure-product: HR x SBP', () => {
   const r = ratePressureProduct({ hr: 80, sbp: 140 });
   assert.equal(r.score, 11200);
 });
+
+test('spec-v1131: an ungraded valve characteristic is not the best appearance', () => {
+  // `lvl(v, 1, 4)` returns its LOW bound, and 1 on each Wilkins characteristic
+  // is the best appearance there is. Four ungraded ones answered "Wilkins score
+  // 4 -- favorable for balloon valvuloplasty", the most favourable reading the
+  // instrument has, and the one that chooses a percutaneous procedure over open
+  // surgery.
+  const none = wilkinsScore({});
+  assert.equal(none.score, 4);
+  assert.equal(none.ungraded.length, 4);
+  assert.equal(none.floorOnly, true);
+  assert.match(none.band, /at least 4 on what was graded/);
+  assert.doesNotMatch(none.band, /favorable for balloon valvuloplasty/);
+
+  // Graded as 1 across the board, the favourable reading is earned.
+  const best = wilkinsScore({ mobility: 1, thickening: 1, calcification: 1, subvalvular: 1 });
+  assert.equal(best.floorOnly, false);
+  assert.match(best.band, /favorable for balloon valvuloplasty/);
+});
+
+test('spec-v1131: unfavourable rules in from a subset', () => {
+  // Rule 13: 13 points is 13 whatever the ungraded characteristic holds.
+  const r = wilkinsScore({ mobility: 4, thickening: 4, calcification: 4 });
+  assert.ok(r.score >= 13);
+  assert.equal(r.floorOnly, false);
+  assert.match(r.band, /unfavorable for balloon valvuloplasty/);
+});

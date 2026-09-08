@@ -27,3 +27,35 @@ test('rox rejects invalid inputs', () => {
   assert.throws(() => rox({ spo2: 95, fio2: 0, rr: 20 }), /fio2/);
   assert.throws(() => rox({ spo2: 95, fio2: 0.5, rr: 0 }), /rr/);
 });
+
+test('spec-v1131: the ROX timepoint is not a default, and only guards where it decides', () => {
+  // `hoursAfterStart = 12` was a default parameter, so an unstated timepoint
+  // became the 12-hour window AND the reading named it: "failure-predicting at
+  // 12h; consider escalation", about an hour nobody gave. The same score at 2 h
+  // is "indeterminate; reassess".
+  const undecided = rox({ spo2: 90, fio2: 0.6, rr: 50 });
+  assert.equal(undecided.score, 3);
+  assert.equal(undecided.hourStated, false);
+  assert.equal(undecided.hourDecides, true);
+  assert.match(undecided.band, /enter the hours since high-flow was started/);
+  assert.doesNotMatch(undecided.band, /at 12h/);
+
+  assert.match(rox({ spo2: 90, fio2: 0.6, rr: 50, hoursAfterStart: 2 }).band, /indeterminate at 2h/);
+  assert.match(rox({ spo2: 90, fio2: 0.6, rr: 50, hoursAfterStart: 12 }).band, /failure-predicting at 12h/);
+});
+
+test('spec-v1131: outside that range the timepoint changes nothing, so the tile answers', () => {
+  // Rule 25. At or above 4.88 every timepoint calls success; under 2.85 every
+  // one calls failure. Neither reading may name an hour it was not given.
+  const success = rox({ spo2: 92, fio2: 0.5, rr: 25 });
+  assert.equal(success.hourDecides, false);
+  assert.match(success.band, /success-predicting/);
+  assert.doesNotMatch(success.band, /\dh\b/);
+
+  const failure = rox({ spo2: 90, fio2: 0.75, rr: 60 });
+  assert.ok(failure.score < 2.85);
+  assert.equal(failure.hourDecides, false);
+  assert.match(failure.band, /failure-predicting at every published timepoint/);
+  assert.match(failure.band, /consider escalation/);
+  assert.doesNotMatch(failure.band, /at 12h/);
+});

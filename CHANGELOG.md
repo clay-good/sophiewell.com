@@ -33,6 +33,24 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **An echo score answered "favorable for balloon valvuloplasty" for a valve
+  nobody had graded.** The Wilkins score rates four features of the mitral valve
+  from 1 to 4, and a feature that had not been graded was being read as 1 -- the
+  best appearance there is -- so an untouched form scored 4 and read as
+  favorable, the same words as a valve that had been imaged and graded 1 across
+  the board. The four grades now open on "Not graded", and a partly graded valve
+  reports its total as a floor and names what is outstanding. See
+  docs/spec-v1131.md.
+
+- **The ROX index put an hour in its answer that nobody had entered.** The index
+  predicts whether high-flow oxygen is working, and its failure cutoff depends on
+  how long the therapy has been running: the same score is "failure-predicting;
+  consider escalation" at 12 hours and "indeterminate; reassess" at 2. The hour
+  defaulted to 12 in the calculation and was pre-filled on the page, so the
+  timepoint was reported as though it had been given. It is now asked for, but
+  only where it decides -- above 4.88 and below 2.85 every published timepoint
+  agrees, and those readings still answer. See docs/spec-v1131.md.
+
 - **A myasthenia gravis class reported the wrong subtype for a patient whose
   subtype nobody stated.** The MGFA letter distinguishes limb-predominant
   weakness from the oropharyngeal and respiratory form -- the one that involves

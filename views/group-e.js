@@ -748,14 +748,19 @@ export const renderers = {
     root.appendChild(field('SpO2 (%)', 'rx-spo2', { min: 0, max: 100, value: 94 }));
     root.appendChild(field('FiO2 (decimal, e.g., 0.5)', 'rx-fio2', { value: 0.5 }));
     root.appendChild(field('Respiratory rate (breaths/min)', 'rx-rr', { min: 0, value: 24 }));
-    root.appendChild(field('Hours after HFNC start (2 / 6 / 12)', 'rx-hr', { value: 12 }));
+    // spec-v1131: no pre-filled 12. The hour was a default in the library and a
+    // default on the page, and between ROX 2.85 and 4.88 it is the whole of the
+    // answer -- "failure-predicting at 12h; consider escalation" versus
+    // "indeterminate at 2h; reassess". Blank reaches the library as null so it can
+    // ask (rule 21: a default is not a defect; a silent default is).
+    root.appendChild(field('Hours after HFNC start (2 / 6 / 12)', 'rx-hr', {}));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       const r = V4.rox({
         spo2: num('rx-spo2'),
         fio2: num('rx-fio2'),
         rr: num('rx-rr'),
-        hoursAfterStart: num('rx-hr'),
+        hoursAfterStart: numOrNull('rx-hr'),
       });
       o.appendChild(el('p', { text: `ROX: ${r.score.toFixed(2)}` }));
       o.appendChild(el('p', { text: r.band }));

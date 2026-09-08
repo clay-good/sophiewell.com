@@ -266,6 +266,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1128](spec-v1128.md) | The three spec-v1127 deferred |
 | [v1129](spec-v1129.md) | A subtype letter that decides whether the airway is involved |
 | [v1130](spec-v1130.md) | The probe was matching its subjects' own footnotes |
+| [v1131](spec-v1131.md) | Two fallbacks that chose the best case |
 
 ### And the same question from the other side
 
@@ -481,7 +482,12 @@ What is left is narrower than when this page was written:
 
 - **146 coercion helpers cannot tell a blank from a zero** (`scripts/probe-blank-coercions.mjs`).
   Most are harmless; which ones are not depends on what their renderer sends, so the report is a
-  reading aid rather than a gate (spec-v1040).
+  reading aid rather than a gate (spec-v1040). **Sorting it by the fallback VALUE is what made it
+  usable** ([spec-v1131](spec-v1131.md)): five of the rows fall back to something other than a plain
+  zero, and two of those chose the instrument's most favourable level -- `wilkins-score` answered
+  "favorable for balloon valvuloplasty" for a valve nobody had graded, and `rox` had the timepoint as
+  a default parameter and printed it. The remaining 141 fall back to zero, which is spec-v1040's
+  question.
 
 ## Probes measured and rejected
 
