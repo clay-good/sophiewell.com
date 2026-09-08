@@ -44,13 +44,18 @@ export const renderers = {
   'crs-grade'(root) {
     note(root, 'Cytokine release syndrome (CRS) grading — the ASTCT consensus (Lee 2019) after immune-effector-cell / CAR-T therapy. Mark the fever and pick the hypotension and hypoxia levels; the grade is the more severe of the two axes. Grades ≥3 are severe.');
     root.appendChild(check('Fever ≥38°C, not otherwise explained', 'crs-fever'));
+    // spec-v1120: rule 8. Both opened on "None", so the tile answered "grade 1
+    // of 4: fever without hypotension or hypoxia" for a patient nobody had
+    // examined for either.
     root.appendChild(select('Hypotension', 'crs-hypotension', [
+      ['', 'Not stated'],
       ['none', 'None'],
       ['novaso', 'Present, not requiring vasopressors'],
       ['onevaso', 'Requiring one vasopressor (± vasopressin)'],
       ['multivaso', 'Requiring multiple vasopressors'],
     ]));
     root.appendChild(select('Hypoxia', 'crs-hypoxia', [
+      ['', 'Not stated'],
       ['none', 'None'],
       ['lowflow', 'Low-flow nasal cannula (≤6 L/min) or blow-by'],
       ['highflow', 'High-flow nasal cannula (>6 L/min) or mask'],

@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `39a154c4528fbfc7`
-Generated: 2026-09-08T03:17:20.892Z
+Build ID: `cf418259b58acf24`
+Generated: 2026-09-08T04:07:08.827Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -205,7 +205,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/critcare-severity-v200.js` | 15639 | `e08d8c99b3000904ce53f517eb8b647868d44e31b46c43b9e75aa9dc167d3738` |
 | `lib/critcare-v112.js` | 14386 | `d20789357fe757903ac7ed4b901732f88df787fd781e16dcec367d011e95dd78` |
 | `lib/crowe-ddh-v353.js` | 3621 | `cbfcd5066efa27d55b012cfe0174650bb2009a8d7f8e6ddc5dcf5a4ffbbc789d` |
-| `lib/crs-v305.js` | 4220 | `4aacc118585e7a7f0b78bfe65aad43a888fc9ec3e3ea7f145b4a9516bf0857bb` |
+| `lib/crs-v305.js` | 5412 | `ef4acb9a6090b2dee839747bc0cc8b5b7adecc9c3d96e89fdc601b72fa835c71` |
 | `lib/cts6-v773.js` | 3589 | `50ab3a3aa777a4ed12077b73c3a3a3dc707df6ff98e36a7c579aec5451333c8e` |
 | `lib/cuff-leak-v903.js` | 7823 | `0cf0d0afa2741c0d26f357fe35a05cfd0092146f4282d32e3d331b3adad04faa` |
 | `lib/cvrisk-engines-v202.js` | 4187 | `d55686ffb06e0646e022e949fb30dbd7f65cbd24c317dc0326e02684fa8e2d92` |
@@ -373,7 +373,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/hepatology-gibleed-v201.js` | 19770 | `b13202719fc096c742097095af56bcd722c07b67f7e138a791e72cd818eb7da6` |
 | `lib/hepatology-prognosis-v220.js` | 11769 | `1f9c49980dee9a6c4959fb670f74c99b1bbd44eab695f06dee16190eee21addb` |
 | `lib/hepgi-v190.js` | 11863 | `18fdde7face8dec98d83118b4840f01f3e93a7594a0cade787ab75771707e239` |
-| `lib/hepgi-v93.js` | 17560 | `e6f4c05d7e8d3890b1cb6097928235717c096d894726cff44a77d457da1d6667` |
+| `lib/hepgi-v93.js` | 18439 | `146d99dfaa3b109d14c44b957027287107688667a5a91ae8b8c134777a229aa9` |
 | `lib/herring-pillar-v347.js` | 4295 | `5402d155c338948987f458750b247521fc6ba36f5a20d9501eb4b97e6ae52794` |
 | `lib/hf-ef-classification-v840.js` | 8378 | `4ba17b89bcb66c65f821f7cb6335cab5c57e428fcf22c2da876fa636ce7a972e` |
 | `lib/hf-stages-abcd-v842.js` | 7839 | `93bde8395e5ff6baf50da213ef74c1358b09d224c3fdcc6fae245eb1dc8024c2` |
@@ -1788,7 +1788,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v187.js` | 10371 | `c32afab934a92a34b94abe62b04a4a3659fbd09ca240d9b1730c3dd380b5b226` |
 | `views/group-v188.js` | 9956 | `6fba2504496749fe6bf3db8fa7805dcdf3503e24db85d8d828f1f347fbf220a7` |
 | `views/group-v189.js` | 10367 | `9ff86604b2b736e3f1380705f223cb2e110df738fe3770122e593fc9b62d8346` |
-| `views/group-v19.js` | 14440 | `b507059c8c7b70ff6c8195889d6080a3c4ba4611da01a5f0e74ae6148c3b2ea2` |
+| `views/group-v19.js` | 14628 | `0c3fa90f6f75b2755d6346239a57a80dfdbb58de18519b8c4fcf5dff736a5f6b` |
 | `views/group-v190.js` | 8333 | `c2d385a8973c0b7860b8e9e991924104a25a0f9d15964171c19aef997be4ac2d` |
 | `views/group-v191.js` | 8365 | `39f02e7ccda29f469025721b77f6c0f61e21e4f6933e4d5528f34ca44aea74c7` |
 | `views/group-v192.js` | 9531 | `0befdfd965d37bb8bfc64e7df87943a18458ad1454247035b840371eaa94fbee` |
@@ -1902,7 +1902,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v302.js` | 3275 | `5aa4e0756e801f8aabca6d36d22a85d6f1512527ee22b0d3bc39cfcff3a61b1b` |
 | `views/group-v303.js` | 2978 | `e4fb201ddf1985f23084198a7c673f6201cb8fb5898ac407be98b0c783f5c267` |
 | `views/group-v304.js` | 3268 | `cbe095c6d0868cdb759a290efc6d72321b70edb477ceae5c660c55cca2a676e7` |
-| `views/group-v305.js` | 3589 | `8b1d46484e19a8f4c42f003e0f2d28d3c4a3ea880f072db861c5e863cf59a608` |
+| `views/group-v305.js` | 3825 | `3efee50c932d6152ce025c5aa4e375146997a400482c56f6a1521a93e15d6f9f` |
 | `views/group-v306.js` | 4327 | `1b332df239ca2e572e38bab6f8f1f77d7ec0e258f2ae9a90c516c95f09a7b707` |
 | `views/group-v307.js` | 3473 | `3f5da8e885d48c4ac3ca694f78e30b9146beafe0cef26a09d19ebfd9bc24371f` |
 | `views/group-v308.js` | 3050 | `c368faa3a9d3ce54fbd2a34da2d6c60f4c7fe425a07b7fb93f2101be7e9a9f6f` |

@@ -51,3 +51,25 @@ test('a systemic criterion nobody measured is not one that is absent (spec-v1066
   assert.match(measured.band, /among those entered/);
   assert.doesNotMatch(measured.band, /cannot yet rule/);
 });
+
+test('spec-v1120: an unstated rectal bleeding also makes severe unreachable', () => {
+  // spec-v1066 guarded the four systemic MEASUREMENTS and left the bleeding
+  // select beside them alone. Severe needs six bloody stools AND a systemic
+  // criterion, so an unstated bleeding rules severe out exactly as four
+  // unmeasured labs did -- and the tile graded moderate for it.
+  const r = trueloveWitts({ stools: 6, temp: 38 });
+  assert.equal(r.bandKey, 'moderate');
+  assert.equal(r.bleedingStated, false);
+  assert.ok(r.outstanding.includes('whether there is rectal bleeding'));
+  assert.match(r.band, /cannot yet rule severe colitis out/);
+
+  const stated = trueloveWitts({ stools: 6, bleeding: 'present', temp: 38 });
+  assert.equal(stated.bandKey, 'severe');
+  assert.equal(stated.bleedingStated, true);
+
+  // Stated as absent, severe is genuinely excluded.
+  const absent = trueloveWitts({ stools: 6, bleeding: 'absent', temp: 38, heartRate: 80, hemoglobin: 13, esr: 10 });
+  assert.equal(absent.bleedingStated, true);
+  assert.equal(absent.bandKey, 'moderate');
+  assert.doesNotMatch(absent.band, /Not entered/);
+});

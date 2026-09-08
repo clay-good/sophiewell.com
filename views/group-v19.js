@@ -143,6 +143,9 @@ export const renderers = {
   'truelove-witts'(root) {
     root.appendChild(field('Stools per day', 'tw-stools', { placeholder: 'e.g. 8', inputmode: 'numeric' }));
     root.appendChild(selectField('Rectal bleeding', 'tw-bleed', [
+      // spec-v1120: rule 8. This opened on "None", so severe colitis was ruled
+      // out for a patient nobody had asked about rectal bleeding.
+      { value: '', text: 'Not stated' },
       { value: 'none', text: 'None' },
       { value: 'present', text: 'Present' },
     ]));

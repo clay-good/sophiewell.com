@@ -33,6 +33,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A cytokine-release-syndrome grade reported two findings nobody had made.**
+  The ASTCT grade is the more severe of hypotension and hypoxia, and both
+  picklists opened on "None", so the tile answered "grade 1 of 4: fever without
+  hypotension or hypoxia" for a patient on CAR-T therapy, where the grade
+  decides tocilizumab and ICU transfer. Separately, severe ulcerative colitis
+  was ruled out for a patient nobody had asked about rectal bleeding: the four
+  systemic criteria beside it were guarded earlier in the release and this
+  picklist was not, though the tile's own message asks for it. Both now open on
+  "Not stated" and say what they are waiting for; the severe readings are
+  unchanged. See docs/spec-v1120.md.
 - **A frailty screen, a pneumonia score and a malnutrition diagnosis answered
   from picklists nobody had touched.** The VES-13 read "not vulnerable" with
   eight of its items unanswered; the CPIS read "VAP less likely" for a chest

@@ -9,11 +9,38 @@ import assert from 'node:assert/strict';
 import { crsGrade } from '../../lib/crs-v305.js';
 
 test('no fever, hypotension, or hypoxia does not meet CRS criteria (grade 0)', () => {
-  const r = crsGrade({});
+  // spec-v1120: both columns stated. They used to fall through to 'none', so
+  // this assertion was reading two unstated observations as two made ones.
+  const r = crsGrade({ hypotension: 'none', hypoxia: 'none' });
   assert.equal(r.grade, 0);
   assert.equal(r.meetsCriteria, false);
   assert.equal(r.abnormal, false);
   assert.match(r.band, /Does not meet CRS criteria/);
+});
+
+test('spec-v1120: an unstated column is not an absent finding', () => {
+  // The grade is the MAX of hypotension and hypoxia, so an unstated one could
+  // only ever raise it -- and the tile said "without hypotension or hypoxia"
+  // about a patient on CAR-T, where the grade decides tocilizumab and ICU.
+  const r = crsGrade({ fever: true });
+  assert.equal(r.grade, 1);
+  assert.equal(r.floorOnly, true);
+  assert.deepEqual(r.unstated, ['the hypotension', 'the hypoxia']);
+  assert.match(r.band, /at least grade 1 of 4 on what was stated/);
+  assert.doesNotMatch(r.band, /without hypotension or hypoxia/);
+
+  const stated = crsGrade({ fever: true, hypotension: 'none', hypoxia: 'none' });
+  assert.equal(stated.floorOnly, false);
+  assert.match(stated.band, /without hypotension or hypoxia/);
+});
+
+test('spec-v1120: grade 3 rules in with the other column unstated', () => {
+  // Rule 13: the max is already 3, and the unstated column cannot lower it.
+  const r = crsGrade({ fever: true, hypoxia: 'highflow' });
+  assert.equal(r.grade, 3);
+  assert.equal(r.floorOnly, false);
+  assert.equal(r.severe, true);
+  assert.match(r.band, /grade 3 of 4/);
 });
 
 test('fever alone is grade 1', () => {

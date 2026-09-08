@@ -112,6 +112,14 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
     exported and a test walks it. Rule 10 says check monotonicity rather than assume it; this is
     the other half — keep checking it.
 
+23. **When a guard's message lists what it needs, the list is a CLAIM** (spec-v1120). In six waves,
+    five separate tiles refused with a message naming an input the code beside it did not require —
+    `ipss-r-mds` ("Enter the cytogenetic risk group"), `ckd-epi-cystatin` and `gap-ipf` ("Enter …
+    sex"), `cpis-vap` ("then select the remaining CPIS components"), `truelove-witts` ("and whether
+    rectal bleeding is present"). The message is the author's own account of what the instrument
+    needs; the guard is usually a subset of it. Reading the two against each other is the cheapest
+    audit in this programme.
+
 22. **A fix to a library is a fix to the surfaces that can REACH it** (spec-v1118). Rule 18 puts
     the guard in the pure function; that is necessary and not sufficient. The controls decide which
     states the function is ever called in, and a control with no empty option makes a
@@ -227,6 +235,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1117](spec-v1117.md) | A mortality figure read off a row nobody had earned |
 | [v1118](spec-v1118.md) | **Finder**: a scoring select neither surface can leave unanswered |
 | [v1119](spec-v1119.md) | The first three off the new probe's list |
+| [v1120](spec-v1120.md) | Two columns nobody looked at, stated as two normal findings |
 
 ### And the same question from the other side
 
