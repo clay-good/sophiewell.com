@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `23ac51c93fc73677`
-Generated: 2026-09-08T01:36:19.728Z
+Build ID: `2b2b7f0cd7d36bcb`
+Generated: 2026-09-08T02:27:23.095Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -149,7 +149,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/cardio-v101.js` | 12751 | `629d5ae5fd15255af72cd65585d5b25ad079e85981772fc33d72ce6694b95940` |
 | `lib/cardio-v102.js` | 15369 | `73550725a00aef254510f776ec1c3765edad60204b0bebe674e8ed66e7b648ad` |
 | `lib/cardio-v104.js` | 14365 | `581150411141a634b4314d5ccf1fe560c96ce8d5c9b8d2555c2a840a2af873f3` |
-| `lib/cardio-v90.js` | 18170 | `7c68d15e545166f293708013d0407fd8c139537ceae47573207db26ea8010d54` |
+| `lib/cardio-v90.js` | 19917 | `d346c618b708aa276541e290cc1bfb241ea5061d7bd2f0b61cd3dc645b962828` |
 | `lib/cardioecho-v237.js` | 8749 | `74102ce8e4ea9a0eb112fbfab36884663650f80dbce62b20b0a6ab86ece79024` |
 | `lib/cardiology-risk-v209.js` | 7709 | `995d41b33272eb9bdfcb07231a7c05897179c68cf969d6339dfe168aa3cdf9d9` |
 | `lib/cardiology-risk-v214.js` | 13668 | `57e82f2ed5ddee8578af62b3291013d254fd1c51359457e14ba0cd2533220c9a` |
@@ -509,7 +509,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/membranous-risk-v878.js` | 11351 | `882c36c07e46543e32f1114792c1124ee9f9ff6b384084fc0a8c221e7dd62062` |
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2468314 | `45871633bb800786ae66884eec5518f5ad902c0ec736677590c545bf0a70fa72` |
+| `lib/meta.js` | 2468424 | `94105a73000c549a9e18d31e90a6729e9b5e9be5ca1eed9c3fea4ff54733adb8` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
 | `lib/metabolic-onc-v88.js` | 15638 | `8fba14b5f51823f5f13729e0170a9b0de0af72bcd36361d507fbea44fb5585aa` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
@@ -584,7 +584,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/nyha-class-v357.js` | 3947 | `9188475fe8f8841468efbc8dac1433f17a421391156cdcfd2f1357d922e9cceb` |
 | `lib/nyhus-hernia-v400.js` | 4753 | `e95f3e6d388ce3f0e80744bbbe6db2cd4a072334c1cef4efde87ac9155e6f7be` |
 | `lib/o-rads-v326.js` | 4404 | `92d6104c9737cad58b5bfd157d613629c1aef44e853eaee54256638ed7d64eeb` |
-| `lib/ob-v138.js` | 16193 | `43883f05cd9c28d9f97b9b656e93c1c7ce3f02c7ec4337203e6fa1932dbb28e2` |
+| `lib/ob-v138.js` | 16989 | `024e3c640d6fe47b04fc5c017da9e71724ea2031748df0d9554846c936f1c916` |
 | `lib/obgyn-v225.js` | 14047 | `6b40fc33206bacd0448b12555edeaf2dffef2e9f1554ab6413e1287ff253d5fb` |
 | `lib/obgyn-v250.js` | 7713 | `5326c2fc2c5eb02959ddc337e1ac095cbfdf3fecd2a9d34dec63678eb7036b15` |
 | `lib/ocular-trauma-score-v614.js` | 9546 | `49ec3b45d088a7b6003b1aa2f6d8437db613b02e77d35a8d0d482407a027b077` |
@@ -730,7 +730,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/rheumcrit-v256.js` | 7930 | `761ffcd908a3560b96656ab09523a41bf5e4f7e643f90da6ef59b5e3b07bc08f` |
 | `lib/ridley-jopling-v534.js` | 13454 | `fb4f0363664d9c1bd23f3d5c8ef32b627ed0c4741342457fb3fdbe253a02c3a2` |
 | `lib/risk-scores-v215.js` | 15691 | `4deabf8e55fdd66e0791f9e872512832ccc01df90778f274857f12cae19a04df` |
-| `lib/risk-v192.js` | 12417 | `c0061eab65f6ccfae0c583bc18bd725daf58d31f934d9c2a24eba427f62976b2` |
+| `lib/risk-v192.js` | 13304 | `bc3357a2490cbfebe66fabcdebab1b9a9c4171253eb9746a919939f5923db142` |
 | `lib/riskscores-v255.js` | 6924 | `37886240e9d0cf2bbde3b0149eb1b8ff62667a4350dc0bed14dc60631f1a3f39` |
 | `lib/risser-sign-v383.js` | 4009 | `4e29f6eea9c402b63018246ff051741b23b4a2894f8a44abc3c80abdc576a67d` |
 | `lib/rls-criteria-v856.js` | 8355 | `fa9a6c8ac7d11012acd1e913066ed4f13df1adec66715feff2befed2be0994f1` |
@@ -1762,7 +1762,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v156.js` | 10713 | `c8c967d1586f796af986c00cb75804dcb47a8dd40e1e4e1a465e15f4518f8637` |
 | `views/group-v158.js` | 9534 | `25d868e4f0bf1ed1570efd33550e005419a951f02f1453a976a88b8246fc2017` |
 | `views/group-v159.js` | 10723 | `4468620fd3985650302950a1b9070add09e3c8e986791fe4634ff2f50e2c92f1` |
-| `views/group-v16.js` | 10883 | `ed0b2c77a5beeb902d77fda9bcb4ee54cc8059b178e98b16344053cf92263343` |
+| `views/group-v16.js` | 11249 | `63cd1080a1aa9b88b3393bb51e6aee408c798ea6d87f99db6251892643d754e2` |
 | `views/group-v160.js` | 11685 | `14ef775c5b8ffbe178e1263f27c806d4c99c02fc86dd79d907213aefd3b7b77f` |
 | `views/group-v161.js` | 8025 | `01187902dc8b2523d595b9ff8b8a211db519fb0f1cc00228725b977474c9f4f1` |
 | `views/group-v163.js` | 8143 | `0c4000e57fa5291ce38bd620737125b1a5a309a647fb2283dfd89f2f681731ed` |

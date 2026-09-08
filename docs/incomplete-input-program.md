@@ -217,6 +217,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1114](spec-v1114.md) | Reading my own eleven waves back through the finder |
 | [v1115](spec-v1115.md) | The seven that turned an alarm into a reassurance |
 | [v1116](spec-v1116.md) | A default parameter that chose the equation |
+| [v1117](spec-v1117.md) | A mortality figure read off a row nobody had earned |
 
 ### And the same question from the other side
 

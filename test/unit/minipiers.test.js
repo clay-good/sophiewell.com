@@ -31,3 +31,15 @@ test('missing GA or SBP -> valid:false (no ln of a bad input)', () => {
   assert.equal(miniPiers({ ga: 34 }).valid, false);
   assert.equal(miniPiers(0).valid, false);
 });
+
+test('spec-v1117: an undipped proteinuria is not a negative dipstick', () => {
+  // `DIP_BETA[o.proteinuria] || 0` covered two different things: 'lt2', which
+  // really does score 0, and a proteinuria nobody dipped. 10% probability of an
+  // adverse maternal outcome became 6.8%, across the 15% surveillance threshold.
+  const dipped = miniPiers({ ga: 34, sbp: 150, proteinuria: 'lt2' });
+  assert.equal(dipped.valid, true);
+
+  const r = miniPiers({ ga: 34, sbp: 150 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /dipstick proteinuria is needed/);
+});

@@ -29,9 +29,16 @@ test('grobman-vbac: race-free 2021 logistic, prior-VBAC contrast', () => {
   assert.equal(none.probability, 66.3);
   assert.ok(vbac.probability > none.probability);
   // probability stays within [0, 100]
-  const extreme = grobmanVbac({ age: 55, weight: 200, height: 150, arrestIndication: '1', chronicHtn: '1' });
+  const extreme = grobmanVbac({ age: 55, weight: 200, height: 150, vaginalHistory: 'none', arrestIndication: '1', chronicHtn: '1' });
   assert.ok(extreme.probability >= 0 && extreme.probability <= 100);
   assert.equal(grobmanVbac({ age: 30, weight: 80 }).valid, false);
+
+  // spec-v1117: the vaginal-delivery history fell back to 'none', which is not a
+  // neutral default but the strongest negative term -- so an unstated obstetric
+  // history reported the lowest success probability the model can give.
+  const unstated = grobmanVbac({ age: 30, weight: 80, height: 165 });
+  assert.equal(unstated.valid, false);
+  assert.match(unstated.band, /prior vaginal-delivery history is needed/);
 });
 
 test('marburg-heart-score: five criteria and the >= 3 threshold', () => {

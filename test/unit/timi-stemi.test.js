@@ -3,8 +3,17 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { timiStemi } from '../../lib/cardio-v90.js';
 
+// spec-v1117: all seven risk factors answered, with the ones under test
+// overridden. They are yes/no SELECTS, and until this wave anything that was not
+// "yes" -- including an unanswered one -- was read as "no", so the assertions
+// below were quietly depending on that.
+const assessed = (o = {}) => ({
+  diabetesHtnAngina: 'no', sbpLow: 'no', hrHigh: 'no', killip24: 'no',
+  weightLow: 'no', anteriorSteLbbb: 'no', timeOver4h: 'no', ...o,
+});
+
 test('worked example: age 70 + anterior STE + time > 4 h = 4 points, 7.3% mortality', () => {
-  const r = timiStemi({ age: 70, anteriorSteLbbb: 'yes', timeOver4h: 'yes' });
+  const r = timiStemi(assessed({ age: 70, anteriorSteLbbb: 'yes', timeOver4h: 'yes' }));
   assert.equal(r.valid, true);
   assert.equal(r.agePts, 2); // 65-74
   assert.equal(r.total, 4); // 2 + 1 + 1
@@ -19,9 +28,31 @@ test('the 0 extreme: no risk factors, blank age -> no mortality figure', () => {
   assert.equal(r.total, 0);
   assert.equal(r.mortality, null);
   assert.equal(r.ageProvided, false);
-  assert.match(r.band, /at least 0 of 14/);
-  // Entering the age is all it takes to read the band.
-  assert.equal(timiStemi({ age: 60 }).mortality, 0.8);
+  assert.equal(r.valid, false, 'nothing entered at all is not a reading');
+
+  // spec-v1117: this test used to end "Entering the age is all it takes to read
+  // the band", asserting `timiStemi({ age: 60 }).mortality === 0.8`. That was
+  // the defect written down as a feature: 0.8% is the bottom row of the Morrow
+  // table, quoted for a patient whose seven risk factors nobody had assessed.
+  const ageOnly = timiStemi({ age: 60 });
+  assert.equal(ageOnly.mortality, null);
+  assert.equal(ageOnly.unanswered.length, 7);
+  assert.match(ageOnly.band, /at least 0 of 14/);
+  assert.match(ageOnly.band, /answer 7 of the 7 risk factors/);
+
+  // With all seven answered, the age alone does read the bottom row.
+  assert.equal(timiStemi(assessed({ age: 60 })).mortality, 0.8);
+});
+
+test('spec-v1117: one unanswered risk factor withholds the mortality', () => {
+  const partial = assessed({ age: 70 });
+  delete partial.killip24;
+  const r = timiStemi(partial);
+  assert.equal(r.valid, true, 'the score is still a real floor');
+  assert.equal(r.total, 2);
+  assert.equal(r.mortality, null);
+  assert.deepEqual(r.unanswered, ['Killip class II-IV']);
+  assert.match(r.band, /reads off the wrong row/);
 });
 
 test('the 14 extreme: every variable positive at the top age band', () => {
@@ -35,25 +66,25 @@ test('the 14 extreme: every variable positive at the top age band', () => {
 });
 
 test('age band points: <65 = 0, 65-74 = 2, >=75 = 3', () => {
-  assert.equal(timiStemi({ age: 64 }).agePts, 0);
-  assert.equal(timiStemi({ age: 65 }).agePts, 2);
-  assert.equal(timiStemi({ age: 74 }).agePts, 2);
-  assert.equal(timiStemi({ age: 75 }).agePts, 3);
+  assert.equal(timiStemi(assessed({ age: 64 })).agePts, 0);
+  assert.equal(timiStemi(assessed({ age: 65 })).agePts, 2);
+  assert.equal(timiStemi(assessed({ age: 74 })).agePts, 2);
+  assert.equal(timiStemi(assessed({ age: 75 })).agePts, 3);
 });
 
 test('a mortality band flip: score 8 -> 26.8%, score 9 -> 35.9%', () => {
   // 8 = age3 + sbp3 + hr2; 9 adds DM/HTN/angina
-  const eight = timiStemi({ age: 80, sbpLow: 'yes', hrHigh: 'yes' });
+  const eight = timiStemi(assessed({ age: 80, sbpLow: 'yes', hrHigh: 'yes' }));
   assert.equal(eight.total, 8);
   assert.equal(eight.mortality, 26.8);
-  const nine = timiStemi({ age: 80, sbpLow: 'yes', hrHigh: 'yes', diabetesHtnAngina: 'yes' });
+  const nine = timiStemi(assessed({ age: 80, sbpLow: 'yes', hrHigh: 'yes', diabetesHtnAngina: 'yes' }));
   assert.equal(nine.total, 9);
   assert.equal(nine.mortality, 35.9);
 });
 
 test('the weighted variables carry their published point values', () => {
-  assert.equal(timiStemi({ sbpLow: 'yes' }).total, 3);
-  assert.equal(timiStemi({ hrHigh: 'yes' }).total, 2);
+  assert.equal(timiStemi(assessed({ sbpLow: 'yes' })).total, 3);
+  assert.equal(timiStemi(assessed({ hrHigh: 'yes' })).total, 2);
   assert.equal(timiStemi({ killip24: 'yes' }).total, 2);
   assert.equal(timiStemi({ weightLow: 'yes' }).total, 1);
 });

@@ -33,7 +33,12 @@ function selectField(label, id, options) {
   wrap.appendChild(sel);
   return wrap;
 }
-const YESNO = [{ value: 'no', text: 'No' }, { value: 'yes', text: 'Yes' }];
+// spec-v1117: used only by timi-stemi's seven risk factors, and it opened on
+// "No" -- so entering an age and touching nothing else answered "TIMI-STEMI 0 of
+// 14: 0.8% 30-day mortality" for a STEMI patient whose risk factors nobody had
+// assessed. Rule 8: a control that cannot say "not answered" answers for the
+// reader.
+const YESNO = [{ value: '', text: 'Not assessed' }, { value: 'no', text: 'No' }, { value: 'yes', text: 'Yes' }];
 function out() { return el('div', { id: 'q-results', 'aria-live': 'polite' }); }
 function optNum(id) {
   const n = document.getElementById(id);

@@ -207,7 +207,10 @@ test('spec-v1007: every refusal names the measurement it is waiting for', () => 
     'rabt-score': /systolic BP/,
     'alt-70': /white blood cell count/,
     'mehran-cin': /contrast volume/,
-    'timi-stemi': /enter age/i,
+    // spec-v1117: the article is not the point -- the assertion is that the
+    // refusal NAMES the measurement. The tile now also names the seven risk
+    // factors, which used to be read as "no" whether or not anyone had looked.
+    'timi-stemi': /enter (?:the )?age/i,
   };
   for (const [id, want] of Object.entries(wants)) {
     const band = String(byId.get(id).compute({}).band ?? '');

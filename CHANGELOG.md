@@ -33,6 +33,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A STEMI mortality figure was read off the bottom row of the table for a
+  patient nobody had assessed.** The TIMI score's seven risk factors are yes/no
+  picklists that opened on "No", so entering an age and touching nothing else
+  answered "TIMI-STEMI 0 of 14: 0.8% 30-day mortality". The tile had already
+  reasoned about a blank age and withheld the figure for it; the risk factors
+  were never considered. They now open on "Not assessed", the score is still
+  reported as a floor, and the mortality waits. Two other probabilities were
+  understated the same way: an unstated prior-vaginal-delivery history took a
+  predicted VBAC success from 92.7% to 66.3%, the number a woman is counselled
+  with when choosing between a trial of labour and a repeat cesarean; and an
+  undipped proteinuria was scored as a negative dipstick, moving a miniPIERS
+  estimate across its surveillance threshold. See docs/spec-v1117.md.
 - **Four calculators picked an equation for a patient whose sex nobody had
   stated.** Where the others in this release chose a band, these chose a
   formula: an unstated sex gave the male CKD-EPI cystatin equation, so a
