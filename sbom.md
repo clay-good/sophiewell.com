@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `14c47e200cc93211`
-Generated: 2026-09-08T02:49:06.689Z
+Build ID: `39a154c4528fbfc7`
+Generated: 2026-09-08T03:17:20.892Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -203,7 +203,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/crafft-v511.js` | 4287 | `327127a6f8e3677bd8a1d0f3c3ced3b3347ee9c785e294ba9a50052ca446d1c2` |
 | `lib/crawford-taaa-v464.js` | 3861 | `88e25ce66c44ed838925af33531184aa2ec6a743e775339af30ec9ba797646d4` |
 | `lib/critcare-severity-v200.js` | 15639 | `e08d8c99b3000904ce53f517eb8b647868d44e31b46c43b9e75aa9dc167d3738` |
-| `lib/critcare-v112.js` | 13105 | `f29ae215fb01f6d440c94637f2825b7bcc8ef30bd47c061d65d9fc34d8fbec51` |
+| `lib/critcare-v112.js` | 14386 | `d20789357fe757903ac7ed4b901732f88df787fd781e16dcec367d011e95dd78` |
 | `lib/crowe-ddh-v353.js` | 3621 | `cbfcd5066efa27d55b012cfe0174650bb2009a8d7f8e6ddc5dcf5a4ffbbc789d` |
 | `lib/crs-v305.js` | 4220 | `4aacc118585e7a7f0b78bfe65aad43a888fc9ec3e3ea7f145b4a9516bf0857bb` |
 | `lib/cts6-v773.js` | 3589 | `50ab3a3aa777a4ed12077b73c3a3a3dc707df6ff98e36a7c579aec5451333c8e` |
@@ -300,7 +300,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/forrester-hemodynamic-v362.js` | 4397 | `bf6305d1edd78604613331955b7bb42551ebe6d66163f3002418e27e299e95e7` |
 | `lib/four-ts-hit-v836.js` | 8557 | `d1957f127d10fec71c7defbd9828b3ddf34a6ba46a8654a5dee98074a35ae708` |
 | `lib/fractional-excretion-potassium-v684.js` | 3991 | `d612785582053f0e82d3388c1ca33c03ae720876ee7a4d50b5751446eb1d037b` |
-| `lib/frailty-v143.js` | 13623 | `9f4c0b7c18818add0a8c6121070a3f2abea6975e56983ff8eddad0b5d6ca124f` |
+| `lib/frailty-v143.js` | 14838 | `b3f8d7ad71f2922b8e6219eb145ca9c6a7d4d3b8bae1934de43ecb2c0380fb11` |
 | `lib/framingham-hf-criteria-v696.js` | 3460 | `9cf5ed21279852b01d23af1b708415f9864f9c55849838494def664ddef364c7` |
 | `lib/free-androgen-index-v685.js` | 4005 | `8a762bd39f2d0e793a47ad8018c659d592e9a6ea85378e37b90a33fac79e67e2` |
 | `lib/fried-frailty-v611.js` | 10071 | `eae1a5750e6dc7f372424e324b2848311ebec0247c74f12d3f46630a81d34e73` |
@@ -579,7 +579,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/num.js` | 5414 | `a11ccbd685bedb3682a237de3980b3327f7d21e10ebce9ce953b686029339334` |
 | `lib/nunley-vertullo-v455.js` | 3085 | `6f287a16c80ba5d73e2bb2c15989a7aa81d8335767f0a36e8c67c3203b357439` |
 | `lib/nutrition-energy-v152.js` | 14446 | `924b5421f818147f64b10db410fca9892773a29a918cf40e2bacdb64c0dbb23a` |
-| `lib/nutrition-maternal-v208.js` | 11433 | `5ae7cfab30b606dd14b8ca1f839cd62ba9960d3394f1d8f8b309fe9373dd94f6` |
+| `lib/nutrition-maternal-v208.js` | 13391 | `3f68589603d6c5be3866aa0200955bbff10fe8873d47a3a9a1068a0c5b5c4c87` |
 | `lib/nutrition-v276.js` | 3222 | `96ee14add8fee3184efe8d8ca62f6a37a52d38f15bc785ef1c1f35459c2b4fac` |
 | `lib/nyha-class-v357.js` | 3947 | `9188475fe8f8841468efbc8dac1433f17a421391156cdcfd2f1357d922e9cceb` |
 | `lib/nyhus-hernia-v400.js` | 4753 | `e95f3e6d388ce3f0e80744bbbe6db2cd4a072334c1cef4efde87ac9155e6f7be` |
@@ -1746,7 +1746,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v140.js` | 14690 | `f1f810489919928435edbe56a4934c66db7a59d17bb29071c36c62245c509169` |
 | `views/group-v141.js` | 8714 | `87db945559d3538dbcf7d26eac3ba81ca81e4969ba647b94408676e36d3c1daf` |
 | `views/group-v142.js` | 14073 | `dbcf3e827edb92c456707768fa28d34fd5a9f77fd14154238cf650341562ee1e` |
-| `views/group-v143.js` | 11846 | `0485259eb107937ee72b9ee3cf575d09360aec56c8f2dfbb3e22ff5fd19ef18f` |
+| `views/group-v143.js` | 12243 | `f0fef18d71cd37361ce342f46ff9cb130f6ac699869a04ac82647bf939e05cdc` |
 | `views/group-v144.js` | 10666 | `ee54b2c68e4fc925bae8eaecc5ffa59fa00dbcd7bac8d2adf6720e2f200d5bae` |
 | `views/group-v145.js` | 11114 | `322f415a45f987cdf39ce6b56866e40f5868dde5968428f2c4fa6058007a90cd` |
 | `views/group-v146.js` | 14404 | `e1c41502eddc61d96d658dcc5be22e749a64c0c851e10cdd2fe898d432d04e9b` |
@@ -1808,7 +1808,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v205.js` | 10428 | `28afdaa15455e4d07e9893b6b8f86ed6049776ea266d59dcba9547f449f82b26` |
 | `views/group-v206.js` | 9268 | `a55957f9f59184af61c8e686331f055f6d0e5d6cad88a67c0816af2bd579b1f5` |
 | `views/group-v207.js` | 7057 | `581c928fc50cb2a1b56b7d95ef3a5056de00f1687c0489c4f1800eb6068f6ed3` |
-| `views/group-v208.js` | 8023 | `11dcc615b376e4a8fcd098c1acf9209c88c34d8a0f4e1e2623d9214e26c2ac7f` |
+| `views/group-v208.js` | 8105 | `083bc31b9d68dae4fb2c40549e782814f4d57b6f0fd3dfb1cc8252cd83bc4623` |
 | `views/group-v209.js` | 6406 | `399a59be8b7b082a0248992e5ff8f1328ce8bb1a91bf7e7720abb59f0464e43f` |
 | `views/group-v21.js` | 12712 | `44d6c6385f68131cf60fa2aa79e44019e6e183b20d5ca677a88ee9883fe323ea` |
 | `views/group-v210.js` | 3226 | `e18440003543f94caf5ff1cd27c144ddd825aac7a153f72a4d13d69ce2671b14` |
@@ -1973,7 +1973,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v367.js` | 3224 | `bd7e0f7434b5bd5f060a6c9bbfc8da28bbaef95cb7c250630d6a5ff616012f6b` |
 | `views/group-v368.js` | 2990 | `ad4c5c65964759e4607d4349c14dc568864d3d15b00e95236cb315e1b8cc7278` |
 | `views/group-v369.js` | 3096 | `d9b47343a3cdc44a1fab4677e89e53fa9470beb74c7cf111a049274180f1bf3c` |
-| `views/group-v37.js` | 11734 | `c52430742891fdf16e74510a22c97836eda18de11494e8196c3b99a038b158be` |
+| `views/group-v37.js` | 11898 | `3ef787a7afe054031de5c5c698ca1f573b60225f7968e49e11d2d729e914c19f` |
 | `views/group-v370.js` | 2934 | `74e004c7715937fa32b2a111f85d59a9661cef4f0978b4116d8cbe580f6c471d` |
 | `views/group-v371.js` | 3126 | `47c944cafbba970a471cd3d00835b8105c246671ddbe291e1bcc96856ffd658c` |
 | `views/group-v372.js` | 3061 | `725eb49df2a9676a9783ebd04b00893575fc023152a75c6b7f41a4f141692bde` |

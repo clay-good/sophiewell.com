@@ -43,8 +43,13 @@ function wire(ids, run) {
 }
 
 // A select for VES-13 physical-function difficulty (5 published response options).
+// spec-v1119: rule 8. Every one of the six physical-function selects opened on
+// "No difficulty", so the tile answered "not vulnerable" for a screen nobody had
+// administered. `selVal` returns '' for the blank option and lib/frailty-v143.js
+// counts it as unanswered.
 function difficultyField(label, id) {
   return selectField(label, id, [
+    { value: '', text: 'Not answered' },
     { value: 'none', text: 'No difficulty' },
     { value: 'little', text: 'A little difficulty' },
     { value: 'some', text: 'Some difficulty' },
@@ -145,11 +150,13 @@ export const renderers = {
   'ves-13'(root) {
     note(root, 'Vulnerable Elders Survey-13 (Saliba 2001): age + self-rated health + physical-function difficulty (capped at 2) + a 4-point block for any ADL/IADL disability, total 0–10. A score ≥ 3 = vulnerable.');
     root.appendChild(selectField('Age band', 'ves-age', [
+      { value: '', text: 'Not stated' },
       { value: 'under75', text: 'Under 75 years' },
       { value: '75to84', text: '75–84 years (1 point)' },
       { value: '85plus', text: '85 years or older (3 points)' },
     ]));
     root.appendChild(selectField('Self-rated health (compared with others your age)', 'ves-health', [
+      { value: '', text: 'Not answered' },
       { value: 'excellent', text: 'Excellent' },
       { value: 'verygood', text: 'Very good' },
       { value: 'good', text: 'Good' },

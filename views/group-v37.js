@@ -127,20 +127,24 @@ export const renderers = {
     root.appendChild(field('Leukocytes (per mm^3)', 'cp-wbc', { step: '100', min: 0, placeholder: 'e.g. 12000' }));
     root.appendChild(checkField('Band forms >= 50% (+1 to the leukocyte points)', 'cp-band'));
     root.appendChild(selectField('Tracheal secretions', 'cp-sec', [
+      { value: '', text: 'Not stated' },
       { value: 'none', text: 'None / absent (0)' },
       { value: 'non-purulent', text: 'Non-purulent (1)' },
       { value: 'purulent', text: 'Purulent (2)' },
     ]));
     root.appendChild(selectField('Oxygenation (PaO2/FiO2)', 'cp-oxy', [
+      { value: '', text: 'Not stated' },
       { value: 'normal', text: '> 240 mmHg or ARDS present (0)' },
       { value: 'low', text: '<= 240 mmHg and no ARDS (2)' },
     ]));
     root.appendChild(selectField('Chest radiograph', 'cp-cxr', [
+      { value: '', text: 'Not stated' },
       { value: 'none', text: 'No infiltrate (0)' },
       { value: 'diffuse', text: 'Diffuse / patchy infiltrate (1)' },
       { value: 'localized', text: 'Localized infiltrate (2)' },
     ]));
     root.appendChild(selectField('Tracheal-aspirate culture', 'cp-cult', [
+      { value: '', text: 'Not stated' },
       { value: 'none', text: 'No or light growth (0)' },
       { value: 'moderate', text: 'Moderate / heavy growth (1)' },
     ]));

@@ -38,3 +38,19 @@ test('partial input (no temp or WBC) returns a complete-the-fields fallback', ()
   assert.equal(cpisVap({ wbc: 8000 }).valid, false);
   assert.equal(cpisVap({ temp: 39 }).valid, false);
 });
+
+test('spec-v1119: the four graded components are not scored as normal findings', () => {
+  // The guard already said "then select the remaining CPIS components" and did
+  // not require them, so a temperature and a white count answered "CPIS 6/12:
+  // VAP less likely" about a chest nobody had looked at.
+  const r = cpisVap({ temp: 37, wbc: 8000 });
+  assert.equal(r.valid, true);
+  assert.equal(r.floorOnly, true);
+  assert.equal(r.unstated.length, 4);
+  assert.match(r.band, /CPIS at least 0\/12 on what was entered/);
+  assert.doesNotMatch(r.band, /VAP less likely/);
+
+  const full = cpisVap({ temp: 37, wbc: 8000, secretions: 'none', oxygenation: 'ok', cxr: 'none', culture: 'none' });
+  assert.equal(full.floorOnly, false);
+  assert.match(full.band, /VAP less likely/);
+});

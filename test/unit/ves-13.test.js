@@ -37,3 +37,18 @@ test('physical-function points cap at 2, max total is 10', () => {
   const max = ves13({ age: '85plus', health: 'poor', stooping: 'alot', lifting: 'unable', reaching: 'alot', bathing: 1 });
   assert.equal(max.score, 10);
 });
+
+test('spec-v1119: an unadministered VES-13 is not "not vulnerable"', () => {
+  const r = ves13({});
+  assert.equal(r.score, 0);
+  assert.equal(r.floorOnly, true);
+  assert.match(r.band, /VES-13 at least 0\/10 on what was answered/);
+  assert.match(r.band, /can only add points/);
+  assert.doesNotMatch(r.band, /not vulnerable/);
+  assert.ok(r.unanswered.includes('the age band'));
+
+  // Rule 13: three points is three whatever the rest hold.
+  const vulnerable = ves13({ shopping: 'yes' });
+  assert.equal(vulnerable.floorOnly, false);
+  assert.match(vulnerable.band, /vulnerable/);
+});

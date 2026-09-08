@@ -226,6 +226,7 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
 | [v1116](spec-v1116.md) | A default parameter that chose the equation |
 | [v1117](spec-v1117.md) | A mortality figure read off a row nobody had earned |
 | [v1118](spec-v1118.md) | **Finder**: a scoring select neither surface can leave unanswered |
+| [v1119](spec-v1119.md) | The first three off the new probe's list |
 
 ### And the same question from the other side
 

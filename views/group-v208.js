@@ -91,11 +91,13 @@ export const renderers = {
   'glim-malnutrition'(root) {
     note(root, 'GLIM criteria (Cederholm 2019): malnutrition requires ≥ 1 phenotypic AND ≥ 1 etiologic criterion after a positive screen. Severity is graded on the phenotypic criteria (Stage 1 moderate vs Stage 2 severe).');
     root.appendChild(selectField('Phenotypic — non-volitional weight loss', 'glim-wl', [
+      { value: '', text: 'Not stated' },
       { value: 'none', text: 'None' },
       { value: 'moderate', text: 'Moderate (5–10% within 6 mo, or 10–20% beyond)' },
       { value: 'severe', text: 'Severe (> 10% within 6 mo, or > 20% beyond)' },
     ]));
     root.appendChild(selectField('Phenotypic — low BMI', 'glim-bmi', [
+      { value: '', text: 'Not stated' },
       { value: 'none', text: 'None' },
       { value: 'moderate', text: 'Moderate (< 20 if < 70 y, or < 22 if ≥ 70 y)' },
       { value: 'severe', text: 'Severe (< 18.5 if < 70 y, or < 20 if ≥ 70 y)' },

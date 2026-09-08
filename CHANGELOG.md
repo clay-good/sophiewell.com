@@ -33,6 +33,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A frailty screen, a pneumonia score and a malnutrition diagnosis answered
+  from picklists nobody had touched.** The VES-13 read "not vulnerable" with
+  eight of its items unanswered; the CPIS read "VAP less likely" for a chest
+  nobody had looked at, after a message that asked for those components without
+  requiring them; and GLIM read "malnutrition not diagnosed" when the criterion
+  that would have changed it was simply not stated. The picklists now open on
+  "Not answered", and each tile says what it is waiting for. The GLIM fix is
+  deliberately narrow: with no etiologic criterion ticked, no phenotypic one
+  could complete the pair, so that exclusion is still given. See
+  docs/spec-v1119.md.
 - **A fetal heart-rate tracing nobody had described still read "Category I" on
   the page.** The library was fixed for this earlier in the release and its
   tests all passed -- but every one of them calls the library directly, and the
