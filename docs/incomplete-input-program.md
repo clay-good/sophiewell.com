@@ -1,7 +1,9 @@
 # What a tool does with a value it was not given
 
-One defect class, worked from one end to the other between spec-v1006 and spec-v1035. This page is
-the map; each spec is the detail.
+One defect class, opened at [spec-v1006](spec-v1006.md) and worked ever since — the first thirty
+waves drained the blank-field form of it, and everything after has been the same question asked
+of something other than a blank: an ungraded select, an unstated timepoint, an assumed unit.
+This page is the map; each spec is the detail.
 
 ## The defect
 
@@ -132,6 +134,14 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
     blank-checking guard dead code on that surface. `nichd-fhr` was fixed in spec-v1102, every one
     of its tests passed, and the page went on answering "Category I" for a tracing nobody had
     described — because every test calls the library directly, where the guard works.
+
+26. **A disclosure is OUTPUT, and output built from an unvalidated input is a leak**
+    (spec-v1133). Adding a sentence that names a parameter turns that parameter into something the
+    reader sees, which it was not before — so `uacr-upcr`'s new "reading the albumin as mg/dL"
+    printed `albuminUnit: NaN` straight back at the reader, and the spec-v53 fuzz harness failed the
+    same run that added it. Echo only values the tile knows; treat the rest as the absent value they
+    are. **The whitelist belongs in the same change as the sentence**, and the whole suite is worth
+    running on a one-line prose change for exactly this reason.
 
 25. **The unit of a guard is a READING, not a field** (spec-v1126). `startback` needed guarding at
     two totals and nowhere else; `glim-malnutrition` at one combination of criteria; `pi-rads` at

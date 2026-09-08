@@ -237,14 +237,31 @@ is the finder; it asserts nothing and is excluded from CI:
 
 ```bash
 RUN_PROBES=1 npx playwright test test/integration/undeclared-picklist-probe.spec.js --project=chromium
-``` Its finder is
-`scripts/probe-omitted-item.mjs`, which asks the wider question the gate cannot
--- drop one number from a worked example and see whether the answer moves without
-saying so. It asserts nothing and is not in CI; run it by hand:
+```
+
+Beside `rated-items-are-required` sits `scripts/probe-omitted-item.mjs`, which
+asks the wider question that gate cannot -- drop one number from a worked example
+and see whether the answer moves without saying so. It asserts nothing and is not
+in CI; run it by hand:
 
 ```bash
 node scripts/probe-omitted-item.mjs
 ```
+
+`scripts/probe-default-in-answer.mjs` asks a third question, about the values a
+tool supplies to itself: does any function print a DEFAULTED parameter into its
+own answer, so the reading names something nobody entered? A row is a suspect,
+not a defect -- a default is fine where the control says what it means -- so read
+the control before touching the tile (`docs/spec-v1132.md`, `docs/spec-v1133.md`).
+
+```bash
+node scripts/probe-default-in-answer.mjs
+```
+
+**Negative-test a finder before you trust a quiet report.** That one found ZERO on
+the very defect it was written from, because it tracked one hop of aliasing where
+the defect took two. Point a new finder at a known-bad file first, watch it fire,
+then remove the defect and watch it go quiet.
 
 It also carries `clock-dependent.spec.js`, which renders every calculator twice a
 year apart on a fake clock and fails on any whose answer changed while its inputs
