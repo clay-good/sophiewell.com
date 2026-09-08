@@ -131,10 +131,16 @@ export default [
       { dom: 'ec-w', arg: 'weightKg', kind: 'number', required: true, label: 'Patient weight', unit: 'kg' },
       { dom: 'ec-sw', arg: 'currentSweepLpm', kind: 'number', required: true, label: 'Current sweep', unit: 'L/min' },
       { dom: 'ec-fl', arg: 'currentFlowLpm', kind: 'number', required: true, label: 'Current pump flow', unit: 'L/min' },
-      { dom: 'ec-pco', arg: 'currentPaCO2', kind: 'number', required: true, label: 'Current PaCO2', unit: 'mmHg' },
-      { dom: 'ec-tgt', arg: 'targetPaCO2', kind: 'number', required: true, label: 'Target PaCO2', unit: 'mmHg' },
-      { dom: 'ec-hb', arg: 'hb', kind: 'number', required: true, label: 'Hemoglobin', unit: 'g/dL' },
-      { dom: 'ec-sat', arg: 'sao2', kind: 'number', required: true, label: 'SaO2 or post-oxygenator SatO2', unit: '% or fraction' },
+      // spec-v1153: this tile titrates two things independently -- the sweep from
+      // the PaCO2 pair, the pump flow from the DO2i pair -- and each half is
+      // skipped when its inputs are absent. The page's own label reads "Target
+      // PaCO2 (mmHg; default 40)". Declaring all four required refused every call
+      // that wanted one half, and the library now SAYS which half it did not do
+      // rather than echoing the current setting back as a suggestion.
+      { dom: 'ec-pco', arg: 'currentPaCO2', kind: 'number', label: 'Current PaCO2 (for the sweep titration)', unit: 'mmHg' },
+      { dom: 'ec-tgt', arg: 'targetPaCO2', kind: 'number', label: 'Target PaCO2 (defaults to 40 mmHg, which the reading names)', unit: 'mmHg' },
+      { dom: 'ec-hb', arg: 'hb', kind: 'number', label: 'Hemoglobin (with the saturation, for DO2i and the flow suggestion)', unit: 'g/dL' },
+      { dom: 'ec-sat', arg: 'sao2', kind: 'number', label: 'SaO2 or post-oxygenator SatO2 (with the hemoglobin, for DO2i)', unit: '% or fraction' },
     ],
   },
   {

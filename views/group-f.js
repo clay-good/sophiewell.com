@@ -852,17 +852,26 @@ export const renderers = {
     root.appendChild(field('SaO2 or post-oxygenator SatO2 (% or fraction)', 'ec-sat'));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
+      // spec-v1153: the library rejects a sweep below 0 and a flow at or below 0,
+      // so a blank FLOW was refused and a blank SWEEP passed as 0 -- and the
+      // headline read "Sweep 0 L/min", which is not a setting on a running
+      // circuit, it is no gas at all. A sweep of 0 is a real state during a trial
+      // off, so a typed 0 still answers; a blank is a gap.
+      const currentSweepLpm = nvOrNull('ec-sw');
+      if (needValues(o, [['the current sweep (L/min)', currentSweepLpm]])) return;
       const r = ecmoTitration({
         modality:        document.getElementById('ec-mod').value,
         weightKg:        unitNum('ec-w'),
-        currentSweepLpm: nv('ec-sw'),
+        currentSweepLpm,
         currentFlowLpm:  nv('ec-fl'),
-        currentPaCO2:    nv('ec-pco'),
-        targetPaCO2:     nv('ec-tgt'),
-        hb:              nv('ec-hb'),
-        sao2:            nv('ec-sat'),
+        currentPaCO2:    nvOrNull('ec-pco'),
+        targetPaCO2:     nvOrNull('ec-tgt'),
+        hb:              nvOrNull('ec-hb'),
+        sao2:            nvOrNull('ec-sat'),
       });
-      o.appendChild(el('h2', { text: `Sweep ${r.suggestedSweepLpm} L/min / Flow ${r.suggestedFlowLpm} L/min` }));
+      o.appendChild(el('h2', { text: r.sweepTitrated || r.flowTitrated
+        ? `Sweep ${r.suggestedSweepLpm} L/min / Flow ${r.suggestedFlowLpm} L/min`
+        : `Sweep ${r.suggestedSweepLpm} L/min / Flow ${r.suggestedFlowLpm} L/min (unchanged: nothing to titrate against yet)` }));
       if (r.do2iMlPerKgPerMin !== null) o.appendChild(el('p', { text: `DO2i ${r.do2iMlPerKgPerMin} mL/kg/min (ELSO 2022 target >= 6)` }));
       for (const b of r.banners) o.appendChild(el('p', { class: 'clinical-notice', text: b }));
     });

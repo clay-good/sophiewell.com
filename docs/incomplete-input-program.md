@@ -803,6 +803,25 @@ when touching an adapter.
 
 Backlog 27 → 18.
 
+[spec-v1153](spec-v1153.md) took `ecmo-titration`'s five rows. It titrates two
+things independently — the sweep from the PaCO2 pair, the pump flow from the DO2i
+pair — and correctly skips each half when its inputs are absent. **What was wrong is
+that the headline then printed the un-titrated value as the recommendation:** *"Sweep
+5 L/min / Flow 4 L/min"*, where the 4 is the number the reader typed into "Current
+pump flow" a moment earlier.
+
+**A recommendation that is the reader's own input, presented as a recommendation, is
+the worst form of silent default** (rule 21) — nothing on screen separates it from a
+computed one, and the output here is a setting on a running ECMO circuit. Each half
+says what it did not do now, in those words: *"4 L/min is the setting you gave, not a
+suggestion."*
+
+And a blank sweep passed as 0, because the library rejects a flow at or below zero
+and a sweep only BELOW zero — giving *"Sweep 0 L/min"*, which on a running circuit is
+no gas at all. A typed 0 is a real trial-off state and still answers.
+
+Backlog 18 → 13.
+
 ## Probes measured and rejected
 
 Three questions asked of the whole catalog after spec-v1048, each of which sounded like it should

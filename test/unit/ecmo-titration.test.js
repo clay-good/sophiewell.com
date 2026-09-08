@@ -72,3 +72,38 @@ test('ecmo-titration: requires weight, sweep, flow', () => {
 test('ecmo-titration: rejects unknown modality', () => {
   assert.throws(() => ecmoTitration({ modality: 'XX', weightKg: 70, currentSweepLpm: 3, currentFlowLpm: 4 }));
 });
+
+// spec-v1153: when an input was absent, the "suggested" setting was the CURRENT
+// one echoed back, with nothing on screen to distinguish it from a computed one.
+test('ecmo-titration: it says which half it did not titrate', () => {
+  const base = {
+    modality: 'VV', weightKg: 70, currentSweepLpm: 4, currentFlowLpm: 4,
+    currentPaCO2: 50, targetPaCO2: 40, hb: 10, sao2: 90,
+  };
+  const full = ecmoTitration(base);
+  assert.equal(full.sweepTitrated, true);
+  assert.equal(full.flowTitrated, true);
+  assert.equal(full.suggestedSweepLpm, 5);
+
+  // No PaCO2: the sweep is the input, and the reading says so.
+  const noPaco2 = ecmoTitration({ ...base, currentPaCO2: null });
+  assert.equal(noPaco2.sweepTitrated, false);
+  assert.equal(noPaco2.suggestedSweepLpm, base.currentSweepLpm);
+  assert.ok(noPaco2.banners.some((b) => /has NOT been titrated/.test(b)));
+  assert.ok(noPaco2.banners.some((b) => /not a suggestion/.test(b)));
+
+  // No hemoglobin or saturation: no DO2i, and the flow is the input.
+  for (const missing of [{ hb: null }, { sao2: null }, { hb: null, sao2: null }]) {
+    const r = ecmoTitration({ ...base, ...missing });
+    assert.equal(r.flowTitrated, false, JSON.stringify(missing));
+    assert.equal(r.do2iMlPerKgPerMin, null);
+    assert.equal(r.suggestedFlowLpm, base.currentFlowLpm);
+    assert.ok(r.banners.some((b) => /oxygen delivery has not been checked/.test(b)));
+  }
+
+  // The default target is named rather than applied silently.
+  const noTarget = ecmoTitration({ ...base, targetPaCO2: null });
+  assert.equal(noTarget.targetPaCO2Stated, false);
+  assert.equal(noTarget.sweepTitrated, true);
+  assert.ok(noTarget.banners.some((b) => /default target PaCO2 of 40/.test(b)));
+});

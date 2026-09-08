@@ -192,6 +192,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   says "optional", and one beside a label that gives its own default. All five now
   answer. See docs/spec-v1152.md.
 
+- **The ECMO titration helper offered your own settings back as its recommendation.**
+  It adjusts the sweep gas from the PaCO2 and the pump flow from oxygen delivery, and
+  it correctly does neither when those values are missing -- but the headline still
+  read "Sweep 5 L/min / Flow 4 L/min", with nothing to show that the 4 was the number
+  just typed into "Current pump flow". It now says which half it did not adjust and
+  why. A blank sweep was also read as a sweep of zero, which on a running circuit is
+  no gas at all; it asks for it now, and a typed 0 still answers, since that is a real
+  trial-off setting. See docs/spec-v1153.md.
+
 ### Changed
 
 - **A check that compares what the tool accepts with what the page offers was
