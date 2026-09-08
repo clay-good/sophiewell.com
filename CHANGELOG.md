@@ -33,6 +33,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A contrast-nephropathy score treated a risk factor nobody had mentioned as
+  absent, for callers using the API.** On the page each of the six clinical
+  factors shows its answer, so a reader can see what the score assumed. Through
+  the API there is no such display, and leaving out heart failure moved the same
+  patient from "high risk, about a 1.1% chance of needing dialysis" to "moderate
+  risk, about 0.12%". The score now says how many of the six were stated and
+  which were not, the same way it already did for the two measurements. See
+  docs/spec-v1139.md.
+
 - **A preoperative fasting check assumed the patient had only had clear liquids.**
   Clear liquids need two hours before anesthesia; breast milk needs four, formula
   or a light meal six, and fried or fatty food eight. When nobody had said what
