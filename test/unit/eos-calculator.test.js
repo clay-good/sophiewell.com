@@ -55,3 +55,34 @@ test('partial / out-of-range inputs -> valid:false', () => {
   assert.equal(eosCalculator({ ga: 39, tempF: 100, rom: 10, gbs: 'negative', abx: 'none' }).valid, false);
   assert.equal(eosCalculator(0).valid, false);
 });
+
+// spec-v1165: `gbsPos` and `gbsUnk` were both 0 for an ABSENT status, which is the
+// NEGATIVE coefficient -- the most favourable of the three, and a maternal culture
+// result nobody had reported. The Kaiser model has its own Unknown category.
+test('eos-calculator: an unstated GBS status takes the Unknown coefficient, not a negative culture', () => {
+  const base = { incidence: '0.5', ga: 39, tempF: 100.4, rom: 18, abx: 'none', exam: 'well' };
+  const negative = eosCalculator({ ...base, gbs: 'negative' });
+  const unknown = eosCalculator({ ...base, gbs: 'unknown' });
+  const absent = eosCalculator({ ...base });
+
+  assert.equal(negative.gbsStated, true);
+  assert.equal(unknown.gbsStated, true);
+  assert.equal(absent.gbsStated, false);
+
+  // The defect, stated: an absent status used to score exactly as a negative one.
+  assert.notEqual(absent.priorRisk, negative.priorRisk);
+  assert.equal(absent.priorRisk, unknown.priorRisk);
+  assert.match(absent.band, /GBS status was not stated/);
+  assert.match(absent.band, /UNKNOWN-status coefficient/);
+  // An explicitly stated unknown says nothing extra -- it was a real answer.
+  assert.doesNotMatch(unknown.band, /not stated/);
+  // A positive culture is unchanged.
+  assert.ok(eosCalculator({ ...base, gbs: 'positive' }).priorRisk > negative.priorRisk);
+
+  // The antibiotic categories have no "not reported" level, so an absent value is
+  // named rather than re-mapped.
+  const noAbx = eosCalculator({ ...base, gbs: 'negative', abx: undefined });
+  assert.equal(noAbx.abxStated, false);
+  assert.equal(noAbx.priorRisk, negative.priorRisk);
+  assert.match(noAbx.band, /Intrapartum antibiotics were not stated/);
+});

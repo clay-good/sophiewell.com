@@ -556,13 +556,31 @@ tile behaving correctly — recorded here so the next reader does not re-derive 
 | `mayo-uc`, `palm-coein`, `spetzler-martin` | each is labelled optional or supplementary on the page |
 | `mascc`, `duke-treadmill`, `kings-college`, `salicylate-toxicity` | the fixed tiles showing their new disclosures — *"between -6 and 2 … whatever the angina index turns out to be"*, *"MASCC at least 21"* — which is what a working probe looks like after a wave |
 
-### The third section is the standing next read
+### The third section, first read since spec-v1104
 
-[spec-v1104](spec-v1104.md) read it at 32 rows and wrote down the reason for each.
-It is **58** now, across 39 tiles. It is the weakest of the four by construction —
-the band moves but `abnormal` does not — and spec-v1104 is the wave that found
-`phoenix-sepsis` in it, so weak is not the same as empty. Two of the new rows are
-`phases` and `elapss` showing the ranges [spec-v1159](spec-v1159.md) gave them.
+[spec-v1104](spec-v1104.md) read it at 32 rows. It is **58** now across 39 tiles, and
+it is the weakest of the four by construction — the band moves but `abnormal` does
+not — which is exactly why spec-v1104 found `phoenix-sepsis` in it.
+
+[spec-v1165](spec-v1165.md) took the first pass. One defect: the Kaiser
+`eos-calculator` has **three** maternal GBS levels and the code read them as two —
+`gbsPos` and `gbsUnk` both zero is the NEGATIVE coefficient, so a status nobody had
+reported was scored as a **negative culture**, the most favourable of the three, when
+the model carries its own Unknown level for exactly that state. The browser had it
+from the other side, opening the select on *"Negative"*. Both fixed; *"Unknown / not
+reported"* leads now.
+
+Its antibiotics field got the other treatment, and the difference is the point:
+**where the source provides a category for "not known", use it; where it does not,
+say what the reference level is.** `abx` has no unknown level — its reference level
+IS "none" — so an absent value is named rather than re-mapped.
+
+The other 55 rows read as correct: `elapss` and `phases` showing their new ranges,
+`hear` and `niss` disclosing *"at least"*, `iol-power` naming *"Emmetropic"*,
+`adrenal-ct-washout` naming which washout formula it used, and the two respiratory
+compensation tiles saying the measured value *"reads the same either way"*.
+`findrisc` is the one still owed a read: an unstated sex scores 13 where male scores
+9, because the waist bands are sex-specific.
 
 **A probe whose every row has been read is not a probe with nothing left to
 say** — the catalog moves, and the rows change with it. It is a probe whose

@@ -326,6 +326,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   requires: it moves four rows, all four of them tools disclosing correctly. See
   docs/spec-v1164.md.
 
+### Fixed
+
+- **The newborn sepsis risk calculator treated an unreported maternal GBS status as a
+  negative culture.** The Kaiser model has three levels for that status -- positive,
+  negative, and unknown -- and the code recognised only two, so leaving it out scored
+  the most favourable of the three rather than the model's own unknown category. The
+  page had the same problem from the other side, opening on "Negative", which is a
+  culture result rather than a starting point; it now opens on "Unknown / not
+  reported". Where the source has no category for a missing value, as with the
+  intrapartum antibiotics, the tool now says which level it read instead. See
+  docs/spec-v1165.md.
+
 ### Changed
 
 - **A check that compares what the tool accepts with what the page offers was

@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `a78dea169aeb7b03`
-Generated: 2026-09-09T05:12:06.423Z
+Build ID: `bf05d4675a56fdfa`
+Generated: 2026-09-09T07:19:25.747Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -640,7 +640,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/peds-growth-v141.js` | 13014 | `47eb194a4f8eb9cc7007429c7843e48cd7fa8780ebcd8a2201bd119f78eb154d` |
 | `lib/peds-percentile-v169.js` | 8290 | `dbaec78619e7c9190044c9cdb8ecd8a2bb03a871f351e0454a06e1c5b816e9b0` |
 | `lib/peds-sepsis-v278.js` | 11203 | `e5b4bf2517c6964094b740dc9a30e28ba4e566ceb179dcc53894d9fcc0ad3f21` |
-| `lib/peds-v140.js` | 19548 | `9cdb52162767466d9f79bef4cdd351ae7f0b616d00c5013cc86a7cfef51e631f` |
+| `lib/peds-v140.js` | 20723 | `988675e08613e49ae1d9f49307d8d03619109f69d784f69f24c984a7b9a0fa99` |
 | `lib/peds-v98.js` | 17977 | `34cd4b31d15b01023b31b4f91ae4a6bd21fc2e809798b6e91fc5551952db3063` |
 | `lib/pedstox-v247.js` | 7629 | `9ffa2359f05cf582c46fc4d77d02a7906b0f0e62b6b5a952bafaebd45ef4b4a6` |
 | `lib/pef-zones-v891.js` | 6826 | `3d6f9c84c5641a3d89998e5e0a3305468f0607125d9a2ca5fdc0350b84af1ffc` |
@@ -1744,7 +1744,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v138.js` | 11640 | `9844f5b8c1706af302d1177d1d5ec355fe07f482b2bd2947315cb93f471d3b7e` |
 | `views/group-v139.js` | 12916 | `4aa5c0e09761f7dd4e664b53574cae8e6c084edb59b92f5681f19cb29200a436` |
 | `views/group-v14.js` | 10588 | `bca2472e723b2d009974e038f731f0f811e3b946d2794ac348c20dfef24e05fc` |
-| `views/group-v140.js` | 14690 | `f1f810489919928435edbe56a4934c66db7a59d17bb29071c36c62245c509169` |
+| `views/group-v140.js` | 15004 | `37fd68dc9d3e27f9947c0caf6506c5abcd3c6a2f3a6bceb88494151b999084a4` |
 | `views/group-v141.js` | 8714 | `87db945559d3538dbcf7d26eac3ba81ca81e4969ba647b94408676e36d3c1daf` |
 | `views/group-v142.js` | 14073 | `dbcf3e827edb92c456707768fa28d34fd5a9f77fd14154238cf650341562ee1e` |
 | `views/group-v143.js` | 12243 | `f0fef18d71cd37361ce342f46ff9cb130f6ac699869a04ac82647bf939e05cdc` |

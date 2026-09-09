@@ -87,10 +87,14 @@ export const renderers = {
     root.appendChild(field('Gestational age (weeks, decimal)', 'eos-ga', { step: '0.1', min: 22, max: 43, placeholder: 'e.g. 39' }));
     root.appendChild(field('Highest intrapartum temperature (°F)', 'eos-temp', { step: '0.1', min: 90, max: 110, placeholder: 'e.g. 100.4' }));
     root.appendChild(field('Rupture of membranes (hours before delivery)', 'eos-rom', { step: '0.1', min: 0, placeholder: 'e.g. 18' }));
+    // spec-v1165: this opened on "Negative" -- a maternal culture RESULT, preselected
+    // for a patient nobody had asked about (rule 8). The Kaiser model carries its own
+    // Unknown category for exactly that state, and it is a real level of the model
+    // rather than a blank, so it leads.
     root.appendChild(selectField('Maternal GBS status', 'eos-gbs', [
+      { value: 'unknown', text: 'Unknown / not reported' },
       { value: 'negative', text: 'Negative' },
       { value: 'positive', text: 'Positive' },
-      { value: 'unknown', text: 'Unknown' },
     ]));
     root.appendChild(selectField('Intrapartum antibiotics', 'eos-abx', [
       { value: 'none', text: 'None, or any antibiotic under 2 h before delivery' },
