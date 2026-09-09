@@ -52,7 +52,12 @@ function wire(ids, run) {
   run();
 }
 
+// spec-v1166: this opened on "Female", whose waist bands are the lower pair -- so an
+// unstated sex scored the waist higher, in the alarming direction, for a fact nobody
+// had been asked. The blank comes first, and the library gives the range the two
+// bands span until it is chosen.
 const SEX_OPTS = [
+  { value: '', text: 'Not stated' },
   { value: 'female', text: 'Female (waist bands 80 / 88 cm)' },
   { value: 'male', text: 'Male (waist bands 94 / 102 cm)' },
 ];
@@ -84,10 +89,18 @@ export const renderers = {
     wire(['findrisc-age', 'findrisc-bmi', 'findrisc-sex', 'findrisc-waist', 'findrisc-active', 'findrisc-fruitVeg', 'findrisc-bpMed', 'findrisc-highGlucose', 'findrisc-familyHistory'], () => safe(o, () => {
       const r = M.findrisc({ age: val('findrisc-age'), bmi: val('findrisc-bmi'), sex: val('findrisc-sex'), waist: val('findrisc-waist'), active: chk('findrisc-active'), fruitVeg: chk('findrisc-fruitVeg'), bpMed: chk('findrisc-bpMed'), highGlucose: chk('findrisc-highGlucose'), familyHistory: val('findrisc-familyHistory') });
       if (!r.valid) return invalid(o, r);
+      // spec-v1166: the two mistakes this session had already written down and
+      // walked into again. The band says "FINDRISC 9 to 13 of 26" and this row said
+      // "FINDRISC: 9" -- the floor stated as the total, contradicting the line above
+      // it (the spec-v1159 lesson). And `r.risk` is null when the range spans two
+      // bands, so the risk row printed the literal token "null" (rule 26, the
+      // spec-v1158 lesson). Both come from rendering a field the library
+      // deliberately withheld.
+      const spans = r.waistDecided === false;
       resultRow(o, [
-        { text: r.band, cls: r.abnormal ? 'warn' : null },
-        { label: 'FINDRISC', value: `${r.score}` },
-        { label: '10-year risk', value: r.risk },
+        { text: r.band, cls: r.abnormal === false ? null : 'warn' },
+        { label: 'FINDRISC', value: spans ? `${r.score} to ${r.scoreCeiling} of 26` : `${r.score}` },
+        { label: '10-year risk', value: spans ? 'not decided until the sex is stated' : r.risk },
       ]);
       note(o, r.detail); note(o, r.note);
     }));

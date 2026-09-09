@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `bf05d4675a56fdfa`
-Generated: 2026-09-09T07:19:25.747Z
+Build ID: `7de0ac04f780fbac`
+Generated: 2026-09-09T07:40:23.911Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -731,7 +731,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/rheumcrit-v256.js` | 7930 | `761ffcd908a3560b96656ab09523a41bf5e4f7e643f90da6ef59b5e3b07bc08f` |
 | `lib/ridley-jopling-v534.js` | 13454 | `fb4f0363664d9c1bd23f3d5c8ef32b627ed0c4741342457fb3fdbe253a02c3a2` |
 | `lib/risk-scores-v215.js` | 15691 | `4deabf8e55fdd66e0791f9e872512832ccc01df90778f274857f12cae19a04df` |
-| `lib/risk-v192.js` | 13304 | `bc3357a2490cbfebe66fabcdebab1b9a9c4171253eb9746a919939f5923db142` |
+| `lib/risk-v192.js` | 15972 | `647aa17f95484491306512d13efa7515ba6aa13b628c170219d19b80158b2179` |
 | `lib/riskscores-v255.js` | 6924 | `37886240e9d0cf2bbde3b0149eb1b8ff62667a4350dc0bed14dc60631f1a3f39` |
 | `lib/risser-sign-v383.js` | 4009 | `4e29f6eea9c402b63018246ff051741b23b4a2894f8a44abc3c80abdc576a67d` |
 | `lib/rls-criteria-v856.js` | 8355 | `fa9a6c8ac7d11012acd1e913066ed4f13df1adec66715feff2befed2be0994f1` |
@@ -1527,7 +1527,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/rheumcrit-v256.js` | 5291 | `f1f07f8b961e1c6c1119f817745cabcc361987de3466a91f185971071068a7ec` |
 | `mcp/adapters/ridley-jopling-v534.js` | 5199 | `dc4266d2147a99c69564dd2ef035e856bf31a03f6a9fe22d1edddcbe52081b92` |
 | `mcp/adapters/risk-scores-v215.js` | 6836 | `0c577a6eb59db24f86e6f575f5fefa116b5a82c5f1844e4e9c0d0543e78bf972` |
-| `mcp/adapters/risk-v192.js` | 4323 | `d3bde8d2f2c38373def6f77fe1ea4eedecc0904bd3af163189c4419b6bbc4497` |
+| `mcp/adapters/risk-v192.js` | 4542 | `c23a554508aba41f31dcb319c9a7c64d5b9361d1712a60afc6626f3b5d76b56e` |
 | `mcp/adapters/riskscores-v255.js` | 4128 | `d782a023a7b1bf5a59ea9930ca6200f2a427c2f607d1dd9399c14478b0b05843` |
 | `mcp/adapters/risser-sign-v383.js` | 1400 | `7b229d311a51deaefce3c905987ad8ebca5cb90a40a473dea01b35d80c41c782` |
 | `mcp/adapters/rls-criteria-v856.js` | 2572 | `e24dff045a525c680a20b7cca7237ca4e2b784951da244f0f75533e4d71fa6b2` |
@@ -1792,7 +1792,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v19.js` | 14628 | `0c3fa90f6f75b2755d6346239a57a80dfdbb58de18519b8c4fcf5dff736a5f6b` |
 | `views/group-v190.js` | 8333 | `c2d385a8973c0b7860b8e9e991924104a25a0f9d15964171c19aef997be4ac2d` |
 | `views/group-v191.js` | 8603 | `dd5844f01f6cd51a7db17e095f6d113c4f10157c3906ac284b1c6ed416a1db37` |
-| `views/group-v192.js` | 9531 | `0befdfd965d37bb8bfc64e7df87943a18458ad1454247035b840371eaa94fbee` |
+| `views/group-v192.js` | 10529 | `d3f8d2c962506d1e49debddfa851483b6233aedbf849c25fee4777f867eb895d` |
 | `views/group-v193.js` | 10266 | `f8b448ea707e29ff8c6d037cd305abd31dbce516f63545356e176333dcb4c01e` |
 | `views/group-v194.js` | 6492 | `4beaaaa1e2e636edbdff0733b8da5d18997fea23fd4f7d2cbbe0762ba24430d6` |
 | `views/group-v195.js` | 5560 | `b93f295af8352adb380945c07c8ada70810d2224012d64938d2efee406d42762` |

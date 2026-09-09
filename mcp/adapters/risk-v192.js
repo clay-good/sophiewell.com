@@ -14,7 +14,9 @@ export default [
     fields: [
       { dom: 'findrisc-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
       { dom: 'findrisc-bmi', arg: 'bmi', kind: 'number', required: true, label: 'BMI', unit: 'kg/m²' },
-      { dom: 'findrisc-sex', arg: 'sex', kind: 'enum', values: ['female', 'male'], required: false, label: 'Sex (sets waist bands)' },
+      // spec-v1166: already optional, and now honestly so -- an omitted sex gives
+      // the range the two waist bands span rather than silently scoring as female.
+      { dom: 'findrisc-sex', arg: 'sex', kind: 'enum', values: ['female', 'male'], required: false, label: 'Sex (sets the waist bands: 94/102 cm men, 80/88 women; omit for the range)' },
       { dom: 'findrisc-waist', arg: 'waist', kind: 'number', required: true, label: 'Waist circumference', unit: 'cm' },
       { dom: 'findrisc-active', arg: 'active', kind: 'bool', required: false, label: 'Physically active ≥ 30 min/day' },
       { dom: 'findrisc-fruitVeg', arg: 'fruitVeg', kind: 'bool', required: false, label: 'Eats vegetables/fruit daily' },

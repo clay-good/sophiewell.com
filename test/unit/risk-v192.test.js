@@ -64,3 +64,42 @@ test('adhere-hf: CART tree reaches each terminal node', () => {
   assert.equal(adhereHf({ bun: 50, sbp: 100 }).valid, false);
   assert.equal(adhereHf({ bun: 30 }).valid, false);
 });
+
+// spec-v1166: `o.sex === 'male' ? 'male' : 'female'` made an UNSTATED sex a female
+// one, and the waist bands are sex-specific -- so an unstated sex scored the waist
+// higher, in the alarming direction, for a fact nobody had been asked.
+test('findrisc: an unstated sex gives the range the two waist bands span', () => {
+  const base = { age: 60, bmi: 32, waist: 90, familyHistory: 'none' };
+  const male = findrisc({ ...base, sex: 'male' });
+  const female = findrisc({ ...base, sex: 'female' });
+  assert.equal(male.score, 9);
+  assert.equal(female.score, 13);
+  assert.equal(male.sexStated, true);
+
+  // The defect, stated: an absent sex used to score exactly as a female one.
+  const absent = findrisc(base);
+  assert.equal(absent.sexStated, false);
+  assert.notEqual(absent.score, female.score);
+  assert.equal(absent.score, 9);
+  assert.equal(absent.scoreCeiling, 13);
+  assert.equal(absent.riskBand, null);
+  assert.match(absent.band, /FINDRISC 9 to 13 of 26/);
+  assert.match(absent.band, /the sex is not stated/);
+  assert.match(absent.band, /0 points as a man and 4 as a woman/);
+
+  // Rule 25: where both bands give the same points, the reading is decided even
+  // though the sex was never stated -- two different facts, reported separately.
+  const wide = findrisc({ ...base, waist: 120 });
+  assert.equal(wide.sexStated, false);
+  assert.equal(wide.waistDecided, true);
+  assert.equal(wide.riskBand, 'moderate');
+  assert.doesNotMatch(wide.band, /not stated/);
+  const narrow = findrisc({ ...base, waist: 60 });
+  assert.equal(narrow.sexStated, false);
+  assert.equal(narrow.waistDecided, true);
+  assert.equal(narrow.riskBand, 'slightly elevated');
+  assert.doesNotMatch(narrow.band, /not stated/);
+  // And with the sex given, both are true.
+  assert.equal(male.waistDecided, true);
+  assert.equal(absent.waistDecided, false);
+});

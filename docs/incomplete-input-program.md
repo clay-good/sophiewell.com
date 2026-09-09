@@ -579,8 +579,23 @@ The other 55 rows read as correct: `elapss` and `phases` showing their new range
 `hear` and `niss` disclosing *"at least"*, `iol-power` naming *"Emmetropic"*,
 `adrenal-ct-washout` naming which washout formula it used, and the two respiratory
 compensation tiles saying the measured value *"reads the same either way"*.
-`findrisc` is the one still owed a read: an unstated sex scores 13 where male scores
-9, because the waist bands are sex-specific.
+[spec-v1166](spec-v1166.md) read `findrisc`, the last one owed. Its waist bands are
+sex-specific — 94/102 cm for men, 80/88 for women — and `o.sex === 'male' ? 'male' :
+'female'` made an unstated sex a female one, so a 90 cm waist scored 0 points as a man
+and 4 as a woman: FINDRISC 9 (*"slightly elevated, ≈ 4%"*) against 13 (*"moderate, ≈
+17%"*). A silent default of a known fact, in the alarming direction, and the same
+shape [spec-v1116](spec-v1116.md) fixed on `lvh-criteria`'s Cornell threshold. It
+gives the range now, and where both bands score the same the reading is decided
+whatever the sex turns out to be (rule 25).
+
+**And that wave walked into both of this session's own rendering lessons.** The band
+said *"FINDRISC 9 to 13 of 26"* while the rows beneath said *"FINDRISC: 9"* — the
+floor as the total, which is [spec-v1159](spec-v1159.md) — and *"10-year risk: null"*,
+the literal token, which is rule 26 and [spec-v1158](spec-v1158.md). Both found
+earlier the same day. They share one cause: **a library that learns to withhold a
+field breaks every renderer that interpolates it, and the renderer is a different file
+from the one being fixed.** Reading the page rather than the return value is what
+catches it.
 
 **A probe whose every row has been read is not a probe with nothing left to
 say** — the catalog moves, and the rows change with it. It is a probe whose

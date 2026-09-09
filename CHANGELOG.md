@@ -338,6 +338,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   intrapartum antibiotics, the tool now says which level it read instead. See
   docs/spec-v1165.md.
 
+- **The FINDRISC diabetes risk score assumed a sex nobody had chosen.** Its waist
+  thresholds differ by sex -- 94 and 102 cm for men, 80 and 88 for women -- and a
+  blank menu was read as female, so a 90 cm waist scored four points instead of none
+  and moved the same person from "slightly elevated, about 4%" to "moderate, about
+  17%". The menu now opens unset and the score is given as the range the two sets of
+  thresholds span, until the sex is chosen; where both give the same answer it just
+  says so. See docs/spec-v1166.md.
+
 ### Changed
 
 - **A check that compares what the tool accepts with what the page offers was
