@@ -539,11 +539,30 @@ them: `kings-college` and the three ICHD-3 headache tiles. The catalog moved, wh
 the point — *the rows change with it.* And `elapss` and `glim-malnutrition` left it
 because spec-v1164 taught the vocabulary the phrase they disclose with.
 
-The second section's top rows are now the **fixed** tiles showing their new
-disclosures — *"between -6 and 2 … whatever the angina index turns out to be"*,
-*"MASCC at least 21"*, *"Partial Mayo score"* — which is what a working probe
-looks like after a wave. `smart-cop`'s three oxygenation rows turn on a candidate
-value of 0, and a PaO2 of 0 is not a patient ([spec-v1099](spec-v1099.md)).
+### The second section, re-read at spec-v1164: 34 rows, all of them correct
+
+[spec-v1103](spec-v1103.md) read it at 13 rows. It is 34 now, and every one is a
+tile behaving correctly — recorded here so the next reader does not re-derive it:
+
+| Rows | Why they stand |
+| --- | --- |
+| `oswestry-odi` (10) | every label says *"omit if not applicable"*, and the ODI is scored as a percentage **of the sections completed** |
+| `truelove-witts` (4) | the four systemic criteria are alternatives (see [that wave](spec-v1151.md)), and the tile discloses what was not measured |
+| `tls-cairo-bishop` (4) | the clinical criteria and the creatinine pair; the tile now reports an unmeasured one as *"not entered"* ([spec-v1163](spec-v1163.md)) |
+| `pk-suite` (4) | it **drops** the derived quantities that need the missing input rather than computing them from zero — no Vd, no half-life or loading dose, and the maintenance dose still shown |
+| `smart-cop` (3) | turn on a candidate value of 0, and a PaO2 of 0 is not a patient ([spec-v1099](spec-v1099.md)) |
+| `iol-power` | names the assumption in the verdict: *"**Emmetropic** IOL power 20.05 D"* |
+| `calvert-carboplatin` | a checkbox; an unticked box is a real "no" (rule 4) |
+| `mayo-uc`, `palm-coein`, `spetzler-martin` | each is labelled optional or supplementary on the page |
+| `mascc`, `duke-treadmill`, `kings-college`, `salicylate-toxicity` | the fixed tiles showing their new disclosures — *"between -6 and 2 … whatever the angina index turns out to be"*, *"MASCC at least 21"* — which is what a working probe looks like after a wave |
+
+### The third section is the standing next read
+
+[spec-v1104](spec-v1104.md) read it at 32 rows and wrote down the reason for each.
+It is **58** now, across 39 tiles. It is the weakest of the four by construction —
+the band moves but `abnormal` does not — and spec-v1104 is the wave that found
+`phoenix-sepsis` in it, so weak is not the same as empty. Two of the new rows are
+`phases` and `elapss` showing the ranges [spec-v1159](spec-v1159.md) gave them.
 
 **A probe whose every row has been read is not a probe with nothing left to
 say** — the catalog moves, and the rows change with it. It is a probe whose

@@ -56,6 +56,21 @@ observation.** Changing it asks a different question, and the reading names the 
 it used every time: *"16 of 20 days in range 2–3"*. It stands, and the map's table
 records why.
 
+## The second section, re-read while the first was open
+
+[spec-v1103](spec-v1103.md) read it at 13 rows; it is 34 now, and **every one is a
+tile behaving correctly**. Ten are `oswestry-odi`, whose every label says *"omit if
+not applicable"* and which is scored as a percentage of the sections completed. Four
+are `pk-suite`, which **drops** the derived quantities needing a missing input rather
+than computing them from zero — no volume of distribution, no half-life or loading
+dose, and the maintenance dose still shown. `iol-power` names its assumption in the
+verdict: *"**Emmetropic** IOL power 20.05 D"*. The map's table records the rest.
+
+The third section has grown from the 32 rows [spec-v1104](spec-v1104.md) read to 58,
+and is the standing next read. It is the weakest of the four by construction — the
+band moves but `abnormal` does not — and spec-v1104 is the wave that found
+`phoenix-sepsis` in it, so weak is not the same as empty.
+
 ## And four rows left without anyone touching them
 
 `kings-college` and the three ICHD-3 headache tiles are no longer in the section. The
