@@ -171,6 +171,17 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
     the same file is correct: GLI-2012 publishes an other/mixed set, the tile falls back to it and
     prints a note saying it did. Requiring that one broke a passing test, and rightly.
 
+29. **A shape test is not a validity test** (spec-v1170). `new Date(2026, 12, 45)`
+    is 2027-02-14 and `Date.UTC(2026, 1, 30)` is 2026-03-02 — neither fails, both roll
+    over. Four parsers here tested a date's SHAPE and handed the components to one of
+    those constructors; one round-tripped the result and three did not, so an impossible
+    date was answered from a different one. `rosendaal-ttr` read a mistyped `2026-02-30`
+    as sixty days of record instead of twenty (TTR 80% → 88.3%) and DROPPED a line
+    written `2026-1-11` altogether (TTR 80% → 65%, the good-control threshold), saying
+    nothing either time. This is rule 5 in a string field: the impossible value is
+    given, and the tile owes the reader its name. The calendar rule now lives once in
+    `lib/num.js`.
+
 28. **A check that examines only the fields carrying an optional property is silent
     about every field that does not** (spec-v1169). This is rule 17 one level up, at
     the gate's SUBJECT SELECTION rather than at its filter.

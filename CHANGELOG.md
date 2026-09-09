@@ -383,6 +383,23 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   twenty-three now publish their real option list, and the check below keeps the two
   in step. See docs/spec-v1169.md.
 
+- **A date that does not exist was quietly turned into one that does, and scored.**
+  JavaScript does not reject 30 February — it rolls the date forward to 2 March
+  without saying so. Four places in this project read a date by checking its shape and
+  then handing it straight to that behaviour; only one of the four then checked it had
+  got the day it was given. The time-in-therapeutic-range tool showed it worst: a
+  twenty-day INR record with one line mistyped as 2026-02-30 was reported as sixty
+  days and 88.3% in range instead of twenty days and 80% — and a line written with a
+  single-digit month (2026-1-11) was dropped from the record entirely, taking the same
+  reading to 13 of 20 days and exactly 65%, the good-control threshold. The pregnancy
+  dating tool accepted an impossible last-period date and recommended redating from
+  it. All four now share one rule that counts the days in the month; the INR tool
+  refuses and names the line it could not read instead of re-scoring around it, and a
+  single-digit month is now read rather than skipped. Two tools that take a date AND a
+  time were also reading them loosely: the restraint-reassessment timer accepted a
+  bare date and printed renewal and face-to-face deadlines counted from a time of day
+  nobody had entered. See docs/spec-v1170.md.
+
 ### Changed
 
 - **The check that compares a tool's accepted values with the menu on the page could
