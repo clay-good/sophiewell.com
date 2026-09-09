@@ -888,6 +888,33 @@ the failure of [spec-v1099](spec-v1099.md) and [spec-v1106](spec-v1106.md) made
 impossible in this one place. Negative-tested against spec-v1155's
 `acetaminophen-nomogram` fix reverted: it fails and names the pair.
 
+## The probe nobody had re-run
+
+[spec-v1158](spec-v1158.md). `prefilled-default-probe.spec.js` had not been run since
+this session started fixing pre-filled zeros. Four numeric inputs open with a value
+their worked example did not supply; three are statutory settings and correct by the
+probe's own rule. The fourth was `kdigo-aki`'s anuria duration, and reading it found
+two defects — the pre-filled zero being the smaller one.
+
+**Anuria for ≥ 12 h is KDIGO Stage 3 on its own**, and the anuria test sat INSIDE a
+gate requiring the mL/kg/h figure and its duration. So fourteen hours of documented
+anuria with a normal creatinine read *"Does not meet KDIGO AKI criteria."* That is
+worse than a blank-field defect: **the reader entered the finding and the tile
+discarded it.**
+
+And with neither urine-output field given, the sub-stage was `0` — indistinguishable
+from a normal output — and the tile ruled AKI out entirely. It is `null` now and the
+reading says which half it saw. `anuriaHours = 0` was a default parameter, so "no
+anuria" and "nobody asked" were one value (rule 21).
+
+The first version of that fix then put the literal token **`null`** on screen, because
+the view interpolated the withheld sub-stage straight into the reading — rule 26,
+caught by looking at the page rather than the library.
+
+<!-- catalog-truth:historical -->
+The probe prints its reach now: **2,828 number inputs across 857 of 1,706 tiles.**
+The rest are selects, checkboxes and sliders, which it cannot see.
+
 ## Probes measured and rejected
 
 Three questions asked of the whole catalog after spec-v1048, each of which sounded like it should

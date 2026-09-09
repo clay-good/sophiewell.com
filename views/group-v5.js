@@ -299,7 +299,10 @@ export const renderers = {
     root.appendChild(field('Rise in last 48 h (mg/dL, optional)', 'rise'));
     root.appendChild(field('Urine output (mL/kg/h, optional)', 'uo'));
     root.appendChild(field('UO duration (hours, optional)', 'uoh'));
-    root.appendChild(field('Anuria duration (hours, default 0)', 'anuria', { value: 0 }));
+    // spec-v1158: this opened pre-filled with `0`, which is a claim that the
+    // patient is not anuric -- an observation nobody had made (rule 8). A
+    // placeholder asks instead, and a typed 0 is still an answer.
+    root.appendChild(field('Anuria duration (hours, optional)', 'anuria', { placeholder: '0' }));
     root.appendChild(checkField('RRT initiated', 'rrt'));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
@@ -309,13 +312,17 @@ export const renderers = {
         riseInLast48h: riseRaw === '' ? null : Number(riseRaw),
         uoMlPerKgPerHour: uoRaw === '' ? null : Number(uoRaw),
         uoDurationHours: uohRaw === '' ? null : Number(uohRaw),
-        anuriaHours: num('anuria'),
+        anuriaHours: numOrNull('anuria'),
         rrtInitiated: bool('rrt'),
       });
       o.appendChild(el('ul', {}, [
         el('li', { text: `Creatinine ratio: ${r.creatinineRatio}× baseline` }),
         el('li', { text: `Creatinine sub-stage: ${r.creatinineStage}` }),
-        el('li', { text: `Urine output sub-stage: ${r.urineOutputStage}` }),
+        // spec-v1158 / rule 26: the sub-stage is `null` when the urine output was
+        // never assessed, and interpolating that put the literal token "null" on
+        // screen. A disclosure is OUTPUT, and output built from a value the tile
+        // withheld is a leak (spec-v53 output safety).
+        el('li', { text: `Urine output sub-stage: ${r.urineOutputAssessed ? r.urineOutputStage : 'not assessed'}` }),
         el('li', { text: r.interpretation }),
       ]));
     });

@@ -430,3 +430,50 @@ test('abcd2: cites Johnston 2007', () => {
   const r = V5.abcd2({ age: 60, sbp: 120, dbp: 80, clinicalFeatures: 'other', durationMinutes: 5, diabetes: false });
   assert.match(r.citation, /Johnston/);
 });
+
+// spec-v1158: two defects on kdigoAki's urine-output side, both found by the
+// prefilled-default probe flagging `anuria` as a numeric input opening at 0.
+test('kdigoAki: anuria for 12 h or more is Stage 3 on its own', () => {
+  // The defect, stated: the anuria test sat inside a gate requiring the mL/kg/h
+  // figure and its duration, so 14 hours of documented anuria with a normal
+  // creatinine read "Does not meet KDIGO AKI criteria".
+  const anuric = V5.kdigoAki({ baselineCr: 1.0, currentCr: 1.0, anuriaHours: 14 });
+  assert.equal(anuric.urineOutputStage, 3);
+  assert.equal(anuric.stage, 3);
+  assert.equal(anuric.interpretation, 'KDIGO AKI Stage 3.');
+  // The boundary is 12 h, and below it the lower bands still need the figure.
+  const twelve = V5.kdigoAki({ baselineCr: 1.0, currentCr: 1.0, anuriaHours: 12 });
+  assert.equal(twelve.stage, 3);
+  const short = V5.kdigoAki({ baselineCr: 1.0, currentCr: 1.0, anuriaHours: 4 });
+  assert.equal(short.urineOutputStage, null);
+  assert.equal(short.urineOutputAssessed, false);
+  assert.match(short.interpretation, /4 h of anuria is short of the 12 h/);
+  assert.match(short.interpretation, /cannot yet rule AKI out/);
+});
+
+test('kdigoAki: a urine output nobody measured is not a sub-stage of 0', () => {
+  // The defect, stated: with neither urine-output field given, the sub-stage was
+  // 0 -- indistinguishable from a normal output -- and the tile ruled AKI out.
+  const none = V5.kdigoAki({ baselineCr: 1.0, currentCr: 1.1 });
+  assert.equal(none.urineOutputStage, null);
+  assert.equal(none.urineOutputAssessed, false);
+  assert.notEqual(none.interpretation, 'Does not meet KDIGO AKI criteria.');
+  assert.match(none.interpretation, /urine output has not been assessed/);
+  assert.match(none.interpretation, /cannot yet rule AKI out/);
+
+  // A creatinine that already rules in keeps its stage and says what is missing.
+  const crOnly = V5.kdigoAki({ baselineCr: 1.0, currentCr: 3.5 });
+  assert.equal(crOnly.stage, 3);
+  assert.match(crOnly.interpretation, /rests on the creatinine alone and can only rise/);
+
+  // A urine output that WAS measured and is normal rules out, as before.
+  const measured = V5.kdigoAki({ baselineCr: 1.0, currentCr: 1.0, uoMlPerKgPerHour: 1.2, uoDurationHours: 24 });
+  assert.equal(measured.urineOutputStage, 0);
+  assert.equal(measured.urineOutputAssessed, true);
+  assert.equal(measured.interpretation, 'Does not meet KDIGO AKI criteria.');
+
+  // And the KDIGO urine-output bands are unchanged.
+  assert.equal(V5.kdigoAki({ baselineCr: 1, currentCr: 1, uoMlPerKgPerHour: 0.4, uoDurationHours: 7 }).stage, 1);
+  assert.equal(V5.kdigoAki({ baselineCr: 1, currentCr: 1, uoMlPerKgPerHour: 0.4, uoDurationHours: 14 }).stage, 2);
+  assert.equal(V5.kdigoAki({ baselineCr: 1, currentCr: 1, uoMlPerKgPerHour: 0.2, uoDurationHours: 26 }).stage, 3);
+});

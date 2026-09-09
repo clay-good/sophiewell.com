@@ -41,6 +41,11 @@ test('which numeric inputs open pre-filled with a value the example did not supp
   });
 
   const rows = [];
+  // spec-v1158: the reach, because "4 calculators" is a number with no scale. If a
+  // change ever stopped `input[type=number]` matching -- a view moving to a custom
+  // control, say -- the count would fall and read as an improvement.
+  let numericInputs = 0;
+  let tilesWithNumericInput = 0;
   for (const id of ids) {
     await page.goto(`/#${id}`);
     const found = await page.evaluate(async (tileId) => {
@@ -50,17 +55,24 @@ test('which numeric inputs open pre-filled with a value the example did not supp
       const body = document.getElementById('tool-body');
       if (!body) return null;
       const out = [];
-      for (const n of body.querySelectorAll('input[type=number]')) {
+      const numeric = body.querySelectorAll('input[type=number]');
+      for (const n of numeric) {
         const v = String(n.value ?? '').trim();
         if (v === '') continue;                                  // rendered blank: correct
         if (Object.prototype.hasOwnProperty.call(example, n.id)) continue;  // the example's doing
         out.push({ field: n.id, value: v, placeholder: n.placeholder || '' });
       }
-      if (!out.length) return null;
       const res = document.querySelector('#q-results') || body;
-      return { fields: out, reading: (res.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 140) };
+      return {
+        seen: numeric.length,
+        fields: out,
+        reading: (res.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 140),
+      };
     }, id);
-    if (found) rows.push({ id, ...found });
+    if (!found) continue;
+    numericInputs += found.seen;
+    if (found.seen) tilesWithNumericInput += 1;
+    if (found.fields.length) rows.push({ id, fields: found.fields, reading: found.reading });
   }
 
   const out = 'test-results/prefilled-defaults.json';
@@ -68,6 +80,9 @@ test('which numeric inputs open pre-filled with a value the example did not supp
   console.log(`wrote ${out}`);
   console.log(`${rows.length} calculator(s) render a numeric input pre-filled with a value`);
   console.log('their worked example did not supply.\n');
+  console.log(`Reach: ${numericInputs} number input(s) across ${tilesWithNumericInput} of ${ids.length} tiles.`);
+  console.log('The rest are built of selects, checkboxes and sliders, which this cannot see --');
+  console.log('slider-default-probe.spec.js is the one that looks at those.\n');
   console.log('A suspect, not a defect: a default is fine where the number is a SETTING the reader');
   console.log('adjusts (a target, a rate, a reference range). It is wrong where the number is an');
   console.log('OBSERVATION, because a pre-filled 0 is a finding nobody made.\n');

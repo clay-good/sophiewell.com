@@ -256,6 +256,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   it instead. One tool had been exempted from the check for a reason that never
   applied; that exemption is gone. See docs/spec-v1157.md.
 
+- **The KDIGO acute kidney injury tool said a patient with fourteen hours of anuria
+  did not meet the criteria.** Anuria for twelve hours or more is stage 3 on the
+  urine-output criterion by itself, and the tool only checked for it when the
+  millilitre-per-kilogram figure and its duration were both also filled in -- so
+  entering the anuria alone did nothing. It now stages it directly.
+
+  The same tool reported a urine-output sub-stage of 0 when no urine output had been
+  entered at all, which reads as a normal output, and then ruled the injury out on
+  that basis. It now says the urine output was not assessed, and says whether the
+  creatinine alone already stages the patient. The anuria field also opened
+  pre-filled with 0 -- a claim that the patient is not anuric -- and is now blank
+  with 0 as a hint. See docs/spec-v1158.md.
+
 ### Changed
 
 - **A check that compares what the tool accepts with what the page offers was
