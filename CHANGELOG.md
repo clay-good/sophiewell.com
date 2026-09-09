@@ -348,6 +348,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
+- **A check that looks for a tool promising more than it requires was counting honest
+  answers as broken promises.** When a calculator says which values it needs and then
+  answers without one of them, that is only a problem if it stays quiet about it -- and
+  two tools were being flagged for answering partially and saying exactly what they
+  were missing and which way it could move. The check now asks whether the partial
+  answer owns up, and reports those separately. Negative-tested by removing one of
+  those disclosures, which brings the row straight back. See docs/spec-v1167.md.
+
+### Changed
+
 - **A check that compares what the tool accepts with what the page offers was
   only looking at a third of the catalog.** A calculator's list of accepted
   values is published to agents in its input schema, and this check has held it

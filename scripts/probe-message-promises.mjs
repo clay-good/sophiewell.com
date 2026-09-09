@@ -29,6 +29,7 @@
 import { allCalculators } from '../mcp/catalog.js';
 import { computeCalculator } from '../mcp/tools.js';
 import { META } from '../lib/meta.js';
+import { ASKING, DISCLOSING } from '../test/lib/asking-language.js';
 
 // Words too common to identify a field.
 const STOP = new Set([
@@ -62,6 +63,7 @@ const words = (s) => String(s || '')
 const rows = [];
 let tilesWithMessage = 0;
 let fieldsNamed = 0;
+let disclosed = 0;
 
 for (const tool of allCalculators()) {
   const empty = computeCalculator({ id: tool.id, inputs: {} });
@@ -97,6 +99,20 @@ for (const tool of allCalculators()) {
     delete partial[f.dom];
     const got = computeCalculator({ id: tool.id, inputs: partial });
     if (got?.valid !== true) continue;              // it does refuse: promise kept
+    // spec-v1167: the FOURTH false-positive class, and the first that is about the
+    // rule rather than the matching. Rule 23's concern is a message that lists what
+    // it needs and a tile that then answers WITHOUT them -- silently. A tile that
+    // answers and says what it did not have, and in which direction, has kept the
+    // promise the programme actually asks for: rule 12 prefers a disclosure to a
+    // refusal wherever the missing value is not expected to be there.
+    //
+    // All four rows this printed were of that kind. `mehran-cin` answers "Scored
+    // from 1 of 2 measurements and 2 of 6 clinical factors; the rest can only raise
+    // it (hypotension, the balloon pump, age over 75, anemia not stated)", and
+    // `rome-ecopd` answers "Graded with oxygen saturation unmeasured; it can only
+    // raise it". Both are already-high readings that rule IN, which is the floor.
+    const said = `${String(got.result?.band || '')} ${String(got.result?.bandLabel || '')} ${String(got.result?.text || '')} ${String(got.result?.detail || '')}`;
+    if (ASKING.test(said) || DISCLOSING.test(said)) { disclosed += 1; continue; }
     rows.push({
       id: tool.id,
       dom: f.dom,
@@ -120,3 +136,5 @@ console.log('field inside a disjunction is the opposite of promising to require 
 console.log(`${fieldsNamed} of their non-required, non-boolean fields are named in it by label.`);
 console.log('A field is "named" only if every distinctive word of its label appears in the');
 console.log('message, so this under-reports rather than over-reports.');
+console.log(`${disclosed} named field(s) answer partially and SAY SO, which keeps the promise`);
+console.log('rule 23 is about: the concern is a tile that answers without them SILENTLY.');

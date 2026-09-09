@@ -1045,6 +1045,24 @@ like the same shape, but the tile is a **running tally of products given**, not 
 measurement of the patient. Zero given is the state every massive transfusion
 protocol starts in. Rule 4 in a different costume.
 
+[spec-v1167](spec-v1167.md) re-ran `probe-message-promises`, which the table below
+records as having found **zero**. It printed **four**, and all four were the finder
+being wrong again — this time about the rule rather than the matching.
+
+Rule 23's concern is a message that lists what it needs and a tile that then answers
+without them **silently**. `mehran-cin` answers *"Scored from 1 of 2 measurements and
+2 of 6 clinical factors; the rest can only raise it (hypotension, the balloon pump,
+age over 75, anemia not stated)"*, and `rome-ecopd` answers *"Graded with oxygen
+saturation unmeasured; it can only raise it"* — both naming what they did not have
+and which way it moves, both already ruling in. **That is the promise the programme
+actually asks for**: rule 12 prefers a disclosure to a refusal, and rule 3 says an
+incomplete score may rule in.
+
+The probe only ever asked `got.valid === true`. It asks whether the partial reading
+asks or discloses now, and carries the four in its reach line rather than dropping
+them. Negative-tested: delete `rome-ecopd`'s disclosure and it prints that row again,
+and only it.
+
 ## Probes measured and rejected
 
 Three questions asked of the whole catalog after spec-v1048, each of which sounded like it should
@@ -1054,7 +1072,7 @@ find something and did not. Recorded so they are not re-run.
 | --- | --- |
 | Does any tile print a **percentage its own interpretation table contradicts**? | 23 suspects, **zero defects**. The rule cannot tell a computed value from a threshold — `navy-body-fat` states 11.1% body fat against a table of category cut-offs. What made `ranson-bisap` findable was that its answer quoted a band *label*, which `example-correctness` now catches. |
 | Does any tile's documented `expected` assert the **opposite verdict** to what it renders — "low risk" against "high risk", "not indicated" against "indicated"? | **Zero clashes** across all 1,699 examples. |
-| Does any tile's refusal message **name an input its guard does not require** (rule 23)? <!-- catalog-truth:historical --> | **Zero**, across every tile that refuses with a message (1,385 of them at the time). The five known instances were found and fixed as they arose. `scripts/probe-message-promises.mjs` is kept because the rule is about what an author writes next. Its first run said 28, and all 28 were the finder being wrong: booleans (an unticked box is a real "no"), disjunctive messages ("at least one", "and/or" — naming a field inside a choice is the opposite of requiring it), and scaffolding words like "input" that identify no field ([spec-v1121](spec-v1121.md)). |
+| Does any tile's refusal message **name an input its guard does not require** (rule 23)? <!-- catalog-truth:historical --> | **Zero**, and zero again at [spec-v1167](spec-v1167.md) after it printed four and all four were the finder being wrong a second time — see below. Originally, across every tile that refuses with a message (1,385 of them at the time). The five known instances were found and fixed as they arose. `scripts/probe-message-promises.mjs` is kept because the rule is about what an author writes next. Its first run said 28, and all 28 were the finder being wrong: booleans (an unticked box is a real "no"), disjunctive messages ("at least one", "and/or" — naming a field inside a choice is the opposite of requiring it), and scaffolding words like "input" that identify no field ([spec-v1121](spec-v1121.md)). |
 | Does the **clipboard** carry a number the tile is not showing? | **Zero**. Every calculator that offers a copy button was checked — about eight in ten of them. |
 
 The third is worth keeping in mind rather than repeating: what a tile puts on the clipboard is what
