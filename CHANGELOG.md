@@ -570,6 +570,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   "female" are left out, so searching for "other" does not return a list of tools.
   See docs/spec-v1185.md.
 
+- **Naming two things in one search found less than naming one.** A single word that
+  appears in a tool's description counted twice over -- once as a word, once as an
+  exact phrase, because a one-word search *is* a phrase -- while two words that both
+  appear scored less and fell below the cut-off. So "hydromorphone" found the opioid
+  converter and "morphine to hydromorphone" found nothing at all, which is how anyone
+  actually asks for a conversion. A search whose every word matches the same tool now
+  counts for something on its own. Checked against the whole catalog: all 1,706 tools
+  still answer their own name exactly as before, none changed place. See
+  docs/spec-v1186.md.
+
 ### Changed
 
 - **The check that compares a tool's accepted values with the menu on the page could
