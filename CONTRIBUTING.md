@@ -154,13 +154,19 @@ really is a score of 0 -- belongs in `test/integration/empty-form-ledger.js`,
 with a sentence in the pull request saying which it is: a criterion the clinician
 answered "no" to, or a measurement nobody took (`docs/spec-v1019.md`).
 
-It also carries `required-field-agreement.spec.js`, which clears exactly ONE
-field -- the first that `mcp/fields.js` marks `required` -- and leaves the worked
+It also carries `required-field-agreement.spec.js`, which clears ONE field at a
+time -- each in turn that `mcp/fields.js` marks `required` -- and leaves the worked
 example in place everywhere else. An agent omitting that input gets
 `MISSING_INPUT` and no number, so a browser that answers anyway gives two
-customers two answers to one question. A legitimate exception belongs in
-`test/integration/required-field-ledger.js`; its header sets out the three things
-a line can honestly be (`docs/spec-v1037.md`).
+customers two answers to one question. **Fixing either side is a fix**: teaching the
+browser to ask, or correcting a `required` declaration that was wrong -- of the 62
+disagreements this found, 27 were the declaration, nine of those on fields whose own
+label already said *optional* or *default* (`docs/spec-v1146.md` to
+`docs/spec-v1155.md`). It prints how many of the declared fields it actually cleared,
+because a clean sweep is a claim about its reach; if you narrow what it can see it
+fails on that count rather than going quiet (`docs/spec-v1156.md`). A legitimate
+exception belongs in `test/integration/required-field-ledger.js`; its header sets out
+the three things a line can honestly be (`docs/spec-v1037.md`).
 
 It also carries `one-blank-field.spec.js`, which fills a calculator from its own
 worked example and then clears a SINGLE field -- only ones whose label names a
