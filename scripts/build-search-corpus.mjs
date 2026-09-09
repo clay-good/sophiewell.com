@@ -14,6 +14,11 @@
 //                                        only when a tile has no adapter summary)
 //   - expected                           META[id].example.expected (fallback)
 //   - bands[]                            META[id].interpretation.bands[].text
+//   - answers                            spec-v1185: the words a tile can ANSWER
+//                                        FOR -- the enum option values in its own
+//                                        adapter field registry, filtered to those
+//                                        the prose does not already say and that
+//                                        name at most MAX_TILES_PER_ANSWER tiles
 //
 // Output (both deterministic, byte-stable across rebuilds -- no timestamps):
 //   data/search-corpus/corpus.json       { <id>: { name, group, ... } }
@@ -41,7 +46,8 @@ const OUT_DIR = join(ROOT, 'data', 'search-corpus');
 //                       High find-signal, small, grows ~35 B/tile. The HARD budget below is
 //                       checked against THIS file, so the build no longer hits a wall as the
 //                       catalog grows.
-//   corpus-detail.json Tier 2 (TIER2_FIELDS): id -> {summary, what, when, expected, bands}.
+//   corpus-detail.json Tier 2 (TIER2_FIELDS): id -> {summary, what, when, expected, bands,
+//                       answers}.
 //                       The desc-channel prose (lib/search-corpus.js corpusDesc) - the bulk
 //                       of the bytes. Both consumers (app.js, mcp/tools.js) merge the tiers
 //                       back into one row before ranking, so ranking is byte-for-byte the
