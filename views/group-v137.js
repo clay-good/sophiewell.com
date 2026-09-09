@@ -137,7 +137,7 @@ export const renderers = {
     root.appendChild(field('Hemoglobin (g/dL)', 'vacs-hgb', { max: 25, step: '0.1', min: 0, placeholder: 'e.g. 11' }));
     root.appendChild(field('AST (U/L)', 'vacs-ast', { min: 0, placeholder: 'e.g. 40' }));
     root.appendChild(field('ALT (U/L)', 'vacs-alt', { min: 0, placeholder: 'e.g. 30' }));
-    root.appendChild(field('Platelets (×10⁹/L)', 'vacs-plt', { min: 0, placeholder: 'e.g. 150' }));
+    root.appendChild(field('Platelets (×10⁹/L)', 'vacs-plt', { max: 2000, min: 0, placeholder: 'e.g. 150' }));
     root.appendChild(field('eGFR (mL/min)', 'vacs-egfr', { min: 0, placeholder: 'e.g. 70' }));
     root.appendChild(selectField('Hepatitis-C co-infection', 'vacs-hcv', YN));
     const o = out(); root.appendChild(o);

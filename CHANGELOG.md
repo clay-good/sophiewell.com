@@ -437,6 +437,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   dwell is implausible, because chronic catheters and tunnelled lines are real and the CDC
   publishes no maximum. See docs/spec-v1173.md.
 
+- **Five liver-fibrosis scores said "fibrosis ruled out" when given a platelet count in
+  the units the lab report prints.** A US lab reports platelets as "150,000 per
+  microlitre"; these fields want that same count written as 150. It is not a typo -- it
+  is the number the reader is copying, in the form it is given. In all five scores the
+  platelet count is on the bottom of the fraction, so the thousand-fold figure pushes the
+  result toward zero, which is the reassuring end: FIB-4 and APRI both said the patient
+  was below the fibrosis cutoff, the NAFLD score printed -2596.66 and "excludes advanced
+  fibrosis", and the Forns and Lok indices ruled significant fibrosis and cirrhosis out.
+  All five now decline and do the conversion for you, saying that a report reading
+  150,000/uL is entered as 150. A genuinely extreme platelet count is still accepted --
+  the limit is for the impossible, not the unusual, and it is the limit this project
+  already had written down and was not using. Eighteen platelet and white-cell inputs
+  also now carry that limit, so the page flags the value above the answer. See
+  docs/spec-v1174.md.
+
 ### Changed
 
 - **The check that compares a tool's accepted values with the menu on the page could

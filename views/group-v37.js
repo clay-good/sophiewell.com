@@ -103,7 +103,7 @@ export const renderers = {
   // ----- 2.2 sic-score --------------------------------------------------
   'sic-score'(root) {
     note(root, 'Sepsis-Induced Coagulopathy (SIC) score: platelet count, PT-INR, and the total SOFA (capped at 2). SIC is met when the total is 4 or more AND the platelet + PT-INR subscore is 3 or more.');
-    root.appendChild(field('Platelet count (x10^9/L)', 'si-plt', { step: '1', min: 0, placeholder: 'e.g. 80' }));
+    root.appendChild(field('Platelet count (x10^9/L)', 'si-plt', { max: 2000, step: '1', min: 0, placeholder: 'e.g. 80' }));
     root.appendChild(field('PT-INR', 'si-inr', { step: '0.1', min: 0, placeholder: 'e.g. 1.6' }));
     root.appendChild(field('Total SOFA score (resp + CV + hepatic + renal)', 'si-sofa', { step: '1', min: 0, placeholder: 'e.g. 4' }));
     const o = out(); root.appendChild(o);

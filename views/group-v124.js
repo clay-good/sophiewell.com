@@ -100,7 +100,7 @@ export const renderers = {
     note(root, 'Forns index for HCV fibrosis (Forns 2002): a four-variable serum estimate. Enter age, GGT, platelets, and total cholesterol in mg/dL. Below 4.2 rules out significant fibrosis; above 6.9 rules it in; between is indeterminate.');
     root.appendChild(field('Age (years)', 'fo-age', { max: 130, step: '1', min: 0, placeholder: 'e.g. 50' }));
     root.appendChild(field('GGT (U/L)', 'fo-ggt', { step: '1', min: 0, placeholder: 'e.g. 80' }));
-    root.appendChild(field('Platelet count (×10⁹/L)', 'fo-plt', { step: '1', min: 0, placeholder: 'e.g. 150' }));
+    root.appendChild(field('Platelet count (×10⁹/L)', 'fo-plt', { max: 2000, step: '1', min: 0, placeholder: 'e.g. 150' }));
     root.appendChild(field('Total cholesterol (mg/dL)', 'fo-chol', { max: 600, step: '1', min: 0, placeholder: 'e.g. 200' }));
     const o = out(); root.appendChild(o);
     wire(['fo-age', 'fo-ggt', 'fo-plt', 'fo-chol'], () => safe(o, () => {
@@ -161,7 +161,7 @@ export const renderers = {
   // ----- 2.6 lok-index --------------------------------------------------
   'lok-index'(root) {
     note(root, 'Lok index for cirrhosis (Lok 2005, HALT-C): a logistic probability from platelets, the AST/ALT ratio, and INR. Below 0.2 rules cirrhosis out; above 0.5 rules it in; between is indeterminate.');
-    root.appendChild(field('Platelet count (×10⁹/L)', 'lk-plt', { step: '1', min: 0, placeholder: 'e.g. 120' }));
+    root.appendChild(field('Platelet count (×10⁹/L)', 'lk-plt', { max: 2000, step: '1', min: 0, placeholder: 'e.g. 120' }));
     root.appendChild(field('AST (U/L)', 'lk-ast', { step: '1', min: 0, placeholder: 'e.g. 60' }));
     root.appendChild(field('ALT (U/L)', 'lk-alt', { step: '1', min: 0, placeholder: 'e.g. 50' }));
     root.appendChild(field('INR', 'lk-inr', { step: '0.1', min: 0, placeholder: 'e.g. 1.2' }));

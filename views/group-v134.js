@@ -152,7 +152,7 @@ export const renderers = {
   'dipss-plus-mf'(root) {
     note(root, 'DIPSS-Plus (Gangat 2011): refines DIPSS with three further variables. The DIPSS group is carried forward (int-1 = 1, int-2 = 2, high = 3; low = 0), then platelet <100 ×10⁹/L = 1, red-cell transfusion need = 1, unfavorable karyotype = 1. Total 0–6 → low (0), int-1 (1), int-2 (2–3), high (4–6). Median survival 15.4 / 6.5 / 2.9 / 1.3 years.');
     root.appendChild(selectField('DIPSS risk group', 'dpp-grp', DIPSS_GROUP_OPTS));
-    root.appendChild(field('Platelet count (×10⁹/L)', 'dpp-plt', { step: '1', min: 0, placeholder: 'e.g. 90' }));
+    root.appendChild(field('Platelet count (×10⁹/L)', 'dpp-plt', { max: 2000, step: '1', min: 0, placeholder: 'e.g. 90' }));
     root.appendChild(selectField('Red-cell transfusion need?', 'dpp-tx', YN));
     root.appendChild(selectField('Unfavorable karyotype?', 'dpp-kar', YN));
     const o = out(); root.appendChild(o);

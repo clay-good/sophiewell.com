@@ -743,7 +743,7 @@ export const renderers = {
     root.appendChild(field('Age (years)', 'fib4-age', { min: 0, max: 130, value: 55 }));
     root.appendChild(field('AST (U/L)', 'fib4-ast', { min: 0, value: 60 }));
     root.appendChild(field('ALT (U/L)', 'fib4-alt', { min: 0, value: 40 }));
-    root.appendChild(field('Platelets (x10^9/L)', 'fib4-plt', { value: 150 }));
+    root.appendChild(field('Platelets (x10^9/L)', 'fib4-plt', { max: 2000, value: 150 }));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       const r = V4.fib4({
@@ -819,7 +819,7 @@ export const renderers = {
   apri(root) {
     root.appendChild(field('AST (U/L)', 'apri-ast', { min: 0, value: 60 }));
     root.appendChild(field('AST upper limit of normal (U/L)', 'apri-uln', { value: 40 }));
-    root.appendChild(field('Platelets (x10^9/L)', 'apri-plt', { value: 150 }));
+    root.appendChild(field('Platelets (x10^9/L)', 'apri-plt', { max: 2000, value: 150 }));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       const r = V4.apri({

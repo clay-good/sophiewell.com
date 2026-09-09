@@ -239,7 +239,7 @@ export const renderers = {
   lrinec(root) {
     note(root, 'Six routine labs distinguish necrotizing fasciitis from other soft-tissue infections. A low score does not rule it out.');
     root.appendChild(field('CRP (mg/L)', 'lr-crp', { step: '0.1', min: 0, placeholder: '180' }));
-    root.appendChild(field('White blood cell count (x10^3/uL)', 'lr-wbc', { step: '0.1', min: 0, placeholder: '16' }));
+    root.appendChild(field('White blood cell count (x10^3/uL)', 'lr-wbc', { max: 200, step: '0.1', min: 0, placeholder: '16' }));
     root.appendChild(field('Hemoglobin (g/dL)', 'lr-hb', { step: '0.1', min: 0, max: 25, placeholder: '12' }));
     root.appendChild(field('Sodium (mmol/L)', 'lr-na', { step: '0.1', min: 0, placeholder: '134' }));
     root.appendChild(field('Creatinine (mg/dL)', 'lr-cr', { step: '0.01', min: 0, placeholder: '1.8' }));
@@ -268,7 +268,7 @@ export const renderers = {
   'alt-70'(root) {
     note(root, 'Distinguishes lower-extremity cellulitis from its mimics (pseudocellulitis).');
     root.appendChild(checkField('Asymmetry (unilateral leg involvement)', 'al-asym'));
-    root.appendChild(field('White blood cell count (x10^3/uL)', 'al-wbc', { step: '0.1', min: 0, placeholder: '11' }));
+    root.appendChild(field('White blood cell count (x10^3/uL)', 'al-wbc', { max: 200, step: '0.1', min: 0, placeholder: '11' }));
     root.appendChild(field('Heart rate (bpm)', 'al-hr', { min: 0, max: 300, placeholder: '92' }));
     root.appendChild(field('Age (years)', 'al-age', { min: 0, max: 120, placeholder: '72' }));
     const o = out(); root.appendChild(o);

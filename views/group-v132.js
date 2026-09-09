@@ -62,7 +62,7 @@ export const renderers = {
   // ----- 2.1 plasmic-ttp ------------------------------------------------
   'plasmic-ttp'(root) {
     note(root, 'PLASMIC score (Bendapudi 2017): a 0–7 pretest probability of severe ADAMTS13 deficiency (acquired TTP), scored before the assay returns. 1 point each: platelet <30 ×10⁹/L; a hemolysis sign (reticulocyte >2.5%, undetectable haptoglobin, or indirect bilirubin >2.0 mg/dL); no active cancer in the past year; no prior transplant; MCV <90 fL; INR <1.5; creatinine <2.0 mg/dL. 0–4 low, 5 intermediate, 6–7 high.');
-    root.appendChild(field('Platelet count (×10⁹/L)', 'pl-plt', { step: '1', min: 0, placeholder: 'e.g. 18' }));
+    root.appendChild(field('Platelet count (×10⁹/L)', 'pl-plt', { max: 2000, step: '1', min: 0, placeholder: 'e.g. 18' }));
     root.appendChild(selectField('Hemolysis (retic >2.5%, undetectable haptoglobin, or indirect bili >2.0)?', 'pl-hem', YN));
     root.appendChild(selectField('Active cancer in the past year?', 'pl-ca', YN));
     root.appendChild(selectField('Prior solid-organ or stem-cell transplant?', 'pl-tx', YN));
@@ -82,7 +82,7 @@ export const renderers = {
   // ----- 2.2 french-ttp -------------------------------------------------
   'french-ttp'(root) {
     note(root, 'French TTP score (Coppo 2010): a 0–3 pretest rule for severe acquired ADAMTS13 deficiency. 1 point each: platelet <30 ×10⁹/L, creatinine ≤2.26 mg/dL (≤200 µmol/L), positive ANA. A score of 0 makes severe deficiency very unlikely; 2–3 makes it highly likely.');
-    root.appendChild(field('Platelet count (×10⁹/L)', 'ft-plt', { step: '1', min: 0, placeholder: 'e.g. 22' }));
+    root.appendChild(field('Platelet count (×10⁹/L)', 'ft-plt', { max: 2000, step: '1', min: 0, placeholder: 'e.g. 22' }));
     root.appendChild(field('Creatinine (mg/dL)', 'ft-cr', { step: '0.01', min: 0, placeholder: 'e.g. 1.1' }));
     root.appendChild(selectField('Antinuclear antibody (ANA) positive?', 'ft-ana', YN));
     const o = out(); root.appendChild(o);
@@ -99,7 +99,7 @@ export const renderers = {
   'jaam-dic'(root) {
     note(root, 'JAAM DIC score (Gando 2006, the 2006 revised acute-DIC criteria): a 0–8 score. SIRS ≥3 criteria = 1; platelet <80 ×10⁹/L or >50% fall in 24 h = 3, else 80 to <120 or >30% fall = 1; FDP ≥25 µg/mL = 3, 10 to <25 = 1; PT ratio ≥1.2 = 1. A total ≥4 meets the criteria for DIC. The 24-h-prior platelet is optional (it scores the fall).');
     root.appendChild(selectField('≥3 SIRS criteria met?', 'jd-sirs', YN));
-    root.appendChild(field('Platelet count now (×10⁹/L)', 'jd-plt', { step: '1', min: 0, placeholder: 'e.g. 90' }));
+    root.appendChild(field('Platelet count now (×10⁹/L)', 'jd-plt', { max: 2000, step: '1', min: 0, placeholder: 'e.g. 90' }));
     root.appendChild(field('Platelet 24 h ago (×10⁹/L, optional)', 'jd-prior', { step: '1', min: 0, placeholder: 'e.g. 150' }));
     root.appendChild(field('FDP (µg/mL)', 'jd-fdp', { step: '0.1', min: 0, placeholder: 'e.g. 28' }));
     root.appendChild(field('Prothrombin-time ratio', 'jd-pt', { step: '0.01', min: 0, placeholder: 'e.g. 1.3' }));

@@ -171,6 +171,20 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
     the same file is correct: GLI-2012 publishes an other/mixed set, the tile falls back to it and
     prints a note saying it did. Requiring that one broke a passing test, and rightly.
 
+33. **A shared rule with an opportunistic migration plan will sit unused**
+    (spec-v1174). `lib/bounds.js` is 31 sourced physiologic envelopes, written in
+    spec-v53 so "a frankly-impossible input is never shown as a silent, authoritative
+    value", and its header describes how it was meant to spread: "extended as tiles
+    <!-- catalog-truth:historical -->
+    migrate -- opportunistic, not a 255-tile sweep" (its own words, from when the catalog
+    was that size). It has **three consumers**, against a catalog of 1706. So `fib4` ruled out
+    advanced fibrosis from a platelet count of 150,000 while the correct ceiling sat in a
+    file that `views/group-e.js` -- the file `fib4` lives in -- already imports. This is
+    the spec-v1168 lesson in constants rather than code: normalising or declaring something in one
+    place does not reach the next author. **And a bound is worth more when it names the
+    likely cause**: "a lab report reading 150000/uL is entered as 150" is a fix, where
+    "out of range" is a rejection.
+
 32. **An exemption can answer half its own question** (spec-v1173). The clock-dependent
     ledger asks "is the clock what it measures, or has an example been left to rot?" --
     two questions, and `device-day-counter` answers yes to both. It was exempted on the

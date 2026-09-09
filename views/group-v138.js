@@ -91,7 +91,7 @@ export const renderers = {
     root.appendChild(field('Gestational age (weeks)', 'fp-ga', { step: '0.1', min: 0, max: 45, placeholder: 'e.g. 32' }));
     root.appendChild(checkField('Chest pain or dyspnea', 'fp-chest'));
     root.appendChild(field('Oxygen saturation, SpO₂ (%)', 'fp-spo2', { step: '1', min: 0, max: 100, placeholder: 'e.g. 96' }));
-    root.appendChild(field('Platelet count (×10⁹/L)', 'fp-plt', { step: '1', min: 0, placeholder: 'e.g. 120' }));
+    root.appendChild(field('Platelet count (×10⁹/L)', 'fp-plt', { max: 2000, step: '1', min: 0, placeholder: 'e.g. 120' }));
     root.appendChild(field('Creatinine (µmol/L)', 'fp-creat', { step: '1', min: 0, placeholder: 'e.g. 90' }));
     root.appendChild(field('AST (U/L)', 'fp-ast', { step: '1', min: 0, placeholder: 'e.g. 60' }));
     const o = out(); root.appendChild(o);

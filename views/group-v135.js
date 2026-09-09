@@ -103,7 +103,7 @@ export const renderers = {
     root.appendChild(selectField('Symptomatic splenomegaly?', 'gelf-spleen', YN));
     root.appendChild(selectField('Pleural or peritoneal effusion?', 'gelf-effusion', YN));
     root.appendChild(field('Hemoglobin (g/dL)', 'gelf-hgb', { max: 25, step: '0.1', min: 0, placeholder: 'e.g. 12' }));
-    root.appendChild(field('Platelet count (×10⁹/L)', 'gelf-plt', { step: '1', min: 0, placeholder: 'e.g. 220' }));
+    root.appendChild(field('Platelet count (×10⁹/L)', 'gelf-plt', { max: 2000, step: '1', min: 0, placeholder: 'e.g. 220' }));
     root.appendChild(selectField('Leukemic phase (> 5.0 ×10⁹/L circulating malignant cells)?', 'gelf-leuk', YN));
     const o = out(); root.appendChild(o);
     wire(['gelf-mass', 'gelf-nodal', 'gelf-bsymp', 'gelf-spleen', 'gelf-effusion', 'gelf-hgb', 'gelf-plt', 'gelf-leuk'], () => safe(o, () => {

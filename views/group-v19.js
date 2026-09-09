@@ -88,7 +88,7 @@ export const renderers = {
     root.appendChild(selectField('Impaired fasting glucose or diabetes', 'nf-ifg', YESNO));
     root.appendChild(field('AST (U/L)', 'nf-ast', { min: 0, placeholder: 'e.g. 60', inputmode: 'decimal' }));
     root.appendChild(field('ALT (U/L) — must be > 0', 'nf-alt', { placeholder: 'e.g. 40', inputmode: 'decimal' }));
-    root.appendChild(field('Platelet count (×10⁹/L)', 'nf-plt', { min: 0, placeholder: 'e.g. 200', inputmode: 'decimal' }));
+    root.appendChild(field('Platelet count (×10⁹/L)', 'nf-plt', { max: 2000, min: 0, placeholder: 'e.g. 200', inputmode: 'decimal' }));
     root.appendChild(field('Albumin (g/dL)', 'nf-alb', { min: 0, placeholder: 'e.g. 4.0', inputmode: 'decimal' }));
     const o = out(); root.appendChild(o);
     wire(['nf-age', 'nf-bmi', 'nf-ifg', 'nf-ast', 'nf-alt', 'nf-plt', 'nf-alb'], () => safe(o, () => {
@@ -113,7 +113,7 @@ export const renderers = {
   'glasgow-imrie'(root) {
     root.appendChild(field('PaO₂ (mmHg) — 1 point if < 60', 'gi-pao2', { placeholder: 'e.g. 55', inputmode: 'decimal' }));
     root.appendChild(field('Age (years) — 1 point if > 55', 'gi-age', { placeholder: 'e.g. 60', inputmode: 'numeric' }));
-    root.appendChild(field('WBC (×10⁹/L) — 1 point if > 15', 'gi-wbc', { placeholder: 'e.g. 18', inputmode: 'decimal' }));
+    root.appendChild(field('WBC (×10⁹/L) — 1 point if > 15', 'gi-wbc', { max: 200, placeholder: 'e.g. 18', inputmode: 'decimal' }));
     root.appendChild(field('Calcium (mmol/L) — 1 point if < 2', 'gi-ca', { placeholder: 'e.g. 1.8', inputmode: 'decimal' }));
     root.appendChild(field('Urea (mmol/L) — 1 point if > 16', 'gi-urea', { placeholder: 'e.g. 20', inputmode: 'decimal' }));
     root.appendChild(field('LDH (IU/L) — 1 point if > 600', 'gi-ldh', { placeholder: 'e.g. 700', inputmode: 'decimal' }));

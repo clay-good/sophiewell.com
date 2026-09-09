@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `62a123fb172fa2cd`
-Generated: 2026-09-09T13:04:19.391Z
+Build ID: `a3e6c46d322383bb`
+Generated: 2026-09-09T13:56:18.972Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -178,7 +178,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/clavien-dindo-v320.js` | 5404 | `ae140f525e3d1f6103581f1d1e2eeed46813f69ada14d9c764ed867d51bda76b` |
 | `lib/cleveland-constipation-v665.js` | 4841 | `b5e66d05b1f5b2258281a9dc3246f35e6e83de248cabe44a914d2cbe72fd6400` |
 | `lib/clinical-obesity-v838.js` | 8584 | `742a529bbd6a43b4a9f695f82f2134c5bf24b16ae67e2e8cbdffb39f4b198cb3` |
-| `lib/clinical-v4.js` | 16782 | `dbb39167217bc123182bb5fe8e92e881a08648d09fcabb72f420efdde0d70c78` |
+| `lib/clinical-v4.js` | 17965 | `db909c059db562fd0784ac46c53a8d137b19416d3eb81cae5e77a0bb5e63a09e` |
 | `lib/clinical-v5.js` | 26754 | `4df98038ca48fff64abef3add3cd59b7322a5f20545f0fdf6b842cb9d0eaee2e` |
 | `lib/clinical-v6.js` | 16042 | `69c1de74d7f171a3c6e87329c1cb69324758a368a34f1961e6201caec0470f8d` |
 | `lib/clinical-v7.js` | 18510 | `91639297dbcafd2850ea5bb17d4e7219ae912e30305349d7423af72484e68365` |
@@ -367,13 +367,13 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/hemodynamics-v87.js` | 8607 | `1bc8bc1408afb3fbc602d2748bfa1c8c68eb89fafabb18dd5e9c1a2589ff0276` |
 | `lib/hemonc-v94.js` | 20808 | `a088e7b1bf4c229dd1ceccf98fd21a70fdf074dbb50447d7114b9471e277205b` |
 | `lib/hep-fibrosis-portal-v212.js` | 6585 | `93bb19ad8fac24e2e86c21bd76be22c40b3df7ec8d1a8888002c643453d3223a` |
-| `lib/hep-v124.js` | 13781 | `58ce6172b3d31f9a1aba2b5ed12097042e7f8249acfc7a9dfec6207108075ff6` |
+| `lib/hep-v124.js` | 14645 | `220d8976e7a3398bf20a83a1a97db8708aaa21c061da105dde2f62242a25e304` |
 | `lib/hep-v125.js` | 13055 | `86f145e491067a12d2b0dea0085a9340a14350d5b82d29dca936d41c9b8d6d03` |
 | `lib/hepatic-iron-index-v932.js` | 6957 | `4c14e67de0551f4e4f9bde691e19eaa0c2f4e5cc6fb41033d1b7e0fd73ec74d6` |
 | `lib/hepatology-gibleed-v201.js` | 19770 | `b13202719fc096c742097095af56bcd722c07b67f7e138a791e72cd818eb7da6` |
 | `lib/hepatology-prognosis-v220.js` | 11769 | `1f9c49980dee9a6c4959fb670f74c99b1bbd44eab695f06dee16190eee21addb` |
 | `lib/hepgi-v190.js` | 11863 | `18fdde7face8dec98d83118b4840f01f3e93a7594a0cade787ab75771707e239` |
-| `lib/hepgi-v93.js` | 18439 | `146d99dfaa3b109d14c44b957027287107688667a5a91ae8b8c134777a229aa9` |
+| `lib/hepgi-v93.js` | 19228 | `fb0ceb54a9f61c6d382036cd620fed0a0de75d56f3ec7c637691216e0e56a972` |
 | `lib/herring-pillar-v347.js` | 4295 | `5402d155c338948987f458750b247521fc6ba36f5a20d9501eb4b97e6ae52794` |
 | `lib/hf-ef-classification-v840.js` | 8378 | `4ba17b89bcb66c65f821f7cb6335cab5c57e428fcf22c2da876fa636ce7a972e` |
 | `lib/hf-stages-abcd-v842.js` | 7839 | `93bde8395e5ff6baf50da213ef74c1358b09d224c3fdcc6fae245eb1dc8024c2` |
@@ -1707,7 +1707,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-a.js` | 577 | `eed37c656d1fa00c097a07f07db4b1b6ac7a0a74bafc210978265a1d90856bd7` |
 | `views/group-b.js` | 77156 | `88cc71d010172716bbb55f6e5773a194945a93d00d5a759697eddd110066c560` |
 | `views/group-c.js` | 26643 | `c139c073fd2c3a107f1865ff5e41dd671e988a06b16fe6d0efb050d6da2e060c` |
-| `views/group-e.js` | 49187 | `8a04db6cacf6e8f06eff75f6760bfd013d23de6562690ef720520b1be335998a` |
+| `views/group-e.js` | 49209 | `ae01e4d94c9e4799f81fe711db00dac06f23591e738330763766138b0dbd9763` |
 | `views/group-f.js` | 53408 | `02ee2e5367c99b2a2243774f0bace8585c12e54dafb9f2abd33ae5a4a0da49a1` |
 | `views/group-g.js` | 249419 | `12471acf5d1d7806065fa92c0be6f0be16fdaea15781420a02bda8cc4c48f53f` |
 | `views/group-h.js` | 30329 | `b59285515eed9e509a08b7b9c58df6b6e6fe823795d42a30f534ad8e82cb6440` |
@@ -1726,7 +1726,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v121.js` | 10910 | `7faddc6a8939d64b722102b11330d867f9cb5d7a22a572b3f3b7f435d66ad39d` |
 | `views/group-v122.js` | 7422 | `bc238e7c11c081dcdd6514b2b7ba6000d415d21a9abdc35177237e1262cf7b62` |
 | `views/group-v123.js` | 13504 | `c0372038e1860f352e62a570fad97c27c9625e0e9955a5bafd92953889f9bad3` |
-| `views/group-v124.js` | 10249 | `297b8b570f206999003798564c6934b36c3247a21d862cc019291dd4e23dc35f` |
+| `views/group-v124.js` | 10271 | `acee0fc1a05c711f23e41a0e65776188aa279207c3c5a9ea112b7fe8c0c30b7b` |
 | `views/group-v125.js` | 10792 | `6aeb41529d73f437100a089619ad3e82184b13afd357cba1e95887d7a4ad7f8a` |
 | `views/group-v126.js` | 12511 | `13f980cf952c4239ef6d20539678171746f242cf02612f769192b6ad2dd27790` |
 | `views/group-v127.js` | 9363 | `6e542d40a470397946ceb06492d27c07d69de91b18a9d1c7ecaa43effb14e2b6` |
@@ -1735,13 +1735,13 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v13.js` | 7759 | `f9546e955ddfe2f766b77c85532ca283b16bb2889ae7a9cfeab5290831078e83` |
 | `views/group-v130.js` | 10347 | `f902a1316e845109c1cc0257bfc3df2183317c9dc1d8b221ee0e18615b865a1f` |
 | `views/group-v131.js` | 13363 | `6406166b469f17b930b9f70e33d59093dff6bc03c448cc0786ed9aa62d509255` |
-| `views/group-v132.js` | 10748 | `4939073ebe38a7c5a60f4299b09be8ddcdc2e71c0b537a0ad50a518dbf141f1d` |
+| `views/group-v132.js` | 10781 | `334289537b832288ba77300a7271eb1dd997a0b4a76b3927ad8fb7a863395ae4` |
 | `views/group-v133.js` | 12126 | `76348d4a457edb6776f5fec11ec482883926301385ea1777e46d053799bb1239` |
-| `views/group-v134.js` | 11676 | `8d82dfd716a74d01b7d543dd50beea154c9a2ed4b5945d530e2f212118f0603d` |
-| `views/group-v135.js` | 11778 | `75a265c5c7a3fed82685d354d5660b411bc053168a3cca19dadbd82133440cc9` |
+| `views/group-v134.js` | 11687 | `119f668cdfc7e77349fcbbeaf478dc07ff412f9e2877a4149be87bc08d805e36` |
+| `views/group-v135.js` | 11789 | `9b36ac51ccd12d424b2a99736438ce1c15d5a39c5f2c2b1129dc41b93bdab2fa` |
 | `views/group-v136.js` | 11097 | `a910e6c26285c9b2c4549033454126bccf323136bb2435678d694a770ddbbecc` |
-| `views/group-v137.js` | 13746 | `1e106e3246c5169d75a5d1d7d2c3de4325a3996676fe6c81946c458127814995` |
-| `views/group-v138.js` | 11640 | `9844f5b8c1706af302d1177d1d5ec355fe07f482b2bd2947315cb93f471d3b7e` |
+| `views/group-v137.js` | 13757 | `d396a82c15531cf1c5079082d4b29a964b9a137fabc0fa78a7af4d671f8752e8` |
+| `views/group-v138.js` | 11651 | `83834bf4018fccf2a082f93f8f00896e44b94b5b3c99b8903e747b5b2dc85e98` |
 | `views/group-v139.js` | 12916 | `4aa5c0e09761f7dd4e664b53574cae8e6c084edb59b92f5681f19cb29200a436` |
 | `views/group-v14.js` | 10588 | `bca2472e723b2d009974e038f731f0f811e3b946d2794ac348c20dfef24e05fc` |
 | `views/group-v140.js` | 15004 | `37fd68dc9d3e27f9947c0caf6506c5abcd3c6a2f3a6bceb88494151b999084a4` |
@@ -1789,7 +1789,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v187.js` | 10371 | `c32afab934a92a34b94abe62b04a4a3659fbd09ca240d9b1730c3dd380b5b226` |
 | `views/group-v188.js` | 9956 | `6fba2504496749fe6bf3db8fa7805dcdf3503e24db85d8d828f1f347fbf220a7` |
 | `views/group-v189.js` | 10367 | `9ff86604b2b736e3f1380705f223cb2e110df738fe3770122e593fc9b62d8346` |
-| `views/group-v19.js` | 14628 | `0c3fa90f6f75b2755d6346239a57a80dfdbb58de18519b8c4fcf5dff736a5f6b` |
+| `views/group-v19.js` | 14649 | `c2a2d6162af5263d1940f2d12d1de9e78ee7d9e5135167e84a0655147e9538f9` |
 | `views/group-v190.js` | 8333 | `c2d385a8973c0b7860b8e9e991924104a25a0f9d15964171c19aef997be4ac2d` |
 | `views/group-v191.js` | 8603 | `dd5844f01f6cd51a7db17e095f6d113c4f10157c3906ac284b1c6ed416a1db37` |
 | `views/group-v192.js` | 10529 | `d3f8d2c962506d1e49debddfa851483b6233aedbf849c25fee4777f867eb895d` |
@@ -1800,7 +1800,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v197.js` | 6569 | `638a7cf160ff84008c4f1f1ef56f6f541e2b3cb379a0b7699de61c1958b69bbb` |
 | `views/group-v198.js` | 12174 | `0ce20721ab32f237b6c5ca87719ae2100334e387cb3511fd0db962e2f55e90a8` |
 | `views/group-v199.js` | 10533 | `75b0043db03eedfd0baaf936477457a31208563cc1f2f0eea4bdc10dab04e6ab` |
-| `views/group-v20.js` | 12142 | `86db3fbbdac0e12ac03555c19b5deb6dede2a978bd26f22f91501759eb8d3ab3` |
+| `views/group-v20.js` | 12164 | `108bed26c5c54b3f8ed14f750ae044786acdbc442129006e165bc2ab68dcdcc3` |
 | `views/group-v200.js` | 9409 | `0959db6cba65f267dbefb03f50cc89c1c971551f80bd11f18df09ff18d5b4747` |
 | `views/group-v201.js` | 11105 | `20ad2788e06d123aed0283f4956febe94acbe542164106a22efa36faa6657880` |
 | `views/group-v202.js` | 3665 | `4208da8efd7b5a57217f7b11bd68f87a19122f490990a5e75203f93ce0366975` |
@@ -1941,7 +1941,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v337.js` | 3080 | `a82f7c80d2ebac4d0872e804d10ff4302057ccffeaee85651cb7593f0269aa66` |
 | `views/group-v338.js` | 3117 | `b6ed301e7289c9de4fa1826d57a66a57c5e56e8e15fb756195783253af59d482` |
 | `views/group-v339.js` | 2982 | `202e94e9248d6cc675f6d345d2bfb6085711477bce586af9491fa9a363ac9293` |
-| `views/group-v34.js` | 15210 | `ac411176640397565fcedad3c8f464fae5e068edd99dee168e1e75133f6a710b` |
+| `views/group-v34.js` | 15230 | `be0509fc5a145c5aada98690387d928f8665530ab366f9f8cba4d5f050e6bd4c` |
 | `views/group-v340.js` | 2943 | `71fe64d1186fce528f6c44587d10e357b876dfc7e5764004ccbc034a2c07efc2` |
 | `views/group-v341.js` | 3016 | `d7400079c3c1241e350600a1eba95f49866d850b2ad350c3dd5c6ecfcc55bf76` |
 | `views/group-v342.js` | 3152 | `fbd3f0df605868d3ad092f54b6b94a935882e756ac665384ec86ed4bc5bd946b` |
@@ -1974,7 +1974,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v367.js` | 3224 | `bd7e0f7434b5bd5f060a6c9bbfc8da28bbaef95cb7c250630d6a5ff616012f6b` |
 | `views/group-v368.js` | 2990 | `ad4c5c65964759e4607d4349c14dc568864d3d15b00e95236cb315e1b8cc7278` |
 | `views/group-v369.js` | 3096 | `d9b47343a3cdc44a1fab4677e89e53fa9470beb74c7cf111a049274180f1bf3c` |
-| `views/group-v37.js` | 11898 | `3ef787a7afe054031de5c5c698ca1f573b60225f7968e49e11d2d729e914c19f` |
+| `views/group-v37.js` | 11909 | `21733514acb880464562a265181b794875c0be0e97727ffd9e38234fe3bdd844` |
 | `views/group-v370.js` | 2934 | `74e004c7715937fa32b2a111f85d59a9661cef4f0978b4116d8cbe580f6c471d` |
 | `views/group-v371.js` | 3126 | `47c944cafbba970a471cd3d00835b8105c246671ddbe291e1bcc96856ffd658c` |
 | `views/group-v372.js` | 3061 | `725eb49df2a9676a9783ebd04b00893575fc023152a75c6b7f41a4f141692bde` |
