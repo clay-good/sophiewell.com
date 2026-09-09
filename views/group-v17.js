@@ -155,7 +155,16 @@ export const renderers = {
       { value: 'male', text: 'Male' },
       { value: 'female', text: 'Female' },
     ]));
+    // spec-v1160: the library already handles an unchosen group correctly -- it
+    // falls back to GLI-2012's own other/mixed coefficient set and SAYS so, in a
+    // note the renderer prints. That path was unreachable from the browser,
+    // because this select opened on "Caucasian", which is a specific set and not
+    // the documented fallback. Predicted FEV1 for a 40-year-old 175 cm man is
+    // 4.08 L Caucasian, 3.48 L African-American and 3.80 L other/mixed, and
+    // percent-predicted is what stages COPD -- so preselecting one group moves the
+    // stage for a patient nobody asked about.
     root.appendChild(selectField('Ethnicity group (GLI-2012)', 'ps-eth', [
+      { value: '', text: 'Not stated (uses the other/mixed set)' },
       { value: 'caucasian', text: 'Caucasian' },
       { value: 'african-american', text: 'African-American' },
       { value: 'ne-asian', text: 'North-East Asian' },
@@ -180,7 +189,15 @@ export const renderers = {
       if (r.fev1Pct != null) rows.push({ label: 'Measured FEV1 % predicted', value: `${fmt(r.fev1Pct, { fallback: '--' })}% (${r.fev1BelowLln ? 'below LLN' : 'within reference range'})` });
       if (r.fvcPct != null) rows.push({ label: 'Measured FVC % predicted', value: `${fmt(r.fvcPct, { fallback: '--' })}% (${r.fvcBelowLln ? 'below LLN' : 'within reference range'})` });
       resultRow(o, rows);
-      if (r.ethnicityFallback) note(o, 'Ethnicity group not in the GLI-2012 sets; the other/mixed coefficient set was used.');
+      // spec-v1160: this said only "not in the GLI-2012 sets", which describes an
+      // UNRECOGNISED group. Now that the select can also be left unset, the same
+      // branch covers "not stated" -- and that is the reading the number depends
+      // on, so it names the difference the choice would make.
+      if (r.ethnicityFallback) {
+        note(o, 'Ethnicity group not stated (or not one of the GLI-2012 sets): the other/mixed '
+          + 'coefficient set was used. GLI-2012 is group-specific and the predicted values differ '
+          + 'materially between sets, so choose the group when it is known.');
+      }
       note(o, r.note);
     }));
     postureNote(root);

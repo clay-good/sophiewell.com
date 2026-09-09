@@ -282,6 +282,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   still showed the low end as if it were the total. Both tools now carry the range in
   both places. See docs/spec-v1159.md.
 
+- **The predicted spirometry tool assumed an ethnicity nobody had chosen.** The
+  GLI-2012 reference equations are group-specific, and the menu opened on
+  "Caucasian" -- so a 40-year-old man of 175 cm was given a predicted FEV1 of 4.08 L
+  where the African-American equations give 3.48 L and the other/mixed set gives
+  3.80 L. Percent of predicted is what stages COPD, so that is a stage assigned on a
+  characteristic never asked for. The menu now opens unset, which uses the reference's
+  own other/mixed set and says so. See docs/spec-v1160.md.
+
 ### Changed
 
 - **A check that compares what the tool accepts with what the page offers was

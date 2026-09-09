@@ -931,6 +931,19 @@ survived a wave written about that tile. One nuance: the SCORE spans whenever a
 weighted item is unstated, but the RISK only when the ends fall in different bands,
 so *"~42.7% to ~42.7%"* collapses.
 
+[spec-v1160](spec-v1160.md) took the second row from that run, and it is a shape
+worth naming: **a careful fallback the browser could not reach.**
+`predicted-spirometry`'s library already falls back to GLI-2012's own other/mixed
+coefficient set for an unrecognised group and says so in a note — a previous wave read
+it and deliberately left it. But the select opened on *"Caucasian"*, a specific set
+and not the documented fallback, so that path was unreachable. Predicted FEV1 for a
+40-year-old 175 cm man is 4.08 L Caucasian, 3.80 L other/mixed and 3.48 L
+African-American, and **percent-predicted is what stages COPD**.
+
+A *"Not stated"* option was the whole fix. And the note that branch prints had been
+written for an UNRECOGNISED group, not an unstated one — **a disclosure written for
+one way of arriving at a branch does not automatically describe the other.**
+
 ## Probes measured and rejected
 
 Three questions asked of the whole catalog after spec-v1048, each of which sounded like it should
