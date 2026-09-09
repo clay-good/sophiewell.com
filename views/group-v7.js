@@ -217,7 +217,7 @@ export const renderers = {
 
   // ----- 2.8 oxygenation-index --------------------------------------------
   'oxygenation-index'(root) {
-    root.appendChild(field('FiO2 (0.21-1.0)', 'oi-fio2', { placeholder: 'e.g. 0.6' }));
+    root.appendChild(field('FiO2 (0.21-1.0)', 'oi-fio2', { min: 0.21, max: 1, placeholder: 'e.g. 0.6' }));
     root.appendChild(field('Mean airway pressure (cmH2O)', 'oi-map', { placeholder: 'e.g. 15' }));
     root.appendChild(field('PaO2 (mmHg, for OI)', 'oi-pao2', { placeholder: 'optional' }));
     root.appendChild(field('SpO2 (%, for OSI)', 'oi-spo2', { min: 0, max: 100, placeholder: 'optional' }));

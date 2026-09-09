@@ -24,6 +24,11 @@ function f29d(label, id, opts = {}) {
   wrap.appendChild(el('br'));
   const inp = el('input', { id, type: opts.type || 'number', autocomplete: 'off' });
   if (inp.type === 'number') inp.setAttribute('step', 'any');
+  // spec-v1189: this helper had no way to carry a bound, so `ews-total` printed
+  // "(0-20)" in its own label and accepted anything. Same shape as spec-v1184:
+  // the support was missing from the helper nobody had looked at.
+  if (opts.min != null) inp.setAttribute('min', String(opts.min));
+  if (opts.max != null) inp.setAttribute('max', String(opts.max));
   if (opts.placeholder) inp.setAttribute('placeholder', opts.placeholder);
   wrap.appendChild(inp);
   return wrap;
@@ -292,7 +297,7 @@ export const renderers = {
 
   // spec-v29 sec 4.5.1 wave 29-3d: NEWS2 / MEWS escalation timer.
   'ews-escalation'(root) {
-    root.appendChild(f29d('Most recent NEWS2 total (0-20)', 'ews-total'));
+    root.appendChild(f29d('Most recent NEWS2 total (0-20)', 'ews-total', { min: 0, max: 20 }));
     root.appendChild(f29d('Vitals taken at (ISO timestamp, e.g. 2026-05-19T14:00)', 'ews-ts', { type: 'datetime-local' }));
     root.appendChild(el('p', {}, [el('label', { for: 'ews-sp' }, [
       el('input', { id: 'ews-sp', type: 'checkbox' }),

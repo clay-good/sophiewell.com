@@ -597,6 +597,17 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   row teaches you to skim past the row that is new. All 91 source links now resolve
   to their current address, with none moved and none dead. See docs/spec-v1188.md.
 
+- **Fourteen boxes showed a range and accepted anything.** A field labelled "GCS
+  (3-15)" took 157; four labelled FiO2 "(0-1)" took any number; the two
+  cardiovascular risk equations printed the age band they are validated across and
+  accepted an age outside it. Typing an extra digit is the commonest data-entry
+  mistake there is, and nothing else catches it below a billion. All fourteen now
+  hold the range they were already showing, and a new field that shows one without
+  holding it fails the build. Three of them could not previously carry a limit at
+  all, because the code that builds those particular boxes had no way to pass one.
+  Every calculator's own worked example still answers unremarked. See
+  docs/spec-v1189.md.
+
 ### Changed
 
 - **The check that compares a tool's accepted values with the menu on the page could

@@ -78,7 +78,7 @@ export const renderers = {
   // ----- 2.1 gold-spirometry ---------------------------------------------
   'gold-spirometry'(root) {
     root.appendChild(field('FEV1 (% predicted) — grades the obstruction', 'gs-pct', { placeholder: 'e.g. 45', inputmode: 'decimal' }));
-    root.appendChild(field('FEV1/FVC ratio (0–1) — leave blank to compute from volumes', 'gs-ratio', { placeholder: 'e.g. 0.6', inputmode: 'decimal' }));
+    root.appendChild(field('FEV1/FVC ratio (0–1) — leave blank to compute from volumes', 'gs-ratio', { min: 0, max: 1, placeholder: 'e.g. 0.6', inputmode: 'decimal' }));
     root.appendChild(field('FEV1 (L) — optional, to compute the ratio', 'gs-fev1', { placeholder: 'optional', inputmode: 'decimal' }));
     root.appendChild(field('FVC (L) — optional, to compute the ratio', 'gs-fvc', { placeholder: 'optional', inputmode: 'decimal' }));
     const o = out(); root.appendChild(o);

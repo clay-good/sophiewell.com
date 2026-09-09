@@ -31,8 +31,11 @@ function selectField(label, id, options) {
 function pickField(label, id, options) {
   return selectField(label, id, [{ value: '', text: '— choose —' }, ...options]);
 }
-function num(label, id) {
-  return field(label, id, { type: 'number', min: '0', step: 'any', inputmode: 'decimal' });
+// spec-v1189: `extra` so a caller can add the ceiling its label already names.
+// Without it this helper could only ever express a floor, and `binet-areas`
+// said "(0-5)" on screen while accepting any number at all.
+function num(label, id, extra) {
+  return field(label, id, { type: 'number', min: '0', step: 'any', inputmode: 'decimal', ...extra });
 }
 function checkField(label, id) {
   const wrap = el('p');
@@ -65,7 +68,7 @@ export const renderers = {
   // ----- 2.1 binet-cll -------------------------------------------------------
   'binet-cll'(root) {
     note(root, 'Binet CLL stage (Binet 1981): A = < 3 involved areas with Hb ≥ 10 and platelets ≥ 100; B = ≥ 3 areas, counts preserved; C = Hb < 10 and/or platelets < 100. Five areas: cervical, axillary, inguinal nodes, spleen, liver.');
-    root.appendChild(num('Involved lymphoid areas (0–5)', 'binet-areas'));
+    root.appendChild(num('Involved lymphoid areas (0–5)', 'binet-areas', { max: '5' }));
     root.appendChild(num('Hemoglobin (g/dL)', 'binet-hb'));
     root.appendChild(num('Platelet count (×10⁹/L)', 'binet-platelets'));
     const o = out(); root.appendChild(o);

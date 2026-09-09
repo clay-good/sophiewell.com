@@ -1134,11 +1134,14 @@ export const renderers = {
   ascvd(root) {
     root.appendChild(el('p', { class: 'notice', text:
       'PCE retains race-stratified equations (white vs African-American). PREVENT 2023 (next tile) is the AHA/ACC race-free successor.' }));
-    const num = (l, id, v) => root.appendChild(el('p', {}, [
+    // spec-v1189: `b` carries the bounds the label states. These two risk
+    // equations are only validated across the age band printed beside the
+    // field, and the field accepted any age at all.
+    const num = (l, id, v, b = {}) => root.appendChild(el('p', {}, [
       el('label', { for: id, text: l }), el('br'),
-      el('input', { id, type: 'number', step: 'any', value: String(v) }),
+      el('input', { id, type: 'number', step: 'any', value: String(v), ...b }),
     ]));
-    num('Age (40-79)', 'as-age', 55);
+    num('Age (40-79)', 'as-age', 55, { min: 40, max: 79 });
     num('Total cholesterol (mg/dL)', 'as-tc', 213);
     num('HDL (mg/dL)', 'as-hdl', 50);
     num('SBP (mmHg)', 'as-sbp', 120);
@@ -1186,11 +1189,14 @@ export const renderers = {
   prevent(root) {
     root.appendChild(el('p', { class: 'notice', text:
       'PREVENT 2023 is race-FREE; this tile takes no race input. Compare with the prior tile (ASCVD PCE) which retains race-stratified equations.' }));
-    const num = (l, id, v) => root.appendChild(el('p', {}, [
+    // spec-v1189: `b` carries the bounds the label states. These two risk
+    // equations are only validated across the age band printed beside the
+    // field, and the field accepted any age at all.
+    const num = (l, id, v, b = {}) => root.appendChild(el('p', {}, [
       el('label', { for: id, text: l }), el('br'),
-      el('input', { id, type: 'number', step: 'any', value: String(v) }),
+      el('input', { id, type: 'number', step: 'any', value: String(v), ...b }),
     ]));
-    num('Age (30-79)', 'pv-age', 55);
+    num('Age (30-79)', 'pv-age', 55, { min: 30, max: 79 });
     num('Total cholesterol (mg/dL)', 'pv-tc', 200);
     num('HDL (mg/dL)', 'pv-hdl', 50);
     num('SBP (mmHg)', 'pv-sbp', 120);

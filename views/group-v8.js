@@ -186,7 +186,7 @@ export const renderers = {
 
   // ----- 2.4 acetaminophen-nomogram --------------------------------------
   'acetaminophen-nomogram'(root) {
-    root.appendChild(field('Hours since single acute ingestion (4-24 h)', 'apap-h', { placeholder: 'e.g. 4' }));
+    root.appendChild(field('Hours since single acute ingestion (4-24 h)', 'apap-h', { min: 4, max: 24, placeholder: 'e.g. 4' }));
     root.appendChild(field('Serum acetaminophen (ug/mL)', 'apap-lvl', { placeholder: 'e.g. 160' }));
     const o = out(); root.appendChild(o);
     wire(['apap-h', 'apap-lvl'], () => safe(o, () => {

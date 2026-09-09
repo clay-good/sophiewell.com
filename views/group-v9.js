@@ -378,7 +378,7 @@ export const renderers = {
     root.appendChild(scaleField('2nd highest AIS region', 'ir-ais2', 6));
     root.appendChild(scaleField('3rd highest AIS region', 'ir-ais3', 6));
     root.appendChild(el('p', { class: 'muted', text: 'Revised Trauma Score physiology:' }));
-    root.appendChild(field('GCS (3-15)', 'ir-gcs', { placeholder: 'e.g. 14' }));
+    root.appendChild(field('GCS (3-15)', 'ir-gcs', { min: 3, max: 15, placeholder: 'e.g. 14' }));
     root.appendChild(field('Systolic BP (mmHg)', 'ir-sbp', { min: 0, max: 300, placeholder: 'e.g. 120' }));
     root.appendChild(field('Respiratory rate (/min)', 'ir-rr', { placeholder: 'e.g. 18' }));
     const o = out(); root.appendChild(o);

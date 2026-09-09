@@ -76,7 +76,7 @@ export const renderers = {
     ]));
     root.appendChild(field('ESR (mm/hr — for the ESR form)', 'da-esr', { placeholder: 'e.g. 30' }));
     root.appendChild(field('CRP (mg/L — for the CRP form)', 'da-crp', { placeholder: 'e.g. 10' }));
-    root.appendChild(field('Patient global health VAS (0–100 mm)', 'da-gh', { placeholder: 'e.g. 50' }));
+    root.appendChild(field('Patient global health VAS (0–100 mm)', 'da-gh', { min: 0, max: 100, placeholder: 'e.g. 50' }));
     const o = out(); root.appendChild(o);
     wire(['da-tjc', 'da-sjc', 'da-form', 'da-esr', 'da-crp', 'da-gh'], () => safe(o, () => {
       const r = M.das28({

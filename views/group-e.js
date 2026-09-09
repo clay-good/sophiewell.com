@@ -296,7 +296,7 @@ export const renderers = {
   },
 
   'aa-gradient'(root) {
-    root.appendChild(field('FiO2 (0-1, e.g. 0.21)', 'fio2'));
+    root.appendChild(field('FiO2 (0-1, e.g. 0.21)', 'fio2', { min: 0, max: 1 }));
     root.appendChild(field('PaCO2 (mmHg)', 'paco2'));
     root.appendChild(field('PaO2 (mmHg)', 'pao2'));
     const o = out(); root.appendChild(o);
@@ -421,7 +421,7 @@ export const renderers = {
 
   'pf-ratio'(root) {
     root.appendChild(field('PaO2 (mmHg)', 'pao2'));
-    root.appendChild(field('FiO2 (0-1)', 'fio2'));
+    root.appendChild(field('FiO2 (0-1)', 'fio2', { min: 0, max: 1 }));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       // spec-v1037: read as zero, a blank PaO2 gave "P/F ratio: 0 (Severe ARDS
@@ -519,7 +519,7 @@ export const renderers = {
   },
 
   'aa-pf-suite'(root) {
-    root.appendChild(field('FiO2 (0-1)', 'sf-fio2', { value: 0.21 }));
+    root.appendChild(field('FiO2 (0-1)', 'sf-fio2', { value: 0.21, min: 0, max: 1 }));
     root.appendChild(field('PaO2 (mmHg)', 'sf-pao2'));
     root.appendChild(field('PaCO2 (mmHg)', 'sf-paco2'));
     root.appendChild(field('Age (years, for expected A-a)', 'sf-age'));
@@ -849,7 +849,7 @@ export const renderers = {
       { value: 'blunt', text: 'Blunt (+4)' },
       { value: 'pen', text: 'Penetrating (0)' },
     ]));
-    root.appendChild(field('GCS (3-15)', 'mgap-gcs', { value: 15 }));
+    root.appendChild(field('GCS (3-15)', 'mgap-gcs', { value: 15, min: 3, max: 15 }));
     root.appendChild(selectField('Age', 'mgap-age', [
       { value: 'lt60', text: 'Age <60 (+5)' },
       { value: 'ge60', text: 'Age >=60 (0)' },
@@ -877,7 +877,7 @@ export const renderers = {
 
   // spec-v15 §3.5.7 wave 15-5: GAP Trauma Score (Kondo 2011).
   gap(root) {
-    root.appendChild(field('GCS (3-15)', 'gap-gcs', { value: 15 }));
+    root.appendChild(field('GCS (3-15)', 'gap-gcs', { value: 15, min: 3, max: 15 }));
     root.appendChild(selectField('Age', 'gap-age', [
       { value: 'lt60', text: 'Age <60 (+3)' },
       { value: 'ge60', text: 'Age >=60 (0)' },
@@ -906,7 +906,7 @@ export const renderers = {
   big(root) {
     root.appendChild(field('Base deficit (mEq/L)', 'big-bd', { value: 0 }));
     root.appendChild(field('INR', 'big-inr', { min: 0, value: 1 }));
-    root.appendChild(field('GCS (3-15)', 'big-gcs', { value: 15 }));
+    root.appendChild(field('GCS (3-15)', 'big-gcs', { value: 15, min: 3, max: 15 }));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       // spec-v1146: spec-v1041 fixed the base deficit and left the other two on
