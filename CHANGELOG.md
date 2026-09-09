@@ -309,6 +309,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   what it counted, marks the figure as a minimum, and names what is missing. See
   docs/spec-v1162.md.
 
+- **The tumor lysis syndrome tool said a lab was "not met" on the same screen where it
+  said the lab was not entered.** Its summary line correctly named the missing values,
+  while the checklist beneath it reported them as criteria that had failed -- so a
+  reader scanning the list got the opposite of what the line above said. Unmeasured
+  criteria now read "not entered", and the count says how many were assessed rather
+  than implying the rest were ruled out. See docs/spec-v1163.md.
+
 ### Changed
 
 - **A check that compares what the tool accepts with what the page offers was

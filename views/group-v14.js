@@ -163,14 +163,22 @@ export const renderers = {
       const c = r.criteria;
       resultRow(o, [
         { text: r.band, cls: (r.labTls || r.clinicalTls) ? 'warn' : null },
-        { label: 'Metabolic criteria met', value: `${r.metCount} of 4` },
+        // spec-v1163: "3 of 4" read as three met and one ruled out, when the
+        // fourth had not been measured. The denominator is what was assessed.
+        { label: 'Metabolic criteria met', value: (() => {
+          const seen = Object.values(r.criteriaAssessed || {}).filter(Boolean).length;
+          return seen === 4 ? `${r.metCount} of 4` : `${r.metCount} of the ${seen} assessed (of 4)`;
+        })() },
         { label: 'Cairo-Bishop grade', value: r.gradeRoman },
         { label: 'Creatinine ratio', value: fmt(r.crRatio, { fallback: '(enter creatinine + ULN)' }), units: '× ULN' },
         { label: 'Corrected calcium', value: fmt(r.correctedCa, { fallback: '(enter calcium)' }), units: 'mg/dL' },
-        { label: 'Uric acid ≥ 8 (or +25%)', value: metTag(c.uaMet) },
-        { label: 'Potassium ≥ 6 (or +25%)', value: metTag(c.kMet) },
-        { label: 'Phosphate ≥ threshold (or +25%)', value: metTag(c.phosMet) },
-        { label: 'Corrected calcium ≤ 7 (or −25%)', value: metTag(c.caMet) },
+        // spec-v1163: `null` here is "not measured", and metTag's dash read as no
+        // reading rather than an outstanding lab -- while the band above already
+        // said "Not entered: potassium". One screen must not contradict itself.
+        { label: 'Uric acid ≥ 8 (or +25%)', value: c.uaMet === null ? 'not entered' : metTag(c.uaMet) },
+        { label: 'Potassium ≥ 6 (or +25%)', value: c.kMet === null ? 'not entered' : metTag(c.kMet) },
+        { label: 'Phosphate ≥ threshold (or +25%)', value: c.phosMet === null ? 'not entered' : metTag(c.phosMet) },
+        { label: 'Corrected calcium ≤ 7 (or −25%)', value: c.caMet === null ? 'not entered' : metTag(c.caMet) },
       ]);
       note(o, r.note);
     }));

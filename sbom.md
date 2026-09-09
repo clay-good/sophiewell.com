@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `2e8ae9bdba54af3a`
-Generated: 2026-09-09T04:54:01.431Z
+Build ID: `a78dea169aeb7b03`
+Generated: 2026-09-09T05:12:06.423Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -511,7 +511,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
 | `lib/meta.js` | 2468534 | `c860e9dbbd0cf94493c69225e30e6e78c6f04645ba0d877c0bb697078af1a650` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
-| `lib/metabolic-onc-v88.js` | 15638 | `8fba14b5f51823f5f13729e0170a9b0de0af72bcd36361d507fbea44fb5585aa` |
+| `lib/metabolic-onc-v88.js` | 16704 | `116751a3e53a3b79465c0184bbf63dfc875b17d37a7cfc201440b6901028c21d` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
 | `lib/metabolic-v273.js` | 2945 | `974e98d9a3671ad62526e2212dfae812221ff72dce8046f65a2db904eb4ec881` |
 | `lib/metavir-activity-v505.js` | 3062 | `750a1451913ae545ea922fdb3584efd83e1043cafdb85259a78d4d3c72f6b6a2` |
@@ -1743,7 +1743,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v137.js` | 13746 | `1e106e3246c5169d75a5d1d7d2c3de4325a3996676fe6c81946c458127814995` |
 | `views/group-v138.js` | 11640 | `9844f5b8c1706af302d1177d1d5ec355fe07f482b2bd2947315cb93f471d3b7e` |
 | `views/group-v139.js` | 12916 | `4aa5c0e09761f7dd4e664b53574cae8e6c084edb59b92f5681f19cb29200a436` |
-| `views/group-v14.js` | 9855 | `909ddbb522e7ef9676f953b38acc3b730449d06e40c09c63ea01e58ba0178165` |
+| `views/group-v14.js` | 10588 | `bca2472e723b2d009974e038f731f0f811e3b946d2794ac348c20dfef24e05fc` |
 | `views/group-v140.js` | 14690 | `f1f810489919928435edbe56a4934c66db7a59d17bb29071c36c62245c509169` |
 | `views/group-v141.js` | 8714 | `87db945559d3538dbcf7d26eac3ba81ca81e4969ba647b94408676e36d3c1daf` |
 | `views/group-v142.js` | 14073 | `dbcf3e827edb92c456707768fa28d34fd5a9f77fd14154238cf650341562ee1e` |

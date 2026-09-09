@@ -973,9 +973,18 @@ reports defects. Two were not:
   omitted, both reading *"peripheral administration is generally acceptable"*. It now
   names what it counted and marks the estimate *"(at least)"*.
 
-Two more are left to read: `tls-cairo-bishop`, which reports an unmeasured potassium
-as *"not met"*, and `mtp-tracker`, where a blank platelet count becomes *"0 units
-transfused"* in a massive transfusion protocol.
+[spec-v1163](spec-v1163.md) read both. `tls-cairo-bishop` had **one screen
+contradicting itself**: the band said *"Not entered: potassium, phosphate"* and the
+row beneath it said *"Potassium ≥ 6 (or +25%): **not met**"*. A "not met" for a lab
+nobody ran is a fabricated observation (rule 11), and the contradiction is worse than
+either statement alone — a reader who scans the rows rather than the band gets the
+wrong one. The criteria are tri-state now, and *"3 of 4"* is *"3 of the 3 assessed
+(of 4)"*.
+
+`mtp-tracker` stands: a blank platelet count becoming *"0 units transfused"* looks
+like the same shape, but the tile is a **running tally of products given**, not a
+measurement of the patient. Zero given is the state every massive transfusion
+protocol starts in. Rule 4 in a different costume.
 
 ## Probes measured and rejected
 

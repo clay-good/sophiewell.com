@@ -79,3 +79,38 @@ test('a lab nobody ran does not rule laboratory TLS out (spec-v1066)', () => {
   assert.match(full.band, /4 metabolic criteria present/);
   assert.doesNotMatch(full.band, /does not rule/);
 });
+
+// spec-v1163: the band already said "Not entered: potassium" when a lab was
+// missing, and the per-criterion rows underneath said "not met" for the same lab.
+test('tls-cairo-bishop: an unmeasured lab is not a criterion that failed', () => {
+  const full = {
+    age: 'adult', uricAcid: 9, potassium: 6.5, phosphate: 5, calcium: 6,
+    creatinine: 2.4, creatinineUln: 1.2,
+  };
+  const all = tlsCairoBishop(full);
+  assert.equal(all.criteria.kMet, true);
+  assert.equal(all.criteriaAssessed.k, true);
+  assert.equal(all.metCount, 4);
+
+  // The defect, stated: a missing potassium reported kMet false.
+  const noK = tlsCairoBishop({ ...full, potassium: null });
+  assert.equal(noK.criteria.kMet, null);
+  assert.notEqual(noK.criteria.kMet, false);
+  assert.equal(noK.criteriaAssessed.k, false);
+  // The arithmetic is unchanged: three met, and laboratory TLS still rules in.
+  assert.equal(noK.metCount, 3);
+  assert.equal(noK.labTls, true);
+  assert.equal(noK.criteriaMet.kMet, false);
+
+  // Every other criterion is still reported as met or not met.
+  assert.equal(noK.criteria.uaMet, true);
+  assert.equal(noK.criteria.phosMet, true);
+  assert.equal(noK.criteria.caMet, true);
+
+  // A criterion reached through the 25%-rise baseline counts as assessed.
+  const viaBaseline = tlsCairoBishop({
+    ...full, potassium: 4.0, potassiumBaseline: 3.0,
+  });
+  assert.equal(viaBaseline.criteriaAssessed.k, true);
+  assert.equal(viaBaseline.criteria.kMet, true);
+});
