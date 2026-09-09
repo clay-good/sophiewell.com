@@ -239,6 +239,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   agent side demanded has now been settled: 62 at the start, none left. See
   docs/spec-v1155.md.
 
+- **The check that keeps the two surfaces honest now tests every field, not the first
+  one.** It compares what a calculator answers in the browser against what it demands
+  of an agent, and it used to clear the first such field on each tool and move on --
+  which turned out to be a quarter of them. With the backlog it exposed now empty, it
+  asks the wide question directly, and it reports how much of the catalog it covered
+  alongside its result, so a change that narrows it fails loudly instead of quietly.
+  See docs/spec-v1156.md.
+
 ### Changed
 
 - **A check that compares what the tool accepts with what the page offers was

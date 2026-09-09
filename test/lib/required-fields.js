@@ -1,19 +1,14 @@
 // spec-v1146: the pieces the required-field sweeps share, in one copy.
 //
-// Two sweeps ask the same question of the same oracle -- `mcp/fields.js` marks
-// an input `required`, so an agent omitting it gets MISSING_INPUT and no number,
-// and the browser must not answer where the agent surface refuses:
+// `required-field-agreement.spec.js` asks the question these serve: `mcp/fields.js`
+// marks an input `required`, so an agent omitting it gets MISSING_INPUT and no
+// number, and the browser must not answer where the agent surface refuses.
 //
-//   required-field-agreement.spec.js  -- the GATE. Clears the FIRST required
-//     field a tile renders as a text or number input, and fails on a tile that
-//     answers anyway. Green.
-//   required-field-every-probe.spec.js -- the PROBE. Clears EVERY one of them,
-//     one at a time. The gate's one-field-per-tile reach covers 1,089 of the
-//     4,226 required fields the catalog declares.
-//
-// They are kept in one module because a rule written twice drifts: the "did it
-// answer?" test in particular is a regex that has been tuned twice, and two
-// copies of it would answer differently the day one is touched.
+// They lived here from spec-v1146 because a PROBE beside that gate asked the same
+// question of every required field while the gate only reached the first one per
+// tile. spec-v1156 folded the wide question into the gate and deleted the probe.
+// The module stays: the "did it answer?" test is a regex that has been tuned three
+// times, and it belongs in one place whether one caller reads it or two.
 
 import { allCalculators } from '../../mcp/catalog.js';
 import { ASKING, DISCLOSING } from './asking-language.js';

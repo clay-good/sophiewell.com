@@ -660,7 +660,8 @@ and the renderer's `num()` had turned the blank into a zero before the library
 could see it — rule 7, three hundred waves after rule 7 was written down.
 
 The widened question has a backlog of 59 more rows, so it ships as a probe
-(`required-field-every-probe.spec.js`) rather than a widened gate: mass-ledgering
+(`required-field-every-probe.spec.js`, retired at
+[spec-v1156](spec-v1156.md)) rather than a widened gate: mass-ledgering
 59 rows to keep a gate green is the opposite of what a gate is for. Both use one
 copy of the rule. Its reach prints with its result — 2,075 of the 4,226 declared
 fields actually cleared, the rest being selects, checkboxes and sliders, where
@@ -875,7 +876,17 @@ were **declarations that should not have required** — nine of them on fields w
 own label already said *optional*, *default* or *leave blank*. Both halves were
 fixes, and the gate's message said so from the beginning. The gate still tests one
 field per tile and the probe tests all of them; widening the gate is now possible
-without ledgering anything, which is a later wave's choice rather than a debt.
+without ledgering anything.
+
+[spec-v1156](spec-v1156.md) did exactly that: **the gate asks the wide question
+itself now**, clearing every required text or number field one at a time and putting
+each back, and the probe that carried the question while the backlog drained is
+deleted rather than left as a second copy of the same rule. Because it is a gate, it
+**prints and asserts its own reach** — 2,041 of 4,192 declared fields cleared — so a
+change that narrows what it can see fails there rather than going quiet, which is
+the failure of [spec-v1099](spec-v1099.md) and [spec-v1106](spec-v1106.md) made
+impossible in this one place. Negative-tested against spec-v1155's
+`acetaminophen-nomogram` fix reverted: it fails and names the pair.
 
 ## Probes measured and rejected
 
