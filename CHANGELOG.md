@@ -580,6 +580,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   still answer their own name exactly as before, none changed place. See
   docs/spec-v1186.md.
 
+- **Searching for the name on the bag now works.** Brand names reached nothing at
+  all: "how much tylenol", "morphine to dilaudid" and "how much bicarb" each
+  returned an empty result while the right tool sat in the catalog. Thirty-nine
+  brand-name phrasings now route to the tool that answers them, across fourteen
+  tools. Routes were only added where the tool is actually named for that drug or
+  its converter -- sending a brand to whichever tool its generic happens to rank
+  first would have answered "how much tylenol" with a liver-failure prognosis, so
+  the ones that could not meet that bar were left out rather than guessed. Every
+  tool still answers its own name exactly as before. See docs/spec-v1187.md.
+
 ### Changed
 
 - **The check that compares a tool's accepted values with the menu on the page could

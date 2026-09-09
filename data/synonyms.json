@@ -1,5 +1,5 @@
 {
-  "version": "v249-2026-08-30",
+  "version": "v1187-2026-09-09",
   "note": "spec-v7 section 3.2: hand-curated patient-phrasing -> tile id table. Each entry maps patient-mental-model phrases (and, from the v8/v9 plain-language-search batches, clinical abbreviations, eponym aliases, and canonical-intent phrases) to a single existing tile. Audience is the primary audience the entry serves; the matcher deprioritizes (does not hide) entries when the user has selected a different chip. Every phrase is lowercase; every tile id is an existing catalog tile (guarded by test/unit/synonyms-catalog.test.js). Adding a new phrase is a one-line PR.",
   "entries": [
     {
@@ -7563,6 +7563,129 @@
         "sows handelsman"
       ],
       "tile": "sows-subjective",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "tylenol",
+        "how much tylenol",
+        "tylenol max dose",
+        "tylenol limit"
+      ],
+      "tile": "apap-24h-max",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "dilaudid",
+        "morphine to dilaudid",
+        "dilaudid to morphine"
+      ],
+      "tile": "opioid-conversion",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "narcan",
+        "narcan dose",
+        "how much narcan"
+      ],
+      "tile": "naloxone",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "zosyn",
+        "maxipime",
+        "cipro",
+        "zosyn renal dose",
+        "cipro renal dose"
+      ],
+      "tile": "abx-renal",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "ativan",
+        "valium",
+        "ativan to valium",
+        "valium to ativan"
+      ],
+      "tile": "benzodiazepine-equivalence",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "versed"
+      ],
+      "tile": "benzo-equiv",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "solu-medrol",
+        "solumedrol"
+      ],
+      "tile": "steroid-equiv",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "dilantin",
+        "dilantin level"
+      ],
+      "tile": "corrected-phenytoin",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "vanc",
+        "vanc level",
+        "vanco level"
+      ],
+      "tile": "vanc-auc",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "levophed",
+        "norepi",
+        "neo-synephrine",
+        "neosynephrine",
+        "vasostrict"
+      ],
+      "tile": "norepi-equiv",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "bicarb",
+        "how much bicarb",
+        "bicarb deficit"
+      ],
+      "tile": "acid-base-deficit",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "lovenox",
+        "lovenox dose"
+      ],
+      "tile": "vte-prophylaxis-dose",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "diprivan"
+      ],
+      "tile": "ketamine-propofol",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "dobutrex"
+      ],
+      "tile": "vasopressor",
       "audience": "clinicians"
     }
   ]
