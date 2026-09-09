@@ -558,6 +558,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   all, 79 of them, and reports an option of any kind that is accepted and then
   ignored. See docs/spec-v1184.md.
 
+### Added
+
+- **Search now finds a calculator by the things it works on, not just the words
+  written about it.** Typing a drug the opioid converter converts between -- or an
+  antibiotic the renal-dosing tool doses -- returned an empty result, while the tool
+  that does exactly that sat in the catalog. The options inside each tool's own
+  menus are now searchable: 704 of them across 205 tools, of which 527 previously
+  found nothing and now reach the right tool (237 as the first result). Nothing that
+  was findable before became less so. Generic menu words like "yes", "none" and
+  "female" are left out, so searching for "other" does not return a list of tools.
+  See docs/spec-v1185.md.
+
 ### Changed
 
 - **The check that compares a tool's accepted values with the menu on the page could

@@ -13,7 +13,8 @@
     "what",
     "when",
     "expected",
-    "bands"
+    "bands",
+    "answers"
   ],
   "count": 1706,
   "withSummary": 1682,
@@ -24,7 +25,7 @@
     "file": "corpus-detail.json",
     "count": 1706,
     "budgetGzip": 327680,
-    "gzipBytes": 210001,
-    "hash": "f96b0ca15b814628"
+    "gzipBytes": 213517,
+    "hash": "3b11b7582cb5b8cd"
   }
 }
