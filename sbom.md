@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `891cb677c134840b`
-Generated: 2026-09-09T11:38:24.674Z
+Build ID: `8ab7859269663ed0`
+Generated: 2026-09-09T11:55:35.157Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -178,12 +178,12 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/clavien-dindo-v320.js` | 5404 | `ae140f525e3d1f6103581f1d1e2eeed46813f69ada14d9c764ed867d51bda76b` |
 | `lib/cleveland-constipation-v665.js` | 4841 | `b5e66d05b1f5b2258281a9dc3246f35e6e83de248cabe44a914d2cbe72fd6400` |
 | `lib/clinical-obesity-v838.js` | 8584 | `742a529bbd6a43b4a9f695f82f2134c5bf24b16ae67e2e8cbdffb39f4b198cb3` |
-| `lib/clinical-v4.js` | 16603 | `a28e822405c3db797350f8137cd53f7f374db3cb3ea7b654311b413801aa9e67` |
+| `lib/clinical-v4.js` | 16782 | `dbb39167217bc123182bb5fe8e92e881a08648d09fcabb72f420efdde0d70c78` |
 | `lib/clinical-v5.js` | 26754 | `4df98038ca48fff64abef3add3cd59b7322a5f20545f0fdf6b842cb9d0eaee2e` |
 | `lib/clinical-v6.js` | 16042 | `69c1de74d7f171a3c6e87329c1cb69324758a368a34f1961e6201caec0470f8d` |
 | `lib/clinical-v7.js` | 18510 | `91639297dbcafd2850ea5bb17d4e7219ae912e30305349d7423af72484e68365` |
 | `lib/clinical-v8.js` | 18730 | `e5e7be6c9d5f9e11e433eab822fd96e5e29673ad0e76a97fd5a1754c8877a003` |
-| `lib/clinical.js` | 20774 | `529bdd1e0bb1e3e75f89d91c2602c524afdb13a1fc44fc748cc4db35dcca30c8` |
+| `lib/clinical.js` | 21666 | `f75180acf0a76f27c632f1746f3e12ff6a714f66ee339d8185ecf70c9a74d413` |
 | `lib/clipboard.js` | 2907 | `951c41df24f58df747734474d383d6f75f52d22d2c4d0a370ef5bfb269a15147` |
 | `lib/cluster-headache-ichd3-v814.js` | 7692 | `1ba3ed3aa2a203e13da4152325e29fda8ae0a533b2d4f1881c9a878655847045` |
 | `lib/coagscore-v232.js` | 3053 | `aff9e82479da5b38deeaf70ade27caa7f5d1a0f21b01d74f764ca147e9846bd8` |
@@ -211,7 +211,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/cvrisk-engines-v202.js` | 4187 | `d55686ffb06e0646e022e949fb30dbd7f65cbd24c317dc0326e02684fa8e2d92` |
 | `lib/cvrisk-v103.js` | 20482 | `4dd94ddccfaac07de4ee333cc78419bd6a0401f1d30f96ecdf32b9c97fa53b12` |
 | `lib/data.js` | 2448 | `58e3f307653fe83b2a86332e23b71ff2c53ca45a44228ebacf0c4d5ca5a790f9` |
-| `lib/deadline.js` | 7559 | `73e7168abadb3acfb35a6129f4f6ab5fb5258edbcd3fe1b392007bd0ee453110` |
+| `lib/deadline.js` | 7856 | `93735f582e4138816c92193c65ce763375e5137170195f6790f08b5c3eb35e19` |
 | `lib/deauville-v314.js` | 3653 | `06e9bfdbf337b56c341a3ac22ee5452152e62e19faca722bd33f7ae609c78119` |
 | `lib/debakey-v461.js` | 3357 | `2f7d5d94592ed414b8b181de35309d2804f5c9fa9638074f38c2d6ef52ea03a2` |
 | `lib/decision-rules-v258.js` | 7948 | `b2b50a85b4bd82e4ce22f014f4651a5c1e6195836db8ec526edab9797c68f23d` |
@@ -576,7 +576,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/nottingham-npi-v330.js` | 3875 | `9a95ea364fb41e94801ff30ac7789c22eeebef1abd6c2bd24a3c6fd1e01253ac` |
 | `lib/nsofa-v526.js` | 9799 | `459b65cd36b79e54aef1c52ab5b77e682ec0af768a6f9c8000321e3c9fc53009` |
 | `lib/ntm-pulmonary-v827.js` | 8077 | `51b554704f575d5ffce2a350e5d8013ee70f0b42f5b85b86d7415d4479de1696` |
-| `lib/num.js` | 8708 | `5152fa8730d17ae86a5af7238a5f4ead4de551ddce5d6b9ee72a00156d88f6ba` |
+| `lib/num.js` | 10320 | `fc08162867f65933e66986fccca905496141a03e2e95106f38a8d416e2d4eaca` |
 | `lib/nunley-vertullo-v455.js` | 3085 | `6f287a16c80ba5d73e2bb2c15989a7aa81d8335767f0a36e8c67c3203b357439` |
 | `lib/nutrition-energy-v152.js` | 14446 | `924b5421f818147f64b10db410fca9892773a29a918cf40e2bacdb64c0dbb23a` |
 | `lib/nutrition-maternal-v208.js` | 13391 | `3f68589603d6c5be3866aa0200955bbff10fe8873d47a3a9a1068a0c5b5c4c87` |

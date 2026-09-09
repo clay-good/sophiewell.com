@@ -11,12 +11,13 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 
-import { isRealYmd, ymd, localTimestamp } from '../../lib/num.js';
+import { isRealYmd, ymd, ymdFault, inDateWindow, localTimestamp, DATE_MIN_YEAR, DATE_MAX_YEAR } from '../../lib/num.js';
 import { parseIsoStrict } from '../../lib/deadline.js';
 import { parseDate } from '../../lib/pa/date.js';
 import { rosendaalTtr } from '../../lib/gaps-v185.js';
 import { eddFromLmp } from '../../lib/clinical-v4.js';
 import { restraintTimer, bristolGirth } from '../../lib/scoring-v4.js';
+import { naegele } from '../../lib/clinical.js';
 
 test('isRealYmd knows the length of every month, leap years included', () => {
   assert.equal(isRealYmd(2026, 1, 31), true);
@@ -124,4 +125,59 @@ test('localTimestamp takes the control shape, the calendar and the clock', () =>
   assert.equal(localTimestamp('2026-02-30T12:00'), null);
   assert.equal(localTimestamp('March 14 2026'), null);
   assert.equal(localTimestamp('2026'), null);
+});
+
+// spec-v1171: the year is the third way the same constructor lies, and it is the
+// one spec-v1170 let through -- `Date.UTC(1, 0, 1)` is 1901, because the legacy
+// two-digit-year rule applies to every year 0-99 including one written `0001`.
+// The round-trip parseIsoStrict used to do had been catching that by accident,
+// and replacing it with a month-length check lost it.
+
+test('a year of 0001 is 1901 to every Date constructor, and is refused', () => {
+  assert.equal(new Date(Date.UTC(1, 0, 1)).getUTCFullYear(), 1901, 'the trap itself');
+  assert.equal(ymd('0001-01-01'), null);
+  assert.throws(() => parseIsoStrict('0001-01-01', 'surgery date'), /between 1900 and 2100/);
+  assert.equal(parseDate('0001-01-01'), null);
+});
+
+test('inDateWindow is the clinical/billing range, stated once', () => {
+  assert.equal(DATE_MIN_YEAR, 1900);
+  assert.equal(DATE_MAX_YEAR, 2100);
+  assert.equal(inDateWindow(1899), false);
+  assert.equal(inDateWindow(1900), true);
+  assert.equal(inDateWindow(2100), true);
+  assert.equal(inDateWindow(2101), false);
+});
+
+test('ymdFault says WHICH of the three tests failed, so a refusal can too', () => {
+  assert.equal(ymdFault('2026-03-14'), null);
+  assert.equal(ymdFault('3/14/2026'), 'shape');
+  assert.equal(ymdFault('2026-3-4'), 'shape');
+  assert.equal(ymdFault('1823-04-01'), 'window', 'a real date, outside the range');
+  assert.equal(ymdFault('2026-02-30'), 'calendar', 'in range, and not a day');
+});
+
+test('no deadline, clock or due date is computed from a date centuries out', () => {
+  // Each of these answered before spec-v1171: a HIPAA breach notice deadline in
+  // 1823, a Medicare filing deadline of 1824-03-31, a due date of 1824-01-06.
+  assert.throws(() => parseIsoStrict('1823-04-01', 'date of service'), /between 1900 and 2100/);
+  assert.throws(() => parseIsoStrict('2199-04-01', 'date of service'), /between 1900 and 2100/);
+  assert.throws(() => naegele({ lmpIso: '1823-04-01' }), /outside the dates this tool works with/);
+  assert.throws(() => eddFromLmp({ lmpIso: '2199-04-01', todayIso: '2026-03-12' }), /outside the dates/);
+  assert.equal(localTimestamp('1823-04-01T12:00'), null);
+  assert.equal(restraintTimer.length >= 0, true);
+  assert.throws(() => restraintTimer({ type: 'violent', ageYears: 40, orderTimestamp: '1823-04-01T12:00' }),
+    /date and a time/);
+});
+
+test('naegele still dates an ordinary LMP, and still flags a stale one', () => {
+  const ok = naegele({ lmpIso: '2026-01-01', todayIso: '2026-03-12' });
+  assert.equal(ok.dueDate, '2026-10-08');
+  assert.equal(ok.gestationalAgePlausible, true);
+  // spec-v1018's guard is about a real LMP that has run stale; spec-v1171's is
+  // about a year that is not one of these at all. Both still hold.
+  const stale = naegele({ lmpIso: '2000-01-01', todayIso: '2026-03-12' });
+  assert.equal(stale.gestationalAgePlausible, false);
+  assert.equal(typeof stale.dueDate, 'string');
+  assert.throws(() => naegele({ lmpIso: '2026-2-3' }), /YYYY-MM-DD/);
 });

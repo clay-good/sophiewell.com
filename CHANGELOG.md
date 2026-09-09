@@ -400,6 +400,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   bare date and printed renewal and face-to-face deadlines counted from a time of day
   nobody had entered. See docs/spec-v1170.md.
 
+- **A date centuries out of range was answered as though it were ordinary — and the
+  year 0001 was silently read as 1901.** Asking the previous fix's question one step
+  wider found that no date tool checked the year at all: a HIPAA breach discovered in
+  1823 got notice deadlines in 1823, a Medicare claim dated 1823 got a filing deadline
+  of 1824, and a last menstrual period in 1823 got a due date. Separately, every way
+  JavaScript builds a date treats a year under 100 as a nineteen-hundreds year, so
+  0001-01-01 became 1901-01-01 — a hole the previous fix opened, because the check it
+  replaced had been catching that case by accident. Dates now carry a stated range
+  (1900 to 2100) the way numbers already carry one, and a refusal says which of the
+  three things was wrong: the format, the range, or the day itself. A fifth copy of
+  the date rule was found in the due-date tool, which had no date pattern to grep for
+  because it hands the job to the browser's own parser. See docs/spec-v1171.md.
+
 ### Changed
 
 - **The check that compares a tool's accepted values with the menu on the page could

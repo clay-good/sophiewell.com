@@ -171,6 +171,17 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
     the same file is correct: GLI-2012 publishes an other/mixed set, the tile falls back to it and
     prints a note saying it did. Requiring that one broke a passing test, and rightly.
 
+30. **A round-trip check answers a question you did not know you were asking**
+    (spec-v1171). Replacing one with an explicit rule means enumerating everything it
+    happened to cover. `parseIsoStrict` compared the constructed `Date` back against
+    its own components, which caught 30 February AND the year — `Date.UTC(1, 0, 1)` is
+    **1901**, the two-digit-year rule applying to every year 0-99 including one written
+    `0001`. spec-v1170 swapped the round-trip for a month-length check and lost the
+    second half, so a tile that had refused `0001-01-01` began answering from 1900.
+    **And a date has a RANGE, like a number** — rule 5, which `declared-ranges` has held
+    for numbers since spec-v1010 and which a date carries no `min`/`max` for. A HIPAA
+    breach discovered in 1823 got notice deadlines in 1823.
+
 29. **A shape test is not a validity test** (spec-v1170). `new Date(2026, 12, 45)`
     is 2027-02-14 and `Date.UTC(2026, 1, 30)` is 2026-03-02 — neither fails, both roll
     over. Four parsers here tested a date's SHAPE and handed the components to one of
@@ -180,7 +191,10 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
     written `2026-1-11` altogether (TTR 80% → 65%, the good-control threshold), saying
     nothing either time. This is rule 5 in a string field: the impossible value is
     given, and the tile owes the reader its name. The calendar rule now lives once in
-    `lib/num.js`.
+    `lib/num.js`. **And grep finds every copy written in that SHAPE** — the fifth, in
+    `due-date`, holds no date pattern at all: it appends `T00:00:00Z` and lets the ISO
+    parser decide, so it looked correct until asked the question that parser does not
+    answer (spec-v1171).
 
 28. **A check that examines only the fields carrying an optional property is silent
     about every field that does not** (spec-v1169). This is rule 17 one level up, at
