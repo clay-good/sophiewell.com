@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `a254287561624b88`
-Generated: 2026-09-09T23:42:15.900Z
+Build ID: `29f50a9e91ea2591`
+Generated: 2026-09-09T23:55:35.086Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -769,7 +769,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/screener.js` | 6613 | `e017903130ae2d23cb1560f6ad55990ef3dda443a5ac1e9c289b283e3dcd930b` |
 | `lib/sds-dependence-v730.js` | 3683 | `111dc5ff5665875e42cae687e26f1068b4592c227c4b59824e0d2691be12c9da` |
 | `lib/sea-guideline-v861.js` | 8389 | `fe0a832ef17b91d5adb674568cde9eafd88fe46499c80c9fb4bc426f34c5b4cf` |
-| `lib/search-corpus.js` | 6490 | `93fcf68d475c6539d7a3220543a0503a43d6d0a784639f0a8aff5dbf100c6e41` |
+| `lib/search-corpus.js` | 6918 | `a4a1f4388c49f808433aa2e070fb22905f0a1fe1ac1712217db3ba73bf83885a` |
 | `lib/search.js` | 1726 | `eb447d039ac1ea7b459743b6aeeffea114f90f07d45a6bd53dbe60eb1c8fdd9b` |
 | `lib/secondary-mitral-regurgitation-stage-v849.js` | 10937 | `af5c432f19186675c5434dd9800ca85f1888e9665778c019bcfdeaa1deb88b65` |
 | `lib/seinsheimer-subtroch-v413.js` | 4898 | `9f843754c0a49e0b7c21c720f3ce5e9ce202e34a466b070d738e93bf4d6ba607` |

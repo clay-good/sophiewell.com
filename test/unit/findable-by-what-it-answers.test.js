@@ -23,6 +23,7 @@ import { fileURLToPath } from 'node:url';
 import { META } from '../../lib/meta.js';
 import { corpusDesc } from '../../lib/search-corpus.js';
 import { resolvePromptRanked, rankableWords } from '../../lib/prompt.js';
+import { corpusOneLiner } from '../../lib/search-corpus.js';
 
 const ROOT = fileURLToPath(new URL('../..', import.meta.url));
 const read = (p) => JSON.parse(readFileSync(ROOT + p, 'utf8'));
@@ -91,4 +92,39 @@ test('option words are indexed only where they discriminate', () => {
   for (const w of ['yes', 'none', 'other', 'female', 'normal', 'severe']) {
     assert.ok(!df.has(w), `${w} is generic picklist vocabulary and must not be indexed`);
   }
+});
+
+// `answers` is an INDEX channel, and must stay one.
+//
+// These are registry values written for agents, not sentences for a person --
+// this repo has already printed one to a reader once (`onevaso`, from the MCP
+// field registry) -- so they belong in the text the ranker reads and nowhere a
+// reader or an agent sees. `corpusOneLiner` is the display path (the search
+// result's second line, and the same helper the static tool pages use), and
+// `mcp/tools.js` returns each candidate's `summary` rather than its `desc`.
+//
+// This pins the display half, which is the half a person would notice.
+test('the option words never reach the display one-liner', () => {
+  const withAnswers = Object.entries(detail).filter(([, r]) => r.answers);
+  assert.ok(withAnswers.length >= 150, `expected many rows to carry answers; saw ${withAnswers.length}`);
+
+  for (const [id, row] of withAnswers) {
+    const shown = corpusOneLiner({ ...corpus[id], ...row });
+    for (const word of row.answers.split(' ')) {
+      // A word may legitimately appear because the SUMMARY says it. What must
+      // not happen is the one-liner reaching into `answers` for its text -- so
+      // the test is that the one-liner is a prefix of the prose fields, never of
+      // the appended token list.
+      if (!shown.includes(word)) continue;
+      const prose = `${row.what || ''} ${row.summary || ''} ${row.expected || ''}`.toLowerCase();
+      assert.ok(prose.includes(word),
+        `${id}: one-liner shows "${word}", which only exists in the option-word channel`);
+    }
+  }
+});
+
+// And a row that carries ONLY option words must render no one-liner at all,
+// rather than a bare list of drug names where a sentence belongs.
+test('a row with nothing but option words shows no one-liner', () => {
+  assert.equal(corpusOneLiner({ answers: 'hydromorphone oxymorphone tapentadol' }), '');
 });
