@@ -452,6 +452,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   also now carry that limit, so the page flags the value above the answer. See
   docs/spec-v1174.md.
 
+### Added
+
+- **A finder for the rest of that class.** This project keeps a table of physiologically
+  impossible values -- a temperature below 25 C, an albumin above 7 g/dL -- written so
+  that a frankly impossible entry is never presented as an authoritative answer. Almost
+  nothing consulted it. A new maintenance script now walks the catalog and reports every
+  input that still answers from a value ten times past one of those limits: 174 of them,
+  across 92 calculators, with the ones that answered *reassuringly* listed first. It
+  checks its own reasoning first, by confirming each calculator's worked example sits
+  inside the limit it assigned -- which caught three fields it had matched wrongly (an
+  air temperature, and two IV-bag additives, none of which are the body measurements
+  those limits describe). See docs/spec-v1175.md.
+
 ### Changed
 
 - **The check that compares a tool's accepted values with the menu on the page could
