@@ -486,6 +486,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   existed for years and was simply unused, so that recommendation is corrected rather
   than quietly dropped. See docs/spec-v1177.md.
 
+- **Three more calculators read a healthy result out of an albumin in the wrong units.**
+  A European lab reports serum albumin as 40; US labs call the same value 4.0. Higher
+  albumin looks healthier in every score that uses it, so unlike the platelet case the
+  wrong figure always lands on the reassuring side: the ALBI grade called it "the best
+  preserved liver function", the NAFLD fibrosis score "excludes advanced fibrosis", and
+  the strong-ion gap "no excess unmeasured strong anions". The ALBI tool was the worst of
+  the three because it converts between the two units itself, one line further down, so
+  the figure was multiplied by ten a second time. All three now decline and do the
+  conversion for you. A genuinely high albumin is still accepted. See docs/spec-v1178.md.
+
 ### Changed
 
 - **The check that compares a tool's accepted values with the menu on the page could

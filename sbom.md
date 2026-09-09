@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `c03ba4a73c897017`
-Generated: 2026-09-09T15:09:09.280Z
+Build ID: `125573e8b9ac5a1f`
+Generated: 2026-09-09T15:56:39.910Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -59,7 +59,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/abc-scale-v729.js` | 2969 | `216800e61da667543101c6a175111dbf2fca98617f1b15d6b420cf00bff18eaf` |
 | `lib/ablett-tetanus-v576.js` | 11571 | `55c0a29b6ed65dab28caa723322ce513f4017217113429dbfd926bd8fdc8f0af` |
 | `lib/acef-v595.js` | 11727 | `7f6eb09e8e47d18db22b488a037178a3a3af2cdf20a71e56fccbe0af0454d45a` |
-| `lib/acidbase-v129.js` | 19816 | `2852668565986f7e38f97d2b2c4cb8d536388f5808a1a1b26e52513c65956954` |
+| `lib/acidbase-v129.js` | 20363 | `672e3c4a85369ef507b717b032d9ca3e4e550a907bf45515ec476b0c69ac1997` |
 | `lib/acr-eular-boolean-v671.js` | 4453 | `79e79312ee4df6fc97bcb44e121482e68c9d62323446f27087d26beac5478fba` |
 | `lib/acromegaly-biochem-v835.js` | 9541 | `3dcd6eec4c8be684e05c0f87baf0eb7fb27d356dfc3fd44beb33704700062d4f` |
 | `lib/acs-v193.js` | 15400 | `219926127d8100963f60bd083fb4a77fa33e1f806b7d581dc78dea821b819d52` |
@@ -367,13 +367,13 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/hemodynamics-v87.js` | 8607 | `1bc8bc1408afb3fbc602d2748bfa1c8c68eb89fafabb18dd5e9c1a2589ff0276` |
 | `lib/hemonc-v94.js` | 20808 | `a088e7b1bf4c229dd1ceccf98fd21a70fdf074dbb50447d7114b9471e277205b` |
 | `lib/hep-fibrosis-portal-v212.js` | 6585 | `93bb19ad8fac24e2e86c21bd76be22c40b3df7ec8d1a8888002c643453d3223a` |
-| `lib/hep-v124.js` | 14645 | `220d8976e7a3398bf20a83a1a97db8708aaa21c061da105dde2f62242a25e304` |
+| `lib/hep-v124.js` | 15356 | `049ccb04b60ff0a93eb6c80400e614dd5709cbe071e48d5b0b7632cec0b69248` |
 | `lib/hep-v125.js` | 13055 | `86f145e491067a12d2b0dea0085a9340a14350d5b82d29dca936d41c9b8d6d03` |
 | `lib/hepatic-iron-index-v932.js` | 6957 | `4c14e67de0551f4e4f9bde691e19eaa0c2f4e5cc6fb41033d1b7e0fd73ec74d6` |
 | `lib/hepatology-gibleed-v201.js` | 19770 | `b13202719fc096c742097095af56bcd722c07b67f7e138a791e72cd818eb7da6` |
 | `lib/hepatology-prognosis-v220.js` | 11769 | `1f9c49980dee9a6c4959fb670f74c99b1bbd44eab695f06dee16190eee21addb` |
 | `lib/hepgi-v190.js` | 11863 | `18fdde7face8dec98d83118b4840f01f3e93a7594a0cade787ab75771707e239` |
-| `lib/hepgi-v93.js` | 19228 | `fb0ceb54a9f61c6d382036cd620fed0a0de75d56f3ec7c637691216e0e56a972` |
+| `lib/hepgi-v93.js` | 19901 | `8183caf0a263ab1fe195dbb8328f299a5d126b93054fe500a2c2950e77ab32a9` |
 | `lib/herring-pillar-v347.js` | 4295 | `5402d155c338948987f458750b247521fc6ba36f5a20d9501eb4b97e6ae52794` |
 | `lib/hf-ef-classification-v840.js` | 8378 | `4ba17b89bcb66c65f821f7cb6335cab5c57e428fcf22c2da876fa636ce7a972e` |
 | `lib/hf-stages-abcd-v842.js` | 7839 | `93bde8395e5ff6baf50da213ef74c1358b09d224c3fdcc6fae245eb1dc8024c2` |
