@@ -1571,8 +1571,13 @@ test('lib/field.js burn / airway / drug-dose recipes worked calls (wave 78)', ()
 test('lib/scoring-v4.js restraint-reassessment timer worked call (wave 79)', () => {
   const rt = ok('restraint-timer', { 'rt-type': 'violent', 'rt-age': '40', 'rt-ts': '2026-05-19T12:00' });
   assert.equal(rt.type, 'violent');
-  // The order-relative reassessment is 15 minutes after the order.
-  assert.match(rt.nextReassessIso, /:15:/);
+  // spec-v1172: this asserted `/:15:/`, which matched the old UTC rendering
+  // `2026-05-19T17:15:00.000Z` exactly as happily as the 12:15 it meant -- so the
+  // test sat beside a four-hour timezone error and could not see it. The
+  // timestamp carries no offset, so the answers are on the same wall clock.
+  assert.equal(rt.orderIso, '2026-05-19T12:00');
+  assert.equal(rt.nextReassessIso, '2026-05-19T12:15', '15 minutes after the order');
+  assert.equal(rt.nextRenewalIso, '2026-05-19T16:00', 'q4h for an adult');
   assert.match(rt.banners.join(' '), /482\.13/);
 });
 

@@ -171,6 +171,17 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
     the same file is correct: GLI-2012 publishes an other/mixed set, the tile falls back to it and
     prints a note saying it did. Requiring that one broke a passing test, and rightly.
 
+31. **A test that supplies a fuller input than the control can emit is testing a call
+    the reader cannot make** (spec-v1172). Five bedside timers converted their answers
+    to UTC while their inputs came from a `datetime-local` control, which emits no
+    offset -- so a restraint ordered at noon showed its 42 CFR 482.13(e) four-hour
+    renewal as `2026-05-19T21:00:00.000Z`, five hours past the 16:00 it meant. Every
+    unit test was green because every one of them passed a `Z` timestamp: zone in, zone
+    out, correct, and a call the browser cannot make. **Every worked example on all five
+    tiles is offset-less**, so the defect was on the page each of them opens on. The rule
+    is to carry the frame: an instant in, an instant out; a wall clock in, the same wall
+    clock out.
+
 30. **A round-trip check answers a question you did not know you were asking**
     (spec-v1171). Replacing one with an explicit rule means enumerating everything it
     happened to cover. `parseIsoStrict` compared the constructed `Date` back against

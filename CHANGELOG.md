@@ -413,6 +413,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   the date rule was found in the due-date tool, which had no date pattern to grep for
   because it hands the job to the browser's own parser. See docs/spec-v1171.md.
 
+- **Five bedside timers showed their times in the wrong timezone.** The restraint, sepsis
+  bundle, code-blue, early-warning and device-day tools all take a time from a date-and-time
+  picker, which has no timezone attached to it -- so the time entered is the time on the
+  clock in the room. Each tool then printed its answer converted to UTC. A restraint ordered
+  at noon showed its four-hourly renewal as "2026-05-19T21:00:00.000Z" when the renewal is
+  due at 16:00 on the reader's own clock, and the code-blue tool gave the next rhythm check,
+  two minutes away during a resuscitation, in the same form. Every worked example on all five
+  uses a time without a timezone, so this is what each page opened on. They now answer in the
+  frame they were asked in: a plain time in, the same plain time out; a time with a timezone
+  in, a timezone out. Four of the five were also still reading their timestamps loosely, so a
+  bare date was accepted and turned into midnight; all five now refuse what they cannot read,
+  except that the early-warning tool's time stays optional -- blank means no due time, while
+  something entered and unreadable is now said rather than dropped. See docs/spec-v1172.md.
+
 ### Changed
 
 - **The check that compares a tool's accepted values with the menu on the page could
