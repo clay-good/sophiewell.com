@@ -54,3 +54,29 @@ test('Unknown device throws', () => {
 test('Missing insertion throws', () => {
   assert.throws(() => deviceDayCounter({ device: 'foley' }));
 });
+
+// spec-v1173: the count is measured from NOW, so a pinned insertion time runs
+// away. code-blue-clock got this note in spec-v1018 and its neighbour here did
+// not: the worked example reads "Device-days: 117 d 0 h" beside "remove Foley
+// today", which is not a scenario anyone wrote. The note claims no clinical
+// implausibility -- a chronic indwelling catheter is real -- it says only where
+// the number came from, which is the thing the reader cannot see.
+test('a long dwell counted to now says where the number came from', () => {
+  const r = deviceDayCounter({
+    device: 'foley', insertionTimestamp: '2020-01-01T08:00', criteriaMet: ['x'],
+  });
+  assert.match(r.dwellNote, /Counted to now/);
+  assert.match(r.dwellNote, /the count moves with the clock/);
+});
+
+test('and stays quiet when the reading is pinned, or the dwell is ordinary', () => {
+  // A pinned `asOf` is not a reading from the clock, so there is nothing to say.
+  assert.equal(deviceDayCounter({
+    device: 'foley', insertionTimestamp: '2020-01-01T08:00', asOf: '2020-06-01T08:00', criteriaMet: ['x'],
+  }).dwellNote, null);
+  // And an ordinary dwell is the case the tile is for.
+  const threeDaysAgo = new Date(Date.now() - 3 * 86_400_000).toISOString();
+  assert.equal(deviceDayCounter({
+    device: 'foley', insertionTimestamp: threeDaysAgo, criteriaMet: ['x'],
+  }).dwellNote, null);
+});

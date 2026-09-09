@@ -427,6 +427,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   except that the early-warning tool's time stays optional -- blank means no due time, while
   something entered and unreadable is now said rather than dropped. See docs/spec-v1172.md.
 
+- **The device-day counter opened on a catheter that had been in for 117 days.** Its
+  count is measured from right now, and the worked example pins an insertion date, so
+  the page drifted into reading "Device-days: 117 d 0 h" next to "remove Foley today" --
+  a situation nobody wrote. The code-blue timer was taught to flag exactly this when its
+  own example went stale; the tool beside it never was. It now says where the number came
+  from -- that the count moves with the clock while the insertion time on screen does not
+  -- for any dwell past 30 days counted to now. It deliberately makes no claim that a long
+  dwell is implausible, because chronic catheters and tunnelled lines are real and the CDC
+  publishes no maximum. See docs/spec-v1173.md.
+
 ### Changed
 
 - **The check that compares a tool's accepted values with the menu on the page could

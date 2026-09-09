@@ -171,6 +171,13 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
     the same file is correct: GLI-2012 publishes an other/mixed set, the tile falls back to it and
     prints a note saying it did. Requiring that one broke a passing test, and rightly.
 
+32. **An exemption can answer half its own question** (spec-v1173). The clock-dependent
+    ledger asks "is the clock what it measures, or has an example been left to rot?" --
+    two questions, and `device-day-counter` answers yes to both. It was exempted on the
+    first, correctly, and the second was never put: its example read *"Device-days: 117 d
+    0 h"* beside *"remove Foley today"*. When an exemption's own wording offers a choice
+    of reasons, check whether more than one applies.
+
 31. **A test that supplies a fuller input than the control can emit is testing a call
     the reader cannot make** (spec-v1172). Five bedside timers converted their answers
     to UTC while their inputs came from a `datetime-local` control, which emits no

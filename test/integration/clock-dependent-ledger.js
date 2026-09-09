@@ -22,6 +22,22 @@
 //
 // A new tile on this list is a question, not a defect: is the clock what it
 // measures, or has an example been left to rot?
+//
+// spec-v1173: THOSE ARE TWO QUESTIONS, AND A TILE CAN ANSWER YES TO BOTH.
+// `device-day-counter` was exempted above on the first one -- device-days since
+// insertion IS the measurement, which is true -- and nobody asked the second.
+// Its example reads "Device-days: 117 d 0 h" beside "remove Foley today". It
+// carries the spec-v1018 staleness note now, like `code-blue-clock` beside it.
+//
+// Read at the same time and left, with the reasoning, so the next reader starts
+// here: `appeal-deadline`, `overpayment-60day` and `pa-turnaround` all open on
+// "Past due by N day(s) as of today", because a static example date and a window
+// of 120, 60 and 7 days cannot do anything else -- pa-turnaround's rots within a
+// week of any date anyone picks. Each is arithmetically right and says which day
+// it is speaking from, which is the disclosure this programme asks for. Moving
+// the dates buys 7 to 120 days and changes nothing else. `timely-filing` reads
+// "173 day(s) remaining" only because its window is 365 days; it is the same
+// tile with more runway, not a better-behaved one.
 export const CLOCK_DEPENDENT = new Set([
   'appeal-deadline',
   'code-blue-clock',

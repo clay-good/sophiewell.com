@@ -488,6 +488,10 @@ export const renderers = {
         insertionTimestamp:  v29d('dd-ins'),
         criteriaMet,
       });
+      // spec-v1173: the staleness note leads, the same way code-blue-clock's
+      // does -- a reader who does not know the count came from the clock reads
+      // the number under it as a scenario.
+      if (r.dwellNote) o.appendChild(el('p', { class: 'muted', text: r.dwellNote }));
       o.appendChild(el('h2', { text: `Device-days: ${r.deviceDays} d ${r.deviceHours} h` }));
       o.appendChild(el('p', { text: `Insertion: ${r.insertionIso}` }));
       for (const b of r.banners) o.appendChild(el('p', { class: 'clinical-notice', text: b }));
