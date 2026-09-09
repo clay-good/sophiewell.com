@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `72015de28e9b166c`
-Generated: 2026-09-08T23:41:16.079Z
+Build ID: `9f6292845112a1bd`
+Generated: 2026-09-09T00:29:08.066Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -27,7 +27,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 |---|---:|---|
 | `index.html` | 109326 | `ed0c13446d64e0862ad6de00f0220e352fd6d932f0e7616251d09c2bfe0d951d` |
 | `styles.css` | 68228 | `094d1a6713908446c258e1434be2ebc3451324020c59388eed73c362116b1585` |
-| `app.js` | 514354 | `f874526326af54460c67a019c0a90e00d6727d003f54a1a5d86e035b00da9cb3` |
+| `app.js` | 513572 | `6a46664859b7ab6d4aa0cb2e8748e1dab29c263fac90161c462f55486b2cd941` |
 | `report-feedback.js` | 12178 | `955e5cb542c7b13dcbb85a75ecf4ccf2dc0b2dffecd84daac1d607bd6acc7cd2` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 | `theme.js` | 3132 | `6910af0b4c65869c6a3d24d17842bb2cc88c7d23f8fb32506fcdbfeec70ce979` |
@@ -606,6 +606,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/ottawa-bowel-prep-v670.js` | 3829 | `230547b220183ed6b5bd4bfc719c2c5119c4b54e96a1c1bafec86dade709d2f8` |
 | `lib/outerbridge-v337.js` | 4253 | `ad534eb30540f5c20eba3ed176649fbc040b2772ac9d2de4d81d73db68d68311` |
 | `lib/output-guard.js` | 3563 | `cb43b387537fb4e75d797e47246348263797ef8e33cd08d974ef71c0b66238fb` |
+| `lib/own-notice.js` | 2756 | `9a89a54ddb1ad02e4ad74f520f8cd82cae37b87db1bbfe0d127bc3acb8ce7707` |
 | `lib/pa/classify.js` | 3432 | `a7958e40890ad63ebf68ce5a0107fe7ab5a5b0c9e877e2669e8f44ecfb7f34ca` |
 | `lib/pa/cms-opd-pa-list.js` | 3701 | `d142fdc90cc782bb472d729df2ee6d0e89429cba2ecf0cfc7857a4e7e471b454` |
 | `lib/pa/date.js` | 3183 | `797ce4bc2a6f7807b076f4660fa6ade69d29e0ae984ef43f20b60dafd5ad4d14` |

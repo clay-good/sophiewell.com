@@ -787,6 +787,7 @@ import { fetchJson } from './lib/data.js';
 import { copyButton } from './lib/clipboard.js';
 import { installKeyboard } from './lib/keyboard.js';
 import { parseHash, patchHash, buildHash } from './lib/hash.js';
+import { tileStatesItsOwnNotice } from './lib/own-notice.js';
 import { loadSynonyms } from './lib/synonyms.js';
 import { resolvePrompt, resolvePromptRanked, rankableWords } from './lib/prompt.js';
 // spec-v766: how strongly a query names a tile. Shared with mcp/tools.js so the
@@ -3883,24 +3884,9 @@ const CLINICAL_NOTICE_TEXT =
 // nothing keeps the banner. Recognised by a closed set of openings rather
 // than by keyword, because "the clinician" appears in plenty of prose that is
 // not a disclaimer.
-const OWN_NOTICE_DISCLAIMER = /^decision support,? (?:and|but)? ?not an? (?:verdict|order|diagnosis|prescription|treatment|substitute)/i;
-const OWN_NOTICE_OPENING = /^(?:[A-Z][A-Za-z-]* )?(?:\/ )?(?:decision support|screening \/ decision support|estimate \/ decision support)\b[,.]/i;
-function tileStatesItsOwnNotice(root) {
-  const nodes = root.querySelectorAll('p, li, summary');
-  for (const n of nodes) {
-    if (n.querySelector('p, li')) continue;
-    const t = (n.textContent || '').replace(/\s+/g, ' ').trim();
-    if (t.length < 40) continue;
-    // "Decision support, not a verdict" is a disclaimer and nothing else, so
-    // it stands on its own. Any other opening has to also say who the decision
-    // belongs to, because "decision support" alone appears in prose that is
-    // describing the tool rather than disclaiming it.
-    if (OWN_NOTICE_DISCLAIMER.test(t)) return true;
-    if (!OWN_NOTICE_OPENING.test(t)) continue;
-    if (/stays? with|clinician|prescriber|protocol|clinical judgment/i.test(t)) return true;
-  }
-  return false;
-}
+// spec-v1157: the recogniser moved to lib/own-notice.js, because
+// test/integration/one-disclaimer.spec.js had a second, already-drifted copy of it
+// -- and that sweep exists to police exactly this decision.
 function dropDuplicateNotice(content, body) {
   const notice = content.querySelector('.clinical-notice');
   if (notice && tileStatesItsOwnNotice(body)) notice.remove();

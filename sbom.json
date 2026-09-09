@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:72015de2-8e9b-566c-8272-ed20a9bf26b3",
+  "serialNumber": "urn:uuid:9f629284-5112-51bd-8693-a3a8bc82308e",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-08T23:41:16.079Z",
+    "timestamp": "2026-09-09T00:29:08.066Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f874526326af54460c67a019c0a90e00d6727d003f54a1a5d86e035b00da9cb3"
+          "content": "6a46664859b7ab6d4aa0cb2e8748e1dab29c263fac90161c462f55486b2cd941"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "514354"
+          "value": "513572"
         }
       ]
     },
@@ -12043,6 +12043,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3563"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/own-notice.js",
+      "type": "file",
+      "name": "lib/own-notice.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9a89a54ddb1ad02e4ad74f520f8cd82cae37b87db1bbfe0d127bc3acb8ce7707"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2756"
         }
       ]
     },
@@ -67636,6 +67657,7 @@
         "urn:sophiewell:file:source:lib/ottawa-bowel-prep-v670.js",
         "urn:sophiewell:file:source:lib/outerbridge-v337.js",
         "urn:sophiewell:file:source:lib/output-guard.js",
+        "urn:sophiewell:file:source:lib/own-notice.js",
         "urn:sophiewell:file:source:lib/pa/classify.js",
         "urn:sophiewell:file:source:lib/pa/cms-opd-pa-list.js",
         "urn:sophiewell:file:source:lib/pa/date.js",
@@ -69618,7 +69640,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "72015de28e9b166c"
+      "value": "9f6292845112a1bd"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -69630,7 +69652,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2429"
+      "value": "2430"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

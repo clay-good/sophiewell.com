@@ -247,6 +247,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   alongside its result, so a change that narrows it fails loudly instead of quietly.
   See docs/spec-v1156.md.
 
+- **The check that stops a tool showing the same disclaimer twice was reading a
+  different rule from the one that decides it.** The page drops its generic notice
+  when a tool states its own, and the check that nobody ends up with both had its own
+  copy of how to recognise that -- a copy that had already fallen behind in three
+  ways. Both now read one rule. The check also reports how many tools it can actually
+  see (1,212 of 1,706), so a rewording that quietly took tools out of its reach fails
+  it instead. One tool had been exempted from the check for a reason that never
+  applied; that exemption is gone. See docs/spec-v1157.md.
+
 ### Changed
 
 - **A check that compares what the tool accepts with what the page offers was
