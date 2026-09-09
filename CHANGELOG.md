@@ -590,6 +590,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   the ones that could not meet that bar were left out rather than guessed. Every
   tool still answers its own name exactly as before. See docs/spec-v1187.md.
 
+- **A prior-authorization source link pointed at an old address.** Blue Cross Blue
+  Shield of Michigan's authorization page had moved; the old address still
+  redirected, so nothing was broken for a reader, but the monthly source check had
+  been reporting it every month -- and a report that always carries the same known
+  row teaches you to skim past the row that is new. All 91 source links now resolve
+  to their current address, with none moved and none dead. See docs/spec-v1188.md.
+
 ### Changed
 
 - **The check that compares a tool's accepted values with the menu on the page could
