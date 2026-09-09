@@ -290,6 +290,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   characteristic never asked for. The menu now opens unset, which uses the reference's
   own other/mixed set and says so. See docs/spec-v1160.md.
 
+- **The Cornell depression-in-dementia scale hid its "unable to evaluate" option from
+  agents.** Every one of its nineteen items offers that choice on the page, and the
+  tool is careful with it -- it scores zero but is reported separately, so a resident
+  who could not be assessed is not recorded as having no symptom. None of that was
+  published to agents, which would have sent a plain 0 instead. All nineteen now
+  declare the full set of choices. See docs/spec-v1161.md.
+
 ### Changed
 
 - **A check that compares what the tool accepts with what the page offers was

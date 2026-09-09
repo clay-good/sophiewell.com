@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `f864c1f45a27a66c`
-Generated: 2026-09-09T02:51:02.083Z
+Build ID: `3180c83d8bc29b39`
+Generated: 2026-09-09T03:02:09.741Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -1290,7 +1290,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/loe-silness-gingival-index-v722.js` | 1303 | `33709d76cf25909e6a6a02edccebd92a05880ba21c1f6b1d3d70b30bf2ec77dd` |
 | `mcp/adapters/lown-ectopy-v493.js` | 1329 | `8e79aa7ae017f7419127340e4a491349a504e98b632005aeb86ca2fa7acc2899` |
 | `mcp/adapters/ltcga-v173.js` | 3922 | `f652a4f0de3411ab984ca781f608237fa401a08e69e7a8d959fe23cf9621bfc8` |
-| `mcp/adapters/ltcga-v174.js` | 10850 | `3cd063da8cfce85abb75fd0e3a2e337d4348dec7f22ba874cae965de0577dbf6` |
+| `mcp/adapters/ltcga-v174.js` | 13231 | `578d3164994e67e3c58c44a1b5658a4a3acbe69126b02529acc896f3ce65dc3a` |
 | `mcp/adapters/ltcga-v175.js` | 5302 | `33233b2e2098c200b026b8f80ef0d7d2a8d9b22176eba4a881ef137c68a5410d` |
 | `mcp/adapters/ltcga-v176.js` | 4402 | `615812ed275ea9df91c214dea0f2a328430e7707adee6b7b13621335cfc02a7e` |
 | `mcp/adapters/ltcga-v177.js` | 4116 | `5d2bf11cb957fe91a5886062969a66d26c0944933c700ce17be77bed45b3b393` |

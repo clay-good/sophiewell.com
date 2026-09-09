@@ -944,6 +944,21 @@ A *"Not stated"* option was the whole fix. And the note that branch prints had b
 written for an UNRECOGNISED group, not an unstated one — **a disclosure written for
 one way of arriving at a branch does not automatically describe the other.**
 
+[spec-v1161](spec-v1161.md) closed the third finding from that run.
+`undeclared-picklist-probe` reports fields rendered as a `<select>` while declaring
+no `values`, so an agent cannot learn which inputs mean anything and both value-list
+gates walk past them. It printed **19 fields on one tile** — `cornell-csdd`, every
+item of which offers *"a — Unable to evaluate"* beside 0, 1 and 2.
+
+**`a` is the point, not an edge case.** The library scores it 0 and reports it as
+unrated (*"2 of 19 items marked unable to evaluate (scored 0); 17 rated"*), which is
+exactly what this programme asks for — and an agent had no way to know the option
+existed, so every unassessable item would have arrived as a real 0. Declared now, and
+the probe reports **0 across 0** for the first time.
+
+**A value the registry does not declare is invisible twice over**: to the agent that
+would use it, and to the checks that would notice it went missing.
+
 ## Probes measured and rejected
 
 Three questions asked of the whole catalog after spec-v1048, each of which sounded like it should
