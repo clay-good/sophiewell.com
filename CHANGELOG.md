@@ -318,6 +318,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
+- **The vocabulary that recognises a tool owning up to a missing value was missing one
+  of its own phrasings.** The list knew "not entered" and "not assessed" but not "not
+  stated" -- which is what the aneurysm rupture and growth scores say, and two other
+  tools besides. The checks that read it were therefore flagging four readings that
+  were doing exactly the right thing. Measured before the change, as that list
+  requires: it moves four rows, all four of them tools disclosing correctly. See
+  docs/spec-v1164.md.
+
+### Changed
+
 - **A check that compares what the tool accepts with what the page offers was
   only looking at a third of the catalog.** A calculator's list of accepted
   values is published to agents in its input schema, and this check has held it

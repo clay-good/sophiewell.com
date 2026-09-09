@@ -92,6 +92,21 @@ export const DISCLOSING = new RegExp([
   'scored from', 'can only raise', 'not entered', 'was not entered',
   'were not entered', 'has not been entered', 'have not been entered',
   'not assessed', 'among those entered', 'not enough entered',
+  // spec-v1164: the house says this a fourth way. `not entered` appears 63 times
+  // across 46 library files and was on the list; `not stated` appears 15 times
+  // across 10 and was not -- and it is the phrasing the aneurysm scores use for
+  // exactly the disclosure this list exists to recognise ("the location is not
+  // stated, and it is worth 5 points"). The same drift as `can only add` in
+  // spec-v1094 and `is needed` in spec-v1097: one rule, two hands, one phrasing
+  // known.
+  //
+  // Measured before adding, as the rule at the top requires: across every tile and
+  // every field, it moves FOUR rows from flagged to exempt -- three on
+  // `impede-vte` ("IMPEDE VTE between 5 and 9 on what was entered: the
+  // thromboprophylaxis ... not stated") and one on `glim-malnutrition` ("Not yet
+  // assessable by GLIM: the weight loss and the body mass index ... not stated").
+  // All four are tiles disclosing correctly, and none of them answers anyway.
+  'not stated',
   'does not rule', 'cannot yet rule', 'items assessed',
   // "3 of 6 components", "7 of 8 items", "0 of 1 criteria assessed"
   //

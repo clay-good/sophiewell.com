@@ -521,16 +521,23 @@ What is left is narrower than when this page was written:
 
 ## What `probe-omitted-field-decides` prints today, and why each row is left
 
-After [spec-v1141](spec-v1141.md) its first section is 13 rows, and **every one has
-been read**. Recorded so the next reader starts here rather than re-deriving it:
+Re-read at [spec-v1164](spec-v1164.md). Its first section is **12 rows**, and every
+one has been read. Recorded so the next reader starts here rather than re-deriving
+it:
 
 | Row | Why it stands |
 | --- | --- |
-| `homa-ir`, `calcium-phosphate-product`, `vitamin-d-level`, `kings-college` (units) | the reading names the unit it used, which is the [spec-v1133](spec-v1133.md) model: the assumption is visible where the verdict is |
+| `homa-ir`, `calcium-phosphate-product`, `vitamin-d-level` (units) | the reading names the unit it used, which is the [spec-v1133](spec-v1133.md) model: the assumption is visible where the verdict is |
 | `rmi-ovarian` | names the variant in the answer — *"RMI 1 = U(3) x M(3) x CA-125(20)"* |
+| `rosendaal-ttr` (target INR low, high) | the target range is a **prescription, not an observation** — and the reading names the range it used every time, *"16 of 20 days in range 2–3"*. Changing it asks a different question rather than filling a gap. New since spec-v1155 made the two bounds optional |
 | `boston-caa`, `pertussis-case-def`, `hiv-pep-occupational`, `vod-sos` | each says what was **not marked / not recorded / not entered** rather than concluding from it |
-| `glim-malnutrition`, `sea-guideline` | already refuse or ask, in as many words |
-| `migraine-ichd3`, `tension-headache-ichd3`, `indomethacin-headache-ichd3` | the dropped criteria are checkboxes; an unticked box is a real "no" (rule 4) |
+| `sea-guideline` | already refuses or asks, in as many words |
+| `loe-silness-gingival-index` | a **mean**, not a sum — rule 10, and there is no direction to disclose |
+
+Four rows left the section between spec-v1141 and spec-v1164 without anyone touching
+them: `kings-college` and the three ICHD-3 headache tiles. The catalog moved, which is
+the point — *the rows change with it.* And `elapss` and `glim-malnutrition` left it
+because spec-v1164 taught the vocabulary the phrase they disclose with.
 
 The second section's top rows are now the **fixed** tiles showing their new
 disclosures — *"between -6 and 2 … whatever the angina index turns out to be"*,
