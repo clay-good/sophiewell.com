@@ -269,6 +269,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   pre-filled with 0 -- a claim that the patient is not anuric -- and is now blank
   with 0 as a hint. See docs/spec-v1158.md.
 
+- **The PHASES aneurysm rupture score assumed a population and an artery nobody had
+  chosen.** Both menus opened on their zero-point option -- a North American patient
+  with an internal carotid aneurysm -- and together they are worth nine of the
+  twenty-two points, on a scale whose five-year rupture risk runs from 0.4% to 17.8%.
+  The same patient could read 4.3% or 17.8% depending on two things never asked. Both
+  menus now open unset, and the tool gives the range until they are chosen. Its sister
+  score had this fixed last time; this one sits beside it in the same file.
+
+- **And that earlier fix had only reached the headline.** The ELAPSS score's summary
+  line has been giving a range for a while, while the figures listed underneath it
+  still showed the low end as if it were the total. Both tools now carry the range in
+  both places. See docs/spec-v1159.md.
+
 ### Changed
 
 - **A check that compares what the tool accepts with what the page offers was

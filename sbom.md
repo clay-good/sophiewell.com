@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `144b416a2d6ae4b3`
-Generated: 2026-09-09T02:06:16.349Z
+Build ID: `d19a21537b493349`
+Generated: 2026-09-09T02:28:58.857Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -554,7 +554,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/nerve-injury-v297.js` | 4746 | `13741ba46f672eb344024cfed6d066a3bffd6ea90974a2fa578f282407695d00` |
 | `lib/neuro-disability-v159.js` | 15165 | `d2fb8f1306232369b37461eafb26ba7c36c595e67e1f53ad48f48a557d1e1dad` |
 | `lib/neuro-v117.js` | 18177 | `c1fc05fe1f5862f898ffc599a3d4146ad993fe2e28d9cc2467a9a0f9a7b7006b` |
-| `lib/neuro-v118.js` | 22620 | `1c39cb8f5d6db166512c020cac00169b06cddaa84137fb7063f2fb13a287c176` |
+| `lib/neuro-v118.js` | 24965 | `4dbed2545f8735a872ddb37d8a05a2a011ae5ba48c77732c801fd43314693cc2` |
 | `lib/neuro-v119.js` | 15180 | `7a2ee09ef5a99034461e909ba5ef426376ddfb46ad62a84454c709cee7ee7d39` |
 | `lib/neuro-v120.js` | 16832 | `dff02a8911a4f56a6e9d08411ce1a15085cc73e5774a50827f5b8d7b33643bfb` |
 | `lib/neuro-v121.js` | 19888 | `33e8a4937da6f78afac280ae3bb7426e8b17fae47265323b31a6926ebd7c42f3` |
@@ -1719,7 +1719,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1062.js` | 2586 | `ffbf32df0ae17e753e06b756f32e36e7c1f7dcbeb98c6bdefd26e1e342950eca` |
 | `views/group-v11.js` | 23792 | `32fc117048d10d745c9e7cf9ff7919c3937974c2f06e9231fac757aa6180d9a3` |
 | `views/group-v117.js` | 12166 | `bd791807741fd3275c6f46da19f26f8b39e7b1644759811bfdec6b0cc3557839` |
-| `views/group-v118.js` | 12553 | `c0e6838b91110e617744b0b2e3312efe0189e95888dc4aa500959526f4d54c2d` |
+| `views/group-v118.js` | 14192 | `37e85f6066e94aa943ab96daf44a6954a8fd58e8d31e7ec894ff7c885d87d27c` |
 | `views/group-v119.js` | 9513 | `1f10862d9aab600674449534502faf78e810ea756704d37066ac0ca7347bf580` |
 | `views/group-v12.js` | 10420 | `31cefaf738ba4a48f41adb16c78d06f1b61d5ea239feb86ea7cd1a20c96c4dc1` |
 | `views/group-v120.js` | 10153 | `fc28e780270117e1a825f43699551f35c7f8b1dbc038e85de25ff6eba20ae423` |

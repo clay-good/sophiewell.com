@@ -915,6 +915,22 @@ caught by looking at the page rather than the library.
 The probe prints its reach now: **2,828 number inputs across 857 of 1,706 tiles.**
 The rest are selects, checkboxes and sliders, which it cannot see.
 
+[spec-v1159](spec-v1159.md) ran `scoring-select-probe.spec.js`, unrun since the last
+session fixed `elapss`. Two of its nine rows are **`phases` — the score sitting
+directly beside `elapss` in the same file, with the identical defect**: population and
+site both falling back to their zero-point level, and a refusal message that already
+listed them (rule 23, fifth time, second on this pair). Nine of twenty-two points, on
+a scale whose 5-year rupture risk runs 0.4% to 17.8%. Fixed the way spec-v1141 fixed
+its sibling.
+
+And **the fix next door had stopped at the headline.** `elapss`'s band has said
+*"ELAPSS 14 to 26 of 40"* since spec-v1141, while the rows underneath still said
+*"ELAPSS: 14/40, Growth 3/5-yr ~11.7% / ~19.3%"* — the floor stated as the total,
+contradicting the line directly above it. Rule 14 running the other way, and it
+survived a wave written about that tile. One nuance: the SCORE spans whenever a
+weighted item is unstated, but the RISK only when the ends fall in different bands,
+so *"~42.7% to ~42.7%"* collapses.
+
 ## Probes measured and rejected
 
 Three questions asked of the whole catalog after spec-v1048, each of which sounded like it should

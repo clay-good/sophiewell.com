@@ -48,3 +48,37 @@ test('negative size rejected', () => {
   const r = phases({ population: 'na', age: 50, size: -3 });
   assert.equal(r.valid, false);
 });
+
+// spec-v1159: the same defect spec-v1141 fixed on the sibling ELAPSS score. The
+// population and the site both fell back to their ZERO-POINT level -- a North
+// American cohort and an ICA aneurysm -- and the refusal message above already
+// said "then choose the population and site" (rule 23).
+test('phases: an unstated population and site are 9 of the 22 points, and are disclosed', () => {
+  const full = phases({ population: 'finnish', htn: true, age: 72, size: 12, earlierSah: true, site: 'acaPcomPost' });
+  assert.equal(full.total, 18);
+  assert.equal(full.floorOnly, false);
+  assert.equal(full.band, 'PHASES 18/22: 5-year cumulative rupture risk ~17.8%.');
+
+  // The defect, stated: it used to score 9 and read "PHASES 9/22 ... ~4.3%".
+  const neither = phases({ htn: true, age: 72, size: 12, earlierSah: true });
+  assert.equal(neither.total, 9);
+  assert.equal(neither.ceiling, 18);
+  assert.equal(neither.floorOnly, true);
+  assert.deepEqual(neither.unstated, ['the population', 'the site']);
+  assert.match(neither.band, /PHASES 9 to 18 of 22/);
+  assert.match(neither.band, /worth 9 points/);
+  assert.match(neither.band, /between ~4\.3% and ~17\.8%/);
+
+  // One stated: only the other is owed.
+  const noSite = phases({ population: 'finnish', htn: true, age: 72, size: 12, earlierSah: true });
+  assert.deepEqual(noSite.unstated, ['the site']);
+  // Already at the top band, so the reading stands whatever the site is (rule 13).
+  assert.match(noSite.band, /PHASES at least 14\/22/);
+  assert.match(noSite.band, /holds whatever the site turns out to be/);
+
+  // A stated zero-point level is an answer, not a gap.
+  const stated = phases({ population: 'na', htn: true, age: 72, size: 12, earlierSah: true, site: 'ica' });
+  assert.equal(stated.floorOnly, false);
+  assert.equal(stated.total, 9);
+  assert.equal(stated.band, 'PHASES 9/22: 5-year cumulative rupture risk ~4.3%.');
+});

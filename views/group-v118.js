@@ -170,7 +170,12 @@ export const renderers = {
   // ----- 2.4 phases -----------------------------------------------------
   'phases'(root) {
     note(root, 'PHASES score: 5-year cumulative rupture risk of an unruptured intracranial aneurysm. Choose the population and aneurysm site, enter the age and aneurysm size, and mark the hypertension and earlier-SAH items. Total 0-22.');
+    // spec-v1159: the blanks come first, as spec-v1141 did on the sibling ELAPSS
+    // tile. Both opened on their zero-point level -- a North American cohort and
+    // an ICA aneurysm -- and together they are worth 9 of the 22 points, on a
+    // scale whose 5-year rupture risk runs 0.4% to 17.8%.
     root.appendChild(selectField('Population', 'ph-pop', [
+      { value: '', text: 'Not stated' },
       { value: 'na', text: 'North American / European (0)' },
       { value: 'japanese', text: 'Japanese (+3)' },
       { value: 'finnish', text: 'Finnish (+5)' },
@@ -180,6 +185,7 @@ export const renderers = {
     root.appendChild(field('Aneurysm size (mm)', 'ph-size', { step: '0.1', min: 0, placeholder: 'e.g. 8' }));
     root.appendChild(checkField('Earlier SAH from a different aneurysm -- +1', 'ph-sah'));
     root.appendChild(selectField('Site of aneurysm', 'ph-site', [
+      { value: '', text: 'Not stated' },
       { value: 'ica', text: 'Internal carotid artery (0)' },
       { value: 'mca', text: 'Middle cerebral artery (+2)' },
       { value: 'acaPcomPost', text: 'ACA / Pcom / posterior circulation (+4)' },
@@ -191,10 +197,16 @@ export const renderers = {
         size: optNum('ph-size'), earlierSah: chk('ph-sah'), site: selVal('ph-site'),
       });
       if (!r.valid) { note(o, r.band); note(o, r.note); return; }
+      // spec-v1159: the band says "PHASES 9 to 18 of 22" and these rows said
+      // "PHASES: 9/22, 5-yr rupture ~4.3%" underneath it -- the FLOOR stated as
+      // the total, contradicting the line above. Rule 14 the other way round:
+      // spec-v1141 fixed the headline on the sibling tile and left the detail.
+      const spread = r.floorOnly && r.ceiling !== r.total;
       resultRow(o, [
         { text: r.band, cls: r.abnormal ? 'warn' : null },
-        { label: 'PHASES', value: `${r.total}/22` },
-        { label: '5-yr rupture', value: `~${r.risk}` },
+        { label: 'PHASES', value: spread ? `${r.total} to ${r.ceiling} of 22` : `${r.total}/22` },
+        // As in elapss below: the score spans, the risk only when the bands differ.
+        { label: '5-yr rupture', value: spread && r.riskCeiling !== r.risk ? `~${r.risk} to ~${r.riskCeiling}` : `~${r.risk}` },
       ]);
       note(o, `Points counted: ${r.counted}.`);
       note(o, r.note);
@@ -235,10 +247,19 @@ export const renderers = {
         size: optNum('el-size'), irregular: chk('el-irregular'),
       });
       if (!r.valid) { note(o, r.band); note(o, r.note); return; }
+      // spec-v1159: spec-v1141 gave the band a range and left these rows stating
+      // the FLOOR as the total, contradicting the line above them.
+      const spread = r.floorOnly && r.ceiling !== r.total;
       resultRow(o, [
         { text: r.band, cls: r.abnormal ? 'warn' : null },
-        { label: 'ELAPSS', value: `${r.total}/40` },
-        { label: 'Growth 3/5-yr', value: `~${r.riskThree} / ~${r.riskFive}` },
+        { label: 'ELAPSS', value: spread ? `${r.total} to ${r.ceiling} of 40` : `${r.total}/40` },
+        // The SCORE spans a range whenever a weighted item is unstated; the RISK
+        // only does when the ends fall in different bands. Showing "~42.7% to
+        // ~42.7%" for a total already at the ceiling is a range that is not one
+        // (rule 25).
+        { label: 'Growth 3/5-yr', value: spread && r.riskCeilingThree !== r.riskThree
+          ? `~${r.riskThree} to ~${r.riskCeilingThree} / ~${r.riskFive} to ~${r.riskCeilingFive}`
+          : `~${r.riskThree} / ~${r.riskFive}` },
       ]);
       note(o, `Points counted: ${r.counted}.`);
       note(o, r.note);
