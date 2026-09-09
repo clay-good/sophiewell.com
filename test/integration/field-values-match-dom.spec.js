@@ -46,6 +46,18 @@
 //      the same by omitting the key.
 //
 // Together those took the run from 29 disagreements to 1.
+//
+// spec-v1169 widened it a FOURTH way, and this one is the reach question asked
+// of the gate itself rather than of its filter. Everything above compares a
+// DECLARED list against the rendered options; a field that declares no list at
+// all was never a subject. 23 of them were selects: `kind: 'string'`, published
+// to an agent as `{"type":"string","maxLength":2048}`, with the option set
+// written out in English in the label -- and six of those labels named values
+// the tile rejects (`nsa-cost-share` said "e.g. emergency, non-emergency,
+// air-ambulance" for a picklist reading emergency / ancillary-in-network-
+// facility / non-protected). So the second assertion below is not about
+// agreement between two lists. It is that a field the tile renders as a
+// PICKLIST must publish one.
 import { test, expect } from '@playwright/test';
 import { REGISTRY } from '../../mcp/tools.js';
 
@@ -70,18 +82,32 @@ test('every declared value list matches the options the tile renders', async ({ 
   const targets = [];
   for (const calc of REGISTRY.values()) {
     const doms = (calc.fields || [])
-      .filter((f) => (f.kind === 'number' || f.kind === 'enum') && Array.isArray(f.values))
-      .map((f) => ({ dom: f.dom, values: f.values.map(String) }));
+      // Two subjects in one pass, distinguished by `values`:
+      //   an array -> the spec-v770 comparison, declared against offered.
+      //   null     -> the spec-v1169 question, is this a picklist with nothing
+      //               published? A `bool` is exempt: its schema is
+      //               {"type":"boolean"} and its select is the two boolean
+      //               values, so there is no vocabulary left to declare.
+      .filter((f) => ((f.kind === 'number' || f.kind === 'enum') && Array.isArray(f.values))
+        || (f.kind !== 'bool' && !Array.isArray(f.values)))
+      .map((f) => ({ dom: f.dom, values: Array.isArray(f.values) ? f.values.map(String) : null }));
     if (doms.length) targets.push({ id: calc.id, doms });
   }
   // spec-v1106: the reach, asserted, so "clean" cannot come to mean "looked at
   // nothing". Before the enum widening this was 108 tiles.
-  expect(targets.length, 'the registry must carry declared value lists').toBeGreaterThan(800);
+  const declaring = targets.filter((t) => t.doms.some((d) => d.values));
+  const undeclared = targets.filter((t) => t.doms.some((d) => !d.values));
+  expect(declaring.length, 'the registry must carry declared value lists').toBeGreaterThan(800);
+  // spec-v1169: and the second arm's reach, for the same reason. 887 tiles at
+  // that wave, 2,935 fields -- almost all of them plain number inputs, which
+  // render no options and produce no row.
+  expect(undeclared.length, 'the registry must carry fields with no declared list').toBeGreaterThan(800);
 
   await page.goto('/');
   const wrong = [];
+  const silent = [];
   for (const t of targets) {
-    const got = await page.evaluate(async ({ id, doms }) => {
+    const got = await page.evaluate(async ({ id, doms, subjects }) => {
       const read = () => {
         const body = document.getElementById('tool-body');
         const m = {};
@@ -96,7 +122,12 @@ test('every declared value list matches the options the tile renders', async ({ 
       const before = read();
       const body = document.getElementById('tool-body');
       for (const n of body.querySelectorAll('select, input')) {
-        if (doms.includes(n.id)) continue;
+        // spec-v1169: skip the fields being COMPARED, not every field being
+        // read. The second arm added this tile's plain number inputs to `doms`,
+        // and `rucam`'s scale is chosen by an R ratio computed from four of
+        // them -- so skipping all of `doms` put the cholestatic options back out
+        // of reach and undid the whole reason perturbation exists.
+        if (subjects.includes(n.id)) continue;
         if (n.tagName === 'SELECT' && n.options.length > 1) n.selectedIndex = n.options.length - 1;
         else if (n.type === 'checkbox') n.checked = !n.checked;
         // spec-v1106: NUMBER inputs were skipped, and this gate's own header
@@ -115,13 +146,20 @@ test('every declared value list matches the options the tile renders', async ({ 
       const union = {};
       for (const d of doms) union[d] = [...new Set([...(before[d] || []), ...(after[d] || [])])];
       return union;
-    }, { id: t.id, doms: t.doms.map((d) => d.dom) });
+    }, {
+      id: t.id,
+      doms: t.doms.map((d) => d.dom),
+      subjects: t.doms.filter((d) => d.values).map((d) => d.dom),
+    });
 
     for (const { dom, values } of t.doms) {
       const offered = got[dom];
       // A field the tile does not render as a select is not this gate's
       // business -- check-mcp-catalog owns whether it exists at all.
       if (!offered || !offered.length) continue;
+      // spec-v1169: a picklist on the page and free text in the contract. The
+      // agent's only vocabulary is then the label's prose, which nothing checks.
+      if (!values) { silent.push({ id: t.id, dom, offered }); continue; }
       // spec-v1106: the empty option is not a VALUE either side is claiming --
       // it is how a select says "not answered", and an agent says the same by
       // omitting the key. `read()` already filters it out of the offered list;
@@ -137,6 +175,13 @@ test('every declared value list matches the options the tile renders', async ({ 
       }
     }
   }
+
+  expect(silent, 'fields the tile renders as a <select> while the registry declares no value list.\n'
+    + 'An agent reading the schema is told free text, so the option set exists only in the\n'
+    + "label's prose -- which nothing checks, and which was wrong on six of the 23 fields\n"
+    + 'spec-v1169 found. Give the field `kind: \'enum\'` and a `values` list matching the\n'
+    + 'options below; the first assertion in this file then keeps the two in step:\n'
+    + JSON.stringify(silent, null, 2)).toEqual([]);
 
   expect(wrong, 'declared value lists that disagree with the rendered options.\n'
     + 'An "unoffered" value is a reader who cannot give an answer the tool accepts; an\n'

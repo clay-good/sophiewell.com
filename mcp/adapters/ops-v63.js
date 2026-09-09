@@ -22,7 +22,7 @@ export default [
     compute: O.appealDeadline,
     formatResult: stripNow,
     fields: [
-      { dom: 'apd-level', arg: 'level', kind: 'string', required: true, label: 'Level just completed (e.g. initial, redetermination, reconsideration)' },
+      { dom: 'apd-level', arg: 'level', kind: 'enum', values: ['initial', 'redetermination', 'reconsideration', 'alj', 'council'], required: true, label: 'Appeal level just completed' },
       { dom: 'apd-date', arg: 'decisionDate', kind: 'string', required: true, label: 'Decision / notice date (YYYY-MM-DD)' },
     ],
   },
@@ -33,7 +33,7 @@ export default [
     formatResult: stripNow,
     fields: [
       { dom: 'tf-date', arg: 'serviceDate', kind: 'string', required: true, label: 'Date of service (YYYY-MM-DD)' },
-      { dom: 'tf-payer', arg: 'payer', kind: 'string', required: true, label: 'Payer (e.g. medicare, medicaid, commercial)' },
+      { dom: 'tf-payer', arg: 'payer', kind: 'enum', values: ['medicare', 'other'], required: true, label: 'Payer: medicare (365 days by 42 CFR 424.44) or other, whose limit you supply' },
       { dom: 'tf-limit', arg: 'customLimitDays', kind: 'number', label: 'Custom filing limit in days (overrides the payer default)' },
     ],
   },
@@ -44,7 +44,7 @@ export default [
     formatResult: stripNow,
     fields: [
       { dom: 'pat-date', arg: 'requestDate', kind: 'string', required: true, label: 'Request date (YYYY-MM-DD)' },
-      { dom: 'pat-type', arg: 'type', kind: 'string', required: true, label: 'Type: standard or expedited' },
+      { dom: 'pat-type', arg: 'type', kind: 'enum', values: ['standard', 'expedited', 'custom'], required: true, label: 'Request type: standard, expedited, or custom (supply the days)' },
       { dom: 'pat-days', arg: 'customDays', kind: 'number', label: 'Custom window in days (overrides the default)' },
     ],
   },

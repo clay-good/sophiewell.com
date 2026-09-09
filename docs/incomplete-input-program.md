@@ -171,6 +171,18 @@ Stated in full in [product-decisions.md](product-decisions.md); in one line each
     the same file is correct: GLI-2012 publishes an other/mixed set, the tile falls back to it and
     prints a note saying it did. Requiring that one broke a passing test, and rightly.
 
+28. **A check that examines only the fields carrying an optional property is silent
+    about every field that does not** (spec-v1169). This is rule 17 one level up, at
+    the gate's SUBJECT SELECTION rather than at its filter.
+    `field-values-match-dom` compares a declared value list against the rendered
+    options, so a field declaring no list was never a subject — and 23 of them were
+    `<select>` elements published to an agent as `{"type":"string","maxLength":2048}`,
+    with the option set living only in the label's prose. Six of those labels named
+    values the tile rejects. **Ask the prior question too: not "do the two lists
+    agree?" but "is there a list at all?"** And widening a subject list can break the
+    machinery built around the old one — adding `rucam`'s number inputs put its
+    cholestatic options back out of reach of the perturbation this gate exists for.
+
 20. **Disclosing in DATA is not disclosing** (spec-v1113). Four mean-scored questionnaires
     computed the number of items each subscale averaged, stored it in an `answered` field, and
     rendered a static explanation of the scoring method instead — so a mean of two items and a mean
@@ -368,7 +380,7 @@ change whose guard depended on a control nobody had looked at.
 | `one-blank-field.spec.js` | with a calculator filled from its example, does clearing ONE measurement change the answer without asking for it or disclosing it? | 1.6 min |
 | `derivation-agrees.spec.js` | when a calculator refuses, does the "show your work" panel below still display the calculation? | 13 s |
 | `rated-items-are-required.test.js` | does an instrument built only of rated items answer a call carrying none of them, and does omitting one picklist item silently move an answer? Since spec-v1108 it asks the same of the 263 instruments whose items are declared `enum` rather than `number`. | 7 s |
-| `field-values-match-dom.spec.js` | is every answer the schema offers an agent an option a reader can choose, and the reverse? | 1.8 min |
+| `field-values-match-dom.spec.js` | is every answer the schema offers an agent an option a reader can choose, and the reverse — and since [spec-v1169](spec-v1169.md), does any field render as a `<select>` while publishing no value list at all? | 2.6 min |
 
 Each has a ledger for the tiles that legitimately do the thing it looks for, and each was verified
 by reintroducing the defect and watching it fail.

@@ -71,7 +71,7 @@ export default [
     formatResult: withUsd,
     fields: [
       { dom: 'ms-fee', arg: 'feeCents', kind: 'number', required: true, label: 'Primary fee-schedule amount', unit: '$', to: (v) => Math.round(v * 100) },
-      { dom: 'ms-role', arg: 'role', kind: 'string', required: true, label: 'Surgical role (e.g. assistant, co-surgeon, team)' },
+      { dom: 'ms-role', arg: 'role', kind: 'enum', values: ['assistant', 'co', 'team'], required: true, label: 'Surgical role: assistant surgeon, co-surgeon (62), or team surgeon (66)' },
       { dom: 'ms-ind', arg: 'indicator', kind: 'number', required: true, label: 'Multi-surgeon indicator (0, 1, 2, or 9)', values: ['2', '1', '0', '9'] },
     ],
   },

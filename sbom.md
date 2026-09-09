@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `e8f1d0547e0f22cf`
-Generated: 2026-09-09T09:51:21.784Z
+Build ID: `fd3b0ac3d34ec3c2`
+Generated: 2026-09-09T10:36:14.331Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -955,11 +955,11 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/bi-rads-v322.js` | 1366 | `eaa54f6a0fabefc7f0b8b5ec83cb6922cb15f0366671a07863cf92fe66d89802` |
 | `mcp/adapters/biffl-bcvi-v436.js` | 1186 | `963ddebfc5f4de9844d289db4edb61e37305388830c8ddcfd496fd5a672348c3` |
 | `mcp/adapters/bigliani-acromion-v488.js` | 1174 | `4ac4314dfb60784e8227d224c7f2ff04d86a843670d654ddf996f24111a4d169` |
-| `mcp/adapters/billing-v78.js` | 4928 | `c47f52b41fbaba40e357d8a879d0ec7337e6dd52a6b08d2471da1cb9fb93236a` |
-| `mcp/adapters/billing-v79.js` | 3885 | `eab5a72deec4638bbd4140c6d2e3c57dd7a1e84720bd783b2e23eca9f6b77430` |
-| `mcp/adapters/billing-v80.js` | 4673 | `4c3da5ad52cdfcca56329e64d0516faa930255e3e9163ef59f93c1952e2f9733` |
-| `mcp/adapters/billing-v81.js` | 3431 | `2bb3d67725e2cfb8788e5681c256a62b5970c87e6c546db61a5d1e3a1927d2f4` |
-| `mcp/adapters/billing-v82.js` | 4834 | `bd2748a388fc738ef9bfc82c971747bfbfec415b636804136aa79ad4ed686cda` |
+| `mcp/adapters/billing-v78.js` | 4986 | `2d90ac8010fec9c338bf7a6565de4378c3f63dd213912a4546e9681110681a56` |
+| `mcp/adapters/billing-v79.js` | 4039 | `f1494df76861d1d8fd52718a150bd22c8ef648639d1f90d4c91b579caffa809a` |
+| `mcp/adapters/billing-v80.js` | 5097 | `de84738c6cbfbea2af2493e6be9479eb521ce3cb97c2c92a1a709e8a2a68710f` |
+| `mcp/adapters/billing-v81.js` | 3613 | `dd52b7689e849dc6e2b94de98680519c13e57a5c9fa48985bbe2d7c8686b8bc4` |
+| `mcp/adapters/billing-v82.js` | 4985 | `1497a5aad506033d5cabefeea15ece883528e664f63374125e8f112e6da71ef9` |
 | `mcp/adapters/billing-v83.js` | 6166 | `ef59979c46a11b55516389d387383a5b08ce5b40ede2a71345aa9c6808b9b04f` |
 | `mcp/adapters/bilsky-escc-v604.js` | 4923 | `6fbc81158f881ba1faf75315a4e11d687980024727881f433a4e25096f919ed7` |
 | `mcp/adapters/biological-variation-goals-v923.js` | 1935 | `bdfd9f2447fcf0be7ee50ff18d9dd21ffb2b714431fbccd0cd18699ab287f58a` |
@@ -1027,7 +1027,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/cluster-headache-ichd3-v814.js` | 2395 | `688cb24e3cb10dabf00993f5b28ccbda26d33a89d6b1e5b679f2f28e88846048` |
 | `mcp/adapters/coagscore-v232.js` | 2450 | `29d9720d14256b871c8c9752ecadd8f5df16342529bf67afacbc1028ed2c3d0c` |
 | `mcp/adapters/cobb-angle-v694.js` | 955 | `efdf4e8553a15070d3c7c82e3feeb677fcc0ec9ad2df5dc35462dc7499f38f76` |
-| `mcp/adapters/coding-v5.js` | 1851 | `a737547d4dff54fce11e1a8f791a3b47165e9652adc80d939fc975467631eb42` |
+| `mcp/adapters/coding-v5.js` | 1889 | `fcd792f1a704a24147d69fc2836178aff059cf63642781485378a0a1615d8ba0` |
 | `mcp/adapters/cohens-kappa-v922.js` | 2009 | `d15a4185d7ee881c6e6292b4ce612247748cc2734281b44c94ab251d159a68b1` |
 | `mcp/adapters/columbia-fsgs-v532.js` | 5006 | `cb3201512ed9a61aa6a983cbacdffd01d2c148267ff1ef23c10b15610da05969` |
 | `mcp/adapters/compera-2-v574.js` | 6287 | `6a04b4638ceaf88db5c8ddef6cf6afbe8f93500bb6ae044c2e0dc09b015985b2` |
@@ -1416,7 +1416,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/ophtho-v164.js` | 2153 | `837985d6e5ded0d6102bee0f375e0ce11c08e42862927a7a7240cb486b72edf8` |
 | `mcp/adapters/ophtho-v236.js` | 2887 | `651b07313fe7d5f56636a552f1d4f64b905b5c3fa47ec17351fb6aa89a7b776e` |
 | `mcp/adapters/opioid-risk-tool-v709.js` | 2331 | `5c48d7a23650ac85f253b35c556425eeea50168fd0f1f09f6279826f87d0cfc6` |
-| `mcp/adapters/ops-v63.js` | 3023 | `9cd5f44fe731d990ef26fb1c7102f1dc371b92821495fd19137935d84d7677c0` |
+| `mcp/adapters/ops-v63.js` | 3196 | `baa481e60bc1710a5d64a88c0e3a8e0b44354c70ddde96be7fdf08312f2453da` |
 | `mcp/adapters/ortho-v144.js` | 3799 | `2901f97711e370d1f4bb7bcd54b65a1c7ae5198db5aca4f6bdab2a6a59bb1686` |
 | `mcp/adapters/ortho-v145.js` | 3455 | `e096092b9b21544729e2ac4db4478178b20b30a9d984c4a08f91b03400bd0462` |
 | `mcp/adapters/orthospine-v252.js` | 3127 | `f078d83b49d3a0fdd1ad3b3bfbebefc6a1e8dd02d3b0edc3bcdd8476033fc761` |

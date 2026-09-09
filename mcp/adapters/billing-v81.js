@@ -13,10 +13,10 @@ export default [
     compute: C.ndcHcpcsUnits,
     fields: [
       { dom: 'nh-dose', arg: 'dose', kind: 'number', required: true, label: 'Administered dose' },
-      { dom: 'nh-dose-unit', arg: 'doseUnit', kind: 'string', required: true, label: 'Dose unit (e.g. mg, mcg, units)' },
+      { dom: 'nh-dose-unit', arg: 'doseUnit', kind: 'enum', values: ['mg', 'mcg', 'g', 'units', 'ml'], required: true, label: 'Dose unit' },
       { dom: 'nh-unitsize', arg: 'unitSize', kind: 'number', required: true, label: 'Billing unit size per the HCPCS descriptor' },
-      { dom: 'nh-unit-unit', arg: 'unitUnit', kind: 'string', required: true, label: 'Billing unit measure (e.g. mg)' },
-      { dom: 'nh-round', arg: 'rounding', kind: 'string', label: 'Rounding: up, down, or nearest (default up)' },
+      { dom: 'nh-unit-unit', arg: 'unitUnit', kind: 'enum', values: ['mg', 'mcg', 'g', 'units', 'ml'], required: true, label: 'Billing unit measure' },
+      { dom: 'nh-round', arg: 'rounding', kind: 'enum', values: ['up', 'nearest', 'down'], label: 'Rounding: up, down, or nearest (default up)' },
     ],
   },
   {
@@ -28,10 +28,10 @@ export default [
     fields: [
       { dom: 'dw-vial', arg: 'vialSize', kind: 'number', required: true, label: 'Vial size' },
       { dom: 'dw-dose', arg: 'dose', kind: 'number', required: true, label: 'Administered dose' },
-      { dom: 'dw-dose-unit', arg: 'doseUnit', kind: 'string', required: true, label: 'Dose unit (e.g. mg)' },
+      { dom: 'dw-dose-unit', arg: 'doseUnit', kind: 'enum', values: ['mg', 'mcg', 'g', 'units', 'ml'], required: true, label: 'Dose unit' },
       { dom: 'dw-unitsize', arg: 'unitSize', kind: 'number', required: true, label: 'Billing unit size per the HCPCS descriptor' },
-      { dom: 'dw-unit-unit', arg: 'unitUnit', kind: 'string', required: true, label: 'Billing unit measure (e.g. mg)' },
-      { dom: 'dw-type', arg: 'vialType', kind: 'string', required: true, label: 'Vial type: single or multi' },
+      { dom: 'dw-unit-unit', arg: 'unitUnit', kind: 'enum', values: ['mg', 'mcg', 'g', 'units', 'ml'], required: true, label: 'Billing unit measure' },
+      { dom: 'dw-type', arg: 'vialType', kind: 'enum', values: ['single', 'multi'], required: true, label: 'Vial type: single-dose or multi-dose' },
     ],
   },
   {

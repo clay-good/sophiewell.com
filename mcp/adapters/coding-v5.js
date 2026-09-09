@@ -11,7 +11,7 @@ export default [
     summary: 'Time-based E&M level (AMA 2021): total time and encounter type mapped to the office/outpatient code, with any prolonged-service units.',
     compute: C.emTimeSelector,
     fields: [
-      { dom: 'enc', arg: 'encounterType', kind: 'string', required: true, label: 'Encounter type: new or established' },
+      { dom: 'enc', arg: 'encounterType', kind: 'enum', values: ['new', 'established'], required: true, label: 'Encounter type: new or established patient' },
       { dom: 't', arg: 'totalMinutes', kind: 'number', required: true, label: 'Total time in minutes' },
     ],
   },

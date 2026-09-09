@@ -16,7 +16,7 @@ export default [
     fields: [
       { dom: 'ncci-a', arg: 'codeA', kind: 'string', required: true, label: 'Code A (HCPCS/CPT)' },
       { dom: 'ncci-b', arg: 'codeB', kind: 'string', required: true, label: 'Code B (HCPCS/CPT)' },
-      { dom: 'ncci-col', arg: 'column1', kind: 'string', label: 'Which code is column 1 (a, b, or unknown)' },
+      { dom: 'ncci-col', arg: 'column1', kind: 'enum', values: ['a', 'b', 'unknown'], label: 'Which code is column 1 of the PTP pair' },
       { dom: 'ncci-ind', arg: 'modifierIndicator', kind: 'number', required: true, label: 'PTP modifier indicator (0 never bypass, 1 may bypass, 9 not applicable)', values: ['1', '0', '9'] },
       { dom: 'ncci-mod', arg: 'proposedModifier', kind: 'string', label: 'Proposed modifier, e.g. 59 or XS' },
     ],
@@ -38,9 +38,9 @@ export default [
     compute: C.globalPeriod,
     fields: [
       { dom: 'gp-surg', arg: 'surgeryDate', kind: 'string', required: true, label: 'Surgery date (YYYY-MM-DD)' },
-      { dom: 'gp-glob', arg: 'globalDays', kind: 'string', required: true, label: 'Global period (000, 010, 090, or XXX/YYY/ZZZ)' },
+      { dom: 'gp-glob', arg: 'globalDays', kind: 'enum', values: ['000', '010', '090', 'XXX', 'YYY', 'ZZZ', 'MMM'], required: true, label: 'Global period indicator from the MPFS' },
       { dom: 'gp-sub', arg: 'subsequentDate', kind: 'string', required: true, label: 'Subsequent service date (YYYY-MM-DD)' },
-      { dom: 'gp-nat', arg: 'nature', kind: 'string', label: 'Nature of the subsequent service, e.g. unrelated-em, related, staged' },
+      { dom: 'gp-nat', arg: 'nature', kind: 'enum', values: ['unrelated-em', 'staged', 'return-to-or', 'unrelated-procedure', 'decision-for-surgery', 'related-postop'], label: 'Nature of the subsequent service' },
     ],
   },
   {

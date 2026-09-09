@@ -368,7 +368,30 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   the code does not recognise is now an outright error rather than something that
   quietly becomes text. See docs/spec-v1168.md.
 
+- **Twenty-three billing and coding inputs offered a drop-down on the page and free
+  text to an AI assistant — and six of them described the wrong choices.** Where a
+  calculator's input is a menu, the list of options is published alongside it so an
+  assistant knows what to send. These twenty-three published no list at all, leaving
+  only the plain-English description, which nothing checked against the menu. Six had
+  drifted from it: the No Surprises Act cost-share tool suggested "non-emergency" and
+  "air-ambulance", neither of which it accepts; the 2023 E/M tool suggested three
+  settings it does not have; the timely-filing tool suggested payer names it never
+  knew. Ten suggested values were rejected by the very tool suggesting them, and six
+  more descriptions simply listed fewer choices than the menu carries. Every answer
+  was correct throughout — each calculator has always refused a value it does not
+  recognise — but a call made from the published description could fail. All
+  twenty-three now publish their real option list, and the check below keeps the two
+  in step. See docs/spec-v1169.md.
+
 ### Changed
+
+- **The check that compares a tool's accepted values with the menu on the page could
+  not see a field that published no values.** It compared two lists, so an input with
+  nothing to compare was never examined — which is how the twenty-three above stayed
+  hidden. It now also asks the prior question: does any input render as a menu while
+  publishing no options? Both halves report how much of the catalog they looked at, so
+  a clean run says what it covered. Negative-tested by putting one field back the way
+  it was, which brings the row straight back. See docs/spec-v1169.md.
 
 - **A check that compares what the tool accepts with what the page offers was
   only looking at a third of the catalog.** A calculator's list of accepted

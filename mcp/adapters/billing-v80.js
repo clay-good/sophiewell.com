@@ -21,7 +21,7 @@ export default [
     summary: '2023 E&M level by medical decision making: the level from the two-of-three highest of problems, data, and risk, mapped to the office/ED/inpatient code.',
     compute: C.emMdm2023,
     fields: [
-      { dom: 'emm-setting', arg: 'setting', kind: 'string', required: true, label: 'Setting (e.g. ed, office-new, office-est, inpatient)' },
+      { dom: 'emm-setting', arg: 'setting', kind: 'enum', values: ['office', 'inpatient-initial', 'inpatient-subsequent', 'ed', 'snf-initial', 'snf-subsequent', 'home-new', 'home-established'], required: true, label: 'Setting of the encounter' },
       { dom: 'emm-prob', arg: 'problems', kind: 'number', required: true, label: 'Problems level (1 minimal to 4 high)', values: ['2', '3', '4', '5'] },
       { dom: 'emm-data', arg: 'data', kind: 'number', required: true, label: 'Data level (1 to 4)', values: ['2', '3', '4', '5'] },
       { dom: 'emm-risk', arg: 'risk', kind: 'number', required: true, label: 'Risk level (1 to 4)', values: ['2', '3', '4', '5'] },
@@ -41,7 +41,7 @@ export default [
     summary: 'Split/shared visit attribution: whether the physician or the NPP bills (by time or by who did the MDM) and the resulting payment percentage.',
     compute: C.splitShared,
     fields: [
-      { dom: 'ss-basis', arg: 'basis', kind: 'string', required: true, label: 'Substantive-portion basis: time or mdm' },
+      { dom: 'ss-basis', arg: 'basis', kind: 'enum', values: ['time', 'mdm'], required: true, label: 'Substantive-portion basis: time or medical decision making' },
       { dom: 'ss-phys', arg: 'physicianTime', kind: 'number', label: 'Physician minutes (time basis)' },
       { dom: 'ss-npp', arg: 'nppTime', kind: 'number', label: 'NPP minutes (time basis)' },
     ],
@@ -51,9 +51,9 @@ export default [
     summary: 'Prolonged-services coding: for the primary E&M code, payer, and total time, which prolonged code (Medicare G2212 or AMA 99417) applies and how many units.',
     compute: C.prolongedServices,
     fields: [
-      { dom: 'ps-code', arg: 'primaryCode', kind: 'string', required: true, label: 'Primary E&M code (e.g. 99205, 99215)' },
+      { dom: 'ps-code', arg: 'primaryCode', kind: 'enum', values: ['99205', '99215', '99223', '99233'], required: true, label: 'Primary E&M code the prolonged-services add-on attaches to' },
       { dom: 'ps-min', arg: 'totalMinutes', kind: 'number', required: true, label: 'Total time in minutes' },
-      { dom: 'ps-payer', arg: 'payer', kind: 'string', required: true, label: 'Payer: medicare or ama' },
+      { dom: 'ps-payer', arg: 'payer', kind: 'enum', values: ['medicare', 'ama'], required: true, label: 'Whose prolonged-services rule to apply: medicare (G2212) or ama (CPT 99417)' },
     ],
   },
   {
@@ -62,7 +62,7 @@ export default [
     compute: C.therapyUnits,
     fields: [
       { dom: 'tu-total', arg: 'totalMinutes', kind: 'number', required: true, label: 'Total timed treatment minutes' },
-      { dom: 'tu-rule', arg: 'rule', kind: 'string', required: true, label: 'Rule: medicare or ama' },
+      { dom: 'tu-rule', arg: 'rule', kind: 'enum', values: ['medicare', 'rule-of-eights'], required: true, label: 'Timed-code rule: medicare (8-minute) or rule-of-eights (per service)' },
     ],
   },
   {
@@ -77,7 +77,7 @@ export default [
       { dom: 'an-cf', arg: 'conversionFactor', kind: 'number', required: true, label: 'Anesthesia conversion factor ($ per unit)' },
       // spec-v1143: this defaulted to `aa` (100%) in the library, so an agent
       // that omitted it was quoted twice a medically-directed payment. Required.
-      { dom: 'an-dir', arg: 'medicalDirection', kind: 'string', required: true, label: 'Medical direction: aa, qz (100%), qy, qk, qx (50%), ad (flat 3 base units)' },
+      { dom: 'an-dir', arg: 'medicalDirection', kind: 'enum', values: ['aa', 'qz', 'qy', 'qk', 'qx', 'ad'], required: true, label: 'Medical direction: aa, qz (100%), qy, qk, qx (50%), ad (flat 3 base units)' },
     ],
   },
 ];

@@ -29,7 +29,7 @@ export default [
     },
     formatResult: withUsd,
     fields: [
-      { dom: 'mc-part', arg: 'part', kind: 'string', required: true, label: 'Medicare part: A or B' },
+      { dom: 'mc-part', arg: 'part', kind: 'enum', values: ['A', 'B', 'SNF'], required: true, label: 'Medicare benefit: A (inpatient hospital), B (outpatient), or SNF' },
       { dom: 'mc-allowed', arg: 'allowedCents', kind: 'number', required: true, label: 'Medicare-allowed amount', unit: '$', to: usd },
       { dom: 'mc-ded', arg: 'deductibleRemainingCents', kind: 'number', label: 'Remaining deductible (defaults to the current Part B deductible)', unit: '$', to: usd },
     ],
@@ -40,7 +40,7 @@ export default [
     compute: C.cobCalc,
     formatResult: withUsd,
     fields: [
-      { dom: 'cob-method', arg: 'method', kind: 'string', required: true, label: 'COB method (e.g. lesser-of, come-out-whole)' },
+      { dom: 'cob-method', arg: 'method', kind: 'enum', values: ['lesser-of', 'come-out-whole', 'non-duplication', 'msp'], required: true, label: 'COB method' },
       { dom: 'cob-charge', arg: 'billedChargeCents', kind: 'number', required: true, label: 'Billed charge', unit: '$', to: usd },
       { dom: 'cob-pri-allowed', arg: 'primaryAllowedCents', kind: 'number', required: true, label: 'Primary allowed amount', unit: '$', to: usd },
       { dom: 'cob-pri-paid', arg: 'primaryPaidCents', kind: 'number', required: true, label: 'Primary paid amount', unit: '$', to: usd },
@@ -67,7 +67,7 @@ export default [
     compute: (a) => ({ ...C.nsaCostShare(a), coinsurancePct: a.coinsurancePct }),
     formatResult: withUsd,
     fields: [
-      { dom: 'nsa-cat', arg: 'serviceCategory', kind: 'string', required: true, label: 'Service category (e.g. emergency, non-emergency, air-ambulance)' },
+      { dom: 'nsa-cat', arg: 'serviceCategory', kind: 'enum', values: ['emergency', 'ancillary-in-network-facility', 'non-protected'], required: true, label: 'Service category under the No Surprises Act' },
       { dom: 'nsa-qpa', arg: 'qpaCents', kind: 'number', required: true, label: 'Qualifying Payment Amount (QPA)', unit: '$', to: usd },
       // spec-v1155: the protected cost-share is computed off the QPA and does not
       // read the billed charge at all -- the charge decides only the prohibited
