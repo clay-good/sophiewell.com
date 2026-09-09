@@ -509,6 +509,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   drifting the same way. Eighteen further modules discard limits the same way and are
   listed as a backlog. See docs/spec-v1179.md.
 
+- **And the same tool still answered that way for AI assistants.** The fix above made the
+  page flag the CML risk tool's implausible platelet count, but the calculation itself was
+  unchanged, so a request through the assistant interface still came back with a relative
+  risk of 3.95e+66. The tool's own safety check tested whether the result was a real
+  number, and 3.95e+66 is a real number. It now declines the count on both surfaces and
+  says a report reading 20,000 per microlitre is entered as 20. See docs/spec-v1180.md.
+
 ### Changed
 
 - **The check that compares a tool's accepted values with the menu on the page could

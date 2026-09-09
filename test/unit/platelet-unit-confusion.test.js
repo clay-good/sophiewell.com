@@ -113,3 +113,31 @@ test('a real hyperalbuminaemia is still inside the envelope', () => {
   assert.equal(BOUNDS.albumin.max, 7);
   assert.match(BOUNDS.albumin.note, /unit or entry error/);
 });
+
+// spec-v1180: the surface spec-v1179 did not cover.
+//
+// spec-v1179 made the browser warn about sokal-cml's platelet count by rendering
+// the bound; the LIBRARY still computed, so the agent surface went on returning
+// "Sokal relative risk 3.9512129886066085e+66 (high risk)". The platelet term is
+// (plt/700)^2 inside an exp(), so 20,000 gives exp(153) -- and the existing
+// `Number.isFinite(sokalRaw)` guard catches Infinity but not that, which is
+// spec-v1012's lesson that 1e+308 is a number that exists.
+//
+// A warning on one surface is not a guard on the other.
+test('sokal-cml refuses the report-unit platelet count on both surfaces', async () => {
+  const { sokalCml } = await import('../../lib/hemonc-v94.js');
+  const args = { age: 55, spleen: 5, blasts: 3 };
+
+  const bad = sokalCml({ ...args, platelets: 20_000 });
+  assert.equal(bad.valid, false);
+  assert.match(bad.band, /entered as 20\b/);
+
+  // The reading it used to give, and the one it gives now.
+  const ok = sokalCml({ ...args, platelets: 300 });
+  assert.equal(ok.valid, undefined === ok.valid ? undefined : true);
+  assert.ok(Number.isFinite(ok.sokal), 'a real count still computes');
+  assert.ok(ok.sokal < 100, `no exponent in the answer, got ${ok.sokal}`);
+
+  // An extreme but real thrombocytosis stays inside the envelope.
+  assert.ok(Number.isFinite(sokalCml({ ...args, platelets: 1500 }).sokal));
+});
