@@ -1063,6 +1063,34 @@ asks or discloses now, and carries the four in its reach line rather than droppi
 them. Negative-tested: delete `rome-ecopd`'s disclosure and it prints that row again,
 and only it.
 
+## One kind, two spellings
+
+[spec-v1168](spec-v1168.md), and the sharpest instance of this programme's own
+recurring lesson. `mcp/fields.js` recognises the field kind `bool`; adapters also
+write `boolean`; every branch in that file is a `=== 'bool'` test. So **698 checkbox
+fields were published to agents as free-text strings** —
+`{"type":"string","maxLength":2048}` where `chads`'s identical checkbox gets
+`{"type":"boolean"}` — never validated as boolean-like, and coerced with
+`String(raw)` instead of `toBool`. Scoring survived only because the libraries coerce
+with their own `onFlag` allow-lists, which is defence rather than correctness.
+
+[spec-v753](spec-v753.md) found it at **90 fields**, normalised the spelling in one
+consumer, and wrote that the index "is not the place to fix it, but it IS the place to
+stop it spreading". It did not stop it spreading: **90 → 698**, because normalising a
+downstream copy does not reach the author of the next adapter. It is normalised at the
+contract now, and an unknown kind is a registry error.
+
+**Five downstream filters were half-blind on it — including one written in this
+session.** [spec-v1142](spec-v1142.md) added the numeric arm with a
+`kind !== 'boolean'` filter, negative-tested it, found it excluded nothing, switched it
+to `'bool'`, and never asked whether BOTH existed. *The negative test proved the filter
+now bit; it could not prove it bit everywhere.* `probe-missing-list-reach` shows the
+cost: its four rows were one `bool` field and three `boolean` ones, so a
+single-spelling skip would have caught one and missed three.
+
+**A filter is only as good as the vocabulary of the thing it filters. Count the values
+before trusting the test.**
+
 ## Probes measured and rejected
 
 Three questions asked of the whole catalog after spec-v1048, each of which sounded like it should

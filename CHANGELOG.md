@@ -356,6 +356,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   answer owns up, and reports those separately. Negative-tested by removing one of
   those disclosures, which brings the row straight back. See docs/spec-v1167.md.
 
+### Fixed
+
+- **Seven hundred checkbox inputs were described to agents as free text.** The tool
+  descriptions published to AI assistants label each input by type, and the code that
+  writes them recognised one of the two spellings the calculators use for a checkbox --
+  so roughly a fifth of them were published as open text fields, were never checked for
+  a yes/no value, and were passed along as words rather than as true or false. Answers
+  were unaffected, because each calculator interprets its own inputs defensively, but
+  the published description was wrong. All of them now say "boolean", and a spelling
+  the code does not recognise is now an outright error rather than something that
+  quietly becomes text. See docs/spec-v1168.md.
+
 ### Changed
 
 - **A check that compares what the tool accepts with what the page offers was

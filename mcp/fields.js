@@ -15,6 +15,40 @@
 // for the agent) and the default toArgs() that maps validated inputs onto the
 // lib function's argument object. No coefficient, citation, or expected value
 // is ever re-typed here.
+//
+// ONE KIND, ONE SPELLING (spec-v1168). This file has always recognised `bool`,
+// and adapters have always also written `boolean` -- 90 fields when spec-v753
+// found it, 698 by the time anyone looked again. Every branch below is a
+// `=== 'bool'` test, so those 698 fell through to the string default:
+//
+//   chads|chf            kind 'bool'    -> {"type":"boolean"}
+//   migraine-ichd3|...   kind 'boolean' -> {"type":"string","maxLength":2048}
+//
+// The published contract told an agent that a checkbox was free text, its value
+// was never validated as boolean-like, and it reached toArgs as `String(raw)`.
+// Scoring survived only because the libraries coerce with their own allow-list
+// helpers (`onFlag`), which is defence, not correctness.
+//
+// spec-v753 normalised the spelling in ONE consumer (scripts/build-field-index)
+// and wrote that the index "is not the place to fix it, but it IS the place to
+// stop it spreading". It did not stop it spreading, because normalising in a
+// consumer does not reach the author of the next adapter. So it is normalised
+// here, at the contract, and mcp/catalog.js rejects an unknown kind outright.
+
+export const FIELD_KINDS = Object.freeze(['number', 'bool', 'enum', 'string']);
+
+// `boolean` is the same kind as `bool`; anything else is unknown and the
+// registry refuses it rather than letting it become a string.
+export function normalizeKind(kind) {
+  return kind === 'boolean' ? 'bool' : kind;
+}
+
+// Returns a copy of the field list with one spelling per kind. Called once, at
+// registry build, so every consumer downstream -- the schema, the coercion, the
+// probes and the sweeps that filter on `kind` -- sees the same thing.
+export function normalizeFieldKinds(fields) {
+  return fields.map((f) => (f.kind === 'boolean' ? { ...f, kind: 'bool' } : f));
+}
 
 // True for the values a checkbox-origin input can legitimately carry: a real
 // boolean, or the DOM-string / select forms the renderer and META.example use.

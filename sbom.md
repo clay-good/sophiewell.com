@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `7de0ac04f780fbac`
-Generated: 2026-09-09T07:40:23.911Z
+Build ID: `e8f1d0547e0f22cf`
+Generated: 2026-09-09T09:51:21.784Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -1685,8 +1685,8 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/zabramski-v442.js` | 1156 | `f364baad3d680210aafd8b47cb6ad472521c8bfb9f02683340f5175dcb03d097` |
 | `mcp/adapters/zargar-caustic-v401.js` | 1423 | `158261bfae30e1660e5888582289b46bef0344c5763a15a9be2c812be5722d4a` |
 | `mcp/adapters/zulewski-v608.js` | 4193 | `68da25df2e1cd4653dd6ad796f5c0f032429c1da8d89459e8d66f5cc7bb51ab8` |
-| `mcp/catalog.js` | 87626 | `f90abd17cc28e5885e25ff18574c05f5506ac851a5ad461d511d4573e1bb5a03` |
-| `mcp/fields.js` | 7055 | `7760c7a95fdada71f67ab67497556a1f87782f180df93e828b0736ee0b2796bb` |
+| `mcp/catalog.js` | 88397 | `9e8319623d8ad1b298bb3343ef53820ffdd15db42b6427bdbaa5b1d8f38ff202` |
+| `mcp/fields.js` | 8875 | `fbb6ed0902546149a9eaca4be37dc816ca62b7d98d09c4ab9a1ff67f141c312e` |
 | `mcp/server.js` | 2079 | `54d0769126ef3fde8965a26b4a36c15964cd67018343660cae43983685c34df9` |
 | `mcp/tools.js` | 56520 | `cbe496441303410ab5df464586f3817e3fd48f3280ca7b867e8b08d4c70f37f2` |
 | `vendored/README.md` | 1874 | `308637ae66d2bf5f78f147a342362718809a7bdde38463b1ec2a5e72ef49fe79` |

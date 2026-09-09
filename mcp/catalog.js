@@ -15,7 +15,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
 import { META } from '../lib/meta.js';
-import { fieldSchema, makeToArgs, validateInputs } from './fields.js';
+import { fieldSchema, makeToArgs, validateInputs, normalizeFieldKinds, FIELD_KINDS } from './fields.js';
 
 import toxV86 from './adapters/tox-v86.js';
 import hepV124 from './adapters/hep-v124.js';
@@ -1643,7 +1643,14 @@ function buildRegistry() {
 
   for (const [moduleName, entries] of ADAPTER_MODULES) {
     for (const a of entries) {
-      const { id, fields, compute, summary } = a;
+      const { id, compute, summary } = a;
+      // spec-v1168: one kind, one spelling, normalised once here so that the
+      // schema, the coercion, and every probe and sweep that filters on `kind`
+      // all see the same thing. `boolean` and `bool` were both in use -- 698
+      // fields on the wrong side of a `=== 'bool'` test, published to agents as
+      // free-text strings. An unknown kind is now an error rather than a silent
+      // fall-through to string.
+      const fields = Array.isArray(a.fields) ? normalizeFieldKinds(a.fields) : a.fields;
       if (!id) { errors.push(`${moduleName}: adapter with no id`); continue; }
       if (registry.has(id)) { errors.push(`${id}: duplicate adapter`); continue; }
       const util = utilities.get(id);
@@ -1655,6 +1662,8 @@ function buildRegistry() {
       const meta = META[id];
       if (!meta) { errors.push(`${id}: no META entry`); continue; }
       if (!Array.isArray(fields) || fields.length === 0) { errors.push(`${id}: no fields`); continue; }
+      const badKind = fields.find((f) => !FIELD_KINDS.includes(f.kind));
+      if (badKind) { errors.push(`${id}: field "${badKind.dom}" has unknown kind "${badKind.kind}" (expected ${FIELD_KINDS.join(' | ')})`); continue; }
       if (typeof compute !== 'function') { errors.push(`${id}: compute is not a function`); continue; }
       if (typeof summary !== 'string' || summary.length < 8) { errors.push(`${id}: missing summary`); continue; }
 

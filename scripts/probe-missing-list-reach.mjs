@@ -28,8 +28,21 @@ for (const tool of allCalculators()) {
     return !words.some((w) => said.toLowerCase().includes(w));
   });
   // Of those, which actually MOVE the answer when dropped from the example?
+  //
+  // spec-v1168: booleans are excluded, as in the two sibling probes here. Rule 4
+  // says an unticked checkbox is a real "no", so a criterion the reader HAS
+  // answered is not something a missing-list owes a mention. Every row this
+  // printed was a checkbox -- `bickerstaff`'s supportive anti-GQ1b antibody and
+  // the three ICHD-3 headache tiles' criteria, all four already read and
+  // recorded in the programme map under rule 4.
+  //
+  // Measured after the kind normalisation in the same wave, which is what made
+  // the filter reliable: `bickerstaff` spelled it `bool` and the ICHD-3 tiles
+  // spelled it `boolean`, so a single-spelling test would have caught one and
+  // missed three. 4 rows -> 0.
   const movers = [];
   for (const f of unnamed) {
+    if (f.kind === 'bool') continue;
     const partial = { ...ex }; delete partial[f.dom];
     const got = computeCalculator({ id: tool.id, inputs: partial });
     const full = computeCalculator({ id: tool.id, inputs: ex });
