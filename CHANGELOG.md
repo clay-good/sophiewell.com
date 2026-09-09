@@ -496,6 +496,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   the figure was multiplied by ten a second time. All three now decline and do the
   conversion for you. A genuinely high albumin is still accepted. See docs/spec-v1178.md.
 
+- **A limit set on eight input boxes was quietly discarded, so the page never flagged the
+  value.** An earlier entry above describes putting a plausible-value limit on eighteen
+  platelet and white-cell boxes so the page would flag an impossible entry above the
+  answer. Eight of them never did: the screens are built by separate modules, each with
+  its own small routine for drawing an input box, and several of those routines simply
+  ignore a limit passed to them -- one honours a lower bound and not an upper one. Nothing
+  reported a problem; the setting was accepted and dropped. The CML risk tool was still
+  printing a relative risk of 3.95e+66 for a platelet count typed in the wrong units, with
+  nothing on screen to question it. The four routines involved now honour the limit, all
+  eight boxes were re-checked in a real browser, and a new check keeps a fifth from
+  drifting the same way. Eighteen further modules discard limits the same way and are
+  listed as a backlog. See docs/spec-v1179.md.
+
 ### Changed
 
 - **The check that compares a tool's accepted values with the menu on the page could

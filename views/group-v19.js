@@ -21,6 +21,11 @@ function field(label, id, opts = {}) {
   wrap.appendChild(el('br'));
   const inp = el('input', { id, type: 'number', autocomplete: 'off' });
   inp.setAttribute('step', opts.step || 'any');
+  // spec-v1179: this helper ignored `max`, so spec-v1174 declared a ceiling on a
+  // field in this module and nothing rendered it. Each view module carries its
+  // own copy of `field()` -- the house convention -- and they do not agree about
+  // which options they honour.
+  if (opts.max != null) inp.setAttribute('max', String(opts.max));
   if (opts.placeholder) inp.setAttribute('placeholder', opts.placeholder);
   if (opts.inputmode) inp.setAttribute('inputmode', opts.inputmode);
   wrap.appendChild(inp);

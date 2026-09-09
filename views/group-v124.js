@@ -23,6 +23,11 @@ function field(label, id, opts = {}) {
   inp.setAttribute('step', opts.step || '1');
   inp.setAttribute('inputmode', opts.step && opts.step !== '1' ? 'decimal' : 'numeric');
   if (opts.min != null) inp.setAttribute('min', String(opts.min));
+  // spec-v1179: this helper ignored `max`, so spec-v1174 declared a ceiling on a
+  // field in this module and nothing rendered it. Each view module carries its
+  // own copy of `field()` -- the house convention -- and they do not agree about
+  // which options they honour.
+  if (opts.max != null) inp.setAttribute('max', String(opts.max));
   if (opts.placeholder) inp.setAttribute('placeholder', opts.placeholder);
   wrap.appendChild(inp);
   return wrap;

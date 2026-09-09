@@ -73,7 +73,10 @@ The browser warning comes free once the bound is declared:
 `watchDeclaredRanges` in `app.js` reads each input's `min`/`max` and renders
 `.range-warning` above the answer, which `declared-ranges.spec.js` already gates.
 So 18 platelet and WBC inputs now declare theirs (`BOUNDS.platelets.max` = 2000,
-`BOUNDS.wbc.max` = 200).
+`BOUNDS.wbc.max` = 200). **Corrected by [spec-v1179](spec-v1179.md): eight of the
+eighteen rendered nothing**, because each view module has its own `field()` and
+three of them ignored `max` entirely. True of the source, false of the page. The
+library guards below were tested and are unaffected.
 
 That is a **disclosure, not a guard** — `rangeMessage`'s own comment says so, and
 it makes no claim about what the answer below did with the value. The five
