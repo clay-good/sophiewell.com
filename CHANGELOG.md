@@ -477,6 +477,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   count and the fix are written up rather than applied, because the shared reader has 411
   call sites and the message at each is a separate judgment. See docs/spec-v1176.md.
 
+- **The first three of those now say what is actually wrong.** Enter a serum albumin of
+  40 into the Naples prognostic score, the fibrinogen-to-albumin ratio, or the
+  albumin-to-globulin ratio and each now answers "input above the plausible range for
+  serum albumin (0.5 to 7 g/dL); verify the units" instead of asking for the albumin you
+  just typed. A blank field still reports as missing, because a blank genuinely is. The
+  note above recommended writing a new shared helper for this; it turned out one had
+  existed for years and was simply unused, so that recommendation is corrected rather
+  than quietly dropped. See docs/spec-v1177.md.
+
 ### Changed
 
 - **The check that compares a tool's accepted values with the menu on the page could

@@ -46,9 +46,13 @@ half-finished refactor happens.
 So this wave ships the **measurement**, in the probe, where it is repeatable and
 carries its own reach. The recommended shape for whoever drains it:
 
-1. Add one shared `rangeFault(value, lo, hi, name, unit)` to `lib/bounds.js` —
-   the file that already owns this idea and whose notes already say *"values
-   outside 0.5-7 indicate a unit or entry error"*.
+1. ~~Add one shared `rangeFault(value, lo, hi, name, unit)` to `lib/bounds.js`.~~
+   **Corrected by [spec-v1177](spec-v1177.md): it is already there.**
+   `boundsAdvisory(key, value)` returns exactly the sentence wanted, built from
+   the note — *"Input above the plausible range for serum albumin (0.5 to 7
+   g/dL); verify the units."* Writing a second one would have been
+   [the duplicated-rule shape](spec-v1155.md), in the wave that exists to point
+   at an unused shared rule.
 2. Have each guard call it **before** its incomplete-message, so the specific
    fault wins over the general one.
 3. Leave `pos` alone. 411 sites keep working, and the migration is per-guard
