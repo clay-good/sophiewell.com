@@ -537,6 +537,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   limits appear, and no calculator's own worked example now trips one, which was the way
   this change could have gone wrong. See docs/spec-v1182.md.
 
+- **Eighty-five *lower* limits that had been written but never took effect either.** The
+  entry above fixed the upper limits those eighteen screens were discarding, and left
+  their lower limits alone on purpose: switching a floor on can make a calculator start
+  querying a number it has always accepted, which is a change in behaviour rather than a
+  repair. So it was measured first, in a real browser, on every calculator exactly as a
+  reader first meets it -- and no calculator's own worked example falls below its own
+  floor. All eighty-five are live now, taking the input boxes that state a smallest
+  sensible value from 1,976 to 2,061. Nearly all of them are "not below zero", on things
+  like a weight or a lab result. See docs/spec-v1183.md.
+
 ### Changed
 
 - **The check that compares a tool's accepted values with the menu on the page could

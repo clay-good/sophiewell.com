@@ -20,6 +20,10 @@ function field(label, id, opts = {}) {
   inp.setAttribute('step', opts.step || 'any');
   if (opts.placeholder) inp.setAttribute('placeholder', opts.placeholder);
   if (opts.inputmode) inp.setAttribute('inputmode', opts.inputmode);
+  // spec-v1183: `min` was accepted and dropped here, so a declared floor never
+  // reached the page. Deferred by spec-v1179 when it fixed `max`; measured, then
+  // activated.
+  if (opts.min != null) inp.setAttribute('min', String(opts.min));
   // spec-v1182: this helper accepted `max` and dropped it, so a bound declared
   // on a field in this module never reached the page and its range warning
   // could not fire. Ledgered by spec-v1179; drained here.

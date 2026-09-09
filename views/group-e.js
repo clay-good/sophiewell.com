@@ -22,6 +22,10 @@ function field(label, id, opts = {}) {
   wrap.appendChild(el('br'));
   const inp = el('input', { id, type: opts.type || 'number', autocomplete: 'off' });
   if (inp.type === 'number') inp.setAttribute('step', 'any');
+  // spec-v1183: `min` was accepted and dropped here, so a declared floor never
+  // reached the page. Deferred by spec-v1179 when it fixed `max`; measured, then
+  // activated.
+  if (opts.min != null) inp.setAttribute('min', String(opts.min));
   // spec-v1179: this helper ignored `max`, so spec-v1174 declared a ceiling on a
   // field in this module and nothing rendered it. Each view module carries its
   // own copy of `field()` -- the house convention -- and they do not agree about
