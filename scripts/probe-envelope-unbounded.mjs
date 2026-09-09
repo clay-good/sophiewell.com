@@ -181,6 +181,41 @@ for (const f of reassuring) console.log(line(f));
 console.log(`\nTHE REST -- ${rest.length}`);
 for (const f of rest) console.log(line(f));
 
+// --- second section (spec-v1176): the fields that DO refuse ----------------
+//
+// A refusal is only useful if it says what is wrong. `pos(v, lo, hi)` -- one
+// helper, 18 identical copies across lib/, 411 call sites passing bounds --
+// returns `null` for three different things:
+//
+//   blank            the reader has not answered
+//   not a number     the reader typed something else
+//   OUT OF RANGE     the reader answered, and the answer is impossible
+//
+// Every caller then reads `null` as "missing" and says so. So a reader who
+// enters a serum albumin of 40 (the g/L figure for 4.0 g/dL) is told "Enter the
+// serum albumin (g/dL)" -- about the albumin they just entered. They retype the
+// same number and get the same sentence.
+//
+// This is the incomplete-input programme's own distinction inverted: a reading
+// is not a gap. `corrected-anion-gap` and `saag` show what the message should
+// say -- "albumin gdl must be between 0.5 and 8. Check the value entered."
+const refusing = [];
+for (const r of usable) {
+  const ex = META[r.id].example.fields;
+  const b = BOUNDS[r.key];
+  const res = computeCalculator({ id: r.id, inputs: { ...ex, [r.dom]: String(b.max * 10) } });
+  const msg = String(res.message || res.result?.band || res.result?.message || '');
+  if (res.valid !== false && !/^Enter |missing/i.test(msg)) continue;
+  const asksForIt = /\benter\b|\bprovide\b|\bmissing\b|\brequired values\b/i.test(msg);
+  const namesRange = /out of range|between .* and |above|below|check the value|beyond|not a real|impossible/i.test(msg);
+  if (asksForIt && !namesRange) refusing.push({ ...r, msg });
+}
+console.log(`\nASKED FOR A VALUE THE READER ENTERED -- ${refusing.length}`);
+console.log('The value is out of range and the refusal calls it missing, so retyping it');
+console.log('produces the same sentence. Cause: pos(v, lo, hi) returns null for blank,');
+console.log('for non-numeric AND for out-of-range, and every caller reads null as absent.');
+for (const f of refusing) console.log(`  ${f.id}|${f.dom} [${f.key}] -> ${f.msg.slice(0, 90)}`);
+
 console.log(`\nReach: ${rows.length} field(s) map to one of ${Object.keys(BOUNDS).length} envelopes;`);
 console.log(`${usable.length} have a worked example inside that envelope and are testable,`);
 console.log(`${misMapped.length} are mis-mapped (above), and ${rows.length - usable.length - misMapped.length} carry no usable example.`);

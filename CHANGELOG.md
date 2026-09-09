@@ -465,6 +465,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   air temperature, and two IV-bag additives, none of which are the body measurements
   those limits describe). See docs/spec-v1175.md.
 
+- **The same script measures a second problem: a value you typed, reported as missing.**
+  Enter a serum albumin of 40 -- the figure a European lab report prints for what US
+  labs call 4.0 -- and a calculator answers "Enter the serum albumin". About the albumin
+  you just entered. Retyping it gives the same sentence, because a shared reader used
+  across the library returns the same "nothing here" answer for a blank field, for
+  something that is not a number, and for a number outside the plausible range; every
+  caller reads that as "not filled in". 124 of the 194 inputs that decline an impossible
+  value describe it this way; the other 70 say what is actually wrong ("must be between
+  0.5 and 8; check the value entered"), which is the wording the rest should adopt. The
+  count and the fix are written up rather than applied, because the shared reader has 411
+  call sites and the message at each is a separate judgment. See docs/spec-v1176.md.
+
 ### Changed
 
 - **The check that compares a tool's accepted values with the menu on the page could
