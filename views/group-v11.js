@@ -354,9 +354,32 @@ export const renderers = {
         dextrosePct: dextrosePct || 0, aminoAcidPct: aminoAcidPct || 0,
         naMeqL: naMeqL || 0, kMeqL: kMeqL || 0,
       });
+      // spec-v1162: every component is optional on its own and the empty-bag case
+      // is guarded above -- but each one OMITTED lowers the estimate, and the
+      // verdict here is where the line goes. 600 mOsm/L becomes 540 with the
+      // sodium left out, and both read "below ~900; peripheral administration is
+      // generally acceptable". So the reading names what it counted, which is the
+      // spec-v1133 model: the assumption is visible where the verdict is.
+      const counted = [
+        dextrosePct != null ? `dextrose ${dextrosePct}%` : null,
+        aminoAcidPct != null ? `amino acids ${aminoAcidPct}%` : null,
+        naMeqL != null ? `sodium ${naMeqL} mEq/L` : null,
+        kMeqL != null ? `potassium ${kMeqL} mEq/L` : null,
+      ].filter(Boolean);
+      const omitted = [
+        dextrosePct == null ? 'dextrose' : null,
+        aminoAcidPct == null ? 'amino acids' : null,
+        naMeqL == null ? 'sodium' : null,
+        kMeqL == null ? 'potassium' : null,
+      ].filter(Boolean);
       o.appendChild(list([
-        li(`Estimated osmolarity: ${fmt(r.osmolarity, { unit: 'mOsm/L' })}`, r.central ? 'warn' : null),
+        li(`Estimated osmolarity: ${fmt(r.osmolarity, { unit: 'mOsm/L' })}${omitted.length ? ' (at least)' : ''}`, r.central ? 'warn' : null),
         li(r.band, r.central ? 'warn' : null),
+        li(`Counted: ${counted.join(', ')}.`),
+        omitted.length
+          ? li(`Not entered: ${omitted.join(', ')} -- each would only raise the estimate, so a `
+            + 'peripheral reading cannot stand on a bag that has not been fully described.', r.central ? null : 'warn')
+          : null,
       ]));
       note(o, r.note);
     }));

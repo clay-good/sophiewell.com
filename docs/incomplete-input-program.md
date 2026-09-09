@@ -959,6 +959,24 @@ the probe reports **0 across 0** for the first time.
 **A value the registry does not declare is invisible twice over**: to the agent that
 would use it, and to the checks that would notice it went missing.
 
+[spec-v1162](spec-v1162.md) ran `one-blank-field-probe`, which reports every reading
+that MOVES when one field is cleared. **Most of its 43 rows are tiles behaving
+correctly** — *"Scored from 6 of 7 items"*, *"not assessed"*, *"albumin not entered"*
+— which is worth recording, because a probe that reports movement is not one that
+reports defects. Two were not:
+
+- `egfr-suite` printed **"Cockcroft-Gault: 0.0 mL/min"** beside two normal eGFRs. The
+  weight belongs only to that equation, and a creatinine clearance of zero is anuric
+  renal failure, for a patient nobody had weighed.
+- `iv-osmolarity` understated the estimate for each component left out, and the
+  verdict is peripheral-versus-central: 600 mOsm/L became 540 with the sodium
+  omitted, both reading *"peripheral administration is generally acceptable"*. It now
+  names what it counted and marks the estimate *"(at least)"*.
+
+Two more are left to read: `tls-cairo-bishop`, which reports an unmeasured potassium
+as *"not met"*, and `mtp-tracker`, where a blank platelet count becomes *"0 units
+transfused"* in a massive transfusion protocol.
+
 ## Probes measured and rejected
 
 Three questions asked of the whole catalog after spec-v1048, each of which sounded like it should

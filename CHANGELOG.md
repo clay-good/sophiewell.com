@@ -297,6 +297,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   published to agents, which would have sent a plain 0 instead. All nineteen now
   declare the full set of choices. See docs/spec-v1161.md.
 
+- **The kidney-function panel reported a creatinine clearance of zero when no weight
+  was entered.** Only one of its three equations uses body weight, and a blank one was
+  read as zero -- so "Cockcroft-Gault: 0.0 mL/min", which describes a patient passing
+  no urine at all, appeared directly beneath two normal results. That row now asks for
+  the weight and says why only it needs one.
+
+- **The IV osmolarity tool understated the bag for every component left blank.** Each
+  ingredient is genuinely optional, but each one omitted lowers the estimate -- and the
+  answer decides whether the infusion can go through a peripheral line. It now lists
+  what it counted, marks the figure as a minimum, and names what is missing. See
+  docs/spec-v1162.md.
+
 ### Changed
 
 - **A check that compares what the tool accepts with what the page offers was

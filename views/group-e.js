@@ -630,15 +630,22 @@ export const renderers = {
     root.appendChild(selectField('Sex', 'es-sex', [{ value: 'M', text: 'Male' }, { value: 'F', text: 'Female' }]));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
-      const scr = num('es-scr'), age = num('es-age'), w = unitNum('es-w');
+      // spec-v1162: three equations on one page, and the weight belongs only to
+      // Cockcroft-Gault -- the two eGFRs do not read it. `unitNum` is Number('')
+      // for a blank, so a missing weight gave "Cockcroft-Gault: 0.0 mL/min"
+      // beside two normal eGFRs: a creatinine clearance of zero is anuric renal
+      // failure, printed for a patient nobody had weighed.
+      const scr = num('es-scr'), age = num('es-age');
+      const w = numOrNull('es-w') === null ? null : unitNum('es-w');
       const sex = document.getElementById('es-sex').value;
       const ckdEpi = C.egfrCkdEpi2021({ scr, age, sex });
-      const cg = C.cockcroftGault({ age, weightKg: w, scr, sex });
       const mdrd = V4.egfrMdrd({ scr, age, sex });
       resultRow(o, [
         { text: `CKD-EPI 2021 (race-free): ${ckdEpi.toFixed(1)} mL/min/1.73m^2` },
         { text: `MDRD (race-free): ${mdrd.toFixed(1)} mL/min/1.73m^2` },
-        { text: `Cockcroft-Gault: ${cg.toFixed(1)} mL/min` },
+        { text: w === null
+          ? 'Cockcroft-Gault: enter a weight -- it is the only one of the three that needs one.'
+          : `Cockcroft-Gault: ${C.cockcroftGault({ age, weightKg: w, scr, sex }).toFixed(1)} mL/min` },
       ]);
       const adv = boundsAdvisory('scr', scr);
       if (adv) o.appendChild(el('p', { class: 'warn', text: adv }));
