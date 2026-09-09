@@ -36,6 +36,12 @@ function numField(label, id, opts = {}) {
   inp.setAttribute('step', opts.step || '1');
   inp.setAttribute('inputmode', opts.step && opts.step !== '1' ? 'decimal' : 'numeric');
   if (opts.min != null) inp.setAttribute('min', String(opts.min));
+  // spec-v1184: and dropped `max`. spec-v1179 found this shape in `field()` and
+  // spec-v1182/v1183 drained both bounds there -- but the gate it left behind
+  // matched the helper by NAME, so a helper called `numField` was never a
+  // subject. Honouring `min` and not `max` is the same observation a fourth
+  // time: support gets added for the option someone needed at the time.
+  if (opts.max != null) inp.setAttribute('max', String(opts.max));
   if (opts.placeholder) inp.setAttribute('placeholder', opts.placeholder);
   wrap.appendChild(inp);
   return wrap;

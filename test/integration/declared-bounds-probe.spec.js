@@ -1,6 +1,7 @@
-// Probe (not a gate): spec-v1183 activated 86 `min:` declarations that 18 view
-// modules had been accepting and dropping. This is the measurement taken BEFORE
-// activating them, in the direction that could actually break.
+// Probe (not a gate): spec-v1183 activated 85 `min:` declarations that 18 view
+// modules had been accepting and dropping; spec-v1184 activated 3 `max:` ones in
+// two more. This is the measurement taken BEFORE activating a bound, in the
+// direction that could actually break.
 //
 // The lesson spec-v1179 exists for is that a declaration is not a rendering, so
 // the count below is read off the page rather than out of the source. But the
@@ -13,10 +14,12 @@
 // that warns here is one whose own documented reading is out of its own declared
 // range, which is a defect in the bound or in the example, not in the reader.
 //
-// spec-v1182 asked the same question of `max` and got the same answer. Reported,
-// never asserted -- run it by name:
+// Both directions, in one probe. spec-v1183's version asked only about floors,
+// and one wave later spec-v1184 needed the ceiling question -- which is the same
+// "a second copy of the rule" mistake that let these helpers disagree in the
+// first place. Reported, never asserted -- run it by name:
 //
-//   RUN_PROBES=1 npx playwright test test/integration/declared-floor-probe.spec.js --project=chromium
+//   RUN_PROBES=1 npx playwright test test/integration/declared-bounds-probe.spec.js --project=chromium
 import { test, expect } from '@playwright/test';
 
 test.skip(({ browserName }) => browserName !== 'chromium', 'whole-catalog sweep is chromium-only');
@@ -39,20 +42,23 @@ test('no tile warns about its own worked example', async ({ page }) => {
       return {
         min: nums.filter((n) => n.hasAttribute('min')).length,
         max: nums.filter((n) => n.hasAttribute('max')).length,
-        // Underflow specifically: a tile already warning on load for some other
-        // reason is not this wave's doing, so the two are reported apart.
+        // Both directions, named apart: a tile already warning on load for some
+        // other reason is not a bound activation's doing.
         under: nums.filter((n) => n.value !== '' && n.validity && n.validity.rangeUnderflow)
-          .map((n) => `${n.id}=${n.value} (min ${n.getAttribute('min')})`),
+          .map((n) => `${n.id}=${n.value} below min ${n.getAttribute('min')}`),
+        over: nums.filter((n) => n.value !== '' && n.validity && n.validity.rangeOverflow)
+          .map((n) => `${n.id}=${n.value} above max ${n.getAttribute('max')}`),
         text: w ? (w.textContent || '').replace(/\s+/g, ' ') : '',
       };
     });
     withMin += seen.min;
     withMax += seen.max;
-    if (seen.under.length) warned.push(`${id}: ${seen.under.join(', ')} -- ${seen.text}`);
+    const bad = [...seen.under, ...seen.over];
+    if (bad.length) warned.push(`${id}: ${bad.join(', ')} -- ${seen.text}`);
   }
 
   console.log(`number inputs rendering a min: ${withMin}`);
   console.log(`number inputs rendering a max: ${withMax}`);
-  console.log(`tiles whose example falls below a declared floor: ${warned.length}`);
+  console.log(`tiles whose example falls outside a declared bound: ${warned.length}`);
   for (const line of warned) console.log(`  ${line}`);
 });

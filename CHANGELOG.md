@@ -547,6 +547,17 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   sensible value from 1,976 to 2,061. Nearly all of them are "not below zero", on things
   like a weight or a lab result. See docs/spec-v1183.md.
 
+- **Three more limits, on two screens the check for this could not see.** The two
+  entries above fixed every screen whose input-builder went by one particular name.
+  Two screens name theirs differently, so they were never examined -- and both were
+  applying their lower limit and discarding their upper one, on two age boxes that
+  accept nothing above 130 and a cholesterol box that accepts nothing above 600.
+  Typing an extra digit into an age is the commonest data-entry mistake there is.
+  All three limits are live now (969 input boxes carry an upper limit), and the
+  check no longer goes by name: it examines any input-builder that takes options at
+  all, 79 of them, and reports an option of any kind that is accepted and then
+  ignored. See docs/spec-v1184.md.
+
 ### Changed
 
 - **The check that compares a tool's accepted values with the menu on the page could
