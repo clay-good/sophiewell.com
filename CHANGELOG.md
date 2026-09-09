@@ -516,6 +516,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   number, and 3.95e+66 is a real number. It now declines the count on both surfaces and
   says a report reading 20,000 per microlitre is entered as 20. See docs/spec-v1180.md.
 
+- **Six more calculators gave a reassuring answer from a physically impossible reading.**
+  A Crohn's activity index reported "clinical remission" -- with a score of -3975, on a
+  scale that runs 0 to 600 -- from a haematocrit of 750%. A myelodysplastic-syndrome
+  prognosis called a haemoglobin of 250 g/dL "low risk" and quoted a survival figure. The
+  MEWS early-warning score read "low risk" for a blood pressure of 3000 and a temperature
+  of 450 C, because each of its bands stops counting at its own extreme, so an impossible
+  observation scores exactly what a survivable one does. All six now decline the reading
+  and say which value is out of range, using limits this project had already written down
+  and sourced. Each was checked both ways: the impossible value refused, and the
+  calculator's own worked example still answering. This empties the list of such cases
+  that the maintenance script was reporting. See docs/spec-v1181.md.
+
 ### Changed
 
 - **The check that compares a tool's accepted values with the menu on the page could

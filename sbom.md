@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `878fb4273f404336`
-Generated: 2026-09-09T17:10:16.666Z
+Build ID: `86c3c1455a805894`
+Generated: 2026-09-09T17:36:46.025Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -59,7 +59,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/abc-scale-v729.js` | 2969 | `216800e61da667543101c6a175111dbf2fca98617f1b15d6b420cf00bff18eaf` |
 | `lib/ablett-tetanus-v576.js` | 11571 | `55c0a29b6ed65dab28caa723322ce513f4017217113429dbfd926bd8fdc8f0af` |
 | `lib/acef-v595.js` | 11727 | `7f6eb09e8e47d18db22b488a037178a3a3af2cdf20a71e56fccbe0af0454d45a` |
-| `lib/acidbase-v129.js` | 20363 | `672e3c4a85369ef507b717b032d9ca3e4e550a907bf45515ec476b0c69ac1997` |
+| `lib/acidbase-v129.js` | 20955 | `a23a72ab5112f09395317b308b6dbb648836a5d2b282f864143f446aa5e57758` |
 | `lib/acr-eular-boolean-v671.js` | 4453 | `79e79312ee4df6fc97bcb44e121482e68c9d62323446f27087d26beac5478fba` |
 | `lib/acromegaly-biochem-v835.js` | 9541 | `3dcd6eec4c8be684e05c0f87baf0eb7fb27d356dfc3fd44beb33704700062d4f` |
 | `lib/acs-v193.js` | 15400 | `219926127d8100963f60bd083fb4a77fa33e1f806b7d581dc78dea821b819d52` |
@@ -203,7 +203,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/crafft-v511.js` | 4287 | `327127a6f8e3677bd8a1d0f3c3ced3b3347ee9c785e294ba9a50052ca446d1c2` |
 | `lib/crawford-taaa-v464.js` | 3861 | `88e25ce66c44ed838925af33531184aa2ec6a743e775339af30ec9ba797646d4` |
 | `lib/critcare-severity-v200.js` | 15639 | `e08d8c99b3000904ce53f517eb8b647868d44e31b46c43b9e75aa9dc167d3738` |
-| `lib/critcare-v112.js` | 14386 | `d20789357fe757903ac7ed4b901732f88df787fd781e16dcec367d011e95dd78` |
+| `lib/critcare-v112.js` | 14774 | `77d2077948f42792145a2eaf5f453c6dd3fd028dd41637f795c36d31f09af0c8` |
 | `lib/crowe-ddh-v353.js` | 3621 | `cbfcd5066efa27d55b012cfe0174650bb2009a8d7f8e6ddc5dcf5a4ffbbc789d` |
 | `lib/crs-v305.js` | 5412 | `ef4acb9a6090b2dee839747bc0cc8b5b7adecc9c3d96e89fdc601b72fa835c71` |
 | `lib/cts6-v773.js` | 3589 | `50ab3a3aa777a4ed12077b73c3a3a3dc707df6ff98e36a7c579aec5451333c8e` |
@@ -324,7 +324,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/gerdq-v679.js` | 4410 | `1b59ff708ec0a30c39ae0bc7ed356bf1704dac46be643eb922ec1376759df951` |
 | `lib/geri-v241.js` | 6715 | `1debe98a4e5480baaaf503b9f4e9e093f0bdfaede8ce2741f9744b862ae52f98` |
 | `lib/ghent-marfan-v821.js` | 12318 | `855285066a558cf50ad9e937c7717195d86bc71bbe51e47913f4dfa811f8ce39` |
-| `lib/gi-v126.js` | 19116 | `64bb0f519666ec59daef3f9accf62066bd20ca45c8a19b492072b942c403af87` |
+| `lib/gi-v126.js` | 19599 | `f5ff66b28fe374801f453729adec371f098377ee6319a352295294c0058ff1fc` |
 | `lib/gisurg-v239.js` | 7913 | `d6da27d87f1f1c9ae3ba497127080931bfe66fd1e29c66d5e5b6b21a586761d0` |
 | `lib/glass-stage-v550.js` | 13408 | `42ec4b461aa71b8aa586f00d20f9088773dbf3a478e9847e590af687b2c2acf5` |
 | `lib/gli-2012-data.js` | 41979 | `0fa7440b8d9ab03028185d56c7a6bc9e1e753fe3ac396c208eb06f80991ba125` |
@@ -365,7 +365,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/hemederm-v245.js` | 6951 | `8da43afd2f8072c0e3b917b12e1ee8a4770afd7c1a6b2cf3ff5ca94e414a1c2b` |
 | `lib/hemo-v194.js` | 10631 | `8c5d3ad252475a1dd4f8a2ed78a2933173d381ccc44bbd427d63539006e73d24` |
 | `lib/hemodynamics-v87.js` | 8607 | `1bc8bc1408afb3fbc602d2748bfa1c8c68eb89fafabb18dd5e9c1a2589ff0276` |
-| `lib/hemonc-v94.js` | 21784 | `eb7218f7eb5bd0a5c703a2c335d84273c275c1944bf658423e2c8c53ead3f0dc` |
+| `lib/hemonc-v94.js` | 22216 | `c3bd05b31844af8dd7e6a465c0ac4f8208a347540853491dcae64a491b544ede` |
 | `lib/hep-fibrosis-portal-v212.js` | 6585 | `93bb19ad8fac24e2e86c21bd76be22c40b3df7ec8d1a8888002c643453d3223a` |
 | `lib/hep-v124.js` | 15356 | `049ccb04b60ff0a93eb6c80400e614dd5709cbe071e48d5b0b7632cec0b69248` |
 | `lib/hep-v125.js` | 13055 | `86f145e491067a12d2b0dea0085a9340a14350d5b82d29dca936d41c9b8d6d03` |
@@ -762,7 +762,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/schobinger-avm-v497.js` | 3484 | `fd7d680fede1965fd9a9026d0977e4f2c1970e30d33718df3daaca235dfed009` |
 | `lib/schofield-v779.js` | 4325 | `7c398e3b1dc2df66c5323baee0f73ff66c28927fb47a72ede85dfd51d2de4931` |
 | `lib/schwab-england-v385.js` | 4331 | `caddd0709826db63186ebf0a5f8b60fd9a3e00fa934bddc3e0331977f70c5e4b` |
-| `lib/scoring-v4.js` | 285225 | `81923d9a052b14e72edaf63f5c7453d5cd0fb88a7ea47c90222b2596f29150c8` |
+| `lib/scoring-v4.js` | 285807 | `7279421255fb6ac458c1de173758860dc7ec86af101e7522f4d66173f03b5020` |
 | `lib/scoring-v5.js` | 13821 | `89b532534c64d0e47a4c2e7978ec5d68f1a6d101c61ac586056a0764b8d05039` |
 | `lib/scoring-v6.js` | 27427 | `ed570d8507d63371de2181a97743f8ee1f40e2042eedba9dac2216ed247d6fad` |
 | `lib/scp-pushing-v562.js` | 12399 | `6da019a04668722b7a8d448b4d7bf9908717629b72e4a162088e74363ad62360` |
@@ -859,7 +859,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/van-herick-v435.js` | 3423 | `1df5f89865068a14369482f3bd141c7ef8999a49e9e3b6ada87ebcffb36cdd15` |
 | `lib/van-nuys-vnpi-v652.js` | 5583 | `59049426b6b97b137e2c28ae2072640f2310ed548c27027eac6e069e334ddcaf` |
 | `lib/vancouver-periprosthetic-v483.js` | 3496 | `49ecf63cc801a1b465268edd621659b820dad6556472ff09b40e428eb12575bf` |
-| `lib/vascular-v105.js` | 20179 | `4c3beb54af16094b76b94dca42106a56a9436e24959425a592fb6f470ee21e84` |
+| `lib/vascular-v105.js` | 20704 | `7e66fe1e9041e0f0ffef322143576c148df1237cf31aa82496382e3fb241d1ca` |
 | `lib/vasi-v556.js` | 12850 | `c1e3bdab22509ed3895f5dae68d974242064c27bd047889d8a0d80c1491bd204` |
 | `lib/vaughan-williams-v427.js` | 4207 | `241cb6fc10d5a9b15a3a849ab44f7887e7508a99daa8a9c55567feb737b1893d` |
 | `lib/vent-v195.js` | 9473 | `9f8fd14cdaa7e971da29cc8bdc6247bf8c7e3974daae70bc597e2269c400c110` |
