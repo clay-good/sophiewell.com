@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `86c3c1455a805894`
-Generated: 2026-09-09T17:36:46.025Z
+Build ID: `c150fff9408d3cdf`
+Generated: 2026-09-09T19:14:14.394Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -1705,19 +1705,19 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `vendored/tesseract/tesseract.min.js` | 66695 | `a8e29918d098b2b06e1012bdaeffb4aec0445c5d5654709023e0bd1f442a80e8` |
 | `vendored/tesseract/worker.min.js` | 123724 | `aca1229639fc9907d86f96e825955a2b7c5716d17f3bc3acd71f9c7ab66181fc` |
 | `views/group-a.js` | 577 | `eed37c656d1fa00c097a07f07db4b1b6ac7a0a74bafc210978265a1d90856bd7` |
-| `views/group-b.js` | 77156 | `88cc71d010172716bbb55f6e5773a194945a93d00d5a759697eddd110066c560` |
+| `views/group-b.js` | 77438 | `4de1b1e0ac4300f0419de2ddab5c67f64c93efeb195df9adfdc3d0c9f932aa4e` |
 | `views/group-c.js` | 26643 | `c139c073fd2c3a107f1865ff5e41dd671e988a06b16fe6d0efb050d6da2e060c` |
 | `views/group-e.js` | 49552 | `5f28f04275dd3bc31280f07ad95858a9e9a8a0b164bc3208b5e6d6f5e32cf731` |
-| `views/group-f.js` | 53408 | `02ee2e5367c99b2a2243774f0bace8585c12e54dafb9f2abd33ae5a4a0da49a1` |
+| `views/group-f.js` | 53690 | `7ae98b99fbd321e7200935ed39b1e72de1a27c77fb36e5dceec8da35b64d206a` |
 | `views/group-g.js` | 249419 | `12471acf5d1d7806065fa92c0be6f0be16fdaea15781420a02bda8cc4c48f53f` |
 | `views/group-h.js` | 30329 | `b59285515eed9e509a08b7b9c58df6b6e6fe823795d42a30f534ad8e82cb6440` |
-| `views/group-i.js` | 25281 | `2a5d42af02ea24dfbfa7ac442ca7467880239b596ab6312833b5f4eb7d86fd12` |
+| `views/group-i.js` | 25563 | `2b0def7e9588c201952065910600c2763c13a2b18dff1b50b7f2604634b8a99e` |
 | `views/group-j.js` | 9024 | `7d8ad642f932ac040e85c1c2c4b35cc0b20acd2d81415ad7740e547b845fdae2` |
 | `views/group-klmno.js` | 7372 | `c861d44056fed12dd72a01398ea556e5ed560af424f8c0a20ccfee12bc56eeaf` |
-| `views/group-v10.js` | 38644 | `c786736fa989308a8752acaba6ecf8a217529b15b2a2caf3d5a127ea4e870a8f` |
+| `views/group-v10.js` | 38926 | `a74eb39820e285ffef7f86a46b3a78e92e0631bb1c24a5141e5e73240240e796` |
 | `views/group-v1061.js` | 2720 | `89e9eb196bceb0f67c97c0f9b9aefd0c0820f913ffc6b556d7a5aa809c7b9d25` |
 | `views/group-v1062.js` | 2586 | `ffbf32df0ae17e753e06b756f32e36e7c1f7dcbeb98c6bdefd26e1e342950eca` |
-| `views/group-v11.js` | 25153 | `84787f7de771480a209e140bc35b6b851a5a1a4e526c093af419eaa198a56fa5` |
+| `views/group-v11.js` | 25435 | `0d0a62ef35b6f52130d944e2a06df8e16ded552973090015349d890b3a184ed0` |
 | `views/group-v117.js` | 12166 | `bd791807741fd3275c6f46da19f26f8b39e7b1644759811bfdec6b0cc3557839` |
 | `views/group-v118.js` | 14192 | `37e85f6066e94aa943ab96daf44a6954a8fd58e8d31e7ec894ff7c885d87d27c` |
 | `views/group-v119.js` | 9513 | `1f10862d9aab600674449534502faf78e810ea756704d37066ac0ca7347bf580` |
@@ -1727,12 +1727,12 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v122.js` | 7422 | `bc238e7c11c081dcdd6514b2b7ba6000d415d21a9abdc35177237e1262cf7b62` |
 | `views/group-v123.js` | 13504 | `c0372038e1860f352e62a570fad97c27c9625e0e9955a5bafd92953889f9bad3` |
 | `views/group-v124.js` | 10614 | `5139bca048cdd9597fe2ca4ff9de7139fb5da5667766f70ceb0cf079b34db1b0` |
-| `views/group-v125.js` | 10792 | `6aeb41529d73f437100a089619ad3e82184b13afd357cba1e95887d7a4ad7f8a` |
-| `views/group-v126.js` | 12511 | `13f980cf952c4239ef6d20539678171746f242cf02612f769192b6ad2dd27790` |
-| `views/group-v127.js` | 9363 | `6e542d40a470397946ceb06492d27c07d69de91b18a9d1c7ecaa43effb14e2b6` |
+| `views/group-v125.js` | 11074 | `edee225ad6146597e1803180b505062695ade91da7e0b51378ac82c30b74ad7f` |
+| `views/group-v126.js` | 12793 | `e27074a6aa229bab6ac25159b7f4a829e5e2bfa7fd2101b478e654cbedd9a975` |
+| `views/group-v127.js` | 9645 | `c12859a07e97172d292b834c5a84ede9cb43f6601e633a4e03feef844eef4128` |
 | `views/group-v128.js` | 7760 | `53557c149d1f0d643f25bf5e0841c6ed03746c09c9d581d741af50c045125dea` |
-| `views/group-v129.js` | 11946 | `df3eb1aacd1525758dc093d6c79733bf6bd95cf40b6ecd4e5bccdcac7ab5472f` |
-| `views/group-v13.js` | 7759 | `f9546e955ddfe2f766b77c85532ca283b16bb2889ae7a9cfeab5290831078e83` |
+| `views/group-v129.js` | 12228 | `48a4247e2efa103c44a6cae67827ff1997591181b0c851a198297cbe10e72d5e` |
+| `views/group-v13.js` | 8041 | `d345abe5be6b6a7174edf39c9d4fe1fc24c50618d1ccbdfdbb1c48a94e7d22f4` |
 | `views/group-v130.js` | 10347 | `f902a1316e845109c1cc0257bfc3df2183317c9dc1d8b221ee0e18615b865a1f` |
 | `views/group-v131.js` | 13363 | `6406166b469f17b930b9f70e33d59093dff6bc03c448cc0786ed9aa62d509255` |
 | `views/group-v132.js` | 10781 | `334289537b832288ba77300a7271eb1dd997a0b4a76b3927ad8fb7a863395ae4` |
@@ -1754,7 +1754,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v147.js` | 20888 | `a1a330b5f0735876ccf632ba8f494addb7504071d8804488d46d7bc7e6f122bb` |
 | `views/group-v148.js` | 19109 | `f34bde6fdff35a3167d9dca89727a221850e5d056a41fe44ff89f90051053dd9` |
 | `views/group-v149.js` | 6365 | `1777a5e89834da85c73e4642fce3f8efc75b026698664a983c4226352b679af3` |
-| `views/group-v15.js` | 9484 | `02ca12568aaf9f325aa95d5eab66735f0f15a247ecb57f5d061d0cf97f6376e7` |
+| `views/group-v15.js` | 9766 | `283f7efedbf09b08c82105ad210f8609169850c03673c5fe74dd0713e43c2025` |
 | `views/group-v151.js` | 13359 | `0f5eff3a293106878f3c19634996260b9ed65f358fb54c277941ddb9ef93784e` |
 | `views/group-v152.js` | 12367 | `b801afd93751f4bc75051eb9e2b852094403120b03a2d2da2b4d8ece35405117` |
 | `views/group-v153.js` | 11280 | `ffceef435372350d3a3f391724e3232537e6919c980ba7c4b8e8b7bab2186ee9` |
@@ -1763,7 +1763,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v156.js` | 10713 | `c8c967d1586f796af986c00cb75804dcb47a8dd40e1e4e1a465e15f4518f8637` |
 | `views/group-v158.js` | 9534 | `25d868e4f0bf1ed1570efd33550e005419a951f02f1453a976a88b8246fc2017` |
 | `views/group-v159.js` | 10723 | `4468620fd3985650302950a1b9070add09e3c8e986791fe4634ff2f50e2c92f1` |
-| `views/group-v16.js` | 11975 | `d8d668a25b40d46d16800aef603fc0a14f41005cbd95ef7258ef8e325e006261` |
+| `views/group-v16.js` | 12257 | `65912437cd462ff78b07b6d91ee70adb6c93c90e7a239fa76e873d988ea573bc` |
 | `views/group-v160.js` | 11685 | `14ef775c5b8ffbe178e1263f27c806d4c99c02fc86dd79d907213aefd3b7b77f` |
 | `views/group-v161.js` | 8025 | `01187902dc8b2523d595b9ff8b8a211db519fb0f1cc00228725b977474c9f4f1` |
 | `views/group-v163.js` | 8143 | `0c4000e57fa5291ce38bd620737125b1a5a309a647fb2283dfd89f2f681731ed` |
@@ -1772,7 +1772,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v166.js` | 5981 | `3523b74c9885e3e890f5ea8624825fc89b803d716f76148ec2667fd994fcccab` |
 | `views/group-v167.js` | 9221 | `f870afd2bd5e663d5db673719555779f32ced63d1fc71bdb3827e65ad7b97e12` |
 | `views/group-v169.js` | 5712 | `b6ab9562a738e6502d9da3f025d1d905c4f79f8ffc51d7396126668f7374fbab` |
-| `views/group-v17.js` | 12198 | `c4a2ed90c501a50824f72f43422117776dcaab3f27fa95bcc75157c2ab4bced6` |
+| `views/group-v17.js` | 12480 | `97a3eb9a4ec6cb9da960eb6d3f38f113b894cd3eb86bb9f6c0c19c6b3fabad36` |
 | `views/group-v173.js` | 9172 | `171c798a13dcd854771ff613715bb696adc981a7e72fa3d0ce6b1ba4af21b415` |
 | `views/group-v174.js` | 13653 | `71b77268acf0ad70cbf4e9a7cb336d4becadb893014bb43100c09af493f3422a` |
 | `views/group-v175.js` | 8432 | `3c1978d4f4a41c81abc651cf9b41cd93e5a21cb413539376f2a65b6aaa16f7c1` |
@@ -1780,7 +1780,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v177.js` | 9071 | `24967dbbaa6265bb73790401552e7c8b4901366ea748207456827eadeda81013` |
 | `views/group-v178.js` | 11889 | `84978068cf4bb6246733c946ce3fe7ead3601a9e1e005cf30dfce6688a1f131c` |
 | `views/group-v179.js` | 6738 | `4e9bca1f3d6e3cf756ddba43742e194f731f6d0d7e3ed7aed03be77eb0ada5d7` |
-| `views/group-v18.js` | 10511 | `9d38ed54b5488bcd3255ef10572efa5a190cce8ce6e7adbb8aa52a339b3144c4` |
+| `views/group-v18.js` | 10793 | `2dec84e7f664681b3f10b2540120099ddec25fbc80b9940c8ddad9af61f04403` |
 | `views/group-v180.js` | 7351 | `a5cd0aaced4af92efd84a5cd5fcfa938d16efe014760e34ddda71b08874ef20f` |
 | `views/group-v181.js` | 6087 | `a09a53d955a045e3733b7abc3a556a828d7a47450c7bf73c8e35a6ed2bf89f6a` |
 | `views/group-v182.js` | 11689 | `da1cea638bda919f4c4ef04cfeeb5dde05b56601d5e11dbc96b63f9d57c8ac73` |
@@ -2107,7 +2107,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v497.js` | 3205 | `c0b474c55700753713879acb24c3ca8e008329768ee39292e226e9c2cc5dfb87` |
 | `views/group-v498.js` | 3038 | `000f88258d700e6932fcf5c05aca71b775b064948189bfb5e28b3d1d1f14d82c` |
 | `views/group-v499.js` | 2989 | `9c032b263cf8f8693b763d34f11144c9f86aa087c52abf7dd53eb6bbcdc3b943` |
-| `views/group-v5.js` | 36188 | `87a2eb4bb16113416d500592e4055186b15664e6a9c4f292f824f15df594e907` |
+| `views/group-v5.js` | 36470 | `6f52046e6f45661c868f3b0487ba4aad51144dcc9c9f3aebc5feb17c1121342c` |
 | `views/group-v500.js` | 3558 | `910b8e2e06e543d8a8cbd1ec8894a227316a3988f854041807205e6c04afcfba` |
 | `views/group-v501.js` | 3015 | `53f20f7cc95df9d4e795b66164f44a5dd13ee0ba4c42f6d5b304fdca8f1b6031` |
 | `views/group-v502.js` | 3455 | `58a0e11fbcd4fb53e5a2b755890dcf7c51bcca93c2b3c41922847bb12889596f` |
@@ -2289,7 +2289,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v696.js` | 4414 | `f6fd10c576ac681e6f9f055005d09e06efe3b05189a2d5402f56506b7b2e59e9` |
 | `views/group-v698.js` | 2806 | `83cab715f24ec608362d7abc97e50672a145c31339544d5ce0d6250948598756` |
 | `views/group-v699.js` | 3443 | `4f83f6ed692c13ba700f52790d053fe1a96c956b8db60559dfcc9ca8db7b8b49` |
-| `views/group-v7.js` | 18478 | `704cb8024f6ed88dec59cb4f3cc8e9f3d3d47b9c133eb0f0d9549c1112ba4097` |
+| `views/group-v7.js` | 18760 | `014307269a818762c2fd811b949ec1fcc0d75f935833cd66fa72bd6ea2c1ac0b` |
 | `views/group-v700.js` | 2797 | `b8f5c6ce666c96dee6c737a67b76e9588ae241ffbc4b608ae616a12e670d5e29` |
 | `views/group-v701.js` | 3898 | `3dc1c17c92c4cb7ae46882ae15a87b6249384b9863079b522b7d87e684afd983` |
 | `views/group-v702.js` | 4123 | `7ded58c120043e9596b0dc9e20a27e45ed13982c7f2cd4678d043498233467d5` |
@@ -2357,7 +2357,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v797.js` | 4184 | `a6125219d5781c0694efcd1d5bc1897587a8decf8615b66d209623dead3791c5` |
 | `views/group-v798.js` | 4020 | `911cc802b17f656b5dd475a373a9b465c528a3bc26473c1732808bc8b35c88ae` |
 | `views/group-v799.js` | 3074 | `207697ea9b629a3146172a3efa48090adca2ae9dcd960b72487c7973f111d888` |
-| `views/group-v8.js` | 24538 | `afaf3961f5bd753a39d4fa677c3c538604a73e8dfdf62b17fe77a93441e6ad8c` |
+| `views/group-v8.js` | 24820 | `5bdc43cf97ecc06ff82030bb53c15a5c6df2b5a29bd24b384a5f5d5687888c3f` |
 | `views/group-v800.js` | 3162 | `a7894ea3c03e6cfd3b923da113f1b66079990f2545e20906d326226359860df1` |
 | `views/group-v801.js` | 4538 | `63dd0a780d65c98e0bd7a78f1aa906d461ad43303b3b7799a9e869ebb8ad5d06` |
 | `views/group-v802.js` | 3559 | `2c21752063d89628f4526a6c6d962fcb4d61175367b5db20edf83d886d55e246` |
@@ -2456,7 +2456,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v897.js` | 3775 | `09d4550cc76e0ed9bb13c1b47588e4c71618dbff71682755ec98c5f1f5ed31dc` |
 | `views/group-v898.js` | 3767 | `da1d5f1004a37f849f1a5214dcb52569667d43b42870ceb582995000da264ca9` |
 | `views/group-v899.js` | 3572 | `9742ee9fb4b001ca4ea94e5b1170a1619211781661e3b2c3dc20be85a9c79fd4` |
-| `views/group-v9.js` | 23311 | `02e52884d6e68d13e07a1799953465f84e401f85b32b1c563c3e374891bfd40f` |
+| `views/group-v9.js` | 23593 | `797387e9b9692902a54840d8209e82269711c2889fbca664934f46148bc096bd` |
 | `views/group-v900.js` | 3545 | `44e62020376c6791dc2a446cffab6ea8b3410ec994cf7de86ba4462b9a2f758e` |
 | `views/group-v901.js` | 3174 | `057e645896acc5ad37233d0651b1ff95686555751c7987b730a3f878260bee26` |
 | `views/group-v902.js` | 3736 | `9115243ac95870f456cbfd025e175e62eee4650a5183300a8565fd9eb05ad16f` |

@@ -528,6 +528,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   calculator's own worked example still answering. This empties the list of such cases
   that the maintenance script was reporting. See docs/spec-v1181.md.
 
+- **Fifty-one more plausible-value limits that had been written but never took effect.**
+  The entry above describes screens built by separate modules, several of which quietly
+  discarded a limit set on an input box. Eighteen such modules remained, between them
+  carrying fifty-one limits that had been written by someone, accepted, and dropped -- so
+  the page could never flag a value outside them. All eighteen now apply the limit, and
+  966 input boxes across the catalog carry one. Checked in a real browser both ways: the
+  limits appear, and no calculator's own worked example now trips one, which was the way
+  this change could have gone wrong. See docs/spec-v1182.md.
+
 ### Changed
 
 - **The check that compares a tool's accepted values with the menu on the page could

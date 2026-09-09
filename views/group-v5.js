@@ -34,6 +34,10 @@ function field(label, id, opts = {}) {
   if (inp.type === 'number') inp.setAttribute('step', opts.step || 'any');
   if (opts.placeholder) inp.setAttribute('placeholder', opts.placeholder);
   if (opts.value != null) inp.value = String(opts.value);
+  // spec-v1182: this helper accepted `max` and dropped it, so a bound declared
+  // on a field in this module never reached the page and its range warning
+  // could not fire. Ledgered by spec-v1179; drained here.
+  if (opts.max != null) inp.setAttribute('max', String(opts.max));
   wrap.appendChild(inp);
   return wrap;
 }

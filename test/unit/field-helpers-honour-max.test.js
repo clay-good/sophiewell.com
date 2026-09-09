@@ -38,6 +38,12 @@ function fieldHelperBody(src) {
   return null;
 }
 
+// spec-v1182 DRAINED this ledger: all 18 modules honour `max` now, so the set is
+// empty and the gate is unconditional. It is kept, rather than deleted, because
+// an empty ledger with the count asserted below is the record that it was
+// drained -- and because the next module to drop a bound should land here rather
+// than pass.
+//
 // The modules whose `field()` dropped a bound BEFORE spec-v1179, kept so the
 // gate holds the line against a new one while these drain. Two were verified on
 // the page rather than in the source, because that is the mistake this whole
@@ -50,12 +56,7 @@ function fieldHelperBody(src) {
 // four modules it had itself declared a bound in, because adding `min` support
 // makes a below-min value start warning on tiles nobody has looked at -- a
 // behaviour change, not a repair.
-const DROPPED_BEFORE_V1179 = new Set([
-  'group-b.js', 'group-f.js', 'group-i.js', 'group-v10.js', 'group-v11.js',
-  'group-v125.js', 'group-v126.js', 'group-v127.js', 'group-v129.js',
-  'group-v13.js', 'group-v15.js', 'group-v16.js', 'group-v17.js', 'group-v18.js',
-  'group-v5.js', 'group-v7.js', 'group-v8.js', 'group-v9.js',
-]);
+const DROPPED_BEFORE_V1179 = new Set([]);
 
 test('every view module that is PASSED a max renders it', () => {
   const offenders = [];
@@ -77,8 +78,9 @@ test('every view module that is PASSED a max renders it', () => {
   }
   // The reach, asserted: "clean" must not come to mean "looked at nothing".
   assert.ok(checked >= 20, `expected many view modules to declare a bound; saw ${checked}`);
-  // And the ledger must not quietly grow into the whole catalog.
-  assert.ok(DROPPED_BEFORE_V1179.size <= 18, 'the ledger is a backlog, not a home');
+  // spec-v1182: drained. The ledger held 18; it holds none, and a new entry is a
+  // regression rather than a backlog item.
+  assert.equal(DROPPED_BEFORE_V1179.size, 0, 'the ledger was drained by spec-v1182');
   assert.deepEqual(offenders, [],
     'these modules accept a `max:` option and never set the attribute, so the '
     + 'range warning above the answer can never fire for those fields');

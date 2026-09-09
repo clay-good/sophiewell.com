@@ -25,6 +25,10 @@ function field(label, id, opts = {}) {
   inp.setAttribute('inputmode', opts.step && opts.step !== '1' ? 'decimal' : 'numeric');
   if (opts.min != null) inp.setAttribute('min', String(opts.min));
   if (opts.placeholder) inp.setAttribute('placeholder', opts.placeholder);
+  // spec-v1182: this helper accepted `max` and dropped it, so a bound declared
+  // on a field in this module never reached the page and its range warning
+  // could not fire. Ledgered by spec-v1179; drained here.
+  if (opts.max != null) inp.setAttribute('max', String(opts.max));
   wrap.appendChild(inp);
   return wrap;
 }
