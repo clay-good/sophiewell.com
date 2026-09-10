@@ -471,7 +471,7 @@ reassuring side of the threshold where the example never goes (spec-v1092).
 ## What is still open
 
 - **A value past a ceiling `lib/bounds.js` already declares still produces an
-  answer in 80 fields**, spread over fifty of the
+  answer in 54 fields**, spread over thirty-seven of the
   catalog's entries (`scripts/probe-envelope-unbounded.mjs`). It was 116 across
   sixty-eight until [spec-v1224](spec-v1224.md) took the seven ten-year
   cardiovascular-risk engines (a clamp was standing in for a guard, so an SBP of
@@ -479,7 +479,11 @@ reassuring side of the threshold where the example never goes (spec-v1092).
   percentage) and [spec-v1225](spec-v1225.md) took the eight serum-chemistry
   identities (`corrected-calcium` printed a **negative serum calcium**), and
   [spec-v1228](spec-v1228.md) the four threshold-comparison tiles (`iadpsg`
-  *diagnosed* gestational diabetes from a draw of 20000 mg/dL).
+  *diagnosed* gestational diabetes from a draw of 20000 mg/dL), and
+  [spec-v1229](spec-v1229.md) the liver panel and three metabolic indices
+  (`child-pugh` scored an albumin of 70 g/dL in its *healthiest* band), and
+  [spec-v1230](spec-v1230.md) five bedside derivations (`pf-ratio` read a PaO2 of
+  7000 mmHg as *"Normal"*, the reassuring end of an ARDS severity scale).
   None of them is a rule-out any more — [spec-v1211](spec-v1211.md) drained that
   bucket and fixed the classifier that had been hiding four of them — so what
   remains is alarms and neutral readings.

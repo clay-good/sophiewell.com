@@ -12,6 +12,7 @@
 // (lib/endo-v136.js).
 
 import { el, clear } from '../lib/dom.js';
+import { BOUNDS } from '../lib/bounds.js';
 import { unitField, unitNumOpt, WEIGHT_UNITS } from '../lib/field-units.js';
 import * as M from '../lib/endo-v136.js';
 import { resultRow } from '../lib/result-copy.js';
@@ -118,8 +119,14 @@ export const renderers = {
     root.appendChild(selectField('On treatment for high triglycerides?', 'ms-tgtx', OPT_YN));
     root.appendChild(field('HDL cholesterol (mg/dL)', 'ms-hdl', { max: 200, step: '1', min: 0, placeholder: 'e.g. 45' }));
     root.appendChild(selectField('On treatment for low HDL?', 'ms-hdltx', OPT_YN));
-    root.appendChild(field('Systolic BP (mmHg)', 'ms-sbp', { max: 300, step: '1', min: 0, placeholder: 'e.g. 128' }));
-    root.appendChild(field('Diastolic BP (mmHg)', 'ms-dbp', { step: '1', min: 0, placeholder: 'e.g. 82' }));
+    // spec-v1230: one field, one range. spec-v1229 gave this tile the BOUNDS
+    // envelope in the library, and the page then said "outside the 0 to 300 this
+    // field accepts" above "the plausible range for systolic blood pressure (20
+    // to 300 mmHg)". spec-v1198: a view's ceilings ARE lib/bounds.js's. The
+    // diastolic field is given the same pair rather than left open at the top,
+    // so the two pressures are declared the same way.
+    root.appendChild(field('Systolic BP (mmHg)', 'ms-sbp', { max: BOUNDS.sbp.max, step: '1', min: BOUNDS.sbp.min, placeholder: 'e.g. 128' }));
+    root.appendChild(field('Diastolic BP (mmHg)', 'ms-dbp', { max: BOUNDS.dbp.max, step: '1', min: BOUNDS.dbp.min, placeholder: 'e.g. 82' }));
     root.appendChild(selectField('On antihypertensive treatment?', 'ms-bptx', OPT_YN));
     root.appendChild(field('Fasting glucose (mg/dL)', 'ms-glu', { step: '1', min: 0, placeholder: 'e.g. 105' }));
     root.appendChild(selectField('On treatment for elevated glucose?', 'ms-glutx', OPT_YN));

@@ -20,6 +20,35 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A mean arterial pressure of 1053 mmHg, an A-a gradient of minus 6900, and an
+  ARDS ratio that read "Normal".** Five bedside derivations each hid an impossible
+  input a different way: an average has no band beside it for the number to look
+  wrong against; the Berlin ARDS categories are open at the top, so a PaO2 of 7000
+  mmHg lands on the *reassuring* end of a severity scale; and the eGFR power law
+  compresses, so a creatinine of 250 mg/dL gives a result you cannot tell from a
+  real dialysis-range one. All five now check the value first. Cockcroft-Gault had
+  the diagnosis in a comment three lines above the defect -- the *renderer* was
+  showing the plausibility note and the library was not, so anything but the
+  browser got the clearance with nothing beside it.
+
+  Eight of these tools also left the working of their *last good answer* on screen
+  underneath the new refusal, because the wrapper that clears it was never given
+  the panel to clear. Three of the eight only became reachable when an earlier
+  change in this series taught them to refuse at all. See docs/spec-v1230.md.
+
+- **A sodium of 2000 mEq/L produced a transplant-priority MELD score, and an albumin
+  of 70 g/dL scored Child-Pugh's healthiest liver.** MELD-3.0 clamps sodium and
+  albumin to the ranges OPTN publishes, which is right -- that clamp *is* the score
+  -- but it is not a plausibility check, and it was doing duty as one. Child-Pugh
+  landed on the reassuring side: its best albumin band is "above 3.5 g/dL", and 70
+  is above 3.5. Maddrey and Lille took an impossible bilirubin straight into a
+  difference and a log. Beside them, three metabolic indices had the same problem
+  from the other direction: a log compresses, so a fasting glucose of 20000 mg/dL
+  came out as *"QUICKI 0.1859"* and *"TyG index 14.22"*, printed next to their own
+  reference ranges as though ordinary. All seven now check the value first. The
+  OPTN clamps are untouched -- a sodium of 120 still scores as 125. See
+  docs/spec-v1229.md.
+
 - **Four tools diagnosed from a lab value no patient has.** They do not compute with
   their inputs, they compare each one against a cutoff -- and a glucose of 20000
   mg/dL is over the 92 mg/dL cutoff in exactly the way 95 is. IADPSG is the

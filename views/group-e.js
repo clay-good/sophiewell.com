@@ -295,7 +295,7 @@ export const renderers = {
       adviseAll(o, [['sodium', measuredNa], ['glucose', glucose]]);
       o.appendChild(el('p', { class: 'muted', text: 'Both correction factors are reported per the literature (Katz 1973; Hillier 1999).' }));
       if (deriv) updateDerivationSteps(deriv, META['corrected-sodium'], inputs);
-    });
+    }, deriv);
     ['na', 'g', 'g-unit'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
 
@@ -320,7 +320,7 @@ export const renderers = {
       ]);
       adviseAll(o, [['fio2', fio2], ['paCO2', paco2], ['paO2', pao2]]);
       if (deriv) updateDerivationSteps(deriv, META['aa-gradient'], inputs);
-    });
+    }, deriv);
     ['fio2', 'paco2', 'pao2'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
 
@@ -343,7 +343,7 @@ export const renderers = {
       const v = C.egfrCkdEpi2021(inputs);
       o.appendChild(el('p', { text: `eGFR: ${v} mL/min/1.73 m^2 (CKD-EPI 2021 race-free)` }));
       if (deriv) updateDerivationSteps(deriv, META.egfr, inputs);
-    });
+    }, deriv);
     ['scr', 'age', 'sex'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
 
@@ -372,7 +372,7 @@ export const renderers = {
       const adv = boundsAdvisory('scr', scr);
       if (adv) o.appendChild(el('p', { class: 'warn', text: adv }));
       if (deriv) updateDerivationSteps(deriv, META['cockcroft-gault'], inputs);
-    });
+    }, deriv);
     ['age', 'w', 'w-unit', 'scr', 'scr-unit', 'sex'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
 
@@ -518,7 +518,7 @@ export const renderers = {
         { text: `Osmolal gap: ${r.gap.toFixed(1)} (>10 raises suspicion of toxic alcohols)` },
       ]);
       if (deriv) updateDerivationSteps(deriv, META['osmolal-gap'], inputs);
-    });
+    }, deriv);
     ['measured', 'og-na', 'og-glu', 'og-glu-unit', 'og-bun', 'og-bun-unit', 'og-etoh'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
 
@@ -566,7 +566,7 @@ export const renderers = {
         r.secondaryDisorder ? { text: r.secondaryDisorder } : null,
       ]);
       if (deriv) updateDerivationSteps(deriv, META.winters, inputs);
-    });
+    }, deriv);
     ['wf-hco3', 'wf-paco2'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
 
@@ -691,7 +691,7 @@ export const renderers = {
         { text: `FEUrea: ${feurea == null ? '(incomplete inputs)' : feurea.toFixed(2) + '%'} (<35% prerenal, useful when on diuretics)` },
       ]);
       if (deriv) updateDerivationSteps(deriv, META['fena-feurea'], inputs);
-    });
+    }, deriv);
     ['fn-una', 'fn-pna', 'fn-ucr', 'fn-pcr', 'fu-uu', 'fu-pu'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
 
@@ -823,7 +823,7 @@ export const renderers = {
       o.appendChild(el('p', { text: `Inotrope Score (IS, Wernovsky 1995): ${r.is.toFixed(1)}` }));
       o.appendChild(el('p', { text: r.band }));
       if (deriv) updateDerivationSteps(deriv, META.vis, inputs);
-    });
+    }, deriv);
     ['vs-dop', 'vs-dob', 'vs-epi', 'vs-ne', 'vs-mil', 'vs-vaso'].forEach((id) => document.getElementById(id).addEventListener('input', run));
     run();
   },
