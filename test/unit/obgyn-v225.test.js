@@ -108,3 +108,29 @@ test('spec-v1094: a partial PBAC chart does not rule out heavy bleeding', () => 
   const allCounted = { ...complete, largeClots: 0 };
   assert.equal(pbac(allCounted).footing, null);
 });
+
+// spec-v1219: `cnt()` discarded a count outside 0..1e6 and returned 0, while
+// `fieldEntered` called the same value entered -- so the footing that exists to
+// report an incomplete tally stayed silent about an item the reader had filled in.
+test('pbac: an impossible count is refused, not tallied as zero', () => {
+  const base = { soakedPads: 5, moderatePads: 4, largeClots: 2 };
+  assert.equal(pbac(base).score, 130);
+  for (const bad of [-1, -999999, 2e6]) {
+    const r = pbac({ ...base, lightPads: bad });
+    assert.equal(r.valid, false, `a count of ${bad} must not tally as zero`);
+    assert.match(r.message, /lightly stained pads must be between 0 and 1000000/);
+    // views/group-v225.js render() prints `message` (spec-v1212).
+    assert.equal(r.band, r.message);
+  }
+  // Nothing that used to score stops scoring: this refuses exactly what `cnt`
+  // was already discarding.
+  assert.equal(pbac({ ...base, lightPads: 0 }).score, 130);
+  assert.equal(pbac({ ...base, lightPads: 7 }).score, 137);
+});
+
+test('pbac: a blank item type still reaches the footing that reports it', () => {
+  const r = pbac({ lightPads: 2, moderatePads: 1 });
+  assert.equal(r.valid, true, 'a blank is asked about by the footing, not refused');
+  assert.equal(r.score, 7);
+  assert.match(r.footing, /2 of 8 item types/);
+});

@@ -49,7 +49,13 @@ const stable = (r) => JSON.stringify(r && r.result !== undefined ? r.result : r)
 // This list is local on purpose. Editing the shared one would change what two
 // whole-catalog sweeps flag (spec-v1039's rule: check which tiles a new phrase
 // stops flagging before adding it), and this probe is a report, not a gate.
-const DISCLOSING = /not entered|not given|was not|were not|not used|not available|unavailable|omitted|assumed|incomplete|the only|could not/i;
+//
+// `default` is on the list because `ecmo-titration` discloses as "Titrated to the
+// default target PaCO2 of 40 mmHg, because no target was entered" -- naming the
+// substitute rather than the rejected value. It is safe here only because the
+// movement rule already restricts matching to sentences the reading ADDED, so a
+// standing note that happens to mention a default cannot exempt a tile.
+const DISCLOSING = /not entered|no [a-z]+ was entered|not given|was not|were not|not used|not available|unavailable|omitted|assumed|default|incomplete|the only|could not/i;
 // The movement rule (spec-v1196) at SENTENCE level, not word level. Subtracting
 // word-by-word destroys the phrase being looked for: `abi` adds "The right ankle
 // pressure was not entered", and both "not" and "entered" appear elsewhere in the
@@ -99,7 +105,23 @@ for (const [id, meta] of Object.entries(META)) {
       // was not entered", which tells the reader the leg was dropped; a tile that
       // adds nothing dropped the value in silence.
       const added = sentences(stable(r)).filter((x) => !normalSentences.has(x)).join(' ');
-      rows.push({ id, dom, label: p.description || dom, bad, discloses: ASKING.test(added) || DISCLOSING.test(added) });
+      // spec-v1219: the third way a tile discloses, and the commonest. It says
+      // nothing about the dropped value and instead ENUMERATES LESS: `pk-suite`
+      // goes from "half-life 6.93 h; steady state 34.65 h; loading dose 1000 mg;
+      // maintenance 1200 mg" to "loading dose 1000 mg", and its renderer omits
+      // the rows whose value is null. `modified-marshall` does the same with
+      // "assessed: respiratory 3, renal 2" -> "assessed: renal 2".
+      //
+      // A reader sees quantities disappear. That is weaker than naming the value
+      // rejected, and it is not silence -- so it is separated out rather than
+      // counted as a defect. What is left is the row where the reading is
+      // IDENTICAL to the normal one: nothing on screen moved at all.
+      const enumeratedLess = stable(r).length < stable(base).length;
+      const identical = stable(r) === stable(base);
+      rows.push({
+        id, dom, label: p.description || dom, bad, identical,
+        discloses: ASKING.test(added) || DISCLOSING.test(added) || enumeratedLess,
+      });
       break;
     }
   }
@@ -108,7 +130,11 @@ for (const [id, meta] of Object.entries(META)) {
 rows.sort((a, b) => (a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
 const silent = rows.filter((r) => !r.discloses);
 const spoken = rows.length - silent.length;
+const nothingMoved = silent.filter((r) => r.identical);
 console.log(`${silent.length} fields where an impossible value reads as "not entered" AND the reading does not say so`
-  + ` (${spoken} more read as absent but disclose it;`
-  + ` reach: ${checked} tiles, ${fieldsTried} numeric fields whose omission the tile accepts)`);
-for (const r of silent) console.log(`  ${r.id}  ${r.dom} (${r.label}) = ${r.bad}`);
+  + ` -- of which ${nothingMoved.length} where the reading is IDENTICAL to the normal one, so nothing on screen moved.`);
+console.log(`${spoken} more read as absent but disclose it (named, asked for, or enumerated less).`
+  + ` Reach: ${checked} tiles, ${fieldsTried} numeric fields whose omission the tile accepts.`);
+for (const r of silent) {
+  console.log(`  ${r.identical ? '[nothing moved] ' : '                '}${r.id}  ${r.dom} (${r.label}) = ${r.bad}`);
+}
