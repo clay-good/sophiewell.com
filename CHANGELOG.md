@@ -718,6 +718,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   value, and name every field that is out of range rather than one at a time. See
   docs/spec-v1200.md.
 
+- **"Enter the value you just entered."** Eleven liver scores -- among them MELD
+  3.0, MELD-Na, PALBI, CLIF-C AD, the Glasgow-Blatchford bleeding score and the
+  Freiburg post-TIPS index -- told a reader that a lab result outside the accepted
+  range was a lab result they had not entered.
+  Retyping the same number produced the same message, with no way to tell what
+  was actually wrong. All five now say which of the two it is: a blank field is
+  still asked for, and an out-of-range value is named with the range it has to be
+  in. Two of them previously said only "Enter the required values" and now name
+  the field. See docs/spec-v1201.md.
+
 ### Changed
 
 - **The check that compares a tool's accepted values with the menu on the page could

@@ -26,6 +26,11 @@ import { ipssrMds } from '../../lib/hemonc-v94.js';
 import { mews, news2, mods, meows } from '../../lib/scoring-v4.js';
 import { lods } from '../../lib/critcare-severity-v200.js';
 import { harveyBradshaw } from '../../lib/hepgi-v93.js';
+import { meld3 } from '../../lib/meld3-v678.js';
+import { palbi, meldNa } from '../../lib/hepgi-v190.js';
+import { clifcAd } from '../../lib/hepatology-gibleed-v201.js';
+import { fips } from '../../lib/hepatology-prognosis-v220.js';
+import { inputFault } from '../../lib/num.js';
 import { abi } from '../../lib/vascular-v105.js';
 import { lactateClearance } from '../../lib/critcare-v112.js';
 import {
@@ -263,4 +268,53 @@ test('harvey-bradshaw discloses the clamp on every subscore, not four of five', 
   const st = harveyBradshaw({ ...ok, stools: 2000000 });
   assert.equal(st.clamped, true);
   assert.match(st.band, /out of range and was clamped/);
+});
+
+// spec-v1201: the OTHER section of probe-envelope-unbounded -- the tiles whose
+// out-of-range refusal calls an entered value MISSING, so retyping it produces
+// the same sentence. Not a wrong answer; a loop with no way out.
+test('the liver scores say which of the two things is wrong', () => {
+  const cases = [
+    ['meld3', (o) => meld3({ sex: 'male', bilirubin: 2, inr: 1.5, creatinine: 1.2, sodium: 135, albumin: 3.0, ...o }),
+      { bilirubin: 600 }, { bilirubin: '' }, /serum bilirubin/i],
+    ['palbi', (o) => palbi({ bilirubin: 1.2, albumin: 3.5, platelets: 150, ...o }),
+      { bilirubin: 600 }, { bilirubin: '' }, /bilirubin/i],
+    ['meldNa', (o) => meldNa({ bilirubin: 2, inr: 1.5, creatinine: 1.2, sodium: 135, ...o }),
+      { sodium: 2000 }, { sodium: '' }, /sodium/i],
+    ['clifcAd', (o) => clifcAd({ age: 60, creatinine: 1.5, inr: 1.4, wbc: 8, sodium: 135, ...o }),
+      { creatinine: 250 }, { creatinine: '' }, /creatinine/i],
+    ['fips', (o) => fips({ bilirubin: 2, creatinine: 1.2, age: 60, albumin: 3, ...o }),
+      { bilirubin: 600 }, { bilirubin: '' }, /bilirubin/i],
+  ];
+  for (const [name, run, tooBig, blank, field] of cases) {
+    assert.notEqual(run({}).valid, false, `${name} baseline`);
+
+    const entered = run(tooBig);
+    assert.equal(entered.valid, false, name);
+    assert.match(entered.message, field, name);
+    assert.match(entered.message, /Check the value entered/, name);
+    assert.doesNotMatch(entered.message, /^Enter /, `${name}: an entered value must not be called missing`);
+
+    const absent = run(blank);
+    assert.equal(absent.valid, false, name);
+    assert.match(absent.message, /^Enter /, `${name}: a blank must still ask`);
+    assert.doesNotMatch(absent.message, /Check the value entered/, name);
+  }
+});
+
+test('the "which fault" sentence is written once', () => {
+  // lib/num.js exists because r1 and num were once declared in two files that
+  // agreed and had nothing keeping them agreeing. The first three tiles fixed
+  // this way each grew their own copy before it was hoisted.
+  assert.equal(inputFault([['the sodium', '', null, 200, 'mmol/L']]), 'Enter the sodium in mmol/L.');
+  assert.equal(inputFault([['the sodium', 2000, null, 200, 'mmol/L']]),
+    'The sodium must be greater than 0 and at most 200 mmol/L. Check the value entered.');
+  assert.equal(inputFault([['the age', 140, 0, 120, 'years']]),
+    'The age must be between 0 and 120 years. Check the value entered.');
+  // A unitless quantity does not gain a trailing space.
+  assert.equal(inputFault([['the INR', 99, null, 30, '']]),
+    'The INR must be greater than 0 and at most 30. Check the value entered.');
+  // Nothing wrong, nothing said; and rows are read in the caller's order.
+  assert.equal(inputFault([['the sodium', 135, null, 200, 'mmol/L']]), null);
+  assert.match(inputFault([['first', '', null, 1, ''], ['second', 999, null, 1, '']]), /^Enter first\./);
 });

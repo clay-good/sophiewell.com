@@ -34,10 +34,15 @@ test('formula matches a hand computation', () => {
   assert.equal(agile3plus({ lsm, ast, alt, platelets: plt, diabetes: false, sex: 'male', age }).score, expected);
 });
 
-test('non-positive LSM -> complete-the-fields (ln guarded)', () => {
+// spec-v1201: the message used to be one sentence for every fault -- "all
+// positive" -- because the range check and the missing check were one branch, so
+// a value the reader HAD entered came back as one still owed.
+test('non-positive LSM -> the range, named, not "enter it"', () => {
   const r = agile3plus({ lsm: 0, ast: 50, alt: 40, platelets: 180, diabetes: true, sex: 'male', age: 60 });
   assert.equal(r.valid, false);
-  assert.match(r.message, /positive/);
+  assert.match(r.message, /liver stiffness measurement must be greater than 0 and at most 100 kPa/);
+  assert.match(r.message, /Check the value entered/);
+  assert.doesNotMatch(r.message, /^Enter /);
 });
 
 test('score always within 0..1', () => {

@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `e07e78ac422c0959`
-Generated: 2026-09-10T05:48:16.187Z
+Build ID: `54be3eff818ef54c`
+Generated: 2026-09-10T07:16:11.425Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -370,9 +370,9 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/hep-v124.js` | 15356 | `049ccb04b60ff0a93eb6c80400e614dd5709cbe071e48d5b0b7632cec0b69248` |
 | `lib/hep-v125.js` | 13055 | `86f145e491067a12d2b0dea0085a9340a14350d5b82d29dca936d41c9b8d6d03` |
 | `lib/hepatic-iron-index-v932.js` | 6957 | `4c14e67de0551f4e4f9bde691e19eaa0c2f4e5cc6fb41033d1b7e0fd73ec74d6` |
-| `lib/hepatology-gibleed-v201.js` | 19770 | `b13202719fc096c742097095af56bcd722c07b67f7e138a791e72cd818eb7da6` |
-| `lib/hepatology-prognosis-v220.js` | 11769 | `1f9c49980dee9a6c4959fb670f74c99b1bbd44eab695f06dee16190eee21addb` |
-| `lib/hepgi-v190.js` | 11863 | `18fdde7face8dec98d83118b4840f01f3e93a7594a0cade787ab75771707e239` |
+| `lib/hepatology-gibleed-v201.js` | 20913 | `00955d70e5c901a731f1f299fbc55d7f62a4760f8602eefb37f9d89c85909e5d` |
+| `lib/hepatology-prognosis-v220.js` | 12866 | `792e4365d5eed204d4a285634402b982fc0c3d278a8ba368bb6b90a18c3e538a` |
+| `lib/hepgi-v190.js` | 12405 | `7c540b80cd37246a38feab61d596a96d457190f87ee58211239ed22fb74e2292` |
 | `lib/hepgi-v93.js` | 20242 | `fcb64d340b664f612a875fc38bcfdd15b7c3cd9a5e4660d7a69704e793af8606` |
 | `lib/herring-pillar-v347.js` | 4295 | `5402d155c338948987f458750b247521fc6ba36f5a20d9501eb4b97e6ae52794` |
 | `lib/hf-ef-classification-v840.js` | 8378 | `4ba17b89bcb66c65f821f7cb6335cab5c57e428fcf22c2da876fa636ce7a972e` |
@@ -505,7 +505,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/measles-case-def-v872.js` | 9149 | `81b9f742a3e925d662ce16c4e5d53bcac73d69d494f8df443a7509eeb7bd5554` |
 | `lib/medication-v4.js` | 18673 | `14ff4cc09d6345ca970e967ec007f4bfb1508538717c1e7268406152bbf7cfed` |
 | `lib/medication-v5.js` | 18863 | `ce81d9f8954abbd412892c13af9936f992239164f26fd2b999eaea7902787ab7` |
-| `lib/meld3-v678.js` | 5664 | `7bda4af7c9412eae41162d0cdd6b977cbc9a6f9b8a7bc40fe350f861e989444c` |
+| `lib/meld3-v678.js` | 6453 | `e04e977ebe609d49b7c132b73aa4ae59fb58744362931d47b2acf4c0d1b39651` |
 | `lib/membranous-risk-v878.js` | 11351 | `882c36c07e46543e32f1114792c1124ee9f9ff6b384084fc0a8c221e7dd62062` |
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
@@ -576,7 +576,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/nottingham-npi-v330.js` | 3875 | `9a95ea364fb41e94801ff30ac7789c22eeebef1abd6c2bd24a3c6fd1e01253ac` |
 | `lib/nsofa-v526.js` | 9799 | `459b65cd36b79e54aef1c52ab5b77e682ec0af768a6f9c8000321e3c9fc53009` |
 | `lib/ntm-pulmonary-v827.js` | 8077 | `51b554704f575d5ffce2a350e5d8013ee70f0b42f5b85b86d7415d4479de1696` |
-| `lib/num.js` | 11675 | `e20b8731aeb9c3b13703e29c32c5d2789fbef39e559b92311c8e0e710ab802d6` |
+| `lib/num.js` | 13518 | `59e72b7fed4f0f56fe9fb7ef77b6ecaae25561c438610bf23594fb7f65c81464` |
 | `lib/nunley-vertullo-v455.js` | 3085 | `6f287a16c80ba5d73e2bb2c15989a7aa81d8335767f0a36e8c67c3203b357439` |
 | `lib/nutrition-energy-v152.js` | 14446 | `924b5421f818147f64b10db410fca9892773a29a918cf40e2bacdb64c0dbb23a` |
 | `lib/nutrition-maternal-v208.js` | 13391 | `3f68589603d6c5be3866aa0200955bbff10fe8873d47a3a9a1068a0c5b5c4c87` |

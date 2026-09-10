@@ -33,10 +33,28 @@ test('formula matches a hand computation', () => {
   assert.equal(clifcAd({ age, creatinine: creat, inr, wbc, sodium: na }).score, expected);
 });
 
-test('non-positive lab -> complete-the-fields (ln guarded)', () => {
+// spec-v1201: the message used to be one sentence for every fault -- "…all
+// positive" -- because the range check and the missing check were one branch. A
+// value the reader HAD entered came back as one of the values still owed.
+test('non-positive lab -> the range, named, not "enter it"', () => {
   const r = clifcAd({ age: 60, creatinine: 0, inr: 1.4, wbc: 8, sodium: 132 });
   assert.equal(r.valid, false);
-  assert.match(r.message, /positive/);
+  assert.match(r.message, /creatinine must be greater than 0 and at most 40 mg\/dL/);
+  assert.match(r.message, /Check the value entered/);
+  assert.doesNotMatch(r.message, /^Enter /);
+});
+
+test('an out-of-range lab is not reported as a missing one', () => {
+  const entered = clifcAd({ age: 60, creatinine: 250, inr: 1.4, wbc: 8, sodium: 132 });
+  assert.match(entered.message, /creatinine must be greater than 0 and at most 40/);
+
+  // A genuinely absent one still gets the other sentence.
+  const absent = clifcAd({ age: 60, inr: 1.4, wbc: 8, sodium: 132 });
+  assert.match(absent.message, /^Enter the creatinine in mg\/dL\./);
+
+  // And the sodium keeps its own two-sided bound.
+  assert.match(clifcAd({ age: 60, creatinine: 1.5, inr: 1.4, wbc: 8, sodium: 2000 }).message,
+    /sodium must be between 100 and 180 mmol\/L/);
 });
 
 test('missing INR -> complete-the-fields', () => {
