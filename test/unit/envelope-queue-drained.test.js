@@ -23,7 +23,7 @@ import assert from 'node:assert/strict';
 
 import { cdaiCrohns } from '../../lib/gi-v126.js';
 import { ipssrMds } from '../../lib/hemonc-v94.js';
-import { mews } from '../../lib/scoring-v4.js';
+import { mews, news2, mods } from '../../lib/scoring-v4.js';
 import { abi } from '../../lib/vascular-v105.js';
 import { lactateClearance } from '../../lib/critcare-v112.js';
 import {
@@ -159,4 +159,49 @@ test('boundsAdvisory reads correctly for a unitless envelope', () => {
     assert.ok(String(b.note).includes(';'), `${key} note needs a "name; detail" split`);
   }
   assert.match(boundsAdvisory('gcs', 157), /plausible range for Glasgow Coma Scale \(3 to 15 points\)/);
+});
+
+// spec-v1199: the early-warning and ICU-severity family, and the two shapes it
+// was in. Every band in these scores saturates at its extreme, so an impossible
+// observation scores the same points a survivable one does and the total lands
+// in a risk band all the same -- the defect spec-v1181 fixed for `mews` and left
+// beside it.
+test('news2, mods and saps-ii guard the set, as mews already did', () => {
+  const news = { rr: 14, spo2: 98, sbp: 124, pulse: 78, temp: 37, acvpu: 'A' };
+  assert.equal(news2(news).score, 0);
+  for (const [bad, pattern] of [
+    [{ sbp: 3000 }, /systolic blood pressure \(20 to 300 mmHg\)/],
+    [{ pulse: 3000 }, /heart rate \(10 to 300 bpm\)/],
+    [{ temp: 450 }, /core temperature \(25 to 45 C\)/],
+  ]) {
+    const r = news2({ ...news, ...bad });
+    assert.equal(r.score, null, JSON.stringify(bad));
+    assert.equal(r.valid, false, JSON.stringify(bad));
+    assert.match(r.band, pattern, JSON.stringify(bad));
+  }
+
+  const m = {
+    pfRatio: 300, creatinineMgDl: 1.0, bilirubinMgDl: 1.0, par: 15, plateletsK: 200, gcs: 15,
+  };
+  assert.equal(mods(m).score, 2);
+  for (const bad of [{ creatinineMgDl: 250 }, { plateletsK: 20000 }, { gcs: 157 }]) {
+    const r = mods({ ...m, ...bad });
+    assert.equal(r.valid, false, JSON.stringify(bad));
+    assert.match(r.band, /plausible range/, JSON.stringify(bad));
+  }
+  // And it does not pre-empt the missing-value branch, which says something else.
+  assert.match(mods({ ...m, creatinineMgDl: '' }).band, /^Enter all six MODS/);
+});
+
+// spec-v1199: mcp/tools.js treats a library result as an answer unless it is null
+// or carries `valid: false`. `mews` returned its refusal as `{ score: null, band:
+// <the sentence> }`, so the browser refused and an AGENT was handed a successful
+// computation whose score happened to be null.
+test('an envelope refusal reaches the agent surface as a refusal', () => {
+  const r = mews({ sbp: 3000, pulse: 78, rr: 14, temp: 37, avpu: 'A' });
+  assert.equal(r.valid, false);
+  assert.equal(r.score, null);
+  assert.match(r.band, /plausible range for systolic blood pressure/);
+  // The view keys off `score`, not `valid`, so the page is unchanged.
+  assert.equal(mews({ sbp: 120, pulse: 78, rr: 14, temp: 37, avpu: 'A' }).score, 0);
 });

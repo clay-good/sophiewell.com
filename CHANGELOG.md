@@ -699,6 +699,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   entered value missing. The boxes carry the same ceilings, so a transposed digit
   is caught on the way in. See docs/spec-v1198.md.
 
+- **Early-warning scores banded impossible observations.** NEWS2, MODS and SAPS II
+  each score a vital sign or a lab into steps that stop at the top, so a systolic
+  pressure of 3000 or a creatinine of 250 scored exactly what a survivable extreme
+  scores and the total landed in a risk band with nothing to mark it. MEWS -- the
+  score directly below NEWS2 in the same file -- has refused those since it was
+  fixed. All three now refuse too. Separately, MEWS's own refusal was reaching
+  software that calls these tools as a *successful* calculation with an empty
+  score; it now reports the refusal on both surfaces, and the page is unchanged.
+  See docs/spec-v1199.md.
+
 ### Changed
 
 - **The check that compares a tool's accepted values with the menu on the page could

@@ -37,8 +37,26 @@ test('a blank required variable surfaces the complete-the-fields fallback', () =
   assert.ok(!/NaN/.test(r.band));
 });
 
-test('overflow / extreme inputs yield a finite mortality in [0,100]', () => {
+// spec-v1199: this test used to assert that age 1e9 and a white cell count of
+// 1e9 came back `valid: true` with a mortality -- the overflow-safety property
+// was real, but the case it was written on is now refused outright, because every
+// SAPS II band saturates at its extreme and an impossible value scores the same
+// points a survivable one does.
+test('extreme inputs are refused rather than scored', () => {
   const r = sapsII({ ...SICK, age: 1e9, wbc: 1e9, bun: 1e9, gcs: 3 });
+  assert.equal(r.valid, false);
+  assert.match(r.band, /plausible range/);
+  assert.ok(!/NaN|Infinity/.test(r.band));
+  assert.equal(r.mortality, undefined);
+});
+
+test('at the very edge of every envelope the mortality is still finite and in [0,100]', () => {
+  // The overflow property this replaces, asserted where the tile still answers:
+  // the highest value each envelope admits, all at once.
+  const r = sapsII({
+    ...SICK, age: 130, heartRate: 300, sbp: 300, temperature: 45,
+    sodium: 200, potassium: 10, bicarbonate: 60, bilirubin: 60, wbc: 200, gcs: 3,
+  });
   assert.equal(r.valid, true);
   assert.ok(Number.isFinite(r.mortality));
   assert.ok(r.mortality >= 0 && r.mortality <= 100);
