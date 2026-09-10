@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `ddc603b2db9a41eb`
-Generated: 2026-09-10T20:32:15.052Z
+Build ID: `a25bb89fef777323`
+Generated: 2026-09-10T20:51:59.248Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -511,7 +511,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
 | `lib/meta.js` | 2468534 | `c860e9dbbd0cf94493c69225e30e6e78c6f04645ba0d877c0bb697078af1a650` |
 | `lib/metabolic-hepatic-v219.js` | 12791 | `b9352877cebf7fbf3c3b99ecb8b72cdbee3ed94e056dc019113668609f5a95a8` |
-| `lib/metabolic-onc-v88.js` | 16704 | `116751a3e53a3b79465c0184bbf63dfc875b17d37a7cfc201440b6901028c21d` |
+| `lib/metabolic-onc-v88.js` | 18455 | `56c51646e1ba8a65f8f1098a7dc9b6bc82f42a41029ce3d5a943f0390c739518` |
 | `lib/metabolic-v269.js` | 3262 | `0c7a42557886f2b0aeee7949b8d0bd682d795d4526174fd540717a978d94ec2f` |
 | `lib/metabolic-v273.js` | 2945 | `974e98d9a3671ad62526e2212dfae812221ff72dce8046f65a2db904eb4ec881` |
 | `lib/metavir-activity-v505.js` | 3062 | `750a1451913ae545ea922fdb3584efd83e1043cafdb85259a78d4d3c72f6b6a2` |
@@ -762,7 +762,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/schobinger-avm-v497.js` | 3484 | `fd7d680fede1965fd9a9026d0977e4f2c1970e30d33718df3daaca235dfed009` |
 | `lib/schofield-v779.js` | 4325 | `7c398e3b1dc2df66c5323baee0f73ff66c28927fb47a72ede85dfd51d2de4931` |
 | `lib/schwab-england-v385.js` | 4331 | `caddd0709826db63186ebf0a5f8b60fd9a3e00fa934bddc3e0331977f70c5e4b` |
-| `lib/scoring-v4.js` | 290039 | `f4c941b0cefae3b06d95e4fcc1cb761e06d00769a2b24c33bf8be94b5c840386` |
+| `lib/scoring-v4.js` | 291358 | `9978068c865800f036e3042e520afff02f606ca362d670c652978f1c93674a4d` |
 | `lib/scoring-v5.js` | 13821 | `89b532534c64d0e47a4c2e7978ec5d68f1a6d101c61ac586056a0764b8d05039` |
 | `lib/scoring-v6.js` | 27427 | `ed570d8507d63371de2181a97743f8ee1f40e2042eedba9dac2216ed247d6fad` |
 | `lib/scp-pushing-v562.js` | 12399 | `6da019a04668722b7a8d448b4d7bf9908717629b72e4a162088e74363ad62360` |

@@ -20,6 +20,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Four tools diagnosed from a lab value no patient has.** They do not compute with
+  their inputs, they compare each one against a cutoff -- and a glucose of 20000
+  mg/dL is over the 92 mg/dL cutoff in exactly the way 95 is. IADPSG is the
+  sharpest, because one value over cutoff diagnoses: an impossible draw did not
+  merely score, it *diagnosed gestational diabetes on its own*. Carpenter-Coustan
+  read the same draw as impaired glucose tolerance, Cairo-Bishop called a potassium
+  of 100 mmol/L clinical tumor lysis syndrome, and DKA/HHS -- from an arterial pH of
+  80 -- said the criteria for a crisis were *not met*, which is the reassuring
+  direction. All four now check the value before comparing it, and a draw nobody
+  took is still reported as missing rather than as out of range. See
+  docs/spec-v1228.md.
+
 - **One field, two ranges, both on screen.** Giving the five SCORE2-family risk
   tools a plausibility check (see above) left each of their systolic-BP fields
   saying two different things at once: the browser's own warning read the field's

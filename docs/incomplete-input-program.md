@@ -471,13 +471,15 @@ reassuring side of the threshold where the example never goes (spec-v1092).
 ## What is still open
 
 - **A value past a ceiling `lib/bounds.js` already declares still produces an
-  answer in 94 fields**, spread over fifty-four of the
+  answer in 80 fields**, spread over fifty of the
   catalog's entries (`scripts/probe-envelope-unbounded.mjs`). It was 116 across
   sixty-eight until [spec-v1224](spec-v1224.md) took the seven ten-year
   cardiovascular-risk engines (a clamp was standing in for a guard, so an SBP of
   3000 mmHg was centred at the top of the fitted range and reported as a risk
   percentage) and [spec-v1225](spec-v1225.md) took the eight serum-chemistry
-  identities (`corrected-calcium` printed a **negative serum calcium**).
+  identities (`corrected-calcium` printed a **negative serum calcium**), and
+  [spec-v1228](spec-v1228.md) the four threshold-comparison tiles (`iadpsg`
+  *diagnosed* gestational diabetes from a draw of 20000 mg/dL).
   None of them is a rule-out any more — [spec-v1211](spec-v1211.md) drained that
   bucket and fixed the classifier that had been hiding four of them — so what
   remains is alarms and neutral readings.
