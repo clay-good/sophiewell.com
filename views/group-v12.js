@@ -135,7 +135,11 @@ export const renderers = {
       const r = T.salicylateToxicity({
         level: val('sal-level'),
         unit: selVal('sal-unit'),
-        pH: val('sal-ph'),
+        // spec-v1213: the label says "(optional)" and `val` is
+        // `Number(input.value)`, so a blank pH arrived as a measured 7.0-scale
+        // zero. It happened to fall outside the library's own 6.5-8 envelope and
+        // so decided nothing -- but the reading was never a reading.
+        pH: optNum('sal-ph'),
         poisoningType: selVal('sal-type'),
         alteredMentalStatus: chk('sal-ams'),
         hypoxemia: chk('sal-hypox'),

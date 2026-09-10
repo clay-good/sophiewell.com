@@ -841,7 +841,11 @@ export const renderers = {
         weightKg:              unitNum('cr-w'),
         effluentRateMlPerHr,
         modality:              document.getElementById('cr-mod').value,
-        ultrafiltrationMlPerHr: nv('cr-uf'),
+        // spec-v1213: the sibling field `cr-r` was given `nvOrNull` by
+        // spec-v1148 and this one, labelled optional, was left reading blank as
+        // an ultrafiltration of 0 mL/h -- echoed to the agent surface as a
+        // measurement.
+        ultrafiltrationMlPerHr: nvOrNull('cr-uf'),
         systemicIonisedCa:     unitNum('cr-sca'),
         postFilterIonisedCa:   unitNum('cr-pca'),
         totalCa:               unitNum('cr-tca'),

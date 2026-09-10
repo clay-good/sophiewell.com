@@ -40,3 +40,16 @@ test('crrt-dose: requires weight and effluent rate', () => {
   assert.throws(() => crrtDose({ effluentRateMlPerHr: 1800 }));
   assert.throws(() => crrtDose({ weightKg: 80 }));
 });
+
+// spec-v1213: an ultrafiltration nobody prescribed was published as 0 mL/h.
+test('crrt-dose: an unstated ultrafiltration is absent, not a rate of zero', () => {
+  const r = crrtDose({ weightKg: 80, effluentRateMlPerHr: 1800 });
+  assert.equal(r.ultrafiltrationMlPerHr, null);
+  assert.equal(crrtDose({ weightKg: 80, effluentRateMlPerHr: 1800, ultrafiltrationMlPerHr: '' })
+    .ultrafiltrationMlPerHr, null);
+  // A prescribed zero still reports as zero.
+  assert.equal(crrtDose({ weightKg: 80, effluentRateMlPerHr: 1800, ultrafiltrationMlPerHr: 0 })
+    .ultrafiltrationMlPerHr, 0);
+  assert.equal(crrtDose({ weightKg: 80, effluentRateMlPerHr: 1800, ultrafiltrationMlPerHr: 150 })
+    .ultrafiltrationMlPerHr, 150);
+});

@@ -2,7 +2,7 @@
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { r1, r2, r3, num, fmt, gradeFault, inputFault } from '../../lib/num.js';
+import { r1, r2, r3, num, fmt, gradeFault, inputFault, measured } from '../../lib/num.js';
 import { boundsAdvisory, BOUNDS } from '../../lib/bounds.js';
 
 test('r1/r2/r3 round to 1/2/3 decimals (behavior unchanged from the pre-v53 copies)', () => {
@@ -99,4 +99,24 @@ test('gradeFault and inputFault cannot drift: one sentence, one builder', () => 
     gradeFault([['bilirubin', 600, 0, 60]]),
     inputFault([['bilirubin', 600, 0, 60]]),
   );
+});
+
+// spec-v1213
+test('measured() keeps "not said" distinguishable from a typed zero', () => {
+  for (const absent of [null, undefined, '', '   ', '\t', NaN, 'abc', {}]) {
+    assert.equal(measured(absent), null, `${String(absent)} is not a measurement`);
+  }
+  // A typed zero IS a measurement, and stays one.
+  assert.equal(measured(0), 0);
+  assert.equal(measured('0'), 0);
+  // Numeric strings arrive from the agent surface; they are readings too.
+  assert.equal(measured('7.2'), 7.2);
+  assert.equal(measured(-3), -3);
+});
+
+test('measured() checks presence only -- bounds belong to inputFault/gradeFault', () => {
+  // The confusion this avoids is the one that gave `fin` four meanings in lib/:
+  // one copy returns the value, another returns null when it is out of range.
+  assert.equal(measured(99999), 99999);
+  assert.match(inputFault([['bilirubin', 99999, 0, 60]]), /must be between 0 and 60/);
 });

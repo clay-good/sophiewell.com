@@ -525,8 +525,11 @@ export const renderers = {
     const run = () => safe29d(o, () => {
       const r = bristolGirth({
         bristolType:  nv29d('bg-b'),
-        girthT0Cm:    nv29d('bg-g0'),
-        girthT1Cm:    nv29d('bg-g1'),
+        // spec-v1213: both girths are labelled optional, and `nv29d` is
+        // `Number(input.value)` -- so one measurement entered and the other left
+        // blank arrived as a change from zero.
+        girthT0Cm:    nvOrNull29d('bg-g0'),
+        girthT1Cm:    nvOrNull29d('bg-g1'),
         t0Timestamp:  v29d('bg-t0'),
         t1Timestamp:  v29d('bg-t1'),
       });
