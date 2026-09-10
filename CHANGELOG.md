@@ -671,6 +671,17 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   reports the threshold plainly when neither has been entered, because then there
   is no comparison to have lost. See docs/spec-v1195.md.
 
+- **A blank count read as a breach affecting nobody.** The HIPAA breach-notification
+  clock treated an empty "affected individuals" box as zero -- and zero is below
+  the 500-person line, the side where the media are not notified and HHS hears
+  about it through next year's annual log instead of within 60 days. It now asks
+  for the count. A zero someone actually types is still a real count and still
+  answers. Found by tightening the checks that are supposed to catch this: they
+  had been accepting a tool's standing explanatory text as if it were the tool
+  saying what was missing, and now only read what the answer itself changed. The
+  diabetes diagnosis tool also now names which of the four tests were not run,
+  instead of only saying it has a single result. See docs/spec-v1196.md.
+
 ### Changed
 
 - **The check that compares a tool's accepted values with the menu on the page could

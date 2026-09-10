@@ -453,7 +453,7 @@ until someone asks:
 | `scoring-select-probe.spec.js` | which scoring selects have no empty option AND are not `required`, so neither the reader nor an agent can leave them unanswered — and which of those change the answer? |
 | `scripts/probe-default-in-answer.mjs` | does a function print a **defaulted parameter's value** into its own answer, so the reading names something nobody entered? A row is a suspect: a default is fine where the control says what it means. |
 | `scripts/probe-missing-list-reach.mjs` | does a tile's own "what is missing" list cover its own inputs, or only the ones the author was fixing? Prints the fields it never names that change the verdict when dropped. |
-| `scripts/probe-static-exemption.mjs` | which rows does the asking/disclosing vocabulary exempt on text that did **not change** when the field was dropped? Static prose cannot be a statement about a gap that did not exist when it was written ([spec-v1193](spec-v1193.md)). |
+| `scripts/probe-static-exemption.mjs` | which rows does the asking/disclosing vocabulary exempt on text that did **not change** when the field was dropped? Static prose cannot be a statement about a gap that did not exist when it was written ([spec-v1193](spec-v1193.md)). Ran 17 rows down to 2 over spec-v1193 to [spec-v1196](spec-v1196.md), which taught the one-field sweeps the same rule. |
 | `scripts/probe-envelope-unbounded.mjs` | does a tile answer from a value an order of magnitude past a ceiling `lib/bounds.js` already declares? Ranks the rows by whether the impossible value read as REASSURING, and checks its own label-to-envelope mapping against every worked example before trusting it. |
 
 The second exists because the first is bounded by the worked example, which is written alarming —

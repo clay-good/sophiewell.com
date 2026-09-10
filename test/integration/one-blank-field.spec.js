@@ -27,7 +27,7 @@
 // in it was read and judged one at a time.
 
 import { test, expect } from '@playwright/test';
-import { ASKING, DISCLOSING } from '../lib/asking-language.js';
+import { ASKING, DISCLOSING, addedText } from '../lib/asking-language.js';
 import { ONE_BLANK_FIELD_OK } from './one-blank-field-ledger.js';
 
 const SHARDS = 4;
@@ -39,6 +39,9 @@ for (let shard = 0; shard < SHARDS; shard += 1) {
   test(`no tile recomputes from one cleared measurement (shard ${shard + 1} of ${SHARDS})`, async ({ page }) => {
     test.setTimeout(SHARD_TIMEOUT_MS);
     await page.goto('/');
+    // spec-v1196: the ONE copy of the movement rule, handed to the page rather
+    // than restated in it. Exposed once for the whole shard.
+    await page.exposeFunction('__addedText', addedText);
     const ids = await page.evaluate(async () => Object.keys((await import('/lib/meta.js')).META));
     expect(ids.length).toBeGreaterThan(1500);
 
@@ -89,7 +92,13 @@ for (let shard = 0; shard < SHARDS; shard += 1) {
           await new Promise((x) => setTimeout(x, 60));
           if (after === base) continue;
           if (!after || after.length <= 12) continue;
-          if (ASK.test(after) || DISC.test(after)) continue;
+          // spec-v1196: matched against what the reading ADDED, not all of it.
+          // A sentence identical in the undropped reading was written before any
+          // field went missing, so it cannot be a statement about this one; and a
+          // reading that only LOSES a sentence has fabricated nothing.
+          const moved = await window.__addedText(base, after);
+          if (!moved) continue;
+          if (ASK.test(moved) || DISC.test(moved)) continue;
           // Still a number on screen? If every number went away with the field,
           // nothing was computed from a zero.
           if (!/(?:^|[^\d.,])\d+(?:\.\d+)?(?![\d.,]*\s*(?:19|20)\d\d)/.test(after.replace(/\(.*?\)/g, ''))) continue;

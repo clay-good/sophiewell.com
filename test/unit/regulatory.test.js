@@ -90,3 +90,26 @@ test('OA3: lintGenerator flags missing elements and confirms a complete document
 test('OA3: unknown generator kind returns null', () => {
   assert.equal(lintGenerator('not-a-generator', {}), null);
 });
+
+// spec-v1196: `Number('')` is 0, so a blank affected count read as a breach
+// affecting NOBODY -- and zero is under 500, the side of the threshold where the
+// media are not notified and HHS hears about it on next year's annual log
+// instead of inside 60 days. The library has always refused a non-number; only
+// the browser coerced one, and this pins the library half.
+test('breach-clock: the affected count is a number or nothing', () => {
+  const ok = { discoveryDate: '2026-03-15', affectedIndividuals: 600 };
+  assert.match(breachNotificationDeadlines(ok).threshold, />=500/);
+
+  for (const bad of [undefined, null, '', '600', NaN, -1, 1.5]) {
+    assert.throws(
+      () => breachNotificationDeadlines({ ...ok, affectedIndividuals: bad }),
+      /non-negative integer/,
+      String(bad),
+    );
+  }
+
+  // A zero someone actually entered is a real count, and still answers.
+  const zero = breachNotificationDeadlines({ ...ok, affectedIndividuals: 0 });
+  assert.match(zero.threshold, /<500/);
+  assert.equal(zero.mediaNoticeDeadline, null);
+});

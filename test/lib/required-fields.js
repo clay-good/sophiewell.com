@@ -11,7 +11,7 @@
 // times, and it belongs in one place whether one caller reads it or two.
 
 import { allCalculators } from '../../mcp/catalog.js';
-import { ASKING, DISCLOSING } from './asking-language.js';
+import { ASKING, DISCLOSING, ownsTheGap } from './asking-language.js';
 
 // tileId -> the dom ids of every field the agent surface requires.
 export function requiredFieldsByTile() {
@@ -39,7 +39,14 @@ export function requiredFieldsByTile() {
 // every required field, accepting DISCLOSING moves exactly TWO rows from flagged
 // to exempt, and both are `saps-ii` disclosing the oxygenation floor spec-v1149
 // gave it.
-export function refusedOrDisclosed(text) {
+// spec-v1196: `before` is the same tile read with nothing cleared. Given it, the
+// vocabulary is matched against what the reading ADDED rather than against all of
+// it, because a sentence that was already there cannot be a statement about a gap
+// that did not exist when it was written. See `ownsTheGap` in asking-language.js.
+// Without it this keeps the older, looser question, for callers that have no
+// baseline to compare against.
+export function refusedOrDisclosed(text, before) {
+  if (before !== undefined) return ownsTheGap(text, before);
   return ASKING.test(text) || DISCLOSING.test(text);
 }
 
@@ -63,6 +70,12 @@ export function answeredWithANumber(text) {
 // it must not close over anything in Node scope.
 export async function clearEachAndRead(doms) {
   const out = [];
+  const region = () => document.querySelector('#q-results') || document.querySelector('.screener-result');
+  // spec-v1196: the reading with NOTHING cleared. Every sentence in it was
+  // written before any field was missing, so it cannot be a statement about one.
+  await new Promise((r) => setTimeout(r, 120));
+  const q0 = region();
+  const base = q0 ? (q0.textContent || '').replace(/\s+/g, ' ') : '';
   for (const dom of doms) {
     const n = document.getElementById(dom);
     if (!n) continue;
@@ -73,8 +86,8 @@ export async function clearEachAndRead(doms) {
     n.dispatchEvent(new Event('input', { bubbles: true }));
     n.dispatchEvent(new Event('change', { bubbles: true }));
     await new Promise((r) => setTimeout(r, 110));
-    const q = document.querySelector('#q-results') || document.querySelector('.screener-result');
-    out.push({ cleared: dom, text: q ? (q.textContent || '').replace(/\s+/g, ' ') : '' });
+    const q = region();
+    out.push({ cleared: dom, base, text: q ? (q.textContent || '').replace(/\s+/g, ' ') : '' });
     n.value = kept;
     n.dispatchEvent(new Event('input', { bubbles: true }));
     n.dispatchEvent(new Event('change', { bubbles: true }));

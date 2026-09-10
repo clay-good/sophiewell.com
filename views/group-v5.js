@@ -661,9 +661,19 @@ export const renderers = {
     root.appendChild(checkField('Contact procedures (toll-free number, email, website, or address)', 'bc-contact'));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
+      // spec-v1196: `Number('')` is 0, so a blank count read as a breach affecting
+      // NOBODY -- and zero is under 500, which is the side of the threshold where
+      // the media are not notified and HHS hears about it on next year's annual
+      // log instead of inside 60 days. The library refuses a non-number; only the
+      // browser coerced one.
+      const affected = str('n');
+      if (String(affected).trim() === '') {
+        o.appendChild(el('p', { class: 'notice', text: 'Enter the number of affected individuals. It is not zero until someone counts it, and 500 is the line: at or above it the media and HHS are notified within the same 60 days as the individuals, and below it HHS is told through the annual log.' }));
+        return;
+      }
       const r = breachNotificationDeadlines({
         discoveryDate: str('d'),
-        affectedIndividuals: Math.floor(Number(str('n'))),
+        affectedIndividuals: Math.floor(Number(affected)),
       });
       o.appendChild(el('ul', {}, [
         el('li', { text: `Discovery: ${r.discoveryDate}` }),

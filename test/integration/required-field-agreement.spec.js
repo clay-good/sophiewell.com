@@ -76,7 +76,7 @@ for (let shard = 0; shard < SHARDS; shard += 1) {
       if (!readings.length) tilesWithNoField += 1;
       for (const reading of readings) {
         if (!reading || reading.text.length <= 12) continue;
-        if (refusedOrDisclosed(reading.text)) continue;
+        if (refusedOrDisclosed(reading.text, reading.base)) continue;
         if (!answeredWithANumber(reading.text)) continue;
         if (ANSWERS_WITHOUT_A_REQUIRED_FIELD.has(id)) continue;
         offenders.push(`${id} (cleared ${reading.cleared}): ${reading.text.slice(0, 120)}`);

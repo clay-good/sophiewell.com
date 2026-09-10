@@ -75,3 +75,26 @@ test('diabetes: empty and out-of-range input', () => {
   assert.equal(dx().valid, true);
   assert.doesNotMatch(JSON.stringify(dx({ a1c: 7.2, fastingGlucose: 140 })), /NaN|Infinity/);
 });
+
+// spec-v1196: the tile was honest about having one result ("a single abnormal
+// result") and never said what the other three were, so a reader with one A1C
+// could not tell whether the fasting glucose was normal or simply not drawn. The
+// same sentence carried the reassuring branch.
+test('diabetes-diagnosis: the tests nobody ran are named', () => {
+  const one = dx({ a1c: 7.2 });
+  assert.equal(one.verdict, 'Meets a diabetes threshold, not yet confirmed');
+  assert.match(one.band, /a fasting glucose, a 2-hour glucose and a random glucose were not entered/);
+  assert.match(one.band, /the second result the Standards ask for can come from any of them/);
+
+  const normal = dx({ a1c: 5.2 });
+  assert.equal(normal.verdict, 'Below the diagnostic thresholds');
+  assert.match(normal.band, /among the tests entered/);
+  assert.match(normal.band, /were not entered/);
+
+  // With every test entered there is nothing to name.
+  const all = dx({
+    a1c: 7.2, fastingGlucose: 140, twoHourGlucose: 210, randomGlucose: 150,
+  });
+  assert.equal(all.verdict, 'Diabetes');
+  assert.doesNotMatch(all.band, /not entered/);
+});

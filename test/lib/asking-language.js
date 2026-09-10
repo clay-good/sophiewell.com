@@ -120,6 +120,26 @@ export const DISCLOSING = new RegExp([
   // 4/28 (global severity not rated)" and is disclosing, not answering anyway.
   // It changes nothing in either empty-form sweep, which read ASKING only.
   '(?:not|never) (?:yet )?(?:been )?(?:recorded|graded|rated|measured)\\b',
+  // spec-v1196: the negative-existential form of the same sentence, and the
+  // phrase the house uses when it answers on a partial record. `no <thing>
+  // is/was entered|recorded` has 13 uses across lib/ and `what was entered` has
+  // 19 -- "No first-tier result is entered", "no qualifying urine culture is
+  // recorded", "No LCBI is met by what was entered".
+  //
+  // Measured before adding, as the rule at the top requires: across every tile
+  // and every number or graded select they move THREE rows from flagged to
+  // exempt. Four of the six rows `probe-static-exemption` still printed are
+  // closed by them, and the other two of the three are `sea-guideline`, exempted
+  // by "No fever was entered" while the field the sweep dropped was the ESR and
+  // then the white cell count.
+  //
+  // Those two are the reason these phrases arrive WITH `ownsTheGap` below and not
+  // before it: "No fever was entered" is in that reading whether or not the ESR
+  // is dropped, so it is static prose about this row and the movement rule
+  // ignores it. Added alone they would have bought two false exemptions to fix
+  // four true ones.
+  'no [a-z][a-z -]{0,40} (?:is|was) (?:entered|recorded)',
+  'what was entered',
   'does not rule', 'cannot yet rule', 'items assessed',
   // "3 of 6 components", "7 of 8 items", "0 of 1 criteria assessed"
   //
@@ -142,3 +162,47 @@ export const DISCLOSING = new RegExp([
   // refusing rather than answering.
   'of (?:the )?\\d+ (?:[a-z-]+ )?(?:items|components|measurements|criteria)',
 ].join('|'), 'i');
+
+// spec-v1196: WHERE the words come from, which the two rules at the top do not say.
+//
+// Rule 2 above says a phrase here is matched against the whole reading. A tile
+// carries standing explanatory notes, an option label read back, a formula
+// written out -- text that is the same whatever was entered -- and any of it can
+// contain a phrase from this vocabulary. spec-v1192 walked into one:
+// `hiv-pep-occupational` was read as GUARDED for a missing source status on the
+// strength of its own option label, "the source cannot be identified".
+//
+// The discriminator is not the phrase, it is MOVEMENT. Where a sweep starts from
+// a complete worked example and clears ONE field, it has a before-reading, and:
+//
+//   a sentence identical in both cannot be a statement about the field that was
+//   dropped, because it was written before anyone left anything out.
+//
+// So the vocabulary is matched against what the reading ADDED, not against all of
+// it. `scripts/probe-static-exemption.mjs` is the finder that measures the gap
+// this closes; spec-v1193 through spec-v1195 emptied it from seventeen rows to
+// six by fixing tiles and teaching the vocabulary words it did not know.
+//
+// Nothing added means nothing to check. A reading that only LOSES a sentence has
+// fabricated nothing -- every sentence still on screen was true with the field
+// present -- so it is not the defect these sweeps hunt. `constrictive-
+// pericarditis-echo` is the case: clearing the lateral annular velocity drops one
+// educational note about annulus reversus and moves no criterion, because that
+// velocity is not one of them.
+//
+// A string, because the browser sweeps ship this into page.evaluate.
+export function addedText(before, after) {
+  if (!before) return String(after || '');
+  const split = (t) => String(t || '').split(/(?<=[.!?])\s+|(?<=\.)(?=[A-Z])/).map((x) => x.trim()).filter(Boolean);
+  const seen = new Set(split(before));
+  return split(after).filter((x) => !seen.has(x)).join(' ');
+}
+
+// Did the reading own up to THIS gap? `before` is the same tile read with nothing
+// dropped; without it this falls back to the whole reading, which is the older,
+// looser question.
+export function ownsTheGap(after, before) {
+  const moved = addedText(before, after);
+  if (!moved) return true;   // nothing added: no new claim was made
+  return ASKING.test(moved) || DISCLOSING.test(moved);
+}

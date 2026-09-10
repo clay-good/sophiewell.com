@@ -29,7 +29,7 @@ import { test } from '@playwright/test';
 import { allCalculators } from '../../mcp/catalog.js';
 import { computeCalculator } from '../../mcp/tools.js';
 import { META } from '../../lib/meta.js';
-import { ASKING, DISCLOSING } from '../lib/asking-language.js';
+import { ownsTheGap } from '../lib/asking-language.js';
 
 test.skip(!process.env.RUN_PROBES, 'probe: run deliberately, not in CI');
 test.skip(({ browserName }) => browserName !== 'chromium', 'catalog sweep is chromium-only');
@@ -107,8 +107,9 @@ test('which scoring selects cannot say "not answered" on either surface', async 
       const got = computeCalculator({ id: cal.id, inputs: partial });
       if (got?.valid !== true) continue;
       if (JSON.stringify(got.result) === JSON.stringify(full.result)) continue;
-      const text = JSON.stringify(got.result);
-      if (ASKING.test(text) || DISCLOSING.test(text)) continue;
+      // spec-v1196: matched against what the reading ADDED. A sentence identical
+      // in the undropped reading was written before this field went missing.
+      if (ownsTheGap(JSON.stringify(got.result), JSON.stringify(full.result))) continue;
       both.push({ id: cal.id, dom: f.dom });
     }
   }
