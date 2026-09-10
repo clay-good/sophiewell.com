@@ -10,6 +10,7 @@
 // order in Sophie's voice (spec-v11 §5.3).
 
 import { el, clear } from '../lib/dom.js';
+import { BOUNDS } from '../lib/bounds.js';
 import * as M from '../lib/cardio-v102.js';
 import { resultRow } from '../lib/result-copy.js';
 
@@ -87,9 +88,14 @@ export const renderers = {
       { value: '3', text: 'III (6)' },
       { value: '4', text: 'IV (8)' },
     ]));
-    root.appendChild(field('Systolic BP (mmHg)', 'mg-sbp', { min: 0, max: 300, placeholder: '120' }));
+    // spec-v1233: one field, one range. These two now carry a library envelope,
+    // so the attribute must be the same envelope (spec-v1198). The age and BMI
+    // fields below keep their own 18-120 and 5-80: those state MAGGIC's validated
+    // POPULATION, which is a tighter claim than physiology, and the library
+    // deliberately does not check them.
+    root.appendChild(field('Systolic BP (mmHg)', 'mg-sbp', { min: BOUNDS.sbp.min, max: BOUNDS.sbp.max, placeholder: '120' }));
     root.appendChild(field('BMI (kg/m^2)', 'mg-bmi', { min: 5, max: 80, step: '0.1', placeholder: '24' }));
-    root.appendChild(field('Creatinine (mg/dL)', 'mg-creat', { min: 0, max: 50, step: '0.01', placeholder: '1.2' }));
+    root.appendChild(field('Creatinine (mg/dL)', 'mg-creat', { min: BOUNDS.scr.min, max: BOUNDS.scr.max, step: '0.01', placeholder: '1.2' }));
     root.appendChild(checkField('Diabetes', 'mg-dm'));
     root.appendChild(checkField('COPD', 'mg-copd'));
     root.appendChild(checkField('Current smoker', 'mg-smoker'));

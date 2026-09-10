@@ -471,7 +471,7 @@ reassuring side of the threshold where the example never goes (spec-v1092).
 ## What is still open
 
 - **A value past a ceiling `lib/bounds.js` already declares still produces an
-  answer in 36 fields**, spread over twenty-six of the
+  answer in 26 fields**, spread over eighteen of the
   catalog's entries (`scripts/probe-envelope-unbounded.mjs`). It was 116 across
   sixty-eight until [spec-v1224](spec-v1224.md) took the seven ten-year
   cardiovascular-risk engines (a clamp was standing in for a guard, so an SBP of
@@ -487,7 +487,10 @@ reassuring side of the threshold where the example never goes (spec-v1092).
   [spec-v1231](spec-v1231.md) four open-ended band tables (`oakland` read a
   haemoglobin of 250 g/dL as *"safe for outpatient management"*), and
   [spec-v1232](spec-v1232.md) seven threshold-criteria tiles (`glasgow-imrie`
-  claimed *"8 of 8 items assessed"* over a white-cell count of 2000).
+  claimed *"8 of 8 items assessed"* over a white-cell count of 2000), and
+  [spec-v1233](spec-v1233.md) the fractional excretions and two more clamps
+  (`fullpiers` turned a platelet count of 20,000 into a probability of an adverse
+  maternal outcome).
   The probe's REASSURING section reads zero, and has since
   [spec-v1211](spec-v1211.md) drained that bucket and fixed the classifier that
   had been hiding four of them. **That is a claim about the classifier's reach,

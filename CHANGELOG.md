@@ -20,6 +20,26 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Eight more tools answered from an impossible value**, including fullPIERS, which
+  turned a platelet count of 20,000 into a probability of an adverse maternal
+  outcome, and MAGGIC, which quietly capped a systolic BP of 3000 mmHg at 300 and
+  reported a 1- and 3-year mortality. CardShock did the same with a lactate of 400
+  mmol/L and called it *"high risk (~77% in-hospital mortality)"*.
+
+  The fractional-excretion tools needed care: a fraction has two ends, and only the
+  plasma one is the quantity the shared plausibility table describes -- a urine
+  sodium of 20 is perfectly normal, and a urine creatinine runs in the hundreds. So
+  the plasma value is checked and its urine partner is left alone. fullPIERS states
+  creatinine in µmol/L where the table holds mg/dL, so only its platelet count is
+  checked.
+
+  MAGGIC's blood-pressure and creatinine fields were also stating their own ranges,
+  which disagreed with the shared table, and now read it. Its age and BMI fields
+  deliberately do not: `18-120` and `5-80` describe the population the score was
+  validated in, which is a tighter and more useful statement than the physiologic
+  range, so the shared check was narrowed rather than the field loosened. See
+  docs/spec-v1233.md.
+
 - **Seven more tools scored from a lab no patient has**, including one that claimed
   *"8 of 8 items assessed"* while doing it. The modified Glasgow (Imrie) score read
   a white-cell count of 2000 as meeting its "> 15" criterion and predicted severe

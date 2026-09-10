@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `d36b264824f27232`
-Generated: 2026-09-10T23:03:10.493Z
+Build ID: `ff5cf85b9e1452f3`
+Generated: 2026-09-10T23:37:14.702Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -147,7 +147,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/carboxyhemoglobin-v865.js` | 9909 | `fb15cab8e571e1b0fe8506e1db9f553d82e22ec67bdebd538a8a664f5f1f8b93` |
 | `lib/cardiac-sarcoidosis-v791.js` | 5366 | `8c0e0450b93ebe15170e42ca7716bd27d364bf9305c542ef7845479e541a9e29` |
 | `lib/cardio-v101.js` | 12751 | `629d5ae5fd15255af72cd65585d5b25ad079e85981772fc33d72ce6694b95940` |
-| `lib/cardio-v102.js` | 15706 | `9cc197d4b1a4a57ee1b27f6efc70a0b0a46882ffdc1f40d45673d744e2b919f3` |
+| `lib/cardio-v102.js` | 17342 | `bcdca3aebe62101156255bd39971b052b27725b7f84e48b4910828372be1d958` |
 | `lib/cardio-v104.js` | 14365 | `581150411141a634b4314d5ccf1fe560c96ce8d5c9b8d2555c2a840a2af873f3` |
 | `lib/cardio-v90.js` | 23285 | `1b05a0869e5d6a22394ea7e73b7ff1445a7c911095f81cf06fb9fe0b7e40fda9` |
 | `lib/cardioecho-v237.js` | 10415 | `7bc5d6c40351c1877dbde161e18d2f16ea9d05b5884ea32985425cf479fb9a4a` |
@@ -178,7 +178,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/clavien-dindo-v320.js` | 5404 | `ae140f525e3d1f6103581f1d1e2eeed46813f69ada14d9c764ed867d51bda76b` |
 | `lib/cleveland-constipation-v665.js` | 4841 | `b5e66d05b1f5b2258281a9dc3246f35e6e83de248cabe44a914d2cbe72fd6400` |
 | `lib/clinical-obesity-v838.js` | 8584 | `742a529bbd6a43b4a9f695f82f2134c5bf24b16ae67e2e8cbdffb39f4b198cb3` |
-| `lib/clinical-v4.js` | 18519 | `c9f96d0096b9da5049089a75d5d6d23adbcb0e23ce742accf3c5ecc94f4dd613` |
+| `lib/clinical-v4.js` | 20078 | `434f8db03a0549aeaca09da5c4f6a897ddc59246d71d909697cbf01dca0169d0` |
 | `lib/clinical-v5.js` | 26754 | `4df98038ca48fff64abef3add3cd59b7322a5f20545f0fdf6b842cb9d0eaee2e` |
 | `lib/clinical-v6.js` | 16042 | `69c1de74d7f171a3c6e87329c1cb69324758a368a34f1961e6201caec0470f8d` |
 | `lib/clinical-v7.js` | 18510 | `91639297dbcafd2850ea5bb17d4e7219ae912e30305349d7423af72484e68365` |
@@ -584,7 +584,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/nyha-class-v357.js` | 3947 | `9188475fe8f8841468efbc8dac1433f17a421391156cdcfd2f1357d922e9cceb` |
 | `lib/nyhus-hernia-v400.js` | 4753 | `e95f3e6d388ce3f0e80744bbbe6db2cd4a072334c1cef4efde87ac9155e6f7be` |
 | `lib/o-rads-v326.js` | 4404 | `92d6104c9737cad58b5bfd157d613629c1aef44e853eaee54256638ed7d64eeb` |
-| `lib/ob-v138.js` | 16989 | `024e3c640d6fe47b04fc5c017da9e71724ea2031748df0d9554846c936f1c916` |
+| `lib/ob-v138.js` | 17998 | `8696e9de519ee15b198ad7af75c6a5dae7b4a33f2ad0e15b085179c66c6627c9` |
 | `lib/obgyn-v225.js` | 14967 | `363c98b0481738ca8b64d6b6b65724e2f7d090676d0de799d6ec961b19c488f0` |
 | `lib/obgyn-v250.js` | 7713 | `5326c2fc2c5eb02959ddc337e1ac095cbfdf3fecd2a9d34dec63678eb7036b15` |
 | `lib/ocular-trauma-score-v614.js` | 9546 | `49ec3b45d088a7b6003b1aa2f6d8437db613b02e77d35a8d0d482407a027b077` |
@@ -715,7 +715,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/reimers-migration-percentage-v703.js` | 3535 | `b9097ac1601a6f03c0561e85ac19de3b2021397e5689f5349b6841816c8dcdfa` |
 | `lib/related.js` | 4698 | `9dfc547d46c29521a700c5382ff44ec8c6ab4aca66c08848e769738621f429f1` |
 | `lib/renal-angina-v533.js` | 9915 | `387bc572f58bc85213d4849d784e4e7e490064b06bb49f3db06a04cdab19a3f6` |
-| `lib/renal-v128.js` | 11142 | `c5e4de65c5edc9d2dad4c7f63d0baf29f47abbfc621f07fca79eea35361c069b` |
+| `lib/renal-v128.js` | 11797 | `072c9467abef1cf9feb7d85db64233072000330a4741e993544c0ca6c00bb253` |
 | `lib/renal-v277.js` | 3090 | `08c99f10959b0ec0bc08d9067fb3ab92686a80428d1ddd31ee029c3767dc6574` |
 | `lib/renalpulm-v249.js` | 7088 | `f3a5c749b247759356a20c4f147d62f9b694302882e6d58c3cd05ceae8e5e6d0` |
 | `lib/respiratory-maternal-v263.js` | 11737 | `3bdaec61254f30a6dd896797a997700e082d92ddd86672d5de184c5c8eeff0ee` |
@@ -1875,7 +1875,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v267.js` | 2879 | `6d329aa9ec2ad7689ccebfcab02eae8e374dea6e733ae2e435d56bb126b127b1` |
 | `views/group-v268.js` | 2831 | `21d848d17a4a94026ca9590ad89fbb3469b54c2ebdbe992f1fbcf4b65dbc96cb` |
 | `views/group-v269.js` | 2930 | `d31253b577515c80f0f6e553142a912edbdf221f9d850c196db6e70372e8238c` |
-| `views/group-v27.js` | 9707 | `3a803c2159a4ec62e376c784c9064a6f4236a4e3ae44a4bd151aa6a9b5fb6d21` |
+| `views/group-v27.js` | 10161 | `c4350840a17d2380568930a5d4f3144624ced5e9ca9c28b0b44b288034a02bf0` |
 | `views/group-v270.js` | 2863 | `cf09dc1c7c06c1da900d1de900dd53ec3c47796ecaad7457dc8d2059868d3537` |
 | `views/group-v271.js` | 2746 | `a8dc5c8709632309df68b823bce8abf026a0a947752580be715087ecf7e25cc3` |
 | `views/group-v272.js` | 2638 | `446b109477e9dfb6cc88fe554079fbce1b0d742994e71aeaa9e78aabe21ccba5` |
