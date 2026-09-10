@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `5b029366def9f665`
-Generated: 2026-09-10T22:14:05.706Z
+Build ID: `d36b264824f27232`
+Generated: 2026-09-10T23:03:10.493Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -361,19 +361,19 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/heme-prognostic-v216.js` | 13013 | `c6389635286fd17370fac65bfe97663eaf3e8ffa1b7852620f7b7011d532b6e8` |
 | `lib/heme-risk-v189.js` | 13799 | `d94b111f4a8a7efc34646567508d2eaa16eee64ebbe5284faf6935d578d9c2a0` |
 | `lib/heme-staging-v188.js` | 14818 | `780860ca16797b8cfad923f347e86700c04bc36c9b857312d9197858ae7b4243` |
-| `lib/heme-v132.js` | 15633 | `cdb763411d4705accb2c5f025ac5bb45589d63aa1b7e05411411578d19a615c7` |
+| `lib/heme-v132.js` | 16879 | `b8efc09695da0d762446d04a61a8269f62ec63f2c8d35fe8547375b1e603b333` |
 | `lib/hemederm-v245.js` | 6951 | `8da43afd2f8072c0e3b917b12e1ee8a4770afd7c1a6b2cf3ff5ca94e414a1c2b` |
 | `lib/hemo-v194.js` | 12317 | `930f9c5936ec705bdaf94bca7e9a2bac78ccf4a6227e9093de0bbaccd33da718` |
 | `lib/hemodynamics-v87.js` | 8607 | `1bc8bc1408afb3fbc602d2748bfa1c8c68eb89fafabb18dd5e9c1a2589ff0276` |
 | `lib/hemonc-v94.js` | 23706 | `66b93dcc9007e17f6d4e62ba597c83258baf6148241769bdd3b94869d9d2c0bf` |
 | `lib/hep-fibrosis-portal-v212.js` | 6585 | `93bb19ad8fac24e2e86c21bd76be22c40b3df7ec8d1a8888002c643453d3223a` |
-| `lib/hep-v124.js` | 15356 | `049ccb04b60ff0a93eb6c80400e614dd5709cbe071e48d5b0b7632cec0b69248` |
+| `lib/hep-v124.js` | 16342 | `300881aefdf4146f50ea9921e7cdac5d924c5a31170e54176b53fa8bfacb3c0d` |
 | `lib/hep-v125.js` | 13055 | `86f145e491067a12d2b0dea0085a9340a14350d5b82d29dca936d41c9b8d6d03` |
 | `lib/hepatic-iron-index-v932.js` | 6957 | `4c14e67de0551f4e4f9bde691e19eaa0c2f4e5cc6fb41033d1b7e0fd73ec74d6` |
 | `lib/hepatology-gibleed-v201.js` | 20995 | `19478b8af048fe9f78a7fffb4357102cd4fdaaff17ba5bd52ce9174bcae70c41` |
 | `lib/hepatology-prognosis-v220.js` | 12866 | `792e4365d5eed204d4a285634402b982fc0c3d278a8ba368bb6b90a18c3e538a` |
 | `lib/hepgi-v190.js` | 12581 | `a9b059528932b3a95056aed672695735f14974b4b3dd40c09c72d97fcf3b04c7` |
-| `lib/hepgi-v93.js` | 20242 | `fcb64d340b664f612a875fc38bcfdd15b7c3cd9a5e4660d7a69704e793af8606` |
+| `lib/hepgi-v93.js` | 21924 | `bbbe5ca0705f755bee0c735581e827d7d96fda0eeef5d4097f002198ad42bdc2` |
 | `lib/herring-pillar-v347.js` | 4295 | `5402d155c338948987f458750b247521fc6ba36f5a20d9501eb4b97e6ae52794` |
 | `lib/hf-ef-classification-v840.js` | 8378 | `4ba17b89bcb66c65f821f7cb6335cab5c57e428fcf22c2da876fa636ce7a972e` |
 | `lib/hf-stages-abcd-v842.js` | 7839 | `93bde8395e5ff6baf50da213ef74c1358b09d224c3fdcc6fae245eb1dc8024c2` |
@@ -1789,7 +1789,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v187.js` | 10371 | `c32afab934a92a34b94abe62b04a4a3659fbd09ca240d9b1730c3dd380b5b226` |
 | `views/group-v188.js` | 10205 | `e0afa364af9afa94700d9011a72481f5692cea9d03a2a711c8fe5d11a3f8ea40` |
 | `views/group-v189.js` | 10367 | `9ff86604b2b736e3f1380705f223cb2e110df738fe3770122e593fc9b62d8346` |
-| `views/group-v19.js` | 15237 | `1505f656913f58beda1ee5a54d5c489855e4971e7eeaae4142934e2671092d6b` |
+| `views/group-v19.js` | 15646 | `31dd7b4c7cc0202c02788a71d6f26af69b9732589f6a55ab66bd4969bfa514cd` |
 | `views/group-v190.js` | 8333 | `c2d385a8973c0b7860b8e9e991924104a25a0f9d15964171c19aef997be4ac2d` |
 | `views/group-v191.js` | 8603 | `dd5844f01f6cd51a7db17e095f6d113c4f10157c3906ac284b1c6ed416a1db37` |
 | `views/group-v192.js` | 10529 | `d3f8d2c962506d1e49debddfa851483b6233aedbf849c25fee4777f867eb895d` |

@@ -20,6 +20,24 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Seven more tools scored from a lab no patient has**, including one that claimed
+  *"8 of 8 items assessed"* while doing it. The modified Glasgow (Imrie) score read
+  a white-cell count of 2000 as meeting its "> 15" criterion and predicted severe
+  pancreatitis; Truelove & Witts took a temperature of 450 C as the one systemic
+  criterion that turns six bloody stools into *severe*; MELD-XI logged a bilirubin
+  of 600 mg/dL into a plausible-looking 47, beside real scores that top out around
+  40. The two TTP scores, JAAM DIC and ALBI grade had the same shape.
+
+  Only two of Glasgow-Imrie's eight items are checked, and deliberately: the score
+  states calcium and glucose in mmol/L and albumin in g/L, where the shared
+  plausibility table holds them in mg/dL and g/dL, so checking them against it
+  would reject every legitimate value on the tile.
+
+  Truelove & Witts' heart-rate and haemoglobin fields were also declaring their
+  own ranges, which disagreed with the shared table -- so the page would have shown
+  the browser's range warning above a refusal quoting a different range. Both now
+  read the shared table. See docs/spec-v1232.md.
+
 - **A haemoglobin of 250 g/dL produced a discharge recommendation.** Four risk
   scores band their inputs with a chain of comparisons whose last branch catches
   everything -- and on three of them that outermost branch is the *reassuring* one.

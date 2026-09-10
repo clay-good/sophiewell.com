@@ -11,6 +11,7 @@
 // (spec-v11 §5.3).
 
 import { el, clear } from '../lib/dom.js';
+import { BOUNDS } from '../lib/bounds.js';
 import * as M from '../lib/hepgi-v93.js';
 import { resultRow } from '../lib/result-copy.js';
 import { unitField, unitNumOpt, TEMP_UNITS } from '../lib/field-units.js';
@@ -159,8 +160,12 @@ export const renderers = {
       { value: 'present', text: 'Present' },
     ]));
     root.appendChild(unitField('Temperature', 'tw-temp', TEMP_UNITS, { placeholder: 'e.g. 38' }));
-    root.appendChild(field('Heart rate (bpm)', 'tw-hr', { min: 0, max: 400, placeholder: 'e.g. 100', inputmode: 'numeric' }));
-    root.appendChild(field('Hemoglobin (g/dL)', 'tw-hgb', { min: 0, max: 25, placeholder: 'e.g. 9.5', inputmode: 'decimal' }));
+    // spec-v1232: one field, one range. The library check added this wave reads
+    // lib/bounds.js, and these two attributes said 0-400 and 0-25 -- so the page
+    // printed the browser's range warning above a refusal quoting a different
+    // one. spec-v1198: a view's ceilings ARE lib/bounds.js's.
+    root.appendChild(field('Heart rate (bpm)', 'tw-hr', { min: BOUNDS.hr.min, max: BOUNDS.hr.max, placeholder: 'e.g. 100', inputmode: 'numeric' }));
+    root.appendChild(field('Hemoglobin (g/dL)', 'tw-hgb', { min: BOUNDS.hemoglobin.min, max: BOUNDS.hemoglobin.max, placeholder: 'e.g. 9.5', inputmode: 'decimal' }));
     root.appendChild(field('ESR (mm/h)', 'tw-esr', { placeholder: 'e.g. 40', inputmode: 'decimal' }));
     const o = out(); root.appendChild(o);
     wire(['tw-stools', 'tw-bleed', 'tw-temp', 'tw-temp-unit', 'tw-hr', 'tw-hgb', 'tw-esr'], () => safe(o, () => {
