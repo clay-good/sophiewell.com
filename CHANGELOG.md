@@ -617,6 +617,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   tools. Genuine typos are still fixed, and every one of the 1,706 tools still
   answers its own name exactly as before. See docs/spec-v1190.md.
 
+- **The commonest infusion question reached an oxytocin calculator.** Searching
+  "mcg/kg/min to ml/hr" -- converting an ordered dose into a pump rate, the
+  arithmetic repeated more than any other at an ICU bedside -- returned the oxytocin
+  drip converter first and the general Concentration-to-Rate calculator fourth,
+  because stripping the slashes leaves six very ordinary words and the tools whose
+  names happen to contain "min", "mL" and "hr" matched them. Fourteen unit-pair
+  phrasings now reach the general converter. Drug-specific questions still reach
+  their own tools: asking about oxytocin still gets the oxytocin one. See
+  docs/spec-v1191.md.
+
 ### Changed
 
 - **The check that compares a tool's accepted values with the menu on the page could
