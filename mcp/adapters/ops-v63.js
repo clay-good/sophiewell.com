@@ -34,7 +34,7 @@ export default [
     fields: [
       { dom: 'tf-date', arg: 'serviceDate', kind: 'string', required: true, label: 'Date of service (YYYY-MM-DD)' },
       { dom: 'tf-payer', arg: 'payer', kind: 'enum', values: ['medicare', 'other'], required: true, label: 'Payer: medicare (365 days by 42 CFR 424.44) or other, whose limit you supply' },
-      { dom: 'tf-limit', arg: 'customLimitDays', kind: 'number', label: 'Custom filing limit in days (overrides the payer default)' },
+      { dom: 'tf-limit', arg: 'customLimitDays', kind: 'number', label: 'Plan filing limit in days, for a non-Medicare payer. Medicare is one calendar year by 42 CFR 424.44 and this does not override it; a value given alongside medicare is reported back as unused.' },
     ],
   },
   {
@@ -45,7 +45,7 @@ export default [
     fields: [
       { dom: 'pat-date', arg: 'requestDate', kind: 'string', required: true, label: 'Request date (YYYY-MM-DD)' },
       { dom: 'pat-type', arg: 'type', kind: 'enum', values: ['standard', 'expedited', 'custom'], required: true, label: 'Request type: standard, expedited, or custom (supply the days)' },
-      { dom: 'pat-days', arg: 'customDays', kind: 'number', label: 'Custom window in days (overrides the default)' },
+      { dom: 'pat-days', arg: 'customDays', kind: 'number', label: 'Plan-specified window in days. Used only when the request type is "custom"; a value given alongside standard or expedited is reported back as unused.' },
     ],
   },
   {

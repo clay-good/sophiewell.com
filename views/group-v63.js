@@ -166,6 +166,10 @@ export const renderers = {
         li(`File by ${r.deadline} (${r.windowDays}-day window).`, r.pastDue ? 'flag' : null),
         remainingLi(r),
       ]));
+      // spec-v1220: the page passes `undefined` when the field does not apply, so
+      // this is inert here -- it exists so the disclosure is not lost if that ever
+      // changes, and so both surfaces read the same.
+      if (r.unusedLimitNote) o.appendChild(el('p', { class: 'muted', text: r.unusedLimitNote }));
       o.appendChild(el('p', { class: 'muted', text: r.medicare ? 'Medicare basis: 42 CFR 424.44 (one year after the date of service; ACA 6404).' : 'Non-Medicare limit is user-supplied; confirm against your payer contract.' }));
     }));
   },
@@ -224,6 +228,7 @@ export const renderers = {
         li(`Decision due by ${r.deadline}.`, r.pastDue ? 'flag' : null),
         remainingLi(r),
       ]));
+      if (r.unusedWindowNote) o.appendChild(el('p', { class: 'muted', text: r.unusedWindowNote }));
       o.appendChild(el('p', { class: 'muted', text: 'CMS Interoperability and Prior Authorization Final Rule (CMS-0057-F, 2024), effective 2026 for impacted payers.' }));
     }));
   },

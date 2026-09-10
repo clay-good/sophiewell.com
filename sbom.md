@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `914e0d414899ca1a`
-Generated: 2026-09-10T17:31:34.314Z
+Build ID: `af2f8d8f9931da76`
+Generated: 2026-09-10T17:39:25.882Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -596,7 +596,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/ophtho-v164.js` | 10023 | `79d478a1c42b18b36a156f10a740e0ddbec2b2e897f9501a7301424c54fa2f06` |
 | `lib/ophtho-v236.js` | 7597 | `df71019dd17bf7cb9f44b0e8043d4da148dd9f48066603d6de57f1951de9dc88` |
 | `lib/opioid-risk-tool-v709.js` | 4291 | `f7045644de232186fc1701f97df7d861b885bcb0f7e65f61ea735576f30a6dda` |
-| `lib/ops-v63.js` | 7085 | `686bca13730867f354ffb8ba7b6ed6164bf9d0f2b7797df6eb340e1918f179f9` |
+| `lib/ops-v63.js` | 8399 | `7fa411b1d5b79bc49d8db6c4a4c85093ad2e0ad1c506340ffc668f89e111dbe9` |
 | `lib/ortho-v144.js` | 17827 | `0356389ca72f53f295f6734cf34e7981c111b15010f161e253e05b1227d2e33c` |
 | `lib/ortho-v145.js` | 15839 | `b7ce4042ce54b38128c236b847b393ef24f849fbf89180da0c03c5517b6d1ede` |
 | `lib/orthospine-v252.js` | 7329 | `f1ba93384570eb23ff335624c2facc37666daaf0cf9577cf988504897564c046` |
@@ -1416,7 +1416,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/ophtho-v164.js` | 2153 | `837985d6e5ded0d6102bee0f375e0ce11c08e42862927a7a7240cb486b72edf8` |
 | `mcp/adapters/ophtho-v236.js` | 2887 | `651b07313fe7d5f56636a552f1d4f64b905b5c3fa47ec17351fb6aa89a7b776e` |
 | `mcp/adapters/opioid-risk-tool-v709.js` | 2331 | `5c48d7a23650ac85f253b35c556425eeea50168fd0f1f09f6279826f87d0cfc6` |
-| `mcp/adapters/ops-v63.js` | 3196 | `baa481e60bc1710a5d64a88c0e3a8e0b44354c70ddde96be7fdf08312f2453da` |
+| `mcp/adapters/ops-v63.js` | 3434 | `d1c5245b4de84f7554869b2c4f239fd5777967a331dc5976fb75a7d1bf72c759` |
 | `mcp/adapters/ortho-v144.js` | 3799 | `2901f97711e370d1f4bb7bcd54b65a1c7ae5198db5aca4f6bdab2a6a59bb1686` |
 | `mcp/adapters/ortho-v145.js` | 3455 | `e096092b9b21544729e2ac4db4478178b20b30a9d984c4a08f91b03400bd0462` |
 | `mcp/adapters/orthospine-v252.js` | 3127 | `f078d83b49d3a0fdd1ad3b3bfbebefc6a1e8dd02d3b0edc3bcdd8476033fc761` |
@@ -2227,7 +2227,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v616.js` | 3263 | `55b04e24f3ccb99664fd32b027f1ac8c87e5a9e444a19d89bf808ce31711ab39` |
 | `views/group-v617.js` | 3062 | `988087344ef4f977e8c80a63c60a94268b78bd1b58055f6fde6deb7d2ad8c720` |
 | `views/group-v618.js` | 3594 | `332cb2304d3d4e5428d26ca8fdf0c237d6de4fc19bb6b6e62f68825ab22f9b38` |
-| `views/group-v63.js` | 14377 | `962d84b97e82bc39635801da79ecaa93fc0b501b5988b7d321b0f1f630497fab` |
+| `views/group-v63.js` | 14796 | `b8dba719cb250693f221f9c3017d838b02fd858876a2eda043f7f9a0aa773825` |
 | `views/group-v638.js` | 5689 | `2d964ab7fd88c6fa40db0f22bbbb8cc0794bebd3125c73c4079d72da37454fbd` |
 | `views/group-v639.js` | 4623 | `5112e4a7815db3bd1184faa4b3671650207c3ec6bdec1a97a146a4e583e04edf` |
 | `views/group-v640.js` | 3824 | `afb14025ae48078f4b3cd66123d312db0898cc89159bd8cf713db2a131d847fb` |

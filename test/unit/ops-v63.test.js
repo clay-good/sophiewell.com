@@ -102,3 +102,29 @@ test('overpayment60Day: past-due once the window has elapsed', () => {
 test('overpayment60Day: invalid date throws', () => {
   assert.throws(() => overpayment60Day({ identificationDate: '2026-13-40', now: NOW }), RangeError);
 });
+
+// spec-v1220: a value that was given and not used has to be said out loud. Both
+// fields were labelled on the agent surface as overriding a default they cannot
+// override, and both discarded the entry in silence.
+test('timelyFiling: a plan limit given alongside Medicare is reported back as unused', () => {
+  const r = timelyFiling({ serviceDate: '2026-03-01', payer: 'medicare', customLimitDays: 90, now: NOW });
+  assert.equal(r.windowDays, 365, 'the statutory year still governs');
+  assert.match(r.unusedLimitNote, /90 days entered was not used/);
+  assert.match(r.unusedLimitNote, /42 CFR 424\.44/);
+  // Nothing to disclose when nothing was given, or when the limit is honoured.
+  assert.equal(timelyFiling({ serviceDate: '2026-03-01', payer: 'medicare', now: NOW }).unusedLimitNote, null);
+  const other = timelyFiling({ serviceDate: '2026-03-01', payer: 'other', customLimitDays: 90, now: NOW });
+  assert.equal(other.windowDays, 90);
+  assert.equal(other.unusedLimitNote, null);
+});
+
+test('paTurnaround: a window given alongside a CMS-set type is reported back as unused', () => {
+  const r = paTurnaround({ requestDate: '2026-06-01', type: 'standard', customDays: 14, now: NOW });
+  assert.equal(r.windowDays, 7, 'the CMS-0057-F standard window still governs');
+  assert.match(r.unusedWindowNote, /14 days entered was not used/);
+  // Honoured on the custom branch, and silent when nothing was given.
+  const custom = paTurnaround({ requestDate: '2026-06-01', type: 'custom', customDays: 14, now: NOW });
+  assert.equal(custom.windowDays, 14);
+  assert.equal(custom.unusedWindowNote, null);
+  assert.equal(paTurnaround({ requestDate: '2026-06-01', type: 'standard', now: NOW }).unusedWindowNote, null);
+});
