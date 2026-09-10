@@ -80,3 +80,25 @@ test('splitting finer cannot hide text a reading genuinely gained', () => {
   // exist for -- a recompute from the blank.
   assert.equal(addedText(before, 'Anion gap: 31delta-AG = 14'), 'Anion gap: 31');
 });
+
+// spec-v1223: the row-edge split must not cut inside a unit.
+//
+// `(?<=\d)(?=[A-Za-z])` alone turns `cmH2O` into `cmH2` + `O`, which splits a
+// DISCLOSURE across chunks: `driving-pressure` says "(plateau must exceed PEEP)
+// cmH2OStatic compliance", the sentence landed in a chunk that matched the
+// baseline, and the required-field gate stopped seeing that the tile had asked.
+test('a unit with a subscript is not a row boundary', () => {
+  const before = 'Driving pressure (dP): 25 cmH2OStatic compliance: 16 mL/cmH2ODynamic compliance: 20 mL/cmH2O';
+  const after = 'Driving pressure (dP): (plateau must exceed PEEP) cmH2OStatic compliance: -- mL/cmH2ODynamic compliance: (enter peak pressure) mL/cmH2O';
+  // The tile ASKS -- "enter peak pressure" -- and the sentence carrying that has
+  // to survive in one piece for the vocabulary to see it.
+  assert.match(addedText(before, after), /enter peak pressure/);
+  assert.equal(ownsTheGap(after, before), true, 'the tile asked; the gate must see it');
+});
+
+test('the row-edge split still fires on a standalone number', () => {
+  // A digit run preceded by a non-alphanumeric is a value, and what follows it is
+  // the next row.
+  assert.equal(addedText('Anion gap: 26Albumin-corrected AG: 26delta-AG = 14',
+    'Anion gap: 26delta-AG = 14'), '');
+});

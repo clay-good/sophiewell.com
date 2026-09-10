@@ -205,7 +205,7 @@ export function addedText(before, after) {
   // genuinely gained is still absent from `before` and still reported. It removes
   // false "added" text; it cannot hide real added text.
   const split = (t) => String(t || '')
-    .split(/(?<=[.!?])\s+|(?<=\.)(?=[A-Z])|(?<=\d)(?=[A-Za-z])/)
+    .split(/(?<=[.!?])\s+|(?<=\.)(?=[A-Z])|(?<=[^A-Za-z0-9]\d{1,9})(?=[A-Za-z])/)
     .map((x) => x.trim()).filter(Boolean);
   const seen = new Set(split(before));
   return split(after).filter((x) => !seen.has(x)).join(' ');
