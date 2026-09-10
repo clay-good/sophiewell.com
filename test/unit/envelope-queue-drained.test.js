@@ -22,7 +22,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 
 import { cdaiCrohns } from '../../lib/gi-v126.js';
-import { ipssrMds } from '../../lib/hemonc-v94.js';
+import { ipssrMds, sokalCml } from '../../lib/hemonc-v94.js';
 import { mews, news2, mods, meows } from '../../lib/scoring-v4.js';
 import { lods, oasis, deltaGap, appsArds } from '../../lib/critcare-severity-v200.js';
 import { harveyBradshaw } from '../../lib/hepgi-v93.js';
@@ -375,4 +375,37 @@ test('clip and clichy name the lab, not the whole form', () => {
   assert.match(clichy({ ...cl, factorV: '' }).message, /^Enter the factor V/);
   // It had no message at all before, so mcp/tools.js said "Enter the required values."
   assert.ok(clichy({ ...cl, factorV: '' }).message);
+});
+
+// spec-v1204: spec-v1180 guarded the platelet count IN THIS FUNCTION and left the
+// age beside it. ELTS cubes the age, so a million came back as "ELTS
+// 2500000000001.58 (high risk)" -- and the Sokal line vanished from the reading
+// entirely, because Math.exp of that age overflows to Infinity and the
+// Number.isFinite check drops it without a word. Half the answer gone, the other
+// half absurd.
+test('sokal-cml guards the age beside the platelet count it already guarded', () => {
+  const ok = { age: 50, spleen: 5, platelets: 300, blasts: 5 };
+  const good = sokalCml(ok);
+  assert.equal(good.valid, true);
+  assert.match(good.band, /Sokal relative risk/);
+  assert.match(good.band, /ELTS/);
+
+  for (const age of [1000000, 131]) {
+    const r = sokalCml({ ...ok, age });
+    assert.equal(r.valid, false, String(age));
+    assert.match(r.band, /plausible range for age \(0 to 130 yr\)/, String(age));
+    assert.doesNotMatch(r.band, /ELTS \d/, `${age}: no index is reported`);
+  }
+
+  // A negative age was already caught, by the completeness guard above this one,
+  // and keeps that sentence -- the new check is on the ceiling nobody held.
+  assert.match(sokalCml({ ...ok, age: -1 }).band, /^Enter age \(years\)/);
+
+  // The oldest age the envelope admits still answers, with both indices.
+  const edge = sokalCml({ ...ok, age: 130 });
+  assert.match(edge.band, /Sokal relative risk/);
+  assert.match(edge.band, /ELTS/);
+
+  // And the platelet guard spec-v1180 added is untouched.
+  assert.match(sokalCml({ ...ok, platelets: 20000 }).band, /above ~2000, beyond recorded extremes/);
 });

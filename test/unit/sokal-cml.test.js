@@ -36,9 +36,27 @@ test('guarded domains: zero/negative platelet returns a surfaced fallback', () =
   assert.equal(sokalCml({}).valid, false);
 });
 
-test('extreme age does not leak a non-finite Sokal', () => {
+// spec-v1204. This test used to read:
+//
+//   // Sokal overflows -> null; ELTS still finite, so the result stays valid.
+//   assert.equal(r.sokal, null);
+//
+// which is the defect written down as the expectation. Half the reading vanished
+// without a word and the other half was published: ELTS cubes the age, so 1e9
+// came back as "ELTS 2500000000001.58 (high risk)".
+test('an extreme age is refused, not half-answered', () => {
   const r = sokalCml({ age: 1e9, spleen: 5, platelets: 300, blasts: 2 });
-  // Sokal overflows -> null; ELTS still finite, so the result stays valid.
-  assert.equal(r.sokal, null);
+  assert.equal(r.valid, false);
+  assert.match(r.band, /plausible range for age \(0 to 130 yr\)/);
+  assert.equal(r.sokal, undefined);
+  assert.equal(r.elts, undefined);
+});
+
+test('at the top of the age envelope both indices are still finite', () => {
+  // The overflow property the test above was written for, asserted where the
+  // tile still answers.
+  const r = sokalCml({ age: 130, spleen: 5, platelets: 300, blasts: 2 });
+  assert.equal(r.valid, true);
+  assert.ok(Number.isFinite(r.sokal));
   assert.ok(Number.isFinite(r.elts));
 });

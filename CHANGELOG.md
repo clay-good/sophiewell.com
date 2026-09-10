@@ -746,6 +746,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   reporting an entered value as one still missing. All four now name the value and
   its range. See docs/spec-v1203.md.
 
+- **A CML prognosis lost half its answer without saying so.** The Sokal/ELTS
+  calculator was already guarded against a platelet count entered in the wrong
+  units, and not against the age beside it. ELTS cubes the age, so an implausible
+  one produced an index in the billions -- while the Sokal half of the reading
+  simply vanished, because the arithmetic overflowed and a check replaced it with
+  nothing. It now asks for an age inside the range the tool already publishes, and
+  reports neither index until it has one. See docs/spec-v1204.md.
+
 ### Changed
 
 - **The check that compares a tool's accepted values with the menu on the page could
