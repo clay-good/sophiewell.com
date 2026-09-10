@@ -20,6 +20,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Fifteen tools told you to enter a value you had just entered.** An ePVS with a
+  hematocrit of 750% answered *"Enter hematocrit (%) and hemoglobin (g/dL), both
+  greater than 0"* -- so you retyped the same number and got the same sentence. The
+  cause is one helper, copied into eighteen library files, that returns the same
+  "absent" for a blank field, a non-number and a value outside its own bounds; the
+  bound was being enforced all along and only the sentence was wrong. These tools
+  now name the value that is out of range and give the range, while a blank field
+  is still asked for in the tool's own words. The bounds are unchanged, so the same
+  inputs are accepted and rejected as before. Covers the six nephrology tools
+  (Watson TBW, Salazar-Corcoran, ePVS, furosemide stress test, FEHCO3, pH-corrected
+  potassium), five liver scores (ABIC, GLOBE, UK-PBC, PAGE-B, Mayo PSC) and four
+  hemodynamic ones (PAPi, transpulmonary gradient, Tei index, shunt fraction). See
+  docs/spec-v1226.md.
+
 - **Eight serum-chemistry tools computed from a chemistry no patient has -- and
   one of them printed a negative serum calcium.** Corrected Calcium given an
   albumin of 70 g/dL answered *"-44.8 mg/dL"*; Anion Gap given a sodium of 2000

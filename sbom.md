@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `82cee359999906a6`
-Generated: 2026-09-10T19:01:13.375Z
+Build ID: `d6e589152475f907`
+Generated: 2026-09-10T19:24:33.841Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -363,7 +363,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/heme-staging-v188.js` | 13600 | `85a46011c9dd314e2f9625b04616a14bf9bf2a8e2d47eedcb88f3047d6730dac` |
 | `lib/heme-v132.js` | 15633 | `cdb763411d4705accb2c5f025ac5bb45589d63aa1b7e05411411578d19a615c7` |
 | `lib/hemederm-v245.js` | 6951 | `8da43afd2f8072c0e3b917b12e1ee8a4770afd7c1a6b2cf3ff5ca94e414a1c2b` |
-| `lib/hemo-v194.js` | 10631 | `8c5d3ad252475a1dd4f8a2ed78a2933173d381ccc44bbd427d63539006e73d24` |
+| `lib/hemo-v194.js` | 12317 | `930f9c5936ec705bdaf94bca7e9a2bac78ccf4a6227e9093de0bbaccd33da718` |
 | `lib/hemodynamics-v87.js` | 8607 | `1bc8bc1408afb3fbc602d2748bfa1c8c68eb89fafabb18dd5e9c1a2589ff0276` |
 | `lib/hemonc-v94.js` | 23706 | `66b93dcc9007e17f6d4e62ba597c83258baf6148241769bdd3b94869d9d2c0bf` |
 | `lib/hep-fibrosis-portal-v212.js` | 6585 | `93bb19ad8fac24e2e86c21bd76be22c40b3df7ec8d1a8888002c643453d3223a` |
@@ -461,7 +461,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/lipids-v271.js` | 2958 | `f3052a70f199dead38c22be643a1b0ef539b9b9240710cecbb7f357c99e6d6d3` |
 | `lib/lisfranc-myerson-v412.js` | 4405 | `b97371b1c2c34c01fe8af5d64cdbcee0e2fda3426bb5f1f25c9a2f6127e58bab` |
 | `lib/live.js` | 1139 | `dfb5bf4712e2ee411d60da2a2b79329c8b9016caedc53224f4bba27f3f9785fe` |
-| `lib/liver-v196.js` | 11726 | `655b4f9f7fc646dc4f0dea656563175d56cd862381d75acfb1a9fe25f2db6f3d` |
+| `lib/liver-v196.js` | 14094 | `3aa26e14ddd367e65cc1e12c72d0403a7deb90e6e8bf7e793e99f26588829e38` |
 | `lib/lodwick-grade-v496.js` | 3715 | `8c5aee72ee779640837fa2cba4ae459aff9e50b9c76c6da64751c2077ae3f283` |
 | `lib/loe-silness-gingival-index-v722.js` | 3556 | `256b3056d2f235eaf93f210bb3453cd9078261ae090cbd71afc05696d71661d4` |
 | `lib/long-note.js` | 29057 | `f6189019c3f7fdde44de7e009a2d827301c732c65fa483207aceec27dda692d7` |
@@ -550,7 +550,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/nephro-fluids-v204.js` | 16771 | `5dbb536322bc68672b2a642dc16c0f06389c7e3cc4404e029794f0500687fbe1` |
 | `lib/nephro-v127.js` | 16004 | `cb6754a23dbbead68a1a7b95106636ee1560a9d5ee628bd198a067b94517d897` |
 | `lib/nephro-v92.js` | 21513 | `dce5c6e3e9c1d4fd6c167e2a0b6b1c086b5c7557f42a848be31aa4aa2fda22af` |
-| `lib/nephrology-v226.js` | 10925 | `a301c1826ab905ceac0abb080ceed6987931bc82642e3f5f064fb80ed5d38985` |
+| `lib/nephrology-v226.js` | 13362 | `86207e643b0c15be1e5e67733de729afc7db81b5a50b35411fca81629e6971ac` |
 | `lib/nerve-injury-v297.js` | 4746 | `13741ba46f672eb344024cfed6d066a3bffd6ea90974a2fa578f282407695d00` |
 | `lib/neuro-disability-v159.js` | 15165 | `d2fb8f1306232369b37461eafb26ba7c36c595e67e1f53ad48f48a557d1e1dad` |
 | `lib/neuro-v117.js` | 18177 | `c1fc05fe1f5862f898ffc599a3d4146ad993fe2e28d9cc2467a9a0f9a7b7006b` |
