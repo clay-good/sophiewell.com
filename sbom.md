@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `87624c758b8964f9`
-Generated: 2026-09-10T16:42:02.875Z
+Build ID: `676f5382f71a0c79`
+Generated: 2026-09-10T16:55:54.979Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -147,7 +147,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/carboxyhemoglobin-v865.js` | 9909 | `fb15cab8e571e1b0fe8506e1db9f553d82e22ec67bdebd538a8a664f5f1f8b93` |
 | `lib/cardiac-sarcoidosis-v791.js` | 5366 | `8c0e0450b93ebe15170e42ca7716bd27d364bf9305c542ef7845479e541a9e29` |
 | `lib/cardio-v101.js` | 12751 | `629d5ae5fd15255af72cd65585d5b25ad079e85981772fc33d72ce6694b95940` |
-| `lib/cardio-v102.js` | 15369 | `73550725a00aef254510f776ec1c3765edad60204b0bebe674e8ed66e7b648ad` |
+| `lib/cardio-v102.js` | 15706 | `9cc197d4b1a4a57ee1b27f6efc70a0b0a46882ffdc1f40d45673d744e2b919f3` |
 | `lib/cardio-v104.js` | 14365 | `581150411141a634b4314d5ccf1fe560c96ce8d5c9b8d2555c2a840a2af873f3` |
 | `lib/cardio-v90.js` | 23285 | `1b05a0869e5d6a22394ea7e73b7ff1445a7c911095f81cf06fb9fe0b7e40fda9` |
 | `lib/cardioecho-v237.js` | 10415 | `7bc5d6c40351c1877dbde161e18d2f16ea9d05b5884ea32985425cf479fb9a4a` |
@@ -292,7 +292,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/figo-pas-v833.js` | 7409 | `2680f161b34ab92db39cf745ff07fd99d1e160fb926b8f118a98a1f0bb0a6059` |
 | `lib/fisher-grade-v600.js` | 10299 | `e9155f9fdefe95d66f6fa2ec622a908cb15ddc858a3dd1d3275d4384cff93a44` |
 | `lib/fitzpatrick-v331.js` | 3746 | `aa2e8153f5e4f4821db4aeffe966810bc8068f00d0bd77789b723f8c613691b1` |
-| `lib/fluidresp-v113.js` | 8525 | `c40f34894d85e2aa6bbe92e153e89e922b8331cd6b6882660f771a3fe9106e1d` |
+| `lib/fluidresp-v113.js` | 8862 | `b6a605fd55a8d672d87aeb73818cd415ccd9530f683a28b93cb899bdfc21e4cd` |
 | `lib/fmea-rpn-v918.js` | 6701 | `bd819359c6a802cb1d287d26f8a5c9089c3bad745ce52567cf9913b3cbf8ede8` |
 | `lib/fnclcc-grade-v651.js` | 5217 | `264c707799ceba1680ad14195291f610a8e83d92c68f429f47b096da0d892828` |
 | `lib/fois-v727.js` | 3321 | `e2a503a4af92ee9c440302df04550fbbfa3b3a9ffb49369c8c8f4a0de9e1ca37` |
@@ -394,7 +394,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/icans-v306.js` | 6071 | `c72bb55d44e3f3fe23fe1eca7a217ca70112b3caeb73b0046d550caa8af19d68` |
 | `lib/icrs-v338.js` | 4467 | `5e29e3d578cccf7cab83c738db4091fe8c9bb8c0c766b3e34e0ec6022499524b` |
 | `lib/id-v137.js` | 21838 | `0cd0ceb5e54d477d240cbfdc819b217ce26539bf22ae5b0b4da4ec04ae12dd17` |
-| `lib/idcrit-v99.js` | 22080 | `fe866beb7a347a69ef139958a18447d0a66edc02594045bacbaaf983a76b2755` |
+| `lib/idcrit-v99.js` | 22389 | `591ff9c68db1bc1a1997e1fd8e6b5507decb2b0d38d5c0d109e56c6c9557e555` |
 | `lib/ideberg-glenoid-v409.js` | 4070 | `b7cde0877f7d560cb68fc68b7e39b1f8867024c9bccdb1a3fedd89300faff0a9` |
 | `lib/igcccg-v567.js` | 15655 | `279f4fffa68503aa75dd91ac700755e7e016bb42f4dc8377abc5d53eb62356a8` |
 | `lib/igg4-rd-2020-v825.js` | 8113 | `9a508c9597e17f30bc65156b09c5d5baf29116bca796c85070e050101c1614a0` |
@@ -641,7 +641,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/peds-percentile-v169.js` | 8290 | `dbaec78619e7c9190044c9cdb8ecd8a2bb03a871f351e0454a06e1c5b816e9b0` |
 | `lib/peds-sepsis-v278.js` | 11203 | `e5b4bf2517c6964094b740dc9a30e28ba4e566ceb179dcc53894d9fcc0ad3f21` |
 | `lib/peds-v140.js` | 20723 | `988675e08613e49ae1d9f49307d8d03619109f69d784f69f24c984a7b9a0fa99` |
-| `lib/peds-v98.js` | 17977 | `34cd4b31d15b01023b31b4f91ae4a6bd21fc2e809798b6e91fc5551952db3063` |
+| `lib/peds-v98.js` | 18314 | `5d4d423e11dadb1e7f4b609b0928ee654d4504005c78e7d68cbcac3958e9121c` |
 | `lib/pedstox-v247.js` | 7629 | `9ffa2359f05cf582c46fc4d77d02a7906b0f0e62b6b5a952bafaebd45ef4b4a6` |
 | `lib/pef-zones-v891.js` | 6826 | `3d6f9c84c5641a3d89998e5e0a3305468f0607125d9a2ca5fdc0350b84af1ffc` |
 | `lib/peradeniya-op-v575.js` | 13708 | `e805988341b151b231b4db54a8e82e3b95f19f980bf2d3b394c97a4c05254aa8` |
@@ -685,9 +685,9 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/psych-v123.js` | 21812 | `8a06d1957abe88d594034533c654070b2dad1be4ae172ddbcb7bd96cdef56be0` |
 | `lib/psych-v96.js` | 16837 | `6aa2f2a4550dc4dc0f1e5d486bb8d7e83faac28cc1112a1e299a36d13833fc39` |
 | `lib/pulm-copd-v205.js` | 15657 | `e209ded1a783152b4bf49ac6d693fe097126161d3cb53a09268fe38e9ab9c3bf` |
-| `lib/pulm-v114.js` | 15731 | `579720bd9198af70f6b48e25ba0514e6f1fc52dfd8219d1b58a9456f2eb67476` |
+| `lib/pulm-v114.js` | 16068 | `0267a9b881929d371166516691979f4fdce8b15875dafcbfbad6c21bbbcc5ee5` |
 | `lib/pulm-v91.js` | 18421 | `15ae847d2ac8b1833d8840263dc4a81c1d0300413c865201e6351feaa35aa101` |
-| `lib/pulmnod-v115.js` | 19420 | `a60c65fc6d99c2137036c549d4c31308a8b635d30277ddb1c524b84b4cb9731d` |
+| `lib/pulmnod-v115.js` | 19707 | `bda10ab55422e34da8e69b4e7dc537cf758ae0a401a8ea05f38e68bf47eb5139` |
 | `lib/pulmonary-risk-v221.js` | 14238 | `69991f0c4ba63da303e0047c55b6c2f054244ec7e353ba26fde5246edfea1479` |
 | `lib/puqe24-v553.js` | 10456 | `d2593fdc70bc2cc959ddac33b9c0d578d7ac5decf655bfff3e35f1b412b6a781` |
 | `lib/push-tool-v662.js` | 4843 | `0c6fa9721ac595d78e6f85f229f31092e1d6b1b11e9bc770a02b48c8195bb0c2` |
@@ -876,7 +876,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/waldenstrom-perthes-v463.js` | 3215 | `61142875bbb4fe034e8b075c8dfd4c0d5169d11325bf43db82a05803685fa5c7` |
 | `lib/walter-index-v669.js` | 4705 | `92eb9484ed7b65b2c3dba0b2353739ed27536fe46698025593be2140d52525f1` |
 | `lib/wang-bronchiolitis-v682.js` | 4866 | `7e96507ad1076d894fceb5897d88d438251ede1e32d524eaefa1983bef3e7b7a` |
-| `lib/warfarin-v133.js` | 17650 | `d8828a05588e183023b5655c0a23741b0834be45ca68c18309267a125dcc13e6` |
+| `lib/warfarin-v133.js` | 17987 | `c628e501f902899b6bf9baa24a8129eef2465e671e75136bb1bcbe4d12a34a7f` |
 | `lib/wassel-thumb-v417.js` | 3695 | `737843b45e55eb4516c05998d701f524c458961c1aec0374c3142786d4e0a46d` |
 | `lib/wayne-index-v527.js` | 10220 | `73e78ac1e4ff49a83a078d3ba3a03da6a9527c6c11ea8790621d1d58a84d3889` |
 | `lib/weiss-v648.js` | 3676 | `1ca667de18e481c2366ea89b066ec3103a8f507b1cbd0b642248945575bea17b` |
