@@ -28,7 +28,8 @@ test('treated BP uses the higher coefficient (treated risk > untreated)', () => 
 });
 
 test('extreme fuzzed inputs clamp risk to [0,100] and vascular age finite', () => {
-  const r = framinghamCvd({ age: 1e9, male: true, totalChol: 1e9, hdl: 1, sbp: 1e9, smoker: true, diabetes: true });
+  // spec-v1224: see score2.test.js -- SBP at the top of its envelope, the rest fuzzed.
+  const r = framinghamCvd({ age: 1e9, male: true, totalChol: 1e9, hdl: 1, sbp: 300, smoker: true, diabetes: true });
   assert.ok(r.risk >= 0 && r.risk <= 100 && Number.isFinite(r.risk));
   assert.ok(r.vascularAge == null || Number.isFinite(r.vascularAge));
 });

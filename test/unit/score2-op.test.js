@@ -31,6 +31,7 @@ test('diabetes raises the estimate', () => {
 });
 
 test('extreme fuzzed inputs clamp to [0,100]', () => {
-  const r = score2Op({ age: 1e9, male: true, smoker: true, sbp: 1e9, totalChol: 1e9, hdl: 0, region: 'very-high' });
+  // spec-v1224: see score2.test.js -- SBP at the top of its envelope, the rest fuzzed.
+  const r = score2Op({ age: 1e9, male: true, smoker: true, sbp: 300, totalChol: 1e9, hdl: 0, region: 'very-high' });
   assert.ok(r.risk >= 0 && r.risk <= 100 && Number.isFinite(r.risk));
 });

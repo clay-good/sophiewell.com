@@ -20,6 +20,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Seven ten-year cardiovascular-risk tiles reported a risk percentage from a
+  systolic blood pressure of 3000 mmHg.** SCORE2 and SCORE2-OP said *"10-year CVD
+  risk 49.2% -- very-high category"*, Reynolds said 89.8%, Framingham printed a
+  vascular age of 98.5, and ASCVD and PREVENT both landed on *"High (>=20%)"*.
+  Each engine centers systolic BP with a clamp, which is right for the model --
+  the published coefficients are fitted on a range, and centering 260 mmHg at the
+  edge of that range is honest -- but a clamp makes every larger number look like
+  260, so a pressure ten times the highest ever recorded arrived at the band table
+  as a hypertensive emergency. All seven now check the 20-300 mmHg envelope
+  `lib/bounds.js` has published since spec-v53, after their own missing-value
+  branch, so a blank field is still asked for by name and 300 mmHg still answers.
+  ASCVD and PREVENT also reported every refusal to an agent as `valid: true`, with
+  the refusal sentence sitting where the answer goes; all six of their refusal
+  paths now say `valid: false`. See docs/spec-v1224.md.
+
 - **Three patient-bill tools said the patient owed nothing, from benefits nobody had
   entered.** A remaining deductible, a coinsurance percentage and a copay each default
   to zero, and each is right to: a copay-only plan has no coinsurance, a met deductible

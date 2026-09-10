@@ -33,6 +33,9 @@ test('region drives the ESC category flip at a fixed profile', () => {
 });
 
 test('extreme fuzzed inputs clamp to a probability in [0,100]', () => {
-  const r = score2({ age: 1e9, male: true, smoker: true, sbp: 1e9, totalChol: 1e9, hdl: 0, region: 'very-high' });
+  // spec-v1224: the systolic BP is the one predictor with a plausibility
+  // envelope, so the overflow probe drives it to the top of that envelope and
+  // fuzzes the rest. An SBP past the envelope is refused, not clamped.
+  const r = score2({ age: 1e9, male: true, smoker: true, sbp: 300, totalChol: 1e9, hdl: 0, region: 'very-high' });
   assert.ok(r.risk >= 0 && r.risk <= 100 && Number.isFinite(r.risk));
 });

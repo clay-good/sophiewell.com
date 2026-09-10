@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `af2f8d8f9931da76`
-Generated: 2026-09-10T17:39:25.882Z
+Build ID: `1ae394391600c536`
+Generated: 2026-09-10T18:41:16.712Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -209,7 +209,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/cts6-v773.js` | 3589 | `50ab3a3aa777a4ed12077b73c3a3a3dc707df6ff98e36a7c579aec5451333c8e` |
 | `lib/cuff-leak-v903.js` | 7823 | `0cf0d0afa2741c0d26f357fe35a05cfd0092146f4282d32e3d331b3adad04faa` |
 | `lib/cvrisk-engines-v202.js` | 4187 | `d55686ffb06e0646e022e949fb30dbd7f65cbd24c317dc0326e02684fa8e2d92` |
-| `lib/cvrisk-v103.js` | 20482 | `4dd94ddccfaac07de4ee333cc78419bd6a0401f1d30f96ecdf32b9c97fa53b12` |
+| `lib/cvrisk-v103.js` | 22156 | `f557c199ec515be7a392d796133c356bea521d49539f225ab2a8b1079ea83c7c` |
 | `lib/data.js` | 2448 | `58e3f307653fe83b2a86332e23b71ff2c53ca45a44228ebacf0c4d5ca5a790f9` |
 | `lib/deadline.js` | 7856 | `93735f582e4138816c92193c65ce763375e5137170195f6790f08b5c3eb35e19` |
 | `lib/deauville-v314.js` | 3653 | `06e9bfdbf337b56c341a3ac22ee5452152e62e19faca722bd33f7ae609c78119` |
@@ -762,7 +762,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/schobinger-avm-v497.js` | 3484 | `fd7d680fede1965fd9a9026d0977e4f2c1970e30d33718df3daaca235dfed009` |
 | `lib/schofield-v779.js` | 4325 | `7c398e3b1dc2df66c5323baee0f73ff66c28927fb47a72ede85dfd51d2de4931` |
 | `lib/schwab-england-v385.js` | 4331 | `caddd0709826db63186ebf0a5f8b60fd9a3e00fa934bddc3e0331977f70c5e4b` |
-| `lib/scoring-v4.js` | 289085 | `9547c9ade8592754d72201bf2921e1371867a0a847a1e08addefc31b7d900fdc` |
+| `lib/scoring-v4.js` | 290039 | `f4c941b0cefae3b06d95e4fcc1cb761e06d00769a2b24c33bf8be94b5c840386` |
 | `lib/scoring-v5.js` | 13821 | `89b532534c64d0e47a4c2e7978ec5d68f1a6d101c61ac586056a0764b8d05039` |
 | `lib/scoring-v6.js` | 27427 | `ed570d8507d63371de2181a97743f8ee1f40e2042eedba9dac2216ed247d6fad` |
 | `lib/scp-pushing-v562.js` | 12399 | `6da019a04668722b7a8d448b4d7bf9908717629b72e4a162088e74363ad62360` |

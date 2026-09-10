@@ -30,6 +30,7 @@ test('a diabetic man is flagged as outside the derivation population', () => {
 });
 
 test('extreme fuzzed inputs clamp risk to [0,100]', () => {
-  const r = reynoldsRisk({ age: 1e9, male: false, sbp: 1e9, totalChol: 1e9, hdl: 1, hsCrp: 1e9, smoker: true, familyHx: true, diabetic: true, hba1c: 1e9 });
+  // spec-v1224: see score2.test.js -- SBP at the top of its envelope, the rest fuzzed.
+  const r = reynoldsRisk({ age: 1e9, male: false, sbp: 300, totalChol: 1e9, hdl: 1, hsCrp: 1e9, smoker: true, familyHx: true, diabetic: true, hba1c: 1e9 });
   assert.ok(r.risk >= 0 && r.risk <= 100 && Number.isFinite(r.risk));
 });
