@@ -488,7 +488,15 @@ reassuring side of the threshold where the example never goes (spec-v1092).
   **A `max` attribute is a BROWSER-only disclosure.** It drives the page's own
   range warning and reaches no agent. The complete fix is the library one — call
   `boundsAdvisory` and surface the string beside the result — which is per-tile
-  across 68 calculators. Do not ship the attribute half and call the row closed.
+  across the sixty-eight. Do not ship the attribute half and call the row closed.
+
+  And check before writing the helper: [spec-v53](spec-v53.md)'s disclosure
+  design was built, twice, and never spread. `adviseAll` in `views/group-e.js`
+  and `advise` in `views/group-v11.js` are two private copies of the same four
+  lines — append `boundsAdvisory(key, value)` beside the result, never touching
+  the number — living in two of the view modules. A third copy is the mistake
+  this repo keeps making; hoist these two first. Both are also browser-only, so
+  neither closes a row on its own.
 
 - ~~**A form with one value in it** has no gate.~~ **Closed by spec-v1037**: the oracle turned out to
   be already in the repo. `mcp/fields.js` marks inputs `required`, so the sweep clears exactly one of
