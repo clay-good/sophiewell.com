@@ -264,6 +264,27 @@ the control before touching the tile (`docs/spec-v1132.md`, `docs/spec-v1133.md`
 node scripts/probe-default-in-answer.mjs
 ```
 
+`scripts/probe-static-exemption.mjs` asks a question about the CHECKS rather than
+the tools: which rows does `test/lib/asking-language.js` excuse on text that did
+not change when the field was dropped? A tool's standing notes, an option label
+read back or a formula written out are the same whatever was entered, so none of
+them can be a statement about a gap that did not exist when they were written --
+and any of them can contain a phrase from that vocabulary. `hiv-pep-occupational`
+was read as guarded for a missing source status on the strength of its own option
+label, "the source cannot be identified" (`docs/spec-v1193.md`).
+
+```bash
+node scripts/probe-static-exemption.mjs
+node scripts/probe-static-exemption.mjs --all      # including rows whose verdict did not move
+```
+
+**If you add a phrase to `test/lib/asking-language.js`, measure it first.** That
+file's own rules say to check which tools it stops flagging before adding one, and
+the sweeps that clear ONE field now match it against what the reading ADDED rather
+than against all of it (`ownsTheGap`, `docs/spec-v1196.md`). The empty-form sweeps
+deliberately do not: with nothing entered there is no before-reading to compare
+against.
+
 **Negative-test a finder before you trust a quiet report.** That one found ZERO on
 the very defect it was written from, because it tracked one hop of aliasing where
 the defect took two. Point a new finder at a known-bad file first, watch it fire,
