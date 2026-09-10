@@ -763,6 +763,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   EuroSCORE II cardiac-surgery model, which had predicted a mortality of 100% from
   an implausible age, was fixed in the same pass. See docs/spec-v1205.md.
 
+- **Two more tools that judged a patient on an impossible measurement.** The
+  harmless-acute-pancreatitis screen read a haematocrit of 750% as simply "not
+  normal" and answered "not harmless"; the HScore for haemophagocytic
+  lymphohistiocytosis scored a temperature of 450 °C into its top band and
+  reported a probability. Both now ask for the value to be checked, and both keep
+  answering at the top of the range a person can actually have. See
+  docs/spec-v1206.md.
+
 ### Changed
 
 - **The check that compares a tool's accepted values with the menu on the page could

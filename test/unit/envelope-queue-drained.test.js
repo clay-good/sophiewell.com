@@ -21,8 +21,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 
-import { cdaiCrohns } from '../../lib/gi-v126.js';
-import { ipssrMds, sokalCml } from '../../lib/hemonc-v94.js';
+import { cdaiCrohns, haps } from '../../lib/gi-v126.js';
+import { ipssrMds, sokalCml, hscoreHlh } from '../../lib/hemonc-v94.js';
 import { mews, news2, mods, meows } from '../../lib/scoring-v4.js';
 import { lods, oasis, deltaGap, appsArds } from '../../lib/critcare-severity-v200.js';
 import { harveyBradshaw } from '../../lib/hepgi-v93.js';
@@ -461,4 +461,42 @@ test('euroscore-ii guards the age, as abi in the same module already did', () =>
   assert.doesNotMatch(absurd.band, /mortality/);
   // The oldest the envelope admits still answers.
   assert.match(euroScore2({ ...es, age: 130 }).band, /predicted in-hospital mortality/);
+});
+
+// spec-v1206: the last two rows on probe-unguarded-sibling whose analytes are
+// already in lib/bounds.js.
+test('haps guards the same two analytes cdai-crohns does, in the same module', () => {
+  const ok = { hct: 40, creatinine: 1.0 };
+  assert.match(haps(ok).band, /harmless/);
+
+  // An impossible value used to fail the "normal" test and move the answer to
+  // "not harmless" -- alarming rather than reassuring, and still a verdict from a
+  // number that cannot be.
+  assert.match(haps({ ...ok, hct: 750 }).message, /plausible range for h[ae]matocrit \(5 to 75 %\)/i);
+  assert.equal(haps({ ...ok, hct: 750 }).valid, false);
+  assert.match(haps({ ...ok, creatinine: 250 }).message, /plausible range for serum creatinine/);
+
+  // The top of the envelope is a real, abnormal value and still answers.
+  assert.match(haps({ ...ok, hct: 75 }).band, /not harmless/);
+});
+
+test('hscore-hlh guards the temperature, and only the temperature', () => {
+  const hs = {
+    immunosuppression: false, organomegaly: 'none', cytopenias: 1, ferritin: 3000,
+    triglyceride: 200, fibrinogen: 250, ast: 40, hemophagocytosis: false,
+  };
+  assert.match(hscoreHlh({ ...hs, temp: 38.5 }).band, /HScore 151/);
+
+  const hot = hscoreHlh({ ...hs, temp: 450 });
+  assert.equal(hot.valid, false);
+  assert.match(hot.band, /plausible range for core temperature \(25 to 45 C\)/);
+  assert.doesNotMatch(hot.band, /HScore \d/);
+
+  // 45 C is the top of the envelope and still scores.
+  assert.match(hscoreHlh({ ...hs, temp: 45 }).band, /HScore 167/);
+
+  // lib/bounds.js declares no envelope for ferritin, triglyceride, fibrinogen or
+  // AST, so those are untouched -- choosing one is a clinical judgment that
+  // belongs with a source. Asserted so the absence is a record, not an oversight.
+  assert.notEqual(hscoreHlh({ ...hs, temp: 38.5, ferritin: 1e9 }).valid, false);
 });
