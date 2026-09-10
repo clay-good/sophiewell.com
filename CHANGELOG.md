@@ -608,6 +608,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   Every calculator's own worked example still answers unremarked. See
   docs/spec-v1189.md.
 
+- **Searching for a bag of fluid returned a blood-sugar converter.** The spell-check
+  that fixes a mistyped search was rewriting words that were spelled correctly:
+  "bag" is one letter away from "eAG", so every bag question -- "iv bag", "bag of
+  fluid", "how long will this bag last" -- was answered by the estimated-average-
+  glucose tool, with the infusion calculators sitting underneath it. A word the
+  catalogue itself uses is no longer treated as a misspelling; "bag" appears in five
+  tools. Genuine typos are still fixed, and every one of the 1,706 tools still
+  answers its own name exactly as before. See docs/spec-v1190.md.
+
 ### Changed
 
 - **The check that compares a tool's accepted values with the menu on the page could
