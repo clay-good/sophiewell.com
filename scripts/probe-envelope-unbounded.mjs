@@ -32,6 +32,7 @@
 //
 //   node scripts/probe-envelope-unbounded.mjs
 //   node scripts/probe-envelope-unbounded.mjs --key scr
+//   node scripts/probe-envelope-unbounded.mjs --json   (the rows as data)
 
 import { allCalculators } from '../mcp/catalog.js';
 import { BOUNDS } from '../lib/bounds.js';
@@ -138,8 +139,12 @@ for (const r of usable) {
   flagged.push({ ...r, over, max: b.max, say, verdict });
 }
 
-console.log(`${flagged.length} field(s) across ${new Set(flagged.map((f) => f.id)).size} calculator(s) answer`);
-console.log('from a value an order of magnitude past a ceiling lib/bounds.js already declares.\n');
+// Under --json, stdout is the document: the header goes to stderr so the output
+// can be piped straight into a parser.
+const asJson = process.argv.includes('--json');
+const say = asJson ? ((...a) => console.error(...a)) : ((...a) => console.log(...a));
+say(`${flagged.length} field(s) across ${new Set(flagged.map((f) => f.id)).size} calculator(s) answer`);
+say('from a value an order of magnitude past a ceiling lib/bounds.js already declares.\n');
 
 // The reassuring ones first: an impossible value that produces a RULE-OUT is the
 // shape this programme cares about (rule 3), and an alarm from an impossible
@@ -188,6 +193,24 @@ const reassuring = flagged.filter(readsReassuring);
 const rest = flagged.filter((f) => !readsReassuring(f));
 
 const line = (f) => `  ${f.id}|${f.dom} [${f.key}] ${f.ex} -> ${f.over} (ceiling ${f.max})\n      ${f.say.slice(0, 150)}`;
+
+// spec-v1211: `--json` emits the rows as data. The residue is large enough that a
+// wave has to triage it before it can act -- which field, which envelope, which
+// view helper renders it -- and the only way to get at that was to regex this
+// script's own console output. Two passes over that text produced the table now
+// in docs/incomplete-input-program.md, and a third would have re-derived it
+// differently. The report above is unchanged; this is the same rows, addressable.
+if (asJson) {
+  const row = (f, bucket) => ({
+    bucket, tile: f.id, field: f.dom, key: f.key, example: f.ex, drivenTo: f.over, ceiling: f.max, reading: f.say,
+  });
+  console.log(JSON.stringify({
+    reassuring: reassuring.map((f) => row(f, 'reassuring')),
+    rest: rest.map((f) => row(f, 'rest')),
+  }, null, 2));
+  process.exit(0);
+}
+
 console.log(`REASSURING FROM AN IMPOSSIBLE VALUE -- ${reassuring.length}`);
 for (const f of reassuring) console.log(line(f));
 console.log(`\nTHE REST -- ${rest.length}`);

@@ -473,7 +473,10 @@ reassuring side of the threshold where the example never goes (spec-v1092).
   envelope is a **disclosure** boundary rather than a refusal, so the work is to
   surface the advisory, not to refuse.
 
-  Measured, so the next wave does not have to re-measure it. Of those fields:
+  Measured, so the next wave does not have to re-measure it — and derivable
+  rather than transcribed: `--json` on that probe emits the rows as data
+  (tile, field, envelope key, the value it was driven to, and the reading it
+  produced), which is where this table comes from. Of those fields:
 
   | | count | what it needs |
   | --- | --- | --- |
