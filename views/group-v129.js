@@ -95,8 +95,8 @@ export const renderers = {
   // ----- 2.2 base-excess ------------------------------------------------
   'base-excess'(root) {
     note(root, 'Standard base excess (Siggaard-Andersen Van Slyke equation, NCCLS constants): BE = (1 − 0.0143 × Hb) × (HCO3 − 24.8 + (9.5 + 1.63 × Hb) × (pH − 7.4)). Negative = base deficit (metabolic acidosis); positive = base excess (metabolic alkalosis). The sign flips at zero.');
-    root.appendChild(field('Arterial pH', 'be-ph', { step: '0.01', min: 0, placeholder: 'e.g. 7.40' }));
-    root.appendChild(field('Bicarbonate (mEq/L)', 'be-hco3', { step: '0.1', min: 0, placeholder: 'e.g. 24.8' }));
+    root.appendChild(field('Arterial pH', 'be-ph', { step: '0.01', min: 0, max: 8, placeholder: 'e.g. 7.40' }));
+    root.appendChild(field('Bicarbonate (mEq/L)', 'be-hco3', { step: '0.1', min: 0, max: 60, placeholder: 'e.g. 24.8' }));
     root.appendChild(field('Hemoglobin (g/dL)', 'be-hb', { max: 25, step: '0.1', min: 0, placeholder: 'e.g. 15' }));
     const o = out(); root.appendChild(o);
     wire(['be-ph', 'be-hco3', 'be-hb'], () => safe(o, () => {
@@ -111,8 +111,8 @@ export const renderers = {
   // ----- 2.3 resp-acidosis-compensation ---------------------------------
   'resp-acidosis-compensation'(root) {
     note(root, 'Expected HCO3 in respiratory acidosis (Brackett 1965 acute; Schwartz 1965 chronic): HCO3 rises ~1 mEq/L per 10 mmHg PaCO2 above 40 acutely, ~4 mEq/L per 10 chronically. A measured HCO3 outside the expected band flags an added metabolic disorder. Choose acute or chronic.');
-    root.appendChild(field('Measured PaCO2 (mmHg)', 'ra-paco2', { step: '1', min: 0, placeholder: 'e.g. 60' }));
-    root.appendChild(field('Measured HCO3 (mEq/L)', 'ra-hco3', { step: '0.1', min: 0, placeholder: 'e.g. 26' }));
+    root.appendChild(field('Measured PaCO2 (mmHg)', 'ra-paco2', { step: '1', min: 0, max: 200, placeholder: 'e.g. 60' }));
+    root.appendChild(field('Measured HCO3 (mEq/L)', 'ra-hco3', { step: '0.1', min: 0, max: 60, placeholder: 'e.g. 26' }));
     root.appendChild(selectField('Acute or chronic', 'ra-ch', ACUTE_CHRONIC_OPTS));
     const o = out(); root.appendChild(o);
     wire(['ra-paco2', 'ra-hco3', 'ra-ch'], () => safe(o, () => {
@@ -127,8 +127,8 @@ export const renderers = {
   // ----- 2.4 resp-alkalosis-compensation --------------------------------
   'resp-alkalosis-compensation'(root) {
     note(root, 'Expected HCO3 in respiratory alkalosis (Gennari 1972): HCO3 falls ~2 mEq/L per 10 mmHg PaCO2 below 40 acutely, ~4 mEq/L per 10 chronically (not below a physiologic floor). A measured HCO3 outside the expected band flags an added metabolic disorder. Choose acute or chronic.');
-    root.appendChild(field('Measured PaCO2 (mmHg)', 'rl-paco2', { step: '1', min: 0, placeholder: 'e.g. 25' }));
-    root.appendChild(field('Measured HCO3 (mEq/L)', 'rl-hco3', { step: '0.1', min: 0, placeholder: 'e.g. 21' }));
+    root.appendChild(field('Measured PaCO2 (mmHg)', 'rl-paco2', { step: '1', min: 0, max: 200, placeholder: 'e.g. 25' }));
+    root.appendChild(field('Measured HCO3 (mEq/L)', 'rl-hco3', { step: '0.1', min: 0, max: 60, placeholder: 'e.g. 21' }));
     root.appendChild(selectField('Acute or chronic', 'rl-ch', ACUTE_CHRONIC_OPTS));
     const o = out(); root.appendChild(o);
     wire(['rl-paco2', 'rl-hco3', 'rl-ch'], () => safe(o, () => {
@@ -143,8 +143,8 @@ export const renderers = {
   // ----- 2.5 met-alkalosis-compensation ---------------------------------
   'met-alkalosis-compensation'(root) {
     note(root, 'Expected PaCO2 in metabolic alkalosis (Narins-Emmett 1980): expected PaCO2 = 0.7 × (HCO3 − 24) + 40 (± 5). A measured PaCO2 outside the band flags an added respiratory disorder. The metabolic-alkalosis complement of Winter’s formula.');
-    root.appendChild(field('Measured HCO3 (mEq/L)', 'ma-hco3', { step: '0.1', min: 0, placeholder: 'e.g. 40' }));
-    root.appendChild(field('Measured PaCO2 (mmHg)', 'ma-paco2', { step: '1', min: 0, placeholder: 'e.g. 51' }));
+    root.appendChild(field('Measured HCO3 (mEq/L)', 'ma-hco3', { step: '0.1', min: 0, max: 60, placeholder: 'e.g. 40' }));
+    root.appendChild(field('Measured PaCO2 (mmHg)', 'ma-paco2', { step: '1', min: 0, max: 200, placeholder: 'e.g. 51' }));
     const o = out(); root.appendChild(o);
     wire(['ma-hco3', 'ma-paco2'], () => safe(o, () => {
       const r = M.metAlkalosisCompensation({ bicarbonate: optNum('ma-hco3'), paco2: optNum('ma-paco2') });

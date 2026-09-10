@@ -690,6 +690,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   It now names the assumption and gives the factor, the way five other tools that
   take a unit already do. See docs/spec-v1197.md.
 
+- **A pH of 80 produced a base excess of +1928.** Four blood-gas tools computed
+  from frankly impossible values -- a pH of 80, a bicarbonate of 600, a carbon
+  dioxide tension of 2000 -- and printed the result with the same authority as a
+  real one. A fifth tool in the same file has refused those since it was written,
+  using a table of survivable ranges the file already imported. All four now
+  refuse too, and say which range the value is outside rather than calling an
+  entered value missing. The boxes carry the same ceilings, so a transposed digit
+  is caught on the way in. See docs/spec-v1198.md.
+
 ### Changed
 
 - **The check that compares a tool's accepted values with the menu on the page could

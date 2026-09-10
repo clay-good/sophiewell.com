@@ -26,7 +26,10 @@ import { ipssrMds } from '../../lib/hemonc-v94.js';
 import { mews } from '../../lib/scoring-v4.js';
 import { abi } from '../../lib/vascular-v105.js';
 import { lactateClearance } from '../../lib/critcare-v112.js';
-import { stewartSidSig } from '../../lib/acidbase-v129.js';
+import {
+  stewartSidSig, baseExcess, respAcidosisCompensation, respAlkalosisCompensation, metAlkalosisCompensation,
+} from '../../lib/acidbase-v129.js';
+import { boundsAdvisory, BOUNDS } from '../../lib/bounds.js';
 
 test('cdai-crohns refuses an impossible haematocrit instead of reporting remission', () => {
   const base = {
@@ -92,4 +95,68 @@ test('the probe queue this wave drained is empty', () => {
   // took all of them; the probe prints 0 there now. The probe itself is not run
   // in CI, so this test is the pin.
   assert.ok(true, 'see scripts/probe-envelope-unbounded.mjs, first section');
+});
+
+// spec-v1198: `stewartSidSig` ends on the rule this file exists for -- "Guard the
+// set, not the field that was reported" (spec-v1181) -- and the four gas
+// functions beside it in the SAME module never got it. A pH of 80, a bicarbonate
+// of 600 and a PaCO2 of 2000 all computed:
+//
+//   base-excess   pH 80        -> "Base excess +1928.4 mEq/L: a base excess,
+//                                  consistent with a metabolic alkalosis"
+//   resp-alkalosis  PaCO2 2000 -> "Expected HCO3 416 mEq/L"
+//
+// None of them is REASSURING, which is why the probe ranked them below the eleven
+// above; each is an impossible number printed with the same authority as a real
+// one.
+test('the four gas functions guard the set, as their neighbour in the same file does', () => {
+  const cases = [
+    ['baseExcess', baseExcess, { ph: 7.2, bicarbonate: 15, hemoglobin: 15 }, { ph: 80 }, /arterial pH \(6\.5 to 8\)/],
+    ['baseExcess', baseExcess, { ph: 7.2, bicarbonate: 15, hemoglobin: 15 }, { bicarbonate: 600 }, /serum bicarbonate \(2 to 60 mmol\/L\)/],
+    ['baseExcess', baseExcess, { ph: 7.2, bicarbonate: 15, hemoglobin: 15 }, { hemoglobin: 250 }, /h[ae]moglobin \(2 to 25 g\/dL\)/i],
+    ['respAcidosis', respAcidosisCompensation, { paco2: 60, bicarbonate: 26, chronic: 'acute' }, { paco2: 2000 }, /PaCO2 \(5 to 200 mmHg\)/],
+    ['respAcidosis', respAcidosisCompensation, { paco2: 60, bicarbonate: 26, chronic: 'acute' }, { bicarbonate: 600 }, /bicarbonate/],
+    ['respAlkalosis', respAlkalosisCompensation, { paco2: 25, bicarbonate: 21, chronic: 'acute' }, { paco2: 2000 }, /PaCO2/],
+    ['respAlkalosis', respAlkalosisCompensation, { paco2: 25, bicarbonate: 21, chronic: 'acute' }, { bicarbonate: 600 }, /bicarbonate/],
+    ['metAlkalosis', metAlkalosisCompensation, { bicarbonate: 40, paco2: 51 }, { paco2: 2000 }, /PaCO2/],
+    ['metAlkalosis', metAlkalosisCompensation, { bicarbonate: 40, paco2: 51 }, { bicarbonate: 600 }, /bicarbonate/],
+  ];
+  for (const [name, fn, ok, bad, pattern] of cases) {
+    assert.equal(fn(ok).valid, true, `${name} baseline`);
+    const r = fn({ ...ok, ...bad });
+    const where = `${name} ${JSON.stringify(bad)}`;
+    assert.equal(r.valid, false, where);
+    assert.match(r.message, pattern, where);
+    // It must NAME the range rather than call an entered value missing --
+    // otherwise retyping the same number produces the same sentence, which is
+    // the failure mode probe-envelope-unbounded keeps its own section for.
+    assert.match(r.message, /plausible range/, where);
+    assert.doesNotMatch(r.message, /^Enter /, where);
+  }
+});
+
+test('the envelope runs after the missing-value check, never inside it', () => {
+  // `pos()` returns null for blank, for non-numeric AND for out-of-range alike,
+  // and every caller reads null as absent. Folding the envelope into it would
+  // tell a reader to enter the value they just typed.
+  const blank = baseExcess({ bicarbonate: 15, hemoglobin: 15 });
+  assert.equal(blank.valid, false);
+  assert.match(blank.message, /^Enter arterial pH/);
+  assert.doesNotMatch(blank.message, /plausible range/);
+});
+
+test('boundsAdvisory reads correctly for a unitless envelope', () => {
+  // spec-v1198: the space before the unit was unconditional, so arterial pH --
+  // which carries `unit: ''` -- read "(6.5 to 8 )". Only visible once a tile with
+  // a unitless envelope started using the sentence.
+  assert.match(boundsAdvisory('pH', 80), /\(6\.5 to 8\); verify the units/);
+  assert.match(boundsAdvisory('bicarbonate', 600), /\(2 to 60 mmol\/L\); verify the units/);
+
+  // And every note in the table is "human name; detail", which is what the
+  // sentence splits on to name the field. The Glasgow Coma Scale had no
+  // semicolon, so the whole sentence became the name.
+  for (const [key, b] of Object.entries(BOUNDS)) {
+    assert.ok(String(b.note).includes(';'), `${key} note needs a "name; detail" split`);
+  }
+  assert.match(boundsAdvisory('gcs', 157), /plausible range for Glasgow Coma Scale \(3 to 15 points\)/);
 });

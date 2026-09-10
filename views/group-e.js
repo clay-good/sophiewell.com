@@ -243,9 +243,13 @@ export const renderers = {
   },
 
   'anion-gap'(root) {
-    root.appendChild(field('Sodium (mEq/L)', 'na'));
-    root.appendChild(field('Chloride (mEq/L)', 'cl'));
-    root.appendChild(field('Bicarbonate (mEq/L)', 'hco3'));
+    // spec-v1198: the ceilings are lib/bounds.js's, which already declares each
+    // of these as "not survivable" outside the range. `delta-gap` -- the same
+    // panel, one module over -- has carried `max: 200` on its sodium since it was
+    // written, and these three carried nothing.
+    root.appendChild(field('Sodium (mEq/L)', 'na', { max: 200 }));
+    root.appendChild(field('Chloride (mEq/L)', 'cl', { max: 160 }));
+    root.appendChild(field('Bicarbonate (mEq/L)', 'hco3', { max: 60 }));
     root.appendChild(unitField('Albumin (optional)', 'alb', ALBUMIN_UNITS));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
@@ -439,9 +443,9 @@ export const renderers = {
   // --- spec-v4 §5: Group E extensions (utilities 117-128) -------------
 
   'anion-gap-dd'(root) {
-    root.appendChild(field('Sodium (mEq/L)', 'na'));
-    root.appendChild(field('Chloride (mEq/L)', 'cl'));
-    root.appendChild(field('HCO3 (mEq/L)', 'hco3'));
+    root.appendChild(field('Sodium (mEq/L)', 'na', { max: 200 }));
+    root.appendChild(field('Chloride (mEq/L)', 'cl', { max: 160 }));
+    root.appendChild(field('HCO3 (mEq/L)', 'hco3', { max: 60 }));
     root.appendChild(unitField('Albumin (optional)', 'alb', ALBUMIN_UNITS));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
@@ -493,7 +497,7 @@ export const renderers = {
 
   'osmolal-gap'(root) {
     root.appendChild(field('Measured serum osmolality (mOsm/kg)', 'measured'));
-    root.appendChild(field('Sodium (mEq/L)', 'og-na'));
+    root.appendChild(field('Sodium (mEq/L)', 'og-na', { max: 200 }));
     root.appendChild(unitField('Glucose', 'og-glu', GLUCOSE_UNITS));
     root.appendChild(unitField('BUN', 'og-bun', BUN_UNITS));
     root.appendChild(field('EtOH (mg/dL, optional)', 'og-etoh'));
@@ -547,8 +551,8 @@ export const renderers = {
   },
 
   'winters'(root) {
-    root.appendChild(field('HCO3 (mEq/L)', 'wf-hco3'));
-    root.appendChild(field('Measured PaCO2 (mmHg, optional)', 'wf-paco2'));
+    root.appendChild(field('HCO3 (mEq/L)', 'wf-hco3', { max: 60 }));
+    root.appendChild(field('Measured PaCO2 (mmHg, optional)', 'wf-paco2', { max: 200 }));
     const o = out(); root.appendChild(o);
     const deriv = renderDerivation(META.winters);
     if (deriv) root.appendChild(deriv);
