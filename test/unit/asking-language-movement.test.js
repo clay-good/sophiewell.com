@@ -60,3 +60,23 @@ test('the participle family and the negative existential are recognised', () => 
     assert.doesNotMatch(phrase, DISCLOSING, phrase);
   }
 });
+
+// spec-v1222: a reading assembled from DOM nodes has no sentence punctuation
+// between them, so there was nothing to split on and a tile that only DROPPED a
+// row read as one that added the whole run.
+test('addedText finds the row edge in a reading with no sentence punctuation', () => {
+  const withAlbumin = 'Anion gap: 26Albumin-corrected AG: 26delta-AG = 14delta-HCO3 = 10Pure AG metabolic acidosis.';
+  const without = 'Anion gap: 26delta-AG = 14delta-HCO3 = 10Pure AG metabolic acidosis.';
+  // `anion-gap-dd` with its optional albumin cleared: one row fewer, nothing new.
+  assert.equal(addedText(withAlbumin, without), '');
+  assert.equal(ownsTheGap(without, withAlbumin), true);
+});
+
+test('splitting finer cannot hide text a reading genuinely gained', () => {
+  const before = 'Anion gap: 26delta-AG = 14';
+  // A new clause is still absent from `before`, so it is still reported.
+  assert.match(addedText(before, 'Anion gap: 26delta-AG = 14Mixed acidosis.'), /Mixed acidosis/);
+  // And a value that MOVED is still reported, which is the defect these sweeps
+  // exist for -- a recompute from the blank.
+  assert.equal(addedText(before, 'Anion gap: 31delta-AG = 14'), 'Anion gap: 31');
+});

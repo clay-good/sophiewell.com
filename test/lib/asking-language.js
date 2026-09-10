@@ -193,7 +193,20 @@ export const DISCLOSING = new RegExp([
 // A string, because the browser sweeps ship this into page.evaluate.
 export function addedText(before, after) {
   if (!before) return String(after || '');
-  const split = (t) => String(t || '').split(/(?<=[.!?])\s+|(?<=\.)(?=[A-Z])/).map((x) => x.trim()).filter(Boolean);
+  // spec-v1222: a reading assembled from DOM nodes has no sentence punctuation
+  // between them. `#q-results` textContent runs the rows together --
+  // "Anion gap: 26Albumin-corrected AG: 26delta-AG = 14" -- so a tile that merely
+  // DROPPED the albumin row had no boundary to split on, the whole run read as
+  // one chunk, and a reading that added nothing was reported as adding ninety-two
+  // characters. Splitting where a digit meets a letter recovers the row edge.
+  //
+  // Finer splitting is the safe direction. Both sides are split the same way, so
+  // a chunk unchanged in both is still filtered out, and a chunk the reading
+  // genuinely gained is still absent from `before` and still reported. It removes
+  // false "added" text; it cannot hide real added text.
+  const split = (t) => String(t || '')
+    .split(/(?<=[.!?])\s+|(?<=\.)(?=[A-Z])|(?<=\d)(?=[A-Za-z])/)
+    .map((x) => x.trim()).filter(Boolean);
   const seen = new Set(split(before));
   return split(after).filter((x) => !seen.has(x)).join(' ');
 }
