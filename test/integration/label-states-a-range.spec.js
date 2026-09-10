@@ -23,6 +23,24 @@
 // gate at all: the range is not a number someone has to decide, it is the number
 // already printed beside the box. A new field that shows one and does not enforce
 // it fails here.
+//
+// SCOPED TO A PARENTHETICAL TWO-ENDPOINT RANGE, ON PURPOSE. Labels state bounds
+// other ways, and both other ways were swept before this was narrowed:
+//
+//   "must be > 0" -- five fields (uu-cr, kt-pre, cc-cys, nf-alt, sk-plt). Each
+//     library ALREADY refuses zero and negatives with a sentence naming the
+//     field, checked by driving all five. Adding a browser `min` here would put
+//     a second, WEAKER message ("at least 0") beside the label's stronger one,
+//     and two live regions disagreeing on one page is a defect this repo has
+//     shipped before. Left alone deliberately.
+//
+//   "at least 8 hours", ">= 43", "1 point per decade >=50" -- seven fields where
+//     the number is a fasting duration, a condition on a DIFFERENT field, or a
+//     scoring band. Widening the pattern to catch these would flag correct
+//     fields, and a false flag invites a fix to a field that was right.
+//
+// A parenthetical `(lo-hi)` beside a numeric input is unambiguous; the rest are
+// prose. That is the whole reason this one can be asserted and they cannot.
 import { test, expect } from '@playwright/test';
 
 test.skip(({ browserName }) => browserName !== 'chromium', 'whole-catalog sweep is chromium-only');
