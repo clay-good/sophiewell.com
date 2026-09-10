@@ -471,7 +471,7 @@ reassuring side of the threshold where the example never goes (spec-v1092).
 ## What is still open
 
 - **A value past a ceiling `lib/bounds.js` already declares still produces an
-  answer in 54 fields**, spread over thirty-seven of the
+  answer in 47 fields**, spread over thirty-three of the
   catalog's entries (`scripts/probe-envelope-unbounded.mjs`). It was 116 across
   sixty-eight until [spec-v1224](spec-v1224.md) took the seven ten-year
   cardiovascular-risk engines (a clamp was standing in for a guard, so an SBP of
@@ -483,10 +483,17 @@ reassuring side of the threshold where the example never goes (spec-v1092).
   [spec-v1229](spec-v1229.md) the liver panel and three metabolic indices
   (`child-pugh` scored an albumin of 70 g/dL in its *healthiest* band), and
   [spec-v1230](spec-v1230.md) five bedside derivations (`pf-ratio` read a PaO2 of
-  7000 mmHg as *"Normal"*, the reassuring end of an ARDS severity scale).
-  None of them is a rule-out any more — [spec-v1211](spec-v1211.md) drained that
-  bucket and fixed the classifier that had been hiding four of them — so what
-  remains is alarms and neutral readings.
+  7000 mmHg as *"Normal"*, the reassuring end of an ARDS severity scale), and
+  [spec-v1231](spec-v1231.md) four open-ended band tables (`oakland` read a
+  haemoglobin of 250 g/dL as *"safe for outpatient management"*).
+  The probe's REASSURING section reads zero, and has since
+  [spec-v1211](spec-v1211.md) drained that bucket and fixed the classifier that
+  had been hiding four of them. **That is a claim about the classifier's reach,
+  not about the catalog**: [spec-v1231](spec-v1231.md) found four rows sitting in
+  "the rest" whose readings were *"safe for outpatient management"*, *"no lung
+  injury"*, *"not in the high-risk band"* and *"Low (in-hospital mortality <
+  1%)"* — none of which the reassuring vocabulary matches. Widening it is open
+  work, and has its own false-positive risk.
 
   **The design moved, and this page said otherwise for a while.** Under
   [spec-v53](spec-v53.md) the envelope is a *disclosure* boundary: the advisory

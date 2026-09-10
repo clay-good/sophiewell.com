@@ -20,6 +20,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A haemoglobin of 250 g/dL produced a discharge recommendation.** Four risk
+  scores band their inputs with a chain of comparisons whose last branch catches
+  everything -- and on three of them that outermost branch is the *reassuring* one.
+  The Oakland score, whose whole purpose is deciding whether a lower-GI bleed can go
+  home, read *"safe for outpatient management (95% probability of safe discharge)"*
+  from a haemoglobin no patient has. GRACE called a systolic BP of 3000 mmHg *"Low
+  (in-hospital mortality < 1%)"*, HACOR scored a pH of 80 as zero points, and the
+  Murray lung injury score read *"no lung injury"* from a PaO2 of 7000 mmHg. All
+  four now check each value before banding it. See docs/spec-v1231.md.
+
 - **A mean arterial pressure of 1053 mmHg, an A-a gradient of minus 6900, and an
   ARDS ratio that read "Normal".** Five bedside derivations each hid an impossible
   input a different way: an average has no band beside it for the number to look
