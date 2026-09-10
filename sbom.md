@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `a3a84e4977ca5d94`
-Generated: 2026-09-10T13:12:49.842Z
+Build ID: `96e67dcc6c2df4b2`
+Generated: 2026-09-10T13:49:44.547Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -203,7 +203,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/crafft-v511.js` | 4287 | `327127a6f8e3677bd8a1d0f3c3ced3b3347ee9c785e294ba9a50052ca446d1c2` |
 | `lib/crawford-taaa-v464.js` | 3861 | `88e25ce66c44ed838925af33531184aa2ec6a743e775339af30ec9ba797646d4` |
 | `lib/critcare-severity-v200.js` | 18707 | `e72c4c4be9dc635ec7214460c3300e8b3dfab7141bd30394d61d8d3c0db9f123` |
-| `lib/critcare-v112.js` | 16058 | `4b862bd87f9c5435f7e069542fa0b1f23b1b5f146aa2978e903066b5a4681cb1` |
+| `lib/critcare-v112.js` | 17740 | `aa0cef2d7879521cdacb196b4f9b3ed1ecf530e3d67fc223e4ee286f18bf24a2` |
 | `lib/crowe-ddh-v353.js` | 3621 | `cbfcd5066efa27d55b012cfe0174650bb2009a8d7f8e6ddc5dcf5a4ffbbc789d` |
 | `lib/crs-v305.js` | 5412 | `ef4acb9a6090b2dee839747bc0cc8b5b7adecc9c3d96e89fdc601b72fa835c71` |
 | `lib/cts6-v773.js` | 3589 | `50ab3a3aa777a4ed12077b73c3a3a3dc707df6ff98e36a7c579aec5451333c8e` |
@@ -266,7 +266,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/enneking-v460.js` | 3397 | `5f0a323b907db13850e71165ddd2b21e7531734f7a26c12086c36710e01c27e3` |
 | `lib/entsleep-v243.js` | 7779 | `d4d6727b2e242d288f476fe4823fce9799f6c820e5d2e9af8ffc391c3cfad7bc` |
 | `lib/enturopsych-v254.js` | 8040 | `fda74506629d3035d3c24c18a3cf6faf49a5fa79e3807f01d188c73d6720bd83` |
-| `lib/enviro-v111.js` | 17060 | `462ca14ae9d8c6347b450ef69250908cd51f8294aa0bcf2bb3b15d2ef395ff19` |
+| `lib/enviro-v111.js` | 18385 | `a94186fe62f2496908c50141286183ff903e9b6c926a182fd9e997651fa903ef` |
 | `lib/environ-v242.js` | 7645 | `7fc43e83281b5d7ea301bc962322b3c149ff800873d8494971902291de51cd89` |
 | `lib/eortc-msg-ifd-v869.js` | 9785 | `846502bc39581253f8ffe1cf38dcd5e926144f344ae528fcfab13c02cc24ba01` |
 | `lib/eoss-v713.js` | 3955 | `150229c936465a637e488f83903837324b8752c7051b42903c784ffbae404441` |
@@ -324,7 +324,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/gerdq-v679.js` | 4410 | `1b59ff708ec0a30c39ae0bc7ed356bf1704dac46be643eb922ec1376759df951` |
 | `lib/geri-v241.js` | 6715 | `1debe98a4e5480baaaf503b9f4e9e093f0bdfaede8ce2741f9744b862ae52f98` |
 | `lib/ghent-marfan-v821.js` | 12318 | `855285066a558cf50ad9e937c7717195d86bc71bbe51e47913f4dfa811f8ce39` |
-| `lib/gi-v126.js` | 20229 | `465b4887f863d9d2ad5be2e7f2d98a87b13fbcb6f26e9e6e1d60af50f31c4e23` |
+| `lib/gi-v126.js` | 23328 | `7c2bad6411f20c1da473b54a8b17c79cae54705ca8bac1bb9a32ce580224b869` |
 | `lib/gisurg-v239.js` | 7913 | `d6da27d87f1f1c9ae3ba497127080931bfe66fd1e29c66d5e5b6b21a586761d0` |
 | `lib/glass-stage-v550.js` | 13408 | `42ec4b461aa71b8aa586f00d20f9088773dbf3a478e9847e590af687b2c2acf5` |
 | `lib/gli-2012-data.js` | 41979 | `0fa7440b8d9ab03028185d56c7a6bc9e1e753fe3ac396c208eb06f80991ba125` |
@@ -548,7 +548,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/nen-who-grade-v797.js` | 7718 | `5ff7eda728df82f7db3ca6ed015a86066a0b69891341e8d6f16a1f652d3eb03e` |
 | `lib/neos-v538.js` | 9054 | `f59d15ba97d1a630c20186f69efc1d6685a39356264be1c5842f91fa37809d3c` |
 | `lib/nephro-fluids-v204.js` | 16771 | `5dbb536322bc68672b2a642dc16c0f06389c7e3cc4404e029794f0500687fbe1` |
-| `lib/nephro-v127.js` | 11754 | `9b215f35574325f20d5599504d2ffc455396f88bd86be64a0baed44ac282a4e3` |
+| `lib/nephro-v127.js` | 12500 | `b2215f6517cb4d046deb6a55aaa39e1d7296e96624313a693c439b0c3d5379a0` |
 | `lib/nephro-v92.js` | 21513 | `dce5c6e3e9c1d4fd6c167e2a0b6b1c086b5c7557f42a848be31aa4aa2fda22af` |
 | `lib/nephrology-v226.js` | 10925 | `a301c1826ab905ceac0abb080ceed6987931bc82642e3f5f064fb80ed5d38985` |
 | `lib/nerve-injury-v297.js` | 4746 | `13741ba46f672eb344024cfed6d066a3bffd6ea90974a2fa578f282407695d00` |
@@ -576,7 +576,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/nottingham-npi-v330.js` | 3875 | `9a95ea364fb41e94801ff30ac7789c22eeebef1abd6c2bd24a3c6fd1e01253ac` |
 | `lib/nsofa-v526.js` | 9799 | `459b65cd36b79e54aef1c52ab5b77e682ec0af768a6f9c8000321e3c9fc53009` |
 | `lib/ntm-pulmonary-v827.js` | 8077 | `51b554704f575d5ffce2a350e5d8013ee70f0b42f5b85b86d7415d4479de1696` |
-| `lib/num.js` | 13518 | `59e72b7fed4f0f56fe9fb7ef77b6ecaae25561c438610bf23594fb7f65c81464` |
+| `lib/num.js` | 15469 | `ef1ff00268d18f12ee15746e1d11bd2de4fdd0790979981731fb05c83daf180e` |
 | `lib/nunley-vertullo-v455.js` | 3085 | `6f287a16c80ba5d73e2bb2c15989a7aa81d8335767f0a36e8c67c3203b357439` |
 | `lib/nutrition-energy-v152.js` | 14446 | `924b5421f818147f64b10db410fca9892773a29a918cf40e2bacdb64c0dbb23a` |
 | `lib/nutrition-maternal-v208.js` | 13391 | `3f68589603d6c5be3866aa0200955bbff10fe8873d47a3a9a1068a0c5b5c4c87` |
@@ -808,7 +808,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/stroke-prognosis-v210.js` | 3431 | `75a4782a4abb9bdd584da9827074740c9773fb41fc0e25d961b79696cd1e8a3c` |
 | `lib/stroke-risk-v217.js` | 14688 | `92b225643e71019f940bb43d21357611555bfd443077b9c5747023ad6b7b372b` |
 | `lib/stulberg-v457.js` | 3492 | `72b91cf6d020a3d4e58cdedd907a7f84fb1e3736cfcd19ae3ed300f9a7b9793f` |
-| `lib/subspecialty-v198.js` | 15043 | `5ad66d11621213cb0f55b78adfbfd56a0ea3c64d898d25989c38ffecfbd0c1bb` |
+| `lib/subspecialty-v198.js` | 15461 | `be35ee6e78b1de82817c32be3b0d3b5b1b187ac489b3519bf05cff731750f0d0` |
 | `lib/suites-v155.js` | 13422 | `8dcd9ee6cb60524bed730715b875ace734c5c8f4b9d3ec5eb1ad19370eae577e` |
 | `lib/sun-ac-cell-v421.js` | 3663 | `2e98fadd5a5b0b497a827fe2fc7cd3c2dbe6b1c00cc2f6e465f50cc2e389fb55` |
 | `lib/sun-ac-flare-v422.js` | 3437 | `c372e87d2726c6e87123b9971c50eed8b5d23a434bd99dc6dad494e10005b30c` |

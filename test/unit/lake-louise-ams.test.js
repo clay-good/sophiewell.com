@@ -37,8 +37,17 @@ test('total < 3 is below the diagnostic threshold', () => {
   assert.match(r.band, /below the AMS diagnostic threshold/);
 });
 
-test('symptoms clamp to 0-3 and max total is 12', () => {
+// spec-v1209: this test used to assert the CLAMP -- four ratings of 9 scoring
+// 12/12 and "severe" AMS. The 2018 Lake Louise scale rates each symptom 0-3, so
+// a 9 is not the worst rating, it is not a rating.
+test('a rating off the scale is refused, not read as the worst one', () => {
   const r = lakeLouiseAms({ headache: 9, gi: 9, fatigue: 9, dizziness: 9 });
+  assert.equal(r.valid, false);
+  assert.match(r.band, /headache rating must be between 0 and 3/);
+});
+
+test('the top of the scale still scores 12 and reads severe', () => {
+  const r = lakeLouiseAms({ headache: 3, gi: 3, fatigue: 3, dizziness: 3 });
   assert.equal(r.total, 12);
   assert.equal(r.severity, 'severe');
 });

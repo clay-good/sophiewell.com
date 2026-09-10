@@ -20,9 +20,18 @@ test('band flip: total crossing 14 enters the (relative) severe tier', () => {
   assert.match(severe.band, /upper third of the 0-20 range \(severe\)/);
 });
 
-test('each subscore clamps to its published maximum (max total 20)', () => {
-  // local wound and hematologic cap at 4; the other four cap at 3.
+// spec-v1209: this test used to assert the CLAMP -- six subscores of 9 scoring
+// 20/20, the severest envenomation the scale defines. Each system has its own
+// published maximum (3 or 4), and a 9 is not a finding in any of them.
+test('a subscore off its own maximum is refused, not read as the worst one', () => {
   const r = snakebiteSeverity({ pulmonary: 9, cardiovascular: 9, local: 9, gi: 9, hematologic: 9, cns: 9 });
+  assert.equal(r.valid, false);
+  assert.match(r.band, /pulmonary subscore must be between 0 and 3/);
+});
+
+test('each subscore still scores its own published maximum (max total 20)', () => {
+  // local wound and hematologic cap at 4; the other four cap at 3.
+  const r = snakebiteSeverity({ pulmonary: 3, cardiovascular: 3, local: 4, gi: 3, hematologic: 4, cns: 3 });
   assert.equal(r.subs.pulmonary, 3);
   assert.equal(r.subs.local, 4);
   assert.equal(r.subs.hematologic, 4);

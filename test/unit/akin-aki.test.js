@@ -51,3 +51,10 @@ test('one creatinine on its own cannot rule AKI out (spec-v1063)', () => {
   assert.equal(both.stage, 3);
   assert.doesNotMatch(both.band, /alone/);
 });
+
+// spec-v1209: the same 0-3 urine-output selection as rifle-aki, in the sibling.
+test('a urine-output category off the scale is refused', () => {
+  const r = akinAki({ uoClass: 9999 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /urine-output category must be between 0 and 3/);
+});

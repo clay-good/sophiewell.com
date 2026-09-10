@@ -42,3 +42,28 @@ test('a missing muscle group returns a complete-the-fields fallback', () => {
   delete partial.ankleR;
   assert.equal(mrcSumScore(partial).valid, false);
 });
+
+// spec-v1209: `clampInt(v, 0, 5)` mapped an impossible grade to full strength.
+
+test('twelve impossible grades used to score 60/60 and read "not met"', () => {
+  const r = mrcSumScore(all(500));
+  assert.equal(r.valid, false);
+  assert.match(r.band, /must be between 0 and 5/);
+  assert.ok(!/not met/.test(r.band), 'must not report full strength from a grade nobody gave');
+});
+
+test('the grade is named the way a reader knows it, not by its key', () => {
+  const r = mrcSumScore({ ...all(3), ankleR: -2 });
+  assert.match(r.band, /Right ankle dorsiflexion/);
+  assert.ok(!/ankleR/.test(r.band));
+});
+
+test('the full-strength score still computes', () => {
+  assert.equal(mrcSumScore(all(5)).total, 60);
+});
+
+test('a blank group is still asked for, not reported out of range', () => {
+  const partial = all(3);
+  delete partial.hipL;
+  assert.match(mrcSumScore(partial).band, /Grade all 12 muscle groups/);
+});

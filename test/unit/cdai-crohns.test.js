@@ -67,3 +67,25 @@ test('spec-v1077: a blank diary item is disclosed; a typed zero is not', () => {
   assert.deepEqual(zero.notEntered, [], 'a typed 0 is an answer, not a gap');
   assert.doesNotMatch(zero.band, /diary items/);
 });
+
+// spec-v1209: `clampInt(v, 0, hi)` turned an impossible diary tally into the
+// item's maximum. Seven days of a 0-3 daily grade cannot exceed 21.
+test('a diary tally above its arithmetic maximum is refused', () => {
+  const r = cdaiCrohns({ ...ex, pain: 9999 });
+  assert.equal(r.valid, false);
+  assert.match(r.band, /7-day abdominal-pain sum must be between 0 and 21/);
+});
+
+test('the top of each diary item still scores', () => {
+  assert.equal(cdaiCrohns({ ...ex, pain: 21, wellbeing: 28 }).valid, true);
+});
+
+test('an abdominal-mass grade off the 0/2/5 scale is refused', () => {
+  assert.match(cdaiCrohns({ ...ex, abdMass: 9999 }).band, /abdominal-mass grade must be between 0 and 5/);
+});
+
+test('a blank diary item is still reported as a floor, not out of range', () => {
+  const r = cdaiCrohns({ ...ex, stools: undefined });
+  assert.equal(r.valid, true);
+  assert.match(r.band, /treat this as a floor/);
+});

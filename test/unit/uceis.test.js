@@ -22,7 +22,19 @@ test('max 8', () => {
   assert.equal(uceis({ vascular: 2, bleeding: 3, erosions: 3 }).total, 8);
 });
 
-test('clamps and scalar fuzz safe', () => {
-  assert.equal(uceis({ vascular: 9, bleeding: 9, erosions: 9 }).total, 8);
+// spec-v1209: this test used to assert the CLAMP -- three descriptors of 9
+// scoring 8/8 "severe endoscopic activity". The vascular pattern is defined on
+// 0-2; a 9 is not the worst grade, it is not a grade.
+test('a descriptor off the scale is refused, not read as the worst one', () => {
+  const r = uceis({ vascular: 9, bleeding: 9, erosions: 9 });
+  assert.equal(r.valid, false);
+  assert.match(r.band, /vascular-pattern grade must be between 0 and 2/);
+});
+
+test('the top of the scale still scores', () => {
+  assert.equal(uceis({ vascular: 2, bleeding: 3, erosions: 3 }).total, 8);
+});
+
+test('scalar fuzz safe', () => {
   assert.equal(uceis(9).total, 0);
 });

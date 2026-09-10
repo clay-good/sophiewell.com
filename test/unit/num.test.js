@@ -2,7 +2,7 @@
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { r1, r2, r3, num, fmt } from '../../lib/num.js';
+import { r1, r2, r3, num, fmt, gradeFault, inputFault } from '../../lib/num.js';
 import { boundsAdvisory, BOUNDS } from '../../lib/bounds.js';
 
 test('r1/r2/r3 round to 1/2/3 decimals (behavior unchanged from the pre-v53 copies)', () => {
@@ -74,4 +74,29 @@ test('every BOUNDS entry is well-formed (min < max, has unit + note)', () => {
     assert.equal(typeof b.unit, 'string');
     assert.ok(b.note && b.note.length > 0, `${key}: note required`);
   }
+});
+
+// spec-v1209: gradeFault is the range half of inputFault, for a function that
+// already has its own missing-value message and must keep it.
+test('gradeFault reports a value off the scale and names the range', () => {
+  assert.equal(gradeFault([['the headache rating', 2, 0, 3]]), null);
+  assert.match(gradeFault([['the headache rating', 9, 0, 3]]), /must be between 0 and 3/);
+  assert.match(gradeFault([['the headache rating', -1, 0, 3]]), /must be between 0 and 3/);
+});
+
+test('gradeFault SKIPS a blank, so the caller\'s own missing-value branch still runs first', () => {
+  // spec-v1207's rule from the other side: a reader who left a field blank must
+  // be asked for it, not told the value they did enter is out of range.
+  assert.equal(gradeFault([['the headache rating', null, 0, 3]]), null);
+  assert.equal(gradeFault([['the headache rating', '', 0, 3]]), null);
+  assert.equal(gradeFault([['the headache rating', undefined, 0, 3]]), null);
+  // and it keeps looking past the blank
+  assert.match(gradeFault([['a', '', 0, 3], ['the gi rating', 9, 0, 3]]), /gi rating/);
+});
+
+test('gradeFault and inputFault cannot drift: one sentence, one builder', () => {
+  assert.equal(
+    gradeFault([['bilirubin', 600, 0, 60]]),
+    inputFault([['bilirubin', 600, 0, 60]]),
+  );
 });

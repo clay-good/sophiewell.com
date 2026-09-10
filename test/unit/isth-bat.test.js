@@ -63,3 +63,11 @@ test('spec-v1087: an unrated domain cannot make the score read normal', () => {
   assert.match(rulesIn.band, /abnormal bleeding score/);
   assert.match(rulesIn.band, /Scored from 2 of 14 domains/);
 });
+
+// spec-v1209: every ISTH-BAT domain is graded 0-4; the clamp mapped anything
+// higher to the worst bleeding severity the instrument defines.
+test('a domain grade off the scale is refused', () => {
+  const r = isthBat({ group: 'male', epistaxis: 9999 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /must be between 0 and 4/);
+});

@@ -42,7 +42,10 @@ const showAll = !!arg('--all');
 // The guards worth asking about: each one is a house helper that turns an input
 // nobody could have measured into a refusal. Add to this list, not to a copy of
 // it -- the whole point of this probe is that lists like this drift.
-const GUARDS = ['boundsAdvisory', 'inputFault', 'outsideEnvelope', 'outOfRange', 'outsideRange'];
+// spec-v1209 added `gradeFault` and this line is why the instruction above it is
+// worded that way: the new helper guarded two of this probe's own residue rows
+// and the probe went on printing them, because the list did not know the name.
+const GUARDS = ['boundsAdvisory', 'inputFault', 'gradeFault', 'outsideEnvelope', 'outOfRange', 'outsideRange'];
 
 // A function that takes no measurement cannot be missing a measurement guard.
 // This is deliberately generous: any read of a numeric-looking input counts.

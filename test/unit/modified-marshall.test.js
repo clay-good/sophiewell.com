@@ -60,3 +60,29 @@ test('spec-v1097: no organ failure from one system says the others can only rais
   assert.equal(failed.organFailure, true);
   assert.doesNotMatch(failed.band, /can only raise/);
 });
+
+// spec-v1209: the envelope guard probe-unguarded-sibling printed this module for.
+test('an impossible PaO2 is refused rather than scored', () => {
+  const r = modifiedMarshall({ pao2: 9999, fio2: 21 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /PaO2 in mmHg must be between 10 and 700/);
+  assert.ok(!/no organ failure/.test(r.message));
+});
+
+test('FiO2 is a PERCENT here, so the envelope is stated in percent', () => {
+  // spec-v1205's trap: BOUNDS.fio2 is 0.21-1 as a FRACTION. Applied directly it
+  // would refuse every legitimate value this field takes.
+  assert.equal(modifiedMarshall({ pao2: 80, fio2: 21 }).valid, true);
+  assert.equal(modifiedMarshall({ pao2: 80, fio2: 100 }).valid, true);
+  assert.match(modifiedMarshall({ pao2: 80, fio2: 9999 }).message, /FiO2 as a percent must be between 21 and 100/);
+});
+
+test('an impossible creatinine is refused rather than scored as failure', () => {
+  assert.match(modifiedMarshall({ creatinine: 9999 }).message, /creatinine in mg\/dL must be between 0.1 and 25/);
+  assert.equal(modifiedMarshall({ creatinine: 2.0 }).valid, true);
+});
+
+test('a cardiovascular score off the 0-4 band table is refused', () => {
+  assert.match(modifiedMarshall({ cardiovascular: 9999 }).message, /cardiovascular score must be between 0 and 4/);
+  assert.equal(modifiedMarshall({ cardiovascular: 4 }).valid, true);
+});

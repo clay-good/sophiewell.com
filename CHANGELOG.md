@@ -793,6 +793,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   computed changed: every one of these tools already refused the value. A new
   catalog-wide probe asks the question and now reports none. See docs/spec-v1208.md.
 
+- **A grade that is not on the scale was read as the worst one on it.** Several
+  scored tools quietly moved an out-of-range entry to the nearest legitimate value
+  and then answered as if that is what had been entered. Four were reachable by
+  anyone using the tool: a single bleeding-severity domain entered as 9999 crossed
+  the ISTH-BAT diagnostic threshold and reported an abnormal bleeding score; a
+  SOFA total of 9999 met the sepsis-induced-coagulopathy criteria; and, in the
+  reassuring direction, a PaO2 of 9999 read as "no organ failure" on the modified
+  Marshall score and a nine-thousand-day pain diary scored as an ordinary bad
+  week. Each now asks for the value to be checked, and each still answers at the
+  top of its real scale. Four tests had asserted the old behavior as correct --
+  one of them that a snakebite subscore of 9 should score the severest envenomation
+  the scale defines -- and now assert the refusal. See docs/spec-v1209.md.
+
 ### Changed
 
 - **The check that compares a tool's accepted values with the menu on the page could

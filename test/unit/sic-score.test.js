@@ -43,3 +43,16 @@ test('partial input returns a complete-the-fields fallback', () => {
   assert.equal(sicScore({ platelet: 80, inr: 1.6 }).valid, false);
   assert.equal(sicScore({}).valid, false);
 });
+
+// spec-v1209: the SOFA total is defined on 0-24; the clamp here had no ceiling.
+test('a SOFA total off the scale is refused', () => {
+  const r = sicScore({ platelet: 90, inr: 1.5, sofa: 9999 });
+  assert.equal(r.valid, false);
+  assert.match(r.band, /SOFA score must be between 0 and 24/);
+});
+
+test('a real SOFA still scores', () => {
+  assert.equal(sicScore({ platelet: 90, inr: 1.5, sofa: 3 }).sofaPts, 2);
+  assert.equal(sicScore({ platelet: 90, inr: 1.5, sofa: 1 }).sofaPts, 1);
+  assert.equal(sicScore({ platelet: 90, inr: 1.5, sofa: 24 }).sofaPts, 2);
+});

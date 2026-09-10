@@ -26,3 +26,15 @@ test('no criteria met / nothing entered handled', () => {
   assert.equal(rifleAki({}).valid, false);
   assert.equal(rifleAki(9).valid, false);
 });
+
+// spec-v1209: the urine-output category is a 0-3 selection; the clamp read
+// anything higher as Failure, the worst RIFLE class.
+test('a urine-output category off the scale is refused', () => {
+  const r = rifleAki({ uoClass: 9999 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /urine-output category must be between 0 and 3/);
+});
+
+test('the worst real category still classifies', () => {
+  assert.equal(rifleAki({ uoClass: 3 }).class, 3);
+});
