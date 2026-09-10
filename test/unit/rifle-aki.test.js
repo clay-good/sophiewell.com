@@ -38,3 +38,19 @@ test('a urine-output category off the scale is refused', () => {
 test('the worst real category still classifies', () => {
   assert.equal(rifleAki({ uoClass: 3 }).class, 3);
 });
+
+// spec-v1211: the creatinine arm compares CURRENT against BASELINE, so an
+// impossible BASELINE makes a real current value look unremarkable.
+test('an impossible baseline creatinine used to erase the whole staging', () => {
+  const real = rifleAki({ baselineCr: 1.0, currentCr: 3.0 });
+  assert.match(real.band, /RIFLE class Failure/);
+  const bad = rifleAki({ baselineCr: 250, currentCr: 3.0 });
+  assert.equal(bad.valid, false);
+  assert.match(bad.message, /baseline creatinine in mg\/dL must be between 0.1 and 25/);
+  assert.ok(!/no criteria met/.test(bad.message));
+});
+
+test('the creatinine arm stays optional: urine output alone still classifies', () => {
+  // gradeFault skips a blank, so a tile scored from urine output is untouched.
+  assert.equal(rifleAki({ uoClass: 2 }).class, 2);
+});

@@ -160,12 +160,24 @@ console.log('from a value an order of magnitude past a ceiling lib/bounds.js alr
 // reassuring bucket -- the raw-substring trap, in the classifier written to
 // avoid a vocabulary trap.
 const REASSURING = /\bruled out\b|\brules out\b|\bexcludes\b|\bno evidence\b|\bnormal\b|\bbest preserved\b|\blow risk\b|\bno indication\b|\bunlikely\b|\bremission\b|\bfavorable\b|\bharmless\b|\bno excess\b/i;
+// spec-v1211: every term above is a fixed phrase, and a tile names the thing it
+// is ruling out IN THE MIDDLE of one. `toxic-alcohol` says "No AACT fomepizole
+// indication met on the entered data" -- three words between the negation and the
+// noun, so `\bno indication\b` never matched and the row sat in THE REST. With a
+// recent-ingestion history it is the difference between "Fomepizole indicated per
+// the AACT criteria" and that sentence, from a sodium of 2000.
+//
+// This is the NEGATION OF A FINDING, which is the reassuring direction --
+// the opposite of NEGATED below, which catches the negation of a REASSURANCE
+// ("not harmless"). One rule cannot do both, so they are separate.
+const NO_FINDING = /\bno\b[^.]{0,32}\b(indications?|criteria|evidence|findings?|failure)\b(?:[^.]{0,16}\b(met|present|identified|found|detected)\b)?/i;
 const NEGATED = /\b(not|non|no longer|does not|cannot|fails? to)\b[^.]{0,40}$/i;
 function readsReassuring(f) {
   // Splitting the fallback on a bare '.' cuts "ALBI score -58.69 -> grade 1:
   // the best preserved liver function" at the DECIMAL POINT and loses the
   // verdict. A sentence break is a period followed by a space or the end.
   const verdict = f.verdict || String(f.say).split('|')[0].split(/\.(?:\s|$)/)[0];
+  if (NO_FINDING.test(verdict)) return true;
   const m = REASSURING.exec(verdict);
   if (!m) return false;
   // "not harmless", "not a favorable trend": the word is there and the sentence

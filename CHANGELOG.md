@@ -816,7 +816,26 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   60 reads 2.6% and 7.9%. Each now asks for the value to be checked. See
   docs/spec-v1210.md.
 
+- **An impossible lab value could rule out an antidote, and rule out kidney
+  injury.** The toxic-alcohol tool works from an osmolar gap, which is a measured
+  value minus a calculated one, and sodium is a term in the calculated half. With
+  a recent-ingestion history, a real sodium read "Fomepizole indicated per the
+  AACT criteria" and an impossible one read "No indication met" -- fomepizole
+  being the time-critical antidote in methanol and ethylene-glycol poisoning. The
+  two acute-kidney-injury staging tools failed the same way from the other end:
+  they compare a current creatinine against a baseline, so an impossible baseline
+  made a real current value look unremarkable and turned "RIFLE class Failure" and
+  "AKIN stage 3" into "no criteria met". All four now ask for the value to be
+  checked. See docs/spec-v1211.md.
+
 ### Changed
+
+- **The check that looks for reassuring answers from impossible values could not
+  read half of them.** It matched a fixed list of phrases, and a tool names the
+  thing it is ruling out in the middle of one -- "No AACT fomepizole indication
+  met" rather than "no indication". So it reported none, while four sat in the
+  list below it. It now also recognizes a negated finding, and those four are the
+  fix above. See docs/spec-v1211.md.
 
 - **A check that hunts for unguarded calculations was reporting one that has no
   numbers in it.** It read each function as everything up to the start of the next

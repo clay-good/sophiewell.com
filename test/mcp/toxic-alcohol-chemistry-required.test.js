@@ -53,10 +53,21 @@ test('spec-v1103: neither lab is enough to compute an osmolar gap', () => {
 });
 
 test('spec-v1103: a typed zero is still a measurement, not a gap', () => {
-  const r = computeCalculator({
-    id: 'toxic-alcohol',
-    inputs: { ...FULL, 'ta-glu': 0, 'ta-bun': 0 },
-  });
+  // spec-v1211: a glucose of 0 and a BUN of 0 now fall outside the envelopes
+  // lib/bounds.js declares (glucose 5-2000, BUN 1-300), so this no longer
+  // computes. The property is unchanged and now asserted directly: a typed 0 is
+  // judged as a value the reader ENTERED, never treated as a field left blank --
+  // the two produce different sentences on the agent surface too.
+  const zero = computeCalculator({ id: 'toxic-alcohol', inputs: { ...FULL, 'ta-glu': 0, 'ta-bun': 0 } });
+  assert.equal(zero.valid, false);
+  assert.match(JSON.stringify(zero), /must be between 5 and 2000/);
+  const blank = computeCalculator({ id: 'toxic-alcohol', inputs: { ...FULL, 'ta-glu': '' } });
+  assert.equal(blank.valid, false);
+  assert.notEqual(JSON.stringify(zero), JSON.stringify(blank));
+});
+
+test('spec-v1211: the smallest survivable glucose and BUN still indicate', () => {
+  const r = computeCalculator({ id: 'toxic-alcohol', inputs: { ...FULL, 'ta-glu': 5, 'ta-bun': 1 } });
   assert.equal(r.valid, true, r.message);
   assert.match(JSON.stringify(r), /Fomepizole indicated/);
 });

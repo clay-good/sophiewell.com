@@ -87,10 +87,22 @@ test('both missing are named together, and the refusal says why', () => {
 });
 
 test('a typed zero is a measurement, not a gap (rule 1)', () => {
-  const r = toxicAlcohol({ measuredOsm: 300, sodium: 140, glucose: 0, bun: 0, recentIngestion: true });
+  // spec-v1211: a glucose of 0 and a BUN of 0 are now OUTSIDE the envelopes
+  // lib/bounds.js declares (glucose 5-2000, BUN 1-300), so this no longer
+  // computes -- but the property the test exists for is unchanged and is now
+  // asserted directly: a typed 0 is read as a value the reader ENTERED and
+  // judged on its merits, never as a field they left blank. The two produce
+  // different sentences.
+  const zero = toxicAlcohol({ measuredOsm: 300, sodium: 140, glucose: 0, bun: 0, recentIngestion: true });
+  assert.match(zero.band, /glucose in mg\/dL must be between 5 and 2000/);
+  const blank = toxicAlcohol({ measuredOsm: 300, sodium: 140, bun: 14, recentIngestion: true });
+  assert.match(blank.band, /Enter a glucose/);
+  assert.notEqual(zero.band, blank.band);
+});
+
+test('the smallest survivable glucose and BUN still compute a gap', () => {
+  const r = toxicAlcohol({ measuredOsm: 300, sodium: 140, glucose: 5, bun: 1, recentIngestion: true });
   assert.equal(r.valid, undefined);
-  assert.equal(r.calcOsm, 280);
-  assert.equal(r.osmolarGap, 20);
   assert.equal(r.indicated, true);
 });
 
@@ -98,4 +110,32 @@ test('the ethanol stays optional and still defaults out', () => {
   const r = toxicAlcohol({ measuredOsm: 300, sodium: 140, glucose: 180, bun: 28 });
   assert.equal(r.calcOsm, 300);
   assert.match(r.note, /Ethanol defaults to 0/);
+});
+
+// spec-v1211: the osmolar gap is measured MINUS calculated, and sodium, glucose
+// and BUN are the three terms of the calculated side. An impossible term drives
+// the gap far negative and CLOSES the limb that turns on "gap over 10".
+test('an impossible sodium used to erase the fomepizole indication', () => {
+  const real = toxicAlcohol({ measuredOsm: 330, sodium: 140, glucose: 90, bun: 14, recentIngestion: true });
+  assert.match(real.band, /Fomepizole indicated/);
+  const bad = toxicAlcohol({ measuredOsm: 330, sodium: 2000, glucose: 90, bun: 14, recentIngestion: true });
+  assert.equal(bad.valid, false);
+  assert.match(bad.band, /serum sodium in mEq\/L must be between 90 and 200/);
+  assert.ok(!/No AACT fomepizole indication/.test(bad.band), 'must not rule out the antidote from an impossible sodium');
+});
+
+test('the top of the sodium envelope still answers', () => {
+  const r = toxicAlcohol({ measuredOsm: 330, sodium: 200, glucose: 90, bun: 14, recentIngestion: true });
+  assert.notEqual(r.valid, false);
+});
+
+test('an impossible glucose is refused the same way', () => {
+  const r = toxicAlcohol({ measuredOsm: 330, sodium: 140, glucose: 20000, bun: 14, recentIngestion: true });
+  assert.match(r.band, /glucose in mg\/dL must be between 5 and 2000/);
+});
+
+test('a blank glucose is still asked for, not reported out of range', () => {
+  // spec-v1103's branch, and spec-v1207's rule: the check runs after it.
+  const r = toxicAlcohol({ measuredOsm: 330, sodium: 140, bun: 14, recentIngestion: true });
+  assert.match(r.band, /Enter a glucose/);
 });
