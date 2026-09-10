@@ -47,6 +47,10 @@ export const renderers = {
     const wrap = el('p');
     wrap.appendChild(el('label', { for: 'vs-weightgain', text: 'Weight gain from baseline' }));
     const sel = el('select', { id: 'vs-weightgain' });
+    // spec-v1192: the blank comes first. It opened on the zero row, so the page
+    // read a weight nobody had entered as a weight recorded and found normal,
+    // and published "No definition met" before anyone touched it.
+    sel.appendChild(el('option', { value: '', text: 'Not recorded' }));
     sel.appendChild(el('option', { value: 'none', text: 'No weight gain above 2% of baseline' }));
     sel.appendChild(el('option', { value: 'over2', text: 'Weight gain above 2% but not above 5% of baseline' }));
     sel.appendChild(el('option', { value: 'over5', text: 'Weight gain above 5% of baseline' }));

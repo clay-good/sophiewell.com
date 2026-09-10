@@ -627,6 +627,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   their own tools: asking about oxytocin still gets the oxytocin one. See
   docs/spec-v1191.md.
 
+- **Two calculators read a blank as a normal result.** The occupational HIV
+  exposure tool opened on "No exposure of a recognized type" and answered **Not an
+  exposure** before anything had been entered -- a rule-out on the one pathway
+  where being wrong costs a course of prophylaxis not started inside the hours
+  that matter. The hepatic veno-occlusive disease tool did the same with the
+  weight gain, opening on "no weight gain above 2%" and reporting **No definition
+  met**. In both, a question nobody had answered and a finding recorded as normal
+  produced the identical reading. Both now say what has not been entered instead,
+  and the veno-occlusive tool raises it only where the weight gain could still
+  change the answer -- where it cannot, it still reports plainly that no
+  definition is met. See docs/spec-v1192.md.
+
 ### Changed
 
 - **The check that compares a tool's accepted values with the menu on the page could

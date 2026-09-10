@@ -45,6 +45,10 @@ export const renderers = {
     // Written out rather than mapped from the lib constants: scripts/lib/option-labels.mjs reads
     // option text out of this file statically, and a mapped list is not readable.
     selectField(root, 'What happened', 'pep-exposuretype', [
+      // spec-v1192: the blank comes first. It opened on "No exposure of a
+      // recognized type", so the page ruled the exposure out before anyone had
+      // described it.
+      { value: '', text: 'Not recorded' },
       { value: 'none', text: 'No exposure of a recognized type' },
       { value: 'percutaneous', text: 'Percutaneous injury: a needlestick or a cut with a sharp object' },
       { value: 'mucous-membrane', text: 'Contact of a mucous membrane with blood or another potentially infectious material' },
@@ -56,6 +60,7 @@ export const renderers = {
 
     root.appendChild(el('h2', { text: 'The source' }));
     selectField(root, 'Source HIV status', 'pep-sourcestatus', [
+      { value: '', text: 'Not recorded' },
       { value: 'positive', text: 'Known HIV positive' },
       { value: 'unknown', text: 'Unknown status, or the source cannot be identified' },
       { value: 'negative', text: 'Known HIV negative' },
@@ -71,7 +76,16 @@ export const renderers = {
         sourceStatus: val('pep-sourcestatus'),
         sourceRiskFactors: checked('pep-sourceriskfactors'),
       });
-      if (!r.valid) { note(o, r.message); return; }
+      if (!r.valid) {
+        note(o, r.message);
+        // The reminders this tile exists for are worth most before the exposure
+        // has been described, not only after.
+        note(o, r.intactSkinNote);
+        note(o, r.noDrugNote);
+        note(o, r.scopeNote);
+        note(o, r.note);
+        return;
+      }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }]);
       note(o, r.recordedNote);
       if (r.timingNote) note(o, r.timingNote);

@@ -449,7 +449,7 @@ until someone asks:
 | --- | --- |
 | `scripts/probe-omitted-item.mjs` | fill a calculator from its worked example, drop one number **or graded select**: does the agent's answer move without saying so? Prints its own reach. |
 | `scripts/probe-omitted-field-decides.mjs` | drop one number, then try plausible values *in* it: could any of them have changed the verdict? Prints its own reach. |
-| `scripts/probe-half-guarded.mjs` | does this tile refuse or disclose for one missing input and stay silent on another that moves the answer? |
+| `scripts/probe-half-guarded.mjs` | does this tile refuse or disclose for one missing input and stay silent on another that moves the answer? Triaged at 8 rows ([spec-v1101](spec-v1101.md)) and again at 23 ([spec-v1192](spec-v1192.md), which left it at 21). |
 | `scoring-select-probe.spec.js` | which scoring selects have no empty option AND are not `required`, so neither the reader nor an agent can leave them unanswered — and which of those change the answer? |
 | `scripts/probe-default-in-answer.mjs` | does a function print a **defaulted parameter's value** into its own answer, so the reading names something nobody entered? A row is a suspect: a default is fine where the control says what it means. |
 | `scripts/probe-missing-list-reach.mjs` | does a tile's own "what is missing" list cover its own inputs, or only the ones the author was fixing? Prints the fields it never names that change the verdict when dropped. |
