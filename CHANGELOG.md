@@ -20,6 +20,17 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Thirty-three more tools told you to enter a value you had just entered.** The
+  same helper as the entry above, in the ten remaining library files that share it:
+  CRUSADE with a baseline hematocrit of 700% answered *"Enter the baseline
+  hematocrit (%)"*. They now name the value that is out of range and give the
+  range, while a blank field is still asked for in the tool's own words. Covers the
+  ACS risk scores (CRUSADE, SCAI, Zwolle, TIMI risk index, CADILLAC), the
+  ventilation indices (S/F ratio, ventilatory ratio, OSI, ventilation index), the
+  ophthalmic pair (IOL power, ocular perfusion pressure), the thyroid and
+  insulin-secretion indices, and seven others. No bound moves, so the same inputs
+  are accepted and rejected as before. See docs/spec-v1227.md.
+
 - **Fifteen tools told you to enter a value you had just entered.** An ePVS with a
   hematocrit of 750% answered *"Enter hematocrit (%) and hemoglobin (g/dL), both
   greater than 0"* -- so you retyped the same number and got the same sentence. The

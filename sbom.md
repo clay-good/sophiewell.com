@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `d6e589152475f907`
-Generated: 2026-09-10T19:24:33.841Z
+Build ID: `e466eb434dc7b122`
+Generated: 2026-09-10T19:38:43.149Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -62,7 +62,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/acidbase-v129.js` | 25627 | `9874f82b6ae4a2f07fa907d27b7cac99307bfa293c63bb33439339c1dbfe2697` |
 | `lib/acr-eular-boolean-v671.js` | 4453 | `79e79312ee4df6fc97bcb44e121482e68c9d62323446f27087d26beac5478fba` |
 | `lib/acromegaly-biochem-v835.js` | 9541 | `3dcd6eec4c8be684e05c0f87baf0eb7fb27d356dfc3fd44beb33704700062d4f` |
-| `lib/acs-v193.js` | 15400 | `219926127d8100963f60bd083fb4a77fa33e1f806b7d581dc78dea821b819d52` |
+| `lib/acs-v193.js` | 17067 | `89a678a8fa8f17fbc92c0fb97c8fc1e2ea03faf0f319c620ca8e29547b936fc8` |
 | `lib/acute-abdomen-v261.js` | 12492 | `91da56977b83f841e806856211d5f6ef73ca130f1dfa76ab1bbe6c58b104cf10` |
 | `lib/acute-injury-v213.js` | 11748 | `d0db59b8b86c57a442bfe3b1cd2e9fb50bbb59aa6980810415f4dbbe41985b7d` |
 | `lib/adiposity-v270.js` | 3145 | `bafc017e4974f5c7180e5a2a6160c50fb8d837bccd6f45d0eaaf6bb6ada87ce9` |
@@ -261,7 +261,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/ellis-tooth-fracture-v718.js` | 3158 | `752b44f77a8119e1d747960e57a41733c06c4f7e0afd3f093f1e85a903e7f50e` |
 | `lib/ems-v149.js` | 8963 | `a5242adc4eb12063911f88a9afec77847abfca348fc79c58c8e3ac74e4483e55` |
 | `lib/endo-metab-v161.js` | 11760 | `ebbe5ada24ccc278356c266b3c971eb216af45a8916a8dbb753a45ad27e84d45` |
-| `lib/endo-quant-v197.js` | 10494 | `9c19351a50d95c1fd0d2060527f575a0a63afc95b94a2a119fbc2e1d3e1af55e` |
+| `lib/endo-quant-v197.js` | 12172 | `8be5abb86d3b60cb2566aedd1ca80c462689f3c36fd6628900e2e76c3ba30dc6` |
 | `lib/endo-v136.js` | 16273 | `dc747588f039b87ba8c8ea73fcfc31807f2bcc1bf390cc16a77f9130da0451c2` |
 | `lib/enneking-v460.js` | 3397 | `5f0a323b907db13850e71165ddd2b21e7531734f7a26c12086c36710e01c27e3` |
 | `lib/entsleep-v243.js` | 7779 | `d4d6727b2e242d288f476fe4823fce9799f6c820e5d2e9af8ffc391c3cfad7bc` |
@@ -360,7 +360,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/heme-onc-risk-v211.js` | 11804 | `cbe39fe689c3723cd7eef4796c470a780d23dd31ac350a9cbd19bad2a05561c9` |
 | `lib/heme-prognostic-v216.js` | 13013 | `c6389635286fd17370fac65bfe97663eaf3e8ffa1b7852620f7b7011d532b6e8` |
 | `lib/heme-risk-v189.js` | 13799 | `d94b111f4a8a7efc34646567508d2eaa16eee64ebbe5284faf6935d578d9c2a0` |
-| `lib/heme-staging-v188.js` | 13600 | `85a46011c9dd314e2f9625b04616a14bf9bf2a8e2d47eedcb88f3047d6730dac` |
+| `lib/heme-staging-v188.js` | 14818 | `780860ca16797b8cfad923f347e86700c04bc36c9b857312d9197858ae7b4243` |
 | `lib/heme-v132.js` | 15633 | `cdb763411d4705accb2c5f025ac5bb45589d63aa1b7e05411411578d19a615c7` |
 | `lib/hemederm-v245.js` | 6951 | `8da43afd2f8072c0e3b917b12e1ee8a4770afd7c1a6b2cf3ff5ca94e414a1c2b` |
 | `lib/hemo-v194.js` | 12317 | `930f9c5936ec705bdaf94bca7e9a2bac78ccf4a6227e9093de0bbaccd33da718` |
@@ -590,10 +590,10 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/ocular-trauma-score-v614.js` | 9546 | `49ec3b45d088a7b6003b1aa2f6d8437db613b02e77d35a8d0d482407a027b077` |
 | `lib/ohs-diagnosis-v829.js` | 7431 | `09b456890bf516f059d9376dab19d863320b0ec38c8a1aecfb740db14370420d` |
 | `lib/olbi-v785.js` | 4769 | `3d9e020059516dbd9442bb9b585a68342216dff03e2ed93ca88c55195faa7971` |
-| `lib/onc-staging-v187.js` | 12324 | `365e62d3c84205a10dd0a093f79d9ed3ba89e809c98b2347b239a8552a9358a3` |
+| `lib/onc-staging-v187.js` | 13320 | `b743f5628097c947904102ea7a7645e93bccd0cda7b5f08e90277e41952ff8c0` |
 | `lib/onc-v134.js` | 16934 | `6335c7bb64652b213491db50ec0b0a04eddcab52c9bfea55d5dd26ba48ce86b5` |
-| `lib/oneformula-v167.js` | 13888 | `c1b38ea116f2d7ecb097720a3b8d0cc44ef5a9d976e0c03fc5231d0d6be4b2aa` |
-| `lib/ophtho-v164.js` | 10023 | `79d478a1c42b18b36a156f10a740e0ddbec2b2e897f9501a7301424c54fa2f06` |
+| `lib/oneformula-v167.js` | 15192 | `6a0a19278cf6052629f292375c9b45024a7e668a8cd32b8c5d37cd23c9e68386` |
+| `lib/ophtho-v164.js` | 11132 | `767972d725c90fad993c53ff3c7d03b9ca8444a5291f85372458ac2f54962510` |
 | `lib/ophtho-v236.js` | 7597 | `df71019dd17bf7cb9f44b0e8043d4da148dd9f48066603d6de57f1951de9dc88` |
 | `lib/opioid-risk-tool-v709.js` | 4291 | `f7045644de232186fc1701f97df7d861b885bcb0f7e65f61ea735576f30a6dda` |
 | `lib/ops-v63.js` | 8399 | `7fa411b1d5b79bc49d8db6c4a4c85093ad2e0ad1c506340ffc668f89e111dbe9` |
@@ -660,7 +660,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/pipkin-femoral-head-v375.js` | 3888 | `98e119fb2b90e4b5b5a4ca6e221306793ee9a7bfae003b66b99bbdfb5ac3bb95` |
 | `lib/pipp-v517.js` | 6956 | `cfe66a949f8b16e612fa8aecf494cb1d2a5e6aa6b440c4c133e6cc3090dd0ce8` |
 | `lib/pirani-clubfoot-v386.js` | 3487 | `787ccfe1abcbcf66a2a9d8ea1218c443f22882983faccd94d3929dfe1c024da5` |
-| `lib/pk-v166.js` | 7941 | `d1a04680f164c27c391c4b106c1e746113b9b414664c7e36aec12dc465b2ddf9` |
+| `lib/pk-v166.js` | 8723 | `1183ec677162e380baf0d90079c14e6aeb5d1e67a4d53198eb31d0b40ccff265` |
 | `lib/plaque-control-record-v721.js` | 3208 | `3038454a7f6982a21e476538381e1c4e9e526219000cb55512fc86f4a7489f6b` |
 | `lib/pneumonia-risk-v260.js` | 7249 | `029d9c0701f969f39f61031ea2648625c6b5b43b21d5d8c3c8b19f030391add4` |
 | `lib/poi-diagnosis-v834.js` | 8980 | `51f5aef7d5ff7d875fe26634d55222aa36e7978e4500c7dfc84983a91c33dc88` |
@@ -697,7 +697,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/query-fill.js` | 32636 | `abd66d6a846a1a9211623ec57e8103f6ee35db9078c98adc886600b4d68e592a` |
 | `lib/quintero-ttts-v831.js` | 7169 | `8bd66030eb9be4038678fa55fed7bd436ac4d270b80ee4a39a3985be26909a48` |
 | `lib/rachs1-v541.js` | 11732 | `944dd6c129fc7be3fa30d47d26323eb6e18f01615a5698fafc18e9ddc3ab328e` |
-| `lib/radiology-v165.js` | 14752 | `965c040fa92553139ecfca2c11efb94522496799ee745f6b2fdf512ee3494d72` |
+| `lib/radiology-v165.js` | 15548 | `c7b288226b44e662d8476d30159c3e7f68d46b55ea7f05104a71e16c1d2ffc7b` |
 | `lib/radmeasure-v253.js` | 7140 | `6e438d606d573be5431eb6ec9d0575353297d97ed8f255aa7afb6c7f86c7197c` |
 | `lib/ramsay-sedation-v358.js` | 3651 | `d7ee3190c3179b4290c1b77a3bf187cd447b9632442f0005478e3b627bcea8bf` |
 | `lib/ranawat-myelopathy-v495.js` | 2972 | `d59f866e53d94e91c1f344de59f31431f17b5511a10a356c0e26cee40aefee3c` |
@@ -793,7 +793,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/sows-v1061.js` | 6337 | `8855643e0ee524eb5c5793849197e191236756fb507a04dc02def32fd722fb57` |
 | `lib/spadi-v561.js` | 11154 | `e293b8878a937723e92250e22c25fd87bee30e635718428f548ee5301ead3677` |
 | `lib/spaulding-classification-v478.js` | 3914 | `3769b89a89709f65be882a19360c23f6a8f371168daa90b3563d32e554767142` |
-| `lib/specialtymath-v186.js` | 15358 | `90330464aea36b60a02933f5811ed91393d38e4e97cafb0cb62a8678a8a0f3c8` |
+| `lib/specialtymath-v186.js` | 16980 | `589454017a7822c45299f01d5a3d14a65f7e110b5613403c2e59932bba2c1a89` |
 | `lib/spetzler-ponce-v384.js` | 4231 | `772c79598424299e9aec418f92d9878cd29f53fa96a9694ab4f935b8eec6c992` |
 | `lib/spigelman-v520.js` | 7864 | `047fb55c94811d32fb93e2cfd025945f4d3ae1282930b45613c19d74997081dd` |
 | `lib/spine-v146.js` | 21128 | `d3cb6a1d1e2c3cc1235cc2336a0385a1ae6e0a1ea65b741a2d6c25e5cb527917` |
@@ -862,7 +862,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/vascular-v105.js` | 21159 | `78983bdb8025880a6ac5a817195498f51bc416ef9356c7665c47055800fc3b69` |
 | `lib/vasi-v556.js` | 12850 | `c1e3bdab22509ed3895f5dae68d974242064c27bd047889d8a0d80c1491bd204` |
 | `lib/vaughan-williams-v427.js` | 4207 | `241cb6fc10d5a9b15a3a849ab44f7887e7508a99daa8a9c55567feb737b1893d` |
-| `lib/vent-v195.js` | 9473 | `9f8fd14cdaa7e971da29cc8bdc6247bf8c7e3974daae70bc597e2269c400c110` |
+| `lib/vent-v195.js` | 11019 | `97c542dc908480ff6101c0bb42db07ceb9818ab281ee6f5b882782543ffbd993` |
 | `lib/vesikari-v530.js` | 9422 | `4307be628831c30efea4745a9a663ef444521f32d150be71d29a79bb27b80c41` |
 | `lib/vexus-v958.js` | 9060 | `e2473c9925f2a91e17f750af0afb83cfad658a0d2e85cf2439ebaa4f39134ee9` |
 | `lib/vhi10-v508.js` | 3708 | `40297e81fc7f0da10cc909b1b2a13fe7a6b2048c7cf72291d8f3f1f16ac4c871` |
