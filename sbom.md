@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `de0ec0c08d70fcb4`
-Generated: 2026-09-10T02:29:52.365Z
+Build ID: `5b530dcd527a4838`
+Generated: 2026-09-10T02:44:02.112Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -706,7 +706,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/rastelli-avsd-v474.js` | 3480 | `ce357583fded28e0cad061c42d6f72a017763b472552b882ad44a5110b5ab134` |
 | `lib/rcc-prognosis-v266.js` | 6673 | `ff7758911f8c5ff5f0196380c14c1c46f7c49521ca46597e3c878c773208a908` |
 | `lib/rcc-prognosis-v279.js` | 7877 | `65dfbce477ca8b65350799b98f3364d9c2db8bc22f528ced54c19a9e306ab93e` |
-| `lib/reference-change-value-v920.js` | 8688 | `171465315afa19e07e439a5f5306c53c9e2febad5983cb8da9b89936b38b5fe9` |
+| `lib/reference-change-value-v920.js` | 9636 | `349905c1fd9c55a55ae86d6e4cb615c4b4c4923071471a1e4a5ff71fe83df45c` |
 | `lib/regan-morrey-v404.js` | 3237 | `6b740bafcf5b1f9e8e306ba3b6863513bc950c73c0f6c46d00a095816929c04a` |
 | `lib/region-footing-v1093.js` | 3587 | `ab6509b0a1999202d9fb7783a94d21f6f8b34146baa1bf65d539800d8b778147` |
 | `lib/regulatory.js` | 8261 | `1a5ca3589e7f1c77429db46bc455aa7a98c59136f90f41b135ce977315fd4c10` |

@@ -663,6 +663,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   like, and a met enlargement criterion still reads as met. See
   docs/spec-v1194.md.
 
+- **A dropped lab comparison vanished without a word.** The reference change value
+  tool compares two results from the same patient against the variation the assay
+  and the body produce anyway. With one of the two entered and the other blank it
+  printed the threshold on its own -- correct arithmetic, and no sign that the
+  comparison had been dropped. It now says which result is missing, and still
+  reports the threshold plainly when neither has been entered, because then there
+  is no comparison to have lost. See docs/spec-v1195.md.
+
 ### Changed
 
 - **The check that compares a tool's accepted values with the menu on the page could

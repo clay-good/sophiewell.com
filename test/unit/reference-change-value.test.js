@@ -89,3 +89,33 @@ test('reference-change-value: the steady-state, source and asymmetry lines alway
   assert.match(RCV_NOTE, /is not stable/);
   assert.equal(PROBABILITY_OPTIONS.length, 4);
 });
+
+// spec-v1195: with one half of the pair entered and the other blank, this fell
+// into the same reading as a form with neither in it -- the threshold on its
+// own, and no sign that the comparison the reader had started was dropped.
+test('reference-change-value: a dropped half of the pair is named', () => {
+  const base = { cvAnalytical: 2.2, cvIntraindividual: 4.4, probability: 'two-95' };
+
+  const both = referenceChangeValue({ ...base, previousResult: 1.0, currentResult: 1.08 });
+  assert.match(both.bandLabel, /Change within the reference change value/);
+
+  for (const [drop, phrase] of [['currentResult', 'the current result'], ['previousResult', 'the previous result']]) {
+    const partial = { ...base, previousResult: 1.0, currentResult: 1.08 };
+    delete partial[drop];
+    const r = referenceChangeValue(partial);
+    assert.equal(r.valid, true, drop);
+    assert.match(r.bandLabel, /no comparison made/, drop);
+    assert.match(r.band, new RegExp(`${phrase} was not entered`), drop);
+    assert.match(r.band, /both are needed/, drop);
+  }
+
+  // With neither entered there is no comparison to have dropped, so the tile
+  // reports the threshold plainly.
+  const neither = referenceChangeValue({ ...base });
+  assert.equal(neither.bandLabel, `Reference change value ${both.bandLabel.match(/([\d.]+%)/)[1]}`);
+  assert.doesNotMatch(neither.band, /No comparison is made here/);
+
+  // A previous result of zero is a different impossibility, and it says which.
+  const zero = referenceChangeValue({ ...base, previousResult: 0, currentResult: 1.08 });
+  assert.match(zero.band, /a percentage change from zero is not defined/);
+});

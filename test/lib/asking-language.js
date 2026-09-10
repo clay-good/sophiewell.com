@@ -107,6 +107,19 @@ export const DISCLOSING = new RegExp([
   // assessable by GLIM: the weight loss and the body mass index ... not stated").
   // All four are tiles disclosing correctly, and none of them answers anyway.
   'not stated',
+  // spec-v1195: a fifth hand on the same sentence. `not entered` (63 uses across
+  // 46 files) and `not assessed` were on the list; the house also writes the
+  // observation was not RECORDED, not GRADED, not RATED and not MEASURED, and
+  // none of those four was recognised. Written as one participle family rather
+  // than four phrases, because that is what it is -- the same drift as `can only
+  // add` in spec-v1094, `is needed` in spec-v1097 and `not stated` in spec-v1164.
+  //
+  // Measured before adding, as the rule at the top requires: across every tile
+  // and every number or graded select, dropping one field moves exactly ONE row
+  // from flagged to exempt -- `aims-tardive`, which reads "AIMS movement total
+  // 4/28 (global severity not rated)" and is disclosing, not answering anyway.
+  // It changes nothing in either empty-form sweep, which read ASKING only.
+  '(?:not|never) (?:yet )?(?:been )?(?:recorded|graded|rated|measured)\\b',
   'does not rule', 'cannot yet rule', 'items assessed',
   // "3 of 6 components", "7 of 8 items", "0 of 1 criteria assessed"
   //
