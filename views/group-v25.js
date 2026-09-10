@@ -148,18 +148,18 @@ export const renderers = {
   // ----- 2.3 saps-ii -----------------------------------------------------
   'saps-ii'(root) {
     root.appendChild(field('Age (years)', 'saps-age', { min: 0, max: 130, placeholder: '70' }));
-    root.appendChild(field('Heart rate (bpm, worst)', 'saps-hr', { min: 0, max: 400, placeholder: '130' }));
-    root.appendChild(field('Systolic BP (mmHg, worst)', 'saps-sbp', { min: 0, max: 400, placeholder: '90' }));
+    root.appendChild(field('Heart rate (bpm, worst)', 'saps-hr', { min: B.hr.min, max: B.hr.max, placeholder: '130' }));
+    root.appendChild(field('Systolic BP (mmHg, worst)', 'saps-sbp', { min: B.sbp.min, max: B.sbp.max, placeholder: '90' }));
     root.appendChild(unitField('Temperature (highest)', 'saps-temp', TEMP_UNITS, { placeholder: '38' }));
     root.appendChild(checkField('Mechanically ventilated or CPAP', 'saps-vent'));
-    root.appendChild(field('PaO2 (mmHg) -- if ventilated', 'saps-pao2', { min: 0, max: 800, placeholder: '80' }));
+    root.appendChild(field('PaO2 (mmHg) -- if ventilated', 'saps-pao2', { min: B.paO2.min, max: B.paO2.max, placeholder: '80' }));
     root.appendChild(field('FiO2 (fraction) -- if ventilated', 'saps-fio2', { min: 0, max: 1, step: '0.01', placeholder: '0.5' }));
     root.appendChild(field('Urine output (L/day)', 'saps-urine', { min: 0, max: 20, step: '0.1', placeholder: '0.4' }));
     root.appendChild(field('BUN (mg/dL)', 'saps-bun', { min: 0, max: 300, placeholder: '60' }));
-    root.appendChild(field('Sodium (mEq/L)', 'saps-na', { min: 80, max: 200, placeholder: '140' }));
-    root.appendChild(field('Potassium (mEq/L)', 'saps-k', { min: 0, max: 12, step: '0.1', placeholder: '4.0' }));
-    root.appendChild(field('Bicarbonate (mEq/L)', 'saps-hco3', { min: 0, max: 60, placeholder: '18' }));
-    root.appendChild(field('Bilirubin (mg/dL)', 'saps-bili', { min: 0, max: 80, step: '0.1', placeholder: '2.0' }));
+    root.appendChild(field('Sodium (mEq/L)', 'saps-na', { min: B.sodium.min, max: B.sodium.max, placeholder: '140' }));
+    root.appendChild(field('Potassium (mEq/L)', 'saps-k', { min: B.potassium.min, max: B.potassium.max, step: '0.1', placeholder: '4.0' }));
+    root.appendChild(field('Bicarbonate (mEq/L)', 'saps-hco3', { min: B.bicarbonate.min, max: B.bicarbonate.max, placeholder: '18' }));
+    root.appendChild(field('Bilirubin (mg/dL)', 'saps-bili', { min: B.bilirubin.min, max: B.bilirubin.max, step: '0.1', placeholder: '2.0' }));
     root.appendChild(field('WBC (x10^3/mm^3)', 'saps-wbc', { min: 0, max: 200, step: '0.1', placeholder: '15' }));
     root.appendChild(field('Glasgow Coma Scale (3-15)', 'saps-gcs', { min: 3, max: 15, placeholder: '12' }));
     root.appendChild(selectField('Chronic disease', 'saps-chronic', [

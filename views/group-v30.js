@@ -15,6 +15,7 @@
 import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/vascular-v105.js';
 import { resultRow } from '../lib/result-copy.js';
+import { BOUNDS as B } from '../lib/bounds.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -88,10 +89,16 @@ const GRADE_0_3 = [
 export const renderers = {
   // ----- 2.1 abi ---------------------------------------------------------
   abi(root) {
-    root.appendChild(field('Right ankle systolic pressure (higher of DP / PT, mmHg)', 'abi-ra', { min: 0, max: 400, placeholder: '120' }));
-    root.appendChild(field('Left ankle systolic pressure (higher of DP / PT, mmHg)', 'abi-la', { min: 0, max: 400, placeholder: '120' }));
-    root.appendChild(field('Right brachial systolic pressure (mmHg)', 'abi-rb', { min: 0, max: 400, placeholder: '130' }));
-    root.appendChild(field('Left brachial systolic pressure (mmHg)', 'abi-lb', { min: 0, max: 400, placeholder: '130' }));
+    // spec-v1208: the min/max here are lib/bounds.js's, per spec-v1198. Written by
+    // hand they disagreed with the envelope the compute function reports, so an
+    // impossible value printed TWO range sentences above the answer quoting
+    // different numbers for one field. The attribute was already inert -- the
+    // library refuses outside the envelope either way -- so this changes what the
+    // page SAYS, not what it computes.
+    root.appendChild(field('Right ankle systolic pressure (higher of DP / PT, mmHg)', 'abi-ra', { min: B.sbp.min, max: B.sbp.max, placeholder: '120' }));
+    root.appendChild(field('Left ankle systolic pressure (higher of DP / PT, mmHg)', 'abi-la', { min: B.sbp.min, max: B.sbp.max, placeholder: '120' }));
+    root.appendChild(field('Right brachial systolic pressure (mmHg)', 'abi-rb', { min: B.sbp.min, max: B.sbp.max, placeholder: '130' }));
+    root.appendChild(field('Left brachial systolic pressure (mmHg)', 'abi-lb', { min: B.sbp.min, max: B.sbp.max, placeholder: '130' }));
     const o = out(); root.appendChild(o);
     wire(['abi-ra', 'abi-la', 'abi-rb', 'abi-lb'], () => safe(o, () => {
       const r = M.abi({
@@ -157,7 +164,7 @@ export const renderers = {
 
   // ----- 2.4 euroscore2 --------------------------------------------------
   euroscore2(root) {
-    root.appendChild(field('Age (years)', 'es-age', { min: 0, max: 120, placeholder: '70' }));
+    root.appendChild(field('Age (years)', 'es-age', { min: B.ageYears.min, max: B.ageYears.max, placeholder: '70' }));
     root.appendChild(checkField('Female sex', 'es-female'));
     // spec-v1107: every one of these six opened on its REFERENCE level -- NYHA I,
     // good LV, normal PA pressure, normal renal function, elective, isolated CABG

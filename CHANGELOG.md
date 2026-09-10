@@ -782,6 +782,17 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   and the days without intake, which go the ordinary way, were guarded in the same
   pass. All three now ask for the value to be checked. See docs/spec-v1207.md.
 
+- **Twelve tools published two different ranges for the same field.** When a value
+  is out of range the page says so twice: once from the range the input itself
+  declares, and once from the plausibility envelope the tool checks against. Those
+  two were written in different places by different hands, so they disagreed --
+  the ankle-brachial index accepted "0 to 400" on a cuff pressure while refusing
+  anything above 300, and the blood-gas tools each named a floor of zero for a pH
+  and a bicarbonate that cannot be zero. Twenty-five fields across twelve tools now
+  take their range from the one table, so the two sentences agree. Nothing that is
+  computed changed: every one of these tools already refused the value. A new
+  catalog-wide probe asks the question and now reports none. See docs/spec-v1208.md.
+
 ### Changed
 
 - **The check that compares a tool's accepted values with the menu on the page could

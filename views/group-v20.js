@@ -14,6 +14,7 @@ import * as M from '../lib/hemonc-v94.js';
 import { resultRow } from '../lib/result-copy.js';
 import { fmt } from '../lib/num.js';
 import { unitField, unitNumOpt, TEMP_UNITS } from '../lib/field-units.js';
+import { BOUNDS as B } from '../lib/bounds.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -127,7 +128,13 @@ export const renderers = {
       { value: 'very-poor', text: 'Very poor' },
     ]));
     root.appendChild(field('Bone-marrow blasts (%)', 'ir-blasts', { min: 0, max: 100, placeholder: 'e.g. 7', inputmode: 'decimal' }));
-    root.appendChild(field('Hemoglobin (g/dL)', 'ir-hgb', { min: 0, max: 25, placeholder: 'e.g. 9', inputmode: 'decimal' }));
+    // spec-v1208: the min/max here are lib/bounds.js's, per spec-v1198. Written by
+    // hand they disagreed with the envelope the compute function reports, so an
+    // impossible value printed TWO range sentences above the answer quoting
+    // different numbers for one field. The attribute was already inert -- the
+    // library refuses outside the envelope either way -- so this changes what the
+    // page SAYS, not what it computes.
+    root.appendChild(field('Hemoglobin (g/dL)', 'ir-hgb', { min: B.hemoglobin.min, max: B.hemoglobin.max, placeholder: 'e.g. 9', inputmode: 'decimal' }));
     root.appendChild(field('Platelets (×10⁹/L)', 'ir-plt', { max: 2000, min: 0, placeholder: 'e.g. 150', inputmode: 'decimal' }));
     root.appendChild(field('Absolute neutrophil count (×10⁹/L)', 'ir-anc', { min: 0, placeholder: 'e.g. 1.5', inputmode: 'decimal' }));
     const o = out(); root.appendChild(o);

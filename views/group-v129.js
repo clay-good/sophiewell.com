@@ -15,6 +15,7 @@
 import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/acidbase-v129.js';
 import { resultRow } from '../lib/result-copy.js';
+import { BOUNDS as B } from '../lib/bounds.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -73,7 +74,13 @@ export const renderers = {
   // ----- 2.1 stewart-sid-sig --------------------------------------------
   'stewart-sid-sig'(root) {
     note(root, 'Stewart strong ion difference / strong ion gap (Stewart 1983; Figge 1992). Apparent SID = (Na + K + Ca + Mg) − (Cl + lactate); effective SID = HCO3 + albumin charge + phosphate charge (Figge weak-acid charges evaluated at pH 7.4). SIG = apparent − effective; above ~2 mEq/L suggests unmeasured strong anions. Enter ionized Ca and Mg in mEq/L.');
-    root.appendChild(field('Sodium (mEq/L)', 'ss-na', { min: 0, max: 200, step: '1', placeholder: 'e.g. 140' }));
+    // spec-v1208: the min/max here are lib/bounds.js's, per spec-v1198. Written by
+    // hand they disagreed with the envelope the compute function reports, so an
+    // impossible value printed TWO range sentences above the answer quoting
+    // different numbers for one field. The attribute was already inert -- the
+    // library refuses outside the envelope either way -- so this changes what the
+    // page SAYS, not what it computes.
+    root.appendChild(field('Sodium (mEq/L)', 'ss-na', { min: B.sodium.min, max: B.sodium.max, step: '1', placeholder: 'e.g. 140' }));
     root.appendChild(field('Potassium (mEq/L)', 'ss-k', { step: '0.1', placeholder: 'e.g. 4.0' }));
     root.appendChild(field('Ionized calcium (mEq/L)', 'ss-ca', { step: '0.1', min: 0, placeholder: 'e.g. 2.4' }));
     root.appendChild(field('Ionized magnesium (mEq/L)', 'ss-mg', { step: '0.1', min: 0, placeholder: 'e.g. 1.0' }));
@@ -95,9 +102,9 @@ export const renderers = {
   // ----- 2.2 base-excess ------------------------------------------------
   'base-excess'(root) {
     note(root, 'Standard base excess (Siggaard-Andersen Van Slyke equation, NCCLS constants): BE = (1 − 0.0143 × Hb) × (HCO3 − 24.8 + (9.5 + 1.63 × Hb) × (pH − 7.4)). Negative = base deficit (metabolic acidosis); positive = base excess (metabolic alkalosis). The sign flips at zero.');
-    root.appendChild(field('Arterial pH', 'be-ph', { step: '0.01', min: 0, max: 8, placeholder: 'e.g. 7.40' }));
-    root.appendChild(field('Bicarbonate (mEq/L)', 'be-hco3', { step: '0.1', min: 0, max: 60, placeholder: 'e.g. 24.8' }));
-    root.appendChild(field('Hemoglobin (g/dL)', 'be-hb', { max: 25, step: '0.1', min: 0, placeholder: 'e.g. 15' }));
+    root.appendChild(field('Arterial pH', 'be-ph', { step: '0.01', min: B.pH.min, max: B.pH.max, placeholder: 'e.g. 7.40' }));
+    root.appendChild(field('Bicarbonate (mEq/L)', 'be-hco3', { step: '0.1', min: B.bicarbonate.min, max: B.bicarbonate.max, placeholder: 'e.g. 24.8' }));
+    root.appendChild(field('Hemoglobin (g/dL)', 'be-hb', { max: B.hemoglobin.max, step: '0.1', min: B.hemoglobin.min, placeholder: 'e.g. 15' }));
     const o = out(); root.appendChild(o);
     wire(['be-ph', 'be-hco3', 'be-hb'], () => safe(o, () => {
       const r = M.baseExcess({ ph: optNum('be-ph'), bicarbonate: optNum('be-hco3'), hemoglobin: optNum('be-hb') });
@@ -111,8 +118,8 @@ export const renderers = {
   // ----- 2.3 resp-acidosis-compensation ---------------------------------
   'resp-acidosis-compensation'(root) {
     note(root, 'Expected HCO3 in respiratory acidosis (Brackett 1965 acute; Schwartz 1965 chronic): HCO3 rises ~1 mEq/L per 10 mmHg PaCO2 above 40 acutely, ~4 mEq/L per 10 chronically. A measured HCO3 outside the expected band flags an added metabolic disorder. Choose acute or chronic.');
-    root.appendChild(field('Measured PaCO2 (mmHg)', 'ra-paco2', { step: '1', min: 0, max: 200, placeholder: 'e.g. 60' }));
-    root.appendChild(field('Measured HCO3 (mEq/L)', 'ra-hco3', { step: '0.1', min: 0, max: 60, placeholder: 'e.g. 26' }));
+    root.appendChild(field('Measured PaCO2 (mmHg)', 'ra-paco2', { step: '1', min: B.paCO2.min, max: B.paCO2.max, placeholder: 'e.g. 60' }));
+    root.appendChild(field('Measured HCO3 (mEq/L)', 'ra-hco3', { step: '0.1', min: B.bicarbonate.min, max: B.bicarbonate.max, placeholder: 'e.g. 26' }));
     root.appendChild(selectField('Acute or chronic', 'ra-ch', ACUTE_CHRONIC_OPTS));
     const o = out(); root.appendChild(o);
     wire(['ra-paco2', 'ra-hco3', 'ra-ch'], () => safe(o, () => {
@@ -127,8 +134,8 @@ export const renderers = {
   // ----- 2.4 resp-alkalosis-compensation --------------------------------
   'resp-alkalosis-compensation'(root) {
     note(root, 'Expected HCO3 in respiratory alkalosis (Gennari 1972): HCO3 falls ~2 mEq/L per 10 mmHg PaCO2 below 40 acutely, ~4 mEq/L per 10 chronically (not below a physiologic floor). A measured HCO3 outside the expected band flags an added metabolic disorder. Choose acute or chronic.');
-    root.appendChild(field('Measured PaCO2 (mmHg)', 'rl-paco2', { step: '1', min: 0, max: 200, placeholder: 'e.g. 25' }));
-    root.appendChild(field('Measured HCO3 (mEq/L)', 'rl-hco3', { step: '0.1', min: 0, max: 60, placeholder: 'e.g. 21' }));
+    root.appendChild(field('Measured PaCO2 (mmHg)', 'rl-paco2', { step: '1', min: B.paCO2.min, max: B.paCO2.max, placeholder: 'e.g. 25' }));
+    root.appendChild(field('Measured HCO3 (mEq/L)', 'rl-hco3', { step: '0.1', min: B.bicarbonate.min, max: B.bicarbonate.max, placeholder: 'e.g. 21' }));
     root.appendChild(selectField('Acute or chronic', 'rl-ch', ACUTE_CHRONIC_OPTS));
     const o = out(); root.appendChild(o);
     wire(['rl-paco2', 'rl-hco3', 'rl-ch'], () => safe(o, () => {
@@ -143,8 +150,8 @@ export const renderers = {
   // ----- 2.5 met-alkalosis-compensation ---------------------------------
   'met-alkalosis-compensation'(root) {
     note(root, 'Expected PaCO2 in metabolic alkalosis (Narins-Emmett 1980): expected PaCO2 = 0.7 × (HCO3 − 24) + 40 (± 5). A measured PaCO2 outside the band flags an added respiratory disorder. The metabolic-alkalosis complement of Winter’s formula.');
-    root.appendChild(field('Measured HCO3 (mEq/L)', 'ma-hco3', { step: '0.1', min: 0, max: 60, placeholder: 'e.g. 40' }));
-    root.appendChild(field('Measured PaCO2 (mmHg)', 'ma-paco2', { step: '1', min: 0, max: 200, placeholder: 'e.g. 51' }));
+    root.appendChild(field('Measured HCO3 (mEq/L)', 'ma-hco3', { step: '0.1', min: B.bicarbonate.min, max: B.bicarbonate.max, placeholder: 'e.g. 40' }));
+    root.appendChild(field('Measured PaCO2 (mmHg)', 'ma-paco2', { step: '1', min: B.paCO2.min, max: B.paCO2.max, placeholder: 'e.g. 51' }));
     const o = out(); root.appendChild(o);
     wire(['ma-hco3', 'ma-paco2'], () => safe(o, () => {
       const r = M.metAlkalosisCompensation({ bicarbonate: optNum('ma-hco3'), paco2: optNum('ma-paco2') });
