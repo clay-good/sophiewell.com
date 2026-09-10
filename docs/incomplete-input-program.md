@@ -464,6 +464,29 @@ reassuring side of the threshold where the example never goes (spec-v1092).
 
 ## What is still open
 
+- **A value past a ceiling `lib/bounds.js` already declares still produces an
+  answer in 116 fields**, spread over sixty-eight of the
+  catalog's entries (`scripts/probe-envelope-unbounded.mjs`).
+  None of them is a rule-out any more — [spec-v1211](spec-v1211.md) drained that
+  bucket and fixed the classifier that had been hiding four of them — so what
+  remains is alarms and neutral readings. Under [spec-v53](spec-v53.md) the
+  envelope is a **disclosure** boundary rather than a refusal, so the work is to
+  surface the advisory, not to refuse.
+
+  Measured, so the next wave does not have to re-measure it. Of those fields:
+
+  | | count | what it needs |
+  | --- | --- | --- |
+  | the view already declares a `max` | 24 | nothing — the browser warns today |
+  | a plain `field(...)` with a fixed unit | 38 | `min`/`max` from `BOUNDS`, the [spec-v1198](spec-v1198.md) shape |
+  | built in a loop from an array, or via `number(` / `numField(` / `num(` | 44 | a per-site bound; each helper takes its options differently |
+  | **a `unitField` — DO NOT give these a fixed envelope** | 10 | nothing yet: the field toggles mg/dL ↔ µmol/L, and `BOUNDS.bilirubin` is 0-60 **mg/dL** — 60 mg/dL is 1026 µmol/L, so a fixed ceiling would refuse real values ([spec-v1205](spec-v1205.md)) |
+
+  **A `max` attribute is a BROWSER-only disclosure.** It drives the page's own
+  range warning and reaches no agent. The complete fix is the library one — call
+  `boundsAdvisory` and surface the string beside the result — which is per-tile
+  across 68 calculators. Do not ship the attribute half and call the row closed.
+
 - ~~**A form with one value in it** has no gate.~~ **Closed by spec-v1037**: the oracle turned out to
   be already in the repo. `mcp/fields.js` marks inputs `required`, so the sweep clears exactly one of
   those and leaves the worked example everywhere else — no "does this read reassuringly?" heuristic
