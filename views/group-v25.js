@@ -14,6 +14,7 @@ import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/idcrit-v99.js';
 import { resultRow } from '../lib/result-copy.js';
 import { unitField, unitNumOpt, TEMP_UNITS } from '../lib/field-units.js';
+import { BOUNDS as B } from '../lib/bounds.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -228,9 +229,14 @@ export const renderers = {
 
   // ----- 2.5 refeeding-risk ----------------------------------------------
   'refeeding-risk'(root) {
-    root.appendChild(field('BMI (kg/m^2)', 'ref-bmi', { min: 5, max: 80, step: '0.1', placeholder: '15' }));
-    root.appendChild(field('Unintentional weight loss (% over 3-6 months)', 'ref-wl', { min: 0, max: 100, step: '0.1', placeholder: '12' }));
-    root.appendChild(field('Days with little or no nutritional intake', 'ref-days', { min: 0, max: 60, placeholder: '6' }));
+    // spec-v1207: these ceilings are lib/bounds.js's, per spec-v1198. They were
+    // the author's own sense of the range (80, 60), and once the compute function
+    // started reporting the ENVELOPE, a BMI of 9999 put two live regions on one
+    // page quoting different ranges for the same field -- "the 5 to 80 this field
+    // accepts" above "the plausible range ... (5 to 200)". One rule, one place.
+    root.appendChild(field('BMI (kg/m^2)', 'ref-bmi', { min: B.bmi.min, max: B.bmi.max, step: '0.1', placeholder: '15' }));
+    root.appendChild(field('Unintentional weight loss (% over 3-6 months)', 'ref-wl', { min: B.percentWeightLoss.min, max: B.percentWeightLoss.max, step: '0.1', placeholder: '12' }));
+    root.appendChild(field('Days with little or no nutritional intake', 'ref-days', { min: B.daysNoIntake.min, max: B.daysNoIntake.max, placeholder: '6' }));
     root.appendChild(checkField('Low pre-feeding potassium, magnesium, or phosphate', 'ref-electrolytes'));
     root.appendChild(checkField('History of alcohol misuse, or use of insulin, chemotherapy, antacids, or diuretics', 'ref-history'));
     const o = out(); root.appendChild(o);

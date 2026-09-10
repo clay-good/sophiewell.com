@@ -771,6 +771,17 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   answering at the top of the range a person can actually have. See
   docs/spec-v1206.md.
 
+- **An impossible BMI made a refeeding risk disappear.** Every fix of this kind so
+  far has gone one way: a number nobody measured lands in the worst band and the
+  tool reports a severity that is not there. The refeeding-syndrome screen counts
+  NICE criteria instead, and two of them are BMI thresholds, so a mistyped BMI
+  matches neither and takes a criterion away. A patient at BMI 17 who had lost 12%
+  of their body weight met two minor criteria and read "high risk"; with the BMI
+  mistyped, the same patient read "not high risk" -- the reassuring direction, for
+  a syndrome that has to be anticipated before feeding starts. The percentage lost
+  and the days without intake, which go the ordinary way, were guarded in the same
+  pass. All three now ask for the value to be checked. See docs/spec-v1207.md.
+
 ### Changed
 
 - **The check that compares a tool's accepted values with the menu on the page could
