@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `1ae394391600c536`
-Generated: 2026-09-10T18:41:16.712Z
+Build ID: `82cee359999906a6`
+Generated: 2026-09-10T19:01:13.375Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -178,12 +178,12 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/clavien-dindo-v320.js` | 5404 | `ae140f525e3d1f6103581f1d1e2eeed46813f69ada14d9c764ed867d51bda76b` |
 | `lib/cleveland-constipation-v665.js` | 4841 | `b5e66d05b1f5b2258281a9dc3246f35e6e83de248cabe44a914d2cbe72fd6400` |
 | `lib/clinical-obesity-v838.js` | 8584 | `742a529bbd6a43b4a9f695f82f2134c5bf24b16ae67e2e8cbdffb39f4b198cb3` |
-| `lib/clinical-v4.js` | 17965 | `db909c059db562fd0784ac46c53a8d137b19416d3eb81cae5e77a0bb5e63a09e` |
+| `lib/clinical-v4.js` | 18519 | `c9f96d0096b9da5049089a75d5d6d23adbcb0e23ce742accf3c5ecc94f4dd613` |
 | `lib/clinical-v5.js` | 26754 | `4df98038ca48fff64abef3add3cd59b7322a5f20545f0fdf6b842cb9d0eaee2e` |
 | `lib/clinical-v6.js` | 16042 | `69c1de74d7f171a3c6e87329c1cb69324758a368a34f1961e6201caec0470f8d` |
 | `lib/clinical-v7.js` | 18510 | `91639297dbcafd2850ea5bb17d4e7219ae912e30305349d7423af72484e68365` |
 | `lib/clinical-v8.js` | 18730 | `e5e7be6c9d5f9e11e433eab822fd96e5e29673ad0e76a97fd5a1754c8877a003` |
-| `lib/clinical.js` | 21666 | `f75180acf0a76f27c632f1746f3e12ff6a714f66ee339d8185ecf70c9a74d413` |
+| `lib/clinical.js` | 23231 | `ac67cda21a8fa166a213e9490493b709c3f5ca9f213bac9391a6e8b57f610fec` |
 | `lib/clipboard.js` | 2907 | `951c41df24f58df747734474d383d6f75f52d22d2c4d0a370ef5bfb269a15147` |
 | `lib/cluster-headache-ichd3-v814.js` | 7692 | `1ba3ed3aa2a203e13da4152325e29fda8ae0a533b2d4f1881c9a878655847045` |
 | `lib/coagscore-v232.js` | 3053 | `aff9e82479da5b38deeaf70ade27caa7f5d1a0f21b01d74f764ca147e9846bd8` |

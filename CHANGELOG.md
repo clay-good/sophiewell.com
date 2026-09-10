@@ -20,6 +20,17 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Eight serum-chemistry tools computed from a chemistry no patient has -- and
+  one of them printed a negative serum calcium.** Corrected Calcium given an
+  albumin of 70 g/dL answered *"-44.8 mg/dL"*; Anion Gap given a sodium of 2000
+  mEq/L answered *"1876"*; Winter's formula given a bicarbonate of 600 predicted an
+  expected PaCO2 of 906-910 mmHg. These tools subtract two or three numbers, and
+  arithmetic has no opinion about physiology -- each validated that its inputs were
+  numbers and stopped there. They now check the plausibility envelopes
+  `lib/bounds.js` has published since spec-v53, and say which value to look at.
+  Several already advised in the browser and did not in the library, so an agent
+  received the number with nothing beside it. See docs/spec-v1225.md.
+
 - **Seven ten-year cardiovascular-risk tiles reported a risk percentage from a
   systolic blood pressure of 3000 mmHg.** SCORE2 and SCORE2-OP said *"10-year CVD
   risk 49.2% -- very-high category"*, Reynolds said 89.8%, Framingham printed a
