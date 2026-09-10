@@ -471,18 +471,34 @@ reassuring side of the threshold where the example never goes (spec-v1092).
 ## What is still open
 
 - **A value past a ceiling `lib/bounds.js` already declares still produces an
-  answer in 116 fields**, spread over sixty-eight of the
-  catalog's entries (`scripts/probe-envelope-unbounded.mjs`).
+  answer in 94 fields**, spread over fifty-four of the
+  catalog's entries (`scripts/probe-envelope-unbounded.mjs`). It was 116 across
+  sixty-eight until [spec-v1224](spec-v1224.md) took the seven ten-year
+  cardiovascular-risk engines (a clamp was standing in for a guard, so an SBP of
+  3000 mmHg was centred at the top of the fitted range and reported as a risk
+  percentage) and [spec-v1225](spec-v1225.md) took the eight serum-chemistry
+  identities (`corrected-calcium` printed a **negative serum calcium**).
   None of them is a rule-out any more — [spec-v1211](spec-v1211.md) drained that
   bucket and fixed the classifier that had been hiding four of them — so what
-  remains is alarms and neutral readings. Under [spec-v53](spec-v53.md) the
-  envelope is a **disclosure** boundary rather than a refusal, so the work is to
-  surface the advisory, not to refuse.
+  remains is alarms and neutral readings.
+
+  **The design moved, and this page said otherwise for a while.** Under
+  [spec-v53](spec-v53.md) the envelope is a *disclosure* boundary: the advisory
+  is surfaced and the number is not changed. That still holds for a value that is
+  merely implausible. It stopped holding for a value an order of magnitude past
+  the ceiling: from spec-v1174 onward every wave has **refused** those —
+  `cdai-crohns`, `ipss-r-mds`, `mews`, `abi` and `lactate-clearance` at
+  spec-v1181, and everything since — because the reading printed beside the
+  advisory was itself impossible, and an advisory does not unprint it. A tile
+  that refuses says `valid: false`, which is the only form both surfaces read;
+  an advisory beside a number is a sentence only the page shows.
 
   Measured, so the next wave does not have to re-measure it — and derivable
   rather than transcribed: `--json` on that probe emits the rows as data
   (tile, field, envelope key, the value it was driven to, and the reading it
-  produced), which is where this table comes from. Of those fields:
+  produced). The split below is the one measured at
+  [spec-v1205](spec-v1205.md) over the 116 rows of that day; the shape of the
+  work is unchanged, the counts are not current. Of those fields:
 
   | | count | what it needs |
   | --- | --- | --- |
@@ -503,6 +519,23 @@ reassuring side of the threshold where the example never goes (spec-v1092).
   the number — living in two of the view modules. A third copy is the mistake
   this repo keeps making; hoist these two first. Both are also browser-only, so
   neither closes a row on its own.
+
+- **A refusal with no way out, in 55 fields.** The probe's second section is a
+  different defect from the one above: not a wrong answer, a loop. `pos(v, max)`
+  returns one `null` for a blank field, a non-number **and** a value past `max`,
+  and every caller reads `null` as absent — so a hematocrit of 750% was answered
+  with *"Enter hematocrit (%)"*, and retyping it produced the same sentence. The
+  bound was being enforced all along; only the sentence was wrong.
+
+  `gradeFault` (lib/num.js) is the fix and it is already written: it **skips** a
+  blank, so each function's own missing-value message still names every empty
+  field at once, and only the out-of-range value is called out.
+  [spec-v1226](spec-v1226.md) took three files by hand and
+  [spec-v1227](spec-v1227.md) the ten that share the helper, 89 rows → 55. What
+  is left is the files whose missing-value message is built in a different shape
+  (`lib/echo-v158.js`, `lib/endo-metab-v161.js`) and the callers that read a
+  bound from a named constant rather than a literal, which the mechanical pass
+  skipped on purpose.
 
 - ~~**A form with one value in it** has no gate.~~ **Closed by spec-v1037**: the oracle turned out to
   be already in the repo. `mcp/fields.js` marks inputs `required`, so the sweep clears exactly one of
