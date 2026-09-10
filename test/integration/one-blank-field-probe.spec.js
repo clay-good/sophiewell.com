@@ -25,7 +25,7 @@
 // The first run found 84 field/tile pairs, 81 of which moved the answer. The
 // eleven tiles fixed in spec-v1063 came out of that list, worst first.
 import { test, expect } from '@playwright/test';
-import { ASKING } from '../lib/asking-language.js';
+import { ASKING, DISCLOSING, addedText } from '../lib/asking-language.js';
 
 const SHARDS = 4;
 test.skip(({ browserName }) => browserName !== 'chromium', 'chromium-only');
@@ -33,14 +33,22 @@ test.skip(({ browserName }) => browserName !== 'chromium', 'chromium-only');
 for (let shard = 0; shard < SHARDS; shard += 1) {
   test(`probe impossible-zero (shard ${shard + 1})`, async ({ page }) => {
     test.setTimeout(1_800_000);
+    // spec-v1221: the movement rule, which spec-v1196 taught this probe's sibling
+    // (`one-blank-field.spec.js`) and not this one. Matching the vocabulary
+    // against the WHOLE reading exempts a tile on standing prose -- text that was
+    // on screen before anything was cleared and so cannot be a statement about
+    // the field that was dropped. This probe already holds the before-reading; it
+    // just was not using it.
+    await page.exposeFunction('__addedText', addedText);
     await page.goto('/');
     const ids = await page.evaluate(async () => Object.keys((await import('/lib/meta.js')).META));
     const hits = [];
     for (let i = shard; i < ids.length; i += SHARDS) {
       const id = ids[i];
       await page.goto(`/#${id}`);
-      const found = await page.evaluate(async (askSrc) => {
+      const found = await page.evaluate(async ({ askSrc, discSrc }) => {
         const ASK = new RegExp(askSrc.source, askSrc.flags);
+        const DISC = new RegExp(discSrc.source, discSrc.flags);
         const POS = /\b(age|weight|height|length|pulse|heart rate|respiratory rate|systolic|diastolic|blood pressure|temperature|h(a)?emoglobin|h(a)?ematocrit|platelet|white (blood )?cell|sodium|potassium|chloride|creatinine|albumin|glucose|bilirubin|urea|bun|ph\b|gestation|circumference|body surface|serum osmolality)\b/i;
         const labelFor = (el) => {
           if (el.id) {
@@ -75,13 +83,24 @@ for (let shard = 0; shard < SHARDS; shard += 1) {
           n.dispatchEvent(new Event('change', { bubbles: true }));
           await new Promise((x) => setTimeout(x, 60));
           if (!r || r.length <= 12) continue;
-          if (ASK.test(r)) continue;
+          // Judge what the reading ADDED, not all of it (spec-v1196). A reading
+          // that only LOSES a sentence has fabricated nothing.
+          //
+          // And judge it against BOTH vocabularies. This probe carried only
+          // ASKING, so a tile that says what it is missing rather than asking for
+          // it -- "7 of 8 items assessed (partial 48-hour panel)", "Age not
+          // entered" -- was reported as if it had recomputed in silence. Its
+          // sibling `one-blank-field.spec.js` has tested both since spec-v1063.
+          const moved = await window.__addedText(base, r);
+          if (!moved) continue;
+          if (ASK.test(moved) || DISC.test(moved)) continue;
           if (!/(?:^|[^\d.,])\d+(?:\.\d+)?(?![\d.,]*\s*(?:19|20)\d\d)/.test(r.replace(/\(.*?\)/g, ''))) continue;
           if (r === base) continue;
           out.push(`${lab.slice(0, 40)} :: WAS ${base.slice(0, 900)} :: NOW ${r.slice(0, 900)}`);
         }
         return out;
-      }, { source: ASKING.source, flags: ASKING.flags.replace('g', '') });
+      }, { askSrc: { source: ASKING.source, flags: ASKING.flags.replace('g', '') },
+        discSrc: { source: DISCLOSING.source, flags: DISCLOSING.flags.replace('g', '') } });
       for (const f of found) hits.push(`${id} | ${f}`);
     }
     console.log(`PROBEHITS shard${shard} n=${hits.length}\n` + hits.join('\n'));
