@@ -38,3 +38,42 @@ test('zero solutes allowed; missing measured -> valid:false; scalar -> valid:fal
   assert.equal(urineOsmolalGap({ urineNa: 40, urineK: 20, urineUrea: 280, urineGlucose: 0 }).valid, false);
   assert.equal(urineOsmolalGap(9).valid, false);
 });
+
+// spec-v1202: half the gap approximates urinary ammonium, and nothing stopped
+// that half being NEGATIVE. A urine sodium entered as 2000 gave
+//
+//   Urine osmolal gap -3767.1 mOsm/kg (~NH4+ -1883.6 mEq/L): a narrow gap,
+//   consistent with impaired distal acidification (renal tubular acidosis)
+//
+// -- a quantity that cannot exist, reported as a measurement with a diagnosis
+// attached, and the diagnosis is the wrong way round: EVERY negative gap lands
+// in the narrow band, so an entry error reads as renal tubular acidosis.
+test('a negative gap is an entry to check, not a narrow one', () => {
+  const ok = {
+    measuredOsm: 400, urineNa: 40, urineK: 30, urineUrea: 300, urineGlucose: 0,
+  };
+  assert.equal(urineOsmolalGap(ok).valid, true);
+
+  for (const bad of [{ urineNa: 2000 }, { urineGlucose: 20000 }, { measuredOsm: 100 }]) {
+    const r = urineOsmolalGap({ ...ok, ...bad });
+    assert.equal(r.valid, false, JSON.stringify(bad));
+    assert.match(r.message, /comes out negative/, JSON.stringify(bad));
+    assert.match(r.message, /not an ammonium concentration/, JSON.stringify(bad));
+    assert.match(r.message, /entry to check rather than a result to read/, JSON.stringify(bad));
+    assert.equal(r.nh4, undefined, 'no ammonium is reported');
+    assert.equal(r.band, undefined, 'and no band');
+  }
+});
+
+test('a gap of exactly nothing is a real reading, not an entry error', () => {
+  // The rounded gap is what is tested, because a measured osmolality equal to the
+  // calculated one comes out a hair below zero in floating point.
+  const equal = {
+    measuredOsm: 247.1, urineNa: 40, urineK: 30, urineUrea: 300, urineGlucose: 0,
+  };
+  const r = urineOsmolalGap(equal);
+  assert.equal(r.valid, true);
+  assert.equal(r.gap, 0);
+  assert.equal(r.nh4, 0);
+  assert.match(r.band, /a narrow gap/);
+});

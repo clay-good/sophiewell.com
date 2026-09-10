@@ -728,6 +728,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   in. Two of them previously said only "Enter the required values" and now name
   the field. See docs/spec-v1201.md.
 
+- **A urine test reported a negative concentration, and a diagnosis with it.** The
+  urine osmolal gap estimates urinary ammonium as half the gap, and nothing
+  stopped that half being negative -- so a mistyped urine sodium produced an
+  ammonium of minus 1,883 with "consistent with renal tubular acidosis" beside it.
+  Every negative gap falls in that band, so an entry error always read as the
+  diagnosis. It now says the gap has come out negative and asks for the entries to
+  be checked. A gap of exactly nothing is still a real reading. See
+  docs/spec-v1202.md.
+
 ### Changed
 
 - **The check that compares a tool's accepted values with the menu on the page could
