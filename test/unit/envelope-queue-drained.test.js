@@ -23,7 +23,9 @@ import assert from 'node:assert/strict';
 
 import { cdaiCrohns } from '../../lib/gi-v126.js';
 import { ipssrMds } from '../../lib/hemonc-v94.js';
-import { mews, news2, mods } from '../../lib/scoring-v4.js';
+import { mews, news2, mods, meows } from '../../lib/scoring-v4.js';
+import { lods } from '../../lib/critcare-severity-v200.js';
+import { harveyBradshaw } from '../../lib/hepgi-v93.js';
 import { abi } from '../../lib/vascular-v105.js';
 import { lactateClearance } from '../../lib/critcare-v112.js';
 import {
@@ -204,4 +206,61 @@ test('an envelope refusal reaches the agent surface as a refusal', () => {
   assert.match(r.band, /plausible range for systolic blood pressure/);
   // The view keys off `score`, not `valid`, so the page is unchanged.
   assert.equal(mews({ sbp: 120, pulse: 78, rr: 14, temp: 37, avpu: 'A' }).score, 0);
+});
+
+// spec-v1200: the three shapes spec-v1199 named and left, all in the same family.
+test('meows refuses an impossible vital instead of calling a rapid response', () => {
+  // The function's own comment is the argument: "An alarm from nothing is not the
+  // safe direction; it is a different wrong answer." It was applied to the empty
+  // chart and not to the impossible observation.
+  const ok = { rr: 16, spo2: 98, temp: 37, sbp: 118, dbp: 72, hr: 80, neuro: 'A', pain: 0 };
+  assert.equal(meows(ok).band, 'no trigger');
+  for (const [bad, pattern] of [
+    [{ sbp: 3000 }, /systolic blood pressure/], [{ dbp: 2000 }, /diastolic blood pressure/],
+    [{ temp: 450 }, /core temperature/], [{ hr: 3000 }, /heart rate/],
+  ]) {
+    const r = meows({ ...ok, ...bad });
+    assert.equal(r.valid, false, JSON.stringify(bad));
+    assert.equal(r.band, 'not scored', JSON.stringify(bad));
+    assert.equal(r.trigger, null, JSON.stringify(bad));
+    assert.match(r.text, pattern, JSON.stringify(bad));
+  }
+  // The missing branch still says its own, different thing.
+  assert.match(meows({ ...ok, sbp: '' }).text, /^Enter systolic BP/);
+});
+
+test('lods says "out of range", not "still missing"', () => {
+  // `inRange` returns null for blank, non-numeric AND out-of-range alike, and the
+  // caller read null as absent -- so a creatinine of 250 mg/dL was reported as a
+  // creatinine still owed, and retyping it produced the same sentence.
+  const ok = {
+    gcs: 14, hr: 100, sbp: 90, bun: 30, creatinine: 1.5, urineL: 1.2,
+    wbc: 15, platelets: 150, bilirubin: 1.0, mechVent: false,
+  };
+  assert.equal(lods(ok).valid, true);
+
+  const bad = lods({ ...ok, creatinine: 250 });
+  assert.equal(bad.valid, false);
+  assert.match(bad.message, /creatinine 250 is outside 0 to 40/);
+  assert.match(bad.message, /not a missing measurement/);
+  assert.doesNotMatch(bad.message, /^Enter /);
+
+  // More than one is named, so a second retype is not needed to find it.
+  assert.match(lods({ ...ok, creatinine: 250, wbc: 9999 }).message, /creatinine 250 .*; WBC 9999 /);
+
+  // And a genuinely absent value still gets the other sentence.
+  assert.match(lods({ ...ok, creatinine: '' }).message, /^Enter GCS, heart rate/);
+});
+
+test('harvey-bradshaw discloses the clamp on every subscore, not four of five', () => {
+  const ok = { wellbeing: 1, pain: 1, stools: 3, mass: 0, complications: 0 };
+  assert.equal(harveyBradshaw(ok).clamped, false);
+  // The four that were reported.
+  for (const bad of [{ wellbeing: 999 }, { pain: 999 }, { mass: 999 }, { complications: 999 }]) {
+    assert.equal(harveyBradshaw({ ...ok, ...bad }).clamped, true, JSON.stringify(bad));
+  }
+  // The stool count, which was capped at 1e6 and said nothing.
+  const st = harveyBradshaw({ ...ok, stools: 2000000 });
+  assert.equal(st.clamped, true);
+  assert.match(st.band, /out of range and was clamped/);
 });

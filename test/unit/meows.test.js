@@ -83,8 +83,20 @@ test('meows rejects implausible vitals, and asks for the ones it does not have',
   const notTaken = meows({ ...normal, rr: NaN });
   assert.deepEqual(notTaken.missing, ['rr']);
   assert.match(notTaken.text, /Enter respiratory rate/);
-  // A value that IS there and cannot be true still throws.
-  assert.throws(() => meows({ ...normal, hr: -5 }));
+  // spec-v1200: a value that IS there and cannot be true used to throw, which the
+  // output-safety layer turns into a bare COMPUTE_ERROR. Where lib/bounds.js
+  // declares an envelope it now returns a refusal naming the range instead, in
+  // the same shape as the missing branch above, so the page and an agent both
+  // read it the way they already read that one.
+  const impossible = meows({ ...normal, hr: -5 });
+  assert.equal(impossible.valid, false);
+  assert.equal(impossible.band, 'not scored');
+  assert.equal(impossible.trigger, null);
+  assert.match(impossible.text, /plausible range for heart rate/);
+  assert.deepEqual(impossible.missing, [], 'an entered value is not a missing one');
+
+  // Oxygen saturation carries no envelope in lib/bounds.js, so that path is
+  // unchanged and still throws.
   assert.throws(() => meows({ ...normal, spo2: 105 }));
 });
 

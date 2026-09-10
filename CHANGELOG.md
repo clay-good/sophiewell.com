@@ -709,6 +709,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   score; it now reports the refusal on both surfaces, and the page is unchanged.
   See docs/spec-v1199.md.
 
+- **Three more tools that mishandled an impossible number.** The obstetric
+  early-warning score called a rapid response from a blood pressure of 3000; the
+  LODS organ-failure score told a reader that a creatinine of 250 was a creatinine
+  they had not entered, so retyping it produced the same message; and the
+  Harvey-Bradshaw index disclosed the capping of four of its five subscores but
+  silently capped the fifth. All three now say what is actually wrong with the
+  value, and name every field that is out of range rather than one at a time. See
+  docs/spec-v1200.md.
+
 ### Changed
 
 - **The check that compares a tool's accepted values with the menu on the page could

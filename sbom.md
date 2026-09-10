@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `78cd0ce50ba41d9f`
-Generated: 2026-09-10T05:16:51.497Z
+Build ID: `e07e78ac422c0959`
+Generated: 2026-09-10T05:48:16.187Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -202,7 +202,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/cotton-myer-v419.js` | 2898 | `1ee091c8f1a08282081b62560a0625e612bf73b654c3953f872dcf7c1dc633e9` |
 | `lib/crafft-v511.js` | 4287 | `327127a6f8e3677bd8a1d0f3c3ced3b3347ee9c785e294ba9a50052ca446d1c2` |
 | `lib/crawford-taaa-v464.js` | 3861 | `88e25ce66c44ed838925af33531184aa2ec6a743e775339af30ec9ba797646d4` |
-| `lib/critcare-severity-v200.js` | 15639 | `e08d8c99b3000904ce53f517eb8b647868d44e31b46c43b9e75aa9dc167d3738` |
+| `lib/critcare-severity-v200.js` | 17327 | `14c11ab5c2e8b9b4aabeaa9f755a13740439b206b098face6f0301cf9a190865` |
 | `lib/critcare-v112.js` | 14774 | `77d2077948f42792145a2eaf5f453c6dd3fd028dd41637f795c36d31f09af0c8` |
 | `lib/crowe-ddh-v353.js` | 3621 | `cbfcd5066efa27d55b012cfe0174650bb2009a8d7f8e6ddc5dcf5a4ffbbc789d` |
 | `lib/crs-v305.js` | 5412 | `ef4acb9a6090b2dee839747bc0cc8b5b7adecc9c3d96e89fdc601b72fa835c71` |
@@ -373,7 +373,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/hepatology-gibleed-v201.js` | 19770 | `b13202719fc096c742097095af56bcd722c07b67f7e138a791e72cd818eb7da6` |
 | `lib/hepatology-prognosis-v220.js` | 11769 | `1f9c49980dee9a6c4959fb670f74c99b1bbd44eab695f06dee16190eee21addb` |
 | `lib/hepgi-v190.js` | 11863 | `18fdde7face8dec98d83118b4840f01f3e93a7594a0cade787ab75771707e239` |
-| `lib/hepgi-v93.js` | 19901 | `8183caf0a263ab1fe195dbb8328f299a5d126b93054fe500a2c2950e77ab32a9` |
+| `lib/hepgi-v93.js` | 20242 | `fcb64d340b664f612a875fc38bcfdd15b7c3cd9a5e4660d7a69704e793af8606` |
 | `lib/herring-pillar-v347.js` | 4295 | `5402d155c338948987f458750b247521fc6ba36f5a20d9501eb4b97e6ae52794` |
 | `lib/hf-ef-classification-v840.js` | 8378 | `4ba17b89bcb66c65f821f7cb6335cab5c57e428fcf22c2da876fa636ce7a972e` |
 | `lib/hf-stages-abcd-v842.js` | 7839 | `93bde8395e5ff6baf50da213ef74c1358b09d224c3fdcc6fae245eb1dc8024c2` |
@@ -762,7 +762,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/schobinger-avm-v497.js` | 3484 | `fd7d680fede1965fd9a9026d0977e4f2c1970e30d33718df3daaca235dfed009` |
 | `lib/schofield-v779.js` | 4325 | `7c398e3b1dc2df66c5323baee0f73ff66c28927fb47a72ede85dfd51d2de4931` |
 | `lib/schwab-england-v385.js` | 4331 | `caddd0709826db63186ebf0a5f8b60fd9a3e00fa934bddc3e0331977f70c5e4b` |
-| `lib/scoring-v4.js` | 287615 | `f3715b8e761d6fd45487c398d96df40d4cd65c6005f3717888a9690a263175a8` |
+| `lib/scoring-v4.js` | 288644 | `d3a393f3c3865103322fb2f0bd785d57d4bd743a60b81ff26373696f9362771d` |
 | `lib/scoring-v5.js` | 13821 | `89b532534c64d0e47a4c2e7978ec5d68f1a6d101c61ac586056a0764b8d05039` |
 | `lib/scoring-v6.js` | 27427 | `ed570d8507d63371de2181a97743f8ee1f40e2042eedba9dac2216ed247d6fad` |
 | `lib/scp-pushing-v562.js` | 12399 | `6da019a04668722b7a8d448b4d7bf9908717629b72e4a162088e74363ad62360` |
