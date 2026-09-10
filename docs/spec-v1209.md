@@ -18,7 +18,7 @@ Being honest about reach is the point of this program, so the eleven functions
 split in two and only the first half is a live defect. Ten of the graded inputs
 render as a **select** in the browser and carry an **enum** in the agent schema,
 so no one could have entered a value off the scale. Those fixes are
-defence-in-depth; they change nothing anybody could see.
+defense-in-depth; they change nothing anybody could see.
 
 These four were reachable — a free number field on the page and an unconstrained
 number in the agent schema — and each is verified before and after on the agent
@@ -35,7 +35,7 @@ surface:
 number fields on the page, and one of them alone crosses the diagnostic
 threshold. A grade of 9999 is not severe bleeding — it is not a grade.
 
-## Four tests asserted the harmful behaviour
+## Four tests asserted the harmful behavior
 
 The clamp was not an oversight anybody had missed. It was **pinned**:
 

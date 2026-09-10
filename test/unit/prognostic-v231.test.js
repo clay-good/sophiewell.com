@@ -45,3 +45,21 @@ test('far: fibrinogen / albumin', () => {
 test('far: invalid without both', () => {
   assert.equal(far({ fibrinogen: 400 }).valid, false);
 });
+
+// spec-v1210: `pos(v, lo, hi)` returned null for a blank AND for an out-of-range
+// value, so an ANC of 9999 was answered "Enter absolute neutrophil count" -- the
+// reader retypes the same number and gets the same sentence.
+test('nmr: an out-of-range count is named, not reported as missing', () => {
+  const bad = nmr({ anc: 9999, amc: 0.5 });
+  assert.equal(bad.valid, false);
+  assert.match(bad.message, /absolute neutrophil count must be between 0.001 and 500/);
+  assert.ok(!/^Enter absolute neutrophil count and/.test(bad.message), 'must not ask for the value just entered');
+});
+
+test('nmr: a blank count is still asked for', () => {
+  assert.match(nmr({ amc: 0.5 }).message, /^Enter the absolute neutrophil count/);
+});
+
+test('nmr: a real pair still computes', () => {
+  assert.equal(nmr({ anc: 3.5, amc: 0.5 }).score, 7);
+});

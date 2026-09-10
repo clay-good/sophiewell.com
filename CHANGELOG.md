@@ -806,6 +806,25 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   one of them that a snakebite subscore of 9 should score the severest envenomation
   the scale defines -- and now assert the refusal. See docs/spec-v1209.md.
 
+- **A burn chart entered as a percent doubled the burn.** The Lund-Browder tool
+  takes each body region as a fraction burned, and a region charted as "50" --
+  meaning half of it, the commonest slip that field can have -- was read as the
+  whole region, taking the total burn area from 3.5% to 7% silently. Burn area is
+  what the fluid resuscitation is calculated from. Four other tools were fixed in
+  the same pass, the worst of them a kidney-failure risk model that reported a 0%
+  two-year and 0% five-year risk from an impossible age, where the same patient at
+  60 reads 2.6% and 7.9%. Each now asks for the value to be checked. See
+  docs/spec-v1210.md.
+
+### Changed
+
+- **A check that hunts for unguarded calculations was reporting one that has no
+  numbers in it.** It read each function as everything up to the start of the next
+  one, so the tables and helpers written in between were counted as part of the
+  function above. It now reads each function's own body, and with that corrected
+  it reports nothing left to find -- the question it was built to ask is closed.
+  See docs/spec-v1210.md.
+
 ### Changed
 
 - **The check that compares a tool's accepted values with the menu on the page could

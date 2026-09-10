@@ -54,7 +54,11 @@ test('a negative gap is an entry to check, not a narrow one', () => {
   };
   assert.equal(urineOsmolalGap(ok).valid, true);
 
-  for (const bad of [{ urineNa: 2000 }, { urineGlucose: 20000 }, { measuredOsm: 100 }]) {
+  // spec-v1210 declared urine envelopes for these fields, so each value here has
+  // to stay INSIDE its envelope -- otherwise the tile refuses for the range and
+  // never reaches the negative-gap path this test is about. A urine sodium of 300
+  // is high and real; 2,000 (what this used to use) is not a urine sodium.
+  for (const bad of [{ urineNa: 300 }, { urineGlucose: 20000 }, { measuredOsm: 100 }]) {
     const r = urineOsmolalGap({ ...ok, ...bad });
     assert.equal(r.valid, false, JSON.stringify(bad));
     assert.match(r.message, /comes out negative/, JSON.stringify(bad));
@@ -76,4 +80,23 @@ test('a gap of exactly nothing is a real reading, not an entry error', () => {
   assert.equal(r.gap, 0);
   assert.equal(r.nh4, 0);
   assert.match(r.band, /a narrow gap/);
+});
+
+// spec-v1210: the envelope guard the sibling gas functions in this module have
+// had since spec-v1198.
+test('an impossible urine sodium is refused rather than reasoned about', () => {
+  const bad = urineOsmolalGap({ measuredOsm: 500, urineNa: 99999, urineK: 30, urineUrea: 300, urineGlucose: 0 });
+  assert.equal(bad.valid, false);
+  assert.match(bad.message, /urine sodium in mmol\/L must be between 0 and 400/);
+});
+
+test('these are URINE envelopes, not lib/bounds.js serum ones', () => {
+  // spec-v1205's trap: BOUNDS.sodium is SERUM sodium at 90-200, and a urine
+  // sodium of 20 is normal. Applying that table here would refuse it.
+  assert.equal(urineOsmolalGap({ measuredOsm: 500, urineNa: 20, urineK: 30, urineUrea: 300, urineGlucose: 0 }).valid, true);
+});
+
+test('a blank field is still asked for, not reported out of range', () => {
+  const r = urineOsmolalGap({ measuredOsm: 500, urineK: 30, urineUrea: 300, urineGlucose: 0 });
+  assert.match(r.message, /Enter measured urine osmolality/);
 });

@@ -28,14 +28,36 @@ test('every region fully burned sums to 100% on both methods', () => {
   assert.equal(r.implausible, false);
 });
 
-test('region fractions are clamped to [0,1]; a > 100% total is flagged not capped silently', () => {
-  const r = lundBrowder({ ageBand: 'adult', regions: { head: 5 } }); // clamped to 1
-  assert.equal(r.tbsa, 7);
-  assert.equal(r.implausible, false);
+// spec-v1210: this test used to assert the CLAMP -- a fraction of 5 read as the
+// whole head. A fraction is 0-1 by definition, so a 5 is not "all of it", it is
+// not a fraction. The > 100% TOTAL check is a different question and still runs.
+test('a region fraction above 1 is refused, not capped silently', () => {
+  const r = lundBrowder({ ageBand: 'adult', regions: { head: 5 } });
+  assert.equal(r.valid, false);
+  assert.match(r.band, /must be between 0 and 1/);
 });
 
 test('a blank age band surfaces the complete-the-fields fallback', () => {
   const r = lundBrowder({ regions: { head: 1 } });
   assert.equal(r.valid, false);
   assert.ok(!/NaN/.test(r.band));
+});
+
+// spec-v1210: the region fraction was silently clamped to [0,1], and the slip it
+// hid is the commonest one this field has -- a region entered as a PERCENT.
+test('a region entered as a percent is refused, not read as the whole region', () => {
+  const half = lundBrowder({ ageBand: 'adult', regions: { head: 0.5 } });
+  assert.match(half.band, /3\.5%/);
+  const slip = lundBrowder({ ageBand: 'adult', regions: { head: 50 } });
+  assert.equal(slip.valid, false);
+  assert.match(slip.band, /fraction of the head burned must be between 0 and 1/);
+  assert.match(slip.band, /FRACTION of that region burned \(0-1\), not a percent/);
+});
+
+test('a whole region still charts as 1', () => {
+  assert.match(lundBrowder({ ageBand: 'adult', regions: { head: 1 } }).band, /7%/);
+});
+
+test('an unmarked chart is still asked for, not reported out of range', () => {
+  assert.match(lundBrowder({ ageBand: 'adult', regions: {} }).band, /at least one region/);
 });

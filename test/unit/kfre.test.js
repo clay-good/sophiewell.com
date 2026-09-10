@@ -33,3 +33,23 @@ test('non-positive / missing / scalar -> valid:false (no ln(0))', () => {
   assert.equal(kfre({}).valid, false);
   assert.equal(kfre(9).valid, false);
 });
+
+// spec-v1210: the linear predictor saturates, so an impossible input produced a
+// CLEAN number in the reassuring direction rather than an obviously broken one.
+test('an impossible age used to report a 0% risk of kidney failure', () => {
+  const real = kfre({ age: 60, egfr: 30, acr: 300 });
+  assert.match(real.band, /2\.6% 2-year/);
+  const bad = kfre({ age: 9999, egfr: 30, acr: 300 });
+  assert.equal(bad.valid, false);
+  assert.match(bad.message, /age in years must be between 0 and 130/);
+  assert.ok(!/0% 2-year/.test(bad.message), 'must not report no risk from an age nobody has');
+});
+
+test('an impossible eGFR is refused the same way', () => {
+  assert.match(kfre({ age: 60, egfr: 9999, acr: 300 }).message, /eGFR .* must be between 0 and 200/);
+});
+
+test('the top of each envelope still computes', () => {
+  assert.equal(kfre({ age: 130, egfr: 30, acr: 300 }).valid, true);
+  assert.equal(kfre({ age: 60, egfr: 30, acr: 30000 }).valid, true);
+});

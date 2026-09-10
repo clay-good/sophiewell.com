@@ -21,3 +21,21 @@ test('zero/blank denominator -> valid:false (no divide-by-zero)', () => {
   assert.equal(ufrDialysis({ volume: 3, hours: 3 }).valid, false);
   assert.equal(ufrDialysis(9).valid, false);
 });
+
+// spec-v1210: the rate is volume / (weight x hours), so an impossible
+// DENOMINATOR drives it toward zero and the tool read "at or below the
+// threshold" -- reassuring, from a session nobody sat through.
+test('an impossible session length used to read below the risk threshold', () => {
+  const bad = ufrDialysis({ volume: 2, hours: 9999, weight: 70 });
+  assert.equal(bad.valid, false);
+  assert.match(bad.message, /session length in hours must be between 0 and 24/);
+  assert.ok(!/at or below/.test(bad.message));
+});
+
+test('an impossible weight is refused the same way', () => {
+  assert.match(ufrDialysis({ volume: 2, hours: 4, weight: 9999 }).message, /post-dialysis weight in kg must be between 0.3 and 500/);
+});
+
+test('a real session still computes', () => {
+  assert.equal(ufrDialysis({ volume: 2, hours: 4, weight: 70 }).ufr, 7.14);
+});

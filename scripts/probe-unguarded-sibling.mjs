@@ -69,6 +69,27 @@ function codeOnly(src) {
     .replace(/"(?:\\.|[^"\\])*"/g, '" "');        // double-quoted
 }
 
+// Brace-match from the `{` that opens the body -- which is the first `{` AFTER
+// the parameter list closes, not the first `{` after `function`: a default
+// parameter (`input = {}`) is a brace too, and matching that one returns the
+// signature alone and reports every function as reading nothing.
+function bodyOf(src, from) {
+  const paren = src.indexOf('(', from);
+  let pd = 0; let i = paren;
+  for (; i < src.length; i += 1) {
+    if (src[i] === '(') pd += 1;
+    else if (src[i] === ')') { pd -= 1; if (pd === 0) break; }
+  }
+  const open = src.indexOf('{', i);
+  if (open === -1) return src.slice(from);
+  let depth = 0;
+  for (let j = open; j < src.length; j += 1) {
+    if (src[j] === '{') depth += 1;
+    else if (src[j] === '}') { depth -= 1; if (depth === 0) return src.slice(from, j + 1); }
+  }
+  return src.slice(from);
+}
+
 const rows = [];
 let modulesRead = 0;
 let modulesWithAGuard = 0;
@@ -86,10 +107,13 @@ for (const file of readdirSync(`${ROOT}lib`).filter((f) => f.endsWith('.js')).so
   if (parts.length < 2 && !showAll) continue;
   modulesWithAGuard += 1;
 
-  const bodies = parts.map((m, i) => ({
-    name: m[1],
-    body: src.slice(m.index, i + 1 < parts.length ? parts[i + 1].index : src.length),
-  }));
+  // spec-v1210: the body ends at the function's OWN closing brace, not at the
+  // next `export function`. Slicing to the next export swept up every
+  // module-level constant, lookup table and private helper declared in between
+  // and attributed them to the function above -- which is how `rutherfordFontaine`,
+  // whose only input is a string key into a lookup, was reported for not guarding
+  // a measurement. It reads no number; the `pos(` belonged to the code after it.
+  const bodies = parts.map((m) => ({ name: m[1], body: bodyOf(src, m.index) }));
 
   // A function that IS one of the guards is not a function that calls one --
   // `lib/num.js` exports `inputFault` itself, and without this it reported its own
