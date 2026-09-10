@@ -65,6 +65,36 @@ the value against its own enum before the library is called. The question of
 which selects can be left unanswered is already asked directly by
 `scoring-select-probe.spec.js`; cross-check there before acting on a row here.
 
+## And the one the browser caught
+
+A full chromium run — 268 tests, 45 minutes — failed exactly once, on
+`toxic-alcohol`'s own worked example:
+
+```
+The arterial pH must be between 6.5 and 8. Check the value entered.
+```
+
+Nobody had entered a pH. `views/group-v12.js` reads that field with a local
+`function val(id) { return Number(input.value); }`, and **`Number('')` is `0`** —
+so a blank *optional* field arrived at the library as a measured zero. Harmless
+for years, until [spec-v1211](spec-v1211.md) gave the pH an envelope that
+excludes 0, and the tile refused its own documented reading.
+
+All four optional fields now use `optNum`, the canonical blank-vs-zero helper in
+that same file ([spec-v1065](spec-v1065.md), enforced by
+`scripts/check-helper-drift.mjs`). The ethanol still defaults to 0, in the
+library's `nn`, which is where that defaulting was always documented.
+
+Two tests pin both sides of the line: a blank optional field is `null` and the
+example computes, and a pH of `0` is a measurement and is refused.
+
+**Fifteen view modules carry a helper of that shape.** The three other tiles this
+wave and the last two guarded on *optional* fields — `modified-marshall`,
+`rifle-aki`, `akin-aki` — all read them with `optNum` already, so
+`toxic-alcohol` was the only exposure. The remaining fourteen are latent: they
+matter the day a field they feed gets an envelope that excludes zero.
+
 ## Proof
 
-Lint (19 gates), 13,560 unit tests and 449 MCP tests pass.
+Lint (19 gates), 13,562 unit tests and 449 MCP tests pass, and the chromium suite
+that found the failure above is green on it.

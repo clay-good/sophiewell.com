@@ -183,10 +183,20 @@ export const renderers = {
         sodium: taNa,
         glucose: taGlu,
         bun: taBun,
-        ethanol: val('ta-etoh'),
-        pH: val('ta-ph'),
-        bicarbonate: val('ta-bicarb'),
-        knownLevel: val('ta-level'),
+        // spec-v1212: `val` is `Number(input.value)`, and Number('') is 0. All
+        // four of these are OPTIONAL, so a blank one reached the library as a
+        // measured zero -- harmless until spec-v1211 gave the pH an envelope,
+        // and then the worked example refused with "The arterial pH must be
+        // between 6.5 and 8" for a field nobody had filled in.
+        //
+        // `optNum` is the canonical blank-vs-zero helper in this file
+        // (spec-v1065, enforced by scripts/check-helper-drift.mjs). The ethanol
+        // still defaults to 0 -- that happens in the library's `nn`, which is
+        // where the defaulting was always documented.
+        ethanol: optNum('ta-etoh'),
+        pH: optNum('ta-ph'),
+        bicarbonate: optNum('ta-bicarb'),
+        knownLevel: optNum('ta-level'),
         recentIngestion: chk('ta-recent'),
         strongSuspicion: chk('ta-suspicion'),
       });

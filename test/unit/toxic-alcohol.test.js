@@ -139,3 +139,27 @@ test('a blank glucose is still asked for, not reported out of range', () => {
   const r = toxicAlcohol({ measuredOsm: 330, sodium: 140, bun: 14, recentIngestion: true });
   assert.match(r.band, /Enter a glucose/);
 });
+
+// spec-v1212: `views/group-v12.js` read these four OPTIONAL fields with
+// `Number(input.value)`, and Number('') is 0 -- so a blank pH arrived as a
+// measured 0 and spec-v1211's envelope refused the tile's own worked example.
+// The library half of the contract: a blank optional field is null, and null is
+// not a measurement.
+test('a blank optional field is null, and the example still computes', () => {
+  const r = toxicAlcohol({
+    measuredOsm: 305, sodium: 140, glucose: 90, bun: 14, recentIngestion: true,
+    ethanol: null, pH: null, bicarbonate: null, knownLevel: null,
+  });
+  assert.equal(r.calcOsm, 290);
+  assert.equal(r.osmolarGap, 15);
+  assert.equal(r.indicated, true);
+});
+
+test('a pH of 0 is a measurement, and is refused', () => {
+  // The other side of the same line: 0 entered deliberately is not a blank.
+  const r = toxicAlcohol({
+    measuredOsm: 305, sodium: 140, glucose: 90, bun: 14, recentIngestion: true, pH: 0,
+  });
+  assert.equal(r.valid, false);
+  assert.match(r.band, /arterial pH must be between 6.5 and 8/);
+});

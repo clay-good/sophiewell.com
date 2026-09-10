@@ -835,7 +835,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   which is the dead end the previous fix had just removed elsewhere. Two other
   tools had gained their first-ever refusal and had nowhere to show it, though
   neither was reachable by anyone using them. All three now say what they found.
-  See docs/spec-v1212.md.
+
+  A full browser run then caught the reverse: the toxic-alcohol tool refused its
+  own worked example, asking for an arterial pH nobody had entered. The page read
+  that optional field as a typed zero rather than as blank, and the new pH range
+  excludes zero. Blank now means blank there. See docs/spec-v1212.md.
 
 ### Changed
 
