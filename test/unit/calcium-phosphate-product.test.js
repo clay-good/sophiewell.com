@@ -33,3 +33,28 @@ test('blanks / non-positive fall back', () => {
   assert.equal(calciumPhosphateProduct({ calcium: 9 }).valid, false);
   assert.equal(calciumPhosphateProduct({}).valid, false);
 });
+
+// spec-v1197: the unit selector falls back to mg/dL, and the reading named only
+// the OUTPUT unit -- "Ca x PO4 57 mg2/dL2" -- never the one it had assumed for
+// the inputs. Calcium and phosphate in mmol/L are 4.008 and 3.097 times smaller,
+// so a pair entered in SI with the selector missed reads about twelve times low,
+// against the one threshold this tile exists to place them beside.
+test('calcium-phosphate-product: the assumed input unit is named', () => {
+  const stated = calciumPhosphateProduct({ calcium: 9.5, phosphate: 6, unit: 'mg-dl' });
+  assert.equal(stated.unitStated, true);
+  assert.doesNotMatch(stated.band, /no unit given/);
+
+  const assumed = calciumPhosphateProduct({ calcium: 9.5, phosphate: 6 });
+  assert.equal(assumed.unitStated, false);
+  assert.equal(assumed.unit, 'mg-dl');
+  // The arithmetic is unchanged; only the reading gained a sentence.
+  assert.equal(assumed.product, stated.product);
+  assert.match(assumed.band, /no unit given; the calcium and phosphate were read as mg\/dL/);
+  assert.match(assumed.band, /about 12\.4 times this/);
+
+  // And 12.4 is the real factor, not a number someone typed.
+  assert.equal(Math.round(4.008 * 3.097 * 10) / 10, 12.4);
+
+  // An unrecognised unit is treated as no unit, and says so.
+  assert.match(calciumPhosphateProduct({ calcium: 9.5, phosphate: 6, unit: 'made-up' }).band, /no unit given/);
+});

@@ -682,6 +682,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   diabetes diagnosis tool also now names which of the four tests were not run,
   instead of only saying it has a single result. See docs/spec-v1196.md.
 
+- **A calcium-phosphate result did not say which units it had read.** With the
+  unit selector left alone it reported the product in mg squared per dL squared
+  and never said it had read the inputs as mg/dL. The same calcium and phosphate
+  entered in international units are about twelve times smaller, so a pair in
+  mmol/L read low against the one threshold the tool exists to place them beside.
+  It now names the assumption and gives the factor, the way five other tools that
+  take a unit already do. See docs/spec-v1197.md.
+
 ### Changed
 
 - **The check that compares a tool's accepted values with the menu on the page could

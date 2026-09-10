@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `ee7348d8ce866074`
-Generated: 2026-09-10T03:11:36.710Z
+Build ID: `57442506d12f21af`
+Generated: 2026-09-10T03:37:02.125Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -260,7 +260,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/elemental-iron-ingested-v687.js` | 4587 | `bf916731f3a8ec17b0c490ed8130ce001e6cbeea54513ab172537294c67e5363` |
 | `lib/ellis-tooth-fracture-v718.js` | 3158 | `752b44f77a8119e1d747960e57a41733c06c4f7e0afd3f093f1e85a903e7f50e` |
 | `lib/ems-v149.js` | 8963 | `a5242adc4eb12063911f88a9afec77847abfca348fc79c58c8e3ac74e4483e55` |
-| `lib/endo-metab-v161.js` | 10974 | `a80066691080d8911c7e8af3bbab9a9e67558476858de2b56e18c5e4a7dfc422` |
+| `lib/endo-metab-v161.js` | 11760 | `ebbe5ada24ccc278356c266b3c971eb216af45a8916a8dbb753a45ad27e84d45` |
 | `lib/endo-quant-v197.js` | 10494 | `9c19351a50d95c1fd0d2060527f575a0a63afc95b94a2a119fbc2e1d3e1af55e` |
 | `lib/endo-v136.js` | 16273 | `dc747588f039b87ba8c8ea73fcfc31807f2bcc1bf390cc16a77f9130da0451c2` |
 | `lib/enneking-v460.js` | 3397 | `5f0a323b907db13850e71165ddd2b21e7531734f7a26c12086c36710e01c27e3` |
