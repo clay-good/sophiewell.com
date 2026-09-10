@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `d67f42155bcfa179`
-Generated: 2026-09-10T08:51:35.581Z
+Build ID: `67cf456909660103`
+Generated: 2026-09-10T09:49:20.694Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -203,7 +203,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/crafft-v511.js` | 4287 | `327127a6f8e3677bd8a1d0f3c3ced3b3347ee9c785e294ba9a50052ca446d1c2` |
 | `lib/crawford-taaa-v464.js` | 3861 | `88e25ce66c44ed838925af33531184aa2ec6a743e775339af30ec9ba797646d4` |
 | `lib/critcare-severity-v200.js` | 18707 | `e72c4c4be9dc635ec7214460c3300e8b3dfab7141bd30394d61d8d3c0db9f123` |
-| `lib/critcare-v112.js` | 14774 | `77d2077948f42792145a2eaf5f453c6dd3fd028dd41637f795c36d31f09af0c8` |
+| `lib/critcare-v112.js` | 16058 | `4b862bd87f9c5435f7e069542fa0b1f23b1b5f146aa2978e903066b5a4681cb1` |
 | `lib/crowe-ddh-v353.js` | 3621 | `cbfcd5066efa27d55b012cfe0174650bb2009a8d7f8e6ddc5dcf5a4ffbbc789d` |
 | `lib/crs-v305.js` | 5412 | `ef4acb9a6090b2dee839747bc0cc8b5b7adecc9c3d96e89fdc601b72fa835c71` |
 | `lib/cts6-v773.js` | 3589 | `50ab3a3aa777a4ed12077b73c3a3a3dc707df6ff98e36a7c579aec5451333c8e` |
@@ -859,7 +859,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/van-herick-v435.js` | 3423 | `1df5f89865068a14369482f3bd141c7ef8999a49e9e3b6ada87ebcffb36cdd15` |
 | `lib/van-nuys-vnpi-v652.js` | 5583 | `59049426b6b97b137e2c28ae2072640f2310ed548c27027eac6e069e334ddcaf` |
 | `lib/vancouver-periprosthetic-v483.js` | 3496 | `49ecf63cc801a1b465268edd621659b820dad6556472ff09b40e428eb12575bf` |
-| `lib/vascular-v105.js` | 20704 | `7e66fe1e9041e0f0ffef322143576c148df1237cf31aa82496382e3fb241d1ca` |
+| `lib/vascular-v105.js` | 21159 | `78983bdb8025880a6ac5a817195498f51bc416ef9356c7665c47055800fc3b69` |
 | `lib/vasi-v556.js` | 12850 | `c1e3bdab22509ed3895f5dae68d974242064c27bd047889d8a0d80c1491bd204` |
 | `lib/vaughan-williams-v427.js` | 4207 | `241cb6fc10d5a9b15a3a849ab44f7887e7508a99daa8a9c55567feb737b1893d` |
 | `lib/vent-v195.js` | 9473 | `9f8fd14cdaa7e971da29cc8bdc6247bf8c7e3974daae70bc597e2269c400c110` |

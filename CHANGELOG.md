@@ -754,6 +754,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   nothing. It now asks for an age inside the range the tool already publishes, and
   reports neither index until it has one. See docs/spec-v1204.md.
 
+- **A severe low platelet count, entered in US units, scored as normal.** The
+  sepsis-induced coagulopathy score takes platelets in the international unit; a
+  US laboratory prints the same count as a number a thousand times larger.
+  Entered that way, a platelet count of 20 -- severe -- read as normal and scored
+  nothing, and the total fell below the threshold, so the coagulopathy the score
+  exists to catch was scored away. It now asks for the count to be checked. The
+  EuroSCORE II cardiac-surgery model, which had predicted a mortality of 100% from
+  an implausible age, was fixed in the same pass. See docs/spec-v1205.md.
+
 ### Changed
 
 - **The check that compares a tool's accepted values with the menu on the page could

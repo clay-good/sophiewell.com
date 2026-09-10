@@ -31,8 +31,8 @@ import { palbi, meldNa, clichy } from '../../lib/hepgi-v190.js';
 import { clifcAd, clip } from '../../lib/hepatology-gibleed-v201.js';
 import { fips } from '../../lib/hepatology-prognosis-v220.js';
 import { inputFault } from '../../lib/num.js';
-import { abi } from '../../lib/vascular-v105.js';
-import { lactateClearance } from '../../lib/critcare-v112.js';
+import { abi, euroScore2 } from '../../lib/vascular-v105.js';
+import { lactateClearance, sicScore, cpisVap } from '../../lib/critcare-v112.js';
 import {
   stewartSidSig, baseExcess, respAcidosisCompensation, respAlkalosisCompensation, metAlkalosisCompensation,
 } from '../../lib/acidbase-v129.js';
@@ -408,4 +408,57 @@ test('sokal-cml guards the age beside the platelet count it already guarded', ()
 
   // And the platelet guard spec-v1180 added is untouched.
   assert.match(sokalCml({ ...ok, platelets: 20000 }).band, /above ~2000, beyond recorded extremes/);
+});
+
+// spec-v1205: three more of probe-unguarded-sibling's rows, in modules whose
+// other exports have had the guard since spec-v1181.
+test('sic-score: a platelet count in US units is refused, not scored as normal', () => {
+  // This field is x10^9/L. A US report prints the SAME count as 20,000/uL, so a
+  // severe thrombocytopenia of 20 entered that way read as a normal count and
+  // scored 0 instead of 2 -- the total fell below the threshold and the
+  // coagulopathy the score exists to catch was scored away. The REASSURING
+  // direction, which is the one that matters.
+  const severe = sicScore({ platelet: 20, inr: 1.3, sofa: 3 });
+  assert.equal(severe.pltPts, 2);
+  assert.equal(severe.met, true);
+
+  const usUnits = sicScore({ platelet: 20000, inr: 1.3, sofa: 3 });
+  assert.equal(usUnits.valid, false);
+  assert.match(usUnits.band, /plausible range for platelet count/);
+  assert.equal(usUnits.met, undefined);
+
+  assert.match(sicScore({ platelet: 120, inr: 99, sofa: 3 }).band, /plausible range for INR \(0\.5 to 20\)/);
+  assert.equal(sicScore({ platelet: 120, inr: 1.3, sofa: 3 }).valid, true);
+});
+
+test('cpis-vap guards the temperature and NOT the leukocyte count', () => {
+  // An envelope is a claim about a quantity IN A UNIT. This tile's leukocyte
+  // count is per mm^3 -- 12,000 for what BOUNDS.wbc holds as 12 in x10^9/L -- so
+  // applying that envelope here would refuse every legitimate value.
+  const ok = {
+    temp: 38, wbc: 12000, secretions: 'none', oxygenation: 'ok', radiograph: 'none', culture: 'none',
+  };
+  assert.notEqual(cpisVap(ok).valid, false);
+  assert.notEqual(cpisVap({ ...ok, wbc: 25000 }).valid, false, 'a real leukocytosis still scores');
+  assert.notEqual(cpisVap({ ...ok, wbc: 800 }).valid, false, 'and a real leukopenia does too');
+
+  const hot = cpisVap({ ...ok, temp: 450 });
+  assert.equal(hot.valid, false);
+  assert.match(hot.band, /plausible range for core temperature \(25 to 45 C\)/);
+});
+
+test('euroscore-ii guards the age, as abi in the same module already did', () => {
+  const es = {
+    nyha: '2', lvFunction: 'good', urgency: 'elective', weightOfIntervention: 'single',
+    renal: 'gt85', pulmonaryHypertension: 'no',
+  };
+  assert.match(euroScore2({ ...es, age: 65 }).band, /predicted in-hospital mortality/);
+  // The age term is linear in max(1, age - 59), so an implausible age drove the
+  // logit until the predicted mortality saturated at 100%.
+  const absurd = euroScore2({ ...es, age: 1000000 });
+  assert.equal(absurd.valid, false);
+  assert.match(absurd.band, /plausible range for age \(0 to 130 yr\)/);
+  assert.doesNotMatch(absurd.band, /mortality/);
+  // The oldest the envelope admits still answers.
+  assert.match(euroScore2({ ...es, age: 130 }).band, /predicted in-hospital mortality/);
 });
