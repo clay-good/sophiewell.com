@@ -121,6 +121,11 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     wire(['uc-vasc', 'uc-bleed', 'uc-ero'], () => safe(o, () => {
       const r = M.uceis({ vascular: selVal('uc-vasc'), bleeding: selVal('uc-bleed'), erosions: selVal('uc-ero') });
+      // spec-v1212: uceis never returned `valid: false` until spec-v1209 gave it a
+      // range guard, so this renderer had no branch for one -- and without it the
+      // refusal printed beside "UCEIS undefined/8". The sibling renderers in this
+      // file have had `showInvalid` all along.
+      if (!r.valid) { showInvalid(o, r); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'UCEIS', value: `${r.total}/8` }]);
       note(o, r.note);
     }));
@@ -191,6 +196,10 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     wire(['ct-grade', 'ct-necr'], () => safe(o, () => {
       const r = M.ctsiBalthazar({ grade: selVal('ct-grade'), necrosis: selVal('ct-necr') });
+      // spec-v1212: same as uceis above -- this never returned `valid: false`
+      // until spec-v1209 gave it a range guard, so the renderer had no branch for
+      // one and the refusal printed beside "CTSI undefined/10".
+      if (!r.valid) { showInvalid(o, r); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'CTSI', value: `${r.total}/10` }]);
       note(o, r.note);
     }));

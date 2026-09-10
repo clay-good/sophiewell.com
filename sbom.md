@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `f2636e64acc77750`
-Generated: 2026-09-10T14:40:51.325Z
+Build ID: `d577385fdfdf8296`
+Generated: 2026-09-10T15:31:53.642Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -324,7 +324,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/gerdq-v679.js` | 4410 | `1b59ff708ec0a30c39ae0bc7ed356bf1704dac46be643eb922ec1376759df951` |
 | `lib/geri-v241.js` | 6715 | `1debe98a4e5480baaaf503b9f4e9e093f0bdfaede8ce2741f9744b862ae52f98` |
 | `lib/ghent-marfan-v821.js` | 12318 | `855285066a558cf50ad9e937c7717195d86bc71bbe51e47913f4dfa811f8ce39` |
-| `lib/gi-v126.js` | 23328 | `7c2bad6411f20c1da473b54a8b17c79cae54705ca8bac1bb9a32ce580224b869` |
+| `lib/gi-v126.js` | 23381 | `7ca534433530449a3368ca6bb4f3d3768b7432500a8d0541a2da7970fedea7e0` |
 | `lib/gisurg-v239.js` | 7913 | `d6da27d87f1f1c9ae3ba497127080931bfe66fd1e29c66d5e5b6b21a586761d0` |
 | `lib/glass-stage-v550.js` | 13408 | `42ec4b461aa71b8aa586f00d20f9088773dbf3a478e9847e590af687b2c2acf5` |
 | `lib/gli-2012-data.js` | 41979 | `0fa7440b8d9ab03028185d56c7a6bc9e1e753fe3ac396c208eb06f80991ba125` |
@@ -1728,7 +1728,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v123.js` | 13504 | `c0372038e1860f352e62a570fad97c27c9625e0e9955a5bafd92953889f9bad3` |
 | `views/group-v124.js` | 10614 | `5139bca048cdd9597fe2ca4ff9de7139fb5da5667766f70ceb0cf079b34db1b0` |
 | `views/group-v125.js` | 11074 | `edee225ad6146597e1803180b505062695ade91da7e0b51378ac82c30b74ad7f` |
-| `views/group-v126.js` | 13341 | `4f6f171bdaad7ceac276fa036d03adf8e277cbd9e5d77f6493c17fcfb22aa60d` |
+| `views/group-v126.js` | 13968 | `f4a1be680ce71ce40b536c44e4fef6ed2c5a3490c620278cf44ea80bfb9ec16f` |
 | `views/group-v127.js` | 9645 | `c12859a07e97172d292b834c5a84ede9cb43f6601e633a4e03feef844eef4128` |
 | `views/group-v128.js` | 7760 | `53557c149d1f0d643f25bf5e0841c6ed03746c09c9d581d741af50c045125dea` |
 | `views/group-v129.js` | 13035 | `02a615a3a577434fa927dc2a9310e194fc164b85a2cbd66e405584b7efda3466` |

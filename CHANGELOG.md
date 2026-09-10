@@ -828,7 +828,23 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   "AKIN stage 3" into "no criteria met". All four now ask for the value to be
   checked. See docs/spec-v1211.md.
 
+- **A tool worked out what was wrong with a value and then didn't say it.** The
+  Crohn's disease activity tool checks that a seven-day diary tally is possible --
+  seven days of a 0-3 daily grade cannot exceed 21 -- but the page printed its
+  generic "Enter the required values" instead of the sentence naming the problem,
+  which is the dead end the previous fix had just removed elsewhere. Two other
+  tools had gained their first-ever refusal and had nowhere to show it, though
+  neither was reachable by anyone using them. All three now say what they found.
+  See docs/spec-v1212.md.
+
 ### Changed
+
+- **A new check asks whether a tool's refusal actually reaches the page.** A
+  message the library works out and the renderer never prints is invisible, and
+  that is how the Crohn's fix above stayed hidden. It reads every tool and its
+  renderer and reports the mismatches; it was wrong six times over before it was
+  right, and each of those is written down in the spec so the next one is not.
+  See docs/spec-v1212.md.
 
 - **The check that looks for reassuring answers from impossible values could not
   read half of them.** It matched a fixed list of phrases, and a tool names the
