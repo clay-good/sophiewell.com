@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `31f37b1f0e403a44`
-Generated: 2026-09-10T07:53:41.559Z
+Build ID: `709e462bdc2521c8`
+Generated: 2026-09-10T08:25:45.956Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -202,7 +202,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/cotton-myer-v419.js` | 2898 | `1ee091c8f1a08282081b62560a0625e612bf73b654c3953f872dcf7c1dc633e9` |
 | `lib/crafft-v511.js` | 4287 | `327127a6f8e3677bd8a1d0f3c3ced3b3347ee9c785e294ba9a50052ca446d1c2` |
 | `lib/crawford-taaa-v464.js` | 3861 | `88e25ce66c44ed838925af33531184aa2ec6a743e775339af30ec9ba797646d4` |
-| `lib/critcare-severity-v200.js` | 17327 | `14c11ab5c2e8b9b4aabeaa9f755a13740439b206b098face6f0301cf9a190865` |
+| `lib/critcare-severity-v200.js` | 18707 | `e72c4c4be9dc635ec7214460c3300e8b3dfab7141bd30394d61d8d3c0db9f123` |
 | `lib/critcare-v112.js` | 14774 | `77d2077948f42792145a2eaf5f453c6dd3fd028dd41637f795c36d31f09af0c8` |
 | `lib/crowe-ddh-v353.js` | 3621 | `cbfcd5066efa27d55b012cfe0174650bb2009a8d7f8e6ddc5dcf5a4ffbbc789d` |
 | `lib/crs-v305.js` | 5412 | `ef4acb9a6090b2dee839747bc0cc8b5b7adecc9c3d96e89fdc601b72fa835c71` |
@@ -370,9 +370,9 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/hep-v124.js` | 15356 | `049ccb04b60ff0a93eb6c80400e614dd5709cbe071e48d5b0b7632cec0b69248` |
 | `lib/hep-v125.js` | 13055 | `86f145e491067a12d2b0dea0085a9340a14350d5b82d29dca936d41c9b8d6d03` |
 | `lib/hepatic-iron-index-v932.js` | 6957 | `4c14e67de0551f4e4f9bde691e19eaa0c2f4e5cc6fb41033d1b7e0fd73ec74d6` |
-| `lib/hepatology-gibleed-v201.js` | 20913 | `00955d70e5c901a731f1f299fbc55d7f62a4760f8602eefb37f9d89c85909e5d` |
+| `lib/hepatology-gibleed-v201.js` | 20995 | `19478b8af048fe9f78a7fffb4357102cd4fdaaff17ba5bd52ce9174bcae70c41` |
 | `lib/hepatology-prognosis-v220.js` | 12866 | `792e4365d5eed204d4a285634402b982fc0c3d278a8ba368bb6b90a18c3e538a` |
-| `lib/hepgi-v190.js` | 12405 | `7c540b80cd37246a38feab61d596a96d457190f87ee58211239ed22fb74e2292` |
+| `lib/hepgi-v190.js` | 12581 | `a9b059528932b3a95056aed672695735f14974b4b3dd40c09c72d97fcf3b04c7` |
 | `lib/hepgi-v93.js` | 20242 | `fcb64d340b664f612a875fc38bcfdd15b7c3cd9a5e4660d7a69704e793af8606` |
 | `lib/herring-pillar-v347.js` | 4295 | `5402d155c338948987f458750b247521fc6ba36f5a20d9501eb4b97e6ae52794` |
 | `lib/hf-ef-classification-v840.js` | 8378 | `4ba17b89bcb66c65f821f7cb6335cab5c57e428fcf22c2da876fa636ce7a972e` |

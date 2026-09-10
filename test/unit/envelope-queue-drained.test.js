@@ -24,11 +24,11 @@ import assert from 'node:assert/strict';
 import { cdaiCrohns } from '../../lib/gi-v126.js';
 import { ipssrMds } from '../../lib/hemonc-v94.js';
 import { mews, news2, mods, meows } from '../../lib/scoring-v4.js';
-import { lods } from '../../lib/critcare-severity-v200.js';
+import { lods, oasis, deltaGap, appsArds } from '../../lib/critcare-severity-v200.js';
 import { harveyBradshaw } from '../../lib/hepgi-v93.js';
 import { meld3 } from '../../lib/meld3-v678.js';
-import { palbi, meldNa } from '../../lib/hepgi-v190.js';
-import { clifcAd } from '../../lib/hepatology-gibleed-v201.js';
+import { palbi, meldNa, clichy } from '../../lib/hepgi-v190.js';
+import { clifcAd, clip } from '../../lib/hepatology-gibleed-v201.js';
 import { fips } from '../../lib/hepatology-prognosis-v220.js';
 import { inputFault } from '../../lib/num.js';
 import { abi } from '../../lib/vascular-v105.js';
@@ -246,12 +246,12 @@ test('lods says "out of range", not "still missing"', () => {
 
   const bad = lods({ ...ok, creatinine: 250 });
   assert.equal(bad.valid, false);
-  assert.match(bad.message, /creatinine 250 is outside 0 to 40/);
+  assert.match(bad.message, /Creatinine 250 is outside 0 to 40/);
   assert.match(bad.message, /not a missing measurement/);
   assert.doesNotMatch(bad.message, /^Enter /);
 
   // More than one is named, so a second retype is not needed to find it.
-  assert.match(lods({ ...ok, creatinine: 250, wbc: 9999 }).message, /creatinine 250 .*; WBC 9999 /);
+  assert.match(lods({ ...ok, creatinine: 250, wbc: 9999 }).message, /Creatinine 250 .*; WBC 9999 /);
 
   // And a genuinely absent value still gets the other sentence.
   assert.match(lods({ ...ok, creatinine: '' }).message, /^Enter GCS, heart rate/);
@@ -317,4 +317,62 @@ test('the "which fault" sentence is written once', () => {
   // Nothing wrong, nothing said; and rows are read in the caller's order.
   assert.equal(inputFault([['the sodium', 135, null, 200, 'mmol/L']]), null);
   assert.match(inputFault([['first', '', null, 1, ''], ['second', 999, null, 1, '']]), /^Enter first\./);
+});
+
+// spec-v1203: the first rows probe-unguarded-sibling printed after spec-v1200
+// fixed `lods`. Same file, same helper, same defect, nine functions apart.
+test('oasis, delta-gap and apps-ards say "out of range", as lods now does', () => {
+  const oa = {
+    preIcuHours: 12, age: 60, gcs: 14, hr: 100, map: 70, rr: 20, temp: 37,
+    urine: 1500, mechVent: false, elective: false,
+  };
+  assert.equal(oasis(oa).valid, true);
+  const fastHeart = oasis({ ...oa, hr: 3000 });
+  assert.equal(fastHeart.valid, false);
+  assert.match(fastHeart.message, /heart rate 3000 is outside 0 to 350/);
+  assert.match(fastHeart.message, /not a missing measurement/);
+  // A genuinely absent one still gets the ten-variable sentence.
+  assert.match(oasis({ ...oa, hr: '' }).message, /^Enter all ten OASIS variables/);
+
+  const ap = { age: 60, pf: 150, plateau: 30 };
+  assert.equal(appsArds(ap).valid, true);
+  assert.match(appsArds({ ...ap, plateau: 800 }).message, /plateau pressure 800 is outside 0 to 80/);
+  assert.match(appsArds({ ...ap, plateau: '' }).message, /^Enter age/);
+});
+
+test('delta-gap no longer discards an albumin in the wrong unit', () => {
+  // The albumin is OPTIONAL here -- absent, the uncorrected anion gap is used.
+  // `inRange(70, 0.5, 7)` returned null, which is the same thing absence returns,
+  // so an albumin entered in g/L was silently thrown away and the uncorrected gap
+  // reported. The input changed nothing and the tile said nothing.
+  const dg = { na: 140, cl: 100, hco3: 14 };
+  const plain = deltaGap(dg);
+  assert.equal(plain.valid, true);
+
+  // 4.0 g/dL is the reference, so a correct albumin leaves the gap where it was.
+  assert.equal(deltaGap({ ...dg, albumin: 4.0 }).valid, true);
+
+  // The same figure in g/L is now refused rather than dropped.
+  const wrongUnit = deltaGap({ ...dg, albumin: 70 });
+  assert.equal(wrongUnit.valid, false);
+  assert.match(wrongUnit.message, /albumin 70 is outside 0\.5 to 7/i);
+
+  assert.match(deltaGap({ cl: 100, hco3: 14 }).message, /^Enter sodium, chloride/);
+});
+
+// spec-v1203: two singletons in files that already imported the helper.
+test('clip and clichy name the lab, not the whole form', () => {
+  const c = { childPugh: 'A', morphology: 'uni', afp: 100 };
+  assert.equal(clip(c).valid, true);
+  assert.match(clip({ ...c, afp: 9000000 }).message, /AFP must be between 0 and 5000000 ng\/mL/);
+  assert.match(clip({ ...c, afp: '' }).message, /^Enter the AFP in ng\/mL\./);
+  // A non-numeric field still gets the sentence that names the pickers.
+  assert.match(clip({ morphology: 'uni', afp: 100 }).message, /^Select Child-Pugh stage/);
+
+  const cl = { age: 40, factorV: 25, encephalopathy: true };
+  assert.equal(clichy(cl).valid, true);
+  assert.match(clichy({ ...cl, factorV: 900 }).message, /factor V must be between 0 and 200 percent of normal/);
+  assert.match(clichy({ ...cl, factorV: '' }).message, /^Enter the factor V/);
+  // It had no message at all before, so mcp/tools.js said "Enter the required values."
+  assert.ok(clichy({ ...cl, factorV: '' }).message);
 });

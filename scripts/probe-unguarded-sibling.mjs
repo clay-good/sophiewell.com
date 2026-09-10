@@ -46,7 +46,25 @@ const GUARDS = ['boundsAdvisory', 'inputFault', 'outsideEnvelope', 'outOfRange',
 
 // A function that takes no measurement cannot be missing a measurement guard.
 // This is deliberately generous: any read of a numeric-looking input counts.
-const READS_A_NUMBER = /\b(?:pos|nonneg|num|fin|inRange|optNum|positive|toNum|numOr)\s*\(/;
+// spec-v1203: `num(` is NOT on this list. lib/num.js's `num(name, v, {min,max})`
+// guards an OUTPUT -- it is what keeps a NaN off the screen -- so a function that
+// calls it may read no input at all. `nacseldAclf` counts four booleans and
+// passes the total through it, and was reported for having no input guard.
+// Every other name here is an input parser.
+const READS_A_NUMBER = /\b(?:pos|nonneg|fin|inRange|optNum|positive|toNum|numOr)\s*\(/;
+
+// spec-v1203: and it must be a CALL, not the same letters inside a sentence.
+// The first version tested the raw source, so `sirs` -- whose inputs are four
+// booleans -- was reported for the phrase "SIRS-positive (3 of 4 criteria)" in
+// its own band. Comments and string literals are prose; only code is a call.
+function codeOnly(src) {
+  return src
+    .replace(/\/\*[\s\S]*?\*\//g, ' ')          // block comments
+    .replace(/^[ \t]*\/\/.*$/gm, ' ')             // line comments
+    .replace(/`(?:\\[\s\S]|[^`\\])*`/g, '` `')    // template literals
+    .replace(/'(?:\\.|[^'\\])*'/g, "' '")         // single-quoted
+    .replace(/"(?:\\.|[^"\\])*"/g, '" "');        // double-quoted
+}
 
 const rows = [];
 let modulesRead = 0;
@@ -79,7 +97,7 @@ for (const file of readdirSync(`${ROOT}lib`).filter((f) => f.endsWith('.js')).so
 
   const unguarded = bodies.filter((b) => !guarded.includes(b));
   const candidates = unguarded.filter((b) => {
-    if (!READS_A_NUMBER.test(b.body)) { skippedNoNumber += 1; return false; }
+    if (!READS_A_NUMBER.test(codeOnly(b.body))) { skippedNoNumber += 1; return false; }
     return true;
   });
   if (!candidates.length) continue;

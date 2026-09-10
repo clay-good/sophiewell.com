@@ -737,6 +737,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   be checked. A gap of exactly nothing is still a real reading. See
   docs/spec-v1202.md.
 
+- **An albumin entered in the wrong unit was thrown away without a word.** The
+  delta-gap acid-base tool corrects the anion gap for albumin when one is given.
+  An albumin of 70 -- the g/L figure for 7.0 g/dL, and the commonest unit mistake
+  there is with albumin -- fell outside the accepted range, which the tool could
+  not tell apart from no albumin at all, so it quietly reported the uncorrected
+  gap. Three ICU severity scores in the same file had the matching problem of
+  reporting an entered value as one still missing. All four now name the value and
+  its range. See docs/spec-v1203.md.
+
 ### Changed
 
 - **The check that compares a tool's accepted values with the menu on the page could
