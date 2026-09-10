@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `676f5382f71a0c79`
-Generated: 2026-09-10T16:55:54.979Z
+Build ID: `d68ddfe08b77c7c5`
+Generated: 2026-09-10T17:14:17.027Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -313,7 +313,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/gadolinium-nsf-v895.js` | 9843 | `1b238cda2427d15feed05c36c97b49cf9e5c8e9458caf6e699c983b9a3d15558` |
 | `lib/gags-v554.js` | 9715 | `198a4b0db19b6ca1368c20697ea8b3c0a2545de5dfa02a1a90aceff7440b3219` |
 | `lib/gapp-v569.js` | 13660 | `2befeec64a61fb7f8d8a38ae8bb35fea7080b9878991477eef4bab5bfe755e64` |
-| `lib/gaps-v185.js` | 24634 | `886bd6482dc4a9627d4f0da038d6b02c47d2e1820d926f341850dd6c44c75c5f` |
+| `lib/gaps-v185.js` | 25328 | `f7a953af698fdc04e1cec48431bea7503c9fc0d4f947dd204b80434a4b4d1396` |
 | `lib/gardner-robertson-v802.js` | 6240 | `fa6f4e0ed73582fe0d82724cee56f2950c107e72e92b13e396f99f03e713e1f6` |
 | `lib/gartland-supracondylar-v377.js` | 4725 | `75c9dd3adaacb34df1e9041fda9aa71520517822e12f3308651aeb99a88ba426` |
 | `lib/gass-macular-hole-v471.js` | 3421 | `dc7d16ffdb39dde5b8e700a6679f2211affc0cf67e58b36be830640b59405b15` |
@@ -728,7 +728,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/rheum-v147.js` | 28396 | `2684e744e39599fe5bdd32b8447a8078db34ffd2c4fdcba14f7b24c240101040` |
 | `lib/rheum-v148.js` | 29530 | `c4cb0e6ee86e544f6bd1404db9b2d8b477e7b1d95beaa779a33a4ee81dba4f8b` |
 | `lib/rheum-v160.js` | 13178 | `6f9c9caad669edb9cdb844015cbb354104dbbf6be91576aa1107e512efee360c` |
-| `lib/rheumcrit-v256.js` | 7930 | `761ffcd908a3560b96656ab09523a41bf5e4f7e643f90da6ef59b5e3b07bc08f` |
+| `lib/rheumcrit-v256.js` | 9507 | `78dbac3fecaa91be49d211465c2538644d9ebc143aba5db88a7c7dbb32c6bee1` |
 | `lib/ridley-jopling-v534.js` | 13454 | `fb4f0363664d9c1bd23f3d5c8ef32b627ed0c4741342457fb3fdbe253a02c3a2` |
 | `lib/risk-scores-v215.js` | 15691 | `4deabf8e55fdd66e0791f9e872512832ccc01df90778f274857f12cae19a04df` |
 | `lib/risk-v192.js` | 15972 | `647aa17f95484491306512d13efa7515ba6aa13b628c170219d19b80158b2179` |

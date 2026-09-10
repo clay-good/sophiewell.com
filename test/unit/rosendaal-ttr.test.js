@@ -39,3 +39,20 @@ test('guards: fewer than two valid rows, bad target, and same-day span fall back
   assert.equal(rosendaalTtr({ series: '2026-01-01 2.5\n2026-01-01 2.6' }).valid, false);
   assert.equal(rosendaalTtr({}).valid, false);
 });
+
+// spec-v1217: an out-of-range target reverted to the DEFAULT in silence, so the
+// time in range was computed against a range nobody asked for.
+test('an impossible target INR is refused, not replaced by the 2.0-3.0 default', () => {
+  const series = '2026-01-01 1.5\n2026-01-11 2.5';
+  const base = rosendaalTtr({ series });
+  assert.equal(base.valid, true, 'the documented default still applies to a blank target');
+  for (const bad of [999999, -1, 0]) {
+    const r = rosendaalTtr({ series, low: bad });
+    assert.equal(r.valid, false, `a target INR low of ${bad} must not silently become 2.0`);
+    assert.match(r.message, /target INR low must be greater than 0 and at most 10/);
+    assert.equal(r.band, r.message);
+  }
+  assert.match(rosendaalTtr({ series, high: 99 }).message, /target INR high/);
+  // A real target still moves the answer, which is the whole point of the field.
+  assert.notEqual(rosendaalTtr({ series, low: 2.5 }).ttr, base.ttr);
+});
