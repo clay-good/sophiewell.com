@@ -9,6 +9,9 @@ import * as A from '../lib/aom-criteria-v857.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const BULGING = [
+  // spec-v1194: the blank comes first. It opened on "None", so a drum nobody had
+  // looked at read as a drum looked at and found flat.
+  { value: '', text: 'Not graded' },
   { value: 'none', text: 'None' },
   { value: 'mild', text: 'Mild' },
   { value: 'moderate-severe', text: 'Moderate to severe' },

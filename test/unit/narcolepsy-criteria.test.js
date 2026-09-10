@@ -88,3 +88,51 @@ test('nar: the documented example round-trips', () => {
   assert.ok(r.band.includes('type 2'));
   assert.ok(r.substitutionNote);
 });
+
+// spec-v1194: the latency test has two halves and each was read as zero when it
+// was blank -- a mean latency nobody had measured could not clear 8 minutes, and
+// an unrecorded sleep-onset REM count was counted as none. So a study half
+// entered read as a study done and found negative.
+//
+// The tile already said this correctly for the hypocretin ("above the line OR
+// UNMEASURED"), which is the half-guarded shape: one gap named, the one beside it
+// read as a finding.
+test('narcolepsy: a half-recorded latency test is not a negative one', () => {
+  const positive = { dailySleepiness: true, meanSleepLatency: 5, msltSoremps: 2, othersExcluded: true };
+  assert.equal(nar(positive).bandLabel, 'Type 2');
+
+  for (const drop of ['meanSleepLatency', 'msltSoremps']) {
+    const partial = { ...positive };
+    delete partial[drop];
+    const r = nar(partial);
+    assert.equal(r.valid, true, drop);
+    assert.equal(r.latencyIncomplete, true, drop);
+    assert.equal(r.bandLabel, 'Not yet assessable', drop);
+    assert.match(r.band, /not yet a negative test/, drop);
+    assert.match(r.missing, /only part recorded/, drop);
+  }
+
+  // A test recorded in full and genuinely negative still reads as negative.
+  const negative = nar({ dailySleepiness: true, meanSleepLatency: 12, msltSoremps: 0, othersExcluded: true });
+  assert.equal(negative.latencyIncomplete, false);
+  assert.equal(negative.bandLabel, 'Criteria not met');
+  assert.match(negative.missing, /do not meet the threshold/);
+});
+
+test('narcolepsy: the missing half is only raised where it decides something', () => {
+  // Rule 13: a hypocretin at or below the line settles type 1 whatever the
+  // latency test shows, so the gap is not raised.
+  const settled = nar({ dailySleepiness: true, hypocretin: 80, msltSoremps: 2 });
+  assert.equal(settled.bandLabel, 'Type 1');
+
+  // An overnight sleep-onset REM period ADDS one; it does not stand in for a
+  // latency-test count nobody recorded, so the study is still incomplete.
+  const fromPsg = nar({ dailySleepiness: true, meanSleepLatency: 5, psgSoremp: true });
+  assert.equal(fromPsg.latencyIncomplete, true);
+  assert.equal(fromPsg.bandLabel, 'Not yet assessable');
+
+  // Recorded in full it reads normally, and the substitution still counts.
+  const whole = nar({ dailySleepiness: true, meanSleepLatency: 5, msltSoremps: 1, psgSoremp: true, othersExcluded: true });
+  assert.equal(whole.latencyIncomplete, false);
+  assert.equal(whole.bandLabel, 'Type 2');
+});

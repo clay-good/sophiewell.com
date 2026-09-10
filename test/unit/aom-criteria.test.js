@@ -21,8 +21,8 @@ test('aom: a red drum is not an ear infection', () => {
   assert.equal(r.diagnosed, false);
   assert.ok(r.notMetReason.includes('a crying child has a red drum'));
   assert.ok(r.erythemaNote.includes('never diagnostic on its own'));
-  // With fluid but no bulging it still is not.
-  const withFluid = aom({ ...CHILD, intenseErythema: true });
+  // With fluid, and the drum graded as not bulging, it still is not.
+  const withFluid = aom({ ...CHILD, bulging: 'none', intenseErythema: true });
   assert.equal(withFluid.diagnosed, false);
   assert.ok(withFluid.notMetReason.includes('None of the three criteria'));
   // Once diagnosed the erythema warning stands down.
@@ -101,4 +101,32 @@ test('aom: the documented example round-trips', () => {
   assert.equal(r.diagnosed, true);
   assert.ok(r.band.includes('criteria are met'));
   assert.equal(r.route, 'observation-option');
+});
+
+// spec-v1194: `bulging` was defaulted to 'none', the zero row of its own picklist,
+// so a drum nobody had looked at read as a drum looked at and found flat -- and
+// the tile answered "Criteria not met" for acute otitis media. Bulging is what
+// two of the three routes are written around.
+test('aom: an ungraded drum is not a flat drum', () => {
+  const graded = aom({ ...CHILD, bulging: 'none' });
+  assert.equal(graded.bandLabel, 'Criteria not met');
+
+  const ungraded = aom({ ...CHILD });
+  assert.equal(ungraded.diagnosed, false);
+  assert.equal(ungraded.bandLabel, 'Not yet assessable');
+  assert.match(ungraded.band, /the drum was not graded/);
+  assert.match(ungraded.notMetReason, /not yet a "criteria not met"/);
+});
+
+test('aom: the drum grade is only asked for where it decides something', () => {
+  // Rule 13: drainage from the ear is diagnostic on its own.
+  const otorrhea = aom({ ...CHILD, otorrhea: true });
+  assert.equal(otorrhea.diagnosed, true);
+  assert.equal(otorrhea.bandLabel.startsWith('Criteria met'), true);
+
+  // And without objective fluid the guideline forbids the diagnosis whatever the
+  // drum looks like, so that answer stands on its own too.
+  const noFluid = aom({ ageMonths: 14, effusion: false });
+  assert.equal(noFluid.bandLabel, 'Criteria not met');
+  assert.match(noFluid.notMetReason, /no objective evidence of fluid/);
 });

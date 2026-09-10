@@ -50,3 +50,53 @@ test('an entirely empty form falls back, and an off-scale value is rejected', ()
   assert.equal(atrialEnlargement({ pDurationII: 900 }).field, 'pDurationII');
   assert.equal(atrialEnlargement({ pAmplitudeII: -1 }).field, 'pAmplitudeII');
 });
+
+// spec-v1194: this file already had the instinct -- "the Morris index needs BOTH
+// halves ... one alone cannot meet or exclude it" -- and applied it to one
+// criterion out of five. Every other unmeasured P wave was read as a P wave
+// measured and found normal, so a form with one amplitude in it answered "no
+// atrial enlargement criterion met" while the left-sided measurements had never
+// been taken.
+test('atrial-enlargement: an unmeasured P wave is not a normal P wave', () => {
+  const complete = {
+    pDurationII: 90, notchInterpeak: 20, ptfDuration: 20, ptfDepth: 0.5, pAmplitudeII: 1.5, pAmplitudeV1: 1.0,
+  };
+  const all = atrialEnlargement(complete);
+  assert.equal(all.bandLabel, 'Atrial enlargement: none met');
+  assert.equal(all.leftOpen, false);
+  assert.equal(all.rightOpen, false);
+
+  // One amplitude alone said the same thing before this.
+  const one = atrialEnlargement({ pAmplitudeII: 1.5 });
+  assert.equal(one.valid, true);
+  assert.equal(one.bandLabel, 'Atrial enlargement: not assessed');
+  assert.equal(one.leftOpen, true);
+  assert.equal(one.rightOpen, true);
+  assert.match(one.band, /left not assessed/);
+  assert.match(one.band, /the P duration in lead II/);
+  assert.match(one.band, /the P amplitude in V1 was not entered/);
+});
+
+test('atrial-enlargement: a criterion that is MET holds whatever the rest are', () => {
+  // Rule 13: "any one of" is monotone, so a met side is answered, not withheld.
+  const left = atrialEnlargement({ pDurationII: 130 });
+  assert.equal(left.leftMet, true);
+  assert.equal(left.leftOpen, false);
+  assert.equal(left.bandLabel, 'Atrial enlargement: left');
+  // The other side is still reported as unassessed rather than as normal.
+  assert.equal(left.rightOpen, true);
+  assert.match(left.band, /right not assessed/);
+
+  const both = atrialEnlargement({ pDurationII: 130, pAmplitudeII: 3 });
+  assert.equal(both.bandLabel, 'Atrial enlargement: left and right');
+  assert.match(both.band, /BOTH left and right/);
+});
+
+test('atrial-enlargement: the terminal force still needs both halves', () => {
+  // The one criterion that was already guarded, kept.
+  const half = atrialEnlargement({ ptfDuration: 60, pAmplitudeII: 1.5, pAmplitudeV1: 1.0 });
+  assert.equal(half.leftMet, false);
+  assert.equal(half.morrisIndex, null);
+  assert.equal(half.leftOpen, true);
+  assert.match(half.band, /the V1 terminal force \(both halves of it\)/);
+});

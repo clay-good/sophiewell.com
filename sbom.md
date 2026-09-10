@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `0c450cce171ef906`
-Generated: 2026-09-10T01:45:45.991Z
+Build ID: `de0ec0c08d70fcb4`
+Generated: 2026-09-10T02:29:52.365Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -81,7 +81,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/angle-malocclusion-v720.js` | 3749 | `550bb570288e3b855208fcb6d653617ff5a407a361fd819c19a64567397420f2` |
 | `lib/anthro-v238.js` | 7554 | `ab4ac8a758bfa2c72f22a29bf3df91b2e5d49991a9d8e2fc4f5343a6428c3512` |
 | `lib/anthro-v272.js` | 2988 | `0c8ae06f40b6747996c3069ca3eed48dd37fcb32d0b211bee0ada6ec113c1f53` |
-| `lib/aom-criteria-v857.js` | 10341 | `d7cba14bf1182a24929931232357fed8c9c05930140d051dbd6fb2634f4d2983` |
+| `lib/aom-criteria-v857.js` | 11618 | `492235ecbe3b53fe09d4b4ffa7ab6eaaa50f7e66ebc0501dc860fcd1b5c2ba4e` |
 | `lib/aortic-regurgitation-stage-v846.js` | 13581 | `939282153bc25fd3c5d4dac04f8601839f52a82ec5e7f3d7301e5c34ef534478` |
 | `lib/aortic-stenosis-stage-v844.js` | 15072 | `8ce6392d93e26c53e7670581533d4b6bebecf51581dbfbbf0f15fdd3d35fbcdb` |
 | `lib/arc-hbr-v594.js` | 16008 | `88c72c385e4018fc0d2cddba66606c2f136b52091d4f7e2b4f9dfc656fcdb7f9` |
@@ -91,7 +91,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/asrs-v513.js` | 5231 | `e0cf535b091fbd4ba2715fad03f9224bf6e34f3f4eca6c8ccebb34a9bc5ef5db` |
 | `lib/asthma-control-test-v516.js` | 5724 | `15970db321969412a38f6cf6d0b3c69d6dfd3621b679993e00daf253add26a96` |
 | `lib/atlanta-pancreatitis-v445.js` | 3620 | `1eb1382cc11cc7b3a42e54ab14143721e30ac6b41de03bec5362d29e17d85bf3` |
-| `lib/atrial-enlargement-v787.js` | 5972 | `f0b4ade6cf4739e21569ada75e961b0b641e270e84e8d0b5a2f24e22ddb0d63c` |
+| `lib/atrial-enlargement-v787.js` | 7825 | `d0d57f443b54d1bff3c79313fe5319c1b9f6d3e7b36070e034275458fb7b4dfa` |
 | `lib/ausdrisk-v711.js` | 5293 | `6c2cfc5bf32ec40fe19a06b5c46b007313db94bc43afc2d67da5e0ebf024be66` |
 | `lib/auto-peep-v928.js` | 7813 | `e4ca4bf52c90213c8c2ced767c3fcf56be90467bcd3ff396fa6e4f07ed867a34` |
 | `lib/autoimmune-encephalitis-v824.js` | 8413 | `aea180929a1c3e96008ff75d6138ee7ee6cb7230d2e327bc6aadd89e2844eb79` |
@@ -541,7 +541,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/name-match.js` | 7925 | `52385d64e4bb505f087d614f4e10ddf4dcf51169bb19bebcf103e03dcf8660af` |
 | `lib/nancy-index-v578.js` | 13756 | `9ad406fe2f9ab2f84d2d321db7de21bfa2f53ce5e00ee92b4f700952ab243c24` |
 | `lib/narakas-obpp-v498.js` | 3267 | `255a2ed868495c515b280b54793fe7787a70d2134c1abe289f32245209584b6b` |
-| `lib/narcolepsy-criteria-v855.js` | 10694 | `031f755ed0184a2efbf07fc5a6ad68c7f58ae97b6986858f05b8c189fdaf371f` |
+| `lib/narcolepsy-criteria-v855.js` | 12626 | `ab7efe42e6574e5d060509b9bbc9d5397d0d53112a24b616ac9d8c29c0b12cbc` |
 | `lib/nash-moe-rotation-v476.js` | 3250 | `f93c53ace03d4639ba7a6995c1860bddb90842f4075a94632a201017fde9c1ad` |
 | `lib/neck-zone-v366.js` | 4104 | `f8a37aad930c4430dc8f51a359936800f596919443223714e8fb03b7bbab1f1f` |
 | `lib/nems-v544.js` | 11573 | `3b1da51d50862b8f61dc6429d1784a082c7ca9179a55dd122dfe4d6371fc8edf` |
@@ -2415,7 +2415,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v854.js` | 3883 | `7b01c6016808afc4c7ff31a41850087017172ec3d625075e15a361449e11e1f2` |
 | `views/group-v855.js` | 4465 | `02d53cf82f79ea61f2167c6c42340dfdbd801e40802a691c6c8e76b8120beebd` |
 | `views/group-v856.js` | 4098 | `008afdd203a615378f39edd443eb998d8c85fe68d238d0686b322516beb9af73` |
-| `views/group-v857.js` | 4971 | `7909000eb80043c70fea772b10a1cf5b65e32e31fc07ab59579ba42c3cd2dd3d` |
+| `views/group-v857.js` | 5146 | `450a2afac18819e62e4a821898eb4c9b5894323b7b474678bd699ef414747198` |
 | `views/group-v858.js` | 3726 | `4abad5eec90225a9d76da2f03d70088056fda7ae643553991d94982206bced9a` |
 | `views/group-v859.js` | 4018 | `757ecce655f3dfb83e767ee54f028f20364f862d909f8de69670bc500fb523be` |
 | `views/group-v860.js` | 3121 | `8108ecf289a9481de638b3b9e92a4fa24bf692b05203058aaf500ab92705cea1` |

@@ -651,6 +651,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   surveillance tool does not ask for the histology when a piecemeal resection has
   already set a six-month interval. See docs/spec-v1193.md.
 
+- **Three more tools called something negative that nobody had looked at.** The
+  acute otitis media criteria read an ungraded eardrum as a flat one and answered
+  "criteria not met"; the narcolepsy criteria read a half-recorded sleep study as
+  a negative one; and the ECG atrial enlargement criteria read an unmeasured P
+  wave as a normal P wave, so a form with a single measurement in it reported "no
+  atrial enlargement criterion met". Two of the three already stated the rule
+  correctly for one field and not the one beside it. All three now say what was
+  not recorded, and all three still answer where the finding is decisive anyway --
+  drainage from the ear still diagnoses an ear infection whatever the drum looks
+  like, and a met enlargement criterion still reads as met. See
+  docs/spec-v1194.md.
+
 ### Changed
 
 - **The check that compares a tool's accepted values with the menu on the page could
