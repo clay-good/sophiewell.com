@@ -12,6 +12,17 @@
 import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/cvrisk-v103.js';
 import { resultRow } from '../lib/result-copy.js';
+import { BOUNDS } from '../lib/bounds.js';
+
+// spec-v1227: one field, one range. spec-v1224 gave these five engines the
+// `BOUNDS.sbp` envelope in the library, and the page then said two things about
+// the same field in two live regions stacked above the answer -- the browser's
+// own warning reading this `max` attribute ("outside the 60 to 250 this field
+// accepts") and the refusal reading lib/bounds.js ("the plausible range for
+// systolic blood pressure (20 to 300 mmHg)"). spec-v1198 settled which one wins:
+// a view's ceilings ARE lib/bounds.js's. `test/integration/two-ranges-one-field.spec.js`
+// is the probe that found it.
+const SBP_FIELD = { min: BOUNDS.sbp.min, max: BOUNDS.sbp.max };
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -80,7 +91,7 @@ export const renderers = {
     root.appendChild(field('Age (years, 40-69)', 's2-age', { min: 40, max: 69, placeholder: '50' }));
     root.appendChild(selectField('Sex', 's2-sex', SEX_OPTS));
     root.appendChild(checkField('Current smoker', 's2-smoke'));
-    root.appendChild(field('Systolic BP (mmHg)', 's2-sbp', { min: 60, max: 250, placeholder: '140' }));
+    root.appendChild(field('Systolic BP (mmHg)', 's2-sbp', { ...SBP_FIELD, placeholder: '140' }));
     root.appendChild(field('Total cholesterol (mmol/L)', 's2-tc', { min: 1, max: 20, step: '0.1', placeholder: '5.5' }));
     root.appendChild(field('HDL cholesterol (mmol/L)', 's2-hdl', { min: 0.2, max: 5, step: '0.1', placeholder: '1.3' }));
     root.appendChild(selectField('European risk region', 's2-region', REGION_OPTS));
@@ -108,7 +119,7 @@ export const renderers = {
     root.appendChild(selectField('Sex', 'op-sex', SEX_OPTS));
     root.appendChild(checkField('Current smoker', 'op-smoke'));
     root.appendChild(checkField('Diabetes', 'op-dm'));
-    root.appendChild(field('Systolic BP (mmHg)', 'op-sbp', { min: 60, max: 250, placeholder: '150' }));
+    root.appendChild(field('Systolic BP (mmHg)', 'op-sbp', { ...SBP_FIELD, placeholder: '150' }));
     root.appendChild(field('Total cholesterol (mmol/L)', 'op-tc', { min: 1, max: 20, step: '0.1', placeholder: '5.5' }));
     root.appendChild(field('HDL cholesterol (mmol/L)', 'op-hdl', { min: 0.2, max: 5, step: '0.1', placeholder: '1.4' }));
     root.appendChild(selectField('European risk region', 'op-region', REGION_OPTS));
@@ -142,7 +153,7 @@ export const renderers = {
     ]));
     root.appendChild(field('Total cholesterol (mg/dL)', 'mesa-tc', { min: 50, max: 600, placeholder: '200' }));
     root.appendChild(field('HDL cholesterol (mg/dL)', 'mesa-hdl', { min: 5, max: 200, placeholder: '50' }));
-    root.appendChild(field('Systolic BP (mmHg)', 'mesa-sbp', { min: 60, max: 300, placeholder: '125' }));
+    root.appendChild(field('Systolic BP (mmHg)', 'mesa-sbp', { ...SBP_FIELD, placeholder: '125' }));
     root.appendChild(field('Agatston CAC score (optional)', 'mesa-cac', { min: 0, max: 10000, placeholder: '100' }));
     root.appendChild(checkField('Diabetes', 'mesa-dm'));
     root.appendChild(checkField('Current smoker', 'mesa-smoke'));
@@ -175,7 +186,7 @@ export const renderers = {
     root.appendChild(selectField('Sex', 'fr-sex', SEX_OPTS));
     root.appendChild(field('Total cholesterol (mg/dL)', 'fr-tc', { min: 50, max: 600, placeholder: '213' }));
     root.appendChild(field('HDL cholesterol (mg/dL)', 'fr-hdl', { min: 5, max: 200, placeholder: '50' }));
-    root.appendChild(field('Systolic BP (mmHg)', 'fr-sbp', { min: 60, max: 300, placeholder: '120' }));
+    root.appendChild(field('Systolic BP (mmHg)', 'fr-sbp', { ...SBP_FIELD, placeholder: '120' }));
     root.appendChild(checkField('On antihypertensive medication', 'fr-bp'));
     root.appendChild(checkField('Current smoker', 'fr-smoke'));
     root.appendChild(checkField('Diabetes', 'fr-dm'));
@@ -201,7 +212,7 @@ export const renderers = {
   'reynolds-risk'(root) {
     root.appendChild(field('Age (years)', 'rr-age', { min: 30, max: 100, placeholder: '55' }));
     root.appendChild(selectField('Sex', 'rr-sex', SEX_OPTS));
-    root.appendChild(field('Systolic BP (mmHg)', 'rr-sbp', { min: 60, max: 300, placeholder: '125' }));
+    root.appendChild(field('Systolic BP (mmHg)', 'rr-sbp', { ...SBP_FIELD, placeholder: '125' }));
     root.appendChild(field('Total cholesterol (mg/dL)', 'rr-tc', { min: 50, max: 600, placeholder: '200' }));
     root.appendChild(field('HDL cholesterol (mg/dL)', 'rr-hdl', { min: 5, max: 200, placeholder: '50' }));
     root.appendChild(field('hsCRP (mg/L)', 'rr-crp', { min: 0.01, max: 100, step: '0.1', placeholder: '2.0' }));

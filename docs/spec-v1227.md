@@ -67,6 +67,31 @@ tests, `example-correctness` over every worked example on every tile, and
 `required-field-agreement`, which clears each declared-required field in the
 browser and asserts the tile refuses.
 
+## One field, two ranges
+
+`test/integration/two-ranges-one-field.spec.js` is a probe, not a gate — it
+reports and never asserts — and it caught something this program's own previous
+wave had introduced. [spec-v1224](spec-v1224.md) gave the five SCORE2-family
+engines the `BOUNDS.sbp` envelope in the library, and the page then said two
+things about the same field, in two live regions stacked above the answer:
+
+```
+Check the highlighted value: Systolic BP (mmHg) is 3000, outside the
+  60 to 250 this field accepts.
+Input above the plausible range for systolic blood pressure (20 to 300 mmHg);
+  verify the units.
+```
+
+Both sentences are correct about their own source and they disagree about the
+field. [spec-v1198](spec-v1198.md) settled which one wins — *a view's ceilings
+ARE `lib/bounds.js`'s* — so the five fields in `views/group-v28.js` now take
+their `min`/`max` from `BOUNDS.sbp`, through one named constant rather than five
+literals. The probe goes 5 rows to 0.
+
+Worth saying plainly: **a wave in this program created the row the same
+program's probe then found.** Adding a refusal adds a sentence, and a page that
+was silent about a field's range now publishes one.
+
 ## Ledger
 
 `probe-envelope-unbounded`, second section: **89 rows → 72 (spec-v1226) → 55.**

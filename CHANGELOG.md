@@ -20,6 +20,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **One field, two ranges, both on screen.** Giving the five SCORE2-family risk
+  tools a plausibility check (see above) left each of their systolic-BP fields
+  saying two different things at once: the browser's own warning read the field's
+  `max` attribute (*"outside the 60 to 250 this field accepts"*) while the refusal
+  below it read the shared envelope (*"the plausible range for systolic blood
+  pressure (20 to 300 mmHg)"*). The fields now take their range from that same
+  envelope, so the page states one range per field. See docs/spec-v1227.md.
+
 - **Thirty-three more tools told you to enter a value you had just entered.** The
   same helper as the entry above, in the ten remaining library files that share it:
   CRUSADE with a baseline hematocrit of 700% answered *"Enter the baseline
