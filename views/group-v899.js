@@ -33,12 +33,16 @@ export const renderers = {
     // Written out rather than mapped from the lib constants: scripts/lib/option-labels.mjs reads
     // option text out of this file statically, and a mapped list is not readable.
     selectField(root, 'What the patient takes', 'pb-agent', [
+      // spec-v1193: the blank comes first; it opened on a level nobody had chosen.
+      { value: '', text: 'Not recorded' },
       { value: 'doac', text: 'A direct oral anticoagulant' },
       { value: 'warfarin', text: 'Warfarin' },
     ]);
 
     root.appendChild(el('h2', { text: 'The procedure' }));
     selectField(root, 'Bleeding risk of the procedure', 'pb-procedurerisk', [
+      // spec-v1193: the blank comes first; it opened on a level nobody had chosen.
+      { value: '', text: 'Not recorded' },
       { value: 'minimal', text: 'Minimal bleeding risk: many dental, dermatologic, ophthalmic and endoscopic procedures' },
       { value: 'low', text: 'Low bleeding risk' },
       { value: 'high', text: 'High bleeding risk' },
@@ -46,6 +50,7 @@ export const renderers = {
 
     root.appendChild(el('h2', { text: 'The patient' }));
     selectField(root, 'Thrombotic risk', 'pb-thromboticrisk', [
+      { value: '', text: 'Not recorded' },
       { value: 'low', text: 'Low or moderate thrombotic risk' },
       { value: 'high', text: 'High thrombotic risk: a mechanical mitral valve, a stroke or venous thromboembolism within 3 months, or an equivalent' },
     ]);
@@ -57,6 +62,8 @@ export const renderers = {
         procedureRisk: val('pb-procedurerisk'),
         thromboticRisk: val('pb-thromboticrisk'),
       });
+      // spec-v1193: it can refuse now, so the page has to read one.
+      if (!r.valid) { note(o, r.message); note(o, r.note); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }]);
       if (r.minimalNote) note(o, r.minimalNote);
       if (r.inrNote) note(o, r.inrNote);

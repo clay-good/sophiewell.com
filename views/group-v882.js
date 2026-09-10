@@ -50,6 +50,8 @@ export const renderers = {
     // Written out rather than mapped from P.HISTOLOGY: scripts/lib/option-labels.mjs reads option
     // text out of this file statically, and a mapped list is not readable.
     selectField(root, 'Worst histology found', 'ps-histology', [
+      // spec-v1193: the blank comes first; it opened on a level nobody had chosen.
+      { value: '', text: 'Not recorded' },
       { value: 'none', text: 'No polyps found' },
       { value: 'hyperplastic-small', text: 'Hyperplastic polyps under 10 mm, rectum or sigmoid only' },
       { value: 'tubular-adenoma', text: 'Tubular adenoma' },
@@ -73,7 +75,7 @@ export const renderers = {
         highGradeDysplasia: checked('ps-highgradedysplasia'),
         piecemealTwentyMm: checked('ps-piecemealtwentymm'),
       });
-      if (!r.valid) { note(o, r.message); return; }
+      if (!r.valid) { note(o, r.message); note(o, r.note); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }]);
       note(o, r.recordedNote);
       if (r.piecemealNote) note(o, r.piecemealNote);

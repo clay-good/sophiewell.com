@@ -639,6 +639,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   change the answer -- where it cannot, it still reports plainly that no
   definition is met. See docs/spec-v1192.md.
 
+- **A missing biopsy result stretched a colonoscopy interval from three years to
+  ten.** The post-polypectomy surveillance tool read a blank histology as "no
+  polyps found" and answered "next colonoscopy in 10 years, on a normal
+  examination" -- naming a finding nobody had recorded. Two more did the same: the
+  gadolinium contrast tool read a blank kidney function as normal and cleared
+  every agent group, and the anticoagulant bridging tool read a blank drug as a
+  direct oral anticoagulant and gave that drug's advice. All three now ask, and
+  each asks only where the answer actually turns on it -- the bridging tool does
+  not ask for the drug when the procedure has minimal bleeding risk, and the
+  surveillance tool does not ask for the histology when a piecemeal resection has
+  already set a six-month interval. See docs/spec-v1193.md.
+
 ### Changed
 
 - **The check that compares a tool's accepted values with the menu on the page could

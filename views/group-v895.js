@@ -41,6 +41,8 @@ export const renderers = {
 
     root.appendChild(el('h2', { text: 'The kidneys' }));
     selectField(root, 'Kidney function', 'gad-renalstate', [
+      // spec-v1193: the blank comes first; it opened on a level nobody had chosen.
+      { value: '', text: 'Not recorded' },
       { value: 'normal', text: 'Stable kidney function, eGFR 30 or above' },
       { value: 'ckd-low', text: 'Stable chronic kidney disease, eGFR below 30' },
       { value: 'dialysis', text: 'On dialysis' },
@@ -53,6 +55,8 @@ export const renderers = {
         agentGroup: val('gad-agentgroup'),
         renalState: val('gad-renalstate'),
       });
+      // spec-v1193: it can refuse now, so the page has to read one.
+      if (!r.valid) { note(o, r.message); note(o, r.note); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }]);
       if (r.akiNote) note(o, r.akiNote);
       if (r.screeningNote) note(o, r.screeningNote);

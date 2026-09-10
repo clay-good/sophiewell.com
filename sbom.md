@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `98f9db3ae33742be`
-Generated: 2026-09-10T01:12:19.547Z
+Build ID: `0c450cce171ef906`
+Generated: 2026-09-10T01:45:45.991Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -310,7 +310,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/function-v154.js` | 15012 | `ce6634d2acc5d69d16bf00e0c4d0fb85294e49102bfce1883190ff7526458870` |
 | `lib/furst-ratio-v794.js` | 4470 | `f52e9d55d1c894e6fc0bc015073e6dbc0a10ea702de9b65c0f4294d908764118` |
 | `lib/g8-geriatric-v710.js` | 4205 | `600b9a252fbfaf82138bf6d9513ac68c9648f002f098ea623a309e6628e4d4d8` |
-| `lib/gadolinium-nsf-v895.js` | 8306 | `dd352002fd08b68c80c171b1efb9e5b221ee9cc78e6f64079077ad935b2fcb40` |
+| `lib/gadolinium-nsf-v895.js` | 9843 | `1b238cda2427d15feed05c36c97b49cf9e5c8e9458caf6e699c983b9a3d15558` |
 | `lib/gags-v554.js` | 9715 | `198a4b0db19b6ca1368c20697ea8b3c0a2545de5dfa02a1a90aceff7440b3219` |
 | `lib/gapp-v569.js` | 13660 | `2befeec64a61fb7f8d8a38ae8bb35fea7080b9878991477eef4bab5bfe755e64` |
 | `lib/gaps-v185.js` | 24634 | `886bd6482dc4a9627d4f0da038d6b02c47d2e1820d926f341850dd6c44c75c5f` |
@@ -646,7 +646,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/pef-zones-v891.js` | 6826 | `3d6f9c84c5641a3d89998e5e0a3305468f0607125d9a2ca5fdc0350b84af1ffc` |
 | `lib/peradeniya-op-v575.js` | 13708 | `e805988341b151b231b4db54a8e82e3b95f19f980bf2d3b394c97a4c05254aa8` |
 | `lib/pericarditis-v789.js` | 4683 | `99eabe19272eb19555e366e39fbecbb5cbd4e7cbb5a6ad4718e2382830139f80` |
-| `lib/periop-bridging-v899.js` | 7725 | `5b27b5a1bbd6d729d9d3250625cfb11dc7bc466e8d1258e011d413a5145178f9` |
+| `lib/periop-bridging-v899.js` | 10193 | `c6260efebac1e289714316b6120d7d08b7433f494fc13f107bc85fb7e9f595eb` |
 | `lib/periop-frailty-v203.js` | 10379 | `b93ea1ae7b71a4a89f3c711856a8e0635801a298730c44ce0c54b8b42e6a1079` |
 | `lib/periop-v97.js` | 22791 | `bf6f31ba7a6c64724819387bd8421533216898ec43d7dc92f34552f6d56236c4` |
 | `lib/peritoneal-cancer-index-v654.js` | 4959 | `dfb0ac27e4ead48e52fe8dcdc2504191d6af91648b178e0bd4e5158a82787152` |
@@ -665,7 +665,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/pneumonia-risk-v260.js` | 7249 | `029d9c0701f969f39f61031ea2648625c6b5b43b21d5d8c3c8b19f030391add4` |
 | `lib/poi-diagnosis-v834.js` | 8980 | `51f5aef7d5ff7d875fe26634d55222aa36e7978e4500c7dfc84983a91c33dc88` |
 | `lib/pollock-flickinger-v601.js` | 14300 | `19675dc09546ea686829394e1d801040ffdf77cd300f834a8771988c0b1db9c4` |
-| `lib/polyp-surveillance-v882.js` | 9570 | `08c9ab4ea75798f783c646815682ab5126490bdb0f9a9b95629bf75e11a2785d` |
+| `lib/polyp-surveillance-v882.js` | 11284 | `1e6a593b36dd4e6c200bbc1aaf5c649d95cb08c6dfb7650c6d2a05eb7009b8fa` |
 | `lib/posas-observer-scar-v691.js` | 3697 | `dcb2792ef4faae3bbe45ac5e09c3322b3d79bd3f5708adb4443ad2e51df78c23` |
 | `lib/posas-patient-scar-v783.js` | 4310 | `58b2fefabafaf9466dd29beb9821909c3fd3feaa9e2f76cfcca6333f18035481` |
 | `lib/poseidon-v549.js` | 14464 | `9e03014da62b136861306d39992b287b5d9ac49230c33d0e728965dc548d7441` |
@@ -2439,7 +2439,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v879.js` | 4053 | `7ffbfdba687a4a890275972822ee93908eae20510121b81050b5f7efc06b229b` |
 | `views/group-v880.js` | 4751 | `af86c73fe7389df83c0d71e62d200220269ee7e9844dc5b83c6b9309faa64bcd` |
 | `views/group-v881.js` | 3096 | `36c96e6256beef62d26c6044cf030b7478831a206dcae41356a53a6c6b2717b6` |
-| `views/group-v882.js` | 4595 | `0c1c9052bffb46f89c97e5339e1d461475360419e56b3ac1a970dd60b8641952` |
+| `views/group-v882.js` | 4739 | `7e7788f74aabcadbdc933bf3c1baec02c1eb10631b74a56784fda7bc2ba97abf` |
 | `views/group-v883.js` | 2679 | `209b74e6b80d4141890931dac23f5842c21bac31cd3774c22eadb9d1475406ac` |
 | `views/group-v884.js` | 2891 | `89be7241cef8c3ccc57ecc0d67797cf05b2f72df892da4e5e48f3fdc94c629b1` |
 | `views/group-v885.js` | 4640 | `5ba77d15017f72f205b057bdba6e57244f844159b558496570517dc8a67a47c5` |
@@ -2451,11 +2451,11 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v891.js` | 3110 | `a1769e574b8de95442140d36715cb5f59e91905d6da453d4f7b94076b272da44` |
 | `views/group-v892.js` | 3263 | `00f03ec5356d8742a2c3b6f9d5c088ea7776f192b8c2a13488db3435ad0ba714` |
 | `views/group-v894.js` | 2769 | `425e26b2ccdb7f58b723436c569222f5af20c38e878c11a07ef3ac027efb59f6` |
-| `views/group-v895.js` | 3410 | `4ef69be3a54003099becb708fafea40b0d4c2af2bf0e9bb8eab636fd4e4377fc` |
+| `views/group-v895.js` | 3675 | `14d797f47dd529a031236ce84b1a79a7cb93e123be68d3288755693e1ec30fb0` |
 | `views/group-v896.js` | 2869 | `254797091563dfbefac50c195ceb5c27985de9d915fde991b2f234adc42228e6` |
 | `views/group-v897.js` | 3775 | `09d4550cc76e0ed9bb13c1b47588e4c71618dbff71682755ec98c5f1f5ed31dc` |
 | `views/group-v898.js` | 3767 | `da1d5f1004a37f849f1a5214dcb52569667d43b42870ceb582995000da264ca9` |
-| `views/group-v899.js` | 3572 | `9742ee9fb4b001ca4ea94e5b1170a1619211781661e3b2c3dc20be85a9c79fd4` |
+| `views/group-v899.js` | 4007 | `d413f2711727c0faf64b561a89e878767fb7cee6190057d916f792d3dd818213` |
 | `views/group-v9.js` | 23855 | `e9d6b57423329647fa9e240c0e7f640ad16d807512c6d931a56018cf8a55d126` |
 | `views/group-v900.js` | 3545 | `44e62020376c6791dc2a446cffab6ea8b3410ec994cf7de86ba4462b9a2f758e` |
 | `views/group-v901.js` | 3174 | `057e645896acc5ad37233d0651b1ff95686555751c7987b730a3f878260bee26` |

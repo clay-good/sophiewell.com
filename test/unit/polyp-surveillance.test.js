@@ -67,8 +67,49 @@ test('polyp-surveillance: the scope caveat is on every result', () => {
   }
 });
 
-test('polyp-surveillance: unknown values fall back, and the ranges are checked', () => {
-  assert.equal(p({ histology: 'made-up' }).histology, 'none');
+// spec-v1193. The line this replaces read:
+//
+//   assert.equal(p({ histology: 'made-up' }).histology, 'none');
+//
+// `none` is the first row of the histology table and it means "No polyps found",
+// so a histology nobody had entered selected the TEN-year interval and named "a
+// normal examination" as the reason. The worked example -- one 12 mm adenoma --
+// is three years.
+test('polyp-surveillance: a blank histology is not a normal examination', () => {
+  const exam3y = { ...exam, adenomaCount: 1, largestSizeMm: 12, histology: 'tubular-adenoma' };
+  assert.equal(p(exam3y).interval, '3 years');
+
+  const blank = { ...exam3y };
+  delete blank.histology;
+  const r = p(blank);
+  assert.equal(r.valid, false);
+  assert.match(r.message, /Choose the worst histology found/);
+  assert.match(r.message, /not "no polyps found"/);
+  assert.equal(r.interval, undefined, 'no interval is selected without it');
+
+  // An unrecognised value fell into the same row, so it refuses too.
+  assert.equal(p({ ...exam3y, histology: 'made-up' }).valid, false);
+
+  // The standing caveats survive the refusal.
+  assert.match(r.scopeOfTableNote, /average-risk surveillance after polypectomy/);
+  assert.match(r.scopeNote, /does not decide when a patient is scheduled/);
+});
+
+test('polyp-surveillance: the histology is only asked for where the table applies', () => {
+  // Rule 13: piecemeal resection of a lesion 20 mm or larger is its own track,
+  // and it outranks everything -- so the answer holds whatever the histology is.
+  const piecemeal = p({ ...exam, piecemealTwentyMm: true });
+  assert.equal(piecemeal.valid, true);
+  assert.equal(piecemeal.interval, '6 months');
+  assert.match(piecemeal.recordedNote, /no histology entered/);
+
+  // An incomplete examination selects no interval at all, for the same reason.
+  const incomplete = p({ completeToCecum: false, adequatePreparation: true });
+  assert.equal(incomplete.valid, true);
+  assert.equal(incomplete.interval, null);
+});
+
+test('polyp-surveillance: the ranges are checked', () => {
   assert.equal(p({ adenomaCount: 201 }).valid, false);
   assert.equal(p({ largestSizeMm: 201 }).valid, false);
   assert.equal(p({ adenomaCount: 'abc' }).adenomaCount, null);

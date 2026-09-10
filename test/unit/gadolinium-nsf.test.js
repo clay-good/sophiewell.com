@@ -57,13 +57,39 @@ test('gadolinium-nsf: acute injury and group II screening each get their own not
   assert.equal(g({ agentGroup: 'group-1', renalState: 'ckd-low' }).screeningNote, null);
 });
 
-test('gadolinium-nsf: it says what it does not cover, and unknown values fall back', () => {
+test('gadolinium-nsf: it says what it does not cover, on a refusal too', () => {
   for (const input of [{}, { agentGroup: 'group-1', renalState: 'aki' }]) {
     assert.match(g(input).otherQuestionsNote, /Retention, pregnancy and prior reactions/);
     assert.match(g(input).scopeNote, /does not choose an agent/);
   }
-  assert.equal(g({ agentGroup: 'made-up' }).agentGroup, 'unknown');
-  assert.equal(g({ renalState: 'made-up' }).renalState, 'normal');
+});
+
+// spec-v1193. The line this replaces read:
+//
+//   assert.equal(g({ renalState: 'made-up' }).renalState, 'normal');
+//
+// `normal` is the first row of the table -- "stable kidney function at an eGFR of
+// 30 or above" -- so a kidney function nobody had entered cleared every agent
+// group and the tile answered "No heightened concern". Nephrogenic systemic
+// fibrosis is a risk OF impaired clearance, so that default does not soften the
+// answer, it deletes it.
+test('gadolinium-nsf: a blank kidney function is not a normal one', () => {
+  for (const input of [{}, { agentGroup: 'group-1' }, { renalState: 'made-up', agentGroup: 'group-1' }]) {
+    const r = g(input);
+    assert.equal(r.valid, false, JSON.stringify(input));
+    assert.match(r.message, /Choose the kidney function/);
+    assert.match(r.message, /impaired clearance is the entire reason/);
+    assert.equal(r.band, undefined);
+  }
+  // Entered, it answers as before.
+  assert.equal(g({ agentGroup: 'group-1', renalState: 'normal' }).valid, true);
+});
+
+test('gadolinium-nsf: the agent group keeps its fallback, because "not known" is a real row', () => {
+  // Unlike the renal state, the last row of the agent table means exactly what a
+  // blank means, and it is the cautious end rather than the reassuring one.
+  assert.equal(g({ renalState: 'aki' }).agentGroup, 'unknown');
+  assert.equal(g({ renalState: 'aki', agentGroup: 'made-up' }).agentGroup, 'unknown');
 });
 
 test('gadolinium-nsf: the documented example', () => {
