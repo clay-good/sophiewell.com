@@ -24,6 +24,15 @@
 // feeds: the question is whether that function distinguishes an absent value
 // from a zero, and only the function can answer it.
 //
+// spec-v1215: it now scans INLINE reads too, in every view module rather than
+// only the fifteen. Fifteen of 781 modules carry the helper -- that part is the
+// whole population, checked -- but eleven renderers write
+// `Number(document.getElementById('x').value)` in place and bypass it, four of
+// them in modules that carry no helper at all and so were never opened. None of
+// the eleven reads an optional-labelled field, which is why the count did not
+// move; the point is that the count is now a claim the probe makes rather than
+// one somebody checked by hand once.
+//
 // Usage: node scripts/probe-optional-read-as-zero.mjs
 import { readdirSync, readFileSync } from 'node:fs';
 
@@ -64,18 +73,31 @@ function optionalNumberIds(src, builders) {
 }
 
 let reach = 0;
+let inlineChecked = 0;
 const rows = [];
 for (const entry of readdirSync('views').filter((f) => f.endsWith('.js'))) {
   const src = readFileSync(`views/${entry}`, 'utf8');
   const m = RAW.exec(src);
-  if (!m) continue;
-  reach += 1;
-  const helper = m[1];
+  // A module without the helper is still scanned for INLINE reads. Skipping it
+  // outright is what made an earlier run's "0 rows" a claim about 15 modules
+  // dressed up as a claim about 781.
+  if (m) reach += 1;
+  const helper = m ? m[1] : null;
   const optional = optionalNumberIds(src, buildersIn(src));
   const lines = src.split('\n');
   for (let i = 0; i < lines.length; i += 1) {
     const line = lines[i];
-    for (const call of line.matchAll(new RegExp(`\\b${helper}\\('([^']+)'\\)`, 'g'))) {
+    // Helper calls AND inline reads. A renderer that writes
+    // `Number(document.getElementById('x').value)` in place bypasses the module's
+    // reader entirely, so a probe that only follows the helper is making a claim
+    // about its matched subset and calling it the population.
+    const inline = [...line.matchAll(/Number\(document\.getElementById\('([^']+)'\)\.value\)/g)];
+    inlineChecked += inline.length;
+    const calls = [
+      ...(helper ? line.matchAll(new RegExp(`\\b${helper}\\('([^']+)'\\)`, 'g')) : []),
+      ...inline,
+    ];
+    for (const call of calls) {
       const id = call[1];
       if (!optional.has(id)) continue;
       // The call site may do its own asking. Read the whole statement and the
@@ -86,7 +108,7 @@ for (const entry of readdirSync('views').filter((f) => f.endsWith('.js'))) {
       // emptiness, it tests this read for positivity, or it binds the read (or
       // the raw string) to a name and tests THAT. The last is the common one,
       // and a line-local pattern cannot see it.
-      const alias = `(?:${helper}|str|v29d)\\('${id}'\\)`;
+      const alias = `(?:${helper ? `${helper}|` : ''}str|v29d|Number\\(document\\.getElementById)\\('${id}'\\)`;
       const guarded = new RegExp(`${id}'\\)\\.value === ''|${alias} > 0|${alias} !== ''`).test(around)
         || new RegExp(`const (\\w+) = ${alias};[\\s\\S]{0,1500}?\\b\\1 (?:> 0|!== ''|!= null)`).test(src)
         || new RegExp(`\\[[^\\]]*'${id}'[^\\]]*\\][\\s\\S]{0,300}?(?:Missing|missing|needValues)`).test(around);
@@ -96,5 +118,6 @@ for (const entry of readdirSync('views').filter((f) => f.endsWith('.js'))) {
   }
 }
 
-console.log(`${rows.length} optional-labelled fields read as zero (reach: ${reach} view modules carrying the helper)`);
+console.log(`${rows.length} optional-labelled fields read as zero`
+  + ` (reach: ${reach} view modules carry the helper; ${inlineChecked} inline reads bypass it and were checked too)`);
 for (const r of rows) console.log(`  ${r.file}:${r.line}  ${r.id}  "${r.label}"\n      ${r.text}`);
