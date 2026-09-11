@@ -766,6 +766,7 @@ import { renderers as RV1062 } from './views/group-v1062.js';
 import { renderers as RV1240 } from './views/group-v1240.js';
 import { renderers as RV1241 } from './views/group-v1241.js';
 import { renderers as RV1242 } from './views/group-v1242.js';
+import { renderers as RV1243 } from './views/group-v1243.js';
 import { renderers as RV164 } from './views/group-v164.js';
 import { renderers as RV165 } from './views/group-v165.js';
 import { renderers as RV166 } from './views/group-v166.js';
@@ -853,7 +854,7 @@ const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...R
   ...RV902,
   ...RV903,
   ...RV905,
-  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV960, ...RV1061, ...RV1062, ...RV1240, ...RV1241, ...RV1242, ...RV63, ...RPALINT };
+  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV960, ...RV1061, ...RV1062, ...RV1240, ...RV1241, ...RV1242, ...RV1243, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -2788,6 +2789,15 @@ const UTILITIES = [
   { id: 'ecst-carotid', name: 'ECST Carotid Stenosis (with NASCET conversion)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'endoleak-type', name: 'Endoleak Classification (after EVAR)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'rutherford-ali', name: 'Rutherford Classification (Acute Limb Ischemia)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v1243: four things a liver clinic or an endoscopy reports that the catalog could not.
+  // views/group-v1243.js, lib/sarin-gastric-varices-v1243.js, lib/hill-grade-v1243.js,
+  // lib/hepatopulmonary-syndrome-v1243.js, lib/portopulmonary-hypertension-v1243.js,
+  // mcp/adapters/<id>-v1243.js.
+  { id: 'sarin-gastric-varices', name: 'Sarin Classification (Gastric Varices)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'hill-grade', name: 'Hill Grade (Gastroesophageal Flap Valve)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'hepatopulmonary-syndrome', name: 'Hepatopulmonary Syndrome Criteria & Severity', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'portopulmonary-hypertension', name: 'Portopulmonary Hypertension Criteria', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v960: the mTICI reperfusion grade, and the one option where it and the original TICI
   // scale call the same angiogram a success and a failure. views/group-v960.js,

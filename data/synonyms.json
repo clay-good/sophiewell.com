@@ -7823,6 +7823,42 @@
       ],
       "tile": "rutherford-ali",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "gastric varices type",
+        "fundal varices classification",
+        "gov1 gov2 igv1"
+      ],
+      "tile": "sarin-gastric-varices",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "flap valve grade",
+        "gastroesophageal valve retroflexion",
+        "hill classification endoscopy"
+      ],
+      "tile": "hill-grade",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "hepatopulmonary criteria",
+        "liver disease low oxygen",
+        "platypnea orthodeoxia workup"
+      ],
+      "tile": "hepatopulmonary-syndrome",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "portopulmonary criteria",
+        "pulmonary hypertension before liver transplant",
+        "mpap pvr wedge cirrhosis"
+      ],
+      "tile": "portopulmonary-hypertension",
+      "audience": "clinicians"
     }
   ]
 }

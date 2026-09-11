@@ -8113,6 +8113,18 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/rutherford-ali-v1242.js (spec-v1242: Rutherford acute limb ischemia classification — clinical disclaimer)
 - `rutherford-ali`
 
+### lib/sarin-gastric-varices-v1243.js (spec-v1243: Sarin classification of gastric varices — clinical disclaimer)
+- `sarin-gastric-varices`
+
+### lib/hill-grade-v1243.js (spec-v1243: Hill grade of the gastroesophageal flap valve — clinical disclaimer)
+- `hill-grade`
+
+### lib/hepatopulmonary-syndrome-v1243.js (spec-v1243: hepatopulmonary syndrome criteria and severity — clinical disclaimer)
+- `hepatopulmonary-syndrome`
+
+### lib/portopulmonary-hypertension-v1243.js (spec-v1243: portopulmonary hypertension criteria — clinical disclaimer)
+- `portopulmonary-hypertension`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

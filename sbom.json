@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:78fb3607-abad-5787-8ceb-c20ac7108c75",
+  "serialNumber": "urn:uuid:964ccbd7-c017-5294-8e4b-e597ed138872",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-11T21:30:01.928Z",
+    "timestamp": "2026-09-11T22:16:56.138Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1718 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1722 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "358e4b43f0abe15d5c7b0ec79c81528bf13396df488769b3595d7931918cc4b8"
+          "content": "c82f5b64e6ec36dda3957009ac924a899037fa539ecc228789fc202329142c1f"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "110084"
+          "value": "110306"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "07eb43243dbd67bf87fdbef223fdc0b6aa1fe66eac246d403c18c396dca23482"
+          "content": "dac17e2bdfc79535aea5bf6ea82942fa0ea9a54b76b14ec11257aaab750eceae"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "516981"
+          "value": "517966"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5d374c4c29a5602466e5731ff54cbcc9efa8e04f065b0aae2f0447ace2f4b687"
+          "content": "b9f08cd9bd970deaae64d58b0711ffa02fc1c643640ffd72fc5f44be018a6f4f"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "213468"
+          "value": "213994"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a1b82020dbf5b542ccf80c077e7d30e4b6f755eb77e4cc1d8251ebd91db70c1f"
+          "content": "2b601c0fdf52334f4726dd510bf11858be9825b2e381c95710f8ef23a8ac1d87"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "96281"
+          "value": "96545"
         }
       ]
     },
@@ -7280,6 +7280,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/hepatopulmonary-syndrome-v1243.js",
+      "type": "file",
+      "name": "lib/hepatopulmonary-syndrome-v1243.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f806ac388d518de308c7b86071f253cb4bfe8ee64ca48eb0b80150e0152c8e9b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6473"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/hepgi-v190.js",
       "type": "file",
       "name": "lib/hepgi-v190.js",
@@ -7465,6 +7486,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3958"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/hill-grade-v1243.js",
+      "type": "file",
+      "name": "lib/hill-grade-v1243.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e315d3d35ae8999ebbee77c8197ab9403995cb4b327f8264d8f1a7ff34445fea"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4731"
         }
       ]
     },
@@ -10205,7 +10247,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c55e0edcd42e1b1177625b1191b93cd88522d5d2713a474385f12d8bcbce57f1"
+          "content": "f2d51bc576746fcd7dce02ddcd92743cd938bd6f1ed0b04b88ac970956ec51e3"
         }
       ],
       "properties": [
@@ -10215,7 +10257,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2477901"
+          "value": "2480984"
         }
       ]
     },
@@ -13538,6 +13580,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/portopulmonary-hypertension-v1243.js",
+      "type": "file",
+      "name": "lib/portopulmonary-hypertension-v1243.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5b16c613144f4fbca3fa023d290dbb9f26220ef3de940ebd9879dfaa0d87277d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7621"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/posas-observer-scar-v691.js",
       "type": "file",
       "name": "lib/posas-observer-scar-v691.js",
@@ -15361,6 +15424,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4707"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/sarin-gastric-varices-v1243.js",
+      "type": "file",
+      "name": "lib/sarin-gastric-varices-v1243.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "125394c4e454354387f8aa54b8b0a6d87d7393661e8aa9d4985cdd26117506c0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6144"
         }
       ]
     },
@@ -24941,6 +25025,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/hepatopulmonary-syndrome-v1243.js",
+      "type": "file",
+      "name": "mcp/adapters/hepatopulmonary-syndrome-v1243.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "bfbcc3b9054611d79972f46e66b7971e87c5973af2ca41ba469936ab6e58629f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1841"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/hepgi-v190.js",
       "type": "file",
       "name": "mcp/adapters/hepgi-v190.js",
@@ -25126,6 +25231,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1616"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/hill-grade-v1243.js",
+      "type": "file",
+      "name": "mcp/adapters/hill-grade-v1243.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "44ebbc87d47a4dab7d6f8ab984e294b47e59552436c02741c35a71b5ed78c28f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1310"
         }
       ]
     },
@@ -30653,6 +30779,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/portopulmonary-hypertension-v1243.js",
+      "type": "file",
+      "name": "mcp/adapters/portopulmonary-hypertension-v1243.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9613e5d64d5df6ae1abf4806925c104478b33edaee69cec41bb3ac6e3152a076"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1889"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/posas-observer-scar-v691.js",
       "type": "file",
       "name": "mcp/adapters/posas-observer-scar-v691.js",
@@ -32329,6 +32476,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1083"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/sarin-gastric-varices-v1243.js",
+      "type": "file",
+      "name": "mcp/adapters/sarin-gastric-varices-v1243.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "22d67658f51b974391a967c964c1d90d6122bb0198d5873a5260613e57ce9d33"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1420"
         }
       ]
     },
@@ -35237,7 +35405,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a45cf5ec19e9d10ebf12453f86005827ff0284b3094938c419daeb109eb0c844"
+          "content": "51022ca6683dfc8927eed43394f381b8bdbb890fd739c76cd379f159e93ea6f5"
         }
       ],
       "properties": [
@@ -35247,7 +35415,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "89877"
+          "value": "90447"
         }
       ]
     },
@@ -36172,6 +36340,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "6798"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1243.js",
+      "type": "file",
+      "name": "views/group-v1243.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b3bcac01d13f158a59e66b4a200920745c6bef850d008c21c5b2fcf25339cf79"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6578"
         }
       ]
     },
@@ -68018,6 +68207,7 @@
         "urn:sophiewell:file:source:lib/hepatic-iron-index-v932.js",
         "urn:sophiewell:file:source:lib/hepatology-gibleed-v201.js",
         "urn:sophiewell:file:source:lib/hepatology-prognosis-v220.js",
+        "urn:sophiewell:file:source:lib/hepatopulmonary-syndrome-v1243.js",
         "urn:sophiewell:file:source:lib/hepgi-v190.js",
         "urn:sophiewell:file:source:lib/hepgi-v93.js",
         "urn:sophiewell:file:source:lib/herbert-scaphoid-v1241.js",
@@ -68027,6 +68217,7 @@
         "urn:sophiewell:file:source:lib/hhie-s-v728.js",
         "urn:sophiewell:file:source:lib/hijdra-v609.js",
         "urn:sophiewell:file:source:lib/hill-flap-valve-v392.js",
+        "urn:sophiewell:file:source:lib/hill-grade-v1243.js",
         "urn:sophiewell:file:source:lib/hinchey-v321.js",
         "urn:sophiewell:file:source:lib/hiv-pep-occupational-v887.js",
         "urn:sophiewell:file:source:lib/hlh-2004-v582.js",
@@ -68316,6 +68507,7 @@
         "urn:sophiewell:file:source:lib/poi-diagnosis-v834.js",
         "urn:sophiewell:file:source:lib/pollock-flickinger-v601.js",
         "urn:sophiewell:file:source:lib/polyp-surveillance-v882.js",
+        "urn:sophiewell:file:source:lib/portopulmonary-hypertension-v1243.js",
         "urn:sophiewell:file:source:lib/posas-observer-scar-v691.js",
         "urn:sophiewell:file:source:lib/posas-patient-scar-v783.js",
         "urn:sophiewell:file:source:lib/poseidon-v549.js",
@@ -68403,6 +68595,7 @@
         "urn:sophiewell:file:source:lib/samilson-prieto-v486.js",
         "urn:sophiewell:file:source:lib/sanders-calcaneal-v343.js",
         "urn:sophiewell:file:source:lib/sano-kawasaki-v681.js",
+        "urn:sophiewell:file:source:lib/sarin-gastric-varices-v1243.js",
         "urn:sophiewell:file:source:lib/sarnat-hie-v429.js",
         "urn:sophiewell:file:source:lib/sartorius-hs-v607.js",
         "urn:sophiewell:file:source:lib/savary-miller-v405.js",
@@ -68590,6 +68783,7 @@
         "urn:sophiewell:file:source:views/group-v1240.js",
         "urn:sophiewell:file:source:views/group-v1241.js",
         "urn:sophiewell:file:source:views/group-v1242.js",
+        "urn:sophiewell:file:source:views/group-v1243.js",
         "urn:sophiewell:file:source:views/group-v125.js",
         "urn:sophiewell:file:source:views/group-v126.js",
         "urn:sophiewell:file:source:views/group-v127.js",
@@ -69663,6 +69857,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/hepatic-iron-index-v932.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hepatology-gibleed-v201.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hepatology-prognosis-v220.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/hepatopulmonary-syndrome-v1243.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hepgi-v190.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hepgi-v93.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/herbert-scaphoid-v1241.js",
@@ -69672,6 +69867,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/hhie-s-v728.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hijdra-v609.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hill-flap-valve-v392.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/hill-grade-v1243.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hinchey-v321.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hiv-pep-occupational-v887.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hlh-2004-v582.js",
@@ -69935,6 +70131,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/poi-diagnosis-v834.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pollock-flickinger-v601.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/polyp-surveillance-v882.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/portopulmonary-hypertension-v1243.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/posas-observer-scar-v691.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/posas-patient-scar-v783.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/poseidon-v549.js",
@@ -70015,6 +70212,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/samilson-prieto-v486.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/sanders-calcaneal-v343.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/sano-kawasaki-v681.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/sarin-gastric-varices-v1243.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/sarnat-hie-v429.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/sartorius-hs-v607.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/savary-miller-v405.js",
@@ -70256,7 +70454,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "78fb3607abada787"
+      "value": "964ccbd7c0177294"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -70268,7 +70466,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2458"
+      "value": "2467"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

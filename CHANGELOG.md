@@ -6,6 +6,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Four things a liver clinic or an endoscopy reports.** The Sarin classification
+  of gastric varices (which bleed less often than esophageal varices and kill
+  more), the Hill grade of the gastroesophageal flap valve, the hepatopulmonary
+  syndrome criteria with the age cut on the gradient threshold that is usually
+  dropped, and portopulmonary hypertension reported under both definitions,
+  because a patient can meet one and not the other. See docs/spec-v1243.md.
+
 - **Four vascular classifications: the same artery, described twice.** Stanford
   beside DeBakey, ECST beside NASCET (the same artery is 50% by one method and
   75% by the other), Rutherford's ACUTE limb-ischemia classes beside his chronic

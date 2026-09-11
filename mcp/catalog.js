@@ -776,6 +776,10 @@ import stanfordDissectionV1242 from './adapters/stanford-dissection-v1242.js';
 import ecstCarotidV1242 from './adapters/ecst-carotid-v1242.js';
 import endoleakTypeV1242 from './adapters/endoleak-type-v1242.js';
 import rutherfordAliV1242 from './adapters/rutherford-ali-v1242.js';
+import sarinGastricVaricesV1243 from './adapters/sarin-gastric-varices-v1243.js';
+import hillGradeV1243 from './adapters/hill-grade-v1243.js';
+import hepatopulmonarySyndromeV1243 from './adapters/hepatopulmonary-syndrome-v1243.js';
+import portopulmonaryHypertensionV1243 from './adapters/portopulmonary-hypertension-v1243.js';
 import ticiV960 from './adapters/tici-v960.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
@@ -1579,6 +1583,10 @@ const ADAPTER_MODULES = [
   ['ecst-carotid-v1242', ecstCarotidV1242],
   ['endoleak-type-v1242', endoleakTypeV1242],
   ['rutherford-ali-v1242', rutherfordAliV1242],
+  ['sarin-gastric-varices-v1243', sarinGastricVaricesV1243],
+  ['hill-grade-v1243', hillGradeV1243],
+  ['hepatopulmonary-syndrome-v1243', hepatopulmonarySyndromeV1243],
+  ['portopulmonary-hypertension-v1243', portopulmonaryHypertensionV1243],
   ['tici-v960', ticiV960],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],
