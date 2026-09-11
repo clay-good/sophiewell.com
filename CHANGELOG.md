@@ -20,6 +20,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Four tools were left without a plausibility check that the tool beside them had
+  just been given.** The Toronto HCC risk score took a platelet count of 20,000
+  while its neighbour refused one; the two fatty-liver scores took any BMI at all.
+  Found by the repo's own sweep for exactly that -- one function in a file guarding
+  a measurement while its siblings do not -- which had been sitting at zero and was
+  refilled by this run's own earlier changes.
+
+  That sweep was also wrong about three tools: they *do* refuse an impossible
+  platelet count, by comparing against the shared table directly rather than
+  through one of the six helper names it looked for. It now recognises both. And
+  eleven tools it still flags have no applicable range at all -- one measures in
+  pounds and inches, one in a unit the reader chooses -- so the four most likely to
+  be "corrected" wrongly now say why in the code. See docs/spec-v1237.md.
+
 - **Forty more tools told you to enter a value you had just entered.** A plasma
   creatinine of 250 mg/dL was answered with *"Enter urine sodium, plasma
   creatinine, and urine creatinine"* -- so you retyped it and got the same sentence.

@@ -47,6 +47,25 @@ const showAll = !!arg('--all');
 // and the probe went on printing them, because the list did not know the name.
 const GUARDS = ['boundsAdvisory', 'inputFault', 'gradeFault', 'outsideEnvelope', 'outOfRange', 'outsideRange'];
 
+// spec-v1237: ...and a guard does not have to be a HELPER CALL. Three functions
+// were reported for not guarding a measurement they do guard, by comparing it
+// against the table directly:
+//
+//   if (plt > BOUNDS.platelets.max) return { valid: false, message: `A platelet
+//     count of ${plt} is above ~${BOUNDS.platelets.max}, beyond recorded
+//     extremes. This field is in x10^9/L ...` };
+//
+// That is `fornsIndex` (spec-v1174), and `lokIndex` and `nafldFibrosis` beside
+// it. It reads the same table, refuses the same values, and says more about the
+// unit confusion it exists for than any helper's sentence does -- it is the
+// better guard, and the probe called it absent.
+//
+// The lesson is the one in the comment above `GUARDS`, one level up: a list of
+// NAMES drifts from the thing it is a list of. This probe watched six helper
+// names and the question is "does this function refuse an impossible
+// measurement", which a direct comparison answers too.
+const DIRECT_GUARD = /\bBOUNDS\.\w+\.(?:max|min)\b/;
+
 // A function that takes no measurement cannot be missing a measurement guard.
 // This is deliberately generous: any read of a numeric-looking input counts.
 // spec-v1203: `num(` is NOT on this list. lib/num.js's `num(name, v, {min,max})`
@@ -119,7 +138,8 @@ for (const file of readdirSync(`${ROOT}lib`).filter((f) => f.endsWith('.js')).so
   // `lib/num.js` exports `inputFault` itself, and without this it reported its own
   // neighbours for not calling it.
   const guarded = bodies.filter((b) => !helpers.includes(b.name)
-    && helpers.some((g) => new RegExp(`\\b${g}\\s*\\(`).test(b.body)));
+    && (helpers.some((g) => new RegExp(`\\b${g}\\s*\\(`).test(b.body))
+      || DIRECT_GUARD.test(codeOnly(b.body))));
   if (!guarded.length) continue;   // the helper is used outside any export; not this question
 
   const unguarded = bodies.filter((b) => !guarded.includes(b));
@@ -148,5 +168,6 @@ for (const r of rows) {
 }
 
 console.log(`\nReach: ${modulesRead} of the modules in lib/ call one of ${GUARDS.length} watched guards;`);
+console.log('a direct `BOUNDS.<key>.max` comparison counts as a guard too (spec-v1237).');
 console.log(`${modulesWithAGuard} of those export more than one function and are comparable,`);
 console.log(`and ${skippedNoNumber} sibling(s) were skipped for reading no numeric input at all.`);
