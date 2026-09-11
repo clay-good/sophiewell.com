@@ -768,6 +768,10 @@ import parklandGallbladderV1240 from './adapters/parkland-gallbladder-v1240.js';
 import nassarGallbladderV1240 from './adapters/nassar-gallbladder-v1240.js';
 import aastCholecystitisV1240 from './adapters/aast-cholecystitis-v1240.js';
 import csendesMirizziV1240 from './adapters/csendes-mirizzi-v1240.js';
+import aoSpineTlV1241 from './adapters/ao-spine-tl-v1241.js';
+import aoSpineSubaxialV1241 from './adapters/ao-spine-subaxial-v1241.js';
+import herbertScaphoidV1241 from './adapters/herbert-scaphoid-v1241.js';
+import lenkeScoliosisV1241 from './adapters/lenke-scoliosis-v1241.js';
 import ticiV960 from './adapters/tici-v960.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
@@ -1563,6 +1567,10 @@ const ADAPTER_MODULES = [
   ['nassar-gallbladder-v1240', nassarGallbladderV1240],
   ['aast-cholecystitis-v1240', aastCholecystitisV1240],
   ['csendes-mirizzi-v1240', csendesMirizziV1240],
+  ['ao-spine-tl-v1241', aoSpineTlV1241],
+  ['ao-spine-subaxial-v1241', aoSpineSubaxialV1241],
+  ['herbert-scaphoid-v1241', herbertScaphoidV1241],
+  ['lenke-scoliosis-v1241', lenkeScoliosisV1241],
   ['tici-v960', ticiV960],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],

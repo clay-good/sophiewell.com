@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:bac4b813-8062-55e3-8f32-4a50fdb0f9e8",
+  "serialNumber": "urn:uuid:d168b538-8cf1-525c-8eeb-a09ae76a7152",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-11T20:12:52.918Z",
+    "timestamp": "2026-09-11T20:35:33.627Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1710 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1714 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "87d0d163806bf50bafe95f4bffe0c3c42738e5270ad3e27633d1f624c27524ca"
+          "content": "77cdef2b79d6a0b5ccc7002dabd998c7d623bcfd71e238d65a896991714038f3"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "109579"
+          "value": "109848"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c662958c97cebca36c23e2fd1620abda0ed96f86a317d4b0f5ff736067155d8e"
+          "content": "587c9eec785b09826dbfcd5d0f175ee4579d40c689de506f5b1d53eb72302405"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "514666"
+          "value": "515849"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c971e1a7ba841fc11702cde40f55222e19c59de49ee74d39a28de919441b1259"
+          "content": "9d950fb13a6c48ef7d6dedcbde08e5da4629ecca1895be6e573fa54ad818d2be"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "212463"
+          "value": "212966"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "540d1f5265d3417e0494a88303429ba5d380bda9e43a84aa9bb58548aa6d6c28"
+          "content": "e098fb32d5fc46d9e9215b6acd29ec1efd6fa0957e0188f3d29eebf071f6344e"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "95739"
+          "value": "96027"
         }
       ]
     },
@@ -1039,6 +1039,69 @@
         {
           "name": "sophiewell:bytes",
           "value": "2988"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/ao-spine-neuro-v1241.js",
+      "type": "file",
+      "name": "lib/ao-spine-neuro-v1241.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "47d07dfcece6ac8e96d140cffe8260fd562f2dbbf2725fe34673e66ae0d395af"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3036"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/ao-spine-subaxial-v1241.js",
+      "type": "file",
+      "name": "lib/ao-spine-subaxial-v1241.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "20742c50120a9e0bba42f4fd9851bd5fb6eeb5ea8f213008adc1f316b4cb6e9a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8874"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/ao-spine-tl-v1241.js",
+      "type": "file",
+      "name": "lib/ao-spine-tl-v1241.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "affc80a356ec93515935f04be0c1a685ae027894bbeb71ec751a7fc7e6e86fa7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7571"
         }
       ]
     },
@@ -7217,6 +7280,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/herbert-scaphoid-v1241.js",
+      "type": "file",
+      "name": "lib/herbert-scaphoid-v1241.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "56b3a6e0c50dbaef9aba6b750bee9ffe6e7507963780b04e9bdfc6b956bb8fe1"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6072"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/herring-pillar-v347.js",
       "type": "file",
       "name": "lib/herring-pillar-v347.js",
@@ -8855,6 +8939,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/lenke-scoliosis-v1241.js",
+      "type": "file",
+      "name": "lib/lenke-scoliosis-v1241.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "853433396331d0722990063f4004f936110f585b8f77ab14f2404b19d30dfb64"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "10359"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/lepine-v596.js",
       "type": "file",
       "name": "lib/lepine-v596.js",
@@ -10058,7 +10163,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ffe947fc7355479061981b54418df7827fcc10d6e8b708febaf46c64f2d93d72"
+          "content": "946c67d46a63949735132f6d8d847ed950f2285fa1857cedbe3c087024be2219"
         }
       ],
       "properties": [
@@ -10068,7 +10173,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2471719"
+          "value": "2474841"
         }
       ]
     },
@@ -18809,6 +18914,48 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ao-spine-subaxial-v1241.js",
+      "type": "file",
+      "name": "mcp/adapters/ao-spine-subaxial-v1241.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "aa900fd4b58420a173764cf01f5c29ebd6fbf1fc217f02c787dce07567ef45a9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1973"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ao-spine-tl-v1241.js",
+      "type": "file",
+      "name": "mcp/adapters/ao-spine-tl-v1241.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d087b0994c06f2a0097c7eb9ec0ffd2522f20f242bf3a8f6c7ee4384f1d27970"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1807"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/aom-criteria-v857.js",
       "type": "file",
       "name": "mcp/adapters/aom-criteria-v857.js",
@@ -24710,6 +24857,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/herbert-scaphoid-v1241.js",
+      "type": "file",
+      "name": "mcp/adapters/herbert-scaphoid-v1241.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ac204f8e9d4454173280cc7697c30eddfc91fc55eaf7a81268fe3bf5d5c10475"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1451"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/herring-pillar-v347.js",
       "type": "file",
       "name": "mcp/adapters/herring-pillar-v347.js",
@@ -26260,6 +26428,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2018"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/lenke-scoliosis-v1241.js",
+      "type": "file",
+      "name": "mcp/adapters/lenke-scoliosis-v1241.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6353bd73ab9aa311643a31a35a80c40773f3bae03e623df144d8a525efbbe462"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2709"
         }
       ]
     },
@@ -34880,7 +35069,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3aae513c3c431e4b3e50873440a2ccc1dfcb0d840f02a8ce358c1441b08a7f4a"
+          "content": "697faeefa12b697107272a54b2fab507086f01d151f694a0c1cdd99804bebb6a"
         }
       ],
       "properties": [
@@ -34890,7 +35079,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "88925"
+          "value": "89401"
         }
       ]
     },
@@ -35773,6 +35962,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "6967"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1241.js",
+      "type": "file",
+      "name": "views/group-v1241.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f8e231aeb2593176792478ad5bfd122963f641e6b977d627faf52431c819bb59"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8116"
         }
       ]
     },
@@ -67322,6 +67532,9 @@
         "urn:sophiewell:file:source:lib/angle-malocclusion-v720.js",
         "urn:sophiewell:file:source:lib/anthro-v238.js",
         "urn:sophiewell:file:source:lib/anthro-v272.js",
+        "urn:sophiewell:file:source:lib/ao-spine-neuro-v1241.js",
+        "urn:sophiewell:file:source:lib/ao-spine-subaxial-v1241.js",
+        "urn:sophiewell:file:source:lib/ao-spine-tl-v1241.js",
         "urn:sophiewell:file:source:lib/aom-criteria-v857.js",
         "urn:sophiewell:file:source:lib/aortic-regurgitation-stage-v846.js",
         "urn:sophiewell:file:source:lib/aortic-stenosis-stage-v844.js",
@@ -67616,6 +67829,7 @@
         "urn:sophiewell:file:source:lib/hepatology-prognosis-v220.js",
         "urn:sophiewell:file:source:lib/hepgi-v190.js",
         "urn:sophiewell:file:source:lib/hepgi-v93.js",
+        "urn:sophiewell:file:source:lib/herbert-scaphoid-v1241.js",
         "urn:sophiewell:file:source:lib/herring-pillar-v347.js",
         "urn:sophiewell:file:source:lib/hf-ef-classification-v840.js",
         "urn:sophiewell:file:source:lib/hf-stages-abcd-v842.js",
@@ -67694,6 +67908,7 @@
         "urn:sophiewell:file:source:lib/leddy-packer-v456.js",
         "urn:sophiewell:file:source:lib/leeds-enthesitis-index-v706.js",
         "urn:sophiewell:file:source:lib/leipzig-wilson-v812.js",
+        "urn:sophiewell:file:source:lib/lenke-scoliosis-v1241.js",
         "urn:sophiewell:file:source:lib/lepine-v596.js",
         "urn:sophiewell:file:source:lib/letournel-acetabulum-v466.js",
         "urn:sophiewell:file:source:lib/levine-edwards-v411.js",
@@ -68180,6 +68395,7 @@
         "urn:sophiewell:file:source:views/group-v123.js",
         "urn:sophiewell:file:source:views/group-v124.js",
         "urn:sophiewell:file:source:views/group-v1240.js",
+        "urn:sophiewell:file:source:views/group-v1241.js",
         "urn:sophiewell:file:source:views/group-v125.js",
         "urn:sophiewell:file:source:views/group-v126.js",
         "urn:sophiewell:file:source:views/group-v127.js",
@@ -68970,6 +69186,8 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/angle-malocclusion-v720.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/anthro-v238.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/anthro-v272.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/ao-spine-subaxial-v1241.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/ao-spine-tl-v1241.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/aom-criteria-v857.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/aortic-regurgitation-stage-v846.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/aortic-stenosis-stage-v844.js",
@@ -69251,6 +69469,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/hepatology-prognosis-v220.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hepgi-v190.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hepgi-v93.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/herbert-scaphoid-v1241.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/herring-pillar-v347.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hf-ef-classification-v840.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hf-stages-abcd-v842.js",
@@ -69325,6 +69544,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/leddy-packer-v456.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/leeds-enthesitis-index-v706.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/leipzig-wilson-v812.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/lenke-scoliosis-v1241.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lepine-v596.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/letournel-acetabulum-v466.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/levine-edwards-v411.js",
@@ -69838,7 +70058,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "bac4b8138062b5e3"
+      "value": "d168b5388cf1325c"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -69850,7 +70070,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2439"
+      "value": "2449"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

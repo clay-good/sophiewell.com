@@ -8089,6 +8089,18 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/csendes-mirizzi-v1240.js (spec-v1240: Csendes classification of Mirizzi syndrome — clinical disclaimer)
 - `csendes-mirizzi`
 
+### lib/ao-spine-tl-v1241.js (spec-v1241: AO Spine thoracolumbar injury classification — clinical disclaimer)
+- `ao-spine-tl`
+
+### lib/ao-spine-subaxial-v1241.js (spec-v1241: AO Spine subaxial cervical injury classification — clinical disclaimer)
+- `ao-spine-subaxial`
+
+### lib/herbert-scaphoid-v1241.js (spec-v1241: Herbert classification of scaphoid fractures — clinical disclaimer)
+- `herbert-scaphoid`
+
+### lib/lenke-scoliosis-v1241.js (spec-v1241: Lenke classification of adolescent idiopathic scoliosis — clinical disclaimer)
+- `lenke-scoliosis`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

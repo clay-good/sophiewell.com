@@ -764,6 +764,7 @@ import { renderers as RV960 } from './views/group-v960.js';
 import { renderers as RV1061 } from './views/group-v1061.js';
 import { renderers as RV1062 } from './views/group-v1062.js';
 import { renderers as RV1240 } from './views/group-v1240.js';
+import { renderers as RV1241 } from './views/group-v1241.js';
 import { renderers as RV164 } from './views/group-v164.js';
 import { renderers as RV165 } from './views/group-v165.js';
 import { renderers as RV166 } from './views/group-v166.js';
@@ -851,7 +852,7 @@ const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...R
   ...RV902,
   ...RV903,
   ...RV905,
-  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV960, ...RV1061, ...RV1062, ...RV1240, ...RV63, ...RPALINT };
+  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV960, ...RV1061, ...RV1062, ...RV1240, ...RV1241, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -2766,6 +2767,16 @@ const UTILITIES = [
   { id: 'nassar-gallbladder', name: 'Nassar Operative Difficulty Grade (Laparoscopic Cholecystectomy)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'aast-cholecystitis', name: 'AAST Severity Grade for Acute Cholecystitis', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'csendes-mirizzi', name: 'Csendes Classification of Mirizzi Syndrome', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v1241: four classifications that each sit beside one already here and answer a different
+  // question from it -- AO Spine TL against TLICS, AO Spine subaxial against SLIC, Herbert against
+  // Russe, and Lenke, which the catalog measured the parts of (Cobb, Risser) but never assembled.
+  // views/group-v1241.js, lib/ao-spine-tl-v1241.js, lib/ao-spine-subaxial-v1241.js,
+  // lib/herbert-scaphoid-v1241.js, lib/lenke-scoliosis-v1241.js, mcp/adapters/<id>-v1241.js.
+  { id: 'ao-spine-tl', name: 'AO Spine Thoracolumbar Injury Classification (TL AOSIS)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ao-spine-subaxial', name: 'AO Spine Subaxial Cervical Spine Injury Classification', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'herbert-scaphoid', name: 'Herbert Classification (Scaphoid Fracture)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'lenke-scoliosis', name: 'Lenke Classification (Adolescent Idiopathic Scoliosis)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v960: the mTICI reperfusion grade, and the one option where it and the original TICI
   // scale call the same angiogram a success and a failure. views/group-v960.js,

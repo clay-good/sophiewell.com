@@ -6,6 +6,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Four spine and orthopedic classifications, each beside one already here.**
+  The AO Spine thoracolumbar classification with its TL AOSIS score (which TLICS
+  is not), the AO Spine subaxial cervical code (which SLIC is not), the Herbert
+  classification of scaphoid fractures (which Russe is not), and the Lenke
+  classification, whose parts the catalog measured and never assembled. Each
+  names its neighbor on its own page. See docs/spec-v1241.md.
+
 - **Four gallbladder and biliary grades.** The Parkland grade for what the surgeon
   sees once the gallbladder is exposed, the Nassar/CholeS operative difficulty
   grade, the AAST anatomic severity grade for acute cholecystitis, and the Csendes

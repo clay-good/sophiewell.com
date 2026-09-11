@@ -7746,6 +7746,44 @@
       ],
       "tile": "csendes-mirizzi",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "ao spine thoracolumbar",
+        "tl aosis",
+        "thoracolumbar injury severity score ao",
+        "ao spine fracture score"
+      ],
+      "tile": "ao-spine-tl",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "ao spine subaxial",
+        "subaxial cervical ao code",
+        "cervical facet injury grade"
+      ],
+      "tile": "ao-spine-subaxial",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "herbert type scaphoid",
+        "is this scaphoid fracture stable",
+        "scaphoid proximal pole fracture"
+      ],
+      "tile": "herbert-scaphoid",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "lenke type",
+        "scoliosis curve type",
+        "structural curve scoliosis",
+        "lumbar modifier scoliosis"
+      ],
+      "tile": "lenke-scoliosis",
+      "audience": "clinicians"
     }
   ]
 }
