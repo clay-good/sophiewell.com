@@ -7707,6 +7707,45 @@
       ],
       "tile": "conc-rate",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "parkland grade gallbladder",
+        "how difficult will this cholecystectomy be",
+        "operative grade of the gallbladder",
+        "gallbladder looks at operation"
+      ],
+      "tile": "parkland-gallbladder",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "nassar grade",
+        "difficult laparoscopic cholecystectomy grade",
+        "choles difficulty grade",
+        "cystic pedicle grade"
+      ],
+      "tile": "nassar-gallbladder",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "aast grade cholecystitis",
+        "anatomic severity of acute cholecystitis",
+        "how far has the cholecystitis spread"
+      ],
+      "tile": "aast-cholecystitis",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "mirizzi syndrome type",
+        "csendes type",
+        "cholecystobiliary fistula classification",
+        "stone eroding into the bile duct"
+      ],
+      "tile": "csendes-mirizzi",
+      "audience": "clinicians"
     }
   ]
 }

@@ -6,6 +6,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Four gallbladder and biliary grades.** The Parkland grade for what the surgeon
+  sees once the gallbladder is exposed, the Nassar/CholeS operative difficulty
+  grade, the AAST anatomic severity grade for acute cholecystitis, and the Csendes
+  classification of Mirizzi syndrome. The catalog already graded the patient
+  (Tokyo Guidelines); these grade the gallbladder, the operation, and the bile
+  duct. Each derives the grade from the findings so that the rung it is usually
+  read wrongly on is computed rather than left to the reader. See
+  docs/spec-v1240.md.
+
 - **SOWS (Subjective Opiate Withdrawal Scale, Handelsman 1987).** The sixteen-item
   self-report scale that shares an acronym with the ten-item Short scale added
   alongside it. Both tiles name the other, and a search for "sows" offers both,

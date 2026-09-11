@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:a9c9ff0f-49fe-573c-8214-235507878788",
+  "serialNumber": "urn:uuid:bac4b813-8062-55e3-8f32-4a50fdb0f9e8",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-11T09:04:38.605Z",
+    "timestamp": "2026-09-11T20:12:52.918Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1706 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1710 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ed0c13446d64e0862ad6de00f0220e352fd6d932f0e7616251d09c2bfe0d951d"
+          "content": "87d0d163806bf50bafe95f4bffe0c3c42738e5270ad3e27633d1f624c27524ca"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "109326"
+          "value": "109579"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6a46664859b7ab6d4aa0cb2e8748e1dab29c263fac90161c462f55486b2cd941"
+          "content": "c662958c97cebca36c23e2fd1620abda0ed96f86a317d4b0f5ff736067155d8e"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "513572"
+          "value": "514666"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d828138267d345dbf698414852b5a93b102c82c5fe9e4c5890e60b04890da6a6"
+          "content": "c971e1a7ba841fc11702cde40f55222e19c59de49ee74d39a28de919441b1259"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "211948"
+          "value": "212463"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a351ef75600d05ac85bd649e1cfdd74775618b6551a9b6223c4ad208f978fffe"
+          "content": "540d1f5265d3417e0494a88303429ba5d380bda9e43a84aa9bb58548aa6d6c28"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "95455"
+          "value": "95739"
         }
       ]
     },
@@ -472,6 +472,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "483"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/aast-cholecystitis-v1240.js",
+      "type": "file",
+      "name": "lib/aast-cholecystitis-v1240.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "806b1f12f1ba453151eadfb5727ff21cb70a56673f5d60ede0037860d721c612"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "9205"
         }
       ]
     },
@@ -3643,6 +3664,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "5412"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/csendes-mirizzi-v1240.js",
+      "type": "file",
+      "name": "lib/csendes-mirizzi-v1240.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a1725f3613e479c96d32f940cc281b60fb120d1e9b5ab4c8d435e7bd2c2ad9ac"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6926"
         }
       ]
     },
@@ -10016,7 +10058,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c860e9dbbd0cf94493c69225e30e6e78c6f04645ba0d877c0bb697078af1a650"
+          "content": "ffe947fc7355479061981b54418df7827fcc10d6e8b708febaf46c64f2d93d72"
         }
       ],
       "properties": [
@@ -10026,7 +10068,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2468534"
+          "value": "2471719"
         }
       ]
     },
@@ -10720,6 +10762,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3250"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/nassar-gallbladder-v1240.js",
+      "type": "file",
+      "name": "lib/nassar-gallbladder-v1240.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0690648a3bec8b9b3204360c289c01b5aa68c8b4f42c926abccddfb0e6e821ab"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7993"
         }
       ]
     },
@@ -12484,6 +12547,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3776"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/parkland-gallbladder-v1240.js",
+      "type": "file",
+      "name": "lib/parkland-gallbladder-v1240.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "cf6268829e836d087b2ff768495578565774366b359a14a26269d22bfd097058"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6790"
         }
       ]
     },
@@ -18158,6 +18242,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/aast-cholecystitis-v1240.js",
+      "type": "file",
+      "name": "mcp/adapters/aast-cholecystitis-v1240.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d440e2476799395ab1ff59f624a2d1b488bfb0c0e4f3bcf4b2f7958d6df2ed8b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1501"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/aat-deficiency-v830.js",
       "type": "file",
       "name": "mcp/adapters/aat-deficiency-v830.js",
@@ -21262,6 +21367,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1616"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/csendes-mirizzi-v1240.js",
+      "type": "file",
+      "name": "mcp/adapters/csendes-mirizzi-v1240.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e0e5814d4cc3b4e1330e46cea6cfbe6c16208e83a2b8f5f70ac9b18df6b925d2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1593"
         }
       ]
     },
@@ -27965,6 +28091,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/nassar-gallbladder-v1240.js",
+      "type": "file",
+      "name": "mcp/adapters/nassar-gallbladder-v1240.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e7d5af1a13d4d875d4b4560488f579617c456a07bd8c62a7b4364c76699d53fd"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1429"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/neck-zone-v366.js",
       "type": "file",
       "name": "mcp/adapters/neck-zone-v366.js",
@@ -29347,6 +29494,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1282"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/parkland-gallbladder-v1240.js",
+      "type": "file",
+      "name": "mcp/adapters/parkland-gallbladder-v1240.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8f57835c96fccf665101f11de7f0bd0eed72ce6f1fe25ab6b2f556fc9fccba45"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1517"
         }
       ]
     },
@@ -34712,7 +34880,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9e8319623d8ad1b298bb3343ef53820ffdd15db42b6427bdbaa5b1d8f38ff202"
+          "content": "3aae513c3c431e4b3e50873440a2ccc1dfcb0d840f02a8ce358c1441b08a7f4a"
         }
       ],
       "properties": [
@@ -34722,7 +34890,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "88397"
+          "value": "88925"
         }
       ]
     },
@@ -35584,6 +35752,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "10614"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1240.js",
+      "type": "file",
+      "name": "views/group-v1240.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4b4409efa1020826b91cf0f32b62b169dc1486e53cd592657dd0603cf21a44b5"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6967"
         }
       ]
     },
@@ -67106,6 +67295,7 @@
         "urn:sophiewell:file:report-worker:report-worker.mjs",
         "urn:sophiewell:file:report-worker:report-catalog.js",
         "urn:sophiewell:file:report-worker:report-policy.js",
+        "urn:sophiewell:file:source:lib/aast-cholecystitis-v1240.js",
         "urn:sophiewell:file:source:lib/aat-deficiency-v830.js",
         "urn:sophiewell:file:source:lib/abc-scale-v729.js",
         "urn:sophiewell:file:source:lib/ablett-tetanus-v576.js",
@@ -67257,6 +67447,7 @@
         "urn:sophiewell:file:source:lib/critcare-v112.js",
         "urn:sophiewell:file:source:lib/crowe-ddh-v353.js",
         "urn:sophiewell:file:source:lib/crs-v305.js",
+        "urn:sophiewell:file:source:lib/csendes-mirizzi-v1240.js",
         "urn:sophiewell:file:source:lib/cts6-v773.js",
         "urn:sophiewell:file:source:lib/cuff-leak-v903.js",
         "urn:sophiewell:file:source:lib/cvrisk-engines-v202.js",
@@ -67594,6 +67785,7 @@
         "urn:sophiewell:file:source:lib/narakas-obpp-v498.js",
         "urn:sophiewell:file:source:lib/narcolepsy-criteria-v855.js",
         "urn:sophiewell:file:source:lib/nash-moe-rotation-v476.js",
+        "urn:sophiewell:file:source:lib/nassar-gallbladder-v1240.js",
         "urn:sophiewell:file:source:lib/neck-zone-v366.js",
         "urn:sophiewell:file:source:lib/nems-v544.js",
         "urn:sophiewell:file:source:lib/nen-who-grade-v797.js",
@@ -67678,6 +67870,7 @@
         "urn:sophiewell:file:source:lib/panc3-v597.js",
         "urn:sophiewell:file:source:lib/papile-ivh-v430.js",
         "urn:sophiewell:file:source:lib/paris-classification-v329.js",
+        "urn:sophiewell:file:source:lib/parkland-gallbladder-v1240.js",
         "urn:sophiewell:file:source:lib/parks-fistula-v395.js",
         "urn:sophiewell:file:source:lib/pas-swallow-v367.js",
         "urn:sophiewell:file:source:lib/pass-pheo-v660.js",
@@ -67986,6 +68179,7 @@
         "urn:sophiewell:file:source:views/group-v122.js",
         "urn:sophiewell:file:source:views/group-v123.js",
         "urn:sophiewell:file:source:views/group-v124.js",
+        "urn:sophiewell:file:source:views/group-v1240.js",
         "urn:sophiewell:file:source:views/group-v125.js",
         "urn:sophiewell:file:source:views/group-v126.js",
         "urn:sophiewell:file:source:views/group-v127.js",
@@ -68749,6 +68943,7 @@
     {
       "ref": "pkg:application/sophiewell-mcp",
       "dependsOn": [
+        "urn:sophiewell:file:mcp-source:mcp/adapters/aast-cholecystitis-v1240.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/aat-deficiency-v830.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/abc-scale-v729.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ablett-tetanus-v576.js",
@@ -68897,6 +69092,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/critcare-v112.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/crowe-ddh-v353.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/crs-v305.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/csendes-mirizzi-v1240.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cts6-v773.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cuff-leak-v903.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cvrisk-engines-v202.js",
@@ -69216,6 +69412,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/narakas-obpp-v498.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/narcolepsy-criteria-v855.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nash-moe-rotation-v476.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/nassar-gallbladder-v1240.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/neck-zone-v366.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nems-v544.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nen-who-grade-v797.js",
@@ -69282,6 +69479,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/panc3-v597.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/papile-ivh-v430.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/paris-classification-v329.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/parkland-gallbladder-v1240.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/parks-fistula-v395.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pas-swallow-v367.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pass-pheo-v660.js",
@@ -69640,7 +69838,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "a9c9ff0f49fe273c"
+      "value": "bac4b8138062b5e3"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -69652,7 +69850,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2430"
+      "value": "2439"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

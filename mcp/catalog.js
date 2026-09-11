@@ -764,6 +764,10 @@ import hepaticIronIndexV932 from './adapters/hepatic-iron-index-v932.js';
 import vexusV958 from './adapters/vexus-v958.js';
 import sowsV1061 from './adapters/sows-v1061.js';
 import sowsSubjectiveV1062 from './adapters/sows-subjective-v1062.js';
+import parklandGallbladderV1240 from './adapters/parkland-gallbladder-v1240.js';
+import nassarGallbladderV1240 from './adapters/nassar-gallbladder-v1240.js';
+import aastCholecystitisV1240 from './adapters/aast-cholecystitis-v1240.js';
+import csendesMirizziV1240 from './adapters/csendes-mirizzi-v1240.js';
 import ticiV960 from './adapters/tici-v960.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
@@ -1555,6 +1559,10 @@ const ADAPTER_MODULES = [
   ['vexus-v958', vexusV958],
   ['sows-v1061', sowsV1061],
   ['sows-subjective-v1062', sowsSubjectiveV1062],
+  ['parkland-gallbladder-v1240', parklandGallbladderV1240],
+  ['nassar-gallbladder-v1240', nassarGallbladderV1240],
+  ['aast-cholecystitis-v1240', aastCholecystitisV1240],
+  ['csendes-mirizzi-v1240', csendesMirizziV1240],
   ['tici-v960', ticiV960],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],

@@ -8077,6 +8077,18 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/sows-subjective-v1062.js (spec-v1062: Subjective Opiate Withdrawal Scale — clinical disclaimer)
 - `sows-subjective`
 
+### lib/parkland-gallbladder-v1240.js (spec-v1240: Parkland grading scale for cholecystitis — clinical disclaimer)
+- `parkland-gallbladder`
+
+### lib/nassar-gallbladder-v1240.js (spec-v1240: Nassar operative difficulty grade — clinical disclaimer)
+- `nassar-gallbladder`
+
+### lib/aast-cholecystitis-v1240.js (spec-v1240: AAST severity grade for acute cholecystitis — clinical disclaimer)
+- `aast-cholecystitis`
+
+### lib/csendes-mirizzi-v1240.js (spec-v1240: Csendes classification of Mirizzi syndrome — clinical disclaimer)
+- `csendes-mirizzi`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 
