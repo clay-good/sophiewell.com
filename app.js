@@ -765,6 +765,7 @@ import { renderers as RV1061 } from './views/group-v1061.js';
 import { renderers as RV1062 } from './views/group-v1062.js';
 import { renderers as RV1240 } from './views/group-v1240.js';
 import { renderers as RV1241 } from './views/group-v1241.js';
+import { renderers as RV1242 } from './views/group-v1242.js';
 import { renderers as RV164 } from './views/group-v164.js';
 import { renderers as RV165 } from './views/group-v165.js';
 import { renderers as RV166 } from './views/group-v166.js';
@@ -852,7 +853,7 @@ const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...R
   ...RV902,
   ...RV903,
   ...RV905,
-  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV960, ...RV1061, ...RV1062, ...RV1240, ...RV1241, ...RV63, ...RPALINT };
+  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV960, ...RV1061, ...RV1062, ...RV1240, ...RV1241, ...RV1242, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -2777,6 +2778,16 @@ const UTILITIES = [
   { id: 'ao-spine-subaxial', name: 'AO Spine Subaxial Cervical Spine Injury Classification', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'herbert-scaphoid', name: 'Herbert Classification (Scaphoid Fracture)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'lenke-scoliosis', name: 'Lenke Classification (Adolescent Idiopathic Scoliosis)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v1242: four vascular classifications, each describing an artery the catalog already
+  // described another way -- Stanford beside DeBakey, ECST beside NASCET, Rutherford's ACUTE classes
+  // beside his chronic categories, and the endoleak types, which had no tile at all.
+  // views/group-v1242.js, lib/stanford-dissection-v1242.js, lib/ecst-carotid-v1242.js,
+  // lib/endoleak-type-v1242.js, lib/rutherford-ali-v1242.js, mcp/adapters/<id>-v1242.js.
+  { id: 'stanford-dissection', name: 'Stanford Classification (Aortic Dissection)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ecst-carotid', name: 'ECST Carotid Stenosis (with NASCET conversion)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'endoleak-type', name: 'Endoleak Classification (after EVAR)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'rutherford-ali', name: 'Rutherford Classification (Acute Limb Ischemia)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v960: the mTICI reperfusion grade, and the one option where it and the original TICI
   // scale call the same angiogram a success and a failure. views/group-v960.js,

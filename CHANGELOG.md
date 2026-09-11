@@ -6,6 +6,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Four vascular classifications: the same artery, described twice.** Stanford
+  beside DeBakey, ECST beside NASCET (the same artery is 50% by one method and
+  75% by the other), Rutherford's ACUTE limb-ischemia classes beside his chronic
+  categories, and the endoleak types, which had no tile at all. See
+  docs/spec-v1242.md.
+
 - **Four spine and orthopedic classifications, each beside one already here.**
   The AO Spine thoracolumbar classification with its TL AOSIS score (which TLICS
   is not), the AO Spine subaxial cervical code (which SLIC is not), the Herbert

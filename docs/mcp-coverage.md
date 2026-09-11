@@ -8101,6 +8101,18 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/lenke-scoliosis-v1241.js (spec-v1241: Lenke classification of adolescent idiopathic scoliosis — clinical disclaimer)
 - `lenke-scoliosis`
 
+### lib/stanford-dissection-v1242.js (spec-v1242: Stanford classification of aortic dissection — clinical disclaimer)
+- `stanford-dissection`
+
+### lib/ecst-carotid-v1242.js (spec-v1242: ECST carotid stenosis with NASCET conversion — clinical disclaimer)
+- `ecst-carotid`
+
+### lib/endoleak-type-v1242.js (spec-v1242: endoleak classification after EVAR — clinical disclaimer)
+- `endoleak-type`
+
+### lib/rutherford-ali-v1242.js (spec-v1242: Rutherford acute limb ischemia classification — clinical disclaimer)
+- `rutherford-ali`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

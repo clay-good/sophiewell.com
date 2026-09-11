@@ -7784,6 +7784,45 @@
       ],
       "tile": "lenke-scoliosis",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "stanford type a or b",
+        "is this dissection type a",
+        "ascending aorta dissection type",
+        "complicated type b dissection"
+      ],
+      "tile": "stanford-dissection",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "ecst stenosis",
+        "convert ecst to nascet",
+        "carotid stenosis two methods",
+        "which carotid measurement method"
+      ],
+      "tile": "ecst-carotid",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "endoleak type",
+        "leak after evar",
+        "sac still filling after stent graft"
+      ],
+      "tile": "endoleak-type",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "acute limb ischemia category",
+        "is this leg salvageable",
+        "cold white leg category",
+        "rutherford acute limb"
+      ],
+      "tile": "rutherford-ali",
+      "audience": "clinicians"
     }
   ]
 }

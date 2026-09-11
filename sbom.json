@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:d168b538-8cf1-525c-8eeb-a09ae76a7152",
+  "serialNumber": "urn:uuid:78fb3607-abad-5787-8ceb-c20ac7108c75",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-11T20:35:33.627Z",
+    "timestamp": "2026-09-11T21:30:01.928Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1714 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1718 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "77cdef2b79d6a0b5ccc7002dabd998c7d623bcfd71e238d65a896991714038f3"
+          "content": "358e4b43f0abe15d5c7b0ec79c81528bf13396df488769b3595d7931918cc4b8"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "109848"
+          "value": "110084"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "587c9eec785b09826dbfcd5d0f175ee4579d40c689de506f5b1d53eb72302405"
+          "content": "07eb43243dbd67bf87fdbef223fdc0b6aa1fe66eac246d403c18c396dca23482"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "515849"
+          "value": "516981"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9d950fb13a6c48ef7d6dedcbde08e5da4629ecca1895be6e573fa54ad818d2be"
+          "content": "5d374c4c29a5602466e5731ff54cbcc9efa8e04f065b0aae2f0447ace2f4b687"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "212966"
+          "value": "213468"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e098fb32d5fc46d9e9215b6acd29ec1efd6fa0957e0188f3d29eebf071f6344e"
+          "content": "a1b82020dbf5b542ccf80c077e7d30e4b6f755eb77e4cc1d8251ebd91db70c1f"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "96027"
+          "value": "96281"
         }
       ]
     },
@@ -4571,6 +4571,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/ecst-carotid-v1242.js",
+      "type": "file",
+      "name": "lib/ecst-carotid-v1242.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "704c073ede02093d4daaf8acf8c5076899ea4ccd9070ee50ae1ba7a17a3afca8"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6369"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/ed-decision-v218.js",
       "type": "file",
       "name": "lib/ed-decision-v218.js",
@@ -4945,6 +4966,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "17537"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/endoleak-type-v1242.js",
+      "type": "file",
+      "name": "lib/endoleak-type-v1242.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0c7acf6f3309f0acfa12325560daf827daf286376356c511bcc4eb849b7ebb2b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7013"
         }
       ]
     },
@@ -10163,7 +10205,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "946c67d46a63949735132f6d8d847ed950f2285fa1857cedbe3c087024be2219"
+          "content": "c55e0edcd42e1b1177625b1191b93cd88522d5d2713a474385f12d8bcbce57f1"
         }
       ],
       "properties": [
@@ -10173,7 +10215,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2474841"
+          "value": "2477901"
         }
       ]
     },
@@ -15197,6 +15239,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/rutherford-ali-v1242.js",
+      "type": "file",
+      "name": "lib/rutherford-ali-v1242.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6faaa5a67ab6e8b1f60df856dc5bd91183cfbec829175a41a211bafa3d9b9b67"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7705"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/sad-persons-v701.js",
       "type": "file",
       "name": "lib/sad-persons-v701.js",
@@ -16306,6 +16369,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2929"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/stanford-dissection-v1242.js",
+      "type": "file",
+      "name": "lib/stanford-dissection-v1242.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9a3a6f1ccb9877f506ae47b245b08483eaf6afdc649cdba1f920504ffbed1e84"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7111"
         }
       ]
     },
@@ -22253,6 +22337,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ecst-carotid-v1242.js",
+      "type": "file",
+      "name": "mcp/adapters/ecst-carotid-v1242.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ff5325260d93ebc24abe1eb469604b745b756e0ef41cc41536de76715a508c3b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1651"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ed-decision-v218.js",
       "type": "file",
       "name": "mcp/adapters/ed-decision-v218.js",
@@ -22627,6 +22732,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4027"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/endoleak-type-v1242.js",
+      "type": "file",
+      "name": "mcp/adapters/endoleak-type-v1242.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0f40030b5b1a6dcb5c9539a66c39002670f5692721967507e5d5f88a58f05712"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1411"
         }
       ]
     },
@@ -32081,6 +32207,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/rutherford-ali-v1242.js",
+      "type": "file",
+      "name": "mcp/adapters/rutherford-ali-v1242.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "069a768ed3c80e61c4d6e94c6051ab71ce1c5f4fcd02894d83ebd92f751d8d01"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1978"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/sad-persons-v701.js",
       "type": "file",
       "name": "mcp/adapters/sad-persons-v701.js",
@@ -33127,6 +33274,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1196"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/stanford-dissection-v1242.js",
+      "type": "file",
+      "name": "mcp/adapters/stanford-dissection-v1242.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e4186ba65323cbe3a0e0d4fd111e4afc10183158fda42c8181940e3006ded830"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1667"
         }
       ]
     },
@@ -35069,7 +35237,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "697faeefa12b697107272a54b2fab507086f01d151f694a0c1cdd99804bebb6a"
+          "content": "a45cf5ec19e9d10ebf12453f86005827ff0284b3094938c419daeb109eb0c844"
         }
       ],
       "properties": [
@@ -35079,7 +35247,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "89401"
+          "value": "89877"
         }
       ]
     },
@@ -35983,6 +36151,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "8116"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1242.js",
+      "type": "file",
+      "name": "views/group-v1242.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a7e97359e45ee37afbb271a9b4fe9e0ca227a34c4221f580ba45185561edbfb3"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6798"
         }
       ]
     },
@@ -67700,6 +67889,7 @@
         "urn:sophiewell:file:source:lib/ebmt-score-v584.js",
         "urn:sophiewell:file:source:lib/echo-v158.js",
         "urn:sophiewell:file:source:lib/eckardt-v519.js",
+        "urn:sophiewell:file:source:lib/ecst-carotid-v1242.js",
         "urn:sophiewell:file:source:lib/ed-decision-v218.js",
         "urn:sophiewell:file:source:lib/eddecision-v107.js",
         "urn:sophiewell:file:source:lib/edinburgh-caa-v610.js",
@@ -67718,6 +67908,7 @@
         "urn:sophiewell:file:source:lib/endo-metab-v161.js",
         "urn:sophiewell:file:source:lib/endo-quant-v197.js",
         "urn:sophiewell:file:source:lib/endo-v136.js",
+        "urn:sophiewell:file:source:lib/endoleak-type-v1242.js",
         "urn:sophiewell:file:source:lib/enneking-v460.js",
         "urn:sophiewell:file:source:lib/entsleep-v243.js",
         "urn:sophiewell:file:source:lib/enturopsych-v254.js",
@@ -68206,6 +68397,7 @@
         "urn:sophiewell:file:source:lib/ruedi-allgower-pilon-v490.js",
         "urn:sophiewell:file:source:lib/russe-scaphoid-v416.js",
         "urn:sophiewell:file:source:lib/russell-taylor-subtroch-v482.js",
+        "urn:sophiewell:file:source:lib/rutherford-ali-v1242.js",
         "urn:sophiewell:file:source:lib/sad-persons-v701.js",
         "urn:sophiewell:file:source:lib/sade-retraction-v451.js",
         "urn:sophiewell:file:source:lib/samilson-prieto-v486.js",
@@ -68259,6 +68451,7 @@
         "urn:sophiewell:file:source:lib/spitz-atresia-v479.js",
         "urn:sophiewell:file:source:lib/sportsmsk-v244.js",
         "urn:sophiewell:file:source:lib/stamey-incontinence-v465.js",
+        "urn:sophiewell:file:source:lib/stanford-dissection-v1242.js",
         "urn:sophiewell:file:source:lib/startback-v781.js",
         "urn:sophiewell:file:source:lib/steinberg-avn-v407.js",
         "urn:sophiewell:file:source:lib/steinbrocker-ra-v469.js",
@@ -68396,6 +68589,7 @@
         "urn:sophiewell:file:source:views/group-v124.js",
         "urn:sophiewell:file:source:views/group-v1240.js",
         "urn:sophiewell:file:source:views/group-v1241.js",
+        "urn:sophiewell:file:source:views/group-v1242.js",
         "urn:sophiewell:file:source:views/group-v125.js",
         "urn:sophiewell:file:source:views/group-v126.js",
         "urn:sophiewell:file:source:views/group-v127.js",
@@ -69345,6 +69539,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/ebmt-score-v584.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/echo-v158.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/eckardt-v519.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/ecst-carotid-v1242.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ed-decision-v218.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/eddecision-v107.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/edinburgh-caa-v610.js",
@@ -69363,6 +69558,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/endo-metab-v161.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/endo-quant-v197.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/endo-v136.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/endoleak-type-v1242.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/enneking-v460.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/entsleep-v243.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/enturopsych-v254.js",
@@ -69813,6 +70009,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/ruedi-allgower-pilon-v490.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/russe-scaphoid-v416.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/russell-taylor-subtroch-v482.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/rutherford-ali-v1242.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/sad-persons-v701.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/sade-retraction-v451.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/samilson-prieto-v486.js",
@@ -69863,6 +70060,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/spitz-atresia-v479.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/sportsmsk-v244.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/stamey-incontinence-v465.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/stanford-dissection-v1242.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/startback-v781.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/steinberg-avn-v407.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/steinbrocker-ra-v469.js",
@@ -70058,7 +70256,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "d168b5388cf1325c"
+      "value": "78fb3607abada787"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -70070,7 +70268,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2449"
+      "value": "2458"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
