@@ -29,7 +29,11 @@ test('urea is excluded (formula is 2*Na + glucose/18 only)', () => {
 });
 
 test('band edges: <275 low, 275-295 normal, 295-320 elevated, >320 markedly', () => {
-  assert.equal(effectiveOsmolality({ sodium: '135', glucose: '0' }).tier, 'low');       // 270
+  // spec-v1234: this used a glucose of 0 to reach the low band cleanly. A serum
+  // glucose of 0 is outside BOUNDS.glucose (5-2000, "beyond recorded survivable
+  // extremes") and is now refused, so the band is reached with a hypoglycaemic
+  // but survivable 36 mg/dL.
+  assert.equal(effectiveOsmolality({ sodium: '135', glucose: '36' }).tier, 'low');       // 272
   assert.equal(effectiveOsmolality({ sodium: '140', glucose: '90' }).tier, 'normal');    // 285
   assert.equal(effectiveOsmolality({ sodium: '145', glucose: '180' }).tier, 'elevated'); // 300
   assert.equal(effectiveOsmolality({ sodium: '150', glucose: '400' }).tier, 'markedly-elevated'); // 322.2

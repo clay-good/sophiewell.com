@@ -20,6 +20,24 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **The last eighteen tools that answered from an impossible lab value.** Corrected
+  Phenytoin is the one to remember: the albumin divides, so an impossible one gave
+  a small *plausible* answer -- an albumin of 70 g/dL turned a measured 15 µg/mL
+  into 1.06 and the tool said *"below the 10-20 µg/mL therapeutic range"*, which
+  reads as an instruction to give more. SNAPPE-II scored an arterial pH of 80 in
+  its zero-point band, the calm end of a newborn illness-severity score. And
+  Phoenix sepsis was already throwing its impossible lactate away in silence and
+  scoring the other organ systems as though it had never been drawn.
+
+  With these, the sweep that asks whether any tool answers from a value an order of
+  magnitude past a published physiologic ceiling reports **zero**, from 116 fields
+  across 68 calculators when this run started.
+
+  One of these checks briefly went too far and blanked the Phoenix sepsis tile
+  entirely, because an empty field reads as a measurement of zero in JavaScript and
+  zero is below several of the ranges. Caught before release by the sweep that
+  drives every tool's own worked example through the page. See docs/spec-v1234.md.
+
 - **Eight more tools answered from an impossible value**, including fullPIERS, which
   turned a platelet count of 20,000 into a probability of an adverse maternal
   outcome, and MAGGIC, which quietly capped a systolic BP of 3000 mmHg at 300 and

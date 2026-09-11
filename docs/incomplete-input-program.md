@@ -470,10 +470,17 @@ reassuring side of the threshold where the example never goes (spec-v1092).
 
 ## What is still open
 
-- **A value past a ceiling `lib/bounds.js` already declares still produces an
-  answer in 26 fields**, spread over eighteen of the
-  catalog's entries (`scripts/probe-envelope-unbounded.mjs`). It was 116 across
-  sixty-eight until [spec-v1224](spec-v1224.md) took the seven ten-year
+- ~~**A value past a ceiling `lib/bounds.js` already declares still produces an
+  answer.**~~ **Drained to zero at [spec-v1234](spec-v1234.md)**, from **116
+  fields across sixty-eight** of the catalog's entries
+  (`scripts/probe-envelope-unbounded.mjs`), over eleven waves.
+
+  The probe's reach is unchanged and it states it: 396 fields map to one of 36
+  envelopes, 368 are testable against a worked example inside that envelope, none
+  is mis-mapped, and 28 carry no usable example. **Zero is a statement about
+  those 368**, not about the catalog.
+
+  The waves: [spec-v1224](spec-v1224.md) took the seven ten-year
   cardiovascular-risk engines (a clamp was standing in for a guard, so an SBP of
   3000 mmHg was centred at the top of the fitted range and reported as a risk
   percentage) and [spec-v1225](spec-v1225.md) took the eight serum-chemistry
@@ -490,7 +497,10 @@ reassuring side of the threshold where the example never goes (spec-v1092).
   claimed *"8 of 8 items assessed"* over a white-cell count of 2000), and
   [spec-v1233](spec-v1233.md) the fractional excretions and two more clamps
   (`fullpiers` turned a platelet count of 20,000 into a probability of an adverse
-  maternal outcome).
+  maternal outcome), and [spec-v1234](spec-v1234.md) the last eighteen
+  (`corrected-phenytoin` divides BY the albumin, so an impossible one gave a
+  small *plausible* answer and the tile read *"below the therapeutic range"*).
+
   The probe's REASSURING section reads zero, and has since
   [spec-v1211](spec-v1211.md) drained that bucket and fixed the classifier that
   had been hiding four of them. **That is a claim about the classifier's reach,
