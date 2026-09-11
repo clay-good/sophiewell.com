@@ -20,6 +20,17 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Forty more tools told you to enter a value you had just entered.** A plasma
+  creatinine of 250 mg/dL was answered with *"Enter urine sodium, plasma
+  creatinine, and urine creatinine"* -- so you retyped it and got the same sentence.
+  These now name the value that is out of range and give the range, while a blank
+  field is still asked for in the tool's own words, and the bounds are unchanged.
+
+  The wording came from the tools themselves: every one already publishes a label
+  and a unit for each of its inputs, so the refusal says *"Plasma creatinine
+  (mg/dL) must be between 0.1 and 30"* without anything being invented for it. See
+  docs/spec-v1236.md.
+
 - **Six more tools told you to enter a value you had just entered** -- the Fick
   cardiac output answered a haemoglobin of 250 g/dL with *"Enter the hemoglobin
   (g/dL)"*. Their file was skipped by the earlier sweep of this defect because it
