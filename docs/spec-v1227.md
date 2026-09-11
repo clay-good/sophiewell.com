@@ -92,6 +92,14 @@ Worth saying plainly: **a wave in this program created the row the same
 program's probe then found.** Adding a refusal adds a sentence, and a page that
 was silent about a field's range now publishes one.
 
+## A correction, from [spec-v1235](spec-v1235.md)
+
+The filter above has a third clause — *does not already mention `gradeFault`* —
+and it is wrong. `lib/gaps-v185.js` already imported the helper for three of its
+functions, so the whole file was skipped and six others in it kept the defect.
+**A file-level filter is the wrong granularity for a per-function defect**, and
+"ten files" was never the population.
+
 ## Ledger
 
 `probe-envelope-unbounded`, second section: **89 rows → 72 (spec-v1226) → 55.**

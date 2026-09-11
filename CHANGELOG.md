@@ -20,6 +20,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Six more tools told you to enter a value you had just entered** -- the Fick
+  cardiac output answered a haemoglobin of 250 g/dL with *"Enter the hemoglobin
+  (g/dL)"*. Their file was skipped by the earlier sweep of this defect because it
+  already used the fix elsewhere: a file-level filter for a per-function problem.
+  The Fick tool also needed its check moved, since it has two methods and the
+  automated pass had put the check inside the branch the default one never takes.
+  See docs/spec-v1235.md.
+
 - **The last eighteen tools that answered from an impossible lab value.** Corrected
   Phenytoin is the one to remember: the albumin divides, so an impossible one gave
   a small *plausible* answer -- an albumin of 70 g/dL turned a measured 15 µg/mL

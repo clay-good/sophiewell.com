@@ -559,11 +559,13 @@ reassuring side of the threshold where the example never goes (spec-v1092).
   blank, so each function's own missing-value message still names every empty
   field at once, and only the out-of-range value is called out.
   [spec-v1226](spec-v1226.md) took three files by hand and
-  [spec-v1227](spec-v1227.md) the ten that share the helper, 89 rows → 55. What
-  is left is the files whose missing-value message is built in a different shape
-  (`lib/echo-v158.js`, `lib/endo-metab-v161.js`) and the callers that read a
-  bound from a named constant rather than a literal, which the mechanical pass
-  skipped on purpose.
+  [spec-v1227](spec-v1227.md) the ten that share the helper and
+  [spec-v1235](spec-v1235.md) the file spec-v1227's own filter skipped, 89 rows →
+  51. What is left is the files whose missing-value message is built in a
+  different shape (`lib/echo-v158.js`, `lib/endo-metab-v161.js`), the callers
+  that read a bound from a named constant rather than a literal (skipped on
+  purpose), and a long tail of one- and two-row tiles each with its own message
+  shape — roughly thirty files, none of them mechanical.
 
 - ~~**A form with one value in it** has no gate.~~ **Closed by spec-v1037**: the oracle turned out to
   be already in the repo. `mcp/fields.js` marks inputs `required`, so the sweep clears exactly one of

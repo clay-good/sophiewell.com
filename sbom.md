@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `82e042fe30126104`
-Generated: 2026-09-11T00:43:50.853Z
+Build ID: `b156c80f65fc98e6`
+Generated: 2026-09-11T01:10:09.242Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -313,7 +313,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/gadolinium-nsf-v895.js` | 9843 | `1b238cda2427d15feed05c36c97b49cf9e5c8e9458caf6e699c983b9a3d15558` |
 | `lib/gags-v554.js` | 9715 | `198a4b0db19b6ca1368c20697ea8b3c0a2545de5dfa02a1a90aceff7440b3219` |
 | `lib/gapp-v569.js` | 13660 | `2befeec64a61fb7f8d8a38ae8bb35fea7080b9878991477eef4bab5bfe755e64` |
-| `lib/gaps-v185.js` | 25328 | `f7a953af698fdc04e1cec48431bea7503c9fc0d4f947dd204b80434a4b4d1396` |
+| `lib/gaps-v185.js` | 26968 | `f47a52f07879d4a521fb915c675d16353eb058e4cf600de36aa3244b6c886301` |
 | `lib/gardner-robertson-v802.js` | 6240 | `fa6f4e0ed73582fe0d82724cee56f2950c107e72e92b13e396f99f03e713e1f6` |
 | `lib/gartland-supracondylar-v377.js` | 4725 | `75c9dd3adaacb34df1e9041fda9aa71520517822e12f3308651aeb99a88ba426` |
 | `lib/gass-macular-hole-v471.js` | 3421 | `dc7d16ffdb39dde5b8e700a6679f2211affc0cf67e58b36be830640b59405b15` |
