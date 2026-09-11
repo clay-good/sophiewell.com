@@ -122,6 +122,23 @@ export const DISCLOSING = new RegExp([
   // a sentence that was in the note before any field was dropped, which is the
   // trap spec-v1196 named. Only the two forms these three tiles use are here.
   'holds whatever', 'turns out to be',
+  'not \\w+(?:able|ed) without', 'cannot be \\w+ without',
+  //
+  // spec-v1239: a seventh hand, and the same family as the sixth -- the tile
+  // says it cannot REACH a classification without the field, rather than that
+  // the field is missing. `not classifiable without` (ph-hemodynamics-2022),
+  // `not defined without` (rope-score), `not staged without`
+  // (aortic-stenosis-stage), and `cannot be assigned / applied / excluded
+  // without` across seven more files.
+  //
+  // Measured before adding, as the rule at the top requires:
+  //   probe-half-guarded            18 calculators -> 17
+  //   probe-omitted-field-decides   51 fields / 35 calculators -> 49 / 34 (section 3)
+  //
+  // `cannot be given without` is in that family by grammar and is about a DOSE
+  // rather than a gap, so it is worth knowing it is matched -- it appears only in
+  // static notes, where nothing was dropped, and a static sentence cannot exempt
+  // a row this probe raises because the row requires the verdict to have moved.
   //
   // Measured before adding, as the rule at the top requires. `holds whatever`
   // appears in code in TWO library files and `turns out to be` in two, all four

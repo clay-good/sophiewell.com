@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `0a39de9cfc9382cd`
-Generated: 2026-09-11T05:11:41.501Z
+Build ID: `a9c9ff0f49fe273c`
+Generated: 2026-09-11T09:04:38.605Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -427,7 +427,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/k6-v735.js` | 2836 | `3fa2ac4a54058b1dd4e36c93f001bc8e04766fa78b042d4ea6ec3a399770cd31` |
 | `lib/kadish-v443.js` | 3108 | `75d880fa7d037d9c0f95a49002d8072db568e4628e994117a2ddd9b63d35e2bb` |
 | `lib/katagiri-v606.js` | 12523 | `25c9e0325c85733e3dff37804267bbba20cb56892fcf59b372a25337d09747b1` |
-| `lib/kennedy-edentulous-v719.js` | 3821 | `9fb1c1734b9ddaa3d41abd1275c832aca330d9f2a7b912cbab323623af0072a9` |
+| `lib/kennedy-edentulous-v719.js` | 5218 | `0acbb98949908d90c41a208f1ee94bea2ab998669ec0c4e30e5ea384ba8b3443` |
 | `lib/keyboard.js` | 4876 | `631f85b7b49a68ca7aa8e3c3d31cfbfbefb44360a5aace83305ed27d5e0d8ee0` |
 | `lib/keywords.js` | 2715 | `8ba3e40698eaf14947556b0d2078f168a99e8589644808057fa1b453d903a742` |
 | `lib/kikuchi-v333.js` | 4405 | `72627d9482ffa26501879c46ba68e3d7bf6f4adfb2894f5a4ffc8463ee1cf2d7` |

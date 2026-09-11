@@ -20,6 +20,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **The Kennedy classification reported a partially edentulous arch as though nobody
+  had left a question unanswered.** Leaving the number of additional edentulous
+  areas blank was read as *none*, so an arch that is Class II mod 1 came back as
+  Class II -- a different arch, designed to differently. The class itself is settled
+  by the most-posterior area alone, so the tool still answers it, and now says that
+  the modification count was not stated. A typed 0 is still an answer, and Class IV
+  says nothing extra because it admits no modifications at all. See
+  docs/spec-v1239.md.
+
 - **Four tools were left without a plausibility check that the tool beside them had
   just been given.** The Toronto HCC risk score took a platelet count of 20,000
   while its neighbour refused one; the two fatty-liver scores took any BMI at all.

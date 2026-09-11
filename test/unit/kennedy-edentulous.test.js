@@ -19,10 +19,36 @@ test('worked example: Class II with 1 modification', () => {
   assert.match(r.band, /Kennedy Class II, modification 1/);
 });
 
-test('modifications default to 0 when omitted', () => {
+// spec-v1239: this test asserted the defect, and its title said so. An omitted
+// modification count was read as 0, and 0 here is a CLAIM -- that there are no
+// additional edentulous areas. Class II mod 1 is a different arch from Class II
+// and a partial denture is designed to it, so "nobody said" and "none" are not
+// the same answer.
+//
+// The class itself is settled by the most-posterior area alone, so the tile
+// still answers; what it adds is which part it does not know.
+test('an omitted modification count is not a count of zero', () => {
   const r = kennedyEdentulous({ primaryClass: 'III' });
   assert.equal(r.valid, true);
+  assert.equal(r.modifications, null);
+  assert.equal(r.modificationsStated, false);
+  assert.equal(r.bandLabel, 'Kennedy Class III');
+  assert.match(r.band, /not stated/);
+});
+
+test('a stated zero is still an answer, and says nothing extra', () => {
+  const r = kennedyEdentulous({ primaryClass: 'III', modifications: 0 });
   assert.equal(r.modifications, 0);
+  assert.equal(r.modificationsStated, true);
+  assert.doesNotMatch(r.band, /not stated/);
+});
+
+// Class IV admits no modifications under the Applegate rule, so there is
+// nothing left unstated and nothing to disclose.
+test('Class IV says nothing about modifications, because it cannot have any', () => {
+  const r = kennedyEdentulous({ primaryClass: 'IV' });
+  assert.equal(r.valid, true);
+  assert.doesNotMatch(r.band, /not stated/);
 });
 
 test('Class IV admits no modifications (Applegate rule)', () => {

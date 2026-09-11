@@ -52,12 +52,39 @@ function texts(v, out = [], top = true) {
   return out;
 }
 
+// spec-v1239: `band` is the SENTENCE, not the verdict, and including it made
+// this probe compare prose.
+//
+// `nichd-fhr` reads "Category II" with the late decelerations entered and
+// "Category II" without them -- the tracing has minimal variability, so neither
+// Category I nor Category III is reachable and the decelerations cannot change
+// it. What differs is the REASON list: "Not Category I because variability is
+// minimal, not moderate; late decelerations are recurrent" loses its second
+// clause. The verdict did not move; the explanation got shorter, and the probe
+// called that a tile answering in silence from a field that decides the answer.
+//
+// So the classification fields come first, and `band` is the fallback only when
+// a tile has none of them -- which many do, and dropping it outright would blind
+// the probe on those (the reach line below counts them).
+// spec-v1239: and the list of classification fields was short. Measured across
+// the catalog, a tile's structured verdict also arrives as `tier` (87 tiles),
+// `grade` (76), `stage` (60), `category` (50), `severity` (28), `group` (28),
+// `risk` (27), `verdict` (18), `classification` (17), `gradeLabel` (16) and
+// `bandKey`. `truelove-witts` returns `bandKey: 'severe'` unchanged whichever
+// systemic criterion is dropped -- the grade is severe either way, because the
+// others are met -- and was flagged for a criteria LIST that got shorter.
+//
+// `type` and `basis` are deliberately out: they name what KIND of calculation
+// ran, not what it concluded.
+const VERDICT_KEYS = ['bandLabel', 'bandKey', 'stage', 'severity', 'grade', 'gradeLabel',
+  'risk', 'category', 'class', 'classification', 'tier', 'group', 'verdict'];
 function verdictKey(r) {
   if (!r || typeof r !== 'object') return null;
   const parts = [];
-  for (const k of ['bandLabel', 'band', 'stage', 'severity', 'grade', 'risk', 'category', 'class']) {
+  for (const k of VERDICT_KEYS) {
     if (typeof r[k] === 'string' && r[k]) parts.push(`${k}=${r[k]}`);
   }
+  if (!parts.length && typeof r.band === 'string' && r.band) parts.push(`band=${r.band}`);
   return parts.length ? parts.join(' | ').replace(/[\d.]+/g, '') : null;
 }
 
