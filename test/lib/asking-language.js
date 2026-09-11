@@ -107,6 +107,34 @@ export const DISCLOSING = new RegExp([
   // assessable by GLIM: the weight loss and the body mass index ... not stated").
   // All four are tiles disclosing correctly, and none of them answers anyway.
   'not stated',
+  // spec-v1238: a sixth hand, and the narrowest one yet. Three tiles say the
+  // unstated field CANNOT change the verdict rather than that it is missing --
+  // `duke-treadmill` ("moderate risk (DTS -10 to +4) whatever the angina index
+  // turns out to be"), `mascc` and the two aneurysm scores in neuro-v118 ("which
+  // holds whatever the location and the population turn out to be"). That is a
+  // disclosure, and a stronger one than "not entered": it names the gap AND says
+  // it does not matter here.
+  //
+  // THE PATTERN HAS TO BE NARROW. The bare word `whatever` appears in 30 library
+  // files, and nearly all of them are STATIC PROSE about the instrument -- "a
+  // disoriented patient scores it whatever the cause", "a lung score of 2 or 3 is
+  // severe whatever the other organs show". Matching that would exempt tiles for
+  // a sentence that was in the note before any field was dropped, which is the
+  // trap spec-v1196 named. Only the two forms these three tiles use are here.
+  'holds whatever', 'turns out to be',
+  //
+  // Measured before adding, as the rule at the top requires. `holds whatever`
+  // appears in code in TWO library files and `turns out to be` in two, all four
+  // genuine disclosures -- and every other use of the bare word `whatever`, in 30
+  // files, is static prose and is deliberately not matched.
+  //
+  //   probe-half-guarded          21 calculators -> 18
+  //   probe-omitted-field-decides 33 fields / 14 calculators -> 31 / 12  (section 2)
+  //                               55 fields / 37 calculators -> 51 / 35  (section 3)
+  //
+  // The five rows are `duke-treadmill`, `mascc`, `elapss` and `phases`, all of
+  // which name the unstated field AND say it cannot change the verdict -- a
+  // stronger disclosure than "not entered", and the reason this list exists.
   // spec-v1195: a fifth hand on the same sentence. `not entered` (63 uses across
   // 46 files) and `not assessed` were on the list; the house also writes the
   // observation was not RECORDED, not GRADED, not RATED and not MEASURED, and
