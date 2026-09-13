@@ -49,6 +49,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **An invalid meal input could disappear from an insulin dose.** Negative
+  carbohydrates were treated as a blank correction-only entry, and a positive
+  meal dose below 0.1 U rounded until it looked identical to no meal component.
+  Negative carbohydrates now refuse, positive carbohydrates require a positive
+  insulin-to-carbohydrate ratio, and a positive dose below display precision
+  says so. Blank and typed-zero carbohydrates still produce a correction-only
+  dose. See docs/spec-v1245.md.
+
 - **The last ten inputs whose refusal asked for a value the reader had already
   entered.** An ADHERE systolic blood pressure of 3,000 mmHg returned no field
   message, while an electrolyte-free water clearance plasma sodium of 2,500

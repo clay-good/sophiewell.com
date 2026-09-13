@@ -44,3 +44,32 @@ test('insulin-correction: requires currentBG and targetBG', () => {
 test('insulin-correction: requires ISF or TDD', () => {
   assert.throws(() => insulinCorrection({ currentBG: 250, targetBG: 150 }));
 });
+
+test('insulin-correction: rejects a negative carb entry instead of silently dropping it', () => {
+  assert.throws(
+    () => insulinCorrection({ currentBG: 250, targetBG: 150, isf: 50, carbs: -60, icr: 10 }),
+    /carbs must be zero or more/,
+  );
+});
+
+test('insulin-correction: positive carbs require a positive insulin-to-carb ratio', () => {
+  assert.throws(
+    () => insulinCorrection({ currentBG: 250, targetBG: 150, isf: 50, carbs: 60 }),
+    /provide a positive insulin-to-carb ratio/,
+  );
+  assert.throws(
+    () => insulinCorrection({ currentBG: 250, targetBG: 150, isf: 50, carbs: 60, icr: 0 }),
+    /provide a positive insulin-to-carb ratio/,
+  );
+});
+
+test('insulin-correction: correction-only remains valid for blank or typed-zero carbs', () => {
+  assert.equal(insulinCorrection({ currentBG: 250, targetBG: 150, isf: 50, carbs: null }).totalUnits, 2);
+  assert.equal(insulinCorrection({ currentBG: 250, targetBG: 150, isf: 50, carbs: 0 }).totalUnits, 2);
+});
+
+test('insulin-correction: meal coverage below display precision is disclosed', () => {
+  const r = insulinCorrection({ currentBG: 250, targetBG: 150, isf: 50, carbs: 60, icr: 999_999 });
+  assert.equal(r.mealUnits, 0);
+  assert.match(r.text, /entered carbohydrate coverage is greater than 0 U but below the 0\.1 U display precision/);
+});

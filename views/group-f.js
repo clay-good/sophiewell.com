@@ -753,8 +753,8 @@ export const renderers = {
         isf:       nv('ic-isf'),
         totalDailyDose: nv('ic-tdd'),
         isfRule:   document.getElementById('ic-rule').value,
-        carbs:     nv('ic-carbs'),
-        icr:       nv('ic-icr'),
+        carbs:     nvOrNull('ic-carbs'),
+        icr:       nvOrNull('ic-icr'),
       });
       resultRow(o, [
         { label: 'Total', value: r.totalUnits, units: 'U' },
@@ -762,6 +762,7 @@ export const renderers = {
         { label: 'Correction', value: r.correctionUnits, units: 'U' },
         { label: 'Meal coverage', value: r.mealUnits, units: 'U' },
       ]);
+      if (r.mealNote) o.appendChild(el('p', { class: 'muted', text: r.mealNote }));
       o.appendChild(el('p', { class: 'clinical-notice', text: 'ADA 2024 hospital glycemic target: 140-180 mg/dL non-critical; 110-180 mg/dL ICU.' }));
     });
     ['ic-bg', 'ic-target', 'ic-isf', 'ic-tdd', 'ic-rule', 'ic-carbs', 'ic-icr'].forEach((id) => document.getElementById(id).addEventListener('input', run));
