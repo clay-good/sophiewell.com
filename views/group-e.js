@@ -801,12 +801,12 @@ export const renderers = {
 
   // spec-v13 §3.6.1 wave 13-6: VIS (Gaies 2010).
   vis(root) {
-    root.appendChild(field('Dopamine (mcg/kg/min)', 'vs-dop', { value: 0 }));
-    root.appendChild(field('Dobutamine (mcg/kg/min)', 'vs-dob', { value: 0 }));
-    root.appendChild(field('Epinephrine (mcg/kg/min)', 'vs-epi', { value: 0 }));
-    root.appendChild(field('Norepinephrine (mcg/kg/min)', 'vs-ne', { value: 0 }));
-    root.appendChild(field('Milrinone (mcg/kg/min)', 'vs-mil', { value: 0 }));
-    root.appendChild(field('Vasopressin (units/kg/min)', 'vs-vaso', { value: 0 }));
+    root.appendChild(field('Dopamine (mcg/kg/min)', 'vs-dop', { min: 0, value: 0 }));
+    root.appendChild(field('Dobutamine (mcg/kg/min)', 'vs-dob', { min: 0, value: 0 }));
+    root.appendChild(field('Epinephrine (mcg/kg/min)', 'vs-epi', { min: 0, value: 0 }));
+    root.appendChild(field('Norepinephrine (mcg/kg/min)', 'vs-ne', { min: 0, value: 0 }));
+    root.appendChild(field('Milrinone (mcg/kg/min)', 'vs-mil', { min: 0, value: 0 }));
+    root.appendChild(field('Vasopressin (units/kg/min)', 'vs-vaso', { min: 0, value: 0 }));
     const o = out(); root.appendChild(o);
     const deriv = renderDerivation(META.vis);
     if (deriv) root.appendChild(deriv);

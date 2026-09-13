@@ -49,6 +49,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A negative infusion rate reduced the Vasoactive-Inotropic Score.** VIS
+  accepted a finite negative dose and subtracted its weighted contribution,
+  which could make hemodynamic support look lower than it was. Every entered
+  dopamine, dobutamine, epinephrine, norepinephrine, milrinone, and vasopressin
+  dose now refuses below 0; 0 remains the explicit no-drip value. See
+  docs/spec-v1247.md.
+
 - **A negative renal measurement was displayed as an incomplete optional
   calculation.** The FENa/FEUrea suite correctly allows either fraction to be
   calculated alone, but that partial path also hid a negative urine or plasma

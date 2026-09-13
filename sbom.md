@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `1acb3ffee92a9a49`
-Generated: 2026-09-13T23:13:49.103Z
+Build ID: `f47e82a1e7be4e78`
+Generated: 2026-09-13T23:40:17.725Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -182,7 +182,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/clavien-dindo-v320.js` | 5404 | `ae140f525e3d1f6103581f1d1e2eeed46813f69ada14d9c764ed867d51bda76b` |
 | `lib/cleveland-constipation-v665.js` | 4841 | `b5e66d05b1f5b2258281a9dc3246f35e6e83de248cabe44a914d2cbe72fd6400` |
 | `lib/clinical-obesity-v838.js` | 8584 | `742a529bbd6a43b4a9f695f82f2134c5bf24b16ae67e2e8cbdffb39f4b198cb3` |
-| `lib/clinical-v4.js` | 20732 | `d20bcdfd4925c1f501617a897a9f96ceb8dd4459c94f1d84dd0181564a7e4769` |
+| `lib/clinical-v4.js` | 20983 | `94b62649fbc079ccf1984b3221cd589afa5ee1a732a4f61ccaa52fb428327f18` |
 | `lib/clinical-v5.js` | 26754 | `4df98038ca48fff64abef3add3cd59b7322a5f20545f0fdf6b842cb9d0eaee2e` |
 | `lib/clinical-v6.js` | 16042 | `69c1de74d7f171a3c6e87329c1cb69324758a368a34f1961e6201caec0470f8d` |
 | `lib/clinical-v7.js` | 18981 | `cf450d3918c731cac7d5383a4d40afc7719f2a3902c9988f5ebb0897dc596268` |
@@ -1740,7 +1740,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-a.js` | 577 | `eed37c656d1fa00c097a07f07db4b1b6ac7a0a74bafc210978265a1d90856bd7` |
 | `views/group-b.js` | 77683 | `2fcd8299f0997d82d73d3c103f9a16b990300c12fe40f48394c0b2b7e4551b55` |
 | `views/group-c.js` | 26643 | `c139c073fd2c3a107f1865ff5e41dd671e988a06b16fe6d0efb050d6da2e060c` |
-| `views/group-e.js` | 50419 | `47601eae237fe804751734f19c480a40cde78684a4e8745b742756d654ffb889` |
+| `views/group-e.js` | 50467 | `5a9600e17e12bf6d365cfe7fbe90907f36e9e9d0cfef687a00fa0d2bb75d2e52` |
 | `views/group-f.js` | 54290 | `93098b21bd8a2bab4a67ae2cfcc6c3c10d2b59ab9c39fe26a744845b93b96cb7` |
 | `views/group-g.js` | 249897 | `032fc9a99e64f79c48a2af9112e62b1e765601ee20d5b6c86ebf5c0ba5b5c744` |
 | `views/group-h.js` | 30927 | `c5d2e4c2ded7c81defbc22018ec759ca79442b303bde3394aba14da24872b109` |

@@ -28,3 +28,9 @@ test('vis Wernovsky IS: dopamine + dobutamine + 100*epi', () => {
   const r = vis({ dopamine: 5, dobutamine: 5, epinephrine: 0.05 });
   assert.equal(r.is, 15);
 });
+
+test('vis refuses a negative infusion instead of subtracting it from support', () => {
+  assert.throws(() => vis({ dopamine: -5, norepinephrine: 0.05 }), /^RangeError: Dopamine dose cannot be negative/);
+  assert.throws(() => vis({ vasopressin: -0.0004 }), /^RangeError: Vasopressin dose cannot be negative/);
+  assert.equal(vis({ dopamine: 0 }).vis, 0);
+});

@@ -45,7 +45,7 @@ const showAll = !!arg('--all');
 // spec-v1209 added `gradeFault` and this line is why the instruction above it is
 // worded that way: the new helper guarded two of this probe's own residue rows
 // and the probe went on printing them, because the list did not know the name.
-const GUARDS = ['boundsAdvisory', 'inputFault', 'gradeFault', 'outsideEnvelope', 'outOfRange', 'outsideRange'];
+const GUARDS = ['boundsAdvisory', 'inputFault', 'gradeFault', 'negativeMeasurementFault', 'outsideEnvelope', 'outOfRange', 'outsideRange'];
 
 // spec-v1237: ...and a guard does not have to be a HELPER CALL. Three functions
 // were reported for not guarding a measurement they do guard, by comparing it
