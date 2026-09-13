@@ -681,8 +681,9 @@ export const renderers = {
     if (deriv) root.appendChild(deriv);
     const run = () => safe(o, () => {
       const inputs = {
-        urineNa: num('fn-una'), plasmaNa: num('fn-pna'), urineCr: num('fn-ucr'), plasmaCr: num('fn-pcr'),
-        urineUrea: num('fu-uu'), plasmaUrea: num('fu-pu'),
+        urineNa: numOrNull('fn-una'), plasmaNa: numOrNull('fn-pna'),
+        urineCr: numOrNull('fn-ucr'), plasmaCr: numOrNull('fn-pcr'),
+        urineUrea: numOrNull('fu-uu'), plasmaUrea: numOrNull('fu-pu'),
       };
       const fena = V4.feNa({ urineNa: inputs.urineNa, plasmaNa: inputs.plasmaNa, urineCr: inputs.urineCr, plasmaCr: inputs.plasmaCr });
       const feurea = V4.feUrea({ urineUrea: inputs.urineUrea, plasmaUrea: inputs.plasmaUrea, urineCr: inputs.urineCr, plasmaCr: inputs.plasmaCr });

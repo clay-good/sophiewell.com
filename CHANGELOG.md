@@ -49,6 +49,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A negative renal measurement was displayed as an incomplete optional
+  calculation.** The FENa/FEUrea suite correctly allows either fraction to be
+  calculated alone, but that partial path also hid a negative urine or plasma
+  urea value by treating it as blank. Negative sodium, urea, and creatinine
+  measurements now refuse by name; omitted values and the existing
+  zero-as-missing contract remain unchanged. See docs/spec-v1246.md.
+
 - **An invalid meal input could disappear from an insulin dose.** Negative
   carbohydrates were treated as a blank correction-only entry, and a positive
   meal dose below 0.1 U rounded until it looked identical to no meal component.

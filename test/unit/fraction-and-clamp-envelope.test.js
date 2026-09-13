@@ -32,6 +32,14 @@ test('fena/feurea refuse the plasma end and leave the urine end alone', () => {
   assert.equal(feNa({ urineNa: 20, plasmaNa: 140, urineCr: 60 }), null);
 });
 
+test('fena/feurea distinguish a negative measurement from an omitted one', () => {
+  assert.throws(() => feNa({ urineNa: -20, plasmaNa: 140, urineCr: 60, plasmaCr: 2 }), /^RangeError: Urine sodium cannot be negative/);
+  assert.throws(() => feUrea({ urineUrea: -300, plasmaUrea: 60, urineCr: 60, plasmaCr: 2 }), /^RangeError: Urine urea cannot be negative/);
+  assert.throws(() => feUrea({ urineUrea: 300, plasmaUrea: -60, urineCr: 60, plasmaCr: 2 }), /^RangeError: Plasma urea \(BUN\) cannot be negative/);
+  assert.equal(feNa({ urineNa: null, plasmaNa: 140, urineCr: 60, plasmaCr: 2 }), null);
+  assert.equal(feUrea({ urineUrea: null, plasmaUrea: 60, urineCr: 60, plasmaCr: 2 }), null);
+});
+
 test('the two other fractional excretions refuse the plasma creatinine only', () => {
   assert.match(fepo4({ urinePhos: 40, plasmaPhos: 2, urineCr: 60, plasmaCr: 250 }).message, /serum creatinine/);
   assert.match(femg({ urineMg: 5, plasmaMg: 2, urineCr: 60, plasmaCr: 250 }).message, /serum creatinine/);
