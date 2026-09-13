@@ -49,6 +49,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **The last ten inputs whose refusal asked for a value the reader had already
+  entered.** An ADHERE systolic blood pressure of 3,000 mmHg returned no field
+  message, while an electrolyte-free water clearance plasma sodium of 2,500
+  mEq/L said to enter plasma sodium again. Eight calculators now distinguish a
+  blank field from an entered number outside the same existing bounds, and the
+  catalog-wide probe reports zero remaining rows. See docs/spec-v1244.md.
+
 - **The Kennedy classification reported a partially edentulous arch as though nobody
   had left a question unanswered.** Leaving the number of additional edentulous
   areas blank was read as *none*, so an arch that is Class II mod 1 came back as
