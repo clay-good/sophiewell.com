@@ -1837,18 +1837,59 @@ test('R-PA-HCSC-015 runs only for an explicit written-order requirement', () => 
   assert.equal(complete.find((x) => x.ruleId === 'R-PA-HCSC-015').status, 'pass');
 });
 
-test('R-PA-HCSC-017 flags an HCSC transplant request with no Blue Distinction routing', () => {
-  const text = 'Blue Cross Blue Shield of Illinois member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-HCSC-017');
-  assert.equal(f.status, 'flag');
+test('R-PA-HCSC-016 scopes level-of-care rationale to intensive behavioral health', () => {
+  const generic = runEngine(bundleOf('Blue Cross Blue Shield of Illinois member.\nMental health counseling request.\n'));
+  assert.equal(generic.find((x) => x.ruleId === 'R-PA-HCSC-016').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Blue Cross Blue Shield of Illinois member.\nResidential substance use treatment request.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-HCSC-016').status, 'info');
+
+  const complete = runEngine(bundleOf('Blue Cross Blue Shield of Illinois member.\nResidential substance use treatment request.\nRisk assessment: severe withdrawal risk requires 24-hour care.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-HCSC-016').status, 'pass');
 });
 
-test('R-PA-HCSC-020 flags an HCSC out-of-network request with no network-gap justification (info)', () => {
-  const text = 'Blue Cross Blue Shield of Illinois member.\nOut-of-network prior authorization request.\nProcedure CPT 70551.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-HCSC-020');
-  assert.equal(f.status, 'info');
+test('R-PA-HCSC-017 runs only for an explicit designated transplant-center requirement', () => {
+  const generic = runEngine(bundleOf('Blue Cross Blue Shield of Illinois member.\nKidney transplant authorization request.\n'));
+  assert.equal(generic.find((x) => x.ruleId === 'R-PA-HCSC-017').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Blue Cross Blue Shield of Illinois member.\nBlue Distinction Center required.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-HCSC-017').status, 'info');
+
+  const complete = runEngine(bundleOf('Blue Cross Blue Shield of Illinois member.\nDesignated transplant center required.\nTransplant center: Northwestern Memorial Hospital.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-HCSC-017').status, 'pass');
+});
+
+test('R-PA-HCSC-018 checks only an explicit HCSC investigational classification', () => {
+  const generic = runEngine(bundleOf('Blue Cross Blue Shield of Illinois member.\nOff-label treatment in a clinical trial.\n'));
+  assert.equal(generic.find((x) => x.ruleId === 'R-PA-HCSC-018').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Blue Cross Blue Shield of Illinois member.\nBCBSIL determined investigational.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-HCSC-018').status, 'info');
+
+  const complete = runEngine(bundleOf('Blue Cross Blue Shield of Illinois member.\nBCBSIL determined investigational under Medical Policy MED205.001.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-HCSC-018').status, 'pass');
+});
+
+test('R-PA-HCSC-019 scopes the original-case check to a clinical authorization appeal', () => {
+  const generic = runEngine(bundleOf('Blue Cross Blue Shield of Illinois member.\nClaim payment appeal.\n'));
+  assert.equal(generic.find((x) => x.ruleId === 'R-PA-HCSC-019').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Blue Cross Blue Shield of Illinois member.\nPrior authorization appeal.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-HCSC-019').status, 'info');
+
+  const complete = runEngine(bundleOf('Blue Cross Blue Shield of Illinois member.\nClinical appeal.\nOriginal determination case number: IL-12345.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-HCSC-019').status, 'pass');
+});
+
+test('R-PA-HCSC-020 distinguishes ordinary out-of-network review from an exception', () => {
+  const generic = runEngine(bundleOf('Blue Cross Blue Shield of Illinois member.\nOut-of-network prior authorization request.\n'));
+  assert.equal(generic.find((x) => x.ruleId === 'R-PA-HCSC-020').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Blue Cross Blue Shield of Illinois member.\nNetwork gap exception request.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-HCSC-020').status, 'info');
+
+  const complete = runEngine(bundleOf('Blue Cross Blue Shield of Illinois member.\nContinuity of care request because the provider is leaving the network during an active course of treatment.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-HCSC-020').status, 'pass');
 });
 
 // ---- wave 52-13 sanity checks: Highmark (Blue Cross Blue Shield) overlay (§4.5.13) ----
