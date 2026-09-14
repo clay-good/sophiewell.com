@@ -223,15 +223,26 @@
       "lastVerified": "2026-09-14"
     },
     {
-      "id": "nccn-acmg-genetic",
-      "label": "NCCN / ACMG / NSGC genetic-testing criteria",
+      "id": "nci-hereditary-cancer-testing",
+      "label": "NCI inherited-cancer genetic testing and counseling guidance",
       "ruleFamily": "specialty-gen",
       "rules": [
         "R-PA-GEN-001",
-        "R-PA-GEN-002"
+        "R-PA-GEN-002",
+        "R-PA-GEN-003"
       ],
-      "url": "https://www.acmg.net/ACMG/Medical-Genetics-Practice-Resources/Practice-Guidelines.aspx",
-      "lastVerified": "2026-05-28"
+      "url": "https://www.cancer.gov/about-cancer/causes-prevention/genetics/genetic-testing-fact-sheet",
+      "lastVerified": "2026-09-14"
+    },
+    {
+      "id": "nhgri-gina",
+      "label": "NHGRI Genetic Information Nondiscrimination Act scope",
+      "ruleFamily": "specialty-gen",
+      "rules": [
+        "R-PA-GEN-005"
+      ],
+      "url": "https://www.genome.gov/genetics-glossary/Genetic-Information-Nondiscrimination-Act-GINA",
+      "lastVerified": "2026-09-14"
     },
     {
       "id": "aetna-precert",

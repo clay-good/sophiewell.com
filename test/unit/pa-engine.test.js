@@ -3451,32 +3451,80 @@ test('R-PA-GEN-001..005 all vacuously pass on a packet without a genetic-testing
   }
 });
 
-test('R-PA-GEN-001 flags a genetic-testing request without a family-history anchor', () => {
-  const text = HAPPY_TEXT + '\nProcedure: 81479 unlisted molecular pathology procedure.\n';
+test('genetic specialty trigger uses the documented CPT endpoints, not every 81xxx code', () => {
+  const text = HAPPY_TEXT + '\nProcedure: 81513 laboratory procedure.\n';
   const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-GEN-001');
-  assert.equal(f.status, 'flag');
+  for (const id of ['R-PA-GEN-001', 'R-PA-GEN-002', 'R-PA-GEN-003', 'R-PA-GEN-004', 'R-PA-GEN-005']) {
+    assert.equal(findings.find((x) => x.ruleId === id).status, 'pass');
+  }
 });
 
-test('R-PA-GEN-002 flags a genetic-testing request without a genetic-counseling anchor', () => {
+test('hereditary-cancer rules do not apply to an unclassified molecular test', () => {
   const text = HAPPY_TEXT + '\nProcedure: 81479 unlisted molecular pathology procedure.\n';
   const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-GEN-002');
-  assert.equal(f.status, 'flag');
+  for (const id of ['R-PA-GEN-001', 'R-PA-GEN-002', 'R-PA-GEN-003']) {
+    assert.equal(findings.find((x) => x.ruleId === id).status, 'pass');
+  }
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-GEN-004').status, 'info');
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-GEN-005').status, 'pass');
 });
 
-test('R-PA-GEN-003 flags a genetic-testing request without a panel-scope rationale anchor', () => {
-  const text = HAPPY_TEXT + '\nProcedure: 81479 unlisted molecular pathology procedure.\n';
+test('a BRCA gene name alone does not turn a somatic tumor assay into hereditary testing', () => {
+  const text = HAPPY_TEXT
+    + '\nProcedure: 81479 somatic BRCA1 tumor testing. Clinical indication for molecular testing: therapy selection.\n';
   const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-GEN-003');
-  assert.equal(f.status, 'flag');
+  for (const id of ['R-PA-GEN-001', 'R-PA-GEN-002', 'R-PA-GEN-003']) {
+    assert.equal(findings.find((x) => x.ruleId === id).status, 'pass');
+  }
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-GEN-004').status, 'pass');
 });
 
-test('R-PA-GEN-005 fires (info) on a genetic-testing request without a genetic-specific consent anchor', () => {
-  const text = HAPPY_TEXT + '\nProcedure: 81479 unlisted molecular pathology procedure.\n';
+test('R-PA-GEN-001 accepts personal cancer history as an alternative to family history', () => {
+  const text = HAPPY_TEXT + '\nDx: C50.919 breast cancer. Procedure: 81479 germline BRCA1 testing for hereditary cancer.\n';
   const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-GEN-005');
-  assert.equal(f.status, 'info');
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-GEN-001').status, 'pass');
+});
+
+test('R-PA-GEN-001 and 002 report only informational reminders in hereditary-cancer context', () => {
+  const text = HAPPY_TEXT + '\nProcedure: 81479 germline BRCA1 testing for hereditary cancer.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-GEN-001').status, 'info');
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-GEN-002').status, 'info');
+
+  const supported = text + 'Family history: mother had breast cancer. Pre-test genetic counseling completed.\n';
+  const supportedFindings = runEngine(bundleOf(supported));
+  assert.equal(supportedFindings.find((x) => x.ruleId === 'R-PA-GEN-001').status, 'pass');
+  assert.equal(supportedFindings.find((x) => x.ruleId === 'R-PA-GEN-002').status, 'pass');
+});
+
+test('R-PA-GEN-003 applies selection rationale only to an explicit hereditary-cancer panel', () => {
+  const singleGene = HAPPY_TEXT + '\nProcedure: 81479 germline BRCA1 testing for hereditary cancer.\n';
+  assert.equal(runEngine(bundleOf(singleGene)).find((x) => x.ruleId === 'R-PA-GEN-003').status, 'pass');
+
+  const panel = singleGene + 'Hereditary cancer multigene panel requested.\n';
+  assert.equal(runEngine(bundleOf(panel)).find((x) => x.ruleId === 'R-PA-GEN-003').status, 'info');
+
+  const selected = panel + 'Panel selected because personal and family history span several cancer syndromes.\n';
+  assert.equal(runEngine(bundleOf(selected)).find((x) => x.ruleId === 'R-PA-GEN-003').status, 'pass');
+});
+
+test('R-PA-GEN-004 requires an explicit molecular-test purpose, not an unrelated diagnosis', () => {
+  const base = HAPPY_TEXT + '\nProcedure: 81479 unlisted molecular pathology procedure.\n';
+  assert.equal(runEngine(bundleOf(base)).find((x) => x.ruleId === 'R-PA-GEN-004').status, 'info');
+
+  const purposeful = base + 'Clinical indication for molecular testing: tumor profiling for therapy selection.\n';
+  assert.equal(runEngine(bundleOf(purposeful)).find((x) => x.ruleId === 'R-PA-GEN-004').status, 'pass');
+});
+
+test('R-PA-GEN-005 flags only an overstatement of GINA insurance protection', () => {
+  const base = HAPPY_TEXT + '\nProcedure: 81479 germline BRCA1 testing for hereditary cancer.\n';
+  assert.equal(runEngine(bundleOf(base)).find((x) => x.ruleId === 'R-PA-GEN-005').status, 'pass');
+
+  const overstated = base + 'GINA protects all insurance, including life insurance.\n';
+  assert.equal(runEngine(bundleOf(overstated)).find((x) => x.ruleId === 'R-PA-GEN-005').status, 'info');
+
+  const accurate = base + 'GINA protects health insurance and employment but does not cover life insurance.\n';
+  assert.equal(runEngine(bundleOf(accurate)).find((x) => x.ruleId === 'R-PA-GEN-005').status, 'pass');
 });
 
 test('R-PA-MA-015 flags a C-SNP / I-SNP packet without a qualifying condition / residence anchor', () => {

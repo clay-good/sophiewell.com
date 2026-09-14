@@ -4133,40 +4133,40 @@
     },
     {
       "ruleId": "R-PA-GEN-001",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "Genetic testing: family history of relevant condition documented",
-      "citation": "Payer medical policies for hereditary-cancer / cardiomyopathy / Lynch / BRCA panels require a documented family history meeting test-specific criteria (e.g., NCCN BRCA testing criteria for hereditary breast / ovarian).",
+      "description": "Hereditary-cancer testing: personal or family risk indication documented",
+      "citation": "NCI describes inherited-cancer testing as appropriate for specified diagnoses or personal and family history features. Family history is one route, not a universal prerequisite, and this heuristic does not apply hereditary-cancer criteria to somatic testing.",
       "evidence": "No genetic-testing CPT (81xxx) in packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
     {
       "ruleId": "R-PA-GEN-002",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "Genetic testing: pre-test / post-test genetic counseling documented",
-      "citation": "ACMG / NSGC guidelines and most payer policies require documented pre-test (and post-test for positive results) genetic counseling by a board-certified genetic counselor or qualified clinician before a hereditary-disorder panel is ordered.",
+      "description": "Hereditary-cancer testing: pretest counseling or education documented",
+      "citation": "NCI generally recommends counseling before inherited-cancer testing and after testing when appropriate. It may be provided by a trained genetic counselor or another clinician experienced in cancer genetics; this is not framed as a universal payer requirement for every molecular test.",
       "evidence": "No genetic-testing CPT in packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
     {
       "ruleId": "R-PA-GEN-003",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "Genetic testing: test specificity / panel scope matches the documented clinical indication",
-      "citation": "Payers deny broad-panel testing when a more targeted single-gene or focused panel matches the documented indication; the packet should state why the chosen panel scope (single-gene / focused / comprehensive / WES / WGS) is appropriate.",
+      "description": "Hereditary-cancer panel: selection rationale reflects personal and family history",
+      "citation": "NCI explains that inherited-cancer test selection can range from a known familial variant to focused or broad multigene panels, depending on personal history, family history, and patient preferences. This heuristic applies only when the packet explicitly requests a hereditary-cancer panel.",
       "evidence": "No genetic-testing CPT in packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
     {
       "ruleId": "R-PA-GEN-004",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "Genetic testing: personal clinical indication documented (symptoms / dx / risk profile)",
-      "citation": "Predictive / asymptomatic genetic testing is approved only with documented risk based on personal history (signs / symptoms / preexisting dx / age criteria) or qualifying family history (R-PA-GEN-001) -- the packet must carry one or both.",
+      "description": "Molecular test: clinical purpose documented",
+      "citation": "Local completeness heuristic: a molecular-test request should identify what clinical question the result is intended to answer. A generic diagnosis elsewhere in the packet is not treated as proof that the test has a documented purpose.",
       "evidence": "No genetic-testing CPT in packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -4175,8 +4175,8 @@
       "ruleId": "R-PA-GEN-005",
       "severity": "info",
       "status": "pass",
-      "description": "Genetic testing: informed consent specific to genetic testing (covers GINA / insurance / employment implications)",
-      "citation": "Many state laws and payer policies require an informed consent specific to genetic testing -- separate from general procedure consent -- that addresses Genetic Information Nondiscrimination Act (GINA) protections, incidental findings, and family implications.",
+      "description": "GINA notice does not overstate insurance protections",
+      "citation": "NHGRI states that GINA protects against genetic discrimination in health insurance and employment, but does not apply to life or long-term-care insurance. The law does not itself create a universal genetic-test consent-form requirement.",
       "evidence": "No genetic-testing CPT in packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -9962,11 +9962,18 @@
           "lastVerified": "2026-09-14"
         },
         {
-          "id": "nccn-acmg-genetic",
-          "label": "NCCN / ACMG / NSGC genetic-testing criteria",
-          "url": "https://www.acmg.net/ACMG/Medical-Genetics-Practice-Resources/Practice-Guidelines.aspx",
+          "id": "nci-hereditary-cancer-testing",
+          "label": "NCI inherited-cancer genetic testing and counseling guidance",
+          "url": "https://www.cancer.gov/about-cancer/causes-prevention/genetics/genetic-testing-fact-sheet",
           "ruleFamily": "specialty-gen",
-          "lastVerified": "2026-05-28"
+          "lastVerified": "2026-09-14"
+        },
+        {
+          "id": "nhgri-gina",
+          "label": "NHGRI Genetic Information Nondiscrimination Act scope",
+          "url": "https://www.genome.gov/genetics-glossary/Genetic-Information-Nondiscrimination-Act-GINA",
+          "ruleFamily": "specialty-gen",
+          "lastVerified": "2026-09-14"
         },
         {
           "id": "aetna-precert",

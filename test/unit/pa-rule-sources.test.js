@@ -49,7 +49,10 @@ test('overlay families map to their single source by id prefix', () => {
   assert.deepEqual(ruleSourceIds('R-PA-BH-003'), ['asam-criteria']);
   assert.deepEqual(ruleSourceIds('R-PA-BH-004'), ['joint-commission-suicide-screening']);
   assert.deepEqual(ruleSourceIds('R-PA-BH-005'), ['samhsa-mat-act']);
-  assert.deepEqual(ruleSourceIds('R-PA-GEN-001'), ['nccn-acmg-genetic']);
+  assert.deepEqual(ruleSourceIds('R-PA-GEN-001'), ['nci-hereditary-cancer-testing']);
+  assert.deepEqual(ruleSourceIds('R-PA-GEN-003'), ['nci-hereditary-cancer-testing']);
+  assert.deepEqual(ruleSourceIds('R-PA-GEN-004'), []);
+  assert.deepEqual(ruleSourceIds('R-PA-GEN-005'), ['nhgri-gina']);
   assert.deepEqual(ruleSourceIds('R-PA-AETNA-003'), ['aetna-precert']);
 });
 
