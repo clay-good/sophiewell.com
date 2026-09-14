@@ -14,3 +14,10 @@ test('SMART-COP shows invalid oxygenation values and keeps valid alternatives op
   await pao2.fill('');
   await expect(result).toContainText('SMART-COP 0: low risk');
 });
+
+test('SMART-COP shows an age outside the existing human envelope', async ({ page }) => {
+  await page.goto('/#smart-cop');
+
+  await page.locator('#sc-age').fill('999999');
+  await expect(page.locator('#q-results')).toContainText('plausible range for age (0 to 130 yr)');
+});

@@ -66,3 +66,14 @@ test('smart-cop refuses an invalid optional oxygenation value even when siblings
 
   assert.equal(smartCop({ ageYears: 55, rr: 20, pfRatio: 999999 }).score, 0);
 });
+
+test('smart-cop refuses an age outside the repository age envelope', () => {
+  for (const ageYears of [-1, 131]) {
+    const result = smartCop({ ageYears, rr: 20, spo2: 96 });
+    assert.equal(result.valid, false, String(ageYears));
+    assert.match(result.band, /plausible range for age \(0 to 130 yr\)/, String(ageYears));
+  }
+
+  assert.equal(smartCop({ ageYears: 0, rr: 20, spo2: 96 }).score, 0);
+  assert.equal(smartCop({ ageYears: 130, rr: 20, spo2: 96 }).score, 0);
+});

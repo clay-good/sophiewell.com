@@ -65,6 +65,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **SMART-COP accepted impossible ages as threshold selectors.** An age outside
+  the repository's existing `0–130 years` human envelope still selected the
+  younger or older respiratory thresholds and returned a clinical risk band.
+  SMART-COP now refuses that entry on both browser and agent surfaces. See
+  docs/spec-v1254.md.
+
 - **Invalid SMART-COP oxygenation values could disappear behind valid siblings.**
   PaO₂, SpO₂, and P/F are interchangeable inputs for one criterion, but an
   impossible PaO₂ or SpO₂ was silently treated like an omitted optional value

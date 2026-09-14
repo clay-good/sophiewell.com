@@ -2740,7 +2740,7 @@ export const renderers = {
   'smart-cop'(root) {
     root.appendChild(el('p', {}, [
       el('label', { for: 'sc-age', text: 'Age (years; used for age-adjusted RR / oxygenation thresholds)' }), el('br'),
-      el('input', { id: 'sc-age', type: 'number', step: '1', value: '55' }),
+      el('input', { id: 'sc-age', type: 'number', step: '1', min: '0', max: '130', value: '55' }),
     ]));
     root.appendChild(checkbox('SBP < 90 mmHg (2)', 'sc-sbp'));
     root.appendChild(checkbox('Multilobar infiltrates on CXR (1)', 'sc-multi'));
