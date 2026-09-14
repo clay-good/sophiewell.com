@@ -124,7 +124,7 @@ export const renderers = {
   'cpis-vap'(root) {
     note(root, 'Clinical Pulmonary Infection Score (CPIS): six components summed 0-12. A score greater than 6 suggests ventilator-associated pneumonia.');
     root.appendChild(unitField('Temperature', 'cp-temp', TEMP_UNITS, { placeholder: 'e.g. 39' }));
-    root.appendChild(field('Leukocytes (per mm^3)', 'cp-wbc', { step: '100', min: 0, placeholder: 'e.g. 12000' }));
+    root.appendChild(field('Leukocytes (per mm^3)', 'cp-wbc', { step: '100', min: 0, max: 200000, placeholder: 'e.g. 12000' }));
     root.appendChild(checkField('Band forms >= 50% (+1 to the leukocyte points)', 'cp-band'));
     root.appendChild(selectField('Tracheal secretions', 'cp-sec', [
       { value: '', text: 'Not stated' },

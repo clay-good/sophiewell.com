@@ -431,16 +431,23 @@ test('sic-score: a platelet count in US units is refused, not scored as normal',
   assert.equal(sicScore({ platelet: 120, inr: 1.3, sofa: 3 }).valid, true);
 });
 
-test('cpis-vap guards the temperature and NOT the leukocyte count', () => {
+test('cpis-vap converts the shared leukocyte envelope to its per-mm3 unit', () => {
   // An envelope is a claim about a quantity IN A UNIT. This tile's leukocyte
   // count is per mm^3 -- 12,000 for what BOUNDS.wbc holds as 12 in x10^9/L -- so
-  // applying that envelope here would refuse every legitimate value.
+  // applying that envelope without conversion would refuse every legitimate value.
   const ok = {
     temp: 38, wbc: 12000, secretions: 'none', oxygenation: 'ok', radiograph: 'none', culture: 'none',
   };
   assert.notEqual(cpisVap(ok).valid, false);
   assert.notEqual(cpisVap({ ...ok, wbc: 25000 }).valid, false, 'a real leukocytosis still scores');
   assert.notEqual(cpisVap({ ...ok, wbc: 800 }).valid, false, 'and a real leukopenia does too');
+  assert.notEqual(cpisVap({ ...ok, wbc: 200000 }).valid, false, 'the converted ceiling still scores');
+
+  for (const wbc of [-1, 200001]) {
+    const result = cpisVap({ ...ok, wbc });
+    assert.equal(result.valid, false, String(wbc));
+    assert.match(result.band, /Leukocyte count \(per mm\^3\) must be between 0 and 200000/, String(wbc));
+  }
 
   const hot = cpisVap({ ...ok, temp: 450 });
   assert.equal(hot.valid, false);

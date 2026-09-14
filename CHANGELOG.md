@@ -65,6 +65,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **CPIS accepted impossible leukocyte counts as ordinary leukocytosis.** The
+  calculator now enforces the existing WBC envelope after converting its ceiling
+  from `200 ×10³/µL` to the tile's equivalent `200,000/mm³` unit. Legitimate
+  leukopenia and leukocytosis remain accepted. See docs/spec-v1255.md.
+
 - **SMART-COP accepted impossible ages as threshold selectors.** An age outside
   the repository's existing `0–130 years` human envelope still selected the
   younger or older respiratory thresholds and returned a clinical risk band.

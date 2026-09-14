@@ -23,23 +23,24 @@ the **reassuring** direction — the one that matters. Same units confusion
 
 The INR is guarded in the same loop; `lib/bounds.js` holds it at 0.5 to 20.
 
-## The one that had to be left alone: `cpis-vap`
+## The one that required an explicit conversion: `cpis-vap`
 
-The probe printed `temp` **and** `wbc`. Only the temperature is guarded.
+The probe printed `temp` **and** `wbc`. At that wave, only the temperature was
+guarded.
 
 CPIS scores its leukocyte count **per mm³** — the band is `4000` to `11000` —
 while `BOUNDS.wbc` holds 0 to 200, which is the same quantity in ×10⁹/L.
-Applying that envelope here would have refused **every legitimate value on the
-tile**.
+Applying that envelope without conversion would have refused **every legitimate
+value on the tile**. [Spec-v1255](spec-v1255.md) now converts the same count
+ceiling explicitly: `200 ×10⁹/L` equals `200,000/mm³`. Legitimate leukopenia and
+leukocytosis still score, while values outside the converted domain are refused.
 
 > An envelope is a claim about a quantity **in a unit**, and this table's entries
 > are not unit-agnostic.
 
-That is the trap in this whole programme, and it is easy to walk into precisely
-because the finder is right that the field is unguarded. A real leukocytosis of
-25,000 and a real leukopenia of 800 both still score, and the tests say so —
-otherwise the next reader has only the absence of a guard to go on, and no record
-of why.
+That is the trap in this whole programme: a shared envelope is reusable only
+after its unit has been reconciled with the input. A real leukocytosis of 25,000
+and a real leukopenia of 800 both still score, and the tests say so.
 
 ## `euroscore-ii`
 

@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `9aca063ef73bb25b`
-Generated: 2026-09-14T00:48:35.138Z
+Build ID: `b2398ee7455f16a0`
+Generated: 2026-09-14T00:54:10.924Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -207,7 +207,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/crafft-v511.js` | 4287 | `327127a6f8e3677bd8a1d0f3c3ced3b3347ee9c785e294ba9a50052ca446d1c2` |
 | `lib/crawford-taaa-v464.js` | 3861 | `88e25ce66c44ed838925af33531184aa2ec6a743e775339af30ec9ba797646d4` |
 | `lib/critcare-severity-v200.js` | 18707 | `e72c4c4be9dc635ec7214460c3300e8b3dfab7141bd30394d61d8d3c0db9f123` |
-| `lib/critcare-v112.js` | 17740 | `aa0cef2d7879521cdacb196b4f9b3ed1ecf530e3d67fc223e4ee286f18bf24a2` |
+| `lib/critcare-v112.js` | 17900 | `497d3a644f77fe3a7a22424779612568c5fdafefa36b44ddb190745b142d2408` |
 | `lib/crowe-ddh-v353.js` | 3621 | `cbfcd5066efa27d55b012cfe0174650bb2009a8d7f8e6ddc5dcf5a4ffbbc789d` |
 | `lib/crs-v305.js` | 5412 | `ef4acb9a6090b2dee839747bc0cc8b5b7adecc9c3d96e89fdc601b72fa835c71` |
 | `lib/csendes-mirizzi-v1240.js` | 6926 | `a1725f3613e479c96d32f940cc281b60fb120d1e9b5ab4c8d435e7bd2c2ad9ac` |
@@ -2011,7 +2011,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v367.js` | 3224 | `bd7e0f7434b5bd5f060a6c9bbfc8da28bbaef95cb7c250630d6a5ff616012f6b` |
 | `views/group-v368.js` | 2990 | `ad4c5c65964759e4607d4349c14dc568864d3d15b00e95236cb315e1b8cc7278` |
 | `views/group-v369.js` | 3096 | `d9b47343a3cdc44a1fab4677e89e53fa9470beb74c7cf111a049274180f1bf3c` |
-| `views/group-v37.js` | 11909 | `21733514acb880464562a265181b794875c0be0e97727ffd9e38234fe3bdd844` |
+| `views/group-v37.js` | 11922 | `d099d19c66807e87f5abc93e8dedab0ef3d079cbb19823e5178421c1fcab56c2` |
 | `views/group-v370.js` | 2934 | `74e004c7715937fa32b2a111f85d59a9661cef4f0978b4116d8cbe580f6c471d` |
 | `views/group-v371.js` | 3126 | `47c944cafbba970a471cd3d00835b8105c246671ddbe291e1bcc96856ffd658c` |
 | `views/group-v372.js` | 3061 | `725eb49df2a9676a9783ebd04b00893575fc023152a75c6b7f41a4f141692bde` |
