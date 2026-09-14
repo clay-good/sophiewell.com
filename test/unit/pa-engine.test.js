@@ -875,18 +875,79 @@ test('R-PA-UHC-015 passes when a UHC DME request identifies the ordering provide
   assert.equal(f.status, 'pass');
 });
 
-test('R-PA-UHC-016 flags a UHC behavioral-health request with no level-of-care criteria', () => {
+test('R-PA-UHC-016 advises on an intensive UHC behavioral-health request with no clinical assessment', () => {
   const text = 'UnitedHealthcare member.\nRequest: inpatient psychiatric admission (Optum Behavioral Health).\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-UHC-016');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
 });
 
-test('R-PA-UHC-020 flags a UHC out-of-network request with no network-gap justification (info)', () => {
+test('R-PA-UHC-016 passes generic mental-health language and an intensive request with an assessment', () => {
+  const generic = runEngine(bundleOf('UnitedHealthcare member.\nMental health office visit.\n'));
+  assert.equal(generic.find((x) => x.ruleId === 'R-PA-UHC-016').status, 'pass');
+
+  const assessed = runEngine(bundleOf('UnitedHealthcare member.\nRequest: inpatient psychiatric admission.\nClinical assessment: current symptoms include suicidal ideation.\n'));
+  assert.equal(assessed.find((x) => x.ruleId === 'R-PA-UHC-016').status, 'pass');
+});
+
+test('R-PA-UHC-017 applies only when the packet states an Optum transplant routing requirement', () => {
+  const generic = runEngine(bundleOf('UnitedHealthcare member.\nRequest: kidney transplant evaluation.\n'));
+  assert.equal(generic.find((x) => x.ruleId === 'R-PA-UHC-017').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('UnitedHealthcare member.\nOptum transplant protocol applies.\nRequest: kidney transplant evaluation.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-UHC-017').status, 'info');
+
+  const complete = runEngine(bundleOf('UnitedHealthcare member.\nOptum transplant protocol applies.\nApproved transplant facility: University Hospital.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-UHC-017').status, 'pass');
+});
+
+test('R-PA-UHC-018 does not treat generic off-label or clinical-trial language as unproven', () => {
+  for (const text of [
+    'UnitedHealthcare member.\nOff-label medication request.\n',
+    'UnitedHealthcare member.\nClinical trial participation documented.\n',
+  ]) {
+    const findings = runEngine(bundleOf(text));
+    assert.equal(findings.find((x) => x.ruleId === 'R-PA-UHC-018').status, 'pass');
+  }
+});
+
+test('R-PA-UHC-018 checks the exception workflow for a specialty drug explicitly listed as unproven', () => {
+  const base = 'UnitedHealthcare member.\nMedical benefit specialty drug. Policy lists the drug as unproven for the requested indication.\n';
+  const incomplete = runEngine(bundleOf(base));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-UHC-018').status, 'flag');
+
+  const complete = runEngine(bundleOf(base + 'Health plan notified. Benefit exception approved.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-UHC-018').status, 'pass');
+});
+
+test('R-PA-UHC-019 limits its check to urgent pre-service appeals', () => {
+  const generic = runEngine(bundleOf('UnitedHealthcare member.\nClaim reconsideration requested.\n'));
+  assert.equal(generic.find((x) => x.ruleId === 'R-PA-UHC-019').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('UnitedHealthcare member.\nUrgent pre-service appeal requested.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-UHC-019').status, 'info');
+
+  const complete = runEngine(bundleOf('UnitedHealthcare member.\nUrgent pre-service appeal requested because standard timing risks the health of the member.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-UHC-019').status, 'pass');
+});
+
+test('R-PA-UHC-020 does not apply the network-gap form to a generic out-of-network request', () => {
   const text = 'UnitedHealthcare member.\nOut-of-network prior authorization request.\nProcedure CPT 70551.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-UHC-020');
-  assert.equal(f.status, 'info');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-UHC-020 checks required intake fields for an explicit Commercial network-gap exception', () => {
+  const incomplete = runEngine(bundleOf('UnitedHealthcare Commercial member.\nNetwork gap exception request.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-UHC-020').status, 'flag');
+
+  const completeText = 'UnitedHealthcare Commercial member.\nNetwork gap exception request.\n'
+    + 'Service reference number: PA-123.\n'
+    + 'In-network referring provider: Jane Doe, MD.\n'
+    + 'Reason for gap exception: no in-network provider offers the required service.\n';
+  const complete = runEngine(bundleOf(completeText));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-UHC-020').status, 'pass');
 });
 
 // ---- wave 52-9 sanity checks: Anthem commercial overlay (§4.5.9) ----

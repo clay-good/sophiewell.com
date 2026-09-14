@@ -8733,20 +8733,20 @@
     },
     {
       "ruleId": "R-PA-UHC-016",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "UnitedHealthcare behavioral health (Optum / United Behavioral Health): level-of-care criteria documentation present",
-      "citation": "UnitedHealthcare behavioral-health prior authorization (administered through Optum / United Behavioral Health) reviews the requested level of care against published level-of-care guidelines (e.g. LOCUS / ASAM); the request should document the criteria that support the level requested. <https://www.uhcprovider.com/en/policies-protocols.html>",
+      "description": "UnitedHealthcare / Optum behavioral-health level-of-care request: supporting clinical assessment present",
+      "citation": "Optum uses LOCUS, CALOCUS-CASII, and ECSII as guidance for behavioral-health clinical decisions across most Commercial and Medicaid membership, while ASAM remains the criterion for substance-use services; applicability can vary by state, federal, or contractual requirements. This informational check looks for clinical assessment supporting an explicitly requested intensive level of care, not a named scoring tool. <https://public.providerexpress.com/content/ope-provexpr/us/en/clinical-resources/guidelines-policies/Adoption-of-LOCUS-CASII-ECSII.html>",
       "evidence": "Not a UnitedHealthcare packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
     {
       "ruleId": "R-PA-UHC-017",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "UnitedHealthcare transplant prior authorization: routed through the UHC transplant / Centers of Excellence network with a transplant-center evaluation",
-      "citation": "UnitedHealthcare directs solid-organ and hematopoietic stem-cell transplants through its transplant network / Centers of Excellence (administered with Optum); a transplant prior authorization should reference that routing and carry the transplant-center evaluation. <https://www.uhcprovider.com/en/prior-auth-advance-notification.html>",
+      "description": "UnitedHealthcare transplant request under an explicit Optum transplant protocol: approved facility identified",
+      "citation": "UnitedHealthcare's 2026 Administrative Guide states, in its capitation and delegation supplement, that transplant evaluations and surgery must occur at an Optum Center of Excellence or a facility approved by UnitedHealthcare or Optum medical directors. Because that routing depends on the group's transplant-risk arrangement, this informational rule runs only when the packet explicitly says the Optum transplant protocol applies. <https://www.uhcprovider.com/content/dam/provider/docs/public/admin-guides/2026-UHC-Administrative-Guide.pdf>",
       "evidence": "Not a UnitedHealthcare packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -8755,8 +8755,8 @@
       "ruleId": "R-PA-UHC-018",
       "severity": "flag",
       "status": "pass",
-      "description": "UnitedHealthcare experimental / investigational / unproven determination: peer-reviewed evidence or a documented policy exception is present",
-      "citation": "UnitedHealthcare excludes services its Medical Policy classifies as experimental, investigational, or unproven; a request for such a service must carry the peer-reviewed evidence or the documented exception the policy allows, or it will be denied. <https://www.uhcprovider.com/en/policies-protocols.html>",
+      "description": "UnitedHealthcare specialty drug explicitly listed as unproven: health-plan notification and benefit exception documented",
+      "citation": "UnitedHealthcare's Commercial and Individual Exchange Off-Label/Unproven Specialty Drug Treatment policy says a medical-benefit specialty drug that the corresponding policy lists as unproven for the requested indication requires health-plan notification and approval of a benefit exception. Other off-label pathways receive internal DPIS research, so this rule does not demand provider-supplied literature from every off-label or clinical-trial request. <https://www.uhcprovider.com/content/dam/provider/docs/public/policies/comm-medical-drug/off-label-unproven-specialty-drug-treatment.pdf>",
       "evidence": "Not a UnitedHealthcare packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -8765,18 +8765,18 @@
       "ruleId": "R-PA-UHC-019",
       "severity": "info",
       "status": "pass",
-      "description": "UnitedHealthcare reconsideration / appeal: references the original determination and adds new clinical information",
-      "citation": "When a prior authorization is resubmitted as a reconsideration or appeal, UnitedHealthcare asks the provider to reference the original determination and supply additional clinical information that addresses the denial reason. Informational. <https://www.uhcprovider.com/en/prior-auth-advance-notification.html>",
+      "description": "UnitedHealthcare urgent pre-service appeal: published urgency basis documented",
+      "citation": "UnitedHealthcare distinguishes pre-service appeals from the 2-step reconsideration and post-service appeal process. Its provider appeal page says an expedited pre-service appeal may apply when standard timing risks the member's life or health, ability to regain maximum function, or management of severe pain; already-provided services are not eligible for urgent handling. Informational. <https://www.uhcprovider.com/en/claims-payments-billing/appeals.html>",
       "evidence": "Not a UnitedHealthcare packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
     {
       "ruleId": "R-PA-UHC-020",
-      "severity": "info",
+      "severity": "flag",
       "status": "pass",
-      "description": "UnitedHealthcare out-of-network / network-gap request: a continuity-of-care or network-gap justification is documented",
-      "citation": "UnitedHealthcare reviews out-of-network prior authorization for a documented network gap or continuity-of-care reason (no participating provider with the required expertise, an active course of treatment). An out-of-network request should state that justification. Informational. <https://www.uhcprovider.com/en/prior-auth-advance-notification.html>",
+      "description": "UnitedHealthcare Commercial network-gap exception: service reference, in-network referrer, and clinical reason documented",
+      "citation": "UnitedHealthcare's Commercial Network Gap Exception Request Form applies when a provider explicitly requests a network-gap exception because local or specialty access is insufficient. It requires an existing prior-authorization service reference number, member and provider information including the in-network referrer, the specific clinical reason for a specialty exception, and supporting clinical documentation. <https://www.uhcprovider.com/content/dam/provider/docs/public/prior-auth/UHC-Commercial-GAP-Application-form.pdf>",
       "evidence": "Not a UnitedHealthcare packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -10055,7 +10055,7 @@
           "label": "UnitedHealthcare prior-authorization / advance-notification requirements, Medical & Drug Policies, and Coverage Determination Guidelines",
           "url": "https://www.uhcprovider.com/en/prior-auth-advance-notification.html",
           "ruleFamily": "commercial-uhc",
-          "lastVerified": "2026-06-01"
+          "lastVerified": "2026-09-13"
         },
         {
           "id": "anthem-precert",
