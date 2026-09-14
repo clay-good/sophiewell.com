@@ -80,6 +80,19 @@ function helperKey(src, name) {
   return m ? m[2] : null;
 }
 
+// A few monotone/partial scores use the score itself as their refusal sentinel:
+// the library returns no total and puts the explanation in `band`, and the view
+// prints that band before returning. That is a refusal branch even though it
+// never reads `valid` (spec-v1249).
+function rendersNullRefusal(scope) {
+  return /if\s*\(\s*([A-Za-z_$]\w*)\.\w+\s*==\s*null\s*\)\s*\{[^{}]*\b[A-Za-z_$]\w*\s*\(\s*\w+\s*,\s*\1\.(?:message|band)\b[^{}]*\}/s.test(scope);
+}
+
+if (!rendersNullRefusal("if (r.total == null) { note(o, r.band); return; }")
+  || rendersNullRefusal("if (r.total == null) { note(o, 'Enter the values.'); return; }")) {
+  throw new Error('probe-refusal-unrendered null-refusal recognition drifted');
+}
+
 // spec-v1212: only CODE is a refusal. `cardiacPowerOutput` carries the words
 // "valid:false fallback, never a NaN" in a comment describing its own behaviour,
 // and `gapIpf` and `periopBridging` do the same -- so all three were reported for
@@ -191,6 +204,7 @@ for (const { f, src } of views) {
     }
 
     const branch = /!\s*\w+\.valid|\.valid\s*===\s*false/.exec(scope);
+    if (!branch && rendersNullRefusal(scope)) continue;
     if (!branch) {
       rows.push({ tile, view: f, fn, problem: 'renderer has no branch for a refusal the function can return' });
       continue;

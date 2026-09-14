@@ -47,6 +47,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed
+
+- **The refusal-rendering probe no longer reports 5 handled partial-score
+  branches.** BARD, SNAPPE-II, TASH, RABT, and ALT-70 all use a missing
+  score/total as their refusal sentinel and print the library's explanation.
+  The probe now recognizes that narrow pattern and retains a negative self-test,
+  reducing its review queue from 186 to 181 tiles. See docs/spec-v1249.md.
+
 ### Fixed
 
 - **An invalid lymphocyte measurement was called missing.** The CLL lymphocyte
