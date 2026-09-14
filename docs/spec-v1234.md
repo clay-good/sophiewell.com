@@ -9,11 +9,12 @@ last eighteen tiles.
 
 > **116 / 68 → 0 / 0.**
 
-The probe's reach is unchanged and it says so: 396 fields map to one of 36
-envelopes, 368 are testable against a worked example inside that envelope, none
-is mis-mapped, and 28 carry no usable example. Zero is a statement about those
+At this wave, the probe's reach was unchanged: 396 fields mapped to one of 36
+envelopes, 368 were testable against a worked example inside that envelope, none
+was mis-mapped, and 28 carried no usable example. Zero is a statement about those
 368, not about the catalog — [spec-v1231](spec-v1231.md) is the standing reminder
-that a clean report is a claim about reach.
+that a clean report is a claim about reach. Spec-v1251 later narrows the reach to
+395 / 367 by excluding one unit-invariant LIPI field.
 
 ## The eighteen
 

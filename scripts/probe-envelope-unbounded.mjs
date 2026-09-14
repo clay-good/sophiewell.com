@@ -47,7 +47,7 @@ const onlyKey = (() => {
 // A quantity in another compartment, another substance, or a derived figure is
 // not the envelope's subject. Each term here was earned: the three at the front
 // by the self-check below, the rest by reading the labels they exclude.
-const EXCLUDE = /\bair\b|additive|ambient|outdoor|wind|room |bag |infusate|\burine|urinary|csf|cerebrospinal|dialysate|drain|ascit|pleural|stool|saliva|sweat|24-?h|fractional|excret|clearance|ratio|delta|change|target|goal|desired|corrected|expected|predicted|per kg|dose|rate|infusion/i;
+const EXCLUDE = /\bair\b|additive|ambient|outdoor|wind|room |bag |infusate|\burine|urinary|csf|cerebrospinal|dialysate|drain|ascit|pleural|stool|saliva|sweat|24-?h|fractional|excret|clearance|ratio|same unit|delta|change|target|goal|desired|corrected|expected|predicted|per kg|dose|rate|infusion/i;
 
 // label pattern, and the unit that confirms the quantity is in the envelope's
 // own unit rather than a convertible one.
@@ -164,7 +164,7 @@ say('from a value an order of magnitude past a ceiling lib/bounds.js already dec
 // put four gestational-diabetes rows reading "single abnormal value" in the
 // reassuring bucket -- the raw-substring trap, in the classifier written to
 // avoid a vocabulary trap.
-const REASSURING = /\bruled out\b|\brules out\b|\bexcludes\b|\bno evidence\b|\bnormal\b|\bbest preserved\b|\blow risk\b|\bno indication\b|\bunlikely\b|\bremission\b|\bfavorable\b|\bharmless\b|\bno excess\b/i;
+const REASSURING = /\bruled out\b|\brules out\b|\bexcludes\b|\bno evidence\b|\bnormal\b|\bbest preserved\b|\blow risk\b|\blow\b(?=\s*\([^)]{0,48}\b(?:mortality|risk|probability)\b)|\bno indication\b|\bunlikely\b|\bremission\b|\bfavorable\b|\bharmless\b|\bno excess\b|\bsafe for outpatient management\b|\bno lung injury\b|\bnot in (?:the )?high-risk band\b/i;
 // spec-v1211: every term above is a fixed phrase, and a tile names the thing it
 // is ruling out IN THE MIDDLE of one. `toxic-alcohol` says "No AACT fomepizole
 // indication met on the entered data" -- three words between the negation and the
@@ -188,6 +188,20 @@ function readsReassuring(f) {
   // "not harmless", "not a favorable trend": the word is there and the sentence
   // says the opposite.
   return !NEGATED.test(verdict.slice(0, m.index));
+}
+
+const classifierCases = [
+  ['safe for outpatient management (95% probability of safe discharge)', true],
+  ['no lung injury', true],
+  ['not in the high-risk band', true],
+  ['Low (in-hospital mortality < 1%)', true],
+  ['not safe for outpatient management', false],
+  ['High risk from low oxygen saturation', false],
+];
+for (const [verdict, expected] of classifierCases) {
+  if (readsReassuring({ verdict }) !== expected) {
+    throw new Error(`probe-envelope-unbounded reassurance recognition drifted: ${verdict}`);
+  }
 }
 const reassuring = flagged.filter(readsReassuring);
 const rest = flagged.filter((f) => !readsReassuring(f));

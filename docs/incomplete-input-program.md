@@ -457,7 +457,7 @@ until someone asks:
 | `scripts/probe-static-exemption.mjs` | which rows does the asking/disclosing vocabulary exempt on text that did **not change** when the field was dropped? Static prose cannot be a statement about a gap that did not exist when it was written ([spec-v1193](spec-v1193.md)). Ran 17 rows down to 2 over spec-v1193 to [spec-v1196](spec-v1196.md), which taught the one-field sweeps the same rule. |
 | `test/integration/two-ranges-one-field.spec.js` | drive a field past its own declared max: do the browser's range warning and the tile's envelope advisory quote **different ranges for the same field**? Needs no label-to-envelope map — when both sentences fire the page has already declared they are about one field. [spec-v1208](spec-v1208.md) found 25 such fields, spread over a dozen tiles. |
 | `scripts/probe-refusal-unrendered.mjs` | can the compute function return `valid: false`, and would the page **show** it — does the renderer branch at all, and does every refusal carry the key that branch prints? A wrong-key row is a defect; a no-branch row is a suspect (most are a select with no blank option, so the state is unreachable). Found the `cdai-crohns` regression at [spec-v1212](spec-v1212.md). [Spec-v1249](spec-v1249.md) taught it the alternate partial-score branch (`r.total == null` plus rendering `r.band`), removing 5 handled rows; 181 suspects remain. |
-| `scripts/probe-envelope-unbounded.mjs` | does a tile answer from a value an order of magnitude past a ceiling `lib/bounds.js` already declares? Ranks the rows by whether the impossible value read as REASSURING, and checks its own label-to-envelope mapping against every worked example before trusting it. |
+| `scripts/probe-envelope-unbounded.mjs` | does a tile answer from a value an order of magnitude past a ceiling `lib/bounds.js` already declares? Ranks the rows by whether the impossible value read as REASSURING, and checks its own label-to-envelope mapping against every worked example before trusting it. [Spec-v1251](spec-v1251.md) adds the four reassuring phrases the probe missed and excludes fields explicitly defined in any shared unit. |
 | `scripts/probe-optional-read-as-zero.mjs` | is a field whose **own label says "optional"** read through a view module's `Number(input.value)` helper, with nothing at the call site asking instead? The zero walks past the library's absent-case branch — `bristol-girth` raised two abdominal-compartment-syndrome banners off one blank girth ([spec-v1213](spec-v1213.md)). Follows `const` aliases, so a guard eleven lines from the read still counts. **0 rows**, negative-tested by restoring two known defects. Reach is the whole population and says so: 15 of 781 modules carry the helper, and the 11 renderers that read inline and bypass it are scanned too ([spec-v1215](spec-v1215.md)). |
 | `scripts/probe-helper-behaviour-drift.mjs` | do the copies of a small reader every `lib` module carries actually BEHAVE the same? Extracts each copy, runs all of them over one battery of 27 values, and names the value that separates them. Found `lvl`/`pct` in `dermscore-v234` returning **0** for a value off the scale, so 150% hair loss read "S0 (no loss)" ([spec-v1214](spec-v1214.md)). Groups by arity and excludes copies that close over module scope — both were wrong first. A report, not a gate: most rows are latent because both surfaces normalise before the library is called. |
 | `scripts/probe-impossible-changes-nothing.mjs` | make one numeric field **impossible** and ask whether the answer moves at all — a byte-identical result means the value was thrown away in silence. Needs no envelope, so it reaches any numeric field, unlike `probe-envelope-unbounded`. Found `intubation-difficulty-scale` scoring 99 operators exactly as 0 ([spec-v1217](spec-v1217.md)). Requires BOTH directions and re-runs from a second baseline with companion zeros bumped — each was a false-positive class. **Blind to a SUBSTITUTED value**, which moves the answer; it sees only discarded ones. 6 rows of 2,644 fields, all triaged in the spec. |
@@ -475,10 +475,11 @@ reassuring side of the threshold where the example never goes (spec-v1092).
   fields across sixty-eight** of the catalog's entries
   (`scripts/probe-envelope-unbounded.mjs`), over eleven waves.
 
-  The probe's reach is unchanged and it states it: 396 fields map to one of 36
-  envelopes, 368 are testable against a worked example inside that envelope, none
+  The probe's current reach is 395 fields mapped to one of 36 envelopes; 367 are
+  testable against a worked example inside that envelope, none
   is mis-mapped, and 28 carry no usable example. **Zero is a statement about
-  those 368**, not about the catalog.
+  those 367**, not about the catalog. Spec-v1251 removed one unit-invariant LIPI
+  field that the probe had mapped only because its metadata named example units.
 
   The waves: [spec-v1224](spec-v1224.md) took the seven ten-year
   cardiovascular-risk engines (a clamp was standing in for a guard, so an SBP of
@@ -507,8 +508,9 @@ reassuring side of the threshold where the example never goes (spec-v1092).
   not about the catalog**: [spec-v1231](spec-v1231.md) found four rows sitting in
   "the rest" whose readings were *"safe for outpatient management"*, *"no lung
   injury"*, *"not in the high-risk band"* and *"Low (in-hospital mortality <
-  1%)"* — none of which the reassuring vocabulary matches. Widening it is open
-  work, and has its own false-positive risk.
+  1%)"* — none of which the reassuring vocabulary matched. [Spec-v1251](spec-v1251.md)
+  adds those exact shapes with positive and negative self-tests; the section
+  remains at zero because the underlying calculator defects were already fixed.
 
   **The design moved, and this page said otherwise for a while.** Under
   [spec-v53](spec-v53.md) the envelope is a *disclosure* boundary: the advisory

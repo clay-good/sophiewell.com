@@ -49,6 +49,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
+- **The envelope probe recognizes four reassuring conclusions it used to miss.**
+  “Safe for outpatient management,” “no lung injury,” “not in the high-risk
+  band,” and a low mortality label now reach its priority bucket, while leading
+  negations and unrelated low measurements remain negative cases. Fields that
+  explicitly accept any shared unit are excluded from unit-specific envelopes,
+  keeping the drained queue at zero after LIPI documented both common count
+  conventions. See docs/spec-v1251.md.
+
 - **The refusal-rendering probe no longer reports 5 handled partial-score
   branches.** BARD, SNAPPE-II, TASH, RABT, and ALT-70 all use a missing
   score/total as their refusal sentinel and print the library's explanation.
