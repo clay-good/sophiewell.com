@@ -57,6 +57,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **LIPI no longer rejects a valid count unit.** The index asks for ANC and
+  total WBC in the same unit because their ratio is unit-invariant, but both
+  fields were capped at 1,000 and therefore refused ordinary cells/µL values.
+  Equivalent ×10⁹/L and cells/µL inputs now return the same dNLR and prognostic
+  group, while negative, non-finite, missing, and WBC-not-greater-than-ANC
+  inputs remain refusals. See docs/spec-v1250.md.
+
 - **An invalid lymphocyte measurement was called missing.** The CLL lymphocyte
   doubling-time calculator mapped negative, zero, and over-limit ALC or interval
   values to the same generic prompt as an empty field. Entered values outside

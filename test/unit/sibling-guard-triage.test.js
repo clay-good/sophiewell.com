@@ -68,9 +68,9 @@ test('the tiles with no envelope still answer from the values that look bounded'
   // Pounds and inches, not kilograms and metres.
   assert.equal(iomGwg({ weight: 150, height: 65 }).valid, true);
   // The unit is unstated by design ("same units"), so a unit-specific envelope
-  // cannot be applied. The caller's own cap of 1000 is what bounds it.
+  // cannot be applied. Equivalent per-uL counts must remain valid too.
   assert.equal(lipi({ anc: 6, wbc: 9, ldhHigh: false }).valid, true);
-  assert.equal(lipi({ anc: 6, wbc: 90000, ldhHigh: false }).valid, false);
+  assert.equal(lipi({ anc: 6000, wbc: 9000, ldhHigh: false }).valid, true);
   // Graded scales bound themselves.
   assert.equal(vasograde({ modifiedFisher: 4, wfns: 5 }).valid, true);
   assert.match(vasograde({ modifiedFisher: 9, wfns: 5 }).message, /./);

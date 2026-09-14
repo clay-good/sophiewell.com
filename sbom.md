@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `b67c49856b3757c9`
-Generated: 2026-09-14T00:05:28.714Z
+Build ID: `0bc593895fff9445`
+Generated: 2026-09-14T00:19:55.493Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -588,7 +588,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/nottingham-npi-v330.js` | 3875 | `9a95ea364fb41e94801ff30ac7789c22eeebef1abd6c2bd24a3c6fd1e01253ac` |
 | `lib/nsofa-v526.js` | 11175 | `12ffb5c8f1ec40c039705ff710df0ac0895360a0f89592ea4996f1c18de5355a` |
 | `lib/ntm-pulmonary-v827.js` | 8077 | `51b554704f575d5ffce2a350e5d8013ee70f0b42f5b85b86d7415d4479de1696` |
-| `lib/num.js` | 16746 | `f1037565e4959fa4ffb4c8c62eef9872745307dbdd712f9677744604b7c160ff` |
+| `lib/num.js` | 16828 | `66b49428df4edc1fbf300ac2b67993caeebfc4b45726be935157e353c7b55816` |
 | `lib/nunley-vertullo-v455.js` | 3085 | `6f287a16c80ba5d73e2bb2c15989a7aa81d8335767f0a36e8c67c3203b357439` |
 | `lib/nutrition-energy-v152.js` | 14446 | `924b5421f818147f64b10db410fca9892773a29a918cf40e2bacdb64c0dbb23a` |
 | `lib/nutrition-maternal-v208.js` | 13391 | `3f68589603d6c5be3866aa0200955bbff10fe8873d47a3a9a1068a0c5b5c4c87` |
@@ -744,7 +744,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/rheum-v160.js` | 13178 | `6f9c9caad669edb9cdb844015cbb354104dbbf6be91576aa1107e512efee360c` |
 | `lib/rheumcrit-v256.js` | 10750 | `380f235a90313f395f0269fc179ab983f8285e1dbafe377e3c0a66d941b8bef0` |
 | `lib/ridley-jopling-v534.js` | 13454 | `fb4f0363664d9c1bd23f3d5c8ef32b627ed0c4741342457fb3fdbe253a02c3a2` |
-| `lib/risk-scores-v215.js` | 17851 | `61cfd9ef4b6853051b08de6a3714f2317060e3e2cab434d18b6c7bd7feaf93a6` |
+| `lib/risk-scores-v215.js` | 17553 | `ac99c145d374ba0496623a4d0223e18a1bc893cc43103c66f4fff0d4e0da9140` |
 | `lib/risk-v192.js` | 16351 | `b576651ce621fddee31cf7d065b663cb3c1b3a3df094b4e0c206928ec430de26` |
 | `lib/riskscores-v255.js` | 6924 | `37886240e9d0cf2bbde3b0149eb1b8ff62667a4350dc0bed14dc60631f1a3f39` |
 | `lib/risser-sign-v383.js` | 4009 | `4e29f6eea9c402b63018246ff051741b23b4a2894f8a44abc3c80abdc576a67d` |
@@ -1556,7 +1556,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/rheum-v160.js` | 7017 | `c1631d777fbb7032c0df2940cf48132919b8d13a1dc8603583a18f2bc3b518a4` |
 | `mcp/adapters/rheumcrit-v256.js` | 5291 | `f1f07f8b961e1c6c1119f817745cabcc361987de3466a91f185971071068a7ec` |
 | `mcp/adapters/ridley-jopling-v534.js` | 5199 | `dc4266d2147a99c69564dd2ef035e856bf31a03f6a9fe22d1edddcbe52081b92` |
-| `mcp/adapters/risk-scores-v215.js` | 6836 | `0c577a6eb59db24f86e6f575f5fefa116b5a82c5f1844e4e9c0d0543e78bf972` |
+| `mcp/adapters/risk-scores-v215.js` | 6932 | `3f6a41cb9cd781c17a18d0b040cc33f31c457eb0e89f604ac9083211594b1aa8` |
 | `mcp/adapters/risk-v192.js` | 4542 | `c23a554508aba41f31dcb319c9a7c64d5b9361d1712a60afc6626f3b5d76b56e` |
 | `mcp/adapters/riskscores-v255.js` | 4128 | `d782a023a7b1bf5a59ea9930ca6200f2a427c2f607d1dd9399c14478b0b05843` |
 | `mcp/adapters/risser-sign-v383.js` | 1400 | `7b229d311a51deaefce3c905987ad8ebca5cb90a40a473dea01b35d80c41c782` |
@@ -1854,7 +1854,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v212.js` | 4626 | `3ef36b96e0a1fb559fea868caffd72929c3fb1d59f3d0e2a6f820ea58bd374d8` |
 | `views/group-v213.js` | 8576 | `4beea367e06599d3777b456aa020515171f0fb329e43cb0a264f29d6ec9ba34c` |
 | `views/group-v214.js` | 7237 | `89e285821679d674241af7a997505f28fe7adc91bc4512ccf1a5112a720e490c` |
-| `views/group-v215.js` | 10141 | `e0d798fc697fafa78a6c0f2b99a0a48b79976b47f2097a5a47ca12f88704971f` |
+| `views/group-v215.js` | 10229 | `8e301114c6d5c7db1e970d1e27fb6df4eb85a3e30634838281cf9f0ab2887648` |
 | `views/group-v216.js` | 8890 | `d762f35dd2d3fa68d487778a412f71ea8bcf48766a0d53b6a42f63132b67b295` |
 | `views/group-v217.js` | 10677 | `ab62b3cf6c94e613a6d79e8dd9fb33fc8fec732b0221ff92499ba7b14a26315e` |
 | `views/group-v218.js` | 10829 | `9b045882134b2abb7576c6a25fcc483d69b6749f3ea83e6480e224b13ef6c7a6` |

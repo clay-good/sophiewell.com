@@ -106,9 +106,9 @@ export const renderers = {
     postureNote(root);
   },
   'lipi'(root) {
-    note(root, 'Lung Immune Prognostic Index (Mezquita 2018): dNLR = ANC / (WBC - ANC); one point each for dNLR > 3 and LDH > ULN. Good 0, intermediate 1, poor 2.');
-    root.appendChild(num('Absolute neutrophil count (×10⁹/L)', 'lipi-anc', { min: '0' }));
-    root.appendChild(num('Total WBC (×10⁹/L)', 'lipi-wbc', { min: '0' }));
+    note(root, 'Lung Immune Prognostic Index (Mezquita 2018): dNLR = ANC / (WBC - ANC); enter both counts in the same unit (for example, ×10⁹/L or cells/µL). One point each for dNLR > 3 and LDH > ULN. Good 0, intermediate 1, poor 2.');
+    root.appendChild(num('Absolute neutrophil count (same unit as WBC)', 'lipi-anc', { min: '0' }));
+    root.appendChild(num('Total WBC (same unit as ANC)', 'lipi-wbc', { min: '0' }));
     root.appendChild(check('LDH above upper limit of normal (+1)', 'lipi-ldh'));
     const o = out(); root.appendChild(o);
     wire(['lipi-anc', 'lipi-wbc', 'lipi-ldh'], () => safe(o, () => {

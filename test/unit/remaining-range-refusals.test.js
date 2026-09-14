@@ -32,7 +32,7 @@ test('the remaining range refusals name the value instead of asking for it again
     /^Plasma sodium \(mEq\/L\) must be/);
   assert.match(cartScore({ rr: 18, hr: 90, dbp: 2_000, age: 60 }).message,
     /^Diastolic blood pressure \(mmHg\) must be/);
-  assert.match(lipi({ anc: 4, wbc: 90_000, ldhHigh: false }).message, /^Total WBC \(×10⁹\/L\) must be/);
+  assert.match(lipi({ anc: 4, wbc: -1, ldhHigh: false }).message, /^Total WBC must be/);
   assert.match(effectiveOsmolality({ sodium: 2_000, glucose: 90 }).message, /^Serum sodium \(mEq\/L\) must be/);
 });
 
@@ -42,7 +42,7 @@ test('the same readers identify out-of-range sibling inputs', () => {
   assert.match(mecki({ hb: 12, sodium: 138, lvef: 350, ppvo2: 60, veco2: 32, egfr: 70 }).message, CHECK);
   assert.match(efwClearance({ urineNa: 800, urineK: 40, plasmaNa: 140, urineVolume: 1_000 }).message, CHECK);
   assert.match(cartScore({ rr: 180, hr: 90, dbp: 70, age: 60 }).message, CHECK);
-  assert.match(lipi({ anc: 4_000, wbc: 9, ldhHigh: false }).message, CHECK);
+  assert.match(lipi({ anc: -1, wbc: 9, ldhHigh: false }).message, CHECK);
 });
 
 test('blank fields still reach each calculator own refusal', () => {

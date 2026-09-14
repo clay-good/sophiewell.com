@@ -79,8 +79,17 @@ test('lipi: good group', () => {
   const r = lipi({ anc: 4, wbc: 8, ldhHigh: false }); // dNLR 1.0
   assert.equal(r.score, 0);
 });
+test('lipi: accepts equivalent counts in either shared unit', () => {
+  const perLiter = lipi({ anc: 7, wbc: 9, ldhHigh: true });
+  const perMicroliter = lipi({ anc: 7000, wbc: 9000, ldhHigh: true });
+  assert.equal(perMicroliter.valid, true);
+  assert.deepEqual(perMicroliter, perLiter);
+});
 test('lipi: invalid when WBC <= ANC', () => {
   assert.equal(lipi({ anc: 9, wbc: 8 }).valid, false);
+});
+test('lipi: rejects a negative count without calling it missing', () => {
+  assert.match(lipi({ anc: -1, wbc: 9 }).message, /^Absolute neutrophil count must be at least 0/);
 });
 
 test('onkotev: high at >= 2', () => {

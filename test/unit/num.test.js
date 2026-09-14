@@ -84,6 +84,11 @@ test('gradeFault reports a value off the scale and names the range', () => {
   assert.match(gradeFault([['the headache rating', -1, 0, 3]]), /must be between 0 and 3/);
 });
 
+test('gradeFault describes a one-sided range without printing Infinity', () => {
+  const fault = gradeFault([['the count', -1, 0, Infinity]]);
+  assert.equal(fault, 'The count must be at least 0. Check the value entered.');
+});
+
 test('gradeFault SKIPS a blank, so the caller\'s own missing-value branch still runs first', () => {
   // spec-v1207's rule from the other side: a reader who left a field blank must
   // be asked for it, not told the value they did enter is out of range.

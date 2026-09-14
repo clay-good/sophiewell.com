@@ -59,10 +59,10 @@ false flag invites a fix to a correct tile*:
 | `vasograde` | both inputs are **graded scales** (modified Fisher 0–4, WFNS 1–5) and the reads already bound each to its own; a scale's range *is* the envelope |
 | `lipi` | the unit is **unstated by design** — its message asks for both counts in "same units", whichever those are |
 
-`lipi` turned up something while being written down, and it is recorded rather
-than fixed here: the message promises any consistent unit and the code caps both
-counts at 1000, which in practice admits only the ×10⁹/L convention and refuses
-an ordinary per-µL result. That mismatch is real and is its own change.
+`lipi` turned up something while being written down: the message promised any
+consistent unit while the code capped both counts at 1000, which admitted the
+×10⁹/L convention but refused an ordinary per-µL result. Spec-v1250 removes that
+unit-specific ceiling and verifies that equivalent shared units agree.
 
 ## The fifth test asserting an impossible input
 

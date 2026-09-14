@@ -62,8 +62,8 @@ export default [
     summary: 'Lung Immune Prognostic Index (Mezquita 2018): the derived neutrophil-to-lymphocyte ratio (from ANC and total WBC) plus elevated LDH give a 0–2 score banding prognosis on immunotherapy.',
     compute: F.lipi,
     fields: [
-      { dom: 'lipi-anc', arg: 'anc', kind: 'number', required: true, label: 'Absolute neutrophil count', unit: '×10⁹/L' },
-      { dom: 'lipi-wbc', arg: 'wbc', kind: 'number', required: true, label: 'Total WBC', unit: '×10⁹/L' },
+      { dom: 'lipi-anc', arg: 'anc', kind: 'number', required: true, label: 'Absolute neutrophil count', unit: 'same unit as total WBC (for example, ×10⁹/L or cells/µL)' },
+      { dom: 'lipi-wbc', arg: 'wbc', kind: 'number', required: true, label: 'Total WBC', unit: 'same unit as ANC (for example, ×10⁹/L or cells/µL)' },
       { dom: 'lipi-ldh', arg: 'ldhHigh', kind: 'bool', required: false, label: 'LDH above the upper limit of normal' },
     ],
   },
