@@ -1730,25 +1730,59 @@ test('R-PA-HCSC-005 checks a reference only after submission is complete', () =>
   assert.equal(confirmed.find((x) => x.ruleId === 'R-PA-HCSC-005').status, 'pass');
 });
 
-test('R-PA-HCSC-006 flags an inpatient (POS 21) HCSC request with no admission / progress documentation', () => {
-  const text = 'Blue Cross Blue Shield of Illinois member.\nPlace of service: 21\nInpatient admission for acute care.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-HCSC-006');
-  assert.equal(f.status, 'flag');
+test('R-PA-HCSC-006 distinguishes initial admission from continued-stay review', () => {
+  const initial = runEngine(bundleOf('Blue Cross Blue Shield of Illinois member.\nPlace of service: 21\nInpatient admission for acute care.\n'));
+  assert.equal(initial.find((x) => x.ruleId === 'R-PA-HCSC-006').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Blue Cross Blue Shield of Illinois member.\nContinued stay request for additional inpatient days.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-HCSC-006').status, 'info');
+
+  const complete = runEngine(bundleOf('Blue Cross Blue Shield of Illinois member.\nContinued stay request.\nClinical update: responding to treatment.\nExpected discharge: September 20, 2026.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-HCSC-006').status, 'pass');
 });
 
-test('R-PA-HCSC-007 flags an HCSC outpatient MRI with no clinical indication', () => {
-  const text = 'Blue Cross Blue Shield of Texas member.\nRequested: MRI lumbar spine, CPT 72148.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-HCSC-007');
-  assert.equal(f.status, 'flag');
+test('R-PA-HCSC-007 scopes clinical rationale to outpatient advanced imaging', () => {
+  const otherRadiology = runEngine(bundleOf('Blue Cross Blue Shield of Illinois member.\nScreening mammography CPT 77067.\n'));
+  assert.equal(otherRadiology.find((x) => x.ruleId === 'R-PA-HCSC-007').status, 'pass');
+
+  const inpatient = runEngine(bundleOf('Blue Cross Blue Shield of Illinois member.\nPlace of service: 21\nInpatient MRI lumbar spine.\n'));
+  assert.equal(inpatient.find((x) => x.ruleId === 'R-PA-HCSC-007').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Blue Cross Blue Shield of Texas member.\nRequested: MRI lumbar spine, CPT 72148.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-HCSC-007').status, 'info');
+
+  const complete = runEngine(bundleOf('Blue Cross Blue Shield of Texas member.\nRequested: MRI lumbar spine.\nClinical indication: persistent radicular symptoms.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-HCSC-007').status, 'pass');
 });
 
-test('R-PA-HCSC-008 passes when an expedited HCSC request documents the clinical urgency', () => {
-  const text = 'Blue Cross Blue Shield of Illinois member.\nExpedited review requested: delay would jeopardize the member\'s life or health.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-HCSC-008');
-  assert.equal(f.status, 'pass');
+test('R-PA-HCSC-008 is an informational expedited-review advisory', () => {
+  const incomplete = runEngine(bundleOf('Blue Cross Blue Shield of Illinois member.\nExpedited review requested.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-HCSC-008').status, 'info');
+
+  const complete = runEngine(bundleOf('Blue Cross Blue Shield of Illinois member.\nExpedited review requested: delay would jeopardize the member\'s life or health.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-HCSC-008').status, 'pass');
+});
+
+test('R-PA-HCSC-009 runs only for an explicit site-of-care review', () => {
+  const generic = runEngine(bundleOf('Blue Cross Blue Shield of Illinois member.\nHospital outpatient surgery, POS 22, CPT 29881.\n'));
+  assert.equal(generic.find((x) => x.ruleId === 'R-PA-HCSC-009').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Blue Cross Blue Shield of Illinois member.\nSite-of-care review requested.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-HCSC-009').status, 'info');
+
+  const complete = runEngine(bundleOf('Blue Cross Blue Shield of Illinois member.\nSite-of-care review requested.\nRequested site is medically necessary because higher acuity monitoring is required.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-HCSC-009').status, 'pass');
+});
+
+test('R-PA-HCSC-010 does not infer an NDC requirement from every J-code', () => {
+  const generic = runEngine(bundleOf('Blue Cross Blue Shield of Illinois member.\nPhysician-administered drug J3590.\n'));
+  assert.equal(generic.find((x) => x.ruleId === 'R-PA-HCSC-010').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Blue Cross Blue Shield of Illinois member.\nPhysician-administered drug.\nNDC required.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-HCSC-010').status, 'info');
+
+  const complete = runEngine(bundleOf('Blue Cross Blue Shield of Illinois member.\nPhysician-administered drug.\nNDC required: 0002-8215-01.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-HCSC-010').status, 'pass');
 });
 
 test('R-PA-HCSC-011 flags an HCSC specialty-drug request with no step-therapy prior-trial documentation', () => {
