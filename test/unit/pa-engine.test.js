@@ -1683,13 +1683,13 @@ test('HCSC overlay rules vacuously pass on a non-HCSC packet', () => {
   }
 });
 
-test('R-PA-HCSC-001 flags an HCSC request with a procedure but no coverage-criteria reference', () => {
+test('R-PA-HCSC-001 is an informational coverage-policy mapping aid', () => {
   const text = 'Blue Cross Blue Shield of Illinois PPO member.\n'
     + 'Requested procedure: CPT 72148 (MRI lumbar spine).\n'
     + 'Please authorize.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-HCSC-001');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
 });
 
 test('R-PA-HCSC-001 passes when the HCSC packet cites the applicable Medical Policy', () => {
@@ -1701,18 +1701,33 @@ test('R-PA-HCSC-001 passes when the HCSC packet cites the applicable Medical Pol
   assert.equal(f.status, 'pass');
 });
 
-test('R-PA-HCSC-002 flags an HCSC packet with no clinical document attached', () => {
-  const text = 'Blue Cross Blue Shield of Illinois PPO member.\nRequested procedure: CPT 27447.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-HCSC-002');
-  assert.equal(f.status, 'flag');
+test('R-PA-HCSC-002 treats a recognized clinical attachment as request-specific', () => {
+  const incomplete = runEngine(bundleOf('Blue Cross Blue Shield of Illinois PPO member.\nRequested procedure: CPT 27447.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-HCSC-002').status, 'info');
+
+  const complete = runEngine(bundleOf('Blue Cross Blue Shield of Illinois PPO member.\nClinical note.\nRequested procedure: CPT 27447.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-HCSC-002').status, 'pass');
 });
 
-test('R-PA-HCSC-003 passes when the HCSC packet names the Availity channel (info)', () => {
-  const text = 'Health Care Service Corporation member.\nSubmitted via the Availity Essentials portal.\nProcedure CPT 27447.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-HCSC-003');
-  assert.equal(f.status, 'pass');
+test('R-PA-HCSC-003 does not require the submission channel in packet content', () => {
+  const findings = runEngine(bundleOf('Health Care Service Corporation member.\nProcedure CPT 27447.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HCSC-003').status, 'pass');
+});
+
+test('R-PA-HCSC-004 remains non-enforcing without a member-specific lookup', () => {
+  const findings = runEngine(bundleOf('Blue Cross Blue Shield of Illinois PPO member.\nProcedure CPT 27447.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HCSC-004').status, 'pass');
+});
+
+test('R-PA-HCSC-005 checks a reference only after submission is complete', () => {
+  const initial = runEngine(bundleOf('Blue Cross Blue Shield of Illinois PPO member.\nPrior authorization required.\n'));
+  assert.equal(initial.find((x) => x.ruleId === 'R-PA-HCSC-005').status, 'pass');
+
+  const submitted = runEngine(bundleOf('Blue Cross Blue Shield of Illinois PPO member.\nPrior authorization submitted.\n'));
+  assert.equal(submitted.find((x) => x.ruleId === 'R-PA-HCSC-005').status, 'info');
+
+  const confirmed = runEngine(bundleOf('Blue Cross Blue Shield of Illinois PPO member.\nPrior authorization submitted.\nReference number: I12345.\n'));
+  assert.equal(confirmed.find((x) => x.ruleId === 'R-PA-HCSC-005').status, 'pass');
 });
 
 test('R-PA-HCSC-006 flags an inpatient (POS 21) HCSC request with no admission / progress documentation', () => {

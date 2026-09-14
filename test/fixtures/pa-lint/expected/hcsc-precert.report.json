@@ -13,8 +13,8 @@
     "counts": {
       "block": 0,
       "flag": 6,
-      "info": 4,
-      "pass": 866,
+      "info": 3,
+      "pass": 867,
       "error": 0,
       "disabled": 0
     },
@@ -109,16 +109,6 @@
       "citation": "(core, payer-agnostic).",
       "evidence": null,
       "note": "No cover-sheet / checklist anchor found.",
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-HCSC-003",
-      "severity": "info",
-      "status": "info",
-      "description": "HCSC prior authorization: submission channel (Availity Essentials / phone on member ID card) indicated",
-      "citation": "HCSC directs providers to submit prior-authorization requests through the Availity Essentials portal, by 278 EDI transaction, or by phone using the number on the member ID card. Informational: a cover sheet that names the channel speeds routing. <https://www.bcbsil.com/provider/claims/claims-eligibility/utilization-management/prior-authorization>",
-      "evidence": null,
-      "note": "No HCSC submission channel (the Availity Essentials portal / EDI 278 / the phone number on the member ID card) is noted in the packet. Informational only -- does not affect medical-necessity review.",
       "remediation": null
     },
     {
@@ -4193,21 +4183,31 @@
     },
     {
       "ruleId": "R-PA-HCSC-001",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "HCSC prior authorization: coverage criteria (HCSC Medical Policy / MCG) referenced",
-      "citation": "HCSC adjudicates prior-authorization requests against its published Medical Policies (and MCG care guidelines); a request should cite the policy it is being judged against so the reviewer can map it to the coverage criteria. <https://www.bcbsil.com/provider/claims/claims-eligibility/utilization-management/prior-authorization>",
-      "evidence": "Coverage-criteria reference in hcsc-pa-form.txt",
+      "description": "HCSC prior authorization: applicable coverage criterion identified when known",
+      "citation": "BCBSIL uses member-plan medical necessity and points providers to its utilization-management criteria and Medical Policies, but its current submission instructions do not require every request to cite a policy. This is an informational mapping aid. <https://www.bcbsil.com/provider/claims/claims-eligibility/utilization-management/prior-authorization>",
+      "evidence": "Applicable coverage-criterion reference in hcsc-pa-form.txt",
       "note": null,
       "remediation": null
     },
     {
       "ruleId": "R-PA-HCSC-002",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "HCSC prior authorization: supporting medical records / clinical documentation attached",
-      "citation": "HCSC requires the clinical information that supports medical necessity to be submitted with the prior-authorization request; a request with no clinical document attached cannot be reviewed on the merits. <https://www.bcbsil.com/provider/claims/claims-eligibility/utilization-management/prior-authorization>",
+      "description": "HCSC prior authorization: request-specific supporting clinical documentation attached",
+      "citation": "BCBSIL asks providers to have the member condition and proposed treatment plan ready, and its electronic workflow can accept medical-record attachments. The public overview does not impose one fixed clinical-document type on every request. Informational. <https://www.bcbsil.com/provider/claims/claims-eligibility/utilization-management/prior-authorization>",
       "evidence": "Supporting clinical document present: hcsc-note.txt (clinical-note)",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-HCSC-003",
+      "severity": "info",
+      "status": "pass",
+      "description": "HCSC prior authorization: use the member- and service-specific submission workflow",
+      "citation": "BCBSIL routes requests among BlueApprovR, the Availity Authorizations tool, phone, and delegated utilization-management vendors according to the member and service. It does not require packet content to record the transport channel. <https://www.bcbsil.com/provider/claims/claims-eligibility/utilization-management/prior-authorization>",
+      "evidence": "Packet content does not need to record its transport channel; use the BCBSIL or delegated-vendor workflow identified by the member-specific lookup.",
       "note": null,
       "remediation": null
     },
@@ -4215,19 +4215,19 @@
       "ruleId": "R-PA-HCSC-004",
       "severity": "info",
       "status": "pass",
-      "description": "HCSC prior authorization: requested service is on HCSC's prior-authorization / notification requirement list",
-      "citation": "HCSC prior authorization applies only to services on its published prior-authorization and notification lists; requesting authorization for a non-listed service is unnecessary. ships no bundled list, so the rule is vacuously satisfied with a pointer to the list (it mirrors core R-PA-053 and the Aetna / UHC / Anthem / Cigna / Humana -004 rules; a later wave bundles the list and flips this to a real membership test). <https://www.bcbsil.com/provider/claims/claims-eligibility/utilization-management/prior-authorization>",
-      "evidence": "No bundled HCSC prior-authorization list at wave 52-12; rule vacuously satisfied. Verify the requested service against HCSC's current prior-authorization and notification list.",
+      "description": "HCSC prior authorization: requested service checked against the member's applicable requirement list",
+      "citation": "BCBSIL says prior-authorization requirements vary by service, member benefit plan, and group elections, and directs providers to check eligibility and benefits plus the current requirement summaries and code lists. The linter has no member-specific lookup service, so this reminder is non-enforcing. <https://www.bcbsil.com/docs/provider/il/claims/um/2026-commercial-pa-summary.pdf>",
+      "evidence": "No member-specific HCSC requirement service is bundled; verify the requested service against the current list and eligibility response for the member's product.",
       "note": null,
       "remediation": null
     },
     {
       "ruleId": "R-PA-HCSC-005",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "HCSC prior authorization: authorization is referenced for a service that requires it before the service date",
-      "citation": "HCSC requires prior authorization to be obtained before a service on its requirement list is rendered; a packet for an authorization-required service should show the authorization / reference number rather than relying on post-service review. <https://www.bcbsil.com/provider/claims/claims-eligibility/utilization-management/prior-authorization>",
-      "evidence": "HCSC packet without an authorization-required service flag; rule vacuously satisfied.",
+      "description": "HCSC submitted prior authorization: confirmation reference retained",
+      "citation": "Source-free operational completeness check: an initial request cannot already contain the determination it is seeking. This advisory runs only when the packet says submission is complete and asks the submitter to retain a case or confirmation reference.",
+      "evidence": "Packet does not claim a completed HCSC prior-authorization submission; no confirmation reference is expected.",
       "note": null,
       "remediation": null
     },
@@ -8931,7 +8931,6 @@
       "R-PA-031",
       "R-PA-032",
       "R-PA-060",
-      "R-PA-HCSC-003",
       "R-PA-001",
       "R-PA-002",
       "R-PA-003",
@@ -9341,6 +9340,7 @@
       "R-PA-GEN-005",
       "R-PA-HCSC-001",
       "R-PA-HCSC-002",
+      "R-PA-HCSC-003",
       "R-PA-HCSC-004",
       "R-PA-HCSC-005",
       "R-PA-HCSC-006",
@@ -10013,7 +10013,7 @@
           "label": "Health Care Service Corporation (Blue Cross Blue Shield of IL/TX/MT/NM/OK) prior-authorization requirements, Medical Policies, and utilization-management / Prime Therapeutics program requirements",
           "url": "https://www.bcbsil.com/provider/claims/claims-eligibility/utilization-management/prior-authorization",
           "ruleFamily": "commercial-hcsc",
-          "lastVerified": "2026-06-02"
+          "lastVerified": "2026-09-14"
         },
         {
           "id": "highmark-precert",

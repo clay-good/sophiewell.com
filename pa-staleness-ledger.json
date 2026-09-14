@@ -359,7 +359,10 @@
         "R-PA-HCSC-002"
       ],
       "url": "https://www.bcbsil.com/provider/claims/claims-eligibility/utilization-management/prior-authorization",
-      "lastVerified": "2026-06-02"
+      "lastVerified": "2026-09-14",
+      "alsoCited": [
+        "https://www.bcbsil.com/docs/provider/il/claims/um/2026-commercial-pa-summary.pdf"
+      ]
     },
     {
       "id": "highmark-precert",
