@@ -1016,18 +1016,39 @@ test('R-PA-ANTHEM-005 advises when a submitted authorization omits its case refe
   assert.equal(complete.find((x) => x.ruleId === 'R-PA-ANTHEM-005').status, 'pass');
 });
 
-test('R-PA-ANTHEM-006 flags an inpatient (POS 21) Anthem request with no admission / progress documentation', () => {
-  const text = 'Anthem member.\nPlace of service: 21\nInpatient admission for acute care.\n';
+test('R-PA-ANTHEM-006 does not require concurrent-review documentation on an initial inpatient request', () => {
+  const text = 'Anthem member.\nPlace of service: 21\nInitial inpatient admission request for acute care.\n';
   const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-ANTHEM-006');
-  assert.equal(f.status, 'flag');
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ANTHEM-006').status, 'pass');
 });
 
-test('R-PA-ANTHEM-007 flags an Anthem outpatient MRI with no clinical indication', () => {
-  const text = 'Anthem member.\nRequested: MRI lumbar spine, CPT 72148.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-ANTHEM-007');
-  assert.equal(f.status, 'flag');
+test('R-PA-ANTHEM-006 advises only when an explicit concurrent review lacks a current update', () => {
+  const incomplete = runEngine(bundleOf('Anthem member.\nConcurrent review requested for additional inpatient days.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-ANTHEM-006').status, 'info');
+
+  const complete = runEngine(bundleOf('Anthem member.\nConcurrent review requested.\nCurrent clinical status and response to treatment documented.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-ANTHEM-006').status, 'pass');
+});
+
+test('R-PA-ANTHEM-007 does not infer Carelon imaging review from an MRI or radiology code', () => {
+  for (const text of [
+    'Anthem member.\nRequested: MRI lumbar spine, CPT 72148.\n',
+    'Anthem member.\nRequested procedure: CPT 71046.\n',
+  ]) {
+    const findings = runEngine(bundleOf(text));
+    assert.equal(findings.find((x) => x.ruleId === 'R-PA-ANTHEM-007').status, 'pass');
+  }
+});
+
+test('R-PA-ANTHEM-007 advises when an explicit Carelon imaging review lacks an indication', () => {
+  const incomplete = runEngine(bundleOf('Anthem member.\nCarelon imaging review applies.\nRequested: MRI lumbar spine.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-ANTHEM-007').status, 'info');
+
+  const complete = runEngine(bundleOf('Anthem member.\nCarelon imaging review applies.\nRequested: MRI lumbar spine.\nClinical indication: persistent radiculopathy.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-ANTHEM-007').status, 'pass');
+
+  const inpatient = runEngine(bundleOf('Anthem member.\nPlace of service: 21\nAcute inpatient admission.\nCarelon imaging review applies.\nRequested: MRI lumbar spine.\n'));
+  assert.equal(inpatient.find((x) => x.ruleId === 'R-PA-ANTHEM-007').status, 'pass');
 });
 
 test('R-PA-ANTHEM-008 passes when an expedited Anthem request documents the clinical urgency', () => {
@@ -1035,6 +1056,33 @@ test('R-PA-ANTHEM-008 passes when an expedited Anthem request documents the clin
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-ANTHEM-008');
   assert.equal(f.status, 'pass');
+});
+
+test('R-PA-ANTHEM-008 gives a source-free advisory when an urgent request omits its rationale', () => {
+  const findings = runEngine(bundleOf('Anthem member.\nUrgent prior authorization requested.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ANTHEM-008').status, 'info');
+});
+
+test('R-PA-ANTHEM-009 runs only when the packet establishes that CG-SURG-10 applies', () => {
+  const generic = runEngine(bundleOf('Anthem member.\nHospital outpatient surgery requested, CPT 27447.\n'));
+  assert.equal(generic.find((x) => x.ruleId === 'R-PA-ANTHEM-009').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Anthem member.\nCG-SURG-10 applies to this request.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-ANTHEM-009').status, 'flag');
+
+  const complete = runEngine(bundleOf('Anthem member.\nCG-SURG-10 review.\nFacility required because the patient is ASA class III.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-ANTHEM-009').status, 'pass');
+});
+
+test('R-PA-ANTHEM-010 runs only for an explicit NDC requirement', () => {
+  const generic = runEngine(bundleOf('Anthem member.\nSpecialty drug requested, procedure J3590.\n'));
+  assert.equal(generic.find((x) => x.ruleId === 'R-PA-ANTHEM-010').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Anthem member.\nNDC required for this request.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-ANTHEM-010').status, 'info');
+
+  const complete = runEngine(bundleOf('Anthem member.\nNDC required for this request.\nNDC: 12345-6789-01.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-ANTHEM-010').status, 'pass');
 });
 
 test('R-PA-ANTHEM-011 flags an Anthem specialty-drug request with no step-therapy prior-trial documentation', () => {
