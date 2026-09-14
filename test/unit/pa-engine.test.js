@@ -298,32 +298,46 @@ test('R-PA-AETNA-005 does not extrapolate the reviewed spinal form to bariatric 
 
 // ---- wave 52-7b sanity checks (Aetna rules 6-10) ----
 
-test('R-PA-AETNA-006 flags an inpatient (POS 21) Aetna request with no discharge / progress documentation', () => {
+test('R-PA-AETNA-006 does not treat an initial inpatient request as concurrent review', () => {
   const text = 'Aetna PPO member.\nPlace of service: 21\nInpatient admission for lumbar fusion CPT 22633.\nMedical necessity per CPB.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-006');
-  assert.equal(f.status, 'flag');
-});
-
-test('R-PA-AETNA-006 passes when the inpatient Aetna packet documents a discharge plan', () => {
-  const text = 'Aetna PPO member.\nPlace of service: 21\nInpatient admission.\nDischarge plan: home with PT; estimated length of stay 2 days.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-006');
   assert.equal(f.status, 'pass');
 });
 
-test('R-PA-AETNA-007 flags a hospital-outpatient (POS 22) Aetna MRI with no site-of-care justification', () => {
+test('R-PA-AETNA-006 is advisory when an Aetna concurrent review has no progress update', () => {
+  const text = 'Aetna PPO member.\nConcurrent review for continued stay.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-006');
+  assert.equal(f.status, 'info');
+});
+
+test('R-PA-AETNA-006 passes when the concurrent review documents clinical progress', () => {
+  const text = 'Aetna PPO member.\nConcurrent review for continued stay.\nClinical progress: tolerating therapy.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-006');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-AETNA-007 is advisory because site-of-care requirements are member-specific', () => {
   const text = 'Aetna member.\nPlace of service: 22\nMRI brain CPT 70551 at hospital outpatient imaging.\nMedical necessity per CPB.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-007');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
 });
 
-test('R-PA-AETNA-008 flags an expedited Aetna request with no clinical urgency stated', () => {
+test('R-PA-AETNA-007 does not infer MRI or CT from every 7xxxx radiology code', () => {
+  const text = 'Aetna member.\nPlace of service: 22\nScreening mammography CPT 77067 at hospital outpatient imaging.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-007');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-AETNA-008 is a source-free advisory when an expedited request has no rationale', () => {
   const text = 'Aetna member.\nExpedited / urgent request.\nRequested procedure: MRI brain CPT 70551.\nMedical necessity per CPB.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-008');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
 });
 
 test('R-PA-AETNA-008 passes when an expedited Aetna request documents the clinical urgency', () => {
@@ -333,18 +347,50 @@ test('R-PA-AETNA-008 passes when an expedited Aetna request documents the clinic
   assert.equal(f.status, 'pass');
 });
 
-test('R-PA-AETNA-009 flags an Aetna blepharoplasty request with no visual-field / photographic evidence', () => {
+test('R-PA-AETNA-009 does not assume every blepharoplasty uses functional-impairment criteria', () => {
   const text = 'Aetna member.\nRequested procedure: blepharoplasty CPT 15823.\nMedical necessity per CPB.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-009');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'pass');
 });
 
-test('R-PA-AETNA-010 flags an Aetna J-code drug request with no NDC', () => {
+test('R-PA-AETNA-009 flags functional upper-lid surgery missing CPB 0084 evidence', () => {
+  const text = 'Aetna member.\nRequested procedure: upper lid blepharoplasty CPT 15823 for functional visual impairment.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-009');
+  assert.equal(f.status, 'flag');
+  assert.match(f.note, /photographs/);
+  assert.match(f.note, /visual-field/);
+});
+
+test('R-PA-AETNA-009 requires margin-reflex distance for functional ptosis repair', () => {
+  const text = 'Aetna member.\nPtosis repair for functional visual impairment.\nClinical photographs attached.\nTaped and untaped visual field testing attached.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-009');
+  assert.equal(f.status, 'flag');
+  assert.match(f.note, /margin-reflex distance/);
+});
+
+test('R-PA-AETNA-009 passes complete functional upper-lid evidence', () => {
+  const text = 'Aetna member.\nPtosis repair for functional visual impairment.\nClinical photographs attached.\nTaped and untaped visual field testing attached.\nMargin reflex distance: 1 mm.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-009');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-AETNA-010 advises on a missing administration code, not a universal NDC', () => {
   const text = 'Aetna member.\nRequested drug: J9299 nivolumab infusion.\nMedical necessity per CPB.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-010');
   assert.equal(f.status, 'info');
+  assert.match(f.note, /administration code/);
+});
+
+test('R-PA-AETNA-010 passes when the J-code request includes an administration code', () => {
+  const text = 'Aetna member.\nRequested drug: J9299 nivolumab infusion with administration CPT 96413.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-010');
+  assert.equal(f.status, 'pass');
 });
 
 // ---- wave 52-7c sanity checks (Aetna rules 11-15) ----

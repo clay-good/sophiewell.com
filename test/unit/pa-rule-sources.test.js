@@ -56,6 +56,10 @@ test('overlay families map to their single source by id prefix', () => {
   assert.deepEqual(ruleSourceIds('R-PA-AETNA-003'), ['aetna-precert']);
 });
 
+test('source-free overlay rules override their family source', () => {
+  assert.deepEqual(ruleSourceIds('R-PA-AETNA-008'), []);
+});
+
 test('ruleSourceIds is total and deterministic (returns a fresh array)', () => {
   assert.deepEqual(ruleSourceIds(''), []);
   assert.deepEqual(ruleSourceIds(undefined), []);

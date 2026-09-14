@@ -12,8 +12,8 @@
     "totalRulesEvaluated": 876,
     "counts": {
       "block": 0,
-      "flag": 6,
-      "info": 4,
+      "flag": 4,
+      "info": 6,
       "pass": 866,
       "error": 0,
       "disabled": 0
@@ -62,26 +62,6 @@
       "remediation": "Address the rule's `note` field and resubmit."
     },
     {
-      "ruleId": "R-PA-AETNA-007",
-      "severity": "flag",
-      "status": "flag",
-      "description": "Aetna site-of-service review: hospital-outpatient MRI / CT addresses the site-of-care requirement",
-      "citation": "Aetna: \"Some members will have site-of-care requirements for MRI and CT scans when services are requested in a hospital outpatient setting.\" A hospital-outpatient advanced-imaging request should document why that site is required rather than a freestanding center. <https://www.aetna.com/health-care-professionals/precertification.html>",
-      "evidence": null,
-      "note": "Aetna hospital-outpatient MRI / CT request without a site-of-care justification. Document why the hospital setting (vs. a freestanding imaging center) is required, or expect a site-of-service redirect.",
-      "remediation": "Address the rule's `note` field and resubmit."
-    },
-    {
-      "ruleId": "R-PA-AETNA-008",
-      "severity": "flag",
-      "status": "flag",
-      "description": "Aetna expedited / urgent precertification: clinical urgency justification present",
-      "citation": "Aetna processes a request on an expedited basis when \"a delay in decision making might seriously jeopardize the life or health of the member or [the] ability to regain maximum function.\" A request that asks for expedited handling should state that clinical urgency. <https://www.aetna.com/health-care-professionals/precertification.html>",
-      "evidence": null,
-      "note": "Aetna request asks for expedited / urgent handling (aetna-imaging-form.txt) but states no clinical urgency. Document why a standard-timeframe decision would jeopardize the member's life, health, or ability to regain maximum function.",
-      "remediation": "Address the rule's `note` field and resubmit."
-    },
-    {
       "ruleId": "R-PA-031",
       "severity": "info",
       "status": "info",
@@ -109,6 +89,26 @@
       "citation": "(core, payer-agnostic).",
       "evidence": null,
       "note": "No cover-sheet / checklist anchor found.",
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-AETNA-007",
+      "severity": "info",
+      "status": "info",
+      "description": "Aetna site-of-care review: member-specific hospital-outpatient MRI / CT requirement addressed",
+      "citation": "Aetna's 2026 participating-provider precertification list says some members have site-of-care requirements for MRI and CT requested in a hospital outpatient setting. It does not establish a universal requirement for every Aetna member. <https://www.aetna.com/content/dam/aetna/pdfs/aetnacom/healthcare-professionals/2026_Precert_List.pdf>",
+      "evidence": null,
+      "note": "Hospital-outpatient MRI / CT request without a member-specific site-of-care determination or hospital-setting rationale. Informational only: verify whether this member's plan has the site-of-care requirement before treating it as a submission defect.",
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-AETNA-008",
+      "severity": "info",
+      "status": "info",
+      "description": "Aetna expedited / urgent precertification: clinical urgency justification present",
+      "citation": "Packet-internal completeness check: when a request asks for expedited handling, recording its clinical urgency prevents an unsupported priority label. Aetna's current commercial precertification overview does not publish a universal expedited criterion, so this rule is informational and source-free.",
+      "evidence": null,
+      "note": "Aetna request asks for expedited / urgent handling (aetna-imaging-form.txt) but states no clinical urgency. Informational only: document the packet-specific reason for priority handling.",
       "remediation": null
     },
     {
@@ -703,11 +703,11 @@
     },
     {
       "ruleId": "R-PA-AETNA-006",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "Aetna inpatient precertification: concurrent-review documentation (clinical progress + discharge / continuing-care plan) present",
-      "citation": "Aetna concurrent review \"collect[s] information from the care team about the patient's condition and progress to determine coverage\" and develops a discharge and continuing-care plan early in the stay; an inpatient request should carry that clinical update. <https://www.aetna.com/health-care-professionals/utilization-management/concurrent-review.html>",
-      "evidence": "Aetna packet without an inpatient / continued-stay context; rule vacuously satisfied.",
+      "description": "Aetna concurrent review: current condition and clinical progress documented",
+      "citation": "Aetna describes concurrent review as utilization management performed while a patient is actively receiving treatment. Aetna collects information from the care team about the patient's condition and progress, and Aetna creates and reviews a discharge and continuing-care plan. The page does not impose those elements on every initial inpatient precertification packet. <https://www.aetna.com/health-care-professionals/utilization-management/concurrent-review.html>",
+      "evidence": "Aetna packet without an explicit concurrent / continued-stay review; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -715,9 +715,9 @@
       "ruleId": "R-PA-AETNA-009",
       "severity": "flag",
       "status": "pass",
-      "description": "Aetna precertification: objective evidence (visual field / photographs / measurements) present for procedures whose CPB requires it",
-      "citation": "Several Aetna Clinical Policy Bulletins condition coverage on objective evidence -- e.g. visual-field tests and margin-reflex-distance photographs for blepharoplasty, photographs and excised-tissue weight for panniculectomy / reduction mammaplasty. When the packet requests one of those procedures, that objective evidence should be attached. <https://www.aetna.com/health-care-professionals/precertification.html>",
-      "evidence": "Aetna packet without a procedure that requires objective photographic / measurement evidence; rule vacuously satisfied.",
+      "description": "Aetna eyelid surgery: functional upper-lid request includes photographs and visual-field testing",
+      "citation": "Aetna CPB 0084 requires recent photographs and taped/untaped visual-field testing for upper-lid blepharoplasty or ptosis repair requested to correct functional visual impairment. Ptosis repair also requires a margin-reflex-distance measurement. The CPB lists other covered indications, so an eyelid procedure name alone does not trigger these functional-impairment criteria. <https://www.aetna.com/cpb/medical/data/1_99/0084.html>",
+      "evidence": "No functional-visual-impairment upper-lid request; CPB 0084 evidence rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -725,9 +725,9 @@
       "ruleId": "R-PA-AETNA-010",
       "severity": "info",
       "status": "pass",
-      "description": "Aetna precertification: NDC documented for a physician-administered (J-code) drug request",
-      "citation": "Aetna's precertification information request for physician-administered (buy-and-bill) drugs asks for the National Drug Code in addition to the HCPCS J-code, so the request maps to a specific product and dose. Informational: a J-code request without an NDC routes more slowly. <https://www.aetna.com/health-care-professionals/precertification.html>",
-      "evidence": "Aetna packet without a physician-administered (J-code) drug request; rule vacuously satisfied.",
+      "description": "Aetna precertification: applicable administration code included for a drug / injectable request",
+      "citation": "Aetna's general Precertification Information Request Form asks for CPT/HCPCS codes and says drug or injectable requests should include any administration codes. The form does not state the universal NDC requirement previously attributed to it. <https://www.aetna.com/content/dam/aetna/pdfs/aetnacom/pharmacy-insurance/healthcare-professional/documents/precert-information-request-form.pdf>",
+      "evidence": "Aetna packet without a J-code drug / injectable request; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -8928,11 +8928,11 @@
       "R-PA-026",
       "R-PA-029",
       "R-PA-037",
-      "R-PA-AETNA-007",
-      "R-PA-AETNA-008",
       "R-PA-031",
       "R-PA-032",
       "R-PA-060",
+      "R-PA-AETNA-007",
+      "R-PA-AETNA-008",
       "R-PA-RAD-001",
       "R-PA-001",
       "R-PA-002",
