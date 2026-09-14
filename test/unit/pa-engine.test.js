@@ -1399,18 +1399,58 @@ test('R-PA-CIGNA-015 checks a signed order only when explicitly required', () =>
   assert.equal(complete.find((x) => x.ruleId === 'R-PA-CIGNA-015').status, 'pass');
 });
 
-test('R-PA-CIGNA-017 flags a Cigna transplant request with no LifeSOURCE / network routing', () => {
-  const text = 'Cigna member.\nRequested service: kidney transplant.\nMedical necessity per Medical Coverage Policy.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-CIGNA-017');
-  assert.equal(f.status, 'flag');
+test('R-PA-CIGNA-016 checks only facility-based behavioral-health requests', () => {
+  const routine = runEngine(bundleOf('Cigna member.\nRoutine outpatient mental health visit.\n'));
+  assert.equal(routine.find((x) => x.ruleId === 'R-PA-CIGNA-016').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Cigna member.\nInpatient psychiatric request.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-CIGNA-016').status, 'info');
+
+  const complete = runEngine(bundleOf('Cigna member.\nInpatient psychiatric request.\nClinical assessment: current symptoms and risk assessment documented.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-CIGNA-016').status, 'pass');
 });
 
-test('R-PA-CIGNA-020 flags a Cigna out-of-network request with no network-gap justification (info)', () => {
-  const text = 'Cigna member.\nOut-of-network prior authorization request.\nProcedure CPT 70551.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-CIGNA-020');
-  assert.equal(f.status, 'info');
+test('R-PA-CIGNA-017 applies LifeSOURCE routing only when explicitly required', () => {
+  const generic = runEngine(bundleOf('Cigna member.\nRequested service: kidney transplant.\n'));
+  assert.equal(generic.find((x) => x.ruleId === 'R-PA-CIGNA-017').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Cigna member.\nCigna LifeSOURCE required.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-CIGNA-017').status, 'info');
+
+  const complete = runEngine(bundleOf('Cigna member.\nCigna LifeSOURCE required.\nLifeSOURCE facility: Example Transplant Center.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-CIGNA-017').status, 'pass');
+});
+
+test('R-PA-CIGNA-018 does not infer EIU status from off-label or trial language', () => {
+  const findings = runEngine(bundleOf('Cigna member.\nOff-label treatment in a clinical trial.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-CIGNA-018').status, 'pass');
+});
+
+test('R-PA-CIGNA-018 checks the policy behind an explicit EIU classification', () => {
+  const incomplete = runEngine(bundleOf('Cigna member.\nClassified by Cigna as investigational.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-CIGNA-018').status, 'info');
+
+  const complete = runEngine(bundleOf('Cigna member.\nClassified by Cigna as investigational.\nCigna Coverage Policy: 0123.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-CIGNA-018').status, 'pass');
+});
+
+test('R-PA-CIGNA-019 checks the original determination on an appeal', () => {
+  const incomplete = runEngine(bundleOf('Cigna member.\nAppeal requested.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-CIGNA-019').status, 'info');
+
+  const complete = runEngine(bundleOf('Cigna member.\nAppeal of original denial dated September 1, 2026.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-CIGNA-019').status, 'pass');
+});
+
+test('R-PA-CIGNA-020 distinguishes generic out-of-network use from a gap request', () => {
+  const generic = runEngine(bundleOf('Cigna member.\nOut-of-network prior authorization request.\n'));
+  assert.equal(generic.find((x) => x.ruleId === 'R-PA-CIGNA-020').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Cigna member.\nNetwork gap request.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-CIGNA-020').status, 'info');
+
+  const complete = runEngine(bundleOf('Cigna member.\nContinuity of care request for an active course of treatment.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-CIGNA-020').status, 'pass');
 });
 
 // ---- wave 52-11 sanity checks: Humana commercial overlay (§4.5.11) ----
