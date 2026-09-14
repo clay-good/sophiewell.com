@@ -2681,13 +2681,33 @@ test('R-PA-CMS-017 flags a Medicare FFS orthotic request without a covered-condi
   assert.equal(f.status, 'flag');
 });
 
-test('R-PA-CMS-018 flags a Medicare FFS CGM request without insulin or monitoring anchors', () => {
+test('R-PA-CMS-018 flags a Medicare FFS CGM request without insulin or hypoglycemia anchors', () => {
   const text = HAPPY_TEXT
     + '\nMedicare Part B beneficiary on file.\n'
     + 'Continuous glucose monitor (Dexcom) ordered for diabetic patient.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-CMS-018');
   assert.equal(f.status, 'flag');
+});
+
+test('R-PA-CMS-018 accepts insulin treatment without the retired finger-stick prerequisite', () => {
+  const text = HAPPY_TEXT
+    + '\nMedicare Part B beneficiary on file.\n'
+    + 'Continuous glucose monitor (Dexcom) ordered for diabetic patient on insulin.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-CMS-018');
+  assert.equal(f.status, 'pass');
+  assert.match(f.evidence, /Insulin-treatment/);
+});
+
+test('R-PA-CMS-018 accepts documented problematic hypoglycemia without insulin', () => {
+  const text = HAPPY_TEXT
+    + '\nMedicare Part B beneficiary on file.\n'
+    + 'Continuous glucose monitor ordered after recurrent level 2 hypoglycemia.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-CMS-018');
+  assert.equal(f.status, 'pass');
+  assert.match(f.evidence, /Problematic-hypoglycemia/);
 });
 
 test('R-PA-CMS-019 flags a Medicare FFS immunosuppressive request without a transplant-organ anchor', () => {

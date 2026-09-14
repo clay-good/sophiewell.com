@@ -3835,8 +3835,8 @@
       "ruleId": "R-PA-CMS-018",
       "severity": "flag",
       "status": "pass",
-      "description": "Medicare FFS continuous glucose monitor: insulin therapy + frequent self-monitoring documented",
-      "citation": "LCD L33822 (Glucose Monitors) requires documentation of insulin therapy AND a history of frequent self-monitoring (>= 4 fingersticks/day) or problematic hypoglycemia before CGM coverage.",
+      "description": "Medicare FFS continuous glucose monitor: insulin treatment or problematic hypoglycemia documented",
+      "citation": "LCD L33822 (Glucose Monitors) requires the beneficiary to be insulin-treated OR to have a documented history of problematic hypoglycemia. CMS removed four-times-daily blood-glucose testing as a CGM coverage prerequisite effective July 18, 2021.",
       "evidence": "No CGM anchor; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -9872,7 +9872,7 @@
           "label": "CMS Medicare Coverage Database (NCDs, LCDs, LCAs)",
           "url": "https://www.cms.gov/medicare-coverage-database/search.aspx",
           "ruleFamily": "cms-ffs",
-          "lastVerified": "2026-05-28"
+          "lastVerified": "2026-09-14"
         },
         {
           "id": "cms-iom-100-08",
