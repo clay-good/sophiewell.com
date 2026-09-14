@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `f0bb86406b33e3fb`
-Generated: 2026-09-14T01:14:50.979Z
+Build ID: `b9b29cd15b0f1c56`
+Generated: 2026-09-14T01:21:16.376Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -492,7 +492,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/lung-rads-v325.js` | 5240 | `9b4d732dc3a06310e5eda3e54ca054f67b923fbdb456b1425fba65d3c4ad5a25` |
 | `lib/lupus-nephritis-indices-v565.js` | 13296 | `5180970a6394b619de96a2b49dd28681e5b2aaccc81edc2fad0ed80983715508` |
 | `lib/lvp-albumin-v892.js` | 7102 | `943557b999e4a0fa37253cf4b767b40c76b85ba0b7b0527c1782822be74e409d` |
-| `lib/lyme-two-tier-v873.js` | 9504 | `8fcbfad055c05efa29c2e6961764d66c577da4c82c0d6776424bad307dd79d8d` |
+| `lib/lyme-two-tier-v873.js` | 9519 | `8240515d571c1b4e949a39e3e2f15ce282e07fcbe888fc8f082868467139d727` |
 | `lib/lymphoma-v135.js` | 16162 | `e29896a6de224445f46839cd06518817bd25d1235a91ede76f77ccb4996a934f` |
 | `lib/magic-gvhd-v577.js` | 13948 | `4f0f5faf3eec31a3583b39da9ee9bb3a0def76922d85620152784ab61aa13c58` |
 | `lib/mallampati-v810.js` | 5262 | `7fa3e5ec5a06046a5a9d5e99fcf056b66c684ce7aafd7e48e2b82ddefef7d6d9` |
@@ -784,7 +784,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/scp-pushing-v562.js` | 12399 | `6da019a04668722b7a8d448b4d7bf9908717629b72e4a162088e74363ad62360` |
 | `lib/screener.js` | 6613 | `e017903130ae2d23cb1560f6ad55990ef3dda443a5ac1e9c289b283e3dcd930b` |
 | `lib/sds-dependence-v730.js` | 3683 | `111dc5ff5665875e42cae687e26f1068b4592c227c4b59824e0d2691be12c9da` |
-| `lib/sea-guideline-v861.js` | 8389 | `fe0a832ef17b91d5adb674568cde9eafd88fe46499c80c9fb4bc426f34c5b4cf` |
+| `lib/sea-guideline-v861.js` | 8377 | `ef180a1872c5db1dfcfae2b664fbd04a9066aa3dfd099a00ae6587a31a1972d0` |
 | `lib/search-corpus.js` | 6918 | `a4a1f4388c49f808433aa2e070fb22905f0a1fe1ac1712217db3ba73bf83885a` |
 | `lib/search.js` | 1726 | `eb447d039ac1ea7b459743b6aeeffea114f90f07d45a6bd53dbe60eb1c8fdd9b` |
 | `lib/secondary-mitral-regurgitation-stage-v849.js` | 10937 | `af5c432f19186675c5434dd9800ca85f1888e9665778c019bcfdeaa1deb88b65` |

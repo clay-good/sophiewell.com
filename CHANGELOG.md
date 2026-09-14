@@ -65,6 +65,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Two next-step results were hidden from incomplete-input diagnostics.** The
+  spinal epidural abscess pathway and Lyme two-tier algorithm now directly ask
+  for the sedimentation rate or second-tier result they need. Their dynamic
+  refusals no longer rely on unrelated standing prose to be recognized. See
+  docs/spec-v1257.md.
+
 - **ROX silently mapped arbitrary hours onto published timepoints.** The Roca
   cutoffs exist at 2, 6, and 12 hours, but every number was treated as one of
   those three windows. The browser and agent fields now enumerate only the

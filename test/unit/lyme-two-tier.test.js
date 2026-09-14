@@ -21,11 +21,12 @@ test('lyme-two-tier: both reactive first-tier results call for a second tier', (
   for (const first of ['positive', 'equivocal']) {
     const r = l({ firstTier: first });
     assert.equal(r.result, 'second-tier-pending', first);
+    assert.match(r.band, /^Enter the second-tier result/, first);
     assert.match(r.mtttNote, /equal alternative, not a lesser test/);
   }
   // The article agrees with the word that follows it.
-  assert.match(l({ firstTier: 'equivocal' }).band, /^An equivocal/);
-  assert.match(l({ firstTier: 'positive' }).band, /^A positive/);
+  assert.match(l({ firstTier: 'equivocal' }).band, /\. An equivocal/);
+  assert.match(l({ firstTier: 'positive' }).band, /\. A positive/);
 });
 
 test('lyme-two-tier: a reactive IgG second tier is positive regardless of timing', () => {

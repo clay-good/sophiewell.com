@@ -15,7 +15,7 @@ test('sea: a risk factor with no sedimentation rate asks for the rate', () => {
   const r = sea({ injectionDrugUse: true });
   assert.equal(r.step, 'need-esr');
   assert.equal(r.imaging, false);
-  assert.match(r.band, /next step is a sedimentation rate/);
+  assert.match(r.band, /^Enter the sedimentation rate/);
 });
 
 test('sea: the sedimentation rate threshold is 20 and is exclusive', () => {
