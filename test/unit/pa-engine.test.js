@@ -3640,10 +3640,17 @@ test('R-PA-046 flags when extracted text contains U+FFFD characters', () => {
 
 // ---- wave 52-1h sanity checks ----
 
-test('R-PA-019 flags when only one Luhn-valid NPI is in the packet', () => {
-  const findings = runEngine(bundleOf(HAPPY_TEXT));
+test('R-PA-019 flags a separate servicing entity when only one Luhn-valid NPI is present', () => {
+  const findings = runEngine(bundleOf(HAPPY_TEXT + 'Servicing facility: Regional Hospital.\n'));
   const f = findings.find((x) => x.ruleId === 'R-PA-019');
   assert.equal(f.status, 'flag');
+});
+
+test('R-PA-019 does not assume a second NPI for a single-provider office packet', () => {
+  const findings = runEngine(bundleOf(HAPPY_TEXT));
+  const f = findings.find((x) => x.ruleId === 'R-PA-019');
+  assert.equal(f.status, 'pass');
+  assert.match(f.evidence, /second NPI is not assumed/i);
 });
 
 test('R-PA-023 flags when no clinical-note document mentions the requested CPT', () => {
@@ -3733,6 +3740,13 @@ test('R-PA-016 fires when NPI fails Luhn', () => {
   const findings = runEngine(bundleOf(HAPPY_TEXT.replace('1234567893', '1234567890')));
   const f = findings.find((x) => x.ruleId === 'R-PA-016');
   assert.equal(f.status, 'block');
+});
+
+test('R-PA-016 describes syntax validation without claiming an ordering-provider role', () => {
+  const rule = STARTER_RULES.find((r) => r.id === 'R-PA-016');
+  assert.match(rule.description, /provider NPI/i);
+  assert.doesNotMatch(rule.description, /ordering/i);
+  assert.match(rule.citation, /9 numeric identifier digits/i);
 });
 
 test('R-PA-041 flags an SSN-shaped string in the packet', () => {

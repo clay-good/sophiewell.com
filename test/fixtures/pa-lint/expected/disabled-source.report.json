@@ -255,8 +255,8 @@
       "ruleId": "R-PA-016",
       "severity": "block",
       "status": "pass",
-      "description": "Ordering provider NPI passes Luhn checksum",
-      "citation": "NPPES Luhn-mod-10 with the 80840 issuer prefix. Registry membership is NOT verified (Sophie does not ship the NPPES dump).",
+      "description": "At least one provider NPI passes the CMS check-digit validation",
+      "citation": "CMS NPI standard: 9 numeric identifier digits plus a Luhn-mod-10 check digit calculated as if the 80840 issuer prefix were present. Registry membership is not verified because Sophie does not ship the NPPES dump.",
       "evidence": "NPI(s): 1234567893, 1306849393",
       "note": null,
       "remediation": null
@@ -285,8 +285,8 @@
       "ruleId": "R-PA-019",
       "severity": "flag",
       "status": "pass",
-      "description": "Servicing facility / second NPI present (distinct from ordering)",
-      "citation": "Most institutional PA packets carry both an ordering and a servicing NPI; flags when only one Luhn-valid NPI is in the packet.",
+      "description": "Separate servicing entity or institutional setting has a second distinct NPI",
+      "citation": "CMS institutional billing guidance identifies billing, ordering/referring, rendering, and other provider roles by NPI. This heuristic asks for a second distinct NPI only when the packet names a separate servicing entity or an institutional place of service.",
       "evidence": "2 distinct Luhn-valid NPIs found.",
       "note": null,
       "remediation": null
@@ -9948,9 +9948,9 @@
         {
           "id": "nppes-npi",
           "label": "NPPES NPI standard (Luhn-mod-10 with 80840 issuer prefix)",
-          "url": "https://nppes.cms.hhs.gov/",
+          "url": "https://www.cms.gov/regulations-and-guidance/administrative-simplification/nationalprovidentstand",
           "ruleFamily": "core",
-          "lastVerified": "2026-05-28"
+          "lastVerified": "2026-09-14"
         },
         {
           "id": "cms-ncd-lcd",
