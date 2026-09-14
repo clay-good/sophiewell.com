@@ -1156,18 +1156,65 @@ test('R-PA-ANTHEM-015 checks a signed order only when member-specific instructio
   assert.equal(complete.find((x) => x.ruleId === 'R-PA-ANTHEM-015').status, 'pass');
 });
 
-test('R-PA-ANTHEM-017 flags an Anthem transplant request with no Blue Distinction / network routing', () => {
-  const text = 'Anthem member.\nRequested service: kidney transplant.\nMedical necessity per Clinical UM Guideline.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-ANTHEM-017');
-  assert.equal(f.status, 'flag');
+test('R-PA-ANTHEM-016 checks only an explicit intensive behavioral-health level of care', () => {
+  const generic = runEngine(bundleOf('Anthem member.\nOutpatient mental health therapy requested.\n'));
+  assert.equal(generic.find((x) => x.ruleId === 'R-PA-ANTHEM-016').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Anthem member.\nResidential treatment requested.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-ANTHEM-016').status, 'info');
+
+  const complete = runEngine(bundleOf('Anthem member.\nResidential treatment requested.\nClinical assessment: current symptoms cannot be managed at a lower level.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-ANTHEM-016').status, 'pass');
 });
 
-test('R-PA-ANTHEM-020 flags an Anthem out-of-network request with no network-gap justification (info)', () => {
-  const text = 'Anthem member.\nOut-of-network prior authorization request.\nProcedure CPT 70551.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-ANTHEM-020');
-  assert.equal(f.status, 'info');
+test('R-PA-ANTHEM-017 checks transplant routing only when member-specific instructions require it', () => {
+  const generic = runEngine(bundleOf('Anthem member.\nRequested service: kidney transplant.\n'));
+  assert.equal(generic.find((x) => x.ruleId === 'R-PA-ANTHEM-017').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Anthem member.\nDesignated transplant center required.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-ANTHEM-017').status, 'info');
+
+  const complete = runEngine(bundleOf('Anthem member.\nDesignated transplant center required.\nSelected transplant center: General Hospital.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-ANTHEM-017').status, 'pass');
+});
+
+test('R-PA-ANTHEM-018 does not infer investigational status from off-label or trial language', () => {
+  for (const text of [
+    'Anthem member.\nOff-label drug use requested.\n',
+    'Anthem member.\nPatient is enrolled in a clinical trial.\n',
+  ]) {
+    const findings = runEngine(bundleOf(text));
+    assert.equal(findings.find((x) => x.ruleId === 'R-PA-ANTHEM-018').status, 'pass');
+  }
+});
+
+test('R-PA-ANTHEM-018 checks the policy basis for an explicit Anthem investigational classification', () => {
+  const incomplete = runEngine(bundleOf('Anthem member.\nClassified as investigational by Anthem.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-ANTHEM-018').status, 'info');
+
+  const complete = runEngine(bundleOf('Anthem member.\nClassified as investigational by Anthem.\nApplicable Medical Policy: ADMIN.00005.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-ANTHEM-018').status, 'pass');
+});
+
+test('R-PA-ANTHEM-019 gives a source-free advisory when an appeal omits the original case', () => {
+  const incomplete = runEngine(bundleOf('Anthem member.\nAppeal of prior authorization denial.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-ANTHEM-019').status, 'info');
+
+  const complete = runEngine(bundleOf('Anthem member.\nAppeal of original denial dated September 1, 2026.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-ANTHEM-019').status, 'pass');
+});
+
+test('R-PA-ANTHEM-020 does not treat generic out-of-network use as a gap exception', () => {
+  const findings = runEngine(bundleOf('Anthem member.\nOut-of-network prior authorization request.\nProcedure CPT 70551.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ANTHEM-020').status, 'pass');
+});
+
+test('R-PA-ANTHEM-020 checks the reason for an explicit gap or continuity request', () => {
+  const incomplete = runEngine(bundleOf('Anthem member.\nNetwork gap request.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-ANTHEM-020').status, 'info');
+
+  const complete = runEngine(bundleOf('Anthem member.\nContinuity of care request because the patient is in an active course of treatment.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-ANTHEM-020').status, 'pass');
 });
 
 // ---- wave 52-10 sanity checks: Cigna commercial overlay (§4.5.10) ----
