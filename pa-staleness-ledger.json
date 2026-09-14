@@ -195,6 +195,16 @@
       "lastVerified": "2026-05-28"
     },
     {
+      "id": "samhsa-mat-act",
+      "label": "SAMHSA DATA/X-waiver elimination and OTP requirements",
+      "ruleFamily": "specialty-bh",
+      "rules": [
+        "R-PA-BH-005"
+      ],
+      "url": "https://www.samhsa.gov/substance-use/treatment/resources/mat-act",
+      "lastVerified": "2026-09-14"
+    },
+    {
       "id": "nccn-acmg-genetic",
       "label": "NCCN / ACMG / NSGC genetic-testing criteria",
       "ruleFamily": "specialty-gen",

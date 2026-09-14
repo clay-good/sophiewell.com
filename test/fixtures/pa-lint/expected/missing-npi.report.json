@@ -2870,8 +2870,8 @@
       "ruleId": "R-PA-BH-005",
       "severity": "info",
       "status": "pass",
-      "description": "Behavioral health: medication-assisted treatment (MAT) elements documented when SUD diagnosis present",
-      "citation": "For substance-use-disorder packets (ICD-10 F10-F19) requesting MAT (buprenorphine, methadone, naltrexone), the packet should reference DEA X-waiver / OTP enrollment and the planned induction / maintenance phase.",
+      "description": "OUD medication: methadone treatment identifies an OTP; buprenorphine does not require an X-waiver",
+      "citation": "The federal DATA/X-waiver requirement for prescribing buprenorphine for OUD was eliminated in December 2022. Methadone for OUD remains dispensed through a certified opioid treatment program; buprenorphine and naltrexone do not require OTP enrollment under that rule. State law and payer coverage may add separate requirements.",
       "evidence": "No behavioral-health trigger; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -9940,6 +9940,13 @@
           "url": "https://www.psychiatry.org/psychiatrists/practice/dsm",
           "ruleFamily": "specialty-bh",
           "lastVerified": "2026-05-28"
+        },
+        {
+          "id": "samhsa-mat-act",
+          "label": "SAMHSA DATA/X-waiver elimination and OTP requirements",
+          "url": "https://www.samhsa.gov/substance-use/treatment/resources/mat-act",
+          "ruleFamily": "specialty-bh",
+          "lastVerified": "2026-09-14"
         },
         {
           "id": "nccn-acmg-genetic",

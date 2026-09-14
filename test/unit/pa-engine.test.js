@@ -3375,13 +3375,42 @@ test('R-PA-BH-004 flags a BH request without a risk-assessment anchor', () => {
   assert.equal(f.status, 'flag');
 });
 
-test('R-PA-BH-005 fires (info) on an SUD / MAT request without an X-waiver / OTP anchor', () => {
+test('R-PA-BH-005 does not require the eliminated X-waiver for buprenorphine', () => {
   const text = HAPPY_TEXT
     + '\nDx: F11.20 opioid use disorder\nProcedure: 90834 individual psychotherapy.\n'
     + 'Buprenorphine treatment requested.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-BH-005');
-  assert.equal(f.status, 'info');
+  assert.equal(f.status, 'pass');
+  assert.match(f.evidence, /X-waiver is no longer required/i);
+});
+
+test('R-PA-BH-005 requires an OTP anchor only for methadone requested for OUD', () => {
+  const base = HAPPY_TEXT
+    + '\nDx: F11.20 opioid use disorder\nProcedure: 90834 individual psychotherapy.\n';
+  const missing = runEngine(bundleOf(base + 'Methadone treatment requested.\n'));
+  assert.equal(missing.find((x) => x.ruleId === 'R-PA-BH-005').status, 'info');
+
+  const present = runEngine(bundleOf(base + 'Methadone through certified OTP provider.\n'));
+  assert.equal(present.find((x) => x.ruleId === 'R-PA-BH-005').status, 'pass');
+});
+
+test('R-PA-BH-005 does not apply the methadone OTP rule to naltrexone', () => {
+  const text = HAPPY_TEXT
+    + '\nDx: F11.20 opioid use disorder\nProcedure: 90834 individual psychotherapy.\n'
+    + 'Naltrexone treatment requested.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BH-005').status, 'pass');
+});
+
+test('R-PA-BH-005 does not infer OUD treatment from methadone alone', () => {
+  const text = HAPPY_TEXT
+    + '\nDx: G89.29 chronic pain\nProcedure: 90834 individual psychotherapy.\n'
+    + 'Methadone listed in current medications.\n';
+  const findings = runEngine(bundleOf(text));
+  const finding = findings.find((x) => x.ruleId === 'R-PA-BH-005');
+  assert.equal(finding.status, 'pass');
+  assert.match(finding.evidence, /not paired with an F11 OUD diagnosis/i);
 });
 
 // ---- wave 52-5e sanity checks: genetic-testing specialty overlay (closes §4.5.5 + §4.5) ----
