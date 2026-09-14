@@ -9834,28 +9834,28 @@
           "label": "CMS HCPCS Level II code set",
           "url": "https://www.cms.gov/medicare/coding-billing/healthcare-common-procedure-system",
           "ruleFamily": "core",
-          "lastVerified": "2026-05-28"
+          "lastVerified": "2026-09-14"
         },
         {
           "id": "cms-icd10cm",
           "label": "CMS / CDC ICD-10-CM annual code files (public domain)",
           "url": "https://www.cms.gov/medicare/coding-billing/icd-10-codes",
           "ruleFamily": "core",
-          "lastVerified": "2026-05-28"
+          "lastVerified": "2026-09-14"
         },
         {
           "id": "cms-pos",
           "label": "CMS Place of Service (POS) code set (complete assigned set, incl. telehealth POS 02 / 10 and POS 27)",
           "url": "https://www.cms.gov/medicare/coding-billing/place-of-service-codes/code-sets",
           "ruleFamily": "core",
-          "lastVerified": "2026-06-05"
+          "lastVerified": "2026-09-14"
         },
         {
           "id": "cms-ncci",
           "label": "CMS National Correct Coding Initiative (NCCI) PTP edits",
           "url": "https://www.cms.gov/medicare/coding-billing/national-correct-coding-initiative-ncci-edits",
           "ruleFamily": "core",
-          "lastVerified": "2026-05-28"
+          "lastVerified": "2026-09-14"
         },
         {
           "id": "nppes-npi",
