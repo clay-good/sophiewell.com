@@ -2573,18 +2573,31 @@ test('CMS overlay carries the spec-aligned id R-PA-CMS-004 for proof-of-delivery
   const podRule = STARTER_RULES.find((r) => r.id === 'R-PA-CMS-004');
   assert.ok(podRule, 'R-PA-CMS-004 should exist after wave 52-2b renumber.');
   assert.match(podRule.description, /proof of delivery/i);
+  assert.match(podRule.citation, /§4\.7\.3\.1/);
+  assert.doesNotMatch(podRule.citation, /§4\.26/);
 });
 
 // ---- wave 52-2b sanity checks ----
 
 test('R-PA-CMS-003 blocks on a Medicare FFS DME SWO that is missing required elements', () => {
-  // SWO anchor present but no quantity / NPI / signature / patient name
+  // SWO anchor present but no beneficiary, order date, or signature.
   const text = 'Medicare Part B beneficiary on file.\n'
     + 'Durable medical equipment: standard wheelchair.\n'
     + 'Standard Written Order on file.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-CMS-003');
   assert.equal(f.status, 'block');
+});
+
+test('R-PA-CMS-003 accepts the current SWO alternatives without quantity or NPI', () => {
+  const text = 'Medicare Part B beneficiary on file.\n'
+    + 'Member ID: 1EG4TE5MK73\n'
+    + 'Durable medical equipment: standard wheelchair.\n'
+    + 'Standard Written Order dated 2026-09-10.\n'
+    + 'Signature: Treating Practitioner\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-CMS-003');
+  assert.equal(f.status, 'pass');
 });
 
 test('R-PA-CMS-005 flags a Medicare FFS power-mobility request without a functional-status anchor', () => {
@@ -3302,6 +3315,44 @@ test('R-PA-CMS-002 blocks on a Medicare FFS DME packet without an SWO/DWO anchor
   assert.equal(f.status, 'block');
 });
 
+test('R-PA-CMS-002 accepts a signed SWO without a separately dated signature', () => {
+  const text = 'Medicare Part B beneficiary on file.\n'
+    + 'Durable medical equipment: standard wheelchair.\n'
+    + 'Standard Written Order dated 2026-09-10.\n'
+    + 'Signature: Treating Practitioner\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-CMS-002');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-CMS-002 does not borrow a signature from a separate clinical note', () => {
+  const bundle = bundleOf([
+    'Medicare Part B beneficiary on file.\nDurable medical equipment: standard wheelchair.\nStandard Written Order dated 2026-09-10.\n',
+    'Clinical note\nSignature: Treating Practitioner, 2026-09-10.\n',
+  ]);
+  const findings = runEngine(bundle);
+  const f = findings.find((x) => x.ruleId === 'R-PA-CMS-002');
+  assert.equal(f.status, 'block');
+});
+
+test('R-PA-CMS-004 does not demand proof of delivery for a prospective DME request', () => {
+  const text = 'Medicare Part B beneficiary on file.\n'
+    + 'Durable medical equipment: standard wheelchair.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-CMS-004');
+  assert.equal(f.status, 'pass');
+  assert.match(f.evidence, /not yet expected/i);
+});
+
+test('R-PA-CMS-004 flags delivered DME without proof-of-delivery documentation', () => {
+  const text = 'Medicare Part B beneficiary on file.\n'
+    + 'Durable medical equipment: standard wheelchair.\n'
+    + 'Equipment delivered to the beneficiary.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-CMS-004');
+  assert.equal(f.status, 'flag');
+});
+
 test('R-PA-CMS-006 flags a Medicare FFS PAP request without a sleep-study anchor', () => {
   const text = HAPPY_TEXT
     + '\nMedicare Part B beneficiary on file.\n'
@@ -3311,13 +3362,24 @@ test('R-PA-CMS-006 flags a Medicare FFS PAP request without a sleep-study anchor
   assert.equal(f.status, 'flag');
 });
 
-test('R-PA-CMS-009 flags a Medicare FFS DME packet without a supplier PTAN anchor', () => {
+test('R-PA-CMS-009 reports missing supplier enrollment as information, not a PTAN claim defect', () => {
   const text = HAPPY_TEXT
     + '\nMedicare Part B beneficiary on file.\n'
     + 'Durable medical equipment: standard wheelchair.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-CMS-009');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
+  assert.doesNotMatch(f.citation, /required on DME claims/i);
+});
+
+test('R-PA-CMS-009 accepts an active PECOS enrollment anchor', () => {
+  const text = HAPPY_TEXT
+    + '\nMedicare Part B beneficiary on file.\n'
+    + 'Durable medical equipment: standard wheelchair.\n'
+    + 'DMEPOS enrollment active in PECOS.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-CMS-009');
+  assert.equal(f.status, 'pass');
 });
 
 // ---- wave 52-1k sanity checks (R-PA-008, 009, 011, 012, 043) ----

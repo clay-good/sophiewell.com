@@ -26,7 +26,7 @@ test('structural core rules map to no source', () => {
 });
 
 test('the CMS-FFS family splits IOM Pub 100-08 from NCD/LCD', () => {
-  // SWO / proof-of-delivery / PTAN-enrollment rules -> IOM program-integrity.
+  // SWO / proof-of-delivery / supplier-enrollment rules -> IOM program-integrity.
   for (const id of ['R-PA-CMS-002', 'R-PA-CMS-003', 'R-PA-CMS-004', 'R-PA-CMS-009']) {
     assert.deepEqual(ruleSourceIds(id), ['cms-iom-100-08'], `${id} -> IOM`);
   }

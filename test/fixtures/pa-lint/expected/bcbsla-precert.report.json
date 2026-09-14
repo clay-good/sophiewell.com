@@ -3725,8 +3725,8 @@
       "ruleId": "R-PA-CMS-002",
       "severity": "block",
       "status": "pass",
-      "description": "Medicare FFS DME: Detailed / Standard Written Order (DWO/SWO) present and dated",
-      "citation": "CMS IOM Pub 100-08 ch. 5; a Standard Written Order (or pre-2020 Detailed Written Order) signed and dated by the prescribing physician is required before DME delivery.",
+      "description": "Medicare FFS DME: Detailed / Standard Written Order (DWO/SWO) present and signed",
+      "citation": "CMS IOM Pub 100-08 ch. 5 §5.2.1-.2; every DMEPOS claim requires a written order containing the treating practitioner signature. Pre-delivery timing applies only to items on the Written Order Prior to Delivery list; other orders are required before claim submission.",
       "evidence": "Not Medicare FFS; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -3735,8 +3735,8 @@
       "ruleId": "R-PA-CMS-003",
       "severity": "block",
       "status": "pass",
-      "description": "Medicare FFS DME: Standard Written Order elements complete (beneficiary, item, date, quantity, prescriber NPI, signature)",
-      "citation": "CMS IOM Pub 100-08 ch. 5; the SWO must carry the beneficiary identity, item description / HCPCS, order date, quantity, treating-practitioner NPI, and a dated prescriber signature.",
+      "description": "Medicare FFS DME: Standard Written Order elements complete (beneficiary, item, order date, practitioner identity, signature)",
+      "citation": "CMS IOM Pub 100-08 ch. 5 §5.2.2; the SWO must contain the beneficiary name or MBI, item description, quantity if applicable, order date, treating practitioner name or NPI, and treating practitioner signature.",
       "evidence": "Not Medicare FFS; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -3745,8 +3745,8 @@
       "ruleId": "R-PA-CMS-004",
       "severity": "flag",
       "status": "pass",
-      "description": "Medicare FFS DME: proof of delivery requirements documented",
-      "citation": "CMS IOM Pub 100-08 ch. 4 §4.26; supplier must retain proof of delivery (POD) including date and recipient signature.",
+      "description": "Medicare FFS DME already delivered: proof of delivery documented",
+      "citation": "CMS IOM Pub 100-08 ch. 4 §4.7.3.1; suppliers must retain proof of delivery for seven years from the date of service and make it available to Medicare contractors on request.",
       "evidence": "Not Medicare FFS; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -3793,10 +3793,10 @@
     },
     {
       "ruleId": "R-PA-CMS-009",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "Medicare FFS DME: supplier PTAN documented",
-      "citation": "CMS supplier PTAN (Provider Transaction Access Number) is required on DME claims so the MAC can match the supplier to the Medicare enrollment record.",
+      "description": "Medicare FFS DME: supplier Medicare enrollment documented",
+      "citation": "CMS DMEPOS enrollment guidance requires suppliers seeking Medicare reimbursement to enroll in Medicare; a PTAN identifies an enrolled supplier location but is not the claim identifier.",
       "evidence": "Not Medicare FFS; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -9873,7 +9873,7 @@
           "label": "CMS Internet-Only Manual Pub 100-08 (Program Integrity)",
           "url": "https://www.cms.gov/medicare/regulations-guidance/manuals/internet-only-manuals-ioms",
           "ruleFamily": "cms-ffs",
-          "lastVerified": "2026-05-28"
+          "lastVerified": "2026-09-14"
         },
         {
           "id": "cms-ma-422",
