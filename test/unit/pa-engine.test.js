@@ -495,11 +495,11 @@ test('R-PA-AETNA-015 flags a named procedure at a hospital outpatient site witho
 
 // ---- wave 52-7d sanity checks (Aetna rules 16-20) ----
 
-test('R-PA-AETNA-016 flags an Aetna DME / home-health request with no signed written order', () => {
+test('R-PA-AETNA-016 advises on an Aetna DME / home-health request with no signed written order', () => {
   const text = 'Aetna member.\nDurable medical equipment: hospital bed requested for home use.\nMedical necessity per CPB.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-016');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
 });
 
 test('R-PA-AETNA-016 passes when the DME request carries a signed written order', () => {
@@ -509,46 +509,74 @@ test('R-PA-AETNA-016 passes when the DME request carries a signed written order'
   assert.equal(f.status, 'pass');
 });
 
-test('R-PA-AETNA-017 flags an Aetna transplant request with no NME / IOE routing', () => {
+test('R-PA-AETNA-017 advises when an Aetna transplant request omits NME routing', () => {
   const text = 'Aetna member.\nRequested service: kidney transplant.\nMedical necessity per CPB.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-017');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
 });
 
-test('R-PA-AETNA-017 passes when the transplant request references the NME / IOE program', () => {
-  const text = 'Aetna member.\nRequested service: kidney transplant.\nRouted through the National Medical Excellence program; transplant center evaluation attached.\n';
+test('R-PA-AETNA-017 passes when the transplant request references the NME program', () => {
+  const text = 'Aetna member.\nRequested service: kidney transplant.\nRouted through the National Medical Excellence program.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-017');
   assert.equal(f.status, 'pass');
 });
 
-test('R-PA-AETNA-018 flags an Aetna experimental service with no supporting evidence', () => {
+test('R-PA-AETNA-018 advises when an explicit investigational classification has no policy basis', () => {
   const text = 'Aetna member.\nRequested service is considered investigational for this indication.\nProcedure CPT 0xxxxT.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-018');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
 });
 
-test('R-PA-AETNA-018 passes when peer-reviewed evidence accompanies the experimental request', () => {
-  const text = 'Aetna member.\nService labeled investigational; peer-reviewed evidence and NCCN compendia support attached.\n';
+test('R-PA-AETNA-018 does not infer investigational status from off-label use', () => {
+  const text = 'Aetna member.\nOff-label medication request supported by NCCN compendia.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-018');
   assert.equal(f.status, 'pass');
 });
 
-test('R-PA-AETNA-019 flags an Aetna appeal with no reference to the original determination (info)', () => {
+test('R-PA-AETNA-018 passes when an explicit classification identifies the CPB basis', () => {
+  const text = 'Aetna member.\nService was considered investigational under Clinical Policy Bulletin 0123.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-018');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-AETNA-019 does not apply post-service claim requirements to a prospective appeal', () => {
   const text = 'Aetna member.\nThis is an appeal of the precertification.\nPlease overturn the denial.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-019');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-AETNA-019 advises when a post-service appeal is incomplete (info)', () => {
+  const text = 'Aetna member.\nPost-service appeal of claim denial.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-019');
   assert.equal(f.status, 'info');
 });
 
-test('R-PA-AETNA-020 flags an Aetna out-of-network request with no network-gap justification (info)', () => {
+test('R-PA-AETNA-019 passes a documented post-service appeal', () => {
+  const text = 'Aetna member.\nPost-service appeal of claim denial. Reason for appeal: we disagree with the denied code.\nMedical records attached. Denial letter attached; original claim attached.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-019');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-AETNA-020 advises on missing out-of-network benefit / responsibility details (info)', () => {
   const text = 'Aetna member.\nOut-of-network precertification request.\nProcedure CPT 70551.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-020');
   assert.equal(f.status, 'info');
+});
+
+test('R-PA-AETNA-020 passes when out-of-network benefits and submission responsibility are identified', () => {
+  const text = 'Aetna member.\nOut-of-network request. Plan documents confirm an out-of-network benefit. Member handles precertification.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-020');
+  assert.equal(f.status, 'pass');
 });
 
 // ---- wave 52-8 sanity checks: UnitedHealthcare commercial overlay (§4.5.8) ----
