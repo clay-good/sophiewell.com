@@ -8638,20 +8638,20 @@
     },
     {
       "ruleId": "R-PA-UHC-006",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "UnitedHealthcare inpatient prior authorization: admission notification + concurrent / continued-stay clinical review documentation present",
-      "citation": "UnitedHealthcare requires admission notification and conducts concurrent (continued-stay) review for inpatient admissions, collecting the clinical update and discharge plan; an inpatient request should carry that documentation. <https://www.uhcprovider.com/en/prior-auth-advance-notification.html>",
+      "description": "UnitedHealthcare inpatient workflow: admission notification and, for concurrent review, clinical and discharge updates identified",
+      "citation": "UnitedHealthcare's 2026 Administrative Guide requires facilities subject to the protocol to provide admission and discharge notifications even when coverage approval is on file. Concurrent or retrospective inpatient review may request diagnoses, clinical information, the treatment plan, admission order, patient status, and discharge-planning information. Listed plans and delegated arrangements may follow separate protocols. Informational. <https://www.uhcprovider.com/content/dam/provider/docs/public/admin-guides/2026-UHC-Administrative-Guide.pdf>",
       "evidence": "Not a UnitedHealthcare packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
     {
       "ruleId": "R-PA-UHC-007",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "UnitedHealthcare advanced-imaging notification: outpatient MRI / CT / PET carries the clinical indication for the radiology notification program",
-      "citation": "UnitedHealthcare runs an outpatient advanced-imaging (MRI / CT / PET / nuclear cardiology) prior-authorization / notification program; the request should carry the clinical indication that supports the study. <https://www.uhcprovider.com/en/prior-auth-advance-notification.html>",
+      "description": "UnitedHealthcare advanced outpatient imaging: clinical condition documented when the radiology protocol applies",
+      "citation": "UnitedHealthcare's 2026 outpatient radiology protocol applies to certain CT, MRI, MRA, PET, and nuclear-cardiology services in outpatient or office settings, with listed plan exclusions. It does not apply in emergency, urgent-care, observation, or inpatient settings; MA does not require prior authorization for CT, MRI, or MRA. UHC may request the member's clinical condition, symptoms, prior treatment, and prior imaging. Informational. <https://www.uhcprovider.com/content/dam/provider/docs/public/prior-auth/radiology/COMM-Exchange-Radiology-Prior-Auth-FAQ.pdf>",
       "evidence": "Not a UnitedHealthcare packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -8661,7 +8661,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "UnitedHealthcare expedited / urgent prior authorization: clinical urgency justification present",
-      "citation": "UnitedHealthcare processes an expedited prior-authorization review when a standard timeframe could seriously jeopardize the member's life, health, or ability to regain maximum function. A request that asks for expedited handling should state that clinical urgency. <https://www.uhcprovider.com/en/prior-auth-advance-notification.html>",
+      "citation": "UnitedHealthcare's 2026 Administrative Guide requires an expedited request to explain the clinical urgency and provide required clinical information the same day. It lists short-term risk to life or health, impaired ability to regain maximum function, and severe disabling pain confirmed by a physician. <https://www.uhcprovider.com/content/dam/provider/docs/public/admin-guides/2026-UHC-Administrative-Guide.pdf>",
       "evidence": "Not a UnitedHealthcare packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -8670,8 +8670,8 @@
       "ruleId": "R-PA-UHC-009",
       "severity": "flag",
       "status": "pass",
-      "description": "UnitedHealthcare site-of-service review: outpatient surgical procedure addresses the hospital-outpatient vs. ASC site-of-service medical necessity",
-      "citation": "UnitedHealthcare's Site of Service review directs certain outpatient surgical procedures to an ambulatory surgical center unless hospital-outpatient care is medically necessary; a hospital-outpatient request should document why that site is required. <https://www.uhcprovider.com/en/policies-protocols.html>",
+      "description": "UnitedHealthcare in-scope outpatient-surgery site-of-service review: hospital-outpatient rationale documented",
+      "citation": "UnitedHealthcare's Outpatient Surgical Procedures Site of Service policy reviews only procedures on its Applicable Codes List when planned in a hospital outpatient department, and includes plan and state exclusions. When the policy applies, the hospital-outpatient setting must meet a listed patient-risk or ASC-access criterion. <https://www.uhcprovider.com/content/dam/provider/docs/public/policies/comm-medical-drug/outpatient-surg-procedures-site-service.pdf>",
       "evidence": "Not a UnitedHealthcare packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -8680,8 +8680,8 @@
       "ruleId": "R-PA-UHC-010",
       "severity": "info",
       "status": "pass",
-      "description": "UnitedHealthcare prior authorization: NDC documented for a physician-administered (J-code) drug request",
-      "citation": "UnitedHealthcare / Optum review of physician-administered (buy-and-bill) drugs maps the request to a specific product and dose via the National Drug Code in addition to the HCPCS J-code. Informational: a J-code request without an NDC routes more slowly. <https://www.uhcprovider.com/en/prior-auth-advance-notification.html>",
+      "description": "UnitedHealthcare drug-claim handoff: 11-digit NDC documented for a professional or outpatient facility claim",
+      "citation": "UnitedHealthcare's 2026 commercial reimbursement policy requires a valid 11-digit NDC, unit of measure, and quantity dispensed on professional and outpatient-facility drug claims. This is a claim requirement, not a published prerequisite for every physician-administered-drug prior-authorization request. Informational handoff check. <https://www.uhcprovider.com/content/dam/provider/docs/public/policies/comm-reimbursement/COMM-National-Drug-Code-Requirement-Policy.pdf>",
       "evidence": "Not a UnitedHealthcare packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null

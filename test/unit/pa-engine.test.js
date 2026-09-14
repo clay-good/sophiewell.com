@@ -673,31 +673,110 @@ test('R-PA-UHC-005 passes when a submitted notification has a Decision ID', () =
   assert.equal(f.status, 'pass');
 });
 
-test('R-PA-UHC-006 flags an inpatient (POS 21) UHC request with no admission / progress documentation', () => {
+test('R-PA-UHC-006 advises on an inpatient UHC workflow with no admission-notification status', () => {
   const text = 'UnitedHealthcare member.\nPlace of service: 21\nInpatient admission for acute care.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-UHC-006');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
 });
 
-test('R-PA-UHC-006 passes when the inpatient UHC packet documents an admission notification + discharge plan', () => {
-  const text = 'UnitedHealthcare member.\nPlace of service: 21\nInpatient admission.\nAdmission notification submitted. Discharge plan: home with PT; estimated length of stay 2 days.\n';
+test('R-PA-UHC-006 passes an initial admission workflow with notification status', () => {
+  const text = 'UnitedHealthcare member.\nPlace of service: 21\nInpatient admission.\nAdmission notification submitted.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-UHC-006');
   assert.equal(f.status, 'pass');
 });
 
-test('R-PA-UHC-007 flags a UHC outpatient MRI with no clinical indication', () => {
-  const text = 'UnitedHealthcare member.\nRequested: MRI lumbar spine, CPT 72148.\n';
+test('R-PA-UHC-006 advises when a concurrent review lacks clinical and discharge updates', () => {
+  const text = 'UnitedHealthcare member.\nPlace of service: 21\nContinued-stay concurrent review.\nAdmission notification submitted.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-UHC-006');
+  assert.equal(f.status, 'info');
+  assert.match(f.note, /concurrent clinical update/);
+  assert.match(f.note, /discharge-planning information/);
+});
+
+test('R-PA-UHC-006 passes a complete concurrent-review update', () => {
+  const text = 'UnitedHealthcare member.\nPlace of service: 21\nContinued-stay concurrent review.\nAdmission notification submitted. Clinical update: improving. Discharge plan: home tomorrow.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-UHC-006');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-UHC-007 advises on an in-scope outpatient MRI with no clinical condition', () => {
+  const text = 'UnitedHealthcare commercial member.\nOutpatient imaging requested: MRI lumbar spine, CPT 72148.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-UHC-007');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
+});
+
+test('R-PA-UHC-007 does not apply the outpatient protocol to inpatient imaging', () => {
+  const text = 'UnitedHealthcare member.\nInpatient stay, place of service: 21. MRI lumbar spine, CPT 72148.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-UHC-007');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-UHC-007 does not require CT authorization for Medicare Advantage', () => {
+  const text = 'UnitedHealthcare Medicare Advantage member.\nOutpatient imaging requested: CT of the chest, CPT 71260.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-UHC-007');
+  assert.equal(f.status, 'pass');
 });
 
 test('R-PA-UHC-008 passes when an expedited UHC request documents the clinical urgency', () => {
   const text = 'UnitedHealthcare member.\nExpedited review requested: delay would jeopardize the member\'s life or health.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-UHC-008');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-UHC-008 flags an expedited UHC request with no clinical-urgency explanation', () => {
+  const text = 'UnitedHealthcare member.\nExpedited review requested.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-UHC-008');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-UHC-009 does not infer site-of-service review from an arbitrary hospital-outpatient surgery', () => {
+  const text = 'UnitedHealthcare member.\nHospital outpatient surgery, place of service: 22. Procedure CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-UHC-009');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-UHC-009 flags an explicitly in-scope site-of-service review with no hospital rationale', () => {
+  const text = 'UnitedHealthcare commercial member.\nHospital outpatient surgery, place of service: 22. Site of service review applies under the Applicable Codes List. Procedure CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-UHC-009');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-UHC-009 passes an in-scope review with a listed hospital rationale', () => {
+  const text = 'UnitedHealthcare commercial member.\nHospital outpatient surgery, place of service: 22. Site of service review applies. Anticipated need for transfusion. Procedure CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-UHC-009');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-UHC-010 does not apply the NDC claim rule to a prior-authorization request', () => {
+  const text = 'UnitedHealthcare member.\nPrior authorization request for physician-administered drug J9299.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-UHC-010');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-UHC-010 advises when a UHC drug claim lacks an 11-digit NDC', () => {
+  const text = 'UnitedHealthcare member.\nCMS-1500 professional claim for J9299.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-UHC-010');
+  assert.equal(f.status, 'info');
+});
+
+test('R-PA-UHC-010 passes a UHC drug claim with an 11-digit NDC', () => {
+  const text = 'UnitedHealthcare member.\nCMS-1500 professional claim for J9299. NDC 00002143301.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-UHC-010');
   assert.equal(f.status, 'pass');
 });
 
