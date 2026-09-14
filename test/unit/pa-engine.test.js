@@ -1283,18 +1283,31 @@ test('R-PA-CIGNA-005 checks the reference only after submission is claimed', () 
   assert.equal(complete.find((x) => x.ruleId === 'R-PA-CIGNA-005').status, 'pass');
 });
 
-test('R-PA-CIGNA-006 flags an inpatient (POS 21) Cigna request with no admission / progress documentation', () => {
+test('R-PA-CIGNA-006 does not treat an initial inpatient request as an admission notification', () => {
   const text = 'Cigna member.\nPlace of service: 21\nInpatient admission for acute care.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-CIGNA-006');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'pass');
 });
 
-test('R-PA-CIGNA-007 flags a Cigna outpatient MRI with no clinical indication', () => {
+test('R-PA-CIGNA-006 enforces notification only for an emergency inpatient admission', () => {
+  const incomplete = runEngine(bundleOf('Cigna member.\nEmergency inpatient admission.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-CIGNA-006').status, 'flag');
+
+  const complete = runEngine(bundleOf('Cigna member.\nEmergency inpatient admission.\nAdmission reported to Cigna.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-CIGNA-006').status, 'pass');
+});
+
+test('R-PA-CIGNA-007 treats a missing MRI indication as informational', () => {
   const text = 'Cigna member.\nRequested: MRI lumbar spine, CPT 72148.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-CIGNA-007');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
+});
+
+test('R-PA-CIGNA-007 does not infer advanced imaging from every radiology CPT', () => {
+  const findings = runEngine(bundleOf('Cigna member.\nRequested: bone density study, CPT 77080.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-CIGNA-007').status, 'pass');
 });
 
 test('R-PA-CIGNA-008 passes when an expedited Cigna request documents the clinical urgency', () => {
@@ -1302,6 +1315,37 @@ test('R-PA-CIGNA-008 passes when an expedited Cigna request documents the clinic
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-CIGNA-008');
   assert.equal(f.status, 'pass');
+});
+
+test('R-PA-CIGNA-008 is a source-free advisory when urgency is missing', () => {
+  const findings = runEngine(bundleOf('Cigna member.\nExpedited review requested.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-CIGNA-008').status, 'info');
+});
+
+test('R-PA-CIGNA-009 does not extrapolate Policy 0550 to outpatient surgery', () => {
+  const findings = runEngine(bundleOf('Cigna member.\nHospital outpatient surgery.\nPlace of service: 22\nProcedure CPT 27447.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-CIGNA-009').status, 'pass');
+});
+
+test('R-PA-CIGNA-009 advises when hospital-based high-tech imaging lacks a Policy 0550 reason', () => {
+  const incomplete = runEngine(bundleOf('Cigna member.\nHospital-based imaging: MRI lumbar spine.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-CIGNA-009').status, 'info');
+
+  const complete = runEngine(bundleOf('Cigna member.\nHospital-based imaging: MRI lumbar spine.\nGeneral anesthesia is required.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-CIGNA-009').status, 'pass');
+});
+
+test('R-PA-CIGNA-010 does not impose an NDC on every J-code request', () => {
+  const findings = runEngine(bundleOf('Cigna member.\nPhysician-administered drug, procedure J3590.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-CIGNA-010').status, 'pass');
+});
+
+test('R-PA-CIGNA-010 checks an explicitly required NDC', () => {
+  const incomplete = runEngine(bundleOf('Cigna member.\nNDC required.\nProcedure J3590.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-CIGNA-010').status, 'info');
+
+  const complete = runEngine(bundleOf('Cigna member.\nNDC required: 00002-8215-01.\nProcedure J3590.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-CIGNA-010').status, 'pass');
 });
 
 test('R-PA-CIGNA-011 flags a Cigna specialty-drug request with no step-therapy prior-trial documentation', () => {
