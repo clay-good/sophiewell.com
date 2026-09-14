@@ -26,11 +26,11 @@ export default [
     fields: [
       { dom: 'kc-ph', arg: 'ph', kind: 'number', required: false, label: 'Arterial pH (after resuscitation)' },
       { dom: 'kc-lac', arg: 'lactate', kind: 'number', required: false, label: 'Arterial lactate', unit: 'mmol/L' },
-      { dom: 'kc-lactime', arg: 'lactateTiming', kind: 'enum', values: ['early', 'resuscitated'], required: false, label: 'Lactate timing' },
+      { dom: 'kc-lactime', arg: 'lactateTiming', kind: 'enum', values: ['early', 'resuscitated'], required: false, label: 'Lactate timing (required when lactate is provided)' },
       { dom: 'kc-inr', arg: 'inr', kind: 'number', required: false, label: 'INR' },
       { dom: 'kc-pt', arg: 'pt', kind: 'number', required: false, label: 'Prothrombin time', unit: 's' },
       { dom: 'kc-cr', arg: 'creatinine', kind: 'number', required: false, label: 'Creatinine' },
-      { dom: 'kc-crunit', arg: 'creatinineUnit', kind: 'enum', values: ['mg/dl', 'umol/l'], required: false, label: 'Creatinine unit' },
+      { dom: 'kc-crunit', arg: 'creatinineUnit', kind: 'enum', values: ['mg/dl', 'umol/l'], required: false, label: 'Creatinine unit (required when creatinine is provided)' },
       { dom: 'kc-enc', arg: 'encephalopathy', kind: 'enum', values: ['yes', 'no'], required: false, label: 'Grade III/IV encephalopathy' },
     ],
   },

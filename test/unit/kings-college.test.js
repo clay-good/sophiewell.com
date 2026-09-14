@@ -62,6 +62,25 @@ test('modified lactate limb early threshold is 3.5', () => {
   assert.equal(kingsCollege({ lactate: 3.6, lactateTiming: 'early' }).lactateLimb, true);
 });
 
+test('an unstated lactate timing leaves the modified limb incomplete', () => {
+  const r = kingsCollege({ lactate: 3.4 });
+  assert.equal(r.meets, false);
+  assert.equal(r.lactateLimb, null);
+  assert.equal(r.lactateTimingProvided, false);
+  assert.match(r.band, /modified lactate limb is incomplete/);
+  assert.match(r.band, /early or after fluid resuscitation/);
+});
+
+test('an unstated creatinine unit leaves the three-part limb incomplete', () => {
+  const r = kingsCollege({ inr: 7, creatinine: 4, encephalopathy: 'yes' });
+  assert.equal(r.meets, false);
+  assert.equal(r.creatHigh, null);
+  assert.equal(r.creatinineUnitProvided, false);
+  assert.equal(r.threePartComplete, false);
+  assert.match(r.band, /three-part limb is incomplete/);
+  assert.match(r.band, /creatinine unit/);
+});
+
 test('nothing entered -> complete-the-fields fallback', () => {
   const r = kingsCollege({});
   assert.equal(r.valid, false);
@@ -83,11 +102,11 @@ test('nothing entered -> complete-the-fields fallback', () => {
 // from a select and is always known" -- true of the browser, false of every API
 // caller, which is the surface split spec-v1073 is about.
 test('spec-v1102: an unstated encephalopathy grade is not an absent one', () => {
-  const full = kingsCollege({ inr: 7, creatinine: 4.0, encephalopathy: 'yes' });
+  const full = kingsCollege({ inr: 7, creatinine: 4.0, creatinineUnit: 'mg/dl', encephalopathy: 'yes' });
   assert.equal(full.meets, true);
   assert.equal(full.encephProvided, true);
 
-  const omitted = kingsCollege({ inr: 7, creatinine: 4.0 });
+  const omitted = kingsCollege({ inr: 7, creatinine: 4.0, creatinineUnit: 'mg/dl' });
   assert.equal(omitted.encephProvided, false);
   assert.equal(omitted.threePartComplete, false, 'the limb is incomplete, not negative');
   assert.doesNotMatch(omitted.band, /Does not meet/, 'never rule out a transplant criterion from a gap');
@@ -95,7 +114,7 @@ test('spec-v1102: an unstated encephalopathy grade is not an absent one', () => 
   assert.match(omitted.band, /the encephalopathy grade/);
 
   // Observed absent is a finding, and still fails the limb.
-  const stated = kingsCollege({ inr: 7, creatinine: 4.0, encephalopathy: 'no' });
+  const stated = kingsCollege({ inr: 7, creatinine: 4.0, creatinineUnit: 'mg/dl', encephalopathy: 'no' });
   assert.equal(stated.encephProvided, true);
   assert.equal(stated.threePartComplete, true);
   assert.match(stated.band, /Does not meet/);

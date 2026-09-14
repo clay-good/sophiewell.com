@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `b9b29cd15b0f1c56`
-Generated: 2026-09-14T01:21:16.376Z
+Build ID: `480178f03464deec`
+Generated: 2026-09-14T01:27:14.621Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -738,7 +738,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/rheum-classification-v222.js` | 13915 | `95c66ddc0349e0fd38cde0662c0862de9c06e7e0534e4a21bab1108257f5a09b` |
 | `lib/rheum-fn-v280.js` | 8137 | `27469e9bd77ea9899b3446127f132ca1661759f0e860ecd88bc7c2c5a6349534` |
 | `lib/rheum-ob-v156.js` | 17427 | `00478a61066705ade80bb2d28b90acd3368634aa6bd4ef041210c4beb4b63e1a` |
-| `lib/rheum-periop-v89.js` | 17340 | `1790841f27652b59b42f0b823cebb20ab14903b3962bc1e87d51dbbc46da602e` |
+| `lib/rheum-periop-v89.js` | 18160 | `8a29a714d6316425da2c2abc03ca05d19b94bacbfc7d4b3f9c03d2966810fb49` |
 | `lib/rheum-v147.js` | 28396 | `2684e744e39599fe5bdd32b8447a8078db34ffd2c4fdcba14f7b24c240101040` |
 | `lib/rheum-v148.js` | 29530 | `c4cb0e6ee86e544f6bd1404db9b2d8b477e7b1d95beaa779a33a4ee81dba4f8b` |
 | `lib/rheum-v160.js` | 13178 | `6f9c9caad669edb9cdb844015cbb354104dbbf6be91576aa1107e512efee360c` |
@@ -1550,7 +1550,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/rheum-classification-v222.js` | 7754 | `2275af9feb51ab66b8c5de85df12b056de6b3ffdb990fe5fa4de77e3410307fd` |
 | `mcp/adapters/rheum-fn-v280.js` | 3845 | `77a16e7864e3fa8412d23f111e2d4c50f86cffcd8358d5f1967a2cc255e87d08` |
 | `mcp/adapters/rheum-ob-v156.js` | 5639 | `6eed92f24649feaecd1e481dbe459b1a63d7056df842b78bebb85165866e2082` |
-| `mcp/adapters/rheum-periop-v89.js` | 3599 | `ef54375c6db567c8eb63166e458e580fa648bf6c1456093d3353c2a6256ea905` |
+| `mcp/adapters/rheum-periop-v89.js` | 3674 | `a41886c4c598c309547e51c53143dfc2b3bd52b74962f6e3251d1c4b88381f5b` |
 | `mcp/adapters/rheum-v147.js` | 10157 | `cbf8d662aaf24516d780f1b918289b55ed15d5da0f52fe05ae0fe91b444ed27f` |
 | `mcp/adapters/rheum-v148.js` | 8606 | `862a7f90abd46fab2cedbd8975493cbfcee31f76986c343b4b1f7bb16ebe227a` |
 | `mcp/adapters/rheum-v160.js` | 7017 | `c1631d777fbb7032c0df2940cf48132919b8d13a1dc8603583a18f2bc3b518a4` |
