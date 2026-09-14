@@ -1466,13 +1466,13 @@ test('Humana overlay rules vacuously pass on a non-Humana packet', () => {
   }
 });
 
-test('R-PA-HUMANA-001 flags a Humana request with a procedure but no coverage-criteria reference', () => {
+test('R-PA-HUMANA-001 treats a missing policy reference as informational', () => {
   const text = 'Humana ChoiceCare PPO member.\n'
     + 'Requested procedure: CPT 72148 (MRI lumbar spine).\n'
     + 'Please authorize.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-HUMANA-001');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
 });
 
 test('R-PA-HUMANA-001 passes when the Humana packet cites the applicable Medical Coverage Policy', () => {
@@ -1484,18 +1484,34 @@ test('R-PA-HUMANA-001 passes when the Humana packet cites the applicable Medical
   assert.equal(f.status, 'pass');
 });
 
-test('R-PA-HUMANA-002 flags a Humana packet with no clinical document attached', () => {
+test('R-PA-HUMANA-002 treats a missing recognized clinical document as informational', () => {
   const text = 'Humana ChoiceCare PPO member.\nRequested procedure: CPT 27447.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-HUMANA-002');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
 });
 
-test('R-PA-HUMANA-003 passes when the Humana packet names the Availity channel (info)', () => {
-  const text = 'Humana member.\nSubmitted via the Availity Essentials portal.\nProcedure CPT 27447.\n';
+test('R-PA-HUMANA-003 does not require the transport channel in packet content', () => {
+  const text = 'Humana member.\nProcedure CPT 27447.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-HUMANA-003');
   assert.equal(f.status, 'pass');
+});
+
+test('R-PA-HUMANA-004 remains non-enforcing without member-specific requirements', () => {
+  const findings = runEngine(bundleOf('Humana member.\nProcedure CPT 27447.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HUMANA-004').status, 'pass');
+});
+
+test('R-PA-HUMANA-005 checks a reference only after submission is complete', () => {
+  const initial = runEngine(bundleOf('Humana member.\nPrior authorization required.\n'));
+  assert.equal(initial.find((x) => x.ruleId === 'R-PA-HUMANA-005').status, 'pass');
+
+  const submitted = runEngine(bundleOf('Humana member.\nPrior authorization submitted.\n'));
+  assert.equal(submitted.find((x) => x.ruleId === 'R-PA-HUMANA-005').status, 'info');
+
+  const confirmed = runEngine(bundleOf('Humana member.\nPrior authorization submitted.\nReference number: H12345.\n'));
+  assert.equal(confirmed.find((x) => x.ruleId === 'R-PA-HUMANA-005').status, 'pass');
 });
 
 test('R-PA-HUMANA-006 flags an inpatient (POS 21) Humana request with no admission / progress documentation', () => {

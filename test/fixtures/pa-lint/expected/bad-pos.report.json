@@ -4978,20 +4978,20 @@
     },
     {
       "ruleId": "R-PA-HUMANA-001",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "Humana prior authorization: coverage criteria (Humana Medical Coverage Policy / MCG) referenced",
-      "citation": "Humana adjudicates prior-authorization requests against its published Medical Coverage Policies (and MCG care guidelines); a request should cite the policy it is being judged against so the reviewer can map it to the coverage criteria. <https://provider.humana.com/coverage-claims/prior-authorizations>",
+      "description": "Humana prior authorization: applicable coverage criterion identified when known",
+      "citation": "Humana provides Medical Coverage Policies and tells providers to search by CPT code for some service-specific clinical policies, but its public submission page does not require every request to cite a policy. This is an informational mapping aid. <https://provider.humana.com/coverage-claims> <https://provider.humana.com/coverage-claims/prior-authorizations>",
       "evidence": "Not a Humana packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
     {
       "ruleId": "R-PA-HUMANA-002",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "Humana prior authorization: supporting medical records / clinical documentation attached",
-      "citation": "Humana requires the clinical information that supports medical necessity to be submitted with the prior-authorization request; a request with no clinical document attached cannot be reviewed on the merits. <https://provider.humana.com/coverage-claims/prior-authorizations>",
+      "description": "Humana prior authorization: request-specific supporting clinical documentation attached",
+      "citation": "Humana asks providers to submit supporting clinical documentation for named authorization programs and publishes program-specific information requirements. Its public overview does not impose one fixed clinical-document type on every request. Informational. <https://provider.humana.com/coverage-claims/prior-authorizations>",
       "evidence": "Not a Humana packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -5000,8 +5000,8 @@
       "ruleId": "R-PA-HUMANA-003",
       "severity": "info",
       "status": "pass",
-      "description": "Humana prior authorization: submission channel (Availity Essentials / phone on member ID card) indicated",
-      "citation": "Humana directs providers to submit prior-authorization requests through the Availity Essentials portal, by 278 EDI transaction, or by phone using the number on the member ID card. Informational: a cover sheet that names the channel speeds routing. <https://provider.humana.com/coverage-claims/prior-authorizations>",
+      "description": "Humana prior authorization: use the service-specific submission workflow",
+      "citation": "Humana says most prior authorizations use Availity, while some services are managed by partners with their own portal, phone, and fax workflows. It does not require the packet content to record its transport channel. <https://provider.humana.com/coverage-claims/prior-authorizations>",
       "evidence": "Not a Humana packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -5010,18 +5010,18 @@
       "ruleId": "R-PA-HUMANA-004",
       "severity": "info",
       "status": "pass",
-      "description": "Humana prior authorization: requested service is on Humana's preauthorization / notification requirement list",
-      "citation": "Humana preauthorization applies only to services on its published preauthorization and notification lists; requesting authorization for a non-listed service is unnecessary. ships no bundled list, so the rule is vacuously satisfied with a pointer to the list (it mirrors core R-PA-053 and the Aetna / UHC / Anthem / Cigna -004 rules; a later wave bundles the list and flips this to a real membership test). <https://provider.humana.com/coverage-claims/prior-authorizations>",
+      "description": "Humana prior authorization: requested service checked against the member's applicable requirement list",
+      "citation": "Humana publishes separate prior-authorization and notification lists by product and state, plus a search tool. The linter ships no member-specific requirement service, so this rule remains a non-enforcing reminder. <https://provider.humana.com/coverage-claims/prior-authorizations/prior-authorization-lists>",
       "evidence": "Not a Humana packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
     {
       "ruleId": "R-PA-HUMANA-005",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "Humana prior authorization: authorization is referenced for a service that requires it before the service date",
-      "citation": "Humana requires preauthorization to be obtained before a service on its requirement list is rendered; a packet for an authorization-required service should show the authorization / reference number rather than relying on post-service review. <https://provider.humana.com/coverage-claims/prior-authorizations>",
+      "description": "Humana submitted prior authorization: confirmation reference retained",
+      "citation": "Source-free operational completeness check: an initial request cannot already contain the approval it is seeking. This advisory runs only when the packet says submission is complete and asks the submitter to retain a case or confirmation reference.",
       "evidence": "Not a Humana packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -10014,7 +10014,7 @@
           "label": "Humana prior-authorization / preauthorization requirements, Medical Coverage Policies, and utilization-management / CenterWell program requirements",
           "url": "https://provider.humana.com/coverage-claims/prior-authorizations",
           "ruleFamily": "commercial-humana",
-          "lastVerified": "2026-06-02"
+          "lastVerified": "2026-09-14"
         },
         {
           "id": "hcsc-precert",
