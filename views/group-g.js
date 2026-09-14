@@ -2755,15 +2755,15 @@ export const renderers = {
     root.appendChild(el('p', { class: 'muted', text: 'Age <=50: PaO2 <70 OR SpO2 <94% OR P/F <333. Age >50: PaO2 <60 OR SpO2 <90% OR P/F <250.' }));
     root.appendChild(el('p', {}, [
       el('label', { for: 'sc-pao2', text: 'PaO2 (mmHg; blank if unknown)' }), el('br'),
-      el('input', { id: 'sc-pao2', type: 'number', step: 'any', value: '90' }),
+      el('input', { id: 'sc-pao2', type: 'number', step: 'any', min: '10', max: '700', value: '90' }),
     ]));
     root.appendChild(el('p', {}, [
       el('label', { for: 'sc-spo2', text: 'SpO2 (%; blank if unknown)' }), el('br'),
-      el('input', { id: 'sc-spo2', type: 'number', step: 'any', value: '96' }),
+      el('input', { id: 'sc-spo2', type: 'number', step: 'any', min: '0', max: '100', value: '96' }),
     ]));
     root.appendChild(el('p', {}, [
       el('label', { for: 'sc-pf', text: 'PaO2/FiO2 (blank if unknown)' }), el('br'),
-      el('input', { id: 'sc-pf', type: 'number', step: 'any', value: '400' }),
+      el('input', { id: 'sc-pf', type: 'number', step: 'any', min: '0', value: '400' }),
     ]));
     root.appendChild(checkbox('Arterial pH < 7.35 (2)', 'sc-ph'));
     const o = out(); root.appendChild(o);
@@ -2786,7 +2786,7 @@ export const renderers = {
       // spec-v1037: with no age there are no thresholds, so there is no score line
       // and no per-parameter breakdown either -- both would be scored against the
       // wrong cut-offs.
-      if (r.incomplete) { o.appendChild(el('p', { text: r.band })); return; }
+      if (r.incomplete || r.valid === false) { o.appendChild(el('p', { text: r.band })); return; }
       o.appendChild(el('h2', { text: `SMART-COP ${r.score}` }));
       o.appendChild(el('p', { text: r.band }));
       const p = r.parts;

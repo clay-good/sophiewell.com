@@ -65,6 +65,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Invalid SMART-COP oxygenation values could disappear behind valid siblings.**
+  PaO₂, SpO₂, and P/F are interchangeable inputs for one criterion, but an
+  impossible PaO₂ or SpO₂ was silently treated like an omitted optional value
+  when another member of the trio was present. SMART-COP now refuses PaO₂
+  outside `10–700 mmHg`, SpO₂ outside `0–100%`, and negative P/F values. P/F
+  remains open above because the calculator declares no upper domain. See
+  docs/spec-v1253.md.
+
 - **An invalid LDL-C could disappear from Simon Broome classification.** When
   total cholesterol already supplied the criterion, an entered LDL-C outside
   the calculator's existing `0–50 mmol/L` domain was treated exactly like an

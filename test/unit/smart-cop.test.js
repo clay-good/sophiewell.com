@@ -51,3 +51,18 @@ test('smart-cop age-adjusted oxygenation: SpO2 91 triggers at age 60 (cutoff <94
     hrGe125: false, confusion: false, phLt735: false });
   assert.equal(old.parts.oxygenation, 0);
 });
+
+test('smart-cop refuses an invalid optional oxygenation value even when siblings are valid', () => {
+  const base = { ageYears: 55, rr: 20, pao2: 90, spo2: 96, pfRatio: 400 };
+  for (const [field, value, pattern] of [
+    ['pao2', 999999, /^PaO2 \(mmHg\) must be between 10 and 700/],
+    ['spo2', 999999, /^SpO2 \(%\) must be between 0 and 100/],
+    ['pfRatio', -1, /^PaO2\/FiO2 ratio must be at least 0/],
+  ]) {
+    const result = smartCop({ ...base, [field]: value });
+    assert.equal(result.valid, false, field);
+    assert.match(result.band, pattern, field);
+  }
+
+  assert.equal(smartCop({ ageYears: 55, rr: 20, pfRatio: 999999 }).score, 0);
+});

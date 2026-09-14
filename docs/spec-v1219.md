@@ -62,7 +62,7 @@ report it, and a test pins both halves of that line.
 
 | cluster | reading |
 | --- | --- |
-| `smart-cop` PaO2 / SpO2 / P:F | a high oxygenation value scores no points, and so does omitting it. A threshold artifact of comparing against omission |
+| `smart-cop` PaO2 / SpO2 / P:F | a high oxygenation value scores no points, and so does omitting it. [Spec-v1253](spec-v1253.md) now refuses PaO2 and SpO2 outside their existing domains; P:F remains open above because no upper domain is declared |
 | `pbac-hmb` (the three not "nothing moved") | fixed above; the rows now refuse |
 | `fena-feurea`, `insulin-correction` | the derived quantity is nulled rather than miscomputed — correct in the library. What the **page** prints for a null is [spec-v1210](spec-v1210.md)'s question, not this one's |
 | `popq-staging` point D | the label says it: "absent after hysterectomy" |
