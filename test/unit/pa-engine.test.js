@@ -395,15 +395,29 @@ test('R-PA-AETNA-010 passes when the J-code request includes an administration c
 
 // ---- wave 52-7c sanity checks (Aetna rules 11-15) ----
 
-test('R-PA-AETNA-011 flags an Aetna specialty-drug request with no step-therapy prior-trial documentation', () => {
-  const text = 'Aetna member.\nSpecialty medication precertification: J9299 nivolumab.\nMedical necessity per CPB.\n';
+test('R-PA-AETNA-011 does not infer Medicare Part B step therapy from a commercial J-code request', () => {
+  const text = 'Aetna commercial member.\nSpecialty medication precertification: J9299 nivolumab.\nMedical necessity per CPB.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-011');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-AETNA-011 flags an explicit Aetna Medicare Part B step-therapy request with no evidence', () => {
+  const text = 'Aetna Medicare Advantage member.\nPart B drug J9299 is a non-preferred drug subject to step therapy.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-011');
   assert.equal(f.status, 'flag');
 });
 
-test('R-PA-AETNA-011 passes when prior tried-and-failed therapy is documented', () => {
-  const text = 'Aetna member.\nSpecialty medication precertification: J9299 nivolumab.\nPrior therapy: tried and failed carboplatin/pemetrexed with therapeutic failure.\n';
+test('R-PA-AETNA-011 passes when the Medicare Part B preferred-drug trial is documented', () => {
+  const text = 'Aetna Medicare Advantage member.\nPart B drug J9299 is a non-preferred drug subject to step therapy.\nPreferred drug trial: tried and failed carboplatin/pemetrexed.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-011');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-AETNA-011 does not apply Aetna policy to another Medicare Advantage carrier', () => {
+  const text = 'UnitedHealthcare Medicare Advantage member.\nPart B drug J9299 is subject to step therapy.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-011');
   assert.equal(f.status, 'pass');
@@ -416,18 +430,46 @@ test('R-PA-AETNA-012 flags an Aetna bariatric request missing BMI or a supervise
   assert.equal(f.status, 'flag');
 });
 
-test('R-PA-AETNA-012 passes when BMI and a supervised weight-management program are documented', () => {
-  const text = 'Aetna member.\nRequested procedure: sleeve gastrectomy.\nBMI 43. Completed a 6-month physician-supervised weight management program with a dietitian.\n';
+test('R-PA-AETNA-012 rejects a program label without the current intervention details', () => {
+  const text = 'Aetna member.\nRequested procedure: sleeve gastrectomy.\nBMI 43. Completed a 6-month physician-supervised weight management program.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-012');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-AETNA-012 passes a qualifying BMI and documented 12-session multicomponent intervention', () => {
+  const text = 'Aetna member.\nRequested procedure: sleeve gastrectomy.\nBMI: 43. Completed 12 sessions covering nutrition, physical activity, and behavioral modification within 2 years.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-012');
   assert.equal(f.status, 'pass');
 });
 
-test('R-PA-AETNA-013 flags an Aetna genetic-testing request with no counseling / family history', () => {
+test('R-PA-AETNA-012 does not apply primary-surgery criteria to a revision', () => {
+  const text = 'Aetna member.\nRevision of prior sleeve gastrectomy to Roux-en-Y gastric bypass for a documented complication.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-012');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-AETNA-013 does not apply WES / WGS counseling criteria to a hereditary cancer panel', () => {
   const text = 'Aetna member.\nRequested test: hereditary cancer gene panel (BRCA), CPT 81432.\nMedical necessity per CPB 0140.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-013');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-AETNA-013 flags WES without a genetics evaluation and independent counseling', () => {
+  const text = 'Aetna member.\nRequested test: whole exome sequencing, CPT 81415.\nMedical necessity per CPB 0140.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-013');
   assert.equal(f.status, 'flag');
+});
+
+test('R-PA-AETNA-013 passes WES with the CPB 0140 evaluation and counseling evidence', () => {
+  const text = 'Aetna member.\nRequested test: whole exome sequencing, CPT 81415.\nMedical geneticist evaluated the member and family history. Independent pre- and post-test counseling completed.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-013');
+  assert.equal(f.status, 'pass');
 });
 
 test('R-PA-AETNA-014 flags a retrospective Aetna request with no justification (info)', () => {
@@ -437,8 +479,15 @@ test('R-PA-AETNA-014 flags a retrospective Aetna request with no justification (
   assert.equal(f.status, 'info');
 });
 
-test('R-PA-AETNA-015 flags an Aetna elective surgery in an inpatient setting with no site rationale (info)', () => {
+test('R-PA-AETNA-015 does not apply the outpatient program to inpatient knee arthroplasty', () => {
   const text = 'Aetna member.\nPlace of service: 21\nInpatient admission for knee arthroplasty CPT 27447.\nMedical necessity per CPB.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-015');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-AETNA-015 flags a named procedure at a hospital outpatient site without rationale (info)', () => {
+  const text = 'Aetna member.\nPlace of service: 22\nHospital outpatient septoplasty CPT 30520.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-015');
   assert.equal(f.status, 'info');
