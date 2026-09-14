@@ -1085,11 +1085,75 @@ test('R-PA-ANTHEM-010 runs only for an explicit NDC requirement', () => {
   assert.equal(complete.find((x) => x.ruleId === 'R-PA-ANTHEM-010').status, 'pass');
 });
 
-test('R-PA-ANTHEM-011 flags an Anthem specialty-drug request with no step-therapy prior-trial documentation', () => {
-  const text = 'Anthem member.\nSpecialty drug requested via CarelonRx; step therapy applies.\nProcedure J3590.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-ANTHEM-011');
-  assert.equal(f.status, 'flag');
+test('R-PA-ANTHEM-011 does not infer step therapy from a specialty-drug request', () => {
+  const findings = runEngine(bundleOf('Anthem member.\nSpecialty drug requested via CarelonRx.\nProcedure J3590.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ANTHEM-011').status, 'pass');
+});
+
+test('R-PA-ANTHEM-011 advises on an incomplete explicit step-therapy workflow', () => {
+  const incomplete = runEngine(bundleOf('Anthem member.\nMedical specialty drug request; step therapy applies.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-ANTHEM-011').status, 'info');
+
+  const complete = runEngine(bundleOf('Anthem member.\nMedical specialty drug request; step therapy applies.\nPreferred drug tried and failed because of an inadequate response.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-ANTHEM-011').status, 'pass');
+});
+
+test('R-PA-ANTHEM-012 requires explicit Carelon scope before checking genetic-test details', () => {
+  for (const text of [
+    'Anthem member.\nGenetic testing requested, CPT 81479.\n',
+    'Anthem member.\nMolecular pathology procedure, CPT 81211.\n',
+  ]) {
+    const findings = runEngine(bundleOf(text));
+    assert.equal(findings.find((x) => x.ruleId === 'R-PA-ANTHEM-012').status, 'pass');
+  }
+});
+
+test('R-PA-ANTHEM-012 requires both the named test and indication in an explicit Carelon review', () => {
+  const missingBoth = runEngine(bundleOf('Anthem member.\nCarelon genetic review applies to this genetic testing request.\n'));
+  assert.equal(missingBoth.find((x) => x.ruleId === 'R-PA-ANTHEM-012').status, 'info');
+
+  const missingIndication = runEngine(bundleOf('Anthem member.\nCarelon genetic review applies.\nGenetic testing requested.\nTest name: hereditary cancer panel.\n'));
+  assert.equal(missingIndication.find((x) => x.ruleId === 'R-PA-ANTHEM-012').status, 'info');
+
+  const complete = runEngine(bundleOf('Anthem member.\nCarelon genetic review applies.\nGenetic testing requested.\nTest name: hereditary cancer panel.\nClinical indication: personal history of breast cancer.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-ANTHEM-012').status, 'pass');
+});
+
+test('R-PA-ANTHEM-013 checks diagnosis only when drug-specific Clinical Criteria explicitly apply', () => {
+  const generic = runEngine(bundleOf('Anthem member.\nOncology drug requested, procedure J3590.\n'));
+  assert.equal(generic.find((x) => x.ruleId === 'R-PA-ANTHEM-013').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Anthem member.\nAnthem pharmacy Clinical Criteria applies to this drug request.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-ANTHEM-013').status, 'info');
+
+  const complete = runEngine(bundleOf('Anthem member.\nAnthem pharmacy Clinical Criteria applies.\nDiagnosis: rheumatoid arthritis.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-ANTHEM-013').status, 'pass');
+});
+
+test('R-PA-ANTHEM-014 is a source-free advisory for an unexplained retrospective request', () => {
+  const incomplete = runEngine(bundleOf('Anthem member.\nRetrospective authorization requested.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-ANTHEM-014').status, 'info');
+
+  const complete = runEngine(bundleOf('Anthem member.\nRetrospective authorization requested after emergency care.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-ANTHEM-014').status, 'pass');
+});
+
+test('R-PA-ANTHEM-015 does not impose a universal signed-order rule on DME or home health', () => {
+  for (const text of [
+    'Anthem member.\nWheelchair requested, HCPCS E1130.\n',
+    'Anthem member.\nHome health services requested.\n',
+  ]) {
+    const findings = runEngine(bundleOf(text));
+    assert.equal(findings.find((x) => x.ruleId === 'R-PA-ANTHEM-015').status, 'pass');
+  }
+});
+
+test('R-PA-ANTHEM-015 checks a signed order only when member-specific instructions require it', () => {
+  const incomplete = runEngine(bundleOf('Anthem member.\nMember-specific instructions: signed order required.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-ANTHEM-015').status, 'info');
+
+  const complete = runEngine(bundleOf('Anthem member.\nMember-specific instructions: signed order required.\nPhysician order.\nSignature: Dr. Smith.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-ANTHEM-015').status, 'pass');
 });
 
 test('R-PA-ANTHEM-017 flags an Anthem transplant request with no Blue Distinction / network routing', () => {
