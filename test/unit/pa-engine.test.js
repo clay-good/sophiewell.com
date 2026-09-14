@@ -1514,25 +1514,56 @@ test('R-PA-HUMANA-005 checks a reference only after submission is complete', () 
   assert.equal(confirmed.find((x) => x.ruleId === 'R-PA-HUMANA-005').status, 'pass');
 });
 
-test('R-PA-HUMANA-006 flags an inpatient (POS 21) Humana request with no admission / progress documentation', () => {
-  const text = 'Humana member.\nPlace of service: 21\nInpatient admission for acute care.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-HUMANA-006');
-  assert.equal(f.status, 'flag');
+test('R-PA-HUMANA-006 distinguishes an initial admission from continued-stay review', () => {
+  const initial = runEngine(bundleOf('Humana member.\nPlace of service: 21\nInpatient admission for acute care.\n'));
+  assert.equal(initial.find((x) => x.ruleId === 'R-PA-HUMANA-006').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Humana member.\nContinued stay request for additional inpatient days.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-HUMANA-006').status, 'info');
+
+  const complete = runEngine(bundleOf('Humana member.\nContinued stay request.\nClinical update: response to treatment and expected discharge documented.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-HUMANA-006').status, 'pass');
 });
 
-test('R-PA-HUMANA-007 flags a Humana outpatient MRI with no clinical indication', () => {
-  const text = 'Humana member.\nRequested: MRI lumbar spine, CPT 72148.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-HUMANA-007');
-  assert.equal(f.status, 'flag');
+test('R-PA-HUMANA-007 scopes clinical rationale to explicit advanced imaging', () => {
+  const otherRadiology = runEngine(bundleOf('Humana member.\nScreening mammography CPT 77067.\n'));
+  assert.equal(otherRadiology.find((x) => x.ruleId === 'R-PA-HUMANA-007').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Humana member.\nRequested: MRI lumbar spine, CPT 72148.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-HUMANA-007').status, 'info');
+
+  const complete = runEngine(bundleOf('Humana member.\nRequested: MRI lumbar spine.\nClinical indication: persistent radicular symptoms.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-HUMANA-007').status, 'pass');
 });
 
-test('R-PA-HUMANA-008 passes when an expedited Humana request documents the clinical urgency', () => {
-  const text = 'Humana member.\nExpedited review requested: delay would jeopardize the member\'s life or health.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-HUMANA-008');
-  assert.equal(f.status, 'pass');
+test('R-PA-HUMANA-008 is advisory and requires a rationale only for expedited handling', () => {
+  const incomplete = runEngine(bundleOf('Humana member.\nExpedited review requested.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-HUMANA-008').status, 'info');
+
+  const complete = runEngine(bundleOf('Humana member.\nExpedited review requested: delay would jeopardize the member\'s life or health.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-HUMANA-008').status, 'pass');
+});
+
+test('R-PA-HUMANA-009 runs only for an explicit site-of-care review', () => {
+  const generic = runEngine(bundleOf('Humana member.\nHospital outpatient surgery, POS 22, CPT 29881.\n'));
+  assert.equal(generic.find((x) => x.ruleId === 'R-PA-HUMANA-009').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Humana member.\nSite-of-care review requested.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-HUMANA-009').status, 'info');
+
+  const complete = runEngine(bundleOf('Humana member.\nSite-of-care review requested.\nHospital setting is medically necessary because higher acuity monitoring is required.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-HUMANA-009').status, 'pass');
+});
+
+test('R-PA-HUMANA-010 does not infer an NDC requirement from every J-code', () => {
+  const generic = runEngine(bundleOf('Humana member.\nPhysician-administered drug J3590.\n'));
+  assert.equal(generic.find((x) => x.ruleId === 'R-PA-HUMANA-010').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Humana member.\nPhysician-administered drug.\nNDC required.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-HUMANA-010').status, 'info');
+
+  const complete = runEngine(bundleOf('Humana member.\nPhysician-administered drug.\nNDC required: 0002-8215-01.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-HUMANA-010').status, 'pass');
 });
 
 test('R-PA-HUMANA-011 flags a Humana specialty-drug request with no step-therapy prior-trial documentation', () => {
