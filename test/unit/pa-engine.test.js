@@ -1618,18 +1618,56 @@ test('R-PA-HUMANA-015 applies only when instructions explicitly require an order
   assert.equal(complete.find((x) => x.ruleId === 'R-PA-HUMANA-015').status, 'pass');
 });
 
-test('R-PA-HUMANA-017 flags a Humana transplant request with no National Transplant Network routing', () => {
-  const text = 'Humana member.\nRequested service: kidney transplant.\nMedical necessity per Medical Coverage Policy.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-HUMANA-017');
-  assert.equal(f.status, 'flag');
+test('R-PA-HUMANA-016 scopes assessment checks to intensive behavioral care', () => {
+  const outpatient = runEngine(bundleOf('Humana member.\nOutpatient mental health visit.\n'));
+  assert.equal(outpatient.find((x) => x.ruleId === 'R-PA-HUMANA-016').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Humana member.\nInpatient psychiatric admission requested.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-HUMANA-016').status, 'info');
+
+  const complete = runEngine(bundleOf('Humana member.\nInpatient psychiatric admission requested.\nPsychiatric assessment: current symptoms and risks documented.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-HUMANA-016').status, 'pass');
 });
 
-test('R-PA-HUMANA-020 flags a Humana out-of-network request with no network-gap justification (info)', () => {
-  const text = 'Humana member.\nOut-of-network prior authorization request.\nProcedure CPT 70551.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-HUMANA-020');
-  assert.equal(f.status, 'info');
+test('R-PA-HUMANA-017 checks a facility only for explicit transplant routing', () => {
+  const evaluation = runEngine(bundleOf('Humana member.\nTransplant evaluation requested.\n'));
+  assert.equal(evaluation.find((x) => x.ruleId === 'R-PA-HUMANA-017').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Humana member.\nNational Transplant Network required.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-HUMANA-017').status, 'info');
+
+  const complete = runEngine(bundleOf('Humana member.\nNational Transplant Network required.\nSelected transplant center: Example Medical Center.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-HUMANA-017').status, 'pass');
+});
+
+test('R-PA-HUMANA-018 requires a policy only for an explicit Humana classification', () => {
+  const generic = runEngine(bundleOf('Humana member.\nOff-label treatment in a clinical trial.\n'));
+  assert.equal(generic.find((x) => x.ruleId === 'R-PA-HUMANA-018').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Humana member.\nClassified by Humana as investigational.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-HUMANA-018').status, 'info');
+
+  const complete = runEngine(bundleOf('Humana member.\nClassified by Humana as investigational.\nHumana Medical Coverage Policy: Example policy.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-HUMANA-018').status, 'pass');
+});
+
+test('R-PA-HUMANA-019 checks the original reference for an explicit appeal', () => {
+  const incomplete = runEngine(bundleOf('Humana member.\nAppeal requested.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-HUMANA-019').status, 'info');
+
+  const complete = runEngine(bundleOf('Humana member.\nAppeal requested.\nOriginal denial dated August 1, 2026.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-HUMANA-019').status, 'pass');
+});
+
+test('R-PA-HUMANA-020 scopes rationale checks to an explicit network exception', () => {
+  const generic = runEngine(bundleOf('Humana member.\nOut-of-network prior authorization request.\n'));
+  assert.equal(generic.find((x) => x.ruleId === 'R-PA-HUMANA-020').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Humana member.\nNetwork gap request.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-HUMANA-020').status, 'info');
+
+  const complete = runEngine(bundleOf('Humana member.\nContinuity of care exception.\nActive course of treatment with the current provider.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-HUMANA-020').status, 'pass');
 });
 
 // ---- wave 52-12 sanity checks: HCSC (Blue Cross Blue Shield) overlay (§4.5.12) ----
