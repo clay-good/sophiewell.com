@@ -787,6 +787,94 @@ test('R-PA-UHC-011 flags a UHC specialty-drug request with no step-therapy prior
   assert.equal(f.status, 'flag');
 });
 
+test('R-PA-UHC-011 does not infer step therapy from a specialty-drug request', () => {
+  const text = 'UnitedHealthcare member.\nSpecialty drug requested via OptumRx. Procedure J3590.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-UHC-011');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-UHC-011 passes an explicit step-therapy request with an exception basis', () => {
+  const text = 'UnitedHealthcare member.\nStep therapy applies. Contraindication to the prerequisite drug documented.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-UHC-011');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-UHC-012 does not infer program scope from generic genetic-testing language', () => {
+  const text = 'UnitedHealthcare member.\nGenetic testing requested, CPT 81479.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-UHC-012');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-UHC-012 flags an in-scope genetic request missing test, laboratory, and indication', () => {
+  const text = 'UnitedHealthcare member.\nGenetic prior authorization required.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-UHC-012');
+  assert.equal(f.status, 'flag');
+  assert.match(f.note, /specific test name/);
+  assert.match(f.note, /performing laboratory/);
+  assert.match(f.note, /clinical indication/);
+});
+
+test('R-PA-UHC-012 passes a documented in-scope genetic request', () => {
+  const text = 'UnitedHealthcare member.\nGenetic prior authorization required. Test name: hereditary cancer panel. Performing laboratory: Example Genetics, CLIA: 12D3456789. Diagnosis: Z80.3.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-UHC-012');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-UHC-013 flags a UHC specialty-drug request with no ICD-10-CM code', () => {
+  const text = 'UnitedHealthcare member.\nSpecialty drug infusion requested, J9299. Diagnosis: lung cancer.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-UHC-013');
+  assert.equal(f.status, 'flag');
+});
+
+test('R-PA-UHC-013 passes a UHC specialty-drug request with an ICD-10-CM code', () => {
+  const text = 'UnitedHealthcare member.\nSpecialty drug infusion requested, J9299. Diagnosis: C34.90.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-UHC-013');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-UHC-014 does not generalize urgent imaging rules to every retrospective request', () => {
+  const text = 'UnitedHealthcare member.\nRetrospective review requested for a completed office visit.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-UHC-014');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-UHC-014 flags retrospective advanced imaging without both required explanations', () => {
+  const text = 'UnitedHealthcare member.\nRetrospective authorization for CT scan performed on an urgent basis.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-UHC-014');
+  assert.equal(f.status, 'flag');
+  assert.match(f.note, /normal business hours/);
+});
+
+test('R-PA-UHC-014 passes retrospective advanced imaging with urgency and after-hours explanations', () => {
+  const text = 'UnitedHealthcare member.\nRetrospective authorization for CT scan. Clinical urgency: risk to health. Authorization could not be requested because the office was closed after hours.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-UHC-014');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-UHC-015 advises when a UHC DME request omits an order or prescriber', () => {
+  const text = 'UnitedHealthcare member.\nDurable medical equipment: wheelchair requested.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-UHC-015');
+  assert.equal(f.status, 'info');
+});
+
+test('R-PA-UHC-015 passes when a UHC DME request identifies the ordering provider', () => {
+  const text = 'UnitedHealthcare member.\nDurable medical equipment: wheelchair requested. Ordering provider: Jane Doe, MD.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-UHC-015');
+  assert.equal(f.status, 'pass');
+});
+
 test('R-PA-UHC-016 flags a UHC behavioral-health request with no level-of-care criteria', () => {
   const text = 'UnitedHealthcare member.\nRequest: inpatient psychiatric admission (Optum Behavioral Health).\n';
   const findings = runEngine(bundleOf(text));
