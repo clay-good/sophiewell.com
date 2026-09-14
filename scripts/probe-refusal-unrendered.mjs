@@ -34,6 +34,11 @@
 //               before acting (`scoring-select-probe.spec.js` asks the blank-option
 //               question directly).
 //
+// spec-v1260: all remaining no-branch rows are now classified rather than dumped
+// as one suspect list. A renderer is select-only unreachable only when it creates
+// at least one select, creates no free/boolean control, and has no empty option.
+// Anything else stays actionable. JSON retains both classes for auditability.
+//
 // `uceis` and `ctsi-balthazar` were fixed as the second kind: both are selects on
 // both surfaces, so neither gap was reachable -- the code is right now, and no
 // reader was seeing "UCEIS undefined/8".
@@ -86,6 +91,24 @@ function helperKey(src, name) {
 // never reads `valid` (spec-v1249).
 function rendersNullRefusal(scope) {
   return /if\s*\(\s*([A-Za-z_$]\w*)\.\w+\s*==\s*null\s*\)\s*\{[^{}]*\b[A-Za-z_$]\w*\s*\(\s*\w+\s*,\s*\1\.(?:message|band)\b[^{}]*\}/s.test(scope);
+}
+
+function selectOnlyUnreachable(body) {
+  const selectCalls = [...body.matchAll(/\bselect\s*\(/g)].length;
+  const inlineOptionLists = [...body.matchAll(/\bselect\s*\([^;]*?\[\s*\[/gs)].length;
+  const hasOtherControl = /\b(?:field|input|checkbox|textarea)\s*\(/.test(body);
+  const hasBlankOption = /\[\s*(['"`])\s*\1\s*,/.test(body);
+  return selectCalls > 0
+    && inlineOptionLists === selectCalls
+    && !hasOtherControl
+    && !hasBlankOption;
+}
+
+if (!selectOnlyUnreachable("root.appendChild(select('Grade', 'g', [['A', 'A']]));")
+  || selectOnlyUnreachable("root.appendChild(select('Grade', 'g', [['', 'Choose']]));")
+  || selectOnlyUnreachable("root.appendChild(select('Grade', 'g', GRADES));")
+  || selectOnlyUnreachable("root.appendChild(field('Value', 'v'));")) {
+  throw new Error('probe-refusal-unrendered control reachability recognition drifted');
 }
 
 if (!rendersNullRefusal("if (r.total == null) { note(o, r.band); return; }")
@@ -206,7 +229,13 @@ for (const { f, src } of views) {
     const branch = /!\s*\w+\.valid|\.valid\s*===\s*false/.exec(scope);
     if (!branch && rendersNullRefusal(scope)) continue;
     if (!branch) {
-      rows.push({ tile, view: f, fn, problem: 'renderer has no branch for a refusal the function can return' });
+      rows.push({
+        tile,
+        view: f,
+        fn,
+        reachability: selectOnlyUnreachable(body) ? 'select-only-unreachable' : 'actionable',
+        problem: 'renderer has no branch for a refusal the function can return',
+      });
       continue;
     }
     const line = /(?:!\s*\w+\.valid|\.valid\s*===\s*false)[^\n]*/.exec(scope)[0];
@@ -223,7 +252,11 @@ for (const { f, src } of views) {
     const missing = refusals.filter((r) => !has.test(r));
     if (missing.length) {
       rows.push({
-        tile, view: f, fn, problem: `renderer prints r.${key}, and ${missing.length} of ${refusals.length} refusal(s) do not set it`,
+        tile,
+        view: f,
+        fn,
+        reachability: 'actionable',
+        problem: `renderer prints r.${key}, and ${missing.length} of ${refusals.length} refusal(s) do not set it`,
       });
     }
   }
@@ -231,8 +264,12 @@ for (const { f, src } of views) {
 
 if (asJson) { console.log(JSON.stringify(rows, null, 2)); process.exit(0); }
 
+const actionable = rows.filter((r) => r.reachability === 'actionable');
+const selectOnly = rows.filter((r) => r.reachability === 'select-only-unreachable');
+
 say('Refusals the library can return and the page would not show.');
-say('A wrong-key row is a defect; a no-branch row is a suspect (see the header).\n');
-console.log(`${rows.length} tile(s).\n`);
-for (const r of rows) console.log(`  ${r.tile}  [${r.view} / ${r.fn}]\n      ${r.problem}`);
+say('Wrong-key and reachable no-branch rows are actionable; populated-select-only states are unreachable.\n');
+console.log(`${actionable.length} actionable tile(s).\n`);
+for (const r of actionable) console.log(`  ${r.tile}  [${r.view} / ${r.fn}]\n      ${r.problem}`);
+console.log(`\nExcluded: ${selectOnly.length} populated-select-only state(s) that neither browser nor agent input can produce.`);
 console.log(`\nReach: ${tiles} renderers read, ${withRefusal} call a library function that can refuse.`);

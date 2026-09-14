@@ -54,6 +54,7 @@ export const renderers = {
         clb: val('pir-clb'), mc: val('pir-mc'), lht: val('pir-lht'),
         pc: val('pir-pc'), eh: val('pir-eh'), re: val('pir-re'),
       });
+      if (!r.valid) { o.appendChild(el('p', { text: r.message })); return; }
       resultRow(o, [
         { text: r.band },
         { label: 'Total', value: r.bandLabel },

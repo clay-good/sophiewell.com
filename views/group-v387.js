@@ -64,6 +64,7 @@ export const renderers = {
         equinus: val('dim-equinus'), varus: val('dim-varus'), derotation: val('dim-derotation'), adduction: val('dim-adduction'),
         posteriorCrease: checked('dim-pc'), medialCrease: checked('dim-mc'), cavus: checked('dim-cavus'), muscleAbnormality: checked('dim-muscle'),
       });
+      if (!r.valid) { o.appendChild(el('p', { text: r.message })); return; }
       resultRow(o, [
         { text: r.band, cls: r.abnormal ? 'warn' : null },
         { label: 'Total', value: r.bandLabel },
