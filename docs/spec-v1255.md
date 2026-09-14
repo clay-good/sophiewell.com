@@ -16,6 +16,6 @@ negative values and values above that ceiling return a named refusal. The
 browser field mirrors the converted domain, with unit, browser, and MCP tests
 covering the behavior.
 
-`scripts/probe-impossible-changes-nothing.mjs` falls from 2 silent fields to 1,
-leaving only ROX's deliberately enumerated timepoint selector. No CPIS scoring
-band, risk threshold, citation, or catalog count changed.
+`scripts/probe-impossible-changes-nothing.mjs` falls from 2 silent fields to 1.
+The remaining ROX timepoint is resolved in [spec-v1256](spec-v1256.md). No CPIS
+scoring band, risk threshold, citation, or catalog count changed.

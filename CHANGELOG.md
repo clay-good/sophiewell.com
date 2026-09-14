@@ -65,6 +65,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **ROX silently mapped arbitrary hours onto published timepoints.** The Roca
+  cutoffs exist at 2, 6, and 12 hours, but every number was treated as one of
+  those three windows. The browser and agent fields now enumerate only the
+  published timepoints, and the core refuses other entered values. See
+  docs/spec-v1256.md.
+
 - **CPIS accepted impossible leukocyte counts as ordinary leukocytosis.** The
   calculator now enforces the existing WBC envelope after converting its ceiling
   from `200 ×10³/µL` to the tile's equivalent `200,000/mm³` unit. Legitimate

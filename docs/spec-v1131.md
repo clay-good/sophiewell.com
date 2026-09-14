@@ -81,6 +81,11 @@ cutoff calls failure. Only between them do the three failure cutoffs (2.85 at
 | 2.85 to 4.88 | **asks for the hour**, and says why it is what decides |
 | < 2.85 | failure-predicting *at every published timepoint*; consider escalation |
 
+[Spec-v1256](spec-v1256.md) closes the other half of that contract: when an hour
+is entered, it must be one of the three published timepoints. The browser and
+agent surfaces now enumerate `2`, `6`, and `12` instead of accepting arbitrary
+numbers and silently bucketing them.
+
 The third row is rule 13 in the other direction: the verdict holds whatever the
 hour, so it stands — but it may not print "at 12h" to justify itself.
 

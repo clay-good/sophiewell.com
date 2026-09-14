@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `b2398ee7455f16a0`
-Generated: 2026-09-14T00:54:10.924Z
+Build ID: `f0bb86406b33e3fb`
+Generated: 2026-09-14T01:14:50.979Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -182,7 +182,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/clavien-dindo-v320.js` | 5404 | `ae140f525e3d1f6103581f1d1e2eeed46813f69ada14d9c764ed867d51bda76b` |
 | `lib/cleveland-constipation-v665.js` | 4841 | `b5e66d05b1f5b2258281a9dc3246f35e6e83de248cabe44a914d2cbe72fd6400` |
 | `lib/clinical-obesity-v838.js` | 8584 | `742a529bbd6a43b4a9f695f82f2134c5bf24b16ae67e2e8cbdffb39f4b198cb3` |
-| `lib/clinical-v4.js` | 20983 | `94b62649fbc079ccf1984b3221cd589afa5ee1a732a4f61ccaa52fb428327f18` |
+| `lib/clinical-v4.js` | 21170 | `674d4ec8382987eb6f39079a72949f5c066ee2a0d2c80d2ce83fd0fe8fe390fa` |
 | `lib/clinical-v5.js` | 26754 | `4df98038ca48fff64abef3add3cd59b7322a5f20545f0fdf6b842cb9d0eaee2e` |
 | `lib/clinical-v6.js` | 16042 | `69c1de74d7f171a3c6e87329c1cb69324758a368a34f1961e6201caec0470f8d` |
 | `lib/clinical-v7.js` | 18981 | `cf450d3918c731cac7d5383a4d40afc7719f2a3902c9988f5ebb0897dc596268` |
@@ -1038,7 +1038,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/clavien-dindo-v320.js` | 1463 | `7d98cc04ea4d21756497e4a30ba83a3ffae2002e60a8c8895014588478d4a352` |
 | `mcp/adapters/cleveland-constipation-v665.js` | 2348 | `39bbb867c1e4258957d5be2e63e77b711e483906066420a5d8700dbc82a4d93f` |
 | `mcp/adapters/clinical-obesity-v838.js` | 1999 | `aa1e48cb5974a086c583469b65b330c762c91ea793b1669b04a3acf893990575` |
-| `mcp/adapters/clinical-v4.js` | 12090 | `46f3d1841b51388f9665fb4658bf94dcf91c5d6f50e18bf9ea90a04b90dcb201` |
+| `mcp/adapters/clinical-v4.js` | 12102 | `fe71c40372c194e271c83b215d2ca92dca1fbadfc29e0a73661eaf8d6938f81c` |
 | `mcp/adapters/clinical-v5.js` | 12043 | `64bb75061d67e1bf07dae3f04e9ac2d4638b4f37d61001ee750a9caff98df78c` |
 | `mcp/adapters/clinical-v6.js` | 8799 | `aefe0bbf58eb34aa47e7c4a93ed44580acf7ea88b86ca8f5bd90028fb250a4ed` |
 | `mcp/adapters/clinical-v7.js` | 8069 | `083a2078dba3877d854e781c9adc4bfdd49beda72fa8cf735360afde1c9b1d54` |
@@ -1740,7 +1740,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-a.js` | 577 | `eed37c656d1fa00c097a07f07db4b1b6ac7a0a74bafc210978265a1d90856bd7` |
 | `views/group-b.js` | 77683 | `2fcd8299f0997d82d73d3c103f9a16b990300c12fe40f48394c0b2b7e4551b55` |
 | `views/group-c.js` | 26643 | `c139c073fd2c3a107f1865ff5e41dd671e988a06b16fe6d0efb050d6da2e060c` |
-| `views/group-e.js` | 50467 | `5a9600e17e12bf6d365cfe7fbe90907f36e9e9d0cfef687a00fa0d2bb75d2e52` |
+| `views/group-e.js` | 50625 | `73428840b9c688e3f7cd616a21488befc180c5983bc7097691e2f8f07ef92891` |
 | `views/group-f.js` | 54290 | `93098b21bd8a2bab4a67ae2cfcc6c3c10d2b59ab9c39fe26a744845b93b96cb7` |
 | `views/group-g.js` | 249995 | `e30d3361117b4756f6858abc1d6af009abfde62b03c6addf7342c55159345ee9` |
 | `views/group-h.js` | 30927 | `c5d2e4c2ded7c81defbc22018ec759ca79442b303bde3394aba14da24872b109` |

@@ -59,3 +59,18 @@ test('spec-v1131: outside that range the timepoint changes nothing, so the tile 
   assert.match(failure.band, /consider escalation/);
   assert.doesNotMatch(failure.band, /at 12h/);
 });
+
+test('rox refuses timepoints that Roca 2019 did not publish', () => {
+  const input = { spo2: 90, fio2: 0.6, rr: 50 };
+  for (const hoursAfterStart of [-1, 0, 3, 999999, NaN]) {
+    assert.throws(
+      () => rox({ ...input, hoursAfterStart }),
+      /hoursAfterStart must be 2, 6, or 12/,
+      String(hoursAfterStart),
+    );
+  }
+
+  for (const hoursAfterStart of [2, 6, 12]) {
+    assert.equal(rox({ ...input, hoursAfterStart }).hourStated, true, String(hoursAfterStart));
+  }
+});

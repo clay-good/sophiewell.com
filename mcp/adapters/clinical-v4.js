@@ -179,7 +179,7 @@ export default [
       // timepoint and a score under 2.85 is failure-predicting at every one, so the
       // hour matters only between them. Declared required, the agent surface refused
       // even the calls the hour cannot change.
-      { dom: 'rx-hr', arg: 'hoursAfterStart', kind: 'number', label: 'Hours after HFNC start (2 / 6 / 12; needed only where the timepoint decides)' },
+      { dom: 'rx-hr', arg: 'hoursAfterStart', kind: 'enum', values: ['2', '6', '12'], label: 'Hours after HFNC start (needed only where the timepoint decides)' },
     ],
   },
   {

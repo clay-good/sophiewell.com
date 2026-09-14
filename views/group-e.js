@@ -783,7 +783,12 @@ export const renderers = {
     // answer -- "failure-predicting at 12h; consider escalation" versus
     // "indeterminate at 2h; reassess". Blank reaches the library as null so it can
     // ask (rule 21: a default is not a defect; a silent default is).
-    root.appendChild(field('Hours after HFNC start (2 / 6 / 12)', 'rx-hr', {}));
+    root.appendChild(selectField('Hours after HFNC start', 'rx-hr', [
+      { value: '', text: 'Not stated' },
+      { value: '2', text: '2 hours' },
+      { value: '6', text: '6 hours' },
+      { value: '12', text: '12 hours' },
+    ]));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       const r = V4.rox({
