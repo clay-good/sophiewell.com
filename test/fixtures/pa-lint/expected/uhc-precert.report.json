@@ -8545,8 +8545,8 @@
       "ruleId": "R-PA-RAD-001",
       "severity": "info",
       "status": "pass",
-      "description": "Advanced imaging request: ACR Appropriateness Criteria reference present",
-      "citation": "ACR (American College of Radiology) Appropriateness Criteria are the de-facto standard payers use to evaluate imaging-request medical necessity; referencing the matching ACR AC topic in the packet substantially improves first-pass approval rates.",
+      "description": "Radiology request: matching ACR Appropriateness Criteria topic or variant referenced",
+      "citation": "ACR Appropriateness Criteria are evidence-based clinical decision-support guidelines organized by condition, variant, and imaging procedure. ACR does not make an explicit AC citation a universal prior-authorization requirement; this informational heuristic checks whether the packet names the matching topic or variant.",
       "evidence": "No radiology CPT (70010-79999) in packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -8555,9 +8555,9 @@
       "ruleId": "R-PA-RAD-002",
       "severity": "flag",
       "status": "pass",
-      "description": "Non-emergent MRI: prior conservative management documented",
-      "citation": "Non-emergent MRIs (especially spine and joint) typically require a documented trial of conservative management -- PT, NSAIDs, activity modification, time -- before payer approval.",
-      "evidence": "No MRI CPT in packet; rule vacuously satisfied.",
+      "description": "Non-emergent spine or extremity MRI: prior conservative management documented",
+      "citation": "ACR recommendations are specific to the clinical condition and variant; conservative treatment is not a universal prerequisite for MRI. This payer-completeness heuristic is limited to non-emergent spine and extremity MRI requests.",
+      "evidence": "No spine or extremity MRI CPT in packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -8565,8 +8565,8 @@
       "ruleId": "R-PA-RAD-003",
       "severity": "flag",
       "status": "pass",
-      "description": "Contrast imaging study: contrast allergy review + renal-function check documented",
-      "citation": "Iodinated and gadolinium contrast carry hypersensitivity and nephrotoxicity risk; packets requesting a contrast study should document an allergy review and a recent eGFR / SCr.",
+      "description": "Contrast imaging study: prior-reaction and renal-risk screening documented; renal function when indicated",
+      "citation": "ACR Manual on Contrast Media: a prior reaction to the same contrast class is the strongest reaction-risk factor. Routine intravascular iodinated studies do not require baseline creatinine when renal-risk screening is negative; at-risk patients may warrant serum creatinine/eGFR assessment and individualized risk-benefit review.",
       "evidence": "No radiology CPT in packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -8585,9 +8585,9 @@
       "ruleId": "R-PA-RAD-005",
       "severity": "info",
       "status": "pass",
-      "description": "Pediatric imaging: ALARA / radiation-dose consideration documented",
-      "citation": "For pediatric patients, ALARA (As Low As Reasonably Achievable) principles apply: image Gently / Image Wisely campaigns recommend documenting dose-reduction consideration for CT and nuclear-medicine studies in children.",
-      "evidence": "No radiology CPT in packet; rule vacuously satisfied.",
+      "description": "Pediatric ionizing-radiation study: ALARA / dose-reduction consideration documented",
+      "citation": "ACR Appropriateness Criteria report relative radiation levels for ionizing-radiation procedures, and Image Gently promotes pediatric dose reduction. This rule applies to ionizing studies such as CT, radiography, and nuclear medicine, not MRI or ultrasound.",
+      "evidence": "No ionizing-radiation CPT in packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -9894,7 +9894,7 @@
           "label": "ACR Appropriateness Criteria (advanced imaging)",
           "url": "https://www.acr.org/Clinical-Resources/Clinical-Tools-and-Reference/Appropriateness-Criteria",
           "ruleFamily": "specialty-rad",
-          "lastVerified": "2026-05-28"
+          "lastVerified": "2026-09-14"
         },
         {
           "id": "fda-labeling",

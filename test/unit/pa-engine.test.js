@@ -3095,6 +3095,14 @@ test('R-PA-RAD-002 flags a non-emergent MRI without a conservative-management an
   assert.equal(f.status, 'flag');
 });
 
+test('R-PA-RAD-002 does not impose conservative management on a brain MRI', () => {
+  const text = HAPPY_TEXT + '\nProcedure: 70551 MRI brain without contrast.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-RAD-002');
+  assert.equal(f.status, 'pass');
+  assert.match(f.evidence, /no spine or extremity MRI/i);
+});
+
 test('R-PA-RAD-003 flags a contrast imaging request without contrast-allergy + renal-function anchors', () => {
   const text = HAPPY_TEXT + '\nProcedure: 70553 MRI brain with contrast. IV contrast required.\n';
   const findings = runEngine(bundleOf(text));
@@ -3102,11 +3110,41 @@ test('R-PA-RAD-003 flags a contrast imaging request without contrast-allergy + r
   assert.equal(f.status, 'flag');
 });
 
-test('R-PA-RAD-005 fires (info) on a pediatric imaging request without an ALARA anchor', () => {
-  const text = HAPPY_TEXT + '\nProcedure: 70551 MRI brain without contrast.\nPediatric patient, adolescent.\n';
+test('R-PA-RAD-003 accepts negative renal-risk screening without routine creatinine', () => {
+  const text = HAPPY_TEXT
+    + '\nProcedure: 70553 MRI brain with contrast. IV contrast required.\n'
+    + 'No prior contrast reaction. No history of kidney disease.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-RAD-003');
+  assert.equal(f.status, 'pass');
+  assert.match(f.evidence, /negative renal-risk screening/i);
+});
+
+test('R-PA-RAD-003 requires renal function when kidney-disease risk is documented', () => {
+  const text = HAPPY_TEXT
+    + '\nProcedure: 70553 MRI brain with contrast. IV contrast required.\n'
+    + 'No prior contrast reaction. History of chronic kidney disease.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-RAD-003');
+  assert.equal(f.status, 'flag');
+  assert.match(f.note, /renal-risk anchor present/i);
+});
+
+test('R-PA-RAD-005 fires (info) on a pediatric CT request without an ALARA anchor', () => {
+  const text = HAPPY_TEXT + '\nProcedure: 70450 CT head without contrast.\nPediatric patient, adolescent.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-RAD-005');
   assert.equal(f.status, 'info');
+});
+
+test('R-PA-RAD-005 does not treat pediatric MRI as ionizing radiation', () => {
+  for (const [code, label] of [['70551', 'brain'], ['70542', 'neck'], ['77048', 'breast']]) {
+    const text = HAPPY_TEXT + `\nProcedure: ${code} MRI ${label}.\nPediatric patient, adolescent.\n`;
+    const findings = runEngine(bundleOf(text));
+    const f = findings.find((x) => x.ruleId === 'R-PA-RAD-005');
+    assert.equal(f.status, 'pass', code);
+    assert.match(f.evidence, /no ionizing-radiation CPT/i, code);
+  }
 });
 
 // ---- wave 52-5b sanity checks: infusion specialty overlay ----
