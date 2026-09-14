@@ -5165,8 +5165,8 @@
       "ruleId": "R-PA-INF-001",
       "severity": "flag",
       "status": "pass",
-      "description": "Infusion / specialty drug: J-code present + NDC documented",
-      "citation": "Cross-payer convention: physician-administered drugs require the J-code AND the 11-digit NDC so the manufacturer rebate and drug-specific edits can be applied (echoes R-PA-MCD-006 for Medicaid; this rule generalizes).",
+      "description": "Infusion / specialty drug: NDC value documented when the payer or transaction requires it",
+      "citation": "FDA currently assigns 10-digit NDCs in three segment shapes; HIPAA reimbursement uses a zero-padded 11-digit 5-4-2 derivative. NDC listing does not establish FDA approval or payer coverage. This conservative heuristic flags every J-code packet without an actual NDC value; payer requirements still control.",
       "evidence": "No J-code in packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -5195,8 +5195,8 @@
       "ruleId": "R-PA-INF-004",
       "severity": "flag",
       "status": "pass",
-      "description": "Infusion / specialty drug: FDA-approved indication referenced for the diagnosis",
-      "citation": "Biologic / specialty-drug PA approval typically requires that the requested drug have an FDA-approved indication matching the documented diagnosis (or, for off-label use, an NCCN / compendia citation).",
+      "description": "Infusion / specialty drug: labeled indication or payer-supported off-label rationale referenced",
+      "citation": "FDA-approved prescribing information identifies labeled indications, but clinicians may prescribe approved drugs off label when medically appropriate. Coverage of off-label use is a separate payer decision; this heuristic looks for either a labeled indication or a payer-recognized compendia / off-label rationale.",
       "evidence": "No J-code in packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -9990,9 +9990,9 @@
         {
           "id": "fda-labeling",
           "label": "FDA drug labeling / NDC directory (infusion, specialty drug)",
-          "url": "https://www.accessdata.fda.gov/scripts/cder/ndc/",
+          "url": "https://www.fda.gov/drugs/electronic-drug-registration-and-listing-system-edrls/national-drug-code-format",
           "ruleFamily": "specialty-inf",
-          "lastVerified": "2026-05-28"
+          "lastVerified": "2026-09-14"
         },
         {
           "id": "surgical-indication-policy",

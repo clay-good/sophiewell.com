@@ -3027,6 +3027,16 @@ test('R-PA-MCD-006 flags a Medicaid J-code request without an NDC anchor', () =>
   assert.equal(f.status, 'flag');
 });
 
+test('R-PA-MCD-006 requires an NDC value, not a bare label', () => {
+  const text = HAPPY_TEXT
+    + '\nState Medicaid recipient on file.\n'
+    + 'J-code billing: J1745 infliximab infusion. NDC:\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MCD-006');
+  assert.equal(f.status, 'flag');
+  assert.match(f.note, /no valid current FDA 10-digit or HIPAA 11-digit NDC/i);
+});
+
 test('R-PA-MCD-006 states the federal PAD NDC scope and identifies its broader heuristic', () => {
   const rule = STARTER_RULES.find((r) => r.id === 'R-PA-MCD-006');
   assert.match(rule.citation, /single-source/i);
@@ -3162,6 +3172,23 @@ test('R-PA-INF-001 flags an infusion request with a J-code but no NDC anchor', (
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-INF-001');
   assert.equal(f.status, 'flag');
+});
+
+test('R-PA-INF-001 rejects a bare or malformed NDC and accepts every current segment shape', () => {
+  for (const invalid of ['NDC:', 'NDC: 1234-567-89']) {
+    const findings = runEngine(bundleOf(HAPPY_TEXT + `\nJ-code J1745. ${invalid}\n`));
+    assert.equal(findings.find((x) => x.ruleId === 'R-PA-INF-001').status, 'flag', invalid);
+  }
+  for (const valid of ['0002-7597-01', '12345-678-90', '12345-6789-0', '12345-6789-01', '12345067890']) {
+    const findings = runEngine(bundleOf(HAPPY_TEXT + `\nJ-code J1745. NDC: ${valid}\n`));
+    assert.equal(findings.find((x) => x.ruleId === 'R-PA-INF-001').status, 'pass', valid);
+  }
+});
+
+test('R-PA-INF-001 discloses its cross-payer NDC heuristic', () => {
+  const rule = STARTER_RULES.find((r) => r.id === 'R-PA-INF-001');
+  assert.match(rule.citation, /NDC listing does not establish FDA approval or payer coverage/i);
+  assert.match(rule.citation, /conservative heuristic/i);
 });
 
 test('R-PA-INF-002 flags a weight-based infusion without a dose-calculation anchor', () => {
