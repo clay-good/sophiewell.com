@@ -3237,41 +3237,101 @@ test('R-PA-SURG-001 flags an elective surgery request without a conservative-man
   // Strip HAPPY_TEXT's pre-existing "Step therapy: trial of lisinopril" so
   // the "trial of" anchor doesn't pre-satisfy the conservative check.
   const base = HAPPY_TEXT.replace(/Step therapy:.*\n/, '');
-  const text = base + '\nProcedure: 27447 total knee arthroplasty.\n';
+  const text = base
+    + '\nMedicare Fee-for-Service. Applicable policy: LCD L40232.\n'
+    + 'Procedure: 27447 total knee arthroplasty.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-SURG-001');
   assert.equal(f.status, 'flag');
 });
 
+test('R-PA-SURG-001 and 002 do not generalize arthroplasty criteria to unrelated surgery', () => {
+  const text = HAPPY_TEXT + '\nProcedure: 47562 laparoscopic cholecystectomy.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-SURG-001').status, 'pass');
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-SURG-002').status, 'pass');
+});
+
+test('R-PA-SURG-001 and 002 do not infer one local CMS policy across payers or jurisdictions', () => {
+  const text = HAPPY_TEXT + '\nProcedure: 27447 total knee arthroplasty.\n';
+  const findings = runEngine(bundleOf(text));
+  for (const id of ['R-PA-SURG-001', 'R-PA-SURG-002']) {
+    const finding = findings.find((x) => x.ruleId === id);
+    assert.equal(finding.status, 'pass');
+    assert.match(finding.evidence, /not inferred across payers or jurisdictions/i);
+  }
+});
+
+test('R-PA-SURG-001 accepts a documented exception when conservative therapy is inappropriate', () => {
+  const text = HAPPY_TEXT
+    + '\nMedicare Fee-for-Service. Applicable policy: LCD L40232.\n'
+    + 'Procedure: 27447 total knee arthroplasty.\n'
+    + 'Conservative therapy not appropriate; exception rationale documented.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-SURG-001').status, 'pass');
+});
+
 test('R-PA-SURG-002 flags an elective surgery request without imaging support', () => {
   // bundleOf wraps text in a single TXT document; no imaging-report doc role.
-  const text = HAPPY_TEXT + '\nProcedure: 27447 total knee arthroplasty.\n';
+  const text = HAPPY_TEXT
+    + '\nMedicare Fee-for-Service. Applicable policy: LCD L40232.\n'
+    + 'Procedure: 27447 total knee arthroplasty.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-SURG-002');
   assert.equal(f.status, 'flag');
 });
 
-test('R-PA-SURG-003 flags an ASA >= 3 surgical patient without a pre-op clearance anchor', () => {
+test('R-PA-SURG-003 emits a workflow reminder for planned anesthesia with ASA >= 3 and no assessment', () => {
+  const text = HAPPY_TEXT
+    + '\nProcedure: 27447 total knee arthroplasty.\n'
+    + 'General anesthesia planned.\n'
+    + 'ASA Physical Status 3 -- patient has severe systemic disease.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-SURG-003');
+  assert.equal(f.status, 'info');
+  assert.match(f.note, /workflow reminder, not a payer-approval defect/i);
+});
+
+test('R-PA-SURG-003 does not infer anesthesia care from a surgery CPT alone', () => {
   const text = HAPPY_TEXT
     + '\nProcedure: 27447 total knee arthroplasty.\n'
     + 'ASA Physical Status 3 -- patient has severe systemic disease.\n';
   const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-SURG-003');
-  assert.equal(f.status, 'flag');
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-SURG-003').status, 'pass');
 });
 
-test('R-PA-SURG-004 flags a surgery request without an ASA classification anchor', () => {
+test('R-PA-SURG-004 does not require ASA status in every prospective surgery PA', () => {
   const text = HAPPY_TEXT + '\nProcedure: 27447 total knee arthroplasty.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-SURG-004');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'pass');
+  assert.match(f.evidence, /not treated as a universal PA prerequisite/i);
 });
 
-test('R-PA-SURG-005 flags a surgery request without an informed-consent anchor', () => {
-  const text = HAPPY_TEXT + '\nProcedure: 27447 total knee arthroplasty.\n';
+test('R-PA-SURG-004 validates a supplied ASA field', () => {
+  const invalid = runEngine(bundleOf(HAPPY_TEXT + '\nProcedure: 27447. ASA class pending.\n'));
+  assert.equal(invalid.find((x) => x.ruleId === 'R-PA-SURG-004').status, 'info');
+
+  const valid = runEngine(bundleOf(HAPPY_TEXT + '\nProcedure: 27447. ASA class IV.\n'));
+  assert.equal(valid.find((x) => x.ruleId === 'R-PA-SURG-004').status, 'pass');
+
+  const donorEmergency = runEngine(bundleOf(HAPPY_TEXT + '\nProcedure: 01990. ASA VI E.\n'));
+  assert.equal(donorEmergency.find((x) => x.ruleId === 'R-PA-SURG-004').status, 'pass');
+});
+
+test('R-PA-SURG-005 flags a completed hospital surgery record without informed consent', () => {
+  const text = HAPPY_TEXT.replace('Place of service: 11', 'Place of service: 22')
+    + '\nProcedure: 27447 total knee arthroplasty. Operative report: surgery performed.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-SURG-005');
   assert.equal(f.status, 'flag');
+});
+
+test('R-PA-SURG-005 does not require completed consent in a prospective PA packet', () => {
+  const text = HAPPY_TEXT.replace('Place of service: 11', 'Place of service: 22')
+    + '\nProcedure: 27447 total knee arthroplasty requested.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-SURG-005').status, 'pass');
 });
 
 // ---- wave 52-5d sanity checks: behavioral-health specialty overlay ----

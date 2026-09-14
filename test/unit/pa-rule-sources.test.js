@@ -41,7 +41,9 @@ test('overlay families map to their single source by id prefix', () => {
   assert.deepEqual(ruleSourceIds('R-PA-MCD-008'), ['medicaid-core']);
   assert.deepEqual(ruleSourceIds('R-PA-RAD-003'), ['acr-appropriateness']);
   assert.deepEqual(ruleSourceIds('R-PA-INF-004'), ['fda-labeling']);
-  assert.deepEqual(ruleSourceIds('R-PA-SURG-002'), ['surgical-indication-policy']);
+  assert.deepEqual(ruleSourceIds('R-PA-SURG-002'), ['cms-tja-lcd']);
+  assert.deepEqual(ruleSourceIds('R-PA-SURG-004'), ['asa-physical-status']);
+  assert.deepEqual(ruleSourceIds('R-PA-SURG-005'), ['cms-hospital-surgery']);
   assert.deepEqual(ruleSourceIds('R-PA-BH-005'), ['dsm-5-tr']);
   assert.deepEqual(ruleSourceIds('R-PA-GEN-001'), ['nccn-acmg-genetic']);
   assert.deepEqual(ruleSourceIds('R-PA-AETNA-003'), ['aetna-precert']);

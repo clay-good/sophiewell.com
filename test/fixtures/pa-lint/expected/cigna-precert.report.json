@@ -12,9 +12,9 @@
     "totalRulesEvaluated": 876,
     "counts": {
       "block": 0,
-      "flag": 10,
+      "flag": 6,
       "info": 4,
-      "pass": 862,
+      "pass": 866,
       "error": 0,
       "disabled": 0
     },
@@ -80,46 +80,6 @@
       "evidence": null,
       "note": "Cigna outpatient surgery is requested in a hospital-outpatient setting without a documented medical-necessity rationale for that site. The site-of-care policy expects an ASC / freestanding facility unless an exception is documented.",
       "remediation": "Address the rule's `note` field and resubmit."
-    },
-    {
-      "ruleId": "R-PA-SURG-001",
-      "severity": "flag",
-      "status": "flag",
-      "description": "Elective surgery: conservative-management trial documented",
-      "citation": "Payers approve elective surgery only after documented failure of non-operative management appropriate to the condition (e.g., joint replacement: PT + NSAIDs; spine: PT + epidurals); emergent surgery is exempt.",
-      "evidence": null,
-      "note": "Elective surgery request without a conservative-management / non-operative-trial anchor.",
-      "remediation": "Attach the missing surgical supporting documentation (conservative management, imaging, ASA, consent)."
-    },
-    {
-      "ruleId": "R-PA-SURG-002",
-      "severity": "flag",
-      "status": "flag",
-      "description": "Elective surgery: imaging supporting surgical indication attached",
-      "citation": "Surgical PAs typically require imaging (X-ray, MRI, CT, US) that demonstrates the anatomical / pathological basis for surgery; the imaging report or anchor must be in the packet.",
-      "evidence": null,
-      "note": "Surgery request without an attached imaging-report document or imaging-findings anchor.",
-      "remediation": "Attach the missing surgical supporting documentation (conservative management, imaging, ASA, consent)."
-    },
-    {
-      "ruleId": "R-PA-SURG-004",
-      "severity": "flag",
-      "status": "flag",
-      "description": "Surgery: ASA Physical Status classification documented",
-      "citation": "The ASA Physical Status is the de-facto standard for perioperative risk stratification; payers expect an ASA classification (1-5) on every elective surgery PA.",
-      "evidence": null,
-      "note": "Surgery request without an ASA Physical Status (1-5) anchor.",
-      "remediation": "Attach the missing surgical supporting documentation (conservative management, imaging, ASA, consent)."
-    },
-    {
-      "ruleId": "R-PA-SURG-005",
-      "severity": "flag",
-      "status": "flag",
-      "description": "Surgery: informed consent documented, dated on or before the date of surgery",
-      "citation": "Joint Commission / payer convention: a procedure-specific informed consent must be obtained before the surgical encounter. This rule narrows R-PA-059 (core consent check) to the surgical specialty trigger so the audit trail flags consent issues in the specialty section of the report.",
-      "evidence": null,
-      "note": "Surgery request without an informed-consent / surgical-consent anchor.",
-      "remediation": "Attach the missing surgical supporting documentation (conservative management, imaging, ASA, consent)."
     },
     {
       "ruleId": "R-PA-031",
@@ -8572,12 +8532,52 @@
       "remediation": null
     },
     {
-      "ruleId": "R-PA-SURG-003",
+      "ruleId": "R-PA-SURG-001",
       "severity": "flag",
       "status": "pass",
-      "description": "Surgery with ASA >= 3: anesthesia / pre-op medical clearance documented",
-      "citation": "ASA Physical Status >= 3 (severe systemic disease) requires documented pre-operative medical clearance / anesthesia evaluation so the perioperative risk has been assessed by an appropriate clinician.",
-      "evidence": "No ASA >= 3 anchor; rule vacuously satisfied.",
+      "description": "CMS LCD L40232 primary total hip/knee arthroplasty: conservative therapy or an exception rationale documented",
+      "citation": "CMS LCD L40232 requires a conservative-therapy trial for primary total hip or knee arthroplasty, while allowing documented exceptional circumstances when conservative therapy is not appropriate. This rule does not generalize that policy to every surgical CPT or payer.",
+      "evidence": "No primary total hip/knee arthroplasty CPT (27130 or 27447); rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-SURG-002",
+      "severity": "flag",
+      "status": "pass",
+      "description": "CMS LCD L40232 primary total hip/knee arthroplasty: radiographic findings supporting the indication documented",
+      "citation": "CMS LCD L40232 requires radiographic findings demonstrating advanced joint disease for primary total hip or knee arthroplasty. It does not establish a universal imaging prerequisite for every surgical CPT.",
+      "evidence": "No primary total hip/knee arthroplasty CPT (27130 or 27447); rule vacuously satisfied.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-SURG-003",
+      "severity": "info",
+      "status": "pass",
+      "description": "Anesthesia workflow with ASA III-VI: preanesthesia assessment documented",
+      "citation": "ASA Basic Standards require a preanesthesia assessment for patients receiving anesthesia care and consultations as necessary. ASA Physical Status communicates comorbidity burden but does not by itself mandate a separate \"medical clearance\" or establish perioperative risk.",
+      "evidence": "No planned anesthesia-care anchor; rule does not infer anesthesia from a surgery CPT alone.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-SURG-004",
+      "severity": "info",
+      "status": "pass",
+      "description": "Surgery: any documented ASA Physical Status field contains a valid class I-VI",
+      "citation": "ASA defines six Physical Status classes (I-VI) and an emergency modifier; the classification alone does not predict perioperative risk. This linter validates a supplied value but does not require ASA status on every prospective authorization packet.",
+      "evidence": "No ASA field supplied; ASA status is not treated as a universal PA prerequisite.",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-SURG-005",
+      "severity": "flag",
+      "status": "pass",
+      "description": "Completed hospital surgery record: informed consent documented before surgery unless emergent",
+      "citation": "42 CFR 482.51(b)(2) requires a properly executed informed-consent form in the hospital chart before an operation, except in emergencies. It does not require a completed consent form in every prospective prior-authorization submission.",
+      "evidence": "No completed inpatient/hospital-outpatient surgery record; prospective PA packets are outside this consent check.",
       "note": null,
       "remediation": null
     },
@@ -8928,10 +8928,6 @@
       "R-PA-036",
       "R-PA-037",
       "R-PA-CIGNA-009",
-      "R-PA-SURG-001",
-      "R-PA-SURG-002",
-      "R-PA-SURG-004",
-      "R-PA-SURG-005",
       "R-PA-031",
       "R-PA-032",
       "R-PA-060",
@@ -9777,7 +9773,11 @@
       "R-PA-RAD-003",
       "R-PA-RAD-004",
       "R-PA-RAD-005",
+      "R-PA-SURG-001",
+      "R-PA-SURG-002",
       "R-PA-SURG-003",
+      "R-PA-SURG-004",
+      "R-PA-SURG-005",
       "R-PA-UHC-001",
       "R-PA-UHC-002",
       "R-PA-UHC-003",
@@ -9904,11 +9904,32 @@
           "lastVerified": "2026-09-14"
         },
         {
-          "id": "surgical-indication-policy",
-          "label": "Payer surgical-indication policy anchors (conservative management, ASA)",
+          "id": "cms-tja-lcd",
+          "label": "CMS total joint arthroplasty coverage criteria",
+          "url": "https://www.cms.gov/medicare-coverage-database/view/lcd.aspx?lcdId=40232&ver=5",
+          "ruleFamily": "specialty-surg",
+          "lastVerified": "2026-09-14"
+        },
+        {
+          "id": "asa-preanesthesia",
+          "label": "ASA Basic Standards for Preanesthesia Care",
+          "url": "https://www.asahq.org/~/media/Sites/ASAHQ/Files/Public/Resources/standards-guidelines/basic-standards-for-preanesthesia-care.pdf",
+          "ruleFamily": "specialty-surg",
+          "lastVerified": "2026-09-14"
+        },
+        {
+          "id": "asa-physical-status",
+          "label": "ASA Physical Status Classification System",
           "url": "https://www.asahq.org/standards-and-practice-parameters/statement-on-asa-physical-status-classification-system",
           "ruleFamily": "specialty-surg",
-          "lastVerified": "2026-05-28"
+          "lastVerified": "2026-09-14"
+        },
+        {
+          "id": "cms-hospital-surgery",
+          "label": "CMS hospital surgical-services requirements",
+          "url": "https://www.ecfr.gov/current/title-42/chapter-IV/subchapter-G/part-482/subpart-D/section-482.51",
+          "ruleFamily": "specialty-surg",
+          "lastVerified": "2026-09-14"
         },
         {
           "id": "dsm-5-tr",

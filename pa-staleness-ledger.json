@@ -142,15 +142,45 @@
       "lastVerified": "2026-09-14"
     },
     {
-      "id": "surgical-indication-policy",
-      "label": "Payer surgical-indication policy anchors (conservative management, ASA)",
+      "id": "cms-tja-lcd",
+      "label": "CMS total joint arthroplasty coverage criteria",
       "ruleFamily": "specialty-surg",
       "rules": [
         "R-PA-SURG-001",
+        "R-PA-SURG-002"
+      ],
+      "url": "https://www.cms.gov/medicare-coverage-database/view/lcd.aspx?lcdId=40232&ver=5",
+      "lastVerified": "2026-09-14"
+    },
+    {
+      "id": "asa-preanesthesia",
+      "label": "ASA Basic Standards for Preanesthesia Care",
+      "ruleFamily": "specialty-surg",
+      "rules": [
         "R-PA-SURG-003"
       ],
+      "url": "https://www.asahq.org/~/media/Sites/ASAHQ/Files/Public/Resources/standards-guidelines/basic-standards-for-preanesthesia-care.pdf",
+      "lastVerified": "2026-09-14"
+    },
+    {
+      "id": "asa-physical-status",
+      "label": "ASA Physical Status Classification System",
+      "ruleFamily": "specialty-surg",
+      "rules": [
+        "R-PA-SURG-004"
+      ],
       "url": "https://www.asahq.org/standards-and-practice-parameters/statement-on-asa-physical-status-classification-system",
-      "lastVerified": "2026-05-28"
+      "lastVerified": "2026-09-14"
+    },
+    {
+      "id": "cms-hospital-surgery",
+      "label": "CMS hospital surgical-services requirements",
+      "ruleFamily": "specialty-surg",
+      "rules": [
+        "R-PA-SURG-005"
+      ],
+      "url": "https://www.ecfr.gov/current/title-42/chapter-IV/subchapter-G/part-482/subpart-D/section-482.51",
+      "lastVerified": "2026-09-14"
     },
     {
       "id": "dsm-5-tr",
