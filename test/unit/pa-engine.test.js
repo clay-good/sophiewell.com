@@ -1355,6 +1355,50 @@ test('R-PA-CIGNA-011 flags a Cigna specialty-drug request with no step-therapy p
   assert.equal(f.status, 'flag');
 });
 
+test('R-PA-CIGNA-011 does not infer step therapy from a generic specialty-drug request', () => {
+  const findings = runEngine(bundleOf('Cigna member.\nSpecialty drug request.\nProcedure J3590.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-CIGNA-011').status, 'pass');
+});
+
+test('R-PA-CIGNA-012 requires both the specific genetic test and indication', () => {
+  const incomplete = runEngine(bundleOf('Cigna member.\nGenetic testing requested.\nClinical indication: hereditary neuropathy.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-CIGNA-012').status, 'info');
+
+  const complete = runEngine(bundleOf('Cigna member.\nGenetic testing requested.\nGene panel: hereditary neuropathy panel.\nClinical indication: hereditary neuropathy.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-CIGNA-012').status, 'pass');
+});
+
+test('R-PA-CIGNA-013 does not impose a diagnosis rule on every J-code request', () => {
+  const findings = runEngine(bundleOf('Cigna member.\nSpecialty drug request.\nProcedure J3590.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-CIGNA-013').status, 'pass');
+});
+
+test('R-PA-CIGNA-013 checks an explicitly required drug-policy diagnosis', () => {
+  const incomplete = runEngine(bundleOf('Cigna member.\nDiagnosis required by drug policy.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-CIGNA-013').status, 'info');
+
+  const complete = runEngine(bundleOf('Cigna member.\nDiagnosis required by drug policy.\nDiagnosis: rheumatoid arthritis.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-CIGNA-013').status, 'pass');
+});
+
+test('R-PA-CIGNA-014 is a source-free advisory for an unexplained retro request', () => {
+  const findings = runEngine(bundleOf('Cigna member.\nRetrospective authorization request.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-CIGNA-014').status, 'info');
+});
+
+test('R-PA-CIGNA-015 does not require an order for every DME request', () => {
+  const findings = runEngine(bundleOf('Cigna member.\nWheelchair request, HCPCS K0001.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-CIGNA-015').status, 'pass');
+});
+
+test('R-PA-CIGNA-015 checks a signed order only when explicitly required', () => {
+  const incomplete = runEngine(bundleOf('Cigna member.\nWritten order required.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-CIGNA-015').status, 'info');
+
+  const complete = runEngine(bundleOf('Cigna member.\nWritten order required.\nPhysician order.\nElectronically signed.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-CIGNA-015').status, 'pass');
+});
+
 test('R-PA-CIGNA-017 flags a Cigna transplant request with no LifeSOURCE / network routing', () => {
   const text = 'Cigna member.\nRequested service: kidney transplant.\nMedical necessity per Medical Coverage Policy.\n';
   const findings = runEngine(bundleOf(text));
