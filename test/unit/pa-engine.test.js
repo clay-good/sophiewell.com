@@ -592,13 +592,13 @@ test('UnitedHealthcare overlay rules vacuously pass on a non-UHC packet', () => 
   }
 });
 
-test('R-PA-UHC-001 flags a UHC request with a procedure but no coverage-criteria reference', () => {
+test('R-PA-UHC-001 advises when a UHC request has no coverage-policy reference', () => {
   const text = 'UnitedHealthcare Choice Plus member.\n'
     + 'Requested procedure: CPT 72148 (MRI lumbar spine).\n'
     + 'Please authorize.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-UHC-001');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
 });
 
 test('R-PA-UHC-001 passes when the UHC packet cites the applicable Coverage Determination Guideline', () => {
@@ -610,18 +610,67 @@ test('R-PA-UHC-001 passes when the UHC packet cites the applicable Coverage Dete
   assert.equal(f.status, 'pass');
 });
 
-test('R-PA-UHC-002 flags a UHC packet with no clinical document attached', () => {
+test('R-PA-UHC-002 advises when a UHC packet has no recognized clinical document', () => {
   const text = 'UnitedHealthcare PPO member.\nRequested procedure: CPT 27447.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-UHC-002');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
 });
 
-test('R-PA-UHC-005 flags a notification-required UHC service with no notification reference', () => {
-  const text = 'UnitedHealthcare member.\nThis service requires notification / prior authorization required.\nProcedure CPT 27447.\n';
+test('R-PA-UHC-002 passes when a UHC packet includes a clinical note', () => {
+  const text = 'UnitedHealthcare member.\nRequested procedure: CPT 27447.\nChief complaint: knee pain. HPI: symptoms persist. Assessment and plan: proceed with arthroplasty.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-UHC-002');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-UHC-003 advises when no electronic submission channel is identified', () => {
+  const text = 'UnitedHealthcare member.\nRequested procedure: CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-UHC-003');
+  assert.equal(f.status, 'info');
+});
+
+test('R-PA-UHC-003 passes for a Provider Portal submission', () => {
+  const text = 'UnitedHealthcare member.\nSubmitted through the UnitedHealthcare Provider Portal Prior Authorization and Notification tool.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-UHC-003');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-UHC-004 advises when no member-specific requirement lookup is documented', () => {
+  const text = 'UnitedHealthcare member.\nRequested procedure: CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-UHC-004');
+  assert.equal(f.status, 'info');
+});
+
+test('R-PA-UHC-004 passes when the member-specific lookup result is documented', () => {
+  const text = 'UnitedHealthcare member.\nRequested procedure: CPT 27447.\nChecked by member in the Provider Portal; prior authorization is required. Decision ID D12345.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-UHC-004');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-UHC-005 does not demand a confirmation for an unsubmitted prior-authorization request', () => {
+  const text = 'UnitedHealthcare member.\nPrior authorization is required.\nProcedure CPT 27447.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-UHC-005');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-UHC-005 advises when a submitted notification has no confirmation reference', () => {
+  const text = 'UnitedHealthcare member.\nAdvance notification submitted.\nProcedure CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-UHC-005');
+  assert.equal(f.status, 'info');
+});
+
+test('R-PA-UHC-005 passes when a submitted notification has a Decision ID', () => {
+  const text = 'UnitedHealthcare member.\nAdvance notification submitted. Decision ID D12345.\nProcedure CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-UHC-005');
+  assert.equal(f.status, 'pass');
 });
 
 test('R-PA-UHC-006 flags an inpatient (POS 21) UHC request with no admission / progress documentation', () => {
