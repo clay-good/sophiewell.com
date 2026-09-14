@@ -119,9 +119,9 @@ export const renderers = {
   },
   'lymphocyte-doubling-time'(root) {
     note(root, 'Lymphocyte doubling time (Molica 1987): LDT = interval × ln(2) / ln(ALC2 / ALC1). A doubling time <= 12 months predicts a worse CLL prognosis.');
-    root.appendChild(num('Earlier absolute lymphocyte count (×10⁹/L)', 'ldt-alc1', { min: '0' }));
-    root.appendChild(num('Later absolute lymphocyte count (×10⁹/L)', 'ldt-alc2', { min: '0' }));
-    root.appendChild(num('Interval between counts (months)', 'ldt-int', { min: '0' }));
+    root.appendChild(num('Earlier absolute lymphocyte count (×10⁹/L)', 'ldt-alc1', { min: '0', max: '100000' }));
+    root.appendChild(num('Later absolute lymphocyte count (×10⁹/L)', 'ldt-alc2', { min: '0', max: '100000' }));
+    root.appendChild(num('Interval between counts (months)', 'ldt-int', { min: '0', max: '600' }));
     const o = out(); root.appendChild(o);
     wire(['ldt-alc1', 'ldt-alc2', 'ldt-int'], () => safe(o, () => {
       const r = M.ldt({ alc1: val('ldt-alc1'), alc2: val('ldt-alc2'), intervalMonths: val('ldt-int') });

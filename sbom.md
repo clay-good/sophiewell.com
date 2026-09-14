@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `f47e82a1e7be4e78`
-Generated: 2026-09-13T23:40:17.725Z
+Build ID: `b67c49856b3757c9`
+Generated: 2026-09-14T00:05:28.714Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -365,7 +365,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/heffner-v591.js` | 11393 | `84d4304edda82826b4a03363df288491740cf143544442fec83255f87cb67d6a` |
 | `lib/hematology-v229.js` | 9780 | `8f46de313a33e1ec52b7bea8591cb07aee9083920d75d721fff013c85f1d9013` |
 | `lib/heme-onc-risk-v211.js` | 11804 | `cbe39fe689c3723cd7eef4796c470a780d23dd31ac350a9cbd19bad2a05561c9` |
-| `lib/heme-prognostic-v216.js` | 14487 | `929b16e371ddf98b83ad1c42204eee6cd3de204d825181a6bcadf96f649f905e` |
+| `lib/heme-prognostic-v216.js` | 14799 | `7fb13c29eca5a261813b204b74f934d1f591af77b340d082406fe693b2bae84e` |
 | `lib/heme-risk-v189.js` | 13799 | `d94b111f4a8a7efc34646567508d2eaa16eee64ebbe5284faf6935d578d9c2a0` |
 | `lib/heme-staging-v188.js` | 14818 | `780860ca16797b8cfad923f347e86700c04bc36c9b857312d9197858ae7b4243` |
 | `lib/heme-v132.js` | 16879 | `b8efc09695da0d762446d04a61a8269f62ec63f2c8d35fe8547375b1e603b333` |
@@ -1855,7 +1855,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v213.js` | 8576 | `4beea367e06599d3777b456aa020515171f0fb329e43cb0a264f29d6ec9ba34c` |
 | `views/group-v214.js` | 7237 | `89e285821679d674241af7a997505f28fe7adc91bc4512ccf1a5112a720e490c` |
 | `views/group-v215.js` | 10141 | `e0d798fc697fafa78a6c0f2b99a0a48b79976b47f2097a5a47ca12f88704971f` |
-| `views/group-v216.js` | 8848 | `fee62e8c12b3ca8563417dca09500134cf9174f90a88c92b7e50a9c608d8e715` |
+| `views/group-v216.js` | 8890 | `d762f35dd2d3fa68d487778a412f71ea8bcf48766a0d53b6a42f63132b67b295` |
 | `views/group-v217.js` | 10677 | `ab62b3cf6c94e613a6d79e8dd9fb33fc8fec732b0221ff92499ba7b14a26315e` |
 | `views/group-v218.js` | 10829 | `9b045882134b2abb7576c6a25fcc483d69b6749f3ea83e6480e224b13ef6c7a6` |
 | `views/group-v219.js` | 8996 | `8c52b01983c8954d403b3d17a3f71c1cbad79d57ad5e3dd92ed4227ca4416846` |

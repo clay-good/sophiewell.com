@@ -49,6 +49,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **An invalid lymphocyte measurement was called missing.** The CLL lymphocyte
+  doubling-time calculator mapped negative, zero, and over-limit ALC or interval
+  values to the same generic prompt as an empty field. Entered values outside
+  its existing domain now receive a field-specific range refusal, while blanks
+  keep the original complete-the-fields prompt. See docs/spec-v1248.md.
+
 - **A negative infusion rate reduced the Vasoactive-Inotropic Score.** VIS
   accepted a finite negative dose and subtracted its weighted contribution,
   which could make hemodynamic support look lower than it was. Every entered

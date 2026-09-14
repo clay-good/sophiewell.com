@@ -77,6 +77,13 @@ test('ldt: favorable above 12 months', () => {
 test('ldt: invalid when later <= earlier', () => {
   assert.equal(ldt({ alc1: 40, alc2: 30, intervalMonths: 6 }).valid, false);
 });
+test('ldt: entered values outside its existing domain are not called missing', () => {
+  assert.match(ldt({ alc1: -20, alc2: 40, intervalMonths: 6 }).message, /Earlier absolute lymphocyte count.*greater than 0/);
+  assert.match(ldt({ alc1: 0, alc2: 40, intervalMonths: 6 }).message, /Earlier absolute lymphocyte count.*greater than 0/);
+  assert.match(ldt({ alc1: 20, alc2: 100001, intervalMonths: 6 }).message, /Later absolute lymphocyte count.*at most 100000/);
+  assert.match(ldt({ alc1: 20, alc2: 40, intervalMonths: 601 }).message, /Interval between counts.*at most 600/);
+  assert.match(ldt({ alc1: '', alc2: 40, intervalMonths: 6 }).message, /Enter an earlier and a later/);
+});
 
 test('talcott: group IV low risk when all false', () => {
   const r = talcott({});
