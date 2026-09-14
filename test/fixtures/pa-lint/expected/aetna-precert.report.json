@@ -823,20 +823,20 @@
     },
     {
       "ruleId": "R-PA-ANTHEM-001",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "Anthem prior authorization: medical-necessity criteria (Clinical UM Guideline / Medical Policy / MCG) referenced",
-      "citation": "Anthem adjudicates prior-authorization requests against its published Clinical UM Guidelines and Medical Policies (and MCG care guidelines); a request should cite the policy it is being judged against so the reviewer can map it to the coverage criteria. <https://www.anthem.com/provider/policies/clinical-guidelines/>",
+      "description": "Anthem prior authorization: applicable medical-necessity resource identified",
+      "citation": "Anthem describes Medical Policies and Clinical UM Guidelines as references for interpreting claim decisions, notes that guideline adoption varies by plan, and may also use MCG or Carelon criteria. It does not require every authorization packet to cite a policy. This is an informational preparation check only. <https://www.anthem.com/provider/policies/clinical-guidelines/>",
       "evidence": "Not an Anthem packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
     {
       "ruleId": "R-PA-ANTHEM-002",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "Anthem prior authorization: supporting medical records / clinical documentation attached",
-      "citation": "Anthem requires the clinical information that supports medical necessity to be submitted with the prior-authorization request; a request with no clinical document attached cannot be reviewed on the merits. <https://www.anthem.com/provider/individual-commercial/prior-authorization>",
+      "description": "Anthem prior authorization: recommended supporting clinical documentation attached",
+      "citation": "Anthem's Medical Policy and Clinical UM Guideline page calls the documents returned by its Clinical Documentation Lookup Tool \"highly recommended\" for prior-authorization and claim submission. This informational check does not turn that recommendation into a universal attachment mandate. <https://www.anthem.com/provider/policies/clinical-guidelines/>",
       "evidence": "Not an Anthem packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -845,8 +845,8 @@
       "ruleId": "R-PA-ANTHEM-003",
       "severity": "info",
       "status": "pass",
-      "description": "Anthem prior authorization: submission channel (Availity / Interactive Care Reviewer / phone on member ID card) indicated",
-      "citation": "Anthem directs providers to submit prior-authorization requests through the Availity Essentials portal's Interactive Care Reviewer (ICR), by 278 EDI transaction, or by phone using the number on the member ID card. Informational: a cover sheet that names the channel speeds routing. <https://www.anthem.com/provider/individual-commercial/prior-authorization>",
+      "description": "Anthem prior authorization: use the applicable digital authorization workflow",
+      "citation": "Anthem directs providers to submit and track medical or behavioral-health authorization cases through the Authorization application in Availity Essentials. The public page does not require the packet content itself to record which channel transported it. <https://www.anthem.com/provider/individual-commercial/prior-authorization>",
       "evidence": "Not an Anthem packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -855,18 +855,18 @@
       "ruleId": "R-PA-ANTHEM-004",
       "severity": "info",
       "status": "pass",
-      "description": "Anthem prior authorization: requested service is on Anthem's prior-authorization requirement list",
-      "citation": "Anthem prior authorization applies only to services on its published prior-authorization requirement lists; requesting authorization for a non-listed service is unnecessary. ships no bundled list, so the rule is vacuously satisfied with a pointer to the list (it mirrors core R-PA-053 and the Aetna / UHC -004 rules; a later wave bundles the list and flips this to a real membership test). <https://www.anthem.com/provider/individual-commercial/prior-authorization>",
+      "description": "Anthem prior authorization: requested service checked against the applicable state and plan list",
+      "citation": "Anthem publishes separate prior-authorization code lists by state and plan and directs providers to use those lists to identify services requiring authorization. The linter ships no universal Anthem list, so it cannot infer a requirement from a code alone. <https://www.anthem.com/provider/individual-commercial/prior-authorization>",
       "evidence": "Not an Anthem packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
     {
       "ruleId": "R-PA-ANTHEM-005",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "Anthem prior authorization: authorization is referenced for a service that requires it before the service date",
-      "citation": "Anthem requires prior authorization to be obtained before a service on its requirement list is rendered; a packet for an authorization-required service should show the authorization / reference number rather than relying on post-service review. <https://www.anthem.com/provider/individual-commercial/prior-authorization>",
+      "description": "Anthem submitted authorization: case or tracking reference documented",
+      "citation": "Anthem's provider page says authorization cases can be submitted and tracked through the Authorization application in Availity Essentials. An initial request cannot already carry an authorization number; this informational check runs only when the packet says an authorization was submitted. <https://www.anthem.com/provider/individual-commercial/prior-authorization>",
       "evidence": "Not an Anthem packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -9992,7 +9992,7 @@
           "label": "Anthem Blue Cross Blue Shield (Elevance Health) prior-authorization requirements, Clinical UM Guidelines, and Medical Policies",
           "url": "https://www.anthem.com/provider/individual-commercial/prior-authorization",
           "ruleFamily": "commercial-anthem",
-          "lastVerified": "2026-06-01"
+          "lastVerified": "2026-09-13"
         },
         {
           "id": "cigna-precert",

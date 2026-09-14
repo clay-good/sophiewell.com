@@ -963,13 +963,13 @@ test('Anthem overlay rules vacuously pass on a non-Anthem packet', () => {
   }
 });
 
-test('R-PA-ANTHEM-001 flags an Anthem request with a procedure but no medical-necessity criteria reference', () => {
+test('R-PA-ANTHEM-001 advises when an Anthem request does not identify an applicable criteria resource', () => {
   const text = 'Anthem Blue Cross PPO member.\n'
     + 'Requested procedure: CPT 72148 (MRI lumbar spine).\n'
     + 'Please authorize.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-ANTHEM-001');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
 });
 
 test('R-PA-ANTHEM-001 passes when the Anthem packet cites the applicable Clinical UM Guideline', () => {
@@ -981,18 +981,39 @@ test('R-PA-ANTHEM-001 passes when the Anthem packet cites the applicable Clinica
   assert.equal(f.status, 'pass');
 });
 
-test('R-PA-ANTHEM-002 flags an Anthem packet with no clinical document attached', () => {
+test('R-PA-ANTHEM-002 treats missing recommended clinical documentation as advisory', () => {
   const text = 'Anthem Blue Cross PPO member.\nRequested procedure: CPT 27447.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-ANTHEM-002');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
 });
 
-test('R-PA-ANTHEM-003 passes when the Anthem packet names the Availity / Interactive Care Reviewer channel (info)', () => {
-  const text = 'Anthem member.\nSubmitted via Availity Interactive Care Reviewer.\nProcedure CPT 27447.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-ANTHEM-003');
-  assert.equal(f.status, 'pass');
+test('R-PA-ANTHEM-003 does not require the transport channel in packet content', () => {
+  for (const text of [
+    'Anthem member.\nProcedure CPT 27447.\n',
+    'Anthem member.\nSubmitted via Availity.\nProcedure CPT 27447.\n',
+  ]) {
+    const findings = runEngine(bundleOf(text));
+    assert.equal(findings.find((x) => x.ruleId === 'R-PA-ANTHEM-003').status, 'pass');
+  }
+});
+
+test('R-PA-ANTHEM-004 remains neutral because Anthem requirements vary by state and plan', () => {
+  const findings = runEngine(bundleOf('Anthem member.\nProcedure CPT 27447.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ANTHEM-004').status, 'pass');
+});
+
+test('R-PA-ANTHEM-005 does not demand a reference from an initial authorization request', () => {
+  const findings = runEngine(bundleOf('Anthem member.\nPrior authorization required for CPT 27447.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ANTHEM-005').status, 'pass');
+});
+
+test('R-PA-ANTHEM-005 advises when a submitted authorization omits its case reference', () => {
+  const incomplete = runEngine(bundleOf('Anthem member.\nPrior authorization submitted.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-ANTHEM-005').status, 'info');
+
+  const complete = runEngine(bundleOf('Anthem member.\nPrior authorization submitted.\nAuthorization case: PA-123.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-ANTHEM-005').status, 'pass');
 });
 
 test('R-PA-ANTHEM-006 flags an inpatient (POS 21) Anthem request with no admission / progress documentation', () => {
