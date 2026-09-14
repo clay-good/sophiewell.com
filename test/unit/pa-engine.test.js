@@ -3352,27 +3352,55 @@ test('R-PA-BH-001 flags a BH CPT request without an ICD-10 F-code', () => {
   assert.equal(f.status, 'flag');
 });
 
-test('R-PA-BH-002 flags a BH request without a treatment-plan / measurable-goals anchor', () => {
+test('R-PA-BH-001 accepts an F-code without inventing a literal DSM citation requirement', () => {
   const text = HAPPY_TEXT + '\nDx: F32.9 major depressive disorder\nProcedure: 90834 individual psychotherapy.\n';
   const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-BH-002');
-  assert.equal(f.status, 'flag');
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BH-001').status, 'pass');
 });
 
-test('R-PA-BH-003 flags a BH step-up-of-care request without a prior-level-of-care anchor', () => {
+test('R-PA-BH-002 applies its treatment-plan reminder only to reauthorization', () => {
+  const initial = HAPPY_TEXT + '\nDx: F32.9 major depressive disorder\nProcedure: 90834 individual psychotherapy.\n';
+  assert.equal(runEngine(bundleOf(initial)).find((x) => x.ruleId === 'R-PA-BH-002').status, 'pass');
+
+  const reauthorization = initial + 'Requesting reauthorization for continued treatment.\n';
+  assert.equal(runEngine(bundleOf(reauthorization)).find((x) => x.ruleId === 'R-PA-BH-002').status, 'info');
+
+  const planned = reauthorization + 'Current treatment plan: measurable goal documented.\n';
+  assert.equal(runEngine(bundleOf(planned)).find((x) => x.ruleId === 'R-PA-BH-002').status, 'pass');
+});
+
+test('R-PA-BH-003 does not apply ASAM addiction criteria to a non-SUD step-up request', () => {
   const text = HAPPY_TEXT
     + '\nDx: F32.9 major depressive disorder\nProcedure: 90834 individual psychotherapy.\n'
     + 'Requesting step-up to higher level of care.\n';
   const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-BH-003');
-  assert.equal(f.status, 'flag');
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BH-003').status, 'pass');
 });
 
-test('R-PA-BH-004 flags a BH request without a risk-assessment anchor', () => {
+test('R-PA-BH-003 reminds on a SUD step-up until level and reassessment rationale are present', () => {
+  const base = HAPPY_TEXT
+    + '\nDx: F10.20 alcohol use disorder\nProcedure: 90834 individual psychotherapy.\n'
+    + 'Requesting step-up to residential treatment.\n';
+  assert.equal(runEngine(bundleOf(base)).find((x) => x.ruleId === 'R-PA-BH-003').status, 'info');
+
+  const supported = base + 'Current level of care: intensive outpatient. ASAM reassessment and clinical rationale documented.\n';
+  assert.equal(runEngine(bundleOf(supported)).find((x) => x.ruleId === 'R-PA-BH-003').status, 'pass');
+});
+
+test('R-PA-BH-004 does not infer primary behavioral-health care from a code alone', () => {
   const text = HAPPY_TEXT + '\nDx: F32.9 major depressive disorder\nProcedure: 90834 individual psychotherapy.\n';
   const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-BH-004');
-  assert.equal(f.status, 'flag');
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BH-004').status, 'pass');
+});
+
+test('R-PA-BH-004 requires a validated suicide-screening anchor only for primary BH care', () => {
+  const base = HAPPY_TEXT
+    + '\nDx: F32.9 major depressive disorder\nProcedure: 90834 individual psychotherapy.\n'
+    + 'Behavioral health is the primary reason for care.\n';
+  assert.equal(runEngine(bundleOf(base)).find((x) => x.ruleId === 'R-PA-BH-004').status, 'info');
+
+  const screened = base + 'C-SSRS completed.\n';
+  assert.equal(runEngine(bundleOf(screened)).find((x) => x.ruleId === 'R-PA-BH-004').status, 'pass');
 });
 
 test('R-PA-BH-005 does not require the eliminated X-waiver for buprenorphine', () => {

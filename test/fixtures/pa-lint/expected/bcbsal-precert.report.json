@@ -2825,38 +2825,38 @@
       "ruleId": "R-PA-BH-001",
       "severity": "flag",
       "status": "pass",
-      "description": "Behavioral health: DSM-5-TR diagnosis documented (ICD-10 F-code aligned)",
-      "citation": "Behavioral-health PAs require a documented DSM-5-TR diagnosis; the packet should carry the ICD-10 F-code AND a DSM-5-TR / diagnostic-criteria reference for medical-necessity review.",
+      "description": "Behavioral health: ICD-10-CM mental-disorder diagnosis documented",
+      "citation": "APA identifies DSM-5-TR as the U.S. classification for mental disorders and publishes aligned ICD-10-CM coding updates. This heuristic requires an F-code for a behavioral-health service but does not invent a universal requirement to cite DSM-5-TR literally in every PA packet.",
       "evidence": "No behavioral-health CPT or ICD-10 F-code trigger; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
     {
       "ruleId": "R-PA-BH-002",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "Behavioral health: treatment plan with measurable goals documented",
-      "citation": "Payer convention (commercial and public): behavioral-health treatment plans must specify measurable, time-bound goals that map to the documented diagnosis so progress can be evaluated at reauthorization.",
+      "description": "Behavioral-health reauthorization: current treatment-plan anchor documented",
+      "citation": "Local completeness heuristic: when a packet explicitly requests reauthorization or continued services, a current treatment-plan or goal anchor helps a reviewer evaluate progress. This is not presented as a universal payer coverage requirement.",
       "evidence": "No behavioral-health trigger; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
     {
       "ruleId": "R-PA-BH-003",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "Behavioral health: prior level of care documented when stepping up",
-      "citation": "ASAM / LOCUS frameworks: when requesting a higher level of care (outpatient -> IOP -> PHP -> residential -> inpatient), the packet must document the prior level and reason for step-up.",
+      "description": "Substance-use step-up: current/prior level and reassessment rationale documented",
+      "citation": "ASAM Criteria uses multidimensional assessment, level-of-care admission criteria, and reassessment or transition criteria for addiction treatment. This heuristic is limited to an explicit substance-use step-up request and does not apply ASAM to unrelated mental-health care.",
       "evidence": "No behavioral-health trigger; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
     {
       "ruleId": "R-PA-BH-004",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "Behavioral health: risk assessment (SI / HI / self-harm) documented",
-      "citation": "Payer convention and Joint Commission NPSG: behavioral-health PAs (especially higher levels of care) require documented risk assessment covering suicidal ideation, homicidal ideation, and self-harm.",
+      "description": "Primary behavioral-health care: validated suicide screening documented",
+      "citation": "Joint Commission NPSG.15.01.01 EP 2 requires a validated suicidal-ideation screening tool for people evaluated or treated for behavioral-health conditions as their primary reason for care. Screening identifies who needs further suicide-risk assessment; the standard does not require a universal combined SI/HI/self-harm assessment for every behavioral code.",
       "evidence": "No behavioral-health trigger; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -9932,11 +9932,25 @@
           "lastVerified": "2026-09-14"
         },
         {
-          "id": "dsm-5-tr",
-          "label": "APA DSM-5-TR / ASAM / Joint Commission (behavioral health)",
+          "id": "apa-dsm",
+          "label": "APA DSM-5-TR classification and ICD-10-CM updates",
           "url": "https://www.psychiatry.org/psychiatrists/practice/dsm",
           "ruleFamily": "specialty-bh",
-          "lastVerified": "2026-05-28"
+          "lastVerified": "2026-09-14"
+        },
+        {
+          "id": "asam-criteria",
+          "label": "ASAM Criteria addiction-treatment level-of-care framework",
+          "url": "https://www.asam.org/asam-criteria/asam-criteria-4th-edition",
+          "ruleFamily": "specialty-bh",
+          "lastVerified": "2026-09-14"
+        },
+        {
+          "id": "joint-commission-suicide-screening",
+          "label": "Joint Commission behavioral-health suicide screening scope",
+          "url": "https://www.jointcommission.org/en/knowledge-library/support-center/standards-interpretation/standards-faqs/000001215",
+          "ruleFamily": "specialty-bh",
+          "lastVerified": "2026-09-14"
         },
         {
           "id": "samhsa-mat-act",
