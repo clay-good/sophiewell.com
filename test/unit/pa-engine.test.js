@@ -1230,13 +1230,13 @@ test('Cigna overlay rules vacuously pass on a non-Cigna packet', () => {
   }
 });
 
-test('R-PA-CIGNA-001 flags a Cigna request with a procedure but no coverage-criteria reference', () => {
+test('R-PA-CIGNA-001 treats a missing coverage-criteria reference as informational', () => {
   const text = 'Cigna Open Access Plus member.\n'
     + 'Requested procedure: CPT 72148 (MRI lumbar spine).\n'
     + 'Please authorize.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-CIGNA-001');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
 });
 
 test('R-PA-CIGNA-001 passes when the Cigna packet cites the applicable Medical Coverage Policy', () => {
@@ -1248,18 +1248,39 @@ test('R-PA-CIGNA-001 passes when the Cigna packet cites the applicable Medical C
   assert.equal(f.status, 'pass');
 });
 
-test('R-PA-CIGNA-002 flags a Cigna packet with no clinical document attached', () => {
+test('R-PA-CIGNA-002 treats a missing clinical document as informational', () => {
   const text = 'Cigna Open Access Plus member.\nRequested procedure: CPT 27447.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-CIGNA-002');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
 });
 
-test('R-PA-CIGNA-003 passes when the Cigna packet names the CignaforHCP / Availity channel (info)', () => {
-  const text = 'Cigna member.\nSubmitted via the CignaforHCP provider portal.\nProcedure CPT 27447.\n';
+test('R-PA-CIGNA-003 does not require the transport channel in packet content', () => {
+  const text = 'Cigna member.\nProcedure CPT 27447.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-CIGNA-003');
   assert.equal(f.status, 'pass');
+});
+
+test('R-PA-CIGNA-004 remains non-enforcing without a member-specific requirement lookup', () => {
+  const findings = runEngine(bundleOf('Cigna member.\nProcedure CPT 27447.\n'));
+  const f = findings.find((x) => x.ruleId === 'R-PA-CIGNA-004');
+  assert.equal(f.status, 'pass');
+  assert.match(f.evidence, /member-specific/i);
+});
+
+test('R-PA-CIGNA-005 does not expect an authorization number on an initial request', () => {
+  const findings = runEngine(bundleOf('Cigna member.\nPrior authorization required.\nProcedure CPT 27447.\n'));
+  const f = findings.find((x) => x.ruleId === 'R-PA-CIGNA-005');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-CIGNA-005 checks the reference only after submission is claimed', () => {
+  const incomplete = runEngine(bundleOf('Cigna member.\nPrecertification submitted.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-CIGNA-005').status, 'info');
+
+  const complete = runEngine(bundleOf('Cigna member.\nPrecertification submitted.\nReference number: CIG-123.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-CIGNA-005').status, 'pass');
 });
 
 test('R-PA-CIGNA-006 flags an inpatient (POS 21) Cigna request with no admission / progress documentation', () => {

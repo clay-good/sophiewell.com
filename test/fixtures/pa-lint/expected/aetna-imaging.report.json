@@ -3483,20 +3483,20 @@
     },
     {
       "ruleId": "R-PA-CIGNA-001",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "Cigna prior authorization: coverage criteria (Cigna Medical Coverage Policy / MCG) referenced",
-      "citation": "Cigna adjudicates prior-authorization requests against its published Medical Coverage Policies (and MCG care guidelines); a request should cite the policy it is being judged against so the reviewer can map it to the coverage criteria. <https://www.cigna.com/health-care-providers/coverage-and-claims/precertification>",
+      "description": "Cigna prior authorization: applicable coverage criterion identified when known",
+      "citation": "Cigna says precertification decisions consider the member's eligibility, benefit plan, clinical guidelines, and specific situation. Its coverage-policy page also says some plans do not use Cigna coverage policies. Cigna does not require every submission to cite a policy; this is an informational mapping aid. <https://www.cigna.com/health-care-providers/coverage-and-claims/precertification> <https://www.cigna.com/health-care-providers/coverage-and-claims/policies>",
       "evidence": "Not a Cigna packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
     {
       "ruleId": "R-PA-CIGNA-002",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "Cigna prior authorization: supporting medical records / clinical documentation attached",
-      "citation": "Cigna requires the clinical information that supports medical necessity to be submitted with the prior-authorization request; a request with no clinical document attached cannot be reviewed on the merits. <https://www.cigna.com/health-care-providers/coverage-and-claims/precertification>",
+      "description": "Cigna prior authorization: request-specific supporting clinical documentation attached",
+      "citation": "Cigna tells providers to include all information required for a precertification request and warns that missing important details may lead to denial. Its public overview lists core service details but does not require one fixed clinical document type with every request. Informational. <https://www.cigna.com/health-care-providers/coverage-and-claims/precertification>",
       "evidence": "Not a Cigna packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -3505,8 +3505,8 @@
       "ruleId": "R-PA-CIGNA-003",
       "severity": "info",
       "status": "pass",
-      "description": "Cigna prior authorization: submission channel (CignaforHCP provider portal / Availity / phone on member ID card) indicated",
-      "citation": "Cigna directs providers to submit prior-authorization requests through the CignaforHCP provider portal, the Availity Essentials portal, by 278 EDI transaction, or by phone using the number on the member ID card. Informational: a cover sheet that names the channel speeds routing. <https://www.cigna.com/health-care-providers/coverage-and-claims/precertification>",
+      "description": "Cigna prior authorization: use a supported request channel",
+      "citation": "Cigna's current Commercial provider page accepts medical precertification requests by EDI 278, phone, or fax, with separate workflows for delegated services and medications. It does not require the packet content to record its transport channel. <https://www.cigna.com/health-care-providers/coverage-and-claims/precertification>",
       "evidence": "Not a Cigna packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -3515,18 +3515,18 @@
       "ruleId": "R-PA-CIGNA-004",
       "severity": "info",
       "status": "pass",
-      "description": "Cigna prior authorization: requested service is on Cigna's precertification / prior-authorization requirement list",
-      "citation": "Cigna precertification applies only to services on its published prior-authorization requirement lists; requesting authorization for a non-listed service is unnecessary. ships no bundled list, so the rule is vacuously satisfied with a pointer to the list (it mirrors core R-PA-053 and the Aetna / UHC / Anthem -004 rules; a later wave bundles the list and flips this to a real membership test). <https://www.cigna.com/health-care-providers/coverage-and-claims/precertification>",
+      "description": "Cigna prior authorization: requested service checked against the member's applicable precertification list",
+      "citation": "Cigna publishes a Master Precertification List, but the March 2026 list distinguishes Complete/PHS+, Preferred, and Basic Standard management models and notes that some codes may be delegated. The linter ships no member-specific requirement service, so this rule remains a non-enforcing reminder. <https://www.cigna.com/static/www-cigna-com/docs/master-precertification-list-for-providers.pdf>",
       "evidence": "Not a Cigna packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
     {
       "ruleId": "R-PA-CIGNA-005",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "Cigna prior authorization: authorization is referenced for a service that requires it before the service date",
-      "citation": "Cigna requires precertification to be obtained before a service on its requirement list is rendered; a packet for an authorization-required service should show the authorization / reference number rather than relying on post-service review. <https://www.cigna.com/health-care-providers/coverage-and-claims/precertification>",
+      "description": "Cigna submitted precertification: confirmation reference retained",
+      "citation": "Cigna requires referring providers to request and obtain precertification for applicable in-network services and rendering providers to confirm approval before elective services. An initial request cannot already contain an authorization number, so this informational operational check runs only when the packet says submission is complete. <https://www.cigna.com/health-care-providers/coverage-and-claims/precertification>",
       "evidence": "Not a Cigna packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -10001,7 +10001,7 @@
           "label": "Cigna prior-authorization / precertification requirements, Medical Coverage Policies, and eviCore / Evernorth program requirements",
           "url": "https://www.cigna.com/health-care-providers/coverage-and-claims/precertification",
           "ruleFamily": "commercial-cigna",
-          "lastVerified": "2026-06-01"
+          "lastVerified": "2026-09-13"
         },
         {
           "id": "humana-precert",

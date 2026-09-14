@@ -321,7 +321,11 @@
         "R-PA-CIGNA-002"
       ],
       "url": "https://www.cigna.com/health-care-providers/coverage-and-claims/precertification",
-      "lastVerified": "2026-06-01"
+      "lastVerified": "2026-09-13",
+      "alsoCited": [
+        "https://www.cigna.com/health-care-providers/coverage-and-claims/policies",
+        "https://www.cigna.com/static/www-cigna-com/docs/master-precertification-list-for-providers.pdf"
+      ]
     },
     {
       "id": "humana-precert",
