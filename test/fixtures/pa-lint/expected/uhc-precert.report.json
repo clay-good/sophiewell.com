@@ -5596,7 +5596,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Medicare Advantage expedited review: clinical urgency / serious-jeopardy attestation present",
-      "citation": "MA expedited (72-hour) determinations require a treating-clinician attestation that applying the standard 14-day timeframe could seriously jeopardize the enrollee's life, health, or ability to regain maximum function.",
+      "citation": "Under 42 CFR §§ 422.570 and 422.572, an expedited organization determination requires serious jeopardy to the enrollee's life, health, or ability to regain maximum function and is due within 72 hours. Beginning January 1, 2026, § 422.568 gives standard service or item requests subject to the § 422.122 prior-authorization rules a 7-calendar-day deadline.",
       "evidence": "Not Medicare Advantage; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -9880,7 +9880,7 @@
           "label": "CMS Medicare Advantage rules (42 CFR Part 422, organization determinations)",
           "url": "https://www.ecfr.gov/current/title-42/chapter-IV/subchapter-B/part-422",
           "ruleFamily": "cms-ma",
-          "lastVerified": "2026-05-28"
+          "lastVerified": "2026-09-14"
         },
         {
           "id": "medicaid-core",

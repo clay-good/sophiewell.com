@@ -2887,6 +2887,13 @@ test('R-PA-MA-012 flags an MA expedited-review request without a clinical-urgenc
   assert.equal(f.status, 'flag');
 });
 
+test('R-PA-MA-012 cites the current 2026 standard and expedited deadlines', () => {
+  const rule = STARTER_RULES.find((candidate) => candidate.id === 'R-PA-MA-012');
+  assert.match(rule.citation, /7-calendar-day deadline/);
+  assert.match(rule.citation, /within 72 hours/);
+  assert.doesNotMatch(rule.citation, /14-day timeframe/);
+});
+
 test('R-PA-MA-013 flags an MA transition request without a continuity-of-care anchor', () => {
   const text = HAPPY_TEXT
     + '\nMedicare Advantage plan member.\n'
