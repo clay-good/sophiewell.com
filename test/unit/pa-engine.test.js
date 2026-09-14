@@ -1566,11 +1566,56 @@ test('R-PA-HUMANA-010 does not infer an NDC requirement from every J-code', () =
   assert.equal(complete.find((x) => x.ruleId === 'R-PA-HUMANA-010').status, 'pass');
 });
 
-test('R-PA-HUMANA-011 flags a Humana specialty-drug request with no step-therapy prior-trial documentation', () => {
-  const text = 'Humana member.\nSpecialty drug requested via CenterWell Pharmacy; step therapy applies.\nProcedure J3590.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-HUMANA-011');
-  assert.equal(f.status, 'flag');
+test('R-PA-HUMANA-011 applies only to an explicit step-therapy requirement', () => {
+  const generic = runEngine(bundleOf('Humana member.\nSpecialty drug J3590.\n'));
+  assert.equal(generic.find((x) => x.ruleId === 'R-PA-HUMANA-011').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Humana member.\nStep therapy applies.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-HUMANA-011').status, 'info');
+
+  const complete = runEngine(bundleOf('Humana member.\nStep therapy applies.\nPrior therapy tried and failed.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-HUMANA-011').status, 'pass');
+});
+
+test('R-PA-HUMANA-012 scopes MD/GT details to the explicit Humana workflow', () => {
+  const generic = runEngine(bundleOf('Humana member.\nGenetic test CPT 81479.\n'));
+  assert.equal(generic.find((x) => x.ruleId === 'R-PA-HUMANA-012').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Humana member.\nHumana MD/GT prior authorization.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-HUMANA-012').status, 'info');
+
+  const complete = runEngine(bundleOf('Humana member.\nHumana MD/GT prior authorization.\nTest name: hereditary cancer panel.\nClinical indication: personal cancer history.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-HUMANA-012').status, 'pass');
+});
+
+test('R-PA-HUMANA-013 checks diagnosis only for explicit oncology-drug review', () => {
+  const generic = runEngine(bundleOf('Humana member.\nSpecialty infusion drug J3590.\n'));
+  assert.equal(generic.find((x) => x.ruleId === 'R-PA-HUMANA-013').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Humana member.\nChemotherapy agent authorization request.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-HUMANA-013').status, 'info');
+
+  const complete = runEngine(bundleOf('Humana member.\nChemotherapy agent authorization request.\nDiagnosis: C50.919.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-HUMANA-013').status, 'pass');
+});
+
+test('R-PA-HUMANA-014 is a source-free retro-review completeness advisory', () => {
+  const incomplete = runEngine(bundleOf('Humana member.\nRetroactive authorization requested.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-HUMANA-014').status, 'info');
+
+  const complete = runEngine(bundleOf('Humana member.\nRetroactive authorization requested after emergency care.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-HUMANA-014').status, 'pass');
+});
+
+test('R-PA-HUMANA-015 applies only when instructions explicitly require an order', () => {
+  const generic = runEngine(bundleOf('Humana member.\nDurable medical equipment: wheelchair.\n'));
+  assert.equal(generic.find((x) => x.ruleId === 'R-PA-HUMANA-015').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Humana member.\nWritten order required.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-HUMANA-015').status, 'info');
+
+  const complete = runEngine(bundleOf('Humana member.\nWritten order required.\nPhysician order.\nElectronically signed.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-HUMANA-015').status, 'pass');
 });
 
 test('R-PA-HUMANA-017 flags a Humana transplant request with no National Transplant Network routing', () => {
