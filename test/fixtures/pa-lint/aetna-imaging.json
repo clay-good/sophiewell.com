@@ -1,6 +1,6 @@
 {
   "name": "aetna-imaging",
-  "description": "Aetna commercial hospital-outpatient MRI precertification, submitted expedited. Exercises the wave 52-7b Aetna overlay rules: R-PA-AETNA-007 flags the hospital-outpatient (POS 22) MRI with no site-of-care justification, and R-PA-AETNA-008 flags the expedited request with no clinical urgency stated. R-PA-AETNA-001/002 pass (CPB cited, clinical note attached); 003 fires info (no submission channel); 004/005/006/009/010 are vacuous for this packet.",
+  "description": "Aetna commercial hospital-outpatient MRI precertification, submitted expedited. Exercises the wave 52-7b Aetna overlay rules: R-PA-AETNA-007 flags the hospital-outpatient (POS 22) MRI with no site-of-care justification, and R-PA-AETNA-008 flags the expedited request with no clinical urgency stated. R-PA-AETNA-001/002 pass (CPB cited, clinical note attached); R-PA-AETNA-003 passes because Aetna does not require the submission channel in packet content; 004/005/006/009/010 are vacuous for this packet.",
   "opts": { "totalBytes": 12288 },
   "documents": [
     {

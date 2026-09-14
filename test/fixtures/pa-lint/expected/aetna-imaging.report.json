@@ -13,8 +13,8 @@
     "counts": {
       "block": 0,
       "flag": 6,
-      "info": 5,
-      "pass": 865,
+      "info": 4,
+      "pass": 866,
       "error": 0,
       "disabled": 0
     },
@@ -109,16 +109,6 @@
       "citation": "(core, payer-agnostic).",
       "evidence": null,
       "note": "No cover-sheet / checklist anchor found.",
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-AETNA-003",
-      "severity": "info",
-      "status": "info",
-      "description": "Aetna precertification: submission channel (EDI / secure provider portal / phone on member ID card) indicated",
-      "citation": "Aetna: \"You can submit a precertification by electronic data interchange (EDI), through our secure provider website or by phone, using the number on the member's ID card.\" Informational: a cover sheet that names the channel speeds routing. <https://www.aetna.com/health-care-professionals/precertification.html>",
-      "evidence": null,
-      "note": "No Aetna submission channel (Availity / EDI / secure provider portal / the precertification phone number on the member ID card) is noted in the packet. Informational only -- does not affect medical-necessity review.",
       "remediation": null
     },
     {
@@ -663,21 +653,31 @@
     },
     {
       "ruleId": "R-PA-AETNA-001",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "Aetna precertification: medical-necessity criteria (Clinical Policy Bulletin / CMS / MCG) referenced",
-      "citation": "Aetna determines coverage from \"plan documents and (when applicable) a review of clinical information to determine whether clinical guidelines/criteria for coverage are met,\" applying Aetna Clinical Policy Bulletins, CMS guidelines, or MCG criteria, and asks providers to review the applicable CPB before submitting. <https://www.aetna.com/health-care-professionals/precertification.html>",
+      "description": "Aetna precertification: applicable coverage criteria identified when known",
+      "citation": "Aetna says a coverage determination is based on plan documents and, when applicable, clinical information; criteria used during review may include Aetna Clinical Policy Bulletins, CMS coverage guidance, MCG, ASAM, LOCUS, CALOCUS-CASII, or ABA guidelines. Aetna does not say every submission must cite the criterion. <https://www.aetna.com/health-care-professionals/precertification.html>",
       "evidence": "Medical-necessity criteria reference in aetna-imaging-form.txt",
       "note": null,
       "remediation": null
     },
     {
       "ruleId": "R-PA-AETNA-002",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "Aetna precertification: supporting medical records / clinical documentation attached",
-      "citation": "Aetna instructs providers to submit medical records related to the member's condition for which treatment is proposed; a precertification with no clinical document attached cannot be reviewed on the merits. <https://www.aetna.com/health-care-professionals/precertification.html>",
+      "description": "Aetna precertification: supporting clinical information available for coverage review",
+      "citation": "Aetna says a coverage determination may include review of clinical information to decide whether coverage criteria are met. Its provider-forms page links procedure-specific information request forms; the overview does not require records with every notification or request. <https://www.aetna.com/health-care-professionals/precertification.html> <https://www.aetna.com/health-care-professionals/health-care-professional-forms.html>",
       "evidence": "Supporting clinical document present: aetna-imaging-note.txt (clinical-note)",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-AETNA-003",
+      "severity": "info",
+      "status": "pass",
+      "description": "Aetna precertification: supported submission channels noted for routing",
+      "citation": "Aetna accepts precertification by electronic data interchange (EDI), its secure provider website, or the phone number on the member ID card. The page does not require the selected channel to be written in the packet. <https://www.aetna.com/health-care-professionals/precertification.html>",
+      "evidence": "Aetna does not require the selected submission channel to appear in packet content; use EDI, the secure provider website, or the phone number on the member ID card.",
       "note": null,
       "remediation": null
     },
@@ -686,7 +686,7 @@
       "severity": "info",
       "status": "pass",
       "description": "Aetna precertification: requested service is on Aetna's participating-provider precertification list",
-      "citation": "Aetna precertification applies only to services on its \"Participating provider precertification list\"; requesting authorization for a non-listed service is unnecessary. ships no bundled list, so the rule is vacuously satisfied with a pointer to the list (it mirrors core R-PA-053; a later wave bundles the list and flips this to a real membership test). <https://www.aetna.com/health-care-professionals/precertification.html>",
+      "citation": "Aetna precertification applies to services on its participating-provider or behavioral-health precertification lists, services required by the member's plan, and Medicare Advantage organization-determination requests. This app ships no bundled Aetna list, so this rule remains a non-enforcing reminder. <https://www.aetna.com/health-care-professionals/precertification.html>",
       "evidence": "No bundled Aetna precertification list at wave 52-7a; rule vacuously satisfied. Verify the requested service against Aetna's current participating-provider precertification list.",
       "note": null,
       "remediation": null
@@ -695,8 +695,8 @@
       "ruleId": "R-PA-AETNA-005",
       "severity": "flag",
       "status": "pass",
-      "description": "Aetna precertification: procedure-specific clinical questionnaire / precertification information request form completed when required",
-      "citation": "Aetna: \"Providers may be asked to complete a short questionnaire to provide additional clinical information,\" and publishes procedure-specific Precertification Information Request Forms (e.g. spinal surgery, obesity/bariatric surgery, dorsal column / spinal-cord stimulator). When the packet requests one of those procedures, the matching questionnaire response should be present. <https://www.aetna.com/health-care-professionals/precertification.html>",
+      "description": "Aetna precertification: requested spinal-surgery questionnaire / information request form answered",
+      "citation": "Aetna's spinal-surgery form says to complete a questionnaire if asked and to submit the form after a pended response. It warns that failure to complete the form and provide requested records may delay review or lead to denial; a spinal-surgery request alone does not prove Aetna requested the form. <https://www.aetna.com/content/dam/aetna/pdfs/aetnacom/health-care-professionals/documents-forms/spinal-surgery-precert-form.pdf>",
       "evidence": "Aetna packet without a procedure that triggers a specific precertification questionnaire; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -8933,7 +8933,6 @@
       "R-PA-031",
       "R-PA-032",
       "R-PA-060",
-      "R-PA-AETNA-003",
       "R-PA-RAD-001",
       "R-PA-001",
       "R-PA-002",
@@ -8990,6 +8989,7 @@
       "R-PA-059",
       "R-PA-AETNA-001",
       "R-PA-AETNA-002",
+      "R-PA-AETNA-003",
       "R-PA-AETNA-004",
       "R-PA-AETNA-005",
       "R-PA-AETNA-006",
@@ -9980,7 +9980,7 @@
           "label": "Aetna participating-provider precertification requirements & Clinical Policy Bulletins",
           "url": "https://www.aetna.com/health-care-professionals/precertification.html",
           "ruleFamily": "commercial-aetna",
-          "lastVerified": "2026-05-30"
+          "lastVerified": "2026-09-14"
         },
         {
           "id": "uhc-precert",

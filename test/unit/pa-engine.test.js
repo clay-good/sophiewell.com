@@ -227,13 +227,13 @@ test('Aetna overlay rules vacuously pass on a non-Aetna packet', () => {
   }
 });
 
-test('R-PA-AETNA-001 flags an Aetna request with a procedure but no medical-necessity criteria reference', () => {
+test('R-PA-AETNA-001 is advisory when an Aetna request does not name coverage criteria', () => {
   const text = 'Aetna Choice POS II member.\n'
     + 'Requested procedure: CPT 72148 (MRI lumbar spine).\n'
     + 'Please authorize.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-001');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
 });
 
 test('R-PA-AETNA-001 passes when the Aetna packet cites the applicable CPB / medical necessity', () => {
@@ -245,20 +245,55 @@ test('R-PA-AETNA-001 passes when the Aetna packet cites the applicable CPB / med
   assert.equal(f.status, 'pass');
 });
 
-test('R-PA-AETNA-002 flags an Aetna packet with no clinical document attached', () => {
+test('R-PA-AETNA-002 is advisory when an Aetna request has no clinical document attached', () => {
   const text = 'Aetna PPO member.\nRequested procedure: CPT 72148.\nMedical necessity per CPB.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-002');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
 });
 
-test('R-PA-AETNA-005 flags an Aetna spinal-fusion request without a questionnaire response', () => {
+test('R-PA-AETNA-003 does not require the submission channel in packet content', () => {
+  const text = 'Aetna PPO member.\nRequested procedure: CPT 72148.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-003');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-AETNA-005 does not assume every Aetna spinal-fusion request needs the questionnaire', () => {
   const text = 'Aetna commercial member.\n'
     + 'Requested procedure: lumbar fusion (CPT 22633).\n'
     + 'Medical necessity per Aetna CPB.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-005');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-AETNA-005 flags an explicitly requested spinal questionnaire with no answer', () => {
+  const text = 'Aetna commercial member.\n'
+    + 'Requested procedure: lumbar fusion (CPT 22633).\n'
+    + 'Aetna requested additional information and the spinal surgery form is required.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-005');
   assert.equal(f.status, 'flag');
+});
+
+test('R-PA-AETNA-005 passes when the requested spinal questionnaire is answered', () => {
+  const text = 'Aetna commercial member.\n'
+    + 'Requested procedure: lumbar fusion (CPT 22633).\n'
+    + 'Aetna requested additional information and the spinal surgery form is required.\n'
+    + 'Questionnaire response: conservative treatment completed for 12 weeks.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-005');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-AETNA-005 does not extrapolate the reviewed spinal form to bariatric surgery', () => {
+  const text = 'Aetna commercial member.\n'
+    + 'Requested procedure: bariatric surgery.\n'
+    + 'Aetna requested additional clinical information.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-AETNA-005');
+  assert.equal(f.status, 'pass');
 });
 
 // ---- wave 52-7b sanity checks (Aetna rules 6-10) ----
