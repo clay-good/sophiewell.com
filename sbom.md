@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `0bc593895fff9445`
-Generated: 2026-09-14T00:19:55.493Z
+Build ID: `37c6d05b79052c8e`
+Generated: 2026-09-14T00:32:31.552Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -744,7 +744,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/rheum-v160.js` | 13178 | `6f9c9caad669edb9cdb844015cbb354104dbbf6be91576aa1107e512efee360c` |
 | `lib/rheumcrit-v256.js` | 10750 | `380f235a90313f395f0269fc179ab983f8285e1dbafe377e3c0a66d941b8bef0` |
 | `lib/ridley-jopling-v534.js` | 13454 | `fb4f0363664d9c1bd23f3d5c8ef32b627ed0c4741342457fb3fdbe253a02c3a2` |
-| `lib/risk-scores-v215.js` | 17553 | `ac99c145d374ba0496623a4d0223e18a1bc893cc43103c66f4fff0d4e0da9140` |
+| `lib/risk-scores-v215.js` | 17736 | `53032739ef0db4454b5517159a6f1608e56883120186f5dd230e95c1745214e6` |
 | `lib/risk-v192.js` | 16351 | `b576651ce621fddee31cf7d065b663cb3c1b3a3df094b4e0c206928ec430de26` |
 | `lib/riskscores-v255.js` | 6924 | `37886240e9d0cf2bbde3b0149eb1b8ff62667a4350dc0bed14dc60631f1a3f39` |
 | `lib/risser-sign-v383.js` | 4009 | `4e29f6eea9c402b63018246ff051741b23b4a2894f8a44abc3c80abdc576a67d` |

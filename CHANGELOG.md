@@ -65,6 +65,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **An invalid LDL-C could disappear from Simon Broome classification.** When
+  total cholesterol already supplied the criterion, an entered LDL-C outside
+  the calculator's existing `0–50 mmol/L` domain was treated exactly like an
+  omitted optional value and the tile still classified FH. Both lipids now name
+  and refuse an entered out-of-range value; either may still be omitted when the
+  other is present. See docs/spec-v1252.md.
+
 - **LIPI no longer rejects a valid count unit.** The index asks for ANC and
   total WBC in the same unit because their ratio is unit-invariant, but both
   fields were capped at 1,000 and therefore refused ordinary cells/µL values.

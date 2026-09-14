@@ -44,6 +44,15 @@ test('simon-broome: not met below threshold', () => {
   assert.equal(r.cholMet, false);
   assert.equal(r.abnormal, false);
 });
+test('simon-broome: an invalid optional lipid cannot disappear behind its sibling', () => {
+  const invalidLdl = simonBroomeFh({ totalChol: 8, ldl: 999999, tendonXanthoma: true });
+  assert.equal(invalidLdl.valid, false);
+  assert.match(invalidLdl.message, /^LDL-C \(mmol\/L\) must be between 0 and 50/);
+
+  const omittedLdl = simonBroomeFh({ totalChol: 8, tendonXanthoma: true });
+  assert.equal(omittedLdl.valid, true);
+  assert.equal(omittedLdl.definite, true);
+});
 
 test('padit: high band', () => {
   // prior 4 + age 55 (->2) + type 4 = 10

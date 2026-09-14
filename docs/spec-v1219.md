@@ -66,7 +66,7 @@ report it, and a test pins both halves of that line.
 | `pbac-hmb` (the three not "nothing moved") | fixed above; the rows now refuse |
 | `fena-feurea`, `insulin-correction` | the derived quantity is nulled rather than miscomputed — correct in the library. What the **page** prints for a null is [spec-v1210](spec-v1210.md)'s question, not this one's |
 | `popq-staging` point D | the label says it: "absent after hysterectomy" |
-| `simon-broome-fh` LDL-C | inert on the example's branch, where a DNA criterion is already definite |
+| `simon-broome-fh` LDL-C | inert on the example's branch, where a DNA criterion is already definite; fixed at [spec-v1252](spec-v1252.md), because an entered invalid lipid must not disappear behind its sibling |
 
 A field whose example value **equals** the value an omission produces makes this
 probe's question unanswerable — "reads as absent" and "reads as the example" are
