@@ -1785,11 +1785,56 @@ test('R-PA-HCSC-010 does not infer an NDC requirement from every J-code', () => 
   assert.equal(complete.find((x) => x.ruleId === 'R-PA-HCSC-010').status, 'pass');
 });
 
-test('R-PA-HCSC-011 flags an HCSC specialty-drug request with no step-therapy prior-trial documentation', () => {
-  const text = 'Blue Cross Blue Shield of Illinois member.\nSpecialty drug requested; Prime Therapeutics step therapy applies.\nProcedure J3590.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-HCSC-011');
-  assert.equal(f.status, 'flag');
+test('R-PA-HCSC-011 runs only for an explicit step-therapy requirement', () => {
+  const generic = runEngine(bundleOf('Blue Cross Blue Shield of Illinois member.\nSpecialty infusion, procedure J3590.\n'));
+  assert.equal(generic.find((x) => x.ruleId === 'R-PA-HCSC-011').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Blue Cross Blue Shield of Illinois member.\nPrime Therapeutics step therapy applies.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-HCSC-011').status, 'info');
+
+  const complete = runEngine(bundleOf('Blue Cross Blue Shield of Illinois member.\nStep therapy required.\nPrior therapy tried and failed.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-HCSC-011').status, 'pass');
+});
+
+test('R-PA-HCSC-012 requires both test identity and indication for explicit molecular testing', () => {
+  const generic = runEngine(bundleOf('Blue Cross Blue Shield of Illinois member.\nPathology service CPT 81479.\n'));
+  assert.equal(generic.find((x) => x.ruleId === 'R-PA-HCSC-012').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Blue Cross Blue Shield of Illinois member.\nMolecular testing authorization request.\nTest name: hereditary cancer panel.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-HCSC-012').status, 'info');
+
+  const complete = runEngine(bundleOf('Blue Cross Blue Shield of Illinois member.\nMolecular testing authorization request.\nTest name: hereditary cancer panel.\nClinical indication: personal history of breast cancer.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-HCSC-012').status, 'pass');
+});
+
+test('R-PA-HCSC-013 scopes diagnosis review to explicit oncology-drug requests', () => {
+  const generic = runEngine(bundleOf('Blue Cross Blue Shield of Illinois member.\nSpecialty infusion, procedure J3590.\n'));
+  assert.equal(generic.find((x) => x.ruleId === 'R-PA-HCSC-013').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Blue Cross Blue Shield of Illinois member.\nMedical oncology drug request.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-HCSC-013').status, 'info');
+
+  const complete = runEngine(bundleOf('Blue Cross Blue Shield of Illinois member.\nMedical oncology drug request.\nDiagnosis: C50.919.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-HCSC-013').status, 'pass');
+});
+
+test('R-PA-HCSC-014 keeps retrospective justification informational', () => {
+  const incomplete = runEngine(bundleOf('Blue Cross Blue Shield of Illinois member.\nRetrospective authorization request.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-HCSC-014').status, 'info');
+
+  const complete = runEngine(bundleOf('Blue Cross Blue Shield of Illinois member.\nRetrospective authorization requested because the portal was unavailable.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-HCSC-014').status, 'pass');
+});
+
+test('R-PA-HCSC-015 runs only for an explicit written-order requirement', () => {
+  const generic = runEngine(bundleOf('Blue Cross Blue Shield of Illinois member.\nWheelchair request, procedure E1234.\n'));
+  assert.equal(generic.find((x) => x.ruleId === 'R-PA-HCSC-015').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Blue Cross Blue Shield of Illinois member.\nWritten order required.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-HCSC-015').status, 'info');
+
+  const complete = runEngine(bundleOf('Blue Cross Blue Shield of Illinois member.\nWritten order required.\nPhysician order. Electronically signed.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-HCSC-015').status, 'pass');
 });
 
 test('R-PA-HCSC-017 flags an HCSC transplant request with no Blue Distinction routing', () => {
