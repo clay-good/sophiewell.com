@@ -6015,8 +6015,8 @@
       "ruleId": "R-PA-MCD-001",
       "severity": "block",
       "status": "pass",
-      "description": "Medicaid: member-ID line present (state Medicaid CIN / recipient ID)",
-      "citation": "All state Medicaid programs require a state-issued recipient / CIN / RID on the PA request; without it the state cannot resolve eligibility.",
+      "description": "Medicaid: member identifier line present (state or plan terminology varies)",
+      "citation": "Operational completeness heuristic: Medicaid programs use a beneficiary identifier to resolve eligibility, but the identifier name and whether it is state- or plan-issued vary by program.",
       "evidence": "Not Medicaid; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -6025,8 +6025,8 @@
       "ruleId": "R-PA-MCD-002",
       "severity": "flag",
       "status": "pass",
-      "description": "Medicaid pediatric patient: EPSDT documentation present when applicable",
-      "citation": "EPSDT (Early and Periodic Screening, Diagnostic, and Treatment) is mandatory under federal Medicaid for beneficiaries < 21; pediatric PA packets should reference EPSDT screening / treatment when seeking non-routine services.",
+      "description": "Medicaid pediatric PA: individualized EPSDT treatment rationale present; screening services excluded from prior authorization",
+      "citation": "CMS SHO 24-005: EPSDT treatment prior authorization must evaluate each child case by case under the \"correct or ameliorate\" standard and must not delay needed treatment; states may not require prior authorization for EPSDT screening services.",
       "evidence": "Not Medicaid; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -6065,8 +6065,8 @@
       "ruleId": "R-PA-MCD-006",
       "severity": "flag",
       "status": "pass",
-      "description": "Medicaid physician-administered drug: NDC documented alongside the J-code / HCPCS",
-      "citation": "Section 1927(a)(7) of the Social Security Act requires state Medicaid programs to collect the 11-digit NDC on physician-administered drug claims so the manufacturer rebate can be billed; the packet should carry the NDC alongside the J-code.",
+      "description": "Medicaid physician-administered drug: NDC documented alongside the J-code / HCPCS when rebate reporting applies",
+      "citation": "Section 1927(a)(7) requires NDC collection for single-source and certain high-dollar-volume multiple-source covered outpatient physician-administered drugs; CMS notes that most states collect NDCs more broadly. This rule conservatively flags any Medicaid J-code without an NDC.",
       "evidence": "Not Medicaid; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -9885,9 +9885,9 @@
         {
           "id": "medicaid-core",
           "label": "Medicaid program requirements (state-agnostic core, EPSDT)",
-          "url": "https://www.medicaid.gov/medicaid/benefits/early-and-periodic-screening-diagnostic-and-treatment",
+          "url": "https://www.medicaid.gov/federal-policy-guidance/downloads/sho24005.pdf",
           "ruleFamily": "medicaid-core",
-          "lastVerified": "2026-05-28"
+          "lastVerified": "2026-09-14"
         },
         {
           "id": "acr-appropriateness",

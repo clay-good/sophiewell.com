@@ -2963,12 +2963,33 @@ test('R-PA-MCD-001 blocks a Medicaid packet without a Member-ID line', () => {
   assert.equal(f.status, 'block');
 });
 
-test('R-PA-MCD-002 flags a pediatric Medicaid packet without an EPSDT anchor', () => {
+test('R-PA-MCD-002 flags pediatric Medicaid treatment without an individualized EPSDT rationale', () => {
   const text = HAPPY_TEXT
     + '\nState Medicaid pediatric patient.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-MCD-002');
   assert.equal(f.status, 'flag');
+  assert.match(f.note, /case-by-case EPSDT/i);
+});
+
+test('R-PA-MCD-002 passes pediatric treatment with a correct-or-ameliorate rationale', () => {
+  const text = HAPPY_TEXT
+    + '\nState Medicaid pediatric patient.\n'
+    + 'This treatment is medically necessary to correct or ameliorate the child\'s condition.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MCD-002');
+  assert.equal(f.status, 'pass');
+  assert.match(f.evidence, /individualized EPSDT treatment rationale/i);
+});
+
+test('R-PA-MCD-002 flags an EPSDT screening service routed through prior authorization', () => {
+  const text = HAPPY_TEXT
+    + '\nState Medicaid pediatric patient.\n'
+    + 'EPSDT screening: well-child visit under the periodicity schedule.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MCD-002');
+  assert.equal(f.status, 'flag');
+  assert.match(f.note, /may not impose prior authorization/i);
 });
 
 test('R-PA-MCD-003 flags a Medicaid packet without an eligibility-window anchor', () => {
@@ -3004,6 +3025,13 @@ test('R-PA-MCD-006 flags a Medicaid J-code request without an NDC anchor', () =>
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-MCD-006');
   assert.equal(f.status, 'flag');
+});
+
+test('R-PA-MCD-006 states the federal PAD NDC scope and identifies its broader heuristic', () => {
+  const rule = STARTER_RULES.find((r) => r.id === 'R-PA-MCD-006');
+  assert.match(rule.citation, /single-source/i);
+  assert.match(rule.citation, /certain high-dollar-volume multiple-source/i);
+  assert.match(rule.citation, /conservatively flags any Medicaid J-code/i);
 });
 
 test('R-PA-MCD-007 flags a Medicaid dental request without an adult / pediatric coverage anchor', () => {

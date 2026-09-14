@@ -113,11 +113,11 @@
       "label": "Medicaid program requirements (state-agnostic core, EPSDT)",
       "ruleFamily": "medicaid-core",
       "rules": [
-        "R-PA-MCD-001",
+        "R-PA-MCD-002",
         "R-PA-MCD-006"
       ],
-      "url": "https://www.medicaid.gov/medicaid/benefits/early-and-periodic-screening-diagnostic-and-treatment",
-      "lastVerified": "2026-05-28"
+      "url": "https://www.medicaid.gov/federal-policy-guidance/downloads/sho24005.pdf",
+      "lastVerified": "2026-09-14"
     },
     {
       "id": "acr-appropriateness",
