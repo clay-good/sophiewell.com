@@ -2280,18 +2280,59 @@ test('R-PA-FLBLUE-015 checks a signed order only when request-specific instructi
   assert.equal(complete.find((x) => x.ruleId === 'R-PA-FLBLUE-015').status, 'pass');
 });
 
-test('R-PA-FLBLUE-017 flags a Florida Blue transplant request with no Blue Distinction routing', () => {
-  const text = 'Florida Blue member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-FLBLUE-017');
-  assert.equal(f.status, 'flag');
+test('R-PA-FLBLUE-016 applies only to explicit intensive behavioral-health authorization', () => {
+  const routine = runEngine(bundleOf('Florida Blue member.\nOutpatient mental health therapy requested.\n'));
+  assert.equal(routine.find((x) => x.ruleId === 'R-PA-FLBLUE-016').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Florida Blue member.\nResidential treatment authorization requested.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-FLBLUE-016').status, 'info');
+
+  const complete = runEngine(bundleOf('Florida Blue member.\nResidential treatment authorization requested.\nClinical assessment: current symptoms cause severe functional impairment.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-FLBLUE-016').status, 'pass');
 });
 
-test('R-PA-FLBLUE-020 flags a Florida Blue out-of-network request with no network-gap justification (info)', () => {
-  const text = 'Florida Blue member.\nOut-of-network prior authorization request.\nProcedure CPT 70551.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-FLBLUE-020');
-  assert.equal(f.status, 'info');
+test('R-PA-FLBLUE-017 requires a transplant-center evaluation only after an explicit designated-center requirement', () => {
+  const genericTransplant = runEngine(bundleOf('Florida Blue member.\nKidney transplant authorization requested.\n'));
+  assert.equal(genericTransplant.find((x) => x.ruleId === 'R-PA-FLBLUE-017').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Florida Blue member.\nDesignated transplant center required by member instructions.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-FLBLUE-017').status, 'info');
+
+  const complete = runEngine(bundleOf('Florida Blue member.\nDesignated transplant center required.\nTransplant center evaluation: member accepted for kidney transplant.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-FLBLUE-017').status, 'pass');
+});
+
+test('R-PA-FLBLUE-018 requires a policy basis only for an explicit investigational determination', () => {
+  const offLabel = runEngine(bundleOf('Florida Blue member.\nOff-label drug use in a clinical trial.\n'));
+  assert.equal(offLabel.find((x) => x.ruleId === 'R-PA-FLBLUE-018').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Florida Blue member.\nService determined investigational.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-FLBLUE-018').status, 'info');
+
+  const complete = runEngine(bundleOf('Florida Blue member.\nService determined investigational under Medical Coverage Guideline 02-40000-18.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-FLBLUE-018').status, 'pass');
+});
+
+test('R-PA-FLBLUE-019 is limited to an explicit clinical prior-authorization appeal', () => {
+  const claimDispute = runEngine(bundleOf('Florida Blue member.\nClaim payment grievance.\n'));
+  assert.equal(claimDispute.find((x) => x.ruleId === 'R-PA-FLBLUE-019').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Florida Blue member.\nPrior authorization appeal.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-FLBLUE-019').status, 'info');
+
+  const complete = runEngine(bundleOf('Florida Blue member.\nPrior authorization appeal.\nOriginal determination: case number FB-1001, denied 2026-09-10.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-FLBLUE-019').status, 'pass');
+});
+
+test('R-PA-FLBLUE-020 does not infer a network-gap exception from ordinary out-of-network context', () => {
+  const genericOon = runEngine(bundleOf('Florida Blue member.\nOut-of-network prior authorization request.\n'));
+  assert.equal(genericOon.find((x) => x.ruleId === 'R-PA-FLBLUE-020').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Florida Blue member.\nNetwork gap request.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-FLBLUE-020').status, 'info');
+
+  const complete = runEngine(bundleOf('Florida Blue member.\nNetwork gap request because the required specialty is unavailable in network.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-FLBLUE-020').status, 'pass');
 });
 
 // ---- wave 52-15 sanity checks: BCBSM (Blue Cross Blue Shield) overlay (§4.5.15) ----
