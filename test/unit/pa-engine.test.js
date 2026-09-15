@@ -3077,11 +3077,35 @@ test('R-PA-CAREFIRST-005 accepts a submitted request with a case reference', () 
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-005').status, 'pass');
 });
 
-test('R-PA-CAREFIRST-007 flags a CareFirst outpatient MRI with no clinical indication', () => {
+test('R-PA-CAREFIRST-006 treats missing inpatient clinical documentation as informational', () => {
+  const findings = runEngine(bundleOf('CareFirst member.\nInpatient admission requested.\nPlace of service: 21.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-006').status, 'info');
+});
+
+test('R-PA-CAREFIRST-006 accepts an inpatient clinical note', () => {
+  const text = 'CareFirst member.\nInpatient admission requested.\nPlace of service: 21.\nClinical note.\nHospital course documented.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-006').status, 'pass');
+});
+
+test('R-PA-CAREFIRST-007 does not infer EviCore eligibility from imaging alone', () => {
   const text = 'CareFirst member.\nRequested: MRI lumbar spine, CPT 72148.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-007');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-CAREFIRST-007 flags eligible EviCore advanced imaging without an indication', () => {
+  const text = 'CareFirst commercial fully insured member.\nRequested: MRI lumbar spine, CPT 72148.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-007');
   assert.equal(f.status, 'flag');
+});
+
+test('R-PA-CAREFIRST-007 does not treat every 7xxxx radiology code as advanced imaging', () => {
+  const text = 'CareFirst commercial fully insured member.\nRequested procedure: CPT 77080.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-007').status, 'pass');
 });
 
 test('R-PA-CAREFIRST-008 passes when an expedited CareFirst request documents the clinical urgency', () => {
@@ -3089,6 +3113,45 @@ test('R-PA-CAREFIRST-008 passes when an expedited CareFirst request documents th
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-008');
   assert.equal(f.status, 'pass');
+});
+
+test('R-PA-CAREFIRST-008 treats an unexplained urgent request as informational', () => {
+  const findings = runEngine(bundleOf('CareFirst member.\nExpedited prior authorization requested.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-008').status, 'info');
+});
+
+test('R-PA-CAREFIRST-009 does not apply a medical-drug site-of-care rule to outpatient surgery', () => {
+  const text = 'CareFirst member.\nOutpatient hospital, place of service: 22.\nSurgery CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-009').status, 'pass');
+});
+
+test('R-PA-CAREFIRST-009 advises on an explicit hospital-outpatient drug site-of-care requirement', () => {
+  const text = 'CareFirst member.\nSite of care management required.\nOutpatient hospital, place of service: 22.\nInfusion drug J1745.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-009').status, 'info');
+});
+
+test('R-PA-CAREFIRST-009 accepts a documented hospital-outpatient drug rationale', () => {
+  const text = 'CareFirst member.\nSite of care management required.\nOutpatient hospital, place of service: 22.\n'
+    + 'Infusion drug J1745. Hospital setting is medically necessary.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-009').status, 'pass');
+});
+
+test('R-PA-CAREFIRST-010 does not require an NDC for every J-code', () => {
+  const findings = runEngine(bundleOf('CareFirst member.\nInfusion drug J1745.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-010').status, 'pass');
+});
+
+test('R-PA-CAREFIRST-010 advises when J3490 has no corresponding NDC', () => {
+  const findings = runEngine(bundleOf('CareFirst member.\nUnclassified drug HCPCS J3490.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-010').status, 'info');
+});
+
+test('R-PA-CAREFIRST-010 accepts J3490 with an NDC', () => {
+  const findings = runEngine(bundleOf('CareFirst member.\nUnclassified drug HCPCS J3490.\nNDC: 0002-1434-01.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-010').status, 'pass');
 });
 
 test('R-PA-CAREFIRST-017 flags a CareFirst transplant request with no Blue Distinction routing', () => {
