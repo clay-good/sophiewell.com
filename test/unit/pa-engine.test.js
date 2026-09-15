@@ -2710,16 +2710,47 @@ test('R-PA-BSCA-015 does not impose one signed-order rule on every DME request',
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-BSCA-015').status, 'pass');
 });
 
-test('R-PA-BSCA-017 flags a Blue Shield of California transplant request with no Blue Distinction routing', () => {
+test('R-PA-BSCA-016 does not infer level-of-care review from a behavioral-health service', () => {
+  const findings = runEngine(bundleOf('Blue Shield of California member.\nIntensive outpatient behavioral health requested.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BSCA-016').status, 'pass');
+});
+
+test('R-PA-BSCA-016 flags an explicit level-of-care review without a criteria response', () => {
+  const findings = runEngine(bundleOf('Blue Shield of California member.\nBehavioral health medical necessity review applies.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BSCA-016').status, 'flag');
+});
+
+test('R-PA-BSCA-017 does not impose Blue Distinction routing on kidney-only transplant', () => {
   const text = 'Blue Shield of California member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-BSCA-017');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'pass');
 });
 
-test('R-PA-BSCA-020 flags a Blue Shield of California out-of-network request with no network-gap justification (info)', () => {
+test('R-PA-BSCA-017 flags a listed major-organ transplant without routing and evaluation', () => {
+  const findings = runEngine(bundleOf('Blue Shield of California member.\nRequested service: heart transplant.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BSCA-017').status, 'flag');
+});
+
+test('R-PA-BSCA-018 does not require evidence attachments for an investigational determination', () => {
+  const findings = runEngine(bundleOf('Blue Shield of California member.\nInvestigational determination under BSC9.01.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BSCA-018').status, 'pass');
+});
+
+test('R-PA-BSCA-019 keeps a generic appeal non-enforcing', () => {
+  const findings = runEngine(bundleOf('Blue Shield of California member.\nAppeal of authorization denial.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BSCA-019').status, 'pass');
+});
+
+test('R-PA-BSCA-020 does not infer continuity of care from an out-of-network request', () => {
   const text = 'Blue Shield of California member.\nOut-of-network prior authorization request.\nProcedure CPT 70551.\n';
   const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BSCA-020');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-BSCA-020 advises when an explicit continuity-of-care request lacks application details', () => {
+  const findings = runEngine(bundleOf('Blue Shield of California member.\nBlue Shield continuity of care request.\n'));
   const f = findings.find((x) => x.ruleId === 'R-PA-BSCA-020');
   assert.equal(f.status, 'info');
 });
