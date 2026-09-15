@@ -3438,6 +3438,74 @@ test('R-PA-BCBSNC-010 does not apply claims-only NDC validation to a J-code requ
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSNC-010').status, 'pass');
 });
 
+test('R-PA-BCBSNC-011 does not infer step therapy from a generic drug request', () => {
+  const text = 'Blue Cross Blue Shield of North Carolina member.\nSpecialty drug J0123 requested.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSNC-011').status, 'pass');
+});
+
+test('R-PA-BCBSNC-011 flags an explicit step-therapy request with no trial or exception', () => {
+  const text = 'Blue Cross Blue Shield of North Carolina member.\nStep therapy required for requested medication.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSNC-011').status, 'flag');
+});
+
+test('R-PA-BCBSNC-011 accepts a documented step-therapy exception', () => {
+  const text = 'Blue Cross Blue Shield of North Carolina member.\nStep therapy required.\nContraindication to preferred drug.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSNC-011').status, 'pass');
+});
+
+test('R-PA-BCBSNC-012 does not treat every 81xxx code as molecular testing', () => {
+  const text = 'Blue Cross Blue Shield of North Carolina member.\nUrinalysis CPT 81001 requested.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSNC-012').status, 'pass');
+});
+
+test('R-PA-BCBSNC-012 requires both a specific test and clinical purpose as information', () => {
+  const text = 'Blue Cross Blue Shield of North Carolina member.\nGenetic testing CPT 81226 requested.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSNC-012').status, 'info');
+});
+
+test('R-PA-BCBSNC-012 accepts a named genetic test and clinical purpose', () => {
+  const text = 'Blue Cross Blue Shield of North Carolina member.\nTest name: CYP2C19 genotype, CPT 81226.\nPurpose of testing: therapy selection.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSNC-012').status, 'pass');
+});
+
+test('R-PA-BCBSNC-013 does not infer a specialty-drug workflow from a bare J-code', () => {
+  const text = 'Blue Cross Blue Shield of North Carolina member.\nRequested code J0123.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSNC-013').status, 'pass');
+});
+
+test('R-PA-BCBSNC-013 treats a missing specialty-drug diagnosis as informational', () => {
+  const text = 'Blue Cross Blue Shield of North Carolina member.\nSpecialty drug requested.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSNC-013').status, 'info');
+});
+
+test('R-PA-BCBSNC-014 advises when a retrospective request has no explanation', () => {
+  const text = 'Blue Cross Blue Shield of North Carolina member.\nRetrospective authorization request.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSNC-014').status, 'info');
+});
+
+test('R-PA-BCBSNC-015 does not apply the DME policy to a generic home-health request', () => {
+  const text = 'Blue Cross Blue Shield of North Carolina member.\nHome health prior authorization requested.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSNC-015').status, 'pass');
+});
+
+test('R-PA-BCBSNC-015 checks the DME treatment plan without inventing a signature field', () => {
+  const incomplete = runEngine(bundleOf('Blue Cross Blue Shield of North Carolina member.\nWheelchair requested.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-BCBSNC-015').status, 'info');
+
+  const complete = runEngine(bundleOf('Blue Cross Blue Shield of North Carolina member.\nWheelchair requested.\nTreatment plan: mobility support.\nLength of need: 12 months.\nExpected benefit: independent movement.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-BCBSNC-015').status, 'pass');
+});
+
 test('R-PA-BCBSNC-017 flags a Blue Cross NC transplant request with no Blue Distinction routing', () => {
   const text = 'Blue Cross Blue Shield of North Carolina member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
   const findings = runEngine(bundleOf(text));
