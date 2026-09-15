@@ -2673,11 +2673,41 @@ test('R-PA-BSCA-010 advises when an explicit authorization NDC requirement is un
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-BSCA-010').status, 'info');
 });
 
-test('R-PA-BSCA-011 flags a Blue Shield of California specialty-drug request with no step-therapy prior-trial documentation', () => {
+test('R-PA-BSCA-011 advises on an explicit step-therapy requirement without a criterion response', () => {
   const text = 'Blue Shield of California member.\nSpecialty drug requested; Blue Shield of California pharmacy step therapy applies.\nProcedure J3590.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-BSCA-011');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
+});
+
+test('R-PA-BSCA-011 does not infer step therapy from a specialty drug or J-code', () => {
+  const findings = runEngine(bundleOf('Blue Shield of California member.\nSpecialty drug requested, J3590.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BSCA-011').status, 'pass');
+});
+
+test('R-PA-BSCA-012 does not infer authorization from genetic testing alone', () => {
+  const findings = runEngine(bundleOf('Blue Shield of California member.\nGenetic testing requested, CPT 81455.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BSCA-012').status, 'pass');
+});
+
+test('R-PA-BSCA-012 advises when an explicit genetic authorization lacks test details', () => {
+  const findings = runEngine(bundleOf('Blue Shield of California member.\nGenetic testing authorization applies.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BSCA-012').status, 'info');
+});
+
+test('R-PA-BSCA-013 does not infer an oncology diagnosis criterion from a J-code', () => {
+  const findings = runEngine(bundleOf('Blue Shield of California member.\nOncology infusion requested, J9190.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BSCA-013').status, 'pass');
+});
+
+test('R-PA-BSCA-014 keeps a generic retroactive request non-enforcing', () => {
+  const findings = runEngine(bundleOf('Blue Shield of California member.\nRetroactive authorization request.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BSCA-014').status, 'pass');
+});
+
+test('R-PA-BSCA-015 does not impose one signed-order rule on every DME request', () => {
+  const findings = runEngine(bundleOf('Blue Shield of California member.\nDurable medical equipment requested: wheelchair.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BSCA-015').status, 'pass');
 });
 
 test('R-PA-BSCA-017 flags a Blue Shield of California transplant request with no Blue Distinction routing', () => {
