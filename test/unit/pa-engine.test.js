@@ -4939,18 +4939,94 @@ test('R-PA-BCBSAL-015 accepts the complete initial home-health packet', () => {
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-015').status, 'pass');
 });
 
-test('R-PA-BCBSAL-017 flags a BCBSAL transplant request with no Blue Distinction routing', () => {
-  const text = 'Blue Cross Blue Shield of Alabama member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
+test('R-PA-BCBSAL-016 does not infer intensive review from generic mental-health context', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nMental health counseling request.\n';
   const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSAL-017');
-  assert.equal(f.status, 'flag');
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-016').status, 'pass');
 });
 
-test('R-PA-BCBSAL-020 flags a BCBSAL out-of-network request with no network-gap justification (info)', () => {
+test('R-PA-BCBSAL-016 advises when an intensive behavioral-health request lacks clinical support', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nPartial hospitalization requested.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-016').status, 'info');
+});
+
+test('R-PA-BCBSAL-016 accepts clinical support for an intensive behavioral-health setting', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nPartial hospitalization requested. Current symptoms: escalating depression. Safety risk and functional impairment documented.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-016').status, 'pass');
+});
+
+test('R-PA-BCBSAL-017 does not infer designated-center routing from a transplant request', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-017').status, 'pass');
+});
+
+test('R-PA-BCBSAL-017 advises when an explicit designated-center requirement lacks the center', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nKidney transplant request. Blue Distinction Center required.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-017').status, 'info');
+});
+
+test('R-PA-BCBSAL-017 accepts an identified transplant center', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nKidney transplant request. Blue Distinction Center required. Selected transplant center: UAB Hospital.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-017').status, 'pass');
+});
+
+test('R-PA-BCBSAL-018 does not infer an investigational classification from off-label use', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nOff-label medication use requested with supporting literature.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-018').status, 'pass');
+});
+
+test('R-PA-BCBSAL-018 advises when an explicit classification lacks its policy basis', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nThe service was denied as investigational.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-018').status, 'info');
+});
+
+test('R-PA-BCBSAL-018 accepts the policy basis for an explicit classification', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nThe service was denied as investigational under Medical Policy MP-123.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-018').status, 'pass');
+});
+
+test('R-PA-BCBSAL-019 does not treat a generic claim appeal as a preservice appeal', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nClaim payment appeal and grievance submitted.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-019').status, 'pass');
+});
+
+test('R-PA-BCBSAL-019 advises when a preservice appeal lacks the original case', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nPreservice appeal of the adverse determination.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-019').status, 'info');
+});
+
+test('R-PA-BCBSAL-019 accepts a preservice appeal with the original case', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nPreservice appeal. Original determination case number PA-12345.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-019').status, 'pass');
+});
+
+test('R-PA-BCBSAL-020 does not infer an exception workflow from ordinary out-of-network context', () => {
   const text = 'Blue Cross Blue Shield of Alabama member.\nOut-of-network prior authorization request.\nProcedure CPT 70551.\n';
   const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSAL-020');
-  assert.equal(f.status, 'info');
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-020').status, 'pass');
+});
+
+test('R-PA-BCBSAL-020 advises when an explicit exception lacks its reason', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nOut-of-network exception request.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-020').status, 'info');
+});
+
+test('R-PA-BCBSAL-020 accepts a documented exception reason', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nOut-of-network exception request. No in-network provider offers the required service.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-020').status, 'pass');
 });
 
 // ---- wave 52-24 sanity checks: Blue Cross Blue Shield of South Carolina overlay (§4.5.24) ----
