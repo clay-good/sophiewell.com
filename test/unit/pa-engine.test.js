@@ -3750,6 +3750,98 @@ test('R-PA-HORIZON-010 does not impose a universal NDC field on a J-code request
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-HORIZON-010').status, 'pass');
 });
 
+test('R-PA-HORIZON-011 does not infer step therapy from a J-code', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nPhysician-administered drug requested under HCPCS J1745.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HORIZON-011').status, 'pass');
+});
+
+test('R-PA-HORIZON-011 advises when confirmed step therapy has no prior-use or exception context', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nStep therapy applies to the requested drug.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HORIZON-011').status, 'info');
+});
+
+test('R-PA-HORIZON-011 accepts prior drug use when step therapy applies', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nStep therapy applies. Previous use: methotrexate.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HORIZON-011').status, 'pass');
+});
+
+test('R-PA-HORIZON-012 does not treat an ordinary 81xxx laboratory code as genetic testing', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nUrinalysis requested, CPT 81002.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HORIZON-012').status, 'pass');
+});
+
+test('R-PA-HORIZON-012 separately requires test identity and indication', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nGenetic testing prior authorization requested. Diagnosis documented elsewhere.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-HORIZON-012');
+  assert.equal(f.status, 'info');
+  assert.match(f.note, /specific test/);
+});
+
+test('R-PA-HORIZON-012 accepts a specific genetic test and clinical indication', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nTest requested: BRCA1/BRCA2 gene panel. Clinical indication: strong family history of breast cancer.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HORIZON-012').status, 'pass');
+});
+
+test('R-PA-HORIZON-013 does not infer specialty-drug review from a J-code or generic infusion', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nInfusion requested under HCPCS J1745.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HORIZON-013').status, 'pass');
+});
+
+test('R-PA-HORIZON-013 advises when an explicit specialty-drug request lacks a diagnosis', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nSpecialty drug prior authorization requested.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HORIZON-013').status, 'info');
+});
+
+test('R-PA-HORIZON-013 accepts a diagnosis on an explicit specialty-drug request', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nSpecialty drug prior authorization requested. Diagnosis: rheumatoid arthritis.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HORIZON-013').status, 'pass');
+});
+
+test('R-PA-HORIZON-014 does not infer retrospective authorization from post-service language', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nPost-service clinical note attached.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HORIZON-014').status, 'pass');
+});
+
+test('R-PA-HORIZON-014 advises when an explicit retrospective authorization lacks a reason', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nRetrospective authorization requested.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HORIZON-014').status, 'info');
+});
+
+test('R-PA-HORIZON-014 accepts a reason for an explicit retrospective authorization', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nRetrospective authorization requested because emergency care prevented advance review.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HORIZON-014').status, 'pass');
+});
+
+test('R-PA-HORIZON-015 does not infer an order requirement from DME or an E-code', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nDurable medical equipment requested under HCPCS E0601.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HORIZON-015').status, 'pass');
+});
+
+test('R-PA-HORIZON-015 advises when a declared order requirement has no signature', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nWritten order required for this request.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HORIZON-015').status, 'info');
+});
+
+test('R-PA-HORIZON-015 accepts signature evidence for a declared order requirement', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nWritten order required for this request.\nElectronically signed by Ordering Clinician.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HORIZON-015').status, 'pass');
+});
+
 test('R-PA-HORIZON-017 flags a Horizon transplant request with no Blue Distinction routing', () => {
   const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
   const findings = runEngine(bundleOf(text));
