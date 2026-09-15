@@ -2471,11 +2471,41 @@ test('R-PA-BCBSM-010 advises when an explicit authorization NDC requirement is u
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSM-010').status, 'info');
 });
 
-test('R-PA-BCBSM-011 flags a BCBSM specialty-drug request with no step-therapy prior-trial documentation', () => {
+test('R-PA-BCBSM-011 advises on an explicit step-therapy requirement without a criterion response', () => {
   const text = 'Blue Cross Blue Shield of Michigan member.\nSpecialty drug requested; BCBSM pharmacy step therapy applies.\nProcedure J3590.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-BCBSM-011');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
+});
+
+test('R-PA-BCBSM-011 does not infer step therapy from a specialty drug or J-code', () => {
+  const findings = runEngine(bundleOf('Blue Cross Blue Shield of Michigan member.\nSpecialty drug requested, J3590.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSM-011').status, 'pass');
+});
+
+test('R-PA-BCBSM-012 does not infer the BCN JVHL workflow from genetic testing alone', () => {
+  const findings = runEngine(bundleOf('Blue Cross Blue Shield of Michigan member.\nGenetic testing requested, CPT 81455.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSM-012').status, 'pass');
+});
+
+test('R-PA-BCBSM-012 advises when an explicit BCN JVHL request lacks test details', () => {
+  const findings = runEngine(bundleOf('Blue Cross Blue Shield of Michigan member.\nJVHL genetic authorization applies.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSM-012').status, 'info');
+});
+
+test('R-PA-BCBSM-013 does not infer a diagnosis criterion from an oncology J-code', () => {
+  const findings = runEngine(bundleOf('Blue Cross Blue Shield of Michigan member.\nOncology infusion requested, J9190.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSM-013').status, 'pass');
+});
+
+test('R-PA-BCBSM-014 keeps a generic retroactive request non-enforcing', () => {
+  const findings = runEngine(bundleOf('Blue Cross Blue Shield of Michigan member.\nRetroactive authorization request.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSM-014').status, 'pass');
+});
+
+test('R-PA-BCBSM-015 does not impose one signed-order rule on every DME request', () => {
+  const findings = runEngine(bundleOf('Blue Cross Blue Shield of Michigan member.\nDurable medical equipment requested: wheelchair.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSM-015').status, 'pass');
 });
 
 test('R-PA-BCBSM-017 flags a BCBSM transplant request with no Blue Distinction routing', () => {

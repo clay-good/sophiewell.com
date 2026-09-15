@@ -439,7 +439,12 @@
         "https://authorizations.bcbsm.com/docs/bcn-14bcn-advantage.pdf",
         "https://authorizations.bcbsm.com/docs/msk-faq.pdf",
         "https://authorizations.bcbsm.com/prov-ref-drugs-medical-marf.shtml",
-        "https://authorizations.bcbsm.com/prov-ref-drugs-medical-resources.shtml"
+        "https://authorizations.bcbsm.com/prov-ref-drugs-medical-resources.shtml",
+        "https://authorizations.bcbsm.com/prov-ref-drugs-pharm-electronic-reqs.shtml",
+        "https://authorizations.bcbsm.com/prov-ref-laboratory.shtml",
+        "https://authorizations.bcbsm.com/prov-ref-drugs-medical-benefit.shtml",
+        "https://authorizations.bcbsm.com/prov-ref-dme-po.shtml",
+        "https://authorizations.bcbsm.com/prov-ref-home-health.shtml"
       ]
     },
     {
