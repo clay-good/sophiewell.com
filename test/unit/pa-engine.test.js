@@ -2815,18 +2815,35 @@ test('R-PA-IBX-005 advises when a submitted request has no confirmation referenc
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-IBX-005').status, 'info');
 });
 
-test('R-PA-IBX-006 flags an inpatient (POS 21) Independence Blue Cross request with no admission / progress documentation', () => {
+test('R-PA-IBX-006 does not treat an initial IBX inpatient admission as concurrent review', () => {
   const text = 'Independence Blue Cross member.\nPlace of service: 21\nInpatient admission for acute care.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-IBX-006');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'pass');
 });
 
-test('R-PA-IBX-007 flags a Independence Blue Cross outpatient MRI with no clinical indication', () => {
+test('R-PA-IBX-006 flags an IBX concurrent review missing its required updates', () => {
+  const findings = runEngine(bundleOf('Independence Blue Cross member.\nConcurrent review requested.\n'));
+  const f = findings.find((x) => x.ruleId === 'R-PA-IBX-006');
+  assert.equal(f.status, 'flag');
+  assert.match(f.note, /current clinical status.*treatment plan.*progress on goals.*discharge-plan update/);
+});
+
+test('R-PA-IBX-007 advises on an Independence Blue Cross outpatient MRI with no clinical indication', () => {
   const text = 'Independence Blue Cross member.\nRequested: MRI lumbar spine, CPT 72148.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-IBX-007');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
+});
+
+test('R-PA-IBX-007 does not treat every 7xxxx radiology code as Carelon advanced imaging', () => {
+  const findings = runEngine(bundleOf('Independence Blue Cross member.\nRequested chest X-ray, CPT 71046.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-IBX-007').status, 'pass');
+});
+
+test('R-PA-IBX-007 does not apply the outpatient Carelon workflow to inpatient MRI', () => {
+  const findings = runEngine(bundleOf('Independence Blue Cross member.\nInpatient MRI lumbar spine.\nPlace of service: 21\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-IBX-007').status, 'pass');
 });
 
 test('R-PA-IBX-008 passes when an expedited Independence Blue Cross request documents the clinical urgency', () => {
@@ -2834,6 +2851,38 @@ test('R-PA-IBX-008 passes when an expedited Independence Blue Cross request docu
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-IBX-008');
   assert.equal(f.status, 'pass');
+});
+
+test('R-PA-IBX-008 does not infer an expedited Part B drug request from generic STAT wording', () => {
+  const findings = runEngine(bundleOf('Independence Blue Cross member.\nSTAT request.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-IBX-008').status, 'pass');
+});
+
+test('R-PA-IBX-008 advises when an explicit expedited IBX request lacks a clinical rationale', () => {
+  const findings = runEngine(bundleOf('Independence Blue Cross member.\nExpedited review requested.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-IBX-008').status, 'info');
+});
+
+test('R-PA-IBX-009 does not apply specialty-drug setting review to hospital-outpatient surgery', () => {
+  const findings = runEngine(bundleOf('Independence Blue Cross member.\nCPT 27447.\nPlace of service: 22\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-IBX-009').status, 'pass');
+});
+
+test('R-PA-IBX-009 advises when an applicable MCES request omits the treatment setting', () => {
+  const findings = runEngine(bundleOf('Independence Blue Cross member.\nMost Cost-Effective Setting Program applies to the requested specialty drug.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-IBX-009').status, 'info');
+});
+
+test('R-PA-IBX-010 does not require an NDC from a J-code alone', () => {
+  const findings = runEngine(bundleOf('Independence Blue Cross member.\nRequested procedure: J3590.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-IBX-010').status, 'pass');
+});
+
+test('R-PA-IBX-010 advises when an IBX medical-benefit drug request omits height and weight', () => {
+  const findings = runEngine(bundleOf('Independence Blue Cross member.\nMedical benefit drug requires precertification.\n'));
+  const f = findings.find((x) => x.ruleId === 'R-PA-IBX-010');
+  assert.equal(f.status, 'info');
+  assert.match(f.note, /height and weight/);
 });
 
 test('R-PA-IBX-011 flags a Independence Blue Cross specialty-drug request with no step-therapy prior-trial documentation', () => {
