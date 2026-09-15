@@ -2005,11 +2005,56 @@ test('R-PA-HIGHMARK-010 requires an NDC only when request-specific instructions 
   assert.equal(complete.find((x) => x.ruleId === 'R-PA-HIGHMARK-010').status, 'pass');
 });
 
-test('R-PA-HIGHMARK-011 flags a Highmark specialty-drug request with no step-therapy prior-trial documentation', () => {
-  const text = 'Highmark member.\nSpecialty drug requested; Highmark pharmacy step therapy applies.\nProcedure J3590.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-HIGHMARK-011');
-  assert.equal(f.status, 'flag');
+test('R-PA-HIGHMARK-011 runs only for explicit step therapy', () => {
+  const generic = runEngine(bundleOf('Highmark member.\nSpecialty drug J3590 requested.\n'));
+  assert.equal(generic.find((x) => x.ruleId === 'R-PA-HIGHMARK-011').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Highmark member.\nStep therapy applies to the requested drug.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-HIGHMARK-011').status, 'info');
+
+  const complete = runEngine(bundleOf('Highmark member.\nStep therapy required.\nPreferred drug tried and failed after an inadequate response.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-HIGHMARK-011').status, 'pass');
+});
+
+test('R-PA-HIGHMARK-012 independently checks the genetic test and indication', () => {
+  const generic = runEngine(bundleOf('Highmark member.\nLaboratory procedure CPT 81234 requested.\n'));
+  assert.equal(generic.find((x) => x.ruleId === 'R-PA-HIGHMARK-012').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Highmark member.\nGenetic testing request.\nTest name: hereditary cancer panel.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-HIGHMARK-012').status, 'info');
+
+  const complete = runEngine(bundleOf('Highmark member.\nGenetic testing request.\nTest name: hereditary cancer panel.\nClinical indication: personal history of breast cancer.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-HIGHMARK-012').status, 'pass');
+});
+
+test('R-PA-HIGHMARK-013 limits diagnosis review to explicit oncology authorization', () => {
+  const generic = runEngine(bundleOf('Highmark member.\nSpecialty drug infusion J3590 requested.\n'));
+  assert.equal(generic.find((x) => x.ruleId === 'R-PA-HIGHMARK-013').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Highmark member.\nMedical oncology review requested.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-HIGHMARK-013').status, 'info');
+
+  const complete = runEngine(bundleOf('Highmark member.\nOncology authorization requested.\nCancer type: non-small cell lung cancer.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-HIGHMARK-013').status, 'pass');
+});
+
+test('R-PA-HIGHMARK-014 keeps retrospective justification informational', () => {
+  const incomplete = runEngine(bundleOf('Highmark member.\nRetrospective authorization request.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-HIGHMARK-014').status, 'info');
+
+  const complete = runEngine(bundleOf('Highmark member.\nRetrospective authorization request because emergency care prevented prior submission.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-HIGHMARK-014').status, 'pass');
+});
+
+test('R-PA-HIGHMARK-015 checks Highmark home-health OASIS and CMS-485 requirements', () => {
+  const dme = runEngine(bundleOf('Highmark member.\nDurable medical equipment E1234 requested.\n'));
+  assert.equal(dme.find((x) => x.ruleId === 'R-PA-HIGHMARK-015').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Highmark member.\nHome health authorization request.\nOASIS file attached.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-HIGHMARK-015').status, 'flag');
+
+  const complete = runEngine(bundleOf('Highmark member.\nHome health authorization request.\nOASIS file attached.\nCMS-485 form attached.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-HIGHMARK-015').status, 'pass');
 });
 
 test('R-PA-HIGHMARK-017 flags a Highmark transplant request with no Blue Distinction routing', () => {
