@@ -2942,18 +2942,69 @@ test('R-PA-IBX-015 does not impose a universal signed-order requirement on IBX D
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-IBX-015').status, 'pass');
 });
 
-test('R-PA-IBX-017 flags a Independence Blue Cross transplant request with no Blue Distinction routing', () => {
-  const text = 'Independence Blue Cross member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-IBX-017');
-  assert.equal(f.status, 'flag');
+test('R-PA-IBX-016 does not apply ABA form requirements to generic behavioral-health care', () => {
+  const findings = runEngine(bundleOf('Independence Blue Cross member.\nOutpatient mental health therapy requested.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-IBX-016').status, 'pass');
 });
 
-test('R-PA-IBX-020 flags a Independence Blue Cross out-of-network request with no network-gap justification (info)', () => {
+test('R-PA-IBX-016 flags a current ABA request without the ABA form and supporting documents', () => {
+  const findings = runEngine(bundleOf('Independence Blue Cross member.\nABA prior authorization requested.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-IBX-016').status, 'flag');
+});
+
+test('R-PA-IBX-016 accepts the current ABA form with supporting documents', () => {
+  const findings = runEngine(bundleOf('Independence Blue Cross member.\nABA prior authorization form.\nSupporting documents: behavior assessment and treatment plan.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-IBX-016').status, 'pass');
+});
+
+test('R-PA-IBX-017 does not impose universal Blue Distinction routing on a transplant request', () => {
+  const text = 'Independence Blue Cross member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-IBX-017').status, 'pass');
+});
+
+test('R-PA-IBX-018 does not infer experimental status from off-label use alone', () => {
+  const findings = runEngine(bundleOf('Independence Blue Cross member.\nOff-label drug use requested and supported by NCCN.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-IBX-018').status, 'pass');
+});
+
+test('R-PA-IBX-018 flags an explicit experimental classification without a reliable-evidence basis', () => {
+  const findings = runEngine(bundleOf('Independence Blue Cross member.\nService classified as experimental by IBX.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-IBX-018').status, 'flag');
+});
+
+test('R-PA-IBX-019 does not apply member-consent requirements to a generic grievance', () => {
+  const findings = runEngine(bundleOf('Independence Blue Cross member.\nProvider grievance regarding office administration.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-IBX-019').status, 'pass');
+});
+
+test('R-PA-IBX-019 advises when a provider-filed member appeal omits consent and records', () => {
+  const findings = runEngine(bundleOf('Independence Blue Cross member.\nMedical necessity member appeal.\nProvider filing on behalf of member.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-IBX-019').status, 'info');
+});
+
+test('R-PA-IBX-019 accepts signed member consent and supporting records', () => {
+  const findings = runEngine(bundleOf('Independence Blue Cross member.\nMedical necessity member appeal.\nProvider filing on behalf of member.\nSigned member consent form and supporting medical records included.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-IBX-019').status, 'pass');
+});
+
+test('R-PA-IBX-020 does not impose HMO criteria on a generic out-of-network request', () => {
   const text = 'Independence Blue Cross member.\nOut-of-network prior authorization request.\nProcedure CPT 70551.\n';
   const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-IBX-020');
-  assert.equal(f.status, 'info');
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-IBX-020').status, 'pass');
+});
+
+test('R-PA-IBX-020 advises when an HMO out-of-network request omits the three referral criteria', () => {
+  const findings = runEngine(bundleOf('Independence Blue Cross HMO member.\nOut-of-network provider requested.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-IBX-020').status, 'info');
+});
+
+test('R-PA-IBX-020 accepts a complete HMO out-of-network referral rationale', () => {
+  const text = 'Independence Blue Cross HMO member.\nOut-of-network provider requested.\n'
+    + 'PCP referral included. Member received care from a participating provider in the same specialty.\n'
+    + 'The service is not available in network; no participating provider can offer it.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-IBX-020').status, 'pass');
 });
 
 // ---- wave 52-18 sanity checks: CareFirst BlueCross BlueShield overlay (§4.5.18) ----
