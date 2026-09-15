@@ -4000,6 +4000,24 @@ test('R-PA-BCBST-003 does not require transmission metadata inside the clinical 
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-003').status, 'pass');
 });
 
+test('R-PA-BCBST-006 does not treat an initial inpatient request as concurrent review', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nInitial inpatient admission request. Place of service: 21.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-006').status, 'pass');
+});
+
+test('R-PA-BCBST-006 flags a concurrent review without a current clinical update', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nConcurrent review request for additional inpatient days.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-006').status, 'flag');
+});
+
+test('R-PA-BCBST-006 accepts current progress on a concurrent review', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nConcurrent review request for additional inpatient days. Clinical update: improving on IV therapy.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-006').status, 'pass');
+});
+
 test('R-PA-BCBST-005 does not require a future authorization number on an initial request', () => {
   const text = 'Blue Cross Blue Shield of Tennessee member.\nPrior authorization required for CPT 27447. Please authorize.\n';
   const findings = runEngine(bundleOf(text));
@@ -4025,11 +4043,77 @@ test('R-PA-BCBST-007 flags a BCBST outpatient MRI with no clinical indication', 
   assert.equal(f.status, 'flag');
 });
 
+test('R-PA-BCBST-007 does not infer high-tech imaging from every 7xxxx CPT', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nRequested radiology procedure CPT 71046.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-007').status, 'pass');
+});
+
+test('R-PA-BCBST-007 does not apply the outpatient check in an emergency setting', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nEmergency department CT scan, place of service: 23.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-007').status, 'pass');
+});
+
+test('R-PA-BCBST-007 accepts a clinical indication for outpatient high-tech imaging', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nRequested MRI lumbar spine. Clinical indication: persistent radiculopathy.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-007').status, 'pass');
+});
+
 test('R-PA-BCBST-008 passes when an expedited BCBST request documents the clinical urgency', () => {
   const text = 'Blue Cross Blue Shield of Tennessee member.\nExpedited review requested: delay would jeopardize the member\'s life or health.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-BCBST-008');
   assert.equal(f.status, 'pass');
+});
+
+test('R-PA-BCBST-008 does not treat generic urgent clinical language as an expedited request', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nUrgent care visit with STAT laboratory testing.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-008').status, 'pass');
+});
+
+test('R-PA-BCBST-008 flags an explicit expedited request without clinician justification', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nExpedited review requested.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-008').status, 'flag');
+});
+
+test('R-PA-BCBST-009 does not infer a site restriction from hospital-outpatient surgery', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nOutpatient knee surgery CPT 29881, place of service: 22.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-009').status, 'pass');
+});
+
+test('R-PA-BCBST-009 advises when an explicit site-of-care review lacks rationale', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nSite-of-care review required for outpatient surgery.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-009').status, 'info');
+});
+
+test('R-PA-BCBST-009 accepts the requested-site rationale', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nSite-of-care review required. Requested site rationale: ambulatory surgical center unavailable.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-009').status, 'pass');
+});
+
+test('R-PA-BCBST-010 does not require an NDC for every J-code request', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nPhysician-administered drug HCPCS J1745 requested.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-010').status, 'pass');
+});
+
+test('R-PA-BCBST-010 advises when a declared NDC requirement lacks a value', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nPhysician-administered drug requested. NDC required for this request.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-010').status, 'info');
+});
+
+test('R-PA-BCBST-010 accepts an NDC-formatted value when declared required', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nNDC required for this request: 00069-1003-01.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-010').status, 'pass');
 });
 
 test('R-PA-BCBST-017 flags a BCBST transplant request with no Blue Distinction routing', () => {
