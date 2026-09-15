@@ -4687,13 +4687,13 @@ test('BCBSAL overlay rules vacuously pass on a non-BCBSAL packet', () => {
   }
 });
 
-test('R-PA-BCBSAL-001 flags a BCBSAL request with a procedure but no coverage-criteria reference', () => {
+test('R-PA-BCBSAL-001 advises when a coded request has no coverage-criterion reference', () => {
   const text = 'Blue Cross Blue Shield of Alabama member.\n'
     + 'Requested procedure: CPT 72148 (MRI lumbar spine).\n'
     + 'Please authorize.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-BCBSAL-001');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
 });
 
 test('R-PA-BCBSAL-001 passes when the BCBSAL packet cites the applicable Medical Policy', () => {
@@ -4705,18 +4705,60 @@ test('R-PA-BCBSAL-001 passes when the BCBSAL packet cites the applicable Medical
   assert.equal(f.status, 'pass');
 });
 
-test('R-PA-BCBSAL-002 flags a BCBSAL packet with no clinical document attached', () => {
+test('R-PA-BCBSAL-001 does not ask for criteria when no procedure is identified', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nGeneral precertification question.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-001').status, 'pass');
+});
+
+test('R-PA-BCBSAL-002 advises when a BCBSAL packet has no clinical document', () => {
   const text = 'Blue Cross Blue Shield of Alabama member.\nRequested procedure: CPT 27447.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-BCBSAL-002');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
 });
 
-test('R-PA-BCBSAL-003 passes when the BCBSAL packet names the ProviderAccess channel (info)', () => {
+test('R-PA-BCBSAL-002 accepts a recognized clinical document', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nHPI: progressive knee pain. Assessment and plan: total knee arthroplasty, CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-002').status, 'pass');
+});
+
+test('R-PA-BCBSAL-003 does not require the transport channel in packet content', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nProcedure CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-003').status, 'pass');
+});
+
+test('R-PA-BCBSAL-003 also passes when the packet names ProviderAccess', () => {
   const text = 'Blue Cross Blue Shield of Alabama member.\nSubmitted via the ProviderAccess provider portal.\nProcedure CPT 27447.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-BCBSAL-003');
   assert.equal(f.status, 'pass');
+});
+
+test('R-PA-BCBSAL-004 remains non-enforcing without member-specific eligibility data', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nProcedure CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-004').status, 'pass');
+});
+
+test('R-PA-BCBSAL-005 does not expect an authorization number on an initial request', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nPrior authorization required for CPT 27447. Initial request.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-005').status, 'pass');
+});
+
+test('R-PA-BCBSAL-005 advises when a completed submission lacks its reference', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nPrecertification submitted.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-005').status, 'info');
+});
+
+test('R-PA-BCBSAL-005 accepts a completed submission reference', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nPrecertification submitted. Reference number: AL-1234.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-005').status, 'pass');
 });
 
 test('R-PA-BCBSAL-007 flags a BCBSAL outpatient MRI with no clinical indication', () => {
