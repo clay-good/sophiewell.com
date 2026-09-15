@@ -444,7 +444,13 @@
         "https://authorizations.bcbsm.com/prov-ref-laboratory.shtml",
         "https://authorizations.bcbsm.com/prov-ref-drugs-medical-benefit.shtml",
         "https://authorizations.bcbsm.com/prov-ref-dme-po.shtml",
-        "https://authorizations.bcbsm.com/prov-ref-home-health.shtml"
+        "https://authorizations.bcbsm.com/prov-ref-home-health.shtml",
+        "https://authorizations.bcbsm.com/prov-ref-behavioral-health.shtml",
+        "https://authorizations.bcbsm.com/prov-ref-behavioral-health-provider-resources.shtml",
+        "https://authorizations.bcbsm.com/prov-ref-transplants.shtml",
+        "https://authorizations.bcbsm.com/docs/e-referral-user-guide.pdf",
+        "https://www.bcbsm.com/amslibs/content/dam/public/consumer/forms-documents/bcbsm-appeal-form.pdf",
+        "https://authorizations.bcbsm.com/alerts/prov-ref-alerts-landing.shtml"
       ]
     },
     {

@@ -2508,18 +2508,48 @@ test('R-PA-BCBSM-015 does not impose one signed-order rule on every DME request'
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSM-015').status, 'pass');
 });
 
-test('R-PA-BCBSM-017 flags a BCBSM transplant request with no Blue Distinction routing', () => {
+test('R-PA-BCBSM-017 does not infer HOTP applicability from a transplant alone', () => {
   const text = 'Blue Cross Blue Shield of Michigan member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-BCBSM-017');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'pass');
 });
 
-test('R-PA-BCBSM-020 flags a BCBSM out-of-network request with no network-gap justification (info)', () => {
+test('R-PA-BCBSM-020 does not infer a network exception from an out-of-network request', () => {
   const text = 'Blue Cross Blue Shield of Michigan member.\nOut-of-network prior authorization request.\nProcedure CPT 70551.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-BCBSM-020');
-  assert.equal(f.status, 'info');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-BCBSM-016 does not apply intensive criteria to generic behavioral health', () => {
+  const findings = runEngine(bundleOf('Blue Cross Blue Shield of Michigan member.\nBehavioral health office visit.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSM-016').status, 'pass');
+});
+
+test('R-PA-BCBSM-016 advises when an explicit intensive request lacks clinical support', () => {
+  const findings = runEngine(bundleOf('Blue Cross Blue Shield of Michigan member.\nPartial hospitalization authorization requested.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSM-016').status, 'info');
+});
+
+test('R-PA-BCBSM-017 advises when explicit HOTP applicability lacks facility and evaluation', () => {
+  const findings = runEngine(bundleOf('Blue Cross Blue Shield of Michigan member.\nHuman Organ Transplant Program applies.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSM-017').status, 'info');
+});
+
+test('R-PA-BCBSM-018 does not infer investigational status from clinical-trial participation', () => {
+  const findings = runEngine(bundleOf('Blue Cross Blue Shield of Michigan member.\nPatient participates in a clinical trial.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSM-018').status, 'pass');
+});
+
+test('R-PA-BCBSM-019 does not apply a PA-appeal check to a generic grievance', () => {
+  const findings = runEngine(bundleOf('Blue Cross Blue Shield of Michigan member.\nMember grievance submitted.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSM-019').status, 'pass');
+});
+
+test('R-PA-BCBSM-020 advises when an explicit network-gap exception lacks its basis', () => {
+  const findings = runEngine(bundleOf('Blue Cross Blue Shield of Michigan member.\nNetwork gap exception request.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSM-020').status, 'info');
 });
 
 // ---- wave 52-16 sanity checks: Blue Shield of California (Blue Cross Blue Shield) overlay (§4.5.16) ----
