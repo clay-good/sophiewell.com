@@ -2057,18 +2057,59 @@ test('R-PA-HIGHMARK-015 checks Highmark home-health OASIS and CMS-485 requiremen
   assert.equal(complete.find((x) => x.ruleId === 'R-PA-HIGHMARK-015').status, 'pass');
 });
 
-test('R-PA-HIGHMARK-017 flags a Highmark transplant request with no Blue Distinction routing', () => {
-  const text = 'Highmark member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-HIGHMARK-017');
-  assert.equal(f.status, 'flag');
+test('R-PA-HIGHMARK-016 checks explicit intensive behavioral-health authorization details', () => {
+  const generic = runEngine(bundleOf('Highmark member.\nOutpatient mental health counseling requested.\n'));
+  assert.equal(generic.find((x) => x.ruleId === 'R-PA-HIGHMARK-016').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Highmark member.\nBehavioral health authorization request.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-HIGHMARK-016').status, 'flag');
+
+  const complete = runEngine(bundleOf('Highmark member.\nBehavioral health authorization request.\nLevel of care: psychiatric inpatient.\nPresenting problem: acute suicidal ideation.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-HIGHMARK-016').status, 'pass');
 });
 
-test('R-PA-HIGHMARK-020 flags a Highmark out-of-network request with no network-gap justification (info)', () => {
-  const text = 'Highmark member.\nOut-of-network prior authorization request.\nProcedure CPT 70551.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-HIGHMARK-020');
-  assert.equal(f.status, 'info');
+test('R-PA-HIGHMARK-017 runs only when designated transplant-center routing is explicit', () => {
+  const generic = runEngine(bundleOf('Highmark member.\nRequested service: kidney transplant.\n'));
+  assert.equal(generic.find((x) => x.ruleId === 'R-PA-HIGHMARK-017').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Highmark member.\nKidney transplant; Blue Distinction Center required.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-HIGHMARK-017').status, 'info');
+
+  const complete = runEngine(bundleOf('Highmark member.\nKidney transplant; Blue Distinction Center required.\nTransplant center: Allegheny General Hospital.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-HIGHMARK-017').status, 'pass');
+});
+
+test('R-PA-HIGHMARK-018 does not infer an experimental determination', () => {
+  const generic = runEngine(bundleOf('Highmark member.\nOff-label treatment requested for a clinical trial.\n'));
+  assert.equal(generic.find((x) => x.ruleId === 'R-PA-HIGHMARK-018').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Highmark member.\nThe service was denied as investigational.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-HIGHMARK-018').status, 'info');
+
+  const complete = runEngine(bundleOf('Highmark member.\nThe service was denied as investigational under Medical Policy Z-1.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-HIGHMARK-018').status, 'pass');
+});
+
+test('R-PA-HIGHMARK-019 limits original-determination review to clinical authorization appeals', () => {
+  const generic = runEngine(bundleOf('Highmark member.\nClaim grievance submitted.\n'));
+  assert.equal(generic.find((x) => x.ruleId === 'R-PA-HIGHMARK-019').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Highmark member.\nMedical necessity appeal requested.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-HIGHMARK-019').status, 'info');
+
+  const complete = runEngine(bundleOf('Highmark member.\nMedical necessity appeal requested.\nOriginal determination: AUTH-1234.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-HIGHMARK-019').status, 'pass');
+});
+
+test('R-PA-HIGHMARK-020 distinguishes an out-of-network request from a gap exception', () => {
+  const generic = runEngine(bundleOf('Highmark member.\nOut-of-network prior authorization request.\nProcedure CPT 70551.\n'));
+  assert.equal(generic.find((x) => x.ruleId === 'R-PA-HIGHMARK-020').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Highmark member.\nOut-of-network gap exception request.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-HIGHMARK-020').status, 'info');
+
+  const complete = runEngine(bundleOf('Highmark member.\nOut-of-network gap exception request.\nNetwork lacks the required transplant service.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-HIGHMARK-020').status, 'pass');
 });
 
 // ---- wave 52-14 sanity checks: Florida Blue (Blue Cross Blue Shield) overlay (§4.5.14) ----
