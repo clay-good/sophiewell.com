@@ -4761,6 +4761,30 @@ test('R-PA-BCBSAL-005 accepts a completed submission reference', () => {
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-005').status, 'pass');
 });
 
+test('R-PA-BCBSAL-006 does not infer continued-stay review from an inpatient setting', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nInitial inpatient admission request. Place of service: 21.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-006').status, 'pass');
+});
+
+test('R-PA-BCBSAL-006 advises when an explicit continued-stay request has no current update', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nContinued stay request for 2 additional days.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-006').status, 'info');
+});
+
+test('R-PA-BCBSAL-006 accepts a continued-stay request with a clinical update', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nContinued stay request. Clinical update: improving on IV therapy; expected discharge tomorrow.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-006').status, 'pass');
+});
+
+test('R-PA-BCBSAL-007 does not infer advanced imaging from an arbitrary 7xxxx CPT', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nRequested plain radiograph, CPT 73030.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-007').status, 'pass');
+});
+
 test('R-PA-BCBSAL-007 flags a BCBSAL outpatient MRI with no clinical indication', () => {
   const text = 'Blue Cross Blue Shield of Alabama member.\nRequested: MRI lumbar spine, CPT 72148.\n';
   const findings = runEngine(bundleOf(text));
@@ -4768,11 +4792,73 @@ test('R-PA-BCBSAL-007 flags a BCBSAL outpatient MRI with no clinical indication'
   assert.equal(f.status, 'flag');
 });
 
-test('R-PA-BCBSAL-008 passes when an expedited BCBSAL request documents the clinical urgency', () => {
-  const text = 'Blue Cross Blue Shield of Alabama member.\nExpedited review requested: delay would jeopardize the member\'s life or health.\n';
+test('R-PA-BCBSAL-007 accepts excluded emergency, observation, and inpatient imaging', () => {
+  for (const setting of ['Emergency department, place of service: 23.', 'Observation status.', 'Inpatient admission, place of service: 21.']) {
+    const text = 'Blue Cross Blue Shield of Alabama member.\n' + setting + ' Requested MRI lumbar spine.\n';
+    const findings = runEngine(bundleOf(text));
+    assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-007').status, 'pass', setting);
+  }
+});
+
+test('R-PA-BCBSAL-007 accepts outpatient advanced imaging with an indication', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nRequested MRI lumbar spine. Clinical indication: progressive radiculopathy.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-007').status, 'pass');
+});
+
+test('R-PA-BCBSAL-008 does not apply Blue Advantage language to another BCBSAL product', () => {
+  const text = 'Blue Cross Blue Shield of Alabama commercial member.\nExpedited review requested.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-008').status, 'pass');
+});
+
+test('R-PA-BCBSAL-008 advises when a Blue Advantage expedited request lacks urgency support', () => {
+  const text = 'Blue Cross Blue Shield of Alabama Blue Advantage member.\nExpedited review requested.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-008').status, 'info');
+});
+
+test('R-PA-BCBSAL-008 passes when an expedited Blue Advantage request documents urgency', () => {
+  const text = 'Blue Cross Blue Shield of Alabama Blue Advantage member.\nExpedited review requested: delay would jeopardize the member\'s life or health.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-BCBSAL-008');
   assert.equal(f.status, 'pass');
+});
+
+test('R-PA-BCBSAL-009 does not infer a site exception from outpatient hospital surgery', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nCPT 27447 requested at place of service 22.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-009').status, 'pass');
+});
+
+test('R-PA-BCBSAL-009 advises when a declared site exception lacks rationale', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nHospital outpatient exception required.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-009').status, 'info');
+});
+
+test('R-PA-BCBSAL-009 accepts a declared site exception with rationale', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nHospital outpatient exception required because the patient requires hospital monitoring for higher acuity.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-009').status, 'pass');
+});
+
+test('R-PA-BCBSAL-010 does not infer an NDC requirement from a J-code', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nPhysician-administered drug request, HCPCS J0123.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-010').status, 'pass');
+});
+
+test('R-PA-BCBSAL-010 advises when a declared NDC requirement has no code', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nNDC required for this request.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-010').status, 'info');
+});
+
+test('R-PA-BCBSAL-010 accepts a formatted NDC for a declared requirement', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nNDC required for this request. NDC: 12345-6789-01.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-010').status, 'pass');
 });
 
 test('R-PA-BCBSAL-017 flags a BCBSAL transplant request with no Blue Distinction routing', () => {

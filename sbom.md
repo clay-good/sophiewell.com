@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `e83844498f437b5d`
-Generated: 2026-09-15T21:07:16.152Z
+Build ID: `4dbb3033a94d74f6`
+Generated: 2026-09-15T21:20:33.429Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -630,8 +630,8 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/pa/redact.js` | 7659 | `4cc5e42a80ff320126cce006231c2ade1f57f0cb1fb18a25f583256ce3726f05` |
 | `lib/pa/report.js` | 9691 | `d19c531e5ee3d480c96dd548c348b314ebcb37beaa3d5e8f87f70680e783e08d` |
 | `lib/pa/rule-sources.js` | 9357 | `6096fc0fc01b68c012dc97cd18de3e82257cb601cdac1a74ee9421d8e5f2add4` |
-| `lib/pa/rules.js` | 1591848 | `122ffbf7409e5891764e95d13f92fdbc5b82ddeb08b91209f92aab0e202aef36` |
-| `lib/pa/staleness-ledger.js` | 62700 | `1b63c0014901f364d78498763e85cb77aaf86b08ca8998f94191b668ade07012` |
+| `lib/pa/rules.js` | 1591976 | `f351a8c3e6f15fcbb3ebe79f594e1f7bbd002f40e2cf2485b66cebd242b15324` |
+| `lib/pa/staleness-ledger.js` | 63237 | `7ea1ab58a53e9c9912bead519f4947d4985ea3e840b6e6ca5a121162b3b85194` |
 | `lib/pa/staleness.js` | 9310 | `99249cde34d35bb57ea644fced966019d1373b34f792f1ea9b42b586b94454df` |
 | `lib/page-title.js` | 1458 | `575f7d045fda35d9bc5c6a04f70fd76dbf3364a987983ccde90d84fa54b12925` |
 | `lib/painscore-v235.js` | 7238 | `2350c90eb23bd3fdd62a55bf993e502e1120b047ee16d14619829c8d0659a0dc` |
