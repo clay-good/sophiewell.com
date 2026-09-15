@@ -4402,18 +4402,94 @@ test('R-PA-BCBSMA-005 accepts a claimed approval with its reference', () => {
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-005').status, 'pass');
 });
 
-test('R-PA-BCBSMA-007 flags a BCBSMA outpatient MRI with no clinical indication', () => {
-  const text = 'Blue Cross Blue Shield of Massachusetts member.\nRequested: MRI lumbar spine, CPT 72148.\n';
+test('R-PA-BCBSMA-006 does not treat an initial inpatient request as continued stay', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nInitial inpatient admission request. Place of service: 21.\n';
   const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSMA-007');
-  assert.equal(f.status, 'flag');
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-006').status, 'pass');
 });
 
-test('R-PA-BCBSMA-008 passes when an expedited BCBSMA request documents the clinical urgency', () => {
+test('R-PA-BCBSMA-006 advises when an explicit continued-stay request lacks a clinical update', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nContinued stay request for 2 additional inpatient days.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-006').status, 'info');
+});
+
+test('R-PA-BCBSMA-006 accepts a continued-stay request with a current clinical update', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nContinued stay request. Current clinical status and response to treatment documented.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-006').status, 'pass');
+});
+
+test('R-PA-BCBSMA-007 does not infer high-tech imaging scope from a radiology CPT alone', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nRequested procedure: CPT 71046.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-007').status, 'pass');
+});
+
+test('R-PA-BCBSMA-007 does not apply the outpatient check to explicit inpatient imaging', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nInpatient MRI requested. Place of service: 21.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-007').status, 'pass');
+});
+
+test('R-PA-BCBSMA-007 flags an outpatient MRI with no clinical indication', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nRequested: MRI lumbar spine, CPT 72148.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-007').status, 'flag');
+});
+
+test('R-PA-BCBSMA-007 accepts high-tech imaging with a clinical indication', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nMRI lumbar spine. Clinical indication: persistent radiculopathy.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-007').status, 'pass');
+});
+
+test('R-PA-BCBSMA-008 accepts an urgent workflow attestation without duplicate narrative', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nUrgent request.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-008').status, 'pass');
+});
+
+test('R-PA-BCBSMA-008 also accepts a documented clinical urgency', () => {
   const text = 'Blue Cross Blue Shield of Massachusetts member.\nExpedited review requested: delay would jeopardize the member\'s life or health.\n';
   const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSMA-008');
-  assert.equal(f.status, 'pass');
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-008').status, 'pass');
+});
+
+test('R-PA-BCBSMA-009 does not infer an exception from surgery and hospital POS alone', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nRequested surgery CPT 27447. Place of service: 22.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-009').status, 'pass');
+});
+
+test('R-PA-BCBSMA-009 advises when an explicit hospital site exception lacks rationale', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nHospital outpatient exception requested.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-009').status, 'info');
+});
+
+test('R-PA-BCBSMA-009 accepts an explicit hospital site exception with rationale', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nHospital outpatient exception requested because the patient requires hospital monitoring.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-009').status, 'pass');
+});
+
+test('R-PA-BCBSMA-010 does not require medication fields outside a medication request', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nEligibility inquiry only.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-010').status, 'pass');
+});
+
+test('R-PA-BCBSMA-010 does not accept an NDC in place of required medication details', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nMedication prior authorization. NDC 00000-0000-00.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-010').status, 'info');
+});
+
+test('R-PA-BCBSMA-010 accepts the current medication-form details without an NDC', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nMedication prior authorization. Medication being requested: Examplemab. Strength: 100 mg. Quantity: 2. Dosing schedule: weekly. Length of therapy: 3 months.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-010').status, 'pass');
 });
 
 test('R-PA-BCBSMA-017 flags a BCBSMA transplant request with no Blue Distinction routing', () => {
