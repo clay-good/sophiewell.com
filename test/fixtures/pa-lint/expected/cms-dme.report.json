@@ -3283,20 +3283,20 @@
     },
     {
       "ruleId": "R-PA-CAREFIRST-001",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "CareFirst BlueCross BlueShield prior authorization: coverage criteria (CareFirst BlueCross BlueShield Medical Policy / MCG) referenced",
-      "citation": "CareFirst BlueCross BlueShield adjudicates prior-authorization requests against its published Medical Policies (and MCG care guidelines); a request should cite the policy it is being judged against so the reviewer can map it to the coverage criteria. <https://provider.carefirst.com/providers/medical/in-network-precertification-preauthorization.page>",
+      "description": "CareFirst prior authorization: applicable Medical Policy or MCG criteria identified when known",
+      "citation": "CareFirst uses its Medical Policy Reference Manual and automatically triggered MCG questions to support review, but its provider manual says medical policies do not certify coverage and member benefits vary by contract and line of business. Identifying known criteria is an informational aid, not a universal packet prerequisite. <https://provider.carefirst.com/providers/medical/in-network-precertification-preauthorization.page> <https://provider.carefirst.com/carefirst-resources/provider/pdf/professional-provider-manual-policies-pm0010.pdf>",
       "evidence": "Not a CareFirst BlueCross BlueShield packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
     {
       "ruleId": "R-PA-CAREFIRST-002",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "CareFirst BlueCross BlueShield prior authorization: supporting medical records / clinical documentation attached",
-      "citation": "CareFirst BlueCross BlueShield requires the clinical information that supports medical necessity to be submitted with the prior-authorization request; a request with no clinical document attached cannot be reviewed on the merits. <https://provider.carefirst.com/providers/medical/in-network-precertification-preauthorization.page>",
+      "description": "CareFirst prior authorization: request-specific clinical information available when the portal asks for it",
+      "citation": "CareFirst says its authorization system automatically triggers MCG guidelines and asks for additional information based on the diagnosis and procedure-code combination. It does not establish one fixed clinical-document attachment for every request. <https://provider.carefirst.com/providers/medical/in-network-precertification-preauthorization.page>",
       "evidence": "Not a CareFirst BlueCross BlueShield packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -3305,8 +3305,8 @@
       "ruleId": "R-PA-CAREFIRST-003",
       "severity": "info",
       "status": "pass",
-      "description": "CareFirst BlueCross BlueShield prior authorization: submission channel (CareFirst Direct / iEXchange / phone on member ID card) indicated",
-      "citation": "CareFirst BlueCross BlueShield directs providers to submit prior-authorization requests through the CareFirst Direct provider portal or iEXchange, by 278 EDI transaction, or by phone using the number on the member ID card. Informational: a cover sheet that names the channel speeds routing. <https://provider.carefirst.com/providers/medical/in-network-precertification-preauthorization.page>",
+      "description": "CareFirst prior authorization: use the current product- and service-specific submission workflow",
+      "citation": "CareFirst says most prior authorizations are submitted through its Provider Portal, while delegated and product-specific workflows also appear on the current authorization page. The transport channel does not need to appear in packet content. <https://provider.carefirst.com/providers/medical/in-network-precertification-preauthorization.page>",
       "evidence": "Not a CareFirst BlueCross BlueShield packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -3315,18 +3315,18 @@
       "ruleId": "R-PA-CAREFIRST-004",
       "severity": "info",
       "status": "pass",
-      "description": "CareFirst BlueCross BlueShield prior authorization: requested service is on CareFirst BlueCross BlueShield's prior-authorization / notification requirement list",
-      "citation": "CareFirst BlueCross BlueShield prior authorization applies only to services on its published prior-authorization and notification lists; requesting authorization for a non-listed service is unnecessary. ships no bundled list, so the rule is vacuously satisfied with a pointer to the list (it mirrors core R-PA-053 and the Aetna / UHC / Anthem / Cigna / Humana / HCSC / Highmark / Florida Blue / BCBSM / Blue Shield of California / Independence Blue Cross -004 rules; a later wave bundles the list and flips this to a real membership test). <https://provider.carefirst.com/providers/medical/in-network-precertification-preauthorization.page>",
+      "description": "CareFirst prior authorization: requested service checked against current product- and account-specific requirements",
+      "citation": "CareFirst publishes different authorization lists by product, warns that requirements may vary by account contract, and directs providers to its live Prior Authorization Lookup Tool. The linter has no member or portal access, so this reminder is non-enforcing. <https://provider.carefirst.com/providers/medical/in-network-precertification-preauthorization.page>",
       "evidence": "Not a CareFirst BlueCross BlueShield packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
     {
       "ruleId": "R-PA-CAREFIRST-005",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "CareFirst BlueCross BlueShield prior authorization: authorization is referenced for a service that requires it before the service date",
-      "citation": "CareFirst BlueCross BlueShield requires prior authorization to be obtained before a service on its requirement list is rendered; a packet for an authorization-required service should show the authorization / reference number rather than relying on post-service review. <https://provider.carefirst.com/providers/medical/in-network-precertification-preauthorization.page>",
+      "description": "CareFirst submitted prior authorization: confirmation or decision reference retained",
+      "citation": "CareFirst routes most prior authorizations through its Provider Portal. An initial request cannot already contain a submission confirmation, so this tracking advisory runs only when the packet says submission is complete. <https://provider.carefirst.com/providers/medical/in-network-precertification-preauthorization.page>",
       "evidence": "Not a CareFirst BlueCross BlueShield packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -10061,7 +10061,7 @@
           "label": "CareFirst BlueCross BlueShield (Maryland / District of Columbia / Northern Virginia) prior-authorization requirements, Medical Policies, and utilization-management / pharmacy program requirements",
           "url": "https://provider.carefirst.com/providers/medical/in-network-precertification-preauthorization.page",
           "ruleFamily": "commercial-carefirst",
-          "lastVerified": "2026-06-04"
+          "lastVerified": "2026-09-15"
         },
         {
           "id": "bcbsnc-precert",

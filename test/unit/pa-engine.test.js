@@ -3020,13 +3020,13 @@ test('CareFirst overlay rules vacuously pass on a non-CareFirst packet', () => {
   }
 });
 
-test('R-PA-CAREFIRST-001 flags a CareFirst request with a procedure but no coverage-criteria reference', () => {
+test('R-PA-CAREFIRST-001 treats a missing policy reference as informational', () => {
   const text = 'CareFirst BlueCross BlueShield member.\n'
     + 'Requested procedure: CPT 72148 (MRI lumbar spine).\n'
     + 'Please authorize.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-001');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
 });
 
 test('R-PA-CAREFIRST-001 passes when the CareFirst packet cites the applicable Medical Policy', () => {
@@ -3038,11 +3038,11 @@ test('R-PA-CAREFIRST-001 passes when the CareFirst packet cites the applicable M
   assert.equal(f.status, 'pass');
 });
 
-test('R-PA-CAREFIRST-002 flags a CareFirst packet with no clinical document attached', () => {
+test('R-PA-CAREFIRST-002 treats a missing clinical document as request-specific information', () => {
   const text = 'CareFirst member.\nRequested procedure: CPT 27447.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-002');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
 });
 
 test('R-PA-CAREFIRST-003 passes when the CareFirst packet names the CareFirst Direct channel (info)', () => {
@@ -3050,6 +3050,31 @@ test('R-PA-CAREFIRST-003 passes when the CareFirst packet names the CareFirst Di
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-003');
   assert.equal(f.status, 'pass');
+});
+
+test('R-PA-CAREFIRST-003 does not require the submission channel in packet content', () => {
+  const findings = runEngine(bundleOf('CareFirst member.\nPrior authorization request for CPT 27447.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-003').status, 'pass');
+});
+
+test('R-PA-CAREFIRST-004 remains non-enforcing without a live member or portal lookup', () => {
+  const findings = runEngine(bundleOf('CareFirst member.\nProcedure CPT 27447.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-004').status, 'pass');
+});
+
+test('R-PA-CAREFIRST-005 does not demand a confirmation for an initial authorization request', () => {
+  const findings = runEngine(bundleOf('CareFirst member.\nPrior authorization required for CPT 27447.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-005').status, 'pass');
+});
+
+test('R-PA-CAREFIRST-005 advises when a submitted request has no confirmation reference', () => {
+  const findings = runEngine(bundleOf('CareFirst member.\nPrior authorization submitted.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-005').status, 'info');
+});
+
+test('R-PA-CAREFIRST-005 accepts a submitted request with a case reference', () => {
+  const findings = runEngine(bundleOf('CareFirst member.\nPrior authorization submitted.\nCase number: CF-1234.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-005').status, 'pass');
 });
 
 test('R-PA-CAREFIRST-007 flags a CareFirst outpatient MRI with no clinical indication', () => {

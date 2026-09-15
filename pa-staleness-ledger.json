@@ -517,7 +517,10 @@
         "R-PA-CAREFIRST-002"
       ],
       "url": "https://provider.carefirst.com/providers/medical/in-network-precertification-preauthorization.page",
-      "lastVerified": "2026-06-04"
+      "lastVerified": "2026-09-15",
+      "alsoCited": [
+        "https://provider.carefirst.com/carefirst-resources/provider/pdf/professional-provider-manual-policies-pm0010.pdf"
+      ]
     },
     {
       "id": "bcbsnc-precert",
