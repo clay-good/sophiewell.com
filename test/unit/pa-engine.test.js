@@ -2228,11 +2228,56 @@ test('R-PA-FLBLUE-010 requires an NDC value only when request-specific instructi
   assert.equal(complete.find((x) => x.ruleId === 'R-PA-FLBLUE-010').status, 'pass');
 });
 
-test('R-PA-FLBLUE-011 flags a Florida Blue specialty-drug request with no step-therapy prior-trial documentation', () => {
-  const text = 'Florida Blue member.\nSpecialty drug requested; Florida Blue pharmacy step therapy applies.\nProcedure J3590.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-FLBLUE-011');
-  assert.equal(f.status, 'flag');
+test('R-PA-FLBLUE-011 applies only to an explicit Responsible Steps or step-therapy requirement', () => {
+  const genericDrug = runEngine(bundleOf('Florida Blue member.\nSpecialty drug requested, CPT J3590.\n'));
+  assert.equal(genericDrug.find((x) => x.ruleId === 'R-PA-FLBLUE-011').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Florida Blue member.\nResponsible Steps applies to the requested drug.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-FLBLUE-011').status, 'info');
+
+  const complete = runEngine(bundleOf('Florida Blue member.\nResponsible Steps applies.\nPrerequisite drug tried and failed because of intolerance.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-FLBLUE-011').status, 'pass');
+});
+
+test('R-PA-FLBLUE-012 does not infer genetic-review requirements from a genetic CPT alone', () => {
+  const genericGenetic = runEngine(bundleOf('Florida Blue member.\nGenetic test requested, CPT 81479.\n'));
+  assert.equal(genericGenetic.find((x) => x.ruleId === 'R-PA-FLBLUE-012').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Florida Blue member.\nFlorida Blue genetic review required.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-FLBLUE-012').status, 'info');
+
+  const complete = runEngine(bundleOf('Florida Blue member.\nFlorida Blue genetic review required.\nTest requested: BRCA gene panel.\nClinical indication: personal history of breast cancer.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-FLBLUE-012').status, 'pass');
+});
+
+test('R-PA-FLBLUE-013 is limited to the explicit Medicare Advantage oncology or hematology program', () => {
+  const genericDrug = runEngine(bundleOf('Florida Blue member.\nSpecialty drug requested, CPT J3590.\n'));
+  assert.equal(genericDrug.find((x) => x.ruleId === 'R-PA-FLBLUE-013').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Florida Blue member.\nNew Century Health oncology authorization request.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-FLBLUE-013').status, 'flag');
+
+  const complete = runEngine(bundleOf('Florida Blue member.\nNew Century Health oncology authorization request.\nOncology diagnosis: ICD-10 C50.919.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-FLBLUE-013').status, 'pass');
+});
+
+test('R-PA-FLBLUE-014 treats retrospective reason as informational and does not invent exception categories', () => {
+  const incomplete = runEngine(bundleOf('Florida Blue member.\nRetrospective authorization request.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-FLBLUE-014').status, 'info');
+
+  const complete = runEngine(bundleOf('Florida Blue member.\nRetrospective authorization request because the service was emergent.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-FLBLUE-014').status, 'pass');
+});
+
+test('R-PA-FLBLUE-015 checks a signed order only when request-specific instructions require it', () => {
+  const genericDme = runEngine(bundleOf('Florida Blue member.\nWheelchair requested, HCPCS E1161.\n'));
+  assert.equal(genericDme.find((x) => x.ruleId === 'R-PA-FLBLUE-015').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Florida Blue member.\nSigned order required for this request.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-FLBLUE-015').status, 'info');
+
+  const complete = runEngine(bundleOf('Florida Blue member.\nSigned order required.\nPhysician order: wheelchair.\nElectronically signed by ordering provider.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-FLBLUE-015').status, 'pass');
 });
 
 test('R-PA-FLBLUE-017 flags a Florida Blue transplant request with no Blue Distinction routing', () => {
