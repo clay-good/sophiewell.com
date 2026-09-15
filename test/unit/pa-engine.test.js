@@ -4116,6 +4116,96 @@ test('R-PA-BCBST-010 accepts an NDC-formatted value when declared required', () 
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-010').status, 'pass');
 });
 
+test('R-PA-BCBST-011 does not infer step therapy from a J-code', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nProvider-administered drug HCPCS J1745 requested.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-011').status, 'pass');
+});
+
+test('R-PA-BCBST-011 flags an explicit step-therapy requirement without a trial or exception', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nRequested drug is subject to step therapy.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-011').status, 'flag');
+});
+
+test('R-PA-BCBST-011 accepts a preferred-product trial or exception', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nRequested drug is subject to step therapy. Preferred product previously tried with inadequate response.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-011').status, 'pass');
+});
+
+test('R-PA-BCBST-012 does not infer genetic testing from a broad 81xxx CPT', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nLaboratory procedure CPT 81001 requested.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-012').status, 'pass');
+});
+
+test('R-PA-BCBST-012 advises when a genetic request omits test identity or indication', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nGenetic testing authorization requested.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-012').status, 'info');
+});
+
+test('R-PA-BCBST-012 accepts separate test and indication details', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nGenetic testing authorization requested. Test name: hereditary cancer panel. Clinical indication: personal history of breast cancer.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-012').status, 'pass');
+});
+
+test('R-PA-BCBST-013 does not infer the medication-form workflow from a generic infusion', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nOffice infusion requested with HCPCS J1745.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-013').status, 'pass');
+});
+
+test('R-PA-BCBST-013 flags a provider-administered medication form without diagnosis', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nProvider-Administered Medication Authorization. Drug name: infliximab.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-013').status, 'flag');
+});
+
+test('R-PA-BCBST-013 accepts a diagnosis on the medication form', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nProvider-Administered Medication Authorization. Drug name: infliximab. Diagnosis code: K50.90.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-013').status, 'pass');
+});
+
+test('R-PA-BCBST-014 does not treat generic post-service text as a retrospective request', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nPost-service claim documentation.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-014').status, 'pass');
+});
+
+test('R-PA-BCBST-014 advises when an explicit retrospective request omits its reason', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nRetrospective authorization request.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-014').status, 'info');
+});
+
+test('R-PA-BCBST-014 accepts a retrospective-request reason', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nRetrospective authorization request because eligibility was not known at the time.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-014').status, 'pass');
+});
+
+test('R-PA-BCBST-015 does not require a signed order on every DME request', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nDME request for E0601. Diagnosis: G47.33. Estimated duration: 12 months.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-015').status, 'pass');
+});
+
+test('R-PA-BCBST-015 advises when a DME request lacks diagnosis or expected-use context', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nDME request for E0601.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-015').status, 'info');
+});
+
+test('R-PA-BCBST-015 accepts diagnosis and use-capability documentation', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nWheelchair request. Diagnosis: G82.20. Member can use the equipment independently.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-015').status, 'pass');
+});
+
 test('R-PA-BCBST-017 flags a BCBST transplant request with no Blue Distinction routing', () => {
   const text = 'Blue Cross Blue Shield of Tennessee member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
   const findings = runEngine(bundleOf(text));

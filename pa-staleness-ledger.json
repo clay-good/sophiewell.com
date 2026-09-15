@@ -601,7 +601,11 @@
         "https://www.bcbst.com/docs/providers/Commercial-Prior-Auth-Requirements.pdf",
         "https://www.bcbst.com/providers/manuals/bcbstpam.pdf",
         "https://www.bcbst.com/docs/providers/commercial_high_tech_imaging_authorization_request_form.pdf",
-        "https://www.bcbst.com/docs/providers/hti/high_tech_imaging_auth_code_list.pdf"
+        "https://www.bcbst.com/docs/providers/hti/high_tech_imaging_auth_code_list.pdf",
+        "https://content.bcbst.com/api/public/content/comm_bc_pad_step_therapy_guide.pdf",
+        "https://content.bcbst.com/api/public/content/commercial_genetic_testing_request_form.pdf",
+        "https://content.bcbst.com/api/public/content/provider-administered-medication-auth.pdf",
+        "https://content.bcbst.com/api/public/content/commercial_dme_services_auth_request_re.pdf"
       ]
     },
     {
