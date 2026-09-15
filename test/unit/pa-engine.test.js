@@ -1950,25 +1950,59 @@ test('R-PA-HIGHMARK-005 asks for a reference only after completed submission', (
   assert.equal(confirmed.find((x) => x.ruleId === 'R-PA-HIGHMARK-005').status, 'pass');
 });
 
-test('R-PA-HIGHMARK-006 flags an inpatient (POS 21) Highmark request with no admission / progress documentation', () => {
-  const text = 'Highmark member.\nPlace of service: 21\nInpatient admission for acute care.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-HIGHMARK-006');
-  assert.equal(f.status, 'flag');
+test('R-PA-HIGHMARK-006 separates initial admission from concurrent review', () => {
+  const initial = runEngine(bundleOf('Highmark member.\nPlace of service: 21\nInitial inpatient admission request.\n'));
+  assert.equal(initial.find((x) => x.ruleId === 'R-PA-HIGHMARK-006').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Highmark member.\nConcurrent review request for additional inpatient days.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-HIGHMARK-006').status, 'flag');
+
+  const complete = runEngine(bundleOf('Highmark member.\nConcurrent review request.\nClinical update: improving on continuing treatment.\nDischarge plan: home tomorrow.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-HIGHMARK-006').status, 'pass');
 });
 
-test('R-PA-HIGHMARK-007 flags a Highmark outpatient MRI with no clinical indication', () => {
-  const text = 'Highmark member.\nRequested: MRI lumbar spine, CPT 72148.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-HIGHMARK-007');
-  assert.equal(f.status, 'flag');
+test('R-PA-HIGHMARK-007 limits imaging review to explicit outpatient non-emergent studies', () => {
+  const genericRadiology = runEngine(bundleOf('Highmark member.\nRequested CPT 77080.\n'));
+  assert.equal(genericRadiology.find((x) => x.ruleId === 'R-PA-HIGHMARK-007').status, 'pass');
+
+  const emergency = runEngine(bundleOf('Highmark member.\nEmergency imaging: CT scan, place of service 23.\n'));
+  assert.equal(emergency.find((x) => x.ruleId === 'R-PA-HIGHMARK-007').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Highmark member.\nOutpatient MRI lumbar spine requested.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-HIGHMARK-007').status, 'info');
+
+  const complete = runEngine(bundleOf('Highmark member.\nOutpatient MRI lumbar spine requested.\nClinical indication: persistent radiculopathy.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-HIGHMARK-007').status, 'pass');
 });
 
-test('R-PA-HIGHMARK-008 passes when an expedited Highmark request documents the clinical urgency', () => {
-  const text = 'Highmark member.\nExpedited review requested: delay would jeopardize the member\'s life or health.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-HIGHMARK-008');
-  assert.equal(f.status, 'pass');
+test('R-PA-HIGHMARK-008 keeps expedited-review rationale informational', () => {
+  const incomplete = runEngine(bundleOf('Highmark member.\nExpedited review requested.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-HIGHMARK-008').status, 'info');
+
+  const complete = runEngine(bundleOf('Highmark member.\nExpedited review requested: delay would jeopardize the member\'s life or health.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-HIGHMARK-008').status, 'pass');
+});
+
+test('R-PA-HIGHMARK-009 runs only for explicit outpatient-surgery site-of-care review', () => {
+  const generic = runEngine(bundleOf('Highmark member.\nHospital outpatient knee surgery, CPT 27447, POS 22.\n'));
+  assert.equal(generic.find((x) => x.ruleId === 'R-PA-HIGHMARK-009').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Highmark member.\nMedical Policy Z-109 site-of-care clinical review.\nHospital outpatient surgery, POS 22.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-HIGHMARK-009').status, 'flag');
+
+  const complete = runEngine(bundleOf('Highmark member.\nOutpatient surgery site-of-care review.\nHospital outpatient surgery because patient complexity requires hospital monitoring.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-HIGHMARK-009').status, 'pass');
+});
+
+test('R-PA-HIGHMARK-010 requires an NDC only when request-specific instructions do', () => {
+  const generic = runEngine(bundleOf('Highmark member.\nPhysician-administered drug J0123 requested.\n'));
+  assert.equal(generic.find((x) => x.ruleId === 'R-PA-HIGHMARK-010').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Highmark member.\nJ0123 requested; NDC required.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-HIGHMARK-010').status, 'info');
+
+  const complete = runEngine(bundleOf('Highmark member.\nJ0123 requested; NDC required.\nNDC: 00002-7597-01.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-HIGHMARK-010').status, 'pass');
 });
 
 test('R-PA-HIGHMARK-011 flags a Highmark specialty-drug request with no step-therapy prior-trial documentation', () => {
