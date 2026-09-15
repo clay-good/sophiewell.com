@@ -2408,18 +2408,30 @@ test('R-PA-BCBSM-005 passes a submitted request with a reference', () => {
   assert.equal(f.status, 'pass');
 });
 
-test('R-PA-BCBSM-006 flags an inpatient (POS 21) BCBSM request with no admission / progress documentation', () => {
+test('R-PA-BCBSM-006 does not infer a clinical attachment requirement from inpatient status alone', () => {
   const text = 'Blue Cross Blue Shield of Michigan member.\nPlace of service: 21\nInpatient admission for acute care.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-BCBSM-006');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'pass');
 });
 
-test('R-PA-BCBSM-007 flags a BCBSM outpatient MRI with no clinical indication', () => {
+test('R-PA-BCBSM-006 advises on an explicit pended clinical review without an attachment', () => {
+  const text = 'Blue Cross Blue Shield of Michigan member.\nInpatient authorization pended for clinical review.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSM-006').status, 'info');
+});
+
+test('R-PA-BCBSM-007 does not infer outpatient radiology from an MRI alone', () => {
   const text = 'Blue Cross Blue Shield of Michigan member.\nRequested: MRI lumbar spine, CPT 72148.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-BCBSM-007');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-BCBSM-007 advises when an outpatient MRI lacks clinical rationale', () => {
+  const text = 'Blue Cross Blue Shield of Michigan member.\nOutpatient imaging requested: MRI lumbar spine, CPT 72148.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSM-007').status, 'info');
 });
 
 test('R-PA-BCBSM-008 passes when an expedited BCBSM request documents the clinical urgency', () => {
@@ -2427,6 +2439,36 @@ test('R-PA-BCBSM-008 passes when an expedited BCBSM request documents the clinic
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-BCBSM-008');
   assert.equal(f.status, 'pass');
+});
+
+test('R-PA-BCBSM-008 does not treat generic STAT wording as an expedited authorization', () => {
+  const text = 'Blue Cross Blue Shield of Michigan member.\nSTAT lab requested.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSM-008').status, 'pass');
+});
+
+test('R-PA-BCBSM-009 does not apply site-of-care review to generic outpatient surgery', () => {
+  const text = 'Blue Cross Blue Shield of Michigan member.\nOutpatient hospital surgery, CPT 27447, POS 22.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSM-009').status, 'pass');
+});
+
+test('R-PA-BCBSM-009 advises on an explicit inpatient TurningPoint exception without rationale', () => {
+  const text = 'Blue Cross Blue Shield of Michigan member.\nTurningPoint site-of-care review applies.\nInpatient surgery, POS 21.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSM-009').status, 'info');
+});
+
+test('R-PA-BCBSM-010 does not infer an NDC requirement from a J-code', () => {
+  const text = 'Blue Cross Blue Shield of Michigan member.\nMedical drug requested: J1745.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSM-010').status, 'pass');
+});
+
+test('R-PA-BCBSM-010 advises when an explicit authorization NDC requirement is unmet', () => {
+  const text = 'Blue Cross Blue Shield of Michigan member.\nInclude NDC in authorization request.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSM-010').status, 'info');
 });
 
 test('R-PA-BCBSM-011 flags a BCBSM specialty-drug request with no step-therapy prior-trial documentation', () => {
