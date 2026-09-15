@@ -3842,18 +3842,96 @@ test('R-PA-HORIZON-015 accepts signature evidence for a declared order requireme
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-HORIZON-015').status, 'pass');
 });
 
-test('R-PA-HORIZON-017 flags a Horizon transplant request with no Blue Distinction routing', () => {
+test('R-PA-HORIZON-016 does not require level-of-care criteria for generic mental-health care', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nOutpatient mental health office visit requested.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HORIZON-016').status, 'pass');
+});
+
+test('R-PA-HORIZON-016 advises when facility-based behavioral health lacks plan and level rationale', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nResidential treatment requested.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HORIZON-016').status, 'info');
+});
+
+test('R-PA-HORIZON-016 accepts a treatment plan and requested-level rationale', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nResidential treatment requested.\nProposed treatment plan: daily therapy. Rationale for residential: failed lower level of care.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HORIZON-016').status, 'pass');
+});
+
+test('R-PA-HORIZON-017 does not infer designated-center routing from every transplant request', () => {
   const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-HORIZON-017');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'pass');
 });
 
-test('R-PA-HORIZON-020 flags a Horizon out-of-network request with no network-gap justification (info)', () => {
+test('R-PA-HORIZON-017 advises when an explicit designated-center requirement lacks a facility', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nKidney transplant requested. Blue Distinction center required.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HORIZON-017').status, 'info');
+});
+
+test('R-PA-HORIZON-017 accepts the qualifying facility for designated-center routing', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nKidney transplant requested. Blue Distinction center required.\nBlue Distinction center: Example Transplant Institute.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HORIZON-017').status, 'pass');
+});
+
+test('R-PA-HORIZON-018 does not classify off-label use or trial participation as investigational', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nOff-label drug use in a clinical trial.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HORIZON-018').status, 'pass');
+});
+
+test('R-PA-HORIZON-018 advises when an explicitly investigational service lacks its policy basis', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nRequested treatment is classified as investigational.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HORIZON-018').status, 'info');
+});
+
+test('R-PA-HORIZON-018 accepts the policy basis for an explicitly investigational service', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nRequested treatment is classified as investigational. Medical Policy number: 164.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HORIZON-018').status, 'pass');
+});
+
+test('R-PA-HORIZON-019 does not treat a generic appeal as a prior-authorization appeal', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nClaim payment appeal requested.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HORIZON-019').status, 'pass');
+});
+
+test('R-PA-HORIZON-019 advises when a prior-authorization appeal omits the original decision', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nPrior authorization appeal requested.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HORIZON-019').status, 'info');
+});
+
+test('R-PA-HORIZON-019 accepts an original-decision reference on a prior-authorization appeal', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nPrior authorization appeal requested. Original denial dated 2026-09-01.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HORIZON-019').status, 'pass');
+});
+
+test('R-PA-HORIZON-020 does not require a network-gap reason for every out-of-network authorization', () => {
   const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nOut-of-network prior authorization request.\nProcedure CPT 70551.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-HORIZON-020');
-  assert.equal(f.status, 'info');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-HORIZON-020 advises when an explicit network-exception request lacks a reason', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nNetwork exception request for CPT 70551.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HORIZON-020').status, 'info');
+});
+
+test('R-PA-HORIZON-020 accepts an access-gap reason for a network exception', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nNetwork exception request for CPT 70551.\nNo in-network provider has the required expertise.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HORIZON-020').status, 'pass');
 });
 
 // ---- wave 52-21 sanity checks: Blue Cross Blue Shield of Tennessee overlay (§4.5.21) ----
