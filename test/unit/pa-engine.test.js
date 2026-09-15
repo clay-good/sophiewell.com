@@ -2565,13 +2565,13 @@ test('Blue Shield of California overlay rules vacuously pass on a non-Blue-Shiel
   }
 });
 
-test('R-PA-BSCA-001 flags a Blue Shield of California request with a procedure but no coverage-criteria reference', () => {
+test('R-PA-BSCA-001 gives an informational finding when a procedure has no criterion reference', () => {
   const text = 'Blue Shield of California member.\n'
     + 'Requested procedure: CPT 72148 (MRI lumbar spine).\n'
     + 'Please authorize.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-BSCA-001');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
 });
 
 test('R-PA-BSCA-001 passes when the Blue Shield of California packet cites the applicable Medical Policy', () => {
@@ -2583,18 +2583,38 @@ test('R-PA-BSCA-001 passes when the Blue Shield of California packet cites the a
   assert.equal(f.status, 'pass');
 });
 
-test('R-PA-BSCA-002 flags a Blue Shield of California packet with no clinical document attached', () => {
+test('R-PA-BSCA-002 gives an informational finding when no clinical document is attached', () => {
   const text = 'Blue Shield of California member.\nRequested procedure: CPT 27447.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-BSCA-002');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
 });
 
-test('R-PA-BSCA-003 passes when the Blue Shield of California packet names the Availity channel (info)', () => {
-  const text = 'Blue Shield of California member.\nSubmitted via the Availity Essentials portal.\nProcedure CPT 27447.\n';
+test('R-PA-BSCA-003 does not require the packet to name its submission channel', () => {
+  const text = 'Blue Shield of California member.\nProcedure CPT 27447.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-BSCA-003');
   assert.equal(f.status, 'pass');
+});
+
+test('R-PA-BSCA-004 remains non-enforcing without member-specific requirements', () => {
+  const findings = runEngine(bundleOf('Blue Shield of California member.\nProcedure CPT 27447.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BSCA-004').status, 'pass');
+});
+
+test('R-PA-BSCA-005 does not require a confirmation number on an initial request', () => {
+  const findings = runEngine(bundleOf('Blue Shield of California member.\nPrior authorization required for CPT 27447.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BSCA-005').status, 'pass');
+});
+
+test('R-PA-BSCA-005 advises retaining a reference after submission', () => {
+  const findings = runEngine(bundleOf('Blue Shield of California member.\nPrior authorization submitted for CPT 27447.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BSCA-005').status, 'info');
+});
+
+test('R-PA-BSCA-005 passes a submitted request with an inquiry reference', () => {
+  const findings = runEngine(bundleOf('Blue Shield of California member.\nPrior authorization submitted for CPT 27447.\nReference number: CA-12345.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BSCA-005').status, 'pass');
 });
 
 test('R-PA-BSCA-006 flags an inpatient (POS 21) Blue Shield of California request with no admission / progress documentation', () => {

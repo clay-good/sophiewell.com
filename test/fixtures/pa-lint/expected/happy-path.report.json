@@ -3073,20 +3073,20 @@
     },
     {
       "ruleId": "R-PA-BSCA-001",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "Blue Shield of California prior authorization: coverage criteria (Blue Shield of California Medical Policy / MCG) referenced",
-      "citation": "Blue Shield of California adjudicates prior-authorization requests against its published Medical Policies (and MCG care guidelines); a request should cite the policy it is being judged against so the reviewer can map it to the coverage criteria. <https://www.blueshieldca.com/en/provider/authorizations>",
+      "description": "Blue Shield of California prior authorization: applicable policy or criterion identified when known",
+      "citation": "Blue Shield publishes medical policies and delegated-program criteria, while each policy remains subject to regulatory requirements and plan-specific benefits and limitations. Its public materials do not require every authorization packet to cite a policy. Informational. <https://www.blueshieldca.com/en/provider/authorizations/policy-medical/list>",
       "evidence": "Not a Blue Shield of California packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
     {
       "ruleId": "R-PA-BSCA-002",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "Blue Shield of California prior authorization: supporting medical records / clinical documentation attached",
-      "citation": "Blue Shield of California requires the clinical information that supports medical necessity to be submitted with the prior-authorization request; a request with no clinical document attached cannot be reviewed on the merits. <https://www.blueshieldca.com/en/provider/authorizations>",
+      "description": "Blue Shield of California prior authorization: request-specific supporting clinical documentation attached",
+      "citation": "Blue Shield provides service- and product-specific authorization forms and lets providers attach documentation in its authorization systems. Its public overview does not impose one fixed clinical-document type on every request, so this is an informational completeness check. <https://www.blueshieldca.com/en/provider/authorizations> <https://www.blueshieldca.com/en/provider/authorizations/how-to-submit-requests>",
       "evidence": "Not a Blue Shield of California packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -3095,8 +3095,8 @@
       "ruleId": "R-PA-BSCA-003",
       "severity": "info",
       "status": "pass",
-      "description": "Blue Shield of California prior authorization: submission channel (Availity Essentials / Provider Resource Center / phone on member ID card) indicated",
-      "citation": "Blue Shield of California directs providers to submit prior-authorization requests through the Availity Essentials portal or the Provider Resource Center, by 278 EDI transaction, or by phone using the number on the member ID card. Informational: a cover sheet that names the channel speeds routing. <https://www.blueshieldca.com/en/provider/authorizations>",
+      "description": "Blue Shield of California prior authorization: use the member- and service-specific submission workflow",
+      "citation": "Blue Shield routes requests among Availity, AuthAccel, Evolent, IPAs, and other workflows according to product and service. Packet content does not need to record its transport channel. <https://www.blueshieldca.com/en/provider/authorizations> <https://www.blueshieldca.com/en/provider/authorizations/how-to-submit-requests>",
       "evidence": "Not a Blue Shield of California packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -3105,18 +3105,18 @@
       "ruleId": "R-PA-BSCA-004",
       "severity": "info",
       "status": "pass",
-      "description": "Blue Shield of California prior authorization: requested service is on Blue Shield of California's prior-authorization / notification requirement list",
-      "citation": "Blue Shield of California prior authorization applies only to services on its published prior-authorization and notification lists; requesting authorization for a non-listed service is unnecessary. ships no bundled list, so the rule is vacuously satisfied with a pointer to the list (it mirrors core R-PA-053 and the Aetna / UHC / Anthem / Cigna / Humana / HCSC / Highmark / Florida Blue / BCBSM -004 rules; a later wave bundles the list and flips this to a real membership test). <https://www.blueshieldca.com/en/provider/authorizations>",
+      "description": "Blue Shield of California prior authorization: requested service checked against the member's applicable requirement list",
+      "citation": "Blue Shield publishes separate authorization lists and directs providers to live tools for current, delegated, product-specific, and member-specific requirements. The linter has no eligibility or live authorization lookup, so this reminder is non-enforcing. <https://www.blueshieldca.com/en/provider/authorizations/authorization-list> <https://www.blueshieldca.com/en/provider/authorizations/how-to-submit-requests>",
       "evidence": "Not a Blue Shield of California packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
     {
       "ruleId": "R-PA-BSCA-005",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "Blue Shield of California prior authorization: authorization is referenced for a service that requires it before the service date",
-      "citation": "Blue Shield of California requires prior authorization to be obtained before a service on its requirement list is rendered; a packet for an authorization-required service should show the authorization / reference number rather than relying on post-service review. <https://www.blueshieldca.com/en/provider/authorizations>",
+      "description": "Blue Shield of California submitted authorization: confirmation or inquiry reference retained",
+      "citation": "Blue Shield authorization systems provide inquiry, tracking, or determination records after submission. An initial request cannot already contain that confirmation, so this advisory runs only when the packet says submission is complete. <https://www.blueshieldca.com/en/provider/authorizations/how-to-submit-requests>",
       "evidence": "Not a Blue Shield of California packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -10160,7 +10160,7 @@
           "label": "Blue Shield of California prior-authorization requirements, Medical Policies, and utilization-management / pharmacy program requirements",
           "url": "https://www.blueshieldca.com/en/provider/authorizations",
           "ruleFamily": "commercial-blue-shield-ca",
-          "lastVerified": "2026-06-04"
+          "lastVerified": "2026-09-15"
         },
         {
           "id": "ibx-precert",
