@@ -4584,18 +4584,94 @@ test('R-PA-BCBSMA-015 accepts signature evidence for a declared requirement', ()
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-015').status, 'pass');
 });
 
-test('R-PA-BCBSMA-017 flags a BCBSMA transplant request with no Blue Distinction routing', () => {
-  const text = 'Blue Cross Blue Shield of Massachusetts member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
+test('R-PA-BCBSMA-016 does not trigger on generic mental-health context', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nMental health office visit request.\n';
   const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSMA-017');
-  assert.equal(f.status, 'flag');
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-016').status, 'pass');
 });
 
-test('R-PA-BCBSMA-020 flags a BCBSMA out-of-network request with no network-gap justification (info)', () => {
+test('R-PA-BCBSMA-016 advises when an intensive setting lacks clinical support', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nPartial hospitalization request.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-016').status, 'info');
+});
+
+test('R-PA-BCBSMA-016 accepts clinical support for an intensive setting', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nPartial hospitalization request. Current symptoms: escalating self-harm risk.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-016').status, 'pass');
+});
+
+test('R-PA-BCBSMA-017 does not infer a designated-center requirement from transplant context', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-017').status, 'pass');
+});
+
+test('R-PA-BCBSMA-017 advises when a declared designated-center requirement lacks routing', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nBlue Distinction Center required for this transplant.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-017').status, 'info');
+});
+
+test('R-PA-BCBSMA-017 accepts a selected center for a declared requirement', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nBlue Distinction Center required. Selected transplant center: Example Medical Center.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-017').status, 'pass');
+});
+
+test('R-PA-BCBSMA-018 does not infer experimental status from off-label context', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nOff-label treatment discussed with the patient.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-018').status, 'pass');
+});
+
+test('R-PA-BCBSMA-018 advises when an explicit classification lacks its basis', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nService denied as investigational.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-018').status, 'info');
+});
+
+test('R-PA-BCBSMA-018 accepts the policy basis for an explicit classification', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nService denied as investigational under Medical Policy 999.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-018').status, 'pass');
+});
+
+test('R-PA-BCBSMA-019 does not trigger on generic appeal language', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nAppeal of a claim payment.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-019').status, 'pass');
+});
+
+test('R-PA-BCBSMA-019 advises when an authorization appeal lacks the original case', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nPrior authorization appeal.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-019').status, 'info');
+});
+
+test('R-PA-BCBSMA-019 accepts an original-case reference', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nPrior authorization appeal. Case number: PA-1234.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-019').status, 'pass');
+});
+
+test('R-PA-BCBSMA-020 does not infer an exception from ordinary out-of-network context', () => {
   const text = 'Blue Cross Blue Shield of Massachusetts member.\nOut-of-network prior authorization request.\nProcedure CPT 70551.\n';
   const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSMA-020');
-  assert.equal(f.status, 'info');
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-020').status, 'pass');
+});
+
+test('R-PA-BCBSMA-020 advises when an explicit exception lacks a qualifying reason', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nOut-of-network exception request.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-020').status, 'info');
+});
+
+test('R-PA-BCBSMA-020 accepts a qualifying reason from the current form', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nOut-of-network exception request. No network provider available in the member\'s area.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-020').status, 'pass');
 });
 
 // ---- wave 52-23 sanity checks: Blue Cross Blue Shield of Alabama overlay (§4.5.23) ----
