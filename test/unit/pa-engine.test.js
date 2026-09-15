@@ -4206,18 +4206,100 @@ test('R-PA-BCBST-015 accepts diagnosis and use-capability documentation', () => 
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-015').status, 'pass');
 });
 
-test('R-PA-BCBST-017 flags a BCBST transplant request with no Blue Distinction routing', () => {
-  const text = 'Blue Cross Blue Shield of Tennessee member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
+test('R-PA-BCBST-016 does not infer a higher-level request from generic behavioral-health text', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nBehavioral health outpatient follow-up requested.\n';
   const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-BCBST-017');
-  assert.equal(f.status, 'flag');
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-016').status, 'pass');
 });
 
-test('R-PA-BCBST-020 flags a BCBST out-of-network request with no network-gap justification (info)', () => {
-  const text = 'Blue Cross Blue Shield of Tennessee member.\nOut-of-network prior authorization request.\nProcedure CPT 70551.\n';
+test('R-PA-BCBST-016 flags an explicit psychiatric authorization without acuity or risk', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nPsychiatric Clinical Service Authorization.\n';
   const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-BCBST-020');
-  assert.equal(f.status, 'info');
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-016').status, 'flag');
+});
+
+test('R-PA-BCBST-016 accepts presenting acuity and safety-risk documentation', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nPsychiatric Clinical Service Authorization. Presenting problem: acute mania. Danger to self or others: no.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-016').status, 'pass');
+});
+
+test('R-PA-BCBST-017 does not require Blue Distinction routing', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nKidney transplant request. History and physical attached. Psychosocial evaluation attached.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-017').status, 'pass');
+});
+
+test('R-PA-BCBST-017 does not infer a request from transplant history', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nHistory of kidney transplant noted in the clinical record.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-017').status, 'pass');
+});
+
+test('R-PA-BCBST-017 flags a transplant request missing either required evaluation', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nKidney transplant request. History and physical attached.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-017').status, 'flag');
+});
+
+test('R-PA-BCBST-017 accepts both transplant evaluations', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nStem cell transplant request. H&P: attached. Psychosocial assessment attached.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-017').status, 'pass');
+});
+
+test('R-PA-BCBST-018 does not infer a medical-policy appeal from clinical-trial wording', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nClinical trial participation noted in the history.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-018').status, 'pass');
+});
+
+test('R-PA-BCBST-018 flags a medical-policy appeal without full-text evidence', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nMedical policy appeal requested.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-018').status, 'flag');
+});
+
+test('R-PA-BCBST-018 accepts full-text peer-reviewed research', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nMedical policy appeal requested. Full-text peer-reviewed studies attached.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-018').status, 'pass');
+});
+
+test('R-PA-BCBST-019 does not infer the UM workflow from a generic appeal', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nClaim appeal submitted.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-019').status, 'pass');
+});
+
+test('R-PA-BCBST-019 flags a commercial UM appeal missing required attachments', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nCommercial Utilization Management Appeal.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-019').status, 'flag');
+});
+
+test('R-PA-BCBST-019 accepts the denial letter and clinical documentation', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nCommercial Utilization Management Appeal. Denial letter attached. Clinical documentation attached.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-019').status, 'pass');
+});
+
+test('R-PA-BCBST-020 does not require a rationale for generic out-of-network text', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nOut-of-network prior authorization request.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-020').status, 'pass');
+});
+
+test('R-PA-BCBST-020 advises when an in-network-benefit request omits its rationale', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nOut-of-network provider requesting in-network benefits.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-020').status, 'info');
+});
+
+test('R-PA-BCBST-020 accepts an attached out-of-network rationale', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nOut-of-network provider requesting in-network benefits. Rationale attached.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-020').status, 'pass');
 });
 
 // ---- wave 52-22 sanity checks: Blue Cross Blue Shield of Massachusetts overlay (§4.5.22) ----

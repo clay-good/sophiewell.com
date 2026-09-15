@@ -605,7 +605,12 @@
         "https://content.bcbst.com/api/public/content/comm_bc_pad_step_therapy_guide.pdf",
         "https://content.bcbst.com/api/public/content/commercial_genetic_testing_request_form.pdf",
         "https://content.bcbst.com/api/public/content/provider-administered-medication-auth.pdf",
-        "https://content.bcbst.com/api/public/content/commercial_dme_services_auth_request_re.pdf"
+        "https://content.bcbst.com/api/public/content/commercial_dme_services_auth_request_re.pdf",
+        "https://content.bcbst.com/api/public/content/prov-psychiatric-clinical-service-authorization.pdf",
+        "https://content.bcbst.com/api/public/content/commercial-transplant-authorization-request-form.pdf",
+        "https://content.bcbst.com/api/public/content/medical-policy-appeals-process.pdf",
+        "https://content.bcbst.com/api/public/content/commercial-utilization-management-appeal.pdf",
+        "https://content.bcbst.com/api/public/content/commercial_predetermination_request_re.pdf"
       ]
     },
     {
