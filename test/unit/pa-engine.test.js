@@ -2170,25 +2170,62 @@ test('R-PA-FLBLUE-005 asks for a reference only after completed submission', () 
   assert.equal(confirmed.find((x) => x.ruleId === 'R-PA-FLBLUE-005').status, 'pass');
 });
 
-test('R-PA-FLBLUE-006 flags an inpatient (POS 21) Florida Blue request with no admission / progress documentation', () => {
-  const text = 'Florida Blue member.\nPlace of service: 21\nInpatient admission for acute care.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-FLBLUE-006');
-  assert.equal(f.status, 'flag');
+test('R-PA-FLBLUE-006 separates initial inpatient admission from explicit continued-stay review', () => {
+  const initial = runEngine(bundleOf('Florida Blue member.\nPlace of service: 21\nInitial inpatient admission request.\n'));
+  assert.equal(initial.find((x) => x.ruleId === 'R-PA-FLBLUE-006').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Florida Blue member.\nContinued stay request for 2 additional inpatient days.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-FLBLUE-006').status, 'info');
+
+  const complete = runEngine(bundleOf('Florida Blue member.\nContinued stay request.\nClinical update: improving with treatment.\nExpected discharge date: 2026-09-18.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-FLBLUE-006').status, 'pass');
 });
 
-test('R-PA-FLBLUE-007 flags a Florida Blue outpatient MRI with no clinical indication', () => {
-  const text = 'Florida Blue member.\nRequested: MRI lumbar spine, CPT 72148.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-FLBLUE-007');
-  assert.equal(f.status, 'flag');
+test('R-PA-FLBLUE-007 is informational only for explicit outpatient advanced imaging and excludes inpatient imaging', () => {
+  const unknownSetting = runEngine(bundleOf('Florida Blue member.\nRequested: MRI lumbar spine, CPT 72148.\n'));
+  assert.equal(unknownSetting.find((x) => x.ruleId === 'R-PA-FLBLUE-007').status, 'pass');
+
+  const outpatient = runEngine(bundleOf('Florida Blue member.\nOutpatient imaging at place of service: 22.\nRequested: MRI lumbar spine, CPT 72148.\n'));
+  assert.equal(outpatient.find((x) => x.ruleId === 'R-PA-FLBLUE-007').status, 'info');
+
+  const inpatient = runEngine(bundleOf('Florida Blue member.\nInpatient imaging at place of service: 21.\nRequested: MRI lumbar spine, CPT 72148.\n'));
+  assert.equal(inpatient.find((x) => x.ruleId === 'R-PA-FLBLUE-007').status, 'pass');
+
+  const complete = runEngine(bundleOf('Florida Blue member.\nOffice setting, place of service: 11.\nRequested: MRI lumbar spine, CPT 72148.\nClinical indication: persistent radiculopathy.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-FLBLUE-007').status, 'pass');
 });
 
-test('R-PA-FLBLUE-008 passes when an expedited Florida Blue request documents the clinical urgency', () => {
-  const text = 'Florida Blue member.\nExpedited review requested: delay would jeopardize the member\'s life or health.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-FLBLUE-008');
-  assert.equal(f.status, 'pass');
+test('R-PA-FLBLUE-008 is limited to an expedited pre-service appeal or concurrent-care extension', () => {
+  const initialAuth = runEngine(bundleOf('Florida Blue member.\nUrgent prior authorization requested.\n'));
+  assert.equal(initialAuth.find((x) => x.ruleId === 'R-PA-FLBLUE-008').status, 'pass');
+
+  const incompleteAppeal = runEngine(bundleOf('Florida Blue member.\nExpedited appeal requested.\n'));
+  assert.equal(incompleteAppeal.find((x) => x.ruleId === 'R-PA-FLBLUE-008').status, 'info');
+
+  const completeAppeal = runEngine(bundleOf('Florida Blue member.\nExpedited appeal requested because delay would jeopardize the member\'s life or health.\n'));
+  assert.equal(completeAppeal.find((x) => x.ruleId === 'R-PA-FLBLUE-008').status, 'pass');
+});
+
+test('R-PA-FLBLUE-009 requires a hospital exception only when designated-procedure site review is explicit', () => {
+  const genericSurgery = runEngine(bundleOf('Florida Blue member.\nCPT 29881 at outpatient hospital, place of service: 22.\n'));
+  assert.equal(genericSurgery.find((x) => x.ruleId === 'R-PA-FLBLUE-009').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Florida Blue member.\nFlorida Blue site-of-care review applies.\nCPT 29881 at outpatient hospital, place of service: 22.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-FLBLUE-009').status, 'flag');
+
+  const complete = runEngine(bundleOf('Florida Blue member.\nFlorida Blue site-of-care review applies.\nCPT 29881 at outpatient hospital.\nNo geographically accessible ASC has the necessary equipment.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-FLBLUE-009').status, 'pass');
+});
+
+test('R-PA-FLBLUE-010 requires an NDC value only when request-specific instructions require it', () => {
+  const genericJcode = runEngine(bundleOf('Florida Blue member.\nPhysician-administered drug CPT J3590.\n'));
+  assert.equal(genericJcode.find((x) => x.ruleId === 'R-PA-FLBLUE-010').status, 'pass');
+
+  const incomplete = runEngine(bundleOf('Florida Blue member.\nCPT J3590.\nNDC required for this request.\n'));
+  assert.equal(incomplete.find((x) => x.ruleId === 'R-PA-FLBLUE-010').status, 'info');
+
+  const complete = runEngine(bundleOf('Florida Blue member.\nCPT J3590.\nNDC required: 12345-6789-01.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-FLBLUE-010').status, 'pass');
 });
 
 test('R-PA-FLBLUE-011 flags a Florida Blue specialty-drug request with no step-therapy prior-trial documentation', () => {
