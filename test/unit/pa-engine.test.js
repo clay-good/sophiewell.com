@@ -2348,13 +2348,13 @@ test('BCBSM overlay rules vacuously pass on a non-BCBSM packet', () => {
   }
 });
 
-test('R-PA-BCBSM-001 flags a BCBSM request with a procedure but no coverage-criteria reference', () => {
+test('R-PA-BCBSM-001 gives an informational finding when a BCBSM procedure has no criterion reference', () => {
   const text = 'Blue Cross Blue Shield of Michigan member.\n'
     + 'Requested procedure: CPT 72148 (MRI lumbar spine).\n'
     + 'Please authorize.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-BCBSM-001');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
 });
 
 test('R-PA-BCBSM-001 passes when the BCBSM packet cites the applicable Medical Policy', () => {
@@ -2366,17 +2366,45 @@ test('R-PA-BCBSM-001 passes when the BCBSM packet cites the applicable Medical P
   assert.equal(f.status, 'pass');
 });
 
-test('R-PA-BCBSM-002 flags a BCBSM packet with no clinical document attached', () => {
+test('R-PA-BCBSM-002 gives an informational finding when a BCBSM packet has no clinical document attached', () => {
   const text = 'Blue Cross Blue Shield of Michigan member.\nRequested procedure: CPT 27447.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-BCBSM-002');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
 });
 
-test('R-PA-BCBSM-003 passes when the BCBSM packet names the Availity channel (info)', () => {
-  const text = 'Blue Cross Blue Shield of Michigan member.\nSubmitted via the Availity Essentials portal.\nProcedure CPT 27447.\n';
+test('R-PA-BCBSM-003 does not require the packet to name its submission channel', () => {
+  const text = 'Blue Cross Blue Shield of Michigan member.\nProcedure CPT 27447.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-BCBSM-003');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-BCBSM-004 remains non-enforcing without member-specific requirements', () => {
+  const text = 'Blue Cross Blue Shield of Michigan member.\nProcedure CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSM-004');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-BCBSM-005 does not require a confirmation number on an initial request', () => {
+  const text = 'Blue Cross Blue Shield of Michigan member.\nPrior authorization required for CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSM-005');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-BCBSM-005 advises retaining a reference after submission', () => {
+  const text = 'Blue Cross Blue Shield of Michigan member.\nPrior authorization submitted for CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSM-005');
+  assert.equal(f.status, 'info');
+});
+
+test('R-PA-BCBSM-005 passes a submitted request with a reference', () => {
+  const text = 'Blue Cross Blue Shield of Michigan member.\nPrior authorization submitted for CPT 27447.\nAuthorization number: MI-12345.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSM-005');
   assert.equal(f.status, 'pass');
 });
 

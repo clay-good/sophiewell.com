@@ -1633,20 +1633,20 @@
     },
     {
       "ruleId": "R-PA-BCBSM-001",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "BCBSM prior authorization: coverage criteria (BCBSM Medical Policy / MCG) referenced",
-      "citation": "BCBSM adjudicates prior-authorization requests against its published Medical Policies (and MCG care guidelines); a request should cite the policy it is being judged against so the reviewer can map it to the coverage criteria. <https://authorizations.bcbsm.com/>",
+      "description": "BCBSM prior authorization: applicable medical-necessity criterion identified when known",
+      "citation": "BCBSM publishes questionnaires and medical-necessity criteria for select services and explains how providers can access criteria used for other non-behavioral-health determinations. Its public materials do not require every authorization packet to cite a criterion. Informational. <https://authorizations.bcbsm.com/prov-ref-bcbsm-authorizations.shtml>",
       "evidence": "Not a BCBSM packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
     {
       "ruleId": "R-PA-BCBSM-002",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "BCBSM prior authorization: supporting medical records / clinical documentation attached",
-      "citation": "BCBSM requires the clinical information that supports medical necessity to be submitted with the prior-authorization request; a request with no clinical document attached cannot be reviewed on the merits. <https://authorizations.bcbsm.com/>",
+      "description": "BCBSM prior authorization: request-specific supporting clinical documentation attached",
+      "citation": "BCBSM requires complete clinical documentation for identified workflows such as inpatient admissions and transplants, while other services use their own questionnaires, criteria, or delegated portals. This is an informational packet-completeness check, not a universal document mandate. <https://www.bcbsm.com/content/dam/public/providers/documents/preauthorization-precertification-requirements.pdf> <https://authorizations.bcbsm.com/prov-ref-bcbsm-authorizations.shtml>",
       "evidence": "Not a BCBSM packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -1655,8 +1655,8 @@
       "ruleId": "R-PA-BCBSM-003",
       "severity": "info",
       "status": "pass",
-      "description": "BCBSM prior authorization: submission channel (Availity Essentials / Provider Resource Center / phone on member ID card) indicated",
-      "citation": "BCBSM directs providers to submit prior-authorization requests through the Availity Essentials portal or the Provider Resource Center, by 278 EDI transaction, or by phone using the number on the member ID card. Informational: a cover sheet that names the channel speeds routing. <https://authorizations.bcbsm.com/>",
+      "description": "BCBSM prior authorization: use the member- and service-specific submission workflow",
+      "citation": "BCBSM routes requests from Availity Essentials to e-referral or to delegated-vendor portals according to the service, member plan, and provider location. Packet content does not need to record its transport channel. <https://authorizations.bcbsm.com/prov-ref-getting-started.shtml>",
       "evidence": "Not a BCBSM packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -1665,18 +1665,18 @@
       "ruleId": "R-PA-BCBSM-004",
       "severity": "info",
       "status": "pass",
-      "description": "BCBSM prior authorization: requested service is on BCBSM's prior-authorization / notification requirement list",
-      "citation": "BCBSM prior authorization applies only to services on its published prior-authorization and notification lists; requesting authorization for a non-listed service is unnecessary. ships no bundled list, so the rule is vacuously satisfied with a pointer to the list (it mirrors core R-PA-053 and the Aetna / UHC / Anthem / Cigna / Humana / HCSC / Highmark / Florida Blue -004 rules; a later wave bundles the list and flips this to a real membership test). <https://authorizations.bcbsm.com/>",
+      "description": "BCBSM prior authorization: requested service checked against the member's applicable requirement list",
+      "citation": "BCBSM publishes product- and provider-specific requirement documents and directs providers to procedure-specific resources. The linter has no member eligibility or current requirement lookup, so this reminder is non-enforcing. <https://authorizations.bcbsm.com/prov-ref-bcbsm-authorizations.shtml> <https://authorizations.bcbsm.com/prov-ref-auth-landing.shtml>",
       "evidence": "Not a BCBSM packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
     {
       "ruleId": "R-PA-BCBSM-005",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "BCBSM prior authorization: authorization is referenced for a service that requires it before the service date",
-      "citation": "BCBSM requires prior authorization to be obtained before a service on its requirement list is rendered; a packet for an authorization-required service should show the authorization / reference number rather than relying on post-service review. <https://authorizations.bcbsm.com/>",
+      "description": "BCBSM submitted prior authorization: confirmation reference retained",
+      "citation": "BCBSM requires providers to submit applicable requests before providing services. An initial request cannot already contain a confirmation reference, so this advisory runs only after the packet says submission is complete. <https://authorizations.bcbsm.com/prov-ref-bcbsm-authorizations.shtml>",
       "evidence": "Not a BCBSM packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -10038,9 +10038,9 @@
         {
           "id": "bcbsm-precert",
           "label": "Blue Cross Blue Shield of Michigan (+ Blue Care Network) prior-authorization requirements, Medical Policies, and utilization-management / pharmacy program requirements",
-          "url": "https://authorizations.bcbsm.com/",
+          "url": "https://authorizations.bcbsm.com/index.shtml",
           "ruleFamily": "commercial-bcbsm",
-          "lastVerified": "2026-06-04"
+          "lastVerified": "2026-09-15"
         },
         {
           "id": "blueshieldca-precert",
