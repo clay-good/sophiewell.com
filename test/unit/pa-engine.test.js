@@ -3506,18 +3506,88 @@ test('R-PA-BCBSNC-015 checks the DME treatment plan without inventing a signatur
   assert.equal(complete.find((x) => x.ruleId === 'R-PA-BCBSNC-015').status, 'pass');
 });
 
-test('R-PA-BCBSNC-017 flags a Blue Cross NC transplant request with no Blue Distinction routing', () => {
-  const text = 'Blue Cross Blue Shield of North Carolina member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
+test('R-PA-BCBSNC-016 does not apply to a generic mental-health request', () => {
+  const text = 'Blue Cross Blue Shield of North Carolina member.\nMental health office visit requested.\n';
   const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSNC-017');
-  assert.equal(f.status, 'flag');
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSNC-016').status, 'pass');
 });
 
-test('R-PA-BCBSNC-020 flags a Blue Cross NC out-of-network request with no network-gap justification (info)', () => {
+test('R-PA-BCBSNC-016 flags an inpatient behavioral-health request without a treatment plan and level-of-care rationale', () => {
+  const text = 'Blue Cross Blue Shield of North Carolina member.\nInpatient psychiatric admission requested.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSNC-016').status, 'flag');
+});
+
+test('R-PA-BCBSNC-016 accepts a treatment plan and less-intensive-care rationale', () => {
+  const text = 'Blue Cross Blue Shield of North Carolina member.\nInpatient psychiatric admission requested.\nProposed treatment plan: medication stabilization.\nRationale for inpatient care versus a less intensive level: imminent risk requires 24-hour monitoring.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSNC-016').status, 'pass');
+});
+
+test('R-PA-BCBSNC-017 does not impose designated-center routing on every transplant request', () => {
+  const text = 'Blue Cross Blue Shield of North Carolina member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSNC-017').status, 'pass');
+});
+
+test('R-PA-BCBSNC-017 advises when an explicit designated-center requirement lacks a facility', () => {
+  const text = 'Blue Cross Blue Shield of North Carolina member.\nKidney transplant requested.\nBlue Distinction center required.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSNC-017').status, 'info');
+});
+
+test('R-PA-BCBSNC-017 accepts a qualifying transplant facility', () => {
+  const text = 'Blue Cross Blue Shield of North Carolina member.\nKidney transplant requested.\nBlue Distinction center required.\nBlue Distinction center: Example Transplant Institute.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSNC-017').status, 'pass');
+});
+
+test('R-PA-BCBSNC-018 does not equate off-label use or a clinical trial with investigational status', () => {
+  const text = 'Blue Cross Blue Shield of North Carolina member.\nOff-label drug requested as part of a clinical trial.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSNC-018').status, 'pass');
+});
+
+test('R-PA-BCBSNC-018 flags an explicitly investigational service with no policy or coverage basis', () => {
+  const text = 'Blue Cross Blue Shield of North Carolina member.\nInvestigational treatment requested.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSNC-018').status, 'flag');
+});
+
+test('R-PA-BCBSNC-018 accepts a covered-clinical-trial basis', () => {
+  const text = 'Blue Cross Blue Shield of North Carolina member.\nInvestigational treatment requested.\nCovered clinical trial basis: qualifying phase III trial.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSNC-018').status, 'pass');
+});
+
+test('R-PA-BCBSNC-019 ignores a generic grievance', () => {
+  const text = 'Blue Cross Blue Shield of North Carolina member.\nMember grievance regarding customer service.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSNC-019').status, 'pass');
+});
+
+test('R-PA-BCBSNC-019 advises when a prior-authorization appeal does not identify the decision', () => {
+  const text = 'Blue Cross Blue Shield of North Carolina member.\nPrior authorization appeal requested.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSNC-019').status, 'info');
+});
+
+test('R-PA-BCBSNC-020 does not require a network-gap reason for every out-of-network authorization', () => {
   const text = 'Blue Cross Blue Shield of North Carolina member.\nOut-of-network prior authorization request.\nProcedure CPT 70551.\n';
   const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSNC-020');
-  assert.equal(f.status, 'info');
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSNC-020').status, 'pass');
+});
+
+test('R-PA-BCBSNC-020 advises when an explicit network-exception request has no reason', () => {
+  const text = 'Blue Cross Blue Shield of North Carolina member.\nNetwork exception request for CPT 70551.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSNC-020').status, 'info');
+});
+
+test('R-PA-BCBSNC-020 accepts an explicit network exception with an access-gap reason', () => {
+  const text = 'Blue Cross Blue Shield of North Carolina member.\nNetwork exception request for CPT 70551.\nNo in-network provider has the required expertise.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSNC-020').status, 'pass');
 });
 
 // ---- wave 52-20 sanity checks: Horizon Blue Cross Blue Shield of New Jersey overlay (§4.5.20) ----
