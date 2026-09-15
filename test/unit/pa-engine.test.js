@@ -5348,13 +5348,13 @@ test('Arkansas Blue Cross overlay rules vacuously pass on a non-Arkansas packet'
   }
 });
 
-test('R-PA-ARKBCBS-001 flags an Arkansas Blue Cross request with a procedure but no coverage-criteria reference', () => {
+test('R-PA-ARKBCBS-001 advises when an Arkansas Blue Cross request omits its criteria reference', () => {
   const text = 'Arkansas Blue Cross and Blue Shield member.\n'
     + 'Requested procedure: CPT 72148 (MRI lumbar spine).\n'
     + 'Please authorize.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-001');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
 });
 
 test('R-PA-ARKBCBS-001 passes when the Arkansas Blue Cross packet cites the applicable Medical Policy', () => {
@@ -5366,11 +5366,26 @@ test('R-PA-ARKBCBS-001 passes when the Arkansas Blue Cross packet cites the appl
   assert.equal(f.status, 'pass');
 });
 
-test('R-PA-ARKBCBS-002 flags an Arkansas Blue Cross packet with no clinical document attached', () => {
+test('R-PA-ARKBCBS-002 does not infer an authorization request from payer context', () => {
   const text = 'Arkansas Blue Cross and Blue Shield member.\nRequested procedure: CPT 27447.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-002');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-ARKBCBS-002 flags an explicit authorization request with no clinical document', () => {
+  const findings = runEngine(bundleOf('Arkansas Blue Cross and Blue Shield member.\nPrior authorization request for CPT 27447.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-002').status, 'flag');
+});
+
+test('R-PA-ARKBCBS-002 accepts a request with a clinical attachment', () => {
+  const findings = runEngine(bundleOf({
+    documents: [
+      { name: 'request.txt', text: 'Arkansas Blue Cross and Blue Shield member. Prior authorization request for CPT 27447.' },
+      { name: 'clinical-note.txt', text: 'Clinical note: current symptoms and treatment plan.' },
+    ],
+  }));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-002').status, 'pass');
 });
 
 test('R-PA-ARKBCBS-003 passes when the Arkansas Blue Cross packet names the AHIN channel (info)', () => {
@@ -5378,6 +5393,31 @@ test('R-PA-ARKBCBS-003 passes when the Arkansas Blue Cross packet names the AHIN
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-003');
   assert.equal(f.status, 'pass');
+});
+
+test('R-PA-ARKBCBS-003 does not require submission-channel metadata', () => {
+  const findings = runEngine(bundleOf('Arkansas Blue Cross and Blue Shield member.\nPrior authorization request for CPT 27447.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-003').status, 'pass');
+});
+
+test('R-PA-ARKBCBS-004 remains non-enforcing without a member-specific lookup', () => {
+  const findings = runEngine(bundleOf('Arkansas Blue Cross and Blue Shield member.\nProcedure CPT 27447.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-004').status, 'pass');
+});
+
+test('R-PA-ARKBCBS-005 does not expect a reference on an initial request', () => {
+  const findings = runEngine(bundleOf('Arkansas Blue Cross and Blue Shield member.\nPrior authorization required for CPT 27447. Initial request.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-005').status, 'pass');
+});
+
+test('R-PA-ARKBCBS-005 advises when a completed submission lacks a reference', () => {
+  const findings = runEngine(bundleOf('Arkansas Blue Cross and Blue Shield member.\nPrior authorization submitted for CPT 27447.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-005').status, 'info');
+});
+
+test('R-PA-ARKBCBS-005 accepts a completed submission with a case number', () => {
+  const findings = runEngine(bundleOf('Arkansas Blue Cross and Blue Shield member.\nPrior authorization submitted for CPT 27447. Case number PA-12345.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-005').status, 'pass');
 });
 
 test('R-PA-ARKBCBS-007 flags an Arkansas Blue Cross outpatient MRI with no clinical indication', () => {

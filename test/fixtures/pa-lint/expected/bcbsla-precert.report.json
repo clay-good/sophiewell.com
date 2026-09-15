@@ -1043,10 +1043,10 @@
     },
     {
       "ruleId": "R-PA-ARKBCBS-001",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
       "description": "Arkansas Blue Cross and Blue Shield prior authorization: coverage criteria (Arkansas Blue Cross and Blue Shield Medical Policy / MCG) referenced",
-      "citation": "Arkansas Blue Cross and Blue Shield adjudicates prior-authorization requests against its published Medical Policies (and MCG care guidelines); a request should cite the policy it is being judged against so the reviewer can map it to the coverage criteria. <https://www.arkansasbluecross.com/providers>",
+      "citation": "Arkansas Blue Cross says utilization review checks the member benefit, applicable Coverage Policy, and InterQual clinical criteria. It does not say every request must cite those materials, so this is an informational mapping aid. <https://www.arkansasbluecross.com/providers/resource-center/prior-approval-for-requested-services>",
       "evidence": "Not a Arkansas Blue Cross and Blue Shield packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -1056,7 +1056,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Arkansas Blue Cross and Blue Shield prior authorization: supporting medical records / clinical documentation attached",
-      "citation": "Arkansas Blue Cross and Blue Shield requires the clinical information that supports medical necessity to be submitted with the prior-authorization request; a request with no clinical document attached cannot be reviewed on the merits. <https://www.arkansasbluecross.com/providers>",
+      "citation": "Arkansas Blue Cross instructs providers to complete the authorization form and include relevant clinical documentation, medical records, or treatment plans supporting the request. <https://www.arkansasbluecross.com/providers/resource-center/prior-approval-for-requested-services>",
       "evidence": "Not a Arkansas Blue Cross and Blue Shield packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -1065,8 +1065,8 @@
       "ruleId": "R-PA-ARKBCBS-003",
       "severity": "info",
       "status": "pass",
-      "description": "Arkansas Blue Cross and Blue Shield prior authorization: submission channel (AHIN / Availity / phone on member ID card) indicated",
-      "citation": "Arkansas Blue Cross and Blue Shield directs providers to submit prior-authorization requests through the AHIN (Advanced Health Information Network) provider portal or Availity, by 278 EDI transaction, or by phone using the number on the member ID card. Informational: a cover sheet that names the channel speeds routing. <https://www.arkansasbluecross.com/providers>",
+      "description": "Arkansas Blue Cross prior authorization: submission channel is transport metadata, not required packet content",
+      "citation": "Arkansas Blue Cross publishes authorization forms and intake instructions, but the clinical packet does not need to restate the transport channel used to submit it. <https://www.arkansasbluecross.com/providers/resource-center/prior-approval-for-requested-services>",
       "evidence": "Not a Arkansas Blue Cross and Blue Shield packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -1075,18 +1075,18 @@
       "ruleId": "R-PA-ARKBCBS-004",
       "severity": "info",
       "status": "pass",
-      "description": "Arkansas Blue Cross and Blue Shield prior authorization: requested service is on Arkansas Blue Cross and Blue Shield's prior-authorization / notification requirement list",
-      "citation": "Arkansas Blue Cross and Blue Shield prior authorization applies only to services on its published prior-authorization and notification lists; requesting authorization for a non-listed service is unnecessary. ships no bundled list, so the rule is vacuously satisfied with a pointer to the list (it mirrors core R-PA-053 and the Aetna / UHC / Anthem / Cigna / Humana / HCSC / Highmark / Florida Blue / BCBSM / Blue Shield of California / Independence Blue Cross / CareFirst / Blue Cross NC / Horizon / BCBS Tennessee / BCBS Massachusetts / BCBS Alabama / BCBS South Carolina -004 rules; a later wave bundles the list and flips this to a real membership test). <https://www.arkansasbluecross.com/providers>",
+      "description": "Arkansas Blue Cross prior authorization: verify member- and service-specific requirements",
+      "citation": "Arkansas Blue Cross says authorization applies to some inpatient and outpatient services, most services do not require it, and Medicare Advantage uses separate requirements. Without a member-specific lookup, this reminder is non-enforcing. <https://www.arkansasbluecross.com/providers/resource-center/prior-approval-for-requested-services>",
       "evidence": "Not a Arkansas Blue Cross and Blue Shield packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
     {
       "ruleId": "R-PA-ARKBCBS-005",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "Arkansas Blue Cross and Blue Shield prior authorization: authorization is referenced for a service that requires it before the service date",
-      "citation": "Arkansas Blue Cross and Blue Shield requires prior authorization to be obtained before a service on its requirement list is rendered; a packet for an authorization-required service should show the authorization / reference number rather than relying on post-service review. <https://www.arkansasbluecross.com/providers>",
+      "description": "Completed Arkansas Blue Cross authorization submission: confirmation reference documented",
+      "citation": "Arkansas Blue Cross distinguishes pre-service authorization requests from post-service review. An initial request cannot already be expected to contain its resulting authorization number, so this advisory checks a reference only after the packet says submission is complete. <https://www.arkansasbluecross.com/providers/resource-center/prior-approval-for-requested-services>",
       "evidence": "Not a Arkansas Blue Cross and Blue Shield packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
