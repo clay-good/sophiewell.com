@@ -5188,6 +5188,78 @@ test('R-PA-BCBSSC-010 accepts a formatted NDC for an explicit requirement', () =
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-010').status, 'pass');
 });
 
+test('R-PA-BCBSSC-011 does not infer step therapy from a J-code or specialty-drug request', () => {
+  const findings = runEngine(bundleOf('Blue Cross Blue Shield of South Carolina member.\nSpecialty drug infusion, HCPCS J0123.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-011').status, 'pass');
+});
+
+test('R-PA-BCBSSC-011 advises when an explicit step-therapy requirement lacks trial evidence', () => {
+  const findings = runEngine(bundleOf('Blue Cross Blue Shield of South Carolina member.\nStep therapy required for the requested drug.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-011').status, 'info');
+});
+
+test('R-PA-BCBSSC-011 accepts a prerequisite trial or exception basis', () => {
+  const findings = runEngine(bundleOf('Blue Cross Blue Shield of South Carolina member.\nStep therapy required. Contraindication to the preferred drug documented.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-011').status, 'pass');
+});
+
+test('R-PA-BCBSSC-012 does not infer delegated laboratory review from a genetic-test code', () => {
+  const findings = runEngine(bundleOf('Blue Cross Blue Shield of South Carolina member.\nGenetic testing requested, CPT 81211.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-012').status, 'pass');
+});
+
+test('R-PA-BCBSSC-012 reports each missing delegated laboratory detail', () => {
+  const findings = runEngine(bundleOf('Blue Cross Blue Shield of South Carolina member.\nAvalon laboratory authorization. Test requested: BRCA panel.\n'));
+  const finding = findings.find((x) => x.ruleId === 'R-PA-BCBSSC-012');
+  assert.equal(finding.status, 'info');
+  assert.match(finding.note, /clinical indication/);
+});
+
+test('R-PA-BCBSSC-012 accepts the requested test and clinical indication', () => {
+  const findings = runEngine(bundleOf('Blue Cross Blue Shield of South Carolina member.\nAvalon laboratory authorization. Test requested: BRCA panel. Clinical indication: strong family history.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-012').status, 'pass');
+});
+
+test('R-PA-BCBSSC-013 does not infer medical-drug program scope from an infusion J-code', () => {
+  const findings = runEngine(bundleOf('Blue Cross Blue Shield of South Carolina member.\nInfusion request, HCPCS J0123.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-013').status, 'pass');
+});
+
+test('R-PA-BCBSSC-013 advises when specialty medical-drug review lacks a diagnosis', () => {
+  const findings = runEngine(bundleOf('Blue Cross Blue Shield of South Carolina member.\nSpecialty medical drug authorization requested.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-013').status, 'info');
+});
+
+test('R-PA-BCBSSC-013 accepts a specialty medical-drug request with a diagnosis', () => {
+  const findings = runEngine(bundleOf('Blue Cross Blue Shield of South Carolina member.\nSpecialty medical drug authorization. Diagnosis: rheumatoid arthritis, ICD-10 M06.9.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-013').status, 'pass');
+});
+
+test('R-PA-BCBSSC-014 advises when an explicit retrospective request lacks a reason', () => {
+  const findings = runEngine(bundleOf('Blue Cross Blue Shield of South Carolina member.\nRetrospective authorization requested.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-014').status, 'info');
+});
+
+test('R-PA-BCBSSC-014 accepts a request-specific retrospective reason', () => {
+  const findings = runEngine(bundleOf('Blue Cross Blue Shield of South Carolina member.\nRetrospective authorization requested. Reason for retrospective review: emergency admission.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-014').status, 'pass');
+});
+
+test('R-PA-BCBSSC-015 does not infer IHCS workflow from a DME code', () => {
+  const findings = runEngine(bundleOf('Blue Cross Blue Shield of South Carolina member.\nWheelchair requested, HCPCS E1234.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-015').status, 'pass');
+});
+
+test('R-PA-BCBSSC-015 advises when an IHCS home-services request lacks supporting material', () => {
+  const findings = runEngine(bundleOf('Blue Cross Blue Shield of South Carolina member.\nIHCS home health authorization requested.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-015').status, 'info');
+});
+
+test('R-PA-BCBSSC-015 accepts an identified IHCS supporting document', () => {
+  const findings = runEngine(bundleOf('Blue Cross Blue Shield of South Carolina member.\nIHCS home health authorization. Medical order attached.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-015').status, 'pass');
+});
+
 test('R-PA-BCBSSC-017 flags a BCBSSC transplant request with no Blue Distinction routing', () => {
   const text = 'Blue Cross Blue Shield of South Carolina member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
   const findings = runEngine(bundleOf(text));
