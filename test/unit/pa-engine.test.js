@@ -2885,11 +2885,61 @@ test('R-PA-IBX-010 advises when an IBX medical-benefit drug request omits height
   assert.match(f.note, /height and weight/);
 });
 
-test('R-PA-IBX-011 flags a Independence Blue Cross specialty-drug request with no step-therapy prior-trial documentation', () => {
+test('R-PA-IBX-011 gives an informational reminder for an explicit step-therapy requirement without medication history', () => {
   const text = 'Independence Blue Cross member.\nSpecialty drug requested; Independence Blue Cross pharmacy step therapy applies.\nProcedure J3590.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-IBX-011');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
+});
+
+test('R-PA-IBX-011 does not infer step therapy from a J-code or specialty-drug request', () => {
+  const findings = runEngine(bundleOf('Independence Blue Cross member.\nSpecialty drug request, J3590.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-IBX-011').status, 'pass');
+});
+
+test('R-PA-IBX-011 accepts medication history for an explicit step-therapy requirement', () => {
+  const findings = runEngine(bundleOf('Independence Blue Cross member.\nStep therapy applies.\nMedication history: step-1 medication used January through March.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-IBX-011').status, 'pass');
+});
+
+test('R-PA-IBX-012 does not infer an eviCore requirement from every 81xxx code', () => {
+  const findings = runEngine(bundleOf('Independence Blue Cross member.\nRequested CPT 81200.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-IBX-012').status, 'pass');
+});
+
+test('R-PA-IBX-012 flags an applicable laboratory workflow with no eviCore authorization on file', () => {
+  const findings = runEngine(bundleOf('Independence Blue Cross member.\nTesting laboratory received request.\neviCore genetic precertification applies.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-IBX-012').status, 'flag');
+});
+
+test('R-PA-IBX-013 does not require a diagnosis from a generic J-code request', () => {
+  const findings = runEngine(bundleOf('Independence Blue Cross member.\nSpecialty drug request, J3590.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-IBX-013').status, 'pass');
+});
+
+test('R-PA-IBX-013 requires ICD-10 on an IBX Direct Ship general drug request', () => {
+  const findings = runEngine(bundleOf('Independence Blue Cross member.\nDirect Ship General Drug Request.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-IBX-013').status, 'flag');
+});
+
+test('R-PA-IBX-014 does not apply inpatient retro-review criteria to a generic post-service request', () => {
+  const findings = runEngine(bundleOf('Independence Blue Cross member.\nPost-service review requested for outpatient surgery.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-IBX-014').status, 'pass');
+});
+
+test('R-PA-IBX-014 advises when retrospective inpatient review lacks a qualifying circumstance', () => {
+  const findings = runEngine(bundleOf('Independence Blue Cross member.\nRetrospective review of inpatient stay requested.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-IBX-014').status, 'info');
+});
+
+test('R-PA-IBX-014 accepts coverage discovered after discharge', () => {
+  const findings = runEngine(bundleOf('Independence Blue Cross member.\nRetrospective review of inpatient stay.\nEligibility discovered after discharge; patient had been classified under different coverage.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-IBX-014').status, 'pass');
+});
+
+test('R-PA-IBX-015 does not impose a universal signed-order requirement on IBX DME', () => {
+  const findings = runEngine(bundleOf('Independence Blue Cross member.\nWheelchair request, HCPCS K0001.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-IBX-015').status, 'pass');
 });
 
 test('R-PA-IBX-017 flags a Independence Blue Cross transplant request with no Blue Distinction routing', () => {
