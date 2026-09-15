@@ -5103,11 +5103,46 @@ test('R-PA-BCBSSC-005 accepts a completed submission with a case reference', () 
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-005').status, 'pass');
 });
 
-test('R-PA-BCBSSC-007 flags a BCBSSC outpatient MRI with no clinical indication', () => {
+test('R-PA-BCBSSC-006 does not infer continued-stay review from inpatient context', () => {
+  const text = 'Blue Cross Blue Shield of South Carolina member.\nInpatient admission, POS 21.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-006').status, 'pass');
+});
+
+test('R-PA-BCBSSC-006 advises when an explicit continued-stay review lacks required workflow details', () => {
+  const text = 'Blue Cross Blue Shield of South Carolina member.\nContinued stay review requested.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-006').status, 'info');
+});
+
+test('R-PA-BCBSSC-006 accepts clinical documentation and continuation confirmation', () => {
+  const text = 'Blue Cross Blue Shield of South Carolina member.\nContinued stay review. Start continuation selected. Clinical update and plan of care attached.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-006').status, 'pass');
+});
+
+test('R-PA-BCBSSC-007 does not infer delegated review from an outpatient MRI', () => {
   const text = 'Blue Cross Blue Shield of South Carolina member.\nRequested: MRI lumbar spine, CPT 72148.\n';
   const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSSC-007');
-  assert.equal(f.status, 'flag');
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-007').status, 'pass');
+});
+
+test('R-PA-BCBSSC-007 advises when delegated advanced-radiology review lacks an indication', () => {
+  const text = 'Blue Cross Blue Shield of South Carolina member.\nEvolent advanced radiology authorization for MRI lumbar spine.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-007').status, 'info');
+});
+
+test('R-PA-BCBSSC-007 accepts a delegated request with a clinical indication', () => {
+  const text = 'Blue Cross Blue Shield of South Carolina member.\nEvolent advanced radiology authorization. MRI lumbar spine. Clinical indication: persistent radiculopathy.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-007').status, 'pass');
+});
+
+test('R-PA-BCBSSC-008 advises when an expedited request lacks clinical urgency', () => {
+  const text = 'Blue Cross Blue Shield of South Carolina member.\nExpedited authorization requested.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-008').status, 'info');
 });
 
 test('R-PA-BCBSSC-008 passes when an expedited BCBSSC request documents the clinical urgency', () => {
@@ -5115,6 +5150,42 @@ test('R-PA-BCBSSC-008 passes when an expedited BCBSSC request documents the clin
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-BCBSSC-008');
   assert.equal(f.status, 'pass');
+});
+
+test('R-PA-BCBSSC-009 does not infer a site-of-care rule from hospital-outpatient surgery', () => {
+  const text = 'Blue Cross Blue Shield of South Carolina member.\nHospital outpatient surgery, POS 22, CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-009').status, 'pass');
+});
+
+test('R-PA-BCBSSC-009 advises when an explicit drug site-of-care requirement lacks a site', () => {
+  const text = 'Blue Cross Blue Shield of South Carolina member.\nSpecialty drug site-of-care review required.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-009').status, 'info');
+});
+
+test('R-PA-BCBSSC-009 accepts a selected specialty-drug administration site', () => {
+  const text = 'Blue Cross Blue Shield of South Carolina member.\nSpecialty drug site-of-care review required. Administration site: physician office.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-009').status, 'pass');
+});
+
+test('R-PA-BCBSSC-010 does not infer an NDC requirement from a J-code', () => {
+  const text = 'Blue Cross Blue Shield of South Carolina member.\nInfusion request, HCPCS J0123.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-010').status, 'pass');
+});
+
+test('R-PA-BCBSSC-010 advises when an explicit NDC requirement lacks a formatted code', () => {
+  const text = 'Blue Cross Blue Shield of South Carolina member.\nNDC required for this drug request.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-010').status, 'info');
+});
+
+test('R-PA-BCBSSC-010 accepts a formatted NDC for an explicit requirement', () => {
+  const text = 'Blue Cross Blue Shield of South Carolina member.\nNDC required: 0002-7597-01.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-010').status, 'pass');
 });
 
 test('R-PA-BCBSSC-017 flags a BCBSSC transplant request with no Blue Distinction routing', () => {
