@@ -3947,19 +3947,28 @@ test('BCBST overlay rules vacuously pass on a non-BCBST packet', () => {
   }
 });
 
-test('R-PA-BCBST-001 flags a BCBST request with a procedure but no coverage-criteria reference', () => {
+test('R-PA-BCBST-001 does not require every BCBST procedure request to cite a Medical Policy', () => {
   const text = 'Blue Cross Blue Shield of Tennessee member.\n'
     + 'Requested procedure: CPT 72148 (MRI lumbar spine).\n'
     + 'Please authorize.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-BCBST-001');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'pass');
 });
 
-test('R-PA-BCBST-001 passes when the BCBST packet cites the applicable Medical Policy', () => {
+test('R-PA-BCBST-001 advises when a BCBST rationale relies on an unidentified Medical Policy', () => {
   const text = 'Blue Cross Blue Shield of Tennessee member.\n'
     + 'Requested procedure: CPT 72148.\n'
-    + 'Medical necessity per the applicable BCBST Medical Policy (MCG).\n';
+    + 'Medical necessity per Medical Policy.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-BCBST-001');
+  assert.equal(f.status, 'info');
+});
+
+test('R-PA-BCBST-001 accepts a named Medical Policy when the rationale relies on it', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\n'
+    + 'Requested procedure: CPT 72148.\n'
+    + 'Medical necessity per Medical Policy. Medical Policy number: MRI-12.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-BCBST-001');
   assert.equal(f.status, 'pass');
@@ -3972,11 +3981,41 @@ test('R-PA-BCBST-002 flags a BCBST packet with no clinical document attached', (
   assert.equal(f.status, 'flag');
 });
 
-test('R-PA-BCBST-003 passes when the BCBST packet names the BlueAccess channel (info)', () => {
-  const text = 'Blue Cross Blue Shield of Tennessee member.\nSubmitted via the BlueAccess provider portal.\nProcedure CPT 27447.\n';
+test('R-PA-BCBST-002 does not demand clinical attachments without an identifiable authorization request', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nProvider contact update.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-002').status, 'pass');
+});
+
+test('R-PA-BCBST-003 passes when the BCBST packet names the Availity channel', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nSubmitted via Availity.\nProcedure CPT 27447.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-BCBST-003');
   assert.equal(f.status, 'pass');
+});
+
+test('R-PA-BCBST-003 does not require transmission metadata inside the clinical packet', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nProcedure CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-003').status, 'pass');
+});
+
+test('R-PA-BCBST-005 does not require a future authorization number on an initial request', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nPrior authorization required for CPT 27447. Please authorize.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-005').status, 'pass');
+});
+
+test('R-PA-BCBST-005 advises when claimed approval lacks its issued reference', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nPrior authorization approved for CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-005').status, 'info');
+});
+
+test('R-PA-BCBST-005 accepts a reference on a claimed approval', () => {
+  const text = 'Blue Cross Blue Shield of Tennessee member.\nPrior authorization approved for CPT 27447. Authorization number: TN-123.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBST-005').status, 'pass');
 });
 
 test('R-PA-BCBST-007 flags a BCBST outpatient MRI with no clinical indication', () => {

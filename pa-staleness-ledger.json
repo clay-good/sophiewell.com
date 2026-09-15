@@ -594,7 +594,12 @@
         "R-PA-BCBST-002"
       ],
       "url": "https://provider.bcbst.com/tools-resources/authorizations-appeals",
-      "lastVerified": "2026-06-04"
+      "lastVerified": "2026-09-15",
+      "alsoCited": [
+        "https://provider.bcbst.com/tools-resources/manuals-policies-guidelines",
+        "https://content.bcbst.com/api/public/content/commercial_auth_fax_form.pdf",
+        "https://www.bcbst.com/docs/providers/Commercial-Prior-Auth-Requirements.pdf"
+      ]
     },
     {
       "id": "bcbsma-precert",

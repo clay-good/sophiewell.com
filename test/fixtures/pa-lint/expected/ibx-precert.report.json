@@ -2623,10 +2623,10 @@
     },
     {
       "ruleId": "R-PA-BCBST-001",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "Blue Cross Blue Shield of Tennessee prior authorization: coverage criteria (Blue Cross Blue Shield of Tennessee Medical Policy / MCG) referenced",
-      "citation": "Blue Cross Blue Shield of Tennessee adjudicates prior-authorization requests against its published Medical Policies (and MCG care guidelines); a request should cite the policy it is being judged against so the reviewer can map it to the coverage criteria. <https://provider.bcbst.com/tools-resources/authorizations-appeals>",
+      "description": "BCBST request that explicitly relies on a Medical Policy: policy identifier documented",
+      "citation": "BlueCross BlueShield of Tennessee publishes Medical Policies and utilization-management guidelines for coverage and medical-necessity decisions, but its general commercial authorization form does not require every requester to cite one. This informational check applies only when the packet explicitly relies on a Medical Policy. <https://provider.bcbst.com/tools-resources/manuals-policies-guidelines>",
       "evidence": "Not a Blue Cross Blue Shield of Tennessee packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -2636,7 +2636,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "Blue Cross Blue Shield of Tennessee prior authorization: supporting medical records / clinical documentation attached",
-      "citation": "Blue Cross Blue Shield of Tennessee requires the clinical information that supports medical necessity to be submitted with the prior-authorization request; a request with no clinical document attached cannot be reviewed on the merits. <https://provider.bcbst.com/tools-resources/authorizations-appeals>",
+      "citation": "BlueCross BlueShield of Tennessee's current commercial inpatient / outpatient authorization form asks requesters to include the available clinical information supporting medical necessity, including pertinent history, orders or treatment plan, tests, therapy notes, and discharge plans as applicable. <https://content.bcbst.com/api/public/content/commercial_auth_fax_form.pdf>",
       "evidence": "Not a Blue Cross Blue Shield of Tennessee packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -2645,8 +2645,8 @@
       "ruleId": "R-PA-BCBST-003",
       "severity": "info",
       "status": "pass",
-      "description": "Blue Cross Blue Shield of Tennessee prior authorization: submission channel (Availity Essentials / BlueAccess / phone on member ID card) indicated",
-      "citation": "Blue Cross Blue Shield of Tennessee directs providers to submit prior-authorization requests through the Availity Essentials portal or the BlueAccess provider portal, by 278 EDI transaction, or by phone using the number on the member ID card. Informational: a cover sheet that names the channel speeds routing. <https://provider.bcbst.com/tools-resources/authorizations-appeals>",
+      "description": "BCBST prior authorization: current submission channels noted for routing",
+      "citation": "BlueCross BlueShield of Tennessee currently accepts commercial prior-authorization requests through Availity, with phone or service-specific fax routes also published. The clinical packet itself is not required to restate the transmission channel. <https://provider.bcbst.com/tools-resources/authorizations-appeals>",
       "evidence": "Not a Blue Cross Blue Shield of Tennessee packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -2655,18 +2655,18 @@
       "ruleId": "R-PA-BCBST-004",
       "severity": "info",
       "status": "pass",
-      "description": "Blue Cross Blue Shield of Tennessee prior authorization: requested service is on Blue Cross Blue Shield of Tennessee's prior-authorization / notification requirement list",
-      "citation": "Blue Cross Blue Shield of Tennessee prior authorization applies only to services on its published prior-authorization and notification lists; requesting authorization for a non-listed service is unnecessary. ships no bundled list, so the rule is vacuously satisfied with a pointer to the list (it mirrors core R-PA-053 and the Aetna / UHC / Anthem / Cigna / Humana / HCSC / Highmark / Florida Blue / BCBSM / Blue Shield of California / Independence Blue Cross / CareFirst / Blue Cross NC / Horizon -004 rules; a later wave bundles the list and flips this to a real membership test). <https://provider.bcbst.com/tools-resources/authorizations-appeals>",
+      "description": "BCBST prior authorization: verify the service against the current commercial requirement list",
+      "citation": "BlueCross BlueShield of Tennessee publishes a commercial prior-authorization list and cautions that group-specific requirements can differ. This rule ships no versioned code list and therefore does not infer authorization status from a CPT code. <https://www.bcbst.com/docs/providers/Commercial-Prior-Auth-Requirements.pdf>",
       "evidence": "Not a Blue Cross Blue Shield of Tennessee packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
     {
       "ruleId": "R-PA-BCBST-005",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "Blue Cross Blue Shield of Tennessee prior authorization: authorization is referenced for a service that requires it before the service date",
-      "citation": "Blue Cross Blue Shield of Tennessee requires prior authorization to be obtained before a service on its requirement list is rendered; a packet for an authorization-required service should show the authorization / reference number rather than relying on post-service review. <https://provider.bcbst.com/tools-resources/authorizations-appeals>",
+      "description": "BCBST post-decision record that claims approval: authorization reference documented",
+      "citation": "Source-free operational completeness check: an initial BCBST authorization request cannot be expected to contain the authorization number it is requesting. This informational check runs only when a post-decision packet states that approval or authorization has already been obtained.",
       "evidence": "Not a Blue Cross Blue Shield of Tennessee packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -10076,7 +10076,7 @@
           "label": "Blue Cross Blue Shield of Tennessee prior-authorization requirements, Medical Policies, and utilization-management / pharmacy program requirements",
           "url": "https://provider.bcbst.com/tools-resources/authorizations-appeals",
           "ruleFamily": "commercial-bcbst",
-          "lastVerified": "2026-06-04"
+          "lastVerified": "2026-09-15"
         },
         {
           "id": "bcbsma-precert",
