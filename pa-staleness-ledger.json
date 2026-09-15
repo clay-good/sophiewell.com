@@ -406,7 +406,12 @@
         "R-PA-FLBLUE-002"
       ],
       "url": "https://www.floridablue.com/providers/medical-pharmacy-info/prior-authorization",
-      "lastVerified": "2026-06-03"
+      "lastVerified": "2026-09-15",
+      "alsoCited": [
+        "https://www.floridablue.com/providers/medical-pharmacy-info/medical-policies",
+        "https://www.floridablue.com/providers/quick-reference-guide",
+        "https://www.floridablue.com/providers/medical-pharmacy-info/medical-policy-pre-certification-pre-authorization"
+      ]
     },
     {
       "id": "bcbsm-precert",

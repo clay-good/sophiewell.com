@@ -2125,36 +2125,49 @@ test('Florida Blue overlay rules vacuously pass on a non-Florida-Blue packet', (
   }
 });
 
-test('R-PA-FLBLUE-001 flags a Florida Blue request with a procedure but no coverage-criteria reference', () => {
+test('R-PA-FLBLUE-001 treats a policy reference as an informational mapping aid', () => {
   const text = 'Florida Blue PPO member.\n'
     + 'Requested procedure: CPT 72148 (MRI lumbar spine).\n'
     + 'Please authorize.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-FLBLUE-001');
-  assert.equal(f.status, 'flag');
-});
+  assert.equal(f.status, 'info');
 
-test('R-PA-FLBLUE-001 passes when the Florida Blue packet cites the applicable Medical Policy', () => {
-  const text = 'Florida Blue member.\n'
+  const complete = runEngine(bundleOf('Florida Blue member.\n'
     + 'Requested procedure: CPT 72148.\n'
-    + 'Medical necessity per the applicable Florida Blue Medical Policy (MCG).\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-FLBLUE-001');
-  assert.equal(f.status, 'pass');
+    + 'Medical necessity per the applicable Florida Blue Medical Coverage Guideline.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-FLBLUE-001').status, 'pass');
 });
 
-test('R-PA-FLBLUE-002 flags a Florida Blue packet with no clinical document attached', () => {
+test('R-PA-FLBLUE-002 keeps request-specific clinical attachments informational', () => {
   const text = 'Florida Blue PPO member.\nRequested procedure: CPT 27447.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-FLBLUE-002');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
+
+  const complete = runEngine(bundleOf('Florida Blue member.\nRequested procedure: CPT 27447.\nClinical note: persistent knee pain despite therapy.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-FLBLUE-002').status, 'pass');
 });
 
-test('R-PA-FLBLUE-003 passes when the Florida Blue packet names the Availity channel (info)', () => {
-  const text = 'Florida Blue member.\nSubmitted via the Availity Essentials portal.\nProcedure CPT 27447.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-FLBLUE-003');
-  assert.equal(f.status, 'pass');
+test('R-PA-FLBLUE-003 does not require the packet to name its submission channel', () => {
+  const findings = runEngine(bundleOf('Florida Blue member.\nProcedure CPT 27447.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-FLBLUE-003').status, 'pass');
+});
+
+test('R-PA-FLBLUE-004 remains a non-enforcing member-specific lookup reminder', () => {
+  const findings = runEngine(bundleOf('Florida Blue member.\nProcedure CPT 27447.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-FLBLUE-004').status, 'pass');
+});
+
+test('R-PA-FLBLUE-005 asks for a reference only after completed submission', () => {
+  const initial = runEngine(bundleOf('Florida Blue member.\nPrior authorization required for CPT 27447.\n'));
+  assert.equal(initial.find((x) => x.ruleId === 'R-PA-FLBLUE-005').status, 'pass');
+
+  const submitted = runEngine(bundleOf('Florida Blue member.\nPrior authorization submitted.\n'));
+  assert.equal(submitted.find((x) => x.ruleId === 'R-PA-FLBLUE-005').status, 'info');
+
+  const confirmed = runEngine(bundleOf('Florida Blue member.\nPrior authorization submitted.\nAuthorization number: FB-12345.\n'));
+  assert.equal(confirmed.find((x) => x.ruleId === 'R-PA-FLBLUE-005').status, 'pass');
 });
 
 test('R-PA-FLBLUE-006 flags an inpatient (POS 21) Florida Blue request with no admission / progress documentation', () => {

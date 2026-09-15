@@ -13,8 +13,8 @@
     "counts": {
       "block": 0,
       "flag": 6,
-      "info": 4,
-      "pass": 866,
+      "info": 3,
+      "pass": 867,
       "error": 0,
       "disabled": 0
     },
@@ -109,16 +109,6 @@
       "citation": "(core, payer-agnostic).",
       "evidence": null,
       "note": "No cover-sheet / checklist anchor found.",
-      "remediation": null
-    },
-    {
-      "ruleId": "R-PA-FLBLUE-003",
-      "severity": "info",
-      "status": "info",
-      "description": "Florida Blue prior authorization: submission channel (Availity Essentials / Provider Resource Center / phone on member ID card) indicated",
-      "citation": "Florida Blue directs providers to submit prior-authorization requests through the Availity Essentials portal or the Provider Resource Center, by 278 EDI transaction, or by phone using the number on the member ID card. Informational: a cover sheet that names the channel speeds routing. <https://www.floridablue.com/providers/medical-pharmacy-info/prior-authorization>",
-      "evidence": null,
-      "note": "No Florida Blue submission channel (the Availity Essentials portal / Provider Resource Center / EDI 278 / the phone number on the member ID card) is noted in the packet. Informational only -- does not affect medical-necessity review.",
       "remediation": null
     },
     {
@@ -3943,21 +3933,31 @@
     },
     {
       "ruleId": "R-PA-FLBLUE-001",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "Florida Blue prior authorization: coverage criteria (Florida Blue Medical Policy / MCG) referenced",
-      "citation": "Florida Blue adjudicates prior-authorization requests against its published Medical Policies (and MCG care guidelines); a request should cite the policy it is being judged against so the reviewer can map it to the coverage criteria. <https://www.floridablue.com/providers/medical-pharmacy-info/prior-authorization>",
-      "evidence": "Coverage-criteria reference in florida-blue-pa-form.txt",
+      "description": "Florida Blue prior authorization: applicable Medical Coverage Guideline identified when known",
+      "citation": "Florida Blue publishes Medical Coverage Guidelines so members and providers can see criteria used for coverage decisions, while member contracts and benefits remain controlling. Its current materials do not require every authorization packet to cite a guideline. Informational. <https://www.floridablue.com/providers/medical-pharmacy-info/medical-policies>",
+      "evidence": "Applicable coverage-criterion reference in florida-blue-pa-form.txt",
       "note": null,
       "remediation": null
     },
     {
       "ruleId": "R-PA-FLBLUE-002",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "Florida Blue prior authorization: supporting medical records / clinical documentation attached",
-      "citation": "Florida Blue requires the clinical information that supports medical necessity to be submitted with the prior-authorization request; a request with no clinical document attached cannot be reviewed on the merits. <https://www.floridablue.com/providers/medical-pharmacy-info/prior-authorization>",
+      "description": "Florida Blue prior authorization: request-specific supporting clinical documentation attached",
+      "citation": "Florida Blue describes service-specific prior-authorization reviews and workflows. Its public overview does not impose one fixed clinical-document type on every service or member plan, so this is an informational completeness check. <https://www.floridablue.com/providers/medical-pharmacy-info/prior-authorization>",
       "evidence": "Supporting clinical document present: florida-blue-note.txt (clinical-note)",
+      "note": null,
+      "remediation": null
+    },
+    {
+      "ruleId": "R-PA-FLBLUE-003",
+      "severity": "info",
+      "status": "pass",
+      "description": "Florida Blue prior authorization: use the service-specific submission workflow",
+      "citation": "Florida Blue routes many requests through Availity and routes some services or products to different phone or vendor workflows. Packet content does not need to record its transport channel. <https://www.floridablue.com/providers/medical-pharmacy-info/prior-authorization> <https://www.floridablue.com/providers/quick-reference-guide>",
+      "evidence": "Packet content does not need to record its transport channel; use the current Florida Blue or delegated-vendor workflow for the service and member.",
       "note": null,
       "remediation": null
     },
@@ -3965,19 +3965,19 @@
       "ruleId": "R-PA-FLBLUE-004",
       "severity": "info",
       "status": "pass",
-      "description": "Florida Blue prior authorization: requested service is on Florida Blue's prior-authorization / notification requirement list",
-      "citation": "Florida Blue prior authorization applies only to services on its published prior-authorization and notification lists; requesting authorization for a non-listed service is unnecessary. ships no bundled list, so the rule is vacuously satisfied with a pointer to the list (it mirrors core R-PA-053 and the Aetna / UHC / Anthem / Cigna / Humana / HCSC / Highmark -004 rules; a later wave bundles the list and flips this to a real membership test). <https://www.floridablue.com/providers/medical-pharmacy-info/prior-authorization>",
-      "evidence": "No bundled Florida Blue prior-authorization list at wave 52-14; rule vacuously satisfied. Verify the requested service against Florida Blue's current prior-authorization and notification list.",
+      "description": "Florida Blue prior authorization: requested service checked against the member's applicable requirement list",
+      "citation": "Florida Blue says its public service list is subject to change and directs users to the member policy and ID-card contact for complete benefit details. The linter has no member-specific eligibility lookup, so this reminder is non-enforcing. <https://www.floridablue.com/providers/medical-pharmacy-info/prior-authorization> <https://www.floridablue.com/providers/medical-pharmacy-info/medical-policy-pre-certification-pre-authorization>",
+      "evidence": "No member-specific Florida Blue requirement service is bundled; verify the request against the current list, member policy, eligibility, and benefits.",
       "note": null,
       "remediation": null
     },
     {
       "ruleId": "R-PA-FLBLUE-005",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "Florida Blue prior authorization: authorization is referenced for a service that requires it before the service date",
-      "citation": "Florida Blue requires prior authorization to be obtained before a service on its requirement list is rendered; a packet for an authorization-required service should show the authorization / reference number rather than relying on post-service review. <https://www.floridablue.com/providers/medical-pharmacy-info/prior-authorization>",
-      "evidence": "Florida Blue packet without an authorization-required service flag; rule vacuously satisfied.",
+      "description": "Florida Blue submitted prior authorization: confirmation reference retained",
+      "citation": "Florida Blue tells providers faxing medical records to include the authorization number and uses authorization or transaction identifiers for follow-up. An initial request cannot already contain that confirmation, so this advisory runs only after the packet says submission is complete. <https://www.floridablue.com/providers/quick-reference-guide>",
+      "evidence": "Packet does not claim a completed Florida Blue prior-authorization submission; no confirmation reference is expected.",
       "note": null,
       "remediation": null
     },
@@ -8931,7 +8931,6 @@
       "R-PA-031",
       "R-PA-032",
       "R-PA-060",
-      "R-PA-FLBLUE-003",
       "R-PA-001",
       "R-PA-002",
       "R-PA-003",
@@ -9316,6 +9315,7 @@
       "R-PA-CMS-026",
       "R-PA-FLBLUE-001",
       "R-PA-FLBLUE-002",
+      "R-PA-FLBLUE-003",
       "R-PA-FLBLUE-004",
       "R-PA-FLBLUE-005",
       "R-PA-FLBLUE-006",
@@ -10027,7 +10027,7 @@
           "label": "Florida Blue / GuideWell (Blue Cross and Blue Shield of Florida) prior-authorization requirements, Medical Policies, and utilization-management / pharmacy program requirements",
           "url": "https://www.floridablue.com/providers/medical-pharmacy-info/prior-authorization",
           "ruleFamily": "commercial-florida-blue",
-          "lastVerified": "2026-06-03"
+          "lastVerified": "2026-09-15"
         },
         {
           "id": "bcbsm-precert",
