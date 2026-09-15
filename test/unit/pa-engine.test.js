@@ -3154,6 +3154,83 @@ test('R-PA-CAREFIRST-010 accepts J3490 with an NDC', () => {
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-010').status, 'pass');
 });
 
+test('R-PA-CAREFIRST-011 does not infer step therapy from a J-code drug request', () => {
+  const findings = runEngine(bundleOf('CareFirst member.\nInfusion drug J1745.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-011').status, 'pass');
+});
+
+test('R-PA-CAREFIRST-011 advises when explicit step therapy lacks a trial or exception basis', () => {
+  const findings = runEngine(bundleOf('CareFirst member.\nThis drug is subject to step therapy.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-011').status, 'info');
+});
+
+test('R-PA-CAREFIRST-011 accepts an explicit step-therapy intolerance', () => {
+  const findings = runEngine(bundleOf('CareFirst member.\nStep therapy required.\nIntolerance to the preferred drug documented.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-011').status, 'pass');
+});
+
+test('R-PA-CAREFIRST-012 does not infer genetic testing from the broad 81xxx laboratory range', () => {
+  const findings = runEngine(bundleOf('CareFirst member.\nLaboratory procedure CPT 81001.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-012').status, 'pass');
+});
+
+test('R-PA-CAREFIRST-012 requires both a specific genetic test and an indication', () => {
+  const findings = runEngine(bundleOf('CareFirst member.\nGenetic testing requested.\n'));
+  const finding = findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-012');
+  assert.equal(finding.status, 'info');
+  assert.match(finding.note, /specific test and clinical indication/);
+});
+
+test('R-PA-CAREFIRST-012 does not treat an unrelated CPT as the specific genetic test', () => {
+  const findings = runEngine(bundleOf('CareFirst member.\nGenetic testing requested with office visit CPT 99213.\nClinical indication: family history.\n'));
+  const finding = findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-012');
+  assert.equal(finding.status, 'info');
+  assert.match(finding.note, /specific test/);
+});
+
+test('R-PA-CAREFIRST-012 does not accept a test name without an indication', () => {
+  const findings = runEngine(bundleOf('CareFirst member.\nBRCA1 genetic testing requested.\n'));
+  const finding = findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-012');
+  assert.equal(finding.status, 'info');
+  assert.match(finding.note, /clinical indication/);
+});
+
+test('R-PA-CAREFIRST-012 accepts a specific genetic test and indication', () => {
+  const findings = runEngine(bundleOf('CareFirst member.\nBRCA1 genetic testing requested.\nClinical indication: personal history of breast cancer.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-012').status, 'pass');
+});
+
+test('R-PA-CAREFIRST-013 treats a missing medical-drug diagnosis as informational', () => {
+  const findings = runEngine(bundleOf('CareFirst member.\nInfusion drug J1745.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-013').status, 'info');
+});
+
+test('R-PA-CAREFIRST-013 accepts a medical-drug diagnosis', () => {
+  const findings = runEngine(bundleOf('CareFirst member.\nInfusion drug J1745.\nDiagnosis: K50.90.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-013').status, 'pass');
+});
+
+test('R-PA-CAREFIRST-014 does not invent a universal retrospective-justification rule', () => {
+  const findings = runEngine(bundleOf('CareFirst member.\nRetrospective authorization request.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-014').status, 'pass');
+});
+
+test('R-PA-CAREFIRST-015 does not apply the home-care form to DME alone', () => {
+  const findings = runEngine(bundleOf('CareFirst member.\nDurable medical equipment E0601.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-015').status, 'pass');
+});
+
+test('R-PA-CAREFIRST-015 advises when home-care form details are incomplete', () => {
+  const findings = runEngine(bundleOf('CareFirst member.\nHome care authorization requested.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-015').status, 'info');
+});
+
+test('R-PA-CAREFIRST-015 accepts a home-care diagnosis and requested services', () => {
+  const text = 'CareFirst member.\nHome care authorization requested.\nDiagnosis: I10.\nServices requested: skilled nursing, 2 visits per week.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-015').status, 'pass');
+});
+
 test('R-PA-CAREFIRST-017 flags a CareFirst transplant request with no Blue Distinction routing', () => {
   const text = 'CareFirst member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
   const findings = runEngine(bundleOf(text));
