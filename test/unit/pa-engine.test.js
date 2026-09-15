@@ -5042,13 +5042,13 @@ test('BCBSSC overlay rules vacuously pass on a non-BCBSSC packet', () => {
   }
 });
 
-test('R-PA-BCBSSC-001 flags a BCBSSC request with a procedure but no coverage-criteria reference', () => {
+test('R-PA-BCBSSC-001 advises when a coded request has no coverage-criteria reference', () => {
   const text = 'Blue Cross Blue Shield of South Carolina member.\n'
     + 'Requested procedure: CPT 72148 (MRI lumbar spine).\n'
     + 'Please authorize.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-BCBSSC-001');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
 });
 
 test('R-PA-BCBSSC-001 passes when the BCBSSC packet cites the applicable Medical Policy', () => {
@@ -5060,18 +5060,47 @@ test('R-PA-BCBSSC-001 passes when the BCBSSC packet cites the applicable Medical
   assert.equal(f.status, 'pass');
 });
 
-test('R-PA-BCBSSC-002 flags a BCBSSC packet with no clinical document attached', () => {
+test('R-PA-BCBSSC-002 advises when a BCBSSC packet has no clinical document attached', () => {
   const text = 'Blue Cross Blue Shield of South Carolina member.\nRequested procedure: CPT 27447.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-BCBSSC-002');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
 });
 
-test('R-PA-BCBSSC-003 passes when the BCBSSC packet names the My Insurance Manager channel (info)', () => {
-  const text = 'Blue Cross Blue Shield of South Carolina member.\nSubmitted via the My Insurance Manager provider portal.\nProcedure CPT 27447.\n';
+test('R-PA-BCBSSC-002 accepts a request-specific clinical document', () => {
+  const text = 'Blue Cross Blue Shield of South Carolina member.\nRequested procedure: CPT 27447.\nMedical necessity letter with current symptoms attached.\n';
   const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSSC-003');
-  assert.equal(f.status, 'pass');
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-002').status, 'pass');
+});
+
+test('R-PA-BCBSSC-003 does not require the packet to record its submission channel', () => {
+  const text = 'Blue Cross Blue Shield of South Carolina member.\nProcedure CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-003').status, 'pass');
+});
+
+test('R-PA-BCBSSC-004 remains non-enforcing without a member-specific lookup', () => {
+  const text = 'Blue Cross Blue Shield of South Carolina member.\nProcedure CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-004').status, 'pass');
+});
+
+test('R-PA-BCBSSC-005 does not expect an authorization number on an initial request', () => {
+  const text = 'Blue Cross Blue Shield of South Carolina member.\nPrior authorization required for CPT 27447. Initial request.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-005').status, 'pass');
+});
+
+test('R-PA-BCBSSC-005 advises when a completed submission lacks a confirmation reference', () => {
+  const text = 'Blue Cross Blue Shield of South Carolina member.\nPrior authorization submitted for CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-005').status, 'info');
+});
+
+test('R-PA-BCBSSC-005 accepts a completed submission with a case reference', () => {
+  const text = 'Blue Cross Blue Shield of South Carolina member.\nPrior authorization submitted for CPT 27447. Case number PA-12345.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-005').status, 'pass');
 });
 
 test('R-PA-BCBSSC-007 flags a BCBSSC outpatient MRI with no clinical indication', () => {
