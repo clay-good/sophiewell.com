@@ -1943,10 +1943,10 @@
     },
     {
       "ruleId": "R-PA-BCBSMA-011",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "Blue Cross Blue Shield of Massachusetts drug prior authorization: step-therapy prior-trial documentation (drugs tried + therapeutic failure) present",
-      "citation": "For drugs subject to step therapy Blue Cross Blue Shield of Massachusetts pharmacy management requires documentation of the prerequisite drugs tried and the therapeutic failure / intolerance for each before the requested agent is approved. <https://provider.bluecrossma.com/>",
+      "description": "BCBSMA explicit step-therapy request: prior therapy or exception rationale documented",
+      "citation": "The current Massachusetts medication prior-authorization form asks whether previous therapies were tried and whether alternatives are contraindicated, but only an identified step-therapy request establishes that context. <https://provider.bluecrossma.com/eforms/medication-prior-auth?secure=true>",
       "evidence": "Not a Blue Cross Blue Shield of Massachusetts packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -1955,8 +1955,8 @@
       "ruleId": "R-PA-BCBSMA-012",
       "severity": "flag",
       "status": "pass",
-      "description": "Blue Cross Blue Shield of Massachusetts genetic / molecular testing: the specific test and indication are documented for Blue Cross Blue Shield of Massachusetts's genetic / molecular lab-management program",
-      "citation": "Blue Cross Blue Shield of Massachusetts delegates genetic / molecular testing prior authorization to its lab-management program, which requires the specific test name (and, where applicable, the unique test identifier) plus the clinical indication. <https://provider.bluecrossma.com/>",
+      "description": "BCBSMA Carelon genetic-testing request: test, laboratory, and indication documented",
+      "citation": "Blue Cross Blue Shield of Massachusetts routes certain genetic testing through Carelon. Its current instructions ask for the specific test, the performing laboratory, and clinical information supporting the request. <https://provider.bluecrossma.com/ProviderHome/portal/home/clinical-resources/prior-authorization/genetic-testing/>",
       "evidence": "Not a Blue Cross Blue Shield of Massachusetts packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -1965,8 +1965,8 @@
       "ruleId": "R-PA-BCBSMA-013",
       "severity": "flag",
       "status": "pass",
-      "description": "Blue Cross Blue Shield of Massachusetts specialty / oncology drug: the supporting diagnosis is documented for the applicable Medical Policy",
-      "citation": "Blue Cross Blue Shield of Massachusetts specialty and oncology drug coverage is governed by drug-specific Medical Policies that condition coverage on a supporting diagnosis (ICD-10) matching the policy's indication; the request should carry that diagnosis. <https://provider.bluecrossma.com/>",
+      "description": "BCBSMA outpatient oncology authorization request: patient diagnosis documented",
+      "citation": "Blue Cross Blue Shield of Massachusetts routes certain outpatient medical and radiation oncology services through its cancer program, whose request information includes the patient diagnosis. <https://provider.bluecrossma.com/ProviderHome/portal/home/clinical-resources/prior-authorization/cancer-care/>",
       "evidence": "Not a Blue Cross Blue Shield of Massachusetts packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -1976,17 +1976,17 @@
       "severity": "info",
       "status": "pass",
       "description": "Blue Cross Blue Shield of Massachusetts retrospective / retroactive request: a retro-review justification is documented",
-      "citation": "Blue Cross Blue Shield of Massachusetts considers a retrospective review only when the service was already rendered for a documented reason (e.g. emergent care, member eligibility not known at the time). A retro request should state that reason. Informational. <https://provider.bluecrossma.com/>",
+      "citation": "Source-free operational completeness check: the reviewed BCBSMA public pages do not publish one universal retrospective-review justification schema. This informational check asks only that an explicit post-service request state its case-specific reason.",
       "evidence": "Not a Blue Cross Blue Shield of Massachusetts packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
     {
       "ruleId": "R-PA-BCBSMA-015",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "Blue Cross Blue Shield of Massachusetts DME / home-health prior authorization: a signed, dated written order / plan of care accompanies the request",
-      "citation": "Blue Cross Blue Shield of Massachusetts prior authorization for durable medical equipment and home-health services requires a written order / plan of care, signed and dated by the ordering provider, before the item / service is dispensed. <https://provider.bluecrossma.com/>",
+      "description": "BCBSMA DME / home-health request that declares a signed-order requirement: signature documented",
+      "citation": "Source-free operational completeness check: the reviewed BCBSMA public authorization pages do not establish one signed-order packet schema for every DME and home-health service. This advisory runs only when the packet itself declares that a signed order or plan of care is required.",
       "evidence": "Not a Blue Cross Blue Shield of Massachusetts packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null

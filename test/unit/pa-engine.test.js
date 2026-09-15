@@ -4492,6 +4492,98 @@ test('R-PA-BCBSMA-010 accepts the current medication-form details without an NDC
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-010').status, 'pass');
 });
 
+test('R-PA-BCBSMA-011 does not infer step therapy from a J-code', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nMedication request: HCPCS J0123.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-011').status, 'pass');
+});
+
+test('R-PA-BCBSMA-011 advises when an explicit step requirement has no prior-therapy context', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nStep therapy required for the requested medication.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-011').status, 'info');
+});
+
+test('R-PA-BCBSMA-011 accepts a prior therapy for an explicit step requirement', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nStep therapy required. Prior therapy tried and failed.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-011').status, 'pass');
+});
+
+test('R-PA-BCBSMA-012 does not infer Carelon genetic scope from an 81xxx code alone', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nRequested procedure: CPT 81455.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-012').status, 'pass');
+});
+
+test('R-PA-BCBSMA-012 reports each missing Carelon genetic request field', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nGenetic testing authorization request.\n';
+  const findings = runEngine(bundleOf(text));
+  const finding = findings.find((x) => x.ruleId === 'R-PA-BCBSMA-012');
+  assert.equal(finding.status, 'flag');
+  assert.match(finding.note, /specific test, performing laboratory, clinical indication/);
+});
+
+test('R-PA-BCBSMA-012 accepts a complete Carelon genetic request', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nGenetic testing request. Test requested: hereditary cancer panel. Performing laboratory: Example Lab. Clinical indication: personal history of breast cancer.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-012').status, 'pass');
+});
+
+test('R-PA-BCBSMA-013 does not infer cancer-program scope from infusion or a J-code', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nInfusion request for HCPCS J0123.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-013').status, 'pass');
+});
+
+test('R-PA-BCBSMA-013 flags an identified outpatient oncology request without diagnosis', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nOutpatient oncology authorization request.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-013').status, 'flag');
+});
+
+test('R-PA-BCBSMA-013 accepts an outpatient oncology request with diagnosis', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nOutpatient oncology authorization request. Patient diagnosis: C50.919.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-013').status, 'pass');
+});
+
+test('R-PA-BCBSMA-014 does not run on a prospective request', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nProspective authorization request.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-014').status, 'pass');
+});
+
+test('R-PA-BCBSMA-014 advises when an explicit retro request gives no reason', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nRetrospective authorization request.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-014').status, 'info');
+});
+
+test('R-PA-BCBSMA-014 accepts a case-specific retro reason', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nRetrospective authorization requested because the payer portal was unavailable.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-014').status, 'pass');
+});
+
+test('R-PA-BCBSMA-015 does not infer a signed-order requirement from DME context', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nWheelchair request, HCPCS E1234.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-015').status, 'pass');
+});
+
+test('R-PA-BCBSMA-015 advises when a declared signed-order requirement lacks signature evidence', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nSigned written order required for this request.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-015').status, 'info');
+});
+
+test('R-PA-BCBSMA-015 accepts signature evidence for a declared requirement', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nSigned written order required. Electronically signed by Example Clinician.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-015').status, 'pass');
+});
+
 test('R-PA-BCBSMA-017 flags a BCBSMA transplant request with no Blue Distinction routing', () => {
   const text = 'Blue Cross Blue Shield of Massachusetts member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
   const findings = runEngine(bundleOf(text));
