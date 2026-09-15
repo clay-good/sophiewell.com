@@ -3603,13 +3603,13 @@ test('Horizon overlay rules vacuously pass on a non-Horizon packet', () => {
   }
 });
 
-test('R-PA-HORIZON-001 flags a Horizon request with a procedure but no coverage-criteria reference', () => {
+test('R-PA-HORIZON-001 treats a missing coverage-criteria reference as informational', () => {
   const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\n'
     + 'Requested procedure: CPT 72148 (MRI lumbar spine).\n'
     + 'Please authorize.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-HORIZON-001');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
 });
 
 test('R-PA-HORIZON-001 passes when the Horizon packet cites the applicable Medical Policy', () => {
@@ -3621,18 +3621,47 @@ test('R-PA-HORIZON-001 passes when the Horizon packet cites the applicable Medic
   assert.equal(f.status, 'pass');
 });
 
-test('R-PA-HORIZON-002 flags a Horizon packet with no clinical document attached', () => {
+test('R-PA-HORIZON-002 advises when a Horizon packet has no clinical context', () => {
   const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nRequested procedure: CPT 27447.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-HORIZON-002');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
 });
 
-test('R-PA-HORIZON-003 passes when the Horizon packet names the NaviNet channel (info)', () => {
-  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nSubmitted via the NaviNet provider portal.\nProcedure CPT 27447.\n';
+test('R-PA-HORIZON-002 accepts clinical context in the request itself', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nRequested procedure: CPT 27447.\nClinical indication: end-stage knee osteoarthritis.\n';
   const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-HORIZON-003');
-  assert.equal(f.status, 'pass');
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HORIZON-002').status, 'pass');
+});
+
+test('R-PA-HORIZON-003 does not require submission-channel text in the packet', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nProcedure CPT 27447 requested.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HORIZON-003').status, 'pass');
+});
+
+test('R-PA-HORIZON-004 does not infer authorization-list membership without member-specific data', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nProcedure CPT 27447 requested.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HORIZON-004').status, 'pass');
+});
+
+test('R-PA-HORIZON-005 does not require an approval number on an initial request', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nPrior authorization required for CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HORIZON-005').status, 'pass');
+});
+
+test('R-PA-HORIZON-005 advises when a declared existing authorization lacks its reference', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nExisting authorization: yes.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HORIZON-005').status, 'info');
+});
+
+test('R-PA-HORIZON-005 accepts the reference for a declared existing authorization', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nExisting authorization: yes.\nAuthorization number: HZN-12345.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HORIZON-005').status, 'pass');
 });
 
 test('R-PA-HORIZON-007 flags a Horizon outpatient MRI with no clinical indication', () => {

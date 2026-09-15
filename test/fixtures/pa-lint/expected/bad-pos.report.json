@@ -4778,20 +4778,20 @@
     },
     {
       "ruleId": "R-PA-HORIZON-001",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "Horizon Blue Cross Blue Shield of New Jersey prior authorization: coverage criteria (Horizon Blue Cross Blue Shield of New Jersey Medical Policy / MCG) referenced",
-      "citation": "Horizon Blue Cross Blue Shield of New Jersey adjudicates prior-authorization requests against its published Medical Policies (and MCG care guidelines); a request should cite the policy it is being judged against so the reviewer can map it to the coverage criteria. <https://www.horizonblue.com/providers/policies-procedures/utilization-management>",
+      "description": "Horizon BCBSNJ prior authorization: applicable Medical Policy identified",
+      "citation": "Horizon BCBSNJ's Medical Policy Manual says its policies help clinicians understand coverage decisions and that criteria vary by line of business, but it does not say every request must cite a policy. This informational mapping aid therefore identifies a missing policy reference without treating it as a submission defect. <https://services3.horizon-bcbsnj.com/hcm/MedPol2.nsf/homePage>",
       "evidence": "Not a Horizon Blue Cross Blue Shield of New Jersey packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
     {
       "ruleId": "R-PA-HORIZON-002",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "Horizon Blue Cross Blue Shield of New Jersey prior authorization: supporting medical records / clinical documentation attached",
-      "citation": "Horizon Blue Cross Blue Shield of New Jersey requires the clinical information that supports medical necessity to be submitted with the prior-authorization request; a request with no clinical document attached cannot be reviewed on the merits. <https://www.horizonblue.com/providers/policies-procedures/utilization-management>",
+      "description": "Horizon BCBSNJ prior authorization: supporting clinical context available",
+      "citation": "Horizon BCBSNJ's Medical Policy Manual says coverage decisions consider the member's individual clinical circumstances and applicable policy, while the reviewed public guidance does not establish a separate clinical attachment for every request. This informational check accepts clinical context in the request itself or in a recognized clinical document. <https://services3.horizon-bcbsnj.com/hcm/MedPol2.nsf/homePage>",
       "evidence": "Not a Horizon Blue Cross Blue Shield of New Jersey packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -4800,8 +4800,8 @@
       "ruleId": "R-PA-HORIZON-003",
       "severity": "info",
       "status": "pass",
-      "description": "Horizon Blue Cross Blue Shield of New Jersey prior authorization: submission channel (NaviNet / Availity / phone on member ID card) indicated",
-      "citation": "Horizon Blue Cross Blue Shield of New Jersey directs providers to submit prior-authorization requests through the NaviNet provider portal or Availity, by 278 EDI transaction, or by phone using the number on the member ID card. Informational: a cover sheet that names the channel speeds routing. <https://www.horizonblue.com/providers/policies-procedures/utilization-management>",
+      "description": "Horizon BCBSNJ prior authorization: use the current product-specific submission route",
+      "citation": "Horizon BCBSNJ directs providers to current authorization workflows through its provider resources, and Horizon, Horizon NJ Health, and Braven Health have moved provider portal access to Availity Essentials. Submission transport is workflow metadata, not required clinical packet content, so the linter does not require channel text. <https://www.horizonblue.com/providers/policies-procedures/utilization-management> <https://www.availity.com/horizon/Availity/>",
       "evidence": "Not a Horizon Blue Cross Blue Shield of New Jersey packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -4810,18 +4810,18 @@
       "ruleId": "R-PA-HORIZON-004",
       "severity": "info",
       "status": "pass",
-      "description": "Horizon Blue Cross Blue Shield of New Jersey prior authorization: requested service is on Horizon Blue Cross Blue Shield of New Jersey's prior-authorization / notification requirement list",
-      "citation": "Horizon Blue Cross Blue Shield of New Jersey prior authorization applies only to services on its published prior-authorization and notification lists; requesting authorization for a non-listed service is unnecessary. ships no bundled list, so the rule is vacuously satisfied with a pointer to the list (it mirrors core R-PA-053 and the Aetna / UHC / Anthem / Cigna / Humana / HCSC / Highmark / Florida Blue / BCBSM / Blue Shield of California / Independence Blue Cross / CareFirst / Blue Cross NC -004 rules; a later wave bundles the list and flips this to a real membership test). <https://www.horizonblue.com/providers/policies-procedures/utilization-management>",
+      "description": "Horizon BCBSNJ prior authorization: verify the member-specific service requirement",
+      "citation": "Horizon BCBSNJ authorization requirements vary by member benefit plan, line of business, service, and delegated vendor. Because the linter ships no current member- and product-specific requirement data, it does not infer list membership. <https://www.horizonblue.com/providers/policies-procedures/utilization-management> <https://services3.horizon-bcbsnj.com/hcm/MedPol2.nsf/homePage>",
       "evidence": "Not a Horizon Blue Cross Blue Shield of New Jersey packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
     {
       "ruleId": "R-PA-HORIZON-005",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "Horizon Blue Cross Blue Shield of New Jersey prior authorization: authorization is referenced for a service that requires it before the service date",
-      "citation": "Horizon Blue Cross Blue Shield of New Jersey requires prior authorization to be obtained before a service on its requirement list is rendered; a packet for an authorization-required service should show the authorization / reference number rather than relying on post-service review. <https://www.horizonblue.com/providers/policies-procedures/utilization-management>",
+      "description": "Horizon BCBSNJ request declaring an existing authorization: reference supplied",
+      "citation": "Source-free operational completeness check: the reviewed public Horizon BCBSNJ guidance does not require an initial request to contain an approval number. This informational check asks for a reference only when the packet declares that an authorization already exists.",
       "evidence": "Not a Horizon Blue Cross Blue Shield of New Jersey packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -10077,7 +10077,7 @@
           "label": "Horizon Blue Cross Blue Shield of New Jersey prior-authorization requirements, Medical Policies, and utilization-management / pharmacy program requirements",
           "url": "https://www.horizonblue.com/providers/policies-procedures/utilization-management",
           "ruleFamily": "commercial-horizon",
-          "lastVerified": "2026-06-04"
+          "lastVerified": "2026-09-15"
         },
         {
           "id": "bcbst-precert",
