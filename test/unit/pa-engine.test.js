@@ -4861,6 +4861,84 @@ test('R-PA-BCBSAL-010 accepts a formatted NDC for a declared requirement', () =>
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-010').status, 'pass');
 });
 
+test('R-PA-BCBSAL-011 does not infer step therapy from a J-code drug request', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nSpecialty drug request, HCPCS J0123.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-011').status, 'pass');
+});
+
+test('R-PA-BCBSAL-011 advises when explicit step therapy lacks a trial or exception', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nThe requested product requires step therapy.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-011').status, 'info');
+});
+
+test('R-PA-BCBSAL-011 accepts an explicit step-therapy exception basis', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nThe requested product requires step therapy. Contraindication to the preferred product is documented.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-011').status, 'pass');
+});
+
+test('R-PA-BCBSAL-012 does not infer Carelon scope from a genetic code alone', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nRequested genetic test, CPT 81211.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-012').status, 'pass');
+});
+
+test('R-PA-BCBSAL-012 advises when an explicit genetic precertification lacks details', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nCarelon genetic testing precertification requested.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-012').status, 'info');
+});
+
+test('R-PA-BCBSAL-012 accepts a genetic precertification with the test and indication', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nCarelon genetic testing precertification. Test requested: BRCA1/2 panel. Clinical indication: personal history of breast cancer.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-012').status, 'pass');
+});
+
+test('R-PA-BCBSAL-013 does not infer provider-administered drug program scope from a J-code', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nInfusion request, HCPCS J0123.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-013').status, 'pass');
+});
+
+test('R-PA-BCBSAL-013 advises when an explicit provider-administered drug review lacks a diagnosis', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nProvider-administered drug precertification requested. Diagnosis: \n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-013').status, 'info');
+});
+
+test('R-PA-BCBSAL-013 accepts provider-administered drug review with a diagnosis', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nProvider-administered drug precertification requested. Diagnosis: rheumatoid arthritis, ICD-10 M06.9.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-013').status, 'pass');
+});
+
+test('R-PA-BCBSAL-014 does not invent universal exceptions for retrospective review', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nRetrospective authorization requested for a service already rendered.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-014').status, 'pass');
+});
+
+test('R-PA-BCBSAL-015 does not apply the home-health packet to DME', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nDurable medical equipment request for wheelchair E1234.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-015').status, 'pass');
+});
+
+test('R-PA-BCBSAL-015 flags incomplete initial home-health certification', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nInitial home health certification requested.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-015').status, 'flag');
+});
+
+test('R-PA-BCBSAL-015 accepts the complete initial home-health packet', () => {
+  const text = 'Blue Cross Blue Shield of Alabama member.\nInitial home health certification. Start-of-care assessment attached. Plan of treatment attached. Medication list attached. Attending physician signature: /s/ Dr. Smith.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSAL-015').status, 'pass');
+});
+
 test('R-PA-BCBSAL-017 flags a BCBSAL transplant request with no Blue Distinction routing', () => {
   const text = 'Blue Cross Blue Shield of Alabama member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
   const findings = runEngine(bundleOf(text));
