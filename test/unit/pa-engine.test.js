@@ -2617,18 +2617,28 @@ test('R-PA-BSCA-005 passes a submitted request with an inquiry reference', () =>
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-BSCA-005').status, 'pass');
 });
 
-test('R-PA-BSCA-006 flags an inpatient (POS 21) Blue Shield of California request with no admission / progress documentation', () => {
+test('R-PA-BSCA-006 does not infer continued-stay documentation from inpatient status alone', () => {
   const text = 'Blue Shield of California member.\nPlace of service: 21\nInpatient admission for acute care.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-BSCA-006');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'pass');
 });
 
-test('R-PA-BSCA-007 flags a Blue Shield of California outpatient MRI with no clinical indication', () => {
+test('R-PA-BSCA-006 advises when an explicit continued-stay request lacks updates', () => {
+  const findings = runEngine(bundleOf('Blue Shield of California member.\nContinued stay request for additional inpatient days.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BSCA-006').status, 'info');
+});
+
+test('R-PA-BSCA-007 does not infer outpatient imaging from an MRI alone', () => {
   const text = 'Blue Shield of California member.\nRequested: MRI lumbar spine, CPT 72148.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-BSCA-007');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-BSCA-007 advises when outpatient MRI lacks clinical rationale', () => {
+  const findings = runEngine(bundleOf('Blue Shield of California member.\nOutpatient imaging requested: MRI lumbar spine, CPT 72148.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BSCA-007').status, 'info');
 });
 
 test('R-PA-BSCA-008 passes when an expedited Blue Shield of California request documents the clinical urgency', () => {
@@ -2636,6 +2646,31 @@ test('R-PA-BSCA-008 passes when an expedited Blue Shield of California request d
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-BSCA-008');
   assert.equal(f.status, 'pass');
+});
+
+test('R-PA-BSCA-008 does not treat generic STAT wording as an expedited authorization', () => {
+  const findings = runEngine(bundleOf('Blue Shield of California member.\nSTAT lab requested.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BSCA-008').status, 'pass');
+});
+
+test('R-PA-BSCA-009 does not infer site-of-care review from generic outpatient surgery', () => {
+  const findings = runEngine(bundleOf('Blue Shield of California member.\nOutpatient hospital surgery, CPT 27447, POS 22.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BSCA-009').status, 'pass');
+});
+
+test('R-PA-BSCA-009 advises when an explicit site-of-care review lacks rationale', () => {
+  const findings = runEngine(bundleOf('Blue Shield of California member.\nBlue Shield site-of-care review applies.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BSCA-009').status, 'info');
+});
+
+test('R-PA-BSCA-010 does not infer an NDC requirement from a J-code', () => {
+  const findings = runEngine(bundleOf('Blue Shield of California member.\nMedical drug requested: J1745.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BSCA-010').status, 'pass');
+});
+
+test('R-PA-BSCA-010 advises when an explicit authorization NDC requirement is unmet', () => {
+  const findings = runEngine(bundleOf('Blue Shield of California member.\nInclude NDC in authorization request.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BSCA-010').status, 'info');
 });
 
 test('R-PA-BSCA-011 flags a Blue Shield of California specialty-drug request with no step-therapy prior-trial documentation', () => {
