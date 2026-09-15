@@ -489,7 +489,12 @@
         "R-PA-IBX-002"
       ],
       "url": "https://www.ibx.com/resources/for-providers/policies-and-guidelines/index.html",
-      "lastVerified": "2026-06-04"
+      "lastVerified": "2026-09-15",
+      "alsoCited": [
+        "https://www.ibx.com/resources/for-providers/policies-and-guidelines/operations-management/medical-policy.html",
+        "https://www.ibx.com/resources/for-providers/policies-and-guidelines/operations-management/preapproval-requirements.html",
+        "https://www.ibx.com/resources/for-providers/contact-us/index.html"
+      ]
     },
     {
       "id": "carefirst-precert",

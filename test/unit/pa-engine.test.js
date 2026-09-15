@@ -2768,13 +2768,13 @@ test('Independence Blue Cross overlay rules vacuously pass on a non-IBX packet',
   }
 });
 
-test('R-PA-IBX-001 flags a Independence Blue Cross request with a procedure but no coverage-criteria reference', () => {
+test('R-PA-IBX-001 advises when an Independence Blue Cross request does not identify a known policy', () => {
   const text = 'Independence Blue Cross member.\n'
     + 'Requested procedure: CPT 72148 (MRI lumbar spine).\n'
     + 'Please authorize.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-IBX-001');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
 });
 
 test('R-PA-IBX-001 passes when the Independence Blue Cross packet cites the applicable Medical Policy', () => {
@@ -2786,18 +2786,33 @@ test('R-PA-IBX-001 passes when the Independence Blue Cross packet cites the appl
   assert.equal(f.status, 'pass');
 });
 
-test('R-PA-IBX-002 flags an IBX packet with no clinical document attached', () => {
+test('R-PA-IBX-002 treats a missing clinical document as informational', () => {
   const text = 'Independence Blue Cross member.\nRequested procedure: CPT 27447.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-IBX-002');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
 });
 
-test('R-PA-IBX-003 passes when the Independence Blue Cross packet names the Availity channel (info)', () => {
-  const text = 'Independence Blue Cross member.\nSubmitted via the Availity Essentials portal.\nProcedure CPT 27447.\n';
+test('R-PA-IBX-003 does not require the submission channel in packet content', () => {
+  const text = 'Independence Blue Cross member.\nProcedure CPT 27447.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-IBX-003');
   assert.equal(f.status, 'pass');
+});
+
+test('R-PA-IBX-004 remains non-enforcing without a live PEAR or member lookup', () => {
+  const findings = runEngine(bundleOf('Independence Blue Cross member.\nProcedure CPT 27447.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-IBX-004').status, 'pass');
+});
+
+test('R-PA-IBX-005 does not demand a confirmation for an initial precertification request', () => {
+  const findings = runEngine(bundleOf('Independence Blue Cross member.\nPrior authorization required for CPT 27447.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-IBX-005').status, 'pass');
+});
+
+test('R-PA-IBX-005 advises when a submitted request has no confirmation reference', () => {
+  const findings = runEngine(bundleOf('Independence Blue Cross member.\nPrecertification submitted.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-IBX-005').status, 'info');
 });
 
 test('R-PA-IBX-006 flags an inpatient (POS 21) Independence Blue Cross request with no admission / progress documentation', () => {

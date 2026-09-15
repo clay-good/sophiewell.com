@@ -5178,21 +5178,21 @@
     },
     {
       "ruleId": "R-PA-IBX-001",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "Independence Blue Cross prior authorization: coverage criteria (Independence Blue Cross Medical Policy / MCG) referenced",
-      "citation": "Independence Blue Cross adjudicates prior-authorization requests against its published Medical Policies (and MCG care guidelines); a request should cite the policy it is being judged against so the reviewer can map it to the coverage criteria. <https://www.ibx.com/resources/for-providers/policies-and-guidelines/index.html>",
-      "evidence": "Not a Independence Blue Cross packet; rule vacuously satisfied.",
+      "description": "Independence Blue Cross precertification: applicable medical policy identified when known",
+      "citation": "IBX policy bulletins are used for medical-necessity decisions but do not describe member benefits or require every precertification submission to cite a policy. Identifying a known policy is an informational aid, not a submission prerequisite. <https://www.ibx.com/resources/for-providers/policies-and-guidelines/operations-management/medical-policy.html>",
+      "evidence": "Not an Independence Blue Cross packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
     {
       "ruleId": "R-PA-IBX-002",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "Independence Blue Cross prior authorization: supporting medical records / clinical documentation attached",
-      "citation": "Independence Blue Cross requires the clinical information that supports medical necessity to be submitted with the prior-authorization request; a request with no clinical document attached cannot be reviewed on the merits. <https://www.ibx.com/resources/for-providers/policies-and-guidelines/index.html>",
-      "evidence": "Not a Independence Blue Cross packet; rule vacuously satisfied.",
+      "description": "Independence Blue Cross precertification: request-specific clinical information available when review requires it",
+      "citation": "IBX says its Utilization Management department evaluates cases that require clinical review; it does not impose one fixed clinical-document attachment on every request. This is an informational completeness check. <https://www.ibx.com/resources/for-providers/policies-and-guidelines/operations-management/preapproval-requirements.html>",
+      "evidence": "Not an Independence Blue Cross packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -5200,9 +5200,9 @@
       "ruleId": "R-PA-IBX-003",
       "severity": "info",
       "status": "pass",
-      "description": "Independence Blue Cross prior authorization: submission channel (Availity Essentials / Provider Resource Center / phone on member ID card) indicated",
-      "citation": "Independence Blue Cross directs providers to submit prior-authorization requests through the Availity Essentials portal or the Provider Resource Center, by 278 EDI transaction, or by phone using the number on the member ID card. Informational: a cover sheet that names the channel speeds routing. <https://www.ibx.com/resources/for-providers/policies-and-guidelines/index.html>",
-      "evidence": "Not a Independence Blue Cross packet; rule vacuously satisfied.",
+      "description": "Independence Blue Cross precertification: use the member- and service-specific submission workflow",
+      "citation": "IBX directs participating providers to PEAR Practice Management for facility and office precertification requests, with phone and delegated-service routes also documented. The transport channel does not need to appear in packet content. <https://www.ibx.com/resources/for-providers/policies-and-guidelines/operations-management/preapproval-requirements.html> <https://www.ibx.com/resources/for-providers/contact-us/index.html>",
+      "evidence": "Not an Independence Blue Cross packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -5210,19 +5210,19 @@
       "ruleId": "R-PA-IBX-004",
       "severity": "info",
       "status": "pass",
-      "description": "Independence Blue Cross prior authorization: requested service is on Independence Blue Cross's prior-authorization / notification requirement list",
-      "citation": "Independence Blue Cross prior authorization applies only to services on its published prior-authorization and notification lists; requesting authorization for a non-listed service is unnecessary. ships no bundled list, so the rule is vacuously satisfied with a pointer to the list (it mirrors core R-PA-053 and the Aetna / UHC / Anthem / Cigna / Humana / HCSC / Highmark / Florida Blue / BCBSM / Blue Shield of California -004 rules; a later wave bundles the list and flips this to a real membership test). <https://www.ibx.com/resources/for-providers/policies-and-guidelines/index.html>",
-      "evidence": "Not a Independence Blue Cross packet; rule vacuously satisfied.",
+      "description": "Independence Blue Cross precertification: requested service checked against the current member-specific requirements",
+      "citation": "IBX publishes dated precertification lists and directs providers to PEAR Practice Management for the most current requirements. The linter has no live member, benefit, or PEAR lookup, so this reminder is non-enforcing. <https://www.ibx.com/resources/for-providers/policies-and-guidelines/operations-management/preapproval-requirements.html>",
+      "evidence": "Not an Independence Blue Cross packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
     {
       "ruleId": "R-PA-IBX-005",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "Independence Blue Cross prior authorization: authorization is referenced for a service that requires it before the service date",
-      "citation": "Independence Blue Cross requires prior authorization to be obtained before a service on its requirement list is rendered; a packet for an authorization-required service should show the authorization / reference number rather than relying on post-service review. <https://www.ibx.com/resources/for-providers/policies-and-guidelines/index.html>",
-      "evidence": "Not a Independence Blue Cross packet; rule vacuously satisfied.",
+      "description": "Independence Blue Cross submitted precertification: confirmation or decision reference retained",
+      "citation": "IBX accepts precertification requests through PEAR Practice Management or the applicable phone route and notifies providers after a decision. An initial request cannot already contain that confirmation, so this advisory runs only when the packet says submission is complete. <https://www.ibx.com/resources/for-providers/policies-and-guidelines/operations-management/preapproval-requirements.html>",
+      "evidence": "Not an Independence Blue Cross packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
@@ -10051,7 +10051,7 @@
           "label": "Independence Blue Cross (southeastern Pennsylvania / Philadelphia) prior-authorization requirements, Medical Policies, and utilization-management / pharmacy program requirements",
           "url": "https://www.ibx.com/resources/for-providers/policies-and-guidelines/index.html",
           "ruleFamily": "commercial-ibx",
-          "lastVerified": "2026-06-04"
+          "lastVerified": "2026-09-15"
         },
         {
           "id": "carefirst-precert",
