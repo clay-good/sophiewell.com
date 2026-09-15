@@ -3664,11 +3664,59 @@ test('R-PA-HORIZON-005 accepts the reference for a declared existing authorizati
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-HORIZON-005').status, 'pass');
 });
 
-test('R-PA-HORIZON-007 flags a Horizon outpatient MRI with no clinical indication', () => {
+test('R-PA-HORIZON-006 does not require concurrent-review fields on an initial inpatient request', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nInpatient admission requested at POS 21.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HORIZON-006').status, 'pass');
+});
+
+test('R-PA-HORIZON-006 advises when an explicit concurrent review lacks current clinical context', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nConcurrent review requested.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HORIZON-006').status, 'info');
+});
+
+test('R-PA-HORIZON-006 accepts current clinical context for an explicit concurrent review', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nConcurrent review requested.\nClinical update: improving after treatment.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HORIZON-006').status, 'pass');
+});
+
+test('R-PA-HORIZON-007 advises on a Horizon outpatient MRI with no clinical indication', () => {
   const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nRequested: MRI lumbar spine, CPT 72148.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-HORIZON-007');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
+});
+
+test('R-PA-HORIZON-007 does not treat every radiology CPT as advanced imaging', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nRequested: chest radiograph, CPT 71046.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HORIZON-007').status, 'pass');
+});
+
+test('R-PA-HORIZON-007 excludes inpatient advanced imaging from its outpatient check', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nInpatient hospital POS 21. Requested MRI CPT 72148.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HORIZON-007').status, 'pass');
+});
+
+test('R-PA-HORIZON-007 accepts an outpatient advanced-imaging indication', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nRequested MRI CPT 72148. Clinical indication: lumbar radiculopathy.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HORIZON-007').status, 'pass');
+});
+
+test('R-PA-HORIZON-008 does not treat generic urgent language as an expedited authorization request', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nUrgent request for clinical records.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HORIZON-008').status, 'pass');
+});
+
+test('R-PA-HORIZON-008 advises when expedited authorization has no clinical urgency rationale', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nExpedited prior authorization requested.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HORIZON-008').status, 'info');
 });
 
 test('R-PA-HORIZON-008 passes when an expedited Horizon request documents the clinical urgency', () => {
@@ -3676,6 +3724,30 @@ test('R-PA-HORIZON-008 passes when an expedited Horizon request documents the cl
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-HORIZON-008');
   assert.equal(f.status, 'pass');
+});
+
+test('R-PA-HORIZON-009 does not infer site-of-care review from every hospital-outpatient surgery', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nHospital outpatient POS 22. Procedure CPT 27447 requested.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HORIZON-009').status, 'pass');
+});
+
+test('R-PA-HORIZON-009 advises when confirmed site-of-care review lacks a hospital rationale', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nSite-of-care review applies. Hospital outpatient POS 22 requested.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HORIZON-009').status, 'info');
+});
+
+test('R-PA-HORIZON-009 accepts a hospital rationale when site-of-care review applies', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nSite-of-care review applies. Hospital outpatient POS 22 requested.\nHigher acuity requires hospital monitoring.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HORIZON-009').status, 'pass');
+});
+
+test('R-PA-HORIZON-010 does not impose a universal NDC field on a J-code request', () => {
+  const text = 'Horizon Blue Cross Blue Shield of New Jersey member.\nPhysician-administered drug requested under HCPCS J1745.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HORIZON-010').status, 'pass');
 });
 
 test('R-PA-HORIZON-017 flags a Horizon transplant request with no Blue Distinction routing', () => {
