@@ -2233,20 +2233,20 @@
     },
     {
       "ruleId": "R-PA-BCBSNC-001",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "Blue Cross Blue Shield of North Carolina prior authorization: coverage criteria (Blue Cross Blue Shield of North Carolina Medical Policy / MCG) referenced",
-      "citation": "Blue Cross Blue Shield of North Carolina adjudicates prior-authorization requests against its published Medical Policies (and MCG care guidelines); a request should cite the policy it is being judged against so the reviewer can map it to the coverage criteria. <https://www.bcbsnc.com/providers/prior-authorization>",
+      "description": "Blue Cross NC prior authorization: applicable Medical Policy identified",
+      "citation": "Blue Cross NC says Medical Policies and medical-necessity criteria inform prior-authorization decisions, but it does not say every request must cite a policy. This informational mapping aid therefore identifies a missing policy reference without treating it as a submission defect. <https://www.bcbsnc.com/providers/prior-authorization> <https://www.bcbsnc.com/providers/policies-guidelines-codes/medical-policies>",
       "evidence": "Not a Blue Cross Blue Shield of North Carolina packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
     {
       "ruleId": "R-PA-BCBSNC-002",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "Blue Cross Blue Shield of North Carolina prior authorization: supporting medical records / clinical documentation attached",
-      "citation": "Blue Cross Blue Shield of North Carolina requires the clinical information that supports medical necessity to be submitted with the prior-authorization request; a request with no clinical document attached cannot be reviewed on the merits. <https://www.bcbsnc.com/providers/prior-authorization>",
+      "description": "Blue Cross NC prior authorization: supporting clinical context available",
+      "citation": "Blue Cross NC says Medical Policies, medical-necessity criteria, and medical-record submission requirements may inform prior-authorization decisions. Its general request form says records may be requested and directs providers to include required documentation, rather than requiring a separate clinical attachment for every request. <https://www.bcbsnc.com/providers/prior-authorization> <https://www.bcbsnc.com/content/dam/bcbsnc/pdf/providers/forms-documents/prior-authorization/commercial/general-requests/prior-approval-request-form.pdf>",
       "evidence": "Not a Blue Cross Blue Shield of North Carolina packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -2255,8 +2255,8 @@
       "ruleId": "R-PA-BCBSNC-003",
       "severity": "info",
       "status": "pass",
-      "description": "Blue Cross Blue Shield of North Carolina prior authorization: submission channel (Blue e / Availity / phone on member ID card) indicated",
-      "citation": "Blue Cross Blue Shield of North Carolina directs providers to submit prior-authorization requests through the Blue e provider portal or Availity, by 278 EDI transaction, or by phone using the number on the member ID card. Informational: a cover sheet that names the channel speeds routing. <https://www.bcbsnc.com/providers/prior-authorization>",
+      "description": "Blue Cross NC prior authorization: use the current product-specific submission route",
+      "citation": "Blue Cross NC currently directs many requests to Care Affiliate through Blue e, while its request page lists service- and product-specific forms and routes. Submission transport is workflow metadata, not required clinical packet content, so the linter does not require channel text. <https://www.bcbsnc.com/providers/provider-news/2026/reminder-save-time-on-prior-authorizations-with-care-affiliate-functionality> <https://www.bcbsnc.com/providers/prior-authorization/request-ppa>",
       "evidence": "Not a Blue Cross Blue Shield of North Carolina packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -2266,17 +2266,17 @@
       "severity": "info",
       "status": "pass",
       "description": "Blue Cross Blue Shield of North Carolina prior authorization: requested service is on Blue Cross Blue Shield of North Carolina's prior-authorization / notification requirement list",
-      "citation": "Blue Cross Blue Shield of North Carolina prior authorization applies only to services on its published prior-authorization and notification lists; requesting authorization for a non-listed service is unnecessary. ships no bundled list, so the rule is vacuously satisfied with a pointer to the list (it mirrors core R-PA-053 and the Aetna / UHC / Anthem / Cigna / Humana / HCSC / Highmark / Florida Blue / BCBSM / Blue Shield of California / Independence Blue Cross / CareFirst -004 rules; a later wave bundles the list and flips this to a real membership test). <https://www.bcbsnc.com/providers/prior-authorization>",
+      "citation": "Blue Cross NC provides code-search tools and a Care Affiliate Precheck feature to determine whether a CPT / HCPCS code needs authorization and where it should be submitted. Because the linter ships no member- and product-specific requirement data, it does not infer list membership. <https://www.bcbsnc.com/providers/prior-authorization> <https://www.bcbsnc.com/providers/provider-news/2026/reminder-save-time-on-prior-authorizations-with-care-affiliate-functionality>",
       "evidence": "Not a Blue Cross Blue Shield of North Carolina packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
     {
       "ruleId": "R-PA-BCBSNC-005",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "Blue Cross Blue Shield of North Carolina prior authorization: authorization is referenced for a service that requires it before the service date",
-      "citation": "Blue Cross Blue Shield of North Carolina requires prior authorization to be obtained before a service on its requirement list is rendered; a packet for an authorization-required service should show the authorization / reference number rather than relying on post-service review. <https://www.bcbsnc.com/providers/prior-authorization>",
+      "description": "Blue Cross NC in-network benefit review: existing authorization reference supplied when one is declared",
+      "citation": "Blue Cross NC's In-Network Benefit Review Request form asks whether an existing certification or authorization exists and requests its reference number only when the answer is yes. The general request form expressly says submission is not approval, so an initial authorization request must not be expected to carry an authorization number. <https://www.bcbsnc.com/content/dam/bcbsnc/pdf/providers/forms-documents/prior-authorization/commercial/administrative/in-network-benefit-review-request-prc-fax-form.pdf> <https://www.bcbsnc.com/content/dam/bcbsnc/pdf/providers/forms-documents/prior-authorization/commercial/general-requests/prior-approval-request-form.pdf>",
       "evidence": "Not a Blue Cross Blue Shield of North Carolina packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -10068,7 +10068,7 @@
           "label": "Blue Cross Blue Shield of North Carolina (Blue Cross NC) prior-authorization requirements, Medical Policies, and utilization-management / pharmacy program requirements",
           "url": "https://www.bcbsnc.com/providers/prior-authorization",
           "ruleFamily": "commercial-bcbsnc",
-          "lastVerified": "2026-06-04"
+          "lastVerified": "2026-09-15"
         },
         {
           "id": "horizon-precert",

@@ -3315,13 +3315,13 @@ test('Blue Cross NC overlay rules vacuously pass on a non-Blue-Cross-NC packet',
   }
 });
 
-test('R-PA-BCBSNC-001 flags a Blue Cross NC request with a procedure but no coverage-criteria reference', () => {
+test('R-PA-BCBSNC-001 treats a missing policy reference as informational', () => {
   const text = 'Blue Cross Blue Shield of North Carolina member.\n'
     + 'Requested procedure: CPT 72148 (MRI lumbar spine).\n'
     + 'Please authorize.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-BCBSNC-001');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
 });
 
 test('R-PA-BCBSNC-001 passes when the Blue Cross NC packet cites the applicable Medical Policy', () => {
@@ -3333,18 +3333,41 @@ test('R-PA-BCBSNC-001 passes when the Blue Cross NC packet cites the applicable 
   assert.equal(f.status, 'pass');
 });
 
-test('R-PA-BCBSNC-002 flags a Blue Cross NC packet with no clinical document attached', () => {
+test('R-PA-BCBSNC-002 treats missing clinical context as informational', () => {
   const text = 'Blue Cross Blue Shield of North Carolina member.\nRequested procedure: CPT 27447.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-BCBSNC-002');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
 });
 
-test('R-PA-BCBSNC-003 passes when the Blue Cross NC packet names the Blue e channel (info)', () => {
-  const text = 'Blue Cross Blue Shield of North Carolina member.\nSubmitted via the Blue e provider portal.\nProcedure CPT 27447.\n';
+test('R-PA-BCBSNC-002 accepts clinical context in the request itself', () => {
+  const text = 'Blue Cross Blue Shield of North Carolina member.\nProcedure CPT 27447.\nClinical rationale: severe osteoarthritis after failed therapy.\n';
   const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSNC-003');
-  assert.equal(f.status, 'pass');
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSNC-002').status, 'pass');
+});
+
+test('R-PA-BCBSNC-003 does not require submission-channel text in packet content', () => {
+  const text = 'Blue Cross Blue Shield of North Carolina member.\nProcedure CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSNC-003').status, 'pass');
+});
+
+test('R-PA-BCBSNC-005 does not expect an authorization number on an initial request', () => {
+  const text = 'Blue Cross Blue Shield of North Carolina member.\nPrior authorization required for CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSNC-005').status, 'pass');
+});
+
+test('R-PA-BCBSNC-005 checks the conditional reference on an in-network benefit review', () => {
+  const text = 'Blue Cross Blue Shield of North Carolina member.\nIn-network benefit review.\nExisting authorization: yes.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSNC-005').status, 'info');
+});
+
+test('R-PA-BCBSNC-005 accepts the declared existing authorization reference', () => {
+  const text = 'Blue Cross Blue Shield of North Carolina member.\nIn-network benefit review.\nExisting authorization: yes.\nAuthorization number: 12345.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSNC-005').status, 'pass');
 });
 
 test('R-PA-BCBSNC-007 flags a Blue Cross NC outpatient MRI with no clinical indication', () => {
