@@ -5260,18 +5260,79 @@ test('R-PA-BCBSSC-015 accepts an identified IHCS supporting document', () => {
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-015').status, 'pass');
 });
 
-test('R-PA-BCBSSC-017 flags a BCBSSC transplant request with no Blue Distinction routing', () => {
-  const text = 'Blue Cross Blue Shield of South Carolina member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSSC-017');
-  assert.equal(f.status, 'flag');
+test('R-PA-BCBSSC-016 does not infer intensive review from generic mental-health context', () => {
+  const findings = runEngine(bundleOf('Blue Cross Blue Shield of South Carolina member.\nOutpatient mental health visit requested.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-016').status, 'pass');
 });
 
-test('R-PA-BCBSSC-020 flags a BCBSSC out-of-network request with no network-gap justification (info)', () => {
-  const text = 'Blue Cross Blue Shield of South Carolina member.\nOut-of-network prior authorization request.\nProcedure CPT 70551.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSSC-020');
-  assert.equal(f.status, 'info');
+test('R-PA-BCBSSC-016 advises when an intensive setting lacks clinical support', () => {
+  const findings = runEngine(bundleOf('Blue Cross Blue Shield of South Carolina member.\nResidential treatment requested.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-016').status, 'info');
+});
+
+test('R-PA-BCBSSC-016 accepts request-specific support for an intensive setting', () => {
+  const findings = runEngine(bundleOf('Blue Cross Blue Shield of South Carolina member.\nResidential treatment requested. Functional impairment: unable to maintain safety at home.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-016').status, 'pass');
+});
+
+test('R-PA-BCBSSC-017 does not apply the HIX transplant rule to a generic transplant', () => {
+  const findings = runEngine(bundleOf('Blue Cross Blue Shield of South Carolina member.\nKidney transplant requested.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-017').status, 'pass');
+});
+
+test('R-PA-BCBSSC-017 advises when an HIX transplant lacks product-specific routing', () => {
+  const findings = runEngine(bundleOf('Blue Cross Blue Shield of South Carolina member.\nHIX transplant authorization requested.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-017').status, 'info');
+});
+
+test('R-PA-BCBSSC-017 accepts a Blue Distinction transplant center', () => {
+  const findings = runEngine(bundleOf('Blue Cross Blue Shield of South Carolina member.\nHIX transplant. Blue Distinction Center for Transplants selected.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-017').status, 'pass');
+});
+
+test('R-PA-BCBSSC-018 does not infer investigational status from off-label or trial context', () => {
+  const findings = runEngine(bundleOf('Blue Cross Blue Shield of South Carolina member.\nOff-label therapy in a clinical trial.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-018').status, 'pass');
+});
+
+test('R-PA-BCBSSC-018 advises when an explicit classification lacks its policy basis', () => {
+  const findings = runEngine(bundleOf('Blue Cross Blue Shield of South Carolina member.\nBCBSSC investigational classification.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-018').status, 'info');
+});
+
+test('R-PA-BCBSSC-018 accepts an identified Medical Policy basis', () => {
+  const findings = runEngine(bundleOf('Blue Cross Blue Shield of South Carolina member.\nBCBSSC investigational classification. Medical Policy: CAM 201115.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-018').status, 'pass');
+});
+
+test('R-PA-BCBSSC-019 ignores generic appeal language', () => {
+  const findings = runEngine(bundleOf('Blue Cross Blue Shield of South Carolina member.\nClaim appeal submitted.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-019').status, 'pass');
+});
+
+test('R-PA-BCBSSC-019 advises when an authorization appeal omits the original case', () => {
+  const findings = runEngine(bundleOf('Blue Cross Blue Shield of South Carolina member.\nPrior authorization appeal requested.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-019').status, 'info');
+});
+
+test('R-PA-BCBSSC-019 accepts an authorization appeal with its case number', () => {
+  const findings = runEngine(bundleOf('Blue Cross Blue Shield of South Carolina member.\nPrior authorization appeal. Case number PA-12345.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-019').status, 'pass');
+});
+
+test('R-PA-BCBSSC-020 does not infer a gap exception from out-of-network care', () => {
+  const findings = runEngine(bundleOf('Blue Cross Blue Shield of South Carolina member.\nOut-of-network prior authorization request.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-020').status, 'pass');
+});
+
+test('R-PA-BCBSSC-020 advises when a network-gap request lacks its reason', () => {
+  const findings = runEngine(bundleOf('Blue Cross Blue Shield of South Carolina member.\nNetwork gap request.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-020').status, 'info');
+});
+
+test('R-PA-BCBSSC-020 accepts a request-specific network-gap reason', () => {
+  const findings = runEngine(bundleOf('Blue Cross Blue Shield of South Carolina member.\nNetwork gap request. No in-network provider has the required expertise.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-020').status, 'pass');
 });
 
 // ---- wave 52-25 sanity checks: Arkansas Blue Cross and Blue Shield overlay (§4.5.25) ----
