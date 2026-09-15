@@ -3231,18 +3231,75 @@ test('R-PA-CAREFIRST-015 accepts a home-care diagnosis and requested services', 
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-015').status, 'pass');
 });
 
-test('R-PA-CAREFIRST-017 flags a CareFirst transplant request with no Blue Distinction routing', () => {
-  const text = 'CareFirst member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-017');
-  assert.equal(f.status, 'flag');
+test('R-PA-CAREFIRST-016 does not impose level-of-care fields on generic behavioral health', () => {
+  const findings = runEngine(bundleOf('CareFirst member.\nBehavioral health prior authorization request.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-016').status, 'pass');
 });
 
-test('R-PA-CAREFIRST-020 flags a CareFirst out-of-network request with no network-gap justification (info)', () => {
+test('R-PA-CAREFIRST-016 advises when an ASAM level 3.7 request omits the setting', () => {
+  const findings = runEngine(bundleOf('CareFirst member.\nASAM level 3.7 detoxification requested.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-016').status, 'info');
+});
+
+test('R-PA-CAREFIRST-016 accepts an ASAM level 3.7 residential setting', () => {
+  const text = 'CareFirst member.\nASAM level 3.7 detoxification requested.\nPlace of service: residential treatment center.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-016').status, 'pass');
+});
+
+test('R-PA-CAREFIRST-017 does not invent universal Blue Distinction packet fields', () => {
+  const text = 'CareFirst member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-017').status, 'pass');
+});
+
+test('R-PA-CAREFIRST-018 does not treat off-label or clinical-trial language as experimental', () => {
+  const text = 'CareFirst member.\nOff-label therapy requested as part of a clinical trial.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-018').status, 'pass');
+});
+
+test('R-PA-CAREFIRST-018 advises when an explicit investigational classification lacks its policy', () => {
+  const findings = runEngine(bundleOf('CareFirst member.\nThe requested service is investigational.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-018').status, 'info');
+});
+
+test('R-PA-CAREFIRST-018 accepts an explicit investigational classification with its policy', () => {
+  const text = 'CareFirst member.\nThe requested service is investigational under Medical Policy 7.01.001.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-018').status, 'pass');
+});
+
+test('R-PA-CAREFIRST-019 independently reports a missing appeal rationale', () => {
+  const text = 'CareFirst member.\nAppeal of original denial, case number 12345.\n';
+  const findings = runEngine(bundleOf(text));
+  const finding = findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-019');
+  assert.equal(finding.status, 'info');
+  assert.match(finding.note, /clinical rationale/);
+});
+
+test('R-PA-CAREFIRST-019 accepts an original denial and clinical rationale', () => {
+  const text = 'CareFirst member.\nAppeal of original denial, case number 12345.\nClinical rationale: prior therapy failed.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-019').status, 'pass');
+});
+
+test('R-PA-CAREFIRST-020 does not apply the BlueChoice form to generic CareFirst OON benefits', () => {
   const text = 'CareFirst member.\nOut-of-network prior authorization request.\nProcedure CPT 70551.\n';
   const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-020');
-  assert.equal(f.status, 'info');
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-020').status, 'pass');
+});
+
+test('R-PA-CAREFIRST-020 advises when a BlueChoice OON request omits the required letter', () => {
+  const text = 'CareFirst BlueChoice member.\nOut-of-network prior authorization request.\nProcedure CPT 70551.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-020').status, 'info');
+});
+
+test('R-PA-CAREFIRST-020 accepts the BlueChoice OON letter and explanation', () => {
+  const text = 'CareFirst BlueChoice member.\nOut-of-network request.\nLetter of medical necessity: no in-network provider offers the service.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-CAREFIRST-020').status, 'pass');
 });
 
 // ---- wave 52-19 sanity checks: Blue Cross Blue Shield of North Carolina overlay (§4.5.19) ----
