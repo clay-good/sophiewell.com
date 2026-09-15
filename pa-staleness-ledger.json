@@ -378,7 +378,11 @@
         "R-PA-HIGHMARK-002"
       ],
       "url": "https://providers.highmark.com/authorization/obtaining-authorizations.html",
-      "lastVerified": "2026-06-03"
+      "lastVerified": "2026-09-15",
+      "alsoCited": [
+        "https://providers.highmark.com/policies-and-programs/medical-policies.html",
+        "https://providers.highmark.com/content/dam/highmark/en/providerresourcecenter/pdfs/multi-region/documents/pdfs/latest-updates/special-bulletins/sb-auth-status-self-service-tools-103123.pdf"
+      ]
     },
     {
       "id": "floridablue-precert",

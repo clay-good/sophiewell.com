@@ -1905,36 +1905,49 @@ test('Highmark overlay rules vacuously pass on a non-Highmark packet', () => {
   }
 });
 
-test('R-PA-HIGHMARK-001 flags a Highmark request with a procedure but no coverage-criteria reference', () => {
+test('R-PA-HIGHMARK-001 treats a policy reference as an informational mapping aid', () => {
   const text = 'Highmark Blue Shield PPO member.\n'
     + 'Requested procedure: CPT 72148 (MRI lumbar spine).\n'
     + 'Please authorize.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-HIGHMARK-001');
-  assert.equal(f.status, 'flag');
-});
+  assert.equal(f.status, 'info');
 
-test('R-PA-HIGHMARK-001 passes when the Highmark packet cites the applicable Medical Policy', () => {
-  const text = 'Highmark member.\n'
+  const complete = runEngine(bundleOf('Highmark member.\n'
     + 'Requested procedure: CPT 72148.\n'
-    + 'Medical necessity per the applicable Highmark Medical Policy (MCG).\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-HIGHMARK-001');
-  assert.equal(f.status, 'pass');
+    + 'Medical necessity per the applicable Highmark Medical Policy (MCG).\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-HIGHMARK-001').status, 'pass');
 });
 
-test('R-PA-HIGHMARK-002 flags a Highmark packet with no clinical document attached', () => {
+test('R-PA-HIGHMARK-002 keeps request-specific clinical attachments informational', () => {
   const text = 'Highmark Blue Shield PPO member.\nRequested procedure: CPT 27447.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-HIGHMARK-002');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
+
+  const complete = runEngine(bundleOf('Highmark member.\nRequested procedure: CPT 27447.\nClinical note: persistent knee pain despite therapy.\n'));
+  assert.equal(complete.find((x) => x.ruleId === 'R-PA-HIGHMARK-002').status, 'pass');
 });
 
-test('R-PA-HIGHMARK-003 passes when the Highmark packet names the Availity channel (info)', () => {
-  const text = 'Highmark member.\nSubmitted via the Availity Essentials portal.\nProcedure CPT 27447.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-HIGHMARK-003');
-  assert.equal(f.status, 'pass');
+test('R-PA-HIGHMARK-003 does not require the packet to name its submission channel', () => {
+  const findings = runEngine(bundleOf('Highmark member.\nProcedure CPT 27447.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HIGHMARK-003').status, 'pass');
+});
+
+test('R-PA-HIGHMARK-004 remains a non-enforcing member-specific lookup reminder', () => {
+  const findings = runEngine(bundleOf('Highmark member.\nProcedure CPT 27447.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HIGHMARK-004').status, 'pass');
+});
+
+test('R-PA-HIGHMARK-005 asks for a reference only after completed submission', () => {
+  const initial = runEngine(bundleOf('Highmark member.\nPrior authorization required for CPT 27447.\n'));
+  assert.equal(initial.find((x) => x.ruleId === 'R-PA-HIGHMARK-005').status, 'pass');
+
+  const submitted = runEngine(bundleOf('Highmark member.\nPrior authorization submitted.\n'));
+  assert.equal(submitted.find((x) => x.ruleId === 'R-PA-HIGHMARK-005').status, 'info');
+
+  const confirmed = runEngine(bundleOf('Highmark member.\nPrior authorization submitted.\nReference number: HM-12345.\n'));
+  assert.equal(confirmed.find((x) => x.ruleId === 'R-PA-HIGHMARK-005').status, 'pass');
 });
 
 test('R-PA-HIGHMARK-006 flags an inpatient (POS 21) Highmark request with no admission / progress documentation', () => {
