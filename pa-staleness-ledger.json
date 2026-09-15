@@ -622,7 +622,11 @@
         "R-PA-BCBSMA-002"
       ],
       "url": "https://provider.bluecrossma.com/",
-      "lastVerified": "2026-06-04"
+      "lastVerified": "2026-06-04",
+      "alsoCited": [
+        "https://provider.bluecrossma.com/ProviderHome/portal/home/clinical-resources/clinical-criteria-and-guidelines/medical-policies/",
+        "https://provider.bluecrossma.com/ProviderHome/wcm/connect/provider%2Bportal%2Bcontent%2Blibrary/provider%2Bcentral/etools/etools"
+      ]
     },
     {
       "id": "bcbsal-precert",

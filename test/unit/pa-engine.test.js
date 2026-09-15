@@ -4315,36 +4315,91 @@ test('BCBSMA overlay rules vacuously pass on a non-BCBSMA packet', () => {
   }
 });
 
-test('R-PA-BCBSMA-001 flags a BCBSMA request with a procedure but no coverage-criteria reference', () => {
-  const text = 'Blue Cross Blue Shield of Massachusetts member.\n'
-    + 'Requested procedure: CPT 72148 (MRI lumbar spine).\n'
-    + 'Please authorize.\n';
+test('R-PA-BCBSMA-001 does not require a policy citation on every request', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nRequested procedure: CPT 72148. Please authorize.\n';
   const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSMA-001');
-  assert.equal(f.status, 'flag');
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-001').status, 'pass');
 });
 
-test('R-PA-BCBSMA-001 passes when the BCBSMA packet cites the applicable Medical Policy', () => {
-  const text = 'Blue Cross Blue Shield of Massachusetts member.\n'
-    + 'Requested procedure: CPT 72148.\n'
-    + 'Medical necessity per the applicable BCBS of Massachusetts Medical Policy (MCG).\n';
+test('R-PA-BCBSMA-001 advises when an explicitly relied-on policy is unidentified', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nMedical necessity per medical policy.\n';
   const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSMA-001');
-  assert.equal(f.status, 'pass');
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-001').status, 'info');
 });
 
-test('R-PA-BCBSMA-002 flags a BCBSMA packet with no clinical document attached', () => {
+test('R-PA-BCBSMA-001 accepts an identified policy rationale', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nPer medical policy criteria. Medical Policy: 123.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-001').status, 'pass');
+});
+
+test('R-PA-BCBSMA-002 does not run without an identifiable authorization request', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nEligibility inquiry only.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-002').status, 'pass');
+});
+
+test('R-PA-BCBSMA-002 advises when a request has no clinical document', () => {
   const text = 'Blue Cross Blue Shield of Massachusetts member.\nRequested procedure: CPT 27447.\n';
   const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSMA-002');
-  assert.equal(f.status, 'flag');
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-002').status, 'info');
 });
 
-test('R-PA-BCBSMA-003 passes when the BCBSMA packet names the Provider Central channel (info)', () => {
-  const text = 'Blue Cross Blue Shield of Massachusetts member.\nSubmitted via the Provider Central portal.\nProcedure CPT 27447.\n';
+test('R-PA-BCBSMA-002 accepts an attached clinical note', () => {
+  const texts = [
+    'Blue Cross Blue Shield of Massachusetts member.\nPrior authorization request for CPT 27447.\n',
+    'Clinical note\nHistory and physical exam support the requested service.\n',
+  ];
+  const findings = runEngine(bundleOf(texts));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-002').status, 'pass');
+});
+
+test('R-PA-BCBSMA-003 does not require a channel inside the clinical packet', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nPrior authorization request for CPT 27447.\n';
   const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSMA-003');
-  assert.equal(f.status, 'pass');
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-003').status, 'pass');
+});
+
+test('R-PA-BCBSMA-003 remains satisfied when Authorization Manager is named', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nSubmitted through Authorization Manager.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-003').status, 'pass');
+});
+
+test('R-PA-BCBSMA-003 remains satisfied when Carelon routing is named', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nCarelon submission for genetic testing.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-003').status, 'pass');
+});
+
+test('R-PA-BCBSMA-004 does not infer authorization status from a CPT code', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nRequested procedure: CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-004').status, 'pass');
+});
+
+test('R-PA-BCBSMA-004 remains informational without a bundled member-benefit list', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nAuthorization requirement unknown.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-004').status, 'pass');
+});
+
+test('R-PA-BCBSMA-005 does not require a future reference on an initial request', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nPrior authorization required for CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-005').status, 'pass');
+});
+
+test('R-PA-BCBSMA-005 advises when claimed approval omits its reference', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nPrior authorization approved.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-005').status, 'info');
+});
+
+test('R-PA-BCBSMA-005 accepts a claimed approval with its reference', () => {
+  const text = 'Blue Cross Blue Shield of Massachusetts member.\nPrior authorization approved. Authorization number: MA-1234.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMA-005').status, 'pass');
 });
 
 test('R-PA-BCBSMA-007 flags a BCBSMA outpatient MRI with no clinical indication', () => {
