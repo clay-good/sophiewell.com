@@ -10,7 +10,7 @@
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { ledgerUrls, citedUrls, unknownCitedUrls } from '../../scripts/check-pa-rule-citations.mjs';
+import { ledgerUrls, citedUrls, unknownCitedUrls, authWallUrls } from '../../scripts/check-pa-rule-citations.mjs';
 
 const LEDGER = {
   sources: [
@@ -78,4 +78,48 @@ test('the live ruleset and the live ledger agree', async () => {
   const { STARTER_RULES } = await import('../../lib/pa/rules.js');
   const unknown = unknownCitedUrls(ledger, STARTER_RULES);
   assert.deepEqual(unknown.map(([u]) => u), [], 'rule citations point at urls the ledger does not carry');
+});
+
+// ---- spec-v1351: a registered url must publish something, not ask for a login ----
+
+const wall = (url) => ({ sources: [{ id: 'w', url, alsoCited: [] }] });
+
+test('a sign-in wall is not a citable authority', () => {
+  for (const url of [
+    'https://providers.bluekc.com/login',
+    'https://payer.example/Account/Login',
+    'https://payer.example/sso/start',
+    'https://payer.example/auth',
+    'https://payer.example/secure/sign-in',
+  ]) {
+    assert.equal(authWallUrls(wall(url)).length, 1, url + ' should be reported as a sign-in wall');
+  }
+});
+
+test('a real authority page containing the letters auth is not a wall', () => {
+  // The whole point of matching path SEGMENTS: these are the pages the program
+  // repoints rules at, and a substring match would reject every one of them.
+  for (const url of [
+    'https://payer.example/providers/prior-authorization',
+    'https://providers.bluekc.com/Authorizations',
+    'https://payer.example/logins-explained',
+    'https://payer.example/providers/resource-center/prior-approval-for-requested-services',
+  ]) {
+    assert.deepEqual(authWallUrls(wall(url)), [], url + ' should be allowed');
+  }
+});
+
+test('a wall registered as alsoCited is reported too', () => {
+  const ledger = { sources: [{ id: 'w', url: 'https://payer.example/policies', alsoCited: ['https://payer.example/login'] }] };
+  const found = authWallUrls(ledger);
+  assert.equal(found.length, 1);
+  assert.equal(found[0][1], 'https://payer.example/login');
+});
+
+test('the live ledger registers no sign-in wall', async () => {
+  const { readFileSync } = await import('node:fs');
+  const { fileURLToPath } = await import('node:url');
+  const root = fileURLToPath(new URL('../..', import.meta.url));
+  const ledger = JSON.parse(readFileSync(`${root}/pa-staleness-ledger.json`, 'utf8'));
+  assert.deepEqual(authWallUrls(ledger), [], 'an authority behind a login publishes nothing a rule can cite');
 });

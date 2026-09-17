@@ -70,6 +70,35 @@ export function citedUrls(rules) {
   return out;
 }
 
+// spec-v1351: a registered url must be a page that PUBLISHES something. All
+// twenty Blue KC rules cited `providers.bluekc.com/login` -- a sign-in wall. It
+// passed every check here, because it was registered and it answers HTTP 200:
+// the link check sees a page, the staleness check sees a date. What no check
+// saw is that a reader who clicks it is asked to sign in, and that the claims
+// twenty rules made in its name could never be re-verified against it.
+//
+// Matched on PATH SEGMENTS, not substrings. `/prior-authorization` and
+// `/Authorizations` both contain "auth" and are real authority pages; only a
+// segment that IS a sign-in word is a wall.
+const AUTH_WALL_SEGMENTS = new Set(['login', 'log-in', 'signin', 'sign-in', 'logon', 'sso', 'auth', 'authenticate']);
+
+export function authWallUrls(ledger) {
+  const out = [];
+  for (const s of ledger.sources || []) {
+    for (const url of [s.url, ...(s.alsoCited || [])]) {
+      if (!url) continue;
+      let segments;
+      try {
+        segments = new URL(url).pathname.split('/').filter(Boolean);
+      } catch {
+        continue;
+      }
+      if (segments.some((seg) => AUTH_WALL_SEGMENTS.has(seg.toLowerCase()))) out.push([s.id, url]);
+    }
+  }
+  return out;
+}
+
 export function unknownCitedUrls(ledger, rules) {
   const known = ledgerUrls(ledger);
   return [...citedUrls(rules)].filter(([url]) => !known.has(url));
@@ -79,6 +108,17 @@ async function main() {
   const ledger = JSON.parse(readFileSync(`${ROOT}pa-staleness-ledger.json`, 'utf8'));
   const { STARTER_RULES } = await import(`${ROOT}lib/pa/rules.js`);
   const unknown = unknownCitedUrls(ledger, STARTER_RULES);
+
+  const walls = authWallUrls(ledger);
+  if (walls.length) {
+    console.error('check-pa-rule-citations: violations.');
+    for (const [id, url] of walls) {
+      console.error(`  ${url}`);
+      console.error(`      registered by source ${id}, but its path is a sign-in wall; a page behind a login publishes nothing a rule can cite or a maintainer can re-verify`);
+    }
+    console.error('  Register the authority\'s public page instead (docs/pa-maintenance.md).');
+    process.exit(1);
+  }
 
   if (unknown.length) {
     console.error('check-pa-rule-citations: violations.');
@@ -93,7 +133,7 @@ async function main() {
   const known = ledgerUrls(ledger);
   const cited = citedUrls(STARTER_RULES);
   const withUrl = STARTER_RULES.filter((r) => HAS_URL.test(String(r.citation || ''))).length;
-  console.log(`check-pa-rule-citations: clean (${cited.size} distinct urls across ${withUrl} rule citations, all ${known.size} registered in the ledger).`);
+  console.log(`check-pa-rule-citations: clean (${cited.size} distinct urls across ${withUrl} rule citations, all ${known.size} registered in the ledger, none behind a sign-in wall).`);
 }
 
 if (process.argv[1] && process.argv[1].endsWith('check-pa-rule-citations.mjs')) main();

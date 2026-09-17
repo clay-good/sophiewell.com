@@ -57,6 +57,15 @@ rule cites a URL the ledger does not know, and the monthly link check fetches
 `alsoCited` alongside `url`. **Every URL a reader can click in a pa-lint report
 is in this file.**
 
+The same check also refuses a URL whose path is a **sign-in wall** — a segment
+of `login`, `signin`, `sign-in`, `logon`, `sso`, `auth`, or `authenticate`
+(spec-v1351). A page behind a login answers HTTP 200 and carries a date, so the
+link check and the staleness check both pass on it, while a reader who clicks it
+is asked to sign in and a maintainer can never re-verify the claim it supposedly
+supports. All twenty Blue KC rules cited one. Register the authority's public
+page instead: a provider manual PDF or a published policy page. Matching is on
+path segments, so `/prior-authorization` and `/Authorizations` are fine.
+
 ### Non-PA operations rule families (spec-v63 OA4)
 
 The ledger is no longer PA-only. spec-v63 OA4 extended it to the
