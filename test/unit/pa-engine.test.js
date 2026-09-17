@@ -6102,6 +6102,75 @@ test('R-PA-BCBSMN-008 treats care already provided as non-urgent rather than unj
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMN-008').status, 'pass');
 });
 
+test('R-PA-BCBSMN-011 does not infer step therapy from a specialty-drug label', () => {
+  const text = 'Blue Cross and Blue Shield of Minnesota member.\nRequested: specialty drug J1745 infusion.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMN-011').status, 'pass');
+});
+
+test('R-PA-BCBSMN-011 advises when declared step therapy has no prior trial (info)', () => {
+  const text = 'Blue Cross and Blue Shield of Minnesota member.\nThis drug is subject to step therapy.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMN-011').status, 'info');
+});
+
+test('R-PA-BCBSMN-012 does not treat an 81xxx code as an EviCore molecular request', () => {
+  const text = 'Blue Cross and Blue Shield of Minnesota member.\nRequested: CPT 81162.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMN-012').status, 'pass');
+});
+
+test('R-PA-BCBSMN-012 flags a molecular lab request missing the indication', () => {
+  const text = 'Blue Cross and Blue Shield of Minnesota member.\nMolecular lab request.\nTest name: BRCA1/2 sequencing.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMN-012').status, 'flag');
+});
+
+test('R-PA-BCBSMN-012 accepts a molecular lab request with test and indication', () => {
+  const text = 'Blue Cross and Blue Shield of Minnesota member.\nMolecular lab request.\n'
+    + 'Test name: BRCA1/2 sequencing. Family history of early-onset breast cancer.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMN-012').status, 'pass');
+});
+
+test('R-PA-BCBSMN-013 does not demand a diagnosis from a J-code alone', () => {
+  const text = 'Blue Cross and Blue Shield of Minnesota member.\nRequested: J9299 nivolumab.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMN-013').status, 'pass');
+});
+
+test('R-PA-BCBSMN-013 advises when a Prime MPS request carries no diagnosis (info)', () => {
+  const text = 'Blue Cross and Blue Shield of Minnesota member.\nPrime MPS specialty drug review for J9299.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMN-013').status, 'info');
+});
+
+test('R-PA-BCBSMN-014 advises when a retrospective request states no reason (info)', () => {
+  const text = 'Blue Cross and Blue Shield of Minnesota member.\nRetrospective clinical review requested for CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMN-014').status, 'info');
+});
+
+test('R-PA-BCBSMN-014 accepts an after-hours reason for retrospective review', () => {
+  const text = 'Blue Cross and Blue Shield of Minnesota member.\nRetrospective clinical review requested for CPT 27447.\n'
+    + 'After-hours urgent situation; authorization could not be obtained first.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMN-014').status, 'pass');
+});
+
+test('R-PA-BCBSMN-015 does not infer a DME request from an E code alone', () => {
+  const text = 'Blue Cross and Blue Shield of Minnesota member.\nRequested: E0601 CPAP device.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMN-015').status, 'pass');
+});
+
+test('R-PA-BCBSMN-015 accepts a home-health request with a plan of care', () => {
+  const text = 'Blue Cross and Blue Shield of Minnesota member.\nPrior authorization request for home health services.\n'
+    + 'Plan of care attached.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMN-015').status, 'pass');
+});
+
 test('R-PA-BCBSMN-009 does not infer site-of-care review from hospital-outpatient surgery', () => {
   const text = 'Blue Cross and Blue Shield of Minnesota member.\nOutpatient hospital surgery, CPT 29881.\n';
   const findings = runEngine(bundleOf(text));
