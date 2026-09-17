@@ -5824,6 +5824,74 @@ test('R-PA-BLUEKC-010 advises when a declared NDC requirement has no code (info)
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-BLUEKC-010').status, 'info');
 });
 
+test('R-PA-BLUEKC-011 does not infer step therapy from a specialty-drug label', () => {
+  const text = 'Blue Cross and Blue Shield of Kansas City member.\nRequested: specialty drug J1745 infusion.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BLUEKC-011').status, 'pass');
+});
+
+test('R-PA-BLUEKC-011 advises when declared step therapy has no prior trial (info)', () => {
+  const text = 'Blue Cross and Blue Shield of Kansas City member.\nThis drug is subject to step therapy.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BLUEKC-011').status, 'info');
+});
+
+test('R-PA-BLUEKC-011 accepts declared step therapy with a documented failure', () => {
+  const text = 'Blue Cross and Blue Shield of Kansas City member.\nThis drug is subject to step therapy.\n'
+    + 'Adalimumab tried and failed after 16 weeks.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BLUEKC-011').status, 'pass');
+});
+
+test('R-PA-BLUEKC-012 does not infer a lab workflow from an 81xxx code', () => {
+  const text = 'Blue Cross and Blue Shield of Kansas City member.\nRequested: CPT 81162 hereditary panel.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BLUEKC-012').status, 'pass');
+});
+
+test('R-PA-BLUEKC-012 advises when a declared lab workflow omits the indication (info)', () => {
+  const text = 'Blue Cross and Blue Shield of Kansas City member.\nSubmitted to the lab management program.\nTest name: BRCA1/2 sequencing.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BLUEKC-012').status, 'info');
+});
+
+test('R-PA-BLUEKC-013 does not demand a diagnosis from a J-code alone', () => {
+  const text = 'Blue Cross and Blue Shield of Kansas City member.\nRequested: J9299 nivolumab.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BLUEKC-013').status, 'pass');
+});
+
+test('R-PA-BLUEKC-013 advises when a declared drug workflow carries no diagnosis (info)', () => {
+  const text = 'Blue Cross and Blue Shield of Kansas City member.\nSpecialty medication prior authorization for J9299.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BLUEKC-013').status, 'info');
+});
+
+test('R-PA-BLUEKC-014 does not fire on the phrase retrospective review alone', () => {
+  const text = 'Blue Cross and Blue Shield of Kansas City member.\nClaim may be selected for retrospective review.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BLUEKC-014').status, 'pass');
+});
+
+test('R-PA-BLUEKC-014 advises when a post-service request states no reason (info)', () => {
+  const text = 'Blue Cross and Blue Shield of Kansas City member.\nRetroactive authorization requested for CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BLUEKC-014').status, 'info');
+});
+
+test('R-PA-BLUEKC-015 does not infer a DME request from an E code alone', () => {
+  const text = 'Blue Cross and Blue Shield of Kansas City member.\nRequested: E0601 CPAP device.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BLUEKC-015').status, 'pass');
+});
+
+test('R-PA-BLUEKC-015 accepts a home-health request with a plan of care', () => {
+  const text = 'Blue Cross and Blue Shield of Kansas City member.\nPrior authorization request for home health visits.\n'
+    + 'Plan of care attached.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BLUEKC-015').status, 'pass');
+});
+
 test('R-PA-BLUEKC-017 flags a Blue KC transplant request with no Blue Distinction routing', () => {
   const text = 'Blue Cross and Blue Shield of Kansas City member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
   const findings = runEngine(bundleOf(text));
