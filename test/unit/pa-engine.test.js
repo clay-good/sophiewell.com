@@ -5750,18 +5750,78 @@ test('R-PA-BLUEKC-003 passes when the Blue KC packet names the Availity channel 
   assert.equal(f.status, 'pass');
 });
 
-test('R-PA-BLUEKC-007 flags a Blue KC outpatient MRI with no clinical indication', () => {
-  const text = 'Blue Cross and Blue Shield of Kansas City member.\nRequested: MRI lumbar spine, CPT 72148.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-BLUEKC-007');
-  assert.equal(f.status, 'flag');
-});
-
 test('R-PA-BLUEKC-008 passes when an expedited Blue KC request documents the clinical urgency', () => {
   const text = 'Blue Cross and Blue Shield of Kansas City member.\nExpedited review requested: delay would jeopardize the member\'s life or health.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-BLUEKC-008');
   assert.equal(f.status, 'pass');
+});
+
+test('R-PA-BLUEKC-006 does not infer a concurrent review from admission prose', () => {
+  const text = 'Blue Cross and Blue Shield of Kansas City member.\nPatient was admitted Tuesday; length of stay is four days.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BLUEKC-006').status, 'pass');
+});
+
+test('R-PA-BLUEKC-006 flags a continued-stay review with no interval clinical data', () => {
+  const text = 'Blue Cross and Blue Shield of Kansas City member.\nContinued stay requested for two additional days.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BLUEKC-006').status, 'flag');
+});
+
+test('R-PA-BLUEKC-006 accepts a continued-stay review with a clinical update', () => {
+  const text = 'Blue Cross and Blue Shield of Kansas City member.\nContinued stay requested for two additional days.\n'
+    + 'Clinical update since the initial approval: still requiring IV antibiotics.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BLUEKC-006').status, 'pass');
+});
+
+test('R-PA-BLUEKC-007 flags a Blue KC outpatient MRI with no clinical indication', () => {
+  const text = 'Blue Cross and Blue Shield of Kansas City member.\nRequested: MRI lumbar spine, CPT 72148.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BLUEKC-007').status, 'flag');
+});
+
+test('R-PA-BLUEKC-007 does not treat an arbitrary 7xxxx code as an eviCore study', () => {
+  const text = 'Blue Cross and Blue Shield of Kansas City member.\nRequested: CPT 76700 abdominal ultrasound.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BLUEKC-007').status, 'pass');
+});
+
+test('R-PA-BLUEKC-007 exempts imaging done in the emergency room', () => {
+  const text = 'Blue Cross and Blue Shield of Kansas City member.\nHead CT scan performed in the emergency room.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BLUEKC-007').status, 'pass');
+});
+
+test('R-PA-BLUEKC-008 advises when an expedited request names no urgent condition (info)', () => {
+  const text = 'Blue Cross and Blue Shield of Kansas City member.\nExpedited review requested for CPT 72148.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BLUEKC-008').status, 'info');
+});
+
+test('R-PA-BLUEKC-009 does not infer site-of-care review from hospital-outpatient surgery', () => {
+  const text = 'Blue Cross and Blue Shield of Kansas City member.\nOutpatient hospital surgery, CPT 29881.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BLUEKC-009').status, 'pass');
+});
+
+test('R-PA-BLUEKC-009 advises when a declared site-of-care review names no site (info)', () => {
+  const text = 'Blue Cross and Blue Shield of Kansas City member.\nThis request is subject to site-of-care review.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BLUEKC-009').status, 'info');
+});
+
+test('R-PA-BLUEKC-010 does not demand an NDC from a J-code alone', () => {
+  const text = 'Blue Cross and Blue Shield of Kansas City member.\nRequested drug: J1745 infliximab.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BLUEKC-010').status, 'pass');
+});
+
+test('R-PA-BLUEKC-010 advises when a declared NDC requirement has no code (info)', () => {
+  const text = 'Blue Cross and Blue Shield of Kansas City member.\nNDC required for this drug request.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BLUEKC-010').status, 'info');
 });
 
 test('R-PA-BLUEKC-017 flags a Blue KC transplant request with no Blue Distinction routing', () => {

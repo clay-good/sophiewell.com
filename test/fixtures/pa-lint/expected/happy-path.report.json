@@ -2925,8 +2925,8 @@
       "ruleId": "R-PA-BLUEKC-006",
       "severity": "flag",
       "status": "pass",
-      "description": "Blue Cross and Blue Shield of Kansas City inpatient prior authorization: admission notification + concurrent / continued-stay clinical review documentation present",
-      "citation": "Blue Cross and Blue Shield of Kansas City requires admission notification and conducts concurrent (continued-stay) review for inpatient admissions, collecting the clinical update and discharge plan; an inpatient request should carry that documentation. <https://providers.bluekc.com/login>",
+      "description": "Blue KC continued-stay concurrent review: new clinical information since the initial stay approval",
+      "citation": "Blue KC says concurrent review takes place during a stay following prior authorization, and that the contracted provider's review nurse supplies the medical information collected since the initial stay approval so Blue KC can verify the need for continued stay. Blue KC itself sends the admission notification letters, so that is not provider packet content, and an inpatient setting alone does not make a packet a concurrent review. <https://providers.bluekc.com/Content/PDFs/PRG/2026-ProviderReferenceGuide.pdf>",
       "evidence": "Not a Blue Cross and Blue Shield of Kansas City packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -2935,28 +2935,28 @@
       "ruleId": "R-PA-BLUEKC-007",
       "severity": "flag",
       "status": "pass",
-      "description": "Blue Cross and Blue Shield of Kansas City advanced-imaging review: outpatient MRI / CT / PET carries the clinical indication for Blue Cross and Blue Shield of Kansas City's advanced-imaging utilization-management program",
-      "citation": "Blue Cross and Blue Shield of Kansas City delegates outpatient advanced-imaging (MRI / CT / PET / nuclear cardiology) prior authorization to its advanced-imaging utilization-management program; the request should carry the clinical indication that supports the study. <https://providers.bluekc.com/login>",
+      "description": "Blue KC outpatient elective imaging (eviCore): clinical indication documented",
+      "citation": "Blue KC requires prior authorization from eviCore for outpatient and elective MRI, MRA, CT, CTA, PET, spinal fusions, echocardiogram, and nuclear cardiology, and says imaging performed with an inpatient stay, a 23-hour observation, or in the emergency room is not subject to the requirement. <https://providers.bluekc.com/Content/PDFs/PRG/2026-ProviderReferenceGuide.pdf>",
       "evidence": "Not a Blue Cross and Blue Shield of Kansas City packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
     {
       "ruleId": "R-PA-BLUEKC-008",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "Blue Cross and Blue Shield of Kansas City expedited / urgent prior authorization: clinical urgency justification present",
-      "citation": "Blue Cross and Blue Shield of Kansas City processes an expedited prior-authorization review when a standard timeframe could seriously jeopardize the member's life, health, or ability to regain maximum function. A request that asks for expedited handling should state that clinical urgency. <https://providers.bluekc.com/login>",
+      "description": "Blue KC expedited / urgent request: the urgent condition is stated",
+      "citation": "Blue KC processes prior-authorization requests within 36 hours and tells providers that imaging needed in less than 36 hours because of an urgent condition should be called in as urgent for expedited review. Blue KC publishes no universal urgency test a packet must recite, so this advisory asks only for the request-specific condition. <https://providers.bluekc.com/Content/PDFs/PRG/2026-ProviderReferenceGuide.pdf>",
       "evidence": "Not a Blue Cross and Blue Shield of Kansas City packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
     {
       "ruleId": "R-PA-BLUEKC-009",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
-      "description": "Blue Cross and Blue Shield of Kansas City site-of-care review: outpatient surgery / imaging addresses the hospital-outpatient vs. ASC / freestanding site-of-care requirement",
-      "citation": "Blue Cross and Blue Shield of Kansas City's site-of-care medical policy directs certain outpatient surgical and imaging services to an ambulatory surgical center or freestanding facility unless hospital-outpatient care is medically necessary; a hospital-outpatient request should document why that site is required. <https://providers.bluekc.com/login>",
+      "description": "Blue KC request with an explicit site-of-care requirement: selected site or exception basis documented",
+      "citation": "Source-free operational completeness check: the reviewed Blue KC Provider Reference Guide publishes no site-of-care rule directing outpatient surgery or imaging away from a hospital outpatient department. This advisory runs only when the packet itself establishes that a site-of-care requirement applies.",
       "evidence": "Not a Blue Cross and Blue Shield of Kansas City packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -2965,8 +2965,8 @@
       "ruleId": "R-PA-BLUEKC-010",
       "severity": "info",
       "status": "pass",
-      "description": "Blue Cross and Blue Shield of Kansas City prior authorization: NDC documented for a physician-administered (J-code) drug request",
-      "citation": "Blue Cross and Blue Shield of Kansas City review of physician-administered (buy-and-bill) drugs maps the request to a specific product and dose via the National Drug Code in addition to the HCPCS J-code. Informational: a J-code request without an NDC routes more slowly. <https://providers.bluekc.com/login>",
+      "description": "Blue KC drug request with an explicit NDC requirement: formatted NDC documented",
+      "citation": "Source-free operational completeness check: the reviewed Blue KC Provider Reference Guide does not require a National Drug Code for every physician-administered drug request. This advisory runs only when the packet itself declares an NDC requirement.",
       "evidence": "Not a Blue Cross and Blue Shield of Kansas City packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -10228,9 +10228,9 @@
         {
           "id": "bluekc-precert",
           "label": "Blue Cross and Blue Shield of Kansas City (Blue KC) prior-authorization requirements, Medical Policies, and utilization-management / pharmacy program requirements",
-          "url": "https://providers.bluekc.com/login",
+          "url": "https://providers.bluekc.com/Content/PDFs/PRG/2026-ProviderReferenceGuide.pdf",
           "ruleFamily": "commercial-bluekc",
-          "lastVerified": "2026-06-05"
+          "lastVerified": "2026-09-17"
         },
         {
           "id": "bcbsmn-precert",
