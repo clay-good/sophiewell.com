@@ -5420,6 +5420,39 @@ test('R-PA-ARKBCBS-005 accepts a completed submission with a case number', () =>
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-005').status, 'pass');
 });
 
+test('R-PA-ARKBCBS-006 does not infer an inpatient review from admission prose', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\nPatient was admitted yesterday; length of stay is three days.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-006').status, 'pass');
+});
+
+test('R-PA-ARKBCBS-006 flags an explicit inpatient request with no admission clinical support', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\nInpatient admission request for CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-006').status, 'flag');
+});
+
+test('R-PA-ARKBCBS-006 accepts an inpatient request that documents the level of service', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\nInpatient admission request for CPT 27447.\n'
+    + 'Admitting diagnosis and clinical documentation supporting the level of service are attached.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-006').status, 'pass');
+});
+
+test('R-PA-ARKBCBS-006 flags a continued-stay review missing the discharge plan', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\nContinued stay review for hospital day 4.\n'
+    + 'Clinical update: afebrile, tolerating diet.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-006').status, 'flag');
+});
+
+test('R-PA-ARKBCBS-006 accepts a complete continued-stay review', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\nContinued stay review for hospital day 4.\n'
+    + 'Clinical update: afebrile, tolerating diet. Discharge plan: home with home health on day 6.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-006').status, 'pass');
+});
+
 test('R-PA-ARKBCBS-007 flags an Arkansas Blue Cross outpatient MRI with no clinical indication', () => {
   const text = 'Arkansas Blue Cross and Blue Shield member.\nRequested: MRI lumbar spine, CPT 72148.\n';
   const findings = runEngine(bundleOf(text));
@@ -5427,11 +5460,73 @@ test('R-PA-ARKBCBS-007 flags an Arkansas Blue Cross outpatient MRI with no clini
   assert.equal(f.status, 'flag');
 });
 
+test('R-PA-ARKBCBS-007 does not treat an arbitrary 7xxxx code as advanced imaging', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\nRequested: CPT 76700 abdominal ultrasound.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-007').status, 'pass');
+});
+
+test('R-PA-ARKBCBS-007 exempts imaging in a setting Arkansas Blue Cross excludes', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\nHead CT ordered during the emergency room encounter.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-007').status, 'pass');
+});
+
+test('R-PA-ARKBCBS-007 accepts an outpatient MRI with symptoms and conservative treatment', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\nRequested: MRI lumbar spine, CPT 72148.\n'
+    + 'Symptoms for 10 weeks; failed conservative treatment with physical therapy.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-007').status, 'pass');
+});
+
+test('R-PA-ARKBCBS-008 advises when an expedited request states no urgency (info)', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\nExpedited review requested for CPT 72148.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-008').status, 'info');
+});
+
 test('R-PA-ARKBCBS-008 passes when an expedited Arkansas Blue Cross request documents the clinical urgency', () => {
   const text = 'Arkansas Blue Cross and Blue Shield member.\nExpedited review requested: delay would jeopardize the member\'s life or health.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-008');
   assert.equal(f.status, 'pass');
+});
+
+test('R-PA-ARKBCBS-009 does not infer site-of-care steerage from hospital-outpatient surgery', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\nOutpatient hospital surgery, CPT 29881.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-009').status, 'pass');
+});
+
+test('R-PA-ARKBCBS-009 advises when declared site-of-care steerage names no site (info)', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\nHigh-cost infusion under site of care steerage.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-009').status, 'info');
+});
+
+test('R-PA-ARKBCBS-009 accepts declared steerage that names the administration site', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\nHigh-cost infusion under site of care steerage.\n'
+    + 'Administration site: home infusion.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-009').status, 'pass');
+});
+
+test('R-PA-ARKBCBS-010 does not demand an NDC from a J-code alone', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\nRequested drug: J1745 infliximab, 400 mg.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-010').status, 'pass');
+});
+
+test('R-PA-ARKBCBS-010 advises when a referenced NDC is not in the 5-4-2 format (info)', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\nRequested drug: J1745. NDC 5730-30-1.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-010').status, 'info');
+});
+
+test('R-PA-ARKBCBS-010 accepts an NDC billed in the published 5-4-2 format', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\nRequested drug: J1745. NDC 57894-0030-01.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-010').status, 'pass');
 });
 
 test('R-PA-ARKBCBS-017 flags an Arkansas Blue Cross transplant request with no Blue Distinction routing', () => {
