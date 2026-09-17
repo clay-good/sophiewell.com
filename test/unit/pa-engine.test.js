@@ -6190,18 +6190,86 @@ test('R-PA-BCBSMN-008 passes when an expedited BCBSMN request documents the clin
   assert.equal(f.status, 'pass');
 });
 
-test('R-PA-BCBSMN-017 flags a BCBSMN transplant request with no Blue Distinction routing', () => {
-  const text = 'Blue Cross and Blue Shield of Minnesota member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
+test('R-PA-BCBSMN-016 does not fire on generic mental-health context', () => {
+  const text = 'Blue Cross and Blue Shield of Minnesota member.\nMental health follow-up visit.\n';
   const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSMN-017');
-  assert.equal(f.status, 'flag');
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMN-016').status, 'pass');
 });
 
-test('R-PA-BCBSMN-020 flags a BCBSMN out-of-network request with no network-gap justification (info)', () => {
+test('R-PA-BCBSMN-016 accepts a substance-use request citing ASAM', () => {
+  const text = 'Blue Cross and Blue Shield of Minnesota member.\nSubstance use treatment requested.\n'
+    + 'ASAM criteria support this level of care.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMN-016').status, 'pass');
+});
+
+test('R-PA-BCBSMN-017 does not fire on the word transplant alone', () => {
+  const text = 'Blue Cross and Blue Shield of Minnesota member.\nHistory of kidney transplant in 2019.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMN-017').status, 'pass');
+});
+
+test('R-PA-BCBSMN-017 flags a transplant request with no evaluation or policy basis', () => {
+  const text = 'Blue Cross and Blue Shield of Minnesota member.\nTransplant request for a liver.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMN-017').status, 'flag');
+});
+
+test('R-PA-BCBSMN-017 accepts a transplant request with the evaluation attached', () => {
+  const text = 'Blue Cross and Blue Shield of Minnesota member.\nTransplant request for a liver.\n'
+    + 'Transplant evaluation completed; candidacy confirmed.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMN-017').status, 'pass');
+});
+
+test('R-PA-BCBSMN-018 does not infer a classification from clinical-trial context', () => {
+  const text = 'Blue Cross and Blue Shield of Minnesota member.\nPatient is enrolled in a clinical trial.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMN-018').status, 'pass');
+});
+
+test('R-PA-BCBSMN-018 flags a declared classification with no evidence', () => {
+  const text = 'Blue Cross and Blue Shield of Minnesota member.\nThis service is deemed investigational.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMN-018').status, 'flag');
+});
+
+test('R-PA-BCBSMN-018 accepts evidence addressing the published test', () => {
+  const text = 'Blue Cross and Blue Shield of Minnesota member.\nThis service is deemed investigational.\n'
+    + 'Peer-reviewed literature supports the effect on health outcomes for this indication.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMN-018').status, 'pass');
+});
+
+test('R-PA-BCBSMN-019 does not treat a grievance as an authorization appeal', () => {
+  const text = 'Blue Cross and Blue Shield of Minnesota member.\nMember filed a grievance about billing.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMN-019').status, 'pass');
+});
+
+test('R-PA-BCBSMN-019 advises when a reconsideration names no determination (info)', () => {
+  const text = 'Blue Cross and Blue Shield of Minnesota member.\nReconsideration request for CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMN-019').status, 'info');
+});
+
+test('R-PA-BCBSMN-020 does not fire on out-of-network status alone', () => {
   const text = 'Blue Cross and Blue Shield of Minnesota member.\nOut-of-network prior authorization request.\nProcedure CPT 70551.\n';
   const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSMN-020');
-  assert.equal(f.status, 'info');
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMN-020').status, 'pass');
+});
+
+test('R-PA-BCBSMN-020 advises when an exception request states no basis (info)', () => {
+  const text = 'Blue Cross and Blue Shield of Minnesota member.\nOut-of-network exception requested for CPT 70551.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMN-020').status, 'info');
+});
+
+test('R-PA-BCBSMN-020 accepts an exception request with a medical-necessity basis', () => {
+  const text = 'Blue Cross and Blue Shield of Minnesota member.\nOut-of-network exception requested for CPT 70551.\n'
+    + 'Medically necessary: no participating provider offers this procedure in the service area.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMN-020').status, 'pass');
 });
 
 // ---- wave 52-28 sanity checks: Blue Cross and Blue Shield of Louisiana overlay (§4.5.28) ----
