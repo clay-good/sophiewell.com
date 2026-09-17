@@ -6047,11 +6047,71 @@ test('R-PA-BCBSMN-003 passes when the BCBSMN packet names the Availity channel (
   assert.equal(f.status, 'pass');
 });
 
-test('R-PA-BCBSMN-007 flags a BCBSMN outpatient MRI with no clinical indication', () => {
+test('R-PA-BCBSMN-006 does not fire on an admission notification alone', () => {
+  const text = 'Blue Cross and Blue Shield of Minnesota member.\nAdmission notification submitted for an inpatient stay.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMN-006').status, 'pass');
+});
+
+test('R-PA-BCBSMN-006 flags a continued-stay request with no clinical support', () => {
+  const text = 'Blue Cross and Blue Shield of Minnesota member.\nContinued stay requested beyond the approved days.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMN-006').status, 'flag');
+});
+
+test('R-PA-BCBSMN-006 accepts a continued-stay request with a clinical update', () => {
+  const text = 'Blue Cross and Blue Shield of Minnesota member.\nContinued stay requested beyond the approved days.\n'
+    + 'Clinical update: still requiring IV antibiotics. Expected discharge in two days.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMN-006').status, 'pass');
+});
+
+test('R-PA-BCBSMN-007 does not infer an imaging workflow from an MRI request', () => {
   const text = 'Blue Cross and Blue Shield of Minnesota member.\nRequested: MRI lumbar spine, CPT 72148.\n';
   const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSMN-007');
-  assert.equal(f.status, 'flag');
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMN-007').status, 'pass');
+});
+
+test('R-PA-BCBSMN-007 advises when a declared imaging workflow omits the indication (info)', () => {
+  const text = 'Blue Cross and Blue Shield of Minnesota member.\nImaging prior authorization for CPT 72148.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMN-007').status, 'info');
+});
+
+test('R-PA-BCBSMN-008 accepts any one of the three published urgency conditions', () => {
+  for (const basis of [
+    'Immediate action is needed to prevent serious deterioration from an unforeseen illness.',
+    'Delay could jeopardize the ability to regain maximum function.',
+    'The member has severe pain that cannot be adequately managed without this treatment.',
+  ]) {
+    const text = 'Blue Cross and Blue Shield of Minnesota member.\nExpedited review requested.\n' + basis + '\n';
+    const findings = runEngine(bundleOf(text));
+    assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMN-008').status, 'pass', basis);
+  }
+});
+
+test('R-PA-BCBSMN-008 flags an urgent request stating no published condition', () => {
+  const text = 'Blue Cross and Blue Shield of Minnesota member.\nExpedited review requested for CPT 72148.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMN-008').status, 'flag');
+});
+
+test('R-PA-BCBSMN-008 treats care already provided as non-urgent rather than unjustified', () => {
+  const text = 'Blue Cross and Blue Shield of Minnesota member.\nExpedited review requested.\nService already rendered on 2026-09-01.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMN-008').status, 'pass');
+});
+
+test('R-PA-BCBSMN-009 does not infer site-of-care review from hospital-outpatient surgery', () => {
+  const text = 'Blue Cross and Blue Shield of Minnesota member.\nOutpatient hospital surgery, CPT 29881.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMN-009').status, 'pass');
+});
+
+test('R-PA-BCBSMN-010 does not demand an NDC from a J-code alone', () => {
+  const text = 'Blue Cross and Blue Shield of Minnesota member.\nRequested drug: J1745 infliximab.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMN-010').status, 'pass');
 });
 
 test('R-PA-BCBSMN-008 passes when an expedited BCBSMN request documents the clinical urgency', () => {

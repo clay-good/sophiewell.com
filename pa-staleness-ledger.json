@@ -719,7 +719,10 @@
         "R-PA-BCBSMN-002"
       ],
       "url": "https://www.bluecrossmn.com/providers",
-      "lastVerified": "2026-06-05"
+      "lastVerified": "2026-09-17",
+      "alsoCited": [
+        "https://www.bluecrossmn.com/sites/default/files/DAM/2023-05/bcbsmn-provider-policy-and-procedure-manual.pdf"
+      ]
     },
     {
       "id": "bcbsla-precert",
