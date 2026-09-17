@@ -5529,6 +5529,93 @@ test('R-PA-ARKBCBS-010 accepts an NDC billed in the published 5-4-2 format', () 
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-010').status, 'pass');
 });
 
+test('R-PA-ARKBCBS-011 does not infer step therapy from an infusion drug request', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\nRequested: J1745 infliximab infusion.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-011').status, 'pass');
+});
+
+test('R-PA-ARKBCBS-011 advises when declared step therapy has no prior trial (info)', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\nThis drug is subject to step therapy.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-011').status, 'info');
+});
+
+test('R-PA-ARKBCBS-011 accepts declared step therapy with a documented failure', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\nThis drug is subject to step therapy.\n'
+    + 'Methotrexate tried and failed after 12 weeks.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-011').status, 'pass');
+});
+
+test('R-PA-ARKBCBS-012 does not treat an 81xxx code as molecular-diagnostic billing', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\nRequested: CPT 81162 hereditary panel.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-012').status, 'pass');
+});
+
+test('R-PA-ARKBCBS-012 advises when a cytogenetic request omits the reason ordered (info)', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\nCPT 88237 cytogenetic study.\nTest name: karyotype.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-012').status, 'info');
+});
+
+test('R-PA-ARKBCBS-012 exempts laboratory testing in an excluded setting', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\nCPT 88237 drawn during the emergency room encounter.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-012').status, 'pass');
+});
+
+test('R-PA-ARKBCBS-012 accepts a molecular request with the test name and reason', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\nCPT 83891 molecular diagnostic.\n'
+    + 'Test name: BCR-ABL probe. Clinical indication: suspected CML.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-012').status, 'pass');
+});
+
+test('R-PA-ARKBCBS-013 does not demand a diagnosis from a J-code alone', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\nRequested: J9299 nivolumab.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-013').status, 'pass');
+});
+
+test('R-PA-ARKBCBS-013 advises when a declared drug workflow carries no diagnosis (info)', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\nPharmacy prior approval for J9299.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-013').status, 'info');
+});
+
+test('R-PA-ARKBCBS-014 does not fire on generic post-service prose', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\nClaim will be filed post-service.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-014').status, 'pass');
+});
+
+test('R-PA-ARKBCBS-014 advises when a retrospective request states no reason (info)', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\nRetrospective review requested for CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-014').status, 'info');
+});
+
+test('R-PA-ARKBCBS-015 does not infer a DME request from an E code alone', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\nRequested: E0601 CPAP device.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-015').status, 'pass');
+});
+
+test('R-PA-ARKBCBS-015 advises when an explicit home-health request has no order (info)', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\nPrior approval request for home health visits.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-015').status, 'info');
+});
+
+test('R-PA-ARKBCBS-015 accepts a home-health request with a plan of care', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\nPrior approval request for home health visits.\n'
+    + 'Plan of care attached.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-015').status, 'pass');
+});
+
 test('R-PA-ARKBCBS-017 flags an Arkansas Blue Cross transplant request with no Blue Distinction routing', () => {
   const text = 'Arkansas Blue Cross and Blue Shield member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
   const findings = runEngine(bundleOf(text));
