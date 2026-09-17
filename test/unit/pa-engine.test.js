@@ -5616,18 +5616,93 @@ test('R-PA-ARKBCBS-015 accepts a home-health request with a plan of care', () =>
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-015').status, 'pass');
 });
 
-test('R-PA-ARKBCBS-017 flags an Arkansas Blue Cross transplant request with no Blue Distinction routing', () => {
-  const text = 'Arkansas Blue Cross and Blue Shield member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
+test('R-PA-ARKBCBS-016 does not fire on generic mental-health context', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\nMental health follow-up visit.\n';
   const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-017');
-  assert.equal(f.status, 'flag');
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-016').status, 'pass');
 });
 
-test('R-PA-ARKBCBS-020 flags an Arkansas Blue Cross out-of-network request with no network-gap justification (info)', () => {
+test('R-PA-ARKBCBS-016 flags a residential request missing the discharge plan', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\nResidential treatment requested.\n'
+    + 'Proposed treatment plan attached. Risk assessment completed.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-016').status, 'flag');
+});
+
+test('R-PA-ARKBCBS-016 accepts a complete Lucet behavioral-health request', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\nResidential treatment requested.\n'
+    + 'Proposed treatment plan attached. Risk assessment completed. Tentative discharge plan at 21 days.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-016').status, 'pass');
+});
+
+test('R-PA-ARKBCBS-017 exempts a kidney transplant from prior approval', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\nRequested service: kidney transplant.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-017').status, 'pass');
+});
+
+test('R-PA-ARKBCBS-017 flags a liver transplant with no evaluation or policy basis', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\nRequested service: liver transplant.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-017').status, 'flag');
+});
+
+test('R-PA-ARKBCBS-017 accepts a liver transplant with the evaluation documented', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\nRequested service: liver transplant.\n'
+    + 'Transplant evaluation completed; meets the applicable Coverage Policy criteria.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-017').status, 'pass');
+});
+
+test('R-PA-ARKBCBS-018 does not infer a non-coverage classification from clinical-trial context', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\nPatient is enrolled in a clinical trial.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-018').status, 'pass');
+});
+
+test('R-PA-ARKBCBS-018 advises when a declared classification has no waiver or policy basis (info)', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\nThis service is deemed investigational.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-018').status, 'info');
+});
+
+test('R-PA-ARKBCBS-018 accepts a declared classification with a signed member waiver', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\nThis service is deemed investigational.\n'
+    + 'Signed waiver of health plan liability on file, dated before the service.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-018').status, 'pass');
+});
+
+test('R-PA-ARKBCBS-019 does not treat a grievance as an authorization appeal', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\nMember filed a grievance about office wait times.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-019').status, 'pass');
+});
+
+test('R-PA-ARKBCBS-019 advises when an appeal names no contested determination (info)', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\nReconsideration request for CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-019').status, 'info');
+});
+
+test('R-PA-ARKBCBS-020 does not fire on out-of-network status alone', () => {
   const text = 'Arkansas Blue Cross and Blue Shield member.\nOut-of-network prior authorization request.\nProcedure CPT 70551.\n';
   const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-020');
-  assert.equal(f.status, 'info');
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-020').status, 'pass');
+});
+
+test('R-PA-ARKBCBS-020 advises when an out-of-state request states no basis (info)', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\nOut-of-state request for CPT 70551.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-020').status, 'info');
+});
+
+test('R-PA-ARKBCBS-020 accepts an out-of-state request with a continuity-of-care basis', () => {
+  const text = 'Arkansas Blue Cross and Blue Shield member.\nOut-of-state request for CPT 70551.\n'
+    + 'Continuity of care: complex condition managed by this physician for three years.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-020').status, 'pass');
 });
 
 // ---- wave 52-26 sanity checks: Blue Cross and Blue Shield of Kansas City overlay (§4.5.26) ----
