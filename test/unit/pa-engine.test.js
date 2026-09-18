@@ -7738,11 +7738,66 @@ test('R-PA-MCOH-003 passes when the Ohio Medicaid packet names the PNM channel (
   assert.equal(f.status, 'pass');
 });
 
-test('R-PA-MCOH-017 flags an Ohio Medicaid transplant request with no Medicaid-designated transplant-center routing', () => {
+test('R-PA-MCOH-017 does not require transplant-center routing Ohio never publishes', () => {
+  // Replaces a test that asserted a "Medicaid-designated transplant-center
+  // routing" requirement; the reviewed Ohio rules state no transplant rule.
   const text = 'Ohio Medicaid member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
   const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-MCOH-017');
-  assert.equal(f.status, 'flag');
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCOH-017').status, 'pass');
+});
+
+test('R-PA-MCOH-011 flags a step therapy request stating no statutory ground', () => {
+  const text = 'Ohio Medicaid member.\nStep therapy exemption requested for adalimumab.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCOH-011').status, 'flag');
+});
+
+test('R-PA-MCOH-011 accepts each ground ORC 5164.7514 names', () => {
+  for (const ground of [
+    'The required drug is contraindicated per its FDA prescribing information.',
+    'Methotrexate was discontinued for lack of efficacy.',
+    'The member is currently stable on the prescribed drug.',
+  ]) {
+    const text = 'Ohio Medicaid member.\nStep therapy exemption requested.\n' + ground + '\n';
+    const findings = runEngine(bundleOf(text));
+    assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCOH-011').status, 'pass', ground);
+  }
+});
+
+test('R-PA-MCOH-013 exempts an emergency prescribed drug', () => {
+  const text = 'Ohio Medicaid member.\nPharmacy prior authorization; emergency supply dispensed.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCOH-013').status, 'pass');
+});
+
+test('R-PA-MCOH-014 accepts a new service directly related to an approved one', () => {
+  const text = 'Ohio Medicaid member.\nRetrospective review requested; the new service was directly related to an already approved procedure.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCOH-014').status, 'pass');
+});
+
+test('R-PA-MCOH-014 advises when an after-the-fact request states no basis (info)', () => {
+  const text = 'Ohio Medicaid member.\nRetroactive authorization requested for CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCOH-014').status, 'info');
+});
+
+test('R-PA-MCOH-019 advises when a reconsideration names no adverse determination (info)', () => {
+  const text = 'Ohio Medicaid member.\nReconsideration request for CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCOH-019').status, 'info');
+});
+
+test('R-PA-MCOH-020 accepts an out-of-state emergency during a temporary absence', () => {
+  const text = 'Ohio Medicaid member.\nCare by an out-of-state provider after an accident while temporarily absent from Ohio.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCOH-020').status, 'pass');
+});
+
+test('R-PA-MCOH-020 advises when an out-of-state service states no circumstance (info)', () => {
+  const text = 'Ohio Medicaid member.\nElective surgery by an out-of-state provider.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCOH-020').status, 'info');
 });
 
 test('R-PA-MCOH core composition: the Medicaid core fires on an Ohio Medicaid (medicaid-oh) packet', () => {
