@@ -7091,6 +7091,69 @@ test('R-PA-MCIN-015 does not extend the post-discharge exemption to DME', () => 
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCIN-015').status, 'flag');
 });
 
+test('R-PA-MCIN-016 does not fire on generic mental-health context', () => {
+  const text = 'Indiana Medicaid member.\nMental health follow-up visit.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCIN-016').status, 'pass');
+});
+
+test('R-PA-MCIN-016 flags a listed behavioral-health service with no medical necessity', () => {
+  const text = 'Indiana Medicaid member.\nPartial hospitalization requested.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCIN-016').status, 'flag');
+});
+
+test('R-PA-MCIN-017 does not fire on the word transplant alone', () => {
+  const text = 'Indiana Medicaid member.\nHistory of kidney transplant in 2019.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCIN-017').status, 'pass');
+});
+
+test('R-PA-MCIN-017 flags a stem-cell transplant with no authorization', () => {
+  const text = 'Indiana Medicaid member.\nStem cell transplant planned.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCIN-017').status, 'flag');
+});
+
+test('R-PA-MCIN-018 does not infer a classification from clinical-trial context', () => {
+  const text = 'Indiana Medicaid member.\nPatient is enrolled in a clinical trial.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCIN-018').status, 'pass');
+});
+
+test('R-PA-MCIN-019 flags an administrative review missing the authorization reference', () => {
+  const text = 'Indiana Medicaid member.\nAdministrative review requested; the service is medically necessary.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCIN-019').status, 'flag');
+});
+
+test('R-PA-MCIN-019 accepts a review with the authorization number and the reasons', () => {
+  const text = 'Indiana Medicaid member.\nAdministrative review requested.\n'
+    + 'Authorization number 12345678; the requested services are medically necessary because conservative care failed.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCIN-019').status, 'pass');
+});
+
+test('R-PA-MCIN-020 does not fire on out-of-network wording alone', () => {
+  const text = 'Indiana Medicaid member.\nOut-of-network request for CPT 70551.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCIN-020').status, 'pass');
+});
+
+test('R-PA-MCIN-020 flags an out-of-state service with no prior authorization', () => {
+  // Raised from info to flag with this slice: Indiana states the requirement as
+  // mandatory -- all services from out-of-state providers require PA.
+  const text = 'Indiana Medicaid member.\nService by an out-of-state provider.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCIN-020').status, 'flag');
+});
+
+test('R-PA-MCIN-020 accepts an out-of-state service with prior authorization', () => {
+  const text = 'Indiana Medicaid member.\nService by an out-of-state provider.\nPrior authorization obtained.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCIN-020').status, 'pass');
+});
+
 test('R-PA-MCIN-010 does not demand an NDC from a J-code alone', () => {
   const text = 'Indiana Medicaid member.\nRequested drug: J1745 infliximab.\n';
   const findings = runEngine(bundleOf(text));
