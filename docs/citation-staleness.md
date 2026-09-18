@@ -661,3 +661,5 @@ carries the specific date that could change it.
 | acute-opioid-rx-limit | NY PHL 3331(5); N.J.A.C. 13:35-7.6; TX HSC 481.07636 | NY, NJ, TX | 2026-09-18 | TX: Acts 2019, H.B. 2174 | 2027-01-02 |
 | tx-aprn-pa-controlled-delegation | Occ. Code 157.0511 | TX | 2026-09-18 | Acts 2013, S.B. 406 | 2027-06-01 |
 | nurse-license-training-requirements | NY SSL 413 (Ch. 25, L. 2024); Educ. Law 6505-b | NY | 2026-09-18 | Ch. 25, L. 2024 (deadline 2026-11-17: "due by" becomes "was due by") | 2026-11-18 |
+| ca-np-103-104-tracker | B&P 2837.103, 2837.104 | CA | 2026-09-18 | AB 890 (2020), as amended | 2027-01-02 |
+| tx-prescriptive-authority-agreement | Occ. Code 157.0512 | TX | 2026-09-18 | Acts 2019, H.B. 278 (repealed former (f-1)) | 2027-06-01 |

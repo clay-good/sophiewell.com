@@ -71,6 +71,21 @@ lists a state the picker refuses. What the source changed from the table above:
 - The ledger row's next review is **November 18, 2026**, so the gate forces the "due by" copy to be
   revisited the day after the deadline.
 
-`ca-np-103-104-tracker`, `tx-prescriptive-authority-agreement`, and the NJ, CA, and TX rows are still
-to come, each after its source is read.
+## Built (2026-09-18): `ca-np-103-104-tracker` and `tx-prescriptive-authority-agreement`
+
+Catalog 1,739 → 1,741. Read from leginfo (B&P 2837.103, 2837.104) and texas.public.law (Occ. Code
+157.0512).
+
+- **The 104 years are NP practice past the transition to practice, not years as a 103 NP.**
+  2837.104(b)(3): "practiced as a nurse practitioner in good standing for at least three years, not
+  inclusive of the transition to practice"; the board may lower it for a DNP. 103's transition to
+  practice may also be deemed met by three FTE years or 4,600 hours of direct patient care in the
+  last five years.
+- **The Texas meeting cadence is monthly throughout.** 157.0512(f) requires documented meetings "at
+  least once a month"; the separate first-year cadence (former (f-1)) was repealed by H.B. 278 in
+  2019. The seven-FTE cap does not apply in a practice serving a medically underserved population or
+  a hospital facility-based practice (157.0512(d)).
+
+The NJ, CA, and TX rows of `nurse-license-training-requirements` are still to come, each after its
+source is read.
 

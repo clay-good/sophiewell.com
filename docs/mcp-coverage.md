@@ -8176,6 +8176,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/nurse-license-training-requirements-v1397.js (spec-v1397: New York nurse mandated training — clinical disclaimer)
 - `nurse-license-training-requirements`
 
+### lib/ca-np-103-104-tracker-v1397.js (spec-v1397: California NP 103/104 transition — clinical disclaimer)
+- `ca-np-103-104-tracker`
+
+### lib/tx-prescriptive-authority-agreement-v1397.js (spec-v1397: Texas prescriptive authority agreement — clinical disclaimer)
+- `tx-prescriptive-authority-agreement`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

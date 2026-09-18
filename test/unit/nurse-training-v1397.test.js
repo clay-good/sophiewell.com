@@ -37,3 +37,40 @@ test('only New York is offered until another state is read', () => {
   assert.deepEqual(NLT_STATES.map((s) => s.value), ['NY']);
   assert.equal(nlt({ ...B, state: 'TX' }).valid, false);
 });
+
+// --- California NP 103/104 and Texas prescriptive authority agreements -------
+import { caNp103104Tracker as np } from '../../lib/ca-np-103-104-tracker-v1397.js';
+import { txPrescriptiveAuthorityAgreement as paa } from '../../lib/tx-prescriptive-authority-agreement-v1397.js';
+
+const NP = { asOf: '2026-09-18', boardExam: 'yes', nationalCert: 'yes', education: 'yes', rnActive: 'yes', degree: 'yes' };
+
+test('np: 103 after three full-time years or 4,600 hours; 104 three years past that', () => {
+  const r = np({ ...NP, ttpStart: '2022-07-01' });
+  assert.equal(r.status103, 'eligible');
+  assert.equal(r.status104, 'pending');
+  assert.match(r.band, /2028-07-01/);
+  assert.equal(np({ ...NP, ttpHours: '4600' }).status103, 'eligible');
+  assert.equal(np({ ...NP, ttpHours: '4599' }).status103, 'pending');
+  assert.equal(np({ ...NP, ttpStart: '2019-01-01' }).status104, 'eligible');
+});
+
+test('np: a missing requirement blocks, an unanswered one is not a yes', () => {
+  assert.equal(np({ ...NP, ttpStart: '2019-01-01', boardExam: 'no' }).status103, 'not-eligible');
+  assert.equal(np({ ...NP, ttpStart: '2019-01-01', boardExam: '' }).status103, 'unassessed');
+  assert.equal(np({ ...NP, ttpStart: '2019-01-01', degree: 'no' }).status104, 'not-eligible');
+});
+
+const ALL = { fte: '5', exempt: 'no', signed: 'yes', parties: 'yes', practice: 'yes', drugs: 'yes', referral: 'yes', emergencies: 'yes', communication: 'yes', alternates: 'yes', qaPlan: 'yes' };
+
+test('paa: seven FTE cap, lifted for underserved or hospital facility-based practice', () => {
+  assert.equal(paa(ALL).verdict, 'ok');
+  assert.equal(paa({ ...ALL, fte: '8' }).verdict, 'problems');
+  assert.equal(paa({ ...ALL, fte: '8', exempt: 'yes' }).verdict, 'ok');
+});
+
+test('paa: missing and unanswered elements, and the monthly meeting', () => {
+  assert.equal(paa({ ...ALL, drugs: 'no' }).verdict, 'problems');
+  assert.equal(paa({ ...ALL, drugs: '' }).verdict, 'unassessed');
+  assert.equal(paa({ ...ALL, lastMeeting: '2026-07-01', asOf: '2026-09-18' }).verdict, 'problems');
+  assert.equal(paa({ ...ALL, lastMeeting: '2026-09-01', asOf: '2026-09-18' }).verdict, 'ok');
+});

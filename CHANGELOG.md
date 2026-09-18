@@ -6,6 +6,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **California NP 103/104 tracker and Texas prescriptive authority agreement
+  checker.** When a California nurse practitioner reaches 103 and 104 status
+  (the three 104 years exclude the transition to practice), and whether a Texas
+  agreement meets the seven-FTE cap, the nine required elements, and monthly
+  meetings. See docs/spec-v1397.md.
+
 - **New York nurse mandated training: what is due.** The updated child-abuse
   course due November 17, 2026 (a 15-minute addendum for nurses trained between
   November 2022 and August 2025, the full updated course otherwise) and

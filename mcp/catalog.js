@@ -797,6 +797,8 @@ import pmpCheckRequiredV1393 from './adapters/pmp-check-required-v1393.js';
 import acuteOpioidRxLimitV1393 from './adapters/acute-opioid-rx-limit-v1393.js';
 import txAprnPaControlledDelegationV1393 from './adapters/tx-aprn-pa-controlled-delegation-v1393.js';
 import nurseLicenseTrainingRequirementsV1397 from './adapters/nurse-license-training-requirements-v1397.js';
+import caNp103104TrackerV1397 from './adapters/ca-np-103-104-tracker-v1397.js';
+import txPrescriptiveAuthorityAgreementV1397 from './adapters/tx-prescriptive-authority-agreement-v1397.js';
 import ticiV960 from './adapters/tici-v960.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
@@ -1621,6 +1623,8 @@ const ADAPTER_MODULES = [
   ['acute-opioid-rx-limit-v1393', acuteOpioidRxLimitV1393],
   ['tx-aprn-pa-controlled-delegation-v1393', txAprnPaControlledDelegationV1393],
   ['nurse-license-training-requirements-v1397', nurseLicenseTrainingRequirementsV1397],
+  ['ca-np-103-104-tracker-v1397', caNp103104TrackerV1397],
+  ['tx-prescriptive-authority-agreement-v1397', txPrescriptiveAuthorityAgreementV1397],
   ['tici-v960', ticiV960],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],

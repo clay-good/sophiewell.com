@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:e1c6c663-e0f1-5208-8267-bb714218ac7f",
+  "serialNumber": "urn:uuid:7aab00bb-6275-5d79-8115-dd88ed2d8591",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-18T19:12:42.472Z",
+    "timestamp": "2026-09-18T19:21:49.133Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1739 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1741 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c08b49e1a895f041d54dabc5d45b24616150f5d144a01bb20cf441254029ee03"
+          "content": "5ec2ab099167a9db2b114e2b44e9f53f0730f13c6f627983068b72f3821f4c6e"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "111529"
+          "value": "111709"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "87b8c7da5bbe7e9d171452c47667655eabf4af7ec191d92091be26bb27a0f41f"
+          "content": "0602244b2ff15d313255f710276bddf84da94e11f57406fb54617e8766cbbbd7"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "521770"
+          "value": "522158"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c2c46e4bcf3ac9156543d0c5fd151dd5ff590274d8aa2044a9d2a25731728550"
+          "content": "6d4b511527fdd927fb467c2e1c9175250e0a7fb35040fc4bc9fc78711ad04a26"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "216275"
+          "value": "216553"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "68340930381b778a7fb2d77407609765f70d9ef4ca3b05cb6c3860bb7d8f0835"
+          "content": "808687050ad4f3b0006dbb90eae5da6be2de67dbfc4fa1520302ab9a402ca127"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "97992"
+          "value": "98208"
         }
       ]
     },
@@ -2383,6 +2383,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "6049"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/ca-np-103-104-tracker-v1397.js",
+      "type": "file",
+      "name": "lib/ca-np-103-104-tracker-v1397.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5f8575d68a4e87c2486371f0af381cb76fabb61fc917133747c126b288d09c0a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7870"
         }
       ]
     },
@@ -10436,7 +10457,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9bb9f66b99a1264aa1a06359b3ac5491c288f06bbfbf84742c2a63bb16362ca6"
+          "content": "13e9ba44f6f10886c7b3cf15e196c89bb5d607c691f0988903acf048cd27c479"
         }
       ],
       "properties": [
@@ -10446,7 +10467,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2494866"
+          "value": "2496561"
         }
       ]
     },
@@ -17822,6 +17843,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/tx-prescriptive-authority-agreement-v1397.js",
+      "type": "file",
+      "name": "lib/tx-prescriptive-authority-agreement-v1397.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4928006b716b8dd67f6e7c74c737d64dcdcc71ee6d88ba5486ef2ac21832d0bf"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5802"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/tx-protective-custody-hearing-clock-v1389.js",
       "type": "file",
       "name": "lib/tx-protective-custody-hearing-clock-v1389.js",
@@ -20737,6 +20779,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1405"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ca-np-103-104-tracker-v1397.js",
+      "type": "file",
+      "name": "mcp/adapters/ca-np-103-104-tracker-v1397.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "142ba5f6df4bbac64c3430b7a37bc20061714142a95f33f2e4cdeffc99d7bca9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2005"
         }
       ]
     },
@@ -35084,6 +35147,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/tx-prescriptive-authority-agreement-v1397.js",
+      "type": "file",
+      "name": "mcp/adapters/tx-prescriptive-authority-agreement-v1397.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "548f541ab997716e480c6d16ace644ad8b23ed60d8719aee1727633724db7c71"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2736"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/tx-protective-custody-hearing-clock-v1389.js",
       "type": "file",
       "name": "mcp/adapters/tx-protective-custody-hearing-clock-v1389.js",
@@ -36140,7 +36224,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8c03f90e6bcce83aa70eda673855b31749359490bd8bc1bae77ec3dc49f4dd57"
+          "content": "dc483fb15a97a2ce5998994c77ef0c3d4194626e202b31fa196b9a65d501e095"
         }
       ],
       "properties": [
@@ -36150,7 +36234,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "93000"
+          "value": "93336"
         }
       ]
     },
@@ -37484,7 +37568,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4563ee7a60e5937395cd532af81b5486f3d95735c6cf552f93efd747d04a0dac"
+          "content": "3659c5624bc279000f3059536a4a3513a6b84049189a3a7ac8232ebec1a40bb8"
         }
       ],
       "properties": [
@@ -37494,7 +37578,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "3365"
+          "value": "8708"
         }
       ]
     },
@@ -68793,6 +68877,7 @@
         "urn:sophiewell:file:source:lib/ca-5585-minor-hold-v1389.js",
         "urn:sophiewell:file:source:lib/ca-adult-tb-risk-v1400.js",
         "urn:sophiewell:file:source:lib/ca-ed-psych-detention-1799-v1389.js",
+        "urn:sophiewell:file:source:lib/ca-np-103-104-tracker-v1397.js",
         "urn:sophiewell:file:source:lib/cac-agatston-v668.js",
         "urn:sophiewell:file:source:lib/cad-rads-v372.js",
         "urn:sophiewell:file:source:lib/cage-aid-v738.js",
@@ -69528,6 +69613,7 @@
         "urn:sophiewell:file:source:lib/twstrs-severity-v542.js",
         "urn:sophiewell:file:source:lib/tx-aprn-pa-controlled-delegation-v1393.js",
         "urn:sophiewell:file:source:lib/tx-emergency-detention-clock-v1389.js",
+        "urn:sophiewell:file:source:lib/tx-prescriptive-authority-agreement-v1397.js",
         "urn:sophiewell:file:source:lib/tx-protective-custody-hearing-clock-v1389.js",
         "urn:sophiewell:file:source:lib/ucsf-hcc-v686.js",
         "urn:sophiewell:file:source:lib/udca-response-v909.js",
@@ -70476,6 +70562,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/ca-5585-minor-hold-v1389.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ca-adult-tb-risk-v1400.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ca-ed-psych-detention-1799-v1389.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/ca-np-103-104-tracker-v1397.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cac-agatston-v668.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cad-rads-v372.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cage-aid-v738.js",
@@ -71159,6 +71246,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/twstrs-severity-v542.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tx-aprn-pa-controlled-delegation-v1393.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tx-emergency-detention-clock-v1389.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/tx-prescriptive-authority-agreement-v1397.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tx-protective-custody-hearing-clock-v1389.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ucsf-hcc-v686.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/udca-response-v909.js",
@@ -71312,7 +71400,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "e1c6c663e0f1b208"
+      "value": "7aab00bb62755d79"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -71324,7 +71412,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2506"
+      "value": "2510"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

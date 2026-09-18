@@ -8044,6 +8044,27 @@
       ],
       "tile": "nurse-license-training-requirements",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "103 np",
+        "104 np",
+        "california np independent practice",
+        "transition to practice 4600 hours",
+        "ab 890"
+      ],
+      "tile": "ca-np-103-104-tracker",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "prescriptive authority agreement",
+        "texas paa",
+        "supervising physician 7 fte",
+        "157.0512"
+      ],
+      "tile": "tx-prescriptive-authority-agreement",
+      "audience": "clinicians"
     }
   ]
 }
