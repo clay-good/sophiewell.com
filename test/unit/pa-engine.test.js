@@ -7703,11 +7703,73 @@ test('R-PA-MCWA-003 passes when the Washington Apple Health packet names the Pro
   assert.equal(f.status, 'pass');
 });
 
-test('R-PA-MCWA-017 flags a Washington Apple Health transplant request with no Medicaid-designated transplant-center routing', () => {
-  const text = 'Washington Apple Health member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
+test('R-PA-MCWA-016 flags a psychiatric transfer with no post-stabilization approval', () => {
+  const text = 'Washington Apple Health client.\nTransferring hospital: inpatient psychiatric transfer.\n';
   const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-MCWA-017');
-  assert.equal(f.status, 'flag');
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCWA-016').status, 'flag');
+});
+
+test('R-PA-MCWA-016 accepts a psychiatric transfer with the authorization number', () => {
+  const text = 'Washington Apple Health client.\nTransferring hospital: inpatient psychiatric transfer.\n'
+    + 'Prior approval of post-stabilization care from the mental health designee; authorization number recorded.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCWA-016').status, 'pass');
+});
+
+test('R-PA-MCWA-017 does not fire on the word transplant alone', () => {
+  const text = 'Washington Apple Health client.\nHistory of kidney transplant in 2019.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCWA-017').status, 'pass');
+});
+
+test('R-PA-MCWA-017 flags a transplant request with no HCA-approved facility', () => {
+  // Replaces a test that asserted a "Medicaid-designated transplant-center
+  // routing" requirement; HCA's actual rule is an approved, certified facility.
+  const text = 'Washington Apple Health client.\nTransplant request for a kidney.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCWA-017').status, 'flag');
+});
+
+test('R-PA-MCWA-017 exempts corneal transplants from the facility-approval requirement', () => {
+  const text = 'Washington Apple Health client.\nTransplant request: corneal transplant.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCWA-017').status, 'pass');
+});
+
+test('R-PA-MCWA-017 flags an out-of-state transplant with no prior authorization', () => {
+  const text = 'Washington Apple Health client.\nTransplant request at an out-of-state transplant facility.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCWA-017').status, 'flag');
+});
+
+test('R-PA-MCWA-018 advises when a noncovered service has no exception-to-rule request (info)', () => {
+  const text = 'Washington Apple Health client.\nThis is a noncovered service.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCWA-018').status, 'info');
+});
+
+test('R-PA-MCWA-018 accepts an exception-to-rule request under WAC 182-501-0160', () => {
+  const text = 'Washington Apple Health client.\nThis is a noncovered service.\nException to rule requested under WAC 182-501-0160.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCWA-018').status, 'pass');
+});
+
+test('R-PA-MCWA-020 does not require PA for emergency out-of-state care', () => {
+  const text = 'Washington Apple Health client.\nEmergency care at an out-of-state hospital.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCWA-020').status, 'pass');
+});
+
+test('R-PA-MCWA-020 treats a designated bordering-city hospital as in-state', () => {
+  const text = 'Washington Apple Health client.\nElective surgery at an out-of-state hospital in a designated bordering city.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCWA-020').status, 'pass');
+});
+
+test('R-PA-MCWA-020 flags elective out-of-state care with no request form', () => {
+  const text = 'Washington Apple Health client.\nElective surgery at an out-of-state hospital.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCWA-020').status, 'flag');
 });
 
 test('R-PA-MCWA core composition: the Medicaid core fires on a Washington Apple Health (medicaid-wa) packet', () => {
