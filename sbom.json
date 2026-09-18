@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:1ef31617-4e0e-573d-8f04-4cbeb69fa152",
+  "serialNumber": "urn:uuid:68fd951f-f110-53f6-8e06-e87857c59581",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-18T15:02:10.613Z",
+    "timestamp": "2026-09-18T16:31:34.172Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1722 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1728 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c82f5b64e6ec36dda3957009ac924a899037fa539ecc228789fc202329142c1f"
+          "content": "36d4ea237beaf5ad669ad75c754d121fa235d2e2a02d7ea125a80efc8c681cac"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "110306"
+          "value": "110682"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "dac17e2bdfc79535aea5bf6ea82942fa0ea9a54b76b14ec11257aaab750eceae"
+          "content": "42dec3385d7ee1b171ed5123001618520592a5208389db12db019f79a5769b89"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "517966"
+          "value": "519134"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b9f08cd9bd970deaae64d58b0711ffa02fc1c643640ffd72fc5f44be018a6f4f"
+          "content": "ec23ceefd28ed55ef4a0edb6f7b0f3cdf9c06cf53470a44f59e43e3363267100"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "213994"
+          "value": "214778"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2b601c0fdf52334f4726dd510bf11858be9825b2e381c95710f8ef23a8ac1d87"
+          "content": "01fba29aa9439617fcee19adf098e9fe1c66657cd1d0d37ce718b520f8a0c48b"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "96545"
+          "value": "96979"
         }
       ]
     },
@@ -2282,6 +2282,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/ca-adult-tb-risk-v1400.js",
+      "type": "file",
+      "name": "lib/ca-adult-tb-risk-v1400.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "44279cca87ad9c01209120a40c31d1c1717557bbdae42706c358d7dc7b9891e0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6009"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/cac-agatston-v668.js",
       "type": "file",
       "name": "lib/cac-agatston-v668.js",
@@ -3496,6 +3517,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "5692"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/congenital-syphilis-scenario-v1400.js",
+      "type": "file",
+      "name": "lib/congenital-syphilis-scenario-v1400.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "cf54b41c5bb8b575f5a545451a10b8bed2ef1f707660581752f6af01d2c3abbd"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "12855"
         }
       ]
     },
@@ -6839,6 +6881,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/hbv-serology-v1400.js",
+      "type": "file",
+      "name": "lib/hbv-serology-v1400.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a238e4c169a0144efb64fbc04928258491bd0b9bd2d5aff69a506e9fbdb52b1f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "9960"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/hcc-surveillance-v281.js",
       "type": "file",
       "name": "lib/hcc-surveillance-v281.js",
@@ -6856,6 +6919,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "8850"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/hcv-test-sequence-v1400.js",
+      "type": "file",
+      "name": "lib/hcv-test-sequence-v1400.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9f3b1514d5b8bcda6dbe5a65918ef3f76a7ae2a8f27790aa38b9516d47057298"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6441"
         }
       ]
     },
@@ -9338,6 +9422,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/ltbi-regimen-dosing-v1400.js",
+      "type": "file",
+      "name": "lib/ltbi-regimen-dosing-v1400.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5b0dff8d2b6fe0df7813e7118b5fb28a26d90784c9c50dcc2a5f2c76e62e99cf"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "9849"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/ltcga-v173.js",
       "type": "file",
       "name": "lib/ltcga-v173.js",
@@ -10247,7 +10352,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f2d51bc576746fcd7dce02ddcd92743cd938bd6f1ed0b04b88ac970956ec51e3"
+          "content": "dc8ac7536c8a0190eb1b821949d60b4c9ba89db708a4bd052516e0079c024f6e"
         }
       ],
       "properties": [
@@ -10257,7 +10362,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2480984"
+          "value": "2486112"
         }
       ]
     },
@@ -16814,6 +16919,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/syphilis-serology-sequence-v1400.js",
+      "type": "file",
+      "name": "lib/syphilis-serology-sequence-v1400.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3e3bd5de06f3ebe09c101de1bcd88d59154f8e2ad49ef2d0d9ac3674496ea302"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "11846"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/systemic-mastocytosis-v813.js",
       "type": "file",
       "name": "lib/systemic-mastocytosis-v813.js",
@@ -20258,6 +20384,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ca-adult-tb-risk-v1400.js",
+      "type": "file",
+      "name": "mcp/adapters/ca-adult-tb-risk-v1400.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ea6ec0770e9876386b9cf27af1ed019637042c9f048e402b3c12f06b4c2d67d0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1737"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/cac-agatston-v668.js",
       "type": "file",
       "name": "mcp/adapters/cac-agatston-v668.js",
@@ -21451,6 +21598,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1307"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/congenital-syphilis-scenario-v1400.js",
+      "type": "file",
+      "name": "mcp/adapters/congenital-syphilis-scenario-v1400.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d17eea0970323381a0b210889bab6bfb802a7df4db3c5952e78b8243212701ea"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2453"
         }
       ]
     },
@@ -24584,6 +24752,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/hbv-serology-v1400.js",
+      "type": "file",
+      "name": "mcp/adapters/hbv-serology-v1400.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6050224bea6069b85087c47e0b7fec1935606af051659f97d71672233df5aded"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1510"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/hcc-surveillance-v281.js",
       "type": "file",
       "name": "mcp/adapters/hcc-surveillance-v281.js",
@@ -24601,6 +24790,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2717"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/hcv-test-sequence-v1400.js",
+      "type": "file",
+      "name": "mcp/adapters/hcv-test-sequence-v1400.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "489026d048d387492e754d133bcee04d70a8416d8c45ff962d9dab17737e210e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1335"
         }
       ]
     },
@@ -26953,6 +27163,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1329"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ltbi-regimen-dosing-v1400.js",
+      "type": "file",
+      "name": "mcp/adapters/ltbi-regimen-dosing-v1400.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3a45aea3437fae52995f543c5377930ce5fbc5c59d08245345369df03ebbf4ea"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1773"
         }
       ]
     },
@@ -33782,6 +34013,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/syphilis-serology-sequence-v1400.js",
+      "type": "file",
+      "name": "mcp/adapters/syphilis-serology-sequence-v1400.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9686a03a39dd248bd23166e3738f8a4282de3625fe9be440977f823f296dac09"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2131"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/systemic-mastocytosis-v813.js",
       "type": "file",
       "name": "mcp/adapters/systemic-mastocytosis-v813.js",
@@ -35405,7 +35657,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "51022ca6683dfc8927eed43394f381b8bdbb890fd739c76cd379f159e93ea6f5"
+          "content": "b18b7bac6883af92cd46bd619f6b71dae8e6a52fea376bf27d0209c40c8dd256"
         }
       ],
       "properties": [
@@ -35415,7 +35667,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "90447"
+          "value": "91273"
         }
       ]
     },
@@ -36739,6 +36991,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "15004"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1400.js",
+      "type": "file",
+      "name": "views/group-v1400.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fc311d35e39a9657c8bdc9153a443868df2b93b5f2215764322bf9a22e534e41"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "12021"
         }
       ]
     },
@@ -67969,6 +68242,7 @@
         "urn:sophiewell:file:source:lib/brouet-cryoglobulinemia-v468.js",
         "urn:sophiewell:file:source:lib/brue-v547.js",
         "urn:sophiewell:file:source:lib/c-rads-v371.js",
+        "urn:sophiewell:file:source:lib/ca-adult-tb-risk-v1400.js",
         "urn:sophiewell:file:source:lib/cac-agatston-v668.js",
         "urn:sophiewell:file:source:lib/cad-rads-v372.js",
         "urn:sophiewell:file:source:lib/cage-aid-v738.js",
@@ -68027,6 +68301,7 @@
         "urn:sophiewell:file:source:lib/completeness-cytoreduction-v655.js",
         "urn:sophiewell:file:source:lib/concussion-rtl-v308.js",
         "urn:sophiewell:file:source:lib/concussion-rts-v298.js",
+        "urn:sophiewell:file:source:lib/congenital-syphilis-scenario-v1400.js",
         "urn:sophiewell:file:source:lib/conley-fall-risk-v692.js",
         "urn:sophiewell:file:source:lib/constrictive-pericarditis-echo-v853.js",
         "urn:sophiewell:file:source:lib/cormack-lehane-v339.js",
@@ -68186,7 +68461,9 @@
         "urn:sophiewell:file:source:lib/hash.js",
         "urn:sophiewell:file:source:lib/hattrup-johnson-v492.js",
         "urn:sophiewell:file:source:lib/hawkins-talar-v342.js",
+        "urn:sophiewell:file:source:lib/hbv-serology-v1400.js",
         "urn:sophiewell:file:source:lib/hcc-surveillance-v281.js",
+        "urn:sophiewell:file:source:lib/hcv-test-sequence-v1400.js",
         "urn:sophiewell:file:source:lib/heaven-criteria-v572.js",
         "urn:sophiewell:file:source:lib/heckerling-pneumonia-v673.js",
         "urn:sophiewell:file:source:lib/heds-2017-v822.js",
@@ -68305,6 +68582,7 @@
         "urn:sophiewell:file:source:lib/loe-silness-gingival-index-v722.js",
         "urn:sophiewell:file:source:lib/long-note.js",
         "urn:sophiewell:file:source:lib/lown-ectopy-v493.js",
+        "urn:sophiewell:file:source:lib/ltbi-regimen-dosing-v1400.js",
         "urn:sophiewell:file:source:lib/ltcga-v173.js",
         "urn:sophiewell:file:source:lib/ltcga-v174.js",
         "urn:sophiewell:file:source:lib/ltcga-v175.js",
@@ -68661,6 +68939,7 @@
         "urn:sophiewell:file:source:lib/sunnybrook-facial-v509.js",
         "urn:sophiewell:file:source:lib/surg-v142.js",
         "urn:sophiewell:file:source:lib/synonyms.js",
+        "urn:sophiewell:file:source:lib/syphilis-serology-sequence-v1400.js",
         "urn:sophiewell:file:source:lib/systemic-mastocytosis-v813.js",
         "urn:sophiewell:file:source:lib/table.js",
         "urn:sophiewell:file:source:lib/taco-trali-v906.js",
@@ -68802,6 +69081,7 @@
         "urn:sophiewell:file:source:views/group-v139.js",
         "urn:sophiewell:file:source:views/group-v14.js",
         "urn:sophiewell:file:source:views/group-v140.js",
+        "urn:sophiewell:file:source:views/group-v1400.js",
         "urn:sophiewell:file:source:views/group-v141.js",
         "urn:sophiewell:file:source:views/group-v142.js",
         "urn:sophiewell:file:source:views/group-v143.js",
@@ -69630,6 +69910,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/brouet-cryoglobulinemia-v468.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/brue-v547.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/c-rads-v371.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/ca-adult-tb-risk-v1400.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cac-agatston-v668.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cad-rads-v372.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cage-aid-v738.js",
@@ -69687,6 +69968,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/completeness-cytoreduction-v655.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/concussion-rtl-v308.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/concussion-rts-v298.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/congenital-syphilis-scenario-v1400.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/conley-fall-risk-v692.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/constrictive-pericarditis-echo-v853.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cormack-lehane-v339.js",
@@ -69836,7 +70118,9 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/hartofilakidis-ddh-v370.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hattrup-johnson-v492.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hawkins-talar-v342.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/hbv-serology-v1400.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hcc-surveillance-v281.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/hcv-test-sequence-v1400.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/heaven-criteria-v572.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/heckerling-pneumonia-v673.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/heds-2017-v822.js",
@@ -69949,6 +70233,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/lodwick-grade-v496.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/loe-silness-gingival-index-v722.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lown-ectopy-v493.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/ltbi-regimen-dosing-v1400.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ltcga-v173.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ltcga-v174.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ltcga-v175.js",
@@ -70274,6 +70559,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/sunct-suna-ichd3-v820.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/sunnybrook-facial-v509.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/surg-v142.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/syphilis-serology-sequence-v1400.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/systemic-mastocytosis-v813.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/taco-trali-v906.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/takayasu-v638.js",
@@ -70454,7 +70740,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "1ef316174e0e173d"
+      "value": "68fd951ff110e3f6"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -70466,7 +70752,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2467"
+      "value": "2480"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

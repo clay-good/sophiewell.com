@@ -52,6 +52,11 @@ change in CI.
 | tb-testing | CDC TST / IGRA interpretation | CDC TST cutoffs + 2017 ATS/IDSA/CDC LTBI guideline | same | 2026-06-05 | current |
 | cdi-severity | IDSA/SHEA CDI severity classification (non-severe / severe / fulminant) | 2017 IDSA/SHEA update (McDonald 2018, Clin Infect Dis 66(7)) | 2021 IDSA/SHEA focused update | 2026-07-15 | current — the severity definitions (WBC >= 15,000; creatinine >= 1.5; fulminant = hypotension/ileus/megacolon) are unchanged; the 2021 focused update revised treatment, not the severity criteria |
 | sti-screening | CDC STI Treatment Guidelines | CDC STI Guidelines 2021 (MMWR 2021;70(4)) | same | 2026-06-05 | current |
+| syphilis-serology-sequence | CDC syphilis laboratory recommendations (traditional and reverse sequence) | CDC 2024 (MMWR Recomm Rep 2024;73(1)) | same | 2026-09-18 | current |
+| congenital-syphilis-scenario | CDC congenital syphilis evaluation and treatment scenarios | CDC STI Guidelines 2021 (MMWR 2021;70(4)) | same | 2026-09-18 | current |
+| hbv-serology | CDC hepatitis B serology interpretation + screening | CDC 2023 (MMWR Recomm Rep 2023;72(1)) | same | 2026-09-18 | current |
+| hcv-test-sequence | CDC HCV testing sequence + adult screening | CDC 2013 (MMWR 2013;62(18)) and CDC 2020 (MMWR Recomm Rep 2020;69(2)) | same | 2026-09-18 | current |
+| ltbi-regimen-dosing | NTCA/CDC latent TB treatment regimens | NTCA/CDC 2020 (MMWR Recomm Rep 2020;69(1)) | same | 2026-09-18 | current |
 | peds-weight-conv | AAP infant weight bands + lb↔kg constant | AAP bands (stable) | same | 2026-06-05 | current — physical constant plus stable reference bands |
 | peds-vitals | AHA PALS age-banded normal vitals + hypotension SBP | AHA PALS Provider Manual 2020 | same | 2026-06-20 | current — the 2020 PALS normal ranges and the < 70 + 2×age hypotension definition are unchanged; tracked on the next PALS guideline revision |
 | kdigo-aki | KDIGO AKI staging | KDIGO AKI 2012 (Kidney Int Suppl 2012;2) | 2024 KDIGO CKD guideline | 2026-06-05 | behind on the org's newest document, justified — AKI staging is unchanged from KDIGO AKI 2012; the 2024 update governs CKD evaluation, not AKI staging |

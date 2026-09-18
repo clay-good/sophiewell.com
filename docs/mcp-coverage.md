@@ -8125,6 +8125,24 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/portopulmonary-hypertension-v1243.js (spec-v1243: portopulmonary hypertension criteria — clinical disclaimer)
 - `portopulmonary-hypertension`
 
+### lib/syphilis-serology-sequence-v1400.js (spec-v1400: syphilis serology interpreter, traditional and reverse sequence — clinical disclaimer)
+- `syphilis-serology-sequence`
+
+### lib/congenital-syphilis-scenario-v1400.js (spec-v1400: CDC 2021 congenital syphilis scenario — clinical disclaimer)
+- `congenital-syphilis-scenario`
+
+### lib/hbv-serology-v1400.js (spec-v1400: hepatitis B serology interpreter — clinical disclaimer)
+- `hbv-serology`
+
+### lib/hcv-test-sequence-v1400.js (spec-v1400: hepatitis C testing sequence — clinical disclaimer)
+- `hcv-test-sequence`
+
+### lib/ca-adult-tb-risk-v1400.js (spec-v1400: CDPH California adult TB risk assessment — clinical disclaimer)
+- `ca-adult-tb-risk`
+
+### lib/ltbi-regimen-dosing-v1400.js (spec-v1400: latent TB regimen and dose — clinical disclaimer)
+- `ltbi-regimen-dosing`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

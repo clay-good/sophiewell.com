@@ -6,6 +6,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Six serology and TB tools.** Syphilis serology for both testing sequences
+  (a reactive EIA with a nonreactive RPR is discordant, not a false positive,
+  until the TP-PA is back), the CDC congenital syphilis scenarios with the
+  30-day treatment cut computed from two dates, hepatitis B serology (an isolated
+  anti-HBc prints all four meanings), the hepatitis C testing sequence (a
+  reactive antibody alone is never a verdict), the CDPH adult TB risk
+  assessment, and latent TB regimen doses. See docs/spec-v1400.md.
+
 - **Four things a liver clinic or an endoscopy reports.** The Sarin classification
   of gastric varices (which bleed less often than esophageal varices and kill
   more), the Hill grade of the gastroesophageal flap valve, the hepatopulmonary

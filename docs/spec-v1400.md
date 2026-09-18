@@ -112,3 +112,21 @@ Source: NTCA/CDC, MMWR Recomm Rep 2020;69(RR-1), and the CDC LTBI regimens table
 - HCV: a reactive antibody with RNA "not done" never prints "infected" or "not infected".
 - LTBI: a 60 kg adult on 3HP gets rifapentine 900 mg and isoniazid 900 mg; a 30 kg 10-year-old
   gets isoniazid by the 25 mg/kg rule.
+
+## Built (2026-09-18)
+
+All six tiles are live: `lib/<id>-v1400.js`, `views/group-v1400.js`, one MCP adapter each, and
+`test/unit/serology-tb-v1400.test.js` (30 tests, including every acceptance case above). Catalog
+1,722 → 1,728. Each rule was rechecked against its source before it was written, and the
+build departs from this plan where the source said something else:
+
+| Tile | Change from the plan, and why |
+|---|---|
+| `ca-adult-tb-risk` | The CDPH form has **four** boxes, not three: homelessness or incarceration is its own box. The first box also counts **frequent border crossing**. Symptoms or an abnormal chest x-ray route to an active-disease workup before any box is read. |
+| `congenital-syphilis-scenario` | Exactly fourfold is in both CDC definitions ("fourfold or greater" and "equal to or less than fourfold"), so it is read as Scenario 1, the direction that does not miss an infant. Treatment before pregnancy with a titer that is not low and stable fits no CDC scenario, and the tile says so instead of picking one. Weight is optional: without it the doses print per kilogram. |
+| `ltbi-regimen-dosing` | 3HP is also not recommended **under 2 years**, and rifapentine has no band below 10 kg. The CDC table gives adult and child doses for 4R, 3HR, and isoniazid **without an age cut**, so ages 12 to 17 get both rather than an invented cut. 6H and 9H take a daily or twice-weekly frequency, because the dose and the dose count change with it. |
+| `hbv-serology` | HBsAg positive with anti-HBc negative (very early infection, or transient HBsAg after vaccination) and HBsAg negative with IgM anti-HBc positive (recent infection, HBsAg cleared) are named rather than left unmatched. |
+| `hcv-test-sequence` | An antibody-nonreactive, RNA-detected result reads as current infection before antibody forms. |
+
+Citations link the MMWR papers by DOI (the CDPH form by its PDF). Five rows were added to
+`docs/citation-staleness.md`; the CDPH citation does not match the guideline-issuer pattern.

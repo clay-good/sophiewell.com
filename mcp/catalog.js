@@ -780,6 +780,12 @@ import sarinGastricVaricesV1243 from './adapters/sarin-gastric-varices-v1243.js'
 import hillGradeV1243 from './adapters/hill-grade-v1243.js';
 import hepatopulmonarySyndromeV1243 from './adapters/hepatopulmonary-syndrome-v1243.js';
 import portopulmonaryHypertensionV1243 from './adapters/portopulmonary-hypertension-v1243.js';
+import syphilisSerologySequenceV1400 from './adapters/syphilis-serology-sequence-v1400.js';
+import congenitalSyphilisScenarioV1400 from './adapters/congenital-syphilis-scenario-v1400.js';
+import hbvSerologyV1400 from './adapters/hbv-serology-v1400.js';
+import hcvTestSequenceV1400 from './adapters/hcv-test-sequence-v1400.js';
+import caAdultTbRiskV1400 from './adapters/ca-adult-tb-risk-v1400.js';
+import ltbiRegimenDosingV1400 from './adapters/ltbi-regimen-dosing-v1400.js';
 import ticiV960 from './adapters/tici-v960.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
@@ -1587,6 +1593,12 @@ const ADAPTER_MODULES = [
   ['hill-grade-v1243', hillGradeV1243],
   ['hepatopulmonary-syndrome-v1243', hepatopulmonarySyndromeV1243],
   ['portopulmonary-hypertension-v1243', portopulmonaryHypertensionV1243],
+  ['syphilis-serology-sequence-v1400', syphilisSerologySequenceV1400],
+  ['congenital-syphilis-scenario-v1400', congenitalSyphilisScenarioV1400],
+  ['hbv-serology-v1400', hbvSerologyV1400],
+  ['hcv-test-sequence-v1400', hcvTestSequenceV1400],
+  ['ca-adult-tb-risk-v1400', caAdultTbRiskV1400],
+  ['ltbi-regimen-dosing-v1400', ltbiRegimenDosingV1400],
   ['tici-v960', ticiV960],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],

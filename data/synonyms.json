@@ -7859,6 +7859,68 @@
       ],
       "tile": "portopulmonary-hypertension",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "reverse sequence syphilis",
+        "rpr treponemal discordant",
+        "eia reactive rpr nonreactive",
+        "tp-pa syphilis",
+        "syphilis test interpretation"
+      ],
+      "tile": "syphilis-serology-sequence",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "congenital syphilis workup",
+        "newborn syphilis",
+        "infant rpr mother treated",
+        "congenital syphilis treatment"
+      ],
+      "tile": "congenital-syphilis-scenario",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "hepatitis b panel interpretation",
+        "isolated core antibody",
+        "hbsag anti-hbs anti-hbc",
+        "hep b serology"
+      ],
+      "tile": "hbv-serology",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "hepatitis c antibody positive",
+        "hcv rna",
+        "hep c test interpretation",
+        "hcv reflex testing"
+      ],
+      "tile": "hcv-test-sequence",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "california tb risk assessment",
+        "who needs tb test",
+        "cdph tb screening",
+        "latent tb risk"
+      ],
+      "tile": "ca-adult-tb-risk",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "3hp dose",
+        "rifapentine isoniazid dose",
+        "latent tb treatment",
+        "4r rifampin ltbi",
+        "ltbi regimen"
+      ],
+      "tile": "ltbi-regimen-dosing",
+      "audience": "clinicians"
     }
   ]
 }

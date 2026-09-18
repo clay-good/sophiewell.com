@@ -767,6 +767,7 @@ import { renderers as RV1240 } from './views/group-v1240.js';
 import { renderers as RV1241 } from './views/group-v1241.js';
 import { renderers as RV1242 } from './views/group-v1242.js';
 import { renderers as RV1243 } from './views/group-v1243.js';
+import { renderers as RV1400 } from './views/group-v1400.js';
 import { renderers as RV164 } from './views/group-v164.js';
 import { renderers as RV165 } from './views/group-v165.js';
 import { renderers as RV166 } from './views/group-v166.js';
@@ -854,7 +855,7 @@ const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...R
   ...RV902,
   ...RV903,
   ...RV905,
-  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV960, ...RV1061, ...RV1062, ...RV1240, ...RV1241, ...RV1242, ...RV1243, ...RV63, ...RPALINT };
+  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV960, ...RV1061, ...RV1062, ...RV1240, ...RV1241, ...RV1242, ...RV1243, ...RV1400, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -1081,6 +1082,15 @@ const UTILITIES = [
   { id: 'bbp-exposure', name: 'Bloodborne Pathogen Exposure Decision Tree', group: 'J', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'tb-testing',   name: 'TB Testing Interpretation (TST + IGRA)', group: 'J', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'sti-screening',name: 'STI Screening Interval Reference (CDC)', group: 'J', audiences: ['clinicians', 'patients', 'educators'], clinical: true },
+
+  // spec-v1400: city-burden infectious disease I -- serology and TB. views/group-v1400.js,
+  // lib/<id>-v1400.js, mcp/adapters/<id>-v1400.js.
+  { id: 'syphilis-serology-sequence', name: 'Syphilis Serology Interpreter (Traditional and Reverse Sequence)', group: 'J', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'congenital-syphilis-scenario', name: 'Congenital Syphilis Evaluation Scenario (CDC 2021)', group: 'J', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'hbv-serology', name: 'Hepatitis B Serology Interpreter (CDC)', group: 'J', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'hcv-test-sequence', name: 'Hepatitis C Testing Sequence (CDC)', group: 'J', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ca-adult-tb-risk', name: 'California Adult TB Risk Assessment (CDPH)', group: 'J', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ltbi-regimen-dosing', name: 'Latent TB Treatment Regimen and Dose (CDC/NTCA 2020)', group: 'J', audiences: ['clinicians', 'educators'], clinical: true },
   // Group K (Lab Reference): removed in spec-v29 wave 29-2 (lab-adult,
   // lab-peds, tdm-levels, tox-levels are pure reference-range tables).
   // Group L: Forms & Numbers Literacy (removed in spec-v29 wave 29-2:
