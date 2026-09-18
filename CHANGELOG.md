@@ -6,6 +6,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Two controlled-substance rules by state.** Whether a prescription
+  monitoring program check is required first (New York, New Jersey, California,
+  Texas; Texas decides by drug class, so carisoprodol needs one), and the day
+  limit on an opioid for acute pain (New York 7, New Jersey 5, Texas 10 with no
+  refill), and whether a Texas physician may delegate a controlled-substance
+  prescription to an APRN or PA (Schedule II only in a hospital or hospice).
+  See docs/spec-v1393.md.
+
 - **Three California hold clocks.** The 5150 timeline (a 5250 certification
   starts a new 14-day clock with its own review hearing), the non-designated
   emergency department's 24-hour detention under Health and Safety Code 1799.111

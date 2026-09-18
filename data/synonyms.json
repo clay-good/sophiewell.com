@@ -7996,6 +7996,43 @@
       ],
       "tile": "ca-5585-minor-hold",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "i-stop",
+        "istop",
+        "cures",
+        "cures check",
+        "texas pmp",
+        "nj pmp",
+        "pmp check",
+        "prescription monitoring program check",
+        "do i need to check the pmp"
+      ],
+      "tile": "pmp-check-required",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "opioid day limit",
+        "7 day opioid limit",
+        "5 day opioid limit new jersey",
+        "texas 10 day opioid",
+        "acute pain opioid limit"
+      ],
+      "tile": "acute-opioid-rx-limit",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "texas np schedule 2",
+        "aprn controlled substance texas",
+        "pa prescribe schedule ii texas",
+        "157.0511",
+        "prescriptive authority delegation texas"
+      ],
+      "tile": "tx-aprn-pa-controlled-delegation",
+      "audience": "clinicians"
     }
   ]
 }

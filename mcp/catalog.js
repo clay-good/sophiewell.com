@@ -793,6 +793,9 @@ import njCivilCommitmentClockV1389 from './adapters/nj-civil-commitment-clock-v1
 import ca5150HoldTimelineV1389 from './adapters/ca-5150-hold-timeline-v1389.js';
 import caEdPsychDetention1799V1389 from './adapters/ca-ed-psych-detention-1799-v1389.js';
 import ca5585MinorHoldV1389 from './adapters/ca-5585-minor-hold-v1389.js';
+import pmpCheckRequiredV1393 from './adapters/pmp-check-required-v1393.js';
+import acuteOpioidRxLimitV1393 from './adapters/acute-opioid-rx-limit-v1393.js';
+import txAprnPaControlledDelegationV1393 from './adapters/tx-aprn-pa-controlled-delegation-v1393.js';
 import ticiV960 from './adapters/tici-v960.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
@@ -1613,6 +1616,9 @@ const ADAPTER_MODULES = [
   ['ca-5150-hold-timeline-v1389', ca5150HoldTimelineV1389],
   ['ca-ed-psych-detention-1799-v1389', caEdPsychDetention1799V1389],
   ['ca-5585-minor-hold-v1389', ca5585MinorHoldV1389],
+  ['pmp-check-required-v1393', pmpCheckRequiredV1393],
+  ['acute-opioid-rx-limit-v1393', acuteOpioidRxLimitV1393],
+  ['tx-aprn-pa-controlled-delegation-v1393', txAprnPaControlledDelegationV1393],
   ['tici-v960', ticiV960],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],

@@ -657,3 +657,6 @@ carries the specific date that could change it.
 | ca-5150-hold-timeline | WIC 5150, 5250, 5256, 5260, 5270.15 | CA | 2026-09-18 | Stats. 2024, ch. 492 (SB 1511), 5250 | 2027-01-02 |
 | ca-ed-psych-detention-1799 | HSC 1799.111 | CA | 2026-09-18 | Stats. 2023, ch. 637 (SB 43) | 2027-01-02 |
 | ca-5585-minor-hold | WIC 5585.50 | CA | 2026-09-18 | Stats. 2013, ch. 23 (AB 82) | 2027-01-02 |
+| pmp-check-required | NY PHL 3343-a(2); N.J.A.C. 13:45A-35.9; CA HSC 11165.4; TX HSC 481.0764-.0765 | NY, NJ, CA, TX | 2026-09-18 | CA: Stats. 2023, ch. 144 (AB 1731); TX: Acts 2019, S.B. 1564 | 2027-01-02 |
+| acute-opioid-rx-limit | NY PHL 3331(5); N.J.A.C. 13:35-7.6; TX HSC 481.07636 | NY, NJ, TX | 2026-09-18 | TX: Acts 2019, H.B. 2174 | 2027-01-02 |
+| tx-aprn-pa-controlled-delegation | Occ. Code 157.0511 | TX | 2026-09-18 | Acts 2013, S.B. 406 | 2027-06-01 |

@@ -8164,6 +8164,15 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/ca-5585-minor-hold-v1389.js (spec-v1389: California minor 72-hour hold — clinical disclaimer)
 - `ca-5585-minor-hold`
 
+### lib/pmp-check-required-v1393.js (spec-v1393: prescription monitoring program check by state — clinical disclaimer)
+- `pmp-check-required`
+
+### lib/acute-opioid-rx-limit-v1393.js (spec-v1393: acute-pain opioid day limit by state — clinical disclaimer)
+- `acute-opioid-rx-limit`
+
+### lib/tx-aprn-pa-controlled-delegation-v1393.js (spec-v1393: Texas APRN/PA controlled-substance delegation — clinical disclaimer)
+- `tx-aprn-pa-controlled-delegation`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

@@ -60,3 +60,28 @@ come up every session, so review after the 2027 session.
 - `acute-opioid-rx-limit` offers only NY, NJ, and TX (spec-v1388 §1) and has a test asserting that.
 - Search routes: `i-stop`, `istop`, `cures`, `texas pmp`, `nj pmp`, `pmp check` → `pmp-check-required`
   with the state prefilled where the word names it.
+
+## Built (2026-09-18): `pmp-check-required` and `acute-opioid-rx-limit`
+
+Each rule was read from its source: nysenate.gov (PHL 3343-a, 3331), Cornell LII (N.J.A.C.
+13:45A-35.9, 13:35-7.6), leginfo (HSC 11165.4), and texas.public.law (HSC 481.0764, 481.0765,
+481.07636). Catalog 1,735 → 1,738, with `tx-aprn-pa-controlled-delegation` (Occupations Code 157.0511, read at
+texas.public.law): Schedule II only in a hospital facility-based practice under medical-staff policy
+(inpatient 24 hours or more, or the emergency department) or under a hospice plan of care;
+Schedules III to V up to 90 days including refills, with chart-noted consultations for a refill or
+a child under 2. What the text
+changed from the plan:
+
+- **The Texas exemption is 481.0765(a), not 481.0764(b)**, and it applies only when the cancer,
+  sickle cell, or hospice status is **clearly noted in the prescription record**; the tile says so.
+  481.0765(c) adds the good-faith-attempt exception for access failures.
+- **California has more exemptions than listed**: buprenorphine in the emergency department (any
+  supply), and procedures in clinics and offices, not only hospitals; and every short-supply
+  exemption requires the supply to be **nonrefillable**. The check window is "no earlier than 24
+  hours, or the previous business day".
+- **New York's statute sets no 24-hour window**; the tile does not add one.
+- **Texas limits every acute-pain opioid prescription** to 10 days and no refill, not only the first,
+  and exempts opioids approved for treating addiction.
+- **New Jersey's initial prescription must be immediate-release**, and a subsequent one is allowed
+  no less than four days later, after consultation, up to 30 days. The tile checks both.
+- The specialty is `pain-medicine`: `pain-management` was merged into it in spec-v935.
