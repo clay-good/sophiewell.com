@@ -863,7 +863,10 @@
         "R-PA-MCGA-002"
       ],
       "url": "https://medicaid.georgia.gov/providers",
-      "lastVerified": "2026-06-05"
+      "lastVerified": "2026-09-18",
+      "alsoCited": [
+        "https://www.mmis.georgia.gov/portal/ResourceProxy.aspx?iCProxyTo=MC1FZHVjYXRpb24uYXNweD9hZj1sb2NhbCZmPVRyYWluaW5nXFByZWNlcnQrMTAxK1BBVU0rMjAxOC5wZGY%3D"
+      ]
     },
     {
       "id": "nc-medicaid-precert",

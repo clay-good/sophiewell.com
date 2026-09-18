@@ -8368,11 +8368,74 @@ test('Georgia Medicaid overlay rules vacuously pass on a non-Georgia-Medicaid pa
   }
 });
 
-test('R-PA-MCGA-001 flags a Georgia Medicaid request with a procedure but no coverage-criteria reference', () => {
+test('R-PA-MCGA-001 advises (info) on a Georgia Medicaid request with a procedure but no medical-necessity basis', () => {
   const text = 'Georgia Medicaid member.\nRequested procedure: CPT 72148 (MRI lumbar spine).\nPlease authorize.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-MCGA-001');
-  assert.equal(f.status, 'flag');
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCGA-001').status, 'info');
+});
+
+test('R-PA-MCGA-002 flags a prior authorization request with no supporting medical information', () => {
+  const text = 'Georgia Medicaid member.\nPrior authorization request for CPT 29881.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCGA-002').status, 'flag');
+});
+
+test('R-PA-MCGA-003 advises on a DME request sent by fax', () => {
+  const text = 'Georgia Medicaid member.\nDurable medical equipment: hospital bed; faxed request.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCGA-003').status, 'info');
+});
+
+test('R-PA-MCGA-005 advises on a hospital admission with no admitting physician', () => {
+  const text = 'Georgia Medicaid member.\nElective admission for CPT 27447.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCGA-005').status, 'info');
+});
+
+test('R-PA-MCGA-006 accepts an emergency admission that shows the admit date', () => {
+  const text = 'Georgia Medicaid member.\nEmergency admission; admit date 2026-09-01.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCGA-006').status, 'pass');
+});
+
+test('R-PA-MCGA-007 exempts imaging done during an inpatient stay', () => {
+  const text = 'Georgia Medicaid member.\nMRI brain during an inpatient stay.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCGA-007').status, 'pass');
+});
+
+test('R-PA-MCGA-009 advises on a recertification with no current clinical status', () => {
+  const text = 'Georgia Medicaid member.\nRecertification of inpatient stay.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCGA-009').status, 'info');
+});
+
+test('R-PA-MCGA-014 advises on a retroactive-eligibility request with no effective date', () => {
+  const text = 'Georgia Medicaid member.\nRetroactive eligibility request for CPT 27447.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCGA-014').status, 'info');
+});
+
+test('R-PA-MCGA-015 accepts a DME request with a start date', () => {
+  const text = 'Georgia Medicaid member.\nDurable medical equipment: wheelchair; start date 2026-10-01.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCGA-015').status, 'pass');
+});
+
+test('R-PA-MCGA-017 advises on a transplant that is not framed as a prior approval', () => {
+  const text = 'Georgia Medicaid member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCGA-017').status, 'info');
+});
+
+test('R-PA-MCGA-017 accepts a transplant prior approval request', () => {
+  const text = 'Georgia Medicaid member.\nPrior approval request: kidney transplant.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCGA-017').status, 'pass');
+});
+
+test('R-PA-MCGA-018 advises on a transfer with no reason', () => {
+  const text = 'Georgia Medicaid member.\nFacility transfer to Atlanta tertiary center.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCGA-018').status, 'info');
+});
+
+test('R-PA-MCGA-019 accepts a reconsideration citing the tracking number', () => {
+  const text = 'Georgia Medicaid member.\nReconsideration of denial, tracking number 123456, additional documentation attached.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCGA-019').status, 'pass');
+});
+
+test('R-PA-MCGA-020 does not fire on out-of-network wording', () => {
+  const text = 'Georgia Medicaid member.\nOut-of-network specialist; CPT 29881.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCGA-020').status, 'pass');
 });
 
 test('R-PA-MCGA-003 passes when the Georgia Medicaid packet names the GAMMIS channel (info)', () => {
@@ -8380,13 +8443,6 @@ test('R-PA-MCGA-003 passes when the Georgia Medicaid packet names the GAMMIS cha
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-MCGA-003');
   assert.equal(f.status, 'pass');
-});
-
-test('R-PA-MCGA-017 flags a Georgia Medicaid transplant request with no Medicaid-designated transplant-center routing', () => {
-  const text = 'Georgia Medicaid member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-MCGA-017');
-  assert.equal(f.status, 'flag');
 });
 
 test('R-PA-MCGA core composition: the Medicaid core fires on a Georgia Medicaid (medicaid-ga) packet', () => {
