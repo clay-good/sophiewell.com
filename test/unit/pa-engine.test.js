@@ -7888,11 +7888,50 @@ test('R-PA-MCIL-003 passes when the Illinois Medicaid packet names the IMPACT ch
   assert.equal(f.status, 'pass');
 });
 
-test('R-PA-MCIL-017 flags an Illinois Medicaid transplant request with no Medicaid-designated transplant-center routing', () => {
-  const text = 'Illinois Medicaid member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-MCIL-017');
+test('R-PA-MCIL-017 does not require transplant-center routing HFS never publishes', () => {
+  // Replaces a test that asserted a "Medicaid-designated transplant-center routing"
+  // requirement; HFS's actual transplant rule is about eligibility.
+  const text = 'Illinois Medicaid participant.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCIL-017').status, 'pass');
+});
+
+test('R-PA-MCIL-017 flags a transplant for a participant covered for emergency care only', () => {
+  const text = 'Illinois Medicaid participant covered for emergency medical care only.\nTransplant request for a liver.\n';
+  const f = runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCIL-017');
   assert.equal(f.status, 'flag');
+  assert.match(f.note, /not eligible for transplantation/);
+});
+
+test('R-PA-MCIL-018 treats a declared experimental procedure as non-covered (info)', () => {
+  const text = 'Illinois Medicaid participant.\nThis is an experimental procedure.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCIL-018').status, 'info');
+});
+
+test('R-PA-MCIL-018 accepts routine care in investigational cancer treatment', () => {
+  const text = 'Illinois Medicaid participant.\nClassified as investigational; routine care in conjunction with investigational cancer treatment.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCIL-018').status, 'pass');
+});
+
+test('R-PA-MCIL-019 advises that a provider may not appeal an Illinois PA denial (info)', () => {
+  const text = 'Illinois Medicaid participant.\nProvider appeal of the prior approval denial.\n';
+  const f = runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCIL-019');
+  assert.equal(f.status, 'info');
+  assert.match(f.note, /may not be made by the provider/);
+});
+
+test('R-PA-MCIL-019 accepts an appeal routed as the patient fair hearing', () => {
+  const text = 'Illinois Medicaid participant.\nAppealing the denial through the patient fair hearing.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCIL-019').status, 'pass');
+});
+
+test('R-PA-MCIL-014 advises when retroactive coverage shows no eligibility check (info)', () => {
+  const text = 'Illinois Medicaid participant.\nBilling for the retroactive coverage period.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCIL-014').status, 'info');
+});
+
+test('R-PA-MCIL-015 advises when an equipment request omits the prescriber (info)', () => {
+  const text = 'Illinois Medicaid participant.\nPrior approval request for a hospital bed, 6 months rental.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCIL-015').status, 'info');
 });
 
 test('Illinois Medicaid does not collide with the HCSC (BCBS of Illinois) commercial overlay', () => {
