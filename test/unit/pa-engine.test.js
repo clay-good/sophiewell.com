@@ -6979,6 +6979,52 @@ test('R-PA-MCMI-020 excepts genetic and molecular laboratory services', () => {
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCMI-020').status, 'pass');
 });
 
+// ---- Indiana Medicaid overlay (spec-v1365) ----
+
+test('Indiana Medicaid rules are wired to the medicaid-in payer id', () => {
+  const text = 'Indiana Medicaid member.\nInpatient stay following emergency services.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCIN-006').status, 'flag',
+    'R-PA-MCIN-006 should fire on an Indiana Medicaid packet; a vacuous pass means the payer guard is wrong');
+});
+
+test('R-PA-MCIN-006 excepts burn care with an emergency or trauma admission type', () => {
+  const text = 'Indiana Medicaid member.\nInpatient stay for burn care; emergency admission, admission type 1.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCIN-006').status, 'pass');
+});
+
+test('R-PA-MCIN-006 accepts an inpatient stay reported within 48 hours', () => {
+  const text = 'Indiana Medicaid member.\nInpatient stay following emergency services.\n'
+    + 'Reported to the PA contractor within 48 hours of admission.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCIN-006').status, 'pass');
+});
+
+test('R-PA-MCIN-007 does not infer an imaging workflow from an MRI request', () => {
+  const text = 'Indiana Medicaid member.\nRequested: MRI lumbar spine, CPT 72148.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCIN-007').status, 'pass');
+});
+
+test('R-PA-MCIN-008 advises when an expedited request states no urgency (info)', () => {
+  const text = 'Indiana Medicaid member.\nExpedited review requested for CPT 72148.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCIN-008').status, 'info');
+});
+
+test('R-PA-MCIN-009 does not infer site-of-care review from hospital-outpatient surgery', () => {
+  const text = 'Indiana Medicaid member.\nOutpatient hospital surgery, CPT 29881.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCIN-009').status, 'pass');
+});
+
+test('R-PA-MCIN-010 does not demand an NDC from a J-code alone', () => {
+  const text = 'Indiana Medicaid member.\nRequested drug: J1745 infliximab.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCIN-010').status, 'pass');
+});
+
 // ---- wave 52-30 sanity checks: Medi-Cal (California Medicaid) overlay (§4.5.30) ----
 // Medi-Cal is the first PER-STATE Medicaid overlay. Two things must hold: the
 // state overlay (R-PA-MCAL-*) engages on a Medi-Cal packet, AND the §4.5.4
