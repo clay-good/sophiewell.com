@@ -6624,6 +6624,68 @@ test('R-PA-HMSA-010 does not demand an NDC from a J-code alone', () => {
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-HMSA-010').status, 'pass');
 });
 
+test('R-PA-HMSA-011 does not infer step therapy from a specialty-drug label', () => {
+  const text = 'HMSA member.\nRequested: specialty drug J1745 infusion.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HMSA-011').status, 'pass');
+});
+
+test('R-PA-HMSA-012 does not treat an 81xxx code as an Avalon genetic request', () => {
+  const text = 'HMSA member.\nRequested: CPT 81162.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HMSA-012').status, 'pass');
+});
+
+test('R-PA-HMSA-012 flags a genetic request missing the indication', () => {
+  const text = 'HMSA member.\nGenetic testing requested.\nTest name: BRCA1/2 sequencing.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HMSA-012').status, 'flag');
+});
+
+test('R-PA-HMSA-012 accepts a genetic request with the test and indication', () => {
+  const text = 'HMSA member.\nGenetic testing requested.\n'
+    + 'Test name: BRCA1/2 sequencing. Family history of early-onset breast cancer.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HMSA-012').status, 'pass');
+});
+
+test('R-PA-HMSA-013 does not demand a diagnosis from a J-code alone', () => {
+  const text = 'HMSA member.\nRequested: J9299 nivolumab.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HMSA-013').status, 'pass');
+});
+
+test('R-PA-HMSA-013 advises when a declared drug workflow carries no diagnosis (info)', () => {
+  const text = 'HMSA member.\nMedical specialty drug review requested for J9299.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HMSA-013').status, 'info');
+});
+
+test('R-PA-HMSA-014 does not fire on the phrase retrospective review alone', () => {
+  const text = 'HMSA member.\nHMSA may conduct a retrospective review of this claim.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HMSA-014').status, 'pass');
+});
+
+test('R-PA-HMSA-014 advises when a post-service request carries no documentation (info)', () => {
+  const text = 'HMSA member.\nRetroactive authorization requested for CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HMSA-014').status, 'info');
+});
+
+test('R-PA-HMSA-015 does not infer a DME request from an E code alone', () => {
+  const text = 'HMSA member.\nRequested: E0601 CPAP device.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HMSA-015').status, 'pass');
+});
+
+test('R-PA-HMSA-015 accepts a home-health request with the assessment attached', () => {
+  const text = 'HMSA member.\nPrecertification request for home health services.\n'
+    + 'Home health assessment attached.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HMSA-015').status, 'pass');
+});
+
 test('R-PA-HMSA-007 flags an HMSA outpatient MRI with no clinical indication', () => {
   const text = 'HMSA member.\nRequested: MRI lumbar spine, CPT 72148.\n';
   const findings = runEngine(bundleOf(text));
