@@ -6910,6 +6910,75 @@ test('R-PA-MCMI-015 does not infer a DME request from an E code alone', () => {
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCMI-015').status, 'pass');
 });
 
+test('R-PA-MCMI-016 flags a psychiatric admission with no PIHP routing or clinical support', () => {
+  const text = 'Michigan Medicaid beneficiary.\nInpatient psychiatric admission requested.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCMI-016').status, 'flag');
+});
+
+test('R-PA-MCMI-016 accepts a psychiatric admission routed to the PIHP', () => {
+  const text = 'Michigan Medicaid beneficiary.\nInpatient psychiatric admission requested.\n'
+    + 'Authorization requested from the local PIHP; medical necessity documented.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCMI-016').status, 'pass');
+});
+
+test('R-PA-MCMI-017 does not fire on the word transplant alone', () => {
+  const text = 'Michigan Medicaid beneficiary.\nHistory of kidney transplant in 2019.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCMI-017').status, 'pass');
+});
+
+test('R-PA-MCMI-017 flags a transplant request with no OMA letter of authorization', () => {
+  const text = 'Michigan Medicaid beneficiary.\nTransplant request for a liver.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCMI-017').status, 'flag');
+});
+
+test('R-PA-MCMI-017 accepts a transplant packet carrying the authorization letter', () => {
+  const text = 'Michigan Medicaid beneficiary.\nTransplant request for a liver.\n'
+    + 'Letter of authorization from the Office of Medical Affairs attached.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCMI-017').status, 'pass');
+});
+
+test('R-PA-MCMI-018 does not fire on off-label context alone', () => {
+  const text = 'Michigan Medicaid beneficiary.\nRequested off-label use of this agent.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCMI-018').status, 'pass');
+});
+
+test('R-PA-MCMI-018 flags a clinical-trial request missing the NCT number and attestation', () => {
+  const text = 'Michigan Medicaid beneficiary.\nRoutine services within a qualifying clinical trial.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCMI-018').status, 'flag');
+});
+
+test('R-PA-MCMI-018 accepts a clinical-trial request with the NCT number and attestation', () => {
+  const text = 'Michigan Medicaid beneficiary.\nRoutine services within a qualifying clinical trial.\n'
+    + 'NCT04123456. Signed Attestation to the Appropriateness of the Qualified Clinical Trial form attached.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCMI-018').status, 'pass');
+});
+
+test('R-PA-MCMI-020 does not fire on out-of-network wording alone', () => {
+  const text = 'Michigan Medicaid beneficiary.\nOut-of-network request for CPT 70551.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCMI-020').status, 'pass');
+});
+
+test('R-PA-MCMI-020 flags a non-emergency out-of-state service with no written PA', () => {
+  const text = 'Michigan Medicaid beneficiary.\nElective service by an out-of-state provider.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCMI-020').status, 'flag');
+});
+
+test('R-PA-MCMI-020 excepts genetic and molecular laboratory services', () => {
+  const text = 'Michigan Medicaid beneficiary.\nMolecular laboratory service by an out-of-state provider.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCMI-020').status, 'pass');
+});
+
 // ---- wave 52-30 sanity checks: Medi-Cal (California Medicaid) overlay (§4.5.30) ----
 // Medi-Cal is the first PER-STATE Medicaid overlay. Two things must hold: the
 // state overlay (R-PA-MCAL-*) engages on a Medi-Cal packet, AND the §4.5.4
