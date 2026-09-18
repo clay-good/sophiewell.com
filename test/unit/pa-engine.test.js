@@ -7013,10 +7013,82 @@ test('R-PA-MCIN-008 advises when an expedited request states no urgency (info)',
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCIN-008').status, 'info');
 });
 
-test('R-PA-MCIN-009 does not infer site-of-care review from hospital-outpatient surgery', () => {
+test('R-PA-MCIN-009 does not fire on hospital-outpatient surgery', () => {
   const text = 'Indiana Medicaid member.\nOutpatient hospital surgery, CPT 29881.\n';
   const findings = runEngine(bundleOf(text));
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCIN-009').status, 'pass');
+});
+
+test('R-PA-MCIN-009 flags an outpatient-typical procedure rendered inpatient with no PA', () => {
+  const text = 'Indiana Medicaid member.\nProcedure ordinarily rendered on an outpatient basis, admitted inpatient.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCIN-009').status, 'flag');
+});
+
+test('R-PA-MCIN-009 accepts the inpatient setting when authorization was sought', () => {
+  const text = 'Indiana Medicaid member.\nProcedure ordinarily rendered on an outpatient basis, admitted inpatient.\n'
+    + 'Prior authorization requested for the inpatient setting.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCIN-009').status, 'pass');
+});
+
+test('R-PA-MCIN-011 does not infer a brand or step-therapy requirement from a J-code', () => {
+  const text = 'Indiana Medicaid member.\nRequested: J1745 infliximab.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCIN-011').status, 'pass');
+});
+
+test('R-PA-MCIN-011 advises when a brand medically necessary request states no basis (info)', () => {
+  const text = 'Indiana Medicaid member.\nBrand medically necessary drug requested.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCIN-011').status, 'info');
+});
+
+test('R-PA-MCIN-012 does not treat an 81xxx code as a genetic test request', () => {
+  const text = 'Indiana Medicaid member.\nRequested: CPT 81162.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCIN-012').status, 'pass');
+});
+
+test('R-PA-MCIN-012 accepts a BRCA request with the test and indication', () => {
+  const text = 'Indiana Medicaid member.\nGenetic testing requested.\n'
+    + 'Test name: BRCA1/2 sequencing. Family history of early-onset breast cancer.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCIN-012').status, 'pass');
+});
+
+test('R-PA-MCIN-013 does not demand a diagnosis from a J-code alone', () => {
+  const text = 'Indiana Medicaid member.\nRequested: J9299 nivolumab.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCIN-013').status, 'pass');
+});
+
+test('R-PA-MCIN-014 flags a retroactive request stating no published circumstance', () => {
+  const text = 'Indiana Medicaid member.\nRetroactive prior authorization requested for CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCIN-014').status, 'flag');
+});
+
+test('R-PA-MCIN-014 accepts a retroactive request citing retroactive eligibility', () => {
+  const text = 'Indiana Medicaid member.\nRetroactive prior authorization requested for CPT 27447.\n'
+    + 'Member had retroactive eligibility entered by the caseworker.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCIN-014').status, 'pass');
+});
+
+test('R-PA-MCIN-015 accepts home health under the written post-discharge order', () => {
+  const text = 'Indiana Medicaid member.\nHome health services continuing within 30 days of discharge.\n'
+    + 'Physician ordered in writing upon discharge; 120 hours or fewer.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCIN-015').status, 'pass');
+});
+
+test('R-PA-MCIN-015 does not extend the post-discharge exemption to DME', () => {
+  // 405 IAC 5-3-12 expressly excludes durable medical equipment from the
+  // 120-hour carve-out, so a DME packet relying on it must still be flagged.
+  const text = 'Indiana Medicaid member.\nDurable medical equipment ordered in writing upon discharge, within 30 days.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCIN-015').status, 'flag');
 });
 
 test('R-PA-MCIN-010 does not demand an NDC from a J-code alone', () => {
