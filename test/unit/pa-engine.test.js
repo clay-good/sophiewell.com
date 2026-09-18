@@ -8595,6 +8595,83 @@ test('R-PA-MCNJ-019 accepts a hearing request citing the denial notice', () => {
   assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCNJ-019').status, 'pass');
 });
 
+// ---- spec-v1387: Pennsylvania Medical Assistance overlay, per 55 Pa. Code ----
+
+test('Pennsylvania Medical Assistance overlay rules vacuously pass on a non-Pennsylvania packet', () => {
+  const findings = runEngine(happyBundle());
+  for (let n = 1; n <= 20; n += 1) {
+    const id = 'R-PA-MCPA-' + String(n).padStart(3, '0');
+    const f = findings.find((x) => x.ruleId === id);
+    assert.ok(f, id + ' should be registered');
+    assert.equal(f.status, 'pass', id + ' should not fire outside Pennsylvania Medical Assistance');
+  }
+});
+
+test('R-PA-MCPA-001 advises (info) on a request with a procedure but no medical-necessity basis', () => {
+  const text = 'Pennsylvania Medical Assistance recipient.\nRequested procedure: CPT 72148.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCPA-001').status, 'info');
+});
+
+test('R-PA-MCPA-002 flags a prior authorization request with no ordering practitioner', () => {
+  const text = 'Pennsylvania Medical Assistance recipient.\nPrior authorization request for a power wheelchair.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCPA-002').status, 'flag');
+});
+
+test('R-PA-MCPA-002 accepts the ordering practitioner', () => {
+  const text = 'Pennsylvania Medical Assistance recipient.\nPrior authorization request for a power wheelchair, ordered by Dr. Lee.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCPA-002').status, 'pass');
+});
+
+test('R-PA-MCPA-006 advises on an elective admission with no place of service review', () => {
+  const text = 'Pennsylvania Medical Assistance recipient.\nElective admission for CPT 27447.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCPA-006').status, 'info');
+});
+
+test('R-PA-MCPA-006 exempts a maternity admission', () => {
+  const text = 'Pennsylvania Medical Assistance recipient.\nScheduled admission; maternity admission for delivery.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCPA-006').status, 'pass');
+});
+
+test('R-PA-MCPA-008 advises on an emergency designation that does not document the immediate need', () => {
+  const text = 'Pennsylvania Medical Assistance recipient.\nEmergency admission for knee pain.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCPA-008').status, 'info');
+});
+
+test('R-PA-MCPA-008 accepts the immediate need', () => {
+  const text = 'Pennsylvania Medical Assistance recipient.\nEmergency admission; immediate medical services were needed to prevent death.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCPA-008').status, 'pass');
+});
+
+test('R-PA-MCPA-009 advises on a certification with no expiration date', () => {
+  const text = 'Pennsylvania Medical Assistance recipient.\nPSR certification granted for CPT 27447.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCPA-009').status, 'info');
+});
+
+test('R-PA-MCPA-014 accepts a request after the service for a patient who later became eligible', () => {
+  const text = 'Pennsylvania Medical Assistance recipient.\nRetroactive authorization; patient became eligible after admission.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCPA-014').status, 'pass');
+});
+
+test('R-PA-MCPA-017 advises on an out-of-state admission with no review', () => {
+  const text = 'Pennsylvania Medical Assistance recipient.\nOut-of-state hospital admission for CPT 27447.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCPA-017').status, 'info');
+});
+
+test('R-PA-MCPA-018 does not flag a plain transplant request', () => {
+  const text = 'Pennsylvania Medical Assistance recipient.\nRequested service: kidney transplant.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCPA-018').status, 'pass');
+});
+
+test('R-PA-MCPA-020 advises on a mandatory second opinion not shown', () => {
+  const text = 'Pennsylvania Medical Assistance recipient.\nMandatory second opinion list procedure: hysterectomy.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCPA-020').status, 'info');
+});
+
+test('R-PA-MCPA-020 accepts the second opinion report', () => {
+  const text = 'Pennsylvania Medical Assistance recipient.\nMandatory second opinion list procedure; second opinion report attached.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCPA-020').status, 'pass');
+});
+
 test('CMS overlay carries the spec-aligned id R-PA-CMS-004 for proof-of-delivery', () => {
   const podRule = STARTER_RULES.find((r) => r.id === 'R-PA-CMS-004');
   assert.ok(podRule, 'R-PA-CMS-004 should exist after wave 52-2b renumber.');
