@@ -6324,11 +6324,52 @@ test('R-PA-BCBSLA-007 flags a BCBSLA outpatient MRI with no clinical indication'
   assert.equal(f.status, 'flag');
 });
 
-test('R-PA-BCBSLA-008 passes when an expedited BCBSLA request documents the clinical urgency', () => {
+test('R-PA-BCBSLA-006 does not infer a continued-stay review from admission prose', () => {
+  const text = 'Blue Cross and Blue Shield of Louisiana member.\nPatient was admitted Tuesday.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSLA-006').status, 'pass');
+});
+
+test('R-PA-BCBSLA-006 flags a continued-stay request with no clinical support', () => {
+  const text = 'Blue Cross and Blue Shield of Louisiana member.\nContinued stay requested for two additional days.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSLA-006').status, 'flag');
+});
+
+test('R-PA-BCBSLA-007 does not treat an arbitrary 7xxxx code as high-tech imaging', () => {
+  const text = 'Blue Cross and Blue Shield of Louisiana member.\nRequested: CPT 76700 abdominal ultrasound.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSLA-007').status, 'pass');
+});
+
+test('R-PA-BCBSLA-008 flags an urgent request with no supporting clinical information', () => {
+  // Louisiana Blue denies an urgent request after 72 hours for lack of information,
+  // so the published risk is missing clinical material -- not missing urgency wording.
   const text = 'Blue Cross and Blue Shield of Louisiana member.\nExpedited review requested: delay would jeopardize the member\'s life or health.\n';
   const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSLA-008');
-  assert.equal(f.status, 'pass');
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSLA-008').status, 'flag');
+});
+
+test('R-PA-BCBSLA-008 accepts an urgent request carrying a clinical document', () => {
+  const findings = runEngine(bundleOf({
+    documents: [
+      { name: 'request.txt', text: 'Blue Cross and Blue Shield of Louisiana member. Urgent authorization requested.' },
+      { name: 'clinical-note.txt', text: 'Clinical note: rapidly worsening cellulitis, failing oral antibiotics.' },
+    ],
+  }));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSLA-008').status, 'pass');
+});
+
+test('R-PA-BCBSLA-009 does not infer site-of-care review from hospital-outpatient surgery', () => {
+  const text = 'Blue Cross and Blue Shield of Louisiana member.\nOutpatient hospital surgery, CPT 29881.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSLA-009').status, 'pass');
+});
+
+test('R-PA-BCBSLA-010 does not demand an NDC from a J-code alone', () => {
+  const text = 'Blue Cross and Blue Shield of Louisiana member.\nRequested drug: J1745 infliximab.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSLA-010').status, 'pass');
 });
 
 test('R-PA-BCBSLA-017 flags a BCBSLA transplant request with no Blue Distinction routing', () => {
