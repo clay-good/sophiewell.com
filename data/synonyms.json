@@ -7955,6 +7955,17 @@
       ],
       "tile": "ny-mhl-hold-clock",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "nj screening certificate 72 hours",
+        "new jersey involuntary commitment",
+        "temporary commitment order nj",
+        "nj psych hold",
+        "30:4-27.10"
+      ],
+      "tile": "nj-civil-commitment-clock",
+      "audience": "clinicians"
     }
   ]
 }

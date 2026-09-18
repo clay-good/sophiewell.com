@@ -148,3 +148,21 @@ text added to or changed in the table above:
 - **9.27's 60-day retention is not in 9.27.** It lives in §9.33, which was not read, so the tile
   checks only the 10-day execution window.
 - 9.37(c)'s 24-hour confirmation for certain less-populous counties is not in the tile.
+
+## Built (2026-09-18): `nj-civil-commitment-clock`
+
+Read from the New Jersey Courts *Involuntary Civil Commitments Resource Binder* (revised June 2024)
+and Directive #06-25. Catalog 1,731 → 1,732.
+
+- The 72 hours run from **completion of the screening certificate**; a temporary commitment order is
+  obtained within them or the person is discharged (R. 4:74-7(b)(1)). The final hearing is within
+  **20 days** of initial commitment (27.12), with up to 14 days more only in exceptional
+  circumstances.
+- The certificate checks (a psychiatrist's certificate; no relative) are three-state: yes, no, or
+  **not assessed**, and not assessed never reads as a pass.
+- **Added from the binder:** a voluntary patient who asks to leave is discharged within 48 hours or
+  at the end of the next working day, whichever is longer (27.20), on New Jersey's holidays.
+- **The 27.9a reason changed.** Directive #06-25 (November 17, 2025) extended the window for
+  continued-hold applications from August 31, 2025 to **August 31, 2026**. That date has passed and
+  no further extension has been found, so the tile still does not offer the extra 72 hours, and its
+  ledger row carries the question to the next review.

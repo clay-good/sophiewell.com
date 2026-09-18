@@ -8152,6 +8152,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/ny-mhl-hold-clock-v1389.js (spec-v1389: New York psychiatric hold deadlines — clinical disclaimer)
 - `ny-mhl-hold-clock`
 
+### lib/nj-civil-commitment-clock-v1389.js (spec-v1389: New Jersey civil commitment clock — clinical disclaimer)
+- `nj-civil-commitment-clock`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

@@ -1098,6 +1098,7 @@ const UTILITIES = [
   { id: 'tx-emergency-detention-clock', name: 'Texas Emergency Detention Clock (HSC 573.021)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'tx-protective-custody-hearing-clock', name: 'Texas Probable-Cause Hearing Clock (HSC 574.025, 574.005)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'ny-mhl-hold-clock', name: 'New York Psychiatric Hold Deadlines (MHL 9.39, 9.37, 9.40, 9.27, 9.13)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'nj-civil-commitment-clock', name: 'New Jersey Screening to Commitment Clock (N.J.S.A. 30:4-27.10)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
   // Group K (Lab Reference): removed in spec-v29 wave 29-2 (lab-adult,
   // lab-peds, tdm-levels, tox-levels are pure reference-range tables).
   // Group L: Forms & Numbers Literacy (removed in spec-v29 wave 29-2:

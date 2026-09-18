@@ -6,6 +6,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **New Jersey commitment clock.** The 72 hours from the screening certificate
+  (not from arrival) to a temporary commitment order, the 20-day final hearing,
+  the psychiatrist and relative checks answered yes, no, or not assessed, and
+  the voluntary patient's 48-hour or next-working-day discharge. See
+  docs/spec-v1389.md.
+
 - **New York psychiatric hold deadlines.** One clock for five Mental Hygiene
   Law statuses (9.39, 9.37, 9.40, 9.13, 9.27), where only 9.37's 72 hours skip
   Sundays and New York's legal holidays. See docs/spec-v1389.md.

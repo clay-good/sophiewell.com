@@ -789,6 +789,7 @@ import ltbiRegimenDosingV1400 from './adapters/ltbi-regimen-dosing-v1400.js';
 import txEmergencyDetentionClockV1389 from './adapters/tx-emergency-detention-clock-v1389.js';
 import txProtectiveCustodyHearingClockV1389 from './adapters/tx-protective-custody-hearing-clock-v1389.js';
 import nyMhlHoldClockV1389 from './adapters/ny-mhl-hold-clock-v1389.js';
+import njCivilCommitmentClockV1389 from './adapters/nj-civil-commitment-clock-v1389.js';
 import ticiV960 from './adapters/tici-v960.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
@@ -1605,6 +1606,7 @@ const ADAPTER_MODULES = [
   ['tx-emergency-detention-clock-v1389', txEmergencyDetentionClockV1389],
   ['tx-protective-custody-hearing-clock-v1389', txProtectiveCustodyHearingClockV1389],
   ['ny-mhl-hold-clock-v1389', nyMhlHoldClockV1389],
+  ['nj-civil-commitment-clock-v1389', njCivilCommitmentClockV1389],
   ['tici-v960', ticiV960],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],

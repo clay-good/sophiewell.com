@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:5ac1d593-662c-532b-8a82-22b161fe9155",
+  "serialNumber": "urn:uuid:3aef2dd1-126f-5ce8-82e1-3bd1f9d793f9",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-18T18:20:29.146Z",
+    "timestamp": "2026-09-18T18:31:18.936Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1731 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1732 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f4b9f7869e42df2c7a521e37c11325a886a3260ab891d11cf56ace8e9e341b95"
+          "content": "e644347327d2801290416d8b3318f2179bbefaa638b82ed9967e2ca6dd1800a6"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "110902"
+          "value": "110980"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "30c1e81932134dbdfac6d655bd35955e7bc5bf4cfa512e3dc901057f8485cffb"
+          "content": "099ff82fc97f837421f31b03e5caf1a3c0d07da4403961a5bb308fbe6ec5954e"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "519903"
+          "value": "520082"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0243fbe694ae48a3e1a4898d6b6c4825977863be8c847f6777f0f787b5d0e465"
+          "content": "83ff1903b7f9cf62c7a275c3d94f7bc1b63fe5c6b94783f39df2cefc59c68c34"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "215191"
+          "value": "215327"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "52f936e106af84c223cf14c0ea7f5c1cb8843f5132d0ad01f48a3c16b8417cd9"
+          "content": "252b4fc0bfe60aea61dae728aedc56d999ba0f96f32255564b2ec55a87f6a476"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "97249"
+          "value": "97342"
         }
       ]
     },
@@ -10352,7 +10352,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "88991218af8692139fcd681ea52b3865c1843d1b9b9c71b32c9c8c875bf59d74"
+          "content": "0fdf5e58605b8fd255a45aaa76ad975e2e1710360739128bdba64ccaaf8a44aa"
         }
       ],
       "properties": [
@@ -10362,7 +10362,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2488371"
+          "value": "2489219"
         }
       ]
     },
@@ -11581,6 +11581,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "13026"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/nj-civil-commitment-clock-v1389.js",
+      "type": "file",
+      "name": "lib/nj-civil-commitment-clock-v1389.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f8c6a705ac561f40a746b3009feb9a997c8b53c1cea2aca9af799904208bddc3"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8361"
         }
       ]
     },
@@ -29372,6 +29393,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/nj-civil-commitment-clock-v1389.js",
+      "type": "file",
+      "name": "mcp/adapters/nj-civil-commitment-clock-v1389.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0a64d9f4c139b8f8b44ba6efc42157ce5ed514aad6d45d5272c8ff50788a4315"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1735"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/nmosd-2015-v823.js",
       "type": "file",
       "name": "mcp/adapters/nmosd-2015-v823.js",
@@ -35804,7 +35846,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8e6de716e053e818611409606d24d45b155ec8939b79d9cae2e148ba168d69b2"
+          "content": "7305d5a8a362cbdc5786575164f593c32a9932e9bb5ed36787696a607306e87d"
         }
       ],
       "properties": [
@@ -35814,7 +35856,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "91762"
+          "value": "91919"
         }
       ]
     },
@@ -37085,7 +37127,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "693cd23710f39e42047a2e4bd9035d5a32c24add38cb398637185d1bd51a81cd"
+          "content": "f0bcbb301595ad25245058543a75c47bcac01dfd56c838650c4504341486620c"
         }
       ],
       "properties": [
@@ -37095,7 +37137,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "6090"
+          "value": "7659"
         }
       ]
     },
@@ -68853,6 +68895,7 @@
         "urn:sophiewell:file:source:lib/nichd-fhr-v912.js",
         "urn:sophiewell:file:source:lib/nih-cpsi-v566.js",
         "urn:sophiewell:file:source:lib/niosh-lifting-v885.js",
+        "urn:sophiewell:file:source:lib/nj-civil-commitment-clock-v1389.js",
         "urn:sophiewell:file:source:lib/nmosd-2015-v823.js",
         "urn:sophiewell:file:source:lib/nms-criteria-v870.js",
         "urn:sophiewell:file:source:lib/nohria-stevenson-v369.js",
@@ -70507,6 +70550,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/nichd-fhr-v912.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nih-cpsi-v566.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/niosh-lifting-v885.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/nj-civil-commitment-clock-v1389.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nmosd-2015-v823.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nms-criteria-v870.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nohria-stevenson-v369.js",
@@ -70916,7 +70960,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "5ac1d593662c532b"
+      "value": "3aef2dd1126fece8"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -70928,7 +70972,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2488"
+      "value": "2490"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
