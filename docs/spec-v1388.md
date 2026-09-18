@@ -100,3 +100,20 @@ match a statute, so none of these tiles would be gated. Add:
 `lib/state-calendar.js` with unit tests for every holiday rule of all four states across 2026–2030,
 including each observance shift. The ledger gate is negative-tested: backdate one row and confirm
 the gate fails. The synonym routes are added once their tiles exist. No catalog count changes.
+
+## Built (2026-09-18)
+
+| Part | What shipped |
+|---|---|
+| 1. State picker | `STATES` and `stateOptions(covered)` in `lib/state-calendar.js`: fixed order, no default, and a tile covering fewer states lists only those. Search-prefill routes wait for their tiles, as this spec says. |
+| 2. Calendar | `lib/state-calendar.js`: `holidaysInYear`, `isLegalHoliday`, `isBusinessDay`, `nextBusinessDay`, `addHours`, `addExcludingSundaysAndHolidays`, `elapsedHours`, `formatDeadline`. Hours are real elapsed time across the daylight-saving changes. `test/unit/state-calendar.test.js` checks every weekday-rule holiday for all four states, 2026–2030, against dates computed independently, plus each observance shift in that window. |
+| 3. Ledger gate | Rule 9 in `scripts/check-citations.mjs`: `STATE_LAW_PATTERN`, a **State law (gate-enforced)** table in `docs/citation-staleness.md`, and a failure once a row's next-review date passes. Negative-tested with a backdated row. No current citation matches the pattern. |
+| 4. Copy rules | `scopeSentence(asOf)` returns the one closing sentence; `formatDeadline` prints the wall-clock time **and** the interval ("Thursday, September 24, 2026, 4:00 pm, 51 h after presentation"). |
+| 5. Wiring | `health-law` and `occupational-health` added to the closed specialty vocabulary. Group M is already labeled in `build-tools-index.mjs` and the architecture table, and a group appears there once it has a tile. |
+
+The statutes were read before they were encoded, and four facts differ from this plan:
+
+- **California renamed March 31.** AB 2156 (effective March 26, 2026) made it **Farmworkers Day**; it was Cesar Chavez Day. §6700 now also lists **Lunar New Year** and **Diwali**, both defined by lunar calendars. Neither the statute nor CalHR gives their Gregorian dates, so the calendar does not guess them: it counts those days as working days (the earlier deadline) and any count that crosses their window (January 21–February 20, October 15–November 15) returns a caveat naming the holiday. California's Good Friday is a holiday from noon to 3 p.m. only, and is reported as partial. Sunday observance applies only to the seven dates in §6701(a), and a Saturday Veterans Day moves to Friday (§6701(b)).
+- **Texas has two kinds of state holiday.** Confederate Heroes, Texas Independence, San Jacinto, Emancipation, and LBJ Days keep agencies staffed (Gov. Code §662.004), so they are reported as **staffed** and count as business days; the Friday after Thanksgiving, December 24, and December 26 are closures. Texas moves no weekend holiday (§662.005). On January 19, 2026, Martin Luther King Jr. Day and Confederate Heroes Day fall on the same date; the closure wins and both are named.
+- **New Jersey's Juneteenth is the third Friday in June** (P.L. 2020, c.76), not June 19. Good Friday and every general election day are legal holidays.
+- **New York** includes Lincoln's Birthday, Juneteenth, and every general election day; a Sunday holiday moves to Monday (Flag Day excepted), and no Saturday holiday moves.

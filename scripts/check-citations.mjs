@@ -30,6 +30,11 @@
 //      PubMed" rather than "Read the source". The list shrinks only. (It said
 //      "Eight" here long after the set held twelve -- spec-v1001: a count
 //      restated in prose beside the list it counts is a second copy.)
+//   9. (spec-v1388) A citation that names a STATE statute or regulation (N.Y. MHL, N.J.S.A., Cal.
+//      WIC/HSC/CCR, Tex. HSC/TAC, ...) has a row in the "State law (gate-enforced)" table of
+//      docs/citation-staleness.md, and that row's NEXT REVIEW date has not passed. State law changes
+//      every session, and ISSUER_PATTERN matches none of it; the review date makes "check it after
+//      the legislature adjourns" a CI fact rather than a memory.
 //   6. (spec-v938) A citation that names a year names a real, findable paper.
 //      Every such tile carries a `citationUrl` (or `citationUrls`) unless its id is in the frozen
 //      backlog `data/citation-url-backlog.json`. The backlog may only shrink:
@@ -50,6 +55,11 @@ const ROOT = join(fileURLToPath(import.meta.url), '..', '..');
 // "Joint Commission" is a literal multi-word issuer name.
 export const ISSUER_PATTERN =
   /\b(CDC|KDIGO|AGS|ACC|AHA|ATS|IDSA|ESC|WHO|AAP|ACOG|SAMHSA|NICE)\b|Joint Commission/;
+
+// spec-v1388 rule 9: a citation to state law. Abbreviations are bounded so that a future "PHLF" or
+// "TACO" cannot match; at spec-v1388 no citation in the catalog matched at all.
+export const STATE_LAW_PATTERN =
+  /\b(NYCRR|MHL|PHL|WIC|HSC|CCR|TAC)\b|N\.Y\. |N\.J\.S\.A\.|N\.J\.A\.C\.|Tex\. |Fam\. Code|Occ\. Code|Prob\. Code/;
 
 // Unpinned-edition phrases banned by rule 5.
 const UNPINNED = /current edition|latest version|most recent/i;
@@ -271,6 +281,51 @@ export function parseLedgerIds(markdown) {
   return ids;
 }
 
+// parseStateLawLedger(markdown) -> Map<id, { nextReview, line }>. Reads only the table under the
+// "## State law (gate-enforced)" heading, whose columns are: tile id | section(s) | state | verified |
+// last amendment known | next review.
+export function parseStateLawLedger(markdown) {
+  const rows = new Map();
+  const text = String(markdown || '');
+  const start = text.indexOf('## State law (gate-enforced)');
+  if (start === -1) return rows;
+  const rest = text.slice(start + 1);
+  const next = rest.search(/\n## /);
+  const section = next === -1 ? rest : rest.slice(0, next);
+  for (const line of section.split('\n')) {
+    const trimmed = line.trim();
+    if (!trimmed.startsWith('|')) continue;
+    const cells = trimmed.split('|').slice(1, -1).map((c) => c.trim());
+    const id = (cells[0] || '').replace(/`/g, '');
+    if (!id || id === 'tile id' || /^-+$/.test(id.replace(/[:\s]/g, ''))) continue;
+    rows.set(id, { nextReview: cells[5] || '', line: trimmed });
+  }
+  return rows;
+}
+
+// findStateLawViolations({ tiles, meta, stateLedger, today }) -> [string]. Pure; `today` is an
+// ISO date passed in so the rule is testable (the gate reads the clock; no tile ever does).
+export function findStateLawViolations({ tiles, meta, stateLedger, today }) {
+  const out = [];
+  const ids = new Set(tiles.map((t) => t.id));
+  for (const t of tiles) {
+    const m = meta[t.id] || {};
+    const citation = typeof m.citation === 'string' ? m.citation : '';
+    if (STATE_LAW_PATTERN.test(citation) && !stateLedger.has(t.id)) {
+      out.push(`${t.id}: rule 9 - cites state law but has no row in the "State law (gate-enforced)" table of docs/citation-staleness.md`);
+    }
+  }
+  for (const [id, row] of stateLedger) {
+    if (!ids.has(id)) out.push(`${id}: rule 9 - state-law ledger row names no tile (remove the row)`);
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(row.nextReview)) {
+      out.push(`${id}: rule 9 - next review "${row.nextReview}" is not a YYYY-MM-DD date`);
+    } else if (row.nextReview < today) {
+      out.push(`${id}: rule 9 - next review ${row.nextReview} has passed; re-read the statute against the session laws, then move the date`);
+    }
+  }
+  return out;
+}
+
 async function main() {
   const [appJs, ledgerMd, backlogJson, metaMod] = await Promise.all([
     readFile(join(ROOT, 'app.js'), 'utf8'),
@@ -281,9 +336,13 @@ async function main() {
   const tiles = parseTiles(appJs);
   const ledgerIds = parseLedgerIds(ledgerMd);
   const backlogIds = new Set(JSON.parse(backlogJson).tiles);
-  const violations = findCitationViolations({
-    tiles, meta: metaMod.META, ledgerIds, backlogIds, searchUrlIds: SEARCH_URL_GRANDFATHERED,
-  });
+  const stateLedger = parseStateLawLedger(ledgerMd);
+  const violations = [
+    ...findCitationViolations({
+      tiles, meta: metaMod.META, ledgerIds, backlogIds, searchUrlIds: SEARCH_URL_GRANDFATHERED,
+    }),
+    ...findStateLawViolations({ tiles, meta: metaMod.META, stateLedger, today: new Date().toISOString().slice(0, 10) }),
+  ];
 
   if (violations.length) {
     console.error('check-citations: FAIL - citation-integrity violations (spec-v54):');
@@ -297,7 +356,7 @@ async function main() {
   console.log(
     `check-citations: clean (${tiles.length} tiles, ` +
     `${issuerCount} guideline-issuer tiles dated + ledgered, ${ledgerIds.size} ledger rows, ` +
-    `${backlogIds.size} dated citations still unlinked).`,
+    `${backlogIds.size} dated citations still unlinked, ${stateLedger.size} state-law rows in review).`,
   );
 }
 

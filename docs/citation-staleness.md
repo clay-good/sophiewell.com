@@ -637,3 +637,16 @@ and thresholds) is a stable rule in every case (Class A).
 | who-severe-malaria | WHO severe malaria criteria - any one of twelve clinical or laboratory features in confirmed falciparum parasitemia | WHO Guidelines for Malaria (Geneva, 2023), carrying forward Severe malaria, Trop Med Int Health 2014;19(Suppl 1):7-131 | same | 2026-08-29 | current - the 2023 consolidated guideline is the latest and reproduces the 2014 feature list and thresholds unchanged; the citation names WHO, which trips the issuer-acronym pattern, so this documentation-only row records that all twelve features and their cutoffs were re-fetched and cross-verified against >= 2 open sources (spec-v97) and are unchanged (Class A). Review on-publication of the next WHO malaria guideline update |
 | who-dengue-2009 | WHO 2009 dengue case classification — severe dengue / dengue with warning signs / dengue without warning signs | WHO 2009 (Dengue: Guidelines for Diagnosis, Treatment, Prevention and Control, Geneva) | same | 2026-07-03 | current — the WHO 2009 three-tier case classification (severity criteria and the seven warning signs) is the in-force scheme and is unchanged; the citation names WHO, which trips the issuer-acronym pattern, so this documentation-only row records that the severity/warning-sign criteria were re-fetched and cross-verified against ≥2 open sources (spec-v97) and are unchanged (Class A). Review on-publication of the next WHO dengue guideline |
 | blood-lead | CDC blood lead reference value — 3.5 µg/dL, with chelation considered at 45 and 70 as a medical emergency | CDC 2021 (Blood Lead Reference Value, Atlanta) | same | 2026-08-29 | current — the reference value was lowered from 5 to 3.5 µg/dL in 2021 on the recommendation of the Lead Exposure and Prevention Advisory Committee, and 3.5 remains in force; the citation names the CDC, which trips the issuer-acronym pattern, so this documentation-only row records that the reference value and the 45/70 µg/dL thresholds were re-fetched and cross-verified against ≥2 open sources (spec-v97) and are unchanged (Class A). The value is defined as the 97.5th percentile of the NHANES blood lead distribution in children aged 1-5 and is restated periodically as population exposure falls, so review on-publication of the next CDC restatement |
+
+## State law (gate-enforced)
+
+spec-v1388. A tile whose `META[id].citation` names a state statute or regulation (it matches
+`STATE_LAW_PATTERN` in `scripts/check-citations.mjs`: N.Y. MHL, PHL, NYCRR; N.J.S.A., N.J.A.C.;
+Cal. WIC, HSC, CCR; Tex. HSC, TAC, Family, Occupations, and Probate Codes) needs a row here.
+**Next review** is the first day after the state's next legislative session adjourns, or the date a
+pending rule is due to become permanent. The gate fails once that date has passed, so a statute
+that may have changed is re-read rather than trusted. A row flagged high volatility in its own spec
+carries the specific date that could change it.
+
+| tile id | section(s) | state | verified | last amendment known | next review |
+|---|---|---|---|---|---|

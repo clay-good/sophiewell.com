@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `68fd951ff110e3f6`
-Generated: 2026-09-18T16:31:34.172Z
+Build ID: `fb9c7abcc024a012`
+Generated: 2026-09-18T17:55:47.329Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -823,6 +823,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/stamey-incontinence-v465.js` | 2929 | `e2cded2c8e4b0734d0581d0d1715dad18f8b119eb45175ab59d842b11702f112` |
 | `lib/stanford-dissection-v1242.js` | 7111 | `9a3a6f1ccb9877f506ae47b245b08483eaf6afdc649cdba1f920504ffbed1e84` |
 | `lib/startback-v781.js` | 5927 | `da2d968b8a6a00b328e2f3a3f1f1ccb05bd0fa3a6bea26b5ab033857b4c1cfac` |
+| `lib/state-calendar.js` | 20940 | `9cfbeeeb1d3625dbf712a348574e15accfbadbb67b94f64336927b6e9bf5d389` |
 | `lib/steinberg-avn-v407.js` | 4524 | `ccb1b143de3be3104e76ed0e4250a99d285f9a59a9428fded38d4a5adc07e93f` |
 | `lib/steinbrocker-ra-v469.js` | 3579 | `a2fc9925c8ec0461e7b245f71e15664a453dca69636a548f6cf0f012a185c14f` |
 | `lib/sternbach-v589.js` | 13053 | `720e9250cdc1ad1f9e75485c0a41919c2321c18836f991bcec0ebc3c6cad5e3e` |

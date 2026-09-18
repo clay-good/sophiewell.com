@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:68fd951f-f110-53f6-8e06-e87857c59581",
+  "serialNumber": "urn:uuid:fb9c7abc-c024-5012-860d-018cd33a6445",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-18T16:31:34.172Z",
+    "timestamp": "2026-09-18T17:55:47.329Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16600,6 +16600,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "5927"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/state-calendar.js",
+      "type": "file",
+      "name": "lib/state-calendar.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9cfbeeeb1d3625dbf712a348574e15accfbadbb67b94f64336927b6e9bf5d389"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "20940"
         }
       ]
     },
@@ -68924,6 +68945,7 @@
         "urn:sophiewell:file:source:lib/stamey-incontinence-v465.js",
         "urn:sophiewell:file:source:lib/stanford-dissection-v1242.js",
         "urn:sophiewell:file:source:lib/startback-v781.js",
+        "urn:sophiewell:file:source:lib/state-calendar.js",
         "urn:sophiewell:file:source:lib/steinberg-avn-v407.js",
         "urn:sophiewell:file:source:lib/steinbrocker-ra-v469.js",
         "urn:sophiewell:file:source:lib/sternbach-v589.js",
@@ -70740,7 +70762,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "68fd951ff110e3f6"
+      "value": "fb9c7abcc024a012"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -70752,7 +70774,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2480"
+      "value": "2481"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

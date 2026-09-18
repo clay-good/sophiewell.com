@@ -6,6 +6,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **A legal-holiday calendar for New York, New Jersey, California, and Texas.**
+  Each state's holidays are computed from its own statute, including the
+  observance shifts that differ by state, and hours are counted across the
+  daylight-saving changes. It is the shared base for the state-practice tools;
+  a new citation gate makes every state-law source carry a review date that
+  fails CI once it passes. See docs/spec-v1388.md.
+
 - **Six serology and TB tools.** Syphilis serology for both testing sequences
   (a reactive EIA with a nonreactive RPR is discordant, not a false positive,
   until the TP-PA is back), the CDC congenital syphilis scenarios with the

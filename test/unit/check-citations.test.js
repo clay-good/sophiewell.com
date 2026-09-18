@@ -10,6 +10,9 @@ import {
   ISSUER_PATTERN,
   SEARCH_URL_GRANDFATHERED,
   isSearchUrl,
+  STATE_LAW_PATTERN,
+  parseStateLawLedger,
+  findStateLawViolations,
 } from '../../scripts/check-citations.mjs';
 
 // A minimal well-formed baseline: one clinical guideline tile (dated + ledgered
@@ -327,3 +330,72 @@ test('rule 8 - a properly named paper is not a hedge', () => {
     );
   }
 });
+
+// ---- spec-v1388 rule 9: state law carries a review date that the gate enforces ----
+
+const STATE_MD = (nextReview) => `# ledger
+
+## Guideline-derived tiles (gate-enforced)
+
+| tile id | x |
+|---|---|
+| kdigo-aki | x |
+
+## State law (gate-enforced)
+
+| tile id | section(s) | state | verified | last amendment known | next review |
+|---|---|---|---|---|---|
+| ny-hold | MHL 9.39 | NY | 2026-09-18 | L.2024 | ${nextReview} |
+
+## Later section
+
+| tile id | x |
+|---|---|
+| other | x |
+`;
+
+function stateCase(nextReview) {
+  return {
+    tiles: [{ id: 'ny-hold', clinical: true }, { id: 'kdigo-aki', clinical: true }],
+    meta: {
+      'ny-hold': { citation: 'N.Y. Mental Hygiene Law (MHL) 9.39 and 9.37.' },
+      'kdigo-aki': { citation: 'KDIGO 2012.' },
+    },
+    stateLedger: parseStateLawLedger(STATE_MD(nextReview)),
+    today: '2026-09-18',
+  };
+}
+
+test('rule 9 - the pattern matches state statutes and not the words that contain the letters', () => {
+  for (const c of ['N.Y. MHL 9.39', 'N.J.S.A. 30:4-27.9', 'Cal. WIC 5150', 'Tex. HSC 573.021', '22 CCR 70217', '25 TAC 415']) {
+    assert.ok(STATE_LAW_PATTERN.test(c), c);
+  }
+  for (const c of ['PHLF trial', 'TACO score', 'KDIGO 2012', 'Hsc-CRP'.toLowerCase()]) {
+    assert.equal(STATE_LAW_PATTERN.test(c), false, c);
+  }
+});
+
+test('rule 9 - only the state-law section is read', () => {
+  assert.deepEqual([...parseStateLawLedger(STATE_MD('2027-06-01')).keys()], ['ny-hold']);
+});
+
+test('rule 9 - a future review date passes', () => {
+  assert.deepEqual(findStateLawViolations(stateCase('2027-06-01')), []);
+});
+
+test('rule 9 - a BACKDATED review date fails the gate (negative test)', () => {
+  const v = findStateLawViolations(stateCase('2026-09-17'));
+  assert.equal(v.length, 1);
+  assert.match(v[0], /next review 2026-09-17 has passed/);
+});
+
+test('rule 9 - a state-law citation with no row fails, and so does a row with no tile or no date', () => {
+  const noRow = stateCase('2027-06-01');
+  noRow.stateLedger = new Map();
+  assert.match(findStateLawViolations(noRow)[0], /no row/);
+  const orphan = stateCase('2027-06-01');
+  orphan.tiles = orphan.tiles.filter((t) => t.id !== 'ny-hold');
+  assert.match(findStateLawViolations(orphan)[0], /names no tile/);
+  assert.match(findStateLawViolations(stateCase('after the session'))[0], /not a YYYY-MM-DD date/);
+});
+

@@ -21,6 +21,10 @@ const ALLOWED_SPECIALTIES = new Set([
   'dermatology', 'dialysis-nursing', 'diabetes-education', 'echocardiography', 'emergency-medicine', 'ems',
   'endocrinology', 'family-medicine', 'gastroenterology', 'geriatrics',
   'headache', 'interventional-radiology', 'medical-physics',
+  // spec-v1388: the state-practice program's two terms. 'health-law' lets a coverage map show how
+  // much of the catalog is legal rather than clinical; 'occupational-health' is the home for the
+  // Cal/OSHA tiles (spec-v1398), a gap the 2026-09-05 catalog-depth audit also found.
+  'health-law', 'occupational-health',
   'ophthalmology', 'optometry', 'radiology',
   'hematology', 'hepatology', 'infectious-disease', 'internal-medicine',
   'maternal-fetal-medicine', 'movement-disorders', 'neonatology', 'nephrology', 'neurocritical-care',
