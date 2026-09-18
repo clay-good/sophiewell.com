@@ -7845,11 +7845,9 @@ test('Florida Medicaid overlay rules vacuously pass on a non-Florida-Medicaid pa
   }
 });
 
-test('R-PA-MCFL-001 flags a Florida Medicaid request with a procedure but no coverage-criteria reference', () => {
+test('R-PA-MCFL-001 advises (info) on a Florida Medicaid request with a procedure but no medical-necessity basis', () => {
   const text = 'Florida Medicaid member.\nRequested procedure: CPT 72148 (MRI lumbar spine).\nPlease authorize.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-MCFL-001');
-  assert.equal(f.status, 'flag');
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCFL-001').status, 'info');
 });
 
 test('R-PA-MCFL-003 passes when the Florida Medicaid packet names the FMMIS channel (info)', () => {
@@ -7859,11 +7857,114 @@ test('R-PA-MCFL-003 passes when the Florida Medicaid packet names the FMMIS chan
   assert.equal(f.status, 'pass');
 });
 
-test('R-PA-MCFL-017 flags a Florida Medicaid transplant request with no Medicaid-designated transplant-center routing', () => {
-  const text = 'Florida Medicaid member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-MCFL-017');
-  assert.equal(f.status, 'flag');
+test('R-PA-MCFL-017 does not flag an in-state transplant', () => {
+  const text = 'Florida Medicaid member.\nRequested service: kidney transplant.\nMedical necessity per coverage policy.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCFL-017').status, 'pass');
+});
+
+test('R-PA-MCFL-017 flags an out-of-state service with no prior authorization', () => {
+  const text = 'Florida Medicaid member.\nOut-of-state provider in Georgia; knee arthroscopy CPT 29881.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCFL-017').status, 'flag');
+});
+
+test('R-PA-MCFL-017 exempts an out-of-state emergency', () => {
+  const text = 'Florida Medicaid member.\nOut-of-state provider in Georgia; emergency appendectomy.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCFL-017').status, 'pass');
+});
+
+test('R-PA-MCFL-002 flags a prior authorization request with no health-status summary or diagnosis', () => {
+  const text = 'Florida Medicaid member.\nPrior authorization request for CPT 97110.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCFL-002').status, 'flag');
+});
+
+test('R-PA-MCFL-002 stays silent on a packet that is not a request', () => {
+  const text = 'Florida Medicaid member.\nVisit note for CPT 97110.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCFL-002').status, 'pass');
+});
+
+test('R-PA-MCFL-007 flags a request missing units and dates of service', () => {
+  const text = 'Florida Medicaid member.\nPrior authorization request for CPT 97110.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCFL-007').status, 'flag');
+});
+
+test('R-PA-MCFL-007 passes a complete request', () => {
+  const text = 'Florida Medicaid member.\nPrior authorization request.\nFlorida Medicaid ID 1234567890; requesting provider NPI 1112223334.\nCPT 97110, 12 units, dates of service 2026-10-01 to 2026-10-31.\nDiagnosis: M54.5, current health status stable.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCFL-007').status, 'pass');
+});
+
+test('R-PA-MCFL-009 passes a request carrying the Medicaid ID and NPI', () => {
+  const text = 'Florida Medicaid member.\nPrior authorization request.\nFlorida Medicaid ID 1234567890; requesting provider NPI 1112223334.\nCPT 97110, 12 units, dates of service 2026-10-01 to 2026-10-31.\nDiagnosis: M54.5, current health status stable.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCFL-009').status, 'pass');
+});
+
+test('R-PA-MCFL-009 flags a request with no NPI', () => {
+  const text = 'Florida Medicaid member.\nPrior authorization request.\nFlorida Medicaid ID 1234567890.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCFL-009').status, 'flag');
+});
+
+test('R-PA-MCFL-005 advises on an approval with no ten-digit number', () => {
+  const text = 'Florida Medicaid member.\nAuthorization approved for CPT 97110.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCFL-005').status, 'info');
+});
+
+test('R-PA-MCFL-005 accepts the ten-digit authorization number', () => {
+  const text = 'Florida Medicaid member.\nAuthorization approved: 4012345678.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCFL-005').status, 'pass');
+});
+
+test('R-PA-MCFL-008 does not flag an emergency for a missing urgency statement', () => {
+  const text = 'Florida Medicaid member.\nEmergency admission for sepsis.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCFL-008').status, 'pass');
+});
+
+test('R-PA-MCFL-014 advises on a non-emergency retroactive request', () => {
+  const text = 'Florida Medicaid member.\nRetroactive authorization for CPT 97110.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCFL-014').status, 'info');
+});
+
+test('R-PA-MCFL-014 accepts a retroactive request for an emergency', () => {
+  const text = 'Florida Medicaid member.\nRetroactive authorization for an emergency surgery.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCFL-014').status, 'pass');
+});
+
+test('R-PA-MCFL-015 flags a home health request with no physician order', () => {
+  const text = 'Florida Medicaid member.\nHome health skilled nursing visits, 3 per week.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCFL-015').status, 'flag');
+});
+
+test('R-PA-MCFL-015 accepts the plan of care', () => {
+  const text = 'Florida Medicaid member.\nHome health skilled nursing visits.\nPlan of care signed by the physician attached.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCFL-015').status, 'pass');
+});
+
+test('R-PA-MCFL-018 flags an EPSDT request with no correct-or-ameliorate description', () => {
+  const text = 'Florida Medicaid member.\nEPSDT request, age 8: speech therapy exceeds the coverage limit.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCFL-018').status, 'flag');
+});
+
+test('R-PA-MCFL-018 accepts the correct-or-ameliorate description', () => {
+  const text = 'Florida Medicaid member.\nEPSDT request, age 8.\nThe therapy will correct or ameliorate the articulation disorder.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCFL-018').status, 'pass');
+});
+
+test('R-PA-MCFL-019 advises on a reconsideration that adds nothing', () => {
+  const text = 'Florida Medicaid member.\nReconsideration of denied request for CPT 97110.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCFL-019').status, 'info');
+});
+
+test('R-PA-MCFL-019 passes a reconsideration with additional information', () => {
+  const text = 'Florida Medicaid member.\nReconsideration of denied request with additional documentation.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCFL-019').status, 'pass');
+});
+
+test('R-PA-MCFL-020 advises on a modification with no updated order', () => {
+  const text = 'Florida Medicaid member.\nModification request: increase in frequency to 5 visits per week.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCFL-020').status, 'info');
+});
+
+test('R-PA-MCFL-020 does not fire on out-of-network wording', () => {
+  const text = 'Florida Medicaid member.\nOut-of-network specialist; CPT 29881.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCFL-020').status, 'pass');
 });
 
 test('Florida Medicaid does not collide with the Florida Blue commercial overlay', () => {
