@@ -7342,6 +7342,61 @@ test('R-PA-MCAZ-020 advises when an out-of-state facility is not shown to be the
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCAZ-020').status, 'info');
 });
 
+// ---- Washington Apple Health overlay (spec-v1371) ----
+
+test('Washington Apple Health rules are wired to the medicaid-wa payer id', () => {
+  const text = 'Washington Apple Health client.\nPrior authorization request for CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCWA-006').status, 'flag',
+    'R-PA-MCWA-006 should fire on a Washington packet; a vacuous pass means the payer guard is wrong');
+});
+
+test('R-PA-MCWA-006 flags a fax request with justification but no 13-835 form', () => {
+  const text = 'Washington Apple Health client.\nPrior authorization request by fax.\nMedical justification attached.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.match(findings.find((x) => x.ruleId === 'R-PA-MCWA-006').note, /13-835/);
+});
+
+test('R-PA-MCWA-006 does not require the 13-835 form on a ProviderOne submission', () => {
+  const text = 'Washington Apple Health client.\nPrior authorization request via ProviderOne direct data entry.\nMedical justification attached.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCWA-006').status, 'pass');
+});
+
+test('R-PA-MCWA-008 does not ask an EPA packet for clinical urgency', () => {
+  // In Washington, EPA is a self-created authorization number, not an urgent
+  // review. A packet with the number and no urgency wording is complete.
+  const text = 'Washington Apple Health client.\nExpedited prior authorization used; EPA number 870001375.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCWA-008').status, 'pass');
+});
+
+test('R-PA-MCWA-008 flags an EPA packet with no EPA number', () => {
+  const text = 'Washington Apple Health client.\nBilled under expedited prior authorization.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MCWA-008');
+  assert.equal(f.status, 'flag');
+  assert.match(f.note, /not an urgent review/);
+});
+
+test('R-PA-MCWA-007 does not infer an imaging workflow from an MRI request', () => {
+  const text = 'Washington Apple Health client.\nRequested: MRI lumbar spine, CPT 72148.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCWA-007').status, 'pass');
+});
+
+test('R-PA-MCWA-009 does not infer site-of-care review from hospital-outpatient surgery', () => {
+  const text = 'Washington Apple Health client.\nOutpatient hospital surgery, CPT 29881.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCWA-009').status, 'pass');
+});
+
+test('R-PA-MCWA-010 does not demand an NDC from a J-code alone', () => {
+  const text = 'Washington Apple Health client.\nRequested drug: J1745 infliximab.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCWA-010').status, 'pass');
+});
+
 test('R-PA-MCIN-010 does not demand an NDC from a J-code alone', () => {
   const text = 'Indiana Medicaid member.\nRequested drug: J1745 infliximab.\n';
   const findings = runEngine(bundleOf(text));
