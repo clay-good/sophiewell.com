@@ -7942,6 +7942,19 @@
       ],
       "tile": "tx-protective-custody-hearing-clock",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "9.39",
+        "9.37",
+        "kendra",
+        "ny psych hold",
+        "new york involuntary admission",
+        "cpep 72 hours",
+        "mental hygiene law hold"
+      ],
+      "tile": "ny-mhl-hold-clock",
+      "audience": "clinicians"
     }
   ]
 }

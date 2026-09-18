@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:edb9e7f9-10cd-5763-85f2-59a66c482766",
+  "serialNumber": "urn:uuid:5ac1d593-662c-532b-8a82-22b161fe9155",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-18T18:09:36.656Z",
+    "timestamp": "2026-09-18T18:20:29.146Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1730 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1731 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "45987c8301fa568e78efde061b0c0e8573eb5e49a06192e1395a967ebaee4243"
+          "content": "f4b9f7869e42df2c7a521e37c11325a886a3260ab891d11cf56ace8e9e341b95"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "110816"
+          "value": "110902"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0bbefcbebe5e2f94b89d75b6f569ae4829bd430fbcafae2f5d2790115d634574"
+          "content": "30c1e81932134dbdfac6d655bd35955e7bc5bf4cfa512e3dc901057f8485cffb"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "519724"
+          "value": "519903"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b2802f4b418617cad53946f35d3f826ddcd0bbe851001679bfcffc3530f4ad71"
+          "content": "0243fbe694ae48a3e1a4898d6b6c4825977863be8c847f6777f0f787b5d0e465"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "215063"
+          "value": "215191"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "796fe78141518cfad43c9f2f431299d51a14ffc5c4c6da3530db7271433bdf44"
+          "content": "52f936e106af84c223cf14c0ea7f5c1cb8843f5132d0ad01f48a3c16b8417cd9"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "97156"
+          "value": "97249"
         }
       ]
     },
@@ -10352,7 +10352,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d80413f644532f73eb18334eb057fa8fe50931d113c49c109dc81c7c3df84b37"
+          "content": "88991218af8692139fcd681ea52b3865c1843d1b9b9c71b32c9c8c875bf59d74"
         }
       ],
       "properties": [
@@ -10362,7 +10362,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2487670"
+          "value": "2488371"
         }
       ]
     },
@@ -11875,6 +11875,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3222"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/ny-mhl-hold-clock-v1389.js",
+      "type": "file",
+      "name": "lib/ny-mhl-hold-clock-v1389.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fc5ade7eb542b2e496c8e5904a2317e16d8692fba7ebc12256cfd96763c1765c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "10182"
         }
       ]
     },
@@ -29624,6 +29645,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ny-mhl-hold-clock-v1389.js",
+      "type": "file",
+      "name": "mcp/adapters/ny-mhl-hold-clock-v1389.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e5dbf0f401e21298d48753ec2c7d8c1748c652d55572fd9ed3a0c843c2d25120"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1542"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/nyha-class-v357.js",
       "type": "file",
       "name": "mcp/adapters/nyha-class-v357.js",
@@ -35762,7 +35804,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "41d30c76629036fd1981209819cb64c2c44b4f60c8673d7103d18e8edc7ea3b2"
+          "content": "8e6de716e053e818611409606d24d45b155ec8939b79d9cae2e148ba168d69b2"
         }
       ],
       "properties": [
@@ -35772,7 +35814,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "91637"
+          "value": "91762"
         }
       ]
     },
@@ -37043,7 +37085,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "08655dd9ae3d0d4fca39d4b5c8fd7226ebb53656811c1cb6ff786528ac751dd3"
+          "content": "693cd23710f39e42047a2e4bd9035d5a32c24add38cb398637185d1bd51a81cd"
         }
       ],
       "properties": [
@@ -37053,7 +37095,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "4439"
+          "value": "6090"
         }
       ]
     },
@@ -68825,6 +68867,7 @@
         "urn:sophiewell:file:source:lib/nutrition-energy-v152.js",
         "urn:sophiewell:file:source:lib/nutrition-maternal-v208.js",
         "urn:sophiewell:file:source:lib/nutrition-v276.js",
+        "urn:sophiewell:file:source:lib/ny-mhl-hold-clock-v1389.js",
         "urn:sophiewell:file:source:lib/nyha-class-v357.js",
         "urn:sophiewell:file:source:lib/nyhus-hernia-v400.js",
         "urn:sophiewell:file:source:lib/o-rads-v326.js",
@@ -70477,6 +70520,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/nutrition-energy-v152.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nutrition-maternal-v208.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nutrition-v276.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/ny-mhl-hold-clock-v1389.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nyha-class-v357.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nyhus-hernia-v400.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/o-rads-v326.js",
@@ -70872,7 +70916,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "edb9e7f910cd7763"
+      "value": "5ac1d593662c532b"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -70884,7 +70928,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2486"
+      "value": "2488"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

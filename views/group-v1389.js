@@ -1,11 +1,12 @@
 // spec-v1389: renderers for the involuntary-hold clocks (State & Coverage Reference, Group M).
-// Built so far: tx-emergency-detention-clock, tx-protective-custody-hearing-clock.
+// Built so far: tx-emergency-detention-clock, tx-protective-custody-hearing-clock, ny-mhl-hold-clock.
 //
 // Every time is ENTERED, never read from the device clock, so the answer is the same tomorrow.
 
 import { el, clear } from '../lib/dom.js';
 import * as ED from '../lib/tx-emergency-detention-clock-v1389.js';
 import * as PC from '../lib/tx-protective-custody-hearing-clock-v1389.js';
+import * as NY from '../lib/ny-mhl-hold-clock-v1389.js';
 import { resultRow } from '../lib/result-copy.js';
 
 function timeField(root, label, id, hint) {
@@ -22,6 +23,16 @@ function dateField(root, label, id, hint) {
   wrap.appendChild(el('br'));
   wrap.appendChild(el('input', { id, type: 'date' }));
   if (hint) wrap.appendChild(el('span', { class: 'muted', text: ' ' + hint }));
+  root.appendChild(wrap);
+}
+function selectField(root, label, id, options, blankText) {
+  const wrap = el('p');
+  wrap.appendChild(el('label', { for: id, text: label }));
+  wrap.appendChild(el('br'));
+  const sel = el('select', { id });
+  sel.appendChild(el('option', { value: '', text: blankText }));
+  for (const o of options) sel.appendChild(el('option', { value: o.value, text: o.text }));
+  wrap.appendChild(sel);
   root.appendChild(wrap);
 }
 function numField(root, label, id, hint) {
@@ -48,6 +59,29 @@ function wire(ids, run) {
 }
 
 export const renderers = {
+  'ny-mhl-hold-clock'(root) {
+    note(root, 'Choose the legal status and enter the times, in New York local time. Only 9.37 skips Sundays and holidays.');
+    selectField(root, 'Legal status', 'nyh-status', NY.NY_STATUSES, '-- choose --');
+    timeField(root, 'Start: admission, CPEP registration, or notice received', 'nyh-start', '');
+    timeField(root, 'Hearing requested (9.39)', 'nyh-hearing', 'optional');
+    dateField(root, 'Application executed (9.27)', 'nyh-executed', '9.27 only');
+
+    const ids = ['nyh-status', 'nyh-start', 'nyh-hearing', 'nyh-executed'];
+    const o = out(); root.appendChild(o);
+    wire(ids, () => safe(o, () => {
+      const r = NY.nyMhlHoldClock({ status: val('nyh-status'), start: val('nyh-start'), hearingRequested: val('nyh-hearing'), executed: val('nyh-executed') });
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [
+        { text: r.band, cls: r.abnormal ? 'warn' : null },
+        { label: 'Status', value: r.status },
+      ]);
+      list(o, r.deadlines.map((d) => `${d.label}: ${d.text}`));
+      list(o, r.caveats);
+      note(o, r.note);
+      note(o, r.postureNote);
+    }));
+  },
+
   'tx-emergency-detention-clock'(root) {
     note(root, 'Enter the times, in Texas local time. The 48 hours run from presentation and include time spent waiting in the emergency department.');
     timeField(root, 'Presented to the facility', 'txed-presented', '');

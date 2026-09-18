@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **New York psychiatric hold deadlines.** One clock for five Mental Hygiene
+  Law statuses (9.39, 9.37, 9.40, 9.13, 9.27), where only 9.37's 72 hours skip
+  Sundays and New York's legal holidays. See docs/spec-v1389.md.
+
 - **Two Texas involuntary-hold clocks.** The emergency detention deadline
   (48 hours from presentation with emergency-department waiting counted, rolled
   to 4 p.m. on the next business day) and the probable-cause hearing (72 hours,

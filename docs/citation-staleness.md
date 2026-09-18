@@ -652,3 +652,4 @@ carries the specific date that could change it.
 |---|---|---|---|---|---|
 | tx-emergency-detention-clock | HSC 573.021(b)-(c) | TX | 2026-09-18 | Acts 2017, S.B. 344 (S.B. 1164, 2025, left the time rule unchanged) | 2027-06-01 |
 | tx-protective-custody-hearing-clock | HSC 574.025(b), 574.005 | TX | 2026-09-18 | Acts 2015, S.B. 219 (574.025) | 2027-06-01 |
+| ny-mhl-hold-clock | MHL 9.39, 9.37, 9.40, 9.13, 9.27; GCL 24 | NY | 2026-09-18 | text read at nysenate.gov | 2027-01-02 |

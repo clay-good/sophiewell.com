@@ -8149,6 +8149,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/tx-protective-custody-hearing-clock-v1389.js (spec-v1389: Texas probable-cause hearing clock — clinical disclaimer)
 - `tx-protective-custody-hearing-clock`
 
+### lib/ny-mhl-hold-clock-v1389.js (spec-v1389: New York psychiatric hold deadlines — clinical disclaimer)
+- `ny-mhl-hold-clock`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

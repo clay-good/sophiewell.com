@@ -131,3 +131,20 @@ What the statute text changed from the plan above:
   Sunday, or legal holiday."
 - **Rights advisement (573.025(b)) is not in the tile.** Its timing could not be read from the statute
   text when this was built, and a deadline is not printed from memory.
+
+## Built (2026-09-18): `ny-mhl-hold-clock`
+
+One tile for five statuses, each read from the nysenate.gov text. Catalog 1,730 → 1,731. What the
+text added to or changed in the table above:
+
+- **9.40 adds a 6-hour examination:** a staff physician begins the examination within 6 hours of
+  the person being received, and **every** 9.40 period runs from registration into the CPEP
+  emergency room.
+- **9.37's 72 hours start at admission** and exclude "Sunday and holidays": New York's holidays
+  under General Construction Law §24, including Lincoln's Birthday and Election Day, from
+  `lib/state-calendar.js`. The acceptance case (Thursday, February 11, 2027) skips Lincoln's
+  Birthday, a Sunday, and Washington's Birthday, and lands on Wednesday, February 17 at 10 a.m.
+- **9.13's 72 hours run from receipt of the written notice** and exclude nothing.
+- **9.27's 60-day retention is not in 9.27.** It lives in §9.33, which was not read, so the tile
+  checks only the 10-day execution window.
+- 9.37(c)'s 24-hour confirmation for certain less-populous counties is not in the tile.
