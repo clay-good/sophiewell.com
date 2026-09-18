@@ -51,6 +51,10 @@ export const ANSWERS_AN_EMPTY_FORM = new Set([
   "add-rs",
   "autoimmune-encephalitis",
   "bristol-girth",
+  // spec-v1397: the answer runs from the ENTERED transition-to-practice start date; the
+  // number fields (hours, years past the transition) are optional alternatives, so a blank one
+  // is not a measurement nobody took. Both enum requirements still read "not assessed" when blank.
+  "ca-np-103-104-tracker",
   "cancer-cachexia",
   "easi",
   "ewgsop2",
@@ -83,6 +87,10 @@ export const ANSWERS_AN_EMPTY_FORM = new Set([
   "sepsis-bundle-clock",
   "systemic-mastocytosis",
   "timely-filing",
+  // spec-v1389: the deadline runs from the ENTERED presentation time; the only number field is
+  // the count of daily weather or disaster extension orders, and a blank one means none were
+  // ordered -- the criterion answered "no", not a measurement nobody took.
+  "tx-emergency-detention-clock",
   // spec-v1063 removed "triple-i": every category in that framework begins with
   // fever, so with no temperature entered it now refuses instead of answering
   // "No category met on these entries".
