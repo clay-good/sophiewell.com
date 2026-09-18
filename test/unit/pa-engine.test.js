@@ -7818,11 +7818,67 @@ test('Illinois Medicaid overlay rules vacuously pass on a non-Illinois-Medicaid 
   }
 });
 
-test('R-PA-MCIL-001 flags an Illinois Medicaid request with a procedure but no coverage-criteria reference', () => {
+test('R-PA-MCIL-001 advises (info) on an Illinois Medicaid request with a procedure but no coverage-criteria reference', () => {
   const text = 'Illinois Medicaid member.\nRequested procedure: CPT 72148 (MRI lumbar spine).\nPlease authorize.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-MCIL-001');
+  assert.equal(f.status, 'info');
+});
+
+test('Illinois Medicaid rules are wired to the medicaid-il payer id', () => {
+  const text = 'Illinois Medicaid participant.\nPrior approval request for CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCIL-002').status, 'flag',
+    'R-PA-MCIL-002 should fire on an Illinois packet; a vacuous pass means the payer guard is wrong');
+});
+
+test('R-PA-MCIL-002 names each item a prior approval request is missing', () => {
+  const text = 'Illinois Medicaid participant.\nPrior approval request for CPT 27447.\nDiagnosis: M17.11.\n';
+  const f = runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCIL-002');
   assert.equal(f.status, 'flag');
+  assert.match(f.note, /treatment plan/);
+  assert.doesNotMatch(f.note, /the diagnosis/);
+});
+
+test('R-PA-MCIL-002 accepts a request with diagnosis, treatment plan, and duration', () => {
+  const text = 'Illinois Medicaid participant.\nPrior approval request for CPT 27447.\n'
+    + 'Diagnosis: M17.11. Treatment plan attached. Duration: 12 weeks of therapy after surgery.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCIL-002').status, 'pass');
+});
+
+test('R-PA-MCIL-005 does not expect a notice on an initial request', () => {
+  const text = 'Illinois Medicaid participant.\nPrior approval request for CPT 27447. Initial request.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCIL-005').status, 'pass');
+});
+
+test('R-PA-MCIL-006 advises when post-stabilization services record no plan contact (info)', () => {
+  const text = 'Illinois Medicaid participant.\nPost-stabilization services provided after the emergency.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCIL-006').status, 'info');
+});
+
+test('R-PA-MCIL-006 accepts documented good-faith contact attempts', () => {
+  const text = 'Illinois Medicaid participant.\nPost-stabilization services provided.\nTwo good faith attempts to contact the plan documented.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCIL-006').status, 'pass');
+});
+
+test('R-PA-MCIL-008 accepts a hospital-discharge basis for bypassing ordinary processing', () => {
+  const text = 'Illinois Medicaid participant.\nExpedited request for a hospital bed to facilitate discharge.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCIL-008').status, 'pass');
+});
+
+test('R-PA-MCIL-008 advises when an expedited request states neither published ground (info)', () => {
+  const text = 'Illinois Medicaid participant.\nExpedited request for CPT 72148.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCIL-008').status, 'info');
+});
+
+test('R-PA-MCIL-009 does not fire on hospital-outpatient surgery', () => {
+  const text = 'Illinois Medicaid participant.\nOutpatient hospital surgery, CPT 29881.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCIL-009').status, 'pass');
+});
+
+test('R-PA-MCIL-010 does not demand an NDC from a J-code alone', () => {
+  const text = 'Illinois Medicaid participant.\nRequested drug: J1745 infliximab.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCIL-010').status, 'pass');
 });
 
 test('R-PA-MCIL-003 passes when the Illinois Medicaid packet names the IMPACT channel (info)', () => {
