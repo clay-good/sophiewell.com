@@ -6454,18 +6454,65 @@ test('R-PA-BCBSLA-010 does not demand an NDC from a J-code alone', () => {
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSLA-010').status, 'pass');
 });
 
-test('R-PA-BCBSLA-017 flags a BCBSLA transplant request with no Blue Distinction routing', () => {
-  const text = 'Blue Cross and Blue Shield of Louisiana member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
+test('R-PA-BCBSLA-016 does not fire on generic mental-health context', () => {
+  const text = 'Blue Cross and Blue Shield of Louisiana member.\nMental health follow-up visit.\n';
   const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSLA-017');
-  assert.equal(f.status, 'flag');
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSLA-016').status, 'pass');
 });
 
-test('R-PA-BCBSLA-020 flags a BCBSLA out-of-network request with no network-gap justification (info)', () => {
+test('R-PA-BCBSLA-016 flags an intensive outpatient request with no level-of-care support', () => {
+  const text = 'Blue Cross and Blue Shield of Louisiana member.\nIntensive outpatient program requested.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSLA-016').status, 'flag');
+});
+
+test('R-PA-BCBSLA-017 does not fire on the word transplant alone', () => {
+  const text = 'Blue Cross and Blue Shield of Louisiana member.\nHistory of kidney transplant in 2019.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSLA-017').status, 'pass');
+});
+
+test('R-PA-BCBSLA-017 flags a transplant request with no evaluation or coverage basis', () => {
+  const text = 'Blue Cross and Blue Shield of Louisiana member.\nTransplant request for a liver.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSLA-017').status, 'flag');
+});
+
+test('R-PA-BCBSLA-018 does not infer a classification from clinical-trial context', () => {
+  const text = 'Blue Cross and Blue Shield of Louisiana member.\nPatient is enrolled in a clinical trial.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSLA-018').status, 'pass');
+});
+
+test('R-PA-BCBSLA-018 flags an investigational-status inquiry with no evidence', () => {
+  const text = 'Blue Cross and Blue Shield of Louisiana member.\nRequesting the investigational status of this device.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSLA-018').status, 'flag');
+});
+
+test('R-PA-BCBSLA-018 accepts peer-reviewed outcomes evidence', () => {
+  const text = 'Blue Cross and Blue Shield of Louisiana member.\nRequesting the investigational status of this device.\n'
+    + 'Peer-reviewed scientific evidence on net health outcome is attached.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSLA-018').status, 'pass');
+});
+
+test('R-PA-BCBSLA-019 does not treat a grievance as an authorization appeal', () => {
+  const text = 'Blue Cross and Blue Shield of Louisiana member.\nMember filed a grievance about billing.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSLA-019').status, 'pass');
+});
+
+test('R-PA-BCBSLA-020 does not fire on out-of-network status alone', () => {
   const text = 'Blue Cross and Blue Shield of Louisiana member.\nOut-of-network prior authorization request.\nProcedure CPT 70551.\n';
   const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-BCBSLA-020');
-  assert.equal(f.status, 'info');
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSLA-020').status, 'pass');
+});
+
+test('R-PA-BCBSLA-020 advises when an out-of-network exception states no basis (info)', () => {
+  const text = 'Blue Cross and Blue Shield of Louisiana member.\nOut-of-network exception requested for CPT 70551.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSLA-020').status, 'info');
 });
 
 // ---- wave 52-29 sanity checks: HMSA (Blue Cross Blue Shield of Hawaii) overlay (§4.5.29) ----
