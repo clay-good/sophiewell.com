@@ -105,3 +105,29 @@ days** of filing, with a **30-day** cap on continuances.
 - The NY 9.37 test crosses a Sunday **and** Lincoln's Birthday. The TX test uses a holiday Monday.
 - One ledger row per tile. TX next review: after the 90th Legislature (2027). CA, NY, NJ: after
   January 1 each year.
+
+## Built so far (2026-09-18): the two Texas tiles
+
+`tx-emergency-detention-clock` and `tx-protective-custody-hearing-clock` are live in group M, built on
+`lib/state-calendar.js` (spec-v1388), with `test/unit/tx-hold-clocks-v1389.test.js` and one
+state-law ledger row each (next review 2027-06-01, after the 90th Legislature). Catalog 1,728 → 1,730.
+The New York, New Jersey, and California tiles are still to come.
+
+What the statute text changed from the plan above:
+
+- **S.B. 1164 (2025) did not touch the time rule.** It rewrote the detention criteria in ch. 573 and
+  repealed three subsections. Section 573.021(b)'s 48 hours and 4 p.m. rule date from S.B. 344 (2017).
+  The citation says so.
+- **Section 573.021(b) reads two ways when the 48 hours end on a business day.** "Before 4 p.m. on the
+  first succeeding business day" can cover that day (4 p.m. on the next business day) or not (4 p.m.
+  on the day the period ends, which can be earlier than the 48th hour). Each reading leaves one of
+  the section's two sentences with nothing to do. The tile prints both, gives the earlier as the time
+  to have the protective custody order in hand, and flags when that time comes before the 48th hour.
+  A period ending on a Saturday, Sunday, or legal holiday is unambiguous.
+- **Texas's five staffed state holidays** (Confederate Heroes, Texas Independence, San Jacinto,
+  Emancipation, LBJ Days) count as business days, and each tile flags one that touches the count:
+  whether it is a "legal holiday" for these sections is for the court.
+- **The 574.025 roll-forward is to a day, not to 4 p.m.:** "the next day that is not a Saturday,
+  Sunday, or legal holiday."
+- **Rights advisement (573.025(b)) is not in the tile.** Its timing could not be read from the statute
+  text when this was built, and a deadline is not printed from memory.

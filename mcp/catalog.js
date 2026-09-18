@@ -786,6 +786,8 @@ import hbvSerologyV1400 from './adapters/hbv-serology-v1400.js';
 import hcvTestSequenceV1400 from './adapters/hcv-test-sequence-v1400.js';
 import caAdultTbRiskV1400 from './adapters/ca-adult-tb-risk-v1400.js';
 import ltbiRegimenDosingV1400 from './adapters/ltbi-regimen-dosing-v1400.js';
+import txEmergencyDetentionClockV1389 from './adapters/tx-emergency-detention-clock-v1389.js';
+import txProtectiveCustodyHearingClockV1389 from './adapters/tx-protective-custody-hearing-clock-v1389.js';
 import ticiV960 from './adapters/tici-v960.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
@@ -1599,6 +1601,8 @@ const ADAPTER_MODULES = [
   ['hcv-test-sequence-v1400', hcvTestSequenceV1400],
   ['ca-adult-tb-risk-v1400', caAdultTbRiskV1400],
   ['ltbi-regimen-dosing-v1400', ltbiRegimenDosingV1400],
+  ['tx-emergency-detention-clock-v1389', txEmergencyDetentionClockV1389],
+  ['tx-protective-custody-hearing-clock-v1389', txProtectiveCustodyHearingClockV1389],
   ['tici-v960', ticiV960],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],

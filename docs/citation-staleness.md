@@ -650,3 +650,5 @@ carries the specific date that could change it.
 
 | tile id | section(s) | state | verified | last amendment known | next review |
 |---|---|---|---|---|---|
+| tx-emergency-detention-clock | HSC 573.021(b)-(c) | TX | 2026-09-18 | Acts 2017, S.B. 344 (S.B. 1164, 2025, left the time rule unchanged) | 2027-06-01 |
+| tx-protective-custody-hearing-clock | HSC 574.025(b), 574.005 | TX | 2026-09-18 | Acts 2015, S.B. 219 (574.025) | 2027-06-01 |

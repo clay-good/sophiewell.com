@@ -7921,6 +7921,27 @@
       ],
       "tile": "ltbi-regimen-dosing",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "texas emergency detention",
+        "edo 48 hours texas",
+        "texas psych hold",
+        "emergency detention order texas",
+        "573.021"
+      ],
+      "tile": "tx-emergency-detention-clock",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "texas probable cause hearing",
+        "protective custody order hearing",
+        "texas pco hearing",
+        "574.025"
+      ],
+      "tile": "tx-protective-custody-hearing-clock",
+      "audience": "clinicians"
     }
   ]
 }

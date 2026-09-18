@@ -6,6 +6,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Two Texas involuntary-hold clocks.** The emergency detention deadline
+  (48 hours from presentation with emergency-department waiting counted, rolled
+  to 4 p.m. on the next business day) and the probable-cause hearing (72 hours,
+  moved off a weekend or holiday), both from entered times. Where section
+  573.021 reads two ways, both deadlines are printed. See docs/spec-v1389.md.
+
 - **A legal-holiday calendar for New York, New Jersey, California, and Texas.**
   Each state's holidays are computed from its own statute, including the
   observance shifts that differ by state, and hours are counted across the

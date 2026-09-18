@@ -768,6 +768,7 @@ import { renderers as RV1241 } from './views/group-v1241.js';
 import { renderers as RV1242 } from './views/group-v1242.js';
 import { renderers as RV1243 } from './views/group-v1243.js';
 import { renderers as RV1400 } from './views/group-v1400.js';
+import { renderers as RV1389 } from './views/group-v1389.js';
 import { renderers as RV164 } from './views/group-v164.js';
 import { renderers as RV165 } from './views/group-v165.js';
 import { renderers as RV166 } from './views/group-v166.js';
@@ -855,7 +856,7 @@ const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...R
   ...RV902,
   ...RV903,
   ...RV905,
-  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV960, ...RV1061, ...RV1062, ...RV1240, ...RV1241, ...RV1242, ...RV1243, ...RV1400, ...RV63, ...RPALINT };
+  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV960, ...RV1061, ...RV1062, ...RV1240, ...RV1241, ...RV1242, ...RV1243, ...RV1400, ...RV1389, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -1091,6 +1092,11 @@ const UTILITIES = [
   { id: 'hcv-test-sequence', name: 'Hepatitis C Testing Sequence (CDC)', group: 'J', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'ca-adult-tb-risk', name: 'California Adult TB Risk Assessment (CDPH)', group: 'J', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'ltbi-regimen-dosing', name: 'Latent TB Treatment Regimen and Dose (CDC/NTCA 2020)', group: 'J', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v1389: involuntary-hold clocks (State & Coverage Reference, Group M). views/group-v1389.js,
+  // lib/<id>-v1389.js, mcp/adapters/<id>-v1389.js. Texas first.
+  { id: 'tx-emergency-detention-clock', name: 'Texas Emergency Detention Clock (HSC 573.021)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'tx-protective-custody-hearing-clock', name: 'Texas Probable-Cause Hearing Clock (HSC 574.025, 574.005)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
   // Group K (Lab Reference): removed in spec-v29 wave 29-2 (lab-adult,
   // lab-peds, tdm-levels, tox-levels are pure reference-range tables).
   // Group L: Forms & Numbers Literacy (removed in spec-v29 wave 29-2:

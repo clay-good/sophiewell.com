@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:fb9c7abc-c024-5012-860d-018cd33a6445",
+  "serialNumber": "urn:uuid:edb9e7f9-10cd-5763-85f2-59a66c482766",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-18T17:55:47.329Z",
+    "timestamp": "2026-09-18T18:09:36.656Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1728 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1730 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "36d4ea237beaf5ad669ad75c754d121fa235d2e2a02d7ea125a80efc8c681cac"
+          "content": "45987c8301fa568e78efde061b0c0e8573eb5e49a06192e1395a967ebaee4243"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "110682"
+          "value": "110816"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "42dec3385d7ee1b171ed5123001618520592a5208389db12db019f79a5769b89"
+          "content": "0bbefcbebe5e2f94b89d75b6f569ae4829bd430fbcafae2f5d2790115d634574"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "519134"
+          "value": "519724"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ec23ceefd28ed55ef4a0edb6f7b0f3cdf9c06cf53470a44f59e43e3363267100"
+          "content": "b2802f4b418617cad53946f35d3f826ddcd0bbe851001679bfcffc3530f4ad71"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "214778"
+          "value": "215063"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "01fba29aa9439617fcee19adf098e9fe1c66657cd1d0d37ce718b520f8a0c48b"
+          "content": "796fe78141518cfad43c9f2f431299d51a14ffc5c4c6da3530db7271433bdf44"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "96979"
+          "value": "97156"
         }
       ]
     },
@@ -10352,7 +10352,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "dc8ac7536c8a0190eb1b821949d60b4c9ba89db708a4bd052516e0079c024f6e"
+          "content": "d80413f644532f73eb18334eb057fa8fe50931d113c49c109dc81c7c3df84b37"
         }
       ],
       "properties": [
@@ -10362,7 +10362,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2486112"
+          "value": "2487670"
         }
       ]
     },
@@ -12410,7 +12410,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9a89a54ddb1ad02e4ad74f520f8cd82cae37b87db1bbfe0d127bc3acb8ce7707"
+          "content": "b9deb8bca5666b98b2eb345a783097f1c4a3289c57f21b8a60f93c159e032ece"
         }
       ],
       "properties": [
@@ -12420,7 +12420,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2756"
+          "value": "3235"
         }
       ]
     },
@@ -17608,6 +17608,48 @@
         {
           "name": "sophiewell:bytes",
           "value": "11802"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/tx-emergency-detention-clock-v1389.js",
+      "type": "file",
+      "name": "lib/tx-emergency-detention-clock-v1389.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e2eb941bcc86d1bcaab04d511a75ae8089be4f6b16825f584c204449269f0f2e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7978"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/tx-protective-custody-hearing-clock-v1389.js",
+      "type": "file",
+      "name": "lib/tx-protective-custody-hearing-clock-v1389.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "72473c16120e700ece8f6a47a12c1793386eef2f78becc1d8be5b34ceb1ab17d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6267"
         }
       ]
     },
@@ -34643,6 +34685,48 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/tx-emergency-detention-clock-v1389.js",
+      "type": "file",
+      "name": "mcp/adapters/tx-emergency-detention-clock-v1389.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e65c2534fdd790026b1ef316db6f1e93472d69346c790772192845db4872b08c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1507"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/tx-protective-custody-hearing-clock-v1389.js",
+      "type": "file",
+      "name": "mcp/adapters/tx-protective-custody-hearing-clock-v1389.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9a9a61f02b415ab24a1c493bd1d0c326c19258ff42611c7ecba4746839f65632"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1187"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ucsf-hcc-v686.js",
       "type": "file",
       "name": "mcp/adapters/ucsf-hcc-v686.js",
@@ -35678,7 +35762,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b18b7bac6883af92cd46bd619f6b71dae8e6a52fea376bf27d0209c40c8dd256"
+          "content": "41d30c76629036fd1981209819cb64c2c44b4f60c8673d7103d18e8edc7ea3b2"
         }
       ],
       "properties": [
@@ -35688,7 +35772,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "91273"
+          "value": "91637"
         }
       ]
     },
@@ -36949,6 +37033,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "11651"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1389.js",
+      "type": "file",
+      "name": "views/group-v1389.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "08655dd9ae3d0d4fca39d4b5c8fd7226ebb53656811c1cb6ff786528ac751dd3"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4439"
         }
       ]
     },
@@ -68993,6 +69098,8 @@
         "urn:sophiewell:file:source:lib/tryptase-v894.js",
         "urn:sophiewell:file:source:lib/tscherne-closed-v350.js",
         "urn:sophiewell:file:source:lib/twstrs-severity-v542.js",
+        "urn:sophiewell:file:source:lib/tx-emergency-detention-clock-v1389.js",
+        "urn:sophiewell:file:source:lib/tx-protective-custody-hearing-clock-v1389.js",
         "urn:sophiewell:file:source:lib/ucsf-hcc-v686.js",
         "urn:sophiewell:file:source:lib/udca-response-v909.js",
         "urn:sophiewell:file:source:lib/unit-convert.js",
@@ -69100,6 +69207,7 @@
         "urn:sophiewell:file:source:views/group-v136.js",
         "urn:sophiewell:file:source:views/group-v137.js",
         "urn:sophiewell:file:source:views/group-v138.js",
+        "urn:sophiewell:file:source:views/group-v1389.js",
         "urn:sophiewell:file:source:views/group-v139.js",
         "urn:sophiewell:file:source:views/group-v14.js",
         "urn:sophiewell:file:source:views/group-v140.js",
@@ -70610,6 +70718,8 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/tryptase-v894.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tscherne-closed-v350.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/twstrs-severity-v542.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/tx-emergency-detention-clock-v1389.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/tx-protective-custody-hearing-clock-v1389.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ucsf-hcc-v686.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/udca-response-v909.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/unit-convert.js",
@@ -70762,7 +70872,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "fb9c7abcc024a012"
+      "value": "edb9e7f910cd7763"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -70774,7 +70884,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2481"
+      "value": "2486"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

@@ -7,6 +7,7 @@ import {
   holidaysInYear, isLegalHoliday, isBusinessDay, nextBusinessDay, easter, addHours,
   addExcludingSundaysAndHolidays, elapsedHours, formatDeadline, parseDateTime, STATES, stateOptions, scopeSentence,
 } from '../../lib/state-calendar.js';
+import { isOwnNoticeLine } from '../../lib/own-notice.js';
 
 const iso = (t) => new Date(t).toISOString().slice(0, 10);
 const has = (state, date, name) => {
@@ -200,5 +201,10 @@ test('the scope sentence names the verified date and nothing that sounds like a 
   assert.equal(s, "This states the statute as of September 18, 2026. It does not replace your facility's policy, its counsel, or the court.");
   assert.doesNotMatch(s, /compliant|legal\b/i);
   assert.throws(() => scopeSentence(''));
+});
+
+test('the scope sentence is recognised as the tile\'s own notice, so the generic banner is dropped (one disclaimer)', () => {
+  assert.equal(isOwnNoticeLine(scopeSentence('2026-09-18')), true);
+  assert.equal(isOwnNoticeLine('This states the statute in plain words for the reader.'), false);
 });
 

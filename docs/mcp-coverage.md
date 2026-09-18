@@ -8143,6 +8143,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/ltbi-regimen-dosing-v1400.js (spec-v1400: latent TB regimen and dose — clinical disclaimer)
 - `ltbi-regimen-dosing`
 
+### lib/tx-emergency-detention-clock-v1389.js (spec-v1389: Texas emergency detention clock — clinical disclaimer)
+- `tx-emergency-detention-clock`
+
+### lib/tx-protective-custody-hearing-clock-v1389.js (spec-v1389: Texas probable-cause hearing clock — clinical disclaimer)
+- `tx-protective-custody-hearing-clock`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 
