@@ -8462,6 +8462,93 @@ test('North Carolina Medicaid does not collide with the Blue Cross NC commercial
   assert.equal(bcbsnc.find((x) => x.ruleId === 'R-PA-MCNC-001').status, 'pass');
 });
 
+// ---- spec-v1385: New Jersey Medicaid overlay, per N.J.A.C. 10:49 ----
+
+test('New Jersey Medicaid overlay rules vacuously pass on a non-New-Jersey-Medicaid packet', () => {
+  const findings = runEngine(happyBundle());
+  for (let n = 1; n <= 20; n += 1) {
+    const id = 'R-PA-MCNJ-' + String(n).padStart(3, '0');
+    const f = findings.find((x) => x.ruleId === id);
+    assert.ok(f, id + ' should be registered');
+    assert.equal(f.status, 'pass', id + ' should not fire outside New Jersey Medicaid');
+  }
+});
+
+test('R-PA-MCNJ-001 advises (info) on a New Jersey Medicaid request with a procedure but no medical-necessity basis', () => {
+  const text = 'New Jersey Medicaid member.\nRequested procedure: CPT 72148.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCNJ-001').status, 'info');
+});
+
+test('R-PA-MCNJ-002 flags a cosmetic-exception request missing the certification and treatment plan', () => {
+  const text = 'New Jersey Medicaid member.\nRequested: reconstructive surgery, CPT 15830.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCNJ-002').status, 'flag');
+});
+
+test('R-PA-MCNJ-002 accepts the certification of medical necessity with a treatment plan', () => {
+  const text = 'New Jersey Medicaid member.\nRequested: reconstructive surgery.\nWritten certification of medical necessity attached.\nTreatment plan attached.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCNJ-002').status, 'pass');
+});
+
+test('R-PA-MCNJ-005 advises on an approval with no eligibility check', () => {
+  const text = 'New Jersey Medicaid member.\nAuthorization approved for CPT 97110.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCNJ-005').status, 'info');
+});
+
+test('R-PA-MCNJ-008 flags an emergency that merely says an emergency existed', () => {
+  const text = 'New Jersey Medicaid member.\nEmergency admission; an emergency existed.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCNJ-008').status, 'flag');
+});
+
+test('R-PA-MCNJ-008 accepts a statement of why the service was immediately necessary', () => {
+  const text = 'New Jersey Medicaid member.\nEmergency admission for perforated bowel; surgery was immediately necessary.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCNJ-008').status, 'pass');
+});
+
+test('R-PA-MCNJ-009 advises on an administrative emergency with no explanation or timing', () => {
+  const text = 'New Jersey Medicaid member.\nVerbal authorization obtained Friday evening for a hospital bed.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCNJ-009').status, 'info');
+});
+
+test('R-PA-MCNJ-009 accepts written confirmation within five calendar days', () => {
+  const text = 'New Jersey Medicaid member.\nVerbal authorization obtained Friday evening; confirming written documentation sent within five calendar days.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCNJ-009').status, 'pass');
+});
+
+test('R-PA-MCNJ-014 advises on a retroactive request with no permitted circumstance', () => {
+  const text = 'New Jersey Medicaid member.\nRetroactive authorization for CPT 97110.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCNJ-014').status, 'info');
+});
+
+test('R-PA-MCNJ-014 accepts a retroactive eligibility determination', () => {
+  const text = 'New Jersey Medicaid member.\nRetroactive authorization; retroactive eligibility granted.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCNJ-014').status, 'pass');
+});
+
+test('R-PA-MCNJ-017 advises on an out-of-state service with no prior authorization', () => {
+  const text = 'New Jersey Medicaid member.\nOut-of-state provider in Pennsylvania; CPT 29881.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCNJ-017').status, 'info');
+});
+
+test('R-PA-MCNJ-017 does not fire on out-of-network wording', () => {
+  const text = 'New Jersey Medicaid member.\nOut-of-network specialist; CPT 29881.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCNJ-017').status, 'pass');
+});
+
+test('R-PA-MCNJ-018 does not flag a plain transplant request', () => {
+  const text = 'New Jersey Medicaid member.\nRequested service: kidney transplant.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCNJ-018').status, 'pass');
+});
+
+test('R-PA-MCNJ-019 advises on a hearing request that names no denial notice', () => {
+  const text = 'New Jersey Medicaid member.\nRequest for hearing on prior authorization for CPT 97110.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCNJ-019').status, 'info');
+});
+
+test('R-PA-MCNJ-019 accepts a hearing request citing the denial notice', () => {
+  const text = 'New Jersey Medicaid member.\nRequest for hearing; denial notice dated 2026-09-01 attached.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCNJ-019').status, 'pass');
+});
+
 test('CMS overlay carries the spec-aligned id R-PA-CMS-004 for proof-of-delivery', () => {
   const podRule = STARTER_RULES.find((r) => r.id === 'R-PA-CMS-004');
   assert.ok(podRule, 'R-PA-CMS-004 should exist after wave 52-2b renumber.');
