@@ -6700,18 +6700,79 @@ test('R-PA-HMSA-008 passes when an expedited HMSA request documents the clinical
   assert.equal(f.status, 'pass');
 });
 
-test('R-PA-HMSA-017 flags an HMSA transplant request with no Blue Distinction routing', () => {
-  const text = 'HMSA member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
+test('R-PA-HMSA-016 does not fire on an acute hospitalization, which needs no precertification', () => {
+  const text = 'HMSA member.\nAcute psychiatric hospitalization; patient admitted.\n';
   const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-HMSA-017');
-  assert.equal(f.status, 'flag');
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HMSA-016').status, 'pass');
 });
 
-test('R-PA-HMSA-020 flags an HMSA out-of-network request with no network-gap justification (info)', () => {
-  const text = 'HMSA member.\nOut-of-network prior authorization request.\nProcedure CPT 70551.\n';
+test('R-PA-HMSA-016 flags a residential request with no level-of-care support', () => {
+  const text = 'HMSA member.\nResidential treatment program requested.\n';
   const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-HMSA-020');
-  assert.equal(f.status, 'info');
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HMSA-016').status, 'flag');
+});
+
+test('R-PA-HMSA-016 accepts a residential request citing the criteria', () => {
+  const text = 'HMSA member.\nResidential treatment program requested.\n'
+    + 'Magellan level of care criteria support this placement; safety plan attached.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HMSA-016').status, 'pass');
+});
+
+test('R-PA-HMSA-017 does not fire on the word transplant alone', () => {
+  const text = 'HMSA member.\nHistory of kidney transplant in 2019.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HMSA-017').status, 'pass');
+});
+
+test('R-PA-HMSA-017 flags a transplant request with no evaluation or policy basis', () => {
+  const text = 'HMSA member.\nTransplant request for a liver.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HMSA-017').status, 'flag');
+});
+
+test('R-PA-HMSA-018 does not infer new technology from clinical-trial context', () => {
+  const text = 'HMSA member.\nPatient is enrolled in a clinical trial.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HMSA-018').status, 'pass');
+});
+
+test('R-PA-HMSA-018 flags new technology with no precertification sought', () => {
+  const text = 'HMSA member.\nThis procedure employs new technology.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HMSA-018').status, 'flag');
+});
+
+test('R-PA-HMSA-019 advises when an appeal omits the denial date (info)', () => {
+  const text = 'HMSA member.\nAppealing the denial for CPT 27447; we believe the decision was in error.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HMSA-019').status, 'info');
+});
+
+test('R-PA-HMSA-019 accepts an appeal with the denial date and the error rationale', () => {
+  const text = 'HMSA member.\nAppealing the denial for CPT 27447.\n'
+    + 'Denial dated 2026-08-14; we believe the decision was in error because the criteria were met.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HMSA-019').status, 'pass');
+});
+
+test('R-PA-HMSA-020 flags a nonparticipating referral with no administrative review', () => {
+  const text = 'HMSA member.\nReferral to an out-of-network provider for CPT 70551.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HMSA-020').status, 'flag');
+});
+
+test('R-PA-HMSA-020 exempts urgent and emergent services from administrative review', () => {
+  const text = 'HMSA member.\nEmergent care delivered by an out-of-network provider.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HMSA-020').status, 'pass');
+});
+
+test('R-PA-HMSA-020 accepts a referral that sought administrative review', () => {
+  const text = 'HMSA member.\nReferral to an out-of-network provider for CPT 70551.\n'
+    + 'Administrative review requested before services are rendered.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HMSA-020').status, 'pass');
 });
 
 // ---- wave 52-30 sanity checks: Medi-Cal (California Medicaid) overlay (§4.5.30) ----
