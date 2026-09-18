@@ -6560,6 +6560,70 @@ test('R-PA-HMSA-003 passes when the HMSA packet names the HHIN channel (info)', 
   assert.equal(f.status, 'pass');
 });
 
+test('R-PA-HMSA-006 does not fire on an acute admission, which needs no precertification', () => {
+  const text = 'HMSA member.\nAcute hospitalization; patient admitted Tuesday.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HMSA-006').status, 'pass');
+});
+
+test('R-PA-HMSA-006 flags a concurrent review with no clinical support', () => {
+  const text = 'HMSA member.\nConcurrent review for hospital day 4.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HMSA-006').status, 'flag');
+});
+
+test('R-PA-HMSA-006 accepts a concurrent review with a clinical update', () => {
+  const text = 'HMSA member.\nConcurrent review for hospital day 4.\n'
+    + 'Clinical update: still requiring IV antibiotics. Expected discharge in two days.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HMSA-006').status, 'pass');
+});
+
+test('R-PA-HMSA-007 does not treat an arbitrary 7xxxx code as advanced imaging', () => {
+  const text = 'HMSA member.\nRequested: CPT 76700 abdominal ultrasound.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HMSA-007').status, 'pass');
+});
+
+test('R-PA-HMSA-007 flags an advanced-imaging request with no clinical indication', () => {
+  const text = 'HMSA member.\nRequested: MRI lumbar spine, CPT 72148.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HMSA-007').status, 'flag');
+});
+
+test('R-PA-HMSA-008 advises when an expedited request states no urgency (info)', () => {
+  const text = 'HMSA member.\nExpedited review requested for CPT 72148.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HMSA-008').status, 'info');
+});
+
+test('R-PA-HMSA-009 does not fire on hospital-outpatient surgery alone', () => {
+  // HMSA publishes a place-of-treatment EXCEPTION, not a steering rule: the
+  // obligation attaches to choosing a non-standard setting, not to any setting.
+  const text = 'HMSA member.\nOutpatient hospital surgery, CPT 29881.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HMSA-009').status, 'pass');
+});
+
+test('R-PA-HMSA-009 flags a place-of-treatment exception with no precertification sought', () => {
+  const text = 'HMSA member.\nRequesting an alternate treatment setting for CPT 29881.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HMSA-009').status, 'flag');
+});
+
+test('R-PA-HMSA-009 accepts a place-of-treatment exception seeking precertification', () => {
+  const text = 'HMSA member.\nRequesting an alternate treatment setting for CPT 29881.\n'
+    + 'Precertification approval is requested for this setting.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HMSA-009').status, 'pass');
+});
+
+test('R-PA-HMSA-010 does not demand an NDC from a J-code alone', () => {
+  const text = 'HMSA member.\nRequested drug: J1745 infliximab.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HMSA-010').status, 'pass');
+});
+
 test('R-PA-HMSA-007 flags an HMSA outpatient MRI with no clinical indication', () => {
   const text = 'HMSA member.\nRequested: MRI lumbar spine, CPT 72148.\n';
   const findings = runEngine(bundleOf(text));
