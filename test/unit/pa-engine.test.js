@@ -7213,6 +7213,72 @@ test('R-PA-MCAZ-010 does not demand an NDC from a J-code alone', () => {
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCAZ-010').status, 'pass');
 });
 
+test('R-PA-MCAZ-011 does not infer step therapy from a specialty-drug label', () => {
+  const text = 'AHCCCS member.\nRequested: specialty drug J1745 infusion.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCAZ-011').status, 'pass');
+});
+
+test('R-PA-MCAZ-012 does not treat an 81xxx code as a genetic test request', () => {
+  const text = 'AHCCCS member.\nRequested: CPT 81162.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCAZ-012').status, 'pass');
+});
+
+test('R-PA-MCAZ-012 names each minimum document a genetic request is missing', () => {
+  const text = 'AHCCCS member.\nGenetic testing requested.\nFamily history of early-onset breast cancer.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MCAZ-012');
+  assert.equal(f.status, 'flag');
+  assert.match(f.note, /coverage criteria/);
+  assert.match(f.note, /genetic counselor/);
+  assert.doesNotMatch(f.note, /family history/);
+});
+
+test('R-PA-MCAZ-012 accepts a genetic request with all minimum documentation', () => {
+  const text = 'AHCCCS member.\nGenetic testing requested; consistent with the coverage criteria.\n'
+    + 'Recommended by a licensed genetic counselor. Family history of early-onset breast cancer.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCAZ-012').status, 'pass');
+});
+
+test('R-PA-MCAZ-013 does not demand a diagnosis from a J-code alone', () => {
+  const text = 'AHCCCS member.\nRequested: J9299 nivolumab.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCAZ-013').status, 'pass');
+});
+
+test('R-PA-MCAZ-014 waives notice when eligibility posts after discharge', () => {
+  const text = 'AHCCCS member.\nRetroactive eligibility; eligibility posted after discharge.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCAZ-014').status, 'pass');
+});
+
+test('R-PA-MCAZ-014 advises when an in-hospital retroactive case shows no notice (info)', () => {
+  const text = 'AHCCCS member.\nRetroactive eligibility posted while still hospitalized.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCAZ-014').status, 'info');
+});
+
+test('R-PA-MCAZ-015 exempts the first five home health visits after discharge', () => {
+  const text = 'AHCCCS member.\nHome health nursing within the first five home health visits after acute discharge.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCAZ-015').status, 'pass');
+});
+
+test('R-PA-MCAZ-015 flags home health nursing with no prescription or face-to-face record', () => {
+  const text = 'AHCCCS member.\nHome health nursing requested for eight weeks.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCAZ-015').status, 'flag');
+});
+
+test('R-PA-MCAZ-015 accepts home health nursing with both documents', () => {
+  const text = 'AHCCCS member.\nHome health nursing requested for eight weeks.\n'
+    + 'Prescription from the ordering prescriber stating nursing duties and duration. Face-to-face encounter documented.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCAZ-015').status, 'pass');
+});
+
 test('R-PA-MCIN-010 does not demand an NDC from a J-code alone', () => {
   const text = 'Indiana Medicaid member.\nRequested drug: J1745 infliximab.\n';
   const findings = runEngine(bundleOf(text));
