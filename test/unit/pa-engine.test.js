@@ -7397,6 +7397,57 @@ test('R-PA-MCWA-010 does not demand an NDC from a J-code alone', () => {
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCWA-010').status, 'pass');
 });
 
+test('R-PA-MCWA-011 does not infer step therapy from a specialty-drug label', () => {
+  const text = 'Washington Apple Health client.\nRequested: specialty drug J1745 infusion.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCWA-011').status, 'pass');
+});
+
+test('R-PA-MCWA-012 does not infer a genetic workflow from an 81xxx code', () => {
+  const text = 'Washington Apple Health client.\nRequested: CPT 81162.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCWA-012').status, 'pass');
+});
+
+test('R-PA-MCWA-013 does not demand a diagnosis from a J-code alone', () => {
+  const text = 'Washington Apple Health client.\nRequested: J9299 nivolumab.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCWA-013').status, 'pass');
+});
+
+test('R-PA-MCWA-014 advises when a retroactive request has no intake form (info)', () => {
+  const text = 'Washington Apple Health client.\nRetroactive authorization requested; medical justification attached.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCWA-014').status, 'info');
+});
+
+test('R-PA-MCWA-014 accepts a retroactive request through ProviderOne with justification', () => {
+  const text = 'Washington Apple Health client.\nRetroactive authorization requested via ProviderOne.\nMedical justification attached.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCWA-014').status, 'pass');
+});
+
+test('R-PA-MCWA-015 exempts home health delivered by telemedicine', () => {
+  const text = 'Washington Apple Health client.\nHome health services delivered through telemedicine.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCWA-015').status, 'pass');
+});
+
+test('R-PA-MCWA-015 advises when home health lacks the face-to-face encounter (info)', () => {
+  const text = 'Washington Apple Health client.\nHome health skilled nursing visits requested.\nSigned order attached.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MCWA-015');
+  assert.equal(f.status, 'info');
+  assert.match(f.note, /182-551-2040/);
+});
+
+test('R-PA-MCWA-015 accepts home health with the encounter and a signed order', () => {
+  const text = 'Washington Apple Health client.\nHome health skilled nursing visits requested.\n'
+    + 'Face-to-face encounter documented. Signed order attached.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCWA-015').status, 'pass');
+});
+
 test('R-PA-MCIN-010 does not demand an NDC from a J-code alone', () => {
   const text = 'Indiana Medicaid member.\nRequested drug: J1745 infliximab.\n';
   const findings = runEngine(bundleOf(text));
