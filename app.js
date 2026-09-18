@@ -770,6 +770,7 @@ import { renderers as RV1243 } from './views/group-v1243.js';
 import { renderers as RV1400 } from './views/group-v1400.js';
 import { renderers as RV1389 } from './views/group-v1389.js';
 import { renderers as RV1393 } from './views/group-v1393.js';
+import { renderers as RV1397 } from './views/group-v1397.js';
 import { renderers as RV164 } from './views/group-v164.js';
 import { renderers as RV165 } from './views/group-v165.js';
 import { renderers as RV166 } from './views/group-v166.js';
@@ -857,7 +858,7 @@ const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...R
   ...RV902,
   ...RV903,
   ...RV905,
-  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV960, ...RV1061, ...RV1062, ...RV1240, ...RV1241, ...RV1242, ...RV1243, ...RV1400, ...RV1389, ...RV1393, ...RV63, ...RPALINT };
+  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV960, ...RV1061, ...RV1062, ...RV1240, ...RV1241, ...RV1242, ...RV1243, ...RV1400, ...RV1389, ...RV1393, ...RV1397, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -1109,6 +1110,10 @@ const UTILITIES = [
   { id: 'pmp-check-required', name: 'Must I Check the Prescription Monitoring Program? (NY, NJ, CA, TX)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'acute-opioid-rx-limit', name: 'Initial Opioid Prescription Day Limit for Acute Pain (NY, NJ, TX)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'tx-aprn-pa-controlled-delegation', name: 'Texas APRN/PA Controlled-Substance Delegation Check (Occ. Code 157.0511)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v1397: licensure (Group M). views/group-v1397.js, lib/<id>-v1397.js,
+  // mcp/adapters/<id>-v1397.js. New York first, for the November 17, 2026 deadline.
+  { id: 'nurse-license-training-requirements', name: 'Nurse Mandated Training: What Is Due (New York)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
   // Group K (Lab Reference): removed in spec-v29 wave 29-2 (lab-adult,
   // lab-peds, tdm-levels, tox-levels are pure reference-range tables).
   // Group L: Forms & Numbers Literacy (removed in spec-v29 wave 29-2:

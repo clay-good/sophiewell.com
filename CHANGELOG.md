@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **New York nurse mandated training: what is due.** The updated child-abuse
+  course due November 17, 2026 (a 15-minute addendum for nurses trained between
+  November 2022 and August 2025, the full updated course otherwise) and
+  infection control every four years. See docs/spec-v1397.md.
+
 - **Two controlled-substance rules by state.** Whether a prescription
   monitoring program check is required first (New York, New Jersey, California,
   Texas; Texas decides by drug class, so carisoprodol needs one), and the day

@@ -8033,6 +8033,17 @@
       ],
       "tile": "tx-aprn-pa-controlled-delegation",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "child abuse training nurse new york",
+        "ny mandated reporter update november 2026",
+        "infection control training ny nurse",
+        "nysed mandated training",
+        "child abuse addendum 15 minute"
+      ],
+      "tile": "nurse-license-training-requirements",
+      "audience": "clinicians"
     }
   ]
 }

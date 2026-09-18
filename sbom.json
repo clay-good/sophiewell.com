@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:57f3f33c-9f04-5a01-8bab-aa490b30d6ac",
+  "serialNumber": "urn:uuid:e1c6c663-e0f1-5208-8267-bb714218ac7f",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-18T19:04:32.580Z",
+    "timestamp": "2026-09-18T19:12:42.472Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1738 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1739 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ac04027817900f97b43d5d9d15a2bf929bc655a1ba985dc59219e7fc26427050"
+          "content": "c08b49e1a895f041d54dabc5d45b24616150f5d144a01bb20cf441254029ee03"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "111466"
+          "value": "111529"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a3f73c23e9f83a11c3defc2323709e5046612967fdb0d47e3f6b75ef7ab0cd2c"
+          "content": "87b8c7da5bbe7e9d171452c47667655eabf4af7ec191d92091be26bb27a0f41f"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "521358"
+          "value": "521770"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3a81837a7fa957faa4f1bb2647b323147500d051470ca986f157f94a907405dd"
+          "content": "c2c46e4bcf3ac9156543d0c5fd151dd5ff590274d8aa2044a9d2a25731728550"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "216129"
+          "value": "216275"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f5c8b2c75dcba5ae7eed5549c66148648b7dc980e2bb2b311395cfdfcc13dae4"
+          "content": "68340930381b778a7fb2d77407609765f70d9ef4ca3b05cb6c3860bb7d8f0835"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "97904"
+          "value": "97992"
         }
       ]
     },
@@ -10436,7 +10436,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d9b47f7596720df6e0b62a76d37116e176053e52bb7881ac06b4684999470b5c"
+          "content": "9bb9f66b99a1264aa1a06359b3ac5491c288f06bbfbf84742c2a63bb16362ca6"
         }
       ],
       "properties": [
@@ -10446,7 +10446,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2493947"
+          "value": "2494866"
         }
       ]
     },
@@ -11917,6 +11917,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3085"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/nurse-license-training-requirements-v1397.js",
+      "type": "file",
+      "name": "lib/nurse-license-training-requirements-v1397.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2fc2a3884812f6afe10ffda68c7a464c519de8e867f60c3125f57ef38645b53f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6746"
         }
       ]
     },
@@ -29834,6 +29855,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/nurse-license-training-requirements-v1397.js",
+      "type": "file",
+      "name": "mcp/adapters/nurse-license-training-requirements-v1397.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8384e151f8a315f997783b43c8c268fcb3354f505b416448bf07dfc4db6c1163"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1906"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/nutrition-energy-v152.js",
       "type": "file",
       "name": "mcp/adapters/nutrition-energy-v152.js",
@@ -36098,7 +36140,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ad078293166a4b8fa9a8481fa94cf08c77a177aae453bf0cc5b61b01384f958d"
+          "content": "8c03f90e6bcce83aa70eda673855b31749359490bd8bc1bae77ec3dc49f4dd57"
         }
       ],
       "properties": [
@@ -36108,7 +36150,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "92803"
+          "value": "93000"
         }
       ]
     },
@@ -37432,6 +37474,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "7907"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1397.js",
+      "type": "file",
+      "name": "views/group-v1397.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4563ee7a60e5937395cd532af81b5486f3d95735c6cf552f93efd747d04a0dac"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3365"
         }
       ]
     },
@@ -69184,6 +69247,7 @@
         "urn:sophiewell:file:source:lib/ntm-pulmonary-v827.js",
         "urn:sophiewell:file:source:lib/num.js",
         "urn:sophiewell:file:source:lib/nunley-vertullo-v455.js",
+        "urn:sophiewell:file:source:lib/nurse-license-training-requirements-v1397.js",
         "urn:sophiewell:file:source:lib/nutrition-energy-v152.js",
         "urn:sophiewell:file:source:lib/nutrition-maternal-v208.js",
         "urn:sophiewell:file:source:lib/nutrition-v276.js",
@@ -69575,6 +69639,7 @@
         "urn:sophiewell:file:source:views/group-v1389.js",
         "urn:sophiewell:file:source:views/group-v139.js",
         "urn:sophiewell:file:source:views/group-v1393.js",
+        "urn:sophiewell:file:source:views/group-v1397.js",
         "urn:sophiewell:file:source:views/group-v14.js",
         "urn:sophiewell:file:source:views/group-v140.js",
         "urn:sophiewell:file:source:views/group-v1400.js",
@@ -70845,6 +70910,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/nsofa-v526.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ntm-pulmonary-v827.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nunley-vertullo-v455.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/nurse-license-training-requirements-v1397.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nutrition-energy-v152.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nutrition-maternal-v208.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nutrition-v276.js",
@@ -71246,7 +71312,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "57f3f33c9f048a01"
+      "value": "e1c6c663e0f1b208"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -71258,7 +71324,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2503"
+      "value": "2506"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

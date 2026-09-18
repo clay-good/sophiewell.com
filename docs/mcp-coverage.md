@@ -8173,6 +8173,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/tx-aprn-pa-controlled-delegation-v1393.js (spec-v1393: Texas APRN/PA controlled-substance delegation — clinical disclaimer)
 - `tx-aprn-pa-controlled-delegation`
 
+### lib/nurse-license-training-requirements-v1397.js (spec-v1397: New York nurse mandated training — clinical disclaimer)
+- `nurse-license-training-requirements`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

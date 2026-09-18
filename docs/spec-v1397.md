@@ -51,3 +51,26 @@ Volatility medium: review after the 2027 session.
   cleared states.
 - The ledger row for NY expires **November 18, 2026**. After that date the tile's NY copy changes
   from "due by" to "was due by", which the gate forces someone to review.
+
+## Built (2026-09-18): `nurse-license-training-requirements`, New York only
+
+Read from NYSED's Office of the Professions pages. Catalog 1,738 → 1,739. The tile is named
+**"Nurse Mandated Training: What Is Due (New York)"** until another state is added, so the name never
+lists a state the picker refuses. What the source changed from the table above:
+
+- **LPNs are not on NYSED's child-abuse list.** It names registered nurses and nurse practitioners;
+  the tile says so for an LPN instead of printing a deadline.
+- **Three groups, three answers:** trained on or after September 1, 2025 (when providers began the
+  updated curriculum): met, if that course was the updated one; trained November 1, 2022 to
+  August 31, 2025: the 15-minute addendum or the full course; trained earlier or never: the updated
+  two-hour course. All by November 17, 2026. Both acceptance cases hold (March 2024 → addendum;
+  2019 → full course).
+- **Infection control is RNs and LPNs, every four years** (Education Law 6505-b). An NP meets it
+  through the RN license. A licensee not practicing in New York is deferred until 90 days after
+  resuming practice.
+- The ledger row's next review is **November 18, 2026**, so the gate forces the "due by" copy to be
+  revisited the day after the deadline.
+
+`ca-np-103-104-tracker`, `tx-prescriptive-authority-agreement`, and the NJ, CA, and TX rows are still
+to come, each after its source is read.
+
