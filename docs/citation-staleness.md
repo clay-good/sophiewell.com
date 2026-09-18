@@ -665,3 +665,6 @@ carries the specific date that could change it.
 | tx-prescriptive-authority-agreement | Occ. Code 157.0512 | TX | 2026-09-18 | Acts 2019, H.B. 278 (repealed former (f-1)) | 2027-06-01 |
 | mandated-report-router | NY SSL 415, PHL 2803-d; N.J.S.A. 9:6-8.10, 52:27D-409; CA PC 11166, 11160, WIC 15630; TX Fam. Code 261.101, HRC 48.051 | NY, NJ, CA, TX | 2026-09-18 | TX: S.B. 571 (2025), 48th -> 24th hour | 2027-01-02 |
 | ny-hiv-hcv-test-offer | PHL 2781-a, 2171 | NY | 2026-09-18 | text read at nysenate.gov | 2027-01-02 |
+| ca-adverse-event-1279 | HSC 1279.1 | CA | 2026-09-18 | Stats. 2007, ch. 130 | 2027-01-02 |
+| tx-sa-forensic-exam-window | CCP 56A.303; HSC 323.004 | TX | 2026-09-18 | read on the official mirror | 2027-06-01 |
+| minor-self-consent | CA Fam. Code 6922-6929; TX Fam. Code 32.003 | CA, TX | 2026-09-18 | CA: AB 260 (2025) | 2027-01-02 |

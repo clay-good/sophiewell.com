@@ -6,6 +6,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **California adverse events, Texas sexual assault exams, and minor consent.**
+  Whether an event is one of California's 28 reportable adverse events and when
+  the CDPH report is due (five days, or 24 hours for an ongoing threat); whether a
+  Texas survivor is eligible for a forensic examination (a minor at any time, an
+  adult within 120 hours or on referral) and what a facility that is not SAFE-ready
+  must do; and whether a minor in California or Texas may consent alone. See
+  docs/spec-v1395.md.
+
 - **Mandated reports and New York's test offers.** Where a mandated report
   goes and how fast in four states (Texas now 24 hours for a professional's
   child-abuse report; California's long-term-care police call within two hours

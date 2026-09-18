@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:88225a66-6816-59c6-8245-52d537a98c57",
+  "serialNumber": "urn:uuid:7bc0357c-44ca-5bca-8f6c-e54117a92948",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-18T20:44:26.443Z",
+    "timestamp": "2026-09-18T20:57:09.292Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1743 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1746 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "707ea902427eb2969b0bd2051715dbc77d5a882c6b59b8aa37d81902684cf1ab"
+          "content": "bf9cdf31d95d96db2a039c5dc3a87b037d47c8b10d5204c87e124286dd238ebd"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "111862"
+          "value": "112069"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "fb7f4af4c82230a3f94e5054fa7a739cf88fa26d38ee6f561ca995019646dde7"
+          "content": "809c9bfe89f3d322044e770f0392da1e224797dc9c4e6fe084bbdab6582fb1f3"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "522704"
+          "value": "523204"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3e4e694443f89423070de1405057a6e84546518f4b835bdb40aa2cf1f361745d"
+          "content": "c106fbb2665e375dac0105651a581277a22378071997f40846d68c504edd1bae"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "216818"
+          "value": "217216"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a77769679ecc1d19e1d400d57dbe32a29f1d426dea260dbb0bd54ce95882cb59"
+          "content": "61c74e77c5d972a57aa8c892f18218badac136b3c41510edc312f82f75b641fa"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "98384"
+          "value": "98626"
         }
       ]
     },
@@ -2362,6 +2362,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "6009"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/ca-adverse-event-1279-v1395.js",
+      "type": "file",
+      "name": "lib/ca-adverse-event-1279-v1395.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6ed32a0bd3b693ff0b3626c5bc617d45835e235aa6cba73fa5eb2327de82a65f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7539"
         }
       ]
     },
@@ -10478,7 +10499,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e12ce467165c805461f5f786f4bbabd2cd673e2fc3c7b648495284f81c601640"
+          "content": "47c3504474f823a90e380ec88b1eba381b711753aebd194c4f130ed5de73e895"
         }
       ],
       "properties": [
@@ -10488,7 +10509,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2498211"
+          "value": "2500368"
         }
       ]
     },
@@ -10762,6 +10783,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4057"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/minor-self-consent-v1395.js",
+      "type": "file",
+      "name": "lib/minor-self-consent-v1395.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e5bdbb214943635ac558e36687d65bb054308c22a413c05fef93242e16766681"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "10149"
         }
       ]
     },
@@ -17927,6 +17969,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/tx-sa-forensic-exam-window-v1395.js",
+      "type": "file",
+      "name": "lib/tx-sa-forensic-exam-window-v1395.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5b43e7521dd308d9e3b592d78272c1ceaef99fe4312942dd86dc9dc33dad5a8d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5610"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/ucsf-hcc-v686.js",
       "type": "file",
       "name": "lib/ucsf-hcc-v686.js",
@@ -20800,6 +20863,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1737"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ca-adverse-event-1279-v1395.js",
+      "type": "file",
+      "name": "mcp/adapters/ca-adverse-event-1279-v1395.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "457c7ca65c4b71dc41a9b0607bb12ffcadba524f1183a59d23c1414e76c54e05"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1308"
         }
       ]
     },
@@ -28826,6 +28910,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/minor-self-consent-v1395.js",
+      "type": "file",
+      "name": "mcp/adapters/minor-self-consent-v1395.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a890717009511a578150a4743e6c1a3023572a031afea9224605ce47807005db"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1826"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/mis-c-v795.js",
       "type": "file",
       "name": "mcp/adapters/mis-c-v795.js",
@@ -35273,6 +35378,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/tx-sa-forensic-exam-window-v1395.js",
+      "type": "file",
+      "name": "mcp/adapters/tx-sa-forensic-exam-window-v1395.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3e9b5549aa066f85832395e855604376e0b7f56a5dd7db0dc18165958baef622"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1380"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ucsf-hcc-v686.js",
       "type": "file",
       "name": "mcp/adapters/ucsf-hcc-v686.js",
@@ -36308,7 +36434,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1e515d96c28ac59fcffccceb4edd8364fb0097a9847c036e16ca3745592411e0"
+          "content": "7b528cfc2ab880c3336f1574bf5f6185787717482d1400d5a239e7c20ba21c36"
         }
       ],
       "properties": [
@@ -36318,7 +36444,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "93622"
+          "value": "94053"
         }
       ]
     },
@@ -37652,7 +37778,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "367cecd50c7776a7f2921358ddfa4ea3f04bd56352fb9210947941d45b0cf004"
+          "content": "2d3b1b5524f06cc52f7f2b168bfae9b252b902542d4d318c8187b20e19635015"
         }
       ],
       "properties": [
@@ -37662,7 +37788,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "4977"
+          "value": "8949"
         }
       ]
     },
@@ -68981,6 +69107,7 @@
         "urn:sophiewell:file:source:lib/ca-5150-hold-timeline-v1389.js",
         "urn:sophiewell:file:source:lib/ca-5585-minor-hold-v1389.js",
         "urn:sophiewell:file:source:lib/ca-adult-tb-risk-v1400.js",
+        "urn:sophiewell:file:source:lib/ca-adverse-event-1279-v1395.js",
         "urn:sophiewell:file:source:lib/ca-ed-psych-detention-1799-v1389.js",
         "urn:sophiewell:file:source:lib/ca-np-103-104-tracker-v1397.js",
         "urn:sophiewell:file:source:lib/cac-agatston-v668.js",
@@ -69381,6 +69508,7 @@
         "urn:sophiewell:file:source:lib/migraine-ichd3-v815.js",
         "urn:sophiewell:file:source:lib/milch-condyle-v418.js",
         "urn:sophiewell:file:source:lib/miller-gingival-recession-v724.js",
+        "urn:sophiewell:file:source:lib/minor-self-consent-v1395.js",
         "urn:sophiewell:file:source:lib/mis-c-v795.js",
         "urn:sophiewell:file:source:lib/mitral-regurgitation-stage-v847.js",
         "urn:sophiewell:file:source:lib/mitral-stenosis-stage-v845.js",
@@ -69722,6 +69850,7 @@
         "urn:sophiewell:file:source:lib/tx-emergency-detention-clock-v1389.js",
         "urn:sophiewell:file:source:lib/tx-prescriptive-authority-agreement-v1397.js",
         "urn:sophiewell:file:source:lib/tx-protective-custody-hearing-clock-v1389.js",
+        "urn:sophiewell:file:source:lib/tx-sa-forensic-exam-window-v1395.js",
         "urn:sophiewell:file:source:lib/ucsf-hcc-v686.js",
         "urn:sophiewell:file:source:lib/udca-response-v909.js",
         "urn:sophiewell:file:source:lib/unit-convert.js",
@@ -70669,6 +70798,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/ca-5150-hold-timeline-v1389.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ca-5585-minor-hold-v1389.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ca-adult-tb-risk-v1400.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/ca-adverse-event-1279-v1395.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ca-ed-psych-detention-1799-v1389.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ca-np-103-104-tracker-v1397.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cac-agatston-v668.js",
@@ -71051,6 +71181,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/migraine-ichd3-v815.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/milch-condyle-v418.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/miller-gingival-recession-v724.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/minor-self-consent-v1395.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mis-c-v795.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mitral-regurgitation-stage-v847.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mitral-stenosis-stage-v845.js",
@@ -71358,6 +71489,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/tx-emergency-detention-clock-v1389.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tx-prescriptive-authority-agreement-v1397.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tx-protective-custody-hearing-clock-v1389.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/tx-sa-forensic-exam-window-v1395.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ucsf-hcc-v686.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/udca-response-v909.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/unit-convert.js",
@@ -71510,7 +71642,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "88225a66681619c6"
+      "value": "7bc0357c44ca9bca"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -71522,7 +71654,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2515"
+      "value": "2521"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

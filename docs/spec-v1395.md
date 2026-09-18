@@ -108,6 +108,26 @@ the S.B. 571 enrolled bill, and the official Texas statutes mirror (tcss.legis.t
   is followed by an HCV RNA test and care or referral. There is no New York hepatitis B offer law in
   these sections.
 
-`reportable-condition-urgency` (built from each state's PDF), `minor-self-consent`,
-`tx-sa-forensic-exam-window`, and `ca-adverse-event-1279` are still to come.
+## Built (2026-09-18): `ca-adverse-event-1279`, `tx-sa-forensic-exam-window`, `minor-self-consent`
+
+Catalog 1,743 → 1,746. Read from leginfo (HSC 1279.1; Family Code 6922-6929) and the official Texas
+mirror (CCP 56A.303, HSC 323.004, Family Code 32.003).
+
+- **1279.1 lists a fall only when it causes death** ((b)(5)(D)); a fall causing serious disability is
+  reported through the (b)(7) catch-all. The 28 events are 27 enumerated plus that catch-all. The
+  patient is told by the time the report is made.
+- **The Texas examination** is required for a minor whenever they arrive and for an adult within 120
+  hours, or later on referral by law enforcement or by a physician, sexual assault examiner, or nurse
+  examiner after a preliminary evaluation. A facility that is not SAFE-ready has its own duties,
+  including written consent to a transfer and a call confirming an examiner is available.
+- **Contraception is not pregnancy care in Texas.** 32.003(a)(4) covers a pregnant child's pregnancy
+  care, other than abortion; it has no contraception ground, so the tile separates the two services.
+  California's 6925 covers both, and since AB 260 (2025) excludes only sterilization. 6929(e)(2) lets
+  a 16-year-old consent to opioid use disorder medication in a licensed program where federal law
+  expressly permits. Texas 32.003 also has a ground for a child confined by the Department of
+  Criminal Justice.
+- **Texas sexual assault consent for a minor** runs through CCP 56A.303, which points to Family Code
+  32.003 and 32.005; 32.005 was not read, so the tile names the routes and does not decide.
+
+`reportable-condition-urgency` (built from each state's PDF) is still to come.
 

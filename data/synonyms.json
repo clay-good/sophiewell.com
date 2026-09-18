@@ -8087,6 +8087,38 @@
       ],
       "tile": "ny-hiv-hcv-test-offer",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "1279.1",
+        "california adverse event report",
+        "cdph adverse event",
+        "never event california",
+        "pressure injury reportable california"
+      ],
+      "tile": "ca-adverse-event-1279",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "sexual assault exam 120 hours",
+        "sane exam texas",
+        "safe-ready facility",
+        "forensic exam window texas"
+      ],
+      "tile": "tx-sa-forensic-exam-window",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "minor consent",
+        "can a minor consent",
+        "teen confidential care california",
+        "texas minor consent 32.003",
+        "mature minor"
+      ],
+      "tile": "minor-self-consent",
+      "audience": "clinicians"
     }
   ]
 }

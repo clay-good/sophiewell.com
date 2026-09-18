@@ -62,3 +62,53 @@ test('offer: the three exceptions, and an unanswered exception is refused', () =
   assert.equal(offer({ ...O, age: '40', capacity: '' }).valid, false);
   assert.equal(offer({ ...O, age: '40', setting: 'other' }).hivRequired, false);
 });
+
+// --- California adverse events, Texas forensic exams, minor self-consent ------
+import { caAdverseEvent1279 as ae, AE_EVENTS } from '../../lib/ca-adverse-event-1279-v1395.js';
+import { txSaForensicExamWindow as sa } from '../../lib/tx-sa-forensic-exam-window-v1395.js';
+import { minorSelfConsent as msc } from '../../lib/minor-self-consent-v1395.js';
+
+test('ae: 28 reportable events plus "none"; five days, or 24 hours for an ongoing threat', () => {
+  assert.equal(AE_EVENTS.filter((e) => e.value !== 'none').length, 28);
+  assert.equal(ae({ event: 'c-pressure-injury', urgent: 'no', detected: '2026-09-18T08:00' }).dueAt, '2026-09-23T08:00');
+  assert.equal(ae({ event: 'e-wrong-gas', urgent: 'yes', detected: '2026-09-18T08:00' }).dueAt, '2026-09-19T08:00');
+  assert.equal(ae({ event: 'none' }).reportable, false);
+  assert.equal(ae({ event: 'c-pressure-injury', detected: '2026-09-18T08:00' }).valid, false);
+});
+
+test('ae: a fall is listed only for death; serious disability goes through the catch-all', () => {
+  assert.match(ae({ event: 'e-fall-death', urgent: 'no', detected: '2026-09-18T08:00' }).fallNote, /catch-all/);
+  assert.equal(ae({ event: 'catch-all', urgent: 'no', detected: '2026-09-18T08:00' }).ref, '(b)(7)');
+});
+
+test('sa: minors any time; adults within 120 hours or on referral', () => {
+  assert.equal(sa({ age: '14', safeReady: 'yes' }).eligible, true);
+  assert.equal(sa({ age: '25', hours: '120', safeReady: 'yes' }).eligible, true);
+  assert.equal(sa({ age: '25', hours: '121', safeReady: 'yes' }).eligible, false);
+  assert.equal(sa({ age: '25', hours: '200', referral: 'law-enforcement', safeReady: 'yes' }).eligible, true);
+  assert.match(sa({ age: '25', hours: '10', safeReady: 'no' }).duties, /not SAFE-ready/);
+  assert.equal(sa({ age: '25', safeReady: 'yes' }).valid, false);
+});
+
+test('msc: California and Texas differ on contraception and abortion', () => {
+  assert.equal(msc({ state: 'CA', age: '14', service: 'contraception' }).mayConsent, true);
+  assert.equal(msc({ state: 'TX', age: '14', service: 'contraception' }).mayConsent, false);
+  assert.equal(msc({ state: 'TX', age: '15', service: 'pregnancy' }).mayConsent, true);
+  assert.equal(msc({ state: 'TX', age: '15', service: 'abortion' }).mayConsent, false);
+});
+
+test('msc: California age cuts and the maturity question', () => {
+  assert.equal(msc({ state: 'CA', age: '11', service: 'sti' }).mayConsent, false);
+  assert.equal(msc({ state: 'CA', age: '12', service: 'sti' }).mayConsent, true);
+  assert.equal(msc({ state: 'CA', age: '13', service: 'mental-health' }).valid, false);
+  assert.equal(msc({ state: 'CA', age: '13', service: 'mental-health', mature: 'yes' }).mayConsent, true);
+  assert.equal(msc({ state: 'CA', age: '15', service: 'moud-otp' }).mayConsent, false);
+  assert.equal(msc({ state: 'CA', age: '16', service: 'moud-otp' }).mayConsent, true);
+});
+
+test('msc: Texas sexual assault names the routes and does not decide; adults and other states refused', () => {
+  const r = msc({ state: 'TX', age: '15', service: 'sexual-assault' });
+  assert.match(r.band, /32\.005 is not read here/);
+  assert.equal(msc({ state: 'NY', age: '15', service: 'sti' }).valid, false);
+  assert.equal(msc({ state: 'CA', age: '18', service: 'sti' }).valid, false);
+});

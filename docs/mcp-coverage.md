@@ -8188,6 +8188,15 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/ny-hiv-hcv-test-offer-v1395.js (spec-v1395: New York HIV and hepatitis C test offer — clinical disclaimer)
 - `ny-hiv-hcv-test-offer`
 
+### lib/ca-adverse-event-1279-v1395.js (spec-v1395: California reportable adverse event — clinical disclaimer)
+- `ca-adverse-event-1279`
+
+### lib/tx-sa-forensic-exam-window-v1395.js (spec-v1395: Texas sexual assault forensic exam eligibility — clinical disclaimer)
+- `tx-sa-forensic-exam-window`
+
+### lib/minor-self-consent-v1395.js (spec-v1395: minor self-consent, California and Texas — clinical disclaimer)
+- `minor-self-consent`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

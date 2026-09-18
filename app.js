@@ -1122,6 +1122,9 @@ const UTILITIES = [
   // mcp/adapters/<id>-v1395.js.
   { id: 'mandated-report-router', name: 'Mandated Report: To Whom and How Fast (NY, NJ, CA, TX)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'ny-hiv-hcv-test-offer', name: 'New York Required HIV and Hepatitis C Test Offer (PHL 2781-a, 2171)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ca-adverse-event-1279', name: 'California Reportable Adverse Event (HSC 1279.1)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'tx-sa-forensic-exam-window', name: 'Texas Sexual Assault Forensic Exam Eligibility (CCP 56A.303, HSC 323.004)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'minor-self-consent', name: 'Can This Minor Consent Alone? (CA, TX)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
   // Group K (Lab Reference): removed in spec-v29 wave 29-2 (lab-adult,
   // lab-peds, tdm-levels, tox-levels are pure reference-range tables).
   // Group L: Forms & Numbers Literacy (removed in spec-v29 wave 29-2:
