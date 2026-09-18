@@ -8182,6 +8182,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/tx-prescriptive-authority-agreement-v1397.js (spec-v1397: Texas prescriptive authority agreement — clinical disclaimer)
 - `tx-prescriptive-authority-agreement`
 
+### lib/mandated-report-router-v1395.js (spec-v1395: mandated report routing by state — clinical disclaimer)
+- `mandated-report-router`
+
+### lib/ny-hiv-hcv-test-offer-v1395.js (spec-v1395: New York HIV and hepatitis C test offer — clinical disclaimer)
+- `ny-hiv-hcv-test-offer`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

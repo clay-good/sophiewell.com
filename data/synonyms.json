@@ -8065,6 +8065,28 @@
       ],
       "tile": "tx-prescriptive-authority-agreement",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "mandated reporter",
+        "how fast do i report child abuse",
+        "child abuse report deadline",
+        "elder abuse report california",
+        "cps report texas 24 hours",
+        "where to report abuse"
+      ],
+      "tile": "mandated-report-router",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "ny hiv test offer",
+        "new york hep c screening law",
+        "hcv test offer ny",
+        "2781-a"
+      ],
+      "tile": "ny-hiv-hcv-test-offer",
+      "audience": "clinicians"
     }
   ]
 }

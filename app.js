@@ -771,6 +771,7 @@ import { renderers as RV1400 } from './views/group-v1400.js';
 import { renderers as RV1389 } from './views/group-v1389.js';
 import { renderers as RV1393 } from './views/group-v1393.js';
 import { renderers as RV1397 } from './views/group-v1397.js';
+import { renderers as RV1395 } from './views/group-v1395.js';
 import { renderers as RV164 } from './views/group-v164.js';
 import { renderers as RV165 } from './views/group-v165.js';
 import { renderers as RV166 } from './views/group-v166.js';
@@ -858,7 +859,7 @@ const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...R
   ...RV902,
   ...RV903,
   ...RV905,
-  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV960, ...RV1061, ...RV1062, ...RV1240, ...RV1241, ...RV1242, ...RV1243, ...RV1400, ...RV1389, ...RV1393, ...RV1397, ...RV63, ...RPALINT };
+  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV960, ...RV1061, ...RV1062, ...RV1240, ...RV1241, ...RV1242, ...RV1243, ...RV1400, ...RV1389, ...RV1393, ...RV1397, ...RV1395, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -1116,6 +1117,11 @@ const UTILITIES = [
   { id: 'nurse-license-training-requirements', name: 'Nurse Mandated Training: What Is Due (New York)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'ca-np-103-104-tracker', name: 'California Nurse Practitioner 103/104 Transition Tracker (B&P 2837.103, 2837.104)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'tx-prescriptive-authority-agreement', name: 'Texas Prescriptive Authority Agreement Checker (Occ. Code 157.0512)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
+
+  // spec-v1395: reporting and consent (Group M). views/group-v1395.js, lib/<id>-v1395.js,
+  // mcp/adapters/<id>-v1395.js.
+  { id: 'mandated-report-router', name: 'Mandated Report: To Whom and How Fast (NY, NJ, CA, TX)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ny-hiv-hcv-test-offer', name: 'New York Required HIV and Hepatitis C Test Offer (PHL 2781-a, 2171)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
   // Group K (Lab Reference): removed in spec-v29 wave 29-2 (lab-adult,
   // lab-peds, tdm-levels, tox-levels are pure reference-range tables).
   // Group L: Forms & Numbers Literacy (removed in spec-v29 wave 29-2:

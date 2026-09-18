@@ -6,6 +6,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Mandated reports and New York's test offers.** Where a mandated report
+  goes and how fast in four states (Texas now 24 hours for a professional's
+  child-abuse report; California's long-term-care police call within two hours
+  even without serious injury), and whether New York requires offering an HIV
+  test (13+) and a hepatitis C screen (18+). See docs/spec-v1395.md.
+
 - **California NP 103/104 tracker and Texas prescriptive authority agreement
   checker.** When a California nurse practitioner reaches 103 and 104 status
   (the three 104 years exclude the transition to practice), and whether a Texas

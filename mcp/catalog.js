@@ -799,6 +799,8 @@ import txAprnPaControlledDelegationV1393 from './adapters/tx-aprn-pa-controlled-
 import nurseLicenseTrainingRequirementsV1397 from './adapters/nurse-license-training-requirements-v1397.js';
 import caNp103104TrackerV1397 from './adapters/ca-np-103-104-tracker-v1397.js';
 import txPrescriptiveAuthorityAgreementV1397 from './adapters/tx-prescriptive-authority-agreement-v1397.js';
+import mandatedReportRouterV1395 from './adapters/mandated-report-router-v1395.js';
+import nyHivHcvTestOfferV1395 from './adapters/ny-hiv-hcv-test-offer-v1395.js';
 import ticiV960 from './adapters/tici-v960.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
@@ -1625,6 +1627,8 @@ const ADAPTER_MODULES = [
   ['nurse-license-training-requirements-v1397', nurseLicenseTrainingRequirementsV1397],
   ['ca-np-103-104-tracker-v1397', caNp103104TrackerV1397],
   ['tx-prescriptive-authority-agreement-v1397', txPrescriptiveAuthorityAgreementV1397],
+  ['mandated-report-router-v1395', mandatedReportRouterV1395],
+  ['ny-hiv-hcv-test-offer-v1395', nyHivHcvTestOfferV1395],
   ['tici-v960', ticiV960],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],

@@ -85,3 +85,29 @@ an ongoing urgent or emergent threat.
   a summarizer got wrong.
 - `mandated-report-router`: a CA test for a gunshot wound in an adult with no abuse suspected,
   which must still route to PC §11160.
+
+## Built (2026-09-18): `mandated-report-router` and `ny-hiv-hcv-test-offer`
+
+Catalog 1,741 → 1,743. Every rule was read from its source: nysenate.gov (SSL 415, PHL 2803-d,
+2781-a, 2171), FindLaw (N.J.S.A. 9:6-8.10, 52:27D-409), leginfo (Penal Code 11166, 11160; WIC 15630),
+the S.B. 571 enrolled bill, and the official Texas statutes mirror (tcss.legis.texas.gov: Family Code
+261.101, Human Resources Code 48.051). What the text changed from the table above:
+
+- **California's long-term-care police call is two hours in every case but one.** WIC
+  15630(b)(1)(A): a verbal report to local law enforcement "no longer than two hours", with written
+  reports within 24 hours, *unless* the abuse was by a resident with physician-diagnosed dementia and
+  there was no serious bodily injury (then written reports within 24 hours only). The plan tied the
+  two hours to serious bodily injury, which would under-report.
+- **The Texas 24-hour change is S.B. 571 section 1.30**, confirmed in the enrolled bill ("24th [48th]
+  hour"); the professional may not delegate the report.
+- **New Jersey's vulnerable-adult section (52:27D-409) sets no time limit.** The tile says so. New
+  Jersey's long-term care route (the Ombudsman) is not included until its statute is read.
+- New York's community-elder case has no mandated-report rule in the sections read; the tile says
+  that, rather than claiming New York has none.
+- New York's HIV (13+) and hepatitis C (18+) offers share three exceptions; a reactive HCV screen
+  is followed by an HCV RNA test and care or referral. There is no New York hepatitis B offer law in
+  these sections.
+
+`reportable-condition-urgency` (built from each state's PDF), `minor-self-consent`,
+`tx-sa-forensic-exam-window`, and `ca-adverse-event-1279` are still to come.
+

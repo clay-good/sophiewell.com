@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:7aab00bb-6275-5d79-8115-dd88ed2d8591",
+  "serialNumber": "urn:uuid:88225a66-6816-59c6-8245-52d537a98c57",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-18T19:21:49.133Z",
+    "timestamp": "2026-09-18T20:44:26.443Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1741 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1743 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5ec2ab099167a9db2b114e2b44e9f53f0730f13c6f627983068b72f3821f4c6e"
+          "content": "707ea902427eb2969b0bd2051715dbc77d5a882c6b59b8aa37d81902684cf1ab"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "111709"
+          "value": "111862"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0602244b2ff15d313255f710276bddf84da94e11f57406fb54617e8766cbbbd7"
+          "content": "fb7f4af4c82230a3f94e5054fa7a739cf88fa26d38ee6f561ca995019646dde7"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "522158"
+          "value": "522704"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6d4b511527fdd927fb467c2e1c9175250e0a7fb35040fc4bc9fc78711ad04a26"
+          "content": "3e4e694443f89423070de1405057a6e84546518f4b835bdb40aa2cf1f361745d"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "216553"
+          "value": "216818"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "808687050ad4f3b0006dbb90eae5da6be2de67dbfc4fa1520302ab9a402ca127"
+          "content": "a77769679ecc1d19e1d400d57dbe32a29f1d426dea260dbb0bd54ce95882cb59"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "98208"
+          "value": "98384"
         }
       ]
     },
@@ -9968,6 +9968,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/mandated-report-router-v1395.js",
+      "type": "file",
+      "name": "lib/mandated-report-router-v1395.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e58c5d580e7f6e0cdec14cb1e1b98956cc1a6757357aa7b62c0ce33be99044b4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "10226"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/manning-ibs-v695.js",
       "type": "file",
       "name": "lib/manning-ibs-v695.js",
@@ -10457,7 +10478,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "13e9ba44f6f10886c7b3cf15e196c89bb5d607c691f0988903acf048cd27c479"
+          "content": "e12ce467165c805461f5f786f4bbabd2cd673e2fc3c7b648495284f81c601640"
         }
       ],
       "properties": [
@@ -10467,7 +10488,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2496561"
+          "value": "2498211"
         }
       ]
     },
@@ -12022,6 +12043,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3222"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/ny-hiv-hcv-test-offer-v1395.js",
+      "type": "file",
+      "name": "lib/ny-hiv-hcv-test-offer-v1395.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e1708340eb6b8285a9088e0e8646ef5c974d235061bd73dff3ef6f0acec40ad0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4867"
         }
       ]
     },
@@ -28007,6 +28049,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/mandated-report-router-v1395.js",
+      "type": "file",
+      "name": "mcp/adapters/mandated-report-router-v1395.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e04d1df6233bef11b98c23dd9870f62dc91f65d43fade24cc5cb255ee8340ac4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1841"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/manning-ibs-v695.js",
       "type": "file",
       "name": "mcp/adapters/manning-ibs-v695.js",
@@ -29998,6 +30061,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "954"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ny-hiv-hcv-test-offer-v1395.js",
+      "type": "file",
+      "name": "mcp/adapters/ny-hiv-hcv-test-offer-v1395.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1b9c3caaa7539ab78542d6aef612a5c9e16c9a0a66395df03396fce28629024e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1865"
         }
       ]
     },
@@ -36224,7 +36308,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "dc483fb15a97a2ce5998994c77ef0c3d4194626e202b31fa196b9a65d501e095"
+          "content": "1e515d96c28ac59fcffccceb4edd8364fb0097a9847c036e16ca3745592411e0"
         }
       ],
       "properties": [
@@ -36234,7 +36318,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "93336"
+          "value": "93622"
         }
       ]
     },
@@ -37558,6 +37642,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "7907"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1395.js",
+      "type": "file",
+      "name": "views/group-v1395.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "367cecd50c7776a7f2921358ddfa4ea3f04bd56352fb9210947941d45b0cf004"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4977"
         }
       ]
     },
@@ -69238,6 +69343,7 @@
         "urn:sophiewell:file:source:lib/magic-gvhd-v577.js",
         "urn:sophiewell:file:source:lib/mallampati-v810.js",
         "urn:sophiewell:file:source:lib/malt-ipi-v700.js",
+        "urn:sophiewell:file:source:lib/mandated-report-router-v1395.js",
         "urn:sophiewell:file:source:lib/manning-ibs-v695.js",
         "urn:sophiewell:file:source:lib/mapi-asthma-v573.js",
         "urn:sophiewell:file:source:lib/marsh-oberhuber-v423.js",
@@ -69336,6 +69442,7 @@
         "urn:sophiewell:file:source:lib/nutrition-energy-v152.js",
         "urn:sophiewell:file:source:lib/nutrition-maternal-v208.js",
         "urn:sophiewell:file:source:lib/nutrition-v276.js",
+        "urn:sophiewell:file:source:lib/ny-hiv-hcv-test-offer-v1395.js",
         "urn:sophiewell:file:source:lib/ny-mhl-hold-clock-v1389.js",
         "urn:sophiewell:file:source:lib/nyha-class-v357.js",
         "urn:sophiewell:file:source:lib/nyhus-hernia-v400.js",
@@ -69725,6 +69832,7 @@
         "urn:sophiewell:file:source:views/group-v1389.js",
         "urn:sophiewell:file:source:views/group-v139.js",
         "urn:sophiewell:file:source:views/group-v1393.js",
+        "urn:sophiewell:file:source:views/group-v1395.js",
         "urn:sophiewell:file:source:views/group-v1397.js",
         "urn:sophiewell:file:source:views/group-v14.js",
         "urn:sophiewell:file:source:views/group-v140.js",
@@ -70906,6 +71014,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/magic-gvhd-v577.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mallampati-v810.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/malt-ipi-v700.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/mandated-report-router-v1395.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/manning-ibs-v695.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mapi-asthma-v573.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/marsh-oberhuber-v423.js",
@@ -71001,6 +71110,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/nutrition-energy-v152.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nutrition-maternal-v208.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nutrition-v276.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/ny-hiv-hcv-test-offer-v1395.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ny-mhl-hold-clock-v1389.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nyha-class-v357.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nyhus-hernia-v400.js",
@@ -71400,7 +71510,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "7aab00bb62755d79"
+      "value": "88225a66681619c6"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -71412,7 +71522,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2510"
+      "value": "2515"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

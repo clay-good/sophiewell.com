@@ -663,3 +663,5 @@ carries the specific date that could change it.
 | nurse-license-training-requirements | NY SSL 413 (Ch. 25, L. 2024); Educ. Law 6505-b | NY | 2026-09-18 | Ch. 25, L. 2024 (deadline 2026-11-17: "due by" becomes "was due by") | 2026-11-18 |
 | ca-np-103-104-tracker | B&P 2837.103, 2837.104 | CA | 2026-09-18 | AB 890 (2020), as amended | 2027-01-02 |
 | tx-prescriptive-authority-agreement | Occ. Code 157.0512 | TX | 2026-09-18 | Acts 2019, H.B. 278 (repealed former (f-1)) | 2027-06-01 |
+| mandated-report-router | NY SSL 415, PHL 2803-d; N.J.S.A. 9:6-8.10, 52:27D-409; CA PC 11166, 11160, WIC 15630; TX Fam. Code 261.101, HRC 48.051 | NY, NJ, CA, TX | 2026-09-18 | TX: S.B. 571 (2025), 48th -> 24th hour | 2027-01-02 |
+| ny-hiv-hcv-test-offer | PHL 2781-a, 2171 | NY | 2026-09-18 | text read at nysenate.gov | 2027-01-02 |
