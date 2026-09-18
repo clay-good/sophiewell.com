@@ -124,7 +124,20 @@ const HAPPY_PACKET = {
 };
 
 function bundleOf(textBlocks, opts) {
-  const docs = (Array.isArray(textBlocks) ? textBlocks : [textBlocks]).map((t, i) => ({
+  // spec-v1357: bundleOf takes TEXT BLOCKS -- a string, or an array of strings.
+  // Five call sites had passed a document object, `bundleOf({ documents: [...] })`,
+  // which String()s to "[object Object]": payer detection returned "unknown", every
+  // role became "other", and the payer rule under test passed vacuously. Five tests
+  // asserted nothing and stayed green for waves. Throwing is the cheap fix -- a
+  // misuse now fails loudly at the call site instead of turning into a false pass.
+  const blocks = Array.isArray(textBlocks) ? textBlocks : [textBlocks];
+  for (const t of blocks) {
+    if (typeof t !== 'string') {
+      throw new TypeError('bundleOf takes text blocks (a string or an array of strings), not ' + Object.prototype.toString.call(t)
+        + '. To build a multi-document packet, pass one string per document.');
+    }
+  }
+  const docs = blocks.map((t, i) => ({
     name: 'doc-' + (i + 1) + '.txt',
     sha256: 'sha-' + (i + 1),
     kind: 'TXT',
@@ -132,6 +145,16 @@ function bundleOf(textBlocks, opts) {
   }));
   return buildBundle(docs, opts || { totalBytes: 4096 });
 }
+
+test('bundleOf refuses a document object passed where text blocks belong', () => {
+  // The exact misuse that made five payer tests vacuous: the object stringified
+  // to "[object Object]", so no payer was detected and the rule never ran.
+  assert.throws(
+    () => bundleOf({ documents: [{ name: 'a.txt', text: 'Arkansas Blue Cross and Blue Shield member.' }] }),
+    /bundleOf takes text blocks/,
+  );
+  assert.throws(() => bundleOf(['fine', { name: 'a.txt' }]), /bundleOf takes text blocks/);
+});
 
 function happyBundle(opts) {
   return buildBundle(HAPPY_PACKET.documents, opts || { totalBytes: HAPPY_PACKET.totalBytes });
@@ -5379,12 +5402,10 @@ test('R-PA-ARKBCBS-002 flags an explicit authorization request with no clinical 
 });
 
 test('R-PA-ARKBCBS-002 accepts a request with a clinical attachment', () => {
-  const findings = runEngine(bundleOf({
-    documents: [
-      { name: 'request.txt', text: 'Arkansas Blue Cross and Blue Shield member. Prior authorization request for CPT 27447.' },
-      { name: 'clinical-note.txt', text: 'Clinical note: current symptoms and treatment plan.' },
-    ],
-  }));
+  const findings = runEngine(bundleOf([
+    'Arkansas Blue Cross and Blue Shield member. Prior authorization request for CPT 27447.',
+    'Clinical note: current symptoms and treatment plan.',
+  ]));
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-ARKBCBS-002').status, 'pass');
 });
 
@@ -5749,12 +5770,10 @@ test('R-PA-BLUEKC-002 flags an explicit authorization request with no clinical d
 });
 
 test('R-PA-BLUEKC-002 accepts a request with a clinical attachment', () => {
-  const findings = runEngine(bundleOf({
-    documents: [
-      { name: 'request.txt', text: 'Blue Cross and Blue Shield of Kansas City member. Prior authorization request for CPT 27447.' },
-      { name: 'clinical-note.txt', text: 'Clinical note: current symptoms and treatment plan.' },
-    ],
-  }));
+  const findings = runEngine(bundleOf([
+    'Blue Cross and Blue Shield of Kansas City member. Prior authorization request for CPT 27447.',
+    'Clinical note: current symptoms and treatment plan.',
+  ]));
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-BLUEKC-002').status, 'pass');
 });
 
@@ -6351,13 +6370,76 @@ test('R-PA-BCBSLA-008 flags an urgent request with no supporting clinical inform
 });
 
 test('R-PA-BCBSLA-008 accepts an urgent request carrying a clinical document', () => {
-  const findings = runEngine(bundleOf({
-    documents: [
-      { name: 'request.txt', text: 'Blue Cross and Blue Shield of Louisiana member. Urgent authorization requested.' },
-      { name: 'clinical-note.txt', text: 'Clinical note: rapidly worsening cellulitis, failing oral antibiotics.' },
-    ],
-  }));
+  const findings = runEngine(bundleOf([
+    'Blue Cross and Blue Shield of Louisiana member. Urgent authorization requested.',
+    'Clinical note: rapidly worsening cellulitis, failing oral antibiotics.',
+  ]));
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSLA-008').status, 'pass');
+});
+
+test('R-PA-BCBSLA-011 does not infer step therapy from a specialty-drug label', () => {
+  const text = 'Blue Cross and Blue Shield of Louisiana member.\nRequested: specialty drug J1745 infusion.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSLA-011').status, 'pass');
+});
+
+test('R-PA-BCBSLA-011 accepts either a Step 1 trial or clinical inappropriateness', () => {
+  for (const basis of [
+    'Step 1 drug tried and failed after 10 weeks.',
+    'Step 1 drugs are not clinically appropriate for this member.',
+  ]) {
+    const text = 'Blue Cross and Blue Shield of Louisiana member.\nThis drug is subject to step therapy.\n' + basis + '\n';
+    const findings = runEngine(bundleOf(text));
+    assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSLA-011').status, 'pass', basis);
+  }
+});
+
+test('R-PA-BCBSLA-012 does not treat an 81xxx code as a Carelon genetic request', () => {
+  const text = 'Blue Cross and Blue Shield of Louisiana member.\nRequested: CPT 81162.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSLA-012').status, 'pass');
+});
+
+test('R-PA-BCBSLA-012 accepts a genetic request with the test and indication', () => {
+  const text = 'Blue Cross and Blue Shield of Louisiana member.\nGenetic testing requested.\n'
+    + 'Test name: BRCA1/2 sequencing. Family history of early-onset breast cancer.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSLA-012').status, 'pass');
+});
+
+test('R-PA-BCBSLA-013 does not demand a diagnosis from a J-code alone', () => {
+  const text = 'Blue Cross and Blue Shield of Louisiana member.\nRequested: J9299 nivolumab.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSLA-013').status, 'pass');
+});
+
+test('R-PA-BCBSLA-014 advises when a retrospective request omits the required form (info)', () => {
+  const findings = runEngine(bundleOf([
+    'Blue Cross and Blue Shield of Louisiana member. Retrospective authorization requested for CPT 27447.',
+    'Clinical note: post-operative course.',
+  ]));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSLA-014').status, 'info');
+});
+
+test('R-PA-BCBSLA-014 accepts records plus the Retrospective Review Authorization Form', () => {
+  const findings = runEngine(bundleOf([
+    'Blue Cross and Blue Shield of Louisiana member. Retrospective authorization requested. Retrospective Review Authorization Form attached.',
+    'Clinical note: post-operative course.',
+  ]));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSLA-014').status, 'pass');
+});
+
+test('R-PA-BCBSLA-015 does not infer a DME request from an E code alone', () => {
+  const text = 'Blue Cross and Blue Shield of Louisiana member.\nRequested: E0601 CPAP device.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSLA-015').status, 'pass');
+});
+
+test('R-PA-BCBSLA-015 accepts a home-health request with an InterQual review', () => {
+  const text = 'Blue Cross and Blue Shield of Louisiana member.\nPrior authorization request for home health services.\n'
+    + 'InterQual criteria review completed.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSLA-015').status, 'pass');
 });
 
 test('R-PA-BCBSLA-009 does not infer site-of-care review from hospital-outpatient surgery', () => {
