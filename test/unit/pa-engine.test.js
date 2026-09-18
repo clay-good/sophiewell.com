@@ -7575,11 +7575,56 @@ test('R-PA-MCAL-003 passes when the Medi-Cal packet names the TAR / provider-por
   assert.equal(f.status, 'pass');
 });
 
-test('R-PA-MCAL-017 flags a Medi-Cal transplant request with no Medicaid-designated transplant-center routing', () => {
-  const text = 'Medi-Cal managed care member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-MCAL-017');
-  assert.equal(f.status, 'flag');
+test('R-PA-MCAL-017 does not require transplant-center routing Medi-Cal never publishes', () => {
+  // Replaces a test that asserted a "Medicaid-designated transplant-center routing"
+  // requirement; the TAR Overview states no transplant routing rule.
+  const text = 'Medi-Cal beneficiary.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCAL-017').status, 'pass');
+});
+
+test('R-PA-MCAL-019 accepts a fair hearing that cites the Notice of Action', () => {
+  const text = 'Medi-Cal managed care member.\nThis is a state fair hearing request on the Notice of Action dated 2026-08-01.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCAL-019').status, 'pass');
+});
+
+test('R-PA-MCAL-019 accepts a resubmitted TAR stating it is not a duplicate', () => {
+  const text = 'Medi-Cal beneficiary.\nResubmitted TAR after denial; the previously requested information is included and this is not a duplicate.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCAL-019').status, 'pass');
+});
+
+test('R-PA-MCAL-014 asks a deferred-TAR response for its cover sheet (info)', () => {
+  const text = 'Medi-Cal beneficiary.\nThe TAR was deferred; additional records attached.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCAL-014').status, 'info');
+});
+
+test('R-PA-MCAL-014 accepts a deferred eTAR update with the TAR 3 Attachment Form', () => {
+  const text = 'Medi-Cal beneficiary.\nThe TAR was deferred; records attached with the TAR 3 Attachment Form.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCAL-014').status, 'pass');
+});
+
+test('R-PA-MCAL-015 flags a DME TAR with no signed prescription', () => {
+  const text = 'Medi-Cal beneficiary.\nTreatment Authorization Request for a hospital bed, rental period 6 months.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCAL-015').status, 'flag');
+});
+
+test('R-PA-MCAL-016 asks an inpatient mental health stay for the 18-3 (info)', () => {
+  const text = 'Medi-Cal beneficiary.\nInpatient psychiatric admission for suicidal ideation.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCAL-016').status, 'info');
+});
+
+test('R-PA-MCAL-018 accepts a non-benefit eTAR with the review flag and medical necessity', () => {
+  const text = 'Medi-Cal beneficiary.\nThis code is a non-benefit.\nSpecial handling: non-benefit review requested; medically necessary because no covered alternative exists.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCAL-018').status, 'pass');
+});
+
+test('R-PA-MCAL-020 asks a fee-for-service TAR for a managed care enrollee for the plan denial (info)', () => {
+  const text = 'Medi-Cal managed care member enrolled in a Medi-Cal managed care plan.\nFee-for-service TAR for CPT 27447.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCAL-020').status, 'info');
+});
+
+test('R-PA-MCAL-020 accepts the fee-for-service TAR once the plan has denied', () => {
+  const text = 'Medi-Cal managed care member enrolled in a Medi-Cal managed care plan.\nFee-for-service TAR for CPT 27447.\nPlan denial dated 2026-08-01 attached.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCAL-020').status, 'pass');
 });
 
 test('R-PA-MCAL-019 treats a Medi-Cal state fair hearing as an appeal (info)', () => {
