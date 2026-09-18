@@ -7279,6 +7279,69 @@ test('R-PA-MCAZ-015 accepts home health nursing with both documents', () => {
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCAZ-015').status, 'pass');
 });
 
+test('R-PA-MCAZ-016 does not fire on generic mental-health context', () => {
+  const text = 'AHCCCS member.\nMental health follow-up visit.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCAZ-016').status, 'pass');
+});
+
+test('R-PA-MCAZ-016 flags a psychiatric admission with no care-coordination evidence', () => {
+  const text = 'AHCCCS member.\nInpatient psychiatric admission requested.\nPsychiatric evaluation attached.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCAZ-016').status, 'flag');
+});
+
+test('R-PA-MCAZ-016 accepts a psychiatric admission with coordination and evaluation', () => {
+  const text = 'AHCCCS member.\nInpatient psychiatric admission requested.\n'
+    + 'Psychiatric evaluation attached. Care coordination with the outpatient treatment team documented.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCAZ-016').status, 'pass');
+});
+
+test('R-PA-MCAZ-017 requires PA for a corneal transplant, which AHCCCS does not exempt', () => {
+  const text = 'AHCCCS member.\nCorneal transplant planned.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCAZ-017').status, 'flag');
+});
+
+test('R-PA-MCAZ-017 flags a transplant for a Federal Emergency Services enrollee', () => {
+  const text = 'AHCCCS member enrolled in Federal Emergency Services.\nTransplant request for a liver; prior authorization requested.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MCAZ-017');
+  assert.equal(f.status, 'flag');
+  assert.match(f.note, /not eligible for transplantation/);
+});
+
+test('R-PA-MCAZ-017 accepts a transplant request with prior authorization', () => {
+  const text = 'AHCCCS member.\nTransplant request for a liver.\nPrior authorization submitted to the DFSM PA Unit.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCAZ-017').status, 'pass');
+});
+
+test('R-PA-MCAZ-018 does not infer a classification from clinical-trial context', () => {
+  const text = 'AHCCCS member.\nPatient is enrolled in a clinical trial.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCAZ-018').status, 'pass');
+});
+
+test('R-PA-MCAZ-019 does not treat a grievance as an appeal', () => {
+  const text = 'AHCCCS member.\nMember filed a grievance about billing.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCAZ-019').status, 'pass');
+});
+
+test('R-PA-MCAZ-020 does not fire on out-of-network wording alone', () => {
+  const text = 'AHCCCS member.\nOut-of-network request for CPT 70551.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCAZ-020').status, 'pass');
+});
+
+test('R-PA-MCAZ-020 advises when an out-of-state facility is not shown to be the nearest (info)', () => {
+  const text = 'AHCCCS member.\nEmergency transport to an out-of-state facility.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCAZ-020').status, 'info');
+});
+
 test('R-PA-MCIN-010 does not demand an NDC from a J-code alone', () => {
   const text = 'Indiana Medicaid member.\nRequested drug: J1745 infliximab.\n';
   const findings = runEngine(bundleOf(text));
