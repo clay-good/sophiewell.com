@@ -8155,6 +8155,15 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/nj-civil-commitment-clock-v1389.js (spec-v1389: New Jersey civil commitment clock — clinical disclaimer)
 - `nj-civil-commitment-clock`
 
+### lib/ca-5150-hold-timeline-v1389.js (spec-v1389: California 5150 hold timeline — clinical disclaimer)
+- `ca-5150-hold-timeline`
+
+### lib/ca-ed-psych-detention-1799-v1389.js (spec-v1389: California non-designated ED psychiatric detention — clinical disclaimer)
+- `ca-ed-psych-detention-1799`
+
+### lib/ca-5585-minor-hold-v1389.js (spec-v1389: California minor 72-hour hold — clinical disclaimer)
+- `ca-5585-minor-hold`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

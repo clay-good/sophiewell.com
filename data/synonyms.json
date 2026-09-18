@@ -7966,6 +7966,36 @@
       ],
       "tile": "nj-civil-commitment-clock",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "5150",
+        "5250",
+        "5150 hold",
+        "california psych hold",
+        "5250 certification hearing"
+      ],
+      "tile": "ca-5150-hold-timeline",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "1799.111",
+        "non designated er psych hold california",
+        "ed psych hold 24 hours california"
+      ],
+      "tile": "ca-ed-psych-detention-1799",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "5585",
+        "minor 5150",
+        "adolescent psych hold california",
+        "5585.50"
+      ],
+      "tile": "ca-5585-minor-hold",
+      "audience": "clinicians"
     }
   ]
 }

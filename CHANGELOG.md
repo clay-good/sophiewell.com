@@ -6,6 +6,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Three California hold clocks.** The 5150 timeline (a 5250 certification
+  starts a new 14-day clock with its own review hearing), the non-designated
+  emergency department's 24-hour detention under Health and Safety Code 1799.111
+  with its hours credited to a later 5150, and the minor's 72-hour hold under
+  5585.50. See docs/spec-v1389.md.
+
 - **New Jersey commitment clock.** The 72 hours from the screening certificate
   (not from arrival) to a temporary commitment order, the 20-day final hearing,
   the psychiatrist and relative checks answered yes, no, or not assessed, and

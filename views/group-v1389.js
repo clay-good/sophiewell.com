@@ -1,5 +1,6 @@
 // spec-v1389: renderers for the involuntary-hold clocks (State & Coverage Reference, Group M).
-// Built so far: tx-emergency-detention-clock, tx-protective-custody-hearing-clock, ny-mhl-hold-clock, nj-civil-commitment-clock.
+// Built so far: tx-emergency-detention-clock, tx-protective-custody-hearing-clock, ny-mhl-hold-clock, nj-civil-commitment-clock,
+// ca-5150-hold-timeline, ca-ed-psych-detention-1799, ca-5585-minor-hold.
 //
 // Every time is ENTERED, never read from the device clock, so the answer is the same tomorrow.
 
@@ -8,6 +9,9 @@ import * as ED from '../lib/tx-emergency-detention-clock-v1389.js';
 import * as PC from '../lib/tx-protective-custody-hearing-clock-v1389.js';
 import * as NY from '../lib/ny-mhl-hold-clock-v1389.js';
 import * as NJ from '../lib/nj-civil-commitment-clock-v1389.js';
+import * as C5 from '../lib/ca-5150-hold-timeline-v1389.js';
+import * as C17 from '../lib/ca-ed-psych-detention-1799-v1389.js';
+import * as CM from '../lib/ca-5585-minor-hold-v1389.js';
 import { resultRow } from '../lib/result-copy.js';
 
 function timeField(root, label, id, hint) {
@@ -60,6 +64,79 @@ function wire(ids, run) {
 }
 
 export const renderers = {
+  'ca-5150-hold-timeline'(root) {
+    note(root, 'Enter the times in California local time. A 5250 certification starts a new 14-day clock with its own review hearing.');
+    timeField(root, 'First detained (5150)', 'c5-detained', '');
+    selectField(root, 'Criterion', 'c5-criterion', C5.CRITERIA, '-- not entered --');
+    timeField(root, 'Certified for intensive treatment (5250)', 'c5-certified', 'optional');
+    selectField(root, 'Threatened or attempted suicide (for 5260)', 'c5-suicide', C5.YES_NO_UNKNOWN, '-- not entered --');
+    selectField(root, 'County has adopted the 30-day certification (5270.15)', 'c5-county30', C5.YES_NO_UNKNOWN, '-- not entered --');
+
+    const ids = ['c5-detained', 'c5-criterion', 'c5-certified', 'c5-suicide', 'c5-county30'];
+    const o = out(); root.appendChild(o);
+    wire(ids, () => safe(o, () => {
+      const r = C5.ca5150HoldTimeline({ detained: val('c5-detained'), criterion: val('c5-criterion'), certified: val('c5-certified'), suicideThreat: val('c5-suicide'), county30: val('c5-county30') });
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [
+        { text: r.band, cls: null },
+        { label: 'Stage', value: r.stage },
+      ]);
+      list(o, r.deadlines.map((d) => `${d.label}: ${d.text}`));
+      list(o, r.next);
+      list(o, r.caveats);
+      note(o, r.sb43Note);
+      note(o, r.note);
+      note(o, r.postureNote);
+    }));
+  },
+
+  'ca-ed-psych-detention-1799'(root) {
+    note(root, 'For an emergency department that is not a county-designated 5150 facility. Enter the times in California local time.');
+    timeField(root, 'Detention began', 'c17-detained', '');
+    timeField(root, 'Medically stable for transfer', 'c17-stable', 'optional');
+    timeField(root, 'First placement contact', 'c17-contact', 'optional');
+    timeField(root, '5150 written', 'c17-5150', 'optional');
+
+    const ids = ['c17-detained', 'c17-stable', 'c17-contact', 'c17-5150'];
+    const o = out(); root.appendChild(o);
+    wire(ids, () => safe(o, () => {
+      const r = C17.caEdPsychDetention1799({ detained: val('c17-detained'), stable: val('c17-stable'), firstContact: val('c17-contact'), hold5150: val('c17-5150') });
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [
+        { text: r.band, cls: r.abnormal ? 'warn' : null },
+        { label: 'Next limit', value: r.bandLabel },
+      ]);
+      list(o, r.deadlines.map((d) => `${d.label}: ${d.text}`));
+      list(o, r.checks);
+      list(o, r.caveats);
+      note(o, r.note);
+      note(o, r.postureNote);
+    }));
+  },
+
+  'ca-5585-minor-hold'(root) {
+    note(root, 'For a minor under 18. Enter the times in California local time.');
+    numField(root, 'Age', 'cm-age', 'years');
+    selectField(root, 'Criterion', 'cm-criterion', CM.CRITERIA, '-- not entered --');
+    timeField(root, 'Minor detained', 'cm-detained', '');
+    timeField(root, 'Parent or legal guardian notified', 'cm-parent', 'blank if not yet');
+
+    const ids = ['cm-age', 'cm-criterion', 'cm-detained', 'cm-parent'];
+    const o = out(); root.appendChild(o);
+    wire(ids, () => safe(o, () => {
+      const r = CM.ca5585MinorHold({ age: val('cm-age'), criterion: val('cm-criterion'), detained: val('cm-detained'), parentNotified: val('cm-parent') });
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [
+        { text: r.band, cls: null },
+        { label: 'Hold ends', value: r.deadlines[0].at.replace('T', ' ') },
+      ]);
+      note(o, r.parent);
+      list(o, r.caveats);
+      note(o, r.note);
+      note(o, r.postureNote);
+    }));
+  },
+
   'nj-civil-commitment-clock'(root) {
     note(root, 'Choose the route and enter the times, in New Jersey local time. The 72 hours start at the screening certificate, not at arrival.');
     selectField(root, 'Route', 'njc-mode', NJ.NJ_MODES, '-- choose --');

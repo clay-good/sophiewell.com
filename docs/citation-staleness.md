@@ -654,3 +654,6 @@ carries the specific date that could change it.
 | tx-protective-custody-hearing-clock | HSC 574.025(b), 574.005 | TX | 2026-09-18 | Acts 2015, S.B. 219 (574.025) | 2027-06-01 |
 | ny-mhl-hold-clock | MHL 9.39, 9.37, 9.40, 9.13, 9.27; GCL 24 | NY | 2026-09-18 | text read at nysenate.gov | 2027-01-02 |
 | nj-civil-commitment-clock | N.J.S.A. 30:4-27.10, 27.12, 27.20; R. 4:74-7; 30:4-27.9a window | NJ | 2026-09-18 | Directive #06-25 (27.9a extended to 2026-08-31) | 2027-01-02 |
+| ca-5150-hold-timeline | WIC 5150, 5250, 5256, 5260, 5270.15 | CA | 2026-09-18 | Stats. 2024, ch. 492 (SB 1511), 5250 | 2027-01-02 |
+| ca-ed-psych-detention-1799 | HSC 1799.111 | CA | 2026-09-18 | Stats. 2023, ch. 637 (SB 43) | 2027-01-02 |
+| ca-5585-minor-hold | WIC 5585.50 | CA | 2026-09-18 | Stats. 2013, ch. 23 (AB 82) | 2027-01-02 |

@@ -790,6 +790,9 @@ import txEmergencyDetentionClockV1389 from './adapters/tx-emergency-detention-cl
 import txProtectiveCustodyHearingClockV1389 from './adapters/tx-protective-custody-hearing-clock-v1389.js';
 import nyMhlHoldClockV1389 from './adapters/ny-mhl-hold-clock-v1389.js';
 import njCivilCommitmentClockV1389 from './adapters/nj-civil-commitment-clock-v1389.js';
+import ca5150HoldTimelineV1389 from './adapters/ca-5150-hold-timeline-v1389.js';
+import caEdPsychDetention1799V1389 from './adapters/ca-ed-psych-detention-1799-v1389.js';
+import ca5585MinorHoldV1389 from './adapters/ca-5585-minor-hold-v1389.js';
 import ticiV960 from './adapters/tici-v960.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
@@ -1607,6 +1610,9 @@ const ADAPTER_MODULES = [
   ['tx-protective-custody-hearing-clock-v1389', txProtectiveCustodyHearingClockV1389],
   ['ny-mhl-hold-clock-v1389', nyMhlHoldClockV1389],
   ['nj-civil-commitment-clock-v1389', njCivilCommitmentClockV1389],
+  ['ca-5150-hold-timeline-v1389', ca5150HoldTimelineV1389],
+  ['ca-ed-psych-detention-1799-v1389', caEdPsychDetention1799V1389],
+  ['ca-5585-minor-hold-v1389', ca5585MinorHoldV1389],
   ['tici-v960', ticiV960],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],

@@ -166,3 +166,21 @@ and Directive #06-25. Catalog 1,731 → 1,732.
   continued-hold applications from August 31, 2025 to **August 31, 2026**. That date has passed and
   no further extension has been found, so the tile still does not offer the extra 72 hours, and its
   ledger row carries the question to the next review.
+
+## Built (2026-09-18): the three California tiles
+
+`ca-5150-hold-timeline`, `ca-ed-psych-detention-1799`, and `ca-5585-minor-hold`, read from the
+leginfo text. Catalog 1,732 → 1,735. With them all seven tiles in this spec are live.
+
+- **5150's 72 hours begin "at the time when the person is first detained."** Section 5256(b) (AB
+  2275) adds a certification review hearing within **7 days of initial detention** for a person still
+  held under 5150 without certification; the tile prints it.
+- **5250 is a new 14-day clock** from certification, with its review hearing within 4 days (5256(a)).
+  5260's further 14 days and 5270.15's further 30 days are offered only when their conditions are
+  answered: a threat or attempt of suicide for 5260; grave disability and a county that has adopted
+  the 30-day certification for 5270.15. Unanswered conditions print "not assessed".
+- **1799.111 credits the ED hours, up to 24, against a later 5150** (subdivision (f)), so the tile
+  prints the shortened 5150 end. It also checks the rule that placement contacts may not begin after
+  the person is medically stable for transfer.
+- **5585.50 sets no fixed hours for the parent notice**, only "every effort ... as soon as possible".
+  The tile asks when notice was given and does not invent a deadline.

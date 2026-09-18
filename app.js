@@ -1099,6 +1099,9 @@ const UTILITIES = [
   { id: 'tx-protective-custody-hearing-clock', name: 'Texas Probable-Cause Hearing Clock (HSC 574.025, 574.005)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'ny-mhl-hold-clock', name: 'New York Psychiatric Hold Deadlines (MHL 9.39, 9.37, 9.40, 9.27, 9.13)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'nj-civil-commitment-clock', name: 'New Jersey Screening to Commitment Clock (N.J.S.A. 30:4-27.10)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ca-5150-hold-timeline', name: 'California 5150 Hold Timeline (WIC 5150, 5250, 5256, 5260, 5270.15)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ca-ed-psych-detention-1799', name: 'California Non-Designated ED Psychiatric Detention (HSC 1799.111)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ca-5585-minor-hold', name: 'California Minor 72-Hour Psychiatric Hold (WIC 5585.50)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
   // Group K (Lab Reference): removed in spec-v29 wave 29-2 (lab-adult,
   // lab-peds, tdm-levels, tox-levels are pure reference-range tables).
   // Group L: Forms & Numbers Literacy (removed in spec-v29 wave 29-2:
