@@ -7154,6 +7154,65 @@ test('R-PA-MCIN-020 accepts an out-of-state service with prior authorization', (
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCIN-020').status, 'pass');
 });
 
+// ---- Arizona AHCCCS overlay (spec-v1368) ----
+
+test('Arizona AHCCCS rules are wired to the medicaid-az payer id', () => {
+  const text = 'AHCCCS member.\nInpatient admission notification.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCAZ-006').status, 'flag',
+    'R-PA-MCAZ-006 should fire on an AHCCCS packet; a vacuous pass means the payer guard is wrong');
+});
+
+test('R-PA-MCAZ-006 names each document the admission notification is missing', () => {
+  const text = 'AHCCCS member.\nInpatient admission notification.\nHospital face sheet attached.\n';
+  const findings = runEngine(bundleOf(text));
+  const f = findings.find((x) => x.ruleId === 'R-PA-MCAZ-006');
+  assert.equal(f.status, 'flag');
+  assert.match(f.note, /history and physical/);
+  assert.doesNotMatch(f.note, /face sheet/);
+});
+
+test('R-PA-MCAZ-006 accepts a complete admission notification', () => {
+  const text = 'AHCCCS member.\nInpatient admission notification; admission status documented.\n'
+    + 'Hospital face sheet attached. History and physical attached.\n'
+    + 'Inpatient admission order signed by the attending MD.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCAZ-006').status, 'pass');
+});
+
+test('R-PA-MCAZ-007 does not infer an imaging workflow from an MRI request', () => {
+  const text = 'AHCCCS member.\nRequested: MRI lumbar spine, CPT 72148.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCAZ-007').status, 'pass');
+});
+
+test('R-PA-MCAZ-008 accepts the urgency standard AAC R9-34-306(B) publishes', () => {
+  // Unlike most payers in this program, Arizona's standard really does turn on
+  // the ability to attain, maintain, or regain maximum function -- by rule.
+  const text = 'AHCCCS member.\nExpedited authorization requested.\n'
+    + 'The standard timeframe could seriously jeopardize the ability to regain maximum function.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCAZ-008').status, 'pass');
+});
+
+test('R-PA-MCAZ-008 flags an expedited request stating no standard', () => {
+  const text = 'AHCCCS member.\nExpedited authorization requested for CPT 72148.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCAZ-008').status, 'flag');
+});
+
+test('R-PA-MCAZ-009 does not infer site-of-care review from hospital-outpatient surgery', () => {
+  const text = 'AHCCCS member.\nOutpatient hospital surgery, CPT 29881.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCAZ-009').status, 'pass');
+});
+
+test('R-PA-MCAZ-010 does not demand an NDC from a J-code alone', () => {
+  const text = 'AHCCCS member.\nRequested drug: J1745 infliximab.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCAZ-010').status, 'pass');
+});
+
 test('R-PA-MCIN-010 does not demand an NDC from a J-code alone', () => {
   const text = 'Indiana Medicaid member.\nRequested drug: J1745 infliximab.\n';
   const findings = runEngine(bundleOf(text));

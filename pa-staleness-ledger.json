@@ -896,7 +896,11 @@
         "R-PA-MCAZ-002"
       ],
       "url": "https://www.azahcccs.gov/",
-      "lastVerified": "2026-06-05"
+      "lastVerified": "2026-09-18",
+      "alsoCited": [
+        "https://www.azahcccs.gov/shared/Downloads/MedicalPolicyManual/800/820.pdf",
+        "https://www.azahcccs.gov/shared/Downloads/MedicalPolicyManual/800/810.pdf"
+      ]
     },
     {
       "id": "in-medicaid-precert",
