@@ -6775,6 +6775,80 @@ test('R-PA-HMSA-020 accepts a referral that sought administrative review', () =>
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-HMSA-020').status, 'pass');
 });
 
+// ---- Michigan Medicaid overlay (spec-v1362) ----
+//
+// The payer id is `medicaid-mi`, not `mcmi`. Writing the guard from the rule-id
+// prefix instead of lib/pa/payer.js silently disables every rule in the overlay,
+// which is why the first test here asserts a rule actually FIRES.
+
+test('Michigan Medicaid rules are wired to the medicaid-mi payer id', () => {
+  const text = 'Michigan Medicaid beneficiary.\nInpatient admission request for CPT 27447.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCMI-006').status, 'flag',
+    'R-PA-MCMI-006 should fire on a Michigan Medicaid packet; a vacuous pass means the payer guard is wrong');
+});
+
+test('R-PA-MCMI-006 excepts an emergency admission from prior authorization', () => {
+  const text = 'Michigan Medicaid beneficiary.\nInpatient admission request; emergency admission through the emergency department.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCMI-006').status, 'pass');
+});
+
+test('R-PA-MCMI-006 does not fire on a CHAMPS admission notification', () => {
+  const text = 'Michigan Medicaid beneficiary.\nAdmission notification submitted via CHAMPS.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCMI-006').status, 'pass');
+});
+
+test('R-PA-MCMI-006 accepts an admission request naming the authorizing body', () => {
+  const text = 'Michigan Medicaid beneficiary.\nInpatient admission request for CPT 27447.\n'
+    + 'Submitted to the Program Review Division with the admitting diagnosis and clinical documentation.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCMI-006').status, 'pass');
+});
+
+test('R-PA-MCMI-007 does not treat an arbitrary 7xxxx code as a CT, MRI or PET', () => {
+  const text = 'Michigan Medicaid beneficiary.\nRequested: CPT 76700 abdominal ultrasound.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCMI-007').status, 'pass');
+});
+
+test('R-PA-MCMI-007 flags an MRI that names no suspected problem', () => {
+  const text = 'Michigan Medicaid beneficiary.\nRequested: MRI lumbar spine, CPT 72148.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCMI-007').status, 'flag');
+});
+
+test('R-PA-MCMI-008 accepts any one of the published expedited criteria', () => {
+  for (const basis of [
+    'Failure to render within 10 calendar days poses a serious risk to functional capacity.',
+    'Needed to prevent further deterioration and irreversible loss of function.',
+    'The service is required for discharge from an inpatient hospital on the submission date.',
+  ]) {
+    const text = 'Michigan Medicaid beneficiary.\nExpedited prior authorization requested.\n' + basis + '\n';
+    const findings = runEngine(bundleOf(text));
+    assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCMI-008').status, 'pass', basis);
+  }
+});
+
+test('R-PA-MCMI-008 flags an expedited request stating no published criterion', () => {
+  const text = 'Michigan Medicaid beneficiary.\nExpedited prior authorization requested for CPT 72148.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCMI-008').status, 'flag');
+});
+
+test('R-PA-MCMI-009 does not infer site-of-care review from hospital-outpatient surgery', () => {
+  const text = 'Michigan Medicaid beneficiary.\nOutpatient hospital surgery, CPT 29881.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCMI-009').status, 'pass');
+});
+
+test('R-PA-MCMI-010 does not demand an NDC from a J-code alone', () => {
+  const text = 'Michigan Medicaid beneficiary.\nRequested drug: J1745 infliximab.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCMI-010').status, 'pass');
+});
+
 // ---- wave 52-30 sanity checks: Medi-Cal (California Medicaid) overlay (§4.5.30) ----
 // Medi-Cal is the first PER-STATE Medicaid overlay. Two things must hold: the
 // state overlay (R-PA-MCAL-*) engages on a Medi-Cal packet, AND the §4.5.4
@@ -8687,4 +8761,26 @@ test('summarizeFindings counts disabled findings; an empty disabled map is a no-
 
   // No opts at all is identical to an empty disabled map.
   assert.equal(summarizeFindings(runEngine(happyBundle())).disabled, 0);
+});
+
+// ---- spec-v1362: every payer guard must name a payer id that can actually occur ----
+//
+// Each overlay rule self-gates on `bundle.payer !== '<id>'`. Writing that id from
+// the rule-id prefix instead of lib/pa/payer.js (e.g. 'mcmi' for the MCMI rules,
+// when the payer id is 'medicaid-mi') disables the whole overlay silently: every
+// rule returns its vacuous pass and no test fails, because a pass is what an
+// off-payer packet is supposed to produce. One assertion closes it.
+
+test('every payer guard in lib/pa/rules.js names a real payer bucket', async () => {
+  const { readFileSync } = await import('node:fs');
+  const { fileURLToPath } = await import('node:url');
+  const root = fileURLToPath(new URL('../..', import.meta.url));
+  const src = readFileSync(`${root}/lib/pa/rules.js`, 'utf8');
+  const { PAYER_BUCKETS } = await import('../../lib/pa/payer.js');
+  // PAYER_BUCKETS is an array of id STRINGS, not objects.
+  const known = new Set(PAYER_BUCKETS);
+  const guards = [...new Set([...src.matchAll(/bundle\.payer !== '([a-z0-9-]+)'/g)].map((m) => m[1]))];
+  assert.ok(guards.length > 30, 'expected the overlay guards to be found; the pattern may have drifted');
+  const unknown = guards.filter((g) => !known.has(g));
+  assert.deepEqual(unknown, [], 'payer guards that no packet can ever match, so their rules never run');
 });
