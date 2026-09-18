@@ -6034,13 +6034,13 @@ test('BCBSMN overlay rules vacuously pass on a non-BCBSMN packet', () => {
   }
 });
 
-test('R-PA-BCBSMN-001 flags a BCBSMN request with a procedure but no coverage-criteria reference', () => {
+test('R-PA-BCBSMN-001 advises (info) on a BCBSMN request with a procedure but no coverage-criteria reference', () => {
   const text = 'Blue Cross and Blue Shield of Minnesota member.\n'
     + 'Requested procedure: CPT 72148 (MRI lumbar spine).\n'
     + 'Please authorize.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-BCBSMN-001');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
 });
 
 test('R-PA-BCBSMN-001 passes when the BCBSMN packet cites the applicable Medical Policy', () => {
@@ -6052,11 +6052,16 @@ test('R-PA-BCBSMN-001 passes when the BCBSMN packet cites the applicable Medical
   assert.equal(f.status, 'pass');
 });
 
-test('R-PA-BCBSMN-002 flags a BCBSMN packet with no clinical document attached', () => {
+test('R-PA-BCBSMN-002 does not fire on payer context alone: a BCBSMN packet with no clinical document attached', () => {
   const text = 'Blue Cross and Blue Shield of Minnesota member.\nRequested procedure: CPT 27447.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-BCBSMN-002');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-BCBSMN-002 flags an explicit authorization request with no clinical document', () => {
+  const findings = runEngine(bundleOf('Blue Cross and Blue Shield of Minnesota member.\nPrior authorization request for CPT 27447.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSMN-002').status, 'flag');
 });
 
 test('R-PA-BCBSMN-003 passes when the BCBSMN packet names the Availity channel (info)', () => {
@@ -6304,13 +6309,13 @@ test('BCBSLA overlay rules vacuously pass on a non-BCBSLA packet', () => {
   }
 });
 
-test('R-PA-BCBSLA-001 flags a BCBSLA request with a procedure but no coverage-criteria reference', () => {
+test('R-PA-BCBSLA-001 advises (info) on a BCBSLA request with a procedure but no coverage-criteria reference', () => {
   const text = 'Blue Cross and Blue Shield of Louisiana member.\n'
     + 'Requested procedure: CPT 72148 (MRI lumbar spine).\n'
     + 'Please authorize.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-BCBSLA-001');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
 });
 
 test('R-PA-BCBSLA-001 passes when the BCBSLA packet cites the applicable Medical Policy', () => {
@@ -6322,11 +6327,16 @@ test('R-PA-BCBSLA-001 passes when the BCBSLA packet cites the applicable Medical
   assert.equal(f.status, 'pass');
 });
 
-test('R-PA-BCBSLA-002 flags a BCBSLA packet with no clinical document attached', () => {
+test('R-PA-BCBSLA-002 does not fire on payer context alone: a BCBSLA packet with no clinical document attached', () => {
   const text = 'Blue Cross and Blue Shield of Louisiana member.\nRequested procedure: CPT 27447.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-BCBSLA-002');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-BCBSLA-002 flags an explicit authorization request with no clinical document', () => {
+  const findings = runEngine(bundleOf('Blue Cross and Blue Shield of Louisiana member.\nPrior authorization request for CPT 27447.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSLA-002').status, 'flag');
 });
 
 test('R-PA-BCBSLA-003 passes when the BCBSLA packet names the iLinkBlue channel (info)', () => {
@@ -6528,13 +6538,13 @@ test('HMSA overlay rules vacuously pass on a non-HMSA packet', () => {
   }
 });
 
-test('R-PA-HMSA-001 flags an HMSA request with a procedure but no coverage-criteria reference', () => {
+test('R-PA-HMSA-001 advises (info) on an HMSA request with a procedure but no coverage-criteria reference', () => {
   const text = 'HMSA member.\n'
     + 'Requested procedure: CPT 72148 (MRI lumbar spine).\n'
     + 'Please authorize.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-HMSA-001');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
 });
 
 test('R-PA-HMSA-001 passes when the HMSA packet cites the applicable Medical Policy', () => {
@@ -6546,11 +6556,16 @@ test('R-PA-HMSA-001 passes when the HMSA packet cites the applicable Medical Pol
   assert.equal(f.status, 'pass');
 });
 
-test('R-PA-HMSA-002 flags an HMSA packet with no clinical document attached', () => {
+test('R-PA-HMSA-002 does not fire on payer context alone: an HMSA packet with no clinical document attached', () => {
   const text = 'HMSA member.\nRequested procedure: CPT 27447.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-HMSA-002');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'pass');
+});
+
+test('R-PA-HMSA-002 flags an explicit authorization request with no clinical document', () => {
+  const findings = runEngine(bundleOf('HMSA member.\nPrior authorization request for CPT 27447.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HMSA-002').status, 'flag');
 });
 
 test('R-PA-HMSA-003 passes when the HMSA packet names the HHIN channel (info)', () => {
@@ -7709,11 +7724,11 @@ test('Ohio Medicaid overlay rules vacuously pass on a non-Ohio-Medicaid packet',
   }
 });
 
-test('R-PA-MCOH-001 flags an Ohio Medicaid request with a procedure but no coverage-criteria reference', () => {
+test('R-PA-MCOH-001 advises (info) on an Ohio Medicaid request with a procedure but no coverage-criteria reference', () => {
   const text = 'Ohio Medicaid member.\nRequested procedure: CPT 72148 (MRI lumbar spine).\nPlease authorize.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-MCOH-001');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
 });
 
 test('R-PA-MCOH-003 passes when the Ohio Medicaid packet names the PNM channel (info)', () => {
@@ -7792,11 +7807,11 @@ test('Washington Medicaid overlay rules vacuously pass on a non-Washington-Medic
   }
 });
 
-test('R-PA-MCWA-001 flags a Washington Apple Health request with a procedure but no coverage-criteria reference', () => {
+test('R-PA-MCWA-001 advises (info) on a Washington Apple Health request with a procedure but no coverage-criteria reference', () => {
   const text = 'Washington Apple Health member.\nRequested procedure: CPT 72148 (MRI lumbar spine).\nPlease authorize.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-MCWA-001');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
 });
 
 test('R-PA-MCWA-003 passes when the Washington Apple Health packet names the ProviderOne channel (info)', () => {
@@ -9502,4 +9517,46 @@ test('every payer guard in lib/pa/rules.js names a real payer bucket', async () 
   assert.ok(guards.length > 30, 'expected the overlay guards to be found; the pattern may have drifted');
   const unknown = guards.filter((g) => !known.has(g));
   assert.deepEqual(unknown, [], 'payer guards that no packet can ever match, so their rules never run');
+});
+
+// ---- spec-v1375: corrected intake rules 001-005 for eight payers ----
+//
+// One table, so every rewritten guard is proven to FIRE (a completed submission
+// with no reference must produce an advisory) and every payer is proven not to
+// expect a reference on an initial request.
+
+const INTAKE_PAYERS = [
+  ['BCBSMN', 'Blue Cross and Blue Shield of Minnesota member.'],
+  ['BCBSLA', 'Blue Cross and Blue Shield of Louisiana member.'],
+  ['HMSA', 'HMSA member.'],
+  ['MCMI', 'Michigan Medicaid beneficiary.'],
+  ['MCIN', 'Indiana Medicaid member.'],
+  ['MCAZ', 'AHCCCS member.'],
+  ['MCWA', 'Washington Apple Health client.'],
+  ['MCOH', 'Ohio Medicaid member.'],
+];
+
+test('corrected intake rule 005 fires only after a completed submission, for every payer', () => {
+  for (const [pfx, who] of INTAKE_PAYERS) {
+    const id = 'R-PA-' + pfx + '-005';
+    const initial = runEngine(bundleOf(who + '\nPrior authorization request for CPT 27447. Initial request.\n'));
+    assert.equal(initial.find((x) => x.ruleId === id).status, 'pass', id + ' must not expect a reference on an initial request');
+    const completed = runEngine(bundleOf(who + '\nPrior authorization submitted for CPT 27447.\n'));
+    assert.equal(completed.find((x) => x.ruleId === id).status, 'info', id + ' should advise on a completed submission with no reference; a pass means the guard never fired');
+  }
+});
+
+test('corrected intake rule 003 never requires channel metadata, for every payer', () => {
+  for (const [pfx, who] of INTAKE_PAYERS) {
+    const id = 'R-PA-' + pfx + '-003';
+    const findings = runEngine(bundleOf(who + '\nPrior authorization request for CPT 27447.\n'));
+    assert.equal(findings.find((x) => x.ruleId === id).status, 'pass', id);
+  }
+});
+
+test('no corrected intake rule still claims a phone channel on the member ID card', () => {
+  for (const [pfx] of INTAKE_PAYERS) {
+    const rule = STARTER_RULES.find((r) => r.id === 'R-PA-' + pfx + '-003');
+    assert.doesNotMatch(rule.citation, /member ID card|cover sheet/, rule.id + ' still carries the intake template');
+  }
 });
