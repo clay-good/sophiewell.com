@@ -8360,11 +8360,89 @@ test('North Carolina Medicaid overlay rules vacuously pass on a non-NC-Medicaid 
   }
 });
 
-test('R-PA-MCNC-001 flags a North Carolina Medicaid request with a procedure but no coverage-criteria reference', () => {
+test('R-PA-MCNC-001 advises (info) on a North Carolina Medicaid request with a procedure but no coverage-criteria basis', () => {
   const text = 'North Carolina Medicaid member.\nRequested procedure: CPT 72148 (MRI lumbar spine).\nPlease authorize.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-MCNC-001');
-  assert.equal(f.status, 'flag');
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCNC-001').status, 'info');
+});
+
+test('R-PA-MCNC-002 flags a prior approval request with no medical-necessity documentation', () => {
+  const text = 'North Carolina Medicaid member.\nPrior approval request for CPT 97110.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCNC-002').status, 'flag');
+});
+
+test('R-PA-MCNC-002 stays silent on a packet that is not a request', () => {
+  const text = 'North Carolina Medicaid member.\nVisit note for CPT 97110.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCNC-002').status, 'pass');
+});
+
+test('R-PA-MCNC-005 advises when an approved service moves to a different rendering provider', () => {
+  const text = 'North Carolina Medicaid member.\nChange of rendering provider for approved therapy.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCNC-005').status, 'info');
+});
+
+test('R-PA-MCNC-005 accepts a new prior approval for the new provider', () => {
+  const text = 'North Carolina Medicaid member.\nChange of rendering provider; new prior approval request submitted.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCNC-005').status, 'pass');
+});
+
+test('R-PA-MCNC-008 does not flag an urgent request for a missing urgency statement', () => {
+  const text = 'North Carolina Medicaid member.\nUrgent request for CPT 27447.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCNC-008').status, 'pass');
+});
+
+test('R-PA-MCNC-009 advises on a reauthorization with no current end date', () => {
+  const text = 'North Carolina Medicaid member.\nReauthorization of home therapy visits.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCNC-009').status, 'info');
+});
+
+test('R-PA-MCNC-009 accepts a reauthorization showing the current authorization end date', () => {
+  const text = 'North Carolina Medicaid member.\nReauthorization of home therapy visits; current authorization period ends 2026-10-31.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCNC-009').status, 'pass');
+});
+
+test('R-PA-MCNC-014 advises on a retroactive request with no retroactive eligibility', () => {
+  const text = 'North Carolina Medicaid member.\nRetroactive authorization for CPT 97110.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCNC-014').status, 'info');
+});
+
+test('R-PA-MCNC-014 accepts a retroactive eligibility date', () => {
+  const text = 'North Carolina Medicaid member.\nRetroactive authorization; retroactive eligibility date 2026-06-01.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCNC-014').status, 'pass');
+});
+
+test('R-PA-MCNC-015 advises on a Medicaid for Pregnant Women request with no complication stated', () => {
+  const text = 'North Carolina Medicaid member.\nMedicaid for Pregnant Women beneficiary; requesting CPT 29881.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCNC-015').status, 'info');
+});
+
+test('R-PA-MCNC-015 accepts the condition that may complicate the pregnancy', () => {
+  const text = 'North Carolina Medicaid member.\nMedicaid for Pregnant Women beneficiary; knee injury that may complicate the pregnancy.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCNC-015').status, 'pass');
+});
+
+test('R-PA-MCNC-017 does not flag a plain transplant request', () => {
+  const text = 'North Carolina Medicaid member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCNC-017').status, 'pass');
+});
+
+test('R-PA-MCNC-018 advises on an investigational procedure with no evidence', () => {
+  const text = 'North Carolina Medicaid member.\nRequested: investigational nerve ablation.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCNC-018').status, 'info');
+});
+
+test('R-PA-MCNC-018 accepts peer-reviewed evidence', () => {
+  const text = 'North Carolina Medicaid member.\nRequested: investigational nerve ablation; peer-reviewed studies attached.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCNC-018').status, 'pass');
+});
+
+test('R-PA-MCNC-020 advises on an EPSDT request with no correct-or-ameliorate description', () => {
+  const text = 'North Carolina Medicaid member.\nEPSDT request, age 9, speech therapy.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCNC-020').status, 'info');
+});
+
+test('R-PA-MCNC-020 does not fire on out-of-network wording', () => {
+  const text = 'North Carolina Medicaid member.\nOut-of-network specialist; CPT 29881.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCNC-020').status, 'pass');
 });
 
 test('R-PA-MCNC-003 passes when the North Carolina Medicaid packet names the NCTracks channel (info)', () => {
@@ -8372,13 +8450,6 @@ test('R-PA-MCNC-003 passes when the North Carolina Medicaid packet names the NCT
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-MCNC-003');
   assert.equal(f.status, 'pass');
-});
-
-test('R-PA-MCNC-017 flags a North Carolina Medicaid transplant request with no Medicaid-designated transplant-center routing', () => {
-  const text = 'North Carolina Medicaid member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-MCNC-017');
-  assert.equal(f.status, 'flag');
 });
 
 test('North Carolina Medicaid does not collide with the Blue Cross NC commercial overlay', () => {
