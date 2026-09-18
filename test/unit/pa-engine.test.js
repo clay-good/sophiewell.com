@@ -7686,11 +7686,57 @@ test('Texas Medicaid overlay rules vacuously pass on a non-Texas-Medicaid packet
   }
 });
 
-test('R-PA-MCTX-001 flags a Texas Medicaid request with a procedure but no coverage-criteria reference', () => {
+test('R-PA-MCTX-001 advises (info) on a Texas Medicaid request with a procedure but no coverage-criteria reference', () => {
   const text = 'Texas Medicaid member.\nRequested procedure: CPT 72148 (MRI lumbar spine).\nPlease authorize.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-MCTX-001');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
+});
+
+test('Texas Medicaid rules are wired to the medicaid-tx payer id', () => {
+  const text = 'Texas Medicaid client.\nPrior authorization request for CPT 27447.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCTX-002').status, 'flag',
+    'R-PA-MCTX-002 should fire on a Texas packet; a vacuous pass means the payer guard is wrong');
+});
+
+test('R-PA-MCTX-005 does not expect an authorization number on an initial request', () => {
+  const text = 'Texas Medicaid client.\nPrior authorization request for CPT 27447. Initial request.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCTX-005').status, 'pass');
+});
+
+test('R-PA-MCTX-007 flags a named study TMHP authorizes with no clinical indication', () => {
+  const text = 'Texas Medicaid client.\nRequested: MRI lumbar spine, CPT 72148.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCTX-007').status, 'flag');
+});
+
+test('R-PA-MCTX-007 does not treat an arbitrary 7xxxx code as a TMHP radiology study', () => {
+  const text = 'Texas Medicaid client.\nRequested: CPT 76700 abdominal ultrasound.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCTX-007').status, 'pass');
+});
+
+test('R-PA-MCTX-008 fires on an after-hours service that shows no request timing', () => {
+  const text = 'Texas Medicaid client.\nUrgent service provided after business hours.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCTX-008').status, 'info');
+});
+
+test('R-PA-MCTX-008 accepts authorization requested on the next business day', () => {
+  const text = 'Texas Medicaid client.\nUrgent service provided after business hours; authorization requested the next business day.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCTX-008').status, 'pass');
+});
+
+test('R-PA-MCTX-009 fires on a change of provider with no client-signed letter', () => {
+  const text = 'Texas Medicaid client.\nChange of provider during the authorization period.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCTX-009').status, 'info');
+});
+
+test('R-PA-MCTX-009 accepts the change-of-provider letter signed by the client', () => {
+  const text = 'Texas Medicaid client.\nChange of provider during the authorization period.\nChange of provider letter signed and dated by the client attached.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCTX-009').status, 'pass');
+});
+
+test('R-PA-MCTX-010 does not demand an NDC from a J-code alone', () => {
+  const text = 'Texas Medicaid client.\nRequested drug: J1745 infliximab.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCTX-010').status, 'pass');
 });
 
 test('R-PA-MCTX-003 passes when the Texas Medicaid packet names the TMHP channel (info)', () => {
