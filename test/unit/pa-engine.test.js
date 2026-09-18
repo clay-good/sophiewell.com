@@ -7550,13 +7550,13 @@ test('isMedicaid composition: the state-agnostic Medicaid core (R-PA-MCD) still 
   assert.equal(mcd003.status, 'flag', 'MCD core must evaluate on a state Medicaid packet');
 });
 
-test('R-PA-MCAL-001 flags a Medi-Cal request with a procedure but no coverage-criteria reference', () => {
+test('R-PA-MCAL-001 advises (info) on a Medi-Cal request with a procedure but no coverage-criteria reference', () => {
   const text = 'Medi-Cal managed care member.\n'
     + 'Requested procedure: CPT 72148 (MRI lumbar spine).\n'
     + 'Please authorize.\n';
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-MCAL-001');
-  assert.equal(f.status, 'flag');
+  assert.equal(f.status, 'info');
 });
 
 test('R-PA-MCAL-001 passes when the Medi-Cal packet cites the applicable Medical Policy', () => {
@@ -9709,4 +9709,98 @@ test('no corrected intake rule still claims a phone channel on the member ID car
     const rule = STARTER_RULES.find((r) => r.id === 'R-PA-' + pfx + '-003');
     assert.doesNotMatch(rule.citation, /member ID card|cover sheet/, rule.id + ' still carries the intake template');
   }
+});
+
+// ---- spec-v1379: Medi-Cal TAR rules, and a probe for self-satisfying triggers ----
+//
+// A packet-declared rule triggers on one anchor list and then looks for its
+// required support in another. If a support anchor is a SUBSTRING of a trigger
+// anchor ("written order" inside "written order required"), the trigger text
+// satisfies its own check and the rule can never fire. Three shipped rules had
+// this shape. The probe feeds each packet-declared rule a packet holding ONLY
+// one of its trigger phrases; every such packet must produce a finding.
+
+const PROBE_PAYER_PHRASE = {
+  'medicaid-oh': 'Ohio Medicaid member.', 'medicaid-il': 'Illinois Medicaid participant.',
+  'medicaid-ca': 'Medi-Cal beneficiary.', 'medicaid-wa': 'Washington Apple Health client.',
+  'medicaid-in': 'Indiana Medicaid member.', 'medicaid-az': 'AHCCCS member.',
+  'medicaid-mi': 'Michigan Medicaid beneficiary.', bcbsmn: 'Blue Cross and Blue Shield of Minnesota member.',
+  bcbsla: 'Blue Cross and Blue Shield of Louisiana member.', hmsa: 'HMSA member.',
+  bluekc: 'Blue Cross and Blue Shield of Kansas City member.', arkbcbs: 'Arkansas Blue Cross and Blue Shield member.',
+};
+
+test('no packet-declared rule is satisfied by its own trigger phrase', () => {
+  const vacuous = [];
+  let probed = 0;
+  for (const rule of STARTER_RULES) {
+    if (!String(rule.citation).startsWith('Source-free operational completeness check')) continue;
+    const src = rule.check.toString();
+    const guard = (src.match(/bundle\.payer !== '([a-z0-9-]+)'/) || [])[1];
+    const trig = src.match(/const trigger = bundle\.documents\.find\(\(d\) => keywordPresent\(d\.text, \[([^\]]*)\]\)\)/);
+    if (!PROBE_PAYER_PHRASE[guard] || !trig) continue;
+    for (const anchor of [...trig[1].matchAll(/'([^']*)'/g)].map((x) => x[1])) {
+      probed += 1;
+      const f = runEngine(bundleOf(PROBE_PAYER_PHRASE[guard] + '\n' + anchor + '.\n')).find((x) => x.ruleId === rule.id);
+      if (f.status === 'pass') vacuous.push(rule.id + ' <- "' + anchor + '"');
+    }
+  }
+  assert.ok(probed > 50, 'expected to probe the packet-declared rules; found ' + probed);
+  assert.deepEqual(vacuous, [], 'rules whose own trigger phrase satisfies their check, so they can never fire');
+});
+
+test('the three rules that satisfied their own triggers now fire', () => {
+  const cases = [
+    ['R-PA-MCOH-015', 'Ohio Medicaid member.\nWritten order required for this DME.\n'],
+    ['R-PA-MCOH-017', 'Ohio Medicaid member.\nTransplant evaluation request.\n'],
+    ['R-PA-MCIL-009', 'Illinois Medicaid participant.\nA less expensive alternative exists.\n'],
+  ];
+  for (const [id, text] of cases) {
+    assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === id).status, 'info', id);
+  }
+});
+
+test('Medi-Cal rules are wired to the medicaid-ca payer id', () => {
+  const text = 'Medi-Cal beneficiary.\nTreatment Authorization Request for CPT 27447.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCAL-002').status, 'flag');
+});
+
+test('R-PA-MCAL-002 accepts a TAR with diagnoses, a signed order, and frequency', () => {
+  const text = 'Medi-Cal beneficiary.\nTreatment Authorization Request for physical therapy.\n'
+    + 'Diagnosis: M17.11. Signed prescription attached. Frequency: 2 times per week for 8 weeks.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCAL-002').status, 'pass');
+});
+
+test('R-PA-MCAL-002 does not treat the word "star" as a TAR', () => {
+  const text = 'Medi-Cal beneficiary.\nRated a five star facility.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCAL-002').status, 'pass');
+});
+
+test('R-PA-MCAL-003 advises when a non-drug reauthorization TAR is faxed (info)', () => {
+  const text = 'Medi-Cal beneficiary.\nReauthorization TAR for physical therapy, submitted by fax.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCAL-003').status, 'info');
+});
+
+test('R-PA-MCAL-003 allows a faxed drug reauthorization TAR', () => {
+  const text = 'Medi-Cal beneficiary.\nReauthorization TAR for a medication, submitted by fax.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCAL-003').status, 'pass');
+});
+
+test('R-PA-MCAL-005 asks an approved TAR for its control number (info)', () => {
+  const text = 'Medi-Cal beneficiary.\nTAR approved for CPT 27447.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCAL-005').status, 'info');
+});
+
+test('R-PA-MCAL-005 accepts an 11-digit TAR Control Number with its Pricing Indicator', () => {
+  const text = 'Medi-Cal beneficiary.\nTAR approved. TCN 12345678901.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCAL-005').status, 'pass');
+});
+
+test('R-PA-MCAL-006 asks a retroactive hospital TAR for the discharge summary (info)', () => {
+  const text = 'Medi-Cal beneficiary.\nRetroactive TAR for hospital days.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCAL-006').status, 'info');
+});
+
+test('R-PA-MCAL-009 asks a facility change for a new TAR and justification (info)', () => {
+  const text = 'Medi-Cal beneficiary.\nThe authorized stay will be rendered in a different facility.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCAL-009').status, 'info');
 });
