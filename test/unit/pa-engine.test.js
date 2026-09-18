@@ -7646,11 +7646,64 @@ test('New York Medicaid overlay rules vacuously pass on a non-NY-Medicaid packet
   }
 });
 
-test('R-PA-MCNY-001 flags a New York Medicaid request with a procedure but no coverage-criteria reference', () => {
+test('R-PA-MCNY-001 advises (info) on a New York Medicaid request with a procedure but no medical-necessity basis', () => {
   const text = 'New York State Medicaid member.\nRequested procedure: CPT 72148 (MRI lumbar spine).\nPlease authorize.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-MCNY-001');
-  assert.equal(f.status, 'flag');
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCNY-001').status, 'info');
+});
+
+test('R-PA-MCNY-002 flags a prior approval request with no plan of care or clinical documentation', () => {
+  const text = 'New York State Medicaid member.\nPrior approval request for CPT 97110.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCNY-002').status, 'flag');
+});
+
+test('R-PA-MCNY-002 accepts a plan of care', () => {
+  const text = 'New York State Medicaid member.\nPrior approval request for CPT 97110.\nPlan of care attached.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCNY-002').status, 'pass');
+});
+
+test('R-PA-MCNY-005 advises on an approval with no prior approval number', () => {
+  const text = 'New York State Medicaid member.\nPrior approval granted for CPT 97110.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCNY-005').status, 'info');
+});
+
+test('R-PA-MCNY-009 advises on an extension with no modified treatment plan', () => {
+  const text = 'New York State Medicaid member.\nExtension of services beyond the approved date.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCNY-009').status, 'info');
+});
+
+test('R-PA-MCNY-009 accepts a modified treatment plan', () => {
+  const text = 'New York State Medicaid member.\nExtension of services beyond the approved date; modified treatment plan attached.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCNY-009').status, 'pass');
+});
+
+test('R-PA-MCNY-014 flags a request after the service with no emergency', () => {
+  const text = 'New York State Medicaid member.\nRetroactive approval requested for CPT 97110.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCNY-014').status, 'flag');
+});
+
+test('R-PA-MCNY-014 accepts an emergency', () => {
+  const text = 'New York State Medicaid member.\nRetroactive approval requested; emergency surgery on arrival.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCNY-014').status, 'pass');
+});
+
+test('R-PA-MCNY-015 flags non-emergency transportation with no prior authorization', () => {
+  const text = 'New York State Medicaid member.\nNon-emergency medical transportation by ambulette to dialysis.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCNY-015').status, 'flag');
+});
+
+test('R-PA-MCNY-015 accepts an LDSS prior authorization', () => {
+  const text = 'New York State Medicaid member.\nNon-emergency medical transportation; prior authorized by the LDSS.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCNY-015').status, 'pass');
+});
+
+test('R-PA-MCNY-017 advises on an out-of-state referral with no prior approval', () => {
+  const text = 'New York State Medicaid member.\nReferral to an out-of-state provider for inpatient care.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCNY-017').status, 'info');
+});
+
+test('R-PA-MCNY-017 does not flag a plain transplant request', () => {
+  const text = 'New York State Medicaid member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCNY-017').status, 'pass');
 });
 
 test('R-PA-MCNY-003 passes when the New York Medicaid packet names the eMedNY channel (info)', () => {
@@ -7658,13 +7711,6 @@ test('R-PA-MCNY-003 passes when the New York Medicaid packet names the eMedNY ch
   const findings = runEngine(bundleOf(text));
   const f = findings.find((x) => x.ruleId === 'R-PA-MCNY-003');
   assert.equal(f.status, 'pass');
-});
-
-test('R-PA-MCNY-017 flags a New York Medicaid transplant request with no Medicaid-designated transplant-center routing', () => {
-  const text = 'New York State Medicaid member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-MCNY-017');
-  assert.equal(f.status, 'flag');
 });
 
 test('R-PA-MCNY core composition: the Medicaid core fires on a New York Medicaid (medicaid-ny) packet', () => {

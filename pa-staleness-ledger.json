@@ -775,7 +775,10 @@
         "R-PA-MCNY-002"
       ],
       "url": "https://www.emedny.org/",
-      "lastVerified": "2026-06-05"
+      "lastVerified": "2026-09-18",
+      "alsoCited": [
+        "https://www.emedny.org/ProviderManuals/AllProviders/PDFS/Information_for_All_Providers-General_Policy.pdf"
+      ]
     },
     {
       "id": "tx-medicaid-precert",
