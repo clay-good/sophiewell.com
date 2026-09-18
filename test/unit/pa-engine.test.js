@@ -6849,6 +6849,67 @@ test('R-PA-MCMI-010 does not demand an NDC from a J-code alone', () => {
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCMI-010').status, 'pass');
 });
 
+test('R-PA-MCMI-012 does not treat an 81xxx code as a genetic test request', () => {
+  const text = 'Michigan Medicaid beneficiary.\nRequested: CPT 81162.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCMI-012').status, 'pass');
+});
+
+test('R-PA-MCMI-012 flags a genetic test missing the indication', () => {
+  const text = 'Michigan Medicaid beneficiary.\nGenetic test requested.\nTest name: BRCA1/2 sequencing.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCMI-012').status, 'flag');
+});
+
+test('R-PA-MCMI-012 flags a predictive genetic test with no informed consent', () => {
+  const text = 'Michigan Medicaid beneficiary.\nPredictive genetic testing requested.\n'
+    + 'Test name: BRCA1/2 sequencing. Family history of early-onset breast cancer.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCMI-012').status, 'flag');
+});
+
+test('R-PA-MCMI-012 accepts a predictive genetic test documenting consent', () => {
+  const text = 'Michigan Medicaid beneficiary.\nPredictive genetic testing requested.\n'
+    + 'Test name: BRCA1/2 sequencing. Family history of early-onset breast cancer.\n'
+    + 'Informed consent obtained with pre-test genetic counseling.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCMI-012').status, 'pass');
+});
+
+test('R-PA-MCMI-012 accepts a diagnostic genetic test without a consent record', () => {
+  // The consent requirement is statutory for PREDICTIVE testing; a diagnostic
+  // request must not be flagged for the absence of one.
+  const text = 'Michigan Medicaid beneficiary.\nGenetic test requested for diagnosis.\n'
+    + 'Test name: CFTR sequencing. Clinical indication: suspected cystic fibrosis.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCMI-012').status, 'pass');
+});
+
+test('R-PA-MCMI-013 does not demand a diagnosis from a J-code alone', () => {
+  const text = 'Michigan Medicaid beneficiary.\nRequested: J9299 nivolumab.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCMI-013').status, 'pass');
+});
+
+test('R-PA-MCMI-014 flags a retrospective review with no medical record', () => {
+  const text = 'Michigan Medicaid beneficiary.\nRetrospective review requested for the nonauthorized days.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCMI-014').status, 'flag');
+});
+
+test('R-PA-MCMI-014 accepts a retrospective review with the medical record attached', () => {
+  const text = 'Michigan Medicaid beneficiary.\nRetrospective review requested for the nonauthorized days.\n'
+    + 'A copy of the medical record is attached.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCMI-014').status, 'pass');
+});
+
+test('R-PA-MCMI-015 does not infer a DME request from an E code alone', () => {
+  const text = 'Michigan Medicaid beneficiary.\nRequested: E0601 CPAP device.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCMI-015').status, 'pass');
+});
+
 // ---- wave 52-30 sanity checks: Medi-Cal (California Medicaid) overlay (§4.5.30) ----
 // Medi-Cal is the first PER-STATE Medicaid overlay. Two things must hold: the
 // state overlay (R-PA-MCAL-*) engages on a Medi-Cal packet, AND the §4.5.4
