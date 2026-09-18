@@ -7746,11 +7746,84 @@ test('R-PA-MCTX-003 passes when the Texas Medicaid packet names the TMHP channel
   assert.equal(f.status, 'pass');
 });
 
-test('R-PA-MCTX-017 flags a Texas Medicaid transplant request with no Medicaid-designated transplant-center routing', () => {
-  const text = 'Texas Medicaid member.\nRequested service: kidney transplant.\nMedical necessity per Medical Policy.\n';
-  const findings = runEngine(bundleOf(text));
-  const f = findings.find((x) => x.ruleId === 'R-PA-MCTX-017');
-  assert.equal(f.status, 'flag');
+test('R-PA-MCTX-017 does not flag an in-state Texas transplant', () => {
+  const text = 'Texas Medicaid client.\nRequested service: kidney transplant at a Texas transplant program.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCTX-017').status, 'pass');
+});
+
+test('R-PA-MCTX-017 flags an out-of-state pre-transplant evaluation with no Texas facility evaluation', () => {
+  const text = 'Texas Medicaid client.\nRequested service: out-of-state pre-transplant evaluation for liver transplant.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCTX-017').status, 'flag');
+});
+
+test('R-PA-MCTX-017 accepts the transplant evaluation performed by a Texas facility', () => {
+  const text = 'Texas Medicaid client.\nRequested service: out-of-state pre-transplant evaluation for liver transplant.\nAttached: transplant evaluation performed by a Texas facility.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCTX-017').status, 'pass');
+});
+
+test('R-PA-MCTX-014 flags a retroactive radiology request with no timing', () => {
+  const text = 'Texas Medicaid client.\nRetroactive authorization requested for outpatient MRI brain.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCTX-014').status, 'flag');
+});
+
+test('R-PA-MCTX-014 accepts a retroactive request inside the 14-day window', () => {
+  const text = 'Texas Medicaid client.\nRetroactive authorization requested for outpatient MRI brain; study completed on 2026-09-10, submitted within 14 calendar days.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCTX-014').status, 'pass');
+});
+
+test('R-PA-MCTX-015 advises on a home health request initiated by telephone', () => {
+  const text = 'Texas Medicaid client.\nHome health skilled nursing visit extension, requested by telephone.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCTX-015').status, 'info');
+});
+
+test('R-PA-MCTX-015 passes a home health request sent through the portal', () => {
+  const text = 'Texas Medicaid client.\nHome health skilled nursing visit extension submitted through the TMHP portal.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCTX-015').status, 'pass');
+});
+
+test('R-PA-MCTX-018 advises on an unlisted procedure without the not-investigational statement', () => {
+  const text = 'Texas Medicaid client.\nRequested: unlisted procedure code 64999.\nComparable procedure code: 64640.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCTX-018').status, 'info');
+});
+
+test('R-PA-MCTX-018 passes an unlisted procedure with both documents', () => {
+  const text = 'Texas Medicaid client.\nRequested: unlisted procedure code 64999.\nComparable procedure code: 64640.\nThis procedure is not investigational or experimental.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCTX-018').status, 'pass');
+});
+
+test('R-PA-MCTX-019 advises on an Administrative Appeal filed without the denial letter', () => {
+  const text = 'Texas Medicaid client.\nAdministrative Appeal to HHSC of a denied prior authorization.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCTX-019').status, 'info');
+});
+
+test('R-PA-MCTX-019 advises on a reconsideration that adds nothing new', () => {
+  const text = 'Texas Medicaid client.\nReconsideration of denied request for CPT 29881.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCTX-019').status, 'info');
+});
+
+test('R-PA-MCTX-019 passes a reconsideration carrying additional documentation', () => {
+  const text = 'Texas Medicaid client.\nReconsideration of denied request for CPT 29881 with additional documentation attached.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCTX-019').status, 'pass');
+});
+
+test('R-PA-MCTX-020 flags an out-of-state service with no prior authorization', () => {
+  const text = 'Texas Medicaid client.\nOut-of-state provider in Colorado; knee arthroscopy CPT 29881.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCTX-020').status, 'flag');
+});
+
+test('R-PA-MCTX-020 treats a border-state provider within 50 miles as in-state', () => {
+  const text = 'Texas Medicaid client.\nOut-of-state provider in Shreveport, a border state provider within 50 miles of Texas.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCTX-020').status, 'pass');
+});
+
+test('R-PA-MCTX-020 does not fire on out-of-network wording alone', () => {
+  const text = 'Texas Medicaid client.\nOut-of-network specialist; CPT 29881.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCTX-020').status, 'pass');
+});
+
+test('R-PA-MCTX-011 stays silent without a declared step-therapy workflow', () => {
+  const text = 'Texas Medicaid client.\nRequested drug: adalimumab.\n';
+  assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-MCTX-011').status, 'pass');
 });
 
 test('R-PA-MCTX core composition: the Medicaid core fires on a Texas Medicaid (medicaid-tx) packet', () => {
