@@ -7448,6 +7448,58 @@ test('R-PA-MCWA-015 accepts home health with the encounter and a signed order', 
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCWA-015').status, 'pass');
 });
 
+// ---- Ohio Medicaid overlay (spec-v1374) ----
+
+test('Ohio Medicaid rules are wired to the medicaid-oh payer id', () => {
+  const text = 'Ohio Medicaid member.\nPrior authorization request submitted by fax.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCOH-006').status, 'flag',
+    'R-PA-MCOH-006 should fire on an Ohio packet; a vacuous pass means the payer guard is wrong');
+});
+
+test('R-PA-MCOH-006 accepts a paper or fax request under the hardship exception', () => {
+  const text = 'Ohio Medicaid member.\nPrior authorization request submitted by fax under the financial hardship exception.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCOH-006').status, 'pass');
+});
+
+test('R-PA-MCOH-006 does not fire on an electronic request', () => {
+  const text = 'Ohio Medicaid member.\nPrior authorization request submitted electronically.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCOH-006').status, 'pass');
+});
+
+test('R-PA-MCOH-007 does not infer an imaging workflow from an MRI request', () => {
+  const text = 'Ohio Medicaid member.\nRequested: MRI lumbar spine, CPT 72148.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCOH-007').status, 'pass');
+});
+
+test('R-PA-MCOH-008 accepts the practitioner-opinion prong of the statutory definition', () => {
+  const text = 'Ohio Medicaid member.\nUrgent care service requested.\n'
+    + 'In the opinion of the treating practitioner, the member would suffer adverse health consequences without the care.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCOH-008').status, 'pass');
+});
+
+test('R-PA-MCOH-008 flags an urgent request meeting neither statutory prong', () => {
+  const text = 'Ohio Medicaid member.\nExpedited review requested for CPT 72148.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCOH-008').status, 'flag');
+});
+
+test('R-PA-MCOH-009 does not infer site-of-care review from hospital-outpatient surgery', () => {
+  const text = 'Ohio Medicaid member.\nOutpatient hospital surgery, CPT 29881.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCOH-009').status, 'pass');
+});
+
+test('R-PA-MCOH-010 does not demand an NDC from a J-code alone', () => {
+  const text = 'Ohio Medicaid member.\nRequested drug: J1745 infliximab.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-MCOH-010').status, 'pass');
+});
+
 test('R-PA-MCIN-010 does not demand an NDC from a J-code alone', () => {
   const text = 'Indiana Medicaid member.\nRequested drug: J1745 infliximab.\n';
   const findings = runEngine(bundleOf(text));
