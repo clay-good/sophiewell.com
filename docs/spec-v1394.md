@@ -125,3 +125,15 @@ were read on Cornell LII.
 - 405.21 still cites the delivery HIV rule as 69-1.3(l); in the current text it is (n)(2). The tool
   cites (n)(2).
 - New Jersey's HIV rule (N.J.A.C. 8:61) is still not read.
+
+## Built (2026-09-19): New Jersey HIV
+
+N.J.A.C. 8:61-4.2 to 4.4 (effective January 6, 2025) was read on Cornell LII.
+`prenatal-infection-screening-schedule` now asks for HIV results in New Jersey: a test as early as
+possible and again in the third trimester unless declined (4.2(a)3); at labor and delivery without a
+third-trimester result, an expedited test as soon as medically appropriate (4.3(c)); the newborn is
+tested if the parent's status is still unknown, unless a parent objects in writing on religious
+grounds (4.4(a)); and a pregnant person seen at a birthing facility's emergency room without prenatal
+care gets information and testing as medically appropriate (4.3(a)). The rule sets no hour limit, so
+none is printed. All four states are now covered for HIV, hepatitis B where each state's rule sets
+it, and syphilis.

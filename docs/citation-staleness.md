@@ -685,7 +685,7 @@ carries the specific date that could change it.
 | tx-ethics-review-timeline | HSC 166.046 | TX | 2026-09-18 | 2023 amendments (25 days) | 2027-06-01 |
 | nj-death-religious-exemption | N.J.S.A. 26:6A-5 | NJ | 2026-09-18 | FindLaw text current as of 2024-01-01 | 2027-01-02 |
 | tx-death-cert-deadline | HSC 193.005 | TX | 2026-09-18 | read on the official mirror | 2027-06-01 |
-| prenatal-infection-screening-schedule | TX HSC 81.090; CA HSC 120685, 125085, 125090; NY PHL 2308, 10 NYCRR 69-1.3(n), 69-3, 405.21; N.J.S.A. 26:4-49.1 | NY, NJ, CA, TX | 2026-09-19 | CA follows the latest CDPH guideline; NY syphilis FAQ publication 21452 (February 2026) | 2027-01-02 |
+| prenatal-infection-screening-schedule | TX HSC 81.090; CA HSC 120685, 125085, 125090; NY PHL 2308, 10 NYCRR 69-1.3(n), 69-3, 405.21; N.J.S.A. 26:4-49.1, N.J.A.C. 8:61-4.2 to 4.4 | NY, NJ, CA, TX | 2026-09-19 | CA follows the latest CDPH guideline; NY syphilis FAQ publication 21452 (February 2026) | 2027-01-02 |
 | nys-newborn-screen-planner | Wadsworth Specimen Collection Guide (March 2026) | NY | 2026-09-18 | program guide, updated March 2026 | 2027-03-01 |
 | tx-neonatal-level-match | 25 TAC 133.186-133.189 | TX | 2026-09-18 | amended effective 2023-06-22; read on Cornell LII | 2027-06-01 |
 | tx-maternal-level-reference | 25 TAC 133.206-133.209 | TX | 2026-09-18 | amended effective 2023-01-08; read on Cornell LII | 2027-06-01 |

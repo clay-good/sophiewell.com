@@ -92,3 +92,14 @@ test('prenatal: NY third-trimester syphilis window is 28 to 32 weeks', () => {
   assert.match(pns({ ...base, ga: '20' }).next.join(' '), /8 weeks from now/);
   assert.match(pns({ ...base, ga: '20', hbv: 'no' }).band, /69-3\.2/);
 });
+
+// spec-v1394: New Jersey HIV -- early and third trimester; expedited at delivery; newborn if unknown.
+test('prenatal: NJ HIV under N.J.A.C. 8:61', () => {
+  const pre = pns({ state: 'NJ', setting: 'prenatal', ga: '30', syphFirst: 'yes', hivFirst: 'yes', hiv3: 'no' });
+  assert.match(pre.band, /third trimester, due now/);
+  const del = pns({ state: 'NJ', setting: 'delivery', ga: '39', hiv3: 'no' });
+  assert.match(del.band, /expedited HIV test/);
+  assert.match(del.notes.join(' '), /religious grounds/);
+  assert.doesNotMatch(pns({ state: 'NJ', setting: 'delivery', ga: '39', hiv3: 'yes' }).band, /expedited/);
+  assert.equal(pns({ state: 'NJ', setting: 'delivery', ga: '39' }).valid, false);
+});

@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Prenatal screening: New Jersey HIV.** New Jersey now shows HIV early and in the
+  third trimester, and an expedited test at delivery without a third-trimester
+  result (N.J.A.C. 8:61). See docs/spec-v1394.md.
+
 - **Nurse CE, California: what the statute adds.** The California note now states
   the first-two-years implicit-bias hour and the NP gerontology share (Bus. & Prof.
   Code 2811.5). See docs/spec-v1397.md.
