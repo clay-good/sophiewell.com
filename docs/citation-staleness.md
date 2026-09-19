@@ -697,3 +697,6 @@ carries the specific date that could change it.
 | calosha-indoor-heat | 8 CCR 3396 | CA | 2026-09-18 | read on dir.ca.gov | 2027-01-02 |
 | calosha-wildfire-smoke | 8 CCR 5141.1 | CA | 2026-09-18 | read on dir.ca.gov | 2027-01-02 |
 | ca-valley-fever-test-prompt | CDPH CAHAN, January 18, 2024 | CA | 2026-09-18 | health advisory | 2027-01-02 |
+| npep-2025 | CDC nPEP guideline, MMWR Recomm Rep 2025;74(RR-1) | US | 2026-09-18 | erratum MMWR 2025;74(35) | 2027-06-01 |
+| doxy-pep | CDC doxy-PEP guideline, MMWR Recomm Rep 2024;73(RR-2) | US | 2026-09-18 | 2024 guideline | 2027-06-01 |
+| strongyloides-presumptive | CDC Domestic Refugee Health Guidance: Intestinal Parasites | US | 2026-09-18 | page last updated 2025-01-30 | 2027-06-01 |

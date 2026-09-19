@@ -83,3 +83,25 @@ existing worked example's answer.
 - Every Part B tile passes its **existing** worked example unchanged with no state chosen. A test
   per state line proves the state answer appears only when that state is chosen.
 - `blood-lead` CA: a capillary 12 µg/dL returns "venous confirmation within 1 month".
+
+## Built, Part A (2026-09-18)
+
+| tile | source read |
+|---|---|
+| `npep-2025` | MMWR Recomm Rep 2025;74(RR-1), PMC12064164 |
+| `doxy-pep` | MMWR Recomm Rep 2024;73(RR-2), PMC11166373 |
+| `strongyloides-presumptive` | CDC Domestic Refugee Health Guidance: Intestinal Parasites (updated January 30, 2025) |
+
+- **Corrected from the plan (Strongyloides):** CDC's current page gives presumptive
+  ivermectin as a **single** 200 ug/kg dose, not two days, and does **not**
+  recommend albendazole. A Loa loa-endemic origin gets a thin and thick blood smear
+  drawn between 10 a.m. and 2 p.m. before any ivermectin, plus serology. The
+  acceptance case (Cameroonian origin, steroids planned) therefore returns "smear
+  first, no ivermectin up front" with the hyperinfection warning, and never
+  albendazole.
+- nPEP: the 2025 rules for a suppressed source (not routinely recommended after sex;
+  case-by-case by other routes) and for PrEP taken as directed (not generally
+  recommended, with the four exceptions) are printed as statements, never a bare no.
+- doxy-PEP: no pregnancy or contraindication logic is added, because the guideline
+  read gives none for the recommended population.
+- **Part B** (state lines on nine existing tiles) is not built in this wave.

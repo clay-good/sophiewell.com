@@ -8284,6 +8284,15 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/ca-valley-fever-test-prompt-v1398.js (spec-v1398: Valley fever testing prompt, CDPH — clinical disclaimer)
 - `ca-valley-fever-test-prompt`
 
+### lib/npep-2025-v1401.js (spec-v1401: nonoccupational HIV PEP decision, CDC 2025 — clinical disclaimer)
+- `npep-2025`
+
+### lib/doxy-pep-v1401.js (spec-v1401: doxycycline PEP for bacterial STI prevention, CDC 2024 — clinical disclaimer)
+- `doxy-pep`
+
+### lib/strongyloides-presumptive-v1401.js (spec-v1401: Strongyloides presumptive treatment or test — clinical disclaimer)
+- `strongyloides-presumptive`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

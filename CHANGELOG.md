@@ -6,6 +6,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Prevention after exposure, and arrival screening.** Whether CDC's 2025
+  guideline recommends nonoccupational HIV PEP (including a suppressed source and
+  a person on PrEP) with the regimen and follow-up; CDC's 2024 doxy-PEP
+  recommendation; and presumptive ivermectin or testing for Strongyloides in a
+  newly arrived refugee, with the blood smear a Loa loa-endemic origin requires
+  and the hyperinfection warning before steroids. See docs/spec-v1401.md.
+
 - **Heat, smoke, air, and Valley fever.** The Air Quality Index from PM2.5 with
   EPA's 2024 breakpoints (10 ug/m3 is now Moderate, not Good); what California's
   outdoor and indoor heat standards and wildfire smoke rule require at a given

@@ -833,6 +833,9 @@ import caloshaOutdoorHeatV1398 from './adapters/calosha-outdoor-heat-v1398.js';
 import caloshaIndoorHeatV1398 from './adapters/calosha-indoor-heat-v1398.js';
 import caloshaWildfireSmokeV1398 from './adapters/calosha-wildfire-smoke-v1398.js';
 import caValleyFeverTestPromptV1398 from './adapters/ca-valley-fever-test-prompt-v1398.js';
+import npep2025V1401 from './adapters/npep-2025-v1401.js';
+import doxyPepV1401 from './adapters/doxy-pep-v1401.js';
+import strongyloidesPresumptiveV1401 from './adapters/strongyloides-presumptive-v1401.js';
 import ticiV960 from './adapters/tici-v960.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
@@ -1693,6 +1696,9 @@ const ADAPTER_MODULES = [
   ['calosha-indoor-heat-v1398', caloshaIndoorHeatV1398],
   ['calosha-wildfire-smoke-v1398', caloshaWildfireSmokeV1398],
   ['ca-valley-fever-test-prompt-v1398', caValleyFeverTestPromptV1398],
+  ['npep-2025-v1401', npep2025V1401],
+  ['doxy-pep-v1401', doxyPepV1401],
+  ['strongyloides-presumptive-v1401', strongyloidesPresumptiveV1401],
   ['tici-v960', ticiV960],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],

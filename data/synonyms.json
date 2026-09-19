@@ -8433,6 +8433,38 @@
       ],
       "tile": "ca-valley-fever-test-prompt",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "npep",
+        "nonoccupational pep",
+        "hiv pep after sex",
+        "pep 72 hours",
+        "post exposure prophylaxis hiv sexual"
+      ],
+      "tile": "npep-2025",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "doxy pep",
+        "doxycycline pep",
+        "doxypep",
+        "sti prevention doxycycline"
+      ],
+      "tile": "doxy-pep",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "strongyloides",
+        "strongyloidiasis",
+        "ivermectin refugee",
+        "hyperinfection steroids",
+        "loa loa ivermectin"
+      ],
+      "tile": "strongyloides-presumptive",
+      "audience": "clinicians"
     }
   ]
 }
