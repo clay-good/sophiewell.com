@@ -69,3 +69,11 @@ test('tx death certificate: five days from receipt', () => {
   assert.equal(dc({ received: '2026-09-18' }).dueDate, '2026-09-23');
   assert.match(dc({ received: '2026-09-18', attendingAvailable: 'no' }).who, /chief medical officer/);
 });
+
+// spec-v1392: SB 403 (2025) repealed the 2031 sunset; the note says so and prints no end date.
+test('ca-eoloa: no sunset -- SB 403 repealed 443.215', () => {
+  const r = ca({ oral1: '2026-09-01T10:00', oral2: '2026-09-03T09:00' });
+  const note = r.requestNote || '';
+  assert.match(note, /SB 403/);
+  assert.doesNotMatch(note, /was not read/);
+});

@@ -110,3 +110,10 @@ due **within 5 days**, and who may certify when the attending is unavailable (19
   a delay notice, whichever is first. The tile takes one and refuses both at once.
 - Acceptance tests pass: NJ day 15 versus day 16, CA 47 hours and two heirs, NY
   with no date before all five steps, and TX never earlier than day 25.
+
+## Update (2026-09-19): no sunset
+
+The sunset question is settled. SB 403 (Stats. 2025, ch. 315, approved October 3, 2025) repealed
+section 443.215 and its January 1, 2031 end date; leginfo's bill history and the current text of Part
+1.85 (443 through 443.22, no 443.215) were read. `ca-eoloa-timeline` now says the Act has no end
+date instead of saying the sunset was not read.

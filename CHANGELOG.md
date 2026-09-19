@@ -6,6 +6,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Nurse CE, California: what the statute adds.** The California note now states
+  the first-two-years implicit-bias hour and the NP gerontology share (Bus. & Prof.
+  Code 2811.5). See docs/spec-v1397.md.
+
+- **California aid in dying: no sunset.** The timeline now says SB 403 (2025)
+  repealed the Act's 2031 end date. See docs/spec-v1392.md.
+
 - **New York MOLST: the 90-day review.** The MOLST router now gives the form's
   review cadence (at least every 90 days, and on a move or a change) and says a
   MOLST past its review is still valid. See docs/spec-v1391.md.

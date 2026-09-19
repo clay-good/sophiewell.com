@@ -104,3 +104,11 @@ continuing education rather than course dates.
   nurses, the HHSC trafficking course, and five pharmacotherapeutics hours for an APRN who
   prescribes. "Does not apply" is accepted only where the rule makes the item conditional.
 - The New York answer is unchanged. Only its state list and one test's expectation moved.
+
+## Update (2026-09-19): California statute
+
+Business and Professions Code 2811.5 was read on leginfo. Subdivision (h) exempts the first two years
+after initial licensure from the 30 hours, but requires one hour of implicit bias from January 1, 2023.
+Subdivision (j)(1) has an NP whose primary-care population is more than 25% aged 65 or older put 20% of
+the hours into gerontology, dementia care, or older-patient care. The tool now states both in its
+California note. It asks nothing new, so it does not check them.

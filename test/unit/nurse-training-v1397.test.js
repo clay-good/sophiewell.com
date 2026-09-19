@@ -90,3 +90,11 @@ test('nlt: Texas 20 hours or certification, and the targeted items', () => {
   assert.equal(nlt({ ...T, hours: '5', txCert: 'yes' }).abnormal, false);
   assert.equal(nlt({ ...T, txJuris: 'na' }).valid, false);
 });
+
+// spec-v1397: the California note states 2811.5(h) and, for an NP, (j)(1).
+test('nlt: CA note -- first-two-years implicit-bias hour; NP gerontology share', () => {
+  const rn = nlt({ state: 'CA', license: 'RN', hours: '30' });
+  assert.match(rn.note, /implicit bias/);
+  assert.doesNotMatch(rn.note, /25%/);
+  assert.match(nlt({ state: 'CA', license: 'NP', hours: '30' }).note, /more than 25% aged 65 or older/);
+});
