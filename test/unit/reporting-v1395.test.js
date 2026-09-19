@@ -47,10 +47,11 @@ test('mr: no state or no time prints no deadline', () => {
 const O = { setting: 'ed', emergency: 'no', capacity: 'yes', priorHiv: 'no', priorHcv: 'no' };
 
 test('offer: HIV from 13, hepatitis C from 18, younger with risk', () => {
-  const r16 = offer({ ...O, age: '16' });
+  const r16 = offer({ ...O, age: '16', risk: 'no' });
   assert.equal(r16.hivRequired, true);
   assert.equal(r16.hcvRequired, false);
-  assert.equal(offer({ ...O, age: '12' }).hivRequired, false);
+  assert.equal(offer({ ...O, age: '12', risk: 'no' }).hivRequired, false);
+  assert.equal(offer({ ...O, age: '12' }).valid, false);
   assert.equal(offer({ ...O, age: '12', risk: 'yes' }).hivRequired, true);
   assert.equal(offer({ ...O, age: '40' }).hcvRequired, true);
 });

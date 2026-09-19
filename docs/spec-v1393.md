@@ -108,3 +108,6 @@ Each question is asked only when the answer would change the result: over the da
 seven days in California, the answer stands without it. One test had pinned the old Texas behavior
 ("10 days, refills blank, within") and now passes "no" explicitly.
 
+`ny-hiv-hcv-test-offer` (spec-v1395) had the same shape: under 13 (HIV) or 18 (hepatitis C), a blank
+risk answer printed "No offer required now". It now asks, and two tests that relied on the blank pass
+"no" explicitly.
