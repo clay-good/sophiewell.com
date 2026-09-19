@@ -36,3 +36,23 @@ test('a 5,000 kg weight is refused, with a range and not a request to enter it',
   }
   assert.deepEqual(bad, []);
 });
+
+// spec-v1405: the same for height. The probe's map had no height row either; its envelope is in
+// metres and these fields are in cm, so the probe now carries a unit scale.
+const HEIGHT = {
+  'predicted-spirometry': 'ps-height', bsa: 'h', 'body-roundness-index': 'bri-height',
+  whtr: 'whtr-height', cmi: 'cmi-height', 'warfarin-iwpc': 'iw-ht', 'warfarin-gage': 'ga-ht',
+};
+
+test('a 2,500 cm height is refused, with a range and not a request to enter it', () => {
+  const bad = [];
+  for (const [id, dom] of Object.entries(HEIGHT)) {
+    const ex = META[id].example.fields;
+    if (ex[dom] === undefined) { bad.push(`${id}: ${dom} is not in the worked example`); continue; }
+    if (!computeCalculator({ id, inputs: ex }).valid) { bad.push(`${id}: its worked example no longer computes`); continue; }
+    const r = computeCalculator({ id, inputs: { ...ex, [dom]: '2500' } });
+    if (r.valid) bad.push(`${id}: answered from a 2,500 cm height`);
+    else if (!/range|between|must be|no more than/i.test(String(r.message))) bad.push(`${id}: refused without naming a range (${String(r.message).slice(0, 70)})`);
+  }
+  assert.deepEqual(bad, []);
+});

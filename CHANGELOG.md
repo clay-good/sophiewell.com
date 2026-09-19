@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **An impossible height is refused.** Predicted spirometry and body surface area
+  answered from a height ten times the plausible ceiling, and three waist-to-height
+  tools asked for a height that had been typed. See docs/spec-v1405.md.
+
 - **An impossible body weight is refused.** A weight ten times the plausible
   ceiling produced answers in 21 tools, including a Crohn's disease activity score of "clinical
   remission" and warfarin doses of hundreds of milligrams a day. Six more asked for

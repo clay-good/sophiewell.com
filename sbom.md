@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `8d7fd1642332946b`
-Generated: 2026-09-19T20:13:25.945Z
+Build ID: `edd9151ec154268a`
+Generated: 2026-09-19T20:28:26.997Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -67,7 +67,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/acute-abdomen-v261.js` | 12492 | `91da56977b83f841e806856211d5f6ef73ca130f1dfa76ab1bbe6c58b104cf10` |
 | `lib/acute-injury-v213.js` | 11748 | `d0db59b8b86c57a442bfe3b1cd2e9fb50bbb59aa6980810415f4dbbe41985b7d` |
 | `lib/acute-opioid-rx-limit-v1393.js` | 8742 | `a6f06ba9dedaa72a2a02e9e752846eb4dd8fcd66cf65f6258b109d23abb1e75a` |
-| `lib/adiposity-v270.js` | 3145 | `bafc017e4974f5c7180e5a2a6160c50fb8d837bccd6f45d0eaaf6bb6ada87ce9` |
+| `lib/adiposity-v270.js` | 3592 | `a4bb606611ce1ece313a7bc6b5aedecc4d58d86b9df71a5bafd803142c05c1c6` |
 | `lib/af-stages-2023-v839.js` | 7872 | `9dad7e65b3ccc86ad22937b40e670e055da6855583cd1cc4bd188325e04c2fe7` |
 | `lib/ahlback-knee-oa-v480.js` | 3309 | `c7e76a2794a1764fc50dd4f467219d7b5f9a6f19c98a5bc241cd43a85a810239` |
 | `lib/airway-resistance-v927.js` | 8081 | `22a85a2674f7b2ccc567fe07d6f47944657fca52d517831cb0d564484c04a3b9` |
@@ -81,8 +81,8 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/anderson-dalonzo-v410.js` | 3589 | `b11d0b4c9006f7917de76cc07c30e1849b97f31b8c39e3521fca8f0a306132de` |
 | `lib/anderson-montesano-v447.js` | 3265 | `5bbf21950c01668ad58c463249a23c6672b4246aa8c06279981f6129445d58ac` |
 | `lib/angle-malocclusion-v720.js` | 3749 | `550bb570288e3b855208fcb6d653617ff5a407a361fd819c19a64567397420f2` |
-| `lib/anthro-v238.js` | 7554 | `ab4ac8a758bfa2c72f22a29bf3df91b2e5d49991a9d8e2fc4f5343a6428c3512` |
-| `lib/anthro-v272.js` | 2988 | `0c8ae06f40b6747996c3069ca3eed48dd37fcb32d0b211bee0ada6ec113c1f53` |
+| `lib/anthro-v238.js` | 7926 | `4c5f0797d588d729e3730edcc931c50876ddee6370637bf44dfd5149e1fe9f9e` |
+| `lib/anthro-v272.js` | 3348 | `e3c7419342dd80c7034ae09801c66c05b3c5ce6e1aa2fdaf1d88e5f07b079485` |
 | `lib/ao-spine-neuro-v1241.js` | 3036 | `47d07dfcece6ac8e96d140cffe8260fd562f2dbbf2725fe34673e66ae0d395af` |
 | `lib/ao-spine-subaxial-v1241.js` | 8874 | `20742c50120a9e0bba42f4fd9851bd5fb6eeb5ea8f213008adc1f316b4cb6e9a` |
 | `lib/ao-spine-tl-v1241.js` | 7571 | `affc80a356ec93515935f04be0c1a685ae027894bbeb71ec751a7fc7e6e86fa7` |
@@ -207,7 +207,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/clinical-v6.js` | 16042 | `69c1de74d7f171a3c6e87329c1cb69324758a368a34f1961e6201caec0470f8d` |
 | `lib/clinical-v7.js` | 19163 | `facb398cfcad3ff668d0c0f8d54fde6aaa1093d3d65df360b272bda4e5554e4b` |
 | `lib/clinical-v8.js` | 18730 | `e5e7be6c9d5f9e11e433eab822fd96e5e29673ad0e76a97fd5a1754c8877a003` |
-| `lib/clinical.js` | 24588 | `3f3b45e0899db2724be1e1fcb450fb32edd4a03e4b30575bb0d13459d5b7ca72` |
+| `lib/clinical.js` | 24650 | `cc5508a4aa8175a2e298c8988a52ab5b935cd161b54bb05476c514c57699727f` |
 | `lib/clipboard.js` | 2907 | `951c41df24f58df747734474d383d6f75f52d22d2c4d0a370ef5bfb269a15147` |
 | `lib/cluster-headache-ichd3-v814.js` | 7692 | `1ba3ed3aa2a203e13da4152325e29fda8ae0a533b2d4f1881c9a878655847045` |
 | `lib/coagscore-v232.js` | 3053 | `aff9e82479da5b38deeaf70ade27caa7f5d1a0f21b01d74f764ca147e9846bd8` |
@@ -745,7 +745,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/psych-v96.js` | 16837 | `6aa2f2a4550dc4dc0f1e5d486bb8d7e83faac28cc1112a1e299a36d13833fc39` |
 | `lib/pulm-copd-v205.js` | 15657 | `e209ded1a783152b4bf49ac6d693fe097126161d3cb53a09268fe38e9ab9c3bf` |
 | `lib/pulm-v114.js` | 16068 | `0267a9b881929d371166516691979f4fdce8b15875dafcbfbad6c21bbbcc5ee5` |
-| `lib/pulm-v91.js` | 18421 | `15ae847d2ac8b1833d8840263dc4a81c1d0300413c865201e6351feaa35aa101` |
+| `lib/pulm-v91.js` | 18712 | `65d90559489b5d9e2f563412c4246fca35e2abce5692aaf1cf8b31aae8ab409f` |
 | `lib/pulmnod-v115.js` | 19707 | `bda10ab55422e34da8e69b4e7dc537cf758ae0a401a8ea05f38e68bf47eb5139` |
 | `lib/pulmonary-risk-v221.js` | 14238 | `69991f0c4ba63da303e0047c55b6c2f054244ec7e353ba26fde5246edfea1479` |
 | `lib/puqe24-v553.js` | 10456 | `d2593fdc70bc2cc959ddac33b9c0d578d7ac5decf655bfff3e35f1b412b6a781` |

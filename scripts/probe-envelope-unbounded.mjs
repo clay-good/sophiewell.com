@@ -75,20 +75,27 @@ const MAP = [
   // spec-v1404: weight was never mapped, and 29 fields answered from a 5,000 kg weight or asked
   // for one that had been typed. The unit must be kg exactly: a lb field is converted first.
   ['weightKg', /\bweight\b/i, /^kg$/i],
+  // Height is entered in cm and the envelope is in metres, so it carries a scale of 100. A bare
+  // "length" is an organ or a fetal bone (its first run mis-mapped five), so only crown-heel counts.
+  ['heightM', /\bheight\b|\bstature\b|crown.heel/i, /^cm$/i, 100],
 ];
+
+// Tools whose "Height" or "Length" is an organ's dimension, labelled with the bare word.
+const NOT_A_BODY = new Set(['testicular-volume']);
 
 function candidates() {
   const rows = [];
   for (const tool of allCalculators()) {
+    if (NOT_A_BODY.has(tool.id)) continue;
     for (const f of (tool.fields || [])) {
       if (f.kind !== 'number' || Array.isArray(f.values)) continue;
       const text = `${f.label || ''} ${f.unit || ''}`;
       if (EXCLUDE.test(text)) continue;
-      for (const [key, labRe, unitRe] of MAP) {
+      for (const [key, labRe, unitRe, scale = 1] of MAP) {
         if (onlyKey && key !== onlyKey) continue;
         if (labRe.test(text) && unitRe.test(String(f.unit || ''))) {
           rows.push({
-            id: tool.id, dom: f.dom, key,
+            id: tool.id, dom: f.dom, key, scale,
             label: String(f.label || '').slice(0, 44), unit: f.unit,
             ex: META[tool.id]?.example?.fields?.[f.dom],
           });
@@ -100,6 +107,13 @@ function candidates() {
   return rows;
 }
 
+// The envelope in the FIELD's unit: `scale` converts the envelope's unit to the field's (a height
+// entered in cm against the metre envelope is 100). Every use below goes through this.
+function envelope(r) {
+  const b = BOUNDS[r.key];
+  return { min: b.min * r.scale, max: b.max * r.scale, unit: b.unit };
+}
+
 const rows = candidates();
 
 // --- the probe's own negative test -----------------------------------------
@@ -108,7 +122,7 @@ const rows = candidates();
 const misMapped = [];
 const usable = [];
 for (const r of rows) {
-  const b = BOUNDS[r.key];
+  const b = envelope(r);
   const n = Number(r.ex);
   if (r.ex === undefined || String(r.ex).trim() === '' || !Number.isFinite(n)) continue;
   if (n < b.min || n > b.max) misMapped.push({ ...r, n, b });
@@ -131,7 +145,7 @@ for (const r of usable) {
   const ex = META[r.id].example.fields;
   const base = computeCalculator({ id: r.id, inputs: { ...ex } });
   if (base.valid === false) continue;
-  const b = BOUNDS[r.key];
+  const b = envelope(r);
   const over = b.max * 10;
   const res = computeCalculator({ id: r.id, inputs: { ...ex, [r.dom]: String(over) } });
   if (res.valid === false) continue;
@@ -254,7 +268,7 @@ for (const f of rest) console.log(line(f));
 const refusing = [];
 for (const r of usable) {
   const ex = META[r.id].example.fields;
-  const b = BOUNDS[r.key];
+  const b = envelope(r);
   const res = computeCalculator({ id: r.id, inputs: { ...ex, [r.dom]: String(b.max * 10) } });
   const msg = String(res.message || res.result?.band || res.result?.message || '');
   if (res.valid !== false && !/^Enter |missing/i.test(msg)) continue;

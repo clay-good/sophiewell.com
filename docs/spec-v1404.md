@@ -27,7 +27,7 @@ bounds, before the missing-value message. A blank still gets the original reques
 
 ## Proof
 
-- `test/unit/weight-envelope.test.js` runs each worked example through `compute_calculator` with
+- `test/unit/body-size-envelope.test.js` runs each worked example through `compute_calculator` with
   the weight set to 5,000 kg and requires a refusal that names a range. With the library changes
   reverted it fails for all 27.
 - The probe now reads 0 in every section. Its reach went from 395 to 461 fields; 430 are testable.
