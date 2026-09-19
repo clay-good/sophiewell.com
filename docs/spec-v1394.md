@@ -137,3 +137,21 @@ grounds (4.4(a)); and a pregnant person seen at a birthing facility's emergency 
 care gets information and testing as medically appropriate (4.3(a)). The rule sets no hour limit, so
 none is printed. All four states are now covered for HIV, hepatitis B where each state's rule sets
 it, and syphilis.
+
+## Built (2026-09-19): `safe-haven-infant-check` (New York, New Jersey, Texas)
+
+The plan covered California only because the other three laws had not been researched. They are
+now read: Texas Family Code 262.301-262.309 (official mirror; SB 780, 2023, added the newborn safety
+device), N.J.S.A. 30:4C-15.7 (FindLaw, current as of January 1, 2024), and New York Penal Law 260.00
+(nysenate text via newyork.public.law).
+
+| state | age limit | notice |
+|---|---|---|
+| TX | appears 60 days old or younger | DFPS by the close of the first business day after |
+| NJ | is or appears 30 days old or younger | the hospital tells DCPP by the first business day after; police, fire, and squads take the child to a hospital ED |
+| NY | 30 days old or younger | none set by the statutes read: New York's law is a defense for the parent |
+
+- The parent's stated intent to return takes a Texas or New Jersey delivery out of the law, and the
+  answer says so.
+- A new tool, not an extension of `ca-safe-surrender`, because California's steps (bracelet,
+  48-hour notice, 14-day reclaim) share nothing with the other three; each tool points to the other.

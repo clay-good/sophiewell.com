@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:038640da-4592-5243-8636-508e895e5694",
+  "serialNumber": "urn:uuid:23d5d58f-e6d8-589c-8f48-fadf77770a04",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-19T15:11:47.257Z",
+    "timestamp": "2026-09-19T15:40:15.135Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1786 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1787 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b99c3aa05416f11432bc46a8435284ea931a3ed93425584ceeb4a4799b2fcc33"
+          "content": "8623b9abb6c22736bf9c4d668c7f7ce0fe5dedf97569433667f649e190d021e2"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "115053"
+          "value": "115105"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "35b8f0c181b90be94769981cbd16392d01991ef7ffbc82a227ff26b8b96735d8"
+          "content": "192810ccfee4c6f5addf06456463fb85881758f83addbf8547f9ef7334493346"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "532072"
+          "value": "532223"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a1d67a2761201ecd9bc3833282b669c0bdadba8a805d0ebb96452d0473340a0c"
+          "content": "a4628fb7de5614d1427f01c4953abd6fefaef60cfaa2d952a8ce163263da6a6b"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "222569"
+          "value": "222703"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "fb1bd71d44146053422404cce55a669c7c055670a80ff729507b2993108f183a"
+          "content": "7b978cf85cbe346dd42a5adc9bdb507c29d44895b80751ca6e03b90b82c18ecf"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "102123"
+          "value": "102188"
         }
       ]
     },
@@ -2561,7 +2561,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f423d6b5b4a0ff477a9bab297406eb4f0a37104688da23c9afe0a56e53af53f9"
+          "content": "6ef4dcb902a0dfc72c1b64b6074f9fa7057fae639e129a60ab146d083ee33fb9"
         }
       ],
       "properties": [
@@ -2571,7 +2571,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "5012"
+          "value": "5026"
         }
       ]
     },
@@ -10814,7 +10814,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3aa9d3bfa9a9c3f79b8e702fb44961f693f0c20fa1d8c22c7ac94d89007a8e03"
+          "content": "3bfa639594a92c3fe6d70f3ee5468200db090a28f5849455bf4ae88b5465b5d7"
         }
       ],
       "properties": [
@@ -10824,7 +10824,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2530631"
+          "value": "2531384"
         }
       ]
     },
@@ -16348,6 +16348,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3151"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/safe-haven-infant-check-v1394.js",
+      "type": "file",
+      "name": "lib/safe-haven-infant-check-v1394.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a7edaf8f350410e9889cc9aa69051e52c1457e0fd38defac912e7011030284bc"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8539"
         }
       ]
     },
@@ -34769,6 +34790,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/safe-haven-infant-check-v1394.js",
+      "type": "file",
+      "name": "mcp/adapters/safe-haven-infant-check-v1394.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9ea1263f009668eb24b9f3b83cffcbe64ba53edb23c5a331e07bbcf495665a39"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1485"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/samilson-prieto-v486.js",
       "type": "file",
       "name": "mcp/adapters/samilson-prieto-v486.js",
@@ -38135,7 +38177,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7178f616f13d7b982f8cb987ca147afaf1da51ac71937454cc4ba7b676f6bdf1"
+          "content": "c9a1ae6b1f5fbd402b80ee0f8fe577e17c320a4f0064aa3b0a5354b380fd6d1b"
         }
       ],
       "properties": [
@@ -38145,7 +38187,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "100015"
+          "value": "100164"
         }
       ]
     },
@@ -39542,7 +39584,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "900cdcd3f81d249c5aa89c7d57add9a7b1097f816b9ffa9a5ae741ce2b2a74e6"
+          "content": "236976b89802865fa44b696de00ba74f4ce55e2d790d4c5866788c35bb417387"
         }
       ],
       "properties": [
@@ -39552,7 +39594,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "8245"
+          "value": "9371"
         }
       ]
     },
@@ -71642,6 +71684,7 @@
         "urn:sophiewell:file:source:lib/rutherford-ali-v1242.js",
         "urn:sophiewell:file:source:lib/sad-persons-v701.js",
         "urn:sophiewell:file:source:lib/sade-retraction-v451.js",
+        "urn:sophiewell:file:source:lib/safe-haven-infant-check-v1394.js",
         "urn:sophiewell:file:source:lib/samilson-prieto-v486.js",
         "urn:sophiewell:file:source:lib/sanders-calcaneal-v343.js",
         "urn:sophiewell:file:source:lib/sano-kawasaki-v681.js",
@@ -73337,6 +73380,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/rutherford-ali-v1242.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/sad-persons-v701.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/sade-retraction-v451.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/safe-haven-infant-check-v1394.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/samilson-prieto-v486.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/sanders-calcaneal-v343.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/sano-kawasaki-v681.js",
@@ -73600,7 +73644,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "038640da4592f243"
+      "value": "23d5d58fe6d8889c"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -73612,7 +73656,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2610"
+      "value": "2612"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

@@ -11,6 +11,7 @@ import * as NBS from '../lib/nys-newborn-screen-planner-v1394.js';
 import * as NLC from '../lib/tx-neonatal-level-match-v1394.js';
 import * as MLC from '../lib/tx-maternal-level-reference-v1394.js';
 import * as SS from '../lib/ca-safe-surrender-v1394.js';
+import * as SHI from '../lib/safe-haven-infant-check-v1394.js';
 import { resultRow } from '../lib/result-copy.js';
 
 function selectField(root, label, id, options, blankText) {
@@ -159,6 +160,25 @@ export const renderers = {
       answer(o, r, r.abnormal);
       list(o, r.steps);
       note(o, r.scopeNote);
+      note(o, r.postureNote);
+    }));
+  },
+
+  'safe-haven-infant-check'(root) {
+    note(root, 'New York, New Jersey, or Texas. For California, use the California Safely Surrendered Baby Checklist.');
+    selectField(root, 'State', 'shi-state', SHI.SH_STATES, '-- choose --');
+    numField(root, 'Infant\'s age (days, or an estimate)', 'shi-age');
+    selectField(root, 'Parent said they will come back (NJ, TX)', 'shi-return', SHI.YES_NO, NA);
+    selectField(root, 'Signs of abuse or neglect (TX)', 'shi-abuse', SHI.YES_NO, NA);
+    inputField(root, 'Child received (NJ, TX)', 'shi-time', 'datetime-local');
+
+    const ids = ['shi-state', 'shi-age', 'shi-return', 'shi-abuse', 'shi-time'];
+    const o = out(); root.appendChild(o);
+    wire(ids, () => safe(o, () => {
+      const r = SHI.safeHavenInfantCheck({ state: val('shi-state'), ageDays: val('shi-age'), intentToReturn: val('shi-return'), abuse: val('shi-abuse'), received: val('shi-time') });
+      if (!r.valid) { note(o, r.message); return; }
+      answer(o, r, r.abnormal);
+      list(o, r.steps);
       note(o, r.postureNote);
     }));
   },

@@ -708,3 +708,4 @@ carries the specific date that could change it.
 | tx-safe-harbor-decision-aid | Occ. Code 303.005; 22 TAC 217.20 | TX | 2026-09-19 | 217.20 as amended 2019-10-22 (Cornell LII copy) | 2027-06-01 |
 | nursing-home-staffing-check | NY PHL 2895-b; N.J.S.A. 30:13-18; CA HSC 1276.65 | NY, NJ, CA | 2026-09-19 | NJ FindLaw text current as of 2024-01-01 | 2027-01-02 |
 | reportable-condition-urgency | CA 17 CCR 2500 list (June 2025); TX DSHS Notifiable Conditions 2026; NYSDOH DOH-389 requirements #8218 (08/26), 10 NYCRR 2.10; NJDOH N.J.A.C. 8:57-2.2-2.4 summary (January 2026) | CA, TX, NY, NJ | 2026-09-19 | TX list expires 2026-12-31 and is reissued each January | 2027-01-02 |
+| safe-haven-infant-check | TX Fam. Code 262.301-262.309; N.J.S.A. 30:4C-15.7; NY Penal Law 260.00 | NY, NJ, TX | 2026-09-19 | TX SB 780 (2023); NJ FindLaw current as of 2024-01-01 | 2027-01-02 |

@@ -8317,6 +8317,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/reportable-condition-urgency-v1395.js (spec-v1395: reportable disease urgency, California and Texas — clinical disclaimer)
 - `reportable-condition-urgency`
 
+### lib/safe-haven-infant-check-v1394.js (spec-v1394: safe-haven infant surrender, New York, New Jersey, and Texas — clinical disclaimer)
+- `safe-haven-infant-check`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

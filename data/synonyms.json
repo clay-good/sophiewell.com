@@ -8552,6 +8552,17 @@
       ],
       "tile": "reportable-condition-urgency",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "safe haven",
+        "safe haven infant",
+        "abandoned newborn",
+        "baby moses law",
+        "newborn safety device"
+      ],
+      "tile": "safe-haven-infant-check",
+      "audience": "clinicians"
     }
   ]
 }

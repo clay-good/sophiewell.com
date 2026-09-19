@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Safe Haven Infant Check (NY, NJ, TX).** Whether an infant left at a safe haven
+  is within the state's age limit (Texas 60 days, New Jersey and New York 30), and
+  when child protective services must be told: Texas and New Jersey by the first
+  business day after. California keeps its own tool. See docs/spec-v1394.md.
+
 - **Rabies, Texas: exposed pets.** The Texas line now adds 25 TAC 169.30: a pet
   exposed to a rabid animal is confined 45 days if vaccinated, or 90 days if not. See
   docs/spec-v1401.md.
