@@ -1,8 +1,9 @@
 # Scope — state practice: New York, New Jersey, California, Texas
 
-**Status:** Proposed, September 18, 2026. Docs only; nothing is built.
+**Status:** Built, September 18–19, 2026. All 64 new tiles and the nine backfills are live. Each spec's
+Built sections say what was read, what changed from the plan, and what is still not read.
 **Specs:** spec-v1388 (shared machinery) through spec-v1401 (backfills).
-**Catalog effect if fully built:** +64 new tiles (one of them, `tx-maternal-level-reference`, is blocked on an unread rule) and state data added to 9 existing tiles.
+**Catalog effect:** +64 new tiles and state data added to 9 existing tiles.
 
 ## What this does for a clinician
 
