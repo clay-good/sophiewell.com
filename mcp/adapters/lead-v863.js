@@ -13,7 +13,7 @@ export default [
     fields: [
       { dom: 'bl-level', arg: 'level', kind: 'number', required: true, label: 'Blood lead level', unit: 'micrograms per deciliter' },
       { dom: 'bl-sample', arg: 'sample', kind: 'enum', values: ['', 'venous', 'capillary'], required: false, label: 'Sample type' },
-      { dom: 'bl-state', arg: 'state', kind: 'enum', values: ['', 'CA'], required: false, label: 'State line (optional)' },
+      { dom: 'bl-state', arg: 'state', kind: 'enum', values: ['', 'CA', 'NY', 'NYC', 'TX'], required: false, label: 'State line (optional)' },
     ],
   },
 ];

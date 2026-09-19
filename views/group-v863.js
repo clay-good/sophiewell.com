@@ -40,7 +40,7 @@ export const renderers = {
     root.appendChild(el('h2', { text: 'The result' }));
     numField(root, 'Blood lead level (micrograms per deciliter)', 'bl-level', { min: '0', max: '500', step: '0.1' });
     selField(root, 'Sample type', 'bl-sample', [['', 'Not stated'], ['venous', 'Venous'], ['capillary', 'Capillary (fingerstick)']]);
-    selField(root, 'State line (optional)', 'bl-state', [['', 'None: national answer only'], ['CA', 'California']]);
+    selField(root, 'State line (optional)', 'bl-state', [['', 'None: national answer only'], ['CA', 'California'], ['NY', 'New York State'], ['NYC', 'New York City'], ['TX', 'Texas']]);
 
     const o = out(); root.appendChild(o);
     wire(['bl-level', 'bl-sample', 'bl-state'], () => safe(o, () => {
@@ -51,6 +51,8 @@ export const renderers = {
       if (r.loweredNote) note(o, r.loweredNote);
       if (r.capillaryNote) note(o, r.capillaryNote);
       if (r.caNote) note(o, r.caNote);
+      if (r.nyNote) note(o, r.nyNote);
+      if (r.txNote) note(o, r.txNote);
       note(o, r.notSafeNote);
       note(o, r.historyNote);
       note(o, r.scopeNote);

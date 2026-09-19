@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Blood lead: New York and Texas lines.** Choose New York to see the state's
+  line of 5, venous confirmation, follow-up, and screening at ages 1 and 2
+  (10 NYCRR 67-1). Choose New York City to see the 24-hour report at 3.5 or more.
+  Choose Texas for DSHS form Pb-109's venous test windows. See docs/spec-v1401.md.
+
 - **Texas Safe Harbor: the Board rule's deadlines.** The decision aid now applies
   22 TAC 217.20: the comprehensive request before leaving at the end of the shift,
   the committee decision within 14 days, the CNO's notice within 48 hours, and

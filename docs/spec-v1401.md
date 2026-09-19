@@ -166,3 +166,27 @@ is a separate question.
 
 With that, Part B's nine rows are done except the New York City, New York State, and Texas lead lines,
 which were not read.
+
+`blood-lead` has an optional New York line (built 2026-09-19) from 10 NYCRR 67-1.1 and 67-1.2
+(amended effective September 25, 2019), read on Cornell LII. New York's elevated level is **5 or
+more**; a capillary result of 5 or more is confirmed on a venous sample, and **the rule sets no
+deadline** for that, so the line prints none. A confirmed level of 5 or more gets a complete
+diagnostic evaluation (exposure, nutrition including iron, and development), treatment if needed, and
+referral for environmental management. Children are screened at or around ages 1 and 2, and an
+emergency department asks whether a child 6 months to 6 years has been screened. **Changed from the
+plan:** the plan dated the 5 line "since October 1, 2019"; the rule text read is effective September
+25, 2019.
+
+`blood-lead` also has an optional Texas line (built 2026-09-19) from DSHS form Pb-109 (rev. March
+2024). A capillary screen is confirmed by a diagnostic venous test: 3.5-9 within 1 to 12 weeks, 10-19
+within 1 to 4 weeks, 20-44 within 1 to 2 weeks, 45 or more within 48 hours. These match the plan. A
+venous result gets the form's early retest window, and the line says when an environmental lead
+investigation applies (20 or more, or a venous 10 or more persisting 12 weeks). The form prints
+whole-number bands, so a value such as 9.5 is read with the lower band.
+
+`blood-lead` has an optional New York City line (built 2026-09-19) from Health Code 11.03 as amended
+October 25, 2022, and the Health Department's letter of September 12, 2025: report 3.5 or more
+within 24 hours, draw a venous sample before the patient leaves when an in-office capillary test is
+3.5 or more, and monitor until a level under 3.5. The plan's prenatal risk assessment at the first
+visit is in the letter, but this tool reads a child's result, so the line leaves it out. With that,
+all nine Part B rows are built.

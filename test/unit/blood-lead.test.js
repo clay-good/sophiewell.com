@@ -80,3 +80,39 @@ test('blood-lead: CA capillary 12 is confirmed venous within 1 month; no state c
   assert.match(bl({ level: '70', sample: 'capillary', state: 'CA' }).caNote, /immediately/);
   assert.match(bl({ level: '4', sample: 'capillary', state: 'CA' }).caNote, /within 3 months/);
 });
+
+// spec-v1401 Part B: the New York line uses New York's own line of 5 and sets no confirmation deadline.
+test('blood-lead: NY line -- 5 is elevated, capillary confirmed venous with no deadline; no state changes nothing', () => {
+  const cap = bl({ level: '6', sample: 'capillary', state: 'NY' });
+  assert.match(cap.nyNote, /Confirm this capillary result on a venous sample/);
+  assert.match(cap.nyNote, /no deadline/);
+  assert.equal(cap.caNote, null);
+  assert.equal(cap.band, bl({ level: '6', sample: 'capillary' }).band);
+  assert.equal(bl({ level: '6', sample: 'capillary' }).nyNote, null);
+  assert.match(bl({ level: '4', sample: 'venous', state: 'NY' }).nyNote, /not elevated under the state rule, although it is at or above/);
+  assert.match(bl({ level: '8', sample: 'venous', state: 'NY' }).nyNote, /developmental screening/);
+  assert.match(bl({ level: '2', state: 'NY' }).nyNote, /ages 1 and 2/);
+});
+
+// spec-v1401 Part B: the Texas line reads DSHS form Pb-109's windows.
+test('blood-lead: TX line -- Pb-109 diagnostic venous windows by band', () => {
+  assert.match(bl({ level: '12', sample: 'capillary', state: 'TX' }).txNote, /within 1 to 4 weeks/);
+  assert.match(bl({ level: '50', sample: 'capillary', state: 'TX' }).txNote, /within 48 hours/);
+  assert.match(bl({ level: '5', sample: 'capillary', state: 'TX' }).txNote, /within 1 to 12 weeks/);
+  assert.match(bl({ level: '25', sample: 'venous', state: 'TX' }).txNote, /2 weeks to 1 month/);
+  assert.match(bl({ level: '12', sample: 'venous', state: 'TX' }).txNote, /persists at least 12 weeks/);
+  assert.match(bl({ level: '2', state: 'TX' }).txNote, /no diagnostic venous test/);
+  assert.equal(bl({ level: '12', sample: 'capillary', state: 'TX' }).nyNote, null);
+  assert.equal(bl({ level: '12', sample: 'capillary' }).txNote, null);
+});
+
+// spec-v1401 Part B: New York City reports at 3.5 within 24 hours.
+test('blood-lead: NYC line -- report 3.5 or more within 24 hours; venous before the patient leaves', () => {
+  const r = bl({ level: '4', sample: 'capillary', state: 'NYC' });
+  assert.match(r.nyNote, /within 24 hours/);
+  assert.match(r.nyNote, /before the patient leaves/);
+  assert.match(r.nyNote, /ages 1 and 2/);
+  assert.doesNotMatch(bl({ level: '4', sample: 'venous', state: 'NYC' }).nyNote, /before the patient leaves/);
+  assert.match(bl({ level: '3', state: 'NYC' }).nyNote, /not reportable/);
+  assert.equal(r.band, bl({ level: '4', sample: 'capillary' }).band);
+});
