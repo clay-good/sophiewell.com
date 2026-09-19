@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `23d5d58fe6d8889c`
-Generated: 2026-09-19T15:40:15.135Z
+Build ID: `3a47f5e73665cdb4`
+Generated: 2026-09-19T15:48:23.389Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -561,7 +561,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/migraine-ichd3-v815.js` | 10346 | `2d8f5828599b247771e72f31686801a06caeee5c5dae8a41d39243370ea501ce` |
 | `lib/milch-condyle-v418.js` | 3230 | `bd203011afad9a6b64e11d891667f379ff974ef02b8f2f01f97d0223bc1a754c` |
 | `lib/miller-gingival-recession-v724.js` | 4057 | `b1d11e492848c3dd47c988a4e603929084939dac5cad8042402014dba90366f3` |
-| `lib/minor-self-consent-v1395.js` | 18198 | `e677fcd9f6081a1822579ca4dd6f720e9d1be205515abc92d5beed37af50d702` |
+| `lib/minor-self-consent-v1395.js` | 18327 | `d3b902c7520127cf1aa01788b6bd82220f034e239d188a39768015521e4c3afd` |
 | `lib/mis-c-v795.js` | 5510 | `aebe68b4bd5f98d48ddb51cf2a35e0a15ebb97f435a18010a2005382dbebfdbe` |
 | `lib/mitral-regurgitation-stage-v847.js` | 11352 | `ba47ad4c74266e61fca7cba3ebf57759abc04349542c5e225caa206e81633e3c` |
 | `lib/mitral-stenosis-stage-v845.js` | 10237 | `c7e9a9b1f16a458f0ca2448a2ccab7dc283556c39e1887de682c0119bacc4213` |

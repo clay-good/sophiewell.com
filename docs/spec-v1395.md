@@ -216,3 +216,9 @@ to believe abuse or neglect may examine a child without anyone's consent, includ
 tests, and photographs, except a child 16 or older who refuses or where a court order prohibits it.
 `minor-self-consent` now answers the Texas sexual-assault question with that rule ("Only if the
 grounds are documented") instead of saying 32.005 was not read.
+
+N.J.S.A. 9:17A-4 was checked word for word against the current text reprinted in Assembly bill A3016
+(2024, pub.njleg.gov), because the FindLaw summaries disagreed about which condition the age of 13
+attaches to. It attaches to HIV and AIDS only; STI care has no age, and sexual assault turns on the
+professional's judgment. Minor-consented behavioral health care is confidential, and the answer now
+says so.

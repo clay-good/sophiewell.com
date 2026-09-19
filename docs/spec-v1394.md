@@ -155,3 +155,9 @@ device), N.J.S.A. 30:4C-15.7 (FindLaw, current as of January 1, 2024), and New Y
   answer says so.
 - A new tool, not an extension of `ca-safe-surrender`, because California's steps (bracelet,
   48-hour notice, 14-day reclaim) share nothing with the other three; each tool points to the other.
+
+N.J.S.A. 30:4C-15.7's core wording was cross-checked against the section as reprinted in Assembly bill
+A485 (2014, pub.njleg.gov): "is or appears to be no more than 30 days old", "does not express an intent
+to return", and the hospital's notice "no later than the first business day after taking possession".
+The fire-station and squad sites were added later and come from the current FindLaw text.
+

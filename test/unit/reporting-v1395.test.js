@@ -129,6 +129,7 @@ test('minor consent: NY -- STI under 21 alone; mental health only on documented 
 
 test('minor consent: NJ -- behavioral health at 16, not 15; sexual assault with parent notice; HIV at 13', () => {
   assert.equal(msc({ state: 'NJ', age: '16', service: 'mental-health' }).mayConsent, true);
+  assert.match(msc({ state: 'NJ', age: '16', service: 'mental-health' }).band, /confidential/);
   assert.equal(msc({ state: 'NJ', age: '15', service: 'mental-health' }).mayConsent, false);
   assert.match(msc({ state: 'NJ', age: '14', service: 'sexual-assault' }).band, /best interests/);
   assert.match(msc({ state: 'NJ', age: '12', service: 'sti' }).band, /which this minor is not/);
