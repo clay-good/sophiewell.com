@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `8639499dadd35084`
-Generated: 2026-09-19T16:14:31.271Z
+Build ID: `0b57df8b4d864162`
+Generated: 2026-09-19T18:42:08.376Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -561,7 +561,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/migraine-ichd3-v815.js` | 10346 | `2d8f5828599b247771e72f31686801a06caeee5c5dae8a41d39243370ea501ce` |
 | `lib/milch-condyle-v418.js` | 3230 | `bd203011afad9a6b64e11d891667f379ff974ef02b8f2f01f97d0223bc1a754c` |
 | `lib/miller-gingival-recession-v724.js` | 4057 | `b1d11e492848c3dd47c988a4e603929084939dac5cad8042402014dba90366f3` |
-| `lib/minor-self-consent-v1395.js` | 18327 | `d3b902c7520127cf1aa01788b6bd82220f034e239d188a39768015521e4c3afd` |
+| `lib/minor-self-consent-v1395.js` | 19836 | `8f17e8680232ca267880db83c5544bb9ae0d9ce3f2d13a9fbb3bf7b3c4206f34` |
 | `lib/mis-c-v795.js` | 5510 | `aebe68b4bd5f98d48ddb51cf2a35e0a15ebb97f435a18010a2005382dbebfdbe` |
 | `lib/mitral-regurgitation-stage-v847.js` | 11352 | `ba47ad4c74266e61fca7cba3ebf57759abc04349542c5e225caa206e81633e3c` |
 | `lib/mitral-stenosis-stage-v845.js` | 10237 | `c7e9a9b1f16a458f0ca2448a2ccab7dc283556c39e1887de682c0119bacc4213` |
@@ -718,7 +718,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/pirani-clubfoot-v386.js` | 3487 | `787ccfe1abcbcf66a2a9d8ea1218c443f22882983faccd94d3929dfe1c024da5` |
 | `lib/pk-v166.js` | 8723 | `1183ec677162e380baf0d90079c14e6aeb5d1e67a4d53198eb31d0b40ccff265` |
 | `lib/plaque-control-record-v721.js` | 3208 | `3038454a7f6982a21e476538381e1c4e9e526219000cb55512fc86f4a7489f6b` |
-| `lib/pmp-check-required-v1393.js` | 14866 | `48673464afc9b4df914f4454ef58da826a07d591fd860440882a6b20ede4a4a8` |
+| `lib/pmp-check-required-v1393.js` | 15326 | `36e31f0f049a911bee6db1c7c43e58ba8fc2ca921ffc63d38488e4b9c54013ee` |
 | `lib/pneumonia-risk-v260.js` | 7249 | `029d9c0701f969f39f61031ea2648625c6b5b43b21d5d8c3c8b19f030391add4` |
 | `lib/poi-diagnosis-v834.js` | 8980 | `51f5aef7d5ff7d875fe26634d55222aa36e7978e4500c7dfc84983a91c33dc88` |
 | `lib/pollock-flickinger-v601.js` | 14300 | `19675dc09546ea686829394e1d801040ffdf77cd300f834a8771988c0b1db9c4` |

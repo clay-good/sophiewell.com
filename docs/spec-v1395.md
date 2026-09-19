@@ -222,3 +222,18 @@ N.J.S.A. 9:17A-4 was checked word for word against the current text reprinted in
 attaches to. It attaches to HIV and AIDS only; STI care has no age, and sexual assault turns on the
 professional's judgment. Minor-consented behavioral health care is confidential, and the answer now
 says so.
+
+## Update (2026-09-19): marriage and emancipation in California and Texas
+
+The form does not ask whether the minor is married or emancipated, so, as for New York and New
+Jersey, each state's rule is printed as a note under the answer.
+
+| state | read | note |
+|---|---|---|
+| CA | Family Code 7002, 7050 (leginfo) | a minor who is married or in a domestic partnership (even if dissolved), on active duty, or declared emancipated is emancipated, and consents to medical, dental, or psychiatric care (7050(e)(1)) |
+| TX | Family Code 1.104, 31.006, 32.003(a)(7) (official mirror) | a minor married under Texas law, or whose disabilities of minority were removed for general purposes, has an adult's capacity and needs no 32.003 ground; a child confined in a TDCJ facility may consent |
+
+The Texas branch used to read a `married` argument that neither the form nor the agent tool could
+supply, and when it was "yes" it answered "a parent consents", the opposite of 1.104. The
+32.003(a)(7) branch read an equally unsupplied `confined` argument; it is in the note now. Neither
+argument is read any more.

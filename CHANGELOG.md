@@ -6,6 +6,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Minor self-consent, California and Texas: marriage and emancipation.** Both
+  states now name the rule the form does not ask about: a married minor in Texas has
+  an adult's capacity (Family Code 1.104, 31.006), and an emancipated minor in
+  California consents to care (7002, 7050(e)(1)). New York and New Jersey already
+  did. See docs/spec-v1395.md.
+
+- **PMP check, California emergency department: a blank buprenorphine answer is
+  asked.** It had read as "no", so a buprenorphine prescription left unanswered got
+  "Check required" where the law exempts it. See docs/spec-v1393.md.
+
 - **Opioid day limits and PMP checks: blanks are asked.** A blank refills or
   extended-release answer no longer reads as "no" in the Texas and New Jersey day
   limits or the California CURES exemptions. See docs/spec-v1393.md.

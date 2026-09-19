@@ -111,3 +111,8 @@ seven days in California, the answer stands without it. One test had pinned the 
 `ny-hiv-hcv-test-offer` (spec-v1395) had the same shape: under 13 (HIV) or 18 (hepatitis C), a blank
 risk answer printed "No offer required now". It now asks, and two tests that relied on the blank pass
 "no" explicitly.
+
+The same blank in the other direction: in a California emergency department a blank buprenorphine
+answer read as "no", so an unanswered buprenorphine prescription got "Check required" where
+11165.4 exempts it. It is now asked, except where a nonrefillable supply of seven days or less is
+exempt either way. Two tests had relied on the blank and now pass "no" explicitly.

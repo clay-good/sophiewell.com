@@ -24,11 +24,21 @@ test('pmp: one exemption per state', () => {
   assert.equal(pmp({ ...RX, state: 'NJ', setting: 'procedure', days: '5', within24: 'yes' }).verdict, 'exempt');
   assert.equal(pmp({ ...RX, state: 'NJ', setting: 'procedure', days: '5', within24: 'no' }).verdict, 'required');
   assert.equal(pmp({ ...RX, state: 'CA', setting: 'ed', days: '7', refills: 'no' }).verdict, 'exempt');
-  assert.equal(pmp({ ...RX, state: 'CA', setting: 'ed', days: '7', refills: 'yes' }).verdict, 'required');
+  assert.equal(pmp({ ...RX, state: 'CA', setting: 'ed', days: '7', refills: 'yes', buprenorphine: 'no' }).verdict, 'required');
   assert.equal(pmp({ ...RX, state: 'CA', setting: 'ed', days: '30', buprenorphine: 'yes' }).verdict, 'exempt');
   const tx = pmp({ ...RX, state: 'TX', setting: 'cancer-sickle' });
   assert.equal(tx.verdict, 'exempt');
   assert.match(tx.record, /prescription record/);
+});
+
+// A blank buprenorphine answer is asked where it alone decides the California ED exemption, and not
+// where a nonrefillable supply of seven days or less is exempt either way.
+test('pmp: California emergency department asks a blank buprenorphine answer instead of reading it as no', () => {
+  const blank = pmp({ ...RX, state: 'CA', setting: 'ed', days: '7', refills: 'yes' });
+  assert.equal(blank.valid, false);
+  assert.match(blank.message, /buprenorphine/);
+  assert.equal(pmp({ ...RX, state: 'CA', setting: 'ed', days: '30' }).valid, false);
+  assert.equal(pmp({ ...RX, state: 'CA', setting: 'ed', days: '7', refills: 'no' }).verdict, 'exempt');
 });
 
 test('pmp: New Jersey checks every emergency-department Schedule II for pain, and every three months while continuing', () => {
@@ -107,5 +117,5 @@ test('limit and PMP: blank refills / extended-release are asked, not assumed', (
   assert.equal(lim({ state: 'NJ', category: 'acute', days: '6', initial: 'yes' }).verdict, 'over');
   const { refills, ...noRefills } = RX;
   assert.equal(pmp({ ...noRefills, state: 'CA', setting: 'ed', days: '7' }).valid, false);
-  assert.equal(pmp({ ...noRefills, state: 'CA', setting: 'ed', days: '14' }).verdict, 'required');
+  assert.equal(pmp({ ...noRefills, state: 'CA', setting: 'ed', days: '14', buprenorphine: 'no' }).verdict, 'required');
 });

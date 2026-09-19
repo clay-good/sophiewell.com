@@ -116,6 +116,21 @@ test('msc: Texas sexual assault names the routes and does not decide; adults and
   assert.equal(msc({ state: 'CA', age: '18', service: 'sti' }).valid, false);
 });
 
+// Marriage and emancipation are not asked, so every state names them in a note (CA Fam. Code
+// 7002/7050(e)(1); TX Fam. Code 1.104/31.006). A Texas `married` argument used to route a pregnant
+// minor to "a parent consents"; it is no longer read.
+test('msc: California and Texas name emancipation and marriage; Texas ignores an unasked married flag', () => {
+  const ca = msc({ state: 'CA', age: '16', service: 'general' });
+  assert.match(ca.stateNote, /7050\(e\)\(1\)/);
+  assert.match(ca.stateNote, /7002/);
+  const tx = msc({ state: 'TX', age: '16', service: 'general' });
+  assert.match(tx.stateNote, /1\.104/);
+  assert.match(tx.stateNote, /31\.006/);
+  assert.match(tx.stateNote, /32\.003\(a\)\(7\)/);
+  assert.equal(msc({ state: 'TX', age: '16', service: 'pregnancy', married: 'yes' }).mayConsent, true);
+  for (const st of ['NY', 'NJ', 'CA', 'TX']) assert.ok(msc({ state: st, age: '15', service: 'sti' }).stateNote, st);
+});
+
 // spec-v1395: New York and New Jersey minor consent; what no statute read settles stays unanswered.
 test('minor consent: NY -- STI under 21 alone; mental health only on documented grounds; abortion unanswered', () => {
   const sti = msc({ state: 'NY', age: '15', service: 'sti' });
