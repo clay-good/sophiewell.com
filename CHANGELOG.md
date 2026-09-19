@@ -6,6 +6,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Three more risk models stop answering outside the people they were built on.**
+  MESA (45-85), SCORE2-OP (70 and over), and the Reynolds Risk Score (women 45 and
+  over, men 50 and over) each quietly pulled an out-of-range age back to the edge
+  and answered. The Reynolds floor is not shared between the sexes, and the tool had
+  been taking 30 for either. See docs/spec-v1409.md.
+
 - **SCORE2 and Framingham stop answering outside the ages they were built on.**
   Both quietly pulled an out-of-range age back to the edge of their fitted range and
   answered anyway, so a 95-year-old got a risk figure computed for a 69-year-old.

@@ -35,3 +35,12 @@ test('extreme fuzzed inputs clamp to [0,100]', () => {
   const r = score2Op({ age: 130, male: true, smoker: true, sbp: 300, totalChol: 1e9, hdl: 0, region: 'very-high' });
   assert.ok(r.risk >= 0 && r.risk <= 100 && Number.isFinite(r.risk));
 });
+
+// spec-v1409: SCORE2-OP is "intended for use in people aged over 70" (Eur Heart J 2021;42:2455-2467;
+// the 2021 ESC prevention guideline repeats it). Below that it used to clamp the age to 70 and answer.
+test('an age under the 70 the model is intended for is refused, not clamped', () => {
+  const r = score2Op({ age: 65, male: true, smoker: false, sbp: 150, totalChol: 6, hdl: 1.4, diabetes: false, region: 'low' });
+  assert.equal(r.valid, false);
+  assert.match(r.band, /fitted on ages 70 and over/);
+  assert.equal(score2Op({ age: 70, male: true, smoker: false, sbp: 150, totalChol: 6, hdl: 1.4, diabetes: false, region: 'low' }).valid, true);
+});

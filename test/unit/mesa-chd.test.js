@@ -36,3 +36,14 @@ test('extreme fuzzed CAC stays finite and in [0,100]', () => {
   const r = mesaChd({ ...base, cac: 1e9 });
   assert.ok(r.riskWithCac >= 0 && r.riskWithCac <= 100 && Number.isFinite(r.riskWithCac));
 });
+
+// spec-v1409: MESA's own calculator says the score is "most appropriate for patients in the 45-85
+// year age range" (mesa-nhlbi.org; derivation cohort 45-84, McClelland 2015).
+test('an age outside 45-85 is refused, not clamped', () => {
+  for (const age of [44, 90]) {
+    const r = mesaChd({ age, male: true, race: 'white', totalChol: 200, hdl: 50, sbp: 120, cac: 100 });
+    assert.equal(r.valid, false, String(age));
+    assert.match(r.band, /fitted on ages 45 to 85/);
+  }
+  assert.equal(mesaChd({ age: 60, male: true, race: 'white', totalChol: 200, hdl: 50, sbp: 120, cac: 100 }).valid, true);
+});

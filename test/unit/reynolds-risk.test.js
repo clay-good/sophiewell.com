@@ -34,3 +34,17 @@ test('extreme fuzzed inputs clamp risk to [0,100]', () => {
   const r = reynoldsRisk({ age: 130, male: false, sbp: 300, totalChol: 1e9, hdl: 1, hsCrp: 1e9, smoker: true, familyHx: true, diabetic: true, hba1c: 1e9 });
   assert.ok(r.risk >= 0 && r.risk <= 100 && Number.isFinite(r.risk));
 });
+
+// spec-v1409: two models on two cohorts -- women 45 and older (Women's Health Study, JAMA
+// 2007;297:611-619), men 50 and older (Physicians' Health Study II, Circulation 2008;118:2243-2251).
+// The field used to accept 30 for either sex, and the model clamped and answered.
+test('each sex is refused below the age of its own cohort', () => {
+  const women = reynoldsRisk({ age: 40, male: false, sbp: 120, totalChol: 260, hdl: 45, hsCrp: 2 });
+  assert.equal(women.valid, false);
+  assert.match(women.band, /for women was fitted on ages 45 and over/);
+  const men = reynoldsRisk({ age: 47, male: true, sbp: 120, totalChol: 260, hdl: 45, hsCrp: 2 });
+  assert.equal(men.valid, false);
+  assert.match(men.band, /for men was fitted on ages 50 and over/);
+  // 47 is inside the women's cohort and outside the men's: the floor is not shared.
+  assert.equal(reynoldsRisk({ age: 47, male: false, sbp: 120, totalChol: 260, hdl: 45, hsCrp: 2 }).valid, true);
+});

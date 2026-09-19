@@ -115,7 +115,7 @@ export const renderers = {
 
   // ----- 2.2 score2-op ---------------------------------------------------
   'score2-op'(root) {
-    root.appendChild(field('Age (years, >= 70)', 'op-age', { min: 70, max: 100, placeholder: '75' }));
+    root.appendChild(field(`Age (years, ${M.SCORE2OP_AGES.min} and over)`, 'op-age', { min: BOUNDS.ageYears.min, max: BOUNDS.ageYears.max, placeholder: '75' }));
     root.appendChild(selectField('Sex', 'op-sex', SEX_OPTS));
     root.appendChild(checkField('Current smoker', 'op-smoke'));
     root.appendChild(checkField('Diabetes', 'op-dm'));
@@ -143,7 +143,7 @@ export const renderers = {
 
   // ----- 2.3 mesa-chd ----------------------------------------------------
   'mesa-chd'(root) {
-    root.appendChild(field('Age (years)', 'mesa-age', { min: 45, max: 85, placeholder: '60' }));
+    root.appendChild(field(`Age (years, ${M.MESA_AGES.min}-${M.MESA_AGES.max})`, 'mesa-age', { min: M.MESA_AGES.min, max: M.MESA_AGES.max, placeholder: '60' }));
     root.appendChild(selectField('Sex', 'mesa-sex', SEX_OPTS));
     root.appendChild(selectField('Race / ethnicity', 'mesa-race', [
       { value: 'white', text: 'White (reference)' },
@@ -210,7 +210,7 @@ export const renderers = {
 
   // ----- 2.5 reynolds-risk -----------------------------------------------
   'reynolds-risk'(root) {
-    root.appendChild(field('Age (years)', 'rr-age', { min: 30, max: 100, placeholder: '55' }));
+    root.appendChild(field(`Age (years, ${M.REYNOLDS_AGES.female.min} and over in women, ${M.REYNOLDS_AGES.male.min} in men)`, 'rr-age', { min: BOUNDS.ageYears.min, max: BOUNDS.ageYears.max, placeholder: '55' }));
     root.appendChild(selectField('Sex', 'rr-sex', SEX_OPTS));
     root.appendChild(field('Systolic BP (mmHg)', 'rr-sbp', { ...SBP_FIELD, placeholder: '125' }));
     root.appendChild(field('Total cholesterol (mg/dL)', 'rr-tc', { min: 50, max: 600, placeholder: '200' }));

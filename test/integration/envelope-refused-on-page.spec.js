@@ -26,7 +26,8 @@ const REFUSED = /plausible range|beyond (?:a plausible|recorded)|outside (?:that
 const LEAK = /(?:^|[^A-Za-z])(?:null|undefined|NaN|-?Infinity)(?![A-Za-z])/;
 
 test('a value past its envelope is refused on the page, with a range and no null', async ({ page }) => {
-  test.setTimeout(1_500_000);
+  // ~8 minutes alone; the cap is for a CI runner sharing itself with the other catalog sweeps.
+  test.setTimeout(2_400_000);
   const rows = candidates().filter((r) => {
     const n = Number(r.ex);
     const b = envelope(r);
