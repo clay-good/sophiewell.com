@@ -73,6 +73,9 @@ export const ANSWERS_AN_EMPTY_FORM = new Set([
   "mtp-tracker",
   "naloxone",
   "nhsn-vae",
+  // spec-v1397: the only number field is the NJ, CA, and TX continuing-education hours; the
+  // worked example is New York, whose answer comes from course dates, so clearing it changes nothing.
+  "nurse-license-training-requirements",
   "pa-turnaround",
   "pasi",
   "pbac-hmb",

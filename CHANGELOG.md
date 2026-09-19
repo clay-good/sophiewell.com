@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Nurse training and CE in four states.** The nurse training tile now checks New
+  Jersey (30 hours with an opioid hour), California (30 hours), and Texas (20
+  hours or a certification, plus the targeted hours) continuing education, beside
+  New York's mandated courses. See docs/spec-v1397.md.
+
 - **Reportable disease: report now or later?** The reporting deadline for a
   notifiable condition in California (Title 17 list, June 2025) or Texas (DSHS
   2026 list), transcribed from each state's PDF, with the date and time it is due

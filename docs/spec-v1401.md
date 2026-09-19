@@ -105,3 +105,18 @@ existing worked example's answer.
 - doxy-PEP: no pregnancy or contraindication logic is added, because the guideline
   read gives none for the recommended population.
 - **Part B** (state lines on nine existing tiles) is not built in this wave.
+
+## Built, Part B pointers (2026-09-19)
+
+Three of the four "pointer" rows ship as named Related links, which is how the site points from
+one tool to another:
+
+| tile | now links to |
+|---|---|
+| `sti-screening` | `prenatal-infection-screening-schedule`, `doxy-pep` |
+| `opioid-mme` | `pmp-check-required`, `acute-opioid-rx-limit` |
+| `heat-index` | `calosha-outdoor-heat`, `calosha-indoor-heat` |
+
+No existing answer changed. Still open in Part B: the state lines for `blood-lead`,
+`restraint-timer`, `hiv-pep-occupational`, `sepsis-bundle-clock`, and `rabies-pep`, and the
+`qbl-pph` CMQCC sentence (the CMQCC terms were not read).

@@ -89,3 +89,18 @@ Catalog 1,739 → 1,741. Read from leginfo (B&P 2837.103, 2837.104) and texas.pu
 The NJ, CA, and TX rows of `nurse-license-training-requirements` are still to come, each after its
 source is read.
 
+## Built (2026-09-19): New Jersey, California, and Texas rows
+
+Read on Cornell LII: N.J.A.C. 13:37-5.3 (amended effective May 17, 2021), 16 CCR 1451, and 22 TAC
+216.3 (as last amended effective November 19, 2019). Each state checks this renewal period's
+continuing education rather than course dates.
+
+- New Jersey: 30 hours per biennial period with at least one hour on prescription opioid drugs.
+  The one-time organ-donation hour in the plan is not in 13:37-5.3, so it is not checked.
+- California: 30 hours. The implicit-bias hour (AB 241) is set by statute, which was not read; the
+  tile says it is not checked. California LVNs belong to a different board and are not covered.
+- Texas: 20 hours or a national certification, plus jurisprudence and ethics every third period,
+  older-adult hours if the practice includes them, one-time forensic evidence collection for ER
+  nurses, the HHSC trafficking course, and five pharmacotherapeutics hours for an APRN who
+  prescribes. "Does not apply" is accepted only where the rule makes the item conditional.
+- The New York answer is unchanged. Only its state list and one test's expectation moved.

@@ -54,27 +54,45 @@ function wire(ids, run) {
 
 export const renderers = {
   'nurse-license-training-requirements'(root) {
-    note(root, 'New York for now. Enter the dates you completed each course; leave one blank if you have not taken it.');
+    note(root, 'New York checks mandated courses by date; New Jersey, California, and Texas check this renewal period\'s continuing education.');
     selectField(root, 'State', 'nlt-state', NLT.NLT_STATES, '-- choose --');
     selectField(root, 'License', 'nlt-license', NLT.LICENSES, '-- choose --');
-    selectField(root, 'Practicing in New York', 'nlt-practicing', NLT.YES_NO, '-- choose --');
-    dateField(root, 'Child abuse identification course completed', 'nlt-abuse', 'blank if never');
-    selectField(root, 'Child abuse training exemption claimed (no contact with minors)', 'nlt-exempt', NLT.YES_NO, '-- not entered --');
-    dateField(root, 'Infection control course completed', 'nlt-infection', 'most recent');
+    selectField(root, 'NY: practicing in New York', 'nlt-practicing', NLT.YES_NO, '-- choose --');
+    dateField(root, 'NY: child abuse identification course completed', 'nlt-abuse', 'blank if never');
+    selectField(root, 'NY: child abuse training exemption claimed (no contact with minors)', 'nlt-exempt', NLT.YES_NO, '-- not entered --');
+    dateField(root, 'NY: infection control course completed', 'nlt-infection', 'most recent');
+    numField(root, 'NJ, CA, TX: continuing education hours this renewal period', 'nlt-hours', 'hours');
+    selectField(root, 'NJ: at least one hour on prescription opioid drugs', 'nlt-nj-opioid', NLT.YES_NO, '-- not entered --');
+    selectField(root, 'TX: Board-approved national certification in your area of practice', 'nlt-tx-cert', NLT.YES_NO, '-- not entered --');
+    selectField(root, 'TX: jurisprudence and ethics, 2 hours, in the last three periods', 'nlt-tx-juris', NLT.DONE_NA, '-- not entered --');
+    selectField(root, 'TX: older adult care, 2 hours this period', 'nlt-tx-older', NLT.DONE_NA, '-- not entered --');
+    selectField(root, 'TX: forensic evidence collection, 2 hours (ER nurses)', 'nlt-tx-forensic', NLT.DONE_NA, '-- not entered --');
+    selectField(root, 'TX: HHSC human trafficking course (direct care)', 'nlt-tx-trafficking', NLT.DONE_NA, '-- not entered --');
+    selectField(root, 'TX: APRN pharmacotherapeutics, 5 more hours', 'nlt-tx-pharm', NLT.DONE_NA, '-- not entered --');
 
-    const ids = ['nlt-state', 'nlt-license', 'nlt-practicing', 'nlt-abuse', 'nlt-exempt', 'nlt-infection'];
+    const ids = ['nlt-state', 'nlt-license', 'nlt-practicing', 'nlt-abuse', 'nlt-exempt', 'nlt-infection', 'nlt-hours', 'nlt-nj-opioid', 'nlt-tx-cert', 'nlt-tx-juris', 'nlt-tx-older', 'nlt-tx-forensic', 'nlt-tx-trafficking', 'nlt-tx-pharm'];
     const o = out(); root.appendChild(o);
     wire(ids, () => safe(o, () => {
       const r = NLT.nurseLicenseTrainingRequirements({
         state: val('nlt-state'), license: val('nlt-license'), practicingNY: val('nlt-practicing'),
         abuseDate: val('nlt-abuse'), abuseExempt: val('nlt-exempt'), infectionDate: val('nlt-infection'),
+        hours: val('nlt-hours'), njOpioid: val('nlt-nj-opioid'), txCert: val('nlt-tx-cert'), txJuris: val('nlt-tx-juris'),
+        txOlder: val('nlt-tx-older'), txForensic: val('nlt-tx-forensic'), txTrafficking: val('nlt-tx-trafficking'), txPharm: val('nlt-tx-pharm'),
       });
       if (!r.valid) { note(o, r.message); return; }
-      resultRow(o, [
-        { text: r.items[0].text, cls: r.items[0].status === 'due' ? 'warn' : null },
-        { label: 'Child abuse update', value: r.bandLabel },
-      ]);
-      note(o, r.items[1].text);
+      if (r.state === 'NY') {
+        resultRow(o, [
+          { text: r.items[0].text, cls: r.items[0].status === 'due' ? 'warn' : null },
+          { label: 'Child abuse update', value: r.bandLabel },
+        ]);
+        note(o, r.items[1].text);
+      } else {
+        resultRow(o, [
+          { text: r.band, cls: r.abnormal ? 'warn' : null },
+          { label: 'Answer', value: r.bandLabel },
+        ]);
+        list(o, r.items.map((i) => i.text));
+      }
       note(o, r.note);
       note(o, r.postureNote);
     }));

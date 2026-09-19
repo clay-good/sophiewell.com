@@ -1122,7 +1122,7 @@ const UTILITIES = [
 
   // spec-v1397: licensure (Group M). views/group-v1397.js, lib/<id>-v1397.js,
   // mcp/adapters/<id>-v1397.js. New York first, for the November 17, 2026 deadline.
-  { id: 'nurse-license-training-requirements', name: 'Nurse Mandated Training: What Is Due (New York)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'nurse-license-training-requirements', name: 'Nurse Mandated Training and CE: What Is Due (NY, NJ, CA, TX)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'ca-np-103-104-tracker', name: 'California Nurse Practitioner 103/104 Transition Tracker (B&P 2837.103, 2837.104)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'tx-prescriptive-authority-agreement', name: 'Texas Prescriptive Authority Agreement Checker (Occ. Code 157.0512)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
 

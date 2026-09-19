@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `ee0fc2d9f8de6025`
-Generated: 2026-09-19T08:41:56.802Z
+Build ID: `9944e8529de0eda1`
+Generated: 2026-09-19T09:35:42.768Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -25,9 +25,9 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 115032 | `c01f4f739c44aebacad1c02760e4a7bc5b75e4688b02e1d1a577260a19e96539` |
+| `index.html` | 115045 | `397af33d650cd57e1a66a4a2b0213100d6d9c917ab480617693f84612bbe5be0` |
 | `styles.css` | 68228 | `094d1a6713908446c258e1434be2ebc3451324020c59388eed73c362116b1585` |
-| `app.js` | 532051 | `df10b4ee72d60d909fb9657612f42ce856f1ab7449d880112cc804dc1a02a9ea` |
+| `app.js` | 532064 | `be06fa0f05eaf4a33ca0dfa1fb93a53d6a44f96ee7bb44ee27a0a6ea107f50bc` |
 | `report-feedback.js` | 12178 | `955e5cb542c7b13dcbb85a75ecf4ccf2dc0b2dffecd84daac1d607bd6acc7cd2` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 | `theme.js` | 3132 | `6910af0b4c65869c6a3d24d17842bb2cc88c7d23f8fb32506fcdbfeec70ce979` |
@@ -48,7 +48,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | Path | Bytes | SHA-256 |
 |---|---:|---|
 | `report-worker.mjs` | 13434 | `bcbebe960bf79e0cb2038f7ddc216dfb0753a9665f071fa32966d5d460ffc794` |
-| `report-catalog.js` | 102102 | `4b30d8f22449431a8f7e8842cc640832bc5f4f5eeaf47439bfac63adb8599a38` |
+| `report-catalog.js` | 102115 | `ce89f3581110bf9062ec81358b8f15e561cbb4698bcee1876efc167d731f9f8a` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 
 ## Source-of-truth modules (lib + views)
@@ -547,7 +547,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/membranous-risk-v878.js` | 11351 | `882c36c07e46543e32f1114792c1124ee9f9ff6b384084fc0a8c221e7dd62062` |
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2529829 | `22360c93af16301874f8459516d0ab328a42d5a469ed678db3ffa3a223bfefca` |
+| `lib/meta.js` | 2530070 | `f11088804e95af52fe500d4cbbb5e10bc935341e7895c88c3a5f8e81158a3156` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 18806 | `adc0fb95d01f23df9eb461cdbb6a6f48b5f3f3ff2f4cb2a8770903ce31d5f6cc` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -622,7 +622,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/ntm-pulmonary-v827.js` | 8077 | `51b554704f575d5ffce2a350e5d8013ee70f0b42f5b85b86d7415d4479de1696` |
 | `lib/num.js` | 16828 | `66b49428df4edc1fbf300ac2b67993caeebfc4b45726be935157e353c7b55816` |
 | `lib/nunley-vertullo-v455.js` | 3085 | `6f287a16c80ba5d73e2bb2c15989a7aa81d8335767f0a36e8c67c3203b357439` |
-| `lib/nurse-license-training-requirements-v1397.js` | 6746 | `2fc2a3884812f6afe10ffda68c7a464c519de8e867f60c3125f57ef38645b53f` |
+| `lib/nurse-license-training-requirements-v1397.js` | 11586 | `1e6ff208f861b695f62373d71c61bfb006daec545056f4c2617ff39f07840d64` |
 | `lib/nurse-staffing-ratio-check-v1396.js` | 7583 | `c7f79d233ae40ecc6ccf4f6f9cc44245c74fc02cafbabf7fa9f1fa65b3d55ef5` |
 | `lib/nursing-home-staffing-check-v1396.js` | 7012 | `67719344be3ceb150d15072fa7c9090cd559a52f53370236db44769614fa023e` |
 | `lib/nutrition-energy-v152.js` | 14446 | `924b5421f818147f64b10db410fca9892773a29a918cf40e2bacdb64c0dbb23a` |
@@ -1523,7 +1523,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/nsofa-v526.js` | 4998 | `73476e3e12d8ac76880854f4837e161c8175653162fc2903a44e4ada6921888d` |
 | `mcp/adapters/ntm-pulmonary-v827.js` | 2301 | `1433bceef43a9c3f5f6bc3d99d39f523d96f731271878589a52bbd30b7bf47b4` |
 | `mcp/adapters/nunley-vertullo-v455.js` | 1155 | `1b0419937c6fcc04382aa2c11914ac309a4e6d18e1c6010f876281a54efe34e8` |
-| `mcp/adapters/nurse-license-training-requirements-v1397.js` | 1906 | `8384e151f8a315f997783b43c8c268fcb3354f505b416448bf07dfc4db6c1163` |
+| `mcp/adapters/nurse-license-training-requirements-v1397.js` | 2803 | `3155c22ddcea26887002d5bc614a7a9eaa7406b0740e391a591c4da78254f1d3` |
 | `mcp/adapters/nurse-staffing-ratio-check-v1396.js` | 1392 | `fc16aba57300e4e85f0d5b94e4670d8a8ed51f5a8b99ac41063101e5afec4288` |
 | `mcp/adapters/nursing-home-staffing-check-v1396.js` | 1726 | `97ba50ba8177aceb66b6adb392a4637246bc2feaeecbd24320aeaa5d560f96a8` |
 | `mcp/adapters/nutrition-energy-v152.js` | 5085 | `f8bca8ccfb11675d0db0d0d42d93d772810dd8ec9ad50e11abb5b2285b0450e1` |
@@ -1917,7 +1917,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1394.js` | 8245 | `900cdcd3f81d249c5aa89c7d57add9a7b1097f816b9ffa9a5ae741ce2b2a74e6` |
 | `views/group-v1395.js` | 10046 | `9f8236af8aca9ed5dd87e55aa233a0f2e19f134f39b46ea7601955554a2359bd` |
 | `views/group-v1396.js` | 12948 | `6ced5bbc33db53990b1bec5eb603ab2952202397bf3fdb3a9a20b47dff32ac4c` |
-| `views/group-v1397.js` | 8708 | `3659c5624bc279000f3059536a4a3513a6b84049189a3a7ac8232ebec1a40bb8` |
+| `views/group-v1397.js` | 10420 | `e17332f0f5a97b7dc6639b06b3c71095a7b5d877cede3ea426239ca17245ba73` |
 | `views/group-v1398.js` | 7537 | `ccd13516de696cd04a6610b11bf446ea3482f77b5ba1c4dc5437054793e8452a` |
 | `views/group-v1399.js` | 5351 | `0b6553fe3afc48a3d4b6636eff175cab434acf5a8cbd198cdbddd3dfde2b7961` |
 | `views/group-v14.js` | 10588 | `bca2472e723b2d009974e038f731f0f811e3b946d2794ac348c20dfef24e05fc` |

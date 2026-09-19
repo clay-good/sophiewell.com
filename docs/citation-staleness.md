@@ -660,7 +660,7 @@ carries the specific date that could change it.
 | pmp-check-required | NY PHL 3343-a(2); N.J.A.C. 13:45A-35.9; CA HSC 11165.4; TX HSC 481.0764-.0765 | NY, NJ, CA, TX | 2026-09-18 | CA: Stats. 2023, ch. 144 (AB 1731); TX: Acts 2019, S.B. 1564 | 2027-01-02 |
 | acute-opioid-rx-limit | NY PHL 3331(5); N.J.A.C. 13:35-7.6; TX HSC 481.07636 | NY, NJ, TX | 2026-09-18 | TX: Acts 2019, H.B. 2174 | 2027-01-02 |
 | tx-aprn-pa-controlled-delegation | Occ. Code 157.0511 | TX | 2026-09-18 | Acts 2013, S.B. 406 | 2027-06-01 |
-| nurse-license-training-requirements | NY SSL 413 (Ch. 25, L. 2024); Educ. Law 6505-b | NY | 2026-09-18 | Ch. 25, L. 2024 (deadline 2026-11-17: "due by" becomes "was due by") | 2026-11-18 |
+| nurse-license-training-requirements | NY SSL 413 (Ch. 25, L. 2024); Educ. Law 6505-b; N.J.A.C. 13:37-5.3; 16 CCR 1451; 22 TAC 216.3 | NY, NJ, CA, TX | 2026-09-18 | Ch. 25, L. 2024 (deadline 2026-11-17: "due by" becomes "was due by") | 2026-11-18 |
 | ca-np-103-104-tracker | B&P 2837.103, 2837.104 | CA | 2026-09-18 | AB 890 (2020), as amended | 2027-01-02 |
 | tx-prescriptive-authority-agreement | Occ. Code 157.0512 | TX | 2026-09-18 | Acts 2019, H.B. 278 (repealed former (f-1)) | 2027-06-01 |
 | mandated-report-router | NY SSL 415, PHL 2803-d; N.J.S.A. 9:6-8.10, 52:27D-409; CA PC 11166, 11160, WIC 15630; TX Fam. Code 261.101, HRC 48.051 | NY, NJ, CA, TX | 2026-09-18 | TX: S.B. 571 (2025), 48th -> 24th hour | 2027-01-02 |

@@ -34,7 +34,7 @@ test('infection control every four years, deferred when not practicing in New Yo
 });
 
 test('only New York is offered until another state is read', () => {
-  assert.deepEqual(NLT_STATES.map((s) => s.value), ['NY']);
+  assert.deepEqual(NLT_STATES.map((s) => s.value), ['NY', 'NJ', 'CA', 'TX']);
   assert.equal(nlt({ ...B, state: 'TX' }).valid, false);
 });
 
@@ -73,4 +73,20 @@ test('paa: missing and unanswered elements, and the monthly meeting', () => {
   assert.equal(paa({ ...ALL, drugs: '' }).verdict, 'unassessed');
   assert.equal(paa({ ...ALL, lastMeeting: '2026-07-01', asOf: '2026-09-18' }).verdict, 'problems');
   assert.equal(paa({ ...ALL, lastMeeting: '2026-09-01', asOf: '2026-09-18' }).verdict, 'ok');
+});
+
+test('nlt: New Jersey 30 hours with an opioid hour; California 30 hours; LVNs not covered', () => {
+  assert.equal(nlt({ state: 'NJ', license: 'RN', hours: '30', njOpioid: 'yes' }).abnormal, false);
+  assert.match(nlt({ state: 'NJ', license: 'RN', hours: '30', njOpioid: 'no' }).band, /opioid/);
+  assert.match(nlt({ state: 'CA', license: 'RN', hours: '24' }).band, /6 more/);
+  assert.equal(nlt({ state: 'CA', license: 'LPN', hours: '30' }).valid, false);
+  assert.equal(nlt({ state: 'NJ', license: 'RN', hours: '', njOpioid: 'yes' }).valid, false);
+});
+
+test('nlt: Texas 20 hours or certification, and the targeted items', () => {
+  const T = { state: 'TX', license: 'NP', hours: '20', txJuris: 'done', txOlder: 'na', txForensic: 'na', txTrafficking: 'done', txPharm: 'done' };
+  assert.equal(nlt(T).abnormal, false);
+  assert.match(nlt({ ...T, txForensic: 'not-done' }).band, /forensic evidence collection/);
+  assert.equal(nlt({ ...T, hours: '5', txCert: 'yes' }).abnormal, false);
+  assert.equal(nlt({ ...T, txJuris: 'na' }).valid, false);
 });
