@@ -146,3 +146,15 @@ mirror (CCP 56A.303, HSC 323.004, Family Code 32.003).
   that state's legal-holiday calendar, the earliest reading, and the tile says so.
 - New York (the DOH-389 guidance returned 403) and New Jersey (the 2024 amendment was
   not read) are not offered. The tile offers only the states it has.
+
+### Why New York and New Jersey are still not offered (checked 2026-09-19)
+
+- **New York:** 10 NYCRR 2.10 (Cornell LII) sets one deadline for every disease listed in 2.1:
+  within 24 hours of first seeing the case, by telephone, fax, or electronic transmission, plus a
+  written report. The shorter "immediately by telephone" list is in the Department's DOH-389
+  instructions, which returned 403 again. Shipping New York on the regulation alone would print
+  24 hours for conditions the Department wants phoned in at once, so it waits for DOH-389.
+- **New Jersey:** Cornell's copy of N.J.A.C. 8:57-1.5 says the adopted 2024 version (56 N.J.R.
+  213(a), effective January 3, 2024) "is not yet available". The text shown predates it, so New
+  Jersey waits for the current text.
+
