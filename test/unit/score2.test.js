@@ -37,6 +37,17 @@ test('extreme fuzzed inputs clamp to a probability in [0,100]', () => {
   // envelope, so the overflow probe drives it to the top of that envelope and
   // fuzzes the rest. An SBP past the envelope is refused, not clamped.
   // spec-v1406: so is an age past the ageYears envelope; age sits at its top too.
-  const r = score2({ age: 130, male: true, smoker: true, sbp: 300, totalChol: 1e9, hdl: 0, region: 'very-high' });
+  const r = score2({ age: 69, male: true, smoker: true, sbp: 300, totalChol: 1e9, hdl: 0, region: 'very-high' });
   assert.ok(r.risk >= 0 && r.risk <= 100 && Number.isFinite(r.risk));
+});
+
+// spec-v1408: SCORE2 is fitted on ages 40-69 (its own note). Outside that it clamped the age and
+// answered: a 95-year-old was read on a 69-year-old's coefficients, "10-year CVD risk 7.6%".
+test('an age outside the fitted 40-69 is refused, not clamped', () => {
+  for (const age of [39, 95]) {
+    const r = score2({ age, male: true, smoker: false, sbp: 120, totalChol: 5, hdl: 1.3, region: 'low' });
+    assert.equal(r.valid, false, String(age));
+    assert.match(r.band, /fitted on ages 40 to 69/);
+  }
+  assert.equal(score2({ age: 40, male: true, smoker: false, sbp: 120, totalChol: 5, hdl: 1.3, region: 'low' }).valid, true);
 });

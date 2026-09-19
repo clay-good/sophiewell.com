@@ -104,7 +104,7 @@ export const renderers = {
 
   // ----- 2.2 4peps ------------------------------------------------------
   '4peps'(root) {
-    root.appendChild(field('Age (years)', 'pp-age', { min: 0, max: 120, placeholder: '55' }));
+    root.appendChild(field('Age (years)', 'pp-age', { min: 0, max: 130, placeholder: '55' }));
     root.appendChild(field('Heart rate (beats/min)', 'pp-hr', { min: 0, max: 300, placeholder: '88' }));
     root.appendChild(field('Pulse-oximetry O2 saturation (%)', 'pp-spo2', { min: 0, max: 100, placeholder: '97' }));
     root.appendChild(checkField('Male sex', 'pp-male'));
@@ -194,7 +194,7 @@ export const renderers = {
 
   // ----- 2.5 geneva-original --------------------------------------------
   'geneva-original'(root) {
-    root.appendChild(field('Age (years)', 'gv-age', { min: 0, max: 120, placeholder: '65' }));
+    root.appendChild(field('Age (years)', 'gv-age', { min: 0, max: 130, placeholder: '65' }));
     root.appendChild(field('Heart rate (beats/min)', 'gv-hr', { min: 0, max: 300, placeholder: '95' }));
     root.appendChild(checkField('Previous DVT or PE', 'gv-vte'));
     root.appendChild(checkField('Surgery within 4 weeks', 'gv-surg'));

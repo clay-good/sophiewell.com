@@ -6,6 +6,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **SCORE2 and Framingham stop answering outside the ages they were built on.**
+  Both quietly pulled an out-of-range age back to the edge of their fitted range and
+  answered anyway, so a 95-year-old got a risk figure computed for a 69-year-old.
+  Both now say the age is outside the range the model was fitted on. See
+  docs/spec-v1408.md.
+
 - **The page refuses what the agent refuses.** A browser test now drives every field
   with a plausible range past it on the page and requires a refusal that names the
   range. It found three liver tools that said "Complete the remaining fields" for a

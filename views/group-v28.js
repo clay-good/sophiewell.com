@@ -88,7 +88,7 @@ function wire(ids, run) {
 export const renderers = {
   // ----- 2.1 score2 ------------------------------------------------------
   score2(root) {
-    root.appendChild(field('Age (years, 40-69)', 's2-age', { min: 40, max: 69, placeholder: '50' }));
+    root.appendChild(field(`Age (years, ${M.SCORE2_AGES.min}-${M.SCORE2_AGES.max})`, 's2-age', { min: M.SCORE2_AGES.min, max: M.SCORE2_AGES.max, placeholder: '50' }));
     root.appendChild(selectField('Sex', 's2-sex', SEX_OPTS));
     root.appendChild(checkField('Current smoker', 's2-smoke'));
     root.appendChild(field('Systolic BP (mmHg)', 's2-sbp', { ...SBP_FIELD, placeholder: '140' }));
@@ -182,7 +182,7 @@ export const renderers = {
 
   // ----- 2.4 framingham-cvd ----------------------------------------------
   'framingham-cvd'(root) {
-    root.appendChild(field('Age (years, 30-74)', 'fr-age', { min: 30, max: 74, placeholder: '55' }));
+    root.appendChild(field(`Age (years, ${M.FRAMINGHAM_AGES.min}-${M.FRAMINGHAM_AGES.max})`, 'fr-age', { min: M.FRAMINGHAM_AGES.min, max: M.FRAMINGHAM_AGES.max, placeholder: '55' }));
     root.appendChild(selectField('Sex', 'fr-sex', SEX_OPTS));
     root.appendChild(field('Total cholesterol (mg/dL)', 'fr-tc', { min: 50, max: 600, placeholder: '213' }));
     root.appendChild(field('HDL cholesterol (mg/dL)', 'fr-hdl', { min: 5, max: 200, placeholder: '50' }));

@@ -96,7 +96,7 @@ export const renderers = {
       { value: 'e1', text: 'Non-specific repolarization disturbance -- 1' },
       { value: 'e2', text: 'Significant ST deviation -- 2' },
     ]));
-    root.appendChild(field('Age (years)', 'hr-age', { min: 0, max: 120, placeholder: '58' }));
+    root.appendChild(field('Age (years)', 'hr-age', { min: 0, max: 130, placeholder: '58' }));
     root.appendChild(selectField('Risk factors', 'hr-risk', [
       { value: '', text: 'Not assessed' },
       { value: 'r0', text: 'None -- 0' },
@@ -151,7 +151,7 @@ export const renderers = {
 
   // ----- 2.3 go-far -----------------------------------------------------
   'go-far'(root) {
-    root.appendChild(field('Age (years)', 'gf-age', { min: 0, max: 120, placeholder: '72' }));
+    root.appendChild(field('Age (years)', 'gf-age', { min: 0, max: 130, placeholder: '72' }));
     root.appendChild(checkField('Neurologically intact or minimal deficit at admission (-15)', 'gf-neuro'));
     const items = [
       ['Major trauma', 'gf-trauma'],

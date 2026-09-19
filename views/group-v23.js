@@ -95,7 +95,7 @@ const FUNCTIONAL_OPTIONS = [
 export const renderers = {
   // ----- 2.1 gupta-mica --------------------------------------------------
   'gupta-mica'(root) {
-    root.appendChild(field('Age (years)', 'mica-age', { min: 0, max: 120, placeholder: '65' }));
+    root.appendChild(field('Age (years)', 'mica-age', { min: 0, max: 130, placeholder: '65' }));
     root.appendChild(selectField('ASA physical status class', 'mica-asa', ASA_OPTIONS));
     root.appendChild(selectField('Functional status', 'mica-func', FUNCTIONAL_OPTIONS));
     root.appendChild(selectField('Serum creatinine', 'mica-creat', [
@@ -279,7 +279,7 @@ export const renderers = {
 
   // ----- 2.5 pospom ------------------------------------------------------
   'pospom'(root) {
-    root.appendChild(field('Age (years)', 'pospom-age', { min: 18, max: 120, placeholder: '70' }));
+    root.appendChild(field('Age (years)', 'pospom-age', { min: 18, max: 130, placeholder: '70' }));
     root.appendChild(selectField('Planned surgery category', 'pospom-surg', M.POSPOM_SURGERY_OPTIONS));
     root.appendChild(el('p', { class: 'muted', text: 'Comorbidities (check all that apply):' }));
     const comorbIds = [];

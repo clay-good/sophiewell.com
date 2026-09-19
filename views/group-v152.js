@@ -84,7 +84,7 @@ function anthroFields(root, prefix) {
   // canonical unit; a blank field still falls back rather than computing zero.
   root.appendChild(unitField('Weight', `${prefix}-wt`, WEIGHT_UNITS, { placeholder: 'e.g. 70' }));
   root.appendChild(unitField('Height', `${prefix}-ht`, HEIGHT_UNITS, { placeholder: 'e.g. 175' }));
-  root.appendChild(numField('Age (years)', `${prefix}-age`, { min: 0, max: 120, placeholder: 'e.g. 40' }));
+  root.appendChild(numField('Age (years)', `${prefix}-age`, { min: 0, max: 130, placeholder: 'e.g. 40' }));
   root.appendChild(selectField('Sex', `${prefix}-sex`, SEX));
 }
 
@@ -128,7 +128,7 @@ export const renderers = {
     note(root, 'Katch-McArdle: the lean-body-mass BMR equation. BMR = 370 + 21.6 × lean body mass(kg). Enter lean body mass directly, or weight + body-fat % (LBM = weight × (1 − fat%/100)). Preferred for athletes and lean/obese bodies where weight-only equations drift. TDEE = BMR × activity factor.');
     root.appendChild(numField('Lean body mass (kg) — if known', 'km-lbm', { min: 0, max: 200, step: '0.1', placeholder: 'e.g. 55' }));
     note(root, 'or derive it from total body composition:');
-    root.appendChild(numField('Total weight (kg)', 'km-wt', { min: 0, max: 400, step: '0.1', placeholder: 'e.g. 70' }));
+    root.appendChild(numField('Total weight (kg)', 'km-wt', { min: 0.3, max: 500, step: '0.1', placeholder: 'e.g. 70' }));
     root.appendChild(numField('Body-fat % (0–100)', 'km-bf', { min: 0, max: 100, step: '0.1', placeholder: 'e.g. 21' }));
     root.appendChild(selectField('Activity factor (optional — for TDEE)', 'km-act', ACTIVITY));
     const o = out(); root.appendChild(o);

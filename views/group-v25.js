@@ -155,7 +155,7 @@ export const renderers = {
     root.appendChild(field('PaO2 (mmHg) -- if ventilated', 'saps-pao2', { min: B.paO2.min, max: B.paO2.max, placeholder: '80' }));
     root.appendChild(field('FiO2 (fraction) -- if ventilated', 'saps-fio2', { min: 0, max: 1, step: '0.01', placeholder: '0.5' }));
     root.appendChild(field('Urine output (L/day)', 'saps-urine', { min: 0, max: 20, step: '0.1', placeholder: '0.4' }));
-    root.appendChild(field('BUN (mg/dL)', 'saps-bun', { min: 0, max: 300, placeholder: '60' }));
+    root.appendChild(field('BUN (mg/dL)', 'saps-bun', { min: 1, max: 300, placeholder: '60' }));
     root.appendChild(field('Sodium (mEq/L)', 'saps-na', { min: B.sodium.min, max: B.sodium.max, placeholder: '140' }));
     root.appendChild(field('Potassium (mEq/L)', 'saps-k', { min: B.potassium.min, max: B.potassium.max, step: '0.1', placeholder: '4.0' }));
     root.appendChild(field('Bicarbonate (mEq/L)', 'saps-hco3', { min: B.bicarbonate.min, max: B.bicarbonate.max, placeholder: '18' }));

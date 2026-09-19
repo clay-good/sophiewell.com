@@ -28,8 +28,18 @@ test('treated BP uses the higher coefficient (treated risk > untreated)', () => 
 });
 
 test('extreme fuzzed inputs clamp risk to [0,100] and vascular age finite', () => {
-  // spec-v1224/v1406: see score2.test.js -- SBP and age at the top of their envelopes, the rest fuzzed.
-  const r = framinghamCvd({ age: 130, male: true, totalChol: 1e9, hdl: 1, sbp: 300, smoker: true, diabetes: true });
+  // spec-v1224/v1406/v1408: SBP at the top of its envelope and age at the top of the range the model
+  // was FITTED on (30-74; above it the model is not extrapolated), the rest fuzzed.
+  const r = framinghamCvd({ age: 74, male: true, totalChol: 1e9, hdl: 1, sbp: 300, smoker: true, diabetes: true });
   assert.ok(r.risk >= 0 && r.risk <= 100 && Number.isFinite(r.risk));
   assert.ok(r.vascularAge == null || Number.isFinite(r.vascularAge));
+});
+
+// spec-v1408: outside the fitted range the model used to clamp the age and answer anyway -- a
+// 95-year-old was scored on a 74-year-old's coefficients.
+test('an age outside the fitted 30-74 is refused, not clamped', () => {
+  const r = framinghamCvd({ age: 95, male: true, totalChol: 213, hdl: 50, sbp: 120, smoker: false, diabetes: false });
+  assert.equal(r.valid, false);
+  assert.match(r.band, /fitted on ages 30 to 74/);
+  assert.equal(framinghamCvd({ age: 74, male: true, totalChol: 213, hdl: 50, sbp: 120, smoker: false, diabetes: false }).valid, true);
 });
