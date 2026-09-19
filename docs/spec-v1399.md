@@ -38,3 +38,23 @@ the section and cite subdivisions exactly.
   transfer time is excluded and named.
 - Discharge: an all-blank checklist says "incomplete, 10 items not documented" and never
   "complete".
+
+## Built (2026-09-18)
+
+| tile | group | source read |
+|---|---|---|
+| `ca-apot-calculator` | H | leginfo, HSC 1797.120 and 1797.120.5 |
+| `ca-homeless-discharge-1262-5` | H | leginfo, HSC 1262.5 |
+
+- AB 40 does not itself set the standard. Each LEMSA adopts one "not to exceed 30
+  minutes, 90 percent of the time" (1797.120.5(b)(1)). The tile checks that ceiling
+  and says a LEMSA may be stricter.
+- Clock-only pairs that cross midnight are counted into the next day and flagged.
+  Full date-times are taken as given.
+- The homeless checklist has **11** items, not the plan's 10: the (n)(4) destination
+  plus (o)(1)-(o)(10). The subdivisions are cited exactly as read. "Not needed" is
+  offered for every item and counts only where the statute has an exception: the
+  meal, clothing, follow-up, prescription, vaccinations, and transportation. Anywhere
+  else it counts as missing.
+- Rows are entered in one text box (paste or type). The page has no table, so there is
+  no horizontal scroll.

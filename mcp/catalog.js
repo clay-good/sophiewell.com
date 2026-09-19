@@ -826,6 +826,13 @@ import nysNewbornScreenPlannerV1394 from './adapters/nys-newborn-screen-planner-
 import txNeonatalLevelMatchV1394 from './adapters/tx-neonatal-level-match-v1394.js';
 import txMaternalLevelReferenceV1394 from './adapters/tx-maternal-level-reference-v1394.js';
 import caSafeSurrenderV1394 from './adapters/ca-safe-surrender-v1394.js';
+import caApotCalculatorV1399 from './adapters/ca-apot-calculator-v1399.js';
+import caHomelessDischarge12625V1399 from './adapters/ca-homeless-discharge-1262-5-v1399.js';
+import aqiPm25V1398 from './adapters/aqi-pm25-v1398.js';
+import caloshaOutdoorHeatV1398 from './adapters/calosha-outdoor-heat-v1398.js';
+import caloshaIndoorHeatV1398 from './adapters/calosha-indoor-heat-v1398.js';
+import caloshaWildfireSmokeV1398 from './adapters/calosha-wildfire-smoke-v1398.js';
+import caValleyFeverTestPromptV1398 from './adapters/ca-valley-fever-test-prompt-v1398.js';
 import ticiV960 from './adapters/tici-v960.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
@@ -1679,6 +1686,13 @@ const ADAPTER_MODULES = [
   ['tx-neonatal-level-match-v1394', txNeonatalLevelMatchV1394],
   ['tx-maternal-level-reference-v1394', txMaternalLevelReferenceV1394],
   ['ca-safe-surrender-v1394', caSafeSurrenderV1394],
+  ['ca-apot-calculator-v1399', caApotCalculatorV1399],
+  ['ca-homeless-discharge-1262-5-v1399', caHomelessDischarge12625V1399],
+  ['aqi-pm25-v1398', aqiPm25V1398],
+  ['calosha-outdoor-heat-v1398', caloshaOutdoorHeatV1398],
+  ['calosha-indoor-heat-v1398', caloshaIndoorHeatV1398],
+  ['calosha-wildfire-smoke-v1398', caloshaWildfireSmokeV1398],
+  ['ca-valley-fever-test-prompt-v1398', caValleyFeverTestPromptV1398],
   ['tici-v960', ticiV960],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],

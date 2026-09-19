@@ -690,3 +690,10 @@ carries the specific date that could change it.
 | tx-neonatal-level-match | 25 TAC 133.186-133.189 | TX | 2026-09-18 | amended effective 2023-06-22; read on Cornell LII | 2027-06-01 |
 | tx-maternal-level-reference | 25 TAC 133.206-133.209 | TX | 2026-09-18 | amended effective 2023-01-08; read on Cornell LII | 2027-06-01 |
 | ca-safe-surrender | HSC 1255.7 | CA | 2026-09-18 | read on leginfo | 2027-01-02 |
+| ca-apot-calculator | HSC 1797.120, 1797.120.5 | CA | 2026-09-18 | AB 40 (2023) | 2027-01-02 |
+| ca-homeless-discharge-1262-5 | HSC 1262.5(n), (o) | CA | 2026-09-18 | SB 1152 (2018) | 2027-01-02 |
+| aqi-pm25 | EPA AQI Technical Assistance Document (May 2026) | US | 2026-09-18 | PM2.5 breakpoints revised 2024 | 2027-06-01 |
+| calosha-outdoor-heat | 8 CCR 3395 | CA | 2026-09-18 | read on dir.ca.gov | 2027-01-02 |
+| calosha-indoor-heat | 8 CCR 3396 | CA | 2026-09-18 | read on dir.ca.gov | 2027-01-02 |
+| calosha-wildfire-smoke | 8 CCR 5141.1 | CA | 2026-09-18 | read on dir.ca.gov | 2027-01-02 |
+| ca-valley-fever-test-prompt | CDPH CAHAN, January 18, 2024 | CA | 2026-09-18 | health advisory | 2027-01-02 |

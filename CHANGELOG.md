@@ -6,6 +6,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Heat, smoke, air, and Valley fever.** The Air Quality Index from PM2.5 with
+  EPA's 2024 breakpoints (10 ug/m3 is now Moderate, not Good); what California's
+  outdoor and indoor heat standards and wildfire smoke rule require at a given
+  reading; and when CDPH's 2024 advisory says to test for Valley fever, and how.
+  See docs/spec-v1398.md.
+
+- **ED throughput and discharge (California).** Ambulance patient offload time
+  from a list of arrival and transfer-of-care times: the nearest-rank 90th
+  percentile and the share within 30 minutes, against AB 40's ceiling; and the
+  eleven items HSC 1262.5 requires before discharging a homeless patient, with
+  the missing ones named. See docs/spec-v1399.md.
+
 - **Prenatal and newborn.** Which prenatal syphilis, HIV, and hepatitis B tests
   are due now in New York, New Jersey, California, or Texas (Texas: an expedited
   HIV test, or a newborn sample within 2 hours, when the third-trimester result is

@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:662c49d7-e113-55ed-8b43-e9506ea3cc37",
+  "serialNumber": "urn:uuid:4d5b9039-9582-5521-857c-3aa850424dda",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-19T03:12:51.225Z",
+    "timestamp": "2026-09-19T04:46:50.482Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1768 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1775 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6cf49a4b96660d76cfc7c769110b33e29c29d250549001b3573324c37f8c2ea7"
+          "content": "aab464c1084e76c36a87f2298563d919e767683d72ec7d56d1ba71a2b8faebf5"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "113746"
+          "value": "114229"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c777c82d6bb339c3d90e6c2bc22ece50862d88399f7647ed460feddcbc65ec26"
+          "content": "7d7c03d6198d594e05b2c8b06a39cb69a470bb5969be91cf869016f546c2cb92"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "528091"
+          "value": "529711"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e3a6c4f3b29af7c825c7c3d0863e05969d7d0e499d10f6e13e620690c96dc957"
+          "content": "0b677e0e1211394442aed4763209232fe3805400162ed997566d59f077625ff3"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "220180"
+          "value": "221099"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "637ed30cfc8dd732f4564f9518af7c44b69e4567699fd09aa68006655747a4f1"
+          "content": "08549cabd7e8c352c34a6c837f92bad66ab76cc1f00f3d5c6e3382a1352dea36"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "100605"
+          "value": "101160"
         }
       ]
     },
@@ -1186,6 +1186,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "15072"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/aqi-pm25-v1398.js",
+      "type": "file",
+      "name": "lib/aqi-pm25-v1398.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "56cafa4aafca82a40408bbd87c0798ac08a175bfbae1b45ba7edfd4eddd1e832"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5799"
         }
       ]
     },
@@ -2387,6 +2408,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/ca-apot-calculator-v1399.js",
+      "type": "file",
+      "name": "lib/ca-apot-calculator-v1399.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "57309be6fde791f011cae886a4cdeaed5000f9a856c141acaa1bf880315a5648"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4438"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/ca-care-court-eligibility-v1390.js",
       "type": "file",
       "name": "lib/ca-care-court-eligibility-v1390.js",
@@ -2471,6 +2513,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/ca-homeless-discharge-1262-5-v1399.js",
+      "type": "file",
+      "name": "lib/ca-homeless-discharge-1262-5-v1399.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c48069bec6280f37d49d6e78b57b24aef154c7c4612e9634d08de574cf8ccc56"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4563"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/ca-np-103-104-tracker-v1397.js",
       "type": "file",
       "name": "lib/ca-np-103-104-tracker-v1397.js",
@@ -2530,6 +2593,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "5747"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/ca-valley-fever-test-prompt-v1398.js",
+      "type": "file",
+      "name": "lib/ca-valley-fever-test-prompt-v1398.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f77d0cd44994464e6e814a3e3b2cc61a9b589356391a0d8711d79c24a3594031"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4154"
         }
       ]
     },
@@ -2614,6 +2698,69 @@
         {
           "name": "sophiewell:bytes",
           "value": "3543"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/calosha-indoor-heat-v1398.js",
+      "type": "file",
+      "name": "lib/calosha-indoor-heat-v1398.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "23b44a73f3cd4db7e433e297ad309929995cf23827dc23ee81ff9bc595ce80e4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4463"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/calosha-outdoor-heat-v1398.js",
+      "type": "file",
+      "name": "lib/calosha-outdoor-heat-v1398.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "25e09d6462fb3f769babaddfba1b809caf7baeea5a7806dddf2f6e835d7c6543"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5012"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/calosha-wildfire-smoke-v1398.js",
+      "type": "file",
+      "name": "lib/calosha-wildfire-smoke-v1398.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4a96e235eba7562b5c4d26ed237b60f8edd907f418ff66ca5374623240a9d161"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3759"
         }
       ]
     },
@@ -10604,7 +10751,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2d2e038a2ec5d59901def27094809c4f20c4659ebb0dc1e618af81f19fa23f9e"
+          "content": "ff3c8b56aacc19d4c1673acb26beeb9993d02c965b106354d25beb44e8d5dfbc"
         }
       ],
       "properties": [
@@ -10614,7 +10761,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2516589"
+          "value": "2521634"
         }
       ]
     },
@@ -20195,6 +20342,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/aqi-pm25-v1398.js",
+      "type": "file",
+      "name": "mcp/adapters/aqi-pm25-v1398.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "faf38daef1b1535b825443c52200a48e805c444cf78b31071cb28a8b727eb987"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "939"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/arc-hbr-v594.js",
       "type": "file",
       "name": "mcp/adapters/arc-hbr-v594.js",
@@ -21350,6 +21518,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ca-apot-calculator-v1399.js",
+      "type": "file",
+      "name": "mcp/adapters/ca-apot-calculator-v1399.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e7ab43c26e4991d55e6af7de7ccd30eae3057d3409638fa41030fd076bd17bd7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "812"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ca-care-court-eligibility-v1390.js",
       "type": "file",
       "name": "mcp/adapters/ca-care-court-eligibility-v1390.js",
@@ -21434,6 +21623,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ca-homeless-discharge-1262-5-v1399.js",
+      "type": "file",
+      "name": "mcp/adapters/ca-homeless-discharge-1262-5-v1399.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1860ea7b75366183ca30952f113641538a3269dc46cfcb01c395fd95eb29abe9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2210"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ca-np-103-104-tracker-v1397.js",
       "type": "file",
       "name": "mcp/adapters/ca-np-103-104-tracker-v1397.js",
@@ -21493,6 +21703,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1969"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ca-valley-fever-test-prompt-v1398.js",
+      "type": "file",
+      "name": "mcp/adapters/ca-valley-fever-test-prompt-v1398.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "dbd28e66d784fc6bf19ebc4d708f1a26a4260a5c356aaa0f1138b7b933c4a0ac"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1498"
         }
       ]
     },
@@ -21577,6 +21808,69 @@
         {
           "name": "sophiewell:bytes",
           "value": "1392"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/calosha-indoor-heat-v1398.js",
+      "type": "file",
+      "name": "mcp/adapters/calosha-indoor-heat-v1398.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c7cec1de40be4ac48580f87a007675ab0b4d6249dc2159ebaf4c815893e0babe"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1367"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/calosha-outdoor-heat-v1398.js",
+      "type": "file",
+      "name": "mcp/adapters/calosha-outdoor-heat-v1398.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f3483264897461a365defec282efe1b14fff617c43e629d57b90e88a91e5f023"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1137"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/calosha-wildfire-smoke-v1398.js",
+      "type": "file",
+      "name": "mcp/adapters/calosha-wildfire-smoke-v1398.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "008cc52389524b1bbd5d9677b4884fa4da3c7e2aaaa5bc845eaede0ecc0cc881"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "925"
         }
       ]
     },
@@ -37358,7 +37652,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f93a33a1edd98493af693b38ae1d2c86497ab3e75f8c41eacb7da81c31070d4b"
+          "content": "0c2bd496be7ecf7298d822e5b7140a5507306e3429bbb032b6988361bf0b7b7e"
         }
       ],
       "properties": [
@@ -37368,7 +37662,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "97403"
+          "value": "98378"
         }
       ]
     },
@@ -38818,6 +39112,48 @@
         {
           "name": "sophiewell:bytes",
           "value": "8708"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1398.js",
+      "type": "file",
+      "name": "views/group-v1398.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ccd13516de696cd04a6610b11bf446ea3482f77b5ba1c4dc5437054793e8452a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7537"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1399.js",
+      "type": "file",
+      "name": "views/group-v1399.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0b6553fe3afc48a3d4b6636eff175cab434acf5a8cbd198cdbddd3dfde2b7961"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5351"
         }
       ]
     },
@@ -70059,6 +70395,7 @@
         "urn:sophiewell:file:source:lib/aom-criteria-v857.js",
         "urn:sophiewell:file:source:lib/aortic-regurgitation-stage-v846.js",
         "urn:sophiewell:file:source:lib/aortic-stenosis-stage-v844.js",
+        "urn:sophiewell:file:source:lib/aqi-pm25-v1398.js",
         "urn:sophiewell:file:source:lib/arc-hbr-v594.js",
         "urn:sophiewell:file:source:lib/areds-v615.js",
         "urn:sophiewell:file:source:lib/arvc-tfc-v786.js",
@@ -70116,17 +70453,23 @@
         "urn:sophiewell:file:source:lib/ca-5585-minor-hold-v1389.js",
         "urn:sophiewell:file:source:lib/ca-adult-tb-risk-v1400.js",
         "urn:sophiewell:file:source:lib/ca-adverse-event-1279-v1395.js",
+        "urn:sophiewell:file:source:lib/ca-apot-calculator-v1399.js",
         "urn:sophiewell:file:source:lib/ca-care-court-eligibility-v1390.js",
         "urn:sophiewell:file:source:lib/ca-ed-psych-detention-1799-v1389.js",
         "urn:sophiewell:file:source:lib/ca-eoloa-timeline-v1392.js",
         "urn:sophiewell:file:source:lib/ca-grave-disability-sb43-v1390.js",
+        "urn:sophiewell:file:source:lib/ca-homeless-discharge-1262-5-v1399.js",
         "urn:sophiewell:file:source:lib/ca-np-103-104-tracker-v1397.js",
         "urn:sophiewell:file:source:lib/ca-safe-surrender-v1394.js",
         "urn:sophiewell:file:source:lib/ca-surrogate-decisionmaker-v1391.js",
+        "urn:sophiewell:file:source:lib/ca-valley-fever-test-prompt-v1398.js",
         "urn:sophiewell:file:source:lib/cac-agatston-v668.js",
         "urn:sophiewell:file:source:lib/cad-rads-v372.js",
         "urn:sophiewell:file:source:lib/cage-aid-v738.js",
         "urn:sophiewell:file:source:lib/caine-wernicke-v799.js",
+        "urn:sophiewell:file:source:lib/calosha-indoor-heat-v1398.js",
+        "urn:sophiewell:file:source:lib/calosha-outdoor-heat-v1398.js",
+        "urn:sophiewell:file:source:lib/calosha-wildfire-smoke-v1398.js",
         "urn:sophiewell:file:source:lib/cancer-cachexia-v879.js",
         "urn:sophiewell:file:source:lib/capd-v525.js",
         "urn:sophiewell:file:source:lib/capthus-v535.js",
@@ -70997,6 +71340,8 @@
         "urn:sophiewell:file:source:views/group-v1394.js",
         "urn:sophiewell:file:source:views/group-v1395.js",
         "urn:sophiewell:file:source:views/group-v1397.js",
+        "urn:sophiewell:file:source:views/group-v1398.js",
+        "urn:sophiewell:file:source:views/group-v1399.js",
         "urn:sophiewell:file:source:views/group-v14.js",
         "urn:sophiewell:file:source:views/group-v140.js",
         "urn:sophiewell:file:source:views/group-v1400.js",
@@ -71778,6 +72123,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/aom-criteria-v857.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/aortic-regurgitation-stage-v846.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/aortic-stenosis-stage-v844.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/aqi-pm25-v1398.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/arc-hbr-v594.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/areds-v615.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/arvc-tfc-v786.js",
@@ -71833,17 +72179,23 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/ca-5585-minor-hold-v1389.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ca-adult-tb-risk-v1400.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ca-adverse-event-1279-v1395.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/ca-apot-calculator-v1399.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ca-care-court-eligibility-v1390.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ca-ed-psych-detention-1799-v1389.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ca-eoloa-timeline-v1392.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ca-grave-disability-sb43-v1390.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/ca-homeless-discharge-1262-5-v1399.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ca-np-103-104-tracker-v1397.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ca-safe-surrender-v1394.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ca-surrogate-decisionmaker-v1391.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/ca-valley-fever-test-prompt-v1398.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cac-agatston-v668.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cad-rads-v372.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cage-aid-v738.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/caine-wernicke-v799.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/calosha-indoor-heat-v1398.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/calosha-outdoor-heat-v1398.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/calosha-wildfire-smoke-v1398.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cancer-cachexia-v879.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/capd-v525.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/capthus-v535.js",
@@ -72698,7 +73050,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "662c49d7e113e5ed"
+      "value": "4d5b903995823521"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -72710,7 +73062,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2569"
+      "value": "2585"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

@@ -776,6 +776,8 @@ import { renderers as RV1390 } from './views/group-v1390.js';
 import { renderers as RV1391 } from './views/group-v1391.js';
 import { renderers as RV1392 } from './views/group-v1392.js';
 import { renderers as RV1394 } from './views/group-v1394.js';
+import { renderers as RV1399 } from './views/group-v1399.js';
+import { renderers as RV1398 } from './views/group-v1398.js';
 import { renderers as RV164 } from './views/group-v164.js';
 import { renderers as RV165 } from './views/group-v165.js';
 import { renderers as RV166 } from './views/group-v166.js';
@@ -863,7 +865,7 @@ const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...R
   ...RV902,
   ...RV903,
   ...RV905,
-  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV960, ...RV1061, ...RV1062, ...RV1240, ...RV1241, ...RV1242, ...RV1243, ...RV1400, ...RV1389, ...RV1393, ...RV1397, ...RV1395, ...RV1390, ...RV1391, ...RV1392, ...RV1394, ...RV63, ...RPALINT };
+  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV960, ...RV1061, ...RV1062, ...RV1240, ...RV1241, ...RV1242, ...RV1243, ...RV1400, ...RV1389, ...RV1393, ...RV1397, ...RV1395, ...RV1390, ...RV1391, ...RV1392, ...RV1394, ...RV1399, ...RV1398, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -1159,6 +1161,17 @@ const UTILITIES = [
   { id: 'tx-neonatal-level-match', name: 'Texas Neonatal Level of Care Matcher (25 TAC 133.186-133.189)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'tx-maternal-level-reference', name: 'Texas Maternal Level of Care Reference (25 TAC 133.206-133.209)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'ca-safe-surrender', name: 'California Safely Surrendered Baby Checklist (HSC 1255.7)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
+  // spec-v1399: ED throughput and discharge (State & Coverage Reference). views/group-v1399.js,
+  // lib/<id>-v1399.js, mcp/adapters/<id>-v1399.js.
+  { id: 'ca-apot-calculator', name: 'California Ambulance Patient Offload Time (HSC 1797.120, 1797.120.5)', group: 'H', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ca-homeless-discharge-1262-5', name: 'California Homeless Patient Discharge Checklist (HSC 1262.5, SB 1152)', group: 'H', audiences: ['clinicians', 'educators'], clinical: true },
+  // spec-v1398: heat, smoke, air, and Valley fever (State & Coverage Reference). views/group-v1398.js,
+  // lib/<id>-v1398.js, mcp/adapters/<id>-v1398.js.
+  { id: 'aqi-pm25', name: 'Air Quality Index From PM2.5 (EPA, 2024 Breakpoints)', group: 'G', audiences: ['clinicians', 'educators', 'patients'], clinical: true },
+  { id: 'calosha-outdoor-heat', name: 'Cal/OSHA Outdoor Heat Rule Triggers (8 CCR 3395)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'calosha-indoor-heat', name: 'Cal/OSHA Indoor Heat Rule Triggers (8 CCR 3396)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'calosha-wildfire-smoke', name: 'Cal/OSHA Wildfire Smoke Respirator Rule (8 CCR 5141.1)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ca-valley-fever-test-prompt', name: 'Valley Fever: When to Test (CDPH)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   // Group K (Lab Reference): removed in spec-v29 wave 29-2 (lab-adult,
   // lab-peds, tdm-levels, tox-levels are pure reference-range tables).
   // Group L: Forms & Numbers Literacy (removed in spec-v29 wave 29-2:

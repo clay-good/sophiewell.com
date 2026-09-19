@@ -8356,6 +8356,83 @@
       ],
       "tile": "ca-safe-surrender",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "apot",
+        "ambulance patient offload time",
+        "wall time ambulance",
+        "ab 40",
+        "offload 90th percentile"
+      ],
+      "tile": "ca-apot-calculator",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "homeless discharge",
+        "sb 1152",
+        "1262.5",
+        "discharge homeless patient california",
+        "homeless discharge checklist"
+      ],
+      "tile": "ca-homeless-discharge-1262-5",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "aqi",
+        "air quality index",
+        "pm2.5 aqi",
+        "pm 2.5 to aqi",
+        "air quality smoke"
+      ],
+      "tile": "aqi-pm25",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "outdoor heat rule",
+        "cal osha heat",
+        "3395",
+        "heat illness prevention california",
+        "shade 80 degrees"
+      ],
+      "tile": "calosha-outdoor-heat",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "indoor heat rule",
+        "3396",
+        "hospital laundry heat",
+        "indoor heat illness california",
+        "82 degrees indoor"
+      ],
+      "tile": "calosha-indoor-heat",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "wildfire smoke rule",
+        "5141.1",
+        "n95 wildfire smoke work",
+        "smoke aqi 151",
+        "cal osha smoke"
+      ],
+      "tile": "calosha-wildfire-smoke",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "valley fever",
+        "coccidioidomycosis",
+        "cocci testing",
+        "valley fever test",
+        "cocci serology"
+      ],
+      "tile": "ca-valley-fever-test-prompt",
+      "audience": "clinicians"
     }
   ]
 }

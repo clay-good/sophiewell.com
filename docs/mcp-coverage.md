@@ -8263,6 +8263,27 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/ca-safe-surrender-v1394.js (spec-v1394: California safely surrendered baby checklist — clinical disclaimer)
 - `ca-safe-surrender`
 
+### lib/ca-apot-calculator-v1399.js (spec-v1399: California ambulance patient offload time — clinical disclaimer)
+- `ca-apot-calculator`
+
+### lib/ca-homeless-discharge-1262-5-v1399.js (spec-v1399: California homeless patient discharge checklist — clinical disclaimer)
+- `ca-homeless-discharge-1262-5`
+
+### lib/aqi-pm25-v1398.js (spec-v1398: air quality index from PM2.5, 2024 breakpoints — clinical disclaimer)
+- `aqi-pm25`
+
+### lib/calosha-outdoor-heat-v1398.js (spec-v1398: Cal/OSHA outdoor heat rule triggers — clinical disclaimer)
+- `calosha-outdoor-heat`
+
+### lib/calosha-indoor-heat-v1398.js (spec-v1398: Cal/OSHA indoor heat rule triggers — clinical disclaimer)
+- `calosha-indoor-heat`
+
+### lib/calosha-wildfire-smoke-v1398.js (spec-v1398: Cal/OSHA wildfire smoke respirator rule — clinical disclaimer)
+- `calosha-wildfire-smoke`
+
+### lib/ca-valley-fever-test-prompt-v1398.js (spec-v1398: Valley fever testing prompt, CDPH — clinical disclaimer)
+- `ca-valley-fever-test-prompt`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

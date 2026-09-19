@@ -71,3 +71,25 @@ is reportable in CA within 7 days (see `reportable-condition-urgency`).
 - Smoke: AQI 150 → no requirement; 151 → voluntary N95; 501 → required. 45 minutes of exposure at
   AQI 300 → exempt.
 - All three Cal/OSHA tiles name only California in their titles and do not offer a state picker.
+
+## Built (2026-09-18)
+
+| tile | source read |
+|---|---|
+| `aqi-pm25` | EPA AQI Technical Assistance Document, May 2026 (Table 6, Equation 1) |
+| `calosha-outdoor-heat` | dir.ca.gov, 8 CCR 3395 |
+| `calosha-indoor-heat` | dir.ca.gov, 8 CCR 3396 |
+| `calosha-wildfire-smoke` | dir.ca.gov, 8 CCR 5141.1 |
+| `ca-valley-fever-test-prompt` | CDPH CAHAN, January 18, 2024 |
+
+- **Corrected from the plan:** the 10-minute cool-down every 2 hours (3395(e)(6)) is
+  for **agriculture only**. The other four listed industries get the rest of the
+  high-heat procedures. A test pins this.
+- **Corrected from the plan:** CDPH's advisory says "symptomatic for a week or longer",
+  not 1 to 2 weeks. It lists no rash or fatigue prompt, so the tile asks the
+  advisory's four prompts only. The Labor Code 6709 "highly endemic" definition was
+  not read; the tile uses the advisory's own words, "areas with coccidioidomycosis".
+- The AQI round trip holds for every AQI from 0 to 500: AQI to concentration returns
+  the lowest one-decimal concentration that reports that AQI.
+- The smoke tile reuses the AQI tile's conversion, so a concentration entered there
+  gives the same AQI as on the AQI tile.
