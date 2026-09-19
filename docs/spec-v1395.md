@@ -192,3 +192,19 @@ as the Department's summary.
   next business day, while hepatitis A, invasive *H. influenzae*, and measles stay immediate.
 - "By the next business day" is read as the same clock time on the next business day, the tool's
   earliest-reading rule, and the answer says so.
+
+## Built (2026-09-19): `minor-self-consent`, New York and New Jersey
+
+The note above ("NY and NJ minor-consent law was not researched") is superseded.
+
+| state | read | may consent alone |
+|---|---|---|
+| NY | PHL 2504, 2305; MHL 33.21, 22.11 (nysenate text via newyork.public.law, updated August 8, 2025) | prenatal care at any age; STI care under 21 without parental knowledge; outpatient mental health and chemical dependence treatment **only on documented grounds** (a parent unavailable, involvement detrimental, or a refusal overridden by a physician); a minor who is a parent, married, or a homeless youth consents to everything |
+| NJ | N.J.S.A. 9:17A-1, 9:17A-4 (FindLaw, current as of January 1, 2024) | pregnancy care; STI at any age and HIV from 13; care after apparent sexual assault (parents told unless not in the patient's best interests); substance use treatment, confidential; temporary outpatient behavioral health from 16, no medication |
+
+- A third answer, "Not settled by the sections read here", is new. New York contraception, abortion,
+  and care after sexual assault, New Jersey contraception and abortion, and New Jersey opioid
+  treatment programs get it rather than a guess.
+- New York's conditional grounds get their own answer, "Only if the grounds are documented".
+- New Jersey's 9:17A-1 refers to a 1999 parental-notification law (C.9:17A-1.1). Its status was not
+  read, so the tool does not apply it.

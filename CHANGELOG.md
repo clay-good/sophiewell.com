@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Minor self-consent: New York and New Jersey.** Both states are added from their
+  statutes. Where no statute read settles a service, the answer says so instead of
+  guessing. See docs/spec-v1395.md.
+
 - **New Jersey aid in dying: residency proofs.** The timeline now lists the four
   proofs of residency N.J.S.A. 26:16-11 accepts. See docs/spec-v1392.md.
 

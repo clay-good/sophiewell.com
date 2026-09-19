@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `423de27725b60906`
-Generated: 2026-09-19T14:34:02.090Z
+Build ID: `86e7aeebafa1e68e`
+Generated: 2026-09-19T14:39:42.516Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -547,7 +547,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/membranous-risk-v878.js` | 11351 | `882c36c07e46543e32f1114792c1124ee9f9ff6b384084fc0a8c221e7dd62062` |
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2530519 | `9625b92c661792562659ae93f3a402c17023a016ae88b1c5ad64f7ae2bcf2754` |
+| `lib/meta.js` | 2530610 | `2402051ae4bdc95d8e08dd826c8cad6f1a54d77a6cb5324f335e75c0e988f3e8` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 18806 | `adc0fb95d01f23df9eb461cdbb6a6f48b5f3f3ff2f4cb2a8770903ce31d5f6cc` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -561,7 +561,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/migraine-ichd3-v815.js` | 10346 | `2d8f5828599b247771e72f31686801a06caeee5c5dae8a41d39243370ea501ce` |
 | `lib/milch-condyle-v418.js` | 3230 | `bd203011afad9a6b64e11d891667f379ff974ef02b8f2f01f97d0223bc1a754c` |
 | `lib/miller-gingival-recession-v724.js` | 4057 | `b1d11e492848c3dd47c988a4e603929084939dac5cad8042402014dba90366f3` |
-| `lib/minor-self-consent-v1395.js` | 10149 | `e5bdbb214943635ac558e36687d65bb054308c22a413c05fef93242e16766681` |
+| `lib/minor-self-consent-v1395.js` | 17146 | `a16f53d4b3d7b4a56fb3c3c37c26f199b2b0665c9ec5dd727d3ad0218bd64ef5` |
 | `lib/mis-c-v795.js` | 5510 | `aebe68b4bd5f98d48ddb51cf2a35e0a15ebb97f435a18010a2005382dbebfdbe` |
 | `lib/mitral-regurgitation-stage-v847.js` | 11352 | `ba47ad4c74266e61fca7cba3ebf57759abc04349542c5e225caa206e81633e3c` |
 | `lib/mitral-stenosis-stage-v845.js` | 10237 | `c7e9a9b1f16a458f0ca2448a2ccab7dc283556c39e1887de682c0119bacc4213` |
@@ -1465,7 +1465,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/migraine-ichd3-v815.js` | 3614 | `5bc6f0dfea16470f20633ad2253f4b8bf514eba518c1fa9bdf2509974fa37376` |
 | `mcp/adapters/milch-condyle-v418.js` | 1281 | `0d990c8988999ed6c8ca6e8e1ae9d280695f0eff9b31f148fe8470baad6fed8b` |
 | `mcp/adapters/miller-gingival-recession-v724.js` | 1351 | `8965e6b318399d111de1a7ec1d6797a3504075c940546d34dab74295cfb8976a` |
-| `mcp/adapters/minor-self-consent-v1395.js` | 1826 | `a890717009511a578150a4743e6c1a3023572a031afea9224605ce47807005db` |
+| `mcp/adapters/minor-self-consent-v1395.js` | 1927 | `0b2384374d670d38c31d9c9de41a3b35135ae9ea81f9ffda731d92903d415f50` |
 | `mcp/adapters/mis-c-v795.js` | 2172 | `3edd692acbbf3edf463fa268a0d4ffc1c74c9e0479452e96709ee215a06ce3c3` |
 | `mcp/adapters/mitral-regurgitation-stage-v847.js` | 2366 | `bbd37b521b2f6b0f5028135ca29b84f06345157d5d03a793541a42ef9daa8724` |
 | `mcp/adapters/mitral-stenosis-stage-v845.js` | 1938 | `f93b986a2062c388e4cd0b1afd78ea13a5981375cb0a91b8f08a4a6a3741fa9f` |
@@ -1916,7 +1916,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1392.js` | 9475 | `1c12033a68e6edc9ac70098b95fdcf91b5eaf83941ef0af9843458f3071ddf8f` |
 | `views/group-v1393.js` | 7907 | `8857c26b34755a4d018e58d965df708a386700e222facb4dcc2b5a6584440933` |
 | `views/group-v1394.js` | 8245 | `900cdcd3f81d249c5aa89c7d57add9a7b1097f816b9ffa9a5ae741ce2b2a74e6` |
-| `views/group-v1395.js` | 10319 | `c26262d94ae201811b8f434c3fd25e9e2f23b07368426ede3ef9ca5e0ac8cf2b` |
+| `views/group-v1395.js` | 10370 | `cc1928f0aec6de1711b580be7f6941508869b1917b1714cf080d1e42f37356aa` |
 | `views/group-v1396.js` | 13015 | `0f6e9f902b07c66f2c0db1ebaa9adc73b546c2a8aa454049211dc52030578362` |
 | `views/group-v1397.js` | 10420 | `e17332f0f5a97b7dc6639b06b3c71095a7b5d877cede3ea426239ca17245ba73` |
 | `views/group-v1398.js` | 7537 | `ccd13516de696cd04a6610b11bf446ea3482f77b5ba1c4dc5437054793e8452a` |

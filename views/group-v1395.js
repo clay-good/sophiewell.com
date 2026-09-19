@@ -149,7 +149,7 @@ export const renderers = {
   },
 
   'minor-self-consent'(root) {
-    note(root, 'California or Texas. Choose the service; each state lets a minor consent alone only for some.');
+    note(root, 'New York, New Jersey, California, or Texas. Choose the service; each state lets a minor consent alone only for some.');
     selectField(root, 'State', 'msc-state', MC.MSC_STATES, '-- choose --');
     numField(root, 'Age', 'msc-age', 'years');
     selectField(root, 'Service', 'msc-service', MC.SERVICES, '-- choose --');
@@ -168,6 +168,7 @@ export const renderers = {
         { label: 'Answer', value: r.bandLabel },
       ]);
       note(o, r.parentNote);
+      note(o, r.stateNote);
       note(o, r.postureNote);
     }));
   },

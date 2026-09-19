@@ -667,7 +667,7 @@ carries the specific date that could change it.
 | ny-hiv-hcv-test-offer | PHL 2781-a, 2171 | NY | 2026-09-18 | text read at nysenate.gov | 2027-01-02 |
 | ca-adverse-event-1279 | HSC 1279.1 | CA | 2026-09-18 | Stats. 2007, ch. 130 | 2027-01-02 |
 | tx-sa-forensic-exam-window | CCP 56A.303; HSC 323.004 | TX | 2026-09-18 | read on the official mirror | 2027-06-01 |
-| minor-self-consent | CA Fam. Code 6922-6929; TX Fam. Code 32.003 | CA, TX | 2026-09-18 | CA: AB 260 (2025) | 2027-01-02 |
+| minor-self-consent | CA Fam. Code 6922-6929; TX Fam. Code 32.003; NY PHL 2504, 2305, MHL 33.21, 22.11; N.J.S.A. 9:17A-1, 9:17A-4 | NY, NJ, CA, TX | 2026-09-19 | CA: AB 260 (2025); NY text updated 2025-08-08; NJ FindLaw current as of 2024-01-01 | 2027-01-02 |
 | ny-aot-kendras-law | MHL 9.60(c) | NY | 2026-09-18 | read on nysenate.gov | 2027-01-02 |
 | ca-grave-disability-sb43 | WIC 5008(h) | CA | 2026-09-18 | SB 43 (2023); SB 1238 (2024) | 2027-01-02 |
 | ca-care-court-eligibility | WIC 5972; WIC 5970.5 | CA | 2026-09-18 | SB 27 (2025), effective 2026-01-01; high volatility | 2027-01-02 |

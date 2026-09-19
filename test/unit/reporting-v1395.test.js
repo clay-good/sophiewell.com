@@ -109,6 +109,26 @@ test('msc: California age cuts and the maturity question', () => {
 test('msc: Texas sexual assault names the routes and does not decide; adults and other states refused', () => {
   const r = msc({ state: 'TX', age: '15', service: 'sexual-assault' });
   assert.match(r.band, /32\.005 is not read here/);
-  assert.equal(msc({ state: 'NY', age: '15', service: 'sti' }).valid, false);
+  assert.equal(msc({ state: 'FL', age: '15', service: 'sti' }).valid, false);
   assert.equal(msc({ state: 'CA', age: '18', service: 'sti' }).valid, false);
+});
+
+// spec-v1395: New York and New Jersey minor consent; what no statute read settles stays unanswered.
+test('minor consent: NY -- STI under 21 alone; mental health only on documented grounds; abortion unanswered', () => {
+  const sti = msc({ state: 'NY', age: '15', service: 'sti' });
+  assert.equal(sti.mayConsent, true);
+  assert.match(sti.band, /under 21/);
+  const mh = msc({ state: 'NY', age: '15', service: 'mental-health' });
+  assert.equal(mh.mayConsent, 'conditional');
+  assert.match(mh.bandLabel, /33\.21\(c\)/);
+  assert.equal(msc({ state: 'NY', age: '15', service: 'abortion' }).bandLabel, 'Not settled by the sections read here');
+  assert.match(sti.stateNote, /2504\(1\)/);
+});
+
+test('minor consent: NJ -- behavioral health at 16, not 15; sexual assault with parent notice; HIV at 13', () => {
+  assert.equal(msc({ state: 'NJ', age: '16', service: 'mental-health' }).mayConsent, true);
+  assert.equal(msc({ state: 'NJ', age: '15', service: 'mental-health' }).mayConsent, false);
+  assert.match(msc({ state: 'NJ', age: '14', service: 'sexual-assault' }).band, /best interests/);
+  assert.match(msc({ state: 'NJ', age: '12', service: 'sti' }).band, /which this minor is not/);
+  assert.equal(msc({ state: 'NJ', age: '15', service: 'contraception' }).mayConsent, null);
 });
