@@ -131,3 +131,18 @@ mirror (CCP 56A.303, HSC 323.004, Family Code 32.003).
 
 `reportable-condition-urgency` (built from each state's PDF) is still to come.
 
+## Built (2026-09-19): `reportable-condition-urgency`, California and Texas
+
+- Transcribed from the PDFs themselves: CDPH's June 2025 Title 17 list (94
+  conditions; the counts of each urgency marker were checked against the PDF text)
+  and DSHS's *Texas Notifiable Conditions 2026* (89 conditions, rev. 01/01/26,
+  expires 12/31/26). The lists live in the library, with the edition printed on
+  every answer.
+- **Corrected from the plan:** in Texas, Chagas disease and typhus are **within one
+  week**, not one work day. The plan's summary had them wrong, which is why this tile
+  was never going to ship from a summary. Measles is call immediately and Vibrio one
+  work day, and tests pin all four.
+- "Within one working day" is read as the same clock time on the next working day of
+  that state's legal-holiday calendar, the earliest reading, and the tile says so.
+- New York (the DOH-389 guidance returned 403) and New Jersey (the 2024 amendment was
+  not read) are not offered. The tile offers only the states it has.

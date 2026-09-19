@@ -11,6 +11,7 @@ import * as OF from '../lib/ny-hiv-hcv-test-offer-v1395.js';
 import * as AE from '../lib/ca-adverse-event-1279-v1395.js';
 import * as SA from '../lib/tx-sa-forensic-exam-window-v1395.js';
 import * as MC from '../lib/minor-self-consent-v1395.js';
+import * as RC from '../lib/reportable-condition-urgency-v1395.js';
 import { resultRow } from '../lib/result-copy.js';
 
 function selectField(root, label, id, options, blankText) {
@@ -168,6 +169,28 @@ export const renderers = {
       ]);
       note(o, r.parentNote);
       note(o, r.postureNote);
+    }));
+  },
+
+  'reportable-condition-urgency'(root) {
+    note(root, 'California or Texas. Choose the state, then the condition from that state\'s list.');
+    selectField(root, 'State', 'rc-state', RC.RC_STATES, '-- choose --');
+    selectField(root, 'California condition', 'rc-ca', RC.CA_CONDITIONS, '-- choose --');
+    selectField(root, 'Texas condition', 'rc-tx', RC.TX_CONDITIONS, '-- choose --');
+    timeField(root, 'Identified', 'rc-time');
+
+    const ids = ['rc-state', 'rc-ca', 'rc-tx', 'rc-time'];
+    const o = out(); root.appendChild(o);
+    wire(ids, () => safe(o, () => {
+      const r = RC.reportableConditionUrgency({ state: val('rc-state'), caCondition: val('rc-ca'), txCondition: val('rc-tx'), identified: val('rc-time') });
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [
+        { text: r.band, cls: r.abnormal ? 'warn' : null },
+        { label: 'Answer', value: r.bandLabel },
+      ]);
+      note(o, r.weekendNote);
+      note(o, r.readingNote);
+      note(o, r.editionNote);
     }));
   },
 };

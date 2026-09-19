@@ -843,6 +843,7 @@ import staffingCommitteeCheckV1396 from './adapters/staffing-committee-check-v13
 import txWorkplaceViolencePlanAuditV1396 from './adapters/tx-workplace-violence-plan-audit-v1396.js';
 import txSafeHarborDecisionAidV1396 from './adapters/tx-safe-harbor-decision-aid-v1396.js';
 import nursingHomeStaffingCheckV1396 from './adapters/nursing-home-staffing-check-v1396.js';
+import reportableConditionUrgencyV1395 from './adapters/reportable-condition-urgency-v1395.js';
 import ticiV960 from './adapters/tici-v960.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
@@ -1713,6 +1714,7 @@ const ADAPTER_MODULES = [
   ['tx-workplace-violence-plan-audit-v1396', txWorkplaceViolencePlanAuditV1396],
   ['tx-safe-harbor-decision-aid-v1396', txSafeHarborDecisionAidV1396],
   ['nursing-home-staffing-check-v1396', nursingHomeStaffingCheckV1396],
+  ['reportable-condition-urgency-v1395', reportableConditionUrgencyV1395],
   ['tici-v960', ticiV960],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],

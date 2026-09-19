@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Reportable disease: report now or later?** The reporting deadline for a
+  notifiable condition in California (Title 17 list, June 2025) or Texas (DSHS
+  2026 list), transcribed from each state's PDF, with the date and time it is due
+  and whom to report to. See docs/spec-v1395.md.
+
 - **Staffing committees, nursing home minimums, workplace violence plans, and Safe
   Harbor.** Whether a
   New York or Texas hospital nurse staffing committee meets its makeup and

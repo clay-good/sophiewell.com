@@ -1188,6 +1188,7 @@ const UTILITIES = [
   { id: 'tx-workplace-violence-plan-audit', name: 'Texas Workplace Violence Prevention Plan Audit (HSC 331.002-331.004)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'tx-safe-harbor-decision-aid', name: 'Texas Nurse Safe Harbor: How to Invoke It (Occ. Code 303.005)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'nursing-home-staffing-check', name: 'Nursing Home Minimum Staffing Check (NY, NJ, CA)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'reportable-condition-urgency', name: 'Reportable Disease: Report Now or Later? (CA, TX)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
   // Group K (Lab Reference): removed in spec-v29 wave 29-2 (lab-adult,
   // lab-peds, tdm-levels, tox-levels are pure reference-range tables).
   // Group L: Forms & Numbers Literacy (removed in spec-v29 wave 29-2:

@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:38b0bbf9-6a77-54db-850a-a1772e77866a",
+  "serialNumber": "urn:uuid:ee0fc2d9-f8de-5025-872e-ad61d94329b0",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-19T08:34:06.408Z",
+    "timestamp": "2026-09-19T08:41:56.802Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1785 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1786 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "435ed0da66b4c28a8dc33facb1f03edc35e9a4de6ce79971bd4b01e717d9516d"
+          "content": "c01f4f739c44aebacad1c02760e4a7bc5b75e4688b02e1d1a577260a19e96539"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "114967"
+          "value": "115032"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b3317fc90b96842f1d70807651116159bc25b92df4126f18a7746d7ecd14043c"
+          "content": "df10b4ee72d60d909fb9657612f42ce856f1ab7449d880112cc804dc1a02a9ea"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "531882"
+          "value": "532051"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "42496be44c2821783baf93862193ca2695ed6350290a544d85354ed7929f32a9"
+          "content": "a1d67a2761201ecd9bc3833282b669c0bdadba8a805d0ebb96452d0473340a0c"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "222430"
+          "value": "222569"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "82fc6a341eda3aaae46bb2d25407d7e95ff19a4d5deab99bcdab52bb0c19eedf"
+          "content": "4b30d8f22449431a8f7e8842cc640832bc5f4f5eeaf47439bfac63adb8599a38"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "102019"
+          "value": "102102"
         }
       ]
     },
@@ -10814,7 +10814,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "672dde2914c6c115e550f84a15036ed6ea4a7f1325235c08a285f7e5ce0835fa"
+          "content": "22360c93af16301874f8459516d0ab328a42d5a469ed678db3ffa3a223bfefca"
         }
       ],
       "properties": [
@@ -10824,7 +10824,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2528961"
+          "value": "2529829"
         }
       ]
     },
@@ -15634,6 +15634,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "9039"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/reportable-condition-urgency-v1395.js",
+      "type": "file",
+      "name": "lib/reportable-condition-urgency-v1395.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "707c79d93e377d882705b279fdbc86d35a9a40c2d239eb5f95f48289e4904e98"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "23635"
         }
       ]
     },
@@ -34055,6 +34076,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/reportable-condition-urgency-v1395.js",
+      "type": "file",
+      "name": "mcp/adapters/reportable-condition-urgency-v1395.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d903fc00f976ba752b0d84ff866f6b8b8b4ebb1036ba6a2d2f4716a16134fcdb"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1313"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/respiratory-maternal-v263.js",
       "type": "file",
       "name": "mcp/adapters/respiratory-maternal-v263.js",
@@ -38072,7 +38114,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "782425b5b4fa7e33e1e56185753086dfe96c2dc3415fa93d0ed8116131aeb580"
+          "content": "7178f616f13d7b982f8cb987ca147afaf1da51ac71937454cc4ba7b676f6bdf1"
         }
       ],
       "properties": [
@@ -38082,7 +38124,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "99844"
+          "value": "100015"
         }
       ]
     },
@@ -39500,7 +39542,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2d3b1b5524f06cc52f7f2b168bfae9b252b902542d4d318c8187b20e19635015"
+          "content": "9f8236af8aca9ed5dd87e55aa233a0f2e19f134f39b46ea7601955554a2359bd"
         }
       ],
       "properties": [
@@ -39510,7 +39552,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "8949"
+          "value": "10046"
         }
       ]
     },
@@ -71545,6 +71587,7 @@
         "urn:sophiewell:file:source:lib/renal-v128.js",
         "urn:sophiewell:file:source:lib/renal-v277.js",
         "urn:sophiewell:file:source:lib/renalpulm-v249.js",
+        "urn:sophiewell:file:source:lib/reportable-condition-urgency-v1395.js",
         "urn:sophiewell:file:source:lib/respiratory-maternal-v263.js",
         "urn:sophiewell:file:source:lib/result-copy.js",
         "urn:sophiewell:file:source:lib/resus-trauma-v207.js",
@@ -73240,6 +73283,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/renal-v128.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/renal-v277.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/renalpulm-v249.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/reportable-condition-urgency-v1395.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/respiratory-maternal-v263.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/resus-trauma-v207.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/rheum-classification-v222.js",
@@ -73534,7 +73578,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "38b0bbf96a77d4db"
+      "value": "ee0fc2d9f8de6025"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -73546,7 +73590,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2607"
+      "value": "2609"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

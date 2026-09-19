@@ -8314,6 +8314,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/nursing-home-staffing-check-v1396.js (spec-v1396: nursing home minimum staffing check — clinical disclaimer)
 - `nursing-home-staffing-check`
 
+### lib/reportable-condition-urgency-v1395.js (spec-v1395: reportable disease urgency, California and Texas — clinical disclaimer)
+- `reportable-condition-urgency`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

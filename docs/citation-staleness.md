@@ -707,3 +707,4 @@ carries the specific date that could change it.
 | tx-workplace-violence-plan-audit | HSC 331.002-331.004 | TX | 2026-09-19 | SB 240 (2023) | 2027-06-01 |
 | tx-safe-harbor-decision-aid | Occ. Code 303.005 | TX | 2026-09-19 | 22 TAC 217.20 not read | 2027-06-01 |
 | nursing-home-staffing-check | NY PHL 2895-b; N.J.S.A. 30:13-18; CA HSC 1276.65 | NY, NJ, CA | 2026-09-19 | NJ FindLaw text current as of 2024-01-01 | 2027-01-02 |
+| reportable-condition-urgency | CA 17 CCR 2500 list (June 2025); TX DSHS Notifiable Conditions 2026 | CA, TX | 2026-09-19 | TX list expires 2026-12-31 and is reissued each January | 2027-01-02 |

@@ -8541,6 +8541,17 @@
       ],
       "tile": "nursing-home-staffing-check",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "reportable disease",
+        "notifiable conditions",
+        "report to health department",
+        "title 17 reportable",
+        "reportable conditions texas"
+      ],
+      "tile": "reportable-condition-urgency",
+      "audience": "clinicians"
     }
   ]
 }
