@@ -41,3 +41,14 @@ test('blank input -> valid:false', () => {
   assert.equal(iretonJones({ mode: 'ventilated', age: 55 }).valid, false);
   assert.equal(iretonJones({}).valid, false);
 });
+
+// A blank indicator is asked, never read as male or as not obese.
+test('ireton-jones: a blank sex (ventilated) or height (spontaneous) is asked', () => {
+  const s = iretonJones({ mode: 'ventilated', age: 55, weight: 80 });
+  assert.equal(s.valid, false);
+  assert.match(s.message, /sex/);
+  const h = iretonJones({ mode: 'spontaneous', age: 55, weight: 90, obese: true });
+  assert.equal(h.valid, false);
+  assert.match(h.message, /height/);
+  assert.equal(iretonJones({ mode: 'spontaneous', age: 55, weight: 80, height: 175 }).valid, true);
+});

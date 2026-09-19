@@ -67,10 +67,11 @@ export const renderers = {
     root.appendChild(select('Primary tumor stage (T, 1997 TNM)', 'uiss-t', [['t1', 'T1'], ['t2', 'T2'], ['t3', 'T3'], ['t4', 'T4']]));
     root.appendChild(select('Fuhrman grade', 'uiss-grade', [['1', 'Grade 1'], ['2', 'Grade 2'], ['3', 'Grade 3'], ['4', 'Grade 4']]));
     root.appendChild(select('ECOG performance status', 'uiss-ecog', [['ecog0', 'ECOG 0'], ['ecog1plus', 'ECOG ≥ 1']]));
+    root.appendChild(select('Disease extent', 'uiss-extent', [['n0m0', 'Localized (N0M0)'], ['node-or-met', 'Node-positive or metastatic']]));
     const o = out(); root.appendChild(o);
-    wire(['uiss-t', 'uiss-grade', 'uiss-ecog'], () => safe(o, () => {
+    wire(['uiss-t', 'uiss-grade', 'uiss-ecog', 'uiss-extent'], () => safe(o, () => {
       render(o, M.uissRcc({
-        tStage: val('uiss-t'), grade: val('uiss-grade'), ecog: val('uiss-ecog'),
+        tStage: val('uiss-t'), grade: val('uiss-grade'), ecog: val('uiss-ecog'), extent: val('uiss-extent'),
       }), 'UISS');
     }));
     postureNote(root);

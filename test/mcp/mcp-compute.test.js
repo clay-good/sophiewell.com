@@ -1768,10 +1768,10 @@ test('lib/rcc-prognosis-v279.js worked calls', () => {
   assert.equal(low.score, 0);
   assert.equal(low.band, 'low');
   // UISS localized: T4 -> high tier regardless of grade/ECOG.
-  const uiss = ok('uiss-rcc', { 'uiss-t': 't4', 'uiss-grade': '2', 'uiss-ecog': 'ecog0' });
+  const uiss = ok('uiss-rcc', { 'uiss-t': 't4', 'uiss-grade': '2', 'uiss-ecog': 'ecog0', 'uiss-extent': 'n0m0' });
   assert.equal(uiss.tier, 'high');
   // T1 / grade 1-2 / ECOG 0 is the low tier.
-  const uissLow = ok('uiss-rcc', { 'uiss-t': 't1', 'uiss-grade': '1', 'uiss-ecog': 'ecog0' });
+  const uissLow = ok('uiss-rcc', { 'uiss-t': 't1', 'uiss-grade': '1', 'uiss-ecog': 'ecog0', 'uiss-extent': 'n0m0' });
   assert.equal(uissLow.tier, 'low');
 });
 

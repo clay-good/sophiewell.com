@@ -6,6 +6,17 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Ireton-Jones: the obesity and sex terms are asked.** A blank height read as
+  "not obese" and dropped the obesity term (609 kcal/day). For an agent, a blank sex
+  read as male (244 kcal/day more). Each form now asks for the value its equation
+  uses. A new finder lists inputs a calculator reads that nothing can supply. See
+  docs/spec-v1403.md.
+
+- **UISS (renal cell carcinoma): the disease extent is asked.** The tiers apply to
+  localized N0M0 disease only, but nothing asked whether the cancer had spread, so
+  node-positive or metastatic disease got a localized tier. A required field now
+  asks, and a blank is not read as N0M0. See docs/spec-v279.md.
+
 - **Minor self-consent, California and Texas: marriage and emancipation.** Both
   states now name the rule the form does not ask about: a married minor in Texas has
   an adult's capacity (Family Code 1.104, 31.006), and an emancipated minor in

@@ -27,6 +27,7 @@ export default [
       { dom: 'uiss-t', arg: 'tStage', kind: 'enum', values: ['t1', 't2', 't3', 't4'], required: true, label: 'Primary tumor stage (T, 1997 TNM)' },
       { dom: 'uiss-grade', arg: 'grade', kind: 'enum', values: ['1', '2', '3', '4'], required: true, label: 'Fuhrman grade' },
       { dom: 'uiss-ecog', arg: 'ecog', kind: 'enum', values: ['ecog0', 'ecog1plus'], required: true, label: 'ECOG performance status (0 or >= 1)' },
+      { dom: 'uiss-extent', arg: 'extent', kind: 'enum', values: ['n0m0', 'node-or-met'], required: true, label: 'Disease extent (localized N0M0, or node-positive or metastatic)' },
     ],
   },
 ];

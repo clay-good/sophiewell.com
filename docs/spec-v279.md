@@ -189,3 +189,11 @@ v279 is fully shipped when:
   does not silently substitute a newer grading/staging system. If the UISS metastatic-branch
   cells cannot be reproduced from ≥ 2 open sources at implementation, that branch is parked
   (not approximated), per [spec-v97](spec-v97.md) and the [spec-v259](spec-v259.md) precedent.
+
+## Update (2026-09-19): `uiss-rcc` asks the disease extent
+
+The library refused node-positive or metastatic disease, but read that from `nodePositive` and
+`metastatic` arguments that neither the page nor the agent tool supplied. A patient with N1 or M1
+disease therefore got a localized tier and its 5-year survival figure. The tile now has a required
+**Disease extent** field (localized N0M0, or node-positive or metastatic). A blank is asked, never
+read as N0M0, and node-positive or metastatic disease is sent to the IMDC and MSKCC models as before.
