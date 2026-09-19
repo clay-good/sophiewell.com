@@ -117,6 +117,15 @@ one tool to another:
 | `opioid-mme` | `pmp-check-required`, `acute-opioid-rx-limit` |
 | `heat-index` | `calosha-outdoor-heat`, `calosha-indoor-heat` |
 
-No existing answer changed. Still open in Part B: the state lines for `blood-lead`,
+No existing answer changed.
+
+`blood-lead` has an optional California line (built 2026-09-19): with California chosen, it gives
+the venous confirmation window for a capillary result from CDPH's *California Management Guidelines
+on Childhood Lead Poisoning* (August 2023): 3 months, 1 month, 1 month, 2 weeks, 48 hours, 24 hours,
+or immediately by band. The windows match the plan, but the source read is the CDPH guideline, not
+17 CCR 37100, which did not load. With no state chosen the answer is unchanged, and a test pins
+that. The New York, NYC, and Texas lead lines were not read.
+
+Still open in Part B: the state lines for
 `restraint-timer`, `hiv-pep-occupational`, `sepsis-bundle-clock`, and `rabies-pep`, and the
 `qbl-pph` CMQCC sentence (the CMQCC terms were not read).

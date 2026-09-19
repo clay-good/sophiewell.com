@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `9944e8529de0eda1`
-Generated: 2026-09-19T09:35:42.768Z
+Build ID: `a09a5482ccecbe49`
+Generated: 2026-09-19T11:46:54.670Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -482,7 +482,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/lauge-hansen-v402.js` | 5608 | `284baf51c6165bd5458cc602171ca28b5914c6e1e5dc9e388b23bb066c3f9449` |
 | `lib/lauren-gastric-v393.js` | 3670 | `e6d981ac3e9e76c9458ce5b225d8ef8a91266ca87c3c3fc7952ef9ac56b02f41` |
 | `lib/le-fort-v406.js` | 3871 | `22519f726d0904118436f0cd34d665878a1f63e2cb7240eef374f631b4050654` |
-| `lib/lead-v863.js` | 7188 | `ca74cb7427f175f7b029ac7c9801abb8549505a8015e5f4e60e15a4b656606e3` |
+| `lib/lead-v863.js` | 9205 | `98b54b503900d034676c97c5dcc1dcaf7e058a5db102182dc38e1a1b71c08395` |
 | `lib/leddy-packer-v456.js` | 3483 | `28e7739172e81201d43e89616cbbd383e8584d101a7d1375c44e4b6207836793` |
 | `lib/leeds-enthesitis-index-v706.js` | 3052 | `59512421e4f89f211115d4a7a866b3f6d13ee272e75975cc817e0f9cb5123ca9` |
 | `lib/leipzig-wilson-v812.js` | 9441 | `c535b6ce940521e8c1367bb2a89a8bd88e3e70e04e19f784ebcc1c61a0699df0` |
@@ -1388,7 +1388,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/lauge-hansen-v402.js` | 1652 | `d9e567f6dc9053b351d05461c47e1855ab645d666d315ce35c63c4f8c621b363` |
 | `mcp/adapters/lauren-gastric-v393.js` | 1446 | `7787f78b8db10f74043088f3d7b3b6879039c0d1d0c97c18554ab913c0ca4f16` |
 | `mcp/adapters/le-fort-v406.js` | 1337 | `f8748644d367b581780c4c87d5f079706d286866a80452865aae771b9779aa37` |
-| `mcp/adapters/lead-v863.js` | 1542 | `b4da93d5e3c1dccb6836fe9f49bcb69171b55247f2cb5d0f0408c83cb1ecce78` |
+| `mcp/adapters/lead-v863.js` | 1666 | `0edc22022151a63ce008ad0f4d4b9f4faf55dc0a7a63b556c08548358b9cc316` |
 | `mcp/adapters/leddy-packer-v456.js` | 1219 | `cf80b3edf03a33632d3dce0bd9d44bb6e4632f31208c56bfb4ce006bc9ec770a` |
 | `mcp/adapters/leeds-enthesitis-index-v706.js` | 1615 | `d8284a57437b8cd51a4f81ad403941c19b36399b475449952630079c0f33851b` |
 | `mcp/adapters/leipzig-wilson-v812.js` | 2018 | `2f49c2f862151cf2334d18962d085b82f71156a570e3c26cb506cbfd7854baad` |
@@ -2600,7 +2600,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v860.js` | 3121 | `8108ecf289a9481de638b3b9e92a4fa24bf692b05203058aaf500ab92705cea1` |
 | `views/group-v861.js` | 3796 | `8aeb26a13bdece7d3bf8044fcbb4dc47fe59b01a4a54f519e67c855239abe39e` |
 | `views/group-v862.js` | 3497 | `6e5a18e0753934339b38adf589ccfdbee0ef2dbf54fbb5f3deb64d3d510d91a2` |
-| `views/group-v863.js` | 3090 | `b2c853f89b776536df5938bb9c9fd5810468582415759969ddb0094828843448` |
+| `views/group-v863.js` | 3282 | `ec4dce6879e9c5ef29d2109782e6730d94aeaa0f49b8873a6ffe25d256bd50a6` |
 | `views/group-v864.js` | 3623 | `0d22dd39ef08b27a5d1d6dc4c8f4ea1114e2cb8f7bff984d4c79f0accc14cf22` |
 | `views/group-v865.js` | 4481 | `c5ff0238bdaf404535f93243a97500067b9fd1bac577fba3b088904d08d377d7` |
 | `views/group-v866.js` | 2465 | `c9ed82d2c491ad7620794511ee3d2e163a48f7f6dfb0cf95a2a5c7637caec3fb` |

@@ -68,3 +68,15 @@ test('lead: string input from the DOM behaves like a number', () => {
   assert.equal(bl({ level: '4.2', sample: 'capillary' }).atOrAbove, true);
   assert.equal(bl({ level: '3.4' }).atOrAbove, false);
 });
+
+// spec-v1401 Part B: the California line appears only when California is chosen.
+test('blood-lead: CA capillary 12 is confirmed venous within 1 month; no state changes nothing', () => {
+  const ca = bl({ level: '12', sample: 'capillary', state: 'CA' });
+  assert.match(ca.caNote, /venous test within 1 month/);
+  const none = bl({ level: '12', sample: 'capillary' });
+  assert.equal(none.caNote, null);
+  assert.equal(none.band, ca.band);
+  assert.match(bl({ level: '60', sample: 'capillary', state: 'CA' }).caNote, /within 24 hours/);
+  assert.match(bl({ level: '70', sample: 'capillary', state: 'CA' }).caNote, /immediately/);
+  assert.match(bl({ level: '4', sample: 'capillary', state: 'CA' }).caNote, /within 3 months/);
+});

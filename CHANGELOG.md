@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Blood lead: a California line.** Choose California and a capillary result gets
+  its venous confirmation window from CDPH's 2023 guidelines (for example, 12
+  micrograms per deciliter within 1 month). The national answer is unchanged. See
+  docs/spec-v1401.md.
+
 - **Nurse training and CE in four states.** The nurse training tile now checks New
   Jersey (30 hours with an opioid hour), California (30 hours), and Texas (20
   hours or a certification, plus the targeted hours) continuing education, beside
