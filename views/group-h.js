@@ -369,6 +369,10 @@ export const renderers = {
     root.appendChild(f29d('Vasopressor started at', 'sb-vaso', { type: 'datetime-local' }));
     root.appendChild(f29d('Repeat lactate value (mmol/L)', 'sb-lac2'));
     root.appendChild(f29d('Repeat lactate drawn at', 'sb-lact2', { type: 'datetime-local' }));
+    root.appendChild(s29d('State line (optional)', 'sb-state', [
+      { value: '', text: 'No state line' },
+      { value: 'NY', text: 'New York' },
+    ]));
     const o = out(); root.appendChild(o);
     const run = () => safe29d(o, () => {
       const r = sepsisBundleClock({
@@ -379,6 +383,7 @@ export const renderers = {
         antibioticTime:      v29d('sb-abx'),
         fluidStartTime:      v29d('sb-fluid'),
         vasoTime:            v29d('sb-vaso'),
+        nyState:             v29d('sb-state'),
         repeatLactateValue:  nv29d('sb-lac2'),
         repeatLactateTime:   v29d('sb-lact2'),
       });
@@ -387,7 +392,9 @@ export const renderers = {
       o.appendChild(ul);
       if (r.lactateClearancePct !== null) o.appendChild(el('p', { text: `Lactate clearance: ${r.lactateClearancePct}% per Nguyen 2004.` }));
       for (const b of r.banners) o.appendChild(el('p', { class: 'clinical-notice', text: b }));
+      if (r.nyNote) o.appendChild(el('p', { class: 'muted', text: r.nyNote }));
     });
+    document.getElementById('sb-state').addEventListener('change', run);
     ['sb-t0', 'sb-lac1', 'sb-lact1', 'sb-cult', 'sb-abx', 'sb-fluid', 'sb-vaso', 'sb-lac2', 'sb-lact2'].forEach((id) => document.getElementById(id).addEventListener('input', run));
   },
 

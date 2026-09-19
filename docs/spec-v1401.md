@@ -151,3 +151,10 @@ tests at baseline, 4, and 12 weeks. **Changed from the plan:** the plan listed t
 (BIC/FTC/TAF), but this tile's contract, pinned by a test, is that it names no drug, dose, or regimen.
 So the line says NYSDOH names a preferred regimen and does not print it. `npep-2025` gives CDC's
 regimens.
+
+`sepsis-bundle-clock` has an optional New York line (built 2026-09-19) from 10 NYCRR 405.4(a)(4)-(8).
+The regulation requires hospital sepsis protocols with five components, (i) through (v), for adults and
+children, and **sets no timeframe of its own**. The timeframe goals belong to each hospital's protocol,
+and the line says so, as the plan required. **Changed from the plan:** the six adult and three pediatric
+"elements" the plan listed come from the NYSDOH reporting data dictionaries, which were not read, so
+the line cites the regulation's five components instead.

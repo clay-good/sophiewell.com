@@ -51,3 +51,11 @@ test('All elements pending without inputs', () => {
   const r = sepsisBundleClock({ t0: T0 });
   for (const i of r.items) assert.equal(i.status, 'pending');
 });
+
+// spec-v1401 Part B: the New York line names no timeframe as the regulation's own.
+test('sepsis-bundle-clock: NY line only when chosen, and attributes no clock to 405.4', () => {
+  assert.equal(sepsisBundleClock({ t0: T0 }).nyNote, null);
+  const ny = sepsisBundleClock({ t0: T0, nyState: 'NY' });
+  assert.match(ny.nyNote, /sets no clock itself/);
+  assert.doesNotMatch(ny.nyNote, /\b(1|3|6) (h|hour)/);
+});

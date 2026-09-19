@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Sepsis bundle clock: a New York line.** Choose New York to see what 10 NYCRR
+  405.4 (Rory's Regulations) requires of a hospital's sepsis protocols. It is
+  clear that the regulation sets no clock itself. See docs/spec-v1401.md.
+
 - **Occupational HIV PEP: a New York line.** Choose New York to see the NYSDOH
   timing (ideally within 2 hours), the 28-day course, and testing at 4 and 12
   weeks. The tool still names no drug. See docs/spec-v1401.md.
