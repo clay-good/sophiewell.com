@@ -89,3 +89,31 @@ Added by SB 11 (2019); low volatility.
 - The TX surrogate tile refuses an ECT consent by a surrogate and names 313.004 as the reason.
 - NY proxy: a test where the agent is also a witness and the result says "defect", naming it.
 - Each tile has a ledger row. The MOLST row names the June 2025 form revision.
+
+## Built (2026-09-18)
+
+| tile | source read |
+|---|---|
+| `ny-fhcda-surrogate` | nysenate.gov, PHL 2994-b and 2994-d |
+| `ca-surrogate-decisionmaker` | leginfo, Probate Code 4711, 4712, 4715 |
+| `tx-surrogate-consent-hierarchy` | official mirror, HSC 313.004 and 166.039 |
+| `ny-health-care-proxy-check` | nysenate.gov, PHL 2980 and 2981 |
+| `ny-molst-checklist-router` | NYSDOH MOLST page (revised June 2025) |
+| `tx-ooh-dnr-validity` | official mirror, HSC 166.003 and 166.082-166.092 |
+| `tx-in-hospital-dnr-pathway` | official mirror, HSC 166.203-166.205 |
+
+- The "second physician concurs" rule the plan placed at 166.039(e) applies to
+  life-sustaining decisions. For ordinary treatment with no surrogate, it is
+  313.004(a-1), and both are printed where they apply.
+- A physician or NP of a general hospital may be a proxy agent (2981(3)(b)). Only
+  the facility's other staff, and clinicians of a mental hygiene facility, need a
+  family tie. The check asks which the agent is.
+- Section 166.088(a) states no witness requirement when a guardian executes an
+  out-of-hospital DNR with the physician, so that route is not failed on witnesses.
+  Where a proxy, agent, or parent signs in place of the person, the tile reads
+  166.082(b)'s witnesses as still applying and says so.
+- 166.204(b): a missed DNR notice does not void the order. The in-hospital tile
+  prints the notice duty for an imminent-death order and says so.
+- The MOLST 90-day review cadence in the plan was not confirmed (the protocol page
+  blocked the fetch). The tile prints the Department's review-on-transition rule instead.
+- New Jersey is absent, as planned; the NY and CA tiles say why in one line.

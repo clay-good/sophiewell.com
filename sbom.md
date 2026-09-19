@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `f206b2a9b6b6a83d`
-Generated: 2026-09-19T01:50:54.174Z
+Build ID: `662c49d7e113e5ed`
+Generated: 2026-09-19T03:12:51.225Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -25,9 +25,9 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 112397 | `f2ba8c9444460a4be788e1bc42cd75fc9f12413675b85c4e5779eef9fe35c4e6` |
+| `index.html` | 113746 | `6cf49a4b96660d76cfc7c769110b33e29c29d250549001b3573324c37f8c2ea7` |
 | `styles.css` | 68228 | `094d1a6713908446c258e1434be2ebc3451324020c59388eed73c362116b1585` |
-| `app.js` | 524163 | `4dfa6ae490bb90020328cb02eadfc1d53f545248b51fbe3fd7f748508187ea65` |
+| `app.js` | 528091 | `c777c82d6bb339c3d90e6c2bc22ece50862d88399f7647ed460feddcbc65ec26` |
 | `report-feedback.js` | 12178 | `955e5cb542c7b13dcbb85a75ecf4ccf2dc0b2dffecd84daac1d607bd6acc7cd2` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 | `theme.js` | 3132 | `6910af0b4c65869c6a3d24d17842bb2cc88c7d23f8fb32506fcdbfeec70ce979` |
@@ -35,7 +35,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `sw.js` | 5183 | `009dd2cf8ba1a16ad8a76c8f523c45600068c78f07582c657015defdead2c876` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 217758 | `7360b0be4933d76ac005cc458b5f412e44f579c558d3c023d784d306a299badf` |
+| `sitemap.xml` | 220180 | `e3a6c4f3b29af7c825c7c3d0863e05969d7d0e499d10f6e13e620690c96dc957` |
 | `_headers` | 2050 | `3874f05a080b8cab13ff022e6e6147c7e1057420a2d9cbc7834bac6b421d4011` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 3682 | `8dd13c4dd66de0c9ec93c2c1561e5fec1902f144b677d3581cf56b124b04a1b8` |
@@ -48,7 +48,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | Path | Bytes | SHA-256 |
 |---|---:|---|
 | `report-worker.mjs` | 13434 | `bcbebe960bf79e0cb2038f7ddc216dfb0753a9665f071fa32966d5d460ffc794` |
-| `report-catalog.js` | 99012 | `37b15881c110057bea37eb0dd3278192ed74d28bb2ed8c7e20d4a0002c154017` |
+| `report-catalog.js` | 100605 | `637ed30cfc8dd732f4564f9518af7c44b69e4567699fd09aa68006655747a4f1` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 
 ## Source-of-truth modules (lib + views)
@@ -148,8 +148,11 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/ca-adverse-event-1279-v1395.js` | 7539 | `6ed32a0bd3b693ff0b3626c5bc617d45835e235aa6cba73fa5eb2327de82a65f` |
 | `lib/ca-care-court-eligibility-v1390.js` | 5877 | `cca587ec4b23d9bbc614e532719b328b8745a5ec906de22fe2916af1cba0d7b7` |
 | `lib/ca-ed-psych-detention-1799-v1389.js` | 6049 | `6127b9b08acc98fecbfed813c21f589c96c238ef05fdfda88a1edf115b0400ff` |
+| `lib/ca-eoloa-timeline-v1392.js` | 6816 | `ac15c79d65b36760c3bf8d8ea68cecf9106a455b6adfce4ea197086f009b823f` |
 | `lib/ca-grave-disability-sb43-v1390.js` | 6506 | `f6a08cd4b24a578d50a28631781d50e23186427dc33016d9b43f326ac6e8df89` |
 | `lib/ca-np-103-104-tracker-v1397.js` | 7870 | `5f8575d68a4e87c2486371f0af381cb76fabb61fc917133747c126b288d09c0a` |
+| `lib/ca-safe-surrender-v1394.js` | 5012 | `f423d6b5b4a0ff477a9bab297406eb4f0a37104688da23c9afe0a56e53af53f9` |
+| `lib/ca-surrogate-decisionmaker-v1391.js` | 5747 | `af50c690f83e0fcb892b2fcbe8daca5bca140787c98c196743f13eb8aceaa899` |
 | `lib/cac-agatston-v668.js` | 3830 | `6a535464198c297e0f9ad57d65182f37faa2cd1791e2a545a2edcf3c8775d186` |
 | `lib/cad-rads-v372.js` | 3973 | `fede4415e7d14df4bd4f0e205d2522389a9fb54289f5e2d8f82fea304da9ac29` |
 | `lib/cage-aid-v738.js` | 2742 | `d2298d4fd1f1f52135e991f742ae4e51fe7b3b5b35e7517521b193f3b52b4df6` |
@@ -534,7 +537,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/membranous-risk-v878.js` | 11351 | `882c36c07e46543e32f1114792c1124ee9f9ff6b384084fc0a8c221e7dd62062` |
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2503865 | `67604ed2aaa074701e21814f9f696b3cff2695c8a362700297bf57a9f7c7f762` |
+| `lib/meta.js` | 2516589 | `2d2e038a2ec5d59901def27094809c4f20c4659ebb0dc1e618af81f19fa23f9e` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 18806 | `adc0fb95d01f23df9eb461cdbb6a6f48b5f3f3ff2f4cb2a8770903ce31d5f6cc` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -595,6 +598,8 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/nih-cpsi-v566.js` | 14020 | `58ca072a2f1bd2ea64a389429867ca42f12c3ab9e501efdbdc2db1932a33861f` |
 | `lib/niosh-lifting-v885.js` | 13026 | `c2f5effd9b6e6eccdb458918bd50d302c3f517a5face4f94236f39d0e7878376` |
 | `lib/nj-civil-commitment-clock-v1389.js` | 8361 | `f8c6a705ac561f40a746b3009feb9a997c8b53c1cea2aca9af799904208bddc3` |
+| `lib/nj-death-religious-exemption-v1392.js` | 2704 | `2ae2c32b17619f6de03ffc44faa2d079ab16626f7ee8348c431a9fb2344abb9f` |
+| `lib/nj-maid-timeline-v1392.js` | 4294 | `8e132145fee3c0768064eb2ec153f577dc49444ecb3fdb1db8583512fbc038bc` |
 | `lib/nmosd-2015-v823.js` | 9091 | `1a3ac685cc57b8cc6a9db1415144bbc18aea289b5c634bb72500c90e349acca0` |
 | `lib/nms-criteria-v870.js` | 8245 | `22f0472ea8e35a034d5bdeaa6db6cfc2da75ade7e83aa3baef0b46047e6b54b9` |
 | `lib/nohria-stevenson-v369.js` | 4429 | `26571c3b11db66d7650f7f044e6f5e99134ec131fb7a5d7bf12eb8c19d3c5a96` |
@@ -611,10 +616,15 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/nutrition-maternal-v208.js` | 13391 | `3f68589603d6c5be3866aa0200955bbff10fe8873d47a3a9a1068a0c5b5c4c87` |
 | `lib/nutrition-v276.js` | 3222 | `96ee14add8fee3184efe8d8ca62f6a37a52d38f15bc785ef1c1f35459c2b4fac` |
 | `lib/ny-aot-kendras-law-v1390.js` | 11236 | `27b52c5cce49d6c3a4b49fec215ca45d72633c1d11396d0329c932caa6df168d` |
+| `lib/ny-fhcda-surrogate-v1391.js` | 4867 | `6ed2396629e2ff05f2edf944627e52960f0db7c67e54ee6bdb744f8a6bf15216` |
+| `lib/ny-health-care-proxy-check-v1391.js` | 6448 | `97110f572c477ea487203e4a1602bbb4c2a80290c913117cd57e414b818607b8` |
 | `lib/ny-hiv-hcv-test-offer-v1395.js` | 4867 | `e1708340eb6b8285a9088e0e8646ef5c974d235061bd73dff3ef6f0acec40ad0` |
+| `lib/ny-maid-timeline-v1392.js` | 5704 | `d1ba825a3c5da58aa21a4dde6113623bcb0ce6cf1a14a8680edee2b8d87200bb` |
 | `lib/ny-mhl-hold-clock-v1389.js` | 10182 | `fc5ade7eb542b2e496c8e5904a2317e16d8692fba7ebc12256cfd96763c1765c` |
+| `lib/ny-molst-checklist-router-v1391.js` | 5299 | `a7cd9f56d0f151a5f6e580119168ad6948e24eaa5623ba2c847efa91ff044012` |
 | `lib/nyha-class-v357.js` | 3947 | `9188475fe8f8841468efbc8dac1433f17a421391156cdcfd2f1357d922e9cceb` |
 | `lib/nyhus-hernia-v400.js` | 4753 | `e95f3e6d388ce3f0e80744bbbe6db2cd4a072334c1cef4efde87ac9155e6f7be` |
+| `lib/nys-newborn-screen-planner-v1394.js` | 6941 | `0ccc6957ac5ab987df455c4d0c1ba7a820813d9fc03c4242f4eaea52a888443f` |
 | `lib/o-rads-v326.js` | 4404 | `92d6104c9737cad58b5bfd157d613629c1aef44e853eaee54256638ed7d64eeb` |
 | `lib/ob-v138.js` | 18449 | `41864e87ea2e3fa60a670d0b831d2f9f340a96462e859a667c36767867d34cec` |
 | `lib/obgyn-v225.js` | 14967 | `363c98b0481738ca8b64d6b6b65724e2f7d090676d0de799d6ec961b19c488f0` |
@@ -707,6 +717,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/ppm-eoai-v548.js` | 10750 | `09729344a30c9e031d6258622cce62ca62069070343630bb9b60b09aaf3b8890` |
 | `lib/prague-barrett-v365.js` | 3549 | `0e55cf5d42483f2ea30ddd972ce3f06ecac02cf3fbc1fb106fab01b6fe2ba564` |
 | `lib/preg-dating.js` | 3647 | `d33385d87f6add7d2583d3bc6f1baef658d326d69c2b7b2c25fbbe9957c1f1d9` |
+| `lib/prenatal-infection-screening-schedule-v1394.js` | 9566 | `7aa300cafd2e672c31723d7e8a6b98da58e4ee1640d52c1addc7d41c1cdcbf04` |
 | `lib/preop-fasting-v897.js` | 10063 | `ed23427c48116fc437eb20583c10f3c5211f1b3d5d0692d5ac7a7f37986d5b53` |
 | `lib/pressure-injury-stage-v359.js` | 4749 | `b286894ea7f911cf8ed86221f1440080f129fe5b621bfd78f9788bd5abe16cbb` |
 | `lib/priapism-gas-v859.js` | 10757 | `64a551a208b4f1430a62b0d16669339f61c853a2af7db33e5612ce32a559d6cf` |
@@ -888,11 +899,18 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/tscherne-closed-v350.js` | 4710 | `abc1bfdfe56b3697d95e667db5677d8b54ed8bd45f11956bd8930705e2091c8c` |
 | `lib/twstrs-severity-v542.js` | 11802 | `d0e1f92f25a8ae77daf0a459cfb99d8a70de46c72b335d6029d6df08bb33afb0` |
 | `lib/tx-aprn-pa-controlled-delegation-v1393.js` | 6969 | `2405cbe5c9ffc727552c30d601b12fa37a8acb18a7c733bb69d4a865e4503795` |
+| `lib/tx-death-cert-deadline-v1392.js` | 3615 | `690d13b39855be6c034880f7e99c6577fe95faeb872572e848cfc7918ec8e056` |
 | `lib/tx-emergency-detention-clock-v1389.js` | 7978 | `e2eb941bcc86d1bcaab04d511a75ae8089be4f6b16825f584c204449269f0f2e` |
 | `lib/tx-emergency-detention-criteria-v1390.js` | 7275 | `ef316a45118613dd4c0cae0f4468ba12ebdd991b5dea88f9269b02e1dff1273f` |
+| `lib/tx-ethics-review-timeline-v1392.js` | 6167 | `a5cb22aef1d9828fe4235651ff0b9abdc47a5e4eb1edc17d7c98e7cfee9f3b4d` |
+| `lib/tx-in-hospital-dnr-pathway-v1391.js` | 6748 | `e06cb75060c2dea7a061d8662ea7ac2dd7410e005b4f76ef4dae72c5c84f0cec` |
+| `lib/tx-maternal-level-reference-v1394.js` | 3535 | `7d10b4d042dbba9a358d34192022ee0e4b052c4d25389a08191c7a504d282895` |
+| `lib/tx-neonatal-level-match-v1394.js` | 5945 | `ba2e26e01273a167aaaec70580fb32906a75e81cf4f33c2c8dafd44d8b794615` |
+| `lib/tx-ooh-dnr-validity-v1391.js` | 8020 | `b5d8eb1b224dfa05e9ab1d782a2534df821bf8fb20831a04ea59675629216af7` |
 | `lib/tx-prescriptive-authority-agreement-v1397.js` | 5802 | `4928006b716b8dd67f6e7c74c737d64dcdcc71ee6d88ba5486ef2ac21832d0bf` |
 | `lib/tx-protective-custody-hearing-clock-v1389.js` | 6267 | `72473c16120e700ece8f6a47a12c1793386eef2f78becc1d8be5b34ceb1ab17d` |
 | `lib/tx-sa-forensic-exam-window-v1395.js` | 5610 | `5b43e7521dd308d9e3b592d78272c1ceaef99fe4312942dd86dc9dc33dad5a8d` |
+| `lib/tx-surrogate-consent-hierarchy-v1391.js` | 6620 | `f8931821cdaf85ee6178400ea59d100d517823109f8a4d4b6a00d1647b74a82d` |
 | `lib/ucsf-hcc-v686.js` | 4651 | `e3ab017b2a8c51ff6885b2fbc5cc002d26cd8372d3ca08ce0cc5929453283d70` |
 | `lib/udca-response-v909.js` | 12481 | `ca310c03d0c8e5b4434bfb8a3a8817742c449b80ac5724c747f43d15fa271e76` |
 | `lib/unit-convert.js` | 2601 | `642818802952c2c5e87338bc035dcd9d5ff07dec1e8b97a31ca09b0be38c14d2` |
@@ -1033,8 +1051,11 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/ca-adverse-event-1279-v1395.js` | 1308 | `457c7ca65c4b71dc41a9b0607bb12ffcadba524f1183a59d23c1414e76c54e05` |
 | `mcp/adapters/ca-care-court-eligibility-v1390.js` | 1940 | `9845b5b2f848e7b065798cac611931b6787aa7c36de4d0268d3a20aec6d9646a` |
 | `mcp/adapters/ca-ed-psych-detention-1799-v1389.js` | 1405 | `d3c7365809ff69b76d1e27dde817c1cbf06b721e2136e6527d6471acc40a4731` |
+| `mcp/adapters/ca-eoloa-timeline-v1392.js` | 1907 | `cb482c99a2135529b231fc6ed8c305c4ea39a50f0aa0264d800a2275604a74fa` |
 | `mcp/adapters/ca-grave-disability-sb43-v1390.js` | 1770 | `6a6e39b9a28679d385f1098cbc8797fa69741b7ff215c2740f493ee556c9e223` |
 | `mcp/adapters/ca-np-103-104-tracker-v1397.js` | 2005 | `142ba5f6df4bbac64c3430b7a37bc20061714142a95f33f2e4cdeffc99d7bca9` |
+| `mcp/adapters/ca-safe-surrender-v1394.js` | 1103 | `daeba3d1f0dfdecdb3aac9be7172484c9144a0b2ec82f5b38b94eeaa52afa1d0` |
+| `mcp/adapters/ca-surrogate-decisionmaker-v1391.js` | 1969 | `eb744552079b12be186930f57fa784913283487ebaabbb83fe5f90e0cc9174d1` |
 | `mcp/adapters/cac-agatston-v668.js` | 1037 | `7d261d67c94d63f362a7297b79d4c719a6bd1e701abe8ac1fce078a084bd5743` |
 | `mcp/adapters/cad-rads-v372.js` | 1358 | `65eb7fa22f14a47f43d9fced6137024ed3c77edb89f19d9c828fa3555cda909a` |
 | `mcp/adapters/cage-aid-v738.js` | 1459 | `5782721b6f56ff0a0e4eb2be857e940f8034cf2a5928448438916b478a658b53` |
@@ -1461,6 +1482,8 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/nih-cpsi-v566.js` | 5305 | `3497ccc3b981d96fac5e35fd02669a238bf057a3320aff424b3795d18f9a7706` |
 | `mcp/adapters/niosh-lifting-v885.js` | 2779 | `43eb6dd6ad7b08196618c0a87251a0813fb35a6d9696866755b090ea0301e149` |
 | `mcp/adapters/nj-civil-commitment-clock-v1389.js` | 1735 | `0a64d9f4c139b8f8b44ba6efc42157ce5ed514aad6d45d5272c8ff50788a4315` |
+| `mcp/adapters/nj-death-religious-exemption-v1392.js` | 1073 | `797a40c8db273c33d43dc7d4b8283630820894dd2534e5162b4fbbca370226fc` |
+| `mcp/adapters/nj-maid-timeline-v1392.js` | 1096 | `b3b6e9dde51b39c8c8ab53da3ed2ae8d8f9a69414b5ca0e18e9a5dcf67b6aa21` |
 | `mcp/adapters/nmosd-2015-v823.js` | 2482 | `56df3836715aef43b280adef2e739476dc98d4b250d7704b22e828380b984697` |
 | `mcp/adapters/nms-criteria-v870.js` | 3102 | `c641a5ee007630ac7955d0d9f5a43f44241919831a6f2860df40e53dcdf9635b` |
 | `mcp/adapters/nohria-stevenson-v369.js` | 1590 | `277cacc1721074a13993f1c0e687917b8567757f2b6328200eb0c5f6b2a9add2` |
@@ -1476,10 +1499,15 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/nutrition-maternal-v208.js` | 3106 | `2abbe0df4fdafa710561a7d7152043596474ee3fd173e342f466a2ef40d69b64` |
 | `mcp/adapters/nutrition-v276.js` | 954 | `2360495bf6231c0847ca6c3ba5729f305075a4289bac885c197eead84d38c754` |
 | `mcp/adapters/ny-aot-kendras-law-v1390.js` | 2739 | `fad7f47a0a501c0345aa080c6edb9e25944d4e69c8361ba4013d43e640228f8b` |
+| `mcp/adapters/ny-fhcda-surrogate-v1391.js` | 1786 | `29886d690b658af02acb52d1d36d61b72df0827b90ef5b6e237af8977e9d282c` |
+| `mcp/adapters/ny-health-care-proxy-check-v1391.js` | 2103 | `71d7a4415d56efe8b13b7e90ab385720ec129de937554172ffb2da2bbe5d7fab` |
 | `mcp/adapters/ny-hiv-hcv-test-offer-v1395.js` | 1865 | `1b9c3caaa7539ab78542d6aef612a5c9e16c9a0a66395df03396fce28629024e` |
+| `mcp/adapters/ny-maid-timeline-v1392.js` | 2006 | `ec81af6f7f5eff67a8f642d8343a67dbc6a1e37dd43b6d90b37edde727222609` |
 | `mcp/adapters/ny-mhl-hold-clock-v1389.js` | 1542 | `e5dbf0f401e21298d48753ec2c7d8c1748c652d55572fd9ed3a0c843c2d25120` |
+| `mcp/adapters/ny-molst-checklist-router-v1391.js` | 1539 | `4ac03dbc6fd5efdd95e877b2e004c94ac8af4bddf8ef32b55ee4f30042e372bf` |
 | `mcp/adapters/nyha-class-v357.js` | 1411 | `acf303b74c483978a371a77ba5abd731f94b56f6a6e90528c63653825cd13e97` |
 | `mcp/adapters/nyhus-hernia-v400.js` | 1407 | `6d5f792be20956e8f37f0843db29e71946ef49ada416faac5491d0ae6b54b8c0` |
+| `mcp/adapters/nys-newborn-screen-planner-v1394.js` | 2007 | `87bb60a7a6d37b75348ec81edbfcc878d18cd508565ac56bb50338375cdf698e` |
 | `mcp/adapters/o-rads-v326.js` | 1337 | `f3ac71d4b37e02b3359ea3eb105a7120c1443c49d99f05f8dc844a10679113d7` |
 | `mcp/adapters/ob-v138.js` | 5487 | `5952d3a61a4ada1293d57085f0469df04b959b889cd7181d2994e382971f6347` |
 | `mcp/adapters/obgyn-v225.js` | 6346 | `fc6c360447416c07e8c5f62496cb9cfef05937249416ed1ed30c87c600a62fa0` |
@@ -1555,6 +1583,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/ppm-eoai-v548.js` | 6157 | `9796251187106be52f2e8edcae9ae7672a408850db37b51530b4f980008f1582` |
 | `mcp/adapters/prague-barrett-v365.js` | 1483 | `0ae010b0105d1757130ca6e7b4d31f485a50b3f81d32ac4940be576ae25ae332` |
 | `mcp/adapters/preg-dating.js` | 1109 | `687e29da230c1e0e348046233eefa0711291dae2f4f0d65eb09c4648216c2708` |
+| `mcp/adapters/prenatal-infection-screening-schedule-v1394.js` | 1882 | `98ec4088349fe833e5b96ed0745597a94a6f1e7080990212c7eebaf7f17dd61d` |
 | `mcp/adapters/preop-fasting-v897.js` | 1616 | `ba94f9f70d3e85c48817bc71a78b2d7207a9bdd7072af0b71db72841fbf9ee47` |
 | `mcp/adapters/pressure-injury-stage-v359.js` | 1449 | `ee52eab9d96a6229d1ee16fd6bfc25a8ea3ce0fe11621596f0775f6c7a3b60db` |
 | `mcp/adapters/priapism-gas-v859.js` | 2393 | `a920cb0c61f75696b5bdbab889db3f9b50b90def5800faada73e66b65f3dcb9b` |
@@ -1721,11 +1750,18 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/tscherne-closed-v350.js` | 1657 | `20af8c374bc99885584bd04da4ed3efe285c9bd59a0c2aa90180060b6cbcbe17` |
 | `mcp/adapters/twstrs-severity-v542.js` | 4445 | `d489ecb038615ded333ecca5e4671e4a66097e5fec7ec7bc3dfea61b475b8edb` |
 | `mcp/adapters/tx-aprn-pa-controlled-delegation-v1393.js` | 2140 | `861ba69e5e5373177177c290e7c0f1abe70e4c66e0c1c379616c5fe54f40b102` |
+| `mcp/adapters/tx-death-cert-deadline-v1392.js` | 1036 | `4d884c6a96759395fb929132b0a70f94708a61a40a5f04438234fbabc6999fc6` |
 | `mcp/adapters/tx-emergency-detention-clock-v1389.js` | 1507 | `e65c2534fdd790026b1ef316db6f1e93472d69346c790772192845db4872b08c` |
 | `mcp/adapters/tx-emergency-detention-criteria-v1390.js` | 2753 | `156b250c1de2ed744e570bc688e96198e9ca1bee2fa699bd54e08bf931e774ac` |
+| `mcp/adapters/tx-ethics-review-timeline-v1392.js` | 1573 | `25f9625058fd36191e0140ec7d8b02040141e407159b355635448877ac96471f` |
+| `mcp/adapters/tx-in-hospital-dnr-pathway-v1391.js` | 2131 | `66a34f9e5adeed87ef47e34591d5a6301f847f4d0cde472eef22d6586fa29ff6` |
+| `mcp/adapters/tx-maternal-level-reference-v1394.js` | 881 | `6a5d788f365b7c9fcdcba1bc7b565d6c9cda240fc801c9662dabcbb30b6033d3` |
+| `mcp/adapters/tx-neonatal-level-match-v1394.js` | 1486 | `ec6308e889d4ca76d7d5f5cff171a434b4f0192abcfe2d21101e125dd624e27d` |
+| `mcp/adapters/tx-ooh-dnr-validity-v1391.js` | 1711 | `285b256e25ede353959fbbde6d36a20323ff13067873f9bc085ee0875f07ea96` |
 | `mcp/adapters/tx-prescriptive-authority-agreement-v1397.js` | 2736 | `548f541ab997716e480c6d16ace644ad8b23ed60d8719aee1727633724db7c71` |
 | `mcp/adapters/tx-protective-custody-hearing-clock-v1389.js` | 1187 | `9a9a61f02b415ab24a1c493bd1d0c326c19258ff42611c7ecba4746839f65632` |
 | `mcp/adapters/tx-sa-forensic-exam-window-v1395.js` | 1380 | `3e9b5549aa066f85832395e855604376e0b7f56a5dd7db0dc18165958baef622` |
+| `mcp/adapters/tx-surrogate-consent-hierarchy-v1391.js` | 1852 | `58d4845c6858169b72cb4916231cbb085f22233640bef8e6f4a78285665fa80f` |
 | `mcp/adapters/ucsf-hcc-v686.js` | 1505 | `4096fd6e59644ec20492460a57b2ad6e656be11dcceefabdc132d21cd01a3c34` |
 | `mcp/adapters/udca-response-v909.js` | 2550 | `381e2669dfec2ec8695dc7d93598f10982da481712ae7b031b8e7bdacb47bec9` |
 | `mcp/adapters/unit-convert.js` | 1959 | `6a81130ebc4bd01c1497cc06c322f1f919a778de98d99cb48f6fddee99e40c03` |
@@ -1775,7 +1811,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/zabramski-v442.js` | 1156 | `f364baad3d680210aafd8b47cb6ad472521c8bfb9f02683340f5175dcb03d097` |
 | `mcp/adapters/zargar-caustic-v401.js` | 1423 | `158261bfae30e1660e5888582289b46bef0344c5763a15a9be2c812be5722d4a` |
 | `mcp/adapters/zulewski-v608.js` | 4193 | `68da25df2e1cd4653dd6ad796f5c0f032429c1da8d89459e8d66f5cc7bb51ab8` |
-| `mcp/catalog.js` | 94673 | `b099cc37e71da8b25d6aafc99b37cbb2bdd0466a23ef588f3a74180a5effe0ce` |
+| `mcp/catalog.js` | 97403 | `f93a33a1edd98493af693b38ae1d2c86497ab3e75f8c41eacb7da81c31070d4b` |
 | `mcp/fields.js` | 8875 | `fbb6ed0902546149a9eaca4be37dc816ca62b7d98d09c4ab9a1ff67f141c312e` |
 | `mcp/server.js` | 2079 | `54d0769126ef3fde8965a26b4a36c15964cd67018343660cae43983685c34df9` |
 | `mcp/tools.js` | 56520 | `cbe496441303410ab5df464586f3817e3fd48f3280ca7b867e8b08d4c70f37f2` |
@@ -1839,7 +1875,10 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1389.js` | 11505 | `55b59d49e7a2f40d770e08db8980264df2e8fa13e1beb72227b8274312e90efd` |
 | `views/group-v139.js` | 12916 | `4aa5c0e09761f7dd4e664b53574cae8e6c084edb59b92f5681f19cb29200a436` |
 | `views/group-v1390.js` | 11347 | `028f5667ff6fa028c972d8457d0f33fbe02cba3efca608c0804166f9fbc6359d` |
+| `views/group-v1391.js` | 13704 | `77085464ae29a715e92b789840cf245c2e4405933d99b6fbff8f7e9c84a72f9f` |
+| `views/group-v1392.js` | 9414 | `fa5efb62a3075128e1eca5ad91210c73c8eef96b462f43be02688d16ae604918` |
 | `views/group-v1393.js` | 7907 | `8857c26b34755a4d018e58d965df708a386700e222facb4dcc2b5a6584440933` |
+| `views/group-v1394.js` | 8245 | `900cdcd3f81d249c5aa89c7d57add9a7b1097f816b9ffa9a5ae741ce2b2a74e6` |
 | `views/group-v1395.js` | 8949 | `2d3b1b5524f06cc52f7f2b168bfae9b252b902542d4d318c8187b20e19635015` |
 | `views/group-v1397.js` | 8708 | `3659c5624bc279000f3059536a4a3513a6b84049189a3a7ac8232ebec1a40bb8` |
 | `views/group-v14.js` | 10588 | `bca2472e723b2d009974e038f731f0f811e3b946d2794ac348c20dfef24e05fc` |

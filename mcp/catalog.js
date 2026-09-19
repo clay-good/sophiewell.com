@@ -808,6 +808,24 @@ import nyAotKendrasLawV1390 from './adapters/ny-aot-kendras-law-v1390.js';
 import caGraveDisabilitySb43V1390 from './adapters/ca-grave-disability-sb43-v1390.js';
 import caCareCourtEligibilityV1390 from './adapters/ca-care-court-eligibility-v1390.js';
 import txEmergencyDetentionCriteriaV1390 from './adapters/tx-emergency-detention-criteria-v1390.js';
+import nyFhcdaSurrogateV1391 from './adapters/ny-fhcda-surrogate-v1391.js';
+import caSurrogateDecisionmakerV1391 from './adapters/ca-surrogate-decisionmaker-v1391.js';
+import txSurrogateConsentHierarchyV1391 from './adapters/tx-surrogate-consent-hierarchy-v1391.js';
+import nyHealthCareProxyCheckV1391 from './adapters/ny-health-care-proxy-check-v1391.js';
+import nyMolstChecklistRouterV1391 from './adapters/ny-molst-checklist-router-v1391.js';
+import txOohDnrValidityV1391 from './adapters/tx-ooh-dnr-validity-v1391.js';
+import txInHospitalDnrPathwayV1391 from './adapters/tx-in-hospital-dnr-pathway-v1391.js';
+import nyMaidTimelineV1392 from './adapters/ny-maid-timeline-v1392.js';
+import njMaidTimelineV1392 from './adapters/nj-maid-timeline-v1392.js';
+import caEoloaTimelineV1392 from './adapters/ca-eoloa-timeline-v1392.js';
+import txEthicsReviewTimelineV1392 from './adapters/tx-ethics-review-timeline-v1392.js';
+import njDeathReligiousExemptionV1392 from './adapters/nj-death-religious-exemption-v1392.js';
+import txDeathCertDeadlineV1392 from './adapters/tx-death-cert-deadline-v1392.js';
+import prenatalInfectionScreeningScheduleV1394 from './adapters/prenatal-infection-screening-schedule-v1394.js';
+import nysNewbornScreenPlannerV1394 from './adapters/nys-newborn-screen-planner-v1394.js';
+import txNeonatalLevelMatchV1394 from './adapters/tx-neonatal-level-match-v1394.js';
+import txMaternalLevelReferenceV1394 from './adapters/tx-maternal-level-reference-v1394.js';
+import caSafeSurrenderV1394 from './adapters/ca-safe-surrender-v1394.js';
 import ticiV960 from './adapters/tici-v960.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
@@ -1643,6 +1661,24 @@ const ADAPTER_MODULES = [
   ['ca-grave-disability-sb43-v1390', caGraveDisabilitySb43V1390],
   ['ca-care-court-eligibility-v1390', caCareCourtEligibilityV1390],
   ['tx-emergency-detention-criteria-v1390', txEmergencyDetentionCriteriaV1390],
+  ['ny-fhcda-surrogate-v1391', nyFhcdaSurrogateV1391],
+  ['ca-surrogate-decisionmaker-v1391', caSurrogateDecisionmakerV1391],
+  ['tx-surrogate-consent-hierarchy-v1391', txSurrogateConsentHierarchyV1391],
+  ['ny-health-care-proxy-check-v1391', nyHealthCareProxyCheckV1391],
+  ['ny-molst-checklist-router-v1391', nyMolstChecklistRouterV1391],
+  ['tx-ooh-dnr-validity-v1391', txOohDnrValidityV1391],
+  ['tx-in-hospital-dnr-pathway-v1391', txInHospitalDnrPathwayV1391],
+  ['ny-maid-timeline-v1392', nyMaidTimelineV1392],
+  ['nj-maid-timeline-v1392', njMaidTimelineV1392],
+  ['ca-eoloa-timeline-v1392', caEoloaTimelineV1392],
+  ['tx-ethics-review-timeline-v1392', txEthicsReviewTimelineV1392],
+  ['nj-death-religious-exemption-v1392', njDeathReligiousExemptionV1392],
+  ['tx-death-cert-deadline-v1392', txDeathCertDeadlineV1392],
+  ['prenatal-infection-screening-schedule-v1394', prenatalInfectionScreeningScheduleV1394],
+  ['nys-newborn-screen-planner-v1394', nysNewbornScreenPlannerV1394],
+  ['tx-neonatal-level-match-v1394', txNeonatalLevelMatchV1394],
+  ['tx-maternal-level-reference-v1394', txMaternalLevelReferenceV1394],
+  ['ca-safe-surrender-v1394', caSafeSurrenderV1394],
   ['tici-v960', ticiV960],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],

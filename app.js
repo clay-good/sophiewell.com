@@ -773,6 +773,9 @@ import { renderers as RV1393 } from './views/group-v1393.js';
 import { renderers as RV1397 } from './views/group-v1397.js';
 import { renderers as RV1395 } from './views/group-v1395.js';
 import { renderers as RV1390 } from './views/group-v1390.js';
+import { renderers as RV1391 } from './views/group-v1391.js';
+import { renderers as RV1392 } from './views/group-v1392.js';
+import { renderers as RV1394 } from './views/group-v1394.js';
 import { renderers as RV164 } from './views/group-v164.js';
 import { renderers as RV165 } from './views/group-v165.js';
 import { renderers as RV166 } from './views/group-v166.js';
@@ -860,7 +863,7 @@ const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...R
   ...RV902,
   ...RV903,
   ...RV905,
-  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV960, ...RV1061, ...RV1062, ...RV1240, ...RV1241, ...RV1242, ...RV1243, ...RV1400, ...RV1389, ...RV1393, ...RV1397, ...RV1395, ...RV1390, ...RV63, ...RPALINT };
+  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV960, ...RV1061, ...RV1062, ...RV1240, ...RV1241, ...RV1242, ...RV1243, ...RV1400, ...RV1389, ...RV1393, ...RV1397, ...RV1395, ...RV1390, ...RV1391, ...RV1392, ...RV1394, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -1132,6 +1135,30 @@ const UTILITIES = [
   { id: 'ca-grave-disability-sb43', name: 'California Gravely Disabled Definition After SB 43 (WIC 5008(h))', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'ca-care-court-eligibility', name: 'California CARE Court Eligibility (WIC 5972, SB 27)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'tx-emergency-detention-criteria', name: 'Texas Emergency Detention Criteria Checklist (HSC 573.001, 573.012, 573.022)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
+  // spec-v1391: who decides -- surrogates, proxies, MOLST, and DNR (State & Coverage Reference). views/group-v1391.js,
+  // lib/<id>-v1391.js, mcp/adapters/<id>-v1391.js.
+  { id: 'ny-fhcda-surrogate', name: 'New York Surrogate Decision-Maker (Family Health Care Decisions Act, PHL 2994-d)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ca-surrogate-decisionmaker', name: 'California Surrogate Decision-Maker (Probate Code 4711, 4712)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'tx-surrogate-consent-hierarchy', name: 'Texas Surrogate Consent Finder (HSC 313.004, 166.039)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ny-health-care-proxy-check', name: 'New York Health Care Proxy Validity Check (PHL 2981)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ny-molst-checklist-router', name: 'New York MOLST: Which Checklist Applies', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'tx-ooh-dnr-validity', name: 'Texas Out-of-Hospital DNR Validity (HSC 166.082-166.092)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'tx-in-hospital-dnr-pathway', name: 'Texas In-Hospital DNR Order Pathway (HSC 166.203, 166.204)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
+  // spec-v1392: end of life -- aid in dying, ethics review, death declaration (State & Coverage Reference). views/group-v1392.js,
+  // lib/<id>-v1392.js, mcp/adapters/<id>-v1392.js.
+  { id: 'ny-maid-timeline', name: 'New York Medical Aid in Dying Steps (PHL Article 28-F)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'nj-maid-timeline', name: 'New Jersey Medical Aid in Dying Timeline (N.J.S.A. 26:16-10)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ca-eoloa-timeline', name: 'California End of Life Option Act Timeline (HSC 443.3)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'tx-ethics-review-timeline', name: 'Texas Ethics Committee Review Timeline (HSC 166.046)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'nj-death-religious-exemption', name: 'New Jersey Declaration of Death: Religious Exemption (N.J.S.A. 26:6A-5)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'tx-death-cert-deadline', name: 'Texas Medical Certification of Death Deadline (HSC 193.005)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
+  // spec-v1394: prenatal and newborn -- infection screening, newborn screen, levels of care, safe surrender (State & Coverage Reference). views/group-v1394.js,
+  // lib/<id>-v1394.js, mcp/adapters/<id>-v1394.js.
+  { id: 'prenatal-infection-screening-schedule', name: 'Prenatal Syphilis, HIV and Hepatitis B Testing Schedule (NY, NJ, CA, TX)', group: 'N', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'nys-newborn-screen-planner', name: 'New York Newborn Screen Specimen Planner (Wadsworth Center)', group: 'N', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'tx-neonatal-level-match', name: 'Texas Neonatal Level of Care Matcher (25 TAC 133.186-133.189)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'tx-maternal-level-reference', name: 'Texas Maternal Level of Care Reference (25 TAC 133.206-133.209)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ca-safe-surrender', name: 'California Safely Surrendered Baby Checklist (HSC 1255.7)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
   // Group K (Lab Reference): removed in spec-v29 wave 29-2 (lab-adult,
   // lab-peds, tdm-levels, tox-levels are pure reference-range tables).
   // Group L: Forms & Numbers Literacy (removed in spec-v29 wave 29-2:

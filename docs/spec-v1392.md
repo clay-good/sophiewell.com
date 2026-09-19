@@ -83,3 +83,30 @@ due **within 5 days**, and who may certify when the attending is unavailable (19
 - The NY tile shows no prescription date until the oral request, written request, and all three
   evaluations are entered.
 - The TX ethics tile never prints a date earlier than day 25.
+
+## Built (2026-09-18)
+
+| tile | source read |
+|---|---|
+| `ny-maid-timeline` | nysenate.gov, PHL 2899-e and 2899-f |
+| `nj-maid-timeline` | N.J.S.A. 26:16-10 (FindLaw, current as of January 1, 2024) |
+| `ca-eoloa-timeline` | leginfo, HSC 443.2 and 443.3 |
+| `tx-ethics-review-timeline` | official mirror, HSC 166.046 |
+| `nj-death-religious-exemption` | N.J.S.A. 26:6A-5 (FindLaw, current as of January 1, 2024) |
+| `tx-death-cert-deadline` | official mirror, HSC 193.005 |
+
+- The plan's **30-day expiry** of an unfilled New York prescription is not in 2899-f.
+  It came from the Department's FAQ, which was not read, so the tile prints no expiry.
+  The five-day wait runs from the date **and time** written (2899-f(3)), so the
+  tile counts 120 hours.
+- New York witnesses: **both** must be free of all six disqualifications (2899-e),
+  unlike California, where only one of the two may be a relative or heir.
+- California 443.3(c) reads two ways when one witness is a relative and the other
+  works at the treating entity. The tile says so instead of passing or failing the pair.
+- 443.215 (the sunset) still did not load; no sunset is printed.
+- New Jersey residency proofs (another section) were not read, so no checklist is
+  shown. The NJ religious exemption was read in full, as the plan required.
+- Texas ethics: the 25 days run from the start notice, or from the procedure named in
+  a delay notice, whichever is first. The tile takes one and refuses both at once.
+- Acceptance tests pass: NJ day 15 versus day 16, CA 47 hours and two heirs, NY
+  with no date before all five steps, and TX never earlier than day 25.

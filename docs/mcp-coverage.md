@@ -8209,6 +8209,60 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/tx-emergency-detention-criteria-v1390.js (spec-v1390: Texas emergency detention criteria checklist — clinical disclaimer)
 - `tx-emergency-detention-criteria`
 
+### lib/ny-fhcda-surrogate-v1391.js (spec-v1391: New York FHCDA surrogate — clinical disclaimer)
+- `ny-fhcda-surrogate`
+
+### lib/ca-surrogate-decisionmaker-v1391.js (spec-v1391: California surrogate decision-maker — clinical disclaimer)
+- `ca-surrogate-decisionmaker`
+
+### lib/tx-surrogate-consent-hierarchy-v1391.js (spec-v1391: Texas surrogate consent finder — clinical disclaimer)
+- `tx-surrogate-consent-hierarchy`
+
+### lib/ny-health-care-proxy-check-v1391.js (spec-v1391: New York health care proxy check — clinical disclaimer)
+- `ny-health-care-proxy-check`
+
+### lib/ny-molst-checklist-router-v1391.js (spec-v1391: New York MOLST checklist router — clinical disclaimer)
+- `ny-molst-checklist-router`
+
+### lib/tx-ooh-dnr-validity-v1391.js (spec-v1391: Texas out-of-hospital DNR validity — clinical disclaimer)
+- `tx-ooh-dnr-validity`
+
+### lib/tx-in-hospital-dnr-pathway-v1391.js (spec-v1391: Texas in-hospital DNR order pathway — clinical disclaimer)
+- `tx-in-hospital-dnr-pathway`
+
+### lib/ny-maid-timeline-v1392.js (spec-v1392: New York medical aid in dying steps — clinical disclaimer)
+- `ny-maid-timeline`
+
+### lib/nj-maid-timeline-v1392.js (spec-v1392: New Jersey medical aid in dying timeline — clinical disclaimer)
+- `nj-maid-timeline`
+
+### lib/ca-eoloa-timeline-v1392.js (spec-v1392: California End of Life Option Act timeline — clinical disclaimer)
+- `ca-eoloa-timeline`
+
+### lib/tx-ethics-review-timeline-v1392.js (spec-v1392: Texas ethics committee review timeline — clinical disclaimer)
+- `tx-ethics-review-timeline`
+
+### lib/nj-death-religious-exemption-v1392.js (spec-v1392: New Jersey death declaration religious exemption — clinical disclaimer)
+- `nj-death-religious-exemption`
+
+### lib/tx-death-cert-deadline-v1392.js (spec-v1392: Texas death certificate medical certification deadline — clinical disclaimer)
+- `tx-death-cert-deadline`
+
+### lib/prenatal-infection-screening-schedule-v1394.js (spec-v1394: prenatal syphilis, HIV, and hepatitis B testing schedule — clinical disclaimer)
+- `prenatal-infection-screening-schedule`
+
+### lib/nys-newborn-screen-planner-v1394.js (spec-v1394: New York newborn screen specimen planner — clinical disclaimer)
+- `nys-newborn-screen-planner`
+
+### lib/tx-neonatal-level-match-v1394.js (spec-v1394: Texas neonatal level of care matcher — clinical disclaimer)
+- `tx-neonatal-level-match`
+
+### lib/tx-maternal-level-reference-v1394.js (spec-v1394: Texas maternal level of care reference — clinical disclaimer)
+- `tx-maternal-level-reference`
+
+### lib/ca-safe-surrender-v1394.js (spec-v1394: California safely surrendered baby checklist — clinical disclaimer)
+- `ca-safe-surrender`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

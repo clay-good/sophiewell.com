@@ -77,3 +77,32 @@ so this tile is California only.
 - The newborn-screen planner covers a 1,450 g NICU infant transfused on day 2. The output lists
   specimens 1–3 plus the 4-month post-transfusion specimen.
 - `tx-maternal-level-reference` is not built until 133.207–133.209 are read.
+
+## Built (2026-09-18)
+
+| tile | group | source read |
+|---|---|---|
+| `prenatal-infection-screening-schedule` | N | TX HSC 81.090 (official mirror); CA HSC 120685, 125085, 125090 (leginfo) and the CDPH SB 306 fact sheet; NY PHL 2308 (nysenate.gov); N.J.S.A. 26:4-49.1 (FindLaw) |
+| `nys-newborn-screen-planner` | N | Wadsworth Center specimen collection page and guide (March 2026) |
+| `tx-neonatal-level-match` | M | 25 TAC 133.186-133.189 (Cornell LII, amended June 22, 2023) |
+| `tx-maternal-level-reference` | M | 25 TAC 133.206-133.209 (Cornell LII, amended January 8, 2023) |
+| `ca-safe-surrender` | M | leginfo, HSC 1255.7 |
+
+- **New York:** PHL 2308 sets syphilis at the first examination and in the third
+  trimester "consistent with" the Commissioner's guidance. The Department's page
+  (the 28-to-32-week window, any delivery test) returned 403 twice, so the tile names
+  the guidance and prints no week. New York's prenatal HIV and hepatitis B rules, and
+  New Jersey's HIV rule (N.J.A.C. 8:61), were not read and are named as not covered.
+- **New Jersey:** the statute read covers syphilis at the first examination and at
+  delivery. The plan's birth-center third-trimester test was not in that text.
+- **California "treatment at least 30 days before delivery"** was not in the CDPH
+  document read, so it is not printed. The congenital syphilis tool is linked.
+- **Newborn screen:** the source's TPN rule counts from the *last* TPN dose, not the
+  start. The transfusion pair (3+ days after the most recent, 4 months after the final)
+  applies only with **no prior screen**. The acceptance case is therefore an infant
+  transfused before the admission specimen. One drawn first removes the pair, and a
+  test covers that.
+- **Levels of care:** the Secretary of State's register had moved and did not load. The
+  Cornell LII copies carry the June 22, 2023 (neonatal) and January 8, 2023 (maternal)
+  amendment dates, and the ledger row says so. Levels II-IV of the maternal rule were
+  read, so `tx-maternal-level-reference` ships in this wave.

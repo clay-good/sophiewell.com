@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:f206b2a9-b6b6-583d-8cff-08d0817544c3",
+  "serialNumber": "urn:uuid:662c49d7-e113-55ed-8b43-e9506ea3cc37",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-19T01:50:54.174Z",
+    "timestamp": "2026-09-19T03:12:51.225Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1750 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1768 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f2ba8c9444460a4be788e1bc42cd75fc9f12413675b85c4e5779eef9fe35c4e6"
+          "content": "6cf49a4b96660d76cfc7c769110b33e29c29d250549001b3573324c37f8c2ea7"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "112397"
+          "value": "113746"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4dfa6ae490bb90020328cb02eadfc1d53f545248b51fbe3fd7f748508187ea65"
+          "content": "c777c82d6bb339c3d90e6c2bc22ece50862d88399f7647ed460feddcbc65ec26"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "524163"
+          "value": "528091"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7360b0be4933d76ac005cc458b5f412e44f579c558d3c023d784d306a299badf"
+          "content": "e3a6c4f3b29af7c825c7c3d0863e05969d7d0e499d10f6e13e620690c96dc957"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "217758"
+          "value": "220180"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "37b15881c110057bea37eb0dd3278192ed74d28bb2ed8c7e20d4a0002c154017"
+          "content": "637ed30cfc8dd732f4564f9518af7c44b69e4567699fd09aa68006655747a4f1"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "99012"
+          "value": "100605"
         }
       ]
     },
@@ -2429,6 +2429,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/ca-eoloa-timeline-v1392.js",
+      "type": "file",
+      "name": "lib/ca-eoloa-timeline-v1392.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ac15c79d65b36760c3bf8d8ea68cecf9106a455b6adfce4ea197086f009b823f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6816"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/ca-grave-disability-sb43-v1390.js",
       "type": "file",
       "name": "lib/ca-grave-disability-sb43-v1390.js",
@@ -2467,6 +2488,48 @@
         {
           "name": "sophiewell:bytes",
           "value": "7870"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/ca-safe-surrender-v1394.js",
+      "type": "file",
+      "name": "lib/ca-safe-surrender-v1394.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f423d6b5b4a0ff477a9bab297406eb4f0a37104688da23c9afe0a56e53af53f9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5012"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/ca-surrogate-decisionmaker-v1391.js",
+      "type": "file",
+      "name": "lib/ca-surrogate-decisionmaker-v1391.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "af50c690f83e0fcb892b2fcbe8daca5bca140787c98c196743f13eb8aceaa899"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5747"
         }
       ]
     },
@@ -10541,7 +10604,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "67604ed2aaa074701e21814f9f696b3cff2695c8a362700297bf57a9f7c7f762"
+          "content": "2d2e038a2ec5d59901def27094809c4f20c4659ebb0dc1e618af81f19fa23f9e"
         }
       ],
       "properties": [
@@ -10551,7 +10614,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2503865"
+          "value": "2516589"
         }
       ]
     },
@@ -11816,6 +11879,48 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/nj-death-religious-exemption-v1392.js",
+      "type": "file",
+      "name": "lib/nj-death-religious-exemption-v1392.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2ae2c32b17619f6de03ffc44faa2d079ab16626f7ee8348c431a9fb2344abb9f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2704"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/nj-maid-timeline-v1392.js",
+      "type": "file",
+      "name": "lib/nj-maid-timeline-v1392.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8e132145fee3c0768064eb2ec153f577dc49444ecb3fdb1db8583512fbc038bc"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4294"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/nmosd-2015-v823.js",
       "type": "file",
       "name": "lib/nmosd-2015-v823.js",
@@ -12152,6 +12257,48 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/ny-fhcda-surrogate-v1391.js",
+      "type": "file",
+      "name": "lib/ny-fhcda-surrogate-v1391.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6ed2396629e2ff05f2edf944627e52960f0db7c67e54ee6bdb744f8a6bf15216"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4867"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/ny-health-care-proxy-check-v1391.js",
+      "type": "file",
+      "name": "lib/ny-health-care-proxy-check-v1391.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "97110f572c477ea487203e4a1602bbb4c2a80290c913117cd57e414b818607b8"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6448"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/ny-hiv-hcv-test-offer-v1395.js",
       "type": "file",
       "name": "lib/ny-hiv-hcv-test-offer-v1395.js",
@@ -12173,6 +12320,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/ny-maid-timeline-v1392.js",
+      "type": "file",
+      "name": "lib/ny-maid-timeline-v1392.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d1ba825a3c5da58aa21a4dde6113623bcb0ce6cf1a14a8680edee2b8d87200bb"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5704"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/ny-mhl-hold-clock-v1389.js",
       "type": "file",
       "name": "lib/ny-mhl-hold-clock-v1389.js",
@@ -12190,6 +12358,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "10182"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/ny-molst-checklist-router-v1391.js",
+      "type": "file",
+      "name": "lib/ny-molst-checklist-router-v1391.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a7cd9f56d0f151a5f6e580119168ad6948e24eaa5623ba2c847efa91ff044012"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5299"
         }
       ]
     },
@@ -12232,6 +12421,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4753"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/nys-newborn-screen-planner-v1394.js",
+      "type": "file",
+      "name": "lib/nys-newborn-screen-planner-v1394.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0ccc6957ac5ab987df455c4d0c1ba7a820813d9fc03c4242f4eaea52a888443f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6941"
         }
       ]
     },
@@ -14164,6 +14374,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3647"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/prenatal-infection-screening-schedule-v1394.js",
+      "type": "file",
+      "name": "lib/prenatal-infection-screening-schedule-v1394.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7aa300cafd2e672c31723d7e8a6b98da58e4ee1640d52c1addc7d41c1cdcbf04"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "9566"
         }
       ]
     },
@@ -17969,6 +18200,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/tx-death-cert-deadline-v1392.js",
+      "type": "file",
+      "name": "lib/tx-death-cert-deadline-v1392.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "690d13b39855be6c034880f7e99c6577fe95faeb872572e848cfc7918ec8e056"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3615"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/tx-emergency-detention-clock-v1389.js",
       "type": "file",
       "name": "lib/tx-emergency-detention-clock-v1389.js",
@@ -18007,6 +18259,111 @@
         {
           "name": "sophiewell:bytes",
           "value": "7275"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/tx-ethics-review-timeline-v1392.js",
+      "type": "file",
+      "name": "lib/tx-ethics-review-timeline-v1392.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a5cb22aef1d9828fe4235651ff0b9abdc47a5e4eb1edc17d7c98e7cfee9f3b4d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6167"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/tx-in-hospital-dnr-pathway-v1391.js",
+      "type": "file",
+      "name": "lib/tx-in-hospital-dnr-pathway-v1391.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e06cb75060c2dea7a061d8662ea7ac2dd7410e005b4f76ef4dae72c5c84f0cec"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6748"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/tx-maternal-level-reference-v1394.js",
+      "type": "file",
+      "name": "lib/tx-maternal-level-reference-v1394.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7d10b4d042dbba9a358d34192022ee0e4b052c4d25389a08191c7a504d282895"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3535"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/tx-neonatal-level-match-v1394.js",
+      "type": "file",
+      "name": "lib/tx-neonatal-level-match-v1394.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ba2e26e01273a167aaaec70580fb32906a75e81cf4f33c2c8dafd44d8b794615"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5945"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/tx-ooh-dnr-validity-v1391.js",
+      "type": "file",
+      "name": "lib/tx-ooh-dnr-validity-v1391.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b5d8eb1b224dfa05e9ab1d782a2534df821bf8fb20831a04ea59675629216af7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8020"
         }
       ]
     },
@@ -18070,6 +18427,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "5610"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/tx-surrogate-consent-hierarchy-v1391.js",
+      "type": "file",
+      "name": "lib/tx-surrogate-consent-hierarchy-v1391.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f8931821cdaf85ee6178400ea59d100d517823109f8a4d4b6a00d1647b74a82d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6620"
         }
       ]
     },
@@ -21014,6 +21392,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ca-eoloa-timeline-v1392.js",
+      "type": "file",
+      "name": "mcp/adapters/ca-eoloa-timeline-v1392.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "cb482c99a2135529b231fc6ed8c305c4ea39a50f0aa0264d800a2275604a74fa"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1907"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ca-grave-disability-sb43-v1390.js",
       "type": "file",
       "name": "mcp/adapters/ca-grave-disability-sb43-v1390.js",
@@ -21052,6 +21451,48 @@
         {
           "name": "sophiewell:bytes",
           "value": "2005"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ca-safe-surrender-v1394.js",
+      "type": "file",
+      "name": "mcp/adapters/ca-safe-surrender-v1394.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "daeba3d1f0dfdecdb3aac9be7172484c9144a0b2ec82f5b38b94eeaa52afa1d0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1103"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ca-surrogate-decisionmaker-v1391.js",
+      "type": "file",
+      "name": "mcp/adapters/ca-surrogate-decisionmaker-v1391.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "eb744552079b12be186930f57fa784913283487ebaabbb83fe5f90e0cc9174d1"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1969"
         }
       ]
     },
@@ -30002,6 +30443,48 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/nj-death-religious-exemption-v1392.js",
+      "type": "file",
+      "name": "mcp/adapters/nj-death-religious-exemption-v1392.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "797a40c8db273c33d43dc7d4b8283630820894dd2534e5162b4fbbca370226fc"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1073"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/nj-maid-timeline-v1392.js",
+      "type": "file",
+      "name": "mcp/adapters/nj-maid-timeline-v1392.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b3b6e9dde51b39c8c8ab53da3ed2ae8d8f9a69414b5ca0e18e9a5dcf67b6aa21"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1096"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/nmosd-2015-v823.js",
       "type": "file",
       "name": "mcp/adapters/nmosd-2015-v823.js",
@@ -30317,6 +30800,48 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ny-fhcda-surrogate-v1391.js",
+      "type": "file",
+      "name": "mcp/adapters/ny-fhcda-surrogate-v1391.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "29886d690b658af02acb52d1d36d61b72df0827b90ef5b6e237af8977e9d282c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1786"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ny-health-care-proxy-check-v1391.js",
+      "type": "file",
+      "name": "mcp/adapters/ny-health-care-proxy-check-v1391.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "71d7a4415d56efe8b13b7e90ab385720ec129de937554172ffb2da2bbe5d7fab"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2103"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ny-hiv-hcv-test-offer-v1395.js",
       "type": "file",
       "name": "mcp/adapters/ny-hiv-hcv-test-offer-v1395.js",
@@ -30338,6 +30863,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ny-maid-timeline-v1392.js",
+      "type": "file",
+      "name": "mcp/adapters/ny-maid-timeline-v1392.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ec81af6f7f5eff67a8f642d8343a67dbc6a1e37dd43b6d90b37edde727222609"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2006"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ny-mhl-hold-clock-v1389.js",
       "type": "file",
       "name": "mcp/adapters/ny-mhl-hold-clock-v1389.js",
@@ -30355,6 +30901,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1542"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ny-molst-checklist-router-v1391.js",
+      "type": "file",
+      "name": "mcp/adapters/ny-molst-checklist-router-v1391.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4ac03dbc6fd5efdd95e877b2e004c94ac8af4bddf8ef32b55ee4f30042e372bf"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1539"
         }
       ]
     },
@@ -30397,6 +30964,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1407"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/nys-newborn-screen-planner-v1394.js",
+      "type": "file",
+      "name": "mcp/adapters/nys-newborn-screen-planner-v1394.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "87bb60a7a6d37b75348ec81edbfcc878d18cd508565ac56bb50338375cdf698e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2007"
         }
       ]
     },
@@ -31972,6 +32560,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1109"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/prenatal-infection-screening-schedule-v1394.js",
+      "type": "file",
+      "name": "mcp/adapters/prenatal-infection-screening-schedule-v1394.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "98ec4088349fe833e5b96ed0745597a94a6f1e7080990212c7eebaf7f17dd61d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1882"
         }
       ]
     },
@@ -35462,6 +36071,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/tx-death-cert-deadline-v1392.js",
+      "type": "file",
+      "name": "mcp/adapters/tx-death-cert-deadline-v1392.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4d884c6a96759395fb929132b0a70f94708a61a40a5f04438234fbabc6999fc6"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1036"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/tx-emergency-detention-clock-v1389.js",
       "type": "file",
       "name": "mcp/adapters/tx-emergency-detention-clock-v1389.js",
@@ -35500,6 +36130,111 @@
         {
           "name": "sophiewell:bytes",
           "value": "2753"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/tx-ethics-review-timeline-v1392.js",
+      "type": "file",
+      "name": "mcp/adapters/tx-ethics-review-timeline-v1392.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "25f9625058fd36191e0140ec7d8b02040141e407159b355635448877ac96471f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1573"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/tx-in-hospital-dnr-pathway-v1391.js",
+      "type": "file",
+      "name": "mcp/adapters/tx-in-hospital-dnr-pathway-v1391.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "66a34f9e5adeed87ef47e34591d5a6301f847f4d0cde472eef22d6586fa29ff6"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2131"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/tx-maternal-level-reference-v1394.js",
+      "type": "file",
+      "name": "mcp/adapters/tx-maternal-level-reference-v1394.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6a5d788f365b7c9fcdcba1bc7b565d6c9cda240fc801c9662dabcbb30b6033d3"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "881"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/tx-neonatal-level-match-v1394.js",
+      "type": "file",
+      "name": "mcp/adapters/tx-neonatal-level-match-v1394.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ec6308e889d4ca76d7d5f5cff171a434b4f0192abcfe2d21101e125dd624e27d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1486"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/tx-ooh-dnr-validity-v1391.js",
+      "type": "file",
+      "name": "mcp/adapters/tx-ooh-dnr-validity-v1391.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "285b256e25ede353959fbbde6d36a20323ff13067873f9bc085ee0875f07ea96"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1711"
         }
       ]
     },
@@ -35563,6 +36298,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1380"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/tx-surrogate-consent-hierarchy-v1391.js",
+      "type": "file",
+      "name": "mcp/adapters/tx-surrogate-consent-hierarchy-v1391.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "58d4845c6858169b72cb4916231cbb085f22233640bef8e6f4a78285665fa80f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1852"
         }
       ]
     },
@@ -36602,7 +37358,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b099cc37e71da8b25d6aafc99b37cbb2bdd0466a23ef588f3a74180a5effe0ce"
+          "content": "f93a33a1edd98493af693b38ae1d2c86497ab3e75f8c41eacb7da81c31070d4b"
         }
       ],
       "properties": [
@@ -36612,7 +37368,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "94673"
+          "value": "97403"
         }
       ]
     },
@@ -37940,6 +38696,48 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1391.js",
+      "type": "file",
+      "name": "views/group-v1391.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "77085464ae29a715e92b789840cf245c2e4405933d99b6fbff8f7e9c84a72f9f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "13704"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1392.js",
+      "type": "file",
+      "name": "views/group-v1392.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fa5efb62a3075128e1eca5ad91210c73c8eef96b462f43be02688d16ae604918"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "9414"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:views/group-v1393.js",
       "type": "file",
       "name": "views/group-v1393.js",
@@ -37957,6 +38755,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "7907"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1394.js",
+      "type": "file",
+      "name": "views/group-v1394.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "900cdcd3f81d249c5aa89c7d57add9a7b1097f816b9ffa9a5ae741ce2b2a74e6"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8245"
         }
       ]
     },
@@ -69299,8 +70118,11 @@
         "urn:sophiewell:file:source:lib/ca-adverse-event-1279-v1395.js",
         "urn:sophiewell:file:source:lib/ca-care-court-eligibility-v1390.js",
         "urn:sophiewell:file:source:lib/ca-ed-psych-detention-1799-v1389.js",
+        "urn:sophiewell:file:source:lib/ca-eoloa-timeline-v1392.js",
         "urn:sophiewell:file:source:lib/ca-grave-disability-sb43-v1390.js",
         "urn:sophiewell:file:source:lib/ca-np-103-104-tracker-v1397.js",
+        "urn:sophiewell:file:source:lib/ca-safe-surrender-v1394.js",
+        "urn:sophiewell:file:source:lib/ca-surrogate-decisionmaker-v1391.js",
         "urn:sophiewell:file:source:lib/cac-agatston-v668.js",
         "urn:sophiewell:file:source:lib/cad-rads-v372.js",
         "urn:sophiewell:file:source:lib/cage-aid-v738.js",
@@ -69746,6 +70568,8 @@
         "urn:sophiewell:file:source:lib/nih-cpsi-v566.js",
         "urn:sophiewell:file:source:lib/niosh-lifting-v885.js",
         "urn:sophiewell:file:source:lib/nj-civil-commitment-clock-v1389.js",
+        "urn:sophiewell:file:source:lib/nj-death-religious-exemption-v1392.js",
+        "urn:sophiewell:file:source:lib/nj-maid-timeline-v1392.js",
         "urn:sophiewell:file:source:lib/nmosd-2015-v823.js",
         "urn:sophiewell:file:source:lib/nms-criteria-v870.js",
         "urn:sophiewell:file:source:lib/nohria-stevenson-v369.js",
@@ -69762,10 +70586,15 @@
         "urn:sophiewell:file:source:lib/nutrition-maternal-v208.js",
         "urn:sophiewell:file:source:lib/nutrition-v276.js",
         "urn:sophiewell:file:source:lib/ny-aot-kendras-law-v1390.js",
+        "urn:sophiewell:file:source:lib/ny-fhcda-surrogate-v1391.js",
+        "urn:sophiewell:file:source:lib/ny-health-care-proxy-check-v1391.js",
         "urn:sophiewell:file:source:lib/ny-hiv-hcv-test-offer-v1395.js",
+        "urn:sophiewell:file:source:lib/ny-maid-timeline-v1392.js",
         "urn:sophiewell:file:source:lib/ny-mhl-hold-clock-v1389.js",
+        "urn:sophiewell:file:source:lib/ny-molst-checklist-router-v1391.js",
         "urn:sophiewell:file:source:lib/nyha-class-v357.js",
         "urn:sophiewell:file:source:lib/nyhus-hernia-v400.js",
+        "urn:sophiewell:file:source:lib/nys-newborn-screen-planner-v1394.js",
         "urn:sophiewell:file:source:lib/o-rads-v326.js",
         "urn:sophiewell:file:source:lib/ob-v138.js",
         "urn:sophiewell:file:source:lib/obgyn-v225.js",
@@ -69858,6 +70687,7 @@
         "urn:sophiewell:file:source:lib/ppm-eoai-v548.js",
         "urn:sophiewell:file:source:lib/prague-barrett-v365.js",
         "urn:sophiewell:file:source:lib/preg-dating.js",
+        "urn:sophiewell:file:source:lib/prenatal-infection-screening-schedule-v1394.js",
         "urn:sophiewell:file:source:lib/preop-fasting-v897.js",
         "urn:sophiewell:file:source:lib/pressure-injury-stage-v359.js",
         "urn:sophiewell:file:source:lib/priapism-gas-v859.js",
@@ -70039,11 +70869,18 @@
         "urn:sophiewell:file:source:lib/tscherne-closed-v350.js",
         "urn:sophiewell:file:source:lib/twstrs-severity-v542.js",
         "urn:sophiewell:file:source:lib/tx-aprn-pa-controlled-delegation-v1393.js",
+        "urn:sophiewell:file:source:lib/tx-death-cert-deadline-v1392.js",
         "urn:sophiewell:file:source:lib/tx-emergency-detention-clock-v1389.js",
         "urn:sophiewell:file:source:lib/tx-emergency-detention-criteria-v1390.js",
+        "urn:sophiewell:file:source:lib/tx-ethics-review-timeline-v1392.js",
+        "urn:sophiewell:file:source:lib/tx-in-hospital-dnr-pathway-v1391.js",
+        "urn:sophiewell:file:source:lib/tx-maternal-level-reference-v1394.js",
+        "urn:sophiewell:file:source:lib/tx-neonatal-level-match-v1394.js",
+        "urn:sophiewell:file:source:lib/tx-ooh-dnr-validity-v1391.js",
         "urn:sophiewell:file:source:lib/tx-prescriptive-authority-agreement-v1397.js",
         "urn:sophiewell:file:source:lib/tx-protective-custody-hearing-clock-v1389.js",
         "urn:sophiewell:file:source:lib/tx-sa-forensic-exam-window-v1395.js",
+        "urn:sophiewell:file:source:lib/tx-surrogate-consent-hierarchy-v1391.js",
         "urn:sophiewell:file:source:lib/ucsf-hcc-v686.js",
         "urn:sophiewell:file:source:lib/udca-response-v909.js",
         "urn:sophiewell:file:source:lib/unit-convert.js",
@@ -70154,7 +70991,10 @@
         "urn:sophiewell:file:source:views/group-v1389.js",
         "urn:sophiewell:file:source:views/group-v139.js",
         "urn:sophiewell:file:source:views/group-v1390.js",
+        "urn:sophiewell:file:source:views/group-v1391.js",
+        "urn:sophiewell:file:source:views/group-v1392.js",
         "urn:sophiewell:file:source:views/group-v1393.js",
+        "urn:sophiewell:file:source:views/group-v1394.js",
         "urn:sophiewell:file:source:views/group-v1395.js",
         "urn:sophiewell:file:source:views/group-v1397.js",
         "urn:sophiewell:file:source:views/group-v14.js",
@@ -70995,8 +71835,11 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/ca-adverse-event-1279-v1395.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ca-care-court-eligibility-v1390.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ca-ed-psych-detention-1799-v1389.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/ca-eoloa-timeline-v1392.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ca-grave-disability-sb43-v1390.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ca-np-103-104-tracker-v1397.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/ca-safe-surrender-v1394.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/ca-surrogate-decisionmaker-v1391.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cac-agatston-v668.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cad-rads-v372.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cage-aid-v738.js",
@@ -71423,6 +72266,8 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/nih-cpsi-v566.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/niosh-lifting-v885.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nj-civil-commitment-clock-v1389.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/nj-death-religious-exemption-v1392.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/nj-maid-timeline-v1392.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nmosd-2015-v823.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nms-criteria-v870.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nohria-stevenson-v369.js",
@@ -71438,10 +72283,15 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/nutrition-maternal-v208.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nutrition-v276.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ny-aot-kendras-law-v1390.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/ny-fhcda-surrogate-v1391.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/ny-health-care-proxy-check-v1391.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ny-hiv-hcv-test-offer-v1395.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/ny-maid-timeline-v1392.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ny-mhl-hold-clock-v1389.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/ny-molst-checklist-router-v1391.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nyha-class-v357.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nyhus-hernia-v400.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/nys-newborn-screen-planner-v1394.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/o-rads-v326.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ob-v138.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/obgyn-v225.js",
@@ -71517,6 +72367,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/ppm-eoai-v548.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/prague-barrett-v365.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/preg-dating.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/prenatal-infection-screening-schedule-v1394.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/preop-fasting-v897.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pressure-injury-stage-v359.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/priapism-gas-v859.js",
@@ -71683,11 +72534,18 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/tscherne-closed-v350.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/twstrs-severity-v542.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tx-aprn-pa-controlled-delegation-v1393.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/tx-death-cert-deadline-v1392.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tx-emergency-detention-clock-v1389.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tx-emergency-detention-criteria-v1390.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/tx-ethics-review-timeline-v1392.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/tx-in-hospital-dnr-pathway-v1391.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/tx-maternal-level-reference-v1394.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/tx-neonatal-level-match-v1394.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/tx-ooh-dnr-validity-v1391.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tx-prescriptive-authority-agreement-v1397.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tx-protective-custody-hearing-clock-v1389.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tx-sa-forensic-exam-window-v1395.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/tx-surrogate-consent-hierarchy-v1391.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ucsf-hcc-v686.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/udca-response-v909.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/unit-convert.js",
@@ -71840,7 +72698,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "f206b2a9b6b6a83d"
+      "value": "662c49d7e113e5ed"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -71852,7 +72710,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2530"
+      "value": "2569"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

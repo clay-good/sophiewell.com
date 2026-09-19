@@ -8163,6 +8163,199 @@
       ],
       "tile": "tx-emergency-detention-criteria",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "fhcda",
+        "surrogate new york",
+        "who decides new york",
+        "2994-d",
+        "family health care decisions act"
+      ],
+      "tile": "ny-fhcda-surrogate",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "surrogate california",
+        "4712",
+        "ab 2338",
+        "who decides california",
+        "default surrogate california"
+      ],
+      "tile": "ca-surrogate-decisionmaker",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "313.004",
+        "texas surrogate consent",
+        "who decides texas",
+        "surrogate ect texas",
+        "texas consent hierarchy"
+      ],
+      "tile": "tx-surrogate-consent-hierarchy",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "health care proxy witness",
+        "proxy valid new york",
+        "2981",
+        "health care agent witness"
+      ],
+      "tile": "ny-health-care-proxy-check",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "molst",
+        "molst checklist",
+        "opwdd checklist",
+        "molst developmental disability",
+        "nonhospital dnr new york"
+      ],
+      "tile": "ny-molst-checklist-router",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "ooh dnr",
+        "out of hospital dnr texas",
+        "ems dnr texas",
+        "ooh-dnr valid",
+        "texas dnr form"
+      ],
+      "tile": "tx-ooh-dnr-validity",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "texas dnr order",
+        "166.203",
+        "dnr notice texas",
+        "sb 11 dnr",
+        "in-hospital dnr texas"
+      ],
+      "tile": "tx-in-hospital-dnr-pathway",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "medical aid in dying new york",
+        "maid new york",
+        "2899-f",
+        "aid in dying 5 day wait",
+        "death with dignity new york"
+      ],
+      "tile": "ny-maid-timeline",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "aid in dying new jersey",
+        "nj maid 15 days",
+        "26:16-10",
+        "medical aid in dying nj"
+      ],
+      "tile": "nj-maid-timeline",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "end of life option act",
+        "eoloa",
+        "aid in dying california 48 hours",
+        "443.3",
+        "sb 380"
+      ],
+      "tile": "ca-eoloa-timeline",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "texas 10 day rule",
+        "texas 25 day rule",
+        "166.046",
+        "ethics committee texas",
+        "futile care texas"
+      ],
+      "tile": "tx-ethics-review-timeline",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "brain death religious objection",
+        "new jersey brain death",
+        "26:6a-5",
+        "neurological death exemption"
+      ],
+      "tile": "nj-death-religious-exemption",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "death certificate texas 5 days",
+        "medical certification of death",
+        "193.005",
+        "who signs death certificate texas"
+      ],
+      "tile": "tx-death-cert-deadline",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "prenatal syphilis testing",
+        "third trimester syphilis",
+        "expedited hiv labor texas",
+        "syphilis screening pregnancy california",
+        "81.090"
+      ],
+      "tile": "prenatal-infection-screening-schedule",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "newborn screen new york",
+        "wadsworth newborn screening",
+        "repeat newborn screen nicu",
+        "newborn screen after transfusion",
+        "pku timing"
+      ],
+      "tile": "nys-newborn-screen-planner",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "neonatal level of care texas",
+        "nicu level texas",
+        "level ii nursery",
+        "133.187",
+        "75 miles level iii"
+      ],
+      "tile": "tx-neonatal-level-match",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "maternal level of care texas",
+        "level iii maternal",
+        "133.208",
+        "obstetric level of care texas"
+      ],
+      "tile": "tx-maternal-level-reference",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "safe surrender",
+        "safe haven california",
+        "surrendered baby",
+        "1255.7",
+        "abandoned newborn hospital"
+      ],
+      "tile": "ca-safe-surrender",
+      "audience": "clinicians"
     }
   ]
 }

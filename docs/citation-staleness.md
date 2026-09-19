@@ -672,3 +672,21 @@ carries the specific date that could change it.
 | ca-grave-disability-sb43 | WIC 5008(h) | CA | 2026-09-18 | SB 43 (2023); SB 1238 (2024) | 2027-01-02 |
 | ca-care-court-eligibility | WIC 5972; WIC 5970.5 | CA | 2026-09-18 | SB 27 (2025), effective 2026-01-01; high volatility | 2027-01-02 |
 | tx-emergency-detention-criteria | HSC 573.001, 573.012, 573.022 | TX | 2026-09-18 | SB 1164 (2025) | 2027-06-01 |
+| ny-fhcda-surrogate | PHL 2994-b, 2994-d | NY | 2026-09-18 | read on nysenate.gov | 2027-01-02 |
+| ca-surrogate-decisionmaker | Prob. Code 4711, 4712, 4715 | CA | 2026-09-18 | AB 2338 (2022) | 2027-01-02 |
+| tx-surrogate-consent-hierarchy | HSC 313.004; 166.039 | TX | 2026-09-18 | read on the official mirror | 2027-06-01 |
+| ny-health-care-proxy-check | PHL 2980, 2981 | NY | 2026-09-18 | read on nysenate.gov | 2027-01-02 |
+| ny-molst-checklist-router | NYSDOH MOLST checklists (June 2025 revision) | NY | 2026-09-18 | form and checklists revised June 2025 | 2027-01-02 |
+| tx-ooh-dnr-validity | HSC 166.003, 166.082-166.092 | TX | 2026-09-18 | read on the official mirror | 2027-06-01 |
+| tx-in-hospital-dnr-pathway | HSC 166.203-166.205 | TX | 2026-09-18 | SB 11 (2019) | 2027-06-01 |
+| ny-maid-timeline | PHL 2899-e, 2899-f | NY | 2026-09-18 | regulations proposed, not final; high volatility | 2026-12-01 |
+| nj-maid-timeline | N.J.S.A. 26:16-10 | NJ | 2026-09-18 | FindLaw text current as of 2024-01-01; waiver bills pending | 2027-01-02 |
+| ca-eoloa-timeline | HSC 443.2, 443.3 | CA | 2026-09-18 | SB 380 (2021); sunset section not read | 2027-01-02 |
+| tx-ethics-review-timeline | HSC 166.046 | TX | 2026-09-18 | 2023 amendments (25 days) | 2027-06-01 |
+| nj-death-religious-exemption | N.J.S.A. 26:6A-5 | NJ | 2026-09-18 | FindLaw text current as of 2024-01-01 | 2027-01-02 |
+| tx-death-cert-deadline | HSC 193.005 | TX | 2026-09-18 | read on the official mirror | 2027-06-01 |
+| prenatal-infection-screening-schedule | TX HSC 81.090; CA HSC 120685, 125085, 125090; NY PHL 2308; N.J.S.A. 26:4-49.1 | NY, NJ, CA, TX | 2026-09-18 | CA follows the latest CDPH guideline; NY guidance not read | 2027-01-02 |
+| nys-newborn-screen-planner | Wadsworth Specimen Collection Guide (March 2026) | NY | 2026-09-18 | program guide, updated March 2026 | 2027-03-01 |
+| tx-neonatal-level-match | 25 TAC 133.186-133.189 | TX | 2026-09-18 | amended effective 2023-06-22; read on Cornell LII | 2027-06-01 |
+| tx-maternal-level-reference | 25 TAC 133.206-133.209 | TX | 2026-09-18 | amended effective 2023-01-08; read on Cornell LII | 2027-06-01 |
+| ca-safe-surrender | HSC 1255.7 | CA | 2026-09-18 | read on leginfo | 2027-01-02 |

@@ -6,6 +6,32 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Prenatal and newborn.** Which prenatal syphilis, HIV, and hepatitis B tests
+  are due now in New York, New Jersey, California, or Texas (Texas: an expedited
+  HIV test, or a newborn sample within 2 hours, when the third-trimester result is
+  missing; California: an emergency department syphilis screen before discharge);
+  New York's newborn screen specimens and windows; the Texas neonatal and maternal
+  levels of care; and California's safe-surrender steps and deadlines. See
+  docs/spec-v1394.md.
+
+- **End of life: aid in dying, ethics review, death declaration.** When a
+  New York aid-in-dying prescription may be filled (five days after it is written),
+  the earliest New Jersey prescription date (the latest of 15 days, 48 hours, and
+  the second oral request), California's 48-hour request gap and witness rules,
+  the Texas ethics review dates with the 25-day period, New Jersey's religious
+  exemption to neurological death, and the Texas five-day death certification.
+  These tools compute dates and check documented steps; they never assess
+  eligibility. See docs/spec-v1392.md.
+
+- **Who decides: surrogates, proxies, MOLST, and DNR.** The New York FHCDA
+  surrogate (a domestic partner ranks with a spouse); California's surrogate
+  rules, where only the 4712(a) tier is ranked and the family list never is; who
+  may consent in Texas and what no surrogate may consent to; a New York health
+  care proxy's execution defects; which New York MOLST checklist applies (OPWDD
+  for a person with I/DD without capacity or a proxy); and whether a Texas
+  out-of-hospital or in-hospital DNR order is valid, with the notice owed. See
+  docs/spec-v1391.md.
+
 - **Hold criteria and court-ordered outpatient treatment.** Whether the
   documented findings meet New York's Kendra's Law criteria (the 36-month
   hospitalization window is extended by a recent confinement, and the tile shows
