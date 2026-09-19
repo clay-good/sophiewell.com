@@ -8119,6 +8119,50 @@
       ],
       "tile": "minor-self-consent",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "kendra's law",
+        "kendras law",
+        "assisted outpatient treatment",
+        "aot criteria new york",
+        "9.60"
+      ],
+      "tile": "ny-aot-kendras-law",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "gravely disabled",
+        "grave disability california",
+        "sb 43",
+        "5008(h)",
+        "gravely disabled substance use"
+      ],
+      "tile": "ca-grave-disability-sb43",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "care court",
+        "care act eligibility",
+        "5972",
+        "care court bipolar",
+        "sb 27 care"
+      ],
+      "tile": "ca-care-court-eligibility",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "texas emergency detention criteria",
+        "sb 1164",
+        "573.022 physician statement",
+        "apprehension without warrant texas",
+        "magistrate warrant emergency detention"
+      ],
+      "tile": "tx-emergency-detention-criteria",
+      "audience": "clinicians"
     }
   ]
 }

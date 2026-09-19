@@ -772,6 +772,7 @@ import { renderers as RV1389 } from './views/group-v1389.js';
 import { renderers as RV1393 } from './views/group-v1393.js';
 import { renderers as RV1397 } from './views/group-v1397.js';
 import { renderers as RV1395 } from './views/group-v1395.js';
+import { renderers as RV1390 } from './views/group-v1390.js';
 import { renderers as RV164 } from './views/group-v164.js';
 import { renderers as RV165 } from './views/group-v165.js';
 import { renderers as RV166 } from './views/group-v166.js';
@@ -859,7 +860,7 @@ const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...R
   ...RV902,
   ...RV903,
   ...RV905,
-  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV960, ...RV1061, ...RV1062, ...RV1240, ...RV1241, ...RV1242, ...RV1243, ...RV1400, ...RV1389, ...RV1393, ...RV1397, ...RV1395, ...RV63, ...RPALINT };
+  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV960, ...RV1061, ...RV1062, ...RV1240, ...RV1241, ...RV1242, ...RV1243, ...RV1400, ...RV1389, ...RV1393, ...RV1397, ...RV1395, ...RV1390, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -1125,6 +1126,12 @@ const UTILITIES = [
   { id: 'ca-adverse-event-1279', name: 'California Reportable Adverse Event (HSC 1279.1)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'tx-sa-forensic-exam-window', name: 'Texas Sexual Assault Forensic Exam Eligibility (CCP 56A.303, HSC 323.004)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'minor-self-consent', name: 'Can This Minor Consent Alone? (CA, TX)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
+  // spec-v1390: hold criteria and court-ordered outpatient treatment (Group M). views/group-v1390.js,
+  // lib/<id>-v1390.js, mcp/adapters/<id>-v1390.js.
+  { id: 'ny-aot-kendras-law', name: 'New York Assisted Outpatient Treatment (Kendra\'s Law) Criteria (MHL 9.60)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ca-grave-disability-sb43', name: 'California Gravely Disabled Definition After SB 43 (WIC 5008(h))', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ca-care-court-eligibility', name: 'California CARE Court Eligibility (WIC 5972, SB 27)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'tx-emergency-detention-criteria', name: 'Texas Emergency Detention Criteria Checklist (HSC 573.001, 573.012, 573.022)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
   // Group K (Lab Reference): removed in spec-v29 wave 29-2 (lab-adult,
   // lab-peds, tdm-levels, tox-levels are pure reference-range tables).
   // Group L: Forms & Numbers Literacy (removed in spec-v29 wave 29-2:

@@ -62,3 +62,24 @@ appreciate the risks of not being treated**.
 - Kendra's Law: a test where the second hospitalization falls at month 38. It fails the 36-month
   test alone and passes once a 3-month confinement that ended 4 months ago extends the window by its length.
 - `no-answer-from-nothing-sweep` and `required-field-agreement` both pass with no ledger exception.
+
+## Built (2026-09-18)
+
+| tile | what the reader gets | source read |
+|---|---|---|
+| `ny-aot-kendras-law` | the seven 9.60(c) criteria; each history prong with its window drawn from the petition date; the window pushed back by a current confinement, or one that ended within six months | nysenate.gov, MHL 9.60 |
+| `ca-grave-disability-sb43` | meets / does not meet / incomplete under 5008(h)(1)(A); chronic alcoholism only for 5225, 5250, and conservatorship ((h)(2)); intellectual disability alone excluded ((h)(3)) | leginfo, WIC 5008 (as last amended by SB 1238) |
+| `ca-care-court-eligibility` | criteria (a)-(f), naming the failing one; (d) met by either (d)(1) or (d)(2) | leginfo, WIC 5972 (SB 27) and 5970.5 |
+| `tx-emergency-detention-criteria` | the elements of the chosen path, with SB 1164's two new grounds as their own items | official mirror, HSC ch. 573 |
+
+- The acceptance case is a unit test: a second hospitalization 38 months before the petition fails
+  on its own. It passes once an 89-day confinement that ended four months before the petition
+  pushes the window back by 89 days.
+- The text does not say whether the current confinement counts as one of the two hospitalizations.
+  The tile counts the dates entered and says so. It takes one confinement and states that more than
+  one would lengthen the window further.
+- The (h)(1)(B) Penal Code 1370 path of 5008(h) is not covered, and the tile says so on screen
+  and in its source. CARE's operative dates (5970.5) have all passed; the last county deadline was
+  December 1, 2025.
+- None of the four needs an empty-form ledger entry. The grave-disability and Texas tiles have no
+  number or text input. The other two refuse without an age.

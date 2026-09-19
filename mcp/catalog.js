@@ -804,6 +804,10 @@ import nyHivHcvTestOfferV1395 from './adapters/ny-hiv-hcv-test-offer-v1395.js';
 import caAdverseEvent1279V1395 from './adapters/ca-adverse-event-1279-v1395.js';
 import txSaForensicExamWindowV1395 from './adapters/tx-sa-forensic-exam-window-v1395.js';
 import minorSelfConsentV1395 from './adapters/minor-self-consent-v1395.js';
+import nyAotKendrasLawV1390 from './adapters/ny-aot-kendras-law-v1390.js';
+import caGraveDisabilitySb43V1390 from './adapters/ca-grave-disability-sb43-v1390.js';
+import caCareCourtEligibilityV1390 from './adapters/ca-care-court-eligibility-v1390.js';
+import txEmergencyDetentionCriteriaV1390 from './adapters/tx-emergency-detention-criteria-v1390.js';
 import ticiV960 from './adapters/tici-v960.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
@@ -1635,6 +1639,10 @@ const ADAPTER_MODULES = [
   ['ca-adverse-event-1279-v1395', caAdverseEvent1279V1395],
   ['tx-sa-forensic-exam-window-v1395', txSaForensicExamWindowV1395],
   ['minor-self-consent-v1395', minorSelfConsentV1395],
+  ['ny-aot-kendras-law-v1390', nyAotKendrasLawV1390],
+  ['ca-grave-disability-sb43-v1390', caGraveDisabilitySb43V1390],
+  ['ca-care-court-eligibility-v1390', caCareCourtEligibilityV1390],
+  ['tx-emergency-detention-criteria-v1390', txEmergencyDetentionCriteriaV1390],
   ['tici-v960', ticiV960],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],

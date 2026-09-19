@@ -8197,6 +8197,18 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/minor-self-consent-v1395.js (spec-v1395: minor self-consent, California and Texas — clinical disclaimer)
 - `minor-self-consent`
 
+### lib/ny-aot-kendras-law-v1390.js (spec-v1390: New York assisted outpatient treatment (Kendra's Law) criteria — clinical disclaimer)
+- `ny-aot-kendras-law`
+
+### lib/ca-grave-disability-sb43-v1390.js (spec-v1390: California gravely disabled definition after SB 43 — clinical disclaimer)
+- `ca-grave-disability-sb43`
+
+### lib/ca-care-court-eligibility-v1390.js (spec-v1390: California CARE Court eligibility — clinical disclaimer)
+- `ca-care-court-eligibility`
+
+### lib/tx-emergency-detention-criteria-v1390.js (spec-v1390: Texas emergency detention criteria checklist — clinical disclaimer)
+- `tx-emergency-detention-criteria`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

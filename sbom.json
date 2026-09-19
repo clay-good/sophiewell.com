@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:7bc0357c-44ca-5bca-8f6c-e54117a92948",
+  "serialNumber": "urn:uuid:f206b2a9-b6b6-583d-8cff-08d0817544c3",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-18T20:57:09.292Z",
+    "timestamp": "2026-09-19T01:50:54.174Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1746 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1750 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "bf9cdf31d95d96db2a039c5dc3a87b037d47c8b10d5204c87e124286dd238ebd"
+          "content": "f2ba8c9444460a4be788e1bc42cd75fc9f12413675b85c4e5779eef9fe35c4e6"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "112069"
+          "value": "112397"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "809c9bfe89f3d322044e770f0392da1e224797dc9c4e6fe084bbdab6582fb1f3"
+          "content": "4dfa6ae490bb90020328cb02eadfc1d53f545248b51fbe3fd7f748508187ea65"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "523204"
+          "value": "524163"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c106fbb2665e375dac0105651a581277a22378071997f40846d68c504edd1bae"
+          "content": "7360b0be4933d76ac005cc458b5f412e44f579c558d3c023d784d306a299badf"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "217216"
+          "value": "217758"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "61c74e77c5d972a57aa8c892f18218badac136b3c41510edc312f82f75b641fa"
+          "content": "37b15881c110057bea37eb0dd3278192ed74d28bb2ed8c7e20d4a0002c154017"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "98626"
+          "value": "99012"
         }
       ]
     },
@@ -2387,6 +2387,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/ca-care-court-eligibility-v1390.js",
+      "type": "file",
+      "name": "lib/ca-care-court-eligibility-v1390.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "cca587ec4b23d9bbc614e532719b328b8745a5ec906de22fe2916af1cba0d7b7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5877"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/ca-ed-psych-detention-1799-v1389.js",
       "type": "file",
       "name": "lib/ca-ed-psych-detention-1799-v1389.js",
@@ -2404,6 +2425,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "6049"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/ca-grave-disability-sb43-v1390.js",
+      "type": "file",
+      "name": "lib/ca-grave-disability-sb43-v1390.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f6a08cd4b24a578d50a28631781d50e23186427dc33016d9b43f326ac6e8df89"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6506"
         }
       ]
     },
@@ -10499,7 +10541,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "47c3504474f823a90e380ec88b1eba381b711753aebd194c4f130ed5de73e895"
+          "content": "67604ed2aaa074701e21814f9f696b3cff2695c8a362700297bf57a9f7c7f762"
         }
       ],
       "properties": [
@@ -10509,7 +10551,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2500368"
+          "value": "2503865"
         }
       ]
     },
@@ -12085,6 +12127,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3222"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/ny-aot-kendras-law-v1390.js",
+      "type": "file",
+      "name": "lib/ny-aot-kendras-law-v1390.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "27b52c5cce49d6c3a4b49fec215ca45d72633c1d11396d0329c932caa6df168d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "11236"
         }
       ]
     },
@@ -17927,6 +17990,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/tx-emergency-detention-criteria-v1390.js",
+      "type": "file",
+      "name": "lib/tx-emergency-detention-criteria-v1390.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ef316a45118613dd4c0cae0f4468ba12ebdd991b5dea88f9269b02e1dff1273f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7275"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/tx-prescriptive-authority-agreement-v1397.js",
       "type": "file",
       "name": "lib/tx-prescriptive-authority-agreement-v1397.js",
@@ -20888,6 +20972,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ca-care-court-eligibility-v1390.js",
+      "type": "file",
+      "name": "mcp/adapters/ca-care-court-eligibility-v1390.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9845b5b2f848e7b065798cac611931b6787aa7c36de4d0268d3a20aec6d9646a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1940"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ca-ed-psych-detention-1799-v1389.js",
       "type": "file",
       "name": "mcp/adapters/ca-ed-psych-detention-1799-v1389.js",
@@ -20905,6 +21010,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1405"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ca-grave-disability-sb43-v1390.js",
+      "type": "file",
+      "name": "mcp/adapters/ca-grave-disability-sb43-v1390.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6a6e39b9a28679d385f1098cbc8797fa69741b7ff215c2740f493ee556c9e223"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1770"
         }
       ]
     },
@@ -30170,6 +30296,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ny-aot-kendras-law-v1390.js",
+      "type": "file",
+      "name": "mcp/adapters/ny-aot-kendras-law-v1390.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fad7f47a0a501c0345aa080c6edb9e25944d4e69c8361ba4013d43e640228f8b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2739"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ny-hiv-hcv-test-offer-v1395.js",
       "type": "file",
       "name": "mcp/adapters/ny-hiv-hcv-test-offer-v1395.js",
@@ -35336,6 +35483,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/tx-emergency-detention-criteria-v1390.js",
+      "type": "file",
+      "name": "mcp/adapters/tx-emergency-detention-criteria-v1390.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "156b250c1de2ed744e570bc688e96198e9ca1bee2fa699bd54e08bf931e774ac"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2753"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/tx-prescriptive-authority-agreement-v1397.js",
       "type": "file",
       "name": "mcp/adapters/tx-prescriptive-authority-agreement-v1397.js",
@@ -36434,7 +36602,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7b528cfc2ab880c3336f1574bf5f6185787717482d1400d5a239e7c20ba21c36"
+          "content": "b099cc37e71da8b25d6aafc99b37cbb2bdd0466a23ef588f3a74180a5effe0ce"
         }
       ],
       "properties": [
@@ -36444,7 +36612,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "94053"
+          "value": "94673"
         }
       ]
     },
@@ -37747,6 +37915,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "12916"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1390.js",
+      "type": "file",
+      "name": "views/group-v1390.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "028f5667ff6fa028c972d8457d0f33fbe02cba3efca608c0804166f9fbc6359d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "11347"
         }
       ]
     },
@@ -69108,7 +69297,9 @@
         "urn:sophiewell:file:source:lib/ca-5585-minor-hold-v1389.js",
         "urn:sophiewell:file:source:lib/ca-adult-tb-risk-v1400.js",
         "urn:sophiewell:file:source:lib/ca-adverse-event-1279-v1395.js",
+        "urn:sophiewell:file:source:lib/ca-care-court-eligibility-v1390.js",
         "urn:sophiewell:file:source:lib/ca-ed-psych-detention-1799-v1389.js",
+        "urn:sophiewell:file:source:lib/ca-grave-disability-sb43-v1390.js",
         "urn:sophiewell:file:source:lib/ca-np-103-104-tracker-v1397.js",
         "urn:sophiewell:file:source:lib/cac-agatston-v668.js",
         "urn:sophiewell:file:source:lib/cad-rads-v372.js",
@@ -69570,6 +69761,7 @@
         "urn:sophiewell:file:source:lib/nutrition-energy-v152.js",
         "urn:sophiewell:file:source:lib/nutrition-maternal-v208.js",
         "urn:sophiewell:file:source:lib/nutrition-v276.js",
+        "urn:sophiewell:file:source:lib/ny-aot-kendras-law-v1390.js",
         "urn:sophiewell:file:source:lib/ny-hiv-hcv-test-offer-v1395.js",
         "urn:sophiewell:file:source:lib/ny-mhl-hold-clock-v1389.js",
         "urn:sophiewell:file:source:lib/nyha-class-v357.js",
@@ -69848,6 +70040,7 @@
         "urn:sophiewell:file:source:lib/twstrs-severity-v542.js",
         "urn:sophiewell:file:source:lib/tx-aprn-pa-controlled-delegation-v1393.js",
         "urn:sophiewell:file:source:lib/tx-emergency-detention-clock-v1389.js",
+        "urn:sophiewell:file:source:lib/tx-emergency-detention-criteria-v1390.js",
         "urn:sophiewell:file:source:lib/tx-prescriptive-authority-agreement-v1397.js",
         "urn:sophiewell:file:source:lib/tx-protective-custody-hearing-clock-v1389.js",
         "urn:sophiewell:file:source:lib/tx-sa-forensic-exam-window-v1395.js",
@@ -69960,6 +70153,7 @@
         "urn:sophiewell:file:source:views/group-v138.js",
         "urn:sophiewell:file:source:views/group-v1389.js",
         "urn:sophiewell:file:source:views/group-v139.js",
+        "urn:sophiewell:file:source:views/group-v1390.js",
         "urn:sophiewell:file:source:views/group-v1393.js",
         "urn:sophiewell:file:source:views/group-v1395.js",
         "urn:sophiewell:file:source:views/group-v1397.js",
@@ -70799,7 +70993,9 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/ca-5585-minor-hold-v1389.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ca-adult-tb-risk-v1400.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ca-adverse-event-1279-v1395.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/ca-care-court-eligibility-v1390.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ca-ed-psych-detention-1799-v1389.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/ca-grave-disability-sb43-v1390.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ca-np-103-104-tracker-v1397.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cac-agatston-v668.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cad-rads-v372.js",
@@ -71241,6 +71437,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/nutrition-energy-v152.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nutrition-maternal-v208.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nutrition-v276.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/ny-aot-kendras-law-v1390.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ny-hiv-hcv-test-offer-v1395.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ny-mhl-hold-clock-v1389.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nyha-class-v357.js",
@@ -71487,6 +71684,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/twstrs-severity-v542.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tx-aprn-pa-controlled-delegation-v1393.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tx-emergency-detention-clock-v1389.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/tx-emergency-detention-criteria-v1390.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tx-prescriptive-authority-agreement-v1397.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tx-protective-custody-hearing-clock-v1389.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tx-sa-forensic-exam-window-v1395.js",
@@ -71642,7 +71840,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "7bc0357c44ca9bca"
+      "value": "f206b2a9b6b6a83d"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -71654,7 +71852,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2521"
+      "value": "2530"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

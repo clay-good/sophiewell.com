@@ -6,6 +6,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Hold criteria and court-ordered outpatient treatment.** Whether the
+  documented findings meet New York's Kendra's Law criteria (the 36-month
+  hospitalization window is extended by a recent confinement, and the tile shows
+  the extended window), California's gravely disabled definition as SB 43
+  rewrote it, California CARE Court eligibility after SB 27 added bipolar I with
+  psychotic features, and the Texas emergency detention elements as SB 1164
+  rewrote them. Every criterion can be left unassessed, and an unassessed one
+  leaves the answer undecided. See docs/spec-v1390.md.
+
 - **California adverse events, Texas sexual assault exams, and minor consent.**
   Whether an event is one of California's 28 reportable adverse events and when
   the CDPH report is due (five days, or 24 hours for an ongoing threat); whether a
