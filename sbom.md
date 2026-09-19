@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `3a47f5e73665cdb4`
-Generated: 2026-09-19T15:48:23.389Z
+Build ID: `ece8cf1f2f9216f6`
+Generated: 2026-09-19T15:56:18.064Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -66,7 +66,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/acs-v193.js` | 17117 | `c68191b4b0ee4b9da60fbad8549c688ddafe119ff9b256f0a4a52bda799dd43a` |
 | `lib/acute-abdomen-v261.js` | 12492 | `91da56977b83f841e806856211d5f6ef73ca130f1dfa76ab1bbe6c58b104cf10` |
 | `lib/acute-injury-v213.js` | 11748 | `d0db59b8b86c57a442bfe3b1cd2e9fb50bbb59aa6980810415f4dbbe41985b7d` |
-| `lib/acute-opioid-rx-limit-v1393.js` | 8269 | `eb099c86a1f401752f928d8934c0b98f00366bb32e3ea1b9ef846c1103ddff1a` |
+| `lib/acute-opioid-rx-limit-v1393.js` | 8742 | `a6f06ba9dedaa72a2a02e9e752846eb4dd8fcd66cf65f6258b109d23abb1e75a` |
 | `lib/adiposity-v270.js` | 3145 | `bafc017e4974f5c7180e5a2a6160c50fb8d837bccd6f45d0eaaf6bb6ada87ce9` |
 | `lib/af-stages-2023-v839.js` | 7872 | `9dad7e65b3ccc86ad22937b40e670e055da6855583cd1cc4bd188325e04c2fe7` |
 | `lib/ahlback-knee-oa-v480.js` | 3309 | `c7e76a2794a1764fc50dd4f467219d7b5f9a6f19c98a5bc241cd43a85a810239` |
@@ -718,7 +718,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/pirani-clubfoot-v386.js` | 3487 | `787ccfe1abcbcf66a2a9d8ea1218c443f22882983faccd94d3929dfe1c024da5` |
 | `lib/pk-v166.js` | 8723 | `1183ec677162e380baf0d90079c14e6aeb5d1e67a4d53198eb31d0b40ccff265` |
 | `lib/plaque-control-record-v721.js` | 3208 | `3038454a7f6982a21e476538381e1c4e9e526219000cb55512fc86f4a7489f6b` |
-| `lib/pmp-check-required-v1393.js` | 14497 | `8474544397b136f3939c7ec930874508fa5147bdaf302fae5ff0c97e9c9fe2b5` |
+| `lib/pmp-check-required-v1393.js` | 14866 | `48673464afc9b4df914f4454ef58da826a07d591fd860440882a6b20ede4a4a8` |
 | `lib/pneumonia-risk-v260.js` | 7249 | `029d9c0701f969f39f61031ea2648625c6b5b43b21d5d8c3c8b19f030391add4` |
 | `lib/poi-diagnosis-v834.js` | 8980 | `51f5aef7d5ff7d875fe26634d55222aa36e7978e4500c7dfc84983a91c33dc88` |
 | `lib/pollock-flickinger-v601.js` | 14300 | `19675dc09546ea686829394e1d801040ffdf77cd300f834a8771988c0b1db9c4` |

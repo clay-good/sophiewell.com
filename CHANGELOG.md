@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Opioid day limits and PMP checks: blanks are asked.** A blank refills or
+  extended-release answer no longer reads as "no" in the Texas and New Jersey day
+  limits or the California CURES exemptions. See docs/spec-v1393.md.
+
 - **Safe Haven Infant Check (NY, NJ, TX).** Whether an infant left at a safe haven
   is within the state's age limit (Texas 60 days, New Jersey and New York 30), and
   when child protective services must be told: Texas and New Jersey by the first

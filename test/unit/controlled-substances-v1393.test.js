@@ -60,7 +60,7 @@ test('limit: 7, 5, and 10 days, and Texas bars refills on every acute-pain presc
   assert.equal(lim({ state: 'NY', category: 'acute', days: '7', initial: 'yes' }).verdict, 'within');
   assert.match(lim({ state: 'NY', category: 'acute', days: '10', initial: 'yes' }).band, /3 over the 7-day limit/);
   assert.equal(lim({ state: 'NJ', category: 'acute', days: '6', initial: 'yes' }).verdict, 'over');
-  assert.equal(lim({ state: 'TX', category: 'acute', days: '10', initial: 'no' }).verdict, 'within');
+  assert.equal(lim({ state: 'TX', category: 'acute', days: '10', initial: 'no', refills: 'no' }).verdict, 'within');
   assert.equal(lim({ state: 'TX', category: 'acute', days: '5', initial: 'no', refills: 'yes' }).verdict, 'over');
 });
 
@@ -96,4 +96,16 @@ test('delegation: Schedules III to V, 90 days including refills, consultations c
   assert.equal(del({ ...D, schedule: 'III', setting: 'clinic', refill: 'yes' }).verdict, 'unassessed');
   assert.equal(del({ ...D, schedule: 'III', setting: 'clinic', refill: 'yes', refillConsulted: 'no' }).verdict, 'no');
   assert.equal(del({ ...D, schedule: 'V', setting: 'clinic', under2: 'yes', under2Consulted: 'yes' }).verdict, 'yes');
+});
+
+// A blank refills or extended-release answer is asked when it would change the answer, never read as "no".
+test('limit and PMP: blank refills / extended-release are asked, not assumed', () => {
+  assert.equal(lim({ state: 'TX', category: 'acute', days: '10', initial: 'no' }).valid, false);
+  assert.equal(lim({ state: 'TX', category: 'acute', days: '12', initial: 'no' }).verdict, 'over');
+  assert.equal(lim({ state: 'NJ', category: 'acute', days: '3', initial: 'yes' }).valid, false);
+  assert.equal(lim({ state: 'NJ', category: 'acute', days: '3', initial: 'yes', extendedRelease: 'no' }).verdict, 'within');
+  assert.equal(lim({ state: 'NJ', category: 'acute', days: '6', initial: 'yes' }).verdict, 'over');
+  const { refills, ...noRefills } = RX;
+  assert.equal(pmp({ ...noRefills, state: 'CA', setting: 'ed', days: '7' }).valid, false);
+  assert.equal(pmp({ ...noRefills, state: 'CA', setting: 'ed', days: '14' }).verdict, 'required');
 });

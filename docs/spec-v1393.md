@@ -93,3 +93,18 @@ duty before the first opioid prescription in a course (addiction and overdose ri
 disorders, and benzodiazepines, alcohol, or other depressants, with the parent or guardian of a minor),
 not a day limit, and it does not apply to emergency services or emergency surgery. California stays
 out of `acute-opioid-rx-limit`, which checks day limits; the lib comment records why.
+
+## Hardening (2026-09-19): a blank answer is asked, not read as "no"
+
+Three answers treated an unanswered question as "no" and printed a reassuring result:
+
+| tool | blank | was | now |
+|---|---|---|---|
+| `acute-opioid-rx-limit`, Texas | refills | "Within the limit" | asks whether refills are ordered (Texas allows none) |
+| `acute-opioid-rx-limit`, New Jersey initial | extended-release | "Within the limit" | asks, since an initial prescription must be immediate-release |
+| `pmp-check-required`, California ED, procedure, or no access | refills | "Exempt" | asks, since the exemption needs a nonrefillable supply |
+
+Each question is asked only when the answer would change the result: over the day limit, or over
+seven days in California, the answer stands without it. One test had pinned the old Texas behavior
+("10 days, refills blank, within") and now passes "no" explicitly.
+
