@@ -78,6 +78,20 @@ const MAP = [
   // Height is entered in cm and the envelope is in metres, so it carries a scale of 100. A bare
   // "length" is an organ or a fetal bone (its first run mis-mapped five), so only crown-heel counts.
   ['heightM', /\bheight\b|\bstature\b|crown.heel/i, /^cm$/i, 100],
+  // spec-v1406: the rest of lib/bounds.js. Element symbols (Mg, Ca, Cl) are left out on purpose:
+  // matched case-insensitively against "label unit", \bMg\b is the "mg" in every "mg/dL".
+  ['ageYears', /\bage\b/i, /^(yr|yrs|years?)$/i],
+  ['qtMs', /\bQTc?\b|QT interval/i, /^ms$/i],
+  ['chloride', /chloride/i, /mmol\/L|mEq\/L/i],
+  ['calcium', /calcium/i, /mg\/dL/i],
+  ['magnesium', /magnesium/i, /mg\/dL/i],
+  ['phosphate', /phosph/i, /mg\/dL/i],
+  ['inr', /\bINR\b/i, /^$|INR/i],
+  ['fio2', /FiO2|FiO₂|inspired oxygen/i, /fraction/i],
+  ['fio2', /FiO2|FiO₂|inspired oxygen/i, /^%$/i, 100],
+  ['bun', /\bBUN\b|urea nitrogen/i, /mg\/dL/i],
+  ['eGFR', /eGFR|\bGFR\b/i, /mL\/min/i],
+  ['bmi', /\bBMI\b|body mass index/i, /kg\/m/i],
 ];
 
 // Tools whose "Height" or "Length" is an organ's dimension, labelled with the bare word.

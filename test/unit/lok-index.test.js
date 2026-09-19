@@ -19,9 +19,11 @@ test('rule-out (< 0.2)', () => {
 });
 
 test('overflow-safe: extreme inputs stay in [0,1]', () => {
-  const hi = lokIndex({ platelets: 0.001, ast: 1e9, alt: 0.001, inr: 1e9 });
+  const hi = lokIndex({ platelets: 0.001, ast: 1e9, alt: 0.001, inr: 20 });
   assert.equal(hi.probability, 1);
   assert.equal(Number.isFinite(hi.probability), true);
+  // spec-v1406: an INR of 1e9 is outside the BOUNDS.inr envelope and is refused.
+  assert.equal(lokIndex({ platelets: 0.001, ast: 1e9, alt: 0.001, inr: 1e9 }).valid, false);
 });
 
 test('non-positive / missing -> valid:false (no divide-by-zero / ln issues)', () => {

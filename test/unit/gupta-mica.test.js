@@ -21,11 +21,18 @@ test('higher ASA and totally dependent raise the probability', () => {
   assert.ok(high.risk > low.risk);
 });
 
-test('overflow guard: a huge linear predictor yields a finite probability in [0,100]', () => {
-  const r = guptaMica({ age: 1e9, asa: '5', functional: 'total', creatinine: 'elevated', surgery: 'aortic' });
+test('overflow guard: the largest in-range predictor yields a finite probability in [0,100]', () => {
+  const r = guptaMica({ age: 130, asa: '5', functional: 'total', creatinine: 'elevated', surgery: 'aortic' });
   assert.equal(r.valid, true);
   assert.ok(Number.isFinite(r.risk));
   assert.ok(r.risk >= 0 && r.risk <= 100);
+});
+
+// spec-v1406: an impossible age used to be clamped to 120 and computed.
+test('an age outside the plausible envelope is refused, not clamped', () => {
+  const r = guptaMica({ age: 1e9, asa: '5', functional: 'total', creatinine: 'elevated', surgery: 'aortic' });
+  assert.equal(r.valid, false);
+  assert.match(r.band, /plausible range for age/);
 });
 
 test('an out-of-enum categorical surfaces valid:false, not NaN', () => {

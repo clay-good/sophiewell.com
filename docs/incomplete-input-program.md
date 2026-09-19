@@ -476,14 +476,17 @@ reassuring side of the threshold where the example never goes (spec-v1092).
   fields across sixty-eight** of the catalog's entries
   (`scripts/probe-envelope-unbounded.mjs`), over eleven waves.
 
-  The probe's current reach is 482 fields mapped to one of 36 envelopes; 450 are
+  The probe's current reach is 708 fields mapped to one of 36 envelopes; 664 are
   testable against a worked example inside that envelope, none
-  is mis-mapped, and 32 carry no usable example. **Zero is a statement about
-  those 450**, not about the catalog, and it was a statement about 367 until
+  is mis-mapped, and 44 carry no usable example. **Zero is a statement about
+  those 664**, not about the catalog, and it was a statement about 367 until
   [spec-v1404](spec-v1404.md) found the map had **no row for weight at all**:
   adding one surfaced 29 fields in 27 of the catalog's entries, all now fixed.
   [spec-v1405](spec-v1405.md) added height, which needed a unit scale (the
   envelope is in metres, the fields in cm), and fixed five more.
+  [spec-v1406](spec-v1406.md) mapped the other twelve envelopes (age, INR, BMI,
+  eGFR, BUN, QT, and the electrolytes), fixed 97 fields, and made all three
+  sections a unit-test gate with a reach floor.
   Spec-v1251 removed one unit-invariant LIPI
   field that the probe had mapped only because its metadata named example units.
 

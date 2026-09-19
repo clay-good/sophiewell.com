@@ -42,7 +42,7 @@ function val(id) { const n = document.getElementById(id); return n ? n.value : '
 function chk(id) { const n = document.getElementById(id); return n ? n.checked : false; }
 function safe(o, fn) { clear(o); try { fn(); } catch (err) { o.appendChild(el('p', { class: 'muted', text: err.message })); } }
 function note(root, text) { if (text) root.appendChild(el('p', { class: 'muted', text })); }
-function invalid(o, r) { note(o, 'Complete the remaining fields.'); note(o, r.note); }
+function invalid(o, r) { note(o, r.message || 'Complete the remaining fields.'); note(o, r.note); }
 function postureNote(root) {
   root.appendChild(el('p', { class: 'muted', text: 'Decision support, not a verdict. The score, stage, or category is the cited source’s, computed from the inputs you enter. The biopsy, surgery, and prognosis decisions stay with the treating team and the patient.' }));
 }

@@ -6,6 +6,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Impossible ages, INRs, BMIs, and kidney values are refused.** Mapping the rest of
+  the site's plausible ranges found 97 inputs that answered from an impossible value
+  or asked again for one the reader had typed. The worst: a head-injury rule read
+  "very low risk, CT not recommended" for an age of 1,300. Each now refuses and names
+  the range, and the finder that found them is a test. See docs/spec-v1406.md.
+
 - **An impossible height is refused.** Predicted spirometry and body surface area
   answered from a height ten times the plausible ceiling, and three waist-to-height
   tools asked for a height that had been typed. See docs/spec-v1405.md.

@@ -147,6 +147,7 @@ export const renderers = {
         killip24: selVal('ts-killip'), weightLow: selVal('ts-weight'),
         anteriorSteLbbb: selVal('ts-ste'), timeOver4h: selVal('ts-time'),
       });
+      if (r.valid === false && r.total == null) { o.appendChild(el('p', { class: 'muted', text: r.band })); return; }
       resultRow(o, [
         { text: r.band, cls: r.total >= 5 ? 'warn' : null },
         { label: 'Total score', value: `${r.total} of 14` },

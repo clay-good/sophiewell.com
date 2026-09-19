@@ -805,10 +805,11 @@ export const renderers = {
       o.appendChild(el('p', {
         text: m == null
           ? 'Enter an age for the McIsaac score: it adds a point under 15 and subtracts one at 45 or over.'
+          : m.valid === false ? m.message
           : `McIsaac (age ${ageYears}): ${m.score} (modifier ${m.ageModifier >= 0 ? '+' : ''}${m.ageModifier}) - ${m.band}`,
       }));
       if (deriv) updateDerivationSteps(deriv, META.centor, args);
-      if (derivMcisaac && ageYears != null) updateDerivationSteps(derivMcisaac, { derivation: META.centor.derivationMcisaac }, { ...args, ageYears });
+      if (derivMcisaac && ageYears != null && m.valid !== false) updateDerivationSteps(derivMcisaac, { derivation: META.centor.derivationMcisaac }, { ...args, ageYears });
     });
     items.forEach(([, id]) => document.getElementById(id).addEventListener('change', run));
     document.getElementById('ce-age').addEventListener('input', run);
@@ -1341,6 +1342,8 @@ export const renderers = {
         sao2Lt90: checked('pe-sao2'),
       };
       const r = S4.pesi(inputs);
+      // spec-v1406: an impossible value is refused; print the refusal, not a heading built from its nulls.
+      if (r.valid === false && !r.incomplete) { o.appendChild(el('p', { text: r.band || r.message })); clearDerivationSteps(deriv); return; }
       // spec-v1029: no class until the age is entered -- the score is mostly the age.
       if (!r.incomplete) o.appendChild(el('h2', { text: `PESI ${r.score} - Class ${r.class}` }));
       o.appendChild(el('p', { text: r.band }));
@@ -1823,7 +1826,7 @@ export const renderers = {
         severeHeadache: checked('ph-hd'),
       });
       // spec-v1029: the age picks the rule, so there is no tier while the two rules disagree.
-      if (!r.incomplete) o.appendChild(el('h2', { text: `PECARN risk tier: ${r.tier}` }));
+      if (!r.incomplete && r.tier != null) o.appendChild(el('h2', { text: `PECARN risk tier: ${r.tier}` }));
       o.appendChild(el('p', { text: r.band }));
     });
     document.querySelectorAll('input').forEach((n) => n.addEventListener(n.type === 'checkbox' ? 'change' : 'input', run));
@@ -2036,6 +2039,8 @@ export const renderers = {
       for (const [k, id] of Object.entries(map)) items[k] = checked(id);
       const ageYears = nvOrNull('ch-age');
       const r = S4.charlson({ items, ageYears });
+      // spec-v1406: an impossible value is refused; print the refusal, not a heading built from its nulls.
+      if (r.valid === false && !r.incomplete) { o.appendChild(el('p', { text: r.band || r.message })); return; }
       // spec-v1029: the age adjustment is worth up to 4 points, so no survival estimate without it.
       if (!r.incomplete) o.appendChild(el('h2', { text: `Charlson (age-adjusted) ${r.score}` }));
       o.appendChild(el('p', { text: r.band }));
@@ -2583,6 +2588,8 @@ export const renderers = {
         acuteDiseaseNoIntakeGt5d: checked('mu-acute'),
       };
       const r = S4.mustNutrition(inputs);
+      // spec-v1406: an impossible value is refused; print the refusal, not a heading built from its nulls.
+      if (r.valid === false && !r.incomplete) { o.appendChild(el('p', { text: r.band || r.message })); clearDerivationSteps(deriv); return; }
       // spec-v1038: no total while a component is unmeasured and the reading would
       // be the reassuring one.
       if (r.incomplete) { o.appendChild(el('p', { text: r.band })); clearDerivationSteps(deriv); return; }

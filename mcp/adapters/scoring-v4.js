@@ -394,7 +394,8 @@ export default [
   {
     id: 'centor',
     summary: 'Centor strep-pharyngitis score (tonsillar exudate, tender anterior adenopathy, fever history, absence of cough; 1 each) with the McIsaac age modifier (3-14 years +1, >= 45 years -1) computed from the same criteria.',
-    compute: (a) => ({ centor: F.centor(a), mcisaac: F.mcisaac(a) }),
+    // spec-v1406: an impossible age refuses the pair rather than answer beside it.
+    compute: (a) => { const m = F.mcisaac(a); return m.valid === false ? m : { centor: F.centor(a), mcisaac: m }; },
     fields: [
       { dom: 'ce-exud', arg: 'tonsillarExudate', kind: 'bool', label: 'Tonsillar exudate (1)' },
       { dom: 'ce-aden', arg: 'tenderAnteriorAdenopathy', kind: 'bool', label: 'Tender anterior cervical adenopathy (1)' },

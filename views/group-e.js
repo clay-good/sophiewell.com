@@ -540,9 +540,13 @@ export const renderers = {
       if (needValues(o, [['a PaO2', pao2], ['an FiO2', fio2]])) return;
       const aa = C.aaGradient({ fio2, paco2: num('sf-paco2'), pao2 });
       const pf = C.pfRatio({ pao2, fio2 });
-      const expectedAa = num('sf-age') ? num('sf-age') / 4 + 4 : null;
+      // spec-v1406: the age feeds only the expected A-a row, so an impossible age replaces that row
+      // with the envelope sentence rather than printing an expected gradient from it.
+      const ageFault = num('sf-age') ? boundsAdvisory('ageYears', num('sf-age')) : null;
+      const expectedAa = num('sf-age') && !ageFault ? num('sf-age') / 4 + 4 : null;
       resultRow(o, [
         { text: `A-a gradient: ${aa.aaGradient.toFixed(1)} mmHg (PAO2 ${aa.PAO2.toFixed(1)})` },
+        ageFault ? { text: ageFault } : null,
         expectedAa ? { text: `Expected A-a by age: ${expectedAa.toFixed(1)}` } : null,
         { text: `P/F ratio: ${pf.ratio} - ${pf.category}` },
       ]);

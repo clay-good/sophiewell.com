@@ -56,7 +56,8 @@ test('big: what IS entered is a floor, and a floor at or above 16 still rules in
 });
 
 test('big: a typed 0 is still an answer', () => {
-  const r = big({ baseDeficit: 0, inr: 0, gcs: 15 });
+  // spec-v1406: an INR of 0 is below the envelope and refuses; the typed 0 here is the base deficit.
+  const r = big({ baseDeficit: 0, inr: 1, gcs: 15 });
   assert.equal(r.incomplete, undefined);
-  assert.equal(r.score, 0);
+  assert.equal(r.score, 2.5);
 });

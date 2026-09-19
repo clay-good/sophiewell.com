@@ -10,6 +10,7 @@
 
 import * as F from '../../lib/clinical.js';
 import * as V4 from '../../lib/clinical-v4.js';
+import { boundsAdvisory } from '../../lib/bounds.js';
 
 export default [
   {
@@ -198,6 +199,9 @@ export default [
       // spec-v1045: see corrected-ca-na. The A-a gradient needs the PaCO2; the
       // P/F ratio does not.
       const have = (...vs) => vs.every((v) => v !== null && v !== undefined && v !== '');
+      // spec-v1406: the ageYears envelope lib/bounds.js declares; an age of 1300 gave an expected A-a of 329.
+      const ageFault = boundsAdvisory('ageYears', a.age);
+      if (ageFault) throw new RangeError(ageFault);
       const aa = have(a.fio2, a.paco2, a.pao2) ? F.aaGradient({ fio2: a.fio2, paco2: a.paco2, pao2: a.pao2 }) : null;
       const pf = have(a.pao2, a.fio2) ? F.pfRatio({ pao2: a.pao2, fio2: a.fio2 }) : null;
       if (aa == null && pf == null) return null;

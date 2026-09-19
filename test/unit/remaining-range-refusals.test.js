@@ -46,7 +46,7 @@ test('the same readers identify out-of-range sibling inputs', () => {
 });
 
 test('blank fields still reach each calculator own refusal', () => {
-  assert.equal(adhereHf({ bun: 50 }).message, undefined);
+  assert.match(adhereHf({ bun: 50 }).message, /^Enter the BUN/);
   assert.match(compartmentDeltaPressure({ diastolic: 70 }).message, /^Enter both/);
   assert.match(scaiShock({ sbp: 80, support: 'one' }).message, /^Enter the serum lactate/);
   assert.match(mecki({ hb: 12, sodium: 138 }).message, /^Enter hemoglobin/);
