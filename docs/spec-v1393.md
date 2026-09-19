@@ -85,3 +85,11 @@ changed from the plan:
 - **New Jersey's initial prescription must be immediate-release**, and a subsequent one is allowed
   no less than four days later, after consultation, up to 30 days. The tile checks both.
 - The specialty is `pain-medicine`: `pain-management` was merged into it in spec-v935.
+
+## Update (2026-09-19): California HSC 11158.1
+
+11158.1 was read on leginfo (as amended by SB 607, effective January 1, 2025). It is a counseling
+duty before the first opioid prescription in a course (addiction and overdose risk, co-occurring
+disorders, and benzodiazepines, alcohol, or other depressants, with the parent or guardian of a minor),
+not a day limit, and it does not apply to emergency services or emergency surgery. California stays
+out of `acute-opioid-rx-limit`, which checks day limits; the lib comment records why.

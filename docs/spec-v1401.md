@@ -190,3 +190,8 @@ within 24 hours, draw a venous sample before the patient leaves when an in-offic
 3.5 or more, and monitor until a level under 3.5. The plan's prenatal risk assessment at the first
 visit is in the letter, but this tool reads a child's result, so the line leaves it out. With that,
 all nine Part B rows are built.
+
+`rabies-pep`'s Texas line now adds 25 TAC 169.30 (read 2026-09-19): a pet exposed to a rabid animal is
+euthanized, or, if currently vaccinated, boosted at once and confined **45 days**; if not, vaccinated at
+once, confined **90 days**, and boosted in weeks 3 and 8. That confirms the plan's 45 days and adds the
+unvaccinated case. The skunk and bat reservoir note is still not printed (the DSHS guide was not read).

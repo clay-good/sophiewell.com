@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `6902c977e8cc83f1`
-Generated: 2026-09-19T14:47:44.239Z
+Build ID: `038640da4592f243`
+Generated: 2026-09-19T15:11:47.257Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -66,7 +66,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/acs-v193.js` | 17117 | `c68191b4b0ee4b9da60fbad8549c688ddafe119ff9b256f0a4a52bda799dd43a` |
 | `lib/acute-abdomen-v261.js` | 12492 | `91da56977b83f841e806856211d5f6ef73ca130f1dfa76ab1bbe6c58b104cf10` |
 | `lib/acute-injury-v213.js` | 11748 | `d0db59b8b86c57a442bfe3b1cd2e9fb50bbb59aa6980810415f4dbbe41985b7d` |
-| `lib/acute-opioid-rx-limit-v1393.js` | 7736 | `03fd4634f5202bf055e528741659b6b95660162ecd2c3ada56a7823083837020` |
+| `lib/acute-opioid-rx-limit-v1393.js` | 8269 | `eb099c86a1f401752f928d8934c0b98f00366bb32e3ea1b9ef846c1103ddff1a` |
 | `lib/adiposity-v270.js` | 3145 | `bafc017e4974f5c7180e5a2a6160c50fb8d837bccd6f45d0eaaf6bb6ada87ce9` |
 | `lib/af-stages-2023-v839.js` | 7872 | `9dad7e65b3ccc86ad22937b40e670e055da6855583cd1cc4bd188325e04c2fe7` |
 | `lib/ahlback-knee-oa-v480.js` | 3309 | `c7e76a2794a1764fc50dd4f467219d7b5f9a6f19c98a5bc241cd43a85a810239` |
@@ -755,7 +755,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/query-compute.js` | 18609 | `ba68703b5e8cae2b887d6db070f1a7384f2b90bef9a8b6e50ea5a5e6aaafb086` |
 | `lib/query-fill.js` | 32636 | `abd66d6a846a1a9211623ec57e8103f6ee35db9078c98adc886600b4d68e592a` |
 | `lib/quintero-ttts-v831.js` | 7169 | `8bd66030eb9be4038678fa55fed7bd436ac4d270b80ee4a39a3985be26909a48` |
-| `lib/rabies-state-lines-v1401.js` | 1657 | `cab5e3c774450bde2fed9c560f18d5f7f73d143c3c06001b453443766668a0f9` |
+| `lib/rabies-state-lines-v1401.js` | 2168 | `0395cb44c93b8ab3cf5b96f9c075f2f8991f1cd0fcd896160187f4a844c23cf5` |
 | `lib/rachs1-v541.js` | 11732 | `944dd6c129fc7be3fa30d47d26323eb6e18f01615a5698fafc18e9ddc3ab328e` |
 | `lib/radiology-v165.js` | 15548 | `c7b288226b44e662d8476d30159c3e7f68d46b55ea7f05104a71e16c1d2ffc7b` |
 | `lib/radmeasure-v253.js` | 7140 | `6e438d606d573be5431eb6ec9d0575353297d97ed8f255aa7afb6c7f86c7197c` |

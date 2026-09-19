@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Rabies, Texas: exposed pets.** The Texas line now adds 25 TAC 169.30: a pet
+  exposed to a rabid animal is confined 45 days if vaccinated, or 90 days if not. See
+  docs/spec-v1401.md.
+
 - **Mandatory overtime, New Jersey: the Department's rule.** A declared emergency
   or disaster now waives the reasonable-efforts step, and the answer names the four
   efforts and the one hour for dependent care (N.J.A.C. 8:43E-8). See
