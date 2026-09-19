@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Nurse-to-patient ratio check: California acute psychiatric hospitals.** Two new
+  unit types follow CDPH's emergency rule 22 CCR 71215.1 (from June 1, 2026): 1
+  licensed nurse per 6 adults and per 5 patients under 18. See docs/spec-v1396.md.
+
 - **Sepsis bundle clock: a New York line.** Choose New York to see what 10 NYCRR
   405.4 (Rory's Regulations) requires of a hospital's sepsis protocols. It is
   clear that the regulation sets no clock itself. See docs/spec-v1401.md.

@@ -16,6 +16,21 @@ test('nsr: CA med-surg at exactly 1:5 meets', () => {
   assert.equal(nsr({ state: 'CA', unit: 'medsurg', patients: '11', nurses: '2', notCounted: '0' }).short, 1);
 });
 
+test('nsr: CA acute psychiatric hospital -- 1:6 adults, 1:5 under 18, cited to 71215.1', () => {
+  const adult = nsr({ state: 'CA', unit: 'aph-adult', patients: '13', nurses: '3', notCounted: '1' });
+  assert.equal(adult.required, 3);
+  assert.equal(adult.short, 1);
+  assert.match(adult.band, /71215\.1\(h\)\(1\)/);
+  assert.match(adult.notes.join(' '), /no more than half/);
+  assert.match(adult.notes.join(' '), /180 days/);
+  assert.match(adult.averagingNote, /71215\.1 forbids averaging/);
+  const minor = nsr({ state: 'CA', unit: 'aph-minor', patients: '10', nurses: '2', notCounted: '0' });
+  assert.equal(minor.required, 2);
+  assert.equal(minor.short, 0);
+  assert.equal(nsr({ state: 'CA', unit: 'aph-minor', patients: '11', nurses: '2', notCounted: '0' }).short, 1);
+  assert.doesNotMatch(nsr({ state: 'CA', unit: 'psych', patients: '6', nurses: '1', notCounted: '0' }).notes.join(' '), /71215/);
+});
+
 test('nsr: New Jersey and Texas are not offered', () => {
   assert.equal(nsr({ state: 'NJ', patients: '4', nurses: '2', notCounted: '0' }).valid, false);
   assert.equal(nsr({ state: 'TX', patients: '4', nurses: '2', notCounted: '0' }).valid, false);

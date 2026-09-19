@@ -131,3 +131,22 @@ assaulted them. Output: complete, or the missing elements by name.
   (seven items, both signatures) is.
 - Still not built: California's acute psychiatric hospital emergency rule
   (22 CCR 71215.1), which was not read.
+
+## Built (2026-09-19): California acute psychiatric hospitals
+
+`nurse-staffing-ratio-check` now offers two more California unit types: acute psychiatric
+hospital adults (1:6) and patients under 18 (1:5). Source: 22 CCR 71215.1, CDPH emergency
+rulemaking DPH-19-001E (text dated May 7, 2026; OAL file 2026-0522-01EFP; effective June 1,
+2026), read on cdph.ca.gov.
+
+- **Changed from the plan:** the plan cited "71215.1(h)–(l)". The CDPH draft of December 1, 2025
+  (AFL 25-37) put the rule in 71215 and had an RN assessment cap of 24 patients per 12-hour shift
+  and 16 per 8-hour shift. The adopted text moved the rule to a new 71215.1, left 71215 for
+  Department of State Hospitals facilities only, and dropped the 24/16 cap. The tool follows the
+  adopted text and prints no assessment cap.
+- "Licensed nurse" includes RNs, LVNs, and psychiatric technicians (b). LVNs and psych techs
+  together may be no more than half (i). The tool takes no LVN count, so it states that limit
+  instead of checking it.
+- An emergency rule lasts no more than 180 days unless readopted. The citation ledger's next
+  review is November 28, 2026, and the tool tells the reader to check that the rule is still in
+  force.

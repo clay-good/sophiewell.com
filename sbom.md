@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `338f50ef97c18663`
-Generated: 2026-09-19T13:25:04.714Z
+Build ID: `a150b5cedd4a5478`
+Generated: 2026-09-19T13:38:11.437Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -547,7 +547,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/membranous-risk-v878.js` | 11351 | `882c36c07e46543e32f1114792c1124ee9f9ff6b384084fc0a8c221e7dd62062` |
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2530070 | `f11088804e95af52fe500d4cbbb5e10bc935341e7895c88c3a5f8e81158a3156` |
+| `lib/meta.js` | 2530206 | `a4f16d19db91833e7bd296a338b7b874eb79d5817906c0bd72eed1ed55631d33` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 18806 | `adc0fb95d01f23df9eb461cdbb6a6f48b5f3f3ff2f4cb2a8770903ce31d5f6cc` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -623,7 +623,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/num.js` | 16828 | `66b49428df4edc1fbf300ac2b67993caeebfc4b45726be935157e353c7b55816` |
 | `lib/nunley-vertullo-v455.js` | 3085 | `6f287a16c80ba5d73e2bb2c15989a7aa81d8335767f0a36e8c67c3203b357439` |
 | `lib/nurse-license-training-requirements-v1397.js` | 11586 | `1e6ff208f861b695f62373d71c61bfb006daec545056f4c2617ff39f07840d64` |
-| `lib/nurse-staffing-ratio-check-v1396.js` | 7583 | `c7f79d233ae40ecc6ccf4f6f9cc44245c74fc02cafbabf7fa9f1fa65b3d55ef5` |
+| `lib/nurse-staffing-ratio-check-v1396.js` | 9223 | `f4fc16e9f231cc085c5009e6a6638637836c3c1883d24fcf4e17f2a2b1dadca1` |
 | `lib/nursing-home-staffing-check-v1396.js` | 7012 | `67719344be3ceb150d15072fa7c9090cd559a52f53370236db44769614fa023e` |
 | `lib/nutrition-energy-v152.js` | 14446 | `924b5421f818147f64b10db410fca9892773a29a918cf40e2bacdb64c0dbb23a` |
 | `lib/nutrition-maternal-v208.js` | 13391 | `3f68589603d6c5be3866aa0200955bbff10fe8873d47a3a9a1068a0c5b5c4c87` |
@@ -1525,7 +1525,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/ntm-pulmonary-v827.js` | 2301 | `1433bceef43a9c3f5f6bc3d99d39f523d96f731271878589a52bbd30b7bf47b4` |
 | `mcp/adapters/nunley-vertullo-v455.js` | 1155 | `1b0419937c6fcc04382aa2c11914ac309a4e6d18e1c6010f876281a54efe34e8` |
 | `mcp/adapters/nurse-license-training-requirements-v1397.js` | 2803 | `3155c22ddcea26887002d5bc614a7a9eaa7406b0740e391a591c4da78254f1d3` |
-| `mcp/adapters/nurse-staffing-ratio-check-v1396.js` | 1392 | `fc16aba57300e4e85f0d5b94e4670d8a8ed51f5a8b99ac41063101e5afec4288` |
+| `mcp/adapters/nurse-staffing-ratio-check-v1396.js` | 1515 | `c025603dcc65e0714a62098741b1b4a8ad7a0487f7d6b18db166df15dbf4e743` |
 | `mcp/adapters/nursing-home-staffing-check-v1396.js` | 1726 | `97ba50ba8177aceb66b6adb392a4637246bc2feaeecbd24320aeaa5d560f96a8` |
 | `mcp/adapters/nutrition-energy-v152.js` | 5085 | `f8bca8ccfb11675d0db0d0d42d93d772810dd8ec9ad50e11abb5b2285b0450e1` |
 | `mcp/adapters/nutrition-maternal-v208.js` | 3106 | `2abbe0df4fdafa710561a7d7152043596474ee3fd173e342f466a2ef40d69b64` |
