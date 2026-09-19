@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **The page refuses what the agent refuses.** A browser test now drives every field
+  with a plausible range past it on the page and requires a refusal that names the
+  range. It found three liver tools that said "Complete the remaining fields" for a
+  value that had been entered. See docs/spec-v1407.md.
+
 - **Impossible ages, INRs, BMIs, and kidney values are refused.** Mapping the rest of
   the site's plausible ranges found 97 inputs that answered from an impossible value
   or asked again for one the reader had typed. The worst: a head-injury rule read
