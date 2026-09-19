@@ -8465,6 +8465,39 @@
       ],
       "tile": "strongyloides-presumptive",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "nurse to patient ratio",
+        "staffing ratio california",
+        "70217",
+        "icu ratio new york",
+        "nurse ratio"
+      ],
+      "tile": "nurse-staffing-ratio-check",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "workplace violence report",
+        "3342",
+        "cal osha workplace violence",
+        "hospital violence report 24 hours",
+        "type 2 workplace violence"
+      ],
+      "tile": "ca-wpv-report-clock",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "mandatory overtime nurse",
+        "forced overtime nurse",
+        "labor law 167",
+        "nurse overtime texas",
+        "mandatory overtime new jersey"
+      ],
+      "tile": "mandatory-overtime-check",
+      "audience": "clinicians"
     }
   ]
 }

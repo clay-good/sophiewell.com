@@ -700,3 +700,6 @@ carries the specific date that could change it.
 | npep-2025 | CDC nPEP guideline, MMWR Recomm Rep 2025;74(RR-1) | US | 2026-09-18 | erratum MMWR 2025;74(35) | 2027-06-01 |
 | doxy-pep | CDC doxy-PEP guideline, MMWR Recomm Rep 2024;73(RR-2) | US | 2026-09-18 | 2024 guideline | 2027-06-01 |
 | strongyloides-presumptive | CDC Domestic Refugee Health Guidance: Intestinal Parasites | US | 2026-09-18 | page last updated 2025-01-30 | 2027-06-01 |
+| nurse-staffing-ratio-check | 22 CCR 70217(a); 10 NYCRR 405.22(5) | CA, NY | 2026-09-18 | CA Register 2013, No. 11 | 2027-01-02 |
+| ca-wpv-report-clock | 8 CCR 3342(b), (g) | CA | 2026-09-18 | read on dir.ca.gov | 2027-01-02 |
+| mandatory-overtime-check | NY Labor Law 167; N.J.S.A. 34:11-56a33; TX HSC 258.002-258.005 | NY, NJ, TX | 2026-09-19 | NJ FindLaw text current as of 2024-01-01 | 2027-01-02 |

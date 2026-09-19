@@ -85,3 +85,31 @@ assaulted them. Output: complete, or the missing elements by name.
   **"1 short"**, because triage is not counted. A CA med-surg test at 1:5 exactly meets.
 - A test that NJ and TX are **not offered** by `nurse-staffing-ratio-check`.
 - Overtime: "chronic short staffing" returns **not permitted** in all three states.
+
+## Built, first three tiles (2026-09-19)
+
+| tile | source read |
+|---|---|
+| `ca-wpv-report-clock` | dir.ca.gov, 8 CCR 3342(b) and (g) |
+| `mandatory-overtime-check` | nysenate.gov, Labor Law 167; N.J.S.A. 34:11-56a33 (FindLaw, current as of January 1, 2024); official mirror, HSC 258 |
+| `nurse-staffing-ratio-check` | 22 CCR 70217(a) (Cornell LII copy, Register 2013, No. 11); 10 NYCRR 405.22(5) (Cornell LII) |
+
+- The ratios are the current ones after 70217's phase-ins: step-down 1:3, telemetry
+  1:4, and specialty care 1:4 from 2008, and medical/surgical 1:5 from 2005.
+- The count of nurses outside the ratio (triage RN, base-radio RN, a charge nurse
+  without patients) is **required**, with 0 allowed. A blank would silently count a
+  triage nurse and overstate staffing.
+- New York's ratio is by acuity: it covers patients the attending says need
+  intensive care, not beds, and the tile says so.
+- Not built yet: the California acute psychiatric hospital emergency rule
+  (71215.1), `nursing-home-staffing-check`, `staffing-committee-check`,
+  `tx-safe-harbor-decision-aid`, and `tx-workplace-violence-plan-audit`. Their sources are not read yet.
+- 3342(g)(1)(A) covers force by a patient or someone with a patient. Force by a
+  coworker, a stranger, or a personal acquaintance is reportable under (g) only if a
+  firearm or dangerous weapon is involved. The tile names the incident type either way.
+- Overtime: New York's good-faith voluntary effort (Labor Law 167(5)(d)) applies to
+  every exception; Texas asks it only for the unforeseen-emergency exception
+  (258.004(b)). New Jersey's section, as read, names one exception, so a disaster,
+  a declaration, or a procedure qualifies there only as an unforeseeable emergent
+  circumstance. The tile says so instead of assuming. The plan's N.J.A.C. 8:43E-8
+  details (four listed efforts, one hour for dependent care) were not read.

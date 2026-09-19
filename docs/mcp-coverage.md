@@ -8293,6 +8293,15 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/strongyloides-presumptive-v1401.js (spec-v1401: Strongyloides presumptive treatment or test — clinical disclaimer)
 - `strongyloides-presumptive`
 
+### lib/nurse-staffing-ratio-check-v1396.js (spec-v1396: hospital nurse-to-patient ratio check — clinical disclaimer)
+- `nurse-staffing-ratio-check`
+
+### lib/ca-wpv-report-clock-v1396.js (spec-v1396: California hospital workplace violence report deadline — clinical disclaimer)
+- `ca-wpv-report-clock`
+
+### lib/mandatory-overtime-check-v1396.js (spec-v1396: mandatory nurse overtime check — clinical disclaimer)
+- `mandatory-overtime-check`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

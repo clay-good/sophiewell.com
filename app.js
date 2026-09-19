@@ -779,6 +779,7 @@ import { renderers as RV1394 } from './views/group-v1394.js';
 import { renderers as RV1399 } from './views/group-v1399.js';
 import { renderers as RV1398 } from './views/group-v1398.js';
 import { renderers as RV1401 } from './views/group-v1401.js';
+import { renderers as RV1396 } from './views/group-v1396.js';
 import { renderers as RV164 } from './views/group-v164.js';
 import { renderers as RV165 } from './views/group-v165.js';
 import { renderers as RV166 } from './views/group-v166.js';
@@ -866,7 +867,7 @@ const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...R
   ...RV902,
   ...RV903,
   ...RV905,
-  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV960, ...RV1061, ...RV1062, ...RV1240, ...RV1241, ...RV1242, ...RV1243, ...RV1400, ...RV1389, ...RV1393, ...RV1397, ...RV1395, ...RV1390, ...RV1391, ...RV1392, ...RV1394, ...RV1399, ...RV1398, ...RV1401, ...RV63, ...RPALINT };
+  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV960, ...RV1061, ...RV1062, ...RV1240, ...RV1241, ...RV1242, ...RV1243, ...RV1400, ...RV1389, ...RV1393, ...RV1397, ...RV1395, ...RV1390, ...RV1391, ...RV1392, ...RV1394, ...RV1399, ...RV1398, ...RV1401, ...RV1396, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -1178,6 +1179,11 @@ const UTILITIES = [
   { id: 'npep-2025', name: 'Non-Occupational HIV PEP Decision (CDC 2025)', group: 'J', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'doxy-pep', name: 'Doxycycline PEP for Bacterial STI Prevention (CDC 2024)', group: 'J', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'strongyloides-presumptive', name: 'Strongyloides: Presumptive Treatment or Test (CDC Refugee Guidance)', group: 'J', audiences: ['clinicians', 'educators'], clinical: true },
+  // spec-v1396: nurse staffing (State & Coverage Reference). views/group-v1396.js,
+  // lib/<id>-v1396.js, mcp/adapters/<id>-v1396.js.
+  { id: 'nurse-staffing-ratio-check', name: 'Hospital Nurse-to-Patient Ratio Check (CA Title 22, NY ICU)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ca-wpv-report-clock', name: 'California Hospital Workplace Violence Report Deadline (8 CCR 3342)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'mandatory-overtime-check', name: 'Can a Nurse Be Required to Work Overtime? (NY, NJ, TX)', group: 'M', audiences: ['clinicians', 'educators'], clinical: true },
   // Group K (Lab Reference): removed in spec-v29 wave 29-2 (lab-adult,
   // lab-peds, tdm-levels, tox-levels are pure reference-range tables).
   // Group L: Forms & Numbers Literacy (removed in spec-v29 wave 29-2:

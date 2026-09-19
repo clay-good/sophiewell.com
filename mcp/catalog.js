@@ -836,6 +836,9 @@ import caValleyFeverTestPromptV1398 from './adapters/ca-valley-fever-test-prompt
 import npep2025V1401 from './adapters/npep-2025-v1401.js';
 import doxyPepV1401 from './adapters/doxy-pep-v1401.js';
 import strongyloidesPresumptiveV1401 from './adapters/strongyloides-presumptive-v1401.js';
+import nurseStaffingRatioCheckV1396 from './adapters/nurse-staffing-ratio-check-v1396.js';
+import caWpvReportClockV1396 from './adapters/ca-wpv-report-clock-v1396.js';
+import mandatoryOvertimeCheckV1396 from './adapters/mandatory-overtime-check-v1396.js';
 import ticiV960 from './adapters/tici-v960.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
@@ -1699,6 +1702,9 @@ const ADAPTER_MODULES = [
   ['npep-2025-v1401', npep2025V1401],
   ['doxy-pep-v1401', doxyPepV1401],
   ['strongyloides-presumptive-v1401', strongyloidesPresumptiveV1401],
+  ['nurse-staffing-ratio-check-v1396', nurseStaffingRatioCheckV1396],
+  ['ca-wpv-report-clock-v1396', caWpvReportClockV1396],
+  ['mandatory-overtime-check-v1396', mandatoryOvertimeCheckV1396],
   ['tici-v960', ticiV960],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],

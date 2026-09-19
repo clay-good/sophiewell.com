@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:6d83f04f-fcb2-51fb-840b-ac01cb187f58",
+  "serialNumber": "urn:uuid:43db9c4f-a3e0-5ae1-8445-9ede7246cc68",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-19T05:49:33.762Z",
+    "timestamp": "2026-09-19T07:25:31.402Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1778 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1781 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "14949e53e4002a1de023574495b332c1a0be5e206074ca9faf106efa890d81e6"
+          "content": "eda7256bf00b8af88b9a89ace879c857e0d276ccee5de2a1d88bc4c01e8aca57"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "114443"
+          "value": "114671"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "88c818c3aa96886dd1b13b67b70d825e3fe1e5d503cdf7622734c9ac0b6602e9"
+          "content": "264d2be175bb3d0f07cef7911e104a05d4a7ed94aa417a5b2954835ba292ce33"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "530438"
+          "value": "531172"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c464e583af332e0b2201a1bd9ddca0aba80ed7c2f1af101b4526f6cbff32f73b"
+          "content": "43f68a572509f341b9581d2294c6a548d79be19130996a190364c172a778a7e7"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "221474"
+          "value": "221876"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6dfb68f66e39929c7b21a463c7abaa3de845e6062a9e35d9573c50334b0d7edd"
+          "content": "a955d9bc029a5dea0437b3b60bc1e4f254148cfec3c7fb600fbd945cbb5275b1"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "101386"
+          "value": "101653"
         }
       ]
     },
@@ -2614,6 +2614,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4154"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/ca-wpv-report-clock-v1396.js",
+      "type": "file",
+      "name": "lib/ca-wpv-report-clock-v1396.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b4edda041362e26f8411b809251c30480c91e1a6750d97259f6f567f0ae6c49f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5210"
         }
       ]
     },
@@ -10283,6 +10304,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/mandatory-overtime-check-v1396.js",
+      "type": "file",
+      "name": "lib/mandatory-overtime-check-v1396.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b396ee8c3105e65fbd4b38cb947aeca9d98146cbae0d7867b6813b0f1c06e32c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7221"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/manning-ibs-v695.js",
       "type": "file",
       "name": "lib/manning-ibs-v695.js",
@@ -10772,7 +10814,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3586fd975c960e2b96089061f20bcc341e6fd202ecafbb3f5641b095a984d94c"
+          "content": "0933142e5b5d6e87485c3ac75d2c8b95d0a4f19d9819202778da1b17abfd80ca"
         }
       ],
       "properties": [
@@ -10782,7 +10824,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2523915"
+          "value": "2526117"
         }
       ]
     },
@@ -12358,6 +12400,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "6746"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/nurse-staffing-ratio-check-v1396.js",
+      "type": "file",
+      "name": "lib/nurse-staffing-ratio-check-v1396.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c7f79d233ae40ecc6ccf4f6f9cc44245c74fc02cafbabf7fa9f1fa65b3d55ef5"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7583"
         }
       ]
     },
@@ -21791,6 +21854,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ca-wpv-report-clock-v1396.js",
+      "type": "file",
+      "name": "mcp/adapters/ca-wpv-report-clock-v1396.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "42f94ae4e87bb087920993ea8985af81ea3665ee0e594a6e7cd75ae0d493ac8c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1612"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/cac-agatston-v668.js",
       "type": "file",
       "name": "mcp/adapters/cac-agatston-v668.js",
@@ -29099,6 +29183,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/mandatory-overtime-check-v1396.js",
+      "type": "file",
+      "name": "mcp/adapters/mandatory-overtime-check-v1396.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1e65aa0c7cf7724efc5bbce06140177e27705c0687f7872b183a744ac4b698a0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1148"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/manning-ibs-v695.js",
       "type": "file",
       "name": "mcp/adapters/manning-ibs-v695.js",
@@ -31111,6 +31216,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1906"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/nurse-staffing-ratio-check-v1396.js",
+      "type": "file",
+      "name": "mcp/adapters/nurse-staffing-ratio-check-v1396.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fc16aba57300e4e85f0d5b94e4670d8a8ed51f5a8b99ac41063101e5afec4288"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1392"
         }
       ]
     },
@@ -37778,7 +37904,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "798a9b31d26e658ac82b32bca6ebb26e1c87b47d8b4e4998bbc3743b0c9f2d51"
+          "content": "789fa91bab7fcccb56286a23471ba231078f80500fb115f9d8c35efd7c5be84d"
         }
       ],
       "properties": [
@@ -37788,7 +37914,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "98729"
+          "value": "99178"
         }
       ]
     },
@@ -39217,6 +39343,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "8949"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1396.js",
+      "type": "file",
+      "name": "views/group-v1396.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d08890006b646b666d3a811d4203ca84b29cbebc912f0350971c98cef1b4dae5"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5799"
         }
       ]
     },
@@ -70610,6 +70757,7 @@
         "urn:sophiewell:file:source:lib/ca-safe-surrender-v1394.js",
         "urn:sophiewell:file:source:lib/ca-surrogate-decisionmaker-v1391.js",
         "urn:sophiewell:file:source:lib/ca-valley-fever-test-prompt-v1398.js",
+        "urn:sophiewell:file:source:lib/ca-wpv-report-clock-v1396.js",
         "urn:sophiewell:file:source:lib/cac-agatston-v668.js",
         "urn:sophiewell:file:source:lib/cad-rads-v372.js",
         "urn:sophiewell:file:source:lib/cage-aid-v738.js",
@@ -70975,6 +71123,7 @@
         "urn:sophiewell:file:source:lib/mallampati-v810.js",
         "urn:sophiewell:file:source:lib/malt-ipi-v700.js",
         "urn:sophiewell:file:source:lib/mandated-report-router-v1395.js",
+        "urn:sophiewell:file:source:lib/mandatory-overtime-check-v1396.js",
         "urn:sophiewell:file:source:lib/manning-ibs-v695.js",
         "urn:sophiewell:file:source:lib/mapi-asthma-v573.js",
         "urn:sophiewell:file:source:lib/marsh-oberhuber-v423.js",
@@ -71074,6 +71223,7 @@
         "urn:sophiewell:file:source:lib/num.js",
         "urn:sophiewell:file:source:lib/nunley-vertullo-v455.js",
         "urn:sophiewell:file:source:lib/nurse-license-training-requirements-v1397.js",
+        "urn:sophiewell:file:source:lib/nurse-staffing-ratio-check-v1396.js",
         "urn:sophiewell:file:source:lib/nutrition-energy-v152.js",
         "urn:sophiewell:file:source:lib/nutrition-maternal-v208.js",
         "urn:sophiewell:file:source:lib/nutrition-v276.js",
@@ -71489,6 +71639,7 @@
         "urn:sophiewell:file:source:views/group-v1393.js",
         "urn:sophiewell:file:source:views/group-v1394.js",
         "urn:sophiewell:file:source:views/group-v1395.js",
+        "urn:sophiewell:file:source:views/group-v1396.js",
         "urn:sophiewell:file:source:views/group-v1397.js",
         "urn:sophiewell:file:source:views/group-v1398.js",
         "urn:sophiewell:file:source:views/group-v1399.js",
@@ -72340,6 +72491,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/ca-safe-surrender-v1394.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ca-surrogate-decisionmaker-v1391.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ca-valley-fever-test-prompt-v1398.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/ca-wpv-report-clock-v1396.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cac-agatston-v668.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cad-rads-v372.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cage-aid-v738.js",
@@ -72688,6 +72840,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/mallampati-v810.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/malt-ipi-v700.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mandated-report-router-v1395.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/mandatory-overtime-check-v1396.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/manning-ibs-v695.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mapi-asthma-v573.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/marsh-oberhuber-v423.js",
@@ -72784,6 +72937,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/ntm-pulmonary-v827.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nunley-vertullo-v455.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nurse-license-training-requirements-v1397.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/nurse-staffing-ratio-check-v1396.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nutrition-energy-v152.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nutrition-maternal-v208.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nutrition-v276.js",
@@ -73204,7 +73358,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "6d83f04ffcb261fb"
+      "value": "43db9c4fa3e03ae1"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -73216,7 +73370,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2592"
+      "value": "2599"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

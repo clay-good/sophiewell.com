@@ -6,6 +6,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Nurse staffing and workplace violence.** Whether one hospital unit meets California's
+  22 CCR 70217 ratios (17 unit types, no averaging, the ED triage RN not counted)
+  or New York's 1 RN per 2 intensive-care patients, and by how many nurses it
+  falls short; and whether a California hospital must report a workplace
+  violence incident to Cal/OSHA within 24 or 72 hours (8 CCR 3342(g)); and whether a nurse may be required to work overtime in New
+  York, New Jersey, or Texas (never for chronic short staffing). See docs/spec-v1396.md.
+
 - **Prevention after exposure, and arrival screening.** Whether CDC's 2025
   guideline recommends nonoccupational HIV PEP (including a suppressed source and
   a person on PrEP) with the regimen and follow-up; CDC's 2024 doxy-PEP
