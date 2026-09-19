@@ -476,10 +476,13 @@ reassuring side of the threshold where the example never goes (spec-v1092).
   fields across sixty-eight** of the catalog's entries
   (`scripts/probe-envelope-unbounded.mjs`), over eleven waves.
 
-  The probe's current reach is 395 fields mapped to one of 36 envelopes; 367 are
+  The probe's current reach is 461 fields mapped to one of 36 envelopes; 430 are
   testable against a worked example inside that envelope, none
-  is mis-mapped, and 28 carry no usable example. **Zero is a statement about
-  those 367**, not about the catalog. Spec-v1251 removed one unit-invariant LIPI
+  is mis-mapped, and 31 carry no usable example. **Zero is a statement about
+  those 430**, not about the catalog, and it was a statement about 367 until
+  [spec-v1404](spec-v1404.md) found the map had **no row for weight at all**:
+  adding one surfaced 29 fields in 27 of the catalog's entries, all now fixed.
+  Spec-v1251 removed one unit-invariant LIPI
   field that the probe had mapped only because its metadata named example units.
 
   The waves: [spec-v1224](spec-v1224.md) took the seven ten-year

@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **An impossible body weight is refused.** A weight ten times the plausible
+  ceiling produced answers in 21 tools, including a Crohn's disease activity score of "clinical
+  remission" and warfarin doses of hundreds of milligrams a day. Six more asked for
+  a weight the reader had typed as if it were blank. See docs/spec-v1404.md.
+
 - **Energy equations: impossible heights and weights are refused.** Mifflin-St Jeor,
   Harris-Benedict, Katch-McArdle, Penn State, and Ireton-Jones computed from a 432 cm
   height (170 typed with the unit left on inches) or an 800 kg weight. They now check

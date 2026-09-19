@@ -72,6 +72,9 @@ const MAP = [
   ['rr', /respiratory rate/i, /\/min|breaths/i],
   ['platelets', /platelet/i, /10\^?9|10⁹|10\^?3|10³|thousand/i],
   ['wbc', /white (cell|blood)|\bWBC\b|leu[ck]ocyte/i, /10\^?9|10⁹|10\^?3|10³|thousand/i],
+  // spec-v1404: weight was never mapped, and 29 fields answered from a 5,000 kg weight or asked
+  // for one that had been typed. The unit must be kg exactly: a lb field is converted first.
+  ['weightKg', /\bweight\b/i, /^kg$/i],
 ];
 
 function candidates() {
