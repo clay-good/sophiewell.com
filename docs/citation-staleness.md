@@ -676,7 +676,7 @@ carries the specific date that could change it.
 | ca-surrogate-decisionmaker | Prob. Code 4711, 4712, 4715 | CA | 2026-09-18 | AB 2338 (2022) | 2027-01-02 |
 | tx-surrogate-consent-hierarchy | HSC 313.004; 166.039 | TX | 2026-09-18 | read on the official mirror | 2027-06-01 |
 | ny-health-care-proxy-check | PHL 2980, 2981 | NY | 2026-09-18 | read on nysenate.gov | 2027-01-02 |
-| ny-molst-checklist-router | NYSDOH MOLST checklists (June 2025 revision) | NY | 2026-09-18 | form and checklists revised June 2025 | 2027-01-02 |
+| ny-molst-checklist-router | NYSDOH MOLST checklists and form DOH-5003 (06/25) | NY | 2026-09-19 | form and checklists revised June 2025 | 2027-01-02 |
 | tx-ooh-dnr-validity | HSC 166.003, 166.082-166.092 | TX | 2026-09-18 | read on the official mirror | 2027-06-01 |
 | tx-in-hospital-dnr-pathway | HSC 166.203-166.205 | TX | 2026-09-18 | SB 11 (2019) | 2027-06-01 |
 | ny-maid-timeline | PHL 2899-e, 2899-f | NY | 2026-09-18 | regulations proposed, not final; high volatility | 2026-12-01 |
@@ -707,4 +707,4 @@ carries the specific date that could change it.
 | tx-workplace-violence-plan-audit | HSC 331.002-331.004 | TX | 2026-09-19 | SB 240 (2023) | 2027-06-01 |
 | tx-safe-harbor-decision-aid | Occ. Code 303.005; 22 TAC 217.20 | TX | 2026-09-19 | 217.20 as amended 2019-10-22 (Cornell LII copy) | 2027-06-01 |
 | nursing-home-staffing-check | NY PHL 2895-b; N.J.S.A. 30:13-18; CA HSC 1276.65 | NY, NJ, CA | 2026-09-19 | NJ FindLaw text current as of 2024-01-01 | 2027-01-02 |
-| reportable-condition-urgency | CA 17 CCR 2500 list (June 2025); TX DSHS Notifiable Conditions 2026 | CA, TX | 2026-09-19 | TX list expires 2026-12-31 and is reissued each January | 2027-01-02 |
+| reportable-condition-urgency | CA 17 CCR 2500 list (June 2025); TX DSHS Notifiable Conditions 2026; NYSDOH DOH-389 requirements #8218 (08/26), 10 NYCRR 2.10; NJDOH N.J.A.C. 8:57-2.2-2.4 summary (January 2026) | CA, TX, NY, NJ | 2026-09-19 | TX list expires 2026-12-31 and is reissued each January | 2027-01-02 |

@@ -6,6 +6,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **New York MOLST: the 90-day review.** The MOLST router now gives the form's
+  review cadence (at least every 90 days, and on a move or a change) and says a
+  MOLST past its review is still valid. See docs/spec-v1391.md.
+
+- **Reportable conditions: New Jersey.** New Jersey's list (NJDOH summary of
+  N.J.A.C. 8:57-2.2 to 2.4, January 2026) is added: immediately by phone, or by
+  the next business day. See docs/spec-v1395.md.
+
+- **Reportable conditions: New York.** New York's list (DOH-389 requirements,
+  August 2026) is added: diseases printed in red bold are phoned in now, and the
+  rest are due within 24 hours under 10 NYCRR 2.10. See docs/spec-v1395.md.
+
 - **Prenatal screening: New York in full.** New York now shows syphilis at 28 to 32
   weeks and at delivery, hepatitis B prenatally and within 24 to 48 hours at
   delivery, and the 12-hour expedited HIV test at delivery. See docs/spec-v1394.md.

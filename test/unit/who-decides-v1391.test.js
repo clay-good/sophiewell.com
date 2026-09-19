@@ -111,3 +111,12 @@ test('ihd: undated is invalid; an unassessed concurrence is incomplete', () => {
   assert.equal(r.verdict, null);
   assert.match(r.band, /Still needed: concurred in by another physician/);
 });
+
+// spec-v1391: the 90-day review from DOH-5003 Section I; a lapsed review does not void the form.
+test('molst: review at least every 90 days; lapsed review still valid; I/DD review by a physician only', () => {
+  const r = molst({ age: 'adult', dd: 'no', capacity: 'yes' });
+  assert.match(r.reviewNote, /at least every 90 days/);
+  assert.match(r.reviewNote, /still valid and must be followed/);
+  assert.doesNotMatch(r.reviewNote, /only a physician/);
+  assert.match(molst({ age: 'adult', dd: 'yes', capacity: 'no', proxy: 'no' }).reviewNote, /only a physician/);
+});

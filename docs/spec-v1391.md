@@ -117,3 +117,12 @@ Added by SB 11 (2019); low volatility.
 - The MOLST 90-day review cadence in the plan was not confirmed (the protocol page
   blocked the fetch). The tile prints the Department's review-on-transition rule instead.
 - New Jersey is absent, as planned; the NY and CA tiles say why in one line.
+
+## Built (2026-09-19): the MOLST 90-day review
+
+The 90-day cadence the plan listed is confirmed. health.ny.gov served the MOLST form itself, DOH-5003
+(06/25), to a browser user agent. Its Section I: a physician, NP, or PA reviews the MOLST at least every
+90 days, and also on a move to another location, a major change in health status, or a change of mind.
+`ny-molst-checklist-router` now says so, and adds two things the plan did not have: a MOLST past its
+90-day review **stays valid and must be followed**, and for a patient with I/DD **only a physician**
+may do the review.

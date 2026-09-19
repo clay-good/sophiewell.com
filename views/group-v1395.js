@@ -173,16 +173,18 @@ export const renderers = {
   },
 
   'reportable-condition-urgency'(root) {
-    note(root, 'California or Texas. Choose the state, then the condition from that state\'s list.');
+    note(root, 'California, Texas, New York, or New Jersey. Choose the state, then the condition from that state\'s list.');
     selectField(root, 'State', 'rc-state', RC.RC_STATES, '-- choose --');
     selectField(root, 'California condition', 'rc-ca', RC.CA_CONDITIONS, '-- choose --');
     selectField(root, 'Texas condition', 'rc-tx', RC.TX_CONDITIONS, '-- choose --');
+    selectField(root, 'New York condition', 'rc-ny', RC.NY_CONDITIONS, '-- choose --');
+    selectField(root, 'New Jersey condition', 'rc-nj', RC.NJ_CONDITIONS, '-- choose --');
     timeField(root, 'Identified', 'rc-time');
 
-    const ids = ['rc-state', 'rc-ca', 'rc-tx', 'rc-time'];
+    const ids = ['rc-state', 'rc-ca', 'rc-tx', 'rc-ny', 'rc-nj', 'rc-time'];
     const o = out(); root.appendChild(o);
     wire(ids, () => safe(o, () => {
-      const r = RC.reportableConditionUrgency({ state: val('rc-state'), caCondition: val('rc-ca'), txCondition: val('rc-tx'), identified: val('rc-time') });
+      const r = RC.reportableConditionUrgency({ state: val('rc-state'), caCondition: val('rc-ca'), txCondition: val('rc-tx'), nyCondition: val('rc-ny'), njCondition: val('rc-nj'), identified: val('rc-time') });
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [
         { text: r.band, cls: r.abnormal ? 'warn' : null },

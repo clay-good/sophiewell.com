@@ -158,3 +158,37 @@ mirror (CCP 56A.303, HSC 323.004, Family Code 32.003).
   213(a), effective January 3, 2024) "is not yet available". The text shown predates it, so New
   Jersey waits for the current text.
 
+## Built (2026-09-19): `reportable-condition-urgency`, New York
+
+The note above is superseded for New York. health.ny.gov serves its files to a browser user agent,
+so the Department's *Communicable Disease Reporting Requirements* (#8218, dated 08/26, the
+instructions for form DOH-389) was read.
+
+- The page says diseases "listed in red bold type" are reported immediately by phone. Plain text
+  loses color, so the red entries were read from the PDF's text colors (CMYK 0/1/1/0): 31
+  diseases, plus syphilis, whose footnote narrows the phone report. They include measles, diphtheria, meningococcal disease, current tuberculosis, hepatitis A in a food
+  handler, encephalitis, foodborne illness, and an animal bite for which rabies prophylaxis is given.
+- Every other listed disease is due within 24 hours of first seeing the case (10 NYCRR 2.10).
+- Footnotes kept: notify the local health department before starting rabies prophylaxis; syphilis
+  goes by phone for a nontreponemal titer of 1:16 or more, any positive prenatal or delivery test, or
+  primary or secondary stage; Creutzfeldt-Jakob disease and other TSEs also go to the State registry
+  on suspicion; HIV and AIDS go on form DOH-4189. Two entries the form marks "proposed addition to
+  list" (vancomycin-resistant *S. aureus*, vibriosis) are labeled so.
+- New Jersey is still not offered.
+
+## Built (2026-09-19): `reportable-condition-urgency`, New Jersey
+
+nj.gov served the Department's *Communicable Disease Reporting Requirements for Health Care
+Professionals & Administrators* (January 2026), which cites N.J.A.C. 8:57-2.2 to 2.4, the numbering
+after the 2024 amendment. The rule text is on LexisNexis and was not read; the tool names its source
+as the Department's summary.
+
+- Two classes: **immediately by telephone** (21 diseases, plus an outbreak of any communicable
+  disease, bioterrorism, or a potential public health emergency) and **by the next business day** to
+  the local health department by eCR or CDRSS. Chlamydia, influenza other than pediatric deaths, and
+  Lyme disease are eCR only. STDs and tuberculosis go to NJDOH via CDRSS; HIV by electronic lab report.
+- **Changed from the plan:** the plan's "18 immediately by phone (including pertussis, hepatitis A,
+  Hib, measles); the rest within 24 h" was the pre-2024 rule. Under the current summary pertussis is
+  next business day, while hepatitis A, invasive *H. influenzae*, and measles stay immediate.
+- "By the next business day" is read as the same clock time on the next business day, the tool's
+  earliest-reading rule, and the answer says so.
