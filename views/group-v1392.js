@@ -75,6 +75,7 @@ export const renderers = {
       if (!r.valid) { note(o, r.message); return; }
       answer(o, r, r.abnormal);
       list(o, r.caveats);
+      note(o, r.expiryNote);
       note(o, r.voluntaryNote);
       note(o, r.postureNote);
     }));
@@ -94,6 +95,7 @@ export const renderers = {
       answer(o, r, r.abnormal);
       list(o, r.lines);
       note(o, r.secondNote);
+      note(o, r.residencyNote);
       note(o, r.rescindNote);
       note(o, r.postureNote);
     }));

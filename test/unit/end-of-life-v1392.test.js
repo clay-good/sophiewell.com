@@ -77,3 +77,21 @@ test('ca-eoloa: no sunset -- SB 403 repealed 443.215', () => {
   assert.match(note, /SB 403/);
   assert.doesNotMatch(note, /was not read/);
 });
+
+// spec-v1392: the NYSDOH FAQ's 30-day expiry appears once a prescription is written, with no date computed.
+test('ny-maid: 30-day expiry note from the FAQ once prescribed', () => {
+  const steps = { oral: '2026-09-01', written: '2026-09-02', attending: '2026-09-02', consulting: '2026-09-05', mentalHealth: '2026-09-06', witness1: 'ok', witness2: 'ok' };
+  assert.equal(ny(steps).expiryNote, undefined);
+  const r = ny({ ...steps, prescribed: '2026-09-08T14:00' });
+  assert.match(r.expiryNote, /within 30 days it expires/);
+  assert.match(r.expiryNote, /without restarting/);
+});
+
+// spec-v1392: the four residency proofs of 26:16-11.
+test('nj-maid: residency note lists the 26:16-11 proofs', () => {
+  const r = nj({ firstOral: '2026-09-01T10:00', written: '2026-09-03T10:00', secondOral: '2026-09-16T10:00' });
+  assert.match(r.residencyNote, /non-driver ID/);
+  assert.match(r.residencyNote, /voter registration/);
+  assert.match(r.residencyNote, /income tax return/);
+  assert.match(r.residencyNote, /26:16-11/);
+});

@@ -679,8 +679,8 @@ carries the specific date that could change it.
 | ny-molst-checklist-router | NYSDOH MOLST checklists and form DOH-5003 (06/25) | NY | 2026-09-19 | form and checklists revised June 2025 | 2027-01-02 |
 | tx-ooh-dnr-validity | HSC 166.003, 166.082-166.092 | TX | 2026-09-18 | read on the official mirror | 2027-06-01 |
 | tx-in-hospital-dnr-pathway | HSC 166.203-166.205 | TX | 2026-09-18 | SB 11 (2019) | 2027-06-01 |
-| ny-maid-timeline | PHL 2899-e, 2899-f | NY | 2026-09-18 | regulations proposed, not final; high volatility | 2026-12-01 |
-| nj-maid-timeline | N.J.S.A. 26:16-10 | NJ | 2026-09-18 | FindLaw text current as of 2024-01-01; waiver bills pending | 2027-01-02 |
+| ny-maid-timeline | PHL 2899-e, 2899-f; NYSDOH MAID FAQ (August 2026) | NY | 2026-09-19 | regulations proposed, not final; high volatility | 2026-12-01 |
+| nj-maid-timeline | N.J.S.A. 26:16-10, 26:16-11 | NJ | 2026-09-18 | FindLaw text current as of 2024-01-01; waiver bills pending | 2027-01-02 |
 | ca-eoloa-timeline | HSC 443.2, 443.3 | CA | 2026-09-19 | SB 380 (2021); SB 403 (2025) repealed the 443.215 sunset | 2027-01-02 |
 | tx-ethics-review-timeline | HSC 166.046 | TX | 2026-09-18 | 2023 amendments (25 days) | 2027-06-01 |
 | nj-death-religious-exemption | N.J.S.A. 26:6A-5 | NJ | 2026-09-18 | FindLaw text current as of 2024-01-01 | 2027-01-02 |

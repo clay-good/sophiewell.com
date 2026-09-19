@@ -6,6 +6,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **New Jersey aid in dying: residency proofs.** The timeline now lists the four
+  proofs of residency N.J.S.A. 26:16-11 accepts. See docs/spec-v1392.md.
+
+- **New York aid in dying: the 30-day expiry.** Once a prescription is written,
+  the timeline states the Department's FAQ: unfilled for 30 days it expires, and it
+  can be re-issued without restarting. See docs/spec-v1392.md.
+
 - **Prenatal screening: New Jersey HIV.** New Jersey now shows HIV early and in the
   third trimester, and an expedited test at delivery without a third-trimester
   result (N.J.A.C. 8:61). See docs/spec-v1394.md.

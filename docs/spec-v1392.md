@@ -117,3 +117,18 @@ The sunset question is settled. SB 403 (Stats. 2025, ch. 315, approved October 3
 section 443.215 and its January 1, 2031 end date; leginfo's bill history and the current text of Part
 1.85 (443 through 443.22, no 443.215) were read. `ca-eoloa-timeline` now says the Act has no end
 date instead of saying the sunset was not read.
+
+## Update (2026-09-19): the New York 30-day expiry
+
+The Department's Medical Aid in Dying FAQ (health.ny.gov, revised August 2026) loaded with a browser
+user agent. It says a prescription the patient does not fill within 30 days expires, and the attending
+may re-issue it without restarting the process. `ny-maid-timeline` now states this once a prescription
+is written. It computes no expiry date, because the FAQ does not say what the 30 days run from.
+
+## Update (2026-09-19): New Jersey residency
+
+N.J.S.A. 26:16-11 was read (FindLaw, current as of January 1, 2024). No request is granted until the
+patient gives the attending one of four proofs of residency: an MVC driver's license or non-driver ID,
+proof of voter registration, a New Jersey resident income tax return for the most recent year, or
+another government record the attending reasonably believes shows current residency.
+`nj-maid-timeline` now lists them. It does not ask which was given.
