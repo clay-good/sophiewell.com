@@ -14,6 +14,34 @@ The Ireton-Jones worked example relied on the blank sex (1823 = 1784 − 605 + 4
 names the sex and the ventilated form explicitly. The page preselects both, so its answers are
 unchanged; the agent tool is asked.
 
+## The energy equations had no envelope
+
+Checking the Ireton-Jones height on the page, a height of 170 typed with the unit left on inches
+(432 cm) produced *"BMI 4.3"* and an energy figure. No function in `lib/nutrition-energy-v152.js`
+checked an envelope: Mifflin-St Jeor, Harris-Benedict, Katch-McArdle, Penn State, and Ireton-Jones
+all computed from a 432 cm height or an 800 kg weight. `probe-envelope-unbounded` could not see it,
+because the Ireton-Jones example uses the ventilated form, which has no height. Each now checks the
+`weightKg` and `heightM` envelopes `lib/bounds.js` already declares, after its own missing-value
+branch.
+
+## An optional sex, answered as one sex
+
+The Ireton-Jones sex default had two more copies, found by running each worked example with the sex
+blank, male, and female:
+
+| tool | blank read as | what it moved |
+|---|---|---|
+| `ewgsop2` | male | the grip, mass, and index cutoffs: a woman's 20 kg grip was "low strength" against 27 instead of normal against 16 |
+| `masld-criteria` | female | the HDL cut (50, not 40) and the MetALD alcohol band (140–350 g/week, not 210–420) |
+
+Both now ask for a blank sex (EWGSOP2 after its own range checks), and both adapters mark `sex`
+required. The page preselects a sex, so its answers are unchanged. The tests had leaned on the
+defaults and now pass the sex each call was silently getting.
+
+`test/unit/optional-sex-not-defaulted.test.js` is the gate: for every tool whose adapter leaves `sex`
+optional (17 today), where male and female answer differently, a blank must not answer exactly like
+either. It fails on the old EWGSOP2 code, and it fails if its reach falls under 10 tools.
+
 ## The finder
 
 `scripts/probe-unsupplied-input.mjs` compares the keys each compute function reads with the

@@ -6,6 +6,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Energy equations: impossible heights and weights are refused.** Mifflin-St Jeor,
+  Harris-Benedict, Katch-McArdle, Penn State, and Ireton-Jones computed from a 432 cm
+  height (170 typed with the unit left on inches) or an 800 kg weight. They now check
+  the ranges the site already declares. See docs/spec-v1403.md.
+
+- **EWGSOP2 and MASLD: a blank sex is asked.** Through the agent tool a blank sex
+  read as male on EWGSOP2 (so a woman's grip met the male cutoff) and as female on
+  MASLD (the HDL cut and the MetALD alcohol band). Both now ask, and a new test
+  fails any optional sex that answers as one sex. See docs/spec-v1403.md.
+
 - **Ireton-Jones: the obesity and sex terms are asked.** A blank height read as
   "not obese" and dropped the obesity term (609 kcal/day). For an agent, a blank sex
   read as male (244 kcal/day more). Each form now asks for the value its equation

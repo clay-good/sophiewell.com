@@ -13,7 +13,7 @@ export default [
     fields: [
       { dom: 'masld-steatosis', arg: 'hepaticSteatosis', kind: 'boolean', required: false, label: 'Hepatic steatosis present' },
       { dom: 'masld-othercause', arg: 'otherCause', kind: 'boolean', required: false, label: 'Specific other cause identified' },
-      { dom: 'masld-sex', arg: 'sex', kind: 'enum', required: false, label: 'Sex', values: ['female', 'male'] },
+      { dom: 'masld-sex', arg: 'sex', kind: 'enum', required: true, label: 'Sex', values: ['female', 'male'] },
       { dom: 'masld-ancestry', arg: 'ancestry', kind: 'enum', required: false, label: 'Ancestry for BMI and waist cuts', values: ['european', 'south-asian-chinese', 'japanese'] },
       { dom: 'masld-bmi', arg: 'bmi', kind: 'number', required: false, label: 'Body mass index' },
       { dom: 'masld-waist', arg: 'waistCm', kind: 'number', required: false, label: 'Waist circumference, cm' },

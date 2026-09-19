@@ -18,7 +18,7 @@ test('ewgsop2: strength is the entry criterion and nothing substitutes for it', 
   assert.match(massOnly.band, /Muscle strength is the entry criterion/);
   const performanceOnly = e({ sex: 'male', gripStrength: 35, gaitSpeed: 0.5 });
   assert.equal(performanceOnly.stage, 'not-met');
-  for (const input of [{}, { sex: 'male', gripStrength: 24 }]) {
+  for (const input of [{ sex: 'male' }, { sex: 'male', gripStrength: 24 }]) {
     assert.match(e(input).strengthFirstNote, /Strength comes first, not mass/);
   }
 });
@@ -42,39 +42,49 @@ test('ewgsop2: every cutoff is sex-specific', () => {
   assert.match(e({ sex: 'female' }).sexNote, /below 16 kg/);
   assert.match(e({ sex: 'male' }).sexNote, /below 27 kg/);
   // Anything that is not 'female' reads as male.
-  assert.equal(e({}).sex, 'male');
+  assert.equal(e({ sex: 'male' }).sex, 'male');
 });
 
 test('ewgsop2: quantity confirms, performance grades', () => {
   const base = { sex: 'male', gripStrength: 24 };
-  assert.equal(e({ ...base, asm: 18 }).stage, 'confirmed');
-  assert.equal(e({ ...base, asmi: 6.5 }).stage, 'confirmed');
+  assert.equal(e({ sex: 'male', ...base, asm: 18 }).stage, 'confirmed');
+  assert.equal(e({ sex: 'male', ...base, asmi: 6.5 }).stage, 'confirmed');
   // Performance without quantity does not confirm.
-  assert.equal(e({ ...base, gaitSpeed: 0.5 }).stage, 'probable');
+  assert.equal(e({ sex: 'male', ...base, gaitSpeed: 0.5 }).stage, 'probable');
   // Each performance route grades an already-confirmed case severe.
   for (const perf of [{ gaitSpeed: 0.8 }, { sppb: 8 }, { tugSeconds: 20 }, { fourHundredMeterWalkFailed: true }]) {
-    assert.equal(e({ ...base, asm: 18, ...perf }).stage, 'severe', JSON.stringify(perf));
+    assert.equal(e({ sex: 'male', ...base, asm: 18, ...perf }).stage, 'severe', JSON.stringify(perf));
   }
-  assert.match(e({ ...base, asm: 18 }).band, /Performance is what would grade it severe/);
+  assert.match(e({ sex: 'male', ...base, asm: 18 }).band, /Performance is what would grade it severe/);
 });
 
 test('ewgsop2: performance grades severity, it does not diagnose', () => {
-  for (const input of [{}, { sex: 'male', gripStrength: 24 }]) {
+  for (const input of [{ sex: 'male' }, { sex: 'male', gripStrength: 24 }]) {
     assert.match(e(input).performanceNote, /grades severity; it does not diagnose/);
     assert.match(e(input).findNote, /prompt to measure, not part of the diagnosis/);
   }
 });
 
 test('ewgsop2: out-of-range measurements are rejected', () => {
-  assert.equal(e({ gripStrength: 151 }).valid, false);
-  assert.equal(e({ sppb: 13 }).valid, false);
-  assert.equal(e({ gaitSpeed: 6 }).valid, false);
-  assert.equal(e({ asmi: 31 }).valid, false);
-  assert.equal(e({ gripStrength: 'abc' }).lowStrength, false);
+  assert.equal(e({ sex: 'male', gripStrength: 151 }).valid, false);
+  assert.equal(e({ sex: 'male', sppb: 13 }).valid, false);
+  assert.equal(e({ sex: 'male', gaitSpeed: 6 }).valid, false);
+  assert.equal(e({ sex: 'male', asmi: 31 }).valid, false);
+  assert.equal(e({ sex: 'male', gripStrength: 'abc' }).lowStrength, false);
 });
 
 test('ewgsop2: the documented example', () => {
   const r = e({ sex: 'male', gripStrength: '24', asm: '18' });
   assert.equal(r.stage, 'confirmed');
   assert.match(r.band, /grip strength of 24 kg, below the male cutoff of 27/);
+});
+
+// spec-v1403: a blank sex read as male. It is asked now, after the tool's own range checks.
+test('ewgsop2: a blank sex is asked, never read as male', () => {
+  const r = e({ gripStrength: 20 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /sex/);
+  assert.equal(e({ sex: 'female', gripStrength: 20 }).stage, 'not-met');
+  assert.equal(e({ gripStrength: 999 }).valid, false);
+  assert.doesNotMatch(e({ gripStrength: 999 }).message, /Choose the sex/);
 });

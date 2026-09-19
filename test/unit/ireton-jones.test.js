@@ -52,3 +52,20 @@ test('ireton-jones: a blank sex (ventilated) or height (spontaneous) is asked', 
   assert.match(h.message, /height/);
   assert.equal(iretonJones({ mode: 'spontaneous', age: 55, weight: 80, height: 175 }).valid, true);
 });
+
+// spec-v1403: the energy module checked no envelope; a height of 432 cm or a weight of 800 kg
+// computed. The five functions now refuse with lib/bounds.js's sentence.
+test('energy equations refuse a height or weight past lib/bounds.js', async () => {
+  const m = await import('../../lib/nutrition-energy-v152.js');
+  const base = { age: 55, sex: 'male', weight: 80, height: 175 };
+  for (const [name, fn, extra] of [
+    ['mifflin', m.mifflinStJeor, {}], ['harris', m.harrisBenedict, {}],
+    ['penn', m.pennStateRee, { tmax: 37, ve: 8 }], ['ireton-sp', m.iretonJones, { mode: 'spontaneous' }],
+  ]) {
+    assert.equal(fn({ ...base, ...extra }).valid, true, name);
+    assert.match(fn({ ...base, ...extra, height: 432 }).message, /plausible range for height/, name);
+    assert.match(fn({ ...base, ...extra, weight: 800 }).message, /plausible range for weight/, name);
+  }
+  assert.equal(m.iretonJones({ mode: 'ventilated', age: 55, sex: 'male', weight: 800 }).valid, false);
+  assert.equal(m.katchMcArdle({ weight: 800, bodyFat: 20 }).valid, false);
+});

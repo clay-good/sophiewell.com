@@ -12,7 +12,7 @@ export default [
     summary: 'Applies the EWGSOP2 algorithm for sarcopenia and returns probable, confirmed or severe. Low muscle strength is a grip strength below 27 kg in men or 16 kg in women, or five chair rises above 15 seconds, and low strength alone is probable sarcopenia. Adding low muscle quantity, an appendicular skeletal muscle mass below 20 kg in men or 15 kg in women or an index below 7.0 or 5.5 kg per square meter, confirms it. Adding low physical performance, a gait speed at or below 0.8 meters per second, a battery score at or below 8, a Timed Up and Go at or above 20 seconds, or a failed 400 meter walk, grades it severe. STRENGTH COMES FIRST, NOT MASS: the 2019 revision moved strength ahead of muscle mass deliberately, and probable sarcopenia is enough for intervention to begin. PERFORMANCE GRADES SEVERITY, IT DOES NOT DIAGNOSE. EVERY CUTOFF IS SEX-SPECIFIC.',
     compute: ewgsop2,
     fields: [
-      { dom: 'ew-sex', arg: 'sex', kind: 'enum', required: false, label: 'Sex, for the cutoffs', values: ['male', 'female'] },
+      { dom: 'ew-sex', arg: 'sex', kind: 'enum', required: true, label: 'Sex, for the cutoffs', values: ['male', 'female'] },
       { dom: 'ew-gripstrength', arg: 'gripStrength', kind: 'number', required: false, label: 'Grip strength, kg (low below 27 in men, 16 in women)', unit: 'kg' },
       { dom: 'ew-chairriseseconds', arg: 'chairRiseSeconds', kind: 'number', required: false, label: 'Five chair rises, seconds (low strength above 15)', unit: 's' },
       { dom: 'ew-asm', arg: 'asm', kind: 'number', required: false, label: 'Appendicular skeletal muscle mass, kg (low below 20 in men, 15 in women)', unit: 'kg' },

@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `a4fcb75886d45111`
-Generated: 2026-09-19T19:01:19.317Z
+Build ID: `5b2449da380b7f83`
+Generated: 2026-09-19T19:14:54.334Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -303,7 +303,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/erez-dic-v559.js` | 12795 | `e29e69649b85654d9ef1b52e5eac56c390734f9b85da044ddc54e1190314270f` |
 | `lib/estimators-v233.js` | 9102 | `163bd6f013cbd5388f0fc7d0953f1e938182d28e2039d3bfb22f1fccc647283a` |
 | `lib/eu-tirads-v796.js` | 7285 | `a40e8eebb11c40a0d156f4569ad29b72da42a8aa221b28e57a90e7ec017010ad` |
-| `lib/ewgsop2-v880.js` | 8917 | `2de496adbda261b7bfb73ead14af89f0761dec6106c64e2246e2f54e8a9d7ec4` |
+| `lib/ewgsop2-v880.js` | 9479 | `eaa48139c3c116ebab4425115243208e3bfa3077c2e0a28f1d373ce5cc5b732b` |
 | `lib/fab-v699.js` | 3133 | `3d15af628a254c38bbf87e2c0e3a80df7771fb4688d4b62b8ca2e9d6cd1568d7` |
 | `lib/fabq-v782.js` | 5927 | `9d8ea59172578b6c0a9122a4e819919d4c3a2ac793980fa9e3f7d98496975bf4` |
 | `lib/fast-dementia-v294.js` | 5928 | `ca241cbeef3ca9c9ba2a8d46c024d617b2691c1519265d5454caa2d5887af661` |
@@ -529,7 +529,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/marsh-oberhuber-v423.js` | 3970 | `283c02c5cf571e22696a6ca0e315a9e4c10b66dd0fd264c08c58fe2ba1589c27` |
 | `lib/marsi-v902.js` | 7682 | `5ca5a0d700bf67bf310126e4db018e74b5b64344ed778d9b70abba140a3b81f2` |
 | `lib/masaoka-v650.js` | 4093 | `33d7955dadbd3ab884dcab9a05d1b88f1fd748d97a16bd3ac31ca97eba9d8cb6` |
-| `lib/masld-criteria-v837.js` | 13916 | `e1e69ffb0b0019fccfb9d8bc8b41d5861f7288d52d25a5674198ada783488430` |
+| `lib/masld-criteria-v837.js` | 14257 | `5a10fb4c7f5155e89e54c8c8ee083808f4c6305180036d1214506b3bead63977` |
 | `lib/mason-radial-head-v341.js` | 4841 | `5f3e5f6a2c2324d646a167f847a587dc1068e54cfb876bc4723212ea057cd4e2` |
 | `lib/massive-transfusion-v265.js` | 3240 | `7ad4d1d86063fdd077546be5d6381ea4a5024ef669389f88abdfe07850903b29` |
 | `lib/mayfield-perilunate-v414.js` | 4219 | `dbec2e4abce7912c621e5cee9f8bdb1fa3555240da1d08a3f75f448fd0297fc4` |
@@ -625,7 +625,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/nurse-license-training-requirements-v1397.js` | 12250 | `e0263e527856ad453d395667e1b5a4e64ce07e185ff1d69d0d50ea8c34fe8a82` |
 | `lib/nurse-staffing-ratio-check-v1396.js` | 9223 | `f4fc16e9f231cc085c5009e6a6638637836c3c1883d24fcf4e17f2a2b1dadca1` |
 | `lib/nursing-home-staffing-check-v1396.js` | 7012 | `67719344be3ceb150d15072fa7c9090cd559a52f53370236db44769614fa023e` |
-| `lib/nutrition-energy-v152.js` | 14982 | `12a31c89580e11b55f78428815b85a25926b6c523538868899ef949e78364a52` |
+| `lib/nutrition-energy-v152.js` | 16042 | `ec3b9111248785ce246136f8f08fce7cf368a8c84693499befe3680dfc30536f` |
 | `lib/nutrition-maternal-v208.js` | 13391 | `3f68589603d6c5be3866aa0200955bbff10fe8873d47a3a9a1068a0c5b5c4c87` |
 | `lib/nutrition-v276.js` | 3222 | `96ee14add8fee3184efe8d8ca62f6a37a52d38f15bc785ef1c1f35459c2b4fac` |
 | `lib/ny-aot-kendras-law-v1390.js` | 11236 | `27b52c5cce49d6c3a4b49fec215ca45d72633c1d11396d0329c932caa6df168d` |
@@ -1220,7 +1220,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/erez-dic-v559.js` | 5955 | `de79f9d508eba77ed842238ba0c4ff026e221185e4d791b39fe7d0ad7708c2b3` |
 | `mcp/adapters/estimators-v233.js` | 2667 | `5aecdac30b89cf48cef057c0dc58ec9d4ca8c0a2e186a9229430407829cd5bd4` |
 | `mcp/adapters/eu-tirads-v796.js` | 1722 | `54f6f360af304fe26dbcf4816840923620749a1a50f6d2f15df88922c8c243a0` |
-| `mcp/adapters/ewgsop2-v880.js` | 2773 | `ac95dff80b7dc2c0f591654b0983af22a93e771328d6c2b09acf28c876ea26d0` |
+| `mcp/adapters/ewgsop2-v880.js` | 2772 | `857e9d1f383cbab9a8c9defc2cf57772acc050e8b26ecef9e4f3f170069e0765` |
 | `mcp/adapters/fab-v699.js` | 1713 | `16ff5a1b7029e90f07970e79f97ea21106ee56f499a10689bbe0b1c71781a915` |
 | `mcp/adapters/fabq-v782.js` | 1939 | `a0a083576abc087f39ed93f4e0ab7e1e6f783cf4cca0d8170032a0711be8e887` |
 | `mcp/adapters/fast-dementia-v294.js` | 1313 | `9c334a82e647a9635a5f300b4b4c33d9a8313bfc36b2a5c2e08a221cdbb41187` |
@@ -1435,7 +1435,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/marsh-oberhuber-v423.js` | 1298 | `1bac657854fa3dfd9b57ae140d198ff22102f678b5b8a1d49d167a2eac6d8655` |
 | `mcp/adapters/marsi-v902.js` | 1731 | `283e11158a35db9b93d5e995a94e21e537060f4570e425e62332d351692b3182` |
 | `mcp/adapters/masaoka-v650.js` | 1786 | `c70a5b4db622fea28e4f0dbd7e99cf4a18e2182abeae710755f9f2d45a7bf135` |
-| `mcp/adapters/masld-criteria-v837.js` | 2810 | `7b46be47e58f2d22e71891fefb336035ae0ed5ca71e64ae2bb4bfab2dca50458` |
+| `mcp/adapters/masld-criteria-v837.js` | 2809 | `1c5fdd9a906a7f52790b1f696f80c2779b4591aafb8278d0d5a98d55e9b3bd67` |
 | `mcp/adapters/mason-radial-head-v341.js` | 1538 | `ae0300d0d0d0034b891a5f159f6e407a68533ebd798daf9f324780378cebff10` |
 | `mcp/adapters/massive-transfusion-v265.js` | 1235 | `6d59826a5a55adb75182101d24cb93aa69f1a3dff0c451a0a05dc270be8d5eec` |
 | `mcp/adapters/mayfield-perilunate-v414.js` | 1318 | `2f80f523adeffbce6b7faf1959a1b4073239dd15d78b94ca8d7c05ffbbae11f1` |
@@ -2067,7 +2067,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v276.js` | 2705 | `046668ea0c5e6ca2896d86b2b9f47758734e62b40235114c0526b4ed09f455cf` |
 | `views/group-v277.js` | 2886 | `2038466fdae7f5cb3bde842e0a2f80de4c57d05d8b6244cc096387a353214bab` |
 | `views/group-v278.js` | 5180 | `210bbeddb7ec62d32ad744266c4df4b1bb3898c569d939fb441b6e34cce92b6e` |
-| `views/group-v279.js` | 4961 | `02190f864dbc3b24e055413a465d413d8f1be86a2093947cb51d5df5da58be1a` |
+| `views/group-v279.js` | 4988 | `ade808aebbdc2c77eeec852b219348d480b0d2e584f651c12bd1284ec39552df` |
 | `views/group-v28.js` | 14845 | `3899e74620ab844ca17e0b0616d2a9b73f555b9bfb0255545075ceb8cf47180f` |
 | `views/group-v280.js` | 5453 | `8187fce4417de2fceb193fb7d10d0ecddce7673c514024d74b2b1f92e05702ed` |
 | `views/group-v281.js` | 4621 | `53ac41641cf5ed15a17020f50911c158f2c465614ff4d2147fcf3fef8a45b93f` |
