@@ -702,7 +702,7 @@ carries the specific date that could change it.
 | strongyloides-presumptive | CDC Domestic Refugee Health Guidance: Intestinal Parasites | US | 2026-09-18 | page last updated 2025-01-30 | 2027-06-01 |
 | nurse-staffing-ratio-check | 22 CCR 70217(a); 22 CCR 71215.1 (emergency); 10 NYCRR 405.22(5) | CA, NY | 2026-09-19 | 71215.1 emergency rule effective 2026-06-01, lasts 180 days unless readopted | 2026-11-28 |
 | ca-wpv-report-clock | 8 CCR 3342(b), (g) | CA | 2026-09-18 | read on dir.ca.gov | 2027-01-02 |
-| mandatory-overtime-check | NY Labor Law 167; N.J.S.A. 34:11-56a33; TX HSC 258.002-258.005 | NY, NJ, TX | 2026-09-19 | NJ FindLaw text current as of 2024-01-01 | 2027-01-02 |
+| mandatory-overtime-check | NY Labor Law 167; N.J.S.A. 34:11-56a33, N.J.A.C. 8:43E-8; TX HSC 258.002-258.005 | NY, NJ, TX | 2026-09-19 | NJ FindLaw text current as of 2024-01-01 | 2027-01-02 |
 | staffing-committee-check | NY PHL 2805-t; TX HSC 257.004 | NY, TX | 2026-09-19 | read on nysenate.gov and the official mirror | 2027-01-02 |
 | tx-workplace-violence-plan-audit | HSC 331.002-331.004 | TX | 2026-09-19 | SB 240 (2023) | 2027-06-01 |
 | tx-safe-harbor-decision-aid | Occ. Code 303.005; 22 TAC 217.20 | TX | 2026-09-19 | 217.20 as amended 2019-10-22 (Cornell LII copy) | 2027-06-01 |

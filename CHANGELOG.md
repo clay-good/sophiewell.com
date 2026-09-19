@@ -6,6 +6,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Mandatory overtime, New Jersey: the Department's rule.** A declared emergency
+  or disaster now waives the reasonable-efforts step, and the answer names the four
+  efforts and the one hour for dependent care (N.J.A.C. 8:43E-8). See
+  docs/spec-v1396.md.
+
+- **Minor self-consent, Texas: examination for suspected abuse.** The Texas
+  sexual-assault answer now applies Family Code 32.005, including the refusal of a
+  child 16 or older. See docs/spec-v1395.md.
+
 - **Minor self-consent: New York and New Jersey.** Both states are added from their
   statutes. Where no statute read settles a service, the answer says so instead of
   guessing. See docs/spec-v1395.md.

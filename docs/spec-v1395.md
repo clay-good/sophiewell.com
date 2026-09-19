@@ -208,3 +208,11 @@ The note above ("NY and NJ minor-consent law was not researched") is superseded.
 - New York's conditional grounds get their own answer, "Only if the grounds are documented".
 - New Jersey's 9:17A-1 refers to a 1999 parental-notification law (C.9:17A-1.1). Its status was not
   read, so the tool does not apply it.
+
+## Update (2026-09-19): Texas Family Code 32.005
+
+32.005 was read on the official mirror. A physician, dentist, or psychologist with reasonable grounds
+to believe abuse or neglect may examine a child without anyone's consent, including X-rays, blood
+tests, and photographs, except a child 16 or older who refuses or where a court order prohibits it.
+`minor-self-consent` now answers the Texas sexual-assault question with that rule ("Only if the
+grounds are documented") instead of saying 32.005 was not read.

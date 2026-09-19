@@ -69,3 +69,13 @@ test('overtime: NY needs a voluntary effort first for every exception; TX only f
   assert.match(ot({ state: 'TX', situation: 'procedure', voluntaryTried: 'yes' }).conditions.join(' '), /On-call time/);
   assert.equal(ot({ state: 'NJ', situation: 'unforeseen', voluntaryTried: 'yes' }).permitted, true);
 });
+
+// spec-v1396: New Jersey's rule N.J.A.C. 8:43E-8 -- disasters waive the efforts; one hour for dependents.
+test('overtime: NJ disaster waives reasonable efforts; dependent-care hour; four efforts named', () => {
+  const d = ot({ state: 'NJ', situation: 'declaration', voluntaryTried: 'no' });
+  assert.equal(d.permitted, true);
+  assert.match(d.band, /need not first exhaust/);
+  assert.match(d.conditions.join(' '), /up to one hour/);
+  assert.match(ot({ state: 'NJ', situation: 'unforeseen', voluntaryTried: 'no' }).band, /Reasonable efforts are four/);
+  assert.match(ot({ state: 'NJ', situation: 'chronic' }).band, /90 days or more/);
+});

@@ -108,7 +108,9 @@ test('msc: California age cuts and the maturity question', () => {
 
 test('msc: Texas sexual assault names the routes and does not decide; adults and other states refused', () => {
   const r = msc({ state: 'TX', age: '15', service: 'sexual-assault' });
-  assert.match(r.band, /32\.005 is not read here/);
+  assert.match(r.band, /reasonable grounds to believe/);
+  assert.equal(r.mayConsent, 'conditional');
+  assert.match(msc({ state: 'TX', age: '16', service: 'sexual-assault' }).band, /16 or older who refuses/);
   assert.equal(msc({ state: 'FL', age: '15', service: 'sti' }).valid, false);
   assert.equal(msc({ state: 'CA', age: '18', service: 'sti' }).valid, false);
 });

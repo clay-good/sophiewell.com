@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `86e7aeebafa1e68e`
-Generated: 2026-09-19T14:39:42.516Z
+Build ID: `6902c977e8cc83f1`
+Generated: 2026-09-19T14:47:44.239Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -523,7 +523,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/mallampati-v810.js` | 5262 | `7fa3e5ec5a06046a5a9d5e99fcf056b66c684ce7aafd7e48e2b82ddefef7d6d9` |
 | `lib/malt-ipi-v700.js` | 2615 | `289ef3a3077f9bd3e0b8008ba2360513df3b94dea0b84a33118e773a5ee7ceb5` |
 | `lib/mandated-report-router-v1395.js` | 10226 | `e58c5d580e7f6e0cdec14cb1e1b98956cc1a6757357aa7b62c0ce33be99044b4` |
-| `lib/mandatory-overtime-check-v1396.js` | 7221 | `b396ee8c3105e65fbd4b38cb947aeca9d98146cbae0d7867b6813b0f1c06e32c` |
+| `lib/mandatory-overtime-check-v1396.js` | 9218 | `774869bf3097ebe75daa06b2777b704516243fec9088bf22c4855f0f7c3db1a5` |
 | `lib/manning-ibs-v695.js` | 3368 | `8fbd93e55a0bca42fbd3ea641073878a24351965d29ebe4bb7fa10fb3e03d782` |
 | `lib/mapi-asthma-v573.js` | 13603 | `3b5b51a78d65cb5d2e88e75504321792f0892683c77238caba4a45fc826302a8` |
 | `lib/marsh-oberhuber-v423.js` | 3970 | `283c02c5cf571e22696a6ca0e315a9e4c10b66dd0fd264c08c58fe2ba1589c27` |
@@ -547,7 +547,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/membranous-risk-v878.js` | 11351 | `882c36c07e46543e32f1114792c1124ee9f9ff6b384084fc0a8c221e7dd62062` |
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2530610 | `2402051ae4bdc95d8e08dd826c8cad6f1a54d77a6cb5324f335e75c0e988f3e8` |
+| `lib/meta.js` | 2530631 | `3aa9d3bfa9a9c3f79b8e702fb44961f693f0c20fa1d8c22c7ac94d89007a8e03` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 18806 | `adc0fb95d01f23df9eb461cdbb6a6f48b5f3f3ff2f4cb2a8770903ce31d5f6cc` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -561,7 +561,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/migraine-ichd3-v815.js` | 10346 | `2d8f5828599b247771e72f31686801a06caeee5c5dae8a41d39243370ea501ce` |
 | `lib/milch-condyle-v418.js` | 3230 | `bd203011afad9a6b64e11d891667f379ff974ef02b8f2f01f97d0223bc1a754c` |
 | `lib/miller-gingival-recession-v724.js` | 4057 | `b1d11e492848c3dd47c988a4e603929084939dac5cad8042402014dba90366f3` |
-| `lib/minor-self-consent-v1395.js` | 17146 | `a16f53d4b3d7b4a56fb3c3c37c26f199b2b0665c9ec5dd727d3ad0218bd64ef5` |
+| `lib/minor-self-consent-v1395.js` | 18198 | `e677fcd9f6081a1822579ca4dd6f720e9d1be205515abc92d5beed37af50d702` |
 | `lib/mis-c-v795.js` | 5510 | `aebe68b4bd5f98d48ddb51cf2a35e0a15ebb97f435a18010a2005382dbebfdbe` |
 | `lib/mitral-regurgitation-stage-v847.js` | 11352 | `ba47ad4c74266e61fca7cba3ebf57759abc04349542c5e225caa206e81633e3c` |
 | `lib/mitral-stenosis-stage-v845.js` | 10237 | `c7e9a9b1f16a458f0ca2448a2ccab7dc283556c39e1887de682c0119bacc4213` |

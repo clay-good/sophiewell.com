@@ -166,3 +166,14 @@ amended effective October 22, 2019). The Secretary of State copy still did not l
   criminal conduct, (g)(1). The tool now says so when the nurse plans to decline.
 - The rule applies where an employer regularly uses 8 or more nurses, (c)(1), and Safe Harbor must be
   invoked before the assignment is done, (d)(1).
+
+## Update (2026-09-19): New Jersey's overtime rule, N.J.A.C. 8:43E-8
+
+Read on Cornell LII. Three changes to `mandatory-overtime-check` for New Jersey:
+
+- **Changed from the earlier build:** a declared emergency, disaster, or catastrophic event no longer
+  answers "only as an unforeseeable emergent circumstance". 8:43E-8.5(b) waives the reasonable-efforts
+  step in those events, so the answer is "Permitted as a last resort".
+- The four reasonable efforts (8.3) and the one hour to arrange dependent care (8.5(c)) the plan listed
+  are confirmed and shown; on-call time is not a substitute (8.5(d)).
+- Chronic short staffing is defined: vacancies unfilled 90 days or more despite active recruitment.
