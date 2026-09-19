@@ -8498,6 +8498,49 @@
       ],
       "tile": "mandatory-overtime-check",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "staffing committee",
+        "nurse staffing committee",
+        "2805-t",
+        "257.004",
+        "clinical staffing plan"
+      ],
+      "tile": "staffing-committee-check",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "sb 240",
+        "workplace violence plan texas",
+        "331.004",
+        "violence prevention committee texas"
+      ],
+      "tile": "tx-workplace-violence-plan-audit",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "safe harbor",
+        "safe harbor nursing texas",
+        "303.005",
+        "nurse refuse assignment texas",
+        "peer review request nurse"
+      ],
+      "tile": "tx-safe-harbor-decision-aid",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "nursing home staffing",
+        "hours per resident day",
+        "hprd",
+        "3.5 hours nursing home",
+        "cna ratio nursing home"
+      ],
+      "tile": "nursing-home-staffing-check",
+      "audience": "clinicians"
     }
   ]
 }

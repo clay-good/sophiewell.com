@@ -703,3 +703,7 @@ carries the specific date that could change it.
 | nurse-staffing-ratio-check | 22 CCR 70217(a); 10 NYCRR 405.22(5) | CA, NY | 2026-09-18 | CA Register 2013, No. 11 | 2027-01-02 |
 | ca-wpv-report-clock | 8 CCR 3342(b), (g) | CA | 2026-09-18 | read on dir.ca.gov | 2027-01-02 |
 | mandatory-overtime-check | NY Labor Law 167; N.J.S.A. 34:11-56a33; TX HSC 258.002-258.005 | NY, NJ, TX | 2026-09-19 | NJ FindLaw text current as of 2024-01-01 | 2027-01-02 |
+| staffing-committee-check | NY PHL 2805-t; TX HSC 257.004 | NY, TX | 2026-09-19 | read on nysenate.gov and the official mirror | 2027-01-02 |
+| tx-workplace-violence-plan-audit | HSC 331.002-331.004 | TX | 2026-09-19 | SB 240 (2023) | 2027-06-01 |
+| tx-safe-harbor-decision-aid | Occ. Code 303.005 | TX | 2026-09-19 | 22 TAC 217.20 not read | 2027-06-01 |
+| nursing-home-staffing-check | NY PHL 2895-b; N.J.S.A. 30:13-18; CA HSC 1276.65 | NY, NJ, CA | 2026-09-19 | NJ FindLaw text current as of 2024-01-01 | 2027-01-02 |

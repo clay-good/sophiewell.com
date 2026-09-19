@@ -113,3 +113,21 @@ assaulted them. Output: complete, or the missing elements by name.
   a declaration, or a procedure qualifies there only as an unforeseeable emergent
   circumstance. The tile says so instead of assuming. The plan's N.J.A.C. 8:43E-8
   details (four listed efforts, one hour for dependent care) were not read.
+
+## Built, second part (2026-09-19)
+
+| tile | source read |
+|---|---|
+| `staffing-committee-check` | nysenate.gov, PHL 2805-t; official mirror, HSC 257.004 |
+| `tx-workplace-violence-plan-audit` | official mirror, HSC 331.002-331.004 |
+| `tx-safe-harbor-decision-aid` | official mirror, Occupations Code 303.005 |
+| `nursing-home-staffing-check` | nysenate.gov, PHL 2895-b; N.J.S.A. 30:13-18 (FindLaw, current as of January 1, 2024); leginfo, HSC 1276.65 |
+
+- New York's 2805-t sets no meeting frequency, so the tile checks composition, peer or
+  bargaining-agreement selection, and the July 1 plan only.
+- Safe Harbor: the Board rule 22 TAC 217.20 (the comprehensive form by end of shift,
+  14-day committee decision, 48-hour notice) did not load from the Secretary of
+  State, so none of those deadlines is printed. The statute's oral-request path
+  (seven items, both signatures) is.
+- Still not built: California's acute psychiatric hospital emergency rule
+  (22 CCR 71215.1), which was not read.

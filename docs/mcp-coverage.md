@@ -8302,6 +8302,18 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/mandatory-overtime-check-v1396.js (spec-v1396: mandatory nurse overtime check — clinical disclaimer)
 - `mandatory-overtime-check`
 
+### lib/staffing-committee-check-v1396.js (spec-v1396: hospital nurse staffing committee requirements — clinical disclaimer)
+- `staffing-committee-check`
+
+### lib/tx-workplace-violence-plan-audit-v1396.js (spec-v1396: Texas workplace violence prevention plan audit — clinical disclaimer)
+- `tx-workplace-violence-plan-audit`
+
+### lib/tx-safe-harbor-decision-aid-v1396.js (spec-v1396: Texas nurse Safe Harbor decision aid — clinical disclaimer)
+- `tx-safe-harbor-decision-aid`
+
+### lib/nursing-home-staffing-check-v1396.js (spec-v1396: nursing home minimum staffing check — clinical disclaimer)
+- `nursing-home-staffing-check`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

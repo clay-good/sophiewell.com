@@ -6,6 +6,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Staffing committees, nursing home minimums, workplace violence plans, and Safe
+  Harbor.** Whether a
+  New York or Texas hospital nurse staffing committee meets its makeup and
+  schedule rules; whether a nursing home meets the New York, New Jersey, or
+  California minimum; an audit of a Texas facility's workplace violence prevention
+  committee and plan (SB 240); and how a Texas nurse requests Safe Harbor peer
+  review and what it protects. See docs/spec-v1396.md.
+
 - **Nurse staffing and workplace violence.** Whether one hospital unit meets California's
   22 CCR 70217 ratios (17 unit types, no averaging, the ED triage RN not counted)
   or New York's 1 RN per 2 intensive-care patients, and by how many nurses it

@@ -839,6 +839,10 @@ import strongyloidesPresumptiveV1401 from './adapters/strongyloides-presumptive-
 import nurseStaffingRatioCheckV1396 from './adapters/nurse-staffing-ratio-check-v1396.js';
 import caWpvReportClockV1396 from './adapters/ca-wpv-report-clock-v1396.js';
 import mandatoryOvertimeCheckV1396 from './adapters/mandatory-overtime-check-v1396.js';
+import staffingCommitteeCheckV1396 from './adapters/staffing-committee-check-v1396.js';
+import txWorkplaceViolencePlanAuditV1396 from './adapters/tx-workplace-violence-plan-audit-v1396.js';
+import txSafeHarborDecisionAidV1396 from './adapters/tx-safe-harbor-decision-aid-v1396.js';
+import nursingHomeStaffingCheckV1396 from './adapters/nursing-home-staffing-check-v1396.js';
 import ticiV960 from './adapters/tici-v960.js';
 import sadPersonsV701 from './adapters/sad-persons-v701.js';
 import edinburghClaudicationV702 from './adapters/edinburgh-claudication-v702.js';
@@ -1705,6 +1709,10 @@ const ADAPTER_MODULES = [
   ['nurse-staffing-ratio-check-v1396', nurseStaffingRatioCheckV1396],
   ['ca-wpv-report-clock-v1396', caWpvReportClockV1396],
   ['mandatory-overtime-check-v1396', mandatoryOvertimeCheckV1396],
+  ['staffing-committee-check-v1396', staffingCommitteeCheckV1396],
+  ['tx-workplace-violence-plan-audit-v1396', txWorkplaceViolencePlanAuditV1396],
+  ['tx-safe-harbor-decision-aid-v1396', txSafeHarborDecisionAidV1396],
+  ['nursing-home-staffing-check-v1396', nursingHomeStaffingCheckV1396],
   ['tici-v960', ticiV960],
   ['sad-persons-v701', sadPersonsV701],
   ['edinburgh-claudication-v702', edinburghClaudicationV702],

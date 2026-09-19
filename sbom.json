@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:43db9c4f-a3e0-5ae1-8445-9ede7246cc68",
+  "serialNumber": "urn:uuid:38b0bbf9-6a77-54db-850a-a1772e77866a",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-19T07:25:31.402Z",
+    "timestamp": "2026-09-19T08:34:06.408Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1781 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1785 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "eda7256bf00b8af88b9a89ace879c857e0d276ccee5de2a1d88bc4c01e8aca57"
+          "content": "435ed0da66b4c28a8dc33facb1f03edc35e9a4de6ce79971bd4b01e717d9516d"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "114671"
+          "value": "114967"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "264d2be175bb3d0f07cef7911e104a05d4a7ed94aa417a5b2954835ba292ce33"
+          "content": "b3317fc90b96842f1d70807651116159bc25b92df4126f18a7746d7ecd14043c"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "531172"
+          "value": "531882"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "43f68a572509f341b9581d2294c6a548d79be19130996a190364c172a778a7e7"
+          "content": "42496be44c2821783baf93862193ca2695ed6350290a544d85354ed7929f32a9"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "221876"
+          "value": "222430"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a955d9bc029a5dea0437b3b60bc1e4f254148cfec3c7fb600fbd945cbb5275b1"
+          "content": "82fc6a341eda3aaae46bb2d25407d7e95ff19a4d5deab99bcdab52bb0c19eedf"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "101653"
+          "value": "102019"
         }
       ]
     },
@@ -10814,7 +10814,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0933142e5b5d6e87485c3ac75d2c8b95d0a4f19d9819202778da1b17abfd80ca"
+          "content": "672dde2914c6c115e550f84a15036ed6ea4a7f1325235c08a285f7e5ce0835fa"
         }
       ],
       "properties": [
@@ -10824,7 +10824,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2526117"
+          "value": "2528961"
         }
       ]
     },
@@ -12421,6 +12421,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "7583"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/nursing-home-staffing-check-v1396.js",
+      "type": "file",
+      "name": "lib/nursing-home-staffing-check-v1396.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "67719344be3ceb150d15072fa7c9090cd559a52f53370236db44769614fa023e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7012"
         }
       ]
     },
@@ -17360,6 +17381,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/staffing-committee-check-v1396.js",
+      "type": "file",
+      "name": "lib/staffing-committee-check-v1396.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "06ebbf0f1bff4d9b2ac92219c5d6fd79358dbeb9426b741552d5daf0c95445ff"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5243"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/stamey-incontinence-v465.js",
       "type": "file",
       "name": "lib/stamey-incontinence-v465.js",
@@ -18704,6 +18746,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/tx-safe-harbor-decision-aid-v1396.js",
+      "type": "file",
+      "name": "lib/tx-safe-harbor-decision-aid-v1396.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "118f7f10f99076636e4bb579648706fb593d66754bba3410719eed88216e7d5c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5025"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/tx-surrogate-consent-hierarchy-v1391.js",
       "type": "file",
       "name": "lib/tx-surrogate-consent-hierarchy-v1391.js",
@@ -18721,6 +18784,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "6620"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/tx-workplace-violence-plan-audit-v1396.js",
+      "type": "file",
+      "name": "lib/tx-workplace-violence-plan-audit-v1396.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "80a58bfe78ef75de20b0dd9f84bd68ea8b1ff556c44477ac9bd540e219990cdb"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4167"
         }
       ]
     },
@@ -31241,6 +31325,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/nursing-home-staffing-check-v1396.js",
+      "type": "file",
+      "name": "mcp/adapters/nursing-home-staffing-check-v1396.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "97ba50ba8177aceb66b6adb392a4637246bc2feaeecbd24320aeaa5d560f96a8"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1726"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/nutrition-energy-v152.js",
       "type": "file",
       "name": "mcp/adapters/nutrition-energy-v152.js",
@@ -35609,6 +35714,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/staffing-committee-check-v1396.js",
+      "type": "file",
+      "name": "mcp/adapters/staffing-committee-check-v1396.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "73c69092e2d035e0177072b26a4bbed486ad19a6ecd7b92c03022ab61cdd9646"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1720"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/stamey-incontinence-v465.js",
       "type": "file",
       "name": "mcp/adapters/stamey-incontinence-v465.js",
@@ -36848,6 +36974,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/tx-safe-harbor-decision-aid-v1396.js",
+      "type": "file",
+      "name": "mcp/adapters/tx-safe-harbor-decision-aid-v1396.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "167b6caa08a30320d0211b3b20add3411a6f93cdbc2eea2d1393ef8314cbcafc"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1107"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/tx-surrogate-consent-hierarchy-v1391.js",
       "type": "file",
       "name": "mcp/adapters/tx-surrogate-consent-hierarchy-v1391.js",
@@ -36865,6 +37012,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1852"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/tx-workplace-violence-plan-audit-v1396.js",
+      "type": "file",
+      "name": "mcp/adapters/tx-workplace-violence-plan-audit-v1396.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ac8b533ed9509d746742709222824d3d69cc282e02301c91f0d74661f30d56bf"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2860"
         }
       ]
     },
@@ -37904,7 +38072,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "789fa91bab7fcccb56286a23471ba231078f80500fb115f9d8c35efd7c5be84d"
+          "content": "782425b5b4fa7e33e1e56185753086dfe96c2dc3415fa93d0ed8116131aeb580"
         }
       ],
       "properties": [
@@ -37914,7 +38082,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "99178"
+          "value": "99844"
         }
       ]
     },
@@ -39353,7 +39521,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d08890006b646b666d3a811d4203ca84b29cbebc912f0350971c98cef1b4dae5"
+          "content": "6ced5bbc33db53990b1bec5eb603ab2952202397bf3fdb3a9a20b47dff32ac4c"
         }
       ],
       "properties": [
@@ -39363,7 +39531,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "5799"
+          "value": "12948"
         }
       ]
     },
@@ -71224,6 +71392,7 @@
         "urn:sophiewell:file:source:lib/nunley-vertullo-v455.js",
         "urn:sophiewell:file:source:lib/nurse-license-training-requirements-v1397.js",
         "urn:sophiewell:file:source:lib/nurse-staffing-ratio-check-v1396.js",
+        "urn:sophiewell:file:source:lib/nursing-home-staffing-check-v1396.js",
         "urn:sophiewell:file:source:lib/nutrition-energy-v152.js",
         "urn:sophiewell:file:source:lib/nutrition-maternal-v208.js",
         "urn:sophiewell:file:source:lib/nutrition-v276.js",
@@ -71459,6 +71628,7 @@
         "urn:sophiewell:file:source:lib/spine-v146.js",
         "urn:sophiewell:file:source:lib/spitz-atresia-v479.js",
         "urn:sophiewell:file:source:lib/sportsmsk-v244.js",
+        "urn:sophiewell:file:source:lib/staffing-committee-check-v1396.js",
         "urn:sophiewell:file:source:lib/stamey-incontinence-v465.js",
         "urn:sophiewell:file:source:lib/stanford-dissection-v1242.js",
         "urn:sophiewell:file:source:lib/startback-v781.js",
@@ -71523,7 +71693,9 @@
         "urn:sophiewell:file:source:lib/tx-prescriptive-authority-agreement-v1397.js",
         "urn:sophiewell:file:source:lib/tx-protective-custody-hearing-clock-v1389.js",
         "urn:sophiewell:file:source:lib/tx-sa-forensic-exam-window-v1395.js",
+        "urn:sophiewell:file:source:lib/tx-safe-harbor-decision-aid-v1396.js",
         "urn:sophiewell:file:source:lib/tx-surrogate-consent-hierarchy-v1391.js",
+        "urn:sophiewell:file:source:lib/tx-workplace-violence-plan-audit-v1396.js",
         "urn:sophiewell:file:source:lib/ucsf-hcc-v686.js",
         "urn:sophiewell:file:source:lib/udca-response-v909.js",
         "urn:sophiewell:file:source:lib/unit-convert.js",
@@ -72938,6 +73110,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/nunley-vertullo-v455.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nurse-license-training-requirements-v1397.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nurse-staffing-ratio-check-v1396.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/nursing-home-staffing-check-v1396.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nutrition-energy-v152.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nutrition-maternal-v208.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nutrition-v276.js",
@@ -73146,6 +73319,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/spine-v146.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/spitz-atresia-v479.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/sportsmsk-v244.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/staffing-committee-check-v1396.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/stamey-incontinence-v465.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/stanford-dissection-v1242.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/startback-v781.js",
@@ -73205,7 +73379,9 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/tx-prescriptive-authority-agreement-v1397.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tx-protective-custody-hearing-clock-v1389.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tx-sa-forensic-exam-window-v1395.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/tx-safe-harbor-decision-aid-v1396.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tx-surrogate-consent-hierarchy-v1391.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/tx-workplace-violence-plan-audit-v1396.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ucsf-hcc-v686.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/udca-response-v909.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/unit-convert.js",
@@ -73358,7 +73534,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "43db9c4fa3e03ae1"
+      "value": "38b0bbf96a77d4db"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -73370,7 +73546,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2599"
+      "value": "2607"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `43db9c4fa3e03ae1`
-Generated: 2026-09-19T07:25:31.402Z
+Build ID: `38b0bbf96a77d4db`
+Generated: 2026-09-19T08:34:06.408Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -25,9 +25,9 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 114671 | `eda7256bf00b8af88b9a89ace879c857e0d276ccee5de2a1d88bc4c01e8aca57` |
+| `index.html` | 114967 | `435ed0da66b4c28a8dc33facb1f03edc35e9a4de6ce79971bd4b01e717d9516d` |
 | `styles.css` | 68228 | `094d1a6713908446c258e1434be2ebc3451324020c59388eed73c362116b1585` |
-| `app.js` | 531172 | `264d2be175bb3d0f07cef7911e104a05d4a7ed94aa417a5b2954835ba292ce33` |
+| `app.js` | 531882 | `b3317fc90b96842f1d70807651116159bc25b92df4126f18a7746d7ecd14043c` |
 | `report-feedback.js` | 12178 | `955e5cb542c7b13dcbb85a75ecf4ccf2dc0b2dffecd84daac1d607bd6acc7cd2` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 | `theme.js` | 3132 | `6910af0b4c65869c6a3d24d17842bb2cc88c7d23f8fb32506fcdbfeec70ce979` |
@@ -35,7 +35,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `sw.js` | 5183 | `009dd2cf8ba1a16ad8a76c8f523c45600068c78f07582c657015defdead2c876` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 221876 | `43f68a572509f341b9581d2294c6a548d79be19130996a190364c172a778a7e7` |
+| `sitemap.xml` | 222430 | `42496be44c2821783baf93862193ca2695ed6350290a544d85354ed7929f32a9` |
 | `_headers` | 2050 | `3874f05a080b8cab13ff022e6e6147c7e1057420a2d9cbc7834bac6b421d4011` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 3682 | `8dd13c4dd66de0c9ec93c2c1561e5fec1902f144b677d3581cf56b124b04a1b8` |
@@ -48,7 +48,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | Path | Bytes | SHA-256 |
 |---|---:|---|
 | `report-worker.mjs` | 13434 | `bcbebe960bf79e0cb2038f7ddc216dfb0753a9665f071fa32966d5d460ffc794` |
-| `report-catalog.js` | 101653 | `a955d9bc029a5dea0437b3b60bc1e4f254148cfec3c7fb600fbd945cbb5275b1` |
+| `report-catalog.js` | 102019 | `82fc6a341eda3aaae46bb2d25407d7e95ff19a4d5deab99bcdab52bb0c19eedf` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 
 ## Source-of-truth modules (lib + views)
@@ -547,7 +547,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/membranous-risk-v878.js` | 11351 | `882c36c07e46543e32f1114792c1124ee9f9ff6b384084fc0a8c221e7dd62062` |
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2526117 | `0933142e5b5d6e87485c3ac75d2c8b95d0a4f19d9819202778da1b17abfd80ca` |
+| `lib/meta.js` | 2528961 | `672dde2914c6c115e550f84a15036ed6ea4a7f1325235c08a285f7e5ce0835fa` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 18806 | `adc0fb95d01f23df9eb461cdbb6a6f48b5f3f3ff2f4cb2a8770903ce31d5f6cc` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -624,6 +624,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/nunley-vertullo-v455.js` | 3085 | `6f287a16c80ba5d73e2bb2c15989a7aa81d8335767f0a36e8c67c3203b357439` |
 | `lib/nurse-license-training-requirements-v1397.js` | 6746 | `2fc2a3884812f6afe10ffda68c7a464c519de8e867f60c3125f57ef38645b53f` |
 | `lib/nurse-staffing-ratio-check-v1396.js` | 7583 | `c7f79d233ae40ecc6ccf4f6f9cc44245c74fc02cafbabf7fa9f1fa65b3d55ef5` |
+| `lib/nursing-home-staffing-check-v1396.js` | 7012 | `67719344be3ceb150d15072fa7c9090cd559a52f53370236db44769614fa023e` |
 | `lib/nutrition-energy-v152.js` | 14446 | `924b5421f818147f64b10db410fca9892773a29a918cf40e2bacdb64c0dbb23a` |
 | `lib/nutrition-maternal-v208.js` | 13391 | `3f68589603d6c5be3866aa0200955bbff10fe8873d47a3a9a1068a0c5b5c4c87` |
 | `lib/nutrition-v276.js` | 3222 | `96ee14add8fee3184efe8d8ca62f6a37a52d38f15bc785ef1c1f35459c2b4fac` |
@@ -859,6 +860,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/spine-v146.js` | 21128 | `d3cb6a1d1e2c3cc1235cc2336a0385a1ae6e0a1ea65b741a2d6c25e5cb527917` |
 | `lib/spitz-atresia-v479.js` | 2772 | `82c5ecf9649558c4767feb5ae6dac08de927b4ccf53b29a987524255891eb031` |
 | `lib/sportsmsk-v244.js` | 6969 | `4b4589408faef5ff873d2acd2a7593f9c6d6b1ab303bb01bdd35eabd939abd9f` |
+| `lib/staffing-committee-check-v1396.js` | 5243 | `06ebbf0f1bff4d9b2ac92219c5d6fd79358dbeb9426b741552d5daf0c95445ff` |
 | `lib/stamey-incontinence-v465.js` | 2929 | `e2cded2c8e4b0734d0581d0d1715dad18f8b119eb45175ab59d842b11702f112` |
 | `lib/stanford-dissection-v1242.js` | 7111 | `9a3a6f1ccb9877f506ae47b245b08483eaf6afdc649cdba1f920504ffbed1e84` |
 | `lib/startback-v781.js` | 5927 | `da2d968b8a6a00b328e2f3a3f1f1ccb05bd0fa3a6bea26b5ab033857b4c1cfac` |
@@ -923,7 +925,9 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/tx-prescriptive-authority-agreement-v1397.js` | 5802 | `4928006b716b8dd67f6e7c74c737d64dcdcc71ee6d88ba5486ef2ac21832d0bf` |
 | `lib/tx-protective-custody-hearing-clock-v1389.js` | 6267 | `72473c16120e700ece8f6a47a12c1793386eef2f78becc1d8be5b34ceb1ab17d` |
 | `lib/tx-sa-forensic-exam-window-v1395.js` | 5610 | `5b43e7521dd308d9e3b592d78272c1ceaef99fe4312942dd86dc9dc33dad5a8d` |
+| `lib/tx-safe-harbor-decision-aid-v1396.js` | 5025 | `118f7f10f99076636e4bb579648706fb593d66754bba3410719eed88216e7d5c` |
 | `lib/tx-surrogate-consent-hierarchy-v1391.js` | 6620 | `f8931821cdaf85ee6178400ea59d100d517823109f8a4d4b6a00d1647b74a82d` |
+| `lib/tx-workplace-violence-plan-audit-v1396.js` | 4167 | `80a58bfe78ef75de20b0dd9f84bd68ea8b1ff556c44477ac9bd540e219990cdb` |
 | `lib/ucsf-hcc-v686.js` | 4651 | `e3ab017b2a8c51ff6885b2fbc5cc002d26cd8372d3ca08ce0cc5929453283d70` |
 | `lib/udca-response-v909.js` | 12481 | `ca310c03d0c8e5b4434bfb8a3a8817742c449b80ac5724c747f43d15fa271e76` |
 | `lib/unit-convert.js` | 2601 | `642818802952c2c5e87338bc035dcd9d5ff07dec1e8b97a31ca09b0be38c14d2` |
@@ -1520,6 +1524,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/nunley-vertullo-v455.js` | 1155 | `1b0419937c6fcc04382aa2c11914ac309a4e6d18e1c6010f876281a54efe34e8` |
 | `mcp/adapters/nurse-license-training-requirements-v1397.js` | 1906 | `8384e151f8a315f997783b43c8c268fcb3354f505b416448bf07dfc4db6c1163` |
 | `mcp/adapters/nurse-staffing-ratio-check-v1396.js` | 1392 | `fc16aba57300e4e85f0d5b94e4670d8a8ed51f5a8b99ac41063101e5afec4288` |
+| `mcp/adapters/nursing-home-staffing-check-v1396.js` | 1726 | `97ba50ba8177aceb66b6adb392a4637246bc2feaeecbd24320aeaa5d560f96a8` |
 | `mcp/adapters/nutrition-energy-v152.js` | 5085 | `f8bca8ccfb11675d0db0d0d42d93d772810dd8ec9ad50e11abb5b2285b0450e1` |
 | `mcp/adapters/nutrition-maternal-v208.js` | 3106 | `2abbe0df4fdafa710561a7d7152043596474ee3fd173e342f466a2ef40d69b64` |
 | `mcp/adapters/nutrition-v276.js` | 954 | `2360495bf6231c0847ca6c3ba5729f305075a4289bac885c197eead84d38c754` |
@@ -1728,6 +1733,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/spine-v146.js` | 5058 | `1430c9662712b1036ba4e4ad42b25289232fb927e81eb8c11cef2d9960ae8338` |
 | `mcp/adapters/spitz-atresia-v479.js` | 1121 | `1ec233964c0f38f3e29a6f32b4f34508138d6b9bf182a4614e48cf6a13e5ce33` |
 | `mcp/adapters/sportsmsk-v244.js` | 4398 | `9d1978dd4e7201de1aebd65a4dc4285ad73dac025659e54f69191e164b0e3f36` |
+| `mcp/adapters/staffing-committee-check-v1396.js` | 1720 | `73c69092e2d035e0177072b26a4bbed486ad19a6ecd7b92c03022ab61cdd9646` |
 | `mcp/adapters/stamey-incontinence-v465.js` | 1196 | `359869efa08efc90671d988e55ceab6bd73e9641ada5db3bec99f7b8c4d59082` |
 | `mcp/adapters/stanford-dissection-v1242.js` | 1667 | `e4186ba65323cbe3a0e0d4fd111e4afc10183158fda42c8181940e3006ded830` |
 | `mcp/adapters/startback-v781.js` | 1968 | `ffd18b131d9965110246d4c15f39cf0e5bdfa9562bd0e5b95e342a3dcf9129b3` |
@@ -1787,7 +1793,9 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/tx-prescriptive-authority-agreement-v1397.js` | 2736 | `548f541ab997716e480c6d16ace644ad8b23ed60d8719aee1727633724db7c71` |
 | `mcp/adapters/tx-protective-custody-hearing-clock-v1389.js` | 1187 | `9a9a61f02b415ab24a1c493bd1d0c326c19258ff42611c7ecba4746839f65632` |
 | `mcp/adapters/tx-sa-forensic-exam-window-v1395.js` | 1380 | `3e9b5549aa066f85832395e855604376e0b7f56a5dd7db0dc18165958baef622` |
+| `mcp/adapters/tx-safe-harbor-decision-aid-v1396.js` | 1107 | `167b6caa08a30320d0211b3b20add3411a6f93cdbc2eea2d1393ef8314cbcafc` |
 | `mcp/adapters/tx-surrogate-consent-hierarchy-v1391.js` | 1852 | `58d4845c6858169b72cb4916231cbb085f22233640bef8e6f4a78285665fa80f` |
+| `mcp/adapters/tx-workplace-violence-plan-audit-v1396.js` | 2860 | `ac8b533ed9509d746742709222824d3d69cc282e02301c91f0d74661f30d56bf` |
 | `mcp/adapters/ucsf-hcc-v686.js` | 1505 | `4096fd6e59644ec20492460a57b2ad6e656be11dcceefabdc132d21cd01a3c34` |
 | `mcp/adapters/udca-response-v909.js` | 2550 | `381e2669dfec2ec8695dc7d93598f10982da481712ae7b031b8e7bdacb47bec9` |
 | `mcp/adapters/unit-convert.js` | 1959 | `6a81130ebc4bd01c1497cc06c322f1f919a778de98d99cb48f6fddee99e40c03` |
@@ -1837,7 +1845,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/zabramski-v442.js` | 1156 | `f364baad3d680210aafd8b47cb6ad472521c8bfb9f02683340f5175dcb03d097` |
 | `mcp/adapters/zargar-caustic-v401.js` | 1423 | `158261bfae30e1660e5888582289b46bef0344c5763a15a9be2c812be5722d4a` |
 | `mcp/adapters/zulewski-v608.js` | 4193 | `68da25df2e1cd4653dd6ad796f5c0f032429c1da8d89459e8d66f5cc7bb51ab8` |
-| `mcp/catalog.js` | 99178 | `789fa91bab7fcccb56286a23471ba231078f80500fb115f9d8c35efd7c5be84d` |
+| `mcp/catalog.js` | 99844 | `782425b5b4fa7e33e1e56185753086dfe96c2dc3415fa93d0ed8116131aeb580` |
 | `mcp/fields.js` | 8875 | `fbb6ed0902546149a9eaca4be37dc816ca62b7d98d09c4ab9a1ff67f141c312e` |
 | `mcp/server.js` | 2079 | `54d0769126ef3fde8965a26b4a36c15964cd67018343660cae43983685c34df9` |
 | `mcp/tools.js` | 56520 | `cbe496441303410ab5df464586f3817e3fd48f3280ca7b867e8b08d4c70f37f2` |
@@ -1906,7 +1914,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1393.js` | 7907 | `8857c26b34755a4d018e58d965df708a386700e222facb4dcc2b5a6584440933` |
 | `views/group-v1394.js` | 8245 | `900cdcd3f81d249c5aa89c7d57add9a7b1097f816b9ffa9a5ae741ce2b2a74e6` |
 | `views/group-v1395.js` | 8949 | `2d3b1b5524f06cc52f7f2b168bfae9b252b902542d4d318c8187b20e19635015` |
-| `views/group-v1396.js` | 5799 | `d08890006b646b666d3a811d4203ca84b29cbebc912f0350971c98cef1b4dae5` |
+| `views/group-v1396.js` | 12948 | `6ced5bbc33db53990b1bec5eb603ab2952202397bf3fdb3a9a20b47dff32ac4c` |
 | `views/group-v1397.js` | 8708 | `3659c5624bc279000f3059536a4a3513a6b84049189a3a7ac8232ebec1a40bb8` |
 | `views/group-v1398.js` | 7537 | `ccd13516de696cd04a6610b11bf446ea3482f77b5ba1c4dc5437054793e8452a` |
 | `views/group-v1399.js` | 5351 | `0b6553fe3afc48a3d4b6636eff175cab434acf5a8cbd198cdbddd3dfde2b7961` |
