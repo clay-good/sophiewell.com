@@ -73,3 +73,22 @@ test('ss: 72 hours or younger; CPS within 48 hours; 14-day reclaim', () => {
   assert.equal(ss({ ageHours: '80', surrendered: '2026-09-18T03:00' }).eligible, false);
   assert.equal(ss({ ageHours: '', surrendered: '2026-09-18T03:00' }).valid, false);
 });
+
+// spec-v1394: New York -- syphilis 28 to 32 weeks and at delivery; HIV expedited to 12 hours; HBsAg 24 to 48.
+test('prenatal: NY delivery with no HIV or hepatitis B result -- 12-hour HIV, 24-to-48-hour HBsAg, syphilis always', () => {
+  const r = pns({ state: 'NY', setting: 'delivery', ga: '39', hivFirst: 'no', hbv: 'no' });
+  assert.match(r.band, /within 12 hours/);
+  assert.match(r.band, /within 24 hours of admission and never later than 48/);
+  assert.match(r.band, /Syphilis at delivery, for every patient/);
+  const ok = pns({ state: 'NY', setting: 'delivery', ga: '39', hivFirst: 'yes', hbv: 'yes' });
+  assert.doesNotMatch(ok.band, /12 hours/);
+  assert.equal(pns({ state: 'NY', setting: 'delivery', ga: '39', hbv: 'yes' }).valid, false);
+});
+
+test('prenatal: NY third-trimester syphilis window is 28 to 32 weeks', () => {
+  const base = { state: 'NY', setting: 'prenatal', syphFirst: 'yes', hivFirst: 'yes', hbv: 'yes' };
+  assert.match(pns({ ...base, ga: '30', syph3: 'no' }).band, /no later than 32/);
+  assert.match(pns({ ...base, ga: '34', syph3: 'no' }).band, /past its 32-week limit/);
+  assert.match(pns({ ...base, ga: '20' }).next.join(' '), /8 weeks from now/);
+  assert.match(pns({ ...base, ga: '20', hbv: 'no' }).band, /69-3\.2/);
+});

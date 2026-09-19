@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Prenatal screening: New York in full.** New York now shows syphilis at 28 to 32
+  weeks and at delivery, hepatitis B prenatally and within 24 to 48 hours at
+  delivery, and the 12-hour expedited HIV test at delivery. See docs/spec-v1394.md.
+
 - **Blood lead: New York and Texas lines.** Choose New York to see the state's
   line of 5, venous confirmation, follow-up, and screening at ages 1 and 2
   (10 NYCRR 67-1). Choose New York City to see the 24-hour report at 3.5 or more.

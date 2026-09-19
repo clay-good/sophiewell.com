@@ -106,3 +106,22 @@ so this tile is California only.
   Cornell LII copies carry the June 22, 2023 (neonatal) and January 8, 2023 (maternal)
   amendment dates, and the ledger row says so. Levels II-IV of the maternal rule were
   read, so `tx-maternal-level-reference` ships in this wave.
+
+## Built (2026-09-19): New York HIV, hepatitis B, and syphilis timing
+
+`prenatal-infection-screening-schedule` now covers New York in full. health.ny.gov served the
+Department's syphilis FAQ (publication 21452, February 2026) to a browser user agent, and the rules
+were read on Cornell LII.
+
+| test | New York source | what the tool says |
+|---|---|---|
+| Syphilis | PHL 2308; FAQ; 10 NYCRR 69-2.2 | at diagnosis of pregnancy; at 28 weeks, no later than 32; at delivery for every patient |
+| Hepatitis B | 10 NYCRR 69-3.2, 69-3.3(b) | HBsAg with a prenatal draw; at delivery with no result, a specimen immediately, result within 24 hours of admission and never later than 48 |
+| HIV | 10 NYCRR 405.21(c)(8)(i)(h), 69-1.3(n)(2) | prenatal: counsel and recommend, may decline; at delivery with no result, an expedited test of the mother (or the newborn if she declines), result within 12 hours |
+
+- **Changed from the plan:** the plan cited "the 28-to-32-week window" from the Department's page,
+  which is now read and matches. The FAQ also confirms the delivery screen applies even after a
+  third-trimester screen and even to a delivery before the third trimester.
+- 405.21 still cites the delivery HIV rule as 69-1.3(l); in the current text it is (n)(2). The tool
+  cites (n)(2).
+- New Jersey's HIV rule (N.J.A.C. 8:61) is still not read.
