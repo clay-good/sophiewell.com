@@ -143,3 +143,14 @@ test('hiv-pep-occupational: the documented example', () => {
   assert.equal(r.abnormal, true);
   assert.match(r.band, /Start it now, without waiting for anything else/);
 });
+
+// spec-v1401 Part B: the New York line appears only when New York is chosen, and still names no drug.
+test('hiv-pep-occupational: NY line -- 2 hours, 28 days, 4 and 12 weeks; none by default', () => {
+  const base = { exposureType: 'percutaneous', sourceStatus: 'positive', hoursSinceExposure: '1' };
+  assert.equal(p(base).nyNote, null);
+  const ny = p({ ...base, state: 'NY' });
+  assert.match(ny.nyNote, /within 2 hours/);
+  assert.match(ny.nyNote, /4 and 12 weeks/);
+  assert.doesNotMatch(ny.nyNote, /tenofovir|bictegravir|dolutegravir|raltegravir/i);
+  assert.equal(ny.band, p(base).band);
+});

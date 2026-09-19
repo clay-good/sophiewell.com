@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `9bbe159c14a55602`
-Generated: 2026-09-19T12:29:50.469Z
+Build ID: `6f57d9f89e58690e`
+Generated: 2026-09-19T12:35:31.607Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -415,7 +415,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/hill-flap-valve-v392.js` | 3958 | `f62683b688751dbb5ab4c5fc490b92341c747ee2066e4f8b1f7ed0caed9ea6ff` |
 | `lib/hill-grade-v1243.js` | 4731 | `e315d3d35ae8999ebbee77c8197ab9403995cb4b327f8264d8f1a7ff34445fea` |
 | `lib/hinchey-v321.js` | 3468 | `ff53770d2e4bfbbac8339d09fe5fa6bfcf72e6d980b39a2f4ec4e26ae45c0ca8` |
-| `lib/hiv-pep-occupational-v887.js` | 12856 | `d6df3bc9964d0333286145f34a831affd890f478a27a92b41819546f5e6bcd2c` |
+| `lib/hiv-pep-occupational-v887.js` | 13696 | `c50da4032324dc933790849d3a3f019c901e6b92445f515712d8b10a9a4c192c` |
 | `lib/hlh-2004-v582.js` | 17263 | `c25328a6ec102d9fca899aea2a99920ad4c59a4aa3044ae56fab10c24b583725` |
 | `lib/home-oxygen-v889.js` | 9562 | `c53ca0e0f6f86991569b8759181d88790fc1f6f532d431c73e0044a48f14b242` |
 | `lib/hpa-glaucoma-v801.js` | 8244 | `4e76ca48d042fe39e38531e9d0761785c0a09ba1474425c90cd5f34f9e73973f` |
@@ -1326,7 +1326,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/hill-flap-valve-v392.js` | 1616 | `b2fe7b191d90dd639b90e1d25e551c343cb3f3e3e86fe65421510d7a83c99813` |
 | `mcp/adapters/hill-grade-v1243.js` | 1310 | `44ebbc87d47a4dab7d6f8ab984e294b47e59552436c02741c35a71b5ed78c28f` |
 | `mcp/adapters/hinchey-v321.js` | 1353 | `6501157218a31836e99795544ffa05c0c5db6e146bfc91985d1056468e2175b5` |
-| `mcp/adapters/hiv-pep-occupational-v887.js` | 2062 | `50d2aba6993f577626776d3290bdc49319aa133bef3c196f81b53d2ddc950acf` |
+| `mcp/adapters/hiv-pep-occupational-v887.js` | 2183 | `6efc4f5b1d62b31c11655c435ea28c1a8f2ef45c40b72af96717980bf8761eab` |
 | `mcp/adapters/hlh-2004-v582.js` | 9239 | `265e1c0019298c7ed055818aaf3dd2bf26b3acdb0538e378cb4e00592750f830` |
 | `mcp/adapters/home-oxygen-v889.js` | 2332 | `f5238806d2cf66f77af787da49b1d7c7817be50bf95d4ed5aa5d01f233328628` |
 | `mcp/adapters/hpa-glaucoma-v801.js` | 1292 | `c078b894368db3080fc815dca25c82ccebb6593ce6e11bb1feae681ef46f17c2` |
@@ -2624,7 +2624,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v884.js` | 2891 | `89be7241cef8c3ccc57ecc0d67797cf05b2f72df892da4e5e48f3fdc94c629b1` |
 | `views/group-v885.js` | 4640 | `5ba77d15017f72f205b057bdba6e57244f844159b558496570517dc8a67a47c5` |
 | `views/group-v886.js` | 2852 | `3834ccc34a94e3003630859a71d1d1ad655f0c773352fb2ebd0b2c4d19249954` |
-| `views/group-v887.js` | 5133 | `1f46dc700351705e7d5e996bde49fa9c161e802bf1733031ab85039adccec786` |
+| `views/group-v887.js` | 5373 | `08eb1c802dbbabad1ef678ae2aafc9372f5ee5b1ebbd94ea802db76bfc02a061` |
 | `views/group-v888.js` | 4138 | `ecceb758639ec67feb8193f9ea8d96f30f6a338f0368956ee64834f868ce6299` |
 | `views/group-v889.js` | 3626 | `2b9497df12358e2b7fbbf55c9468a6cde5b944f4c4721912cb5c25da2375be1d` |
 | `views/group-v890.js` | 3717 | `30931bb4f83a5b5b426c2cce9a1075ce6bc20967f79c4ab350196113f0ff34bf` |

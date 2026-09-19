@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Occupational HIV PEP: a New York line.** Choose New York to see the NYSDOH
+  timing (ideally within 2 hours), the 28-day course, and testing at 4 and 12
+  weeks. The tool still names no drug. See docs/spec-v1401.md.
+
 - **Rabies PEP: a Texas line.** Choose Texas to see the 10-day observation rule for a
   dog, cat, or ferret that bit someone (25 TAC 169.27). The national decision tree
   is unchanged. See docs/spec-v1401.md.

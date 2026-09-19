@@ -66,8 +66,12 @@ export const renderers = {
       { value: 'negative', text: 'Known HIV negative' },
     ]);
     checkField(root, 'Risk factors for HIV are known in the source', 'pep-sourceriskfactors');
+    selectField(root, 'State line (optional)', 'pep-state', [
+      { value: '', text: 'No state line' },
+      { value: 'NY', text: 'New York' },
+    ]);
 
-    const ids = ['pep-exposuretype', 'pep-hourssinceexposure', 'pep-sourcestatus', 'pep-sourceriskfactors'];
+    const ids = ['pep-exposuretype', 'pep-hourssinceexposure', 'pep-sourcestatus', 'pep-sourceriskfactors', 'pep-state'];
     const o = out(); root.appendChild(o);
     wire(ids, () => safe(o, () => {
       const r = P.hivPepOccupational({
@@ -75,6 +79,7 @@ export const renderers = {
         hoursSinceExposure: val('pep-hourssinceexposure'),
         sourceStatus: val('pep-sourcestatus'),
         sourceRiskFactors: checked('pep-sourceriskfactors'),
+        state: val('pep-state'),
       });
       if (!r.valid) {
         note(o, r.message);
@@ -91,6 +96,7 @@ export const renderers = {
       if (r.timingNote) note(o, r.timingNote);
       if (r.noTieringNote) note(o, r.noTieringNote);
       if (r.followUpNote) note(o, r.followUpNote);
+      if (r.nyNote) note(o, r.nyNote);
       note(o, r.intactSkinNote);
       note(o, r.noDrugNote);
       note(o, r.scopeNote);

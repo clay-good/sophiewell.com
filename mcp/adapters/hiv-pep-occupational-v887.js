@@ -16,6 +16,7 @@ export default [
       { dom: 'pep-hourssinceexposure', arg: 'hoursSinceExposure', kind: 'number', required: false, label: 'Hours since the exposure', unit: 'h' },
       { dom: 'pep-sourcestatus', arg: 'sourceStatus', kind: 'enum', required: false, label: 'Source HIV status', values: ['positive', 'unknown', 'negative'] },
       { dom: 'pep-sourceriskfactors', arg: 'sourceRiskFactors', kind: 'boolean', required: false, label: 'Risk factors for HIV are known in the source (relevant only when the status is unknown)' },
+      { dom: 'pep-state', arg: 'state', kind: 'enum', required: false, label: 'State line (optional)', values: ['NY'] },
     ],
   },
 ];

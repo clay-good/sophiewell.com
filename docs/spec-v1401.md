@@ -143,3 +143,11 @@ unchanged with the line off.
 10-day observation starting at the exposure, or euthanized and tested; a free-roaming high-risk
 animal is euthanized and tested. The plan's 45-day confinement and the skunk/bat reservoir note come
 from the DSHS guide, which was not read, so they are not printed. The national tree is unchanged.
+
+`hiv-pep-occupational` has an optional New York line (built 2026-09-19) from the NYSDOH AIDS
+Institute guideline *PEP to Prevent HIV Infection* (updated December 5, 2025), which covers
+occupational exposures: start ideally within 2 hours and no later than 72, a 28-day course, and HIV
+tests at baseline, 4, and 12 weeks. **Changed from the plan:** the plan listed the preferred regimen
+(BIC/FTC/TAF), but this tile's contract, pinned by a test, is that it names no drug, dose, or regimen.
+So the line says NYSDOH names a preferred regimen and does not print it. `npep-2025` gives CDC's
+regimens.
