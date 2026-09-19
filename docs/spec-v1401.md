@@ -158,3 +158,11 @@ children, and **sets no timeframe of its own**. The timeframe goals belong to ea
 and the line says so, as the plan required. **Changed from the plan:** the six adult and three pediatric
 "elements" the plan listed come from the NYSDOH reporting data dictionaries, which were not read, so
 the line cites the regulation's five components instead.
+
+`qbl-pph` now says in its note that it does not reproduce the CMQCC hemorrhage stages, because CMQCC's
+Terms of Use bar derivative works of its content (read 2026-09-19). One thing the plan missed: the
+tile's admission risk tier is labeled "per CMQCC". That label is not changed here; whether it should be
+is a separate question.
+
+With that, Part B's nine rows are done except the New York City, New York State, and Texas lead lines,
+which were not read.

@@ -20,3 +20,8 @@ test('below threshold, no instability -> no PPH; high tier at >=2 risk factors',
 test('tare cannot exceed pad grams', () => {
   assert.throws(() => qblPph({ padGrams: 100, dryTareGrams: 200 }));
 });
+
+// spec-v1401 Part B: the note says why the CMQCC stages are not reproduced.
+test('qbl-pph: the note names the CMQCC terms', () => {
+  assert.match(qblPph({ measuredMl: 500, padGrams: 0, dryTareGrams: 0, riskFactors: 0 }).note, /does not reproduce the CMQCC hemorrhage stages/);
+});
