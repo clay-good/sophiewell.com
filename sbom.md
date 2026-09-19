@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `a09a5482ccecbe49`
-Generated: 2026-09-19T11:46:54.670Z
+Build ID: `27b953774290ba74`
+Generated: 2026-09-19T12:02:40.937Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -824,7 +824,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/schobinger-avm-v497.js` | 3484 | `fd7d680fede1965fd9a9026d0977e4f2c1970e30d33718df3daaca235dfed009` |
 | `lib/schofield-v779.js` | 4325 | `7c398e3b1dc2df66c5323baee0f73ff66c28927fb47a72ede85dfd51d2de4931` |
 | `lib/schwab-england-v385.js` | 4331 | `caddd0709826db63186ebf0a5f8b60fd9a3e00fa934bddc3e0331977f70c5e4b` |
-| `lib/scoring-v4.js` | 296833 | `a02dbcfb87123ca43b5eda11ca321302f224818d666c49614283d47ad2c1988c` |
+| `lib/scoring-v4.js` | 298631 | `7712562ff515ef7e4533b61040ddadd633f7ded7d7bb9e2f3500d04fb6a1d946` |
 | `lib/scoring-v5.js` | 13821 | `89b532534c64d0e47a4c2e7978ec5d68f1a6d101c61ac586056a0764b8d05039` |
 | `lib/scoring-v6.js` | 27427 | `ed570d8507d63371de2181a97743f8ee1f40e2042eedba9dac2216ed247d6fad` |
 | `lib/scp-pushing-v562.js` | 12399 | `6da019a04668722b7a8d448b4d7bf9908717629b72e4a162088e74363ad62360` |
@@ -1701,7 +1701,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/schobinger-avm-v497.js` | 1471 | `0e96c8f38f6ed7c8f2a129d4349ae06ac6bb152a8bf30b388b2c4941698a5dcc` |
 | `mcp/adapters/schofield-v779.js` | 1203 | `877117e8b9a4659faa3164c628509cfa5855c8a9acdebe84b8e4cf9af11a560a` |
 | `mcp/adapters/schwab-england-v385.js` | 1556 | `125267e4471b20f3f10007b2da0571554dae5b38565b79df05008e9e23a696be` |
-| `mcp/adapters/scoring-v4.js` | 160331 | `f8a7eef8cabb368469ea65dc45633dd7cbb5bf8c55503e68ecde4017c28ef491` |
+| `mcp/adapters/scoring-v4.js` | 160458 | `7d17469212fe0822f3131c9b204d490ca365bc9310917988c581c13b21521687` |
 | `mcp/adapters/scoring-v5.js` | 12908 | `896f43c3f88f9c53b1179e785443096da266140f0bd58c076e9823a40075eaae` |
 | `mcp/adapters/scoring-v6.js` | 20279 | `27326c97bbc73fc72e19349719020e64da57d56b46742e4d03f92b42316d9030` |
 | `mcp/adapters/scp-pushing-v562.js` | 5791 | `79ec7c5fbd7258c6647f6679be5fd535867c03246e6fd071d291393ab8705fed` |
@@ -1872,7 +1872,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-e.js` | 50625 | `73428840b9c688e3f7cd616a21488befc180c5983bc7097691e2f8f07ef92891` |
 | `views/group-f.js` | 54290 | `93098b21bd8a2bab4a67ae2cfcc6c3c10d2b59ab9c39fe26a744845b93b96cb7` |
 | `views/group-g.js` | 249995 | `e30d3361117b4756f6858abc1d6af009abfde62b03c6addf7342c55159345ee9` |
-| `views/group-h.js` | 30927 | `c5d2e4c2ded7c81defbc22018ec759ca79442b303bde3394aba14da24872b109` |
+| `views/group-h.js` | 31471 | `1d88dbeab6cba2090ab69b000c491e89739853e6667bb2ef58b93f705a197dd2` |
 | `views/group-i.js` | 25808 | `e791f223531f946189558bdcb6e950e47ac4c90ded2392e568c4f7458df2c636` |
 | `views/group-j.js` | 9024 | `7d8ad642f932ac040e85c1c2c4b35cc0b20acd2d81415ad7740e547b845fdae2` |
 | `views/group-klmno.js` | 7372 | `c861d44056fed12dd72a01398ea556e5ed560af424f8c0a20ccfee12bc56eeaf` |

@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Restraint timer: a New York OMH line.** In an OMH psychiatric setting, the
+  order limits are 4 hours for adults, 1 hour for ages 9 to 17, and 30 minutes
+  under 9 (14 NYCRR 526.4), with RN assessment every 30 minutes. They are shown
+  beside CMS's intervals. See docs/spec-v1401.md.
+
 - **Blood lead: a California line.** Choose California and a capillary result gets
   its venous confirmation window from CDPH's 2023 guidelines (for example, 12
   micrograms per deciliter within 1 month). The national answer is unchanged. See

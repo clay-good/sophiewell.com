@@ -326,6 +326,10 @@ export const renderers = {
     ]));
     root.appendChild(f29d('Patient age (years)', 'rt-age'));
     root.appendChild(f29d('Restraint order at (timestamp)', 'rt-ts', { type: 'datetime-local' }));
+    root.appendChild(s29d('New York OMH psychiatric setting (optional state line)', 'rt-ny', [
+      { value: '', text: 'No state line' },
+      { value: 'yes', text: 'Yes: apply 14 NYCRR 526.4' },
+    ]));
     const o = out(); root.appendChild(o);
     const run = () => safe29d(o, () => {
       // spec-v1043: the renewal interval is banded on the age -- 4 h at 18 and
@@ -341,14 +345,17 @@ export const renderers = {
         type:           v29d('rt-type'),
         ageYears:       rtAge,
         orderTimestamp: v29d('rt-ts'),
+        nyOmh:          v29d('rt-ny'),
       });
       o.appendChild(el('h2', { text: `Next renewal: ${r.nextRenewalIso}` }));
       o.appendChild(el('p', { text: `Next nursing re-assessment: ${r.nextReassessIso}` }));
       if (r.nextFaceToFaceIso) o.appendChild(el('p', { text: `Next physician / LIP face-to-face: ${r.nextFaceToFaceIso}` }));
+      if (r.nyOrderExpiresIso) o.appendChild(el('p', { text: `New York OMH: order expires ${r.nyOrderExpiresIso}; RN/NP/PA assessment by ${r.nyAssessIso}; consult the medical director by ${r.nyConsultIso} if it continues.` }));
       for (const b of r.banners) o.appendChild(el('p', { class: 'clinical-notice', text: b }));
     });
     ['rt-age', 'rt-ts'].forEach((id) => document.getElementById(id).addEventListener('input', run));
     document.getElementById('rt-type').addEventListener('change', run);
+    document.getElementById('rt-ny').addEventListener('change', run);
   },
 
   // spec-v29 sec 4.14.1 wave 29-3d: Surviving Sepsis bundle clock.

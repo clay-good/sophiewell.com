@@ -129,3 +129,11 @@ that. The New York, NYC, and Texas lead lines were not read.
 Still open in Part B: the state lines for
 `restraint-timer`, `hiv-pep-occupational`, `sepsis-bundle-clock`, and `rabies-pep`, and the
 `qbl-pph` CMQCC sentence (the CMQCC terms were not read).
+
+`restraint-timer` has an optional New York OMH line (built 2026-09-19), read from 14 NYCRR 526.4
+(amended effective June 4, 2014). The rule settles the plan's question: orders last no more than
+**4 hours for adults, 1 hour for ages 9 to 17, and 30 minutes under 9**, and manual restraint 30
+minutes at any age. That is stricter than CMS's 4/2/1 for minors, so both are shown. An RN, NP, or
+PA assesses at least every 30 minutes, and the medical director is consulted past 2 hours (adults),
+1 hour, or 30 minutes. It applies to violent or self-destructive restraint only. The CMS answer is
+unchanged with the line off.

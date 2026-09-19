@@ -2002,6 +2002,7 @@ export default [
       { dom: 'rt-type', arg: 'type', kind: 'enum', values: ['violent', 'non-violent'], required: true, label: 'Restraint type' },
       { dom: 'rt-age', arg: 'ageYears', kind: 'number', required: true, label: 'Patient age', unit: 'years' },
       { dom: 'rt-ts', arg: 'orderTimestamp', kind: 'string', required: true, label: 'Restraint order at (ISO timestamp)' },
+      { dom: 'rt-ny', arg: 'nyOmh', kind: 'enum', values: ['', 'yes'], label: 'New York OMH psychiatric setting (optional)' },
     ],
   },
 

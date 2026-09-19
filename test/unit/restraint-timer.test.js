@@ -31,3 +31,17 @@ test('Rejects unknown type or missing timestamp', () => {
   assert.throws(() => restraintTimer({ type: 'foo', ageYears: 40, orderTimestamp: T }));
   assert.throws(() => restraintTimer({ type: 'violent', ageYears: 40 }));
 });
+
+// spec-v1401 Part B: the New York OMH line (14 NYCRR 526.4) only when chosen.
+test('restraint-timer: NY OMH 1 h order for a 12-year-old beside CMS 2 h; off by default', () => {
+  const base = { type: 'violent', ageYears: 12, orderTimestamp: '2026-09-19T10:00' };
+  const off = restraintTimer(base);
+  assert.equal(off.nyOrderExpiresIso, null);
+  const ny = restraintTimer({ ...base, nyOmh: 'yes' });
+  assert.equal(ny.nextRenewalIso, off.nextRenewalIso);
+  assert.match(ny.nyOrderExpiresIso, /T11:00/);
+  assert.match(ny.nyAssessIso, /T10:30/);
+  assert.match(ny.banners.join(' '), /30 min at any age/);
+  assert.match(restraintTimer({ ...base, ageYears: 7, nyOmh: 'yes' }).nyOrderExpiresIso, /T10:30/);
+  assert.match(restraintTimer({ ...base, ageYears: 40, nyOmh: 'yes' }).nyOrderExpiresIso, /T14:00/);
+});
