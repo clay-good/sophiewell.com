@@ -10,6 +10,7 @@ import { loadFile } from '../lib/data.js';
 import { renderTable } from '../lib/table.js';
 import { renderDecisionTree } from '../lib/tree.js';
 import { tbTstInterpret } from '../lib/tb-testing.js';
+import { RABIES_STATES, rabiesStateLine } from '../lib/rabies-state-lines-v1401.js';
 
 function out() { return el('div', { id: 'q-results', 'aria-live': 'polite' }); }
 function num(id) { return Number(document.getElementById(id).value); }
@@ -55,6 +56,17 @@ export const renderers = {
   },
 
   'rabies-pep'(root) {
+    // spec-v1401 Part B: an optional state line; the national tree below is unchanged.
+    const stWrap = el('p');
+    stWrap.appendChild(el('label', { for: 'rab-state', text: 'State line (optional)' }));
+    stWrap.appendChild(el('br'));
+    const stSel = el('select', { id: 'rab-state' });
+    for (const s of RABIES_STATES) stSel.appendChild(el('option', { value: s.value, text: s.text }));
+    stWrap.appendChild(stSel);
+    root.appendChild(stWrap);
+    const stNote = el('p', { class: 'muted', 'aria-live': 'polite' });
+    root.appendChild(stNote);
+    stSel.addEventListener('change', () => { stNote.textContent = rabiesStateLine(stSel.value) || ''; });
     const region = el('div', { id: 'q-results', role: 'region' });
     root.appendChild(region);
     loadFile('rabies-pep', 'rabies.json').then((d) => {

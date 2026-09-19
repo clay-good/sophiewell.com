@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Rabies PEP: a Texas line.** Choose Texas to see the 10-day observation rule for a
+  dog, cat, or ferret that bit someone (25 TAC 169.27). The national decision tree
+  is unchanged. See docs/spec-v1401.md.
+
 - **Restraint timer: a New York OMH line.** In an OMH psychiatric setting, the
   order limits are 4 hours for adults, 1 hour for ages 9 to 17, and 30 minutes
   under 9 (14 NYCRR 526.4), with RN assessment every 30 minutes. They are shown

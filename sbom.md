@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `27b953774290ba74`
-Generated: 2026-09-19T12:02:40.937Z
+Build ID: `9bbe159c14a55602`
+Generated: 2026-09-19T12:29:50.469Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -755,6 +755,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/query-compute.js` | 18609 | `ba68703b5e8cae2b887d6db070f1a7384f2b90bef9a8b6e50ea5a5e6aaafb086` |
 | `lib/query-fill.js` | 32636 | `abd66d6a846a1a9211623ec57e8103f6ee35db9078c98adc886600b4d68e592a` |
 | `lib/quintero-ttts-v831.js` | 7169 | `8bd66030eb9be4038678fa55fed7bd436ac4d270b80ee4a39a3985be26909a48` |
+| `lib/rabies-state-lines-v1401.js` | 1657 | `cab5e3c774450bde2fed9c560f18d5f7f73d143c3c06001b453443766668a0f9` |
 | `lib/rachs1-v541.js` | 11732 | `944dd6c129fc7be3fa30d47d26323eb6e18f01615a5698fafc18e9ddc3ab328e` |
 | `lib/radiology-v165.js` | 15548 | `c7b288226b44e662d8476d30159c3e7f68d46b55ea7f05104a71e16c1d2ffc7b` |
 | `lib/radmeasure-v253.js` | 7140 | `6e438d606d573be5431eb6ec9d0575353297d97ed8f255aa7afb6c7f86c7197c` |
@@ -1874,7 +1875,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-g.js` | 249995 | `e30d3361117b4756f6858abc1d6af009abfde62b03c6addf7342c55159345ee9` |
 | `views/group-h.js` | 31471 | `1d88dbeab6cba2090ab69b000c491e89739853e6667bb2ef58b93f705a197dd2` |
 | `views/group-i.js` | 25808 | `e791f223531f946189558bdcb6e950e47ac4c90ded2392e568c4f7458df2c636` |
-| `views/group-j.js` | 9024 | `7d8ad642f932ac040e85c1c2c4b35cc0b20acd2d81415ad7740e547b845fdae2` |
+| `views/group-j.js` | 9772 | `3d385d6dcdab8056e141328e465235e8e45cbbd9c52fdb87e730ad9adf145541` |
 | `views/group-klmno.js` | 7372 | `c861d44056fed12dd72a01398ea556e5ed560af424f8c0a20ccfee12bc56eeaf` |
 | `views/group-v10.js` | 39171 | `84da9bdd8a68f73321b851da3c1dfa1ef5206989d44d06e6b1541cfa98545692` |
 | `views/group-v1061.js` | 2720 | `89e9eb196bceb0f67c97c0f9b9aefd0c0820f913ffc6b556d7a5aa809c7b9d25` |

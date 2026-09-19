@@ -137,3 +137,9 @@ minutes at any age. That is stricter than CMS's 4/2/1 for minors, so both are sh
 PA assesses at least every 30 minutes, and the medical director is consulted past 2 hours (adults),
 1 hour, or 30 minutes. It applies to violent or self-destructive restraint only. The CMS answer is
 unchanged with the line off.
+
+`rabies-pep` has an optional Texas line (built 2026-09-19) from 25 TAC 169.27 (as last amended March
+31, 2013): a dog, cat, or domestic ferret that bit someone is quarantined, vaccinated or not, for a
+10-day observation starting at the exposure, or euthanized and tested; a free-roaming high-risk
+animal is euthanized and tested. The plan's 45-day confinement and the skunk/bat reservoir note come
+from the DSHS guide, which was not read, so they are not printed. The national tree is unchanged.
