@@ -183,6 +183,8 @@ export const renderers = {
       if (!r.valid) { note(o, r.message); return; }
       answer(o, r, r.abnormal);
       list(o, r.oralItems);
+      note(o, r.comprehensiveNote);
+      note(o, r.timelineNote);
       note(o, 'Protections:');
       list(o, r.protections);
       note(o, r.orderNote);

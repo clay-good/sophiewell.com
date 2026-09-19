@@ -705,6 +705,6 @@ carries the specific date that could change it.
 | mandatory-overtime-check | NY Labor Law 167; N.J.S.A. 34:11-56a33; TX HSC 258.002-258.005 | NY, NJ, TX | 2026-09-19 | NJ FindLaw text current as of 2024-01-01 | 2027-01-02 |
 | staffing-committee-check | NY PHL 2805-t; TX HSC 257.004 | NY, TX | 2026-09-19 | read on nysenate.gov and the official mirror | 2027-01-02 |
 | tx-workplace-violence-plan-audit | HSC 331.002-331.004 | TX | 2026-09-19 | SB 240 (2023) | 2027-06-01 |
-| tx-safe-harbor-decision-aid | Occ. Code 303.005 | TX | 2026-09-19 | 22 TAC 217.20 not read | 2027-06-01 |
+| tx-safe-harbor-decision-aid | Occ. Code 303.005; 22 TAC 217.20 | TX | 2026-09-19 | 217.20 as amended 2019-10-22 (Cornell LII copy) | 2027-06-01 |
 | nursing-home-staffing-check | NY PHL 2895-b; N.J.S.A. 30:13-18; CA HSC 1276.65 | NY, NJ, CA | 2026-09-19 | NJ FindLaw text current as of 2024-01-01 | 2027-01-02 |
 | reportable-condition-urgency | CA 17 CCR 2500 list (June 2025); TX DSHS Notifiable Conditions 2026 | CA, TX | 2026-09-19 | TX list expires 2026-12-31 and is reissued each January | 2027-01-02 |

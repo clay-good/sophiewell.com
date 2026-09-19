@@ -50,3 +50,16 @@ test('nursing home: NJ shift ratios, half the evening staff CNAs', () => {
   assert.equal(nh({ state: 'NJ', census: '40', shift: 'night', cnas: '3', licensed: '0' }).meets, true);
   assert.equal(nh({ state: 'NJ', census: '', shift: 'night', cnas: '3', licensed: '0' }).valid, false);
 });
+
+// spec-v1396: Board rule 22 TAC 217.20 deadlines and the limit on declining.
+test('safe harbor: 217.20 -- end-of-shift comprehensive request, 14 days, 48 hours', () => {
+  const r = sh({ canWrite: 'yes', plan: 'proceed' });
+  assert.match(r.comprehensiveNote, /Before you leave at the end of your shift/);
+  assert.match(r.timelineNote, /14 calendar days/);
+  assert.match(r.timelineNote, /48 hours/);
+  assert.match(r.protections.join(' '), /ends 48 hours after you are told/);
+  assert.doesNotMatch(r.limitsNote, /not applied/);
+  const d = sh({ canWrite: 'yes', plan: 'refuse' });
+  assert.match(d.protections.join(' '), /only if you lack the basic knowledge/);
+  assert.doesNotMatch(r.protections.join(' '), /only if you lack/);
+});

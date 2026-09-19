@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Texas Safe Harbor: the Board rule's deadlines.** The decision aid now applies
+  22 TAC 217.20: the comprehensive request before leaving at the end of the shift,
+  the committee decision within 14 days, the CNO's notice within 48 hours, and
+  when a nurse may decline. See docs/spec-v1396.md.
+
 - **Nurse-to-patient ratio check: California acute psychiatric hospitals.** Two new
   unit types follow CDPH's emergency rule 22 CCR 71215.1 (from June 1, 2026): 1
   licensed nurse per 6 adults and per 5 patients under 18. See docs/spec-v1396.md.

@@ -150,3 +150,19 @@ rulemaking DPH-19-001E (text dated May 7, 2026; OAL file 2026-0522-01EFP; effect
 - An emergency rule lasts no more than 180 days unless readopted. The citation ledger's next
   review is November 28, 2026, and the tool tells the reader to check that the rule is still in
   force.
+
+## Built (2026-09-19): Safe Harbor deadlines from 22 TAC 217.20
+
+`tx-safe-harbor-decision-aid` now applies the Board of Nursing rule, read on Cornell LII (last
+amended effective October 22, 2019). The Secretary of State copy still did not load.
+
+- The comprehensive written request (six items) is due before the nurse leaves the work setting at
+  the end of the work period, (d)(4). The plan's "end of shift" matches.
+- The committee decides within **14 calendar days** of the request, and the CNO tells the nurse
+  within **48 hours** of receiving the decision, (i)(1)-(2). Board protection for doing the assignment
+  ends 48 hours after the nurse is told; protection from retaliation does not, (i)(3).
+- **Changed from the plan:** the rule also limits declining. A nurse may decline pending review only
+  for lack of basic competence that would put patients at unjustifiable risk, or for unprofessional or
+  criminal conduct, (g)(1). The tool now says so when the nurse plans to decline.
+- The rule applies where an employer regularly uses 8 or more nurses, (c)(1), and Safe Harbor must be
+  invoked before the assignment is done, (d)(1).

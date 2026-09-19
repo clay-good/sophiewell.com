@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `a150b5cedd4a5478`
-Generated: 2026-09-19T13:38:11.437Z
+Build ID: `61fd8de082daf6e0`
+Generated: 2026-09-19T13:44:16.268Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -547,7 +547,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/membranous-risk-v878.js` | 11351 | `882c36c07e46543e32f1114792c1124ee9f9ff6b384084fc0a8c221e7dd62062` |
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2530206 | `a4f16d19db91833e7bd296a338b7b874eb79d5817906c0bd72eed1ed55631d33` |
+| `lib/meta.js` | 2530306 | `16567616748cb13571cf39babd1f97bb03d33e1b4c15cc7f496f186ec504fd92` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 18806 | `adc0fb95d01f23df9eb461cdbb6a6f48b5f3f3ff2f4cb2a8770903ce31d5f6cc` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -927,7 +927,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/tx-prescriptive-authority-agreement-v1397.js` | 5802 | `4928006b716b8dd67f6e7c74c737d64dcdcc71ee6d88ba5486ef2ac21832d0bf` |
 | `lib/tx-protective-custody-hearing-clock-v1389.js` | 6267 | `72473c16120e700ece8f6a47a12c1793386eef2f78becc1d8be5b34ceb1ab17d` |
 | `lib/tx-sa-forensic-exam-window-v1395.js` | 5610 | `5b43e7521dd308d9e3b592d78272c1ceaef99fe4312942dd86dc9dc33dad5a8d` |
-| `lib/tx-safe-harbor-decision-aid-v1396.js` | 5025 | `118f7f10f99076636e4bb579648706fb593d66754bba3410719eed88216e7d5c` |
+| `lib/tx-safe-harbor-decision-aid-v1396.js` | 7671 | `94e76b8e37c24c3d8437f00d5c5cddcd976bd463a0bed13cc2548ab9431fe674` |
 | `lib/tx-surrogate-consent-hierarchy-v1391.js` | 6620 | `f8931821cdaf85ee6178400ea59d100d517823109f8a4d4b6a00d1647b74a82d` |
 | `lib/tx-workplace-violence-plan-audit-v1396.js` | 4167 | `80a58bfe78ef75de20b0dd9f84bd68ea8b1ff556c44477ac9bd540e219990cdb` |
 | `lib/ucsf-hcc-v686.js` | 4651 | `e3ab017b2a8c51ff6885b2fbc5cc002d26cd8372d3ca08ce0cc5929453283d70` |
@@ -1796,7 +1796,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/tx-prescriptive-authority-agreement-v1397.js` | 2736 | `548f541ab997716e480c6d16ace644ad8b23ed60d8719aee1727633724db7c71` |
 | `mcp/adapters/tx-protective-custody-hearing-clock-v1389.js` | 1187 | `9a9a61f02b415ab24a1c493bd1d0c326c19258ff42611c7ecba4746839f65632` |
 | `mcp/adapters/tx-sa-forensic-exam-window-v1395.js` | 1380 | `3e9b5549aa066f85832395e855604376e0b7f56a5dd7db0dc18165958baef622` |
-| `mcp/adapters/tx-safe-harbor-decision-aid-v1396.js` | 1107 | `167b6caa08a30320d0211b3b20add3411a6f93cdbc2eea2d1393ef8314cbcafc` |
+| `mcp/adapters/tx-safe-harbor-decision-aid-v1396.js` | 1304 | `dd65dfda464be4b3c209c773515425fa106ad88cb989a46f6ffff88d157466bd` |
 | `mcp/adapters/tx-surrogate-consent-hierarchy-v1391.js` | 1852 | `58d4845c6858169b72cb4916231cbb085f22233640bef8e6f4a78285665fa80f` |
 | `mcp/adapters/tx-workplace-violence-plan-audit-v1396.js` | 2860 | `ac8b533ed9509d746742709222824d3d69cc282e02301c91f0d74661f30d56bf` |
 | `mcp/adapters/ucsf-hcc-v686.js` | 1505 | `4096fd6e59644ec20492460a57b2ad6e656be11dcceefabdc132d21cd01a3c34` |
@@ -1917,7 +1917,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1393.js` | 7907 | `8857c26b34755a4d018e58d965df708a386700e222facb4dcc2b5a6584440933` |
 | `views/group-v1394.js` | 8245 | `900cdcd3f81d249c5aa89c7d57add9a7b1097f816b9ffa9a5ae741ce2b2a74e6` |
 | `views/group-v1395.js` | 10046 | `9f8236af8aca9ed5dd87e55aa233a0f2e19f134f39b46ea7601955554a2359bd` |
-| `views/group-v1396.js` | 12948 | `6ced5bbc33db53990b1bec5eb603ab2952202397bf3fdb3a9a20b47dff32ac4c` |
+| `views/group-v1396.js` | 13015 | `0f6e9f902b07c66f2c0db1ebaa9adc73b546c2a8aa454049211dc52030578362` |
 | `views/group-v1397.js` | 10420 | `e17332f0f5a97b7dc6639b06b3c71095a7b5d877cede3ea426239ca17245ba73` |
 | `views/group-v1398.js` | 7537 | `ccd13516de696cd04a6610b11bf446ea3482f77b5ba1c4dc5437054793e8452a` |
 | `views/group-v1399.js` | 5351 | `0b6553fe3afc48a3d4b6636eff175cab434acf5a8cbd198cdbddd3dfde2b7961` |
