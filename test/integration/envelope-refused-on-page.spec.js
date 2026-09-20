@@ -11,6 +11,13 @@
 // applied, its unit select (if any) set to the field's canonical unit, and driven to ten times its
 // ceiling. The page must say why it refused, name a range, and print no null or undefined.
 //
+// spec-v1410: one page load per TOOL, not per field. The per-field version loaded the page twice
+// for every one of 664 fields and took 25 minutes on a CI runner sharing itself with the other
+// catalog sweeps -- over its cap on one run and under it on the next, which is a gate that fails by
+// duration rather than by defect. Fields of the same tool are now driven in one load, each restored
+// to its example value before the next is driven, so every field is read from the page the reader
+// would be looking at.
+//
 // A range slider cannot hold a value past its own max, so the browser clamps it and there is
 // nothing to refuse; those fields are counted and skipped.
 import { test, expect } from '@playwright/test';
@@ -26,7 +33,6 @@ const REFUSED = /plausible range|beyond (?:a plausible|recorded)|outside (?:that
 const LEAK = /(?:^|[^A-Za-z])(?:null|undefined|NaN|-?Infinity)(?![A-Za-z])/;
 
 test('a value past its envelope is refused on the page, with a range and no null', async ({ page }) => {
-  // ~8 minutes alone; the cap is for a CI runner sharing itself with the other catalog sweeps.
   test.setTimeout(2_400_000);
   const rows = candidates().filter((r) => {
     const n = Number(r.ex);
@@ -35,26 +41,30 @@ test('a value past its envelope is refused on the page, with a range and no null
   });
   expect(rows.length).toBeGreaterThan(600);
 
+  const byTool = new Map();
+  for (const r of rows) {
+    if (!byTool.has(r.id)) byTool.set(r.id, []);
+    byTool.get(r.id).push({ dom: r.dom, unit: r.unit, over: String(envelope(r).max * 10) });
+  }
+
   const bad = [];
   let driven = 0;
   let sliders = 0;
   let absent = 0;
-  for (const r of rows) {
-    // A fresh load per row: returning to the same hash keeps the last row's impossible value.
-    await page.goto('/');
-    await page.goto(`/#${r.id}`);
-    const over = String(envelope(r).max * 10);
-    const got = await page.evaluate(async ({ dom, over, unit, example }) => {
+  for (const [id, fields] of byTool) {
+    await page.goto(`/#${id}`);
+    const got = await page.evaluate(async ({ fields, example }) => {
       const wait = (ms) => new Promise((ok) => setTimeout(ok, ms));
-      let f = null;
-      for (let i = 0; i < 40 && !f; i++) { f = document.getElementById(dom); if (!f) await wait(50); }
-      if (!f) return { absent: true };
-      if (f.type === 'range') return { slider: true };
+      const fire = (el) => { el.dispatchEvent(new Event('input', { bubbles: true })); el.dispatchEvent(new Event('change', { bubbles: true })); };
+      const read = () => {
+        const q = document.querySelector('#q-results') || document.querySelector('.screener-result') || document.querySelector('main');
+        return (q ? q.innerText : '').replace(/\s+/g, ' ').trim();
+      };
       // Wait for the worked example to have TAKEN, in app.js's sense (valueTook): a select filled by
       // a fetch gets its example value re-applied when the options land, and that re-apply stops as
       // soon as anyone else edits a field -- so editing first would race the page's own restore.
-      const took = ([id, v]) => {
-        const n = document.getElementById(id);
+      const took = ([fid, v]) => {
+        const n = document.getElementById(fid);
         if (!n) return false;
         if (n.type === 'checkbox') return true;
         if (n.tagName === 'SELECT' && n.options.length && ![...n.options].some((o) => o.value === String(v))) return true;
@@ -62,37 +72,51 @@ test('a value past its envelope is refused on the page, with a range and no null
       };
       let settled = false;
       for (let i = 0; i < 100 && !settled; i++) { settled = Object.entries(example).every(took); if (!settled) await wait(50); }
-      if (!settled) return { unsettled: Object.entries(example).filter((e) => !took(e)).map(([id]) => id) };
-      const fire = (el) => { el.dispatchEvent(new Event('input', { bubbles: true })); el.dispatchEvent(new Event('change', { bubbles: true })); };
-      const sel = document.getElementById(`${dom}-unit`);
-      if (sel && unit) {
-        const want = String(unit).toLowerCase().replace(/\s+/g, '');
-        const opt = [...sel.options].find((o) => [o.value, o.text].some((s) => String(s).toLowerCase().replace(/\s+/g, '') === want));
-        if (opt) { sel.value = opt.value; fire(sel); }
-      }
-      const read = () => {
-        const q = document.querySelector('#q-results') || document.querySelector('.screener-result') || document.querySelector('main');
-        return (q ? q.innerText : '').replace(/\s+/g, ' ').trim();
-      };
-      // The worked example's answer first (some tools fetch a table before they can compute), then
-      // the value, then a reading that differs from the example's.
+      if (!settled) return { unsettled: Object.entries(example).filter((e) => !took(e)).map(([fid]) => fid) };
+      // And for its answer: some tools fetch a table before they can compute anything.
       for (let i = 0; i < 60 && !read(); i++) await wait(50);
-      const before = read();
-      f.value = over;
-      fire(f);
-      for (let i = 0; i < 40 && read() === before; i++) await wait(50);
-      await wait(100);
-      return { text: read() };
-    }, { dom: r.dom, over, unit: r.unit, example: META[r.id].example.fields });
-    if (got.absent) { absent++; continue; }
-    if (got.unsettled) { bad.push(`${r.id}: the worked example never took (${got.unsettled.join(', ')})`); continue; }
-    if (got.slider) { sliders++; continue; }
-    driven++;
-    const leak = LEAK.exec(got.text);
-    if (leak) bad.push(`${r.id}|${r.dom} = ${over}: prints "${leak[0].trim()}": ${got.text.slice(0, 120)}`);
-    else if (!REFUSED.test(got.text)) bad.push(`${r.id}|${r.dom} = ${over}: not refused: ${got.text.slice(0, 120)}`);
+
+      const out = [];
+      for (const { dom, unit, over } of fields) {
+        const f = document.getElementById(dom);
+        if (!f) { out.push({ dom, absent: true }); continue; }
+        if (f.type === 'range') { out.push({ dom, slider: true }); continue; }
+        const sel = document.getElementById(`${dom}-unit`);
+        const unitWas = sel ? sel.value : null;
+        if (sel && unit) {
+          const want = String(unit).toLowerCase().replace(/\s+/g, '');
+          const opt = [...sel.options].find((o) => [o.value, o.text].some((s) => String(s).toLowerCase().replace(/\s+/g, '') === want));
+          if (opt) { sel.value = opt.value; fire(sel); }
+        }
+        const was = f.value;
+        const before = read();
+        f.value = over;
+        fire(f);
+        for (let i = 0; i < 40 && read() === before; i++) await wait(50);
+        await wait(100);
+        out.push({ dom, over, text: read() });
+        // Put the example back, so the next field of this tool is driven from the reader's page
+        // rather than from the last refusal.
+        f.value = was;
+        fire(f);
+        if (sel && unitWas !== null && sel.value !== unitWas) { sel.value = unitWas; fire(sel); }
+        for (let i = 0; i < 40 && read() !== before; i++) await wait(50);
+      }
+      return { out };
+    }, { fields, example: META[id].example.fields });
+
+    if (got.unsettled) { bad.push(`${id}: the worked example never took (${got.unsettled.join(', ')})`); continue; }
+    for (const row of got.out) {
+      if (row.absent) { absent++; continue; }
+      if (row.slider) { sliders++; continue; }
+      driven++;
+      const leak = LEAK.exec(row.text);
+      if (leak) bad.push(`${id}|${row.dom} = ${row.over}: prints "${leak[0].trim()}": ${row.text.slice(0, 120)}`);
+      else if (!REFUSED.test(row.text)) bad.push(`${id}|${row.dom} = ${row.over}: not refused: ${row.text.slice(0, 120)}`);
+    }
   }
-  console.log(`envelope-refused-on-page: ${driven} driven, ${sliders} sliders, ${absent} not on the page, of ${rows.length}`);
+  console.log(`envelope-refused-on-page: ${driven} driven, ${sliders} sliders, ${absent} not on the page,`
+    + ` of ${rows.length} field(s) across ${byTool.size} tool(s)`);
   expect(driven).toBeGreaterThan(500);
   expect(bad).toEqual([]);
 });
