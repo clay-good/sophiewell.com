@@ -44,7 +44,18 @@ test('each sex is refused below the age of its own cohort', () => {
   assert.match(women.band, /for women was fitted on ages 45 and over/);
   const men = reynoldsRisk({ age: 47, male: true, sbp: 120, totalChol: 260, hdl: 45, hsCrp: 2 });
   assert.equal(men.valid, false);
-  assert.match(men.band, /for men was fitted on ages 50 and over/);
+  assert.match(men.band, /for men was fitted on ages 50 to under 80/);
   // 47 is inside the women's cohort and outside the men's: the floor is not shared.
   assert.equal(reynoldsRisk({ age: 47, male: false, sbp: 120, totalChol: 260, hdl: 45, hsCrp: 2 }).valid, true);
+});
+
+// spec-v1410: the men's paper states a ceiling too -- "men eligible for the current analysis were
+// those younger than 80 at baseline" (Circulation 2008;118:2243-2251). The women's states a floor only.
+test('the men\'s cohort ends below 80; the women\'s has no stated ceiling', () => {
+  const at79 = reynoldsRisk({ age: 79, male: true, sbp: 120, totalChol: 260, hdl: 45, hsCrp: 2 });
+  assert.equal(at79.valid, true);
+  const at80 = reynoldsRisk({ age: 80, male: true, sbp: 120, totalChol: 260, hdl: 45, hsCrp: 2 });
+  assert.equal(at80.valid, false);
+  assert.match(at80.band, /ages 50 to under 80/);
+  assert.equal(reynoldsRisk({ age: 85, male: false, sbp: 120, totalChol: 260, hdl: 45, hsCrp: 2 }).valid, true);
 });

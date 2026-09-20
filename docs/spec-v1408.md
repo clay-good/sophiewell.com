@@ -27,9 +27,10 @@ Eight fields published a range narrower than the envelope with nothing behind it
 0–130, Katch-McArdle's weight 0–400 against 0.3–500, SAPS II's BUN floor 0 against 1). Under
 [spec-v1198](spec-v1198.md)'s rule — a view's ceilings *are* `lib/bounds.js`'s — the view moves.
 
-Four are left standing and recorded here rather than guessed at: `score2-op` (70–100), `mesa-chd`
-(45–85), `reynolds-risk` (30–100), and `pospom` (18 and up) publish a cohort age range on the field
-that no source in this repo states. Each needs its derivation paper read before the library can
+Four were left standing and recorded here rather than guessed at: `score2-op` (70–100), `mesa-chd`
+(45–85), `reynolds-risk` (30–100), and `pospom` (18 and up) published a cohort age range on the
+field that no source in this repo stated. [spec-v1409](spec-v1409.md) and
+[spec-v1410](spec-v1410.md) read the papers and closed all four. Each needs its derivation paper read before the library can
 enforce it; until then the field keeps the narrower hint and the library refuses on the physiologic
 envelope only.
 

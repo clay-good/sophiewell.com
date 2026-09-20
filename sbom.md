@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `50369275d1f9a706`
-Generated: 2026-09-19T22:05:36.542Z
+Build ID: `3f3e68cc51faf2d3`
+Generated: 2026-09-19T23:44:05.400Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -235,7 +235,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/cts6-v773.js` | 3589 | `50ab3a3aa777a4ed12077b73c3a3a3dc707df6ff98e36a7c579aec5451333c8e` |
 | `lib/cuff-leak-v903.js` | 7823 | `0cf0d0afa2741c0d26f357fe35a05cfd0092146f4282d32e3d331b3adad04faa` |
 | `lib/cvrisk-engines-v202.js` | 4552 | `267e28ecb23f930b00527a39a07b2c6159154a0edbb85b4a5e4567c9183daaa2` |
-| `lib/cvrisk-v103.js` | 24789 | `254b13498129059baf35f8fa9435d77e5ed00c5174d9eca994bb092cb623c646` |
+| `lib/cvrisk-v103.js` | 25207 | `a3ee1fe19c69bc0fd5a9492c1329dae65b8b4017c3b16b1d44444542783ae413` |
 | `lib/data.js` | 2448 | `58e3f307653fe83b2a86332e23b71ff2c53ca45a44228ebacf0c4d5ca5a790f9` |
 | `lib/deadline.js` | 7856 | `93735f582e4138816c92193c65ce763375e5137170195f6790f08b5c3eb35e19` |
 | `lib/deauville-v314.js` | 3653 | `06e9bfdbf337b56c341a3ac22ee5452152e62e19faca722bd33f7ae609c78119` |
@@ -704,7 +704,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/pericarditis-v789.js` | 4683 | `99eabe19272eb19555e366e39fbecbb5cbd4e7cbb5a6ad4718e2382830139f80` |
 | `lib/periop-bridging-v899.js` | 10193 | `c6260efebac1e289714316b6120d7d08b7433f494fc13f107bc85fb7e9f595eb` |
 | `lib/periop-frailty-v203.js` | 11619 | `46a48052a301aa028c20cba5da3c25f6c4304d5c1ffdc6a257b66631ba6af15c` |
-| `lib/periop-v97.js` | 23340 | `3bfcd57cdfba4d4ac5047c93ef86431c8752b28575465d72c2640265b979b2eb` |
+| `lib/periop-v97.js` | 23945 | `545ea57301cc767d503ec1b2c3ff2bef55c12007ce2889aae080b5f473897a38` |
 | `lib/peritoneal-cancer-index-v654.js` | 4959 | `dfb0ac27e4ead48e52fe8dcdc2504191d6af91648b178e0bd4e5158a82787152` |
 | `lib/pertussis-case-def-v868.js` | 9756 | `b542e071bc78bd634b448d387f79c2386ea5fd3586664b74903d9988a0456b14` |
 | `lib/pfdi20-v775.js` | 4586 | `c0823651ebde274a1e242f66497336ab0015e1f1a38125d54423f590262cecc2` |
@@ -2015,7 +2015,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v227.js` | 9473 | `4a1912eaee5d05eb0b27353f7268ad1f12e299803c362a2f88277f9f3d4ff4b6` |
 | `views/group-v228.js` | 4887 | `e4dc0e1ca08601b45dad1e520dcf0f90b04bbb188054aabb4fa3e8cb0c59e513` |
 | `views/group-v229.js` | 4406 | `d131e6b19719d2c0847175288dbc99b49f594f425536c8d345a0b5204c1b1043` |
-| `views/group-v23.js` | 14752 | `51e71bc9d6be9b4473b1b9583c8f7e2ffaf6f898ecad950d0624e47449dd0a45` |
+| `views/group-v23.js` | 14858 | `e1472ecc28baa3673bf15b5a11aabfd2226ada02c6bee9b9a0bf62aa892e38a7` |
 | `views/group-v230.js` | 4529 | `d99ecdb819f2174de723ac8c0b86cde4892148031a62035d11ff080ab71e2ed7` |
 | `views/group-v231.js` | 4004 | `8c881755d9a53d35ced0f2596d125c41bdc78560be57b38017847f542d662105` |
 | `views/group-v232.js` | 3609 | `9262ffb9171861ed5868884a4e22571b91e90d9be8281cb43a8a9825c9370e4e` |

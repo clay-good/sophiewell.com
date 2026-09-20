@@ -14,6 +14,7 @@
 import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/periop-v97.js';
 import { resultRow } from '../lib/result-copy.js';
+import { BOUNDS } from '../lib/bounds.js';
 
 function field(label, id, opts = {}) {
   const wrap = el('p');
@@ -279,7 +280,7 @@ export const renderers = {
 
   // ----- 2.5 pospom ------------------------------------------------------
   'pospom'(root) {
-    root.appendChild(field('Age (years)', 'pospom-age', { min: 18, max: 130, placeholder: '70' }));
+    root.appendChild(field(`Age (years, ${M.POSPOM_MIN_AGE} and over)`, 'pospom-age', { min: BOUNDS.ageYears.min, max: BOUNDS.ageYears.max, placeholder: '70' }));
     root.appendChild(selectField('Planned surgery category', 'pospom-surg', M.POSPOM_SURGERY_OPTIONS));
     root.appendChild(el('p', { class: 'muted', text: 'Comorbidities (check all that apply):' }));
     const comorbIds = [];

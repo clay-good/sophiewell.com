@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **POSPOM stops scoring a child as an 18-year-old**, and the Reynolds score for
+  men stops answering past the age its cohort ended at. Both ranges are the ones
+  their papers state. Every risk model in the catalog now refuses outside the people
+  it was built on. See docs/spec-v1410.md.
+
 - **Three more risk models stop answering outside the people they were built on.**
   MESA (45-85), SCORE2-OP (70 and over), and the Reynolds Risk Score (women 45 and
   over, men 50 and over) each quietly pulled an out-of-range age back to the edge

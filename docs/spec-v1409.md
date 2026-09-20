@@ -26,6 +26,5 @@ Two judgment calls, both recorded rather than papered over:
   both ends, so its field keeps it — and reads it from the library's exported constant, so the page
   and the model cannot drift.
 
-`pospom` is the one row left: its field accepts 18 and over, and no source in this repo says the
-model was fitted on adults only. It needs its derivation paper (Le Manach Y et al, *Anesthesiology*
-2016) read before the library can enforce anything.
+`pospom` was the one row left. [spec-v1410](spec-v1410.md) read its paper and closed it, along with
+the men's upper bound below.

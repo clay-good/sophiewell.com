@@ -44,3 +44,12 @@ test('a missing procedure category surfaces valid:false', () => {
   assert.equal(r.valid, false);
   assert.ok(!/NaN/.test(r.band));
 });
+
+// spec-v1410: POSPOM was derived on "patients aged 18 yr or older" (Anesthesiology 2016;124:570-579).
+// A younger age was clamped UP to 18 and scored, so a child was read on the adult table's first band.
+test('an age under 18 is refused, not clamped up to 18', () => {
+  const child = pospom({ age: 10, surgery: 'ophthalmologic' });
+  assert.equal(child.valid, false);
+  assert.match(child.band, /aged 18 years or older/);
+  assert.equal(pospom({ age: 18, surgery: 'ophthalmologic' }).valid, true);
+});
