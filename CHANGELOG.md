@@ -6,6 +6,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Two impossible values that changed nothing now refuse.** SMART-COP read a
+  PaO2/FiO2 ratio of 999,999 exactly like a normal one, and POP-Q staging accepted
+  any point at any distance: an Aa of 50 staged IV at "+50 cm". Each POP-Q point
+  now has the range the system defines for it (Aa and Ap within 3 cm of the hymen,
+  none farther than the vaginal length), and the P/F ratio stops at 1,000. See
+  docs/spec-v1411.md.
+
 - **POSPOM stops scoring a child as an 18-year-old**, and the Reynolds score for
   men stops answering past the age its cohort ended at. Both ranges are the ones
   their papers state. Every risk model in the catalog now refuses outside the people

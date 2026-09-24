@@ -2770,7 +2770,7 @@ export const renderers = {
     ]));
     root.appendChild(el('p', {}, [
       el('label', { for: 'sc-pf', text: 'PaO2/FiO2 (blank if unknown)' }), el('br'),
-      el('input', { id: 'sc-pf', type: 'number', step: 'any', min: '0', value: '400' }),
+      el('input', { id: 'sc-pf', type: 'number', step: 'any', min: '0', max: '1000', value: '400' }),
     ]));
     root.appendChild(checkbox('Arterial pH < 7.35 (2)', 'sc-ph'));
     const o = out(); root.appendChild(o);

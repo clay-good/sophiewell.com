@@ -57,14 +57,14 @@ test('smart-cop refuses an invalid optional oxygenation value even when siblings
   for (const [field, value, pattern] of [
     ['pao2', 999999, /^PaO2 \(mmHg\) must be between 10 and 700/],
     ['spo2', 999999, /^SpO2 \(%\) must be between 0 and 100/],
-    ['pfRatio', -1, /^PaO2\/FiO2 ratio must be at least 0/],
+    ['pfRatio', -1, /^PaO2\/FiO2 ratio must be between 0 and 1000/],
   ]) {
     const result = smartCop({ ...base, [field]: value });
     assert.equal(result.valid, false, field);
     assert.match(result.band, pattern, field);
   }
 
-  assert.equal(smartCop({ ageYears: 55, rr: 20, pfRatio: 999999 }).score, 0);
+  assert.equal(smartCop({ ageYears: 55, rr: 20, pfRatio: 1000 }).score, 0);
 });
 
 test('smart-cop refuses an age outside the repository age envelope', () => {
@@ -76,4 +76,15 @@ test('smart-cop refuses an age outside the repository age envelope', () => {
 
   assert.equal(smartCop({ ageYears: 0, rr: 20, spo2: 96 }).score, 0);
   assert.equal(smartCop({ ageYears: 130, rr: 20, spo2: 96 }).score, 0);
+});
+
+// spec-v1411: a P/F ratio past any a lung can reach is refused, not read as normal.
+test('smart-cop refuses an impossible P/F ratio and keeps the edge', () => {
+  const base = { ageYears: 55, sbpLt90: false, multilobar: false, albuminLt35: false,
+    rr: 20, pao2: 90, spo2: 96, hrGe125: false, confusion: false, phLt735: false };
+  const bad = smartCop({ ...base, pfRatio: 999999 });
+  assert.equal(bad.valid, false);
+  assert.equal(bad.score, null);
+  assert.match(bad.band, /PaO2\/FiO2 ratio must be between 0 and 1000/);
+  assert.equal(smartCop({ ...base, pfRatio: 1000 }).score, 0);
 });
