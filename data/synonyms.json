@@ -9171,6 +9171,17 @@
       ],
       "tile": "ohi-s",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "dean fluorosis index",
+        "community fluorosis index",
+        "cfi fluorosis",
+        "dental fluorosis index",
+        "dean index"
+      ],
+      "tile": "dean-fluorosis-cfi",
+      "audience": "clinicians"
     }
   ]
 }

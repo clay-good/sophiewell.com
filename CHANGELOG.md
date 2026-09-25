@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Community Fluorosis Index (Dean).** The weighted mean of Dean's six fluorosis categories
+  across a surveyed population, read as a public health concern (above 0.6 it is one). See
+  docs/spec-v1484.md.
+
 - **Cairo classification of gingival recession.** RT1 to RT3 from the interproximal and
   buccal attachment loss, beside the Miller classification. See docs/spec-v1482.md.
 

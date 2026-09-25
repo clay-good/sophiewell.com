@@ -8482,6 +8482,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/ohi-s-v1483.js (spec-v1483: Greene-Vermillion Simplified Oral Hygiene Index — clinical disclaimer)
 - `ohi-s`
 
+### lib/dean-fluorosis-cfi-v1484.js (spec-v1484: Dean's Community Fluorosis Index — clinical disclaimer)
+- `dean-fluorosis-cfi`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 
