@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:c68b6bee-ff1c-56e0-8164-d9ae2ec53424",
+  "serialNumber": "urn:uuid:6cb5de68-fcf0-5fa5-8b7d-e23fcf4ca41a",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-25T03:39:43.980Z",
+    "timestamp": "2026-09-25T03:48:16.972Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1814 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1815 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "98ee32ad45bda38c9821c465583a7fccc2b26c88e1184c767388e796f32ac5ca"
+          "content": "a08bbb4436c61adc648c5bd08c51fa746e941708874393f590110eb2b6459b7f"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "116726"
+          "value": "116781"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1533313918cc52df7b952138b916992ebfb6aedce3ffff22df615a2b672939d3"
+          "content": "46783ecf1aeafbf389d15d6e5125b94fbeb2f901988005915fe80ffb7d1f607c"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "538269"
+          "value": "538488"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f68ce37120a3623f72f0ba2e6d90633ad2be1c7c86e6320dfdc1f9876ccc45ed"
+          "content": "e570cb2400e458464c295902b745968e36f14841a75e7985809b97d5cb049cc1"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "226086"
+          "value": "226212"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "25019a8374e1975c2cbdd90246515498199ec5694d53f223a45f9860e803f46d"
+          "content": "fa75ef09008243a7c42f2351d5a830592cc10dd0a76812600cc266831894889c"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "103925"
+          "value": "103985"
         }
       ]
     },
@@ -9464,6 +9464,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/kyoto-gastritis-v1442.js",
+      "type": "file",
+      "name": "lib/kyoto-gastritis-v1442.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d60e5dd2349ca332c0eb60901a4e3764f78fe9e1ba5ae5b9763f634b634a49eb"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3346"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/la-esophagitis-v318.js",
       "type": "file",
       "name": "lib/la-esophagitis-v318.js",
@@ -11087,7 +11108,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ae16954d66d4bd253893eecb965bfd336108629f2c3c2936bf6916eb3dcb7be5"
+          "content": "fb65416060a241e267f82501efa71fc8b3565c7661619b7c800fbe11a86a08cc"
         }
       ],
       "properties": [
@@ -11097,7 +11118,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2556336"
+          "value": "2557128"
         }
       ]
     },
@@ -29099,6 +29120,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/kyoto-gastritis-v1442.js",
+      "type": "file",
+      "name": "mcp/adapters/kyoto-gastritis-v1442.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5ad105d736537efd79f2bae4e077e1f0a24ff8ed2cadc2f96d299555bd3db267"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1188"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/la-esophagitis-v318.js",
       "type": "file",
       "name": "mcp/adapters/la-esophagitis-v318.js",
@@ -39311,7 +39353,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9ffd3e99a0a59c9e25cc5ac90118689b35c2570ae40e8c2e8b0dc1ee9f410797"
+          "content": "6cafe89931b921047661485ac34f19c8337dce9c5b7abfdbbdbb26681fd6b0f2"
         }
       ],
       "properties": [
@@ -39321,7 +39363,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "103347"
+          "value": "103468"
         }
       ]
     },
@@ -41569,6 +41611,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2958"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1442.js",
+      "type": "file",
+      "name": "views/group-v1442.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fa49661d89b8ecf1c8d5000457bc632afebebce54d1ee2ac1e579eb65e8c2fe1"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2728"
         }
       ]
     },
@@ -73057,6 +73120,7 @@
         "urn:sophiewell:file:source:lib/koos-schwannoma-v389.js",
         "urn:sophiewell:file:source:lib/kudo-v334.js",
         "urn:sophiewell:file:source:lib/kwb-retinopathy-v360.js",
+        "urn:sophiewell:file:source:lib/kyoto-gastritis-v1442.js",
         "urn:sophiewell:file:source:lib/la-esophagitis-v318.js",
         "urn:sophiewell:file:source:lib/lab-interpret.js",
         "urn:sophiewell:file:source:lib/lachman-acl-v355.js",
@@ -73686,6 +73750,7 @@
         "urn:sophiewell:file:source:views/group-v144.js",
         "urn:sophiewell:file:source:views/group-v1440.js",
         "urn:sophiewell:file:source:views/group-v1441.js",
+        "urn:sophiewell:file:source:views/group-v1442.js",
         "urn:sophiewell:file:source:views/group-v145.js",
         "urn:sophiewell:file:source:views/group-v146.js",
         "urn:sophiewell:file:source:views/group-v147.js",
@@ -74837,6 +74902,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/koos-schwannoma-v389.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/kudo-v334.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/kwb-retinopathy-v360.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/kyoto-gastritis-v1442.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/la-esophagitis-v318.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lab-interpret.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lachman-acl-v355.js",
@@ -75426,7 +75492,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "c68b6beeff1ce6e0"
+      "value": "6cb5de68fcf04fa5"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -75438,7 +75504,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2693"
+      "value": "2696"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

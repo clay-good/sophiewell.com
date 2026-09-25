@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Kyoto classification of gastritis.** Scores the background gastric mucosa (0 to
+  8) from atrophy, intestinal metaplasia, enlarged folds, nodularity and diffuse
+  redness, against the gastric cancer risk level of 4, and notes that eradication can
+  raise the score through map-like redness. See docs/spec-v1442.md.
+
 - **Wellens syndrome criteria.** Checks a 12-lead tracing against the Wellens
   criteria (the T-wave pattern of critical proximal LAD stenosis), names each
   criterion that fails, and shows that sources disagree on whether cardiac markers

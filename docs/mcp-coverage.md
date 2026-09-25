@@ -8401,6 +8401,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/wellens-criteria-v1441.js (spec-v1441: Wellens syndrome ECG criteria — clinical disclaimer)
 - `wellens-criteria`
 
+### lib/kyoto-gastritis-v1442.js (spec-v1442: Kyoto classification of gastritis score — clinical disclaimer)
+- `kyoto-gastritis`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

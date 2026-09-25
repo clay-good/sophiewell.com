@@ -8861,6 +8861,17 @@
       ],
       "tile": "wellens-criteria",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "kyoto classification",
+        "kyoto score",
+        "kyoto gastritis score",
+        "gastric cancer risk endoscopy score",
+        "kimura takemoto atrophy score"
+      ],
+      "tile": "kyoto-gastritis",
+      "audience": "clinicians"
     }
   ]
 }

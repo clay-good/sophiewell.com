@@ -863,6 +863,7 @@ import ukeldV1438 from './adapters/ukeld-v1438.js';
 import uterineActivityV1439 from './adapters/uterine-activity-v1439.js';
 import strongkidsV1440 from './adapters/strongkids-v1440.js';
 import wellensCriteriaV1441 from './adapters/wellens-criteria-v1441.js';
+import kyotoGastritisV1442 from './adapters/kyoto-gastritis-v1442.js';
 import nurseStaffingRatioCheckV1396 from './adapters/nurse-staffing-ratio-check-v1396.js';
 import caWpvReportClockV1396 from './adapters/ca-wpv-report-clock-v1396.js';
 import mandatoryOvertimeCheckV1396 from './adapters/mandatory-overtime-check-v1396.js';
@@ -1762,6 +1763,7 @@ const ADAPTER_MODULES = [
   ['uterine-activity-v1439', uterineActivityV1439],
   ['strongkids-v1440', strongkidsV1440],
   ['wellens-criteria-v1441', wellensCriteriaV1441],
+  ['kyoto-gastritis-v1442', kyotoGastritisV1442],
   ['nurse-staffing-ratio-check-v1396', nurseStaffingRatioCheckV1396],
   ['ca-wpv-report-clock-v1396', caWpvReportClockV1396],
   ['mandatory-overtime-check-v1396', mandatoryOvertimeCheckV1396],
