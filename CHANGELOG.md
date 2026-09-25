@@ -6,6 +6,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **UKELD.** Computes the UK end-stage liver disease score from INR, creatinine,
+  bilirubin and sodium (entered in mg/dL or umol/L, computed in umol/L as the
+  coefficients require) and compares it with 49, the UK listing threshold. See
+  docs/spec-v1438.md.
+
+- **Uterine activity in labor.** Averages contractions over three 10-minute windows
+  to call tachysystole (more than 5 per 10 minutes) and, with intrauterine pressure
+  values, adds Montevideo units against the 200 used in labor-arrest definitions,
+  noting that frequency alone is a partial assessment. See docs/spec-v1439.md.
+
 - **Two new tools now ask for a blank measurement in words the site's checks read.**
   The adult ETT depth tool answered from sex alone with "Add the height"; it now says
   "Enter the height", and the blood 4-hour window says when no pump rate was entered.

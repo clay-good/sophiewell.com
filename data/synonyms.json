@@ -8817,6 +8817,28 @@
       ],
       "tile": "rcvs2",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "ukeld",
+        "ukeld score",
+        "uk end stage liver disease",
+        "united kingdom model for end-stage liver disease",
+        "uk liver transplant listing score"
+      ],
+      "tile": "ukeld",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "tachysystole",
+        "montevideo units",
+        "mvu calculator",
+        "contractions per 10 minutes",
+        "uterine activity"
+      ],
+      "tile": "uterine-activity",
+      "audience": "clinicians"
     }
   ]
 }

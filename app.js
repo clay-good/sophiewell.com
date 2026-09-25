@@ -802,6 +802,8 @@ import { renderers as RV1433 } from './views/group-v1433.js';
 import { renderers as RV1434 } from './views/group-v1434.js';
 import { renderers as RV1435 } from './views/group-v1435.js';
 import { renderers as RV1436 } from './views/group-v1436.js';
+import { renderers as RV1438 } from './views/group-v1438.js';
+import { renderers as RV1439 } from './views/group-v1439.js';
 import { renderers as RV1396 } from './views/group-v1396.js';
 import { renderers as RV164 } from './views/group-v164.js';
 import { renderers as RV165 } from './views/group-v165.js';
@@ -890,7 +892,7 @@ const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...R
   ...RV902,
   ...RV903,
   ...RV905,
-  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV960, ...RV1061, ...RV1062, ...RV1240, ...RV1241, ...RV1242, ...RV1243, ...RV1400, ...RV1389, ...RV1393, ...RV1397, ...RV1395, ...RV1390, ...RV1391, ...RV1392, ...RV1394, ...RV1399, ...RV1398, ...RV1401, ...RV1396, ...RV1412, ...RV1413, ...RV1414, ...RV1416, ...RV1417, ...RV1418, ...RV1419, ...RV1420, ...RV1421, ...RV1422, ...RV1423, ...RV1424, ...RV1425, ...RV1426, ...RV1427, ...RV1428, ...RV1429, ...RV1430, ...RV1431, ...RV1433, ...RV1434, ...RV1435, ...RV1436, ...RV63, ...RPALINT };
+  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV960, ...RV1061, ...RV1062, ...RV1240, ...RV1241, ...RV1242, ...RV1243, ...RV1400, ...RV1389, ...RV1393, ...RV1397, ...RV1395, ...RV1390, ...RV1391, ...RV1392, ...RV1394, ...RV1399, ...RV1398, ...RV1401, ...RV1396, ...RV1412, ...RV1413, ...RV1414, ...RV1416, ...RV1417, ...RV1418, ...RV1419, ...RV1420, ...RV1421, ...RV1422, ...RV1423, ...RV1424, ...RV1425, ...RV1426, ...RV1427, ...RV1428, ...RV1429, ...RV1430, ...RV1431, ...RV1433, ...RV1434, ...RV1435, ...RV1436, ...RV1438, ...RV1439, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -2849,6 +2851,7 @@ const UTILITIES = [
   // and Category III needs ABSENT variability, not minimal. views/group-v912.js,
   // lib/nichd-fhr-v912.js, mcp/adapters/nichd-fhr-v912.js.
   { id: 'nichd-fhr', name: 'NICHD fetal heart rate category (I, II, III)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'uterine-activity', name: 'Uterine Activity (Tachysystole and Montevideo Units)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 
   // spec-v920: the reference change value. A change inside it is never reported as stable.
   // views/group-v920.js, lib/reference-change-value-v920.js,
@@ -3466,6 +3469,7 @@ const UTILITIES = [
   // views/group-v190.js (RV190). PALBI grade, MELD-Na, Clichy criteria, Rome IV IBS.
   { id: 'palbi',                name: 'PALBI (Platelet-Albumin-Bilirubin) Grade',         group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'meld-na',              name: 'MELD-Na (Sodium-Augmented MELD)',                  group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ukeld', name: 'UKELD (UK End-Stage Liver Disease Score)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'clichy',               name: 'Clichy Criteria for Acute Liver Failure',          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'rome-iv-ibs',          name: 'Rome IV Criteria for Irritable Bowel Syndrome',    group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   // spec-v191: four dermatology / urology severity & staging instruments.

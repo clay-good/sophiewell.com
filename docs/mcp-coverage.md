@@ -8389,6 +8389,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/rcvs2-v1436.js (spec-v1436: RCVS2 reversible cerebral vasoconstriction score — clinical disclaimer)
 - `rcvs2`
 
+### lib/ukeld-v1438.js (spec-v1438: UKELD United Kingdom end-stage liver disease score — clinical disclaimer)
+- `ukeld`
+
+### lib/uterine-activity-v1439.js (spec-v1439: uterine activity: tachysystole and Montevideo units — clinical disclaimer)
+- `uterine-activity`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 
