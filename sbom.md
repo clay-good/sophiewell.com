@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `2fb33d95c09f84dd`
-Generated: 2026-09-25T09:30:36.980Z
+Build ID: `c6e154795b3a71ef`
+Generated: 2026-09-25T09:59:01.618Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -489,7 +489,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/keyboard.js` | 4876 | `631f85b7b49a68ca7aa8e3c3d31cfbfbefb44360a5aace83305ed27d5e0d8ee0` |
 | `lib/keywords.js` | 2715 | `8ba3e40698eaf14947556b0d2078f168a99e8589644808057fa1b453d903a742` |
 | `lib/kikuchi-v333.js` | 4405 | `72627d9482ffa26501879c46ba68e3d7bf6f4adfb2894f5a4ffc8463ee1cf2d7` |
-| `lib/kings-college-nonapap-v910.js` | 9602 | `bf81d1bffcab9c017dbfc229c14dfebc882809d72f261d90a0f290df34f63bf6` |
+| `lib/kings-college-nonapap-v910.js` | 9902 | `f0d91d0e6dd84705b7048acd18c9cb009b8807cc886edbadb828a84e80ca7a74` |
 | `lib/kings-score-v697.js` | 3857 | `3bf0ec8be51374e0ab8b152e018159b69ec68de7fb2757b47d6dbf7478350eeb` |
 | `lib/knosp-adenoma-v390.js` | 4212 | `9f64fa144eeffdd48112251eeb84c7514e44b4df370ae0c646e8289c5da13cce` |
 | `lib/kobayashi-kawasaki-v680.js` | 6369 | `c5f9a1c3c519359ee4c368dde0e1473b39b40ca230fff164828c1bfc27f9175e` |
@@ -576,7 +576,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/membranous-risk-v878.js` | 11351 | `882c36c07e46543e32f1114792c1124ee9f9ff6b384084fc0a8c221e7dd62062` |
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2576595 | `32001f32ceb8195e23307086d1f28270c2f04948a51b9f5a4b5403f894bf189f` |
+| `lib/meta.js` | 2576613 | `b27b8b6f23747d3b588de1c02f674404f37b5450821eec9bebfa8d15fae7c2d6` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 19326 | `64342935cc7842381f6e318293cfcd6f97b69022268da6c595c5c71db388af2d` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -734,7 +734,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/peds-growth-v141.js` | 13014 | `47eb194a4f8eb9cc7007429c7843e48cd7fa8780ebcd8a2201bd119f78eb154d` |
 | `lib/peds-percentile-v169.js` | 8290 | `dbaec78619e7c9190044c9cdb8ecd8a2bb03a871f351e0454a06e1c5b816e9b0` |
 | `lib/peds-sepsis-v278.js` | 13271 | `fe0a8c2da7076c0f0fb748159eb034749b00e9eb2022136b1b2b3b8a758f540c` |
-| `lib/peds-v140.js` | 22349 | `ec6c2218d505b1048a2b31ac1a5c35080fcbde379f083deec18ffcff7d1708c4` |
+| `lib/peds-v140.js` | 23367 | `777e3b528985b582ef8e38b190f9ed560bf5986a9e4574d47dc13e1f943888d0` |
 | `lib/peds-v98.js` | 18314 | `5d4d423e11dadb1e7f4b609b0928ee654d4504005c78e7d68cbcac3958e9121c` |
 | `lib/pedstox-v247.js` | 8091 | `8381ca9211880df0739ca4c7889b927df5b2f2e808b637d56593587a01f84168` |
 | `lib/pef-zones-v891.js` | 6826 | `3d6f9c84c5641a3d89998e5e0a3305468f0607125d9a2ca5fdc0350b84af1ffc` |
@@ -744,7 +744,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/periop-frailty-v203.js` | 11619 | `46a48052a301aa028c20cba5da3c25f6c4304d5c1ffdc6a257b66631ba6af15c` |
 | `lib/periop-v97.js` | 23945 | `545ea57301cc767d503ec1b2c3ff2bef55c12007ce2889aae080b5f473897a38` |
 | `lib/peritoneal-cancer-index-v654.js` | 4959 | `dfb0ac27e4ead48e52fe8dcdc2504191d6af91648b178e0bd4e5158a82787152` |
-| `lib/pertussis-case-def-v868.js` | 9756 | `b542e071bc78bd634b448d387f79c2386ea5fd3586664b74903d9988a0456b14` |
+| `lib/pertussis-case-def-v868.js` | 10708 | `bc7a55ee77b61ab740b30444ed7b0aa2c889d0fbbd1911784bb644195bd32425` |
 | `lib/pfdi20-v775.js` | 4586 | `c0823651ebde274a1e242f66497336ab0015e1f1a38125d54423f590262cecc2` |
 | `lib/pfiq7-v776.js` | 5161 | `e03ec8c7c563207cedc8b10a0d7c80dc9622d09aaa8f1cbe738f96cfbb9a8b90` |
 | `lib/pfirrmann-disc-v434.js` | 3552 | `cd219b3462006d853f88f88cb4d271b49d4c254eec61a0af4a228f320351d2c9` |
@@ -808,7 +808,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/rcc-prognosis-v266.js` | 7255 | `e62dcced7afb98f6da59029eb9b46007bc8ee088dd4f9aadc11b0253c814c1e8` |
 | `lib/rcc-prognosis-v279.js` | 8469 | `25a67a21bc845d1e3205eb691fa475c1e1300af06536bc26ffb49cc403960f86` |
 | `lib/rcvs2-v1436.js` | 4422 | `a1359b1d8fcca39a0aefb06ac12825ab6222f699c6ba2805403a11e6f8325289` |
-| `lib/reference-change-value-v920.js` | 9636 | `349905c1fd9c55a55ae86d6e4cb615c4b4c4923071471a1e4a5ff71fe83df45c` |
+| `lib/reference-change-value-v920.js` | 9985 | `669f3638266e118468b105ad6af0a545747c66678acdc8282ca7f7b9eabca419` |
 | `lib/regan-morrey-v404.js` | 3237 | `6b740bafcf5b1f9e8e306ba3b6863513bc950c73c0f6c46d00a095816929c04a` |
 | `lib/region-footing-v1093.js` | 3587 | `ab6509b0a1999202d9fb7783a94d21f6f8b34146baa1bf65d539800d8b778147` |
 | `lib/regulatory.js` | 8261 | `1a5ca3589e7f1c77429db46bc455aa7a98c59136f90f41b135ce977315fd4c10` |

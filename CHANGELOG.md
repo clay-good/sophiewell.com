@@ -6,6 +6,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **A gate now stops an optional select from silently answering as one of its options.**
+  Building it found four more: early-onset sepsis risk assumed a baseline incidence nobody
+  entered (0.5 per thousand births; 0.3 would give no culture); King's College read a blank cause as not counting,
+  one factor short of the transplant-referral threshold; pertussis read a blank age as
+  "one year and older", where apnea only counts in an infant; and the reference change value
+  never named its 95% level. See docs/spec-v1478.md.
+
 - **RIPASA no longer scores a blank gender, age or duration at the higher weight, and SSIGN
   no longer quotes a survival figure from a floor.** RIPASA's blanks could add 1.5 points and
   cross the 7.5 diagnostic cutoff; it now gives the range and asks when the range crosses a

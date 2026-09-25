@@ -54,7 +54,8 @@ test('kings-college-nonapap: only three of the four causes count', () => {
   assert.equal(which('halothane'), true);
   assert.equal(which('idiosyncratic-drug'), true);
   assert.equal(which('other'), false);
-  assert.equal(which(undefined), false);
+  // spec-v1478: a blank cause is not entered, not "other".
+  assert.equal(which(undefined), null);
 });
 
 test('kings-college-nonapap: the jaundice interval is strictly more than 7 days', () => {
@@ -73,7 +74,7 @@ test('kings-college-nonapap: 300 micromol/L and 17.5 mg/dL are the same threshol
 
 test('kings-college-nonapap: a factor with nothing entered is unknown, not absent', () => {
   const r = kingsCollegeNonApap({ inr: 2 });
-  assert.equal(r.unknownCount, 3);
+  assert.equal(r.unknownCount, 4); // age, cause (spec-v1478), jaundice interval, bilirubin
   assert.equal(r.factors.find((f) => f.key === 'age').met, null);
   assert.match(r.band, /not entered/);
 });
