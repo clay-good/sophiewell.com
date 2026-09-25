@@ -8500,6 +8500,18 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/peri-implant-status-v1489.js (spec-v1489: 2017 World Workshop peri-implant case definitions — clinical disclaimer)
 - `peri-implant-status`
 
+### lib/hamp-furcation-v1490.js (spec-v1490: Hamp horizontal furcation degree — clinical disclaimer)
+- `hamp-furcation`
+
+### lib/pufa-index-v1491.js (spec-v1491: PUFA/pufa index of untreated caries — clinical disclaimer)
+- `pufa-index`
+
+### lib/bolton-ratio-v1492.js (spec-v1492: Bolton anterior and overall tooth-size ratios — clinical disclaimer)
+- `bolton-ratio`
+
+### lib/eichner-index-v1493.js (spec-v1493: Eichner index of occlusal support — clinical disclaimer)
+- `eichner-index`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

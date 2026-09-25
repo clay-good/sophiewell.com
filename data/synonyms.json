@@ -9236,6 +9236,50 @@
       ],
       "tile": "peri-implant-status",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "hamp",
+        "hamp furcation",
+        "furcation degree",
+        "horizontal furcation involvement",
+        "furcation probing"
+      ],
+      "tile": "hamp-furcation",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "pufa",
+        "pufa index",
+        "untreated caries consequences",
+        "pulp ulceration fistula abscess",
+        "odontogenic infection count"
+      ],
+      "tile": "pufa-index",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "bolton",
+        "bolton ratio",
+        "bolton analysis",
+        "tooth size discrepancy",
+        "anterior ratio 77.2"
+      ],
+      "tile": "bolton-ratio",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "eichner",
+        "eichner index",
+        "occlusal support zones",
+        "posterior support zones",
+        "eichner classification"
+      ],
+      "tile": "eichner-index",
+      "audience": "clinicians"
     }
   ]
 }

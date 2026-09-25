@@ -896,6 +896,10 @@ import paiPeriapicalV1486 from './adapters/pai-periapical-v1486.js';
 import jemtPapillaV1487 from './adapters/jemt-papilla-v1487.js';
 import nordlandTarnowPapillaV1488 from './adapters/nordland-tarnow-papilla-v1488.js';
 import periImplantStatusV1489 from './adapters/peri-implant-status-v1489.js';
+import hampFurcationV1490 from './adapters/hamp-furcation-v1490.js';
+import pufaIndexV1491 from './adapters/pufa-index-v1491.js';
+import boltonRatioV1492 from './adapters/bolton-ratio-v1492.js';
+import eichnerIndexV1493 from './adapters/eichner-index-v1493.js';
 import nurseStaffingRatioCheckV1396 from './adapters/nurse-staffing-ratio-check-v1396.js';
 import caWpvReportClockV1396 from './adapters/ca-wpv-report-clock-v1396.js';
 import mandatoryOvertimeCheckV1396 from './adapters/mandatory-overtime-check-v1396.js';
@@ -1828,6 +1832,10 @@ const ADAPTER_MODULES = [
   ['jemt-papilla-v1487', jemtPapillaV1487],
   ['nordland-tarnow-papilla-v1488', nordlandTarnowPapillaV1488],
   ['peri-implant-status-v1489', periImplantStatusV1489],
+  ['hamp-furcation-v1490', hampFurcationV1490],
+  ['pufa-index-v1491', pufaIndexV1491],
+  ['bolton-ratio-v1492', boltonRatioV1492],
+  ['eichner-index-v1493', eichnerIndexV1493],
   ['nurse-staffing-ratio-check-v1396', nurseStaffingRatioCheckV1396],
   ['ca-wpv-report-clock-v1396', caWpvReportClockV1396],
   ['mandatory-overtime-check-v1396', mandatoryOvertimeCheckV1396],

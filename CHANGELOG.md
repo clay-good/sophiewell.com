@@ -6,6 +6,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Hamp Furcation Degree.** Degree I to III from the horizontal probing depth and whether the probe passes
+  through; exactly 3 mm is reported as the boundary the sources disagree on. See docs/spec-v1490.md.
+
+- **PUFA Index (Untreated Caries).** Teeth with pulp involvement, ulceration, a fistula or an abscess,
+  counted for permanent (PUFA) and primary (pufa) teeth. See docs/spec-v1491.md.
+
+- **Bolton Tooth-Size Ratio.** The anterior and overall ratios against 77.2% and 91.3%, within or
+  outside 1 SD, with the mandibular or maxillary excess in mm. See docs/spec-v1492.md.
+
+- **Eichner Index (Occlusal Support).** A1 to C3 from the posterior support zones in contact, asking only
+  for the finding that decides the group. See docs/spec-v1493.md.
+
 - **Periapical Index (PAI).** Ørstavik's 1 to 5 radiographic score for up to four roots; the tooth
   takes its highest root score, read as healthy (1 or 2) or apical periodontitis. See docs/spec-v1486.md.
 
