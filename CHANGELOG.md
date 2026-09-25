@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Collin classification of massive rotator cuff tears.** Derives type A to E from
+  which of five cuff components are torn, and reports a combination that matches no
+  type rather than forcing one. See docs/spec-v1449.md.
+
 - **ABC classification of posterior shoulder instability.** Derives the type (A1 to
   C2) from the pattern (a first event, recurrent dynamic, or static decentering) and
   one question for each group, and notes that the type can change over time. See

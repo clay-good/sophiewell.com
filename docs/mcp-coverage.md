@@ -8422,6 +8422,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/abc-psi-v1448.js (spec-v1448: ABC classification of posterior shoulder instability — clinical disclaimer)
 - `abc-psi`
 
+### lib/collin-rc-v1449.js (spec-v1449: Collin classification of massive rotator cuff tears — clinical disclaimer)
+- `collin-rc`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

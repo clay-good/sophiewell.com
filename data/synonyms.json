@@ -8938,6 +8938,17 @@
       ],
       "tile": "abc-psi",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "collin classification",
+        "massive rotator cuff tear classification",
+        "collin type",
+        "massive cuff tear pattern",
+        "rotator cuff tear pattern classification"
+      ],
+      "tile": "collin-rc",
+      "audience": "clinicians"
     }
   ]
 }
