@@ -9117,6 +9117,16 @@
       ],
       "tile": "asas-ibp",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "robinson classification",
+        "edinburgh clavicle classification",
+        "clavicle fracture classification",
+        "midshaft clavicle fracture type"
+      ],
+      "tile": "robinson-clavicle",
+      "audience": "clinicians"
     }
   ]
 }

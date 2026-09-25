@@ -8467,6 +8467,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/asas-ibp-v1476.js (spec-v1476: ASAS criteria for inflammatory back pain — clinical disclaimer)
 - `asas-ibp`
 
+### lib/robinson-clavicle-v1479.js (spec-v1479: Robinson (Edinburgh) classification of clavicle fractures — clinical disclaimer)
+- `robinson-clavicle`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

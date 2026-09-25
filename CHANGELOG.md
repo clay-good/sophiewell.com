@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Robinson classification of clavicle fractures.** The whole bone, beside the modified
+  Neer tool for the distal third: twelve subtypes by site, displacement, joint extension
+  and comminution, with the derivation series' prognosis for union. See
+  docs/spec-v1479.md.
+
 - **A gate now stops an optional select from silently answering as one of its options.**
   Building it found four more: early-onset sepsis risk assumed a baseline incidence nobody
   entered (0.5 per thousand births; 0.3 would give no culture); King's College read a blank cause as not counting,
