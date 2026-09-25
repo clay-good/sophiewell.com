@@ -842,6 +842,19 @@ import blood4hWindowV1414 from './adapters/blood-4h-window-v1414.js';
 import hvpgV1416 from './adapters/hvpg-v1416.js';
 import snyderSlapV1417 from './adapters/snyder-slap-v1417.js';
 import paproskyAcetabularV1418 from './adapters/paprosky-acetabular-v1418.js';
+import allenFergusonV1419 from './adapters/allen-ferguson-v1419.js';
+import paproskyFemoralV1420 from './adapters/paprosky-femoral-v1420.js';
+import johnsonStromFlatfootV1421 from './adapters/johnson-strom-flatfoot-v1421.js';
+import lawrenceBotte5thMtV1422 from './adapters/lawrence-botte-5th-mt-v1422.js';
+import piresInterprostheticV1423 from './adapters/pires-interprosthetic-v1423.js';
+import aospineSacralV1424 from './adapters/aospine-sacral-v1424.js';
+import ellmanPartialRcV1425 from './adapters/ellman-partial-rc-v1425.js';
+import isakosMeniscalV1426 from './adapters/isakos-meniscal-v1426.js';
+import mcphersonPjiV1427 from './adapters/mcpherson-pji-v1427.js';
+import neerDistalClavicleV1428 from './adapters/neer-distal-clavicle-v1428.js';
+import nerotSirveauxV1429 from './adapters/nerot-sirveaux-v1429.js';
+import sdsgSpondylolisthesisV1430 from './adapters/sdsg-spondylolisthesis-v1430.js';
+import watsonSlacV1431 from './adapters/watson-slac-v1431.js';
 import nurseStaffingRatioCheckV1396 from './adapters/nurse-staffing-ratio-check-v1396.js';
 import caWpvReportClockV1396 from './adapters/ca-wpv-report-clock-v1396.js';
 import mandatoryOvertimeCheckV1396 from './adapters/mandatory-overtime-check-v1396.js';
@@ -1720,6 +1733,19 @@ const ADAPTER_MODULES = [
   ['hvpg-v1416', hvpgV1416],
   ['snyder-slap-v1417', snyderSlapV1417],
   ['paprosky-acetabular-v1418', paproskyAcetabularV1418],
+  ['allen-ferguson-v1419', allenFergusonV1419],
+  ['paprosky-femoral-v1420', paproskyFemoralV1420],
+  ['johnson-strom-flatfoot-v1421', johnsonStromFlatfootV1421],
+  ['lawrence-botte-5th-mt-v1422', lawrenceBotte5thMtV1422],
+  ['pires-interprosthetic-v1423', piresInterprostheticV1423],
+  ['aospine-sacral-v1424', aospineSacralV1424],
+  ['ellman-partial-rc-v1425', ellmanPartialRcV1425],
+  ['isakos-meniscal-v1426', isakosMeniscalV1426],
+  ['mcpherson-pji-v1427', mcphersonPjiV1427],
+  ['neer-distal-clavicle-v1428', neerDistalClavicleV1428],
+  ['nerot-sirveaux-v1429', nerotSirveauxV1429],
+  ['sdsg-spondylolisthesis-v1430', sdsgSpondylolisthesisV1430],
+  ['watson-slac-v1431', watsonSlacV1431],
   ['nurse-staffing-ratio-check-v1396', nurseStaffingRatioCheckV1396],
   ['ca-wpv-report-clock-v1396', caWpvReportClockV1396],
   ['mandatory-overtime-check-v1396', mandatoryOvertimeCheckV1396],

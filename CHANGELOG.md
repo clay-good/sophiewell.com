@@ -6,6 +6,65 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Allen and Ferguson classification.** Reads a stage from an older cervical spine
+  report and returns its published definition, with the reliability data (kappa 0.34)
+  behind the 2024 review's advice to use the AO Spine subaxial system instead. See
+  docs/spec-v1419.md.
+
+- **Paprosky classification of femoral bone loss.** Works out the femoral type (I to
+  IV) before revision hip surgery from the metaphysis, diaphysis, isthmus and the 4 cm
+  of intact bone, and says so when a combination is not in the table. See
+  docs/spec-v1420.md.
+
+- **Johnson and Strom flatfoot staging.** Stages posterior tibial tendon dysfunction
+  (I to IV, with Myerson's stage IV) from the hindfoot deformity and ankle valgus,
+  never reading a blank ankle as normal, and says the staging was never validated.
+  See docs/spec-v1421.md.
+
+- **Lawrence and Botte fifth metatarsal zones.** Gives the zone of a proximal fifth
+  metatarsal fracture (tuberosity avulsion, Jones, diaphyseal stress) with the Torg
+  type for zone 3 and each zone's healing potential. See docs/spec-v1422.md.
+
+- **Pires interprosthetic femur fracture classification.** Works out the Pires type
+  of a femur fracture between a hip stem and a knee replacement from the implants,
+  their fixation and the bone between them, and prints the review's low reliability
+  and its advice against using the type to choose treatment. See docs/spec-v1423.md.
+
+- **AOSpine sacral classification.** Types a sacral fracture A, B or C from CT with
+  its subtype and the N and M modifiers; a type without a subtype is a valid answer,
+  because the review finds the subtypes unreliable, and a blank neurologic status is
+  never read as intact. See docs/spec-v1424.md.
+
+- **Ellman partial-thickness rotator cuff tear.** Grades a partial cuff tear seen at
+  arthroscopy by side (A, B, C) and depth (under 3, 3 to 6, over 6 mm), and shows how
+  poorly surgeons agree on the grade (kappa 0.19). See docs/spec-v1425.md.
+
+- **ISAKOS meniscal tear classification.** Writes the standard ISAKOS record of a
+  meniscal tear from six arthroscopic findings, works out the Cooper zone, and shows
+  the rim-width kappa of 0.25. See docs/spec-v1426.md.
+
+- **McPherson periprosthetic infection staging.** Gives the infection type, host
+  grade and limb grade from the published factor lists; an unanswered factor is never
+  counted as absent, so a grade it could change is shown as a range. See
+  docs/spec-v1427.md.
+
+- **Modified Neer distal clavicle classification.** Works out the type (I to V) of a
+  distal-third clavicle fracture from where it sits against the conoid and trapezoid
+  ligaments, with the nonunion notes for type II. See docs/spec-v1428.md.
+
+- **Nerot-Sirveaux scapular notching.** Grades notching after reverse shoulder
+  arthroplasty (1 to 4) by how far the notch reaches, and flags a film that is not a
+  true view tangential to the baseplate. See docs/spec-v1429.md.
+
+- **SDSG spondylolisthesis classification.** Types an L5-S1 developmental slip 1 to
+  6: by pelvic incidence for a slip of 50% or less (flagged within the 5 degree
+  measurement error), by sacropelvic balance and the C7 plumb line above it. See
+  docs/spec-v1430.md.
+
+- **Watson-Ballet SLAC wrist stage.** Stages scapholunate advanced collapse
+  arthritis 1 to 4 from which joints show arthritis, and returns "no single stage"
+  for a pattern off the progression rather than forcing one. See docs/spec-v1431.md.
+
 - **Paprosky classification of acetabular bone loss.** A new tool derives the
   Paprosky type (1 to 3B) before revision hip surgery from the radiograph: hip
   center migration, its direction, and the Kohler line, with the teardrop and

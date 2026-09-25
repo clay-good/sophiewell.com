@@ -785,6 +785,19 @@ import { renderers as RV1414 } from './views/group-v1414.js';
 import { renderers as RV1416 } from './views/group-v1416.js';
 import { renderers as RV1417 } from './views/group-v1417.js';
 import { renderers as RV1418 } from './views/group-v1418.js';
+import { renderers as RV1419 } from './views/group-v1419.js';
+import { renderers as RV1420 } from './views/group-v1420.js';
+import { renderers as RV1421 } from './views/group-v1421.js';
+import { renderers as RV1422 } from './views/group-v1422.js';
+import { renderers as RV1423 } from './views/group-v1423.js';
+import { renderers as RV1424 } from './views/group-v1424.js';
+import { renderers as RV1425 } from './views/group-v1425.js';
+import { renderers as RV1426 } from './views/group-v1426.js';
+import { renderers as RV1427 } from './views/group-v1427.js';
+import { renderers as RV1428 } from './views/group-v1428.js';
+import { renderers as RV1429 } from './views/group-v1429.js';
+import { renderers as RV1430 } from './views/group-v1430.js';
+import { renderers as RV1431 } from './views/group-v1431.js';
 import { renderers as RV1396 } from './views/group-v1396.js';
 import { renderers as RV164 } from './views/group-v164.js';
 import { renderers as RV165 } from './views/group-v165.js';
@@ -873,7 +886,7 @@ const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...R
   ...RV902,
   ...RV903,
   ...RV905,
-  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV960, ...RV1061, ...RV1062, ...RV1240, ...RV1241, ...RV1242, ...RV1243, ...RV1400, ...RV1389, ...RV1393, ...RV1397, ...RV1395, ...RV1390, ...RV1391, ...RV1392, ...RV1394, ...RV1399, ...RV1398, ...RV1401, ...RV1396, ...RV1412, ...RV1413, ...RV1414, ...RV1416, ...RV1417, ...RV1418, ...RV63, ...RPALINT };
+  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV960, ...RV1061, ...RV1062, ...RV1240, ...RV1241, ...RV1242, ...RV1243, ...RV1400, ...RV1389, ...RV1393, ...RV1397, ...RV1395, ...RV1390, ...RV1391, ...RV1392, ...RV1394, ...RV1399, ...RV1398, ...RV1401, ...RV1396, ...RV1412, ...RV1413, ...RV1414, ...RV1416, ...RV1417, ...RV1418, ...RV1419, ...RV1420, ...RV1421, ...RV1422, ...RV1423, ...RV1424, ...RV1425, ...RV1426, ...RV1427, ...RV1428, ...RV1429, ...RV1430, ...RV1431, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -1667,6 +1680,7 @@ const UTILITIES = [
   { id: 'pauwels-femoral-neck',   name: 'Pauwels Classification (Femoral Neck Fracture)',     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'pipkin-femoral-head',    name: 'Pipkin Classification (Femoral Head Fracture)',      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'denis-sacral',           name: 'Denis Classification (Sacral Fracture)',            group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'aospine-sacral', name: 'AOSpine Sacral Classification', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'gartland-supracondylar', name: 'Gartland Classification (Supracondylar Humerus)',    group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'delbet-femoral-neck',    name: 'Delbet Classification (Pediatric Femoral Neck)',    group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'tile-pelvic',            name: 'Tile Classification (Pelvic Ring Injury)',          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
@@ -1701,9 +1715,11 @@ const UTILITIES = [
   { id: 'meyers-mckeever',        name: 'Meyers-McKeever Classification (Tibial Eminence)',  group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'ideberg-glenoid',        name: 'Ideberg Classification (Glenoid Fossa Fracture)',   group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'walch-glenoid',          name: 'Walch Classification (Glenoid Morphology, OA)',      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'nerot-sirveaux', name: 'Nerot-Sirveaux Classification (Scapular Notching)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'anderson-dalonzo',       name: 'Anderson-D\'Alonzo Classification (Odontoid Fracture)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'levine-edwards',         name: 'Levine-Edwards Classification (Hangman Fracture)',   group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'lisfranc-myerson',       name: 'Myerson Classification (Lisfranc Injury)',          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'lawrence-botte-5th-mt', name: 'Lawrence and Botte Classification (Fifth Metatarsal Fracture)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'seinsheimer-subtroch',   name: 'Seinsheimer Classification (Subtrochanteric Fracture)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'mayfield-perilunate',    name: 'Mayfield Classification (Perilunate Instability)',   group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'geissler-carpal',        name: 'Geissler Classification (Carpal Ligament Injury)',   group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
@@ -1729,7 +1745,9 @@ const UTILITIES = [
   { id: 'van-herick',             name: 'Van Herick Angle Grade',                           group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'biffl-bcvi',             name: 'Biffl Grade (Blunt Cerebrovascular Injury)',        group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'goutallier',             name: 'Goutallier Grade (Rotator Cuff Fatty Infiltration)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'ellman-partial-rc', name: 'Ellman Classification (Partial-Thickness Rotator Cuff Tear)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'eaton-littler',          name: 'Eaton-Littler Stage (Thumb CMC Arthritis)',         group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'watson-slac', name: 'Watson-Ballet SLAC Wrist Stage', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'hamada',                 name: 'Hamada Grade (Cuff Tear Arthropathy)',              group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'barrow-ccf',             name: 'Barrow Classification (Carotid-Cavernous Fistula)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'borden-davf',            name: 'Borden Classification (Dural AV Fistula)',          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
@@ -1772,13 +1790,17 @@ const UTILITIES = [
   { id: 'spitz-atresia',           name: 'Spitz Classification (Esophageal Atresia)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'ahlback-knee-oa',         name: 'Ahlback Grade (Knee Osteoarthritis)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'wiltse-spondylolisthesis', name: 'Wiltse Classification (Spondylolisthesis)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'sdsg-spondylolisthesis', name: 'SDSG Classification (Lumbosacral Spondylolisthesis)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'russell-taylor-subtroch',  name: 'Russell-Taylor Classification (Subtrochanteric Fracture)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'vancouver-periprosthetic', name: 'Vancouver Classification (Periprosthetic Femoral Fracture)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'pires-interprosthetic', name: 'Pires Classification (Interprosthetic Femur Fracture)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'paprosky-acetabular', name: 'Paprosky Classification (Acetabular Bone Loss)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'paprosky-femoral', name: 'Paprosky Classification (Femoral Bone Loss)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'barrack-cement',           name: 'Barrack Grade (Femoral Cement Mantle)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'dejour-trochlea',          name: 'Dejour Classification (Trochlear Dysplasia)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'samilson-prieto',          name: 'Samilson-Prieto Grade (Shoulder Dislocation Arthropathy)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'rockwood-ac',              name: 'Rockwood Classification (Acromioclavicular Joint Injury)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'neer-distal-clavicle', name: 'Modified Neer Classification (Distal Clavicle Fractures)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'bigliani-acromion',        name: 'Bigliani Classification (Acromion Morphology)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'fernandez-radius',         name: 'Fernandez Classification (Distal Radius Fracture)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'ruedi-allgower-pilon',     name: 'Ruedi-Allgower Classification (Tibial Pilon Fracture)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
@@ -1991,6 +2013,7 @@ const UTILITIES = [
   { id: 'mirels-score',           name: 'Mirels Score (impending pathologic fracture)',       group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'kellgren-lawrence',      name: 'Kellgren-Lawrence Osteoarthritis Grade',            group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'outerbridge-cartilage',  name: 'Outerbridge Cartilage Grade (0-IV)',                group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'isakos-meniscal', name: 'ISAKOS Classification (Meniscal Tears)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'icrs-cartilage',         name: 'ICRS Cartilage Lesion Grade (0-4)',                 group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'cormack-lehane',         name: 'Cormack-Lehane Laryngoscopy Grade',                 group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'clark-level',            name: 'Clark Level (Melanoma Invasion)',                   group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
@@ -2896,6 +2919,7 @@ const UTILITIES = [
   // lib/herbert-scaphoid-v1241.js, lib/lenke-scoliosis-v1241.js, mcp/adapters/<id>-v1241.js.
   { id: 'ao-spine-tl', name: 'AO Spine Thoracolumbar Injury Classification (TL AOSIS)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'ao-spine-subaxial', name: 'AO Spine Subaxial Cervical Spine Injury Classification', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'allen-ferguson', name: 'Allen and Ferguson Classification (Subaxial Cervical Spine Injury)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'herbert-scaphoid', name: 'Herbert Classification (Scaphoid Fracture)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'lenke-scoliosis', name: 'Lenke Classification (Adolescent Idiopathic Scoliosis)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
 
@@ -3637,6 +3661,7 @@ const UTILITIES = [
   { id: 'handoc-score',         name: 'HANDOC Score (Echo Need in Strep Bacteremia)',     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'denova-score',         name: 'DENOVA Score (Echo Need in E. faecalis Bacteremia)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'icm-pji-2018',         name: '2018 ICM Periprosthetic Joint Infection Definition', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'mcpherson-pji', name: 'McPherson Staging (Periprosthetic Joint Infection)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'air-score',            name: 'Appendicitis Inflammatory Response (AIR) Score',    group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'adult-appendicitis-score', name: 'Adult Appendicitis Score (AAS)',               group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   // spec-v219: metabolic & hepatic indices. lib/metabolic-hepatic-v219.js, RV219.
@@ -3867,6 +3892,7 @@ const UTILITIES = [
   { id: 'lysholm-knee-score',   name: 'Lysholm Knee Score',                               group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'marx-activity-rating', name: 'Marx Activity Rating Scale',                       group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'foot-posture-index',   name: 'Foot Posture Index (FPI-6)',                       group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'johnson-strom-flatfoot', name: 'Johnson and Strom Classification (Adult-Acquired Flatfoot)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'bess-balance-error',   name: 'Balance Error Scoring System (BESS)',              group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   // spec-v245: hematology discrimination indices + HS severity. lib/hemederm-v245.js,
   // RV245. Each verified absent (spec-v85 6.2, incl. MCP adapters); each computes an

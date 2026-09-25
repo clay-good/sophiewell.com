@@ -8630,6 +8630,149 @@
       ],
       "tile": "paprosky-acetabular",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "allen ferguson classification",
+        "allen and ferguson stage",
+        "distractive flexion injury stage",
+        "compressive flexion cervical injury",
+        "mechanistic cervical spine classification"
+      ],
+      "tile": "allen-ferguson",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "paprosky femoral",
+        "femoral bone loss classification",
+        "femoral defect revision hip",
+        "paprosky type iiib",
+        "femoral bone deficiency revision"
+      ],
+      "tile": "paprosky-femoral",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "johnson and strom",
+        "posterior tibial tendon dysfunction stage",
+        "pttd stage",
+        "adult acquired flatfoot stage",
+        "tibialis posterior dysfunction staging"
+      ],
+      "tile": "johnson-strom-flatfoot",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "lawrence and botte",
+        "fifth metatarsal fracture zone",
+        "jones fracture zone",
+        "fifth metatarsal base fracture",
+        "5th metatarsal zone 2"
+      ],
+      "tile": "lawrence-botte-5th-mt",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "pires classification",
+        "interprosthetic femur fracture",
+        "interprosthetic femoral fracture",
+        "fracture between hip and knee replacement",
+        "femur fracture between thr and tkr"
+      ],
+      "tile": "pires-interprosthetic",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "aospine sacral classification",
+        "ao spine sacral fracture",
+        "sacral fracture classification ct",
+        "sacral u-type fracture",
+        "spinopelvic dissociation classification"
+      ],
+      "tile": "aospine-sacral",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "ellman classification",
+        "partial thickness rotator cuff tear grade",
+        "partial rotator cuff tear classification",
+        "articular sided partial cuff tear",
+        "bursal sided partial cuff tear"
+      ],
+      "tile": "ellman-partial-rc",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "isakos meniscal tear",
+        "meniscal tear classification",
+        "cooper zone meniscus",
+        "meniscus rim width zone",
+        "popliteal hiatus tear"
+      ],
+      "tile": "isakos-meniscal",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "mcpherson staging",
+        "mcpherson classification",
+        "periprosthetic infection staging",
+        "pji host grade",
+        "infected arthroplasty staging"
+      ],
+      "tile": "mcpherson-pji",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "distal clavicle fracture",
+        "lateral clavicle fracture classification",
+        "neer type ii clavicle",
+        "distal third clavicle",
+        "coracoclavicular ligament fracture"
+      ],
+      "tile": "neer-distal-clavicle",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "scapular notching grade",
+        "sirveaux classification",
+        "nerot classification",
+        "inferior scapular notching reverse shoulder",
+        "reverse shoulder arthroplasty notching"
+      ],
+      "tile": "nerot-sirveaux",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "spinal deformity study group classification",
+        "sdsg spondylolisthesis type",
+        "mac-thiong labelle classification",
+        "spondylolisthesis sagittal balance classification",
+        "high grade spondylolisthesis sacropelvic balance"
+      ],
+      "tile": "sdsg-spondylolisthesis",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "slac wrist stage",
+        "scapholunate advanced collapse",
+        "watson ballet classification",
+        "slac wrist arthritis",
+        "radioscaphoid capitolunate arthritis stage"
+      ],
+      "tile": "watson-slac",
+      "audience": "clinicians"
     }
   ]
 }

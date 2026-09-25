@@ -8338,6 +8338,45 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/paprosky-acetabular-v1418.js (spec-v1418: Paprosky acetabular bone loss — clinical disclaimer)
 - `paprosky-acetabular`
 
+### lib/allen-ferguson-v1419.js (spec-v1419: Allen and Ferguson subaxial cervical injury stages — clinical disclaimer)
+- `allen-ferguson`
+
+### lib/paprosky-femoral-v1420.js (spec-v1420: Paprosky femoral bone loss types — clinical disclaimer)
+- `paprosky-femoral`
+
+### lib/johnson-strom-flatfoot-v1421.js (spec-v1421: Johnson and Strom posterior tibial tendon dysfunction stages — clinical disclaimer)
+- `johnson-strom-flatfoot`
+
+### lib/lawrence-botte-5th-mt-v1422.js (spec-v1422: Lawrence and Botte fifth metatarsal fracture zones — clinical disclaimer)
+- `lawrence-botte-5th-mt`
+
+### lib/pires-interprosthetic-v1423.js (spec-v1423: Pires interprosthetic femur fracture types — clinical disclaimer)
+- `pires-interprosthetic`
+
+### lib/aospine-sacral-v1424.js (spec-v1424: AOSpine sacral fracture classification — clinical disclaimer)
+- `aospine-sacral`
+
+### lib/ellman-partial-rc-v1425.js (spec-v1425: Ellman partial-thickness rotator cuff tear grades — clinical disclaimer)
+- `ellman-partial-rc`
+
+### lib/isakos-meniscal-v1426.js (spec-v1426: ISAKOS meniscal tear record — clinical disclaimer)
+- `isakos-meniscal`
+
+### lib/mcpherson-pji-v1427.js (spec-v1427: McPherson periprosthetic infection staging — clinical disclaimer)
+- `mcpherson-pji`
+
+### lib/neer-distal-clavicle-v1428.js (spec-v1428: modified Neer distal clavicle fracture types — clinical disclaimer)
+- `neer-distal-clavicle`
+
+### lib/nerot-sirveaux-v1429.js (spec-v1429: Nerot-Sirveaux scapular notching grades — clinical disclaimer)
+- `nerot-sirveaux`
+
+### lib/sdsg-spondylolisthesis-v1430.js (spec-v1430: SDSG lumbosacral spondylolisthesis types — clinical disclaimer)
+- `sdsg-spondylolisthesis`
+
+### lib/watson-slac-v1431.js (spec-v1431: Watson-Ballet SLAC wrist stages — clinical disclaimer)
+- `watson-slac`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 
