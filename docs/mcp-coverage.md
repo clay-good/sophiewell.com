@@ -8398,6 +8398,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/strongkids-v1440.js (spec-v1440: STRONGkids pediatric nutritional risk screen — clinical disclaimer)
 - `strongkids`
 
+### lib/wellens-criteria-v1441.js (spec-v1441: Wellens syndrome ECG criteria — clinical disclaimer)
+- `wellens-criteria`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

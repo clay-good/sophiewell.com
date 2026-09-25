@@ -8850,6 +8850,17 @@
       ],
       "tile": "strongkids",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "wellens",
+        "wellens syndrome",
+        "wellens criteria",
+        "biphasic t waves v2 v3",
+        "lad t wave syndrome"
+      ],
+      "tile": "wellens-criteria",
+      "audience": "clinicians"
     }
   ]
 }

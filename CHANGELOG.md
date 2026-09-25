@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Wellens syndrome criteria.** Checks a 12-lead tracing against the Wellens
+  criteria (the T-wave pattern of critical proximal LAD stenosis), names each
+  criterion that fails, and shows that sources disagree on whether cardiac markers
+  must be normal. See docs/spec-v1441.md.
+
 - **STRONGkids.** A pediatric nutritional risk screen for children admitted to
   hospital: four questions scored 0 to 5 into low, moderate or high risk, to repeat
   weekly. The catalog had adult nutrition screens and none for children. See

@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:54c04c2f-32f2-5e8f-83cc-d3c62e4323e1",
+  "serialNumber": "urn:uuid:c68b6bee-ff1c-56e0-8164-d9ae2ec53424",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-25T03:29:25.686Z",
+    "timestamp": "2026-09-25T03:39:43.980Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1813 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1814 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1bb29205dd59965b5c7fddb19479fa5331c5a0bfbdc36fd168f728b7a20fcd9e"
+          "content": "98ee32ad45bda38c9821c465583a7fccc2b26c88e1184c767388e796f32ac5ca"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "116679"
+          "value": "116726"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ac6adb98471c0dfe1c7c08979e1ef79b1d83891f293e36fd40180ce760fd6a9c"
+          "content": "1533313918cc52df7b952138b916992ebfb6aedce3ffff22df615a2b672939d3"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "538057"
+          "value": "538269"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "97c18603cc8554743f551eeaa3a89973c1499016f871f1134330cf643b799e2f"
+          "content": "f68ce37120a3623f72f0ba2e6d90633ad2be1c7c86e6320dfdc1f9876ccc45ed"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "225959"
+          "value": "226086"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d201739b28ef6f36bebfa314bc3257676b6185b1f961bff4f1ad356e449fd13c"
+          "content": "25019a8374e1975c2cbdd90246515498199ec5694d53f223a45f9860e803f46d"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "103872"
+          "value": "103925"
         }
       ]
     },
@@ -11087,7 +11087,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "43a3bd754cbfd5530f8e96e9c58aaf1e107f77283803d12cf77de641012b022c"
+          "content": "ae16954d66d4bd253893eecb965bfd336108629f2c3c2936bf6916eb3dcb7be5"
         }
       ],
       "properties": [
@@ -11097,7 +11097,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2555352"
+          "value": "2556336"
         }
       ]
     },
@@ -20107,6 +20107,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3676"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/wellens-criteria-v1441.js",
+      "type": "file",
+      "name": "lib/wellens-criteria-v1441.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f86e315e529a9ca324f7dffadcaf802c4e714823fcc85649eb530c2630348906"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5826"
         }
       ]
     },
@@ -38927,6 +38948,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/wellens-criteria-v1441.js",
+      "type": "file",
+      "name": "mcp/adapters/wellens-criteria-v1441.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2656749908873b6e4423a9086850a3daf54741c12372551ffacddf7548761af3"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1476"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/wexner-v324.js",
       "type": "file",
       "name": "mcp/adapters/wexner-v324.js",
@@ -39269,7 +39311,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "fd795026262f53ff294d3062d70b3f40f416fee85565c8a5265049778298c53e"
+          "content": "9ffd3e99a0a59c9e25cc5ac90118689b35c2570ae40e8c2e8b0dc1ee9f410797"
         }
       ],
       "properties": [
@@ -39279,7 +39321,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "103222"
+          "value": "103347"
         }
       ]
     },
@@ -41506,6 +41548,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2772"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1441.js",
+      "type": "file",
+      "name": "views/group-v1441.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e8a6adb28b882bdea289f6534073657617920fd832eccc5266c3d5d4b0ecb579"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2958"
         }
       ]
     },
@@ -73501,6 +73564,7 @@
         "urn:sophiewell:file:source:lib/watson-slac-v1431.js",
         "urn:sophiewell:file:source:lib/wayne-index-v527.js",
         "urn:sophiewell:file:source:lib/weiss-v648.js",
+        "urn:sophiewell:file:source:lib/wellens-criteria-v1441.js",
         "urn:sophiewell:file:source:lib/wexner-v324.js",
         "urn:sophiewell:file:source:lib/who-hearing-grade-v858.js",
         "urn:sophiewell:file:source:lib/who-isup-renal-grade-v653.js",
@@ -73621,6 +73685,7 @@
         "urn:sophiewell:file:source:views/group-v1439.js",
         "urn:sophiewell:file:source:views/group-v144.js",
         "urn:sophiewell:file:source:views/group-v1440.js",
+        "urn:sophiewell:file:source:views/group-v1441.js",
         "urn:sophiewell:file:source:views/group-v145.js",
         "urn:sophiewell:file:source:views/group-v146.js",
         "urn:sophiewell:file:source:views/group-v147.js",
@@ -75241,6 +75306,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/watson-slac-v1431.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/wayne-index-v527.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/weiss-v648.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/wellens-criteria-v1441.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/wexner-v324.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/who-hearing-grade-v858.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/who-isup-renal-grade-v653.js",
@@ -75360,7 +75426,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "54c04c2f32f2fe8f"
+      "value": "c68b6beeff1ce6e0"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -75372,7 +75438,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2690"
+      "value": "2693"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
