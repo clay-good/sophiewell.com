@@ -6,6 +6,21 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Glucose management indicator (GMI).** Turns the mean glucose on a CGM report into
+  the GMI in % and mmol/mol (Bergenstal 2018), beside the eAG tool that goes the other
+  way from a laboratory A1c. It notes when the data fall short of 14 days with 70%
+  of readings, and that an updated formula was proposed in 2026. See
+  docs/spec-v1471.md.
+
+- **CGM time in range targets.** Enter the five ranges from a CGM report and it checks
+  them against the 2019 international consensus targets for type 1 or type 2
+  diabetes, or the stricter hypoglycemia targets for older or high-risk people,
+  naming each target missed. See docs/spec-v1472.md.
+
+- **Glycemia risk index (GRI).** One number from the four out-of-range CGM times,
+  weighting hypoglycemia more than hyperglycemia (Klonoff 2023), with its zone A to E
+  and which component drives it. See docs/spec-v1473.md.
+
 - **MSU classification of lumbar disc herniation.** Grades a herniation on one axial MRI
   cut by how far it reaches toward the intra-facet line (size 1-3, from a chosen size
   or two measurements) and where it intrudes furthest (zone A, AB, B or C). See

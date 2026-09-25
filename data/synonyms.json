@@ -9049,6 +9049,41 @@
       ],
       "tile": "lateral-center-edge-angle",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "gmi",
+        "glucose management indicator",
+        "cgm a1c",
+        "estimated a1c from cgm",
+        "cgm mean glucose to a1c"
+      ],
+      "tile": "gmi",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "time in range",
+        "cgm targets",
+        "time below range",
+        "time above range",
+        "ambulatory glucose profile targets",
+        "cgm time in range",
+        "tir targets"
+      ],
+      "tile": "cgm-time-in-range",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "glycemia risk index",
+        "gri",
+        "cgm risk index",
+        "gri zone",
+        "glycemia risk"
+      ],
+      "tile": "glycemia-risk-index",
+      "audience": "clinicians"
     }
   ]
 }

@@ -8452,6 +8452,15 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/lateral-center-edge-angle-v1470.js (spec-v1470: lateral center-edge angle of Wiberg — clinical disclaimer)
 - `lateral-center-edge-angle`
 
+### lib/gmi-v1471.js (spec-v1471: glucose management indicator from CGM mean glucose — clinical disclaimer)
+- `gmi`
+
+### lib/cgm-time-in-range-v1472.js (spec-v1472: international consensus CGM time-in-range targets — clinical disclaimer)
+- `cgm-time-in-range`
+
+### lib/glycemia-risk-index-v1473.js (spec-v1473: glycemia risk index from CGM — clinical disclaimer)
+- `glycemia-risk-index`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

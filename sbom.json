@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:deb7566c-028f-5791-8a0e-912082a916d5",
+  "serialNumber": "urn:uuid:460de528-b0c5-5019-8fb9-a6eb9b66326a",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-25T08:01:07.585Z",
+    "timestamp": "2026-09-25T08:21:07.070Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1831 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1834 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9804ef528692c6458a61ff0a6f9529115633cb0103bbc60a7b6336ef2a620564"
+          "content": "5c51c20e47584863a9f50f659f6efc1023527b3ebd18d741c301ab0fbad3dc9b"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "117755"
+          "value": "117931"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "10cb6b724ff453f469b157cbd95cc5376f96df22d750541306ee31cfcbccdba6"
+          "content": "c17b361522f82aa50dcdfbb4feeb2bd3e8013a6d8715bad7567b2740c5b7ccc9"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "542055"
+          "value": "542753"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ab7889f9302793a7e4049ec907a90022f4112a3560a07c0fdb107304df4eb682"
+          "content": "bb8d9f923b13cc8362cad306b1270f2cf8fbe05ca41f6eeb8111a8f06443eeb4"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "228197"
+          "value": "228569"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9dd6ba35c189d1fcf090973f5e67dc0335fef3446f9c3003ece4e6cd7fffdf25"
+          "content": "d2459628a645772036c4e6c27e428dbbfd775a98a6525b06f6450054009d7bfc"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "105008"
+          "value": "105193"
         }
       ]
     },
@@ -3412,6 +3412,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "8017"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/cgm-time-in-range-v1472.js",
+      "type": "file",
+      "name": "lib/cgm-time-in-range-v1472.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "dbaaffe9e5e67ad882d44d02c78ae10e51b85e5edd14e2d12507c60b78876efd"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6595"
         }
       ]
     },
@@ -7154,6 +7175,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/glycemia-risk-index-v1473.js",
+      "type": "file",
+      "name": "lib/glycemia-risk-index-v1473.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a71f058c97e34499c7eed0374ac2b10b65a83d8ebc686b8e7aa0c447865ce9d5"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4592"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/gmfcs-v462.js",
       "type": "file",
       "name": "lib/gmfcs-v462.js",
@@ -7171,6 +7213,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3383"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/gmi-v1471.js",
+      "type": "file",
+      "name": "lib/gmi-v1471.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "cf15562ef442dbe8c29d8cd29f3d28fccdb1a149259baa1f866971f537e087d4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5003"
         }
       ]
     },
@@ -11339,7 +11402,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3c5242deb13caadf85e7cc5d3803414d1af0b2cddb85c750c6197b3e1b46ad40"
+          "content": "1b2a2aee2aef2f28c5266b4daf0c435a470ff096f0b234de58dd292562b392d2"
         }
       ],
       "properties": [
@@ -11349,7 +11412,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2571712"
+          "value": "2574353"
         }
       ]
     },
@@ -23723,6 +23786,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/cgm-time-in-range-v1472.js",
+      "type": "file",
+      "name": "mcp/adapters/cgm-time-in-range-v1472.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "820e3bd917b96274dae3041def6e8b8a2968b66c6775d4ea0e20cba259958dab"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1542"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/cgvhd-severity-v911.js",
       "type": "file",
       "name": "mcp/adapters/cgvhd-severity-v911.js",
@@ -27272,6 +27356,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/glycemia-risk-index-v1473.js",
+      "type": "file",
+      "name": "mcp/adapters/glycemia-risk-index-v1473.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "aa0ad237e83888bcf88e62a14cfb06396f794de25ea4dbb3edd4c60086a206cc"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1075"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/gmfcs-v462.js",
       "type": "file",
       "name": "mcp/adapters/gmfcs-v462.js",
@@ -27289,6 +27394,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1142"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/gmi-v1471.js",
+      "type": "file",
+      "name": "mcp/adapters/gmi-v1471.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "284ed6cfbc71b71d67f5d564b1c56c2dbd79f241104d0a11644d4682d2725d84"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1016"
         }
       ]
     },
@@ -40025,7 +40151,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "613237849a83482271fc4ad655a88e75a34b17ae23a1dde91cfd0362bf4a4b46"
+          "content": "966c79a1449b32503b42e8404f991c949a7a9c3695f1acae42ccc2fb49655b85"
         }
       ],
       "properties": [
@@ -40035,7 +40161,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "105270"
+          "value": "105605"
         }
       ]
     },
@@ -42703,6 +42829,69 @@
         {
           "name": "sophiewell:bytes",
           "value": "1941"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1471.js",
+      "type": "file",
+      "name": "views/group-v1471.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "21c6dc03ef3e7024e997ab3ad896bf05b0e28b86dc17cfb97930be9fb235d95c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2788"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1472.js",
+      "type": "file",
+      "name": "views/group-v1472.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "95c414c1e1adf640c8affff66977157f4d2717be4d179067c4ffe0366d516c76"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3542"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1473.js",
+      "type": "file",
+      "name": "views/group-v1473.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4f7e6893c15af5f43dfc079b9df1b75ea2a1ffe99c5b54829bd00ce33281d34e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2426"
         }
       ]
     },
@@ -73840,6 +74029,7 @@
         "urn:sophiewell:file:source:lib/cdi-severity-v317.js",
         "urn:sophiewell:file:source:lib/ceap-venous-v356.js",
         "urn:sophiewell:file:source:lib/cf-diagnosis-v828.js",
+        "urn:sophiewell:file:source:lib/cgm-time-in-range-v1472.js",
         "urn:sophiewell:file:source:lib/cgvhd-severity-v911.js",
         "urn:sophiewell:file:source:lib/chalder-fatigue-v733.js",
         "urn:sophiewell:file:source:lib/cheops-v645.js",
@@ -74018,7 +74208,9 @@
         "urn:sophiewell:file:source:lib/glickman-furcation-v725.js",
         "urn:sophiewell:file:source:lib/global-ards-v570.js",
         "urn:sophiewell:file:source:lib/glogau-photoaging-v475.js",
+        "urn:sophiewell:file:source:lib/glycemia-risk-index-v1473.js",
         "urn:sophiewell:file:source:lib/gmfcs-v462.js",
+        "urn:sophiewell:file:source:lib/gmi-v1471.js",
         "urn:sophiewell:file:source:lib/gold-abe-v316.js",
         "urn:sophiewell:file:source:lib/gold-coast-als-v811.js",
         "urn:sophiewell:file:source:lib/goligher-hemorrhoids-v351.js",
@@ -74794,6 +74986,9 @@
         "urn:sophiewell:file:source:views/group-v1469.js",
         "urn:sophiewell:file:source:views/group-v147.js",
         "urn:sophiewell:file:source:views/group-v1470.js",
+        "urn:sophiewell:file:source:views/group-v1471.js",
+        "urn:sophiewell:file:source:views/group-v1472.js",
+        "urn:sophiewell:file:source:views/group-v1473.js",
         "urn:sophiewell:file:source:views/group-v148.js",
         "urn:sophiewell:file:source:views/group-v149.js",
         "urn:sophiewell:file:source:views/group-v15.js",
@@ -75669,6 +75864,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/cdi-severity-v317.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ceap-venous-v356.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cf-diagnosis-v828.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/cgm-time-in-range-v1472.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cgvhd-severity-v911.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/chalder-fatigue-v733.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cheops-v645.js",
@@ -75838,7 +76034,9 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/glickman-furcation-v725.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/global-ards-v570.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/glogau-photoaging-v475.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/glycemia-risk-index-v1473.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/gmfcs-v462.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/gmi-v1471.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/gold-abe-v316.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/gold-coast-als-v811.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/goligher-hemorrhoids-v351.js",
@@ -76548,7 +76746,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "deb7566c028f5791"
+      "value": "460de528b0c5c019"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -76560,7 +76758,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2744"
+      "value": "2753"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

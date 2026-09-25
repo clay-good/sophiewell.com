@@ -880,6 +880,9 @@ import hakkiValveAreaV1455 from './adapters/hakki-valve-area-v1455.js';
 import msuDiscHerniationV1468 from './adapters/msu-disc-herniation-v1468.js';
 import blackburnePeelV1469 from './adapters/blackburne-peel-v1469.js';
 import lateralCenterEdgeAngleV1470 from './adapters/lateral-center-edge-angle-v1470.js';
+import gmiV1471 from './adapters/gmi-v1471.js';
+import cgmTimeInRangeV1472 from './adapters/cgm-time-in-range-v1472.js';
+import glycemiaRiskIndexV1473 from './adapters/glycemia-risk-index-v1473.js';
 import nurseStaffingRatioCheckV1396 from './adapters/nurse-staffing-ratio-check-v1396.js';
 import caWpvReportClockV1396 from './adapters/ca-wpv-report-clock-v1396.js';
 import mandatoryOvertimeCheckV1396 from './adapters/mandatory-overtime-check-v1396.js';
@@ -1796,6 +1799,9 @@ const ADAPTER_MODULES = [
   ['msu-disc-herniation-v1468', msuDiscHerniationV1468],
   ['blackburne-peel-v1469', blackburnePeelV1469],
   ['lateral-center-edge-angle-v1470', lateralCenterEdgeAngleV1470],
+  ['gmi-v1471', gmiV1471],
+  ['cgm-time-in-range-v1472', cgmTimeInRangeV1472],
+  ['glycemia-risk-index-v1473', glycemiaRiskIndexV1473],
   ['nurse-staffing-ratio-check-v1396', nurseStaffingRatioCheckV1396],
   ['ca-wpv-report-clock-v1396', caWpvReportClockV1396],
   ['mandatory-overtime-check-v1396', mandatoryOvertimeCheckV1396],
