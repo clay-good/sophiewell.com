@@ -8,8 +8,9 @@ import assert from 'node:assert/strict';
 import { ripasa, pulp, emergencySurgeryScore } from '../../lib/acute-abdomen-v261.js';
 
 // --- RIPASA ---
-test('ripasa: default demographics with no findings scores the 3.0 baseline (unlikely)', () => {
-  const r = ripasa({});
+const HIGH_DEMO = { gender: 'male', ageBand: 'le40', duration: 'lt48' };
+test('ripasa: male, 40 or under, under 48 h with no findings scores the 3.0 baseline (unlikely)', () => {
+  const r = ripasa(HIGH_DEMO);
   assert.equal(r.valid, true);
   // male (+1) + age <= 40 (+1) + duration < 48h (+1) = 3.0.
   assert.equal(r.score, 3);
@@ -17,8 +18,19 @@ test('ripasa: default demographics with no findings scores the 3.0 baseline (unl
   assert.ok(r.band.includes('RIPASA 3 of 16'));
   assert.ok(r.band.includes('unlikely'));
 });
+test('spec-v1477: blank demographics are a range, disclosed when the band holds and asked when it does not', () => {
+  const none = ripasa({});
+  assert.equal(none.valid, true);
+  assert.equal(none.score, null);
+  assert.deepEqual(none.scoreRange, [1.5, 3]);
+  assert.match(none.band, /^RIPASA 1\.5 to 3 of 16 .*No value was entered for the gender, the age band and the symptom duration/);
+  // 6 to 7.5 straddles the 7.5 diagnostic cutoff: the blanks decide it, so they are asked for.
+  const straddle = ripasa({ rifPain: true, anorexia: true, nauseaVomiting: true, rifTenderness: true, rebound: true });
+  assert.equal(straddle.valid, false);
+  assert.match(straddle.message, /^Choose the gender, the age band and the symptom duration: without them the score is between 6 and 7\.5/);
+});
 test('ripasa: crosses the 7.5 diagnostic cutoff into high probability', () => {
-  const r = ripasa({ rifPain: true, anorexia: true, nauseaVomiting: true, rifTenderness: true, rebound: true });
+  const r = ripasa({ ...HIGH_DEMO, rifPain: true, anorexia: true, nauseaVomiting: true, rifTenderness: true, rebound: true });
   // baseline 3.0 + 0.5 + 1 + 1 + 1 + 1 = 7.5.
   assert.equal(r.score, 7.5);
   assert.equal(r.abnormal, true);

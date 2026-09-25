@@ -6,6 +6,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **RIPASA no longer scores a blank gender, age or duration at the higher weight, and SSIGN
+  no longer quotes a survival figure from a floor.** RIPASA's blanks could add 1.5 points and
+  cross the 7.5 diagnostic cutoff; it now gives the range and asks when the range crosses a
+  band. SSIGN with factors unstaged quoted ~57.7% survival, while a score of 10 or more carries
+  ~18.1%. See docs/spec-v1477.md.
+
 - **ASAS criteria for inflammatory back pain.** The axSpA classification asks whether
   back pain is inflammatory; this counts the five ASAS items (4 needed) for chronic back
   pain, and says how weak the finding is on its own. See docs/spec-v1476.md.

@@ -1857,8 +1857,10 @@ test('lib/pneumonia-risk-v260.js worked calls', () => {
 });
 
 test('lib/acute-abdomen-v261.js worked calls', () => {
-  // RIPASA: 5 symptom/sign criteria + the defaulted demographic bands reach 7.5.
+  // RIPASA: 5 symptom/sign criteria + male, 40 or under, under 48 h reach 7.5. (spec-v1477: the
+  // demographics are stated; left blank they are a range, not the higher weight.)
   const rp = ok('ripasa', {
+    'rp-gender': 'male', 'rp-age': 'le40', 'rp-dur': 'lt48',
     'rp-rifpain': '1', 'rp-anorexia': '1', 'rp-nausea': '1', 'rp-riftender': '1', 'rp-rebound': '1',
   });
   assert.equal(rp.score, 7.5);

@@ -76,9 +76,13 @@ test('spec-v1109: high risk rules in even with factors unstaged', () => {
   // Rule 13: an unstaged factor cannot bring a floor of 8 back under 6.
   const r = ssign({ tStage: 'pt4', mStage: 'm1' });
   assert.equal(r.score, 8);
-  assert.equal(r.floorOnly, false);
-  assert.match(r.band, /high risk/);
-  assert.match(r.band, /57\.7%/);
+  assert.match(r.band, /high risk, which the unstaged factors cannot lower/);
+  // spec-v1477: but the survival figure is not the floor's: 7-9 is ~57.7%, 10 and over ~18.1%.
+  assert.equal(r.floorOnly, true);
+  assert.doesNotMatch(r.band, /57\.7%/);
+  assert.match(r.band, /none is given until they are staged/);
+  const staged = ssign({ tStage: 'pt4', nStage: 'n0', mStage: 'm1', size: 'lt5', grade: 'g12', necrosis: 'absent' });
+  assert.match(staged.band, /high risk; ~57\.7%/);
 });
 
 test('spec-v1109: every SSIGN coefficient is >= 0, which is what makes it a floor', () => {

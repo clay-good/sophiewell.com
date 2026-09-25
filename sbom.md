@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `26a2bd5d0d02ded5`
-Generated: 2026-09-25T09:19:06.568Z
+Build ID: `2fb33d95c09f84dd`
+Generated: 2026-09-25T09:30:36.980Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -65,7 +65,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/acr-eular-boolean-v671.js` | 4453 | `79e79312ee4df6fc97bcb44e121482e68c9d62323446f27087d26beac5478fba` |
 | `lib/acromegaly-biochem-v835.js` | 10899 | `bae2a57348442e139ad017004e0f51df52198e794942fbb59aac99499bbdadf1` |
 | `lib/acs-v193.js` | 17117 | `c68191b4b0ee4b9da60fbad8549c688ddafe119ff9b256f0a4a52bda799dd43a` |
-| `lib/acute-abdomen-v261.js` | 12492 | `91da56977b83f841e806856211d5f6ef73ca130f1dfa76ab1bbe6c58b104cf10` |
+| `lib/acute-abdomen-v261.js` | 13592 | `b747bdf468169fbd5687b6a2004510e0ac77af8037eda77514096972f9d154b4` |
 | `lib/acute-injury-v213.js` | 12314 | `2588fb8b7fa34af0ea7c43311a624e67a163840886140397854ba67994ce7a21` |
 | `lib/acute-opioid-rx-limit-v1393.js` | 8742 | `a6f06ba9dedaa72a2a02e9e752846eb4dd8fcd66cf65f6258b109d23abb1e75a` |
 | `lib/adiposity-v270.js` | 3592 | `a4bb606611ce1ece313a7bc6b5aedecc4d58d86b9df71a5bafd803142c05c1c6` |
@@ -576,7 +576,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/membranous-risk-v878.js` | 11351 | `882c36c07e46543e32f1114792c1124ee9f9ff6b384084fc0a8c221e7dd62062` |
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2576492 | `be3280dd2275a1f35022981bba06c1a98ce6a7101bc76c81abc73f424c1b952a` |
+| `lib/meta.js` | 2576595 | `32001f32ceb8195e23307086d1f28270c2f04948a51b9f5a4b5403f894bf189f` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 19326 | `64342935cc7842381f6e318293cfcd6f97b69022268da6c595c5c71db388af2d` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -805,7 +805,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/rassi-chagas-v851.js` | 6350 | `32fd5c5649daaa93139486e4d909b77c2cb7cb01b7f7861cb1cdf29e5910de62` |
 | `lib/rastelli-avsd-v474.js` | 3480 | `ce357583fded28e0cad061c42d6f72a017763b472552b882ad44a5110b5ab134` |
 | `lib/raymond-roy-v1451.js` | 4546 | `301fbb1277dababa9953d909d8e8660d33385300d6e9bcd9c46ba90c3cb75f05` |
-| `lib/rcc-prognosis-v266.js` | 6673 | `ff7758911f8c5ff5f0196380c14c1c46f7c49521ca46597e3c878c773208a908` |
+| `lib/rcc-prognosis-v266.js` | 7255 | `e62dcced7afb98f6da59029eb9b46007bc8ee088dd4f9aadc11b0253c814c1e8` |
 | `lib/rcc-prognosis-v279.js` | 8469 | `25a67a21bc845d1e3205eb691fa475c1e1300af06536bc26ffb49cc403960f86` |
 | `lib/rcvs2-v1436.js` | 4422 | `a1359b1d8fcca39a0aefb06ac12825ab6222f699c6ba2805403a11e6f8325289` |
 | `lib/reference-change-value-v920.js` | 9636 | `349905c1fd9c55a55ae86d6e4cb615c4b4c4923071471a1e4a5ff71fe83df45c` |
