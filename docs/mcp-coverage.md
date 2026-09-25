@@ -8323,6 +8323,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/adult-ett-depth-v1412.js (spec-v1412: adult oral ETT depth at the corner of the mouth — clinical disclaimer)
 - `adult-ett-depth`
 
+### lib/nasal-o2-fio2-v1413.js (spec-v1413: estimated FiO2 on nasal oxygen — clinical disclaimer)
+- `nasal-o2-fio2`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

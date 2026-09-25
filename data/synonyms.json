@@ -8574,6 +8574,17 @@
       ],
       "tile": "adult-ett-depth",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "fio2 nasal cannula",
+        "nasal cannula fio2",
+        "fio2 from liters",
+        "liters to fio2",
+        "estimated fio2"
+      ],
+      "tile": "nasal-o2-fio2",
+      "audience": "clinicians"
     }
   ]
 }

@@ -780,6 +780,7 @@ import { renderers as RV1399 } from './views/group-v1399.js';
 import { renderers as RV1398 } from './views/group-v1398.js';
 import { renderers as RV1401 } from './views/group-v1401.js';
 import { renderers as RV1412 } from './views/group-v1412.js';
+import { renderers as RV1413 } from './views/group-v1413.js';
 import { renderers as RV1396 } from './views/group-v1396.js';
 import { renderers as RV164 } from './views/group-v164.js';
 import { renderers as RV165 } from './views/group-v165.js';
@@ -868,7 +869,7 @@ const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...R
   ...RV902,
   ...RV903,
   ...RV905,
-  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV960, ...RV1061, ...RV1062, ...RV1240, ...RV1241, ...RV1242, ...RV1243, ...RV1400, ...RV1389, ...RV1393, ...RV1397, ...RV1395, ...RV1390, ...RV1391, ...RV1392, ...RV1394, ...RV1399, ...RV1398, ...RV1401, ...RV1396, ...RV1412, ...RV63, ...RPALINT };
+  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV960, ...RV1061, ...RV1062, ...RV1240, ...RV1241, ...RV1242, ...RV1243, ...RV1400, ...RV1389, ...RV1393, ...RV1397, ...RV1395, ...RV1390, ...RV1391, ...RV1392, ...RV1394, ...RV1399, ...RV1398, ...RV1401, ...RV1396, ...RV1412, ...RV1413, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -3457,6 +3458,7 @@ const UTILITIES = [
   { id: 'shunt-fraction',       name: 'Pulmonary Shunt Fraction (Qs/Qt)',                 group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   // spec-v195: four gas-exchange / ventilation-efficiency instruments.
   // lib/vent-v195.js, views/group-v195.js (RV195).
+  { id: 'nasal-o2-fio2',        name: 'Nasal Oxygen FiO2 Estimate', group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'sf-ratio',             name: 'SpO₂/FiO₂ (S/F) Ratio with estimated P/F',         group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'ventilatory-ratio',    name: 'Ventilatory Ratio (VR)',                           group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'ventilation-index',    name: 'Ventilation Index (VI)',                           group: 'E', audiences: ['clinicians', 'educators'], clinical: true },

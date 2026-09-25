@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:6aa9874c-bf36-5780-83da-262e62292124",
+  "serialNumber": "urn:uuid:31786954-0619-5933-8b1a-7ec242c76128",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-24T23:57:40.918Z",
+    "timestamp": "2026-09-25T00:06:57.017Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1788 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1789 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f76d0db08e80efd0fc0ea2ec407cefe5e6a33fea52824b320a5fe8f33712920d"
+          "content": "5ec035f25518b3291bde807125c33307794a9c31910506abbadc88672d3c3c53"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "115149"
+          "value": "115191"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0c4db87d7562d53c0ec3b980bf29368c41e384e30559f302cb1ead323c811549"
+          "content": "fa6e37d1fe993350491a1ffb3457ec4ceabb0be522da69a8f391a5285fc443b3"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "532440"
+          "value": "532651"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "470c2cfa7bda459687dca01e508b420ad48302ffcac4e6cf4a55677042fd4865"
+          "content": "4ed207ed8a8af20662f411a596af5a7b33646e4d2e91dec2bcf811c9c29c6710"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "222829"
+          "value": "222953"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ce8437c33bd3156be146b686430ca010b5348751af7703ee66a4a200c7c873f8"
+          "content": "7d844aaa8bf85137542377ac0fdd2aecd9ad93a727180e641dd4228c70f13232"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "102237"
+          "value": "102282"
         }
       ]
     },
@@ -10835,7 +10835,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a82354c4dd230e6b2ce7c30987f3dad5672aa9928c4aa3ccbe1ff3be43c32368"
+          "content": "862184387f406ffe20ad7ef75a630eb99fc10803d76082bea4ba7b5bbe3e955b"
         }
       ],
       "properties": [
@@ -10845,7 +10845,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2532610"
+          "value": "2533613"
         }
       ]
     },
@@ -11539,6 +11539,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "12626"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/nasal-o2-fio2-v1413.js",
+      "type": "file",
+      "name": "lib/nasal-o2-fio2-v1413.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6bd5a9399fd010f42a28081beb33dcb32d07b02ff91a8a88f0b53a8e085aafb8"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3069"
         }
       ]
     },
@@ -30548,6 +30569,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/nasal-o2-fio2-v1413.js",
+      "type": "file",
+      "name": "mcp/adapters/nasal-o2-fio2-v1413.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3adfbda4f1cc3abcd012a1934eb4a6f3116d346bff593ee4764c5bf4a9608821"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "686"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/nash-moe-rotation-v476.js",
       "type": "file",
       "name": "mcp/adapters/nash-moe-rotation-v476.js",
@@ -38219,7 +38261,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f3344486daee38764b1c05fc1a5b41cb08d4dc4e82e72c6000219a32585e0b54"
+          "content": "504f2790a9798dbbaa8a36690bee90d94ce1fa6751be15b6e6fcc784e1815cde"
         }
       ],
       "properties": [
@@ -38229,7 +38271,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "100283"
+          "value": "100394"
         }
       ]
     },
@@ -39868,6 +39910,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2470"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1413.js",
+      "type": "file",
+      "name": "views/group-v1413.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9b99b90c767a2a51cb4cfa51f9febcff22efa3943b3dfb8199128a76c70b8c46"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1642"
         }
       ]
     },
@@ -71518,6 +71581,7 @@
         "urn:sophiewell:file:source:lib/nancy-index-v578.js",
         "urn:sophiewell:file:source:lib/narakas-obpp-v498.js",
         "urn:sophiewell:file:source:lib/narcolepsy-criteria-v855.js",
+        "urn:sophiewell:file:source:lib/nasal-o2-fio2-v1413.js",
         "urn:sophiewell:file:source:lib/nash-moe-rotation-v476.js",
         "urn:sophiewell:file:source:lib/nassar-gallbladder-v1240.js",
         "urn:sophiewell:file:source:lib/neck-zone-v366.js",
@@ -71993,6 +72057,7 @@
         "urn:sophiewell:file:source:views/group-v1401.js",
         "urn:sophiewell:file:source:views/group-v141.js",
         "urn:sophiewell:file:source:views/group-v1412.js",
+        "urn:sophiewell:file:source:views/group-v1413.js",
         "urn:sophiewell:file:source:views/group-v142.js",
         "urn:sophiewell:file:source:views/group-v143.js",
         "urn:sophiewell:file:source:views/group-v144.js",
@@ -73242,6 +73307,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/nancy-index-v578.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/narakas-obpp-v498.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/narcolepsy-criteria-v855.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/nasal-o2-fio2-v1413.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nash-moe-rotation-v476.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nassar-gallbladder-v1240.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/neck-zone-v366.js",
@@ -73710,7 +73776,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "6aa9874cbf36d780"
+      "value": "3178695406194933"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -73722,7 +73788,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2615"
+      "value": "2618"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

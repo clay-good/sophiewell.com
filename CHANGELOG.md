@@ -6,6 +6,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Estimated FiO2 on nasal oxygen.** A new tool turns a nasal cannula flow into the
+  FiO2 an SpO2/FiO2 or PaO2/FiO2 ratio needs: 0.21 plus 0.03 per L/min, the estimate
+  the 2024 Global Definition of ARDS uses when the FiO2 is not measured. It says
+  beside every answer how widely the measured value varies (0.26 to 0.54 at rest
+  across 1 to 6 L/min in healthy adults). See docs/spec-v1413.md.
+
 - **Adult ETT depth.** A new tool gives the starting mark for an adult oral tube at
   the corner of the mouth: 21 cm for women and 23 cm for men (Roberts 1995), and
   height / 5 - 13 (Cherng 2002). It shows both marks when both apply, and puts
