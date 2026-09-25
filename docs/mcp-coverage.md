@@ -8326,6 +8326,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/nasal-o2-fio2-v1413.js (spec-v1413: estimated FiO2 on nasal oxygen — clinical disclaimer)
 - `nasal-o2-fio2`
 
+### lib/blood-4h-window-v1414.js (spec-v1414: the 4-hour window for a blood component — clinical disclaimer)
+- `blood-4h-window`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

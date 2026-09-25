@@ -781,6 +781,7 @@ import { renderers as RV1398 } from './views/group-v1398.js';
 import { renderers as RV1401 } from './views/group-v1401.js';
 import { renderers as RV1412 } from './views/group-v1412.js';
 import { renderers as RV1413 } from './views/group-v1413.js';
+import { renderers as RV1414 } from './views/group-v1414.js';
 import { renderers as RV1396 } from './views/group-v1396.js';
 import { renderers as RV164 } from './views/group-v164.js';
 import { renderers as RV165 } from './views/group-v165.js';
@@ -869,7 +870,7 @@ const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...R
   ...RV902,
   ...RV903,
   ...RV905,
-  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV960, ...RV1061, ...RV1062, ...RV1240, ...RV1241, ...RV1242, ...RV1243, ...RV1400, ...RV1389, ...RV1393, ...RV1397, ...RV1395, ...RV1390, ...RV1391, ...RV1392, ...RV1394, ...RV1399, ...RV1398, ...RV1401, ...RV1396, ...RV1412, ...RV1413, ...RV63, ...RPALINT };
+  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV960, ...RV1061, ...RV1062, ...RV1240, ...RV1241, ...RV1242, ...RV1243, ...RV1400, ...RV1389, ...RV1393, ...RV1397, ...RV1395, ...RV1390, ...RV1391, ...RV1392, ...RV1394, ...RV1399, ...RV1398, ...RV1401, ...RV1396, ...RV1412, ...RV1413, ...RV1414, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -992,6 +993,7 @@ const UTILITIES = [
   { id: 'insulin-drip', name: 'Insulin Drip Math', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'anticoag-reversal', name: 'Anticoagulation Reversal Dose', group: 'F', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   // spec-v62 §3 Part B (wave 1): ICU-infusion + med-surg bedside math.
+  { id: 'blood-4h-window', name: 'Blood Unit 4-Hour Window', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'infusion-time-remaining', name: 'Infusion Time Remaining & Rate-to-Last', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'enteral-free-water', name: 'Enteral Free-Water & Flush Target', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'apap-24h-max', name: 'Acetaminophen 24-Hour Total & Ceiling', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },

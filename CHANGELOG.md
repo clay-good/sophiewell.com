@@ -6,6 +6,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Blood unit 4-hour window.** A new tool checks whether a blood component will
+  finish within 4 hours of the bag being spiked, the limit in the Circular of
+  Information, and gives the slowest pump rate that does (300 mL from spiking needs
+  75 mL/h). A rate that misses is flagged with the Circular's advice to order
+  smaller aliquots. See docs/spec-v1414.md.
+
 - **Estimated FiO2 on nasal oxygen.** A new tool turns a nasal cannula flow into the
   FiO2 an SpO2/FiO2 or PaO2/FiO2 ratio needs: 0.21 plus 0.03 per L/min, the estimate
   the 2024 Global Definition of ARDS uses when the FiO2 is not measured. It says

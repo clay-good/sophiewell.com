@@ -8585,6 +8585,18 @@
       ],
       "tile": "nasal-o2-fio2",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "blood transfusion rate",
+        "prbc rate",
+        "4 hour rule blood",
+        "blood 4 hour window",
+        "how fast to run blood",
+        "transfusion 4 hours"
+      ],
+      "tile": "blood-4h-window",
+      "audience": "clinicians"
     }
   ]
 }
