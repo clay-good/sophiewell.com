@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `a22e316b25344510`
-Generated: 2026-09-25T00:32:51.712Z
+Build ID: `1036257a64164f45`
+Generated: 2026-09-25T00:40:34.038Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -274,7 +274,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/ebmt-score-v584.js` | 12089 | `6e970677c0d39dab76e13a4a6546c01573ab86ac98ad69b4469c487509f2c76f` |
 | `lib/echo-v158.js` | 14918 | `de2bbfb4b0a464a4ed3cfcde8e01574e991f9abe147e3de941a53a83f7dcc105` |
 | `lib/eckardt-v519.js` | 6397 | `747cca98ef4bbaab5a3aed5780cd808e444fc5d3d8959e68b820f946070343e0` |
-| `lib/ecst-carotid-v1242.js` | 6369 | `704c073ede02093d4daaf8acf8c5076899ea4ccd9070ee50ae1ba7a17a3afca8` |
+| `lib/ecst-carotid-v1242.js` | 6245 | `cfc8ab0f58975dffa37c97ab643003bfd8223068aa448f087678d92cc5d76a8f` |
 | `lib/ed-decision-v218.js` | 17814 | `f84ec952e06f549817814fd55c1139911791e63193fb36d9428fcdd3771b0307` |
 | `lib/eddecision-v107.js` | 15720 | `cc276ccb3b9781ad5ab4153b20195864c49f58993ca835b7c98ca38c7cefb0d3` |
 | `lib/edinburgh-caa-v610.js` | 10304 | `fb5605e75a11370d90b16fc49949021691ed4ede58851ccc5bc6fcb199698944` |
@@ -405,7 +405,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/hepatic-iron-index-v932.js` | 7202 | `0a669a0e80ff1a6af1c227c2963599be396595e7b17650c1ff8934fb6c84d045` |
 | `lib/hepatology-gibleed-v201.js` | 20995 | `19478b8af048fe9f78a7fffb4357102cd4fdaaff17ba5bd52ce9174bcae70c41` |
 | `lib/hepatology-prognosis-v220.js` | 12866 | `792e4365d5eed204d4a285634402b982fc0c3d278a8ba368bb6b90a18c3e538a` |
-| `lib/hepatopulmonary-syndrome-v1243.js` | 6473 | `f806ac388d518de308c7b86071f253cb4bfe8ee64ca48eb0b80150e0152c8e9b` |
+| `lib/hepatopulmonary-syndrome-v1243.js` | 6349 | `0f03342e754a9be8ca9ed24ca97cc057e01126418dbc0261403c26deb5468345` |
 | `lib/hepgi-v190.js` | 12581 | `a9b059528932b3a95056aed672695735f14974b4b3dd40c09c72d97fcf3b04c7` |
 | `lib/hepgi-v93.js` | 22366 | `fb2d4fca8c372c068bb1b27cd4e0929b46f8fac5aaf1e866ce1aada55caecc44` |
 | `lib/herbert-scaphoid-v1241.js` | 6072 | `56b3a6e0c50dbaef9aba6b750bee9ffe6e7507963780b04e9bdfc6b956bb8fe1` |
@@ -488,7 +488,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/leddy-packer-v456.js` | 3483 | `28e7739172e81201d43e89616cbbd383e8584d101a7d1375c44e4b6207836793` |
 | `lib/leeds-enthesitis-index-v706.js` | 3052 | `59512421e4f89f211115d4a7a866b3f6d13ee272e75975cc817e0f9cb5123ca9` |
 | `lib/leipzig-wilson-v812.js` | 9441 | `c535b6ce940521e8c1367bb2a89a8bd88e3e70e04e19f784ebcc1c61a0699df0` |
-| `lib/lenke-scoliosis-v1241.js` | 10359 | `853433396331d0722990063f4004f936110f585b8f77ab14f2404b19d30dfb64` |
+| `lib/lenke-scoliosis-v1241.js` | 9791 | `14d0e51f89dcd15a08b3047a5af11ede86b348c3b440bf0f256f6ed738574b23` |
 | `lib/lepine-v596.js` | 11457 | `fdef3da0cbcaf433af572e8b26744d0ca7235c22811a8d44e31ebda325ea934f` |
 | `lib/letournel-acetabulum-v466.js` | 5574 | `689cf7aaae5d4dc8c93260f73203ea0f3c96cea278fc61f8fc822f9418000c87` |
 | `lib/levine-edwards-v411.js` | 4146 | `5b8fad3241eb0819b4f66f2a3229cf0a7b2ae1452ca8ed9a928ae81e7f8514e8` |
@@ -623,7 +623,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/npep-2025-v1401.js` | 8559 | `11c583d60f504960e89e61db1ca57b6144f3cb725203f3dacef5093c3cbad326` |
 | `lib/nsofa-v526.js` | 11175 | `12ffb5c8f1ec40c039705ff710df0ac0895360a0f89592ea4996f1c18de5355a` |
 | `lib/ntm-pulmonary-v827.js` | 8077 | `51b554704f575d5ffce2a350e5d8013ee70f0b42f5b85b86d7415d4479de1696` |
-| `lib/num.js` | 16828 | `66b49428df4edc1fbf300ac2b67993caeebfc4b45726be935157e353c7b55816` |
+| `lib/num.js` | 17030 | `50720db711edd20d2602ea4fa8365fca57d661bbd27649c50b1be0c93befa0af` |
 | `lib/nunley-vertullo-v455.js` | 3085 | `6f287a16c80ba5d73e2bb2c15989a7aa81d8335767f0a36e8c67c3203b357439` |
 | `lib/nurse-license-training-requirements-v1397.js` | 12250 | `e0263e527856ad453d395667e1b5a4e64ce07e185ff1d69d0d50ea8c34fe8a82` |
 | `lib/nurse-staffing-ratio-check-v1396.js` | 9223 | `f4fc16e9f231cc085c5009e6a6638637836c3c1883d24fcf4e17f2a2b1dadca1` |
@@ -726,7 +726,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/poi-diagnosis-v834.js` | 8980 | `51f5aef7d5ff7d875fe26634d55222aa36e7978e4500c7dfc84983a91c33dc88` |
 | `lib/pollock-flickinger-v601.js` | 14550 | `920d5cbdfdbb15fd07027e82dfdd44e834a4f0343c50a9a15f0f8574d5be86e2` |
 | `lib/polyp-surveillance-v882.js` | 11284 | `1e6a593b36dd4e6c200bbc1aaf5c649d95cb08c6dfb7650c6d2a05eb7009b8fa` |
-| `lib/portopulmonary-hypertension-v1243.js` | 7621 | `5b16c613144f4fbca3fa023d290dbb9f26220ef3de940ebd9879dfaa0d87277d` |
+| `lib/portopulmonary-hypertension-v1243.js` | 7497 | `2dd798e891fee08e59fcc904fcc5376ac7e9a4770cc362bdd827b6d1684b32e2` |
 | `lib/posas-observer-scar-v691.js` | 3697 | `dcb2792ef4faae3bbe45ac5e09c3322b3d79bd3f5708adb4443ad2e51df78c23` |
 | `lib/posas-patient-scar-v783.js` | 4310 | `58b2fefabafaf9466dd29beb9821909c3fd3feaa9e2f76cfcca6333f18035481` |
 | `lib/poseidon-v549.js` | 14464 | `9e03014da62b136861306d39992b287b5d9ac49230c33d0e728965dc548d7441` |

@@ -6,6 +6,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **A value of only spaces counts as blank in the shared input checks.** The two
+  checks about a hundred tools share read a field of spaces as the number 0. No
+  tool could be reached that way today (the agent surface rejects it and a number
+  box never sends it), so this removes a latent fault and four local workarounds
+  for it. See docs/spec-v1415.md.
+
 - **Blood unit 4-hour window.** A new tool checks whether a blood component will
   finish within 4 hours of the bag being spiked, the limit in the Circular of
   Information, and gives the slowest pump rate that does (300 mL from spiking needs

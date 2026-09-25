@@ -125,3 +125,17 @@ test('measured() checks presence only -- bounds belong to inputFault/gradeFault'
   assert.equal(measured(99999), 99999);
   assert.match(inputFault([['bilirubin', 99999, 0, 60]]), /must be between 0 and 60/);
 });
+
+// spec-v1415: a whitespace-only value is a blank, not a zero. Both helpers tested `raw === ''`
+// before trimming, and `Number('   ')` is 0 -- so with a floor of 0, spaces passed as a measurement.
+test('inputFault asks for a whitespace-only value instead of reading it as zero', () => {
+  assert.equal(inputFault([['the Cobb angle', '   ', 0, 130, 'degrees']]), 'Enter the Cobb angle in degrees.');
+  assert.equal(inputFault([['the Cobb angle', '\t', 0, 130, 'degrees']]), 'Enter the Cobb angle in degrees.');
+  assert.equal(inputFault([['the Cobb angle', ' 0 ', 0, 130, 'degrees']]), null);  // a real zero still passes
+});
+
+test('gradeFault skips a whitespace-only value the way it skips a blank', () => {
+  // A floor above zero made the old reading visible: spaces were refused as "0, out of range".
+  assert.equal(gradeFault([['PaO2 (mmHg)', '   ', 10, 700]]), null);
+  assert.match(gradeFault([['PaO2 (mmHg)', ' 5 ', 10, 700]]), /between 10 and 700/);
+});
