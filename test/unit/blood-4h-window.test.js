@@ -9,7 +9,7 @@ test('an unspiked 300 mL unit needs at least 75 mL/h', () => {
   assert.equal(r.valid, true);
   assert.equal(r.minRateMlHr, 75);
   assert.equal(r.minutesLeft, 240);
-  assert.match(r.band, /At least 75 mL\/h/);
+  assert.match(r.band, /No pump rate was entered, so this is the slowest that finishes in time: at least 75 mL\/h/);
   assert.ok(r.steps.some((s) => /slow initial rate/.test(s)));
 });
 

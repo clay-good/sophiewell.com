@@ -31,8 +31,8 @@ test('agreeing rules print one mark and no disagreement note', () => {
 });
 
 test('one input gives its own mark and names the other', () => {
-  assert.ok(adultEttDepth({ sex: 'male' }).notes.some((n) => /Add the height/.test(n)));
-  assert.ok(adultEttDepth({ heightCm: 170 }).notes.some((n) => /Add the sex/.test(n)));
+  assert.ok(adultEttDepth({ sex: 'male' }).notes.some((n) => /Enter the height/.test(n)));
+  assert.ok(adultEttDepth({ heightCm: 170 }).notes.some((n) => /Choose the sex/.test(n)));
 });
 
 test('the depth never stands in for confirming placement', () => {
