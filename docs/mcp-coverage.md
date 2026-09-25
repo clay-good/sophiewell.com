@@ -8512,6 +8512,15 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/eichner-index-v1493.js (spec-v1493: Eichner index of occlusal support — clinical disclaimer)
 - `eichner-index`
 
+### lib/kotlow-ankyloglossia-v1494.js (spec-v1494: Kotlow ankyloglossia classes by free tongue length — clinical disclaimer)
+- `kotlow-ankyloglossia`
+
+### lib/ohat-oral-health-v1495.js (spec-v1495: Oral Health Assessment Tool (OHAT) — clinical disclaimer)
+- `ohat-oral-health`
+
+### lib/turesky-plaque-v1496.js (spec-v1496: Turesky modified Quigley-Hein plaque index — clinical disclaimer)
+- `turesky-plaque`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

@@ -6,6 +6,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Kotlow Ankyloglossia Class.** Class I to IV from the free tongue length; a length between the
+  whole-mm ranges is reported as between two classes. See docs/spec-v1494.md.
+
+- **Oral Health Assessment Tool (OHAT).** Eight items rated healthy, changes or unhealthy, totaled out of
+  16 with the unhealthy items named; a partial form does not read as healthy. See docs/spec-v1495.md.
+
+- **Turesky Plaque Index (TQHPI).** The mean 0 to 5 modified Quigley-Hein score over the surfaces
+  examined, with the share scored 3 or more. See docs/spec-v1496.md.
+
 - **Hamp Furcation Degree.** Degree I to III from the horizontal probing depth and whether the probe passes
   through; exactly 3 mm is reported as the boundary the sources disagree on. See docs/spec-v1490.md.
 

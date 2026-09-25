@@ -900,6 +900,9 @@ import hampFurcationV1490 from './adapters/hamp-furcation-v1490.js';
 import pufaIndexV1491 from './adapters/pufa-index-v1491.js';
 import boltonRatioV1492 from './adapters/bolton-ratio-v1492.js';
 import eichnerIndexV1493 from './adapters/eichner-index-v1493.js';
+import kotlowAnkyloglossiaV1494 from './adapters/kotlow-ankyloglossia-v1494.js';
+import ohatOralHealthV1495 from './adapters/ohat-oral-health-v1495.js';
+import tureskyPlaqueV1496 from './adapters/turesky-plaque-v1496.js';
 import nurseStaffingRatioCheckV1396 from './adapters/nurse-staffing-ratio-check-v1396.js';
 import caWpvReportClockV1396 from './adapters/ca-wpv-report-clock-v1396.js';
 import mandatoryOvertimeCheckV1396 from './adapters/mandatory-overtime-check-v1396.js';
@@ -1836,6 +1839,9 @@ const ADAPTER_MODULES = [
   ['pufa-index-v1491', pufaIndexV1491],
   ['bolton-ratio-v1492', boltonRatioV1492],
   ['eichner-index-v1493', eichnerIndexV1493],
+  ['kotlow-ankyloglossia-v1494', kotlowAnkyloglossiaV1494],
+  ['ohat-oral-health-v1495', ohatOralHealthV1495],
+  ['turesky-plaque-v1496', tureskyPlaqueV1496],
   ['nurse-staffing-ratio-check-v1396', nurseStaffingRatioCheckV1396],
   ['ca-wpv-report-clock-v1396', caWpvReportClockV1396],
   ['mandatory-overtime-check-v1396', mandatoryOvertimeCheckV1396],

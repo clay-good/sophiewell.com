@@ -9280,6 +9280,39 @@
       ],
       "tile": "eichner-index",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "kotlow",
+        "tongue-tie",
+        "ankyloglossia",
+        "free tongue length",
+        "lingual frenum"
+      ],
+      "tile": "kotlow-ankyloglossia",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "ohat",
+        "oral health assessment tool",
+        "mouth care assessment",
+        "oral assessment nursing home",
+        "oral health screen"
+      ],
+      "tile": "ohat-oral-health",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "turesky",
+        "quigley hein",
+        "modified quigley-hein",
+        "tqhpi",
+        "quigley-hein plaque index"
+      ],
+      "tile": "turesky-plaque",
+      "audience": "clinicians"
     }
   ]
 }

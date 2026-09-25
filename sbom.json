@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:8fb8383e-eb72-5cb7-8d55-63a07f97d3ed",
+  "serialNumber": "urn:uuid:6f0cc8aa-0179-5e62-8d76-9a7f569ebea9",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-25T22:19:14.553Z",
+    "timestamp": "2026-09-25T22:37:22.899Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1851 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1854 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f66dc04618a20a7ddcdf77c72185f9dd03be17d90d2d8d96d3f225975cee4d80"
+          "content": "10b6f3aea747f75d7256a5de1b2cd9f3250fc93c102b71478426513e329eb728"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "118763"
+          "value": "118899"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8a1705cbb41248e266cd05e3a1a10e33052015e5c9c9f960bfc1a570dac32f88"
+          "content": "4d9ff3200a3263b86878ccbff4ab3c9606b353e1c0debfd0c5dff48b5ad854cf"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "546365"
+          "value": "547001"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2a45fc8c023c651dfc3be7aaa2e6479389d50c280007bc2804b36fbca49a8089"
+          "content": "317dd5e8f0cd21da2f91293267bcc7a59159fe60113f5947012b9ccd3585c55b"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "230695"
+          "value": "231078"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "81fb8800aae69e9e09ced40fa0d628a69975d8f464ca14eaa18881080d21d31a"
+          "content": "f3cfbf3117c2d0b998289e91c1de77ac4e6426a99b41e55c63e82b449410fef4"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "106094"
+          "value": "106250"
         }
       ]
     },
@@ -9863,6 +9863,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/kotlow-ankyloglossia-v1494.js",
+      "type": "file",
+      "name": "lib/kotlow-ankyloglossia-v1494.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f6493ff860b8b6c5cffd6fb836293f289abc707f8924f7fdfeffb69f2841d1fe"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2713"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/kudo-v334.js",
       "type": "file",
       "name": "lib/kudo-v334.js",
@@ -11591,7 +11612,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "93c322eb73ad21db4fbb80e1109cc622ade46c595a4d5dd77ffd2bb7db22528a"
+          "content": "65e15d2659f4fc9a1c9e20ae9b57b3878558e0cd95a22bf39c728b328e4f2773"
         }
       ],
       "properties": [
@@ -11601,7 +11622,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2590252"
+          "value": "2592842"
         }
       ]
     },
@@ -13744,6 +13765,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "9546"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/ohat-oral-health-v1495.js",
+      "type": "file",
+      "name": "lib/ohat-oral-health-v1495.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "cb682793e85f7a61dd42bc89f7feef52794e8ec611b7d87b5c3f9da16e6a8557"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2997"
         }
       ]
     },
@@ -19792,6 +19834,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4710"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/turesky-plaque-v1496.js",
+      "type": "file",
+      "name": "lib/turesky-plaque-v1496.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "80f6ff739ce76b0150493e3dced5f9b5972511560bd2a5d8c6b88250bab2dd6c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2708"
         }
       ]
     },
@@ -30275,6 +30338,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/kotlow-ankyloglossia-v1494.js",
+      "type": "file",
+      "name": "mcp/adapters/kotlow-ankyloglossia-v1494.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "35fbfcf7836885934a1bcd50853de91fd8d3b7718f0f7b205b04dac616c7fe4a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "505"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/kudo-v334.js",
       "type": "file",
       "name": "mcp/adapters/kudo-v334.js",
@@ -34051,6 +34135,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3027"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ohat-oral-health-v1495.js",
+      "type": "file",
+      "name": "mcp/adapters/ohat-oral-health-v1495.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7d1807abf55f61316b70cc34a33ac64955a76c06c101ee1ff735c27e94eff051"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "536"
         }
       ]
     },
@@ -39410,6 +39515,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/turesky-plaque-v1496.js",
+      "type": "file",
+      "name": "mcp/adapters/turesky-plaque-v1496.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4415f4818a17763f9d1f1a8dd87b2fb8f3fa18176c23e32e6e13c40b3a2877ca"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "510"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/twstrs-severity-v542.js",
       "type": "file",
       "name": "mcp/adapters/twstrs-severity-v542.js",
@@ -40865,7 +40991,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5fed6ccac6011adc5b07a6b284199854962558fadc4844b41b8f90cfe7c44d61"
+          "content": "0202cfb58742c1cb2652a29623ab96497193a749802124f20caae456742ce414"
         }
       ],
       "properties": [
@@ -40875,7 +41001,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "107592"
+          "value": "107973"
         }
       ]
     },
@@ -44005,6 +44131,69 @@
         {
           "name": "sophiewell:bytes",
           "value": "2377"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1494.js",
+      "type": "file",
+      "name": "views/group-v1494.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ca113f37ebe4860ae79182aeaf0a204155a95e1c527505cdbf019fed320a24f9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2005"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1495.js",
+      "type": "file",
+      "name": "views/group-v1495.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "06c6235e4779c8467aa83d37504a5159be2d7658e60297a4210756b74d5a4c33"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2653"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1496.js",
+      "type": "file",
+      "name": "views/group-v1496.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "bdc5f00fc3d5bfaae37ea7118d25faa53d09be7c75791875aabd2674c7c10c8c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2595"
         }
       ]
     },
@@ -75407,6 +75596,7 @@
         "urn:sophiewell:file:source:lib/knosp-adenoma-v390.js",
         "urn:sophiewell:file:source:lib/kobayashi-kawasaki-v680.js",
         "urn:sophiewell:file:source:lib/koos-schwannoma-v389.js",
+        "urn:sophiewell:file:source:lib/kotlow-ankyloglossia-v1494.js",
         "urn:sophiewell:file:source:lib/kudo-v334.js",
         "urn:sophiewell:file:source:lib/kwb-retinopathy-v360.js",
         "urn:sophiewell:file:source:lib/kyoto-gastritis-v1442.js",
@@ -75592,6 +75782,7 @@
         "urn:sophiewell:file:source:lib/obgyn-v225.js",
         "urn:sophiewell:file:source:lib/obgyn-v250.js",
         "urn:sophiewell:file:source:lib/ocular-trauma-score-v614.js",
+        "urn:sophiewell:file:source:lib/ohat-oral-health-v1495.js",
         "urn:sophiewell:file:source:lib/ohi-s-v1483.js",
         "urn:sophiewell:file:source:lib/ohs-diagnosis-v829.js",
         "urn:sophiewell:file:source:lib/olbi-v785.js",
@@ -75880,6 +76071,7 @@
         "urn:sophiewell:file:source:lib/triple-i-v832.js",
         "urn:sophiewell:file:source:lib/tryptase-v894.js",
         "urn:sophiewell:file:source:lib/tscherne-closed-v350.js",
+        "urn:sophiewell:file:source:lib/turesky-plaque-v1496.js",
         "urn:sophiewell:file:source:lib/twstrs-severity-v542.js",
         "urn:sophiewell:file:source:lib/tx-aprn-pa-controlled-delegation-v1393.js",
         "urn:sophiewell:file:source:lib/tx-death-cert-deadline-v1392.js",
@@ -76096,6 +76288,9 @@
         "urn:sophiewell:file:source:views/group-v1491.js",
         "urn:sophiewell:file:source:views/group-v1492.js",
         "urn:sophiewell:file:source:views/group-v1493.js",
+        "urn:sophiewell:file:source:views/group-v1494.js",
+        "urn:sophiewell:file:source:views/group-v1495.js",
+        "urn:sophiewell:file:source:views/group-v1496.js",
         "urn:sophiewell:file:source:views/group-v15.js",
         "urn:sophiewell:file:source:views/group-v151.js",
         "urn:sophiewell:file:source:views/group-v152.js",
@@ -77261,6 +77456,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/knosp-adenoma-v390.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/kobayashi-kawasaki-v680.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/koos-schwannoma-v389.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/kotlow-ankyloglossia-v1494.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/kudo-v334.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/kwb-retinopathy-v360.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/kyoto-gastritis-v1442.js",
@@ -77441,6 +77637,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/obgyn-v225.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/obgyn-v250.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ocular-trauma-score-v614.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/ohat-oral-health-v1495.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ohi-s-v1483.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ohs-diagnosis-v829.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/olbi-v785.js",
@@ -77696,6 +77893,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/triple-i-v832.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tryptase-v894.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tscherne-closed-v350.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/turesky-plaque-v1496.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/twstrs-severity-v542.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tx-aprn-pa-controlled-delegation-v1393.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tx-death-cert-deadline-v1392.js",
@@ -77868,7 +78066,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "8fb8383eeb72ccb7"
+      "value": "6f0cc8aa01792e62"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -77880,7 +78078,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2804"
+      "value": "2813"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
