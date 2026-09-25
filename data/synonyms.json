@@ -8905,6 +8905,17 @@
       ],
       "tile": "ng-tube-length",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "hypoglycemia",
+        "low blood sugar",
+        "rule of 15",
+        "hypoglycemia treatment",
+        "ada hypoglycemia level"
+      ],
+      "tile": "hypoglycemia-level",
+      "audience": "clinicians"
     }
   ]
 }

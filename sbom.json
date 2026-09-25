@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:322301ac-2a61-59fd-8fe9-10f32ea94068",
+  "serialNumber": "urn:uuid:cafdd36a-35af-550b-8c52-95ffa23aa523",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-25T04:18:43.278Z",
+    "timestamp": "2026-09-25T04:29:05.396Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1818 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1819 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "33adc0d3fd6eee78dc241df1399b2a24ca732c9fc01bf11f8daf39d147718717"
+          "content": "6abfaed05e842b1ace33051c07c3bf400f6e44885ed68902a934e7ff07c6c6cf"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "116941"
+          "value": "116996"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0e23cbbc7c15eb4a3f368ac5597aa6cf57ca96f46ed7140af5b34cb93a5c4897"
+          "content": "32e48145602dd5727a627a3de16a7ef33cddf1ac99199c852a33c551cfdb0a8d"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "539139"
+          "value": "539361"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a9723a08e1c192d6b9daea10147f985d6f9ccac741be65e2ed45975681a53261"
+          "content": "c69ac0c7b8bb1cbac6c641a427a1ee06bb9981cbe1030546a396bad8eb0124f8"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "226589"
+          "value": "226718"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ef6117f43adbf9f04537dd1731966981a07e801bb91d91fcf60bb02b3618c0e3"
+          "content": "4fa23845b81a9caa553ad1c68f0db46c116c427c2668ea0891ac6fd70824f87b"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "104159"
+          "value": "104222"
         }
       ]
     },
@@ -8372,6 +8372,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/hypoglycemia-level-v1446.js",
+      "type": "file",
+      "name": "lib/hypoglycemia-level-v1446.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fed8086cf5a9440aae872a555437a178571ee5b4e5ddf0be2993355e3eae2053"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4543"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/hys-law-v908.js",
       "type": "file",
       "name": "lib/hys-law-v908.js",
@@ -11150,7 +11171,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b68ec95222a64f9ddb4ed439bd5e67e8e842f63c4cd63e3edf8235f6af2dfba7"
+          "content": "8a39b1cebcca1506ca76d372876852466782166e64b50462ae432c0384a4eac7"
         }
       ],
       "properties": [
@@ -11160,7 +11181,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2559521"
+          "value": "2560390"
         }
       ]
     },
@@ -28175,6 +28196,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/hypoglycemia-level-v1446.js",
+      "type": "file",
+      "name": "mcp/adapters/hypoglycemia-level-v1446.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3f4f6ffa81cf58a686fd23f13e0b784cb2f9bf97bde0dbe7628444b8320b073a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "911"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/hys-law-v908.js",
       "type": "file",
       "name": "mcp/adapters/hys-law-v908.js",
@@ -39479,7 +39521,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1188c20831d1f72a8ee7f575603aac6f738fd1ab00a8f4320e4f3734e1192bc5"
+          "content": "33798655ac0a324386b49dce8d9e008d4f1217c19899d3fdbdf03eabf8ee8095"
         }
       ],
       "properties": [
@@ -39489,7 +39531,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "103823"
+          "value": "103956"
         }
       ]
     },
@@ -41821,6 +41863,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1872"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1446.js",
+      "type": "file",
+      "name": "views/group-v1446.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "514f3fd5261fea26c8be6c146d5e94cf585bb98f3b43f8a5bae77af52d76dbad"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2500"
         }
       ]
     },
@@ -73257,6 +73320,7 @@
         "urn:sophiewell:file:source:lib/hrs-aki-v808.js",
         "urn:sophiewell:file:source:lib/hughes-gbs-v800.js",
         "urn:sophiewell:file:source:lib/hvpg-v1416.js",
+        "urn:sophiewell:file:source:lib/hypoglycemia-level-v1446.js",
         "urn:sophiewell:file:source:lib/hys-law-v908.js",
         "urn:sophiewell:file:source:lib/iad-globiad-v901.js",
         "urn:sophiewell:file:source:lib/ibd-v246.js",
@@ -73946,6 +74010,7 @@
         "urn:sophiewell:file:source:views/group-v1443.js",
         "urn:sophiewell:file:source:views/group-v1444.js",
         "urn:sophiewell:file:source:views/group-v1445.js",
+        "urn:sophiewell:file:source:views/group-v1446.js",
         "urn:sophiewell:file:source:views/group-v145.js",
         "urn:sophiewell:file:source:views/group-v146.js",
         "urn:sophiewell:file:source:views/group-v147.js",
@@ -75049,6 +75114,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/hrs-aki-v808.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hughes-gbs-v800.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hvpg-v1416.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/hypoglycemia-level-v1446.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hys-law-v908.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/iad-globiad-v901.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ibd-v246.js",
@@ -75690,7 +75756,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "322301ac2a6109fd"
+      "value": "cafdd36a35afb50b"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -75702,7 +75768,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2705"
+      "value": "2708"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

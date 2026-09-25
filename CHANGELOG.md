@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Hypoglycemia level and first step.** Classifies a low glucose by the ADA levels
+  (1 below 70 mg/dL, 2 below 54, 3 a severe event needing help) and gives the first
+  treatment step: 15 to 20 g of glucose and a recheck at 15 minutes, or glucagon when
+  the person cannot take it by mouth. See docs/spec-v1446.md.
+
 - **NG tube insertion length.** Turns an adult nose-earlobe-xiphoid measurement into
   an insertion length with the corrected NEX formula (NEX x 0.38696 + 36.37 cm), which
   reproduces every row of the source's conversion table, and says the length never

@@ -8413,6 +8413,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/ng-tube-length-v1445.js (spec-v1445: nasogastric tube insertion length, corrected NEX — clinical disclaimer)
 - `ng-tube-length`
 
+### lib/hypoglycemia-level-v1446.js (spec-v1446: ADA hypoglycemia levels and first treatment step — clinical disclaimer)
+- `hypoglycemia-level`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 
