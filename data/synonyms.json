@@ -8597,6 +8597,17 @@
       ],
       "tile": "blood-4h-window",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "hvpg",
+        "hepatic venous pressure gradient",
+        "wedged hepatic vein pressure",
+        "portal pressure gradient hvpg",
+        "csph hvpg"
+      ],
+      "tile": "hvpg",
+      "audience": "clinicians"
     }
   ]
 }

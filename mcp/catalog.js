@@ -839,6 +839,7 @@ import strongyloidesPresumptiveV1401 from './adapters/strongyloides-presumptive-
 import adultEttDepthV1412 from './adapters/adult-ett-depth-v1412.js';
 import nasalO2Fio2V1413 from './adapters/nasal-o2-fio2-v1413.js';
 import blood4hWindowV1414 from './adapters/blood-4h-window-v1414.js';
+import hvpgV1416 from './adapters/hvpg-v1416.js';
 import nurseStaffingRatioCheckV1396 from './adapters/nurse-staffing-ratio-check-v1396.js';
 import caWpvReportClockV1396 from './adapters/ca-wpv-report-clock-v1396.js';
 import mandatoryOvertimeCheckV1396 from './adapters/mandatory-overtime-check-v1396.js';
@@ -1714,6 +1715,7 @@ const ADAPTER_MODULES = [
   ['adult-ett-depth-v1412', adultEttDepthV1412],
   ['nasal-o2-fio2-v1413', nasalO2Fio2V1413],
   ['blood-4h-window-v1414', blood4hWindowV1414],
+  ['hvpg-v1416', hvpgV1416],
   ['nurse-staffing-ratio-check-v1396', nurseStaffingRatioCheckV1396],
   ['ca-wpv-report-clock-v1396', caWpvReportClockV1396],
   ['mandatory-overtime-check-v1396', mandatoryOvertimeCheckV1396],

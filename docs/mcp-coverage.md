@@ -8329,6 +8329,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/blood-4h-window-v1414.js (spec-v1414: the 4-hour window for a blood component — clinical disclaimer)
 - `blood-4h-window`
 
+### lib/hvpg-v1416.js (spec-v1416: hepatic venous pressure gradient, Baveno VII — clinical disclaimer)
+- `hvpg`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

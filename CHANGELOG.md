@@ -6,6 +6,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Hepatic venous pressure gradient (HVPG).** A new tool subtracts the free from the
+  wedged hepatic vein pressure and reads the gradient against Baveno VII: above 5 mmHg
+  is portal hypertension and 10 or more is clinically significant. It adds the
+  consensus statements that apply at 16 mmHg (surgical risk) and above 20 during
+  bleeding (pre-emptive TIPS), and the ones about causes the gradient reads poorly.
+  See docs/spec-v1416.md.
+
 - **A value of only spaces counts as blank in the shared input checks.** The two
   checks about a hundred tools share read a field of spaces as the number 0. No
   tool could be reached that way today (the agent surface rejects it and a number
