@@ -163,3 +163,12 @@ test('spec-v1102: Category II still stands wherever both I and III are ruled out
   // claim "not Category I" from something nobody looked at.
   assert.equal(nichdFhr({ baseline: 140, variability: 'moderate', lateDecels: 'absent' }).category, null);
 });
+
+// spec-v1458: an unentered feature is reported as null, not as the normal value the logic assumes.
+test('omitted features are reported as not entered, and the label never says "null"', () => {
+  const r = nichdFhr({ baseline: 140, lateDecels: 'recurrent', variableDecels: 'absent', sinusoidal: 'absent' });
+  assert.equal(r.category, null);
+  assert.equal(r.variability, null);
+  assert.equal(r.bandLabel, 'Not yet categorized');
+  assert.equal(nichdFhr({ baseline: 140, variability: 'moderate', lateDecels: 'absent', variableDecels: 'absent', sinusoidal: 'absent' }).variability, 'moderate');
+});

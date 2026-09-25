@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **No answer prints "null" any more, and a test keeps it that way.** A sweep of every
+  worked example found the fetal heart rate tool labeling an uncategorized tracing
+  "Category null" and reporting a variability nobody entered as "moderate" to agents.
+  Both are fixed. See docs/spec-v1458.md.
+
 - **Peguero-Lo Presti joins the LVH voltage criteria.** The ECG LVH tool now also reads
   the deepest S wave in any lead plus the S wave in V4 (positive at 23 mm in women,
   28 mm in men), and no longer prints "> null mm" when the sex is blank. See
