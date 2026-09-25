@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **ABC classification of posterior shoulder instability.** Derives the type (A1 to
+  C2) from the pattern (a first event, recurrent dynamic, or static decentering) and
+  one question for each group, and notes that the type can change over time. See
+  docs/spec-v1448.md.
+
 - **CPAK knee alignment phenotype.** Computes the arithmetic HKA (MPTA minus LDFA)
   and joint line obliquity (their sum) and places the knee in one of the nine CPAK
   types, with the source's inclusive neutral bands. See docs/spec-v1447.md.

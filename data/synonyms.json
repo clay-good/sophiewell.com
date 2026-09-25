@@ -8927,6 +8927,17 @@
       ],
       "tile": "cpak",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "abc classification shoulder",
+        "posterior shoulder instability",
+        "posterior shoulder dislocation classification",
+        "moroder classification",
+        "static posterior decentering"
+      ],
+      "tile": "abc-psi",
+      "audience": "clinicians"
     }
   ]
 }

@@ -8419,6 +8419,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/cpak-v1447.js (spec-v1447: CPAK knee alignment phenotype — clinical disclaimer)
 - `cpak`
 
+### lib/abc-psi-v1448.js (spec-v1448: ABC classification of posterior shoulder instability — clinical disclaimer)
+- `abc-psi`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

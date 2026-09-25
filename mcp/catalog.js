@@ -869,6 +869,7 @@ import kanavelSignsV1444 from './adapters/kanavel-signs-v1444.js';
 import ngTubeLengthV1445 from './adapters/ng-tube-length-v1445.js';
 import hypoglycemiaLevelV1446 from './adapters/hypoglycemia-level-v1446.js';
 import cpakV1447 from './adapters/cpak-v1447.js';
+import abcPsiV1448 from './adapters/abc-psi-v1448.js';
 import nurseStaffingRatioCheckV1396 from './adapters/nurse-staffing-ratio-check-v1396.js';
 import caWpvReportClockV1396 from './adapters/ca-wpv-report-clock-v1396.js';
 import mandatoryOvertimeCheckV1396 from './adapters/mandatory-overtime-check-v1396.js';
@@ -1774,6 +1775,7 @@ const ADAPTER_MODULES = [
   ['ng-tube-length-v1445', ngTubeLengthV1445],
   ['hypoglycemia-level-v1446', hypoglycemiaLevelV1446],
   ['cpak-v1447', cpakV1447],
+  ['abc-psi-v1448', abcPsiV1448],
   ['nurse-staffing-ratio-check-v1396', nurseStaffingRatioCheckV1396],
   ['ca-wpv-report-clock-v1396', caWpvReportClockV1396],
   ['mandatory-overtime-check-v1396', mandatoryOvertimeCheckV1396],
