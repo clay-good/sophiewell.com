@@ -75,3 +75,26 @@ test('non-true values do not fire a manifestation', () => {
   assert.equal(r.majors, 0);
   assert.equal(r.met, false);
 });
+
+test('a blank risk tier is not the stricter tier: when it decides the result, it is asked for', () => {
+  const r = jonesCriteria({ gasEvidence: true, carditis: true, monoarthritis: true });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /^Choose the population risk tier/);
+  assert.doesNotMatch(r.message, /episode/);
+});
+
+test('a blank episode that decides the result (3 minor) is asked for', () => {
+  const r = jonesCriteria({ riskPopulation: 'low', gasEvidence: true, fever: true, elevatedAcuteReactants: true, prolongedPr: true });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /^Choose the episode \(initial or recurrent\)/);
+});
+
+test('a blank tier and episode that change nothing are disclosed, not asked for', () => {
+  const r = jonesCriteria({ gasEvidence: true, carditis: true, polyarthritis: true });
+  assert.equal(r.valid, true);
+  assert.equal(r.met, true);
+  assert.match(r.band, /No population risk tier was entered/);
+  assert.match(r.band, /No episode was entered/);
+  const stated = jonesCriteria({ riskPopulation: 'low', episode: 'initial', gasEvidence: true, carditis: true, polyarthritis: true });
+  assert.doesNotMatch(stated.band, /was entered/);
+});

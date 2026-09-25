@@ -65,7 +65,7 @@ test('pci-surgery-timing: with no interval it states the minimum and asks for on
 });
 
 test('pci-surgery-timing: unknown values fall back, and the range is checked', () => {
-  assert.equal(p({ procedure: 'made-up' }).procedure, 'des');
+  assert.equal(p({ procedure: 'made-up', daysSince: 40 }).valid, false);
   assert.equal(p({ daysSince: -1 }).valid, false);
   assert.equal(p({ daysSince: 3651 }).valid, false);
 });
@@ -74,4 +74,18 @@ test('pci-surgery-timing: the documented example', () => {
   const r = p({ procedure: 'des', daysSince: '120' });
   assert.equal(r.status, 'consider-window');
   assert.equal(r.shortBy, 60);
+});
+
+test('pci-surgery-timing (spec-v1466): a blank procedure is not a drug-eluting stent', () => {
+  const r = p({ daysSince: 40 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /^Choose the procedure: at 40 days the answer differs/);
+  assert.match(p({}).message, /^Choose the procedure and enter the days since it/);
+  const late = p({ daysSince: 200 });
+  assert.equal(late.valid, true);
+  assert.equal(late.status, 'past-minimum');
+  assert.equal(late.procedure, null);
+  assert.match(late.band, /No procedure was entered; every procedure gives this same answer/);
+  assert.doesNotMatch(late.band, /^200 days after drug-eluting stent/i);
+  assert.equal(p({ daysSince: 10, urgentOrEmergency: true }).status, 'urgent');
 });

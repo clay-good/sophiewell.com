@@ -35,7 +35,7 @@ test('all four criteria -> 4 of 4', () => {
 });
 
 test('the course is classified separately and does not change the count', () => {
-  const acute = pericarditis({ chestPain: true, effusion: true });
+  const acute = pericarditis({ chestPain: true, effusion: true, course: 'acute' });
   const recurrent = pericarditis({ chestPain: true, effusion: true, course: 'recurrent' });
   assert.equal(acute.criteriaMet, recurrent.criteriaMet);
   assert.equal(acute.course, 'acute');
@@ -50,4 +50,13 @@ test('every published course is accepted and an unknown one is rejected', () => 
   const bad = pericarditis({ course: 'subacute' });
   assert.equal(bad.valid, false);
   assert.equal(bad.field, 'course');
+});
+
+test('spec-v1465: a blank course is not printed as acute', () => {
+  const r = pericarditis({ chestPain: true, effusion: true });
+  assert.equal(r.diagnostic, true);
+  assert.equal(r.course, null);
+  assert.equal(r.courseLabel, 'not entered');
+  assert.equal(r.band, 'Pericarditis criteria 2 of 4 \u2014 criteria met. No course was entered, so the episode is not classified as acute, incessant, recurrent or chronic.');
+  assert.doesNotMatch(r.band, /new onset/);
 });

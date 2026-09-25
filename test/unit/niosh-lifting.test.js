@@ -116,3 +116,15 @@ test('spec-v1096: a blank lift rate is not a task lifted once', () => {
   assert.ok(n(heavy).li > 1);
   assert.equal(n(heavy).frequencyNote, null);
 });
+
+test('spec-v1465: a blank duration, coupling or asymmetry is named when the index is within 1.0', () => {
+  const b = { loadWeightLb: 25, horizontalInches: 15, verticalInches: 30, travelInches: 20, liftsPerMinute: 1 };
+  const r = n(b);
+  assert.equal(r.indexBand, 'within');
+  assert.match(r.band, /Not entered, so read at the most favorable value: the duration was taken as one hour or less; the coupling was taken as good; the asymmetry angle was taken as 0 degrees/);
+  const stated = n({ ...b, duration: 'short', coupling: 'good', asymmetryDegrees: 0 });
+  assert.equal(stated.assumedNote, null);
+  assert.equal(n({ ...b, loadWeightLb: 40 }).assumedNote, null);
+  // Without a lift rate the duration does not enter the equation, so it is not named.
+  assert.doesNotMatch(n({ ...b, liftsPerMinute: '' }).band, /duration was taken/);
+});

@@ -155,14 +155,17 @@ export const renderers = {
   hints(root) {
     note(root, 'HINTS / HINTS-plus exam (Kattah 2009): a three-step bedside oculomotor exam for acute vestibular syndrome. Enter the Head-Impulse test, the Nystagmus direction, and the Test of Skew, plus any new hearing loss (HINTS-plus). A benign peripheral pattern needs all three reassuring; any one central feature -- including a normal head impulse -- flags a central (stroke) cause.');
     root.appendChild(selectField('Head-Impulse test', 'hi-impulse', [
+      { value: '', text: '— choose —' },
       { value: 'abnormal', text: 'Abnormal -- corrective saccade present (peripheral)' },
       { value: 'normal', text: 'Normal / untestable -- no corrective saccade (central)' },
     ]));
     root.appendChild(selectField('Nystagmus', 'hi-nys', [
+      { value: '', text: '— choose —' },
       { value: 'fixed', text: 'Direction-fixed horizontal (peripheral)' },
       { value: 'changing', text: 'Direction-changing on eccentric gaze (central)' },
     ]));
     root.appendChild(selectField('Test of Skew', 'hi-skew', [
+      { value: '', text: '— choose —' },
       { value: 'absent', text: 'Absent (peripheral)' },
       { value: 'present', text: 'Present -- vertical skew on cover test (central)' },
     ]));
@@ -170,6 +173,7 @@ export const renderers = {
     const o = out(); root.appendChild(o);
     wire(['hi-impulse', 'hi-nys', 'hi-skew', 'hi-hear'], () => safe(o, () => {
       const r = M.hints({ headImpulse: selVal('hi-impulse'), nystagmus: selVal('hi-nys'), skew: selVal('hi-skew'), hearingLoss: chk('hi-hear') });
+      if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [
         { text: r.band, cls: r.abnormal ? 'warn' : null },
         { label: 'HINTS', value: r.category },

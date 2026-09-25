@@ -98,3 +98,16 @@ test('spec-v1095: an unentered ICE score does not read as a normal one', () => {
   assert.equal(severe.grade, 4);
   assert.doesNotMatch(severe.band, /can only raise/);
 });
+
+test('spec-v1462: domains left out are disclosed, never described as negative findings', () => {
+  const r = icansGrade({ ice: '10' });
+  assert.equal(r.grade, 0);
+  assert.match(r.band, /No level of consciousness, seizure or raised ICP finding was entered; any of them can only raise the grade/);
+  assert.doesNotMatch(r.band, /no consciousness, seizure, motor, or raised-ICP findings/);
+  const one = icansGrade({ ice: '8', loc: 'spontaneous', icp: 'none' });
+  assert.match(one.band, /No seizure finding was entered; it can only raise this grade/);
+  const all = icansGrade({ ice: '10', loc: 'spontaneous', seizure: 'none', icp: 'none' });
+  assert.equal(all.band, 'No ICANS (ICE 10 and no consciousness, seizure, motor, or raised-ICP findings).');
+  const top = icansGrade({ ice: '10', seizure: 'g4' });
+  assert.doesNotMatch(top.band, /was entered/);
+});

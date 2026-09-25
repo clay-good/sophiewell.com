@@ -74,3 +74,19 @@ test('acromegaly: empty, invalid and out-of-range input', () => {
   assert.equal(acro().valid, true);
   assert.doesNotMatch(JSON.stringify(acro({ ...matched, igf1TimesUln: 2, typicalFeatures: true })), /NaN|Infinity/);
 });
+
+// spec-v1459: a blank assay is not the lenient conventional assay.
+test('acromegaly: a blank assay is asked for when it decides the reading, never assumed', () => {
+  const base = { igf1TimesUln: 1.1, ageAndSexMatched: true, typicalFeatures: true, ogttGhNadir: 0.6 };
+  const r = acro(base);
+  assert.equal(r.valid, false);
+  assert.match(r.message, /Choose the assay/);
+  // Where both cutoffs agree, the answer stands and claims no assay.
+  const agree = acro({ ...base, igf1TimesUln: 2 });
+  assert.equal(agree.valid, true);
+  assert.equal(agree.nadirThreshold, null);
+  assert.match(agree.assayNote, /No assay was entered/);
+  assert.doesNotMatch(agree.assayNote, /conventional assay is recorded/);
+  // A nadir outside the window does not need the assay.
+  assert.equal(acro({ ...base, ogttGhNadir: 1.5 }).valid, true);
+});

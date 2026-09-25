@@ -78,7 +78,8 @@ export const renderers = {
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [
         { text: r.band, cls: r.abnormal ? 'warn' : null },
-        { label: 'Nadir threshold', value: `${r.nadirThreshold} micrograms per L` },
+        // spec-v1459: no assay entered means no single threshold; say so instead of printing null.
+        { label: 'Nadir threshold', value: r.nadirThreshold == null ? 'depends on the assay (not entered)' : `${r.nadirThreshold} micrograms per L` },
       ]);
       if (r.assayNote) note(o, r.assayNote);
       if (r.discordanceNote) note(o, r.discordanceNote);

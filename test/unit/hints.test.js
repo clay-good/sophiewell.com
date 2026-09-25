@@ -46,8 +46,23 @@ test('multiple central features are all named', () => {
   assert.match(r.detail, /normal head impulse, direction-changing nystagmus, skew present, new unilateral hearing loss/);
 });
 
-test('scalar / non-object fuzz arg yields a valid Peripheral default, never throws', () => {
+test('scalar / non-object fuzz arg asks for the exam, never throws and never reads peripheral', () => {
   const r = hints(3);
-  assert.equal(r.valid, true);
-  assert.equal(r.category, 'Peripheral (benign) pattern');
+  assert.equal(r.valid, false);
+  assert.match(r.message, /^Choose the head-impulse test, the nystagmus direction and the test of skew/);
+});
+
+test('a blank step is not a reassuring step: two peripheral findings and one blank ask for the third', () => {
+  const r = hints({ headImpulse: 'abnormal', nystagmus: 'fixed' });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /Choose the test of skew/);
+  assert.doesNotMatch(r.message, /peripheral \(benign\)/);
+});
+
+test('one central feature still reads central with the other steps blank', () => {
+  for (const input of [{ headImpulse: 'normal' }, { nystagmus: 'changing' }, { skew: 'present' }, { hearingLoss: true }]) {
+    const r = hints(input);
+    assert.equal(r.valid, true, JSON.stringify(input));
+    assert.equal(r.category, 'Central (stroke) pattern');
+  }
 });

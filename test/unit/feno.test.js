@@ -10,10 +10,10 @@ test('feno: the published cutpoints', () => {
 });
 
 test('feno: the adult bands, read strictly', () => {
-  assert.equal(f({ fenoPpb: 24.9 }).bandLabel, 'Low');
-  assert.equal(f({ fenoPpb: 25 }).bandLabel, 'Intermediate');
-  assert.equal(f({ fenoPpb: 50 }).bandLabel, 'Intermediate');
-  assert.equal(f({ fenoPpb: 50.1 }).bandLabel, 'High');
+  assert.equal(f({ fenoPpb: 24.9, ageGroup: 'adult' }).bandLabel, 'Low');
+  assert.equal(f({ fenoPpb: 25, ageGroup: 'adult' }).bandLabel, 'Intermediate');
+  assert.equal(f({ fenoPpb: 50, ageGroup: 'adult' }).bandLabel, 'Intermediate');
+  assert.equal(f({ fenoPpb: 50.1, ageGroup: 'adult' }).bandLabel, 'High');
 });
 
 test('feno: the child bands, and the same number reading differently', () => {
@@ -23,9 +23,9 @@ test('feno: the child bands, and the same number reading differently', () => {
   // The point of the age split: 30 ppb is intermediate in BOTH groups, and 40 is not.
   assert.equal(f({ fenoPpb: 30 }).bandLabel, 'Intermediate');
   assert.equal(f({ fenoPpb: 30, ageGroup: 'child' }).bandLabel, 'Intermediate');
-  assert.equal(f({ fenoPpb: 40 }).bandLabel, 'Intermediate');
+  assert.equal(f({ fenoPpb: 40, ageGroup: 'adult' }).bandLabel, 'Intermediate');
   assert.equal(f({ fenoPpb: 40, ageGroup: 'child' }).bandLabel, 'High');
-  assert.match(f({ fenoPpb: 40 }).ageNote, /the other age group would read high/);
+  assert.match(f({ fenoPpb: 40, ageGroup: 'adult' }).ageNote, /the other age group would read high/);
   assert.match(f({ fenoPpb: 40, ageGroup: 'child' }).ageNote, /the other age group would read intermediate/);
   // And below both low cutpoints the two agree again.
   assert.equal(f({ fenoPpb: 15 }).bandLabel, 'Low');
@@ -60,11 +60,24 @@ test('feno: the confounders are named, and a lowering one qualifies a low result
   assert.match(f({ fenoPpb: 30 }).confounderNote, /corticosteroids and active smoking lower it/);
 });
 
-test('feno: a missing or out-of-range value is refused, and an unknown age falls back', () => {
+test('feno: a missing or out-of-range value is refused, and an unknown age is not entered', () => {
   assert.equal(f({}).valid, false);
   assert.equal(f({ fenoPpb: -1 }).valid, false);
   assert.equal(f({ fenoPpb: 501 }).valid, false);
-  assert.equal(f({ fenoPpb: 30, ageGroup: 'made-up' }).ageGroup, 'adult');
+  assert.equal(f({ fenoPpb: 30, ageGroup: 'made-up' }).ageGroup, null);
+});
+
+test('feno (spec-v1463): a blank age group is asked for when the cutpoints decide the reading', () => {
+  const r = f({ fenoPpb: 40 });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /^Choose the age group: 40 ppb reads intermediate at twelve and over but high under twelve/);
+  const same = f({ fenoPpb: 30 });
+  assert.equal(same.valid, true);
+  assert.equal(same.bandLabel, 'Intermediate');
+  assert.equal(same.ageGroup, null);
+  assert.match(same.band, /No age group was entered; both age groups read this value the same/);
+  assert.doesNotMatch(same.ageNote, /under-12|12-and-over cutpoints/);
+  assert.doesNotMatch(f({ fenoPpb: 30, ageGroup: 'adult' }).band, /was entered/);
 });
 
 test('feno: the documented example', () => {

@@ -6,6 +6,48 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **PCI surgery timing no longer assumes a drug-eluting stent.** Asked through the
+  agent surface with no procedure, it opened "120 days after drug-eluting stent". It
+  now asks whenever the procedure changes the answer. See docs/spec-v1466.md.
+
+- **Three more tools stop answering a blank as a choice.** NIOSH lifting now names the
+  duration, coupling and asymmetry it took at their most favorable values. The
+  methacholine tool asks whether a number is a PD20 or a PC20 instead of assuming a
+  dose. Acute pericarditis no longer prints "acute (new onset)" for a course nobody
+  entered. See docs/spec-v1465.md.
+
+- **RTA typing no longer assumes a low potassium.** A high potassium means type 4
+  whatever the urine pH, but a blank one was read as low, so an agent sending only a
+  urine pH of 5.0 got "type 2". Typing now waits for the potassium. See
+  docs/spec-v1464.md.
+
+- **The FeNO tool no longer assumes an adult.** Asked through the agent surface with no
+  age group, a child's 40 ppb read "intermediate" against the adult cutpoints instead
+  of "high". It now asks when the age group decides the reading. See
+  docs/spec-v1463.md.
+
+- **ICANS no longer reports findings that were not entered.** Given only an ICE score
+  of 10, the agent surface answered "no consciousness, seizure, motor, or raised-ICP
+  findings". It now says which domains were left out and that any of them can only raise
+  the grade. See docs/spec-v1462.md.
+
+- **The Jones criteria no longer assume a low-risk population or a first episode.**
+  Asked through the agent surface with those left out, carditis and monoarthritis read
+  "does not meet", although they meet the criteria in a moderate- or high-risk
+  population. The tool now asks when the missing choice decides the result, and says
+  what it assumed when it does not. See docs/spec-v1461.md.
+
+- **HINTS no longer calls a pattern benign from steps nobody examined.** An agent
+  giving only the head-impulse result got "a peripheral (benign) pattern", and the
+  page opened with all three steps already set to their peripheral choices. A
+  peripheral reading now needs all three steps entered. See docs/spec-v1460.md.
+
+- **The acromegaly tool no longer assumes an assay.** A blank assay was read as the
+  lenient conventional one and the note said it had been "recorded"; for a nadir
+  between the two cutoffs that changed "consistent with acromegaly" into
+  "discordant". It now asks for the assay when it decides the reading. See
+  docs/spec-v1459.md.
+
 - **No answer prints "null" any more, and a test keeps it that way.** A sweep of every
   worked example found the fetal heart rate tool labeling an uncategorized tracing
   "Category null" and reporting a variability nobody entered as "moderate" to agents.

@@ -85,6 +85,7 @@ export const renderers = {
         monoarthralgia: chk('jones-monoarthralgia'), fever: chk('jones-fever'),
         elevatedAcuteReactants: chk('jones-reactants'), prolongedPr: chk('jones-pr'),
       });
+      if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [
         { text: r.band, cls: r.met ? 'warn' : null },
         { label: 'Major / minor', value: `${r.majors} / ${r.minors}` },

@@ -58,3 +58,13 @@ test('out-of-range values and an unknown potassium are rejected', () => {
   assert.equal(rtaType({ potassium: 'low', urinePh: 14 }).field, 'urinePh');
   assert.equal(rtaType({ potassium: 'low', feHco3: 200 }).field, 'feHco3');
 });
+
+test('spec-v1464: a blank potassium is not a low one; no type is assigned without it', () => {
+  const r = rtaType({ urinePh: 5.0 });
+  assert.equal(r.valid, true);
+  assert.equal(r.type, null);
+  assert.equal(r.potassium, null);
+  assert.match(r.band, /^RTA typing incomplete \u2014 choose the serum potassium: a high potassium gives type 4/);
+  assert.equal(rtaType({ potassium: '', urinePh: 6.2 }).type, null);
+  assert.equal(rtaType({ potassium: 'high', urinePh: 5.0 }).type, 4);
+});
