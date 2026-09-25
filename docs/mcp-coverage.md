@@ -8410,6 +8410,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/kanavel-signs-v1444.js (spec-v1444: Kanavel signs of pyogenic flexor tenosynovitis — clinical disclaimer)
 - `kanavel-signs`
 
+### lib/ng-tube-length-v1445.js (spec-v1445: nasogastric tube insertion length, corrected NEX — clinical disclaimer)
+- `ng-tube-length`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

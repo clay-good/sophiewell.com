@@ -8894,6 +8894,17 @@
       ],
       "tile": "kanavel-signs",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "ng tube length",
+        "nasogastric tube length",
+        "nex measurement",
+        "corrected nex",
+        "how far to insert ng tube"
+      ],
+      "tile": "ng-tube-length",
+      "audience": "clinicians"
     }
   ]
 }

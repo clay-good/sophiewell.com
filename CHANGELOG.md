@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **NG tube insertion length.** Turns an adult nose-earlobe-xiphoid measurement into
+  an insertion length with the corrected NEX formula (NEX x 0.38696 + 36.37 cm), which
+  reproduces every row of the source's conversion table, and says the length never
+  replaces verifying the tip. See docs/spec-v1445.md.
+
 - **Kanavel signs.** Counts the four cardinal signs of pyogenic flexor
   tenosynovitis and says that fewer than four does not exclude it: only about half
   of confirmed cases show all four. See docs/spec-v1444.md.
