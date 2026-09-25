@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **STRONGkids.** A pediatric nutritional risk screen for children admitted to
+  hospital: four questions scored 0 to 5 into low, moderate or high risk, to repeat
+  weekly. The catalog had adult nutrition screens and none for children. See
+  docs/spec-v1440.md.
+
 - **UKELD.** Computes the UK end-stage liver disease score from INR, creatinine,
   bilirubin and sodium (entered in mg/dL or umol/L, computed in umol/L as the
   coefficients require) and compares it with 49, the UK listing threshold. See

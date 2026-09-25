@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:cb56b364-5187-5633-84bc-68ff560b2fac",
+  "serialNumber": "urn:uuid:54c04c2f-32f2-5e8f-83cc-d3c62e4323e1",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-25T03:18:50.527Z",
+    "timestamp": "2026-09-25T03:29:25.686Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1812 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1813 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "00aa2913e15d11079ee3c15980c873a1455cb146fdbbc64dc2c4d783738d8402"
+          "content": "1bb29205dd59965b5c7fddb19479fa5331c5a0bfbdc36fd168f728b7a20fcd9e"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "116617"
+          "value": "116679"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c67c48a8c19ace07d785ca2b7804385f9e750a7e1ae878b94fbc699b5f4396a0"
+          "content": "ac6adb98471c0dfe1c7c08979e1ef79b1d83891f293e36fd40180ce760fd6a9c"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "537836"
+          "value": "538057"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "971f2c815d9c0cae4f13d5b7b432e0fe2c6e5ff61b5e891fd4b152aae34963c4"
+          "content": "97c18603cc8554743f551eeaa3a89973c1499016f871f1134330cf643b799e2f"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "225838"
+          "value": "225959"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "aaf344e1e2f7bd6fd1ab194fd3f07800b342747af9e6860fcb23b57fb8813465"
+          "content": "d201739b28ef6f36bebfa314bc3257676b6185b1f961bff4f1ad356e449fd13c"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "103810"
+          "value": "103872"
         }
       ]
     },
@@ -11087,7 +11087,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6bcc424b1637b971be09359ec9ba6d0a48bf6a49ce912da4f7bfadb78f5c326d"
+          "content": "43a3bd754cbfd5530f8e96e9c58aaf1e107f77283803d12cf77de641012b022c"
         }
       ],
       "properties": [
@@ -11097,7 +11097,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2554534"
+          "value": "2555352"
         }
       ]
     },
@@ -18133,6 +18133,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "16389"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/strongkids-v1440.js",
+      "type": "file",
+      "name": "lib/strongkids-v1440.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9086c977226b79311ca622301f635cd3f61735491755c7a0f21885ab3ed04724"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2789"
         }
       ]
     },
@@ -37016,6 +37037,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/strongkids-v1440.js",
+      "type": "file",
+      "name": "mcp/adapters/strongkids-v1440.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "483eef29087991d9307858c951f17ef77aacf54609adb6fa90816ae1f4115b07"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1052"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/strongyloides-presumptive-v1401.js",
       "type": "file",
       "name": "mcp/adapters/strongyloides-presumptive-v1401.js",
@@ -39227,7 +39269,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5499856e8791e047670e6d93592f4900ce8416d339ac65b9844b48e68ea16886"
+          "content": "fd795026262f53ff294d3062d70b3f40f416fee85565c8a5265049778298c53e"
         }
       ],
       "properties": [
@@ -39237,7 +39279,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "103119"
+          "value": "103222"
         }
       ]
     },
@@ -41443,6 +41485,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "10666"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1440.js",
+      "type": "file",
+      "name": "views/group-v1440.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3600429fac7ba819a0b3c66b3bed3b0a05e6f4a641dec82be29afc1f53cc6694"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2772"
         }
       ]
     },
@@ -73344,6 +73407,7 @@
         "urn:sophiewell:file:source:lib/strasberg-bdi-v348.js",
         "urn:sophiewell:file:source:lib/stroke-prognosis-v210.js",
         "urn:sophiewell:file:source:lib/stroke-risk-v217.js",
+        "urn:sophiewell:file:source:lib/strongkids-v1440.js",
         "urn:sophiewell:file:source:lib/strongyloides-presumptive-v1401.js",
         "urn:sophiewell:file:source:lib/stulberg-v457.js",
         "urn:sophiewell:file:source:lib/subspecialty-v198.js",
@@ -73556,6 +73620,7 @@
         "urn:sophiewell:file:source:views/group-v1438.js",
         "urn:sophiewell:file:source:views/group-v1439.js",
         "urn:sophiewell:file:source:views/group-v144.js",
+        "urn:sophiewell:file:source:views/group-v1440.js",
         "urn:sophiewell:file:source:views/group-v145.js",
         "urn:sophiewell:file:source:views/group-v146.js",
         "urn:sophiewell:file:source:views/group-v147.js",
@@ -75086,6 +75151,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/strasberg-bdi-v348.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/stroke-prognosis-v210.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/stroke-risk-v217.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/strongkids-v1440.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/strongyloides-presumptive-v1401.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/stulberg-v457.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/subspecialty-v198.js",
@@ -75294,7 +75360,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "cb56b36451878633"
+      "value": "54c04c2f32f2fe8f"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -75306,7 +75372,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2687"
+      "value": "2690"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

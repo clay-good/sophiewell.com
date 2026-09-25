@@ -8395,6 +8395,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/uterine-activity-v1439.js (spec-v1439: uterine activity: tachysystole and Montevideo units — clinical disclaimer)
 - `uterine-activity`
 
+### lib/strongkids-v1440.js (spec-v1440: STRONGkids pediatric nutritional risk screen — clinical disclaimer)
+- `strongkids`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

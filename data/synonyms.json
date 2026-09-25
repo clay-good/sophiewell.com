@@ -8839,6 +8839,17 @@
       ],
       "tile": "uterine-activity",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "strongkids",
+        "strong kids",
+        "pediatric malnutrition screening",
+        "pediatric nutrition risk screen",
+        "child malnutrition risk hospital"
+      ],
+      "tile": "strongkids",
+      "audience": "clinicians"
     }
   ]
 }

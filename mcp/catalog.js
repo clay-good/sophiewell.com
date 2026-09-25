@@ -861,6 +861,7 @@ import hatchAfV1435 from './adapters/hatch-af-v1435.js';
 import rcvs2V1436 from './adapters/rcvs2-v1436.js';
 import ukeldV1438 from './adapters/ukeld-v1438.js';
 import uterineActivityV1439 from './adapters/uterine-activity-v1439.js';
+import strongkidsV1440 from './adapters/strongkids-v1440.js';
 import nurseStaffingRatioCheckV1396 from './adapters/nurse-staffing-ratio-check-v1396.js';
 import caWpvReportClockV1396 from './adapters/ca-wpv-report-clock-v1396.js';
 import mandatoryOvertimeCheckV1396 from './adapters/mandatory-overtime-check-v1396.js';
@@ -1758,6 +1759,7 @@ const ADAPTER_MODULES = [
   ['rcvs2-v1436', rcvs2V1436],
   ['ukeld-v1438', ukeldV1438],
   ['uterine-activity-v1439', uterineActivityV1439],
+  ['strongkids-v1440', strongkidsV1440],
   ['nurse-staffing-ratio-check-v1396', nurseStaffingRatioCheckV1396],
   ['ca-wpv-report-clock-v1396', caWpvReportClockV1396],
   ['mandatory-overtime-check-v1396', mandatoryOvertimeCheckV1396],
