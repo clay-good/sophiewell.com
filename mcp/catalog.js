@@ -892,6 +892,10 @@ import cairoRecessionV1482 from './adapters/cairo-recession-v1482.js';
 import ohiSV1483 from './adapters/ohi-s-v1483.js';
 import deanFluorosisCfiV1484 from './adapters/dean-fluorosis-cfi-v1484.js';
 import icdasCariesV1485 from './adapters/icdas-caries-v1485.js';
+import paiPeriapicalV1486 from './adapters/pai-periapical-v1486.js';
+import jemtPapillaV1487 from './adapters/jemt-papilla-v1487.js';
+import nordlandTarnowPapillaV1488 from './adapters/nordland-tarnow-papilla-v1488.js';
+import periImplantStatusV1489 from './adapters/peri-implant-status-v1489.js';
 import nurseStaffingRatioCheckV1396 from './adapters/nurse-staffing-ratio-check-v1396.js';
 import caWpvReportClockV1396 from './adapters/ca-wpv-report-clock-v1396.js';
 import mandatoryOvertimeCheckV1396 from './adapters/mandatory-overtime-check-v1396.js';
@@ -1820,6 +1824,10 @@ const ADAPTER_MODULES = [
   ['ohi-s-v1483', ohiSV1483],
   ['dean-fluorosis-cfi-v1484', deanFluorosisCfiV1484],
   ['icdas-caries-v1485', icdasCariesV1485],
+  ['pai-periapical-v1486', paiPeriapicalV1486],
+  ['jemt-papilla-v1487', jemtPapillaV1487],
+  ['nordland-tarnow-papilla-v1488', nordlandTarnowPapillaV1488],
+  ['peri-implant-status-v1489', periImplantStatusV1489],
   ['nurse-staffing-ratio-check-v1396', nurseStaffingRatioCheckV1396],
   ['ca-wpv-report-clock-v1396', caWpvReportClockV1396],
   ['mandatory-overtime-check-v1396', mandatoryOvertimeCheckV1396],

@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:40b16ad5-a2d6-5a66-8852-d108761ff04c",
+  "serialNumber": "urn:uuid:53c748ed-04f3-58ed-8d60-1855ba7e921c",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-25T12:32:57.641Z",
+    "timestamp": "2026-09-25T21:44:47.628Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1843 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1847 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "145a1ddfd5e68f5f9cd2c28669736adf6cd244b602eac5bad9222afbd8d97a20"
+          "content": "8b9c496a169c320d569511daf5b6b5d6fb005c6df70bf009c53737817b0679a4"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "118416"
+          "value": "118594"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "20d908a181384d849ecb11f7cb6a391e0fb8c2aa0847af78f1caf4b5a9ad2134"
+          "content": "d3564b98c95961e483ff754b4bbde3093cd6616978729ab9d2ea54d381b8272d"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "544701"
+          "value": "545547"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "eb84e4c3c4f22c2f6d57e343a1aa5fb069eb739e5795900a2d16ed944883c13c"
+          "content": "5efc88ce9378475a8775b238826d53e916107475b413e1b79b72ff8cc6579eae"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "229690"
+          "value": "230202"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "afdd5c337f04cd8ef993754b416f18ecc7ead48a9e559c810f23f062cc6b73a6"
+          "content": "bb5eebd5ec7d640cc7b5e511166a0df51f45b54345ad39f79b5205462a295c92"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "105710"
+          "value": "105916"
         }
       ]
     },
@@ -9380,6 +9380,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/jemt-papilla-v1487.js",
+      "type": "file",
+      "name": "lib/jemt-papilla-v1487.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ed174c99d577b1548f2308be50cfdcbc2384001e6cae8343203e81f0ee5f6b07"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3382"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/jerger-tympanogram-v506.js",
       "type": "file",
       "name": "lib/jerger-tympanogram-v506.js",
@@ -11507,7 +11528,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "32bb70c05beefa8b6ae7bded31b753cf2d4f7beb724d8de12960045a440c1288"
+          "content": "28b06fbbabbebd35e2565478d96e908df456da2d816d0533e448bf1e1d9fcdbe"
         }
       ],
       "properties": [
@@ -11517,7 +11538,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2583027"
+          "value": "2586680"
         }
       ]
     },
@@ -13034,6 +13055,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/nordland-tarnow-papilla-v1488.js",
+      "type": "file",
+      "name": "lib/nordland-tarnow-papilla-v1488.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "520c596955943fef46c967882c520f8fe7acb43bf420fc735cc8ea99db12ad05"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3451"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/norwood-hairloss-v502.js",
       "type": "file",
       "name": "lib/norwood-hairloss-v502.js",
@@ -14378,6 +14420,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/pai-periapical-v1486.js",
+      "type": "file",
+      "name": "lib/pai-periapical-v1486.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9122c544dd57bbf45d7cc005c6c226f33ca37153d47064c42acde4baa30cdc38"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3234"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/painscore-v235.js",
       "type": "file",
       "name": "lib/painscore-v235.js",
@@ -14941,6 +15004,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "13708"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/peri-implant-status-v1489.js",
+      "type": "file",
+      "name": "lib/peri-implant-status-v1489.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ea3557494ff2bfef2942846684a116771fe0ef03ae8cc0869e207e021658a838"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5972"
         }
       ]
     },
@@ -29687,6 +29771,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/jemt-papilla-v1487.js",
+      "type": "file",
+      "name": "mcp/adapters/jemt-papilla-v1487.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "11e12c70ba85d403ce51902a79c0e8afe09fc5ea9b96bbdb3204b19a7b1b32a7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "692"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/jerger-tympanogram-v506.js",
       "type": "file",
       "name": "mcp/adapters/jerger-tympanogram-v506.js",
@@ -33194,6 +33299,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/nordland-tarnow-papilla-v1488.js",
+      "type": "file",
+      "name": "mcp/adapters/nordland-tarnow-papilla-v1488.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "44a1c936928b3240773014875c37580e2f85f0bde0bfa7dc07955c1496296c99"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "938"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/norwood-hairloss-v502.js",
       "type": "file",
       "name": "mcp/adapters/norwood-hairloss-v502.js",
@@ -34160,6 +34286,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/pai-periapical-v1486.js",
+      "type": "file",
+      "name": "mcp/adapters/pai-periapical-v1486.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "aa78a2cc267e926b2653842d08f2b499143b2e21910f1a4a56ca6a0863ae08cd"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "606"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/painscore-v235.js",
       "type": "file",
       "name": "mcp/adapters/painscore-v235.js",
@@ -34723,6 +34870,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "6813"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/peri-implant-status-v1489.js",
+      "type": "file",
+      "name": "mcp/adapters/peri-implant-status-v1489.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1e80127603914d62bb97bf21da3ff35a3ca4aad7afcfad44b750dbbd429a4204"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1324"
         }
       ]
     },
@@ -40529,7 +40697,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ba0f4c4d8c7cefc3ec442a4308ad963abacc80d9e2d32bf2ec1be5f9ef6082b1"
+          "content": "767b1168d67be42fd6f7b15998e46863ba60985580264e02d7a9142506f9286d"
         }
       ],
       "properties": [
@@ -40539,7 +40707,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "106640"
+          "value": "107152"
         }
       ]
     },
@@ -43480,6 +43648,90 @@
         {
           "name": "sophiewell:bytes",
           "value": "2040"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1486.js",
+      "type": "file",
+      "name": "views/group-v1486.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "47619a3324b6e9c8ad7476f551aba789f0e97e2495da80421e6040ed09b450f1"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2074"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1487.js",
+      "type": "file",
+      "name": "views/group-v1487.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2f27115b9b27efa325b8790fc747ef2812db9093927fe10abfe63f058f7b4670"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2116"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1488.js",
+      "type": "file",
+      "name": "views/group-v1488.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "cb0e64aa419937a7b865b73e293a72eb7e26da40cb8c4b229778680c7a783d3a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2396"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1489.js",
+      "type": "file",
+      "name": "views/group-v1489.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e9e68222998b140b29d4fd12008a4d6b2d3c979a8d3f27c8180360685c55d588"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3055"
         }
       ]
     },
@@ -74880,6 +75132,7 @@
         "urn:sophiewell:file:source:lib/isi-v726.js",
         "urn:sophiewell:file:source:lib/isis-v302.js",
         "urn:sophiewell:file:source:lib/isl-lymphedema-v539.js",
+        "urn:sophiewell:file:source:lib/jemt-papilla-v1487.js",
         "urn:sophiewell:file:source:lib/jerger-tympanogram-v506.js",
         "urn:sophiewell:file:source:lib/jnet-v336.js",
         "urn:sophiewell:file:source:lib/johnson-strom-flatfoot-v1421.js",
@@ -75054,6 +75307,7 @@
         "urn:sophiewell:file:source:lib/nms-criteria-v870.js",
         "urn:sophiewell:file:source:lib/nohria-stevenson-v369.js",
         "urn:sophiewell:file:source:lib/noise-exposure-v886.js",
+        "urn:sophiewell:file:source:lib/nordland-tarnow-papilla-v1488.js",
         "urn:sophiewell:file:source:lib/norwood-hairloss-v502.js",
         "urn:sophiewell:file:source:lib/nottingham-grade-v649.js",
         "urn:sophiewell:file:source:lib/nottingham-npi-v330.js",
@@ -75118,6 +75372,7 @@
         "urn:sophiewell:file:source:lib/pa/staleness-ledger.js",
         "urn:sophiewell:file:source:lib/pa/staleness.js",
         "urn:sophiewell:file:source:lib/page-title.js",
+        "urn:sophiewell:file:source:lib/pai-periapical-v1486.js",
         "urn:sophiewell:file:source:lib/painscore-v235.js",
         "urn:sophiewell:file:source:lib/palm-coein-v545.js",
         "urn:sophiewell:file:source:lib/panc3-v597.js",
@@ -75145,6 +75400,7 @@
         "urn:sophiewell:file:source:lib/pedstox-v247.js",
         "urn:sophiewell:file:source:lib/pef-zones-v891.js",
         "urn:sophiewell:file:source:lib/peradeniya-op-v575.js",
+        "urn:sophiewell:file:source:lib/peri-implant-status-v1489.js",
         "urn:sophiewell:file:source:lib/pericarditis-v789.js",
         "urn:sophiewell:file:source:lib/periodontitis-stage-grade-v1480.js",
         "urn:sophiewell:file:source:lib/periop-bridging-v899.js",
@@ -75575,6 +75831,10 @@
         "urn:sophiewell:file:source:views/group-v1483.js",
         "urn:sophiewell:file:source:views/group-v1484.js",
         "urn:sophiewell:file:source:views/group-v1485.js",
+        "urn:sophiewell:file:source:views/group-v1486.js",
+        "urn:sophiewell:file:source:views/group-v1487.js",
+        "urn:sophiewell:file:source:views/group-v1488.js",
+        "urn:sophiewell:file:source:views/group-v1489.js",
         "urn:sophiewell:file:source:views/group-v149.js",
         "urn:sophiewell:file:source:views/group-v15.js",
         "urn:sophiewell:file:source:views/group-v151.js",
@@ -76721,6 +76981,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/isi-v726.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/isis-v302.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/isl-lymphedema-v539.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/jemt-papilla-v1487.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/jerger-tympanogram-v506.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/jnet-v336.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/johnson-strom-flatfoot-v1421.js",
@@ -76888,6 +77149,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/nms-criteria-v870.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nohria-stevenson-v369.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/noise-exposure-v886.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/nordland-tarnow-papilla-v1488.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/norwood-hairloss-v502.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nottingham-grade-v649.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nottingham-npi-v330.js",
@@ -76934,6 +77196,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/oswestry-v643.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ottawa-bowel-prep-v670.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/outerbridge-v337.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/pai-periapical-v1486.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/painscore-v235.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/palm-coein-v545.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/panc3-v597.js",
@@ -76961,6 +77224,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/pedstox-v247.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pef-zones-v891.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/peradeniya-op-v575.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/peri-implant-status-v1489.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pericarditis-v789.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/periodontitis-stage-grade-v1480.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/periop-bridging-v899.js",
@@ -77340,7 +77604,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "40b16ad5a2d68a66"
+      "value": "53c748ed04f3d8ed"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -77352,7 +77616,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2780"
+      "value": "2792"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

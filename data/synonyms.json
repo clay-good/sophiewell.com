@@ -9193,6 +9193,49 @@
       ],
       "tile": "icdas-caries",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "pai",
+        "periapical index",
+        "orstavik",
+        "apical periodontitis score",
+        "periapical radiograph score"
+      ],
+      "tile": "pai-periapical",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "jemt",
+        "jemt papilla",
+        "papilla index",
+        "implant papilla score",
+        "papilla fill"
+      ],
+      "tile": "jemt-papilla",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "nordland tarnow",
+        "papilla loss",
+        "black triangle",
+        "interdental papilla class",
+        "papillary height"
+      ],
+      "tile": "nordland-tarnow-papilla",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "peri-implantitis",
+        "peri-implant mucositis",
+        "implant bleeding on probing",
+        "peri-implant health"
+      ],
+      "tile": "peri-implant-status",
+      "audience": "clinicians"
     }
   ]
 }

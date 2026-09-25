@@ -8488,6 +8488,18 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/icdas-caries-v1485.js (spec-v1485: ICDAS caries codes and merged severity — clinical disclaimer)
 - `icdas-caries`
 
+### lib/pai-periapical-v1486.js (spec-v1486: Ørstavik Periapical Index — clinical disclaimer)
+- `pai-periapical`
+
+### lib/jemt-papilla-v1487.js (spec-v1487: Jemt papilla index beside a single implant — clinical disclaimer)
+- `jemt-papilla`
+
+### lib/nordland-tarnow-papilla-v1488.js (spec-v1488: Nordland-Tarnow papilla loss classes — clinical disclaimer)
+- `nordland-tarnow-papilla`
+
+### lib/peri-implant-status-v1489.js (spec-v1489: 2017 World Workshop peri-implant case definitions — clinical disclaimer)
+- `peri-implant-status`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

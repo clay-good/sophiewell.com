@@ -6,6 +6,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Periapical Index (PAI).** Ørstavik's 1 to 5 radiographic score for up to four roots; the tooth
+  takes its highest root score, read as healthy (1 or 2) or apical periodontitis. See docs/spec-v1486.md.
+
+- **Jemt Papilla Index (Implant).** The mesial and distal papilla beside a single implant, each
+  scored 0 to 4 and reported separately. See docs/spec-v1487.md.
+
+- **Nordland-Tarnow Papilla Loss.** Normal or Class I to III, derived from the contact point and the
+  interproximal and facial cementoenamel junctions. See docs/spec-v1488.md.
+
+- **Peri-Implant Case Definitions (2017).** Health, mucositis or peri-implantitis by the 2017 World
+  Workshop, with a baseline record or by the 6 mm / 3 mm thresholds without one. See docs/spec-v1489.md.
+
 - **ICDAS caries codes.** Codes 0 to 6 for up to six surfaces, with the merged severity
   (sound, initial, moderate, extensive) and the most severe surface. See docs/spec-v1485.md.
 
