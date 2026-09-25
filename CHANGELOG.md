@@ -6,6 +6,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **The max-ICH NIHSS box now enforces the 0 to 42 its label states.** See
+  docs/spec-v1456.md.
+
 - **Hakki valve area.** Estimates a stenotic aortic or mitral valve area as cardiac
   output divided by the square root of the gradient, beside the full Gorlin tool and
   with the same input limits. See docs/spec-v1455.md.

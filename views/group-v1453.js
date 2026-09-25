@@ -17,11 +17,13 @@ function selectField(root, label, id, options, blankText) {
   wrap.appendChild(sel);
   root.appendChild(wrap);
 }
-function numField(root, label, id) {
+function numField(root, label, id, max) {
   const wrap = el('p');
   wrap.appendChild(el('label', { for: id, text: label }));
   wrap.appendChild(el('br'));
-  wrap.appendChild(el('input', { id, type: 'number', step: 'any', min: '0', inputmode: 'decimal' }));
+  const attrs = { id, type: 'number', step: 'any', min: '0', inputmode: 'decimal' };
+  if (max != null) attrs.max = String(max);
+  wrap.appendChild(el('input', attrs));
   root.appendChild(wrap);
 }
 function list(root, items) {
@@ -44,7 +46,7 @@ const NA = '-- not entered --';
 export const renderers = {
   'max-ich'(root) {
     note(root, 'From the admission examination and the first CT of a spontaneous intracerebral hemorrhage.');
-    numField(root, 'NIHSS score (0 to 42)', 'mich-nihss');
+    numField(root, 'NIHSS score (0 to 42)', 'mich-nihss', 42);
     numField(root, 'Age (years)', 'mich-age');
     selectField(root, 'Hematoma location', 'mich-location', MI.MICH_LOCATION, NA);
     numField(root, 'Hematoma volume (mL)', 'mich-volume');
