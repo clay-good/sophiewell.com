@@ -6,6 +6,27 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Raymond-Roy occlusion classification.** Works out class I, II, IIIa or IIIb of a
+  coiled aneurysm from where contrast fills on the follow-up angiogram, quotes the
+  2015 recurrence comparison for IIIa and IIIb, and notes the scale does not fit
+  flow-diverted aneurysms. See docs/spec-v1451.md.
+
+- **pc-ASPECTS.** The posterior circulation early CT score: 10 minus 1 point per
+  thalamus, cerebellar hemisphere and PCA territory, and 2 each for the midbrain and
+  pons. Every region must be read either way, so a blank is asked for rather than
+  counted as normal. See docs/spec-v1452.md.
+
+- **max-ICH score.** Scores spontaneous intracerebral hemorrhage (0 to 9) from NIHSS
+  and age bands, the lobar or nonlobar volume threshold, intraventricular blood and
+  oral anticoagulation, and reports the 5-year survival published for that score in
+  fully treated patients. See docs/spec-v1453.md.
+
+- **Powers ratio.** Divides the basion-to-C1-spinolaminar-line distance by the
+  opisthion-to-C1-anterior-arch distance and reads it against the modality's normal
+  limit (below 1.0 on a radiograph, below 0.9 on CT), with an optional basion-dens
+  interval; a normal value does not exclude a posterior or vertical injury. See
+  docs/spec-v1454.md.
+
 - **Cognard classification of dural AV fistulas.** Derives the Cognard type (I to V)
   from the venous drainage on angiography, beside the existing Borden tool, and
   separates the benign group without cortical venous drainage from the aggressive

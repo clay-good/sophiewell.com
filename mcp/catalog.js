@@ -872,6 +872,10 @@ import cpakV1447 from './adapters/cpak-v1447.js';
 import abcPsiV1448 from './adapters/abc-psi-v1448.js';
 import collinRcV1449 from './adapters/collin-rc-v1449.js';
 import cognardDavfV1450 from './adapters/cognard-davf-v1450.js';
+import raymondRoyV1451 from './adapters/raymond-roy-v1451.js';
+import pcAspectsV1452 from './adapters/pc-aspects-v1452.js';
+import maxIchV1453 from './adapters/max-ich-v1453.js';
+import powersRatioV1454 from './adapters/powers-ratio-v1454.js';
 import nurseStaffingRatioCheckV1396 from './adapters/nurse-staffing-ratio-check-v1396.js';
 import caWpvReportClockV1396 from './adapters/ca-wpv-report-clock-v1396.js';
 import mandatoryOvertimeCheckV1396 from './adapters/mandatory-overtime-check-v1396.js';
@@ -1780,6 +1784,10 @@ const ADAPTER_MODULES = [
   ['abc-psi-v1448', abcPsiV1448],
   ['collin-rc-v1449', collinRcV1449],
   ['cognard-davf-v1450', cognardDavfV1450],
+  ['raymond-roy-v1451', raymondRoyV1451],
+  ['pc-aspects-v1452', pcAspectsV1452],
+  ['max-ich-v1453', maxIchV1453],
+  ['powers-ratio-v1454', powersRatioV1454],
   ['nurse-staffing-ratio-check-v1396', nurseStaffingRatioCheckV1396],
   ['ca-wpv-report-clock-v1396', caWpvReportClockV1396],
   ['mandatory-overtime-check-v1396', mandatoryOvertimeCheckV1396],

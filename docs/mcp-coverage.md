@@ -8428,6 +8428,18 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/cognard-davf-v1450.js (spec-v1450: Cognard classification of dural arteriovenous fistulas — clinical disclaimer)
 - `cognard-davf`
 
+### lib/raymond-roy-v1451.js (spec-v1451: Raymond-Roy occlusion classification of coiled aneurysms — clinical disclaimer)
+- `raymond-roy`
+
+### lib/pc-aspects-v1452.js (spec-v1452: posterior circulation ASPECTS — clinical disclaimer)
+- `pc-aspects`
+
+### lib/max-ich-v1453.js (spec-v1453: max-ICH score for intracerebral hemorrhage — clinical disclaimer)
+- `max-ich`
+
+### lib/powers-ratio-v1454.js (spec-v1454: Powers ratio for atlanto-occipital dissociation — clinical disclaimer)
+- `powers-ratio`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

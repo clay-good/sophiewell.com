@@ -815,6 +815,10 @@ import { renderers as RV1447 } from './views/group-v1447.js';
 import { renderers as RV1448 } from './views/group-v1448.js';
 import { renderers as RV1449 } from './views/group-v1449.js';
 import { renderers as RV1450 } from './views/group-v1450.js';
+import { renderers as RV1451 } from './views/group-v1451.js';
+import { renderers as RV1452 } from './views/group-v1452.js';
+import { renderers as RV1453 } from './views/group-v1453.js';
+import { renderers as RV1454 } from './views/group-v1454.js';
 import { renderers as RV1396 } from './views/group-v1396.js';
 import { renderers as RV164 } from './views/group-v164.js';
 import { renderers as RV165 } from './views/group-v165.js';
@@ -903,7 +907,7 @@ const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...R
   ...RV902,
   ...RV903,
   ...RV905,
-  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV960, ...RV1061, ...RV1062, ...RV1240, ...RV1241, ...RV1242, ...RV1243, ...RV1400, ...RV1389, ...RV1393, ...RV1397, ...RV1395, ...RV1390, ...RV1391, ...RV1392, ...RV1394, ...RV1399, ...RV1398, ...RV1401, ...RV1396, ...RV1412, ...RV1413, ...RV1414, ...RV1416, ...RV1417, ...RV1418, ...RV1419, ...RV1420, ...RV1421, ...RV1422, ...RV1423, ...RV1424, ...RV1425, ...RV1426, ...RV1427, ...RV1428, ...RV1429, ...RV1430, ...RV1431, ...RV1433, ...RV1434, ...RV1435, ...RV1436, ...RV1438, ...RV1439, ...RV1440, ...RV1441, ...RV1442, ...RV1443, ...RV1444, ...RV1445, ...RV1446, ...RV1447, ...RV1448, ...RV1449, ...RV1450, ...RV63, ...RPALINT };
+  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV960, ...RV1061, ...RV1062, ...RV1240, ...RV1241, ...RV1242, ...RV1243, ...RV1400, ...RV1389, ...RV1393, ...RV1397, ...RV1395, ...RV1390, ...RV1391, ...RV1392, ...RV1394, ...RV1399, ...RV1398, ...RV1401, ...RV1396, ...RV1412, ...RV1413, ...RV1414, ...RV1416, ...RV1417, ...RV1418, ...RV1419, ...RV1420, ...RV1421, ...RV1422, ...RV1423, ...RV1424, ...RV1425, ...RV1426, ...RV1427, ...RV1428, ...RV1429, ...RV1430, ...RV1431, ...RV1433, ...RV1434, ...RV1435, ...RV1436, ...RV1438, ...RV1439, ...RV1440, ...RV1441, ...RV1442, ...RV1443, ...RV1444, ...RV1445, ...RV1446, ...RV1447, ...RV1448, ...RV1449, ...RV1450, ...RV1451, ...RV1452, ...RV1453, ...RV1454, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -1403,7 +1407,9 @@ const UTILITIES = [
   { id: 'hendrich-ii',         name: 'Hendrich II Fall Risk Model',                      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'cam',                 name: 'Confusion Assessment Method (CAM, non-ICU)',       group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'ich-score',           name: 'ICH Score (Hemphill 2001)',                        group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'max-ich', name: 'max-ICH Score (Intracerebral Hemorrhage)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'hunt-hess-wfns',      name: 'Hunt-Hess + WFNS aneurysmal SAH grading',          group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'raymond-roy', name: 'Raymond-Roy Occlusion Classification (Coiled Aneurysm)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'mnihss',              name: 'modified NIHSS (mNIHSS, 11-item)',                 group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'aldrete-padss',       name: 'modified Aldrete + PADSS (PACU discharge)',        group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   // spec-v29 §4 wave 29-3b: nurse-bedside criteria bundles.
@@ -1786,6 +1792,7 @@ const UTILITIES = [
   { id: 'rop-stage',              name: 'ROP Stage (Retinopathy of Prematurity)',            group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'anderson-montesano',     name: 'Anderson-Montesano (Occipital Condyle Fracture)',   group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'traynelis',              name: 'Traynelis Classification (Atlanto-Occipital Dislocation)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'powers-ratio', name: 'Powers Ratio (Atlanto-Occipital Dissociation)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'fielding-hawkins',        name: 'Fielding-Hawkins (Atlantoaxial Rotatory Subluxation)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'reid-bronchiectasis',     name: 'Reid Classification (Bronchiectasis)',              group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'sade-retraction',        name: 'Sade Grade (Tympanic Membrane Retraction)',         group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
@@ -2634,6 +2641,7 @@ const UTILITIES = [
   // through evolving reperfusion guidelines, docs/citation-staleness.md row).
   // views/group-v117.js, lib/neuro-v117.js.
   { id: 'aspects',                name: 'ASPECTS (Alberta Stroke Program Early CT Score)',  group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'pc-aspects', name: 'pc-ASPECTS (Posterior Circulation Acute Stroke Prognosis Early CT Score)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'ich-volume-abc2',        name: 'ICH Volume (ABC/2)',                               group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'dragon-stroke',          name: 'DRAGON Score (post-tPA outcome)',                  group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'hat-score',              name: 'HAT Score (hemorrhage after thrombolysis)',        group: 'G', audiences: ['clinicians', 'educators'], clinical: true },

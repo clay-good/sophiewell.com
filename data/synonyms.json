@@ -8960,6 +8960,50 @@
       ],
       "tile": "cognard-davf",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "raymond-roy occlusion classification",
+        "modified raymond-roy classification",
+        "mrrc aneurysm",
+        "raymond scale coil embolization",
+        "residual aneurysm neck remnant after coiling"
+      ],
+      "tile": "raymond-roy",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "posterior circulation aspects",
+        "pc aspects",
+        "basilar artery occlusion ct score",
+        "posterior circulation early ct score",
+        "brainstem early ischemic change score"
+      ],
+      "tile": "pc-aspects",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "max-ich score",
+        "maximally treated ich score",
+        "sembill ich score",
+        "max ich score intracerebral hemorrhage",
+        "ich score with nihss and anticoagulation"
+      ],
+      "tile": "max-ich",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "powers ratio",
+        "powers index",
+        "bc/oa ratio",
+        "basion opisthion ratio",
+        "anterior atlanto-occipital dissociation ratio"
+      ],
+      "tile": "powers-ratio",
+      "audience": "clinicians"
     }
   ]
 }

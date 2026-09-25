@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:53ab1e98-fc06-5498-8bea-f086673ebd75",
+  "serialNumber": "urn:uuid:cfecace6-2e20-5a91-8685-518e1f76250f",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-25T05:14:56.305Z",
+    "timestamp": "2026-09-25T05:29:30.010Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1823 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1827 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "881e9aaad05f1274312cd9c32311ee5e2911d71a19b9a20fd69000eec84706e2"
+          "content": "97138cd86dbf69a851f92d3e0b2948db3621cfb8c3267545bc1f024d6c7f1233"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "117247"
+          "value": "117522"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d6f9bffc6d2ebaf8c360286a70a08a666227450a76481297be4904af6082ba83"
+          "content": "6a30527a59f9cbcc05608c1901df6fec85268228360a34e89a632e1b15ed8dbc"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "540240"
+          "value": "541151"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "61d7da7ab95aece850a86961389aed99386a9d25e58e4b913691aa26562916cb"
+          "content": "dbfe24ab7dc548913c831b0ada278252dcf52a3cab0b6e4be34dbd2bc3cb864c"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "227194"
+          "value": "227678"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "37a248c1e3c800e8998e35534b820e08c0c75043052a0311da0faae9d2ec8a8c"
+          "content": "1330c5f045b34a921d6ddd0d950a6d989246db1bed627f0029ee506ca646ac94"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "104465"
+          "value": "104740"
         }
       ]
     },
@@ -10913,6 +10913,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/max-ich-v1453.js",
+      "type": "file",
+      "name": "lib/max-ich-v1453.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f7bb8c025b5f0fac7f3185cc6c3b0f7ade1f622a305a16ca9c3bd4d9250b69fb"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6302"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/mayfield-perilunate-v414.js",
       "type": "file",
       "name": "lib/mayfield-perilunate-v414.js",
@@ -11255,7 +11276,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b4e5b32b99e12b51d89447db61f5f0d2151ce03c0ce5b63bbc989456715a5bd7"
+          "content": "92bcaa359e9b6a944124aaa7557e49723434fb82ad2b1a56b14874b22c258ceb"
         }
       ],
       "properties": [
@@ -11265,7 +11286,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2563916"
+          "value": "2568090"
         }
       ]
     },
@@ -14315,6 +14336,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/pc-aspects-v1452.js",
+      "type": "file",
+      "name": "lib/pc-aspects-v1452.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "51ad6d11a9b2fd21ddfb1d880b8fa29cde8b64e75f901044628c5051f54b7207"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5414"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/pc-ptsd5-v521.js",
       "type": "file",
       "name": "lib/pc-ptsd5-v521.js",
@@ -15176,6 +15218,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/powers-ratio-v1454.js",
+      "type": "file",
+      "name": "lib/powers-ratio-v1454.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7488c3e53e54627ab3ba06e19f6b76c87b461c21e7e4d6f119568c0e6ef12e45"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6362"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/ppm-eoai-v548.js",
       "type": "file",
       "name": "lib/ppm-eoai-v548.js",
@@ -15949,6 +16012,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3480"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/raymond-roy-v1451.js",
+      "type": "file",
+      "name": "lib/raymond-roy-v1451.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "301fbb1277dababa9953d909d8e8660d33385300d6e9bcd9c46ba90c3cb75f05"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4546"
         }
       ]
     },
@@ -30695,6 +30779,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/max-ich-v1453.js",
+      "type": "file",
+      "name": "mcp/adapters/max-ich-v1453.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "70d6a9a4428ac8a0523f49dca180e9715e625e91ec20373fd4d8887a3ebde3fd"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1430"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/mayfield-perilunate-v414.js",
       "type": "file",
       "name": "mcp/adapters/mayfield-perilunate-v414.js",
@@ -33677,6 +33782,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/pc-aspects-v1452.js",
+      "type": "file",
+      "name": "mcp/adapters/pc-aspects-v1452.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e6565c15e5c47c1680af2794412a791a520adff99e1719784c4d4046b9e3a5a4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1589"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/pc-ptsd5-v521.js",
       "type": "file",
       "name": "mcp/adapters/pc-ptsd5-v521.js",
@@ -34538,6 +34664,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/powers-ratio-v1454.js",
+      "type": "file",
+      "name": "mcp/adapters/powers-ratio-v1454.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9ead21ee77533b06c621f678540aea44078bf2a6e440711ca040a60a4756a5eb"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1157"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ppm-eoai-v548.js",
       "type": "file",
       "name": "mcp/adapters/ppm-eoai-v548.js",
@@ -35206,6 +35353,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1243"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/raymond-roy-v1451.js",
+      "type": "file",
+      "name": "mcp/adapters/raymond-roy-v1451.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3320c8e2d116cf876448f781106f6911acffc68e2194524a4e19969de6663df6"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "906"
         }
       ]
     },
@@ -39689,7 +39857,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ae07b0a17fdf8ea591623b31b275b5079365373cc83d09e3dea60dacc47a39b2"
+          "content": "ee435b0492026f0efae8e530457caa9fa12ee07a91a914af8efbb614b7245650"
         }
       ],
       "properties": [
@@ -39699,7 +39867,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "104330"
+          "value": "104734"
         }
       ]
     },
@@ -42157,6 +42325,90 @@
         {
           "name": "sophiewell:bytes",
           "value": "2717"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1451.js",
+      "type": "file",
+      "name": "views/group-v1451.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "52b3cfd25ee100a593233977aff4a26c894a5d5f861fbd602ff8a0e332b58524"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2424"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1452.js",
+      "type": "file",
+      "name": "views/group-v1452.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "eb506f915d490ee4bdacd253a6b8de0835cc0ffb76166caea814c8aaa601641c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3381"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1453.js",
+      "type": "file",
+      "name": "views/group-v1453.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4f46391711d07f9aefe08da31d6a1adb44a106538ae7bd66b459b8141ef82c80"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3082"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1454.js",
+      "type": "file",
+      "name": "views/group-v1454.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "37cbb42971bd8925e23933e5eca6be03590543791288fcb3f239d2d4c23af2aa"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2900"
         }
       ]
     },
@@ -73693,6 +73945,7 @@
         "urn:sophiewell:file:source:lib/masld-criteria-v837.js",
         "urn:sophiewell:file:source:lib/mason-radial-head-v341.js",
         "urn:sophiewell:file:source:lib/massive-transfusion-v265.js",
+        "urn:sophiewell:file:source:lib/max-ich-v1453.js",
         "urn:sophiewell:file:source:lib/mayfield-perilunate-v414.js",
         "urn:sophiewell:file:source:lib/mayo-adpkd-v563.js",
         "urn:sophiewell:file:source:lib/mayo-olecranon-v739.js",
@@ -73855,6 +74108,7 @@
         "urn:sophiewell:file:source:lib/pas-swallow-v367.js",
         "urn:sophiewell:file:source:lib/pass-pheo-v660.js",
         "urn:sophiewell:file:source:lib/pauwels-femoral-neck-v374.js",
+        "urn:sophiewell:file:source:lib/pc-aspects-v1452.js",
         "urn:sophiewell:file:source:lib/pc-ptsd5-v521.js",
         "urn:sophiewell:file:source:lib/pcdai-v522.js",
         "urn:sophiewell:file:source:lib/pci-surgery-timing-v898.js",
@@ -73896,6 +74150,7 @@
         "urn:sophiewell:file:source:lib/posas-observer-scar-v691.js",
         "urn:sophiewell:file:source:lib/posas-patient-scar-v783.js",
         "urn:sophiewell:file:source:lib/poseidon-v549.js",
+        "urn:sophiewell:file:source:lib/powers-ratio-v1454.js",
         "urn:sophiewell:file:source:lib/ppm-eoai-v548.js",
         "urn:sophiewell:file:source:lib/prague-barrett-v365.js",
         "urn:sophiewell:file:source:lib/preg-dating.js",
@@ -73933,6 +74188,7 @@
         "urn:sophiewell:file:source:lib/rasrm-stage-v546.js",
         "urn:sophiewell:file:source:lib/rassi-chagas-v851.js",
         "urn:sophiewell:file:source:lib/rastelli-avsd-v474.js",
+        "urn:sophiewell:file:source:lib/raymond-roy-v1451.js",
         "urn:sophiewell:file:source:lib/rcc-prognosis-v266.js",
         "urn:sophiewell:file:source:lib/rcc-prognosis-v279.js",
         "urn:sophiewell:file:source:lib/rcvs2-v1436.js",
@@ -74272,6 +74528,10 @@
         "urn:sophiewell:file:source:views/group-v1449.js",
         "urn:sophiewell:file:source:views/group-v145.js",
         "urn:sophiewell:file:source:views/group-v1450.js",
+        "urn:sophiewell:file:source:views/group-v1451.js",
+        "urn:sophiewell:file:source:views/group-v1452.js",
+        "urn:sophiewell:file:source:views/group-v1453.js",
+        "urn:sophiewell:file:source:views/group-v1454.js",
         "urn:sophiewell:file:source:views/group-v146.js",
         "urn:sophiewell:file:source:views/group-v147.js",
         "urn:sophiewell:file:source:views/group-v148.js",
@@ -75489,6 +75749,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/masld-criteria-v837.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mason-radial-head-v341.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/massive-transfusion-v265.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/max-ich-v1453.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mayfield-perilunate-v414.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mayo-adpkd-v563.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mayo-olecranon-v739.js",
@@ -75631,6 +75892,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/pas-swallow-v367.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pass-pheo-v660.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pauwels-femoral-neck-v374.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/pc-aspects-v1452.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pc-ptsd5-v521.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pcdai-v522.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pci-surgery-timing-v898.js",
@@ -75672,6 +75934,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/posas-observer-scar-v691.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/posas-patient-scar-v783.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/poseidon-v549.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/powers-ratio-v1454.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ppm-eoai-v548.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/prague-barrett-v365.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/preg-dating.js",
@@ -75704,6 +75967,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/rasrm-stage-v546.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/rassi-chagas-v851.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/rastelli-avsd-v474.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/raymond-roy-v1451.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/rcc-prognosis-v266.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/rcc-prognosis-v279.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/rcvs2-v1436.js",
@@ -76020,7 +76284,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "53ab1e98fc06d498"
+      "value": "cfecace62e20ea91"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -76032,7 +76296,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2720"
+      "value": "2732"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
