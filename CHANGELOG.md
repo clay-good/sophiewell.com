@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Peguero-Lo Presti joins the LVH voltage criteria.** The ECG LVH tool now also reads
+  the deepest S wave in any lead plus the S wave in V4 (positive at 23 mm in women,
+  28 mm in men), and no longer prints "> null mm" when the sex is blank. See
+  docs/spec-v1457.md.
+
 - **The max-ICH NIHSS box now enforces the 0 to 42 its label states.** See
   docs/spec-v1456.md.
 

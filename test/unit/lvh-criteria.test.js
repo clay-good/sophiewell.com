@@ -109,3 +109,27 @@ test('lvh-criteria: one precordial lead gives a floor, so it may rule in but not
   assert.equal(complete.sokolowPartial, false);
   assert.equal(complete.band, 'No LVH voltage criterion met by the entered amplitudes.');
 });
+
+// spec-v1457: Peguero-Lo Presti -- deepest S in any lead + SV4, >= 28 mm men, >= 23 mm women.
+test('Peguero-Lo Presti: sex-specific threshold, inclusive', () => {
+  assert.equal(lvhCriteria({ sD: 16, sV4: 12, sex: 'male' }).pegueroMet, true); // 28
+  assert.equal(lvhCriteria({ sD: 15, sV4: 12, sex: 'male' }).pegueroMet, false); // 27
+  assert.equal(lvhCriteria({ sD: 13, sV4: 10, sex: 'female' }).pegueroMet, true); // 23
+  assert.equal(lvhCriteria({ sD: 12, sV4: 10, sex: 'female' }).pegueroMet, false); // 22
+  assert.match(lvhCriteria({ sD: 18, sV4: 12, sex: 'male' }).band, /positive: Peguero-Lo Presti/);
+});
+
+test('Peguero-Lo Presti waits for both leads and the sex', () => {
+  const one = lvhCriteria({ sV1: 20, rV5: 18, rV6: 16, sex: 'male', sD: 15 });
+  assert.equal(one.pegueroSum, null);
+  assert.match(one.band, /Enter the S wave in V4 as well/);
+  const noSex = lvhCriteria({ sV1: 20, rV5: 18, rV6: 16, sD: 15, sV4: 12 });
+  assert.equal(noSex.pegueroMet, null);
+  assert.match(noSex.band, /Peguero-Lo Presti sum is 27 mm; its threshold is sex-specific/);
+});
+
+test('with no sex entered the note names both thresholds, never "null"', () => {
+  const r = lvhCriteria({ sV1: 20, rV5: 18 });
+  assert.doesNotMatch(r.note, /null/);
+  assert.match(r.note, /> 28 mm \(men\) or > 20 mm \(women\)/);
+});

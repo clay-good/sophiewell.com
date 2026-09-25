@@ -20,7 +20,7 @@ export default [
   },
   {
     id: 'lvh-criteria',
-    summary: 'ECG voltage criteria for left ventricular hypertrophy: Sokolow-Lyon (SV1 + max RV5/RV6) and Cornell (SV3 + RaVL).',
+    summary: 'ECG voltage criteria for left ventricular hypertrophy: Sokolow-Lyon (SV1 + max RV5/RV6), Cornell (SV3 + RaVL) and Peguero-Lo Presti (deepest S + SV4).',
     compute: C.lvhCriteria,
     // The Sokolow-Lyon 35 mm threshold is a documented constant the renderer
     // prints but the lib return does not carry; surface it so describe/compute
@@ -39,6 +39,9 @@ export default [
       { dom: 'lv-rv6', arg: 'rV6', kind: 'number', label: 'R wave in V6 (RV5 or RV6; the criterion uses the larger)', unit: 'mm' },
       { dom: 'lv-sv3', arg: 'sV3', kind: 'number', required: true, label: 'S wave in V3', unit: 'mm' },
       { dom: 'lv-ravl', arg: 'rAVL', kind: 'number', required: true, label: 'R wave in aVL', unit: 'mm' },
+      // spec-v1457: Peguero-Lo Presti, optional as a pair (the library asks for the other lead).
+      { dom: 'lv-sd', arg: 'sD', kind: 'number', label: 'Deepest S wave in any lead (for Peguero-Lo Presti)', unit: 'mm' },
+      { dom: 'lv-sv4', arg: 'sV4', kind: 'number', label: 'S wave in V4 (for Peguero-Lo Presti)', unit: 'mm' },
       { dom: 'lv-sex', arg: 'sex', kind: 'enum', values: ['male', 'female'], label: 'Sex (for the Cornell threshold)' },
     ],
   },

@@ -104,15 +104,17 @@ export const renderers = {
     root.appendChild(field('R wave in V6 (mm)', 'lv-rv6', { placeholder: 'e.g. 16' }));
     root.appendChild(field('S wave in V3 (mm)', 'lv-sv3', { placeholder: 'e.g. 12' }));
     root.appendChild(field('R wave in aVL (mm)', 'lv-ravl', { placeholder: 'e.g. 10' }));
+    root.appendChild(field('Deepest S wave in any lead (mm, for Peguero-Lo Presti)', 'lv-sd', { placeholder: 'e.g. 18' }));
+    root.appendChild(field('S wave in V4 (mm, for Peguero-Lo Presti)', 'lv-sv4', { placeholder: 'e.g. 12' }));
     root.appendChild(selectField('Sex (for the Cornell threshold)', 'lv-sex', [
       { value: 'male', text: 'Male (Cornell > 28 mm)' },
       { value: 'female', text: 'Female (Cornell > 20 mm)' },
     ]));
     const o = out(); root.appendChild(o);
-    wire(['lv-sv1', 'lv-rv5', 'lv-rv6', 'lv-sv3', 'lv-ravl', 'lv-sex'], () => safe(o, () => {
+    wire(['lv-sv1', 'lv-rv5', 'lv-rv6', 'lv-sv3', 'lv-ravl', 'lv-sd', 'lv-sv4', 'lv-sex'], () => safe(o, () => {
       const r = M.lvhCriteria({
         sV1: optNum('lv-sv1'), rV5: optNum('lv-rv5'), rV6: optNum('lv-rv6'),
-        sV3: optNum('lv-sv3'), rAVL: optNum('lv-ravl'), sex: selVal('lv-sex'),
+        sV3: optNum('lv-sv3'), rAVL: optNum('lv-ravl'), sD: optNum('lv-sd'), sV4: optNum('lv-sv4'), sex: selVal('lv-sex'),
       });
       if (!r.valid) { o.appendChild(el('p', { class: 'muted', text: r.band })); return; }
       resultRow(o, [
@@ -122,7 +124,10 @@ export const renderers = {
         // dash alone read as a missing row rather than an outstanding lead.
         { label: 'Sokolow-Lyon (>= 35 mm)', value: r.sokolowMet === null && r.sokolowPartial ? `not yet decided (${r.sokolowMissingLead} not entered)` : metTag(r.sokolowMet) },
         { label: `Cornell sum (SV3 + RaVL)`, value: fmt(r.cornellSum, { fallback: '(enter SV3 and RaVL)' }) },
-        { label: `Cornell voltage (> ${r.cornellThreshold} mm)`, value: metTag(r.cornellMet) },
+        // spec-v1457: with no sex entered this label read "> null mm".
+        { label: r.cornellThreshold == null ? 'Cornell voltage (threshold needs the sex)' : `Cornell voltage (> ${r.cornellThreshold} mm)`, value: metTag(r.cornellMet) },
+        { label: 'Peguero-Lo Presti sum (deepest S + SV4)', value: fmt(r.pegueroSum, { fallback: '(enter the deepest S and SV4)' }) },
+        { label: r.pegueroThreshold == null ? 'Peguero-Lo Presti (threshold needs the sex)' : `Peguero-Lo Presti (>= ${r.pegueroThreshold} mm)`, value: metTag(r.pegueroMet) },
       ]);
       note(o, r.note);
     }));

@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `a932d9f30691189e`
-Generated: 2026-09-25T06:35:34.367Z
+Build ID: `468b518012398b3c`
+Generated: 2026-09-25T06:46:50.234Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -179,7 +179,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/cardio-v101.js` | 13494 | `c697b14e6f7c736bf43b1c23718d7f11489b1bad407611beb55b85d91070a419` |
 | `lib/cardio-v102.js` | 17655 | `efc69de3266bc4c9b6932d66ef3a8db32fbca334c0b7f0ec6a900f8577f49d27` |
 | `lib/cardio-v104.js` | 14365 | `581150411141a634b4314d5ccf1fe560c96ce8d5c9b8d2555c2a840a2af873f3` |
-| `lib/cardio-v90.js` | 23608 | `6b25778e1377c7f441c90b34d0fc69c9c6fb7f9624009e353410e1f3e8d9eda8` |
+| `lib/cardio-v90.js` | 25441 | `36b56a5e0e62737f182511bd1c958ed51d4652bf3fe7b3fc9c8e147f51c2e2a5` |
 | `lib/cardioecho-v237.js` | 11774 | `cfc14ad5cf4f48787268cc53b37031ec30bb1c53391f33b53d3d1e633db7f5f0` |
 | `lib/cardiology-risk-v209.js` | 9171 | `88c42e30a3a988582df237cf741a23d58c25a559598f7d7e23455e1d15d59214` |
 | `lib/cardiology-risk-v214.js` | 15271 | `b2fdd193d52e45f04b84c9a31fa4fe6ccc97a34619e1f40888eda8500ba1a744` |
@@ -570,7 +570,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/membranous-risk-v878.js` | 11351 | `882c36c07e46543e32f1114792c1124ee9f9ff6b384084fc0a8c221e7dd62062` |
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2568731 | `0156eda97a1cda6192d95ba5d4f1824188b42de569ebd7e1f8c8d2f61a8e4e17` |
+| `lib/meta.js` | 2568864 | `5beb125aa3730801cfdadf2820e5ff2d19b6897a7e54e7697f514d25c2f9bf52` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 19326 | `64342935cc7842381f6e318293cfcd6f97b69022268da6c595c5c71db388af2d` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -1143,7 +1143,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/cardio-v101.js` | 5133 | `b280a3bf6868ff99d717c5983e50e44eb7722c264386299534eb997f6f69a0ae` |
 | `mcp/adapters/cardio-v102.js` | 4617 | `377a66961013d7fe64521d605d3f775d3d323337160fd014392b0ebec511eb04` |
 | `mcp/adapters/cardio-v104.js` | 5298 | `9b9c4175b2a439cf95af1ca89056f5a7903708971018214b49282d3c3ed51bb5` |
-| `mcp/adapters/cardio-v90.js` | 5606 | `37977226a26ac33d0d969c18380815d70da66de669a39d48f24bda7e18da5c33` |
+| `mcp/adapters/cardio-v90.js` | 5977 | `d68b94ee2031e44e251d2c147a1aa05551cd3bb997cb48c0c6c454e36ca05bb2` |
 | `mcp/adapters/cardioecho-v237.js` | 3602 | `63534e850997b1bc28ff20ae024a4646a33d67f99f3f0ad0c93c23ffd71213ca` |
 | `mcp/adapters/cardiology-risk-v209.js` | 3097 | `fc149dab69aca6c5553b1364efaf4308859a1b93dcfa64d97276747cd15d462e` |
 | `mcp/adapters/cardiology-risk-v214.js` | 7126 | `675203422099c10ae68bebe6a2c73c1efbd244094dabaf5bba547596441f4125` |
@@ -2068,7 +2068,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v156.js` | 10713 | `c8c967d1586f796af986c00cb75804dcb47a8dd40e1e4e1a465e15f4518f8637` |
 | `views/group-v158.js` | 9534 | `25d868e4f0bf1ed1570efd33550e005419a951f02f1453a976a88b8246fc2017` |
 | `views/group-v159.js` | 10723 | `4468620fd3985650302950a1b9070add09e3c8e986791fe4634ff2f50e2c92f1` |
-| `views/group-v16.js` | 12620 | `709a47cec9f73ab0bfa52c84d3eda589a6ff384e5c1c93daad07e0d0ffd30f07` |
+| `views/group-v16.js` | 13376 | `3503141aaa8247033b2d1bbb218694ba7aed7f257e62f0c8b66d7fb5044e9671` |
 | `views/group-v160.js` | 11685 | `14ef775c5b8ffbe178e1263f27c806d4c99c02fc86dd79d907213aefd3b7b77f` |
 | `views/group-v161.js` | 8025 | `01187902dc8b2523d595b9ff8b8a211db519fb0f1cc00228725b977474c9f4f1` |
 | `views/group-v163.js` | 8143 | `0c4000e57fa5291ce38bd620737125b1a5a309a647fb2283dfd89f2f681731ed` |
