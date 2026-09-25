@@ -8485,6 +8485,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/dean-fluorosis-cfi-v1484.js (spec-v1484: Dean's Community Fluorosis Index — clinical disclaimer)
 - `dean-fluorosis-cfi`
 
+### lib/icdas-caries-v1485.js (spec-v1485: ICDAS caries codes and merged severity — clinical disclaimer)
+- `icdas-caries`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

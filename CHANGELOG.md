@@ -6,6 +6,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **ICDAS caries codes.** Codes 0 to 6 for up to six surfaces, with the merged severity
+  (sound, initial, moderate, extensive) and the most severe surface. See docs/spec-v1485.md.
+
 - **Community Fluorosis Index (Dean).** The weighted mean of Dean's six fluorosis categories
   across a surveyed population, read as a public health concern (above 0.6 it is one). See
   docs/spec-v1484.md.

@@ -9182,6 +9182,17 @@
       ],
       "tile": "dean-fluorosis-cfi",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "icdas",
+        "icdas caries",
+        "international caries detection",
+        "caries severity code",
+        "iccms"
+      ],
+      "tile": "icdas-caries",
+      "audience": "clinicians"
     }
   ]
 }
