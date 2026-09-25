@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Snyder SLAP classification.** A new tool derives the Snyder type (I to IV) of a
+  superior labral tear from two arthroscopic findings, says when a combination fits
+  none of the four, and notes that surgeons agree on the type only fairly (kappa
+  0.31). See docs/spec-v1417.md.
+
 - **Hepatic venous pressure gradient (HVPG).** A new tool subtracts the free from the
   wedged hepatic vein pressure and reads the gradient against Baveno VII: above 5 mmHg
   is portal hypertension and 10 or more is clinically significant. It adds the

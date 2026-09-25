@@ -8608,6 +8608,17 @@
       ],
       "tile": "hvpg",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "slap lesion",
+        "slap tear",
+        "snyder classification",
+        "superior labrum anterior posterior",
+        "slap tear type"
+      ],
+      "tile": "snyder-slap",
+      "audience": "clinicians"
     }
   ]
 }

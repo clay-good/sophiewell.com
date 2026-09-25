@@ -8332,6 +8332,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/hvpg-v1416.js (spec-v1416: hepatic venous pressure gradient, Baveno VII — clinical disclaimer)
 - `hvpg`
 
+### lib/snyder-slap-v1417.js (spec-v1417: Snyder SLAP lesion types I-IV — clinical disclaimer)
+- `snyder-slap`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 
