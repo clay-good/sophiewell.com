@@ -6,6 +6,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Paprosky classification of acetabular bone loss.** A new tool derives the
+  Paprosky type (1 to 3B) before revision hip surgery from the radiograph: hip
+  center migration, its direction, and the Kohler line, with the teardrop and
+  ischium checked against the published table. Findings that do not fit the row
+  are reported instead of hidden. See docs/spec-v1418.md.
+
 - **Snyder SLAP classification.** A new tool derives the Snyder type (I to IV) of a
   superior labral tear from two arthroscopic findings, says when a combination fits
   none of the four, and notes that surgeons agree on the type only fairly (kappa

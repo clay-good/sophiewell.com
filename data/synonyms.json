@@ -8619,6 +8619,17 @@
       ],
       "tile": "snyder-slap",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "paprosky",
+        "paprosky classification",
+        "acetabular bone loss",
+        "acetabular defect classification",
+        "revision hip acetabular defect"
+      ],
+      "tile": "paprosky-acetabular",
+      "audience": "clinicians"
     }
   ]
 }

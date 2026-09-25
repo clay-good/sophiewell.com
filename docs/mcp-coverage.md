@@ -8335,6 +8335,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/snyder-slap-v1417.js (spec-v1417: Snyder SLAP lesion types I-IV — clinical disclaimer)
 - `snyder-slap`
 
+### lib/paprosky-acetabular-v1418.js (spec-v1418: Paprosky acetabular bone loss — clinical disclaimer)
+- `paprosky-acetabular`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 
