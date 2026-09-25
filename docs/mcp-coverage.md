@@ -8416,6 +8416,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/hypoglycemia-level-v1446.js (spec-v1446: ADA hypoglycemia levels and first treatment step — clinical disclaimer)
 - `hypoglycemia-level`
 
+### lib/cpak-v1447.js (spec-v1447: CPAK knee alignment phenotype — clinical disclaimer)
+- `cpak`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

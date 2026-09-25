@@ -8916,6 +8916,17 @@
       ],
       "tile": "hypoglycemia-level",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "cpak",
+        "cpak classification",
+        "coronal plane alignment of the knee",
+        "arithmetic hip knee ankle angle",
+        "joint line obliquity"
+      ],
+      "tile": "cpak",
+      "audience": "clinicians"
     }
   ]
 }

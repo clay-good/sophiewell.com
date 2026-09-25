@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **CPAK knee alignment phenotype.** Computes the arithmetic HKA (MPTA minus LDFA)
+  and joint line obliquity (their sum) and places the knee in one of the nine CPAK
+  types, with the source's inclusive neutral bands. See docs/spec-v1447.md.
+
 - **Hypoglycemia level and first step.** Classifies a low glucose by the ADA levels
   (1 below 70 mg/dL, 2 below 54, 3 a severe event needing help) and gives the first
   treatment step: 15 to 20 g of glucose and a recheck at 15 minutes, or glucagon when
