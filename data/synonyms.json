@@ -9127,6 +9127,18 @@
       ],
       "tile": "robinson-clavicle",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "periodontitis stage",
+        "periodontitis grade",
+        "periodontal staging",
+        "2017 world workshop classification",
+        "aap efp periodontitis classification",
+        "gum disease stage"
+      ],
+      "tile": "periodontitis-stage-grade",
+      "audience": "clinicians"
     }
   ]
 }

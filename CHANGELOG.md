@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Periodontitis staging and grading.** The 2017 World Workshop classification: stage I
+  to IV from attachment or bone loss, raised by tooth loss and complexity, and grade A to C
+  from progression, raised by smoking and HbA1c. Where the published tables differ, it says
+  so. See docs/spec-v1480.md.
+
 - **Robinson classification of clavicle fractures.** The whole bone, beside the modified
   Neer tool for the distal third: twelve subtypes by site, displacement, joint extension
   and comminution, with the derivation series' prognosis for union. See

@@ -8470,6 +8470,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/robinson-clavicle-v1479.js (spec-v1479: Robinson (Edinburgh) classification of clavicle fractures — clinical disclaimer)
 - `robinson-clavicle`
 
+### lib/periodontitis-stage-grade-v1480.js (spec-v1480: periodontitis staging and grading (2017 World Workshop) — clinical disclaimer)
+- `periodontitis-stage-grade`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

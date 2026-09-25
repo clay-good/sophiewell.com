@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:b39fa425-1dfb-5f4c-8076-af87f47cf66a",
+  "serialNumber": "urn:uuid:49f049c3-c0a3-5f5a-8d7c-b4d2305ea54a",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-25T10:10:09.746Z",
+    "timestamp": "2026-09-25T11:24:30.087Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1837 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1838 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6e797d426db3826605a65891443fb212af1287ea847b7702101ed052a784c36a"
+          "content": "8ebdfb8d63a2bac4a00c1f2d7eb63a00e923cb29c9131cf51352333fcbb18d37"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "118102"
+          "value": "118173"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0d744a5dff33440669bc6a34e9a3c69bacaffe02c58f6cc0ee124637090403c3"
+          "content": "b5a83a7be52be5d519391a41468a1f8f59075168d3420eb36ae9a67f521a8983"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "543403"
+          "value": "543648"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e998fd2e59f9aff2770ed4c694269ab4644144b4e8cbfe583519e29b7d80f204"
+          "content": "2db66572d250a916444fade436778e886ae599d13e56c8d50edb87ef47f93b15"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "228934"
+          "value": "229070"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8a3c6e1ce37ae94360a26bb2f3e99cb13adbb759549ebc97036d25c90ceccd11"
+          "content": "7fe8ab7fe056b6fe3a1982700c1aa744942a536af79384e5e585e0461f35f70e"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "105366"
+          "value": "105452"
         }
       ]
     },
@@ -11423,7 +11423,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b43a105f9fdf669128f72fdeef9ce5cadde7c45ffdcc9a0a3a3105b5056fb6f2"
+          "content": "03b2db9516f98b9b45d917e835a0e0bdd5d6eb48e5f2b9747eaeb4883df066e6"
         }
       ],
       "properties": [
@@ -11433,7 +11433,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2577478"
+          "value": "2578582"
         }
       ]
     },
@@ -14857,6 +14857,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "5038"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/periodontitis-stage-grade-v1480.js",
+      "type": "file",
+      "name": "lib/periodontitis-stage-grade-v1480.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "79a6b86d11b2eda259e23362a227ce841d907ad72069cc4c760ca84b7588b272"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "9684"
         }
       ]
     },
@@ -34517,6 +34538,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/periodontitis-stage-grade-v1480.js",
+      "type": "file",
+      "name": "mcp/adapters/periodontitis-stage-grade-v1480.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2a50819ddd43b15d3a46dc75fade74f660f7baafc12f53ff01486f56df970229"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2427"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/periop-bridging-v899.js",
       "type": "file",
       "name": "mcp/adapters/periop-bridging-v899.js",
@@ -40277,7 +40319,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f8cdb0ba7580e0b8bf23e387f8f1e4999d4a71275c4dd209b5014886b5487d41"
+          "content": "16c53a7cdb3ac04e09f8eadf47114ac7dbc544aa95777905ec1c4750a2e68b56"
         }
       ],
       "properties": [
@@ -40287,7 +40329,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "105918"
+          "value": "106077"
         }
       ]
     },
@@ -43102,6 +43144,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "19109"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1480.js",
+      "type": "file",
+      "name": "views/group-v1480.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9e266c82c03e31c70e79fcc1e50cde25fd50ab1b072c31bc1933054afba83d4d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4514"
         }
       ]
     },
@@ -74763,6 +74826,7 @@
         "urn:sophiewell:file:source:lib/pef-zones-v891.js",
         "urn:sophiewell:file:source:lib/peradeniya-op-v575.js",
         "urn:sophiewell:file:source:lib/pericarditis-v789.js",
+        "urn:sophiewell:file:source:lib/periodontitis-stage-grade-v1480.js",
         "urn:sophiewell:file:source:lib/periop-bridging-v899.js",
         "urn:sophiewell:file:source:lib/periop-frailty-v203.js",
         "urn:sophiewell:file:source:lib/periop-v97.js",
@@ -75185,6 +75249,7 @@
         "urn:sophiewell:file:source:views/group-v1476.js",
         "urn:sophiewell:file:source:views/group-v1479.js",
         "urn:sophiewell:file:source:views/group-v148.js",
+        "urn:sophiewell:file:source:views/group-v1480.js",
         "urn:sophiewell:file:source:views/group-v149.js",
         "urn:sophiewell:file:source:views/group-v15.js",
         "urn:sophiewell:file:source:views/group-v151.js",
@@ -76567,6 +76632,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/pef-zones-v891.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/peradeniya-op-v575.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pericarditis-v789.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/periodontitis-stage-grade-v1480.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/periop-bridging-v899.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/periop-frailty-v203.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/periop-v97.js",
@@ -76944,7 +77010,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "b39fa4251dfb5f4c"
+      "value": "49f049c3c0a38f5a"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -76956,7 +77022,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2762"
+      "value": "2765"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
