@@ -8883,6 +8883,17 @@
       ],
       "tile": "de-winter-pattern",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "kanavel",
+        "kanavel signs",
+        "flexor tenosynovitis",
+        "pyogenic flexor tenosynovitis",
+        "flexor sheath infection"
+      ],
+      "tile": "kanavel-signs",
+      "audience": "clinicians"
     }
   ]
 }

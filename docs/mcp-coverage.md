@@ -8407,6 +8407,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/de-winter-pattern-v1443.js (spec-v1443: de Winter pattern STEMI equivalent — clinical disclaimer)
 - `de-winter-pattern`
 
+### lib/kanavel-signs-v1444.js (spec-v1444: Kanavel signs of pyogenic flexor tenosynovitis — clinical disclaimer)
+- `kanavel-signs`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Kanavel signs.** Counts the four cardinal signs of pyogenic flexor
+  tenosynovitis and says that fewer than four does not exclude it: only about half
+  of confirmed cases show all four. See docs/spec-v1444.md.
+
 - **de Winter pattern.** Checks a tracing for the de Winter pattern, a STEMI
   equivalent of proximal LAD occlusion without ST elevation, and routes a tracing
   with contiguous ST elevation to STEMI criteria instead. See docs/spec-v1443.md.

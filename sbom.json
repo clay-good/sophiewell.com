@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:a8c803d8-ead8-5c3b-80c2-0d5c5a173489",
+  "serialNumber": "urn:uuid:b18b5c3c-73f0-5c74-885e-2ed7deabb498",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-25T03:56:30.261Z",
+    "timestamp": "2026-09-25T04:06:48.883Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1816 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1817 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c815bf6b7c656aa9d02f8eb5fb404b5562d89f38f432387b1d35f40e22991d9a"
+          "content": "50191754a32a0ec52c8adaa407ed772f6dff5cc0fa85442d0ad594796e14ce87"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "116833"
+          "value": "116885"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d11b0bece1678eb7eaebd21feff704cebe70f8c60e45b0b58e933ebd494a0160"
+          "content": "926cfaa73d129ea4342344169b7c4042f41bd90dfbf9ea0f910b7d2fd7904c86"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "538706"
+          "value": "538920"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6d57153f1491440a13a2d669e0d69352b557872002f8108f4ada58eeb8778287"
+          "content": "358a169e4d790bca0b683801c4a60740b65f882a14411e6eb9b4482bf083f77b"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "226340"
+          "value": "226464"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "12b5427528f8195bcf056f77aa8de61c0f199c0d95caa9361f760b46a8a9e8b7"
+          "content": "03f68389a68e3fad579ba649030616828ec90fdd4f26707e315522f8906349b1"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "104044"
+          "value": "104099"
         }
       ]
     },
@@ -9233,6 +9233,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/kanavel-signs-v1444.js",
+      "type": "file",
+      "name": "lib/kanavel-signs-v1444.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9499499b27bd04e8ac91582c31d575a411b68b98f1d970c3f25b4b543e48a5ce"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2626"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/katagiri-v606.js",
       "type": "file",
       "name": "lib/katagiri-v606.js",
@@ -11129,7 +11150,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f24fecb1fd2ae4807ef8236be8a011028923a06218dda61a4c9a1371c1a10c69"
+          "content": "7796e700aee0fdce7d74f3e57b8c95d2ab06c32c2181ca0df92d6e619d40929e"
         }
       ],
       "properties": [
@@ -11139,7 +11160,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2558036"
+          "value": "2558871"
         }
       ]
     },
@@ -28973,6 +28994,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/kanavel-signs-v1444.js",
+      "type": "file",
+      "name": "mcp/adapters/kanavel-signs-v1444.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c841b1305a07fd220bb411a1cff5e88065ccf84428c460cf2a8a08df3d59cc1f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1072"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/katagiri-v606.js",
       "type": "file",
       "name": "mcp/adapters/katagiri-v606.js",
@@ -39395,7 +39437,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e61efb3fc44610ed70c2596208c46512afe4cf82cb9a200f18c456f0257285dc"
+          "content": "f4be228f480c63f55610a3694547be27461b64a593b2c628d38d56951a29f63a"
         }
       ],
       "properties": [
@@ -39405,7 +39447,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "103595"
+          "value": "103708"
         }
       ]
     },
@@ -41695,6 +41737,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2686"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1444.js",
+      "type": "file",
+      "name": "views/group-v1444.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0ca88c3dc3509165335ac30290b5d6c0655498c3759215e66af84a49ed48b04f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2679"
         }
       ]
     },
@@ -73172,6 +73235,7 @@
         "urn:sophiewell:file:source:lib/just-culture-v919.js",
         "urn:sophiewell:file:source:lib/k6-v735.js",
         "urn:sophiewell:file:source:lib/kadish-v443.js",
+        "urn:sophiewell:file:source:lib/kanavel-signs-v1444.js",
         "urn:sophiewell:file:source:lib/katagiri-v606.js",
         "urn:sophiewell:file:source:lib/kennedy-edentulous-v719.js",
         "urn:sophiewell:file:source:lib/keyboard.js",
@@ -73816,6 +73880,7 @@
         "urn:sophiewell:file:source:views/group-v1441.js",
         "urn:sophiewell:file:source:views/group-v1442.js",
         "urn:sophiewell:file:source:views/group-v1443.js",
+        "urn:sophiewell:file:source:views/group-v1444.js",
         "urn:sophiewell:file:source:views/group-v145.js",
         "urn:sophiewell:file:source:views/group-v146.js",
         "urn:sophiewell:file:source:views/group-v147.js",
@@ -74959,6 +75024,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/just-culture-v919.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/k6-v735.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/kadish-v443.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/kanavel-signs-v1444.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/katagiri-v606.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/kennedy-edentulous-v719.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/kikuchi-v333.js",
@@ -75558,7 +75624,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "a8c803d8ead88c3b"
+      "value": "b18b5c3c73f07c74"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -75570,7 +75636,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2699"
+      "value": "2702"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

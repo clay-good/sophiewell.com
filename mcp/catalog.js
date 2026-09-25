@@ -865,6 +865,7 @@ import strongkidsV1440 from './adapters/strongkids-v1440.js';
 import wellensCriteriaV1441 from './adapters/wellens-criteria-v1441.js';
 import kyotoGastritisV1442 from './adapters/kyoto-gastritis-v1442.js';
 import deWinterPatternV1443 from './adapters/de-winter-pattern-v1443.js';
+import kanavelSignsV1444 from './adapters/kanavel-signs-v1444.js';
 import nurseStaffingRatioCheckV1396 from './adapters/nurse-staffing-ratio-check-v1396.js';
 import caWpvReportClockV1396 from './adapters/ca-wpv-report-clock-v1396.js';
 import mandatoryOvertimeCheckV1396 from './adapters/mandatory-overtime-check-v1396.js';
@@ -1766,6 +1767,7 @@ const ADAPTER_MODULES = [
   ['wellens-criteria-v1441', wellensCriteriaV1441],
   ['kyoto-gastritis-v1442', kyotoGastritisV1442],
   ['de-winter-pattern-v1443', deWinterPatternV1443],
+  ['kanavel-signs-v1444', kanavelSignsV1444],
   ['nurse-staffing-ratio-check-v1396', nurseStaffingRatioCheckV1396],
   ['ca-wpv-report-clock-v1396', caWpvReportClockV1396],
   ['mandatory-overtime-check-v1396', mandatoryOvertimeCheckV1396],
