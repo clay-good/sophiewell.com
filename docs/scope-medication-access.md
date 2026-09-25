@@ -2,7 +2,7 @@
 
 **Status:** Specified September 25, 2026. Nothing built yet.
 **Specs:** [spec-v1500](spec-v1500.md) (charter) through [spec-v1517](spec-v1517.md).
-**Catalog effect when built:** +101 tools and 3 backfills to live tools.
+**When built:** 101 additions and 3 backfills (the count is in the table below).
 
 This ledger records how the gap was found, what the research established, what the
 program will build, and what it deliberately won't. The charter holds the rules; this
