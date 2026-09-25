@@ -46,3 +46,8 @@ test('missing, non-numeric, and negative gradients are refused', () => {
   assert.equal(hvpg({ whvp: 20, fhvp: 5, ivc: 'x' }).valid, false);
   assert.match(hvpg({ whvp: 5, fhvp: 9 }).message, /negative gradient/);
 });
+
+test('a blank cause is named when the CSPH caveat depends on it (spec-v1432)', () => {
+  assert.ok(hvpg({ whvp: 20, fhvp: 7 }).notes.some((n) => /^No cause entered; choose it/.test(n)));
+  assert.ok(!hvpg({ whvp: 20, fhvp: 7, etiology: 'other' }).notes.some((n) => /No cause entered/.test(n)));
+});

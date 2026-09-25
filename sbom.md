@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `1bb6a317848eff1c`
-Generated: 2026-09-25T01:29:19.934Z
+Build ID: `e5875488f22f7723`
+Generated: 2026-09-25T01:38:16.325Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -91,7 +91,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/aom-criteria-v857.js` | 11618 | `492235ecbe3b53fe09d4b4ffa7ab6eaaa50f7e66ebc0501dc860fcd1b5c2ba4e` |
 | `lib/aortic-regurgitation-stage-v846.js` | 13581 | `939282153bc25fd3c5d4dac04f8601839f52a82ec5e7f3d7301e5c34ef534478` |
 | `lib/aortic-stenosis-stage-v844.js` | 15072 | `8ce6392d93e26c53e7670581533d4b6bebecf51581dbfbbf0f15fdd3d35fbcdb` |
-| `lib/aospine-sacral-v1424.js` | 8442 | `f9cf6c3a6d84966ae8e1fc4458fc78c6453a45ad6a2e310e6fcb3ac9fa803795` |
+| `lib/aospine-sacral-v1424.js` | 8473 | `b1133e64f88db0b9bf044b9f61d8ff40305037cc860840e343f4784fc1d803a3` |
 | `lib/aqi-pm25-v1398.js` | 5799 | `56cafa4aafca82a40408bbd87c0798ac08a175bfbae1b45ba7edfd4eddd1e832` |
 | `lib/arc-hbr-v594.js` | 17455 | `1149ac03afec0ec8f3d1c7f517400087a139ea744aca94f7aa47fe5d16bfbf08` |
 | `lib/areds-v615.js` | 11067 | `7da2179ea02ee6b4f983417d4fedc03f50d680c2b945213a0cf75fefd6411857` |
@@ -132,7 +132,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/biological-variation-goals-v923.js` | 7894 | `6905603246b9b3305ad2ef4e0aaab94a7e043c907533e3f983025f0cb2eabaf1` |
 | `lib/bismuth-corlette-v399.js` | 4794 | `f7884e0732444c307302a8a7b6e14c583a70106ec23f27066fda87049d196a26` |
 | `lib/bland-altman-v924.js` | 8014 | `b504a3d25637493e2e8779c4c49f8fb8d16e8f272b46d791545fcf96e3a4bccf` |
-| `lib/blood-4h-window-v1414.js` | 4998 | `927d22818408975a8fe81a6ad98b7420711a1c42e231cf7262d4b703abf7692c` |
+| `lib/blood-4h-window-v1414.js` | 5109 | `169a2bffce130fb69c91c12cb128bb317937240e0a5b645e1b578b3b4d2e119a` |
 | `lib/bologna-por-v588.js` | 13592 | `83962c6bb84305ec6942b2c770f55443b000549c3703bf903ea57034747f3c13` |
 | `lib/borden-davf-v441.js` | 3109 | `d08c660355725cc46ea8461c2706155f110f269ad2aba82522745e71ecc16e44` |
 | `lib/borrmann-gastric-v394.js` | 3865 | `df918e05475876bcc710c4fc8997aa67ee7d4832f352f1ae062fa1ab3d4678b1` |
@@ -426,7 +426,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/hpa-glaucoma-v801.js` | 8244 | `4e76ca48d042fe39e38531e9d0761785c0a09ba1474425c90cd5f34f9e73973f` |
 | `lib/hrs-aki-v808.js` | 5530 | `1c0f95ac894d64cfa61e232142bcea6c972b1eb9d79dd7ce9a9a2bc88d44d40b` |
 | `lib/hughes-gbs-v800.js` | 3821 | `7eccbcbfa3b119a77f179e32c09a0d60436e093d390a0cbcdcd2c615e53964fa` |
-| `lib/hvpg-v1416.js` | 5871 | `dc34ae25773e6c1d4cf9d53dc07e6c5f5d64fc81e9d4c0e9da8ad0e2de48b67c` |
+| `lib/hvpg-v1416.js` | 5947 | `2f6f237129840b8b722a4789e836f83a069772f90b07a4e8441e28d6f6b2c585` |
 | `lib/hys-law-v908.js` | 10871 | `f3677bff24b1aa9c1e597685d88ce44fd449b2175a59d75d7ca02b54583cdb3c` |
 | `lib/iad-globiad-v901.js` | 7293 | `9dceb0d31486938d1741281b42b39ecee8567de4db8d70fe7c2154ce2cbeedb2` |
 | `lib/ibd-v246.js` | 6924 | `ff47b0c4c160ca6db81dc89d6b4cdf2a596bf6d77869aa9399015ac713697b5a` |

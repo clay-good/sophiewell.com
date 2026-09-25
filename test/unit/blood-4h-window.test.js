@@ -60,3 +60,8 @@ test('a rate or volume that overflows is refused, never printed as Infinity', ()
   assert.equal(blood4hWindow({ volumeMl: 300, rateMlHr: 1e-308 }).valid, false);
   assert.equal(blood4hWindow({ volumeMl: 1e308, elapsedMin: 239.99 }).valid, false);
 });
+
+test('a blank spiking time is named as an assumption, not applied silently (spec-v1432)', () => {
+  assert.ok(blood4hWindow({ volumeMl: 300, rateMlHr: 60 }).steps.some((s) => /No spiking time was entered/.test(s)));
+  assert.ok(!blood4hWindow({ volumeMl: 300, rateMlHr: 60, elapsedMin: 0 }).steps.some((s) => /No spiking time/.test(s)));
+});

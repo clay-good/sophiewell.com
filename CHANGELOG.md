@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Three new tools now say when they are working around a blank.** The blood
+  4-hour window names its assumption when no spiking time is entered, HVPG says when
+  the cause of liver disease is blank, and the AOSpine sacral tool asks for the
+  missing subtype. See docs/spec-v1432.md.
+
 - **Allen and Ferguson classification.** Reads a stage from an older cervical spine
   report and returns its published definition, with the reliability data (kappa 0.34)
   behind the 2024 review's advice to use the AO Spine subaxial system instead. See
