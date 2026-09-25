@@ -8380,6 +8380,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/disability-rating-scale-v1433.js (spec-v1433: Disability Rating Scale for brain injury — clinical disclaimer)
 - `disability-rating-scale`
 
+### lib/c2hest-v1434.js (spec-v1434: C2HEST incident atrial fibrillation score — clinical disclaimer)
+- `c2hest`
+
+### lib/hatch-af-v1435.js (spec-v1435: HATCH atrial fibrillation progression score — clinical disclaimer)
+- `hatch-af`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

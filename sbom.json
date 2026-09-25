@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:2aafc450-1b80-5471-811a-b0e15b6584d6",
+  "serialNumber": "urn:uuid:8dd36f01-5c54-5edf-872d-098ef9cc2eec",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-25T01:48:02.765Z",
+    "timestamp": "2026-09-25T01:56:03.682Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1807 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1809 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3f2d3f9d23383c0ee92f2bad2dfba498bdb3fdc0abd72722ea3f0bd9931789fa"
+          "content": "e0de72331f1a4f74953e1b0f70e1a9a6bdd24bf25cd04d571ce8c27b7f9b7b10"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "116307"
+          "value": "116427"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e16a45879903ed34d5c4d55e8200db3a064aafab1e4870e8b81a76506936c8e7"
+          "content": "a9739a2cb3e8941de2b139b442c4f21920f93532dae30b4c899751c2588c8428"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "536741"
+          "value": "537173"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e377789cfa63f8900367217190b2a2a3a7bc423968433c7fc4e25b22f3483891"
+          "content": "3712d9d09f75bc1925f83dd9e6983706738bc6b53d61cf7bebb765cb2486ec2e"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "225243"
+          "value": "225479"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2136cf6b157b50f5bff99f31683ee500f89d7cd7c0ea4efccd80ddf3ae7b42aa"
+          "content": "e9b4abdbee3d2b1b9bed2dc6491683eb4c21a8d9b8cb3936736f2b0f1def0e1f"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "103510"
+          "value": "103624"
         }
       ]
     },
@@ -2404,6 +2404,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4340"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/c2hest-v1434.js",
+      "type": "file",
+      "name": "lib/c2hest-v1434.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "045012cc38eb55df5d850e5ce2c98be2179700c943aab96bb16271681c80c6a4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3302"
         }
       ]
     },
@@ -7385,6 +7406,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/hatch-af-v1435.js",
+      "type": "file",
+      "name": "lib/hatch-af-v1435.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2d78a603f3612272c27d411ff50c50919cb8b765a79ce2d1f07337548e03b5e2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2773"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/hattrup-johnson-v492.js",
       "type": "file",
       "name": "lib/hattrup-johnson-v492.js",
@@ -11045,7 +11087,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "bb713465bc07d86392c7bf934a8d6b97f91e817aa642dee76d2a2a2632f7acd5"
+          "content": "0ef7703c89423c643e68383a859138cc4253010e090d18ac0489e091537d2fec"
         }
       ],
       "properties": [
@@ -11055,7 +11097,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2550174"
+          "value": "2551896"
         }
       ]
     },
@@ -22211,6 +22253,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/c2hest-v1434.js",
+      "type": "file",
+      "name": "mcp/adapters/c2hest-v1434.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7fcb14013628393ad8ff753185da0d9587fe427a38d12e9ab73bbb23aad03e79"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1207"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ca-5150-hold-timeline-v1389.js",
       "type": "file",
       "name": "mcp/adapters/ca-5150-hold-timeline-v1389.js",
@@ -26953,6 +27016,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1534"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/hatch-af-v1435.js",
+      "type": "file",
+      "name": "mcp/adapters/hatch-af-v1435.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "71f40ae64362e7bab0d101218d7190c7ec17168b5d17597a60138c637e4fa1ec"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1046"
         }
       ]
     },
@@ -39017,7 +39101,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ff8c61743c3b0bd547489c760c5ae9e7fa9ff97ed9990d7fa344a86c537f38b4"
+          "content": "ab527ecc3f053de6b647db284a170cce30cde147d5dee02c8e1e48db1b7c49b0"
         }
       ],
       "properties": [
@@ -39027,7 +39111,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "102648"
+          "value": "102828"
         }
       ]
     },
@@ -41107,6 +41191,48 @@
         {
           "name": "sophiewell:bytes",
           "value": "3136"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1434.js",
+      "type": "file",
+      "name": "views/group-v1434.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "968c4c868ca629ba1e5ddb6e03ecfd30e38198a73399fd1680044384b42d51cd"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2901"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1435.js",
+      "type": "file",
+      "name": "views/group-v1435.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "eb07de18b58142b659eca1424dec49e2fb406765817632d92f9ef4ab1060f79c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2629"
         }
       ]
     },
@@ -72280,6 +72406,7 @@
         "urn:sophiewell:file:source:lib/brouet-cryoglobulinemia-v468.js",
         "urn:sophiewell:file:source:lib/brue-v547.js",
         "urn:sophiewell:file:source:lib/c-rads-v371.js",
+        "urn:sophiewell:file:source:lib/c2hest-v1434.js",
         "urn:sophiewell:file:source:lib/ca-5150-hold-timeline-v1389.js",
         "urn:sophiewell:file:source:lib/ca-5585-minor-hold-v1389.js",
         "urn:sophiewell:file:source:lib/ca-adult-tb-risk-v1400.js",
@@ -72517,6 +72644,7 @@
         "urn:sophiewell:file:source:lib/harrington-acetabular-v605.js",
         "urn:sophiewell:file:source:lib/hartofilakidis-ddh-v370.js",
         "urn:sophiewell:file:source:lib/hash.js",
+        "urn:sophiewell:file:source:lib/hatch-af-v1435.js",
         "urn:sophiewell:file:source:lib/hattrup-johnson-v492.js",
         "urn:sophiewell:file:source:lib/hawkins-talar-v342.js",
         "urn:sophiewell:file:source:lib/hbv-serology-v1400.js",
@@ -73230,6 +73358,8 @@
         "urn:sophiewell:file:source:views/group-v1430.js",
         "urn:sophiewell:file:source:views/group-v1431.js",
         "urn:sophiewell:file:source:views/group-v1433.js",
+        "urn:sophiewell:file:source:views/group-v1434.js",
+        "urn:sophiewell:file:source:views/group-v1435.js",
         "urn:sophiewell:file:source:views/group-v144.js",
         "urn:sophiewell:file:source:views/group-v145.js",
         "urn:sophiewell:file:source:views/group-v146.js",
@@ -74061,6 +74191,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/brouet-cryoglobulinemia-v468.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/brue-v547.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/c-rads-v371.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/c2hest-v1434.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ca-5150-hold-timeline-v1389.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ca-5585-minor-hold-v1389.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ca-adult-tb-risk-v1400.js",
@@ -74287,6 +74418,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/hardy-adenoma-v391.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/harrington-acetabular-v605.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hartofilakidis-ddh-v370.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/hatch-af-v1435.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hattrup-johnson-v492.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hawkins-talar-v342.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hbv-serology-v1400.js",
@@ -74964,7 +75096,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "2aafc4501b80b471"
+      "value": "8dd36f015c541edf"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -74976,7 +75108,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2672"
+      "value": "2678"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

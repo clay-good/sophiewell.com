@@ -8784,6 +8784,28 @@
       ],
       "tile": "disability-rating-scale",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "c2hest",
+        "c2hest score",
+        "incident af risk score",
+        "new onset atrial fibrillation risk",
+        "af prediction asian"
+      ],
+      "tile": "c2hest",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "hatch score",
+        "af progression score",
+        "paroxysmal af progression",
+        "persistent af risk",
+        "hatch atrial fibrillation"
+      ],
+      "tile": "hatch-af",
+      "audience": "clinicians"
     }
   ]
 }

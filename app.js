@@ -799,6 +799,8 @@ import { renderers as RV1429 } from './views/group-v1429.js';
 import { renderers as RV1430 } from './views/group-v1430.js';
 import { renderers as RV1431 } from './views/group-v1431.js';
 import { renderers as RV1433 } from './views/group-v1433.js';
+import { renderers as RV1434 } from './views/group-v1434.js';
+import { renderers as RV1435 } from './views/group-v1435.js';
 import { renderers as RV1396 } from './views/group-v1396.js';
 import { renderers as RV164 } from './views/group-v164.js';
 import { renderers as RV165 } from './views/group-v165.js';
@@ -887,7 +889,7 @@ const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...R
   ...RV902,
   ...RV903,
   ...RV905,
-  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV960, ...RV1061, ...RV1062, ...RV1240, ...RV1241, ...RV1242, ...RV1243, ...RV1400, ...RV1389, ...RV1393, ...RV1397, ...RV1395, ...RV1390, ...RV1391, ...RV1392, ...RV1394, ...RV1399, ...RV1398, ...RV1401, ...RV1396, ...RV1412, ...RV1413, ...RV1414, ...RV1416, ...RV1417, ...RV1418, ...RV1419, ...RV1420, ...RV1421, ...RV1422, ...RV1423, ...RV1424, ...RV1425, ...RV1426, ...RV1427, ...RV1428, ...RV1429, ...RV1430, ...RV1431, ...RV1433, ...RV63, ...RPALINT };
+  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV960, ...RV1061, ...RV1062, ...RV1240, ...RV1241, ...RV1242, ...RV1243, ...RV1400, ...RV1389, ...RV1393, ...RV1397, ...RV1395, ...RV1390, ...RV1391, ...RV1392, ...RV1394, ...RV1399, ...RV1398, ...RV1401, ...RV1396, ...RV1412, ...RV1413, ...RV1414, ...RV1416, ...RV1417, ...RV1418, ...RV1419, ...RV1420, ...RV1421, ...RV1422, ...RV1423, ...RV1424, ...RV1425, ...RV1426, ...RV1427, ...RV1428, ...RV1429, ...RV1430, ...RV1431, ...RV1433, ...RV1434, ...RV1435, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -2749,6 +2751,7 @@ const UTILITIES = [
   { id: 'masld-criteria',         name: 'MASLD and MetALD Criteria (2023 nomenclature)',     group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'clinical-obesity',       name: 'Clinical vs Preclinical Obesity (2025 Commission)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'af-stages-2023',         name: 'Atrial Fibrillation Stages (2023 guideline)',       group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'hatch-af', name: 'HATCH Score (Atrial Fibrillation Progression)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'hf-ef-classification',   name: 'Heart Failure by Ejection Fraction (HFimpEF)',      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'diabetes-diagnosis',     name: 'Diabetes and Prediabetes Diagnostic Criteria',      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'hf-stages-abcd',         name: 'Heart Failure Stages A to D (ACC/AHA)',             group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
@@ -3593,6 +3596,7 @@ const UTILITIES = [
   // mecki already live (v202); seattle-hf deferred.
   { id: 'hcm-risk-scd',         name: 'HCM Risk-SCD (5-year Sudden Cardiac Death, HCM)',  group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'charge-af',            name: 'CHARGE-AF (5-year Atrial Fibrillation Risk)',      group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'c2hest', name: 'C2HEST Score (Incident Atrial Fibrillation)', group: 'G', audiences: ['clinicians', 'educators'], clinical: true },
   // spec-v210: ischemic-stroke & ICH prognosis (Advanced Prognostic &
   // Risk-Equation Instruments program). lib/stroke-prognosis-v210.js, RV210.
   // func-score already live (v206); iscore deferred.

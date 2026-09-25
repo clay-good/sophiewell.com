@@ -6,6 +6,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **C2HEST score for new atrial fibrillation.** Scores the risk of incident AF (0 to 8)
+  with its group and yearly rate from the derivation cohort, and declines to score a
+  patient with structural heart disease, whom the derivation excluded as high risk.
+  See docs/spec-v1434.md.
+
+- **HATCH score for atrial fibrillation progression.** Scores the risk that paroxysmal
+  AF becomes sustained within a year (0 to 7), and reports only the two rates its
+  derivation paper gives rather than inventing the rest. See docs/spec-v1435.md.
+
 - **Disability Rating Scale for brain injury.** A new tool totals the DRS (0 to 29)
   from coma to community, gives its descriptive category with the source's note that
   the categories were never derived statistically, and asks for every item instead
