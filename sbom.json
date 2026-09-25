@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:2ce0a1fb-0b7f-5cd6-8122-9ead53e04209",
+  "serialNumber": "urn:uuid:6aa9874c-bf36-5780-83da-262e62292124",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-24T23:40:56.368Z",
+    "timestamp": "2026-09-24T23:57:40.918Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1787 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1788 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8623b9abb6c22736bf9c4d668c7f7ce0fe5dedf97569433667f649e190d021e2"
+          "content": "f76d0db08e80efd0fc0ea2ec407cefe5e6a33fea52824b320a5fe8f33712920d"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "115105"
+          "value": "115149"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "192810ccfee4c6f5addf06456463fb85881758f83addbf8547f9ef7334493346"
+          "content": "0c4db87d7562d53c0ec3b980bf29368c41e384e30559f302cb1ead323c811549"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "532223"
+          "value": "532440"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a4628fb7de5614d1427f01c4953abd6fefaef60cfaa2d952a8ce163263da6a6b"
+          "content": "470c2cfa7bda459687dca01e508b420ad48302ffcac4e6cf4a55677042fd4865"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "222703"
+          "value": "222829"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7b978cf85cbe346dd42a5adc9bdb507c29d44895b80751ca6e03b90b82c18ecf"
+          "content": "ce8437c33bd3156be146b686430ca010b5348751af7703ee66a4a200c7c873f8"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "102188"
+          "value": "102237"
         }
       ]
     },
@@ -745,6 +745,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3592"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/adult-ett-depth-v1412.js",
+      "type": "file",
+      "name": "lib/adult-ett-depth-v1412.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f7b393a0f468f8fe24d01b26f46d8f06a04ee70db8581b33365799996d53078f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4866"
         }
       ]
     },
@@ -10814,7 +10835,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6f34b7f176e0f6362e124fd481aac9f9ab0366d4b3ce4921cfdbd1e7cd196844"
+          "content": "a82354c4dd230e6b2ce7c30987f3dad5672aa9928c4aa3ccbe1ff3be43c32368"
         }
       ],
       "properties": [
@@ -10824,7 +10845,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2531468"
+          "value": "2532610"
         }
       ]
     },
@@ -20191,6 +20212,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "945"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/adult-ett-depth-v1412.js",
+      "type": "file",
+      "name": "mcp/adapters/adult-ett-depth-v1412.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4c67f7f4fe39a52cb451d768337b68a6194ea84a7538a10c7f4a603e61b1223a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "898"
         }
       ]
     },
@@ -38177,7 +38219,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c9a1ae6b1f5fbd402b80ee0f8fe577e17c320a4f0064aa3b0a5354b380fd6d1b"
+          "content": "f3344486daee38764b1c05fc1a5b41cb08d4dc4e82e72c6000219a32585e0b54"
         }
       ],
       "properties": [
@@ -38187,7 +38229,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "100164"
+          "value": "100283"
         }
       ]
     },
@@ -39805,6 +39847,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "8714"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1412.js",
+      "type": "file",
+      "name": "views/group-v1412.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "606aa21accca6f8fa13e8ce04e7a7ac9777c735b43c80cf15e2672c5ca40fc7f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2470"
         }
       ]
     },
@@ -70941,6 +71004,7 @@
         "urn:sophiewell:file:source:lib/acute-injury-v213.js",
         "urn:sophiewell:file:source:lib/acute-opioid-rx-limit-v1393.js",
         "urn:sophiewell:file:source:lib/adiposity-v270.js",
+        "urn:sophiewell:file:source:lib/adult-ett-depth-v1412.js",
         "urn:sophiewell:file:source:lib/af-stages-2023-v839.js",
         "urn:sophiewell:file:source:lib/ahlback-knee-oa-v480.js",
         "urn:sophiewell:file:source:lib/airway-resistance-v927.js",
@@ -71928,6 +71992,7 @@
         "urn:sophiewell:file:source:views/group-v1400.js",
         "urn:sophiewell:file:source:views/group-v1401.js",
         "urn:sophiewell:file:source:views/group-v141.js",
+        "urn:sophiewell:file:source:views/group-v1412.js",
         "urn:sophiewell:file:source:views/group-v142.js",
         "urn:sophiewell:file:source:views/group-v143.js",
         "urn:sophiewell:file:source:views/group-v144.js",
@@ -72685,6 +72750,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/acute-injury-v213.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/acute-opioid-rx-limit-v1393.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/adiposity-v270.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/adult-ett-depth-v1412.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/af-stages-2023-v839.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ahlback-knee-oa-v480.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/airway-resistance-v927.js",
@@ -73644,7 +73710,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "2ce0a1fb0b7ffcd6"
+      "value": "6aa9874cbf36d780"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -73656,7 +73722,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2612"
+      "value": "2615"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

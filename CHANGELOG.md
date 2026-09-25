@@ -6,6 +6,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Adult ETT depth.** A new tool gives the starting mark for an adult oral tube at
+  the corner of the mouth: 21 cm for women and 23 cm for men (Roberts 1995), and
+  height / 5 - 13 (Cherng 2002). It shows both marks when both apply, and puts
+  capnography and a chest radiograph first, because the mark confirms neither
+  placement nor depth. Until now "ETT depth" reached only the pediatric tool. See
+  docs/spec-v1412.md.
+
 - **Two impossible values that changed nothing now refuse.** SMART-COP read a
   PaO2/FiO2 ratio of 999,999 exactly like a normal one, and POP-Q staging accepted
   any point at any distance: an Aa of 50 staged IV at "+50 cm". Each POP-Q point

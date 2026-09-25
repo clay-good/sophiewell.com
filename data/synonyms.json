@@ -8563,6 +8563,17 @@
       ],
       "tile": "safe-haven-infant-check",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "adult ett depth",
+        "ett depth adult",
+        "adult endotracheal tube depth",
+        "adult tube depth",
+        "ett depth at the lip corner"
+      ],
+      "tile": "adult-ett-depth",
+      "audience": "clinicians"
     }
   ]
 }

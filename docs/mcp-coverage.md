@@ -8320,6 +8320,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/safe-haven-infant-check-v1394.js (spec-v1394: safe-haven infant surrender, New York, New Jersey, and Texas — clinical disclaimer)
 - `safe-haven-infant-check`
 
+### lib/adult-ett-depth-v1412.js (spec-v1412: adult oral ETT depth at the corner of the mouth — clinical disclaimer)
+- `adult-ett-depth`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 
