@@ -92,6 +92,8 @@ export const renderers = {
         { label: 'PVR', value: `${fmt(r.pvr, { fallback: '(enter mPAP + PCWP)' })}${flagTag(r.pvrFlag)}`, units: 'dynes·s·cm^-5' },
         { label: 'PVR (Wood units)', value: fmt(r.pvrWood, { fallback: '(enter mPAP + PCWP)' }), units: 'WU' },
         { label: 'PVRI', value: fmt(r.pvri, { fallback: '(enter mPAP + PCWP + BSA)' }), units: 'dynes·s·cm^-5·m^2' },
+        { label: 'LV stroke work index (LVSWI)', value: r.lvswi == null ? '(enter HR + BSA + MAP + PCWP)' : `${r.lvswi} g·m/m^2 (${r.lvswiMmhg} mmHg·mL/m^2)` },
+        { label: 'RV stroke work index (RVSWI)', value: r.rvswi == null ? '(enter HR + BSA + mPAP + CVP)' : `${r.rvswi} g·m/m^2 (${r.rvswiMmhg} mmHg·mL/m^2)` },
       ]);
       note(o, r.note);
     }));

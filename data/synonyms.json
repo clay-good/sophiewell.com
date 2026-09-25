@@ -9084,6 +9084,17 @@
       ],
       "tile": "glycemia-risk-index",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "stroke work index",
+        "lvswi",
+        "rvswi",
+        "left ventricular stroke work index",
+        "right ventricular stroke work index"
+      ],
+      "tile": "hemodynamic-suite",
+      "audience": "clinicians"
     }
   ]
 }

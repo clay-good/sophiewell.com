@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `460de528b0c5c019`
-Generated: 2026-09-25T08:21:07.070Z
+Build ID: `77fa0ef206ce0da0`
+Generated: 2026-09-25T08:34:36.424Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -413,7 +413,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/heme-v132.js` | 16879 | `b8efc09695da0d762446d04a61a8269f62ec63f2c8d35fe8547375b1e603b333` |
 | `lib/hemederm-v245.js` | 8476 | `39480a087ffb9f9d29c73c0ef8a7b82e0f7fd4dec2db77da38d199295ee21777` |
 | `lib/hemo-v194.js` | 12317 | `930f9c5936ec705bdaf94bca7e9a2bac78ccf4a6227e9093de0bbaccd33da718` |
-| `lib/hemodynamics-v87.js` | 9902 | `a02d19bb277dcee4edc9131e7ffd0fc19ce4ccf2baa87ef143be0bff4bcbfc52` |
+| `lib/hemodynamics-v87.js` | 10803 | `5ecd9301d133020ff6d17feb0da8d4c5893e53d0208d703bc10206978e996cd6` |
 | `lib/hemonc-v94.js` | 23706 | `66b93dcc9007e17f6d4e62ba597c83258baf6148241769bdd3b94869d9d2c0bf` |
 | `lib/hep-fibrosis-portal-v212.js` | 7921 | `93f3523d0b77872b3a351fc28a630c781e1f5469bffc631f70ad84ccffaed494` |
 | `lib/hep-v124.js` | 17434 | `b1eda3d72892fd30fed5a8424d38a4010f24360b826e9334a35fa231311f8413` |
@@ -1372,7 +1372,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/heme-v132.js` | 5021 | `a7051298a0fd9fb910924e4a63fa1e637b57cd62e5d6a1ee024a94adc53268ff` |
 | `mcp/adapters/hemederm-v245.js` | 2558 | `f167b9cbc55e8616fff7300edddf947bfa4c99c10510115011dcf2ad57bb903f` |
 | `mcp/adapters/hemo-v194.js` | 3515 | `f914dfeb62c69ecb9e57586c1635f270320c3076d4461adf6ba89837cf12f63d` |
-| `mcp/adapters/hemodynamics-v87.js` | 3219 | `d849f168739ab694666e51bbcbcc61327be638bd499c9f318695960422accab6` |
+| `mcp/adapters/hemodynamics-v87.js` | 3203 | `c8250212fb9bd87754ad045b6de18450c6f9d2eff3b69174189795f1daaba71e` |
 | `mcp/adapters/hemonc-v94.js` | 5606 | `cdedee258495d5f6d7c1a8af13d3a5e052406ac40ebb97c1e79442c616af78f3` |
 | `mcp/adapters/hep-fibrosis-portal-v212.js` | 1834 | `bb69121e7d3608f4d03e0cc83bb864dd86cbb01c8560ae62e8b0fec7013214cb` |
 | `mcp/adapters/hep-v124.js` | 3578 | `4d10d19f2bb9a32f05191a680906924fa58422b3ca73d7090295e2f8c0273835` |
@@ -1995,7 +1995,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v127.js` | 9645 | `c12859a07e97172d292b834c5a84ede9cb43f6601e633a4e03feef844eef4128` |
 | `views/group-v128.js` | 7760 | `53557c149d1f0d643f25bf5e0841c6ed03746c09c9d581d741af50c045125dea` |
 | `views/group-v129.js` | 13035 | `02a615a3a577434fa927dc2a9310e194fc164b85a2cbd66e405584b7efda3466` |
-| `views/group-v13.js` | 8286 | `567e735768690459974fe8192ae84ad9535aa0283a52feb77dcc33abddbdac8a` |
+| `views/group-v13.js` | 8612 | `6671eafbefd8df7ff83e0219bb433a6d7dd9307d3e0cb118aeac80ba4aec2c12` |
 | `views/group-v130.js` | 10347 | `f902a1316e845109c1cc0257bfc3df2183317c9dc1d8b221ee0e18615b865a1f` |
 | `views/group-v131.js` | 13363 | `6406166b469f17b930b9f70e33d59093dff6bc03c448cc0786ed9aa62d509255` |
 | `views/group-v132.js` | 10781 | `334289537b832288ba77300a7271eb1dd997a0b4a76b3927ad8fb7a863395ae4` |

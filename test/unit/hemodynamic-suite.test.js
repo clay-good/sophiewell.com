@@ -50,3 +50,17 @@ test('partial inputs compute only what is supported (no false outputs)', () => {
   assert.equal(r.pvrWood, null); // no mPAP/PCWP
   assert.equal(r.ciFlag, null);
 });
+
+test('spec-v1474: stroke work indices in both reported units, only when their inputs are present', () => {
+  const r = hemodynamicSuite({ cardiacOutput: 5, heartRate: 70, bsa: 1.9, map: 85, cvp: 8, mpap: 25, pcwp: 12 });
+  // SVI = 5 / 70 * 1000 / 1.9 = 37.59 mL/m2
+  assert.equal(r.lvswiMmhg, 2744); // 37.59 * (85 - 12)
+  assert.equal(r.lvswi, 37.3); // * 0.0136
+  assert.equal(r.rvswiMmhg, 639); // 37.59 * (25 - 8)
+  assert.equal(r.rvswi, 8.7);
+  assert.match(r.note, /correct units are disputed/);
+  const noWedge = hemodynamicSuite({ cardiacOutput: 5, heartRate: 70, bsa: 1.9, map: 85, cvp: 8, mpap: 25 });
+  assert.equal(noWedge.lvswi, null);
+  assert.equal(noWedge.rvswi, 8.7);
+  assert.equal(hemodynamicSuite({ cardiacOutput: 5, bsa: 1.9, map: 85, pcwp: 12 }).lvswi, null, 'no heart rate, no SVI');
+});

@@ -9,7 +9,7 @@ import * as F from '../../lib/hemodynamics-v87.js';
 export default [
   {
     id: 'hemodynamic-suite',
-    summary: 'Cardiac index, stroke volume / index, and SVR / PVR from thermodilution cardiac output and invasive pressures (Swan-Ganz; ESC/ERS 2022).',
+    summary: 'Cardiac index, stroke volume, SVR/PVR and stroke work indices from cardiac output and invasive pressures (ESC/ERS 2022).',
     compute: F.hemodynamicSuite,
     fields: [
       { dom: 'hs-co', arg: 'cardiacOutput', kind: 'number', required: true, label: 'Cardiac output', unit: 'L/min' },

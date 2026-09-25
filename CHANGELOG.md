@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **The hemodynamics suite now reports stroke work indices.** Left and right
+  ventricular stroke work index come from inputs it already takes, and are shown in both
+  mmHg·mL/m² and g·m/m² because the literature uses both. No normal range is applied.
+  See docs/spec-v1474.md.
+
 - **Glucose management indicator (GMI).** Turns the mean glucose on a CGM report into
   the GMI in % and mmol/mol (Bergenstal 2018), beside the eAG tool that goes the other
   way from a laboratory A1c. It notes when the data fall short of 14 days with 70%
