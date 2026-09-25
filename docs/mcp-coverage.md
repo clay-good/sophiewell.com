@@ -8464,6 +8464,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/mrecist-v1475.js (spec-v1475: modified RECIST response for hepatocellular carcinoma — clinical disclaimer)
 - `mrecist`
 
+### lib/asas-ibp-v1476.js (spec-v1476: ASAS criteria for inflammatory back pain — clinical disclaimer)
+- `asas-ibp`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

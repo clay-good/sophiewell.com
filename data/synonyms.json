@@ -9106,6 +9106,17 @@
       ],
       "tile": "mrecist",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "inflammatory back pain",
+        "asas ibp",
+        "ibp criteria",
+        "inflammatory back pain criteria",
+        "axial spondyloarthritis back pain"
+      ],
+      "tile": "asas-ibp",
+      "audience": "clinicians"
     }
   ]
 }

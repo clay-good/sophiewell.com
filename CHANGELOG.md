@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **ASAS criteria for inflammatory back pain.** The axSpA classification asks whether
+  back pain is inflammatory; this counts the five ASAS items (4 needed) for chronic back
+  pain, and says how weak the finding is on its own. See docs/spec-v1476.md.
+
 - **mRECIST for hepatocellular carcinoma.** Beside RECIST 1.1 and iRECIST: response
   from the sums of viable, arterially enhancing tumor diameters, the version guidelines use
   after chemoembolization and other locoregional therapy. Where some studies add a 5 mm

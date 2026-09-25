@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:8b71518c-e263-50a8-80b1-00733feec6e9",
+  "serialNumber": "urn:uuid:26a2bd5d-0d02-5ed5-8105-4f412cc4fd10",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-25T08:55:01.726Z",
+    "timestamp": "2026-09-25T09:19:06.568Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1835 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1836 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5bb740b6a54749cd6045c922bbec17034197f99352a247c9f88123ac0e941b4e"
+          "content": "b324938a59b4f9b5591482096a07dc2e61cf06c23a7677f31afe09ac0759dd95"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "117990"
+          "value": "118042"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1a5b3466c2b93def89877d4d539a147540e8379a1e23eec72cdb48c01e8602db"
+          "content": "5bc831baa10d272337b66a31a9e7ff3f101fafa27acfe21e533c25758da45455"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "542968"
+          "value": "543177"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7b59812907b2ed22bd24475e3f1506969d965db74e279ec151322ad97910015a"
+          "content": "6f75d9f5bac5e0cf0dab1df17765398e6762a3c0c0547b0f846352c39c74f014"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "228687"
+          "value": "228806"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a3ff4fbd68264fdac6de9bf0d853956807d3c4e49b5f7124102b7f159a9e6201"
+          "content": "7d0918090637a03b21bbe4d3cd8aa56a87d63b85a2b6b278cafe8d726c841b79"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "105249"
+          "value": "105299"
         }
       ]
     },
@@ -1354,6 +1354,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "5723"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/asas-ibp-v1476.js",
+      "type": "file",
+      "name": "lib/asas-ibp-v1476.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "dedd06babae22548c852f5fa6afb1ec87709553967b486de46badf66950ecf08"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3878"
         }
       ]
     },
@@ -11402,7 +11423,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "92a19ad170209c1304a0189b479536f630a0de278acff59193acc924d8fa45ff"
+          "content": "be3280dd2275a1f35022981bba06c1a98ce6a7101bc76c81abc73f424c1b952a"
         }
       ],
       "properties": [
@@ -11412,7 +11433,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2575333"
+          "value": "2576492"
         }
       ]
     },
@@ -21787,6 +21808,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1688"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/asas-ibp-v1476.js",
+      "type": "file",
+      "name": "mcp/adapters/asas-ibp-v1476.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "38143821f2a107e2fa1dd8f03c184c9d3caf0a866be5a4f16cc5885d28d9eee9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1109"
         }
       ]
     },
@@ -40193,7 +40235,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "bb7d770de916cc588795f762abbd57237dcd1c5ed0fe3c491b0d1a80f716b7fb"
+          "content": "e9f8293251a0b0fa44947af4f6c51fce3a6165f516e1c32e750594e5f3e3346b"
         }
       ],
       "properties": [
@@ -40203,7 +40245,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "105696"
+          "value": "105789"
         }
       ]
     },
@@ -42955,6 +42997,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2775"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1476.js",
+      "type": "file",
+      "name": "views/group-v1476.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3df73d839c3d63a7b0787b5d2812fa4715025192cbf788dc6961106277f8fda3"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2350"
         }
       ]
     },
@@ -73994,6 +74057,7 @@
         "urn:sophiewell:file:source:lib/arc-hbr-v594.js",
         "urn:sophiewell:file:source:lib/areds-v615.js",
         "urn:sophiewell:file:source:lib/arvc-tfc-v786.js",
+        "urn:sophiewell:file:source:lib/asas-ibp-v1476.js",
         "urn:sophiewell:file:source:lib/asrm-mania-v675.js",
         "urn:sophiewell:file:source:lib/asrs-v513.js",
         "urn:sophiewell:file:source:lib/asthma-control-test-v516.js",
@@ -75054,6 +75118,7 @@
         "urn:sophiewell:file:source:views/group-v1472.js",
         "urn:sophiewell:file:source:views/group-v1473.js",
         "urn:sophiewell:file:source:views/group-v1475.js",
+        "urn:sophiewell:file:source:views/group-v1476.js",
         "urn:sophiewell:file:source:views/group-v148.js",
         "urn:sophiewell:file:source:views/group-v149.js",
         "urn:sophiewell:file:source:views/group-v15.js",
@@ -75833,6 +75898,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/arc-hbr-v594.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/areds-v615.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/arvc-tfc-v786.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/asas-ibp-v1476.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/asrm-mania-v675.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/asrs-v513.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/asthma-control-test-v516.js",
@@ -76812,7 +76878,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "8b71518ce263e0a8"
+      "value": "26a2bd5d0d02ded5"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -76824,7 +76890,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2756"
+      "value": "2759"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

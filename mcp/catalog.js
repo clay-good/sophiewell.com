@@ -884,6 +884,7 @@ import gmiV1471 from './adapters/gmi-v1471.js';
 import cgmTimeInRangeV1472 from './adapters/cgm-time-in-range-v1472.js';
 import glycemiaRiskIndexV1473 from './adapters/glycemia-risk-index-v1473.js';
 import mrecistV1475 from './adapters/mrecist-v1475.js';
+import asasIbpV1476 from './adapters/asas-ibp-v1476.js';
 import nurseStaffingRatioCheckV1396 from './adapters/nurse-staffing-ratio-check-v1396.js';
 import caWpvReportClockV1396 from './adapters/ca-wpv-report-clock-v1396.js';
 import mandatoryOvertimeCheckV1396 from './adapters/mandatory-overtime-check-v1396.js';
@@ -1804,6 +1805,7 @@ const ADAPTER_MODULES = [
   ['cgm-time-in-range-v1472', cgmTimeInRangeV1472],
   ['glycemia-risk-index-v1473', glycemiaRiskIndexV1473],
   ['mrecist-v1475', mrecistV1475],
+  ['asas-ibp-v1476', asasIbpV1476],
   ['nurse-staffing-ratio-check-v1396', nurseStaffingRatioCheckV1396],
   ['ca-wpv-report-clock-v1396', caWpvReportClockV1396],
   ['mandatory-overtime-check-v1396', mandatoryOvertimeCheckV1396],
