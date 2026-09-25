@@ -8461,6 +8461,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/glycemia-risk-index-v1473.js (spec-v1473: glycemia risk index from CGM — clinical disclaimer)
 - `glycemia-risk-index`
 
+### lib/mrecist-v1475.js (spec-v1475: modified RECIST response for hepatocellular carcinoma — clinical disclaimer)
+- `mrecist`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

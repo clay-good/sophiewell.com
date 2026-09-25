@@ -9095,6 +9095,17 @@
       ],
       "tile": "hemodynamic-suite",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "mrecist",
+        "modified recist",
+        "hcc response criteria",
+        "tace response",
+        "liver cancer response"
+      ],
+      "tile": "mrecist",
+      "audience": "clinicians"
     }
   ]
 }

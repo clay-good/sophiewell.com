@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **mRECIST for hepatocellular carcinoma.** Beside RECIST 1.1 and iRECIST: response
+  from the sums of viable, arterially enhancing tumor diameters, the version guidelines use
+  after chemoembolization and other locoregional therapy. Where some studies add a 5 mm
+  rule for progression, it says so. See docs/spec-v1475.md.
+
 - **The hemodynamics suite now reports stroke work indices.** Left and right
   ventricular stroke work index come from inputs it already takes, and are shown in both
   mmHg·mL/m² and g·m/m² because the literature uses both. No normal range is applied.
