@@ -69,6 +69,10 @@ export const ANSWERS_AN_EMPTY_FORM = new Set([
   "masld-criteria",
   "mchat-rf",
   "membranous-risk",
+  // spec-v1468: the size and zone are SELECTS; the two number fields are an
+  // optional second route to the size (measure instead of choosing). Clearing them leaves the chosen
+  // size and zone, which is an answer the reader gave, not a measurement nobody took.
+  "msu-disc-herniation",
   "mswat",
   "mtp-tracker",
   "naloxone",
