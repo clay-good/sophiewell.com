@@ -8872,6 +8872,17 @@
       ],
       "tile": "kyoto-gastritis",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "de winter",
+        "de winter pattern",
+        "de winter t waves",
+        "stemi equivalent lad",
+        "upsloping st depression tall t waves"
+      ],
+      "tile": "de-winter-pattern",
+      "audience": "clinicians"
     }
   ]
 }

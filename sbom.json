@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:6cb5de68-fcf0-5fa5-8b7d-e23fcf4ca41a",
+  "serialNumber": "urn:uuid:a8c803d8-ead8-5c3b-80c2-0d5c5a173489",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-25T03:48:16.972Z",
+    "timestamp": "2026-09-25T03:56:30.261Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1815 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1816 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a08bbb4436c61adc648c5bd08c51fa746e941708874393f590110eb2b6459b7f"
+          "content": "c815bf6b7c656aa9d02f8eb5fb404b5562d89f38f432387b1d35f40e22991d9a"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "116781"
+          "value": "116833"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "46783ecf1aeafbf389d15d6e5125b94fbeb2f901988005915fe80ffb7d1f607c"
+          "content": "d11b0bece1678eb7eaebd21feff704cebe70f8c60e45b0b58e933ebd494a0160"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "538488"
+          "value": "538706"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e570cb2400e458464c295902b745968e36f14841a75e7985809b97d5cb049cc1"
+          "content": "6d57153f1491440a13a2d669e0d69352b557872002f8108f4ada58eeb8778287"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "226212"
+          "value": "226340"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "fa75ef09008243a7c42f2351d5a830592cc10dd0a76812600cc266831894889c"
+          "content": "12b5427528f8195bcf056f77aa8de61c0f199c0d95caa9361f760b46a8a9e8b7"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "103985"
+          "value": "104044"
         }
       ]
     },
@@ -4399,6 +4399,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2448"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/de-winter-pattern-v1443.js",
+      "type": "file",
+      "name": "lib/de-winter-pattern-v1443.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "55058d3040772d5dbe9cd92f4f1485cc502781c96c1bf756c27eb4f4e78a11b1"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3588"
         }
       ]
     },
@@ -11108,7 +11129,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "fb65416060a241e267f82501efa71fc8b3565c7661619b7c800fbe11a86a08cc"
+          "content": "f24fecb1fd2ae4807ef8236be8a011028923a06218dda61a4c9a1371c1a10c69"
         }
       ],
       "properties": [
@@ -11118,7 +11139,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2557128"
+          "value": "2558036"
         }
       ]
     },
@@ -24328,6 +24349,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "7205"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/de-winter-pattern-v1443.js",
+      "type": "file",
+      "name": "mcp/adapters/de-winter-pattern-v1443.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "52c6fa2d855e5425d676f759111a2429e003de829584ecc4c5f5e2858960cf34"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1098"
         }
       ]
     },
@@ -39353,7 +39395,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6cafe89931b921047661485ac34f19c8337dce9c5b7abfdbbdbb26681fd6b0f2"
+          "content": "e61efb3fc44610ed70c2596208c46512afe4cf82cb9a200f18c456f0257285dc"
         }
       ],
       "properties": [
@@ -39363,7 +39405,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "103468"
+          "value": "103595"
         }
       ]
     },
@@ -41632,6 +41674,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2728"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1443.js",
+      "type": "file",
+      "name": "views/group-v1443.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "94e8232b8c367c03948f7b0e26889e3aec1c5ab005a704dd58d9b5de540296c0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2686"
         }
       ]
     },
@@ -72879,6 +72942,7 @@
         "urn:sophiewell:file:source:lib/cvrisk-engines-v202.js",
         "urn:sophiewell:file:source:lib/cvrisk-v103.js",
         "urn:sophiewell:file:source:lib/data.js",
+        "urn:sophiewell:file:source:lib/de-winter-pattern-v1443.js",
         "urn:sophiewell:file:source:lib/deadline.js",
         "urn:sophiewell:file:source:lib/deauville-v314.js",
         "urn:sophiewell:file:source:lib/debakey-v461.js",
@@ -73751,6 +73815,7 @@
         "urn:sophiewell:file:source:views/group-v1440.js",
         "urn:sophiewell:file:source:views/group-v1441.js",
         "urn:sophiewell:file:source:views/group-v1442.js",
+        "urn:sophiewell:file:source:views/group-v1443.js",
         "urn:sophiewell:file:source:views/group-v145.js",
         "urn:sophiewell:file:source:views/group-v146.js",
         "urn:sophiewell:file:source:views/group-v147.js",
@@ -74674,6 +74739,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/cuff-leak-v903.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cvrisk-engines-v202.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cvrisk-v103.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/de-winter-pattern-v1443.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/deauville-v314.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/debakey-v461.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/decision-rules-v258.js",
@@ -75492,7 +75558,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "6cb5de68fcf04fa5"
+      "value": "a8c803d8ead88c3b"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -75504,7 +75570,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2696"
+      "value": "2699"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

@@ -8404,6 +8404,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/kyoto-gastritis-v1442.js (spec-v1442: Kyoto classification of gastritis score — clinical disclaimer)
 - `kyoto-gastritis`
 
+### lib/de-winter-pattern-v1443.js (spec-v1443: de Winter pattern STEMI equivalent — clinical disclaimer)
+- `de-winter-pattern`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

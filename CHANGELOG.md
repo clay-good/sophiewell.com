@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **de Winter pattern.** Checks a tracing for the de Winter pattern, a STEMI
+  equivalent of proximal LAD occlusion without ST elevation, and routes a tracing
+  with contiguous ST elevation to STEMI criteria instead. See docs/spec-v1443.md.
+
 - **Kyoto classification of gastritis.** Scores the background gastric mucosa (0 to
   8) from atrophy, intestinal metaplasia, enlarged folds, nodularity and diffuse
   redness, against the gastric cancer risk level of 4, and notes that eradication can
