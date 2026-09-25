@@ -9004,6 +9004,17 @@
       ],
       "tile": "powers-ratio",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "hakki formula",
+        "hakki equation",
+        "simplified gorlin formula",
+        "valve area cardiac output gradient",
+        "quick valve area estimate"
+      ],
+      "tile": "hakki-valve-area",
+      "audience": "clinicians"
     }
   ]
 }

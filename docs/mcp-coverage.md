@@ -8440,6 +8440,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/powers-ratio-v1454.js (spec-v1454: Powers ratio for atlanto-occipital dissociation — clinical disclaimer)
 - `powers-ratio`
 
+### lib/hakki-valve-area-v1455.js (spec-v1455: Hakki simplified valve area formula — clinical disclaimer)
+- `hakki-valve-area`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

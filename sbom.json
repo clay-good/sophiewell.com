@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:cfecace6-2e20-5a91-8685-518e1f76250f",
+  "serialNumber": "urn:uuid:93f5f3da-6f4d-5d33-807a-75d60d5370ef",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-25T05:29:30.010Z",
+    "timestamp": "2026-09-25T05:38:38.244Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1827 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1828 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "97138cd86dbf69a851f92d3e0b2948db3621cfb8c3267545bc1f024d6c7f1233"
+          "content": "bb8a70c5b267741a4e6f089f138b0eea9f0041ef089738c3ef0caf67e744a969"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "117522"
+          "value": "117574"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6a30527a59f9cbcc05608c1901df6fec85268228360a34e89a632e1b15ed8dbc"
+          "content": "b8a07ee0002b97b7a0284d68400c0bbdd119ea87570d22209a289f92d459eb70"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "541151"
+          "value": "541368"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "dbfe24ab7dc548913c831b0ada278252dcf52a3cab0b6e4be34dbd2bc3cb864c"
+          "content": "5b7399e7152de3a798d8bff613ef14372b45f775989deee239c9fc5a42d56ca4"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "227678"
+          "value": "227805"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1330c5f045b34a921d6ddd0d950a6d989246db1bed627f0029ee506ca646ac94"
+          "content": "0b81f9434851fe3a057c51c70a04ada07fc9b521dc568a0c615b8183cbea414a"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "104740"
+          "value": "104798"
         }
       ]
     },
@@ -7385,6 +7385,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/hakki-valve-area-v1455.js",
+      "type": "file",
+      "name": "lib/hakki-valve-area-v1455.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "242a510a4a3baeb35fb298c9843018e92a3fb0525fffe9116be533a22178aa02"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2417"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/hamada-v439.js",
       "type": "file",
       "name": "lib/hamada-v439.js",
@@ -11276,7 +11297,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "92bcaa359e9b6a944124aaa7557e49723434fb82ad2b1a56b14874b22c258ceb"
+          "content": "0156eda97a1cda6192d95ba5d4f1824188b42de569ebd7e1f8c8d2f61a8e4e17"
         }
       ],
       "properties": [
@@ -11286,7 +11307,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2568090"
+          "value": "2568731"
         }
       ]
     },
@@ -27398,6 +27419,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/hakki-valve-area-v1455.js",
+      "type": "file",
+      "name": "mcp/adapters/hakki-valve-area-v1455.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4fff3ea06b494dc69c0622492e4ea01707e761bf26a761b129864da16d23a804"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "860"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/hamada-v439.js",
       "type": "file",
       "name": "mcp/adapters/hamada-v439.js",
@@ -39857,7 +39899,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ee435b0492026f0efae8e530457caa9fa12ee07a91a914af8efbb614b7245650"
+          "content": "29d39fef61f7a55d66d44ee76af41d49f8d3444b4e082c9b88d9f9c45d3d752b"
         }
       ],
       "properties": [
@@ -39867,7 +39909,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "104734"
+          "value": "104857"
         }
       ]
     },
@@ -42409,6 +42451,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2900"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1455.js",
+      "type": "file",
+      "name": "views/group-v1455.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "54465f5068f78d6f443468ef7c427ed5212ca9335d5c61dd3921e438d1fc143b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2639"
         }
       ]
     },
@@ -73777,6 +73840,7 @@
         "urn:sophiewell:file:source:lib/gvhd-v309.js",
         "urn:sophiewell:file:source:lib/gyn-v139.js",
         "urn:sophiewell:file:source:lib/haggitt-v332.js",
+        "urn:sophiewell:file:source:lib/hakki-valve-area-v1455.js",
         "urn:sophiewell:file:source:lib/hamada-v439.js",
         "urn:sophiewell:file:source:lib/hardman-v536.js",
         "urn:sophiewell:file:source:lib/hardy-adenoma-v391.js",
@@ -74532,6 +74596,7 @@
         "urn:sophiewell:file:source:views/group-v1452.js",
         "urn:sophiewell:file:source:views/group-v1453.js",
         "urn:sophiewell:file:source:views/group-v1454.js",
+        "urn:sophiewell:file:source:views/group-v1455.js",
         "urn:sophiewell:file:source:views/group-v146.js",
         "urn:sophiewell:file:source:views/group-v147.js",
         "urn:sophiewell:file:source:views/group-v148.js",
@@ -75588,6 +75653,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/gvhd-v309.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/gyn-v139.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/haggitt-v332.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/hakki-valve-area-v1455.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hamada-v439.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hardman-v536.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hardy-adenoma-v391.js",
@@ -76284,7 +76350,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "cfecace62e20ea91"
+      "value": "93f5f3da6f4d8d33"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -76296,7 +76362,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2732"
+      "value": "2735"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

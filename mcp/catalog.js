@@ -876,6 +876,7 @@ import raymondRoyV1451 from './adapters/raymond-roy-v1451.js';
 import pcAspectsV1452 from './adapters/pc-aspects-v1452.js';
 import maxIchV1453 from './adapters/max-ich-v1453.js';
 import powersRatioV1454 from './adapters/powers-ratio-v1454.js';
+import hakkiValveAreaV1455 from './adapters/hakki-valve-area-v1455.js';
 import nurseStaffingRatioCheckV1396 from './adapters/nurse-staffing-ratio-check-v1396.js';
 import caWpvReportClockV1396 from './adapters/ca-wpv-report-clock-v1396.js';
 import mandatoryOvertimeCheckV1396 from './adapters/mandatory-overtime-check-v1396.js';
@@ -1788,6 +1789,7 @@ const ADAPTER_MODULES = [
   ['pc-aspects-v1452', pcAspectsV1452],
   ['max-ich-v1453', maxIchV1453],
   ['powers-ratio-v1454', powersRatioV1454],
+  ['hakki-valve-area-v1455', hakkiValveAreaV1455],
   ['nurse-staffing-ratio-check-v1396', nurseStaffingRatioCheckV1396],
   ['ca-wpv-report-clock-v1396', caWpvReportClockV1396],
   ['mandatory-overtime-check-v1396', mandatoryOvertimeCheckV1396],

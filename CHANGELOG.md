@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Hakki valve area.** Estimates a stenotic aortic or mitral valve area as cardiac
+  output divided by the square root of the gradient, beside the full Gorlin tool and
+  with the same input limits. See docs/spec-v1455.md.
+
 - **Raymond-Roy occlusion classification.** Works out class I, II, IIIa or IIIb of a
   coiled aneurysm from where contrast fills on the follow-up angiogram, quotes the
   2015 recurrence comparison for IIIa and IIIb, and notes the scale does not fit
