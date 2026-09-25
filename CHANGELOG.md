@@ -6,6 +6,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Two new tools now ask for a blank measurement in words the site's checks read.**
+  The adult ETT depth tool answered from sex alone with "Add the height"; it now says
+  "Enter the height", and the blood 4-hour window says when no pump rate was entered.
+  See docs/spec-v1437.md.
+
+- **RCVS2 score.** Tells reversible cerebral vasoconstriction syndrome from other
+  intracranial arteriopathies (-2 to 10), with the derivation's specificity and
+  sensitivity at each cutoff and its bedside approach for the indeterminate 3 to 4.
+  See docs/spec-v1436.md.
+
 - **C2HEST score for new atrial fibrillation.** Scores the risk of incident AF (0 to 8)
   with its group and yearly rate from the derivation cohort, and declines to score a
   patient with structural heart disease, whom the derivation excluded as high risk.

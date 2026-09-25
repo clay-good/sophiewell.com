@@ -8806,6 +8806,17 @@
       ],
       "tile": "hatch-af",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "rcvs2",
+        "rcvs2 score",
+        "reversible cerebral vasoconstriction syndrome",
+        "thunderclap headache vasoconstriction",
+        "rcvs vs pacns"
+      ],
+      "tile": "rcvs2",
+      "audience": "clinicians"
     }
   ]
 }

@@ -858,6 +858,7 @@ import watsonSlacV1431 from './adapters/watson-slac-v1431.js';
 import disabilityRatingScaleV1433 from './adapters/disability-rating-scale-v1433.js';
 import c2hestV1434 from './adapters/c2hest-v1434.js';
 import hatchAfV1435 from './adapters/hatch-af-v1435.js';
+import rcvs2V1436 from './adapters/rcvs2-v1436.js';
 import nurseStaffingRatioCheckV1396 from './adapters/nurse-staffing-ratio-check-v1396.js';
 import caWpvReportClockV1396 from './adapters/ca-wpv-report-clock-v1396.js';
 import mandatoryOvertimeCheckV1396 from './adapters/mandatory-overtime-check-v1396.js';
@@ -1752,6 +1753,7 @@ const ADAPTER_MODULES = [
   ['disability-rating-scale-v1433', disabilityRatingScaleV1433],
   ['c2hest-v1434', c2hestV1434],
   ['hatch-af-v1435', hatchAfV1435],
+  ['rcvs2-v1436', rcvs2V1436],
   ['nurse-staffing-ratio-check-v1396', nurseStaffingRatioCheckV1396],
   ['ca-wpv-report-clock-v1396', caWpvReportClockV1396],
   ['mandatory-overtime-check-v1396', mandatoryOvertimeCheckV1396],

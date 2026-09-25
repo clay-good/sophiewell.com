@@ -8386,6 +8386,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/hatch-af-v1435.js (spec-v1435: HATCH atrial fibrillation progression score — clinical disclaimer)
 - `hatch-af`
 
+### lib/rcvs2-v1436.js (spec-v1436: RCVS2 reversible cerebral vasoconstriction score — clinical disclaimer)
+- `rcvs2`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 
