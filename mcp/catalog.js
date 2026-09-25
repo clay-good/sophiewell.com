@@ -877,6 +877,9 @@ import pcAspectsV1452 from './adapters/pc-aspects-v1452.js';
 import maxIchV1453 from './adapters/max-ich-v1453.js';
 import powersRatioV1454 from './adapters/powers-ratio-v1454.js';
 import hakkiValveAreaV1455 from './adapters/hakki-valve-area-v1455.js';
+import msuDiscHerniationV1468 from './adapters/msu-disc-herniation-v1468.js';
+import blackburnePeelV1469 from './adapters/blackburne-peel-v1469.js';
+import lateralCenterEdgeAngleV1470 from './adapters/lateral-center-edge-angle-v1470.js';
 import nurseStaffingRatioCheckV1396 from './adapters/nurse-staffing-ratio-check-v1396.js';
 import caWpvReportClockV1396 from './adapters/ca-wpv-report-clock-v1396.js';
 import mandatoryOvertimeCheckV1396 from './adapters/mandatory-overtime-check-v1396.js';
@@ -1790,6 +1793,9 @@ const ADAPTER_MODULES = [
   ['max-ich-v1453', maxIchV1453],
   ['powers-ratio-v1454', powersRatioV1454],
   ['hakki-valve-area-v1455', hakkiValveAreaV1455],
+  ['msu-disc-herniation-v1468', msuDiscHerniationV1468],
+  ['blackburne-peel-v1469', blackburnePeelV1469],
+  ['lateral-center-edge-angle-v1470', lateralCenterEdgeAngleV1470],
   ['nurse-staffing-ratio-check-v1396', nurseStaffingRatioCheckV1396],
   ['ca-wpv-report-clock-v1396', caWpvReportClockV1396],
   ['mandatory-overtime-check-v1396', mandatoryOvertimeCheckV1396],

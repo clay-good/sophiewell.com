@@ -8443,6 +8443,15 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/hakki-valve-area-v1455.js (spec-v1455: Hakki simplified valve area formula — clinical disclaimer)
 - `hakki-valve-area`
 
+### lib/msu-disc-herniation-v1468.js (spec-v1468: Michigan State University classification of lumbar disc herniation — clinical disclaimer)
+- `msu-disc-herniation`
+
+### lib/blackburne-peel-v1469.js (spec-v1469: Blackburne-Peel index of patellar height — clinical disclaimer)
+- `blackburne-peel`
+
+### lib/lateral-center-edge-angle-v1470.js (spec-v1470: lateral center-edge angle of Wiberg — clinical disclaimer)
+- `lateral-center-edge-angle`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

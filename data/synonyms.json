@@ -9015,6 +9015,40 @@
       ],
       "tile": "hakki-valve-area",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "msu classification",
+        "michigan state university classification",
+        "msu disc herniation",
+        "disc herniation size and location",
+        "herniated disc mri classification",
+        "intra-facet line"
+      ],
+      "tile": "msu-disc-herniation",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "blackburne-peel",
+        "blackburne peel index",
+        "blackburne-peel ratio",
+        "patellar height blackburne"
+      ],
+      "tile": "blackburne-peel",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "lateral center-edge angle",
+        "lateral centre-edge angle",
+        "lcea",
+        "center edge angle",
+        "wiberg angle",
+        "borderline hip dysplasia"
+      ],
+      "tile": "lateral-center-edge-angle",
+      "audience": "clinicians"
     }
   ]
 }

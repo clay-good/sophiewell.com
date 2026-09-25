@@ -6,6 +6,20 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **MSU classification of lumbar disc herniation.** Grades a herniation on one axial MRI
+  cut by how far it reaches toward the intra-facet line (size 1-3, from a chosen size
+  or two measurements) and where it intrudes furthest (zone A, AB, B or C). See
+  docs/spec-v1468.md.
+
+- **Blackburne-Peel index of patellar height.** Beside Caton-Deschamps and
+  Insall-Salvati. Sources publish two sets of cutoffs, so the answer reads the ratio
+  against both and says where they disagree. See docs/spec-v1469.md.
+
+- **Lateral center-edge angle of Wiberg.** Reads the angle against the normal range
+  (25 to 39 degrees), dysplasia (under 20) and borderline dysplasia, which is defined
+  two ways (20 to 25 or 18 to 25 degrees); between 18 and 20 it gives both readings.
+  See docs/spec-v1470.md.
+
 - **A home-signed New York health care proxy is no longer flagged for a psychiatric
   witness.** Witness rules that bind only OMH and OPWDD residents were applied to
   everyone who answered them. Also: the California NP tracker says when its 104 date
