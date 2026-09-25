@@ -9139,6 +9139,17 @@
       ],
       "tile": "periodontitis-stage-grade",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "basic periodontal examination",
+        "bpe",
+        "bpe score",
+        "periodontal screening",
+        "bpe code"
+      ],
+      "tile": "bpe-periodontal",
+      "audience": "clinicians"
     }
   ]
 }

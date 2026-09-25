@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:49f049c3-c0a3-5f5a-8d7c-b4d2305ea54a",
+  "serialNumber": "urn:uuid:7d94b08c-09d3-5b0e-8820-757ba87e2f09",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-25T11:24:30.087Z",
+    "timestamp": "2026-09-25T11:41:29.403Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1838 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1839 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8ebdfb8d63a2bac4a00c1f2d7eb63a00e923cb29c9131cf51352333fcbb18d37"
+          "content": "fb787cbcc4f6f0335e29d62e9df095d552003eb6a9f291ef1bf5520800bc249c"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "118173"
+          "value": "118224"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b5a83a7be52be5d519391a41468a1f8f59075168d3420eb36ae9a67f521a8983"
+          "content": "ffbf9eb532ae1d151b7ebbf34fec504b30cb4d234178c5f0cbfe28dd109a3fe5"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "543648"
+          "value": "543863"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2db66572d250a916444fade436778e886ae599d13e56c8d50edb87ef47f93b15"
+          "content": "53203da727597ed2dd6142631c7c52519eaa8d0ac954f1b1c0812647e43be92c"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "229070"
+          "value": "229196"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7fe8ab7fe056b6fe3a1982700c1aa744942a536af79384e5e585e0461f35f70e"
+          "content": "eac7e097dca36e74eb71f1c432ccca94e09d56ead4e4698c42e461387462fe5e"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "105452"
+          "value": "105508"
         }
       ]
     },
@@ -2299,6 +2299,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "6552"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/bpe-periodontal-v1481.js",
+      "type": "file",
+      "name": "lib/bpe-periodontal-v1481.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c633bd68826107e537eb99ecfd74d1a007c33e7bdf76d623fe170df1e0816585"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4402"
         }
       ]
     },
@@ -11423,7 +11444,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "03b2db9516f98b9b45d917e835a0e0bdd5d6eb48e5f2b9747eaeb4883df066e6"
+          "content": "e0ffd00ad4b4adb246cf970f48c1b29aefd06ab965c55d37c54dbcb66c4f2a96"
         }
       ],
       "properties": [
@@ -11433,7 +11454,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2578582"
+          "value": "2579296"
         }
       ]
     },
@@ -22774,6 +22795,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1125"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/bpe-periodontal-v1481.js",
+      "type": "file",
+      "name": "mcp/adapters/bpe-periodontal-v1481.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5a8672e386e4a4a5d4ff86cba1aed7be0c28cbf253277178b404aaa1cdfbe7d7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1335"
         }
       ]
     },
@@ -40319,7 +40361,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "16c53a7cdb3ac04e09f8eadf47114ac7dbc544aa95777905ec1c4750a2e68b56"
+          "content": "de4932d36a218adfb0ab95b4172dbb7006899a86d6b004c6adbe6a9acc7ff6ee"
         }
       ],
       "properties": [
@@ -40329,7 +40371,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "106077"
+          "value": "106198"
         }
       ]
     },
@@ -43165,6 +43207,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4514"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1481.js",
+      "type": "file",
+      "name": "views/group-v1481.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4a3659b87236fec9406d736ad252e293ac65c4bd29824351ff674a3edce83ecf"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2885"
         }
       ]
     },
@@ -74228,6 +74291,7 @@
         "urn:sophiewell:file:source:lib/bounds.js",
         "urn:sophiewell:file:source:lib/boyd-griffin-v458.js",
         "urn:sophiewell:file:source:lib/bp-categories-v843.js",
+        "urn:sophiewell:file:source:lib/bpe-periodontal-v1481.js",
         "urn:sophiewell:file:source:lib/brackets.js",
         "urn:sophiewell:file:source:lib/brodsky-tonsil-v388.js",
         "urn:sophiewell:file:source:lib/bromage-scale-v467.js",
@@ -75250,6 +75314,7 @@
         "urn:sophiewell:file:source:views/group-v1479.js",
         "urn:sophiewell:file:source:views/group-v148.js",
         "urn:sophiewell:file:source:views/group-v1480.js",
+        "urn:sophiewell:file:source:views/group-v1481.js",
         "urn:sophiewell:file:source:views/group-v149.js",
         "urn:sophiewell:file:source:views/group-v15.js",
         "urn:sophiewell:file:source:views/group-v151.js",
@@ -76072,6 +76137,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/borrmann-gastric-v394.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/boyd-griffin-v458.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/bp-categories-v843.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/bpe-periodontal-v1481.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/brodsky-tonsil-v388.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/bromage-scale-v467.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/brooker-v452.js",
@@ -77010,7 +77076,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "49f049c3c0a38f5a"
+      "value": "7d94b08c09d36b0e"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -77022,7 +77088,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2765"
+      "value": "2768"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

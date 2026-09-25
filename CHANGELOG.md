@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Basic Periodontal Examination (BPE).** The periodontal screen: the highest code across
+  six sextants, where it was found, and the charting it calls for. A sextant left blank is
+  not read as 0. See docs/spec-v1481.md.
+
 - **Periodontitis staging and grading.** The 2017 World Workshop classification: stage I
   to IV from attachment or bone loss, raised by tooth loss and complexity, and grade A to C
   from progression, raised by smoking and HbA1c. Where the published tables differ, it says

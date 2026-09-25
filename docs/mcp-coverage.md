@@ -8473,6 +8473,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/periodontitis-stage-grade-v1480.js (spec-v1480: periodontitis staging and grading (2017 World Workshop) — clinical disclaimer)
 - `periodontitis-stage-grade`
 
+### lib/bpe-periodontal-v1481.js (spec-v1481: Basic Periodontal Examination codes — clinical disclaimer)
+- `bpe-periodontal`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 
