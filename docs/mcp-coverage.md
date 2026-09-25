@@ -8425,6 +8425,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/collin-rc-v1449.js (spec-v1449: Collin classification of massive rotator cuff tears — clinical disclaimer)
 - `collin-rc`
 
+### lib/cognard-davf-v1450.js (spec-v1450: Cognard classification of dural arteriovenous fistulas — clinical disclaimer)
+- `cognard-davf`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

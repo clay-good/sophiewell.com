@@ -8949,6 +8949,17 @@
       ],
       "tile": "collin-rc",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "cognard",
+        "cognard classification",
+        "cognard type",
+        "dural fistula venous drainage",
+        "davf cortical venous drainage"
+      ],
+      "tile": "cognard-davf",
+      "audience": "clinicians"
     }
   ]
 }

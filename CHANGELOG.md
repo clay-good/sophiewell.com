@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Cognard classification of dural AV fistulas.** Derives the Cognard type (I to V)
+  from the venous drainage on angiography, beside the existing Borden tool, and
+  separates the benign group without cortical venous drainage from the aggressive
+  group with it. See docs/spec-v1450.md.
+
 - **Collin classification of massive rotator cuff tears.** Derives type A to E from
   which of five cuff components are torn, and reports a combination that matches no
   type rather than forcing one. See docs/spec-v1449.md.
