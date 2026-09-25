@@ -46,3 +46,11 @@ test('guards zero / blank / negative inputs', () => {
   assert.equal(digifabDosing({ mode: 'level', weight: 70 }).valid, false);
   assert.equal(digifabDosing({ mode: 'amount', amount: -5 }).valid, false);
 });
+
+test('spec-v1467: a blank empiric setting is asked for, never dosed as acute', () => {
+  const r = digifabDosing({ mode: 'empiric' });
+  assert.equal(r.valid, false);
+  assert.match(r.band, /^Choose the empiric setting: the dose is 10-20 vials for an acute ingestion and 3-6 vials for chronic toxicity/);
+  assert.equal(digifabDosing({ mode: 'empiric', timing: 'subacute' }).valid, false);
+  assert.equal(digifabDosing({ mode: 'level', level: 4.5, weight: 70 }).valid, true, 'the setting is not needed outside empiric dosing');
+});

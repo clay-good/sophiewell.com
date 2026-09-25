@@ -106,3 +106,10 @@ test('spec-v1076: a blank headache-days count does not rule tension-type out', (
   assert.match(blank.band, /ruled out/);
   assert.notEqual(blank.band, entered.band, 'not measured must not read as not met');
 });
+
+test('spec-v1467: a diagnosis resting on a blank nausea says it was counted as none', () => {
+  const r = tth({ ...episodic, headacheDaysPerMonth: 8 });
+  assert.deepEqual(r.diagnoses, ['2.2 Frequent episodic tension-type headache']);
+  assert.match(r.band, /No nausea severity was entered, so it was counted as none/);
+  assert.doesNotMatch(tth({ ...episodic, nausea: 'none', headacheDaysPerMonth: 8 }).band, /was entered/);
+});

@@ -75,6 +75,17 @@ test('hcp: OMH hospital needs a psychiatric witness; a related employee may serv
   assert.equal(hcp({ ...base, agentRole: 'staff' }).valid, false);
 });
 
+test('hcp (spec-v1467): a witness rule outside its setting is not a defect', () => {
+  const home = { facility: 'none', signedDated: 'yes', twoWitnesses: 'yes', agentWitnessed: 'no' };
+  assert.equal(hcp({ ...home, psychWitness: 'no', unaffiliated: 'no', opwddClinician: 'no' }).defects.length, 0);
+  const omh = { facility: 'omh', signedDated: 'yes', twoWitnesses: 'yes', agentWitnessed: 'no', agentRole: 'none', unaffiliated: 'yes' };
+  assert.equal(hcp({ ...omh, psychWitness: 'no' }).defects.length, 0, 'the psychiatric witness binds an OMH facility that is also a hospital');
+  assert.equal(hcp({ ...omh, unaffiliated: 'no' }).defects.length, 1);
+  const opwdd = { ...omh, facility: 'opwdd', opwddClinician: 'yes' };
+  assert.equal(hcp({ ...opwdd, opwddClinician: 'no' }).defects.length, 1);
+  assert.equal(hcp({ ...opwdd, psychWitness: 'no' }).defects.length, 0);
+});
+
 test('molst: a person with I/DD, no capacity, no proxy gets the OPWDD checklist', () => {
   const r = molst({ age: 'adult', dd: 'yes', capacity: 'no', proxy: 'no' });
   assert.equal(r.checklist, 'opwdd');

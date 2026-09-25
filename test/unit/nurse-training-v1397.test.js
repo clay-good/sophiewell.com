@@ -98,3 +98,14 @@ test('nlt: CA note -- first-two-years implicit-bias hour; NP gerontology share',
   assert.doesNotMatch(rn.note, /25%/);
   assert.match(nlt({ state: 'CA', license: 'NP', hours: '30' }).note, /more than 25% aged 65 or older/);
 });
+
+test('ca-np (spec-v1467): a projected 104 date names the requirements that were not entered', () => {
+  const base = { asOf: '2026-09-18', ttpStart: '2022-07-01', boardExam: 'yes', nationalCert: 'yes', education: 'yes' };
+  const r = np({ ...base, degree: 'yes' });
+  assert.equal(r.status104, 'pending');
+  assert.match(r.band, /This date assumes an active California RN license, which was not entered\./);
+  const both = np(base);
+  assert.match(both.band, /This date assumes an active California RN license and the qualifying degree, which were not entered\./);
+  assert.doesNotMatch(np({ ...base, degree: 'yes', rnActive: 'yes' }).band, /not entered/);
+  assert.equal(np({ ...base, degree: 'yes', rnActive: 'no' }).status104, 'not-eligible');
+});

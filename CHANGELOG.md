@@ -6,6 +6,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **A home-signed New York health care proxy is no longer flagged for a psychiatric
+  witness.** Witness rules that bind only OMH and OPWDD residents were applied to
+  everyone who answered them. Also: the California NP tracker says when its 104 date
+  assumes an RN license or degree nobody entered; a tension-type headache diagnosis
+  says when "no nausea" was assumed; and DigiFab asks acute or chronic instead of
+  dosing an acute ingestion. See docs/spec-v1467.md.
+
 - **PCI surgery timing no longer assumes a drug-eluting stent.** Asked through the
   agent surface with no procedure, it opened "120 days after drug-eluting stent". It
   now asks whenever the procedure changes the answer. See docs/spec-v1466.md.
