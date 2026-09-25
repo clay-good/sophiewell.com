@@ -8773,6 +8773,17 @@
       ],
       "tile": "watson-slac",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "disability rating scale",
+        "drs brain injury",
+        "rappaport disability rating",
+        "coma to community scale",
+        "tbi disability rating"
+      ],
+      "tile": "disability-rating-scale",
+      "audience": "clinicians"
     }
   ]
 }

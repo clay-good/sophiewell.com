@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:e5875488-f22f-5723-8621-8c7e6e9a9f78",
+  "serialNumber": "urn:uuid:2aafc450-1b80-5471-811a-b0e15b6584d6",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-25T01:38:16.325Z",
+    "timestamp": "2026-09-25T01:48:02.765Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1806 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1807 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0c95bc6e4fc63bc1dd90ac2b15c66b1b604526d16b4f78953865f7065fd33f94"
+          "content": "3f2d3f9d23383c0ee92f2bad2dfba498bdb3fdc0abd72722ea3f0bd9931789fa"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "116248"
+          "value": "116307"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2fd568d10ae45e37a11332e9a9ad77ba5cbe9e160de8b81f27f00cf91b24ac9a"
+          "content": "e16a45879903ed34d5c4d55e8200db3a064aafab1e4870e8b81a76506936c8e7"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "536510"
+          "value": "536741"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "46ae7e3d6e47217fa8d0ed803a1e5c7766fe269076e160111dcccf3debca9717"
+          "content": "e377789cfa63f8900367217190b2a2a3a7bc423968433c7fc4e25b22f3483891"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "225109"
+          "value": "225243"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9b9740848eb72fc5092e490356d67253140e5470ee44f430bbc57e0994da5104"
+          "content": "2136cf6b157b50f5bff99f31683ee500f89d7cd7c0ea4efccd80ddf3ae7b42aa"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "103438"
+          "value": "103510"
         }
       ]
     },
@@ -4714,6 +4714,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4101"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/disability-rating-scale-v1433.js",
+      "type": "file",
+      "name": "lib/disability-rating-scale-v1433.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "28ea1f4f22462fdc886205a3f09e88020ae541b73f2d1a5f9d067a97c88eefdb"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5639"
         }
       ]
     },
@@ -11024,7 +11045,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3ca693dfb785ad3df20925585bc674d63a4a4998277140b067d42f4aa982a4e3"
+          "content": "bb713465bc07d86392c7bf934a8d6b97f91e817aa642dee76d2a2a2632f7acd5"
         }
       ],
       "properties": [
@@ -11034,7 +11055,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2549145"
+          "value": "2550174"
         }
       ]
     },
@@ -24412,6 +24433,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2330"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/disability-rating-scale-v1433.js",
+      "type": "file",
+      "name": "mcp/adapters/disability-rating-scale-v1433.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "cd8d9a4c5309f579a904cc370cdbae743731fb2f555b19abd9cbc9a3ec08a487"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1788"
         }
       ]
     },
@@ -38975,7 +39017,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b9ad5b4a76967778ca09b8874148e85971471c8462750e2ab2e2692a21d46a9a"
+          "content": "ff8c61743c3b0bd547489c760c5ae9e7fa9ff97ed9990d7fa344a86c537f38b4"
         }
       ],
       "properties": [
@@ -38985,7 +39027,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "102497"
+          "value": "102648"
         }
       ]
     },
@@ -41044,6 +41086,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2496"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1433.js",
+      "type": "file",
+      "name": "views/group-v1433.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7e9a3500b48567440d0db9a00550c2d3478a047923e242ea02e20f7cc3471a42"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3136"
         }
       ]
     },
@@ -72327,6 +72390,7 @@
         "urn:sophiewell:file:source:lib/diabetes-diagnosis-v841.js",
         "urn:sophiewell:file:source:lib/diastolic-function-ase-v664.js",
         "urn:sophiewell:file:source:lib/dimeglio-clubfoot-v387.js",
+        "urn:sophiewell:file:source:lib/disability-rating-scale-v1433.js",
         "urn:sophiewell:file:source:lib/dive-v257.js",
         "urn:sophiewell:file:source:lib/dka-resolution-v905.js",
         "urn:sophiewell:file:source:lib/dme-v307.js",
@@ -73165,6 +73229,7 @@
         "urn:sophiewell:file:source:views/group-v143.js",
         "urn:sophiewell:file:source:views/group-v1430.js",
         "urn:sophiewell:file:source:views/group-v1431.js",
+        "urn:sophiewell:file:source:views/group-v1433.js",
         "urn:sophiewell:file:source:views/group-v144.js",
         "urn:sophiewell:file:source:views/group-v145.js",
         "urn:sophiewell:file:source:views/group-v146.js",
@@ -74102,6 +74167,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/diabetes-diagnosis-v841.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/diastolic-function-ase-v664.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dimeglio-clubfoot-v387.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/disability-rating-scale-v1433.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dive-v257.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dka-resolution-v905.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dme-v307.js",
@@ -74898,7 +74964,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "e5875488f22f7723"
+      "value": "2aafc4501b80b471"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -74910,7 +74976,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2669"
+      "value": "2672"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

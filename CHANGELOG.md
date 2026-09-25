@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Disability Rating Scale for brain injury.** A new tool totals the DRS (0 to 29)
+  from coma to community, gives its descriptive category with the source's note that
+  the categories were never derived statistically, and asks for every item instead
+  of reading a blank as 0. See docs/spec-v1433.md.
+
 - **Three new tools now say when they are working around a blank.** The blood
   4-hour window names its assumption when no spiking time is entered, HVPG says when
   the cause of liver disease is blank, and the AOSpine sacral tool asks for the

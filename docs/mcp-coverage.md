@@ -8377,6 +8377,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/watson-slac-v1431.js (spec-v1431: Watson-Ballet SLAC wrist stages — clinical disclaimer)
 - `watson-slac`
 
+### lib/disability-rating-scale-v1433.js (spec-v1433: Disability Rating Scale for brain injury — clinical disclaimer)
+- `disability-rating-scale`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 
