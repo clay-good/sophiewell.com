@@ -9150,6 +9150,27 @@
       ],
       "tile": "bpe-periodontal",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "cairo recession",
+        "cairo classification",
+        "recession type rt1",
+        "gingival recession type"
+      ],
+      "tile": "cairo-recession",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "ohi-s",
+        "simplified oral hygiene index",
+        "greene vermillion",
+        "oral hygiene index",
+        "debris index calculus index"
+      ],
+      "tile": "ohi-s",
+      "audience": "clinicians"
     }
   ]
 }

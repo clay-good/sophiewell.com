@@ -888,6 +888,8 @@ import asasIbpV1476 from './adapters/asas-ibp-v1476.js';
 import robinsonClavicleV1479 from './adapters/robinson-clavicle-v1479.js';
 import periodontitisStageGradeV1480 from './adapters/periodontitis-stage-grade-v1480.js';
 import bpePeriodontalV1481 from './adapters/bpe-periodontal-v1481.js';
+import cairoRecessionV1482 from './adapters/cairo-recession-v1482.js';
+import ohiSV1483 from './adapters/ohi-s-v1483.js';
 import nurseStaffingRatioCheckV1396 from './adapters/nurse-staffing-ratio-check-v1396.js';
 import caWpvReportClockV1396 from './adapters/ca-wpv-report-clock-v1396.js';
 import mandatoryOvertimeCheckV1396 from './adapters/mandatory-overtime-check-v1396.js';
@@ -1812,6 +1814,8 @@ const ADAPTER_MODULES = [
   ['robinson-clavicle-v1479', robinsonClavicleV1479],
   ['periodontitis-stage-grade-v1480', periodontitisStageGradeV1480],
   ['bpe-periodontal-v1481', bpePeriodontalV1481],
+  ['cairo-recession-v1482', cairoRecessionV1482],
+  ['ohi-s-v1483', ohiSV1483],
   ['nurse-staffing-ratio-check-v1396', nurseStaffingRatioCheckV1396],
   ['ca-wpv-report-clock-v1396', caWpvReportClockV1396],
   ['mandatory-overtime-check-v1396', mandatoryOvertimeCheckV1396],

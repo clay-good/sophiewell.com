@@ -6,6 +6,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Cairo classification of gingival recession.** RT1 to RT3 from the interproximal and
+  buccal attachment loss, beside the Miller classification. See docs/spec-v1482.md.
+
+- **Simplified Oral Hygiene Index (OHI-S).** Debris plus calculus scores over the six
+  index teeth, read as good, fair or poor; a tooth left blank is not read as 0. See
+  docs/spec-v1483.md.
+
 - **Basic Periodontal Examination (BPE).** The periodontal screen: the highest code across
   six sextants, where it was found, and the charting it calls for. A sextant left blank is
   not read as 0. See docs/spec-v1481.md.

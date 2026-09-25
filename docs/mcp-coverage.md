@@ -8476,6 +8476,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/bpe-periodontal-v1481.js (spec-v1481: Basic Periodontal Examination codes — clinical disclaimer)
 - `bpe-periodontal`
 
+### lib/cairo-recession-v1482.js (spec-v1482: Cairo classification of gingival recession — clinical disclaimer)
+- `cairo-recession`
+
+### lib/ohi-s-v1483.js (spec-v1483: Greene-Vermillion Simplified Oral Hygiene Index — clinical disclaimer)
+- `ohi-s`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 
