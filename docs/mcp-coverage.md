@@ -8521,6 +8521,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/turesky-plaque-v1496.js (spec-v1496: Turesky modified Quigley-Hein plaque index — clinical disclaimer)
 - `turesky-plaque`
 
+### lib/veau-cleft-v1497.js (spec-v1497: Veau classification of cleft palate — clinical disclaimer)
+- `veau-cleft`
+
+### lib/essex-lopresti-calcaneal-v1498.js (spec-v1498: Essex-Lopresti calcaneal fracture types — clinical disclaimer)
+- `essex-lopresti-calcaneal`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

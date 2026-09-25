@@ -6,6 +6,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Veau Cleft Palate Class.** Class I to IV from how far the palate is cleft and whether the cleft runs
+  through the lip and alveolus. See docs/spec-v1497.md.
+
+- **Essex-Lopresti Calcaneal Fracture.** Extra-articular, tongue-type or joint-depression from where the
+  fracture lines run, beside the Sanders CT classes. See docs/spec-v1498.md.
+
 - **Kotlow Ankyloglossia Class.** Class I to IV from the free tongue length; a length between the
   whole-mm ranges is reported as between two classes. See docs/spec-v1494.md.
 

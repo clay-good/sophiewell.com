@@ -1515,7 +1515,6 @@
       "phrases": [
         "sanders classification",
         "sanders",
-        "calcaneal fracture type",
         "calcaneus fracture classification",
         "sanders calcaneal",
         "heel bone fracture classification",
@@ -9312,6 +9311,28 @@
         "quigley-hein plaque index"
       ],
       "tile": "turesky-plaque",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "veau",
+        "veau classification",
+        "cleft palate",
+        "cleft lip and palate",
+        "cleft palate class"
+      ],
+      "tile": "veau-cleft",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "essex-lopresti",
+        "tongue-type fracture",
+        "joint depression fracture",
+        "tongue type calcaneus",
+        "os calcis fracture"
+      ],
+      "tile": "essex-lopresti-calcaneal",
       "audience": "clinicians"
     }
   ]
