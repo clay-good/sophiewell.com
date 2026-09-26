@@ -9499,6 +9499,39 @@
       ],
       "tile": "quantity-limit-check",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "part b late penalty",
+        "part b late enrollment penalty",
+        "medicare part b penalty",
+        "late enrollment penalty part b",
+        "part b premium penalty"
+      ],
+      "tile": "partb-late-penalty",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "part d late penalty",
+        "part d late enrollment penalty",
+        "drug plan penalty",
+        "creditable coverage gap",
+        "63 day gap"
+      ],
+      "tile": "partd-late-penalty",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "cobra deadline",
+        "cobra election period",
+        "cobra end date",
+        "cobra 18 months",
+        "cobra notice deadline"
+      ],
+      "tile": "cobra-clock",
+      "audience": "clinicians"
     }
   ]
 }

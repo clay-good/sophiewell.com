@@ -6,6 +6,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Part B Late Enrollment Penalty.** 10% for each full 12 months late on the year's standard premium ($202.90 in
+  2026); a year with no published premium asks for it. See docs/spec-v1507.md.
+
+- **Part D Late Enrollment Penalty.** From the gaps in drug coverage: only gaps of 63 days or more count, 1% of the
+  base premium per full uncovered month, rounded to the nearest 10 cents. See docs/spec-v1507.md.
+
+- **COBRA Deadlines and End Date.** Employer and administrator notices, the 60-day election, the 45-day first
+  payment, and coverage to 18, 29 or 36 months. See docs/spec-v1507.md.
+
 - **Authorization Run-Out and Renewal Date.** When an approval runs out, by its end date or by its units at
   the current schedule, and the date to submit the renewal. See docs/spec-v1502.md.
 

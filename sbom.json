@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:005bca2c-c978-544f-812b-e7577b6b60f7",
+  "serialNumber": "urn:uuid:126cce05-fbc3-5a21-89af-7f2ae55ee110",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-26T02:04:05.952Z",
+    "timestamp": "2026-09-26T02:45:20.798Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1871 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1874 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1c32215be9087bd969adbb02c0a89f21214685408673cdc708468827bc5003a2"
+          "content": "6abb6650d0c80652c62f00ddf4c26f677f493f1ed4606a9c6df3797afda113e0"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "119729"
+          "value": "119865"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4d5cccbc3857f072c3fa58c88d2b6ad62e0ae7239c97883511f6272fb2d5898a"
+          "content": "2b7d0e4c0f978a9af13a7be90289d5d0fedba2a8f063fe77d7551dc433423d9f"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "550207"
+          "value": "550724"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c2320157e5842226d41cd335848988fe8235c0c3b47c78a0f4173bca5f5369d2"
+          "content": "930366d21ae5d2a83b677652ef2e0eec61b14b6ad591262e7c7a13d4ba6089e7"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "233280"
+          "value": "233660"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7609a004f7e3d8e03cd587934ba073d9248538c0c08443bddce0c2b696dd68ad"
+          "content": "e5384c55904d0f3e82db91be91896da13641f20b4288a13cfaa957b74303e8b9"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "107225"
+          "value": "107378"
         }
       ]
     },
@@ -4084,6 +4084,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3885"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/cobra-clock-v1507.js",
+      "type": "file",
+      "name": "lib/cobra-clock-v1507.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9c0da34f622082ea8a1552d25fee53fd7422eef3b415df2fba3ca500392af162"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5721"
         }
       ]
     },
@@ -11669,6 +11690,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/medicare-penalties-v1507.js",
+      "type": "file",
+      "name": "lib/medicare-penalties-v1507.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7e9e71e784c5ac7f0a8ee39145e125ba570308a665eb386842c64f5fe437c54d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8479"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/medication-v4.js",
       "type": "file",
       "name": "lib/medication-v4.js",
@@ -11801,7 +11843,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f2e27b6c80bdb249e286701471e9385d9c09280c6c9f85391ff6fa570e4b83d1"
+          "content": "4b955813f6a3f7b0eedd2513aa16fe7e2b14e4430195bb8272232622cb549704"
         }
       ],
       "properties": [
@@ -11811,7 +11853,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2606721"
+          "value": "2608787"
         }
       ]
     },
@@ -14657,7 +14699,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "67f6a9b04afae776ac977afa9ed3c43cc3db4738b823eb0b227c2746f181a67b"
+          "content": "9ec91cf0a05102f0530b860e5c53daf96f83810ceb34d93ebb657f83a0261760"
         }
       ],
       "properties": [
@@ -14667,7 +14709,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "68612"
+          "value": "69155"
         }
       ]
     },
@@ -25193,6 +25235,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/cobra-clock-v1507.js",
+      "type": "file",
+      "name": "mcp/adapters/cobra-clock-v1507.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "02d860e27e2b6036014b84972eb88c7e29f88272b5976b02aab9fefddc9e0c89"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1363"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/coding-v5.js",
       "type": "file",
       "name": "mcp/adapters/coding-v5.js",
@@ -32413,6 +32476,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1570"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/medicare-penalties-v1507.js",
+      "type": "file",
+      "name": "mcp/adapters/medicare-penalties-v1507.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7fd65f05afff7e2cb672e068f38d8a9f14a998d5ea9be8dae068c501adac2cfe"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2104"
         }
       ]
     },
@@ -41642,7 +41726,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1af1dd564914e690389f7647ba8e1e8b8e64104e92fd0a3c95f28bfffe639d8a"
+          "content": "7f2f71d2f6bfc6a647e02646659ae074d94466c7c292ce766dc2144352116ff1"
         }
       ],
       "properties": [
@@ -41652,7 +41736,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "109854"
+          "value": "110092"
         }
       ]
     },
@@ -44971,6 +45055,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "10845"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1507.js",
+      "type": "file",
+      "name": "views/group-v1507.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0f9bf259bb43fc0acdd13ccb856b36735497dae59e160ca06633ec88358add32"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5611"
         }
       ]
     },
@@ -76140,6 +76245,7 @@
         "urn:sophiewell:file:source:lib/cluster-headache-ichd3-v814.js",
         "urn:sophiewell:file:source:lib/coagscore-v232.js",
         "urn:sophiewell:file:source:lib/cobb-angle-v694.js",
+        "urn:sophiewell:file:source:lib/cobra-clock-v1507.js",
         "urn:sophiewell:file:source:lib/coding-v5.js",
         "urn:sophiewell:file:source:lib/cognard-davf-v1450.js",
         "urn:sophiewell:file:source:lib/cohens-kappa-v922.js",
@@ -76501,6 +76607,7 @@
         "urn:sophiewell:file:source:lib/mda-psoriatic-v672.js",
         "urn:sophiewell:file:source:lib/measles-case-def-v872.js",
         "urn:sophiewell:file:source:lib/medicaid-appeal-clock-v1503.js",
+        "urn:sophiewell:file:source:lib/medicare-penalties-v1507.js",
         "urn:sophiewell:file:source:lib/medication-v4.js",
         "urn:sophiewell:file:source:lib/medication-v5.js",
         "urn:sophiewell:file:source:lib/meld3-v678.js",
@@ -77132,6 +77239,7 @@
         "urn:sophiewell:file:source:views/group-v15.js",
         "urn:sophiewell:file:source:views/group-v1502.js",
         "urn:sophiewell:file:source:views/group-v1503.js",
+        "urn:sophiewell:file:source:views/group-v1507.js",
         "urn:sophiewell:file:source:views/group-v151.js",
         "urn:sophiewell:file:source:views/group-v152.js",
         "urn:sophiewell:file:source:views/group-v153.js",
@@ -78038,6 +78146,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/cluster-headache-ichd3-v814.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/coagscore-v232.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cobb-angle-v694.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/cobra-clock-v1507.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/coding-v5.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cognard-davf-v1450.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cohens-kappa-v922.js",
@@ -78382,6 +78491,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/mda-psoriatic-v672.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/measles-case-def-v872.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/medicaid-appeal-clock-v1503.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/medicare-penalties-v1507.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/medication-v4.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/medication-v5.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/meld3-v678.js",
@@ -78924,7 +79034,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "005bca2cc978a44f"
+      "value": "126cce05fbc3aa21"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -78936,7 +79046,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2852"
+      "value": "2857"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

@@ -39,7 +39,8 @@ test('route-B rows point at a real staleness-ledger row', async () => {
   const ledger = JSON.parse(readFileSync(new URL('../../pa-staleness-ledger.json', import.meta.url), 'utf8'));
   const ids = new Set(ledger.sources.map((s) => s.id));
   const { DATED_AIC } = await import('../../lib/partd-appeals-v1503.js');
-  for (const [id, row] of Object.entries({ ...DATED, ...DATED_AIC })) {
+  const { DATED_PREMIUMS } = await import('../../lib/medicare-penalties-v1507.js');
+  for (const [id, row] of Object.entries({ ...DATED, ...DATED_AIC, ...DATED_PREMIUMS })) {
     if (row.route === 'B') assert.ok(ids.has(row.ledgerId), `${id}: ledger row ${row.ledgerId} is missing`);
   }
 });

@@ -10256,6 +10256,13 @@
           "lastVerified": "2026-06-10"
         },
         {
+          "id": "medicare-partd-base-premium",
+          "label": "Part D national base beneficiary premium, per calendar year: 2026 $38.99 (Medicare.gov Part D costs, with the nearest-$0.10 rounding), 2027 $41.33 (CMS, July 28, 2026), backing partd-late-penalty",
+          "url": "https://www.cms.gov/newsroom/fact-sheets/medicare-part-d-2027-national-average-monthly-bid-amount-information",
+          "ruleFamily": "ops-v63",
+          "lastVerified": "2026-09-26"
+        },
+        {
           "id": "ops-medicare-aic",
           "label": "Medicare appeal amount-in-controversy thresholds, set per calendar year of filing (CY2026: ALJ $200, federal court $1,960, Fed Reg 2025-21879; CY2027: ALJ $200, federal court $2,000, Fed Reg 2026-19016) backing appeal-deadline, partd-appeal-ladder and ma-appeal-ladder",
           "url": "https://www.federalregister.gov/documents/2025/12/04/2025-21879/medicare-program-medicare-appeals-adjustment-to-the-amount-in-controversy-threshold-amounts-for",
@@ -10418,7 +10425,7 @@
         },
         {
           "id": "billing-medicare-cost-share",
-          "label": "The CMS CY2026 Medicare cost-sharing amounts (announced 2025-11-14) backing medicare-cost-share: Part A inpatient deductible $1,736/benefit period, days 61-90 coinsurance $434/day, lifetime-reserve $868/day, SNF days 21-100 $217/day; Part B annual deductible $283 then 20% of the approved amount. SSA Title XVIII; CMS annual cost-sharing notice. Overridable per call for a prior year.",
+          "label": "The CMS CY2026 Medicare cost-sharing amounts (announced 2025-11-14) backing medicare-cost-share: Part A inpatient deductible $1,736/benefit period, days 61-90 coinsurance $434/day, lifetime-reserve $868/day, SNF days 21-100 $217/day; Part B annual deductible $283 then 20% of the approved amount; Part B standard premium $202.90 (backing partb-late-penalty). SSA Title XVIII; CMS annual cost-sharing notice. Overridable per call for a prior year.",
           "url": "https://www.cms.gov/newsroom/fact-sheets/2026-medicare-parts-b-premiums-deductibles",
           "ruleFamily": "billing-v82",
           "lastVerified": "2026-06-15"

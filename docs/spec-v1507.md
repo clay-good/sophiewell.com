@@ -160,3 +160,20 @@ CMS-2454-IFC (91 FR, June 3, 2026).
 - `magi-household`: a child claimed by a non-custodial parent falls to the non-filer
   rules; a married couple is always in each other's household.
 - `medicaid-work-requirement-check`: 79 hours in a month fails; $580 of income passes.
+
+## Build status
+
+- **Built 2026-09-26:** `partb-late-penalty`, `partd-late-penalty`, `cobra-clock`.
+  - The premiums go through the dated-value accessor ([spec-v1501](spec-v1501.md) §2) and are chosen by
+    the year asked about: a year with no published figure asks for it, so the tools fail closed on
+    January 1. Verified: $202.90 (CMS 2026 Parts A and B fact sheet), $38.99 and the nearest-$0.10
+    rounding (Medicare.gov), $41.33 (CMS, July 28, 2026). Ledger: `billing-medicare-cost-share` (Part B)
+    and the new `medicare-partd-base-premium`.
+  - Uncovered months are the full calendar months inside each gap of 63 days or more.
+  - COBRA also states the disability-extension end rule the table above leaves out: the later of 29
+    months or the first of the month more than 30 days after a final finding of no disability
+    (26 CFR 54.4980B-7).
+- **Not yet built:** `medicare-enrollment-window` (the eCFR shows the Part B special period ends the
+  last day of the 8th consecutive month with no employer coverage at any time, 42 CFR 406.24(b)(2)),
+  `parta-premium`, `extra-help-msp-screen`, `aca-sep-window`, `magi-household`,
+  `medicaid-work-requirement-check`.

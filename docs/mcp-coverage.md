@@ -8569,6 +8569,15 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/quantity-limit-check-v1502.js (spec-v1502: Quantity limit check — administrative disclaimer)
 - `quantity-limit-check`
 
+### lib/medicare-penalties-v1507.js (spec-v1507: Part B late enrollment penalty — administrative disclaimer)
+- `partb-late-penalty`
+
+### lib/medicare-penalties-v1507.js (spec-v1507: Part D late enrollment penalty — administrative disclaimer)
+- `partd-late-penalty`
+
+### lib/cobra-clock-v1507.js (spec-v1507: COBRA notice, election, payment and end dates — administrative disclaimer)
+- `cobra-clock`
+
 ### lib/ma-appeals-v1503.js (spec-v1503: Medicare Advantage appeal levels and filing deadlines — administrative disclaimer)
 - `ma-appeal-ladder`
 

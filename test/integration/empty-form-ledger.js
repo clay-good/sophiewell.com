@@ -89,6 +89,9 @@ export const ANSWERS_AN_EMPTY_FORM = new Set([
   // spec-v1503: the same shape: the answer runs from the entered notice date; the state's fair hearing
   // window is optional and only counts the hearing deadline, which is asked for when a resolution date is given.
   "medicaid-appeal-clock",
+  // spec-v1507: the answer runs from the entered gap dates (date inputs this sweep does not clear); the
+  // premium year and base premium are optional, and a blank year is disclosed as this year.
+  "partd-late-penalty",
   "pasi",
   "pbac-hmb",
   // spec-v1029: it stays, and now it earns the line. Every finding here is a
