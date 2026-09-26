@@ -6,6 +6,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Observation Notice (MOON) Deadline.** Required once observation passes 24 hours; due by 36 hours, or sooner at
+  release, transfer or admission (42 CFR 489.20(y)). See docs/spec-v1514.md.
+
+- **NOMNC Delivery Deadline.** The Notice of Medicare Non-Coverage 2 days (not 48 hours) before services end, and
+  the coverage that continues after a late notice (42 CFR 405.1200, 405.1202). See docs/spec-v1514.md.
+
+- **SNF Qualifying Stay and Benefit Days.** Three inpatient days not counting discharge (observation does not
+  count), SNF care within 30 days, and the full and coinsurance days left. See docs/spec-v1514.md.
+
+- **Hospice Benefit Period Clock.** Periods of 90, 90, then 60 days from the election, with the certification
+  window and the face-to-face encounter from the 3rd period (42 CFR 418.21, 418.22). See docs/spec-v1514.md.
+
 - **Days Supply Calculator.** Days supply for tablets, liquids, insulin pens (priming counted per injection),
   inhalers and eye drops, capped by any in-use discard limit. See docs/spec-v1511.md.
 

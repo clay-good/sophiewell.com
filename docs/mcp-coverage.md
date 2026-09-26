@@ -8596,6 +8596,18 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/days-supply-v1511.js (spec-v1511: Days supply by dosage form — administrative disclaimer)
 - `days-supply`
 
+### lib/post-acute-clocks-v1514.js (spec-v1514: MOON observation notice deadline — administrative disclaimer)
+- `moon-deadline`
+
+### lib/post-acute-clocks-v1514.js (spec-v1514: NOMNC delivery deadline — administrative disclaimer)
+- `nomnc-deadline`
+
+### lib/post-acute-clocks-v1514.js (spec-v1514: SNF qualifying stay and benefit days — administrative disclaimer)
+- `snf-qualifying-stay`
+
+### lib/post-acute-clocks-v1514.js (spec-v1514: Hospice benefit periods and recertification — administrative disclaimer)
+- `hospice-period-clock`
+
 ### lib/days-supply-v1511.js (spec-v1511: Earliest refill date — administrative disclaimer)
 - `refill-eligible-date`
 

@@ -9631,6 +9631,50 @@
       ],
       "tile": "refill-eligible-date",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "moon notice",
+        "medicare outpatient observation notice",
+        "observation notice deadline",
+        "moon 36 hours",
+        "observation status notice"
+      ],
+      "tile": "moon-deadline",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "nomnc",
+        "nomnc delivery deadline",
+        "snf discharge notice deadline",
+        "home health non-coverage notice",
+        "two day notice snf"
+      ],
+      "tile": "nomnc-deadline",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "snf qualifying stay",
+        "three day rule snf",
+        "3 midnight rule",
+        "skilled nursing 3 day stay",
+        "snf benefit days left"
+      ],
+      "tile": "snf-qualifying-stay",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "hospice benefit period",
+        "hospice recertification",
+        "hospice face to face",
+        "hospice 90 day period",
+        "hospice certification window"
+      ],
+      "tile": "hospice-period-clock",
+      "audience": "clinicians"
     }
   ]
 }

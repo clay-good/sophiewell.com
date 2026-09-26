@@ -172,3 +172,13 @@ eCFR (current September 2026): 42 CFR 405.1200–405.1212, 409.30, 409.60, 409.6
 - `dme-rental-clock`: a break in use. Whether a break restarts the rental count is
   governed by the break-in-need rules, which weren't read during research. Read and
   cite them at build; until then the tool asks the reader rather than deciding.
+
+## Build status
+
+- **Built 2026-09-26:** `moon-deadline`, `nomnc-deadline`, `snf-qualifying-stay`, `hospice-period-clock`, each read
+  against the eCFR (42 CFR 489.20(y), 405.1200-405.1202, 409.30, 409.60, 409.61, 418.21, 418.22). The SNF
+  coinsurance ($217 in 2026) is a dated value tracked by the `billing-medicare-cost-share` ledger row. The
+  hospice face-to-face window is counted from the recertification (the tool shows its start if recertifying
+  on the period's first day), as 418.22(a)(4) words it.
+- **Not yet built:** `im-notice-timing`, `mcsn-appeal-rights`, `hospice-aggregate-cap`, `home-health-cert-clock`,
+  `dme-rental-clock`, `irf-compliance-clock`.
