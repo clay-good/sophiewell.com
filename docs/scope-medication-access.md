@@ -1,8 +1,9 @@
 # Scope — medication access and coverage operations
 
 **Status:** Specified September 25, 2026. Building since September 26, 2026: the shared date
-helpers and dated-value accessor ([spec-v1501](spec-v1501.md) §2, §5) and the eight
-[spec-v1503](spec-v1503.md) clocks are live; see that spec's build-status section.
+helpers and dated-value accessor ([spec-v1501](spec-v1501.md) §2, §5), the eight
+[spec-v1503](spec-v1503.md) clocks, and group Q, holding the first three pieces of [spec-v1502](spec-v1502.md), are live;
+each spec's build-status section says what is left.
 **Specs:** [spec-v1500](spec-v1500.md) (charter) through [spec-v1517](spec-v1517.md).
 **When built:** 101 additions and 3 backfills (the count is in the table below).
 

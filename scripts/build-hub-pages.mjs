@@ -90,8 +90,10 @@ const GROUP_LABELS = {
   O: 'High-Alert & Safety',
   // spec-v52 §10.1: revenue-cycle / utilization-management group.
   P: 'Revenue Cycle & Utilization',
+  // spec-v1501 §1: medication access, coverage operations and pharmacy.
+  Q: 'Medication Access & Pharmacy',
 };
-const GROUP_ORDER = ['A', 'B', 'C', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P'];
+const GROUP_ORDER = ['A', 'B', 'C', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q'];
 
 // Per-audience SEO copy + workflow framing. These are the indexable
 // paragraphs that earn the long-tail "healthcare tools for X" queries.

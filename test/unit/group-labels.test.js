@@ -56,5 +56,6 @@ test('the five shipped copies agree', async () => {
     files.push({ path, labels: parseGroupLabels(await readFile(new URL(`../../${path}`, import.meta.url), 'utf8')) });
   }
   assert.deepEqual(findLabelDrift(files), []);
-  assert.equal(Object.keys(files[0].labels).length, 15);
+  // spec-v1501 §1 added group Q (Medication Access & Pharmacy).
+  assert.equal(Object.keys(files[0].labels).length, 16);
 });

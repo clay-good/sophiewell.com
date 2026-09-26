@@ -63,6 +63,8 @@ const GROUP_LABELS = {
   N: 'Pediatrics & Neonatal',
   O: 'High-Alert & Safety',
   P: 'Revenue Cycle & Utilization',
+  // spec-v1501 §1: medication access, coverage operations and pharmacy.
+  Q: 'Medication Access & Pharmacy',
 };
 
 // --- Parse UTILITIES from app.js. We can't import app.js under Node

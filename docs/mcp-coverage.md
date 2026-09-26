@@ -8560,6 +8560,15 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/qio-discharge-appeal-v1503.js (spec-v1503: Medicare QIO fast-appeal clock — administrative disclaimer)
 - `qio-discharge-appeal-clock`
 
+### lib/auth-runout-v1502.js (spec-v1502: Authorization run-out and renewal date — administrative disclaimer)
+- `auth-runout`
+
+### lib/auth-units-request-v1502.js (spec-v1502: Authorization units to request — administrative disclaimer)
+- `auth-units-request`
+
+### lib/quantity-limit-check-v1502.js (spec-v1502: Quantity limit check — administrative disclaimer)
+- `quantity-limit-check`
+
 ### lib/ma-appeals-v1503.js (spec-v1503: Medicare Advantage appeal levels and filing deadlines — administrative disclaimer)
 - `ma-appeal-ladder`
 

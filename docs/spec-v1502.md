@@ -111,3 +111,15 @@ One unit test file per tool. The cases that must exist:
   field asks instead of assuming zero.
 - `auth-units-request`: a partial billing unit rounds up per administration, not over
   the total.
+
+## Build status
+
+- **Built 2026-09-26:** group Q ([spec-v1501](spec-v1501.md) §1) with its first three tools:
+  `auth-runout` (the renewal is due the lead time before the first administration the approval does
+  not cover, whether the units or the end date run out first, or both together), `auth-units-request`
+  (calls `ndcHcpcsUnits()` from `lib/billing-v81.js` per administration, so a partial unit rounds up on
+  each claim), and `quantity-limit-check` (cites 42 CFR 423.578(b), which treats a dose restriction,
+  including the dosage form, as a formulary exception).
+- **Not yet built:** `pa-criteria-checklist`, `step-therapy-history` (both need a repeating-row input),
+  `medicare-ffs-pa-required` (needs the CMS lists as dated data), and `auth-runout`'s CSV batch mode
+  ([spec-v1501](spec-v1501.md) §3).

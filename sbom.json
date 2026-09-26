@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:f3ca9b5f-1a50-5ea5-8834-e15fe6eb9675",
+  "serialNumber": "urn:uuid:005bca2c-c978-544f-812b-e7577b6b60f7",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-26T01:49:42.841Z",
+    "timestamp": "2026-09-26T02:04:05.952Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1868 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1871 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3f15d3be28b0d15992be26825d15d1e23cd0410e7b7879ad93350f9144315e71"
+          "content": "1c32215be9087bd969adbb02c0a89f21214685408673cdc708468827bc5003a2"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "119593"
+          "value": "119729"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a4e842e73648e6c17185aeb411ef80861ca7f556bb2bc4c0472a08a98c1b5606"
+          "content": "4d5cccbc3857f072c3fa58c88d2b6ad62e0ae7239c97883511f6272fb2d5898a"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "549613"
+          "value": "550207"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4b6eddc7a340a2dd517fdc93b1f69a6b763f26516b22aab731d6e88972173f0a"
+          "content": "c2320157e5842226d41cd335848988fe8235c0c3b47c78a0f4173bca5f5369d2"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "232898"
+          "value": "233280"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "84b6889b945d96428ee976ef3fcaa4498f656bf1260b6f8b1f95d77d31683fca"
+          "content": "7609a004f7e3d8e03cd587934ba073d9248538c0c08443bddce0c2b696dd68ad"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "107070"
+          "value": "107225"
         }
       ]
     },
@@ -1522,6 +1522,48 @@
         {
           "name": "sophiewell:bytes",
           "value": "5293"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/auth-runout-v1502.js",
+      "type": "file",
+      "name": "lib/auth-runout-v1502.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ac2dff0c9426e95cefa65d90fa39d80d23ed4166f84bf1ff98383ac91362a1aa"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4643"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/auth-units-request-v1502.js",
+      "type": "file",
+      "name": "lib/auth-units-request-v1502.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "43358cdbb350ce76e2760dee09baf7ce107a7de3390b9006810d47d8c8c49289"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4581"
         }
       ]
     },
@@ -11759,7 +11801,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "33595f313af24a8cc0fead44f4bf7d7bee74487191e94f5bf316ff677d9617ad"
+          "content": "f2e27b6c80bdb249e286701471e9385d9c09280c6c9f85391ff6fa570e4b83d1"
         }
       ],
       "properties": [
@@ -11769,7 +11811,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2604189"
+          "value": "2606721"
         }
       ]
     },
@@ -16495,6 +16537,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "10218"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/quantity-limit-check-v1502.js",
+      "type": "file",
+      "name": "lib/quantity-limit-check-v1502.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3d701792aaeb48680c638ab0d4bb96337f6e45b936f221c88ed8a6ad50a283aa"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3425"
         }
       ]
     },
@@ -22627,6 +22690,48 @@
         {
           "name": "sophiewell:bytes",
           "value": "2523"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/auth-runout-v1502.js",
+      "type": "file",
+      "name": "mcp/adapters/auth-runout-v1502.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "db9dceed548304992ef1b24386ef1591cebe44f63e7d02f1a42df7a248af8b99"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1360"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/auth-units-request-v1502.js",
+      "type": "file",
+      "name": "mcp/adapters/auth-units-request-v1502.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8a1fc35e8f70357daafb886bb1cedefa479c6e72a552a9e034c609528fc7798b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1548"
         }
       ]
     },
@@ -36722,6 +36827,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/quantity-limit-check-v1502.js",
+      "type": "file",
+      "name": "mcp/adapters/quantity-limit-check-v1502.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6bfedecfca60013170cd4216dea1912b39ebb8619a14c0dbab5027ba6cdb938c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1100"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/quintero-ttts-v831.js",
       "type": "file",
       "name": "mcp/adapters/quintero-ttts-v831.js",
@@ -41516,7 +41642,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "426856a34111675430c289f58e04a742677e1458355b46230ad8223eedbb4037"
+          "content": "1af1dd564914e690389f7647ba8e1e8b8e64104e92fd0a3c95f28bfffe639d8a"
         }
       ],
       "properties": [
@@ -41526,7 +41652,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "109479"
+          "value": "109854"
         }
       ]
     },
@@ -44803,6 +44929,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "10029"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1502.js",
+      "type": "file",
+      "name": "views/group-v1502.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8509848de57e03a352cd455a5a1105b34d1ba4e3b5950593ef807ace25fd994f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6238"
         }
       ]
     },
@@ -75871,6 +76018,8 @@
         "urn:sophiewell:file:source:lib/atlanta-pancreatitis-v445.js",
         "urn:sophiewell:file:source:lib/atrial-enlargement-v787.js",
         "urn:sophiewell:file:source:lib/ausdrisk-v711.js",
+        "urn:sophiewell:file:source:lib/auth-runout-v1502.js",
+        "urn:sophiewell:file:source:lib/auth-units-request-v1502.js",
         "urn:sophiewell:file:source:lib/auto-peep-v928.js",
         "urn:sophiewell:file:source:lib/autoimmune-encephalitis-v824.js",
         "urn:sophiewell:file:source:lib/av-fistula-v300.js",
@@ -76584,6 +76733,7 @@
         "urn:sophiewell:file:source:lib/qcsi-v698.js",
         "urn:sophiewell:file:source:lib/qio-discharge-appeal-v1503.js",
         "urn:sophiewell:file:source:lib/qpitt-v587.js",
+        "urn:sophiewell:file:source:lib/quantity-limit-check-v1502.js",
         "urn:sophiewell:file:source:lib/query-compute.js",
         "urn:sophiewell:file:source:lib/query-fill.js",
         "urn:sophiewell:file:source:lib/quintero-ttts-v831.js",
@@ -76980,6 +77130,7 @@
         "urn:sophiewell:file:source:views/group-v1498.js",
         "urn:sophiewell:file:source:views/group-v1499.js",
         "urn:sophiewell:file:source:views/group-v15.js",
+        "urn:sophiewell:file:source:views/group-v1502.js",
         "urn:sophiewell:file:source:views/group-v1503.js",
         "urn:sophiewell:file:source:views/group-v151.js",
         "urn:sophiewell:file:source:views/group-v152.js",
@@ -77768,6 +77919,8 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/atlanta-pancreatitis-v445.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/atrial-enlargement-v787.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ausdrisk-v711.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/auth-runout-v1502.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/auth-units-request-v1502.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/auto-peep-v928.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/autoimmune-encephalitis-v824.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/av-fistula-v300.js",
@@ -78439,6 +78592,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/qcsi-v698.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/qio-discharge-appeal-v1503.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/qpitt-v587.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/quantity-limit-check-v1502.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/quintero-ttts-v831.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/rachs1-v541.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/radiology-v165.js",
@@ -78770,7 +78924,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "f3ca9b5f1a503ea5"
+      "value": "005bca2cc978a44f"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -78782,7 +78936,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2845"
+      "value": "2852"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

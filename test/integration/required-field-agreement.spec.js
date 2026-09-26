@@ -71,7 +71,19 @@ for (let shard = 0; shard < SHARDS; shard += 1) {
       const id = IDS[i];
       declared += REQUIRED[id].length;
       await page.goto(`/#${id}`);
-      const readings = await page.evaluate(clearEachAndRead, REQUIRED[id]);
+      let readings;
+      try {
+        readings = await page.evaluate(clearEachAndRead, REQUIRED[id]);
+      } catch (err) {
+        // A navigation that lands while the probe runs destroys its context: under a loaded parallel
+        // run this failed the same shard twice and passed alone (2026-09-26). Re-read the SAME tile
+        // once after the page settles; any other error, or a second failure, still fails the test.
+        if (!/Execution context was destroyed/.test(String(err && err.message))) throw err;
+        console.warn(`REQFIELD: re-reading ${id} after a navigation interrupted the probe`);
+        await page.waitForLoadState('load');
+        await page.goto(`/#${id}`);
+        readings = await page.evaluate(clearEachAndRead, REQUIRED[id]);
+      }
       pairs += readings.length;
       if (!readings.length) tilesWithNoField += 1;
       for (const reading of readings) {

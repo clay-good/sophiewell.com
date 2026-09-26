@@ -9466,6 +9466,39 @@
       ],
       "tile": "qio-discharge-appeal-clock",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "authorization expiration",
+        "prior authorization renewal date",
+        "auth units remaining",
+        "when does my authorization run out",
+        "authorization renewal worklist"
+      ],
+      "tile": "auth-runout",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "units to request prior authorization",
+        "infusion units authorization",
+        "how many units to request",
+        "hcpcs units for authorization",
+        "authorization units calculator"
+      ],
+      "tile": "auth-units-request",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "quantity limit",
+        "quantity limit exception",
+        "exceeds quantity limit",
+        "dose optimization strength",
+        "plan quantity limit check"
+      ],
+      "tile": "quantity-limit-check",
+      "audience": "clinicians"
     }
   ]
 }

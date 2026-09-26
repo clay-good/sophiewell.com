@@ -915,6 +915,9 @@ import erisaClaimClockV1503 from './adapters/erisa-claim-clock-v1503.js';
 import acaExternalReviewV1503 from './adapters/aca-external-review-v1503.js';
 import medicaidAppealClockV1503 from './adapters/medicaid-appeal-clock-v1503.js';
 import qioDischargeAppealV1503 from './adapters/qio-discharge-appeal-v1503.js';
+import authRunoutV1502 from './adapters/auth-runout-v1502.js';
+import authUnitsRequestV1502 from './adapters/auth-units-request-v1502.js';
+import quantityLimitCheckV1502 from './adapters/quantity-limit-check-v1502.js';
 import nurseStaffingRatioCheckV1396 from './adapters/nurse-staffing-ratio-check-v1396.js';
 import caWpvReportClockV1396 from './adapters/ca-wpv-report-clock-v1396.js';
 import mandatoryOvertimeCheckV1396 from './adapters/mandatory-overtime-check-v1396.js';
@@ -1866,6 +1869,9 @@ const ADAPTER_MODULES = [
   ['aca-external-review-v1503', acaExternalReviewV1503],
   ['medicaid-appeal-clock-v1503', medicaidAppealClockV1503],
   ['qio-discharge-appeal-v1503', qioDischargeAppealV1503],
+  ['auth-runout-v1502', authRunoutV1502],
+  ['auth-units-request-v1502', authUnitsRequestV1502],
+  ['quantity-limit-check-v1502', quantityLimitCheckV1502],
   ['nurse-staffing-ratio-check-v1396', nurseStaffingRatioCheckV1396],
   ['ca-wpv-report-clock-v1396', caWpvReportClockV1396],
   ['mandatory-overtime-check-v1396', mandatoryOvertimeCheckV1396],

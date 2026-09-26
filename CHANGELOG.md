@@ -6,6 +6,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Authorization Run-Out and Renewal Date.** When an approval runs out, by its end date or by its units at
+  the current schedule, and the date to submit the renewal. See docs/spec-v1502.md.
+
+- **Authorization Units to Request.** Billing units for an authorization period from the dose, interval and the
+  code's unit size, rounded up per administration, with loading doses. See docs/spec-v1502.md.
+
+- **Quantity Limit Check.** Whether a prescription fits the plan's quantity limit, fits at another strength, or
+  needs a quantity-limit exception, with the arithmetic. See docs/spec-v1502.md.
+
 - **Employer Plan Claim and Appeal Clock (ERISA).** Claim and appeal decision deadlines for employer health plans:
   urgent, concurrent, pre-service and post-service, with the one extension and the 180-day appeal window. See docs/spec-v1503.md.
 

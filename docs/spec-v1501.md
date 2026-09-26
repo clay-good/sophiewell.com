@@ -149,5 +149,6 @@ the research recorded in [scope-medication-access.md](scope-medication-access.md
   and are selected by filing year); §5's `addMonthsUtc`, `firstOfNextMonth` and `countMidnights` in
   `lib/deadline.js`, with `rollForward` now tested. Tests: `test/unit/dated-data.test.js`,
   `test/unit/deadline-months.test.js`.
-- **Not yet built:** §1 group Q (lands with its first tools), §2's page watch (with
+- **Built 2026-09-26:** §1 group Q, with its first tools ([spec-v1502](spec-v1502.md)).
+- **Not yet built:** §2's page watch (with
   [spec-v1517](spec-v1517.md)), §3 the upload workbench, §4 the document builder.

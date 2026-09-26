@@ -48,6 +48,8 @@ const GROUP_LABELS = {
   A: 'Billing & Coding',
   B: 'Billing & Reimbursement',
   P: 'Revenue Cycle & Utilization',
+  // spec-v1501 §1: medication access, coverage operations and pharmacy.
+  Q: 'Medication Access & Pharmacy',
   C: 'Insurance & Patient Literacy',
   L: 'Insurance Glossary',
   M: 'State & Coverage Reference',
