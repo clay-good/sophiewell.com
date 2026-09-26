@@ -199,7 +199,8 @@ dates). It's the cleanest machine-readable feed in the program (route A).
 
 ## Build status
 
-- **Built 2026-09-26:** `fpl-percent` (group C) and `irmaa` (group Q).
+- **Built 2026-09-26:** `fpl-percent`, `premium-tax-credit`, `employer-coverage-affordability` (group C)
+  and `irmaa` (group Q).
   - The guidelines were read from the ASPE API with the two-letter state codes: a full state name
     ("Alaska") silently returns the 48-state figure, as this spec warned. Every region is exactly linear,
     checked at household sizes 1, 2, 8 and 9. New ledger row `aspe-poverty-guidelines`.
@@ -207,5 +208,12 @@ dates). It's the cleanest machine-readable feed in the program (route A).
     first day of open enrollment).
   - The IRMAA brackets, including married filing separately and the Part D amounts, are from the CMS 2026
     fact sheet; the life-changing events are SSA's own list. A year with no published brackets asks.
+  - The applicable percentages and required contribution percentage were read from the Rev. Procs
+    themselves: 2026 matches this spec, and 2027 (Rev. Proc. 2026-26) is 2.15% to 10.22%, verified at build
+    as asked. The linear interpolation and its rounding are 26 CFR 1.36B-3(g)(1); the 100% floor and 400%
+    ceiling are 1.36B-2(b)(1); the family test is 1.36B-2(c)(3)(v)(A)(2). New ledger row
+    `irs-36b-applicable-percentage`.
+  - Not stated: the claim that the repayment cap on excess advance credits ends after 2025. Neither
+    Rev. Proc. says so, and it was not verified against the statute, so the tool does not print it.
 - **Not yet built:** `partd-year-cost`, `m3p-monthly-bill`, `copay-card-runout`, `part-b-drug-coinsurance`,
-  `premium-tax-credit`, `employer-coverage-affordability`, `partd-mfp-price-check`.
+  `partd-mfp-price-check`.

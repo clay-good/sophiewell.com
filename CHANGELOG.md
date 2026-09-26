@@ -6,6 +6,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Premium Tax Credit Estimate.** The Marketplace credit from income, household size and the benchmark silver
+  premium, with the IRS applicable percentages for 2026 and 2027 and the 100%-400% limits. See docs/spec-v1506.md.
+
+- **Employer Coverage Affordability Test.** Whether an employer's offer is affordable under the IRS test (9.96% of
+  household income in 2026, 10.22% in 2027), for the employee and, with the family premium, for the family. See docs/spec-v1506.md.
+
 - **Federal Poverty Level Percent.** Income as a percent of the HHS poverty guidelines for the household size and
   region, with the prior year's guidelines for the premium tax credit. See docs/spec-v1506.md.
 

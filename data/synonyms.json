@@ -9697,6 +9697,28 @@
       ],
       "tile": "irmaa",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "premium tax credit",
+        "aca subsidy estimate",
+        "marketplace subsidy",
+        "advance premium tax credit",
+        "second lowest cost silver plan"
+      ],
+      "tile": "premium-tax-credit",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "employer coverage affordable",
+        "affordability test 9.96",
+        "family glitch",
+        "employer plan affordability",
+        "is my job insurance affordable"
+      ],
+      "tile": "employer-coverage-affordability",
+      "audience": "clinicians"
     }
   ]
 }

@@ -31,3 +31,30 @@ test('IRMAA: brackets by filing status, and the boundaries', () => {
   assert.match(ir({ filing: 'single', magi: '200000', year: '2027' }).message, ASKING);
   assert.match(ir({}).message, ASKING);
 });
+
+import { premiumTaxCredit as ptc, employerAffordability as ea, applicablePercentage, DATED_PTC } from '../../lib/marketplace-credit-v1506.js';
+
+test('applicable percentage: linear within a band, rounded to a hundredth', () => {
+  const b26 = DATED_PTC['ptc-table-2026'].values.bands;
+  assert.equal(applicablePercentage(175, b26), 5.4);
+  assert.equal(applicablePercentage(120, b26), 2.1);
+  assert.equal(applicablePercentage(400, b26), 9.96);
+  assert.equal(applicablePercentage(275, DATED_PTC['ptc-table-2027'].values.bands), 9.44);
+});
+
+test('premium tax credit: the benchmark less the expected contribution, and the 100%/400% limits', () => {
+  const r = ptc({ magi: '40000', size: '1', region: 'us', benchmark: '550', year: '2026' });
+  assert.equal(r.applicablePercent, 8.61);
+  assert.equal(r.credit, 3156);
+  assert.equal(ptc({ magi: '70000', size: '1', region: 'us', benchmark: '550', year: '2026' }).bandLabel, 'Above 400%');
+  assert.equal(ptc({ magi: '12000', size: '1', region: 'us', benchmark: '550', year: '2026' }).bandLabel, 'Below 100%');
+  assert.match(ptc({ magi: '40000', size: '1', region: 'us', benchmark: '550', year: '2028' }).message, ASKING);
+});
+
+test('employer affordability: self-only for the employee, the family premium for the family', () => {
+  const r = ea({ income: '50000', selfOnly: '400', family: '1200', year: '2026' });
+  assert.match(r.band, /Employee: affordable/);
+  assert.match(r.band, /Family members: not affordable/);
+  assert.equal(ea({ income: '50000', selfOnly: '420', year: '2026' }).bandLabel, 'Not affordable for the employee');
+  assert.equal(ea({ income: '50000', selfOnly: '420', year: '2027' }).bandLabel, 'Affordable for the employee');
+});

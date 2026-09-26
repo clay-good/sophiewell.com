@@ -10345,6 +10345,13 @@
           "lastVerified": "2026-06-10"
         },
         {
+          "id": "irs-36b-applicable-percentage",
+          "label": "IRS section 36B applicable percentage table and required contribution percentage: 2026 (Rev. Proc. 2025-25, 2.10% to 9.96%, 9.96%) and 2027 (Rev. Proc. 2026-26, 2.15% to 10.22%, 10.22%), backing premium-tax-credit and employer-coverage-affordability",
+          "url": "https://www.irs.gov/pub/irs-drop/rp-26-26.pdf",
+          "ruleFamily": "ops-v63",
+          "lastVerified": "2026-09-26"
+        },
+        {
           "id": "aspe-poverty-guidelines",
           "label": "HHS poverty guidelines by year and region (48 states and DC, Alaska, Hawaii): 2025 and 2026 bases and per-person increments read from the ASPE poverty-guidelines API, backing fpl-percent",
           "url": "https://aspe.hhs.gov/topics/poverty-economic-mobility/poverty-guidelines",

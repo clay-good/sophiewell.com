@@ -8602,6 +8602,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/income-screens-v1506.js (spec-v1506: Income as a percent of the poverty guidelines — administrative disclaimer)
 - `fpl-percent`
 
+### lib/marketplace-credit-v1506.js (spec-v1506: Marketplace premium tax credit estimate — administrative disclaimer)
+- `premium-tax-credit`
+
+### lib/marketplace-credit-v1506.js (spec-v1506: Employer coverage affordability test — administrative disclaimer)
+- `employer-coverage-affordability`
+
 ### lib/income-screens-v1506.js (spec-v1506: Medicare IRMAA brackets — administrative disclaimer)
 - `irmaa`
 

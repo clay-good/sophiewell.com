@@ -1041,6 +1041,8 @@ const UTILITIES = [
   { id: 'auth-units-request', name: 'Authorization Units to Request', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },
   { id: 'quantity-limit-check', name: 'Quantity Limit Check', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },
   { id: 'fpl-percent', name: 'Federal Poverty Level Percent', group: 'C', audiences: ['billers', 'patients', 'clinicians'], clinical: false },
+  { id: 'premium-tax-credit', name: 'Premium Tax Credit Estimate', group: 'C', audiences: ['billers', 'patients', 'clinicians'], clinical: false },
+  { id: 'employer-coverage-affordability', name: 'Employer Coverage Affordability Test', group: 'C', audiences: ['billers', 'patients', 'clinicians'], clinical: false },
   { id: 'irmaa', name: 'Medicare IRMAA', group: 'Q', audiences: ['billers', 'patients', 'clinicians'], clinical: false },
   { id: 'cs-refill-validity', name: 'Controlled-Substance Refills Left', group: 'Q', audiences: ['clinicians', 'billers'], clinical: false },
   { id: 'c2-fill-deadlines', name: 'C-II Partial Fill and Emergency Deadlines', group: 'Q', audiences: ['clinicians', 'billers'], clinical: false },

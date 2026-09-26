@@ -1,7 +1,8 @@
-// spec-v1506: renderers for fpl-percent, irmaa.
+// spec-v1506: renderers for the income and Marketplace tools.
 
 import { el, clear } from '../lib/dom.js';
 import * as IN from '../lib/income-screens-v1506.js';
+import * as MC from '../lib/marketplace-credit-v1506.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -71,6 +72,43 @@ export const renderers = {
       const r = IN.irmaa(args);
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'IRMAA', value: r.bandLabel }]);
+      list(o, r.notes);
+      note(o, r.note);
+    }));
+  },
+  'premium-tax-credit'(root) {
+    const pairs = [['ptc-magi', 'magi'], ['ptc-size', 'size'], ['ptc-region', 'region'], ['ptc-bench', 'benchmark'], ['ptc-year', 'year']];
+    numField(root, 'Household income (MAGI) in dollars a year', 'ptc-magi', 'e.g. 40000', '100000000', '0.01');
+    numField(root, 'Household size', 'ptc-size', 'e.g. 1', '30', '1');
+    selectField(root, 'Where the household lives', 'ptc-region', IN.REGIONS);
+    numField(root, 'Benchmark (second-lowest-cost silver) premium, dollars a month', 'ptc-bench', 'e.g. 550', '100000', '0.01');
+    numField(root, 'Coverage year (blank for this year)', 'ptc-year', 'e.g. 2026', '2100', '1');
+    const ids = pairs.map(([d]) => d);
+    const o = out(); root.appendChild(o);
+    wire(ids, () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = MC.premiumTaxCredit(args);
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Credit', value: r.bandLabel }]);
+      list(o, r.notes);
+      note(o, r.note);
+    }));
+  },
+  'employer-coverage-affordability'(root) {
+    const pairs = [['eca-income', 'income'], ['eca-self', 'selfOnly'], ['eca-family', 'family'], ['eca-year', 'year']];
+    numField(root, 'Household income in dollars a year', 'eca-income', 'e.g. 50000', '100000000', '0.01');
+    numField(root, 'Employee\'s lowest-cost self-only premium, dollars a month', 'eca-self', 'e.g. 400', '100000', '0.01');
+    numField(root, 'Family premium, dollars a month (optional)', 'eca-family', 'e.g. 1200', '100000', '0.01');
+    numField(root, 'Plan year (blank for this year)', 'eca-year', 'e.g. 2026', '2100', '1');
+    const ids = pairs.map(([d]) => d);
+    const o = out(); root.appendChild(o);
+    wire(ids, () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = MC.employerAffordability(args);
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Affordable?', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
     }));

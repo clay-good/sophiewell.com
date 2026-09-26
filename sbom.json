@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:7ff0e85d-8e3a-557d-852e-1534e3709419",
+  "serialNumber": "urn:uuid:da711941-988f-581f-85ae-e425284a3f83",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-26T06:21:20.037Z",
+    "timestamp": "2026-09-26T06:42:57.470Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1889 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1891 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e054cdbc49d1c9832a9f39110cd5602fc82e623e199449d1262be524072dd9d7"
+          "content": "2e06e38be230de1adc3b994ad622289f515477629b044535977fda24e28472a9"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "120559"
+          "value": "120654"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f4f770d8d404a7e62859d09fb838012e5bcf60f66d7d8e7241cfa42d361f56f8"
+          "content": "f622c9e631539486315f1177575ddd05138fd1022f3bc659bd2543052c447ff7"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "553159"
+          "value": "553477"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "39bff73f100f0c3a1c7597c038b224ac730301f9e228ee260a5efefbd6a50f55"
+          "content": "ff0c9b8da6227418482d40e722f1b84ec93de6b4fc8eb03ba8c0f9c36f564339"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "235578"
+          "value": "235849"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "936773cbc591bbfde84c0dd28f30eb94ecc0751bd0e93230bd26c01af3b582bf"
+          "content": "c5eca9562a9f96f4d1344468ae8f751a9cea70af52b661ca76a0616ae143d544"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "108175"
+          "value": "108299"
         }
       ]
     },
@@ -11396,6 +11396,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/marketplace-credit-v1506.js",
+      "type": "file",
+      "name": "lib/marketplace-credit-v1506.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "39950b335df40aaca78cf365f5dff3f9efb714c44c139b5a23ffe287366a983a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "9191"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/marsh-oberhuber-v423.js",
       "type": "file",
       "name": "lib/marsh-oberhuber-v423.js",
@@ -11969,7 +11990,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "697ab90e572a937e4e17a3c5e53cd546e662239e7759645eb0bc98029d52b1d5"
+          "content": "35d3d39630f867cb488aac18252acc38371f0ebb372836226300cbca11315b46"
         }
       ],
       "properties": [
@@ -11979,7 +12000,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2619834"
+          "value": "2621348"
         }
       ]
     },
@@ -14825,7 +14846,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "67672d78bc54901fe1dfac80924b3e9c66884f351814d6e2a62ece148078ec3f"
+          "content": "a4947cb6c5f34ad400abc9ee7befd77e3fd7ed09275fccdf0f5528ec80bba9ea"
         }
       ],
       "properties": [
@@ -14835,7 +14856,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "69727"
+          "value": "70200"
         }
       ]
     },
@@ -32333,6 +32354,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/marketplace-credit-v1506.js",
+      "type": "file",
+      "name": "mcp/adapters/marketplace-credit-v1506.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b64638aa57fd3545f6a7e1dadfbf635354fdb0f2c1efa2c1509fae7ae4f605b4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1876"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/marsh-oberhuber-v423.js",
       "type": "file",
       "name": "mcp/adapters/marsh-oberhuber-v423.js",
@@ -42020,7 +42062,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "77b0a271e7b2258701edb1ce5956e0a092dcd30c533d81d3bb2d2b61793bc15c"
+          "content": "1fe020e636a5e118ce55c570429a29febb6b0ad60c3e594c0a3e0df273763ded"
         }
       ],
       "properties": [
@@ -42030,7 +42072,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "110991"
+          "value": "111124"
         }
       ]
     },
@@ -45359,7 +45401,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "429f9a629ad4c60a4ccd7f5085d53695659daa75d7ae03a26f0c060eb5134db0"
+          "content": "ca6e38f2765ec88bb56283d47559f74ecd51617c211940c7818d0c768fab4672"
         }
       ],
       "properties": [
@@ -45369,7 +45411,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "3858"
+          "value": "6137"
         }
       ]
     },
@@ -76950,6 +76992,7 @@
         "urn:sophiewell:file:source:lib/mandatory-overtime-check-v1396.js",
         "urn:sophiewell:file:source:lib/manning-ibs-v695.js",
         "urn:sophiewell:file:source:lib/mapi-asthma-v573.js",
+        "urn:sophiewell:file:source:lib/marketplace-credit-v1506.js",
         "urn:sophiewell:file:source:lib/marsh-oberhuber-v423.js",
         "urn:sophiewell:file:source:lib/marsi-v902.js",
         "urn:sophiewell:file:source:lib/masaoka-v650.js",
@@ -78844,6 +78887,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/mandatory-overtime-check-v1396.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/manning-ibs-v695.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mapi-asthma-v573.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/marketplace-credit-v1506.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/marsh-oberhuber-v423.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/marsi-v902.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/masaoka-v650.js",
@@ -79408,7 +79452,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "7ff0e85d8e3a857d"
+      "value": "da711941988ff81f"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -79420,7 +79464,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2874"
+      "value": "2876"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
