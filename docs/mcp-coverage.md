@@ -8599,6 +8599,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/post-acute-clocks-v1514.js (spec-v1514: MOON observation notice deadline — administrative disclaimer)
 - `moon-deadline`
 
+### lib/income-screens-v1506.js (spec-v1506: Income as a percent of the poverty guidelines — administrative disclaimer)
+- `fpl-percent`
+
+### lib/income-screens-v1506.js (spec-v1506: Medicare IRMAA brackets — administrative disclaimer)
+- `irmaa`
+
 ### lib/post-acute-clocks-v1514.js (spec-v1514: NOMNC delivery deadline — administrative disclaimer)
 - `nomnc-deadline`
 

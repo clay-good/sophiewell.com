@@ -6,6 +6,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Federal Poverty Level Percent.** Income as a percent of the HHS poverty guidelines for the household size and
+  region, with the prior year's guidelines for the premium tax credit. See docs/spec-v1506.md.
+
+- **Medicare IRMAA.** The monthly Part B and Part D amounts added for higher incomes in 2026, by filing status,
+  and the life-changing events that let SSA use a newer tax year. See docs/spec-v1506.md.
+
 - **Observation Notice (MOON) Deadline.** Required once observation passes 24 hours; due by 36 hours, or sooner at
   release, transfer or admission (42 CFR 489.20(y)). See docs/spec-v1514.md.
 

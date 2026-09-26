@@ -9675,6 +9675,28 @@
       ],
       "tile": "hospice-period-clock",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "federal poverty level",
+        "percent of poverty",
+        "fpl calculator",
+        "poverty guidelines 2026",
+        "percent fpl"
+      ],
+      "tile": "fpl-percent",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "irmaa",
+        "income related monthly adjustment amount",
+        "medicare high income premium",
+        "part b irmaa",
+        "part d irmaa"
+      ],
+      "tile": "irmaa",
+      "audience": "clinicians"
     }
   ]
 }

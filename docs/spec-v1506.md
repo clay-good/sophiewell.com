@@ -196,3 +196,16 @@ dates). It's the cleanest machine-readable feed in the program (route A).
   continuous.
 - `fpl-percent`: Alaska and Hawaii differ; the 2026 coverage year uses the 2025
   guideline for premium tax credits.
+
+## Build status
+
+- **Built 2026-09-26:** `fpl-percent` (group C) and `irmaa` (group Q).
+  - The guidelines were read from the ASPE API with the two-letter state codes: a full state name
+    ("Alaska") silently returns the 48-state figure, as this spec warned. Every region is exactly linear,
+    checked at household sizes 1, 2, 8 and 9. New ledger row `aspe-poverty-guidelines`.
+  - The prior-year rule for the premium tax credit is 26 CFR 1.36B-1(h) (guidelines published by the
+    first day of open enrollment).
+  - The IRMAA brackets, including married filing separately and the Part D amounts, are from the CMS 2026
+    fact sheet; the life-changing events are SSA's own list. A year with no published brackets asks.
+- **Not yet built:** `partd-year-cost`, `m3p-monthly-bill`, `copay-card-runout`, `part-b-drug-coinsurance`,
+  `premium-tax-credit`, `employer-coverage-affordability`, `partd-mfp-price-check`.
