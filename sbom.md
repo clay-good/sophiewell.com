@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `6f40b781102a74f5`
-Generated: 2026-09-26T04:36:31.903Z
+Build ID: `b13e71149e2d4aae`
+Generated: 2026-09-26T05:13:23.669Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -633,7 +633,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/myeloid-prognosis-v199.js` | 12222 | `041504929805fb1abd2c6098c5cf666dae34858d87d6cd4d6bd552fd86b03bab` |
 | `lib/myxedema-coma-v599.js` | 15439 | `76c6237db1eafb935ba2908633c46d61b59545cb05488f892d4d599eadd17637` |
 | `lib/nac-attr-stage-v583.js` | 12479 | `3894987b3a1f91c1326058d110806a5357f3d646e4f411654984fef80332dd00` |
-| `lib/name-match.js` | 7925 | `52385d64e4bb505f087d614f4e10ddf4dcf51169bb19bebcf103e03dcf8660af` |
+| `lib/name-match.js` | 8308 | `514247a8980fec31da9fc07c88f45a7d05ac8b8e904cc709078276293578ce54` |
 | `lib/nancy-index-v578.js` | 13756 | `9ad406fe2f9ab2f84d2d321db7de21bfa2f53ce5e00ee92b4f700952ab243c24` |
 | `lib/narakas-obpp-v498.js` | 3267 | `255a2ed868495c515b280b54793fe7787a70d2134c1abe289f32245209584b6b` |
 | `lib/narcolepsy-criteria-v855.js` | 12626 | `ab7efe42e6574e5d060509b9bbc9d5397d0d53112a24b616ac9d8c29c0b12cbc` |

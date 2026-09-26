@@ -71,3 +71,12 @@ test('naming part of a calculator is not naming it in full', () => {
   // And a sibling whose name has a word the query did not say stays out.
   assert.equal(namesInFull('TIMI Risk Index', 'TIMI Risk Score (UA / NSTEMI)'), false);
 });
+
+// spec-v1507: "Part B" and "Part D" names differ only in the letter, which the word rules dropped.
+test('Medicare part letters separate otherwise identical names', () => {
+  assert.equal(namesInFull('Part D Late Enrollment Penalty', 'Part B Late Enrollment Penalty'), false);
+  assert.equal(namesInFull('part d late enrollment penalty', 'Part D Late Enrollment Penalty'), true);
+  for (const [q, id] of [['Part D Late Enrollment Penalty', 'partd-late-penalty'], ['part b late enrollment penalty', 'partb-late-penalty'], ['part d late enrollment penalty', 'partd-late-penalty']]) {
+    assert.equal(findCalculator({ query: q, limit: 1 }).candidates[0].id, id, q);
+  }
+});
