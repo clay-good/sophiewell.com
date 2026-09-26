@@ -6,6 +6,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Part D Coverage Decision Clock.** The Part D coverage-determination and exception deadline in hours
+  from receipt (42 CFR 423.568-423.572), with the date a missed case goes to independent review. See
+  docs/spec-v1503.md.
+
+- **Part D Appeal Ladder.** The next Part D appeal level, its 60-day filing deadline with the 5-day receipt
+  presumption, its decision clock, and the ALJ amount in controversy by filing year. See docs/spec-v1503.md.
+
+- **Medicare Advantage Coverage Decision Clock.** 14 or 7 days, 72 or 24 hours, with or without the 14-day
+  extension (42 CFR 422.568-422.572), and the 422.570(d) wording the 2026 change left behind. See docs/spec-v1503.md.
+
+- **Medicare Advantage Appeal Ladder.** Reconsideration or ALJ filing deadline with the 5-day receipt
+  presumption, the plan's decision clocks, and automatic forwarding to independent review. See docs/spec-v1503.md.
+
 - **Glenoid Track (Hill-Sachs On/Off-Track).** The glenoid track, Hill-Sachs interval and distance to
   dislocation, read as off-, near- or on-track, with the glenoid bone loss. See docs/spec-v1571.md.
 

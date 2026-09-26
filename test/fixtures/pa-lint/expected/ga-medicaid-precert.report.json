@@ -10255,10 +10255,10 @@
         },
         {
           "id": "ops-medicare-aic",
-          "label": "Medicare appeal amount-in-controversy thresholds (CY2026: ALJ $200, federal court $1,960; annually indexed, Fed Reg 2025-21879) backing appeal-deadline",
+          "label": "Medicare appeal amount-in-controversy thresholds, set per calendar year of filing (CY2026: ALJ $200, federal court $1,960, Fed Reg 2025-21879; CY2027: ALJ $200, federal court $2,000, Fed Reg 2026-19016) backing appeal-deadline, partd-appeal-ladder and ma-appeal-ladder",
           "url": "https://www.federalregister.gov/documents/2025/12/04/2025-21879/medicare-program-medicare-appeals-adjustment-to-the-amount-in-controversy-threshold-amounts-for",
           "ruleFamily": "ops-v63",
-          "lastVerified": "2026-06-10"
+          "lastVerified": "2026-09-25"
         },
         {
           "id": "ops-medicare-timely-filing",

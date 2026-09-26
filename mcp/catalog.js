@@ -909,6 +909,8 @@ import paedDeliriumV1499 from './adapters/paed-delirium-v1499.js';
 import watchaEmergenceV1570 from './adapters/watcha-emergence-v1570.js';
 import glenoidTrackV1571 from './adapters/glenoid-track-v1571.js';
 import thomazeauOccupationV1572 from './adapters/thomazeau-occupation-v1572.js';
+import partdAppealsV1503 from './adapters/partd-appeals-v1503.js';
+import maAppealsV1503 from './adapters/ma-appeals-v1503.js';
 import nurseStaffingRatioCheckV1396 from './adapters/nurse-staffing-ratio-check-v1396.js';
 import caWpvReportClockV1396 from './adapters/ca-wpv-report-clock-v1396.js';
 import mandatoryOvertimeCheckV1396 from './adapters/mandatory-overtime-check-v1396.js';
@@ -1854,6 +1856,8 @@ const ADAPTER_MODULES = [
   ['watcha-emergence-v1570', watchaEmergenceV1570],
   ['glenoid-track-v1571', glenoidTrackV1571],
   ['thomazeau-occupation-v1572', thomazeauOccupationV1572],
+  ['partd-appeals-v1503', partdAppealsV1503],
+  ['ma-appeals-v1503', maAppealsV1503],
   ['nurse-staffing-ratio-check-v1396', nurseStaffingRatioCheckV1396],
   ['ca-wpv-report-clock-v1396', caWpvReportClockV1396],
   ['mandatory-overtime-check-v1396', mandatoryOvertimeCheckV1396],

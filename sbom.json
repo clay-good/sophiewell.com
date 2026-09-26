@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:faff25ef-fa9f-567a-833a-55e8acfe4ede",
+  "serialNumber": "urn:uuid:ee51f7a2-1039-5b68-8ad4-6f9a9fbe63f2",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-26T00:38:36.426Z",
+    "timestamp": "2026-09-26T01:24:41.532Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1860 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1864 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7c7f9fd43813a8be337752172453e60765a3541f42cd4bc23da812603c9d76aa"
+          "content": "4c452efb887b28a13762aa2b0b21d63eafbbf28b65bde58cb1edcdbd92e55854"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "119177"
+          "value": "119365"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "84f694af006ca806594ec36c2431b37889e816a54567b993abf200afd7fe415d"
+          "content": "bc1632bc70cdab309508b7e7d49bb811be0543ae90ec1ab575f34e3d52bdf216"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "548275"
+          "value": "548948"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6e6a8680f64b176a822e8d7f594f63266d38f1f92f3f3d30a44ac6ed9e8c6903"
+          "content": "063b71614ae77e3007ad342556d4e6460a3e44f0637f4c487aef43ee4e9e872d"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "231840"
+          "value": "232365"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9484647e4672f89a7cd5d60711e7c9be8461e73c3adacf2afde403af556611d3"
+          "content": "dd251829b1ae16111aee8c90ffb985a4b3d8589107098043ea60fdfd0a9a2134"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "106564"
+          "value": "106793"
         }
       ]
     },
@@ -4613,6 +4613,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/dated-data.js",
+      "type": "file",
+      "name": "lib/dated-data.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "453ea6398e1ada17f48a48a58f8f94b3cc0123262a6ce19022e012714102f6ef"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2051"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/de-winter-pattern-v1443.js",
       "type": "file",
       "name": "lib/de-winter-pattern-v1443.js",
@@ -4640,7 +4661,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "93735f582e4138816c92193c65ce763375e5137170195f6790f08b5c3eb35e19"
+          "content": "beb8669b48940e72cbe75e8210b82fc3acce0bd8c2c74906bcc1f7796d07a63b"
         }
       ],
       "properties": [
@@ -4650,7 +4671,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "7856"
+          "value": "9429"
         }
       ]
     },
@@ -11018,6 +11039,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/ma-appeals-v1503.js",
+      "type": "file",
+      "name": "lib/ma-appeals-v1503.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d021a055bdb3a1aa5203b7817f654c728777ed57c064995684bb5501a17efcbe"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "9489"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/magic-gvhd-v577.js",
       "type": "file",
       "name": "lib/magic-gvhd-v577.js",
@@ -11654,7 +11696,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3efafe831633146f060ae40fe5791adf0b6e4a517a7ece56f3ebbc9020428f79"
+          "content": "9e802869cf772a0f0db552491cb5f4429ecd27e6dff157d438522d965e983054"
         }
       ],
       "properties": [
@@ -11664,7 +11706,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2598280"
+          "value": "2601157"
         }
       ]
     },
@@ -14510,7 +14552,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d59823ba8922a2838a4cc821829883a25117ce808cceced9645c20de6ace461d"
+          "content": "67f6a9b04afae776ac977afa9ed3c43cc3db4738b823eb0b227c2746f181a67b"
         }
       ],
       "properties": [
@@ -14520,7 +14562,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "68495"
+          "value": "68612"
         }
       ]
     },
@@ -14794,6 +14836,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4894"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/partd-appeals-v1503.js",
+      "type": "file",
+      "name": "lib/partd-appeals-v1503.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1378bcf2b538a7b880a63044f8ce4b7f1c1fd517fabeafbb2c349cb8a9a57325"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "12294"
         }
       ]
     },
@@ -31577,6 +31640,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ma-appeals-v1503.js",
+      "type": "file",
+      "name": "mcp/adapters/ma-appeals-v1503.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "671ac386ffc36cf673a58d0bfd9bb882d5e27e30b05a57441cc4f656caf0313a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1746"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/magic-gvhd-v577.js",
       "type": "file",
       "name": "mcp/adapters/magic-gvhd-v577.js",
@@ -34933,6 +35017,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1672"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/partd-appeals-v1503.js",
+      "type": "file",
+      "name": "mcp/adapters/partd-appeals-v1503.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "dee2382e5ce8ded6a7f1f56bb827864bda6a64fd434d72a82535668743cac8f7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1752"
         }
       ]
     },
@@ -41243,7 +41348,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "db152d98b06d315f3009291b1f9f5364c4d11fdd15337519e2aee55b7754f03f"
+          "content": "6c9c31767c762bf849dcba55a0ec20bd51c5bf2f4694ca5ab5728b35a47eaf20"
         }
       ],
       "properties": [
@@ -41253,7 +41358,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "108721"
+          "value": "108935"
         }
       ]
     },
@@ -44530,6 +44635,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "10029"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1503.js",
+      "type": "file",
+      "name": "views/group-v1503.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3bdd3b20e4b4cc8c9c4bb2950a9b9d10a0dcb2825dbb06b5e1d6babd90739573"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5879"
         }
       ]
     },
@@ -75724,6 +75850,7 @@
         "urn:sophiewell:file:source:lib/cvrisk-engines-v202.js",
         "urn:sophiewell:file:source:lib/cvrisk-v103.js",
         "urn:sophiewell:file:source:lib/data.js",
+        "urn:sophiewell:file:source:lib/dated-data.js",
         "urn:sophiewell:file:source:lib/de-winter-pattern-v1443.js",
         "urn:sophiewell:file:source:lib/deadline.js",
         "urn:sophiewell:file:source:lib/dean-fluorosis-cfi-v1484.js",
@@ -76029,6 +76156,7 @@
         "urn:sophiewell:file:source:lib/lvp-albumin-v892.js",
         "urn:sophiewell:file:source:lib/lyme-two-tier-v873.js",
         "urn:sophiewell:file:source:lib/lymphoma-v135.js",
+        "urn:sophiewell:file:source:lib/ma-appeals-v1503.js",
         "urn:sophiewell:file:source:lib/magic-gvhd-v577.js",
         "urn:sophiewell:file:source:lib/mallampati-v810.js",
         "urn:sophiewell:file:source:lib/malt-ipi-v700.js",
@@ -76209,6 +76337,7 @@
         "urn:sophiewell:file:source:lib/paris-classification-v329.js",
         "urn:sophiewell:file:source:lib/parkland-gallbladder-v1240.js",
         "urn:sophiewell:file:source:lib/parks-fistula-v395.js",
+        "urn:sophiewell:file:source:lib/partd-appeals-v1503.js",
         "urn:sophiewell:file:source:lib/pas-swallow-v367.js",
         "urn:sophiewell:file:source:lib/pass-pheo-v660.js",
         "urn:sophiewell:file:source:lib/pauwels-femoral-neck-v374.js",
@@ -76679,6 +76808,7 @@
         "urn:sophiewell:file:source:views/group-v1498.js",
         "urn:sophiewell:file:source:views/group-v1499.js",
         "urn:sophiewell:file:source:views/group-v15.js",
+        "urn:sophiewell:file:source:views/group-v1503.js",
         "urn:sophiewell:file:source:views/group-v151.js",
         "urn:sophiewell:file:source:views/group-v152.js",
         "urn:sophiewell:file:source:views/group-v153.js",
@@ -77899,6 +78029,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/lvp-albumin-v892.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lyme-two-tier-v873.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lymphoma-v135.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/ma-appeals-v1503.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/magic-gvhd-v577.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mallampati-v810.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/malt-ipi-v700.js",
@@ -78059,6 +78190,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/paris-classification-v329.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/parkland-gallbladder-v1240.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/parks-fistula-v395.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/partd-appeals-v1503.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pas-swallow-v367.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pass-pheo-v660.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pauwels-femoral-neck-v374.js",
@@ -78462,7 +78594,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "faff25effa9fb67a"
+      "value": "ee51f7a210394b68"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -78474,7 +78606,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2831"
+      "value": "2837"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

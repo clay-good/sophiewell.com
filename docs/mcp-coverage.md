@@ -8539,6 +8539,18 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/thomazeau-occupation-v1572.js (spec-v1572: Thomazeau supraspinatus occupation ratio — clinical disclaimer)
 - `thomazeau-occupation`
 
+### lib/partd-appeals-v1503.js (spec-v1503: Part D coverage-determination and exception clock — administrative disclaimer)
+- `partd-coverage-clock`
+
+### lib/partd-appeals-v1503.js (spec-v1503: Part D appeal levels and filing deadlines — administrative disclaimer)
+- `partd-appeal-ladder`
+
+### lib/ma-appeals-v1503.js (spec-v1503: Medicare Advantage organization-determination clock — administrative disclaimer)
+- `ma-org-determination-clock`
+
+### lib/ma-appeals-v1503.js (spec-v1503: Medicare Advantage appeal levels and filing deadlines — administrative disclaimer)
+- `ma-appeal-ladder`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

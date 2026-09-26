@@ -141,3 +141,13 @@ the research recorded in [scope-medication-access.md](scope-medication-access.md
   newlines, a byte-order mark, header synonyms, and a missing required column.
 - `test/unit/deadline-months.test.js`: January 31 plus one month, February 29, and
   the first-of-next-month rule on the last day of a month.
+
+## Build status
+
+- **Built 2026-09-26:** §2's accessor, `datedValue()` and `expiredPrompt()` in `lib/dated-data.js`
+  (the first route-B rows, the Medicare amounts in controversy, live in `lib/partd-appeals-v1503.js`
+  and are selected by filing year); §5's `addMonthsUtc`, `firstOfNextMonth` and `countMidnights` in
+  `lib/deadline.js`, with `rollForward` now tested. Tests: `test/unit/dated-data.test.js`,
+  `test/unit/deadline-months.test.js`.
+- **Not yet built:** §1 group Q (lands with its first tools), §2's page watch (with
+  [spec-v1517](spec-v1517.md)), §3 the upload workbench, §4 the document builder.

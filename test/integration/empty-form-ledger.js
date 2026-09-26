@@ -81,6 +81,11 @@ export const ANSWERS_AN_EMPTY_FORM = new Set([
   // worked example is New York, whose answer comes from course dates, so clearing it changes nothing.
   "nurse-license-training-requirements",
   "pa-turnaround",
+  // spec-v1503: the answer runs from the ENTERED notice date (a date input this sweep does not
+  // clear) and the chosen level. The one number field, the amount at stake, only checks the ALJ
+  // threshold and is optional: blank, the answer says what the threshold is and asks for the amount.
+  "partd-appeal-ladder",
+  "ma-appeal-ladder",
   "pasi",
   "pbac-hmb",
   // spec-v1029: it stays, and now it earns the line. Every finding here is a

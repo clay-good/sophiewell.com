@@ -170,3 +170,13 @@ eCFR, current as of September 24, 2026: 42 CFR 405.1200–405.1206, 422.136, 422
 - `aca-external-review-clock`: a notice received October 31 gives a deadline of the
   first day of the fifth month, because February 31 doesn't exist.
 - `medicaid-appeal-clock`: a state window of 80 days is refused as outside 90–120.
+
+## Build status
+
+- **Built 2026-09-26:** `partd-coverage-clock`, `partd-appeal-ladder`, `ma-org-determination-clock`,
+  `ma-appeal-ladder`, with the date helpers and the dated-value accessor from
+  [spec-v1501](spec-v1501.md) §2 and §5. Every number re-read in the eCFR on September 25, 2026; the
+  2027 amounts in controversy confirmed in Federal Register 2026-19016, which applies them to requests
+  **filed** on or after January 1, 2027, so the tools choose the edition by filing date.
+- **Not yet built:** tools 5-8 (`erisa-claim-clock`, `aca-external-review-clock`,
+  `medicaid-appeal-clock`, `qio-discharge-appeal-clock`) and the two backfills.

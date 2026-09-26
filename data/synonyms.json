@@ -9378,6 +9378,50 @@
       ],
       "tile": "thomazeau-occupation",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "part d coverage determination",
+        "part d exception deadline",
+        "formulary exception clock",
+        "tiering exception",
+        "part d 72 hours"
+      ],
+      "tile": "partd-coverage-clock",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "part d appeal",
+        "part d redetermination deadline",
+        "part d reconsideration",
+        "part d alj hearing",
+        "drug plan appeal deadline"
+      ],
+      "tile": "partd-appeal-ladder",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "medicare advantage prior authorization deadline",
+        "organization determination",
+        "ma coverage decision",
+        "part c decision clock",
+        "ma 14 day extension"
+      ],
+      "tile": "ma-org-determination-clock",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "medicare advantage appeal",
+        "ma reconsideration deadline",
+        "part c appeal",
+        "ma alj hearing",
+        "medicare advantage denial appeal"
+      ],
+      "tile": "ma-appeal-ladder",
+      "audience": "clinicians"
     }
   ]
 }
