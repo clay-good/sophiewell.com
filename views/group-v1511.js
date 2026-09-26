@@ -4,6 +4,7 @@ import { el, clear } from '../lib/dom.js';
 import * as CS from '../lib/cs-dispensing-v1511.js';
 import * as DS from '../lib/days-supply-v1511.js';
 import * as CBU from '../lib/compounding-bud-v1511.js';
+import * as IP from '../lib/ipledge-v1511.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -172,6 +173,24 @@ export const renderers = {
       const r = CBU.compoundingBud(args);
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'BUD', value: r.bandLabel }]);
+      list(o, r.notes);
+      note(o, r.note);
+    }));
+  },
+  'ipledge-dispense-window'(root) {
+    const pairs = [['ipl-can', 'canGetPregnant'], ['ipl-start', 'startDate'], ['ipl-first', 'firstPrescription'], ['ipl-check', 'checkDate']];
+    selectField(root, 'Can the patient get pregnant?', 'ipl-can', IP.YES_NO);
+    dateInput(root, 'Pregnancy test specimen collection date (or office visit date, if the patient cannot get pregnant)', 'ipl-start', 'date');
+    selectField(root, 'First prescription of the course? (optional)', 'ipl-first', IP.YES_NO);
+    dateInput(root, 'Date to check (blank for today)', 'ipl-check', 'date');
+    const ids = pairs.map(([d]) => d);
+    const o = out(); root.appendChild(o);
+    wire(ids, () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = IP.ipledgeWindow(args);
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Window', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
     }));

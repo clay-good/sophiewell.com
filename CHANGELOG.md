@@ -6,6 +6,34 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Denial Next Step and Deadline.** From the group and reason code, the payer type and the remittance date:
+  the category, the usual next step and the appeal or corrected-claim deadline, from an original mapping of
+  reviewed reason codes (an unmapped code is never guessed). See docs/spec-v1516.md.
+
+- **Adherence: PDC, MPR and Gap Days.** From one drug's fills: the proportion of days covered with early refills
+  shifted forward (as the Part D adherence measures count it), the uncapped possession ratio, and each gap
+  with its dates. See docs/spec-v1513.md.
+
+- **Medication Synchronization Short Fills.** The sync date and each medication's one-time short fill, rounded up to
+  whole units, with the Part D daily cost-sharing rule for short fills (42 CFR 423.153(b)(4)).
+  See docs/spec-v1513.md.
+
+- **Step Therapy History Check.** Each drug tried, dated and counted against the plan's steps (agents and
+  minimum days), with overlaps, intolerance counted only when the plan accepts it, and the Medicare Advantage
+  Part B lookback (42 CFR 422.136). See docs/spec-v1502.md.
+
+- **Payer Criteria Checklist.** Pasted payer criteria split at the policy's own numbering, each item marked
+  met, not met or not documented with its evidence, and the stated all-of / one-of logic evaluated; with no
+  stated logic it evaluates nothing. See docs/spec-v1502.md.
+
+- **Medicaid MAGI Household and Income.** For each person in the home, the household under 42 CFR 435.603(f)
+  (tax filer, dependent with its three exceptions, non-filer; spouses always together), the counted income
+  and the percent of the poverty line; sizes often differ person to person. See docs/spec-v1507.md.
+
+- **iPLEDGE Dispense Window (Isotretinoin).** The "do not dispense after" date (Day 7 from the pregnancy test
+  specimen, 11:59 pm Eastern, or 30 days from the visit) and what a missed first window means before and
+  after the modified REMS takes effect on November 15, 2026. See docs/spec-v1511.md.
+
 - **Amounts Generally Billed (AGB) Percentage.** Allowed amounts over gross charges by the look-back method,
   the most a financial-assistance-eligible patient may be charged, and the date the new percentage must be in
   use (26 CFR 1.501(r)-5). See docs/spec-v1508.md.

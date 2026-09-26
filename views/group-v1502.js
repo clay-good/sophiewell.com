@@ -4,6 +4,8 @@ import { el, clear } from '../lib/dom.js';
 import * as AR from '../lib/auth-runout-v1502.js';
 import * as AU from '../lib/auth-units-request-v1502.js';
 import * as QL from '../lib/quantity-limit-check-v1502.js';
+import * as ST from '../lib/step-therapy-v1502.js';
+import * as PC from '../lib/pa-criteria-v1502.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -28,6 +30,20 @@ function dateInput(root, label, id, type) {
   wrap.appendChild(el('label', { for: id, text: label }));
   wrap.appendChild(el('br'));
   wrap.appendChild(el('input', { id, type }));
+  root.appendChild(wrap);
+}
+function textareaField(root, label, id, placeholder) {
+  const wrap = el('p');
+  wrap.appendChild(el('label', { for: id, text: label }));
+  wrap.appendChild(el('br'));
+  wrap.appendChild(el('textarea', { id, rows: '6', autocomplete: 'off', placeholder }));
+  root.appendChild(wrap);
+}
+function textField(root, label, id, placeholder) {
+  const wrap = el('p');
+  wrap.appendChild(el('label', { for: id, text: label }));
+  wrap.appendChild(el('br'));
+  wrap.appendChild(el('input', { id, type: 'text', autocomplete: 'off', placeholder }));
   root.appendChild(wrap);
 }
 function list(root, items) {
@@ -107,6 +123,44 @@ export const renderers = {
       const r = QL.quantityLimitCheck(args);
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Result', value: r.bandLabel }]);
+      list(o, r.notes);
+      note(o, r.note);
+    }));
+  },
+  'step-therapy-history'(root) {
+    const pairs = [['st-steps', 'steps'], ['st-trials', 'trials'], ['st-accepts', 'acceptsIntolerance'], ['st-plan', 'planType'], ['st-request', 'requestDate'], ['st-lastclaim', 'lastClaim']];
+    textareaField(root, 'Required steps, one per line: step name, number of agents, minimum days', 'st-steps', 'conventional DMARD, 2, 90');
+    textareaField(root, 'Drugs tried, one per line: drug, step, start date, stop date or "ongoing", reason (inadequate response, intolerance, contraindication, still taking)', 'st-trials', 'methotrexate, conventional DMARD, 2025-01-10, 2025-06-30, inadequate response');
+    selectField(root, 'Does the plan accept intolerance or a contraindication in place of a full trial?', 'st-accepts', ST.YES_NO);
+    selectField(root, 'Plan type (optional)', 'st-plan', ST.PLAN_TYPES);
+    dateInput(root, 'Request date (Medicare Advantage lookback; optional)', 'st-request', 'date');
+    dateInput(root, 'Last claim for the requested drug (optional)', 'st-lastclaim', 'date');
+    const ids = pairs.map(([d]) => d);
+    const o = out(); root.appendChild(o);
+    wire(ids, () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = ST.stepTherapyHistory(args);
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Steps', value: r.bandLabel }]);
+      list(o, r.notes);
+      note(o, r.note);
+    }));
+  },
+  'pa-criteria-checklist'(root) {
+    const pairs = [['pac-text', 'criteria'], ['pac-drug', 'drug'], ['pac-plan', 'plan']];
+    note(root, 'Paste the criteria from the payer\'s policy, keeping its numbering, and end each item with [met], [not met] or [not documented]; add "-- " and where the evidence is.');
+    textareaField(root, 'Criteria, one item per line', 'pac-text', '1. Diagnosis of rheumatoid arthritis [met] -- progress note 2026-08-14');
+    textField(root, 'Drug (optional)', 'pac-drug', 'e.g. adalimumab');
+    textField(root, 'Plan name (optional)', 'pac-plan', 'e.g. the plan on the card');
+    const ids = pairs.map(([d]) => d);
+    const o = out(); root.appendChild(o);
+    wire(ids, () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = PC.paCriteriaChecklist(args);
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Criteria', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
     }));

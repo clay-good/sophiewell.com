@@ -89,3 +89,12 @@ question for the plan.
   period of 90 days left out, and 91 days kept.
 - `adherence-outreach-list`: a patient at exactly 80% reachable; one day past it.
 - `med-sync-plan`: a short fill rounding to whole tablets.
+
+## Build status
+
+- **Built 2026-09-26:** `mpr-gap-days` and `med-sync-plan`, fills and medications one per line in a text box.
+  PDC follows the Technical Notes' Attachment L (covered days over period days, overlapping fills of the
+  same ingredient shifted forward); MPR is uncapped. The sync plan rounds short fills up to whole units and
+  cites the Part D daily cost-sharing rule for short fills (42 CFR 423.153(b)(4)).
+- **Not yet built:** `pdc-star` and `adherence-outreach-list` (need the multi-patient upload and the
+  per-ingredient measure mapping this spec describes).

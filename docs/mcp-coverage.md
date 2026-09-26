@@ -8641,6 +8641,27 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/appeal-path-v1505.js (spec-v1505: Which appeal rules apply — administrative disclaimer)
 - `which-appeal-path`
 
+### lib/denial-next-step-v1516.js (spec-v1516: Denial next step and deadline — administrative disclaimer)
+- `denial-next-step`
+
+### lib/adherence-v1513.js (spec-v1513: Adherence: PDC, MPR and gap days — administrative disclaimer)
+- `mpr-gap-days`
+
+### lib/adherence-v1513.js (spec-v1513: Medication synchronization short fills — administrative disclaimer)
+- `med-sync-plan`
+
+### lib/step-therapy-v1502.js (spec-v1502: Step therapy history check — administrative disclaimer)
+- `step-therapy-history`
+
+### lib/pa-criteria-v1502.js (spec-v1502: Payer criteria checklist — administrative disclaimer)
+- `pa-criteria-checklist`
+
+### lib/magi-household-v1507.js (spec-v1507: Medicaid MAGI household and income — administrative disclaimer)
+- `magi-household`
+
+### lib/ipledge-v1511.js (spec-v1511: iPLEDGE dispense window (isotretinoin) — administrative disclaimer)
+- `ipledge-dispense-window`
+
 ### lib/post-acute-clocks-v1514.js (spec-v1514: Home health certification and OASIS clock — administrative disclaimer)
 - `home-health-cert-clock`
 

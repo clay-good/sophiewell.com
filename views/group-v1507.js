@@ -7,6 +7,7 @@ import * as MW from '../lib/medicare-enrollment-window-v1507.js';
 import * as SE from '../lib/aca-sep-window-v1507.js';
 import * as WR from '../lib/medicaid-work-requirement-v1507.js';
 import * as ML from '../lib/msp-lis-v1507.js';
+import * as MH from '../lib/magi-household-v1507.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -31,6 +32,13 @@ function dateInput(root, label, id, type) {
   wrap.appendChild(el('label', { for: id, text: label }));
   wrap.appendChild(el('br'));
   wrap.appendChild(el('input', { id, type }));
+  root.appendChild(wrap);
+}
+function textareaField(root, label, id, placeholder) {
+  const wrap = el('p');
+  wrap.appendChild(el('label', { for: id, text: label }));
+  wrap.appendChild(el('br'));
+  wrap.appendChild(el('textarea', { id, rows: '6', autocomplete: 'off', placeholder }));
   root.appendChild(wrap);
 }
 function list(root, items) {
@@ -205,6 +213,25 @@ export const renderers = {
       const r = ML.extraHelpMspScreen(args);
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Likely', value: r.bandLabel }]);
+      list(o, r.notes);
+      note(o, r.note);
+    }));
+  },
+  'magi-household'(root) {
+    const pairs = [['mh-people', 'people'], ['mh-region', 'region'], ['mh-age', 'ageRule'], ['mh-year', 'year']];
+    note(root, 'One person per line, 9 items separated by commas: name, age, files taxes (yes, no or joint), claimed by (name or -), spouse in the home (name or -), parents in the home (names separated by ; or -), required to file (yes or no), annual MAGI income, full-time student (yes or no).');
+    textareaField(root, 'Everyone in the home', 'mh-people', 'Ana, 40, joint, -, Ben, -, yes, 30000, no');
+    selectField(root, 'Where the household lives', 'mh-region', MH.REGIONS);
+    selectField(root, 'State age rule for children', 'mh-age', MH.AGE_RULES);
+    numField(root, 'Poverty guideline year (blank for this year)', 'mh-year', 'e.g. 2026', '2100', '1');
+    const ids = pairs.map(([d]) => d);
+    const o = out(); root.appendChild(o);
+    wire(ids, () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = MH.magiHousehold(args);
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: null }, { label: 'Household sizes', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
     }));

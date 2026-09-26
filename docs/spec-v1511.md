@@ -172,5 +172,9 @@ and reproduces no chapter text.
 - **Built 2026-09-26:** `compounding-bud`, every limit taken from USP's own fact sheet (the Mississippi Board of
   Pharmacy copy), including the Category 1 rule that has no frozen limit and the Category 3 requirement of
   sterility testing. The longer nonsterile BUDs a monograph or stability data can support are not computed.
-- **Not yet built:** `ipledge-dispense-window`, `imid-rems-fill-window` (each needs its REMS document read
-  first, as this spec requires).
+- **Built 2026-09-26:** `ipledge-dispense-window`, from the iPLEDGE Pharmacist Guide and the Guide for Patients
+  Who Can Get Pregnant (March 2023): "add 6 to the date of your pregnancy test", 11:59 pm Eastern on Day 7,
+  30 days from the visit otherwise. The FDA page confirms the November 15, 2026 implementation this spec
+  states (some secondary sources still give August 8). The 19-day wait after a missed first window applies
+  before that date. New ledger row `fda-ipledge-rems`.
+- **Not yet built:** `imid-rems-fill-window` (needs the lenalidomide REMS document read first).

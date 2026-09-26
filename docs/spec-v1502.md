@@ -120,6 +120,10 @@ One unit test file per tool. The cases that must exist:
   (calls `ndcHcpcsUnits()` from `lib/billing-v81.js` per administration, so a partial unit rounds up on
   each claim), and `quantity-limit-check` (cites 42 CFR 423.578(b), which treats a dose restriction,
   including the dosage form, as a formulary exception).
-- **Not yet built:** `pa-criteria-checklist`, `step-therapy-history` (both need a repeating-row input),
-  `medicare-ffs-pa-required` (needs the CMS lists as dated data), and `auth-runout`'s CSV batch mode
-  ([spec-v1501](spec-v1501.md) §3).
+- **Built 2026-09-26:** `pa-criteria-checklist` and `step-therapy-history`, each taking its rows one per line in a
+  text box (the `ca-apot-calculator` pattern) until the upload workbench exists. The checklist reads the
+  marks inline (`[met]`, `[not met]`, `[not documented]`, then `--` and the evidence) and evaluates only the
+  "all of" / "one of" the policy states. The step therapy tool applies the 365-day lookback of 42 CFR
+  422.136(a)(1) for a Medicare Advantage Part B drug.
+- **Not yet built:** `medicare-ffs-pa-required` (needs the CMS OPD list re-verified and the DMEPOS list as
+  dated data), and `auth-runout`'s CSV batch mode ([spec-v1501](spec-v1501.md) §3).

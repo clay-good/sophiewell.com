@@ -9951,6 +9951,83 @@
       ],
       "tile": "which-appeal-path",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "proportion of days covered",
+        "medication possession ratio",
+        "pdc calculator",
+        "refill gap days",
+        "medication adherence pdc"
+      ],
+      "tile": "mpr-gap-days",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "med sync",
+        "medication synchronization",
+        "short fill to sync",
+        "align refill dates",
+        "appointment based model"
+      ],
+      "tile": "med-sync-plan",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "step therapy history",
+        "step therapy requirements met",
+        "fail first documentation",
+        "prior drug trials",
+        "step therapy lookback"
+      ],
+      "tile": "step-therapy-history",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "payer criteria checklist",
+        "prior authorization criteria",
+        "coverage criteria checklist",
+        "medical policy checklist",
+        "pa criteria met"
+      ],
+      "tile": "pa-criteria-checklist",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "magi household",
+        "medicaid household size",
+        "who counts in medicaid household",
+        "magi income medicaid",
+        "non filer rules medicaid"
+      ],
+      "tile": "magi-household",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "ipledge window",
+        "isotretinoin 7 day window",
+        "do not dispense after date",
+        "ipledge 19 day lockout",
+        "isotretinoin pickup deadline"
+      ],
+      "tile": "ipledge-dispense-window",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "denial next step",
+        "what to do with a denial",
+        "carc next step",
+        "claim denial deadline",
+        "denial reason code action"
+      ],
+      "tile": "denial-next-step",
+      "audience": "clinicians"
     }
   ]
 }

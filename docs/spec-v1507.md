@@ -193,4 +193,6 @@ CMS-2454-IFC (91 FR, June 3, 2026).
   individual and couple. The statute says "less than" for SLMB, QI and Extra Help; the screen follows the
   published table so no one at exactly the printed limit is turned away. Extra Help uses the family size
   in 423.772, dependents included. New ledger row `medicare-msp-lis-resources`.
-- **Not yet built:** `magi-household`.
+- **Built 2026-09-26:** `magi-household`, from 42 CFR 435.603 read in the eCFR: (f)(1)-(4) for each person, with
+  the three (f)(2) exceptions, the state's age rule, and (d)(2)'s exclusion of a child or dependent not
+  required to file. Everyone in the home is one line in a text box; who claims whom is the reader's entry.

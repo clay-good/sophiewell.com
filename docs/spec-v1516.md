@@ -87,3 +87,15 @@ code, and a CSV to send with a payment dispute.
 - `appeal-worklist`: a past-deadline claim goes to the separate list.
 - `underpayment-check`: a line paid exactly at contract is not flagged; one cent under
   is.
+
+## Build status
+
+- **Built 2026-09-26:** `denial-next-step` (group P). The mapping is original and small: 28 reason codes, each
+  checked active on x12.org, sorted into the categories above plus "missing or invalid claim information"
+  (for codes like 16 and 252, which ask for a corrected claim, not an appeal). No X12 description text is
+  reproduced; an unmapped code gets "no mapping", never a guess. A PR group code on a non-patient category
+  explains the assignment to the patient. Deadlines reuse the windows [spec-v1503](spec-v1503.md) verified;
+  the corrected Medicare claim date matches `timely-filing` (the date of service plus 365 days). Medicaid
+  provider windows are the reader's entry.
+- **Not yet built:** `denial-pattern-report`, `appeal-worklist` and `underpayment-check` (need the 835 upload
+  of [spec-v1515](spec-v1515.md)).

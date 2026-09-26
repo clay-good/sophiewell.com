@@ -936,6 +936,12 @@ import vialRoundingV1512 from './adapters/vial-rounding-v1512.js';
 import rateEscalationV1512 from './adapters/rate-escalation-v1512.js';
 import doseCalendarV1512 from './adapters/dose-calendar-v1512.js';
 import appealPathV1505 from './adapters/appeal-path-v1505.js';
+import denialNextStepV1516 from './adapters/denial-next-step-v1516.js';
+import adherenceV1513 from './adapters/adherence-v1513.js';
+import stepTherapyV1502 from './adapters/step-therapy-v1502.js';
+import paCriteriaV1502 from './adapters/pa-criteria-v1502.js';
+import magiHouseholdV1507 from './adapters/magi-household-v1507.js';
+import ipledgeV1511 from './adapters/ipledge-v1511.js';
 import compoundingBudV1511 from './adapters/compounding-bud-v1511.js';
 import mspLisV1507 from './adapters/msp-lis-v1507.js';
 import hospiceCapV1514 from './adapters/hospice-cap-v1514.js';
@@ -1911,6 +1917,12 @@ const ADAPTER_MODULES = [
   ['rate-escalation-v1512', rateEscalationV1512],
   ['dose-calendar-v1512', doseCalendarV1512],
   ['appeal-path-v1505', appealPathV1505],
+  ['denial-next-step-v1516', denialNextStepV1516],
+  ['adherence-v1513', adherenceV1513],
+  ['step-therapy-v1502', stepTherapyV1502],
+  ['pa-criteria-v1502', paCriteriaV1502],
+  ['magi-household-v1507', magiHouseholdV1507],
+  ['ipledge-v1511', ipledgeV1511],
   ['compounding-bud-v1511', compoundingBudV1511],
   ['msp-lis-v1507', mspLisV1507],
   ['hospice-cap-v1514', hospiceCapV1514],
