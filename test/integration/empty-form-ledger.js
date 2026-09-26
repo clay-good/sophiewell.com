@@ -86,6 +86,9 @@ export const ANSWERS_AN_EMPTY_FORM = new Set([
   // threshold and is optional: blank, the answer says what the threshold is and asks for the amount.
   "partd-appeal-ladder",
   "ma-appeal-ladder",
+  // spec-v1503: the same shape: the answer runs from the entered notice date; the state's fair hearing
+  // window is optional and only counts the hearing deadline, which is asked for when a resolution date is given.
+  "medicaid-appeal-clock",
   "pasi",
   "pbac-hmb",
   // spec-v1029: it stays, and now it earns the line. Every finding here is a

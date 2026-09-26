@@ -1021,6 +1021,10 @@ const UTILITIES = [
   { id: 'partd-appeal-ladder', name: 'Part D Appeal Ladder', group: 'C', audiences: ['billers', 'patients', 'clinicians'], clinical: false },
   { id: 'ma-org-determination-clock', name: 'Medicare Advantage Coverage Decision Clock', group: 'C', audiences: ['billers', 'patients', 'clinicians'], clinical: false },
   { id: 'ma-appeal-ladder', name: 'Medicare Advantage Appeal Ladder', group: 'C', audiences: ['billers', 'patients', 'clinicians'], clinical: false },
+  { id: 'erisa-claim-clock', name: 'Employer Plan Claim and Appeal Clock (ERISA)', group: 'C', audiences: ['billers', 'patients', 'clinicians'], clinical: false },
+  { id: 'aca-external-review-clock', name: 'External Review Clock (Marketplace and Employer Plans)', group: 'C', audiences: ['billers', 'patients', 'clinicians'], clinical: false },
+  { id: 'medicaid-appeal-clock', name: 'Medicaid Managed Care Appeal Clock', group: 'C', audiences: ['billers', 'patients', 'clinicians'], clinical: false },
+  { id: 'qio-discharge-appeal-clock', name: 'Medicare Fast Appeal Clock (QIO)', group: 'C', audiences: ['billers', 'patients', 'clinicians'], clinical: false },
   { id: 'overpayment-60day', name: '60-Day Overpayment Report-and-Return Clock', group: 'C', audiences: ['billers'], clinical: false },
   // spec-v82: patient responsibility & coordination of benefits. v78 computes
   // what the payer pays; these four compute what the PATIENT owes -- Medicare

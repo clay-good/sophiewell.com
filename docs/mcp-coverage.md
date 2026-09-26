@@ -8548,6 +8548,18 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/ma-appeals-v1503.js (spec-v1503: Medicare Advantage organization-determination clock — administrative disclaimer)
 - `ma-org-determination-clock`
 
+### lib/erisa-claim-clock-v1503.js (spec-v1503: ERISA claim and appeal clock — administrative disclaimer)
+- `erisa-claim-clock`
+
+### lib/aca-external-review-v1503.js (spec-v1503: Federal external review clock — administrative disclaimer)
+- `aca-external-review-clock`
+
+### lib/medicaid-appeal-clock-v1503.js (spec-v1503: Medicaid managed care appeal clock — administrative disclaimer)
+- `medicaid-appeal-clock`
+
+### lib/qio-discharge-appeal-v1503.js (spec-v1503: Medicare QIO fast-appeal clock — administrative disclaimer)
+- `qio-discharge-appeal-clock`
+
 ### lib/ma-appeals-v1503.js (spec-v1503: Medicare Advantage appeal levels and filing deadlines — administrative disclaimer)
 - `ma-appeal-ladder`
 

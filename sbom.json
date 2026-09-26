@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:ee51f7a2-1039-5b68-8ad4-6f9a9fbe63f2",
+  "serialNumber": "urn:uuid:f3ca9b5f-1a50-5ea5-8834-e15fe6eb9675",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-26T01:24:41.532Z",
+    "timestamp": "2026-09-26T01:49:42.841Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1864 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1868 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4c452efb887b28a13762aa2b0b21d63eafbbf28b65bde58cb1edcdbd92e55854"
+          "content": "3f15d3be28b0d15992be26825d15d1e23cd0410e7b7879ad93350f9144315e71"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "119365"
+          "value": "119593"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "bc1632bc70cdab309508b7e7d49bb811be0543ae90ec1ab575f34e3d52bdf216"
+          "content": "a4e842e73648e6c17185aeb411ef80861ca7f556bb2bc4c0472a08a98c1b5606"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "548948"
+          "value": "549613"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "063b71614ae77e3007ad342556d4e6460a3e44f0637f4c487aef43ee4e9e872d"
+          "content": "4b6eddc7a340a2dd517fdc93b1f69a6b763f26516b22aab731d6e88972173f0a"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "232365"
+          "value": "232898"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "dd251829b1ae16111aee8c90ffb985a4b3d8589107098043ea60fdfd0a9a2134"
+          "content": "84b6889b945d96428ee976ef3fcaa4498f656bf1260b6f8b1f95d77d31683fca"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "106793"
+          "value": "107070"
         }
       ]
     },
@@ -577,6 +577,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "11571"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/aca-external-review-v1503.js",
+      "type": "file",
+      "name": "lib/aca-external-review-v1503.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "91a246b503d6b4515b68e1e81f0becb106add38df8471b20a31f51de4792c595"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4702"
         }
       ]
     },
@@ -6083,6 +6104,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/erisa-claim-clock-v1503.js",
+      "type": "file",
+      "name": "lib/erisa-claim-clock-v1503.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "693e568d82c0f744ef309e5a50d1f94e7d28497fb91f17a5e9517e15a4371452"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8331"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/essex-lopresti-calcaneal-v1498.js",
       "type": "file",
       "name": "lib/essex-lopresti-calcaneal-v1498.js",
@@ -11564,6 +11606,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/medicaid-appeal-clock-v1503.js",
+      "type": "file",
+      "name": "lib/medicaid-appeal-clock-v1503.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0f711b9359c0c05af914ea1cf45c8c39f15272629770512adf59d5c90eefbf04"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6220"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/medication-v4.js",
       "type": "file",
       "name": "lib/medication-v4.js",
@@ -11696,7 +11759,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9e802869cf772a0f0db552491cb5f4429ecd27e6dff157d438522d965e983054"
+          "content": "33595f313af24a8cc0fead44f4bf7d7bee74487191e94f5bf316ff677d9617ad"
         }
       ],
       "properties": [
@@ -11706,7 +11769,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2601157"
+          "value": "2604189"
         }
       ]
     },
@@ -16390,6 +16453,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4036"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/qio-discharge-appeal-v1503.js",
+      "type": "file",
+      "name": "lib/qio-discharge-appeal-v1503.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "899a656cb1a6fcd34359c81e9ccc6cc17ebd3e060653b8e92328fe38d0bb8129"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5204"
         }
       ]
     },
@@ -21619,6 +21703,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "6221"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/aca-external-review-v1503.js",
+      "type": "file",
+      "name": "mcp/adapters/aca-external-review-v1503.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7a1e981238e790841145a3c231b61531c646382f7d878f7a6cf213940d0939de"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "913"
         }
       ]
     },
@@ -26915,6 +27020,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/erisa-claim-clock-v1503.js",
+      "type": "file",
+      "name": "mcp/adapters/erisa-claim-clock-v1503.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4ce6ae90a58bc5b5191fa42f852c3aab97f4bf8bfde0baf5d55486bb12768670"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1475"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/essex-lopresti-calcaneal-v1498.js",
       "type": "file",
       "name": "mcp/adapters/essex-lopresti-calcaneal-v1498.js",
@@ -32165,6 +32291,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/medicaid-appeal-clock-v1503.js",
+      "type": "file",
+      "name": "mcp/adapters/medicaid-appeal-clock-v1503.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "99092c88e46211b260c961ff43295f17009ccad2ba0ca64ca29dc475a43baf45"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1570"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/medication-v4.js",
       "type": "file",
       "name": "mcp/adapters/medication-v4.js",
@@ -36529,6 +36676,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1148"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/qio-discharge-appeal-v1503.js",
+      "type": "file",
+      "name": "mcp/adapters/qio-discharge-appeal-v1503.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "40e8c7e5c441a3fc5b493b7e4c26455d8d988dd44f19ea023e3cfb170f0fc86e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1127"
         }
       ]
     },
@@ -41348,7 +41516,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6c9c31767c762bf849dcba55a0ec20bd51c5bf2f4694ca5ab5728b35a47eaf20"
+          "content": "426856a34111675430c289f58e04a742677e1458355b46230ad8223eedbb4037"
         }
       ],
       "properties": [
@@ -41358,7 +41526,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "108935"
+          "value": "109479"
         }
       ]
     },
@@ -44645,7 +44813,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3bdd3b20e4b4cc8c9c4bb2950a9b9d10a0dcb2825dbb06b5e1d6babd90739573"
+          "content": "e8197a48dd6f2c022795a2fcad41c58ef689bb0f54de9d554b4afc46ae2f8f16"
         }
       ],
       "properties": [
@@ -44655,7 +44823,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "5879"
+          "value": "10845"
         }
       ]
     },
@@ -75658,6 +75826,7 @@
         "urn:sophiewell:file:source:lib/abc-psi-v1448.js",
         "urn:sophiewell:file:source:lib/abc-scale-v729.js",
         "urn:sophiewell:file:source:lib/ablett-tetanus-v576.js",
+        "urn:sophiewell:file:source:lib/aca-external-review-v1503.js",
         "urn:sophiewell:file:source:lib/acef-v595.js",
         "urn:sophiewell:file:source:lib/acidbase-v129.js",
         "urn:sophiewell:file:source:lib/acr-eular-boolean-v671.js",
@@ -75920,6 +76089,7 @@
         "urn:sophiewell:file:source:lib/eoss-v713.js",
         "urn:sophiewell:file:source:lib/erefs-v618.js",
         "urn:sophiewell:file:source:lib/erez-dic-v559.js",
+        "urn:sophiewell:file:source:lib/erisa-claim-clock-v1503.js",
         "urn:sophiewell:file:source:lib/essex-lopresti-calcaneal-v1498.js",
         "urn:sophiewell:file:source:lib/estimators-v233.js",
         "urn:sophiewell:file:source:lib/eu-tirads-v796.js",
@@ -76181,6 +76351,7 @@
         "urn:sophiewell:file:source:lib/mcpherson-pji-v1427.js",
         "urn:sophiewell:file:source:lib/mda-psoriatic-v672.js",
         "urn:sophiewell:file:source:lib/measles-case-def-v872.js",
+        "urn:sophiewell:file:source:lib/medicaid-appeal-clock-v1503.js",
         "urn:sophiewell:file:source:lib/medication-v4.js",
         "urn:sophiewell:file:source:lib/medication-v5.js",
         "urn:sophiewell:file:source:lib/meld3-v678.js",
@@ -76411,6 +76582,7 @@
         "urn:sophiewell:file:source:lib/puqe24-v553.js",
         "urn:sophiewell:file:source:lib/push-tool-v662.js",
         "urn:sophiewell:file:source:lib/qcsi-v698.js",
+        "urn:sophiewell:file:source:lib/qio-discharge-appeal-v1503.js",
         "urn:sophiewell:file:source:lib/qpitt-v587.js",
         "urn:sophiewell:file:source:lib/query-compute.js",
         "urn:sophiewell:file:source:lib/query-fill.js",
@@ -77552,6 +77724,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/abc-psi-v1448.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/abc-scale-v729.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ablett-tetanus-v576.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/aca-external-review-v1503.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/acef-v595.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/acidbase-v129.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/acr-eular-boolean-v671.js",
@@ -77804,6 +77977,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/eoss-v713.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/erefs-v618.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/erez-dic-v559.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/erisa-claim-clock-v1503.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/essex-lopresti-calcaneal-v1498.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/estimators-v233.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/eu-tirads-v796.js",
@@ -78054,6 +78228,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/mcpherson-pji-v1427.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mda-psoriatic-v672.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/measles-case-def-v872.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/medicaid-appeal-clock-v1503.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/medication-v4.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/medication-v5.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/meld3-v678.js",
@@ -78262,6 +78437,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/puqe24-v553.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/push-tool-v662.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/qcsi-v698.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/qio-discharge-appeal-v1503.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/qpitt-v587.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/quintero-ttts-v831.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/rachs1-v541.js",
@@ -78594,7 +78770,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "ee51f7a210394b68"
+      "value": "f3ca9b5f1a503ea5"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -78606,7 +78782,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2837"
+      "value": "2845"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

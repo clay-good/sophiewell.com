@@ -173,10 +173,15 @@ eCFR, current as of September 24, 2026: 42 CFR 405.1200–405.1206, 422.136, 422
 
 ## Build status
 
-- **Built 2026-09-26:** `partd-coverage-clock`, `partd-appeal-ladder`, `ma-org-determination-clock`,
-  `ma-appeal-ladder`, with the date helpers and the dated-value accessor from
-  [spec-v1501](spec-v1501.md) §2 and §5. Every number re-read in the eCFR on September 25, 2026; the
-  2027 amounts in controversy confirmed in Federal Register 2026-19016, which applies them to requests
-  **filed** on or after January 1, 2027, so the tools choose the edition by filing date.
-- **Not yet built:** tools 5-8 (`erisa-claim-clock`, `aca-external-review-clock`,
-  `medicaid-appeal-clock`, `qio-discharge-appeal-clock`) and the two backfills.
+- **Built 2026-09-26:** all eight tools. Every number was re-read in the eCFR on September 25, 2026, and
+  the text added four rules this spec did not state, all now implemented:
+  - 45 CFR 147.136(d)(2)(i): a four-month deadline with no matching date is the first day of the fifth
+    month, and a deadline on a weekend or federal holiday moves to the next business day.
+  - 42 CFR 438.210(d): the 7-day prior-authorization limit applies to rating periods starting on or after
+    January 1, 2026 (the plan's rating period, not the request date).
+  - 42 CFR 438.420: continued benefits count 10 days from when the plan sent the notice.
+  - 42 CFR 405.1206(b)(6): after discharge, a late request may still be made within 30 days, without the
+    liability protection.
+  The 2027 amounts in controversy (Federal Register 2026-19016) apply to requests filed on or after
+  January 1, 2027, so the ladders choose the edition by filing year.
+- **Not yet built:** the two backfills (`pa-turnaround`, `appeal-deadline`).

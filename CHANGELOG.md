@@ -6,6 +6,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Employer Plan Claim and Appeal Clock (ERISA).** Claim and appeal decision deadlines for employer health plans:
+  urgent, concurrent, pre-service and post-service, with the one extension and the 180-day appeal window. See docs/spec-v1503.md.
+
+- **External Review Clock.** The four-month external-review filing deadline, including the first-of-the-fifth-month
+  and weekend rules, with the plan's and the reviewer's deadlines (45 CFR 147.136). See docs/spec-v1503.md.
+
+- **Medicaid Managed Care Appeal Clock.** The 60-day plan appeal, keeping benefits during it, the plan's decision,
+  and the state fair hearing within the state's own 90-120 day window. See docs/spec-v1503.md.
+
+- **Medicare Fast Appeal Clock (QIO).** The request deadline for a hospital discharge or ending services, the
+  QIO's decision time, and the liability protection for a timely request. See docs/spec-v1503.md.
+
 - **Part D Coverage Decision Clock.** The Part D coverage-determination and exception deadline in hours
   from receipt (42 CFR 423.568-423.572), with the date a missed case goes to independent review. See
   docs/spec-v1503.md.

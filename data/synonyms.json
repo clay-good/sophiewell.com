@@ -9422,6 +9422,50 @@
       ],
       "tile": "ma-appeal-ladder",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "erisa claim deadline",
+        "employer plan appeal deadline",
+        "erisa appeal 180 days",
+        "pre-service claim deadline",
+        "group health plan claim clock"
+      ],
+      "tile": "erisa-claim-clock",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "external review deadline",
+        "independent external review",
+        "aca external review",
+        "four months external review",
+        "final internal denial"
+      ],
+      "tile": "aca-external-review-clock",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "medicaid appeal deadline",
+        "medicaid managed care appeal",
+        "state fair hearing deadline",
+        "continuation of benefits medicaid",
+        "medicaid 60 day appeal"
+      ],
+      "tile": "medicaid-appeal-clock",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "qio appeal",
+        "fast appeal medicare",
+        "hospital discharge appeal",
+        "notice of medicare non-coverage",
+        "immediate review discharge"
+      ],
+      "tile": "qio-discharge-appeal-clock",
+      "audience": "clinicians"
     }
   ]
 }

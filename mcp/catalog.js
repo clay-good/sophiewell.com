@@ -911,6 +911,10 @@ import glenoidTrackV1571 from './adapters/glenoid-track-v1571.js';
 import thomazeauOccupationV1572 from './adapters/thomazeau-occupation-v1572.js';
 import partdAppealsV1503 from './adapters/partd-appeals-v1503.js';
 import maAppealsV1503 from './adapters/ma-appeals-v1503.js';
+import erisaClaimClockV1503 from './adapters/erisa-claim-clock-v1503.js';
+import acaExternalReviewV1503 from './adapters/aca-external-review-v1503.js';
+import medicaidAppealClockV1503 from './adapters/medicaid-appeal-clock-v1503.js';
+import qioDischargeAppealV1503 from './adapters/qio-discharge-appeal-v1503.js';
 import nurseStaffingRatioCheckV1396 from './adapters/nurse-staffing-ratio-check-v1396.js';
 import caWpvReportClockV1396 from './adapters/ca-wpv-report-clock-v1396.js';
 import mandatoryOvertimeCheckV1396 from './adapters/mandatory-overtime-check-v1396.js';
@@ -1858,6 +1862,10 @@ const ADAPTER_MODULES = [
   ['thomazeau-occupation-v1572', thomazeauOccupationV1572],
   ['partd-appeals-v1503', partdAppealsV1503],
   ['ma-appeals-v1503', maAppealsV1503],
+  ['erisa-claim-clock-v1503', erisaClaimClockV1503],
+  ['aca-external-review-v1503', acaExternalReviewV1503],
+  ['medicaid-appeal-clock-v1503', medicaidAppealClockV1503],
+  ['qio-discharge-appeal-v1503', qioDischargeAppealV1503],
   ['nurse-staffing-ratio-check-v1396', nurseStaffingRatioCheckV1396],
   ['ca-wpv-report-clock-v1396', caWpvReportClockV1396],
   ['mandatory-overtime-check-v1396', mandatoryOvertimeCheckV1396],

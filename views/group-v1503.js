@@ -1,8 +1,12 @@
-// spec-v1503: renderers for partd-coverage-clock, partd-appeal-ladder, ma-org-determination-clock, ma-appeal-ladder.
+// spec-v1503: renderers for the eight coverage and appeal clocks.
 
 import { el, clear } from '../lib/dom.js';
 import * as PD from '../lib/partd-appeals-v1503.js';
 import * as MA from '../lib/ma-appeals-v1503.js';
+import * as ER from '../lib/erisa-claim-clock-v1503.js';
+import * as AC from '../lib/aca-external-review-v1503.js';
+import * as MD from '../lib/medicaid-appeal-clock-v1503.js';
+import * as QI from '../lib/qio-discharge-appeal-v1503.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -111,6 +115,83 @@ export const renderers = {
       const r = MA.maAppealLadder(args);
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Next step', value: r.bandLabel }]);
+      list(o, r.notes);
+      note(o, r.note);
+    }));
+  },
+  'erisa-claim-clock'(root) {
+    const pairs = [['er-type', 'claimType'], ['er-stage', 'stage'], ['er-received', 'received'], ['er-extended', 'extended'], ['er-extnotice', 'extensionNotice'], ['er-levels', 'levels'], ['er-denial', 'denialReceived']];
+    selectField(root, 'Kind of claim', 'er-type', ER.CLAIM_TYPES);
+    selectField(root, 'What the plan is deciding', 'er-stage', ER.STAGES);
+    dateInput(root, 'Plan received it (time needed for urgent and concurrent care)', 'er-received', 'datetime-local');
+    selectField(root, 'Claims only: did the plan take its one 15-day extension?', 'er-extended', ER.YES_NO);
+    dateInput(root, 'Date of the extension notice', 'er-extnotice', 'date');
+    selectField(root, 'Appeals only: levels of appeal the plan has', 'er-levels', ER.LEVELS);
+    dateInput(root, 'Date the denial was received (for the 180-day appeal window)', 'er-denial', 'date');
+    const ids = pairs.map(([d]) => d);
+    const o = out(); root.appendChild(o);
+    wire(ids, () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = ER.erisaClaimClock(args);
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Deadline', value: r.bandLabel }]);
+      list(o, r.notes);
+      note(o, r.note);
+    }));
+  },
+  'aca-external-review-clock'(root) {
+    const pairs = [['acx-notice', 'noticeReceived'], ['acx-request', 'requestReceived'], ['acx-iro', 'iroReceived']];
+    dateInput(root, 'Final internal denial received', 'acx-notice', 'date');
+    dateInput(root, 'Plan received the external review request (optional)', 'acx-request', 'date');
+    dateInput(root, 'Independent reviewer received the request (optional)', 'acx-iro', 'date');
+    const ids = pairs.map(([d]) => d);
+    const o = out(); root.appendChild(o);
+    wire(ids, () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = AC.acaExternalReviewClock(args);
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Deadline', value: r.bandLabel }]);
+      list(o, r.notes);
+      note(o, r.note);
+    }));
+  },
+  'medicaid-appeal-clock'(root) {
+    const pairs = [['mdc-notice', 'noticeDate'], ['mdc-effective', 'effectiveDate'], ['mdc-received', 'appealReceived'], ['mdc-type', 'appealType'], ['mdc-extended', 'extended'], ['mdc-resolution', 'resolutionDate'], ['mdc-window', 'stateWindow']];
+    dateInput(root, 'Date on the plan\'s adverse benefit determination notice', 'mdc-notice', 'date');
+    dateInput(root, 'Intended effective date of the action (optional)', 'mdc-effective', 'date');
+    dateInput(root, 'Plan received the appeal (optional; time needed if expedited)', 'mdc-received', 'datetime-local');
+    selectField(root, 'Standard or expedited appeal', 'mdc-type', MD.APPEAL_TYPES);
+    selectField(root, 'Did the plan take the 14-day extension?', 'mdc-extended', MD.YES_NO);
+    dateInput(root, 'Date of the plan\'s notice of resolution (optional)', 'mdc-resolution', 'date');
+    numField(root, 'State fair hearing window in days (90 to 120)', 'mdc-window', 'e.g. 120', '120', '1');
+    const ids = pairs.map(([d]) => d);
+    const o = out(); root.appendChild(o);
+    wire(ids, () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = MD.medicaidAppealClock(args);
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Deadline', value: r.bandLabel }]);
+      list(o, r.notes);
+      note(o, r.note);
+    }));
+  },
+  'qio-discharge-appeal-clock'(root) {
+    const pairs = [['qio-setting', 'setting'], ['qio-key', 'keyDate'], ['qio-requested', 'requested'], ['qio-end', 'servicesEnd']];
+    selectField(root, 'What is ending', 'qio-setting', QI.SETTINGS);
+    dateInput(root, 'Planned discharge date, or the date the notice was received', 'qio-key', 'date');
+    dateInput(root, 'Other services only: QIO received the request (optional)', 'qio-requested', 'datetime-local');
+    dateInput(root, 'Other services only: date services are to end (optional)', 'qio-end', 'date');
+    const ids = pairs.map(([d]) => d);
+    const o = out(); root.appendChild(o);
+    wire(ids, () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = QI.qioDischargeAppealClock(args);
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Deadline', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
     }));
