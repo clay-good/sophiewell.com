@@ -32,7 +32,10 @@ function wire(ids, run) {
 export const renderers = {
   'pai-periapical'(root) {
     const pairs = PA.PAI_ROOTS.map((k) => [`pai-${k}`, k]);
-    PA.PAI_ROOTS.forEach((k, i) => selectField(root, `Root ${i + 1} PAI score`, `pai-${k}`, PA.PAI_SCORES));
+    selectField(root, 'Root 1 PAI score', 'pai-r1', PA.PAI_SCORES);
+    selectField(root, 'Root 2 PAI score', 'pai-r2', PA.PAI_SCORES);
+    selectField(root, 'Root 3 PAI score', 'pai-r3', PA.PAI_SCORES);
+    selectField(root, 'Root 4 PAI score', 'pai-r4', PA.PAI_SCORES);
     const ids = pairs.map(([d]) => d);
     const o = out(); root.appendChild(o);
     wire(ids, () => safe(o, () => {

@@ -9356,6 +9356,28 @@
       ],
       "tile": "watcha-emergence",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "glenoid track",
+        "off-track hill-sachs",
+        "on-track hill-sachs",
+        "bipolar bone loss",
+        "hill-sachs interval"
+      ],
+      "tile": "glenoid-track",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "thomazeau",
+        "occupation ratio",
+        "supraspinatus atrophy",
+        "supraspinatus occupation ratio",
+        "rotator cuff muscle atrophy"
+      ],
+      "tile": "thomazeau-occupation",
+      "audience": "clinicians"
     }
   ]
 }

@@ -6,6 +6,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Glenoid Track (Hill-Sachs On/Off-Track).** The glenoid track, Hill-Sachs interval and distance to
+  dislocation, read as off-, near- or on-track, with the glenoid bone loss. See docs/spec-v1571.md.
+
+- **Thomazeau Occupation Ratio.** Supraspinatus atrophy, grade I to III, from the muscle and fossa areas,
+  beside the Goutallier grade. See docs/spec-v1572.md.
+
 - **PAED Emergence Delirium Scale.** Five behaviors after pediatric anesthesia, totaled 0 to 20 and read
   against both cutoffs in use (10 or more; more than 12). See docs/spec-v1499.md.
 

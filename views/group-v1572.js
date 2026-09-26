@@ -1,17 +1,14 @@
-// spec-v1485: renderer for icdas-caries (Clinical Scoring & Risk, Group G).
+// spec-v1572: renderer for thomazeau-occupation (Clinical Scoring & Risk, Group G).
 
 import { el, clear } from '../lib/dom.js';
-import * as IC from '../lib/icdas-caries-v1485.js';
+import * as TO from '../lib/thomazeau-occupation-v1572.js';
 import { resultRow } from '../lib/result-copy.js';
 
-const NA = { value: '', text: '— choose —' };
-function selectField(root, label, id, options) {
+function numField(root, label, id, placeholder, max, step) {
   const wrap = el('p');
   wrap.appendChild(el('label', { for: id, text: label }));
   wrap.appendChild(el('br'));
-  const s = el('select', { id });
-  for (const opt of [NA, ...options]) s.appendChild(el('option', { value: opt.value, text: opt.text }));
-  wrap.appendChild(s);
+  wrap.appendChild(el('input', { id, type: 'number', min: '0', max, step, inputmode: 'decimal', placeholder }));
   root.appendChild(wrap);
 }
 function list(root, items) {
@@ -30,21 +27,18 @@ function wire(ids, run) {
 }
 
 export const renderers = {
-  'icdas-caries'(root) {
-    selectField(root, 'Surface 1', 'icdas-s1', IC.ICDAS_CODES);
-    selectField(root, 'Surface 2', 'icdas-s2', IC.ICDAS_CODES);
-    selectField(root, 'Surface 3', 'icdas-s3', IC.ICDAS_CODES);
-    selectField(root, 'Surface 4', 'icdas-s4', IC.ICDAS_CODES);
-    selectField(root, 'Surface 5', 'icdas-s5', IC.ICDAS_CODES);
-    selectField(root, 'Surface 6', 'icdas-s6', IC.ICDAS_CODES);
-    const ids = IC.ICDAS_SURFACES.map((k) => `icdas-${k}`);
+  'thomazeau-occupation'(root) {
+    const pairs = [['to-muscle', 'muscle'], ['to-fossa', 'fossa']];
+    numField(root, 'Supraspinatus muscle area (cm^2)', 'to-muscle', 'e.g. 3.1', '100', '0.01');
+    numField(root, 'Supraspinatus fossa area (cm^2)', 'to-fossa', 'e.g. 6.2', '100', '0.01');
+    const ids = pairs.map(([d]) => d);
     const o = out(); root.appendChild(o);
     wire(ids, () => safe(o, () => {
       const args = {};
-      for (const k of IC.ICDAS_SURFACES) args[k] = val(`icdas-${k}`);
-      const r = IC.icdasCaries(args);
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = TO.thomazeauOccupation(args);
       if (!r.valid) { note(o, r.message); return; }
-      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'ICDAS', value: r.bandLabel }]);
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Grade', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
     }));

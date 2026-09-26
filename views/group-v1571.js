@@ -1,17 +1,14 @@
-// spec-v1485: renderer for icdas-caries (Clinical Scoring & Risk, Group G).
+// spec-v1571: renderer for glenoid-track (Clinical Scoring & Risk, Group G).
 
 import { el, clear } from '../lib/dom.js';
-import * as IC from '../lib/icdas-caries-v1485.js';
+import * as GT from '../lib/glenoid-track-v1571.js';
 import { resultRow } from '../lib/result-copy.js';
 
-const NA = { value: '', text: '— choose —' };
-function selectField(root, label, id, options) {
+function numField(root, label, id, placeholder, max, step) {
   const wrap = el('p');
   wrap.appendChild(el('label', { for: id, text: label }));
   wrap.appendChild(el('br'));
-  const s = el('select', { id });
-  for (const opt of [NA, ...options]) s.appendChild(el('option', { value: opt.value, text: opt.text }));
-  wrap.appendChild(s);
+  wrap.appendChild(el('input', { id, type: 'number', min: '0', max, step, inputmode: 'decimal', placeholder }));
   root.appendChild(wrap);
 }
 function list(root, items) {
@@ -30,21 +27,20 @@ function wire(ids, run) {
 }
 
 export const renderers = {
-  'icdas-caries'(root) {
-    selectField(root, 'Surface 1', 'icdas-s1', IC.ICDAS_CODES);
-    selectField(root, 'Surface 2', 'icdas-s2', IC.ICDAS_CODES);
-    selectField(root, 'Surface 3', 'icdas-s3', IC.ICDAS_CODES);
-    selectField(root, 'Surface 4', 'icdas-s4', IC.ICDAS_CODES);
-    selectField(root, 'Surface 5', 'icdas-s5', IC.ICDAS_CODES);
-    selectField(root, 'Surface 6', 'icdas-s6', IC.ICDAS_CODES);
-    const ids = IC.ICDAS_SURFACES.map((k) => `icdas-${k}`);
+  'glenoid-track'(root) {
+    const pairs = [['gt-width', 'glenoidWidth'], ['gt-defect', 'defect'], ['gt-hs', 'hsWidth'], ['gt-bridge', 'bridge']];
+    numField(root, 'Glenoid width, D (mm)', 'gt-width', 'e.g. 28', '60', '0.1');
+    numField(root, 'Anterior glenoid defect, d (mm, 0 if none)', 'gt-defect', 'e.g. 4', '30', '0.1');
+    numField(root, 'Hill-Sachs lesion width (mm)', 'gt-hs', 'e.g. 14', '50', '0.1');
+    numField(root, 'Bone bridge to the rotator cuff footprint (mm)', 'gt-bridge', 'e.g. 5', '40', '0.1');
+    const ids = pairs.map(([d]) => d);
     const o = out(); root.appendChild(o);
     wire(ids, () => safe(o, () => {
       const args = {};
-      for (const k of IC.ICDAS_SURFACES) args[k] = val(`icdas-${k}`);
-      const r = IC.icdasCaries(args);
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = GT.glenoidTrack(args);
       if (!r.valid) { note(o, r.message); return; }
-      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'ICDAS', value: r.bandLabel }]);
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Track', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
     }));

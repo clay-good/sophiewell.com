@@ -8533,6 +8533,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/watcha-emergence-v1570.js (spec-v1570: Watcha emergence agitation scale — clinical disclaimer)
 - `watcha-emergence`
 
+### lib/glenoid-track-v1571.js (spec-v1571: Glenoid track and distance to dislocation — clinical disclaimer)
+- `glenoid-track`
+
+### lib/thomazeau-occupation-v1572.js (spec-v1572: Thomazeau supraspinatus occupation ratio — clinical disclaimer)
+- `thomazeau-occupation`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

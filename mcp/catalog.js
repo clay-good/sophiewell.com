@@ -907,6 +907,8 @@ import veauCleftV1497 from './adapters/veau-cleft-v1497.js';
 import essexLoprestiCalcanealV1498 from './adapters/essex-lopresti-calcaneal-v1498.js';
 import paedDeliriumV1499 from './adapters/paed-delirium-v1499.js';
 import watchaEmergenceV1570 from './adapters/watcha-emergence-v1570.js';
+import glenoidTrackV1571 from './adapters/glenoid-track-v1571.js';
+import thomazeauOccupationV1572 from './adapters/thomazeau-occupation-v1572.js';
 import nurseStaffingRatioCheckV1396 from './adapters/nurse-staffing-ratio-check-v1396.js';
 import caWpvReportClockV1396 from './adapters/ca-wpv-report-clock-v1396.js';
 import mandatoryOvertimeCheckV1396 from './adapters/mandatory-overtime-check-v1396.js';
@@ -1850,6 +1852,8 @@ const ADAPTER_MODULES = [
   ['essex-lopresti-calcaneal-v1498', essexLoprestiCalcanealV1498],
   ['paed-delirium-v1499', paedDeliriumV1499],
   ['watcha-emergence-v1570', watchaEmergenceV1570],
+  ['glenoid-track-v1571', glenoidTrackV1571],
+  ['thomazeau-occupation-v1572', thomazeauOccupationV1572],
   ['nurse-staffing-ratio-check-v1396', nurseStaffingRatioCheckV1396],
   ['ca-wpv-report-clock-v1396', caWpvReportClockV1396],
   ['mandatory-overtime-check-v1396', mandatoryOvertimeCheckV1396],
