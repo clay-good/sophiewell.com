@@ -95,8 +95,9 @@ export const renderers = {
       { value: 'council', text: 'Medicare Appeals Council -- level 4' },
     ]));
     root.appendChild(dateField('Decision / notice date', 'apd-date', '2026-01-15'));
+    root.appendChild(dateField('Date received, only with proof of later receipt (optional)', 'apd-received', ''));
     const o = out(); root.appendChild(o);
-    wire(['apd-denial', 'apd-level', 'apd-date'], () => safe(o, () => {
+    wire(['apd-denial', 'apd-level', 'apd-date', 'apd-received'], () => safe(o, () => {
       // Denial routing block (renders only when a denial reason is chosen).
       const route = denialRoute({ category: str('apd-denial') });
       if (route) {
@@ -129,13 +130,14 @@ export const renderers = {
       }
       // Level + date deadline block (always available).
       if (!str('apd-date')) { o.appendChild(el('p', { class: 'muted', text: 'Enter the decision/notice date for the level deadline.' })); return; }
-      const r = Ops.appealDeadline({ level: str('apd-level'), decisionDate: str('apd-date') });
+      const r = Ops.appealDeadline({ level: str('apd-level'), decisionDate: str('apd-date'), receivedDate: str('apd-received') });
       if (!r) { o.appendChild(el('p', { class: 'muted', text: 'Select a level.' })); return; }
       o.appendChild(el('ul', {}, [
         li(`${r.completedLevel} -> ${r.nextLevel}`),
-        li(`File by ${r.deadline} (${r.windowDays}-day window, ${r.cfr}).`, r.pastDue ? 'flag' : null),
+        li(`File by ${r.deadline} (${r.windowDays}-day window from receipt, ${r.cfr}).`, r.pastDue ? 'flag' : null),
+        li(r.receiptPresumed ? `Receipt presumed ${r.receiptDate}, 5 calendar days after the notice date.` : `Receipt ${r.receiptDate}, as entered.`, 'muted'),
         remainingLi(r),
-        r.aicUsd ? li(`Amount in controversy to reach ${r.nextLevel}: at least $${r.aicUsd} (CY2026, annually indexed).`) : null,
+        r.aicUsd ? li(`Amount in controversy to reach ${r.nextLevel}: at least $${r.aicUsd} (${r.aicEdition}, set by the year of filing).`) : (r.aicEdition ? li(`Amount in controversy to reach ${r.nextLevel}: ${r.aicEdition}.`) : null),
       ].filter(Boolean)));
       o.appendChild(el('p', { class: 'muted', text: 'Deadlines per 42 CFR Part 405, Subpart I; AIC thresholds are indexed annually -- confirm the current-year amount.' }));
     }));
@@ -211,8 +213,9 @@ export const renderers = {
       { value: 'custom', text: 'Plan-specified window (enter days)' },
     ]));
     root.appendChild(field('Plan-specified window in days', 'pat-days', { type: 'number', placeholder: '14' }));
+    root.appendChild(field('Time the request arrived (expedited, optional)', 'pat-time', { type: 'time' }));
     const o = out(); root.appendChild(o);
-    wire(['pat-date', 'pat-type', 'pat-days'], () => safe(o, () => {
+    wire(['pat-date', 'pat-type', 'pat-days', 'pat-time'], () => safe(o, () => {
       if (!str('pat-date')) { o.appendChild(el('p', { class: 'muted', text: 'Enter the submission date.' })); return; }
       const type = str('pat-type');
       if (type === 'custom' && !(numv('pat-days') > 0)) {
@@ -221,13 +224,15 @@ export const renderers = {
       const r = Ops.paTurnaround({
         requestDate: str('pat-date'), type,
         customDays: type === 'custom' ? Math.round(numv('pat-days')) : undefined,
+        requestTime: str('pat-time'),
       });
       if (!r) { o.appendChild(el('p', { class: 'muted', text: 'Select a request type.' })); return; }
       o.appendChild(el('ul', {}, [
         li(`Window: ${r.windowLabel}.`),
-        li(`Decision due by ${r.deadline}.`, r.pastDue ? 'flag' : null),
+        li(r.deadlineText ? `Decision due by ${r.deadlineText}.` : `Decision due by ${r.deadline}.`, r.pastDue ? 'flag' : null),
         remainingLi(r),
       ]));
+      o.appendChild(el('p', { class: 'muted', text: r.scopeNote }));
       if (r.unusedWindowNote) o.appendChild(el('p', { class: 'muted', text: r.unusedWindowNote }));
       o.appendChild(el('p', { class: 'muted', text: 'CMS Interoperability and Prior Authorization Final Rule (CMS-0057-F, 2024), effective 2026 for impacted payers.' }));
     }));

@@ -398,7 +398,7 @@ test('spec-v629 wave 8: em-time/em-mdm/ndc-convert code correctly', () => {
 test('spec-v629 wave 9: deadline tiles give a deterministic deadline date', () => {
   const ap = computeCalculator({ id: 'appeal-deadline', inputs: { 'apd-level': 'initial', 'apd-date': '2026-01-15' } });
   assert.equal(ap.valid, true);
-  assert.equal(ap.result.deadline, '2026-05-15');
+  assert.equal(ap.result.deadline, '2026-05-20');
   assert.equal(ap.result.windowDays, 120);
   assert.ok(!('daysRemaining' in ap.result) && !('pastDue' in ap.result), 'clock-relative fields stripped for determinism');
   assert.equal(ap.domain, 'administrative');

@@ -18,12 +18,13 @@ const stripNow = (raw) => {
 export default [
   {
     id: 'appeal-deadline',
-    summary: 'Medicare claim-appeal deadline: from the level just completed and the decision date, the next level, its filing window, and the deadline date.',
+    summary: 'Medicare claim-appeal deadline: the next level and its filing deadline, counted from receipt of the notice (presumed 5 days after its date).',
     compute: O.appealDeadline,
     formatResult: stripNow,
     fields: [
       { dom: 'apd-level', arg: 'level', kind: 'enum', values: ['initial', 'redetermination', 'reconsideration', 'alj', 'council'], required: true, label: 'Appeal level just completed' },
       { dom: 'apd-date', arg: 'decisionDate', kind: 'string', required: true, label: 'Decision / notice date (YYYY-MM-DD)' },
+      { dom: 'apd-received', arg: 'receivedDate', kind: 'string', required: false, label: 'Date received, only with proof of later receipt (YYYY-MM-DD)' },
     ],
   },
   {
@@ -46,6 +47,7 @@ export default [
       { dom: 'pat-date', arg: 'requestDate', kind: 'string', required: true, label: 'Request date (YYYY-MM-DD)' },
       { dom: 'pat-type', arg: 'type', kind: 'enum', values: ['standard', 'expedited', 'custom'], required: true, label: 'Request type: standard, expedited, or custom (supply the days)' },
       { dom: 'pat-days', arg: 'customDays', kind: 'number', label: 'Plan-specified window in days. Used only when the request type is "custom"; a value given alongside standard or expedited is reported back as unused.' },
+      { dom: 'pat-time', arg: 'requestTime', kind: 'string', label: 'Time the request arrived, HH:MM (expedited: the 72 hours count from it)' },
     ],
   },
   {

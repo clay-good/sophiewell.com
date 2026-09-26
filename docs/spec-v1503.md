@@ -184,4 +184,12 @@ eCFR, current as of September 24, 2026: 42 CFR 405.1200–405.1206, 422.136, 422
     liability protection.
   The 2027 amounts in controversy (Federal Register 2026-19016) apply to requests filed on or after
   January 1, 2027, so the ladders choose the edition by filing year.
-- **Not yet built:** the two backfills (`pa-turnaround`, `appeal-deadline`).
+- **Backfills built 2026-09-26:**
+  - `appeal-deadline` now counts each window from receipt, presumed 5 calendar days after the notice
+    date at every level (42 CFR 405.942(a)(1), 405.962(a)(1), 405.1002(a)(3), 405.1102(a)(2),
+    405.1136(c)(2)); it had counted from the notice date, so every deadline it printed was 5 days early.
+    A proven later receipt date can be entered. The amount in controversy is chosen by filing year
+    (CY2027: $200 ALJ, $2,000 court).
+  - `pa-turnaround` states that the CMS-0057-F windows cover medical items and services, not drugs, and
+    do not apply to Marketplace QHP issuers on the federal exchange (CMS-0057-F fact sheet), and, given the
+    time the request arrived, computes the expedited 72 hours in hours.

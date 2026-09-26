@@ -17,13 +17,15 @@ test('appealDeadline: initial determination -> redetermination, 120-day window',
   const r = appealDeadline({ level: 'initial', decisionDate: '2026-01-15', now: NOW });
   assert.equal(r.nextLevel, 'Redetermination (MAC)');
   assert.equal(r.windowDays, 120);
-  assert.equal(r.deadline, '2026-05-15');
+  // spec-v1503: 120 days from RECEIPT, presumed 5 days after the notice (42 CFR 405.942(a)(1)).
+  assert.equal(r.receiptDate, '2026-01-20');
+  assert.equal(r.deadline, '2026-05-20');
   assert.equal(r.aicUsd, null);
 });
 test('appealDeadline: reconsideration -> ALJ carries the CY2026 AIC gate ($200)', () => {
   const r = appealDeadline({ level: 'reconsideration', decisionDate: '2026-05-01', now: NOW });
   assert.equal(r.windowDays, 60);
-  assert.equal(r.deadline, '2026-06-30');
+  assert.equal(r.deadline, '2026-07-05');
   assert.equal(r.aicUsd, APPEAL_AIC_CY2026.alj);
   assert.equal(r.aicUsd, 200);
   assert.equal(r.pastDue, false);
@@ -32,6 +34,14 @@ test('appealDeadline: council -> federal court AIC is $1,960; unknown level -> n
   assert.equal(appealDeadline({ level: 'council', decisionDate: '2026-05-01', now: NOW }).aicUsd, 1960);
   assert.equal(appealDeadline({ level: 'bogus', decisionDate: '2026-05-01', now: NOW }), null);
   assert.throws(() => appealDeadline({ level: 'initial', decisionDate: 'nope', now: NOW }), RangeError);
+});
+test('appealDeadline: a proven later receipt replaces the presumption; the AIC follows the filing year', () => {
+  assert.equal(appealDeadline({ level: 'reconsideration', decisionDate: '2026-05-01', receivedDate: '2026-05-20', now: NOW }).deadline, '2026-07-19');
+  assert.throws(() => appealDeadline({ level: 'initial', decisionDate: '2026-05-01', receivedDate: '2026-04-20', now: NOW }), RangeError);
+  const late = appealDeadline({ level: 'council', decisionDate: '2026-11-20', now: NOW });
+  assert.equal(late.deadline, '2027-01-24');
+  assert.equal(late.aicUsd, 2000);
+  assert.equal(late.aicEdition, 'CY2027');
 });
 
 // --- timely-filing ----------------------------------------------------------
@@ -127,4 +137,12 @@ test('paTurnaround: a window given alongside a CMS-set type is reported back as 
   assert.equal(custom.windowDays, 14);
   assert.equal(custom.unusedWindowNote, null);
   assert.equal(paTurnaround({ requestDate: '2026-06-01', type: 'standard', now: NOW }).unusedWindowNote, null);
+});
+
+test('paTurnaround: an expedited request with a time is 72 hours, and the scope excludes drugs and Marketplace plans', () => {
+  const r = paTurnaround({ requestDate: '2026-10-31', type: 'expedited', requestTime: '09:30', now: NOW });
+  assert.equal(r.deadlineTime, '2026-11-03T08:30');
+  assert.match(r.scopeNote, /not drugs/);
+  assert.match(r.scopeNote, /Marketplace/);
+  assert.equal(paTurnaround({ requestDate: '2026-10-31', type: 'standard', requestTime: '09:30', now: NOW }).deadlineTime, null);
 });

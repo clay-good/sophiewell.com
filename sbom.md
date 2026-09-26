@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `b0f4cb2e3638651e`
-Generated: 2026-09-26T05:36:16.408Z
+Build ID: `6496fcc6d9005679`
+Generated: 2026-09-26T05:57:31.816Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -601,7 +601,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/membranous-risk-v878.js` | 11351 | `882c36c07e46543e32f1114792c1124ee9f9ff6b384084fc0a8c221e7dd62062` |
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2618360 | `38e1e14e548333aafe674493dfaefc70602d309fa60ea66a561074082c6e5881` |
+| `lib/meta.js` | 2618454 | `85b59168d53efe84b2139fc504b4e34ec4406760ac4ade9475a6fe83cac89372` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 19326 | `64342935cc7842381f6e318293cfcd6f97b69022268da6c595c5c71db388af2d` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -714,7 +714,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/ophtho-v164.js` | 11132 | `767972d725c90fad993c53ff3c7d03b9ca8444a5291f85372458ac2f54962510` |
 | `lib/ophtho-v236.js` | 8025 | `ec4343dd702be732b3e98cc736dfbd4dc3884a1a9d5ce9fc687059338452b7dc` |
 | `lib/opioid-risk-tool-v709.js` | 4291 | `f7045644de232186fc1701f97df7d861b885bcb0f7e65f61ea735576f30a6dda` |
-| `lib/ops-v63.js` | 8399 | `7fa411b1d5b79bc49d8db6c4a4c85093ad2e0ad1c506340ffc668f89e111dbe9` |
+| `lib/ops-v63.js` | 11356 | `d32ec3f6e80a93bb6d541052ad8d53964d73fa337877b6a6bd4447b4b6720d27` |
 | `lib/ortho-v144.js` | 17827 | `0356389ca72f53f295f6734cf34e7981c111b15010f161e253e05b1227d2e33c` |
 | `lib/ortho-v145.js` | 15893 | `4e63d18902b0b51368b60635c8dd75004f32cc8dc8d3f65af53617d47f409439` |
 | `lib/orthospine-v252.js` | 7329 | `f1ba93384570eb23ff335624c2facc37666daaf0cf9577cf988504897564c046` |
@@ -1707,7 +1707,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/ophtho-v164.js` | 2153 | `837985d6e5ded0d6102bee0f375e0ce11c08e42862927a7a7240cb486b72edf8` |
 | `mcp/adapters/ophtho-v236.js` | 2887 | `651b07313fe7d5f56636a552f1d4f64b905b5c3fa47ec17351fb6aa89a7b776e` |
 | `mcp/adapters/opioid-risk-tool-v709.js` | 2331 | `5c48d7a23650ac85f253b35c556425eeea50168fd0f1f09f6279826f87d0cfc6` |
-| `mcp/adapters/ops-v63.js` | 3434 | `d1c5245b4de84f7554869b2c4f239fd5777967a331dc5976fb75a7d1bf72c759` |
+| `mcp/adapters/ops-v63.js` | 3733 | `9bc46dd141107b7853701b69c3015d19d7c5ca4551186b585e7ed093f1248479` |
 | `mcp/adapters/ortho-v144.js` | 3799 | `2901f97711e370d1f4bb7bcd54b65a1c7ae5198db5aca4f6bdab2a6a59bb1686` |
 | `mcp/adapters/ortho-v145.js` | 3455 | `e096092b9b21544729e2ac4db4478178b20b30a9d984c4a08f91b03400bd0462` |
 | `mcp/adapters/orthospine-v252.js` | 3127 | `f078d83b49d3a0fdd1ad3b3bfbebefc6a1e8dd02d3b0edc3bcdd8476033fc761` |
@@ -2668,7 +2668,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v616.js` | 3263 | `55b04e24f3ccb99664fd32b027f1ac8c87e5a9e444a19d89bf808ce31711ab39` |
 | `views/group-v617.js` | 3062 | `988087344ef4f977e8c80a63c60a94268b78bd1b58055f6fde6deb7d2ad8c720` |
 | `views/group-v618.js` | 3594 | `332cb2304d3d4e5428d26ca8fdf0c237d6de4fc19bb6b6e62f68825ab22f9b38` |
-| `views/group-v63.js` | 14796 | `b8dba719cb250693f221f9c3017d838b02fd858876a2eda043f7f9a0aa773825` |
+| `views/group-v63.js` | 15526 | `7c05515915f4d50986900a4de9e59d464f9e7bb375e74b63f711ba2e6eb00b2c` |
 | `views/group-v638.js` | 5689 | `2d964ab7fd88c6fa40db0f22bbbb8cc0794bebd3125c73c4079d72da37454fbd` |
 | `views/group-v639.js` | 4623 | `5112e4a7815db3bd1184faa4b3671650207c3ec6bdec1a97a146a4e583e04edf` |
 | `views/group-v640.js` | 3824 | `afb14025ae48078f4b3cd66123d312db0898cc89159bd8cf713db2a131d847fb` |
