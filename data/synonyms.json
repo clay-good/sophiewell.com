@@ -9786,6 +9786,72 @@
       ],
       "tile": "im-notice-timing",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "maximum fair price",
+        "medicare negotiated price",
+        "drug price negotiation",
+        "mfp price",
+        "ira negotiated drug prices"
+      ],
+      "tile": "partd-mfp-price-check",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "home health certification period",
+        "home health face to face window",
+        "oasis due date",
+        "home health recertification",
+        "30 day payment period home health"
+      ],
+      "tile": "home-health-cert-clock",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "capped rental title transfer",
+        "oxygen 36 month rental",
+        "dme rental month count",
+        "break in need dme",
+        "dme reasonable useful lifetime"
+      ],
+      "tile": "dme-rental-clock",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "irf 36 hour therapy",
+        "irf preadmission screening 48 hours",
+        "irf-pai due dates",
+        "inpatient rehab timing",
+        "irf three hour rule"
+      ],
+      "tile": "irf-compliance-clock",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "mcsn notice",
+        "observation status appeal",
+        "inpatient to observation appeal",
+        "change in status appeal",
+        "cms-10868"
+      ],
+      "tile": "mcsn-appeal-rights",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "beyond use date",
+        "usp 797 bud",
+        "usp 795 bud",
+        "compounded sterile preparation expiration",
+        "csp category 2 bud"
+      ],
+      "tile": "compounding-bud",
+      "audience": "clinicians"
     }
   ]
 }

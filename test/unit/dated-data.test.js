@@ -46,7 +46,8 @@ test('route-B rows point at a real staleness-ledger row', async () => {
   const { DATED_PARTD } = await import('../../lib/partd-costs-v1506.js');
   const { DATED_MSP_LIS } = await import('../../lib/msp-lis-v1507.js');
   const { DATED_HOSPICE_CAP } = await import('../../lib/hospice-cap-v1514.js');
-  for (const [id, row] of Object.entries({ ...DATED, ...DATED_AIC, ...DATED_PREMIUMS, ...SNF_COINSURANCE, ...DATED_INCOME, ...DATED_PTC, ...DATED_PARTD, ...DATED_MSP_LIS, ...DATED_HOSPICE_CAP })) {
+  const { DATED_MFP } = await import('../../lib/mfp-prices-v1506.js');
+  for (const [id, row] of Object.entries({ ...DATED, ...DATED_AIC, ...DATED_PREMIUMS, ...SNF_COINSURANCE, ...DATED_INCOME, ...DATED_PTC, ...DATED_PARTD, ...DATED_MSP_LIS, ...DATED_HOSPICE_CAP, ...DATED_MFP })) {
     if (row.route === 'B') assert.ok(ids.has(row.ledgerId), `${id}: ledger row ${row.ledgerId} is missing`);
   }
 });

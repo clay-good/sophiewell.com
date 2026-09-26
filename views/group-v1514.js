@@ -147,4 +147,77 @@ export const renderers = {
       note(o, r.note);
     }));
   },
+  'home-health-cert-clock'(root) {
+    const pairs = [['hh-soc', 'startOfCare'], ['hh-f2f', 'faceToFace'], ['hh-ref', 'referral']];
+    dateInput(root, 'Start-of-care date', 'hh-soc', 'date');
+    dateInput(root, 'Face-to-face encounter date (optional)', 'hh-f2f', 'date');
+    dateInput(root, 'Referral date (optional)', 'hh-ref', 'date');
+    const ids = pairs.map(([d]) => d);
+    const o = out(); root.appendChild(o);
+    wire(ids, () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = PA.homeHealthCertClock(args);
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Status', value: r.bandLabel }]);
+      list(o, r.notes);
+      note(o, r.note);
+    }));
+  },
+  'dme-rental-clock'(root) {
+    const pairs = [['dme-item', 'item'], ['dme-delivered', 'delivered'], ['dme-stop', 'lastUse'], ['dme-resume', 'resumed']];
+    selectField(root, 'Item type', 'dme-item', PA.DME_ITEMS);
+    dateInput(root, 'Delivery date', 'dme-delivered', 'date');
+    dateInput(root, 'Last day of use before a break (optional)', 'dme-stop', 'date');
+    dateInput(root, 'Day use resumed (optional)', 'dme-resume', 'date');
+    const ids = pairs.map(([d]) => d);
+    const o = out(); root.appendChild(o);
+    wire(ids, () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = PA.dmeRentalClock(args);
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Status', value: r.bandLabel }]);
+      list(o, r.notes);
+      note(o, r.note);
+    }));
+  },
+  'irf-compliance-clock'(root) {
+    const pairs = [['irf-admit', 'admission'], ['irf-screen', 'screening'], ['irf-update', 'screeningUpdate'], ['irf-therapy', 'firstTherapy'], ['irf-discharge', 'discharge']];
+    dateInput(root, 'IRF admission, date and time', 'irf-admit', 'datetime-local');
+    dateInput(root, 'Preadmission screening, date and time (optional)', 'irf-screen', 'datetime-local');
+    dateInput(root, 'Screening update, date and time (optional)', 'irf-update', 'datetime-local');
+    dateInput(root, 'First therapy session, date and time (optional)', 'irf-therapy', 'datetime-local');
+    dateInput(root, 'Discharge date (optional)', 'irf-discharge', 'date');
+    const ids = pairs.map(([d]) => d);
+    const o = out(); root.appendChild(o);
+    wire(ids, () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = PA.irfComplianceClock(args);
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Status', value: r.bandLabel }]);
+      list(o, r.notes);
+      note(o, r.note);
+    }));
+  },
+  'mcsn-appeal-rights'(root) {
+    const pairs = [['mcsn-start', 'hospitalStart'], ['mcsn-admit', 'admitted'], ['mcsn-reclass', 'reclassified'], ['mcsn-partb', 'partB'], ['mcsn-release', 'release']];
+    dateInput(root, 'First day of the hospital stay (including emergency or observation time)', 'mcsn-start', 'date');
+    dateInput(root, 'Inpatient admission date', 'mcsn-admit', 'date');
+    dateInput(root, 'Date reclassified to outpatient observation', 'mcsn-reclass', 'date');
+    selectField(root, 'Did the patient have Part B during the stay?', 'mcsn-partb', PA.PART_B_OPTIONS);
+    dateInput(root, 'Expected release, date and time (optional)', 'mcsn-release', 'datetime-local');
+    const ids = pairs.map(([d]) => d);
+    const o = out(); root.appendChild(o);
+    wire(ids, () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = PA.mcsnAppealRights(args);
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Appeal', value: r.bandLabel }]);
+      list(o, r.notes);
+      note(o, r.note);
+    }));
+  },
 };

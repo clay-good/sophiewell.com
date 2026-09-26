@@ -8611,6 +8611,24 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/copay-card-v1506.js (spec-v1506: Copay card run-out and accumulator impact — administrative disclaimer)
 - `copay-card-runout`
 
+### lib/mfp-prices-v1506.js (spec-v1506: Medicare negotiated drug price check — administrative disclaimer)
+- `partd-mfp-price-check`
+
+### lib/post-acute-clocks-v1514.js (spec-v1514: Home health certification and OASIS clock — administrative disclaimer)
+- `home-health-cert-clock`
+
+### lib/post-acute-clocks-v1514.js (spec-v1514: DME capped rental and oxygen clock — administrative disclaimer)
+- `dme-rental-clock`
+
+### lib/post-acute-clocks-v1514.js (spec-v1514: Inpatient rehabilitation timing check — administrative disclaimer)
+- `irf-compliance-clock`
+
+### lib/post-acute-clocks-v1514.js (spec-v1514: Inpatient-to-observation appeal rights (MCSN) — administrative disclaimer)
+- `mcsn-appeal-rights`
+
+### lib/compounding-bud-v1511.js (spec-v1511: Compounded preparation beyond-use date — administrative disclaimer)
+- `compounding-bud`
+
 ### lib/msp-lis-v1507.js (spec-v1507: Extra Help and Medicare Savings Program screen — administrative disclaimer)
 - `extra-help-msp-screen`
 

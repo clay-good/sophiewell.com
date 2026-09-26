@@ -166,15 +166,19 @@ const CATALOG_ESCAPE = /catalog-truth:historical/;
 
 // Four-digit numbers beside a catalog word are overwhelmingly publication years
 // -- "CDC 2022", "Ley 2012 point weights", "spec-v61 bedside tiles (added
-// 2026-06-06)". Skip the band they live in. Exported so the unit test can pin
-// both halves: a year is ignored, a count is not.
+// 2026-06-06)". In the band they live in, a bare number counts only when a
+// catalog word FOLLOWS it within three words ("1903 tools", "1903 free
+// healthcare calculators"), which is how a count is written and how a year
+// almost never is. A comma-grouped number ("1,903") is never a year. The
+// catalog reached this band at 1903 (spec-v1514); until then the band was
+// skipped outright. Exported so the unit test can pin both halves.
 export const YEAR_BAND = [1900, 2099];
 export const isYearLike = (n) => n >= YEAR_BAND[0] && n <= YEAR_BAND[1];
+const COUNT_AFTER = /^\s+(?:[A-Za-z-]+\s+){0,3}?(tiles?|tools?|calculators?|utilit)/i;
 
-// The guard that keeps this rule from going blind the way it did at 999. If the
-// catalog ever grows into YEAR_BAND, every real count becomes indistinguishable
-// from a year and the carve-out above starts hiding the drift it was written to
-// avoid. Fail then, with the remedy, instead of silently passing.
+// The guard that keeps this rule from going blind the way it did at 999: the
+// rule must still catch a drifted count written the usual way, and still pass
+// the true one, at the catalog's current size. Fail with the remedy if not.
 // driftedCountsOnLine(line, truth) -> [number]. Pure, so a test can prove each
 // half of the rule on a synthetic line rather than on the live repo: a
 // four-digit drift is caught, a comma-grouped count is read whole, a
@@ -187,7 +191,7 @@ export function driftedCountsOnLine(line, truth) {
   while ((m = numRe.exec(line)) !== null) {
     const num = Number(m[1].replace(/,/g, ''));
     if (num < 100 || num > 9999) continue;
-    if (isYearLike(num)) continue;
+    if (isYearLike(num) && !m[1].includes(',') && !COUNT_AFTER.test(line.slice(m.index + m[1].length))) continue;
     // Adjacency window: within 40 chars on either side of the number, on the
     // same line, look for one of the catalog words.
     const lo = Math.max(0, m.index - 40);
@@ -200,8 +204,11 @@ export function driftedCountsOnLine(line, truth) {
 }
 
 export function assertRuleStillSees(truth) {
-  if (isYearLike(truth)) {
-    return `catalog-count rule: the catalog is now ${truth}, inside the ${YEAR_BAND[0]}-${YEAR_BAND[1]} band this rule skips as publication years, so it can no longer see a drifted count. Replace the year carve-out in scripts/grep-check.mjs (for example, require the catalog word to follow the number) before shipping this tile.`;
+  const off = truth + 1;
+  const sees = driftedCountsOnLine(`all ${off} tools`, truth).includes(off)
+    && driftedCountsOnLine(`all ${truth} tools`, truth).length === 0;
+  if (!sees) {
+    return `catalog-count rule: at a catalog of ${truth} the rule can no longer see a drifted count ("all ${off} tools" passes). Fix the number handling in scripts/grep-check.mjs before shipping this tile.`;
   }
   return null;
 }

@@ -49,11 +49,18 @@ test('a number with no catalog word near it is ignored', () => {
 });
 
 test('the year carve-out cannot silently blind the rule a second time', () => {
-  assert.equal(assertRuleStillSees(1704), null);
-  const blind = assertRuleStillSees(YEAR_BAND[0]);
-  assert.ok(blind && blind.includes('can no longer see'), 'expected a failure message inside the year band');
-  assert.ok(assertRuleStillSees(YEAR_BAND[1]), 'the top of the band is inside it');
-  assert.equal(assertRuleStillSees(YEAR_BAND[1] + 1), null);
+  for (const n of [1704, YEAR_BAND[0], 1903, YEAR_BAND[1], YEAR_BAND[1] + 1]) assert.equal(assertRuleStillSees(n), null, String(n));
+});
+
+test('inside the year band, a count is a number followed by a catalog word', () => {
+  const truth = 1903;
+  assert.deepEqual(driftedCountsOnLine('all 1904 tools', truth), [1904]);
+  assert.deepEqual(driftedCountsOnLine('1901 free healthcare calculators', truth), [1901]);
+  assert.deepEqual(driftedCountsOnLine('1,904 tiles', truth), [1904]);
+  assert.deepEqual(driftedCountsOnLine('all 1903 tools', truth), []);
+  for (const line of ['Opioid MME Calculator (CDC 2022),', '## spec-v61 bedside tiles (added 2026-06-06)', 'the Marti-Soler 2016 point table). The tile below is']) {
+    assert.deepEqual(driftedCountsOnLine(line, truth), [], line);
+  }
 });
 
 test('parseUtilityIds returns the live ids the orphan-copy guard needs', () => {

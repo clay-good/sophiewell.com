@@ -10284,6 +10284,13 @@
           "lastVerified": "2026-09-26"
         },
         {
+          "id": "cms-negotiated-prices-file",
+          "label": "Medicare negotiated prices (maximum fair prices) per 30-day equivalent supply for the 40 selected drugs, from the CMS data file of 2026-09-21: 2026 and 2027 prices, the four drugs deselected from 2027, and the 2028 drugs with no price yet, backing partd-mfp-price-check",
+          "url": "https://www.cms.gov/initiatives/medicare-prescription-drug-affordability/overview/medicare-drug-price-negotiation-program/selected-drugs-negotiated-prices",
+          "ruleFamily": "ops-v63",
+          "lastVerified": "2026-09-26"
+        },
+        {
           "id": "medicare-partd-base-premium",
           "label": "Part D national base beneficiary premium, per calendar year: 2026 $38.99 (Medicare.gov Part D costs, with the nearest-$0.10 rounding), 2027 $41.33 (CMS, July 28, 2026), backing partd-late-penalty; the standard benefit's maximum deductible ($615 / $700) and out-of-pocket threshold ($2,100 / $2,400) for 2026 / 2027, backing partd-year-cost and m3p-monthly-bill",
           "url": "https://www.cms.gov/newsroom/fact-sheets/medicare-part-d-2027-national-average-monthly-bid-amount-information",

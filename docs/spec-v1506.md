@@ -223,5 +223,11 @@ dates). It's the cleanest machine-readable feed in the program (route A).
   - `copay-card-runout` (group Q) runs the year fill by fill both ways. The eCFR text of 45 CFR 156.130(h)
     was re-read: the May 20, 2026 amendment (91 FR 29874) changed other paragraphs, so (h) still prints the
     vacated 2021 wording, as this spec says. Maximizer programs are named and not modeled.
-- **Not yet built:** `part-b-drug-coinsurance` and `partd-mfp-price-check` (both need the CMS ASP and
-  negotiated-price files, route A).
+  - `partd-mfp-price-check` reads the CMS negotiated-prices file of September 21, 2026 (560 NDC rows,
+    40 drugs), kept per drug because the 30-day price is the same for every NDC of a drug in a period. Rows
+    that end before they start (NDCs dropped before the price took effect) are skipped. The file confirms
+    this spec's example and the four drugs deselected from January 1, 2027. It is held as a dated table
+    (ledger row `cms-negotiated-prices-file`) until the refresh workflow ([spec-v1517](spec-v1517.md))
+    exists, and asks after December 31, 2027, because the prices are adjusted every January 1. Lookup by
+    NDC and the per-unit prices are not built.
+- **Not yet built:** `part-b-drug-coinsurance` (needs the quarterly CMS ASP file, route A).

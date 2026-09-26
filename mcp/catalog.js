@@ -930,6 +930,8 @@ import incomeScreensV1506 from './adapters/income-screens-v1506.js';
 import marketplaceCreditV1506 from './adapters/marketplace-credit-v1506.js';
 import partdCostsV1506 from './adapters/partd-costs-v1506.js';
 import copayCardV1506 from './adapters/copay-card-v1506.js';
+import mfpPricesV1506 from './adapters/mfp-prices-v1506.js';
+import compoundingBudV1511 from './adapters/compounding-bud-v1511.js';
 import mspLisV1507 from './adapters/msp-lis-v1507.js';
 import hospiceCapV1514 from './adapters/hospice-cap-v1514.js';
 import nurseStaffingRatioCheckV1396 from './adapters/nurse-staffing-ratio-check-v1396.js';
@@ -1898,6 +1900,8 @@ const ADAPTER_MODULES = [
   ['marketplace-credit-v1506', marketplaceCreditV1506],
   ['partd-costs-v1506', partdCostsV1506],
   ['copay-card-v1506', copayCardV1506],
+  ['mfp-prices-v1506', mfpPricesV1506],
+  ['compounding-bud-v1511', compoundingBudV1511],
   ['msp-lis-v1507', mspLisV1507],
   ['hospice-cap-v1514', hospiceCapV1514],
   ['nurse-staffing-ratio-check-v1396', nurseStaffingRatioCheckV1396],

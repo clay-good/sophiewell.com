@@ -184,4 +184,15 @@ eCFR (current September 2026): 42 CFR 405.1200–405.1212, 409.30, 409.60, 409.6
   read in Pub. 100-04 ch. 30 sec. 200.3.4) and `hospice-aggregate-cap` (418.309; the FY2026 and FY2027 cap
   amounts confirmed in the CMS-1851-F fact sheet, new ledger row `medicare-hospice-cap`). The cap tool also
   gives the self-determination filing deadline, 5 months after the cap year (418.308(c)).
-- **Not yet built:** `mcsn-appeal-rights`, `home-health-cert-clock`, `dme-rental-clock`, `irf-compliance-clock`.
+- **Built 2026-09-26:** `home-health-cert-clock` (424.22, 484.55, 484.205), `dme-rental-clock`, `irf-compliance-clock`
+  and `mcsn-appeal-rights`, each read in the eCFR:
+  - The break-in-need rule this spec left unread is 42 CFR 414.230(c)-(d): an interruption of up to 60 days
+    plus the rest of the rental month in which use stopped is temporary; a longer one starts a new period
+    only with a new prescription, new documentation and a statement. The tool now decides it.
+  - The IRF 36-hour limit is counted from the midnight that ends the admission day; the Benefit Policy
+    Manual (ch. 1 sec. 110.2.2) gives no example, so the tool also prints the limit counted from the
+    midnight that begins it. IRF-PAI encoding and transmission follow 412.610(d) and 412.614(c). Daily
+    therapy minutes are not totaled.
+  - The MCSN retrospective window (closed January 2, 2026, good cause excepted) was confirmed on the CMS
+    patient-status appeals page.
+  - Not built: the standard-written-order check (410.38(d)(1)) and the face-to-face-required list for DME.

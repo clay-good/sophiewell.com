@@ -169,5 +169,8 @@ and reproduces no chapter text.
   - `refill-eligible-date` counts the threshold from the fill date as the CMS memo does ("a 30-day supply ...
     refills would be permitted at 21 days"); the carry-forward of earlier early refills and CSV batch mode
     are not built.
-- **Not yet built:** `ipledge-dispense-window`, `imid-rems-fill-window`, `compounding-bud` (each needs its
-  REMS or USP source read first, as this spec requires).
+- **Built 2026-09-26:** `compounding-bud`, every limit taken from USP's own fact sheet (the Mississippi Board of
+  Pharmacy copy), including the Category 1 rule that has no frozen limit and the Category 3 requirement of
+  sterility testing. The longer nonsterile BUDs a monograph or stability data can support are not computed.
+- **Not yet built:** `ipledge-dispense-window`, `imid-rems-fill-window` (each needs its REMS document read
+  first, as this spec requires).

@@ -5,6 +5,7 @@ import * as IN from '../lib/income-screens-v1506.js';
 import * as MC from '../lib/marketplace-credit-v1506.js';
 import * as PC from '../lib/partd-costs-v1506.js';
 import * as CC from '../lib/copay-card-v1506.js';
+import * as MF from '../lib/mfp-prices-v1506.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -22,6 +23,13 @@ function numField(root, label, id, placeholder, max, step) {
   wrap.appendChild(el('label', { for: id, text: label }));
   wrap.appendChild(el('br'));
   wrap.appendChild(el('input', { id, type: 'number', min: '0', max, step, inputmode: 'decimal', placeholder }));
+  root.appendChild(wrap);
+}
+function dateInput(root, label, id, type) {
+  const wrap = el('p');
+  wrap.appendChild(el('label', { for: id, text: label }));
+  wrap.appendChild(el('br'));
+  wrap.appendChild(el('input', { id, type }));
   root.appendChild(wrap);
 }
 function list(root, items) {
@@ -171,6 +179,22 @@ export const renderers = {
       const r = CC.copayCardRunout(args);
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Patient pays', value: r.bandLabel }]);
+      list(o, r.notes);
+      note(o, r.note);
+    }));
+  },
+  'partd-mfp-price-check'(root) {
+    const pairs = [['mfp-drug', 'drug'], ['mfp-date', 'date']];
+    selectField(root, 'Drug selected for Medicare price negotiation', 'mfp-drug', MF.DRUGS);
+    dateInput(root, 'Date of service (blank for today)', 'mfp-date', 'date');
+    const ids = pairs.map(([d]) => d);
+    const o = out(); root.appendChild(o);
+    wire(ids, () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = MF.mfpPriceCheck(args);
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Negotiated price', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
     }));

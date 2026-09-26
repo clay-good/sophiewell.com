@@ -3,6 +3,7 @@
 import { el, clear } from '../lib/dom.js';
 import * as CS from '../lib/cs-dispensing-v1511.js';
 import * as DS from '../lib/days-supply-v1511.js';
+import * as CBU from '../lib/compounding-bud-v1511.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -148,6 +149,29 @@ export const renderers = {
       const r = DS.refillEligibleDate(args);
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Earliest refill', value: r.bandLabel }]);
+      list(o, r.notes);
+      note(o, r.note);
+    }));
+  },
+  'compounding-bud'(root) {
+    const pairs = [['cbud-type', 'prepType'], ['cbud-made', 'compounded'], ['cbud-cat', 'category'], ['cbud-method', 'method'], ['cbud-tested', 'sterilityTested'], ['cbud-nonsterile', 'nonsterileComponent'], ['cbud-store', 'storage'], ['cbud-form', 'form'], ['cbud-exp', 'componentExpiry']];
+    selectField(root, 'Sterile or nonsterile', 'cbud-type', CBU.PREP_TYPES);
+    dateInput(root, 'Compounded, date and time', 'cbud-made', 'datetime-local');
+    selectField(root, 'Sterile: USP <797> category', 'cbud-cat', CBU.CATEGORIES);
+    selectField(root, 'Sterile: method', 'cbud-method', CBU.METHODS);
+    selectField(root, 'Sterile: passed sterility testing?', 'cbud-tested', CBU.YES_NO);
+    selectField(root, 'Sterile: any nonsterile starting component?', 'cbud-nonsterile', CBU.YES_NO);
+    selectField(root, 'Sterile: storage', 'cbud-store', CBU.STORAGE);
+    selectField(root, 'Nonsterile: dosage form and water activity', 'cbud-form', CBU.FORMS);
+    dateInput(root, 'Earliest component expiration date (optional)', 'cbud-exp', 'date');
+    const ids = pairs.map(([d]) => d);
+    const o = out(); root.appendChild(o);
+    wire(ids, () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = CBU.compoundingBud(args);
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'BUD', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
     }));

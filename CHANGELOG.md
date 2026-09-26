@@ -6,6 +6,31 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Medicare Negotiated Drug Price Check.** Whether one of the 40 drugs selected for Medicare price
+  negotiation has a negotiated price on a date, read from the CMS file of September 21, 2026: the price per
+  30-day supply, the next price, a price not yet in effect, or deselection. See docs/spec-v1506.md.
+
+- **Home Health Certification and OASIS Clock.** From the start of care: the face-to-face window (90 days
+  before to 30 days after), 60-day certification and 30-day payment periods, the comprehensive assessment by
+  day 5 and each recertification window (42 CFR 424.22, 484.55, 484.205). See docs/spec-v1514.md.
+
+- **DME Capped Rental and Oxygen Clock.** The capped-rental title date (13 paid months), the end of an
+  oxygen rental (36 months) and the supplier's duty through the useful lifetime, and whether a break in use
+  is temporary under 42 CFR 414.230. See docs/spec-v1514.md.
+
+- **Inpatient Rehabilitation Timing Check.** The 48-hour preadmission screening (or its update), therapy
+  within 36 hours from the midnight of the admission day, and the IRF-PAI completion, encoding and
+  transmission dates (42 CFR 412.610, 412.614, 412.622). See docs/spec-v1514.md.
+
+- **Inpatient-to-Observation Appeal Rights (MCSN).** Whether a patient reclassified from inpatient to
+  observation can use the expedited appeal (no Part B, or 3 or more hospital days with fewer than 3 as an
+  inpatient), the notice deadline 4 hours before release, and the QIO clocks (42 CFR 405.1210-405.1212).
+  See docs/spec-v1514.md.
+
+- **Compounded Preparation Beyond-Use Date.** The USP <797> Category 1, 2 and 3 limits and the <795>
+  water-activity limits, counted from the compounding time and capped by the earliest component
+  expiration, from USP's own BUD fact sheet. See docs/spec-v1511.md.
+
 - **Copay Card Run-Out and Accumulator Impact.** Fill by fill, what the card pays and when the first bill
   arrives, with the card counting toward the deductible, with an accumulator, or both when the plan's rule is
   not known. Commercial plans only. See docs/spec-v1506.md.

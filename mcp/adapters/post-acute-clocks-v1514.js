@@ -54,4 +54,49 @@ export default [
       { dom: 'im-discharge', arg: 'discharge', kind: 'string', required: false, label: 'Planned discharge (YYYY-MM-DDTHH:MM)' },
     ],
   },
+  {
+    id: 'home-health-cert-clock',
+    summary: 'Home health certification and assessment dates. The face-to-face window, 60-day certification and 30-day payment periods, and OASIS due dates (42 CFR 424.22, 484.55).',
+    compute: PA.homeHealthCertClock,
+    fields: [
+      { dom: 'hh-soc', arg: 'startOfCare', kind: 'string', required: true, label: 'Start of care (YYYY-MM-DD)' },
+      { dom: 'hh-f2f', arg: 'faceToFace', kind: 'string', required: false, label: 'Face-to-face encounter (YYYY-MM-DD)' },
+      { dom: 'hh-ref', arg: 'referral', kind: 'string', required: false, label: 'Referral date (YYYY-MM-DD)' },
+    ],
+  },
+  {
+    id: 'dme-rental-clock',
+    summary: 'When a Medicare DME rental ends. Capped rental title passes after 13 paid months; oxygen rental ends at 36; breaks are tested against 42 CFR 414.230.',
+    compute: PA.dmeRentalClock,
+    fields: [
+      { dom: 'dme-item', arg: 'item', kind: 'enum', required: true, values: vals(PA.DME_ITEMS), label: 'Item type' },
+      { dom: 'dme-delivered', arg: 'delivered', kind: 'string', required: true, label: 'Delivery date (YYYY-MM-DD)' },
+      { dom: 'dme-stop', arg: 'lastUse', kind: 'string', required: false, label: 'Last day of use before a break (YYYY-MM-DD)' },
+      { dom: 'dme-resume', arg: 'resumed', kind: 'string', required: false, label: 'Day use resumed (YYYY-MM-DD)' },
+    ],
+  },
+  {
+    id: 'irf-compliance-clock',
+    summary: 'Whether an IRF stay meets its timing rules. The 48-hour preadmission screening, therapy within 36 hours, and IRF-PAI due dates (42 CFR 412.622, 412.610).',
+    compute: PA.irfComplianceClock,
+    fields: [
+      { dom: 'irf-admit', arg: 'admission', kind: 'string', required: true, label: 'IRF admission (YYYY-MM-DDTHH:MM)' },
+      { dom: 'irf-screen', arg: 'screening', kind: 'string', required: false, label: 'Preadmission screening (YYYY-MM-DDTHH:MM)' },
+      { dom: 'irf-update', arg: 'screeningUpdate', kind: 'string', required: false, label: 'Screening update (YYYY-MM-DDTHH:MM)' },
+      { dom: 'irf-therapy', arg: 'firstTherapy', kind: 'string', required: false, label: 'First therapy session (YYYY-MM-DDTHH:MM)' },
+      { dom: 'irf-discharge', arg: 'discharge', kind: 'string', required: false, label: 'Discharge date (YYYY-MM-DD)' },
+    ],
+  },
+  {
+    id: 'mcsn-appeal-rights',
+    summary: 'Whether a patient changed from inpatient to observation can appeal. Tests 42 CFR 405.1210 and gives the notice, request and decision deadlines.',
+    compute: PA.mcsnAppealRights,
+    fields: [
+      { dom: 'mcsn-start', arg: 'hospitalStart', kind: 'string', required: true, label: 'First day of the hospital stay (YYYY-MM-DD)' },
+      { dom: 'mcsn-admit', arg: 'admitted', kind: 'string', required: true, label: 'Inpatient admission date (YYYY-MM-DD)' },
+      { dom: 'mcsn-reclass', arg: 'reclassified', kind: 'string', required: true, label: 'Reclassified to observation (YYYY-MM-DD)' },
+      { dom: 'mcsn-partb', arg: 'partB', kind: 'enum', required: true, values: vals(PA.PART_B_OPTIONS), label: 'Part B during the stay' },
+      { dom: 'mcsn-release', arg: 'release', kind: 'string', required: false, label: 'Expected release (YYYY-MM-DDTHH:MM)' },
+    ],
+  },
 ];
