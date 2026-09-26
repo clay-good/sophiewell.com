@@ -9609,6 +9609,28 @@
       ],
       "tile": "c2-multiple-rx-series",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "days supply",
+        "insulin pen days supply",
+        "inhaler days supply",
+        "eye drop days supply",
+        "how many days will this last"
+      ],
+      "tile": "days-supply",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "refill too soon",
+        "earliest refill date",
+        "early refill eye drops",
+        "when can i refill",
+        "refill threshold"
+      ],
+      "tile": "refill-eligible-date",
+      "audience": "clinicians"
     }
   ]
 }

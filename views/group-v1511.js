@@ -1,7 +1,8 @@
-// spec-v1511: renderers for cs-refill-validity, c2-fill-deadlines, c2-multiple-rx-series.
+// spec-v1511: renderers for the dispensing tools.
 
 import { el, clear } from '../lib/dom.js';
 import * as CS from '../lib/cs-dispensing-v1511.js';
+import * as DS from '../lib/days-supply-v1511.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -96,6 +97,57 @@ export const renderers = {
       const r = CS.c2MultipleRxSeries(args);
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Series', value: r.bandLabel }]);
+      list(o, r.notes);
+      note(o, r.note);
+    }));
+  },
+  'days-supply'(root) {
+    const pairs = [['ds-form', 'form'], ['ds-qty', 'quantity'], ['ds-perdose', 'perDose'], ['ds-vol', 'volume'], ['ds-doseml', 'doseMl'], ['ds-upml', 'unitsPerMl'], ['ds-mlpen', 'mlPerPen'], ['ds-pens', 'pens'], ['ds-uday', 'unitsPerDay'], ['ds-inj', 'injectionsPerDay'], ['ds-prime', 'primingUnits'], ['ds-act', 'actuations'], ['ds-can', 'canisters'], ['ds-puffs', 'puffsPerDose'], ['ds-dpm', 'dropsPerMl'], ['ds-dpe', 'dropsPerEye'], ['ds-eyes', 'eyes'], ['ds-dpd', 'dosesPerDay'], ['ds-discard', 'discardDays']];
+    selectField(root, 'Dosage form', 'ds-form', DS.FORMS);
+    numField(root, 'Tablets or capsules: quantity dispensed', 'ds-qty', 'e.g. 60', '100000', 'any');
+    numField(root, 'Tablets or capsules: units per dose', 'ds-perdose', 'e.g. 1', '1000', 'any');
+    numField(root, 'Liquid or drops: volume dispensed (mL)', 'ds-vol', 'e.g. 5', '100000', 'any');
+    numField(root, 'Liquid: dose volume (mL)', 'ds-doseml', 'e.g. 5', '1000', 'any');
+    numField(root, 'Insulin: units per mL', 'ds-upml', 'e.g. 100', '1000', 'any');
+    numField(root, 'Insulin: mL per pen or vial', 'ds-mlpen', 'e.g. 3', '100', 'any');
+    numField(root, 'Insulin: pens or vials dispensed', 'ds-pens', 'e.g. 5', '1000', '1');
+    numField(root, 'Insulin: units injected per day', 'ds-uday', 'e.g. 40', '10000', 'any');
+    numField(root, 'Insulin: injections per day', 'ds-inj', 'e.g. 2', '48', '1');
+    numField(root, 'Insulin: priming units per injection (from the label)', 'ds-prime', 'e.g. 2', '20', 'any');
+    numField(root, 'Inhaler: actuations per canister', 'ds-act', 'e.g. 200', '10000', '1');
+    numField(root, 'Inhaler: canisters dispensed', 'ds-can', 'e.g. 1', '100', '1');
+    numField(root, 'Inhaler: puffs per dose', 'ds-puffs', 'e.g. 2', '50', '1');
+    numField(root, 'Drops: drops per mL (manufacturer or plan figure)', 'ds-dpm', 'e.g. 20', '100', 'any');
+    numField(root, 'Drops: drops per eye per dose', 'ds-dpe', 'e.g. 1', '20', '1');
+    numField(root, 'Drops: eyes treated', 'ds-eyes', 'e.g. 2', '2', '1');
+    numField(root, 'Doses per day (all forms but insulin)', 'ds-dpd', 'e.g. 2', '48', 'any');
+    numField(root, 'In-use discard limit in days, if the label gives one', 'ds-discard', 'e.g. 28', '3650', '1');
+    const ids = pairs.map(([d]) => d);
+    const o = out(); root.appendChild(o);
+    wire(ids, () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = DS.daysSupply(args);
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Days supply', value: r.bandLabel }]);
+      list(o, r.notes);
+      note(o, r.note);
+    }));
+  },
+  'refill-eligible-date'(root) {
+    const pairs = [['rf-fill', 'fillDate'], ['rf-days', 'daysSupply'], ['rf-pct', 'threshold'], ['rf-eye', 'eyeDrops']];
+    dateInput(root, 'Date of the last fill', 'rf-fill', 'date');
+    numField(root, 'Days supply of that fill', 'rf-days', 'e.g. 30', '366', '1');
+    numField(root, 'Plan refill threshold (percent)', 'rf-pct', 'e.g. 75', '100', 'any');
+    selectField(root, 'Eye drops (use the CMS 70% recommendation if no threshold)?', 'rf-eye', DS.YES_NO);
+    const ids = pairs.map(([d]) => d);
+    const o = out(); root.appendChild(o);
+    wire(ids, () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = DS.refillEligibleDate(args);
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Earliest refill', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
     }));

@@ -8593,6 +8593,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/cs-dispensing-v1511.js (spec-v1511: Controlled-substance refills left — administrative disclaimer)
 - `cs-refill-validity`
 
+### lib/days-supply-v1511.js (spec-v1511: Days supply by dosage form — administrative disclaimer)
+- `days-supply`
+
+### lib/days-supply-v1511.js (spec-v1511: Earliest refill date — administrative disclaimer)
+- `refill-eligible-date`
+
 ### lib/cs-dispensing-v1511.js (spec-v1511: C-II partial-fill and emergency deadlines — administrative disclaimer)
 - `c2-fill-deadlines`
 

@@ -35,3 +35,26 @@ test('blanks are asked for', () => {
     assert.match(r.message, ASKING);
   }
 });
+
+import { daysSupply as ds, refillEligibleDate as re } from '../../lib/days-supply-v1511.js';
+
+test('days supply: tablets, drops, and priming counted per injection', () => {
+  assert.equal(ds({ form: 'tablet', quantity: '60', perDose: '1', dosesPerDay: '2' }).daysSupply, 30);
+  assert.equal(ds({ form: 'drops', volume: '5', dropsPerMl: '20', dropsPerEye: '1', eyes: '2', dosesPerDay: '2' }).daysSupply, 25);
+  // 1500 units / (40 + 2 x 2) = 34.09 -> 34; priming per injection, not per day.
+  assert.equal(ds({ form: 'insulin', unitsPerMl: '100', mlPerPen: '3', pens: '5', unitsPerDay: '40', injectionsPerDay: '2', primingUnits: '2' }).daysSupply, 34);
+});
+
+test('days supply: the discard limit binds before the units run out, and the reverse', () => {
+  const r = ds({ form: 'insulin', unitsPerMl: '100', mlPerPen: '3', pens: '1', unitsPerDay: '8', injectionsPerDay: '1', primingUnits: '2', discardDays: '28' });
+  assert.equal(r.daysSupply, 28);
+  assert.match(r.band, /capped at 28/);
+  assert.equal(ds({ form: 'insulin', unitsPerMl: '100', mlPerPen: '3', pens: '5', unitsPerDay: '40', injectionsPerDay: '2', primingUnits: '2', discardDays: '28' }).daysSupply, 34);
+});
+
+test('earliest refill: the plan threshold, and the CMS 70% eye-drop recommendation', () => {
+  assert.equal(re({ fillDate: '2026-10-01', daysSupply: '30', eyeDrops: 'yes' }).earliest, '2026-10-22');
+  assert.equal(re({ fillDate: '2026-10-01', daysSupply: '90', threshold: '75' }).earliest, '2026-12-08');
+  assert.match(re({ fillDate: '2026-10-01', daysSupply: '30' }).message, ASKING);
+  assert.match(ds({ form: 'tablet', quantity: '60' }).message, ASKING);
+});

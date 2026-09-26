@@ -6,6 +6,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Days Supply Calculator.** Days supply for tablets, liquids, insulin pens (priming counted per injection),
+  inhalers and eye drops, capped by any in-use discard limit. See docs/spec-v1511.md.
+
+- **Earliest Refill Date.** The fill date plus the plan's threshold share of the days supply; eye drops can use
+  the CMS 2010 recommendation of 70% (a 30-day supply refills at 21 days). See docs/spec-v1511.md.
+
 - **Controlled-Substance Refills Left.** Federal refill limits: none for C-II, five within 6 months for C-III and
   C-IV, as authorized for C-V, with the reason a prescription ends. See docs/spec-v1511.md.
 

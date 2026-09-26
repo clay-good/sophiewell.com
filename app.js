@@ -1041,6 +1041,8 @@ const UTILITIES = [
   { id: 'cs-refill-validity', name: 'Controlled-Substance Refills Left', group: 'Q', audiences: ['clinicians', 'billers'], clinical: false },
   { id: 'c2-fill-deadlines', name: 'C-II Partial Fill and Emergency Deadlines', group: 'Q', audiences: ['clinicians', 'billers'], clinical: false },
   { id: 'c2-multiple-rx-series', name: 'Multiple C-II Prescriptions Check', group: 'Q', audiences: ['clinicians', 'billers'], clinical: false },
+  { id: 'days-supply', name: 'Days Supply Calculator', group: 'Q', audiences: ['clinicians', 'billers', 'patients'], clinical: false },
+  { id: 'refill-eligible-date', name: 'Earliest Refill Date', group: 'Q', audiences: ['clinicians', 'billers', 'patients'], clinical: false },
   { id: 'overpayment-60day', name: '60-Day Overpayment Report-and-Return Clock', group: 'C', audiences: ['billers'], clinical: false },
   // spec-v82: patient responsibility & coordination of benefits. v78 computes
   // what the payer pays; these four compute what the PATIENT owes -- Medicare

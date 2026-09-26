@@ -156,7 +156,8 @@ and reproduces no chapter text.
 
 ## Build status
 
-- **Built 2026-09-26:** `cs-refill-validity`, `c2-fill-deadlines`, `c2-multiple-rx-series`, each read against
+- **Built 2026-09-26:** `days-supply`, `refill-eligible-date`, `cs-refill-validity`, `c2-fill-deadlines`,
+  `c2-multiple-rx-series`; the last three each read against
   21 CFR part 1306 in the eCFR. Two corrections to this spec:
   - 21 CFR 1306.26 is dispensing C-V products *without* a prescription, not C-V refills. Federal rules set no
     count or time limit on C-V refills (1306.22 covers C-III and C-IV only), but partial fills of C-III to
@@ -165,5 +166,8 @@ and reproduces no chapter text.
     so the series check flags them as "check the dates" rather than refusing the series.
   - The emergency deadline also states that a mailed prescription counts if postmarked within the 7 days
     (1306.11(d)(4)).
-- **Not yet built:** `days-supply`, `refill-eligible-date`, `ipledge-dispense-window`, `imid-rems-fill-window`,
-  `compounding-bud`.
+  - `refill-eligible-date` counts the threshold from the fill date as the CMS memo does ("a 30-day supply ...
+    refills would be permitted at 21 days"); the carry-forward of earlier early refills and CSV batch mode
+    are not built.
+- **Not yet built:** `ipledge-dispense-window`, `imid-rems-fill-window`, `compounding-bud` (each needs its
+  REMS or USP source read first, as this spec requires).
