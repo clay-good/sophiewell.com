@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:94846165-db87-5ccc-896c-3a2c2198cc2b",
+  "serialNumber": "urn:uuid:e6749632-2ced-538d-83ba-0728d5ca2233",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-26T07:45:48.152Z",
+    "timestamp": "2026-09-26T08:15:09.173Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1903 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1912 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "009ba0e0e909b6149fa419753b028d638b276421a8e330da486e2f0a84328f10"
+          "content": "7188f25caab3c93a820b59a1d1452d2261aca3e1943001cac3e33905a4e54dc2"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "121295"
+          "value": "121747"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "56fb3ae54e93a68a86e6f535eb0b971288b958b02dda64ee8cd4c046906a0d69"
+          "content": "046c09329cd9b09cb4301f1a097829e5e49499eab757c0ea4c397490b5a80196"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "555321"
+          "value": "556800"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "003023787d9d67fd0e56b518bb4f13f85f02456a6be5ad62bfb5d86232c98a5a"
+          "content": "15a635d36e1bcb424b82a348e875f195b8e877489a7f79e5dd297ade168fc8f4"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "237399"
+          "value": "238539"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "eed81e335419eccaf3b6be1ebe98759b6b39379c3f33a55e1ea6e26168d828cb"
+          "content": "00068742befb6e1e0f568841ba527b3aabe9495bd9dfe6ba58a7257973046c38"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "109038"
+          "value": "109541"
         }
       ]
     },
@@ -1312,6 +1312,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "8473"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/appeal-path-v1505.js",
+      "type": "file",
+      "name": "lib/appeal-path-v1505.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3783c15fad2d10eeb2f4c743116cf85aa155db3313fdcd0ca2eacfe2d1e84a9b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7091"
         }
       ]
     },
@@ -5369,6 +5390,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/dose-calendar-v1512.js",
+      "type": "file",
+      "name": "lib/dose-calendar-v1512.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6d17f852544ea3e6bf5791bc2c565f00de8ead4d929037a0d48dc4aaec808254"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5628"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/dose-schedule.js",
       "type": "file",
       "name": "lib/dose-schedule.js",
@@ -8918,6 +8960,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/hospital-fap-v1508.js",
+      "type": "file",
+      "name": "lib/hospital-fap-v1508.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "220c576bf3d9c9861a699a6c47fa1d15ec5f45b07b798f77ddec986af929ca68"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "15019"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/hpa-glaucoma-v801.js",
       "type": "file",
       "name": "lib/hpa-glaucoma-v801.js",
@@ -12053,7 +12116,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5b6a94e2eed71e38a18a0a0b6ac3c0c76875848c842703b8c7cd672af41611ed"
+          "content": "362fd15aef9d7c8e0e58b90a4ee381fa87080d125bcf5f2e2d8734a3676f999d"
         }
       ],
       "properties": [
@@ -12063,7 +12126,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2630751"
+          "value": "2637534"
         }
       ]
     },
@@ -17150,6 +17213,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/rate-escalation-v1512.js",
+      "type": "file",
+      "name": "lib/rate-escalation-v1512.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a866f033b65cfb921961a549c526c9022c8643992e11e56ba24c81609e905bc9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3702"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/raymond-roy-v1451.js",
       "type": "file",
       "name": "lib/raymond-roy-v1451.js",
@@ -21308,6 +21392,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/vial-rounding-v1512.js",
+      "type": "file",
+      "name": "lib/vial-rounding-v1512.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "70b9f5d542f6180369517d762332c6d2429ce56aa27d70e22f33e6503be91bc6"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6191"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/vitamin-d-level-v881.js",
       "type": "file",
       "name": "lib/vitamin-d-level-v881.js",
@@ -22816,6 +22921,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1500"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/appeal-path-v1505.js",
+      "type": "file",
+      "name": "mcp/adapters/appeal-path-v1505.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "cded246f2436a56ec4561ed5ce3b653d09ea6bd57369ba2a79261310d47e0fb0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "730"
         }
       ]
     },
@@ -26684,6 +26810,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/dose-calendar-v1512.js",
+      "type": "file",
+      "name": "mcp/adapters/dose-calendar-v1512.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "99ded7846c8ae2dc9e2e77beea73b8cdc3e2fd1ebac97741bd82454be4f5b014"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1356"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/dose-schedule.js",
       "type": "file",
       "name": "mcp/adapters/dose-schedule.js",
@@ -30124,6 +30271,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1000"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/hospital-fap-v1508.js",
+      "type": "file",
+      "name": "mcp/adapters/hospital-fap-v1508.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1ccef662739011776a6e37b55576f20178ad299f22952da0e9507ce8a0c2f2cb"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4605"
         }
       ]
     },
@@ -37709,6 +37877,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/rate-escalation-v1512.js",
+      "type": "file",
+      "name": "mcp/adapters/rate-escalation-v1512.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3fbb8a78d2f891634e2b97eb07202b3913cbe75182ff27a471d244d174726526"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1248"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/raymond-roy-v1451.js",
       "type": "file",
       "name": "mcp/adapters/raymond-roy-v1451.js",
@@ -41636,6 +41825,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/vial-rounding-v1512.js",
+      "type": "file",
+      "name": "mcp/adapters/vial-rounding-v1512.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6d13e7706f04accb326f227a61e9145b195662a1db63429f23b24d0d47287240"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1305"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/vitamin-d-level-v881.js",
       "type": "file",
       "name": "mcp/adapters/vitamin-d-level-v881.js",
@@ -42314,7 +42524,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "30b6bfc1d13d10920754b136439518ea94dfef690fb8c9c24a640669c4d283c5"
+          "content": "b845553e0f3119e0dbfd7f851f5a074d9f68f4dc1432c9263bf4b18c68fc9dfd"
         }
       ],
       "properties": [
@@ -42324,7 +42534,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "111746"
+          "value": "112307"
         }
       ]
     },
@@ -45647,6 +45857,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1505.js",
+      "type": "file",
+      "name": "views/group-v1505.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f2444e0a09b1d34ba5062b17f31f4bd5d46343571d2af341b8084ab95ff95b20"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2080"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:views/group-v1506.js",
       "type": "file",
       "name": "views/group-v1506.js",
@@ -45689,6 +45920,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1508.js",
+      "type": "file",
+      "name": "views/group-v1508.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9dd50e090ced34ec13dec250b12b0b4e750489d265a355e984fa3b6ee62259fe"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8229"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:views/group-v151.js",
       "type": "file",
       "name": "views/group-v151.js",
@@ -45727,6 +45979,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "10369"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1512.js",
+      "type": "file",
+      "name": "views/group-v1512.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "44fb6cba5ad120e902988f5e11e43d602a688ea563821ff5209471201a671e67"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6483"
         }
       ]
     },
@@ -76764,6 +77037,7 @@
         "urn:sophiewell:file:source:lib/aortic-regurgitation-stage-v846.js",
         "urn:sophiewell:file:source:lib/aortic-stenosis-stage-v844.js",
         "urn:sophiewell:file:source:lib/aospine-sacral-v1424.js",
+        "urn:sophiewell:file:source:lib/appeal-path-v1505.js",
         "urn:sophiewell:file:source:lib/aqi-pm25-v1398.js",
         "urn:sophiewell:file:source:lib/arc-hbr-v594.js",
         "urn:sophiewell:file:source:lib/areds-v615.js",
@@ -76957,6 +77231,7 @@
         "urn:sophiewell:file:source:lib/dom-fields.js",
         "urn:sophiewell:file:source:lib/dom.js",
         "urn:sophiewell:file:source:lib/dorr-femur-v499.js",
+        "urn:sophiewell:file:source:lib/dose-calendar-v1512.js",
         "urn:sophiewell:file:source:lib/dose-schedule.js",
         "urn:sophiewell:file:source:lib/downton-fall-risk-v688.js",
         "urn:sophiewell:file:source:lib/doxy-pep-v1401.js",
@@ -77126,6 +77401,7 @@
         "urn:sophiewell:file:source:lib/hlh-2004-v582.js",
         "urn:sophiewell:file:source:lib/home-oxygen-v889.js",
         "urn:sophiewell:file:source:lib/hospice-cap-v1514.js",
+        "urn:sophiewell:file:source:lib/hospital-fap-v1508.js",
         "urn:sophiewell:file:source:lib/hpa-glaucoma-v801.js",
         "urn:sophiewell:file:source:lib/hrs-aki-v808.js",
         "urn:sophiewell:file:source:lib/hughes-gbs-v800.js",
@@ -77518,6 +77794,7 @@
         "urn:sophiewell:file:source:lib/rasrm-stage-v546.js",
         "urn:sophiewell:file:source:lib/rassi-chagas-v851.js",
         "urn:sophiewell:file:source:lib/rastelli-avsd-v474.js",
+        "urn:sophiewell:file:source:lib/rate-escalation-v1512.js",
         "urn:sophiewell:file:source:lib/raymond-roy-v1451.js",
         "urn:sophiewell:file:source:lib/rcc-prognosis-v266.js",
         "urn:sophiewell:file:source:lib/rcc-prognosis-v279.js",
@@ -77716,6 +77993,7 @@
         "urn:sophiewell:file:source:lib/vexus-v958.js",
         "urn:sophiewell:file:source:lib/vhi10-v508.js",
         "urn:sophiewell:file:source:lib/vhwg-hernia-v666.js",
+        "urn:sophiewell:file:source:lib/vial-rounding-v1512.js",
         "urn:sophiewell:file:source:lib/vitamin-d-level-v881.js",
         "urn:sophiewell:file:source:lib/vod-sos-v907.js",
         "urn:sophiewell:file:source:lib/vras-v602.js",
@@ -77904,10 +78182,13 @@
         "urn:sophiewell:file:source:views/group-v15.js",
         "urn:sophiewell:file:source:views/group-v1502.js",
         "urn:sophiewell:file:source:views/group-v1503.js",
+        "urn:sophiewell:file:source:views/group-v1505.js",
         "urn:sophiewell:file:source:views/group-v1506.js",
         "urn:sophiewell:file:source:views/group-v1507.js",
+        "urn:sophiewell:file:source:views/group-v1508.js",
         "urn:sophiewell:file:source:views/group-v151.js",
         "urn:sophiewell:file:source:views/group-v1511.js",
+        "urn:sophiewell:file:source:views/group-v1512.js",
         "urn:sophiewell:file:source:views/group-v1514.js",
         "urn:sophiewell:file:source:views/group-v152.js",
         "urn:sophiewell:file:source:views/group-v153.js",
@@ -78685,6 +78966,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/aortic-regurgitation-stage-v846.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/aortic-stenosis-stage-v844.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/aospine-sacral-v1424.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/appeal-path-v1505.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/aqi-pm25-v1398.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/arc-hbr-v594.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/areds-v615.js",
@@ -78869,6 +79151,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/dme-v307.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dmft-caries-v716.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dorr-femur-v499.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/dose-calendar-v1512.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dose-schedule.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/downton-fall-risk-v688.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/doxy-pep-v1401.js",
@@ -79033,6 +79316,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/hlh-2004-v582.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/home-oxygen-v889.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hospice-cap-v1514.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/hospital-fap-v1508.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hpa-glaucoma-v801.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hrs-aki-v808.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hughes-gbs-v800.js",
@@ -79394,6 +79678,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/rasrm-stage-v546.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/rassi-chagas-v851.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/rastelli-avsd-v474.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/rate-escalation-v1512.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/raymond-roy-v1451.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/rcc-prognosis-v266.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/rcc-prognosis-v279.js",
@@ -79581,6 +79866,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/vexus-v958.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/vhi10-v508.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/vhwg-hernia-v666.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/vial-rounding-v1512.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/vitamin-d-level-v881.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/vod-sos-v907.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/vras-v602.js",
@@ -79716,7 +80002,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "94846165db877ccc"
+      "value": "e67496322ceda38d"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -79728,7 +80014,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2888"
+      "value": "2901"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

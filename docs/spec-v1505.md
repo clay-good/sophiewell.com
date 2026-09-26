@@ -107,3 +107,12 @@ this one, which the duplicate-tile finder flags.
   jurisdiction and not addressed in another.
 - `ndc-hcpcs-units` (backfill): a 10-digit NDC in each of the three segment patterns
   converts to the same 11-digit code the crosswalk lists.
+
+## Build status
+
+- **Built 2026-09-26:** `which-appeal-path` (group C). Every branch points to a tool already built
+  ([spec-v1503](spec-v1503.md) and `appeal-deadline`), and every window it prints is one those tools
+  verify. Coverage it does not handle (TRICARE, VA, FEHB) says so rather than guessing.
+- **Not yet built:** `part-b-or-d` (needs the CMS Part B versus Part D document read in full and the
+  MAC self-administered drug lists), `lcd-diagnosis-check` (Medicare Coverage Database export),
+  `bi-summary`, `site-of-care-compare`, and the `ndc-hcpcs-units` backfill.

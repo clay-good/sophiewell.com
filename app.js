@@ -858,6 +858,9 @@ import { renderers as RV1507 } from './views/group-v1507.js';
 import { renderers as RV1511 } from './views/group-v1511.js';
 import { renderers as RV1514 } from './views/group-v1514.js';
 import { renderers as RV1506 } from './views/group-v1506.js';
+import { renderers as RV1508 } from './views/group-v1508.js';
+import { renderers as RV1512 } from './views/group-v1512.js';
+import { renderers as RV1505 } from './views/group-v1505.js';
 import { renderers as RV1396 } from './views/group-v1396.js';
 import { renderers as RV164 } from './views/group-v164.js';
 import { renderers as RV165 } from './views/group-v165.js';
@@ -946,7 +949,7 @@ const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...R
   ...RV902,
   ...RV903,
   ...RV905,
-  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV960, ...RV1061, ...RV1062, ...RV1240, ...RV1241, ...RV1242, ...RV1243, ...RV1400, ...RV1389, ...RV1393, ...RV1397, ...RV1395, ...RV1390, ...RV1391, ...RV1392, ...RV1394, ...RV1399, ...RV1398, ...RV1401, ...RV1396, ...RV1412, ...RV1413, ...RV1414, ...RV1416, ...RV1417, ...RV1418, ...RV1419, ...RV1420, ...RV1421, ...RV1422, ...RV1423, ...RV1424, ...RV1425, ...RV1426, ...RV1427, ...RV1428, ...RV1429, ...RV1430, ...RV1431, ...RV1433, ...RV1434, ...RV1435, ...RV1436, ...RV1438, ...RV1439, ...RV1440, ...RV1441, ...RV1442, ...RV1443, ...RV1444, ...RV1445, ...RV1446, ...RV1447, ...RV1448, ...RV1449, ...RV1450, ...RV1451, ...RV1452, ...RV1453, ...RV1454, ...RV1455, ...RV1468, ...RV1469, ...RV1470, ...RV1471, ...RV1472, ...RV1473, ...RV1475, ...RV1476, ...RV1479, ...RV1480, ...RV1481, ...RV1482, ...RV1483, ...RV1484, ...RV1485, ...RV1486, ...RV1487, ...RV1488, ...RV1489, ...RV1490, ...RV1491, ...RV1492, ...RV1493, ...RV1494, ...RV1495, ...RV1496, ...RV1497, ...RV1498, ...RV1499, ...RV1570, ...RV1571, ...RV1572, ...RV1503, ...RV1502, ...RV1507, ...RV1511, ...RV1514, ...RV1506, ...RV63, ...RPALINT };
+  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV960, ...RV1061, ...RV1062, ...RV1240, ...RV1241, ...RV1242, ...RV1243, ...RV1400, ...RV1389, ...RV1393, ...RV1397, ...RV1395, ...RV1390, ...RV1391, ...RV1392, ...RV1394, ...RV1399, ...RV1398, ...RV1401, ...RV1396, ...RV1412, ...RV1413, ...RV1414, ...RV1416, ...RV1417, ...RV1418, ...RV1419, ...RV1420, ...RV1421, ...RV1422, ...RV1423, ...RV1424, ...RV1425, ...RV1426, ...RV1427, ...RV1428, ...RV1429, ...RV1430, ...RV1431, ...RV1433, ...RV1434, ...RV1435, ...RV1436, ...RV1438, ...RV1439, ...RV1440, ...RV1441, ...RV1442, ...RV1443, ...RV1444, ...RV1445, ...RV1446, ...RV1447, ...RV1448, ...RV1449, ...RV1450, ...RV1451, ...RV1452, ...RV1453, ...RV1454, ...RV1455, ...RV1468, ...RV1469, ...RV1470, ...RV1471, ...RV1472, ...RV1473, ...RV1475, ...RV1476, ...RV1479, ...RV1480, ...RV1481, ...RV1482, ...RV1483, ...RV1484, ...RV1485, ...RV1486, ...RV1487, ...RV1488, ...RV1489, ...RV1490, ...RV1491, ...RV1492, ...RV1493, ...RV1494, ...RV1495, ...RV1496, ...RV1497, ...RV1498, ...RV1499, ...RV1570, ...RV1571, ...RV1572, ...RV1503, ...RV1502, ...RV1507, ...RV1511, ...RV1514, ...RV1506, ...RV1508, ...RV1512, ...RV1505, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -1048,6 +1051,15 @@ const UTILITIES = [
   { id: 'm3p-monthly-bill', name: 'Medicare Prescription Payment Plan Bill', group: 'Q', audiences: ['billers', 'patients', 'clinicians'], clinical: false },
   { id: 'copay-card-runout', name: 'Copay Card Run-Out and Accumulator Impact', group: 'Q', audiences: ['billers', 'patients', 'clinicians'], clinical: false },
   { id: 'partd-mfp-price-check', name: 'Medicare Negotiated Drug Price Check', group: 'Q', audiences: ['billers', 'patients', 'clinicians'], clinical: false },
+  { id: 'agb-percentage', name: 'Amounts Generally Billed (AGB) Percentage', group: 'C', audiences: ['billers', 'patients'], clinical: false },
+  { id: 'fap-collection-clock', name: 'Collection Action Timeline (501(r))', group: 'C', audiences: ['billers', 'patients'], clinical: false },
+  { id: 'fap-discount', name: 'Financial Assistance Discount (Sliding Scale)', group: 'C', audiences: ['billers', 'patients'], clinical: false },
+  { id: 'gfe-deadline', name: 'Good Faith Estimate Deadline', group: 'C', audiences: ['billers', 'patients'], clinical: false },
+  { id: 'ppdr-eligibility', name: 'Patient-Provider Dispute Eligibility', group: 'C', audiences: ['billers', 'patients'], clinical: false },
+  { id: 'vial-rounding', name: 'Dose Rounding to Whole Vials', group: 'Q', audiences: ['clinicians', 'billers'], clinical: false },
+  { id: 'rate-escalation-schedule', name: 'Infusion Rate Escalation Schedule', group: 'Q', audiences: ['clinicians'], clinical: false },
+  { id: 'dose-calendar', name: 'Loading and Maintenance Dose Calendar', group: 'Q', audiences: ['clinicians', 'patients'], clinical: false },
+  { id: 'which-appeal-path', name: 'Which Appeal Rules Apply?', group: 'C', audiences: ['billers', 'patients', 'clinicians'], clinical: false },
   { id: 'home-health-cert-clock', name: 'Home Health Certification and OASIS Clock', group: 'H', audiences: ['clinicians', 'billers'], clinical: false },
   { id: 'dme-rental-clock', name: 'DME Capped Rental and Oxygen Clock', group: 'H', audiences: ['billers', 'patients', 'clinicians'], clinical: false },
   { id: 'irf-compliance-clock', name: 'Inpatient Rehabilitation Timing Check', group: 'H', audiences: ['clinicians', 'billers'], clinical: false },

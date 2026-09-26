@@ -88,3 +88,17 @@ tool states that the administrative fee is set by HHS guidance, not by the regul
 - `gfe-deadline`: scheduling across Thanksgiving uses federal business days.
 - `ppdr-eligibility`: $399.99 over isn't eligible, $400.00 is; two providers each $300
   over aren't eligible even though the total is $600.
+
+## Build status
+
+- **Built 2026-09-26:** all five tools (group C), each read in the eCFR on September 26, 2026.
+  - The application period ends on the *later* of day 240 and the written notice's deadline
+    (26 CFR 1.501(r)-1(b)(3)), which this spec's table left out; the collection clock applies it.
+  - An extraordinary collection action needs both the 120 days and a written notice 30 days ahead
+    (1.501(r)-6(c)(3)-(4)); with no notice date the tool says no action may start yet.
+  - 45 CFR 149.610 does not define "business day"; the tool uses federal business days, as this spec
+    says, and counts days ahead after the scheduling date through the service date. Scheduling fewer than
+    3 business days ahead sets no estimate deadline, which CMS's FAQ confirms.
+  - `fap-discount` takes up to three tiers and reuses `fpl-percent`; the batch upload is not built.
+  - `ppdr-eligibility` names the HHS administrative fee without a figure, because the regulation leaves
+    the amount to guidance.

@@ -9852,6 +9852,105 @@
       ],
       "tile": "compounding-bud",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "amounts generally billed",
+        "agb percentage",
+        "look back method agb",
+        "501r agb",
+        "financial assistance charge cap"
+      ],
+      "tile": "agb-percentage",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "extraordinary collection action",
+        "501r collection timeline",
+        "hospital financial assistance application period",
+        "120 day notification period",
+        "240 day application period"
+      ],
+      "tile": "fap-collection-clock",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "financial assistance discount",
+        "charity care sliding scale",
+        "hospital sliding fee scale",
+        "fap discount",
+        "charity care discount"
+      ],
+      "tile": "fap-discount",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "good faith estimate deadline",
+        "gfe due date",
+        "no surprises act estimate",
+        "self pay estimate deadline",
+        "uninsured good faith estimate"
+      ],
+      "tile": "gfe-deadline",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "patient provider dispute resolution",
+        "ppdr eligibility",
+        "400 over good faith estimate",
+        "dispute a self pay bill",
+        "no surprises dispute"
+      ],
+      "tile": "ppdr-eligibility",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "dose rounding",
+        "round to nearest vial",
+        "vial rounding 10 percent",
+        "hopa dose rounding",
+        "biologic dose rounding"
+      ],
+      "tile": "vial-rounding",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "infusion rate escalation",
+        "rate titration schedule",
+        "rituximab infusion rate",
+        "infusion finish time",
+        "titrate infusion every 30 minutes"
+      ],
+      "tile": "rate-escalation-schedule",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "loading dose calendar",
+        "maintenance dose schedule",
+        "infusion dose dates",
+        "weeks 0 2 6 then every 8 weeks",
+        "biologic dosing calendar"
+      ],
+      "tile": "dose-calendar",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "which appeal rules apply",
+        "appeal path triage",
+        "erisa or part d appeal",
+        "coverage appeal rules",
+        "where to appeal a denial"
+      ],
+      "tile": "which-appeal-path",
+      "audience": "clinicians"
     }
   ]
 }

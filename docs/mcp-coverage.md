@@ -8614,6 +8614,33 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/mfp-prices-v1506.js (spec-v1506: Medicare negotiated drug price check — administrative disclaimer)
 - `partd-mfp-price-check`
 
+### lib/hospital-fap-v1508.js (spec-v1508: Amounts generally billed percentage — administrative disclaimer)
+- `agb-percentage`
+
+### lib/hospital-fap-v1508.js (spec-v1508: Collection action timeline (501(r)) — administrative disclaimer)
+- `fap-collection-clock`
+
+### lib/hospital-fap-v1508.js (spec-v1508: Financial assistance discount (sliding scale) — administrative disclaimer)
+- `fap-discount`
+
+### lib/hospital-fap-v1508.js (spec-v1508: Good faith estimate deadline — administrative disclaimer)
+- `gfe-deadline`
+
+### lib/hospital-fap-v1508.js (spec-v1508: Patient-provider dispute eligibility — administrative disclaimer)
+- `ppdr-eligibility`
+
+### lib/vial-rounding-v1512.js (spec-v1512: Dose rounding to whole vials — administrative disclaimer)
+- `vial-rounding`
+
+### lib/rate-escalation-v1512.js (spec-v1512: Infusion rate escalation schedule — administrative disclaimer)
+- `rate-escalation-schedule`
+
+### lib/dose-calendar-v1512.js (spec-v1512: Loading and maintenance dose calendar — administrative disclaimer)
+- `dose-calendar`
+
+### lib/appeal-path-v1505.js (spec-v1505: Which appeal rules apply — administrative disclaimer)
+- `which-appeal-path`
+
 ### lib/post-acute-clocks-v1514.js (spec-v1514: Home health certification and OASIS clock — administrative disclaimer)
 - `home-health-cert-clock`
 

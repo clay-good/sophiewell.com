@@ -90,3 +90,16 @@ doesn't list products.
   Juneteenth is flagged.
 - `substitution-check`: an AB-rated generic; a BX-rated product; an interchangeable
   and a non-interchangeable biosimilar of the same reference product.
+
+## Build status
+
+- **Built 2026-09-26:** `vial-rounding`, `rate-escalation-schedule`, `dose-calendar`.
+  - The HOPA statement's abstract (PMID 29400987) supports 10% for biologic *and* cytotoxic agents, with
+    each institution setting its policy; the threshold is editable. Among whole-vial totals within it,
+    the tool picks the one closest to the order, then the cheaper, then the fewer vials, and shows what
+    the unrounded dose would discard (JW, or JZ when nothing is).
+  - The escalation and calendar examples were read on DailyMed: Rituxan's 50 mg/hr first infusion
+    (100 mg/hr later), raised every 30 minutes to 400 mg/hr, and Remicade's weeks 0, 2 and 6, then every
+    8 weeks. The `.ics` calendar download is not built.
+- **Not yet built:** `chair-day-planner` (needs a list of appointments) and `substitution-check` (needs the
+  Orange Book and Purple Book files, route A).

@@ -931,6 +931,11 @@ import marketplaceCreditV1506 from './adapters/marketplace-credit-v1506.js';
 import partdCostsV1506 from './adapters/partd-costs-v1506.js';
 import copayCardV1506 from './adapters/copay-card-v1506.js';
 import mfpPricesV1506 from './adapters/mfp-prices-v1506.js';
+import hospitalFapV1508 from './adapters/hospital-fap-v1508.js';
+import vialRoundingV1512 from './adapters/vial-rounding-v1512.js';
+import rateEscalationV1512 from './adapters/rate-escalation-v1512.js';
+import doseCalendarV1512 from './adapters/dose-calendar-v1512.js';
+import appealPathV1505 from './adapters/appeal-path-v1505.js';
 import compoundingBudV1511 from './adapters/compounding-bud-v1511.js';
 import mspLisV1507 from './adapters/msp-lis-v1507.js';
 import hospiceCapV1514 from './adapters/hospice-cap-v1514.js';
@@ -1901,6 +1906,11 @@ const ADAPTER_MODULES = [
   ['partd-costs-v1506', partdCostsV1506],
   ['copay-card-v1506', copayCardV1506],
   ['mfp-prices-v1506', mfpPricesV1506],
+  ['hospital-fap-v1508', hospitalFapV1508],
+  ['vial-rounding-v1512', vialRoundingV1512],
+  ['rate-escalation-v1512', rateEscalationV1512],
+  ['dose-calendar-v1512', doseCalendarV1512],
+  ['appeal-path-v1505', appealPathV1505],
   ['compounding-bud-v1511', compoundingBudV1511],
   ['msp-lis-v1507', mspLisV1507],
   ['hospice-cap-v1514', hospiceCapV1514],

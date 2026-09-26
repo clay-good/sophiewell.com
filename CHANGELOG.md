@@ -6,6 +6,41 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Amounts Generally Billed (AGB) Percentage.** Allowed amounts over gross charges by the look-back method,
+  the most a financial-assistance-eligible patient may be charged, and the date the new percentage must be in
+  use (26 CFR 1.501(r)-5). See docs/spec-v1508.md.
+
+- **Collection Action Timeline (501(r)).** The earliest extraordinary collection action (120 days after
+  the first bill and 30 days after the written notice), the application period and the suspension an
+  application triggers (26 CFR 1.501(r)-1, -6). See docs/spec-v1508.md.
+
+- **Financial Assistance Discount (Sliding Scale).** Places household income on the poverty guidelines, finds the
+  tier of the hospital's own sliding scale, and caps the amount at AGB. See docs/spec-v1508.md.
+
+- **Good Faith Estimate Deadline.** When a good faith estimate is due to an uninsured or self-pay patient: 1 or 3
+  federal business days after scheduling, or 3 after a request, and when co-providers must be asked
+  (45 CFR 149.610). See docs/spec-v1508.md.
+
+- **Patient-Provider Dispute Eligibility.** Whether a self-pay bill can go to patient-provider dispute
+  resolution: each provider or facility at least $400 over its own line on the estimate, started within 120
+  days of the first bill (45 CFR 149.620). See docs/spec-v1508.md.
+
+- **Dose Rounding to Whole Vials.** Every combination of up to three vial sizes, the whole-vial dose
+  closest to the order within the policy threshold (10% by default, from the HOPA position statement), and
+  what giving the dose as ordered would discard. See docs/spec-v1512.md.
+
+- **Infusion Rate Escalation Schedule.** Each step's time, rate and amount from a starting rate, an
+  increment, an interval and a maximum, with the total time and finish time, for the protocol the reader
+  enters (for example, the Rituxan first and later infusions). See docs/spec-v1512.md.
+
+- **Loading and Maintenance Dose Calendar.** Every dose date from the schedule as the label states it
+  (for example, weeks 0, 2 and 6, then every 8 weeks), each dose's window, weekend and federal-holiday flags,
+  and re-anchoring after a dose given late. See docs/spec-v1512.md.
+
+- **Which Appeal Rules Apply?** From the coverage type and what is requested, the rule set that governs
+  the coverage request and appeal, its first deadline, and the tool that counts it (Part D, Medicare
+  Advantage, Original Medicare, Medicaid, ERISA or the individual market). See docs/spec-v1505.md.
+
 - **Medicare Negotiated Drug Price Check.** Whether one of the 40 drugs selected for Medicare price
   negotiation has a negotiated price on a date, read from the CMS file of September 21, 2026: the price per
   30-day supply, the next price, a price not yet in effect, or deselection. See docs/spec-v1506.md.
