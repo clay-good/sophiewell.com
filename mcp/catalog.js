@@ -923,6 +923,7 @@ import cobraClockV1507 from './adapters/cobra-clock-v1507.js';
 import medicareEnrollmentWindowV1507 from './adapters/medicare-enrollment-window-v1507.js';
 import acaSepWindowV1507 from './adapters/aca-sep-window-v1507.js';
 import medicaidWorkRequirementV1507 from './adapters/medicaid-work-requirement-v1507.js';
+import csDispensingV1511 from './adapters/cs-dispensing-v1511.js';
 import nurseStaffingRatioCheckV1396 from './adapters/nurse-staffing-ratio-check-v1396.js';
 import caWpvReportClockV1396 from './adapters/ca-wpv-report-clock-v1396.js';
 import mandatoryOvertimeCheckV1396 from './adapters/mandatory-overtime-check-v1396.js';
@@ -1882,6 +1883,7 @@ const ADAPTER_MODULES = [
   ['medicare-enrollment-window-v1507', medicareEnrollmentWindowV1507],
   ['aca-sep-window-v1507', acaSepWindowV1507],
   ['medicaid-work-requirement-v1507', medicaidWorkRequirementV1507],
+  ['cs-dispensing-v1511', csDispensingV1511],
   ['nurse-staffing-ratio-check-v1396', nurseStaffingRatioCheckV1396],
   ['ca-wpv-report-clock-v1396', caWpvReportClockV1396],
   ['mandatory-overtime-check-v1396', mandatoryOvertimeCheckV1396],

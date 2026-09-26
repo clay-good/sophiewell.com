@@ -153,3 +153,17 @@ and reproduces no chapter text.
   daylight-saving change; a test date before November 15, 2026 is labeled with the old
   edition.
 - `compounding-bud`: a component expiring before the category limit binds.
+
+## Build status
+
+- **Built 2026-09-26:** `cs-refill-validity`, `c2-fill-deadlines`, `c2-multiple-rx-series`, each read against
+  21 CFR part 1306 in the eCFR. Two corrections to this spec:
+  - 21 CFR 1306.26 is dispensing C-V products *without* a prescription, not C-V refills. Federal rules set no
+    count or time limit on C-V refills (1306.22 covers C-III and C-IV only), but partial fills of C-III to
+    C-V stop 6 months after issue (1306.23(c)).
+  - 1306.12(b) requires the 90-day total and the earliest fill dates; it does not forbid overlapping dates,
+    so the series check flags them as "check the dates" rather than refusing the series.
+  - The emergency deadline also states that a mailed prescription counts if postmarked within the 7 days
+    (1306.11(d)(4)).
+- **Not yet built:** `days-supply`, `refill-eligible-date`, `ipledge-dispense-window`, `imid-rems-fill-window`,
+  `compounding-bud`.

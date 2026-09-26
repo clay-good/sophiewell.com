@@ -8590,6 +8590,15 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/medicaid-work-requirement-v1507.js (spec-v1507: Medicaid work requirement monthly check — administrative disclaimer)
 - `medicaid-work-requirement-check`
 
+### lib/cs-dispensing-v1511.js (spec-v1511: Controlled-substance refills left — administrative disclaimer)
+- `cs-refill-validity`
+
+### lib/cs-dispensing-v1511.js (spec-v1511: C-II partial-fill and emergency deadlines — administrative disclaimer)
+- `c2-fill-deadlines`
+
+### lib/cs-dispensing-v1511.js (spec-v1511: Multiple C-II prescription series check — administrative disclaimer)
+- `c2-multiple-rx-series`
+
 ### lib/ma-appeals-v1503.js (spec-v1503: Medicare Advantage appeal levels and filing deadlines — administrative disclaimer)
 - `ma-appeal-ladder`
 

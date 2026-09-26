@@ -6,6 +6,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Controlled-Substance Refills Left.** Federal refill limits: none for C-II, five within 6 months for C-III and
+  C-IV, as authorized for C-V, with the reason a prescription ends. See docs/spec-v1511.md.
+
+- **C-II Partial Fill and Emergency Deadlines.** The remainder within 72 hours or 30 days, 60 days for long-term
+  care, and the 7-day written prescription after an emergency oral order. See docs/spec-v1511.md.
+
+- **Multiple C-II Prescriptions Check.** A series of C-II prescriptions against the 90-day total and the
+  earliest-fill-date rule, with overlapping dates flagged. See docs/spec-v1511.md.
+
 - **Medicaid Work Requirement Check.** Whether an expansion adult meets a month's requirement (80 hours combined,
   half-time school, or $580 of income) or is excepted, under the 2026 interim final rule. See docs/spec-v1507.md.
 

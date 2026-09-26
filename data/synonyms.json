@@ -9576,6 +9576,39 @@
       ],
       "tile": "medicaid-work-requirement-check",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "controlled substance refills",
+        "schedule iv refills",
+        "schedule iii refill limit",
+        "c2 refills",
+        "six month refill limit"
+      ],
+      "tile": "cs-refill-validity",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "c2 partial fill",
+        "schedule ii partial fill 72 hours",
+        "emergency oral c2",
+        "c-ii partial fill 30 days",
+        "ltc partial fill 60 days"
+      ],
+      "tile": "c2-fill-deadlines",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "multiple c2 prescriptions",
+        "90 day supply schedule ii",
+        "do not fill before date",
+        "c-ii series",
+        "schedule ii 90 days"
+      ],
+      "tile": "c2-multiple-rx-series",
+      "audience": "clinicians"
     }
   ]
 }
