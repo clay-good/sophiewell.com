@@ -6,6 +6,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Part A Premium and Late Increase.** Premium-free, reduced ($311) or full ($565) Part A by quarters of
+  coverage, and the 10% late increase paid for twice the full years late. See docs/spec-v1507.md.
+
+- **Medicare Enrollment Window and Start Date.** Which Part B window is open on a date (initial, special after
+  employer coverage, or general) and when coverage starts. See docs/spec-v1507.md.
+
 - **Part B Late Enrollment Penalty.** 10% for each full 12 months late on the year's standard premium ($202.90 in
   2026); a year with no published premium asks for it. See docs/spec-v1507.md.
 

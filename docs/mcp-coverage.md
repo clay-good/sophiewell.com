@@ -8578,6 +8578,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/cobra-clock-v1507.js (spec-v1507: COBRA notice, election, payment and end dates — administrative disclaimer)
 - `cobra-clock`
 
+### lib/medicare-penalties-v1507.js (spec-v1507: Part A premium and late increase — administrative disclaimer)
+- `parta-premium`
+
+### lib/medicare-enrollment-window-v1507.js (spec-v1507: Medicare enrollment window and coverage start — administrative disclaimer)
+- `medicare-enrollment-window`
+
 ### lib/ma-appeals-v1503.js (spec-v1503: Medicare Advantage appeal levels and filing deadlines — administrative disclaimer)
 - `ma-appeal-ladder`
 

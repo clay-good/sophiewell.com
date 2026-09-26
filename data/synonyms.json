@@ -9532,6 +9532,28 @@
       ],
       "tile": "cobra-clock",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "part a premium",
+        "premium part a",
+        "part a late penalty",
+        "40 quarters medicare",
+        "buy into part a"
+      ],
+      "tile": "parta-premium",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "medicare enrollment period",
+        "initial enrollment period",
+        "medicare special enrollment period",
+        "general enrollment period",
+        "when does medicare start"
+      ],
+      "tile": "medicare-enrollment-window",
+      "audience": "clinicians"
     }
   ]
 }

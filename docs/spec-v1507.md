@@ -163,7 +163,8 @@ CMS-2454-IFC (91 FR, June 3, 2026).
 
 ## Build status
 
-- **Built 2026-09-26:** `partb-late-penalty`, `partd-late-penalty`, `cobra-clock`.
+- **Built 2026-09-26:** `partb-late-penalty`, `partd-late-penalty`, `cobra-clock`, `parta-premium`,
+  `medicare-enrollment-window`.
   - The premiums go through the dated-value accessor ([spec-v1501](spec-v1501.md) §2) and are chosen by
     the year asked about: a year with no published figure asks for it, so the tools fail closed on
     January 1. Verified: $202.90 (CMS 2026 Parts A and B fact sheet), $38.99 and the nearest-$0.10
@@ -173,7 +174,12 @@ CMS-2454-IFC (91 FR, June 3, 2026).
   - COBRA also states the disability-extension end rule the table above leaves out: the later of 29
     months or the first of the month more than 30 days after a final finding of no disability
     (26 CFR 54.4980B-7).
-- **Not yet built:** `medicare-enrollment-window` (the eCFR shows the Part B special period ends the
-  last day of the 8th consecutive month with no employer coverage at any time, 42 CFR 406.24(b)(2)),
-  `parta-premium`, `extra-help-msp-screen`, `aca-sep-window`, `magi-household`,
+  - The Part A late increase is a flat 10%, paid for twice the full 12-month periods late
+    (42 CFR 406.32(d), verified at build as this spec asked).
+  - The enrollment window takes age 65 as attained the day before the birthday (20 CFR 404.2(c)(4)),
+    so a birthday on the 1st makes the month before the month of eligibility; the special period ends
+    on the last day of the 8th consecutive month with no employer coverage at any time
+    (42 CFR 406.24(b)(2)), and enrolling while covered or in the first full month without coverage
+    starts coverage that month (406.24(e)(1)).
+- **Not yet built:** `extra-help-msp-screen`, `aca-sep-window`, `magi-household`,
   `medicaid-work-requirement-check`.

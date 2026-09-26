@@ -28,4 +28,14 @@ export default [
       { dom: 'pdl-base', arg: 'base', kind: 'number', required: false, label: 'Base beneficiary premium, if not a published figure', unit: 'USD' },
     ],
   },
+  {
+    id: 'parta-premium',
+    summary: 'Medicare Part A premium from quarters of covered work. Adds any late increase: 10% for twice the full years late (42 CFR 406.32).',
+    compute: MP.partaPremium,
+    fields: [
+      { dom: 'pap-quarters', arg: 'quarters', kind: 'number', required: true, label: 'Quarters of Medicare-covered work, own or spouse' },
+      { dom: 'pap-late', arg: 'monthsLate', kind: 'number', required: false, label: 'Months late for premium Part A' },
+      { dom: 'pap-year', arg: 'year', kind: 'number', required: false, label: 'Premium year (blank for this year)' },
+    ],
+  },
 ];

@@ -1174,7 +1174,7 @@
     },
     {
       "id": "billing-medicare-cost-share",
-      "label": "The CMS CY2026 Medicare cost-sharing amounts (announced 2025-11-14) backing medicare-cost-share: Part A inpatient deductible $1,736/benefit period, days 61-90 coinsurance $434/day, lifetime-reserve $868/day, SNF days 21-100 $217/day; Part B annual deductible $283 then 20% of the approved amount; Part B standard premium $202.90 (backing partb-late-penalty). SSA Title XVIII; CMS annual cost-sharing notice. Overridable per call for a prior year.",
+      "label": "The CMS CY2026 Medicare cost-sharing amounts (announced 2025-11-14) backing medicare-cost-share: Part A inpatient deductible $1,736/benefit period, days 61-90 coinsurance $434/day, lifetime-reserve $868/day, SNF days 21-100 $217/day; Part B annual deductible $283 then 20% of the approved amount; Part B standard premium $202.90 (backing partb-late-penalty); premium Part A $311 (30-39 quarters) and $565 (under 30) (backing parta-premium). SSA Title XVIII; CMS annual cost-sharing notice. Overridable per call for a prior year.",
       "ruleFamily": "billing-v82",
       "rules": [],
       "url": "https://www.cms.gov/newsroom/fact-sheets/2026-medicare-parts-b-premiums-deductibles",

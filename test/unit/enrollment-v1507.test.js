@@ -42,3 +42,36 @@ test('blanks that decide the answer are asked for', () => {
     assert.match(r.message, ASKING);
   }
 });
+
+import { partaPremium as pa } from '../../lib/medicare-penalties-v1507.js';
+import { medicareEnrollmentWindow as mw } from '../../lib/medicare-enrollment-window-v1507.js';
+
+test('Part A premium: quarter tiers and the 10%-for-twice-the-years increase', () => {
+  assert.equal(pa({ quarters: '40', year: '2026' }).premium, 0);
+  assert.equal(pa({ quarters: '39', year: '2026' }).premium, 311);
+  assert.equal(pa({ quarters: '29', year: '2026' }).premium, 565);
+  const r = pa({ quarters: '34', year: '2026', monthsLate: '30' });
+  assert.equal(r.increase, 31.1);
+  assert.match(r.band, /for 4 years/);
+  assert.match(pa({ quarters: '34', year: '2027' }).message, ASKING);
+});
+
+test('enrollment window: a birthday on the first makes the month before the month of eligibility', () => {
+  const r = mw({ birthDate: '1961-07-01', enrollDate: '2026-05-10' });
+  assert.equal(r.window, 'Initial enrollment period');
+  assert.equal(r.coverageStarts, '2026-06-01');
+  assert.match(r.band, /March 1, 2026 to September 30, 2026/);
+});
+
+test('enrollment window: the 3rd month after eligibility starts the next month; before eligibility, the eligibility month', () => {
+  assert.equal(mw({ birthDate: '1961-07-15', enrollDate: '2026-10-02' }).coverageStarts, '2026-11-01');
+  assert.equal(mw({ birthDate: '1961-07-15', enrollDate: '2026-05-02' }).coverageStarts, '2026-07-01');
+});
+
+test('enrollment window: special period to the 8th full month without employer coverage, and the general period', () => {
+  assert.equal(mw({ birthDate: '1958-03-20', enrollDate: '2026-12-31', employerCoverageEnd: '2026-04-15' }).window, 'Special enrollment period');
+  assert.equal(mw({ birthDate: '1958-03-20', enrollDate: '2027-01-02', employerCoverageEnd: '2026-04-15' }).window, 'General enrollment period');
+  assert.equal(mw({ birthDate: '1958-03-20', enrollDate: '2026-05-10', employerCoverageEnd: '2026-04-15' }).coverageStarts, '2026-05-01');
+  assert.equal(mw({ birthDate: '1958-03-20', enrollDate: '2026-07-10' }).window, 'No window open');
+  assert.match(mw({ enrollDate: '2026-07-10' }).message, ASKING);
+});

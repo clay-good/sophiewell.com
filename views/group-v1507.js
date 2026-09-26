@@ -1,8 +1,9 @@
-// spec-v1507: renderers for partb-late-penalty, partd-late-penalty, cobra-clock.
+// spec-v1507: renderers for the Medicare enrollment, premium and penalty tools and the COBRA clock.
 
 import { el, clear } from '../lib/dom.js';
 import * as MP from '../lib/medicare-penalties-v1507.js';
 import * as CB from '../lib/cobra-clock-v1507.js';
+import * as MW from '../lib/medicare-enrollment-window-v1507.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -101,6 +102,41 @@ export const renderers = {
       const r = CB.cobraClock(args);
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Coverage', value: r.bandLabel }]);
+      list(o, r.notes);
+      note(o, r.note);
+    }));
+  },
+  'parta-premium'(root) {
+    const pairs = [['pap-quarters', 'quarters'], ['pap-late', 'monthsLate'], ['pap-year', 'year']];
+    numField(root, 'Quarters of Medicare-covered work (yours or a spouse\'s)', 'pap-quarters', 'e.g. 34', '400', '1');
+    numField(root, 'Months late for premium Part A (optional)', 'pap-late', 'e.g. 30', '1200', '1');
+    numField(root, 'Premium year (blank for this year)', 'pap-year', 'e.g. 2026', '2100', '1');
+    const ids = pairs.map(([d]) => d);
+    const o = out(); root.appendChild(o);
+    wire(ids, () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = MP.partaPremium(args);
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Premium', value: r.bandLabel }]);
+      list(o, r.notes);
+      note(o, r.note);
+    }));
+  },
+  'medicare-enrollment-window'(root) {
+    const pairs = [['mew-birth', 'birthDate'], ['mew-elig', 'eligibleFrom'], ['mew-enroll', 'enrollDate'], ['mew-cov', 'employerCoverageEnd']];
+    dateInput(root, 'Date of birth', 'mew-birth', 'date');
+    dateInput(root, 'Or, for Medicare through disability: first month of eligibility', 'mew-elig', 'date');
+    dateInput(root, 'Date of signing up (or the date to check)', 'mew-enroll', 'date');
+    dateInput(root, 'Last day of employer coverage from current work (optional)', 'mew-cov', 'date');
+    const ids = pairs.map(([d]) => d);
+    const o = out(); root.appendChild(o);
+    wire(ids, () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = MW.medicareEnrollmentWindow(args);
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Window', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
     }));

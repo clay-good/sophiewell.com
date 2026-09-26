@@ -920,6 +920,7 @@ import authUnitsRequestV1502 from './adapters/auth-units-request-v1502.js';
 import quantityLimitCheckV1502 from './adapters/quantity-limit-check-v1502.js';
 import medicarePenaltiesV1507 from './adapters/medicare-penalties-v1507.js';
 import cobraClockV1507 from './adapters/cobra-clock-v1507.js';
+import medicareEnrollmentWindowV1507 from './adapters/medicare-enrollment-window-v1507.js';
 import nurseStaffingRatioCheckV1396 from './adapters/nurse-staffing-ratio-check-v1396.js';
 import caWpvReportClockV1396 from './adapters/ca-wpv-report-clock-v1396.js';
 import mandatoryOvertimeCheckV1396 from './adapters/mandatory-overtime-check-v1396.js';
@@ -1876,6 +1877,7 @@ const ADAPTER_MODULES = [
   ['quantity-limit-check-v1502', quantityLimitCheckV1502],
   ['medicare-penalties-v1507', medicarePenaltiesV1507],
   ['cobra-clock-v1507', cobraClockV1507],
+  ['medicare-enrollment-window-v1507', medicareEnrollmentWindowV1507],
   ['nurse-staffing-ratio-check-v1396', nurseStaffingRatioCheckV1396],
   ['ca-wpv-report-clock-v1396', caWpvReportClockV1396],
   ['mandatory-overtime-check-v1396', mandatoryOvertimeCheckV1396],
