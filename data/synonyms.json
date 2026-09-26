@@ -9565,6 +9565,17 @@
       ],
       "tile": "aca-sep-window",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "medicaid work requirement",
+        "community engagement requirement",
+        "medicaid 80 hours",
+        "medicaid work requirement exemption",
+        "medicaid work hours"
+      ],
+      "tile": "medicaid-work-requirement-check",
+      "audience": "clinicians"
     }
   ]
 }

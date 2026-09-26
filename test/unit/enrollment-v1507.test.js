@@ -93,3 +93,29 @@ test('Marketplace SEP: coverage start dates', () => {
   assert.equal(sp({ event: 'marriage', eventDate: '2026-08-12', selectionDate: '2026-10-20' }).bandLabel, 'Outside the window');
   assert.match(sp({ event: 'loss' }).message, ASKING);
 });
+
+import { medicaidWorkRequirement as wr } from '../../lib/medicaid-work-requirement-v1507.js';
+
+test('work requirement: 79 hours fails, 80 passes, $580 of income passes', () => {
+  const b = { exception: 'none', age: '34', medicare: 'no' };
+  assert.equal(wr({ ...b, workHours: '79' }).status, 'does not meet');
+  assert.equal(wr({ ...b, workHours: '60', serviceHours: '20' }).status, 'meets');
+  assert.equal(wr({ ...b, income: '580' }).status, 'meets');
+  assert.equal(wr({ ...b, income: '579.99' }).status, 'does not meet');
+  assert.equal(wr({ ...b, halfTime: 'yes' }).status, 'meets');
+  assert.equal(wr({ ...b, seasonal: 'yes', income: '100', sixMonthIncome: '900' }).status, 'meets');
+});
+
+test('work requirement: exceptions, age and Medicare', () => {
+  assert.equal(wr({ exception: 'caregiver' }).status, 'excepted');
+  assert.equal(wr({ exception: 'none', age: '18', medicare: 'no', workHours: '0' }).status, 'excepted');
+  assert.equal(wr({ exception: 'none', age: '65', medicare: 'no' }).status, 'excepted');
+  assert.equal(wr({ exception: 'none', age: '40', medicare: 'yes' }).status, 'excepted');
+});
+
+test('work requirement: blanks that decide the answer are asked for', () => {
+  for (const r of [wr({}), wr({ exception: 'none' }), wr({ exception: 'none', age: '34' }), wr({ exception: 'none', age: '34', medicare: 'no' })]) {
+    assert.equal(r.valid, false);
+    assert.match(r.message, ASKING);
+  }
+});

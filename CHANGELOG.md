@@ -6,6 +6,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Medicaid Work Requirement Check.** Whether an expansion adult meets a month's requirement (80 hours combined,
+  half-time school, or $580 of income) or is excepted, under the 2026 interim final rule. See docs/spec-v1507.md.
+
 - **Marketplace Special Enrollment Window.** The window for a qualifying event (60 days; 60 before and after a
   loss of coverage; 90 after losing Medicaid or CHIP) and when coverage starts. See docs/spec-v1507.md.
 

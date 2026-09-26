@@ -5,6 +5,7 @@ import * as MP from '../lib/medicare-penalties-v1507.js';
 import * as CB from '../lib/cobra-clock-v1507.js';
 import * as MW from '../lib/medicare-enrollment-window-v1507.js';
 import * as SE from '../lib/aca-sep-window-v1507.js';
+import * as WR from '../lib/medicaid-work-requirement-v1507.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -156,6 +157,31 @@ export const renderers = {
       const r = SE.acaSepWindow(args);
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Window', value: r.bandLabel }]);
+      list(o, r.notes);
+      note(o, r.note);
+    }));
+  },
+  'medicaid-work-requirement-check'(root) {
+    const pairs = [['wr-exception', 'exception'], ['wr-age', 'age'], ['wr-medicare', 'medicare'], ['wr-work', 'workHours'], ['wr-service', 'serviceHours'], ['wr-program', 'programHours'], ['wr-halftime', 'halfTime'], ['wr-school', 'schoolHours'], ['wr-income', 'income'], ['wr-seasonal', 'seasonal'], ['wr-avg', 'sixMonthIncome']];
+    selectField(root, 'Does any of these exceptions apply?', 'wr-exception', WR.EXCEPTIONS);
+    numField(root, 'Age', 'wr-age', 'e.g. 34', '120', '1');
+    selectField(root, 'Has Medicare Part A or Part B?', 'wr-medicare', WR.YES_NO);
+    numField(root, 'Hours of work this month', 'wr-work', 'e.g. 60', '744', 'any');
+    numField(root, 'Hours of community service', 'wr-service', 'e.g. 10', '744', 'any');
+    numField(root, 'Hours in a work program', 'wr-program', 'e.g. 0', '744', 'any');
+    selectField(root, 'Enrolled in school at least half-time?', 'wr-halftime', WR.YES_NO);
+    numField(root, 'Hours of school (if less than half-time)', 'wr-school', 'e.g. 12', '744', 'any');
+    numField(root, 'Income this month in dollars', 'wr-income', 'e.g. 520', '10000000', '0.01');
+    selectField(root, 'Seasonal worker?', 'wr-seasonal', WR.YES_NO);
+    numField(root, 'Seasonal: average monthly income over the past 6 months', 'wr-avg', 'e.g. 900', '10000000', '0.01');
+    const ids = pairs.map(([d]) => d);
+    const o = out(); root.appendChild(o);
+    wire(ids, () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = WR.medicaidWorkRequirement(args);
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Month', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
     }));

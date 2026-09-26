@@ -164,7 +164,7 @@ CMS-2454-IFC (91 FR, June 3, 2026).
 ## Build status
 
 - **Built 2026-09-26:** `partb-late-penalty`, `partd-late-penalty`, `cobra-clock`, `parta-premium`,
-  `medicare-enrollment-window`, `aca-sep-window`.
+  `medicare-enrollment-window`, `aca-sep-window`, `medicaid-work-requirement-check`.
   - The premiums go through the dated-value accessor ([spec-v1501](spec-v1501.md) §2) and are chosen by
     the year asked about: a year with no published figure asks for it, so the tools fail closed on
     January 1. Verified: $202.90 (CMS 2026 Parts A and B fact sheet), $38.99 and the nearest-$0.10
@@ -183,5 +183,8 @@ CMS-2454-IFC (91 FR, June 3, 2026).
     starts coverage that month (406.24(e)(1)).
   - The special enrollment window also applies the late-notice rule this spec left out: 60 days from
     when the person knew or should have known of the event (45 CFR 155.420(c)(5)).
-- **Not yet built:** `extra-help-msp-screen`, `magi-household`,
-  `medicaid-work-requirement-check`.
+  - The work requirement check reads 42 CFR 435.551-435.554 as published in the eCFR (the June 2026
+    interim final rule): the applicable ages are 19 to 64, and the income test uses the federal minimum
+    wage of $7.25 under 29 U.S.C. 206(a)(1)(C), so $580. The exceptions are listed for the reader to
+    mark; the tool does not decide medical frailty or caregiver status.
+- **Not yet built:** `extra-help-msp-screen`, `magi-household`.

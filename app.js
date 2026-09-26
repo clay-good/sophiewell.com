@@ -1033,6 +1033,7 @@ const UTILITIES = [
   { id: 'parta-premium', name: 'Part A Premium and Late Increase', group: 'C', audiences: ['billers', 'patients', 'clinicians'], clinical: false },
   { id: 'medicare-enrollment-window', name: 'Medicare Enrollment Window and Start Date', group: 'C', audiences: ['billers', 'patients', 'clinicians'], clinical: false },
   { id: 'aca-sep-window', name: 'Marketplace Special Enrollment Window', group: 'C', audiences: ['billers', 'patients', 'clinicians'], clinical: false },
+  { id: 'medicaid-work-requirement-check', name: 'Medicaid Work Requirement Check', group: 'C', audiences: ['billers', 'patients', 'clinicians'], clinical: false },
   { id: 'auth-runout', name: 'Authorization Run-Out and Renewal Date', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },
   { id: 'auth-units-request', name: 'Authorization Units to Request', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },
   { id: 'quantity-limit-check', name: 'Quantity Limit Check', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },
