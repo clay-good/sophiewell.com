@@ -4,6 +4,7 @@ import { el, clear } from '../lib/dom.js';
 import * as IN from '../lib/income-screens-v1506.js';
 import * as MC from '../lib/marketplace-credit-v1506.js';
 import * as PC from '../lib/partd-costs-v1506.js';
+import * as CC from '../lib/copay-card-v1506.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -147,6 +148,29 @@ export const renderers = {
       const r = PC.m3pMonthlyBill(args);
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'First bill', value: r.bandLabel }]);
+      list(o, r.notes);
+      note(o, r.note);
+    }));
+  },
+  'copay-card-runout'(root) {
+    const pairs = [['ccr-plan', 'planType'], ['ccr-cost', 'costPerFill'], ['ccr-fills', 'fills'], ['ccr-card', 'cardMax'], ['ccr-perfill', 'perFillMax'], ['ccr-ded', 'deductible'], ['ccr-coins', 'coinsurance'], ['ccr-oop', 'oopMax'], ['ccr-counts', 'counts']];
+    selectField(root, 'Plan type', 'ccr-plan', CC.PLAN_TYPES);
+    numField(root, 'Drug cost per fill (the plan\'s price), dollars', 'ccr-cost', 'e.g. 5000', '10000000', '0.01');
+    numField(root, 'Fills a year', 'ccr-fills', 'e.g. 12', '52', '1');
+    numField(root, 'Copay card annual maximum, dollars', 'ccr-card', 'e.g. 10000', '10000000', '0.01');
+    numField(root, 'Copay card per-fill maximum (optional)', 'ccr-perfill', 'e.g. 3000', '10000000', '0.01');
+    numField(root, 'Plan deductible, dollars', 'ccr-ded', 'e.g. 3000', '1000000', '0.01');
+    numField(root, 'Plan coinsurance, percent', 'ccr-coins', 'e.g. 20', '100', '0.1');
+    numField(root, 'Plan out-of-pocket maximum, dollars', 'ccr-oop', 'e.g. 8000', '1000000', '0.01');
+    selectField(root, 'Does the plan count the card toward the deductible and out-of-pocket maximum?', 'ccr-counts', CC.COUNTS);
+    const ids = pairs.map(([d]) => d);
+    const o = out(); root.appendChild(o);
+    wire(ids, () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = CC.copayCardRunout(args);
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Patient pays', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
     }));

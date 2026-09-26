@@ -180,5 +180,8 @@ eCFR (current September 2026): 42 CFR 405.1200–405.1212, 409.30, 409.60, 409.6
   coinsurance ($217 in 2026) is a dated value tracked by the `billing-medicare-cost-share` ledger row. The
   hospice face-to-face window is counted from the recertification (the tool shows its start if recertifying
   on the period's first day), as 418.22(a)(4) words it.
-- **Not yet built:** `im-notice-timing`, `mcsn-appeal-rights`, `hospice-aggregate-cap`, `home-health-cert-clock`,
-  `dme-rental-clock`, `irf-compliance-clock`.
+- **Built 2026-09-26:** `im-notice-timing` (42 CFR 405.1205, with the 7-day pre-admission and 4-hour limits
+  read in Pub. 100-04 ch. 30 sec. 200.3.4) and `hospice-aggregate-cap` (418.309; the FY2026 and FY2027 cap
+  amounts confirmed in the CMS-1851-F fact sheet, new ledger row `medicare-hospice-cap`). The cap tool also
+  gives the self-determination filing deadline, 5 months after the cap year (418.308(c)).
+- **Not yet built:** `mcsn-appeal-rights`, `home-health-cert-clock`, `dme-rental-clock`, `irf-compliance-clock`.

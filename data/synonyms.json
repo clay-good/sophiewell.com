@@ -9741,6 +9741,51 @@
       ],
       "tile": "m3p-monthly-bill",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "copay card run out",
+        "copay accumulator",
+        "manufacturer copay assistance",
+        "copay card deductible",
+        "accumulator adjustment program"
+      ],
+      "tile": "copay-card-runout",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "extra help screen",
+        "medicare savings program",
+        "qmb eligibility",
+        "slmb eligibility",
+        "low income subsidy part d",
+        "lis eligibility"
+      ],
+      "tile": "extra-help-msp-screen",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "hospice aggregate cap",
+        "hospice cap overpayment",
+        "hospice cap amount",
+        "hospice cap year",
+        "418.309 cap"
+      ],
+      "tile": "hospice-aggregate-cap",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "important message from medicare",
+        "im notice timing",
+        "follow up im",
+        "discharge appeal notice",
+        "cms-10065 timing"
+      ],
+      "tile": "im-notice-timing",
+      "audience": "clinicians"
     }
   ]
 }

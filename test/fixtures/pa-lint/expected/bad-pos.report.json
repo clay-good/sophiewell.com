@@ -10276,6 +10276,20 @@
           "lastVerified": "2026-09-26"
         },
         {
+          "id": "medicare-msp-lis-resources",
+          "label": "Medicare Savings Program and Extra Help resource limits per calendar year: 2026 MSP $9,950 / $14,910 (SSA POMS HI 00815.023, TN 64), Extra Help $16,590 / $33,100 or $18,090 / $36,100 with burial funds (CMS memo, October 31, 2025), backing extra-help-msp-screen",
+          "url": "https://www.cms.gov/files/document/cy2026-lis-resource-limits-memo.pdf",
+          "ruleFamily": "ops-v63",
+          "lastVerified": "2026-09-26"
+        },
+        {
+          "id": "medicare-hospice-cap",
+          "label": "Hospice aggregate cap amount per federal fiscal year: FY2026 $35,361.44, FY2027 $36,174.75 (CMS-1851-F fact sheet), backing hospice-aggregate-cap",
+          "url": "https://www.cms.gov/newsroom/fact-sheets/fiscal-year-2027-hospice-wage-index-payment-rate-update-hospice-quality-reporting-program",
+          "ruleFamily": "ops-v63",
+          "lastVerified": "2026-09-26"
+        },
+        {
           "id": "medicare-partd-base-premium",
           "label": "Part D national base beneficiary premium, per calendar year: 2026 $38.99 (Medicare.gov Part D costs, with the nearest-$0.10 rounding), 2027 $41.33 (CMS, July 28, 2026), backing partd-late-penalty; the standard benefit's maximum deductible ($615 / $700) and out-of-pocket threshold ($2,100 / $2,400) for 2026 / 2027, backing partd-year-cost and m3p-monthly-bill",
           "url": "https://www.cms.gov/newsroom/fact-sheets/medicare-part-d-2027-national-average-monthly-bid-amount-information",

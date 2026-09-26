@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:05ad9a54-f656-52f6-8abd-9965a357181c",
+  "serialNumber": "urn:uuid:812a8623-81c5-5c4f-81b8-b3f5b35d2eee",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-26T07:02:51.192Z",
+    "timestamp": "2026-09-26T07:26:01.397Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1893 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1897 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "28d53f833947f1ddedf6bda60f69bf6c93549f1777d66e5c765204859b742da6"
+          "content": "9ef9d8f25a68b9dfa552201874d51ee13fc827f2cf73acd810690864e4c6d551"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "120758"
+          "value": "120968"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9a0be7c6062013a731e18be0ff834e959e65b5eda318824badd6b813b57e977f"
+          "content": "6008721104836b800a7c4a6558d2f5e5a6e17dad09abae6eafcddf88dd711c94"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "553786"
+          "value": "554407"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b96ef6c213c23e0238f55c73e24acf22ba7d167fc6c535746ee48c6cf00686bc"
+          "content": "f9b0aa8b6ea74ac05b798bb2e46651c09347db2b2f74f38973cbfced5429023e"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "236102"
+          "value": "236621"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "093864ea342da18708e0f701e64126f7a7154330438f26a364edefe425766d52"
+          "content": "6931d2f5260e3956024ab04a807390f01373b919e21df946fcf22d2b8b0cab99"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "108414"
+          "value": "108659"
         }
       ]
     },
@@ -4378,6 +4378,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "9928"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/copay-card-v1506.js",
+      "type": "file",
+      "name": "lib/copay-card-v1506.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6249321f4efc46da120b625dd08e6c78ea87f039afe025f711b3275f3bf6d5b6"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5535"
         }
       ]
     },
@@ -8855,6 +8876,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/hospice-cap-v1514.js",
+      "type": "file",
+      "name": "lib/hospice-cap-v1514.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "85c89621f41acff2c8bf072718cab466920b3006d0a194b580ce515daa8c0c7b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4634"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/hpa-glaucoma-v801.js",
       "type": "file",
       "name": "lib/hpa-glaucoma-v801.js",
@@ -11990,7 +12032,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4f7b77e3d647020a95c67e26f1f6cbb2099ae364cc7fb9a91fb967b7665f2d72"
+          "content": "468ea262f8ee6279833a7e3b538beaadb7262b112e8181d894aa7a813a7e7ee5"
         }
       ],
       "properties": [
@@ -12000,7 +12042,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2622702"
+          "value": "2625761"
         }
       ]
     },
@@ -12547,6 +12589,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "6256"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/msp-lis-v1507.js",
+      "type": "file",
+      "name": "lib/msp-lis-v1507.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1befd77f1fd23ae1fe6707e7f8fe7e042ddf1b9e7ad8ce771436008585e9422e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7898"
         }
       ]
     },
@@ -14846,7 +14909,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "02c643dd247c232ad351d92b9bfe6ffa76fbd45d0e477896cb3f81f0605b089c"
+          "content": "efda7c68a6a988cdf55837106337eb1824ddb66d4778ed5b867bde5126518c57"
         }
       ],
       "properties": [
@@ -14856,7 +14919,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "70365"
+          "value": "71316"
         }
       ]
     },
@@ -16169,7 +16232,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4679cc621cd7527b1c08f731e52acac37b3034484571b382dcc547a93237c518"
+          "content": "b5e1c0c27bc48f87b11517d44749a5bd9348a194f04383dc7eec293170a72e0e"
         }
       ],
       "properties": [
@@ -16179,7 +16242,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "12272"
+          "value": "16390"
         }
       ]
     },
@@ -25718,6 +25781,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/copay-card-v1506.js",
+      "type": "file",
+      "name": "mcp/adapters/copay-card-v1506.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d65730c5989410a5087a460d9d287ac8ceb572d775b1948eb38798fe26c9a2fc"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1621"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/cormack-lehane-v339.js",
       "type": "file",
       "name": "mcp/adapters/cormack-lehane-v339.js",
@@ -29960,6 +30044,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/hospice-cap-v1514.js",
+      "type": "file",
+      "name": "mcp/adapters/hospice-cap-v1514.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a5690497450184a5cd678f091e9f0adc8d8f8cdc5af13eae782b3a3931287af4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1000"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/hpa-glaucoma-v801.js",
       "type": "file",
       "name": "mcp/adapters/hpa-glaucoma-v801.js",
@@ -33509,6 +33614,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/msp-lis-v1507.js",
+      "type": "file",
+      "name": "mcp/adapters/msp-lis-v1507.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7bf3cf637a90f770da6a1bd819ebc7b27e4df88ac5918c1c96b5e9ec5060746c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1551"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/msu-disc-herniation-v1468.js",
       "type": "file",
       "name": "mcp/adapters/msu-disc-herniation-v1468.js",
@@ -36728,7 +36854,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "84668b6e521e8a79a56baea60a2e8097e45d00a176e019e123441712b5ea7bd4"
+          "content": "215632bfcc9028ddd391627814f4ebdae1a844056a4a8017e91bc6235dfba3d8"
         }
       ],
       "properties": [
@@ -36738,7 +36864,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2586"
+          "value": "3225"
         }
       ]
     },
@@ -42104,7 +42230,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3a31554a5dfe4e31b77d16039260a6e88ecd5d61469e2aef4db5f25f597796da"
+          "content": "96c6aa96c750015817ff983a199d790ab4bc42d7a83821777c2239c415ef7523"
         }
       ],
       "properties": [
@@ -42114,7 +42240,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "111229"
+          "value": "111524"
         }
       ]
     },
@@ -45443,7 +45569,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3f5f3a5b949c6666b79059eb630d353bacb4ec5b4f14dfe32cc50c710cc33116"
+          "content": "fa5f0877e9035cc6b4942b805a796b0f96d7f4b385734488274f1f95d5eb61ef"
         }
       ],
       "properties": [
@@ -45453,7 +45579,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "8423"
+          "value": "10112"
         }
       ]
     },
@@ -45464,7 +45590,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6673ce3eb7a56e75ae2c5a330c7ab829594460811c988f0d8d3a4cc9423cc34d"
+          "content": "7e2eaf8321d98b4f84f225297812f7264102a49404b278241a238c4d73d1164d"
         }
       ],
       "properties": [
@@ -45474,7 +45600,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "10510"
+          "value": "12125"
         }
       ]
     },
@@ -45527,7 +45653,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1cf65c12dfad6f61e64c1a7472b7c62c2ed5d12248548da3341146d50cd57c34"
+          "content": "91bbd63e54cc2354c8f6f1cfc7d2db1b8e6c5e5a844e39b234f7b50938a5641d"
         }
       ],
       "properties": [
@@ -45537,7 +45663,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "5312"
+          "value": "7333"
         }
       ]
     },
@@ -76700,6 +76826,7 @@
         "urn:sophiewell:file:source:lib/congenital-syphilis-scenario-v1400.js",
         "urn:sophiewell:file:source:lib/conley-fall-risk-v692.js",
         "urn:sophiewell:file:source:lib/constrictive-pericarditis-echo-v853.js",
+        "urn:sophiewell:file:source:lib/copay-card-v1506.js",
         "urn:sophiewell:file:source:lib/cormack-lehane-v339.js",
         "urn:sophiewell:file:source:lib/cosyntropin-v299.js",
         "urn:sophiewell:file:source:lib/cotton-myer-v419.js",
@@ -76913,6 +77040,7 @@
         "urn:sophiewell:file:source:lib/hiv-pep-occupational-v887.js",
         "urn:sophiewell:file:source:lib/hlh-2004-v582.js",
         "urn:sophiewell:file:source:lib/home-oxygen-v889.js",
+        "urn:sophiewell:file:source:lib/hospice-cap-v1514.js",
         "urn:sophiewell:file:source:lib/hpa-glaucoma-v801.js",
         "urn:sophiewell:file:source:lib/hrs-aki-v808.js",
         "urn:sophiewell:file:source:lib/hughes-gbs-v800.js",
@@ -77089,6 +77217,7 @@
         "urn:sophiewell:file:source:lib/mpa-v640.js",
         "urn:sophiewell:file:source:lib/mrc-power-v428.js",
         "urn:sophiewell:file:source:lib/mrecist-v1475.js",
+        "urn:sophiewell:file:source:lib/msp-lis-v1507.js",
         "urn:sophiewell:file:source:lib/msu-disc-herniation-v1468.js",
         "urn:sophiewell:file:source:lib/mswat-v557.js",
         "urn:sophiewell:file:source:lib/myeloid-prognosis-v199.js",
@@ -78613,6 +78742,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/congenital-syphilis-scenario-v1400.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/conley-fall-risk-v692.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/constrictive-pericarditis-echo-v853.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/copay-card-v1506.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cormack-lehane-v339.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cosyntropin-v299.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cotton-myer-v419.js",
@@ -78815,6 +78945,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/hiv-pep-occupational-v887.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hlh-2004-v582.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/home-oxygen-v889.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/hospice-cap-v1514.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hpa-glaucoma-v801.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hrs-aki-v808.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hughes-gbs-v800.js",
@@ -78984,6 +79115,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/mpa-v640.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mrc-power-v428.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mrecist-v1475.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/msp-lis-v1507.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/msu-disc-herniation-v1468.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mswat-v557.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/myeloid-prognosis-v199.js",
@@ -79496,7 +79628,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "05ad9a54f65672f6"
+      "value": "812a862381c58c4f"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -79508,7 +79640,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2878"
+      "value": "2884"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

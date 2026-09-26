@@ -220,5 +220,8 @@ dates). It's the cleanest machine-readable feed in the program (route A).
     2027 figures as unverified projections.
   - `m3p-monthly-bill` follows 42 CFR 423.137(c) exactly, including the uneven schedule it produces, and
     carries the unbilled balance in cents so the last month settles it.
-- **Not yet built:** `copay-card-runout`, `part-b-drug-coinsurance` and `partd-mfp-price-check` (the last two
-  need the CMS ASP and negotiated-price files, route A).
+  - `copay-card-runout` (group Q) runs the year fill by fill both ways. The eCFR text of 45 CFR 156.130(h)
+    was re-read: the May 20, 2026 amendment (91 FR 29874) changed other paragraphs, so (h) still prints the
+    vacated 2021 wording, as this spec says. Maximizer programs are named and not modeled.
+- **Not yet built:** `part-b-drug-coinsurance` and `partd-mfp-price-check` (both need the CMS ASP and
+  negotiated-price files, route A).

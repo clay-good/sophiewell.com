@@ -6,6 +6,7 @@ import * as CB from '../lib/cobra-clock-v1507.js';
 import * as MW from '../lib/medicare-enrollment-window-v1507.js';
 import * as SE from '../lib/aca-sep-window-v1507.js';
 import * as WR from '../lib/medicaid-work-requirement-v1507.js';
+import * as ML from '../lib/msp-lis-v1507.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -182,6 +183,28 @@ export const renderers = {
       const r = WR.medicaidWorkRequirement(args);
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Month', value: r.bandLabel }]);
+      list(o, r.notes);
+      note(o, r.note);
+    }));
+  },
+  'extra-help-msp-screen'(root) {
+    const pairs = [['msp-marital', 'marital'], ['msp-region', 'region'], ['msp-unearned', 'unearned'], ['msp-earned', 'earned'], ['msp-resources', 'resources'], ['msp-burial', 'burial'], ['msp-deps', 'dependents'], ['msp-year', 'year']];
+    selectField(root, 'Marital status', 'msp-marital', ML.MARITAL);
+    selectField(root, 'Where the person lives', 'msp-region', ML.REGIONS);
+    numField(root, 'Monthly unearned income (Social Security, pensions), dollars', 'msp-unearned', 'e.g. 1500', '1000000', '0.01');
+    numField(root, 'Monthly earned income (wages), optional', 'msp-earned', 'e.g. 400', '1000000', '0.01');
+    numField(root, 'Countable resources (bank accounts, stocks, bonds; not the home or one car), dollars', 'msp-resources', 'e.g. 5000', '100000000', '0.01');
+    selectField(root, 'Some resources set aside for burial?', 'msp-burial', ML.YES_NO);
+    numField(root, 'Dependent relatives living in the home (optional)', 'msp-deps', 'e.g. 0', '20', '1');
+    numField(root, 'Year (blank for this year)', 'msp-year', 'e.g. 2026', '2100', '1');
+    const ids = pairs.map(([d]) => d);
+    const o = out(); root.appendChild(o);
+    wire(ids, () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = ML.extraHelpMspScreen(args);
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Likely', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
     }));

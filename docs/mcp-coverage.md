@@ -8608,6 +8608,18 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/partd-costs-v1506.js (spec-v1506: Part D drug cost through the year — administrative disclaimer)
 - `partd-year-cost`
 
+### lib/copay-card-v1506.js (spec-v1506: Copay card run-out and accumulator impact — administrative disclaimer)
+- `copay-card-runout`
+
+### lib/msp-lis-v1507.js (spec-v1507: Extra Help and Medicare Savings Program screen — administrative disclaimer)
+- `extra-help-msp-screen`
+
+### lib/hospice-cap-v1514.js (spec-v1514: Hospice aggregate cap — administrative disclaimer)
+- `hospice-aggregate-cap`
+
+### lib/post-acute-clocks-v1514.js (spec-v1514: Important Message from Medicare timing — administrative disclaimer)
+- `im-notice-timing`
+
 ### lib/partd-costs-v1506.js (spec-v1506: Medicare Prescription Payment Plan monthly bills — administrative disclaimer)
 - `m3p-monthly-bill`
 

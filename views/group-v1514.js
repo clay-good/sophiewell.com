@@ -2,6 +2,7 @@
 
 import { el, clear } from '../lib/dom.js';
 import * as PA from '../lib/post-acute-clocks-v1514.js';
+import * as HC from '../lib/hospice-cap-v1514.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -107,6 +108,41 @@ export const renderers = {
       const r = PA.hospicePeriodClock(args);
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Period', value: r.bandLabel }]);
+      list(o, r.notes);
+      note(o, r.note);
+    }));
+  },
+  'hospice-aggregate-cap'(root) {
+    const pairs = [['hac-year', 'capYear'], ['hac-benes', 'beneficiaries'], ['hac-method', 'method'], ['hac-paid', 'payments']];
+    numField(root, 'Cap year, federal fiscal year (blank for the current one)', 'hac-year', 'e.g. 2026', '2100', '1');
+    numField(root, 'Medicare beneficiaries for the cap year (may be fractional)', 'hac-benes', 'e.g. 100', '1000000', '0.001');
+    selectField(root, 'Counting method (optional)', 'hac-method', HC.METHODS);
+    numField(root, 'Medicare hospice payments for the cap year, dollars', 'hac-paid', 'e.g. 3700000', '10000000000', '0.01');
+    const ids = pairs.map(([d]) => d);
+    const o = out(); root.appendChild(o);
+    wire(ids, () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = HC.hospiceAggregateCap(args);
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Cap', value: r.bandLabel }]);
+      list(o, r.notes);
+      note(o, r.note);
+    }));
+  },
+  'im-notice-timing'(root) {
+    const pairs = [['im-admit', 'admission'], ['im-first', 'firstDelivered'], ['im-discharge', 'discharge']];
+    dateInput(root, 'Inpatient admission, date and time', 'im-admit', 'datetime-local');
+    dateInput(root, 'Date the first IM was delivered (optional)', 'im-first', 'date');
+    dateInput(root, 'Planned discharge, date and time (optional)', 'im-discharge', 'datetime-local');
+    const ids = pairs.map(([d]) => d);
+    const o = out(); root.appendChild(o);
+    wire(ids, () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = PA.imNoticeTiming(args);
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Status', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
     }));

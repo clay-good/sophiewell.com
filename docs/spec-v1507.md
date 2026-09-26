@@ -187,4 +187,10 @@ CMS-2454-IFC (91 FR, June 3, 2026).
     interim final rule): the applicable ages are 19 to 64, and the income test uses the federal minimum
     wage of $7.25 under 29 U.S.C. 206(a)(1)(C), so $580. The exceptions are listed for the reader to
     mark; the tool does not decide medical frailty or caregiver status.
-- **Not yet built:** `extra-help-msp-screen`, `magi-household`.
+- **Built 2026-09-26:** `extra-help-msp-screen`. Income is counted the SSI way that 42 CFR 423.772 points to
+  ($20, then $65 and half of earnings), and each limit is the poverty-guideline share rounded up to a
+  dollar and tested at or below, which reproduces every figure in SSA POMS HI 00815.023 (TN 64) for 2026,
+  individual and couple. The statute says "less than" for SLMB, QI and Extra Help; the screen follows the
+  published table so no one at exactly the printed limit is turned away. Extra Help uses the family size
+  in 423.772, dependents included. New ledger row `medicare-msp-lis-resources`.
+- **Not yet built:** `magi-household`.

@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Copay Card Run-Out and Accumulator Impact.** Fill by fill, what the card pays and when the first bill
+  arrives, with the card counting toward the deductible, with an accumulator, or both when the plan's rule is
+  not known. Commercial plans only. See docs/spec-v1506.md.
+
+- **Extra Help and Medicare Savings Program Screen.** Counts income the SSI way and tests it and resources
+  against the federal QMB, SLMB, QI and Extra Help limits, reproducing SSA's published 2026 table. A screen,
+  not a determination; states may be more generous. See docs/spec-v1507.md.
+
+- **Hospice Aggregate Cap.** The cap amount ($35,361.44 for FY2026, $36,174.75 for FY2027) times the
+  beneficiary count, against the year's Medicare payments, with the amount over and the filing deadline
+  (42 CFR 418.308-418.309). See docs/spec-v1514.md.
+
+- **Important Message from Medicare Timing.** The first IM within 2 calendar days of admission (or up to 7
+  days before, at a pre-admission visit) and the follow-up copy between 2 days and 4 hours before discharge,
+  or none when the first came within 2 days of it (42 CFR 405.1205). See docs/spec-v1514.md.
+
 - **Part D Drug Cost Through the Year.** Month by month through the standard benefit: the deductible, 25%
   coinsurance, then $0 once out-of-pocket costs reach $2,100 (2026) or $2,400 (2027). See docs/spec-v1506.md.
 

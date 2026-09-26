@@ -44,4 +44,14 @@ export default [
       { dom: 'hosp-asof', arg: 'asOf', kind: 'string', required: false, label: 'Date to check (YYYY-MM-DD)' },
     ],
   },
+  {
+    id: 'im-notice-timing',
+    summary: 'When the Important Message from Medicare is due. The first copy within 2 days of admission, a follow-up up to 2 days before discharge (42 CFR 405.1205).',
+    compute: PA.imNoticeTiming,
+    fields: [
+      { dom: 'im-admit', arg: 'admission', kind: 'string', required: true, label: 'Inpatient admission (YYYY-MM-DDTHH:MM)' },
+      { dom: 'im-first', arg: 'firstDelivered', kind: 'string', required: false, label: 'First IM delivered (YYYY-MM-DD)' },
+      { dom: 'im-discharge', arg: 'discharge', kind: 'string', required: false, label: 'Planned discharge (YYYY-MM-DDTHH:MM)' },
+    ],
+  },
 ];
