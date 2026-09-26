@@ -1,0 +1,1 @@
+{"ahi-odi-severity":[{"d":"ah-ahi","k":"number","l":"AHI (events/hr)"},{"d":"ah-odi","k":"number","l":"ODI (events/hr)"},{"d":"ah-crit","k":"enum","l":"Desaturation criterion","v":["3%","4%"]}],"ahlback-knee-oa":[{"d":"ahlback-grade","k":"enum","l":"Ahlback grade","v":["I","II","III","IV","V"]}]}

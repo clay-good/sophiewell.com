@@ -10116,6 +10116,160 @@
       ],
       "tile": "medicaid-ura",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "part d redetermination request",
+        "part d appeal letter",
+        "expedited redetermination letter",
+        "drug plan appeal letter",
+        "good cause late part d appeal"
+      ],
+      "tile": "partd-redetermination-request",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "erisa appeal letter",
+        "employer plan appeal",
+        "self funded plan appeal letter",
+        "full and fair review letter",
+        "claim file request erisa"
+      ],
+      "tile": "erisa-appeal-letter",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "medicare advantage reconsideration letter",
+        "ma appeal letter",
+        "expedited reconsideration request",
+        "ma reconsideration request letter",
+        "part b drug reconsideration"
+      ],
+      "tile": "ma-reconsideration-request",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "external review request letter",
+        "independent review request",
+        "request external review",
+        "deemed exhaustion letter",
+        "iro review request"
+      ],
+      "tile": "external-review-request",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "medicaid appeal letter",
+        "medicaid fair hearing request",
+        "keep benefits during appeal",
+        "medicaid managed care appeal letter",
+        "continued benefits medicaid"
+      ],
+      "tile": "medicaid-hearing-request",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "part d exception request",
+        "tiering exception letter",
+        "formulary exception letter",
+        "prescriber supporting statement",
+        "non formulary drug request"
+      ],
+      "tile": "partd-exception-request",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "letter of medical necessity",
+        "medical necessity letter drug",
+        "lmn template",
+        "prior authorization letter",
+        "coverage letter for a drug"
+      ],
+      "tile": "medical-necessity-letter",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "benefits investigation",
+        "patient cost for a therapy",
+        "bi summary",
+        "out of pocket for infusion",
+        "first administration cost"
+      ],
+      "tile": "bi-summary",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "site of care comparison",
+        "home infusion versus hospital",
+        "infusion site cost",
+        "site of care cost difference",
+        "ambulatory infusion center cost"
+      ],
+      "tile": "site-of-care-compare",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "appeal worklist",
+        "denial worklist",
+        "appeals by deadline",
+        "claim appeal queue",
+        "denials sorted by due date"
+      ],
+      "tile": "appeal-worklist",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "therapy cost comparison",
+        "biosimilar cost comparison",
+        "annual drug cost",
+        "p and t cost comparison",
+        "year one cost with loading doses"
+      ],
+      "tile": "therapy-cost-compare",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "star ratings adherence",
+        "pdc star method",
+        "d08 d09 d10 adherence",
+        "medication adherence measure",
+        "part d adherence rate"
+      ],
+      "tile": "pdc-star",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "adherence outreach list",
+        "who can still reach 80",
+        "pdc slack days",
+        "adherence call list",
+        "star adherence outreach"
+      ],
+      "tile": "adherence-outreach-list",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "lenalidomide rems",
+        "revlimid rems fill",
+        "lenalidomide authorization number",
+        "rems confirmation number 24 hours",
+        "lenalidomide pregnancy test schedule"
+      ],
+      "tile": "imid-rems-fill-window",
+      "audience": "clinicians"
     }
   ]
 }

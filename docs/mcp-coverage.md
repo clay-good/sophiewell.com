@@ -8641,8 +8641,50 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/appeal-path-v1505.js (spec-v1505: Which appeal rules apply — administrative disclaimer)
 - `which-appeal-path`
 
+### lib/pdc-star-v1513.js (spec-v1513: Part D adherence (PDC, Star method) — administrative disclaimer)
+- `pdc-star`
+
+### lib/pdc-star-v1513.js (spec-v1513: Adherence outreach list (who can still reach 80%) — administrative disclaimer)
+- `adherence-outreach-list`
+
+### lib/imid-rems-v1511.js (spec-v1511: Lenalidomide REMS fill window — administrative disclaimer)
+- `imid-rems-fill-window`
+
+### lib/benefits-v1505.js (spec-v1505: Benefits investigation cost summary — administrative disclaimer)
+- `bi-summary`
+
+### lib/benefits-v1505.js (spec-v1505: Cost by site of care — administrative disclaimer)
+- `site-of-care-compare`
+
+### lib/denial-next-step-v1516.js (spec-v1516: Appeal worklist by deadline — administrative disclaimer)
+- `appeal-worklist`
+
+### lib/therapy-cost-v1510.js (spec-v1510: Annual therapy cost comparison — administrative disclaimer)
+- `therapy-cost-compare`
+
 ### lib/denial-next-step-v1516.js (spec-v1516: Denial next step and deadline — administrative disclaimer)
 - `denial-next-step`
+
+### lib/request-letters-v1504.js (spec-v1504: Part D redetermination request letter — administrative disclaimer)
+- `partd-redetermination-request`
+
+### lib/request-letters-v1504.js (spec-v1504: ERISA appeal letter (employer coverage) — administrative disclaimer)
+- `erisa-appeal-letter`
+
+### lib/request-letters-v1504.js (spec-v1504: Medicare Advantage reconsideration request letter — administrative disclaimer)
+- `ma-reconsideration-request`
+
+### lib/request-letters-v1504.js (spec-v1504: External review request letter — administrative disclaimer)
+- `external-review-request`
+
+### lib/request-letters-v1504.js (spec-v1504: Medicaid appeal or fair hearing request letter — administrative disclaimer)
+- `medicaid-hearing-request`
+
+### lib/request-letters-v1504.js (spec-v1504: Part D exception request letter — administrative disclaimer)
+- `partd-exception-request`
+
+### lib/request-letters-v1504.js (spec-v1504: Letter of medical necessity (drug) — administrative disclaimer)
+- `medical-necessity-letter`
 
 ### lib/mfp-refund-v1510.js (spec-v1510: Negotiated-price refund check (pharmacy) — administrative disclaimer)
 - `mfp-refund-check`

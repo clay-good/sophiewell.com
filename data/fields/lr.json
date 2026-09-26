@@ -1,0 +1,1 @@
+{"lrinec":[{"d":"lr-crp","k":"number","l":"C-reactive protein (mg/L)","r":1},{"d":"lr-wbc","k":"number","l":"White blood cell count (x10^3/uL)","r":1},{"d":"lr-hb","k":"number","l":"Hemoglobin (g/dL)","r":1},{"d":"lr-na","k":"number","l":"Sodium (mmol/L)","r":1},{"d":"lr-cr","k":"number","l":"Creatinine (mg/dL)"},{"d":"lr-glu","k":"number","l":"Glucose (mg/dL)"}]}

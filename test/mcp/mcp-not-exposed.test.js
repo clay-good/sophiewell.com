@@ -142,7 +142,9 @@ test('describe fills an empty related list from what the website shows', async (
 
 test('list_calculators says when a query only matches a browser-only tool', async () => {
   const { listCalculators } = await import('../../mcp/tools.js');
-  const hit = listCalculators({ query: 'appeal letter' });
+  // spec-v1504 added exposed letter builders (erisa-appeal-letter matches plain "appeal letter"), so
+  // the query names the browser-only generator itself.
+  const hit = listCalculators({ query: 'appeal letter generator' });
   assert.equal(hit.total, 0);
   assert.deepEqual((hit.onlyOnWebsite || []).map((r) => r.id), ['appeal-letter']);
   // A query that matches exposed rows, and one that matches nothing anywhere,

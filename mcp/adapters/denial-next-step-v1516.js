@@ -18,4 +18,13 @@ export default [
       { dom: 'dn-window', arg: 'windowDays', kind: 'number', required: false, label: 'Appeal window for Medicaid or other payers', unit: 'days' },
     ],
   },
+  {
+    id: 'appeal-worklist',
+    summary: 'A worklist of denied claims sorted by appeal deadline, then dollars. Each deadline from its payer type\'s rule; missed ones are listed apart.',
+    compute: DN.appealWorklist,
+    fields: [
+      { dom: 'aw-claims', arg: 'claims', kind: 'string', required: true, label: 'Denied claims, one per line: reference, payer type, denial date, amount, window in days (medicaid or other)' },
+      { dom: 'aw-asof', arg: 'asOf', kind: 'string', required: false, label: 'As of (YYYY-MM-DD; blank for today)' },
+    ],
+  },
 ];

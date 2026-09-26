@@ -1,0 +1,1 @@
+{"bhutani-bilirubin":[{"d":"bb-hours","k":"number","l":"Age (hours)","u":"hours","r":1},{"d":"bb-tsb","k":"number","l":"Total serum bilirubin","u":"mg/dL (canonical)","r":1},{"d":"bb-ga","k":"number","l":"Gestational age (weeks, 35-44)","u":"weeks","r":1},{"d":"bb-risk","k":"bool","l":"Neurotoxicity risk factor(s) present"}]}

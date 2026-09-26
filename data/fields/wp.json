@@ -1,0 +1,1 @@
+{"wpss-mds":[{"d":"wpss-cat","k":"enum","l":"WHO category (0–3 points)","r":1,"v":["0","1","2","3"]},{"d":"wpss-karyo","k":"enum","l":"Karyotype (good/intermediate/poor)","r":1,"v":["0","1","2"]},{"d":"wpss-tx","k":"bool","l":"Transfusion dependence (+1)"}]}

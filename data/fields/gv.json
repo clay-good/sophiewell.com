@@ -1,0 +1,1 @@
+{"gvhd-grade":[{"d":"gvhd-skin","k":"enum","l":"Skin stage (by BSA rash)","v":["0","1","2","3","4"]},{"d":"gvhd-liver","k":"enum","l":"Liver stage (by bilirubin)","v":["0","1","2","3","4"]},{"d":"gvhd-gi","k":"enum","l":"Lower GI stage (by diarrhea volume)","v":["0","1","2","3","4"]}]}

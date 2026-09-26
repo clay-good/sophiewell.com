@@ -61,3 +61,19 @@ mirrors (content, not layout, reproduced).
   a good-cause request and accepts with one.
 - `medicaid-hearing-request`: the continuation-of-benefits paragraph shows the
   10-calendar-day deadline from the notice date.
+
+## Build status
+
+- **Built 2026-09-26:** all seven builders (group C). Each returns the letter as sections the page prints,
+  counts the bracketed blanks left, and never writes a clinical claim the reader did not supply; the
+  clinical argument is always a blank. Every rule was re-read in the eCFR: 42 CFR 423.566-423.590 (the
+  supporting-statement standards of 423.578(a)(4) and (b)(5), the expedited wording of 423.570 and 423.584),
+  422.578-422.590, 29 CFR 2560.503-1(h), 45 CFR 147.136 (the builder reuses `aca-external-review-clock`),
+  and 42 CFR 438.402-438.420 with 431.221 (the expedited wording is 438.410(a)).
+  - A late request is refused unless the reader asks for good cause, which adds the paragraph 423.582(c)
+    or 422.582(c) requires; an employer plan's 180 days is stated as the minimum the plan must allow.
+  - A Part D exception request without the prescriber's statement is still produced, with the statement
+    marked missing and the note that the plan's clock waits for it (423.568(b)).
+  - The builders take the other tools' output as plain lines (the step therapy timeline and the criteria
+    cover sheet); a download banner and file attachments wait for the document builder of
+    [spec-v1501](spec-v1501.md) §4.

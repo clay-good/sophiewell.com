@@ -1,0 +1,1 @@
+{"sga-nutrition":[{"d":"sga-rating","k":"enum","l":"Overall SGA rating","r":1,"v":["A","B","C"]}],"sgarbossa":[{"d":"a","k":"bool","l":"Concordant ST elevation >= 1 mm in any lead"},{"d":"b","k":"bool","l":"Concordant ST depression >= 1 mm in V1-V3"},{"d":"c","k":"bool","l":"ST/S ratio <= -0.25 with discordant ST elevation >= 1 mm"}]}

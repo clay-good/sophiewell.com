@@ -28,6 +28,13 @@ function dateInput(root, label, id, type) {
   wrap.appendChild(el('input', { id, type }));
   root.appendChild(wrap);
 }
+function textareaField(root, label, id, placeholder) {
+  const wrap = el('p');
+  wrap.appendChild(el('label', { for: id, text: label }));
+  wrap.appendChild(el('br'));
+  wrap.appendChild(el('textarea', { id, rows: '6', autocomplete: 'off', placeholder }));
+  root.appendChild(wrap);
+}
 function list(root, items) {
   if (!items || !items.length) return;
   const ul = el('ul');
@@ -60,6 +67,23 @@ export const renderers = {
       const r = DN.denialNextStep(args);
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Category', value: r.bandLabel }]);
+      list(o, r.notes);
+      note(o, r.note);
+    }));
+  },
+  'appeal-worklist'(root) {
+    const pairs = [['aw-claims', 'claims'], ['aw-asof', 'asOf']];
+    note(root, 'One denied claim per line: reference, payer type (medicare, ma, partd, medicaid, employer, marketplace or other), denial date, amount, and for medicaid or other the appeal window in days.');
+    textareaField(root, 'Denied claims', 'aw-claims', 'C-100, medicare, 2026-08-01, 1200');
+    dateInput(root, 'As of (blank for today)', 'aw-asof', 'date');
+    const ids = pairs.map(([d]) => d);
+    const o = out(); root.appendChild(o);
+    wire(ids, () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = DN.appealWorklist(args);
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Worklist', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
     }));

@@ -1,0 +1,1 @@
+{"skin-tear":[{"d":"st-flappresent","k":"bool","l":"A flap is present"},{"d":"st-flapcoverswholebed","k":"bool","l":"The flap can be repositioned to cover the whole wound bed"},{"d":"st-type","k":"enum","l":"Type, if it is already assigned (leave empty to derive it from the flap)","v":["type-1","type-2","type-3"]}]}

@@ -1,0 +1,1 @@
+{"hpa-glaucoma":[{"d":"hpa-md","k":"number","l":"Mean deviation","u":"dB"},{"d":"hpa-pct5","k":"number","l":"Points below 5% level","u":"%"},{"d":"hpa-count1","k":"number","l":"Points below 1% level (of 76)"},{"d":"hpa-central","k":"enum","l":"Central 5 degrees","v":["all-above-15","one-hemifield","both-or-zero"]}]}

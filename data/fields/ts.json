@@ -1,0 +1,1 @@
+{"tsat":[{"d":"ts-iron","k":"number","l":"Serum iron","u":"ug/dL","r":1},{"d":"ts-tibc","k":"number","l":"TIBC","u":"ug/dL","r":1},{"d":"ts-ferritin","k":"number","l":"Ferritin (optional; separates absolute from functional deficiency)","u":"ng/mL"}],"tscherne-closed":[{"d":"tscherne-grade","k":"enum","l":"Tscherne grade","v":["0","I","II","III"]}]}

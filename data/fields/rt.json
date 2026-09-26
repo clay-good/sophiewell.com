@@ -1,0 +1,1 @@
+{"rta-type":[{"d":"rta-k","k":"enum","l":"Serum potassium","v":["low","normal","high"]},{"d":"rta-ph","k":"number","l":"Urine pH in acidosis"},{"d":"rta-fehco3","k":"number","l":"FE bicarbonate (supporting)","u":"%"},{"d":"rta-uag","k":"number","l":"Urine anion gap (supporting)","u":"mEq/L"}]}

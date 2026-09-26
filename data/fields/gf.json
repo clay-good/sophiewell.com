@@ -1,0 +1,1 @@
+{"gfe-deadline":[{"d":"gfe-sched","k":"string","l":"Date scheduled (YYYY-MM-DD)"},{"d":"gfe-svc","k":"string","l":"Service date (YYYY-MM-DD)"},{"d":"gfe-req","k":"string","l":"Date the patient asked for an estimate (YYYY-MM-DD)"}]}

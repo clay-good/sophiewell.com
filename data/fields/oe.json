@@ -1,0 +1,1 @@
+{"oesil":[{"d":"oe-age","k":"bool","l":"Age > 65 years"},{"d":"oe-cv","k":"bool","l":"Cardiovascular disease in history"},{"d":"oe-prod","k":"bool","l":"Syncope without prodrome"},{"d":"oe-ecg","k":"bool","l":"Abnormal electrocardiogram"}]}

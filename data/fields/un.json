@@ -1,0 +1,1 @@
+{"unit-converter":[{"d":"kind","k":"enum","l":"Quantity kind","r":1,"v":["weight","volume","temperature"]},{"d":"val","k":"number","l":"Value to convert","r":1},{"d":"from","k":"string","l":"From unit (e.g. kg, mL, C)","r":1},{"d":"to","k":"string","l":"To unit (e.g. lb, L, F)","r":1}]}

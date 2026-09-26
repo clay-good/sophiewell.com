@@ -1,0 +1,1 @@
+{"cvt-risk":[{"d":"cv-malig","k":"bool","l":"Malignancy (+2)"},{"d":"cv-coma","k":"bool","l":"Coma / GCS < 9 (+2)"},{"d":"cv-deep","k":"bool","l":"Deep venous system thrombosis (+2)"},{"d":"cv-mental","k":"bool","l":"Mental-status disturbance (+1)"},{"d":"cv-male","k":"bool","l":"Male sex (+1)"},{"d":"cv-ich","k":"bool","l":"Intracranial hemorrhage (+1)"}]}

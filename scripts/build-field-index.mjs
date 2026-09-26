@@ -24,8 +24,9 @@
 // pull down on ward wifi for a file that is never needed whole, since routing
 // picks the tile before anything wants its fields. Per tile is 1540 generated
 // files in the repo, which churns every diff. Bucketing by the tile id's first
-// letter splits the difference: 27 files, a few KB each, one fetch per query,
-// cached in memory for the session.
+// two characters splits the difference: a couple of hundred small files, one
+// fetch per query, cached in memory for the session. (It was one letter, 27
+// files, until a bucket outgrew the budget below.)
 //
 // Output: `data/fields/<bucket>.json`, each `{ "<tileId>": [ ...fields ] }`.
 
@@ -45,7 +46,7 @@ const OUT_DIR = join(ROOT, 'data', 'fields');
 // The guardrail is per bucket, because a bucket is what a reader actually
 // downloads. A build failure rather than a warning, for the same reason the
 // corpus budget is one: a silent creep is how a budget stops meaning anything.
-// If a bucket outgrows this, split on two letters rather than raising it.
+// If a bucket outgrows this, split further (three characters) rather than raising it.
 const BUCKET_GZIP_BUDGET = 24 * 1024;
 
 
@@ -105,7 +106,7 @@ async function main() {
     if (gzip > BUCKET_GZIP_BUDGET) {
       throw new Error(
         `build-field-index: bucket "${b}" is ${(gzip / 1024).toFixed(1)} KB gzip, over the `
-        + `${(BUCKET_GZIP_BUDGET / 1024).toFixed(0)} KB budget. Split the buckets on two letters.`
+        + `${(BUCKET_GZIP_BUDGET / 1024).toFixed(0)} KB budget. Split the buckets further in lib/field-bucket.js.`
       );
     }
     if (gzip > biggestGzip) { biggestGzip = gzip; biggestBucket = b; }

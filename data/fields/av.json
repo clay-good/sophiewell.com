@@ -1,0 +1,1 @@
+{"avf-rule-of-6s":[{"d":"avf-flow","k":"number","l":"Fistula blood flow","u":"mL/min","r":1},{"d":"avf-diameter","k":"number","l":"Vein inner diameter","u":"mm","r":1},{"d":"avf-depth","k":"number","l":"Vein depth from skin","u":"mm","r":1}],"avpu-gcs":[{"d":"lvl","k":"enum","l":"AVPU level","r":1,"v":["A","V","P","U"]}]}

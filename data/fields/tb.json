@@ -1,0 +1,1 @@
+{"tb-testing":[{"d":"tb-mm","k":"number","l":"Induration","u":"mm","r":1},{"d":"tb-risk","k":"enum","l":"Risk-category cutoff (5 high / 10 moderate / 15 low)","r":1,"v":["5","10","15"]}]}

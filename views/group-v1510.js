@@ -4,6 +4,7 @@ import { el, clear } from '../lib/dom.js';
 import * as MR from '../lib/mfp-refund-v1510.js';
 import * as PB from '../lib/pbm-reimbursement-v1510.js';
 import * as UR from '../lib/medicaid-ura-v1510.js';
+import * as TC from '../lib/therapy-cost-v1510.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -28,6 +29,13 @@ function dateInput(root, label, id, type) {
   wrap.appendChild(el('label', { for: id, text: label }));
   wrap.appendChild(el('br'));
   wrap.appendChild(el('input', { id, type }));
+  root.appendChild(wrap);
+}
+function textField(root, label, id, placeholder) {
+  const wrap = el('p');
+  wrap.appendChild(el('label', { for: id, text: label }));
+  wrap.appendChild(el('br'));
+  wrap.appendChild(el('input', { id, type: 'text', autocomplete: 'off', placeholder }));
   root.appendChild(wrap);
 }
 function list(root, items) {
@@ -107,6 +115,38 @@ export const renderers = {
       const r = UR.medicaidUra(args);
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'URA', value: r.bandLabel }]);
+      list(o, r.notes);
+      note(o, r.note);
+    }));
+  },
+  'therapy-cost-compare'(root) {
+    const pairs = [['tc-name1', 'name1'], ['tc-price1', 'price1'], ['tc-units1', 'units1'], ['tc-y11', 'year11'], ['tc-later1', 'later1'], ['tc-src1', 'source1'], ['tc-name2', 'name2'], ['tc-price2', 'price2'], ['tc-units2', 'units2'], ['tc-y12', 'year12'], ['tc-later2', 'later2'], ['tc-src2', 'source2'], ['tc-name3', 'name3'], ['tc-price3', 'price3'], ['tc-units3', 'units3'], ['tc-y13', 'year13'], ['tc-later3', 'later3'], ['tc-src3', 'source3']];
+    textField(root, 'Regimen 1 name', 'tc-name1', 'e.g. Reference biologic');
+    numField(root, 'Regimen 1 price per unit, dollars', 'tc-price1', 'e.g. 60', '10000000', '0.000001');
+    numField(root, 'Regimen 1 units per administration', 'tc-units1', 'e.g. 5', '1000000', '0.001');
+    numField(root, 'Regimen 1 administrations in year one, loading doses included', 'tc-y11', 'e.g. 8', '400', '0.5');
+    numField(root, 'Regimen 1 administrations a year after year one', 'tc-later1', 'e.g. 6.5', '400', '0.5');
+    textField(root, 'Regimen 1 price source (optional)', 'tc-src1', 'e.g. ASP Q4 2026');
+    textField(root, 'Regimen 2 name', 'tc-name2', 'e.g. Biosimilar A');
+    numField(root, 'Regimen 2 price per unit, dollars', 'tc-price2', 'e.g. 60', '10000000', '0.000001');
+    numField(root, 'Regimen 2 units per administration', 'tc-units2', 'e.g. 5', '1000000', '0.001');
+    numField(root, 'Regimen 2 administrations in year one, loading doses included', 'tc-y12', 'e.g. 8', '400', '0.5');
+    numField(root, 'Regimen 2 administrations a year after year one', 'tc-later2', 'e.g. 6.5', '400', '0.5');
+    textField(root, 'Regimen 2 price source (optional)', 'tc-src2', 'e.g. ASP Q4 2026');
+    textField(root, 'Regimen 3 name (optional)', 'tc-name3', 'e.g. Biosimilar B');
+    numField(root, 'Regimen 3 price per unit, dollars (optional)', 'tc-price3', 'e.g. 60', '10000000', '0.000001');
+    numField(root, 'Regimen 3 units per administration (optional)', 'tc-units3', 'e.g. 5', '1000000', '0.001');
+    numField(root, 'Regimen 3 administrations in year one, loading doses included (optional)', 'tc-y13', 'e.g. 8', '400', '0.5');
+    numField(root, 'Regimen 3 administrations a year after year one (optional)', 'tc-later3', 'e.g. 6.5', '400', '0.5');
+    textField(root, 'Regimen 3 price source (optional)', 'tc-src3', 'e.g. ASP Q4 2026');
+    const ids = pairs.map(([d]) => d);
+    const o = out(); root.appendChild(o);
+    wire(ids, () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = TC.therapyCostCompare(args);
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: null }, { label: 'Lowest year one', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
     }));

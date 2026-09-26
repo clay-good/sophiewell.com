@@ -6,6 +6,61 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Part D Adherence (PDC, Star Method).** The D08-D10 adherence rates from a fill history by the CMS Star
+  Ratings Technical Notes: the 91-day and two-fill denominator rules, same-ingredient shifting, stay days
+  removed, and the insulin and sacubitril/valsartan exclusions. See docs/spec-v1513.md.
+
+- **Adherence Outreach List (Who Can Still Reach 80%).** From the same fill history and an as-of date, each
+  patient's slack (the uncovered days still allowed to finish at 80%), sorted by the least slack, then the next
+  refill due; those past it are listed apart. See docs/spec-v1513.md.
+
+- **Lenalidomide REMS Fill Window.** Whether lenalidomide may be dispensed and until when: the 7-day or
+  30-day authorization, the 7-days-of-therapy-left rule, the 24-hour confirmation number and the next pregnancy
+  test, from the program's pharmacy guide. See docs/spec-v1511.md.
+
+- **Benefits Investigation Cost Summary.** From the benefits check (deductible and out-of-pocket maximum still to
+  meet, coinsurance or copay, the allowed amount), what the patient pays for the first administration, the
+  first 90 days and the plan year, with prior authorization and specialty pharmacy flagged. See docs/spec-v1505.md.
+
+- **Cost by Site of Care.** The plan's and the patient's cost for a therapy over the plan year at up to four
+  sites (hospital outpatient, office, home infusion, infusion center), from each site's allowed amount and
+  cost sharing. See docs/spec-v1505.md.
+
+- **Appeal Worklist by Deadline.** Denied claims, one per line, each given its payer type's appeal deadline and
+  sorted by days left, then dollars; claims past their deadline are listed apart. No likelihood of winning is
+  estimated. See docs/spec-v1516.md.
+
+- **Annual Therapy Cost Comparison.** Up to three regimens side by side: cost per administration, year one with
+  loading doses, and later years, each with the price source the reader enters. See docs/spec-v1510.md.
+
+- **Part D Redetermination Request Letter.** A redetermination request citing 42 CFR 423.580-423.590, with its
+  60-day deadline from presumed receipt, the expedited sentence in the form 423.584 recognizes, and the
+  good-cause paragraph for a late request; the reason stays a blank for a person. See docs/spec-v1504.md.
+
+- **ERISA Appeal Letter (Employer Coverage).** An internal appeal asserting the rights in 29 CFR 2560.503-1(h): the
+  claim file free of charge, review with no deference by someone not involved in the denial, and a health care
+  professional for a medical judgment, with the decision clock for the claim kind. See docs/spec-v1504.md.
+
+- **Medicare Advantage Reconsideration Request Letter.** A reconsideration request citing 42 CFR 422.578-422.590,
+  with its 60-day deadline from presumed receipt, the expedited sentence in the form 422.584 recognizes (never
+  for a payment request), the good-cause paragraph, and the decision clock. See docs/spec-v1504.md.
+
+- **External Review Request Letter.** A request citing 45 CFR 147.136 with its four-month deadline (first day of
+  the fifth month when no date matches, moved past weekends and holidays), the expedited sentence, and the
+  deemed-exhaustion paragraph when the reader marks a plan failure. See docs/spec-v1504.md.
+
+- **Medicaid Appeal or Fair Hearing Request Letter.** A managed care appeal (60 days, 42 CFR 438.402) or a
+  fee-for-service fair hearing request (the state's window, at most 90 days), with the continued-benefits
+  request, its 10-day warning and the recovery rule, and the expedited sentence of 438.410(a). See docs/spec-v1504.md.
+
+- **Part D Exception Request Letter.** A tiering, formulary, step therapy or dose-restriction exception request
+  with the prescriber's supporting statement in the form 42 CFR 423.578 sets, a missing statement flagged (the
+  clock waits for it), and the decision clock. See docs/spec-v1504.md.
+
+- **Letter of Medical Necessity (Drug).** The diagnosis, the drug and whether the use is an FDA-approved
+  indication, the prior therapies and each payer criterion with its evidence (one per line, from the step
+  therapy and criteria tools), with the clinical rationale left to the prescriber. See docs/spec-v1504.md.
+
 - **Negotiated-Price Refund Check (Pharmacy).** The standard default refund for a Medicare negotiated-price drug,
   (WAC - MFP) x quantity per CMS's final guidance, the expected date from the refund timeline, a late flag,
   and whether payment plus refund covers acquisition cost. See docs/spec-v1510.md.

@@ -1,7 +1,8 @@
-// spec-v1513: renderers for mpr-gap-days, med-sync-plan.
+// spec-v1513: renderers for mpr-gap-days, med-sync-plan, pdc-star, adherence-outreach-list.
 
 import { el, clear } from '../lib/dom.js';
 import * as AD from '../lib/adherence-v1513.js';
+import * as PS from '../lib/pdc-star-v1513.js';
 import { resultRow } from '../lib/result-copy.js';
 
 function textareaField(root, label, id, placeholder) {
@@ -71,6 +72,45 @@ export const renderers = {
       const r = AD.medSyncPlan(args);
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: null }, { label: 'Sync', value: r.bandLabel }]);
+      list(o, r.notes);
+      note(o, r.note);
+    }));
+  },
+  'pdc-star'(root) {
+    const pairs = [['ps-fills', 'fills'], ['ps-stays', 'stays'], ['ps-excl', 'exclusions'], ['ps-year', 'year']];
+    note(root, 'Fills one per line: patient, measure (D08 diabetes, D09 RAS antagonists, D10 statins), fill date, days supply, ingredient. The measure for each fill is yours to assign.');
+    textareaField(root, 'Fills', 'ps-fills', 'Ann, D10, 2026-01-05, 30, atorvastatin');
+    textareaField(root, 'Inpatient or skilled nursing stays (optional): patient, admit date, discharge date', 'ps-stays', 'Ann, 2026-04-01, 2026-04-10');
+    textareaField(root, 'Exclusions (optional): patient, hospice or esrd or dialysis', 'ps-excl', 'Bo, hospice');
+    numField(root, 'Measurement year', 'ps-year', 'e.g. 2026', '2100', '1');
+    const ids = pairs.map(([d]) => d);
+    const o = out(); root.appendChild(o);
+    wire(ids, () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = PS.pdcStar(args);
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: null }, { label: 'Rate', value: r.bandLabel }]);
+      list(o, r.notes);
+      note(o, r.note);
+    }));
+  },
+  'adherence-outreach-list'(root) {
+    const pairs = [['ao-fills', 'fills'], ['ao-stays', 'stays'], ['ao-excl', 'exclusions'], ['ao-year', 'year'], ['ao-asof', 'asOf']];
+    note(root, 'Fills one per line: patient, measure (D08 diabetes, D09 RAS antagonists, D10 statins), fill date, days supply, ingredient. The measure for each fill is yours to assign.');
+    textareaField(root, 'Fills', 'ao-fills', 'Ann, D10, 2026-01-05, 30, atorvastatin');
+    textareaField(root, 'Inpatient or skilled nursing stays (optional): patient, admit date, discharge date', 'ao-stays', 'Ann, 2026-04-01, 2026-04-10');
+    textareaField(root, 'Exclusions (optional): patient, hospice or esrd or dialysis', 'ao-excl', 'Bo, hospice');
+    numField(root, 'Measurement year', 'ao-year', 'e.g. 2026', '2100', '1');
+    dateInput(root, 'As of (blank for today)', 'ao-asof', 'date');
+    const ids = pairs.map(([d]) => d);
+    const o = out(); root.appendChild(o);
+    wire(ids, () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = PS.adherenceOutreachList(args);
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: null }, { label: 'Call list', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
     }));

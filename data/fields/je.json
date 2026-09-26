@@ -1,0 +1,1 @@
+{"jemt-papilla":[{"d":"jemt-mesial","k":"enum","l":"Mesial papilla Jemt score","v":["0","1","2","3","4"]},{"d":"jemt-distal","k":"enum","l":"Distal papilla Jemt score","v":["0","1","2","3","4"]}],"jerger-tympanogram":[{"d":"jerger-type","k":"enum","l":"Tympanogram type","v":["A","As","Ad","B","C"]}]}

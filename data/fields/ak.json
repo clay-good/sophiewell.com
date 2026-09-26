@@ -1,0 +1,1 @@
+{"akin-aki":[{"d":"ak-base","k":"number","l":"Baseline creatinine","u":"mg/dL"},{"d":"ak-curr","k":"number","l":"Current creatinine","u":"mg/dL"},{"d":"ak-rrt","k":"bool","l":"Renal replacement therapy initiated"},{"d":"ak-uo","k":"enum","l":"Urine-output category","v":["0","1","2","3"]}]}

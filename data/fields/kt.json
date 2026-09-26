@@ -1,0 +1,1 @@
+{"ktv-urr":[{"d":"kt-pre","k":"number","l":"Pre-dialysis BUN","u":"mg/dL","r":1},{"d":"kt-post","k":"number","l":"Post-dialysis BUN","u":"mg/dL","r":1},{"d":"kt-uf","k":"number","l":"Ultrafiltration volume","u":"L"},{"d":"kt-time","k":"number","l":"Dialysis session time","u":"h"},{"d":"kt-wt","k":"number","l":"Post-dialysis weight","u":"kg"}]}

@@ -1,0 +1,1 @@
+{"id-migraine":[{"d":"idm-nausea","k":"bool","l":"Nausea with headaches"},{"d":"idm-photo","k":"bool","l":"Light bothers you (photophobia)"},{"d":"idm-dis","k":"bool","l":"Headaches limit activity ≥ 1 day"}],"ideberg-glenoid":[{"d":"idb-type","k":"enum","l":"Ideberg type","v":["I","II","III","IV","V","VI"]}]}

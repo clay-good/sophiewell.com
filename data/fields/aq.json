@@ -1,0 +1,1 @@
+{"aqi-pm25":[{"d":"aqi-conc","k":"number","l":"PM2.5, 24-hour (ug/m3)"},{"d":"aqi-aqi","k":"number","l":"AQI value"},{"d":"aqi-sensitive","k":"enum","l":"Patient is in a sensitive group","v":["yes","no"]}]}

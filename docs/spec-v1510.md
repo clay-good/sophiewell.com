@@ -121,5 +121,7 @@ to thousands of dollars per fill, so a missed refund matters to a small pharmacy
     comes from the table `partd-mfp-price-check` uses.
   - `medicaid-ura` holds the rebate computation, and `340b-ceiling-price` now calls it, as this spec says.
   - `pbm-reimbursement-check` ships no AWP, WAC or MAC data.
-- **Not yet built:** `asp-payment` (the quarterly ASP file), `nadac-margin` (the NADAC feed), `therapy-cost-compare`,
-  and `mfp-refund-reconcile` (the upload workbench).
+  - `therapy-cost-compare` takes up to three regimens with the reader's prices and sources; partial-vial waste
+    is left to `vial-rounding`.
+- **Not yet built:** `asp-payment` (the quarterly ASP file), `nadac-margin` (the NADAC feed), and
+  `mfp-refund-reconcile` (the upload workbench).

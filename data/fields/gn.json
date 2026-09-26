@@ -1,0 +1,1 @@
+{"gnri":[{"d":"gnri-albumin","k":"number","l":"Albumin G L","r":1},{"d":"gnri-weight","k":"number","l":"Weight Kg","r":1},{"d":"gnri-height","k":"number","l":"Height Cm","r":1},{"d":"gnri-sex","k":"enum","l":"Sex","r":1,"v":["male","female"]}]}

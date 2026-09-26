@@ -1,0 +1,1 @@
+{"qcsi":[{"d":"qcsi-rr","k":"number","l":"Respiratory rate (breaths/min)","u":"breaths/min","r":1},{"d":"qcsi-spo2","k":"number","l":"Pulse oximetry SpO2 (%)","u":"%","r":1},{"d":"qcsi-o2","k":"number","l":"Oxygen flow rate (L/min, 0 = room air)","u":"L/min","r":1}]}

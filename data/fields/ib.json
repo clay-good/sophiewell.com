@@ -1,0 +1,1 @@
+{"ibfat":[{"d":"ibfat-ready","k":"enum","l":"Readiness to feed (0-3)","r":1,"v":["0","1","2","3"]},{"d":"ibfat-root","k":"enum","l":"Rooting (0-3)","r":1,"v":["0","1","2","3"]},{"d":"ibfat-fix","k":"enum","l":"Fixing / latching on (0-3)","r":1,"v":["0","1","2","3"]},{"d":"ibfat-suck","k":"enum","l":"Sucking pattern (0-3)","r":1,"v":["0","1","2","3"]}]}

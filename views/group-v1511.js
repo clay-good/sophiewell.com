@@ -5,6 +5,7 @@ import * as CS from '../lib/cs-dispensing-v1511.js';
 import * as DS from '../lib/days-supply-v1511.js';
 import * as CBU from '../lib/compounding-bud-v1511.js';
 import * as IP from '../lib/ipledge-v1511.js';
+import * as IR from '../lib/imid-rems-v1511.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -191,6 +192,27 @@ export const renderers = {
       const r = IP.ipledgeWindow(args);
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Window', value: r.bandLabel }]);
+      list(o, r.notes);
+      note(o, r.note);
+    }));
+  },
+  'imid-rems-fill-window'(root) {
+    const pairs = [['len-cat', 'category'], ['len-anchor', 'anchorDate'], ['len-sub', 'subsequent'], ['len-left', 'daysLeft'], ['len-start', 'therapyStart'], ['len-cycles', 'cycles'], ['len-check', 'checkDate']];
+    selectField(root, 'Patient risk category (as written on the prescription)', 'len-cat', IR.CATEGORIES);
+    dateInput(root, 'Date of the last pregnancy test (or, for other patients, the authorization issue date)', 'len-anchor', 'date');
+    selectField(root, 'Is this a subsequent prescription? (optional)', 'len-sub', IR.YES_NO);
+    numField(root, 'Days of therapy remaining on the current prescription (subsequent fills)', 'len-left', 'e.g. 5', '28', '1');
+    dateInput(root, 'Therapy start date (optional)', 'len-start', 'date');
+    selectField(root, 'Menstrual cycles (optional)', 'len-cycles', IR.CYCLES);
+    dateInput(root, 'Date to check (blank for today)', 'len-check', 'date');
+    const ids = pairs.map(([d]) => d);
+    const o = out(); root.appendChild(o);
+    wire(ids, () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = IR.imidRemsFillWindow(args);
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Fill', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
     }));

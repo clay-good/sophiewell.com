@@ -97,5 +97,7 @@ code, and a CSV to send with a payment dispute.
   explains the assignment to the patient. Deadlines reuse the windows [spec-v1503](spec-v1503.md) verified;
   the corrected Medicare claim date matches `timely-filing` (the date of service plus 365 days). Medicaid
   provider windows are the reader's entry.
-- **Not yet built:** `denial-pattern-report`, `appeal-worklist` and `underpayment-check` (need the 835 upload
-  of [spec-v1515](spec-v1515.md)).
+- **Built 2026-09-26:** `appeal-worklist`, with claims one per line (reference, payer type, denial date, amount,
+  and a window for Medicaid or other payers); missed deadlines are listed apart. The 835 upload will feed it
+  when [spec-v1515](spec-v1515.md) is built.
+- **Not yet built:** `denial-pattern-report` and `underpayment-check` (need the 835 reader).

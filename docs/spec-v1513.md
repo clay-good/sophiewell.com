@@ -96,5 +96,9 @@ question for the plan.
   PDC follows the Technical Notes' Attachment L (covered days over period days, overlapping fills of the
   same ingredient shifted forward); MPR is uncapped. The sync plan rounds short fills up to whole units and
   cites the Part D daily cost-sharing rule for short fills (42 CFR 423.153(b)(4)).
-- **Not yet built:** `pdc-star` and `adherence-outreach-list` (need the multi-patient upload and the
-  per-ingredient measure mapping this spec describes).
+- **Built 2026-09-26:** `pdc-star` and `adherence-outreach-list`, with fills, stays and exclusions one per line.
+  The method was read in the 2026 Technical Notes (measures D08-D10 and Attachment L): the index date, the
+  91-day treatment period, two fills on different dates, shifting only past the same ingredient, stay days
+  out of both sides with supply shifted past the stay, and the insulin and sacubitril/valsartan exclusions.
+  The reader assigns each fill's measure; no PQA list is shipped. The outreach slack is the uncovered days
+  still allowed to finish at 80%.

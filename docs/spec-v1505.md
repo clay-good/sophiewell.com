@@ -113,6 +113,9 @@ this one, which the duplicate-tile finder flags.
 - **Built 2026-09-26:** `which-appeal-path` (group C). Every branch points to a tool already built
   ([spec-v1503](spec-v1503.md) and `appeal-deadline`), and every window it prints is one those tools
   verify. Coverage it does not handle (TRICARE, VA, FEHB) says so rather than guessing.
+- **Built 2026-09-26:** `bi-summary` and `site-of-care-compare` (group Q). Both walk the deductible, coinsurance
+  or copay, and the out-of-pocket maximum as a claim adjudicates, on figures the reader enters from the
+  benefits check; the summary's facts are typed until the 271 reader ([spec-v1515](spec-v1515.md)) exists.
 - **Not yet built:** `part-b-or-d` (needs the CMS Part B versus Part D document read in full and the
-  MAC self-administered drug lists), `lcd-diagnosis-check` (Medicare Coverage Database export),
-  `bi-summary`, `site-of-care-compare`, and the `ndc-hcpcs-units` backfill.
+  MAC self-administered drug lists), `lcd-diagnosis-check` (Medicare Coverage Database export), and the
+  `ndc-hcpcs-units` backfill (the ASP NDC-HCPCS crosswalk).

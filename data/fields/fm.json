@@ -1,0 +1,1 @@
+{"fmea-rpn":[{"d":"fr-severity","k":"number","l":"Severity, a whole number 1 to 10","r":1},{"d":"fr-occurrence","k":"number","l":"Occurrence, a whole number 1 to 10","r":1},{"d":"fr-detection","k":"number","l":"Detection, 1 to 10, where 1 is almost certain to be caught","r":1}]}

@@ -1,0 +1,1 @@
+{"h2fpef":[{"d":"h2-bmi","k":"bool","l":"Obese (BMI > 30)"},{"d":"h2-htn","k":"bool","l":">= 2 antihypertensive medications"},{"d":"h2-af","k":"bool","l":"Atrial fibrillation"},{"d":"h2-ph","k":"bool","l":"Pulmonary hypertension (PASP > 35)"},{"d":"h2-age","k":"bool","l":"Age > 60 years"},{"d":"h2-ee","k":"bool","l":"Echo E/e′ > 9"}]}

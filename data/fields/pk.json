@@ -1,0 +1,1 @@
+{"pk-suite":[{"d":"pk-vd","k":"number","l":"Volume of distribution Vd (L)"},{"d":"pk-cl","k":"number","l":"Clearance CL (L/h)"},{"d":"pk-cp","k":"number","l":"Target concentration Cp (mg/L)"},{"d":"pk-f","k":"number","l":"Bioavailability F (0–1)"},{"d":"pk-tau","k":"number","l":"Dosing interval τ (h)"}]}

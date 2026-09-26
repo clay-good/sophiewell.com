@@ -1,0 +1,1 @@
+{"wbgt":[{"d":"wbgt-setting","k":"enum","l":"Setting","r":1,"v":["outdoor","indoor"]},{"d":"wbgt-nwb","k":"number","l":"Natural wet-bulb temperature","r":1},{"d":"wbgt-globe","k":"number","l":"Globe temperature (outdoor only)","r":1},{"d":"wbgt-dry","k":"number","l":"Dry-bulb (air) temperature","r":1}]}

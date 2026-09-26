@@ -862,6 +862,7 @@ import { renderers as RV1508 } from './views/group-v1508.js';
 import { renderers as RV1512 } from './views/group-v1512.js';
 import { renderers as RV1505 } from './views/group-v1505.js';
 import { renderers as RV1516 } from './views/group-v1516.js';
+import { renderers as RV1504 } from './views/group-v1504.js';
 import { renderers as RV1510 } from './views/group-v1510.js';
 import { renderers as RV1509 } from './views/group-v1509.js';
 import { renderers as RV1513 } from './views/group-v1513.js';
@@ -953,7 +954,7 @@ const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...R
   ...RV902,
   ...RV903,
   ...RV905,
-  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV960, ...RV1061, ...RV1062, ...RV1240, ...RV1241, ...RV1242, ...RV1243, ...RV1400, ...RV1389, ...RV1393, ...RV1397, ...RV1395, ...RV1390, ...RV1391, ...RV1392, ...RV1394, ...RV1399, ...RV1398, ...RV1401, ...RV1396, ...RV1412, ...RV1413, ...RV1414, ...RV1416, ...RV1417, ...RV1418, ...RV1419, ...RV1420, ...RV1421, ...RV1422, ...RV1423, ...RV1424, ...RV1425, ...RV1426, ...RV1427, ...RV1428, ...RV1429, ...RV1430, ...RV1431, ...RV1433, ...RV1434, ...RV1435, ...RV1436, ...RV1438, ...RV1439, ...RV1440, ...RV1441, ...RV1442, ...RV1443, ...RV1444, ...RV1445, ...RV1446, ...RV1447, ...RV1448, ...RV1449, ...RV1450, ...RV1451, ...RV1452, ...RV1453, ...RV1454, ...RV1455, ...RV1468, ...RV1469, ...RV1470, ...RV1471, ...RV1472, ...RV1473, ...RV1475, ...RV1476, ...RV1479, ...RV1480, ...RV1481, ...RV1482, ...RV1483, ...RV1484, ...RV1485, ...RV1486, ...RV1487, ...RV1488, ...RV1489, ...RV1490, ...RV1491, ...RV1492, ...RV1493, ...RV1494, ...RV1495, ...RV1496, ...RV1497, ...RV1498, ...RV1499, ...RV1570, ...RV1571, ...RV1572, ...RV1503, ...RV1502, ...RV1507, ...RV1511, ...RV1514, ...RV1506, ...RV1508, ...RV1512, ...RV1505, ...RV1516, ...RV1510, ...RV1509, ...RV1513, ...RV63, ...RPALINT };
+  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV960, ...RV1061, ...RV1062, ...RV1240, ...RV1241, ...RV1242, ...RV1243, ...RV1400, ...RV1389, ...RV1393, ...RV1397, ...RV1395, ...RV1390, ...RV1391, ...RV1392, ...RV1394, ...RV1399, ...RV1398, ...RV1401, ...RV1396, ...RV1412, ...RV1413, ...RV1414, ...RV1416, ...RV1417, ...RV1418, ...RV1419, ...RV1420, ...RV1421, ...RV1422, ...RV1423, ...RV1424, ...RV1425, ...RV1426, ...RV1427, ...RV1428, ...RV1429, ...RV1430, ...RV1431, ...RV1433, ...RV1434, ...RV1435, ...RV1436, ...RV1438, ...RV1439, ...RV1440, ...RV1441, ...RV1442, ...RV1443, ...RV1444, ...RV1445, ...RV1446, ...RV1447, ...RV1448, ...RV1449, ...RV1450, ...RV1451, ...RV1452, ...RV1453, ...RV1454, ...RV1455, ...RV1468, ...RV1469, ...RV1470, ...RV1471, ...RV1472, ...RV1473, ...RV1475, ...RV1476, ...RV1479, ...RV1480, ...RV1481, ...RV1482, ...RV1483, ...RV1484, ...RV1485, ...RV1486, ...RV1487, ...RV1488, ...RV1489, ...RV1490, ...RV1491, ...RV1492, ...RV1493, ...RV1494, ...RV1495, ...RV1496, ...RV1497, ...RV1498, ...RV1499, ...RV1570, ...RV1571, ...RV1572, ...RV1503, ...RV1502, ...RV1507, ...RV1511, ...RV1514, ...RV1506, ...RV1508, ...RV1512, ...RV1505, ...RV1516, ...RV1504, ...RV1510, ...RV1509, ...RV1513, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -1065,6 +1066,9 @@ const UTILITIES = [
   { id: 'dose-calendar', name: 'Loading and Maintenance Dose Calendar', group: 'Q', audiences: ['clinicians', 'patients'], clinical: false },
   { id: 'mpr-gap-days', name: 'Adherence: PDC, MPR and Gap Days', group: 'Q', audiences: ['clinicians', 'billers'], clinical: false },
   { id: 'med-sync-plan', name: 'Medication Synchronization Short Fills', group: 'Q', audiences: ['clinicians', 'billers'], clinical: false },
+  { id: 'pdc-star', name: 'Part D Adherence (PDC, Star Method)', group: 'Q', audiences: ['clinicians', 'billers'], clinical: false },
+  { id: 'adherence-outreach-list', name: 'Adherence Outreach List (Who Can Still Reach 80%)', group: 'Q', audiences: ['clinicians', 'billers'], clinical: false },
+  { id: 'imid-rems-fill-window', name: 'Lenalidomide REMS Fill Window', group: 'Q', audiences: ['clinicians'], clinical: false },
   { id: 'step-therapy-history', name: 'Step Therapy History Check', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },
   { id: 'pa-criteria-checklist', name: 'Payer Criteria Checklist', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },
   { id: 'magi-household', name: 'Medicaid MAGI Household and Income', group: 'C', audiences: ['billers', 'patients'], clinical: false },
@@ -1078,6 +1082,17 @@ const UTILITIES = [
   { id: 'medicaid-ura', name: 'Medicaid Unit Rebate Amount', group: 'B', audiences: ['billers', 'clinicians'], clinical: false },
   { id: 'ipledge-dispense-window', name: 'iPLEDGE Dispense Window (Isotretinoin)', group: 'Q', audiences: ['clinicians', 'patients'], clinical: false },
   { id: 'which-appeal-path', name: 'Which Appeal Rules Apply?', group: 'C', audiences: ['billers', 'patients', 'clinicians'], clinical: false },
+  { id: 'bi-summary', name: 'Benefits Investigation Cost Summary', group: 'Q', audiences: ['billers', 'patients', 'clinicians'], clinical: false },
+  { id: 'site-of-care-compare', name: 'Cost by Site of Care', group: 'Q', audiences: ['billers', 'patients', 'clinicians'], clinical: false },
+  { id: 'appeal-worklist', name: 'Appeal Worklist by Deadline', group: 'P', audiences: ['billers', 'coders'], clinical: false },
+  { id: 'therapy-cost-compare', name: 'Annual Therapy Cost Comparison', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },
+  { id: 'partd-redetermination-request', name: 'Part D Redetermination Request Letter', group: 'C', audiences: ['patients', 'billers', 'clinicians'], clinical: false },
+  { id: 'erisa-appeal-letter', name: 'ERISA Appeal Letter (Employer Coverage)', group: 'C', audiences: ['patients', 'billers', 'clinicians'], clinical: false },
+  { id: 'ma-reconsideration-request', name: 'Medicare Advantage Reconsideration Request Letter', group: 'C', audiences: ['patients', 'billers', 'clinicians'], clinical: false },
+  { id: 'external-review-request', name: 'External Review Request Letter', group: 'C', audiences: ['patients', 'billers', 'clinicians'], clinical: false },
+  { id: 'medicaid-hearing-request', name: 'Medicaid Appeal or Fair Hearing Request Letter', group: 'C', audiences: ['patients', 'billers', 'clinicians'], clinical: false },
+  { id: 'partd-exception-request', name: 'Part D Exception Request Letter', group: 'C', audiences: ['clinicians', 'billers', 'patients'], clinical: false },
+  { id: 'medical-necessity-letter', name: 'Letter of Medical Necessity (Drug)', group: 'C', audiences: ['clinicians', 'billers', 'patients'], clinical: false },
   { id: 'denial-next-step', name: 'Denial Next Step and Deadline', group: 'P', audiences: ['billers', 'coders'], clinical: false },
   { id: 'home-health-cert-clock', name: 'Home Health Certification and OASIS Clock', group: 'H', audiences: ['clinicians', 'billers'], clinical: false },
   { id: 'dme-rental-clock', name: 'DME Capped Rental and Oxygen Clock', group: 'H', audiences: ['billers', 'patients', 'clinicians'], clinical: false },

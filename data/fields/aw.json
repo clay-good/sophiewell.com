@@ -1,0 +1,1 @@
+{"awol":[{"d":"awol-age","k":"bool","l":"Age 80 years or older"},{"d":"awol-spell","k":"bool","l":"Cannot spell world backward"},{"d":"awol-orient","k":"bool","l":"Not oriented to place"},{"d":"awol-illness","k":"enum","l":"Nurse-rated illness severity","v":["not-ill","mildly-ill","moderately-ill","severely-ill","moribund"]}]}

@@ -936,7 +936,12 @@ import vialRoundingV1512 from './adapters/vial-rounding-v1512.js';
 import rateEscalationV1512 from './adapters/rate-escalation-v1512.js';
 import doseCalendarV1512 from './adapters/dose-calendar-v1512.js';
 import appealPathV1505 from './adapters/appeal-path-v1505.js';
+import pdcStarV1513 from './adapters/pdc-star-v1513.js';
+import imidRemsV1511 from './adapters/imid-rems-v1511.js';
+import benefitsV1505 from './adapters/benefits-v1505.js';
+import therapyCostV1510 from './adapters/therapy-cost-v1510.js';
 import denialNextStepV1516 from './adapters/denial-next-step-v1516.js';
+import requestLettersV1504 from './adapters/request-letters-v1504.js';
 import mfpRefundV1510 from './adapters/mfp-refund-v1510.js';
 import pbmReimbursementV1510 from './adapters/pbm-reimbursement-v1510.js';
 import medicaidUraV1510 from './adapters/medicaid-ura-v1510.js';
@@ -1921,7 +1926,12 @@ const ADAPTER_MODULES = [
   ['rate-escalation-v1512', rateEscalationV1512],
   ['dose-calendar-v1512', doseCalendarV1512],
   ['appeal-path-v1505', appealPathV1505],
+  ['pdc-star-v1513', pdcStarV1513],
+  ['imid-rems-v1511', imidRemsV1511],
+  ['benefits-v1505', benefitsV1505],
+  ['therapy-cost-v1510', therapyCostV1510],
   ['denial-next-step-v1516', denialNextStepV1516],
+  ['request-letters-v1504', requestLettersV1504],
   ['mfp-refund-v1510', mfpRefundV1510],
   ['pbm-reimbursement-v1510', pbmReimbursementV1510],
   ['medicaid-ura-v1510', medicaidUraV1510],

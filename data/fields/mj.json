@@ -1,0 +1,1 @@
+{"mjoa":[{"d":"mjoa-ue","k":"enum","l":"Motor — upper extremity","v":["0","1","2","3","4","5"]},{"d":"mjoa-le","k":"enum","l":"Motor — lower extremity","v":["0","1","2","3","4","5","6","7"]},{"d":"mjoa-sensory","k":"enum","l":"Sensory — upper extremity","v":["0","1","2","3"]},{"d":"mjoa-sphincter","k":"enum","l":"Sphincter / bladder","v":["0","1","2","3"]}]}

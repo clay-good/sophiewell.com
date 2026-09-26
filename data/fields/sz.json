@@ -1,0 +1,1 @@
+{"szpilman-drowning":[{"d":"sz-status","k":"enum","l":"Respiratory / cardiac status","r":1,"v":["breathing","respiratory-arrest","cardiac-arrest","dead"]},{"d":"sz-ausc","k":"enum","l":"Lung auscultation","v":["normal","rales-some","pulmonary-edema"]},{"d":"sz-cough","k":"bool","l":"Cough present"},{"d":"sz-hypo","k":"bool","l":"Hypotension"}]}

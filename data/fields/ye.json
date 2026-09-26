@@ -1,0 +1,1 @@
+{"years-pe":[{"d":"yp-dvt","k":"bool","l":"Clinical signs of DVT"},{"d":"yp-hemo","k":"bool","l":"Hemoptysis"},{"d":"yp-likely","k":"bool","l":"PE is the most likely diagnosis"},{"d":"yp-ddimer","k":"number","l":"D-dimer","u":"ng/mL FEU","r":1}],"yerdel-pvt":[{"d":"yerdel-grade","k":"enum","l":"Yerdel grade","v":["1","2","3","4"]}]}

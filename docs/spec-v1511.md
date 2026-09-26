@@ -177,4 +177,6 @@ and reproduces no chapter text.
   30 days from the visit otherwise. The FDA page confirms the November 15, 2026 implementation this spec
   states (some secondary sources still give August 8). The 19-day wait after a missed first window applies
   before that date. New ledger row `fda-ipledge-rems`.
-- **Not yet built:** `imid-rems-fill-window` (needs the lenalidomide REMS document read first).
+- **Built 2026-09-26:** `imid-rems-fill-window`, lenalidomide only, from the Lenalidomide REMS Pharmacy Guide
+  (12/22), which states every rule this spec lists; "7 days from" the test is counted as the 7 calendar days
+  after it, and the tool says the REMS system's expiry controls.
