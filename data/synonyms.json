@@ -9334,6 +9334,28 @@
       ],
       "tile": "essex-lopresti-calcaneal",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "paed",
+        "paed scale",
+        "emergence delirium",
+        "pediatric emergence delirium",
+        "emergence agitation child"
+      ],
+      "tile": "paed-delirium",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "watcha",
+        "watcha scale",
+        "emergence agitation scale",
+        "post anesthesia agitation child",
+        "inconsolable after anesthesia"
+      ],
+      "tile": "watcha-emergence",
+      "audience": "clinicians"
     }
   ]
 }

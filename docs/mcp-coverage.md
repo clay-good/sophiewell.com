@@ -8527,6 +8527,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/essex-lopresti-calcaneal-v1498.js (spec-v1498: Essex-Lopresti calcaneal fracture types — clinical disclaimer)
 - `essex-lopresti-calcaneal`
 
+### lib/paed-delirium-v1499.js (spec-v1499: PAED pediatric emergence delirium scale — clinical disclaimer)
+- `paed-delirium`
+
+### lib/watcha-emergence-v1570.js (spec-v1570: Watcha emergence agitation scale — clinical disclaimer)
+- `watcha-emergence`
+
 ### lib/tici-v960.js (spec-v960: mTICI reperfusion grade — clinical disclaimer)
 - `tici`
 

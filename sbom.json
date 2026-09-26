@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:19c13f41-4d63-5d2a-8721-7f19efb6b163",
+  "serialNumber": "urn:uuid:c40cd4b2-10d0-5960-8f26-8267462f3cad",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-25T23:03:02.158Z",
+    "timestamp": "2026-09-26T00:23:00.391Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1856 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1858 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d23c45f1ff4366e185f8c5c8ecee4c091b0dd645ead78bf64b40c1061c9a2f4e"
+          "content": "762044da791b3d996a13476446467345ba4a0389a4e1736dc62284328156ef43"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "118987"
+          "value": "119080"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6a8ec9b3adeffe5c9d83368c1b0c90624222600284a08102bc53099c200ae72a"
+          "content": "ca06913db0c74c8f8c0a5bbdc805e50b29014f2721cf095d6cb91d1f3a75c0c7"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "547423"
+          "value": "547845"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8a9aca8308bcbd546371fbdadd3ba08adff3f8273f9b622024364ec55599c6cf"
+          "content": "64c3916c4e581d7fb905f79448ddd3eda7b2dc7a21a6274c3953b77222c360e6"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "231334"
+          "value": "231585"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "04d72f03dda4a31a02ba352e7a3058c75358d60efe193fb3b8ea2420e1add1d8"
+          "content": "3e64ff62caf004d285a02447bb08139281f0ab9a99b25e14721df097be5032d7"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "106352"
+          "value": "106454"
         }
       ]
     },
@@ -7238,6 +7238,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/glenoid-track-v1571.js",
+      "type": "file",
+      "name": "lib/glenoid-track-v1571.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7685af7b8f6519b366778ac972348636fe6becc91aa4effe86bbfd077cc3c6ff"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3684"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/gli-2012-data.js",
       "type": "file",
       "name": "lib/gli-2012-data.js",
@@ -11633,7 +11654,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9d677e10e54dc7ed4bf92cf5df910357d47fc035960ac43f4c61d361cdd708d9"
+          "content": "b1122f9688ef620cb8e30e738a89253b70c5324d121cdd3412ace5a5747b85a4"
         }
       ],
       "properties": [
@@ -11643,7 +11664,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2594492"
+          "value": "2596403"
         }
       ]
     },
@@ -14521,6 +14542,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "9310"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/paed-delirium-v1499.js",
+      "type": "file",
+      "name": "lib/paed-delirium-v1499.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c8836be1003c2235bb05d8ce78a07baf922b3039ac798b4bf4a3ae8bb20aca20"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3969"
         }
       ]
     },
@@ -19460,6 +19502,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/thomazeau-occupation-v1572.js",
+      "type": "file",
+      "name": "lib/thomazeau-occupation-v1572.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "bec8b080947d5cb94909635ec50abf755630d3bc0c58e5c82db12ce02e67406d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2553"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/thompson-epstein-v459.js",
       "type": "file",
       "name": "lib/thompson-epstein-v459.js",
@@ -20926,6 +20989,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3695"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/watcha-emergence-v1570.js",
+      "type": "file",
+      "name": "lib/watcha-emergence-v1570.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "27d5c700aca60153fd90a88751f6d635f0a66b4e0a82fac0f0059c4b8ac243bf"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2777"
         }
       ]
     },
@@ -27902,6 +27986,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/glenoid-track-v1571.js",
+      "type": "file",
+      "name": "mcp/adapters/glenoid-track-v1571.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5086d79c628911159f50aa906357833f1673543c80d0af834b4aee7e792a831a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "914"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/glickman-furcation-v725.js",
       "type": "file",
       "name": "mcp/adapters/glickman-furcation-v725.js",
@@ -34601,6 +34706,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/paed-delirium-v1499.js",
+      "type": "file",
+      "name": "mcp/adapters/paed-delirium-v1499.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "09de517edb50c5c907fffe9479bfb0d1071ab0c92403841ce65426b8159782aa"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "568"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/pai-periapical-v1486.js",
       "type": "file",
       "name": "mcp/adapters/pai-periapical-v1486.js",
@@ -39221,6 +39347,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/thomazeau-occupation-v1572.js",
+      "type": "file",
+      "name": "mcp/adapters/thomazeau-occupation-v1572.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "eed09d506554c74ef154abed09a80527471ff7fb25e94ec41752b87a6595ad22"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "644"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/thompson-epstein-v459.js",
       "type": "file",
       "name": "mcp/adapters/thompson-epstein-v459.js",
@@ -40649,6 +40796,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/watcha-emergence-v1570.js",
+      "type": "file",
+      "name": "mcp/adapters/watcha-emergence-v1570.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6de0b6b0e264b1aebd6825f4c0d82099bc468be54e814d08528488c43a8f0789"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "573"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/watson-slac-v1431.js",
       "type": "file",
       "name": "mcp/adapters/watson-slac-v1431.js",
@@ -41075,7 +41243,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9a403288f04d1c59fd1c3c887d84af6a0176c7a32f8e36f78324d8adc4afe93e"
+          "content": "62bb1f12ad9ff2c7006544cb210cdf37f83f2ae52ec3c4b1abe1fce08410c0aa"
         }
       ],
       "properties": [
@@ -41085,7 +41253,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "108229"
+          "value": "108467"
         }
       ]
     },
@@ -44324,6 +44492,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1499.js",
+      "type": "file",
+      "name": "views/group-v1499.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "47eb095482282a70c6bab692c0e405755d9c7e0a2f13442d32815b4c7976d44d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2450"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:views/group-v15.js",
       "type": "file",
       "name": "views/group-v15.js",
@@ -44467,6 +44656,69 @@
         {
           "name": "sophiewell:bytes",
           "value": "10713"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1570.js",
+      "type": "file",
+      "name": "views/group-v1570.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "57632b7d4c7ea54d44b1ecaff89fd27e7489b287aa0ca9c1046c4116c7464d5a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2059"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1571.js",
+      "type": "file",
+      "name": "views/group-v1571.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5cc3b66be55b7e203deb7dc8e5db315c820a6355a9f63ed337c3f86ac59ad454"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2312"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1572.js",
+      "type": "file",
+      "name": "views/group-v1572.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3551e331ca4b1e2ae863f02700c4212aba097cff170f290787a898ec2ecf1f12"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2102"
         }
       ]
     },
@@ -75597,6 +75849,7 @@
         "urn:sophiewell:file:source:lib/gi-v126.js",
         "urn:sophiewell:file:source:lib/gisurg-v239.js",
         "urn:sophiewell:file:source:lib/glass-stage-v550.js",
+        "urn:sophiewell:file:source:lib/glenoid-track-v1571.js",
         "urn:sophiewell:file:source:lib/gli-2012-data.js",
         "urn:sophiewell:file:source:lib/glickman-furcation-v725.js",
         "urn:sophiewell:file:source:lib/global-ards-v570.js",
@@ -75944,6 +76197,7 @@
         "urn:sophiewell:file:source:lib/pa/rules.js",
         "urn:sophiewell:file:source:lib/pa/staleness-ledger.js",
         "urn:sophiewell:file:source:lib/pa/staleness.js",
+        "urn:sophiewell:file:source:lib/paed-delirium-v1499.js",
         "urn:sophiewell:file:source:lib/page-title.js",
         "urn:sophiewell:file:source:lib/pai-periapical-v1486.js",
         "urn:sophiewell:file:source:lib/painscore-v235.js",
@@ -76179,6 +76433,7 @@
         "urn:sophiewell:file:source:lib/tension-headache-ichd3-v818.js",
         "urn:sophiewell:file:source:lib/thakar-aki-v568.js",
         "urn:sophiewell:file:source:lib/thi-v555.js",
+        "urn:sophiewell:file:source:lib/thomazeau-occupation-v1572.js",
         "urn:sophiewell:file:source:lib/thompson-epstein-v459.js",
         "urn:sophiewell:file:source:lib/thwaites-v529.js",
         "urn:sophiewell:file:source:lib/tici-v960.js",
@@ -76249,6 +76504,7 @@
         "urn:sophiewell:file:source:lib/wang-bronchiolitis-v682.js",
         "urn:sophiewell:file:source:lib/warfarin-v133.js",
         "urn:sophiewell:file:source:lib/wassel-thumb-v417.js",
+        "urn:sophiewell:file:source:lib/watcha-emergence-v1570.js",
         "urn:sophiewell:file:source:lib/watson-slac-v1431.js",
         "urn:sophiewell:file:source:lib/wayne-index-v527.js",
         "urn:sophiewell:file:source:lib/weiss-v648.js",
@@ -76421,6 +76677,7 @@
         "urn:sophiewell:file:source:views/group-v1496.js",
         "urn:sophiewell:file:source:views/group-v1497.js",
         "urn:sophiewell:file:source:views/group-v1498.js",
+        "urn:sophiewell:file:source:views/group-v1499.js",
         "urn:sophiewell:file:source:views/group-v15.js",
         "urn:sophiewell:file:source:views/group-v151.js",
         "urn:sophiewell:file:source:views/group-v152.js",
@@ -76428,6 +76685,9 @@
         "urn:sophiewell:file:source:views/group-v154.js",
         "urn:sophiewell:file:source:views/group-v155.js",
         "urn:sophiewell:file:source:views/group-v156.js",
+        "urn:sophiewell:file:source:views/group-v1570.js",
+        "urn:sophiewell:file:source:views/group-v1571.js",
+        "urn:sophiewell:file:source:views/group-v1572.js",
         "urn:sophiewell:file:source:views/group-v158.js",
         "urn:sophiewell:file:source:views/group-v159.js",
         "urn:sophiewell:file:source:views/group-v16.js",
@@ -77468,6 +77728,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/gi-v126.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/gisurg-v239.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/glass-stage-v550.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/glenoid-track-v1571.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/glickman-furcation-v725.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/global-ards-v570.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/glogau-photoaging-v475.js",
@@ -77787,6 +78048,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/oswestry-v643.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ottawa-bowel-prep-v670.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/outerbridge-v337.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/paed-delirium-v1499.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pai-periapical-v1486.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/painscore-v235.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/palm-coein-v545.js",
@@ -78007,6 +78269,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/tension-headache-ichd3-v818.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/thakar-aki-v568.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/thi-v555.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/thomazeau-occupation-v1572.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/thompson-epstein-v459.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/thwaites-v529.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tici-v960.js",
@@ -78075,6 +78338,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/wang-bronchiolitis-v682.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/warfarin-v133.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/wassel-thumb-v417.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/watcha-emergence-v1570.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/watson-slac-v1431.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/wayne-index-v527.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/weiss-v648.js",
@@ -78198,7 +78462,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "19c13f414d63cd2a"
+      "value": "c40cd4b210d06960"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -78210,7 +78474,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2819"
+      "value": "2831"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

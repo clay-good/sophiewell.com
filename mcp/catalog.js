@@ -905,6 +905,8 @@ import ohatOralHealthV1495 from './adapters/ohat-oral-health-v1495.js';
 import tureskyPlaqueV1496 from './adapters/turesky-plaque-v1496.js';
 import veauCleftV1497 from './adapters/veau-cleft-v1497.js';
 import essexLoprestiCalcanealV1498 from './adapters/essex-lopresti-calcaneal-v1498.js';
+import paedDeliriumV1499 from './adapters/paed-delirium-v1499.js';
+import watchaEmergenceV1570 from './adapters/watcha-emergence-v1570.js';
 import nurseStaffingRatioCheckV1396 from './adapters/nurse-staffing-ratio-check-v1396.js';
 import caWpvReportClockV1396 from './adapters/ca-wpv-report-clock-v1396.js';
 import mandatoryOvertimeCheckV1396 from './adapters/mandatory-overtime-check-v1396.js';
@@ -1846,6 +1848,8 @@ const ADAPTER_MODULES = [
   ['turesky-plaque-v1496', tureskyPlaqueV1496],
   ['veau-cleft-v1497', veauCleftV1497],
   ['essex-lopresti-calcaneal-v1498', essexLoprestiCalcanealV1498],
+  ['paed-delirium-v1499', paedDeliriumV1499],
+  ['watcha-emergence-v1570', watchaEmergenceV1570],
   ['nurse-staffing-ratio-check-v1396', nurseStaffingRatioCheckV1396],
   ['ca-wpv-report-clock-v1396', caWpvReportClockV1396],
   ['mandatory-overtime-check-v1396', mandatoryOvertimeCheckV1396],

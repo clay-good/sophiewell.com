@@ -6,6 +6,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **PAED Emergence Delirium Scale.** Five behaviors after pediatric anesthesia, totaled 0 to 20 and read
+  against both cutoffs in use (10 or more; more than 12). See docs/spec-v1499.md.
+
+- **Watcha Emergence Agitation Scale.** The most agitated behavior after pediatric anesthesia, agitation at
+  3 or more; below 3 it says it does not rule delirium out. See docs/spec-v1570.md.
+
 - **Veau Cleft Palate Class.** Class I to IV from how far the palate is cleft and whether the cleft runs
   through the lip and alveolus. See docs/spec-v1497.md.
 
