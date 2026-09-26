@@ -1044,6 +1044,8 @@ const UTILITIES = [
   { id: 'premium-tax-credit', name: 'Premium Tax Credit Estimate', group: 'C', audiences: ['billers', 'patients', 'clinicians'], clinical: false },
   { id: 'employer-coverage-affordability', name: 'Employer Coverage Affordability Test', group: 'C', audiences: ['billers', 'patients', 'clinicians'], clinical: false },
   { id: 'irmaa', name: 'Medicare IRMAA', group: 'Q', audiences: ['billers', 'patients', 'clinicians'], clinical: false },
+  { id: 'partd-year-cost', name: 'Part D Drug Cost Through the Year', group: 'Q', audiences: ['billers', 'patients', 'clinicians'], clinical: false },
+  { id: 'm3p-monthly-bill', name: 'Medicare Prescription Payment Plan Bill', group: 'Q', audiences: ['billers', 'patients', 'clinicians'], clinical: false },
   { id: 'cs-refill-validity', name: 'Controlled-Substance Refills Left', group: 'Q', audiences: ['clinicians', 'billers'], clinical: false },
   { id: 'c2-fill-deadlines', name: 'C-II Partial Fill and Emergency Deadlines', group: 'Q', audiences: ['clinicians', 'billers'], clinical: false },
   { id: 'c2-multiple-rx-series', name: 'Multiple C-II Prescriptions Check', group: 'Q', audiences: ['clinicians', 'billers'], clinical: false },

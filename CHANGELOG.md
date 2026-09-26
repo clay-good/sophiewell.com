@@ -6,6 +6,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Part D Drug Cost Through the Year.** Month by month through the standard benefit: the deductible, 25%
+  coinsurance, then $0 once out-of-pocket costs reach $2,100 (2026) or $2,400 (2027). See docs/spec-v1506.md.
+
+- **Medicare Prescription Payment Plan Bill.** The monthly bills under 42 CFR 423.137(c) from the month of opting
+  in, beside paying at the counter: the plan spreads the cost, it does not reduce it. See docs/spec-v1506.md.
+
 - **Premium Tax Credit Estimate.** The Marketplace credit from income, household size and the benchmark silver
   premium, with the IRS applicable percentages for 2026 and 2027 and the 100%-400% limits. See docs/spec-v1506.md.
 

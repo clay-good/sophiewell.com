@@ -10388,7 +10388,7 @@
         },
         {
           "id": "medicare-partd-base-premium",
-          "label": "Part D national base beneficiary premium, per calendar year: 2026 $38.99 (Medicare.gov Part D costs, with the nearest-$0.10 rounding), 2027 $41.33 (CMS, July 28, 2026), backing partd-late-penalty",
+          "label": "Part D national base beneficiary premium, per calendar year: 2026 $38.99 (Medicare.gov Part D costs, with the nearest-$0.10 rounding), 2027 $41.33 (CMS, July 28, 2026), backing partd-late-penalty; the standard benefit's maximum deductible ($615 / $700) and out-of-pocket threshold ($2,100 / $2,400) for 2026 / 2027, backing partd-year-cost and m3p-monthly-bill",
           "url": "https://www.cms.gov/newsroom/fact-sheets/medicare-part-d-2027-national-average-monthly-bid-amount-information",
           "ruleFamily": "ops-v63",
           "lastVerified": "2026-09-26"

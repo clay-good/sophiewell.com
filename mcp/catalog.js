@@ -928,6 +928,7 @@ import daysSupplyV1511 from './adapters/days-supply-v1511.js';
 import postAcuteClocksV1514 from './adapters/post-acute-clocks-v1514.js';
 import incomeScreensV1506 from './adapters/income-screens-v1506.js';
 import marketplaceCreditV1506 from './adapters/marketplace-credit-v1506.js';
+import partdCostsV1506 from './adapters/partd-costs-v1506.js';
 import nurseStaffingRatioCheckV1396 from './adapters/nurse-staffing-ratio-check-v1396.js';
 import caWpvReportClockV1396 from './adapters/ca-wpv-report-clock-v1396.js';
 import mandatoryOvertimeCheckV1396 from './adapters/mandatory-overtime-check-v1396.js';
@@ -1892,6 +1893,7 @@ const ADAPTER_MODULES = [
   ['post-acute-clocks-v1514', postAcuteClocksV1514],
   ['income-screens-v1506', incomeScreensV1506],
   ['marketplace-credit-v1506', marketplaceCreditV1506],
+  ['partd-costs-v1506', partdCostsV1506],
   ['nurse-staffing-ratio-check-v1396', nurseStaffingRatioCheckV1396],
   ['ca-wpv-report-clock-v1396', caWpvReportClockV1396],
   ['mandatory-overtime-check-v1396', mandatoryOvertimeCheckV1396],

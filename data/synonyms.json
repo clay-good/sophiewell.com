@@ -9719,6 +9719,28 @@
       ],
       "tile": "employer-coverage-affordability",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "part d drug cost",
+        "part d out of pocket cap",
+        "2100 out of pocket maximum",
+        "part d deductible 615",
+        "medicare drug cost per year"
+      ],
+      "tile": "partd-year-cost",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "medicare prescription payment plan",
+        "m3p",
+        "spread part d costs",
+        "prescription payment plan monthly bill",
+        "part d smoothing"
+      ],
+      "tile": "m3p-monthly-bill",
+      "audience": "clinicians"
     }
   ]
 }

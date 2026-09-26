@@ -199,8 +199,8 @@ dates). It's the cleanest machine-readable feed in the program (route A).
 
 ## Build status
 
-- **Built 2026-09-26:** `fpl-percent`, `premium-tax-credit`, `employer-coverage-affordability` (group C)
-  and `irmaa` (group Q).
+- **Built 2026-09-26:** `fpl-percent`, `premium-tax-credit`, `employer-coverage-affordability` (group C),
+  and `irmaa`, `partd-year-cost`, `m3p-monthly-bill` (group Q).
   - The guidelines were read from the ASPE API with the two-letter state codes: a full state name
     ("Alaska") silently returns the 48-state figure, as this spec warned. Every region is exactly linear,
     checked at household sizes 1, 2, 8 and 9. New ledger row `aspe-poverty-guidelines`.
@@ -215,5 +215,10 @@ dates). It's the cleanest machine-readable feed in the program (route A).
     `irs-36b-applicable-percentage`.
   - Not stated: the claim that the repayment cap on excess advance credits ends after 2025. Neither
     Rev. Proc. says so, and it was not verified against the statute, so the tool does not print it.
-- **Not yet built:** `partd-year-cost`, `m3p-monthly-bill`, `copay-card-runout`, `part-b-drug-coinsurance`,
-  `partd-mfp-price-check`.
+  - `partd-year-cost` models the standard benefit (deductible, 25% coinsurance, $0 after the threshold),
+    with the 2026 and 2027 figures from Medicare.gov. Extra Help copays are not modeled: this spec marks the
+    2027 figures as unverified projections.
+  - `m3p-monthly-bill` follows 42 CFR 423.137(c) exactly, including the uneven schedule it produces, and
+    carries the unbilled balance in cents so the last month settles it.
+- **Not yet built:** `copay-card-runout`, `part-b-drug-coinsurance` and `partd-mfp-price-check` (the last two
+  need the CMS ASP and negotiated-price files, route A).

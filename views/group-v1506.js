@@ -3,6 +3,7 @@
 import { el, clear } from '../lib/dom.js';
 import * as IN from '../lib/income-screens-v1506.js';
 import * as MC from '../lib/marketplace-credit-v1506.js';
+import * as PC from '../lib/partd-costs-v1506.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -109,6 +110,43 @@ export const renderers = {
       const r = MC.employerAffordability(args);
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Affordable?', value: r.bandLabel }]);
+      list(o, r.notes);
+      note(o, r.note);
+    }));
+  },
+  'partd-year-cost'(root) {
+    const pairs = [['pdy-cost', 'monthlyCost'], ['pdy-start', 'startMonth'], ['pdy-ded', 'deductible'], ['pdy-year', 'year']];
+    numField(root, 'Drug\'s monthly cost (the plan\'s price), dollars', 'pdy-cost', 'e.g. 800', '1000000', '0.01');
+    numField(root, 'First month filled (1 to 12)', 'pdy-start', 'e.g. 1', '12', '1');
+    numField(root, 'Plan deductible, if lower than the maximum (optional)', 'pdy-ded', 'e.g. 615', '10000', '0.01');
+    numField(root, 'Plan year (blank for this year)', 'pdy-year', 'e.g. 2026', '2100', '1');
+    const ids = pairs.map(([d]) => d);
+    const o = out(); root.appendChild(o);
+    wire(ids, () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = PC.partdYearCost(args);
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Year', value: r.bandLabel }]);
+      list(o, r.notes);
+      note(o, r.note);
+    }));
+  },
+  'm3p-monthly-bill'(root) {
+    const pairs = [['m3p-month', 'optInMonth'], ['m3p-prior', 'priorOop'], ['m3p-monthly', 'monthlyOop'], ['m3p-extra', 'firstMonthExtra'], ['m3p-year', 'year']];
+    numField(root, 'Month of opting in (1 to 12)', 'm3p-month', 'e.g. 3', '12', '1');
+    numField(root, 'Part D out-of-pocket costs already paid this year (0 if none)', 'm3p-prior', 'e.g. 300', '1000000', '0.01');
+    numField(root, 'Out-of-pocket cost each month from opting in, dollars', 'm3p-monthly', 'e.g. 200', '1000000', '0.01');
+    numField(root, 'Extra cost in the first month (optional)', 'm3p-extra', 'e.g. 900', '1000000', '0.01');
+    numField(root, 'Plan year (blank for this year)', 'm3p-year', 'e.g. 2026', '2100', '1');
+    const ids = pairs.map(([d]) => d);
+    const o = out(); root.appendChild(o);
+    wire(ids, () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = PC.m3pMonthlyBill(args);
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'First bill', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
     }));

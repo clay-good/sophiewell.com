@@ -58,3 +58,26 @@ test('employer affordability: self-only for the employee, the family premium for
   assert.equal(ea({ income: '50000', selfOnly: '420', year: '2026' }).bandLabel, 'Not affordable for the employee');
   assert.equal(ea({ income: '50000', selfOnly: '420', year: '2027' }).bandLabel, 'Affordable for the employee');
 });
+
+import { partdYearCost as py, m3pMonthlyBill as m3 } from '../../lib/partd-costs-v1506.js';
+
+test('Part D year: deductible, 25% coinsurance, then $0 at the out-of-pocket cap', () => {
+  const r = py({ monthlyCost: '800', startMonth: '1', year: '2026' });
+  assert.equal(r.annual, 2100);
+  assert.equal(r.capMonth, 9);
+  assert.match(r.notes.join(' '), /January \$661\.25/);
+  assert.equal(py({ monthlyCost: '800', startMonth: '1', year: '2027' }).annual, 2400);
+  assert.equal(py({ monthlyCost: '100', startMonth: '1', deductible: '0', year: '2026' }).annual, 300);
+  assert.equal(py({ monthlyCost: '800', startMonth: '1', deductible: '900', year: '2026' }).valid, false);
+});
+
+test('payment plan: the rule\'s own example, and a schedule that settles to the cent', () => {
+  // 42 CFR 423.137(b)'s example ($2,000 in January at the 2025 threshold bills $2,000/12 = $166.67),
+  // at the 2026 threshold: $2,100/12 = $175.
+  assert.match(m3({ optInMonth: '1', priorOop: '0', monthlyOop: '0', firstMonthExtra: '2100', year: '2026' }).notes[0], /January \$175\.00/);
+  const r = m3({ optInMonth: '3', priorOop: '300', monthlyOop: '200', year: '2026' });
+  assert.equal(r.firstBill, 180);
+  assert.equal(r.total, 1800);
+  assert.equal(m3({ optInMonth: '3', priorOop: '2100', monthlyOop: '200', year: '2026' }).bandLabel, 'Cap already reached');
+  assert.match(m3({}).message, ASKING);
+});

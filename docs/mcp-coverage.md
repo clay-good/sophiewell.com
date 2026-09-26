@@ -8605,6 +8605,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/marketplace-credit-v1506.js (spec-v1506: Marketplace premium tax credit estimate — administrative disclaimer)
 - `premium-tax-credit`
 
+### lib/partd-costs-v1506.js (spec-v1506: Part D drug cost through the year — administrative disclaimer)
+- `partd-year-cost`
+
+### lib/partd-costs-v1506.js (spec-v1506: Medicare Prescription Payment Plan monthly bills — administrative disclaimer)
+- `m3p-monthly-bill`
+
 ### lib/marketplace-credit-v1506.js (spec-v1506: Employer coverage affordability test — administrative disclaimer)
 - `employer-coverage-affordability`
 
