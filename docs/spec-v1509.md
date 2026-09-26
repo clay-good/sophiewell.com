@@ -146,3 +146,21 @@ already has.
 - `340b-rx-match`: a prescription one day outside the look-back fails with that reason;
   an orphan drug at a critical access hospital fails even with a valid visit.
 - `340b-ceiling-price`: a URA exceeding AMP gives $0.01, not a negative price.
+
+## Build status
+
+- **Built 2026-09-26:** `340b-entity-eligibility`, `340b-orphan-exclusion`, `340b-patient-check`,
+  `340b-ceiling-price` and `340b-duplicate-discount` (group Q).
+  - Eligibility and the orphan exclusion were read in 42 U.S.C. 256b(a)(4)(L)-(O) and (e); the statute also
+    lets a hospital described in Social Security Act 1886(d)(5)(F)(i)(II) meet the percentage test without
+    the 11.75%, which the tool accepts. 42 CFR part 10 has no orphan-drug section (10.21 is now dispute
+    resolution), as this spec says.
+  - The patient check follows the 1996 notice (61 FR 55156) and adds its rule that a person registered in a
+    state AIDS Drug Assistance Program counts as a patient.
+  - The ceiling price follows 42 U.S.C. 1396r-8(c) (the 100%-of-AMP cap applies only before 2024) and
+    42 CFR 10.10 (six decimals, $0.01 floor).
+  - **Correction:** HRSA's FAQ puts the Medicaid Exclusion File snapshot at 12:01 am Eastern on the **16th**
+    of the month before the quarter, not the 15th. The TB modifier (CMS MLN4800856) and the Part D 340B
+    repository dates (CMS fact sheet, August 2026) were confirmed.
+- **Not yet built:** `340b-rx-match` (needs the upload workbench) and `340b-rebate-model-clock` (gated on the
+  model taking effect January 1, 2027).

@@ -937,6 +937,10 @@ import rateEscalationV1512 from './adapters/rate-escalation-v1512.js';
 import doseCalendarV1512 from './adapters/dose-calendar-v1512.js';
 import appealPathV1505 from './adapters/appeal-path-v1505.js';
 import denialNextStepV1516 from './adapters/denial-next-step-v1516.js';
+import mfpRefundV1510 from './adapters/mfp-refund-v1510.js';
+import pbmReimbursementV1510 from './adapters/pbm-reimbursement-v1510.js';
+import medicaidUraV1510 from './adapters/medicaid-ura-v1510.js';
+import entity340bV1509 from './adapters/entity-340b-v1509.js';
 import adherenceV1513 from './adapters/adherence-v1513.js';
 import stepTherapyV1502 from './adapters/step-therapy-v1502.js';
 import paCriteriaV1502 from './adapters/pa-criteria-v1502.js';
@@ -1918,6 +1922,10 @@ const ADAPTER_MODULES = [
   ['dose-calendar-v1512', doseCalendarV1512],
   ['appeal-path-v1505', appealPathV1505],
   ['denial-next-step-v1516', denialNextStepV1516],
+  ['mfp-refund-v1510', mfpRefundV1510],
+  ['pbm-reimbursement-v1510', pbmReimbursementV1510],
+  ['medicaid-ura-v1510', medicaidUraV1510],
+  ['entity-340b-v1509', entity340bV1509],
   ['adherence-v1513', adherenceV1513],
   ['step-therapy-v1502', stepTherapyV1502],
   ['pa-criteria-v1502', paCriteriaV1502],

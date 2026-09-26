@@ -10028,6 +10028,94 @@
       ],
       "tile": "denial-next-step",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "340b eligibility",
+        "340b hospital eligibility",
+        "dsh percentage 11.75",
+        "340b gpo prohibition",
+        "critical access 340b"
+      ],
+      "tile": "340b-entity-eligibility",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "340b orphan drug exclusion",
+        "orphan drug 340b",
+        "340b orphan designation",
+        "rural referral orphan drug",
+        "critical access orphan drug 340b"
+      ],
+      "tile": "340b-orphan-exclusion",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "340b patient definition",
+        "who is a 340b patient",
+        "340b eligible prescription",
+        "1996 patient definition",
+        "340b patient prongs"
+      ],
+      "tile": "340b-patient-check",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "340b duplicate discount",
+        "tb modifier 340b",
+        "medicaid exclusion file",
+        "340b carve in carve out",
+        "part d 340b repository"
+      ],
+      "tile": "340b-duplicate-discount",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "340b ceiling price",
+        "unit rebate amount",
+        "medicaid ura",
+        "penny pricing 340b",
+        "amp minus ura"
+      ],
+      "tile": "340b-ceiling-price",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "mfp refund",
+        "medicare transaction facilitator refund",
+        "standard default refund amount",
+        "wac minus mfp",
+        "negotiated price pharmacy refund"
+      ],
+      "tile": "mfp-refund-check",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "pbm reimbursement check",
+        "pharmacy underpaid",
+        "awp minus contract",
+        "mac underpayment",
+        "pharmacy claim underwater"
+      ],
+      "tile": "pbm-reimbursement-check",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "medicaid unit rebate amount",
+        "ura calculation",
+        "medicaid drug rebate",
+        "23.1 percent rebate",
+        "inflation rebate medicaid"
+      ],
+      "tile": "medicaid-ura",
+      "audience": "clinicians"
     }
   ]
 }

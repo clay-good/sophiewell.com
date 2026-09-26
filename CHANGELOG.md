@@ -6,6 +6,39 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Negotiated-Price Refund Check (Pharmacy).** The standard default refund for a Medicare negotiated-price drug,
+  (WAC - MFP) x quantity per CMS's final guidance, the expected date from the refund timeline, a late flag,
+  and whether payment plus refund covers acquisition cost. See docs/spec-v1510.md.
+
+- **PBM Reimbursement Check.** A pharmacy claim against the reader's own PBM contract (a benchmark plus or
+  minus a percentage, plus a fee): underpaid or not, and underwater or not against acquisition cost. Ships no
+  AWP, WAC or MAC data. See docs/spec-v1510.md.
+
+- **Medicaid Unit Rebate Amount.** The basic rebate (the greater of AMP minus best price or 23.1% of AMP; 17.1%
+  or 13% for some drugs) plus the CPI-U inflation rebate per unit (42 U.S.C. 1396r-8(c)), the computation the
+  340B ceiling price now shares. See docs/spec-v1510.md.
+
+- **340B Hospital Eligibility.** Whether a hospital meets the 340B statutory tests (ownership or contract, the
+  disproportionate share percentage over 11.75% or at least 8%, no group purchasing) and which restrictions
+  apply, read from 42 U.S.C. 256b(a)(4)(L)-(O). See docs/spec-v1509.md.
+
+- **340B Orphan Drug Exclusion.** Whether an orphan-designated drug is excluded from 340B pricing for a
+  free-standing cancer hospital, critical access hospital, rural referral center or sole community hospital,
+  whatever it is used for (42 U.S.C. 256b(e)). See docs/spec-v1509.md.
+
+- **340B Patient Definition Check.** Whether a person is a 340B patient for a prescription under HRSA's 1996
+  definition (records, responsibility for care, grant scope for grantees) and never when dispensing is the
+  only service. See docs/spec-v1509.md.
+
+- **340B Duplicate Discount and Claim Identifiers.** By payer, what a 340B claim must carry and whether 340B
+  stock may be used: the TB modifier for Part B, the Part D repository, the Medicaid Exclusion File for
+  fee-for-service (with the quarter a carve change takes effect) and the state rule for managed care.
+  See docs/spec-v1509.md.
+
+- **340B Ceiling Price and Unit Rebate Amount.** The Medicaid unit rebate amount (basic and inflation
+  rebates, 42 U.S.C. 1396r-8(c)) and the 340B ceiling price, AMP minus URA with the $0.01 penny-pricing floor
+  (42 CFR 10.10), from figures the reader enters. See docs/spec-v1509.md.
+
 - **Denial Next Step and Deadline.** From the group and reason code, the payer type and the remittance date:
   the category, the usual next step and the appeal or corrected-claim deadline, from an original mapping of
   reviewed reason codes (an unmapped code is never guessed). See docs/spec-v1516.md.

@@ -8644,6 +8644,30 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/denial-next-step-v1516.js (spec-v1516: Denial next step and deadline — administrative disclaimer)
 - `denial-next-step`
 
+### lib/mfp-refund-v1510.js (spec-v1510: Negotiated-price refund check (pharmacy) — administrative disclaimer)
+- `mfp-refund-check`
+
+### lib/pbm-reimbursement-v1510.js (spec-v1510: PBM reimbursement check — administrative disclaimer)
+- `pbm-reimbursement-check`
+
+### lib/medicaid-ura-v1510.js (spec-v1510: Medicaid unit rebate amount — administrative disclaimer)
+- `medicaid-ura`
+
+### lib/entity-340b-v1509.js (spec-v1509: 340B hospital eligibility — administrative disclaimer)
+- `340b-entity-eligibility`
+
+### lib/entity-340b-v1509.js (spec-v1509: 340B orphan drug exclusion — administrative disclaimer)
+- `340b-orphan-exclusion`
+
+### lib/entity-340b-v1509.js (spec-v1509: 340B patient definition check — administrative disclaimer)
+- `340b-patient-check`
+
+### lib/entity-340b-v1509.js (spec-v1509: 340B duplicate discount and claim identifiers — administrative disclaimer)
+- `340b-duplicate-discount`
+
+### lib/entity-340b-v1509.js (spec-v1509: 340B ceiling price and unit rebate amount — administrative disclaimer)
+- `340b-ceiling-price`
+
 ### lib/adherence-v1513.js (spec-v1513: Adherence: PDC, MPR and gap days — administrative disclaimer)
 - `mpr-gap-days`
 

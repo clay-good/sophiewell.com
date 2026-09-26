@@ -109,3 +109,17 @@ to thousands of dollars per fill, so a missed refund matters to a small pharmacy
 - `nadac-margin`: a claim reimbursed one cent below NADAC is flagged.
 - `mfp-refund-reconcile`: a refund arriving one day after its expected latest date is
   flagged as late; a duplicate refund is flagged.
+
+## Build status
+
+- **Built 2026-09-26:** `mfp-refund-check`, `medicaid-ura` (group B) and `pbm-reimbursement-check`.
+  - The refund definition this spec asked to confirm is in the IPAY 2027 final guidance, section 40.4.1: the
+    standard default refund amount is WAC per unit minus MFP per unit on the date of service, times the
+    quantity; a manufacturer may pay another amount it reports. The timeline (7 days, 14 days, up to 5
+    business days) is from the CMS fact sheet for dispensing entities (April 2026). The MFP per unit is the
+    reader's figure from the CMS file (its NDC-9 unit price); the drug's negotiated-price status on the date
+    comes from the table `partd-mfp-price-check` uses.
+  - `medicaid-ura` holds the rebate computation, and `340b-ceiling-price` now calls it, as this spec says.
+  - `pbm-reimbursement-check` ships no AWP, WAC or MAC data.
+- **Not yet built:** `asp-payment` (the quarterly ASP file), `nadac-margin` (the NADAC feed), `therapy-cost-compare`,
+  and `mfp-refund-reconcile` (the upload workbench).

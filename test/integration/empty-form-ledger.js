@@ -35,6 +35,10 @@
 // silence a gate, so a gate whose judgment is slightly wrong does not look
 // wrong -- it looks like a longer ledger.
 export const ANSWERS_AN_EMPTY_FORM = new Set([
+  // spec-v1509: the answer is the federal rule for the payer chosen (a modifier, a repository, the
+  // Medicaid Exclusion File); the dates and the state rule only add notes, so a cleared form still
+  // names the rule for the payer that is selected -- there is no measurement to take.
+  "340b-duplicate-discount",
   // Its six clinical factors are pickers, and "no" is an answer: a patient with
   // congestive heart failure and diabetes scores 8 whether or not the contrast
   // volume has been decided yet. The two measurements it does need are guarded

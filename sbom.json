@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:c6de7b06-4458-5d58-817f-b3b5bda87e5d",
+  "serialNumber": "urn:uuid:69405805-3ea5-5197-8635-744f6b731858",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-26T08:41:19.697Z",
+    "timestamp": "2026-09-26T09:07:07.561Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1919 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1927 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b880c2954dd1924f3b5a0cd1e18a0013c464cebe8c53055d206e996749a480be"
+          "content": "ae7d93eadd7e00ae58d99b2a5ac7ebc3f70d1e9da190fd47f9e8960967e9738b"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "122080"
+          "value": "122464"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9e73d6c05ad2f5dcac16054b7df05f7ed6388a6736f93c42c5f290656ab5a94b"
+          "content": "bc05dff9bc4cef6628927493a6118b38200011ef90739dc5b5aed81f12c23ded"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "557918"
+          "value": "559202"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e0ff5d5834555db9b93464f9f578c9500349e581a2e461c84db1078504378335"
+          "content": "6603fb2b482f0d80cd2da069e8cf1b4255027c698e42cfc90eba40d7a1c8d37f"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "239435"
+          "value": "240477"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "249544779e309da2aaf16fd70f9070f08ef08e68411e269caf1a030d4fd86c1d"
+          "content": "91d30df826c324ea5b9fb32241a96cceb41e1aa064418a3b93e2d8acf9fc66c6"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "109923"
+          "value": "110381"
         }
       ]
     },
@@ -6184,6 +6184,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3397"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/entity-340b-v1509.js",
+      "type": "file",
+      "name": "lib/entity-340b-v1509.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "20aa6a192200c2fb7952eace7756678db1c55d375302f6fe28c8f6de1cfb6b18"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "18462"
         }
       ]
     },
@@ -12005,6 +12026,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/medicaid-ura-v1510.js",
+      "type": "file",
+      "name": "lib/medicaid-ura-v1510.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "62d3f17aa5e10e9af55f427f16069d947d6db6ea8cc898eca37a2300b2d96200"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3708"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/medicaid-work-requirement-v1507.js",
       "type": "file",
       "name": "lib/medicaid-work-requirement-v1507.js",
@@ -12200,7 +12242,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "69cb7f6da8dda7937f43a5062e50aa00e863ee510e17102f8dab86c828223f13"
+          "content": "e2d77e150924a662092887ff2e28cd06c207fb66bc2c6810dc1876cad9e46fab"
         }
       ],
       "properties": [
@@ -12210,7 +12252,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2643163"
+          "value": "2649228"
         }
       ]
     },
@@ -12421,6 +12463,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "7970"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/mfp-refund-v1510.js",
+      "type": "file",
+      "name": "lib/mfp-refund-v1510.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "61a0c6ff6bcf76841d1015a6d57ce45ccac29c5307fdbb3f9bb9046268acb80e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4884"
         }
       ]
     },
@@ -15508,6 +15571,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3633"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/pbm-reimbursement-v1510.js",
+      "type": "file",
+      "name": "lib/pbm-reimbursement-v1510.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2be852f82e185628829a5c7cae6e4993f42e08fa81701e9169331761714fd8a7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3537"
         }
       ]
     },
@@ -27734,6 +27818,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/entity-340b-v1509.js",
+      "type": "file",
+      "name": "mcp/adapters/entity-340b-v1509.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b54005a24095771d67bb823a478affeb2c160dd1346bec17c82b9eba358c2906"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5143"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/entsleep-v243.js",
       "type": "file",
       "name": "mcp/adapters/entsleep-v243.js",
@@ -33320,6 +33425,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/medicaid-ura-v1510.js",
+      "type": "file",
+      "name": "mcp/adapters/medicaid-ura-v1510.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7fac13122fc1281547cf931a945dba7bb95bd92881c4026f1f24236b0b598cdb"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1270"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/medicaid-work-requirement-v1507.js",
       "type": "file",
       "name": "mcp/adapters/medicaid-work-requirement-v1507.js",
@@ -33715,6 +33841,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "727"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/mfp-refund-v1510.js",
+      "type": "file",
+      "name": "mcp/adapters/mfp-refund-v1510.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7776756619447dbdb92b4422655d5e82a0263eeb0801f77267749b6e14dd022a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1606"
         }
       ]
     },
@@ -36403,6 +36550,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1389"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/pbm-reimbursement-v1510.js",
+      "type": "file",
+      "name": "mcp/adapters/pbm-reimbursement-v1510.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3c4e177b7249882743da118c4bbb399c6920f3276863078786a100354142b058"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1324"
         }
       ]
     },
@@ -42776,7 +42944,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c6f93ba8b8bfacffb0bf0df4278985b26859cb8e622cd3203b4f57c90aa09b31"
+          "content": "cd407cf49e9d253ac03c2e51b9b4428d1d1b4b551e1f943b4f8b899d3446ed65"
         }
       ],
       "properties": [
@@ -42786,7 +42954,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "112951"
+          "value": "113395"
         }
       ]
     },
@@ -46193,6 +46361,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1509.js",
+      "type": "file",
+      "name": "views/group-v1509.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9bafe36124826990152b941111c49c82a66ea7959090b07d64557a76f9f045eb"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8164"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:views/group-v151.js",
       "type": "file",
       "name": "views/group-v151.js",
@@ -46210,6 +46399,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "13359"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1510.js",
+      "type": "file",
+      "name": "views/group-v1510.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2f8df8e83c19a36ecb1a1e4d047092bdc90e63048bfba9af7b8ec08033bbffc5"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6410"
         }
       ]
     },
@@ -77563,6 +77773,7 @@
         "urn:sophiewell:file:source:lib/endo-v136.js",
         "urn:sophiewell:file:source:lib/endoleak-type-v1242.js",
         "urn:sophiewell:file:source:lib/enneking-v460.js",
+        "urn:sophiewell:file:source:lib/entity-340b-v1509.js",
         "urn:sophiewell:file:source:lib/entsleep-v243.js",
         "urn:sophiewell:file:source:lib/enturopsych-v254.js",
         "urn:sophiewell:file:source:lib/enviro-v111.js",
@@ -77840,6 +78051,7 @@
         "urn:sophiewell:file:source:lib/mda-psoriatic-v672.js",
         "urn:sophiewell:file:source:lib/measles-case-def-v872.js",
         "urn:sophiewell:file:source:lib/medicaid-appeal-clock-v1503.js",
+        "urn:sophiewell:file:source:lib/medicaid-ura-v1510.js",
         "urn:sophiewell:file:source:lib/medicaid-work-requirement-v1507.js",
         "urn:sophiewell:file:source:lib/medicare-enrollment-window-v1507.js",
         "urn:sophiewell:file:source:lib/medicare-penalties-v1507.js",
@@ -77860,6 +78072,7 @@
         "urn:sophiewell:file:source:lib/methemoglobin-v864.js",
         "urn:sophiewell:file:source:lib/meyers-mckeever-v408.js",
         "urn:sophiewell:file:source:lib/mfp-prices-v1506.js",
+        "urn:sophiewell:file:source:lib/mfp-refund-v1510.js",
         "urn:sophiewell:file:source:lib/mh-grading-scale-v860.js",
         "urn:sophiewell:file:source:lib/migraine-ichd3-v815.js",
         "urn:sophiewell:file:source:lib/milch-condyle-v418.js",
@@ -78007,6 +78220,7 @@
         "urn:sophiewell:file:source:lib/pas-swallow-v367.js",
         "urn:sophiewell:file:source:lib/pass-pheo-v660.js",
         "urn:sophiewell:file:source:lib/pauwels-femoral-neck-v374.js",
+        "urn:sophiewell:file:source:lib/pbm-reimbursement-v1510.js",
         "urn:sophiewell:file:source:lib/pc-aspects-v1452.js",
         "urn:sophiewell:file:source:lib/pc-ptsd5-v521.js",
         "urn:sophiewell:file:source:lib/pcdai-v522.js",
@@ -78486,7 +78700,9 @@
         "urn:sophiewell:file:source:views/group-v1506.js",
         "urn:sophiewell:file:source:views/group-v1507.js",
         "urn:sophiewell:file:source:views/group-v1508.js",
+        "urn:sophiewell:file:source:views/group-v1509.js",
         "urn:sophiewell:file:source:views/group-v151.js",
+        "urn:sophiewell:file:source:views/group-v1510.js",
         "urn:sophiewell:file:source:views/group-v1511.js",
         "urn:sophiewell:file:source:views/group-v1512.js",
         "urn:sophiewell:file:source:views/group-v1513.js",
@@ -79491,6 +79707,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/endo-v136.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/endoleak-type-v1242.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/enneking-v460.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/entity-340b-v1509.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/entsleep-v243.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/enturopsych-v254.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/enviro-v111.js",
@@ -79757,6 +79974,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/mda-psoriatic-v672.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/measles-case-def-v872.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/medicaid-appeal-clock-v1503.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/medicaid-ura-v1510.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/medicaid-work-requirement-v1507.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/medicare-enrollment-window-v1507.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/medicare-penalties-v1507.js",
@@ -79776,6 +79994,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/methemoglobin-v864.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/meyers-mckeever-v408.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mfp-prices-v1506.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/mfp-refund-v1510.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mh-grading-scale-v860.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/migraine-ichd3-v815.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/milch-condyle-v418.js",
@@ -79904,6 +80123,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/pas-swallow-v367.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pass-pheo-v660.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pauwels-femoral-neck-v374.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/pbm-reimbursement-v1510.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pc-aspects-v1452.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pc-ptsd5-v521.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pcdai-v522.js",
@@ -80310,7 +80530,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "c6de7b0644585d58"
+      "value": "694058053ea5d197"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -80322,7 +80542,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2915"
+      "value": "2925"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
