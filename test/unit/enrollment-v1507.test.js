@@ -75,3 +75,21 @@ test('enrollment window: special period to the 8th full month without employer c
   assert.equal(mw({ birthDate: '1958-03-20', enrollDate: '2026-07-10' }).window, 'No window open');
   assert.match(mw({ enrollDate: '2026-07-10' }).message, ASKING);
 });
+
+import { acaSepWindow as sp } from '../../lib/aca-sep-window-v1507.js';
+
+test('Marketplace SEP: 60 days, 60 before for a loss, 90 after for Medicaid, and late notice', () => {
+  assert.equal(sp({ event: 'other', eventDate: '2026-08-12' }).windowCloses, '2026-10-11');
+  const loss = sp({ event: 'loss', eventDate: '2026-06-30' });
+  assert.deepEqual([loss.windowOpens, loss.windowCloses], ['2026-05-01', '2026-08-29']);
+  assert.equal(sp({ event: 'loss-medicaid', eventDate: '2026-06-30' }).windowCloses, '2026-09-28');
+  assert.equal(sp({ event: 'other', eventDate: '2026-08-12', learnedDate: '2026-09-15' }).windowCloses, '2026-11-14');
+});
+
+test('Marketplace SEP: coverage start dates', () => {
+  assert.equal(sp({ event: 'loss', eventDate: '2026-06-30', selectionDate: '2026-06-15' }).coverageStarts, '2026-07-01');
+  assert.equal(sp({ event: 'loss', eventDate: '2026-06-30', selectionDate: '2026-07-10' }).coverageStarts, '2026-08-01');
+  assert.equal(sp({ event: 'birth', eventDate: '2026-08-12', selectionDate: '2026-09-01' }).coverageStarts, '2026-08-12');
+  assert.equal(sp({ event: 'marriage', eventDate: '2026-08-12', selectionDate: '2026-10-20' }).bandLabel, 'Outside the window');
+  assert.match(sp({ event: 'loss' }).message, ASKING);
+});

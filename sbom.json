@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:a201b935-1375-5a87-814c-cc362606f1b8",
+  "serialNumber": "urn:uuid:405a7cc4-241a-5efc-833c-5a865a9ad031",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-26T03:05:29.333Z",
+    "timestamp": "2026-09-26T03:23:48.728Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1876 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1877 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a100e8ff6b979a39cb10029a955dd6db5709ab37b3dd43a1716c7631ff22fe8f"
+          "content": "966af5d0580da7ed1ec118f3e4c77a97dadcde935d65d69e70fd5a9fc7e09b95"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "119970"
+          "value": "120023"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0e424d5614526c654a0e5406f548c16437a4a216b0fc44503b9f2cc6d51e98a3"
+          "content": "e79d69e46e85b36e88bcf2f0d5d48b81975a348f40a3a0c256e60db8add9314f"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "551042"
+          "value": "551196"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "10f28a0191edb4d20d0945279fada5044e066fec345c764c34335bfd9c30a183"
+          "content": "9dd9e4f10abb12f3d7197120ba9895f9029ebdc362512f5abc9c96ec9156868f"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "233921"
+          "value": "234046"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "bddbf67f5066151c1419d28f914729b64146bd8c2b7c683e3862aefd911cd328"
+          "content": "aebe8813af31fd1fbeea6f9e89a3873732dcdc0a2bede98341d6f1ba5fcb51f2"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "107502"
+          "value": "107559"
         }
       ]
     },
@@ -598,6 +598,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4702"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/aca-sep-window-v1507.js",
+      "type": "file",
+      "name": "lib/aca-sep-window-v1507.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "20abd848c581d742987468d57a073c6a23c7cdc250a6db09d28c7541c71bc6b4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5301"
         }
       ]
     },
@@ -11864,7 +11885,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ea94b85b7da25be0b64e8d5c7461e7bc98f2d5a3c2d243ce504fbff9b3aabbd6"
+          "content": "65b39bf647f8079798110cc3abeaa49ea94f522708bacd0f362158a551596b3c"
         }
       ],
       "properties": [
@@ -11874,7 +11895,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2610210"
+          "value": "2610965"
         }
       ]
     },
@@ -21850,6 +21871,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "913"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/aca-sep-window-v1507.js",
+      "type": "file",
+      "name": "mcp/adapters/aca-sep-window-v1507.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6f71f5c09ff4859f26bede07998265eca93f6b3278b7613d11fc8f8a594400be"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "976"
         }
       ]
     },
@@ -41768,7 +41810,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "42345e898a79c2c62dfd991be2d58184118d19d42b8c0caad08db4b4f43e9ed4"
+          "content": "d20a60229b8de652b98829afd15d6c2225f5129ae488a66cfe36485058fc3601"
         }
       ],
       "properties": [
@@ -41778,7 +41820,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "110255"
+          "value": "110370"
         }
       ]
     },
@@ -45107,7 +45149,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "53ac6dc626c72f81a87f96befcfbf768e9bb2943c8bb523faca83f943c06e80f"
+          "content": "504cc50168a7ee4bf4c8c442d093fd36fb41318ae6bcfa8acc56825c53f60b64"
         }
       ],
       "properties": [
@@ -45117,7 +45159,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "7623"
+          "value": "8619"
         }
       ]
     },
@@ -76121,6 +76163,7 @@
         "urn:sophiewell:file:source:lib/abc-scale-v729.js",
         "urn:sophiewell:file:source:lib/ablett-tetanus-v576.js",
         "urn:sophiewell:file:source:lib/aca-external-review-v1503.js",
+        "urn:sophiewell:file:source:lib/aca-sep-window-v1507.js",
         "urn:sophiewell:file:source:lib/acef-v595.js",
         "urn:sophiewell:file:source:lib/acidbase-v129.js",
         "urn:sophiewell:file:source:lib/acr-eular-boolean-v671.js",
@@ -78027,6 +78070,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/abc-scale-v729.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ablett-tetanus-v576.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/aca-external-review-v1503.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/aca-sep-window-v1507.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/acef-v595.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/acidbase-v129.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/acr-eular-boolean-v671.js",
@@ -79078,7 +79122,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "a201b9351375ba87"
+      "value": "405a7cc4241a1efc"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -79090,7 +79134,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2859"
+      "value": "2861"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

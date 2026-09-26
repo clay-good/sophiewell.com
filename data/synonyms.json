@@ -9554,6 +9554,17 @@
       ],
       "tile": "medicare-enrollment-window",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "special enrollment period marketplace",
+        "aca special enrollment",
+        "sep window",
+        "lost coverage marketplace",
+        "healthcare.gov special enrollment"
+      ],
+      "tile": "aca-sep-window",
+      "audience": "clinicians"
     }
   ]
 }

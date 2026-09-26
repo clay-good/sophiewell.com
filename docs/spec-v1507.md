@@ -164,7 +164,7 @@ CMS-2454-IFC (91 FR, June 3, 2026).
 ## Build status
 
 - **Built 2026-09-26:** `partb-late-penalty`, `partd-late-penalty`, `cobra-clock`, `parta-premium`,
-  `medicare-enrollment-window`.
+  `medicare-enrollment-window`, `aca-sep-window`.
   - The premiums go through the dated-value accessor ([spec-v1501](spec-v1501.md) §2) and are chosen by
     the year asked about: a year with no published figure asks for it, so the tools fail closed on
     January 1. Verified: $202.90 (CMS 2026 Parts A and B fact sheet), $38.99 and the nearest-$0.10
@@ -181,5 +181,7 @@ CMS-2454-IFC (91 FR, June 3, 2026).
     on the last day of the 8th consecutive month with no employer coverage at any time
     (42 CFR 406.24(b)(2)), and enrolling while covered or in the first full month without coverage
     starts coverage that month (406.24(e)(1)).
-- **Not yet built:** `extra-help-msp-screen`, `aca-sep-window`, `magi-household`,
+  - The special enrollment window also applies the late-notice rule this spec left out: 60 days from
+    when the person knew or should have known of the event (45 CFR 155.420(c)(5)).
+- **Not yet built:** `extra-help-msp-screen`, `magi-household`,
   `medicaid-work-requirement-check`.

@@ -4,6 +4,7 @@ import { el, clear } from '../lib/dom.js';
 import * as MP from '../lib/medicare-penalties-v1507.js';
 import * as CB from '../lib/cobra-clock-v1507.js';
 import * as MW from '../lib/medicare-enrollment-window-v1507.js';
+import * as SE from '../lib/aca-sep-window-v1507.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -135,6 +136,24 @@ export const renderers = {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
       const r = MW.medicareEnrollmentWindow(args);
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Window', value: r.bandLabel }]);
+      list(o, r.notes);
+      note(o, r.note);
+    }));
+  },
+  'aca-sep-window'(root) {
+    const pairs = [['sep-event', 'event'], ['sep-date', 'eventDate'], ['sep-learned', 'learnedDate'], ['sep-selected', 'selectionDate']];
+    selectField(root, 'Qualifying event', 'sep-event', SE.EVENTS);
+    dateInput(root, 'Date of the event', 'sep-date', 'date');
+    dateInput(root, 'Date the person learned of it, if later (optional)', 'sep-learned', 'date');
+    dateInput(root, 'Date the plan was chosen (optional)', 'sep-selected', 'date');
+    const ids = pairs.map(([d]) => d);
+    const o = out(); root.appendChild(o);
+    wire(ids, () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = SE.acaSepWindow(args);
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Window', value: r.bandLabel }]);
       list(o, r.notes);

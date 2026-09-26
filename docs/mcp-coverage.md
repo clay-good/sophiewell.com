@@ -8584,6 +8584,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/medicare-enrollment-window-v1507.js (spec-v1507: Medicare enrollment window and coverage start — administrative disclaimer)
 - `medicare-enrollment-window`
 
+### lib/aca-sep-window-v1507.js (spec-v1507: Marketplace special enrollment window — administrative disclaimer)
+- `aca-sep-window`
+
 ### lib/ma-appeals-v1503.js (spec-v1503: Medicare Advantage appeal levels and filing deadlines — administrative disclaimer)
 - `ma-appeal-ladder`
 

@@ -6,6 +6,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **Marketplace Special Enrollment Window.** The window for a qualifying event (60 days; 60 before and after a
+  loss of coverage; 90 after losing Medicaid or CHIP) and when coverage starts. See docs/spec-v1507.md.
+
 - **Part A Premium and Late Increase.** Premium-free, reduced ($311) or full ($565) Part A by quarters of
   coverage, and the 10% late increase paid for twice the full years late. See docs/spec-v1507.md.
 
