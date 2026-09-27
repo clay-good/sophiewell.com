@@ -63,3 +63,27 @@ test('320px: a long-DOI tile renders its inline citation and the references bloc
     `document scrollWidth (${overflow.docScroll}) must not exceed clientWidth (${overflow.docClient})`)
     .toBeLessThanOrEqual(overflow.docClient + 1);
 });
+
+test('320px: dense proof rows stack into a scan-friendly mobile layout', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 800 });
+  await page.goto('/#ut-diabetic-foot', { waitUntil: 'load' });
+
+  const proof = page.locator('.tool-meta .tool-proof').first();
+  await proof.evaluate((d) => { d.open = true; });
+
+  // This tile has the catalog's largest interpretation table (14 rows). At
+  // phone width, each range sits above its explanation so neither column gets
+  // squeezed into a strip of one- or two-word lines.
+  const firstBand = proof.locator('.interpretation-band').first();
+  await expect(firstBand).toBeVisible();
+  const proofLayout = await firstBand.evaluate((row) => {
+    const rowStyle = getComputedStyle(row);
+    const listStyle = getComputedStyle(row.parentElement);
+    return {
+      columns: rowStyle.gridTemplateColumns.split(' ').filter(Boolean).length,
+      listStyle: listStyle.listStyleType,
+    };
+  });
+  expect(proofLayout.columns, 'proof rows stack at phone width').toBe(1);
+  expect(proofLayout.listStyle, 'proof rows do not render noisy bullet markers').toBe('none');
+});

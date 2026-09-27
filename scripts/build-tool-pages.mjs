@@ -728,7 +728,10 @@ function buildPageHtml({ tile, desc, meta, related, copy, whatThisIs, optionLabe
         .join(', ')
       : '';
   const citationHtml = meta?.citation
-    ? `<p>${linkifyCitation(meta.citation)}${sourceLinksHtml}</p>`
+    ? `<div class="tp-citation">
+            <p class="tp-citation-label">Citation</p>
+            <p>${linkifyCitation(meta.citation)}${sourceLinksHtml}</p>
+          </div>`
     : '';
   const sourceHtml = meta?.source?.label
     ? `<p class="src-stamp"><strong>Source:</strong> ${esc(meta.source.label)}</p>`

@@ -1126,6 +1126,59 @@ main h1 {
   color: var(--text-secondary);
   max-width: 70ch;
 }
+.tool-body {
+  min-width: 0;
+  line-height: 1.6;
+}
+/* View modules intentionally emit plain semantic elements. The global reset
+   removes their browser spacing, so restore one consistent reading rhythm at
+   the shared tool boundary instead of duplicating it across 1,900+ views. */
+.tool-body > p {
+  max-width: 75ch;
+  margin: 0 0 var(--space-4);
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+.tool-body > ul,
+.tool-body > ol {
+  max-width: 75ch;
+  margin: 0 0 var(--space-4);
+  padding-left: 1.4rem;
+}
+.tool-body > ul li,
+.tool-body > ol li {
+  margin-bottom: var(--space-2);
+  padding-left: var(--space-1);
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+.tool-body > h2,
+.tool-body > h3 {
+  max-width: 75ch;
+  margin: var(--space-5) 0 var(--space-3);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  overflow-wrap: anywhere;
+}
+.tool-body > h2 {
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--border);
+  font-size: 1.2rem;
+}
+.tool-body > h3 { font-size: 1.05rem; }
+.tool-body > fieldset {
+  margin: 0 0 var(--space-5);
+  padding: var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.tool-body > fieldset legend {
+  max-width: 100%;
+  padding: 0 var(--space-2);
+  font-weight: 700;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
 .tool-input,
 .tool-output { margin-bottom: var(--space-4); }
 .tool-sources {
@@ -1142,7 +1195,7 @@ main h1 {
 
 .tool-meta {
   margin: 0 0 var(--space-4);
-  padding: var(--space-3) var(--space-4);
+  padding: var(--space-4);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background: var(--bg-tertiary);
@@ -1157,10 +1210,26 @@ main h1 {
    overflow-wrap: anywhere breaks a long DOI/instrument token rather than
    forcing horizontal scroll (the no-horizontal-scroll house rule). */
 .tool-meta .citation {
+  display: grid;
+  grid-template-columns: minmax(6.5rem, 0.24fr) minmax(0, 1fr);
+  gap: var(--space-2) var(--space-4);
   color: var(--text-secondary);
   overflow-wrap: anywhere;
 }
+.tool-meta .citation-label,
+.tool-meta .interpretation-header,
+.tool-meta .actions-header {
+  color: var(--text-primary);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+.tool-meta .citation-copy { min-width: 0; }
 .tool-meta .source-stamp {
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--border);
   color: var(--text-muted);
   font-family: var(--font-mono);
   font-size: 0.95rem;
@@ -1184,6 +1253,45 @@ main h1 {
   text-decoration: none;
   overflow-wrap: anywhere;
 }
+.tool-meta .interpretation,
+.tool-meta .actions {
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--border);
+}
+.tool-meta .interpretation-header,
+.tool-meta .actions-header {
+  margin-bottom: var(--space-2);
+}
+.tool-meta .interpretation-bands,
+.tool-meta .actions-bands {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--border);
+}
+.tool-meta .interpretation-band,
+.tool-meta .actions-band {
+  display: grid;
+  grid-template-columns: minmax(7.5rem, 0.3fr) minmax(0, 1fr);
+  gap: var(--space-3);
+  margin: 0;
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--border);
+  line-height: 1.55;
+}
+.tool-meta .interpretation-range,
+.tool-meta .actions-range {
+  color: var(--text-primary);
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+.tool-meta .interpretation-text,
+.tool-meta .actions-text {
+  min-width: 0;
+  color: var(--text-secondary);
+  overflow-wrap: anywhere;
+}
+.tool-meta .actions-source { margin-top: var(--space-3); }
 .tool-meta .citation-link:hover,
 .tool-meta .citation-link:focus-visible,
 .tool-meta .citation-inline-link:hover,
@@ -1897,14 +2005,20 @@ button:active { transform: translateY(1px) scale(0.985); }
   font-size: 1rem;
   /* Block display (not flex) so the UA disclosure triangle survives; the
      vertical padding carries the 44px touch target instead. */
-  padding: 10px 0;
+  padding: 10px 2px;
+  color: var(--text-primary);
+}
+.tool-proof[open] > summary {
+  margin-bottom: var(--space-3);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--border-light);
 }
 .tool-proof > summary:focus-visible {
   outline: 2px solid var(--focus-ring);
   outline-offset: 2px;
   border-radius: 3px;
 }
-.tool-proof > *:not(summary) { margin-top: var(--space-2); }
+.tool-proof > *:not(summary) { margin-top: var(--space-3); }
 
 /* The rest of a long explanation paragraph, one click away. Block summary (not
    flex) so the UA disclosure triangle survives; the padding carries the 44px
@@ -2068,6 +2182,10 @@ button:active { transform: translateY(1px) scale(0.985); }
 
 .tool-page .tp-refs {
   margin-bottom: var(--space-5);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-secondary);
 }
 .tool-page .tp-refs > summary {
   cursor: pointer;
@@ -2080,11 +2198,33 @@ button:active { transform: translateY(1px) scale(0.985); }
   margin: var(--space-2) 0 0;
   overflow-wrap: anywhere;
 }
+.tool-page .tp-refs[open] > summary {
+  margin-bottom: var(--space-3);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--border-light);
+}
+.tool-page .tp-citation {
+  display: grid;
+  grid-template-columns: minmax(6.5rem, 0.24fr) minmax(0, 1fr);
+  gap: var(--space-2) var(--space-4);
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--border);
+}
+.tool-page .tp-citation .tp-citation-label {
+  color: var(--text-primary);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+.tool-page .tp-citation p { margin: 0; }
 
 /* spec-v48: derivation content inside the shared calculation disclosure. */
 .tile-derivation {
-  margin-top: 1rem;
-  padding-top: 0.25rem;
+  margin-top: var(--space-3);
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--border);
 }
 .tile-derivation-dl {
   margin: 0;
@@ -2096,12 +2236,20 @@ button:active { transform: translateY(1px) scale(0.985); }
 }
 .tile-derivation dd {
   margin: 0;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  overflow-wrap: anywhere;
 }
 .tile-derivation pre.tile-derivation-formula {
   white-space: pre-wrap;
   font-family: var(--mono, ui-monospace, monospace);
-  font-size: 0.85rem;
-  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  margin: var(--space-2) 0 0;
+  padding: var(--space-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-primary);
 }
 .tile-derivation blockquote {
   margin: 0;
@@ -2114,7 +2262,27 @@ button:active { transform: translateY(1px) scale(0.985); }
   padding: 0;
 }
 .tile-derivation-steps li {
-  margin: 0.15rem 0;
+  margin: var(--space-2) 0;
+  line-height: 1.55;
+}
+
+@media (max-width: 600px) {
+  .tool-meta { padding: var(--space-3); }
+  .tool-meta .citation,
+  .tool-meta .interpretation-band,
+  .tool-meta .actions-band,
+  .tool-page .tp-citation {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-1);
+  }
+  .tool-meta .interpretation-range,
+  .tool-meta .actions-range {
+    color: var(--accent-pop-strong);
+  }
+  [data-theme="dark"] .tool-meta .interpretation-range,
+  [data-theme="dark"] .tool-meta .actions-range {
+    color: var(--accent-pop);
+  }
 }
 
 

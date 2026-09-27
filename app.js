@@ -4684,15 +4684,16 @@ function renderMetaBlock(util) {
     // `citationUrl` (a permanent DOI or the publisher's canonical page)
     // renders as an explicit "Read the source" link after the reference.
     const p = el('p', { class: 'citation' });
-    p.appendChild(document.createTextNode('Citation: '));
-    appendLinkified(p, meta.citation);
+    p.appendChild(el('span', { class: 'citation-label', text: 'Citation:' }));
+    const citationCopy = el('span', { class: 'citation-copy' });
+    appendLinkified(citationCopy, meta.citation);
     if (meta.citationUrl) {
       // spec-v943: eight sources are a book chapter, a meeting abstract or a
       // pre-1946 paper that no index carries, so the only pointer is a search.
       // Say so: "Read the source" would promise a paper the link cannot open.
       const isSearch = /[?&](term|q|query|search)=/.test(meta.citationUrl);
-      p.appendChild(document.createTextNode(' '));
-      p.appendChild(el('a', {
+      citationCopy.appendChild(document.createTextNode(' '));
+      citationCopy.appendChild(el('a', {
         class: 'citation-link',
         href: meta.citationUrl,
         target: '_blank',
@@ -4702,10 +4703,10 @@ function renderMetaBlock(util) {
     } else if (Array.isArray(meta.citationUrls) && meta.citationUrls.length) {
       // spec-v942: a citation that names two or more papers gets one labelled
       // link per paper, so the reader can tell which one each link opens.
-      p.appendChild(document.createTextNode(' Read the sources: '));
+      citationCopy.appendChild(document.createTextNode(' Read the sources: '));
       meta.citationUrls.forEach((entry, i) => {
-        if (i) p.appendChild(document.createTextNode(', '));
-        p.appendChild(el('a', {
+        if (i) citationCopy.appendChild(document.createTextNode(', '));
+        citationCopy.appendChild(el('a', {
           class: 'citation-link',
           href: entry.url,
           target: '_blank',
@@ -4714,6 +4715,7 @@ function renderMetaBlock(util) {
         }));
       });
     }
+    p.appendChild(citationCopy);
     proof.appendChild(p);
   }
 
@@ -4722,13 +4724,12 @@ function renderMetaBlock(util) {
   // shown is the source's, not Sophie's.
   if (meta.interpretation && Array.isArray(meta.interpretation.bands) && meta.interpretation.bands.length) {
     const interp = el('div', { class: 'interpretation', 'aria-label': 'Interpretation per source' });
-    interp.appendChild(el('p', { class: 'interpretation-header', text: 'Per source:' }));
+    interp.appendChild(el('p', { class: 'interpretation-header', text: 'Interpretation (per source)' }));
     const list = el('ul', { class: 'interpretation-bands' });
     for (const band of meta.interpretation.bands) {
       if (!band || !band.range || !band.text) continue;
       const item = el('li', { class: 'interpretation-band' });
       item.appendChild(el('span', { class: 'interpretation-range', text: String(band.range) }));
-      item.appendChild(document.createTextNode(' - '));
       item.appendChild(el('span', { class: 'interpretation-text', text: String(band.text) }));
       list.appendChild(item);
     }
@@ -4748,7 +4749,6 @@ function renderMetaBlock(util) {
       if (!band || !band.range || !band.step) continue;
       const item = el('li', { class: 'actions-band' });
       item.appendChild(el('span', { class: 'actions-range', text: String(band.range) }));
-      item.appendChild(document.createTextNode(' - '));
       item.appendChild(el('span', { class: 'actions-text', text: String(band.step) }));
       alist.appendChild(item);
     }
