@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:418b0bf9-e94c-5ce3-8dd5-4e9e498de7a7",
+  "serialNumber": "urn:uuid:fcd8527a-4910-5caa-8ac4-c50aced86e2b",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-27T11:40:33.155Z",
+    "timestamp": "2026-09-28T22:11:33.117Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -21325,6 +21325,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "11393"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/upload-intake.js",
+      "type": "file",
+      "name": "lib/upload-intake.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3936baa5cee13f25fee6b336fac6fc454c47d65778aec0ff7d491da20af92dc8"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4978"
         }
       ]
     },
@@ -78725,6 +78746,7 @@
         "urn:sophiewell:file:source:lib/ukeld-v1438.js",
         "urn:sophiewell:file:source:lib/unit-convert.js",
         "urn:sophiewell:file:source:lib/up-to-seven-v586.js",
+        "urn:sophiewell:file:source:lib/upload-intake.js",
         "urn:sophiewell:file:source:lib/uro-v130.js",
         "urn:sophiewell:file:source:lib/uro-v131.js",
         "urn:sophiewell:file:source:lib/urology-v153.js",
@@ -80772,7 +80794,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "418b0bf9e94c8ce3"
+      "value": "fcd8527a49107caa"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -80784,7 +80806,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2936"
+      "value": "2937"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

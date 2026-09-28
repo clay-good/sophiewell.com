@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Shared CSV/TSV intake for the planned medication-access upload workbench, with
+  strict row validation, byte and row limits, and column-mapping checks that reject
+  missing or ambiguous required inputs. The upload UI is not yet available.
+
 - **Part D Adherence (PDC, Star Method).** The D08-D10 adherence rates from a fill history by the CMS Star
   Ratings Technical Notes: the 91-day and two-fill denominator rules, same-ingredient shifting, stay days
   removed, and the insulin and sacubitril/valsartan exclusions. See docs/spec-v1513.md.

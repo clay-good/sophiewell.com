@@ -150,5 +150,13 @@ the research recorded in [scope-medication-access.md](scope-medication-access.md
   `lib/deadline.js`, with `rollForward` now tested. Tests: `test/unit/dated-data.test.js`,
   `test/unit/deadline-months.test.js`.
 - **Built 2026-09-26:** §1 group Q, with its first tools ([spec-v1502](spec-v1502.md)).
+- **Built 2026-09-28:** §3's pure CSV/TSV intake in `lib/upload-intake.js`: delimiter
+  detection, quoted fields and embedded newlines, UTF-8 byte limits (50 MiB), a
+  500,000-data-row limit, and column mapping by normalized names and synonyms.
+  Malformed quotes and inconsistent row widths reject the whole file. Values stay
+  strings, preserving leading zeros. Ambiguous mappings require a reader choice;
+  validation rejects missing required columns and columns reused for two inputs.
+  Tests: `test/unit/upload-intake.test.js`. No external source or clinical rule changed.
 - **Not yet built:** §2's page watch (with
-  [spec-v1517](spec-v1517.md)), §3 the upload workbench, §4 the document builder.
+  [spec-v1517](spec-v1517.md)); §3's worker, upload and mapping UI, JSON/X12 intake,
+  results and redacted downloads, and batch execution; §4 the shared document builder.
