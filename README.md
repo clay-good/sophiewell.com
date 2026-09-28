@@ -5,7 +5,7 @@
 <h1 align="center">sophiewell.com</h1>
 
 <p align="center">
-  <strong>1941 free healthcare calculators that run entirely in your browser.</strong><br>
+  <strong>1942 free healthcare calculators that run entirely in your browser.</strong><br>
   No accounts, no ads, no telemetry, no AI.
 </p>
 
@@ -17,7 +17,7 @@
 <!--
   Machine-checked count (scripts/check-catalog-truth.mjs reads the line
   below; keep it in sync with UTILITIES.length in app.js):
-  At v1511 close the catalog is 1941
+  At v1511 close the catalog is 1942
   deterministic tiles.
 -->
 
@@ -37,7 +37,7 @@ Each calculator does one thing:
 | **In** | The values you already have. It opens pre-filled with a worked example — a described patient, not a form of zeros — so you can see the expected format before you type over it. |
 | **Out** | One number or grade, plus how the source says to read it. |
 | **Or not** | When a value it needs is missing, it says which one instead of answering. A score that only adds points will still flag risk on what you have entered, but it will not call a patient well on measurements nobody took — and it will not raise an alarm from an empty form either. When it does answer on a partly filled form, it says how much of the form it used. |
-| **Proof** | The method and primary citations together, one click away under "How this is calculated". 1,864 of the 1,941 link straight through to the source paper, and every one of those links is checked to resolve **and** to open the paper the citation names, not merely a paper. Twelve more say "Search PubMed for this source" because no index carries the book chapter or pre-1946 paper they cite. |
+| **Proof** | The method and primary citations together, one click away under "How this is calculated". 1,865 of the 1,942 link straight through to the source paper, and every one of those links is checked to resolve **and** to open the paper the citation names, not merely a paper. Twelve more say "Search PubMed for this source" because no index carries the book chapter or pre-1946 paper they cite. |
 
 For example, on [Wells Score for PE](https://sophiewell.com/#wells-pe)
 you tick the criteria that apply and get
@@ -73,8 +73,8 @@ The medication-access upload workbench is in development. All four adherence
 tools can load CSV or TSV fill histories locally, with an explicit column-mapping
 step, a row-level preview, and full or patient-redacted CSV downloads. Generic
 batch execution has started with the patient-definition check; other calculators are
-still planned. The prescription-matching engine is tested; its coordinated
-four-file screen is the next upload-workbench increment. See
+still planned. The prescription matcher accepts four local files and returns its
+audit trail with full or redacted downloads. See
 [the implementation status](docs/spec-v1501.md#build-status).
 
 - [CHANGELOG.md](CHANGELOG.md): what's new

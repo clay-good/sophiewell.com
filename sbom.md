@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `eb928959b5ebba24`
-Generated: 2026-09-28T23:15:26.003Z
+Build ID: `7a6361449031007b`
+Generated: 2026-09-28T23:37:53.373Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -25,17 +25,17 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 123240 | `fd4e48b64c7ce042543c37eef90b4a8ed2d94c717fd3280f99e9ffd36c4cb44b` |
+| `index.html` | 123355 | `a31e2e7470bfa69f2d4ffd9f0f744e926a9ce4d0d1d4612097fe90815b04d584` |
 | `styles.css` | 73649 | `646d88dcf16212888683c6456d61b1c8285d48796ac02d72482534a7c3365879` |
-| `app.js` | 561507 | `b59aff7b340df233b15f058f89c059106a4969b432d40e32de6a04b10213bbe6` |
+| `app.js` | 561647 | `48813c50f8f83b44040d938d03c875d2c23299214cfa22ed847e3233dd63d09c` |
 | `report-feedback.js` | 12178 | `955e5cb542c7b13dcbb85a75ecf4ccf2dc0b2dffecd84daac1d607bd6acc7cd2` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 | `theme.js` | 3132 | `6910af0b4c65869c6a3d24d17842bb2cc88c7d23f8fb32506fcdbfeec70ce979` |
 | `file-origin-guard.js` | 1876 | `45414c830b9c95f04d22fd19bb0be70363b88e37559f33c2d197872591a8cd55` |
-| `sw.js` | 5211 | `a42a29d0c1015415f56f3368eee417fa6884f2d3e004c01ef0fec5d3f7a70465` |
+| `sw.js` | 5241 | `879fd6a3bb98f889348133c56d93c3f8dcd923563b10a56a915bc636ba9f1211` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 242316 | `d295891b591a85e51c557c4ad1ce7b777188fb20831f82d97b06c6af22ba7f0d` |
+| `sitemap.xml` | 242440 | `737479c527172732576deba490eb52ce3547974231e5c441489b7aa065e1d9df` |
 | `_headers` | 2050 | `3874f05a080b8cab13ff022e6e6147c7e1057420a2d9cbc7834bac6b421d4011` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 3682 | `8dd13c4dd66de0c9ec93c2c1561e5fec1902f144b677d3581cf56b124b04a1b8` |
@@ -48,7 +48,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | Path | Bytes | SHA-256 |
 |---|---:|---|
 | `report-worker.mjs` | 13434 | `bcbebe960bf79e0cb2038f7ddc216dfb0753a9665f071fa32966d5d460ffc794` |
-| `report-catalog.js` | 111241 | `dcbefa04d5f6cb23ab1212891277b6f36b899f3be8e0e9766a0423e59c1675ee` |
+| `report-catalog.js` | 111296 | `328b8c22fc0b839106581d7ee80f28206e6e43be8d09686b31cca18a3c448306` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 
 ## Source-of-truth modules (lib + views)
@@ -617,7 +617,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/membranous-risk-v878.js` | 11351 | `882c36c07e46543e32f1114792c1124ee9f9ff6b384084fc0a8c221e7dd62062` |
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2661112 | `024855fd01c20c2b3fd16613a835730268e2f4130b819b996e55542813181ff2` |
+| `lib/meta.js` | 2661721 | `04d001e38d71107d96d64b898d75768f4ba04b75b8c30f42c4c3323a399d3d06` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 19326 | `64342935cc7842381f6e318293cfcd6f97b69022268da6c595c5c71db388af2d` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -914,6 +914,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/russe-scaphoid-v416.js` | 4054 | `393fb761d9bcfb169b583f73ec59e807a0894591bc9c4726821d7597796440f2` |
 | `lib/russell-taylor-subtroch-v482.js` | 3448 | `b8995ea5fb16e414172af1b8ce1aacc45c2bdadd69441e3ed73168f28d4a52b8` |
 | `lib/rutherford-ali-v1242.js` | 7705 | `6faaa5a67ab6e8b1f60df856dc5bd91183cfbec829175a41a211bafa3d9b9b67` |
+| `lib/rx-match-worker.js` | 4926 | `5db43ad8c2c0b6d4ad0a12c6dad5306d476af532427dfcfc3fa02603a4953d8c` |
 | `lib/sad-persons-v701.js` | 3994 | `b504e0fef9dbf7fea46baabcd029a0691726700319a7d08b9233dd0b175db6f1` |
 | `lib/sade-retraction-v451.js` | 3151 | `d77221ce115d599b6c79b5d9936ecd360673ca2c7c2d16a252fd86142dceb481` |
 | `lib/safe-haven-infant-check-v1394.js` | 8539 | `a7edaf8f350410e9889cc9aa69051e52c1457e0fd38defac912e7011030284bc` |
@@ -2253,7 +2254,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1506.js` | 11140 | `361d98ae810829a8c8b20b734e9bcd45ca3a84151eec8d41232ec3e11ea110ca` |
 | `views/group-v1507.js` | 13724 | `9164dcd5553ed2bf3173660028c504428a8bf17f44fc60e11e0833dabb653a50` |
 | `views/group-v1508.js` | 8229 | `9dd50e090ced34ec13dec250b12b0b4e750489d265a355e984fa3b6ee62259fe` |
-| `views/group-v1509.js` | 9538 | `f3791467ade0ad80368472b87a6f6880cc7544fe7af7e7c4e77be757ea66da86` |
+| `views/group-v1509.js` | 9698 | `d552749066fadefe718359b5e0e7f0daa3563c4ee7eaa5d946025824599cec52` |
 | `views/group-v151.js` | 13359 | `0f5eff3a293106878f3c19634996260b9ed65f358fb54c277941ddb9ef93784e` |
 | `views/group-v1510.js` | 9536 | `bcbb02fa65ac6bd60a1eb0b9714fe73d76eaa7085e3cccdf59fe2d6ceb8d235a` |
 | `views/group-v1511.js` | 12916 | `93b0462d58e5904d62e34a3d32ff05a6f8d4a8a68ddf8a6160d8c64cb40d7750` |
@@ -2993,6 +2994,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v958.js` | 2985 | `7130419cb508352c449ed6fca367999b557c564cc47296a1378e609ffb37e3f3` |
 | `views/group-v960.js` | 2332 | `2e2cd0afc127aeef51e729f177473c3a125c6ebdd6bc21bc7b19376cf0dbe177` |
 | `views/pa-lint.js` | 28680 | `90c4bbb985af80d74f2957de7d11efc33f5a14d21a40ae8ae114ff3313879b88` |
+| `views/rx-match-workbench.js` | 10898 | `cf1b168ed473bb03baa04d5b1d71943f75009842a01746ec1942095994a781da` |
 | `views/upload-workbench.js` | 8287 | `b9f51d4c9e0d7c30593c9d76bd4394dff1813df07ff10da14f9c3872d75e927f` |
 
 ## Verifying this SBOM

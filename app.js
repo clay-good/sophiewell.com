@@ -1075,6 +1075,7 @@ const UTILITIES = [
   { id: '340b-entity-eligibility', name: '340B Hospital Eligibility', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },
   { id: '340b-orphan-exclusion', name: '340B Orphan Drug Exclusion', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },
   { id: '340b-patient-check', name: '340B Patient Definition Check', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },
+  { id: '340b-rx-match', name: '340B Prescription-to-Encounter Match', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },
   { id: '340b-duplicate-discount', name: '340B Duplicate Discount and Claim Identifiers', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },
   { id: '340b-ceiling-price', name: '340B Ceiling Price and Unit Rebate Amount', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },
   { id: 'mfp-refund-check', name: 'Negotiated-Price Refund Check (Pharmacy)', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },

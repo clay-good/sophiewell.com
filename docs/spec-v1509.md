@@ -168,7 +168,7 @@ already has.
 - **Built 2026-09-28:** the pure `340b-rx-match` engine validates prescriptions,
   encounters, eligible prescribers and registered sites; applies the reader's
   look-back and referral policies plus the existing orphan exclusion; explains
-  every non-match; and reports rates by pharmacy and prescriber. The coordinated
-  four-file browser intake remains to be built.
-- **Not yet built:** `340b-rx-match` (needs the upload workbench) and `340b-rebate-model-clock` (gated on the
-  model taking effect January 1, 2027).
+  every non-match; and reports rates by pharmacy and prescriber. Its browser tool
+  maps all four CSV or TSV files in a local Worker, previews the audit rows and
+  downloads full or patient-redacted results.
+- **Not yet built:** `340b-rebate-model-clock` (gated on the model taking effect January 1, 2027).

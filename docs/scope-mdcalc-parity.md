@@ -230,3 +230,7 @@ they should be able to:
 That is the commitment this document codifies. Catalog parity
 with MDCalc is the *mechanism*; the **commitment is the
 experience**.
+
+## Current catalog close
+
+> v1509, prescription matching — [spec-v1509](spec-v1509.md), which adds `340b-rx-match` — is 1942.)

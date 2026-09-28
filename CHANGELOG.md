@@ -6,10 +6,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
-- The pure matching engine for the upcoming prescription audit tool. It
+- A prescription-to-encounter audit tool with mapped local files for prescriptions,
+  encounters, eligible prescribers and registered sites. It
   applies the entity's look-back, registered-site and referral policies, reuses
   the orphan-drug exclusion, explains every non-match, and calculates pharmacy
-  and prescriber match rates.
+  and prescriber match rates. Its audit CSV is available in full or with patient
+  references redacted.
 
 - CSV/TSV batch checks for the 340B patient definition. Each row uses the same
   calculation as the form and receives its decision or its missing-input reason,

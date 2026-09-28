@@ -10064,6 +10064,17 @@
     },
     {
       "phrases": [
+        "340b prescription matching",
+        "340b rx match",
+        "match prescriptions to encounters",
+        "340b audit trail",
+        "eligible prescription visit match"
+      ],
+      "tile": "340b-rx-match",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
         "340b duplicate discount",
         "tb modifier 340b",
         "medicaid exclusion file",

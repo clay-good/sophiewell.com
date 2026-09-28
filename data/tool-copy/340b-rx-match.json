@@ -1,0 +1,13 @@
+{
+  "whatThisIs": "Match each prescription to an eligible encounter under a covered entity's own look-back, registered-site and referral policies. Every prescription receives an eligibility decision and the first rule it failed.",
+  "whenToUse": "Use this to produce a local audit trail from the entity's prescription, encounter, eligible-prescriber and registered-site files. The files remain in the browser tab.",
+  "inputs": "Four CSV or TSV files: prescriptions with patient reference, prescriber NPI, NDC, fill date, pharmacy and orphan-designation status; encounters with patient reference, date, location and provider NPI; eligible prescribers with relationship; and registered sites. Also enter the entity type, look-back days and referral policy.",
+  "output": "Eligible and ineligible prescriptions with reasons and matched encounter details, match rates by pharmacy and prescriber, and full or patient-redacted CSV downloads.",
+  "example": {
+    "rows": [
+      ["Entity policy", "Critical access hospital; 30-day look-back; referrals do not count"],
+      ["Prescription rows", "Two prescriptions with eligible encounters; one drug is orphan designated"]
+    ],
+    "result": "1 of 2 prescriptions matched (50%); the orphan-designated drug was excluded for this entity type."
+  }
+}

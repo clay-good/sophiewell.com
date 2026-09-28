@@ -4,6 +4,7 @@ import { el, clear } from '../lib/dom.js';
 import * as E3 from '../lib/entity-340b-v1509.js';
 import { resultRow } from '../lib/result-copy.js';
 import { uploadWorkbench } from './upload-workbench.js';
+import { rxMatchWorkbench } from './rx-match-workbench.js';
 
 const NA = { value: '', text: '— choose —' };
 const PATIENT_CHECK_FIELDS = [
@@ -60,6 +61,9 @@ function wire(ids, run) {
 }
 
 export const renderers = {
+  '340b-rx-match'(root) {
+    rxMatchWorkbench(root, { entityTypes: E3.ORPHAN_ENTITY_TYPES });
+  },
   '340b-entity-eligibility'(root) {
     const pairs = [['e3-type', 'type'], ['e3-own', 'ownership'], ['e3-pct', 'dshPercent'], ['e3-pickle', 'pickle'], ['e3-gpo', 'usesGpo']];
     selectField(root, 'Hospital type', 'e3-type', E3.HOSPITAL_TYPES);
