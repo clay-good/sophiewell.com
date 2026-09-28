@@ -162,5 +162,8 @@ already has.
   - **Correction:** HRSA's FAQ puts the Medicaid Exclusion File snapshot at 12:01 am Eastern on the **16th**
     of the month before the quarter, not the 15th. The TB modifier (CMS MLN4800856) and the Part D 340B
     repository dates (CMS fact sheet, August 2026) were confirmed.
+- **Built 2026-09-28:** `340b-patient-check` also runs over CSV or TSV files. Each
+  row uses the form's calculation and produces a decision or an input-error reason,
+  with full and patient-redacted CSV downloads.
 - **Not yet built:** `340b-rx-match` (needs the upload workbench) and `340b-rebate-model-clock` (gated on the
   model taking effect January 1, 2027).

@@ -3,8 +3,17 @@
 import { el, clear } from '../lib/dom.js';
 import * as E3 from '../lib/entity-340b-v1509.js';
 import { resultRow } from '../lib/result-copy.js';
+import { uploadWorkbench } from './upload-workbench.js';
 
 const NA = { value: '', text: '— choose —' };
+const PATIENT_CHECK_FIELDS = [
+  { id: 'patient_reference', label: 'Patient reference', required: true, sensitive: true, synonyms: ['patient', 'patient id', 'member', 'member id'] },
+  { id: 'entity', label: 'Covered entity kind', required: true, synonyms: ['entity kind', 'entity type'] },
+  { id: 'records', label: 'Entity keeps records', required: true, synonyms: ['keeps records', 'health records'] },
+  { id: 'provider', label: 'Eligible provider arrangement', required: true, synonyms: ['provider arrangement', 'eligible prescriber'] },
+  { id: 'scope', label: 'Within grant scope', synonyms: ['grant scope', 'in scope'] },
+  { id: 'dispensingOnly', label: 'Dispensing only', required: true, synonyms: ['dispensing only', 'only service'] },
+];
 function selectField(root, label, id, options) {
   const wrap = el('p');
   wrap.appendChild(el('label', { for: id, text: label }));
@@ -94,16 +103,28 @@ export const renderers = {
     selectField(root, 'Grantees only: is the care within the scope of the grant?', 'pc3-scope', E3.YES_NO);
     selectField(root, 'Is dispensing the only service the entity provides the person?', 'pc3-disp', E3.YES_NO);
     const ids = pairs.map(([d]) => d);
-    const o = out(); root.appendChild(o);
-    wire(ids, () => safe(o, () => {
-      const args = {};
-      for (const [dom, arg] of pairs) args[arg] = val(dom);
-      const r = E3.patientCheck340b(args);
+    const input = () => Object.fromEntries(pairs.map(([dom, arg]) => [arg, val(dom)]));
+    const o = out();
+    const show = (r) => safe(o, () => {
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Patient', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
-    }));
+    });
+    let upload;
+    const run = () => {
+      if (upload && upload.isActive()) upload.compute({});
+      else show(E3.patientCheck340b(input()));
+    };
+    upload = uploadWorkbench(root, {
+      id: 'pc3-upload', fields: PATIENT_CHECK_FIELDS, label: 'Check patients from a file',
+      compute: '340b-patient-check', getInput: () => ({}), onResult: show,
+    });
+    for (const id of ids) for (const event of ['input', 'change']) document.getElementById(id).addEventListener(event, () => {
+      if (upload.isActive()) upload.clear('Using the answers entered above.');
+    });
+    root.appendChild(o);
+    wire(ids, run);
   },
   '340b-duplicate-discount'(root) {
     const pairs = [['dd-payer', 'payer'], ['dd-mef', 'mef'], ['dd-change', 'changeApproved'], ['dd-state', 'stateRule'], ['dd-dos', 'serviceDate']];

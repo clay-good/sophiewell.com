@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- CSV/TSV batch checks for the 340B patient definition. Each row uses the same
+  calculation as the form and receives its decision or its missing-input reason,
+  with full and patient-redacted CSV downloads.
+
 - Local CSV/TSV file upload for all four adherence tools: PDC, outreach, MPR and
   gap analysis, and medication synchronization. Parsing runs in a browser Worker,
   the reader confirms proposed column mappings, and missing or ambiguous required

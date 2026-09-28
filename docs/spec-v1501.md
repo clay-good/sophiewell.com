@@ -170,6 +170,9 @@ the research recorded in [scope-medication-access.md](scope-medication-access.md
   The complete table remains in the Worker until a download is requested, and
   CSV cells that could run spreadsheet formulas are emitted as text. Redaction
   reuses `lib/pa/redact.js` and always masks the mapped patient column.
+- **Built 2026-09-28:** the first scalar batch tool is live on
+  `340b-patient-check`. Every CSV or TSV row calls the same pure function as the
+  form and exports either its decision or its input error.
 - **Not yet built:** §2's page watch (with
   [spec-v1517](spec-v1517.md)); §3's JSON/X12 intake, generic scalar-tool batch
   execution, and upload integration for the remaining file-based tools; §4 the

@@ -128,3 +128,33 @@ test('adherence outreach appends reachability results to mapped fill rows', asyn
   await expect(page.locator('.upload-file-results')).toContainText('sophiewell_can_reach_80_percent');
   await expect(page.locator('.upload-file-results tbody tr').first()).toContainText('true');
 });
+
+test('340B patient check runs every mapped row through the form calculation', async ({ page }) => {
+  await page.goto('/#340b-patient-check');
+  await page.locator('#pc3-upload-file').setInputFiles({
+    name: 'patients.csv', mimeType: 'text/csv',
+    buffer: Buffer.from([
+      'patient id,entity type,keeps records,eligible prescriber,grant scope,dispensing only',
+      'A,hospital,yes,yes,,no',
+      'B,grantee,yes,no,yes,no',
+      'C,grantee,yes,yes,,no',
+    ].join('\n')),
+  });
+  await page.getByRole('button', { name: 'Use 3 rows' }).click();
+  await expect(page.locator('#pc3-upload-status')).toContainText('3 rows are in use');
+  await expect(page.locator('#q-results')).toContainText('1 of 3 rows meets the 340B patient definition. 1 row needs corrected inputs.');
+  await expect(page.locator('.upload-file-results tbody tr')).toHaveCount(3);
+  await expect(page.locator('.upload-file-results tbody tr').nth(0)).toContainText('true');
+  await expect(page.locator('.upload-file-results tbody tr').nth(1)).toContainText('false');
+  await expect(page.locator('.upload-file-results tbody tr').nth(2)).toContainText('Choose whether the care is within the scope of the grant.');
+
+  const downloadPromise = page.waitForEvent('download');
+  await page.getByRole('button', { name: 'Download redacted CSV' }).click();
+  const download = await downloadPromise;
+  const csv = await readFile(await download.path(), 'utf8');
+  expect(csv).not.toContain('\r\nA,hospital');
+  expect(csv).toContain('[REDACTED],hospital');
+
+  await page.locator('#pc3-entity').selectOption('hospital');
+  await expect(page.locator('#pc3-upload-status')).toHaveText('Using the answers entered above.');
+});

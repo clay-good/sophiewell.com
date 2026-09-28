@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `200f11d036cf9e54`
-Generated: 2026-09-28T22:55:27.192Z
+Build ID: `464bc59b6fa9f4db`
+Generated: 2026-09-28T23:05:25.520Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -1049,7 +1049,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/unit-convert.js` | 2601 | `642818802952c2c5e87338bc035dcd9d5ff07dec1e8b97a31ca09b0be38c14d2` |
 | `lib/up-to-seven-v586.js` | 11393 | `4a379fbb63e617cb741a5369394d693751912101492558fdda03ca9c478ff06b` |
 | `lib/upload-intake.js` | 5896 | `12aa14ddd295265e8aec7aa6aa61d2bc93aece8640f26c7ede5e394083f4b9b3` |
-| `lib/upload-worker.js` | 6665 | `c0187458977d0070cf7f110d8aedebf32537ba716c78029a21f673566370ad5d` |
+| `lib/upload-worker.js` | 8089 | `7662dc0bc5a18fec1b6a35846e46645afca2b0eba51894a87006743f294531b5` |
 | `lib/uro-v130.js` | 12895 | `370c7f4f91e8adeff37012c9d024e2bab403330eaffeecee756d06a61fb30c21` |
 | `lib/uro-v131.js` | 16748 | `68ef5eb787708cadacbd1bd66dc39f0777f3f20456298cd7a883204797fe5440` |
 | `lib/urology-v153.js` | 9694 | `700af96b614bda45a67eda2835bb8087c9e2895ac62db7123fa9c765af5b75a9` |
@@ -2253,7 +2253,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1506.js` | 11140 | `361d98ae810829a8c8b20b734e9bcd45ca3a84151eec8d41232ec3e11ea110ca` |
 | `views/group-v1507.js` | 13724 | `9164dcd5553ed2bf3173660028c504428a8bf17f44fc60e11e0833dabb653a50` |
 | `views/group-v1508.js` | 8229 | `9dd50e090ced34ec13dec250b12b0b4e750489d265a355e984fa3b6ee62259fe` |
-| `views/group-v1509.js` | 8164 | `9bafe36124826990152b941111c49c82a66ea7959090b07d64557a76f9f045eb` |
+| `views/group-v1509.js` | 9522 | `ce5fe8444d12b76adb2e822bc05ab78b61c83e7207b76ab241c9ef151b27865e` |
 | `views/group-v151.js` | 13359 | `0f5eff3a293106878f3c19634996260b9ed65f358fb54c277941ddb9ef93784e` |
 | `views/group-v1510.js` | 9536 | `bcbb02fa65ac6bd60a1eb0b9714fe73d76eaa7085e3cccdf59fe2d6ceb8d235a` |
 | `views/group-v1511.js` | 12916 | `93b0462d58e5904d62e34a3d32ff05a6f8d4a8a68ddf8a6160d8c64cb40d7750` |
@@ -2993,7 +2993,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v958.js` | 2985 | `7130419cb508352c449ed6fca367999b557c564cc47296a1378e609ffb37e3f3` |
 | `views/group-v960.js` | 2332 | `2e2cd0afc127aeef51e729f177473c3a125c6ebdd6bc21bc7b19376cf0dbe177` |
 | `views/pa-lint.js` | 28680 | `90c4bbb985af80d74f2957de7d11efc33f5a14d21a40ae8ae114ff3313879b88` |
-| `views/upload-workbench.js` | 8342 | `a6b85b7e06be6651a28617c0dafaaaa43f5f4728cc0b128604414114bf0cab60` |
+| `views/upload-workbench.js` | 8287 | `b9f51d4c9e0d7c30593c9d76bd4394dff1813df07ff10da14f9c3872d75e927f` |
 
 ## Verifying this SBOM
 

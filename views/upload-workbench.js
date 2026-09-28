@@ -147,7 +147,7 @@ export function uploadWorkbench(root, { id, fields, label, compute, getInput, on
         if (message.type === 'computed') {
           if (message.initial) {
             ready = true;
-            status.textContent = `${message.rowCount.toLocaleString('en-US')} rows are in use. Editing the fills field switches back to entered text.`;
+            status.textContent = `${message.rowCount.toLocaleString('en-US')} rows are in use.`;
             clear(mappingRoot);
             mappingRoot.hidden = true;
           }
