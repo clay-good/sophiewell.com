@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `464bc59b6fa9f4db`
-Generated: 2026-09-28T23:05:25.520Z
+Build ID: `eb928959b5ebba24`
+Generated: 2026-09-28T23:15:26.003Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -328,7 +328,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/endo-v136.js` | 18049 | `1be60ca85db4ada6efeca4e6baeabbddc6b050ab361a0d037ee9137b91d71554` |
 | `lib/endoleak-type-v1242.js` | 7013 | `0c7acf6f3309f0acfa12325560daf827daf286376356c511bcc4eb849b7ebb2b` |
 | `lib/enneking-v460.js` | 3397 | `5f0a323b907db13850e71165ddd2b21e7531734f7a26c12086c36710e01c27e3` |
-| `lib/entity-340b-v1509.js` | 18462 | `20aa6a192200c2fb7952eace7756678db1c55d375302f6fe28c8f6de1cfb6b18` |
+| `lib/entity-340b-v1509.js` | 25863 | `9fdcd180b695d1452de0f908912f8fefe8bbd132319ea9fc48dfa9662ecbba6e` |
 | `lib/entsleep-v243.js` | 8054 | `f7881519e82f969f795b0f8f6b3b1163cacd036e4cf63af6446ec56a49d5ffce` |
 | `lib/enturopsych-v254.js` | 8040 | `fda74506629d3035d3c24c18a3cf6faf49a5fa79e3807f01d188c73d6720bd83` |
 | `lib/enviro-v111.js` | 18385 | `a94186fe62f2496908c50141286183ff903e9b6c926a182fd9e997651fa903ef` |
@@ -2253,7 +2253,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1506.js` | 11140 | `361d98ae810829a8c8b20b734e9bcd45ca3a84151eec8d41232ec3e11ea110ca` |
 | `views/group-v1507.js` | 13724 | `9164dcd5553ed2bf3173660028c504428a8bf17f44fc60e11e0833dabb653a50` |
 | `views/group-v1508.js` | 8229 | `9dd50e090ced34ec13dec250b12b0b4e750489d265a355e984fa3b6ee62259fe` |
-| `views/group-v1509.js` | 9522 | `ce5fe8444d12b76adb2e822bc05ab78b61c83e7207b76ab241c9ef151b27865e` |
+| `views/group-v1509.js` | 9538 | `f3791467ade0ad80368472b87a6f6880cc7544fe7af7e7c4e77be757ea66da86` |
 | `views/group-v151.js` | 13359 | `0f5eff3a293106878f3c19634996260b9ed65f358fb54c277941ddb9ef93784e` |
 | `views/group-v1510.js` | 9536 | `bcbb02fa65ac6bd60a1eb0b9714fe73d76eaa7085e3cccdf59fe2d6ceb8d235a` |
 | `views/group-v1511.js` | 12916 | `93b0462d58e5904d62e34a3d32ff05a6f8d4a8a68ddf8a6160d8c64cb40d7750` |

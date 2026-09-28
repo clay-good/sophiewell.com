@@ -73,7 +73,8 @@ The medication-access upload workbench is in development. All four adherence
 tools can load CSV or TSV fill histories locally, with an explicit column-mapping
 step, a row-level preview, and full or patient-redacted CSV downloads. Generic
 batch execution has started with the patient-definition check; other calculators are
-still planned. See
+still planned. The prescription-matching engine is tested; its coordinated
+four-file screen is the next upload-workbench increment. See
 [the implementation status](docs/spec-v1501.md#build-status).
 
 - [CHANGELOG.md](CHANGELOG.md): what's new
