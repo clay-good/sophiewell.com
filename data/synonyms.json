@@ -10240,6 +10240,17 @@
     },
     {
       "phrases": [
+        "835 reader",
+        "era reader",
+        "electronic remittance advice",
+        "remittance csv export",
+        "claim payment file"
+      ],
+      "tile": "x12-835-reader",
+      "audience": "billers"
+    },
+    {
+      "phrases": [
         "therapy cost comparison",
         "biosimilar cost comparison",
         "annual drug cost",

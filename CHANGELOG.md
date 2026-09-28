@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- An X12 835 remittance reader that validates envelope controls and proves
+  service-line, claim and payment arithmetic before posting. It runs locally in
+  a Worker and exports full or patient-redacted claim CSVs.
+
 - A prescription-to-encounter audit tool with mapped local files for prescriptions,
   encounters, eligible prescribers and registered sites. It
   applies the entity's look-back, registered-site and referral policies, reuses

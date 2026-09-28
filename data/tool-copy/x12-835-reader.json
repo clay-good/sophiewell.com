@@ -1,0 +1,13 @@
+{
+  "whatThisIs": "Read an X12 835 remittance file and prove its arithmetic before posting. The reader checks every service line, every claim and the payment total, including provider-level PLB adjustments, while preserving the raw adjustment codes.",
+  "whenToUse": "Use this after a payer or clearinghouse sends an electronic remittance advice and you need a claim spreadsheet, patient-responsibility totals or an exact location for an out-of-balance amount. Files remain in the browser tab.",
+  "inputs": "One or more X12 835 version 5010 text files, up to 50 MB each. The reader accepts the file's declared separators, including tilde or newline segment terminators.",
+  "output": "A payment and claim balance summary, a claim-level preview, and full or redacted CSV downloads. Redacted downloads mask patient names, member IDs and patient account numbers.",
+  "example": {
+    "rows": [
+      ["Claim", "$200.00 billed; $120.00 paid"],
+      ["Adjustments", "$50.00 contractual and $30.00 patient responsibility"]
+    ],
+    "result": "1 of 1 claims balance; 1 of 1 payments reconcile. Patient responsibility: $30.00."
+  }
+}

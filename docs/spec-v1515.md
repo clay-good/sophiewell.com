@@ -123,3 +123,13 @@ a route A dataset pinned to a published version.
   is included.
 - `hpt-file-check`: a v2.2 file flagged for the missing v3.0 attestation; a streaming
   test over a synthetic 1 GB file generated in the test, not committed.
+
+## Build status
+
+- **Built 2026-09-28:** `x12-835-reader` accepts one or more local 005010X221A1
+  files, reads the ISA-declared separators, validates interchange, group and
+  transaction controls, and proves service-line, claim and payment arithmetic.
+  Signed CAS reversals and PLB provider adjustments are included. The Worker
+  returns a capped claim preview plus full and patient-redacted CSV downloads.
+- **Not yet built:** `x12-837-check`, `x12-271-reader`, `x12-277-reader`,
+  `hpt-file-check`, `hpt-price-compare` and `pas-bundle-check`.
