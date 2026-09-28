@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `b74001c320665ca7`
-Generated: 2026-09-28T22:42:20.324Z
+Build ID: `200f11d036cf9e54`
+Generated: 2026-09-28T22:55:27.192Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -70,7 +70,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/acute-abdomen-v261.js` | 13592 | `b747bdf468169fbd5687b6a2004510e0ac77af8037eda77514096972f9d154b4` |
 | `lib/acute-injury-v213.js` | 12314 | `2588fb8b7fa34af0ea7c43311a624e67a163840886140397854ba67994ce7a21` |
 | `lib/acute-opioid-rx-limit-v1393.js` | 8742 | `a6f06ba9dedaa72a2a02e9e752846eb4dd8fcd66cf65f6258b109d23abb1e75a` |
-| `lib/adherence-v1513.js` | 10554 | `1b65b34310a0b192769db0765518ab581f02ba8c85fbb3233a72377b46bf9cc7` |
+| `lib/adherence-v1513.js` | 10856 | `fdb1932e799925623ef13d6de7918ee5d1c93f6d22fad01f45414d56fd338b72` |
 | `lib/adiposity-v270.js` | 3592 | `a4bb606611ce1ece313a7bc6b5aedecc4d58d86b9df71a5bafd803142c05c1c6` |
 | `lib/adult-ett-depth-v1412.js` | 4871 | `7998542ba2a1da8b5d01fba8f6093fcee308b08e64fadc998bd78231227d89e7` |
 | `lib/af-stages-2023-v839.js` | 7872 | `9dad7e65b3ccc86ad22937b40e670e055da6855583cd1cc4bd188325e04c2fe7` |
@@ -753,7 +753,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/pa/extract.js` | 14158 | `6c8c516029de4695f19a9e9594d3f0c4afe052f80c10f050b5f8ddd7272c75de` |
 | `lib/pa/ocr.js` | 5134 | `46341215719a03b126bc286aaf0a244c9592bacaef6512e7d10f15b9d8e07146` |
 | `lib/pa/payer.js` | 45527 | `04c771304adaff21e171854ccb5da5602a6f4d54ad0b3684bb0bb03b3bfe3a1d` |
-| `lib/pa/redact.js` | 7659 | `4cc5e42a80ff320126cce006231c2ade1f57f0cb1fb18a25f583256ce3726f05` |
+| `lib/pa/redact.js` | 8440 | `5869238a8172e79dcbd009dc7c5a89a879fd77eafed2762ec3d40af37dd9f9af` |
 | `lib/pa/report.js` | 9691 | `d19c531e5ee3d480c96dd548c348b314ebcb37beaa3d5e8f87f70680e783e08d` |
 | `lib/pa/rule-sources.js` | 9357 | `6096fc0fc01b68c012dc97cd18de3e82257cb601cdac1a74ee9421d8e5f2add4` |
 | `lib/pa/rules.js` | 1565755 | `7080f21ee1aabf9d55f39bd756f4a12655e5c631f8c6d675966da76211b47d3f` |
@@ -781,7 +781,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/pc-ptsd5-v521.js` | 7334 | `0635ea214ac637ed9109351c0bed5c50bb81976857fb80fd59e71aa11a6495d4` |
 | `lib/pcdai-v522.js` | 13475 | `5f88c27307bacf490146e372bdbb5481715bca5b5d77f5cc7f305f871c9b03f2` |
 | `lib/pci-surgery-timing-v898.js` | 9376 | `6b4d99f342591c5f67a2f9219fd7f669e03ba310458dbecec3c8382ca29144cd` |
-| `lib/pdc-star-v1513.js` | 10871 | `71566998d23f9ef3d4faba714975430fe5cb6fee8f49e2c740b5d3347727dc88` |
+| `lib/pdc-star-v1513.js` | 11239 | `c1e271f74331d09b3a96446717c6fbc416055e54916f3a5795edbc4a11965810` |
 | `lib/pederson-difficulty-v717.js` | 3469 | `5f7fb47b29141583014bbf6142329bfc1e95da75272b063d20479f5631849b8e` |
 | `lib/pediatric-acute-v262.js` | 8938 | `bdd2b5540c3050cde8707837021041e85d45b358ed7a9c6a6c15b25a0e0c19cf` |
 | `lib/pedis-v613.js` | 8884 | `f158474599314efcff28d525a5512b83d595a7fc21d75bb30dac2620d741b6b9` |
@@ -1048,8 +1048,8 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/ukeld-v1438.js` | 4228 | `0f12281e006ee5e16de40b7938b7f956498c45f422860dd4a1c6e4c43a3f8714` |
 | `lib/unit-convert.js` | 2601 | `642818802952c2c5e87338bc035dcd9d5ff07dec1e8b97a31ca09b0be38c14d2` |
 | `lib/up-to-seven-v586.js` | 11393 | `4a379fbb63e617cb741a5369394d693751912101492558fdda03ca9c478ff06b` |
-| `lib/upload-intake.js` | 4978 | `3936baa5cee13f25fee6b336fac6fc454c47d65778aec0ff7d491da20af92dc8` |
-| `lib/upload-worker.js` | 3171 | `849b14c103c484d1255d824b909eeda7fc4903c9f55c3ded48d6677a6b2159fd` |
+| `lib/upload-intake.js` | 5896 | `12aa14ddd295265e8aec7aa6aa61d2bc93aece8640f26c7ede5e394083f4b9b3` |
+| `lib/upload-worker.js` | 6665 | `c0187458977d0070cf7f110d8aedebf32537ba716c78029a21f673566370ad5d` |
 | `lib/uro-v130.js` | 12895 | `370c7f4f91e8adeff37012c9d024e2bab403330eaffeecee756d06a61fb30c21` |
 | `lib/uro-v131.js` | 16748 | `68ef5eb787708cadacbd1bd66dc39f0777f3f20456298cd7a883204797fe5440` |
 | `lib/urology-v153.js` | 9694 | `700af96b614bda45a67eda2835bb8087c9e2895ac62db7123fa9c765af5b75a9` |
@@ -2258,7 +2258,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1510.js` | 9536 | `bcbb02fa65ac6bd60a1eb0b9714fe73d76eaa7085e3cccdf59fe2d6ceb8d235a` |
 | `views/group-v1511.js` | 12916 | `93b0462d58e5904d62e34a3d32ff05a6f8d4a8a68ddf8a6160d8c64cb40d7750` |
 | `views/group-v1512.js` | 6483 | `44fb6cba5ad120e902988f5e11e43d602a688ea563821ff5209471201a671e67` |
-| `views/group-v1513.js` | 9762 | `bfe2b74524f850858bfa4e7a47e1ca39adfbef7bf8cd0b7b27fc2b0546908da8` |
+| `views/group-v1513.js` | 9779 | `38f0ac8eb773f4dfd863416cf2742c34673d85d924c5e8db523d6b3f92868754` |
 | `views/group-v1514.js` | 11361 | `b728bf9f4e4314627d921000346a86a3fc5db92716dc2cf5855e2c7a0b8cd6b9` |
 | `views/group-v1516.js` | 4285 | `aee3e98f53a7525f0177a5c807cce95087bb66b310023cbdd6fd053a1c83255f` |
 | `views/group-v152.js` | 12369 | `dc29da131fcaf14f2a95a9e658fa3df1cc7b1d768b7b12b308267c97de3ede1e` |
@@ -2993,7 +2993,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v958.js` | 2985 | `7130419cb508352c449ed6fca367999b557c564cc47296a1378e609ffb37e3f3` |
 | `views/group-v960.js` | 2332 | `2e2cd0afc127aeef51e729f177473c3a125c6ebdd6bc21bc7b19376cf0dbe177` |
 | `views/pa-lint.js` | 28680 | `90c4bbb985af80d74f2957de7d11efc33f5a14d21a40ae8ae114ff3313879b88` |
-| `views/upload-workbench.js` | 6070 | `934b02cf3130b1476bb302a4fb1bfec0c7b0dcfd2f0503816b6b67ddcddf94f9` |
+| `views/upload-workbench.js` | 8342 | `a6b85b7e06be6651a28617c0dafaaaa43f5f4728cc0b128604414114bf0cab60` |
 
 ## Verifying this SBOM
 

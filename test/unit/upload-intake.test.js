@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { parseDelimited, matchColumns, validateColumnMapping, MAX_FILE_BYTES, MAX_DATA_ROWS } from '../../lib/upload-intake.js';
+import { parseDelimited, matchColumns, validateColumnMapping, serializeCsv, MAX_FILE_BYTES, MAX_DATA_ROWS } from '../../lib/upload-intake.js';
 
 test('CSV preserves quoted delimiters, escaped quotes, newlines and identifier zeros', () => {
   const result = parseDelimited('\uFEFFpatient,notes,date\r\n001,"a, b\r\nsaid ""yes""",2026-09-28\r\n');
@@ -100,4 +100,16 @@ test('untrusted headers and field IDs cannot change object prototypes', () => {
   assert.deepEqual(validateColumnMapping(['x'], [{ id: 'constructor', required: true }], {}), [
     'Choose a column for constructor.',
   ]);
+});
+
+test('CSV export round-trips quotes and newlines and neutralizes spreadsheet formulas', () => {
+  const csv = serializeCsv(['patient', 'note', 'amount'], [
+    ['Smith, Ann', 'said "yes"\nthen left', -3],
+    ['=HYPERLINK("https://example.invalid")', '@SUM(A1:A2)', '12'],
+  ]);
+  assert.match(csv, /^patient,note,amount\r\n/);
+  assert.match(csv, /"Smith, Ann","said ""yes""\nthen left",-3/);
+  assert.match(csv, /"'=HYPERLINK\(""https:\/\/example.invalid""\)",'@SUM\(A1:A2\),12/);
+  assert.deepEqual(parseDelimited(csv).rows[0], ['Smith, Ann', 'said "yes"\nthen left', '-3']);
+  assert.throws(() => serializeCsv(['a'], [['x', 'y']]), /wrong number of columns/);
 });

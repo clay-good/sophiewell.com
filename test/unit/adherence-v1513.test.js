@@ -45,6 +45,7 @@ const meds = 'lisinopril 10 mg, 2026-09-20, 30, 1\natorvastatin 40 mg, 2026-09-2
 test('med-sync-plan: the earliest practical sync date is the latest next due date', () => {
   const r = s({ meds });
   assert.equal(r.syncDate, '2026-11-01');
+  assert.deepEqual(r.rows[0], { medication: 'lisinopril 10 mg', fullFills: 0, shortFillDate: '2026-10-20', shortFillDays: 12, shortFillUnits: 12 });
   assert.match(r.notes.join(' '), /lisinopril 10 mg: a one-time short fill of 12 days \(12 units\) on October 20, 2026/);
 });
 

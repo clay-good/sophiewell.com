@@ -71,7 +71,8 @@ Setup is in [mcp/README.md](mcp/README.md).
 
 The medication-access upload workbench is in development. All four adherence
 tools can load CSV or TSV fill histories locally, with an explicit column-mapping
-step. Generic batch execution and downloads are still planned. See
+step, a row-level preview, and full or patient-redacted CSV downloads. Generic
+batch execution for the other calculators is still planned. See
 [the implementation status](docs/spec-v1501.md#build-status).
 
 - [CHANGELOG.md](CHANGELOG.md): what's new

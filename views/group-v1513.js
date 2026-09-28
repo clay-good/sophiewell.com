@@ -7,7 +7,7 @@ import { resultRow } from '../lib/result-copy.js';
 import { uploadWorkbench } from './upload-workbench.js';
 
 const FILL_FIELDS = [
-  { id: 'patient', label: 'Patient', required: true, synonyms: ['patient name', 'member', 'member name'] },
+  { id: 'patient', label: 'Patient', required: true, sensitive: true, synonyms: ['patient name', 'member', 'member name'] },
   { id: 'measure', label: 'Measure', required: true, synonyms: ['star measure', 'measure id'] },
   { id: 'fill_date', label: 'Fill date', required: true, synonyms: ['date filled', 'dispense date', 'service date'] },
   { id: 'days_supply', label: 'Days supply', required: true, synonyms: ['supply days'] },

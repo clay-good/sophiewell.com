@@ -28,6 +28,7 @@ test('outreach: slack is the uncovered days still allowed; past it is listed apa
   const fills = `${ann}\nBo, D10, 2026-02-01, 30, rosuvastatin\nBo, D10, 2026-05-01, 30, rosuvastatin`;
   const r = a({ fills, year: '2026', asOf: '2026-09-26', stays: 'Ann, 2026-04-01, 2026-04-10' });
   assert.deepEqual(r.list.map((x) => [x.patient, x.slack]), [['Ann', 56]]);
+  assert.deepEqual(r.rows.map((x) => [x.patient, x.canReach]), [['Ann', true], ['Bo', false]]);
   assert.match(r.band, /1 cannot reach 80%/);
 });
 

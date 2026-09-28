@@ -1,6 +1,7 @@
 // spec-v1501 §3: a real module Worker parses local fills and the reader confirms
 // the proposed columns before the existing PDC compute runs.
 import { test, expect } from '@playwright/test';
+import { readFile } from 'node:fs/promises';
 
 test('PDC file intake maps synonyms and matches the existing compute path', async ({ page }) => {
   const offOrigin = [];
@@ -33,6 +34,27 @@ test('PDC file intake maps synonyms and matches the existing compute path', asyn
   await expect(page.locator('#ps-upload-status')).toContainText('2 rows are in use');
   await expect(page.locator('#q-results')).toContainText('D10 (statins): 0 of 1 adherent');
   await expect(page.locator('#q-results')).toContainText('Smith, Ann');
+  await expect(page.locator('.upload-file-results')).toContainText('Showing all 2 rows.');
+  await expect(page.locator('.upload-file-results th')).toContainText(['member name', 'star measure', 'dispense date', 'supply days', 'drug ingredient', 'sophiewell_pdc_percent', 'sophiewell_in_denominator', 'sophiewell_reason']);
+  const previewWidth = await page.evaluate(() => ({ scroll: document.documentElement.scrollWidth, client: document.documentElement.clientWidth }));
+  expect(previewWidth.scroll).toBeLessThanOrEqual(previewWidth.client + 1);
+
+  const fullDownloadPromise = page.waitForEvent('download');
+  await page.getByRole('button', { name: 'Download results CSV' }).click();
+  const fullDownload = await fullDownloadPromise;
+  expect(fullDownload.suggestedFilename()).toBe('fills-pdc-star-results.csv');
+  const fullCsv = await readFile(await fullDownload.path(), 'utf8');
+  expect(fullCsv).toContain('"Smith, Ann",D10,2026-01-05,30,atorvastatin');
+  expect(fullCsv).toContain('sophiewell_pdc_percent');
+
+  const redactedDownloadPromise = page.waitForEvent('download');
+  await page.getByRole('button', { name: 'Download redacted CSV' }).click();
+  const redactedDownload = await redactedDownloadPromise;
+  expect(redactedDownload.suggestedFilename()).toBe('fills-pdc-star-redacted-results.csv');
+  const redactedCsv = await readFile(await redactedDownload.path(), 'utf8');
+  expect(redactedCsv).not.toContain('Smith, Ann');
+  expect(redactedCsv).toContain('[REDACTED]');
+  expect(redactedCsv).toContain('atorvastatin');
 
   await page.locator('#ps-year').fill('2025');
   await expect(page.locator('#q-results')).toContainText('No fill falls in the measurement year.');
@@ -70,6 +92,7 @@ test('MPR computes a mapped fill file in the Worker', async ({ page }) => {
   await page.getByRole('button', { name: 'Use 2 rows' }).click();
   await expect(page.locator('#mpr-upload-status')).toContainText('2 rows are in use');
   await expect(page.locator('#q-results')).toContainText('PDC 50%');
+  await expect(page.locator('.upload-file-results')).toContainText('sophiewell_mpr_percent');
 });
 
 test('medication synchronization computes mapped medication rows in the Worker', async ({ page }) => {
@@ -85,4 +108,23 @@ test('medication synchronization computes mapped medication rows in the Worker',
   await page.getByRole('button', { name: 'Use 2 rows' }).click();
   await expect(page.locator('#sync-upload-status')).toContainText('2 rows are in use');
   await expect(page.locator('#q-results')).toContainText('Sync date October 28, 2026');
+  await expect(page.locator('.upload-file-results')).toContainText('sophiewell_short_fill_units');
+});
+
+test('adherence outreach appends reachability results to mapped fill rows', async ({ page }) => {
+  await page.goto('/#adherence-outreach-list');
+  await page.locator('#ao-year').fill('2026');
+  await page.locator('#ao-asof').fill('2026-02-15');
+  await page.locator('#ao-upload-file').setInputFiles({
+    name: 'outreach.csv', mimeType: 'text/csv',
+    buffer: Buffer.from([
+      'patient,measure,fill date,days supply,ingredient',
+      'Ann,D10,2026-01-01,30,atorvastatin',
+      'Ann,D10,2026-02-01,30,atorvastatin',
+    ].join('\n')),
+  });
+  await page.getByRole('button', { name: 'Use 2 rows' }).click();
+  await expect(page.locator('#ao-upload-status')).toContainText('2 rows are in use');
+  await expect(page.locator('.upload-file-results')).toContainText('sophiewell_can_reach_80_percent');
+  await expect(page.locator('.upload-file-results tbody tr').first()).toContainText('true');
 });

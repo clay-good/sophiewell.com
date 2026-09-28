@@ -2,7 +2,7 @@
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { redactText, redactBundle } from '../../lib/pa/redact.js';
+import { redactText, redactBundle, redactTableCell } from '../../lib/pa/redact.js';
 
 test('redactText masks SSN-shaped strings', () => {
   const s = 'Member SSN 123-45-6789 on file.';
@@ -45,6 +45,13 @@ test('redactText is idempotent', () => {
   const once = redactText('Patient: Jane Q Doe\nDOB: 1985-03-12\nSSN 123-45-6789');
   const twice = redactText(once);
   assert.equal(once, twice);
+});
+
+test('tabular redaction hard-redacts patient columns and scans other cells', () => {
+  assert.equal(redactTableCell('Smith, Ann', { header: 'member_name' }), '[REDACTED]');
+  assert.equal(redactTableCell('Jane Q Doe', { header: 'custom', sensitive: true }), '[REDACTED]');
+  assert.equal(redactTableCell('call 415-555-0123', { header: 'note' }), 'call [REDACTED]');
+  assert.equal(redactTableCell('atorvastatin', { header: 'drug name' }), 'atorvastatin');
 });
 
 test('redactBundle redacts documents text + extract while keeping structure', () => {

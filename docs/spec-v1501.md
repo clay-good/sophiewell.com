@@ -165,7 +165,12 @@ the research recorded in [scope-medication-access.md](scope-medication-access.md
   cached with the application shell for offline use. Tests:
   `test/integration/upload-workbench.spec.js` and
   `test/unit/pdc-star-v1513.test.js`.
+- **Built 2026-09-28:** adherence uploads now show a capped row-level preview and
+  produce full or patient-redacted CSV downloads with result columns appended.
+  The complete table remains in the Worker until a download is requested, and
+  CSV cells that could run spreadsheet formulas are emitted as text. Redaction
+  reuses `lib/pa/redact.js` and always masks the mapped patient column.
 - **Not yet built:** §2's page watch (with
-  [spec-v1517](spec-v1517.md)); §3's JSON/X12 intake, reusable result and redacted
-  downloads, generic scalar-tool batch execution, and upload integration for the
-  remaining file-based tools; §4 the shared document builder.
+  [spec-v1517](spec-v1517.md)); §3's JSON/X12 intake, generic scalar-tool batch
+  execution, and upload integration for the remaining file-based tools; §4 the
+  shared document builder.

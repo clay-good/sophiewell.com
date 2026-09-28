@@ -11,6 +11,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   the reader confirms proposed column mappings, and missing or ambiguous required
   inputs block computation. Strict
   row validation, 50 MB and 500,000-row limits, and offline caching are included.
+  Each valid run shows up to 100 source rows with result columns appended and can
+  download every row as CSV, with a separate patient-redacted download.
 
 - **Part D Adherence (PDC, Star Method).** The D08-D10 adherence rates from a fill history by the CMS Star
   Ratings Technical Notes: the 91-day and two-fill denominator rules, same-ingredient shifting, stay days

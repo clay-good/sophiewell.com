@@ -1,7 +1,7 @@
 # spec-v1513 — Adherence and quality measures from a fill history
 
-**Status:** Shipped September 26, 2026; CSV/TSV fill-history upload added
-September 28, 2026. 4 new tools, group Q.
+**Status:** Shipped September 26, 2026; CSV/TSV fill-history upload, row preview,
+and result downloads added September 28, 2026. 4 new tools, group Q.
 **Charter:** [spec-v1500](spec-v1500.md). **Machinery:** [spec-v1501](spec-v1501.md) §3 (upload workbench).
 
 Medicare Part D plans are rated on three adherence measures, and pharmacies are paid
@@ -105,4 +105,5 @@ question for the plan.
   still allowed to finish at 80%.
 - **Built 2026-09-28:** all four tools can load CSV or TSV data through the shared
   local-file Worker. Each asks the reader to confirm the columns it needs before
-  the same compute functions run.
+  the same compute functions run. Valid results include a row-level preview plus
+  full and patient-redacted CSV downloads with result columns appended.

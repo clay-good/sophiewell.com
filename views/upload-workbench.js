@@ -17,10 +17,12 @@ export function uploadWorkbench(root, { id, fields, label, compute, getInput, on
   });
   const status = el('p', { id: `${id}-status`, class: 'muted', role: 'status', 'aria-live': 'polite' });
   const mappingRoot = el('div', { class: 'upload-mapping', hidden: true });
+  const resultsRoot = el('div', { class: 'upload-file-results', hidden: true });
   section.appendChild(inputLabel);
   section.appendChild(input);
   section.appendChild(status);
   section.appendChild(mappingRoot);
+  section.appendChild(resultsRoot);
   root.appendChild(section);
 
   let worker = null;
@@ -33,6 +35,42 @@ export function uploadWorkbench(root, { id, fields, label, compute, getInput, on
     if (worker) worker.terminate();
     worker = null;
   };
+
+  function showPreview(preview) {
+    clear(resultsRoot);
+    resultsRoot.hidden = !preview;
+    if (!preview) return;
+    resultsRoot.appendChild(el('h4', { text: 'File results' }));
+    const shown = preview.rows.length;
+    resultsRoot.appendChild(el('p', {
+      class: 'muted',
+      text: preview.total > shown
+        ? `Showing the first ${shown.toLocaleString('en-US')} of ${preview.total.toLocaleString('en-US')} rows. Downloads include all ${preview.total.toLocaleString('en-US')} rows.`
+        : `Showing all ${preview.total.toLocaleString('en-US')} rows.`,
+    }));
+    const tableWrap = el('div', { class: 'upload-mapping-scroll' });
+    const table = el('table', { class: 'upload-mapping-table' });
+    table.appendChild(el('caption', { text: 'Input rows with result columns appended' }));
+    const head = el('tr');
+    for (const header of preview.headers) head.appendChild(el('th', { scope: 'col', text: header }));
+    table.appendChild(el('thead', null, [head]));
+    const body = el('tbody');
+    for (const values of preview.rows) {
+      const row = el('tr');
+      for (const value of values) row.appendChild(el('td', { text: value === null || value === undefined ? '' : String(value) }));
+      body.appendChild(row);
+    }
+    table.appendChild(body);
+    tableWrap.appendChild(table);
+    resultsRoot.appendChild(tableWrap);
+    for (const [flavor, text] of [['full', 'Download results CSV'], ['redacted', 'Download redacted CSV']]) {
+      const wrap = el('p');
+      const button = el('button', { type: 'button', text });
+      button.addEventListener('click', () => worker.postMessage({ type: 'download', flavor, compute }));
+      wrap.appendChild(button);
+      resultsRoot.appendChild(wrap);
+    }
+  }
 
   function showMapping(message) {
     headers = message.headers;
@@ -85,6 +123,7 @@ export function uploadWorkbench(root, { id, fields, label, compute, getInput, on
     ready = false;
     clear(mappingRoot);
     mappingRoot.hidden = true;
+    showPreview(null);
     const file = input.files && input.files[0];
     if (!file) { status.textContent = ''; return; }
     if (file.size > MAX_FILE_BYTES) {
@@ -112,14 +151,22 @@ export function uploadWorkbench(root, { id, fields, label, compute, getInput, on
             clear(mappingRoot);
             mappingRoot.hidden = true;
           }
+          showPreview(message.preview);
           onResult(message.result);
+          return;
+        }
+        if (message.type === 'download') {
+          const url = window.URL.createObjectURL(message.blob);
+          const anchor = el('a', { href: url, download: message.filename });
+          anchor.click();
+          window.setTimeout(() => window.URL.revokeObjectURL(url), 0);
         }
       });
       worker.addEventListener('error', () => {
         status.textContent = 'The file could not be read. Choose it again.';
         stopWorker();
       });
-      worker.postMessage({ type: 'parse', buffer, fields }, [buffer]);
+      worker.postMessage({ type: 'parse', buffer, fields, fileName: file.name }, [buffer]);
     } catch (error) {
       status.textContent = error instanceof Error ? error.message : 'The file could not be read.';
       stopWorker();
@@ -138,6 +185,7 @@ export function uploadWorkbench(root, { id, fields, label, compute, getInput, on
       input.value = '';
       clear(mappingRoot);
       mappingRoot.hidden = true;
+      showPreview(null);
       status.textContent = message;
     },
   };
