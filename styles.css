@@ -1188,6 +1188,24 @@ main h1 {
 }
 .tool-sources h2 { font-size: 0.95rem; margin: 0 0 var(--space-2); color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.12em; }
 .muted { color: var(--text-muted); }
+
+/* spec-v1501: local-file intake and explicit column confirmation. */
+.upload-workbench {
+  margin: var(--space-4) 0;
+  padding: var(--space-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-tertiary);
+}
+.upload-workbench h3 { margin: 0 0 var(--space-1); font-size: 1rem; }
+.upload-workbench p { margin: var(--space-1) 0 var(--space-2); }
+.upload-workbench input[type='file'] { display: block; width: 100%; margin-top: var(--space-1); }
+.upload-mapping-scroll { overflow-x: auto; margin: var(--space-2) 0; }
+.upload-mapping-table { width: 100%; border-collapse: collapse; }
+.upload-mapping-table caption { text-align: left; font-weight: 700; margin-bottom: var(--space-1); }
+.upload-mapping-table th,
+.upload-mapping-table td { text-align: left; padding: var(--space-1); border-bottom: 1px solid var(--border); }
+.upload-mapping-table select { width: 100%; min-width: 9rem; }
 /* spec-v53 §3.3: a visible advisory shown next to a result when an input is
    outside its physiologic envelope. Text stays the default (accessible) color;
    a left accent bar makes it stand out without a contrast risk in either theme. */

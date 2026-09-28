@@ -157,6 +157,14 @@ the research recorded in [scope-medication-access.md](scope-medication-access.md
   strings, preserving leading zeros. Ambiguous mappings require a reader choice;
   validation rejects missing required columns and columns reused for two inputs.
   Tests: `test/unit/upload-intake.test.js`. No external source or clinical rule changed.
+- **Built 2026-09-28:** §3's browser Worker and explicit mapping table are live on
+  `pdc-star` and `adherence-outreach-list`. The file stays local; parsing, mapping and
+  computation run in `lib/upload-worker.js`, reusing the tools' existing functions
+  with structured rows and retaining those rows off the UI thread. The Worker is
+  cached with the application shell for offline use. Tests:
+  `test/integration/upload-workbench.spec.js` and
+  `test/unit/pdc-star-v1513.test.js`.
 - **Not yet built:** §2's page watch (with
-  [spec-v1517](spec-v1517.md)); §3's worker, upload and mapping UI, JSON/X12 intake,
-  results and redacted downloads, and batch execution; §4 the shared document builder.
+  [spec-v1517](spec-v1517.md)); §3's JSON/X12 intake, reusable result and redacted
+  downloads, generic scalar-tool batch execution, and upload integration for the
+  remaining file-based tools; §4 the shared document builder.

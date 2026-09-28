@@ -36,3 +36,15 @@ test('blank inputs ask', () => {
   assert.equal(p({ fills: ann }).valid, false);
   assert.match(p({ fills: 'A, D11, 2026-01-01, 30, x', year: '2026' }).message, /D08, D09 or D10/);
 });
+
+test('mapped file rows use the same PDC calculation and preserve commas in values', () => {
+  const fillRows = [
+    { patient: 'Smith, Ann', measure: 'D10', fill_date: '2026-01-05', days_supply: '30', ingredient: 'atorvastatin' },
+    { patient: 'Smith, Ann', measure: 'D10', fill_date: '2026-02-10', days_supply: '30', ingredient: 'atorvastatin' },
+  ];
+  const fromRows = p({ fillRows, year: '2026' });
+  const fromText = p({ fills: 'Ann Smith, D10, 2026-01-05, 30, atorvastatin\nAnn Smith, D10, 2026-02-10, 30, atorvastatin', year: '2026' });
+  assert.equal(fromRows.rows[0].pdc, fromText.rows[0].pdc);
+  assert.equal(fromRows.rows[0].patient, 'Smith, Ann');
+  assert.match(p({ fillRows: [{ ...fillRows[0], ingredient: '' }], year: '2026' }).message, /ingredient/);
+});

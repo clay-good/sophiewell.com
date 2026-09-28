@@ -6,9 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
-- Shared CSV/TSV intake for the planned medication-access upload workbench, with
-  strict row validation, byte and row limits, and column-mapping checks that reject
-  missing or ambiguous required inputs. The upload UI is not yet available.
+- Local CSV/TSV fill-history upload for the Part D PDC and adherence-outreach
+  tools. Parsing runs in a browser Worker, the reader confirms proposed column
+  mappings, and missing or ambiguous required inputs block computation. Strict
+  row validation, 50 MB and 500,000-row limits, and offline caching are included.
 
 - **Part D Adherence (PDC, Star Method).** The D08-D10 adherence rates from a fill history by the CMS Star
   Ratings Technical Notes: the 91-day and two-fill denominator rules, same-ingredient shifting, stay days

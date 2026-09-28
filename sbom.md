@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `fcd8527a49107caa`
-Generated: 2026-09-28T22:11:33.117Z
+Build ID: `11f269afcc8e7d7c`
+Generated: 2026-09-28T22:31:43.829Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -25,14 +25,14 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 123179 | `2cba609f0074e31f17d9a14e46b5448e9a9a8a46ac05973e764a5c64f628476e` |
-| `styles.css` | 72728 | `d0bb385ddc63f89ade1d4c50d0285145af4085de8818769c28b40bcca2a41fac` |
+| `index.html` | 123240 | `fd4e48b64c7ce042543c37eef90b4a8ed2d94c717fd3280f99e9ffd36c4cb44b` |
+| `styles.css` | 73649 | `646d88dcf16212888683c6456d61b1c8285d48796ac02d72482534a7c3365879` |
 | `app.js` | 561507 | `b59aff7b340df233b15f058f89c059106a4969b432d40e32de6a04b10213bbe6` |
 | `report-feedback.js` | 12178 | `955e5cb542c7b13dcbb85a75ecf4ccf2dc0b2dffecd84daac1d607bd6acc7cd2` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 | `theme.js` | 3132 | `6910af0b4c65869c6a3d24d17842bb2cc88c7d23f8fb32506fcdbfeec70ce979` |
 | `file-origin-guard.js` | 1876 | `45414c830b9c95f04d22fd19bb0be70363b88e37559f33c2d197872591a8cd55` |
-| `sw.js` | 5183 | `009dd2cf8ba1a16ad8a76c8f523c45600068c78f07582c657015defdead2c876` |
+| `sw.js` | 5211 | `a42a29d0c1015415f56f3368eee417fa6884f2d3e004c01ef0fec5d3f7a70465` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
 | `sitemap.xml` | 242316 | `d295891b591a85e51c557c4ad1ce7b777188fb20831f82d97b06c6af22ba7f0d` |
@@ -781,7 +781,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/pc-ptsd5-v521.js` | 7334 | `0635ea214ac637ed9109351c0bed5c50bb81976857fb80fd59e71aa11a6495d4` |
 | `lib/pcdai-v522.js` | 13475 | `5f88c27307bacf490146e372bdbb5481715bca5b5d77f5cc7f305f871c9b03f2` |
 | `lib/pci-surgery-timing-v898.js` | 9376 | `6b4d99f342591c5f67a2f9219fd7f669e03ba310458dbecec3c8382ca29144cd` |
-| `lib/pdc-star-v1513.js` | 10187 | `8eae55aa5f4215695ac2d2160d3e806e195b34604c90bfc4ca33fbdde95a8bce` |
+| `lib/pdc-star-v1513.js` | 10871 | `71566998d23f9ef3d4faba714975430fe5cb6fee8f49e2c740b5d3347727dc88` |
 | `lib/pederson-difficulty-v717.js` | 3469 | `5f7fb47b29141583014bbf6142329bfc1e95da75272b063d20479f5631849b8e` |
 | `lib/pediatric-acute-v262.js` | 8938 | `bdd2b5540c3050cde8707837021041e85d45b358ed7a9c6a6c15b25a0e0c19cf` |
 | `lib/pedis-v613.js` | 8884 | `f158474599314efcff28d525a5512b83d595a7fc21d75bb30dac2620d741b6b9` |
@@ -1049,6 +1049,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/unit-convert.js` | 2601 | `642818802952c2c5e87338bc035dcd9d5ff07dec1e8b97a31ca09b0be38c14d2` |
 | `lib/up-to-seven-v586.js` | 11393 | `4a379fbb63e617cb741a5369394d693751912101492558fdda03ca9c478ff06b` |
 | `lib/upload-intake.js` | 4978 | `3936baa5cee13f25fee6b336fac6fc454c47d65778aec0ff7d491da20af92dc8` |
+| `lib/upload-worker.js` | 2959 | `d5b6045ba118c07a38e143e52482914d42e0515f8e9bdb8cd528ce20023f85be` |
 | `lib/uro-v130.js` | 12895 | `370c7f4f91e8adeff37012c9d024e2bab403330eaffeecee756d06a61fb30c21` |
 | `lib/uro-v131.js` | 16748 | `68ef5eb787708cadacbd1bd66dc39f0777f3f20456298cd7a883204797fe5440` |
 | `lib/urology-v153.js` | 9694 | `700af96b614bda45a67eda2835bb8087c9e2895ac62db7123fa9c765af5b75a9` |
@@ -2257,7 +2258,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1510.js` | 9536 | `bcbb02fa65ac6bd60a1eb0b9714fe73d76eaa7085e3cccdf59fe2d6ceb8d235a` |
 | `views/group-v1511.js` | 12916 | `93b0462d58e5904d62e34a3d32ff05a6f8d4a8a68ddf8a6160d8c64cb40d7750` |
 | `views/group-v1512.js` | 6483 | `44fb6cba5ad120e902988f5e11e43d602a688ea563821ff5209471201a671e67` |
-| `views/group-v1513.js` | 6188 | `94b36fb9ce62f991020337437c977849c285ebb19a9b1a0573b59b407a223f53` |
+| `views/group-v1513.js` | 7935 | `0b5bdd4639e08a5774000bed981a1f1bf9571232e0a5ca788b80f354d983a686` |
 | `views/group-v1514.js` | 11361 | `b728bf9f4e4314627d921000346a86a3fc5db92716dc2cf5855e2c7a0b8cd6b9` |
 | `views/group-v1516.js` | 4285 | `aee3e98f53a7525f0177a5c807cce95087bb66b310023cbdd6fd053a1c83255f` |
 | `views/group-v152.js` | 12369 | `dc29da131fcaf14f2a95a9e658fa3df1cc7b1d768b7b12b308267c97de3ede1e` |
@@ -2992,6 +2993,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v958.js` | 2985 | `7130419cb508352c449ed6fca367999b557c564cc47296a1378e609ffb37e3f3` |
 | `views/group-v960.js` | 2332 | `2e2cd0afc127aeef51e729f177473c3a125c6ebdd6bc21bc7b19376cf0dbe177` |
 | `views/pa-lint.js` | 28680 | `90c4bbb985af80d74f2957de7d11efc33f5a14d21a40ae8ae114ff3313879b88` |
+| `views/upload-workbench.js` | 6070 | `934b02cf3130b1476bb302a4fb1bfec0c7b0dcfd2f0503816b6b67ddcddf94f9` |
 
 ## Verifying this SBOM
 

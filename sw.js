@@ -35,6 +35,7 @@ const SHELL_ASSETS = [
   './app.js',
   './theme.js',
   './file-origin-guard.js',
+  './lib/upload-worker.js',
   './favicon.ico',
   './favicon-32x32.png',
   './favicon-16x16.png',

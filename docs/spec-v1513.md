@@ -1,6 +1,7 @@
 # spec-v1513 — Adherence and quality measures from a fill history
 
-**Status:** Proposed, September 25, 2026. 4 new tools, group Q.
+**Status:** Shipped September 26, 2026; CSV/TSV fill-history upload added
+September 28, 2026. 4 new tools, group Q.
 **Charter:** [spec-v1500](spec-v1500.md). **Machinery:** [spec-v1501](spec-v1501.md) §3 (upload workbench).
 
 Medicare Part D plans are rated on three adherence measures, and pharmacies are paid
@@ -102,3 +103,6 @@ question for the plan.
   out of both sides with supply shifted past the stay, and the insulin and sacubitril/valsartan exclusions.
   The reader assigns each fill's measure; no PQA list is shipped. The outreach slack is the uncovered days
   still allowed to finish at 80%.
+- **Built 2026-09-28:** both tools can load CSV or TSV fill histories through the
+  shared local-file Worker. The reader confirms the patient, measure, fill-date,
+  days-supply and ingredient columns before the same compute functions run.

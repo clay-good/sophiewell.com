@@ -4,6 +4,15 @@ import { el, clear } from '../lib/dom.js';
 import * as AD from '../lib/adherence-v1513.js';
 import * as PS from '../lib/pdc-star-v1513.js';
 import { resultRow } from '../lib/result-copy.js';
+import { uploadWorkbench } from './upload-workbench.js';
+
+const FILL_FIELDS = [
+  { id: 'patient', label: 'Patient', required: true, synonyms: ['patient name', 'member', 'member name'] },
+  { id: 'measure', label: 'Measure', required: true, synonyms: ['star measure', 'measure id'] },
+  { id: 'fill_date', label: 'Fill date', required: true, synonyms: ['date filled', 'dispense date', 'service date'] },
+  { id: 'days_supply', label: 'Days supply', required: true, synonyms: ['supply days'] },
+  { id: 'ingredient', label: 'Ingredient', required: true, synonyms: ['drug ingredient', 'generic name', 'drug name'] },
+];
 
 function textareaField(root, label, id, placeholder) {
   const wrap = el('p');
@@ -84,16 +93,33 @@ export const renderers = {
     textareaField(root, 'Exclusions (optional): patient, hospice or esrd or dialysis', 'ps-excl', 'Bo, hospice');
     numField(root, 'Measurement year', 'ps-year', 'e.g. 2026', '2100', '1');
     const ids = pairs.map(([d]) => d);
-    const o = out(); root.appendChild(o);
-    wire(ids, () => safe(o, () => {
+    const o = out();
+    const input = () => {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
-      const r = PS.pdcStar(args);
+      return args;
+    };
+    const show = (r) => safe(o, () => {
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: null }, { label: 'Rate', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
-    }));
+    });
+    let upload;
+    const run = () => {
+      const args = input();
+      if (upload && upload.isActive()) upload.compute(args);
+      else show(PS.pdcStar(args));
+    };
+    upload = uploadWorkbench(root, {
+      id: 'ps-upload', fields: FILL_FIELDS, label: 'Load fills from a file',
+      compute: 'pdc-star', getInput: input, onResult: show,
+    });
+    document.getElementById('ps-fills').addEventListener('input', () => {
+      if (upload.isActive()) upload.clear('Using the fills entered above.');
+    });
+    root.appendChild(o);
+    wire(ids, run);
   },
   'adherence-outreach-list'(root) {
     const pairs = [['ao-fills', 'fills'], ['ao-stays', 'stays'], ['ao-excl', 'exclusions'], ['ao-year', 'year'], ['ao-asof', 'asOf']];
@@ -104,15 +130,32 @@ export const renderers = {
     numField(root, 'Measurement year', 'ao-year', 'e.g. 2026', '2100', '1');
     dateInput(root, 'As of (blank for today)', 'ao-asof', 'date');
     const ids = pairs.map(([d]) => d);
-    const o = out(); root.appendChild(o);
-    wire(ids, () => safe(o, () => {
+    const o = out();
+    const input = () => {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
-      const r = PS.adherenceOutreachList(args);
+      return args;
+    };
+    const show = (r) => safe(o, () => {
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: null }, { label: 'Call list', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
-    }));
+    });
+    let upload;
+    const run = () => {
+      const args = input();
+      if (upload && upload.isActive()) upload.compute(args);
+      else show(PS.adherenceOutreachList(args));
+    };
+    upload = uploadWorkbench(root, {
+      id: 'ao-upload', fields: FILL_FIELDS, label: 'Load fills from a file',
+      compute: 'adherence-outreach-list', getInput: input, onResult: show,
+    });
+    document.getElementById('ao-fills').addEventListener('input', () => {
+      if (upload.isActive()) upload.clear('Using the fills entered above.');
+    });
+    root.appendChild(o);
+    wire(ids, run);
   },
 };
