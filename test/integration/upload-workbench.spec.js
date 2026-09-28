@@ -59,3 +59,30 @@ test('required columns block a file until the reader maps them', async ({ page }
   await expect(page.locator('#ps-upload-status')).toHaveText('Choose a column for Ingredient.');
   await expect(page.locator('#q-results')).toHaveText(originalResult);
 });
+
+test('MPR computes a mapped fill file in the Worker', async ({ page }) => {
+  await page.goto('/#mpr-gap-days');
+  await page.locator('#mpr-end').fill('2026-04-30');
+  await page.locator('#mpr-upload-file').setInputFiles({
+    name: 'fills.csv', mimeType: 'text/csv',
+    buffer: Buffer.from('dispense date,supply days\n2026-01-01,30\n2026-03-01,30'),
+  });
+  await page.getByRole('button', { name: 'Use 2 rows' }).click();
+  await expect(page.locator('#mpr-upload-status')).toContainText('2 rows are in use');
+  await expect(page.locator('#q-results')).toContainText('PDC 50%');
+});
+
+test('medication synchronization computes mapped medication rows in the Worker', async ({ page }) => {
+  await page.goto('/#med-sync-plan');
+  await page.locator('#sync-upload-file').setInputFiles({
+    name: 'medications.tsv', mimeType: 'text/tab-separated-values',
+    buffer: Buffer.from([
+      'drug name\tlast dispense date\tsupply days\tdaily units',
+      'lisinopril 10 mg\t2026-09-20\t30\t1',
+      'atorvastatin 40 mg\t2026-09-28\t30\t1',
+    ].join('\n')),
+  });
+  await page.getByRole('button', { name: 'Use 2 rows' }).click();
+  await expect(page.locator('#sync-upload-status')).toContainText('2 rows are in use');
+  await expect(page.locator('#q-results')).toContainText('Sync date October 28, 2026');
+});

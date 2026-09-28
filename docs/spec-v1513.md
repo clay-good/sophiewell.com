@@ -103,6 +103,6 @@ question for the plan.
   out of both sides with supply shifted past the stay, and the insulin and sacubitril/valsartan exclusions.
   The reader assigns each fill's measure; no PQA list is shipped. The outreach slack is the uncovered days
   still allowed to finish at 80%.
-- **Built 2026-09-28:** both tools can load CSV or TSV fill histories through the
-  shared local-file Worker. The reader confirms the patient, measure, fill-date,
-  days-supply and ingredient columns before the same compute functions run.
+- **Built 2026-09-28:** all four tools can load CSV or TSV data through the shared
+  local-file Worker. Each asks the reader to confirm the columns it needs before
+  the same compute functions run.

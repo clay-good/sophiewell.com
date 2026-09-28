@@ -69,10 +69,10 @@ Setup is in [mcp/README.md](mcp/README.md).
 
 ## More
 
-The medication-access upload workbench is in development. Part D PDC and
-adherence-outreach tools can load CSV or TSV fill histories locally, with an
-explicit column-mapping step. Generic batch execution and downloads are still
-planned. See [the implementation status](docs/spec-v1501.md#build-status).
+The medication-access upload workbench is in development. All four adherence
+tools can load CSV or TSV fill histories locally, with an explicit column-mapping
+step. Generic batch execution and downloads are still planned. See
+[the implementation status](docs/spec-v1501.md#build-status).
 
 - [CHANGELOG.md](CHANGELOG.md): what's new
 - [mcp/README.md](mcp/README.md): use the calculators from an MCP client

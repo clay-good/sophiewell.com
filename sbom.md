@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `11f269afcc8e7d7c`
-Generated: 2026-09-28T22:31:43.829Z
+Build ID: `b74001c320665ca7`
+Generated: 2026-09-28T22:42:20.324Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -70,7 +70,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/acute-abdomen-v261.js` | 13592 | `b747bdf468169fbd5687b6a2004510e0ac77af8037eda77514096972f9d154b4` |
 | `lib/acute-injury-v213.js` | 12314 | `2588fb8b7fa34af0ea7c43311a624e67a163840886140397854ba67994ce7a21` |
 | `lib/acute-opioid-rx-limit-v1393.js` | 8742 | `a6f06ba9dedaa72a2a02e9e752846eb4dd8fcd66cf65f6258b109d23abb1e75a` |
-| `lib/adherence-v1513.js` | 9943 | `dfbfe5badfc8f02480971e1014f835f282e97f569aa4b44bdd29f2c9444a23ff` |
+| `lib/adherence-v1513.js` | 10554 | `1b65b34310a0b192769db0765518ab581f02ba8c85fbb3233a72377b46bf9cc7` |
 | `lib/adiposity-v270.js` | 3592 | `a4bb606611ce1ece313a7bc6b5aedecc4d58d86b9df71a5bafd803142c05c1c6` |
 | `lib/adult-ett-depth-v1412.js` | 4871 | `7998542ba2a1da8b5d01fba8f6093fcee308b08e64fadc998bd78231227d89e7` |
 | `lib/af-stages-2023-v839.js` | 7872 | `9dad7e65b3ccc86ad22937b40e670e055da6855583cd1cc4bd188325e04c2fe7` |
@@ -1049,7 +1049,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/unit-convert.js` | 2601 | `642818802952c2c5e87338bc035dcd9d5ff07dec1e8b97a31ca09b0be38c14d2` |
 | `lib/up-to-seven-v586.js` | 11393 | `4a379fbb63e617cb741a5369394d693751912101492558fdda03ca9c478ff06b` |
 | `lib/upload-intake.js` | 4978 | `3936baa5cee13f25fee6b336fac6fc454c47d65778aec0ff7d491da20af92dc8` |
-| `lib/upload-worker.js` | 2959 | `d5b6045ba118c07a38e143e52482914d42e0515f8e9bdb8cd528ce20023f85be` |
+| `lib/upload-worker.js` | 3171 | `849b14c103c484d1255d824b909eeda7fc4903c9f55c3ded48d6677a6b2159fd` |
 | `lib/uro-v130.js` | 12895 | `370c7f4f91e8adeff37012c9d024e2bab403330eaffeecee756d06a61fb30c21` |
 | `lib/uro-v131.js` | 16748 | `68ef5eb787708cadacbd1bd66dc39f0777f3f20456298cd7a883204797fe5440` |
 | `lib/urology-v153.js` | 9694 | `700af96b614bda45a67eda2835bb8087c9e2895ac62db7123fa9c765af5b75a9` |
@@ -2258,7 +2258,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1510.js` | 9536 | `bcbb02fa65ac6bd60a1eb0b9714fe73d76eaa7085e3cccdf59fe2d6ceb8d235a` |
 | `views/group-v1511.js` | 12916 | `93b0462d58e5904d62e34a3d32ff05a6f8d4a8a68ddf8a6160d8c64cb40d7750` |
 | `views/group-v1512.js` | 6483 | `44fb6cba5ad120e902988f5e11e43d602a688ea563821ff5209471201a671e67` |
-| `views/group-v1513.js` | 7935 | `0b5bdd4639e08a5774000bed981a1f1bf9571232e0a5ca788b80f354d983a686` |
+| `views/group-v1513.js` | 9762 | `bfe2b74524f850858bfa4e7a47e1ca39adfbef7bf8cd0b7b27fc2b0546908da8` |
 | `views/group-v1514.js` | 11361 | `b728bf9f4e4314627d921000346a86a3fc5db92716dc2cf5855e2c7a0b8cd6b9` |
 | `views/group-v1516.js` | 4285 | `aee3e98f53a7525f0177a5c807cce95087bb66b310023cbdd6fd053a1c83255f` |
 | `views/group-v152.js` | 12369 | `dc29da131fcaf14f2a95a9e658fa3df1cc7b1d768b7b12b308267c97de3ede1e` |

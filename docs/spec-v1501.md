@@ -158,8 +158,9 @@ the research recorded in [scope-medication-access.md](scope-medication-access.md
   validation rejects missing required columns and columns reused for two inputs.
   Tests: `test/unit/upload-intake.test.js`. No external source or clinical rule changed.
 - **Built 2026-09-28:** §3's browser Worker and explicit mapping table are live on
-  `pdc-star` and `adherence-outreach-list`. The file stays local; parsing, mapping and
-  computation run in `lib/upload-worker.js`, reusing the tools' existing functions
+  all four [spec-v1513](spec-v1513.md) adherence tools. The file stays local;
+  parsing, mapping and computation run in `lib/upload-worker.js`, reusing the
+  tools' existing functions
   with structured rows and retaining those rows off the UI thread. The Worker is
   cached with the application shell for offline use. Tests:
   `test/integration/upload-workbench.spec.js` and

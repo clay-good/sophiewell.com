@@ -29,6 +29,17 @@ test('bad lines and empty input ask', () => {
   assert.equal(m({ fills, periodStart: '2027-01-01', periodEnd: '2027-12-31' }).valid, false);
 });
 
+test('MPR accepts mapped fill rows through the same calculation', () => {
+  const fillRows = [
+    { fill_date: '2026-01-01', days_supply: '30' },
+    { fill_date: '2026-03-01', days_supply: '30' },
+  ];
+  const fromRows = m({ fillRows, periodEnd: '2026-04-30' });
+  const fromText = m({ fills: '2026-01-01, 30\n2026-03-01, 30', periodEnd: '2026-04-30' });
+  assert.equal(fromRows.pdc, fromText.pdc);
+  assert.match(m({ fillRows: [{ fill_date: '2026-01-01', days_supply: '' }] }).message, /days supply/);
+});
+
 const meds = 'lisinopril 10 mg, 2026-09-20, 30, 1\natorvastatin 40 mg, 2026-09-28, 30, 1\nmetformin 500 mg, 2026-10-02, 30, 2';
 
 test('med-sync-plan: the earliest practical sync date is the latest next due date', () => {
@@ -46,4 +57,15 @@ test('med-sync-plan: a sync date before a medication is due is refused; one medi
   assert.equal(s({ meds, syncDate: '2026-10-15' }).valid, false);
   assert.equal(s({ meds: 'a, 2026-09-01, 30, 1' }).valid, false);
   assert.match(s({ meds: 'a, 2026-09-01, 30' }).message, /Line 1/);
+});
+
+test('med-sync-plan accepts mapped rows and preserves commas in medication names', () => {
+  const medicationRows = [
+    { medication: 'lisinopril, 10 mg', last_fill_date: '2026-09-20', days_supply: '30', units_per_day: '1' },
+    { medication: 'atorvastatin 40 mg', last_fill_date: '2026-09-28', days_supply: '30', units_per_day: '1' },
+  ];
+  const result = s({ medicationRows });
+  assert.equal(result.syncDate, '2026-10-28');
+  assert.match(result.notes.join(' '), /lisinopril, 10 mg/);
+  assert.match(s({ medicationRows: [{ ...medicationRows[0], units_per_day: '' }] }).message, /units taken a day/);
 });

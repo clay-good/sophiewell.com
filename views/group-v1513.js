@@ -13,6 +13,16 @@ const FILL_FIELDS = [
   { id: 'days_supply', label: 'Days supply', required: true, synonyms: ['supply days'] },
   { id: 'ingredient', label: 'Ingredient', required: true, synonyms: ['drug ingredient', 'generic name', 'drug name'] },
 ];
+const MPR_FILL_FIELDS = [
+  { id: 'fill_date', label: 'Fill date', required: true, synonyms: ['date filled', 'dispense date', 'service date'] },
+  { id: 'days_supply', label: 'Days supply', required: true, synonyms: ['supply days'] },
+];
+const SYNC_FIELDS = [
+  { id: 'medication', label: 'Medication', required: true, synonyms: ['drug name', 'medication name'] },
+  { id: 'last_fill_date', label: 'Last fill date', required: true, synonyms: ['last dispense date', 'fill date'] },
+  { id: 'days_supply', label: 'Days supply', required: true, synonyms: ['supply days'] },
+  { id: 'units_per_day', label: 'Units a day', required: true, synonyms: ['units per day', 'daily units'] },
+];
 
 function textareaField(root, label, id, placeholder) {
   const wrap = el('p');
@@ -58,32 +68,66 @@ export const renderers = {
     dateInput(root, 'Period end (blank for December 31)', 'mpr-end', 'date');
     numField(root, 'List gaps longer than this many days (optional)', 'mpr-gap', 'e.g. 7', '365', '1');
     const ids = pairs.map(([d]) => d);
-    const o = out(); root.appendChild(o);
-    wire(ids, () => safe(o, () => {
+    const o = out();
+    const input = () => {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
-      const r = AD.mprGapDays(args);
+      return args;
+    };
+    const show = (r) => safe(o, () => {
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Adherence', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
-    }));
+    });
+    let upload;
+    const run = () => {
+      const args = input();
+      if (upload && upload.isActive()) upload.compute(args);
+      else show(AD.mprGapDays(args));
+    };
+    upload = uploadWorkbench(root, {
+      id: 'mpr-upload', fields: MPR_FILL_FIELDS, label: 'Load fills from a file',
+      compute: 'mpr-gap-days', getInput: input, onResult: show,
+    });
+    document.getElementById('mpr-fills').addEventListener('input', () => {
+      if (upload.isActive()) upload.clear('Using the fills entered above.');
+    });
+    root.appendChild(o);
+    wire(ids, run);
   },
   'med-sync-plan'(root) {
     const pairs = [['sync-meds', 'meds'], ['sync-date', 'syncDate']];
     textareaField(root, 'Medications, one per line: name, last fill date, days supply, units a day', 'sync-meds', 'lisinopril 10 mg, 2026-09-20, 30, 1');
     dateInput(root, 'Sync date (blank for the earliest practical)', 'sync-date', 'date');
     const ids = pairs.map(([d]) => d);
-    const o = out(); root.appendChild(o);
-    wire(ids, () => safe(o, () => {
+    const o = out();
+    const input = () => {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
-      const r = AD.medSyncPlan(args);
+      return args;
+    };
+    const show = (r) => safe(o, () => {
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: null }, { label: 'Sync', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
-    }));
+    });
+    let upload;
+    const run = () => {
+      const args = input();
+      if (upload && upload.isActive()) upload.compute(args);
+      else show(AD.medSyncPlan(args));
+    };
+    upload = uploadWorkbench(root, {
+      id: 'sync-upload', fields: SYNC_FIELDS, label: 'Load medications from a file',
+      compute: 'med-sync-plan', getInput: input, onResult: show,
+    });
+    document.getElementById('sync-meds').addEventListener('input', () => {
+      if (upload.isActive()) upload.clear('Using the medications entered above.');
+    });
+    root.appendChild(o);
+    wire(ids, run);
   },
   'pdc-star'(root) {
     const pairs = [['ps-fills', 'fills'], ['ps-stays', 'stays'], ['ps-excl', 'exclusions'], ['ps-year', 'year']];
