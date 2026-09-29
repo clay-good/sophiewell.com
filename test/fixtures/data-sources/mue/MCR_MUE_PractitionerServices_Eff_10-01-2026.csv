@@ -1,0 +1,15 @@
+"Current Procedural Terminology (CPT) codes, descriptions and other data only are copyright 2025 American Medical Association. All rights reserved. 
+
+CPT® is a registered trademark of the American Medical Association.
+
+Applicable FARS/DFARS Restrictions Apply to Government Use. 
+
+Fee schedules, relative value units, conversion factors and/or related components are not assigned by the AMA, are not part of CPT, and the AMA is not recommending their use.  The AMA does not directly or indirectly practice medicine or dispense medical services.  The AMA assumes no liability for the data contained or not contained herein.",,,
+"HCPCS/
+CPT Code",Practitioner Services MUE Values,MUE Adjudication Indicator,MUE Rationale
+0001U,1,2 Date of Service Edit: Policy,Code Descriptor / CPT Instruction
+71046,2,3 Date of Service Edit: Clinical,Clinical: Data
+99213,2,3 Date of Service Edit: Clinical,Clinical: Data
+E0114,0,3 Date of Service Edit: Clinical,CMS Policy
+J1885,8,3 Date of Service Edit: Clinical,Prescribing Information
+K0001,0,3 Date of Service Edit: Clinical,CMS Policy

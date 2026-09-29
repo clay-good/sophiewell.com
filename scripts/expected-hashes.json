@@ -14,5 +14,13 @@
     "etag": null,
     "lastModified": "Thu, 31 Jul 2025 13:49:47 GMT",
     "fetchedAt": "2026-09-29"
+  },
+  "mue": {
+    "url": "https://www.cms.gov/files/zip/medicare-ncci-2026-q4-practitioner-services-mue-table.zip",
+    "edition": "2026 Q4",
+    "sha256": "3ae7ea99c6e73630bc2f0f2dc0dcf50b12741047a0c2a633a142ad8c0163a189",
+    "etag": null,
+    "lastModified": "Mon, 31 Aug 2026 11:41:12 GMT",
+    "fetchedAt": "2026-09-29"
   }
 }

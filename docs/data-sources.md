@@ -179,6 +179,7 @@ and written with `coverage: 'full'`, `fetchedAt`, `sourceEdition` and
 |---|---|---|---|
 | `data/mpfs/` | CMS PFS relative value file (PPRRVU nonQPP, GPCIs, both conversion factors); AMA descriptors dropped | RVU26D | 19,453 codes, 109 localities |
 | `data/drg/` | IPPS Table 5 (correction notice when published), with next year's table as `upcoming.json` until it takes effect | FY2026, FY2027 upcoming | 772 MS-DRGs |
+| `data/mue/` | NCCI medically unlikely edits: practitioner, outpatient hospital and DME tables, one record per code; codes only | 2026 Q4 | 15,349 codes |
 
 ## The ICD-10-CM sample (not consumed at runtime)
 
@@ -216,10 +217,11 @@ listed as deleted must not exist, a folder listed as still-built must exist
 that list, and every folder under `data/` must be accounted for by one list, by
 a tile that reads it, or by the build-time set.
 
-**Deleted — the folder is gone (12):**
+**Deleted — the folder is gone (11):**
 `coverage/` (LCD / NCD), `enforcement/` (OIG exclusions, Medicare opt-out),
-`hospital-prices/`, `ihs-eligibility/`, `medicaid-state/`, `mue/`, `nadac/`,
+`hospital-prices/`, `ihs-eligibility/`, `medicaid-state/`, `nadac/`,
 `ncci/`, `npi/`, `state-rights/`, `tricare-plans/`, `va-eligibility/`.
+(The MUE folder came back in [spec-v1621](spec-v1621.md), fetched from CMS.)
 
 **Tile retired, data still built and shipped (31):**
 `aha-reference/`, `apc/`, `cms-1500-fields/`, `cpr-aha-numeric/`,

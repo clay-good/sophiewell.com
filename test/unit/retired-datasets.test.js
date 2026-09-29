@@ -7,7 +7,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile, readdir } from 'node:fs/promises';
-import { existsSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { META } from '../../lib/meta.js';
@@ -35,6 +35,27 @@ async function lists() {
   };
 }
 
+// spec-v1621: a dataset fetched from the publisher's own file (`coverage:
+// 'full'`) is accounted for by its builder in scripts/data/builders/, and is
+// listed under "Fetched federal datasets" in the doc, even before a tile reads it.
+function fetchedDatasets() {
+  const out = [];
+  for (const d of readdirSync(join(ROOT, 'data'), { withFileTypes: true })) {
+    const p = join(ROOT, 'data', d.name, 'manifest.json');
+    if (d.isDirectory() && existsSync(p) && JSON.parse(readFileSync(p, 'utf8')).coverage === 'full') out.push(d.name);
+  }
+  return out;
+}
+
+test('every fetched dataset has a builder and a row in the doc', async () => {
+  const text = await readFile(join(ROOT, DOC), 'utf8');
+  const builders = readFileSync(join(ROOT, 'scripts', 'data', 'builders', 'index.mjs'), 'utf8');
+  for (const id of fetchedDatasets()) {
+    assert.match(builders, new RegExp(`import ${id.replace(/-/g, '')} from './${id}\\.mjs'`), `${id} has no builder registered`);
+    assert.ok(text.includes(`| \`data/${id}/\` |`), `${DOC} has no "Fetched federal datasets" row for ${id}`);
+  }
+});
+
 test('a folder listed as deleted is really gone', async () => {
   const { deleted } = await lists();
   assert.ok(deleted.length > 0, 'the deleted list parsed empty');
@@ -54,7 +75,7 @@ test('every folder under data/ is accounted for', async () => {
   // reverse -- a folder nobody has written down at all -- is the same blind spot
   // from the other side, so close both.
   const { deleted, stillBuilt } = await lists();
-  const known = new Set([...deleted, ...stillBuilt, ...BUILD_TIME, ...await reachableDatasets()]);
+  const known = new Set([...deleted, ...stillBuilt, ...BUILD_TIME, ...await reachableDatasets(), ...fetchedDatasets()]);
   const dirs = (await readdir(join(ROOT, 'data'), { withFileTypes: true }))
     .filter((d) => d.isDirectory()).map((d) => d.name);
   const unaccounted = dirs.filter((d) => !known.has(d)).sort();

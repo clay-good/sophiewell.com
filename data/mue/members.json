@@ -1,0 +1,5 @@
+{
+  "practitioner": "MCR_MUE_PractitionerServices_Eff_10-01-2026.csv",
+  "hospital": "MCR_MUE_OutpatientHospitalServices_Eff_10-01-2026.csv",
+  "dme": "MCR_MUE_DMESupplierServices_Eff_10-01-2026.csv"
+}
