@@ -144,6 +144,7 @@ function denialPattern(root) {
       const shown = message.preview.rows.length; results.appendChild(el('p', { class: 'muted', text: message.preview.total > shown ? `Showing the first ${shown} of ${message.preview.total} adjustments.` : `Showing all ${shown} adjustments.` }));
       table(results, 'Adjustment detail', message.preview.headers, message.preview.rows); downloads(results, worker);
       results.appendChild(el('p', { class: 'muted', text: 'Categories use the same reviewed reason-code mapping as Denial Next Step. Unmapped codes remain visible and are never guessed.' }));
+      renderReceipt(results, message);
     });
     worker.postMessage({ type: 'parse-remittances', tool: 'denial-pattern-report', files: payload }, payload.map((file) => file.buffer));
   });
@@ -188,6 +189,7 @@ function underpayment(root) {
       const shown = message.preview.rows.length; results.appendChild(el('p', { class: 'muted', text: message.preview.total > shown ? `Showing the first ${shown} of ${message.preview.total} underpaid lines.` : `Showing all ${shown} underpaid lines.` }));
       table(results, 'Lines paid below contract', message.preview.headers, message.preview.rows); downloads(results, worker);
       results.appendChild(el('p', { class: 'muted', text: 'Allowed amount is billed charge minus CO adjustments. Modifier-specific fee rows take precedence over the code-only rate.' }));
+      renderReceipt(results, message);
     });
   }
   remit.addEventListener('change', async () => {
@@ -198,7 +200,7 @@ function underpayment(root) {
   fees.addEventListener('change', async () => {
     const file = fees.files && fees.files[0]; if (!file) return; if (!remittancesReady || !worker) { status.textContent = 'Choose the remittance files first.'; return; }
     if (file.size > MAX_FILE_BYTES) { status.textContent = 'The fee schedule exceeds the 50 MB limit.'; return; }
-    const buffer = await file.arrayBuffer(); worker.postMessage({ type: 'parse-fees', buffer }, [buffer]);
+    const buffer = await file.arrayBuffer(); worker.postMessage({ type: 'parse-fees', buffer, fileName: file.name }, [buffer]);
   });
 }
 
@@ -340,6 +342,7 @@ function hptFileCheck(root) {
       if (message.findings.length) table(results, message.findingsTruncated ? `First ${message.findings.length.toLocaleString('en-US')} deficiencies` : 'Deficiencies', ['Rule', 'Location', 'Finding'], message.findings.map((finding) => [finding.code, finding.location, finding.message]));
       results.appendChild(el('p', { class: 'muted', text: 'This is a deterministic structural check against CMS template v3.0.0. It does not verify that prices are complete or accurate and is not a compliance determination.' }));
       const source = el('p'); source.appendChild(el('a', { href: 'https://github.com/CMSgov/hospital-price-transparency', target: '_blank', rel: 'noreferrer', text: 'Review the official CMS data dictionary and validator' })); results.appendChild(source);
+      renderReceipt(results, message);
     });
     worker.postMessage({ type: 'validate', file });
   });

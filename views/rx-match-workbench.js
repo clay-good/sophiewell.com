@@ -2,6 +2,7 @@ import { el, clear } from '../lib/dom.js';
 import { MAX_FILE_BYTES, MAX_DATA_ROWS } from '../lib/upload-intake.js';
 import { resultRow } from '../lib/result-copy.js';
 import { RX_MATCH_FILES as FILES } from '../lib/upload-fields.js';
+import { renderReceipt } from './receipt.js';
 
 const workerUrl = new URL('../lib/rx-match-worker.js', import.meta.url);
 
@@ -111,6 +112,7 @@ export function rxMatchWorkbench(root, { entityTypes }) {
       }
     }
     results.appendChild(el('p', { class: 'muted', text: result.note }));
+    renderReceipt(results, message);
   }
 
   worker.addEventListener('message', (event) => {

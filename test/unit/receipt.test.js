@@ -54,3 +54,13 @@ test('shareable replaces every name with its kind and position', () => {
   assert.ok(!JSON.stringify(s).includes('smith'));
   assert.equal(r.files[0].name, 'smith_era.835', 'the original is not changed');
 });
+
+test('privateOptions keeps settings and records free text only by its hash', async () => {
+  const { privateOptions } = await import('../../lib/receipt-worker.js');
+  const stays = 'Jane Doe 2026-01-05 2026-01-09\nJohn Roe 2026-02-01 2026-02-03';
+  const o = privateOptions({ year: '2026', asOf: '2026-09-29', gapDays: '30', stays });
+  assert.deepEqual(Object.keys(o), ['year', 'asOf', 'gapDays', 'stays']);
+  assert.equal(o.year, '2026');
+  assert.equal(o.stays.sha256, sha256Hex(stays));
+  assert.ok(!JSON.stringify(o).includes('Jane'));
+});

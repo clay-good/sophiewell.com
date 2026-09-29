@@ -6,6 +6,7 @@ import { resultRow } from '../lib/result-copy.js';
 import { MAX_FILE_BYTES } from '../lib/upload-intake.js';
 import { uploadWorkbench } from './upload-workbench.js';
 import { APPEAL_FIELDS } from '../lib/upload-fields.js';
+import { renderReceipt } from './receipt.js';
 import { acceptVia } from '../lib/hand-off.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -110,6 +111,7 @@ function appeal835(root, show) {
       if (message.preview.total) for (const [flavor, label] of [['full', 'Download 835 worklist CSV'], ['redacted', 'Download redacted 835 worklist CSV']]) {
         const button = el('button', { type: 'button', text: label }); button.addEventListener('click', () => worker.postMessage({ type: 'download', flavor })); results.appendChild(el('p', null, [button]));
       }
+      renderReceipt(results, message);
     });
     worker.postMessage({ type: 'parse-remittances', tool: 'appeal-worklist', files: payload }, payload.map((file) => file.buffer));
   });
