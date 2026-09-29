@@ -50,3 +50,12 @@ example that round-trip; the registry gate; a receipt test; the expired-data neg
 test for every dataset it reads; the catalog count surfaces moved
 (`node scripts/check-catalog-truth.mjs`); the tool's spec page "Build status" updated in
 the same PR with what was read and what differed from the plan.
+
+## Build status
+
+| # | Tool | Status |
+|---|---|---|
+| 2 | `preventive-cost-share-check` | Built September 29, 2026 ([spec-v1601](spec-v1601.md#build-status)) |
+
+The shared modules (`json-stream`, `medicare-reprice`, `ncci-lookup`, `schema-check`,
+`preventive`) are not extracted yet; the first tool built needs none of them.

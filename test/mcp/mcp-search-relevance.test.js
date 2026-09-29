@@ -903,6 +903,7 @@ const PROBES = [
   ['frisen scale papilledema grading', ['frisen']],
   ['who oral mucositis grade', ['who-mucositis']],
   ['erefs endoscopic reference score eosinophilic esophagitis', ['erefs']],
+  ['charged for polyp removal during screening colonoscopy', ['preventive-cost-share-check']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

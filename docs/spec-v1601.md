@@ -107,4 +107,8 @@ chronic condition needs is behind the deductible when it doesn't have to be.
 
 ## Build status
 
-- **Not yet built.**
+| Tool | Status | What was read, and what differed |
+|---|---|---|
+| `preventive-owed` | Open | Waits for the `uspstf` dataset ([spec-v1621](spec-v1621.md) §3.6). |
+| `preventive-cost-share-check` | **Built September 29, 2026** (catalog 1,950) | Read in the source that day: 45 CFR 147.130(a)(2)-(3) in the eCFR, and the Departments' FAQs in the CMS copies (the DOL pages refuse scripted requests). **The spec's part numbers were partly wrong:** anesthesia is FAQs Part XXVI (May 11, 2015) Q7, not Part 29; Part XXIX (Oct. 23, 2015) holds the pre-screening specialist consultation (Q7) and polyp pathology (Q8); polyp removal is Part XII (Feb. 20, 2013) Q5; bowel preparation is Part 31 (Apr. 20, 2016) Q1; PrEP is Part 47 (July 19, 2021); the follow-up colonoscopy is Part 51 (Jan. 10, 2022) Q7, binding plan years beginning on or after May 31, 2022 (Q8), and contraception is Q9 there. An unanswered office-visit question is its own outcome ("not assessed" or "depends on its purpose"), never read as yes or no. The letter through the [spec-v1501](spec-v1501.md) §4 builder and the pre-filled appeal clock are not built; the result names **Which Appeal Rules Apply?** instead. |
+| `hsa-predeductible-check` | Open | Needs the curated `irs-hsa` rows. |

@@ -9954,6 +9954,17 @@
     },
     {
       "phrases": [
+        "charged for a screening colonoscopy",
+        "billed for preventive care",
+        "should preventive care be free",
+        "colonoscopy after positive cologuard cost",
+        "prep lab copay"
+      ],
+      "tile": "preventive-cost-share-check",
+      "audience": "patients"
+    },
+    {
+      "phrases": [
         "proportion of days covered",
         "medication possession ratio",
         "pdc calculator",

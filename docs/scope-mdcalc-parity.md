@@ -246,3 +246,5 @@ experience**.
 > v1515, claim-status files — [spec-v1515](spec-v1515.md), which adds `x12-277-reader` — is 1948.)
 
 > v1515, hospital price files — [spec-v1515](spec-v1515.md), which adds `hpt-file-check` — is 1949.)
+
+> v1601, preventive care cost sharing — [spec-v1601](spec-v1601.md), which adds `preventive-cost-share-check` — is 1950.)

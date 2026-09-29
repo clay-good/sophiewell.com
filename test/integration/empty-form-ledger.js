@@ -105,6 +105,9 @@ export const ANSWERS_AN_EMPTY_FORM = new Set([
   "peds-weight-conv",
   "pertussis-case-def",
   "pews",
+  // spec-v1601: the answer is the federal rule for the plan, service and network chosen in the
+  // pickers; the only number field is the optional amount charged, which adds a note.
+  "preventive-cost-share-check",
   "sea-guideline",
   "sepsis-bundle-clock",
   "systemic-mastocytosis",

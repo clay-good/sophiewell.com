@@ -8641,6 +8641,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/appeal-path-v1505.js (spec-v1505: Which appeal rules apply — administrative disclaimer)
 - `which-appeal-path`
 
+### lib/preventive-cost-share-check.js (spec-v1601: Preventive care cost sharing — administrative disclaimer)
+- `preventive-cost-share-check`
+
 ### lib/pdc-star-v1513.js (spec-v1513: Part D adherence (PDC, Star method) — administrative disclaimer)
 - `pdc-star`
 
