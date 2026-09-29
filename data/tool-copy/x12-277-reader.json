@@ -1,0 +1,13 @@
+{
+  "whatThisIs": "Read X12 277 claim-status responses and 277CA claim acknowledgments without uploading them. The reader keeps every raw category, status, entity and action code visible and puts rejected claims first.",
+  "whenToUse": "Use this after a clearinghouse or payer returns a claim-status file. It helps you separate rejected claims from accepted or pending work while retaining the source values needed to verify each result.",
+  "inputs": "One or more X12 277 005010X212 or 277CA 005010X214 text files, up to 50 MB each. Files remain in the browser tab.",
+  "output": "Rejected, pending and accepted counts; a rejected-first claim table with effective dates and raw codes; an X12 code-lookup link on every row; and full or redacted CSV downloads.",
+  "example": {
+    "rows": [
+      ["REJECT-2", "Rejected; A8 / 496 / entity 85 / action U"],
+      ["ACCEPT-1", "Accepted; A2 / 20 / entity PR / action WQ"]
+    ],
+    "result": "1 rejected, 0 pending and 1 accepted claims."
+  }
+}

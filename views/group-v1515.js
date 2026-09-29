@@ -6,6 +6,7 @@ import { resultRow } from '../lib/result-copy.js';
 const workerUrl = new URL('../lib/x12-835-worker.js', import.meta.url);
 const claimWorkerUrl = new URL('../lib/x12-837-worker.js', import.meta.url);
 const eligibilityWorkerUrl = new URL('../lib/x12-271-worker.js', import.meta.url);
+const statusWorkerUrl = new URL('../lib/x12-277-worker.js', import.meta.url);
 const analysisWorkerUrl = new URL('../lib/remittance-analysis-worker.js', import.meta.url);
 
 function table(root, caption, headers, rows) {
@@ -20,6 +21,17 @@ function table(root, caption, headers, rows) {
     const row = el('tr');
     values.forEach((value) => row.appendChild(el('td', { text: value == null ? '' : String(value) })));
     body.appendChild(row);
+  });
+  node.appendChild(body); wrap.appendChild(node); root.appendChild(wrap);
+}
+
+function claimStatusTable(root, headers, rows) {
+  const wrap = el('div', { class: 'upload-mapping-scroll' }); const node = el('table', { class: 'upload-mapping-table' });
+  node.appendChild(el('caption', { text: 'Claims, rejected first' }));
+  const head = el('tr'); [...headers, 'Code lookup'].forEach((header) => head.appendChild(el('th', { scope: 'col', text: header }))); node.appendChild(el('thead', null, [head]));
+  const body = el('tbody'); rows.forEach((values) => {
+    const row = el('tr'); values.forEach((value) => row.appendChild(el('td', { text: value == null ? '' : String(value) })));
+    const lookup = el('td'); lookup.appendChild(el('a', { href: 'https://x12.org/codes', target: '_blank', rel: 'noreferrer', text: 'Look up raw codes' })); row.appendChild(lookup); body.appendChild(row);
   });
   node.appendChild(body); wrap.appendChild(node); root.appendChild(wrap);
 }
@@ -261,4 +273,34 @@ function reader271(root) {
   });
 }
 
-export const renderers = { 'x12-835-reader': reader835, 'x12-837-check': check837, 'x12-271-reader': reader271, 'denial-pattern-report': denialPattern, 'underpayment-check': underpayment };
+function reader277(root) {
+  root.appendChild(el('p', { class: 'notice', text: 'Reads X12 277 claim-status responses and 277CA claim acknowledgments locally, then lists rejected claims first with raw status, entity and action codes.' }));
+  root.appendChild(el('p', { class: 'muted', text: 'Choose one or more X12 text files, up to 50 MB each. The reader does not ship code-list descriptions; each row links to the X12 code lookup.' }));
+  const input = el('input', { id: 'x277-files', type: 'file', multiple: true, accept: '.277,.txt,text/plain,application/octet-stream' });
+  const status = el('p', { id: 'x277-status', class: 'muted', role: 'status', 'aria-live': 'polite' });
+  const results = el('div', { id: 'q-results', 'aria-live': 'polite' });
+  root.appendChild(el('label', { for: 'x277-files', text: 'Choose claim-status files' })); root.appendChild(input); root.appendChild(status); root.appendChild(results);
+  let worker = null;
+  input.addEventListener('change', async () => {
+    if (worker) worker.terminate(); clear(results);
+    const files = [...(input.files || [])]; if (!files.length) return;
+    if (files.some((file) => file.size > MAX_FILE_BYTES)) { status.textContent = 'Each file must be 50 MB or smaller.'; return; }
+    status.textContent = 'Reading the claim-status files locally...'; const payload = await transferFiles(files);
+    worker = new window.Worker(statusWorkerUrl, { type: 'module' });
+    worker.addEventListener('error', () => { status.textContent = 'The claim-status files could not be read.'; });
+    worker.addEventListener('message', (event) => {
+      const message = event.data || {};
+      if (message.type === 'error') { status.textContent = message.message; return; }
+      if (message.type === 'download') { downloadMessage(worker, message); return; }
+      if (message.type !== 'parsed') return;
+      const value = message.totals; status.textContent = `${value.files.toLocaleString('en-US')} ${value.files === 1 ? 'file' : 'files'} read.`;
+      resultRow(results, [{ text: `${value.rejected.toLocaleString('en-US')} rejected, ${value.pending.toLocaleString('en-US')} pending and ${value.accepted.toLocaleString('en-US')} accepted claims.`, cls: value.rejected ? 'warn' : null }, { label: 'Status records', value: value.statuses.toLocaleString('en-US') }]);
+      const shown = message.preview.rows.length; results.appendChild(el('p', { class: 'muted', text: message.preview.total > shown ? `Showing the first ${shown} of ${message.preview.total} claims.` : `Showing all ${shown} claims.` }));
+      claimStatusTable(results, message.preview.headers, message.preview.rows); downloads(results, worker);
+      results.appendChild(el('p', { class: 'muted', text: 'Accepted, pending and rejected are workflow groupings from the raw response values. Verify the raw category, status, entity and action codes before acting.' }));
+    });
+    worker.postMessage({ type: 'parse', files: payload }, payload.map((file) => file.buffer));
+  });
+}
+
+export const renderers = { 'x12-835-reader': reader835, 'x12-837-check': check837, 'x12-271-reader': reader271, 'x12-277-reader': reader277, 'denial-pattern-report': denialPattern, 'underpayment-check': underpayment };

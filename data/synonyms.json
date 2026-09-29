@@ -10273,6 +10273,17 @@
     },
     {
       "phrases": [
+        "277 reader",
+        "277ca reader",
+        "claim status response",
+        "claim acknowledgment file",
+        "rejected claims file"
+      ],
+      "tile": "x12-277-reader",
+      "audience": "billers"
+    },
+    {
+      "phrases": [
         "denial pattern report",
         "denial trends",
         "carc adjustment report",

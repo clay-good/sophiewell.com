@@ -242,3 +242,5 @@ experience**.
 > v1515, claim files — [spec-v1515](spec-v1515.md), which adds `x12-837-check` — is 1946.)
 
 > v1515, eligibility files — [spec-v1515](spec-v1515.md), which adds `x12-271-reader` — is 1947.)
+
+> v1515, claim-status files — [spec-v1515](spec-v1515.md), which adds `x12-277-reader` — is 1948.)

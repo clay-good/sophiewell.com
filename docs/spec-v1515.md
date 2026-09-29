@@ -141,5 +141,10 @@ a route A dataset pinned to a published version.
   identifiers, benefit amounts or percentages, dates, service types and network
   status. The plain summary and benefit table retain raw codes beside project-authored
   labels; full and patient-redacted CSV downloads include every benefit line.
-- **Not yet built:** `x12-277-reader`,
+- **Built 2026-09-28:** `x12-277-reader` accepts local 005010X212 status responses
+  and 005010X214 claim acknowledgments. It groups each claim as accepted, pending or
+  rejected from the response values, lists rejections first and shows raw category,
+  status, entity and action codes with an X12 code-lookup link on every row. Full and
+  patient-redacted CSV downloads include all claim-level status records.
+- **Not yet built:**
   `hpt-file-check`, `hpt-price-compare` and `pas-bundle-check`.

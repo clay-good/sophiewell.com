@@ -44,6 +44,7 @@ Reasons are a fixed vocabulary:
 - `x12-835-reader` - wrong-input-modality
 - `x12-837-check` - wrong-input-modality
 - `x12-271-reader` - wrong-input-modality
+- `x12-277-reader` - wrong-input-modality
 - `denial-pattern-report` - wrong-input-modality
 - `underpayment-check` - wrong-input-modality
 - `ews-escalation` - time-dependent
