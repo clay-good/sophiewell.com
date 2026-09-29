@@ -76,7 +76,9 @@ batch execution has started with the patient-definition check; other calculators
 still planned. The prescription matcher accepts four local files and returns its
 audit trail with full or redacted downloads. The 835 reader validates remittance
 envelopes and balance arithmetic, then exports a claim table locally. Denial-pattern
-and contract-underpayment reports run on those same local remittances. See
+and contract-underpayment reports run on those same local remittances. The appeal
+worklist accepts mapped CSV/TSV claims or 835 files, asks the reader to identify each
+payer's rule set, and exports full or patient-redacted deadline lists. See
 [the implementation status](docs/spec-v1501.md#build-status).
 
 - [CHANGELOG.md](CHANGELOG.md): what's new

@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { parse835 } from '../../lib/x12-835-v1515.js';
-import { denialPatternReport, underpaymentCheck } from '../../lib/remittance-analysis-v1516.js';
+import { appealCandidates, denialPatternReport, underpaymentCheck } from '../../lib/remittance-analysis-v1516.js';
 
 function era({ date, payer, claim, service }) {
   const body = [`BPR*I*${claim.paid}*C*CHK************${date}`, `N1*PR*${payer}`, `CLP*${claim.id}*1*${claim.billed}*${claim.paid}*${claim.pr || 0}**P-${claim.id}`, `NM1*82*1*CLINICIAN*SAM****XX*${claim.npi || '1234567890'}`, `SVC*HC:${service.code}${service.modifier ? `:${service.modifier}` : ''}*${service.billed}*${service.paid}`, `CAS*${service.group}*${service.reason}*${service.adjustment}`];
@@ -28,6 +28,14 @@ test('denial pattern keeps unmapped codes visible and signed reversals reduce th
   assert.equal(result.totalCents, -1000);
   assert.equal(result.byCategory[0].label, 'Unmapped reason code');
   assert.equal(result.byCategory[0].amountCents, -1000);
+});
+
+test('appeal candidates include positive appeal adjustments and preserve payer names', () => {
+  const appeal = era({ date: '20260930', payer: 'Appeal Plan', claim: { id: 'APPEAL', billed: 200, paid: 100 }, service: { code: '99214', billed: 200, paid: 100, group: 'CO', reason: '50', adjustment: 100 } });
+  const writeoff = era({ date: '20260930', payer: 'Writeoff Plan', claim: { id: 'WRITE-OFF', billed: 200, paid: 100 }, service: { code: '99213', billed: 200, paid: 100, group: 'CO', reason: '45', adjustment: 100 } });
+  const result = appealCandidates([{ name: 'appeal.835', result: appeal }, { name: 'writeoff.835', result: writeoff }]);
+  assert.deepEqual(result.payers, ['Appeal Plan']);
+  assert.deepEqual(result.candidates, [{ sourceFile: 'appeal.835', reference: 'APPEAL', payer: 'Appeal Plan', denialDate: '2026-09-30', amountCents: 10000 }]);
 });
 
 test('underpayment check ignores an exact contract payment and flags one cent under', () => {

@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `993266434f7f0a80`
-Generated: 2026-09-29T00:04:08.488Z
+Build ID: `c5b606a67f3a49ad`
+Generated: 2026-09-29T00:24:35.386Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -274,7 +274,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/dejour-trochlea-v485.js` | 3370 | `e24e2cb02e597a2dd73c81b424a1305b3423609993c79e142fb1aa0f4a010e31` |
 | `lib/delbet-femoral-neck-v378.js` | 3870 | `be1d4650275a314e54cacb832804c6b41af08843d296ec4938c2c22ac7db42cc` |
 | `lib/delta-check-v925.js` | 8569 | `d09a2a0537947b803e21e2cfd7572695628df447124e3a75184bd16621bbc396` |
-| `lib/denial-next-step-v1516.js` | 12616 | `9ba8257624209251cdb0f681f9fabd96c38b2eec17f1e44dd0e517960a79c616` |
+| `lib/denial-next-step-v1516.js` | 12824 | `d4f9d772a24052bce95c3a6bfaaee44f8a6f3883fb88633d99ffb57b330eebba` |
 | `lib/denis-sacral-v376.js` | 3688 | `fc489399a839b38692a0f716910e6e31f30ff38407b35cc4e160ef595baad540` |
 | `lib/derivation.js` | 8016 | `a0fcfa34306bef8683031d8e2757bc08f3448235b2f69649ef3354afdba7edec` |
 | `lib/derm-v151.js` | 20521 | `28b897ae062df57b38d2efad9a52e0676f739cbaad356f55af221f4023ec7a5e` |
@@ -877,8 +877,8 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/reid-bronchiectasis-v450.js` | 3073 | `9809861f8d6ce7f9543cfb95473e2c325891c69181ebe4b3f463f7cdc54c2949` |
 | `lib/reimers-migration-percentage-v703.js` | 3535 | `b9097ac1601a6f03c0561e85ac19de3b2021397e5689f5349b6841816c8dcdfa` |
 | `lib/related.js` | 4698 | `9dfc547d46c29521a700c5382ff44ec8c6ab4aca66c08848e769738621f429f1` |
-| `lib/remittance-analysis-v1516.js` | 7408 | `3541d0a5aa661e9be6b5569f7fcf465e16d4e8fa56a5a85490fa5d3adcce81b9` |
-| `lib/remittance-analysis-worker.js` | 5903 | `38479fc3a65e6b0be9578d1aaf1ca658f2d096792c67360163a9b0f69655b6c0` |
+| `lib/remittance-analysis-v1516.js` | 8845 | `971bcf589deb2f1d50c553a0527bb4335f8800dc7d37fc932e7a5a31d3a34e0f` |
+| `lib/remittance-analysis-worker.js` | 8588 | `1de03a86bd2c772f3aa3e2fd9d6fa8f51798acffb4aad05a7c9e34caebbd2ad0` |
 | `lib/renal-angina-v533.js` | 9915 | `387bc572f58bc85213d4849d784e4e7e490064b06bb49f3db06a04cdab19a3f6` |
 | `lib/renal-v128.js` | 12212 | `9fb2f86a36d2266098b7d2a872b0c0ac2a06323de0092bf7adc5cb5218831390` |
 | `lib/renal-v277.js` | 4231 | `e5af36e47fee1532e024bebb6f8ace4995fb6c64fac2b39bdee9e628e1c5c33e` |
@@ -1052,7 +1052,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/unit-convert.js` | 2601 | `642818802952c2c5e87338bc035dcd9d5ff07dec1e8b97a31ca09b0be38c14d2` |
 | `lib/up-to-seven-v586.js` | 11393 | `4a379fbb63e617cb741a5369394d693751912101492558fdda03ca9c478ff06b` |
 | `lib/upload-intake.js` | 5896 | `12aa14ddd295265e8aec7aa6aa61d2bc93aece8640f26c7ede5e394083f4b9b3` |
-| `lib/upload-worker.js` | 8089 | `7662dc0bc5a18fec1b6a35846e46645afca2b0eba51894a87006743f294531b5` |
+| `lib/upload-worker.js` | 8639 | `97c698072398d3a87f18cd9f42f4821a7366cedac737456fe5b13a5517ad8a00` |
 | `lib/uro-v130.js` | 12895 | `370c7f4f91e8adeff37012c9d024e2bab403330eaffeecee756d06a61fb30c21` |
 | `lib/uro-v131.js` | 16748 | `68ef5eb787708cadacbd1bd66dc39f0777f3f20456298cd7a883204797fe5440` |
 | `lib/urology-v153.js` | 9694 | `700af96b614bda45a67eda2835bb8087c9e2895ac62db7123fa9c765af5b75a9` |
@@ -2266,7 +2266,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1513.js` | 9779 | `38f0ac8eb773f4dfd863416cf2742c34673d85d924c5e8db523d6b3f92868754` |
 | `views/group-v1514.js` | 11361 | `b728bf9f4e4314627d921000346a86a3fc5db92716dc2cf5855e2c7a0b8cd6b9` |
 | `views/group-v1515.js` | 16328 | `af856dbd119f6bfb128e2f706bc03f6a1f7b1fbc0ebfa87fa0ada255017fa41d` |
-| `views/group-v1516.js` | 4285 | `aee3e98f53a7525f0177a5c807cce95087bb66b310023cbdd6fd053a1c83255f` |
+| `views/group-v1516.js` | 10905 | `0dbcb207c96b01db24e94f4657ed8a36b3286aed115f6487ddb68a86bb4d6169` |
 | `views/group-v152.js` | 12369 | `dc29da131fcaf14f2a95a9e658fa3df1cc7b1d768b7b12b308267c97de3ede1e` |
 | `views/group-v153.js` | 11280 | `ffceef435372350d3a3f391724e3232537e6919c980ba7c4b8e8b7bab2186ee9` |
 | `views/group-v154.js` | 11434 | `4bb47056aa326ce6597e15e6dacfa281adf4230d42df78761125cafac4e8b073` |

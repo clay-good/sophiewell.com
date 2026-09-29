@@ -97,9 +97,11 @@ code, and a CSV to send with a payment dispute.
   explains the assignment to the patient. Deadlines reuse the windows [spec-v1503](spec-v1503.md) verified;
   the corrected Medicare claim date matches `timely-filing` (the date of service plus 365 days). Medicaid
   provider windows are the reader's entry.
-- **Built 2026-09-26:** `appeal-worklist`, with claims one per line (reference, payer type, denial date, amount,
-  and a window for Medicaid or other payers); missed deadlines are listed apart. The 835 upload will feed it
-  when [spec-v1515](spec-v1515.md) is built.
+- **Built 2026-09-28:** `appeal-worklist` accepts claims entered one per line or mapped from a CSV/TSV file. It
+  also reads one or more 835 files locally and selects positive adjustments in the reviewed authorization,
+  medical-necessity and timely-filing categories. Because an 835 payer name does not establish the plan type,
+  the reader explicitly maps every payer name to a rule set and supplies the Medicaid or other-plan window.
+  Missed deadlines are listed apart; both file paths export full or patient-redacted CSVs.
 - **Built 2026-09-28:** `denial-pattern-report` reads one or more 835 files in a
   Worker and groups net adjustment dollars by reviewed category, raw reason code,
   payer, billing code and rendering provider. Signed reversals reduce their
@@ -108,3 +110,6 @@ code, and a CSV to send with a payment dispute.
   accepts either a direct contracted amount or a percentage of a supplied
   reference amount, and compares that rate with billed minus CO adjustments for
   each service line. Exact contract payment is not flagged; a $0.01 shortfall is.
+
+Cross-browser tests cover CSV column mapping, 835 payer-rule mapping, deadline sorting,
+past-deadline handling, exact and $0.01-under contract payments, and redacted exports.

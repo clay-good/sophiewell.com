@@ -54,9 +54,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   sites (hospital outpatient, office, home infusion, infusion center), from each site's allowed amount and
   cost sharing. See docs/spec-v1505.md.
 
-- **Appeal Worklist by Deadline.** Denied claims, one per line, each given its payer type's appeal deadline and
-  sorted by days left, then dollars; claims past their deadline are listed apart. No likelihood of winning is
-  estimated. See docs/spec-v1516.md.
+- **Appeal Worklist by Deadline.** Denied claims can be entered, mapped from CSV/TSV, or extracted from local
+  X12 835 files. The 835 flow includes positive authorization, medical-necessity and timely-filing adjustments,
+  asks for each payer's rule set, and supports full or patient-redacted CSV exports. Claims are sorted by days
+  left, then dollars; claims past their deadline are listed apart. See docs/spec-v1516.md.
 
 - **Annual Therapy Cost Comparison.** Up to three regimens side by side: cost per administration, year one with
   loading doses, and later years, each with the price source the reader enters. See docs/spec-v1510.md.
