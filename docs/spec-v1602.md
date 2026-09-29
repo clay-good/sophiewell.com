@@ -61,7 +61,8 @@ appears in that file.
 and the negotiated rate for the patient's plan for that code, from the hospital's own
 file. Then: lines charged above the gross charge the hospital posted; for self-pay, lines
 above the posted cash price; and code pairs that CMS's NCCI edits bar from billing
-together, through the live `ncci-ptp` and `mue-check` data.
+together, from the NCCI and MUE files ([spec-v1614](spec-v1614.md) §3, or the reader's own
+copy, §6), with the verdict logic `ncci-ptp` and `mue-check` already use.
 **Output.** Each line beside the hospital's own number, the differences, and a total. The
 [spec-v1501](spec-v1501.md) §4 builder drafts a request for correction citing the posted
 file (the hospital's own public statement of its price).
