@@ -7,4 +7,6 @@
 // A dataset with a live builder here must not also be written by
 // scripts/build-data.mjs.
 
-export const BUILDERS = [];
+import mpfs from './mpfs.mjs';
+
+export const BUILDERS = [mpfs];

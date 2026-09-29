@@ -180,7 +180,6 @@ const COVERAGE = {
   icd10cm: { ...SAMPLE('18 example billable codes, not the ICD-10-CM code list.'), sourceEdition: 'unversioned' },
   hcpcs: { ...SAMPLE('10 example Level II codes, not the code list.'), sourceEdition: 'unversioned' },
   'cpt-summaries': { ...SUBSET('Original plain-English summaries of nine CPT code ranges; no AMA descriptors.'), sourceEdition: 'unversioned' },
-  mpfs: { ...SAMPLE('5 example codes and 4 example GPCI localities; the conversion factor is the CY2026 final-rule figure.'), sourceEdition: 'CY2026 conversion factor' },
   ndc: { ...SAMPLE('5 example NDC directory rows, not the directory.'), sourceEdition: 'unversioned' },
   crosswalks: { ...SAMPLE('Example place-of-service, modifier, revenue, CARC and RARC rows, not the full code lists.'), sourceEdition: 'unversioned' },
   'no-surprises': { ...SAMPLE('Four example No Surprises Act scenarios, not the rule text.'), sourceEdition: 'unversioned' },
@@ -470,60 +469,7 @@ const datasets = [
     },
   },
 
-  // ----- MPFS structural data + GPCI + conversion factor ----------------
-  {
-    id: 'mpfs',
-    sourceUrl: 'https://www.cms.gov/medicare/payment/fee-schedules/physician',
-    agency: 'CMS',
-    status: 'public-domain',
-    cadence: 'annual',
-    async build() {
-      const folder = join(DATA, 'mpfs');
-      // Seed: a few common codes with structural RVU components, NO AMA descriptors.
-      const seed = [
-        { code: '99213', statusCode: 'A', globalPeriod: 'XXX', workRvu: 1.30, peRvuFacility: 0.46, peRvuNonFacility: 1.04, mpRvu: 0.10 },
-        { code: '99214', statusCode: 'A', globalPeriod: 'XXX', workRvu: 1.92, peRvuFacility: 0.69, peRvuNonFacility: 1.50, mpRvu: 0.13 },
-        { code: '99215', statusCode: 'A', globalPeriod: 'XXX', workRvu: 2.80, peRvuFacility: 1.00, peRvuNonFacility: 2.11, mpRvu: 0.19 },
-        { code: '93000', statusCode: 'A', globalPeriod: 'XXX', workRvu: 0.17, peRvuFacility: 0.05, peRvuNonFacility: 0.30, mpRvu: 0.01 },
-        { code: '36415', statusCode: 'A', globalPeriod: 'XXX', workRvu: 0.00, peRvuFacility: 0.00, peRvuNonFacility: 0.10, mpRvu: 0.01 },
-      ];
-      const shards = shardRecords(seed, (r) => r.code.slice(0, 2));
-      const shardManifests = [];
-      for (const s of shards) {
-        const m = await writeShard(join(folder, 'shards'), `${s.key}.json`, s.items);
-        shardManifests.push(m);
-      }
-      // GPCI seed (national average + a couple of localities).
-      const gpci = [
-        { localityCode: '0000000', name: 'National Average', workGpci: 1.000, peGpci: 1.000, mpGpci: 1.000 },
-        { localityCode: '0500001', name: 'Manhattan, NY', workGpci: 1.058, peGpci: 1.225, mpGpci: 1.483 },
-        { localityCode: '5400001', name: 'Rest of California', workGpci: 1.027, peGpci: 1.137, mpGpci: 0.575 },
-        { localityCode: '0000099', name: 'Rest of US', workGpci: 1.000, peGpci: 0.890, mpGpci: 0.580 },
-      ];
-      await writeIfChanged(join(folder, 'gpci.json'), JSON.stringify(gpci, null, 2) + '\n');
-
-      const cf = { conversionFactor: 33.4009, effectiveDate: '2026-01-01', source: 'CMS CY2026 PFS Final Rule (CMS-1832-F), nonqualifying APM' };
-      await writeIfChanged(join(folder, 'conversion-factor.json'), JSON.stringify(cf, null, 2) + '\n');
-
-      const manifest = {
-        dataset: 'mpfs',
-        sourceUrl: this.sourceUrl,
-        agency: this.agency,
-        status: this.status,
-        cadence: this.cadence,
-        recordCount: seed.length,
-        shardLayout: 'shards',
-        shards: shardManifests,
-        ancillary: ['gpci.json', 'conversion-factor.json'],
-        notes:
-          'Structural Medicare RVU data only. NO AMA CPT descriptors are included. ' +
-          'The Medicare structural data (status code, global period, RVU components) is public domain. ' +
-          'See docs/legal.md.',
-      };
-      await writeManifest(folder, manifest);
-      return { id: this.id, recordCount: seed.length, shardCount: shardManifests.length };
-    },
-  },
+  // ----- MPFS: fetched by scripts/data/builders/mpfs.mjs (spec-v1621 §3.1) --
 
   // ----- NADAC ----------------------------------------------------------
 

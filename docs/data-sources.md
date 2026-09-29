@@ -166,17 +166,28 @@ for a tile removed in the v29 prune (`REMOVED_V29_IDS`), so the
 directory cannot re-accumulate the 57 orphaned files that the v29
 deletions had left behind.
 
-## MPFS, ICD-10-CM and DRG samples (not consumed at runtime)
+## Fetched federal datasets
 
-`data/mpfs/`, `data/icd10cm/` and `data/drg/` are hand-written samples
-(5 codes and 4 localities; 18 codes; 8 DRGs). Until
-[spec-v1622](spec-v1622.md) the live `rvu-payment`, `icd10-validate`
-and `drg-payment` tiles filled inputs or printed notes from them, as
-if they were the fee schedule, the code set and IPPS Table 5. A sample
-cannot answer about a reader's code, so those reads were removed; the
-tiles take the values from the reader, and `rvu-payment` defaults to the
-dated CY2026 conversion factor in `lib/billing-v78.js`. The folders stay
-as seeds for the fetched datasets of [spec-v1621](spec-v1621.md).
+Since [spec-v1621](spec-v1621.md) these come from the publisher's own files,
+fetched by `node scripts/data/run.mjs` (one builder per dataset under
+`scripts/data/builders/`), checked against bounds and per-edition canaries,
+and written with `coverage: 'full'`, `fetchedAt`, `sourceEdition` and
+`sourceSha256`. No tile reads them yet; the file tools of
+[spec-v1626](spec-v1626.md) will.
+
+| Folder | Source | Edition today | Size |
+|---|---|---|---|
+| `data/mpfs/` | CMS PFS relative value file (PPRRVU nonQPP, GPCIs, both conversion factors); AMA descriptors dropped | RVU26D | 19,453 codes, 109 localities |
+
+## ICD-10-CM and DRG samples (not consumed at runtime)
+
+`data/icd10cm/` and `data/drg/` are hand-written samples (18 codes; 8
+DRGs). Until [spec-v1622](spec-v1622.md) the live `icd10-validate` and
+`drg-payment` tiles (and `rvu-payment`, from the old `mpfs/` sample)
+filled inputs or printed notes from them, as if they were the code set and
+IPPS Table 5. A sample cannot answer about a reader's code, so those reads
+were removed; the tiles take the values from the reader, and `rvu-payment`
+defaults to the dated CY2026 conversion factor in `lib/billing-v78.js`.
 
 ## Synonyms
 

@@ -1,5 +1,7 @@
 {
   "conversionFactor": 33.4009,
-  "effectiveDate": "2026-01-01",
-  "source": "CMS CY2026 PFS Final Rule (CMS-1832-F), nonqualifying APM"
+  "qppConversionFactor": 33.5675,
+  "effectiveDate": "2026-10-01",
+  "edition": "RVU26D",
+  "source": "CMS PFS relative value file RVU26D: nonqualifying and qualifying APM conversion factors"
 }
