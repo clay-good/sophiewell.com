@@ -1,6 +1,6 @@
 # spec-v1604 — Employer plans that pay their own claims
 
-**Status:** Proposed, September 29, 2026. Nothing built.
+**Status:** Proposed, September 29, 2026. In progress: `dpc-hsa-check` built ([build status](#build-status)).
 **Charter:** [spec-v1600](spec-v1600.md). **Group:** P, except `dpc-hsa-check`, which joins
 group C.
 **Machinery:** the [spec-v1501](spec-v1501.md) §3 upload workbench and the streaming
@@ -140,4 +140,7 @@ primary care doctor directly compatible with the most common employer plan desig
 
 ## Build status
 
-- **Not yet built.**
+| Tool | Status | What was read, and what differed |
+|---|---|---|
+| `dpc-hsa-check` | **Built September 29, 2026** (catalog 1,951) | Read in the source that day: IRS Notice 2026-5 (questions A-11 through A-20). **The spec cited the wrong subsection:** the safe harbor is IRC 223(c)(1)(E), added by section 71308 of Pub. L. 119-21, not 223(c)(1)(B) and 223(g). The 2026 limits ($150 a month for one person, $300 for more than one) are a route B dated constant; a later year asks for its indexed limit until a row is added. The fee is entered as the total for all of a person's arrangements, billed monthly, quarterly, every six months or yearly (A-13 annualizes). Two rules the spec did not name are applied: an arrangement that bills members on top of its fee is not one (A-11), and fees an employer pays cannot be reimbursed from the HSA (A-18). An unanswered term is never read as yes: under the limit it is "not assessed", over the limit it is named. |
+| The other tools on this page | Open | See [spec-v1626](spec-v1626.md#build-status). |

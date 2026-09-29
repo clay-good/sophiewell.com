@@ -248,3 +248,5 @@ experience**.
 > v1515, hospital price files — [spec-v1515](spec-v1515.md), which adds `hpt-file-check` — is 1949.)
 
 > v1601, preventive care cost sharing — [spec-v1601](spec-v1601.md), which adds `preventive-cost-share-check` — is 1950.)
+
+> v1604, direct primary care and HSAs — [spec-v1604](spec-v1604.md), which adds `dpc-hsa-check` — is 1951.)

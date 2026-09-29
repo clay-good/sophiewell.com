@@ -8644,6 +8644,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/preventive-cost-share-check.js (spec-v1601: Preventive care cost sharing — administrative disclaimer)
 - `preventive-cost-share-check`
 
+### lib/dpc-hsa-check.js (spec-v1604: Direct primary care and HSA eligibility — administrative disclaimer)
+- `dpc-hsa-check`
+
 ### lib/pdc-star-v1513.js (spec-v1513: Part D adherence (PDC, Star method) — administrative disclaimer)
 - `pdc-star`
 

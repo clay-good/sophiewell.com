@@ -904,6 +904,7 @@ const PROBES = [
   ['who oral mucositis grade', ['who-mucositis']],
   ['erefs endoscopic reference score eosinophilic esophagitis', ['erefs']],
   ['charged for polyp removal during screening colonoscopy', ['preventive-cost-share-check']],
+  ['direct primary care membership hsa eligible', ['dpc-hsa-check']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

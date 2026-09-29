@@ -9965,6 +9965,16 @@
     },
     {
       "phrases": [
+        "direct primary care hsa",
+        "dpc membership hsa eligibility",
+        "concierge doctor fee and hsa",
+        "can i contribute to my hsa with direct primary care"
+      ],
+      "tile": "dpc-hsa-check",
+      "audience": "patients"
+    },
+    {
+      "phrases": [
         "proportion of days covered",
         "medication possession ratio",
         "pdc calculator",
