@@ -32,7 +32,9 @@ const ASYNC_TILES = [
 // spec-v1622 removed three: rvu-payment's conversion factor and GPCI list and
 // drg-payment's weight table were hand-written samples answering as if they
 // were the fee schedule and IPPS Table 5.
-const LOAD_FILE_CALLS = 11;
+// spec-v1624 added one that is not a tile's: views/home-files.js loads the
+// record concept map for the records panel, which has no deep link.
+const LOAD_FILE_CALLS = 12;
 
 test('the tiles that fetch their inputs still answer their own link', async ({ page }) => {
   test.setTimeout(300_000);
