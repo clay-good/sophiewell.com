@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { readFile } from 'node:fs/promises';
+import { expectNoHScroll } from '../lib/no-hscroll.js';
 
 test('340B matcher maps four local files, explains decisions and redacts downloads', async ({ page }) => {
   const offOrigin = [];
@@ -44,8 +45,7 @@ test('340B matcher maps four local files, explains decisions and redacts downloa
   await expect(page.locator('#rxm-results')).toContainText('1 of 2 prescriptions matched (50%).');
   await expect(page.locator('#rxm-results')).toContainText('Orphan-designated drug excluded for this covered entity type.');
   await expect(page.locator('#rxm-results')).toContainText('Match rate by pharmacy');
-  const width = await page.evaluate(() => ({ scroll: document.documentElement.scrollWidth, client: document.documentElement.clientWidth }));
-  expect(width.scroll).toBeLessThanOrEqual(width.client + 1);
+  await expectNoHScroll(page, 'rx-match-workbench');
 
   const downloadPromise = page.waitForEvent('download');
   await page.getByRole('button', { name: 'Download redacted CSV' }).click();

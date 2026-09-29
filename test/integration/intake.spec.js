@@ -5,6 +5,7 @@
 import { test, expect } from '@playwright/test';
 import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { expectNoHScroll } from '../lib/no-hscroll.js';
 
 const DIR = join(process.cwd(), 'test', 'fixtures', 'file-kinds');
 
@@ -21,7 +22,8 @@ test('the inventory recognizes the fixtures folder in the page, offline', async 
   const row = (path) => page.locator('#q-results tbody tr').filter({ has: page.locator('td.intake-path', { hasText: new RegExp(`^${path.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}$`) }) });
   await expect(row('x12-835.835')).toContainText('Remittance (835) file (2 remittance transactions). Certain.');
   await expect(row('x12-835.835').locator('a', { hasText: 'X12 835 Remittance Reader' })).toHaveAttribute('href', '#x12-835-reader');
-  await expect(row('ccd.xml')).toContainText('planned and not built yet');
+  // spec-v1624: a health record opens the records panel (it was "planned" until M5).
+  await expect(row('ccd.xml')).toContainText('See which tools this record can fill');
   await expect(row('claims.xlsx')).toContainText('Save it as CSV');
   await expect(row('ambiguous.csv')).toContainText('Choose one:');
   await expect(row('nested.zip/remits/inner.zip/era.835')).toContainText('Remittance (835) file');
@@ -38,6 +40,5 @@ test('the inventory view has no horizontal scroll at 320px', async ({ page }) =>
   await page.goto('/#/intake');
   await page.locator('#intake-files').setInputFiles([{ name: 'x12-271.271', mimeType: 'text/plain', buffer: readFileSync(join(DIR, 'x12-271.271')) }]);
   await expect(page.locator('#intake-status')).toContainText('1 file: 1 recognized.');
-  const w = await page.evaluate(() => ({ s: document.documentElement.scrollWidth, c: document.documentElement.clientWidth }));
-  expect(w.s).toBeLessThanOrEqual(w.c + 1);
+  await expectNoHScroll(page, 'intake');
 });

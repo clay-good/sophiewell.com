@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { readFile } from 'node:fs/promises';
+import { expectNoHScroll } from '../lib/no-hscroll.js';
 
 function era(date, payer, claims) {
   const body = [`BPR*I*${claims.reduce((sum, claim) => sum + claim.paid, 0).toFixed(2)}*C*CHK************${date}`, `TRN*1*TRACE-${date}*12345`, `N1*PR*${payer}`];
@@ -27,8 +28,7 @@ test('denial pattern groups two payment months and exports redacted detail', asy
   await expect(page.locator('#q-results')).toContainText('2 adjustments total $150.00.');
   await expect(page.locator('#q-results')).toContainText('2026-09 changed by $50.00 from 2026-08 (100%).');
   await expect(page.locator('#q-results')).toContainText('Medical necessity or coverage');
-  const width = await page.evaluate(() => ({ scroll: document.documentElement.scrollWidth, client: document.documentElement.clientWidth }));
-  expect(width.scroll).toBeLessThanOrEqual(width.client + 1);
+  await expectNoHScroll(page, 'remittance-analysis');
   const downloadPromise = page.waitForEvent('download');
   await page.getByRole('button', { name: 'Download redacted CSV' }).click();
   const csv = await readFile(await (await downloadPromise).path(), 'utf8');
