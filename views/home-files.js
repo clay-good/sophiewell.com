@@ -6,6 +6,9 @@
 
 import { el } from '../lib/dom.js';
 import { entriesFromDrop, entriesFromInput, renderIntake } from './intake.js';
+import { isReceipt, matchReceiptFiles, compareReceipts } from '../lib/receipt.js';
+import { sha256Blob } from '../lib/sha256.js';
+import { onNextReceipt } from './receipt.js';
 
 const workerUrl = new URL('../lib/intake-worker.js', import.meta.url);
 
@@ -40,6 +43,12 @@ export function createHomeFiles({ acceptFiles, navigate, toolName }) {
     let result;
     try { result = await runInventory(entries); } catch (err) { if (status) status.textContent = err.message; return; }
     const { rows, refused } = result;
+    // spec-v1625 step 3: a receipt dropped with the files it names re-runs
+    // its tool on them and says whether the result is the same.
+    const receiptRows = rows.filter((r) => r.kind === 'receipt');
+    if (receiptRows.length === 1 && rows.length > 1) {
+      if (await startCheck(receiptRows[0], rows.filter((r) => r !== receiptRows[0]), result, status)) return;
+    }
     const only = rows.length === 1 && !refused.length ? rows[0] : null;
     const tool = only && only.confidence !== 'none' && !only.ambiguous ? primaryTool(only) : null;
     if (tool && acceptFiles[tool.id]) {
@@ -49,6 +58,26 @@ export function createHomeFiles({ acceptFiles, navigate, toolName }) {
     }
     pending = { type: 'inventory', result };
     navigate('#/intake');
+  }
+
+  async function startCheck(receiptRow, others, result, status) {
+    let receipt;
+    try { receipt = JSON.parse(await receiptRow.blob.text()); } catch { receipt = null; }
+    if (!isReceipt(receipt)) return false;
+    if (status) status.textContent = 'Matching the files to the receipt...';
+    const dropped = await Promise.all(others.map(async (r) => ({ row: r, sha256: await sha256Blob(r.blob) })));
+    const { ordered, missing } = matchReceiptFiles(receipt, dropped);
+    if (!ordered || !acceptFiles[receipt.tool.id]) {
+      const note = !acceptFiles[receipt.tool.id]
+        ? `The receipt is from ${receipt.tool.id}, which cannot be re-run from a drop.`
+        : `The receipt names ${receipt.files.length} ${receipt.files.length === 1 ? 'file' : 'files'}; ${missing.length} of them ${missing.length === 1 ? 'was' : 'were'} not dropped (${missing.join('; ')}). Drop the receipt with every file it names.`;
+      pending = { type: 'inventory', result: { ...result, note } };
+      navigate('#/intake');
+      return true;
+    }
+    pending = { type: 'tool', toolId: receipt.tool.id, files: ordered.map((d) => asFile(d.row)), row: ordered[0].row, rows: ordered.map((d) => d.row), check: receipt };
+    navigate(`#${receipt.tool.id}`);
+    return true;
   }
 
   // After a tool renders: hand it the pending files, under a line that says
@@ -88,6 +117,17 @@ export function createHomeFiles({ acceptFiles, navigate, toolName }) {
     links.appendChild(choose);
     box.appendChild(links);
     body.insertBefore(box, body.firstChild);
+    if (p.check) {
+      const line = el('p', { class: 'receipt-check', role: 'status', text: 'Checking against the receipt: the result appears below when the tool finishes (confirm any column choices first).' });
+      box.appendChild(line);
+      onNextReceipt((now) => {
+        const c = compareReceipts(p.check, now);
+        line.textContent = c.reproduced
+          ? `Reproduced: same result as the receipt (${now.resultHash.slice(0, 12)}...).${c.differences.length ? ` ${c.differences.join(' ')}` : ''}`
+          : `Not reproduced. ${c.differences.join(' ')}`;
+        line.classList.toggle('warn', !c.reproduced);
+      });
+    }
     acceptFiles[p.toolId](body, p.files, { kind: p.row.kind });
     box.focus({ preventScroll: false });
   }

@@ -39,6 +39,7 @@ const EXPECT = {
   'tic-allowed-amounts.json': ['tic-allowed-amounts', 'certain', 'out_of_network'],
   'tic-toc.json': ['tic-toc', 'certain', 'reporting_structure'],
   'unknown.json': ['json-unknown', 'certain', 'widgets, color, nested'],
+  'receipt.json': ['receipt', 'certain', 'Sophie Well receipt'],
   'hpt-tall.csv': ['hpt-csv', 'certain', 'hospital_name, last_updated_on and version'],
   'fill-history.csv': ['csv-mapped', 'likely', 'Adherence: PDC, MPR and Gap Days'],
   'unknown.csv': ['csv-unknown', 'none', 'alpha, beta, gamma'],

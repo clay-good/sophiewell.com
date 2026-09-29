@@ -12,9 +12,15 @@ function download(obj, filename) {
   window.setTimeout(() => window.URL.revokeObjectURL(url), 0);
 }
 
+// A receipt check waiting for the tool's next result (spec-v1625 step 3):
+// the next receipt rendered is handed to it once.
+let nextReceipt = null;
+export function onNextReceipt(cb) { nextReceipt = cb; }
+
 // renderReceipt(root, { receipt, shareableReceipt }) appends the block.
 export function renderReceipt(root, { receipt, shareableReceipt }) {
   if (!receipt) return null;
+  if (nextReceipt) { const cb = nextReceipt; nextReceipt = null; cb(receipt); }
   const box = el('details', { class: 'receipt' });
   box.appendChild(el('summary', { text: 'Receipt' }));
   box.appendChild(el('p', { class: 'muted', text: 'What produced this result, so it can be shown to someone else and checked. The files are named by their SHA-256; none of their contents are in the receipt.' }));

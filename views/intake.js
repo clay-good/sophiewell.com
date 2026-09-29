@@ -43,6 +43,7 @@ export const entriesFromInput = (input) => [...(input.files || [])].map((file) =
 function opens(row, toolName, onOpen) {
   if (row.kind === 'excel' || row.confidence === 'none') return el('span', { text: unknownMessage(row.name, row) });
   if (row.family === 'reference') return el('span', { text: 'Reference table: drop it with the file it should be used for.' });
+  if (row.kind === 'receipt') return el('span', { text: 'Drop it together with the files it names to check the result.' });
   const liveTools = row.tools.filter((t) => t.status === 'live' && !t.route);
   if (!row.tools.length) return el('span', { text: 'We recognize this file, but no tool here reads it.' });
   if (!liveTools.length) return el('span', { text: PLANNED_TEXT });
@@ -100,7 +101,7 @@ export function renderIntake(main, { toolName = (id) => id, onOpen = () => {}, o
     worker.postMessage({ type: 'inventory', entries });
   };
 
-  function show({ rows, skipped, refused, limitReached }) {
+  function show({ rows, skipped, refused, limitReached, note }) {
     const known = rows.filter((r) => r.confidence !== 'none' && !r.ambiguous).length;
     const choose = rows.filter((r) => r.ambiguous).length;
     const none = rows.filter((r) => r.confidence === 'none').length;
@@ -111,6 +112,7 @@ export function renderIntake(main, { toolName = (id) => id, onOpen = () => {}, o
     if (skipped) text += ` ${skipped} system ${skipped === 1 ? 'file was' : 'files were'} skipped.`;
     status.textContent = text;
     if (limitReached) results.appendChild(el('p', { class: 'warn', text: limitReached }));
+    if (note) results.appendChild(el('p', { class: 'warn', text: note }));
     const wrap = el('div', { class: 'upload-mapping-scroll' });
     const table = el('table', { class: 'upload-mapping-table intake-table' });
     table.appendChild(el('caption', { text: 'What each file is' }));

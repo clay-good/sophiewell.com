@@ -64,3 +64,10 @@ test('privateOptions keeps settings and records free text only by its hash', asy
   assert.equal(o.stays.sha256, sha256Hex(stays));
   assert.ok(!JSON.stringify(o).includes('Jane'));
 });
+
+test('matchReceiptFiles orders dropped files as the receipt names them, or names the missing', async () => {
+  const { matchReceiptFiles } = await import('../../lib/receipt.js');
+  const r = { files: [{ name: 'A 1 of 2', sha256: 'aa' }, { name: 'A 2 of 2', sha256: 'bb' }] };
+  assert.deepEqual(matchReceiptFiles(r, [{ sha256: 'bb', n: 2 }, { sha256: 'aa', n: 1 }, { sha256: 'cc' }]).ordered.map((d) => d.n), [1, 2]);
+  assert.deepEqual(matchReceiptFiles(r, [{ sha256: 'aa' }]), { ordered: null, missing: ['A 2 of 2'] });
+});
