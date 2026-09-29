@@ -113,3 +113,10 @@ test('CSV export round-trips quotes and newlines and neutralizes spreadsheet for
   assert.deepEqual(parseDelimited(csv).rows[0], ['Smith, Ann', 'said "yes"\nthen left', '-3']);
   assert.throws(() => serializeCsv(['a'], [['x', 'y']]), /wrong number of columns/);
 });
+
+test('serializeCsv: an optional trailer is one closing comment row, on one line', () => {
+  const csv = serializeCsv(['a'], [['=1+1']], { trailer: 'Made by x,\nresult abc' });
+  assert.equal(csv.split('\r\n').at(-2), '# Made by x, result abc');
+  assert.ok(csv.includes("'=1+1"), 'the formula guard still applies to cells');
+  assert.equal(serializeCsv(['a'], [['1']]).split('\r\n').length, 3, 'no trailer, no extra row');
+});

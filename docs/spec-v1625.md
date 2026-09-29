@@ -47,3 +47,13 @@ across the browser worker and Node.
 
 The [spec-v1615](spec-v1615.md) Tests, plus: `npm run test:mcp` covers both new tools, and
 the MCP server still makes no network request (the existing no-egress test).
+
+## Build status
+
+| Step | Status | Differs from the spec |
+|---|---|---|
+| 1 `lib/receipt.js` and build info | **Built September 29, 2026.** `canonicalize`, `resultHash`, `buildReceipt`, `shareable`, `isReceipt`, `compareReceipts`; `lib/sha256.js`, an incremental SHA-256 in plain JavaScript (checked against `node:crypto` on every block boundary, about 190 MB/s); `lib/build-info.js`. | The checked-in `lib/build-info.js` says `'dev'` and `scripts/build.mjs` writes the real commit into `dist/lib/build-info.js` only, so a build never rewrites a tracked file (CI's idempotency check stays meaningful); there is no `builtAt`, which would make every build differ. Hashing uses the incremental SHA-256 rather than `crypto.subtle`, which cannot hash a file in chunks. |
+| 2 Receipts in the file tools | **X12 family built** (835, 837, 271, 277): each worker hashes its totals and every exported row and posts the receipt with its result; `views/receipt.js` shows it collapsed with two downloads, the shareable one first. Price file, CSV workbench and packet linter families open. | A row's source file is hashed as its position, not its name, so a renamed copy reproduces. |
+| 3 Checking a receipt | Open (`compareReceipts` is built and tested). | |
+| 4 MCP file tools | Open. | |
+| 5 Export footers | **Built for the X12 family.** `serializeCsv(headers, rows, { trailer })` ends a CSV with one `#` row: tool, build, data editions and result hash. | |

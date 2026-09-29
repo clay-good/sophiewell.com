@@ -2,6 +2,7 @@
 import { el, clear } from '../lib/dom.js';
 import { MAX_FILE_BYTES } from '../lib/upload-intake.js';
 import { resultRow } from '../lib/result-copy.js';
+import { renderReceipt } from './receipt.js';
 import { acceptVia } from '../lib/hand-off.js';
 
 const workerUrl = new URL('../lib/x12-835-worker.js', import.meta.url);
@@ -83,6 +84,7 @@ function reader835(root) {
           wrap.appendChild(button); results.appendChild(wrap);
         }
         results.appendChild(el('p', { class: 'muted', text: 'Structural and arithmetic checks only. Raw X12 code values are shown without proprietary code-list descriptions.' }));
+        renderReceipt(results, message);
       });
       worker.postMessage({ type: 'parse', files: payload }, payload.map((file) => file.buffer));
     } catch (error) { status.textContent = error instanceof Error ? error.message : 'The remittance could not be read.'; stop(); }
@@ -225,6 +227,7 @@ function check837(root) {
       const shown = message.preview.rows.length; results.appendChild(el('p', { class: 'muted', text: message.preview.total > shown ? `Showing the first ${shown} of ${message.preview.total} claims.` : `Showing all ${shown} claims.` }));
       table(results, 'Claim check results', message.preview.headers, message.preview.rows); downloads(results, worker);
       results.appendChild(el('p', { class: 'muted', text: 'Identifier checks prove format and check digits only. Diagnosis checks prove structure only. Raw X12 code values are preserved without code-list descriptions.' }));
+        renderReceipt(results, message);
     });
     worker.postMessage({ type: 'parse', files: payload }, payload.map((file) => file.buffer));
   });
@@ -259,6 +262,7 @@ function reader271(root) {
       const shown = message.preview.rows.length; results.appendChild(el('p', { class: 'muted', text: message.preview.total > shown ? `Showing the first ${shown} of ${message.preview.total} benefit lines.` : `Showing all ${shown} benefit lines.` }));
       table(results, 'Eligibility benefit lines', message.preview.headers, message.preview.rows); downloads(results, worker);
       results.appendChild(el('p', { class: 'muted', text: 'Raw X12 code values are shown without X12 code-list descriptions. Confirm benefits with the payer before relying on them.' }));
+        renderReceipt(results, message);
     });
     worker.postMessage({ type: 'parse', files: payload }, payload.map((file) => file.buffer));
   };
@@ -300,6 +304,7 @@ function reader277(root) {
       const shown = message.preview.rows.length; results.appendChild(el('p', { class: 'muted', text: message.preview.total > shown ? `Showing the first ${shown} of ${message.preview.total} claims.` : `Showing all ${shown} claims.` }));
       claimStatusTable(results, message.preview.headers, message.preview.rows); downloads(results, worker);
       results.appendChild(el('p', { class: 'muted', text: 'Accepted, pending and rejected are workflow groupings from the raw response values. Verify the raw category, status, entity and action codes before acting.' }));
+        renderReceipt(results, message);
     });
     worker.postMessage({ type: 'parse', files: payload }, payload.map((file) => file.buffer));
   });
