@@ -1,12 +1,11 @@
 {
+  "manifestVersion": 2,
   "dataset": "benzo-equiv",
   "label": "Benzodiazepine equivalence (Ashton)",
   "sourceUrl": "https://www.benzo.org.uk/manual/",
   "agency": "Ashton (public)",
   "status": "numeric-facts-with-attribution",
   "cadence": "static",
-  "fetchDate": "2026-09-27",
-  "offlineSeed": false,
   "recordCount": 8,
   "shards": [
     {
@@ -16,5 +15,12 @@
       "bytes": 314
     }
   ],
-  "notes": "Numeric equivalence values only, with attribution. Ashton Manual prose is not bundled. See docs/legal.md."
+  "notes": "Numeric equivalence values only, with attribution. Ashton Manual prose is not bundled. See docs/legal.md.",
+  "coverage": "subset",
+  "coverageNote": "Approximate equivalent doses of common benzodiazepines.",
+  "sourceEdition": "unversioned",
+  "curatedAt": "2026-05-05",
+  "contentChangedAt": "2026-05-05",
+  "expiresOn": "2028-05-05",
+  "recordsSha256": "20834b89c000837380bd2c9669833b91eaa887b4ee7c16edba5080bb96e48c4b"
 }

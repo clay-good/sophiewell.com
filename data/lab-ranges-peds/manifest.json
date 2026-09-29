@@ -1,12 +1,11 @@
 {
+  "manifestVersion": 2,
   "dataset": "lab-ranges-peds",
   "label": "Pediatric lab reference ranges by age band",
   "sourceUrl": "https://medlineplus.gov/lab-tests/",
   "agency": "NIH / NLM",
   "status": "public-domain",
   "cadence": "annual",
-  "fetchDate": "2026-09-27",
-  "offlineSeed": false,
   "recordCount": 8,
   "shards": [
     {
@@ -15,5 +14,12 @@
       "records": 8,
       "bytes": 690
     }
-  ]
+  ],
+  "coverage": "subset",
+  "coverageNote": "Common pediatric reference ranges by age band; the reporting lab's ranges govern.",
+  "sourceEdition": "unversioned",
+  "curatedAt": "2026-05-29",
+  "contentChangedAt": "2026-05-29",
+  "expiresOn": "2028-05-29",
+  "recordsSha256": "37bcfb1a001709ab4af3ab0d94f26e9e119d8fb880bfb05a773421dc1e4fb1c3"
 }

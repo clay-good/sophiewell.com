@@ -1,14 +1,20 @@
 {
+  "manifestVersion": 2,
   "dataset": "field-triage",
   "sourceUrl": "https://www.cdc.gov/mmwr/volumes/71/rr/rr7102a1.htm",
   "agency": "CDC",
   "status": "public-domain",
   "cadence": "as-published",
-  "fetchDate": "2026-09-27",
-  "offlineSeed": false,
   "recordCount": 4,
   "files": [
     "guidelines.json"
   ],
-  "notes": "CDC public-domain Field Triage Guidelines, summarized in original prose by the project author."
+  "notes": "CDC public-domain Field Triage Guidelines, summarized in original prose by the project author.",
+  "coverage": "subset",
+  "coverageNote": "The four steps of the CDC field triage guideline, summarized in original prose.",
+  "sourceEdition": "2021 guideline (MMWR 2022)",
+  "curatedAt": "2026-05-04",
+  "contentChangedAt": "2026-05-04",
+  "expiresOn": "2028-05-04",
+  "recordsSha256": "80403066ade21c0ee20c4a2ed46053e8fa22c3e47d43e01913e9e23280cb592f"
 }

@@ -15,7 +15,7 @@ row here, or CI fails. Foundational-instrument rows are documentation only
 was reviewed and deliberately retained, not missed.
 
 `accessed` records human verification of the citation text against the source —
-distinct from the dataset `fetchDate` in `data/*/manifest.json`. v54 does not
+distinct from the dataset `curatedAt` in `data/*/manifest.json`. v54 does not
 fetch any URL at build time (spec-v54 §7). No clinical formula or threshold
 changes here.
 

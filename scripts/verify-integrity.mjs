@@ -3,6 +3,12 @@
 //
 // Verifies that every shard's SHA-256 matches the value recorded in its
 // dataset's manifest.json. Walks the data folder. Zero runtime dependencies.
+//
+// spec-v1622 step 1: every dataset manifest is manifest v2 (spec-v1614 §1).
+// It states its coverage, edition, the date a person last checked it and when
+// it expires; `fetchedAt` only appears on data a builder actually downloaded,
+// never on a sample or a curated subset; and the old `fetchDate`, which the
+// weekly run restamped on data nobody fetched, appears nowhere under data/.
 
 import { createHash } from 'node:crypto';
 import { readdir, readFile, stat } from 'node:fs/promises';
@@ -28,6 +34,29 @@ async function* walkDirs(dir) {
   }
 }
 
+const ISO = /^\d{4}-\d{2}-\d{2}$/;
+const COVERAGES = new Set(['full', 'subset', 'sample']);
+
+// manifestProblems(manifest) -> [string]. Pure, so the unit test can pin it.
+export function manifestProblems(m) {
+  const out = [];
+  if (m.manifestVersion !== 2) out.push('manifestVersion is not 2');
+  if (!COVERAGES.has(m.coverage)) out.push(`coverage "${m.coverage}" is not full, subset or sample`);
+  if (m.coverage !== 'full' && !m.coverageNote) out.push('a subset or sample needs a coverageNote');
+  if (!m.sourceEdition) out.push('sourceEdition is missing');
+  for (const k of ['contentChangedAt', 'expiresOn']) if (!ISO.test(m[k] || '')) out.push(`${k} is not YYYY-MM-DD`);
+  if (m.coverage === 'full') {
+    if (!ISO.test(m.fetchedAt || '')) out.push('a full dataset needs fetchedAt');
+    if (!m.sourceSha256) out.push('a full dataset needs sourceSha256');
+  } else {
+    if ('fetchedAt' in m) out.push(`a ${m.coverage} was not fetched, so it cannot carry fetchedAt`);
+    if (!ISO.test(m.curatedAt || '')) out.push('curatedAt is not YYYY-MM-DD');
+  }
+  if ('fetchDate' in m) out.push('fetchDate is retired (spec-v1622); use fetchedAt or curatedAt');
+  if ('offlineSeed' in m) out.push('offlineSeed is retired (spec-v1622); coverage says whether data was fetched');
+  return out;
+}
+
 async function main() {
   let problems = 0;
   let manifests = 0;
@@ -40,6 +69,12 @@ async function main() {
     }
     manifests += 1;
     const manifest = JSON.parse(await readFile(candidate, 'utf8'));
+    if (manifest.dataset) {
+      for (const p of manifestProblems(manifest)) {
+        console.error(`MANIFEST v2: ${relative(ROOT, candidate)}: ${p}`);
+        problems += 1;
+      }
+    }
     const shards = manifest.shards || [];
     const layout = manifest.shardLayout === 'shards' ? 'shards' : 'root';
     for (const s of shards) {
@@ -61,6 +96,16 @@ async function main() {
       }
     }
   }
+  for await (const d of walkDirs(DATA)) {
+    for (const entry of await readdir(d, { withFileTypes: true })) {
+      if (!entry.isFile() || !entry.name.endsWith('.json')) continue;
+      const file = join(d, entry.name);
+      if ((await readFile(file, 'utf8')).includes('"fetchDate"')) {
+        console.error(`RETIRED FIELD: ${relative(ROOT, file)} carries fetchDate (spec-v1622)`);
+        problems += 1;
+      }
+    }
+  }
   if (manifests === 0) {
     console.log('verify-integrity: no manifests found.');
     process.exit(0);
@@ -73,7 +118,7 @@ async function main() {
   process.exit(1);
 }
 
-main().catch((err) => {
+if (process.argv[1] && process.argv[1].endsWith('verify-integrity.mjs')) main().catch((err) => {
   console.error('verify-integrity: fatal', err);
   process.exit(2);
 });

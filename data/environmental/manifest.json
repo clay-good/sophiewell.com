@@ -1,13 +1,19 @@
 {
+  "manifestVersion": 2,
   "dataset": "environmental",
   "sourceUrl": "https://wms.org/WMS/WMS/Research/WEM/CPG.aspx",
   "agency": "Wilderness Medical Society / standard medical literature",
   "status": "public-formulas-and-original-notes",
   "cadence": "as-needed",
-  "fetchDate": "2026-09-27",
-  "offlineSeed": false,
   "recordCount": 5,
   "files": [
     "environmental.json"
-  ]
+  ],
+  "coverage": "subset",
+  "coverageNote": "Hypothermia and heat-illness stages with original notes.",
+  "sourceEdition": "unversioned",
+  "curatedAt": "2026-05-29",
+  "contentChangedAt": "2026-05-29",
+  "expiresOn": "2028-05-29",
+  "recordsSha256": "6d841058f52c5800aa04bb55d37435ad65e2a0b48b4964727d326d2f4c55d928"
 }

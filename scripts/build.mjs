@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Copies the static site to dist/ for Cloudflare Pages deployment.
-// Stamps sw.js BUILD_HASH with the current commit-ish (or fetchDate fallback).
+// Stamps sw.js BUILD_HASH with a content hash of the shipped files.
 
 import { copyFile, mkdir, readFile, readdir, stat, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';

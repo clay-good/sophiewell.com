@@ -1,12 +1,11 @@
 {
+  "manifestVersion": 2,
   "dataset": "drg",
   "label": "MS-DRG (FY current)",
   "sourceUrl": "https://www.cms.gov/medicare/payment/prospective-payment-systems/acute-inpatient-pps",
   "agency": "CMS",
   "status": "public-domain",
   "cadence": "annual",
-  "fetchDate": "2026-09-27",
-  "offlineSeed": false,
   "recordCount": 8,
   "shards": [
     {
@@ -15,5 +14,12 @@
       "records": 8,
       "bytes": 927
     }
-  ]
+  ],
+  "coverage": "sample",
+  "coverageNote": "8 example MS-DRGs, not IPPS Table 5.",
+  "sourceEdition": "unversioned",
+  "curatedAt": "2026-05-29",
+  "contentChangedAt": "2026-05-29",
+  "expiresOn": "2028-05-29",
+  "recordsSha256": "cfd9af4a68cadbb9ac7a4c7b5a15f7dd82056cea0206938e9160317c225a5691"
 }

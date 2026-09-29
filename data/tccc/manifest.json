@@ -1,12 +1,11 @@
 {
+  "manifestVersion": 2,
   "dataset": "tccc",
   "label": "TCCC tourniquet & wound-packing reference",
   "sourceUrl": "https://www.deployedmedicine.com/",
   "agency": "CoTCCC (public)",
   "status": "numeric-facts-with-attribution",
   "cadence": "annual",
-  "fetchDate": "2026-09-27",
-  "offlineSeed": false,
   "recordCount": 2,
   "shards": [
     {
@@ -16,5 +15,12 @@
       "bytes": 486
     }
   ],
-  "notes": "Numeric thresholds plus brief original summaries by the project author. CoTCCC guideline prose is not reproduced. See docs/legal.md."
+  "notes": "Numeric thresholds plus brief original summaries by the project author. CoTCCC guideline prose is not reproduced. See docs/legal.md.",
+  "coverage": "subset",
+  "coverageNote": "Tourniquet and wound-packing numeric reference.",
+  "sourceEdition": "unversioned",
+  "curatedAt": "2026-05-29",
+  "contentChangedAt": "2026-05-29",
+  "expiresOn": "2028-05-29",
+  "recordsSha256": "cc8bb02f6da7778ec9c433df79c88152bdb6588ce8372ee0b14d6536d1e7e8b4"
 }

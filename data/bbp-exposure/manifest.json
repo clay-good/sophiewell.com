@@ -1,12 +1,11 @@
 {
+  "manifestVersion": 2,
   "dataset": "bbp-exposure",
   "label": "CDC bloodborne pathogen exposure decision aid (HIV/HBV/HCV)",
   "sourceUrl": "https://www.cdc.gov/niosh/topics/bbp/emergnedl.html",
   "agency": "CDC",
   "status": "public-domain",
   "cadence": "annual",
-  "fetchDate": "2026-09-27",
-  "offlineSeed": false,
   "recordCount": 3,
   "shards": [
     {
@@ -15,5 +14,12 @@
       "records": null,
       "bytes": 394
     }
-  ]
+  ],
+  "coverage": "subset",
+  "coverageNote": "CDC HIV, HBV and HCV occupational exposure steps.",
+  "sourceEdition": "unversioned",
+  "curatedAt": "2026-05-05",
+  "contentChangedAt": "2026-05-05",
+  "expiresOn": "2028-05-05",
+  "recordsSha256": "0a578ae48e4a44e4a4b52c6c82e98289f6ea2b787754bb7afcc895e9bcd6308b"
 }

@@ -1,12 +1,11 @@
 {
+  "manifestVersion": 2,
   "dataset": "apc",
   "label": "OPPS APC subset",
   "sourceUrl": "https://www.cms.gov/medicare/medicare-fee-for-service-payment/hospitaloutpatientpps",
   "agency": "CMS",
   "status": "public-domain",
   "cadence": "quarterly",
-  "fetchDate": "2026-09-27",
-  "offlineSeed": false,
   "recordCount": 5,
   "shards": [
     {
@@ -15,5 +14,12 @@
       "records": 5,
       "bytes": 624
     }
-  ]
+  ],
+  "coverage": "sample",
+  "coverageNote": "Example APCs, not OPPS Addendum A or B.",
+  "sourceEdition": "unversioned",
+  "curatedAt": "2026-05-29",
+  "contentChangedAt": "2026-05-29",
+  "expiresOn": "2028-05-29",
+  "recordsSha256": "879c2a108357b7e9d381b457b001baaaeb5588c4f3d87561609befd6c1026c28"
 }

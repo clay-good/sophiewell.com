@@ -101,3 +101,19 @@ is this list.
 stays offline keeps the build they last loaded, and with it that build's manifests.
 `datasetStatus` runs on the reader's clock, so an offline reader past `expiresOn` gets
 the expired behavior with no network. Nothing in the service worker changes.
+
+## Build status
+
+**Built September 29, 2026.** All five steps.
+
+| Step | Built | Differs from the spec |
+|---|---|---|
+| 1 Manifest v2 | `writeManifest()` in `scripts/build-data.mjs` writes `manifestVersion: 2`, `coverage`, `coverageNote`, `sourceEdition`, `curatedAt`, `contentChangedAt`, `expiresOn` and `recordsSha256` from one `COVERAGE` table. 15 datasets are `sample`, 31 are `subset`. `verify-integrity` rejects a missing field, `fetchedAt` on a sample or subset, and `fetchDate` anywhere under `data/` (three `data/workflow/*.json` files carried it; renamed `curatedAt`). The ICD-10-CM seed lost `M54.5`, `R51` (retired) and the parents `A00`, `E11`; a test asserts no sample code has a child in the sample. | `curatedAt` came from git history on the first run (the last commit that changed the records, ignoring the old date restamps) and is carried forward by `recordsSha256` after that. Editions are `unversioned` unless the seed itself states one: a guessed edition would be a new overstatement. |
+| 2 No date-only diffs | `writeIfChanged()` behind every shard, ancillary file and manifest. The refresh summary leads with *"15 sample datasets (not fetched) · 31 curated subsets · 0 fetched."* | CI gained a `Seed data is byte-stable` step (`git diff --exit-code -- data`), and the build-idempotency step no longer needs its manifest exclusion. |
+| 3 `datasetStatus` and the stamp | `datasetStatus`, `stampText`, `stampDetail` in `lib/data.js`; both "fetched" stamps replaced; `expired` renders in the `warn` style. | `due` starts 30 days after `nextExpected`. A manifest with no `expiresOn` is `expired` (fails closed). `stampDetail` is the stamp without the source name, for the tool view that already prints the name as a link. |
+| 4 Guards | Sample guard and expiry guard in `test/unit/data-freshness.test.js`, from a source scan of the loaders, raw `data/<id>/` fetches and `META.source.dataset`. The not-found wording rule is in `scripts/grep-check.mjs`. | The sample guard found three live tools answering from samples. `rvu-payment` filled RVUs from a typed code and GPCIs from a locality list (5 example codes, 4 example localities): the code field and locality picker are gone, and the conversion factor defaults to the dated constant. `drg-payment` filled the weight from 8 example DRGs: the code field is gone. `icd10-validate` said whether a code was "in the bundled sample set": the note and the fetch are gone. |
+| 5 One freshness list | `scripts/report-freshness.mjs` (`npm run data:freshness`) lists every `DATED_*` table row and every dataset. The expiry guard reads it. | No `DATED_TABLE` alias: the modules already export their tables as `DATED_*`, so the script discovers that prefix (`post-acute-clocks-v1514.js` gained a `DATED_SNF_COINSURANCE` export). A dated **family** is expired only when its newest row has lapsed, because year-keyed rows stay right for the year they describe. |
+
+**Found in passing.** The CY2026 Medicare conversion factor was $32.7442, the CY2024 figure; it is $33.4009 (nonqualifying APM) under CMS-1832-F. Fixed in the commit before this one.
+
+**Open.** The CY2027 Part A and B premiums, IRMAA, SNF coinsurance and MSP/LIS resource limits lapse on December 31, 2026; the expiry guard fails the build from January 1, 2027 until the next editions are added (CMS usually publishes them in November).

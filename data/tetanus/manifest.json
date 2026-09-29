@@ -1,12 +1,11 @@
 {
+  "manifestVersion": 2,
   "dataset": "tetanus",
   "label": "CDC Tetanus prophylaxis decision aid",
   "sourceUrl": "https://www.cdc.gov/tetanus/clinicians.html",
   "agency": "CDC",
   "status": "public-domain",
   "cadence": "annual",
-  "fetchDate": "2026-09-27",
-  "offlineSeed": false,
   "recordCount": 2,
   "shards": [
     {
@@ -15,5 +14,12 @@
       "records": null,
       "bytes": 372
     }
-  ]
+  ],
+  "coverage": "subset",
+  "coverageNote": "The CDC tetanus prophylaxis decision table.",
+  "sourceEdition": "unversioned",
+  "curatedAt": "2026-05-05",
+  "contentChangedAt": "2026-05-05",
+  "expiresOn": "2028-05-05",
+  "recordsSha256": "b16e3fced182e045e4d9cddf3b8278bbbae4b15f3ee0859bd7402011c48b854d"
 }

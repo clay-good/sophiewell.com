@@ -1,12 +1,11 @@
 {
+  "manifestVersion": 2,
   "dataset": "tb-tst-igra",
   "label": "CDC TB testing interpretation",
   "sourceUrl": "https://www.cdc.gov/tb/topic/testing/diagnosingltbi.htm",
   "agency": "CDC",
   "status": "public-domain",
   "cadence": "annual",
-  "fetchDate": "2026-09-27",
-  "offlineSeed": false,
   "recordCount": 2,
   "shards": [
     {
@@ -15,5 +14,12 @@
       "records": null,
       "bytes": 530
     }
-  ]
+  ],
+  "coverage": "subset",
+  "coverageNote": "CDC TST induration cutoffs by risk group and IGRA reading.",
+  "sourceEdition": "unversioned",
+  "curatedAt": "2026-05-05",
+  "contentChangedAt": "2026-05-05",
+  "expiresOn": "2028-05-05",
+  "recordsSha256": "17fa1910f5c9cdb66ad8827df8b8cbacd13695e81af87950361fceaf61fa834f"
 }

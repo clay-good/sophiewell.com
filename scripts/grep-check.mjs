@@ -4,6 +4,7 @@
 //  - emoji codepoints in source
 //  - em-dashes or en-dashes in source
 //  - catalog-count drift on user-facing marketing surfaces (spec-v46 §6)
+//  - "invalid" / "not found" in a view that reads a bundled dataset (spec-v1622)
 //
 // Scans index.html, styles.css, sw.js, all .js / .mjs files outside node_modules,
 // dist, data, and docs.
@@ -128,6 +129,7 @@ async function main() {
   }
   const catalogViolations = await scanCatalogCountDrift(truth);
   for (const v of catalogViolations) violations.push(v);
+  for (const v of await scanDatasetMissWording()) violations.push(v);
 
   if (violations.length === 0) {
     console.log('grep-check: clean.');
@@ -340,6 +342,38 @@ async function scanCatalogCountDrift(truth) {
           });
         }
       }
+    }
+  }
+  return violations;
+}
+
+// spec-v1622 step 4 -------------------------------------------------------
+//
+// Every bundled dataset is a sample or a curated subset. A lookup that misses
+// one has learned that the value is not in the bundled table -- not that the
+// reader's code is invalid or does not exist. A view that reads a dataset may
+// not put either word in a string it shows; it says "not in the bundled table".
+const DATASET_READ = /\bload(?:File|Shard|AllShards)\(/;
+const MISS_WORDS = /(['"`])(?:(?!\1).)*\b(?:not found|invalid)\b(?:(?!\1).)*\1/i;
+
+// datasetMissWording(text) -> [1-indexed line]. Pure, for the unit test.
+export function datasetMissWording(text) {
+  if (!DATASET_READ.test(text)) return [];
+  const out = [];
+  text.split(/\r?\n/).forEach((line, i) => {
+    if (/^\s*(?:\/\/|\*)/.test(line)) return;
+    if (MISS_WORDS.test(line)) out.push(i + 1);
+  });
+  return out;
+}
+
+async function scanDatasetMissWording() {
+  const violations = [];
+  const files = ['app.js', ...(await readdir(join(ROOT, 'views'))).filter((f) => f.endsWith('.js')).map((f) => `views/${f}`)];
+  for (const rel of files) {
+    const text = await readFile(join(ROOT, rel), 'utf8');
+    for (const line of datasetMissWording(text)) {
+      violations.push({ file: rel, line, name: 'dataset miss worded as invalid/not found (say "not in the bundled table")', text: text.split(/\r?\n/)[line - 1].trim().slice(0, 140) });
     }
   }
   return violations;

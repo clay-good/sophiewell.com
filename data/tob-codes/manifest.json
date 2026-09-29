@@ -1,12 +1,11 @@
 {
+  "manifestVersion": 2,
   "dataset": "tob-codes",
   "label": "NUBC Type of Bill structure",
   "sourceUrl": "https://www.nubc.org/",
   "agency": "NUBC (numeric/structural only)",
   "status": "numeric-facts-with-attribution",
   "cadence": "as-needed",
-  "fetchDate": "2026-09-27",
-  "offlineSeed": false,
   "recordCount": 3,
   "shards": [
     {
@@ -16,5 +15,12 @@
       "bytes": 909
     }
   ],
-  "notes": "Numeric TOB structural digits only. NUBC manual prose is not bundled."
+  "notes": "Numeric TOB structural digits only. NUBC manual prose is not bundled.",
+  "coverage": "sample",
+  "coverageNote": "Type-of-bill digit structure with example values, not the NUBC list.",
+  "sourceEdition": "unversioned",
+  "curatedAt": "2026-05-29",
+  "contentChangedAt": "2026-05-29",
+  "expiresOn": "2028-05-29",
+  "recordsSha256": "a05c47db53905c3be90768e498cf9093f015a19c083b25c9050794eed0a9961e"
 }

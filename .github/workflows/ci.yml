@@ -42,6 +42,11 @@ jobs:
       - run: npm ci
       - name: Build seed data
         run: SOPHIEWELL_OFFLINE=1 node scripts/build-data.mjs
+      - name: Seed data is byte-stable
+        # spec-v1622: a run over unchanged seeds writes nothing. The manifests
+        # used to carry a `fetchDate` restamped on every run, so this could not
+        # be checked; now a diff here means a builder is not deterministic.
+        run: git diff --exit-code -- data ':!data/search-corpus'
       - name: Verify data integrity
         run: node scripts/verify-integrity.mjs
       - name: Lint
@@ -59,9 +64,9 @@ jobs:
         # fresh clock into the SBOM on every run. Both are fixed; this fails if
         # a build ever moves one of the paths it writes again.
         #
-        # Two deliberate exclusions. The dataset manifests: the `Build seed data`
-        # step above re-stamps their fetchDate, which is its job (spec-v987).
-        # And data/search-corpus/manifest.json (spec-v993): its `gzipBytes` is a
+        # One deliberate exclusion (the dataset manifests are checked by the
+        # `Seed data is byte-stable` step): data/search-corpus/manifest.json
+        # (spec-v993). Its `gzipBytes` is a
         # measurement taken with the local zlib, so it differs between a
         # contributor's machine and this runner even when the corpus is
         # byte-identical -- the `hash` beside it is what actually pins the
@@ -110,6 +115,11 @@ jobs:
         run: npx playwright install --with-deps
       - name: Build seed data
         run: SOPHIEWELL_OFFLINE=1 node scripts/build-data.mjs
+      - name: Seed data is byte-stable
+        # spec-v1622: a run over unchanged seeds writes nothing. The manifests
+        # used to carry a `fetchDate` restamped on every run, so this could not
+        # be checked; now a diff here means a builder is not deterministic.
+        run: git diff --exit-code -- data ':!data/search-corpus'
       - name: End-to-end tests
         run: npm run test:e2e
       - name: Upload Playwright report

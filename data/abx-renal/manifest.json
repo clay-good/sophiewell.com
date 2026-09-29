@@ -1,12 +1,11 @@
 {
+  "manifestVersion": 2,
   "dataset": "abx-renal",
   "label": "Antibiotic renal dose adjustment subset",
   "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/",
   "agency": "FDA / NLM DailyMed",
   "status": "public-domain",
   "cadence": "quarterly",
-  "fetchDate": "2026-09-27",
-  "offlineSeed": false,
   "recordCount": 4,
   "shards": [
     {
@@ -15,5 +14,12 @@
       "records": 4,
       "bytes": 966
     }
-  ]
+  ],
+  "coverage": "subset",
+  "coverageNote": "Renal dose adjustments for common antibiotics from FDA labels.",
+  "sourceEdition": "unversioned",
+  "curatedAt": "2026-05-05",
+  "contentChangedAt": "2026-05-05",
+  "expiresOn": "2028-05-05",
+  "recordsSha256": "a9acb8d911385ba285674d1f65c1a50ad126600ae7ab65dbf0c7307453ba0304"
 }

@@ -65,13 +65,6 @@ import { REGISTRY } from '../../mcp/tools.js';
 // Keyed `tileId|dom`, and each needs the sentence: a bare id is a field somebody
 // once looked at rather than a decision.
 const OFFERS_MORE_THAN_IT_ACCEPTS = new Map([
-  // A convenience control, not an input. Picking a Medicare locality fills the
-  // three GPCI boxes from bundled data; the calculation takes the triplet, and
-  // `toArgs` drops this field on the floor. So the option list is whatever the
-  // bundled locality file happens to carry, and `values: ['manual']` says the
-  // only mode an agent has is to pass the GPCIs itself. Resolving it properly
-  // means teaching the adapter the locality table, which is a feature.
-  ['rvu-payment|rvu-loc', 'a view-only mode whose options come from bundled GPCI data and which toArgs ignores'],
 ]);
 
 test.skip(({ browserName }) => browserName !== 'chromium', 'catalog sweep is chromium-only');

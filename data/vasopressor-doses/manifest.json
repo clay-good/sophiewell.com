@@ -1,12 +1,11 @@
 {
+  "manifestVersion": 2,
   "dataset": "vasopressor-doses",
   "label": "Vasopressor dose / concentration reference",
   "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/",
   "agency": "FDA",
   "status": "public-domain",
   "cadence": "annual",
-  "fetchDate": "2026-09-27",
-  "offlineSeed": false,
   "recordCount": 6,
   "shards": [
     {
@@ -15,5 +14,12 @@
       "records": 6,
       "bytes": 646
     }
-  ]
+  ],
+  "coverage": "subset",
+  "coverageNote": "Dose ranges and standard concentrations for common vasopressors.",
+  "sourceEdition": "unversioned",
+  "curatedAt": "2026-05-05",
+  "contentChangedAt": "2026-05-05",
+  "expiresOn": "2028-05-05",
+  "recordsSha256": "6fc4687f1c50a33343aa6bd802ddde096a491dde5524118c53e12b08396ef865"
 }

@@ -22,14 +22,17 @@ test.skip(({ browserName }) => browserName !== 'chromium', 'driven through the b
 
 const ASYNC_TILES = [
   'opioid-mme', 'steroid-equiv', 'benzo-equiv', 'abx-renal', 'vasopressor',
-  'rvu-payment', 'drg-payment', 'field-triage',
+  'field-triage',
   'tetanus', 'rabies-pep', 'bbp-exposure', 'tb-testing', 'sti-screening',
 ];
 
 // Every `loadFile` call site in views/. If this moves, a tile has started (or
 // stopped) building its inputs from a fetch, and ASYNC_TILES needs the same
 // edit -- otherwise the new one ships uncovered.
-const LOAD_FILE_CALLS = 14;
+// spec-v1622 removed three: rvu-payment's conversion factor and GPCI list and
+// drg-payment's weight table were hand-written samples answering as if they
+// were the fee schedule and IPPS Table 5.
+const LOAD_FILE_CALLS = 11;
 
 test('the tiles that fetch their inputs still answer their own link', async ({ page }) => {
   test.setTimeout(300_000);

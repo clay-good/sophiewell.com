@@ -1,11 +1,10 @@
 {
+  "manifestVersion": 2,
   "dataset": "clinical",
   "sourceUrl": null,
   "agency": "various; see docs/clinical-citations.md",
   "status": "public-formulas-and-original-notes",
   "cadence": "as-needed",
-  "fetchDate": "2026-09-27",
-  "offlineSeed": false,
   "recordCount": 63,
   "files": [
     "formulas.json",
@@ -15,5 +14,12 @@
     "ismp-high-alert.json",
     "asa-status.json",
     "mallampati.json"
-  ]
+  ],
+  "coverage": "subset",
+  "coverageNote": "Common adult lab ranges, PALS vital-sign bands, ASA and Mallampati classes, with original notes.",
+  "sourceEdition": "unversioned",
+  "curatedAt": "2026-05-29",
+  "contentChangedAt": "2026-05-29",
+  "expiresOn": "2028-05-29",
+  "recordsSha256": "32fbfc9bf3e2ad4f80deb7243d32c8f614322c045958974aaba258a95acb2df6"
 }

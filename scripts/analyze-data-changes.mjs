@@ -187,9 +187,23 @@ async function listDatasets(root) {
   return out;
 }
 
+// spec-v1622 step 2: the first line says how much of the data was actually
+// fetched, so the backlog of hand-written samples is visible every week.
+// coverageLine(manifests) -> "12 sample datasets (not fetched) · 22 curated subsets · 0 fetched."
+export function coverageLine(manifests) {
+  const n = { sample: 0, subset: 0, full: 0 };
+  for (const m of manifests) if (m && m.dataset && m.coverage in n) n[m.coverage] += 1;
+  const plural = (k, one, many) => `${k} ${k === 1 ? one : many}`;
+  return `${plural(n.sample, 'sample dataset', 'sample datasets')} (not fetched) · ${plural(n.subset, 'curated subset', 'curated subsets')} · ${n.full} fetched.`;
+}
+
 async function main() {
   const out = [];
   out.push('# Data refresh summary');
+  out.push('');
+  const manifests = [];
+  for (const d of await listDatasets(CUR)) manifests.push(await readJson(join(CUR, d, 'manifest.json')));
+  out.push(coverageLine(manifests));
   out.push('');
   out.push(`Generated ${new Date().toISOString()}.`);
   if (!PREV) out.push('No previous data folder supplied; reporting current sizes only.');
@@ -216,4 +230,4 @@ async function main() {
   process.stdout.write(out.join('\n') + '\n');
 }
 
-main().catch((err) => { console.error(err); process.exit(1); });
+if (process.argv[1] && process.argv[1].endsWith('analyze-data-changes.mjs')) main().catch((err) => { console.error(err); process.exit(1); });

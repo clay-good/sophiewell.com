@@ -1,12 +1,11 @@
 {
+  "manifestVersion": 2,
   "dataset": "rabies-pep",
   "label": "CDC Rabies post-exposure prophylaxis decision aid",
   "sourceUrl": "https://www.cdc.gov/rabies/medical_care/index.html",
   "agency": "CDC",
   "status": "public-domain",
   "cadence": "annual",
-  "fetchDate": "2026-09-27",
-  "offlineSeed": false,
   "recordCount": 2,
   "shards": [
     {
@@ -15,5 +14,12 @@
       "records": null,
       "bytes": 655
     }
-  ]
+  ],
+  "coverage": "subset",
+  "coverageNote": "The CDC rabies post-exposure prophylaxis decision steps.",
+  "sourceEdition": "unversioned",
+  "curatedAt": "2026-05-05",
+  "contentChangedAt": "2026-05-05",
+  "expiresOn": "2028-05-05",
+  "recordsSha256": "1eec1cc54625c3ce13c9891446d60fb2b35141e42a5ec33d2b841a28b05888b3"
 }

@@ -56,7 +56,7 @@ M6 tools that need no dataset (`preventive-cost-share-check`, `ma-criteria-check
 
 | Milestone | Status |
 |---|---|
-| M1 | not started |
+| M1 | built September 29, 2026 ([build status](spec-v1622.md#build-status)) |
 | M2 | not started |
 | M3 | not started |
 | M4 | not started |

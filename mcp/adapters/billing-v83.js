@@ -29,7 +29,7 @@ export default [
     summary: 'ICD-10-CM structural and specificity check: category/subcategory grammar and whether a 7th character is required.',
     compute: C.icd10Validate,
     fields: [
-      { dom: 'icd-in', arg: 'code', kind: 'string', required: true, label: 'ICD-10-CM code, e.g. M54.5' },
+      { dom: 'icd-in', arg: 'code', kind: 'string', required: true, label: 'ICD-10-CM code, e.g. M54.50' },
     ],
   },
   // spec-v629 wave 2: the facility-pricing / remittance calculators in the same

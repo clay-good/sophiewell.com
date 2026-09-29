@@ -888,7 +888,7 @@ import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
 import { renderers as RPALINT } from './views/pa-lint.js';
 import { META } from './lib/meta.js';
-import { fetchJson } from './lib/data.js';
+import { fetchJson, datasetStatus, stampDetail } from './lib/data.js';
 import { copyButton } from './lib/clipboard.js';
 import { installKeyboard } from './lib/keyboard.js';
 import { parseHash, patchHash, buildHash } from './lib/hash.js';
@@ -4789,7 +4789,13 @@ function renderMetaBlock(util) {
       } else {
         stamp.appendChild(document.createTextNode(meta.source.label));
       }
-      if (m && m.fetchDate) stamp.appendChild(document.createTextNode(`, fetched ${m.fetchDate}`));
+      // spec-v1622: this used to append ", fetched <date>" -- the date of the
+      // last weekly run, printed under hand-written data nobody fetched.
+      if (m) {
+        const st = datasetStatus(m);
+        stamp.appendChild(document.createTextNode(`. ${stampDetail(m, st)}`));
+        if (st.status === 'expired') stamp.classList.add('warn');
+      }
     }).catch(() => {
       stamp.textContent = `Source: ${meta.source.label}`;
     });

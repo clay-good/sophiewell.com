@@ -1,13 +1,19 @@
 {
+  "manifestVersion": 2,
   "dataset": "mci-triage",
   "sourceUrl": "https://www.start-triage.com/",
   "agency": "Public-domain MCI triage algorithms",
   "status": "public-domain",
   "cadence": "as-published",
-  "fetchDate": "2026-09-27",
-  "offlineSeed": false,
   "recordCount": 2,
   "files": [
     "algorithms.json"
-  ]
+  ],
+  "coverage": "subset",
+  "coverageNote": "The START and JumpSTART decision steps.",
+  "sourceEdition": "unversioned",
+  "curatedAt": "2026-05-04",
+  "contentChangedAt": "2026-05-04",
+  "expiresOn": "2028-05-04",
+  "recordsSha256": "af70fe25036fb0a93afbf31c598111f37070e3fe0b3e7d350fd09093cf03dec5"
 }

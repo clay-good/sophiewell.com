@@ -35,6 +35,7 @@
     "favicons": "node scripts/build-favicons.mjs",
     "data:refresh": "node scripts/build-data.mjs",
     "data:verify": "node scripts/verify-integrity.mjs",
+    "data:freshness": "node scripts/report-freshness.mjs",
     "sbom": "node scripts/build-sbom.mjs",
     "release:check": "npm run lint && npm run test && npm run test:mcp && npm run sbom && npm run build",
     "clean": "node -e \"import('node:fs').then(({rmSync})=>{try{rmSync('dist',{recursive:true,force:true})}catch{}})\""

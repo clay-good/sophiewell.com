@@ -1,25 +1,24 @@
 {
+  "manifestVersion": 2,
   "dataset": "icd10cm",
   "sourceUrl": "https://www.cms.gov/medicare/coding-billing/icd-10-codes",
   "agency": "CMS / NCHS",
   "status": "public-domain",
   "cadence": "annual",
-  "fetchDate": "2026-09-27",
-  "offlineSeed": false,
-  "recordCount": 20,
+  "recordCount": 18,
   "shardLayout": "shards",
   "shards": [
     {
       "name": "A.json",
-      "sha256": "21293b83d93f3b76e6c03fe2f18fe1600efe27bea943410ea0e9e007bf672209",
-      "records": 4,
-      "bytes": 231
+      "sha256": "0dbf4a711d0cc7789095728a7afcec67019d1c97f595b8e43691cbe492980d79",
+      "records": 3,
+      "bytes": 199
     },
     {
       "name": "E.json",
-      "sha256": "e6bf6157a524fbf24511a094f2e2124043b18e4ee9e9e5002a8c5d747b548a43",
-      "records": 3,
-      "bytes": 194
+      "sha256": "512ca9ddfc2ad666b5dbe4a48db58804ad9f69c02f442163f5b7687bf6ffbed0",
+      "records": 2,
+      "bytes": 145
     },
     {
       "name": "I.json",
@@ -41,9 +40,9 @@
     },
     {
       "name": "M.json",
-      "sha256": "96c3bf0f15013ff6e7d91078ffd0235f074a0d30457f49d04fa5d6e0ede39818",
+      "sha256": "dd88ca3c828ec5d0c993fe0b0e0b125d26b0bb41a1d717ef59eda49e55143107",
       "records": 1,
-      "bytes": 41
+      "bytes": 55
     },
     {
       "name": "N.json",
@@ -53,9 +52,9 @@
     },
     {
       "name": "R.json",
-      "sha256": "06ec844f2a103d5b702cf881fe0b5944f4e38faea6a2f3fde2eaf9058d8519ca",
+      "sha256": "a37a52fc01fa6241439c72b9f298069ab14f6ef49f856669ed5e386dcf346add",
       "records": 3,
-      "bytes": 137
+      "bytes": 152
     },
     {
       "name": "Z.json",
@@ -63,5 +62,12 @@
       "records": 1,
       "bytes": 102
     }
-  ]
+  ],
+  "coverage": "sample",
+  "coverageNote": "18 example billable codes, not the ICD-10-CM code list.",
+  "sourceEdition": "unversioned",
+  "curatedAt": "2026-09-29",
+  "contentChangedAt": "2026-09-29",
+  "expiresOn": "2028-09-29",
+  "recordsSha256": "ab215732858aee2c067d1dd968f60d6715a5a7e2df6e0857646cb9a589aaffca"
 }

@@ -1,11 +1,10 @@
 {
+  "manifestVersion": 2,
   "dataset": "hcpcs",
   "sourceUrl": "https://www.cms.gov/medicare/coding-billing/healthcare-common-procedure-system",
   "agency": "CMS",
   "status": "public-domain",
   "cadence": "quarterly",
-  "fetchDate": "2026-09-27",
-  "offlineSeed": false,
   "recordCount": 10,
   "shards": [
     {
@@ -14,5 +13,12 @@
       "records": 10,
       "bytes": 1100
     }
-  ]
+  ],
+  "coverage": "sample",
+  "coverageNote": "10 example Level II codes, not the code list.",
+  "sourceEdition": "unversioned",
+  "curatedAt": "2026-05-29",
+  "contentChangedAt": "2026-05-29",
+  "expiresOn": "2028-05-29",
+  "recordsSha256": "9d256202049d80046252b1ed16119ac7d00f549abc111aeea66b13684c956824"
 }

@@ -1,11 +1,10 @@
 {
+  "manifestVersion": 2,
   "dataset": "cpt-summaries",
   "sourceUrl": null,
   "agency": "sophiewell.com (Clay Good)",
   "status": "mit-original",
   "cadence": "as-needed",
-  "fetchDate": "2026-09-27",
-  "offlineSeed": false,
   "notes": "Original plain-English category summaries written by the project author. Not derived from AMA CPT descriptors. MIT-licensed. See docs/legal.md.",
   "recordCount": 9,
   "shards": [
@@ -15,5 +14,12 @@
       "records": 9,
       "bytes": 2113
     }
-  ]
+  ],
+  "coverage": "subset",
+  "coverageNote": "Original plain-English summaries of nine CPT code ranges; no AMA descriptors.",
+  "sourceEdition": "unversioned",
+  "curatedAt": "2026-05-29",
+  "contentChangedAt": "2026-05-29",
+  "expiresOn": "2028-05-29",
+  "recordsSha256": "7e105f389c585e407c5bdd8db66e1e68f2713fd54f1dedfe8caada6ca4ef2ccd"
 }

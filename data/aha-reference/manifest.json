@@ -1,14 +1,20 @@
 {
+  "manifestVersion": 2,
   "dataset": "aha-reference",
   "sourceUrl": "https://cpr.heart.org/en/resuscitation-science/cpr-and-ecc-guidelines",
   "agency": "American Heart Association (numeric reference)",
   "status": "numeric-facts-with-attribution",
   "cadence": "as-published",
-  "fetchDate": "2026-09-27",
-  "offlineSeed": false,
   "recordCount": 15,
   "files": [
     "aha-reference.json"
   ],
-  "notes": "Numeric reference values (doses, intervals, joules) only. AHA flowcharts not reproduced."
+  "notes": "Numeric reference values (doses, intervals, joules) only. AHA flowcharts not reproduced.",
+  "coverage": "subset",
+  "coverageNote": "Numeric resuscitation facts only (doses, intervals, energies); no AHA flowcharts.",
+  "sourceEdition": "2020 guidelines",
+  "curatedAt": "2026-05-29",
+  "contentChangedAt": "2026-05-29",
+  "expiresOn": "2028-05-29",
+  "recordsSha256": "30b6f11f802204f6a97bb963a7ed883964869c469aec4312d810793ba77abdb6"
 }

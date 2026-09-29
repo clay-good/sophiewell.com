@@ -1,12 +1,11 @@
 {
+  "manifestVersion": 2,
   "dataset": "sti-screening",
   "label": "CDC STI Screening Intervals",
   "sourceUrl": "https://www.cdc.gov/std/treatment-guidelines/screening-recommendations.htm",
   "agency": "CDC",
   "status": "public-domain",
   "cadence": "annual",
-  "fetchDate": "2026-09-27",
-  "offlineSeed": false,
   "recordCount": 4,
   "shards": [
     {
@@ -15,5 +14,12 @@
       "records": 4,
       "bytes": 454
     }
-  ]
+  ],
+  "coverage": "subset",
+  "coverageNote": "CDC STI screening intervals for common populations.",
+  "sourceEdition": "unversioned",
+  "curatedAt": "2026-05-05",
+  "contentChangedAt": "2026-05-05",
+  "expiresOn": "2028-05-05",
+  "recordsSha256": "e38736f0cc3990dcf53ebc9a9a4422683e474123e85a19aeed1cf937b01235d6"
 }

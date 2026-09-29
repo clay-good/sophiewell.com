@@ -35,9 +35,8 @@ export default [
       { dom: 'rvu-mpg', arg: 'mpGpci', kind: 'number', required: true, label: 'Malpractice GPCI' },
       { dom: 'rvu-cf', arg: 'conversionFactor', kind: 'number', required: true, label: 'Conversion factor ($)' },
       { dom: 'rvu-units', arg: 'units', kind: 'number', label: 'Units (default 1)' },
-      { dom: 'rvu-loc', arg: 'loc', kind: 'enum', values: ['manual'], label: 'GPCI entry mode (manual)' },
     ],
-    // Map the RVU/GPCI/CF inputs; rvu-loc is a view-only mode and is ignored.
+    // Map the RVU/GPCI/CF inputs.
     toArgs: (i) => {
       const n = (k) => Number(i[k]);
       const args = {

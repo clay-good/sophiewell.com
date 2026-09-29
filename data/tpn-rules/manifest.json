@@ -1,12 +1,11 @@
 {
+  "manifestVersion": 2,
   "dataset": "tpn-rules",
   "label": "TPN macronutrient reference",
   "sourceUrl": null,
   "agency": "sophiewell.com (numeric)",
   "status": "mit-original",
   "cadence": "annual",
-  "fetchDate": "2026-09-27",
-  "offlineSeed": false,
   "recordCount": 3,
   "shards": [
     {
@@ -15,5 +14,12 @@
       "records": null,
       "bytes": 192
     }
-  ]
+  ],
+  "coverage": "subset",
+  "coverageNote": "Macronutrient energy densities and limits.",
+  "sourceEdition": "unversioned",
+  "curatedAt": "2026-05-05",
+  "contentChangedAt": "2026-05-05",
+  "expiresOn": "2028-05-05",
+  "recordsSha256": "b7183b88773e9e8155c185db3460b8f40b86c9c44fc056426885430318ebc64b"
 }

@@ -1,12 +1,11 @@
 {
+  "manifestVersion": 2,
   "dataset": "steroid-equiv",
   "label": "Glucocorticoid equivalence (numeric)",
   "sourceUrl": null,
   "agency": "sophiewell.com",
   "status": "mit-original",
   "cadence": "static",
-  "fetchDate": "2026-09-27",
-  "offlineSeed": false,
   "recordCount": 8,
   "shards": [
     {
@@ -15,5 +14,12 @@
       "records": 8,
       "bytes": 574
     }
-  ]
+  ],
+  "coverage": "subset",
+  "coverageNote": "Equivalent doses of eight glucocorticoids.",
+  "sourceEdition": "unversioned",
+  "curatedAt": "2026-05-05",
+  "contentChangedAt": "2026-05-05",
+  "expiresOn": "2028-05-05",
+  "recordsSha256": "129111cf781093e1b73f0a8d2a3e7f3f38b36641e6531ab49ec3312e138beeeb"
 }

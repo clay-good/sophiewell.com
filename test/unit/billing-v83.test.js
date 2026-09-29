@@ -55,7 +55,7 @@ test('mbi-validate: accepts a well-formed MBI; names the first offending positio
 // ---- 2.3 icd10-validate -----------------------------------------------------
 test('icd10-validate: structural grammar + the required-7th-character specificity gate', () => {
   // A complete, valid code with no 7th char required.
-  assert.equal(icd10Validate({ code: 'M54.5' }).valid, true);
+  assert.equal(icd10Validate({ code: 'M54.50' }).valid, true);
   // 7th character required but absent -> incomplete (would deny for specificity).
   const need = icd10Validate({ code: 'S52.5', requires7th: true });
   assert.equal(need.valid, false);

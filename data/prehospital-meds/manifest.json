@@ -1,14 +1,20 @@
 {
+  "manifestVersion": 2,
   "dataset": "prehospital-meds",
   "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/",
   "agency": "FDA",
   "status": "public-domain",
   "cadence": "as-needed",
-  "fetchDate": "2026-09-27",
-  "offlineSeed": false,
   "recordCount": 22,
   "files": [
     "meds.json"
   ],
-  "notes": "Standard prehospital medication identities and reference doses derived from FDA labeling. Reference only; local protocols and AHA guidelines govern."
+  "notes": "Standard prehospital medication identities and reference doses derived from FDA labeling. Reference only; local protocols and AHA guidelines govern.",
+  "coverage": "subset",
+  "coverageNote": "Standard prehospital medications and reference doses from FDA labeling.",
+  "sourceEdition": "unversioned",
+  "curatedAt": "2026-05-04",
+  "contentChangedAt": "2026-05-04",
+  "expiresOn": "2028-05-04",
+  "recordsSha256": "f8ec3cff30e6bc3530657748b177058cd16adc898084e4a53631ecc1b39dbd38"
 }

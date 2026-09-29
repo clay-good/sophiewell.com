@@ -242,7 +242,7 @@ test('spec-v629: non-clinical validators exposed with the administrative domain'
   assert.match(npi.result.note, /Valid NPI/);
   assert.ok(/payment|coverage|compliance/i.test(npi.disclaimer), 'carries the admin disclaimer, not the clinical one');
 
-  assert.equal(computeCalculator({ id: 'icd10-validate', inputs: { 'icd-in': 'M54.5' } }).valid, true);
+  assert.equal(computeCalculator({ id: 'icd10-validate', inputs: { 'icd-in': 'M54.50' } }).valid, true);
   assert.equal(describeCalculator({ id: 'mbi-validate' }).domain, 'administrative');
 
   // clinical tiles keep the clinical domain and a different disclaimer
@@ -274,7 +274,7 @@ test('spec-v629 wave 3: rvu/bilateral/multi-surgeon/sequestration price correctl
   const rvu = computeCalculator({
     id: 'rvu-payment',
     inputs: {
-      'rvu-work': '1.92', 'rvu-penf': '1.5', 'rvu-pef': '0.69', 'rvu-mp': '0.13', 'rvu-loc': 'manual', 'rvu-wg': '1', 'rvu-peg': '1', 'rvu-mpg': '1', 'rvu-cf': '33.4009', 'rvu-units': '1',
+      'rvu-work': '1.92', 'rvu-penf': '1.5', 'rvu-pef': '0.69', 'rvu-mp': '0.13', 'rvu-wg': '1', 'rvu-peg': '1', 'rvu-mpg': '1', 'rvu-cf': '33.4009', 'rvu-units': '1',
     },
   });
   assert.equal(rvu.valid, true);

@@ -1,12 +1,11 @@
 {
+  "manifestVersion": 2,
   "dataset": "lab-ranges-adult",
   "label": "NIH MedlinePlus adult lab reference ranges",
   "sourceUrl": "https://medlineplus.gov/lab-tests/",
   "agency": "NIH / NLM",
   "status": "public-domain",
   "cadence": "annual",
-  "fetchDate": "2026-09-27",
-  "offlineSeed": false,
   "recordCount": 9,
   "shards": [
     {
@@ -15,5 +14,12 @@
       "records": 9,
       "bytes": 1004
     }
-  ]
+  ],
+  "coverage": "subset",
+  "coverageNote": "Common adult reference ranges; the reporting lab's ranges govern.",
+  "sourceEdition": "unversioned",
+  "curatedAt": "2026-05-29",
+  "contentChangedAt": "2026-05-29",
+  "expiresOn": "2028-05-29",
+  "recordsSha256": "b57baba3dcfa5148546c164da86d706a2652b2a690fdb494fd8ad444e2ef9fee"
 }

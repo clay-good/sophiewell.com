@@ -34,6 +34,7 @@ import { mkdir, readFile, readdir, writeFile, stat } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { dirname, join, relative, resolve } from 'node:path';
 import { gzipSync } from 'node:zlib';
+import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -136,17 +137,157 @@ function shardRecords(records, shardKeyFn) {
   return shards;
 }
 
+// spec-v1622 step 2: a refresh that changed nothing writes nothing. Bytes equal
+// to the file on disk are left alone, so the weekly run stops producing
+// date-only diffs.
+async function writeIfChanged(dest, text) {
+  if (existsSync(dest) && (await readFile(dest, 'utf8')) === text) return false;
+  await ensureDir(dirname(dest));
+  await writeFile(dest, text, 'utf8');
+  return true;
+}
+
 async function writeShard(folder, name, payload) {
   const dest = join(folder, name);
-  await ensureDir(dirname(dest));
   const json = JSON.stringify(payload);
-  await writeFile(dest, json, 'utf8');
+  await writeIfChanged(dest, json);
   return { name, sha256: sha256(json), records: Array.isArray(payload) ? payload.length : null, bytes: Buffer.byteLength(json, 'utf8') };
+}
+
+// --- Manifest v2 (spec-v1614 §1, spec-v1622 step 1) -----------------------
+//
+// Nothing here is fetched yet: every dataset is hand-written, so none carries
+// `fetchedAt` or `sourceSha256`. Each is either a `sample` (a handful of
+// example rows standing in for a federal file) or a `subset` (a deliberately
+// partial reference table, with the filter stated in `coverageNote`).
+//
+// `curatedAt` is the date a person last changed the records. It moves only
+// when the records hash moves, so a run over unchanged seeds leaves every
+// manifest byte-identical. The first v2 run took it from git history (the
+// last commit that changed the records, ignoring the old weekly date
+// restamps); after that the committed manifest carries it forward.
+//
+// A curated table expires two years after it was last checked: the
+// spec-v1517 rule (twice the cadence) applied to an annual source, and used
+// for every curated table because a person re-checking it, not a publisher's
+// edition cycle, is what keeps it true.
+const CURATED_LIFETIME_YEARS = 2;
+
+const SAMPLE = (note) => ({ coverage: 'sample', coverageNote: note });
+const SUBSET = (note) => ({ coverage: 'subset', coverageNote: note });
+
+const COVERAGE = {
+  icd10cm: { ...SAMPLE('18 example billable codes, not the ICD-10-CM code list.'), sourceEdition: 'unversioned' },
+  hcpcs: { ...SAMPLE('10 example Level II codes, not the code list.'), sourceEdition: 'unversioned' },
+  'cpt-summaries': { ...SUBSET('Original plain-English summaries of nine CPT code ranges; no AMA descriptors.'), sourceEdition: 'unversioned' },
+  mpfs: { ...SAMPLE('5 example codes and 4 example GPCI localities; the conversion factor is the CY2026 final-rule figure.'), sourceEdition: 'CY2026 conversion factor' },
+  ndc: { ...SAMPLE('5 example NDC directory rows, not the directory.'), sourceEdition: 'unversioned' },
+  crosswalks: { ...SAMPLE('Example place-of-service, modifier, revenue, CARC and RARC rows, not the full code lists.'), sourceEdition: 'unversioned' },
+  'no-surprises': { ...SAMPLE('Four example No Surprises Act scenarios, not the rule text.'), sourceEdition: 'unversioned' },
+  clinical: { ...SUBSET('Common adult lab ranges, PALS vital-sign bands, ASA and Mallampati classes, with original notes.'), sourceEdition: 'unversioned' },
+  'field-triage': { ...SUBSET('The four steps of the CDC field triage guideline, summarized in original prose.'), sourceEdition: '2021 guideline (MMWR 2022)' },
+  'mci-triage': { ...SUBSET('The START and JumpSTART decision steps.'), sourceEdition: 'unversioned' },
+  'prehospital-meds': { ...SUBSET('Standard prehospital medications and reference doses from FDA labeling.'), sourceEdition: 'unversioned' },
+  'aha-reference': { ...SUBSET('Numeric resuscitation facts only (doses, intervals, energies); no AHA flowcharts.'), sourceEdition: '2020 guidelines' },
+  environmental: { ...SUBSET('Hypothermia and heat-illness stages with original notes.'), sourceEdition: 'unversioned' },
+  toxidromes: { ...SUBSET('Classic toxidromes with original notes.'), sourceEdition: 'unversioned' },
+  'hcpcs-modifiers': { ...SAMPLE('Common modifiers only, not the modifier list.'), sourceEdition: 'unversioned' },
+  'pos-codes': { ...SAMPLE('Common place-of-service codes only, not the code list.'), sourceEdition: 'unversioned' },
+  'tob-codes': { ...SAMPLE('Type-of-bill digit structure with example values, not the NUBC list.'), sourceEdition: 'unversioned' },
+  'revenue-codes': { ...SAMPLE('Common revenue codes only, not the NUBC list.'), sourceEdition: 'unversioned' },
+  'nubc-special-codes': { ...SAMPLE('Example condition, occurrence and value codes, not the NUBC lists.'), sourceEdition: 'unversioned' },
+  drg: { ...SAMPLE('8 example MS-DRGs, not IPPS Table 5.'), sourceEdition: 'unversioned' },
+  apc: { ...SAMPLE('Example APCs, not OPPS Addendum A or B.'), sourceEdition: 'unversioned' },
+  'icd10-pcs': { ...SAMPLE('Example ICD-10-PCS codes, not the code set.'), sourceEdition: 'unversioned' },
+  rxnorm: { ...SAMPLE('Example RxNorm concepts, not the RxNorm release.'), sourceEdition: 'unversioned' },
+  tetanus: { ...SUBSET('The CDC tetanus prophylaxis decision table.'), sourceEdition: 'unversioned' },
+  'rabies-pep': { ...SUBSET('The CDC rabies post-exposure prophylaxis decision steps.'), sourceEdition: 'unversioned' },
+  'bbp-exposure': { ...SUBSET('CDC HIV, HBV and HCV occupational exposure steps.'), sourceEdition: 'unversioned' },
+  'tb-tst-igra': { ...SUBSET('CDC TST induration cutoffs by risk group and IGRA reading.'), sourceEdition: 'unversioned' },
+  'sti-screening': { ...SUBSET('CDC STI screening intervals for common populations.'), sourceEdition: 'unversioned' },
+  'lab-ranges-adult': { ...SUBSET('Common adult reference ranges; the reporting lab\'s ranges govern.'), sourceEdition: 'unversioned' },
+  'lab-ranges-peds': { ...SUBSET('Common pediatric reference ranges by age band; the reporting lab\'s ranges govern.'), sourceEdition: 'unversioned' },
+  'therapeutic-drug-levels': { ...SUBSET('Therapeutic ranges for commonly monitored drugs.'), sourceEdition: 'unversioned' },
+  'tox-levels': { ...SUBSET('Toxic levels for common ingestions.'), sourceEdition: 'unversioned' },
+  'cms-1500-fields': { ...SUBSET('Original field-by-field summaries of the CMS-1500 form.'), sourceEdition: 'unversioned' },
+  'ub04-fields': { ...SUBSET('Original form-locator summaries of the UB-04.'), sourceEdition: 'unversioned' },
+  'eob-glossary': { ...SUBSET('Original plain-language EOB terms.'), sourceEdition: 'unversioned' },
+  'dot-erg': { ...SUBSET('Example guide entries, not the Emergency Response Guidebook.'), sourceEdition: 'unversioned' },
+  'niosh-pg': { ...SUBSET('Example chemicals, not the NIOSH Pocket Guide.'), sourceEdition: 'unversioned' },
+  tccc: { ...SUBSET('Tourniquet and wound-packing numeric reference.'), sourceEdition: 'unversioned' },
+  'cpr-aha-numeric': { ...SUBSET('CPR rates, depths and ratios only; no AHA flowcharts.'), sourceEdition: '2020 guidelines' },
+  'mme-factors': { ...SUBSET('The CDC opioid MME conversion factors.'), sourceEdition: '2022 guideline' },
+  'steroid-equiv': { ...SUBSET('Equivalent doses of eight glucocorticoids.'), sourceEdition: 'unversioned' },
+  'benzo-equiv': { ...SUBSET('Approximate equivalent doses of common benzodiazepines.'), sourceEdition: 'unversioned' },
+  'abx-renal': { ...SUBSET('Renal dose adjustments for common antibiotics from FDA labels.'), sourceEdition: 'unversioned' },
+  'vasopressor-doses': { ...SUBSET('Dose ranges and standard concentrations for common vasopressors.'), sourceEdition: 'unversioned' },
+  'tpn-rules': { ...SUBSET('Macronutrient energy densities and limits.'), sourceEdition: 'unversioned' },
+  'iv-to-po': { ...SUBSET('IV-to-oral conversions for common drugs.'), sourceEdition: 'unversioned' },
+};
+
+const TODAY = new Date().toISOString().slice(0, 10);
+
+function addYears(iso, years) {
+  const [y, m, d] = iso.split('-').map(Number);
+  const dt = new Date(Date.UTC(y + years, m - 1, d));
+  // Feb 29 plus whole years lands on Mar 1; use Feb 28 so the year count holds.
+  if (dt.getUTCMonth() !== m - 1) dt.setUTCDate(0);
+  return dt.toISOString().slice(0, 10);
+}
+
+// Every data file in the dataset folder except the manifest, hashed in path
+// order: the records hash that decides whether anything changed.
+async function recordsHash(folder) {
+  const files = [];
+  for await (const f of walk(folder)) if (!f.endsWith('manifest.json')) files.push(f);
+  files.sort();
+  const h = createHash('sha256');
+  for (const f of files) {
+    h.update(relative(folder, f));
+    h.update(await readFile(f));
+  }
+  return h.digest('hex');
+}
+
+// The date a person last changed these records, from git history. Used once,
+// when a dataset has no v2 manifest yet. Lines that only restamped the old
+// `fetchDate` do not count as a change.
+function curatedFromGit(folder) {
+  try {
+    const rel = relative(ROOT, folder);
+    const log = execFileSync('git', ['log', '--format=%H %cs', '--', rel, `:!${rel}/manifest.json`], { cwd: ROOT, encoding: 'utf8' });
+    for (const line of log.trim().split('\n').filter(Boolean)) {
+      const [sha, date] = line.split(' ');
+      const diff = execFileSync('git', ['show', '--format=', '-U0', sha, '--', rel, `:!${rel}/manifest.json`], { cwd: ROOT, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 });
+      if (diff.split('\n').some((l) => /^[+-][^+-]/.test(l) && !/"fetchDate"/.test(l))) return date;
+    }
+  } catch { /* not a git checkout: fall through */ }
+  return null;
 }
 
 async function writeManifest(folder, manifest) {
   const dest = join(folder, 'manifest.json');
-  await writeFile(dest, JSON.stringify(manifest, null, 2) + '\n', 'utf8');
+  const id = manifest.dataset;
+  const cov = COVERAGE[id];
+  if (!cov) throw new Error(`build-data: ${id} has no COVERAGE entry (spec-v1622): say whether it is a sample or a subset`);
+  const prev = existsSync(dest) ? JSON.parse(await readFile(dest, 'utf8')) : null;
+  const hash = await recordsHash(folder);
+  let curatedAt;
+  if (prev && prev.recordsSha256 === hash && prev.curatedAt) curatedAt = prev.curatedAt;
+  else if (!prev || !prev.recordsSha256) curatedAt = curatedFromGit(folder) || TODAY;
+  else curatedAt = TODAY;
+  const v2 = {
+    manifestVersion: 2,
+    ...manifest,
+    coverage: cov.coverage,
+    coverageNote: cov.coverageNote,
+    sourceEdition: cov.sourceEdition,
+    curatedAt,
+    contentChangedAt: curatedAt,
+    expiresOn: addYears(curatedAt, CURATED_LIFETIME_YEARS),
+    recordsSha256: hash,
+  };
+  await writeIfChanged(dest, JSON.stringify(v2, null, 2) + '\n');
 }
 
 // --- Datasets -------------------------------------------------------------
@@ -159,8 +300,6 @@ async function writeManifest(folder, manifest) {
 // fresh checkout populates a usable demo dataset. CI replaces it with the
 // full datasets on the weekly refresh.
 
-const FETCH_DATE = new Date().toISOString().slice(0, 10);
-
 const datasets = [
   // ----- ICD-10-CM ------------------------------------------------------
   {
@@ -172,11 +311,9 @@ const datasets = [
     async build() {
       const folder = join(DATA, 'icd10cm');
       const seed = [
-        { code: 'A00', desc: 'Cholera' },
         { code: 'A00.0', desc: 'Cholera due to Vibrio cholerae 01, biovar cholerae' },
         { code: 'A00.1', desc: 'Cholera due to Vibrio cholerae 01, biovar eltor' },
         { code: 'A00.9', desc: 'Cholera, unspecified' },
-        { code: 'E11', desc: 'Type 2 diabetes mellitus' },
         { code: 'E11.9', desc: 'Type 2 diabetes mellitus without complications' },
         { code: 'E11.65', desc: 'Type 2 diabetes mellitus with hyperglycemia' },
         { code: 'I10', desc: 'Essential (primary) hypertension' },
@@ -186,11 +323,11 @@ const datasets = [
         { code: 'J44.0', desc: 'COPD with (acute) lower respiratory infection' },
         { code: 'J44.9', desc: 'Chronic obstructive pulmonary disease, unspecified' },
         { code: 'K21.9', desc: 'Gastro-esophageal reflux disease without esophagitis' },
-        { code: 'M54.5', desc: 'Low back pain' },
+        { code: 'M54.50', desc: 'Low back pain, unspecified' },
         { code: 'N39.0', desc: 'Urinary tract infection, site not specified' },
         { code: 'R07.9', desc: 'Chest pain, unspecified' },
         { code: 'R10.9', desc: 'Unspecified abdominal pain' },
-        { code: 'R51', desc: 'Headache' },
+        { code: 'R51.9', desc: 'Headache, unspecified' },
         { code: 'Z00.00', desc: 'Encounter for general adult medical examination without abnormal findings' },
       ];
       const shards = shardRecords(seed, (r) => r.code[0]);
@@ -205,8 +342,6 @@ const datasets = [
         agency: this.agency,
         status: this.status,
         cadence: this.cadence,
-        fetchDate: FETCH_DATE,
-        offlineSeed: OFFLINE,
         recordCount: seed.length,
         shardLayout: 'shards',
         shards: shardManifests,
@@ -244,8 +379,6 @@ const datasets = [
         agency: this.agency,
         status: this.status,
         cadence: this.cadence,
-        fetchDate: FETCH_DATE,
-        offlineSeed: OFFLINE,
         recordCount: seed.length,
         shards: [m],
       };
@@ -326,8 +459,6 @@ const datasets = [
         agency: this.agency,
         status: this.status,
         cadence: this.cadence,
-        fetchDate: FETCH_DATE,
-        offlineSeed: false,
         notes:
           'Original plain-English category summaries written by the project author. ' +
           'Not derived from AMA CPT descriptors. MIT-licensed. See docs/legal.md.',
@@ -369,10 +500,10 @@ const datasets = [
         { localityCode: '5400001', name: 'Rest of California', workGpci: 1.027, peGpci: 1.137, mpGpci: 0.575 },
         { localityCode: '0000099', name: 'Rest of US', workGpci: 1.000, peGpci: 0.890, mpGpci: 0.580 },
       ];
-      await writeFile(join(folder, 'gpci.json'), JSON.stringify(gpci, null, 2) + '\n', 'utf8');
+      await writeIfChanged(join(folder, 'gpci.json'), JSON.stringify(gpci, null, 2) + '\n');
 
       const cf = { conversionFactor: 33.4009, effectiveDate: '2026-01-01', source: 'CMS CY2026 PFS Final Rule (CMS-1832-F), nonqualifying APM' };
-      await writeFile(join(folder, 'conversion-factor.json'), JSON.stringify(cf, null, 2) + '\n', 'utf8');
+      await writeIfChanged(join(folder, 'conversion-factor.json'), JSON.stringify(cf, null, 2) + '\n');
 
       const manifest = {
         dataset: 'mpfs',
@@ -380,8 +511,6 @@ const datasets = [
         agency: this.agency,
         status: this.status,
         cadence: this.cadence,
-        fetchDate: FETCH_DATE,
-        offlineSeed: OFFLINE,
         recordCount: seed.length,
         shardLayout: 'shards',
         shards: shardManifests,
@@ -426,8 +555,6 @@ const datasets = [
         agency: this.agency,
         status: this.status,
         cadence: this.cadence,
-        fetchDate: FETCH_DATE,
-        offlineSeed: OFFLINE,
         recordCount: seed.length,
         shardLayout: 'shards',
         shards: shardManifests,
@@ -460,7 +587,7 @@ const datasets = [
         { code: '32', name: 'Nursing Facility', desc: 'A facility providing nursing care, but not at the skilled level.' },
         { code: '81', name: 'Independent Laboratory', desc: 'A laboratory certified to perform diagnostic and other tests.' },
       ];
-      await writeFile(join(folder, 'pos-codes.json'), JSON.stringify(pos, null, 2) + '\n', 'utf8');
+      await writeIfChanged(join(folder, 'pos-codes.json'), JSON.stringify(pos, null, 2) + '\n');
 
       const modifiers = [
         { code: '25', name: 'Significant, separately identifiable E/M service' },
@@ -472,7 +599,7 @@ const datasets = [
         { code: 'KX', name: 'Requirements specified in the medical policy have been met' },
         { code: 'TC', name: 'Technical component' },
       ];
-      await writeFile(join(folder, 'modifier-codes.json'), JSON.stringify(modifiers, null, 2) + '\n', 'utf8');
+      await writeIfChanged(join(folder, 'modifier-codes.json'), JSON.stringify(modifiers, null, 2) + '\n');
 
       const revenue = [
         { code: '0250', name: 'Pharmacy - General Class' },
@@ -484,7 +611,7 @@ const datasets = [
         { code: '0636', name: 'Pharmacy - Drugs requiring detailed coding' },
         { code: '0710', name: 'Recovery Room - General' },
       ];
-      await writeFile(join(folder, 'revenue-codes.json'), JSON.stringify(revenue, null, 2) + '\n', 'utf8');
+      await writeIfChanged(join(folder, 'revenue-codes.json'), JSON.stringify(revenue, null, 2) + '\n');
 
       const carc = [
         { code: '1', desc: 'Deductible amount.' },
@@ -496,7 +623,7 @@ const datasets = [
         { code: '97', desc: 'The benefit for this service is included in the payment/allowance for another service that has already been adjudicated.' },
         { code: '109', desc: 'Claim/service not covered by this payer/contractor. You must send the claim to the correct payer/contractor.' },
       ];
-      await writeFile(join(folder, 'carc.json'), JSON.stringify(carc, null, 2) + '\n', 'utf8');
+      await writeIfChanged(join(folder, 'carc.json'), JSON.stringify(carc, null, 2) + '\n');
 
       const rarc = [
         { code: 'M76', desc: 'Missing/incomplete/invalid diagnosis or condition.' },
@@ -505,7 +632,7 @@ const datasets = [
         { code: 'N362', desc: 'The number of days or units of service exceeds our acceptable maximum.' },
         { code: 'N435', desc: 'Exceeds number/frequency approved/allowed within time period without support documentation.' },
       ];
-      await writeFile(join(folder, 'rarc.json'), JSON.stringify(rarc, null, 2) + '\n', 'utf8');
+      await writeIfChanged(join(folder, 'rarc.json'), JSON.stringify(rarc, null, 2) + '\n');
 
       const counts = { pos: pos.length, modifiers: modifiers.length, revenue: revenue.length, carc: carc.length, rarc: rarc.length };
       const total = Object.values(counts).reduce((a, b) => a + b, 0);
@@ -515,8 +642,6 @@ const datasets = [
         agency: this.agency,
         status: this.status,
         cadence: this.cadence,
-        fetchDate: FETCH_DATE,
-        offlineSeed: OFFLINE,
         recordCount: total,
         files: ['pos-codes.json', 'modifier-codes.json', 'revenue-codes.json', 'carc.json', 'rarc.json'],
         counts,
@@ -546,7 +671,6 @@ const datasets = [
     async build() {
       const folder = join(DATA, 'no-surprises');
       const rules = {
-        fetchDate: FETCH_DATE,
         scenarios: [
           {
             id: 'er-out-of-network',
@@ -580,15 +704,13 @@ const datasets = [
         },
         portalUrl: 'https://nsa-idr.cms.gov',
       };
-      await writeFile(join(folder, 'rules.json'), JSON.stringify(rules, null, 2) + '\n', 'utf8');
+      await writeIfChanged(join(folder, 'rules.json'), JSON.stringify(rules, null, 2) + '\n');
       const manifest = {
         dataset: 'no-surprises',
         sourceUrl: this.sourceUrl,
         agency: this.agency,
         status: this.status,
         cadence: this.cadence,
-        fetchDate: FETCH_DATE,
-        offlineSeed: false,
         recordCount: rules.scenarios.length,
         files: ['rules.json'],
       };
@@ -610,7 +732,6 @@ const datasets = [
       const folder = join(DATA, 'clinical');
 
       const formulas = {
-        fetchDate: FETCH_DATE,
         formulas: [
           { id: 'bmi', citation: 'Quetelet 1835; Keys 1972' },
           { id: 'bsa-dubois', citation: 'Du Bois D, Du Bois EF. Arch Intern Med. 1916;17:863' },
@@ -636,10 +757,9 @@ const datasets = [
           { id: 'nihss', citation: 'Brott T, Adams HP Jr et al. Stroke. 1989;20(7):864-870' },
         ],
       };
-      await writeFile(join(folder, 'formulas.json'), JSON.stringify(formulas, null, 2) + '\n', 'utf8');
+      await writeIfChanged(join(folder, 'formulas.json'), JSON.stringify(formulas, null, 2) + '\n');
 
       const pediatricVitals = {
-        fetchDate: FETCH_DATE,
         ageBands: [
           { band: 'Newborn (0-1 mo)', hr: '100-205', rr: '30-60', sbp: '67-84' },
           { band: 'Infant (1-12 mo)', hr: '100-180', rr: '30-53', sbp: '72-104' },
@@ -650,10 +770,9 @@ const datasets = [
         ],
         citation: 'PALS reference values; American Heart Association.',
       };
-      await writeFile(join(folder, 'pediatric-vitals.json'), JSON.stringify(pediatricVitals, null, 2) + '\n', 'utf8');
+      await writeIfChanged(join(folder, 'pediatric-vitals.json'), JSON.stringify(pediatricVitals, null, 2) + '\n');
 
       const labRanges = {
-        fetchDate: FETCH_DATE,
         ranges: [
           { test: 'Sodium', units: 'mEq/L', low: 135, high: 145 },
           { test: 'Potassium', units: 'mEq/L', low: 3.5, high: 5.0 },
@@ -673,10 +792,9 @@ const datasets = [
         ],
         citation: 'Common adult reference ranges; lab-specific ranges supersede.',
       };
-      await writeFile(join(folder, 'lab-ranges.json'), JSON.stringify(labRanges, null, 2) + '\n', 'utf8');
+      await writeIfChanged(join(folder, 'lab-ranges.json'), JSON.stringify(labRanges, null, 2) + '\n');
 
       const beers = {
-        fetchDate: FETCH_DATE,
         attribution: 'Underlying drug-condition pairs are clinical facts. Original brief notes by the project author. See AGS publication for the authoritative list and rationale: https://americangeriatrics.org/',
         pairs: [
           { drug: 'Diphenhydramine', condition: 'Older adults (general)', note: 'Strongly anticholinergic. Risk of confusion, urinary retention, falls. Avoid for sleep and for cold/cough in older adults when possible.' },
@@ -685,10 +803,9 @@ const datasets = [
           { drug: 'Glyburide', condition: 'Older adults (general)', note: 'Long-acting sulfonylurea. Higher risk of prolonged hypoglycemia. Prefer shorter-acting alternatives.' },
         ],
       };
-      await writeFile(join(folder, 'beers.json'), JSON.stringify(beers, null, 2) + '\n', 'utf8');
+      await writeIfChanged(join(folder, 'beers.json'), JSON.stringify(beers, null, 2) + '\n');
 
       const ismp = {
-        fetchDate: FETCH_DATE,
         attribution: 'Medication identities are factual. Original brief notes by the project author. ISMP maintains the authoritative list and formatting: https://www.ismp.org/',
         meds: [
           { name: 'Insulin (all formulations)', note: 'Narrow therapeutic window. Errors in dose, formulation, or timing cause hypoglycemia or hyperglycemia.' },
@@ -698,10 +815,9 @@ const datasets = [
           { name: 'Chemotherapy', note: 'Narrow margin between therapeutic and toxic doses. Standardized order sets and double-check protocols required.' },
         ],
       };
-      await writeFile(join(folder, 'ismp-high-alert.json'), JSON.stringify(ismp, null, 2) + '\n', 'utf8');
+      await writeIfChanged(join(folder, 'ismp-high-alert.json'), JSON.stringify(ismp, null, 2) + '\n');
 
       const asa = {
-        fetchDate: FETCH_DATE,
         attribution: 'Categories are short factual labels. Original short summaries by the project author. See ASA: https://www.asahq.org/',
         classes: [
           { class: 'I', summary: 'A normally healthy patient.' },
@@ -713,10 +829,9 @@ const datasets = [
           { class: 'E', summary: 'Suffix for emergency procedures.' },
         ],
       };
-      await writeFile(join(folder, 'asa-status.json'), JSON.stringify(asa, null, 2) + '\n', 'utf8');
+      await writeIfChanged(join(folder, 'asa-status.json'), JSON.stringify(asa, null, 2) + '\n');
 
       const mallampati = {
-        fetchDate: FETCH_DATE,
         citation: 'Mallampati SR et al. Can Anaesth Soc J. 1985;32(4):429-434',
         classes: [
           { class: 'I', summary: 'Soft palate, uvula, fauces, and pillars are visible.' },
@@ -725,7 +840,7 @@ const datasets = [
           { class: 'IV', summary: 'Soft palate is not visible.' },
         ],
       };
-      await writeFile(join(folder, 'mallampati.json'), JSON.stringify(mallampati, null, 2) + '\n', 'utf8');
+      await writeIfChanged(join(folder, 'mallampati.json'), JSON.stringify(mallampati, null, 2) + '\n');
 
       const totalRecords =
         formulas.formulas.length +
@@ -742,8 +857,6 @@ const datasets = [
         agency: this.agency,
         status: this.status,
         cadence: this.cadence,
-        fetchDate: FETCH_DATE,
-        offlineSeed: false,
         recordCount: totalRecords,
         files: [
           'formulas.json',
@@ -771,7 +884,6 @@ const datasets = [
       const folder = join(DATA, 'field-triage');
       await ensureDir(folder);
       const data = {
-        fetchDate: FETCH_DATE,
         edition: 'CDC Field Triage Guidelines for Injured Patients (current edition)',
         steps: [
           { step: 1, name: 'Vitals and consciousness', criteria: [
@@ -804,10 +916,10 @@ const datasets = [
           ], action: 'Use clinical judgment; consult medical control.' },
         ],
       };
-      await writeFile(join(folder, 'guidelines.json'), JSON.stringify(data, null, 2) + '\n', 'utf8');
+      await writeIfChanged(join(folder, 'guidelines.json'), JSON.stringify(data, null, 2) + '\n');
       const manifest = {
         dataset: 'field-triage', sourceUrl: this.sourceUrl, agency: this.agency, status: this.status,
-        cadence: this.cadence, fetchDate: FETCH_DATE, offlineSeed: false,
+        cadence: this.cadence,
         recordCount: data.steps.length, files: ['guidelines.json'],
         notes: 'CDC public-domain Field Triage Guidelines, summarized in original prose by the project author.',
       };
@@ -827,7 +939,6 @@ const datasets = [
       const folder = join(DATA, 'mci-triage');
       await ensureDir(folder);
       const data = {
-        fetchDate: FETCH_DATE,
         start: {
           name: 'START (Simple Triage and Rapid Treatment) - adult',
           algorithm: [
@@ -850,10 +961,10 @@ const datasets = [
           ],
         },
       };
-      await writeFile(join(folder, 'algorithms.json'), JSON.stringify(data, null, 2) + '\n', 'utf8');
+      await writeIfChanged(join(folder, 'algorithms.json'), JSON.stringify(data, null, 2) + '\n');
       const manifest = {
         dataset: 'mci-triage', sourceUrl: this.sourceUrl, agency: this.agency, status: this.status,
-        cadence: this.cadence, fetchDate: FETCH_DATE, offlineSeed: false,
+        cadence: this.cadence,
         recordCount: 2, files: ['algorithms.json'],
       };
       await writeManifest(folder, manifest);
@@ -895,10 +1006,10 @@ const datasets = [
         { name: 'Nitroglycerin', adultDose: '0.4 mg SL every 5 min x 3', pedsDose: 'not routinely used', route: 'SL/IV', notes: 'Hold if SBP < 90, recent PDE-5 inhibitor.', source: 'FDA labeling' },
         { name: 'Aspirin', adultDose: '162-325 mg PO chewed', pedsDose: 'not used acutely', route: 'PO', notes: 'Suspected ACS.', source: 'FDA labeling' },
       ];
-      await writeFile(join(folder, 'meds.json'), JSON.stringify(meds, null, 2) + '\n', 'utf8');
+      await writeIfChanged(join(folder, 'meds.json'), JSON.stringify(meds, null, 2) + '\n');
       const manifest = {
         dataset: 'prehospital-meds', sourceUrl: this.sourceUrl, agency: this.agency, status: this.status,
-        cadence: this.cadence, fetchDate: FETCH_DATE, offlineSeed: false,
+        cadence: this.cadence,
         recordCount: meds.length, files: ['meds.json'],
         notes: 'Standard prehospital medication identities and reference doses derived from FDA labeling. Reference only; local protocols and AHA guidelines govern.',
       };
@@ -918,7 +1029,6 @@ const datasets = [
       const folder = join(DATA, 'aha-reference');
       await ensureDir(folder);
       const data = {
-        fetchDate: FETCH_DATE,
         edition: 'AHA ECC 2020 guidelines (current as of fetch date)',
         attribution: 'Numeric facts only (drug doses, intervals, energy levels). The AHA holds copyright on the published flowcharts; consult the AHA publication for the authoritative algorithm.',
         adultArrest: [
@@ -943,10 +1053,10 @@ const datasets = [
           { population: 'Pediatric cardioversion', waveform: 'Synchronized', energy: '0.5-1 J/kg first; 2 J/kg subsequent' },
         ],
       };
-      await writeFile(join(folder, 'aha-reference.json'), JSON.stringify(data, null, 2) + '\n', 'utf8');
+      await writeIfChanged(join(folder, 'aha-reference.json'), JSON.stringify(data, null, 2) + '\n');
       const manifest = {
         dataset: 'aha-reference', sourceUrl: this.sourceUrl, agency: this.agency, status: this.status,
-        cadence: this.cadence, fetchDate: FETCH_DATE, offlineSeed: false,
+        cadence: this.cadence,
         recordCount: data.adultArrest.length + data.pediatricArrest.length + data.defibrillationEnergy.length,
         files: ['aha-reference.json'],
         notes: 'Numeric reference values (doses, intervals, joules) only. AHA flowcharts not reproduced.',
@@ -967,7 +1077,6 @@ const datasets = [
       const folder = join(DATA, 'environmental');
       await ensureDir(folder);
       const data = {
-        fetchDate: FETCH_DATE,
         attribution: 'Original brief notes by the project author with citations to Wilderness Medical Society guidelines and standard medical literature.',
         hypothermia: [
           { stage: 'Mild', coreTemp: '32-35 C (90-95 F)', findings: 'Shivering present, tachycardia, vasoconstriction, alert mental status.' },
@@ -979,10 +1088,10 @@ const datasets = [
           { stage: 'Heat stroke', criteria: 'Core temp typically 40 C or higher; CNS dysfunction (confusion, seizures, coma); sweating may be absent or present.' },
         ],
       };
-      await writeFile(join(folder, 'environmental.json'), JSON.stringify(data, null, 2) + '\n', 'utf8');
+      await writeIfChanged(join(folder, 'environmental.json'), JSON.stringify(data, null, 2) + '\n');
       const manifest = {
         dataset: 'environmental', sourceUrl: this.sourceUrl, agency: this.agency, status: this.status,
-        cadence: this.cadence, fetchDate: FETCH_DATE, offlineSeed: false,
+        cadence: this.cadence,
         recordCount: data.hypothermia.length + data.heatIllness.length, files: ['environmental.json'],
       };
       await writeManifest(folder, manifest);
@@ -1001,7 +1110,6 @@ const datasets = [
       const folder = join(DATA, 'toxidromes');
       await ensureDir(folder);
       const data = {
-        fetchDate: FETCH_DATE,
         attribution: 'Original brief notes by the project author with citation to ATSDR profiles and standard medical toxicology literature.',
         toxidromes: [
           { name: 'Cholinergic', signs: 'SLUDGE/BBB: salivation, lacrimation, urination, defecation, GI upset, emesis, bronchorrhea, bronchospasm, bradycardia. Miosis common.', causes: 'Organophosphates, carbamates, nerve agents, some mushrooms.', antidote: 'Atropine + pralidoxime' },
@@ -1012,10 +1120,10 @@ const datasets = [
           { name: 'Serotonergic', signs: 'Mental status changes, autonomic instability, neuromuscular hyperactivity (clonus, hyperreflexia), hyperthermia.', causes: 'SSRIs + MAOIs, linezolid, tramadol, dextromethorphan combinations.', antidote: 'Supportive; cyproheptadine in select cases.' },
         ],
       };
-      await writeFile(join(folder, 'toxidromes.json'), JSON.stringify(data, null, 2) + '\n', 'utf8');
+      await writeIfChanged(join(folder, 'toxidromes.json'), JSON.stringify(data, null, 2) + '\n');
       const manifest = {
         dataset: 'toxidromes', sourceUrl: this.sourceUrl, agency: this.agency, status: this.status,
-        cadence: this.cadence, fetchDate: FETCH_DATE, offlineSeed: false,
+        cadence: this.cadence,
         recordCount: data.toxidromes.length, files: ['toxidromes.json'],
       };
       await writeManifest(folder, manifest);
@@ -1045,8 +1153,6 @@ function v4TableDataset({ id, sourceUrl, agency, status, cadence, label, shardNa
         agency,
         status,
         cadence,
-        fetchDate: FETCH_DATE,
-        offlineSeed: OFFLINE,
         recordCount: Array.isArray(seed) ? seed.length : Object.keys(seed).length,
         shards: [m],
         notes,

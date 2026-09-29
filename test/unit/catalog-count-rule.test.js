@@ -6,7 +6,7 @@
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { driftedCountsOnLine, assertRuleStillSees, YEAR_BAND } from '../../scripts/grep-check.mjs';
+import { driftedCountsOnLine, assertRuleStillSees, YEAR_BAND, datasetMissWording } from '../../scripts/grep-check.mjs';
 import { parseUtilityIds } from '../../scripts/check-catalog-truth.mjs';
 
 const TRUTH = 1704;
@@ -137,4 +137,12 @@ test('countTilesByGroup counts only top-level UTILITIES rows', () => {
     '];',
   ].join('\n'));
   assert.deepEqual(counts, { G: 2, E: 1 });
+});
+
+// spec-v1622 step 4: a miss against a bundled sample or subset is "not in the
+// bundled table", never "invalid" or "not found".
+test('a view that reads a dataset may not call a miss invalid or not found', () => {
+  const view = "loadFile('drg', 'drg.json');\nconst a = 'Code not found.';\n// invalid in a comment is fine\nconst b = `DRG ${x} is invalid`;\nconst c = 'Not in the bundled table.';";
+  assert.deepEqual(datasetMissWording(view), [2, 4]);
+  assert.deepEqual(datasetMissWording("const a = 'Code not found.';"), [], 'a view that reads no dataset is out of scope');
 });

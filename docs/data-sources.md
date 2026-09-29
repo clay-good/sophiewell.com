@@ -9,11 +9,28 @@ the v1-v8 build-data pipeline was retired in spec-v29 wave 29-2
 data that still ships with the page.
 
 Each surviving dataset folder under `data/` contains a
-`manifest.json` with at minimum: `dataset`, `sourceUrl`, `agency`,
-`status`, `cadence`, `fetchDate`, `recordCount`, and (where the
-dataset is sharded) per-shard SHA-256 hashes. The runtime verifier
-(`scripts/verify-integrity.mjs`) reads every manifest on
-`npm run test` and `npm run release:check`.
+`manifest.json` (manifest v2, [spec-v1622](spec-v1622.md)) with
+`dataset`, `sourceUrl`, `agency`, `status`, `cadence`, `recordCount`,
+per-shard SHA-256 hashes, and the fields that say what the data is:
+
+| Field | Meaning |
+|---|---|
+| `coverage` | `sample` (hand-written example rows), `subset` (a deliberately partial reference table) or `full` (a whole fetched file) |
+| `coverageNote` | what the sample or subset holds |
+| `sourceEdition` | the publisher's edition label, or `unversioned` |
+| `curatedAt` | the date a person last changed the records (hand-written data) |
+| `fetchedAt` | the date a builder downloaded the source (fetched data only) |
+| `contentChangedAt` | the date the records last changed |
+| `expiresOn` | when the data lapses; a curated table lapses two years after `curatedAt` |
+| `recordsSha256` | hash of the data files, so an unchanged run writes nothing |
+
+Nothing is fetched yet: every dataset is a `sample` or a `subset`. The
+page stamp under bundled data comes from `stampText()` in `lib/data.js`
+("Curated from ... Checked by a person May 5, 2026."), and no live tool
+reads a `sample` or an expired dataset (`test/unit/data-freshness.test.js`).
+`npm run data:freshness` prints every dataset and dated constant with
+its status. The verifier (`scripts/verify-integrity.mjs`) checks every
+manifest and shard hash on `npm run test` and `npm run release:check`.
 
 ## Clinical reference data
 
@@ -149,13 +166,17 @@ for a tile removed in the v29 prune (`REMOVED_V29_IDS`), so the
 directory cannot re-accumulate the 57 orphaned files that the v29
 deletions had left behind.
 
-## MPFS (vestigial; not consumed at runtime)
+## MPFS, ICD-10-CM and DRG samples (not consumed at runtime)
 
-`data/mpfs/` is a vestige of the v1-v8 pricing-tile era. The MPFS
-shards and GPCI / conversion-factor files still ship from disk so
-the build-data pipeline does not need a special-case for empty
-input, but no tile consumes them at runtime. They will be removed
-in a future cleanup pass.
+`data/mpfs/`, `data/icd10cm/` and `data/drg/` are hand-written samples
+(5 codes and 4 localities; 18 codes; 8 DRGs). Until
+[spec-v1622](spec-v1622.md) the live `rvu-payment`, `icd10-validate`
+and `drg-payment` tiles filled inputs or printed notes from them, as
+if they were the fee schedule, the code set and IPPS Table 5. A sample
+cannot answer about a reader's code, so those reads were removed; the
+tiles take the values from the reader, and `rvu-payment` defaults to the
+dated CY2026 conversion factor in `lib/billing-v78.js`. The folders stay
+as seeds for the fetched datasets of [spec-v1621](spec-v1621.md).
 
 ## Synonyms
 
@@ -188,16 +209,16 @@ a tile that reads it, or by the build-time set.
 `hospital-prices/`, `ihs-eligibility/`, `medicaid-state/`, `mue/`, `nadac/`,
 `ncci/`, `npi/`, `state-rights/`, `tricare-plans/`, `va-eligibility/`.
 
-**Tile retired, data still built and shipped (28):**
+**Tile retired, data still built and shipped (31):**
 `aha-reference/`, `apc/`, `cms-1500-fields/`, `cpr-aha-numeric/`,
-`cpt-summaries/`, `crosswalks/`, `dot-erg/`, `environmental/`, `eob-glossary/`,
-`hcpcs/`, `hcpcs-modifiers/`, `icd10-pcs/`, `iv-to-po/`, `lab-ranges-adult/`,
-`lab-ranges-peds/`, `ndc/`, `niosh-pg/`, `no-surprises/`,
-`nubc-special-codes/`, `pos-codes/`, `revenue-codes/`, `rxnorm/`, `tccc/`,
-`therapeutic-drug-levels/`, `tob-codes/`, `tox-levels/`, `toxidromes/`,
-`ub04-fields/`. Together they are 44.9 KB.
+`cpt-summaries/`, `crosswalks/`, `dot-erg/`, `drg/`, `environmental/`,
+`eob-glossary/`, `hcpcs/`, `hcpcs-modifiers/`, `icd10-pcs/`, `icd10cm/`,
+`iv-to-po/`, `lab-ranges-adult/`, `lab-ranges-peds/`, `mpfs/`, `ndc/`,
+`niosh-pg/`, `no-surprises/`, `nubc-special-codes/`, `pos-codes/`,
+`revenue-codes/`, `rxnorm/`, `tccc/`, `therapeutic-drug-levels/`, `tob-codes/`,
+`tox-levels/`, `toxidromes/`, `ub04-fields/`. Together they are 60.6 KB.
 
-**All twenty-eight are unreachable, and that is now checked rather than
+**All thirty-one are unreachable, and that is now checked rather than
 asserted.** A dataset reaches the browser one of two ways: a `loadFile` /
 `loadShard` / `loadAllShards` / `loadManifest` call in `app.js`, `lib/` or
 `views/`, or a `META[id].source.dataset` declaration. None of these has either.
@@ -205,16 +226,16 @@ Every apparent mention of one of them in `app.js` is its *tile* id inside a
 `REMOVED_V29_IDS` tombstone list, which is what made a grep-based answer
 misleading the first time this was measured.
 
-Three folders that were on this list are not retired at all: `mpfs/`, `icd10cm/`
-and `drg/` are loaded by the live `rvu-payment`, `icd10-validate` and
-`drg-payment` tiles. The reachability check moved them out.
+`mpfs/`, `icd10cm/` and `drg/` left this list in spec-v998, when the
+reachability check found live tiles loading them, and came back in spec-v1622,
+when those loads were removed (see above).
 
-**Keeping the twenty-eight is a deliberate decision** (2026-09-02), not an
+**Keeping the thirty-one is a deliberate decision** (2026-09-02), not an
 oversight: they are seeds a future tile can be built against, and several are
 CMS code sets a billing tile would want. The cost is recorded so the decision
-can be revisited with the numbers in hand: 44.9 KB in the bundle, twenty-eight
-manifests through `npm run data:verify` on every run, and twenty-eight of the
-forty-six datasets the weekly refresh re-stamps.
+can be revisited with the numbers in hand: 60.6 KB in the bundle and thirty-one
+manifests through `npm run data:verify` on every run. (The weekly refresh no
+longer re-stamps them: since spec-v1622 an unchanged dataset writes nothing.)
 
 Some individual files inside surviving folders were removed with their tiles:
 `data/clinical/lab-ranges.json`, `data/clinical/ismp-high-alert.json`,

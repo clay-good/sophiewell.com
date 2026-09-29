@@ -15,7 +15,6 @@
 
 import { el, clear } from '../lib/dom.js';
 import { fmt } from '../lib/num.js';
-import { loadAllShards, loadFile, loadManifest, loadShard } from '../lib/data.js';
 import * as Bill from '../lib/billing-v78.js';
 import * as Edit from '../lib/billing-v79.js';
 import * as Em from '../lib/billing-v80.js';
@@ -139,18 +138,12 @@ function verdictLine(o, text, tone) { o.appendChild(el('p', { class: tone || nul
 export const renderers = {
   // ----- 2.1 rvu-payment ----------------------------------------------------
   'rvu-payment'(root) {
-    root.appendChild(el('p', { class: 'notice', text: 'Computes the Medicare-allowed amount for one professional line from RVUs, the locality GPCI, and the conversion factor. The bundled RVU/GPCI/CF values are a convenience; enter your own to model any code, locality, or percent-of-Medicare contract. This is the fee-schedule math, not a payment guarantee.' }));
+    root.appendChild(el('p', { class: 'notice', text: 'Computes the Medicare-allowed amount for one professional line from RVUs, the locality GPCI, and the conversion factor. Enter the RVUs and GPCIs from the CMS PFS files for your code and locality; the conversion factor starts at the CY2026 figure. Change it to model a percent-of-Medicare contract. This is the fee-schedule math, not a payment guarantee.' }));
 
-    root.appendChild(field('CPT / HCPCS code (optional -- fills bundled RVUs)', 'rvu-code', { placeholder: '99214' }));
     root.appendChild(moneyField('Work RVU', 'rvu-work', '1.92'));
     root.appendChild(moneyField('Practice-expense RVU (non-facility)', 'rvu-penf', '1.5'));
     root.appendChild(moneyField('Practice-expense RVU (facility)', 'rvu-pef', '0.69'));
     root.appendChild(moneyField('Malpractice RVU', 'rvu-mp', '0.13'));
-
-    const locSel = selectField('Medicare locality (or enter GPCI by hand)', 'rvu-loc', [
-      { value: 'manual', text: 'Enter GPCI triplet by hand' },
-    ]);
-    root.appendChild(locSel);
     root.appendChild(moneyField('Work GPCI', 'rvu-wg', '1.000'));
     root.appendChild(moneyField('Practice-expense GPCI', 'rvu-peg', '1.000'));
     root.appendChild(moneyField('Malpractice GPCI', 'rvu-mpg', '1.000'));
@@ -159,46 +152,24 @@ export const renderers = {
 
     const o = out(); root.appendChild(o);
 
-    // Bundled-data convenience layer (doctrine clause 2): load the MPFS RVU rows,
-    // the GPCI triplets, and the default conversion factor. The tile works fully
-    // without them (manual entry); a load failure degrades silently to manual.
-    const rvuByCode = new Map();
-    const gpciByLocality = new Map();
-    const sel = document.getElementById('rvu-loc');
-
-    function fillFromCode() {
-      const row = rvuByCode.get(str('rvu-code').trim().toUpperCase());
-      if (!row) return;
-      document.getElementById('rvu-work').value = row.workRvu;
-      document.getElementById('rvu-penf').value = row.peRvuNonFacility;
-      document.getElementById('rvu-pef').value = row.peRvuFacility;
-      document.getElementById('rvu-mp').value = row.mpRvu;
-    }
-    function fillFromLocality() {
-      const code = str('rvu-loc');
-      if (code === 'manual') return;
-      const g = gpciByLocality.get(code);
-      if (!g) return;
-      document.getElementById('rvu-wg').value = g.workGpci;
-      document.getElementById('rvu-peg').value = g.peGpci;
-      document.getElementById('rvu-mpg').value = g.mpGpci;
-    }
-    document.getElementById('rvu-code').addEventListener('input', fillFromCode);
-    document.getElementById('rvu-code').addEventListener('change', fillFromCode);
-    sel.addEventListener('change', fillFromLocality);
+    // spec-v1622: this tile used to fill RVUs from a typed code and GPCIs from
+    // a locality list, both read from data/mpfs -- five hand-written example
+    // codes and four example localities, answering as if they were the fee
+    // schedule. The inputs are the reader's now; the CF default is the dated
+    // CY2026 constant in lib/billing-v78.js.
 
     function run() {
       safe(o, () => {
         if (!(numv('rvu-cf') > 0)) { o.appendChild(el('p', { class: 'muted', text: 'Enter the conversion factor.' })); return; }
         if (rawEmpty('rvu-work') && rawEmpty('rvu-penf') && rawEmpty('rvu-pef') && rawEmpty('rvu-mp')) {
-          o.appendChild(el('p', { class: 'muted', text: 'Enter a CPT/HCPCS code or the RVU components.' })); return;
+          o.appendChild(el('p', { class: 'muted', text: 'Enter the RVU components.' })); return;
         }
         // spec-v1046: and a component left blank while the others are filled is
         // treated as 0 RVUs -- right for a code that genuinely has none, wrong for
         // one nobody filled in, and the difference is a dollar figure on a claim.
         // A typed 0 still means zero, which is how you say the code carries none.
         if (!(numv('rvu-wg') > 0) || !(numv('rvu-peg') > 0) || !(numv('rvu-mpg') > 0)) {
-          o.appendChild(el('p', { class: 'muted', text: 'Enter the GPCI triplet (or pick a locality).' })); return;
+          o.appendChild(el('p', { class: 'muted', text: 'Enter the GPCI triplet.' })); return;
         }
         // spec-v1046: a component left blank is treated as 0 RVUs, which is right
         // for a code that genuinely has none and wrong for one nobody filled in --
@@ -238,25 +209,7 @@ export const renderers = {
         o.appendChild(postureNote('42 CFR 414.20-414.22 (RVU + GPCI); the dated CMS PFS conversion factor. This is the professional fee; the facility payment (DRG/APC) is computed separately. The anchor amount every other v78 reduction is taken from.'));
       });
     }
-    wire(['rvu-code', 'rvu-work', 'rvu-penf', 'rvu-pef', 'rvu-mp', 'rvu-loc', 'rvu-wg', 'rvu-peg', 'rvu-mpg', 'rvu-cf', 'rvu-units'], run);
-
-    loadFile('mpfs', 'conversion-factor.json').then((cf) => {
-      if (!root.isConnected) return;
-      if (cf && typeof cf.conversionFactor === 'number' && rawEmpty('rvu-cf')) {
-        document.getElementById('rvu-cf').value = cf.conversionFactor;
-        run();
-      }
-    }).catch(() => {});
-    loadFile('mpfs', 'gpci.json').then((rows) => {
-      if (!root.isConnected || !Array.isArray(rows)) return;
-      for (const g of rows) gpciByLocality.set(g.localityCode, g);
-      for (const g of rows) sel.appendChild(el('option', { value: g.localityCode, text: g.name }));
-      if (gpciByLocality.size) { sel.value = rows[0].localityCode; fillFromLocality(); run(); }
-    }).catch(() => {});
-    loadAllShards('mpfs').then((rows) => {
-      if (!root.isConnected || !Array.isArray(rows)) return;
-      for (const row of rows) if (row && row.code) rvuByCode.set(String(row.code).toUpperCase(), row);
-    }).catch(() => {});
+    wire(['rvu-work', 'rvu-penf', 'rvu-pef', 'rvu-mp', 'rvu-wg', 'rvu-peg', 'rvu-mpg', 'rvu-cf', 'rvu-units'], run);
   },
 
   // ----- 2.2 mppr -----------------------------------------------------------
@@ -946,10 +899,9 @@ export const renderers = {
   // ----- 2.3 icd10-validate -------------------------------------------------
   'icd10-validate'(root) {
     root.appendChild(el('p', { class: 'notice', text: 'Checks an ICD-10-CM code against the code-set structural grammar (category / etiology / site / laterality, the placeholder X) and the required 7th character for the chapters that demand it. Flags the "will deny for lack of specificity" case before submission. Validates structure/specificity only -- not that the code is the clinically correct diagnosis.' }));
-    root.appendChild(field('ICD-10-CM code', 'icd-in', { placeholder: 'M54.5' }));
+    root.appendChild(field('ICD-10-CM code', 'icd-in', { placeholder: 'M54.50' }));
     root.appendChild(checkField('A 7th character is required for this code (injury, OB, certain chapters)', 'icd-7th'));
     const o = out(); root.appendChild(o);
-    let existsByLetter = null; // best-effort existence check against bundled shards
     wire(['icd-in', 'icd-7th'], () => safe(o, () => {
       if (rawEmpty('icd-in')) { o.appendChild(el('p', { class: 'muted', text: 'Enter an ICD-10-CM code.' })); return; }
       const r = Integ.icd10Validate({ code: str('icd-in'), requires7th: checked('icd-7th') });
@@ -961,36 +913,12 @@ export const renderers = {
         ['7th character required', r.requires7th ? 'yes' : 'no'],
         ['7th character present', r.has7th ? 'yes' : 'no'],
       ]));
-      // Best-effort: confirm the code exists in the bundled ICD-10-CM shards.
-      if (r.structurallyValid && existsByLetter) {
-        const bare = r.code.replace('.', '').toUpperCase();
-        const hit = existsByLetter.has(bare);
-        o.appendChild(el('p', { class: 'muted', text: hit ? `Found in the bundled ICD-10-CM sample set.` : `Not in the bundled ICD-10-CM sample set (the sample set is a small offline seed, not the full code list) -- the structural verdict above stands regardless.` }));
-      }
       o.appendChild(postureNote('ICD-10-CM Official Guidelines and the code-set conventions (CMS/CDC). Structure & specificity only -- it does not assert the code is the clinically correct diagnosis.'));
     }));
-    // Load the shard for the entered code's first letter on demand for the
-    // existence note; degrades silently to structural-only on any failure.
-    // The bundled set is a small offline seed covering only some letters, so we
-    // consult the manifest's shard list FIRST and skip the fetch when the letter
-    // isn't bundled -- requesting a missing shard would 404 (and emit a console
-    // error) even though the structural verdict never depends on it.
-    const reloadShard = () => {
-      const letter = str('icd-in').trim().toUpperCase().charAt(0);
-      if (!/^[A-Z]$/.test(letter)) return;
-      loadManifest('icd10cm').then((m) => {
-        const has = Array.isArray(m.shards) && m.shards.some((s) => s.name === `${letter}.json`);
-        if (!has) return null;
-        return loadShard('icd10cm', `${letter}.json`);
-      }).then((rows) => {
-        if (!root.isConnected || !Array.isArray(rows)) return;
-        existsByLetter = new Set(rows.map((x) => String(x.code || '').replace('.', '').toUpperCase()));
-        const ev = () => { const n = document.getElementById('icd-in'); if (n) n.dispatchEvent(new Event('input', { bubbles: true })); };
-        ev();
-      }).catch(() => {});
-    };
-    document.getElementById('icd-in').addEventListener('change', reloadShard);
-    reloadShard();
+    // spec-v1622: a note under the verdict used to say whether the code was in
+    // the bundled ICD-10-CM shards -- 20 hand-written example codes, two of them
+    // retired years ago. A sample cannot say whether a reader's code exists, so
+    // the tile checks structure only, as its notice says.
   },
 
   // ----- 2.4 era-balance ----------------------------------------------------
@@ -1028,8 +956,7 @@ export const renderers = {
 
   // ----- 2.5 drg-payment ----------------------------------------------------
   'drg-payment'(root) {
-    root.appendChild(el('p', { class: 'notice', text: 'Estimates the IPPS DRG payment = relative weight x the wage-index-adjusted hospital base rate (operating + capital), with the per-diem reduction for a post-acute transfer. Enter the MS-DRG to fill the bundled relative weight / GMLOS, or type them. Estimates the operating model; outlier/IME/DSH need the hospital\'s own cost-report factors.' }));
-    root.appendChild(field('MS-DRG (optional -- fills bundled weight / GMLOS)', 'drg-code', { placeholder: '470' }));
+    root.appendChild(el('p', { class: 'notice', text: 'Estimates the IPPS DRG payment = relative weight x the wage-index-adjusted hospital base rate (operating + capital), with the per-diem reduction for a post-acute transfer. Enter the relative weight and GMLOS for the MS-DRG from IPPS Table 5. Estimates the operating model; outlier/IME/DSH need the hospital\'s own cost-report factors.' }));
     root.appendChild(moneyField('Relative weight', 'drg-weight', '1.5'));
     root.appendChild(moneyField('Operating base rate ($)', 'drg-oper', '6000.00'));
     root.appendChild(moneyField('Capital base rate ($)', 'drg-cap', '500.00'));
@@ -1039,11 +966,10 @@ export const renderers = {
     root.appendChild(moneyField('Geometric mean LOS (days, transfer only)', 'drg-gmlos', '5'));
     root.appendChild(moneyField('Entered add-ons -- outlier / IME / DSH ($)', 'drg-addon', '0'));
     const o = out(); root.appendChild(o);
-    const drgByCode = new Map();
 
     function run() {
       safe(o, () => {
-        if (!(numv('drg-weight') > 0)) { o.appendChild(el('p', { class: 'muted', text: 'Enter the relative weight (or an MS-DRG that fills it).' })); return; }
+        if (!(numv('drg-weight') > 0)) { o.appendChild(el('p', { class: 'muted', text: 'Enter the relative weight.' })); return; }
         if (!(numv('drg-oper') > 0)) { o.appendChild(el('p', { class: 'muted', text: 'Enter the operating base rate.' })); return; }
         const r = Integ.drgPayment({
           relativeWeight: numv('drg-weight'),
@@ -1066,22 +992,10 @@ export const renderers = {
           r.addOnCents > 0 ? ['Entered add-ons', usd(r.addOnCents)] : null,
           ['Total estimated payment', usd(r.totalCents)],
         ]));
-        o.appendChild(postureNote('42 CFR Part 412 (IPPS); relative weight from the bundled data/drg or entered. Estimates the operating model -- outlier/IME/DSH/new-tech need the hospital\'s cost-report factors. The OPPS APC Payment Estimate is the outpatient counterpart.'));
+        o.appendChild(postureNote('42 CFR Part 412 (IPPS); relative weight as entered from IPPS Table 5. Estimates the operating model -- outlier/IME/DSH/new-tech need the hospital\'s cost-report factors. The OPPS APC Payment Estimate is the outpatient counterpart.'));
       });
     }
-    wire(['drg-code', 'drg-weight', 'drg-oper', 'drg-cap', 'drg-wage', 'drg-transfer', 'drg-los', 'drg-gmlos', 'drg-addon'], run);
-    function fillFromCode() {
-      const row = drgByCode.get(str('drg-code').trim());
-      if (!row) return;
-      if (row.relativeWeight != null) document.getElementById('drg-weight').value = row.relativeWeight;
-      if (row.gmlos != null) document.getElementById('drg-gmlos').value = row.gmlos;
-      run();
-    }
-    document.getElementById('drg-code').addEventListener('input', fillFromCode);
-    loadFile('drg', 'drg.json').then((rows) => {
-      if (!root.isConnected || !Array.isArray(rows)) return;
-      for (const row of rows) if (row && row.drg) drgByCode.set(String(row.drg), row);
-    }).catch(() => {});
+    wire(['drg-weight', 'drg-oper', 'drg-cap', 'drg-wage', 'drg-transfer', 'drg-los', 'drg-gmlos', 'drg-addon'], run);
   },
 
   // ----- 2.6 apc-payment ----------------------------------------------------

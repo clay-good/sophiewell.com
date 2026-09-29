@@ -1,12 +1,11 @@
 {
+  "manifestVersion": 2,
   "dataset": "therapeutic-drug-levels",
   "label": "Therapeutic drug level reference (FDA labels)",
   "sourceUrl": "https://dailymed.nlm.nih.gov/",
   "agency": "NLM DailyMed / FDA",
   "status": "public-domain",
   "cadence": "quarterly",
-  "fetchDate": "2026-09-27",
-  "offlineSeed": false,
   "recordCount": 10,
   "shards": [
     {
@@ -15,5 +14,12 @@
       "records": 10,
       "bytes": 752
     }
-  ]
+  ],
+  "coverage": "subset",
+  "coverageNote": "Therapeutic ranges for commonly monitored drugs.",
+  "sourceEdition": "unversioned",
+  "curatedAt": "2026-05-29",
+  "contentChangedAt": "2026-05-29",
+  "expiresOn": "2028-05-29",
+  "recordsSha256": "5a7e516b1c78353abbc19649b9029b3ab3438053215ad3283c1c0048c4375013"
 }
