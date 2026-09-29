@@ -26,8 +26,15 @@ jobs:
           mkdir -p /tmp/prev-data
           if [ -d data ]; then cp -R data /tmp/prev-data/; fi
 
-      - name: Run data pipeline (with network)
+      - name: Build curated datasets
         run: node scripts/build-data.mjs
+
+      # spec-v1621: the live builders. Each fetches its publisher's newest
+      # edition, checks it (bounds, the 20% rule, canaries), and writes only
+      # when the source changed. A failed builder keeps the previous data and
+      # is named in the summary; it never fails this job.
+      - name: Fetch federal datasets
+        run: node scripts/data/run.mjs --summary data-refresh-summary.json
 
       - name: Verify integrity
         run: node scripts/verify-integrity.mjs
@@ -51,7 +58,9 @@ jobs:
 
       - name: Generate data change summary
         run: |
-          echo "Automated weekly refresh of bundled public datasets." > data-refresh-summary.md
+          node scripts/data/summarize.mjs data-refresh-summary.json > data-refresh-summary.md
+          echo >> data-refresh-summary.md
+          echo "Automated weekly refresh of bundled public datasets." >> data-refresh-summary.md
           echo "See scripts/sources.md for the canonical source URL of each dataset." >> data-refresh-summary.md
           echo >> data-refresh-summary.md
           node scripts/analyze-data-changes.mjs --previous /tmp/prev-data/data --current data >> data-refresh-summary.md
@@ -62,10 +71,19 @@ jobs:
           npm run test:unit
           npm run test:a11y
 
+      # spec-v1622 step 5: the one list of every dataset and dated constant,
+      # which the freshness job below publishes as an issue.
+      - name: Freshness report
+        run: node scripts/report-freshness.mjs > freshness.md
+
       # ':!data/search-corpus' -- see the rebuild step. The corpus belongs to
       # whoever changed the catalog; a data refresh must not carry it.
       - name: Package reviewed changes
-        run: git diff --binary -- data scripts/expected-hashes.json ':!data/search-corpus' > data-refresh.patch
+        # A new edition can add shard files; `git add -N` makes git diff show
+        # them, since it lists only tracked paths.
+        run: |
+          git add --intent-to-add -- data scripts/expected-hashes.json
+          git diff --binary -- data scripts/expected-hashes.json ':!data/search-corpus' > data-refresh.patch
 
       - name: Upload reviewed changes
         uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5
@@ -74,6 +92,8 @@ jobs:
           path: |
             data-refresh.patch
             data-refresh-summary.md
+            data-refresh-summary.json
+            freshness.md
           retention-days: 1
 
   publish:
@@ -93,6 +113,7 @@ jobs:
       - name: Apply reviewed changes
         run: git apply .data-refresh/data-refresh.patch
       - name: Open pull request if data changed
+        id: cpr
         uses: peter-evans/create-pull-request@c5a7806660adbe173f04e3e038b0ccdcd758773c # v6
         with:
           token: ${{ github.token }}
@@ -104,3 +125,56 @@ jobs:
             data/**
             :!data/search-corpus/**
             scripts/expected-hashes.json
+
+      # spec-v1621 §5: merge the pull request only when the run's own
+      # decision says every dataset is unchanged or updated cleanly -- canaries
+      # passing, counts inside bounds and within 20%, no same-edition re-post,
+      # no builder failure. The lint and unit tests already ran on these bytes
+      # in the refresh job. Anything else waits for a person, labeled.
+      - name: Merge, or ask for review
+        if: steps.cpr.outputs.pull-request-number
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ steps.cpr.outputs.pull-request-number }}
+        run: |
+          decision=$(node scripts/data/summarize.mjs .data-refresh/data-refresh-summary.json --decision)
+          if [ "$decision" = "merge" ]; then
+            gh pr merge "$PR" --squash --delete-branch --repo "$GITHUB_REPOSITORY"
+          else
+            gh label create data-review --color D93F0B --description "Weekly data refresh needs a person" --repo "$GITHUB_REPOSITORY" 2>/dev/null || true
+            gh pr edit "$PR" --add-label data-review --repo "$GITHUB_REPOSITORY"
+          fi
+
+  # spec-v1621 §5: one issue titled "Data freshness", rewritten every run, so
+  # anyone can see every dataset's coverage, edition, status and expiry
+  # without reading the repository. Pinning it is one click for the maintainer.
+  freshness:
+    needs: refresh
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0 # v5
+        with:
+          name: data-refresh
+          path: .data-refresh
+      - name: Rewrite the Data freshness issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          {
+            echo "Rewritten by the weekly data-refresh workflow on $(date -u +%Y-%m-%d). Do not edit by hand."
+            echo
+            echo "## Last run"
+            echo
+            cat .data-refresh/data-refresh-summary.md
+            echo
+            echo "## Every dataset and dated value"
+            echo
+            cat .data-refresh/freshness.md
+            echo
+            echo "NCCI procedure-to-procedure edits and OPPS Addendum B are not fetched: they sit behind the AMA click-through (spec-v1621 section 3.4). Tools ask for the reader's own copy."
+          } > body.md
+          n=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search 'in:title "Data freshness"' --json number,title --jq '.[] | select(.title == "Data freshness") | .number' | head -1)
+          if [ -n "$n" ]; then gh issue edit "$n" --repo "$GITHUB_REPOSITORY" --body-file body.md
+          else gh issue create --repo "$GITHUB_REPOSITORY" --title "Data freshness" --body-file body.md; fi

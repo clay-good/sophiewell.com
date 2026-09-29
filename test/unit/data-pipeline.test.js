@@ -248,3 +248,13 @@ test('runBuilder: a multi-part edition is fetched and hashed as one, so a change
   assert.equal(changed.status, 'updated');
   assert.equal(changed.sameEditionHashChange, true);
 });
+
+test('summaryMarkdown: the decision and its reasons lead the pull request body', async () => {
+  const { summaryMarkdown } = await import('../../scripts/data/summarize.mjs');
+  const review = summaryMarkdown({ decision: { action: 'review', reasons: ['mpfs: canary "99213 work RVU": expected 1.3, got 1.31'] }, datasets: [{ id: 'mpfs', status: 'updated', editionBefore: 'RVU26C', edition: 'RVU26D', recordCount: 19453, problems: ['x'] }] });
+  assert.match(review, /^\*\*Needs a person \(`data-review`\)/);
+  assert.match(review, /- mpfs: canary/);
+  assert.match(review, /\| mpfs \| updated \(1 problem\) \| RVU26C -> RVU26D \| 19453 \|/);
+  assert.match(summaryMarkdown({ decision: { action: 'merge', reasons: [] }, datasets: [] }), /merges itself/);
+  assert.match(summaryMarkdown({ datasets: [] }), /No live dataset changed/);
+});

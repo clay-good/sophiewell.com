@@ -269,3 +269,21 @@ with read-only permissions; publish opens the pull request). Changes:
   count jump, same-edition hash, builder failure.
 - An offline run (`SOPHIEWELL_OFFLINE=1`) touches no live dataset and leaves `git status`
   clean.
+
+## Build status
+
+**September 29, 2026.** Modules, four live datasets and the workflow are built; USPSTF and
+the schema/FHIR watches are open.
+
+| Part | Status | Differs from the spec |
+|---|---|---|
+| §2 modules | Built: `http`, `discover`, `zip` (zip and tar), `text`, `check` (with `decidePublish`), `run`, `summarize`. Verify-integrity enforces 6,000 data files and 20 MiB a file. | An edition can span several files (`found.parts`: three MUE settings; this year's and next year's DRG table; NADAC's pages). All parts are fetched and hashed as one, so a correction to any part is a change; only single-file sources use conditional requests. Canary functions receive `(records, ancillary)`, so a conversion factor in an ancillary file can be a canary. `canaries: null` marks weekly data whose stable canaries are the whole check. |
+| §3.1 `mpfs` | Built. RVU26D, 19,453 codes, 109 localities. | The QPP file repeats the nonQPP RVUs exactly (checked at parse), so it is stored as its conversion factor (33.5675) beside the nonQPP one, not as a second column set. |
+| §3.2 `drg` | Built. FY2026 current, FY2027 CN as `upcoming.json` until October 1. | With next year's table bundled, `nextExpected` moves to the following August, so the stamp never says "a newer edition is expected" when it is already here. |
+| §3.3 `mue` | Built. 2026 Q4, 15,349 codes, one record per code across three settings. | |
+| §3.4 PTP and Addendum B | Not fetched (`LICENSE_GATED_SOURCES` off by default); named in the freshness issue. | |
+| §3.5 `nadac` | Built. 2026-09-30 week, 30,079 rows, 515 labeler shards. | Pages are sorted by NDC so offsets are stable. |
+| §3.6 `uspstf` | **Open.** Blocked on curating `data/uspstf/populations.json` (54 recommendations); without it every run would go to review. | |
+| §3.7 schemas and FHIR packages | **Open.** The tar reader they need is built and tested. | |
+| §5 workflow | Built: refresh runs `build-data.mjs` then `data/run.mjs`; the PR body leads with the decision; publish merges with `gh pr merge --squash` only on `merge`, otherwise labels `data-review`; a `freshness` job rewrites the "Data freshness" issue from `report-freshness.mjs`. | New shard files are marked intent-to-add so the packaged patch carries them. |
+| §6 tests | Each builder has a fixture test on trimmed real files (descriptors blanked) and saved landing pages; `decidePublish` has a test per outcome. | |

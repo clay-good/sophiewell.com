@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `e55ba05e2bd0e684`
-Generated: 2026-09-29T18:19:13.733Z
+Build ID: `5bcf9093078a1652`
+Generated: 2026-09-29T19:39:42.619Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -1074,7 +1074,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/vexus-v958.js` | 9060 | `e2473c9925f2a91e17f750af0afb83cfad658a0d2e85cf2439ebaa4f39134ee9` |
 | `lib/vhi10-v508.js` | 3708 | `40297e81fc7f0da10cc909b1b2a13fe7a6b2048c7cf72291d8f3f1f16ac4c871` |
 | `lib/vhwg-hernia-v666.js` | 3465 | `cbf1ad3125634cff69574f4faa775b128beb2ad2ead868106673ee8b698c8776` |
-| `lib/vial-rounding-v1512.js` | 6191 | `70b9f5d542f6180369517d762332c6d2429ce56aa27d70e22f33e6503be91bc6` |
+| `lib/vial-rounding-v1512.js` | 8745 | `76e41a928d9918d37206865968e2d0b7bd5716ffe4af60dc2ce034583621b326` |
 | `lib/vitamin-d-level-v881.js` | 7879 | `d28a76c402f67174161d539f209b6211a24773dd13eb7f4780f07042e4544a4a` |
 | `lib/vod-sos-v907.js` | 14383 | `0e6e6e56ad62c2574f7d2b47b0779bb5d30eb7c0c51166f156b05ae1f8f0f3ba` |
 | `lib/vras-v602.js` | 11407 | `788dc1747f4d5b22b34b75ccd5d75f0e4bf2d3eca57156b6d360f28183f29098` |
