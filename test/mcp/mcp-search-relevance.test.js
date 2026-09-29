@@ -905,6 +905,7 @@ const PROBES = [
   ['erefs endoscopic reference score eosinophilic esophagitis', ['erefs']],
   ['charged for polyp removal during screening colonoscopy', ['preventive-cost-share-check']],
   ['direct primary care membership hsa eligible', ['dpc-hsa-check']],
+  ['medicare advantage denial internal criteria', ['ma-criteria-check']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

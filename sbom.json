@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:c8e1d5cf-08ab-59a0-8dc1-e160241daff8",
+  "serialNumber": "urn:uuid:17e225cc-0d13-52e5-8521-89eeb03e98fc",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-29T22:58:38.090Z",
+    "timestamp": "2026-09-29T23:27:37.510Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1951 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1952 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8d154cd96af0f7bb04901d6405605e524f2665d868ea58e9f0209ea330768e34"
+          "content": "bede4a45d2dc3363420181b1eb1cd867b2e522988b714a7e50681a17768800a5"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "125036"
+          "value": "125117"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5ad234f8d4eb547467e18c5484de5ca9799c7bcc610d5546c72136e4cf9a6d3d"
+          "content": "28444356c613932a037676aceef1ce4aee945cd53a87794c593eb3f84825f5e8"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "568297"
+          "value": "568541"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "21b375755d85ea0e78cccccc4aefd0e0c6a3de846c8e93919cc87e61d50ac168"
+          "content": "91aa6fe673736a31e8f4daf7913a83d4d961e26174ae16cec1d4a9387906bf84"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "243587"
+          "value": "243715"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a4c9e534bd20958940c25719b7e756dbd05c0902cc139e577a45ddfeb081ad7b"
+          "content": "a148c36034181c49fd1b87e727a8ddd6db6954e453df4d66c52d1b727bb27f75"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "111791"
+          "value": "111879"
         }
       ]
     },
@@ -11753,6 +11753,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/ma-criteria-check.js",
+      "type": "file",
+      "name": "lib/ma-criteria-check.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "446d98195ba5f9a9b9c4c1118c1c6f1c0e894524142d2b2e62b02d9c8a542af0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "11026"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/magi-household-v1507.js",
       "type": "file",
       "name": "lib/magi-household-v1507.js",
@@ -12536,7 +12557,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a53c35058cb882c93abceec6c69b56c6b631c580fea9cabb5ba5a87142676f3c"
+          "content": "c772102cabad7345a5da58ac33bc7203b42580205652d1715345305ea604b820"
         }
       ],
       "properties": [
@@ -12546,7 +12567,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2667492"
+          "value": "2668561"
         }
       ]
     },
@@ -33929,6 +33950,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ma-criteria-check.js",
+      "type": "file",
+      "name": "mcp/adapters/ma-criteria-check.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ceb31de3cbbbf5522a129b3ce124756dd9770ca66c5b2891c7aabbe7589eeb58"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1750"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/magi-household-v1507.js",
       "type": "file",
       "name": "mcp/adapters/magi-household-v1507.js",
@@ -44099,7 +44141,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7d05f855958ad26be2219307e8a5a4228eed8695beea718f98a23e986b499b98"
+          "content": "dde5ed1bda988bded3ec6e4e1dfcd13ed2c71b8135f5d16f7f1b9c5d385055b2"
         }
       ],
       "properties": [
@@ -44109,7 +44151,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "114142"
+          "value": "114247"
         }
       ]
     },
@@ -48016,6 +48058,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2972"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1603.js",
+      "type": "file",
+      "name": "views/group-v1603.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "94c810167e61aab4f9ed9ff394f3d54154f8d179764184cb12d64ca0f7760f13"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3603"
         }
       ]
     },
@@ -79424,6 +79487,7 @@
         "urn:sophiewell:file:source:lib/lyme-two-tier-v873.js",
         "urn:sophiewell:file:source:lib/lymphoma-v135.js",
         "urn:sophiewell:file:source:lib/ma-appeals-v1503.js",
+        "urn:sophiewell:file:source:lib/ma-criteria-check.js",
         "urn:sophiewell:file:source:lib/magi-household-v1507.js",
         "urn:sophiewell:file:source:lib/magic-gvhd-v577.js",
         "urn:sophiewell:file:source:lib/mallampati-v810.js",
@@ -80157,6 +80221,7 @@
         "urn:sophiewell:file:source:views/group-v16.js",
         "urn:sophiewell:file:source:views/group-v160.js",
         "urn:sophiewell:file:source:views/group-v1601.js",
+        "urn:sophiewell:file:source:views/group-v1603.js",
         "urn:sophiewell:file:source:views/group-v1604.js",
         "urn:sophiewell:file:source:views/group-v161.js",
         "urn:sophiewell:file:source:views/group-v163.js",
@@ -81394,6 +81459,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/lyme-two-tier-v873.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lymphoma-v135.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ma-appeals-v1503.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/ma-criteria-check.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/magi-household-v1507.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/magic-gvhd-v577.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mallampati-v810.js",
@@ -81982,7 +82048,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "c8e1d5cf08ab59a0"
+      "value": "17e225cc0d1392e5"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -81994,7 +82060,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2991"
+      "value": "2994"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

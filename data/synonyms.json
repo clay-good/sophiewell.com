@@ -9975,6 +9975,17 @@
     },
     {
       "phrases": [
+        "medicare advantage denial",
+        "medicare advantage denied my claim",
+        "ma plan used interqual",
+        "medicare advantage prior authorization denied",
+        "90 day transition new medicare advantage member"
+      ],
+      "tile": "ma-criteria-check",
+      "audience": "patients"
+    },
+    {
+      "phrases": [
         "proportion of days covered",
         "medication possession ratio",
         "pdc calculator",

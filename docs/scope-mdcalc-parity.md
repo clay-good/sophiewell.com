@@ -250,3 +250,5 @@ experience**.
 > v1601, preventive care cost sharing — [spec-v1601](spec-v1601.md), which adds `preventive-cost-share-check` — is 1950.)
 
 > v1604, direct primary care and HSAs — [spec-v1604](spec-v1604.md), which adds `dpc-hsa-check` — is 1951.)
+
+> v1603, Medicare Advantage denial process — [spec-v1603](spec-v1603.md), which adds `ma-criteria-check` — is 1952.)

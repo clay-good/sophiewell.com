@@ -8647,6 +8647,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/dpc-hsa-check.js (spec-v1604: Direct primary care and HSA eligibility — administrative disclaimer)
 - `dpc-hsa-check`
 
+### lib/ma-criteria-check.js (spec-v1603: Medicare Advantage denial process — administrative disclaimer)
+- `ma-criteria-check`
+
 ### lib/pdc-star-v1513.js (spec-v1513: Part D adherence (PDC, Star method) — administrative disclaimer)
 - `pdc-star`
 

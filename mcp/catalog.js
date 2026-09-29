@@ -938,6 +938,7 @@ import doseCalendarV1512 from './adapters/dose-calendar-v1512.js';
 import appealPathV1505 from './adapters/appeal-path-v1505.js';
 import preventiveCostShareCheck from './adapters/preventive-cost-share-check.js';
 import dpcHsaCheck from './adapters/dpc-hsa-check.js';
+import maCriteriaCheck from './adapters/ma-criteria-check.js';
 import pdcStarV1513 from './adapters/pdc-star-v1513.js';
 import imidRemsV1511 from './adapters/imid-rems-v1511.js';
 import benefitsV1505 from './adapters/benefits-v1505.js';
@@ -1930,6 +1931,7 @@ const ADAPTER_MODULES = [
   ['appeal-path-v1505', appealPathV1505],
   ['preventive-cost-share-check', preventiveCostShareCheck],
   ['dpc-hsa-check', dpcHsaCheck],
+  ['ma-criteria-check', maCriteriaCheck],
   ['pdc-star-v1513', pdcStarV1513],
   ['imid-rems-v1511', imidRemsV1511],
   ['benefits-v1505', benefitsV1505],
