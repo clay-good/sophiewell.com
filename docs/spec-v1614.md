@@ -13,7 +13,7 @@ only way a tool works.
 | Every `data/*/manifest.json` carries `fetchDate: 2026-09-27`, the date of the last weekly run, including datasets that were **not fetched**: `mpfs` holds 5 records, `icd10cm` 20, `hcpcs` 10, `ndc` 5, `drg` 8, all hand-written seeds. | The weekly refresh renews the date on unchanged seed data. Its pull requests are mostly date changes, which trains the maintainer to merge without reading. |
 | Seed manifests say `offlineSeed: false`. | The flag is set from the build mode, not from whether the content was fetched. |
 | The page prints *"Source: …, fetched 2026-09-27"* under table data (`lib/table.js`, `app.js`). | A reader is told data was fetched this week when it was written by hand. This is the one place the site currently overstates its data. |
-| No manifest has `expiresOn`, `effectiveFrom` or `sourceEdition`; `DATED` in `lib/dated-data.js` is empty. | The fail-closed contract of [spec-v1501](spec-v1501.md) §2 exists as code and has no data to act on. |
+| No manifest has `expiresOn`, `effectiveFrom` or `sourceEdition`. (Dated constants are fine: each module keeps its own table and reads it through `datedValue`, which fails closed.) | Datasets have no fail-closed path; dated constants do. |
 | Most tools ship no table and take the value as input ([spec-v77](spec-v77.md) §2), so the seeds are mostly unused. | The risk today is mislabeling, not wrong answers. It becomes a risk of wrong answers the day a file tool joins a whole claims file against a table ([spec-v1602](spec-v1602.md), [spec-v1604](spec-v1604.md)). |
 
 This spec fixes the labeling now, and sets the rules the file tools need before any of
@@ -78,7 +78,7 @@ Each builder follows the same five steps, so adding one is routine:
 | 2 | OPPS Addendum B (APC and status indicators) | same | ~8,000 codes |
 | 3 | MS-DRG relative weights (IPPS Table 5) | same | ~770 DRGs |
 | 4 | NADAC weekly | `pharmacy-spread-check`, `nadac-margin` | ~30,000 NDC rows per week |
-| 5 | NCCI procedure-to-procedure edits and MUEs (practitioner and hospital) | `itemized-bill-check` | hundreds of thousands of pairs; sharded by column-1 code, loaded only for the codes on a bill |
+| 5 | MUEs; NCCI procedure-to-procedure edits | `itemized-bill-check` | MUE about 15,000 rows per setting, bundled; PTP about 4.5 million pairs behind an AMA click-through, so read from the reader's own download by default ([spec-v1621](spec-v1621.md) §3.4) |
 | 6 | USPSTF A and B list | `preventive-owed` | ~100 rows ([spec-v1605](spec-v1605.md)) |
 | 7 | CMS schemas (hospital price v3, Transparency in Coverage), CARIN and PAS profiles | the file checks | small; pinned versions |
 

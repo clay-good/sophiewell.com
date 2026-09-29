@@ -1,6 +1,6 @@
 # Scope — file intake: drop what you have, get the answer
 
-**Status:** Specified September 29, 2026. Nothing built yet.
+**Status:** Specified September 29, 2026. Nothing built yet. Build plan: [spec-v1620](spec-v1620.md).
 **Specs:** [spec-v1610](spec-v1610.md) (charter) through [spec-v1615](spec-v1615.md).
 **When built:** no new catalog entries. The program is a way into the tools that exist and
 are planned, a fix to how bundled data is labeled and refreshed, and two MCP tools.
@@ -61,14 +61,8 @@ Read September 29, 2026.
 
 ## Verify at build
 
-- The exact Apple Health export layout for clinical records (folder name and file form)
-  on current iOS.
-- The X12 version identifiers in [spec-v1611](spec-v1611.md) §2.1 against the current CMS
-  companion guides.
-- Header strings of the CMS reference files ([spec-v1611](spec-v1611.md) §2.5).
-- Branch protection and token permissions for the refresh auto-merge
-  ([spec-v1614](spec-v1614.md) §5).
-- The NCCI file sizes after sharding, against the site's asset budget.
+Settled by research on September 29, 2026 and recorded in the build specs; the remaining
+open items are listed in [spec-v1620](spec-v1620.md), "What the research settled."
 
 ## Rejected
 

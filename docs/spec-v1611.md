@@ -45,17 +45,23 @@ is used as the element separator consistently through the fixed-width ISA segmen
 characters). The segment terminator is the character after ISA16. Then `GS` and `ST` are
 read with those separators:
 
-| ST01 | GS08 version prefix | kind | tools |
-|---|---|---|---|
-| 835 | 005010X221 | `x12-835` | `x12-835-reader`, `denial-pattern-report`, `appeal-worklist`, `underpayment-check` |
-| 837 | 005010X222 | `x12-837p` | `x12-837-check` |
-| 837 | 005010X223 | `x12-837i` | `x12-837-check` |
-| 271 | 005010X279 | `x12-271` | `x12-271-reader` |
-| 277 | 005010X212 | `x12-277` | `x12-277-reader` |
-| 277 | 005010X214 | `x12-277ca` | `x12-277-reader` |
-| other | — | `x12-other` | none; the result names the transaction set number |
+| ST01 | GS01 | GS08 version | kind | tools |
+|---|---|---|---|---|
+| 835 | HP | 005010X221A1 | `x12-835` | `x12-835-reader`, `denial-pattern-report`, `appeal-worklist`, `underpayment-check` |
+| 837 | HC | 005010X222A1 | `x12-837p` | `x12-837-check` |
+| 837 | HC | 005010X223A2 | `x12-837i` | `x12-837-check` |
+| 837 | HC | 005010X224A2 | `x12-837d` | none yet; named as a dental claim |
+| 271 | HB | 005010X279A1 | `x12-271` | `x12-271-reader` |
+| 277 | HN | 005010X212 | `x12-277` | `x12-277-reader` |
+| 277 | HN | 005010X214 | `x12-277ca` | `x12-277-reader` |
+| 999 | FA | 005010X231A1 | `x12-999` | none; named as an acknowledgment |
+| other | — | — | `x12-other` | none; the result names the transaction set number |
 
-The version identifiers are facts, not guide text ([spec-v1501](spec-v1501.md) §6).
+The 277 and 277CA share GS01 `HN`; GS08 tells them apart. Versions are from the CMS 835
+and HETS 270/271 companion guides and the CGS Medicare companion guides; GS01 codes are
+confirmed from payer companion guide samples. (One CGS guide misprints the 837P version
+as `005010X22A1`; the recognizer matches the correct identifier only.) The identifiers are
+facts, not guide text ([spec-v1501](spec-v1501.md) §6).
 One file can carry several functional groups; each ST is counted and the result lists
 them (*"3 remittance transactions"*).
 
@@ -70,6 +76,16 @@ namespace are read with a small tokenizer.
 | `ClinicalDocument` in `urn:hl7-org:v3`, with the CCD template id `2.16.840.1.113883.10.20.22.1.2` | `ccda-ccd` | records → calculators ([spec-v1613](spec-v1613.md)) |
 | `ClinicalDocument`, other C-CDA template ids | `ccda-other` | same, with the document type named |
 | `HealthData` (Apple Health `export.xml`) | `apple-health-xml` | records → calculators, vitals only ([spec-v1613](spec-v1613.md) §2) |
+
+**Apple Health export zip.** Apple publishes no specification of the layout. Developer
+reports agree on `apple_health_export/` holding `export.xml`, `export_cda.xml`,
+`workout-routes/` (GPX), `electrocardiograms/` (CSV) and, only when health records are
+connected, `clinical-records/` with one FHIR JSON file per resource, referenced from
+`ClinicalRecord@resourceFilePath` in `export.xml`. The recognizer therefore matches by
+content, not path: a zip containing an XML member whose root is `HealthData` is an Apple
+export wherever it sits and whatever the folder is called (folder names can be localized);
+its FHIR JSON members are recognized one by one as `fhir-resource`. GPX and ECG members
+are skipped and counted.
 | any other XML | `xml-unknown` | none; the root element is named |
 
 ### 2.3 JSON and NDJSON
