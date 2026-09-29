@@ -42,6 +42,8 @@ Reasons are a fixed vocabulary:
 - `pa-lint` - wrong-input-modality
 - `340b-rx-match` - bespoke-shape
 - `x12-835-reader` - wrong-input-modality
+- `denial-pattern-report` - wrong-input-modality
+- `underpayment-check` - wrong-input-modality
 - `ews-escalation` - time-dependent
 - `sepsis-bundle-clock` - time-dependent
 - `code-blue-clock` - time-dependent

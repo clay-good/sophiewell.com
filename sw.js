@@ -38,6 +38,7 @@ const SHELL_ASSETS = [
   './lib/upload-worker.js',
   './lib/rx-match-worker.js',
   './lib/x12-835-worker.js',
+  './lib/remittance-analysis-worker.js',
   './favicon.ico',
   './favicon-32x32.png',
   './favicon-16x16.png',

@@ -175,6 +175,9 @@ the research recorded in [scope-medication-access.md](scope-medication-access.md
   form and exports either its decision or its input error.
 - **Built 2026-09-28:** §3's first X12 intake, `x12-835-reader`, validates an
   835's separators and envelope controls in a Worker, then exports a claim table.
+- **Built 2026-09-28:** §3's 835 intake also feeds `denial-pattern-report` and
+  `underpayment-check`; both keep remittance and fee-schedule rows in a Worker
+  and produce full or patient-redacted CSVs.
 - **Not yet built:** §2's page watch (with
   [spec-v1517](spec-v1517.md)); §3's JSON intake, the remaining X12 transactions, generic scalar-tool batch
   execution, and upload integration for the remaining file-based tools; §4 the

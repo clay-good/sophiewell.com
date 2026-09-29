@@ -1,0 +1,10 @@
+{
+  "whatThisIs": "Turn a month or quarter of X12 835 remittances into a denial and adjustment report. It groups net dollars by the reviewed denial category, raw group and reason code, payer, billing code and rendering provider.",
+  "whenToUse": "Use this to find which adjustments cost the most and whether the latest payment month is improving or worsening. Signed reversal adjustments reduce the same bucket instead of being counted as new losses.",
+  "inputs": "One or more X12 835 version 5010 files, up to 50 MB each. Payment dates drive the month comparison; raw reason codes remain visible.",
+  "output": "Sorted summary tables, latest-month change, an adjustment-level preview, and full or patient-redacted CSV downloads.",
+  "example": {
+    "rows": [["August", "$50.00 contractual adjustment"], ["September", "$100.00 medical-necessity adjustment"]],
+    "result": "2 adjustments total $150.00; the largest category represents 66.7%."
+  }
+}

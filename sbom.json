@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:2c2855e3-634e-598f-8cbd-e852c04d369c",
+  "serialNumber": "urn:uuid:99326643-4f7f-5a80-8422-13785d20a68a",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-28T23:55:24.690Z",
+    "timestamp": "2026-09-29T00:04:08.488Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1943 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1945 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c2803bfaa06b82f5f849ea43e4d86e27139929f3396aac136827cefc4231481d"
+          "content": "55983236f22656ab4c0735334b163de90510afd096d4fb9f2d3274e2275a8690"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "123458"
+          "value": "123610"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f5fafe65a6806bc41582ab65d7cd30401ab2813eb7713fd58d26709b7860595d"
+          "content": "a2390a21a04e52a7f20b06a18ee62ff968bf7637fe806dffa1b0f0d186449007"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "561846"
+          "value": "562105"
         }
       ]
     },
@@ -209,7 +209,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4dc1b3f21df9ce31007f6f9dce5f121faf7036cb862d62306c803f1eedc44004"
+          "content": "85c61845a01beeab2a865bc63383292a9c1fde42fc8336488c1b6b4d1414ce9e"
         }
       ],
       "properties": [
@@ -219,7 +219,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "5270"
+          "value": "5311"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a0e5004b39c9d6a77356e411325028f097d07e2a90aa676c1253285a2a3c7fab"
+          "content": "d05b383bfdca93f0bbc811a693b79394913dd5def2c4d9a78eb7607cdc437693"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "242565"
+          "value": "242826"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "bb216c1a00705c9b3f7e7d4c33541c2046ae8122be1e4c9020e1aaf937fc739c"
+          "content": "26a2788a1ee3d18ff20ca7385ec11dc5d77a7a737f88be953042563f79a16c0c"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "111341"
+          "value": "111438"
         }
       ]
     },
@@ -5081,7 +5081,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c5ab62033af9afd46712fb46c9698f65356596517ad179b7d8596510e74c3e21"
+          "content": "9ba8257624209251cdb0f681f9fabd96c38b2eec17f1e44dd0e517960a79c616"
         }
       ],
       "properties": [
@@ -5091,7 +5091,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "12444"
+          "value": "12616"
         }
       ]
     },
@@ -12284,7 +12284,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8be98cd1005b66b99ca38884ac6fc046d2bb3ede3efab5527bef6622e23c13a5"
+          "content": "156bb2c7cd32a28999b06e724a5d9f79a58fd34e1fbba9448ea1af4fe9c81bb0"
         }
       ],
       "properties": [
@@ -12294,7 +12294,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2662298"
+          "value": "2663402"
         }
       ]
     },
@@ -17738,6 +17738,48 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/remittance-analysis-v1516.js",
+      "type": "file",
+      "name": "lib/remittance-analysis-v1516.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3541d0a5aa661e9be6b5569f7fcf465e16d4e8fa56a5a85490fa5d3adcce81b9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7408"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/remittance-analysis-worker.js",
+      "type": "file",
+      "name": "lib/remittance-analysis-worker.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "38479fc3a65e6b0be9578d1aaf1ca658f2d096792c67360163a9b0f69655b6c0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5903"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/renal-angina-v533.js",
       "type": "file",
       "name": "lib/renal-angina-v533.js",
@@ -22343,7 +22385,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "239669d966fcc88c196cc96c55e16688e344c365499cc3bad4564572c4750c51"
+          "content": "8b506187a48c98fbb5e33287446dc5d4384df1186ff6e91a9715797a47e1436c"
         }
       ],
       "properties": [
@@ -22353,7 +22395,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "10802"
+          "value": "11538"
         }
       ]
     },
@@ -46850,7 +46892,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b3840e30c29fbc49f7d5349db442a088522da325d079ad2075906bfdedb4de4b"
+          "content": "af856dbd119f6bfb128e2f706bc03f6a1f7b1fbc0ebfa87fa0ada255017fa41d"
         }
       ],
       "properties": [
@@ -46860,7 +46902,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "5426"
+          "value": "16328"
         }
       ]
     },
@@ -78722,6 +78764,8 @@
         "urn:sophiewell:file:source:lib/reid-bronchiectasis-v450.js",
         "urn:sophiewell:file:source:lib/reimers-migration-percentage-v703.js",
         "urn:sophiewell:file:source:lib/related.js",
+        "urn:sophiewell:file:source:lib/remittance-analysis-v1516.js",
+        "urn:sophiewell:file:source:lib/remittance-analysis-worker.js",
         "urn:sophiewell:file:source:lib/renal-angina-v533.js",
         "urn:sophiewell:file:source:lib/renal-v128.js",
         "urn:sophiewell:file:source:lib/renal-v277.js",
@@ -80948,7 +80992,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "2c2855e3634e998f"
+      "value": "993266434f7f0a80"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -80960,7 +81004,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2944"
+      "value": "2946"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

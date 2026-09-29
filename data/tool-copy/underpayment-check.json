@@ -1,0 +1,10 @@
+{
+  "whatThisIs": "Compare the allowed amount on each 835 service line with the contract rate you supply. The remittance allowed amount is the billed charge minus CO adjustments; modifier-specific fee rows take precedence over a code-only rate.",
+  "whenToUse": "Use this before a payment dispute when the payer may have allowed less than the contracted fee. The tool ships no payer rates and makes no assumptions about contract terms you did not enter.",
+  "inputs": "One or more X12 835 files and a CSV or TSV fee schedule. Each fee row has a billing code, optional modifier, and either a contracted amount or a reference amount with a contract percentage.",
+  "output": "Underpaid service lines, dollar variance, totals by payer and billing code, unmatched-line count, and full or patient-redacted dispute CSVs.",
+  "example": {
+    "rows": [["Contract rate", "$150.00 for 99213-25"], ["Remittance allowed", "$150.00 on one line and $149.99 on another"]],
+    "result": "1 of 2 matched lines was paid below contract, totaling $0.01."
+  }
+}

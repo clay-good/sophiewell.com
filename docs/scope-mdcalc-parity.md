@@ -236,3 +236,5 @@ experience**.
 > v1509, prescription matching — [spec-v1509](spec-v1509.md), which adds `340b-rx-match` — is 1942.)
 
 > v1515, remittance files — [spec-v1515](spec-v1515.md), which adds `x12-835-reader` — is 1943.)
+
+> v1516, remittance analysis — [spec-v1516](spec-v1516.md), which adds `denial-pattern-report` and `underpayment-check` — is 1945.)

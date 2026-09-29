@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Denial-pattern and contract-underpayment reports over local X12 835 files.
+  The first groups net adjustments by category, code, payer, billing code and
+  rendering provider; the second compares allowed amounts with a mapped fee
+  schedule supplied by the reader.
+
 - An X12 835 remittance reader that validates envelope controls and proves
   service-line, claim and payment arithmetic before posting. It runs locally in
   a Worker and exports full or patient-redacted claim CSVs.

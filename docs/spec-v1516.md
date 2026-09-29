@@ -100,4 +100,11 @@ code, and a CSV to send with a payment dispute.
 - **Built 2026-09-26:** `appeal-worklist`, with claims one per line (reference, payer type, denial date, amount,
   and a window for Medicaid or other payers); missed deadlines are listed apart. The 835 upload will feed it
   when [spec-v1515](spec-v1515.md) is built.
-- **Not yet built:** `denial-pattern-report` and `underpayment-check` (need the 835 reader).
+- **Built 2026-09-28:** `denial-pattern-report` reads one or more 835 files in a
+  Worker and groups net adjustment dollars by reviewed category, raw reason code,
+  payer, billing code and rendering provider. Signed reversals reduce their
+  bucket, and the latest two reported payment months are compared.
+- **Built 2026-09-28:** `underpayment-check` maps a reader-supplied fee schedule,
+  accepts either a direct contracted amount or a percentage of a supplied
+  reference amount, and compares that rate with billed minus CO adjustments for
+  each service line. Exact contract payment is not flagged; a $0.01 shortfall is.

@@ -10251,6 +10251,28 @@
     },
     {
       "phrases": [
+        "denial pattern report",
+        "denial trends",
+        "carc adjustment report",
+        "denials by payer",
+        "remittance denial analysis"
+      ],
+      "tile": "denial-pattern-report",
+      "audience": "billers"
+    },
+    {
+      "phrases": [
+        "underpayment check",
+        "paid below contract",
+        "contract variance",
+        "fee schedule comparison",
+        "payer underpaid claim"
+      ],
+      "tile": "underpayment-check",
+      "audience": "billers"
+    },
+    {
+      "phrases": [
         "therapy cost comparison",
         "biosimilar cost comparison",
         "annual drug cost",
