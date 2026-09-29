@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- An X12 837 claim-file checker for professional and institutional files. It
+  validates envelope controls, claim-to-line charge totals, NPI check digits,
+  ICD-10-CM structure, Medicare identifier format and service/admission dates,
+  then exports full or patient-redacted claim findings.
+
 - Denial-pattern and contract-underpayment reports over local X12 835 files.
   The first groups net adjustments by category, code, payer, billing code and
   rendering provider; the second compares allowed amounts with a mapped fee

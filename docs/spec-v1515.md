@@ -131,5 +131,10 @@ a route A dataset pinned to a published version.
   transaction controls, and proves service-line, claim and payment arithmetic.
   Signed CAS reversals and PLB provider adjustments are included. The Worker
   returns a capped claim preview plus full and patient-redacted CSV downloads.
-- **Not yet built:** `x12-837-check`, `x12-271-reader`, `x12-277-reader`,
+- **Built 2026-09-28:** `x12-837-check` accepts local 005010X222A1 professional
+  and 005010X223A2 institutional files. It validates envelope controls, claim-to-line
+  charge totals, NPI check digits, ICD-10-CM structure, Medicare identifier format,
+  future service dates and admission-before-discharge order. Findings name the claim,
+  check and segment position; exports are available with patient identifiers redacted.
+- **Not yet built:** `x12-271-reader`, `x12-277-reader`,
   `hpt-file-check`, `hpt-price-compare` and `pas-bundle-check`.

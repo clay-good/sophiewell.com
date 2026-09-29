@@ -5,7 +5,7 @@
 <h1 align="center">sophiewell.com</h1>
 
 <p align="center">
-  <strong>1945 free healthcare calculators that run entirely in your browser.</strong><br>
+  <strong>1946 free healthcare calculators that run entirely in your browser.</strong><br>
   No accounts, no ads, no telemetry, no AI.
 </p>
 
@@ -17,7 +17,7 @@
 <!--
   Machine-checked count (scripts/check-catalog-truth.mjs reads the line
   below; keep it in sync with UTILITIES.length in app.js):
-  At v1511 close the catalog is 1945
+  At v1515 close the catalog is 1946
   deterministic tiles.
 -->
 
@@ -37,7 +37,7 @@ Each calculator does one thing:
 | **In** | The values you already have. It opens pre-filled with a worked example — a described patient, not a form of zeros — so you can see the expected format before you type over it. |
 | **Out** | One number or grade, plus how the source says to read it. |
 | **Or not** | When a value it needs is missing, it says which one instead of answering. A score that only adds points will still flag risk on what you have entered, but it will not call a patient well on measurements nobody took — and it will not raise an alarm from an empty form either. When it does answer on a partly filled form, it says how much of the form it used. |
-| **Proof** | The method and primary citations together, one click away under "How this is calculated". 1,868 of the 1,945 link straight through to the source paper, and every one of those links is checked to resolve **and** to open the paper the citation names, not merely a paper. Twelve more say "Search PubMed for this source" because no index carries the book chapter or pre-1946 paper they cite. |
+| **Proof** | The method and primary citations together, one click away under "How this is calculated". 1,869 of the 1,946 link straight through to the source paper, and every one of those links is checked to resolve **and** to open the paper the citation names, not merely a paper. Twelve more say "Search PubMed for this source" because no index carries the book chapter or pre-1946 paper they cite. |
 
 For example, on [Wells Score for PE](https://sophiewell.com/#wells-pe)
 you tick the criteria that apply and get
@@ -78,7 +78,9 @@ audit trail with full or redacted downloads. The 835 reader validates remittance
 envelopes and balance arithmetic, then exports a claim table locally. Denial-pattern
 and contract-underpayment reports run on those same local remittances. The appeal
 worklist accepts mapped CSV/TSV claims or 835 files, asks the reader to identify each
-payer's rule set, and exports full or patient-redacted deadline lists. See
+payer's rule set, and exports full or patient-redacted deadline lists. The 837 checker
+validates professional and institutional claim structure, identifiers, dates and charge
+totals before submission. See
 [the implementation status](docs/spec-v1501.md#build-status).
 
 - [CHANGELOG.md](CHANGELOG.md): what's new

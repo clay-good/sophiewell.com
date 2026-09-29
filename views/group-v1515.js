@@ -4,6 +4,7 @@ import { MAX_FILE_BYTES } from '../lib/upload-intake.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const workerUrl = new URL('../lib/x12-835-worker.js', import.meta.url);
+const claimWorkerUrl = new URL('../lib/x12-837-worker.js', import.meta.url);
 const analysisWorkerUrl = new URL('../lib/remittance-analysis-worker.js', import.meta.url);
 
 function table(root, caption, headers, rows) {
@@ -184,4 +185,34 @@ function underpayment(root) {
   });
 }
 
-export const renderers = { 'x12-835-reader': reader835, 'denial-pattern-report': denialPattern, 'underpayment-check': underpayment };
+function check837(root) {
+  root.appendChild(el('p', { class: 'notice', text: 'Checks X12 837P and 837I claim files locally for envelope integrity, identifier formats, diagnosis-code structure, date logic and claim-to-line charge totals.' }));
+  root.appendChild(el('p', { class: 'muted', text: 'Structural and arithmetic checks only. This does not apply a payer’s edits or X12 situational rules.' }));
+  const input = el('input', { id: 'x837-files', type: 'file', multiple: true, accept: '.837,.txt,text/plain,application/octet-stream' });
+  const status = el('p', { id: 'x837-status', class: 'muted', role: 'status', 'aria-live': 'polite' });
+  const results = el('div', { id: 'q-results', 'aria-live': 'polite' });
+  root.appendChild(el('label', { for: 'x837-files', text: 'Choose claim files' })); root.appendChild(input); root.appendChild(status); root.appendChild(results);
+  let worker = null;
+  input.addEventListener('change', async () => {
+    if (worker) worker.terminate(); clear(results);
+    const files = [...(input.files || [])]; if (!files.length) return;
+    if (files.some((file) => file.size > MAX_FILE_BYTES)) { status.textContent = 'Each file must be 50 MB or smaller.'; return; }
+    status.textContent = 'Checking the claim files locally...'; const payload = await transferFiles(files);
+    worker = new window.Worker(claimWorkerUrl, { type: 'module' });
+    worker.addEventListener('error', () => { status.textContent = 'The claim files could not be checked.'; });
+    worker.addEventListener('message', (event) => {
+      const message = event.data || {};
+      if (message.type === 'error') { status.textContent = message.message; return; }
+      if (message.type === 'download') { downloadMessage(worker, message); return; }
+      if (message.type !== 'parsed') return;
+      const value = message.totals; status.textContent = `${value.files.toLocaleString('en-US')} ${value.files === 1 ? 'file' : 'files'} checked.`;
+      resultRow(results, [{ text: `${value.clean.toLocaleString('en-US')} of ${value.claims.toLocaleString('en-US')} claims passed all checks; ${value.failing.toLocaleString('en-US')} failed.`, cls: value.failing ? 'warn' : null }, { label: 'Findings', value: value.findings.toLocaleString('en-US') }]);
+      const shown = message.preview.rows.length; results.appendChild(el('p', { class: 'muted', text: message.preview.total > shown ? `Showing the first ${shown} of ${message.preview.total} claims.` : `Showing all ${shown} claims.` }));
+      table(results, 'Claim check results', message.preview.headers, message.preview.rows); downloads(results, worker);
+      results.appendChild(el('p', { class: 'muted', text: 'Identifier checks prove format and check digits only. Diagnosis checks prove structure only. Raw X12 code values are preserved without code-list descriptions.' }));
+    });
+    worker.postMessage({ type: 'parse', files: payload }, payload.map((file) => file.buffer));
+  });
+}
+
+export const renderers = { 'x12-835-reader': reader835, 'x12-837-check': check837, 'denial-pattern-report': denialPattern, 'underpayment-check': underpayment };

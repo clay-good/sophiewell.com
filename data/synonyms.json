@@ -10251,6 +10251,17 @@
     },
     {
       "phrases": [
+        "837 checker",
+        "837 claim file",
+        "professional claim file check",
+        "institutional claim file check",
+        "claim file validation"
+      ],
+      "tile": "x12-837-check",
+      "audience": "billers"
+    },
+    {
+      "phrases": [
         "denial pattern report",
         "denial trends",
         "carc adjustment report",

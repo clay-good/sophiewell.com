@@ -1,0 +1,13 @@
+{
+  "whatThisIs": "Check an X12 837 professional or institutional claim file before submission. The checker validates envelope controls, identifier formats, diagnosis-code structure, date logic and each claim's line-charge total.",
+  "whenToUse": "Use this after generating a claim file and before sending it to a payer or clearinghouse. It finds structural and arithmetic defects locally without applying payer edits or X12 situational rules.",
+  "inputs": "One or more X12 837P 005010X222A1 or 837I 005010X223A2 text files, up to 50 MB each. Files remain in the browser tab.",
+  "output": "A clean-or-failing count, a claim table with every finding and segment position, and full or redacted CSV downloads. Redacted downloads mask patient names, member IDs and claim references.",
+  "example": {
+    "rows": [
+      ["Claim 1", "Charge equals line total; identifiers and dates pass"],
+      ["Claim 2", "Charge mismatch, invalid NPI and invalid diagnosis structure"]
+    ],
+    "result": "1 of 2 claims passed all checks; 1 failed with 3 findings."
+  }
+}

@@ -1088,6 +1088,7 @@ const UTILITIES = [
   { id: 'site-of-care-compare', name: 'Cost by Site of Care', group: 'Q', audiences: ['billers', 'patients', 'clinicians'], clinical: false },
   { id: 'appeal-worklist', name: 'Appeal Worklist by Deadline', group: 'P', audiences: ['billers', 'coders'], clinical: false },
   { id: 'x12-835-reader', name: 'X12 835 Remittance Reader', group: 'P', audiences: ['billers', 'coders'], clinical: false },
+  { id: 'x12-837-check', name: 'X12 837 Claim File Check', group: 'P', audiences: ['billers', 'coders'], clinical: false },
   { id: 'denial-pattern-report', name: 'Denial Pattern Report', group: 'P', audiences: ['billers', 'coders'], clinical: false },
   { id: 'underpayment-check', name: 'Paid Below Contract Check', group: 'P', audiences: ['billers', 'coders'], clinical: false },
   { id: 'therapy-cost-compare', name: 'Annual Therapy Cost Comparison', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },
