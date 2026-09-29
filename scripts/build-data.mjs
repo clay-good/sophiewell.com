@@ -371,7 +371,7 @@ const datasets = [
       ];
       await writeFile(join(folder, 'gpci.json'), JSON.stringify(gpci, null, 2) + '\n', 'utf8');
 
-      const cf = { conversionFactor: 32.7442, effectiveDate: '2026-01-01', source: 'CMS Final Rule' };
+      const cf = { conversionFactor: 33.4009, effectiveDate: '2026-01-01', source: 'CMS CY2026 PFS Final Rule (CMS-1832-F), nonqualifying APM' };
       await writeFile(join(folder, 'conversion-factor.json'), JSON.stringify(cf, null, 2) + '\n', 'utf8');
 
       const manifest = {

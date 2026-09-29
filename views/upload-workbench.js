@@ -6,7 +6,7 @@ const workerUrl = new URL('../lib/upload-worker.js', import.meta.url);
 
 export function uploadWorkbench(root, { id, fields, label, compute, getInput, onResult }) {
   const section = el('section', { class: 'upload-workbench', 'aria-labelledby': `${id}-title` });
-  section.appendChild(el('h3', { id: `${id}-title`, text: label }));
+  section.appendChild(el('h2', { id: `${id}-title`, text: label }));
   section.appendChild(el('p', {
     class: 'muted',
     text: `CSV or TSV, up to 50 MB and ${MAX_DATA_ROWS.toLocaleString('en-US')} rows. The file stays in this tab.`,

@@ -10,23 +10,23 @@ import {
   dollarsToCents, PFS_CONVERSION_FACTOR_CY2026,
 } from '../../lib/billing-v78.js';
 
-const CF = PFS_CONVERSION_FACTOR_CY2026; // 32.7442
+const CF = PFS_CONVERSION_FACTOR_CY2026; // 33.4009
 
 // ---- 2.1 rvu-payment --------------------------------------------------------
 // 99214 at National Average GPCI (1/1/1), CY2026 CF. Bundled RVUs:
 //   work 1.92, PE non-facility 1.5, PE facility 0.69, MP 0.13.
-// non-facility = (1.92 + 1.5 + 0.13) * 32.7442 = 3.55 * 32.7442 = $116.24
-// facility     = (1.92 + 0.69 + 0.13) * 32.7442 = 2.74 * 32.7442 = $89.72
+// non-facility = (1.92 + 1.5 + 0.13) * 33.4009 = 3.55 * 33.4009 = $118.57
+// facility     = (1.92 + 0.69 + 0.13) * 33.4009 = 2.74 * 33.4009 = $91.52
 test('rvu-payment: 99214 national, both sites, to the cent', () => {
   const r = rvuPayment({
     workRvu: 1.92, peRvuNonFacility: 1.5, peRvuFacility: 0.69, mpRvu: 0.13,
     workGpci: 1, peGpci: 1, mpGpci: 1, conversionFactor: CF,
   });
-  assert.equal(r.nonFacilityCents, 11624); // $116.24
-  assert.equal(r.facilityCents, 8972);     // $89.72
+  assert.equal(r.nonFacilityCents, 11857); // $118.57
+  assert.equal(r.facilityCents, 9152);     // $91.52
   // Site differential equals the PE-RVU delta * peGPCI * CF:
-  // (1.5 - 0.69) * 1 * 32.7442 = $26.52
-  assert.equal(r.siteDifferentialCents, 2652);
+  // (1.5 - 0.69) * 1 * 33.4009 = $27.05
+  assert.equal(r.siteDifferentialCents, 2705);
 });
 
 test('rvu-payment: GPCI override scales every component; units multiply', () => {
@@ -35,7 +35,7 @@ test('rvu-payment: GPCI override scales every component; units multiply', () => 
     workGpci: 1.058, peGpci: 1.225, mpGpci: 1.483, conversionFactor: CF, units: 2,
   });
   // non-facility total RVU = 1.92*1.058 + 1.5*1.225 + 0.13*1.483 = 4.075339
-  // * 32.7442 = $133.446... -> $133.43 per unit, x2.
+  // * 33.4009 = $136.12 per unit, x2.
   const perUnit = Math.round((1.92 * 1.058 + 1.5 * 1.225 + 0.13 * 1.483) * CF * 100);
   assert.equal(r.nonFacilityCents, perUnit * 2);
   assert.equal(r.units, 2);

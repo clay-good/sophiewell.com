@@ -186,7 +186,10 @@ const COUNT_AFTER = /^\s+(?:[A-Za-z-]+\s+){0,3}?(tiles?|tools?|calculators?|util
 export function driftedCountsOnLine(line, truth) {
   const out = [];
   // Comma grouping included -- "1,704" is one number, not the number 704.
-  const numRe = /(?<![\d.,])(\d{1,3}(?:,\d{3})+|\d{3,4})(?![\d.,])/g;
+  // A number glued to a letter is a name, not a count: "340B batch tools" is
+  // the drug-pricing program and "spec-v1605 ... add no tools" is a spec id.
+  // Both failed lint on main (2026-09-29) until letters joined the guards.
+  const numRe = /(?<![\d.,A-Za-z])(\d{1,3}(?:,\d{3})+|\d{3,4})(?![\d.,A-Za-z])/g;
   let m;
   while ((m = numRe.exec(line)) !== null) {
     const num = Number(m[1].replace(/,/g, ''));

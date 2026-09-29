@@ -1197,7 +1197,7 @@ main h1 {
   border-radius: var(--radius);
   background: var(--bg-tertiary);
 }
-.upload-workbench h3 { margin: 0 0 var(--space-1); font-size: 1rem; }
+.upload-workbench h2 { margin: 0 0 var(--space-1); font-size: 1rem; }
 .upload-workbench p { margin: var(--space-1) 0 var(--space-2); }
 .upload-workbench input[type='file'] { display: block; width: 100%; margin-top: var(--space-1); }
 .upload-mapping-scroll { overflow-x: auto; margin: var(--space-2) 0; }

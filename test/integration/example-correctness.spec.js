@@ -30,6 +30,8 @@
 // cheap, non-reactive knob; the old single timeout was not.
 
 import { test, expect } from '@playwright/test';
+import { existsSync, readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import { numericFacts, matchesLoosely, firstFactWithoutItsOwnNumber } from '../lib/numeric-facts.js';
 
 // Split the catalog this many ways. Each shard visits every SHARDS-th tile.
@@ -97,6 +99,30 @@ const SCENARIO_ONLY = new Set([
   // spec-v1048 exempted lab-interpret here; spec-v1054 un-exempted it by pressing
   // the button the tile asks you to press. It is checked like any other tile now.
 ]);
+
+// Tiles whose example is a FILE. Their META.example has no fields to fill --
+// the documented numbers come from a sample 835/837/271/277 or CSV that has to
+// be chosen in a file input, which this sweep cannot do. They were added to
+// the catalog on 2026-09-28 and turned every shard of this sweep red on main.
+// Each one is driven through a real file, with its documented numbers
+// asserted, by the spec named here; the test below fails if that spec goes.
+const FILE_DRIVEN = new Map([
+  ['x12-835-reader', 'x12-835-reader.spec.js'],
+  ['x12-837-check', 'x12-837-check.spec.js'],
+  ['x12-271-reader', 'x12-271-reader.spec.js'],
+  ['x12-277-reader', 'x12-277-reader.spec.js'],
+  ['denial-pattern-report', 'remittance-analysis.spec.js'],
+  ['underpayment-check', 'remittance-analysis.spec.js'],
+  ['340b-rx-match', 'rx-match-workbench.spec.js'],
+]);
+
+test('every file-driven example is driven by its own spec', () => {
+  for (const [id, spec] of FILE_DRIVEN) {
+    const path = fileURLToPath(new URL(`./${spec}`, import.meta.url));
+    expect(existsSync(path), `${id}: ${spec} is missing`).toBe(true);
+    expect(readFileSync(path, 'utf8'), `${id}: ${spec} never opens #${id}`).toContain(`#${id}`);
+  }
+});
 
 // Pull META.example payloads out of the live module so the test stays in
 // sync with whatever lib/meta.js currently declares -- no duplication.
@@ -215,7 +241,7 @@ for (let shard = 0; shard < SHARDS; shard++) {
     for (let i = 0; i < examples.length; i++) {
       if (i % SHARDS !== shard) continue;
       const { id, expected } = examples[i];
-      if (SCENARIO_ONLY.has(id)) continue;
+      if (SCENARIO_ONLY.has(id) || FILE_DRIVEN.has(id)) continue;
       const failure = await checkTile(page, id, expected);
       if (failure) failures.push(failure);
     }

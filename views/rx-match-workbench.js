@@ -50,7 +50,7 @@ function renderTable(root, caption, headers, rows) {
 
 export function rxMatchWorkbench(root, { entityTypes }) {
   const policy = el('section', { 'aria-labelledby': 'rxm-policy-title' });
-  policy.appendChild(el('h3', { id: 'rxm-policy-title', text: 'Entity policy' }));
+  policy.appendChild(el('h2', { id: 'rxm-policy-title', text: 'Entity policy' }));
   const entity = el('select', { id: 'rxm-entity' });
   entity.appendChild(el('option', { value: '', text: '— choose —' }));
   entityTypes.forEach((option) => entity.appendChild(el('option', { value: option.value, text: option.text })));
@@ -74,7 +74,7 @@ export function rxMatchWorkbench(root, { entityTypes }) {
   const run = () => { if (mapped.size === FILES.length) worker.postMessage({ type: 'compute', policy: getPolicy() }); };
   for (const config of FILES) {
     const section = el('section', { 'aria-labelledby': `rxm-${config.name}-title` });
-    section.appendChild(el('h3', { id: `rxm-${config.name}-title`, text: config.label }));
+    section.appendChild(el('h2', { id: `rxm-${config.name}-title`, text: config.label }));
     const input = el('input', { id: `rxm-${config.name}-file`, type: 'file', accept: '.csv,.tsv,text/csv,text/tab-separated-values' });
     const mappingRoot = el('div', { hidden: true });
     const fileStatus = el('p', { id: `rxm-${config.name}-status`, class: 'muted' });

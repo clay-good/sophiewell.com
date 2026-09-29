@@ -44,6 +44,16 @@ test('a publication year beside a catalog word is not a count', () => {
   }
 });
 
+test('a number glued to a letter is a name, not a count', () => {
+  for (const line of [
+    'The 340B batch tools and the packet linter all take files.',
+    '[spec-v1600](spec-v1600.md) (charter) and [spec-v1605](spec-v1605.md) (data) add no tools.',
+  ]) {
+    assert.deepEqual(driftedCountsOnLine(line, TRUTH), [], line);
+  }
+  assert.deepEqual(driftedCountsOnLine('the 340 batch tools', TRUTH), [340]);
+});
+
 test('a number with no catalog word near it is ignored', () => {
   assert.deepEqual(driftedCountsOnLine('a 1145 ms interval', TRUTH), []);
 });

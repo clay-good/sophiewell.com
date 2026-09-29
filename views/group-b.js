@@ -154,7 +154,7 @@ export const renderers = {
     root.appendChild(moneyField('Work GPCI', 'rvu-wg', '1.000'));
     root.appendChild(moneyField('Practice-expense GPCI', 'rvu-peg', '1.000'));
     root.appendChild(moneyField('Malpractice GPCI', 'rvu-mpg', '1.000'));
-    root.appendChild(moneyField('Conversion factor ($ per RVU)', 'rvu-cf', '32.7442'));
+    root.appendChild(moneyField('Conversion factor ($ per RVU)', 'rvu-cf', String(Bill.PFS_CONVERSION_FACTOR_CY2026)));
     root.appendChild(field('Units', 'rvu-units', { type: 'number', inputmode: 'numeric', placeholder: '1' }));
 
     const o = out(); root.appendChild(o);

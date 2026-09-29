@@ -221,8 +221,8 @@ coinsurance 20 percent, copay 0, OOP max 5000 (1000 met). Patient pays
 Formula: payment = ((work RVU * work GPCI) + (PE RVU * PE GPCI) + (MP RVU
 * MP GPCI)) * conversion factor.
 Worked example: facility, code 99213, locality with all GPCI = 1.0,
-conversion factor 32.7442. Components: work 0.97, PE facility 0.40, MP
-0.07. Payment = (0.97 + 0.40 + 0.07) * 32.7442 = 1.44 * 32.7442 = 47.15.
+conversion factor 33.4009 (CY2026, nonqualifying APM). Components: work 0.97, PE
+facility 0.40, MP 0.07. Payment = (0.97 + 0.40 + 0.07) * 33.4009 = 1.44 * 33.4009 = 48.10.
 
 ## v4 calculator and screener citations
 

@@ -10430,10 +10430,10 @@
         },
         {
           "id": "billing-pfs-conversion-factor",
-          "label": "CMS Physician Fee Schedule conversion factor (CY2026: $32.7442 per RVU; annual PFS Final Rule) backing rvu-payment. Overridable per call to model a percent-of-Medicare contract.",
+          "label": "CMS Physician Fee Schedule conversion factor (CY2026: $33.4009 per RVU nonqualifying APM, $33.5675 qualifying APM; annual PFS Final Rule) backing rvu-payment. Overridable per call to model a percent-of-Medicare contract.",
           "url": "https://www.cms.gov/medicare/payment/fee-schedules/physician",
           "ruleFamily": "billing-v78",
-          "lastVerified": "2026-06-13"
+          "lastVerified": "2026-09-29"
         },
         {
           "id": "billing-sequestration-rate",
