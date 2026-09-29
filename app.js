@@ -890,6 +890,7 @@ import { renderers as RPALINT, acceptFiles as AFPALINT } from './views/pa-lint.j
 import { META } from './lib/meta.js';
 import { fetchJson, datasetStatus, stampDetail } from './lib/data.js';
 import { createHomeFiles } from './views/home-files.js';
+import { longDate as recordDate } from './lib/record-pick.js';
 import { copyButton } from './lib/clipboard.js';
 import { installKeyboard } from './lib/keyboard.js';
 import { parseHash, patchHash, buildHash } from './lib/hash.js';
@@ -5617,6 +5618,27 @@ function renderToolView(util) {
       // spec-v9 §3.3: pre-fill META[id].example after the renderer mounts,
       // but let URL-hash state win (deep links keep their values).
       Promise.resolve().then(() => {
+        // spec-v1624: a record fills this tool from memory. Its values never
+        // reach the URL: hash tracking stays off for this view, the example is
+        // not applied, and each filled field says it came from the file.
+        const fromRecord = recordFill && recordFill.tileId === util.id ? recordFill : null;
+        recordFill = null;
+        if (fromRecord) {
+          fillFields(body, fromRecord.values);
+          for (const dom of Object.keys(fromRecord.values)) {
+            const node = body.querySelector(`#${CSS.escape(dom)}`);
+            const anchor = node && (node.closest('p, div, li, fieldset') || node);
+            const date = fromRecord.dates[dom];
+            if (anchor) anchor.appendChild(el('span', { class: 'field-provenance', text: date ? `${FILE_PROVENANCE_TEXT}, ${recordDate(date)}` : FILE_PROVENANCE_TEXT }));
+          }
+          const copyLink = [...content.querySelectorAll('.copy-row button')].find((b) => /copy link/i.test(b.textContent));
+          if (copyLink) copyLink.replaceWith(el('span', { class: 'muted', text: "Links aren't made from file values." }));
+          setTimeout(() => hoistResults(body), 0);
+          setTimeout(() => dropDuplicateNotice(content, body), 0);
+          setTimeout(() => foldRestatedNote(body), 0);
+          watchDeclaredRanges(body);
+          return;
+        }
         // spec-v754: a query says "68 kg" and queryFill returns 68 in the
         // field's CANONICAL unit -- but the unit select next to that field
         // pre-selects the US-customary option (lb, in, °F) per spec-v283. Left
@@ -5782,11 +5804,71 @@ const homeFiles = createHomeFiles({
   acceptFiles: ACCEPT_FILES,
   navigate: navigateTo,
   toolName: (tid) => (UTIL_BY_ID.get(tid) || { name: tid }).name,
+  computeAnswer: computeWithTile,
+  fillTool: (fill) => { recordFill = fill; },
 });
+
+// spec-v1624: values from a health record, held in memory for the one
+// navigation that opens their tool. They go into the fields directly and
+// never into the URL: a link lands in history, sync and screenshots.
+let recordFill = null;
+export const FILE_PROVENANCE_TEXT = 'from your file';
+
+function fillFields(root, values) {
+  resetUnitsToCanonical(new Set(Object.keys(values)));
+  for (const [dom, value] of Object.entries(values)) {
+    const node = root.querySelector(`#${CSS.escape(dom)}`);
+    if (!node) continue;
+    node.value = String(value);
+    node.dispatchEvent(new Event('input', { bubbles: true }));
+    node.dispatchEvent(new Event('change', { bubbles: true }));
+  }
+}
+
+// The answer a tool gives for these values, read from the tool itself: it is
+// rendered out of sight, filled, and its headline read -- the same number the
+// reader sees on opening it. Used by the records panel.
+// One at a time: tools share field ids (scr, age, sex), and two hidden copies
+// in the document at once would read each other's inputs.
+let computeQueue = Promise.resolve();
+function computeWithTile(id, values) {
+  const run = computeQueue.then(() => computeOneTile(id, values));
+  computeQueue = run.catch(() => null);
+  return run;
+}
+
+async function computeOneTile(id, values) {
+  const renderer = RENDERERS[id];
+  if (!renderer) return null;
+  const host = el('div', { class: 'record-offscreen', 'aria-hidden': 'true' });
+  document.body.appendChild(host);
+  try {
+    renderer(host);
+    fillFields(host, values);
+    await new Promise((r) => setTimeout(r, 30));
+    const q = host.querySelector('#q-results') || host;
+    const line = q.querySelector('h2, .result-band, li, p');
+    return line ? line.textContent.replace(/\s+/g, ' ').trim() : null;
+  } catch {
+    return null;
+  } finally {
+    host.remove();
+  }
+}
 
 function route() {
   const parsed = parseHash(window.location.hash);
   const id = parsed.route;
+  // spec-v1624: #/records is "Your record can fill these tools".
+  if (!id && parsed.sub === 'records') {
+    const main = getMain();
+    if (main && currentRouteId !== '/records') {
+      currentRouteId = '/records';
+      homeFiles.renderRecords(main);
+      document.title = 'Your record · Sophie Well';
+    }
+    return;
+  }
   // spec-v1623: #/intake is the inventory of files the reader chose or dropped.
   if (!id && parsed.sub === 'intake') {
     const main = getMain();

@@ -74,6 +74,8 @@ export function buildIndex(calculators) {
       if (f.unit) row.u = f.unit;
       if (f.required) row.r = 1;
       if (row.k === 'enum' && Array.isArray(f.values)) row.v = f.values.slice();
+      // spec-v1624: the record concept this field can be filled from.
+      if (f.concept) row.c = f.concept;
       rows.push(row);
       fieldCount += 1;
     }

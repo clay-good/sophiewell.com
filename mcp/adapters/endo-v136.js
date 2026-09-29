@@ -32,8 +32,8 @@ export default [
     summary: 'Triglyceride-glucose (TyG) index, a surrogate of insulin resistance from fasting triglycerides and glucose (mg/dL).',
     compute: E.tygIndex,
     fields: [
-      { dom: 'tyg-tg', arg: 'tg', kind: 'number', required: true, label: 'Fasting triglycerides', unit: 'mg/dL' },
-      { dom: 'tyg-glucose', arg: 'glucose', kind: 'number', required: true, label: 'Fasting glucose', unit: 'mg/dL' },
+      { dom: 'tyg-tg', concept: 'triglycerides', arg: 'tg', kind: 'number', required: true, label: 'Fasting triglycerides', unit: 'mg/dL' },
+      { dom: 'tyg-glucose', concept: 'glucose-fasting', arg: 'glucose', kind: 'number', required: true, label: 'Fasting glucose', unit: 'mg/dL' },
     ],
   },
   {

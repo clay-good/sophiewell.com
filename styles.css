@@ -1203,6 +1203,9 @@ main h1 {
 .hero-files-status:empty { display: none; }
 .task-hero.drop-active { outline: 2px dashed var(--accent-pop-strong); outline-offset: 6px; }
 .intake-banner { border-left: 3px solid var(--accent, var(--border)); padding-left: var(--space-2); overflow-wrap: anywhere; }
+.record-offscreen { position: absolute; left: -10000px; top: 0; width: 720px; }
+.record-ready li { margin-bottom: var(--space-3); }
+.record-used { overflow-wrap: anywhere; }
 .receipt { margin-top: var(--space-3); }
 .receipt summary { cursor: pointer; font-weight: 600; }
 .receipt-hash { overflow-wrap: anywhere; font-family: var(--font-mono); font-size: 0.9rem; }

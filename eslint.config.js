@@ -73,6 +73,7 @@ export default [
         DecompressionStream: "readonly",
         DataTransfer: "readonly",
         File: "readonly",
+        TextDecoderStream: "readonly",
         // service worker
         self: "readonly",
         caches: "readonly",

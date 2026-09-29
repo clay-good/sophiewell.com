@@ -77,3 +77,16 @@ age and sex. Until then, nothing.
   `sessionStorage` or IndexedDB key was written.
 - A 300 MB synthetic `export.xml` (generated at test time) is read in the worker without
   the tab's memory exceeding 500 MB (Chromium `performance.memory`, Chromium only).
+
+## Build status
+
+**Built September 29, 2026.** Steps 1-4.
+
+| Step | Built | Differs from the spec |
+|---|---|---|
+| 1 Concept map and tags | `data/concepts/` (27 concepts, curated subset, LOINC notice), `concept` on 68 fields of 18 tools, `c` in `data/fields/`, `lib/record-units.js` (UCUM-aware conversion to and from each concept's unit). | `uacr-upcr`, `non-hdl-remnant` and `homa-ir` are not tagged: their units come from a unit selector on the page, so a tag could not say which unit a value lands in. Sex is filled on choice fields whose values are M/F or male/female; yes/no sex fields (`score2`, `kfre`) are not. Conversions are per concept (mmol/L to mg/dL differs by analyte), not through `convertUnit` alone. |
+| 2 Readers and the picker | `lib/record-ccda.js`, `lib/record-fhir.js`, `lib/record-apple.js` (streamed), `lib/record-pick.js`. | The C-CDA reader is a small scanner rather than a DOM, because workers have no `DOMParser`. BMI and eGFR (CKD-EPI 2021) are derived when the record reports none, and say so. |
+| 3 The plan and the panel | `lib/record-plan.js`, `views/record-panel.js` at `#/records`; the registry's record kinds are live. | Each ready tool's answer is read from the tool itself, rendered out of sight and filled, one at a time (tools share field ids), because the MCP catalog reads files with `node:fs` and cannot run in the page. Every yes/no or choice field a record cannot answer is a question, required or not: an unticked "smoker" box would otherwise read as "no". The `preventive-owed` link waits for that tool (M6). |
+| 4 Opening a tool without the URL | A record fill goes into the fields from memory: hash tracking is off for that view, the example is not applied, each field says "from your file, June 14, 2026", and "Copy link" reads "Links aren't made from file values." | Does not go through `autofilledKeys`, which writes values into the hash. |
+
+Tests: `test/unit/record-concepts.test.js`, `test/unit/record-readers.test.js` (both synthetic records give the same picks; units, recency, too old, conflicts, derived values, the plan), `test/integration/records.spec.js` on three engines (the panel, the tool's own answer, the URL and history unchanged after filling and editing).

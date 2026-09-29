@@ -60,8 +60,11 @@ Or bring a file: drop a remittance (835), claim (837), eligibility (271) or
 claim-status (277) file, a hospital price file, a prior-authorization packet,
 or a CSV of fills, patients or claims on the home page, and the tool that
 reads it opens with the file already in it. Several files, a folder or a zip
-open a list of what each file is and which tool reads it. Files are read in
-your browser and never uploaded.
+open a list of what each file is and which tool reads it. A health record
+downloaded from a patient portal (C-CDA or FHIR) or an Apple Health export
+shows which calculators it can fill -- kidney, liver, cholesterol and heart
+risk -- with the values it used and their dates. Files are read in your
+browser and never uploaded, and their values never go into a link.
 
 To run your own copy: clone this repository, run `npm run dev`, open
 http://localhost:4173.

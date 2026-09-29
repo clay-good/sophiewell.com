@@ -1,0 +1,355 @@
+{
+ "resourceType": "Bundle",
+ "type": "collection",
+ "entry": [
+  {
+   "resource": {
+    "resourceType": "Patient",
+    "id": "p1",
+    "gender": "female",
+    "birthDate": "1968-03-15"
+   }
+  },
+  {
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "2160-0"
+      }
+     ]
+    },
+    "effectiveDateTime": "2026-06-14",
+    "valueQuantity": {
+     "value": 97,
+     "unit": "umol/L",
+     "system": "http://unitsofmeasure.org",
+     "code": "umol/L"
+    }
+   }
+  },
+  {
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "2093-3"
+      }
+     ]
+    },
+    "effectiveDateTime": "2026-06-14",
+    "valueQuantity": {
+     "value": 212,
+     "unit": "mg/dL",
+     "system": "http://unitsofmeasure.org",
+     "code": "mg/dL"
+    }
+   }
+  },
+  {
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "2085-9"
+      }
+     ]
+    },
+    "effectiveDateTime": "2026-06-14",
+    "valueQuantity": {
+     "value": 51,
+     "unit": "mg/dL",
+     "system": "http://unitsofmeasure.org",
+     "code": "mg/dL"
+    }
+   }
+  },
+  {
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "13457-7"
+      }
+     ]
+    },
+    "effectiveDateTime": "2025-07-20",
+    "valueQuantity": {
+     "value": 128,
+     "unit": "mg/dL",
+     "system": "http://unitsofmeasure.org",
+     "code": "mg/dL"
+    }
+   }
+  },
+  {
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "2571-8"
+      }
+     ]
+    },
+    "effectiveDateTime": "2020-01-10",
+    "valueQuantity": {
+     "value": 1.9,
+     "unit": "mmol/L",
+     "system": "http://unitsofmeasure.org",
+     "code": "mmol/L"
+    }
+   }
+  },
+  {
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "2823-3"
+      }
+     ]
+    },
+    "effectiveDateTime": "2026-06-14",
+    "valueQuantity": {
+     "value": 4.1,
+     "unit": "mg/dL",
+     "system": "http://unitsofmeasure.org",
+     "code": "mg/dL"
+    }
+   }
+  },
+  {
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "1742-6"
+      }
+     ]
+    },
+    "effectiveDateTime": "2026-06-14",
+    "valueQuantity": {
+     "value": 30,
+     "unit": "U/L",
+     "system": "http://unitsofmeasure.org",
+     "code": "U/L"
+    }
+   }
+  },
+  {
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "1742-6"
+      }
+     ]
+    },
+    "effectiveDateTime": "2026-06-14",
+    "valueQuantity": {
+     "value": 34,
+     "unit": "U/L",
+     "system": "http://unitsofmeasure.org",
+     "code": "U/L"
+    }
+   }
+  },
+  {
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "1920-8"
+      }
+     ]
+    },
+    "effectiveDateTime": "2026-06-14",
+    "valueQuantity": {
+     "value": 28,
+     "unit": "U/L",
+     "system": "http://unitsofmeasure.org",
+     "code": "U/L"
+    }
+   }
+  },
+  {
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "777-3"
+      }
+     ]
+    },
+    "effectiveDateTime": "2026-06-14",
+    "valueQuantity": {
+     "value": 245,
+     "unit": "10*3/uL",
+     "system": "http://unitsofmeasure.org",
+     "code": "10*3/uL"
+    }
+   }
+  },
+  {
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "85354-9"
+      }
+     ]
+    },
+    "effectiveDateTime": "2026-08-02",
+    "component": [
+     {
+      "code": {
+       "coding": [
+        {
+         "system": "http://loinc.org",
+         "code": "8480-6"
+        }
+       ]
+      },
+      "valueQuantity": {
+       "value": 138,
+       "unit": "mmHg",
+       "code": "mm[Hg]"
+      }
+     },
+     {
+      "code": {
+       "coding": [
+        {
+         "system": "http://loinc.org",
+         "code": "8462-4"
+        }
+       ]
+      },
+      "valueQuantity": {
+       "value": 84,
+       "unit": "mmHg",
+       "code": "mm[Hg]"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "29463-7"
+      }
+     ]
+    },
+    "effectiveDateTime": "2026-08-02",
+    "valueQuantity": {
+     "value": 176,
+     "unit": "[lb_av]",
+     "system": "http://unitsofmeasure.org",
+     "code": "[lb_av]"
+    }
+   }
+  },
+  {
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "8302-2"
+      }
+     ]
+    },
+    "effectiveDateTime": "2026-08-02",
+    "valueQuantity": {
+     "value": 165,
+     "unit": "cm",
+     "system": "http://unitsofmeasure.org",
+     "code": "cm"
+    }
+   }
+  },
+  {
+   "resource": {
+    "resourceType": "Observation",
+    "status": "final",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "8480-6"
+      }
+     ]
+    },
+    "effectiveDateTime": "2026-01-01",
+    "valueQuantity": {
+     "value": 150,
+     "unit": "mm[Hg]",
+     "system": "http://unitsofmeasure.org",
+     "code": "mm[Hg]"
+    }
+   }
+  },
+  {
+   "resource": {
+    "resourceType": "Observation",
+    "status": "entered-in-error",
+    "code": {
+     "coding": [
+      {
+       "system": "http://loinc.org",
+       "code": "2160-0"
+      }
+     ]
+    },
+    "effectiveDateTime": "2026-09-01",
+    "valueQuantity": {
+     "value": 5.0,
+     "unit": "mg/dL",
+     "system": "http://unitsofmeasure.org",
+     "code": "mg/dL"
+    }
+   }
+  }
+ ]
+}

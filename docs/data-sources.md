@@ -182,6 +182,17 @@ and written with `coverage: 'full'`, `fetchedAt`, `sourceEdition` and
 | `data/mue/` | NCCI medically unlikely edits: practitioner, outpatient hospital and DME tables, one record per code; codes only | 2026 Q4 | 15,349 codes |
 | `data/nadac/` | NADAC, the latest week from the data.medicaid.gov datastore API, sharded by labeler | 2026-09-30 weekly | 30,079 NDCs |
 
+## Health record concepts
+
+`data/concepts/concepts.json` ([spec-v1624](spec-v1624.md)) maps the coded
+values a downloaded health record carries -- LOINC codes, and HealthKit type
+identifiers for Apple Health -- to the concepts calculator fields are tagged
+with (`concept` on an MCP adapter field, `c` in `data/fields/`), with the unit
+each concept is kept in, the units it converts from, and a recency window. It
+ships code numbers and our own short names, never LOINC long names, with the
+LOINC notice in its manifest. A curated subset; the records panel
+(`views/record-panel.js`) is its only reader.
+
 ## The ICD-10-CM sample (not consumed at runtime)
 
 `data/icd10cm/` is a hand-written sample (18 codes); `data/drg/` was one

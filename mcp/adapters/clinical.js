@@ -34,8 +34,8 @@ export default [
     summary: 'Body mass index = weight(kg) / height(m)^2, with WHO category. Threshold: >=25 overweight, >=30 obese.',
     compute: F.bmi,
     fields: [
-      { dom: 'w', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg' },
-      { dom: 'h', arg: 'heightM', kind: 'number', required: true, label: 'Height', unit: 'm' },
+      { dom: 'w', concept: 'body-weight', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg' },
+      { dom: 'h', concept: 'body-height', arg: 'heightM', kind: 'number', required: true, label: 'Height', unit: 'm' },
     ],
   },
   {
@@ -67,14 +67,14 @@ export default [
     summary: 'Serum anion gap = Na - (Cl + HCO3), with optional albumin correction. Normal roughly 8-12 mEq/L.',
     compute: F.anionGap,
     fields: [
-      { dom: 'na', arg: 'sodium', kind: 'number', required: true, label: 'Sodium', unit: 'mEq/L' },
-      { dom: 'cl', arg: 'chloride', kind: 'number', required: true, label: 'Chloride', unit: 'mEq/L' },
-      { dom: 'hco3', arg: 'bicarbonate', kind: 'number', required: true, label: 'Bicarbonate', unit: 'mEq/L' },
+      { dom: 'na', concept: 'sodium', arg: 'sodium', kind: 'number', required: true, label: 'Sodium', unit: 'mEq/L' },
+      { dom: 'cl', concept: 'chloride', arg: 'chloride', kind: 'number', required: true, label: 'Chloride', unit: 'mEq/L' },
+      { dom: 'hco3', concept: 'bicarbonate', arg: 'bicarbonate', kind: 'number', required: true, label: 'Bicarbonate', unit: 'mEq/L' },
       // spec-v1150: the albumin is the OPTIONAL correction term -- the summary
       // above says so, the page label says "Albumin (optional)", and the library
       // returns the uncorrected gap without it. Declared required, the agent
       // surface refused every call the browser answers.
-      { dom: 'alb', arg: 'albuminGdl', kind: 'number', label: 'Albumin (optional; omit for the uncorrected gap)', unit: 'g/dL' },
+      { dom: 'alb', concept: 'albumin', arg: 'albuminGdl', kind: 'number', label: 'Albumin (optional; omit for the uncorrected gap)', unit: 'g/dL' },
     ],
   },
   {
@@ -82,8 +82,8 @@ export default [
     summary: 'Albumin-corrected calcium = measured Ca + 0.8*(4.0 - albumin). Returns a single number (mg/dL).',
     compute: F.correctedCalcium,
     fields: [
-      { dom: 'ca', arg: 'measuredCa', kind: 'number', required: true, label: 'Measured calcium', unit: 'mg/dL' },
-      { dom: 'alb', arg: 'albuminGdl', kind: 'number', required: true, label: 'Albumin', unit: 'g/dL' },
+      { dom: 'ca', concept: 'calcium', arg: 'measuredCa', kind: 'number', required: true, label: 'Measured calcium', unit: 'mg/dL' },
+      { dom: 'alb', concept: 'albumin', arg: 'albuminGdl', kind: 'number', required: true, label: 'Albumin', unit: 'g/dL' },
     ],
   },
   {
@@ -118,9 +118,9 @@ export default [
       return egfr == null ? null : { egfr, unit: 'mL/min/1.73m^2' };
     },
     fields: [
-      { dom: 'scr', arg: 'scr', kind: 'number', required: true, label: 'Serum creatinine', unit: 'mg/dL' },
-      { dom: 'age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
-      { dom: 'sex', arg: 'sex', kind: 'enum', values: ['M', 'F'], required: true, label: 'Sex' },
+      { dom: 'scr', concept: 'creatinine', arg: 'scr', kind: 'number', required: true, label: 'Serum creatinine', unit: 'mg/dL' },
+      { dom: 'age', concept: 'age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'sex', concept: 'sex', arg: 'sex', kind: 'enum', values: ['M', 'F'], required: true, label: 'Sex' },
     ],
   },
   {
@@ -128,10 +128,10 @@ export default [
     summary: 'Cockcroft-Gault creatinine clearance from age, weight, creatinine, sex (mL/min).',
     compute: F.cockcroftGault,
     fields: [
-      { dom: 'age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
-      { dom: 'w', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg' },
-      { dom: 'scr', arg: 'scr', kind: 'number', required: true, label: 'Serum creatinine', unit: 'mg/dL' },
-      { dom: 'sex', arg: 'sex', kind: 'enum', values: ['M', 'F'], required: true, label: 'Sex' },
+      { dom: 'age', concept: 'age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'w', concept: 'body-weight', arg: 'weightKg', kind: 'number', required: true, label: 'Weight', unit: 'kg' },
+      { dom: 'scr', concept: 'creatinine', arg: 'scr', kind: 'number', required: true, label: 'Serum creatinine', unit: 'mg/dL' },
+      { dom: 'sex', concept: 'sex', arg: 'sex', kind: 'enum', values: ['M', 'F'], required: true, label: 'Sex' },
     ],
   },
   {
@@ -234,13 +234,13 @@ export default [
         ? null : { ckdEpi2021, mdrd, cockcroftGault };
     },
     fields: [
-      { dom: 'es-scr', arg: 'scr', kind: 'number', required: true, label: 'Serum creatinine', unit: 'mg/dL' },
-      { dom: 'es-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'es-scr', concept: 'creatinine', arg: 'scr', kind: 'number', required: true, label: 'Serum creatinine', unit: 'mg/dL' },
+      { dom: 'es-age', concept: 'age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
       // spec-v1045: the label already says it -- the weight is Cockcroft-Gault's
       // alone, so requiring it withheld both eGFRs from an agent that had no
       // weight to give.
-      { dom: 'es-w', arg: 'weightKg', kind: 'number', label: 'Weight (Cockcroft-Gault only)', unit: 'kg' },
-      { dom: 'es-sex', arg: 'sex', kind: 'enum', values: ['M', 'F'], required: true, label: 'Sex' },
+      { dom: 'es-w', concept: 'body-weight', arg: 'weightKg', kind: 'number', label: 'Weight (Cockcroft-Gault only)', unit: 'kg' },
+      { dom: 'es-sex', concept: 'sex', arg: 'sex', kind: 'enum', values: ['M', 'F'], required: true, label: 'Sex' },
     ],
   },
   {

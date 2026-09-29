@@ -40,10 +40,15 @@ export async function entriesFromDrop(dataTransfer) {
 
 export const entriesFromInput = (input) => [...(input.files || [])].map((file) => ({ file, name: file.name, relativePath: file.webkitRelativePath || '' }));
 
-function opens(row, toolName, onOpen) {
+function opens(row, toolName, onOpen, onOpenRecord) {
   if (row.kind === 'excel' || row.confidence === 'none') return el('span', { text: unknownMessage(row.name, row) });
   if (row.family === 'reference') return el('span', { text: 'Reference table: drop it with the file it should be used for.' });
   if (row.kind === 'receipt') return el('span', { text: 'Drop it together with the files it names to check the result.' });
+  if (row.tools.some((t) => t.id === 'record-panel' && t.status === 'live')) {
+    const a = el('a', { href: '#/records', text: 'See which tools this record can fill' });
+    a.addEventListener('click', (e) => { e.preventDefault(); onOpenRecord(row); });
+    return a;
+  }
   const liveTools = row.tools.filter((t) => t.status === 'live' && !t.route);
   if (!row.tools.length) return el('span', { text: 'We recognize this file, but no tool here reads it.' });
   if (!liveTools.length) return el('span', { text: PLANNED_TEXT });
@@ -59,7 +64,7 @@ function opens(row, toolName, onOpen) {
   return wrap;
 }
 
-export function renderIntake(main, { toolName = (id) => id, onOpen = () => {}, onOpenMany = null } = {}) {
+export function renderIntake(main, { toolName = (id) => id, onOpen = () => {}, onOpenMany = null, onOpenRecord = () => {} } = {}) {
   clear(main);
   const content = el('section', { class: 'content intake', 'aria-label': 'Your files' });
   content.appendChild(el('h1', { text: 'Your files' }));
@@ -124,7 +129,7 @@ export function renderIntake(main, { toolName = (id) => id, onOpen = () => {}, o
       const tr = el('tr', { 'data-kind': r.kind });
       tr.appendChild(el('td', { class: 'intake-path', text: r.path }));
       tr.appendChild(el('td', { text: `${r.label}${r.transactionText ? ` (${r.transactionText})` : ''}. ${CONFIDENCE[r.confidence]}.` }));
-      const o = el('td'); o.appendChild(opens(r, toolName, onOpen)); tr.appendChild(o);
+      const o = el('td'); o.appendChild(opens(r, toolName, onOpen, onOpenRecord)); tr.appendChild(o);
       tr.appendChild(el('td', { text: r.evidence.join(' ') }));
       body.appendChild(tr);
     }

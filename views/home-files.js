@@ -9,6 +9,12 @@ import { entriesFromDrop, entriesFromInput, renderIntake } from './intake.js';
 import { isReceipt, matchReceiptFiles, compareReceipts } from '../lib/receipt.js';
 import { sha256Blob } from '../lib/sha256.js';
 import { onNextReceipt } from './receipt.js';
+import { RECORD_KINDS, readRecords } from '../lib/record-read.js';
+import { pick } from '../lib/record-pick.js';
+import { plan, RECORD_TOOLS } from '../lib/record-plan.js';
+import { loadFields } from '../lib/query-fill.js';
+import { loadFile } from '../lib/data.js';
+import { renderRecordPanel } from './record-panel.js';
 
 const workerUrl = new URL('../lib/intake-worker.js', import.meta.url);
 
@@ -36,7 +42,7 @@ const primaryTool = (row) => row.tools.find((t) => t.status === 'live' && !t.rou
 // createHomeFiles({ acceptFiles, navigate, toolName }) wires the home page.
 //   acceptFiles: { toolId: (root, files, { kind }) => ... } from the views
 //   navigate(hash): go there, re-rendering even when the hash is unchanged
-export function createHomeFiles({ acceptFiles, navigate, toolName }) {
+export function createHomeFiles({ acceptFiles, navigate, toolName, computeAnswer = async () => null, fillTool = () => {} }) {
   async function intake(entries, status) {
     if (!entries.length) return;
     if (status) status.textContent = `Reading ${entries.length === 1 ? entries[0].name : `${entries.length} files`} in this tab...`;
@@ -48,6 +54,13 @@ export function createHomeFiles({ acceptFiles, navigate, toolName }) {
     const receiptRows = rows.filter((r) => r.kind === 'receipt');
     if (receiptRows.length === 1 && rows.length > 1) {
       if (await startCheck(receiptRows[0], rows.filter((r) => r !== receiptRows[0]), result, status)) return;
+    }
+    // spec-v1624: a health record -- or several record files, such as an
+    // Apple export's clinical records -- opens "Your record can fill these tools".
+    if (rows.length && !refused.length && rows.every((r) => RECORD_KINDS.has(r.kind))) {
+      pending = { type: 'record', rows };
+      navigate('#/records');
+      return;
     }
     const only = rows.length === 1 && !refused.length ? rows[0] : null;
     const tool = only && only.confidence !== 'none' && !only.ambiguous ? primaryTool(only) : null;
@@ -138,12 +151,40 @@ export function createHomeFiles({ acceptFiles, navigate, toolName }) {
       onOpen: (toolId, row) => { pending = { type: 'tool', toolId, files: [asFile(row)], row }; },
       // One action per tool for everything it can take at once.
       onOpenMany: (toolId, rows) => { pending = { type: 'tool', toolId, files: rows.map(asFile), row: rows[0], rows }; navigate(`#${toolId}`); },
+      onOpenRecord: (row) => { pending = { type: 'record', rows: [row] }; navigate('#/records'); },
     });
     if (pending && pending.type === 'inventory') {
       const { result } = pending;
       pending = null;
       view.show(result);
     }
+  }
+
+  async function renderRecords(main) {
+    const p = pending && pending.type === 'record' ? pending : null;
+    pending = null;
+    if (!p) {
+      main.replaceChildren(el('section', { class: 'content' }, [el('h1', { text: 'Your record' }), el('p', { text: "Records aren't kept after a reload. Drop the file again on the home page." })]));
+      return;
+    }
+    const record = await readRecords(p.rows.map((r) => ({ blob: r.blob, kind: r.kind, name: r.name })));
+    const concepts = await loadFile('concepts', 'concepts.json');
+    const picked = pick(record, concepts, new Date());
+    const tools = [];
+    for (const id of RECORD_TOOLS) {
+      try { const rows = await loadFields(id); if (rows) tools.push({ id, name: toolName(id), rows }); } catch { /* a missing shard just leaves the tool out */ }
+    }
+    const result = plan(picked.values, tools, concepts);
+    const conceptsById = new Map(concepts.map((c) => [c.id, c]));
+    const dateOf = (concept) => (picked.values[concept] && picked.values[concept].at) || null;
+    renderRecordPanel(main, {
+      record, picked, plan: result, conceptsById, toolName, computeAnswer,
+      onOpen: (id) => {
+        const r = [...result.ready, ...result.oneShort].find((x) => x.id === id);
+        fillTool({ tileId: id, values: r.fills, dates: Object.fromEntries(r.used.map((u) => [u.dom, dateOf(u.concept)])) });
+        navigate(`#${id}`);
+      },
+    });
   }
 
   // The home view is rebuilt from a snapshot on every visit, so its controls
@@ -187,5 +228,5 @@ export function createHomeFiles({ acceptFiles, navigate, toolName }) {
     });
   }
 
-  return { intake, afterToolRender, renderInventory, bindHome, clear: () => { pending = null; } };
+  return { intake, afterToolRender, renderInventory, renderRecords, bindHome, clear: () => { pending = null; } };
 }
