@@ -6,5 +6,13 @@
     "etag": null,
     "lastModified": "Wed, 26 Aug 2026 20:20:03 GMT",
     "fetchedAt": "2026-09-29"
+  },
+  "drg": {
+    "url": "https://www.cms.gov/files/zip/fy2026-ipps-fr-table-5.zip",
+    "edition": "FY2026",
+    "sha256": "7d2b92eead336284d370f24a3abc63d2e296bdf35708de1a73679793df38f68a",
+    "etag": null,
+    "lastModified": "Thu, 31 Jul 2025 13:49:47 GMT",
+    "fetchedAt": "2026-09-29"
   }
 }

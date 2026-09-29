@@ -195,7 +195,6 @@ const COVERAGE = {
   'tob-codes': { ...SAMPLE('Type-of-bill digit structure with example values, not the NUBC list.'), sourceEdition: 'unversioned' },
   'revenue-codes': { ...SAMPLE('Common revenue codes only, not the NUBC list.'), sourceEdition: 'unversioned' },
   'nubc-special-codes': { ...SAMPLE('Example condition, occurrence and value codes, not the NUBC lists.'), sourceEdition: 'unversioned' },
-  drg: { ...SAMPLE('8 example MS-DRGs, not IPPS Table 5.'), sourceEdition: 'unversioned' },
   apc: { ...SAMPLE('Example APCs, not OPPS Addendum A or B.'), sourceEdition: 'unversioned' },
   'icd10-pcs': { ...SAMPLE('Example ICD-10-PCS codes, not the code set.'), sourceEdition: 'unversioned' },
   rxnorm: { ...SAMPLE('Example RxNorm concepts, not the RxNorm release.'), sourceEdition: 'unversioned' },
@@ -1227,21 +1226,7 @@ const v4Datasets = [
       ],
     },
   }),
-  v4TableDataset({
-    id: 'drg', label: 'MS-DRG (FY current)',
-    sourceUrl: 'https://www.cms.gov/medicare/payment/prospective-payment-systems/acute-inpatient-pps',
-    agency: 'CMS', status: 'public-domain', cadence: 'annual', shardName: 'drg.json',
-    seed: [
-      { drg: '291', title: 'Heart failure & shock w MCC', mdc: '05', relativeWeight: 1.4327, gmlos: 4.4, amlos: 5.4 },
-      { drg: '292', title: 'Heart failure & shock w CC',  mdc: '05', relativeWeight: 0.9621, gmlos: 3.6, amlos: 4.4 },
-      { drg: '293', title: 'Heart failure & shock w/o CC/MCC', mdc: '05', relativeWeight: 0.6975, gmlos: 2.8, amlos: 3.3 },
-      { drg: '470', title: 'Major joint replacement w/o MCC', mdc: '08', relativeWeight: 1.8869, gmlos: 1.9, amlos: 2.2 },
-      { drg: '871', title: 'Septicemia or severe sepsis w/o MV >96 hrs w MCC', mdc: '18', relativeWeight: 1.8479, gmlos: 4.6, amlos: 5.7 },
-      { drg: '872', title: 'Septicemia or severe sepsis w/o MV >96 hrs w/o MCC', mdc: '18', relativeWeight: 1.0463, gmlos: 3.5, amlos: 4.2 },
-      { drg: '193', title: 'Simple pneumonia & pleurisy w MCC', mdc: '04', relativeWeight: 1.3833, gmlos: 4.2, amlos: 5.0 },
-      { drg: '885', title: 'Psychoses', mdc: '19', relativeWeight: 1.0107, gmlos: 5.7, amlos: 6.6 },
-    ],
-  }),
+  // drg: fetched by scripts/data/builders/drg.mjs (spec-v1621 §3.2).
   v4TableDataset({
     id: 'apc', label: 'OPPS APC subset',
     sourceUrl: 'https://www.cms.gov/medicare/medicare-fee-for-service-payment/hospitaloutpatientpps',

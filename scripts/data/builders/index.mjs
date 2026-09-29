@@ -8,5 +8,6 @@
 // scripts/build-data.mjs.
 
 import mpfs from './mpfs.mjs';
+import drg from './drg.mjs';
 
-export const BUILDERS = [mpfs];
+export const BUILDERS = [mpfs, drg];

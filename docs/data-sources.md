@@ -178,11 +178,12 @@ and written with `coverage: 'full'`, `fetchedAt`, `sourceEdition` and
 | Folder | Source | Edition today | Size |
 |---|---|---|---|
 | `data/mpfs/` | CMS PFS relative value file (PPRRVU nonQPP, GPCIs, both conversion factors); AMA descriptors dropped | RVU26D | 19,453 codes, 109 localities |
+| `data/drg/` | IPPS Table 5 (correction notice when published), with next year's table as `upcoming.json` until it takes effect | FY2026, FY2027 upcoming | 772 MS-DRGs |
 
-## ICD-10-CM and DRG samples (not consumed at runtime)
+## The ICD-10-CM sample (not consumed at runtime)
 
-`data/icd10cm/` and `data/drg/` are hand-written samples (18 codes; 8
-DRGs). Until [spec-v1622](spec-v1622.md) the live `icd10-validate` and
+`data/icd10cm/` is a hand-written sample (18 codes); `data/drg/` was one
+(8 DRGs) until it was fetched. Until [spec-v1622](spec-v1622.md) the live `icd10-validate` and
 `drg-payment` tiles (and `rvu-payment`, from the old `mpfs/` sample)
 filled inputs or printed notes from them, as if they were the code set and
 IPPS Table 5. A sample cannot answer about a reader's code, so those reads

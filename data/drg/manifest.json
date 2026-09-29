@@ -1,25 +1,90 @@
 {
   "manifestVersion": 2,
   "dataset": "drg",
-  "label": "MS-DRG (FY current)",
+  "label": "CMS IPPS MS-DRG relative weights (Table 5)",
   "sourceUrl": "https://www.cms.gov/medicare/payment/prospective-payment-systems/acute-inpatient-pps",
   "agency": "CMS",
   "status": "public-domain",
   "cadence": "annual",
-  "recordCount": 8,
+  "recordCount": 772,
+  "shardLayout": "shards",
   "shards": [
     {
-      "name": "drg.json",
-      "sha256": "16d30503c0609daeed6029a830055787eaefc4c9d1401995ed4ea59c779c0300",
-      "records": 8,
-      "bytes": 927
+      "name": "0.json",
+      "sha256": "b72e3b1730ce114ac01a8ec784a5e092cd82b36a84da15838436fe4e3caab136",
+      "records": 85,
+      "bytes": 18104
+    },
+    {
+      "name": "1.json",
+      "sha256": "e0869e4ff8b0271a796b45ea0711d60607825b07f898738b360c4b2bece542e1",
+      "records": 71,
+      "bytes": 13941
+    },
+    {
+      "name": "2.json",
+      "sha256": "c8298e09ac53ddb8bc05fe82bc667d50257496d0ab860d1523fbfe691e0aa4ef",
+      "records": 82,
+      "bytes": 17514
+    },
+    {
+      "name": "3.json",
+      "sha256": "e6cf0c2da64b8ecf03b6ab9b24b3e0886b488cfd251388111a1d5b51490a1a3e",
+      "records": 86,
+      "bytes": 17494
+    },
+    {
+      "name": "4.json",
+      "sha256": "b37eac640a1b25bea4b0f950bb82789330831163e13606be4fc438b7b09449c3",
+      "records": 85,
+      "bytes": 19214
+    },
+    {
+      "name": "5.json",
+      "sha256": "ff43cbd3a5c3a67bd31ab364831541c73194b22fabbb2a532fbef2e597da9e33",
+      "records": 80,
+      "bytes": 16745
+    },
+    {
+      "name": "6.json",
+      "sha256": "72d4d8c670fad7cf5ba0b4772781d8098b0fb98c5dcd366206b664bd39cb179d",
+      "records": 75,
+      "bytes": 15290
+    },
+    {
+      "name": "7.json",
+      "sha256": "0d2cc715a99a67a6aa3891c58d8cfb8f9982ebd6ea73c40aebb9785597d40aa2",
+      "records": 69,
+      "bytes": 14653
+    },
+    {
+      "name": "8.json",
+      "sha256": "06ee9d14cc98556c2eaef315dbc59010a77ee78e88ec948d76bf9aa6f4b9f7cb",
+      "records": 81,
+      "bytes": 17602
+    },
+    {
+      "name": "9.json",
+      "sha256": "8344eac35b12f61cfc40de2413c715bc6c6d16161d66d15e277250466eeb4e81",
+      "records": 58,
+      "bytes": 11980
     }
   ],
-  "coverage": "sample",
-  "coverageNote": "8 example MS-DRGs, not IPPS Table 5.",
-  "sourceEdition": "unversioned",
-  "curatedAt": "2026-05-29",
-  "contentChangedAt": "2026-05-29",
-  "expiresOn": "2028-05-29",
-  "recordsSha256": "cfd9af4a68cadbb9ac7a4c7b5a15f7dd82056cea0206938e9160317c225a5691"
+  "ancillary": [
+    "upcoming.json"
+  ],
+  "notes": "Table 5 of the IPPS final rule (correction notice when published). relativeWeight is the weight with the 10% cap applied.",
+  "coverage": "full",
+  "sourceEdition": "FY2026",
+  "effectiveFrom": "2025-10-01",
+  "fetchedAt": "2026-09-29",
+  "contentChangedAt": "2026-09-29",
+  "expiresOn": "2027-10-01",
+  "nextExpected": "2027-08-01",
+  "sourceSha256": "7d2b92eead336284d370f24a3abc63d2e296bdf35708de1a73679793df38f68a",
+  "recordsSha256": "bc3f3e9ec58e12442d6bafa34dc2524ca510b8fdf3c2dcfeeddd7b5af4c7586d",
+  "recordBounds": {
+    "min": 740,
+    "max": 800
+  }
 }
