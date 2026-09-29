@@ -10284,6 +10284,17 @@
     },
     {
       "phrases": [
+        "hospital price file validator",
+        "hospital price transparency file check",
+        "hpt machine readable file",
+        "cms price transparency csv",
+        "cms price transparency json"
+      ],
+      "tile": "hpt-file-check",
+      "audience": "billers"
+    },
+    {
+      "phrases": [
         "denial pattern report",
         "denial trends",
         "carc adjustment report",

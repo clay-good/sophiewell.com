@@ -146,5 +146,11 @@ a route A dataset pinned to a published version.
   rejected from the response values, lists rejections first and shows raw category,
   status, entity and action codes with an X12 code-lookup link on every row. Full and
   patient-redacted CSV downloads include all claim-level status records.
+- **Built 2026-09-28:** `hpt-file-check` streams CMS v3.0.0 CSV tall, CSV wide and
+  JSON files in a Worker without buffering the whole file. It checks required headers
+  and fields, accepted values, Type 2 NPI presence, the 2026 attestation,
+  charge/code pairings and all payer/allowed-amount conditional rules. Findings name
+  the row or JSON path; the page states that this is a structural check rather than a
+  compliance determination.
 - **Not yet built:**
-  `hpt-file-check`, `hpt-price-compare` and `pas-bundle-check`.
+  `hpt-price-compare` and `pas-bundle-check`.

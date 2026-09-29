@@ -7,6 +7,7 @@ const workerUrl = new URL('../lib/x12-835-worker.js', import.meta.url);
 const claimWorkerUrl = new URL('../lib/x12-837-worker.js', import.meta.url);
 const eligibilityWorkerUrl = new URL('../lib/x12-271-worker.js', import.meta.url);
 const statusWorkerUrl = new URL('../lib/x12-277-worker.js', import.meta.url);
+const hptWorkerUrl = new URL('../lib/hpt-worker.js', import.meta.url);
 const analysisWorkerUrl = new URL('../lib/remittance-analysis-worker.js', import.meta.url);
 
 function table(root, caption, headers, rows) {
@@ -303,4 +304,39 @@ function reader277(root) {
   });
 }
 
-export const renderers = { 'x12-835-reader': reader835, 'x12-837-check': check837, 'x12-271-reader': reader271, 'x12-277-reader': reader277, 'denial-pattern-report': denialPattern, 'underpayment-check': underpayment };
+function hptFileCheck(root) {
+  root.appendChild(el('p', { class: 'notice', text: 'Streams a CMS Hospital Price Transparency v3.0.0 CSV tall, CSV wide or JSON file locally and checks its required fields, accepted values and conditional rules.' }));
+  root.appendChild(el('p', { class: 'muted', text: 'The file stays in this tab. There is no 50 MB workbench limit: memory stays tied to the current CSV row or JSON charge item, so the practical limit is what your browser can open.' }));
+  const input = el('input', { id: 'hpt-file', type: 'file', accept: '.csv,.json,text/csv,application/json' });
+  const status = el('p', { id: 'hpt-status', class: 'muted', role: 'status', 'aria-live': 'polite' });
+  const results = el('div', { id: 'q-results', 'aria-live': 'polite' });
+  root.appendChild(el('label', { for: 'hpt-file', text: 'Choose a hospital price file' })); root.appendChild(input); root.appendChild(status); root.appendChild(results);
+  let worker = null;
+  input.addEventListener('change', () => {
+    if (worker) worker.terminate(); clear(results);
+    const file = input.files && input.files[0]; if (!file) return;
+    status.textContent = 'Checking the file locally...'; worker = new window.Worker(hptWorkerUrl, { type: 'module' });
+    worker.addEventListener('error', () => { status.textContent = 'The hospital price file could not be checked.'; });
+    worker.addEventListener('message', (event) => {
+      const message = event.data || {};
+      if (message.type === 'error') { status.textContent = message.message; return; }
+      if (message.type === 'progress') {
+        const percent = message.totalBytes ? Math.min(100, Math.floor(message.bytesRead / message.totalBytes * 100)) : 0;
+        status.textContent = `Checking the file locally... ${percent.toLocaleString('en-US')}%`;
+        return;
+      }
+      if (message.type !== 'validated') return;
+      status.textContent = `${message.fileName} checked.`;
+      resultRow(results, [
+        { text: message.valid ? 'No v3.0.0 structural deficiencies found.' : `${message.errorCount.toLocaleString('en-US')} structural ${message.errorCount === 1 ? 'deficiency' : 'deficiencies'} found.`, cls: message.valid ? null : 'warn' },
+        { label: 'Format', value: message.format }, { label: 'Charge rows or items', value: message.rowCount.toLocaleString('en-US') },
+      ]);
+      if (message.findings.length) table(results, message.findingsTruncated ? `First ${message.findings.length.toLocaleString('en-US')} deficiencies` : 'Deficiencies', ['Rule', 'Location', 'Finding'], message.findings.map((finding) => [finding.code, finding.location, finding.message]));
+      results.appendChild(el('p', { class: 'muted', text: 'This is a deterministic structural check against CMS template v3.0.0. It does not verify that prices are complete or accurate and is not a compliance determination.' }));
+      const source = el('p'); source.appendChild(el('a', { href: 'https://github.com/CMSgov/hospital-price-transparency', target: '_blank', rel: 'noreferrer', text: 'Review the official CMS data dictionary and validator' })); results.appendChild(source);
+    });
+    worker.postMessage({ type: 'validate', file });
+  });
+}
+
+export const renderers = { 'x12-835-reader': reader835, 'x12-837-check': check837, 'x12-271-reader': reader271, 'x12-277-reader': reader277, 'hpt-file-check': hptFileCheck, 'denial-pattern-report': denialPattern, 'underpayment-check': underpayment };

@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- A streaming CMS Hospital Price Transparency v3.0.0 file checker for CSV tall,
+  CSV wide and JSON files. It validates 2026 fields and conditional rules locally
+  without loading the whole file into memory.
+
 - An X12 277/277CA claim-status reader that preserves raw category, status,
   entity and action codes, lists rejected claims first, links every row to the
   X12 code lookup and exports full or patient-redacted claim tables.

@@ -1091,6 +1091,7 @@ const UTILITIES = [
   { id: 'x12-837-check', name: 'X12 837 Claim File Check', group: 'P', audiences: ['billers', 'coders'], clinical: false },
   { id: 'x12-271-reader', name: 'X12 271 Eligibility Response Reader', group: 'P', audiences: ['billers', 'coders'], clinical: false },
   { id: 'x12-277-reader', name: 'X12 277 Claim Status Reader', group: 'P', audiences: ['billers', 'coders'], clinical: false },
+  { id: 'hpt-file-check', name: 'Hospital Price Transparency File Check', group: 'P', audiences: ['billers', 'coders'], clinical: false },
   { id: 'denial-pattern-report', name: 'Denial Pattern Report', group: 'P', audiences: ['billers', 'coders'], clinical: false },
   { id: 'underpayment-check', name: 'Paid Below Contract Check', group: 'P', audiences: ['billers', 'coders'], clinical: false },
   { id: 'therapy-cost-compare', name: 'Annual Therapy Cost Comparison', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },

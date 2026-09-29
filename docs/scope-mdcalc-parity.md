@@ -244,3 +244,5 @@ experience**.
 > v1515, eligibility files — [spec-v1515](spec-v1515.md), which adds `x12-271-reader` — is 1947.)
 
 > v1515, claim-status files — [spec-v1515](spec-v1515.md), which adds `x12-277-reader` — is 1948.)
+
+> v1515, hospital price files — [spec-v1515](spec-v1515.md), which adds `hpt-file-check` — is 1949.)

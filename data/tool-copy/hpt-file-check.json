@@ -1,0 +1,13 @@
+{
+  "whatThisIs": "Check a CMS Hospital Price Transparency v3.0.0 machine-readable file in your browser. The checker streams CSV tall, CSV wide and JSON files, so memory use follows the current row or charge item instead of the whole file.",
+  "whenToUse": "Use this before publishing or analyzing a hospital price file. It catches missing 2026 fields, bad template values and broken conditional relationships while keeping the file on your device.",
+  "inputs": "One CMS v3.0.0 CSV or JSON hospital price file. The practical size limit is what your browser can open; the standard 50 MB upload-workbench limit does not apply.",
+  "output": "A pass result or a capped table of structural deficiencies with each CSV row or JSON path, plus the total deficiency and charge-row counts.",
+  "example": {
+    "rows": [
+      ["Format", "CSV tall"],
+      ["Charge rows", "1"]
+    ],
+    "result": "No v3.0.0 structural deficiencies found."
+  }
+}
