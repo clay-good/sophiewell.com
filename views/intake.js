@@ -40,7 +40,7 @@ export async function entriesFromDrop(dataTransfer) {
 
 export const entriesFromInput = (input) => [...(input.files || [])].map((file) => ({ file, name: file.name, relativePath: file.webkitRelativePath || '' }));
 
-function opens(row, toolName) {
+function opens(row, toolName, onOpen) {
   if (row.kind === 'excel' || row.confidence === 'none') return el('span', { text: unknownMessage(row.name, row) });
   if (row.family === 'reference') return el('span', { text: 'Reference table: drop it with the file it should be used for.' });
   const liveTools = row.tools.filter((t) => t.status === 'live' && !t.route);
@@ -50,16 +50,20 @@ function opens(row, toolName) {
   if (row.ambiguous) wrap.appendChild(el('span', { text: 'Choose one: ' }));
   liveTools.forEach((t, k) => {
     if (k) wrap.appendChild(document.createTextNode(row.ambiguous ? ' or ' : ', '));
-    wrap.appendChild(el('a', { href: `#${t.id}`, text: toolName(t.id) }));
+    const link = el('a', { href: `#${t.id}`, text: toolName(t.id) });
+    // The link carries the file: the tool opens with this row's file in it.
+    link.addEventListener('click', () => onOpen(t.id, row));
+    wrap.appendChild(link);
   });
   return wrap;
 }
 
-export function renderIntake(main, { toolName = (id) => id } = {}) {
+export function renderIntake(main, { toolName = (id) => id, onOpen = () => {}, onOpenMany = null } = {}) {
   clear(main);
   const content = el('section', { class: 'content intake', 'aria-label': 'Your files' });
   content.appendChild(el('h1', { text: 'Your files' }));
   content.appendChild(el('p', { class: 'notice', text: 'Choose files, a folder or a zip. Each is read in this tab to see what it is; nothing is uploaded, and nothing runs until you open a tool.' }));
+  content.appendChild(el('p', { class: 'muted', text: 'Read in this tab. Not uploaded, not kept.' }));
   content.appendChild(el('p', { class: 'muted', text: `Up to ${LIMITS.maxFiles.toLocaleString('en-US')} files at a time and ${LIMITS.maxDepth} folders deep. A zip may expand to 4 GB; a member that expands more than ${LIMITS.maxZipRatio} times is refused.` }));
 
   const drop = el('div', { class: 'intake-drop', id: 'intake-drop' });
@@ -67,7 +71,7 @@ export function renderIntake(main, { toolName = (id) => id } = {}) {
   drop.appendChild(el('label', { for: 'intake-files', text: 'Choose files' }));
   drop.appendChild(files);
   let folder = null;
-  if (window.HTMLInputElement && 'webkitdirectory' in window.HTMLInputElement.prototype && window.matchMedia && window.matchMedia('(pointer: fine)').matches) {
+  if (window.HTMLInputElement && 'webkitdirectory' in window.HTMLInputElement.prototype && window.matchMedia && window.matchMedia('(pointer: fine) and (min-width: 600px)').matches) {
     folder = el('input', { id: 'intake-folder', type: 'file', webkitdirectory: '', multiple: true });
     drop.appendChild(el('label', { for: 'intake-folder', text: 'Choose a folder' }));
     drop.appendChild(folder);
@@ -118,12 +122,35 @@ export function renderIntake(main, { toolName = (id) => id } = {}) {
       const tr = el('tr', { 'data-kind': r.kind });
       tr.appendChild(el('td', { class: 'intake-path', text: r.path }));
       tr.appendChild(el('td', { text: `${r.label}${r.transactionText ? ` (${r.transactionText})` : ''}. ${CONFIDENCE[r.confidence]}.` }));
-      const o = el('td'); o.appendChild(opens(r, toolName)); tr.appendChild(o);
+      const o = el('td'); o.appendChild(opens(r, toolName, onOpen)); tr.appendChild(o);
       tr.appendChild(el('td', { text: r.evidence.join(' ') }));
       body.appendChild(tr);
     }
     table.appendChild(body);
     wrap.appendChild(table);
+    // One action per tool, not per file: a tool that reads several files at
+    // once gets every file of its kind, so a month of remittances is one run.
+    if (onOpenMany) {
+      const byTool = new Map();
+      for (const r of rows) {
+        if (r.ambiguous || r.confidence === 'none') continue;
+        for (const t of r.tools) {
+          if (t.status !== 'live' || t.route || !t.multi) continue;
+          if (!byTool.has(t.id)) byTool.set(t.id, []);
+          byTool.get(t.id).push(r);
+        }
+      }
+      const many = [...byTool].filter(([, rs]) => rs.length > 1);
+      if (many.length) {
+        const actions = el('p', { class: 'intake-actions' });
+        for (const [tid, rs] of many) {
+          const b = el('button', { type: 'button', text: `Open ${toolName(tid)} with ${rs.length} files` });
+          b.addEventListener('click', () => onOpenMany(tid, rs));
+          actions.appendChild(b);
+        }
+        results.appendChild(actions);
+      }
+    }
     results.appendChild(wrap);
     if (refused.length) {
       results.appendChild(el('h2', { text: 'Not opened' }));
@@ -142,5 +169,5 @@ export function renderIntake(main, { toolName = (id) => id } = {}) {
     drop.classList.remove('drop-active');
     run(await entriesFromDrop(e.dataTransfer));
   });
-  return { run };
+  return { run, show };
 }

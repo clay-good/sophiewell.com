@@ -2,6 +2,7 @@
 import { el, clear } from '../lib/dom.js';
 import { MAX_FILE_BYTES } from '../lib/upload-intake.js';
 import { resultRow } from '../lib/result-copy.js';
+import { acceptVia } from '../lib/hand-off.js';
 
 const workerUrl = new URL('../lib/x12-835-worker.js', import.meta.url);
 const claimWorkerUrl = new URL('../lib/x12-837-worker.js', import.meta.url);
@@ -340,3 +341,16 @@ function hptFileCheck(root) {
 }
 
 export const renderers = { 'x12-835-reader': reader835, 'x12-837-check': check837, 'x12-271-reader': reader271, 'x12-277-reader': reader277, 'hpt-file-check': hptFileCheck, 'denial-pattern-report': denialPattern, 'underpayment-check': underpayment };
+
+// spec-v1623 step 3: files handed off from a drop go through each tool's own
+// input. underpayment-check takes the remittances; its fee schedule is chosen
+// on the page.
+export const acceptFiles = {
+  'x12-835-reader': acceptVia('x835-files'),
+  'denial-pattern-report': acceptVia('dpr-files'),
+  'underpayment-check': acceptVia('upc-remittances'),
+  'x12-837-check': acceptVia('x837-files'),
+  'x12-271-reader': acceptVia('x271-file'),
+  'x12-277-reader': acceptVia('x277-files'),
+  'hpt-file-check': acceptVia('hpt-file'),
+};

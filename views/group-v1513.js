@@ -6,6 +6,7 @@ import * as PS from '../lib/pdc-star-v1513.js';
 import { resultRow } from '../lib/result-copy.js';
 import { uploadWorkbench } from './upload-workbench.js';
 import { FILL_FIELDS, MPR_FILL_FIELDS, SYNC_FIELDS } from '../lib/upload-fields.js';
+import { acceptVia } from '../lib/hand-off.js';
 
 
 function textareaField(root, label, id, placeholder) {
@@ -186,4 +187,12 @@ export const renderers = {
     root.appendChild(o);
     wire(ids, run);
   },
+};
+
+// spec-v1623 step 3: a fill or medication CSV goes to the tool's workbench.
+export const acceptFiles = {
+  'mpr-gap-days': acceptVia('mpr-upload-file'),
+  'med-sync-plan': acceptVia('sync-upload-file'),
+  'pdc-star': acceptVia('ps-upload-file'),
+  'adherence-outreach-list': acceptVia('ao-upload-file'),
 };

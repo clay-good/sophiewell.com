@@ -13,7 +13,7 @@
 // A broad deterministic sample rather than all 1564: this navigates per tile, and
 // the whole-catalog sweeps already cost 25 minutes each.
 import { test, expect } from '@playwright/test';
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
 import { tileName } from '../../scripts/lib/tile-name.mjs';
@@ -29,10 +29,12 @@ function sample(n) {
     const name = tileName(line);
     if (id && name) tiles.push({ id: id[1], name });
   }
+  // Every bucket, whatever its name: the index split from one-letter to
+  // two-character buckets at a catalog of 1,934 (lib/field-bucket.js), and a
+  // hard-coded letter list read none of them, so this sweep found no tiles.
   const fields = {};
-  for (const f of ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
-    'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'y', 'z', '4']) {
-    try { Object.assign(fields, JSON.parse(readFileSync(join(ROOT, 'data', 'fields', `${f}.json`), 'utf8'))); } catch { /* bucket may not exist */ }
+  for (const f of readdirSync(join(ROOT, 'data', 'fields')).filter((n) => n.endsWith('.json'))) {
+    Object.assign(fields, JSON.parse(readFileSync(join(ROOT, 'data', 'fields', f), 'utf8')));
   }
   const meta = JSON.parse(readFileSync(join(ROOT, 'test', 'fixtures', 'routing-values.json'), 'utf8'));
   const withValues = tiles.filter((t) => fields[t.id] && meta[t.id]);

@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `3e4adfd0cc27b6cb`
-Generated: 2026-09-29T19:56:44.160Z
+Build ID: `b67dad8eb2348a1c`
+Generated: 2026-09-29T20:13:33.090Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -25,14 +25,14 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 123798 | `52f374d36fd4c07cf57cb25d46cc5ef01293faa9db65c9caaa69c87ba7e03336` |
-| `styles.css` | 73649 | `3fc5011ea6fdb6b3d5d701d519807bfa3092055fcb94397a3384c5de7a6b399a` |
-| `app.js` | 562918 | `176c9add3ec6d309deb6571d68c26b6bb3c564045c3b7cc7e22b0e538b2f62af` |
+| `index.html` | 124906 | `7cac05200388c06f99fd02d12dd1146da49d7b78f6800ff0ab62b60dab2eaddc` |
+| `styles.css` | 74931 | `8a47820f1bc524c8289aa08c17168388606087fd9dab95ea29af96bcb44f5b5e` |
+| `app.js` | 564178 | `d2ddf42c8c644ec39997c33add1c1be87d674564e30dd27c488f9882a486c105` |
 | `report-feedback.js` | 12178 | `955e5cb542c7b13dcbb85a75ecf4ccf2dc0b2dffecd84daac1d607bd6acc7cd2` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 | `theme.js` | 3132 | `6910af0b4c65869c6a3d24d17842bb2cc88c7d23f8fb32506fcdbfeec70ce979` |
 | `file-origin-guard.js` | 1876 | `45414c830b9c95f04d22fd19bb0be70363b88e37559f33c2d197872591a8cd55` |
-| `sw.js` | 5311 | `85c61845a01beeab2a865bc63383292a9c1fde42fc8336488c1b6b4d1414ce9e` |
+| `sw.js` | 5339 | `32d31e18fefc49ef2c5fdab4a1c538855d47eeba2438d5a4e1413ac63b3e7f8c` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
 | `sitemap.xml` | 243325 | `a99b24095cb0860272bee93b4991d0259bbbc76e655bac6404e93c9b1557c48a` |
@@ -418,6 +418,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/hakki-valve-area-v1455.js` | 2417 | `242a510a4a3baeb35fb298c9843018e92a3fb0525fffe9116be533a22178aa02` |
 | `lib/hamada-v439.js` | 3168 | `a835158251679b95aa91410427c8c921fde3d956f51af622cda8df5f3e3b96cd` |
 | `lib/hamp-furcation-v1490.js` | 3056 | `33e525d6e88ff46a2c251c197f8b17562a9b04895b47cf6445fe0d297a40c5a0` |
+| `lib/hand-off.js` | 1121 | `280b981ac0cb9b666b6b73db2b2f31b0bdf7db05bc688a534eb286ec91c9d12a` |
 | `lib/hardman-v536.js` | 9459 | `dbe8fa2a01a294a3ed435e567b322d23c0206291fb1c5fb1df46c992052ace39` |
 | `lib/hardy-adenoma-v391.js` | 4656 | `24075a9a4c4fa233e946f0cedba0bbc5b14d259a212e0e57bd4355e181aaf732` |
 | `lib/harrington-acetabular-v605.js` | 10861 | `7a6086feb0ed2016b67a0b02d01f79f0941f4583acfd04cc879ea2468ab0d269` |
@@ -493,6 +494,8 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/inflam-v267.js` | 4172 | `3f8835d135972766119ea4c8f3dee85fc8bd310d95dd968c2c50be6eb0c9eff5` |
 | `lib/inflam-v268.js` | 4290 | `96d846caad227f10582402784735f40e77760a80a74cbbc07cabb4bcb12efc69` |
 | `lib/insulin-drip.js` | 1538 | `4ebceacf967b510f03fb40afc682bb2b2e221e0fe78701f1cef3e326bff015c6` |
+| `lib/intake-worker.js` | 580 | `5df580afd72bd890c0cea469c01d5c7c2c1fb6cf77b1a05ed467a8b8d4bed448` |
+| `lib/intake.js` | 4328 | `bb20d6cb19e8436b15b5b855a2463d9517eb98e931c3f2b069f66a1c755d8612` |
 | `lib/interchest-v693.js` | 4518 | `39f192b6c1c2eb9646b3642c66aeee02c6d3376a4147e473f1c703ff3629693e` |
 | `lib/intermacs-profile-v494.js` | 4333 | `4b56fe0900a9e1f9441ee1c8259959e261405815f4b3f1e168e6b983ea897fab` |
 | `lib/intertak-v788.js` | 4902 | `499372b9e1c30ec0e4bc2cf6558b1fd0424846b0e38b9d086906d7f6b0f58893` |
@@ -2273,15 +2276,15 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1506.js` | 11140 | `361d98ae810829a8c8b20b734e9bcd45ca3a84151eec8d41232ec3e11ea110ca` |
 | `views/group-v1507.js` | 13724 | `9164dcd5553ed2bf3173660028c504428a8bf17f44fc60e11e0833dabb653a50` |
 | `views/group-v1508.js` | 8229 | `9dd50e090ced34ec13dec250b12b0b4e750489d265a355e984fa3b6ee62259fe` |
-| `views/group-v1509.js` | 9012 | `987e2fc31396ca2eaacfb1fc845ead38c542bd7a0d623acc3e1d4e031e0889fb` |
+| `views/group-v1509.js` | 9355 | `c6052710ceac6ed488acfac42c0d347bc387f1dcfc5a3807399d03171ae4a31a` |
 | `views/group-v151.js` | 13359 | `0f5eff3a293106878f3c19634996260b9ed65f358fb54c277941ddb9ef93784e` |
 | `views/group-v1510.js` | 9536 | `bcbb02fa65ac6bd60a1eb0b9714fe73d76eaa7085e3cccdf59fe2d6ceb8d235a` |
 | `views/group-v1511.js` | 12916 | `93b0462d58e5904d62e34a3d32ff05a6f8d4a8a68ddf8a6160d8c64cb40d7750` |
 | `views/group-v1512.js` | 6483 | `44fb6cba5ad120e902988f5e11e43d602a688ea563821ff5209471201a671e67` |
-| `views/group-v1513.js` | 8604 | `f74f039c9e8c6d0ec48eaa8c2a345ad603dfc857d100b320c786377fff7b7c0d` |
+| `views/group-v1513.js` | 8961 | `ebd3a2e3ba0b3ee52e0424375dfc40aab175e62d9122172717428e4761dc810d` |
 | `views/group-v1514.js` | 11361 | `b728bf9f4e4314627d921000346a86a3fc5db92716dc2cf5855e2c7a0b8cd6b9` |
-| `views/group-v1515.js` | 30882 | `f49b6f934f57db3ef52472b3b9d4f4bd673a9694a0fa396e1ba003b52d955124` |
-| `views/group-v1516.js` | 10396 | `7ebfc2070d44b4a9c3c038f685566d35a836d9931d52e2ef79cb8ea526ac0a64` |
+| `views/group-v1515.js` | 31462 | `fecd384fe622aa970306f674a95b12f396336c3f36934875105c155c5cac5055` |
+| `views/group-v1516.js` | 10724 | `918914b974b1b0886a7ad07ae1d4cd0595ebc80baddb5823f45c539840ddeec1` |
 | `views/group-v152.js` | 12369 | `dc29da131fcaf14f2a95a9e658fa3df1cc7b1d768b7b12b308267c97de3ede1e` |
 | `views/group-v153.js` | 11280 | `ffceef435372350d3a3f391724e3232537e6919c980ba7c4b8e8b7bab2186ee9` |
 | `views/group-v154.js` | 11434 | `4bb47056aa326ce6597e15e6dacfa281adf4230d42df78761125cafac4e8b073` |
@@ -3013,7 +3016,9 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v932.js` | 2874 | `c47fc16077385b88fb2c027e5065709402fdeb38cdde45fe49a6ceae5ba67fca` |
 | `views/group-v958.js` | 2985 | `7130419cb508352c449ed6fca367999b557c564cc47296a1378e609ffb37e3f3` |
 | `views/group-v960.js` | 2332 | `2e2cd0afc127aeef51e729f177473c3a125c6ebdd6bc21bc7b19376cf0dbe177` |
-| `views/pa-lint.js` | 28680 | `90c4bbb985af80d74f2957de7d11efc33f5a14d21a40ae8ae114ff3313879b88` |
+| `views/home-files.js` | 7986 | `0ff5e07fd180bb735deffeedfd4d5639340b402678d50ae99b707a2dc25f6fdb` |
+| `views/intake.js` | 9117 | `e9f227f8297beb859dbf3f1e33e5b305e247e1737b868d28420af637f48873d7` |
+| `views/pa-lint.js` | 28880 | `8ff8fdf455c39e88ab5a859e98a7a19903f4dfc17b232738d2495e9c739c390b` |
 | `views/rx-match-workbench.js` | 9241 | `c4390bb1f59a9cb89b8f9d94859f8dd2ccc1c66f0a1309bea5e79522bc4f8f47` |
 | `views/upload-workbench.js` | 8287 | `45f4a7b57595e413c0feebd1c941027ae03756aa1b1fb8966b22080548001203` |
 

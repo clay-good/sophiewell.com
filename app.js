@@ -861,12 +861,12 @@ import { renderers as RV1506 } from './views/group-v1506.js';
 import { renderers as RV1508 } from './views/group-v1508.js';
 import { renderers as RV1512 } from './views/group-v1512.js';
 import { renderers as RV1505 } from './views/group-v1505.js';
-import { renderers as RV1515 } from './views/group-v1515.js';
-import { renderers as RV1516 } from './views/group-v1516.js';
+import { renderers as RV1515, acceptFiles as AF1515 } from './views/group-v1515.js';
+import { renderers as RV1516, acceptFiles as AF1516 } from './views/group-v1516.js';
 import { renderers as RV1504 } from './views/group-v1504.js';
 import { renderers as RV1510 } from './views/group-v1510.js';
-import { renderers as RV1509 } from './views/group-v1509.js';
-import { renderers as RV1513 } from './views/group-v1513.js';
+import { renderers as RV1509, acceptFiles as AF1509 } from './views/group-v1509.js';
+import { renderers as RV1513, acceptFiles as AF1513 } from './views/group-v1513.js';
 import { renderers as RV1396 } from './views/group-v1396.js';
 import { renderers as RV164 } from './views/group-v164.js';
 import { renderers as RV165 } from './views/group-v165.js';
@@ -886,10 +886,10 @@ import { renderers as RV181 } from './views/group-v181.js';
 import { renderers as RV149 } from './views/group-v149.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
-import { renderers as RPALINT } from './views/pa-lint.js';
+import { renderers as RPALINT, acceptFiles as AFPALINT } from './views/pa-lint.js';
 import { META } from './lib/meta.js';
 import { fetchJson, datasetStatus, stampDetail } from './lib/data.js';
-import { renderIntake } from './views/intake.js';
+import { createHomeFiles } from './views/home-files.js';
 import { copyButton } from './lib/clipboard.js';
 import { installKeyboard } from './lib/keyboard.js';
 import { parseHash, patchHash, buildHash } from './lib/hash.js';
@@ -4548,6 +4548,7 @@ function restoreHome() {
   // The home view is restored from a cloned snapshot, so the hero combobox
   // loses its event listeners -- re-bind them. The clone ships an empty input.
   bindHeroSearch();
+  homeFiles.bindHome();
   document.title = 'Sophie Well';
 }
 
@@ -5769,6 +5770,20 @@ function renderToolView(util) {
 
 let currentRouteId = null;
 
+// spec-v1623 step 4: dropped and chosen files. The hand-off maps come from the
+// views that read files; see views/home-files.js.
+const ACCEPT_FILES = { ...AF1515, ...AF1516, ...AF1509, ...AF1513, ...AFPALINT };
+function navigateTo(hash) {
+  currentRouteId = null;
+  if (window.location.hash === hash) route();
+  else window.location.hash = hash;
+}
+const homeFiles = createHomeFiles({
+  acceptFiles: ACCEPT_FILES,
+  navigate: navigateTo,
+  toolName: (tid) => (UTIL_BY_ID.get(tid) || { name: tid }).name,
+});
+
 function route() {
   const parsed = parseHash(window.location.hash);
   const id = parsed.route;
@@ -5777,7 +5792,7 @@ function route() {
     const main = getMain();
     if (main && currentRouteId !== '/intake') {
       currentRouteId = '/intake';
-      renderIntake(main, { toolName: (tid) => (UTIL_BY_ID.get(tid) || { name: tid }).name });
+      homeFiles.renderInventory(main);
       document.title = 'Your files · Sophie Well';
     }
     return;
@@ -5799,6 +5814,8 @@ function route() {
     if (currentRouteId !== id) {
       currentRouteId = id;
       renderToolView(util);
+      // spec-v1623: a file dropped on the home page opens here, already in the tool.
+      homeFiles.afterToolRender(util, document.getElementById('tool-body'));
     }
   } else {
     currentRouteId = null;
@@ -6196,7 +6213,7 @@ function bindHeroSearch() {
   // spec-v751: the example chips. A chip is a demonstration, so it does exactly
   // what typing does -- fill the box, focus it, run the same render. No separate
   // routing path, or the example would stop being an honest example.
-  document.querySelectorAll('.hero-chip').forEach((chip) => {
+  document.querySelectorAll('.hero-chip:not(.hero-file-chip)').forEach((chip) => {
     chip.addEventListener('click', () => {
       input.value = chip.dataset.q || chip.textContent;
       input.focus();
@@ -6293,6 +6310,7 @@ function boot() {
   const initial = parseHash(window.location.hash);
   if (initial.audience) filterState.audience = initial.audience;
   bindHeroSearch();
+  homeFiles.bindHome();
   bindSkipLink();
   installKeyboard();
   // spec-v7 §3.2: load the synonym table once at boot. Hero search degrades

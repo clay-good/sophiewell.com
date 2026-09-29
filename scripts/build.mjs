@@ -17,7 +17,9 @@ const COPY_FILES = [
   '_headers', 'robots.txt', 'sitemap.xml', 'site.webmanifest',
   'CHANGELOG.md', 'sbom.json', 'sbom.md',
 ];
-const COPY_DIRS = ['lib', 'views', 'data', 'docs', 'vendored'];
+// samples/: the home page's "a sample remittance file" chip (spec-v1623); a
+// copy of test/fixtures/file-kinds/x12-835.835, held identical by a unit test.
+const COPY_DIRS = ['lib', 'views', 'data', 'docs', 'vendored', 'samples'];
 
 async function* walk(dir) {
   const entries = await readdir(dir, { withFileTypes: true });

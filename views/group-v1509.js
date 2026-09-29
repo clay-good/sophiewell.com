@@ -6,6 +6,7 @@ import { resultRow } from '../lib/result-copy.js';
 import { uploadWorkbench } from './upload-workbench.js';
 import { rxMatchWorkbench } from './rx-match-workbench.js';
 import { PATIENT_CHECK_FIELDS } from '../lib/upload-fields.js';
+import { acceptVia } from '../lib/hand-off.js';
 
 const NA = { value: '', text: '— choose —' };
 function selectField(root, label, id, options) {
@@ -164,4 +165,11 @@ export const renderers = {
       note(o, r.note);
     }));
   },
+};
+
+// spec-v1623 step 3: a patient CSV goes to the workbench; a prescriptions CSV
+// to the matcher's first file (the other three are chosen on the page).
+export const acceptFiles = {
+  '340b-patient-check': acceptVia('pc3-upload-file'),
+  '340b-rx-match': acceptVia('rxm-prescriptions-file'),
 };

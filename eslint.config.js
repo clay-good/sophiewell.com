@@ -71,6 +71,8 @@ export default [
         Response: "readonly",
         ReadableStream: "readonly",
         DecompressionStream: "readonly",
+        DataTransfer: "readonly",
+        File: "readonly",
         // service worker
         self: "readonly",
         caches: "readonly",

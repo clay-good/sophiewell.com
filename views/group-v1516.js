@@ -6,6 +6,7 @@ import { resultRow } from '../lib/result-copy.js';
 import { MAX_FILE_BYTES } from '../lib/upload-intake.js';
 import { uploadWorkbench } from './upload-workbench.js';
 import { APPEAL_FIELDS } from '../lib/upload-fields.js';
+import { acceptVia } from '../lib/hand-off.js';
 
 const NA = { value: '', text: '— choose —' };
 const analysisWorkerUrl = new URL('../lib/remittance-analysis-worker.js', import.meta.url);
@@ -159,4 +160,10 @@ export const renderers = {
     });
     appeal835(root, show);
   },
+};
+
+// spec-v1623 step 3: 835 remittances go to the 835 input, a claim CSV or TSV
+// to the column-mapping workbench.
+export const acceptFiles = {
+  'appeal-worklist': (root, files, { kind } = {}) => acceptVia(kind === 'x12-835' ? 'aw-835-files' : 'aw-upload-file')(root, files),
 };

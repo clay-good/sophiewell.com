@@ -349,7 +349,9 @@ test('spec-v751 home: one box, four example chips, no browse nav', async ({ page
   await page.goto('/');
   await expect(page.locator('.home-h1')).toHaveText('Bedside math, answered.');
   await expect(page.locator('nav.home-browse')).toHaveCount(0);
-  await expect(page.locator('.hero-chip')).toHaveCount(4);
+  // Four query chips, and (spec-v1623) one that opens a sample file instead.
+  await expect(page.locator('.hero-chip:not(.hero-file-chip)')).toHaveCount(4);
+  await expect(page.locator('.hero-file-chip')).toHaveCount(1);
   // A chip is a demonstration: it does exactly what typing does.
   await page.locator('.hero-chip').first().click();
   await expect(page.locator('#hero-search')).not.toHaveValue('');

@@ -9,8 +9,8 @@
 //      is already built (it should be live);
 //   3. a kind has no sample fixture under test/fixtures/file-kinds/ (or a stated
 //      reason for none), or no test that recognizes its sample.
-// The acceptFiles rule (every live tool can take handed-off files) joins in
-// spec-v1623 step 3.
+//   4. a live registry tool has no `acceptFiles` entry in the view that renders
+//      it (spec-v1623 step 3), so a dropped file could not be handed to it.
 
 import { readFile, readdir } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
@@ -59,6 +59,18 @@ export async function fileInputIds() {
   return out;
 }
 
+// acceptFilesIds() -> tool ids with an acceptFiles entry, read from the views'
+// source (importing a view needs a DOM).
+export async function acceptFilesIds() {
+  const ids = new Set();
+  for (const f of (await readdir(join(ROOT, 'views'))).filter((n) => n.endsWith('.js'))) {
+    const text = await readFile(join(ROOT, 'views', f), 'utf8');
+    const m = /export const acceptFiles = \{([\s\S]*?)\n\};/.exec(text);
+    if (m) for (const k of m[1].matchAll(/^\s*'([a-z0-9-]+)':/gm)) ids.add(k[1]);
+  }
+  return ids;
+}
+
 export async function problems() {
   const out = [];
   const catalog = new Set(parseUtilityIds(await readFile(join(ROOT, 'app.js'), 'utf8')));
@@ -80,6 +92,12 @@ export async function problems() {
     if (t.route) continue;
     if (t.status === 'live' && !catalog.has(t.id)) out.push(`registry tool ${t.id} is marked live but is not in the catalog`);
     if (t.status === 'planned' && catalog.has(t.id)) out.push(`registry tool ${t.id} is marked planned but is in the catalog; mark it live`);
+  }
+
+  // 4. every live tool can take handed-off files
+  const accepting = await acceptFilesIds();
+  for (const t of registryTools.values()) {
+    if (t.status === 'live' && !t.route && !accepting.has(t.id)) out.push(`registry tool ${t.id} has no acceptFiles entry in its view`);
   }
 
   // 3. samples and a test that recognizes each

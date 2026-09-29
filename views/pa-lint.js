@@ -30,6 +30,7 @@ import { buildJsonReport, buildRedactedJsonReport, buildDocxReport, buildRedacte
 import { disabledSourceMap } from '../lib/pa/staleness.js';
 import { PA_STALENESS_LEDGER } from '../lib/pa/staleness-ledger.js';
 import { isImageFile, isOcrCandidate, ocrDocument, createOcrRunner } from '../lib/pa/ocr.js';
+import { acceptVia } from '../lib/hand-off.js';
 
 const MAX_FILE_BYTES = 50 * 1024 * 1024; // 50 MB per file, per spec-v52 §4.3
 const MAX_TOTAL_BYTES = 200 * 1024 * 1024; // 200 MB packet ceiling
@@ -623,4 +624,9 @@ export const renderers = {
       if (picker.files && picker.files.length) processFiles(picker.files, results, status, findingsPanel);
     });
   },
+};
+
+// spec-v1623 step 3: a dropped packet goes through the linter's own picker.
+export const acceptFiles = {
+  'pa-lint': acceptVia('pa-file-picker'),
 };

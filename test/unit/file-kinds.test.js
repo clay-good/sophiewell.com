@@ -141,3 +141,8 @@ test('head only: a 2 GB insurer rates file is recognized from its first 256 KB i
   assert.ok(Date.now() - t < 1000, `took ${Date.now() - t} ms`);
   assert.equal(head.length, LIMITS.headBytes);
 });
+
+test('the home page sample file is the 835 fixture, byte for byte', () => {
+  const root = join(DIR, '..', '..', '..');
+  assert.deepEqual(readFileSync(join(root, 'samples', 'x12-835.835')), readFileSync(join(DIR, 'x12-835.835')));
+});
