@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:b67dad8e-b234-5a1c-8664-16a05e0dec33",
+  "serialNumber": "urn:uuid:51c6b452-defe-5030-8639-9e5b37c6e327",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-29T20:13:33.090Z",
+    "timestamp": "2026-09-29T20:48:14.744Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -83,7 +83,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8a47820f1bc524c8289aa08c17168388606087fd9dab95ea29af96bcb44f5b5e"
+          "content": "7e1f7030712eab882bba1df66cf1918de20e3175520a39afbc4bb39d7a0021d5"
         }
       ],
       "properties": [
@@ -93,7 +93,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "74931"
+          "value": "75121"
         }
       ]
     },
@@ -2635,6 +2635,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "10837"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/build-info.js",
+      "type": "file",
+      "name": "lib/build-info.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "779a1ab0f901ae3d4f0f14194e795f2fb17969474fc24b9544155d7623d750c8"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "322"
         }
       ]
     },
@@ -6845,7 +6866,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "fdae6bf21c8551b1a74158938b4a52cd7ea6b9163cc84ac3461a5db2d7bcdb57"
+          "content": "43b7d7933fb57432912a25185c9ecbecf28e1ee69559528804ca45f39384c6e6"
         }
       ],
       "properties": [
@@ -6855,7 +6876,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "28309"
+          "value": "28676"
         }
       ]
     },
@@ -9149,6 +9170,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/hpt-run.js",
+      "type": "file",
+      "name": "lib/hpt-run.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0ff2da236fa006832e353c621e53148b94af49a8737a4cabd56e4bb5bcdf0188"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1166"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/hpt-stream-v1515.js",
       "type": "file",
       "name": "lib/hpt-stream-v1515.js",
@@ -9197,7 +9239,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "45888356cb1392ca9d317de0165dfcbfc4661ddacde18fb6505c4c22be6bdc1d"
+          "content": "7d62f64cc7c26dadf569116ce948df0b9c5f030da26338f5ad4384617dd3660d"
         }
       ],
       "properties": [
@@ -9207,7 +9249,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "954"
+          "value": "1092"
         }
       ]
     },
@@ -17759,6 +17801,48 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/receipt-worker.js",
+      "type": "file",
+      "name": "lib/receipt-worker.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e4ac4b8745b7c0c0d8679ffacdfd538b65ce41606fc4a1fc228a65d18880e8b8"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2036"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/receipt.js",
+      "type": "file",
+      "name": "lib/receipt.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5688f42f59839c2ac86100eaa210dd3600a93078e82b215eb00f729d34a00a13"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4248"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/reference-change-value-v920.js",
       "type": "file",
       "name": "lib/reference-change-value-v920.js",
@@ -17954,7 +18038,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1de03a86bd2c772f3aa3e2fd9d6fa8f51798acffb4aad05a7c9e34caebbd2ad0"
+          "content": "702ebf8804095070fe07bd05b4f9cba9d914c216646bc96f89b2c338a991888c"
         }
       ],
       "properties": [
@@ -17964,7 +18048,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "8588"
+          "value": "10350"
         }
       ]
     },
@@ -18752,7 +18836,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5db43ad8c2c0b6d4ad0a12c6dad5306d476af532427dfcfc3fa02603a4953d8c"
+          "content": "c271dfe96eeb931faf6b0578391e28f1fc46ce8dc80d39c4fcce660e91e482ce"
         }
       ],
       "properties": [
@@ -18762,7 +18846,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "4926"
+          "value": "5854"
         }
       ]
     },
@@ -19414,6 +19498,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3094"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/sha256.js",
+      "type": "file",
+      "name": "lib/sha256.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "81b8612d9dce5ced505131dabd578ba35b6ae3f4f0ad63bf3be88fad25b402fd"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4099"
         }
       ]
     },
@@ -21608,7 +21713,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "12aa14ddd295265e8aec7aa6aa61d2bc93aece8640f26c7ede5e394083f4b9b3"
+          "content": "b9d99e65bfa09d6c016e7db1a49c22bf748c6c73c84b9c1a62c4c4dc5319f53f"
         }
       ],
       "properties": [
@@ -21618,7 +21723,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "5896"
+          "value": "6297"
         }
       ]
     },
@@ -21629,7 +21734,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "97c698072398d3a87f18cd9f42f4821a7366cedac737456fe5b13a5517ad8a00"
+          "content": "4f497c5e33ca06d9d878a2a6506c132e2300f1fa5b5fc1d50e34186a41d5f36c"
         }
       ],
       "properties": [
@@ -21639,7 +21744,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "8639"
+          "value": "9458"
         }
       ]
     },
@@ -22589,6 +22694,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/x12-271-run.js",
+      "type": "file",
+      "name": "lib/x12-271-run.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "44802d7ed3e3c381dd2235be44eb86d9efb70b7efee34786e48db66b632ce6a7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3816"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/x12-271-v1515.js",
       "type": "file",
       "name": "lib/x12-271-v1515.js",
@@ -22616,7 +22742,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "cda5ff613cab12bdedf780845dd3f8b6b5ecc5d2ab1ee064f6273d55ac25cee1"
+          "content": "e7948d51fd2e30723dd3463a778cfa15a60e6224e587334afbc1d82ff70e8edf"
         }
       ],
       "properties": [
@@ -22626,7 +22752,28 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "4463"
+          "value": "1756"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/x12-277-run.js",
+      "type": "file",
+      "name": "lib/x12-277-run.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4c3ba9cfa448f932f38cf83d43b8e17162c470b1a7b8a76d062e85cc52866018"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3172"
         }
       ]
     },
@@ -22658,7 +22805,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "89c0d644d74ae36f7e8fe60b3ae4d57e8bf9fbfcfcd24339cd4b08aebefe219f"
+          "content": "cde12d054d030dd1cc0922a270c6b37a68f8c337d5389f25432b783bc39331cd"
         }
       ],
       "properties": [
@@ -22668,7 +22815,28 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "3830"
+          "value": "1740"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/x12-835-run.js",
+      "type": "file",
+      "name": "lib/x12-835-run.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ae10cf686cbd48e9b2f3775da727e1def75847dd8192e7600a554924eef488b4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3626"
         }
       ]
     },
@@ -22700,7 +22868,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c18ef704b97cbce2ffe483ab775bce2d21ccd59fa0170791a150da543577ee79"
+          "content": "021c5e91596993778d9e31c965b2bd0855125ffc4d0eb53969fac9a0b14190fb"
         }
       ],
       "properties": [
@@ -22710,7 +22878,28 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "4292"
+          "value": "1750"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/x12-837-run.js",
+      "type": "file",
+      "name": "lib/x12-837-run.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a3971650dd2ed99670e1819e56b55cc83520f1638af5625eca9ea07792eb3d10"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2646"
         }
       ]
     },
@@ -22742,7 +22931,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d10e6cdfc0b726e3fa6a00b7ecdcea61fe970ca513df0dba3d9f81e92e3b833a"
+          "content": "895e356929ed8db8275a8af7f58150594726af4f88c0781e0d2f1930b9f10425"
         }
       ],
       "properties": [
@@ -22752,7 +22941,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "3290"
+          "value": "1731"
         }
       ]
     },
@@ -43715,13 +43904,13 @@
       ]
     },
     {
-      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/server.js",
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/file-tools.js",
       "type": "file",
-      "name": "mcp/server.js",
+      "name": "mcp/file-tools.js",
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "54d0769126ef3fde8965a26b4a36c15964cd67018343660cae43983685c34df9"
+          "content": "67a2e63ddfb87a63b7e4dad9dde97c224c4d0bd6b9c0af28af7286b6921f1ee8"
         }
       ],
       "properties": [
@@ -43731,7 +43920,28 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2079"
+          "value": "8014"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/server.js",
+      "type": "file",
+      "name": "mcp/server.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6531d95a89218f599811c82c817e36abafd59b97a619927ae58a7f82157c4865"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2985"
         }
       ]
     },
@@ -43742,7 +43952,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "cbe496441303410ab5df464586f3817e3fd48f3280ca7b867e8b08d4c70f37f2"
+          "content": "674d9a22593f0f48e9b0190c5f902d541a67518d86ae4b770cc50d037813ea23"
         }
       ],
       "properties": [
@@ -43752,7 +43962,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "56520"
+          "value": "56954"
         }
       ]
     },
@@ -47270,7 +47480,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "fecd384fe622aa970306f674a95b12f396336c3f36934875105c155c5cac5055"
+          "content": "19f6b725782506da0b1a242baa3c8e33d73f244db506b17d29038007c0b275b9"
         }
       ],
       "properties": [
@@ -47280,7 +47490,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "31462"
+          "value": "31810"
         }
       ]
     },
@@ -47291,7 +47501,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "918914b974b1b0886a7ad07ae1d4cd0595ebc80baddb5823f45c539840ddeec1"
+          "content": "a915113c204cf0c8e4c6a4f92819d8d636d0f9f8c31823a7f3a82aec18ca2535"
         }
       ],
       "properties": [
@@ -47301,7 +47511,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "10724"
+          "value": "10809"
         }
       ]
     },
@@ -62663,7 +62873,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0ff5e07fd180bb735deffeedfd4d5639340b402678d50ae99b707a2dc25f6fdb"
+          "content": "504eb0c1acf8890ed1000feaefba3ef50548011355ce1b5f7762d4521f56f783"
         }
       ],
       "properties": [
@@ -62673,7 +62883,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "7986"
+          "value": "10447"
         }
       ]
     },
@@ -62684,7 +62894,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e9f227f8297beb859dbf3f1e33e5b305e247e1737b868d28420af637f48873d7"
+          "content": "12ec658a483677dce1dd57f392f0dd15155ece7d0e744691821688fdc40535e1"
         }
       ],
       "properties": [
@@ -62694,7 +62904,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "9117"
+          "value": "9322"
         }
       ]
     },
@@ -62720,13 +62930,13 @@
       ]
     },
     {
-      "bom-ref": "urn:sophiewell:file:source:views/rx-match-workbench.js",
+      "bom-ref": "urn:sophiewell:file:source:views/receipt.js",
       "type": "file",
-      "name": "views/rx-match-workbench.js",
+      "name": "views/receipt.js",
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c4390bb1f59a9cb89b8f9d94859f8dd2ccc1c66f0a1309bea5e79522bc4f8f47"
+          "content": "d6720c0745b06259c7cbf82b0e602d3c7dd7de6962e32f9e671be3158ee49d47"
         }
       ],
       "properties": [
@@ -62736,7 +62946,28 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "9241"
+          "value": "2588"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/rx-match-workbench.js",
+      "type": "file",
+      "name": "views/rx-match-workbench.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c663ee4af7544888cd5c3a6ceeda46978f2fcad04fe242971db7b5204dd334fb"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "9324"
         }
       ]
     },
@@ -62747,7 +62978,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "45f4a7b57595e413c0feebd1c941027ae03756aa1b1fb8966b22080548001203"
+          "content": "695a7b3b99cb376aa779d0211b9f9af850984e1d238abf445c226cf5275eeadd"
         }
       ],
       "properties": [
@@ -62757,7 +62988,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "8287"
+          "value": "8397"
         }
       ]
     },
@@ -78465,6 +78696,7 @@
         "urn:sophiewell:file:source:lib/broset-v866.js",
         "urn:sophiewell:file:source:lib/brouet-cryoglobulinemia-v468.js",
         "urn:sophiewell:file:source:lib/brue-v547.js",
+        "urn:sophiewell:file:source:lib/build-info.js",
         "urn:sophiewell:file:source:lib/c-rads-v371.js",
         "urn:sophiewell:file:source:lib/c2hest-v1434.js",
         "urn:sophiewell:file:source:lib/ca-5150-hold-timeline-v1389.js",
@@ -78775,6 +79007,7 @@
         "urn:sophiewell:file:source:lib/hospice-cap-v1514.js",
         "urn:sophiewell:file:source:lib/hospital-fap-v1508.js",
         "urn:sophiewell:file:source:lib/hpa-glaucoma-v801.js",
+        "urn:sophiewell:file:source:lib/hpt-run.js",
         "urn:sophiewell:file:source:lib/hpt-stream-v1515.js",
         "urn:sophiewell:file:source:lib/hpt-v1515.js",
         "urn:sophiewell:file:source:lib/hpt-worker.js",
@@ -79185,6 +79418,8 @@
         "urn:sophiewell:file:source:lib/rcc-prognosis-v266.js",
         "urn:sophiewell:file:source:lib/rcc-prognosis-v279.js",
         "urn:sophiewell:file:source:lib/rcvs2-v1436.js",
+        "urn:sophiewell:file:source:lib/receipt-worker.js",
+        "urn:sophiewell:file:source:lib/receipt.js",
         "urn:sophiewell:file:source:lib/reference-change-value-v920.js",
         "urn:sophiewell:file:source:lib/regan-morrey-v404.js",
         "urn:sophiewell:file:source:lib/region-footing-v1093.js",
@@ -79264,6 +79499,7 @@
         "urn:sophiewell:file:source:lib/seinsheimer-subtroch-v413.js",
         "urn:sophiewell:file:source:lib/severin-ddh-v491.js",
         "urn:sophiewell:file:source:lib/sfu-hydronephrosis-v477.js",
+        "urn:sophiewell:file:source:lib/sha256.js",
         "urn:sophiewell:file:source:lib/shaffer-angle-v363.js",
         "urn:sophiewell:file:source:lib/shanghai-brugada-v581.js",
         "urn:sophiewell:file:source:lib/sievers-bav-v396.js",
@@ -79415,12 +79651,16 @@
         "urn:sophiewell:file:source:lib/winquist-hansen-v381.js",
         "urn:sophiewell:file:source:lib/workflow-v4.js",
         "urn:sophiewell:file:source:lib/woundid-v248.js",
+        "urn:sophiewell:file:source:lib/x12-271-run.js",
         "urn:sophiewell:file:source:lib/x12-271-v1515.js",
         "urn:sophiewell:file:source:lib/x12-271-worker.js",
+        "urn:sophiewell:file:source:lib/x12-277-run.js",
         "urn:sophiewell:file:source:lib/x12-277-v1515.js",
         "urn:sophiewell:file:source:lib/x12-277-worker.js",
+        "urn:sophiewell:file:source:lib/x12-835-run.js",
         "urn:sophiewell:file:source:lib/x12-835-v1515.js",
         "urn:sophiewell:file:source:lib/x12-835-worker.js",
+        "urn:sophiewell:file:source:lib/x12-837-run.js",
         "urn:sophiewell:file:source:lib/x12-837-v1515.js",
         "urn:sophiewell:file:source:lib/x12-837-worker.js",
         "urn:sophiewell:file:source:lib/x12-envelope.js",
@@ -80335,6 +80575,7 @@
         "urn:sophiewell:file:source:views/home-files.js",
         "urn:sophiewell:file:source:views/intake.js",
         "urn:sophiewell:file:source:views/pa-lint.js",
+        "urn:sophiewell:file:source:views/receipt.js",
         "urn:sophiewell:file:source:views/rx-match-workbench.js",
         "urn:sophiewell:file:source:views/upload-workbench.js"
       ]
@@ -81331,6 +81572,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/zulewski-v608.js",
         "urn:sophiewell:file:mcp-source:mcp/catalog.js",
         "urn:sophiewell:file:mcp-source:mcp/fields.js",
+        "urn:sophiewell:file:mcp-source:mcp/file-tools.js",
         "urn:sophiewell:file:mcp-source:mcp/server.js",
         "urn:sophiewell:file:mcp-source:mcp/tools.js",
         "urn:sophiewell:npm:mcp/package-lock.json:node_modules/@hono/node-server",
@@ -81432,7 +81674,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "b67dad8eb2348a1c"
+      "value": "51c6b452defe0030"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -81444,7 +81686,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2966"
+      "value": "2977"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

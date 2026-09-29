@@ -59,7 +59,7 @@ M6 tools that need no dataset (`preventive-cost-share-check`, `ma-criteria-check
 | M1 | built September 29, 2026 ([build status](spec-v1622.md#build-status)) |
 | M2 | modules, `mpfs`, `drg`, `mue`, `nadac` and the workflow built September 29, 2026; `uspstf` and schema watches open ([build status](spec-v1621.md#build-status)) |
 | M3 | built September 29, 2026 ([build status](spec-v1623.md#build-status)) |
-| M4 | in progress: receipts and export footers built; checking a receipt and the MCP file tools open ([build status](spec-v1625.md#build-status)) |
+| M4 | built September 29, 2026 ([build status](spec-v1625.md#build-status)) |
 | M5 | not started |
 | M6 | not started |
 

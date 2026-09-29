@@ -22,7 +22,8 @@ the site.
 - **Deterministic.** Identical `{ id, inputs }` always returns a byte-identical
   result. No `Date.now()`, no `Math.random()`, no model calls, no hidden state.
 - **Stateless.** No filesystem writes, no persistence, no input logging, no
-  telemetry.
+  telemetry. The file tools read a file only inside a directory the client
+  shares, and return hashes and results, never the file.
 
 ## Install
 
@@ -80,7 +81,8 @@ any other MCP client — only the surrounding config file differs.
 ## Tools
 
 A fixed eight-tool surface with dynamic dispatch over the catalog (exposing one
-tool per calculator would flood the client's tool list). Every tool is
+tool per calculator would flood the client's tool list), plus two file tools
+(below). Every tool is
 annotated read-only, idempotent, and closed-world, and returns both a text block
 and typed `structuredContent`.
 
@@ -94,6 +96,19 @@ and typed `structuredContent`.
 | `compute_batch` | `{ calculations: [{ id, inputs }, ...] }` | Runs up to 25 calculators in one call for a workup. Results come back in request order, each the same shape as `compute_calculator`; one invalid element does not fail the others. No combined interpretation. |
 | `answer_query` | `{ query }` | One-shot answer: parses a sentence that already carries its values ("bmi 80kg 180cm", "wells score for PE, heart rate 110, previous DVT") and returns the computed value with its citation. Tries 21 verified templates first, then reads the field registry for the rest of the catalog — a registry answer is marked `via: "registry"`. When it cannot answer outright it still says what it worked out: `MISSING_INPUTS` carries the calculator plus the inputs it recovered and the ones it needs, `NO_VALUES` carries the calculator when the query named one, and `NO_MATCH` means nothing matched. |
 | `convert_units` | `{ kind, value, direction? }` | Deterministic lab + vitals unit conversion (mg/dL ↔ mmol/L, HbA1c % ↔ IFCC, mmHg ↔ kPa, degF ↔ degC, in ↔ cm, lb ↔ kg). `kind` is a lab analyte or a1c/pressure/temperature/length/weight. |
+
+### File tools
+
+A file is read on your machine, inside a directory the client shares, and never
+leaves it. The server reads only paths inside the client's MCP roots; when the
+client shares none, set `SOPHIEWELL_MCP_ROOTS` to one or more directories
+(separated like `PATH`). Anything else is refused with `OUTSIDE_ROOTS` (a
+symbolic link cannot lead out) or `NO_ROOTS`.
+
+| Tool | Input | Returns |
+|---|---|---|
+| `recognize_file` | `{ path }` | What the file is -- an 835, 837, 271 or 277 X12 file, a hospital or insurer price file, a FHIR or C-CDA record, a CSV a tool reads, a CMS reference table -- from its first 256 KB: `kind`, `label`, `confidence`, the `evidence` that decided it, and the `tools` that read it. The same recognizer the site uses. |
+| `analyze_file` | `{ path, tool? }` | Runs the tool that reads the file (or `tool`): the X12 readers and the price file check today. Returns the totals (or the price file's findings), the first 20 result rows, and a `receipt` -- each file's SHA-256 and kind, the tool and build, and the SHA-256 of the whole result -- plus `shareableReceipt`, with file names replaced. The receipt is the one the site gives for the same file, so a result checked here can be reproduced there. A tool that needs a column mapping (the CSV tools) returns `NOT_AVAILABLE` for now. |
 
 `inputs` are keyed exactly as `describe_calculator` reports them (and exactly as
 each calculator's documented example). Numbers may be sent as numbers or numeric
@@ -119,7 +134,8 @@ candidates or `NO_MATCH`. An id that is not a tile at all is still `UNKNOWN_ID`.
 English `message`, so you can branch without parsing prose: `UNKNOWN_TOOL`,
 `UNKNOWN_ID`, `BAD_ARGS`, `UNKNOWN_INPUT`, `MISSING_INPUT`, `INVALID_TYPE`,
 `INCOMPLETE`, `COMPUTE_ERROR`, `NO_MATCH`, `NO_VALUES`, `MISSING_INPUTS`,
-`AMBIGUOUS`, `NOT_EXPOSED`.
+`AMBIGUOUS`, `NOT_EXPOSED`, and from the file tools `NO_ROOTS`, `OUTSIDE_ROOTS`,
+`NOT_A_FILE`, `NO_TOOL`, `NOT_AVAILABLE`, `TOO_LARGE`, `UNREADABLE`.
 
 **`catalogVersion`** (`{ contentHash, tileCount, exposedCount, deterministic,
 cacheable }`) rides on the discovery tools. Because compute is deterministic, you

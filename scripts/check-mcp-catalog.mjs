@@ -235,20 +235,23 @@ async function main() {
     } else if (said[1] !== WORDS[TOOL_DEFS.length]) {
       errors.push(`mcp/README.md calls it a ${said[1]}-tool surface; mcp/tools.js ships ${TOOL_DEFS.length}`);
     }
+    // spec-v1625: the two file tools are served beside the eight (mcp/server.js).
+    const { FILE_TOOL_DEFS } = await import(new URL('../mcp/file-tools.js', import.meta.url).href);
+    const ALL_TOOLS = [...TOOL_DEFS, ...FILE_TOOL_DEFS];
     const rows = [...readme.matchAll(/^\| `([a-z_]+)` \|/gm)].map((m) => m[1]);
     const listed = new Set(rows);
-    for (const t of TOOL_DEFS) {
+    for (const t of ALL_TOOLS) {
       if (!listed.has(t.name)) errors.push(`mcp/README.md's tool table does not list ${t.name}`);
     }
     for (const r of rows) {
-      if (!TOOL_DEFS.some((t) => t.name === r)) errors.push(`mcp/README.md's tool table lists ${r}, which the server does not serve`);
+      if (!ALL_TOOLS.some((t) => t.name === r)) errors.push(`mcp/README.md's tool table lists ${r}, which the server does not serve`);
     }
     // The codes the server actually returns, read out of the server rather
     // than kept in a second list that can disagree with it. The README named
     // nine of the twelve; an agent branching on `code` never learned that
     // `AMBIGUOUS`, `MISSING_INPUTS` or `NO_VALUES` could come back.
     const served = new Set();
-    for (const f of ['tools.js', 'server.js', 'catalog.js', 'fields.js']) {
+    for (const f of ['tools.js', 'server.js', 'catalog.js', 'fields.js', 'file-tools.js']) {
       if (!(await exists(join('mcp', f)))) continue;
       const src = await readFile(join(ROOT, 'mcp', f), 'utf8');
       for (const m of src.matchAll(/code: '([A-Z_]{3,})'/g)) served.add(m[1]);

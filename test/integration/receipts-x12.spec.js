@@ -69,3 +69,16 @@ test('the 835 CSV export ends with its provenance row', async ({ page }) => {
   const csv = readFileSync(await dl.path(), 'utf8').trimEnd().split('\r\n');
   expect(csv.at(-1)).toMatch(/^# Made by sophiewell\.com x12-835-reader, build [^,]+, result [0-9a-f]{64}\. Files are named by SHA-256 in the receipt\.$/);
 });
+
+// spec-v1625 step 4 / spec-v1615 §3: the page and analyze_file give the same
+// receipt for the same file, apart from when each ran.
+test('the browser and analyze_file give identical receipts', async ({ page }) => {
+  const { analyzeFile } = await import('../../mcp/file-tools.js');
+  for (const [tool, fixture, inputId] of CASES) {
+    const browser = await runOnce(page, tool, fixture, inputId);
+    const mcp = await analyzeFile({ path: join(DIR, fixture), tool }, { roots: [DIR] });
+    const strip = (r) => ({ ...r, ranAt: null });
+    expect(strip(mcp.receipt)).toEqual(strip(browser.named));
+    expect(strip(mcp.shareableReceipt)).toEqual(strip(browser.share));
+  }
+});
