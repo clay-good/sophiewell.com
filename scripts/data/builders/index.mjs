@@ -10,5 +10,6 @@
 import mpfs from './mpfs.mjs';
 import drg from './drg.mjs';
 import mue from './mue.mjs';
+import nadac from './nadac.mjs';
 
-export const BUILDERS = [mpfs, drg, mue];
+export const BUILDERS = [mpfs, drg, mue, nadac];
