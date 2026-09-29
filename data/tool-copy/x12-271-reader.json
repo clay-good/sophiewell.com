@@ -1,0 +1,13 @@
+{
+  "whatThisIs": "Read an X12 271 eligibility response without sending it anywhere. The reader turns coverage, plan identifiers, benefit amounts, percentages, dates, service types and network status into a plain summary and a checkable table.",
+  "whenToUse": "Use this after receiving a 271 from a payer or clearinghouse and before quoting benefits. Raw codes remain beside project-authored labels so you can verify what the file actually says.",
+  "inputs": "One X12 271 005010X279A1 text file, or a response pasted into the page, up to 50 MB. The response remains in the browser tab.",
+  "output": "A coverage and benefit summary, every EB benefit line with its raw codes and dates, response error counts, and full or redacted CSV downloads. Redacted downloads mask names and member IDs.",
+  "example": {
+    "rows": [
+      ["Coverage", "Active, individual, in network"],
+      ["Deductible", "$1,500.00 calendar year; $1,112.40 remaining"]
+    ],
+    "result": "1 active person reported across 3 benefit lines."
+  }
+}

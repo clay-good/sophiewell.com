@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- An X12 271 eligibility-response reader for local files or pasted responses. It
+  summarizes active and inactive coverage, plan identifiers, benefit amounts,
+  percentages, dates, service types and network status, with raw codes beside
+  project-authored labels and full or patient-redacted CSV downloads.
+
 - An X12 837 claim-file checker for professional and institutional files. It
   validates envelope controls, claim-to-line charge totals, NPI check digits,
   ICD-10-CM structure, Medicare identifier format and service/admission dates,

@@ -133,10 +133,10 @@ original content, MIT-licensed.
 
 `data/tool-copy/` carries the hand-authored lede + intro markdown
 <!-- catalog-truth:historical -->
-for the 132 tiles that have bespoke pre-rendered copy on their
+for the 133 tiles that have bespoke pre-rendered copy on their
 `/tools/<id>/` page (see `scripts/build-tool-pages.mjs`, which
 reports this as "N with hand-authored copy"). Each file is
-project-author original content. The "132" here is the count of
+project-author original content. The "133" here is the count of
 tiles whose id matches a `data/tool-copy/<id>.json` and therefore
 renders that copy — not the catalog total, which is why the line
 carries the escape that exempts it from the blunt catalog-count

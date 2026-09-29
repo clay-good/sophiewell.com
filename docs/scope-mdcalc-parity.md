@@ -240,3 +240,5 @@ experience**.
 > v1516, remittance analysis — [spec-v1516](spec-v1516.md), which adds `denial-pattern-report` and `underpayment-check` — is 1945.)
 
 > v1515, claim files — [spec-v1515](spec-v1515.md), which adds `x12-837-check` — is 1946.)
+
+> v1515, eligibility files — [spec-v1515](spec-v1515.md), which adds `x12-271-reader` — is 1947.)

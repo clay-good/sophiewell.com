@@ -43,6 +43,7 @@ Reasons are a fixed vocabulary:
 - `340b-rx-match` - bespoke-shape
 - `x12-835-reader` - wrong-input-modality
 - `x12-837-check` - wrong-input-modality
+- `x12-271-reader` - wrong-input-modality
 - `denial-pattern-report` - wrong-input-modality
 - `underpayment-check` - wrong-input-modality
 - `ews-escalation` - time-dependent

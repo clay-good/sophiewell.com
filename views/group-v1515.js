@@ -5,6 +5,7 @@ import { resultRow } from '../lib/result-copy.js';
 
 const workerUrl = new URL('../lib/x12-835-worker.js', import.meta.url);
 const claimWorkerUrl = new URL('../lib/x12-837-worker.js', import.meta.url);
+const eligibilityWorkerUrl = new URL('../lib/x12-271-worker.js', import.meta.url);
 const analysisWorkerUrl = new URL('../lib/remittance-analysis-worker.js', import.meta.url);
 
 function table(root, caption, headers, rows) {
@@ -215,4 +216,49 @@ function check837(root) {
   });
 }
 
-export const renderers = { 'x12-835-reader': reader835, 'x12-837-check': check837, 'denial-pattern-report': denialPattern, 'underpayment-check': underpayment };
+function reader271(root) {
+  root.appendChild(el('p', { class: 'notice', text: 'Reads X12 271 eligibility responses locally and shows coverage, plan identifiers, benefit amounts, percentages, dates and network status with their raw codes.' }));
+  root.appendChild(el('p', { class: 'muted', text: 'Choose a 271 text file or paste one below. The response stays in this tab. Labels are plain project wording; raw codes remain beside them for verification.' }));
+  const input = el('input', { id: 'x271-file', type: 'file', accept: '.271,.txt,text/plain,application/octet-stream' });
+  const paste = el('textarea', { id: 'x271-paste', rows: 8, spellcheck: 'false', placeholder: 'ISA*00*...~' });
+  const readPaste = el('button', { type: 'button', text: 'Read pasted response' });
+  const status = el('p', { id: 'x271-status', class: 'muted', role: 'status', 'aria-live': 'polite' });
+  const results = el('div', { id: 'q-results', 'aria-live': 'polite' });
+  root.appendChild(el('label', { for: 'x271-file', text: 'Choose eligibility response' })); root.appendChild(input);
+  root.appendChild(el('label', { for: 'x271-paste', text: 'Or paste an eligibility response' })); root.appendChild(paste); root.appendChild(readPaste); root.appendChild(status); root.appendChild(results);
+  let worker = null;
+  const run = (payload) => {
+    if (worker) worker.terminate(); clear(results); status.textContent = 'Reading the eligibility response locally...';
+    worker = new window.Worker(eligibilityWorkerUrl, { type: 'module' });
+    worker.addEventListener('error', () => { status.textContent = 'The eligibility response could not be read.'; });
+    worker.addEventListener('message', (event) => {
+      const message = event.data || {};
+      if (message.type === 'error') { status.textContent = message.message; return; }
+      if (message.type === 'download') { downloadMessage(worker, message); return; }
+      if (message.type !== 'parsed') return;
+      const value = message.totals; status.textContent = `${value.files.toLocaleString('en-US')} ${value.files === 1 ? 'response' : 'responses'} read.`;
+      resultRow(results, [{ text: `${value.active.toLocaleString('en-US')} active and ${value.inactive.toLocaleString('en-US')} inactive people reported across ${value.benefits.toLocaleString('en-US')} benefit lines.`, cls: value.errors ? 'warn' : null }, { label: 'Response errors', value: value.errors.toLocaleString('en-US') }]);
+      if (message.summaries.length) {
+        results.appendChild(el('h3', { text: 'Plain summary' })); const list = el('ul');
+        message.summaries.forEach((item) => list.appendChild(el('li', { text: value.people > 1 ? `${item.person}: ${item.text}` : item.text }))); results.appendChild(list);
+      }
+      const shown = message.preview.rows.length; results.appendChild(el('p', { class: 'muted', text: message.preview.total > shown ? `Showing the first ${shown} of ${message.preview.total} benefit lines.` : `Showing all ${shown} benefit lines.` }));
+      table(results, 'Eligibility benefit lines', message.preview.headers, message.preview.rows); downloads(results, worker);
+      results.appendChild(el('p', { class: 'muted', text: 'Raw X12 code values are shown without X12 code-list descriptions. Confirm benefits with the payer before relying on them.' }));
+    });
+    worker.postMessage({ type: 'parse', files: payload }, payload.map((file) => file.buffer));
+  };
+  input.addEventListener('change', async () => {
+    const file = input.files && input.files[0]; if (!file) return;
+    if (file.size > MAX_FILE_BYTES) { status.textContent = 'The response exceeds the 50 MB limit.'; return; }
+    run([{ name: file.name, buffer: await file.arrayBuffer() }]);
+  });
+  readPaste.addEventListener('click', () => {
+    const text = paste.value.trim(); if (!text) { status.textContent = 'Paste a 271 response first.'; return; }
+    const buffer = new TextEncoder().encode(text).buffer;
+    if (buffer.byteLength > MAX_FILE_BYTES) { status.textContent = 'The pasted response exceeds the 50 MB limit.'; return; }
+    run([{ name: 'pasted-eligibility.271', buffer }]);
+  });
+}
+
+export const renderers = { 'x12-835-reader': reader835, 'x12-837-check': check837, 'x12-271-reader': reader271, 'denial-pattern-report': denialPattern, 'underpayment-check': underpayment };

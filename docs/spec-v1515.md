@@ -136,5 +136,10 @@ a route A dataset pinned to a published version.
   charge totals, NPI check digits, ICD-10-CM structure, Medicare identifier format,
   future service dates and admission-before-discharge order. Findings name the claim,
   check and segment position; exports are available with patient identifiers redacted.
-- **Not yet built:** `x12-271-reader`, `x12-277-reader`,
+- **Built 2026-09-28:** `x12-271-reader` accepts a local file or pasted
+  005010X279A1 response. It reports active and inactive coverage, plan and group
+  identifiers, benefit amounts or percentages, dates, service types and network
+  status. The plain summary and benefit table retain raw codes beside project-authored
+  labels; full and patient-redacted CSV downloads include every benefit line.
+- **Not yet built:** `x12-277-reader`,
   `hpt-file-check`, `hpt-price-compare` and `pas-bundle-check`.

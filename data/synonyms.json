@@ -10262,6 +10262,17 @@
     },
     {
       "phrases": [
+        "271 reader",
+        "eligibility response reader",
+        "x12 eligibility response",
+        "benefit response file",
+        "read eligibility file"
+      ],
+      "tile": "x12-271-reader",
+      "audience": "billers"
+    },
+    {
+      "phrases": [
         "denial pattern report",
         "denial trends",
         "carc adjustment report",
