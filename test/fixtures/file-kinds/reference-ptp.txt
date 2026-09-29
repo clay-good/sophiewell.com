@@ -1,0 +1,8 @@
+CPT only copyright American Medical Association.
+
+
+
+
+
+Column 1	Column 2	*=in existence prior to 1996	Effective Date	Deletion Date *=no data	Modifier 0=not allowed 1=allowed 9=not applicable	PTP Edit Rationale
+99213	36415		20260101	*	1	Standards of medical / surgical practice

@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:5bcf9093-078a-5652-8b4e-53f54186955d",
+  "serialNumber": "urn:uuid:3e4adfd0-cc27-56cb-8385-44b15c45fafb",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-29T19:39:42.619Z",
+    "timestamp": "2026-09-29T19:56:44.160Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -6818,6 +6818,48 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/file-head.js",
+      "type": "file",
+      "name": "lib/file-head.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e46fe9833ecc5f46c47141750e041f5e98a0342faaadda5f3bdee52fe3224bea"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "388"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/file-kinds.js",
+      "type": "file",
+      "name": "lib/file-kinds.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fdae6bf21c8551b1a74158938b4a52cd7ea6b9163cc84ac3461a5db2d7bcdb57"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "28309"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/fisher-grade-v600.js",
       "type": "file",
       "name": "lib/fisher-grade-v600.js",
@@ -10111,6 +10153,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "8720"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/json-head.js",
+      "type": "file",
+      "name": "lib/json-head.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6ad864eab10e66cb8dfda07de590eeaaf0b704782606aab573c3f48fb46a8f78"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5123"
         }
       ]
     },
@@ -21455,6 +21518,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/upload-fields.js",
+      "type": "file",
+      "name": "lib/upload-fields.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "77035c2548c65f4b11f38ecc11a779f57d4e4e4487510b7bc107f1620efdae93"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5582"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/upload-intake.js",
       "type": "file",
       "name": "lib/upload-intake.js",
@@ -22610,6 +22694,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/x12-envelope.js",
+      "type": "file",
+      "name": "lib/x12-envelope.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3a26dee09254eb50d3c5c7c2829d16433583b3ce45ebaad1f1bed2c780ea8270"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2391"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/yamaguchi-v642.js",
       "type": "file",
       "name": "lib/yamaguchi-v642.js",
@@ -22732,6 +22837,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4163"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/zip-reader.js",
+      "type": "file",
+      "name": "lib/zip-reader.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3f16236087dc9ebcad4a9886b46a1c0079ceaf6ea63e2ad999345df81e4133e7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4135"
         }
       ]
     },
@@ -46934,7 +47060,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d552749066fadefe718359b5e0e7f0daa3563c4ee7eaa5d946025824599cec52"
+          "content": "987e2fc31396ca2eaacfb1fc845ead38c542bd7a0d623acc3e1d4e031e0889fb"
         }
       ],
       "properties": [
@@ -46944,7 +47070,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "9698"
+          "value": "9012"
         }
       ]
     },
@@ -47039,7 +47165,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "38f0ac8eb773f4dfd863416cf2742c34673d85d924c5e8db523d6b3f92868754"
+          "content": "f74f039c9e8c6d0ec48eaa8c2a345ad603dfc857d100b320c786377fff7b7c0d"
         }
       ],
       "properties": [
@@ -47049,7 +47175,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "9779"
+          "value": "8604"
         }
       ]
     },
@@ -47102,7 +47228,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0dbcb207c96b01db24e94f4657ed8a36b3286aed115f6487ddb68a86bb4d6169"
+          "content": "7ebfc2070d44b4a9c3c038f685566d35a836d9931d52e2ef79cb8ea526ac0a64"
         }
       ],
       "properties": [
@@ -47112,7 +47238,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "10905"
+          "value": "10396"
         }
       ]
     },
@@ -62495,7 +62621,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "72cc864ab65e24a657813c2596a87d60ca9ee2f083f12b72ae03fb9db6ca681a"
+          "content": "c4390bb1f59a9cb89b8f9d94859f8dd2ccc1c66f0a1309bea5e79522bc4f8f47"
         }
       ],
       "properties": [
@@ -62505,7 +62631,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "10898"
+          "value": "9241"
         }
       ]
     },
@@ -78433,6 +78559,8 @@
         "urn:sophiewell:file:source:lib/field.js",
         "urn:sophiewell:file:source:lib/fielding-hawkins-v449.js",
         "urn:sophiewell:file:source:lib/figo-pas-v833.js",
+        "urn:sophiewell:file:source:lib/file-head.js",
+        "urn:sophiewell:file:source:lib/file-kinds.js",
         "urn:sophiewell:file:source:lib/fisher-grade-v600.js",
         "urn:sophiewell:file:source:lib/fitzpatrick-v331.js",
         "urn:sophiewell:file:source:lib/fluidresp-v113.js",
@@ -78590,6 +78718,7 @@
         "urn:sophiewell:file:source:lib/jnet-v336.js",
         "urn:sophiewell:file:source:lib/johnson-strom-flatfoot-v1421.js",
         "urn:sophiewell:file:source:lib/jones-v315.js",
+        "urn:sophiewell:file:source:lib/json-head.js",
         "urn:sophiewell:file:source:lib/jta-thyroid-storm-v598.js",
         "urn:sophiewell:file:source:lib/just-culture-v919.js",
         "urn:sophiewell:file:source:lib/k6-v735.js",
@@ -79130,6 +79259,7 @@
         "urn:sophiewell:file:source:lib/ukeld-v1438.js",
         "urn:sophiewell:file:source:lib/unit-convert.js",
         "urn:sophiewell:file:source:lib/up-to-seven-v586.js",
+        "urn:sophiewell:file:source:lib/upload-fields.js",
         "urn:sophiewell:file:source:lib/upload-intake.js",
         "urn:sophiewell:file:source:lib/upload-worker.js",
         "urn:sophiewell:file:source:lib/uro-v130.js",
@@ -79185,12 +79315,14 @@
         "urn:sophiewell:file:source:lib/x12-835-worker.js",
         "urn:sophiewell:file:source:lib/x12-837-v1515.js",
         "urn:sophiewell:file:source:lib/x12-837-worker.js",
+        "urn:sophiewell:file:source:lib/x12-envelope.js",
         "urn:sophiewell:file:source:lib/yamaguchi-v642.js",
         "urn:sophiewell:file:source:lib/yerdel-pvt-v472.js",
         "urn:sophiewell:file:source:lib/ymrs-v514.js",
         "urn:sophiewell:file:source:lib/young-burgess-v380.js",
         "urn:sophiewell:file:source:lib/zabramski-v442.js",
         "urn:sophiewell:file:source:lib/zargar-caustic-v401.js",
+        "urn:sophiewell:file:source:lib/zip-reader.js",
         "urn:sophiewell:file:source:lib/zulewski-v608.js",
         "urn:sophiewell:file:source:vendored/README.md",
         "urn:sophiewell:file:source:vendored/mammoth/LICENSE",
@@ -81190,7 +81322,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "5bcf9093078a1652"
+      "value": "3e4adfd0cc27b6cb"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -81202,7 +81334,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2955"
+      "value": "2961"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

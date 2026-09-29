@@ -5,16 +5,9 @@ import * as E3 from '../lib/entity-340b-v1509.js';
 import { resultRow } from '../lib/result-copy.js';
 import { uploadWorkbench } from './upload-workbench.js';
 import { rxMatchWorkbench } from './rx-match-workbench.js';
+import { PATIENT_CHECK_FIELDS } from '../lib/upload-fields.js';
 
 const NA = { value: '', text: '— choose —' };
-const PATIENT_CHECK_FIELDS = [
-  { id: 'patient_reference', label: 'Patient reference', required: true, sensitive: true, synonyms: ['patient', 'patient id', 'member', 'member id'] },
-  { id: 'entity', label: 'Covered entity kind', required: true, synonyms: ['entity kind', 'entity type'] },
-  { id: 'records', label: 'Entity keeps records', required: true, synonyms: ['keeps records', 'health records'] },
-  { id: 'provider', label: 'Eligible provider arrangement', required: true, synonyms: ['provider arrangement', 'eligible prescriber'] },
-  { id: 'scope', label: 'Within grant scope', synonyms: ['grant scope', 'in scope'] },
-  { id: 'dispensingOnly', label: 'Dispensing only', required: true, synonyms: ['dispensing only', 'only service'] },
-];
 function selectField(root, label, id, options) {
   const wrap = el('p');
   wrap.appendChild(el('label', { for: id, text: label }));

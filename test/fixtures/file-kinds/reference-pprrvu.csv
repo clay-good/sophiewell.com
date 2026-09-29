@@ -1,0 +1,4 @@
+,,2026 National Physician Fee Schedule Relative Value File October Release,,,
+,,,STATUS,MEDICARE,WORK
+HCPCS,MOD,DESCRIPTION,CODE,PAYMENT,RVU
+99213,,,A,,1.30

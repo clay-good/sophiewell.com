@@ -5,16 +5,10 @@ import * as DN from '../lib/denial-next-step-v1516.js';
 import { resultRow } from '../lib/result-copy.js';
 import { MAX_FILE_BYTES } from '../lib/upload-intake.js';
 import { uploadWorkbench } from './upload-workbench.js';
+import { APPEAL_FIELDS } from '../lib/upload-fields.js';
 
 const NA = { value: '', text: '— choose —' };
 const analysisWorkerUrl = new URL('../lib/remittance-analysis-worker.js', import.meta.url);
-const APPEAL_FIELDS = [
-  { id: 'reference', label: 'Claim reference', required: true, sensitive: true, synonyms: ['claim reference', 'claim id', 'patient account'] },
-  { id: 'payer', label: 'Payer type', required: true, synonyms: ['payer'] },
-  { id: 'denial_date', label: 'Denial date', required: true, synonyms: ['remittance date', 'denial date'] },
-  { id: 'amount', label: 'Amount', required: true, synonyms: ['denied amount', 'adjusted amount'] },
-  { id: 'window_days', label: 'Window days', required: false, synonyms: ['appeal window', 'appeal days'] },
-];
 function selectField(root, label, id, options) {
   const wrap = el('p');
   wrap.appendChild(el('label', { for: id, text: label }));

@@ -70,6 +70,7 @@ export default [
         Request: "readonly",
         Response: "readonly",
         ReadableStream: "readonly",
+        DecompressionStream: "readonly",
         // service worker
         self: "readonly",
         caches: "readonly",

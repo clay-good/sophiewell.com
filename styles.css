@@ -1197,6 +1197,10 @@ main h1 {
   border-radius: var(--radius);
   background: var(--bg-tertiary);
 }
+.intake-drop { border: 2px dashed var(--border); border-radius: var(--radius, 6px); padding: var(--space-3); margin: var(--space-3) 0; }
+.intake-drop.drop-active { border-color: var(--accent-pop-strong); }
+.intake-drop label { display: block; font-weight: 700; margin-top: var(--space-2); }
+.intake-path { overflow-wrap: anywhere; }
 .upload-workbench h2 { margin: 0 0 var(--space-1); font-size: 1rem; }
 .upload-workbench p { margin: var(--space-1) 0 var(--space-2); }
 .upload-workbench input[type='file'] { display: block; width: 100%; margin-top: var(--space-1); }

@@ -138,6 +138,7 @@ When one fails it names itself; this is where to look it up.
 | `check-test-tile-ids.mjs` | a test naming a tile id that no longer exists |
 | `check-commitments.mjs` | a change that breaks one of the eight public commitments |
 | `check-mcp-catalog.mjs` | a calculator agents cannot reach, and no waiver for it |
+| `check-file-kinds.mjs` | a file input no tool in the file-kind registry claims, a registry tool marked live that is not built (or planned that is), and a file kind with no sample or no test recognizing it |
 | `check-pa-staleness.mjs` | a prior-auth source unverified past its window |
 | `check-pa-rule-citations.mjs` | a rule citing a URL the staleness ledger does not carry |
 | `audit-pa.mjs` | a change to prior-auth output that the golden reports did not expect |

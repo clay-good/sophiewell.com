@@ -138,3 +138,13 @@ workbook), `unknown.json`, `csv-named.835` (CSV content, `.835` name), `nested.z
 
 The X12 fixtures reuse the synthetic files the existing v1515 tests already use where they
 exist.
+
+## Build status
+
+| Step | Status | Differs from the spec |
+|---|---|---|
+| 1 Recognition core | **Built September 29, 2026.** `lib/file-kinds.js` (38 kinds, `recognize`, `recognizeArchive`, `unknownMessage`, `LIMITS`), `lib/x12-envelope.js`, `lib/json-head.js`, `lib/zip-reader.js` (zip, gzip, bomb and size refusals), `lib/file-head.js`; 39 synthetic fixtures; `scripts/check-file-kinds.mjs` in `npm run lint` with the first three rules. | The CSV tools' fields moved from the views into one pure module, `lib/upload-fields.js` (`CSV_TOOLS`), which the views import, instead of each view exporting `uploadFields`: the worker and MCP can then read them without importing a view. The 340B matcher joins `CSV_TOOLS` through its prescriptions file. `sha256(file)` moves to M4 ([spec-v1625](spec-v1625.md)): `crypto.subtle` cannot hash in chunks, so it needs an incremental implementation, and receipts are its first user. A head that is not UTF-8 but is almost all printable is read as Windows-1252 (CMS ships its CSVs that way) and says so. The clinical kinds route to the records panel of [spec-v1624](spec-v1624.md), marked `planned` and `route: true`. |
+| 2 Worker and inventory | **Built September 29, 2026.** `lib/intake.js` (`inventory`: folders, nested zips and gzip unpacked, system files skipped and counted, limits and zip bombs refused with a reason), `lib/intake-worker.js`, `views/intake.js` at `#/intake` (file and folder inputs, folder drop through `webkitGetAsEntry`). | The inventory logic is a module of its own so it is tested in Node (`test/unit/intake.test.js`) as well as in the page (`test/integration/intake.spec.js`, three engines, no off-origin request). |
+| 3 `acceptFiles` hand-off | Open | |
+| 4 The home page | Open | |
+| 5 Excel, unknown, reference kinds | Messages and reference recognition built in step 1; routing open | |

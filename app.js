@@ -889,6 +889,7 @@ import { renderers as RB } from './views/group-b.js';
 import { renderers as RPALINT } from './views/pa-lint.js';
 import { META } from './lib/meta.js';
 import { fetchJson, datasetStatus, stampDetail } from './lib/data.js';
+import { renderIntake } from './views/intake.js';
 import { copyButton } from './lib/clipboard.js';
 import { installKeyboard } from './lib/keyboard.js';
 import { parseHash, patchHash, buildHash } from './lib/hash.js';
@@ -5771,6 +5772,16 @@ let currentRouteId = null;
 function route() {
   const parsed = parseHash(window.location.hash);
   const id = parsed.route;
+  // spec-v1623: #/intake is the inventory of files the reader chose or dropped.
+  if (!id && parsed.sub === 'intake') {
+    const main = getMain();
+    if (main && currentRouteId !== '/intake') {
+      currentRouteId = '/intake';
+      renderIntake(main, { toolName: (tid) => (UTIL_BY_ID.get(tid) || { name: tid }).name });
+      document.title = 'Your files · Sophie Well';
+    }
+    return;
+  }
   if (!id) {
     currentRouteId = null;
     restoreHome();

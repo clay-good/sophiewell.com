@@ -1,0 +1,17 @@
+{
+  "resourceType": "Observation",
+  "id": "o1",
+  "status": "final",
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "2160-0"
+      }
+    ]
+  },
+  "valueQuantity": {
+    "value": 1.1,
+    "unit": "mg/dL"
+  }
+}

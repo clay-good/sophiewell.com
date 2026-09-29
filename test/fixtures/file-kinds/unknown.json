@@ -1,0 +1,10 @@
+{
+  "widgets": [
+    1,
+    2
+  ],
+  "color": "blue",
+  "nested": {
+    "a": 1
+  }
+}

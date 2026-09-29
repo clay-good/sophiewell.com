@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `5bcf9093078a1652`
-Generated: 2026-09-29T19:39:42.619Z
+Build ID: `3e4adfd0cc27b6cb`
+Generated: 2026-09-29T19:56:44.160Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -357,6 +357,8 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/field.js` | 13513 | `cbe15d4b105da144ed2c465e525fb1a49a626b50df7fc402f80830fa8efa0996` |
 | `lib/fielding-hawkins-v449.js` | 3661 | `5c5a27ddb8773fee2d37bfbcf114a7d46feb891e7b43689c81a56221a05cb5a9` |
 | `lib/figo-pas-v833.js` | 7409 | `2680f161b34ab92db39cf745ff07fd99d1e160fb926b8f118a98a1f0bb0a6059` |
+| `lib/file-head.js` | 388 | `e46fe9833ecc5f46c47141750e041f5e98a0342faaadda5f3bdee52fe3224bea` |
+| `lib/file-kinds.js` | 28309 | `fdae6bf21c8551b1a74158938b4a52cd7ea6b9163cc84ac3461a5db2d7bcdb57` |
 | `lib/fisher-grade-v600.js` | 10299 | `e9155f9fdefe95d66f6fa2ec622a908cb15ddc858a3dd1d3275d4384cff93a44` |
 | `lib/fitzpatrick-v331.js` | 3746 | `aa2e8153f5e4f4821db4aeffe966810bc8068f00d0bd77789b723f8c613691b1` |
 | `lib/fluidresp-v113.js` | 8862 | `b6a605fd55a8d672d87aeb73818cd415ccd9530f683a28b93cb899bdfc21e4cd` |
@@ -514,6 +516,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/jnet-v336.js` | 4614 | `367fba74608bdc656ea1a37baa690c87f325d19942168360f1201a754d82fad4` |
 | `lib/johnson-strom-flatfoot-v1421.js` | 6922 | `c3c974cbe48a409ff336abe3e0451a1b1aa7068476841c708c3f28c1d137d4df` |
 | `lib/jones-v315.js` | 8720 | `5e0e8f4a965c76f115a5f6a384b783f97491f094bb1e8bf137c88e407f8bba59` |
+| `lib/json-head.js` | 5123 | `6ad864eab10e66cb8dfda07de590eeaaf0b704782606aab573c3f48fb46a8f78` |
 | `lib/jta-thyroid-storm-v598.js` | 14051 | `8f6959ef88be9b2659bf425a4fc2c15b3954df437436903e9cb5168ecf6fd429` |
 | `lib/just-culture-v919.js` | 8189 | `89eefe58560fa67d08bc85ce4b16faca75539add242174ffb422465532002263` |
 | `lib/k6-v735.js` | 2836 | `3fa2ac4a54058b1dd4e36c93f001bc8e04766fa78b042d4ea6ec3a399770cd31` |
@@ -1054,6 +1057,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/ukeld-v1438.js` | 4228 | `0f12281e006ee5e16de40b7938b7f956498c45f422860dd4a1c6e4c43a3f8714` |
 | `lib/unit-convert.js` | 2601 | `642818802952c2c5e87338bc035dcd9d5ff07dec1e8b97a31ca09b0be38c14d2` |
 | `lib/up-to-seven-v586.js` | 11393 | `4a379fbb63e617cb741a5369394d693751912101492558fdda03ca9c478ff06b` |
+| `lib/upload-fields.js` | 5582 | `77035c2548c65f4b11f38ecc11a779f57d4e4e4487510b7bc107f1620efdae93` |
 | `lib/upload-intake.js` | 5896 | `12aa14ddd295265e8aec7aa6aa61d2bc93aece8640f26c7ede5e394083f4b9b3` |
 | `lib/upload-worker.js` | 8639 | `97c698072398d3a87f18cd9f42f4821a7366cedac737456fe5b13a5517ad8a00` |
 | `lib/uro-v130.js` | 12895 | `370c7f4f91e8adeff37012c9d024e2bab403330eaffeecee756d06a61fb30c21` |
@@ -1109,12 +1113,14 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/x12-835-worker.js` | 4292 | `c18ef704b97cbce2ffe483ab775bce2d21ccd59fa0170791a150da543577ee79` |
 | `lib/x12-837-v1515.js` | 12281 | `0ca100a34d8ad50a522d699f852af2954f4ef75566b14a1587813d655e58c358` |
 | `lib/x12-837-worker.js` | 3290 | `d10e6cdfc0b726e3fa6a00b7ecdcea61fe970ca513df0dba3d9f81e92e3b833a` |
+| `lib/x12-envelope.js` | 2391 | `3a26dee09254eb50d3c5c7c2829d16433583b3ce45ebaad1f1bed2c780ea8270` |
 | `lib/yamaguchi-v642.js` | 4584 | `33de97684b3a5c986e3805b1d01f7cd51fa3e87d4bc308e6d18385ca6db34205` |
 | `lib/yerdel-pvt-v472.js` | 3428 | `ce8f770be445a23840693ea3f37b9c4662513b342aa4e385e5ec22c18f6f1278` |
 | `lib/ymrs-v514.js` | 4492 | `822eefe30510c038f0795e27545f27dab0f45108ee308604f0748ac94f3c8aef` |
 | `lib/young-burgess-v380.js` | 5591 | `f25b02022a4a7efc3a56fdd970428ef04c1923c36174d8c909a092261eb6a794` |
 | `lib/zabramski-v442.js` | 3415 | `e6d4e34b1ef199e4f8478df095ead5462aaf5f6382f28d5d60afcd3191204860` |
 | `lib/zargar-caustic-v401.js` | 4163 | `74e90fca997b2ddaf575bb6cb161b293783c29d440199ee6f646892904b144d0` |
+| `lib/zip-reader.js` | 4135 | `3f16236087dc9ebcad4a9886b46a1c0079ceaf6ea63e2ad999345df81e4133e7` |
 | `lib/zulewski-v608.js` | 9691 | `6e85b895fc47b3f4ca84c4d7264fd769d035dbdebe0cbb80583f8b22e3d98f16` |
 | `mcp/adapters/aast-cholecystitis-v1240.js` | 1501 | `d440e2476799395ab1ff59f624a2d1b488bfb0c0e4f3bcf4b2f7958d6df2ed8b` |
 | `mcp/adapters/aat-deficiency-v830.js` | 1816 | `f84d0e955ae90be05a62e1dfaaf48f12d319a255ccd7d8b656dc3d7db243657f` |
@@ -2267,15 +2273,15 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1506.js` | 11140 | `361d98ae810829a8c8b20b734e9bcd45ca3a84151eec8d41232ec3e11ea110ca` |
 | `views/group-v1507.js` | 13724 | `9164dcd5553ed2bf3173660028c504428a8bf17f44fc60e11e0833dabb653a50` |
 | `views/group-v1508.js` | 8229 | `9dd50e090ced34ec13dec250b12b0b4e750489d265a355e984fa3b6ee62259fe` |
-| `views/group-v1509.js` | 9698 | `d552749066fadefe718359b5e0e7f0daa3563c4ee7eaa5d946025824599cec52` |
+| `views/group-v1509.js` | 9012 | `987e2fc31396ca2eaacfb1fc845ead38c542bd7a0d623acc3e1d4e031e0889fb` |
 | `views/group-v151.js` | 13359 | `0f5eff3a293106878f3c19634996260b9ed65f358fb54c277941ddb9ef93784e` |
 | `views/group-v1510.js` | 9536 | `bcbb02fa65ac6bd60a1eb0b9714fe73d76eaa7085e3cccdf59fe2d6ceb8d235a` |
 | `views/group-v1511.js` | 12916 | `93b0462d58e5904d62e34a3d32ff05a6f8d4a8a68ddf8a6160d8c64cb40d7750` |
 | `views/group-v1512.js` | 6483 | `44fb6cba5ad120e902988f5e11e43d602a688ea563821ff5209471201a671e67` |
-| `views/group-v1513.js` | 9779 | `38f0ac8eb773f4dfd863416cf2742c34673d85d924c5e8db523d6b3f92868754` |
+| `views/group-v1513.js` | 8604 | `f74f039c9e8c6d0ec48eaa8c2a345ad603dfc857d100b320c786377fff7b7c0d` |
 | `views/group-v1514.js` | 11361 | `b728bf9f4e4314627d921000346a86a3fc5db92716dc2cf5855e2c7a0b8cd6b9` |
 | `views/group-v1515.js` | 30882 | `f49b6f934f57db3ef52472b3b9d4f4bd673a9694a0fa396e1ba003b52d955124` |
-| `views/group-v1516.js` | 10905 | `0dbcb207c96b01db24e94f4657ed8a36b3286aed115f6487ddb68a86bb4d6169` |
+| `views/group-v1516.js` | 10396 | `7ebfc2070d44b4a9c3c038f685566d35a836d9931d52e2ef79cb8ea526ac0a64` |
 | `views/group-v152.js` | 12369 | `dc29da131fcaf14f2a95a9e658fa3df1cc7b1d768b7b12b308267c97de3ede1e` |
 | `views/group-v153.js` | 11280 | `ffceef435372350d3a3f391724e3232537e6919c980ba7c4b8e8b7bab2186ee9` |
 | `views/group-v154.js` | 11434 | `4bb47056aa326ce6597e15e6dacfa281adf4230d42df78761125cafac4e8b073` |
@@ -3008,7 +3014,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v958.js` | 2985 | `7130419cb508352c449ed6fca367999b557c564cc47296a1378e609ffb37e3f3` |
 | `views/group-v960.js` | 2332 | `2e2cd0afc127aeef51e729f177473c3a125c6ebdd6bc21bc7b19376cf0dbe177` |
 | `views/pa-lint.js` | 28680 | `90c4bbb985af80d74f2957de7d11efc33f5a14d21a40ae8ae114ff3313879b88` |
-| `views/rx-match-workbench.js` | 10898 | `72cc864ab65e24a657813c2596a87d60ca9ee2f083f12b72ae03fb9db6ca681a` |
+| `views/rx-match-workbench.js` | 9241 | `c4390bb1f59a9cb89b8f9d94859f8dd2ccc1c66f0a1309bea5e79522bc4f8f47` |
 | `views/upload-workbench.js` | 8287 | `45f4a7b57595e413c0feebd1c941027ae03756aa1b1fb8966b22080548001203` |
 
 ## Verifying this SBOM
