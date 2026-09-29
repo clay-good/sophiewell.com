@@ -4,7 +4,7 @@
   "serialNumber": "urn:uuid:1adfc8f8-8e3f-5129-8b74-7187c46bb0f0",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-29T00:42:21.258Z",
+    "timestamp": "2026-09-29T00:59:03.379Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -70082,9 +70082,9 @@
       "bom-ref": "urn:sophiewell:npm:package-lock.json:node_modules/ip-address",
       "type": "library",
       "name": "ip-address",
-      "version": "10.5.0",
+      "version": "10.7.2",
       "scope": "optional",
-      "purl": "pkg:npm/ip-address@10.5.0",
+      "purl": "pkg:npm/ip-address@10.7.2",
       "properties": [
         {
           "name": "sophiewell:lockfile",
@@ -70094,7 +70094,7 @@
       "hashes": [
         {
           "alg": "SHA-512",
-          "content": "4794a754b26681862f7f6176660c120677a5cf91b8ab9031202dbbec60df51a35bad928d00d7010bb447a9861e3e5b337f8901a2556425ab86d198c71c5879e6"
+          "content": "ec7ff68054888adc5cd211b79ce2358254bc40ba3f10704514b93cbc45235d8ff1bb401d2fc8d9f54d48cced8f526d1dd83fe87d070089f6f483a38192df14ef"
         }
       ],
       "licenses": [
@@ -76649,9 +76649,9 @@
       "bom-ref": "urn:sophiewell:npm:mcp/package-lock.json:node_modules/ip-address",
       "type": "library",
       "name": "ip-address",
-      "version": "10.5.0",
+      "version": "10.7.2",
       "scope": "required",
-      "purl": "pkg:npm/ip-address@10.5.0",
+      "purl": "pkg:npm/ip-address@10.7.2",
       "properties": [
         {
           "name": "sophiewell:lockfile",
@@ -76661,7 +76661,7 @@
       "hashes": [
         {
           "alg": "SHA-512",
-          "content": "4794a754b26681862f7f6176660c120677a5cf91b8ab9031202dbbec60df51a35bad928d00d7010bb447a9861e3e5b337f8901a2556425ab86d198c71c5879e6"
+          "content": "ec7ff68054888adc5cd211b79ce2358254bc40ba3f10704514b93cbc45235d8ff1bb401d2fc8d9f54d48cced8f526d1dd83fe87d070089f6f483a38192df14ef"
         }
       ],
       "licenses": [
