@@ -53,3 +53,4 @@ Desktop.ini
 # openlore analysis artifacts
 .openlore/
 ARCHITECTURE.md
+data-refresh-summary.json

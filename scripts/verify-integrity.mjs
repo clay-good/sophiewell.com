@@ -34,6 +34,9 @@ async function* walkDirs(dir) {
   }
 }
 
+export const MAX_DATA_FILES = 6000;
+export const MAX_FILE_BYTES = 20 * 1024 * 1024;
+
 const ISO = /^\d{4}-\d{2}-\d{2}$/;
 const COVERAGES = new Set(['full', 'subset', 'sample']);
 
@@ -96,16 +99,34 @@ async function main() {
       }
     }
   }
+  // spec-v1621 §1: Cloudflare Workers static assets allow 20,000 files per
+  // deploy and 25 MiB per file. data/ gets 6,000 files and 20 MiB a file, so a
+  // fetched dataset can never push a deploy over either limit.
+  let dataFiles = 0;
+  let dataBytes = 0;
   for await (const d of walkDirs(DATA)) {
     for (const entry of await readdir(d, { withFileTypes: true })) {
-      if (!entry.isFile() || !entry.name.endsWith('.json')) continue;
+      if (!entry.isFile()) continue;
       const file = join(d, entry.name);
+      const size = (await stat(file)).size;
+      dataFiles += 1;
+      dataBytes += size;
+      if (size > MAX_FILE_BYTES) {
+        console.error(`DATA BUDGET: ${relative(ROOT, file)} is ${(size / 1048576).toFixed(1)} MiB, over ${MAX_FILE_BYTES / 1048576} MiB`);
+        problems += 1;
+      }
+      if (!entry.name.endsWith('.json')) continue;
       if ((await readFile(file, 'utf8')).includes('"fetchDate"')) {
         console.error(`RETIRED FIELD: ${relative(ROOT, file)} carries fetchDate (spec-v1622)`);
         problems += 1;
       }
     }
   }
+  if (dataFiles > MAX_DATA_FILES) {
+    console.error(`DATA BUDGET: data/ holds ${dataFiles} files, over ${MAX_DATA_FILES}`);
+    problems += 1;
+  }
+  console.log(`verify-integrity: data/ is ${dataFiles} files, ${(dataBytes / 1048576).toFixed(1)} MiB (budget ${MAX_DATA_FILES} files, ${MAX_FILE_BYTES / 1048576} MiB a file).`);
   if (manifests === 0) {
     console.log('verify-integrity: no manifests found.');
     process.exit(0);
