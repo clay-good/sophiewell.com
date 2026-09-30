@@ -1217,6 +1217,8 @@ main h1 {
 .intake-path { overflow-wrap: anywhere; }
 .upload-workbench h2 { margin: 0 0 var(--space-1); font-size: 1rem; }
 .upload-workbench p { margin: var(--space-1) 0 var(--space-2); }
+/* Linux WebKit sizes a file input to its chosen file name (362px at 320px wide). */
+input[type='file'] { max-width: 100%; }
 .upload-workbench input[type='file'] { display: block; width: 100%; margin-top: var(--space-1); }
 .upload-mapping-scroll { overflow-x: auto; margin: var(--space-2) 0; }
 .upload-mapping-table { width: 100%; border-collapse: collapse; }
