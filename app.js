@@ -1077,6 +1077,7 @@ const UTILITIES = [
   { id: 'imid-rems-fill-window', name: 'Lenalidomide REMS Fill Window', group: 'Q', audiences: ['clinicians'], clinical: false },
   { id: 'step-therapy-history', name: 'Step Therapy History Check', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },
   { id: 'pa-criteria-checklist', name: 'Payer Criteria Checklist', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },
+  { id: 'payer-policy-diff', name: 'What Changed in This Payer Policy?', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },
   { id: 'magi-household', name: 'Medicaid MAGI Household and Income', group: 'C', audiences: ['billers', 'patients'], clinical: false },
   { id: '340b-entity-eligibility', name: '340B Hospital Eligibility', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },
   { id: '340b-orphan-exclusion', name: '340B Orphan Drug Exclusion', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },

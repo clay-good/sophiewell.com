@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:17e225cc-0d13-52e5-8521-89eeb03e98fc",
+  "serialNumber": "urn:uuid:ea87176d-29fe-5277-89de-cb1b6c2387cd",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-29T23:27:37.510Z",
+    "timestamp": "2026-09-29T23:52:27.861Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1952 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1953 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "bede4a45d2dc3363420181b1eb1cd867b2e522988b714a7e50681a17768800a5"
+          "content": "55e366d4028540308919da42dd29287d0ef69815461cca79794a7a199bd3c983"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "125117"
+          "value": "125167"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "28444356c613932a037676aceef1ce4aee945cd53a87794c593eb3f84825f5e8"
+          "content": "8e78337d162e662a8eecaad317e3c4fc0a43c4355b4f67ceab827509a1e873bd"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "568541"
+          "value": "568683"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "91aa6fe673736a31e8f4daf7913a83d4d961e26174ae16cec1d4a9387906bf84"
+          "content": "37c6aa79b8f3780e6ccc0e287be6dc5b69da482560b2643ee42ab7f0d5733fc7"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "243715"
+          "value": "243843"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a148c36034181c49fd1b87e727a8ddd6db6954e453df4d66c52d1b727bb27f75"
+          "content": "4e0cf6dcdb5efbf2f8a0992e254bfd4a2862d314aa5e2bcd979af45d9207eeee"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "111879"
+          "value": "111936"
         }
       ]
     },
@@ -12557,7 +12557,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c772102cabad7345a5da58ac33bc7203b42580205652d1715345305ea604b820"
+          "content": "0fea14d9354256cc720ec85a2de34660182fc3155b63b43e56c92d10d7eeb87f"
         }
       ],
       "properties": [
@@ -12567,7 +12567,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2668561"
+          "value": "2669536"
         }
       ]
     },
@@ -15886,6 +15886,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3633"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/payer-policy-diff.js",
+      "type": "file",
+      "name": "lib/payer-policy-diff.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "05d116895870218064a6ba1c070ac8d8675a7819ffe32029ebf5feba4b9822ad"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "9586"
         }
       ]
     },
@@ -37667,6 +37688,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/payer-policy-diff.js",
+      "type": "file",
+      "name": "mcp/adapters/payer-policy-diff.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "57e5c9ede0c5e72474f1d5b832b3f31d94f49e65cff69229d63c542d49a91e6c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "954"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/pbm-reimbursement-v1510.js",
       "type": "file",
       "name": "mcp/adapters/pbm-reimbursement-v1510.js",
@@ -44141,7 +44183,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "dde5ed1bda988bded3ec6e4e1dfcd13ed2c71b8135f5d16f7f1b9c5d385055b2"
+          "content": "f8d1330c95a653c5c0894d29bdc70c8337b9d99852b87d0b88848e951c905af2"
         }
       ],
       "properties": [
@@ -44151,7 +44193,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "114247"
+          "value": "114352"
         }
       ]
     },
@@ -47459,7 +47501,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0d278289e7c4b9fed4d5333799dc66d949a5c88e65c296b3fbe75f709c95267c"
+          "content": "3bc67add02e08e983c5cafa8ef0fa0327f55704973b2cae17e202e48174b4150"
         }
       ],
       "properties": [
@@ -47469,7 +47511,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "9496"
+          "value": "11687"
         }
       ]
     },
@@ -79684,6 +79726,7 @@
         "urn:sophiewell:file:source:lib/pas-swallow-v367.js",
         "urn:sophiewell:file:source:lib/pass-pheo-v660.js",
         "urn:sophiewell:file:source:lib/pauwels-femoral-neck-v374.js",
+        "urn:sophiewell:file:source:lib/payer-policy-diff.js",
         "urn:sophiewell:file:source:lib/pbm-reimbursement-v1510.js",
         "urn:sophiewell:file:source:lib/pc-aspects-v1452.js",
         "urn:sophiewell:file:source:lib/pc-ptsd5-v521.js",
@@ -81636,6 +81679,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/pas-swallow-v367.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pass-pheo-v660.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pauwels-femoral-neck-v374.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/payer-policy-diff.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pbm-reimbursement-v1510.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pc-aspects-v1452.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pc-ptsd5-v521.js",
@@ -82048,7 +82092,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "17e225cc0d1392e5"
+      "value": "ea87176d29fee277"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -82060,7 +82104,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2994"
+      "value": "2996"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

@@ -9986,6 +9986,17 @@
     },
     {
       "phrases": [
+        "payer policy changed",
+        "compare medical policy versions",
+        "what changed in the prior authorization criteria",
+        "policy diff",
+        "new criteria from the insurer"
+      ],
+      "tile": "payer-policy-diff",
+      "audience": "billers"
+    },
+    {
+      "phrases": [
         "proportion of days covered",
         "medication possession ratio",
         "pdc calculator",

@@ -1,6 +1,6 @@
 # spec-v1603 — Coverage rules and the payer's own numbers
 
-**Status:** Proposed, September 29, 2026. In progress: `ma-criteria-check` built ([build status](#build-status)).
+**Status:** Proposed, September 29, 2026. In progress: `ma-criteria-check` and `payer-policy-diff` built ([build status](#build-status)).
 **Charter:** [spec-v1600](spec-v1600.md). **Group:** C, "Insurance & Patient Literacy",
 except `payer-policy-diff`, which joins group Q beside `pa-criteria-checklist`.
 
@@ -122,4 +122,5 @@ page-watched.
 | Tool | Status | What was read, and what differed |
 |---|---|---|
 | `ma-criteria-check` | **Built September 29, 2026** (catalog 1,952) | Read in the eCFR that day: 42 CFR 422.101(b)-(c), 422.566(d), 422.112(b)(8). **The spec's paragraph for the course-of-treatment rules was incomplete:** approval duration is 422.112(b)(8)(i)(A) and the 90-day transition is (b)(8)(i)(B), and both bind coordinated care plans. 422.566(d) requires a reviewer "with expertise in the field of medicine or health care that is appropriate for the services at issue" and says that reviewer need not share the treating provider's specialty, so the tool asks about expertise, not specialty. Internal criteria are checked against the three cases of (b)(6)(i) and the public-evidence rule of (b)(6)(ii). The Medicare Coverage Database lookup, the pre-filled appeal path and the [spec-v1504](spec-v1504.md) reconsideration builder are not built; the result names **Which Appeal Rules Apply?** instead, and whether an NCD or LCD applies is the reader's answer. |
+| `payer-policy-diff` | **Built September 29, 2026** (catalog 1,953) | Reuses `parseCriteria` from the checklist, as planned. Criteria are matched by their words in three passes (identical, same words around different numbers, then mostly the same words), so a criterion that moved is not reported as removed and added. **A change in the spec:** a changed number is called tightened or loosened only where the wording shows which way is stricter ("at least", "no more than", "within", "prior drugs", "or older"); otherwise it is "threshold changed" and the reader judges it, because a bare number ("a score of 7") does not say. A list whose "one of" became "all of" is its own tightened change. The change list downloads as CSV. |
 | The other tools on this page | Open | See [spec-v1626](spec-v1626.md#build-status). |

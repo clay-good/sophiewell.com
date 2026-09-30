@@ -6,6 +6,7 @@ import * as AU from '../lib/auth-units-request-v1502.js';
 import * as QL from '../lib/quantity-limit-check-v1502.js';
 import * as ST from '../lib/step-therapy-v1502.js';
 import * as PC from '../lib/pa-criteria-v1502.js';
+import * as PD from '../lib/payer-policy-diff.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -161,6 +162,44 @@ export const renderers = {
       const r = PC.paCriteriaChecklist(args);
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Criteria', value: r.bandLabel }]);
+      list(o, r.notes);
+      note(o, r.note);
+    }));
+  },
+  'payer-policy-diff'(root) {
+    const pairs = [['ppd-before', 'before'], ['ppd-before-date', 'beforeDate'], ['ppd-after', 'after'], ['ppd-after-date', 'afterDate']];
+    note(root, 'Paste both versions of the policy\'s criteria, keeping their numbering. Nothing you paste leaves this page.');
+    textareaField(root, 'Earlier version', 'ppd-before', '1. Step through 2 prior drugs');
+    dateInput(root, 'Earlier version effective date (optional)', 'ppd-before-date', 'date');
+    textareaField(root, 'Newer version', 'ppd-after', '1. Step through 3 prior drugs');
+    dateInput(root, 'Newer version effective date (optional)', 'ppd-after-date', 'date');
+    const ids = pairs.map(([d]) => d);
+    const o = out(); root.appendChild(o);
+    const save = el('button', { type: 'button', text: 'Download the change list (CSV)', disabled: 'disabled' });
+    root.appendChild(el('p', {}, [save]));
+    let last = null;
+    save.addEventListener('click', () => {
+      if (!last) return;
+      const url = window.URL.createObjectURL(new Blob([PD.diffCsv(last)], { type: 'text/csv' }));
+      const anchor = el('a', { href: url, download: 'policy-changes.csv' });
+      anchor.click();
+      window.setTimeout(() => window.URL.revokeObjectURL(url), 0);
+    });
+    wire(ids, () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = PD.payerPolicyDiff(args);
+      last = r.valid && r.rows.length ? r : null;
+      save.disabled = !last;
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Policy', value: r.bandLabel }]);
+      list(o, r.rows.map((x) => {
+        const where = x.path ? `item ${x.path}: ` : '';
+        if (x.kind === 'added') return `${x.label}, ${where}"${x.after}"`;
+        if (x.kind === 'removed') return `${x.label}, ${where}"${x.before}"`;
+        if (!x.before) return `${x.label}: ${x.detail}`;
+        return `${x.label}, ${where}"${x.before}" is now "${x.after}"${x.detail ? ` (${x.detail})` : ''}`;
+      }));
       list(o, r.notes);
       note(o, r.note);
     }));

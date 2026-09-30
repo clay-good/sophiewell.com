@@ -8650,6 +8650,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/ma-criteria-check.js (spec-v1603: Medicare Advantage denial process — administrative disclaimer)
 - `ma-criteria-check`
 
+### lib/payer-policy-diff.js (spec-v1603: Payer policy changes — administrative disclaimer)
+- `payer-policy-diff`
+
 ### lib/pdc-star-v1513.js (spec-v1513: Part D adherence (PDC, Star method) — administrative disclaimer)
 - `pdc-star`
 
