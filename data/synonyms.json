@@ -10195,6 +10195,17 @@
     },
     {
       "phrases": [
+        "infusion chair schedule",
+        "chair utilization",
+        "infusion center scheduling",
+        "how many chairs do we need",
+        "schedule infusion appointments"
+      ],
+      "tile": "chair-day-planner",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
         "part b drug coinsurance",
         "what do i pay for an infusion on medicare",
         "inflation adjusted coinsurance",

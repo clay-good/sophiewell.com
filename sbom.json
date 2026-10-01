@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:122123b5-22a6-5bf5-852f-3ffaf5785405",
+  "serialNumber": "urn:uuid:c1e53a91-53a7-5fff-8f93-653aeb14c654",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-01T10:53:40.669Z",
+    "timestamp": "2026-10-01T12:52:10.261Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1960 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1961 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "75fc5c0a0f8a8342ed3718ae341f5845718c7615222db93eb4ae8c4ded14e69a"
+          "content": "b59e0eb8447682f4acb3d9f777e5e898ce0340f40285cec30e94eb5df72e043d"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "125568"
+          "value": "125610"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a29e642d480d8b1eca7f168d48ca39c63e8b6aec9f96ff1a0787de7323a40c6b"
+          "content": "2f6cb2e5f820a1fbe1da21f703f0c45b0d8619104a7577f3d89ecf77a506c0bb"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "569849"
+          "value": "570017"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "eaddcacba8428c0145dc8caadfc67217bd957ff7abdd75b51b2225c853c39b12"
+          "content": "8cb6449dadd29c911301ed711ab78b6dd8d9b682181b861fa8b6ea8bc1224b6a"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "244752"
+          "value": "244880"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "40b4b658bf57169d1e4033e549fe8bd2cfbc4071cdb13c7399fcba6dc14b96be"
+          "content": "8bef6dec6e4bdd6e11417af40194508e5a8b2e1de230a3e8a2bb0d18f53ac839"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "112399"
+          "value": "112448"
         }
       ]
     },
@@ -3748,6 +3748,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "7831"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/chair-day-planner.js",
+      "type": "file",
+      "name": "lib/chair-day-planner.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "898f5ddc730de517d7ccf5d56497704ec5f2aa5c6b60812dcd12400cb67fbc40"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7632"
         }
       ]
     },
@@ -12641,7 +12662,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "815372a98276e6f8053b6c60f4b4e7dcea9e0b783af1bf1252f90a5374baa9c2"
+          "content": "0efd787f1608f79f5238ac824b005298251092720a1f87e4a3c710ce7eb6d9f9"
         }
       ],
       "properties": [
@@ -12651,7 +12672,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2675693"
+          "value": "2676339"
         }
       ]
     },
@@ -22133,7 +22154,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7e764aca6b1b58305077c7a8b8b5f6ea213e3372cb7953d0e3eb6bff6fc6efc7"
+          "content": "f041071850226483aa9c06899236b5078d0fc3cf1493a68988fd9e83ccceb7d0"
         }
       ],
       "properties": [
@@ -22143,7 +22164,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "9060"
+          "value": "9956"
         }
       ]
     },
@@ -22175,7 +22196,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "04b029f7f64cf1ab51bb9002f78f29ab4e2f53703535873ab01c5bc723cec530"
+          "content": "693c8e9798f5ada4fa9faa53987526da1047080dac353eda38293a173815e44f"
         }
       ],
       "properties": [
@@ -22185,7 +22206,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "11256"
+          "value": "11966"
         }
       ]
     },
@@ -26743,6 +26764,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2524"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/chair-day-planner.js",
+      "type": "file",
+      "name": "mcp/adapters/chair-day-planner.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "81c8342fc1580dd12db5e13e28031d007a6227b88db8a1816510726b883ae88f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "980"
         }
       ]
     },
@@ -44540,7 +44582,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d78162fd0d32ac37f97960d745da89c4212613369dd744c74591b71400b6a1a6"
+          "content": "4c1032bd66fb3b109845e8ef9dbde069bcc18ca411dc73853dc01201b5266f3a"
         }
       ],
       "properties": [
@@ -44550,7 +44592,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "115139"
+          "value": "115244"
         }
       ]
     },
@@ -48089,7 +48131,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "44fb6cba5ad120e902988f5e11e43d602a688ea563821ff5209471201a671e67"
+          "content": "7ec8a2b39538b300b9b1d3335b75a02f6d55422a149582761f6f02f7499235ac"
         }
       ],
       "properties": [
@@ -48099,7 +48141,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "6483"
+          "value": "9441"
         }
       ]
     },
@@ -79505,6 +79547,7 @@
         "urn:sophiewell:file:source:lib/cf-diagnosis-v828.js",
         "urn:sophiewell:file:source:lib/cgm-time-in-range-v1472.js",
         "urn:sophiewell:file:source:lib/cgvhd-severity-v911.js",
+        "urn:sophiewell:file:source:lib/chair-day-planner.js",
         "urn:sophiewell:file:source:lib/chalder-fatigue-v733.js",
         "urn:sophiewell:file:source:lib/cheops-v645.js",
         "urn:sophiewell:file:source:lib/chicago-achalasia-v807.js",
@@ -81515,6 +81558,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/cf-diagnosis-v828.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cgm-time-in-range-v1472.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cgvhd-severity-v911.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/chair-day-planner.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/chalder-fatigue-v733.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cheops-v645.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/chicago-achalasia-v807.js",
@@ -82466,7 +82510,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "122123b522a64bf5"
+      "value": "c1e53a9153a70fff"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -82478,7 +82522,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3013"
+      "value": "3015"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

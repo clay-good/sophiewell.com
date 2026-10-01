@@ -909,6 +909,7 @@ const PROBES = [
   ['compare two versions of a payer policy', ['payer-policy-diff']],
   ['pharmacy paid below nadac acquisition cost', ['nadac-margin']],
   ['medicare part b drug payment limit asp j9035', ['asp-payment']],
+  ['infusion center chair schedule utilization', ['chair-day-planner']],
   ['what do i pay for a part b infusion drug coinsurance', ['part-b-drug-coinsurance']],
   ['does original medicare require prior authorization wiser', ['medicare-ffs-pa-required']],
   ['pbm spread pricing plan pharmacy claims', ['pharmacy-spread-check']],

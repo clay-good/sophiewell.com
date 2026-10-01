@@ -8719,6 +8719,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/asp-payment.js (spec-v1510: Medicare Part B drug payment — administrative disclaimer)
 - `asp-payment`
 
+### lib/chair-day-planner.js (spec-v1512: Infusion chair day planner — administrative disclaimer)
+- `chair-day-planner`
+
 ### lib/part-b-drug-coinsurance.js (spec-v1506: Part B drug coinsurance — administrative disclaimer)
 - `part-b-drug-coinsurance`
 

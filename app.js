@@ -859,7 +859,7 @@ import { renderers as RV1511 } from './views/group-v1511.js';
 import { renderers as RV1514 } from './views/group-v1514.js';
 import { renderers as RV1506 } from './views/group-v1506.js';
 import { renderers as RV1508 } from './views/group-v1508.js';
-import { renderers as RV1512 } from './views/group-v1512.js';
+import { renderers as RV1512, acceptFiles as AF1512 } from './views/group-v1512.js';
 import { renderers as RV1505 } from './views/group-v1505.js';
 import { renderers as RV1601 } from './views/group-v1601.js';
 import { renderers as RV1603 } from './views/group-v1603.js';
@@ -1071,6 +1071,7 @@ const UTILITIES = [
   { id: 'gfe-deadline', name: 'Good Faith Estimate Deadline', group: 'C', audiences: ['billers', 'patients'], clinical: false },
   { id: 'ppdr-eligibility', name: 'Patient-Provider Dispute Eligibility', group: 'C', audiences: ['billers', 'patients'], clinical: false },
   { id: 'vial-rounding', name: 'Dose Rounding to Whole Vials', group: 'Q', audiences: ['clinicians', 'billers'], clinical: false },
+  { id: 'chair-day-planner', name: 'Infusion Chair Day Planner', group: 'Q', audiences: ['clinicians', 'billers'], clinical: false },
   { id: 'rate-escalation-schedule', name: 'Infusion Rate Escalation Schedule', group: 'Q', audiences: ['clinicians'], clinical: false },
   { id: 'dose-calendar', name: 'Loading and Maintenance Dose Calendar', group: 'Q', audiences: ['clinicians', 'patients'], clinical: false },
   { id: 'mpr-gap-days', name: 'Adherence: PDC, MPR and Gap Days', group: 'Q', audiences: ['clinicians', 'billers'], clinical: false },
@@ -5808,7 +5809,7 @@ let currentRouteId = null;
 
 // spec-v1623 step 4: dropped and chosen files. The hand-off maps come from the
 // views that read files; see views/home-files.js.
-const ACCEPT_FILES = { ...AF1515, ...AF1516, ...AF1509, ...AF1513, ...AF1604, ...AF1502, ...AF1510, ...AFPALINT };
+const ACCEPT_FILES = { ...AF1515, ...AF1516, ...AF1509, ...AF1513, ...AF1604, ...AF1502, ...AF1510, ...AF1512, ...AFPALINT };
 function navigateTo(hash) {
   currentRouteId = null;
   if (window.location.hash === hash) route();
