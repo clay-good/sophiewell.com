@@ -35,3 +35,18 @@ test('a claim one cent below NADAC is flagged; other dates and NDCs get no bench
   await page.fill('#nm-ndc', '00003-0000-01');
   await expect(out).toContainText('NDC 00003-0000-01 is not in the NADAC week of Sep 30, 2026');
 });
+
+test('a claims CSV gives margin by payer and drug, with NADAC the page loaded', async ({ page }) => {
+  await fixedWeek(page);
+  await page.setViewportSize({ width: 320, height: 800 });
+  await page.goto('/#nadac-margin');
+  const csv = 'NDC,Qty,Date filled,Total paid,Plan\n00002-1433-80,2,2026-09-24,975.14,Plan X\n00002-1433-80,2,2026-09-25,1000,Plan Y\n00003-0000-01,1,2026-09-25,5,Plan Y\n';
+  await page.locator('#nm-upload-file').setInputFiles({ name: 'claims.csv', mimeType: 'text/csv', buffer: Buffer.from(csv) });
+  await page.getByRole('button', { name: 'Use 3 rows' }).click();
+  const w = page.locator('#nm-batch');
+  await expect(w).toContainText('2 of 3 claims priced: reimbursed $1,975.14 against a cost of $1,950.30, a margin of $24.84.');
+  await expect(w).toContainText('Paid below cost overall: Plan X (-$0.01 on 1 claim)');
+  await expect(w.locator('caption', { hasText: 'Margin by payer, lowest first' })).toBeVisible();
+  await expect(page.locator('.upload-file-results')).toContainText('Data: nadac');
+  await expectNoHScroll(page, 'nadac-margin batch');
+});

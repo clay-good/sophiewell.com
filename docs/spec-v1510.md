@@ -142,6 +142,9 @@ to thousands of dollars per fill, so a missed refund matters to a small pharmacy
     not read for this build; the result says so.
   - A date outside the quarter on file, or a code the file lists with no limit (radium-223 posts "N/A" and its AWP
     in a note), is not priced; a limit typed from another quarter's file replaces the lookup.
-- **Not yet built:** `mfp-refund-reconcile` (the upload
-  workbench), and `nadac-margin`'s pharmacy-side batch mode (margin by drug and payer). The plan-side batch,
-  `pharmacy-spread-check` ([spec-v1604](spec-v1604.md)), was built September 30 and shares `nadacOn`.
+- **Built 2026-10-01:** `nadac-margin`'s batch mode: a pharmacy claims CSV through the upload workbench gives margin
+  by payer and by drug (lowest first) and in total, each claim through `nadacOn`; a row's own invoice cost replaces
+  NADAC for that row. A payer paid below cost overall is named. The Worker keeps its no-network promise: it names
+  the labelers it needs, and the page loads them through `lib/nadac-load.js` and runs it again.
+- **Not yet built:** `mfp-refund-reconcile` (the upload workbench; needs the Medicare Transaction Facilitator's
+  remittance format).

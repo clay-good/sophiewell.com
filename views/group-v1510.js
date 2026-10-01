@@ -9,6 +9,10 @@ import * as NM from '../lib/nadac-margin.js';
 import * as AP from '../lib/asp-payment.js';
 import { loadManifest, loadFile, loadShard } from '../lib/data.js';
 import { parseDate } from '../lib/pa/date.js';
+import { loadNadac } from '../lib/nadac-load.js';
+import { uploadWorkbench } from './upload-workbench.js';
+import { MARGIN_FIELDS } from '../lib/upload-fields.js';
+import { acceptVia } from '../lib/hand-off.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -154,7 +158,8 @@ export const renderers = {
       list(o, r.notes);
       note(o, r.note);
     }));
-  },  'nadac-margin'(root) {
+  },
+  'nadac-margin'(root) {
     const pairs = [['nm-ndc', 'ndc'], ['nm-dos', 'serviceDate'], ['nm-qty', 'quantity'], ['nm-paid', 'reimbursed'], ['nm-cost', 'cost']];
     textField(root, 'NDC (11 digits, or with its hyphens)', 'nm-ndc', 'e.g. 00002-1433-80');
     dateInput(root, 'Date of service', 'nm-dos', 'date');
@@ -188,7 +193,46 @@ export const renderers = {
         } catch { return { status: 'unavailable' }; }
       })().then((lookup) => { if (mine === seq) show({ ...args, lookup }); });
     });
-  },  'asp-payment'(root) {
+    // spec-v1510 batch: a claims CSV gives margin by drug, by payer and in total. The page loads NADAC
+    // for the labelers the Worker names (the Worker has no network code), then runs it again.
+    const w = el('div', { id: 'nm-batch', 'aria-live': 'polite' });
+    const money = (c) => `${c < 0 ? '-' : ''}$${(Math.abs(c) / 100).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    const table = (caption, heads, rows) => {
+      if (!rows.length) return;
+      const t = el('table', { class: 'upload-mapping-table' });
+      t.appendChild(el('caption', { text: caption }));
+      const hr = el('tr');
+      for (const h of heads) hr.appendChild(el('th', { scope: 'col', text: h }));
+      t.appendChild(el('thead', null, [hr]));
+      const body = el('tbody');
+      for (const r of rows) { const tr = el('tr'); for (const c of r) tr.appendChild(el('td', { text: String(c) })); body.appendChild(tr); }
+      t.appendChild(body);
+      w.appendChild(el('div', { class: 'upload-mapping-scroll' }, [t]));
+    };
+    const showBatch = (r) => safe(w, () => {
+      if (!r.valid) { note(w, r.message); return; }
+      resultRow(w, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Claims file', value: r.bandLabel }]);
+      list(w, r.notes);
+      table('Margin by payer, lowest first', ['Payer', 'Claims', 'Below cost', 'Paid', 'Cost', 'Margin'], r.byPayer.map((p) => [p.payer, p.claims, p.below, money(p.paid), money(p.cost), money(p.margin)]));
+      table('Margin by drug, lowest first', ['NDC', 'Drug', 'Claims', 'Margin'], r.byDrug.slice(0, 20).map((d) => [d.ndc, d.description || 'invoice cost', d.claims, money(d.margin)]));
+    });
+    let bseq = 0;
+    const upload = uploadWorkbench(root, {
+      id: 'nm-upload', fields: MARGIN_FIELDS, label: 'Margin by drug and payer from a claims CSV',
+      compute: 'nadac-margin', getInput: () => ({}),
+      onResult: (r) => {
+        if (r && r.needLabelers) {
+          const mine = ++bseq;
+          safe(w, () => note(w, 'Looking up NADAC for the drugs in these claims...'));
+          loadNadac(r.needLabelers).then((nadac) => { if (mine === bseq) upload.compute({ nadac }); });
+          return;
+        }
+        showBatch(r);
+      },
+    });
+    root.appendChild(w);
+  },
+  'asp-payment'(root) {
     const pairs = [['asp-code', 'code'], ['asp-dos', 'serviceDate'], ['asp-units', 'units'], ['asp-limit', 'limit'], ['asp-coins', 'coinsurance']];
     textField(root, 'HCPCS code of the drug', 'asp-code', 'e.g. J9035');
     dateInput(root, 'Date of service', 'asp-dos', 'date');
@@ -223,4 +267,9 @@ export const renderers = {
       })().then((lookup) => { if (mine === seq) show({ ...args, lookup }); });
     });
   },
+};
+
+// spec-v1623 step 3: a pharmacy claims CSV goes to the margin workbench.
+export const acceptFiles = {
+  'nadac-margin': acceptVia('nm-upload-file'),
 };

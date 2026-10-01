@@ -63,7 +63,8 @@ export const renderers = {
       list(o, r.notes);
       note(o, r.note);
     }));
-  },  'pa-metrics-compare'(root) {
+  },
+  'pa-metrics-compare'(root) {
     const pairs = [['pam-program', 'program'], ['pam-year', 'reportYear'], ['pam-list', 'list'],
       ['pam-std-appr', 'stdApprovedPct'], ['pam-std-deny', 'stdDeniedPct'], ['pam-appeal', 'appealApprovedPct'], ['pam-ext', 'extendedApprovedPct'],
       ['pam-exp-appr', 'expApprovedPct'], ['pam-exp-deny', 'expDeniedPct'],

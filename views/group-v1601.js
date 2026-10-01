@@ -64,7 +64,8 @@ export const renderers = {
       list(o, r.notes);
       note(o, r.note);
     }));
-  },  'hsa-predeductible-check'(root) {
+  },
+  'hsa-predeductible-check'(root) {
     const pairs = [['hpd-item', 'item'], ['hpd-purpose', 'purpose'], ['hpd-year', 'planYear']];
     const boxes = [['hpd-chf', 'chf'], ['hpd-cad', 'cad'], ['hpd-heart', 'heart'], ['hpd-diabetes', 'diabetes'], ['hpd-hypertension', 'hypertension'], ['hpd-asthma', 'asthma'], ['hpd-osteoporosis', 'osteoporosis'], ['hpd-osteopenia', 'osteopenia'], ['hpd-liver', 'liver'], ['hpd-bleeding', 'bleeding'], ['hpd-depression', 'depression']];
     selectField(root, 'What the plan would cover before the deductible', 'hpd-item', HP.ITEMS);

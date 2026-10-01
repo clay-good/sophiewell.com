@@ -6,6 +6,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- The NADAC margin check takes a pharmacy's claims file and gives the margin by
+  payer and by drug, naming any payer that paid below cost overall.
+
 - Authorization run-out now takes a CSV of authorizations and gives the renewal
   worklist, sorted by the date each renewal is due, with past-due ones marked.
 

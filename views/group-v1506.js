@@ -209,7 +209,8 @@ export const renderers = {
       list(o, r.notes);
       note(o, r.note);
     }));
-  },  'part-b-drug-coinsurance'(root) {
+  },
+  'part-b-drug-coinsurance'(root) {
     const pairs = [['pbdc-code', 'code'], ['pbdc-dos', 'serviceDate'], ['pbdc-units', 'units'], ['pbdc-months', 'months'], ['pbdc-limit', 'limit'], ['pbdc-coins', 'coinsurance']];
     textField(root, 'HCPCS code of the drug (on your Medicare Summary Notice)', 'pbdc-code', 'e.g. J0897');
     dateInput(root, 'Date of service', 'pbdc-dos', 'date');

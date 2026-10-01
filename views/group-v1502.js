@@ -224,7 +224,8 @@ export const renderers = {
       list(o, r.notes);
       note(o, r.note);
     }));
-  },  'medicare-ffs-pa-required'(root) {
+  },
+  'medicare-ffs-pa-required'(root) {
     const pairs = [['mfpa-code', 'code'], ['mfpa-setting', 'setting'], ['mfpa-state', 'state'], ['mfpa-dos', 'serviceDate']];
     textField(root, 'HCPCS or CPT code', 'mfpa-code', 'e.g. 64483');
     selectField(root, 'Setting', 'mfpa-setting', MF.SETTINGS);

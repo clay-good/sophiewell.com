@@ -85,7 +85,8 @@ export const renderers = {
       list(o, r.notes);
       note(o, r.note);
     }));
-  },  'pharmacy-spread-check'(root) {
+  },
+  'pharmacy-spread-check'(root) {
     note(root, 'Claims one per line: NDC, quantity, fill date, plan paid, member paid, and the pharmacy paid if the PBM discloses it. Or load the plan\'s claims file below.');
     textareaField(root, 'Claims', 'psc-claims', '00002-1433-80, 2, 2026-09-24, 1000, 25, 950');
     const o = out();
