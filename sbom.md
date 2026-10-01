@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `f21bf4a81d3d28d4`
-Generated: 2026-10-01T08:31:49.862Z
+Build ID: `01a0c5f13afcc83a`
+Generated: 2026-10-01T09:40:46.081Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -27,7 +27,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 |---|---:|---|
 | `index.html` | 125568 | `75fc5c0a0f8a8342ed3718ae341f5845718c7615222db93eb4ae8c4ded14e69a` |
 | `styles.css` | 75420 | `f7afb2c67c64f1624889489889ef9dd592a1afefd84295e8890ee869484e15e2` |
-| `app.js` | 569781 | `597f172d2de595a61733451e97ba6fb8afeea66ab1760ad769ed33b88276475e` |
+| `app.js` | 569815 | `84bd9b5e447e9038ba36f287b35d709d39f6b9507b1993ea006451f5b4c31322` |
 | `report-feedback.js` | 12178 | `955e5cb542c7b13dcbb85a75ecf4ccf2dc0b2dffecd84daac1d607bd6acc7cd2` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 | `theme.js` | 3132 | `6910af0b4c65869c6a3d24d17842bb2cc88c7d23f8fb32506fcdbfeec70ce979` |
@@ -110,7 +110,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/atlanta-pancreatitis-v445.js` | 3620 | `1eb1382cc11cc7b3a42e54ab14143721e30ac6b41de03bec5362d29e17d85bf3` |
 | `lib/atrial-enlargement-v787.js` | 7825 | `d0d57f443b54d1bff3c79313fe5319c1b9f6d3e7b36070e034275458fb7b4dfa` |
 | `lib/ausdrisk-v711.js` | 5293 | `6c2cfc5bf32ec40fe19a06b5c46b007313db94bc43afc2d67da5e0ebf024be66` |
-| `lib/auth-runout-v1502.js` | 4643 | `ac2dff0c9426e95cefa65d90fa39d80d23ed4166f84bf1ff98383ac91362a1aa` |
+| `lib/auth-runout-v1502.js` | 7250 | `1170ce86bcbc320aa2b89bd71fd128b7e79d4f178bb49f43740e8151896ece82` |
 | `lib/auth-units-request-v1502.js` | 4581 | `43358cdbb350ce76e2760dee09baf7ce107a7de3390b9006810d47d8c8c49289` |
 | `lib/auto-peep-v928.js` | 7813 | `e4ca4bf52c90213c8c2ced767c3fcf56be90467bcd3ff396fa6e4f07ed867a34` |
 | `lib/autoimmune-encephalitis-v824.js` | 8413 | `aea180929a1c3e96008ff75d6138ee7ee6cb7230d2e327bc6aadd89e2844eb79` |
@@ -1086,9 +1086,9 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/ukeld-v1438.js` | 4228 | `0f12281e006ee5e16de40b7938b7f956498c45f422860dd4a1c6e4c43a3f8714` |
 | `lib/unit-convert.js` | 2601 | `642818802952c2c5e87338bc035dcd9d5ff07dec1e8b97a31ca09b0be38c14d2` |
 | `lib/up-to-seven-v586.js` | 11393 | `4a379fbb63e617cb741a5369394d693751912101492558fdda03ca9c478ff06b` |
-| `lib/upload-fields.js` | 6638 | `9194394eaa11d8f1092ba2dd08c4350f969bf839431dc07a79ee3aee12fed841` |
+| `lib/upload-fields.js` | 8057 | `d60a0795fd7120c447576dc7af54c3da21cc192d7277531ca144ac4c4cfffa5b` |
 | `lib/upload-intake.js` | 6297 | `b9d99e65bfa09d6c016e7db1a49c22bf748c6c73c84b9c1a62c4c4dc5319f53f` |
-| `lib/upload-worker.js` | 10282 | `143ae2d17e0e635aa29dc80f09f91df3ed5d2c90c917bec7af255a226dc72c32` |
+| `lib/upload-worker.js` | 10740 | `bc827840cf0edcea247830284397d2347b375180dcdd592718680e5c089a47b1` |
 | `lib/uro-v130.js` | 12895 | `370c7f4f91e8adeff37012c9d024e2bab403330eaffeecee756d06a61fb30c21` |
 | `lib/uro-v131.js` | 16748 | `68ef5eb787708cadacbd1bd66dc39f0777f3f20456298cd7a883204797fe5440` |
 | `lib/urology-v153.js` | 9694 | `700af96b614bda45a67eda2835bb8087c9e2895ac62db7123fa9c765af5b75a9` |
@@ -2311,7 +2311,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1498.js` | 2221 | `0d0c2eac4c51885c15963279113eb9093bef69496c92f70db59143abefb4ec3a` |
 | `views/group-v1499.js` | 2450 | `47eb095482282a70c6bab692c0e405755d9c7e0a2f13442d32815b4c7976d44d` |
 | `views/group-v15.js` | 10029 | `8af2927b15f583714bfc660f737bae017a95c9caf9052b75b68c3eb0c46c6c26` |
-| `views/group-v1502.js` | 12699 | `5902d6841fd20df6273be3a14d0f8f88468a7d8cff7f2dddd96ea5e6fc1b9e46` |
+| `views/group-v1502.js` | 14207 | `ab62e080c6e4e3e55daf8cb8526b542322823db1fee357eb52eea9a96dca05ec` |
 | `views/group-v1503.js` | 10845 | `e8197a48dd6f2c022795a2fcad41c58ef689bb0f54de9d554b4afc46ae2f8f16` |
 | `views/group-v1504.js` | 12899 | `45e7d5661d14790b75c2ec00ed6dd1cab5334f7f75bc04a38813a1fbdcc1d2ac` |
 | `views/group-v1505.js` | 7300 | `503fb3d30445bcf4141dab6f8d088dd5c80cb7a81bffd2b72b38f2efa1b686d2` |

@@ -853,7 +853,7 @@ import { renderers as RV1570 } from './views/group-v1570.js';
 import { renderers as RV1571 } from './views/group-v1571.js';
 import { renderers as RV1572 } from './views/group-v1572.js';
 import { renderers as RV1503 } from './views/group-v1503.js';
-import { renderers as RV1502 } from './views/group-v1502.js';
+import { renderers as RV1502, acceptFiles as AF1502 } from './views/group-v1502.js';
 import { renderers as RV1507 } from './views/group-v1507.js';
 import { renderers as RV1511 } from './views/group-v1511.js';
 import { renderers as RV1514 } from './views/group-v1514.js';
@@ -5808,7 +5808,7 @@ let currentRouteId = null;
 
 // spec-v1623 step 4: dropped and chosen files. The hand-off maps come from the
 // views that read files; see views/home-files.js.
-const ACCEPT_FILES = { ...AF1515, ...AF1516, ...AF1509, ...AF1513, ...AF1604, ...AFPALINT };
+const ACCEPT_FILES = { ...AF1515, ...AF1516, ...AF1509, ...AF1513, ...AF1604, ...AF1502, ...AFPALINT };
 function navigateTo(hash) {
   currentRouteId = null;
   if (window.location.hash === hash) route();

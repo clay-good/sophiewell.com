@@ -9,6 +9,9 @@ import * as PC from '../lib/pa-criteria-v1502.js';
 import * as MF from '../lib/medicare-ffs-pa-required.js';
 import * as PD from '../lib/payer-policy-diff.js';
 import { resultRow } from '../lib/result-copy.js';
+import { uploadWorkbench } from './upload-workbench.js';
+import { AUTH_FIELDS } from '../lib/upload-fields.js';
+import { acceptVia } from '../lib/hand-off.js';
 
 const NA = { value: '', text: '— choose —' };
 function selectField(root, label, id, options) {
@@ -85,6 +88,23 @@ export const renderers = {
       list(o, r.notes);
       note(o, r.note);
     }));
+    // spec-v1501 §3: a CSV of authorizations, one per row, gives the renewal worklist.
+    dateInput(root, 'Worklist as of (optional; marks renewals already past due)', 'ar-asof', 'date');
+    const w = el('div', { id: 'ar-worklist', 'aria-live': 'polite' });
+    const showList = (r) => safe(w, () => {
+      if (!r.valid) { note(w, r.message); return; }
+      resultRow(w, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Worklist', value: r.bandLabel }]);
+      const ol = el('ol');
+      for (const x of r.order.slice(0, 50)) ol.appendChild(el('li', { text: x.submitBy ? `${x.reference}: submit by ${x.submitBy} (${x.status}; limited by ${x.limitedBy})` : `${x.reference || `Row ${x.index + 1}`}: ${x.reason}` }));
+      w.appendChild(ol);
+      list(w, r.notes);
+    });
+    const upload = uploadWorkbench(root, {
+      id: 'ar-upload', fields: AUTH_FIELDS, label: 'Renewal worklist from a CSV of authorizations',
+      compute: 'auth-runout', getInput: () => ({ asOf: val('ar-asof') }), onResult: showList,
+    });
+    root.appendChild(w);
+    document.getElementById('ar-asof').addEventListener('change', () => { if (upload.isActive()) upload.compute({ asOf: val('ar-asof') }); });
   },
   'auth-units-request'(root) {
     const pairs = [['au-basis', 'basis'], ['au-dose', 'dose'], ['au-weight', 'weightKg'], ['au-unit', 'unitMg'], ['au-every', 'intervalDays'], ['au-first', 'firstDose'], ['au-end', 'periodEnd'], ['au-lcount', 'loadingCount'], ['au-ldose', 'loadingDose']];
@@ -222,4 +242,9 @@ export const renderers = {
       note(o, r.note);
     }));
   },
+};
+
+// spec-v1623 step 3: an authorization CSV goes to the worklist.
+export const acceptFiles = {
+  'auth-runout': acceptVia('ar-upload-file'),
 };

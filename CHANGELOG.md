@@ -6,6 +6,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Authorization run-out now takes a CSV of authorizations and gives the renewal
+  worklist, sorted by the date each renewal is due, with past-due ones marked.
+
 - HCPCS drug billing units now take an NDC: the code, its billing unit and the
   package's billable units come from the CMS ASP NDC-HCPCS crosswalk, which is
   fetched each quarter with the other federal datasets.

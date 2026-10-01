@@ -139,4 +139,8 @@ One unit test file per tool. The cases that must exist:
     A0426 and A0428 by the date each state joined (2014 to 2022).
   - The ambulance, surgical center and WISeR programs are prior authorization or prepayment review; the
     outpatient and DMEPOS programs are conditions of payment. The result says which.
-- **Not yet built:** `auth-runout`'s CSV batch mode ([spec-v1501](spec-v1501.md) §3).
+- **Built 2026-10-01:** `auth-runout`'s CSV batch mode: a CSV of authorizations through the upload workbench
+  ([spec-v1501](spec-v1501.md) §3) gives the renewal worklist sorted by submit-by date, each row through the
+  form's own `authRunout`. An optional as-of date marks renewals already past due (due today is not late). A row
+  that cannot be computed is listed last with its reason, never dropped. The reference column is redacted in
+  the redacted download.
