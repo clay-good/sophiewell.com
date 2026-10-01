@@ -124,5 +124,12 @@ this one, which the duplicate-tile finder flags.
   read ("UP TO 0.50 MG", mEq) gives the code and package units and asks for the unit size; IU is read as units
   and cc as mL, and the result says so. One crosswalk row carries a 12-digit product number, not an NDC (J7331);
   it is skipped and named in `member.json`.
-- **Not yet built:** `part-b-or-d` (needs the CMS Part B versus Part D document read in full and the
-  MAC self-administered drug lists) and `lcd-diagnosis-check` (Medicare Coverage Database export).
+- **Built 2026-10-01:** `part-b-or-d`. Read in the sources that day: the CMS "Medicare Parts B/D Coverage Issues"
+  chart (the full 2005 document it points to is no longer at its link), SSA §1861(s) at Cornell LII, 42 CFR 410.63
+  in the eCFR, 42 U.S.C. 1395o(b) (Part B-ID) and 1395w-102(b)(8) (Part D adult vaccines). **Differed from the
+  spec:** COVID-19 vaccine joined influenza and pneumococcal in (s)(10)(A); hepatitis B risk now includes anyone who
+  never completed the series or whose history is unknown (410.63(a)(2)(iv), from January 1, 2025); IVIG at home for
+  primary immune deficiency ((s)(2)(Z)), clotting factors (410.63(b)) and parenteral nutrition ((s)(8)) were added
+  as categories the chart and statute name. The MAC self-administered drug lists are not bundled: the reader
+  answers yes, no or not sure, and "not sure" gives "depends on the MAC's list".
+- **Not yet built:** `lcd-diagnosis-check` (Medicare Coverage Database export).

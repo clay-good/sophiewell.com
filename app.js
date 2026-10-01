@@ -1096,6 +1096,7 @@ const UTILITIES = [
   { id: 'pharmacy-spread-check', name: 'Pharmacy Spread Check: Claims Against NADAC', group: 'Q', audiences: ['billers'], clinical: false },
   { id: 'medicaid-ura', name: 'Medicaid Unit Rebate Amount', group: 'B', audiences: ['billers', 'clinicians'], clinical: false },
   { id: 'ipledge-dispense-window', name: 'iPLEDGE Dispense Window (Isotretinoin)', group: 'Q', audiences: ['clinicians', 'patients'], clinical: false },
+  { id: 'part-b-or-d', name: 'Medicare Part B or Part D for This Drug?', group: 'C', audiences: ['billers', 'patients', 'clinicians'], clinical: false },
   { id: 'which-appeal-path', name: 'Which Appeal Rules Apply?', group: 'C', audiences: ['billers', 'patients', 'clinicians'], clinical: false },
   { id: 'preventive-cost-share-check', name: 'Should I Have Paid for This Preventive Care?', group: 'C', audiences: ['patients', 'billers'], clinical: false },
   { id: 'hsa-predeductible-check', name: 'HSA Safe Harbors: What Can Be Covered Before the Deductible?', group: 'C', audiences: ['patients', 'billers'], clinical: false },

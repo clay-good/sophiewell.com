@@ -3,6 +3,7 @@
 import { el, clear } from '../lib/dom.js';
 import * as AP from '../lib/appeal-path-v1505.js';
 import * as BN from '../lib/benefits-v1505.js';
+import * as BD from '../lib/part-b-or-d.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -115,6 +116,31 @@ export const renderers = {
       resultRow(o, [{ text: r.band, cls: null }, { label: 'Lowest cost', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
+    }));
+  },
+  'part-b-or-d'(root) {
+    const pairs = [['pbd-category', 'category'], ['pbd-sad', 'sad'], ['pbd-vaccine', 'vaccine'], ['pbd-hepb', 'hepbRisk'], ['pbd-home', 'atHome'], ['pbd-transplant', 'medicareTransplant'], ['pbd-injectable', 'sameAsInjectable'], ['pbd-48', 'within48'], ['pbd-dialysis', 'dialysis'], ['pbd-pid', 'primaryImmuneDeficiency'], ['pbd-perm', 'permanent']];
+    selectField(root, 'How the drug is given, or its category', 'pbd-category', BD.CATEGORIES);
+    selectField(root, 'Clinician-given: is it on the MAC\'s self-administered drug list?', 'pbd-sad', BD.SAD);
+    selectField(root, 'Vaccine', 'pbd-vaccine', BD.VACCINES);
+    selectField(root, 'Hepatitis B: at high or intermediate risk (including a series never completed)?', 'pbd-hepb', BD.YES_NO);
+    selectField(root, 'Equipment at home: does the patient live at home (not a hospital or skilled nursing facility)?', 'pbd-home', BD.YES_NO);
+    selectField(root, 'Immunosuppressant: did Medicare pay for the transplant?', 'pbd-transplant', BD.YES_NO);
+    selectField(root, 'Oral cancer drug: same active ingredient and use as an injectable Part B covers?', 'pbd-injectable', BD.YES_NO);
+    selectField(root, 'Oral anti-nausea: within 48 hours of chemotherapy, replacing IV anti-nausea drugs?', 'pbd-48', BD.YES_NO);
+    selectField(root, 'Erythropoietin: is the patient on dialysis?', 'pbd-dialysis', BD.YES_NO);
+    selectField(root, 'IVIG at home: for a primary immune deficiency disease?', 'pbd-pid', BD.YES_NO);
+    selectField(root, 'Parenteral nutrition: is the digestive dysfunction permanent?', 'pbd-perm', BD.YES_NO);
+    const ids = pairs.map(([d]) => d);
+    const o = out(); root.appendChild(o);
+    wire(ids, () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = BD.partBOrD(args);
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: null }, { label: 'Covered by', value: r.bandLabel }]);
+      list(o, r.notes);
+      note(o, 'Original Medicare rules. A Medicare Advantage plan covers the same Part B drugs and may also require prior authorization.');
     }));
   },
 };

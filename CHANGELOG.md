@@ -6,6 +6,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Medicare Part B or Part D for this drug? The category and the one question that
+  decides it give the part that pays, with the statute paragraph behind it.
+
 - An infusion chair day planner: chairs, hours and the day's appointments give a
   first-fit schedule, chair utilization, and the earliest slot for any appointment
   that does not fit.

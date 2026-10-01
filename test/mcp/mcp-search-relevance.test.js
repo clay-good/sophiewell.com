@@ -911,6 +911,7 @@ const PROBES = [
   ['medicare part b drug payment limit asp j9035', ['asp-payment']],
   ['infusion center chair schedule utilization', ['chair-day-planner']],
   ['what do i pay for a part b infusion drug coinsurance', ['part-b-drug-coinsurance']],
+  ['is this drug covered by part b or part d', ['part-b-or-d']],
   ['does original medicare require prior authorization wiser', ['medicare-ffs-pa-required']],
   ['pbm spread pricing plan pharmacy claims', ['pharmacy-spread-check']],
   ['hsa plan cover statin before deductible chronic condition', ['hsa-predeductible-check']],

@@ -10217,6 +10217,17 @@
     },
     {
       "phrases": [
+        "part b or part d",
+        "b vs d coverage",
+        "is this drug covered by part b or part d",
+        "self administered drug list",
+        "which part of medicare pays for this drug"
+      ],
+      "tile": "part-b-or-d",
+      "audience": "billers"
+    },
+    {
+      "phrases": [
         "wiser prior authorization",
         "medicare prior authorization list",
         "opd prior authorization",

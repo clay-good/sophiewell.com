@@ -270,3 +270,5 @@ experience**.
 > v1506, Part B drug coinsurance — [spec-v1506](spec-v1506.md), which adds `part-b-drug-coinsurance` — is 1960.)
 
 > v1512, infusion chair day planner — [spec-v1512](spec-v1512.md), which adds `chair-day-planner` — is 1961.)
+
+> v1505, Medicare Part B or Part D for a drug — [spec-v1505](spec-v1505.md), which adds `part-b-or-d` — is 1962.)
