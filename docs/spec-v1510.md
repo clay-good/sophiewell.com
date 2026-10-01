@@ -123,5 +123,15 @@ to thousands of dollars per fill, so a missed refund matters to a small pharmacy
   - `pbm-reimbursement-check` ships no AWP, WAC or MAC data.
   - `therapy-cost-compare` takes up to three regimens with the reader's prices and sources; partial-vial waste
     is left to `vial-rounding`.
-- **Not yet built:** `asp-payment` (the quarterly ASP file), `nadac-margin` (the NADAC feed), and
-  `mfp-refund-reconcile` (the upload workbench).
+- **Built 2026-09-30:** `nadac-margin` (single claim), in `lib/nadac-margin.js`.
+  - It prices from the bundled NADAC week (`data/nadac`, fetched weekly per [spec-v1621](spec-v1621.md)). A
+    row answers only from its effective date through the week's as-of date; any other date is "no
+    benchmark", never the current rate. An NDC outside the week, a failed load, or lapsed data asks for
+    the invoice cost instead. The manifest's shard list is checked before fetching, so an offline failure
+    is never reported as "not in NADAC".
+  - NDCs are normalized from 4-4-2, 5-3-2 and 5-4-1 to 11 digits; 10 bare digits are refused, since the
+    padded segment cannot be known.
+  - The worked example prices from an invoice cost, because a NADAC-priced example would change weekly.
+- **Not yet built:** `asp-payment` (the quarterly ASP file), `mfp-refund-reconcile` (the upload
+  workbench), and `nadac-margin`'s claims-CSV batch mode (margin by drug and payer). That batch is the
+  arithmetic `pharmacy-spread-check` ([spec-v1604](spec-v1604.md)) runs on a plan's claims file.

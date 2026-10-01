@@ -6,6 +6,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- A pharmacy margin check against NADAC: enter an NDC, the fill date, the quantity
+  and what the claim paid, and it prices the claim from the bundled NADAC week
+  and says whether it was paid below the national average acquisition cost. A
+  date the week does not cover gets "no benchmark", never today's rate; the
+  pharmacy's invoice cost can stand in for NADAC.
+
+- File inputs no longer push upload tools past a 320px screen in Linux WebKit.
+
 - A streaming CMS Hospital Price Transparency v3.0.0 file checker for CSV tall,
   CSV wide and JSON files. It validates 2026 fields and conditional rules locally
   without loading the whole file into memory.

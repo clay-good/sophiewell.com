@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:db8972e5-6f59-577c-8c2b-147b47c8471f",
+  "serialNumber": "urn:uuid:6d718796-c2a3-567d-8641-ea33e5444357",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-30T23:27:49.269Z",
+    "timestamp": "2026-09-30T23:33:01.293Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1953 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1954 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "55e366d4028540308919da42dd29287d0ef69815461cca79794a7a199bd3c983"
+          "content": "dd344685f223d3849524b6dbd3783d5682894d387219d4338f7e7028731e6bf2"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "125167"
+          "value": "125212"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8e78337d162e662a8eecaad317e3c4fc0a43c4355b4f67ceab827509a1e873bd"
+          "content": "281c1edebdba0822bec31cd270df48993ea208e9d705ac1aa4b2be116532c0f6"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "568683"
+          "value": "568815"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "37c6aa79b8f3780e6ccc0e287be6dc5b69da482560b2643ee42ab7f0d5733fc7"
+          "content": "caa1a69a7de6143ef404dd1a0800f48293232c80483ea9fecaf058270bdeb329"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "243843"
+          "value": "243966"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4e0cf6dcdb5efbf2f8a0992e254bfd4a2862d314aa5e2bcd979af45d9207eeee"
+          "content": "049ed10531fc8b818c15ed079c7ac9a0d99b6490941d76479e1e9924334c883a"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "111936"
+          "value": "111983"
         }
       ]
     },
@@ -12557,7 +12557,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0fea14d9354256cc720ec85a2de34660182fc3155b63b43e56c92d10d7eeb87f"
+          "content": "f2e3f8c08f36d80f918432284f6e266be38062a6699d6fc2eae3f2ff4d53621b"
         }
       ],
       "properties": [
@@ -12567,7 +12567,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2669536"
+          "value": "2670336"
         }
       ]
     },
@@ -13282,6 +13282,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "12479"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/nadac-margin.js",
+      "type": "file",
+      "name": "lib/nadac-margin.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "da8b44558573abed8abbc467a2f586f66a7099ef135028b7782354c49ba08d2e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7423"
         }
       ]
     },
@@ -35483,6 +35504,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/nadac-margin.js",
+      "type": "file",
+      "name": "mcp/adapters/nadac-margin.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9a74bfd3f42da1ffc4ffb9bd6d5fdfa3c499992b7f838675d876f704e0c7dc31"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1937"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/nancy-index-v578.js",
       "type": "file",
       "name": "mcp/adapters/nancy-index-v578.js",
@@ -44183,7 +44225,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f8d1330c95a653c5c0894d29bdc70c8337b9d99852b87d0b88848e951c905af2"
+          "content": "872c126e10a8f783e5e208a6646cca7d1e97f7f0b17e6d2577b5cce52d468200"
         }
       ],
       "properties": [
@@ -44193,7 +44235,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "114352"
+          "value": "114439"
         }
       ]
     },
@@ -47690,7 +47732,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "bcbb02fa65ac6bd60a1eb0b9714fe73d76eaa7085e3cccdf59fe2d6ceb8d235a"
+          "content": "64541d1a0ea0602d5007edc831f7538c8bad32e0cd9489eb0d22abd724bfa3e9"
         }
       ],
       "properties": [
@@ -47700,7 +47742,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "9536"
+          "value": "11779"
         }
       ]
     },
@@ -79602,6 +79644,7 @@
         "urn:sophiewell:file:source:lib/myeloid-prognosis-v199.js",
         "urn:sophiewell:file:source:lib/myxedema-coma-v599.js",
         "urn:sophiewell:file:source:lib/nac-attr-stage-v583.js",
+        "urn:sophiewell:file:source:lib/nadac-margin.js",
         "urn:sophiewell:file:source:lib/name-match.js",
         "urn:sophiewell:file:source:lib/nancy-index-v578.js",
         "urn:sophiewell:file:source:lib/narakas-obpp-v498.js",
@@ -81574,6 +81617,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/myeloid-prognosis-v199.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/myxedema-coma-v599.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nac-attr-stage-v583.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/nadac-margin.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nancy-index-v578.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/narakas-obpp-v498.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/narcolepsy-criteria-v855.js",
@@ -82092,7 +82136,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "db8972e56f59377c"
+      "value": "6d718796c2a3f67d"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -82104,7 +82148,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "2996"
+      "value": "2998"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

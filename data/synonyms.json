@@ -10162,6 +10162,17 @@
     },
     {
       "phrases": [
+        "nadac margin",
+        "pharmacy margin nadac",
+        "paid below acquisition cost",
+        "is this claim below nadac",
+        "national average drug acquisition cost"
+      ],
+      "tile": "nadac-margin",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
         "medicaid unit rebate amount",
         "ura calculation",
         "medicaid drug rebate",

@@ -948,6 +948,7 @@ import denialNextStepV1516 from './adapters/denial-next-step-v1516.js';
 import requestLettersV1504 from './adapters/request-letters-v1504.js';
 import mfpRefundV1510 from './adapters/mfp-refund-v1510.js';
 import pbmReimbursementV1510 from './adapters/pbm-reimbursement-v1510.js';
+import nadacMargin from './adapters/nadac-margin.js';
 import medicaidUraV1510 from './adapters/medicaid-ura-v1510.js';
 import entity340bV1509 from './adapters/entity-340b-v1509.js';
 import adherenceV1513 from './adapters/adherence-v1513.js';
@@ -1942,6 +1943,7 @@ const ADAPTER_MODULES = [
   ['request-letters-v1504', requestLettersV1504],
   ['mfp-refund-v1510', mfpRefundV1510],
   ['pbm-reimbursement-v1510', pbmReimbursementV1510],
+  ['nadac-margin', nadacMargin],
   ['medicaid-ura-v1510', medicaidUraV1510],
   ['entity-340b-v1509', entity340bV1509],
   ['adherence-v1513', adherenceV1513],

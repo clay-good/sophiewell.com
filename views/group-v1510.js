@@ -1,10 +1,13 @@
-// spec-v1510: renderers for mfp-refund-check, pbm-reimbursement-check, medicaid-ura.
+// spec-v1510: renderers for mfp-refund-check, pbm-reimbursement-check, medicaid-ura, nadac-margin.
 
 import { el, clear } from '../lib/dom.js';
 import * as MR from '../lib/mfp-refund-v1510.js';
 import * as PB from '../lib/pbm-reimbursement-v1510.js';
 import * as UR from '../lib/medicaid-ura-v1510.js';
 import * as TC from '../lib/therapy-cost-v1510.js';
+import * as NM from '../lib/nadac-margin.js';
+import { loadManifest, loadFile, loadShard } from '../lib/data.js';
+import { parseDate } from '../lib/pa/date.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -150,5 +153,39 @@ export const renderers = {
       list(o, r.notes);
       note(o, r.note);
     }));
+  },  'nadac-margin'(root) {
+    const pairs = [['nm-ndc', 'ndc'], ['nm-dos', 'serviceDate'], ['nm-qty', 'quantity'], ['nm-paid', 'reimbursed'], ['nm-cost', 'cost']];
+    textField(root, 'NDC (11 digits, or with its hyphens)', 'nm-ndc', 'e.g. 00002-1433-80');
+    dateInput(root, 'Date of service', 'nm-dos', 'date');
+    numField(root, 'Quantity dispensed, in NADAC pricing units (each, mL or g)', 'nm-qty', 'e.g. 30', '1000000', '0.001');
+    numField(root, 'Reimbursement: ingredient cost plus dispensing fee, dollars', 'nm-paid', 'e.g. 130', '10000000', '0.01');
+    numField(root, 'Your invoice cost per unit, in place of NADAC (optional)', 'nm-cost', 'e.g. 4.20', '1000000', '0.000001');
+    const ids = pairs.map(([d]) => d);
+    const o = out(); root.appendChild(o);
+    const show = (args) => safe(o, () => {
+      const r = NM.nadacMargin(args);
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Margin', value: r.bandLabel }]);
+      list(o, r.notes);
+      note(o, r.note);
+    });
+    // The week is fetched only when NADAC is the benchmark; a newer keystroke drops an older answer.
+    let seq = 0;
+    wire(ids, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const ndc = NM.normalizeNdc(args.ndc).ndc;
+      const mine = ++seq;
+      if (String(args.cost).trim() || !ndc || !parseDate(args.serviceDate)) { show(args); return; }
+      safe(o, () => note(o, 'Looking up NADAC for this NDC...'));
+      (async () => {
+        try {
+          const [manifest, week] = await Promise.all([loadManifest('nadac'), loadFile('nadac', 'week.json')]);
+          const listed = (manifest.shards || []).some((s) => s.name === NM.shardName(ndc));
+          const rows = listed ? await loadShard('nadac', NM.shardName(ndc)) : null;
+          return NM.lookupFrom({ ndc, manifest, week, rows });
+        } catch { return { status: 'unavailable' }; }
+      })().then((lookup) => { if (mine === seq) show({ ...args, lookup }); });
+    });
   },
 };

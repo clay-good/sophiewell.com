@@ -1087,6 +1087,7 @@ const UTILITIES = [
   { id: '340b-ceiling-price', name: '340B Ceiling Price and Unit Rebate Amount', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },
   { id: 'mfp-refund-check', name: 'Negotiated-Price Refund Check (Pharmacy)', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },
   { id: 'pbm-reimbursement-check', name: 'PBM Reimbursement Check', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },
+  { id: 'nadac-margin', name: 'Pharmacy Margin Against NADAC', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },
   { id: 'medicaid-ura', name: 'Medicaid Unit Rebate Amount', group: 'B', audiences: ['billers', 'clinicians'], clinical: false },
   { id: 'ipledge-dispense-window', name: 'iPLEDGE Dispense Window (Isotretinoin)', group: 'Q', audiences: ['clinicians', 'patients'], clinical: false },
   { id: 'which-appeal-path', name: 'Which Appeal Rules Apply?', group: 'C', audiences: ['billers', 'patients', 'clinicians'], clinical: false },
