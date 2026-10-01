@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `f4c146b4d85dd5e2`
-Generated: 2026-10-01T04:22:17.139Z
+Build ID: `ec982dfeee6b7467`
+Generated: 2026-10-01T05:37:03.547Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -764,7 +764,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/pa-criteria-v1502.js` | 6063 | `7478c54061433847351d3b497907feb2c9d07c5bc1182c63b9416664db726299` |
 | `lib/pa-metrics-compare.js` | 10180 | `243045220eade4a4121eb4ec619df15240f97463e1fcd1f4e51121d0e00f5d09` |
 | `lib/pa/classify.js` | 3432 | `a7958e40890ad63ebf68ce5a0107fe7ab5a5b0c9e877e2669e8f44ecfb7f34ca` |
-| `lib/pa/cms-opd-pa-list.js` | 3701 | `d142fdc90cc782bb472d729df2ee6d0e89429cba2ecf0cfc7857a4e7e471b454` |
+| `lib/pa/cms-opd-pa-list.js` | 5593 | `0be9d7b8b9c3be083078df985bb34b6d5510e5dbc9ee94d5c2e32d8aa06c77a9` |
 | `lib/pa/date.js` | 3567 | `5217fa23738763834dc97b8187965f5a678ddbb36b02ba40a1a76981ce3c81d9` |
 | `lib/pa/docx.js` | 12768 | `6a1fe3cfd40a10b0ab50d37cf55cb11796e0e5385ee56101faed12b61894931f` |
 | `lib/pa/engine.js` | 6446 | `3b054765c7e2064de823ae7b0f32ba22e8d58aebd7df4be04c7a151a0401ebf6` |
@@ -774,8 +774,8 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/pa/redact.js` | 8440 | `5869238a8172e79dcbd009dc7c5a89a879fd77eafed2762ec3d40af37dd9f9af` |
 | `lib/pa/report.js` | 9691 | `d19c531e5ee3d480c96dd548c348b314ebcb37beaa3d5e8f87f70680e783e08d` |
 | `lib/pa/rule-sources.js` | 9357 | `6096fc0fc01b68c012dc97cd18de3e82257cb601cdac1a74ee9421d8e5f2add4` |
-| `lib/pa/rules.js` | 1565755 | `7080f21ee1aabf9d55f39bd756f4a12655e5c631f8c6d675966da76211b47d3f` |
-| `lib/pa/staleness-ledger.js` | 72513 | `335a8b32b5974a5c82478a5128fe465951285f8b8f38ee46a90e6a1b91d21865` |
+| `lib/pa/rules.js` | 1565758 | `2a849558bf349b3f2d5ee52899fda487816b74dfbe1335618301e4de52dbb445` |
+| `lib/pa/staleness-ledger.js` | 72634 | `45e1a3c3413c646767200e38d0cf5fdcb82b74bb6a79e716ed6433723c22deb9` |
 | `lib/pa/staleness.js` | 9310 | `99249cde34d35bb57ea644fced966019d1373b34f792f1ea9b42b586b94454df` |
 | `lib/paed-delirium-v1499.js` | 3969 | `c8836be1003c2235bb05d8ce78a07baf922b3039ac798b4bf4a3ae8bb20aca20` |
 | `lib/page-title.js` | 1458 | `575f7d045fda35d9bc5c6a04f70fd76dbf3364a987983ccde90d84fa54b12925` |

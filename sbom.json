@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:f4c146b4-d85d-55e2-8c73-44ceb3f69ac4",
+  "serialNumber": "urn:uuid:ec982dfe-ee6b-5467-8f19-f87d78733a1b",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-01T04:22:17.139Z",
+    "timestamp": "2026-10-01T05:37:03.547Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -15371,7 +15371,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d142fdc90cc782bb472d729df2ee6d0e89429cba2ecf0cfc7857a4e7e471b454"
+          "content": "0be9d7b8b9c3be083078df985bb34b6d5510e5dbc9ee94d5c2e32d8aa06c77a9"
         }
       ],
       "properties": [
@@ -15381,7 +15381,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "3701"
+          "value": "5593"
         }
       ]
     },
@@ -15581,7 +15581,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7080f21ee1aabf9d55f39bd756f4a12655e5c631f8c6d675966da76211b47d3f"
+          "content": "2a849558bf349b3f2d5ee52899fda487816b74dfbe1335618301e4de52dbb445"
         }
       ],
       "properties": [
@@ -15591,7 +15591,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "1565755"
+          "value": "1565758"
         }
       ]
     },
@@ -15602,7 +15602,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "335a8b32b5974a5c82478a5128fe465951285f8b8f38ee46a90e6a1b91d21865"
+          "content": "45e1a3c3413c646767200e38d0cf5fdcb82b74bb6a79e716ed6433723c22deb9"
         }
       ],
       "properties": [
@@ -15612,7 +15612,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "72513"
+          "value": "72634"
         }
       ]
     },
@@ -82334,7 +82334,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "f4c146b4d85dd5e2"
+      "value": "ec982dfeee6b7467"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
