@@ -908,6 +908,7 @@ const PROBES = [
   ['medicare advantage denial internal criteria', ['ma-criteria-check']],
   ['compare two versions of a payer policy', ['payer-policy-diff']],
   ['pharmacy paid below nadac acquisition cost', ['nadac-margin']],
+  ['pbm spread pricing plan pharmacy claims', ['pharmacy-spread-check']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

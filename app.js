@@ -863,7 +863,7 @@ import { renderers as RV1512 } from './views/group-v1512.js';
 import { renderers as RV1505 } from './views/group-v1505.js';
 import { renderers as RV1601 } from './views/group-v1601.js';
 import { renderers as RV1603 } from './views/group-v1603.js';
-import { renderers as RV1604 } from './views/group-v1604.js';
+import { renderers as RV1604, acceptFiles as AF1604 } from './views/group-v1604.js';
 import { renderers as RV1515, acceptFiles as AF1515 } from './views/group-v1515.js';
 import { renderers as RV1516, acceptFiles as AF1516 } from './views/group-v1516.js';
 import { renderers as RV1504 } from './views/group-v1504.js';
@@ -1088,6 +1088,7 @@ const UTILITIES = [
   { id: 'mfp-refund-check', name: 'Negotiated-Price Refund Check (Pharmacy)', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },
   { id: 'pbm-reimbursement-check', name: 'PBM Reimbursement Check', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },
   { id: 'nadac-margin', name: 'Pharmacy Margin Against NADAC', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },
+  { id: 'pharmacy-spread-check', name: 'Pharmacy Spread Check: Claims Against NADAC', group: 'Q', audiences: ['billers'], clinical: false },
   { id: 'medicaid-ura', name: 'Medicaid Unit Rebate Amount', group: 'B', audiences: ['billers', 'clinicians'], clinical: false },
   { id: 'ipledge-dispense-window', name: 'iPLEDGE Dispense Window (Isotretinoin)', group: 'Q', audiences: ['clinicians', 'patients'], clinical: false },
   { id: 'which-appeal-path', name: 'Which Appeal Rules Apply?', group: 'C', audiences: ['billers', 'patients', 'clinicians'], clinical: false },
@@ -5802,7 +5803,7 @@ let currentRouteId = null;
 
 // spec-v1623 step 4: dropped and chosen files. The hand-off maps come from the
 // views that read files; see views/home-files.js.
-const ACCEPT_FILES = { ...AF1515, ...AF1516, ...AF1509, ...AF1513, ...AFPALINT };
+const ACCEPT_FILES = { ...AF1515, ...AF1516, ...AF1509, ...AF1513, ...AF1604, ...AFPALINT };
 function navigateTo(hash) {
   currentRouteId = null;
   if (window.location.hash === hash) route();

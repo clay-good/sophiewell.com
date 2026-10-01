@@ -6,6 +6,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- A plan pharmacy claims check against NADAC: typed claims or a claims file give
+  what the plan and members paid above the national average acquisition cost,
+  by drug and by month, and the spread where the pharmacy's payment is
+  disclosed. A claim with no NADAC for its fill date is listed and left out of
+  the totals, never priced at zero.
+
 - A pharmacy margin check against NADAC: enter an NDC, the fill date, the quantity
   and what the claim paid, and it prices the claim from the bundled NADAC week
   and says whether it was paid below the national average acquisition cost. A

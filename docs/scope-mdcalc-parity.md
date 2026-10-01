@@ -256,3 +256,5 @@ experience**.
 > v1603, payer policy changes — [spec-v1603](spec-v1603.md), which adds `payer-policy-diff` — is 1953.)
 
 > v1510, pharmacy margin against NADAC — [spec-v1510](spec-v1510.md), which adds `nadac-margin` — is 1954.)
+
+> v1604, plan pharmacy claims against NADAC — [spec-v1604](spec-v1604.md), which adds `pharmacy-spread-check` — is 1955.)

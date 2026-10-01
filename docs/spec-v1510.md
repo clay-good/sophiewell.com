@@ -133,5 +133,5 @@ to thousands of dollars per fill, so a missed refund matters to a small pharmacy
     padded segment cannot be known.
   - The worked example prices from an invoice cost, because a NADAC-priced example would change weekly.
 - **Not yet built:** `asp-payment` (the quarterly ASP file), `mfp-refund-reconcile` (the upload
-  workbench), and `nadac-margin`'s claims-CSV batch mode (margin by drug and payer). That batch is the
-  arithmetic `pharmacy-spread-check` ([spec-v1604](spec-v1604.md)) runs on a plan's claims file.
+  workbench), and `nadac-margin`'s pharmacy-side batch mode (margin by drug and payer). The plan-side batch,
+  `pharmacy-spread-check` ([spec-v1604](spec-v1604.md)), was built September 30 and shares `nadacOn`.

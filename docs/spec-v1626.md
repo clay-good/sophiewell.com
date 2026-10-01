@@ -59,6 +59,7 @@ the same PR with what was read and what differed from the plan.
 | 4 | `ma-criteria-check` | Built September 29, 2026 ([spec-v1603](spec-v1603.md#build-status)) |
 | 5 | `dpc-hsa-check` | Built September 29, 2026 ([spec-v1604](spec-v1604.md#build-status)) |
 | 6 | `payer-policy-diff` | Built September 29, 2026 ([spec-v1603](spec-v1603.md#build-status)) |
+| 13 | `pharmacy-spread-check` | Built September 30, 2026 ([spec-v1604](spec-v1604.md#build-status)) |
 
 The shared modules (`json-stream`, `medicare-reprice`, `ncci-lookup`, `schema-check`,
 `preventive`) are not extracted yet; the tools built so far need none of them.
