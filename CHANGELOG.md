@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Medicare Part B drug payment: a HCPCS code, units and the date of service give
+  the allowed amount from CMS's quarterly payment limit file, the patient's
+  coinsurance and Medicare's share after sequestration. The quarter's file is
+  now fetched with the other federal datasets.
+
 - A check for a payer's posted prior authorization report (CMS-0057-F): which
   of the nine required figures are missing, whether stated rates match their
   counts, and whether median decision times are past the deadline for the year.

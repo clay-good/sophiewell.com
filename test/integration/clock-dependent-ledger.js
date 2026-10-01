@@ -38,6 +38,12 @@
 // the dates buys 7 to 120 days and changes nothing else. `timely-filing` reads
 // "173 day(s) remaining" only because its window is 365 days; it is the same
 // tile with more runway, not a better-behaved one.
+//
+// spec-v1604: `pharmacy-spread-check` is the first tile whose example reads bundled FETCHED data (the
+// NADAC week). That data carries an expiresOn two weeks out, and past it every claim's reason becomes
+// "NADAC data has passed its review date" (spec-v1622's fail-closed rule) while the totals stay "none
+// priced". The weekly refresh workflow keeps it current; a year with no refresh is exactly the case that
+// should read differently. Its example uses 2020 fill dates so that nothing else in it moves.
 export const CLOCK_DEPENDENT = new Set([
   'appeal-deadline',
   'code-blue-clock',
@@ -45,6 +51,7 @@ export const CLOCK_DEPENDENT = new Set([
   'due-date',
   'overpayment-60day',
   'pa-turnaround',
+  'pharmacy-spread-check',
   'preg-dating',
   'timely-filing',
 ]);

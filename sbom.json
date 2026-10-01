@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:82f11a05-ee97-5867-85b5-53d35c5b1b3a",
+  "serialNumber": "urn:uuid:f4c146b4-d85d-55e2-8c73-44ceb3f69ac4",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-01T03:17:35.400Z",
+    "timestamp": "2026-10-01T04:22:17.139Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1957 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1958 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a51a1aa56101121760229b6d63a4201a25355f48ef901cb467cdacaca5f61c8d"
+          "content": "cff7ae66c38971592bec726a49ba00d62f1554abfc8e606753b791d46ebe5f8e"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "125401"
+          "value": "125451"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6e5752aa3ca58f8d8f97dac7a2b7383083ecc0e191fdeb1c0db935b714dff821"
+          "content": "8d0e62eb9ba327c5553a1e438170120eae595c9007b5bd4c1317d31e1c273cd8"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "569321"
+          "value": "569457"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b8cad96f701a0862c13abe78340b5fc190cf8f9e30f7e86c36dff64d9585086d"
+          "content": "73d066dcadfdaa27a5e77e423eec44586d4ea0d1a4cd955675651d9c47c9cdd9"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "244361"
+          "value": "244483"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1ccbb515d0e9b50f6db77877ab5aa692c96cd5f9c824c74978c771971b930952"
+          "content": "31a05d92696b4e68c6e02bfb032d210e527b23816ab63f01f45ce93e8540e184"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "112204"
+          "value": "112255"
         }
       ]
     },
@@ -1459,6 +1459,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3878"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/asp-payment.js",
+      "type": "file",
+      "name": "lib/asp-payment.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "45b562fbfb5da1eece32aa524133c3faad7dcc51472a08fb0c5b296bcab2c3d0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5953"
         }
       ]
     },
@@ -12578,7 +12599,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f848bce81edb7b28b9cc9e44462491fe7a2041acb48f4f5779ce8e7b7f4f860e"
+          "content": "420825cbbb39b5452a73a688043c0407d3a1e23b2a8eec0a6985ebe910fc4a08"
         }
       ],
       "properties": [
@@ -12588,7 +12609,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2673080"
+          "value": "2673979"
         }
       ]
     },
@@ -24433,6 +24454,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1109"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/asp-payment.js",
+      "type": "file",
+      "name": "mcp/adapters/asp-payment.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4b96844f8ddb77a9a5ec0778eb2edfa5b8aefede7add9ad952d61b53fbddacaa"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1960"
         }
       ]
     },
@@ -44372,7 +44414,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d3365d28cedcf373ee20033e3409de94758c7f0a01d303c4c5fa3da8ea456ae2"
+          "content": "0a3d909410352b0d207a66dc65b5ea00eb0ff36d8e15f65db18030298254fe7e"
         }
       ],
       "properties": [
@@ -44382,7 +44424,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "114798"
+          "value": "114881"
         }
       ]
     },
@@ -47879,7 +47921,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "64541d1a0ea0602d5007edc831f7538c8bad32e0cd9489eb0d22abd724bfa3e9"
+          "content": "9f52773d52bacdf0324cb7486bd7138fb2438cbea4099ee1f1e0fd2f7d5ecda5"
         }
       ],
       "properties": [
@@ -47889,7 +47931,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "11779"
+          "value": "13884"
         }
       ]
     },
@@ -79228,6 +79270,7 @@
         "urn:sophiewell:file:source:lib/areds-v615.js",
         "urn:sophiewell:file:source:lib/arvc-tfc-v786.js",
         "urn:sophiewell:file:source:lib/asas-ibp-v1476.js",
+        "urn:sophiewell:file:source:lib/asp-payment.js",
         "urn:sophiewell:file:source:lib/asrm-mania-v675.js",
         "urn:sophiewell:file:source:lib/asrs-v513.js",
         "urn:sophiewell:file:source:lib/asthma-control-test-v516.js",
@@ -81237,6 +81280,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/areds-v615.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/arvc-tfc-v786.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/asas-ibp-v1476.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/asp-payment.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/asrm-mania-v675.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/asrs-v513.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/asthma-control-test-v516.js",
@@ -82290,7 +82334,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "82f11a05ee977867"
+      "value": "f4c146b4d85dd5e2"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -82302,7 +82346,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3005"
+      "value": "3007"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

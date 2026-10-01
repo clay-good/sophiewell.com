@@ -132,6 +132,16 @@ to thousands of dollars per fill, so a missed refund matters to a small pharmacy
   - NDCs are normalized from 4-4-2, 5-3-2 and 5-4-1 to 11 digits; 10 bare digits are refused, since the
     padded segment cannot be known.
   - The worked example prices from an invoice cost, because a NADAC-priced example would change weekly.
-- **Not yet built:** `asp-payment` (the quarterly ASP file), `mfp-refund-reconcile` (the upload
+- **Built 2026-09-30:** `asp-payment`, with the new `asp` dataset (`scripts/data/builders/asp.mjs`, the section 508
+  CSV of the newest quarterly ZIP, found by link name on the CMS page; 918 codes in 2026 Q4).
+  - **Differed from the spec:** the tool prices from the payment limit CMS posts per HCPCS unit, not from a
+    recomputed 106% of ASP: the file does not post ASP, and the limit already carries the biosimilar add-on (its
+    Notes say "8% of reference add-on applied") and other methods ("lesser of", AMP-based). The coinsurance is
+    the file's, so an inflation-adjusted coinsurance is used as posted. The product-type input was dropped for the
+    same reason. The 340B hospital outpatient rate is not computed: it is set in each year's OPPS rule, which was
+    not read for this build; the result says so.
+  - A date outside the quarter on file, or a code the file lists with no limit (radium-223 posts "N/A" and its AWP
+    in a note), is not priced; a limit typed from another quarter's file replaces the lookup.
+- **Not yet built:** `mfp-refund-reconcile` (the upload
   workbench), and `nadac-margin`'s pharmacy-side batch mode (margin by drug and payer). The plan-side batch,
   `pharmacy-spread-check` ([spec-v1604](spec-v1604.md)), was built September 30 and shares `nadacOn`.

@@ -262,3 +262,5 @@ experience**.
 > v1601, HSA coverage before the deductible — [spec-v1601](spec-v1601.md), which adds `hsa-predeductible-check` — is 1956.)
 
 > v1603, payer prior authorization reports — [spec-v1603](spec-v1603.md), which adds `pa-metrics-compare` — is 1957.)
+
+> v1510, Medicare Part B drug payment — [spec-v1510](spec-v1510.md), which adds `asp-payment` — is 1958.)

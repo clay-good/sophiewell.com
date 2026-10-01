@@ -25,7 +25,7 @@ const ASYNC_TILES = [
   'field-triage',
   'tetanus', 'rabies-pep', 'bbp-exposure', 'tb-testing', 'sti-screening',
   // spec-v1510/v1604: NADAC, loaded by the view (nadac-margin) or by lib/nadac-load.js (pharmacy-spread-check).
-  'nadac-margin', 'pharmacy-spread-check',
+  'nadac-margin', 'pharmacy-spread-check', 'asp-payment',
 ];
 
 // Every `loadFile` call site in views/. If this moves, a tile has started (or
@@ -37,8 +37,8 @@ const ASYNC_TILES = [
 // spec-v1624 added one that is not a tile's: views/home-files.js loads the
 // record concept map for the records panel, which has no deep link.
 // spec-v1510 added one: nadac-margin's week.json (pharmacy-spread-check loads through lib/nadac-load.js,
-// which this count does not see, so it is listed above by hand).
-const LOAD_FILE_CALLS = 13;
+// which this count does not see, so it is listed above by hand), and asp-payment its period.json.
+const LOAD_FILE_CALLS = 14;
 
 test('the tiles that fetch their inputs still answer their own link', async ({ page }) => {
   test.setTimeout(300_000);

@@ -172,8 +172,7 @@ Since [spec-v1621](spec-v1621.md) these come from the publisher's own files,
 fetched by `node scripts/data/run.mjs` (one builder per dataset under
 `scripts/data/builders/`), checked against bounds and per-edition canaries,
 and written with `coverage: 'full'`, `fetchedAt`, `sourceEdition` and
-`sourceSha256`. No tile reads them yet; the file tools of
-[spec-v1626](spec-v1626.md) will.
+`sourceSha256`.
 
 | Folder | Source | Edition today | Size |
 |---|---|---|---|
@@ -181,6 +180,7 @@ and written with `coverage: 'full'`, `fetchedAt`, `sourceEdition` and
 | `data/drg/` | IPPS Table 5 (correction notice when published), with next year's table as `upcoming.json` until it takes effect | FY2026, FY2027 upcoming | 772 MS-DRGs |
 | `data/mue/` | NCCI medically unlikely edits: practitioner, outpatient hospital and DME tables, one record per code; codes only | 2026 Q4 | 15,349 codes |
 | `data/nadac/` | NADAC, the latest week from the data.medicaid.gov datastore API, sharded by labeler | 2026-09-30 weekly | 30,079 NDCs |
+| `data/asp/` | Medicare Part B drug payment limits, the section 508 CSV of the newest quarterly ZIP; descriptors dropped, `period.json` holds the quarter's dates | 2026 Q4 | 918 codes |
 
 ## Health record concepts
 

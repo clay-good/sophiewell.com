@@ -1,0 +1,60 @@
+{
+  "manifestVersion": 2,
+  "dataset": "asp",
+  "label": "CMS Medicare Part B drug payment limits (ASP)",
+  "sourceUrl": "https://www.cms.gov/medicare/payment/part-b-drugs/asp-pricing-files",
+  "agency": "CMS",
+  "status": "public-domain",
+  "cadence": "quarterly",
+  "recordCount": 918,
+  "shardLayout": "shards",
+  "shards": [
+    {
+      "name": "9.json",
+      "sha256": "a96f8d5b3f260bec87186fe34deac5f2cf3229d1c9543133f1a439661381feaa",
+      "records": 32,
+      "bytes": 3780
+    },
+    {
+      "name": "A.json",
+      "sha256": "6e2810a8f21ed07ce367968b9817deab0de60f783e015ecc20095844bb4aab9f",
+      "records": 10,
+      "bytes": 841
+    },
+    {
+      "name": "J.json",
+      "sha256": "d916c0babc30c73c5a0394870cb92f0f031ad163e32196a52e0976f4b6bbc5f2",
+      "records": 787,
+      "bytes": 65747
+    },
+    {
+      "name": "P.json",
+      "sha256": "286ef9730e3f4dbb8d2672b74f242b27628d9a15fb2e21d4e8f3f64ec8d7c021",
+      "records": 4,
+      "bytes": 317
+    },
+    {
+      "name": "Q.json",
+      "sha256": "dbc9816d145d8874188568e569a75c91cfe6d53cd60df0b188cab64dd96c92d1",
+      "records": 85,
+      "bytes": 9002
+    }
+  ],
+  "ancillary": [
+    "period.json"
+  ],
+  "notes": "The Part B payment limit per HCPCS dosage unit for the quarter (106% of ASP for most drugs; the Notes column marks a biosimilar add-on of 8% of the reference ASP and inflation-adjusted coinsurance). coinsurance is the file's percentage. Codes only; descriptors dropped.",
+  "coverage": "full",
+  "sourceEdition": "2026 Q4",
+  "effectiveFrom": "2026-10-01",
+  "fetchedAt": "2026-10-01",
+  "contentChangedAt": "2026-10-01",
+  "expiresOn": "2027-04-01",
+  "nextExpected": "2026-12-02",
+  "sourceSha256": "a9b7afa80aae96c43cf84bf0b18648f1974429de2913e2e29d8342747174c417",
+  "recordsSha256": "afa25fc0ac1f1ab305de8ea862aeba2622d0a69e04c69eae5dfe3912ed0eec5a",
+  "recordBounds": {
+    "min": 700,
+    "max": 1400
+  }
+}

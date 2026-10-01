@@ -1,4 +1,4 @@
-// spec-v1510: renderers for mfp-refund-check, pbm-reimbursement-check, medicaid-ura, nadac-margin.
+// spec-v1510: renderers for mfp-refund-check, pbm-reimbursement-check, medicaid-ura, nadac-margin, asp-payment.
 
 import { el, clear } from '../lib/dom.js';
 import * as MR from '../lib/mfp-refund-v1510.js';
@@ -6,6 +6,7 @@ import * as PB from '../lib/pbm-reimbursement-v1510.js';
 import * as UR from '../lib/medicaid-ura-v1510.js';
 import * as TC from '../lib/therapy-cost-v1510.js';
 import * as NM from '../lib/nadac-margin.js';
+import * as AP from '../lib/asp-payment.js';
 import { loadManifest, loadFile, loadShard } from '../lib/data.js';
 import { parseDate } from '../lib/pa/date.js';
 import { resultRow } from '../lib/result-copy.js';
@@ -184,6 +185,40 @@ export const renderers = {
           const listed = (manifest.shards || []).some((s) => s.name === NM.shardName(ndc));
           const rows = listed ? await loadShard('nadac', NM.shardName(ndc)) : null;
           return NM.lookupFrom({ ndc, manifest, week, rows });
+        } catch { return { status: 'unavailable' }; }
+      })().then((lookup) => { if (mine === seq) show({ ...args, lookup }); });
+    });
+  },  'asp-payment'(root) {
+    const pairs = [['asp-code', 'code'], ['asp-dos', 'serviceDate'], ['asp-units', 'units'], ['asp-limit', 'limit'], ['asp-coins', 'coinsurance']];
+    textField(root, 'HCPCS code of the drug', 'asp-code', 'e.g. J9035');
+    dateInput(root, 'Date of service', 'asp-dos', 'date');
+    numField(root, 'Units billed, in the code\'s dosage units', 'asp-units', 'e.g. 10', '1000000', '0.001');
+    numField(root, 'Payment limit per unit from another quarter\'s file, dollars (optional)', 'asp-limit', 'e.g. 75.492', '1000000', '0.001');
+    numField(root, 'Coinsurance percentage with that limit (optional)', 'asp-coins', 'e.g. 20', '20', '0.001');
+    const ids = pairs.map(([d]) => d);
+    const o = out(); root.appendChild(o);
+    const show = (args) => safe(o, () => {
+      const r = AP.aspPayment(args);
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: null }, { label: 'Allowed', value: r.bandLabel }]);
+      list(o, r.notes);
+      note(o, r.note);
+    });
+    // The quarter's file is fetched only when no limit was typed; a newer keystroke drops an older answer.
+    let seq = 0;
+    wire(ids, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const code = AP.normalizeHcpcs(args.code);
+      const mine = ++seq;
+      if (String(args.limit).trim() || !code || !parseDate(args.serviceDate)) { show(args); return; }
+      safe(o, () => note(o, 'Looking up the payment limit for this code...'));
+      (async () => {
+        try {
+          const [manifest, period] = await Promise.all([loadManifest('asp'), loadFile('asp', 'period.json')]);
+          const listed = (manifest.shards || []).some((s) => s.name === AP.shardName(code));
+          const rows = listed ? await loadShard('asp', AP.shardName(code)) : null;
+          return AP.aspLookup({ code, manifest, period, rows });
         } catch { return { status: 'unavailable' }; }
       })().then((lookup) => { if (mine === seq) show({ ...args, lookup }); });
     });

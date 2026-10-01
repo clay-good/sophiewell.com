@@ -984,6 +984,7 @@ const UTILITIES = [
   { id: 'mppr', name: 'Multiple-Procedure Payment Reduction (MPPR)', group: 'B', audiences: ['billers'], clinical: false },
   { id: 'bilateral-pay', name: 'Bilateral (Modifier 50) Payment by Indicator', group: 'B', audiences: ['billers'], clinical: false },
   { id: 'multi-surgeon-pay', name: 'Assistant / Co- / Team-Surgeon Payment', group: 'B', audiences: ['billers'], clinical: false },
+  { id: 'asp-payment', name: 'Medicare Part B Drug Payment (ASP)', group: 'B', audiences: ['billers', 'clinicians'], clinical: false },
   { id: 'sequestration-adjust', name: 'Medicare 2% Sequestration Adjustment', group: 'B', audiences: ['billers'], clinical: false },
   // spec-v79: claim edits & modifier logic. v78 prices the line; these five
   // decide whether it survives. No NCCI PTP / MUE table ships (doctrine clause 2):

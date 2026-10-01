@@ -30,5 +30,13 @@
     "etag": "\"1790706975-gzip\"",
     "lastModified": "Tue, 29 Sep 2026 18:36:15 GMT",
     "fetchedAt": "2026-09-29"
+  },
+  "asp": {
+    "url": "https://www.cms.gov/files/zip/october-2026-medicare-part-b-payment-limit-files-final.zip",
+    "edition": "2026 Q4",
+    "sha256": "a9b7afa80aae96c43cf84bf0b18648f1974429de2913e2e29d8342747174c417",
+    "etag": null,
+    "lastModified": "Thu, 17 Sep 2026 14:51:57 GMT",
+    "fetchedAt": "2026-10-01"
   }
 }
