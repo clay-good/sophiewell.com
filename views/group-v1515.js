@@ -10,6 +10,7 @@ const claimWorkerUrl = new URL('../lib/x12-837-worker.js', import.meta.url);
 const eligibilityWorkerUrl = new URL('../lib/x12-271-worker.js', import.meta.url);
 const statusWorkerUrl = new URL('../lib/x12-277-worker.js', import.meta.url);
 const hptWorkerUrl = new URL('../lib/hpt-worker.js', import.meta.url);
+const hptCompareWorkerUrl = new URL('../lib/hpt-compare-worker.js', import.meta.url);
 const analysisWorkerUrl = new URL('../lib/remittance-analysis-worker.js', import.meta.url);
 
 function table(root, caption, headers, rows) {
@@ -348,7 +349,58 @@ function hptFileCheck(root) {
   });
 }
 
-export const renderers = { 'x12-835-reader': reader835, 'x12-837-check': check837, 'x12-271-reader': reader271, 'x12-277-reader': reader277, 'hpt-file-check': hptFileCheck, 'denial-pattern-report': denialPattern, 'underpayment-check': underpayment };
+// spec-v1515 tool 6: one code across several hospital price files, streamed in a Worker.
+function hptPriceCompare(root) {
+  root.appendChild(el('p', { class: 'notice', text: 'Compares one billing code across hospital price files you downloaded (CMS v3.0.0 CSV tall, CSV wide or JSON): gross charge, discounted cash price, and each payer\'s negotiated rate, side by side.' }));
+  root.appendChild(el('p', { class: 'muted', text: 'The files stay in this tab and are read in a stream, so a large file is never held whole.' }));
+  const codeWrap = el('p');
+  codeWrap.appendChild(el('label', { for: 'hptc-code', text: 'Billing code (CPT, HCPCS, MS-DRG or revenue code; a type may lead, as in MS-DRG 470)' }));
+  codeWrap.appendChild(el('br'));
+  const code = el('input', { id: 'hptc-code', type: 'text', autocomplete: 'off', placeholder: 'e.g. 70553' });
+  codeWrap.appendChild(code);
+  root.appendChild(codeWrap);
+  const input = el('input', { id: 'hptc-files', type: 'file', multiple: true, accept: '.csv,.json,text/csv,application/json' });
+  const status = el('p', { id: 'hptc-status', class: 'muted', role: 'status', 'aria-live': 'polite' });
+  const results = el('div', { id: 'q-results', 'aria-live': 'polite' });
+  root.appendChild(el('label', { for: 'hptc-files', text: 'Choose two or more hospital price files' })); root.appendChild(input); root.appendChild(status); root.appendChild(results);
+  let worker = null;
+  const run = () => {
+    if (worker) worker.terminate(); clear(results);
+    const files = [...(input.files || [])];
+    if (!files.length) { status.textContent = ''; return; }
+    if (!code.value.trim()) { status.textContent = 'Enter the billing code to compare.'; return; }
+    status.textContent = 'Reading the files locally...';
+    worker = new window.Worker(hptCompareWorkerUrl, { type: 'module' });
+    worker.addEventListener('error', () => { status.textContent = 'The hospital price files could not be read.'; });
+    worker.addEventListener('message', (event) => {
+      const m = event.data || {};
+      if (m.type === 'error') { status.textContent = m.message; return; }
+      if (m.type === 'progress') { status.textContent = `Reading ${m.name} (${(m.done + 1).toLocaleString('en-US')} of ${m.total.toLocaleString('en-US')})...`; return; }
+      if (m.type !== 'compared') return;
+      if (!m.valid) { status.textContent = m.message; return; }
+      status.textContent = `${files.length.toLocaleString('en-US')} file${files.length === 1 ? '' : 's'} read.`;
+      resultRow(results, [{ text: m.band, cls: null }, { label: 'Compared', value: m.bandLabel }]);
+      const money = (n) => (n == null ? '' : `$${n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`);
+      if (m.table.length) table(results, `Prices for ${code.value.trim()}`, ['Hospital', 'Setting', 'Gross', 'Cash', 'Payer', 'Plan', 'Negotiated', 'Median allowed'], m.table.slice(0, 200).map((t) => [t.hospital, t.setting, money(t.gross), money(t.cash), t.payer, t.plan, t.negotiated, money(t.median)]));
+      const ul = el('ul'); for (const n of m.notes) ul.appendChild(el('li', { text: n })); results.appendChild(ul);
+      if (m.csv) {
+        const wrap = el('p'); const button = el('button', { type: 'button', text: 'Download the comparison CSV' });
+        button.addEventListener('click', () => {
+          const url = window.URL.createObjectURL(new Blob([m.csv], { type: 'text/csv;charset=utf-8' }));
+          const anchor = el('a', { href: url, download: `hpt-price-compare-${code.value.trim().replace(/[^A-Za-z0-9-]+/g, '-')}.csv` });
+          anchor.click(); window.setTimeout(() => window.URL.revokeObjectURL(url), 0);
+        });
+        wrap.appendChild(button); results.appendChild(wrap);
+      }
+      renderReceipt(results, m);
+    });
+    worker.postMessage({ type: 'compare', files, code: code.value });
+  };
+  input.addEventListener('change', run);
+  code.addEventListener('change', run);
+}
+
+export const renderers = { 'x12-835-reader': reader835, 'x12-837-check': check837, 'x12-271-reader': reader271, 'x12-277-reader': reader277, 'hpt-file-check': hptFileCheck, 'hpt-price-compare': hptPriceCompare, 'denial-pattern-report': denialPattern, 'underpayment-check': underpayment };
 
 // spec-v1623 step 3: files handed off from a drop go through each tool's own
 // input. underpayment-check takes the remittances; its fee schedule is chosen
@@ -361,4 +413,5 @@ export const acceptFiles = {
   'x12-271-reader': acceptVia('x271-file'),
   'x12-277-reader': acceptVia('x277-files'),
   'hpt-file-check': acceptVia('hpt-file'),
+  'hpt-price-compare': acceptVia('hptc-files'),
 };

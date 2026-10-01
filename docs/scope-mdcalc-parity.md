@@ -272,3 +272,5 @@ experience**.
 > v1512, infusion chair day planner — [spec-v1512](spec-v1512.md), which adds `chair-day-planner` — is 1961.)
 
 > v1505, Medicare Part B or Part D for a drug — [spec-v1505](spec-v1505.md), which adds `part-b-or-d` — is 1962.)
+
+> v1515, hospital price comparison — [spec-v1515](spec-v1515.md), which adds `hpt-price-compare` — is 1963.)

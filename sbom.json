@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:eb9030fc-e955-5930-8135-aaf5b61ee5f7",
+  "serialNumber": "urn:uuid:37058c36-09c6-5cb8-83d9-eb3fbe63258b",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-01T14:18:28.612Z",
+    "timestamp": "2026-10-01T16:29:02.741Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1962 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1963 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a6af5a40b7b965e06169df02f74d8ede835d4ca7a33f4e8f870a5aa3cbe5b0be"
+          "content": "a58e4e503b022f1eea919e241acd8e203d9a46a03992528b57bf22370f4f0959"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "125666"
+          "value": "125729"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7e5ca31aee63e48fa89283e1c599cde4fbfcb0336b6f2d84df8ce4ad23acbb9c"
+          "content": "2545e9d3b6066bf4b4ab10cd24f799170026131eb081cf2a10fe1febf410d96e"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "570171"
+          "value": "570324"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b25e73d6e1428a8a06edaaa2d02572b000c69523c3b9dab20c62a3275f4fd051"
+          "content": "c0b0366f6b6bebf53cbb0c543d1018c94597344f2b7594c54eecc591755458be"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "245002"
+          "value": "245130"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "55ee56806ff2f03e26f3e19b874d06868647bac5c8f1db4d4ab862d32cfcf71e"
+          "content": "a763b8a17f0d83d3713e3d8cf38c94fef17948d8a8c41cf33e25fbf8459da8e3"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "112505"
+          "value": "112575"
         }
       ]
     },
@@ -6950,7 +6950,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9fc526f20fa3279fdf443042698a0c22977386b56ba3f36d4c18d7a9384c67e0"
+          "content": "64cc6dcff7087dda32f3e53c5e8ae4ed10dccd48b2ee5566d6e2860525f41378"
         }
       ],
       "properties": [
@@ -6960,7 +6960,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "28684"
+          "value": "28690"
         }
       ]
     },
@@ -9254,6 +9254,48 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/hpt-compare-worker.js",
+      "type": "file",
+      "name": "lib/hpt-compare-worker.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1cff24c2a4d5f3cc9c1b78d1bdeaa5480145a984bf46bc6a7f5287296131063d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2069"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/hpt-compare.js",
+      "type": "file",
+      "name": "lib/hpt-compare.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2d863984afbde9a998b34bea0aa39a28b034c4b63331e06ca35c6772d94be05c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "10650"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/hpt-run.js",
       "type": "file",
       "name": "lib/hpt-run.js",
@@ -9281,7 +9323,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ddc4972fc839c9d87da5cfeb293e52f710ff3c90b0b5df55a12038b04f4ec6c8"
+          "content": "2f413226b33bee298d3b6324419a177a99bdfd4258eabfa16b83891e693b9bd2"
         }
       ],
       "properties": [
@@ -9291,7 +9333,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "11684"
+          "value": "6222"
         }
       ]
     },
@@ -10384,6 +10426,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "5123"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/json-stream.js",
+      "type": "file",
+      "name": "lib/json-stream.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a29d79b009dce2e8a2b651e8c27487d4f420c366507769119ebc551d08ff4821"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5855"
         }
       ]
     },
@@ -12662,7 +12725,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "bf9ecddb48c001d8615f38c0e7d39c7cfc51c489f74b06dd602ed0d6166c72f5"
+          "content": "b4bfb538dbd0121ee99d8542a378f78004efcb2f46e27a8888b28ddba6c076b6"
         }
       ],
       "properties": [
@@ -12672,7 +12735,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2677047"
+          "value": "2677645"
         }
       ]
     },
@@ -48236,7 +48299,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "19f6b725782506da0b1a242baa3c8e33d73f244db506b17d29038007c0b275b9"
+          "content": "e0adcc4ae33901488be4486a5160e12757e045033e8c1aca3b668f65b205b83c"
         }
       ],
       "properties": [
@@ -48246,7 +48309,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "31810"
+          "value": "35927"
         }
       ]
     },
@@ -79851,6 +79914,8 @@
         "urn:sophiewell:file:source:lib/hospice-cap-v1514.js",
         "urn:sophiewell:file:source:lib/hospital-fap-v1508.js",
         "urn:sophiewell:file:source:lib/hpa-glaucoma-v801.js",
+        "urn:sophiewell:file:source:lib/hpt-compare-worker.js",
+        "urn:sophiewell:file:source:lib/hpt-compare.js",
         "urn:sophiewell:file:source:lib/hpt-run.js",
         "urn:sophiewell:file:source:lib/hpt-stream-v1515.js",
         "urn:sophiewell:file:source:lib/hpt-v1515.js",
@@ -79905,6 +79970,7 @@
         "urn:sophiewell:file:source:lib/johnson-strom-flatfoot-v1421.js",
         "urn:sophiewell:file:source:lib/jones-v315.js",
         "urn:sophiewell:file:source:lib/json-head.js",
+        "urn:sophiewell:file:source:lib/json-stream.js",
         "urn:sophiewell:file:source:lib/jta-thyroid-storm-v598.js",
         "urn:sophiewell:file:source:lib/just-culture-v919.js",
         "urn:sophiewell:file:source:lib/k6-v735.js",
@@ -82554,7 +82620,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "eb9030fce9557930"
+      "value": "37058c3609c66cb8"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -82566,7 +82632,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3017"
+      "value": "3020"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

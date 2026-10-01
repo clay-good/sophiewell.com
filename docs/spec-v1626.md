@@ -64,5 +64,6 @@ the same PR with what was read and what differed from the plan.
 | 6 | `payer-policy-diff` | Built September 29, 2026 ([spec-v1603](spec-v1603.md#build-status)) |
 | 13 | `pharmacy-spread-check` | Built September 30, 2026 ([spec-v1604](spec-v1604.md#build-status)) |
 
-The shared modules (`json-stream`, `medicare-reprice`, `ncci-lookup`, `schema-check`,
-`preventive`) are not extracted yet; the tools built so far need none of them.
+`lib/json-stream.js` was extracted unchanged from `lib/hpt-stream-v1515.js` on October 1, 2026 (for
+`hpt-price-compare`); `hpt-file-check`'s tests pass unchanged. The other shared modules (`medicare-reprice`,
+`ncci-lookup`, `schema-check`, `preventive`) are not extracted yet; the tools built so far need none of them.

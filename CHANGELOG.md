@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Compare one service across hospital price files: choose two or more CMS price
+  files and a billing code to see each hospital's gross, cash and negotiated
+  prices side by side, with a CSV.
+
 - Medicare Part B or Part D for this drug? The category and the one question that
   decides it give the part that pays, with the statute paragraph behind it.
 

@@ -10228,6 +10228,17 @@
     },
     {
       "phrases": [
+        "compare hospital prices",
+        "hospital price transparency compare",
+        "cash price at different hospitals",
+        "compare negotiated rates across hospitals",
+        "which hospital is cheapest for this procedure"
+      ],
+      "tile": "hpt-price-compare",
+      "audience": "patients"
+    },
+    {
+      "phrases": [
         "wiser prior authorization",
         "medicare prior authorization list",
         "opd prior authorization",
