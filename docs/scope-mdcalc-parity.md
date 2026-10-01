@@ -260,3 +260,5 @@ experience**.
 > v1604, plan pharmacy claims against NADAC — [spec-v1604](spec-v1604.md), which adds `pharmacy-spread-check` — is 1955.)
 
 > v1601, HSA coverage before the deductible — [spec-v1601](spec-v1601.md), which adds `hsa-predeductible-check` — is 1956.)
+
+> v1603, payer prior authorization reports — [spec-v1603](spec-v1603.md), which adds `pa-metrics-compare` — is 1957.)

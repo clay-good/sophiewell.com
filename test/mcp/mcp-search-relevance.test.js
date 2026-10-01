@@ -910,6 +910,7 @@ const PROBES = [
   ['pharmacy paid below nadac acquisition cost', ['nadac-margin']],
   ['pbm spread pricing plan pharmacy claims', ['pharmacy-spread-check']],
   ['hsa plan cover statin before deductible chronic condition', ['hsa-predeductible-check']],
+  ['payer prior authorization approval rate report cms-0057-f', ['pa-metrics-compare']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

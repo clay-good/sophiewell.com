@@ -941,6 +941,7 @@ import dpcHsaCheck from './adapters/dpc-hsa-check.js';
 import hsaPredeductibleCheck from './adapters/hsa-predeductible-check.js';
 import maCriteriaCheck from './adapters/ma-criteria-check.js';
 import payerPolicyDiff from './adapters/payer-policy-diff.js';
+import paMetricsCompare from './adapters/pa-metrics-compare.js';
 import pdcStarV1513 from './adapters/pdc-star-v1513.js';
 import imidRemsV1511 from './adapters/imid-rems-v1511.js';
 import benefitsV1505 from './adapters/benefits-v1505.js';
@@ -1938,6 +1939,7 @@ const ADAPTER_MODULES = [
   ['hsa-predeductible-check', hsaPredeductibleCheck],
   ['ma-criteria-check', maCriteriaCheck],
   ['payer-policy-diff', payerPolicyDiff],
+  ['pa-metrics-compare', paMetricsCompare],
   ['pdc-star-v1513', pdcStarV1513],
   ['imid-rems-v1511', imidRemsV1511],
   ['benefits-v1505', benefitsV1505],

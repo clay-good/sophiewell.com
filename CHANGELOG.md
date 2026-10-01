@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- A check for a payer's posted prior authorization report (CMS-0057-F): which
+  of the nine required figures are missing, whether stated rates match their
+  counts, and whether median decision times are past the deadline for the year.
+
 - HSA safe harbors: what a high deductible health plan can cover before the
   deductible. It checks an item against preventive care, the chronic-condition
   list of Notice 2019-45 (each item only for its diagnosed condition), insulin

@@ -8656,6 +8656,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/payer-policy-diff.js (spec-v1603: Payer policy changes — administrative disclaimer)
 - `payer-policy-diff`
 
+### lib/pa-metrics-compare.js (spec-v1603: Payer prior authorization reports — administrative disclaimer)
+- `pa-metrics-compare`
+
 ### lib/pdc-star-v1513.js (spec-v1513: Part D adherence (PDC, Star method) — administrative disclaimer)
 - `pdc-star`
 

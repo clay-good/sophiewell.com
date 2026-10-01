@@ -9997,6 +9997,17 @@
     },
     {
       "phrases": [
+        "prior authorization metrics report",
+        "cms-0057-f public reporting",
+        "payer prior authorization approval rate",
+        "insurer prior authorization denial rate",
+        "check a payer's prior auth report"
+      ],
+      "tile": "pa-metrics-compare",
+      "audience": "billers"
+    },
+    {
+      "phrases": [
         "proportion of days covered",
         "medication possession ratio",
         "pdc calculator",
