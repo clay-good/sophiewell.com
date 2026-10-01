@@ -266,3 +266,5 @@ experience**.
 > v1510, Medicare Part B drug payment — [spec-v1510](spec-v1510.md), which adds `asp-payment` — is 1958.)
 
 > v1502, Original Medicare prior authorization lists — [spec-v1502](spec-v1502.md), which adds `medicare-ffs-pa-required` — is 1959.)
+
+> v1506, Part B drug coinsurance — [spec-v1506](spec-v1506.md), which adds `part-b-drug-coinsurance` — is 1960.)

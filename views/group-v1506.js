@@ -6,6 +6,10 @@ import * as MC from '../lib/marketplace-credit-v1506.js';
 import * as PC from '../lib/partd-costs-v1506.js';
 import * as CC from '../lib/copay-card-v1506.js';
 import * as MF from '../lib/mfp-prices-v1506.js';
+import * as PB from '../lib/part-b-drug-coinsurance.js';
+import * as AP from '../lib/asp-payment.js';
+import { loadManifest, loadFile, loadShard } from '../lib/data.js';
+import { parseDate } from '../lib/pa/date.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -30,6 +34,13 @@ function dateInput(root, label, id, type) {
   wrap.appendChild(el('label', { for: id, text: label }));
   wrap.appendChild(el('br'));
   wrap.appendChild(el('input', { id, type }));
+  root.appendChild(wrap);
+}
+function textField(root, label, id, placeholder) {
+  const wrap = el('p');
+  wrap.appendChild(el('label', { for: id, text: label }));
+  wrap.appendChild(el('br'));
+  wrap.appendChild(el('input', { id, type: 'text', autocomplete: 'off', placeholder }));
   root.appendChild(wrap);
 }
 function list(root, items) {
@@ -198,5 +209,40 @@ export const renderers = {
       list(o, r.notes);
       note(o, r.note);
     }));
+  },  'part-b-drug-coinsurance'(root) {
+    const pairs = [['pbdc-code', 'code'], ['pbdc-dos', 'serviceDate'], ['pbdc-units', 'units'], ['pbdc-months', 'months'], ['pbdc-limit', 'limit'], ['pbdc-coins', 'coinsurance']];
+    textField(root, 'HCPCS code of the drug (on your Medicare Summary Notice)', 'pbdc-code', 'e.g. J0897');
+    dateInput(root, 'Date of service', 'pbdc-dos', 'date');
+    numField(root, 'Units billed', 'pbdc-units', 'e.g. 120', '1000000', '0.001');
+    numField(root, 'Months of insulin the supply covers (insulin through a pump only)', 'pbdc-months', 'e.g. 1', '12', '1');
+    numField(root, 'Payment limit per unit from another quarter\'s file, dollars (optional)', 'pbdc-limit', 'e.g. 29.856', '1000000', '0.001');
+    numField(root, 'Coinsurance percentage with that limit (optional)', 'pbdc-coins', 'e.g. 17.885', '20', '0.001');
+    const ids = pairs.map(([d]) => d);
+    const o = out(); root.appendChild(o);
+    const show = (args) => safe(o, () => {
+      const r = PB.partBDrugCoinsurance(args);
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: null }, { label: 'Your share', value: r.bandLabel }]);
+      list(o, r.notes);
+      note(o, r.note);
+    });
+    // The quarter's file is fetched only when no limit was typed; a newer keystroke drops an older answer.
+    let seq = 0;
+    wire(ids, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const code = AP.normalizeHcpcs(args.code);
+      const mine = ++seq;
+      if (String(args.limit).trim() || !code || !parseDate(args.serviceDate)) { show(args); return; }
+      safe(o, () => note(o, 'Looking up the payment limit for this code...'));
+      (async () => {
+        try {
+          const [manifest, period] = await Promise.all([loadManifest('asp'), loadFile('asp', 'period.json')]);
+          const listed = (manifest.shards || []).some((s) => s.name === AP.shardName(code));
+          const rows = listed ? await loadShard('asp', AP.shardName(code)) : null;
+          return AP.aspLookup({ code, manifest, period, rows });
+        } catch { return { status: 'unavailable' }; }
+      })().then((lookup) => { if (mine === seq) show({ ...args, lookup }); });
+    });
   },
 };

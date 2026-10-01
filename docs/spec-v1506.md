@@ -230,4 +230,8 @@ dates). It's the cleanest machine-readable feed in the program (route A).
     (ledger row `cms-negotiated-prices-file`) until the refresh workflow ([spec-v1517](spec-v1517.md))
     exists, and asks after December 31, 2027, because the prices are adjusted every January 1. Lookup by
     NDC and the per-unit prices are not built.
-- **Not yet built:** `part-b-drug-coinsurance` (needs the quarterly CMS ASP file, route A).
+- **Built 2026-10-01:** `part-b-drug-coinsurance`, on the `asp` dataset and `asp-payment`'s arithmetic (imported).
+  The coinsurance is the file's percentage per code (84 codes are below 20% in 2026 Q4, marked "Inflation-adjusted
+  coinsurance"). The pump insulin cap was read in the statute: 42 U.S.C. 1395l(a), concluding provisions, $35 for a
+  month's supply from July 1, 2023, and (b)(13), no deductible; it applies to J1817 and asks for the months the
+  supply covers. The Part B deductible is not computed: the result says it is paid first.

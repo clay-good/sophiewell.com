@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- What will I pay for a Part B drug? The allowed amount, your coinsurance (lower
+  where an inflation reduction applies) and the $35-a-month cap for insulin
+  through a pump.
+
 - Does Original Medicare require prior authorization? A code, setting, state and
   date of service are checked against the CMS outpatient, DMEPOS, ambulance,
   ambulatory surgical center and WISeR lists, each by the date it started.

@@ -953,6 +953,7 @@ import mfpRefundV1510 from './adapters/mfp-refund-v1510.js';
 import pbmReimbursementV1510 from './adapters/pbm-reimbursement-v1510.js';
 import nadacMargin from './adapters/nadac-margin.js';
 import aspPayment from './adapters/asp-payment.js';
+import partBDrugCoinsurance from './adapters/part-b-drug-coinsurance.js';
 import pharmacySpreadCheck from './adapters/pharmacy-spread-check.js';
 import medicaidUraV1510 from './adapters/medicaid-ura-v1510.js';
 import entity340bV1509 from './adapters/entity-340b-v1509.js';
@@ -1953,6 +1954,7 @@ const ADAPTER_MODULES = [
   ['pbm-reimbursement-v1510', pbmReimbursementV1510],
   ['nadac-margin', nadacMargin],
   ['asp-payment', aspPayment],
+  ['part-b-drug-coinsurance', partBDrugCoinsurance],
   ['pharmacy-spread-check', pharmacySpreadCheck],
   ['medicaid-ura-v1510', medicaidUraV1510],
   ['entity-340b-v1509', entity340bV1509],
