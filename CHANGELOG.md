@@ -6,6 +6,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Does Original Medicare require prior authorization? A code, setting, state and
+  date of service are checked against the CMS outpatient, DMEPOS, ambulance,
+  ambulatory surgical center and WISeR lists, each by the date it started.
+
+- The PA linter's CMS outpatient prior authorization list now matches CMS: five
+  removed codes and eight never-listed ones are gone, and the botulinum toxin
+  drug codes and four related services are on it.
+
 - Medicare Part B drug payment: a HCPCS code, units and the date of service give
   the allowed amount from CMS's quarterly payment limit file, the patient's
   coinsurance and Medicare's share after sequestration. The quarter's file is

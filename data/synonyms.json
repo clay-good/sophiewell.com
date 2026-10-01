@@ -10195,6 +10195,17 @@
     },
     {
       "phrases": [
+        "wiser prior authorization",
+        "medicare prior authorization list",
+        "opd prior authorization",
+        "dmepos prior authorization required",
+        "does medicare need prior auth"
+      ],
+      "tile": "medicare-ffs-pa-required",
+      "audience": "billers"
+    },
+    {
+      "phrases": [
         "pbm spread pricing",
         "pharmacy claims against nadac",
         "plan sponsor pharmacy spend",

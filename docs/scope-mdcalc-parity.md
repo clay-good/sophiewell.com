@@ -264,3 +264,5 @@ experience**.
 > v1603, payer prior authorization reports — [spec-v1603](spec-v1603.md), which adds `pa-metrics-compare` — is 1957.)
 
 > v1510, Medicare Part B drug payment — [spec-v1510](spec-v1510.md), which adds `asp-payment` — is 1958.)
+
+> v1502, Original Medicare prior authorization lists — [spec-v1502](spec-v1502.md), which adds `medicare-ffs-pa-required` — is 1959.)

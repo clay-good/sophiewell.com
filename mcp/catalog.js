@@ -916,6 +916,7 @@ import acaExternalReviewV1503 from './adapters/aca-external-review-v1503.js';
 import medicaidAppealClockV1503 from './adapters/medicaid-appeal-clock-v1503.js';
 import qioDischargeAppealV1503 from './adapters/qio-discharge-appeal-v1503.js';
 import authRunoutV1502 from './adapters/auth-runout-v1502.js';
+import medicareFfsPaRequired from './adapters/medicare-ffs-pa-required.js';
 import authUnitsRequestV1502 from './adapters/auth-units-request-v1502.js';
 import quantityLimitCheckV1502 from './adapters/quantity-limit-check-v1502.js';
 import medicarePenaltiesV1507 from './adapters/medicare-penalties-v1507.js';
@@ -1915,6 +1916,7 @@ const ADAPTER_MODULES = [
   ['medicaid-appeal-clock-v1503', medicaidAppealClockV1503],
   ['qio-discharge-appeal-v1503', qioDischargeAppealV1503],
   ['auth-runout-v1502', authRunoutV1502],
+  ['medicare-ffs-pa-required', medicareFfsPaRequired],
   ['auth-units-request-v1502', authUnitsRequestV1502],
   ['quantity-limit-check-v1502', quantityLimitCheckV1502],
   ['medicare-penalties-v1507', medicarePenaltiesV1507],

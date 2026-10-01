@@ -57,6 +57,7 @@ the same PR with what was read and what differed from the plan.
 |---|---|---|
 | 2 | `preventive-cost-share-check` | Built September 29, 2026 ([spec-v1601](spec-v1601.md#build-status)) |
 | 3 | `hsa-predeductible-check` | Built September 30, 2026 ([spec-v1601](spec-v1601.md#build-status)) |
+| 14 | backfill `medicare-ffs-pa-required` (WISeR) | Built September 30, 2026 ([spec-v1502](spec-v1502.md#build-status)) |
 | 7 | `pa-metrics-compare` | Built September 30, 2026, without the bundled market table ([spec-v1603](spec-v1603.md#build-status)) |
 | 4 | `ma-criteria-check` | Built September 29, 2026 ([spec-v1603](spec-v1603.md#build-status)) |
 | 5 | `dpc-hsa-check` | Built September 29, 2026 ([spec-v1604](spec-v1604.md#build-status)) |

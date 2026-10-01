@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:ec982dfe-ee6b-5467-8f19-f87d78733a1b",
+  "serialNumber": "urn:uuid:3a406783-6090-5a4d-8dec-d081f4bf9143",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-01T05:37:03.547Z",
+    "timestamp": "2026-10-01T05:57:07.555Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1958 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1959 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "cff7ae66c38971592bec726a49ba00d62f1554abfc8e606753b791d46ebe5f8e"
+          "content": "bdc0e6c0ee8e2e91a3fcd5c030f452edf1bf53d9bc3307c4c541a1d987e15e94"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "125451"
+          "value": "125518"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8d0e62eb9ba327c5553a1e438170120eae595c9007b5bd4c1317d31e1c273cd8"
+          "content": "59e9b181c5eab260d935ae1cdd8552c17b3372bde2efca6d88760c0e47cb5f5d"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "569457"
+          "value": "569635"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "73d066dcadfdaa27a5e77e423eec44586d4ea0d1a4cd955675651d9c47c9cdd9"
+          "content": "b4ba2908f3bafeba8c878af35fc1aaf9fd70a76b10fb4d67ba4d6f043f36f206"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "244483"
+          "value": "244618"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "31a05d92696b4e68c6e02bfb032d210e527b23816ab63f01f45ce93e8540e184"
+          "content": "d06dbfecd023965d24722f019b261914ac01388160502252fcd0e2373cebae77"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "112255"
+          "value": "112336"
         }
       ]
     },
@@ -12446,6 +12446,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/medicare-ffs-pa-required.js",
+      "type": "file",
+      "name": "lib/medicare-ffs-pa-required.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d27dc0312337a2fd7a4cd4a84a69899a04decd56cad05220452f6e598bca7191"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "16276"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/medicare-penalties-v1507.js",
       "type": "file",
       "name": "lib/medicare-penalties-v1507.js",
@@ -12599,7 +12620,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "420825cbbb39b5452a73a688043c0407d3a1e23b2a8eec0a6985ebe910fc4a08"
+          "content": "77cb09410ce46ce3610f649abdee5c4dd5e1c799d46a66b03aa5367155a29725"
         }
       ],
       "properties": [
@@ -12609,7 +12630,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2673979"
+          "value": "2674852"
         }
       ]
     },
@@ -34790,6 +34811,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/medicare-ffs-pa-required.js",
+      "type": "file",
+      "name": "mcp/adapters/medicare-ffs-pa-required.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "eebf12722cfdb13ba2cb6688fc051983b0a304aa3191f706013d7e2c937bdcc1"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1018"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/medicare-penalties-v1507.js",
       "type": "file",
       "name": "mcp/adapters/medicare-penalties-v1507.js",
@@ -44414,7 +44456,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0a3d909410352b0d207a66dc65b5ea00eb0ff36d8e15f65db18030298254fe7e"
+          "content": "de07ff892629c8208027cc2c8f90a5fb2495c853f9e6124d5e9a909f4f9f2940"
         }
       ],
       "properties": [
@@ -44424,7 +44466,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "114881"
+          "value": "115012"
         }
       ]
     },
@@ -47732,7 +47774,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3bc67add02e08e983c5cafa8ef0fa0327f55704973b2cae17e202e48174b4150"
+          "content": "5902d6841fd20df6273be3a14d0f8f88468a7d8cff7f2dddd96ea5e6fc1b9e46"
         }
       ],
       "properties": [
@@ -47742,7 +47784,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "11687"
+          "value": "12699"
         }
       ]
     },
@@ -79793,6 +79835,7 @@
         "urn:sophiewell:file:source:lib/medicaid-ura-v1510.js",
         "urn:sophiewell:file:source:lib/medicaid-work-requirement-v1507.js",
         "urn:sophiewell:file:source:lib/medicare-enrollment-window-v1507.js",
+        "urn:sophiewell:file:source:lib/medicare-ffs-pa-required.js",
         "urn:sophiewell:file:source:lib/medicare-penalties-v1507.js",
         "urn:sophiewell:file:source:lib/medication-v4.js",
         "urn:sophiewell:file:source:lib/medication-v5.js",
@@ -81772,6 +81815,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/medicaid-ura-v1510.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/medicaid-work-requirement-v1507.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/medicare-enrollment-window-v1507.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/medicare-ffs-pa-required.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/medicare-penalties-v1507.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/medication-v4.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/medication-v5.js",
@@ -82334,7 +82378,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "ec982dfeee6b7467"
+      "value": "3a40678360908a4d"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -82346,7 +82390,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3007"
+      "value": "3009"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

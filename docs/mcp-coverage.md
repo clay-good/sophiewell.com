@@ -8563,6 +8563,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/auth-runout-v1502.js (spec-v1502: Authorization run-out and renewal date — administrative disclaimer)
 - `auth-runout`
 
+### lib/medicare-ffs-pa-required.js (spec-v1502: Original Medicare prior authorization lists — administrative disclaimer)
+- `medicare-ffs-pa-required`
+
 ### lib/auth-units-request-v1502.js (spec-v1502: Authorization units to request — administrative disclaimer)
 - `auth-units-request`
 

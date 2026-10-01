@@ -1,4 +1,4 @@
-// spec-v1502: renderers for auth-runout, auth-units-request, quantity-limit-check.
+// spec-v1502: renderers for auth-runout, auth-units-request, quantity-limit-check, medicare-ffs-pa-required.
 
 import { el, clear } from '../lib/dom.js';
 import * as AR from '../lib/auth-runout-v1502.js';
@@ -6,6 +6,7 @@ import * as AU from '../lib/auth-units-request-v1502.js';
 import * as QL from '../lib/quantity-limit-check-v1502.js';
 import * as ST from '../lib/step-therapy-v1502.js';
 import * as PC from '../lib/pa-criteria-v1502.js';
+import * as MF from '../lib/medicare-ffs-pa-required.js';
 import * as PD from '../lib/payer-policy-diff.js';
 import { resultRow } from '../lib/result-copy.js';
 
@@ -200,6 +201,23 @@ export const renderers = {
         if (!x.before) return `${x.label}: ${x.detail}`;
         return `${x.label}, ${where}"${x.before}" is now "${x.after}"${x.detail ? ` (${x.detail})` : ''}`;
       }));
+      list(o, r.notes);
+      note(o, r.note);
+    }));
+  },  'medicare-ffs-pa-required'(root) {
+    const pairs = [['mfpa-code', 'code'], ['mfpa-setting', 'setting'], ['mfpa-state', 'state'], ['mfpa-dos', 'serviceDate']];
+    textField(root, 'HCPCS or CPT code', 'mfpa-code', 'e.g. 64483');
+    selectField(root, 'Setting', 'mfpa-setting', MF.SETTINGS);
+    selectField(root, 'State where the service is furnished', 'mfpa-state', MF.STATES);
+    dateInput(root, 'Date of service', 'mfpa-dos', 'date');
+    const ids = pairs.map(([d]) => d);
+    const o = out(); root.appendChild(o);
+    wire(ids, () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = MF.medicareFfsPaRequired(args);
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Original Medicare', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
     }));

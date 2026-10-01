@@ -909,6 +909,7 @@ const PROBES = [
   ['compare two versions of a payer policy', ['payer-policy-diff']],
   ['pharmacy paid below nadac acquisition cost', ['nadac-margin']],
   ['medicare part b drug payment limit asp j9035', ['asp-payment']],
+  ['does original medicare require prior authorization wiser', ['medicare-ffs-pa-required']],
   ['pbm spread pricing plan pharmacy claims', ['pharmacy-spread-check']],
   ['hsa plan cover statin before deductible chronic condition', ['hsa-predeductible-check']],
   ['payer prior authorization approval rate report cms-0057-f', ['pa-metrics-compare']],
