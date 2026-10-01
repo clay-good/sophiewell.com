@@ -1,0 +1,14 @@
+October 2026 ASP NDC - HCPCS Crosswalk for Medicare Part B Drugs,,,,,,,,,
+"     Effective October 1, 2026 through December 31, 2026",,,,,,,,,
+,,,,,,,,,
+The ASP crosswalks are maintained by the Division of Data Analysis and Market Based Pricing to support ASP-based Medicare Part B payments only. The crosswalks are intended to help the public (including entities that submit manufacturer ASP data and providers who bill for drugs) understand which drug products (identified by NDCs) are assigned to which HCPCS billing codes. The crosswalks are not intended to be a comprehensive list of all drugs/NDCs available in the United States. The NDC to HCPCS Crosswalk also includes information on the NDC package size and the number of billable units (as defined by the HCPCS code descriptor). Comments on the file may be sent to sec303aspdata@cms.hhs.gov.,,,,,,,,,
+,,,,,,,,,
+,,,,,,,,,
+,,,,,,,,,
+,,,,,,,,,
+_2026_CODE,Short Description,LABELER NAME,NDC,Drug Name,HCPCS dosage,PKG SIZE,PKG QTY,BILLUNITS,BILLUNITSPKG
+J7331,"Synojoynt, inj., 1 mg","Arthrex, Inc.",888867413689,SynoJoynt,1 MG,2,3,20,60
+J9035,Bevacizumab injection,"Genentech, Inc.",50242-0060-01,Avastin,10 MG,4,1,10,10
+J9035,Bevacizumab injection,"Genentech, Inc.",50242-0061-01,Avastin,10 MG,16,1,40,40
+Q5105,Inj retacrit esrd on dialysi,Pfizer Inc,00069-1305-10,Retacrit,100 UNITS,1,10,20,200
+Q5106,Inj retacrit non-esrd use,Pfizer Inc,00069-1305-10,Retacrit,1000 UNITS,1,10,2,20

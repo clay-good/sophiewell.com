@@ -38,5 +38,13 @@
     "etag": null,
     "lastModified": "Thu, 17 Sep 2026 14:51:57 GMT",
     "fetchedAt": "2026-10-01"
+  },
+  "asp-ndc": {
+    "url": "https://www.cms.gov/files/zip/october-2026-ndc-hcpcs-crosswalk-final.zip",
+    "edition": "2026 Q4",
+    "sha256": "e6bbf7c61e6d8bbbe83cac1272772ef7e5ff2ff2dc7029a75eede77201ef5ab1",
+    "etag": null,
+    "lastModified": "Thu, 17 Sep 2026 14:53:41 GMT",
+    "fetchedAt": "2026-10-01"
   }
 }

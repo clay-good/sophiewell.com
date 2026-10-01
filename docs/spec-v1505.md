@@ -116,6 +116,13 @@ this one, which the duplicate-tile finder flags.
 - **Built 2026-09-26:** `bi-summary` and `site-of-care-compare` (group Q). Both walk the deductible, coinsurance
   or copay, and the out-of-pocket maximum as a claim adjudicates, on figures the reader enters from the
   benefits check; the summary's facts are typed until the 271 reader ([spec-v1515](spec-v1515.md)) exists.
+- **Built 2026-10-01:** the `ndc-hcpcs-units` backfill, on the new `asp-ndc` dataset
+  (`scripts/data/builders/asp-ndc.mjs`: the ASP crosswalk's section 508 CSV, 7,221 NDCs in 2026 Q4). An NDC
+  (normalized as `nadac-margin` does) finds its code; the code's dosage ("10 MG") sets the billing unit, and the
+  dose converts through the same `ndcHcpcsUnits`. **Found at build:** 138 NDCs bill under more than one code
+  (Retacrit under Q5105 and Q5106, with different units), so the tool asks which; a dosage the converter cannot
+  read ("UP TO 0.50 MG", mEq) gives the code and package units and asks for the unit size; IU is read as units
+  and cc as mL, and the result says so. One crosswalk row carries a 12-digit product number, not an NDC (J7331);
+  it is skipped and named in `member.json`.
 - **Not yet built:** `part-b-or-d` (needs the CMS Part B versus Part D document read in full and the
-  MAC self-administered drug lists), `lcd-diagnosis-check` (Medicare Coverage Database export), and the
-  `ndc-hcpcs-units` backfill (the ASP NDC-HCPCS crosswalk).
+  MAC self-administered drug lists) and `lcd-diagnosis-check` (Medicare Coverage Database export).

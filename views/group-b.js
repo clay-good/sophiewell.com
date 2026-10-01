@@ -20,6 +20,8 @@ import * as Edit from '../lib/billing-v79.js';
 import * as Em from '../lib/billing-v80.js';
 import * as Drug from '../lib/billing-v81.js';
 import * as Integ from '../lib/billing-v83.js';
+import * as XW from '../lib/ndc-crosswalk.js';
+import { loadXwLookup } from '../lib/asp-ndc-load.js';
 
 // ---- shared local helpers (mirrors views/group-v63.js) ----------------------
 function field(label, id, opts = {}) {
@@ -734,7 +736,9 @@ export const renderers = {
   // ===== spec-v81: drug & infusion billing =================================
   // ----- 2.1 ndc-hcpcs-units ------------------------------------------------
   'ndc-hcpcs-units'(root) {
-    root.appendChild(el('p', { class: 'notice', text: 'Converts a dose to the number of HCPCS billing units to report. A J-code\'s billing unit is a fixed amount ("1 unit = 10 mg") -- the units are almost never the milligrams given, and the off-by-a-factor error here is the most common drug-claim mistake. Enter the unit size from the code descriptor. The NDC 10 to 11 Digit Converter flips the digit format; this is dose to units.' }));
+    root.appendChild(el('p', { class: 'notice', text: 'Converts a dose to the number of HCPCS billing units to report. A J-code\'s billing unit is a fixed amount ("1 unit = 10 mg") -- the units are almost never the milligrams given, and the off-by-a-factor error here is the most common drug-claim mistake. Enter the NDC to read the code and its unit from the CMS crosswalk, or enter the unit size from the code descriptor. The NDC 10 to 11 Digit Converter flips the digit format; this is dose to units.' }));
+    root.appendChild(field('NDC (optional; reads the code and unit from the CMS crosswalk)', 'nh-ndc', { placeholder: 'e.g. 50242-0060-01' }));
+    root.appendChild(field('HCPCS code (only if the NDC bills under more than one)', 'nh-code', { placeholder: 'e.g. Q5106' }));
     root.appendChild(field('Dose administered', 'nh-dose', { type: 'number', inputmode: 'decimal', placeholder: '35' }));
     root.appendChild(unitSelect('Dose unit', 'nh-dose-unit', 'mg'));
     root.appendChild(field('Billing-unit size (1 unit = this much)', 'nh-unitsize', { type: 'number', inputmode: 'decimal', placeholder: '10' }));
@@ -745,15 +749,11 @@ export const renderers = {
       { value: 'down', text: 'Round down' },
     ]));
     const o = out(); root.appendChild(o);
-    wire(['nh-dose', 'nh-dose-unit', 'nh-unitsize', 'nh-unit-unit', 'nh-round'], () => safe(o, () => {
-      if (rawEmpty('nh-dose') || rawEmpty('nh-unitsize')) { o.appendChild(el('p', { class: 'muted', text: 'Enter the dose and the billing-unit size.' })); return; }
-      const r = Drug.ndcHcpcsUnits({
-        dose: numv('nh-dose'), doseUnit: str('nh-dose-unit'),
-        unitSize: numv('nh-unitsize'), unitUnit: str('nh-unit-unit'), rounding: str('nh-round'),
-      });
+    const render = (r, extra) => {
       o.appendChild(el('h2', { text: `${r.billingUnits} billing unit(s)` }));
       verdictLine(o, r.note, r.isCleanMultiple ? null : 'flag');
       o.appendChild(derivation([
+        ...(extra ? [['NDC', r.ndc], ['HCPCS code', `${r.code} (${r.drug})`]] : []),
         ['Dose', `${fmt(r.dose)} ${r.doseUnit}`],
         ['Billing unit', `1 unit = ${fmt(r.unitSize)} ${r.unitUnit}`],
         ['Exact ratio (dose / unit)', String(r.exactUnits)],
@@ -761,8 +761,36 @@ export const renderers = {
         ['Billing units to report', String(r.billingUnits)],
         ['Clean multiple?', r.isCleanMultiple ? 'yes' : 'no -- rounding applied'],
       ]));
-      o.appendChild(postureNote('CMS HCPCS Level II drug descriptors; CMS Pub. 100-04 Ch. 17. The unit size is entered from the code descriptor (doctrine clause 2 -- no drug-pricing file ships). Pairs with the Drug Wastage tool to split administered from discarded units.'));
-    }));
+      if (extra) { const ul = el('ul'); for (const t of r.notes) ul.appendChild(li(t)); o.appendChild(ul); }
+      o.appendChild(postureNote(extra
+        ? `${r.source}; CMS Pub. 100-04 Ch. 17. The code and its billing unit come from the crosswalk for this NDC. Pairs with the Drug Wastage tool to split administered from discarded units.`
+        : 'CMS HCPCS Level II drug descriptors; CMS Pub. 100-04 Ch. 17. The unit size is entered from the code descriptor. Pairs with the Drug Wastage tool to split administered from discarded units.'));
+    };
+    // An NDC reads its shard of the crosswalk; a newer keystroke drops an older answer.
+    let seq = 0;
+    wire(['nh-ndc', 'nh-code', 'nh-dose', 'nh-dose-unit', 'nh-unitsize', 'nh-unit-unit', 'nh-round'], () => {
+      const mine = ++seq;
+      if (rawEmpty('nh-ndc')) {
+        safe(o, () => {
+          if (rawEmpty('nh-dose') || rawEmpty('nh-unitsize')) { o.appendChild(el('p', { class: 'muted', text: 'Enter the dose and the billing-unit size, or the NDC.' })); return; }
+          render(Drug.ndcHcpcsUnits({
+            dose: numv('nh-dose'), doseUnit: str('nh-dose-unit'),
+            unitSize: numv('nh-unitsize'), unitUnit: str('nh-unit-unit'), rounding: str('nh-round'),
+          }), false);
+        });
+        return;
+      }
+      const args = { ndc: str('nh-ndc'), code: str('nh-code'), dose: str('nh-dose'), doseUnit: str('nh-dose-unit'), unitSize: str('nh-unitsize'), unitUnit: str('nh-unit-unit'), rounding: str('nh-round') };
+      const ndc = XW.normalizeNdc(args.ndc).ndc;
+      const show = (lookup) => safe(o, () => {
+        const r = XW.ndcUnits({ ...args, lookup });
+        if (!r.valid) { o.appendChild(el('p', { class: 'muted', text: r.message })); return; }
+        render(r, true);
+      });
+      if (!ndc) { show(undefined); return; }
+      safe(o, () => o.appendChild(el('p', { class: 'muted', text: 'Looking up this NDC in the CMS crosswalk...' })));
+      loadXwLookup(ndc).then((lookup) => { if (mine === seq) show(lookup); });
+    });
   },
 
   // ----- 2.2 drug-wastage ---------------------------------------------------

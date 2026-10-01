@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- HCPCS drug billing units now take an NDC: the code, its billing unit and the
+  package's billable units come from the CMS ASP NDC-HCPCS crosswalk, which is
+  fetched each quarter with the other federal datasets.
+
 - What will I pay for a Part B drug? The allowed amount, your coinsurance (lower
   where an inflation reduction applies) and the $35-a-month cap for insulin
   through a pump.

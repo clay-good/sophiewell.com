@@ -181,6 +181,7 @@ and written with `coverage: 'full'`, `fetchedAt`, `sourceEdition` and
 | `data/mue/` | NCCI medically unlikely edits: practitioner, outpatient hospital and DME tables, one record per code; codes only | 2026 Q4 | 15,349 codes |
 | `data/nadac/` | NADAC, the latest week from the data.medicaid.gov datastore API, sharded by labeler | 2026-09-30 weekly | 30,079 NDCs |
 | `data/asp/` | Medicare Part B drug payment limits, the section 508 CSV of the newest quarterly ZIP; descriptors dropped, `period.json` holds the quarter's dates | 2026 Q4 | 918 codes |
+| `data/asp-ndc/` | The ASP NDC-HCPCS crosswalk of the same quarter, one record per 11-digit NDC with each code it bills under (dosage, package size and billable units); descriptors dropped | 2026 Q4 | 7,221 NDCs |
 
 ## Health record concepts
 

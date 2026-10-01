@@ -26,6 +26,8 @@ const ASYNC_TILES = [
   'tetanus', 'rabies-pep', 'bbp-exposure', 'tb-testing', 'sti-screening',
   // spec-v1510/v1604: NADAC, loaded by the view (nadac-margin) or by lib/nadac-load.js (pharmacy-spread-check).
   'nadac-margin', 'pharmacy-spread-check', 'asp-payment', 'part-b-drug-coinsurance',
+  // spec-v1505: an NDC reads the crosswalk through lib/asp-ndc-load.js.
+  'ndc-hcpcs-units',
 ];
 
 // Every `loadFile` call site in views/. If this moves, a tile has started (or

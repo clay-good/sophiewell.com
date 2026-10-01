@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `1481f1c8dcd3557e`
-Generated: 2026-10-01T07:10:12.561Z
+Build ID: `f21bf4a81d3d28d4`
+Generated: 2026-10-01T08:31:49.862Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -102,6 +102,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/areds-v615.js` | 11067 | `7da2179ea02ee6b4f983417d4fedc03f50d680c2b945213a0cf75fefd6411857` |
 | `lib/arvc-tfc-v786.js` | 5723 | `67907ee3cb99b9310521564d36bec3cf34a73040efb426164348b4bd2c3df4b3` |
 | `lib/asas-ibp-v1476.js` | 3878 | `dedd06babae22548c852f5fa6afb1ec87709553967b486de46badf66950ecf08` |
+| `lib/asp-ndc-load.js` | 779 | `7ba9305417023543db343190158b6ff97d6cfa85ccd664262a6854ab1f6a465f` |
 | `lib/asp-payment.js` | 5979 | `282bf9096808b1016e022ee785b72db3f91f03b0d192e320acf0099b172a0d5e` |
 | `lib/asrm-mania-v675.js` | 3304 | `87fd04b0801853da577a43910474e1d44732328cf7df8e4b2fc8a2c91d8fd010` |
 | `lib/asrs-v513.js` | 5231 | `e0cf535b091fbd4ba2715fad03f9224bf6e34f3f4eca6c8ccebb34a9bc5ef5db` |
@@ -633,7 +634,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/membranous-risk-v878.js` | 11351 | `882c36c07e46543e32f1114792c1124ee9f9ff6b384084fc0a8c221e7dd62062` |
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2675717 | `c9323a1bf8ac0e43f0284edf54aae61628b2fffb45fa32dbaa6dbae25636c113` |
+| `lib/meta.js` | 2675693 | `815372a98276e6f8053b6c60f4b4e7dcea9e0b783af1bf1252f90a5374baa9c2` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 19326 | `64342935cc7842381f6e318293cfcd6f97b69022268da6c595c5c71db388af2d` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -677,6 +678,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/nasal-o2-fio2-v1413.js` | 3069 | `6bd5a9399fd010f42a28081beb33dcb32d07b02ff91a8a88f0b53a8e085aafb8` |
 | `lib/nash-moe-rotation-v476.js` | 3250 | `f93c53ace03d4639ba7a6995c1860bddb90842f4075a94632a201017fde9c1ad` |
 | `lib/nassar-gallbladder-v1240.js` | 7993 | `0690648a3bec8b9b3204360c289c01b5aa68c8b4f42c926abccddfb0e6e821ab` |
+| `lib/ndc-crosswalk.js` | 4513 | `2f0fa2c6bf492070239f7936430035fa0323153e1122bf3fb0316f6e65b4f5f0` |
 | `lib/neck-zone-v366.js` | 4104 | `f8a37aad930c4430dc8f51a359936800f596919443223714e8fb03b7bbab1f1f` |
 | `lib/neer-distal-clavicle-v1428.js` | 6413 | `f40c3b616bb63e69ac1961658b35dfe06a9b33236d755e1500ab88ceb6b138b4` |
 | `lib/nems-v544.js` | 11573 | `3b1da51d50862b8f61dc6429d1784a082c7ca9179a55dd122dfe4d6371fc8edf` |
@@ -1232,7 +1234,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/billing-v78.js` | 4835 | `d5f2fafafe7bb3a5d5c678ff8caf6387ba4db373c408748907ea94fc710c3e6e` |
 | `mcp/adapters/billing-v79.js` | 4039 | `f1494df76861d1d8fd52718a150bd22c8ef648639d1f90d4c91b579caffa809a` |
 | `mcp/adapters/billing-v80.js` | 5097 | `de84738c6cbfbea2af2493e6be9479eb521ce3cb97c2c92a1a709e8a2a68710f` |
-| `mcp/adapters/billing-v81.js` | 3613 | `dd52b7689e849dc6e2b94de98680519c13e57a5c9fa48985bbe2d7c8686b8bc4` |
+| `mcp/adapters/billing-v81.js` | 5117 | `775deac55c581a985d50672e9a183cab3abd7b7d563454b32de5c776973390e1` |
 | `mcp/adapters/billing-v82.js` | 4985 | `1497a5aad506033d5cabefeea15ece883528e664f63374125e8f112e6da71ef9` |
 | `mcp/adapters/billing-v83.js` | 6167 | `22a1f41341055e4a0a2780e6e8063eb9ba4f4cea4c560983a3b55ca7dcbeae27` |
 | `mcp/adapters/bilsky-escc-v604.js` | 4923 | `6fbc81158f881ba1faf75315a4e11d687980024727881f433a4e25096f919ed7` |
@@ -2172,7 +2174,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `vendored/tesseract/tesseract.min.js` | 66695 | `a8e29918d098b2b06e1012bdaeffb4aec0445c5d5654709023e0bd1f442a80e8` |
 | `vendored/tesseract/worker.min.js` | 123724 | `aca1229639fc9907d86f96e825955a2b7c5716d17f3bc3acd71f9c7ab66181fc` |
 | `views/group-a.js` | 577 | `eed37c656d1fa00c097a07f07db4b1b6ac7a0a74bafc210978265a1d90856bd7` |
-| `views/group-b.js` | 72969 | `05cf77e422d049511c5a45d066fb23184d86d2f4925429111552cb411ca51954` |
+| `views/group-b.js` | 74804 | `70419be26b5db5b973673fbfe380c460eaadecf39f63b3db836b5896b8fab5dd` |
 | `views/group-c.js` | 26643 | `c139c073fd2c3a107f1865ff5e41dd671e988a06b16fe6d0efb050d6da2e060c` |
 | `views/group-e.js` | 50961 | `e2a9e67c9741c27b7786e7a99b52150331443e33d82c080b79009b9622d496f4` |
 | `views/group-f.js` | 54290 | `93098b21bd8a2bab4a67ae2cfcc6c3c10d2b59ab9c39fe26a744845b93b96cb7` |
