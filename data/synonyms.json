@@ -10228,6 +10228,17 @@
     },
     {
       "phrases": [
+        "lcd diagnosis code check",
+        "does this icd-10 support medical necessity",
+        "billing and coding article",
+        "covered diagnosis codes for cpt",
+        "medicare coverage database article"
+      ],
+      "tile": "lcd-diagnosis-check",
+      "audience": "billers"
+    },
+    {
+      "phrases": [
         "compare hospital prices",
         "hospital price transparency compare",
         "cash price at different hospitals",

@@ -132,4 +132,12 @@ this one, which the duplicate-tile finder flags.
   primary immune deficiency ((s)(2)(Z)), clotting factors (410.63(b)) and parenteral nutrition ((s)(8)) were added
   as categories the chart and statute name. The MAC self-administered drug lists are not bundled: the reader
   answers yes, no or not sure, and "not sure" gives "depends on the MAC's list".
-- **Not yet built:** `lcd-diagnosis-check` (Medicare Coverage Database export).
+- **Built 2026-10-01:** `lcd-diagnosis-check`, on the new `mcd-articles` dataset (`scripts/data/builders/mcd-articles.mjs`:
+  the weekly "current articles" export, a ZIP inside a ZIP; 1,106 articles that list codes, one shard each, and
+  a code index). **Found at build:** the export already lists every code inside a range (B/M/E rows), so no
+  expansion is needed; some MCD "states" are regions (New York's three, Missouri's two, California's two),
+  read as their state with the region shown when an article reaches only part of it; the CSVs are UTF-8 with
+  HTML paragraphs, kept as plain text; the edition is read from the export's own `update_period` table.
+  Pairing: one code group takes every covered group; several take the same-numbered group, and a code group
+  with no same-numbered covered group is "not decided" (paired in the article's text). Paragraph rules are
+  shown, never evaluated. A code no article lists for the state is "not addressed", never "not covered".

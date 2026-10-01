@@ -46,5 +46,13 @@
     "etag": null,
     "lastModified": "Thu, 17 Sep 2026 14:53:41 GMT",
     "fetchedAt": "2026-10-01"
+  },
+  "mcd-articles": {
+    "url": "https://downloads.cms.gov/medicare-coverage-database/downloads/exports/current_article.zip",
+    "edition": "2026-09-28 weekly",
+    "sha256": "c4598b5875a0401975ab08072625ce548f4c4af439fb345ac0e0c6e58a3598bc",
+    "etag": "\"8843040ca66092472e97051b394d9727:1790820012.414743\"",
+    "lastModified": "Thu, 01 Oct 2026 02:00:12 GMT",
+    "fetchedAt": "2026-10-01"
   }
 }

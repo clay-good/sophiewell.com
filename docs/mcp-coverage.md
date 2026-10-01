@@ -8728,6 +8728,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/part-b-or-d.js (spec-v1505: Medicare Part B or Part D for a drug — administrative disclaimer)
 - `part-b-or-d`
 
+### lib/lcd-diagnosis-check.js (spec-v1505: Diagnosis support under the billing and coding articles — administrative disclaimer)
+- `lcd-diagnosis-check`
+
 ### lib/pharmacy-spread-check.js (spec-v1604: Plan pharmacy claims against NADAC — administrative disclaimer)
 - `pharmacy-spread-check`
 

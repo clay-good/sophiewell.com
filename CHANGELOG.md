@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Does this diagnosis support this code? The Medicare billing and coding articles
+  for the state, from the weekly Medicare Coverage Database export, say whether
+  the diagnoses are covered, not covered or not addressed, with each article's
+  own instructions to confirm.
+
 - Compare one service across hospital price files: choose two or more CMS price
   files and a billing code to see each hospital's gross, cash and negotiated
   prices side by side, with a CSV.

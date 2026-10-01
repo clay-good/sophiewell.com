@@ -4,6 +4,9 @@ import { el, clear } from '../lib/dom.js';
 import * as AP from '../lib/appeal-path-v1505.js';
 import * as BN from '../lib/benefits-v1505.js';
 import * as BD from '../lib/part-b-or-d.js';
+import * as LC from '../lib/lcd-diagnosis-check.js';
+import { loadArticles } from '../lib/mcd-load.js';
+import { EXPIRED_TEXT } from '../lib/data.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -142,5 +145,40 @@ export const renderers = {
       list(o, r.notes);
       note(o, 'Original Medicare rules. A Medicare Advantage plan covers the same Part B drugs and may also require prior authorization.');
     }));
+  },
+  'lcd-diagnosis-check'(root) {
+    const pairs = [['lcd-code', 'code'], ['lcd-dx', 'diagnoses'], ['lcd-state', 'state']];
+    textField(root, 'HCPCS or CPT code', 'lcd-code', 'e.g. 29877');
+    textField(root, 'ICD-10-CM diagnosis codes, separated by commas', 'lcd-dx', 'e.g. M23.205, M17.11');
+    selectField(root, 'State where the service is furnished', 'lcd-state', LC.STATES);
+    const ids = pairs.map(([d]) => d);
+    const o = out(); root.appendChild(o);
+    const show = (args) => safe(o, () => {
+      const r = LC.lcdDiagnosisCheck(args);
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Under the articles', value: r.bandLabel }]);
+      for (const a of r.articles) {
+        const p = el('p');
+        p.appendChild(el('a', { href: a.url, target: '_blank', rel: 'noreferrer', text: `${a.id}: ${a.title}` }));
+        o.appendChild(p);
+      }
+      list(o, r.notes);
+      note(o, r.note);
+    });
+    // The articles that list the code are loaded for it alone; a newer keystroke drops an older answer.
+    let seq = 0;
+    wire(ids, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const code = LC.normalizeCode(args.code);
+      const mine = ++seq;
+      if (!code) { show(args); return; }
+      safe(o, () => note(o, 'Looking up the billing and coding articles for this code...'));
+      loadArticles(code).then((got) => {
+        if (mine !== seq) return;
+        if (got.expired) { safe(o, () => note(o, `${EXPIRED_TEXT} Check the articles in the Medicare Coverage Database instead.`)); return; }
+        show({ ...args, articles: got.error ? undefined : got.articles, edition: got.edition });
+      });
+    });
   },
 };

@@ -28,6 +28,8 @@ const ASYNC_TILES = [
   'nadac-margin', 'pharmacy-spread-check', 'asp-payment', 'part-b-drug-coinsurance',
   // spec-v1505: an NDC reads the crosswalk through lib/asp-ndc-load.js.
   'ndc-hcpcs-units',
+  // spec-v1505: the MCD articles, through lib/mcd-load.js.
+  'lcd-diagnosis-check',
 ];
 
 // Every `loadFile` call site in views/. If this moves, a tile has started (or

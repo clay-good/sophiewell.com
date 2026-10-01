@@ -956,6 +956,7 @@ import aspPayment from './adapters/asp-payment.js';
 import chairDayPlanner from './adapters/chair-day-planner.js';
 import partBDrugCoinsurance from './adapters/part-b-drug-coinsurance.js';
 import partBOrD from './adapters/part-b-or-d.js';
+import lcdDiagnosisCheck from './adapters/lcd-diagnosis-check.js';
 import pharmacySpreadCheck from './adapters/pharmacy-spread-check.js';
 import medicaidUraV1510 from './adapters/medicaid-ura-v1510.js';
 import entity340bV1509 from './adapters/entity-340b-v1509.js';
@@ -1959,6 +1960,7 @@ const ADAPTER_MODULES = [
   ['chair-day-planner', chairDayPlanner],
   ['part-b-drug-coinsurance', partBDrugCoinsurance],
   ['part-b-or-d', partBOrD],
+  ['lcd-diagnosis-check', lcdDiagnosisCheck],
   ['pharmacy-spread-check', pharmacySpreadCheck],
   ['medicaid-ura-v1510', medicaidUraV1510],
   ['entity-340b-v1509', entity340bV1509],

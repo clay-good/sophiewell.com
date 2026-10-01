@@ -13,5 +13,6 @@ import mue from './mue.mjs';
 import nadac from './nadac.mjs';
 import asp from './asp.mjs';
 import aspndc from './asp-ndc.mjs';
+import mcdarticles from './mcd-articles.mjs';
 
-export const BUILDERS = [mpfs, drg, mue, nadac, asp, aspndc];
+export const BUILDERS = [mpfs, drg, mue, nadac, asp, aspndc, mcdarticles];

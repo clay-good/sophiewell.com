@@ -274,3 +274,5 @@ experience**.
 > v1505, Medicare Part B or Part D for a drug — [spec-v1505](spec-v1505.md), which adds `part-b-or-d` — is 1962.)
 
 > v1515, hospital price comparison — [spec-v1515](spec-v1515.md), which adds `hpt-price-compare` — is 1963.)
+
+> v1505, diagnosis support under the billing and coding articles — [spec-v1505](spec-v1505.md), which adds `lcd-diagnosis-check` — is 1964.)

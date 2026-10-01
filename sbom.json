@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:37058c36-09c6-5cb8-83d9-eb3fbe63258b",
+  "serialNumber": "urn:uuid:559e3487-518e-5f1e-8522-e965c45e764a",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-01T16:29:02.741Z",
+    "timestamp": "2026-10-01T18:16:29.558Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1963 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1964 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a58e4e503b022f1eea919e241acd8e203d9a46a03992528b57bf22370f4f0959"
+          "content": "c25dd3c2ecbf763c79843048c434651ce14ffd6233498981124bfc6b22732e56"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "125729"
+          "value": "125797"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2545e9d3b6066bf4b4ab10cd24f799170026131eb081cf2a10fe1febf410d96e"
+          "content": "679697cb294c27074b92f66b0339759782e1ddc05b1e7f6916bb5843f73dbb12"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "570324"
+          "value": "570482"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c0b0366f6b6bebf53cbb0c543d1018c94597344f2b7594c54eecc591755458be"
+          "content": "f10335aed495df8d9172febc0ae4234afb98dcdc742903e1ea8db4fe789272af"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "245130"
+          "value": "245260"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a763b8a17f0d83d3713e3d8cf38c94fef17948d8a8c41cf33e25fbf8459da8e3"
+          "content": "9b5f9a299bb41488e0eb66935d0f43914d8b0a16037c112320466248d8bba751"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "112575"
+          "value": "112652"
         }
       ]
     },
@@ -11081,6 +11081,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/lcd-diagnosis-check.js",
+      "type": "file",
+      "name": "lib/lcd-diagnosis-check.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "20c222d1602de8bf344754a37ccd0dc1d41055bf5e31fc32eddbc0c2f54518a7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8722"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/le-fort-v406.js",
       "type": "file",
       "name": "lib/le-fort-v406.js",
@@ -12362,6 +12383,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/mcd-load.js",
+      "type": "file",
+      "name": "lib/mcd-load.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5ec2e73749ffccf7467bcd6e21daeb7c2997335058cc0883e94ec84fced84e55"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1369"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/mchat-v862.js",
       "type": "file",
       "name": "lib/mchat-v862.js",
@@ -12725,7 +12767,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b4bfb538dbd0121ee99d8542a378f78004efcb2f46e27a8888b28ddba6c076b6"
+          "content": "ab6ee477f233c5b4c764604bbae2f4cfe998fc05fec57041074be0df23656b8e"
         }
       ],
       "properties": [
@@ -12735,7 +12777,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2677645"
+          "value": "2678423"
         }
       ]
     },
@@ -33572,6 +33614,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/lcd-diagnosis-check.js",
+      "type": "file",
+      "name": "mcp/adapters/lcd-diagnosis-check.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ea4baefd7c3b9f6b12b36cde096dd7dc16643235ef254b741efa8268326e1958"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2077"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/le-fort-v406.js",
       "type": "file",
       "name": "mcp/adapters/le-fort-v406.js",
@@ -44687,7 +44750,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a15609084bf7b7c45ede19f5c58dc5478edd7f1da04d838252b5b4f61efe73aa"
+          "content": "fa0d0cba5dc4fdb230d2371a595932432fee583a35197e1e2b93fda2afa4dcdd"
         }
       ],
       "properties": [
@@ -44697,7 +44760,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "115323"
+          "value": "115436"
         }
       ]
     },
@@ -48068,7 +48131,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "fed9efca8cb19ff4e4a0b6c736bfddf73e28755d3eb8a521f1fb9f776df4f60c"
+          "content": "0bf2e09c59f3a9dc6092a4a371f1c2b7fc7f43e92833ebe78dfc7902fa651a38"
         }
       ],
       "properties": [
@@ -48078,7 +48141,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "9511"
+          "value": "11430"
         }
       ]
     },
@@ -80001,6 +80064,7 @@
         "urn:sophiewell:file:source:lib/lauge-hansen-v402.js",
         "urn:sophiewell:file:source:lib/lauren-gastric-v393.js",
         "urn:sophiewell:file:source:lib/lawrence-botte-5th-mt-v1422.js",
+        "urn:sophiewell:file:source:lib/lcd-diagnosis-check.js",
         "urn:sophiewell:file:source:lib/le-fort-v406.js",
         "urn:sophiewell:file:source:lib/lead-v863.js",
         "urn:sophiewell:file:source:lib/leddy-packer-v456.js",
@@ -80062,6 +80126,7 @@
         "urn:sophiewell:file:source:lib/mayo-olecranon-v739.js",
         "urn:sophiewell:file:source:lib/mccormack-v646.js",
         "urn:sophiewell:file:source:lib/mccormick-v444.js",
+        "urn:sophiewell:file:source:lib/mcd-load.js",
         "urn:sophiewell:file:source:lib/mchat-v862.js",
         "urn:sophiewell:file:source:lib/mcmahon-rhabdo-v677.js",
         "urn:sophiewell:file:source:lib/mcpherson-pji-v1427.js",
@@ -81987,6 +82052,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/lauge-hansen-v402.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lauren-gastric-v393.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lawrence-botte-5th-mt-v1422.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/lcd-diagnosis-check.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/le-fort-v406.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lead-v863.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/leddy-packer-v456.js",
@@ -82620,7 +82686,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "37058c3609c66cb8"
+      "value": "559e3487518e4f1e"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -82632,7 +82698,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3020"
+      "value": "3023"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
