@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:229181bd-e7b1-5851-8d93-0df6a09c08a5",
+  "serialNumber": "urn:uuid:a5e433a5-437a-55e3-8012-33d5f7800893",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-01T00:53:53.919Z",
+    "timestamp": "2026-10-01T02:08:38.876Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1955 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1956 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "af83adf100b37b242d5e66da7fb14fcd1387a0f162adff1d9990d931abb9507a"
+          "content": "d08d3773368e9fbd3bda0a66d2fda844da4ea598fef7c15c1f20ece55a6cc31f"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "125271"
+          "value": "125347"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e16006f767ca7655c23b25aa4a825cbe3371ba41a47b00fefc6a0acf326e57e0"
+          "content": "013f180e88be40243f28503c644b05a27f009678b4f6c94f5f55f0d2794f4fb0"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "568990"
+          "value": "569162"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "dd781ff05d990e60f97837f8479177b1274b723f95c40be859e558b739c3743c"
+          "content": "4ac3915a0320e17747c81876b467fa75bb2e82b7663198143a096372adaabe05"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "244098"
+          "value": "244232"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a34f645b53c76aedb6df87f42251425ffe12f2b7fc2f2a9de02a7ea1168d1923"
+          "content": "928bc76805bac7261a5f7db22ae67e8d9b291342580f838706d987835c347ae9"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "112053"
+          "value": "112142"
         }
       ]
     },
@@ -9296,6 +9296,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/hsa-predeductible-check.js",
+      "type": "file",
+      "name": "lib/hsa-predeductible-check.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d70e8e8a288657ae6eb326aeed61d3f46eff4de809c27ec87c0b8d9ec59af902"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "11352"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/hughes-gbs-v800.js",
       "type": "file",
       "name": "lib/hughes-gbs-v800.js",
@@ -12557,7 +12578,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "583685fd483c18a224409e0aefcbac8147b8dfd6f17f3cd058b63c60dfdb6d29"
+          "content": "6d4ed9b05e2c3918711f1221f2a10cec5c33306f2d03999cf9843adf2f12af48"
         }
       ],
       "properties": [
@@ -12567,7 +12588,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2671181"
+          "value": "2671934"
         }
       ]
     },
@@ -31766,6 +31787,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/hsa-predeductible-check.js",
+      "type": "file",
+      "name": "mcp/adapters/hsa-predeductible-check.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "35e8344640b3b457248b606c650cdb66931b75c7c70da6042af8c729da01a2ba"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1688"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/hughes-gbs-v800.js",
       "type": "file",
       "name": "mcp/adapters/hughes-gbs-v800.js",
@@ -44288,7 +44330,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d891379d1e08aa6c6095ca856fa25e6e7b7111a41c2c96fe43213f655a782dd7"
+          "content": "3977e567413bbf9aa1f0faca90f64684f5b4f8599dc30350826586df50a0f7cc"
         }
       ],
       "properties": [
@@ -44298,7 +44340,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "114560"
+          "value": "114689"
         }
       ]
     },
@@ -48194,7 +48236,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4e234c4944d29e4bc401b307a3822582f4a8d609c7a00c9008410477df809101"
+          "content": "2b6878bc8849c0a0097dc68ad2160cb47aa3b24bf96ed1e8d507e594ce083cb9"
         }
       ],
       "properties": [
@@ -48204,7 +48246,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2972"
+          "value": "5601"
         }
       ]
     },
@@ -79517,6 +79559,7 @@
         "urn:sophiewell:file:source:lib/hpt-v1515.js",
         "urn:sophiewell:file:source:lib/hpt-worker.js",
         "urn:sophiewell:file:source:lib/hrs-aki-v808.js",
+        "urn:sophiewell:file:source:lib/hsa-predeductible-check.js",
         "urn:sophiewell:file:source:lib/hughes-gbs-v800.js",
         "urn:sophiewell:file:source:lib/hvpg-v1416.js",
         "urn:sophiewell:file:source:lib/hypoglycemia-level-v1446.js",
@@ -81502,6 +81545,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/hospital-fap-v1508.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hpa-glaucoma-v801.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hrs-aki-v808.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/hsa-predeductible-check.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hughes-gbs-v800.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hvpg-v1416.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/hypoglycemia-level-v1446.js",
@@ -82202,7 +82246,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "229181bde7b1a851"
+      "value": "a5e433a5437ae5e3"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -82214,7 +82258,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3001"
+      "value": "3003"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

@@ -258,3 +258,5 @@ experience**.
 > v1510, pharmacy margin against NADAC — [spec-v1510](spec-v1510.md), which adds `nadac-margin` — is 1954.)
 
 > v1604, plan pharmacy claims against NADAC — [spec-v1604](spec-v1604.md), which adds `pharmacy-spread-check` — is 1955.)
+
+> v1601, HSA coverage before the deductible — [spec-v1601](spec-v1601.md), which adds `hsa-predeductible-check` — is 1956.)

@@ -1093,6 +1093,7 @@ const UTILITIES = [
   { id: 'ipledge-dispense-window', name: 'iPLEDGE Dispense Window (Isotretinoin)', group: 'Q', audiences: ['clinicians', 'patients'], clinical: false },
   { id: 'which-appeal-path', name: 'Which Appeal Rules Apply?', group: 'C', audiences: ['billers', 'patients', 'clinicians'], clinical: false },
   { id: 'preventive-cost-share-check', name: 'Should I Have Paid for This Preventive Care?', group: 'C', audiences: ['patients', 'billers'], clinical: false },
+  { id: 'hsa-predeductible-check', name: 'HSA Safe Harbors: What Can Be Covered Before the Deductible?', group: 'C', audiences: ['patients', 'billers'], clinical: false },
   { id: 'dpc-hsa-check', name: 'Does My Direct Primary Care Plan Keep HSA Eligibility?', group: 'C', audiences: ['patients', 'billers'], clinical: false },
   { id: 'ma-criteria-check', name: 'Was This Medicare Advantage Denial Allowed to Use These Criteria?', group: 'C', audiences: ['patients', 'billers'], clinical: false },
   { id: 'bi-summary', name: 'Benefits Investigation Cost Summary', group: 'Q', audiences: ['billers', 'patients', 'clinicians'], clinical: false },

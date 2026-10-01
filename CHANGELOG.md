@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- HSA safe harbors: what a high deductible health plan can cover before the
+  deductible. It checks an item against preventive care, the chronic-condition
+  list of Notice 2019-45 (each item only for its diagnosed condition), insulin
+  from plan years beginning in 2023, and telehealth by plan year.
+
 - A plan pharmacy claims check against NADAC: typed claims or a claims file give
   what the plan and members paid above the national average acquisition cost,
   by drug and by month, and the spread where the pharmacy's payment is

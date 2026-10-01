@@ -909,6 +909,7 @@ const PROBES = [
   ['compare two versions of a payer policy', ['payer-policy-diff']],
   ['pharmacy paid below nadac acquisition cost', ['nadac-margin']],
   ['pbm spread pricing plan pharmacy claims', ['pharmacy-spread-check']],
+  ['hsa plan cover statin before deductible chronic condition', ['hsa-predeductible-check']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

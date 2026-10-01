@@ -56,6 +56,7 @@ the same PR with what was read and what differed from the plan.
 | # | Tool | Status |
 |---|---|---|
 | 2 | `preventive-cost-share-check` | Built September 29, 2026 ([spec-v1601](spec-v1601.md#build-status)) |
+| 3 | `hsa-predeductible-check` | Built September 30, 2026 ([spec-v1601](spec-v1601.md#build-status)) |
 | 4 | `ma-criteria-check` | Built September 29, 2026 ([spec-v1603](spec-v1603.md#build-status)) |
 | 5 | `dpc-hsa-check` | Built September 29, 2026 ([spec-v1604](spec-v1604.md#build-status)) |
 | 6 | `payer-policy-diff` | Built September 29, 2026 ([spec-v1603](spec-v1603.md#build-status)) |
