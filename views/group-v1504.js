@@ -72,7 +72,8 @@ function builder(root, pairs, fn, short) {
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: short, value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
-      renderPrintable(letter, { title: r.title, sections: r.sections, warnings: r.warnings });
+      const fileName = `${String(r.title || 'letter').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}.docx`;
+      renderPrintable(letter, { title: r.title, sections: r.sections, warnings: r.warnings, docx: { fileName } });
     } catch (err) { o.appendChild(el('p', { class: 'muted', text: err.message })); }
   });
 }

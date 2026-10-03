@@ -6,6 +6,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- The seven appeal and request letter builders download as an editable Word file.
+  While any [bracketed] blank is left, the file opens with a line saying it is
+  not ready to send and how many blanks remain.
 - Medicare negotiated-price check: enter a package's NDC to find its drug and
   its per-unit price on the date of service, from the CMS file.
 - Federal Poverty Level Percent: screen many households from a CSV, one row each,
