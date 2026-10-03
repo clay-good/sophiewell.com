@@ -24,6 +24,7 @@
 
 import { readFile, readdir } from 'node:fs/promises';
 import { join } from 'node:path';
+import { secondLook } from './lib/second-look.mjs';
 
 const ROOT = process.cwd();
 const UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0 Safari/537.36';
@@ -116,12 +117,18 @@ async function main() {
       where.get(u).add(f);
     }
   }
-  const rows = [];
-  for (const url of where.keys()) {
+  const row = async (url) => {
     const { status, finalUrl } = await probe(url);
-    rows.push({ url, status, finalUrl, verdict: classify(url, status, finalUrl), docs: [...where.get(url)].sort() });
+    return { url, status, finalUrl, verdict: classify(url, status, finalUrl), docs: [...where.get(url)].sort() };
+  };
+  const first = [];
+  for (const url of where.keys()) {
+    first.push(await row(url));
     await sleep(200);
   }
+  // Issue #19: fda.gov answered one monthly run with a 404 it did not give the
+  // next fetch. A dead link is believed only when it is dead twice.
+  const rows = await secondLook(first, (r) => r.verdict === 'DEAD', (r) => row(r.url), { waitMs: 15000 });
   if (asJson) { console.log(JSON.stringify(rows, null, 2)); return; }
 
   const by = (v) => rows.filter((r) => r.verdict === v);

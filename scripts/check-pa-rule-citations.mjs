@@ -82,18 +82,23 @@ export function citedUrls(rules) {
 // segment that IS a sign-in word is a wall.
 const AUTH_WALL_SEGMENTS = new Set(['login', 'log-in', 'signin', 'sign-in', 'logon', 'sso', 'auth', 'authenticate']);
 
+// The monthly link check (scripts/check-pa-source-urls.mjs) asks the same
+// question of where a registered url REDIRECTS to, so the segment test is shared.
+export function isAuthWall(url) {
+  let segments;
+  try {
+    segments = new URL(url).pathname.split('/').filter(Boolean);
+  } catch {
+    return false;
+  }
+  return segments.some((seg) => AUTH_WALL_SEGMENTS.has(seg.toLowerCase()));
+}
+
 export function authWallUrls(ledger) {
   const out = [];
   for (const s of ledger.sources || []) {
     for (const url of [s.url, ...(s.alsoCited || [])]) {
-      if (!url) continue;
-      let segments;
-      try {
-        segments = new URL(url).pathname.split('/').filter(Boolean);
-      } catch {
-        continue;
-      }
-      if (segments.some((seg) => AUTH_WALL_SEGMENTS.has(seg.toLowerCase()))) out.push([s.id, url]);
+      if (url && isAuthWall(url)) out.push([s.id, url]);
     }
   }
   return out;

@@ -90,9 +90,17 @@ On the cadence in spec-v52 §1.3 (monthly payer-policy pulls):
 0. Run `node scripts/check-pa-source-urls.mjs` (spec-v979). It fetches every
    `sources[].url` and sorts them into OK, MOVED (a redirect, so the ledger
    should carry the destination), BLOCKED (403/429 — a bot wall, fine in a
-   browser) and DEAD (404/410 or a failed request). It runs monthly, warn-only,
+   browser) and DEAD (404/410, a failed request, or a redirect that lands on a
+   sign-in page). A row is called DEAD only if it is still dead on a second
+   look at the end of the run, because one fetch can fail when the page is
+   fine. It runs monthly, warn-only,
    in `.github/workflows/citation-cadence.yml`, and never in `npm run lint`:
-   it is a network check, and lint stays offline and deterministic.
+   it is a network check, and lint stays offline and deterministic. An
+   unacknowledged DEAD row opens (or comments on) the issue "chore: dead source
+   links found by the monthly check", and the first clean run closes it. An
+   `acknowledgments[]` entry keeps a known-dead row out of the issue; for an
+   `alsoCited` link its `id` is the row id as printed, such as
+   `bcbsnc-precert[alsoCited 2]`.
 
    It does the half a machine can do. It cannot read a policy page and decide
    the rules still reflect it, which is step 1 and stays a maintainer's

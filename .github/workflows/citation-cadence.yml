@@ -41,28 +41,42 @@ jobs:
       # into a log nobody opens. Warn-only is still right (a publisher outage
       # must not fail CI), but the report has to reach a person, so the results
       # are captured and, if anything is DEAD, filed as an issue.
+      #
+      # Issue #19: the filing step used to grep the printed report for a DEAD
+      # header, which the checker prints for ACKNOWLEDGED dead rows too -- so the
+      # documented remedy (an acknowledgments[] entry) could never stop the issue
+      # from being re-filed. Each checker now runs with --strict and the step
+      # records its exit status: 0 is clean, 1 is an unacknowledged dead link,
+      # anything else is the check itself crashing, which is filed too because a
+      # check that dies quietly reports "clean" forever.
       - name: Check PA source URLs still resolve (warn-only)
-        id: pa_urls
         run: |
-          node scripts/check-pa-source-urls.mjs | tee /tmp/pa-urls.txt
+          status=0
+          node scripts/check-pa-source-urls.mjs --strict > /tmp/pa-urls.txt 2>&1 || status=$?
+          cat /tmp/pa-urls.txt
+          echo "$status" > /tmp/pa-urls.status
 
       # spec-v1004: the same question for the documents a contributor reads.
       # docs/legal.md had cited NADAC at a path that moved.
       - name: Check living-doc links still resolve (warn-only)
         run: |
-          node scripts/check-doc-links.mjs | tee /tmp/doc-links.txt
+          status=0
+          node scripts/check-doc-links.mjs --strict > /tmp/doc-links.txt 2>&1 || status=$?
+          cat /tmp/doc-links.txt
+          echo "$status" > /tmp/doc-links.status
 
-      - name: File an issue if any source link is dead
+      - name: File an issue if any source link is dead, close it once clean
         if: always()
         env:
           GH_TOKEN: ${{ github.token }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
           set -euo pipefail
           dead=0
-          for f in /tmp/pa-urls.txt /tmp/doc-links.txt; do
-            [ -f "$f" ] || continue
-            grep -qE '^[A-Za-z-]* ?DEAD \(' "$f" && dead=1 || true
-            grep -qE '[1-9][0-9]* dead' "$f" && dead=1 || true
+          for f in /tmp/pa-urls.status /tmp/doc-links.status; do
+            # A missing status file means its step never ran to the end.
+            s=$(cat "$f" 2>/dev/null || echo missing)
+            [ "$s" = "0" ] || dead=1
           done
           {
             echo "## Monthly source-link check"
@@ -71,14 +85,17 @@ jobs:
             cat /tmp/pa-urls.txt /tmp/doc-links.txt 2>/dev/null || true
             echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
+          title="chore: dead source links found by the monthly check"
+          existing=$(gh issue list --state open --search "$title in:title" --json number --jq '.[0].number // empty')
           if [ "$dead" = "0" ]; then
-            echo "no dead links; nothing to file"
+            echo "no unacknowledged dead links"
+            if [ -n "$existing" ]; then
+              gh issue close "$existing" --comment "The monthly link check is clean again: no unacknowledged dead links. Run: $RUN_URL"
+            fi
             exit 0
           fi
-          title="chore: dead source links found by the monthly check"
-          existing=$(gh issue list --state open --search "$title in:title" --json number --jq '.[0].number' || echo "")
           body=$(printf '%s\n\n```\n%s\n```\n' \
-            "The monthly link check found at least one dead source link. A rule or citation that points at a dead page reads as authoritative while being wrong. Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
+            "The monthly link check found at least one dead source link (or the check failed to finish). A rule or citation that points at a dead page reads as authoritative while being wrong. Run: $RUN_URL" \
             "$(cat /tmp/pa-urls.txt /tmp/doc-links.txt 2>/dev/null)")
           if [ -n "$existing" ]; then
             gh issue comment "$existing" --body "$body"
