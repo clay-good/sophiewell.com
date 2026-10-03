@@ -71,6 +71,7 @@ export default [
         Response: "readonly",
         ReadableStream: "readonly",
         DecompressionStream: "readonly",
+        TransformStream: "readonly",
         DataTransfer: "readonly",
         File: "readonly",
         TextDecoderStream: "readonly",

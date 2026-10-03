@@ -5,7 +5,7 @@
 <h1 align="center">sophiewell.com</h1>
 
 <p align="center">
-  <strong>1964 free healthcare calculators that run entirely in your browser.</strong><br>
+  <strong>1965 free healthcare calculators that run entirely in your browser.</strong><br>
   No accounts, no ads, no telemetry, no AI.
 </p>
 
@@ -17,7 +17,7 @@
 <!--
   Machine-checked count (scripts/check-catalog-truth.mjs reads the line
   below; keep it in sync with UTILITIES.length in app.js):
-  At v1505 close the catalog is 1964
+  At v1604 close the catalog is 1965
   deterministic tiles.
 -->
 
@@ -37,7 +37,7 @@ Each calculator does one thing:
 | **In** | The values you already have. It opens pre-filled with a worked example — a described patient, not a form of zeros — so you can see the expected format before you type over it. |
 | **Out** | One number or grade, plus how the source says to read it. |
 | **Or not** | When a value it needs is missing, it says which one instead of answering. A score that only adds points will still flag risk on what you have entered, but it will not call a patient well on measurements nobody took — and it will not raise an alarm from an empty form either. When it does answer on a partly filled form, it says how much of the form it used. |
-| **Proof** | The method and primary citations together, one click away under "How this is calculated". 1,886 of the 1,964 link straight through to the source paper, and every one of those links is checked to resolve **and** to open the paper the citation names, not merely a paper. Twelve more say "Search PubMed for this source" because no index carries the book chapter or pre-1946 paper they cite. |
+| **Proof** | The method and primary citations together, one click away under "How this is calculated". 1,887 of the 1,965 link straight through to the source paper, and every one of those links is checked to resolve **and** to open the paper the citation names, not merely a paper. Twelve more say "Search PubMed for this source" because no index carries the book chapter or pre-1946 paper they cite. |
 
 For example, on [Wells Score for PE](https://sophiewell.com/#wells-pe)
 you tick the criteria that apply and get
@@ -57,7 +57,7 @@ background telemetry.
 Go to [sophiewell.com](https://sophiewell.com) and type what you need.
 
 Or bring a file: drop a remittance (835), claim (837), eligibility (271) or
-claim-status (277) file, a hospital price file, a prior-authorization packet,
+claim-status (277) file, a hospital or insurer price file, a prior-authorization packet,
 or a CSV of fills, patients or claims on the home page, and the tool that
 reads it opens with the file already in it. Several files, a folder or a zip
 open a list of what each file is and which tool reads it. A health record
