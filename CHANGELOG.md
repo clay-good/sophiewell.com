@@ -1244,6 +1244,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   Savings Program and premium tax credit calculators now come from the weekly
   data refresh (the ASPE poverty-guidelines API) instead of being typed in, so a
   new year's figures arrive in January without waiting for someone to enter them.
+- The Medicare negotiated-price check now reads the CMS negotiated-prices file
+  through the weekly data refresh, so new prices (2028's are due in November),
+  January inflation updates and deselections appear without hand entry.
 
 ### Fixed
 

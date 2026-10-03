@@ -94,5 +94,13 @@
     "etag": null,
     "lastModified": null,
     "fetchedAt": "2026-10-03"
+  },
+  "mfp-negotiated-prices": {
+    "url": "https://www.cms.gov/files/zip/selected-drug-list-negotiated-prices-also-known-maximum-fair-prices-statutezip.zip",
+    "edition": "2026-09-21",
+    "sha256": "6fa6b047bd20b0dc3dc8c8aa554a2c133aa95511efaa021dc7a669ea109d0ed1",
+    "etag": null,
+    "lastModified": "Mon, 21 Sep 2026 15:48:14 GMT",
+    "fetchedAt": "2026-10-03"
   }
 }

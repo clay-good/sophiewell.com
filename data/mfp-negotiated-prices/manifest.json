@@ -1,0 +1,35 @@
+{
+  "manifestVersion": 2,
+  "dataset": "mfp-negotiated-prices",
+  "label": "Medicare negotiated drug prices",
+  "sourceUrl": "https://www.cms.gov/initiatives/medicare-prescription-drug-affordability/overview/medicare-drug-price-negotiation-program/selected-drugs-negotiated-prices",
+  "agency": "CMS",
+  "status": "public-domain",
+  "cadence": "as updated",
+  "recordCount": 560,
+  "shardLayout": "shards",
+  "shards": [
+    {
+      "name": "prices.json",
+      "sha256": "a5873f24d0ddab3348c8aebf3c2dbc34cd60a4229681c800a513c2bd16b1fadd",
+      "records": 560,
+      "bytes": 153371
+    }
+  ],
+  "ancillary": [
+    "drugs.js"
+  ],
+  "notes": "One record per NDC-11 and price period, every row of the file kept (it is a dated history): drug, NDC-9 and NDC-11, HCPCS code, effective and end dates, the single price per 30-day equivalent supply, the NDC-9 per-unit price, and the type of update. drugs.js carries the per-drug periods for partd-mfp-price-check.",
+  "coverage": "full",
+  "sourceEdition": "2026-09-21",
+  "effectiveFrom": "2026-09-21",
+  "fetchedAt": "2026-10-03",
+  "contentChangedAt": "2026-10-03",
+  "expiresOn": "2027-12-31",
+  "sourceSha256": "6fa6b047bd20b0dc3dc8c8aa554a2c133aa95511efaa021dc7a669ea109d0ed1",
+  "recordsSha256": "1ad7a72cc956aff6cf438ca0c637e85cd0e6351864fc8118c1a01ea5aa3d565f",
+  "recordBounds": {
+    "min": 300,
+    "max": 5000
+  }
+}

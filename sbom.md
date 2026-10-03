@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `f637638e1f60132b`
-Generated: 2026-10-03T10:52:55.638Z
+Build ID: `f7e7c61617696327`
+Generated: 2026-10-03T11:08:55.994Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -660,7 +660,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/methacholine-v890.js` | 8610 | `57f61517b28f0dc0df72f0ec7670d4bf831bb0a652f2a83b492eab9839336f7b` |
 | `lib/methemoglobin-v864.js` | 10471 | `eecfdc7ce8e1d1540710c0a709a42b2b7fa516dfd8bcd8a38e4fce55b62b6ea9` |
 | `lib/meyers-mckeever-v408.js` | 3443 | `2e1194940bf147d4cb84ef46856ec0dbf67dbabaf76aeea1b45fa1b53d8df1b7` |
-| `lib/mfp-prices-v1506.js` | 7970 | `434f4029034a816e7e00da2afa06507128e6b1726746e079247712ee7766168f` |
+| `lib/mfp-prices-v1506.js` | 5766 | `2e27a50870537a3a76c803743adb5de44ebf5aba8aae7d262a2977b4c04eab09` |
 | `lib/mfp-refund-reconcile.js` | 10703 | `ebb32afa750d460d00294d8dea9bb4955de33011904e864e4d9d742f09b91b16` |
 | `lib/mfp-refund-v1510.js` | 4884 | `61a0c6ff6bcf76841d1015a6d57ce45ccac29c5307fdbb3f9bb9046268acb80e` |
 | `lib/mh-grading-scale-v860.js` | 10650 | `12d4c73d2cc090e044efa0e5a6df2f19c4759b3686146b060798f9ad53efc4f7` |
