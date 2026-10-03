@@ -96,3 +96,21 @@ spec-v1540 §6 runs on every language's files against the WHO editions in that l
 The machinery ships with English only and changes nothing visible. The digit-in-message test and
 the stale-string fallback are tested with a planted French file. No language ships until its
 row in `docs/translations.md` is complete.
+
+## Build status
+
+**The machinery was built on October 3, 2026, English only**, after the owner decided (spec-v1564 D6): *"keep it
+all English for now, but allow an abstraction layer for all language to plug and play."*
+
+- `lib/i18n.js` provides `t(namespace, key, vars)`, `addMessages`, `SHIPPED = ['en']` and `localeTag`. English
+  source messages are modules in `lib/i18n/en/`, so they load and precache with the code that uses them
+  (the spec's `i18n/<lang>/<tile>.json` became modules to keep loading synchronous and inside `lib/`). A
+  translation entry is `{ text, source }`. When the English moves on, it is stale and English is shown.
+- The first consumer is the footer's offline line (`lib/offline-status.js`). Its output is byte-identical,
+  as its unit tests show.
+- `test/unit/i18n.test.js` covers the planted French catalog, the stale fallback, the no-digit rule across
+  every language file, and the rule that a shipped language needs a signed-off row in
+  `docs/translations.md`.
+- **Not built:** the language select (§3.2), the `sw-lang` key, `dir`/RTL (§3.4), and moving the
+  `toLocaleString('en-US')` calls. None is needed until a second language ships. Strings beyond the offline
+  line move into the layer tile by tile, as the field-health tiles are built.

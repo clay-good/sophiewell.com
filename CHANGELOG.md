@@ -1279,6 +1279,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Vial rounding answers a large dose from small vials about five times faster
+  (0.7 s to 0.15 s for 10,000 mg from 1, 5 and 10 mg vials), with the same
+  answers.
 - A decimal comma typed into any number field (37,5) is now read as 37.5. Before,
   Chrome, Edge and Safari in English dropped the comma and used 375. A comma that
   could be a thousands separator (1,500) empties the field and asks for the

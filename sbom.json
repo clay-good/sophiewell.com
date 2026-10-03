@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:cb1e0d2e-52ac-5f5b-87ab-7f1f71fe775b",
+  "serialNumber": "urn:uuid:1d762d9a-5e70-5166-8b42-ecd628d28fd8",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-03T17:04:32.959Z",
+    "timestamp": "2026-10-03T17:09:45.438Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -9695,6 +9695,48 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/i18n.js",
+      "type": "file",
+      "name": "lib/i18n.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d6d86d2e7d3f71c12ea6349c3f2fb7192b5bd073a779f7f27baff3e102917286"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2578"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/i18n/en/offline-status.js",
+      "type": "file",
+      "name": "lib/i18n/en/offline-status.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "216c37ed6d867bc15ec77c38d2f8a5293994821ed767a88c30c89581e412d038"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "515"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/iad-globiad-v901.js",
       "type": "file",
       "name": "lib/iad-globiad-v901.js",
@@ -15371,7 +15413,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e0be179605417c58466465534a9cb82be94e7440345317960fbade6a6e5eaf50"
+          "content": "e7ae9b0570e559dd413259634dda17db5253c1afb1d49d71c4b01c92e40cc62b"
         }
       ],
       "properties": [
@@ -15381,7 +15423,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2767"
+          "value": "2866"
         }
       ]
     },
@@ -23330,7 +23372,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "76e41a928d9918d37206865968e2d0b7bd5716ffe4af60dc2ce034583621b326"
+          "content": "e5dc900b8be473abd9bff25909a2c2c430d65b0e513afb88a71e9a52b4884b71"
         }
       ],
       "properties": [
@@ -23340,7 +23382,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "8745"
+          "value": "9543"
         }
       ]
     },
@@ -80643,6 +80685,8 @@
         "urn:sophiewell:file:source:lib/hvpg-v1416.js",
         "urn:sophiewell:file:source:lib/hypoglycemia-level-v1446.js",
         "urn:sophiewell:file:source:lib/hys-law-v908.js",
+        "urn:sophiewell:file:source:lib/i18n.js",
+        "urn:sophiewell:file:source:lib/i18n/en/offline-status.js",
         "urn:sophiewell:file:source:lib/iad-globiad-v901.js",
         "urn:sophiewell:file:source:lib/ibd-v246.js",
         "urn:sophiewell:file:source:lib/ibfat-v731.js",
@@ -83363,7 +83407,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "cb1e0d2e52ac0f5b"
+      "value": "1d762d9a5e70b166"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -83375,7 +83419,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3055"
+      "value": "3057"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

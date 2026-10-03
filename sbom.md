@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `cb1e0d2e52ac0f5b`
-Generated: 2026-10-03T17:04:32.959Z
+Build ID: `1d762d9a5e70b166`
+Generated: 2026-10-03T17:09:45.438Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -494,6 +494,8 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/hvpg-v1416.js` | 5947 | `2f6f237129840b8b722a4789e836f83a069772f90b07a4e8441e28d6f6b2c585` |
 | `lib/hypoglycemia-level-v1446.js` | 4543 | `fed8086cf5a9440aae872a555437a178571ee5b4e5ddf0be2993355e3eae2053` |
 | `lib/hys-law-v908.js` | 10871 | `f3677bff24b1aa9c1e597685d88ce44fd449b2175a59d75d7ca02b54583cdb3c` |
+| `lib/i18n.js` | 2578 | `d6d86d2e7d3f71c12ea6349c3f2fb7192b5bd073a779f7f27baff3e102917286` |
+| `lib/i18n/en/offline-status.js` | 515 | `216c37ed6d867bc15ec77c38d2f8a5293994821ed767a88c30c89581e412d038` |
 | `lib/iad-globiad-v901.js` | 7293 | `9dceb0d31486938d1741281b42b39ecee8567de4db8d70fe7c2154ce2cbeedb2` |
 | `lib/ibd-v246.js` | 6924 | `ff47b0c4c160ca6db81dc89d6b4cdf2a596bf6d77869aa9399015ac713697b5a` |
 | `lib/ibfat-v731.js` | 2775 | `83f8a24c522e10f435e3bdea1b89068ce97699f41346ceff945e035049807cd1` |
@@ -764,7 +766,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/obgyn-v225.js` | 14967 | `363c98b0481738ca8b64d6b6b65724e2f7d090676d0de799d6ec961b19c488f0` |
 | `lib/obgyn-v250.js` | 7713 | `5326c2fc2c5eb02959ddc337e1ac095cbfdf3fecd2a9d34dec63678eb7036b15` |
 | `lib/ocular-trauma-score-v614.js` | 9546 | `49ec3b45d088a7b6003b1aa2f6d8437db613b02e77d35a8d0d482407a027b077` |
-| `lib/offline-status.js` | 2767 | `e0be179605417c58466465534a9cb82be94e7440345317960fbade6a6e5eaf50` |
+| `lib/offline-status.js` | 2866 | `e7ae9b0570e559dd413259634dda17db5253c1afb1d49d71c4b01c92e40cc62b` |
 | `lib/ohat-oral-health-v1495.js` | 2997 | `cb682793e85f7a61dd42bc89f7feef52794e8ec611b7d87b5c3f9da16e6a8557` |
 | `lib/ohi-s-v1483.js` | 3370 | `6e60f2166e9720132cf14406bb3729f68559bfcea5901453ce84df869031fdcb` |
 | `lib/ohs-diagnosis-v829.js` | 7431 | `09b456890bf516f059d9376dab19d863320b0ec38c8a1aecfb740db14370420d` |
@@ -1143,7 +1145,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/vexus-v958.js` | 9060 | `e2473c9925f2a91e17f750af0afb83cfad658a0d2e85cf2439ebaa4f39134ee9` |
 | `lib/vhi10-v508.js` | 3708 | `40297e81fc7f0da10cc909b1b2a13fe7a6b2048c7cf72291d8f3f1f16ac4c871` |
 | `lib/vhwg-hernia-v666.js` | 3465 | `cbf1ad3125634cff69574f4faa775b128beb2ad2ead868106673ee8b698c8776` |
-| `lib/vial-rounding-v1512.js` | 8745 | `76e41a928d9918d37206865968e2d0b7bd5716ffe4af60dc2ce034583621b326` |
+| `lib/vial-rounding-v1512.js` | 9543 | `e5dc900b8be473abd9bff25909a2c2c430d65b0e513afb88a71e9a52b4884b71` |
 | `lib/vitamin-d-level-v881.js` | 7879 | `d28a76c402f67174161d539f209b6211a24773dd13eb7f4780f07042e4544a4a` |
 | `lib/vod-sos-v907.js` | 14383 | `0e6e6e56ad62c2574f7d2b47b0779bb5d30eb7c0c51166f156b05ae1f8f0f3ba` |
 | `lib/vras-v602.js` | 11407 | `788dc1747f4d5b22b34b75ccd5d75f0e4bf2d3eca57156b6d360f28183f29098` |
