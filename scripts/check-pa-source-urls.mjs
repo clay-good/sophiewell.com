@@ -33,9 +33,23 @@
 //            whether the page is there, and several payer sites are happy to
 //            serve their not-found page with a 200. It finds none today; it is
 //            here because a link checker that can be lied to is not a checker.
+//            A redirect that lands on a SIGN-IN page is dead too: a reader who
+//            follows it is asked to log in, which is exactly the url spec-v1351
+//            refuses to register (providers.bluekc.com/Authorizations -> /login).
+//
+// Issue #19 hardening. The first monthly run filed fourteen dead rows, and three
+// of them (two fda.gov pages and a timed-out payer PDF) answered 200 to the next
+// fetch. So a failed request is retried before it is believed, and every row
+// still dead at the end of the run gets a second look (scripts/lib/second-look.mjs).
+// Two redirects are also no longer called MOVED, because the ledger should keep
+// the address it has: a WebSphere portal appending its session state
+// (`.../medical-policies/` -> `.../medical-policies/!ut/p/z1/...`), and a file
+// server handing out a signed one-time link (`?access_token=...`).
 
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
+import { isAuthWall } from './check-pa-rule-citations.mjs';
+import { secondLook } from './lib/second-look.mjs';
 
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
 const LEDGER = `${ROOT}pa-staleness-ledger.json`;
@@ -52,6 +66,9 @@ const HEADERS = {
 };
 const TIMEOUT_MS = 25000;
 const CONCURRENCY = 8;
+const ATTEMPTS = 3;
+const SECOND_LOOK_WAIT_MS = 15000;
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 // Not-found wording in a page's own <title> or first <h1>. Deliberately narrow:
 // these two elements name what the page IS, so matching there does not fire on a
@@ -68,19 +85,43 @@ export function looksNotFound(html) {
   return NOT_FOUND_WORDING.test(tagText(html, 'title')) || NOT_FOUND_WORDING.test(tagText(html, 'h1'));
 }
 
+// sameAddress(declared, final) -> bool. The redirects that do not mean the
+// ledger should be rewritten: a trailing slash, a WebSphere portal appending its
+// navigation state to the declared path, and a signed one-time link whose token
+// expires (the declared url is the one that keeps working).
+export function sameAddress(declared, final) {
+  const trim = (u) => u.replace(/\/+$/, '');
+  if (trim(final) === trim(declared)) return true;
+  if (final.startsWith(declared) && /^\/?!ut\/p\//.test(final.slice(declared.length))) return true;
+  try {
+    if (new URL(final).searchParams.has('access_token')) return true;
+  } catch { /* not a url we can reason about */ }
+  return false;
+}
+
 export function classify({ status, finalUrl, declaredUrl, error, softNotFound }) {
   if (error) return 'DEAD';
   if (status === 403 || status === 429) return 'BLOCKED';
   if (status >= 400) return 'DEAD';
   if (status >= 200 && status < 400) {
     if (softNotFound) return 'DEAD';
-    const same = (a, b) => a.replace(/\/+$/, '') === b.replace(/\/+$/, '');
-    return finalUrl && !same(finalUrl, declaredUrl) ? 'MOVED' : 'OK';
+    if (!finalUrl || sameAddress(declaredUrl, finalUrl)) return 'OK';
+    // Checked after sameAddress so a declared url is judged by where it went.
+    if (isAuthWall(finalUrl) && !isAuthWall(declaredUrl)) return 'DEAD';
+    return 'MOVED';
   }
   return 'DEAD';
 }
 
-async function probe(source) {
+// why(row) -> the short reason printed beside a row.
+const why = (r) => {
+  if (r.softNotFound) return '200-but-says-not-found';
+  if (r.error) return r.error;
+  if (r.verdict === 'DEAD' && r.status < 400 && r.finalUrl && isAuthWall(r.finalUrl)) return `${r.status}-but-redirects-to-sign-in`;
+  return r.status;
+};
+
+async function fetchOnce(source) {
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), TIMEOUT_MS);
   try {
@@ -100,6 +141,25 @@ async function probe(source) {
     clearTimeout(timer);
   }
 }
+
+// A failed request or a 5xx is often the network or the publisher having a bad
+// minute, so it is retried with a backoff; a 404/410 is the server's own answer
+// and is left to the second look at the end of the run.
+async function probe(source) {
+  let last;
+  for (let a = 0; a < ATTEMPTS; a++) {
+    last = await fetchOnce(source);
+    if (!last.error && last.status < 500) return last;
+    if (a < ATTEMPTS - 1) await sleep(2000 * (a + 1));
+  }
+  return last;
+}
+
+const verdictOf = (r, acked) => ({
+  ...r,
+  verdict: classify({ status: r.status, finalUrl: r.finalUrl, declaredUrl: r.url, error: r.error, softNotFound: r.softNotFound }),
+  acknowledged: acked.has(r.id),
+});
 
 async function mapLimit(items, limit, fn) {
   const out = new Array(items.length);
@@ -127,11 +187,13 @@ async function main() {
     ...(s.alsoCited || []).map((u, i) => ({ id: `${s.id}[alsoCited ${i + 1}]`, label: s.label, url: u })),
   ]);
 
-  const results = (await mapLimit(sources, CONCURRENCY, probe)).map((r) => ({
-    ...r,
-    verdict: classify({ status: r.status, finalUrl: r.finalUrl, declaredUrl: r.url, error: r.error, softNotFound: r.softNotFound }),
-    acknowledged: acked.has(r.id),
-  }));
+  const first = (await mapLimit(sources, CONCURRENCY, probe)).map((r) => verdictOf(r, acked));
+  const results = await secondLook(
+    first,
+    (r) => r.verdict === 'DEAD',
+    async (r) => verdictOf(await probe({ id: r.id, label: r.label, url: r.url }), acked),
+    { waitMs: SECOND_LOOK_WAIT_MS },
+  );
 
   if (AS_JSON) {
     console.log(JSON.stringify(results, null, 2));
@@ -143,9 +205,8 @@ async function main() {
       console.log(`\n${v} (${rows.length}):`);
       for (const r of rows) {
         const ack = r.acknowledged ? ' [acknowledged]' : '';
-        const to = r.verdict === 'MOVED' ? `\n      -> ${r.finalUrl}` : '';
-        const why = r.softNotFound ? '200-but-says-not-found' : (r.error || r.status);
-        console.log(`  ${r.id}${ack}  ${why}  ${r.url}${to}`);
+        const to = r.finalUrl && r.status < 400 && !sameAddress(r.url, r.finalUrl) ? `\n      -> ${r.finalUrl}` : '';
+        console.log(`  ${r.id}${ack}  ${why(r)}  ${r.url}${to}`);
       }
     }
     const dead = by('DEAD').filter((r) => !r.acknowledged);

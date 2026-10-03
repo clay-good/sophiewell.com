@@ -16,7 +16,8 @@
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { classify, looksNotFound } from '../../scripts/check-pa-source-urls.mjs';
+import { classify, looksNotFound, sameAddress } from '../../scripts/check-pa-source-urls.mjs';
+import { secondLook } from '../../scripts/lib/second-look.mjs';
 
 const at = (url) => ({ finalUrl: url, declaredUrl: url });
 
@@ -55,4 +56,46 @@ test('looksNotFound reads the title and the first h1, and nothing else', () => {
   // The narrow reading is the point: a real policy page may discuss error codes.
   assert.equal(looksNotFound('<title>Claim adjustment reason codes</title><h1>Denials</h1><p>A 404 response means the page not found.</p>'), false);
   assert.equal(looksNotFound(''), false);
+});
+
+// Issue #19: the redirects in the first monthly report that were not news.
+test('a portal appending its session state is not a move', () => {
+  const declared = 'https://provider.bluecrossma.com/ProviderHome/portal/home/clinical-resources/prior-authorization/cancer-care/';
+  const final = `${declared}!ut/p/z1/nZDLDoIwFES_hS/dz/d5/L2dBISEvZ0FBIS9nQSEh/`;
+  assert.equal(sameAddress(declared, final), true);
+  assert.equal(classify({ status: 200, finalUrl: final, declaredUrl: declared }), 'OK');
+  // A different page under the same portal is still a move.
+  assert.equal(classify({ status: 200, finalUrl: 'https://provider.bluecrossma.com/ProviderHome/portal/home/!ut/p/z1/x/', declaredUrl: declared }), 'MOVED');
+});
+
+test('a signed one-time link is not a move; the declared url is the stable one', () => {
+  const declared = 'https://mcweb.apps.prd.cammis.medi-cal.ca.gov/file/manual?fn=tar.pdf';
+  const final = 'https://mcweb.apps.prd.cammis.medi-cal.ca.gov/assets/2BBF/tar.pdf?access_token=abc';
+  assert.equal(classify({ status: 200, finalUrl: final, declaredUrl: declared }), 'OK');
+});
+
+test('a redirect to a sign-in page is DEAD, not MOVED', () => {
+  // providers.bluekc.com/Authorizations began answering with its login page.
+  assert.equal(classify({ status: 200, finalUrl: 'https://providers.bluekc.com/login', declaredUrl: 'https://providers.bluekc.com/Authorizations' }), 'DEAD');
+  // Matched on path segments, so /Authorizations itself is not a wall.
+  assert.equal(classify({ status: 200, finalUrl: 'https://providers.bluekc.com/Authorizations/', declaredUrl: 'https://providers.bluekc.com/Authorizations' }), 'OK');
+  assert.equal(classify({ status: 200, finalUrl: 'https://example.gov/prior-authorization', declaredUrl: 'https://example.gov/pa' }), 'MOVED');
+});
+
+test('secondLook re-fetches only the dead rows and keeps the later answer', async () => {
+  const rows = [
+    { url: 'a', verdict: 'OK' },
+    { url: 'b', verdict: 'DEAD' }, // a phantom: alive on the second look
+    { url: 'c', verdict: 'DEAD' }, // really dead
+  ];
+  const asked = [];
+  const out = await secondLook(rows, (r) => r.verdict === 'DEAD', async (r) => {
+    asked.push(r.url);
+    return { url: r.url, verdict: r.url === 'b' ? 'OK' : 'DEAD' };
+  });
+  assert.deepEqual(asked, ['b', 'c']);
+  assert.deepEqual(out.map((r) => `${r.url}:${r.verdict}`), ['a:OK', 'b:OK', 'c:DEAD']);
+  // Nothing dead, nothing re-fetched.
+  const clean = [{ url: 'a', verdict: 'OK' }];
+  assert.equal(await secondLook(clean, (r) => r.verdict === 'DEAD', () => { throw new Error('fetched'); }), clean);
 });

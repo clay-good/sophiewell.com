@@ -169,7 +169,7 @@
       "rules": [
         "R-PA-SURG-004"
       ],
-      "url": "https://www.asahq.org/standards-and-practice-parameters/statement-on-asa-physical-status-classification-system",
+      "url": "https://journals.lww.com/anesthesiologyopen/fulltext/10.1097/ao9.0000000000000002~american-society-of-anesthesiologists-statement-on-asa",
       "lastVerified": "2026-09-14"
     },
     {
@@ -363,7 +363,7 @@
       "alsoCited": [
         "https://www.bcbsil.com/docs/provider/il/claims/um/2026-commercial-pa-summary.pdf",
         "https://www.bcbsil.com/provider/clinical/clinical-resources/behavioral-health-program",
-        "https://ccpa.bcbsil.com/find-care/blue-distinction-specialty-care/blue-distinction/blue-distinction-transplant",
+        "https://ccpa.bcbsil.com/find-care/specialty-care-centers/transplant-surgery",
         "https://www.bcbsil.com/provider/standards/standard-requirements/medical-policy",
         "https://www.bcbsil.com/provider/claims/claims-eligibility/claim-review",
         "https://www.bcbsil.com/provider/standards/standard-requirements/caa/caa-continuity-care"
@@ -381,12 +381,10 @@
       "lastVerified": "2026-09-15",
       "alsoCited": [
         "https://providers.highmark.com/policies-and-programs/medical-policies.html",
-        "https://providers.highmark.com/content/dam/highmark/en/providerresourcecenter/pdfs/multi-region/documents/pdfs/latest-updates/special-bulletins/sb-auth-status-self-service-tools-103123.pdf",
         "https://providers.highmark.com/resources-and-education/highmark-provider-manual/chapter-5-care-and-quality-management/unit-2-authorizations",
         "https://providers.highmark.com/communications-hub/news-and-updates/radcard-authorization-moving-from-evicore-to-highmark-",
         "https://providers.highmark.com/communications-hub/news-and-updates/reminder-changes-occurring-in-2026",
         "https://providers.highmark.com/resources-and-education/forms/pharmacy-prior-authorization-forms",
-        "https://providers.highmark.com/content/dam/highmark/en/providerresourcecenter/pdfs/multi-region/documents/pdfs/policies-and-programs/care-management/evicore-quick-ref-guide.pdf",
         "https://providers.highmark.com/communications-hub/news-and-updates/healthhelp-to-manage-molecular-lab-prior-authorization",
         "https://providers.highmark.com/communications-hub/news-and-updates/evolent-to-manage-oncology-prior-authorization-review.html",
         "https://providers.highmark.com/content/dam/highmark/en/providerresourcecenter/pdfs/all/documents/pdfs/authorization/obtaining-authorizations/bh-auth-tip-sheet.pdf",
@@ -426,31 +424,30 @@
         "R-PA-BCBSM-001",
         "R-PA-BCBSM-002"
       ],
-      "url": "https://authorizations.bcbsm.com/index.shtml",
+      "url": "https://authorizations.bcbsm.com/",
       "lastVerified": "2026-09-15",
       "alsoCited": [
-        "https://authorizations.bcbsm.com/",
-        "https://authorizations.bcbsm.com/prov-ref-bcbsm-authorizations.shtml",
-        "https://authorizations.bcbsm.com/prov-ref-getting-started.shtml",
-        "https://authorizations.bcbsm.com/prov-ref-auth-landing.shtml",
+        "https://authorizations.bcbsm.com/prov-ref-bcbsm-authorizations",
+        "https://authorizations.bcbsm.com/prov-ref-getting-started",
+        "https://authorizations.bcbsm.com/prov-ref-auth-landing",
         "https://www.bcbsm.com/content/dam/public/providers/documents/preauthorization-precertification-requirements.pdf",
         "https://authorizations.bcbsm.com/docs/inpatient-admissions-auth-faq.pdf",
-        "https://authorizations.bcbsm.com/prov-ref-radiology.shtml",
+        "https://authorizations.bcbsm.com/prov-ref-radiology",
         "https://authorizations.bcbsm.com/docs/bcn-14bcn-advantage.pdf",
         "https://authorizations.bcbsm.com/docs/msk-faq.pdf",
-        "https://authorizations.bcbsm.com/prov-ref-drugs-medical-marf.shtml",
-        "https://authorizations.bcbsm.com/prov-ref-drugs-medical-resources.shtml",
-        "https://authorizations.bcbsm.com/prov-ref-drugs-pharm-electronic-reqs.shtml",
-        "https://authorizations.bcbsm.com/prov-ref-laboratory.shtml",
-        "https://authorizations.bcbsm.com/prov-ref-drugs-medical-benefit.shtml",
-        "https://authorizations.bcbsm.com/prov-ref-dme-po.shtml",
-        "https://authorizations.bcbsm.com/prov-ref-home-health.shtml",
-        "https://authorizations.bcbsm.com/prov-ref-behavioral-health.shtml",
-        "https://authorizations.bcbsm.com/prov-ref-behavioral-health-provider-resources.shtml",
-        "https://authorizations.bcbsm.com/prov-ref-transplants.shtml",
+        "https://authorizations.bcbsm.com/prov-ref-drugs-medical-marf",
+        "https://authorizations.bcbsm.com/prov-ref-drugs-medical-resources",
+        "https://authorizations.bcbsm.com/prov-ref-drugs-pharm-electronic-reqs",
+        "https://authorizations.bcbsm.com/prov-ref-laboratory",
+        "https://authorizations.bcbsm.com/prov-ref-drugs-medical-benefit",
+        "https://authorizations.bcbsm.com/prov-ref-dme-po",
+        "https://authorizations.bcbsm.com/prov-ref-home-health",
+        "https://authorizations.bcbsm.com/prov-ref-behavioral-health",
+        "https://authorizations.bcbsm.com/prov-ref-behavioral-health-provider-resources",
+        "https://authorizations.bcbsm.com/prov-ref-transplants",
         "https://authorizations.bcbsm.com/docs/e-referral-user-guide.pdf",
         "https://www.bcbsm.com/amslibs/content/dam/public/consumer/forms-documents/bcbsm-appeal-form.pdf",
-        "https://authorizations.bcbsm.com/alerts/prov-ref-alerts-landing.shtml"
+        "https://authorizations.bcbsm.com/alerts/prov-ref-alerts-landing"
       ]
     },
     {
@@ -496,11 +493,11 @@
         "https://www.ibx.com/resources/for-providers/contact-us/index.html",
         "https://provcomm.ibx.com/pnc-ibc/Manuals/Provider/IBX_Provider_06_Clinical-Services-UM.pdf",
         "https://provcomm.ibx.com/pnc-ibc/Manuals/Hospital/IBX_Hospital_06_Clinical-Services-UM.pdf",
-        "https://www.ibx.com/documents/35221/56629/carelon-request-form.pdf",
+        "https://www.ibx.com/pdfs/resources/for-providers/forms/carelon-request-form.pdf",
         "https://www.ibx.com/pdfs/resources/for-providers/most-cost-effective.pdf",
         "https://www.ibx.com/resources/for-providers/policies-and-guidelines/pharmacy-information/prior-authorization.html",
         "https://www.ibx.com/pdfs/resources/for-providers/formularies/premium-st-drug-list.pdf",
-        "https://www.ibx.com/documents/35221/851945/value-prior-authorization.pdf",
+        "https://www.ibx.com/pdfs/resources/for-providers/forms/general-prior-authorization.pdf",
         "https://provcomm.ibx.com/pnc-ibc/Manuals/Provider/IBX_Provider_11_Specialty-Programs.pdf",
         "https://www.ibx.com/ResourceCenter/IBX-direct-ship-drug-request-form.pdf",
         "https://provcomm.ibx.com/pnc-ibc/news/Pages/Reminder-ABA-services-transitioned-to-IBX-on-April-1-2026.aspx",
@@ -562,9 +559,9 @@
         "https://www.bcbsnc.com/members/health-plans/drug-search",
         "https://www.bcbsnc.com/providers/provider-news/2024/changes-in-prior-authorizations-for-blue-cross-nc-medicare-advantage-members-effective-01-01-2025",
         "https://www.bcbsnc.com/providers/policies-guidelines-codes/commercial/home-health-dme/updates/durable-medical-equipment-dme",
-        "https://www.bluecrossnc.com/content/dam/bcbsnc/pdf/providers/prior-authorization/forms-documents/commercial-forms/behavioral-health/commercial-inpatient-psychiatric-care-fax-form.pdf",
-        "https://www.bluecrossnc.com/content/dam/bcbsnc/pdf/providers/policies-guidelines-codes/policies/commercial/administrative/investigational_experimental_services.pdf",
-        "https://www.bluecrossnc.com/content/dam/bcbsnc/pdf/providers/policies-guidelines-codes/policies/commercial/administrative/clinical_trial_services.pdf",
+        "https://www.bcbsnc.com/content/dam/bcbsnc/pdf/providers/forms-documents/prior-authorization/commercial/behavioral-health/commercial-inpatient-psychiatric-care-fax-form.pdf",
+        "https://www.bcbsnc.com/providers/policies-guidelines-codes/commercial/administrative/updates/investigational-experimental-services",
+        "https://www.bcbsnc.com/providers/policies-guidelines-codes/commercial/administrative/updates/clinical-trial-services",
         "https://www.bcbsnc.com/providers/provider-news/2025/introducing-blue-home-with-cone-health-for-individual-under-65-market"
       ]
     },
@@ -581,7 +578,7 @@
       "alsoCited": [
         "https://services3.horizon-bcbsnj.com/hcm/MedPol2.nsf/homePage",
         "https://www.availity.com/horizon/Availity/",
-        "https://learnmore.horizonblue.com/affordability",
+        "https://www.horizonblue.com/providers/policies-procedures/policies/reimbursement-policies-guidelines/site-service-elective-surgical-procedures",
         "https://www.myprime.com/en/forms/coverage-determination/step-therapy.html"
       ]
     },
@@ -598,10 +595,10 @@
       "alsoCited": [
         "https://provider.bcbst.com/tools-resources/manuals-policies-guidelines",
         "https://content.bcbst.com/api/public/content/commercial_auth_fax_form.pdf",
-        "https://www.bcbst.com/docs/providers/Commercial-Prior-Auth-Requirements.pdf",
-        "https://www.bcbst.com/providers/manuals/bcbstpam.pdf",
-        "https://www.bcbst.com/docs/providers/commercial_high_tech_imaging_authorization_request_form.pdf",
-        "https://www.bcbst.com/docs/providers/hti/high_tech_imaging_auth_code_list.pdf",
+        "https://content.bcbst.com/api/public/content/prov-commercial-prior-auth-list.pdf",
+        "https://content.bcbst.com/api/public/content/bcbstpam.pdf",
+        "https://content.bcbst.com/api/public/content/commercial_high_tech_imaging_authorization_request_form.pdf",
+        "https://content.bcbst.com/api/public/content/high_tech_imaging_auth_code_list.pdf",
         "https://content.bcbst.com/api/public/content/comm_bc_pad_step_therapy_guide.pdf",
         "https://content.bcbst.com/api/public/content/commercial_genetic_testing_request_form.pdf",
         "https://content.bcbst.com/api/public/content/provider-administered-medication-auth.pdf",
@@ -676,8 +673,8 @@
         "https://www.southcarolinablues.com/en/home/providers/policies-and-authorizations/prior-authorization.html",
         "https://www.southcarolinablues.com/en/home/providers/policies-and-authorizations/medical-policies.html",
         "https://www.southcarolinablues.com/web/public/brands/sc/providers/news-and-events/current-news/",
-        "https://www.southcarolinablues.com/web/public/brands/sc/providers/news-and-events/news-archive/2023-news/blue-distinction-centers/",
-        "https://www.southcarolinablues.com/web/public/resources/a2889cf1-bac0-4ff6-8362-b0300457f315/2026%2BProvider%2BAdministrative%2BOffice%2BManual.pdf?CVID=pSb97W5&MOD=AJPERES"
+        "https://www.southcarolinablues.com/content/dam/commercial-web-public/sc/blues/en/members/forms-and-documents/individual-and-family-plans/2026_BlueEssentials_MHTK_v3.pdf",
+        "https://www.southcarolinablues.com/content/dam/commercial-web-public/sc/blues/en/providers/pdfs/manuals-and-guides/2026%20Provider%20Administrative%20Office%20Manual.pdf"
       ]
     },
     {
@@ -691,9 +688,8 @@
       "url": "https://www.arkansasbluecross.com/providers",
       "lastVerified": "2026-06-05",
       "alsoCited": [
-        "https://www.arkansasbluecross.com/providers/resource-center/prior-approval-for-requested-services",
-        "https://www.arkansasbluecross.com/providers/medical-providers/approval-information-for-radiological-services",
-        "https://www.arkansasbluecross.com/docs/librariesprovider9/providers/arkbluecross/abcbs-provider-manual.pdf"
+        "https://www.arkansasbluecross.com/providers/resource-center/prior-authorization",
+        "https://assets.contentstack.io/v3/assets/blte81730ee65c02059/bltb5120d819c889758/abcbs-provider-manual.pdf"
       ]
     },
     {
@@ -705,10 +701,7 @@
         "R-PA-BLUEKC-002"
       ],
       "url": "https://providers.bluekc.com/Content/PDFs/PRG/2026-ProviderReferenceGuide.pdf",
-      "lastVerified": "2026-09-17",
-      "alsoCited": [
-        "https://providers.bluekc.com/Authorizations"
-      ]
+      "lastVerified": "2026-09-17"
     },
     {
       "id": "bcbsmn-precert",
@@ -746,7 +739,7 @@
         "R-PA-HMSA-001",
         "R-PA-HMSA-002"
       ],
-      "url": "https://prc.hmsa.com/s/article/Provider-Manual-for-Prior-Authorization",
+      "url": "https://hmsa.com/prc/medical/provider-manual-for-prior-authorization/",
       "lastVerified": "2026-09-18",
       "alsoCited": [
         "https://prc.hmsa.com/s/article/Services-That-Require-Precertification"
@@ -1272,5 +1265,11 @@
       "lastVerified": "2026-06-15"
     }
   ],
-  "acknowledgments": []
+  "acknowledgments": [
+    {
+      "id": "bcbssc-precert[alsoCited 3]",
+      "ackDate": "2026-10-02",
+      "reason": "Dead since the 2026 site move. The live replacement is a news bulletin whose URL names its utilization-management vendor, a word that check-commitments' AI-vendor guard rejects; needs an owner decision. Tracked in issue #20."
+    }
+  ]
 }

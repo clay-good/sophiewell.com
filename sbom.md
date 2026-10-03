@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `5779d51e30335f47`
-Generated: 2026-10-03T05:18:48.391Z
+Build ID: `aca00299ce83f6c5`
+Generated: 2026-10-03T06:42:08.749Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -648,7 +648,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/membranous-risk-v878.js` | 11351 | `882c36c07e46543e32f1114792c1124ee9f9ff6b384084fc0a8c221e7dd62062` |
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2682780 | `a37e0f9e3993a1885635bc1c41b31d5bc370c351093908f2663554ea8b11de1a` |
+| `lib/meta.js` | 2682760 | `faf8f83ba91b5fce1032e246ce72bb3b4462ddc5d941dfd1d8115a92cb5fd7ff` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 19326 | `64342935cc7842381f6e318293cfcd6f97b69022268da6c595c5c71db388af2d` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -793,8 +793,8 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/pa/redact.js` | 8440 | `5869238a8172e79dcbd009dc7c5a89a879fd77eafed2762ec3d40af37dd9f9af` |
 | `lib/pa/report.js` | 9691 | `d19c531e5ee3d480c96dd548c348b314ebcb37beaa3d5e8f87f70680e783e08d` |
 | `lib/pa/rule-sources.js` | 9357 | `6096fc0fc01b68c012dc97cd18de3e82257cb601cdac1a74ee9421d8e5f2add4` |
-| `lib/pa/rules.js` | 1565758 | `2a849558bf349b3f2d5ee52899fda487816b74dfbe1335618301e4de52dbb445` |
-| `lib/pa/staleness-ledger.js` | 72634 | `45e1a3c3413c646767200e38d0cf5fdcb82b74bb6a79e716ed6433723c22deb9` |
+| `lib/pa/rules.js` | 1565660 | `76a8c8712f841d46517f0dabb367e6d877ce44769ff80e5cc5ff63d3c10d4708` |
+| `lib/pa/staleness-ledger.js` | 72302 | `0e3031d892fb812e17cb3a60b6c75dabd66544d3ef80cdc3ab3c67e279364464` |
 | `lib/pa/staleness.js` | 9310 | `99249cde34d35bb57ea644fced966019d1373b34f792f1ea9b42b586b94454df` |
 | `lib/paed-delirium-v1499.js` | 3969 | `c8836be1003c2235bb05d8ce78a07baf922b3039ac798b4bf4a3ae8bb20aca20` |
 | `lib/page-title.js` | 1458 | `575f7d045fda35d9bc5c6a04f70fd76dbf3364a987983ccde90d84fa54b12925` |
