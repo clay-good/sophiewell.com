@@ -1093,6 +1093,7 @@ const UTILITIES = [
   { id: '340b-duplicate-discount', name: '340B Duplicate Discount and Claim Identifiers', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },
   { id: '340b-ceiling-price', name: '340B Ceiling Price and Unit Rebate Amount', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },
   { id: 'mfp-refund-check', name: 'Negotiated-Price Refund Check (Pharmacy)', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },
+  { id: 'mfp-refund-reconcile', name: 'Negotiated-Price Refund Reconciliation (Pharmacy, 835 Files)', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },
   { id: 'pbm-reimbursement-check', name: 'PBM Reimbursement Check', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },
   { id: 'nadac-margin', name: 'Pharmacy Margin Against NADAC', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },
   { id: 'pharmacy-spread-check', name: 'Pharmacy Spread Check: Claims Against NADAC', group: 'Q', audiences: ['billers'], clinical: false },

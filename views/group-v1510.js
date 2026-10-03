@@ -7,11 +7,15 @@ import * as UR from '../lib/medicaid-ura-v1510.js';
 import * as TC from '../lib/therapy-cost-v1510.js';
 import * as NM from '../lib/nadac-margin.js';
 import * as AP from '../lib/asp-payment.js';
+import * as RR from '../lib/mfp-refund-reconcile.js';
+import { parse835 } from '../lib/x12-835-v1515.js';
+import { sha256Hex } from '../lib/sha256.js';
+import { handOff } from '../lib/hand-off.js';
 import { loadManifest, loadFile, loadShard } from '../lib/data.js';
 import { parseDate } from '../lib/pa/date.js';
 import { loadNadac } from '../lib/nadac-load.js';
 import { uploadWorkbench } from './upload-workbench.js';
-import { MARGIN_FIELDS } from '../lib/upload-fields.js';
+import { MARGIN_FIELDS, MFP_CLAIM_FIELDS } from '../lib/upload-fields.js';
 import { acceptVia } from '../lib/hand-off.js';
 import { resultRow } from '../lib/result-copy.js';
 
@@ -267,9 +271,75 @@ export const renderers = {
       })().then((lookup) => { if (mine === seq) show({ ...args, lookup }); });
     });
   },
+  // spec-v1510 tool 7: claims for negotiated-price drugs against the Medicare Transaction Facilitator's 835
+  // refunds. The 835 files are read on the page (they are small) and passed to the compute, typed or workbench.
+  'mfp-refund-reconcile'(root) {
+    note(root, 'Claims one per line: prescription number, fill number, date of service, NDC, quantity, and WAC and MFP per unit if you have them. Or load the claims file below. Then choose the 835 remittance files the Medicare Transaction Facilitator sent.');
+    const ta = el('p');
+    ta.appendChild(el('label', { for: 'mrr-claims', text: 'Claims' }));
+    ta.appendChild(el('br'));
+    ta.appendChild(el('textarea', { id: 'mrr-claims', rows: '6', autocomplete: 'off', placeholder: '1234567, 0, 2026-03-02, 00169413212, 30, 12.40, 3.10' }));
+    root.appendChild(ta);
+    dateInput(root, 'As of (leave blank for the latest 835 payment date)', 'mrr-asof', 'date');
+    const files = el('input', { id: 'mrr-835', type: 'file', multiple: true, accept: '.835,.edi,.txt,.x12' });
+    const status = el('p', { id: 'mrr-status', class: 'muted', role: 'status', 'aria-live': 'polite' });
+    root.appendChild(el('label', { for: 'mrr-835', text: 'Choose the 835 remittance files from the Medicare Transaction Facilitator' })); root.appendChild(files); root.appendChild(status);
+    const o = out();
+    let remits = []; let remitFiles = [];
+    const input = () => ({ claims: val('mrr-claims'), asOf: val('mrr-asof'), remits, remitFiles });
+    const show = (r) => safe(o, () => {
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Open', value: RR.money(r.owedOpen) }]);
+      const t = el('table', { class: 'upload-mapping-table' });
+      t.appendChild(el('caption', { text: 'Claims and their refunds' }));
+      const hr = el('tr');
+      for (const h of ['Line', 'Prescription', 'Fill', 'Date of service', 'Expected by', 'Refund paid', 'Paid on', 'Status', 'Why']) hr.appendChild(el('th', { scope: 'col', text: h }));
+      t.appendChild(el('thead', null, [hr]));
+      const body = el('tbody');
+      for (const x of r.rows.slice(0, 500)) {
+        const tr = el('tr');
+        for (const c of [x.line, x.rx || '', x.fill || '', x.dos || '', x.expected || '', x.refunds ? RR.money(x.paid) : '', x.paidOn || '', x.status, x.reason]) tr.appendChild(el('td', { text: String(c) }));
+        body.appendChild(tr);
+      }
+      t.appendChild(body);
+      o.appendChild(el('div', { class: 'upload-mapping-scroll' }, [t]));
+      list(o, r.notes);
+    });
+    let upload;
+    const run = () => {
+      const args = input();
+      if (upload && upload.isActive()) { upload.compute(args); return; }
+      show(RR.mfpRefundReconcile(args));
+    };
+    files.addEventListener('change', async () => {
+      remits = []; remitFiles = [];
+      const chosen = [...(files.files || [])];
+      const problems = [];
+      const parsed = [];
+      for (const f of chosen) {
+        const bytes = new Uint8Array(await f.arrayBuffer());
+        remitFiles.push(sha256Hex(bytes));
+        try { parsed.push(parse835(new TextDecoder().decode(bytes))); } catch (err) { problems.push(`${f.name}: ${err.message}`); }
+      }
+      remits = RR.remitsFrom(parsed);
+      status.textContent = chosen.length ? `${remits.length.toLocaleString('en-US')} refund ${remits.length === 1 ? 'claim' : 'claims'} read from ${chosen.length.toLocaleString('en-US')} ${chosen.length === 1 ? 'file' : 'files'}.${problems.length ? ` Not read: ${problems.join('; ')}` : ''}` : '';
+      run();
+    });
+    upload = uploadWorkbench(root, {
+      id: 'mrr-upload', fields: MFP_CLAIM_FIELDS, label: 'Load claims from a file',
+      compute: 'mfp-refund-reconcile', getInput: input, onResult: show,
+    });
+    document.getElementById('mrr-claims').addEventListener('input', () => {
+      if (upload.isActive()) upload.clear('Using the claims entered above.');
+    });
+    root.appendChild(o);
+    wire(['mrr-claims', 'mrr-asof'], run);
+  },
 };
 
 // spec-v1623 step 3: a pharmacy claims CSV goes to the margin workbench.
 export const acceptFiles = {
+  // An 835 goes to the remittance input; a claims CSV to the workbench.
+  'mfp-refund-reconcile': (root, files, { kind } = {}) => handOff(root, /^x12-835/.test(kind || '') ? 'mrr-835' : 'mrr-upload-file', files),
   'nadac-margin': acceptVia('nm-upload-file'),
 };

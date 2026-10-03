@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Negotiated-price refund reconciliation: a pharmacy's claims for drugs with a
+  Medicare negotiated price, matched to the Medicare Transaction Facilitator's
+  835 refund files, with each refund marked refunded, short (and why), late,
+  missing or paid twice, and the total still open.
+
 - Can this product be substituted? Name the prescribed product and the one on
   the shelf; the FDA Orange Book's therapeutic equivalence codes (or, for a
   biologic, the Purple Book's interchangeability) say whether the pharmacy can
@@ -1215,6 +1220,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   ten withdrawal symptoms rated none to severe, 0-30 total. It states no severity
   band, because Gossop 1990 publishes none -- and says so, since a reader
   arriving from COWS will expect four. See docs/spec-v1061.md.
+
+### Fixed
+
+- The 835 reader no longer refuses a file with a reversal: a claim with status
+  22 and negative amounts now reads and balances.
 
 ## [Unreleased]
 

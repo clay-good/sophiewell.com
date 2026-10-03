@@ -23,6 +23,7 @@ const CASES = {
   'tic-rate-lookup': ['group-v1604', 'tic-in-network.json', 'trl-files', 'tic-in-network'],
   'carin-eob-reader': ['group-v1602', 'carin-eob.json', 'cer-files', 'fhir-carin-eob'],
   'itemized-bill-check': ['group-v1602', 'hpt-tall.csv', 'ibc-price-file', 'hpt-csv'],
+  'mfp-refund-reconcile': ['group-v1510', 'x12-835.835', 'mrr-835', 'x12-835'],
   'appeal-worklist': ['group-v1516', 'x12-835.835', 'aw-835-files', 'x12-835'],
   'mpr-gap-days': ['group-v1513', 'fill-history.csv', 'mpr-upload-file', 'csv-mapped'],
   'med-sync-plan': ['group-v1513', 'ambiguous.csv', 'sync-upload-file', 'csv-mapped'],

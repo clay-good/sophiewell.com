@@ -146,5 +146,15 @@ to thousands of dollars per fill, so a missed refund matters to a small pharmacy
   by payer and by drug (lowest first) and in total, each claim through `nadacOn`; a row's own invoice cost replaces
   NADAC for that row. A payer paid below cost overall is named. The Worker keeps its no-network promise: it names
   the labelers it needs, and the page loads them through `lib/nadac-load.js` and runs it again.
-- **Not yet built:** `mfp-refund-reconcile` (the upload workbench; needs the Medicare Transaction Facilitator's
-  remittance format).
+- **Built 2026-10-03:** `mfp-refund-reconcile`. The MTF's remittances are X12 835 files (CMS MTF dispensing-entity
+  FAQ, April 2026); the field map is the MTF 835 companion guide (CMS draft; the final is on the MTF help desk,
+  behind registration): CLP01 is the prescription reference number, "FILL" and the fill number, CLP03 the standard
+  default refund, CLP04 the manufacturer's payment, CLP07 the MTF claim number (REF*F8 names the original on a
+  reversal), CAS*PI*307 with RARCs N907-N911 in LQ*HE. Claims come typed or through the upload workbench; the 835
+  files are read on the page with `parse835`, which now keeps LQ remark codes and reads reversals (negative
+  amounts, CLP02 22: the reader used to refuse them). Each claim is refunded, short (with the remark code's
+  meaning, or "no reason code"), late (paid after 21 days plus 5 business days from the date of service, the
+  `mfp-refund-check` rule), missing, not yet due, or paid more than once; a reversal cancels the payment it
+  names. The as-of date is the latest 835 payment date unless entered, so nothing depends on today's clock. With
+  WAC and MFP per unit the 835's own standard default refund is checked too. The receipt names the 835 files by
+  SHA-256.

@@ -30,7 +30,7 @@ test('recognize_file says what a file is, with its evidence and tools', async ()
   assert.equal(r.valid, true);
   assert.equal(r.kind, 'x12-835');
   assert.match(r.evidence.join(' '), /GS08 is 005010X221A1/);
-  assert.deepEqual(r.tools.map((t) => t.id), ['x12-835-reader', 'denial-pattern-report', 'appeal-worklist', 'underpayment-check']);
+  assert.deepEqual(r.tools.map((t) => t.id), ['x12-835-reader', 'denial-pattern-report', 'appeal-worklist', 'underpayment-check', 'mfp-refund-reconcile']);
   assert.ok(!r.tools.some((t) => t.route), 'a route is not a tool an agent can run');
 });
 
