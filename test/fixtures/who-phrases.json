@@ -1,0 +1,21 @@
+{
+  "_comment": "spec-v1540 §6: sentences read from WHO chart material, held only so test/unit/who-no-verbatim.test.js can prove no shipped string reproduces eight or more consecutive words of one. Add phrases from each new source as its tiles are built, read from the source itself, never written from memory.",
+  "sources": {
+    "imci-chart-booklet-2014": {
+      "source": "WHO, Integrated Management of Childhood Illness chart booklet, March 2014 (All rights reserved)",
+      "phrases": [
+        "Give first dose of artesunate or quinine for severe malaria",
+        "Give appropriate antibiotic treatment for an identified bacterial cause",
+        "If the tests are negative and the child has been breastfeeding, this does not rule out infection.",
+        "If more than one drug will be given, collect, count and package each drug",
+        "Give the first dose of artemether-lumefantrine in the clinic and observe for one hour.",
+        "Give paracetamol every 6 hours until high fever or ear pain is gone.",
+        "Continue using GV for 48 hours after the ulcers have been cured.",
+        "Give first dose any time after 6 months of age to ALL CHILDREN",
+        "IF REFERRAL IS NOT POSSIBLE OR DELAYED, repeat the ampicillin injection every 6 hours.",
+        "If convulsions have not stopped after 10 minutes repeat diazepam dose",
+        "Give full dose of oral antimlarial as soon as the child is able to take orally."
+      ]
+    }
+  }
+}

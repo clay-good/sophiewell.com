@@ -263,3 +263,18 @@ refusal, and weight-over-age precedence. The legal.md category, the reproduction
 (negative-tested with a planted chart sentence), the two specialty terms, the issuer additions,
 and the volatility column (negative-tested with a backdated high-volatility row). No catalog count
 changes.
+
+## Build status
+
+**Built October 3, 2026: the acceptance list.** No catalog count changed.
+
+| Part | What was built |
+|---|---|
+| §4.1 | `lib/band-dose.js`: `findBand`, `bandDose` and `achievedPerKg`. Bands are half-open, and a closed top band is opt-in. A value off the chart, in a source's gap (a band written with a null dose), or blank is refused by name. Weight beats age, and an age band that disagrees is named. Tests in `test/unit/band-dose.test.js` pin each edge just below, at and above. |
+| §6 | `docs/legal.md` now has a WHO and national ministry category and the `who-facts-with-attribution` status, guarded as a set in `restricted-source-attribution.test.js` (empty so far). `test/unit/who-no-verbatim.test.js` fails on any eight consecutive words of a sentence read from a WHO source, anywhere in `lib/`, `views/` or the tool copy. It is stricter than this spec's "this program's tiles". Its phrases are in `test/fixtures/who-phrases.json`, starting with eleven read from the IMCI chart booklet of March 2014. It is negative-tested with a planted sentence, a classification name and a restatement. |
+| §8 | `GTFCC`, `PAHO`, `ICMR`, `MoHFW` and `Ministério da Saúde` are in `ISSUER_PATTERN`, and `ICMRA` does not match. The ledger has a "Field health (volatility-tracked)" table, and `check-citations` fails a row read longer ago than its volatility allows (high 6 months, moderate 12, low 24). It is negative-tested with a backdated high row. |
+| §9 | `global-health` and `community-health` are in the closed specialty vocabulary. |
+
+§3 (the edition switch), §4.2 to §4.4 (setting inputs, three-state signs, temperature site) and §5 are rules
+each tile follows, tested per tile, so they land with the tiles. The owner's decisions of October 3, 2026
+(spec-v1564) mean calculator-shaped tiles go first and classify-and-advise tiles wait for counsel.

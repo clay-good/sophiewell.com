@@ -156,6 +156,27 @@ authoritative algorithm." A CI test
 (`test/unit/aha-no-flowchart.test.js`) greps the payload for known
 AHA flowchart phrases and fails the build if any match.
 
+### WHO and national ministry material (spec-v1540)
+
+The field-health program draws on WHO chart booklets and guidelines and on national ministry
+protocols. The WHO booklets of 2016 and earlier are "All rights reserved". WHO material from 2019
+on, and Brazil's Ministry of Health, is CC BY-NC-SA, whose NonCommercial and ShareAlike terms this
+MIT project cannot carry. So neither kind is reproduced or adapted. A tile uses the thresholds,
+doses and decision logic as facts, restates them in its own words, and cites the source and its
+edition ("Source: WHO, [title], [year]"). It never uses a WHO logo, emblem, color scheme or chart
+layout, and nothing suggests WHO endorsement. The owner adopted this posture for WHO and for
+Brazil's Ministry of Health on October 3, 2026 (spec-v1564, D2 and D3).
+
+- A bundled dataset drawn from WHO material declares `status: who-facts-with-attribution`, and
+  `test/unit/restricted-source-attribution.test.js` holds that set: each one must say what it does
+  and does not reproduce.
+- `test/unit/who-no-verbatim.test.js` fails if any shipped text contains eight or more consecutive
+  words of a sentence read from a WHO source. The sentences live in `test/fixtures/who-phrases.json`
+  and are added from each source as its tiles are built. Classification names shorter than that
+  are the clinical category and stay allowed.
+- WHO growth tables beyond 24 months (website terms) and INTERGROWTH-21st are not bundled; the
+  CDC-redistributed WHO growth files are public domain and are (spec-v1564 §2).
+
 ### Broselow-Luten color-band system (spec-v3)
 
 Vital Signs holds licensing on the specific color-band-to-equipment
@@ -226,6 +247,9 @@ licensing posture with one of these explicit values:
   category: every dataset declaring this status must state what it
   does and does not reproduce, and a new one cannot join the status
   without being added to that guard deliberately (spec-v995).
+- **`who-facts-with-attribution`** -- thresholds, doses and decision logic
+  from WHO or a national ministry, restated, never reproduced (spec-v1540; see
+  "WHO and national ministry material" above). Guarded with the set above.
 - **`mit-original`** -- original plain-English summaries authored by
   the project (cpt-summaries, cms-1500-fields, ub04-fields,
   eob-glossary, steroid-equiv, tpn-rules, iv-to-po). MIT-licensed

@@ -638,6 +638,17 @@ and thresholds) is a stable rule in every case (Class A).
 | who-dengue-2009 | WHO 2009 dengue case classification — severe dengue / dengue with warning signs / dengue without warning signs | WHO 2009 (Dengue: Guidelines for Diagnosis, Treatment, Prevention and Control, Geneva) | same | 2026-07-03 | current — the WHO 2009 three-tier case classification (severity criteria and the seven warning signs) is the in-force scheme and is unchanged; the citation names WHO, which trips the issuer-acronym pattern, so this documentation-only row records that the severity/warning-sign criteria were re-fetched and cross-verified against ≥2 open sources (spec-v97) and are unchanged (Class A). Review on-publication of the next WHO dengue guideline |
 | blood-lead | CDC blood lead reference value — 3.5 µg/dL, with chelation considered at 45 and 70 as a medical emergency | CDC 2021 (Blood Lead Reference Value, Atlanta) | same | 2026-08-29 | current — the reference value was lowered from 5 to 3.5 µg/dL in 2021 on the recommendation of the Lead Exposure and Prevention Advisory Committee, and 3.5 remains in force; the citation names the CDC, which trips the issuer-acronym pattern, so this documentation-only row records that the reference value and the 45/70 µg/dL thresholds were re-fetched and cross-verified against ≥2 open sources (spec-v97) and are unchanged (Class A). The value is defined as the 97.5th percentile of the NHANES blood lead distribution in children aged 1-5 and is restated periodically as population exposure falls, so review on-publication of the next CDC restatement |
 
+## Field health (volatility-tracked)
+
+spec-v1540 §8. Every field-health tile has a row here as well as its issuer row. The gate fails when a row's
+`accessed` date is older than its volatility allows: **high** (a living guideline that changed a dosing edge
+within the last year, such as WHO malaria or the pediatric ARV tables) every 6 months, **moderate** (under
+active revision) every 12, **low** (a stable standard, such as WHO growth 2006) every 24. A living
+guideline's citation carries its version date and DOI.
+
+| tile id | instrument | edition shipped | latest known edition | accessed | volatility | justification if behind |
+|---|---|---|---|---|---|---|
+
 ## State law (gate-enforced)
 
 spec-v1388. A tile whose `META[id].citation` names a state statute or regulation (it matches

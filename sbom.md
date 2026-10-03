@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `51a40c084de6d713`
-Generated: 2026-10-03T15:27:37.795Z
+Build ID: `3d865ed2a6f3dda7`
+Generated: 2026-10-03T16:21:02.826Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -118,6 +118,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/awol-v777.js` | 3543 | `ad621e07b766cf100663ce54f64aad1e3a8326e594683988ebd998845186acbd` |
 | `lib/baden-walker-v432.js` | 2796 | `99e92cc137873d36e8221adc282a9cc13fdea88b4c2adf613afafc37be4aa49b` |
 | `lib/bado-v454.js` | 3443 | `d884e0f012577e7b5a56df69b9327484f9fafa3399545411a6945d7dde1659cb` |
+| `lib/band-dose.js` | 5500 | `854c66d83189d4e76d38acee1bfc784c1c602e1b4d398b8a4b8f2194f4718cfe` |
 | `lib/banff-tcmr-v510.js` | 6562 | `3170dc54a5927851067ea0c5c3006865eb39e33267c2379e2e99b2cb1c39ef33` |
 | `lib/barrack-cement-v484.js` | 3367 | `9bdaeb3a9f9da107261f541591c89e08662ae49770e90a32a9e41fe7a6ba97be` |
 | `lib/barrow-ccf-v440.js` | 3198 | `f52772137a4282c641f7235b698a95e4949eed029e6f522be7151d8e236f7f29` |

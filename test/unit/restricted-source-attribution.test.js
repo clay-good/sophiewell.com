@@ -36,13 +36,13 @@ const DECLARED = {
   'concepts': 'LOINC long names',
 };
 
-async function manifestsWithStatus() {
+async function manifestsWithStatus(status = STATUS) {
   const out = {};
   for (const dir of await readdir(join(ROOT, 'data'), { withFileTypes: true })) {
     if (!dir.isDirectory()) continue;
     let m;
     try { m = JSON.parse(await readFile(join(ROOT, 'data', dir.name, 'manifest.json'), 'utf8')); } catch { continue; }
-    if (m.status === STATUS) out[dir.name] = m;
+    if (m.status === status) out[dir.name] = m;
   }
   return out;
 }
@@ -98,7 +98,22 @@ test('the two tests the licensing docs name are present', async () => {
   // docs/legal.md, docs/threat-model.md and docs/operations.md each name these by path. A doc that
   // cites an automated check is only as true as the check's existence.
   const files = await readdir(join(ROOT, 'test', 'unit'));
-  for (const named of ['aha-no-flowchart.test.js', 'cpt-no-ama.test.js']) {
+  for (const named of ['aha-no-flowchart.test.js', 'cpt-no-ama.test.js', 'who-no-verbatim.test.js']) {
     assert.ok(files.includes(named), `docs name test/unit/${named} as enforcement and it does not exist`);
+  }
+});
+
+// spec-v1540 §6: WHO and national-ministry material, restated and cited, never reproduced. The same rule
+// as above; the set starts empty, and a dataset joins it here deliberately.
+const WHO_STATUS = 'who-facts-with-attribution';
+const WHO_DECLARED = {};
+
+test('the WHO-derived set is exactly the set on disk, and each says what it does not reproduce', async () => {
+  const found = await manifestsWithStatus(WHO_STATUS);
+  assert.deepEqual(Object.keys(found).sort(), Object.keys(WHO_DECLARED).sort(),
+    `a dataset declaring "${WHO_STATUS}" is not listed in this guard (or vice versa); read its payload and add it deliberately`);
+  for (const [name, m] of Object.entries(found)) {
+    const text = `${m.notes || ''} ${m.attribution || ''}`.trim();
+    assert.match(text, /not (bundled|reproduced|included|derived|adapted)/i, `data/${name}/manifest.json does not say what is NOT reproduced from ${WHO_DECLARED[name]}`);
   }
 });

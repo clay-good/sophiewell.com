@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:51a40c08-4de6-5713-8822-77c583f7a9db",
+  "serialNumber": "urn:uuid:3d865ed2-a6f3-5da7-8658-9620681bfe37",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-03T15:27:37.795Z",
+    "timestamp": "2026-10-03T16:21:02.826Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -1795,6 +1795,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3443"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/band-dose.js",
+      "type": "file",
+      "name": "lib/band-dose.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "854c66d83189d4e76d38acee1bfc784c1c602e1b4d398b8a4b8f2194f4718cfe"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5500"
         }
       ]
     },
@@ -80246,6 +80267,7 @@
         "urn:sophiewell:file:source:lib/awol-v777.js",
         "urn:sophiewell:file:source:lib/baden-walker-v432.js",
         "urn:sophiewell:file:source:lib/bado-v454.js",
+        "urn:sophiewell:file:source:lib/band-dose.js",
         "urn:sophiewell:file:source:lib/banff-tcmr-v510.js",
         "urn:sophiewell:file:source:lib/barrack-cement-v484.js",
         "urn:sophiewell:file:source:lib/barrow-ccf-v440.js",
@@ -83341,7 +83363,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "51a40c084de6d713"
+      "value": "3d865ed2a6f3dda7"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -83353,7 +83375,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3054"
+      "value": "3055"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

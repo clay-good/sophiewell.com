@@ -53,8 +53,10 @@ const ROOT = join(fileURLToPath(import.meta.url), '..', '..');
 // The guideline-issuer pattern (spec-v54 §4.1 rule 4). Case-sensitive so the
 // uppercase acronyms do not match the English words "who", "nice", "esc", etc.
 // "Joint Commission" is a literal multi-word issuer name.
+// spec-v1540 §8 adds the field-health issuers: GTFCC (cholera), PAHO, ICMR and MoHFW (India), and
+// Brazil's Ministério da Saúde, written out because its acronym (MS) is an ordinary word.
 export const ISSUER_PATTERN =
-  /\b(CDC|KDIGO|AGS|ACC|AHA|ATS|IDSA|ESC|WHO|AAP|ACOG|SAMHSA|NICE)\b|Joint Commission/;
+  /\b(CDC|KDIGO|AGS|ACC|AHA|ATS|IDSA|ESC|WHO|AAP|ACOG|SAMHSA|NICE|GTFCC|PAHO|ICMR|MoHFW)\b|Joint Commission|Ministério da Saúde/;
 
 // spec-v1388 rule 9: a citation to state law. Abbreviations are bounded so that a future "PHLF" or
 // "TACO" cannot match; at spec-v1388 no citation in the catalog matched at all.
@@ -326,6 +328,53 @@ export function findStateLawViolations({ tiles, meta, stateLedger, today }) {
   return out;
 }
 
+// spec-v1540 §8: the field-health ledger. Its table, under "## Field health (volatility-tracked)", has
+// columns: tile id | instrument | edition shipped | latest known edition | accessed | volatility |
+// justification. A living guideline that changed a dosing edge within the year is `high` (re-read every
+// 6 months), one under active revision `moderate` (12), a stable standard `low` (24).
+export const VOLATILITY_MONTHS = { high: 6, moderate: 12, low: 24 };
+
+export function parseVolatilityLedger(markdown) {
+  const rows = new Map();
+  const text = String(markdown || '');
+  const start = text.indexOf('## Field health (volatility-tracked)');
+  if (start === -1) return rows;
+  const rest = text.slice(start + 1);
+  const next = rest.search(/\n## /);
+  const section = next === -1 ? rest : rest.slice(0, next);
+  for (const line of section.split('\n')) {
+    const trimmed = line.trim();
+    if (!trimmed.startsWith('|')) continue;
+    const cells = trimmed.split('|').slice(1, -1).map((c) => c.trim());
+    const id = (cells[0] || '').replace(/`/g, '');
+    if (!id || id === 'tile id' || /^-+$/.test(id.replace(/[:\s]/g, ''))) continue;
+    rows.set(id, { accessed: cells[4] || '', volatility: (cells[5] || '').toLowerCase() });
+  }
+  return rows;
+}
+
+const addMonths = (iso, n) => {
+  const d = new Date(`${iso}T00:00:00Z`);
+  d.setUTCMonth(d.getUTCMonth() + n);
+  return d.toISOString().slice(0, 10);
+};
+
+// findVolatilityViolations({ tiles, ledger, today }) -> [string]. Pure; `today` is passed in.
+export function findVolatilityViolations({ tiles, ledger, today }) {
+  const out = [];
+  const ids = new Set(tiles.map((t) => t.id));
+  for (const [id, row] of ledger) {
+    if (!ids.has(id)) out.push(`${id}: field-health ledger row names no tile (remove the row)`);
+    const months = VOLATILITY_MONTHS[row.volatility];
+    if (!months) out.push(`${id}: volatility "${row.volatility}" is not high, moderate or low`);
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(row.accessed)) out.push(`${id}: accessed "${row.accessed}" is not a YYYY-MM-DD date`);
+    else if (months && addMonths(row.accessed, months) < today) {
+      out.push(`${id}: ${row.volatility}-volatility source last read ${row.accessed}, more than ${months} months ago; re-read it against the current edition, then move the date`);
+    }
+  }
+  return out;
+}
+
 async function main() {
   const [appJs, ledgerMd, backlogJson, metaMod] = await Promise.all([
     readFile(join(ROOT, 'app.js'), 'utf8'),
@@ -337,11 +386,13 @@ async function main() {
   const ledgerIds = parseLedgerIds(ledgerMd);
   const backlogIds = new Set(JSON.parse(backlogJson).tiles);
   const stateLedger = parseStateLawLedger(ledgerMd);
+  const volatilityLedger = parseVolatilityLedger(ledgerMd);
   const violations = [
     ...findCitationViolations({
       tiles, meta: metaMod.META, ledgerIds, backlogIds, searchUrlIds: SEARCH_URL_GRANDFATHERED,
     }),
     ...findStateLawViolations({ tiles, meta: metaMod.META, stateLedger, today: new Date().toISOString().slice(0, 10) }),
+    ...findVolatilityViolations({ tiles, ledger: volatilityLedger, today: new Date().toISOString().slice(0, 10) }),
   ];
 
   if (violations.length) {
@@ -356,7 +407,8 @@ async function main() {
   console.log(
     `check-citations: clean (${tiles.length} tiles, ` +
     `${issuerCount} guideline-issuer tiles dated + ledgered, ${ledgerIds.size} ledger rows, ` +
-    `${backlogIds.size} dated citations still unlinked, ${stateLedger.size} state-law rows in review).`,
+    `${backlogIds.size} dated citations still unlinked, ${stateLedger.size} state-law rows in review, ` +
+    `${volatilityLedger.size} field-health rows by volatility).`,
   );
 }
 
