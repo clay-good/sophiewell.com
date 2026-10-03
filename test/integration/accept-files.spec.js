@@ -28,6 +28,7 @@ const CASES = {
   'appeal-worklist': ['group-v1516', 'x12-835.835', 'aw-835-files', 'x12-835'],
   'mpr-gap-days': ['group-v1513', 'fill-history.csv', 'mpr-upload-file', 'csv-mapped'],
   'med-sync-plan': ['group-v1513', 'ambiguous.csv', 'sync-upload-file', 'csv-mapped'],
+  'fpl-percent': ['group-v1506', 'households.csv', 'fpl-upload-file', 'csv-mapped'],
   'pa-lint': ['pa-lint', 'packet.pdf', 'pa-file-picker', 'pdf'],
 };
 

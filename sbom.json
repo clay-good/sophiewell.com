@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:f7e7c616-1769-5327-8fc4-095bfc98cbb3",
+  "serialNumber": "urn:uuid:4bdaf766-e142-5c21-8a9f-02ab5bd7cb8e",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-03T11:08:55.994Z",
+    "timestamp": "2026-10-03T11:42:31.709Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -1858,6 +1858,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3198"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/batch-tools.js",
+      "type": "file",
+      "name": "lib/batch-tools.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "82eb974746ae18c26430e3223b4f0b2c6c85d83703718554a034b524e488e08b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4819"
         }
       ]
     },
@@ -22826,7 +22847,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "cf95e58a959f568452fd5ab4c6ac3f92187581b0895bd459b6ea11db46e31b46"
+          "content": "0203ded07ad97085233dbe78fffaa922c39967cb1662423a10f3e60fd8d57256"
         }
       ],
       "properties": [
@@ -22836,7 +22857,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "12347"
+          "value": "12616"
         }
       ]
     },
@@ -22868,7 +22889,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "35364bf6215c082da4e05fc0c92f6aa218919ca8fcbc8e869ec2a5351e518efa"
+          "content": "11a48f5d7037c780060bbe8ffe525f281e6a9ae4ad39394293482a48cef41e37"
         }
       ],
       "properties": [
@@ -22878,7 +22899,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "12869"
+          "value": "13345"
         }
       ]
     },
@@ -48761,7 +48782,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ef7b6ccdfd7c91c7853b8e9a90924bcc9060753ab6d802e3283051221bd264c9"
+          "content": "387d5b592b4fda667adc06c860156571037a0c3a09d2da473a0fafbbc94d19d2"
         }
       ],
       "properties": [
@@ -48771,7 +48792,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "13883"
+          "value": "14663"
         }
       ]
     },
@@ -49265,7 +49286,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3555f69a734be96253ecdc7c65acf9b5d3ecd94ac41eae38354f7099c460b38c"
+          "content": "140f4c8f7160b256ae1f6e2e6c708d6c2a6b8ea60a88831d1b67f3d284888b37"
         }
       ],
       "properties": [
@@ -49275,7 +49296,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "9012"
+          "value": "8982"
         }
       ]
     },
@@ -80255,6 +80276,7 @@
         "urn:sophiewell:file:source:lib/banff-tcmr-v510.js",
         "urn:sophiewell:file:source:lib/barrack-cement-v484.js",
         "urn:sophiewell:file:source:lib/barrow-ccf-v440.js",
+        "urn:sophiewell:file:source:lib/batch-tools.js",
         "urn:sophiewell:file:source:lib/bauer-score-v603.js",
         "urn:sophiewell:file:source:lib/bctq-v774.js",
         "urn:sophiewell:file:source:lib/bell-nec-v431.js",
@@ -83346,7 +83368,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "f7e7c61617696327"
+      "value": "4bdaf766e142dc21"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -83358,7 +83380,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3053"
+      "value": "3054"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

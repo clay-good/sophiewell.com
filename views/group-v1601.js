@@ -127,7 +127,7 @@ export const renderers = {
         li.appendChild(el('br'));
         li.appendChild(document.createTextNode(r.description));
         li.appendChild(el('br'));
-        li.appendChild(el('a', { href: r.url, target: '_blank', rel: 'noreferrer', text: 'The recommendation at uspreventiveservicestaskforce.org' }));
+        li.appendChild(el('a', { href: r.url, target: '_blank', rel: 'noreferrer', text: 'The USPSTF recommendation' }));
         if (withQuestions && r.questions.length) { const q = el('ul'); for (const t of r.questions) q.appendChild(el('li', { text: t })); li.appendChild(q); }
         ul.appendChild(li);
       }

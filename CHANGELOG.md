@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Federal Poverty Level Percent: screen many households from a CSV, one row each,
+  with the region and program chosen once on the form. A row missing its size or
+  income is listed as needing corrected inputs, never filled from the form.
+
 - DME rental clock: an optional written-order check, naming any of the six
   required elements missing and whether the order reached the supplier in time.
 

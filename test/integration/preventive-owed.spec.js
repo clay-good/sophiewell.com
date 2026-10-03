@@ -15,7 +15,7 @@ test('a 52-year-old woman: what is owed at $0, with the USPSTF words and links, 
   await expect(out).toContainText('The USPSTF recommends screening for colorectal cancer in all adults aged 50 to 75 years.');
   await expect(out).toContainText('Depends on an answer');
   await expect(out).toContainText('Do they have a personal or family history of breast, ovarian, tubal or peritoneal cancer');
-  await expect(out.getByRole('link', { name: 'The recommendation at uspreventiveservicestaskforce.org' }).first()).toHaveAttribute('href', /uspreventiveservicestaskforce\.org\/uspstf\/recommendation\//);
+  await expect(out.getByRole('link', { name: 'The USPSTF recommendation' }).first()).toHaveAttribute('href', /uspreventiveservicestaskforce\.org\/uspstf\/recommendation\//);
   await expectNoHScroll(page, 'preventive-owed');
 });
 

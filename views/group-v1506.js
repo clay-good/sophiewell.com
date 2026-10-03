@@ -11,6 +11,9 @@ import * as AP from '../lib/asp-payment.js';
 import { loadManifest, loadFile, loadShard } from '../lib/data.js';
 import { parseDate } from '../lib/pa/date.js';
 import { resultRow } from '../lib/result-copy.js';
+import { uploadWorkbench } from './upload-workbench.js';
+import { BATCH_TOOLS } from '../lib/batch-tools.js';
+import { acceptVia } from '../lib/hand-off.js';
 
 const NA = { value: '', text: '— choose —' };
 function selectField(root, label, id, options) {
@@ -69,16 +72,29 @@ export const renderers = {
     numField(root, 'Coverage or program year (blank for this year)', 'fpl-year', 'e.g. 2026', '2100', '1');
     numField(root, 'Program limit as a percent, to check against (optional)', 'fpl-limit', 'e.g. 400', '2000', 'any');
     const ids = pairs.map(([d]) => d);
-    const o = out(); root.appendChild(o);
-    wire(ids, () => safe(o, () => {
+    const o = out();
+    const formArgs = () => {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
-      const r = IN.fplPercent(args);
+      return args;
+    };
+    const show = (r) => safe(o, () => {
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Percent', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
-    }));
+    });
+    // spec-v1501 §3: many households from a file, each row through fplPercent; a column the file
+    // lacks (the region, the program) takes the answer above.
+    const upload = uploadWorkbench(root, {
+      id: 'fpl-upload', fields: BATCH_TOOLS['fpl-percent'].fields, label: 'Screen households from a file',
+      compute: 'fpl-percent', getInput: formArgs, onResult: show,
+    });
+    root.appendChild(o);
+    wire(ids, () => {
+      if (upload.isActive()) upload.compute(formArgs());
+      else show(IN.fplPercent(formArgs()));
+    });
   },
   'irmaa'(root) {
     const pairs = [['irm-filing', 'filing'], ['irm-magi', 'magi'], ['irm-year', 'year']];
@@ -246,4 +262,8 @@ export const renderers = {
       })().then((lookup) => { if (mine === seq) show({ ...args, lookup }); });
     });
   },
+};
+
+export const acceptFiles = {
+  'fpl-percent': acceptVia('fpl-upload-file'),
 };
