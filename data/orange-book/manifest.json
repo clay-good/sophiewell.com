@@ -1,0 +1,174 @@
+{
+  "manifestVersion": 2,
+  "dataset": "orange-book",
+  "label": "FDA Orange Book (approved drug products with therapeutic equivalence evaluations)",
+  "sourceUrl": "https://www.fda.gov/drugs/drug-approvals-and-databases/orange-book-data-files",
+  "agency": "FDA",
+  "status": "public-domain",
+  "cadence": "monthly",
+  "recordCount": 25544,
+  "shardLayout": "shards",
+  "shards": [
+    {
+      "name": "A.json",
+      "sha256": "9dbe1d0751c4b0e3d11132b48ff00e8c798430d8075a949a80f8b40304517edb",
+      "records": 2485,
+      "bytes": 598136
+    },
+    {
+      "name": "B.json",
+      "sha256": "06011a8a17a7edaf9f18d6744a78b1ad26131d12d65dd7f3fe48f932247c3b45",
+      "records": 1129,
+      "bytes": 256034
+    },
+    {
+      "name": "C.json",
+      "sha256": "621254b3af8adef2c85b68ef3918522d6b742cbbd9cd648677dee2fae585874b",
+      "records": 2329,
+      "bytes": 519961
+    },
+    {
+      "name": "D.json",
+      "sha256": "6bb2c331c5df2d83b91fa91b2b9dd09af16432a9955ea70777fe87087e6e96b7",
+      "records": 2393,
+      "bytes": 549786
+    },
+    {
+      "name": "E.json",
+      "sha256": "37c863487c657c0a9a8c61fee7489458533533e1189cbb507d10cbe79b427229",
+      "records": 1345,
+      "bytes": 300493
+    },
+    {
+      "name": "F.json",
+      "sha256": "6a7498f4dbcf1baec84cd9ab6d179c3b2be86074a01afb93151b5aa5db91fb38",
+      "records": 1158,
+      "bytes": 253756
+    },
+    {
+      "name": "G.json",
+      "sha256": "025f86fae8fea3d9ca12c741fffb95b21022cd4b44772cff0787c977c3e3ca27",
+      "records": 709,
+      "bytes": 156305
+    },
+    {
+      "name": "H.json",
+      "sha256": "4caf2839eed3ba7f175915ac6bd3bc1ca95e28af527fae6e4774b0eb2c9ee663",
+      "records": 719,
+      "bytes": 166793
+    },
+    {
+      "name": "I.json",
+      "sha256": "e1fca663a62b8d7c210ce8189853c1acafa2cc922f6ba88b9fefffd56e761a20",
+      "records": 692,
+      "bytes": 147055
+    },
+    {
+      "name": "K.json",
+      "sha256": "38656d142619eec687b882c74d79e1340760144283f0a1ad071cb3837e2c9599",
+      "records": 83,
+      "bytes": 18298
+    },
+    {
+      "name": "L.json",
+      "sha256": "b249c1455e68c1dc12003c91d83af263c64d0f7098c58e5c4b8e0f40d696f08c",
+      "records": 2009,
+      "bytes": 446256
+    },
+    {
+      "name": "M.json",
+      "sha256": "e59052efe276ee9e8a1ec158b7f71f1b63cb14aed3db6261c32ce52ba3925279",
+      "records": 1916,
+      "bytes": 431811
+    },
+    {
+      "name": "N.json",
+      "sha256": "edd83460e49f5206047942705ca7eba18e8e89ed12f0e4863706162249f2571d",
+      "records": 864,
+      "bytes": 190227
+    },
+    {
+      "name": "O.json",
+      "sha256": "d182f35faa63ee173d0816b5c4d28d11294fc43dacf2e08788bad42e89fd0377",
+      "records": 835,
+      "bytes": 182957
+    },
+    {
+      "name": "P.json",
+      "sha256": "04856722af93a3c2f7a1873856ecf6daae31646c77c1a1b6a654ea167990e65d",
+      "records": 2031,
+      "bytes": 450597
+    },
+    {
+      "name": "Q.json",
+      "sha256": "3288e1d4620d8ff85b1b2284c434358da0bd7a1605f4c5d1f9bf8079204b8852",
+      "records": 168,
+      "bytes": 37774
+    },
+    {
+      "name": "R.json",
+      "sha256": "437210621a071b8cfbd87412672fb5ab415ca24ae8aeb683f931c8c371aedfa6",
+      "records": 912,
+      "bytes": 195610
+    },
+    {
+      "name": "S.json",
+      "sha256": "2c8251670a36add0c935d2df2fc60a02306c6871893fece6c6c14862adbd9702",
+      "records": 1115,
+      "bytes": 244718
+    },
+    {
+      "name": "T.json",
+      "sha256": "8ee26f02b555442264a13114a4caabfc1704a5c79708347a1042a1b5761e5244",
+      "records": 1697,
+      "bytes": 359534
+    },
+    {
+      "name": "U.json",
+      "sha256": "af08eb205d38fdaff65ae5368d999cd5e0d79c28971b19138b63d461d7cc3dc8",
+      "records": 36,
+      "bytes": 7057
+    },
+    {
+      "name": "V.json",
+      "sha256": "25130bbf0160e32199167039f0eb390cafb49e5fb252f0864bace7b797604cc8",
+      "records": 628,
+      "bytes": 141146
+    },
+    {
+      "name": "W.json",
+      "sha256": "e869b10cf2bdcd1f785d338a95bff48f5eabc1ab9711a2cf6f140d3524c71b98",
+      "records": 54,
+      "bytes": 10848
+    },
+    {
+      "name": "X.json",
+      "sha256": "da0106be8f598ff2905575555958184d67411fced3781c3c1156c1144e1ddcc2",
+      "records": 5,
+      "bytes": 993
+    },
+    {
+      "name": "Z.json",
+      "sha256": "93a6096742aa39f9dfd418474b6ba534fb71e6ba5b124c29279a473c27d9eea7",
+      "records": 232,
+      "bytes": 49329
+    }
+  ],
+  "ancillary": [
+    "names.json"
+  ],
+  "notes": "One record per marketed (Rx or OTC) product from products.txt: ingredient, dosage form and route, strength, trade name, applicant, application and product number, therapeutic equivalence code, and the RLD and RS flags. Discontinued products are dropped. The Orange Book has no NDCs.",
+  "coverage": "full",
+  "sourceEdition": "2026-09 (products.txt of 2026-09-11)",
+  "effectiveFrom": "2026-09-11",
+  "fetchedAt": "2026-10-03",
+  "contentChangedAt": "2026-10-03",
+  "expiresOn": "2026-11-11",
+  "nextExpected": "2026-10-16",
+  "sourceSha256": "84e616aacf4f42bb85a94586c10abfc260f8fb9b60f07db3f10315ae70a3298e",
+  "recordsSha256": "ea62f94f8a3da4f11316c043ae231099d905eb956b399c83473df48838f19582",
+  "recordBounds": {
+    "min": 15000,
+    "max": 40000
+  }
+}

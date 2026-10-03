@@ -49,6 +49,8 @@
 // refresh keeps it current.
 // spec-v1604: `claims-pct-medicare` prices its example from the bundled physician fee schedule (RVU26D), which
 // expires April 1, 2027; past it the page says the fee schedule has passed its review date and prices nothing.
+// spec-v1512: `substitution-check` finds its example's products in the fetched Orange Book, which expires
+// about ten weeks after its edition; past that the search says the lists have passed their review date.
 export const CLOCK_DEPENDENT = new Set([
   'appeal-deadline',
   'claims-pct-medicare',
@@ -60,5 +62,6 @@ export const CLOCK_DEPENDENT = new Set([
   'pa-turnaround',
   'pharmacy-spread-check',
   'preg-dating',
+  'substitution-check',
   'timely-filing',
 ]);

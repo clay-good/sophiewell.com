@@ -10505,6 +10505,18 @@
     },
     {
       "phrases": [
+        "generic substitution check",
+        "therapeutic equivalence code",
+        "ab rated generic",
+        "orange book te code",
+        "biosimilar interchangeable substitution",
+        "purple book interchangeable"
+      ],
+      "tile": "substitution-check",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
         "denial pattern report",
         "denial trends",
         "carc adjustment report",

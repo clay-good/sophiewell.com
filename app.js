@@ -1073,6 +1073,7 @@ const UTILITIES = [
   { id: 'ppdr-eligibility', name: 'Patient-Provider Dispute Eligibility', group: 'C', audiences: ['billers', 'patients'], clinical: false },
   { id: 'vial-rounding', name: 'Dose Rounding to Whole Vials', group: 'Q', audiences: ['clinicians', 'billers'], clinical: false },
   { id: 'chair-day-planner', name: 'Infusion Chair Day Planner', group: 'Q', audiences: ['clinicians', 'billers'], clinical: false },
+  { id: 'substitution-check', name: 'Can This Product Be Substituted? (Orange Book and Purple Book)', group: 'Q', audiences: ['clinicians', 'billers'], clinical: false },
   { id: 'rate-escalation-schedule', name: 'Infusion Rate Escalation Schedule', group: 'Q', audiences: ['clinicians'], clinical: false },
   { id: 'dose-calendar', name: 'Loading and Maintenance Dose Calendar', group: 'Q', audiences: ['clinicians', 'patients'], clinical: false },
   { id: 'mpr-gap-days', name: 'Adherence: PDC, MPR and Gap Days', group: 'Q', audiences: ['clinicians', 'billers'], clinical: false },

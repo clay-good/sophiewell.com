@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `4792a70deb625b6f`
-Generated: 2026-10-03T05:13:17.308Z
+Build ID: `5779d51e30335f47`
+Generated: 2026-10-03T05:18:48.391Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -25,9 +25,9 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 126094 | `7041dc7a2b96b8aa2bc01dea6b4351328f5bbdc568a6f4406c6373944c37a1fe` |
+| `index.html` | 126172 | `677705e255d87861041c2e17636b8c1c53f99316a95b2db9b46e7b2cee0a4a34` |
 | `styles.css` | 75420 | `f7afb2c67c64f1624889489889ef9dd592a1afefd84295e8890ee869484e15e2` |
-| `app.js` | 571322 | `005cfa5be1e91b16fa115d44e08915df682c1251318d746c38b636b04df114ed` |
+| `app.js` | 571493 | `7d93b915bfc15f6b323fbd3cdfcd1c9cdd1950e1a554c6255588e84d2e6175fa` |
 | `report-feedback.js` | 12178 | `955e5cb542c7b13dcbb85a75ecf4ccf2dc0b2dffecd84daac1d607bd6acc7cd2` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 | `theme.js` | 3132 | `6910af0b4c65869c6a3d24d17842bb2cc88c7d23f8fb32506fcdbfeec70ce979` |
@@ -35,7 +35,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `sw.js` | 5339 | `32d31e18fefc49ef2c5fdab4a1c538855d47eeba2438d5a4e1413ac63b3e7f8c` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 245898 | `5fb16ec58a4c6a28cfa4e60b31787e43470b7722f28412bd8d73705744051445` |
+| `sitemap.xml` | 246027 | `775ab64fc381b52d4faaa489c9dd7f0ad4cc025f083723f40e77f4826659f2e9` |
 | `_headers` | 2050 | `3874f05a080b8cab13ff022e6e6147c7e1057420a2d9cbc7834bac6b421d4011` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 3682 | `8dd13c4dd66de0c9ec93c2c1561e5fec1902f144b677d3581cf56b124b04a1b8` |
@@ -48,7 +48,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | Path | Bytes | SHA-256 |
 |---|---:|---|
 | `report-worker.mjs` | 13434 | `bcbebe960bf79e0cb2038f7ddc216dfb0753a9665f071fa32966d5d460ffc794` |
-| `report-catalog.js` | 112982 | `ca5a00703ce3814144ac9c8e5e9a7266d1d98b6f10a4b9b03276c128eacab397` |
+| `report-catalog.js` | 113068 | `64c384fd6058b1412706c4819411fb5e885246adf21faf9ecfb3fdfb34af3f71` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 
 ## Source-of-truth modules (lib + views)
@@ -355,6 +355,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/fabq-v782.js` | 5927 | `9d8ea59172578b6c0a9122a4e819919d4c3a2ac793980fa9e3f7d98496975bf4` |
 | `lib/fast-dementia-v294.js` | 5928 | `ca241cbeef3ca9c9ba2a8d46c024d617b2691c1519265d5454caa2d5887af661` |
 | `lib/fazekas-v349.js` | 3945 | `21bb6a7dee337f80109349b3a983b97ffff33057f2a96cda79cef09cd91ddfed` |
+| `lib/fda-books-load.js` | 2335 | `8c2821c90dbc5944f1bf0aac18f5c6c3fe64f3166a104a5ceb9e1c8c4f72df97` |
 | `lib/feno-v888.js` | 9106 | `76008183bf081c76290b4ab163fb483b6f7ea7fb0243218d992c8512b335f443` |
 | `lib/fernandez-radius-v489.js` | 3424 | `ba068bf9d2eccfe4c35d61a30f5ed1d73146698a65fc68f43940ba6d264622ee` |
 | `lib/ffs-1996-v590.js` | 11730 | `1d34a96d7576fd07ea0408a9b207147b3a0ee5307355d6a398aa85d93081e239` |
@@ -647,7 +648,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/membranous-risk-v878.js` | 11351 | `882c36c07e46543e32f1114792c1124ee9f9ff6b384084fc0a8c221e7dd62062` |
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2681913 | `5531973e578211f0b6b37deb8fba044b2dfba5b8b5dde1769c9d8e95faa5d848` |
+| `lib/meta.js` | 2682780 | `a37e0f9e3993a1885635bc1c41b31d5bc370c351093908f2663554ea8b11de1a` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 19326 | `64342935cc7842381f6e318293cfcd6f97b69022268da6c595c5c71db388af2d` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -1041,6 +1042,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/strongyloides-presumptive-v1401.js` | 6122 | `0e907de0dea7512272ad4845a923325eeb2f1d11d8a586877be0418003a3403a` |
 | `lib/stulberg-v457.js` | 3492 | `72b91cf6d020a3d4e58cdedd907a7f84fb1e3736cfcd19ae3ed300f9a7b9793f` |
 | `lib/subspecialty-v198.js` | 15911 | `3b2d09fa66c89500f0d4b15abe213d9b4f691da3beb6ff004f6166a37269be5f` |
+| `lib/substitution-check.js` | 7506 | `662610da34380dcde9ee114b436dd649556958727f4c759dffcbb70f2da19f09` |
 | `lib/suites-v155.js` | 13422 | `8dcd9ee6cb60524bed730715b875ace734c5c8f4b9d3ec5eb1ad19370eae577e` |
 | `lib/sun-ac-cell-v421.js` | 3663 | `2e98fadd5a5b0b497a827fe2fc7cd3c2dbe6b1c00cc2f6e465f50cc2e389fb55` |
 | `lib/sun-ac-flare-v422.js` | 3437 | `c372e87d2726c6e87123b9971c50eed8b5d23a434bd99dc6dad494e10005b30c` |
@@ -2350,7 +2352,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v151.js` | 13359 | `0f5eff3a293106878f3c19634996260b9ed65f358fb54c277941ddb9ef93784e` |
 | `views/group-v1510.js` | 16528 | `7e3ff723478dadfb539fb9913ef1f893ba3678166cfafdd33964148e2155f1f5` |
 | `views/group-v1511.js` | 12916 | `93b0462d58e5904d62e34a3d32ff05a6f8d4a8a68ddf8a6160d8c64cb40d7750` |
-| `views/group-v1512.js` | 9441 | `7ec8a2b39538b300b9b1d3335b75a02f6d55422a149582761f6f02f7499235ac` |
+| `views/group-v1512.js` | 12754 | `0fb25670ebb13948277032222aefdf59e4f5b867aacd449a529870650d47bd96` |
 | `views/group-v1513.js` | 8961 | `ebd3a2e3ba0b3ee52e0424375dfc40aab175e62d9122172717428e4761dc810d` |
 | `views/group-v1514.js` | 11361 | `b728bf9f4e4314627d921000346a86a3fc5db92716dc2cf5855e2c7a0b8cd6b9` |
 | `views/group-v1515.js` | 35927 | `e0adcc4ae33901488be4486a5160e12757e045033e8c1aca3b668f65b205b83c` |

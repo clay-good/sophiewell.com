@@ -5,6 +5,8 @@ import * as VR from '../lib/vial-rounding-v1512.js';
 import * as RE from '../lib/rate-escalation-v1512.js';
 import * as DC from '../lib/dose-calendar-v1512.js';
 import * as CD from '../lib/chair-day-planner.js';
+import * as SUB from '../lib/substitution-check.js';
+import { findProducts } from '../lib/fda-books-load.js';
 import { resultRow } from '../lib/result-copy.js';
 import { uploadWorkbench } from './upload-workbench.js';
 import { APPT_FIELDS } from '../lib/upload-fields.js';
@@ -173,6 +175,61 @@ export const renderers = {
     });
     root.appendChild(o);
     wire(ids, run);
+  },
+  // spec-v1512 tool 5: two products, prescribed and on the shelf, each found by name in the Orange Book or
+  // the Purple Book and picked from what the name finds; then one question: substitutable or not.
+  'substitution-check'(root) {
+    note(root, 'Type each product\'s name and strength (a brand, a generic name or a manufacturer), then pick it from what the name finds.');
+    const side = (key, label) => {
+      textField(root, `${label}: name and strength`, `sub-${key}-name`, key === 'rx' ? 'e.g. Procardia XL 30MG' : 'e.g. nifedipine Aurobindo 30MG');
+      const wrap = el('p');
+      wrap.appendChild(el('label', { for: `sub-${key}-pick`, text: `${label}: pick the product` }));
+      wrap.appendChild(el('br'));
+      const s = el('select', { id: `sub-${key}-pick` });
+      s.appendChild(el('option', { value: '', text: '— type a name above —' }));
+      wrap.appendChild(s);
+      root.appendChild(wrap);
+      return s;
+    };
+    const picks = { rx: side('rx', 'Prescribed product'), shelf: side('shelf', 'Product on the shelf') };
+    const found = { rx: new Map(), shelf: new Map() };
+    let editions = {};
+    const o = out();
+    root.appendChild(o);
+    const decide = () => safe(o, () => {
+      const one = (k) => found[k].get(picks[k].value) || null;
+      const r = SUB.substitutionCheck({ prescribed: one('rx'), shelf: one('shelf'), editions });
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'At the pharmacy', value: r.bandLabel }]);
+      list(o, r.entries);
+      list(o, r.notes);
+    });
+    const seq = { rx: 0, shelf: 0 };
+    const search = async (k) => {
+      const mine = ++seq[k];
+      const q = val(`sub-${k}-name`).trim();
+      const s = picks[k];
+      clear(s); found[k].clear();
+      if (!q) { s.appendChild(el('option', { value: '', text: '— type a name above —' })); decide(); return; }
+      s.appendChild(el('option', { value: '', text: 'Searching...' }));
+      const res = await findProducts(q);
+      if (mine !== seq[k]) return;
+      clear(s);
+      if (res.error) { s.appendChild(el('option', { value: '', text: 'The FDA product lists could not be loaded' })); decide(); return; }
+      editions = res.editions;
+      const all = [...res.orange.map((r) => ['orange', r]), ...res.purple.map((r) => ['purple', r])];
+      s.appendChild(el('option', { value: '', text: all.length ? `— ${all.length.toLocaleString('en-US')} found; choose one —` : (res.expired.length ? 'The FDA product lists have passed their review date' : 'Nothing found; try fewer words') }));
+      for (const [book, r] of all) { const key = SUB.optionKey(r, book); found[k].set(key, { book, record: r }); s.appendChild(el('option', { value: key, text: SUB.optionLabel(r, book) })); }
+      if (all.length === 1) s.value = SUB.optionKey(all[0][1], all[0][0]);
+      decide();
+    };
+    for (const k of ['rx', 'shelf']) {
+      const n = root.querySelector(`#sub-${k}-name`);
+      n.addEventListener('change', () => search(k));
+      n.addEventListener('input', () => search(k));
+      picks[k].addEventListener('change', decide);
+    }
+    search('rx'); search('shelf');
   },
 };
 

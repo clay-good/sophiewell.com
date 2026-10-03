@@ -286,3 +286,5 @@ experience**.
 > v1604, plan claims as a percent of Medicare — [spec-v1604](spec-v1604.md), which adds `claims-pct-medicare` — is 1968.)
 
 > v1602, itemized hospital bills — [spec-v1602](spec-v1602.md), which adds `itemized-bill-check` — is 1969.)
+
+> v1512, generic and biosimilar substitution — [spec-v1512](spec-v1512.md), which adds `substitution-check` — is 1970.)

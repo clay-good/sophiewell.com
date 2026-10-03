@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:4792a70d-eb62-5b6f-8ec4-97fc3359b4dd",
+  "serialNumber": "urn:uuid:5779d51e-3033-5f47-89ce-45831a9cb8b4",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-03T05:13:17.308Z",
+    "timestamp": "2026-10-03T05:18:48.391Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1969 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1970 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7041dc7a2b96b8aa2bc01dea6b4351328f5bbdc568a6f4406c6373944c37a1fe"
+          "content": "677705e255d87861041c2e17636b8c1c53f99316a95b2db9b46e7b2cee0a4a34"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "126094"
+          "value": "126172"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "005cfa5be1e91b16fa115d44e08915df682c1251318d746c38b636b04df114ed"
+          "content": "7d93b915bfc15f6b323fbd3cdfcd1c9cdd1950e1a554c6255588e84d2e6175fa"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "571322"
+          "value": "571493"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5fb16ec58a4c6a28cfa4e60b31787e43470b7722f28412bd8d73705744051445"
+          "content": "775ab64fc381b52d4faaa489c9dd7f0ad4cc025f083723f40e77f4826659f2e9"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "245898"
+          "value": "246027"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ca5a00703ce3814144ac9c8e5e9a7266d1d98b6f10a4b9b03276c128eacab397"
+          "content": "64c384fd6058b1412706c4819411fb5e885246adf21faf9ecfb3fdfb34af3f71"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "112982"
+          "value": "113068"
         }
       ]
     },
@@ -6776,6 +6776,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/fda-books-load.js",
+      "type": "file",
+      "name": "lib/fda-books-load.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8c2821c90dbc5944f1bf0aac18f5c6c3fe64f3166a104a5ceb9e1c8c4f72df97"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2335"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/feno-v888.js",
       "type": "file",
       "name": "lib/feno-v888.js",
@@ -12914,7 +12935,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5531973e578211f0b6b37deb8fba044b2dfba5b8b5dde1769c9d8e95faa5d848"
+          "content": "a37e0f9e3993a1885635bc1c41b31d5bc370c351093908f2663554ea8b11de1a"
         }
       ],
       "properties": [
@@ -12924,7 +12945,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2681913"
+          "value": "2682780"
         }
       ]
     },
@@ -21178,6 +21199,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "15911"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/substitution-check.js",
+      "type": "file",
+      "name": "lib/substitution-check.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "662610da34380dcde9ee114b436dd649556958727f4c759dffcbb70f2da19f09"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7506"
         }
       ]
     },
@@ -48677,7 +48719,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7ec8a2b39538b300b9b1d3335b75a02f6d55422a149582761f6f02f7499235ac"
+          "content": "0fb25670ebb13948277032222aefdf59e4f5b867aacd449a529870650d47bd96"
         }
       ],
       "properties": [
@@ -48687,7 +48729,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "9441"
+          "value": "12754"
         }
       ]
     },
@@ -80258,6 +80300,7 @@
         "urn:sophiewell:file:source:lib/fabq-v782.js",
         "urn:sophiewell:file:source:lib/fast-dementia-v294.js",
         "urn:sophiewell:file:source:lib/fazekas-v349.js",
+        "urn:sophiewell:file:source:lib/fda-books-load.js",
         "urn:sophiewell:file:source:lib/feno-v888.js",
         "urn:sophiewell:file:source:lib/fernandez-radius-v489.js",
         "urn:sophiewell:file:source:lib/ffs-1996-v590.js",
@@ -80944,6 +80987,7 @@
         "urn:sophiewell:file:source:lib/strongyloides-presumptive-v1401.js",
         "urn:sophiewell:file:source:lib/stulberg-v457.js",
         "urn:sophiewell:file:source:lib/subspecialty-v198.js",
+        "urn:sophiewell:file:source:lib/substitution-check.js",
         "urn:sophiewell:file:source:lib/suites-v155.js",
         "urn:sophiewell:file:source:lib/sun-ac-cell-v421.js",
         "urn:sophiewell:file:source:lib/sun-ac-flare-v422.js",
@@ -83104,7 +83148,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "4792a70deb625b6f"
+      "value": "5779d51e30335f47"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -83116,7 +83160,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3042"
+      "value": "3044"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

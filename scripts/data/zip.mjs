@@ -24,7 +24,8 @@ function findEocd(buf) {
   throw new Error('zip: no end-of-central-directory record (not a zip file, or truncated)');
 }
 
-// zipEntries(buf) -> [{ name, method, compressedSize, size, offset }]
+// zipEntries(buf) -> [{ name, method, compressedSize, size, offset, modified }]. `modified` is the entry's
+// MS-DOS date and time (no time zone; read as UTC), or null when the fields are zero.
 export function zipEntries(bytes) {
   const buf = Buffer.isBuffer(bytes) ? bytes : Buffer.from(bytes);
   const e = findEocd(buf);
@@ -36,6 +37,8 @@ export function zipEntries(bytes) {
     if (buf.readUInt32LE(p) !== CEN) throw new Error(`zip: bad central directory entry ${n}`);
     const flags = buf.readUInt16LE(p + 8);
     const method = buf.readUInt16LE(p + 10);
+    const dosTime = buf.readUInt16LE(p + 12);
+    const dosDate = buf.readUInt16LE(p + 14);
     const compressedSize = buf.readUInt32LE(p + 20);
     const size = buf.readUInt32LE(p + 24);
     const nameLen = buf.readUInt16LE(p + 28);
@@ -45,7 +48,8 @@ export function zipEntries(bytes) {
     // Bit 11: the name is UTF-8; otherwise CP437, which for CMS's ASCII names is the same.
     const name = buf.subarray(p + 46, p + 46 + nameLen).toString(flags & 0x800 ? 'utf8' : 'latin1');
     if (compressedSize === 0xffffffff || size === 0xffffffff || offset === 0xffffffff) throw new Error(`zip: ${name} needs zip64`);
-    out.push({ name, method, compressedSize, size, offset });
+    const modified = dosDate ? new Date(Date.UTC(1980 + (dosDate >> 9), ((dosDate >> 5) & 15) - 1, dosDate & 31, dosTime >> 11, (dosTime >> 5) & 63, (dosTime & 31) * 2)) : null;
+    out.push({ name, method, compressedSize, size, offset, modified });
     p += 46 + nameLen + extraLen + commentLen;
   }
   return out;
