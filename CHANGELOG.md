@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Prior authorization FHIR bundle check: a Da Vinci PAS request or response
+  bundle checked against the guide's 2.2.1 profiles, with each error's element
+  path, for teams building the Prior Authorization API due January 1, 2027.
+
 - Negotiated-price refund reconciliation: a pharmacy's claims for drugs with a
   Medicare negotiated price, matched to the Medicare Transaction Facilitator's
   835 refund files, with each refund marked refunded, short (and why), late,

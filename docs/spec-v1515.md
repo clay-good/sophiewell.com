@@ -159,4 +159,16 @@ a route A dataset pinned to a published version.
   the allowed-amount percentiles; a percentage is never converted to dollars. A code type may lead the code
   ("MS-DRG 470", "RC 0510"). A file that cannot be read is named and the others still compare. The CSV carries
   the receipt trailer. Agents: waived as wrong-input-modality, like `hpt-file-check`.
-- **Not yet built:** `pas-bundle-check`.
+- **Built 2026-10-03:** `pas-bundle-check`. The guide is pinned at 2.2.1 (package of March 27, 2026, read that
+  day from packages.fhir.org; CC0) as the fetched dataset `pas-profiles` (builder `scripts/data/builders/pas-profiles.mjs`):
+  81 StructureDefinitions with their snapshots reduced to cardinality, types, fixed and pattern values, slicing
+  and required bindings, plus the guide's listable value sets. `lib/fhir-profile-check.js` (the FHIR half of
+  spec-v1626's schema module) walks a resource against a snapshot: cardinality, primitive formats, fixed and
+  pattern values, required bindings to those value sets, and slices by value, pattern, type and profile
+  discriminators and extensions by url. The bundle is checked against the request, response or inquiry
+  bundle profile, its Claim or ClaimResponse against its profile, and each resource a reference reaches
+  against the target profile the referencing element names. The guide's own 11 example bundles pass with no
+  errors; four are fixtures. **Differed from the spec:** FHIRPath invariants are counted and named as not
+  evaluated (an engine is out of scope), and US Core profiles are not loaded separately: PAS snapshots carry
+  the constraints they inherit, so only an element a profile leaves unexpanded is checked at its own level.
+  Agents: `analyze_file` runs it.

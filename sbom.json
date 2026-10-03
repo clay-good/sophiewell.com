@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:866ac532-f489-57a2-882e-12a0692a2b6b",
+  "serialNumber": "urn:uuid:abf9f0e3-0fc5-5707-8caf-8062e70a740d",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-03T06:47:34.504Z",
+    "timestamp": "2026-10-03T06:52:05.255Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1971 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1972 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d40717dcf00fbea25c0fb59d036281e7718f5584328bb6328176e61bef488d03"
+          "content": "5c630bd4de0f8e9681dd9920a410bf7b3c55943aa1a7a66ae13d2556d4dc22b8"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "126248"
+          "value": "126312"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "37f273f9c9d4761fcb8416277dcb15ac57f5d52893e41408806a65faf5b73756"
+          "content": "7f7620bef5d6dcdb4ce8bf6b681574f78af6476ad55407da00289f2af4e19bb5"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "571664"
+          "value": "571815"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "dbe1960b06b3cdd7d16b3aa48dc1be2a0e70ed7982a847003984828069bfdf05"
+          "content": "7b2b668b924ed8f3629c14847a0e4b68aa160fcdfc7b891d547afa17a6ea4555"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "246158"
+          "value": "246285"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "236df348b485be57d76066669a984ee7a1371ecabf66a5979c19b5f488b1dbc9"
+          "content": "ddce19ff52e4d3947df9e7dda83d886e9bf79b379dcda61a83731dd13401a99e"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "113154"
+          "value": "113224"
         }
       ]
     },
@@ -6881,6 +6881,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/fhir-profile-check.js",
+      "type": "file",
+      "name": "lib/fhir-profile-check.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "aaff9128b2aa71f38f5d85d5e3f4a0ee0b56f4c4546d9e84d0e574f5efc6f24a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "12534"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/fibrosis-v275.js",
       "type": "file",
       "name": "lib/fibrosis-v275.js",
@@ -7055,7 +7076,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f64ee6537085f1714b081d5a5f720598a74df832b231fc1dbfb377c19612afde"
+          "content": "4aa57b4dd16ba97374aa19988a8c6664ec929f12bfdceb402372a4c07e4783a6"
         }
       ],
       "properties": [
@@ -7065,7 +7086,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "28793"
+          "value": "28790"
         }
       ]
     },
@@ -12935,7 +12956,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f9aca1a04f39d600f6a5c8d2201c547dd94cd150ea8f690cce7b00c6a80c4b89"
+          "content": "73c5179be0c31f6fa6008d0764f0203addb9081ccd0ad07cc5117083694481b8"
         }
       ],
       "properties": [
@@ -12945,7 +12966,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2683461"
+          "value": "2684009"
         }
       ]
     },
@@ -16390,6 +16411,48 @@
         {
           "name": "sophiewell:bytes",
           "value": "8324"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/pas-bundle-check.js",
+      "type": "file",
+      "name": "lib/pas-bundle-check.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5f002c580ed93b725298150d184b84c128b47c5ca96f72f3f778133a5b03ab07"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5184"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/pas-profiles-load.js",
+      "type": "file",
+      "name": "lib/pas-profiles-load.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e0396d1b24ed9a7e154c920dce55f7925cd1f2342c2d480c7ab6579f38c95b08"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "955"
         }
       ]
     },
@@ -45233,7 +45296,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e40b25677eb61d87f3ebe002c1185252921d5c6b5889d00de34a091aebb4f710"
+          "content": "1b98e48d0f003b5483e0a983e9c621abe4af0650101fe3bc0b2e48c9a1cae29f"
         }
       ],
       "properties": [
@@ -45243,7 +45306,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "9185"
+          "value": "10464"
         }
       ]
     },
@@ -48803,7 +48866,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e0adcc4ae33901488be4486a5160e12757e045033e8c1aca3b668f65b205b83c"
+          "content": "1e0e2eabf8f84e0ae0354c9e87b99842d8d5219dbecd9d410818dee80cf1039c"
         }
       ],
       "properties": [
@@ -48813,7 +48876,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "35927"
+          "value": "39625"
         }
       ]
     },
@@ -80326,6 +80389,7 @@
         "urn:sophiewell:file:source:lib/fernandez-radius-v489.js",
         "urn:sophiewell:file:source:lib/ffs-1996-v590.js",
         "urn:sophiewell:file:source:lib/fgsi-v667.js",
+        "urn:sophiewell:file:source:lib/fhir-profile-check.js",
         "urn:sophiewell:file:source:lib/fibrosis-v275.js",
         "urn:sophiewell:file:source:lib/ficat-arlet-v344.js",
         "urn:sophiewell:file:source:lib/field-bucket.js",
@@ -80779,6 +80843,8 @@
         "urn:sophiewell:file:source:lib/part-b-or-d.js",
         "urn:sophiewell:file:source:lib/partd-appeals-v1503.js",
         "urn:sophiewell:file:source:lib/partd-costs-v1506.js",
+        "urn:sophiewell:file:source:lib/pas-bundle-check.js",
+        "urn:sophiewell:file:source:lib/pas-profiles-load.js",
         "urn:sophiewell:file:source:lib/pas-swallow-v367.js",
         "urn:sophiewell:file:source:lib/pass-pheo-v660.js",
         "urn:sophiewell:file:source:lib/pauwels-femoral-neck-v374.js",
@@ -83170,7 +83236,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "866ac532f48987a2"
+      "value": "abf9f0e30fc56707"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -83182,7 +83248,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3045"
+      "value": "3048"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

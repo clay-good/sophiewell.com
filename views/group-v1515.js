@@ -4,6 +4,9 @@ import { MAX_FILE_BYTES } from '../lib/upload-intake.js';
 import { resultRow } from '../lib/result-copy.js';
 import { renderReceipt } from './receipt.js';
 import { acceptVia } from '../lib/hand-off.js';
+import { checkPasBundle } from '../lib/pas-bundle-check.js';
+import { loadPasProfiles } from '../lib/pas-profiles-load.js';
+import { fileFacts, receiptFor } from '../lib/receipt-worker.js';
 
 const workerUrl = new URL('../lib/x12-835-worker.js', import.meta.url);
 const claimWorkerUrl = new URL('../lib/x12-837-worker.js', import.meta.url);
@@ -400,7 +403,39 @@ function hptPriceCompare(root) {
   code.addEventListener('change', run);
 }
 
-export const renderers = { 'x12-835-reader': reader835, 'x12-837-check': check837, 'x12-271-reader': reader271, 'x12-277-reader': reader277, 'hpt-file-check': hptFileCheck, 'hpt-price-compare': hptPriceCompare, 'denial-pattern-report': denialPattern, 'underpayment-check': underpayment };
+// spec-v1515 tool 7: a Da Vinci PAS bundle checked against the guide's profiles, on the page (bundles are small).
+function pasBundleCheck(root) {
+  root.appendChild(el('p', { class: 'notice', text: 'Checks a FHIR prior authorization request or response bundle against the HL7 Da Vinci Prior Authorization Support profiles: required elements, how many of each, data types, fixed values, the guide\'s own code lists, slices and extensions, and every resource the bundle references.' }));
+  root.appendChild(el('p', { class: 'muted', text: 'The file stays in this tab. Codes from X12, CPT and NUBC lists are not checked against the lists, which cannot be shipped, and the profiles\' FHIRPath invariants are counted, not evaluated.' }));
+  const input = el('input', { id: 'pas-file', type: 'file', accept: '.json,application/json,application/fhir+json' });
+  const status = el('p', { id: 'pas-status', class: 'muted', role: 'status', 'aria-live': 'polite' });
+  const results = el('div', { id: 'q-results', 'aria-live': 'polite' });
+  root.appendChild(el('label', { for: 'pas-file', text: 'Choose a prior authorization bundle (JSON)' })); root.appendChild(input); root.appendChild(status); root.appendChild(results);
+  input.addEventListener('change', async () => {
+    clear(results);
+    const file = input.files && input.files[0]; if (!file) { status.textContent = ''; return; }
+    if (file.size > MAX_FILE_BYTES) { status.textContent = `${file.name} is over the 50 MB limit.`; return; }
+    status.textContent = 'Checking the bundle locally...';
+    const buffer = await file.arrayBuffer();
+    let bundle;
+    try { bundle = JSON.parse(new TextDecoder().decode(buffer)); } catch (err) { status.textContent = `${file.name} is not JSON: ${err.message}`; return; }
+    const loaded = await loadPasProfiles();
+    if (!loaded.set) { status.textContent = loaded.expired ? 'The bundled Da Vinci PAS profiles have passed their review date.' : 'The Da Vinci PAS profiles could not be loaded.'; return; }
+    const r = checkPasBundle(bundle, loaded.set);
+    if (!r.valid) { status.textContent = r.message; return; }
+    status.textContent = `${file.name} checked.`;
+    resultRow(results, [{ text: r.band, cls: r.errors ? 'warn' : null }, { label: 'Bundle', value: r.label }, { label: 'Warnings', value: r.warnings.toLocaleString('en-US') }]);
+    if (r.findings.length) table(results, 'Findings', ['Severity', 'Location', 'Finding'], r.findings.slice(0, 500).map((f) => [f.severity, f.location, f.message]));
+    const ul = el('ul');
+    for (const n of [`${r.checked.toLocaleString('en-US')} resources and extensions checked against ${loaded.edition}.`, `${r.invariants.toLocaleString('en-US')} FHIRPath invariants in those profiles were not evaluated.`, 'A reference to a resource outside the bundle is a warning: it could not be checked.']) ul.appendChild(el('li', { text: n }));
+    results.appendChild(ul);
+    results.appendChild(el('p', { class: 'muted', text: 'A structural check against the published profiles, not a conformance certification. The HL7 FHIR validator evaluates the invariants and terminology this tool does not.' }));
+    const receipts = receiptFor('pas-bundle-check', fileFacts([{ name: file.name, buffer }]), { findings: r.findings }, {}, [{ id: 'pas-profiles', sourceEdition: loaded.edition }]);
+    renderReceipt(results, { receipt: receipts.receipt, shareableReceipt: receipts.shareable });
+  });
+}
+
+export const renderers = { 'x12-835-reader': reader835, 'x12-837-check': check837, 'x12-271-reader': reader271, 'x12-277-reader': reader277, 'hpt-file-check': hptFileCheck, 'hpt-price-compare': hptPriceCompare, 'pas-bundle-check': pasBundleCheck, 'denial-pattern-report': denialPattern, 'underpayment-check': underpayment };
 
 // spec-v1623 step 3: files handed off from a drop go through each tool's own
 // input. underpayment-check takes the remittances; its fee schedule is chosen
@@ -414,4 +449,5 @@ export const acceptFiles = {
   'x12-277-reader': acceptVia('x277-files'),
   'hpt-file-check': acceptVia('hpt-file'),
   'hpt-price-compare': acceptVia('hptc-files'),
+  'pas-bundle-check': acceptVia('pas-file'),
 };

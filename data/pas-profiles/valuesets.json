@@ -1,0 +1,176 @@
+{
+  "http://hl7.org/fhir/us/davinci-pas/ValueSet/ClaimResponseOutcome": {
+    "name": "Claim Response Outcome",
+    "codes": [
+      "complete",
+      "error",
+      "partial"
+    ]
+  },
+  "http://hl7.org/fhir/us/davinci-pas/ValueSet/ClaimTypes": {
+    "name": "Claim Types",
+    "codes": [
+      "institutional",
+      "professional",
+      "oral"
+    ]
+  },
+  "http://hl7.org/fhir/us/davinci-pas/ValueSet/MetricDataSource": {
+    "name": "Metric Data Source",
+    "codes": [
+      "payer-src",
+      "provider-src",
+      "intermediary-src"
+    ]
+  },
+  "http://hl7.org/fhir/us/davinci-pas/ValueSet/PASInformationChangeMode": {
+    "name": "PAS Information Change Mode Value Set",
+    "codes": [
+      "changed",
+      "added"
+    ]
+  },
+  "http://hl7.org/fhir/us/davinci-pas/ValueSet/PASSupportingInfoType": {
+    "name": "PAS Supporting Info Type Value Set",
+    "codes": [
+      "patientEvent",
+      "admissionDates",
+      "dischargeDates",
+      "additionalInformation",
+      "freeFormMessage"
+    ]
+  },
+  "http://hl7.org/fhir/us/davinci-pas/ValueSet/PASTaskCodes": {
+    "name": "PAS Task Codes",
+    "codes": [
+      "attachment-request-code",
+      "attachment-request-questionnaire"
+    ]
+  },
+  "http://hl7.org/fhir/us/davinci-pas/ValueSet/X12278DiagnosisType": {
+    "name": "X12 278 Diagnosis Type Value Set",
+    "codes": [
+      "admitting",
+      "principal",
+      "patientreasonforvisit"
+    ]
+  },
+  "http://hl7.org/fhir/us/davinci-pas/ValueSet/pas-loinc-attachment-codes": {
+    "name": "PAS LOINC Attachment Codes Value Set",
+    "codes": [
+      "11526-1",
+      "11488-4",
+      "80792-5",
+      "47420-5",
+      "34117-2",
+      "74156-1",
+      "18776-5",
+      "80785-9",
+      "11506-3",
+      "11504-8",
+      "18842-5",
+      "34133-9",
+      "18761-7",
+      "80565-5",
+      "28570-0",
+      "57133-1",
+      "52027-0",
+      "52028-8",
+      "52029-6",
+      "53245-7",
+      "57828-6",
+      "18682-5",
+      "52063-5",
+      "52062-7",
+      "52073-4",
+      "52070-0",
+      "80405-4",
+      "53242-4",
+      "52042-9",
+      "52040-3",
+      "18748-4",
+      "53243-2",
+      "53247-3",
+      "52071-8",
+      "67796-3",
+      "77601-3",
+      "52043-7",
+      "11514-7",
+      "11521-2",
+      "11515-4",
+      "11516-2",
+      "11517-0",
+      "11518-8",
+      "11519-6",
+      "11520-4",
+      "52030-4",
+      "52031-2",
+      "52044-5",
+      "103567-4",
+      "52064-3",
+      "52045-2",
+      "52033-8",
+      "11485-0",
+      "52035-3",
+      "52036-1",
+      "52046-0",
+      "52032-0",
+      "52047-8",
+      "77600-5",
+      "94093-2",
+      "15508-5",
+      "11502-2",
+      "52048-6",
+      "52049-4",
+      "11503-0",
+      "28011-5",
+      "94118-7",
+      "52037-9",
+      "52065-0",
+      "52050-2",
+      "76641-0",
+      "52072-6",
+      "53246-5",
+      "52066-8",
+      "53244-0",
+      "52051-0",
+      "52052-8",
+      "52053-6",
+      "52054-4",
+      "52067-6",
+      "52034-6",
+      "28629-4",
+      "74030-8",
+      "28633-6",
+      "52055-1",
+      "57073-9",
+      "52041-1",
+      "52068-4",
+      "52075-9",
+      "18823-5",
+      "18824-3",
+      "18825-0",
+      "18826-8",
+      "19002-5",
+      "18594-2",
+      "52184-9",
+      "19003-3",
+      "29206-0",
+      "52056-9",
+      "52057-7",
+      "52058-5",
+      "52039-5",
+      "101657-5",
+      "52059-3",
+      "52060-1",
+      "52038-7",
+      "52061-9",
+      "52069-2",
+      "103595-5",
+      "103596-3",
+      "103597-1",
+      "46212-7",
+      "52459-5"
+    ]
+  }
+}

@@ -53,6 +53,7 @@ Reasons are a fixed vocabulary:
 - `itemized-bill-check` - wrong-input-modality
 - `substitution-check` - bespoke-shape
 - `mfp-refund-reconcile` - wrong-input-modality
+- `pas-bundle-check` - wrong-input-modality
 - `denial-pattern-report` - wrong-input-modality
 - `underpayment-check` - wrong-input-modality
 - `ews-escalation` - time-dependent

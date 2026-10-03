@@ -70,5 +70,13 @@
     "etag": null,
     "lastModified": "Fri, 11 Sep 2026 15:50:25 GMT",
     "fetchedAt": "2026-10-03"
+  },
+  "pas-profiles": {
+    "url": "https://packages.fhir.org/hl7.fhir.us.davinci-pas/2.2.1",
+    "edition": "hl7.fhir.us.davinci-pas 2.2.1 (2026-03-27)",
+    "sha256": "da2aac8e480ce66fe27812af18e3c9bc190b08a33d5d7e1c850caf9097fb210e",
+    "etag": null,
+    "lastModified": null,
+    "fetchedAt": "2026-10-03"
   }
 }

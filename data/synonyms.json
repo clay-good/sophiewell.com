@@ -10528,6 +10528,17 @@
     },
     {
       "phrases": [
+        "da vinci pas validator",
+        "prior authorization fhir bundle",
+        "pas bundle check",
+        "prior authorization api validator",
+        "fhir claim preauthorization bundle"
+      ],
+      "tile": "pas-bundle-check",
+      "audience": "billers"
+    },
+    {
+      "phrases": [
         "denial pattern report",
         "denial trends",
         "carc adjustment report",

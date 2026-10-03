@@ -21,9 +21,13 @@ import * as R277 from '../lib/x12-277-run.js';
 import { runHpt } from '../lib/hpt-run.js';
 import { runTic } from '../lib/tic-run.js';
 import { run as runCarin, CLAIM_HEADERS, claimRow } from '../lib/carin-run.js';
+import { checkPasBundle, profileSet } from '../lib/pas-bundle-check.js';
+import { fileFacts, receiptFor } from '../lib/receipt-worker.js';
+import { readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 
 const X12_RUNS = { 'x12-835-reader': R835, 'x12-837-check': R837, 'x12-271-reader': R271, 'x12-277-reader': R277 };
-export const ANALYZABLE = [...Object.keys(X12_RUNS), 'hpt-file-check', 'tic-file-check', 'carin-eob-reader'];
+export const ANALYZABLE = [...Object.keys(X12_RUNS), 'hpt-file-check', 'tic-file-check', 'carin-eob-reader', 'pas-bundle-check'];
 const PREVIEW_ROWS = 20;
 
 const readOnly = (title) => ({ title, readOnlyHint: true, idempotentHint: true, openWorldHint: false });
@@ -135,6 +139,17 @@ export async function analyzeFile(args, { roots }) {
   const fh = await open(r.real, 'r');
   let bytes;
   try { bytes = await fh.readFile(); } finally { await fh.close(); }
+  if (tool === 'pas-bundle-check') {
+    let bundle;
+    try { bundle = JSON.parse(new TextDecoder().decode(bytes)); } catch (err) { return refusal({ code: 'UNREADABLE' }, `${r.name} is not JSON: ${err.message}`); }
+    const dir = fileURLToPath(new URL('../data/pas-profiles/', import.meta.url));
+    const manifest = JSON.parse(readFileSync(`${dir}manifest.json`, 'utf8'));
+    const set = profileSet(JSON.parse(readFileSync(`${dir}shards/profiles.json`, 'utf8')), JSON.parse(readFileSync(`${dir}valuesets.json`, 'utf8')));
+    const out = checkPasBundle(bundle, set);
+    if (!out.valid) return refusal({ code: 'UNREADABLE' }, out.message);
+    const receipts = receiptFor('pas-bundle-check', fileFacts([{ name: r.name, buffer: bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.length) }]), { findings: out.findings }, {}, [{ id: 'pas-profiles', sourceEdition: manifest.sourceEdition }]);
+    return { valid: true, tool, kind: rec.kind, findings: out, receipt: receipts.receipt, shareableReceipt: receipts.shareable };
+  }
   if (tool === 'carin-eob-reader') {
     let read;
     try { read = runCarin([{ name: r.name, buffer: bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.length) }]); } catch (err) { return refusal({ code: 'UNREADABLE' }, err instanceof Error ? err.message : String(err)); }

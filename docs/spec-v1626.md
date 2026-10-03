@@ -71,8 +71,8 @@ the same PR with what was read and what differed from the plan.
 
 `lib/json-stream.js` was extracted unchanged from `lib/hpt-stream-v1515.js` on October 1, 2026 (for
 `hpt-price-compare`); `hpt-file-check`'s tests pass unchanged. `lib/schema-check.js` was added October 2, 2026 for `tic-file-check`:
-the draft-07 subset the CMS schemas use, over whole values or a `json-stream` parser (FHIR StructureDefinition
-cardinality is not in it yet; `pas-bundle-check` and `carin-eob-reader` will add it). `lib/medicare-reprice.js`
+the draft-07 subset the CMS schemas use, over whole values or a `json-stream` parser (the FHIR
+StructureDefinition checks live in `lib/fhir-profile-check.js`, added for `pas-bundle-check` on October 3, 2026). `lib/medicare-reprice.js`
 was added the same day for `tic-rate-lookup`: `repriceProfessional` prices from the bundled fee schedule;
 `repriceOutpatient` and `repriceInpatient` return `unpriced` with the reason until full OPPS and IPPS base-rate
 datasets exist. The other shared modules (`ncci-lookup`, `preventive`) are not extracted yet.

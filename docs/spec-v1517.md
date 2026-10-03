@@ -113,4 +113,5 @@ each has a fixture test and a row in `docs/data-sources.md`.
 | `asp`, `asp-ndc` | Built October 1, 2026 |
 | `mcd-articles` | Built October 1, 2026 |
 | `orange-book`, `purple-book` | Built October 3, 2026 for `substitution-check`. The Orange Book edition is the `products.txt` date inside the ZIP (the landing page's "content current as of" lagged it by weeks), so `zip.mjs` now reads each member's date; the Purple Book's newest month is found on the downloads page and its full listing is the table after the last header row. Both expire two months after their edition. |
+| `pas-profiles` | Built October 3, 2026 for `pas-bundle-check`: the Da Vinci PAS package pinned at 2.2.1 from packages.fhir.org, expiring two years after the package date so the pin is reviewed. |
 | The rest of the route-A list, and the route-B watchers | Open |

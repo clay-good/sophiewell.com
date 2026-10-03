@@ -1117,6 +1117,7 @@ const UTILITIES = [
   { id: 'x12-277-reader', name: 'X12 277 Claim Status Reader', group: 'P', audiences: ['billers', 'coders'], clinical: false },
   { id: 'hpt-price-compare', name: 'Compare One Service Across Hospital Price Files', group: 'P', audiences: ['billers', 'patients'], clinical: false },
   { id: 'hpt-file-check', name: 'Hospital Price Transparency File Check', group: 'P', audiences: ['billers', 'coders'], clinical: false },
+  { id: 'pas-bundle-check', name: 'Prior Authorization FHIR Bundle Check (Da Vinci)', group: 'P', audiences: ['billers', 'coders'], clinical: false },
   { id: 'tic-file-check', name: 'Insurer Price File (Transparency in Coverage) Check', group: 'P', audiences: ['billers', 'patients'], clinical: false },
   { id: 'claims-pct-medicare', name: 'Claims Paid as a Percent of Medicare', group: 'P', audiences: ['billers'], clinical: false },
   { id: 'tic-rate-lookup', name: 'Find Negotiated Rates in an Insurer Price File', group: 'P', audiences: ['billers', 'patients'], clinical: false },
