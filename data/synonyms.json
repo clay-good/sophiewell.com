@@ -6954,6 +6954,18 @@
     },
     {
       "phrases": [
+        "act dose by weight",
+        "artemether lumefantrine dose by weight",
+        "artesunate amodiaquine dose",
+        "dihydroartemisinin piperaquine dose",
+        "malaria treatment dose child weight",
+        "uncomplicated malaria treatment dose"
+      ],
+      "tile": "act-weight-band-dose",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
         "pertussis case definition",
         "whooping cough case definition",
         "is this a confirmed pertussis case",

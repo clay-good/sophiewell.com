@@ -750,6 +750,7 @@ const PROBES = [
   ['who severe malaria criteria falciparum severity features', ['who-severe-malaria']],
   ['who 2024 hemoglobin anemia cutoff altitude smoking', ['who-anemia-hb']],
   ['severe acute malnutrition muac child edema', ['wasting-classify']],
+  ['artemether lumefantrine dose by weight malaria', ['act-weight-band-dose']],
   ['pertussis case definition whooping cough confirmed probable', ['pertussis-case-def']],
   ['eortc msgerc invasive fungal disease proven probable possible', ['eortc-msg-ifd']],
   ['neuroleptic malignant syndrome diagnostic criteria priority points', ['nms-criteria']],

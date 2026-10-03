@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:0c87cc8f-009a-53f7-80dc-7162b1638fcc",
+  "serialNumber": "urn:uuid:bb7ae2e0-c536-5a9b-84fa-8ab5ee510146",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-03T19:26:45.116Z",
+    "timestamp": "2026-10-03T20:40:37.573Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1975 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1976 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "63acfaeb468fe2a219cac13ab72d701671574d5897a0303e5b4a5613d87b1e3a"
+          "content": "c470d1ede22ecb7b1a62cf4681bb4c4c6edc647cfaa03042715c7c5ffb660b0c"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "126609"
+          "value": "126674"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1f7954e68af96cd56aaeb3946e8ccc6187e2f5b69afda5420c6813f7a345236e"
+          "content": "0cfc472845b5533e9be624d645b1c6170ec8b188b82ba970d04f706dc089c728"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "573022"
+          "value": "573300"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5c96d5f05c1740546e9552852b18615323c6c9456438cacda4b814b048a78a09"
+          "content": "58ed39e55e8eea831f17dcacb75d7eeac54058f4c1d4d6b3b7adfd4e075d7fcd"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "246662"
+          "value": "246793"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "17c02ce236f161dc9169c8fd2c1e7edd9e96950af9fffed134d0c79ec6d28fe2"
+          "content": "ee5991a87687a6386b1ec6050b6df78d22f1eed32b0c420393b110082bf79151"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "113471"
+          "value": "113546"
         }
       ]
     },
@@ -724,6 +724,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "17117"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/act-weight-band-dose-v1551.js",
+      "type": "file",
+      "name": "lib/act-weight-band-dose-v1551.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "cb5ba721983d09c25d109a264c05ae53e0fed93a7aa451d9cc25f6854a27a33b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8322"
         }
       ]
     },
@@ -13061,7 +13082,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8e575ef23d00684d2661e054af1fa6921bbece66e67a755080f4464716353f3e"
+          "content": "66d162d8bcd26f320e66be513a4f4821f8a35841040f3b2f2bac80ab698ab970"
         }
       ],
       "properties": [
@@ -13071,7 +13092,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2686378"
+          "value": "2687086"
         }
       ]
     },
@@ -24664,6 +24685,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "5379"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/act-weight-band-dose-v1551.js",
+      "type": "file",
+      "name": "mcp/adapters/act-weight-band-dose-v1551.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "03e4946290e4ac84a9481fe0c9b9e23ffa7de5a46e96ce8fecee2b403b145003"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1077"
         }
       ]
     },
@@ -45527,7 +45569,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4ef8580de061396b17ae9b314f31064f3c81e4c1d196a4c95aa727887c9ced8d"
+          "content": "c1dafa1458d05c24ed05d61b885239f9f1e5428eb7f24123ea7df015dd448a58"
         }
       ],
       "properties": [
@@ -45537,7 +45579,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "115884"
+          "value": "116021"
         }
       ]
     },
@@ -49297,6 +49339,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2995"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1551.js",
+      "type": "file",
+      "name": "views/group-v1551.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3a7250f5f34a2aedcf38ffffd9efc7eab7c7277059d70215fad352b4dbb6cf60"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2699"
         }
       ]
     },
@@ -80384,6 +80447,7 @@
         "urn:sophiewell:file:source:lib/acr-eular-boolean-v671.js",
         "urn:sophiewell:file:source:lib/acromegaly-biochem-v835.js",
         "urn:sophiewell:file:source:lib/acs-v193.js",
+        "urn:sophiewell:file:source:lib/act-weight-band-dose-v1551.js",
         "urn:sophiewell:file:source:lib/acute-abdomen-v261.js",
         "urn:sophiewell:file:source:lib/acute-injury-v213.js",
         "urn:sophiewell:file:source:lib/acute-opioid-rx-limit-v1393.js",
@@ -81687,6 +81751,7 @@
         "urn:sophiewell:file:source:views/group-v1548.js",
         "urn:sophiewell:file:source:views/group-v155.js",
         "urn:sophiewell:file:source:views/group-v1550.js",
+        "urn:sophiewell:file:source:views/group-v1551.js",
         "urn:sophiewell:file:source:views/group-v156.js",
         "urn:sophiewell:file:source:views/group-v1570.js",
         "urn:sophiewell:file:source:views/group-v1571.js",
@@ -82442,6 +82507,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/acr-eular-boolean-v671.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/acromegaly-biochem-v835.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/acs-v193.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/act-weight-band-dose-v1551.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/acute-abdomen-v261.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/acute-injury-v213.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/acute-opioid-rx-limit-v1393.js",
@@ -83539,7 +83605,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "0c87cc8f009a13f7"
+      "value": "bb7ae2e0c536ca9b"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -83551,7 +83617,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3063"
+      "value": "3066"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

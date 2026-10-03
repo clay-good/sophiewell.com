@@ -21,6 +21,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Malaria treatment dose by weight (WHO 2026): the weight-band dose and
+  schedule of five artemisinin combinations, with the achieved mg/kg against
+  WHO's targets, from the 10 September 2026 version of the living guideline.
 - Acute malnutrition by MUAC, WHZ and edema (WHO 2023), for children 6 to 59
   months: severe or moderate, which measure decided, and the MUAC tape color.
 - Anemia by Hemoglobin (WHO 2024): whether a hemoglobin is anemic, and how

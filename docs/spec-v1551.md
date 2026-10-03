@@ -203,3 +203,10 @@ version date.
 ## Staleness
 
 MAL26 *high* (6-month review). SMH12 *low*. RAS23 *moderate*.
+
+## Build status
+
+| Tool | Status |
+|---|---|
+| `act-weight-band-dose` | **Built October 3, 2026** (catalog 1,976). The five tables (pp. 175–178) and the under-5 kg rule (§5.2.1.4.2) were re-read in the 10 September 2026 version through the IRIS API, and every band matches. The DHA-PPQ "60 < 80" / ">80" defect is read as stated and is a named test. **Differed from the spec:** the pregnancy input is not built, because tile 4 is not. Under 5 kg on any ACT but AL, the tile states WHO's same-mg/kg-as-5-kg rule instead of computing a dose. The splitting note (p. 188) was not re-read and is not printed. The ledger carries a *high*-volatility row. |
+| Tools 2–4 | Open. |
