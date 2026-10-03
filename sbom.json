@@ -4,7 +4,7 @@
   "serialNumber": "urn:uuid:51a40c08-4de6-5713-8822-77c583f7a9db",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-03T15:03:59.362Z",
+    "timestamp": "2026-10-03T15:27:37.795Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -68255,33 +68255,6 @@
       ]
     },
     {
-      "bom-ref": "urn:sophiewell:npm:package-lock.json:node_modules/@modelcontextprotocol/sdk/node_modules/fast-uri",
-      "type": "library",
-      "name": "fast-uri",
-      "version": "3.1.7",
-      "scope": "optional",
-      "purl": "pkg:npm/fast-uri@3.1.7",
-      "properties": [
-        {
-          "name": "sophiewell:lockfile",
-          "value": "package-lock.json"
-        }
-      ],
-      "hashes": [
-        {
-          "alg": "SHA-512",
-          "content": "74ebd95738dd65dcfba6177dbfa8c26f0c6b056ddf2ba9fc45cd02b5d98ce1bba6ccc9f1cb005886ea61e89f35f51470fe4bbeacb6de9707ccba792dbb35551e"
-        }
-      ],
-      "licenses": [
-        {
-          "license": {
-            "id": "BSD-3-Clause"
-          }
-        }
-      ]
-    },
-    {
       "bom-ref": "urn:sophiewell:npm:package-lock.json:node_modules/@modelcontextprotocol/sdk/node_modules/json-schema-traverse",
       "type": "library",
       "name": "json-schema-traverse",
@@ -69497,33 +69470,6 @@
       ]
     },
     {
-      "bom-ref": "urn:sophiewell:npm:package-lock.json:node_modules/ajv-formats/node_modules/fast-uri",
-      "type": "library",
-      "name": "fast-uri",
-      "version": "3.1.7",
-      "scope": "optional",
-      "purl": "pkg:npm/fast-uri@3.1.7",
-      "properties": [
-        {
-          "name": "sophiewell:lockfile",
-          "value": "package-lock.json"
-        }
-      ],
-      "hashes": [
-        {
-          "alg": "SHA-512",
-          "content": "74ebd95738dd65dcfba6177dbfa8c26f0c6b056ddf2ba9fc45cd02b5d98ce1bba6ccc9f1cb005886ea61e89f35f51470fe4bbeacb6de9707ccba792dbb35551e"
-        }
-      ],
-      "licenses": [
-        {
-          "license": {
-            "id": "BSD-3-Clause"
-          }
-        }
-      ]
-    },
-    {
       "bom-ref": "urn:sophiewell:npm:package-lock.json:node_modules/ajv-formats/node_modules/json-schema-traverse",
       "type": "library",
       "name": "json-schema-traverse",
@@ -69824,9 +69770,9 @@
       "bom-ref": "urn:sophiewell:npm:package-lock.json:node_modules/brace-expansion",
       "type": "library",
       "name": "brace-expansion",
-      "version": "5.0.9",
+      "version": "5.0.12",
       "scope": "optional",
-      "purl": "pkg:npm/brace-expansion@5.0.9",
+      "purl": "pkg:npm/brace-expansion@5.0.12",
       "properties": [
         {
           "name": "sophiewell:lockfile",
@@ -69836,7 +69782,7 @@
       "hashes": [
         {
           "alg": "SHA-512",
-          "content": "49c43822ebc8105d533253fb66dfaf8c9ffff7394f6f64837315b13376e4f2ceade8619d27b28ed5d09c4e274e3c929e3d6df42c4ff6713ef00b23e1a3dfd6c6"
+          "content": "628bd0debce168b308ac38cd0cc90d4b4d6d79af77aa11211b9c72f1febe47497e770dca8bee6c0a822823de368ae2d94c75a881692d830543854d3d88d12299"
         }
       ],
       "licenses": [
@@ -71490,6 +71436,33 @@
         {
           "license": {
             "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:npm:package-lock.json:node_modules/fast-uri",
+      "type": "library",
+      "name": "fast-uri",
+      "version": "3.1.8",
+      "scope": "optional",
+      "purl": "pkg:npm/fast-uri@3.1.8",
+      "properties": [
+        {
+          "name": "sophiewell:lockfile",
+          "value": "package-lock.json"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "19932d6544cd4693952040a85f02cd652e7150613e99535b4c1f21ffb4708764c559c05088fcd3832662d39045f543192a42c9bfc5c14494e553bce0f3e65f32"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause"
           }
         }
       ]
@@ -77792,33 +77765,6 @@
       ]
     },
     {
-      "bom-ref": "urn:sophiewell:npm:mcp/package-lock.json:node_modules/ajv/node_modules/fast-uri",
-      "type": "library",
-      "name": "fast-uri",
-      "version": "3.1.7",
-      "scope": "required",
-      "purl": "pkg:npm/fast-uri@3.1.7",
-      "properties": [
-        {
-          "name": "sophiewell:lockfile",
-          "value": "mcp/package-lock.json"
-        }
-      ],
-      "hashes": [
-        {
-          "alg": "SHA-512",
-          "content": "74ebd95738dd65dcfba6177dbfa8c26f0c6b056ddf2ba9fc45cd02b5d98ce1bba6ccc9f1cb005886ea61e89f35f51470fe4bbeacb6de9707ccba792dbb35551e"
-        }
-      ],
-      "licenses": [
-        {
-          "license": {
-            "id": "BSD-3-Clause"
-          }
-        }
-      ]
-    },
-    {
       "bom-ref": "urn:sophiewell:npm:mcp/package-lock.json:node_modules/body-parser",
       "type": "library",
       "name": "body-parser",
@@ -78516,6 +78462,33 @@
         {
           "license": {
             "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:npm:mcp/package-lock.json:node_modules/fast-uri",
+      "type": "library",
+      "name": "fast-uri",
+      "version": "3.1.8",
+      "scope": "required",
+      "purl": "pkg:npm/fast-uri@3.1.8",
+      "properties": [
+        {
+          "name": "sophiewell:lockfile",
+          "value": "mcp/package-lock.json"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "19932d6544cd4693952040a85f02cd652e7150613e99535b4c1f21ffb4708764c559c05088fcd3832662d39045f543192a42c9bfc5c14494e553bce0f3e65f32"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "BSD-3-Clause"
           }
         }
       ]
@@ -83274,7 +83247,6 @@
         "urn:sophiewell:npm:mcp/package-lock.json:node_modules/accepts",
         "urn:sophiewell:npm:mcp/package-lock.json:node_modules/ajv",
         "urn:sophiewell:npm:mcp/package-lock.json:node_modules/ajv-formats",
-        "urn:sophiewell:npm:mcp/package-lock.json:node_modules/ajv/node_modules/fast-uri",
         "urn:sophiewell:npm:mcp/package-lock.json:node_modules/body-parser",
         "urn:sophiewell:npm:mcp/package-lock.json:node_modules/body-parser/node_modules/content-type",
         "urn:sophiewell:npm:mcp/package-lock.json:node_modules/bytes",
@@ -83301,6 +83273,7 @@
         "urn:sophiewell:npm:mcp/package-lock.json:node_modules/express",
         "urn:sophiewell:npm:mcp/package-lock.json:node_modules/express-rate-limit",
         "urn:sophiewell:npm:mcp/package-lock.json:node_modules/fast-deep-equal",
+        "urn:sophiewell:npm:mcp/package-lock.json:node_modules/fast-uri",
         "urn:sophiewell:npm:mcp/package-lock.json:node_modules/finalhandler",
         "urn:sophiewell:npm:mcp/package-lock.json:node_modules/forwarded",
         "urn:sophiewell:npm:mcp/package-lock.json:node_modules/fresh",
@@ -83384,7 +83357,7 @@
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
-      "value": "483"
+      "value": "482"
     },
     {
       "name": "sophiewell:mcpLockedPackageCount",
