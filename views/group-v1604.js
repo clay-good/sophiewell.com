@@ -1,12 +1,13 @@
-// spec-v1604: renderers for dpc-hsa-check, pharmacy-spread-check, tic-file-check and tic-rate-lookup.
+// spec-v1604: renderers for dpc-hsa-check, pharmacy-spread-check, claims-pct-medicare, tic-file-check and tic-rate-lookup.
 
 import { el, clear } from '../lib/dom.js';
 import * as DP from '../lib/dpc-hsa-check.js';
 import * as SP from '../lib/pharmacy-spread-check.js';
+import * as CPM from '../lib/claims-pct-medicare.js';
 import { loadNadac } from '../lib/nadac-load.js';
 import { resultRow } from '../lib/result-copy.js';
 import { uploadWorkbench } from './upload-workbench.js';
-import { CLAIM_FIELDS } from '../lib/upload-fields.js';
+import { CLAIM_FIELDS, CLAIM_LINE_FIELDS } from '../lib/upload-fields.js';
 import { acceptVia } from '../lib/hand-off.js';
 import { renderReceipt } from './receipt.js';
 import { TIC_SCHEMA } from '../lib/tic-schemas.js';
@@ -266,6 +267,67 @@ export const renderers = {
     root.appendChild(o);
     wire(['psc-claims'], run);
   },
+  'claims-pct-medicare'(root) {
+    note(root, 'Claim lines one per line: service date, provider, code, place of service, allowed amount, units, and any modifiers. Or load the plan\'s claims extract below.');
+    textareaField(root, 'Claim lines', 'cpm-claims', '2026-03-02, Alpha Clinic, 99214, 11, 180, 1');
+    const loc = el('p');
+    loc.appendChild(el('label', { for: 'cpm-locality', text: 'Medicare locality: state and locality number, as TX-18' }));
+    loc.appendChild(el('br'));
+    loc.appendChild(el('input', { id: 'cpm-locality', type: 'text', autocomplete: 'off', list: 'cpm-localities', placeholder: 'e.g. TX-18' }));
+    const datalist = el('datalist', { id: 'cpm-localities' });
+    loc.appendChild(datalist);
+    root.appendChild(loc);
+    const o = out();
+    let stamp = '';
+    const input = () => ({ claims: val('cpm-claims'), locality: val('cpm-locality') });
+    const show = (r) => safe(o, () => {
+      if (!r.valid) { note(o, r.message); if (r.rows) table(o, 'Lines left out', ['Line', 'Code', 'Why'], r.rows.filter((x) => x.status !== 'priced').slice(0, 50).map((x) => [x.line, x.code || '', x.reason])); return; }
+      resultRow(o, [{ text: r.band, cls: null }, { label: 'Priced lines', value: r.bandLabel }]);
+      table(o, 'By provider, highest percent of Medicare first', ['Provider', 'Lines priced', 'Allowed', 'Medicare', 'Percent of Medicare', 'Lines left out'],
+        r.byProvider.slice(0, 50).map((p) => [p.key, p.lines, p.lines ? CPM.money(p.allowed) : '', p.lines ? CPM.money(p.medicare) : '', p.pct == null ? '' : `${p.pct}%`, p.leftOut]));
+      table(o, 'By service category', ['Category', 'Lines', 'Allowed', 'Medicare', 'Percent of Medicare'],
+        r.byCategory.map((c) => [c.key, c.lines, CPM.money(c.allowed), CPM.money(c.medicare), `${c.pct}%`]));
+      table(o, 'Lines left out of the ratio', ['Why', 'Lines'], r.leftOutReasons.map((x) => [x.reason, x.count]));
+      list(o, r.notes);
+      if (stamp) note(o, stamp);
+    });
+    // The page, not the worker, loads the fee schedule: the worker has no network code. A result that names
+    // the codes it needs gets only those shards, then runs again.
+    let seq = 0; let upload;
+    const fee = loadLocalities().then((r) => {
+      if (r.localities) for (const g of r.localities) datalist.appendChild(el('option', { value: `${g.state}-${g.locality}`, text: g.name }));
+      if (r.stamp) stamp = r.stamp;
+      return r;
+    });
+    const withMpfs = (codes, again) => {
+      const mine = ++seq;
+      safe(o, () => note(o, 'Looking up the fee schedule for the codes in these claims...'));
+      fee.then(async (f) => {
+        let mpfs;
+        if (f.expired) mpfs = { status: 'expired' };
+        else if (!f.localities) mpfs = { status: 'unavailable' };
+        else { try { mpfs = { status: 'ok', rows: await loadCodeRows(codes), localities: f.localities, conversionFactor: f.conversionFactor, edition: f.edition }; } catch { mpfs = { status: 'unavailable' }; } }
+        if (mine === seq) again(mpfs);
+      });
+    };
+    const run = () => {
+      const args = input();
+      if (upload && upload.isActive()) { upload.compute(args); return; }
+      const r = CPM.claimsPctMedicare(args);
+      if (r.needCodes) withMpfs(r.needCodes, (mpfs) => show(CPM.claimsPctMedicare({ ...args, mpfs })));
+      else { seq += 1; show(r); }
+    };
+    upload = uploadWorkbench(root, {
+      id: 'cpm-upload', fields: CLAIM_LINE_FIELDS, label: 'Load claim lines from a file',
+      compute: 'claims-pct-medicare', getInput: input,
+      onResult: (r) => { if (r && r.needCodes) withMpfs(r.needCodes, (mpfs) => upload.compute({ ...input(), mpfs })); else show(r); },
+    });
+    document.getElementById('cpm-claims').addEventListener('input', () => {
+      if (upload.isActive()) upload.clear('Using the claim lines entered above.');
+    });
+    root.appendChild(o);
+    wire(['cpm-claims', 'cpm-locality'], run);
+  },
 };
 
 // spec-v1623 step 3: a claims CSV goes to the tool's workbench.
@@ -273,4 +335,5 @@ export const acceptFiles = {
   'pharmacy-spread-check': acceptVia('psc-upload-file'),
   'tic-file-check': acceptVia('tic-files'),
   'tic-rate-lookup': acceptVia('trl-files'),
+  'claims-pct-medicare': acceptVia('cpm-upload-file'),
 };
