@@ -113,7 +113,7 @@ and without a docs change, and comparing). The `file://` banner no longer mentio
 
 ## Build status
 
-**§1, §2, §3, §5 and §6 built October 3, 2026. §4 is not built.**
+**Built October 3, 2026: §1, §2, §3, §5 and §6, and §4's measurement. §4's lazy view loading is not built (see the §4 row).**
 
 | Part | What was built |
 |---|---|
@@ -124,5 +124,6 @@ and without a docs change, and comparing). The `file://` banner no longer mentio
 | §3 Status | `lib/offline-status.js`: one footer line, `#offline-status`, as written in §3, plus the storage warning when `persist()` is refused. |
 | §5 Tests | `test/integration/works-offline.spec.js` (Chromium) runs its own server over `dist/` with `Cache-Control: no-store` and goes offline by dropping every connection. It covers all five cases. With the pack cut to the shell, the offline-boot and deep-link tests fail. The version rule and the status line are unit-tested in `test/unit/offline-pack.test.js`. The `:4175` Playwright server, used only by the old test, is removed. |
 | §6 Banner | `file-origin-guard.js` now speaks to a health worker. The developer instruction was already in the README ("To run your own copy"). |
+| §4 Measure | `npm run perf:boot` (`scripts/measure-boot.mjs`) uses Playwright with CPU throttling over the DevTools protocol, not Lighthouse, whose dependency tree is held back for advisories. Every route loads 2,007 files: 19.8 MB raw, 6.4 MB gzipped file by file. Boot (DOMContentLoaded) takes 0.8–1.5 s at 4x on an Apple M4. `docs/performance.md` now records this and drops its "about 50 KB" home-view figure. |
 
-**Not built:** §4. Boot at 4x CPU slowdown has not been measured, and `docs/performance.md` has not been corrected. Lazy view loading waits on that measurement.
+**Not built:** §4's lazy view loading. Measured boot is under the 5-second trigger, but 4x of an M4 is not an Android Go phone. That device is unmeasured, so the question stays open rather than closed.

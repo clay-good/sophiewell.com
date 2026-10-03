@@ -53,14 +53,42 @@ the filesystem.
 
 ## Transfer Size
 
-Design targets measured at build time, tightened over time rather than auto-failed. The config
-asserts no `resource-summary` byte budget.
+Design targets, not enforced: the config asserts no `resource-summary` byte budget.
 
 | Surface                                   | Budget (gzip) |
 |-------------------------------------------|---------------|
-| Home view (HTML + CSS + app.js)           | < 100 KB      |
+| Home view (HTML + CSS + app.js)           | < 100 KB, **not met** (see below) |
 <!-- catalog-truth:historical -->
 | Single utility view incl. primary shard   | < 250 KB      |
+
+## Cold boot, measured (spec-v1541 §4)
+
+The budget above counts `app.js` alone, and this page used to say the home view's gzip footprint
+was about 50 KB. That was never what a visit costs. `app.js` statically imports every view and
+library module, so every route loads the whole app before it shows anything. Measured with
+`npm run perf:boot` (`scripts/measure-boot.mjs`) against the built `dist/`, Chromium, CPU slowed
+4x, cold HTTP cache, no service worker, median of three runs, October 3, 2026:
+
+| Route | Boot (DOMContentLoaded) | Ready | Files (JS) | Raw | Gzip, file by file | Gzip at 1.6 Mbps |
+|---|---|---|---|---|---|---|
+| `/` | 1.5 s | 1.6 s | 2007 (2001) | 19.8 MB | 6.4 MB | 32.2 s |
+| `/#bmi` | 0.8 s | 0.9 s | 2007 (2001) | 19.8 MB | 6.4 MB | 32.2 s |
+| `/#egfr` | 1.2 s | 1.3 s | 2007 (2001) | 19.8 MB | 6.4 MB | 32.2 s |
+| `/#wells-pe` | 1.1 s | 1.2 s | 2007 (2001) | 19.8 MB | 6.4 MB | 32.2 s |
+| `/#gcs` | 1.1 s | 1.2 s | 2007 (2001) | 19.8 MB | 6.4 MB | 32.2 s |
+
+"Ready" is the home box on screen, or the tool's worked example in `#q-results`. The network was
+local, so the time columns are CPU cost; the last column is the network cost, computed.
+
+What this says:
+
+- **The first visit is a 6.4 MB download** on every route: about 30 seconds on the Lighthouse
+  profile's 1.6 Mbps, longer on 2G. After it, the service worker's offline pack (spec-v1541 §1)
+  serves every later visit from the phone, so the cost is paid once per pack version.
+- **Parsing is not the bottleneck on this machine.** Boot stays under 2 seconds at 4x, below the
+  5-second line at which spec-v1541 §4 calls for loading views on demand. But 4x of an Apple M4
+  is not a 1-2 GB Android Go phone, which can be 10 times slower again. That device has not been
+  measured, and until it is, lazy view loading stays unbuilt rather than ruled out.
 
 ## Type-ahead and Calculator Latency
 
@@ -98,6 +126,6 @@ lhci autorun
 `.lighthouserc.json` sets the desktop preset + Slow-4G-class throttling and
 asserts the category-score floors and the timing metrics above. It does **not**
 currently assert the transfer-size budgets (those are verified by inspection of
-the build output, not by a `resource-summary` audit); the actual home-view gzip
-footprint (~50 KB) sits well under the 100 KB budget. The standing
+the build output, not by a `resource-summary` audit). The home view's real
+footprint is in "Cold boot, measured" above, far over the 100 KB budget. The standing
 dependency-budget gate is `scripts/audit-skeleton.mjs`, separate from Lighthouse.

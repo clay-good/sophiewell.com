@@ -32,6 +32,7 @@
     "audit:pa": "node scripts/audit-pa.mjs",
     "refresh:pa-rules": "node scripts/refresh-pa-rules.mjs",
     "perf": "npm run build && npx --yes @lhci/cli@0.13.x autorun",
+    "perf:boot": "node scripts/measure-boot.mjs",
     "favicons": "node scripts/build-favicons.mjs",
     "data:refresh": "node scripts/build-data.mjs",
     "data:verify": "node scripts/verify-integrity.mjs",
