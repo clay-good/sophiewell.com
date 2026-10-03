@@ -75,3 +75,23 @@ and add the sweep to the e2e page sweeps so it keeps running.
 `parseDecimal` with unit tests for every accepted and refused form. The locale matrix passes. The
 finder's result is recorded in this spec's Built section with the count found and fixed. A
 `global-health` tile opens in kg on a clean profile. `sw-units` is the only new storage key.
+
+## Build status
+
+- **§3 and §4 built October 3, 2026.** The finder (§4) was run as a probe on Chromium, Firefox and WebKit in
+  en-US, fr-FR and pt-BR before building: typing `37,5` into an `<input type="number">` gave **375 in
+  Chromium in every locale and in WebKit in en-US** (the comma is dropped and the 5 appended), 37.5 in WebKit in
+  fr-FR and pt-BR, and an empty field in Firefox. So every number field in the catalog had the tenfold defect
+  for a European-style entry, independent of this program. The fix is one document listener
+  (`lib/decimal-comma.js`, installed at boot): a typed comma in a number field is inserted as a point, with a
+  note beside the field; if the result could be a thousands separator (1,500 became 1.500) the field is emptied
+  before the tool reads it, with a note asking for the number without the separator. `parseDecimal` in
+  `lib/num.js` reads MCP string inputs the same way. The locale matrix (`decimal-comma.spec.js`: three engines
+  by en-US, fr-FR, es-PE and pt-BR) passes: 70,5 gives exactly 70.5's result, never 705's, and 1,500 is refused.
+  **Differed from the spec:** a dot is always the decimal point. Refusing `1.500` and `3.200` as the spec wrote
+  it refused real figures with three decimals (an ASP payment limit of 75.492, a GPCI of 1.000); only a comma
+  that could be grouping is refused. Number fields stay `type="number"`: the listener makes the switch to text
+  inputs unnecessary.
+- **§2 (the unit profile and `sw-units`) is not built.** Its first rule depends on `global-health` tiles, which
+  wait on the owner decisions in [spec-v1564](spec-v1564.md).
+

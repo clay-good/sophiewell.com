@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `dccecd2279f5a394`
-Generated: 2026-10-03T08:57:03.208Z
+Build ID: `d61b43d27c67335f`
+Generated: 2026-10-03T09:37:20.157Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -27,7 +27,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 |---|---:|---|
 | `index.html` | 126383 | `4e38acb22a761d345031dc8b4145d418dcc22475df06769662bf954ca02ea0f6` |
 | `styles.css` | 75420 | `f7afb2c67c64f1624889489889ef9dd592a1afefd84295e8890ee869484e15e2` |
-| `app.js` | 571977 | `5cb51e393131162bccdcb82c7eabb225139868cc35d59d2f637e133ad531da27` |
+| `app.js` | 572180 | `945e1d20112929bdf5f47dfae152b5c5016c73048adff0e9fa69790543cd70f4` |
 | `report-feedback.js` | 12178 | `955e5cb542c7b13dcbb85a75ecf4ccf2dc0b2dffecd84daac1d607bd6acc7cd2` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 | `theme.js` | 3132 | `6910af0b4c65869c6a3d24d17842bb2cc88c7d23f8fb32506fcdbfeec70ce979` |
@@ -278,6 +278,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/dean-fluorosis-cfi-v1484.js` | 3363 | `4945d9b514bd4ab5dd97d6fda65b6e2eaa9058ab968cbdec3a228679cc4d3c97` |
 | `lib/deauville-v314.js` | 3653 | `06e9bfdbf337b56c341a3ac22ee5452152e62e19faca722bd33f7ae609c78119` |
 | `lib/debakey-v461.js` | 3357 | `2f7d5d94592ed414b8b181de35309d2804f5c9fa9638074f38c2d6ef52ea03a2` |
+| `lib/decimal-comma.js` | 2352 | `87ba6b4b59bcf84c5c9a5f4e458973ff21085cd616ea6db8dffa9ec5cad69efe` |
 | `lib/decision-rules-v258.js` | 8201 | `acb19041f3bec8e1512f4b32df2fb3f084e54f2c03e58f911af8ba295d4ec41a` |
 | `lib/dejour-trochlea-v485.js` | 3370 | `e24e2cb02e597a2dd73c81b424a1305b3423609993c79e142fb1aa0f4a010e31` |
 | `lib/delbet-femoral-neck-v378.js` | 3870 | `be1d4650275a314e54cacb832804c6b41af08843d296ec4938c2c22ac7db42cc` |
@@ -738,7 +739,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/npep-2025-v1401.js` | 8559 | `11c583d60f504960e89e61db1ca57b6144f3cb725203f3dacef5093c3cbad326` |
 | `lib/nsofa-v526.js` | 11175 | `12ffb5c8f1ec40c039705ff710df0ac0895360a0f89592ea4996f1c18de5355a` |
 | `lib/ntm-pulmonary-v827.js` | 8077 | `51b554704f575d5ffce2a350e5d8013ee70f0b42f5b85b86d7415d4479de1696` |
-| `lib/num.js` | 17030 | `50720db711edd20d2602ea4fa8365fca57d661bbd27649c50b1be0c93befa0af` |
+| `lib/num.js` | 18542 | `fe61bd28a6cd2414d6a5779220766bbf416b6729728f6b025a35e53d404d65c9` |
 | `lib/nunley-vertullo-v455.js` | 3085 | `6f287a16c80ba5d73e2bb2c15989a7aa81d8335767f0a36e8c67c3203b357439` |
 | `lib/nurse-license-training-requirements-v1397.js` | 12250 | `e0263e527856ad453d395667e1b5a4e64ce07e185ff1d69d0d50ea8c34fe8a82` |
 | `lib/nurse-staffing-ratio-check-v1396.js` | 9223 | `f4fc16e9f231cc085c5009e6a6638637836c3c1883d24fcf4e17f2a2b1dadca1` |
@@ -2191,7 +2192,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/zargar-caustic-v401.js` | 1423 | `158261bfae30e1660e5888582289b46bef0344c5763a15a9be2c812be5722d4a` |
 | `mcp/adapters/zulewski-v608.js` | 4193 | `68da25df2e1cd4653dd6ad796f5c0f032429c1da8d89459e8d66f5cc7bb51ab8` |
 | `mcp/catalog.js` | 115648 | `61b6ac90a8d519016e18d976812a9dd95c68e9f885791a33bc6f8be39b9da062` |
-| `mcp/fields.js` | 8875 | `fbb6ed0902546149a9eaca4be37dc816ca62b7d98d09c4ab9a1ff67f141c312e` |
+| `mcp/fields.js` | 9201 | `ff8920609cbc0abd65ea9265076cfc6df06e7bfd4fa0851cee84ac7622713d46` |
 | `mcp/file-tools.js` | 10464 | `1b98e48d0f003b5483e0a983e9c621abe4af0650101fe3bc0b2e48c9a1cae29f` |
 | `mcp/server.js` | 2985 | `6531d95a89218f599811c82c817e36abafd59b97a619927ae58a7f82157c4865` |
 | `mcp/tools.js` | 56954 | `674d9a22593f0f48e9b0190c5f902d541a67518d86ae4b770cc50d037813ea23` |

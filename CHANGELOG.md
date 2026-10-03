@@ -1240,6 +1240,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- A decimal comma typed into any number field (37,5) is now read as 37.5. Before,
+  Chrome, Edge and Safari in English dropped the comma and used 375. A comma that
+  could be a thousands separator (1,500) empties the field and asks for the
+  number without it.
+
 - IRF compliance clock: admissions from October 1, 2026 follow the amended rule
   (42 CFR 412.622, FY2027 IRF final rule): the first interdisciplinary team
   meeting is due by day 4, counting the admission day as day 1, and therapy or

@@ -35,6 +35,8 @@
 // consumer does not reach the author of the next adapter. So it is normalised
 // here, at the contract, and mcp/catalog.js rejects an unknown kind outright.
 
+import { parseDecimal, GROUPING_MESSAGE } from '../lib/num.js';
+
 export const FIELD_KINDS = Object.freeze(['number', 'bool', 'enum', 'string']);
 
 // `boolean` is the same kind as `bool`; anything else is unknown and the
@@ -133,7 +135,10 @@ export function validateInputs(inputs, fields) {
         if (f.required) return { valid: false, code: 'MISSING_INPUT', field: f.dom, message: `"${f.dom}" is required.` };
         continue;
       }
-      const n = typeof v === 'number' ? v : (typeof v === 'string' && v.trim() !== '' ? Number(v) : NaN);
+      // spec-v1542: a string is read in either decimal convention ("37,5" is 37.5); grouping like "1,500" is refused.
+      const p = parseDecimal(v);
+      if (p.error === GROUPING_MESSAGE) return { valid: false, code: 'INVALID_TYPE', field: f.dom, message: `"${f.dom}": ${GROUPING_MESSAGE}` };
+      const n = p.blank ? NaN : p.value;
       if (!Number.isFinite(n)) return { valid: false, code: 'INVALID_TYPE', field: f.dom, message: `"${f.dom}" must be a finite number.` };
       // Scored categories are numbers, but only some numbers. Passing one the
       // form has no option for used to score as if the finding were absent and
@@ -166,7 +171,7 @@ export function makeToArgs(fields) {
       if (!Object.prototype.hasOwnProperty.call(inputs, f.dom)) continue;
       const raw = inputs[f.dom];
       let v;
-      if (f.kind === 'number') v = (raw === '' || raw === null || raw === undefined) ? null : Number(raw);
+      if (f.kind === 'number') v = (raw === '' || raw === null || raw === undefined) ? null : (parseDecimal(raw).value ?? Number(raw));
       else if (f.kind === 'bool') v = toBool(raw);
       else v = String(raw);
       if (typeof f.to === 'function') v = f.to(v);

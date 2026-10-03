@@ -2,6 +2,7 @@
 // All DOM updates use textContent or createElement. Raw HTML insertion is forbidden.
 
 import { renderers as RA } from './views/group-a.js';
+import { installDecimalComma } from './lib/decimal-comma.js';
 import { renderers as RC } from './views/group-c.js';
 import { renderers as RE } from './views/group-e.js';
 import { renderers as RF } from './views/group-f.js';
@@ -6448,6 +6449,8 @@ function boot() {
     })
     .catch(() => {});
   window.addEventListener('hashchange', route);
+  // spec-v1542: a typed decimal comma reaches every number field as a point, never dropped (375 for 37,5).
+  installDecimalComma(document);
   route();
   registerServiceWorker();
 }

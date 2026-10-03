@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:dccecd22-79f5-5394-8b3e-5ed16b50b06f",
+  "serialNumber": "urn:uuid:d61b43d2-7c67-535f-8f8f-21c30c672c01",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-03T08:57:03.208Z",
+    "timestamp": "2026-10-03T09:37:20.157Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5cb51e393131162bccdcb82c7eabb225139868cc35d59d2f637e133ad531da27"
+          "content": "945e1d20112929bdf5f47dfae152b5c5016c73048adff0e9fa69790543cd70f4"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "571977"
+          "value": "572180"
         }
       ]
     },
@@ -5155,6 +5155,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3357"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/decimal-comma.js",
+      "type": "file",
+      "name": "lib/decimal-comma.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "87ba6b4b59bcf84c5c9a5f4e458973ff21085cd616ea6db8dffa9ec5cad69efe"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2352"
         }
       ]
     },
@@ -14825,7 +14846,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "50720db711edd20d2602ea4fa8365fca57d661bbd27649c50b1be0c93befa0af"
+          "content": "fe61bd28a6cd2414d6a5779220766bbf416b6729728f6b025a35e53d404d65c9"
         }
       ],
       "properties": [
@@ -14835,7 +14856,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "17030"
+          "value": "18542"
         }
       ]
     },
@@ -45338,7 +45359,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "fbb6ed0902546149a9eaca4be37dc816ca62b7d98d09c4ab9a1ff67f141c312e"
+          "content": "ff8920609cbc0abd65ea9265076cfc6df06e7bfd4fa0851cee84ac7622713d46"
         }
       ],
       "properties": [
@@ -45348,7 +45369,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "8875"
+          "value": "9201"
         }
       ]
     },
@@ -80370,6 +80391,7 @@
         "urn:sophiewell:file:source:lib/dean-fluorosis-cfi-v1484.js",
         "urn:sophiewell:file:source:lib/deauville-v314.js",
         "urn:sophiewell:file:source:lib/debakey-v461.js",
+        "urn:sophiewell:file:source:lib/decimal-comma.js",
         "urn:sophiewell:file:source:lib/decision-rules-v258.js",
         "urn:sophiewell:file:source:lib/dejour-trochlea-v485.js",
         "urn:sophiewell:file:source:lib/delbet-femoral-neck-v378.js",
@@ -83302,7 +83324,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "dccecd2279f5a394"
+      "value": "d61b43d27c67335f"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -83314,7 +83336,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3051"
+      "value": "3052"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
