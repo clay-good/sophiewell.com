@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `c28d3dde60beb4ff`
-Generated: 2026-10-03T12:35:58.668Z
+Build ID: `2f8eda483d3d04d0`
+Generated: 2026-10-03T13:32:30.132Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -26,7 +26,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | Path | Bytes | SHA-256 |
 |---|---:|---|
 | `index.html` | 126447 | `afff2b5bbcaba3eb09e3171f64e972fb7cfe1ec3d5d3550d0a306b153f697427` |
-| `styles.css` | 75581 | `40a3ac39694a7e47df22e78d385890f4020cee705fa8191f852b323c3253bdc7` |
+| `styles.css` | 75594 | `84e01c95d5ccc0928a4adcab97925a49dd1c34d86866df26c7994356ecea582e` |
 | `app.js` | 572430 | `6582416ab55648361182f9abe93332d3a63810a686a4023b2760850620c6785e` |
 | `report-feedback.js` | 12178 | `955e5cb542c7b13dcbb85a75ecf4ccf2dc0b2dffecd84daac1d607bd6acc7cd2` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
@@ -790,7 +790,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/pa/classify.js` | 3432 | `a7958e40890ad63ebf68ce5a0107fe7ab5a5b0c9e877e2669e8f44ecfb7f34ca` |
 | `lib/pa/cms-opd-pa-list.js` | 5593 | `0be9d7b8b9c3be083078df985bb34b6d5510e5dbc9ee94d5c2e32d8aa06c77a9` |
 | `lib/pa/date.js` | 3567 | `5217fa23738763834dc97b8187965f5a678ddbb36b02ba40a1a76981ce3c81d9` |
-| `lib/pa/docx.js` | 12768 | `6a1fe3cfd40a10b0ab50d37cf55cb11796e0e5385ee56101faed12b61894931f` |
+| `lib/pa/docx.js` | 14317 | `acb07707e4aaa625205ed55ece299298e3b417b969c1c327642bc0f4aaf3de7c` |
 | `lib/pa/engine.js` | 6446 | `3b054765c7e2064de823ae7b0f32ba22e8d58aebd7df4be04c7a151a0401ebf6` |
 | `lib/pa/extract.js` | 14158 | `6c8c516029de4695f19a9e9594d3f0c4afe052f80c10f050b5f8ddd7272c75de` |
 | `lib/pa/ocr.js` | 5134 | `46341215719a03b126bc286aaf0a244c9592bacaef6512e7d10f15b9d8e07146` |
@@ -881,7 +881,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/preventive-cost-share-check.js` | 11251 | `932c8d8c7a61bb037de2d494ae35600e271adee2537153d4d164883b898f3ac1` |
 | `lib/preventive-owed.js` | 9357 | `7874d4516699952bc455cf982a39a90a35995ad51fcd16080d8f014240076d3f` |
 | `lib/priapism-gas-v859.js` | 10757 | `64a551a208b4f1430a62b0d16669339f61c853a2af7db33e5612ce32a559d6cf` |
-| `lib/print.js` | 4179 | `84053c26cd3859b4156ddf0cc33bc546656c7ce4b01651de786d1dced7cf4d3c` |
+| `lib/print.js` | 4948 | `b94c3f3322dbee349c43f11ee513bf80e2b7d63ee8508423bfc64ca8111e3df4` |
 | `lib/prognostic-v231.js` | 7745 | `656bc7330019dc7bcc842abdf695a2479b2720bc1ccff858e7fd38357173fbf5` |
 | `lib/prompt.js` | 26800 | `94969c9dcb1802f750626dbad5067a7ecf2523dea28febafc0f053c3c3f05dba` |
 | `lib/propkd-v564.js` | 12565 | `a92acd4c8f065df50dcfffd0ad8dde4a6d1a6a9dddf8118bc4351307633d5c25` |
@@ -2353,7 +2353,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v15.js` | 10029 | `8af2927b15f583714bfc660f737bae017a95c9caf9052b75b68c3eb0c46c6c26` |
 | `views/group-v1502.js` | 14208 | `11da4fbcd12f80e3b4ef5e19bd02b240376a5a1bb7b168eb1b8bece3773bca04` |
 | `views/group-v1503.js` | 10845 | `e8197a48dd6f2c022795a2fcad41c58ef689bb0f54de9d554b4afc46ae2f8f16` |
-| `views/group-v1504.js` | 12899 | `45e7d5661d14790b75c2ec00ed6dd1cab5334f7f75bc04a38813a1fbdcc1d2ac` |
+| `views/group-v1504.js` | 13045 | `3752b00103651617352f407cbb8c907c09bb442a1751fb034555468b940e857c` |
 | `views/group-v1505.js` | 11430 | `0bf2e09c59f3a9dc6092a4a371f1c2b7fc7f43e92833ebe78dfc7902fa651a38` |
 | `views/group-v1506.js` | 15359 | `93fdc282c29e25e2c9a3d2dbabbcec3587b8435a3564a86679440cf17d8bc2d8` |
 | `views/group-v1507.js` | 14541 | `4aeedfa4bf2d667fdf029e46ab4e4acdcdb9dfd6ee84f4e86fc0818490a83fd7` |

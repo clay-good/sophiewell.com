@@ -191,4 +191,11 @@ the research recorded in [scope-medication-access.md](scope-medication-access.md
 - **Built 2026-10-03:** §2's page watch, with [spec-v1517](spec-v1517.md#build-status).
 - **Not yet built:** §3's JSON intake, the remaining X12 transactions, batch mode for the
   other scalar tools (each needs its fields listed in `lib/batch-tools.js`), and upload integration for
-  the remaining file-based tools; §4 the shared document builder.
+  the remaining file-based tools.
+- **Built 2026-10-03:** §4's download. `renderPrintable` (`lib/print.js`) takes an optional `docx`, which
+  adds "Download as Word (.docx)". The file is built on click by `renderDocumentDocx` in `lib/pa/docx.js`,
+  the same deterministic first-party writer the PA lint report uses. While any bracketed blank is left, the
+  document opens with a bold "NOT READY TO SEND" line that counts them. The count is read from the
+  document itself. The seven [spec-v1504](spec-v1504.md) letter builders use it. Tests:
+  `test/unit/document-docx.test.js`, `test/integration/letter-docx.spec.js`. **Not built:** attaching
+  files to the download (the enclosures are listed, not bundled).
