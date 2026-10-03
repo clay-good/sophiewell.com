@@ -8740,6 +8740,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/who-anemia-hb-v1550.js (spec-v1550: WHO 2024 hemoglobin cutoffs — clinical disclaimer)
 - `who-anemia-hb`
 
+### lib/wasting-classify-v1548.js (spec-v1548: WHO 2023 acute malnutrition — clinical disclaimer)
+- `wasting-classify`
+
 ### lib/claims-pct-medicare.js (spec-v1604: Claims paid as a percent of Medicare — administrative disclaimer)
 - `claims-pct-medicare`
 

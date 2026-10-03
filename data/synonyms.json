@@ -6939,6 +6939,21 @@
     },
     {
       "phrases": [
+        "sam",
+        "mam",
+        "severe acute malnutrition",
+        "moderate acute malnutrition",
+        "muac",
+        "muac tape red yellow green",
+        "child wasting classification",
+        "nutritional edema child",
+        "is this child malnourished"
+      ],
+      "tile": "wasting-classify",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
         "pertussis case definition",
         "whooping cough case definition",
         "is this a confirmed pertussis case",

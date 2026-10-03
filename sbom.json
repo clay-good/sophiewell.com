@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:9d51e73f-488c-5918-818a-84740e1644ff",
+  "serialNumber": "urn:uuid:0c87cc8f-009a-53f7-80dc-7162b1638fcc",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-03T18:44:14.644Z",
+    "timestamp": "2026-10-03T19:26:45.116Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1974 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1975 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f50fd8539ed593a9ea5a6057a2706245aea051c83c45830d3b7b05460bf018c1"
+          "content": "63acfaeb468fe2a219cac13ab72d701671574d5897a0303e5b4a5613d87b1e3a"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "126525"
+          "value": "126609"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "356b3cee753e9ed0f95fae79bc1cd35f1287306df3fd0111732c938df095ae3e"
+          "content": "1f7954e68af96cd56aaeb3946e8ccc6187e2f5b69afda5420c6813f7a345236e"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "572729"
+          "value": "573022"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "156af9242e11bf80d2b80da0fb42e43f03aa80a8fb7a914aa6f1ea2b3afc0444"
+          "content": "5c96d5f05c1740546e9552852b18615323c6c9456438cacda4b814b048a78a09"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "246535"
+          "value": "246662"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6ddef04ae0798514d9b77b946ef57d0d7c13b83e61f678eb1852e354050feeb8"
+          "content": "17c02ce236f161dc9169c8fd2c1e7edd9e96950af9fffed134d0c79ec6d28fe2"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "113381"
+          "value": "113471"
         }
       ]
     },
@@ -13061,7 +13061,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f8efb4e0251b7f6995c8f4c86b66839728d768f2da9ee2814da28ea4fe85aa47"
+          "content": "8e575ef23d00684d2661e054af1fa6921bbece66e67a755080f4464716353f3e"
         }
       ],
       "properties": [
@@ -13071,7 +13071,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2685605"
+          "value": "2686378"
         }
       ]
     },
@@ -23614,6 +23614,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3695"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/wasting-classify-v1548.js",
+      "type": "file",
+      "name": "lib/wasting-classify-v1548.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "529d085b42019640b28063d73756378f367bab76fe391114539455f9807e0d2b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5451"
         }
       ]
     },
@@ -45017,6 +45038,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/wasting-classify-v1548.js",
+      "type": "file",
+      "name": "mcp/adapters/wasting-classify-v1548.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "44bfe9502ed65f5740ac084226d7eb42df9af0064945b843824da87b4290a3dc"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1415"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/watcha-emergence-v1570.js",
       "type": "file",
       "name": "mcp/adapters/watcha-emergence-v1570.js",
@@ -45485,7 +45527,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4921d8d31f36daf8154bf681155e5f65e9e5fe5e9038475c4bb15d3c389b36e2"
+          "content": "4ef8580de061396b17ae9b314f31064f3c81e4c1d196a4c95aa727887c9ced8d"
         }
       ],
       "properties": [
@@ -45495,7 +45537,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "115759"
+          "value": "115884"
         }
       ]
     },
@@ -49192,6 +49234,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "11434"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1548.js",
+      "type": "file",
+      "name": "views/group-v1548.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c03edfd7c3533abea348095981134a57c5a6f0c849c1f39f0245169071e80ab9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3052"
         }
       ]
     },
@@ -81411,6 +81474,7 @@
         "urn:sophiewell:file:source:lib/wang-bronchiolitis-v682.js",
         "urn:sophiewell:file:source:lib/warfarin-v133.js",
         "urn:sophiewell:file:source:lib/wassel-thumb-v417.js",
+        "urn:sophiewell:file:source:lib/wasting-classify-v1548.js",
         "urn:sophiewell:file:source:lib/watcha-emergence-v1570.js",
         "urn:sophiewell:file:source:lib/watson-slac-v1431.js",
         "urn:sophiewell:file:source:lib/wayne-index-v527.js",
@@ -81620,6 +81684,7 @@
         "urn:sophiewell:file:source:views/group-v152.js",
         "urn:sophiewell:file:source:views/group-v153.js",
         "urn:sophiewell:file:source:views/group-v154.js",
+        "urn:sophiewell:file:source:views/group-v1548.js",
         "urn:sophiewell:file:source:views/group-v155.js",
         "urn:sophiewell:file:source:views/group-v1550.js",
         "urn:sophiewell:file:source:views/group-v156.js",
@@ -83347,6 +83412,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/wang-bronchiolitis-v682.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/warfarin-v133.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/wassel-thumb-v417.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/wasting-classify-v1548.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/watcha-emergence-v1570.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/watson-slac-v1431.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/wayne-index-v527.js",
@@ -83473,7 +83539,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "9d51e73f488c7918"
+      "value": "0c87cc8f009a13f7"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -83485,7 +83551,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3060"
+      "value": "3063"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

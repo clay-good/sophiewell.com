@@ -296,3 +296,5 @@ experience**.
 > v1601, USPSTF preventive services owed at $0 — [spec-v1601](spec-v1601.md), which adds `preventive-owed` — is 1973.)
 
 > v1550, WHO 2024 hemoglobin cutoffs for anemia, the first field-health tile — [spec-v1550](spec-v1550.md), which adds `who-anemia-hb` — is 1974.)
+
+> v1548, WHO 2023 acute malnutrition by MUAC, WHZ and edema — [spec-v1548](spec-v1548.md), which adds `wasting-classify` — is 1975.)

@@ -21,6 +21,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Acute malnutrition by MUAC, WHZ and edema (WHO 2023), for children 6 to 59
+  months: severe or moderate, which measure decided, and the MUAC tape color.
 - Anemia by Hemoglobin (WHO 2024): whether a hemoglobin is anemic, and how
   severe, for ten groups by age, sex and trimester, with WHO's elevation and
   smoking adjustments. The first of the field-health tools.
