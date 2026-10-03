@@ -278,3 +278,5 @@ experience**.
 > v1505, diagnosis support under the billing and coding articles — [spec-v1505](spec-v1505.md), which adds `lcd-diagnosis-check` — is 1964.)
 
 > v1604, insurer price files — [spec-v1604](spec-v1604.md), which adds `tic-file-check` — is 1965.)
+
+> v1604, negotiated rates in insurer price files — [spec-v1604](spec-v1604.md), which adds `tic-rate-lookup` — is 1966.)

@@ -1,4 +1,4 @@
-// spec-v1604: renderers for dpc-hsa-check, pharmacy-spread-check and tic-file-check.
+// spec-v1604: renderers for dpc-hsa-check, pharmacy-spread-check, tic-file-check and tic-rate-lookup.
 
 import { el, clear } from '../lib/dom.js';
 import * as DP from '../lib/dpc-hsa-check.js';
@@ -10,8 +10,11 @@ import { CLAIM_FIELDS } from '../lib/upload-fields.js';
 import { acceptVia } from '../lib/hand-off.js';
 import { renderReceipt } from './receipt.js';
 import { TIC_SCHEMA } from '../lib/tic-schemas.js';
+import { loadLocalities, loadCodeRows } from '../lib/mpfs-load.js';
+import { parseQuery } from '../lib/tic-rate-lookup.js';
 
 const ticWorkerUrl = new URL('../lib/tic-worker.js', import.meta.url);
+const ticRateWorkerUrl = new URL('../lib/tic-rate-worker.js', import.meta.url);
 
 const NA = { value: '', text: '— choose —' };
 function selectField(root, label, id, options) {
@@ -111,8 +114,89 @@ function ticFileCheck(root) {
   });
 }
 
+// spec-v1604 tool 2: negotiated rates for named codes, streamed out of in-network files in a Worker and set
+// beside the Medicare physician fee schedule amount for the locality chosen.
+function ticRateLookup(root) {
+  root.appendChild(el('p', { class: 'notice', text: 'Finds the negotiated rates for the billing codes you name in an insurer\'s in-network rates file (JSON, plain or gzipped), and sets each professional rate beside the Medicare physician fee schedule amount for the locality you choose.' }));
+  root.appendChild(el('p', { class: 'muted', text: 'The file is read once in a stream and only the matching rates are kept, so memory follows the matches, not the file: a 1 GB file takes about 90 seconds. The file stays in this tab.' }));
+  textareaField(root, 'Billing codes (up to 50, separated by commas or spaces)', 'trl-codes', 'e.g. 99213, 99214, 71046');
+  const prov = el('p');
+  prov.appendChild(el('label', { for: 'trl-providers', text: 'Only these providers (optional): NPIs or TINs, separated by commas' }));
+  prov.appendChild(el('br'));
+  prov.appendChild(el('input', { id: 'trl-providers', type: 'text', autocomplete: 'off', placeholder: 'e.g. 1234567893, 12-3456789' }));
+  root.appendChild(prov);
+  const loc = el('p');
+  loc.appendChild(el('label', { for: 'trl-locality', text: 'Medicare locality to compare with' }));
+  loc.appendChild(el('br'));
+  const locality = el('select', { id: 'trl-locality' });
+  locality.appendChild(el('option', { value: '', text: '— choose a locality —' }));
+  loc.appendChild(locality);
+  root.appendChild(loc);
+  const input = el('input', { id: 'trl-files', type: 'file', multiple: true, accept: '.json,.gz,application/json,application/gzip' });
+  const status = el('p', { id: 'trl-status', class: 'muted', role: 'status', 'aria-live': 'polite' });
+  const results = out();
+  root.appendChild(el('label', { for: 'trl-files', text: 'Choose one or more in-network rates files' })); root.appendChild(input); root.appendChild(status); root.appendChild(results);
+  let fee = null;
+  const ready = loadLocalities().then((r) => {
+    fee = r;
+    if (r.localities) r.localities.forEach((g, i) => locality.appendChild(el('option', { value: String(i), text: `${g.state} ${g.locality}: ${g.name}` })));
+    else locality.appendChild(el('option', { value: '', text: r.expired ? 'The fee schedule has passed its review date' : 'The fee schedule could not be loaded' }));
+  });
+  let worker = null;
+  const money = (n) => (n == null ? '' : `$${n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`);
+  const run = async () => {
+    if (worker) worker.terminate(); clear(results);
+    const files = [...(input.files || [])];
+    if (!files.length) { status.textContent = ''; return; }
+    const query = parseQuery(val('trl-codes'), val('trl-providers'));
+    if (query.error) { status.textContent = query.error; return; }
+    await ready;
+    let mpfs = null;
+    if (locality.value !== '' && fee && fee.localities) {
+      try { mpfs = { rows: await loadCodeRows(query.codes), gpci: fee.localities[Number(locality.value)], conversionFactor: fee.conversionFactor, edition: fee.edition }; } catch { status.textContent = 'The fee schedule could not be loaded.'; return; }
+    }
+    status.textContent = 'Reading the files locally...';
+    worker = new window.Worker(ticRateWorkerUrl, { type: 'module' });
+    worker.addEventListener('error', () => { status.textContent = 'The in-network rates file could not be read.'; });
+    worker.addEventListener('message', (event) => {
+      const m = event.data || {};
+      if (m.type === 'error') { status.textContent = m.message; return; }
+      if (m.type === 'progress') {
+        const percent = m.totalBytes ? Math.min(100, Math.floor(m.bytesRead / m.totalBytes * 100)) : 0;
+        status.textContent = `Reading ${m.name}${m.total > 1 ? ` (${(m.index + 1).toLocaleString('en-US')} of ${m.total.toLocaleString('en-US')})` : ''}... ${percent.toLocaleString('en-US')}%`;
+        return;
+      }
+      if (m.type !== 'found') return;
+      if (!m.valid) { status.textContent = m.message; return; }
+      status.textContent = `${files.length.toLocaleString('en-US')} ${files.length === 1 ? 'file' : 'files'} read.`;
+      resultRow(results, [{ text: m.band, cls: null }, { label: 'Priced against Medicare', value: `${m.priced.toLocaleString('en-US')} of ${m.rows.length.toLocaleString('en-US')}` }]);
+      const shown = m.rows.slice(0, 200);
+      table(results, m.rows.length > shown.length ? `The first ${shown.length} of ${m.rows.length.toLocaleString('en-US')} rates (all are in the CSV)` : 'Rates', ['Code', 'Provider group', 'Rate type', 'Rate', 'Billing class', 'Setting', 'Place of service', 'Modifiers', 'Expires', 'Medicare', 'Percent of Medicare', 'Medicare basis'],
+        shown.map((r) => [r.code, r.providers, r.negotiatedType, r.negotiatedType === 'percentage' ? `${r.rate}%` : money(r.rate), r.billingClass, r.setting, r.serviceCodes.join(' '), r.modifiers.join(' '), r.expiration, money(r.medicare), r.pctMedicare == null ? '' : `${r.pctMedicare}%`, r.medicareBasis]));
+      list(results, m.notes);
+      if (mpfs && fee.stamp) note(results, fee.stamp);
+      if (m.csv) {
+        const wrap = el('p'); const button = el('button', { type: 'button', text: 'Download the rates CSV' });
+        button.addEventListener('click', () => {
+          const url = window.URL.createObjectURL(new Blob([m.csv], { type: 'text/csv;charset=utf-8' }));
+          const anchor = el('a', { href: url, download: 'tic-rate-lookup.csv' });
+          anchor.click(); window.setTimeout(() => window.URL.revokeObjectURL(url), 0);
+        });
+        wrap.appendChild(button); results.appendChild(wrap);
+      }
+      results.appendChild(el('p', { class: 'muted', text: 'A percent of Medicare is shown only for a professional dollar rate with a stated place of service, priced at the locality and fee schedule edition beside it, before any Medicare adjustment for multiple procedures, assistants or bilateral surgery. Facility rates are not priced here: the site does not hold the full outpatient (OPPS) table or hospital inpatient base rates.' }));
+      renderReceipt(results, m);
+    });
+    worker.postMessage({ type: 'lookup', files, input: { codes: val('trl-codes'), providers: val('trl-providers') }, mpfs });
+  };
+  input.addEventListener('change', run);
+  for (const id of ['trl-codes', 'trl-providers']) root.querySelector(`#${id}`).addEventListener('change', run);
+  locality.addEventListener('change', run);
+}
+
 export const renderers = {
   'tic-file-check': ticFileCheck,
+  'tic-rate-lookup': ticRateLookup,
   'dpc-hsa-check'(root) {
     const pairs = [['dpc-year', 'year'], ['dpc-covers', 'covers'], ['dpc-period', 'period'], ['dpc-fee', 'fee'], ['dpc-prac', 'practitioners'], ['dpc-fixed', 'fixedFee'], ['dpc-anes', 'anesthesia'], ['dpc-drugs', 'drugs'], ['dpc-labs', 'labs'], ['dpc-payer', 'payer'], ['dpc-limit', 'limit']];
     numField(root, 'Year', 'dpc-year', 'e.g. 2026', '2100', '1');
@@ -188,4 +272,5 @@ export const renderers = {
 export const acceptFiles = {
   'pharmacy-spread-check': acceptVia('psc-upload-file'),
   'tic-file-check': acceptVia('tic-files'),
+  'tic-rate-lookup': acceptVia('trl-files'),
 };

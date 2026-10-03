@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Find negotiated rates in an insurer price file: name the billing codes (and,
+  if you like, the providers) and get every in-network rate for them, each
+  professional rate beside the Medicare fee schedule amount for your locality,
+  with a CSV.
+
 - Insurer price file check: choose an insurer's Transparency in Coverage file (in-network
   rates, allowed amounts or a table of contents, plain or gzipped) and see whether it
   conforms to the CMS schema v2.2.1, with each deficiency's JSON path. A table of

@@ -10471,6 +10471,17 @@
     },
     {
       "phrases": [
+        "negotiated rates lookup",
+        "insurer negotiated rate file",
+        "transparency in coverage rates",
+        "percent of medicare negotiated rate",
+        "in-network rates file search"
+      ],
+      "tile": "tic-rate-lookup",
+      "audience": "billers"
+    },
+    {
+      "phrases": [
         "denial pattern report",
         "denial trends",
         "carc adjustment report",
