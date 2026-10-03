@@ -1,6 +1,6 @@
 # Scope — public utility: the patient, the plan sponsor and the published rules
 
-**Status:** Specified September 29, 2026. Nothing built yet.
+**Status:** Specified September 29, 2026. Being built: what is done and what is open is in [spec-v1626](spec-v1626.md#build-status).
 **Specs:** [spec-v1600](spec-v1600.md) (charter) through [spec-v1605](spec-v1605.md).
 **When built:** 14 additions and 1 backfill (the count is in the table below).
 

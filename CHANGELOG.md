@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Insurer price file check: choose an insurer's Transparency in Coverage file (in-network
+  rates, allowed amounts or a table of contents, plain or gzipped) and see whether it
+  conforms to the CMS schema v2.2.1, with each deficiency's JSON path. A table of
+  contents chosen with its files is checked for the ones missing.
+
 - Does this diagnosis support this code? The Medicare billing and coding articles
   for the state, from the weekly Medicare Coverage Database export, say whether
   the diagnoses are covered, not covered or not addressed, with each article's

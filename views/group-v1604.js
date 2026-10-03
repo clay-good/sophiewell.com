@@ -1,4 +1,4 @@
-// spec-v1604: renderers for dpc-hsa-check and pharmacy-spread-check.
+// spec-v1604: renderers for dpc-hsa-check, pharmacy-spread-check and tic-file-check.
 
 import { el, clear } from '../lib/dom.js';
 import * as DP from '../lib/dpc-hsa-check.js';
@@ -8,6 +8,10 @@ import { resultRow } from '../lib/result-copy.js';
 import { uploadWorkbench } from './upload-workbench.js';
 import { CLAIM_FIELDS } from '../lib/upload-fields.js';
 import { acceptVia } from '../lib/hand-off.js';
+import { renderReceipt } from './receipt.js';
+import { TIC_SCHEMA } from '../lib/tic-schemas.js';
+
+const ticWorkerUrl = new URL('../lib/tic-worker.js', import.meta.url);
 
 const NA = { value: '', text: '— choose —' };
 function selectField(root, label, id, options) {
@@ -60,7 +64,55 @@ function wire(ids, run) {
   run();
 }
 
+// spec-v1604 tool 1: insurer price files checked against the CMS schema, streamed in a Worker.
+function ticFileCheck(root) {
+  root.appendChild(el('p', { class: 'notice', text: `Checks an insurer's Transparency in Coverage file (in-network rates, allowed amounts or a table of contents; JSON, plain or gzipped) against the CMS schema v${TIC_SCHEMA.version}: required fields, types, allowed values, and that every provider group a rate names is defined in the file.` }));
+  root.appendChild(el('p', { class: 'muted', text: 'Choose a table of contents together with the files it names to check that each one is there and is the right type. The files stay in this tab and are read in a stream, so memory follows one item, not the file: a 1 GB file took about 90 seconds in testing.' }));
+  const input = el('input', { id: 'tic-files', type: 'file', multiple: true, accept: '.json,.gz,application/json,application/gzip' });
+  const status = el('p', { id: 'tic-status', class: 'muted', role: 'status', 'aria-live': 'polite' });
+  const results = out();
+  root.appendChild(el('label', { for: 'tic-files', text: 'Choose one or more insurer price files' })); root.appendChild(input); root.appendChild(status); root.appendChild(results);
+  let worker = null;
+  input.addEventListener('change', () => {
+    if (worker) worker.terminate(); clear(results);
+    const files = [...(input.files || [])];
+    if (!files.length) { status.textContent = ''; return; }
+    status.textContent = 'Checking the files locally...'; worker = new window.Worker(ticWorkerUrl, { type: 'module' });
+    worker.addEventListener('error', () => { status.textContent = 'The insurer price file could not be checked.'; });
+    worker.addEventListener('message', (event) => {
+      const m = event.data || {};
+      if (m.type === 'error') { status.textContent = m.message; return; }
+      if (m.type === 'progress') {
+        const percent = m.totalBytes ? Math.min(100, Math.floor(m.bytesRead / m.totalBytes * 100)) : 0;
+        status.textContent = `Checking ${m.name}${m.total > 1 ? ` (${(m.index + 1).toLocaleString('en-US')} of ${m.total.toLocaleString('en-US')})` : ''}... ${percent.toLocaleString('en-US')}%`;
+        return;
+      }
+      if (m.type !== 'validated') return;
+      status.textContent = `${files.length.toLocaleString('en-US')} ${files.length === 1 ? 'file' : 'files'} checked.`;
+      const one = m.files.length === 1 ? m.files[0] : null;
+      resultRow(results, [
+        { text: m.band, cls: m.valid ? null : 'warn' },
+        one ? { label: 'Type', value: one.typeLabel } : { label: 'Files', value: m.files.length.toLocaleString('en-US') },
+        one ? { label: 'Items', value: `${one.items.toLocaleString('en-US')} ${one.itemLabel}` } : { label: 'Schema', value: `v${m.schemaVersion}` },
+      ]);
+      table(results, 'Files checked', ['File', 'Type', 'Reporting entity', 'Declared version', 'Last updated', 'Items', 'Deficiencies'],
+        m.files.map((f) => [f.name, f.typeLabel, f.entity || 'not stated', f.declaredVersion || 'not stated', f.lastUpdatedOn || 'not stated', f.items.toLocaleString('en-US'), f.errorCount.toLocaleString('en-US')]));
+      const rows = [];
+      for (const f of m.files) for (const x of f.findings) rows.push([f.name, x.code, x.location, x.message]);
+      for (const x of m.cross.findings) rows.push(['Table of contents', x.code, x.location, x.message]);
+      const capped = m.files.some((f) => f.findingsTruncated) || m.cross.findingsTruncated;
+      table(results, capped ? 'Deficiencies (the first 200 in each file)' : 'Deficiencies', ['File', 'Rule', 'Location', 'Finding'], rows);
+      list(results, m.notes);
+      results.appendChild(el('p', { class: 'muted', text: 'This checks the file\'s structure against the CMS schema, not whether its rates are complete or accurate, and it is not a compliance determination. A file that fails to open or does not conform can be raised with the insurer or plan administrator, citing the rule and location above.' }));
+      const source = el('p'); source.appendChild(el('a', { href: TIC_SCHEMA.url, target: '_blank', rel: 'noreferrer', text: `The CMS Transparency in Coverage schemas, ${TIC_SCHEMA.tag}` })); results.appendChild(source);
+      renderReceipt(results, m);
+    });
+    worker.postMessage({ type: 'validate', files });
+  });
+}
+
 export const renderers = {
+  'tic-file-check': ticFileCheck,
   'dpc-hsa-check'(root) {
     const pairs = [['dpc-year', 'year'], ['dpc-covers', 'covers'], ['dpc-period', 'period'], ['dpc-fee', 'fee'], ['dpc-prac', 'practitioners'], ['dpc-fixed', 'fixedFee'], ['dpc-anes', 'anesthesia'], ['dpc-drugs', 'drugs'], ['dpc-labs', 'labs'], ['dpc-payer', 'payer'], ['dpc-limit', 'limit']];
     numField(root, 'Year', 'dpc-year', 'e.g. 2026', '2100', '1');
@@ -135,4 +187,5 @@ export const renderers = {
 // spec-v1623 step 3: a claims CSV goes to the tool's workbench.
 export const acceptFiles = {
   'pharmacy-spread-check': acceptVia('psc-upload-file'),
+  'tic-file-check': acceptVia('tic-files'),
 };

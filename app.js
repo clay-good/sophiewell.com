@@ -1112,6 +1112,7 @@ const UTILITIES = [
   { id: 'x12-277-reader', name: 'X12 277 Claim Status Reader', group: 'P', audiences: ['billers', 'coders'], clinical: false },
   { id: 'hpt-price-compare', name: 'Compare One Service Across Hospital Price Files', group: 'P', audiences: ['billers', 'patients'], clinical: false },
   { id: 'hpt-file-check', name: 'Hospital Price Transparency File Check', group: 'P', audiences: ['billers', 'coders'], clinical: false },
+  { id: 'tic-file-check', name: 'Insurer Price File (Transparency in Coverage) Check', group: 'P', audiences: ['billers', 'patients'], clinical: false },
   { id: 'denial-pattern-report', name: 'Denial Pattern Report', group: 'P', audiences: ['billers', 'coders'], clinical: false },
   { id: 'underpayment-check', name: 'Paid Below Contract Check', group: 'P', audiences: ['billers', 'coders'], clinical: false },
   { id: 'therapy-cost-compare', name: 'Annual Therapy Cost Comparison', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },

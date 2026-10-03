@@ -1,6 +1,6 @@
 # Scope — file intake: drop what you have, get the answer
 
-**Status:** Specified September 29, 2026. Nothing built yet. Build plan: [spec-v1620](spec-v1620.md).
+**Status:** Specified September 29, 2026. Being built; progress by milestone is in [spec-v1620](spec-v1620.md#progress).
 **Specs:** [spec-v1610](spec-v1610.md) (charter) through [spec-v1615](spec-v1615.md).
 **When built:** no new catalog entries. The program is a way into the tools that exist and
 are planned, a fix to how bundled data is labeled and refreshed, and two MCP tools.

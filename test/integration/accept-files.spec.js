@@ -19,6 +19,7 @@ const CASES = {
   'x12-271-reader': ['group-v1515', 'x12-271.271', 'x271-file', 'x12-271'],
   'x12-277-reader': ['group-v1515', 'x12-277.277', 'x277-files', 'x12-277'],
   'hpt-file-check': ['group-v1515', 'hpt-tall.csv', 'hpt-file', 'hpt-csv'],
+  'tic-file-check': ['group-v1604', 'tic-in-network.json', 'tic-files', 'tic-in-network'],
   'appeal-worklist': ['group-v1516', 'x12-835.835', 'aw-835-files', 'x12-835'],
   'mpr-gap-days': ['group-v1513', 'fill-history.csv', 'mpr-upload-file', 'csv-mapped'],
   'med-sync-plan': ['group-v1513', 'ambiguous.csv', 'sync-upload-file', 'csv-mapped'],
