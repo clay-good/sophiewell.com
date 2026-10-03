@@ -5,13 +5,16 @@ import assert from 'node:assert/strict';
 import { mkdtempSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { snapshots, compare, markdown } from '../../scripts/data/watch-upstream.mjs';
+import { snapshots, compare, markdown, compareVersions } from '../../scripts/data/watch-upstream.mjs';
 
 const SHA = '5333564a710f80d7740180b9ffab8dbdcba9b502';
 
 test('the pins are read from the modules, not a list kept by hand', () => {
   const found = snapshots();
-  assert.deepEqual(found.map((s) => [s.repo, s.sha, s.modules]), [['CMSgov/hospital-price-transparency', SHA, ['lib/hpt-v1515.js']]]);
+  assert.deepEqual(found.map((s) => [s.repo, s.sha || s.tag, s.modules]), [
+    ['CMSgov/hospital-price-transparency', SHA, ['lib/hpt-v1515.js']],
+    ['CMSgov/price-transparency-guide', 'v2.2.1', ['lib/tic-schemas.js']],
+  ]);
   const dir = mkdtempSync(join(tmpdir(), 'pins-'));
   writeFileSync(join(dir, 'a.js'), `// Source snapshot: CMSgov/x commit ${SHA}.\n`);
   writeFileSync(join(dir, 'b.js'), `// Source snapshot: CMSgov/x commit ${SHA}.\n// Source snapshot: org/y commit ${'a'.repeat(40)}.\n`);
@@ -45,4 +48,15 @@ test('an unchanged pin says so, and an unreachable API is named as unchecked, ne
   assert.match(markdown([down]), /not checked \(compare returned 404\)/);
   const offline = await compare(s, async () => { throw new Error('getaddrinfo ENOTFOUND'); });
   assert.equal(offline.status, 'unchecked');
+});
+
+test('a tag pin lists only newer version tags, compared as numbers', async () => {
+  assert.ok(compareVersions('v2.10.0', 'v2.9.1') > 0);
+  assert.equal(compareVersions('v2.2.1', '2.2.1'), 0);
+  const tags = async () => ({ ok: true, status: 200, json: async () => [{ name: 'v2.0.0' }, { name: 'v2.10.0' }, { name: 'v2.2.1' }, { name: 'v2.3.0' }, { name: 'draft-x' }] });
+  const r = await compare({ repo: 'CMSgov/price-transparency-guide', tag: 'v2.2.1', modules: ['lib/tic-schemas.js'] }, tags);
+  assert.deepEqual(r.newer, ['v2.3.0', 'v2.10.0']);
+  assert.match(markdown([r]), /newer versions v2\.3\.0, v2\.10\.0\. A new version is a new pin/);
+  const same = await compare({ repo: 'o/r', tag: 'v2.10.0', modules: ['lib/x.js'] }, tags);
+  assert.match(markdown([same]), /no newer version tag/);
 });

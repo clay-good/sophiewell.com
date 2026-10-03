@@ -64,4 +64,17 @@ deterministic answer the page gives, and the file never leaves the reader's mach
 
 ## Build status
 
-- **Not yet built.**
+- **Built:** the USPSTF dataset ([spec-v1601](spec-v1601.md), `data/uspstf`, keyed by topic and a hash of
+  the description, so a reworded or regraded row is a new key).
+- **Built October 3, 2026:** the Transparency in Coverage schema watch. `lib/tic-schemas.js` carries
+  `Source tag: CMSgov/price-transparency-guide tag v2.2.1`, and `scripts/data/watch-upstream.mjs` lists any
+  newer version tag in the weekly refresh pull request: "gate the next" is a person updating the module,
+  its tests and the tag line together. CARIN Blue Button was read at package 2.2.0 ([spec-v1602](spec-v1602.md)),
+  but the reader names no pin in code, so nothing watches it yet.
+- **Built October 3, 2026:** the WISeR watch. `medicare-ffs-pa-required` was built September 30
+  ([spec-v1502](spec-v1502.md#build-status)), and its two source pages (the WISeR model page and the
+  prior-authorization initiatives page) are now `WATCHED_SOURCES` in the module. The route-B page watcher
+  fingerprints them weekly, with baselines recorded the same day.
+- **Not yet built:** the preventive code map, the IRS HSA safe-harbor notices' page watch (static notices;
+  the indexed DPC fee limit in `dpc-hsa-check` is already watched), the curated PA metrics table, and the
+  open exports.
