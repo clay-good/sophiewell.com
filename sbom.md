@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `062e692d763aab59`
-Generated: 2026-10-03T18:16:35.665Z
+Build ID: `9d51e73f488c7918`
+Generated: 2026-10-03T18:44:14.644Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -654,7 +654,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/membranous-risk-v878.js` | 11351 | `882c36c07e46543e32f1114792c1124ee9f9ff6b384084fc0a8c221e7dd62062` |
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2685605 | `a4803f1c4c2c126ca8dff61e6fb7ad161ddf8dc282b5914e83631458b7ff9170` |
+| `lib/meta.js` | 2685605 | `f8efb4e0251b7f6995c8f4c86b66839728d768f2da9ee2814da28ea4fe85aa47` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 19326 | `64342935cc7842381f6e318293cfcd6f97b69022268da6c595c5c71db388af2d` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -835,7 +835,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/pederson-difficulty-v717.js` | 3469 | `5f7fb47b29141583014bbf6142329bfc1e95da75272b063d20479f5631849b8e` |
 | `lib/pediatric-acute-v262.js` | 8938 | `bdd2b5540c3050cde8707837021041e85d45b358ed7a9c6a6c15b25a0e0c19cf` |
 | `lib/pedis-v613.js` | 8884 | `f158474599314efcff28d525a5512b83d595a7fc21d75bb30dac2620d741b6b9` |
-| `lib/peds-growth-v141.js` | 13014 | `47eb194a4f8eb9cc7007429c7843e48cd7fa8780ebcd8a2201bd119f78eb154d` |
+| `lib/peds-growth-v141.js` | 14829 | `2ff23d1f91469b3b6094ff9391afec8914af49a145c31995697ddbb0430a7719` |
 | `lib/peds-percentile-v169.js` | 8290 | `dbaec78619e7c9190044c9cdb8ecd8a2bb03a871f351e0454a06e1c5b816e9b0` |
 | `lib/peds-sepsis-v278.js` | 13271 | `fe0a8c2da7076c0f0fb748159eb034749b00e9eb2022136b1b2b3b8a758f540c` |
 | `lib/peds-v140.js` | 23367 | `777e3b528985b582ef8e38b190f9ed560bf5986a9e4574d47dc13e1f943888d0` |

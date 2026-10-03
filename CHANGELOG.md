@@ -6,6 +6,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- WHO growth z-scores: a weight-for-age z beyond ±3 is now WHO's restricted
+  value, so it matches WHO Anthro (a boy of 1 year at 5.5 kg is −4.75, not
+  −5.05). A value WHO flags as implausible now says to check the measurement.
 - Prior-auth packet check: HMSA's 20 rules now match HMSA's current provider
   pages. The old precertification page is now a one-line stub. The advanced-imaging
   rule now names Evolent, and the new-technology rule is advisory, since HMSA

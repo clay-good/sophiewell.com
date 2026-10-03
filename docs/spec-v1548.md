@@ -171,3 +171,13 @@ MUAC at 5 and 6 weeks in tile 4; empty forms refuse.
 
 CDCWHO and WHO06 *low*. WAST23 *low*, with one flag: SAMC21's footnote says WHO is reviewing the 30%
 edema-weight assumption, which would touch spec-v1549.
+
+## Build status
+
+| Part | Status |
+|---|---|
+| §1 change 1, restricted z | **Built October 3, 2026.** `restrictedZ` in `lib/peds-growth-v141.js` applies to weight-for-age beyond ±3. It reproduces the three WHO rows above to 2 decimals (−4.75, −4.69, +4.96) on the tile's monthly table. Length-for-age keeps the plain formula. No band moved. The existing test's −3.27 is now −3.25. |
+| §1 change 4, implausible flags | **Built October 3, 2026** for the two measures the tile has. The flags are weight-for-age below −6 or above +5, and length-for-age beyond ±6, following the 2019 text, not its swapped Table 8. The answer says "check the measurement" and still shows the z. |
+| §1 changes 2, 3, 5, 6 (weight-for-length/height, head circumference, lying/standing, edema, range refusals) | Open: each needs the CDC weight-for-length and head-circumference files added as data. |
+| Tiles 2–4 | Open. `wasting-classify` is calculation-shaped. `sam-care-setting` and `infant-at-risk-under-6-months` classify and advise, so they wait on D1. |
+
