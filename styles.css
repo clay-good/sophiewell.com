@@ -2002,6 +2002,7 @@ button:active { transform: translateY(1px) scale(0.985); }
   .breadcrumb,
   .report-trigger,
   #print-btn,
+  #docx-btn,
   #decode-btn,
   textarea,
   .footer-badges,

@@ -75,5 +75,5 @@ mirrors (content, not layout, reproduced).
   - A Part D exception request without the prescriber's statement is still produced, with the statement
     marked missing and the note that the plan's clock waits for it (423.568(b)).
   - The builders take the other tools' output as plain lines (the step therapy timeline and the criteria
-    cover sheet); a download banner and file attachments wait for the document builder of
-    [spec-v1501](spec-v1501.md) §4.
+    cover sheet). Since October 3, 2026 each letter also downloads as .docx, with a banner while blanks
+    remain ([spec-v1501](spec-v1501.md) §4); file attachments are not built.

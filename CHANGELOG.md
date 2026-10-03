@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Hospital Financial Assistance Discount: check a file of patients at once
+  against the policy's tiers entered on the form.
+- The seven appeal and request letter builders download as an editable Word file.
+  While any [bracketed] blank is left, the file opens with a line saying it is
+  not ready to send and how many blanks remain.
 - Medicare negotiated-price check: enter a package's NDC to find its drug and
   its per-unit price on the date of service, from the CMS file.
 - Federal Poverty Level Percent: screen many households from a CSV, one row each,
@@ -22,6 +27,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   per dose.
 - The weekly data refresh now lists the source pages of hand-entered figures
   that changed since they were last read, with the modules to re-check.
+- The weekly data refresh also lists changes to the CMS hospital price
+  transparency template since the commit the file checker was written from.
+  It also lists any newer version of the Transparency in Coverage schemas.
 
 - Preventive services covered at $0: the USPSTF A and B recommendations a
   private plan must cover in network with no cost sharing, filtered by age,

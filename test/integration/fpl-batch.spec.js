@@ -37,3 +37,19 @@ test('a people file is screened for Extra Help and the Savings Programs, a missi
   await expect(table).toContainText('counted income $1,180.00 a month');
   await expect(table).toContainText('Enter the monthly unearned income');
 });
+
+test('a patients file is discounted under the hospital policy on the form, each row\'s charges its own', async ({ page }) => {
+  await page.goto('/#fap-discount');
+  await page.locator('#fd-region').selectOption('us');
+  await page.locator('#fd-year').fill('2026');
+  await page.locator('#fd-t1l').fill('200');
+  await page.locator('#fd-t1d').fill('100');
+  await page.locator('#fd-t2l').fill('400');
+  await page.locator('#fd-t2d').fill('50');
+  await page.locator('#fd-upload-file').setInputFiles(join(DIR, 'fap-patients.csv'));
+  await page.getByRole('button', { name: 'Use 3 rows' }).click();
+  await expect(page.locator('#q-results')).toContainText('2 patients of 3 computed. 1 row needs corrected inputs.');
+  const table = page.locator('.upload-file-results');
+  await expect(table).toContainText('so the patient owes $0.00 of $20,000.00');
+  await expect(table).toContainText('Enter the gross charges in dollars.');
+});

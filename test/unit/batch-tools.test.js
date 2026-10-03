@@ -67,3 +67,14 @@ test('a households file is recognized by its size and income columns', () => {
   assert.deepEqual(t.fields.filter((f) => f.required).map((f) => f.id), ['size', 'income']);
   assert.equal(runBatch('no-such-tool', [], {}).valid, false);
 });
+
+test('a hospital\'s policy comes from the form for every patient; charges and income only from the row', () => {
+  const FORM_FAP = { region: 'us', year: '2026', tier1Limit: '200', tier1Discount: '100', tier2Limit: '400', tier2Discount: '50', gross: '999', income: '1' };
+  const r = runBatch('fap-discount', [{ size: '3', income: '30000', gross: '20000' }, { size: '4', income: '50000', gross: '' }], FORM_FAP);
+  assert.equal(r.rows[0].label, '$0.00');
+  assert.equal(r.rows[1].detail, 'Enter the gross charges in dollars.');
+  assert.equal(r.band, '1 patient of 2 computed. 1 row needs corrected inputs.');
+  const fap = BATCH_TOOLS['fap-discount'];
+  assert.ok(!fap.fields.some((f) => fap.formOnly.includes(f.id)), 'the policy is not a file column');
+  assert.equal(rowArgs(fap, { size: '3', income: '30000', gross: '20000' }, FORM_FAP).tier2Discount, '50');
+});

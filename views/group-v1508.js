@@ -3,6 +3,9 @@
 import { el, clear } from '../lib/dom.js';
 import * as HF from '../lib/hospital-fap-v1508.js';
 import { resultRow } from '../lib/result-copy.js';
+import { uploadWorkbench } from './upload-workbench.js';
+import { BATCH_TOOLS } from '../lib/batch-tools.js';
+import { acceptVia } from '../lib/hand-off.js';
 
 const NA = { value: '', text: '— choose —' };
 function selectField(root, label, id, options) {
@@ -95,16 +98,29 @@ export const renderers = {
     numField(root, 'Tier 3: discount, percent (optional)', 'fd-t3d', 'e.g. 50', '100', '1');
     numField(root, 'Hospital\'s AGB percentage (optional)', 'fd-agb', 'e.g. 42', '100', '0.01');
     const ids = pairs.map(([d]) => d);
-    const o = out(); root.appendChild(o);
-    wire(ids, () => safe(o, () => {
+    const o = out();
+    const formArgs = () => {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
-      const r = HF.fapDiscount(args);
+      return args;
+    };
+    const show = (r) => safe(o, () => {
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Patient owes', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
-    }));
+    });
+    // spec-v1508 with spec-v1501 §3: many patients from a file, each row through fapDiscount; the policy's
+    // tiers and AGB above apply to every row.
+    const upload = uploadWorkbench(root, {
+      id: 'fd-upload', fields: BATCH_TOOLS['fap-discount'].fields, label: 'Check patients from a file',
+      compute: 'fap-discount', getInput: formArgs, onResult: show,
+    });
+    root.appendChild(o);
+    wire(ids, () => {
+      if (upload.isActive()) upload.compute(formArgs());
+      else show(HF.fapDiscount(formArgs()));
+    });
   },
   'gfe-deadline'(root) {
     const pairs = [['gfe-sched', 'scheduled'], ['gfe-svc', 'serviceDate'], ['gfe-req', 'requested']];
@@ -144,4 +160,8 @@ export const renderers = {
       note(o, r.note);
     }));
   },
+};
+
+export const acceptFiles = {
+  'fap-discount': acceptVia('fd-upload-file'),
 };

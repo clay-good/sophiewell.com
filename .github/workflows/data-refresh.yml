@@ -69,6 +69,8 @@ jobs:
           node scripts/data/watch-ecfr.mjs >> data-refresh-summary.md || true
           echo >> data-refresh-summary.md
           node scripts/data/watch-pages.mjs >> data-refresh-summary.md || true
+          echo >> data-refresh-summary.md
+          node scripts/data/watch-upstream.mjs >> data-refresh-summary.md || true
 
       - name: Run full test suite on refreshed data
         run: |
