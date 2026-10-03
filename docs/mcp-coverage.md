@@ -8737,6 +8737,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/preventive-owed.js (spec-v1601: USPSTF preventive services covered at $0 — administrative disclaimer)
 - `preventive-owed`
 
+### lib/who-anemia-hb-v1550.js (spec-v1550: WHO 2024 hemoglobin cutoffs — clinical disclaimer)
+- `who-anemia-hb`
+
 ### lib/claims-pct-medicare.js (spec-v1604: Claims paid as a percent of Medicare — administrative disclaimer)
 - `claims-pct-medicare`
 

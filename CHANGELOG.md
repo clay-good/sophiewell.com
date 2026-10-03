@@ -18,6 +18,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Anemia by Hemoglobin (WHO 2024): whether a hemoglobin is anemic, and how
+  severe, for ten groups by age, sex and trimester, with WHO's elevation and
+  smoking adjustments. The first of the field-health tools.
 - Hospital Financial Assistance Discount: check a file of patients at once
   against the policy's tiers entered on the form.
 - The seven appeal and request letter builders download as an editable Word file.

@@ -690,6 +690,7 @@ import * as methemoglobinV864 from '../../lib/methemoglobin-v864.js';
 import * as carboxyhemoglobinV865 from '../../lib/carboxyhemoglobin-v865.js';
 import * as brosetV866 from '../../lib/broset-v866.js';
 import * as whoSevereMalariaV867 from '../../lib/who-severe-malaria-v867.js';
+import * as whoAnemiaHbV1550 from '../../lib/who-anemia-hb-v1550.js';
 import * as pertussisCaseDefV868 from '../../lib/pertussis-case-def-v868.js';
 import * as eortcMsgIfdV869 from '../../lib/eortc-msg-ifd-v869.js';
 import * as nmsCriteriaV870 from '../../lib/nms-criteria-v870.js';
@@ -1480,6 +1481,7 @@ const MODULES = {
   'carboxyhemoglobin-v865.js': carboxyhemoglobinV865,
   'broset-v866.js': brosetV866,
   'who-severe-malaria-v867.js': whoSevereMalariaV867,
+  'who-anemia-hb-v1550.js': whoAnemiaHbV1550,
   'pertussis-case-def-v868.js': pertussisCaseDefV868,
   'eortc-msg-ifd-v869.js': eortcMsgIfdV869,
   'nms-criteria-v870.js': nmsCriteriaV870,

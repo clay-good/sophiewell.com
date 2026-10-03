@@ -149,3 +149,10 @@ edge; the RUTF and recent-dose holds; deworming half dose at 23 vs 24 months; ir
 
 HB24 *low* (new 2024). VA11, FE16, ANC16 *low*, with ANC nutrition recommendations known to have
 been updated in 2020–2021 (multiple micronutrients, vitamin D), not read; review before build.
+
+## Build status
+
+| Tool | Status |
+|---|---|
+| `who-anemia-hb` | **Built October 3, 2026** (catalog 1,974), the first field-health tile. WHO 2024 Tables 2–5 were re-read from the guideline that day (IRIS 10665/376196, through the IRIS API), and every number in §1 matches. Two edges are stated in the answer. Table 4 starts at 1 m, so 0 to 499 m gets no adjustment. Exactly 20 cigarettes a day uses the table's own formula (6.0 g/L). The unit defaults to g/dL, and a 10-fold slip in either direction is refused with "Did you mean...?". Tests: `test/unit/who-anemia-hb.test.js`. Ledger: issuer row, plus a *low* row in the field-health volatility table. |
+| `vitamin-a-dose-child`, and the other two tools | Open. The vitamin A reasons (measles, xerophthalmia) are treatment advice, so check them against the D1 line (spec-v1564) before building. |

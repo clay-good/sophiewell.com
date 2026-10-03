@@ -748,6 +748,7 @@ const PROBES = [
   ['carboxyhemoglobin carbon monoxide level smoker baseline', ['carboxyhemoglobin']],
   ['broset violence checklist inpatient risk next 24 hours', ['broset']],
   ['who severe malaria criteria falciparum severity features', ['who-severe-malaria']],
+  ['who 2024 hemoglobin anemia cutoff altitude smoking', ['who-anemia-hb']],
   ['pertussis case definition whooping cough confirmed probable', ['pertussis-case-def']],
   ['eortc msgerc invasive fungal disease proven probable possible', ['eortc-msg-ifd']],
   ['neuroleptic malignant syndrome diagnostic criteria priority points', ['nms-criteria']],

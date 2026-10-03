@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:1d762d9a-5e70-5166-8b42-ecd628d28fd8",
+  "serialNumber": "urn:uuid:062e692d-763a-5b59-852a-c15d80422c6d",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-03T17:09:45.438Z",
+    "timestamp": "2026-10-03T18:16:35.665Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1973 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1974 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "afff2b5bbcaba3eb09e3171f64e972fb7cfe1ec3d5d3550d0a306b153f697427"
+          "content": "f50fd8539ed593a9ea5a6057a2706245aea051c83c45830d3b7b05460bf018c1"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "126447"
+          "value": "126525"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6582416ab55648361182f9abe93332d3a63810a686a4023b2760850620c6785e"
+          "content": "356b3cee753e9ed0f95fae79bc1cd35f1287306df3fd0111732c938df095ae3e"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "572430"
+          "value": "572729"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "bccb8bab08f9dc323ad789dd1aa78da402555482142a333384daf2fc4d0f74ed"
+          "content": "156af9242e11bf80d2b80da0fb42e43f03aa80a8fb7a914aa6f1ea2b3afc0444"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "246411"
+          "value": "246535"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c5d193dcff454bce831775a2a9d7a6d92bf53cd1aab31dba4fcc7f86bd603a49"
+          "content": "6ddef04ae0798514d9b77b946ef57d0d7c13b83e61f678eb1852e354050feeb8"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "113300"
+          "value": "113381"
         }
       ]
     },
@@ -13061,7 +13061,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c2bac4a050893976a2469bca8dc20a97f42cea333e3f1063a27c70c616676e18"
+          "content": "a4803f1c4c2c126ca8dff61e6fb7ad161ddf8dc282b5914e83631458b7ff9170"
         }
       ],
       "properties": [
@@ -13071,7 +13071,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2684859"
+          "value": "2685605"
         }
       ]
     },
@@ -23740,6 +23740,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3664"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/who-anemia-hb-v1550.js",
+      "type": "file",
+      "name": "lib/who-anemia-hb-v1550.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "eb120f32134af7b494aa79e041d50107834f796f39176e5977418b8252020cc3"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7395"
         }
       ]
     },
@@ -45122,6 +45143,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/who-anemia-hb-v1550.js",
+      "type": "file",
+      "name": "mcp/adapters/who-anemia-hb-v1550.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c66ba1b050927558e7fb5d6ca1329a3adf44fffc8843c2692c6a6509b2b8076e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1374"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/who-hearing-grade-v858.js",
       "type": "file",
       "name": "mcp/adapters/who-hearing-grade-v858.js",
@@ -45443,7 +45485,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "61b6ac90a8d519016e18d976812a9dd95c68e9f885791a33bc6f8be39b9da062"
+          "content": "4921d8d31f36daf8154bf681155e5f65e9e5fe5e9038475c4bb15d3c389b36e2"
         }
       ],
       "properties": [
@@ -45453,7 +45495,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "115648"
+          "value": "115759"
         }
       ]
     },
@@ -49171,6 +49213,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "6272"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1550.js",
+      "type": "file",
+      "name": "views/group-v1550.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a6643725acf3ac7824671aae6888002d572443d91fbe245aa979b0d7883f7c80"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2995"
         }
       ]
     },
@@ -81354,6 +81417,7 @@
         "urn:sophiewell:file:source:lib/weiss-v648.js",
         "urn:sophiewell:file:source:lib/wellens-criteria-v1441.js",
         "urn:sophiewell:file:source:lib/wexner-v324.js",
+        "urn:sophiewell:file:source:lib/who-anemia-hb-v1550.js",
         "urn:sophiewell:file:source:lib/who-hearing-grade-v858.js",
         "urn:sophiewell:file:source:lib/who-isup-renal-grade-v653.js",
         "urn:sophiewell:file:source:lib/who-mucositis-v617.js",
@@ -81557,6 +81621,7 @@
         "urn:sophiewell:file:source:views/group-v153.js",
         "urn:sophiewell:file:source:views/group-v154.js",
         "urn:sophiewell:file:source:views/group-v155.js",
+        "urn:sophiewell:file:source:views/group-v1550.js",
         "urn:sophiewell:file:source:views/group-v156.js",
         "urn:sophiewell:file:source:views/group-v1570.js",
         "urn:sophiewell:file:source:views/group-v1571.js",
@@ -83288,6 +83353,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/weiss-v648.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/wellens-criteria-v1441.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/wexner-v324.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/who-anemia-hb-v1550.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/who-hearing-grade-v858.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/who-isup-renal-grade-v653.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/who-mucositis-v617.js",
@@ -83407,7 +83473,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "1d762d9a5e70b166"
+      "value": "062e692d763aab59"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -83419,7 +83485,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3057"
+      "value": "3060"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
