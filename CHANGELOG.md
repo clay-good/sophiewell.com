@@ -4,6 +4,18 @@ All notable changes to sophiewell.com are documented here. The format
 follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the
 project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+### Fixed
+
+- Prior-auth packet check: HMSA's 20 rules now match HMSA's current provider
+  pages. The old precertification page is now a one-line stub. The advanced-imaging
+  rule now names Evolent, and the new-technology rule is advisory, since HMSA
+  reviews only selected new technology.
+- Highmark asks for an authorization reference only once the packet says the
+  request was approved, since Highmark sends the number with the approval.
+- BCBSSC's HIX transplant check no longer accepts an exception request that no
+  BCBSSC source describes, and its continued-stay check cites BCBSSC's March 25,
+  2026 bulletin.
+
 ### Added
 
 - Medicare negotiated-price check: enter a package's NDC to find its drug and

@@ -2486,7 +2486,7 @@
       "severity": "info",
       "status": "pass",
       "description": "BCBSSC continued-stay review: current clinical documentation and continuation workflow identified",
-      "citation": "BCBSSC instructs providers submitting a continued-stay review to start the continuation workflow and upload the required clinical documentation. This informational check is limited to an explicit continued-stay request rather than every inpatient packet. <https://www.southcarolinablues.com/web/public/brands/sc/providers/news-and-events/current-news/>",
+      "citation": "BCBSSC's March 25, 2026 bulletin says a continued-stay review is due within seven days of the initial request for inpatient hospitals, rehabilitation facilities, long-term acute care, and skilled nursing facilities, and that the provider must select start continuation and upload the required clinical documentation; otherwise the request is not submitted. This informational check is limited to an explicit continued-stay request rather than every inpatient packet. <https://www.southcarolinablues.com/en/home/providers/news-and-events/news-bulletins/importance-of-submitting-continued-stay-reviews-in-cohere-health.html>",
       "evidence": "Not a Blue Cross Blue Shield of South Carolina packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -2595,7 +2595,7 @@
       "ruleId": "R-PA-BCBSSC-017",
       "severity": "info",
       "status": "pass",
-      "description": "BCBSSC HIX transplant request: Blue Distinction transplant center or written exception identified",
+      "description": "BCBSSC HIX transplant request: Blue Distinction transplant center identified",
       "citation": "BCBSSC's 2026 BlueEssentials individual (Marketplace) policy covers transplants only when preauthorized and performed at a Blue Distinction Center for Transplants. This advisory does not apply that product-specific rule to every BCBSSC transplant. <https://www.southcarolinablues.com/content/dam/commercial-web-public/sc/blues/en/members/forms-and-documents/individual-and-family-plans/2026_BlueEssentials_MHTK_v3.pdf>",
       "evidence": "Not a Blue Cross Blue Shield of South Carolina packet; rule vacuously satisfied.",
       "note": null,
@@ -4205,8 +4205,8 @@
       "ruleId": "R-PA-HIGHMARK-005",
       "severity": "info",
       "status": "pass",
-      "description": "Highmark submitted prior authorization: confirmation reference retained",
-      "citation": "Highmark's provider manual says its notification of an authorization includes a reference number the provider uses to refer to that authorization, and that status can be checked in Availity. An initial request cannot already contain that number, so this advisory runs only when the packet says submission is complete. <https://providers.highmark.com/resources-and-education/highmark-provider-manual/chapter-5-care-and-quality-management/unit-2-authorizations>",
+      "description": "Highmark approved prior authorization: authorization reference retained",
+      "citation": "Highmark's provider manual says that when an authorization is granted, its notification includes a reference number the provider uses to refer to that authorization. A request that has been submitted but not yet decided may have no number, so this advisory runs only when the packet says the authorization was approved. <https://providers.highmark.com/resources-and-education/highmark-provider-manual/chapter-5-care-and-quality-management/unit-2-authorizations>",
       "evidence": "Not a Highmark packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -4366,7 +4366,7 @@
       "severity": "info",
       "status": "pass",
       "description": "HMSA prior authorization: coverage criteria referenced",
-      "citation": "HMSA decides precertification on evidence-based criteria reviewed annually by its Utilization Management Committee, provided to practitioners and available from the Precertification Unit. The criteria come from the payer rather than the packet, so this is an informational mapping aid, not a requirement. <https://prc.hmsa.com/s/article/Services-That-Require-Precertification>",
+      "citation": "HMSA's Provider Manual for Prior Authorization says precertification decides whether proposed care is medically necessary and appropriate, and that a written denial always references the criteria used to make the decision. HMSA publishes its medical necessity policies and prior authorization list on its policy transparency site. The criteria come from the payer rather than the packet, so this is an informational mapping aid, not a requirement. <https://hmsa.com/prc/medical/provider-manual-for-prior-authorization/> <https://hmsa.policytransparency.com/>",
       "evidence": "Not an HMSA (Blue Cross Blue Shield of Hawaii) packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -4376,7 +4376,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "HMSA authorization request: supporting clinical documentation attached",
-      "citation": "An authorization request is decided on the clinical information submitted with it. The check runs once the packet identifies itself as an authorization request; payer context alone does not trigger it. <https://prc.hmsa.com/s/article/Services-That-Require-Precertification>",
+      "citation": "HMSA takes precertification requests with clinical records that support approval, and lists the components a request needs: a brief history and physical or clinical notes, the diagnosis, the physician's orders, previous treatment, planned treatment, and expected results. The check runs once the packet identifies itself as an authorization request; payer context alone does not trigger it. <https://hmsa.com/prc/medical/precertification-medical/> <https://hmsa.com/prc/medical/provider-manual-for-prior-authorization/>",
       "evidence": "Not an HMSA (Blue Cross Blue Shield of Hawaii) packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -4386,7 +4386,7 @@
       "severity": "info",
       "status": "pass",
       "description": "HMSA prior authorization: submission channel is transport metadata, not required packet content",
-      "citation": "HMSA takes precertification through its provider channels and delegated programs such as Avalon and CVS Specialty Guideline Management. The clinical packet does not need to restate the channel used to send it. <https://prc.hmsa.com/s/article/Services-That-Require-Precertification>",
+      "citation": "HMSA takes precertification requests through HHIN+, phone, fax, mail, and email, and delegates selected programs: Evolent for advanced imaging, cardiac, pain management, musculoskeletal surgery, and physical medicine; Magellan Hawaii for behavioral health; CVS Caremark for specialty and pharmacy drugs; and Avalon for genetic testing. The clinical packet does not need to restate the channel used to send it. <https://hmsa.com/prc/medical/provider-manual-for-prior-authorization/>",
       "evidence": "Not an HMSA (Blue Cross Blue Shield of Hawaii) packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -4396,7 +4396,7 @@
       "severity": "info",
       "status": "pass",
       "description": "HMSA prior authorization: verify the service against the current requirement list",
-      "citation": "Whether a service needs authorization depends on the payer's current requirement list and the member's coverage. Without a member-specific lookup this reminder is non-enforcing. <https://prc.hmsa.com/s/article/Services-That-Require-Precertification>",
+      "citation": "HMSA points providers to its current prior authorization list, searched by procedure code and plan, for whether a service needs precertification. Whether it does also depends on the member's coverage, so without a member-specific lookup this reminder is non-enforcing. <https://hmsa.com/prc/medical/provider-manual-for-prior-authorization/> <https://hmsa.policytransparency.com/>",
       "evidence": "Not an HMSA (Blue Cross Blue Shield of Hawaii) packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -4406,7 +4406,7 @@
       "severity": "info",
       "status": "pass",
       "description": "Completed HMSA authorization submission: confirmation reference documented",
-      "citation": "An initial request cannot already contain the authorization number it will produce, so this advisory checks for a reference only once the packet says a submission has been completed. <https://prc.hmsa.com/s/article/Services-That-Require-Precertification>",
+      "citation": "HMSA notifies the provider of an approval verbally, electronically, or in writing, and its online platform lets the provider check a request's status. An initial request cannot already contain the authorization number it will produce, so this advisory checks for a reference only once the packet says a submission has been completed. <https://hmsa.com/prc/medical/provider-manual-for-prior-authorization/>",
       "evidence": "Not an HMSA (Blue Cross Blue Shield of Hawaii) packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -4416,7 +4416,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "HMSA concurrent review: clinical support for the continued stay",
-      "citation": "HMSA does not require precertification for an acute hospitalization admission: across its commercial, QUEST Integration, and Medicare Advantage plans the published requirement is \"Not required for admission. Concurrent reviews are required once a patient has been admitted.\" So the check runs on the concurrent review, not on the admission. <https://prc.hmsa.com/s/article/Services-That-Require-Precertification>",
+      "citation": "HMSA decides when to review the medical necessity of ongoing care during an inpatient stay, weighing the member's current clinical status, care, and progress. If a concurrent review finds the admission no longer meets the plan's coverage requirements, the provider can request a review of that determination. So the check runs on the concurrent review, not on the admission. <https://hmsa.com/prc/medical/provider-manual-for-prior-authorization/>",
       "evidence": "Not an HMSA packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -4426,7 +4426,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "HMSA advanced imaging: clinical indication documented",
-      "citation": "HMSA lists Radiology: Advanced Imaging Studies among the medical policies requiring benefit precertification before the service is rendered, and decides precertification on evidence-based medical appropriateness criteria reviewed annually by its Utilization Management Committee. The page names no delegated imaging vendor. <https://prc.hmsa.com/s/article/Services-That-Require-Precertification>",
+      "citation": "HMSA requires precertification through Evolent for CT and CT angiography, MRI and MR angiography, MR spectroscopy, functional MRI, MUGA scans, PET, and myocardial perfusion imaging, reviewed against clinical guidelines adapted to HMSA's needs. Evolent's RadMD guides cover submitting the clinical information. <https://hmsa.com/prc/medical/utilization-management-programs/>",
       "evidence": "Not an HMSA packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -4436,7 +4436,7 @@
       "severity": "info",
       "status": "pass",
       "description": "HMSA expedited / urgent request: request-specific clinical urgency stated",
-      "citation": "Source-free operational completeness check: the reviewed HMSA precertification page publishes no expedited-review standard or timeframe. An explicit expedited request should still state its request-specific clinical urgency, so this stays informational.",
+      "citation": "HMSA treats a precertification as urgent when routine processing could seriously jeopardize the member's life, health, or ability to regain maximum function, or when a delay would subject the member to severe pain that cannot be managed without the requested care, and decides urgent requests within 72 hours. An imminent scheduled service does not by itself make a request urgent, so this stays informational. <https://hmsa.com/prc/medical/provider-manual-for-prior-authorization/>",
       "evidence": "Not an HMSA packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -4446,7 +4446,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "HMSA place-of-treatment exception: precertification sought for the non-standard setting",
-      "citation": "HMSA publishes a place-of-treatment exception rather than a steering rule: \"When a physician feels a procedure should be performed in a treatment setting other than where HMSA normally deems appropriate, precertification approval must be given by HMSA.\" The obligation attaches to choosing a non-standard setting, whichever setting that is -- not to requesting a hospital outpatient department. <https://prc.hmsa.com/s/article/Services-That-Require-Precertification>",
+      "citation": "HMSA says the place of treatment may itself require precertification: when a physician believes a procedure should be performed in a more acute setting than is normally deemed appropriate, precertification is required. The obligation attaches to choosing a non-standard setting, not to requesting a hospital outpatient department. <https://hmsa.com/prc/medical/precertification-medical/>",
       "evidence": "Not an HMSA packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -4456,7 +4456,7 @@
       "severity": "info",
       "status": "pass",
       "description": "HMSA drug request carrying an NDC: the code is documented",
-      "citation": "Source-free operational completeness check: the reviewed HMSA precertification page does not require a National Drug Code for a physician-administered drug request. This advisory checks an NDC the packet already carries or declares rather than inferring one from a J-code.",
+      "citation": "Source-free operational completeness check: HMSA's Provider Manual for Prior Authorization does not require a National Drug Code for a physician-administered drug request. This advisory checks an NDC the packet already carries or declares rather than inferring one from a J-code.",
       "evidence": "Not an HMSA packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -4466,7 +4466,7 @@
       "severity": "info",
       "status": "pass",
       "description": "HMSA request that declares step therapy: prerequisite trial or exception documented",
-      "citation": "Source-free operational completeness check: HMSA's Provider Manual for Prior Authorization routes pharmacy-benefit drugs to CVS Caremark but publishes no step-therapy requirement of its own. This advisory runs only when the packet itself establishes that step therapy applies.",
+      "citation": "Source-free operational completeness check: HMSA's Provider Manual for Prior Authorization routes pharmacy-benefit drugs to CVS Caremark and points Medicare Advantage step-therapy criteria to the plan formularies, but publishes no general step-therapy requirement. This advisory runs only when the packet itself establishes that step therapy applies.",
       "evidence": "Not an HMSA packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -4506,7 +4506,7 @@
       "severity": "info",
       "status": "pass",
       "description": "HMSA DME / home-health precertification request: the clinical assessment supporting it",
-      "citation": "HMSA lists durable medical equipment, prosthetics and orthotics among the medical policies requiring precertification, and publishes a Home Health Assessment precertification request for QUEST Integration. The reviewed material publishes no separate signed-and-dated written-order rule, so this advisory asks only for the clinical assessment on an explicit request. <https://prc.hmsa.com/s/article/Services-That-Require-Precertification>",
+      "citation": "HMSA publishes a Home Health Assessment precertification request for QUEST Integration and requires prior authorization for home health and private duty nursing services under QUEST electronic visit verification; its prior authorization list shows, code by code, which equipment and other services need precertification. The reviewed material publishes no separate signed-and-dated written-order rule, so this advisory asks only for the clinical assessment on an explicit request. <https://hmsa.com/prc/medical/provider-manual-for-prior-authorization/> <https://hmsa.policytransparency.com/>",
       "evidence": "Not an HMSA packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -4516,7 +4516,7 @@
       "severity": "flag",
       "status": "pass",
       "description": "HMSA behavioral-health precertification: clinical support for the level of care requested",
-      "citation": "HMSA determines behavioral-health medical necessity with evidence-based criteria and guidelines developed by Magellan Healthcare, doing business as Magellan Hawaii, together with MCG guidelines and, where applicable, Medicare national and local coverage determinations. Its published table requires precertification for a residential treatment program, and for partial hospitalization and intensive outpatient only from non-participating providers; acute hospitalization needs none for admission. <https://prc.hmsa.com/s/article/Services-That-Require-Precertification>",
+      "citation": "HMSA has Magellan Healthcare, operating as Magellan Hawaii, run utilization management for behavioral health and substance use services, including precertifications and concurrent reviews. HMSA has required precertification for residential treatment facility stays on all lines of business since June 1, 2023, and publishes behavioral-health and applied behavior analysis precertification request forms. <https://hmsa.com/prc/medical/provider-manual-for-prior-authorization/>",
       "evidence": "Not an HMSA packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -4526,17 +4526,17 @@
       "severity": "flag",
       "status": "pass",
       "description": "HMSA transplant request: evaluation precertification or the applicable transplant medical policy",
-      "citation": "HMSA requires precertification for transplant evaluations and publishes a separate medical policy for each transplant type, from heart and liver to the hematopoietic cell transplantation policies. The reviewed material does not mention Blue Distinction, so its absence is not a defect. <https://prc.hmsa.com/s/article/Services-That-Require-Precertification>",
+      "citation": "HMSA lists transplants among the complex treatments it reviews through precertification. It contracts Blue Distinction Centers for Transplants nationally for its private business plan members but publishes no rule that every transplant must use one, so a missing Blue Distinction center is not a defect here. <https://hmsa.com/prc/medical/provider-manual-for-prior-authorization/> <https://hmsa.com/prc/medical/organ-transplants-approved-blue-distinction-centers/>",
       "evidence": "Not an HMSA packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
     },
     {
       "ruleId": "R-PA-HMSA-018",
-      "severity": "flag",
+      "severity": "info",
       "status": "pass",
       "description": "HMSA new-technology request: precertification sought for the new or newly applied technology",
-      "citation": "HMSA states the requirement as a precertification trigger rather than an evidence burden: \"Surgeries, therapies or procedures employing new technology or representing a new application of existing technology\" require precertification. Off-label, compassionate-use, and clinical-trial context do not by themselves make a service new technology. <https://prc.hmsa.com/s/article/Services-That-Require-Precertification>",
+      "citation": "HMSA asks a provider considering a surgery, therapy, or procedure that employs new technology or a new application of existing technology to contact it in advance for a coverage determination, and reviews selected new technology through precertification. Off-label, compassionate-use, and clinical-trial context do not by themselves make a service new technology. <https://hmsa.com/prc/medical/provider-manual-for-prior-authorization/>",
       "evidence": "Not an HMSA packet; rule vacuously satisfied.",
       "note": null,
       "remediation": null
@@ -10223,7 +10223,7 @@
           "label": "HMSA (Hawaii Medical Service Association, Blue Cross Blue Shield of Hawaii) prior-authorization requirements, Medical Policies, and utilization-management / pharmacy program requirements",
           "url": "https://hmsa.com/prc/medical/provider-manual-for-prior-authorization/",
           "ruleFamily": "commercial-hmsa",
-          "lastVerified": "2026-09-18"
+          "lastVerified": "2026-10-03"
         },
         {
           "id": "medi-cal-precert",

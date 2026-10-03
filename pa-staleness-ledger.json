@@ -672,7 +672,7 @@
       "alsoCited": [
         "https://www.southcarolinablues.com/en/home/providers/policies-and-authorizations/prior-authorization.html",
         "https://www.southcarolinablues.com/en/home/providers/policies-and-authorizations/medical-policies.html",
-        "https://www.southcarolinablues.com/web/public/brands/sc/providers/news-and-events/current-news/",
+        "https://www.southcarolinablues.com/en/home/providers/news-and-events/news-bulletins/importance-of-submitting-continued-stay-reviews-in-cohere-health.html",
         "https://www.southcarolinablues.com/content/dam/commercial-web-public/sc/blues/en/members/forms-and-documents/individual-and-family-plans/2026_BlueEssentials_MHTK_v3.pdf",
         "https://www.southcarolinablues.com/content/dam/commercial-web-public/sc/blues/en/providers/pdfs/manuals-and-guides/2026%20Provider%20Administrative%20Office%20Manual.pdf"
       ]
@@ -740,9 +740,12 @@
         "R-PA-HMSA-002"
       ],
       "url": "https://hmsa.com/prc/medical/provider-manual-for-prior-authorization/",
-      "lastVerified": "2026-09-18",
+      "lastVerified": "2026-10-03",
       "alsoCited": [
-        "https://prc.hmsa.com/s/article/Services-That-Require-Precertification"
+        "https://hmsa.com/prc/medical/precertification-medical/",
+        "https://hmsa.com/prc/medical/utilization-management-programs/",
+        "https://hmsa.com/prc/medical/organ-transplants-approved-blue-distinction-centers/",
+        "https://hmsa.policytransparency.com/"
       ]
     },
     {
@@ -1265,11 +1268,5 @@
       "lastVerified": "2026-06-15"
     }
   ],
-  "acknowledgments": [
-    {
-      "id": "bcbssc-precert[alsoCited 3]",
-      "ackDate": "2026-10-02",
-      "reason": "Dead since the 2026 site move. The live replacement is a news bulletin whose URL names its utilization-management vendor, a word that check-commitments' AI-vendor guard rejects; needs an owner decision. Tracked in issue #20."
-    }
-  ]
+  "acknowledgments": []
 }
