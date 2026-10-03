@@ -237,16 +237,16 @@ a tile that reads it, or by the build-time set.
 `ncci/`, `npi/`, `state-rights/`, `tricare-plans/`, `va-eligibility/`.
 (The MUE and NADAC folders came back in [spec-v1621](spec-v1621.md), fetched from CMS.)
 
-**Tile retired, data still built and shipped (31):**
+**Tile retired, data still built and shipped (30):**
 `aha-reference/`, `apc/`, `cms-1500-fields/`, `cpr-aha-numeric/`,
 `cpt-summaries/`, `crosswalks/`, `dot-erg/`, `drg/`, `environmental/`,
 `eob-glossary/`, `hcpcs/`, `hcpcs-modifiers/`, `icd10-pcs/`, `icd10cm/`,
-`iv-to-po/`, `lab-ranges-adult/`, `lab-ranges-peds/`, `mpfs/`, `ndc/`,
+`iv-to-po/`, `lab-ranges-adult/`, `lab-ranges-peds/`, `ndc/`,
 `niosh-pg/`, `no-surprises/`, `nubc-special-codes/`, `pos-codes/`,
 `revenue-codes/`, `rxnorm/`, `tccc/`, `therapeutic-drug-levels/`, `tob-codes/`,
 `tox-levels/`, `toxidromes/`, `ub04-fields/`. Together they are 60.6 KB.
 
-**All thirty-one are unreachable, and that is now checked rather than
+**All thirty are unreachable, and that is now checked rather than
 asserted.** A dataset reaches the browser one of two ways: a `loadFile` /
 `loadShard` / `loadAllShards` / `loadManifest` call in `app.js`, `lib/` or
 `views/`, or a `META[id].source.dataset` declaration. None of these has either.
@@ -256,12 +256,13 @@ misleading the first time this was measured.
 
 `mpfs/`, `icd10cm/` and `drg/` left this list in spec-v998, when the
 reachability check found live tiles loading them, and came back in spec-v1622,
-when those loads were removed (see above).
+when those loads were removed (see above). `mpfs/` left it again on October 2, 2026:
+`tic-rate-lookup` loads its GPCIs, conversion factor and the shards for the codes asked about.
 
-**Keeping the thirty-one is a deliberate decision** (2026-09-02), not an
+**Keeping the thirty is a deliberate decision** (2026-09-02), not an
 oversight: they are seeds a future tile can be built against, and several are
 CMS code sets a billing tile would want. The cost is recorded so the decision
-can be revisited with the numbers in hand: 60.6 KB in the bundle and thirty-one
+can be revisited with the numbers in hand: 60.6 KB in the bundle and thirty
 manifests through `npm run data:verify` on every run. (The weekly refresh no
 longer re-stamps them: since spec-v1622 an unchanged dataset writes nothing.)
 

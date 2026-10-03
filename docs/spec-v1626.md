@@ -64,9 +64,14 @@ the same PR with what was read and what differed from the plan.
 | 6 | `payer-policy-diff` | Built September 29, 2026 ([spec-v1603](spec-v1603.md#build-status)) |
 | 13 | `pharmacy-spread-check` | Built September 30, 2026 ([spec-v1604](spec-v1604.md#build-status)) |
 | 10 | `tic-file-check` | Built October 2, 2026 ([spec-v1604](spec-v1604.md#build-status)) |
+| 11 | `tic-rate-lookup` | Built October 2, 2026, professional rates only ([spec-v1604](spec-v1604.md#build-status)) |
+| 8 | `carin-eob-reader` | Built October 2, 2026 ([spec-v1602](spec-v1602.md#build-status)) |
+| 12 | `claims-pct-medicare` | Built October 2, 2026, professional lines only ([spec-v1604](spec-v1604.md#build-status)) |
 
 `lib/json-stream.js` was extracted unchanged from `lib/hpt-stream-v1515.js` on October 1, 2026 (for
 `hpt-price-compare`); `hpt-file-check`'s tests pass unchanged. `lib/schema-check.js` was added October 2, 2026 for `tic-file-check`:
 the draft-07 subset the CMS schemas use, over whole values or a `json-stream` parser (FHIR StructureDefinition
-cardinality is not in it yet; `pas-bundle-check` and `carin-eob-reader` will add it). The other shared modules
-(`medicare-reprice`, `ncci-lookup`, `preventive`) are not extracted yet; the tools built so far need none of them.
+cardinality is not in it yet; `pas-bundle-check` and `carin-eob-reader` will add it). `lib/medicare-reprice.js`
+was added the same day for `tic-rate-lookup`: `repriceProfessional` prices from the bundled fee schedule;
+`repriceOutpatient` and `repriceInpatient` return `unpriced` with the reason until full OPPS and IPPS base-rate
+datasets exist. The other shared modules (`ncci-lookup`, `preventive`) are not extracted yet.

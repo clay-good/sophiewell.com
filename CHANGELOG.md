@@ -6,6 +6,22 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Claims paid as a percent of Medicare: type a plan's claim lines or load its
+  claims extract, choose a Medicare locality, and see what the plan allowed as
+  a percent of the Medicare physician fee schedule, by provider and by service
+  category, with every line left out counted and explained.
+
+- Read my claims file: the claims data your health plan gives you through its
+  Patient Access API (CARIN Blue Button) becomes a table of claims, totals by
+  year for your out-of-pocket maximum, and the claims worth asking about:
+  denials, a preventive visit with cost sharing, out-of-network emergency care,
+  possible duplicates, and coinsurance that differs from your plan's rate.
+
+- Find negotiated rates in an insurer price file: name the billing codes (and,
+  if you like, the providers) and get every in-network rate for them, each
+  professional rate beside the Medicare fee schedule amount for your locality,
+  with a CSV.
+
 - Insurer price file check: choose an insurer's Transparency in Coverage file (in-network
   rates, allowed amounts or a table of contents, plain or gzipped) and see whether it
   conforms to the CMS schema v2.2.1, with each deficiency's JSON path. A table of

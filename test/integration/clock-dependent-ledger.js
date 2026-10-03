@@ -47,8 +47,11 @@
 // spec-v1505: `lcd-diagnosis-check` reads the weekly Medicare Coverage Database articles, which expire two
 // weeks after their edition; a year on, the page says the data has passed its review date. The weekly
 // refresh keeps it current.
+// spec-v1604: `claims-pct-medicare` prices its example from the bundled physician fee schedule (RVU26D), which
+// expires April 1, 2027; past it the page says the fee schedule has passed its review date and prices nothing.
 export const CLOCK_DEPENDENT = new Set([
   'appeal-deadline',
+  'claims-pct-medicare',
   'code-blue-clock',
   'device-day-counter',
   'lcd-diagnosis-check',

@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:91af40c6-b78c-57c9-8391-beb72f08e99b",
+  "serialNumber": "urn:uuid:225f61fb-9833-536b-8344-dd1d179d8746",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-03T02:38:17.119Z",
+    "timestamp": "2026-10-03T04:38:48.890Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1965 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1968 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ffda31269e85c16c14c2044d669caba22d945adcf0499ea72e9816aec96ce4b0"
+          "content": "f4178390726a60bf58aa06a221a0a8f511a5b13784b2b54bbde51d576a8c895c"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "125864"
+          "value": "126030"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "fc02558e20794565fd322d84552b4599e58f45748993edaf2db50045f91cbf76"
+          "content": "7621e51f72583736c32bad26a0a902416d783a55ea04f25677085db66c369ef0"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "570636"
+          "value": "571166"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2d3554d516b50efeadf93a75ba4bcafb041c832d230a2a823851c4ff58cc5701"
+          "content": "0501c54d463a76c3e543c483fd8af0e76dce2930ed5d552a22a8db479638b3cd"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "245385"
+          "value": "245768"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2c343581b03fbc1a4ab09e265b98bfc5c783a2429e6b02fb17177b0028aeb680"
+          "content": "f65cfcb91e0f4fee4193b804b83663cc268835e32137f456f94441c23edea8b0"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "112723"
+          "value": "112909"
         }
       ]
     },
@@ -3500,6 +3500,69 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/carin-eob-reader.js",
+      "type": "file",
+      "name": "lib/carin-eob-reader.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f7bb7636c2f5a46b6f60616d6c11201bdfaaeaa69785a0eee9d864e2ae3f7d12"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "12661"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/carin-run.js",
+      "type": "file",
+      "name": "lib/carin-run.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0408c27d858832fbba8a3f6c3c12dbd47f143f682b95781ebba341602a2f67c4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2020"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/carin-worker.js",
+      "type": "file",
+      "name": "lib/carin-worker.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c62a24ab9b0b327eea57a22ff92d346185ef5ec8c3e352c0a097a5106cd5cc5d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "649"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/carpentier-mr-v398.js",
       "type": "file",
       "name": "lib/carpentier-mr-v398.js",
@@ -3958,6 +4021,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "10412"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/claims-pct-medicare.js",
+      "type": "file",
+      "name": "lib/claims-pct-medicare.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "27afd7a3c41a6c7ada6fec958a4902e517d55e4157fc1757e05a77120e40ec88"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8855"
         }
       ]
     },
@@ -6950,7 +7034,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "891023fab04f3346749056ddaf1418a17879d9f2d9fb143da986d4709d832de2"
+          "content": "8a4ff1158c776141e4a045009d2513b59a0edd817f30bb8df8c0e00e6224b0d4"
         }
       ],
       "properties": [
@@ -12635,6 +12719,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/medicare-reprice.js",
+      "type": "file",
+      "name": "lib/medicare-reprice.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "19019847eafa39ed4bb948a992ec88e630b2da4737cee025936d9db675cf661f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4867"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/medication-v4.js",
       "type": "file",
       "name": "lib/medication-v4.js",
@@ -12767,7 +12872,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "bfb3c53c4e7aebc1fca504f8043bf63c4501d8dce1f06a6479e910531eb19902"
+          "content": "c0d89c66a708c1902a175ef4ecbb77f31a282d90dd43b98d02797544b4a2a1c2"
         }
       ],
       "properties": [
@@ -12777,7 +12882,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2679041"
+          "value": "2681255"
         }
       ]
     },
@@ -13324,6 +13429,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3742"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/mpfs-load.js",
+      "type": "file",
+      "name": "lib/mpfs-load.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2de0a179516b59d4c38ab4540513ac03626f0ac39dcc607b1e8d619b2d6e3d01"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1820"
         }
       ]
     },
@@ -21497,6 +21623,69 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/tic-rate-lookup.js",
+      "type": "file",
+      "name": "lib/tic-rate-lookup.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ec8727aadbdf4044a96c0a0e744bf29bf53d971fb760f9ee826d5054721f3fc4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "10945"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/tic-rate-run.js",
+      "type": "file",
+      "name": "lib/tic-rate-run.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "bb1945e881ee652c250b024287dfea5d6d53df2a5865fd4abaec0107502436e2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2234"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/tic-rate-worker.js",
+      "type": "file",
+      "name": "lib/tic-rate-worker.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2ae67fac20f4abb85c477fee3475aa03034b39038ef01982aefba71af38bd44e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1272"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/tic-run.js",
       "type": "file",
       "name": "lib/tic-run.js",
@@ -22385,7 +22574,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f041071850226483aa9c06899236b5078d0fc3cf1493a68988fd9e83ccceb7d0"
+          "content": "cdf29004c1c459fb69dcf59e83f9bd37d8668353661e637029b724e331b8d22a"
         }
       ],
       "properties": [
@@ -22395,7 +22584,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "9956"
+          "value": "11270"
         }
       ]
     },
@@ -22427,7 +22616,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "693c8e9798f5ada4fa9faa53987526da1047080dac353eda38293a173815e44f"
+          "content": "58c7a0cf17ad7397b0bfb34ec10e8ef90d6cb4d5100d55c6f780f8b1b9cf6fbb"
         }
       ],
       "properties": [
@@ -22437,7 +22626,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "11966"
+          "value": "12415"
         }
       ]
     },
@@ -27205,6 +27394,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3377"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/claims-pct-medicare.js",
+      "type": "file",
+      "name": "mcp/adapters/claims-pct-medicare.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0b419b9d1075b7e59d971ec5a4cc6b1d80a9262c574e396e0cc599a2e02b3321"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2306"
         }
       ]
     },
@@ -44855,7 +45065,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "fa0d0cba5dc4fdb230d2371a595932432fee583a35197e1e2b93fda2afa4dcdd"
+          "content": "d44de82bd60011b56d2174fd45f376e83aca19f814584fbe095850e689472780"
         }
       ],
       "properties": [
@@ -44865,7 +45075,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "115436"
+          "value": "115549"
         }
       ]
     },
@@ -44897,7 +45107,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0fdc20f677a50cf7306807af9fe40693af445f5d79e21a1e49ad75203af663fc"
+          "content": "e40b25677eb61d87f3ebe002c1185252921d5c6b5889d00de34a091aebb4f710"
         }
       ],
       "properties": [
@@ -44907,7 +45117,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "8347"
+          "value": "9185"
         }
       ]
     },
@@ -48776,6 +48986,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1602.js",
+      "type": "file",
+      "name": "views/group-v1602.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e02ab734d208b320d867643b9cb2ee684dd37d2b3914cd8266b90315544260ae"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6356"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:views/group-v1603.js",
       "type": "file",
       "name": "views/group-v1603.js",
@@ -48803,7 +49034,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e71734bf4ed0f39a6c2f81c05d54bf7cd196fa7474a8bad951f39cb2416e85c5"
+          "content": "60ab59e78a8575057a34586cc2b5c43c4c7c17c1880e34c1c4fe2ebf7b0eaabb"
         }
       ],
       "properties": [
@@ -48813,7 +49044,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "12219"
+          "value": "23127"
         }
       ]
     },
@@ -64607,9 +64838,9 @@
       "bom-ref": "urn:sophiewell:npm:package-lock.json:node_modules/@cloudflare/unenv-preset",
       "type": "library",
       "name": "@cloudflare/unenv-preset",
-      "version": "2.16.1",
+      "version": "2.16.2",
       "scope": "optional",
-      "purl": "pkg:npm/%40cloudflare/unenv-preset@2.16.1",
+      "purl": "pkg:npm/%40cloudflare/unenv-preset@2.16.2",
       "properties": [
         {
           "name": "sophiewell:lockfile",
@@ -64619,7 +64850,7 @@
       "hashes": [
         {
           "alg": "SHA-512",
-          "content": "102c4e6eb31fc939796e141ffe56425f0a391bac57f48014a3e9c330a2b8499f26e09befc69e76be2971cb24925a1d984d9cfcf87434eea187ff6ac4a26d6f0f"
+          "content": "2413f5f99ed948d1bf7789913fecbc542e5d91aded65530b11946f4beaf34380c6575128c511507247094d39176c74908938f40ed348d356706ff5767d7d26bd"
         }
       ],
       "licenses": [
@@ -64634,9 +64865,9 @@
       "bom-ref": "urn:sophiewell:npm:package-lock.json:node_modules/@cloudflare/workerd-darwin-64",
       "type": "library",
       "name": "@cloudflare/workerd-darwin-64",
-      "version": "1.20260911.1",
+      "version": "1.20260926.1",
       "scope": "optional",
-      "purl": "pkg:npm/%40cloudflare/workerd-darwin-64@1.20260911.1",
+      "purl": "pkg:npm/%40cloudflare/workerd-darwin-64@1.20260926.1",
       "properties": [
         {
           "name": "sophiewell:lockfile",
@@ -64646,7 +64877,7 @@
       "hashes": [
         {
           "alg": "SHA-512",
-          "content": "efce5e698d5b911d5c9b867f3c251eb5e65899331eea5adedb3cfadff19d1868a6b2832c2b1825e1bac53d1ba48a6f22bf6f04c83d57a0207f54f605db404444"
+          "content": "542229c2026ee439b5a3e5472dc94d38a21da6db44aacb3ba031d2e43631815a289ccf43c71c6bd71090bc96e1e885c5b90d430eb6e6e64ae3b5ee4db13817dd"
         }
       ],
       "licenses": [
@@ -64661,9 +64892,9 @@
       "bom-ref": "urn:sophiewell:npm:package-lock.json:node_modules/@cloudflare/workerd-darwin-arm64",
       "type": "library",
       "name": "@cloudflare/workerd-darwin-arm64",
-      "version": "1.20260911.1",
+      "version": "1.20260926.1",
       "scope": "optional",
-      "purl": "pkg:npm/%40cloudflare/workerd-darwin-arm64@1.20260911.1",
+      "purl": "pkg:npm/%40cloudflare/workerd-darwin-arm64@1.20260926.1",
       "properties": [
         {
           "name": "sophiewell:lockfile",
@@ -64673,7 +64904,7 @@
       "hashes": [
         {
           "alg": "SHA-512",
-          "content": "594e1b16a10dd07ee77465b1a1e75e82ff790e635506dbf49dc5dc1c6f676054d423bf2cc446f4aa84f753a19ae21c81933b091415ffcef5412065f7a8a95d18"
+          "content": "a15b8b5df0a7af55eef6c04c358ac43dc15940d31cbe235c69ccfd97ea2a4222c773952b569fbe96929bb2e5acb427e1fbf737f4fa77ed355e68d04b03cf9178"
         }
       ],
       "licenses": [
@@ -64688,9 +64919,9 @@
       "bom-ref": "urn:sophiewell:npm:package-lock.json:node_modules/@cloudflare/workerd-linux-64",
       "type": "library",
       "name": "@cloudflare/workerd-linux-64",
-      "version": "1.20260911.1",
+      "version": "1.20260926.1",
       "scope": "optional",
-      "purl": "pkg:npm/%40cloudflare/workerd-linux-64@1.20260911.1",
+      "purl": "pkg:npm/%40cloudflare/workerd-linux-64@1.20260926.1",
       "properties": [
         {
           "name": "sophiewell:lockfile",
@@ -64700,7 +64931,7 @@
       "hashes": [
         {
           "alg": "SHA-512",
-          "content": "d18da0cbada8c50c566b7f2a8a748f13accd2f9f899ae989b4363d0165b51c1f0a1ee013c4def5a39306ce65457c1f0fc19b221df51dd92bfb3b6da4ac23ab87"
+          "content": "0639a20ef6015411b9db8f200874994b7c8e35b726dffdea293bbd45a400f28ee340725f5f1f499d66e19257762ac6d79d1184187170a4b2e2748a481ad41850"
         }
       ],
       "licenses": [
@@ -64715,9 +64946,9 @@
       "bom-ref": "urn:sophiewell:npm:package-lock.json:node_modules/@cloudflare/workerd-linux-arm64",
       "type": "library",
       "name": "@cloudflare/workerd-linux-arm64",
-      "version": "1.20260911.1",
+      "version": "1.20260926.1",
       "scope": "optional",
-      "purl": "pkg:npm/%40cloudflare/workerd-linux-arm64@1.20260911.1",
+      "purl": "pkg:npm/%40cloudflare/workerd-linux-arm64@1.20260926.1",
       "properties": [
         {
           "name": "sophiewell:lockfile",
@@ -64727,7 +64958,7 @@
       "hashes": [
         {
           "alg": "SHA-512",
-          "content": "92db4d3e7c75af6942a85528307eb6cfb0aa195fa3e1005bc397ddb5acf8a733abcc1bf401690d013b7ba271547be4b03fcce171ea4cb5b9b617890acd37fa54"
+          "content": "dbc6dd7d00c815ca5a29730f8ac003cbc05c86922c5feb440210fe6e17c4057ba414616bf05de8bb2886dc7ccddc2a8087f398be27c98b3cc566da6d50f0b2ef"
         }
       ],
       "licenses": [
@@ -64742,9 +64973,9 @@
       "bom-ref": "urn:sophiewell:npm:package-lock.json:node_modules/@cloudflare/workerd-windows-64",
       "type": "library",
       "name": "@cloudflare/workerd-windows-64",
-      "version": "1.20260911.1",
+      "version": "1.20260926.1",
       "scope": "optional",
-      "purl": "pkg:npm/%40cloudflare/workerd-windows-64@1.20260911.1",
+      "purl": "pkg:npm/%40cloudflare/workerd-windows-64@1.20260926.1",
       "properties": [
         {
           "name": "sophiewell:lockfile",
@@ -64754,7 +64985,7 @@
       "hashes": [
         {
           "alg": "SHA-512",
-          "content": "e623bf61fa010ce80edc2ac77648a254ff122f73b68c2f9ce94c77777efc4d23ca2e1539f828078ed13f652a1d590af3af8173151a9d5bc4bb9f99dbc83d4c1d"
+          "content": "7a174bddab5a29d1269675bda289ba399511f27dd7b132ffce5f3e286444a4b8b9b0c496d267a4d0fac5e302bd497e757f70259e5bbcb45f1e28183e99cdf117"
         }
       ],
       "licenses": [
@@ -72059,9 +72290,9 @@
       "bom-ref": "urn:sophiewell:npm:package-lock.json:node_modules/js-yaml",
       "type": "library",
       "name": "js-yaml",
-      "version": "5.2.2",
+      "version": "5.4.2",
       "scope": "optional",
-      "purl": "pkg:npm/js-yaml@5.2.2",
+      "purl": "pkg:npm/js-yaml@5.4.2",
       "properties": [
         {
           "name": "sophiewell:lockfile",
@@ -72071,7 +72302,7 @@
       "hashes": [
         {
           "alg": "SHA-512",
-          "content": "75acb35332a4275324b94b5982549e6d4e37bad3571f4396401c8af6b28e3ae6083bc3394d5d72fa7f002cc746d2b7730677cd90e99912aad445ea5bd1e8ea07"
+          "content": "9be6aabbe2f03b53bab08a2969f8fc1d4565e5a6b0213c1941eff21e93022a369605a03f774ec1fd074c6f7e76f5111fb6253e44c3072f7565b30de138deef5a"
         }
       ],
       "licenses": [
@@ -73078,9 +73309,9 @@
       "bom-ref": "urn:sophiewell:npm:package-lock.json:node_modules/miniflare",
       "type": "library",
       "name": "miniflare",
-      "version": "5.20260911.0-alpha",
+      "version": "5.20260926.1-alpha",
       "scope": "optional",
-      "purl": "pkg:npm/miniflare@5.20260911.0-alpha",
+      "purl": "pkg:npm/miniflare@5.20260926.1-alpha",
       "properties": [
         {
           "name": "sophiewell:lockfile",
@@ -73090,7 +73321,7 @@
       "hashes": [
         {
           "alg": "SHA-512",
-          "content": "09189e266bc7c7eeeb36a9c0e5229db18b0447aadf914204fe3aee214c3e7cb86c438b0e45fb8cb6bdfe150cec43dff2f25864d3ad55e059750c57478b2041ea"
+          "content": "bdce25825f185714766ae9dd3e754f4c870be3a51028af9e6d6ef28a75cd13563d8e8152d09a1a90c6b3afbaf733c0d746f69e98a4bc1049acce4bff6f4e6a53"
         }
       ],
       "licenses": [
@@ -76210,9 +76441,9 @@
       "bom-ref": "urn:sophiewell:npm:package-lock.json:node_modules/undici",
       "type": "library",
       "name": "undici",
-      "version": "7.29.0",
+      "version": "7.29.1",
       "scope": "optional",
-      "purl": "pkg:npm/undici@7.29.0",
+      "purl": "pkg:npm/undici@7.29.1",
       "properties": [
         {
           "name": "sophiewell:lockfile",
@@ -76222,7 +76453,7 @@
       "hashes": [
         {
           "alg": "SHA-512",
-          "content": "203c5f95e2e699b4ac91f5925004e23759df9f6ac3baf9cc3aa6f909647dda221fa2303451dfae94e000110e7b2cfafdad69acade5327f9970c9aa3eec634d57"
+          "content": "45838d5b631e69f81896454e2982a403f020ec1997aa021609af2dd66d09731ad083da48f6512a46100eaee38109b02884e6bf824085fa23e2f61ae0bd3ceee9"
         }
       ],
       "licenses": [
@@ -76561,9 +76792,9 @@
       "bom-ref": "urn:sophiewell:npm:package-lock.json:node_modules/workerd",
       "type": "library",
       "name": "workerd",
-      "version": "1.20260911.1",
+      "version": "1.20260926.1",
       "scope": "optional",
-      "purl": "pkg:npm/workerd@1.20260911.1",
+      "purl": "pkg:npm/workerd@1.20260926.1",
       "properties": [
         {
           "name": "sophiewell:lockfile",
@@ -76573,7 +76804,7 @@
       "hashes": [
         {
           "alg": "SHA-512",
-          "content": "bd1afc41d071b9e40e6493b5851088ef7119962c7cec8032040712c88deb035541fbaa318f0de86aacd89c857c0b820e3ed5208a16dd30083391be4633857b0d"
+          "content": "6288e1b1606e670937264f4e0b441f4e055b2de40e0f5b4ad68942f595c051c99e8a9f33e0d13fc6db6da710acb93bd0051aa9a6fcbb4e469cd24c4f60c8c85c"
         }
       ],
       "licenses": [
@@ -76588,9 +76819,9 @@
       "bom-ref": "urn:sophiewell:npm:package-lock.json:node_modules/wrangler",
       "type": "library",
       "name": "wrangler",
-      "version": "4.131.1",
+      "version": "4.143.1",
       "scope": "optional",
-      "purl": "pkg:npm/wrangler@4.131.1",
+      "purl": "pkg:npm/wrangler@4.143.1",
       "properties": [
         {
           "name": "sophiewell:lockfile",
@@ -76600,7 +76831,7 @@
       "hashes": [
         {
           "alg": "SHA-512",
-          "content": "d6ee4531d2409fa50e70bd36715b082137271eb93a982ecdf91175d0491584f2f5f11fe8f60e4165be0f0a30722fedc0b113f9c10a69a4220f1e160f466209c2"
+          "content": "8a540944c45c320764f365d6220ee1960781d48d82a0e5a64a225ea2a66e7e83425948894cde436983d86fa33fa085c15e4dfe21023134381db4f52ec5cc5d7a"
         }
       ],
       "licenses": [
@@ -79808,6 +80039,9 @@
         "urn:sophiewell:file:source:lib/cardiology-risk-v209.js",
         "urn:sophiewell:file:source:lib/cardiology-risk-v214.js",
         "urn:sophiewell:file:source:lib/cardiometab-v251.js",
+        "urn:sophiewell:file:source:lib/carin-eob-reader.js",
+        "urn:sophiewell:file:source:lib/carin-run.js",
+        "urn:sophiewell:file:source:lib/carin-worker.js",
         "urn:sophiewell:file:source:lib/carpentier-mr-v398.js",
         "urn:sophiewell:file:source:lib/cas-ted-v364.js",
         "urn:sophiewell:file:source:lib/caton-deschamps-v704.js",
@@ -79830,6 +80064,7 @@
         "urn:sophiewell:file:source:lib/cholecystitis-dx-v313.js",
         "urn:sophiewell:file:source:lib/cholecystitis-v311.js",
         "urn:sophiewell:file:source:lib/clabsi-lcbi-v874.js",
+        "urn:sophiewell:file:source:lib/claims-pct-medicare.js",
         "urn:sophiewell:file:source:lib/clark-level-v340.js",
         "urn:sophiewell:file:source:lib/clavien-dindo-v320.js",
         "urn:sophiewell:file:source:lib/cleveland-constipation-v665.js",
@@ -80243,6 +80478,7 @@
         "urn:sophiewell:file:source:lib/medicare-enrollment-window-v1507.js",
         "urn:sophiewell:file:source:lib/medicare-ffs-pa-required.js",
         "urn:sophiewell:file:source:lib/medicare-penalties-v1507.js",
+        "urn:sophiewell:file:source:lib/medicare-reprice.js",
         "urn:sophiewell:file:source:lib/medication-v4.js",
         "urn:sophiewell:file:source:lib/medication-v5.js",
         "urn:sophiewell:file:source:lib/meld3-v678.js",
@@ -80276,6 +80512,7 @@
         "urn:sophiewell:file:source:lib/moh-ichd3-v816.js",
         "urn:sophiewell:file:source:lib/montreal-ibd-v328.js",
         "urn:sophiewell:file:source:lib/mpa-v640.js",
+        "urn:sophiewell:file:source:lib/mpfs-load.js",
         "urn:sophiewell:file:source:lib/mrc-power-v428.js",
         "urn:sophiewell:file:source:lib/mrecist-v1475.js",
         "urn:sophiewell:file:source:lib/msp-lis-v1507.js",
@@ -80665,6 +80902,9 @@
         "urn:sophiewell:file:source:lib/thompson-epstein-v459.js",
         "urn:sophiewell:file:source:lib/thwaites-v529.js",
         "urn:sophiewell:file:source:lib/tic-file-check.js",
+        "urn:sophiewell:file:source:lib/tic-rate-lookup.js",
+        "urn:sophiewell:file:source:lib/tic-rate-run.js",
+        "urn:sophiewell:file:source:lib/tic-rate-worker.js",
         "urn:sophiewell:file:source:lib/tic-run.js",
         "urn:sophiewell:file:source:lib/tic-schemas.js",
         "urn:sophiewell:file:source:lib/tic-worker.js",
@@ -80958,6 +81198,7 @@
         "urn:sophiewell:file:source:views/group-v16.js",
         "urn:sophiewell:file:source:views/group-v160.js",
         "urn:sophiewell:file:source:views/group-v1601.js",
+        "urn:sophiewell:file:source:views/group-v1602.js",
         "urn:sophiewell:file:source:views/group-v1603.js",
         "urn:sophiewell:file:source:views/group-v1604.js",
         "urn:sophiewell:file:source:views/group-v161.js",
@@ -81852,6 +82093,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/cholecystitis-dx-v313.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cholecystitis-v311.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/clabsi-lcbi-v874.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/claims-pct-medicare.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/clark-level-v340.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/clavien-dindo-v320.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cleveland-constipation-v665.js",
@@ -82796,7 +83038,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "91af40c6b78cb7c9"
+      "value": "225f61fb9833c36b"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -82808,7 +83050,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3028"
+      "value": "3039"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

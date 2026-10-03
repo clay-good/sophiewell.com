@@ -30,6 +30,8 @@ const ASYNC_TILES = [
   'ndc-hcpcs-units',
   // spec-v1505: the MCD articles, through lib/mcd-load.js.
   'lcd-diagnosis-check',
+  // spec-v1604: the physician fee schedule, through lib/mpfs-load.js.
+  'claims-pct-medicare',
 ];
 
 // Every `loadFile` call site in views/. If this moves, a tile has started (or

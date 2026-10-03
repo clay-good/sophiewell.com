@@ -20,9 +20,10 @@ import * as R271 from '../lib/x12-271-run.js';
 import * as R277 from '../lib/x12-277-run.js';
 import { runHpt } from '../lib/hpt-run.js';
 import { runTic } from '../lib/tic-run.js';
+import { run as runCarin, CLAIM_HEADERS, claimRow } from '../lib/carin-run.js';
 
 const X12_RUNS = { 'x12-835-reader': R835, 'x12-837-check': R837, 'x12-271-reader': R271, 'x12-277-reader': R277 };
-export const ANALYZABLE = [...Object.keys(X12_RUNS), 'hpt-file-check', 'tic-file-check'];
+export const ANALYZABLE = [...Object.keys(X12_RUNS), 'hpt-file-check', 'tic-file-check', 'carin-eob-reader'];
 const PREVIEW_ROWS = 20;
 
 const readOnly = (title) => ({ title, readOnlyHint: true, idempotentHint: true, openWorldHint: false });
@@ -134,6 +135,16 @@ export async function analyzeFile(args, { roots }) {
   const fh = await open(r.real, 'r');
   let bytes;
   try { bytes = await fh.readFile(); } finally { await fh.close(); }
+  if (tool === 'carin-eob-reader') {
+    let read;
+    try { read = runCarin([{ name: r.name, buffer: bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.length) }]); } catch (err) { return refusal({ code: 'UNREADABLE' }, err instanceof Error ? err.message : String(err)); }
+    if (!read.result.valid) return refusal({ code: 'UNREADABLE' }, read.result.message);
+    return {
+      valid: true, tool, kind: rec.kind, totals: { band: read.result.band, years: read.result.years, flags: read.result.flags },
+      headers: CLAIM_HEADERS, rows: read.result.claims.slice(0, PREVIEW_ROWS).map(claimRow), rowCount: read.result.claims.length,
+      receipt: read.receipts.receipt, shareableReceipt: read.receipts.shareable,
+    };
+  }
   let out;
   try {
     out = X12_RUNS[tool].run([{ name: r.name, buffer: bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.length) }]);

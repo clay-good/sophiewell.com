@@ -1,6 +1,6 @@
 # spec-v1602 — Reading your own claims and bills
 
-**Status:** Proposed, September 29, 2026. Nothing built.
+**Status:** Proposed, September 29, 2026. In progress: `carin-eob-reader` built ([build status](#build-status)).
 **Charter:** [spec-v1600](spec-v1600.md). **Group:** C, "Insurance & Patient Literacy".
 **Machinery:** the [spec-v1501](spec-v1501.md) §3 upload workbench (JSON and CSV, in a Web
 Worker, nothing kept) and the streaming price-file parser built for `hpt-file-check`
@@ -113,4 +113,8 @@ Until then the spec stands and the tool is counted, as `340b-rebate-model-clock`
 
 ## Build status
 
-- **Not yet built.**
+| Tool | Status | What was read, and what differed |
+|---|---|---|
+| `carin-eob-reader` | **Built October 2, 2026** (catalog 1,967) | Read that day: the `hl7.fhir.us.carin-bb` package; the latest is **2.2.0** (March 27, 2026), and its ten financial ExplanationOfBenefit examples (CC0) are the test fixtures. Amounts come from `EOB.total` by the FHIR `adjudication` and CARIN `C4BBAdjudication` codes; a category the total omits is summed from the lines only when every line states it, otherwise it is "not stated", never zero. Network status is read from the `C4BBAdjudicationDiscriminator` slices, outcome from `payment.type` (paid, denied, partly paid) or else `EOB.outcome`. A Bundle, NDJSON or one resource reads; several files read as one set. Citations checked in the eCFR: 42 CFR 422.119 and 45 CFR 156.221 (Patient Access API), 45 CFR 149.110 (emergency services). **Differed from the spec:** the preventive flag needs the `preventive-codes` list, which is not built, so only the CPT preventive medicine visit codes (99381-99387, 99391-99397) are flagged and the page says so. The out-of-network professional at an in-network facility flag is not built: CARIN states the facility (`servicefacility`) but not its network status. Agents: `analyze_file` reads it. |
+| `itemized-bill-check` | Open | |
+| `patient-pa-record-reader` | Gated to 2027 | |
