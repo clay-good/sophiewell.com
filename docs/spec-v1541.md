@@ -110,3 +110,19 @@ Cache Storage directly:
 The five tests in §5 pass in CI. `docs/performance.md` records measured boot and transfer size at
 4x slowdown. A docs-only commit leaves the pack version unchanged (tested by building twice, with
 and without a docs change, and comparing). The `file://` banner no longer mentions npm.
+
+## Build status
+
+**§1, §2, §3, §5 and §6 built October 3, 2026. §4 is not built.**
+
+| Part | What was built |
+|---|---|
+| §1 Pack | `scripts/build-precache.mjs` walks the app from the shell (static `import`, re-exports, literal `import()`, and worker `new URL(..., import.meta.url)`) and adds the search corpus, `data/synonyms.json`, `data/fields/` and `data/tool-copy/`: 2,566 entries, 21.9 MB raw. Each entry has a content hash. The version hashes the entries plus every other file under `lib/`, `views/`, `data/`, `vendored/` and `samples/`, so a lazily fetched dataset still changes it. `lib/build-info.js` (the per-commit receipt stamp) is left out of the version. A rebuild after a docs-only edit gave the same version, `b687c2208a5a4234`. |
+| §1 Install | `sw.js` fails the install on any failed entry, stores the manifest last as the completion mark, copies entries with unchanged hashes from the previous complete pack, and resumes a partial install from what is already stored. Old caches are deleted on activate, which only follows a complete install. |
+| §1 persist | Requested from the page once the pack is complete. Firefox shows its own permission prompt for this; Chrome does not. |
+| §2 Deep links | Option two: a navigation that misses offline redirects `/tools/<id>/` to `/#<id>` (and `/for/`, `/topics/` to `/`), because the 1,964 prerendered pages are 23 MB. Prerendered pages are network-first, so a copy fix is seen online. An offline dataset miss returns a 504 marked `X-Offline`, and `lib/data.js` turns it into "This list needs a connection the first time it is used." Whether every tile prints that message rather than its own error was not swept. |
+| §3 Status | `lib/offline-status.js`: one footer line, `#offline-status`, as written in §3, plus the storage warning when `persist()` is refused. |
+| §5 Tests | `test/integration/works-offline.spec.js` (Chromium) runs its own server over `dist/` with `Cache-Control: no-store` and goes offline by dropping every connection. It covers all five cases. With the pack cut to the shell, the offline-boot and deep-link tests fail. The version rule and the status line are unit-tested in `test/unit/offline-pack.test.js`. The `:4175` Playwright server, used only by the old test, is removed. |
+| §6 Banner | `file-origin-guard.js` now speaks to a health worker. The developer instruction was already in the README ("To run your own copy"). |
+
+**Not built:** §4. Boot at 4x CPU slowdown has not been measured, and `docs/performance.md` has not been corrected. Lazy view loading waits on that measurement.

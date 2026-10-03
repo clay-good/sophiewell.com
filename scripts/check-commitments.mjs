@@ -15,7 +15,7 @@
 //            in scanned source must pass a string literal present in
 //            scripts/storage-allowlist.json. caches.open(...) must pass a
 //            string starting with one of the allowed cache namespace
-//            prefixes (interpolated `${BUILD_HASH}` is permitted).
+//            prefixes (interpolated `${PACK}` is permitted).
 //   §3.6  No AI / LLM dependencies
 //         -> no AI-vendor SDK substrings in `import` / `require` / string
 //            literal contexts outside docs/.
@@ -115,7 +115,7 @@ function extractStringLiteralFirstArg(callText) {
   return m[2];
 }
 
-// Like above but allows a single ${BUILD_HASH}-style interpolation suffix
+// Like above but allows a single ${PACK}-style interpolation suffix
 // when the prefix is a string-literal prefix.
 function extractCacheNameFirstArg(callText) {
   const m = callText.match(/^\(\s*(['"`])((?:\\.|(?!\1).)*?)\1/);

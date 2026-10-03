@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `d61b43d27c67335f`
-Generated: 2026-10-03T09:37:20.157Z
+Build ID: `66babc10527cff7c`
+Generated: 2026-10-03T10:22:27.605Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -25,18 +25,18 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 126383 | `4e38acb22a761d345031dc8b4145d418dcc22475df06769662bf954ca02ea0f6` |
-| `styles.css` | 75420 | `f7afb2c67c64f1624889489889ef9dd592a1afefd84295e8890ee869484e15e2` |
-| `app.js` | 572180 | `945e1d20112929bdf5f47dfae152b5c5016c73048adff0e9fa69790543cd70f4` |
+| `index.html` | 126447 | `afff2b5bbcaba3eb09e3171f64e972fb7cfe1ec3d5d3550d0a306b153f697427` |
+| `styles.css` | 75581 | `40a3ac39694a7e47df22e78d385890f4020cee705fa8191f852b323c3253bdc7` |
+| `app.js` | 572430 | `6582416ab55648361182f9abe93332d3a63810a686a4023b2760850620c6785e` |
 | `report-feedback.js` | 12178 | `955e5cb542c7b13dcbb85a75ecf4ccf2dc0b2dffecd84daac1d607bd6acc7cd2` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 | `theme.js` | 3132 | `6910af0b4c65869c6a3d24d17842bb2cc88c7d23f8fb32506fcdbfeec70ce979` |
-| `file-origin-guard.js` | 1876 | `45414c830b9c95f04d22fd19bb0be70363b88e37559f33c2d197872591a8cd55` |
-| `sw.js` | 5339 | `32d31e18fefc49ef2c5fdab4a1c538855d47eeba2438d5a4e1413ac63b3e7f8c` |
+| `file-origin-guard.js` | 1370 | `9c1f4691df48796f5cabeec11a7b244a38d02416fa93b9589851dc44982ee8ee` |
+| `sw.js` | 6994 | `215b6fa7b871cac7b775393d28a00c11ff3ccd1ce1b3230b378bcb8d8f881b40` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
 | `sitemap.xml` | 246411 | `bccb8bab08f9dc323ad789dd1aa78da402555482142a333384daf2fc4d0f74ed` |
-| `_headers` | 2050 | `3874f05a080b8cab13ff022e6e6147c7e1057420a2d9cbc7834bac6b421d4011` |
+| `_headers` | 2063 | `1a500c03dd4add8641287d189c20f15afa3657931417b11ea2a51f39b501773f` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 3682 | `8dd13c4dd66de0c9ec93c2c1561e5fec1902f144b677d3581cf56b124b04a1b8` |
 | `favicon-16x16.png` | 434 | `048382388a01dabe029443f89e0e7396ff26fafa156cdd68a8e26256e3929f81` |
@@ -270,7 +270,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/cuff-leak-v903.js` | 7823 | `0cf0d0afa2741c0d26f357fe35a05cfd0092146f4282d32e3d331b3adad04faa` |
 | `lib/cvrisk-engines-v202.js` | 4552 | `267e28ecb23f930b00527a39a07b2c6159154a0edbb85b4a5e4567c9183daaa2` |
 | `lib/cvrisk-v103.js` | 25207 | `a3ee1fe19c69bc0fd5a9492c1329dae65b8b4017c3b16b1d44444542783ae413` |
-| `lib/data.js` | 6394 | `45830527a0cd09083dba4a6c918135d3be67900c027175a32b7e5b738977f786` |
+| `lib/data.js` | 6633 | `fb653a6867be3ecf87afa96bf79e2bf404f8cfb6f1f715ec3faca8b3829f472a` |
 | `lib/dated-data.js` | 2051 | `453ea6398e1ada17f48a48a58f8f94b3cc0123262a6ce19022e012714102f6ef` |
 | `lib/days-supply-v1511.js` | 7344 | `481fa9bbd8d583d34619eb527c88c6715ba36e5df6125aa962f3ca8324cd984a` |
 | `lib/de-winter-pattern-v1443.js` | 3588 | `55058d3040772d5dbe9cd92f4f1485cc502781c96c1bf756c27eb4f4e78a11b1` |
@@ -762,6 +762,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/obgyn-v225.js` | 14967 | `363c98b0481738ca8b64d6b6b65724e2f7d090676d0de799d6ec961b19c488f0` |
 | `lib/obgyn-v250.js` | 7713 | `5326c2fc2c5eb02959ddc337e1ac095cbfdf3fecd2a9d34dec63678eb7036b15` |
 | `lib/ocular-trauma-score-v614.js` | 9546 | `49ec3b45d088a7b6003b1aa2f6d8437db613b02e77d35a8d0d482407a027b077` |
+| `lib/offline-status.js` | 2767 | `e0be179605417c58466465534a9cb82be94e7440345317960fbade6a6e5eaf50` |
 | `lib/ohat-oral-health-v1495.js` | 2997 | `cb682793e85f7a61dd42bc89f7feef52794e8ec611b7d87b5c3f9da16e6a8557` |
 | `lib/ohi-s-v1483.js` | 3370 | `6e60f2166e9720132cf14406bb3729f68559bfcea5901453ce84df869031fdcb` |
 | `lib/ohs-diagnosis-v829.js` | 7431 | `09b456890bf516f059d9376dab19d863320b0ec38c8a1aecfb740db14370420d` |

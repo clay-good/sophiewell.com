@@ -1,111 +1,185 @@
-// spec-v986: the README's offline promise, exercised rather than assumed.
+// spec-v1541 §5: the offline promise, exercised rather than assumed.
 //
-//   "Calculations run locally and keep working offline."
+//   "Calculations run locally, and after one visit every tool keeps working offline."
 //
-// Two things already guard the machinery around that sentence and neither
-// touches the sentence itself. `no-network.spec.js` proves nothing LEAVES the
-// device -- the privacy half. `test/unit/sw-shell.test.js` proves the service
-// worker's precache LIST matches every asset index.html references. A correct
-// list is not a populated cache: the install handler swallows every individual
-// fetch failure by design ("install still succeeds"), so an asset that 404s at
-// install time is missing from the cache and nothing anywhere notices.
-//
-// This asserts the link neither of them covers: after install, the shell cache
-// actually HOLDS every asset the list names, and holds a real response for each.
-//
-// TWO WAYS OF SIMULATING OFFLINE WERE TRIED AND BOTH LIE HERE. Each was checked
-// by emptying SHELL_ASSETS to `[]` and re-running; each still passed.
+// TWO WAYS OF SIMULATING OFFLINE WERE TRIED (spec-v986) AND BOTH LIE. Each was
+// checked by emptying the precache and re-running; each still passed.
 //
 //   `context.setOffline(true)` does not apply to the service worker's own
-//   fetches, so the worker fell through to the live server and served the page
-//   from the network while the test believed it was offline.
+//   fetches, so the worker fell through to the live server.
 //
 //   `context.route('**', abort)` does not reach what satisfies the navigation
-//   either -- the browser's own HTTP cache answers, and no request is recorded
-//   as aborted.
+//   either -- the browser's own HTTP cache answers.
 //
-// A test that passes when the thing it tests is broken is worse than no test, so
-// neither shipped. What is left reads the cache directly, and DOES fail when the
-// cache is empty. It proves the install populated the shell; it does not claim
-// to prove the browser then renders from it, because nothing here can.
+// So these tests run their own server over the built `dist/`, send
+// `Cache-Control: no-store` (the HTTP cache holds nothing), and "go offline" by
+// making that server drop every connection. Whatever renders after that came
+// from Cache Storage. Each test also reads Cache Storage directly. The suite
+// was checked against a pack cut down to the shell: the offline-boot tests
+// failed, as they must.
 //
-// Served from `dist` on :4175 -- the same build as :4174, but with the REAL
-// service worker. scripts/serve.mjs answers /sw.js with a self-unregistering
-// stub unless SERVE_SW is set, because the shell cache keys on a build hash that
-// reads "dev" in the source tree and would otherwise serve every local edit from
-// a stale copy. The escape hatch was written "when the offline behavior itself
-// is what you are testing" and had never been used.
+// Chromium only: the other two projects do not run service workers in this
+// harness, so they would fail for the browser rather than for the site.
 
 import { test, expect } from '@playwright/test';
-import { readFileSync } from 'node:fs';
+import { createServer } from 'node:http';
+import { existsSync, readFileSync, statSync } from 'node:fs';
+import { extname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const DIST = 'http://localhost:4175';
+const DIST = fileURLToPath(new URL('../../dist', import.meta.url));
+const TYPES = {
+  '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.mjs': 'text/javascript; charset=utf-8',
+  '.css': 'text/css; charset=utf-8', '.json': 'application/json', '.png': 'image/png', '.ico': 'image/x-icon',
+  '.svg': 'image/svg+xml', '.webmanifest': 'application/manifest+json', '.txt': 'text/plain; charset=utf-8',
+};
 
-// The list the worker promises to precache, read from the worker itself.
-//
-// spec-v1059: this used to end `.filter((p) => p.startsWith('./'))`, so an entry
-// written any other way -- `'/styles.css'`, or double-quoted -- was silently
-// dropped and never checked. The test would still pass, having quietly examined
-// a shorter list than the worker actually promises. I found it by injecting a
-// broken asset in the wrong format and watching the suite go green.
-//
-// So nothing is filtered now. Every string literal in the block is returned, and
-// the caller asserts the shape it expects. A gate's coverage must not depend on
-// a formatting convention in the file it reads.
-function shellAssets() {
-  const src = readFileSync(fileURLToPath(new URL('../../sw.js', import.meta.url)), 'utf8');
-  const body = src.slice(src.indexOf('const SHELL_ASSETS = ['));
-  const list = body.slice(0, body.indexOf('\n];'));
-  return [...list.matchAll(/['"]([^'"]+)['"]/g)].map((m) => m[1]);
+// A static server over dist/ that can be taken down, can serve a replacement
+// body for a path, and logs every path asked for.
+async function distServer() {
+  const s = { down: false, overrides: new Map(), log: [] };
+  s.server = createServer((req, res) => {
+    const path = decodeURIComponent(new URL(req.url, 'http://x').pathname);
+    s.log.push(path);
+    if (s.down) { req.socket.destroy(); return; }
+    const headers = { 'Cache-Control': 'no-store' };
+    if (s.overrides.has(path)) {
+      const o = s.overrides.get(path);
+      res.writeHead(o.status || 200, { ...headers, 'Content-Type': TYPES[extname(path)] || 'text/plain' });
+      res.end(o.body);
+      return;
+    }
+    let file = join(DIST, path);
+    if (path.endsWith('/')) file = join(file, 'index.html');
+    if (!file.startsWith(DIST) || !existsSync(file) || statSync(file).isDirectory()) {
+      res.writeHead(404, headers); res.end('not found'); return;
+    }
+    res.writeHead(200, { ...headers, 'Content-Type': TYPES[extname(file)] || 'application/octet-stream' });
+    res.end(readFileSync(file));
+  });
+  await new Promise((r) => s.server.listen(0, '127.0.0.1', r));
+  s.base = `http://127.0.0.1:${s.server.address().port}`;
+  s.close = () => new Promise((r) => { s.server.closeAllConnections(); s.server.close(r); });
+  return s;
 }
 
-// Register, then wait for the worker to control the page. A reload after
-// `navigator.serviceWorker.ready` is what makes it the one answering fetches.
-async function serviceWorkerInControl(page) {
-  await page.goto(`${DIST}/`);
+const manifest = () => JSON.parse(readFileSync(join(DIST, 'precache-manifest.json'), 'utf8'));
+
+// Register, let the install finish, and be controlled.
+async function installed(page, base) {
+  await page.goto(`${base}/`);
   await page.evaluate(() => navigator.serviceWorker.ready);
-  await page.reload();
-  await page.waitForFunction(() => !!navigator.serviceWorker.controller, null, { timeout: 15000 });
+  await page.waitForFunction(() => !!navigator.serviceWorker.controller, null, { timeout: 60000 });
+}
+
+// What Cache Storage holds: each pack cache, whether it is complete, and which
+// of the given urls it is missing.
+function packs(page, urls = []) {
+  return page.evaluate(async (want) => {
+    const out = [];
+    for (const name of await caches.keys()) {
+      if (!name.startsWith('sophiewell-pack-')) continue;
+      const cache = await caches.open(name);
+      const missing = [];
+      for (const u of want) if (!(await cache.match(new URL(u, location.href).href))) missing.push(u);
+      out.push({ name, complete: !!(await cache.match('./precache-manifest.json')), missing });
+    }
+    return out;
+  }, urls);
+}
+
+// A new version of the site: a worker whose PACK differs (so the browser sees an
+// update), and a manifest edited by `edit`.
+function serveUpdate(s, version, edit) {
+  const sw = readFileSync(join(DIST, 'sw.js'), 'utf8').replace(/const PACK = '[^']*';/, `const PACK = '${version}';`);
+  const m = edit({ ...manifest(), version });
+  s.overrides.set('/sw.js', { body: sw });
+  s.overrides.set('/precache-manifest.json', { body: JSON.stringify(m) });
+}
+
+// Ask for the update and wait for the new worker to finish one way or the other.
+function updateOutcome(page) {
+  return page.evaluate(async () => {
+    const reg = await navigator.serviceWorker.getRegistration();
+    const found = new Promise((r) => reg.addEventListener('updatefound', () => r(reg.installing), { once: true }));
+    await reg.update();
+    const w = await found;
+    return new Promise((r) => {
+      const check = () => { if (w.state === 'activated' || w.state === 'redundant') r(w.state); };
+      w.addEventListener('statechange', check);
+      check();
+    });
+  });
+}
+
+// The app, booted from whatever the cache holds: the home box, a search, and
+// three tools from different groups computing their worked examples.
+async function bootsOffline(page, base) {
+  await page.goto(`${base}/`);
+  await expect(page.locator('#hero-search')).toBeVisible();
+  await page.locator('#hero-search').fill('body mass index');
+  await expect(page.locator('#hero-search-results [role="option"]').first()).toBeVisible();
+  for (const [id, text] of [['bmi', 'BMI: 22.9'], ['anion-gap', 'Anion gap: 16'], ['cockcroft-gault', '88.89']]) {
+    await page.goto(`${base}/#${id}`);
+    await page.reload();
+    await expect(page.locator('#q-results'), `${id} computes offline`).toContainText(text);
+  }
 }
 
 test.describe('offline', () => {
-  // Chromium only: the other two projects do not run service workers in this
-  // harness, so they would fail for the browser rather than for the site.
   test.skip(({ browserName }) => browserName !== 'chromium', 'service workers are chromium-only here');
+  test.setTimeout(180_000);
+  let s;
+  test.beforeEach(async () => { s = await distServer(); });
+  test.afterEach(async () => { await s.close(); });
 
-  test('install actually caches every asset the shell list promises', async ({ page }) => {
-    await serviceWorkerInControl(page);
+  test('install stores every entry of the offline pack, and says so', async ({ page }) => {
+    await installed(page, s.base);
+    const m = manifest();
+    expect(m.entries.length, 'the pack is the app, not the shell').toBeGreaterThan(1000);
+    const [pack, ...others] = await packs(page, m.entries.map((e) => e.url));
+    expect(others, 'one pack cache').toEqual([]);
+    expect(pack.name).toBe(`sophiewell-pack-${m.version}`);
+    expect(pack.complete, 'the manifest, stored last, marks the pack complete').toBe(true);
+    expect(pack.missing, 'every manifest entry is in the cache').toEqual([]);
+    await expect(page.locator('#offline-status')).toContainText('Saved for offline use, version of');
+  });
 
-    const promised = shellAssets();
-    expect(promised.length, 'the worker names a shell to precache').toBeGreaterThan(5);
-    // spec-v1059: every entry is relative to the worker's scope. This is not
-    // style policing -- it is the assertion that replaces the filter that used to
-    // hide entries of any other shape from the check below.
-    expect(
-      promised.filter((p) => !p.startsWith('./')),
-      'every shell asset is written relative to the worker scope, so none is skipped here',
-    ).toEqual([]);
+  test('the app boots offline from the pack', async ({ page }) => {
+    await installed(page, s.base);
+    s.down = true;
+    await bootsOffline(page, s.base);
+  });
 
-    const cached = await page.evaluate(async (paths) => {
-      const names = await caches.keys();
-      const shell = names.find((n) => n.startsWith('sophiewell-shell'));
-      if (!shell) return { shell: null };
-      const cache = await caches.open(shell);
-      const missing = [];
-      const empty = [];
-      for (const p of paths) {
-        const res = await cache.match(new URL(p, location.href).href);
-        if (!res) { missing.push(p); continue; }
-        if (!(await res.clone().arrayBuffer()).byteLength) empty.push(p);
-      }
-      return { shell, missing, empty, size: (await cache.keys()).length };
-    }, promised);
+  test('a never-visited tool page opens offline', async ({ page }) => {
+    await installed(page, s.base);
+    s.down = true;
+    await page.goto(`${s.base}/tools/bmi/`);
+    await expect(page.locator('#q-results')).toContainText('BMI: 22.9');
+  });
 
-    expect(cached.shell, 'a shell cache exists').toBeTruthy();
-    // The install handler swallows individual failures, so this is the only
-    // place a shell asset that 404s at install time would ever show up.
-    expect(cached.missing, 'every promised shell asset is in the cache').toEqual([]);
-    expect(cached.empty, 'and each one cached a real response, not an empty body').toEqual([]);
+  test('an update that fails halfway leaves the saved pack intact', async ({ page }) => {
+    await installed(page, s.base);
+    const before = await packs(page);
+    serveUpdate(s, 'b-broken', (m) => ({ ...m, entries: [...m.entries, { url: './lib/not-deployed.js', hash: '0' }] }));
+    expect(await updateOutcome(page), 'the broken update is discarded').toBe('redundant');
+    const after = await packs(page);
+    expect(after.find((p) => p.name === before[0].name), 'the saved pack is still there and complete')
+      .toEqual({ ...before[0], missing: [] });
+    s.down = true;
+    await bootsOffline(page, s.base);
+  });
+
+  test('an update fetches only the entries that changed', async ({ page }) => {
+    await installed(page, s.base);
+    serveUpdate(s, 'b-one-change', (m) => ({
+      ...m, entries: m.entries.map((e) => (e.url === './styles.css' ? { ...e, hash: 'changed' } : e)),
+    }));
+    s.log.length = 0;
+    expect(await updateOutcome(page)).toBe('activated');
+    const fetched = s.log.filter((p) => p !== '/sw.js' && p !== '/precache-manifest.json');
+    expect(fetched, 'only the changed entry crossed the network').toEqual(['/styles.css']);
+    const after = await packs(page, manifest().entries.map((e) => e.url));
+    expect(after.map((p) => [p.name, p.complete, p.missing.length])).toEqual([['sophiewell-pack-b-one-change', true, 0]]);
   });
 });

@@ -109,8 +109,10 @@ keyboard shortcuts, the pinning system, and the CSP/storage assertions.
   CSP `connect-src 'self'` plus the narrow Turnstile script/frame exception,
   HSTS preload, COOP/COEP/CORP isolation,
   Permissions-Policy denying camera/mic/geolocation/payment/USB.
-- **Service worker** caches the bundle keyed to `BUILD_HASH`, so a new
-  deploy invalidates the old cache.
+- **Service worker** saves the offline pack keyed to its version (`PACK`);
+  a deploy that changes what runs installs a new pack, fetching only the
+  files whose hash changed, and the old pack goes only once the new one is
+  complete.
 
 ## Rollback
 

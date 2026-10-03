@@ -42,6 +42,6 @@
 /app.js
   Cache-Control: public, max-age=0, must-revalidate
 
-# Data shards: cache for one day; the service worker keys them to BUILD_HASH.
+# Data shards: cache for one day; the service worker keys them to the pack version (PACK).
 /data/*
   Cache-Control: public, max-age=86400

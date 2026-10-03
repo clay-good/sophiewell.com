@@ -3,6 +3,7 @@
 
 import { renderers as RA } from './views/group-a.js';
 import { installDecimalComma } from './lib/decimal-comma.js';
+import { installOfflineStatus } from './lib/offline-status.js';
 import { renderers as RC } from './views/group-c.js';
 import { renderers as RE } from './views/group-e.js';
 import { renderers as RF } from './views/group-f.js';
@@ -6409,6 +6410,8 @@ function registerServiceWorker() {
   navigator.serviceWorker.register('sw.js').catch(() => {
     // Silent: offline support is best-effort.
   });
+  // spec-v1541 §3: one footer line saying what is saved for offline use.
+  installOfflineStatus(document.getElementById('offline-status'), navigator.serviceWorker, navigator.storage);
 }
 
 // ----- Boot ----------------------------------------------------------------

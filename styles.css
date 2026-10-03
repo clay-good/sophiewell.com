@@ -1046,6 +1046,13 @@ main h1 {
   align-items: center;
   gap: 18px;
 }
+/* spec-v1541 §3: the one line about the offline copy. */
+.offline-status {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-muted);
+  text-align: center;
+}
 .footer-badges {
   display: flex;
   align-items: center;

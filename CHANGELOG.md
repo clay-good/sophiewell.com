@@ -1244,6 +1244,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   Chrome, Edge and Safari in English dropped the comma and used 375. A comma that
   could be a thousands separator (1,500) empties the field and asks for the
   number without it.
+- Offline use no longer depends on which pages you happened to open. One visit
+  now saves every tool, the search and its data, and an update is used only
+  after all of it has downloaded: before, an update caught by a dropped signal
+  deleted the saved copy and left the site unable to open offline. An update
+  downloads only the files that changed, and a change that touches nothing the
+  site runs downloads nothing. A tool page never opened online now opens the
+  same tool offline. The footer says when the copy is saved, and its date.
+  Opening a saved copy of the page from a file now says, in plain words, how to
+  get one that works.
 
 - IRF compliance clock: admissions from October 1, 2026 follow the amended rule
   (42 CFR 412.622, FY2027 IRF final rule): the first interdisciplinary team

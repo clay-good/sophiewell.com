@@ -42,18 +42,16 @@ function indexHtmlLocalAssets() {
   return assets;
 }
 
-function shellAssets() {
-  const sw = readFileSync(join(ROOT, 'sw.js'), 'utf8');
-  const block = sw.match(/const SHELL_ASSETS = \[([\s\S]*?)\];/);
-  assert.ok(block, 'sw.js must declare a SHELL_ASSETS array');
-  return new Set(
-    [...block[1].matchAll(/'([^']+)'/g)].map((mm) => mm[1])
-  );
+// spec-v1541: the shell is the root of the offline pack, and lives with the
+// builder that walks the rest of the app from it.
+async function shellAssets() {
+  const { SHELL_ASSETS } = await import('../../scripts/build-precache.mjs');
+  return new Set(SHELL_ASSETS);
 }
 
-test('sw.js precaches every local asset index.html references', () => {
+test('sw.js precaches every local asset index.html references', async () => {
   const referenced = indexHtmlLocalAssets();
-  const precached = shellAssets();
+  const precached = await shellAssets();
   // index.html must reference something -- guard against a regex that matched nothing.
   assert.ok(referenced.size >= 6, `expected >=6 local assets in index.html, found ${referenced.size}`);
   const missing = [...referenced].filter((a) => !precached.has(a));
@@ -61,28 +59,28 @@ test('sw.js precaches every local asset index.html references', () => {
     missing,
     [],
     `SHELL_ASSETS is missing shell assets index.html loads: ${missing.join(', ')}. `
-      + 'Add them to sw.js SHELL_ASSETS so an offline cold reload renders the full shell.'
+      + 'Add them to SHELL_ASSETS in scripts/build-precache.mjs so an offline cold reload renders the full shell.'
   );
 });
 
-test('sw.js precaches nothing the shell does not load', () => {
+test('sw.js precaches nothing the shell does not load', async () => {
   const referenced = indexHtmlLocalAssets();
   // The document itself, under both the names a navigation can arrive as. No
   // tag inside it references it, and precaching it is the whole point.
   const SELF = new Set(['./', './index.html']);
-  const extra = [...shellAssets()].filter((a) => !SELF.has(a) && !referenced.has(a));
+  const extra = [...(await shellAssets())].filter((a) => !SELF.has(a) && !referenced.has(a));
   assert.deepEqual(
     extra,
     [],
     `SHELL_ASSETS precaches ${extra.join(', ')}, which index.html does not load. `
-      + 'Either the shell stopped referencing it -- drop it from sw.js -- or it is '
+      + 'Either the shell stopped referencing it -- drop it from scripts/build-precache.mjs -- or it is '
       + 'fetched some other way, in which case say where, here.'
   );
 });
 
-test('sw.js SHELL_ASSETS entries are all relative ./ paths (no /data/* manifests)', () => {
-  for (const a of shellAssets()) {
+test('sw.js SHELL_ASSETS entries are all relative ./ paths (no /data/* manifests)', async () => {
+  for (const a of await shellAssets()) {
     assert.ok(a.startsWith('./'), `SHELL_ASSETS entry "${a}" must be a relative ./ path`);
-    assert.ok(!a.includes('/data/'), `SHELL_ASSETS must not precache data shards (got "${a}"); data is cached lazily via DATA_CACHE`);
+    assert.ok(!a.includes('/data/'), `SHELL_ASSETS must not precache data shards (got "${a}"); the builder adds the pack's data after the shell`);
   }
 });

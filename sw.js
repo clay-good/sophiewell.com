@@ -1,71 +1,89 @@
-// sophiewell.com service worker.
-// - Precaches the application shell on install.
-// - Caches data shards on first fetch with a cache-first strategy.
-// - Deletes old caches on activation.
+// sophiewell.com service worker (spec-v1541: offline that survives the field).
 //
-// BUILD_HASH is bumped by the build script. The cache name includes it so a
-// new deployment cleanly invalidates old caches.
-
-const BUILD_HASH = 'dev';
-const SHELL_CACHE = `sophiewell-shell-${BUILD_HASH}`;
-const DATA_CACHE = `sophiewell-data-${BUILD_HASH}`;
-
-// Precache the full application shell -- every file index.html references.
-// spec-v75 added the two shell scripts (theme.js, file-origin-guard.js) the list
-// had omitted but stopped short of the head's icon/manifest links and the topbar
-// brand <img>, so an offline cold reload still rendered a broken logo and missing
-// favicons. spec-v84 closes that gap: the six head/chrome assets index.html loads
-// (favicon.ico, the two PNG favicons, apple-touch-icon, site.webmanifest, logo.png)
-// are now precached too, so SHELL_ASSETS is the complete static shell. A unit
-// guard (test/unit/sw-shell.test.js) asserts every local href/src in index.html
-// stays in this list, so it cannot silently drift again. Dataset manifests are
-// still NOT precached: they (and their shards) are cached lazily on first fetch
-// via DATA_CACHE in the fetch handler below.
+// - Install stores the whole offline pack named by precache-manifest.json, or
+//   nothing: one failed entry fails the install, and the worker already in
+//   control keeps serving its own complete pack. A half-downloaded update is
+//   never used.
+// - An entry whose content hash is unchanged is copied from the previous pack
+//   instead of fetched, so a one-file fix costs one file.
+// - An install interrupted by a lost signal resumes where it stopped: the
+//   entries already stored stay in the new pack's cache until the next attempt.
+// - The manifest is stored last. A pack cache holding it is complete; that is
+//   how this worker, the next one, and the page's status line tell.
+// - Old caches are deleted only on activate, which follows a complete install.
 //
-// The list also has to hold nothing the shell does not load. It carried
-// CHANGELOG.md and docs/stability.md, which the #changelog and #stability
-// routes fetched -- and those routes went with everything else that was not
-// find-a-tool-and-use-it. Nothing referenced either file afterwards, so every
-// visitor's install spent 1.35 MB downloading a changelog no page links to.
-// The same guard now reads in both directions.
-const SHELL_ASSETS = [
-  './',
-  './index.html',
-  './styles.css',
-  './app.js',
-  './theme.js',
-  './file-origin-guard.js',
-  './lib/upload-worker.js',
-  './lib/rx-match-worker.js',
-  './lib/x12-835-worker.js',
-  './lib/remittance-analysis-worker.js',
-  './lib/intake-worker.js',
-  './favicon.ico',
-  './favicon-32x32.png',
-  './favicon-16x16.png',
-  './apple-touch-icon.png',
-  './site.webmanifest',
-  './logo.png',
-];
+// PACK is stamped by scripts/build-precache.mjs with a hash of what the app
+// runs, not the commit, so a docs-only commit leaves this file, and every
+// phone's saved copy, untouched.
+
+const PACK = 'dev';
+const PACK_PREFIX = 'sophiewell-pack-';
+const PACK_CACHE = `sophiewell-pack-${PACK}`;
+// Anything fetched at run time that is not in the pack: dataset shards and
+// prerendered pages. Keyed by the pack, whose version covers every data file.
+const RUNTIME_CACHE = `sophiewell-data-${PACK}`;
+const MANIFEST = './precache-manifest.json';
+const PARALLEL = 6;
+
+async function tell(message) {
+  const clients = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
+  for (const c of clients) c.postMessage(message);
+}
+
+// The complete packs already on the phone, newest manifest per url: url -> { hash, cache }.
+async function previousEntries() {
+  const out = new Map();
+  for (const name of await caches.keys()) {
+    if (!name.startsWith(PACK_PREFIX) || name === PACK_CACHE) continue;
+    // Opened by its literal prefix, which scripts/check-commitments.mjs reads (spec-v50 §3.4).
+    const cache = await caches.open(`sophiewell-pack-${name.slice(PACK_PREFIX.length)}`);
+    const stored = await cache.match(MANIFEST);
+    if (!stored) continue;
+    try {
+      for (const e of (await stored.json()).entries) out.set(e.url, { hash: e.hash, cache });
+    } catch (_e) { /* an unreadable manifest offers nothing to reuse */ }
+  }
+  return out;
+}
+
+async function installPack() {
+  const res = await fetch(MANIFEST, { cache: 'no-cache' });
+  if (!res.ok) throw new Error(`precache manifest: ${res.status}`);
+  const manifest = await res.clone().json();
+  // A deploy caught between files: this worker and the manifest disagree. Fail,
+  // and the browser tries again at its next update check.
+  if (manifest.version !== PACK) throw new Error(`precache manifest is ${manifest.version}, worker is ${PACK}`);
+  const cache = await caches.open(PACK_CACHE);
+  if (await cache.match(MANIFEST)) return;
+  const previous = await previousEntries();
+  const queue = manifest.entries.slice();
+  const total = queue.length;
+  let done = 0;
+  let told = 0;
+  async function one(entry) {
+    if (await cache.match(entry.url)) return;
+    const prev = previous.get(entry.url);
+    let response = prev && prev.hash === entry.hash ? await prev.cache.match(entry.url) : null;
+    if (!response) {
+      response = await fetch(entry.url, { cache: 'no-cache' });
+      if (!response.ok) throw new Error(`${entry.url}: ${response.status}`);
+    }
+    await cache.put(entry.url, response);
+  }
+  async function lane() {
+    while (queue.length) {
+      await one(queue.shift());
+      done += 1;
+      const pct = Math.floor((done / total) * 100);
+      if (pct > told) { told = pct; tell({ type: 'pack-progress', pct }); }
+    }
+  }
+  await Promise.all(Array.from({ length: PARALLEL }, lane));
+  await cache.put(MANIFEST, res);
+}
 
 self.addEventListener('install', (event) => {
-  event.waitUntil(
-    (async () => {
-      const cache = await caches.open(SHELL_CACHE);
-      // Tolerate missing manifests during early build steps.
-      await Promise.all(
-        SHELL_ASSETS.map(async (url) => {
-          try {
-            const response = await fetch(url, { cache: 'no-cache' });
-            if (response && response.ok) await cache.put(url, response.clone());
-          } catch (_e) {
-            // Swallow individual failures; install still succeeds.
-          }
-        })
-      );
-      await self.skipWaiting();
-    })()
-  );
+  event.waitUntil(installPack().then(() => self.skipWaiting()));
 });
 
 self.addEventListener('activate', (event) => {
@@ -74,7 +92,7 @@ self.addEventListener('activate', (event) => {
       const names = await caches.keys();
       await Promise.all(
         names
-          .filter((name) => name !== SHELL_CACHE && name !== DATA_CACHE)
+          .filter((name) => name !== PACK_CACHE && name !== RUNTIME_CACHE)
           .map((name) => caches.delete(name))
       );
       await self.clients.claim();
@@ -82,12 +100,25 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-function isDataRequest(url) {
-  return url.pathname.includes('/data/');
-}
+// The page asks whether its pack is complete, for the footer's status line.
+self.addEventListener('message', (event) => {
+  if (!event.data || event.data.type !== 'pack-status') return;
+  event.waitUntil(
+    (async () => {
+      const stored = await (await caches.open(PACK_CACHE)).match(MANIFEST);
+      let date = null;
+      if (stored) { try { date = (await stored.json()).date; } catch (_e) { /* complete, undated */ } }
+      event.source.postMessage({ type: 'pack-status', complete: !!stored, date });
+    })()
+  );
+});
 
-function isSameOrigin(url) {
-  return url.origin === self.location.origin;
+function offline(text) {
+  return new Response(text, {
+    status: 504,
+    statusText: 'Gateway Timeout',
+    headers: { 'Content-Type': 'text/plain; charset=utf-8', 'X-Offline': '1' },
+  });
 }
 
 self.addEventListener('fetch', (event) => {
@@ -95,59 +126,46 @@ self.addEventListener('fetch', (event) => {
   if (request.method !== 'GET') return;
 
   const url = new URL(request.url);
-  if (!isSameOrigin(url)) return;
+  if (url.origin !== self.location.origin) return;
 
   // Report configuration is a live kill-switch surface. Never satisfy an API
-  // request with an old shell-cache response.
+  // request from a cache.
   if (url.pathname.startsWith('/api/')) return;
 
-  if (isDataRequest(url)) {
-    // Cache-first for data shards; fall through to network on miss and store.
-    event.respondWith(
-      (async () => {
-        const cache = await caches.open(DATA_CACHE);
-        const cached = await cache.match(request);
+  event.respondWith(
+    (async () => {
+      const packed = await (await caches.open(PACK_CACHE)).match(request, { ignoreSearch: true });
+      if (packed) return packed;
+      const runtime = await caches.open(RUNTIME_CACHE);
+      // Dataset shards: cache-first. A changed data file changes PACK, and with
+      // it this cache's name.
+      if (url.pathname.includes('/data/')) {
+        const cached = await runtime.match(request);
         if (cached) return cached;
         try {
           const response = await fetch(request);
-          if (response && response.ok) {
-            cache.put(request, response.clone());
-          }
+          if (response && response.ok) runtime.put(request, response.clone());
           return response;
-        } catch (err) {
-          // Offline and not in cache: return a clear error response.
-          return new Response('Offline and resource not cached.', {
-            status: 504,
-            statusText: 'Gateway Timeout',
-            headers: { 'Content-Type': 'text/plain; charset=utf-8' },
-          });
+        } catch (_e) {
+          return offline('This list needs a connection the first time it is used. After that it works offline.');
         }
-      })()
-    );
-    return;
-  }
-
-  // Shell: cache-first, fall back to network, fall back to cached index.html
-  // for navigation requests so offline reload still works.
-  event.respondWith(
-    (async () => {
-      const cache = await caches.open(SHELL_CACHE);
-      const cached = await cache.match(request);
-      if (cached) return cached;
+      }
+      // Everything else (the prerendered /tools/, /for/ and /topics/ pages):
+      // network first, so a copy fix is seen, then the copy saved on a visit.
       try {
         const response = await fetch(request);
-        if (response && response.ok) cache.put(request, response.clone());
+        if (response && response.ok) runtime.put(request, response.clone());
         return response;
-      } catch (err) {
+      } catch (_e) {
+        const cached = await runtime.match(request);
+        if (cached) return cached;
         if (request.mode === 'navigate') {
-          const fallback = await cache.match('./index.html');
-          if (fallback) return fallback;
+          // A page never visited online: open the same tool in the app, which
+          // is in the pack. /tools/<id>/ is the app's #<id>.
+          const tool = /^\/tools\/([^/]+)\/?$/.exec(url.pathname);
+          return Response.redirect(new URL(tool ? `/#${tool[1]}` : '/', self.location.origin).href, 302);
         }
-        return new Response('Offline.', {
-          status: 504,
-          statusText: 'Gateway Timeout',
-          headers: { 'Content-Type': 'text/plain; charset=utf-8' },
-        });
+        return offline('Offline.');
       }
     })()
   );

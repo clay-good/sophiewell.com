@@ -32,9 +32,11 @@ Report launch and D1 maintenance are in
 - Copies `index.html`, `styles.css`, `app.js`, `sw.js`, `_headers`,
   `robots.txt`, `sitemap.xml`, `site.webmanifest` to `dist/`.
 - Recursively copies `lib/`, `views/`, and `data/`.
-- Computes a 12-character `BUILD_HASH` from the shipped files and stamps
-  it into `dist/sw.js`. New builds invalidate old service-worker caches
-  cleanly without code changes.
+- Writes `dist/precache-manifest.json` (`scripts/build-precache.mjs`): the
+  offline pack -- the shell, every module the app imports, the search and
+  prefill data -- with a content hash per file, and stamps the pack version
+  into `dist/sw.js` as `PACK`. The version hashes what the app runs, not the
+  commit, so a docs-only deploy changes nothing on a phone.
 
 ## Header verification
 

@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 // Copies the static site to dist/ for Cloudflare Pages deployment.
-// Stamps sw.js BUILD_HASH with a content hash of the shipped files.
+// Writes the offline pack's manifest and stamps its version into sw.js
+// (scripts/build-precache.mjs, spec-v1541).
 
 import { copyFile, mkdir, readFile, readdir, stat, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { dirname, join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { createHash } from 'node:crypto';
 import { withInlineHashes } from './csp.mjs';
 
 const ROOT = resolve(fileURLToPath(import.meta.url), '..', '..');
@@ -39,18 +39,6 @@ async function copyTree(src) {
     await ensureDir(dirname(dest));
     await copyFile(file, dest);
   }
-}
-
-async function buildHash() {
-  // Hash a manifest of important file mtimes + contents for a stable build id.
-  const h = createHash('sha256');
-  for (const f of [...COPY_FILES, 'data/icd10cm/manifest.json']) {
-    const p = join(ROOT, f);
-    if (!existsSync(p)) continue;
-    h.update(f);
-    h.update(await readFile(p));
-  }
-  return h.digest('hex').slice(0, 12);
 }
 
 async function regenerate() {
@@ -136,20 +124,18 @@ async function main() {
     if (r.status !== 0) throw new Error(`${script} exited with status ${r.status}`);
   }
 
-  const hash = await buildHash();
-  // Stamp BUILD_HASH in dist/sw.js.
-  const swPath = join(DIST, 'sw.js');
-  const sw = await readFile(swPath, 'utf8');
-  const stamped = sw.replace(/const BUILD_HASH = '[^']*';/, `const BUILD_HASH = '${hash}';`);
-  await writeFile(swPath, stamped, 'utf8');
-
   // spec-v1625: receipts name the commit the site was built from. Written into
   // dist/ only -- the checked-in lib/build-info.js stays 'dev' -- so a build
   // never rewrites a tracked file.
   const commit = await buildCommit();
   await writeFile(join(DIST, 'lib', 'build-info.js'), `// Written by scripts/build.mjs.\nexport const BUILD = { commit: ${JSON.stringify(commit)} };\n`, 'utf8');
 
-  console.log(`build: dist/ ready (BUILD_HASH=${hash}, commit ${commit})`);
+  // spec-v1541: the offline pack -- dist/precache-manifest.json, and its
+  // version stamped into dist/sw.js as PACK. Last, so it hashes what ships.
+  const r = spawnSync(process.execPath, [join(ROOT, 'scripts', 'build-precache.mjs')], { stdio: 'inherit' });
+  if (r.status !== 0) throw new Error(`build-precache.mjs exited with status ${r.status}`);
+
+  console.log(`build: dist/ ready (commit ${commit})`);
 }
 
 main().catch((err) => { console.error('build: failed', err); process.exit(1); });

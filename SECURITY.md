@@ -83,8 +83,10 @@ summary:
   `Cross-Origin-Resource-Policy: same-origin`.
 - `Permissions-Policy` denies camera, microphone, geolocation, payment,
   USB, and accelerometer.
-- A service worker (`sw.js`) caches the bundle for offline use; cache
-  keys include the `BUILD_HASH` so a new deploy invalidates old caches.
+- A service worker (`sw.js`) saves the app for offline use as one pack,
+  listed with content hashes in `precache-manifest.json`; the cache name is
+  the pack's version (`PACK`), so a deploy that changes what runs replaces it,
+  and the old pack is deleted only after the new one is complete.
 
 ## Privacy
 

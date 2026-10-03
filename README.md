@@ -43,7 +43,7 @@ For example, on [Wells Score for PE](https://sophiewell.com/#wells-pe)
 you tick the criteria that apply and get
 `Wells PE total: 4.5 (Moderate probability)`.
 
-Calculations run locally and keep working offline. Nothing leaves your device
+Calculations run locally, and after one visit every tool keeps working offline. Nothing leaves your device
 unless you deliberately choose **Report a problem**; that action sends the
 canonical tool URL and an optional short note to a private maintenance queue.
 Current bounded inputs and results are included only when you select the
