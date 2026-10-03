@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Preventive services covered at $0: the USPSTF A and B recommendations a
+  private plan must cover in network with no cost sharing, filtered by age,
+  sex, pregnancy and the risk questions you answer, in the USPSTF's own words
+  with links; anything that turns on an unanswered question says so.
+
 - Prior authorization FHIR bundle check: a Da Vinci PAS request or response
   bundle checked against the guide's 2.2.1 profiles, with each error's element
   path, for teams building the Prior Authorization API due January 1, 2027.
@@ -1226,6 +1231,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   arriving from COWS will expect four. See docs/spec-v1061.md.
 
 ### Fixed
+
+- IRF compliance clock: admissions from October 1, 2026 follow the amended rule
+  (42 CFR 412.622, FY2027 IRF final rule): the first interdisciplinary team
+  meeting is due by day 4, counting the admission day as day 1, and therapy or
+  a therapy evaluation by 36 hours after the midnight that follows admission,
+  the reading CMS now states. Found by the new weekly eCFR amendment watcher.
 
 - The 835 reader no longer refuses a file with a reversal: a claim with status
   22 and negative amounts now reads and balances.

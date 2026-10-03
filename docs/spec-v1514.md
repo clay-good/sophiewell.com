@@ -196,3 +196,10 @@ eCFR (current September 2026): 42 CFR 405.1200–405.1212, 409.30, 409.60, 409.6
   - The MCSN retrospective window (closed January 2, 2026, good cause excepted) was confirmed on the CMS
     patient-status appeals page.
   - Not built: the standard-written-order check (410.38(d)(1)) and the face-to-face-required list for DME.
+- **Updated 2026-10-03:** `irf-compliance-clock`, after the spec-v1517 eCFR watcher found 42 CFR 412.622 amended
+  October 1, 2026 (FY2027 IRF final rule, 91 FR 48982, read that day): for admissions from that date the first
+  interdisciplinary team meeting is due on or before day 4, the admission day being day 1 (CMS's example: admitted
+  Thursday, by the end of Sunday), and later meetings within a week of the one before; earlier admissions keep the
+  first-week rule. The rule also states that "midnight on the day of admission" is the midnight that follows
+  admission, so the tool no longer shows the earlier reading beside it. `hospice-aggregate-cap` was re-read too:
+  418.309's amendment extends the update method from 2033 to 2035 and leaves the FY2026 and FY2027 amounts as they are.

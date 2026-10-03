@@ -145,3 +145,22 @@ test('mcsn-appeal-rights: blank required dates or Part B ask', () => {
   assert.equal(mcsn({}).valid, false);
   assert.equal(mcsn({ hospitalStart: '2026-10-04', admitted: '2026-10-05', reclassified: '2026-10-06' }).valid, false);
 });
+
+// spec-v1517 eCFR watcher: 42 CFR 412.622 was amended October 1, 2026 (FY2027 IRF final rule, 91 FR 48982).
+test('irf: from October 1, 2026 the first team meeting is due by day 4, the admission day being day 1 (CMS: admitted Thursday, by end of Sunday)', () => {
+  assert.equal(irf({ admission: '2026-10-08T15:00', teamMeeting: '2026-10-11T23:00' }).bandLabel, 'Met');
+  const late = irf({ admission: '2026-10-08T15:00', teamMeeting: '2026-10-12T09:00' });
+  assert.equal(late.bandLabel, '1 not met');
+  assert.match(late.band, /after the end of October 11, 2026, day 4 counting the admission day as day 1/);
+});
+
+test('irf: an admission before October 1, 2026 keeps the first-week rule', () => {
+  assert.equal(irf({ admission: '2026-09-24T15:00', teamMeeting: '2026-09-30T10:00' }).bandLabel, 'Met');
+  assert.equal(irf({ admission: '2026-09-24T15:00', teamMeeting: '2026-10-01T10:00' }).bandLabel, '1 not met');
+});
+
+test('irf: therapy is counted from the midnight that follows admission (CMS: admitted 4 p.m. Friday, by noon Sunday)', () => {
+  const r = irf({ admission: '2026-10-09T16:00' });
+  assert.match(r.notes[0], /^Therapy, or a therapy evaluation, must begin by October 11, 2026, 12:00 pm, 36 hours from the midnight that follows admission/);
+  assert.ok(!r.notes.join(' ').includes('midnight that begins'), 'the second reading is gone: CMS settled it');
+});

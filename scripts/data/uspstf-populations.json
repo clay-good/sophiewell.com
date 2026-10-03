@@ -1,0 +1,484 @@
+{
+ "about": "Curated by hand from each USPSTF A and B recommendation's own population and description (spec-v1621 section 3.6): sexes, ageMin and ageMax in years (inclusive; 'younger than 65' is 64), pregnancy ('pregnant', 'pregnant-or-postpartum' or 'not-pregnant') and the risk questions (lib/preventive-owed.js RISKS) the population turns on. Keys are the page alias and the first 8 hex characters of the description's SHA-256; a reworded or new row has no key here and stops the refresh for review.",
+ "curatedAt": "2026-10-03",
+ "populations": {
+  "abdominal-aortic-aneurysm-screening#4c110a1c": {
+   "ageMax": 75,
+   "ageMin": 65,
+   "pregnancy": null,
+   "risks": [
+    "ever-smoked"
+   ],
+   "sexes": [
+    "male"
+   ]
+  },
+  "anxiety-adults-screening#5ff508aa": {
+   "ageMax": 64,
+   "ageMin": 18,
+   "pregnancy": null,
+   "risks": [],
+   "sexes": null
+  },
+  "asymptomatic-bacteriuria-in-adults-screening#8efc9fe5": {
+   "ageMax": null,
+   "ageMin": null,
+   "pregnancy": "pregnant",
+   "risks": [],
+   "sexes": [
+    "female"
+   ]
+  },
+  "brca-related-cancer-risk-assessment-genetic-counseling-and-genetic-testing#aab7d7db": {
+   "ageMax": null,
+   "ageMin": null,
+   "pregnancy": null,
+   "risks": [
+    "brca-history"
+   ],
+   "sexes": [
+    "female"
+   ]
+  },
+  "breast-cancer-medications-for-risk-reduction#ad12b819": {
+   "ageMax": null,
+   "ageMin": 35,
+   "pregnancy": null,
+   "risks": [
+    "breast-cancer-increased-risk"
+   ],
+   "sexes": [
+    "female"
+   ]
+  },
+  "breast-cancer-screening#5b7fd699": {
+   "ageMax": 74,
+   "ageMin": 40,
+   "pregnancy": null,
+   "risks": [],
+   "sexes": [
+    "female"
+   ]
+  },
+  "breastfeeding-primary-care-interventions#49e20a55": {
+   "ageMax": null,
+   "ageMin": null,
+   "pregnancy": "pregnant-or-postpartum",
+   "risks": [],
+   "sexes": [
+    "female"
+   ]
+  },
+  "cervical-cancer-screening#62f6325e": {
+   "ageMax": 65,
+   "ageMin": 21,
+   "pregnancy": null,
+   "risks": [],
+   "sexes": [
+    "female"
+   ]
+  },
+  "chlamydia-and-gonorrhea-screening#20fb5378": {
+   "ageMax": null,
+   "ageMin": null,
+   "pregnancy": null,
+   "risks": [
+    "sti-screening-risk"
+   ],
+   "sexes": [
+    "female"
+   ]
+  },
+  "chlamydia-and-gonorrhea-screening#e59ecaab": {
+   "ageMax": null,
+   "ageMin": null,
+   "pregnancy": null,
+   "risks": [
+    "sti-screening-risk"
+   ],
+   "sexes": [
+    "female"
+   ]
+  },
+  "colorectal-cancer-screening#5b01c3d8": {
+   "ageMax": 75,
+   "ageMin": 50,
+   "pregnancy": null,
+   "risks": [],
+   "sexes": null
+  },
+  "colorectal-cancer-screening#e76835ae": {
+   "ageMax": 49,
+   "ageMin": 45,
+   "pregnancy": null,
+   "risks": [],
+   "sexes": null
+  },
+  "drug-use-illicit-screening#508d1119": {
+   "ageMax": null,
+   "ageMin": 18,
+   "pregnancy": null,
+   "risks": [],
+   "sexes": null
+  },
+  "falls-prevention-community-dwelling-older-adults-interventions#25264894": {
+   "ageMax": null,
+   "ageMin": 65,
+   "pregnancy": null,
+   "risks": [
+    "fall-risk"
+   ],
+   "sexes": null
+  },
+  "folic-acid-for-the-prevention-of-neural-tube-defects-preventive-medication#b5b12f43": {
+   "ageMax": null,
+   "ageMin": null,
+   "pregnancy": null,
+   "risks": [
+    "could-become-pregnant"
+   ],
+   "sexes": [
+    "female"
+   ]
+  },
+  "gestational-diabetes-screening#40197058": {
+   "ageMax": null,
+   "ageMin": null,
+   "pregnancy": "pregnant",
+   "risks": [],
+   "sexes": [
+    "female"
+   ]
+  },
+  "healthy-diet-and-physical-activity-counseling-adults-with-high-risk-of-cvd#7f213cc4": {
+   "ageMax": null,
+   "ageMin": 18,
+   "pregnancy": null,
+   "risks": [
+    "cvd-risk-factors"
+   ],
+   "sexes": null
+  },
+  "healthy-weight-and-weight-gain-during-pregnancy-behavioral-counseling-interventions#a04e5d2a": {
+   "ageMax": null,
+   "ageMin": null,
+   "pregnancy": "pregnant",
+   "risks": [],
+   "sexes": [
+    "female"
+   ]
+  },
+  "hepatitis-b-virus-infection-in-pregnant-women-screening#ccd0bd7a": {
+   "ageMax": null,
+   "ageMin": null,
+   "pregnancy": "pregnant",
+   "risks": [],
+   "sexes": [
+    "female"
+   ]
+  },
+  "hepatitis-b-virus-infection-screening#6cbbd0d7": {
+   "ageMax": null,
+   "ageMin": null,
+   "pregnancy": null,
+   "risks": [
+    "hbv-risk"
+   ],
+   "sexes": null
+  },
+  "hepatitis-c-screening#1c9248b1": {
+   "ageMax": 79,
+   "ageMin": 18,
+   "pregnancy": null,
+   "risks": [],
+   "sexes": null
+  },
+  "human-immunodeficiency-virus-hiv-infection-screening#631ee560": {
+   "ageMax": 65,
+   "ageMin": 15,
+   "pregnancy": null,
+   "risks": [],
+   "sexes": null
+  },
+  "human-immunodeficiency-virus-hiv-infection-screening#b40b9573": {
+   "ageMax": null,
+   "ageMin": null,
+   "pregnancy": "pregnant",
+   "risks": [],
+   "sexes": [
+    "female"
+   ]
+  },
+  "hypertension-in-adults-screening#8a74b58d": {
+   "ageMax": null,
+   "ageMin": 18,
+   "pregnancy": null,
+   "risks": [],
+   "sexes": null
+  },
+  "hypertensive-disorders-pregnancy-screening#bb28d680": {
+   "ageMax": null,
+   "ageMin": null,
+   "pregnancy": "pregnant",
+   "risks": [],
+   "sexes": [
+    "female"
+   ]
+  },
+  "intimate-partner-violence-and-abuse-of-elderly-and-vulnerable-adults-screening#f425d268": {
+   "ageMax": null,
+   "ageMin": null,
+   "pregnancy": null,
+   "risks": [
+    "reproductive-age"
+   ],
+   "sexes": [
+    "female"
+   ]
+  },
+  "latent-tuberculosis-infection-screening#45a4bc50": {
+   "ageMax": null,
+   "ageMin": 18,
+   "pregnancy": null,
+   "risks": [
+    "ltbi-risk"
+   ],
+   "sexes": null
+  },
+  "low-dose-aspirin-use-for-the-prevention-of-morbidity-and-mortality-from-preeclampsia-preventive-medication#c0f0a8f0": {
+   "ageMax": null,
+   "ageMin": null,
+   "pregnancy": "pregnant",
+   "risks": [
+    "preeclampsia-high-risk"
+   ],
+   "sexes": [
+    "female"
+   ]
+  },
+  "lung-cancer-screening#66c11fed": {
+   "ageMax": 80,
+   "ageMin": 50,
+   "pregnancy": null,
+   "risks": [
+    "lung-smoking-history"
+   ],
+   "sexes": null
+  },
+  "obesity-in-adults-interventions#52888c6b": {
+   "ageMax": null,
+   "ageMin": 18,
+   "pregnancy": null,
+   "risks": [
+    "bmi-30"
+   ],
+   "sexes": null
+  },
+  "obesity-in-children-and-adolescents-screening#af9c3f52": {
+   "ageMax": 18,
+   "ageMin": 6,
+   "pregnancy": null,
+   "risks": [
+    "high-bmi-child"
+   ],
+   "sexes": null
+  },
+  "ocular-prophylaxis-for-gonococcal-ophthalmia-neonatorum-preventive-medication#0eda6146": {
+   "ageMax": 0,
+   "ageMin": 0,
+   "pregnancy": null,
+   "risks": [],
+   "sexes": null
+  },
+  "osteoporosis-screening#6f2f09f1": {
+   "ageMax": null,
+   "ageMin": 65,
+   "pregnancy": null,
+   "risks": [],
+   "sexes": [
+    "female"
+   ]
+  },
+  "osteoporosis-screening#aba2f7d7": {
+   "ageMax": 64,
+   "ageMin": null,
+   "pregnancy": null,
+   "risks": [
+    "postmenopausal-osteoporosis-risk"
+   ],
+   "sexes": [
+    "female"
+   ]
+  },
+  "perinatal-depression-preventive-interventions#aa1ddd05": {
+   "ageMax": null,
+   "ageMin": null,
+   "pregnancy": "pregnant-or-postpartum",
+   "risks": [
+    "perinatal-depression-risk"
+   ],
+   "sexes": [
+    "female"
+   ]
+  },
+  "prevention-of-dental-caries-in-children-younger-than-age-5-years-screening-and-interventions1#2492477d": {
+   "ageMax": 4,
+   "ageMin": 0,
+   "pregnancy": null,
+   "risks": [],
+   "sexes": null
+  },
+  "prevention-of-dental-caries-in-children-younger-than-age-5-years-screening-and-interventions1#546a8e4c": {
+   "ageMax": 4,
+   "ageMin": 0.5,
+   "pregnancy": null,
+   "risks": [
+    "fluoride-deficient-water"
+   ],
+   "sexes": null
+  },
+  "prevention-of-human-immunodeficiency-virus-hiv-infection-pre-exposure-prophylaxis#05fa66c1": {
+   "ageMax": null,
+   "ageMin": null,
+   "pregnancy": null,
+   "risks": [
+    "hiv-risk"
+   ],
+   "sexes": null
+  },
+  "rh-d-incompatibility-screening#359de422": {
+   "ageMax": null,
+   "ageMin": null,
+   "pregnancy": "pregnant",
+   "risks": [
+    "rh-negative-unsensitized"
+   ],
+   "sexes": [
+    "female"
+   ]
+  },
+  "rh-d-incompatibility-screening#c8e82fa3": {
+   "ageMax": null,
+   "ageMin": null,
+   "pregnancy": "pregnant",
+   "risks": [],
+   "sexes": [
+    "female"
+   ]
+  },
+  "screening-anxiety-children-adolescents#85b2c5d5": {
+   "ageMax": 18,
+   "ageMin": 8,
+   "pregnancy": null,
+   "risks": [],
+   "sexes": null
+  },
+  "screening-depression-suicide-risk-adults#59ed67b6": {
+   "ageMax": null,
+   "ageMin": 18,
+   "pregnancy": null,
+   "risks": [],
+   "sexes": null
+  },
+  "screening-depression-suicide-risk-children-adolescents#6026737d": {
+   "ageMax": 18,
+   "ageMin": 12,
+   "pregnancy": null,
+   "risks": [],
+   "sexes": null
+  },
+  "screening-for-prediabetes-and-type-2-diabetes#1b1d9eaa": {
+   "ageMax": 70,
+   "ageMin": 35,
+   "pregnancy": null,
+   "risks": [
+    "overweight-obesity"
+   ],
+   "sexes": null
+  },
+  "sexually-transmitted-infections-behavioral-counseling#16b9cb54": {
+   "ageMax": null,
+   "ageMin": null,
+   "pregnancy": null,
+   "risks": [
+    "sti-counseling-risk"
+   ],
+   "sexes": null
+  },
+  "skin-cancer-counseling#255a2402": {
+   "ageMax": 24,
+   "ageMin": 0.5,
+   "pregnancy": null,
+   "risks": [
+    "fair-skin"
+   ],
+   "sexes": null
+  },
+  "statin-use-in-adults-preventive-medication#2014f750": {
+   "ageMax": 75,
+   "ageMin": 40,
+   "pregnancy": null,
+   "risks": [
+    "statin-cvd-risk"
+   ],
+   "sexes": null
+  },
+  "syphilis-infection-in-pregnancy-screening#315fcd8b": {
+   "ageMax": null,
+   "ageMin": null,
+   "pregnancy": "pregnant",
+   "risks": [],
+   "sexes": [
+    "female"
+   ]
+  },
+  "syphilis-infection-nonpregnant-adults-adolescents-screening#a757202f": {
+   "ageMax": null,
+   "ageMin": null,
+   "pregnancy": "not-pregnant",
+   "risks": [
+    "syphilis-risk"
+   ],
+   "sexes": null
+  },
+  "tobacco-and-nicotine-use-prevention-in-children-and-adolescents-primary-care-interventions#8eb8ab85": {
+   "ageMax": 17,
+   "ageMin": null,
+   "pregnancy": null,
+   "risks": [
+    "school-aged-no-tobacco"
+   ],
+   "sexes": null
+  },
+  "tobacco-use-in-adults-and-pregnant-women-counseling-and-interventions#cf21ec84": {
+   "ageMax": null,
+   "ageMin": null,
+   "pregnancy": "pregnant",
+   "risks": [],
+   "sexes": [
+    "female"
+   ]
+  },
+  "tobacco-use-in-adults-and-pregnant-women-counseling-and-interventions#fd892f2d": {
+   "ageMax": null,
+   "ageMin": 18,
+   "pregnancy": "not-pregnant",
+   "risks": [],
+   "sexes": null
+  },
+  "unhealthy-alcohol-use-in-adolescents-and-adults-screening-and-behavioral-counseling-interventions#c149ffe3": {
+   "ageMax": null,
+   "ageMin": 18,
+   "pregnancy": null,
+   "risks": [],
+   "sexes": null
+  },
+  "vision-in-children-ages-6-months-to-5-years-screening#b927dc03": {
+   "ageMax": 5,
+   "ageMin": 3,
+   "pregnancy": null,
+   "risks": [],
+   "sexes": null
+  }
+ }
+}

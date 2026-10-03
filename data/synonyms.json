@@ -10539,6 +10539,18 @@
     },
     {
       "phrases": [
+        "free preventive care",
+        "preventive services covered",
+        "uspstf a and b",
+        "what screenings are free",
+        "preventive care no copay",
+        "aca preventive services list"
+      ],
+      "tile": "preventive-owed",
+      "audience": "patients"
+    },
+    {
+      "phrases": [
         "denial pattern report",
         "denial trends",
         "carc adjustment report",

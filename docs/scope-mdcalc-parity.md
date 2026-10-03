@@ -292,3 +292,5 @@ experience**.
 > v1510, negotiated-price refunds against MTF 835 files — [spec-v1510](spec-v1510.md), which adds `mfp-refund-reconcile` — is 1971.)
 
 > v1515, prior authorization FHIR bundles — [spec-v1515](spec-v1515.md), which adds `pas-bundle-check` — is 1972.)
+
+> v1601, USPSTF preventive services owed at $0 — [spec-v1601](spec-v1601.md), which adds `preventive-owed` — is 1973.)

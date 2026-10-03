@@ -28,6 +28,7 @@ file tool registers in `lib/file-kinds.js` and exports `acceptFiles`.
 | # | Tool | Group file | Needs dataset | Notes |
 |---|---|---|---|---|
 | 1 | `preventive-owed` | `views/group-v1601.js` (new) | `uspstf` | verbatim text from the dataset; the one-year rule in `lib/preventive.js` |
+| 1 | `preventive-owed` | Built October 3, 2026 ([spec-v1601](spec-v1601.md#build-status)) |
 | 2 | `preventive-cost-share-check` | same | none | rules as data in `lib/preventive.js`, each with its CFR or FAQ citation |
 | 3 | `hsa-predeductible-check` | same | `irs-hsa` (curated) | Notice 2019-45 list as curated rows |
 | 4 | `ma-criteria-check` | `views/group-v1603.js` (new) | the Medicare Coverage Database export from [spec-v1505](spec-v1505.md) when built; until then the NCD/LCD answer is reader input | decision tree as data |

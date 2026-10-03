@@ -183,11 +183,12 @@ export const renderers = {
     }));
   },
   'irf-compliance-clock'(root) {
-    const pairs = [['irf-admit', 'admission'], ['irf-screen', 'screening'], ['irf-update', 'screeningUpdate'], ['irf-therapy', 'firstTherapy'], ['irf-discharge', 'discharge']];
+    const pairs = [['irf-admit', 'admission'], ['irf-screen', 'screening'], ['irf-update', 'screeningUpdate'], ['irf-therapy', 'firstTherapy'], ['irf-team', 'teamMeeting'], ['irf-discharge', 'discharge']];
     dateInput(root, 'IRF admission, date and time', 'irf-admit', 'datetime-local');
     dateInput(root, 'Preadmission screening, date and time (optional)', 'irf-screen', 'datetime-local');
     dateInput(root, 'Screening update, date and time (optional)', 'irf-update', 'datetime-local');
-    dateInput(root, 'First therapy session, date and time (optional)', 'irf-therapy', 'datetime-local');
+    dateInput(root, 'First therapy session or evaluation, date and time (optional)', 'irf-therapy', 'datetime-local');
+    dateInput(root, 'First interdisciplinary team meeting, date and time (optional)', 'irf-team', 'datetime-local');
     dateInput(root, 'Discharge date (optional)', 'irf-discharge', 'date');
     const ids = pairs.map(([d]) => d);
     const o = out(); root.appendChild(o);

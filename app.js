@@ -1104,6 +1104,7 @@ const UTILITIES = [
   { id: 'which-appeal-path', name: 'Which Appeal Rules Apply?', group: 'C', audiences: ['billers', 'patients', 'clinicians'], clinical: false },
   { id: 'itemized-bill-check', name: 'Check My Hospital Bill Against Its Posted Prices', group: 'C', audiences: ['patients', 'billers'], clinical: false },
   { id: 'carin-eob-reader', name: 'Read My Health Insurance Claims File', group: 'C', audiences: ['patients', 'billers'], clinical: false },
+  { id: 'preventive-owed', name: 'Preventive Services Covered at $0 (USPSTF A and B List)', group: 'C', audiences: ['patients', 'clinicians'], clinical: false },
   { id: 'preventive-cost-share-check', name: 'Should I Have Paid for This Preventive Care?', group: 'C', audiences: ['patients', 'billers'], clinical: false },
   { id: 'hsa-predeductible-check', name: 'HSA Safe Harbors: What Can Be Covered Before the Deductible?', group: 'C', audiences: ['patients', 'billers'], clinical: false },
   { id: 'dpc-hsa-check', name: 'Does My Direct Primary Care Plan Keep HSA Eligibility?', group: 'C', audiences: ['patients', 'billers'], clinical: false },

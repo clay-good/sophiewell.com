@@ -64,6 +64,9 @@ jobs:
           echo "See scripts/sources.md for the canonical source URL of each dataset." >> data-refresh-summary.md
           echo >> data-refresh-summary.md
           node scripts/analyze-data-changes.mjs --previous /tmp/prev-data/data --current data >> data-refresh-summary.md
+          # spec-v1517 route B: the cited CFR sections amended since their tools last read them. It never fails.
+          echo >> data-refresh-summary.md
+          node scripts/data/watch-ecfr.mjs >> data-refresh-summary.md || true
 
       - name: Run full test suite on refreshed data
         run: |

@@ -17,5 +17,6 @@ import mcdarticles from './mcd-articles.mjs';
 import orangebook from './orange-book.mjs';
 import purplebook from './purple-book.mjs';
 import pasprofiles from './pas-profiles.mjs';
+import uspstf from './uspstf.mjs';
 
-export const BUILDERS = [mpfs, drg, mue, nadac, asp, aspndc, mcdarticles, orangebook, purplebook, pasprofiles];
+export const BUILDERS = [mpfs, drg, mue, nadac, asp, aspndc, mcdarticles, orangebook, purplebook, pasprofiles, uspstf];

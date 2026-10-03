@@ -1,0 +1,33 @@
+{
+  "manifestVersion": 2,
+  "dataset": "uspstf",
+  "label": "USPSTF A and B recommendations",
+  "sourceUrl": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation-topics/uspstf-a-and-b-recommendations",
+  "agency": "USPSTF (AHRQ)",
+  "status": "public-domain-with-attribution",
+  "cadence": "monthly",
+  "recordCount": 54,
+  "shardLayout": "shards",
+  "shards": [
+    {
+      "name": "recommendations.json",
+      "sha256": "34054856b7c9cb121c92c56887ab1643003e19158f86703862ede0724abc89d7",
+      "records": 54,
+      "bytes": 43158
+    }
+  ],
+  "notes": "One record per row of the A and B list: topic, population, description verbatim, grade, release month and link, joined with the curated age, sex, pregnancy and risk of scripts/data/uspstf-populations.json. The USPSTF terms require verbatim reproduction with the source cited.",
+  "coverage": "full",
+  "sourceEdition": "A and B list read 2026-10-03 (latest release 2025-06)",
+  "effectiveFrom": "2026-10-03",
+  "fetchedAt": "2026-10-03",
+  "contentChangedAt": "2026-10-03",
+  "expiresOn": "2026-12-02",
+  "nextExpected": "2026-11-02",
+  "sourceSha256": "555532b08e05dbe0a8c643f46b0fe35e44746f595377d771c14e365d2221b909",
+  "recordsSha256": "4e2246e4f5c04f618b8aaab34f1d48a7dbba6563ac7b6c4c05e6e30130039e7f",
+  "recordBounds": {
+    "min": 40,
+    "max": 80
+  }
+}

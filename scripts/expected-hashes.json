@@ -78,5 +78,13 @@
     "etag": null,
     "lastModified": null,
     "fetchedAt": "2026-10-03"
+  },
+  "uspstf": {
+    "url": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation-topics/uspstf-a-and-b-recommendations",
+    "edition": "A and B list read 2026-10-03 (latest release 2025-06)",
+    "sha256": "555532b08e05dbe0a8c643f46b0fe35e44746f595377d771c14e365d2221b909",
+    "etag": null,
+    "lastModified": null,
+    "fetchedAt": "2026-10-03"
   }
 }

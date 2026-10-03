@@ -959,6 +959,7 @@ import partBOrD from './adapters/part-b-or-d.js';
 import lcdDiagnosisCheck from './adapters/lcd-diagnosis-check.js';
 import pharmacySpreadCheck from './adapters/pharmacy-spread-check.js';
 import claimsPctMedicare from './adapters/claims-pct-medicare.js';
+import preventiveOwed from './adapters/preventive-owed.js';
 import medicaidUraV1510 from './adapters/medicaid-ura-v1510.js';
 import entity340bV1509 from './adapters/entity-340b-v1509.js';
 import adherenceV1513 from './adapters/adherence-v1513.js';
@@ -1964,6 +1965,7 @@ const ADAPTER_MODULES = [
   ['lcd-diagnosis-check', lcdDiagnosisCheck],
   ['pharmacy-spread-check', pharmacySpreadCheck],
   ['claims-pct-medicare', claimsPctMedicare],
+  ['preventive-owed', preventiveOwed],
   ['medicaid-ura-v1510', medicaidUraV1510],
   ['entity-340b-v1509', entity340bV1509],
   ['adherence-v1513', adherenceV1513],

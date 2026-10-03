@@ -34,6 +34,8 @@ const ASYNC_TILES = [
   'claims-pct-medicare',
   // spec-v1512: the Orange Book and Purple Book, through lib/fda-books-load.js.
   'substitution-check',
+  // spec-v1601: the USPSTF list, through lib/uspstf-load.js.
+  'preventive-owed',
 ];
 
 // Every `loadFile` call site in views/. If this moves, a tile has started (or

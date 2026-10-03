@@ -8734,6 +8734,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/pharmacy-spread-check.js (spec-v1604: Plan pharmacy claims against NADAC — administrative disclaimer)
 - `pharmacy-spread-check`
 
+### lib/preventive-owed.js (spec-v1601: USPSTF preventive services covered at $0 — administrative disclaimer)
+- `preventive-owed`
+
 ### lib/claims-pct-medicare.js (spec-v1604: Claims paid as a percent of Medicare — administrative disclaimer)
 - `claims-pct-medicare`
 
