@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:c6346e9d-876b-5431-80c7-fd250b0803ef",
+  "serialNumber": "urn:uuid:f0bf18d3-9931-5eef-8bd7-9878c2081797",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-03T03:07:31.587Z",
+    "timestamp": "2026-10-03T03:51:11.829Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1967 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1968 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b3c84b2d24fef585f453c9dd7e1974ba0abe4d51925ed708932c137eb5178c91"
+          "content": "f4178390726a60bf58aa06a221a0a8f511a5b13784b2b54bbde51d576a8c895c"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "125978"
+          "value": "126030"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1b1d8f3122adf1a9a0b751149a8095723d74c9ef00f57375da5a937a6cc5063e"
+          "content": "7621e51f72583736c32bad26a0a902416d783a55ea04f25677085db66c369ef0"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "571034"
+          "value": "571166"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6559693c873fa91b4e77a6656154455c970ff071b5a1980911883af01a2121d6"
+          "content": "0501c54d463a76c3e543c483fd8af0e76dce2930ed5d552a22a8db479638b3cd"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "245638"
+          "value": "245768"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c7dedcf67432079b4e3fe411a66c7f0d6af9a01a2c88ce4656b91387ed7c7ade"
+          "content": "f65cfcb91e0f4fee4193b804b83663cc268835e32137f456f94441c23edea8b0"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "112848"
+          "value": "112909"
         }
       ]
     },
@@ -4021,6 +4021,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "10412"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/claims-pct-medicare.js",
+      "type": "file",
+      "name": "lib/claims-pct-medicare.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "27afd7a3c41a6c7ada6fec958a4902e517d55e4157fc1757e05a77120e40ec88"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8855"
         }
       ]
     },
@@ -12851,7 +12872,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f694be1d4561ca990a21a472c478720c8257e880fff78f3eb619a071db45e06d"
+          "content": "d78e1fc4ea12ad4e99aa27187c89c2493bae48bb1e22135250276a279297afaa"
         }
       ],
       "properties": [
@@ -12861,7 +12882,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2680295"
+          "value": "2681275"
         }
       ]
     },
@@ -22553,7 +22574,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f041071850226483aa9c06899236b5078d0fc3cf1493a68988fd9e83ccceb7d0"
+          "content": "cdf29004c1c459fb69dcf59e83f9bd37d8668353661e637029b724e331b8d22a"
         }
       ],
       "properties": [
@@ -22563,7 +22584,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "9956"
+          "value": "11270"
         }
       ]
     },
@@ -22595,7 +22616,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "693c8e9798f5ada4fa9faa53987526da1047080dac353eda38293a173815e44f"
+          "content": "58c7a0cf17ad7397b0bfb34ec10e8ef90d6cb4d5100d55c6f780f8b1b9cf6fbb"
         }
       ],
       "properties": [
@@ -22605,7 +22626,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "11966"
+          "value": "12415"
         }
       ]
     },
@@ -27373,6 +27394,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3377"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/claims-pct-medicare.js",
+      "type": "file",
+      "name": "mcp/adapters/claims-pct-medicare.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0b419b9d1075b7e59d971ec5a4cc6b1d80a9262c574e396e0cc599a2e02b3321"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2306"
         }
       ]
     },
@@ -45023,7 +45065,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "fa0d0cba5dc4fdb230d2371a595932432fee583a35197e1e2b93fda2afa4dcdd"
+          "content": "d44de82bd60011b56d2174fd45f376e83aca19f814584fbe095850e689472780"
         }
       ],
       "properties": [
@@ -45033,7 +45075,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "115436"
+          "value": "115549"
         }
       ]
     },
@@ -48992,7 +49034,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "71debec799d9267ee098410f1a8ca6699cf43e78278d3b2174fb5b55fbd04114"
+          "content": "60ab59e78a8575057a34586cc2b5c43c4c7c17c1880e34c1c4fe2ebf7b0eaabb"
         }
       ],
       "properties": [
@@ -49002,7 +49044,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "19062"
+          "value": "23127"
         }
       ]
     },
@@ -80022,6 +80064,7 @@
         "urn:sophiewell:file:source:lib/cholecystitis-dx-v313.js",
         "urn:sophiewell:file:source:lib/cholecystitis-v311.js",
         "urn:sophiewell:file:source:lib/clabsi-lcbi-v874.js",
+        "urn:sophiewell:file:source:lib/claims-pct-medicare.js",
         "urn:sophiewell:file:source:lib/clark-level-v340.js",
         "urn:sophiewell:file:source:lib/clavien-dindo-v320.js",
         "urn:sophiewell:file:source:lib/cleveland-constipation-v665.js",
@@ -82050,6 +82093,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/cholecystitis-dx-v313.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cholecystitis-v311.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/clabsi-lcbi-v874.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/claims-pct-medicare.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/clark-level-v340.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/clavien-dindo-v320.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cleveland-constipation-v665.js",
@@ -82994,7 +83038,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "c6346e9d876b4431"
+      "value": "f0bf18d399310eef"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -83006,7 +83050,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3037"
+      "value": "3039"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

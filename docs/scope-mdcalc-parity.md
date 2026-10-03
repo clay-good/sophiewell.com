@@ -282,3 +282,5 @@ experience**.
 > v1604, negotiated rates in insurer price files — [spec-v1604](spec-v1604.md), which adds `tic-rate-lookup` — is 1966.)
 
 > v1602, claims files from a health plan — [spec-v1602](spec-v1602.md), which adds `carin-eob-reader` — is 1967.)
+
+> v1604, plan claims as a percent of Medicare — [spec-v1604](spec-v1604.md), which adds `claims-pct-medicare` — is 1968.)

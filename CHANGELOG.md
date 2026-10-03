@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Claims paid as a percent of Medicare: type a plan's claim lines or load its
+  claims extract, choose a Medicare locality, and see what the plan allowed as
+  a percent of the Medicare physician fee schedule, by provider and by service
+  category, with every line left out counted and explained.
+
 - Read my claims file: the claims data your health plan gives you through its
   Patient Access API (CARIN Blue Button) becomes a table of claims, totals by
   year for your out-of-pocket maximum, and the claims worth asking about:

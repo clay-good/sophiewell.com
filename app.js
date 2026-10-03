@@ -1115,6 +1115,7 @@ const UTILITIES = [
   { id: 'hpt-price-compare', name: 'Compare One Service Across Hospital Price Files', group: 'P', audiences: ['billers', 'patients'], clinical: false },
   { id: 'hpt-file-check', name: 'Hospital Price Transparency File Check', group: 'P', audiences: ['billers', 'coders'], clinical: false },
   { id: 'tic-file-check', name: 'Insurer Price File (Transparency in Coverage) Check', group: 'P', audiences: ['billers', 'patients'], clinical: false },
+  { id: 'claims-pct-medicare', name: 'Claims Paid as a Percent of Medicare', group: 'P', audiences: ['billers'], clinical: false },
   { id: 'tic-rate-lookup', name: 'Find Negotiated Rates in an Insurer Price File', group: 'P', audiences: ['billers', 'patients'], clinical: false },
   { id: 'denial-pattern-report', name: 'Denial Pattern Report', group: 'P', audiences: ['billers', 'coders'], clinical: false },
   { id: 'underpayment-check', name: 'Paid Below Contract Check', group: 'P', audiences: ['billers', 'coders'], clinical: false },
