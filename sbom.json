@@ -4,7 +4,7 @@
   "serialNumber": "urn:uuid:f0bf18d3-9931-5eef-8bd7-9878c2081797",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-03T03:51:11.829Z",
+    "timestamp": "2026-10-03T04:34:51.433Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -64838,9 +64838,9 @@
       "bom-ref": "urn:sophiewell:npm:package-lock.json:node_modules/@cloudflare/unenv-preset",
       "type": "library",
       "name": "@cloudflare/unenv-preset",
-      "version": "2.16.1",
+      "version": "2.16.2",
       "scope": "optional",
-      "purl": "pkg:npm/%40cloudflare/unenv-preset@2.16.1",
+      "purl": "pkg:npm/%40cloudflare/unenv-preset@2.16.2",
       "properties": [
         {
           "name": "sophiewell:lockfile",
@@ -64850,7 +64850,7 @@
       "hashes": [
         {
           "alg": "SHA-512",
-          "content": "102c4e6eb31fc939796e141ffe56425f0a391bac57f48014a3e9c330a2b8499f26e09befc69e76be2971cb24925a1d984d9cfcf87434eea187ff6ac4a26d6f0f"
+          "content": "2413f5f99ed948d1bf7789913fecbc542e5d91aded65530b11946f4beaf34380c6575128c511507247094d39176c74908938f40ed348d356706ff5767d7d26bd"
         }
       ],
       "licenses": [
@@ -64865,9 +64865,9 @@
       "bom-ref": "urn:sophiewell:npm:package-lock.json:node_modules/@cloudflare/workerd-darwin-64",
       "type": "library",
       "name": "@cloudflare/workerd-darwin-64",
-      "version": "1.20260911.1",
+      "version": "1.20260926.1",
       "scope": "optional",
-      "purl": "pkg:npm/%40cloudflare/workerd-darwin-64@1.20260911.1",
+      "purl": "pkg:npm/%40cloudflare/workerd-darwin-64@1.20260926.1",
       "properties": [
         {
           "name": "sophiewell:lockfile",
@@ -64877,7 +64877,7 @@
       "hashes": [
         {
           "alg": "SHA-512",
-          "content": "efce5e698d5b911d5c9b867f3c251eb5e65899331eea5adedb3cfadff19d1868a6b2832c2b1825e1bac53d1ba48a6f22bf6f04c83d57a0207f54f605db404444"
+          "content": "542229c2026ee439b5a3e5472dc94d38a21da6db44aacb3ba031d2e43631815a289ccf43c71c6bd71090bc96e1e885c5b90d430eb6e6e64ae3b5ee4db13817dd"
         }
       ],
       "licenses": [
@@ -64892,9 +64892,9 @@
       "bom-ref": "urn:sophiewell:npm:package-lock.json:node_modules/@cloudflare/workerd-darwin-arm64",
       "type": "library",
       "name": "@cloudflare/workerd-darwin-arm64",
-      "version": "1.20260911.1",
+      "version": "1.20260926.1",
       "scope": "optional",
-      "purl": "pkg:npm/%40cloudflare/workerd-darwin-arm64@1.20260911.1",
+      "purl": "pkg:npm/%40cloudflare/workerd-darwin-arm64@1.20260926.1",
       "properties": [
         {
           "name": "sophiewell:lockfile",
@@ -64904,7 +64904,7 @@
       "hashes": [
         {
           "alg": "SHA-512",
-          "content": "594e1b16a10dd07ee77465b1a1e75e82ff790e635506dbf49dc5dc1c6f676054d423bf2cc446f4aa84f753a19ae21c81933b091415ffcef5412065f7a8a95d18"
+          "content": "a15b8b5df0a7af55eef6c04c358ac43dc15940d31cbe235c69ccfd97ea2a4222c773952b569fbe96929bb2e5acb427e1fbf737f4fa77ed355e68d04b03cf9178"
         }
       ],
       "licenses": [
@@ -64919,9 +64919,9 @@
       "bom-ref": "urn:sophiewell:npm:package-lock.json:node_modules/@cloudflare/workerd-linux-64",
       "type": "library",
       "name": "@cloudflare/workerd-linux-64",
-      "version": "1.20260911.1",
+      "version": "1.20260926.1",
       "scope": "optional",
-      "purl": "pkg:npm/%40cloudflare/workerd-linux-64@1.20260911.1",
+      "purl": "pkg:npm/%40cloudflare/workerd-linux-64@1.20260926.1",
       "properties": [
         {
           "name": "sophiewell:lockfile",
@@ -64931,7 +64931,7 @@
       "hashes": [
         {
           "alg": "SHA-512",
-          "content": "d18da0cbada8c50c566b7f2a8a748f13accd2f9f899ae989b4363d0165b51c1f0a1ee013c4def5a39306ce65457c1f0fc19b221df51dd92bfb3b6da4ac23ab87"
+          "content": "0639a20ef6015411b9db8f200874994b7c8e35b726dffdea293bbd45a400f28ee340725f5f1f499d66e19257762ac6d79d1184187170a4b2e2748a481ad41850"
         }
       ],
       "licenses": [
@@ -64946,9 +64946,9 @@
       "bom-ref": "urn:sophiewell:npm:package-lock.json:node_modules/@cloudflare/workerd-linux-arm64",
       "type": "library",
       "name": "@cloudflare/workerd-linux-arm64",
-      "version": "1.20260911.1",
+      "version": "1.20260926.1",
       "scope": "optional",
-      "purl": "pkg:npm/%40cloudflare/workerd-linux-arm64@1.20260911.1",
+      "purl": "pkg:npm/%40cloudflare/workerd-linux-arm64@1.20260926.1",
       "properties": [
         {
           "name": "sophiewell:lockfile",
@@ -64958,7 +64958,7 @@
       "hashes": [
         {
           "alg": "SHA-512",
-          "content": "92db4d3e7c75af6942a85528307eb6cfb0aa195fa3e1005bc397ddb5acf8a733abcc1bf401690d013b7ba271547be4b03fcce171ea4cb5b9b617890acd37fa54"
+          "content": "dbc6dd7d00c815ca5a29730f8ac003cbc05c86922c5feb440210fe6e17c4057ba414616bf05de8bb2886dc7ccddc2a8087f398be27c98b3cc566da6d50f0b2ef"
         }
       ],
       "licenses": [
@@ -64973,9 +64973,9 @@
       "bom-ref": "urn:sophiewell:npm:package-lock.json:node_modules/@cloudflare/workerd-windows-64",
       "type": "library",
       "name": "@cloudflare/workerd-windows-64",
-      "version": "1.20260911.1",
+      "version": "1.20260926.1",
       "scope": "optional",
-      "purl": "pkg:npm/%40cloudflare/workerd-windows-64@1.20260911.1",
+      "purl": "pkg:npm/%40cloudflare/workerd-windows-64@1.20260926.1",
       "properties": [
         {
           "name": "sophiewell:lockfile",
@@ -64985,7 +64985,7 @@
       "hashes": [
         {
           "alg": "SHA-512",
-          "content": "e623bf61fa010ce80edc2ac77648a254ff122f73b68c2f9ce94c77777efc4d23ca2e1539f828078ed13f652a1d590af3af8173151a9d5bc4bb9f99dbc83d4c1d"
+          "content": "7a174bddab5a29d1269675bda289ba399511f27dd7b132ffce5f3e286444a4b8b9b0c496d267a4d0fac5e302bd497e757f70259e5bbcb45f1e28183e99cdf117"
         }
       ],
       "licenses": [
@@ -72290,9 +72290,9 @@
       "bom-ref": "urn:sophiewell:npm:package-lock.json:node_modules/js-yaml",
       "type": "library",
       "name": "js-yaml",
-      "version": "5.2.2",
+      "version": "5.4.2",
       "scope": "optional",
-      "purl": "pkg:npm/js-yaml@5.2.2",
+      "purl": "pkg:npm/js-yaml@5.4.2",
       "properties": [
         {
           "name": "sophiewell:lockfile",
@@ -72302,7 +72302,7 @@
       "hashes": [
         {
           "alg": "SHA-512",
-          "content": "75acb35332a4275324b94b5982549e6d4e37bad3571f4396401c8af6b28e3ae6083bc3394d5d72fa7f002cc746d2b7730677cd90e99912aad445ea5bd1e8ea07"
+          "content": "9be6aabbe2f03b53bab08a2969f8fc1d4565e5a6b0213c1941eff21e93022a369605a03f774ec1fd074c6f7e76f5111fb6253e44c3072f7565b30de138deef5a"
         }
       ],
       "licenses": [
@@ -73309,9 +73309,9 @@
       "bom-ref": "urn:sophiewell:npm:package-lock.json:node_modules/miniflare",
       "type": "library",
       "name": "miniflare",
-      "version": "5.20260911.0-alpha",
+      "version": "5.20260926.1-alpha",
       "scope": "optional",
-      "purl": "pkg:npm/miniflare@5.20260911.0-alpha",
+      "purl": "pkg:npm/miniflare@5.20260926.1-alpha",
       "properties": [
         {
           "name": "sophiewell:lockfile",
@@ -73321,7 +73321,7 @@
       "hashes": [
         {
           "alg": "SHA-512",
-          "content": "09189e266bc7c7eeeb36a9c0e5229db18b0447aadf914204fe3aee214c3e7cb86c438b0e45fb8cb6bdfe150cec43dff2f25864d3ad55e059750c57478b2041ea"
+          "content": "bdce25825f185714766ae9dd3e754f4c870be3a51028af9e6d6ef28a75cd13563d8e8152d09a1a90c6b3afbaf733c0d746f69e98a4bc1049acce4bff6f4e6a53"
         }
       ],
       "licenses": [
@@ -76441,9 +76441,9 @@
       "bom-ref": "urn:sophiewell:npm:package-lock.json:node_modules/undici",
       "type": "library",
       "name": "undici",
-      "version": "7.29.0",
+      "version": "7.29.1",
       "scope": "optional",
-      "purl": "pkg:npm/undici@7.29.0",
+      "purl": "pkg:npm/undici@7.29.1",
       "properties": [
         {
           "name": "sophiewell:lockfile",
@@ -76453,7 +76453,7 @@
       "hashes": [
         {
           "alg": "SHA-512",
-          "content": "203c5f95e2e699b4ac91f5925004e23759df9f6ac3baf9cc3aa6f909647dda221fa2303451dfae94e000110e7b2cfafdad69acade5327f9970c9aa3eec634d57"
+          "content": "45838d5b631e69f81896454e2982a403f020ec1997aa021609af2dd66d09731ad083da48f6512a46100eaee38109b02884e6bf824085fa23e2f61ae0bd3ceee9"
         }
       ],
       "licenses": [
@@ -76792,9 +76792,9 @@
       "bom-ref": "urn:sophiewell:npm:package-lock.json:node_modules/workerd",
       "type": "library",
       "name": "workerd",
-      "version": "1.20260911.1",
+      "version": "1.20260926.1",
       "scope": "optional",
-      "purl": "pkg:npm/workerd@1.20260911.1",
+      "purl": "pkg:npm/workerd@1.20260926.1",
       "properties": [
         {
           "name": "sophiewell:lockfile",
@@ -76804,7 +76804,7 @@
       "hashes": [
         {
           "alg": "SHA-512",
-          "content": "bd1afc41d071b9e40e6493b5851088ef7119962c7cec8032040712c88deb035541fbaa318f0de86aacd89c857c0b820e3ed5208a16dd30083391be4633857b0d"
+          "content": "6288e1b1606e670937264f4e0b441f4e055b2de40e0f5b4ad68942f595c051c99e8a9f33e0d13fc6db6da710acb93bd0051aa9a6fcbb4e469cd24c4f60c8c85c"
         }
       ],
       "licenses": [
@@ -76819,9 +76819,9 @@
       "bom-ref": "urn:sophiewell:npm:package-lock.json:node_modules/wrangler",
       "type": "library",
       "name": "wrangler",
-      "version": "4.131.1",
+      "version": "4.143.1",
       "scope": "optional",
-      "purl": "pkg:npm/wrangler@4.131.1",
+      "purl": "pkg:npm/wrangler@4.143.1",
       "properties": [
         {
           "name": "sophiewell:lockfile",
@@ -76831,7 +76831,7 @@
       "hashes": [
         {
           "alg": "SHA-512",
-          "content": "d6ee4531d2409fa50e70bd36715b082137271eb93a982ecdf91175d0491584f2f5f11fe8f60e4165be0f0a30722fedc0b113f9c10a69a4220f1e160f466209c2"
+          "content": "8a540944c45c320764f365d6220ee1960781d48d82a0e5a64a225ea2a66e7e83425948894cde436983d86fa33fa085c15e4dfe21023134381db4f52ec5cc5d7a"
         }
       ],
       "licenses": [
