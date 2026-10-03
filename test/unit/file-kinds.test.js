@@ -43,6 +43,7 @@ const EXPECT = {
   'hpt-tall.csv': ['hpt-csv', 'certain', 'hospital_name, last_updated_on and version'],
   'fill-history.csv': ['csv-mapped', 'likely', 'Adherence: PDC, MPR and Gap Days'],
   'households.csv': ['csv-mapped', 'likely', 'Federal Poverty Level Percent (households file)'],
+  'medicare-people.csv': ['csv-mapped', 'likely', 'Extra Help and Medicare Savings Program Screen (people file)'],
   'unknown.csv': ['csv-unknown', 'none', 'alpha, beta, gamma'],
   'reference-pprrvu.csv': ['reference-mpfs-rvu', 'certain', 'reference table'],
   'reference-addb.csv': ['reference-opps-addb', 'certain', 'Addendum B'],

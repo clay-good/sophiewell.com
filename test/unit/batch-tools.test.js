@@ -20,9 +20,16 @@ test('a choice cell matches by value, by its words, or by an alias, ignoring cas
   assert.equal(cellValue(field('size'), ' 3 '), '3');
 });
 
-test('a row\'s cells override the form\'s answers, and a blank optional cell keeps the form\'s', () => {
-  assert.deepEqual(rowArgs(FPL, { size: '3', income: '40000', region: '' }, FORM), { ...FORM, size: '3', income: '40000' });
+test('a context field left blank takes the form\'s answer; a row\'s own cell wins', () => {
+  assert.deepEqual(rowArgs(FPL, { size: '3', income: '40000', region: '' }, FORM), { reference: '', size: '3', income: '40000', ...FORM, threshold: '' });
   assert.equal(rowArgs(FPL, { size: '3', income: '40000', region: 'Alaska' }, FORM).region, 'ak');
+});
+
+test('a fact about the row is never filled from the form, required or not', () => {
+  const MSP = BATCH_TOOLS['extra-help-msp-screen'];
+  const args = rowArgs(MSP, { marital: 'single', unearned: '1200', resources: '5000', earned: '' }, { region: 'us', year: '2026', earned: '900', dependents: '2', burial: 'yes' });
+  assert.deepEqual([args.earned, args.dependents, args.burial, args.region, args.year], ['', '', '', 'us', '2026']);
+  for (const f of MSP.fields) if (f.fromForm) assert.ok(['region', 'year'].includes(f.id), `${f.id} is a fact about the person, not context`);
 });
 
 test('each row is the form\'s own answer, and a bad row says why without stopping the rest', () => {
@@ -38,6 +45,7 @@ test('each row is the form\'s own answer, and a bad row says why without stoppin
   assert.equal(r.rows[2].ok, false);
   assert.equal(r.rows[2].detail, fplPercent({ ...FORM, size: 'three', income: '40000' }).message);
   assert.equal(r.band, '2 households of 3 computed. 1 row needs corrected inputs.');
+  assert.equal(runBatch('extra-help-msp-screen', [{ marital: 'single', unearned: '1200', resources: '5000' }], { region: 'us', year: '2026' }).band, '1 person of 1 computed.');
   assert.equal(r.abnormal, true);
 });
 
