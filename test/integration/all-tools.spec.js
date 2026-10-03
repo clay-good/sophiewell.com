@@ -132,7 +132,7 @@ test('no tool view skips a heading level (h1 -> h3 with no h2)', async ({ page, 
 });
 
 test('a sampled tool route exposes a working back button to home', async ({ page }) => {
-  test.setTimeout(120_000);
+  test.setTimeout(60_000);
   const ids = await discoverIds(page);
   // spec-v1060: this was called "every tool route ..." and checks one in eight.
   //
@@ -147,6 +147,11 @@ test('a sampled tool route exposes a working back button to home', async ({ page
   // overstate it -- the same shape as a gate that filters its input silently
   // (spec-v1059).
   const sample = ids.filter((_, i) => i % 8 === 0);
+  // The budget grows with the catalog. A fixed 120s held 246 routes on webkit
+  // in 1.4-1.9 minutes and then failed main at the 2.0 mark (2026-10-03) with
+  // nothing broken: every new tile adds an eighth of a route to this loop.
+  // webkit runs about 0.45s a route, so a second each keeps 2x headroom.
+  test.setTimeout(60_000 + sample.length * 1_000);
   for (const id of sample) {
     await page.goto('/#' + id);
     const back = page.locator('.breadcrumb-back');
