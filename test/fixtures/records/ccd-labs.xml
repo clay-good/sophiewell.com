@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic C-CDA CCD for tests, patterned on the HL7 C-CDA examples. No real person. -->
+<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <templateId root="2.16.840.1.113883.10.20.22.1.1" extension="2015-08-01"/>
+  <templateId root="2.16.840.1.113883.10.20.22.1.2" extension="2015-08-01"/>
+  <recordTarget><patientRole><patient>
+    <administrativeGenderCode code="F" codeSystem="2.16.840.1.113883.5.1"/>
+    <birthTime value="19680315"/>
+  </patient></patientRole></recordTarget>
+  <component><structuredBody>
+    <component><section>
+      <templateId root="2.16.840.1.113883.10.20.22.2.3.1" extension="2015-08-01"/>
+      <title>Results</title>
+      <text>Narrative is never read: creatinine 9.9 mg/dL.</text>
+      <entry><organizer classCode="BATTERY" moodCode="EVN">
+            <component><observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.2" extension="2015-08-01"/>
+              <code code="2160-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+              <statusCode code="completed"/>
+              <effectiveTime value="20260614"/>
+              <value xsi:type="PQ" value="97" unit="umol/L"/>
+            </observation></component>
+            <component><observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.2" extension="2015-08-01"/>
+              <code code="2093-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+              <statusCode code="completed"/>
+              <effectiveTime value="20260614"/>
+              <value xsi:type="PQ" value="212" unit="mg/dL"/>
+            </observation></component>
+            <component><observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.2" extension="2015-08-01"/>
+              <code code="2085-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+              <statusCode code="completed"/>
+              <effectiveTime value="20260614"/>
+              <value xsi:type="PQ" value="51" unit="mg/dL"/>
+            </observation></component>
+            <component><observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.2" extension="2015-08-01"/>
+              <code code="13457-7" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+              <statusCode code="completed"/>
+              <effectiveTime value="20250720"/>
+              <value xsi:type="PQ" value="128" unit="mg/dL"/>
+            </observation></component>
+            <component><observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.2" extension="2015-08-01"/>
+              <code code="2571-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+              <statusCode code="completed"/>
+              <effectiveTime value="20200110"/>
+              <value xsi:type="PQ" value="1.9" unit="mmol/L"/>
+            </observation></component>
+            <component><observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.2" extension="2015-08-01"/>
+              <code code="2823-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+              <statusCode code="completed"/>
+              <effectiveTime value="20260614"/>
+              <value xsi:type="PQ" value="4.1" unit="mg/dL"/>
+            </observation></component>
+            <component><observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.2" extension="2015-08-01"/>
+              <code code="1742-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+              <statusCode code="completed"/>
+              <effectiveTime value="20260614"/>
+              <value xsi:type="PQ" value="30" unit="U/L"/>
+            </observation></component>
+            <component><observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.2" extension="2015-08-01"/>
+              <code code="1742-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+              <statusCode code="completed"/>
+              <effectiveTime value="20260614"/>
+              <value xsi:type="PQ" value="34" unit="U/L"/>
+            </observation></component>
+            <component><observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.2" extension="2015-08-01"/>
+              <code code="1920-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+              <statusCode code="completed"/>
+              <effectiveTime value="20260614"/>
+              <value xsi:type="PQ" value="28" unit="U/L"/>
+            </observation></component>
+            <component><observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.2" extension="2015-08-01"/>
+              <code code="777-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+              <statusCode code="completed"/>
+              <effectiveTime value="20260614"/>
+              <value xsi:type="PQ" value="245" unit="10*3/uL"/>
+            </observation></component>
+      </organizer></entry>
+    </section></component>
+    <component><section>
+      <templateId root="2.16.840.1.113883.10.20.22.2.4.1" extension="2015-08-01"/>
+      <title>Vital signs</title>
+      <entry><organizer classCode="CLUSTER" moodCode="EVN">
+            <component><observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.2" extension="2015-08-01"/>
+              <code code="8480-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+              <statusCode code="completed"/>
+              <effectiveTime value="20260802"/>
+              <value xsi:type="PQ" value="138" unit="mm[Hg]"/>
+            </observation></component>
+            <component><observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.2" extension="2015-08-01"/>
+              <code code="8462-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+              <statusCode code="completed"/>
+              <effectiveTime value="20260802"/>
+              <value xsi:type="PQ" value="84" unit="mm[Hg]"/>
+            </observation></component>
+            <component><observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.2" extension="2015-08-01"/>
+              <code code="29463-7" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+              <statusCode code="completed"/>
+              <effectiveTime value="20260802"/>
+              <value xsi:type="PQ" value="176" unit="[lb_av]"/>
+            </observation></component>
+            <component><observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.2" extension="2015-08-01"/>
+              <code code="8302-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+              <statusCode code="completed"/>
+              <effectiveTime value="20260802"/>
+              <value xsi:type="PQ" value="165" unit="cm"/>
+            </observation></component>
+            <component><observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.2" extension="2015-08-01"/>
+              <code code="8480-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+              <statusCode code="completed"/>
+              <effectiveTime value="20260101"/>
+              <value xsi:type="PQ" value="150" unit="mm[Hg]"/>
+            </observation></component>
+      </organizer></entry>
+    </section></component>
+    <component><section>
+      <templateId root="2.16.840.1.113883.10.20.22.2.1.1"/>
+      <title>Medications (not read)</title>
+      <entry><observation><code code="2160-0" codeSystem="2.16.840.1.113883.6.1"/><effectiveTime value="20260901"/><value xsi:type="PQ" value="5.0" unit="mg/dL"/></observation></entry>
+    </section></component>
+  </structuredBody></component>
+</ClinicalDocument>

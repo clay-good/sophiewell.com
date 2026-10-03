@@ -6,6 +6,72 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Does this diagnosis support this code? The Medicare billing and coding articles
+  for the state, from the weekly Medicare Coverage Database export, say whether
+  the diagnoses are covered, not covered or not addressed, with each article's
+  own instructions to confirm.
+
+- Compare one service across hospital price files: choose two or more CMS price
+  files and a billing code to see each hospital's gross, cash and negotiated
+  prices side by side, with a CSV.
+
+- Medicare Part B or Part D for this drug? The category and the one question that
+  decides it give the part that pays, with the statute paragraph behind it.
+
+- An infusion chair day planner: chairs, hours and the day's appointments give a
+  first-fit schedule, chair utilization, and the earliest slot for any appointment
+  that does not fit.
+
+- The NADAC margin check takes a pharmacy's claims file and gives the margin by
+  payer and by drug, naming any payer that paid below cost overall.
+
+- Authorization run-out now takes a CSV of authorizations and gives the renewal
+  worklist, sorted by the date each renewal is due, with past-due ones marked.
+
+- HCPCS drug billing units now take an NDC: the code, its billing unit and the
+  package's billable units come from the CMS ASP NDC-HCPCS crosswalk, which is
+  fetched each quarter with the other federal datasets.
+
+- What will I pay for a Part B drug? The allowed amount, your coinsurance (lower
+  where an inflation reduction applies) and the $35-a-month cap for insulin
+  through a pump.
+
+- Does Original Medicare require prior authorization? A code, setting, state and
+  date of service are checked against the CMS outpatient, DMEPOS, ambulance,
+  ambulatory surgical center and WISeR lists, each by the date it started.
+
+- The PA linter's CMS outpatient prior authorization list now matches CMS: five
+  removed codes and eight never-listed ones are gone, and the botulinum toxin
+  drug codes and four related services are on it.
+
+- Medicare Part B drug payment: a HCPCS code, units and the date of service give
+  the allowed amount from CMS's quarterly payment limit file, the patient's
+  coinsurance and Medicare's share after sequestration. The quarter's file is
+  now fetched with the other federal datasets.
+
+- A check for a payer's posted prior authorization report (CMS-0057-F): which
+  of the nine required figures are missing, whether stated rates match their
+  counts, and whether median decision times are past the deadline for the year.
+
+- HSA safe harbors: what a high deductible health plan can cover before the
+  deductible. It checks an item against preventive care, the chronic-condition
+  list of Notice 2019-45 (each item only for its diagnosed condition), insulin
+  from plan years beginning in 2023, and telehealth by plan year.
+
+- A plan pharmacy claims check against NADAC: typed claims or a claims file give
+  what the plan and members paid above the national average acquisition cost,
+  by drug and by month, and the spread where the pharmacy's payment is
+  disclosed. A claim with no NADAC for its fill date is listed and left out of
+  the totals, never priced at zero.
+
+- A pharmacy margin check against NADAC: enter an NDC, the fill date, the quantity
+  and what the claim paid, and it prices the claim from the bundled NADAC week
+  and says whether it was paid below the national average acquisition cost. A
+  date the week does not cover gets "no benchmark", never today's rate; the
+  pharmacy's invoice cost can stand in for NADAC.
+
+- File inputs no longer push upload tools past a 320px screen in Linux WebKit.
+
 - A streaming CMS Hospital Price Transparency v3.0.0 file checker for CSV tall,
   CSV wide and JSON files. It validates 2026 fields and conditional rules locally
   without loading the whole file into memory.

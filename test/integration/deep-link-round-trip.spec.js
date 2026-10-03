@@ -24,6 +24,12 @@ const ASYNC_TILES = [
   'opioid-mme', 'steroid-equiv', 'benzo-equiv', 'abx-renal', 'vasopressor',
   'field-triage',
   'tetanus', 'rabies-pep', 'bbp-exposure', 'tb-testing', 'sti-screening',
+  // spec-v1510/v1604: NADAC, loaded by the view (nadac-margin) or by lib/nadac-load.js (pharmacy-spread-check).
+  'nadac-margin', 'pharmacy-spread-check', 'asp-payment', 'part-b-drug-coinsurance',
+  // spec-v1505: an NDC reads the crosswalk through lib/asp-ndc-load.js.
+  'ndc-hcpcs-units',
+  // spec-v1505: the MCD articles, through lib/mcd-load.js.
+  'lcd-diagnosis-check',
 ];
 
 // Every `loadFile` call site in views/. If this moves, a tile has started (or
@@ -32,7 +38,11 @@ const ASYNC_TILES = [
 // spec-v1622 removed three: rvu-payment's conversion factor and GPCI list and
 // drg-payment's weight table were hand-written samples answering as if they
 // were the fee schedule and IPPS Table 5.
-const LOAD_FILE_CALLS = 11;
+// spec-v1624 added one that is not a tile's: views/home-files.js loads the
+// record concept map for the records panel, which has no deep link.
+// spec-v1510 added one: nadac-margin's week.json (pharmacy-spread-check loads through lib/nadac-load.js,
+// which this count does not see, so it is listed above by hand), and asp-payment and part-b-drug-coinsurance their period.json.
+const LOAD_FILE_CALLS = 15;
 
 test('the tiles that fetch their inputs still answer their own link', async ({ page }) => {
   test.setTimeout(300_000);

@@ -17,7 +17,9 @@ const COPY_FILES = [
   '_headers', 'robots.txt', 'sitemap.xml', 'site.webmanifest',
   'CHANGELOG.md', 'sbom.json', 'sbom.md',
 ];
-const COPY_DIRS = ['lib', 'views', 'data', 'docs', 'vendored'];
+// samples/: the home page's "a sample remittance file" chip (spec-v1623); a
+// copy of test/fixtures/file-kinds/x12-835.835, held identical by a unit test.
+const COPY_DIRS = ['lib', 'views', 'data', 'docs', 'vendored', 'samples'];
 
 async function* walk(dir) {
   const entries = await readdir(dir, { withFileTypes: true });
@@ -70,6 +72,15 @@ async function regenerate() {
     const r = spawnSync(process.execPath, [join(ROOT, 'scripts', script)], { stdio: 'inherit' });
     if (r.status !== 0) throw new Error(`${script} exited with status ${r.status}`);
   }
+}
+
+// The commit the build came from: Cloudflare Workers Builds injects
+// WORKERS_CI_COMMIT_SHA; otherwise git; otherwise 'dev'.
+async function buildCommit() {
+  if (/^[0-9a-f]{7,40}$/.test(process.env.WORKERS_CI_COMMIT_SHA || '')) return process.env.WORKERS_CI_COMMIT_SHA;
+  const { spawnSync } = await import('node:child_process');
+  const r = spawnSync('git', ['rev-parse', 'HEAD'], { cwd: ROOT, encoding: 'utf8' });
+  return r.status === 0 && /^[0-9a-f]{40}$/.test(r.stdout.trim()) ? r.stdout.trim() : 'dev';
 }
 
 async function main() {
@@ -132,7 +143,13 @@ async function main() {
   const stamped = sw.replace(/const BUILD_HASH = '[^']*';/, `const BUILD_HASH = '${hash}';`);
   await writeFile(swPath, stamped, 'utf8');
 
-  console.log(`build: dist/ ready (BUILD_HASH=${hash})`);
+  // spec-v1625: receipts name the commit the site was built from. Written into
+  // dist/ only -- the checked-in lib/build-info.js stays 'dev' -- so a build
+  // never rewrites a tracked file.
+  const commit = await buildCommit();
+  await writeFile(join(DIST, 'lib', 'build-info.js'), `// Written by scripts/build.mjs.\nexport const BUILD = { commit: ${JSON.stringify(commit)} };\n`, 'utf8');
+
+  console.log(`build: dist/ ready (BUILD_HASH=${hash}, commit ${commit})`);
 }
 
 main().catch((err) => { console.error('build: failed', err); process.exit(1); });

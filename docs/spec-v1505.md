@@ -116,6 +116,28 @@ this one, which the duplicate-tile finder flags.
 - **Built 2026-09-26:** `bi-summary` and `site-of-care-compare` (group Q). Both walk the deductible, coinsurance
   or copay, and the out-of-pocket maximum as a claim adjudicates, on figures the reader enters from the
   benefits check; the summary's facts are typed until the 271 reader ([spec-v1515](spec-v1515.md)) exists.
-- **Not yet built:** `part-b-or-d` (needs the CMS Part B versus Part D document read in full and the
-  MAC self-administered drug lists), `lcd-diagnosis-check` (Medicare Coverage Database export), and the
-  `ndc-hcpcs-units` backfill (the ASP NDC-HCPCS crosswalk).
+- **Built 2026-10-01:** the `ndc-hcpcs-units` backfill, on the new `asp-ndc` dataset
+  (`scripts/data/builders/asp-ndc.mjs`: the ASP crosswalk's section 508 CSV, 7,221 NDCs in 2026 Q4). An NDC
+  (normalized as `nadac-margin` does) finds its code; the code's dosage ("10 MG") sets the billing unit, and the
+  dose converts through the same `ndcHcpcsUnits`. **Found at build:** 138 NDCs bill under more than one code
+  (Retacrit under Q5105 and Q5106, with different units), so the tool asks which; a dosage the converter cannot
+  read ("UP TO 0.50 MG", mEq) gives the code and package units and asks for the unit size; IU is read as units
+  and cc as mL, and the result says so. One crosswalk row carries a 12-digit product number, not an NDC (J7331);
+  it is skipped and named in `member.json`.
+- **Built 2026-10-01:** `part-b-or-d`. Read in the sources that day: the CMS "Medicare Parts B/D Coverage Issues"
+  chart (the full 2005 document it points to is no longer at its link), SSA §1861(s) at Cornell LII, 42 CFR 410.63
+  in the eCFR, 42 U.S.C. 1395o(b) (Part B-ID) and 1395w-102(b)(8) (Part D adult vaccines). **Differed from the
+  spec:** COVID-19 vaccine joined influenza and pneumococcal in (s)(10)(A); hepatitis B risk now includes anyone who
+  never completed the series or whose history is unknown (410.63(a)(2)(iv), from January 1, 2025); IVIG at home for
+  primary immune deficiency ((s)(2)(Z)), clotting factors (410.63(b)) and parenteral nutrition ((s)(8)) were added
+  as categories the chart and statute name. The MAC self-administered drug lists are not bundled: the reader
+  answers yes, no or not sure, and "not sure" gives "depends on the MAC's list".
+- **Built 2026-10-01:** `lcd-diagnosis-check`, on the new `mcd-articles` dataset (`scripts/data/builders/mcd-articles.mjs`:
+  the weekly "current articles" export, a ZIP inside a ZIP; 1,106 articles that list codes, one shard each, and
+  a code index). **Found at build:** the export already lists every code inside a range (B/M/E rows), so no
+  expansion is needed; some MCD "states" are regions (New York's three, Missouri's two, California's two),
+  read as their state with the region shown when an article reaches only part of it; the CSVs are UTF-8 with
+  HTML paragraphs, kept as plain text; the edition is read from the export's own `update_period` table.
+  Pairing: one code group takes every covered group; several take the same-numbered group, and a code group
+  with no same-numbered covered group is "not decided" (paired in the article's text). Paragraph rules are
+  shown, never evaluated. A code no article lists for the state is "not addressed", never "not covered".

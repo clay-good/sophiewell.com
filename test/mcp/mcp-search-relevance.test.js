@@ -903,6 +903,20 @@ const PROBES = [
   ['frisen scale papilledema grading', ['frisen']],
   ['who oral mucositis grade', ['who-mucositis']],
   ['erefs endoscopic reference score eosinophilic esophagitis', ['erefs']],
+  ['charged for polyp removal during screening colonoscopy', ['preventive-cost-share-check']],
+  ['direct primary care membership hsa eligible', ['dpc-hsa-check']],
+  ['medicare advantage denial internal criteria', ['ma-criteria-check']],
+  ['compare two versions of a payer policy', ['payer-policy-diff']],
+  ['pharmacy paid below nadac acquisition cost', ['nadac-margin']],
+  ['medicare part b drug payment limit asp j9035', ['asp-payment']],
+  ['infusion center chair schedule utilization', ['chair-day-planner']],
+  ['what do i pay for a part b infusion drug coinsurance', ['part-b-drug-coinsurance']],
+  ['is this drug covered by part b or part d', ['part-b-or-d']],
+  ['does this diagnosis support medical necessity lcd article', ['lcd-diagnosis-check']],
+  ['does original medicare require prior authorization wiser', ['medicare-ffs-pa-required']],
+  ['pbm spread pricing plan pharmacy claims', ['pharmacy-spread-check']],
+  ['hsa plan cover statin before deductible chronic condition', ['hsa-predeductible-check']],
+  ['payer prior authorization approval rate report cms-0057-f', ['pa-metrics-compare']],
 ];
 
 test(`every golden probe routes an acceptable tile into the top ${TOP_N}`, () => {

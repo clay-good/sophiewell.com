@@ -1,31 +1,10 @@
 import { el, clear } from '../lib/dom.js';
 import { MAX_FILE_BYTES, MAX_DATA_ROWS } from '../lib/upload-intake.js';
 import { resultRow } from '../lib/result-copy.js';
+import { RX_MATCH_FILES as FILES } from '../lib/upload-fields.js';
+import { renderReceipt } from './receipt.js';
 
 const workerUrl = new URL('../lib/rx-match-worker.js', import.meta.url);
-const FILES = [
-  { name: 'prescriptions', label: 'Prescriptions', fields: [
-    { id: 'patient_reference', label: 'Patient reference', required: true, sensitive: true, synonyms: ['patient', 'patient id', 'member id'] },
-    { id: 'prescriber_npi', label: 'Prescriber NPI', required: true, synonyms: ['npi', 'rx prescriber npi'] },
-    { id: 'ndc', label: 'NDC', required: true, synonyms: ['drug ndc'] },
-    { id: 'fill_date', label: 'Fill date', required: true, synonyms: ['date filled', 'dispense date'] },
-    { id: 'pharmacy', label: 'Pharmacy', required: true, synonyms: ['pharmacy name', 'pharmacy id'] },
-    { id: 'orphan_designated', label: 'Orphan designated', required: true, synonyms: ['orphan designation', 'orphan drug'] },
-  ] },
-  { name: 'encounters', label: 'Encounters', fields: [
-    { id: 'patient_reference', label: 'Patient reference', required: true, sensitive: true, synonyms: ['patient', 'patient id', 'member id'] },
-    { id: 'encounter_date', label: 'Encounter date', required: true, synonyms: ['visit date', 'date of service'] },
-    { id: 'location', label: 'Location', required: true, synonyms: ['site', 'clinic'] },
-    { id: 'provider_npi', label: 'Provider NPI', required: true, synonyms: ['npi', 'encounter provider npi'] },
-  ] },
-  { name: 'prescribers', label: 'Eligible prescribers', fields: [
-    { id: 'npi', label: 'NPI', required: true, synonyms: ['prescriber npi', 'provider npi'] },
-    { id: 'relationship', label: 'Relationship', required: true, synonyms: ['arrangement', 'provider relationship'] },
-  ] },
-  { name: 'sites', label: 'Registered sites', fields: [
-    { id: 'location', label: 'Location', required: true, synonyms: ['site', 'site name', 'clinic'] },
-  ] },
-];
 
 function renderTable(root, caption, headers, rows) {
   const wrap = el('div', { class: 'upload-mapping-scroll' });
@@ -133,6 +112,7 @@ export function rxMatchWorkbench(root, { entityTypes }) {
       }
     }
     results.appendChild(el('p', { class: 'muted', text: result.note }));
+    renderReceipt(results, message);
   }
 
   worker.addEventListener('message', (event) => {

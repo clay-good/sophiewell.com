@@ -8563,6 +8563,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/auth-runout-v1502.js (spec-v1502: Authorization run-out and renewal date — administrative disclaimer)
 - `auth-runout`
 
+### lib/medicare-ffs-pa-required.js (spec-v1502: Original Medicare prior authorization lists — administrative disclaimer)
+- `medicare-ffs-pa-required`
+
 ### lib/auth-units-request-v1502.js (spec-v1502: Authorization units to request — administrative disclaimer)
 - `auth-units-request`
 
@@ -8641,6 +8644,24 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/appeal-path-v1505.js (spec-v1505: Which appeal rules apply — administrative disclaimer)
 - `which-appeal-path`
 
+### lib/preventive-cost-share-check.js (spec-v1601: Preventive care cost sharing — administrative disclaimer)
+- `preventive-cost-share-check`
+
+### lib/dpc-hsa-check.js (spec-v1604: Direct primary care and HSA eligibility — administrative disclaimer)
+- `dpc-hsa-check`
+
+### lib/hsa-predeductible-check.js (spec-v1601: HSA plan coverage before the deductible — administrative disclaimer)
+- `hsa-predeductible-check`
+
+### lib/ma-criteria-check.js (spec-v1603: Medicare Advantage denial process — administrative disclaimer)
+- `ma-criteria-check`
+
+### lib/payer-policy-diff.js (spec-v1603: Payer policy changes — administrative disclaimer)
+- `payer-policy-diff`
+
+### lib/pa-metrics-compare.js (spec-v1603: Payer prior authorization reports — administrative disclaimer)
+- `pa-metrics-compare`
+
 ### lib/pdc-star-v1513.js (spec-v1513: Part D adherence (PDC, Star method) — administrative disclaimer)
 - `pdc-star`
 
@@ -8691,6 +8712,27 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 
 ### lib/pbm-reimbursement-v1510.js (spec-v1510: PBM reimbursement check — administrative disclaimer)
 - `pbm-reimbursement-check`
+
+### lib/nadac-margin.js (spec-v1510: Pharmacy margin against NADAC — administrative disclaimer)
+- `nadac-margin`
+
+### lib/asp-payment.js (spec-v1510: Medicare Part B drug payment — administrative disclaimer)
+- `asp-payment`
+
+### lib/chair-day-planner.js (spec-v1512: Infusion chair day planner — administrative disclaimer)
+- `chair-day-planner`
+
+### lib/part-b-drug-coinsurance.js (spec-v1506: Part B drug coinsurance — administrative disclaimer)
+- `part-b-drug-coinsurance`
+
+### lib/part-b-or-d.js (spec-v1505: Medicare Part B or Part D for a drug — administrative disclaimer)
+- `part-b-or-d`
+
+### lib/lcd-diagnosis-check.js (spec-v1505: Diagnosis support under the billing and coding articles — administrative disclaimer)
+- `lcd-diagnosis-check`
+
+### lib/pharmacy-spread-check.js (spec-v1604: Plan pharmacy claims against NADAC — administrative disclaimer)
+- `pharmacy-spread-check`
 
 ### lib/medicaid-ura-v1510.js (spec-v1510: Medicaid unit rebate amount — administrative disclaimer)
 - `medicaid-ura`

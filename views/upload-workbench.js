@@ -1,6 +1,7 @@
 // spec-v1501 §3: reusable local-file intake and explicit column confirmation.
 import { el, clear } from '../lib/dom.js';
 import { MAX_FILE_BYTES, MAX_DATA_ROWS } from '../lib/upload-intake.js';
+import { renderReceipt } from './receipt.js';
 
 const workerUrl = new URL('../lib/upload-worker.js', import.meta.url);
 
@@ -36,7 +37,7 @@ export function uploadWorkbench(root, { id, fields, label, compute, getInput, on
     worker = null;
   };
 
-  function showPreview(preview) {
+  function showPreview(preview, message = {}) {
     clear(resultsRoot);
     resultsRoot.hidden = !preview;
     if (!preview) return;
@@ -70,6 +71,7 @@ export function uploadWorkbench(root, { id, fields, label, compute, getInput, on
       wrap.appendChild(button);
       resultsRoot.appendChild(wrap);
     }
+    renderReceipt(resultsRoot, message);
   }
 
   function showMapping(message) {
@@ -151,7 +153,7 @@ export function uploadWorkbench(root, { id, fields, label, compute, getInput, on
             clear(mappingRoot);
             mappingRoot.hidden = true;
           }
-          showPreview(message.preview);
+          showPreview(message.preview, message);
           onResult(message.result);
           return;
         }

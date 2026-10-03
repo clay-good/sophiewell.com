@@ -9954,6 +9954,60 @@
     },
     {
       "phrases": [
+        "charged for a screening colonoscopy",
+        "billed for preventive care",
+        "should preventive care be free",
+        "colonoscopy after positive cologuard cost",
+        "prep lab copay"
+      ],
+      "tile": "preventive-cost-share-check",
+      "audience": "patients"
+    },
+    {
+      "phrases": [
+        "direct primary care hsa",
+        "dpc membership hsa eligibility",
+        "concierge doctor fee and hsa",
+        "can i contribute to my hsa with direct primary care"
+      ],
+      "tile": "dpc-hsa-check",
+      "audience": "patients"
+    },
+    {
+      "phrases": [
+        "medicare advantage denial",
+        "medicare advantage denied my claim",
+        "ma plan used interqual",
+        "medicare advantage prior authorization denied",
+        "90 day transition new medicare advantage member"
+      ],
+      "tile": "ma-criteria-check",
+      "audience": "patients"
+    },
+    {
+      "phrases": [
+        "payer policy changed",
+        "compare medical policy versions",
+        "what changed in the prior authorization criteria",
+        "policy diff",
+        "new criteria from the insurer"
+      ],
+      "tile": "payer-policy-diff",
+      "audience": "billers"
+    },
+    {
+      "phrases": [
+        "prior authorization metrics report",
+        "cms-0057-f public reporting",
+        "payer prior authorization approval rate",
+        "insurer prior authorization denial rate",
+        "check a payer's prior auth report"
+      ],
+      "tile": "pa-metrics-compare",
+      "audience": "billers"
+    },
+    {
+      "phrases": [
         "proportion of days covered",
         "medication possession ratio",
         "pdc calculator",
@@ -10116,6 +10170,116 @@
       ],
       "tile": "pbm-reimbursement-check",
       "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "nadac margin",
+        "pharmacy margin nadac",
+        "paid below acquisition cost",
+        "is this claim below nadac",
+        "national average drug acquisition cost"
+      ],
+      "tile": "nadac-margin",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "asp payment limit",
+        "part b drug payment",
+        "medicare pays for infusion drug",
+        "asp plus 6",
+        "j code drug reimbursement medicare"
+      ],
+      "tile": "asp-payment",
+      "audience": "billers"
+    },
+    {
+      "phrases": [
+        "infusion chair schedule",
+        "chair utilization",
+        "infusion center scheduling",
+        "how many chairs do we need",
+        "schedule infusion appointments"
+      ],
+      "tile": "chair-day-planner",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "part b drug coinsurance",
+        "what do i pay for an infusion on medicare",
+        "inflation adjusted coinsurance",
+        "insulin pump 35 dollar cap",
+        "medicare 20 percent drug coinsurance"
+      ],
+      "tile": "part-b-drug-coinsurance",
+      "audience": "patients"
+    },
+    {
+      "phrases": [
+        "part b or part d",
+        "b vs d coverage",
+        "is this drug covered by part b or part d",
+        "self administered drug list",
+        "which part of medicare pays for this drug"
+      ],
+      "tile": "part-b-or-d",
+      "audience": "billers"
+    },
+    {
+      "phrases": [
+        "lcd diagnosis code check",
+        "does this icd-10 support medical necessity",
+        "billing and coding article",
+        "covered diagnosis codes for cpt",
+        "medicare coverage database article"
+      ],
+      "tile": "lcd-diagnosis-check",
+      "audience": "billers"
+    },
+    {
+      "phrases": [
+        "compare hospital prices",
+        "hospital price transparency compare",
+        "cash price at different hospitals",
+        "compare negotiated rates across hospitals",
+        "which hospital is cheapest for this procedure"
+      ],
+      "tile": "hpt-price-compare",
+      "audience": "patients"
+    },
+    {
+      "phrases": [
+        "wiser prior authorization",
+        "medicare prior authorization list",
+        "opd prior authorization",
+        "dmepos prior authorization required",
+        "does medicare need prior auth"
+      ],
+      "tile": "medicare-ffs-pa-required",
+      "audience": "billers"
+    },
+    {
+      "phrases": [
+        "pbm spread pricing",
+        "pharmacy claims against nadac",
+        "plan sponsor pharmacy spend",
+        "spread pricing audit",
+        "what did our plan overpay for drugs"
+      ],
+      "tile": "pharmacy-spread-check",
+      "audience": "billers"
+    },
+    {
+      "phrases": [
+        "hsa preventive care before deductible",
+        "hdhp chronic condition safe harbor",
+        "notice 2019-45",
+        "can my hsa plan cover statins before deductible",
+        "insulin before the deductible hsa"
+      ],
+      "tile": "hsa-predeductible-check",
+      "audience": "patients"
     },
     {
       "phrases": [

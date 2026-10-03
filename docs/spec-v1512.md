@@ -101,5 +101,10 @@ doesn't list products.
   - The escalation and calendar examples were read on DailyMed: Rituxan's 50 mg/hr first infusion
     (100 mg/hr later), raised every 30 minutes to 400 mg/hr, and Remicade's weeks 0, 2 and 6, then every
     8 weeks. The `.ics` calendar download is not built.
-- **Not yet built:** `chair-day-planner` (needs a list of appointments) and `substitution-check` (needs the
+- **Built 2026-10-01:** `chair-day-planner`, typed or from a CSV through the upload workbench. Each appointment
+  holds its chair for premedication, infusion and observation end to end; placement is first-fit in order of
+  preferred start (ties to the earlier line and the lower chair), so the same input always gives the same day.
+  An appointment that does not fit after its preferred time is not moved earlier: it is listed with the earliest
+  slot it could take in the schedule as built. The download adds each row's chair, start, end and status.
+- **Not yet built:** `substitution-check` (needs the
   Orange Book and Purple Book files, route A).

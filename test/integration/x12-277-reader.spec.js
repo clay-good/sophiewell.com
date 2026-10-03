@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { readFile } from 'node:fs/promises';
+import { expectNoHScroll } from '../lib/no-hscroll.js';
 
 function claimStatusResponse() {
   const isa = 'ISA*00*          *00*          *ZZ*SENDER         *ZZ*RECEIVER       *260928*1200*^*00501*000000001*0*P*:';
@@ -26,8 +27,7 @@ test('277 reader puts rejections first, links raw codes and redacts claim identi
   await expect(rows.nth(1)).toContainText('ACCEPT-1');
   await expect(page.getByRole('link', { name: 'Look up raw codes' })).toHaveCount(2);
   await expect(page.getByRole('link', { name: 'Look up raw codes' }).first()).toHaveAttribute('href', 'https://x12.org/codes');
-  const width = await page.evaluate(() => ({ scroll: document.documentElement.scrollWidth, client: document.documentElement.clientWidth }));
-  expect(width.scroll).toBeLessThanOrEqual(width.client + 1);
+  await expectNoHScroll(page, 'x12-277-reader');
   const downloadPromise = page.waitForEvent('download');
   await page.getByRole('button', { name: 'Download redacted CSV' }).click();
   const download = await downloadPromise;

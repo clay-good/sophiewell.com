@@ -841,6 +841,11 @@ export const SERVER_INSTRUCTIONS = [
   'Every describe / compute result carries the source citation (with URL and access date) and a',
   'disclaimer: a computed value is decision-support, not a treat / prescribe order. Surface the',
   'citation and leave the clinical decision to the clinician.',
+  '',
+  'Files: recognize_file says what a file on the user\'s machine is (835, 837, 271, 277, price file,',
+  'health record, CSV) and which tools read it; analyze_file runs the tool and returns the result with a',
+  'receipt (each file\'s SHA-256, the tool and build, and the result\'s SHA-256) that reproduces on the',
+  'site. Files are read locally and never uploaded; only paths inside a directory the client shares are read.',
 ].join('\n');
 
 // spec-v634 §2: every tool is read-only, side-effect-free, deterministic, and

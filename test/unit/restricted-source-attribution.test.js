@@ -32,6 +32,8 @@ const DECLARED = {
   'revenue-codes': 'NUBC manuals',
   'tob-codes': 'NUBC manuals',
   'tccc': 'CoTCCC guidelines',
+  // spec-v1624: LOINC code numbers with our own labels; the payload was read.
+  'concepts': 'LOINC long names',
 };
 
 async function manifestsWithStatus() {

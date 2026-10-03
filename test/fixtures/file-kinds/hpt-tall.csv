@@ -1,0 +1,4 @@
+hospital_name,last_updated_on,version,hospital_location,hospital_address,license_number | AL,"To the best of its knowledge and belief, the hospital has included all applicable standard charge information"
+Example General Hospital,2026-07-01,3.0.0,Example City,1 Example Way,12345,true
+description,code|1,code|1|type,setting,standard_charge|gross,standard_charge|discounted_cash,payer_name,plan_name,standard_charge|negotiated_dollar,standard_charge|methodology
+Office visit,99213,CPT,outpatient,200,150,Example Plan,Gold,120,fee schedule

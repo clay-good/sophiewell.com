@@ -5,16 +5,10 @@ import * as E3 from '../lib/entity-340b-v1509.js';
 import { resultRow } from '../lib/result-copy.js';
 import { uploadWorkbench } from './upload-workbench.js';
 import { rxMatchWorkbench } from './rx-match-workbench.js';
+import { PATIENT_CHECK_FIELDS } from '../lib/upload-fields.js';
+import { acceptVia } from '../lib/hand-off.js';
 
 const NA = { value: '', text: '— choose —' };
-const PATIENT_CHECK_FIELDS = [
-  { id: 'patient_reference', label: 'Patient reference', required: true, sensitive: true, synonyms: ['patient', 'patient id', 'member', 'member id'] },
-  { id: 'entity', label: 'Covered entity kind', required: true, synonyms: ['entity kind', 'entity type'] },
-  { id: 'records', label: 'Entity keeps records', required: true, synonyms: ['keeps records', 'health records'] },
-  { id: 'provider', label: 'Eligible provider arrangement', required: true, synonyms: ['provider arrangement', 'eligible prescriber'] },
-  { id: 'scope', label: 'Within grant scope', synonyms: ['grant scope', 'in scope'] },
-  { id: 'dispensingOnly', label: 'Dispensing only', required: true, synonyms: ['dispensing only', 'only service'] },
-];
 function selectField(root, label, id, options) {
   const wrap = el('p');
   wrap.appendChild(el('label', { for: id, text: label }));
@@ -171,4 +165,11 @@ export const renderers = {
       note(o, r.note);
     }));
   },
+};
+
+// spec-v1623 step 3: a patient CSV goes to the workbench; a prescriptions CSV
+// to the matcher's first file (the other three are chosen on the page).
+export const acceptFiles = {
+  '340b-patient-check': acceptVia('pc3-upload-file'),
+  '340b-rx-match': acceptVia('rxm-prescriptions-file'),
 };

@@ -853,20 +853,23 @@ import { renderers as RV1570 } from './views/group-v1570.js';
 import { renderers as RV1571 } from './views/group-v1571.js';
 import { renderers as RV1572 } from './views/group-v1572.js';
 import { renderers as RV1503 } from './views/group-v1503.js';
-import { renderers as RV1502 } from './views/group-v1502.js';
+import { renderers as RV1502, acceptFiles as AF1502 } from './views/group-v1502.js';
 import { renderers as RV1507 } from './views/group-v1507.js';
 import { renderers as RV1511 } from './views/group-v1511.js';
 import { renderers as RV1514 } from './views/group-v1514.js';
 import { renderers as RV1506 } from './views/group-v1506.js';
 import { renderers as RV1508 } from './views/group-v1508.js';
-import { renderers as RV1512 } from './views/group-v1512.js';
+import { renderers as RV1512, acceptFiles as AF1512 } from './views/group-v1512.js';
 import { renderers as RV1505 } from './views/group-v1505.js';
-import { renderers as RV1515 } from './views/group-v1515.js';
-import { renderers as RV1516 } from './views/group-v1516.js';
+import { renderers as RV1601 } from './views/group-v1601.js';
+import { renderers as RV1603 } from './views/group-v1603.js';
+import { renderers as RV1604, acceptFiles as AF1604 } from './views/group-v1604.js';
+import { renderers as RV1515, acceptFiles as AF1515 } from './views/group-v1515.js';
+import { renderers as RV1516, acceptFiles as AF1516 } from './views/group-v1516.js';
 import { renderers as RV1504 } from './views/group-v1504.js';
-import { renderers as RV1510 } from './views/group-v1510.js';
-import { renderers as RV1509 } from './views/group-v1509.js';
-import { renderers as RV1513 } from './views/group-v1513.js';
+import { renderers as RV1510, acceptFiles as AF1510 } from './views/group-v1510.js';
+import { renderers as RV1509, acceptFiles as AF1509 } from './views/group-v1509.js';
+import { renderers as RV1513, acceptFiles as AF1513 } from './views/group-v1513.js';
 import { renderers as RV1396 } from './views/group-v1396.js';
 import { renderers as RV164 } from './views/group-v164.js';
 import { renderers as RV165 } from './views/group-v165.js';
@@ -886,9 +889,11 @@ import { renderers as RV181 } from './views/group-v181.js';
 import { renderers as RV149 } from './views/group-v149.js';
 import { renderers as RV63 } from './views/group-v63.js';
 import { renderers as RB } from './views/group-b.js';
-import { renderers as RPALINT } from './views/pa-lint.js';
+import { renderers as RPALINT, acceptFiles as AFPALINT } from './views/pa-lint.js';
 import { META } from './lib/meta.js';
 import { fetchJson, datasetStatus, stampDetail } from './lib/data.js';
+import { createHomeFiles } from './views/home-files.js';
+import { longDate as recordDate } from './lib/record-pick.js';
 import { copyButton } from './lib/clipboard.js';
 import { installKeyboard } from './lib/keyboard.js';
 import { parseHash, patchHash, buildHash } from './lib/hash.js';
@@ -955,7 +960,7 @@ const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...R
   ...RV902,
   ...RV903,
   ...RV905,
-  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV960, ...RV1061, ...RV1062, ...RV1240, ...RV1241, ...RV1242, ...RV1243, ...RV1400, ...RV1389, ...RV1393, ...RV1397, ...RV1395, ...RV1390, ...RV1391, ...RV1392, ...RV1394, ...RV1399, ...RV1398, ...RV1401, ...RV1396, ...RV1412, ...RV1413, ...RV1414, ...RV1416, ...RV1417, ...RV1418, ...RV1419, ...RV1420, ...RV1421, ...RV1422, ...RV1423, ...RV1424, ...RV1425, ...RV1426, ...RV1427, ...RV1428, ...RV1429, ...RV1430, ...RV1431, ...RV1433, ...RV1434, ...RV1435, ...RV1436, ...RV1438, ...RV1439, ...RV1440, ...RV1441, ...RV1442, ...RV1443, ...RV1444, ...RV1445, ...RV1446, ...RV1447, ...RV1448, ...RV1449, ...RV1450, ...RV1451, ...RV1452, ...RV1453, ...RV1454, ...RV1455, ...RV1468, ...RV1469, ...RV1470, ...RV1471, ...RV1472, ...RV1473, ...RV1475, ...RV1476, ...RV1479, ...RV1480, ...RV1481, ...RV1482, ...RV1483, ...RV1484, ...RV1485, ...RV1486, ...RV1487, ...RV1488, ...RV1489, ...RV1490, ...RV1491, ...RV1492, ...RV1493, ...RV1494, ...RV1495, ...RV1496, ...RV1497, ...RV1498, ...RV1499, ...RV1570, ...RV1571, ...RV1572, ...RV1503, ...RV1502, ...RV1507, ...RV1511, ...RV1514, ...RV1506, ...RV1508, ...RV1512, ...RV1505, ...RV1515, ...RV1516, ...RV1504, ...RV1510, ...RV1509, ...RV1513, ...RV63, ...RPALINT };
+  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV960, ...RV1061, ...RV1062, ...RV1240, ...RV1241, ...RV1242, ...RV1243, ...RV1400, ...RV1389, ...RV1393, ...RV1397, ...RV1395, ...RV1390, ...RV1391, ...RV1392, ...RV1394, ...RV1399, ...RV1398, ...RV1401, ...RV1396, ...RV1412, ...RV1413, ...RV1414, ...RV1416, ...RV1417, ...RV1418, ...RV1419, ...RV1420, ...RV1421, ...RV1422, ...RV1423, ...RV1424, ...RV1425, ...RV1426, ...RV1427, ...RV1428, ...RV1429, ...RV1430, ...RV1431, ...RV1433, ...RV1434, ...RV1435, ...RV1436, ...RV1438, ...RV1439, ...RV1440, ...RV1441, ...RV1442, ...RV1443, ...RV1444, ...RV1445, ...RV1446, ...RV1447, ...RV1448, ...RV1449, ...RV1450, ...RV1451, ...RV1452, ...RV1453, ...RV1454, ...RV1455, ...RV1468, ...RV1469, ...RV1470, ...RV1471, ...RV1472, ...RV1473, ...RV1475, ...RV1476, ...RV1479, ...RV1480, ...RV1481, ...RV1482, ...RV1483, ...RV1484, ...RV1485, ...RV1486, ...RV1487, ...RV1488, ...RV1489, ...RV1490, ...RV1491, ...RV1492, ...RV1493, ...RV1494, ...RV1495, ...RV1496, ...RV1497, ...RV1498, ...RV1499, ...RV1570, ...RV1571, ...RV1572, ...RV1503, ...RV1502, ...RV1507, ...RV1511, ...RV1514, ...RV1506, ...RV1508, ...RV1512, ...RV1505, ...RV1515, ...RV1516, ...RV1504, ...RV1510, ...RV1509, ...RV1513, ...RV1601, ...RV1603, ...RV1604, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -979,6 +984,7 @@ const UTILITIES = [
   { id: 'mppr', name: 'Multiple-Procedure Payment Reduction (MPPR)', group: 'B', audiences: ['billers'], clinical: false },
   { id: 'bilateral-pay', name: 'Bilateral (Modifier 50) Payment by Indicator', group: 'B', audiences: ['billers'], clinical: false },
   { id: 'multi-surgeon-pay', name: 'Assistant / Co- / Team-Surgeon Payment', group: 'B', audiences: ['billers'], clinical: false },
+  { id: 'asp-payment', name: 'Medicare Part B Drug Payment (ASP)', group: 'B', audiences: ['billers', 'clinicians'], clinical: false },
   { id: 'sequestration-adjust', name: 'Medicare 2% Sequestration Adjustment', group: 'B', audiences: ['billers'], clinical: false },
   // spec-v79: claim edits & modifier logic. v78 prices the line; these five
   // decide whether it survives. No NCCI PTP / MUE table ships (doctrine clause 2):
@@ -1046,9 +1052,11 @@ const UTILITIES = [
   { id: 'medicare-enrollment-window', name: 'Medicare Enrollment Window and Start Date', group: 'C', audiences: ['billers', 'patients', 'clinicians'], clinical: false },
   { id: 'aca-sep-window', name: 'Marketplace Special Enrollment Window', group: 'C', audiences: ['billers', 'patients', 'clinicians'], clinical: false },
   { id: 'medicaid-work-requirement-check', name: 'Medicaid Work Requirement Check', group: 'C', audiences: ['billers', 'patients', 'clinicians'], clinical: false },
+  { id: 'medicare-ffs-pa-required', name: 'Does Original Medicare Require Prior Authorization?', group: 'Q', audiences: ['billers', 'clinicians', 'patients'], clinical: false },
   { id: 'auth-runout', name: 'Authorization Run-Out and Renewal Date', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },
   { id: 'auth-units-request', name: 'Authorization Units to Request', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },
   { id: 'quantity-limit-check', name: 'Quantity Limit Check', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },
+  { id: 'part-b-drug-coinsurance', name: 'What Will I Pay for a Part B Drug?', group: 'C', audiences: ['patients', 'billers'], clinical: false },
   { id: 'fpl-percent', name: 'Federal Poverty Level Percent', group: 'C', audiences: ['billers', 'patients', 'clinicians'], clinical: false },
   { id: 'premium-tax-credit', name: 'Premium Tax Credit Estimate', group: 'C', audiences: ['billers', 'patients', 'clinicians'], clinical: false },
   { id: 'employer-coverage-affordability', name: 'Employer Coverage Affordability Test', group: 'C', audiences: ['billers', 'patients', 'clinicians'], clinical: false },
@@ -1063,6 +1071,7 @@ const UTILITIES = [
   { id: 'gfe-deadline', name: 'Good Faith Estimate Deadline', group: 'C', audiences: ['billers', 'patients'], clinical: false },
   { id: 'ppdr-eligibility', name: 'Patient-Provider Dispute Eligibility', group: 'C', audiences: ['billers', 'patients'], clinical: false },
   { id: 'vial-rounding', name: 'Dose Rounding to Whole Vials', group: 'Q', audiences: ['clinicians', 'billers'], clinical: false },
+  { id: 'chair-day-planner', name: 'Infusion Chair Day Planner', group: 'Q', audiences: ['clinicians', 'billers'], clinical: false },
   { id: 'rate-escalation-schedule', name: 'Infusion Rate Escalation Schedule', group: 'Q', audiences: ['clinicians'], clinical: false },
   { id: 'dose-calendar', name: 'Loading and Maintenance Dose Calendar', group: 'Q', audiences: ['clinicians', 'patients'], clinical: false },
   { id: 'mpr-gap-days', name: 'Adherence: PDC, MPR and Gap Days', group: 'Q', audiences: ['clinicians', 'billers'], clinical: false },
@@ -1072,6 +1081,8 @@ const UTILITIES = [
   { id: 'imid-rems-fill-window', name: 'Lenalidomide REMS Fill Window', group: 'Q', audiences: ['clinicians'], clinical: false },
   { id: 'step-therapy-history', name: 'Step Therapy History Check', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },
   { id: 'pa-criteria-checklist', name: 'Payer Criteria Checklist', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },
+  { id: 'pa-metrics-compare', name: 'Payer Prior Authorization Report Check', group: 'Q', audiences: ['billers', 'clinicians', 'patients'], clinical: false },
+  { id: 'payer-policy-diff', name: 'What Changed in This Payer Policy?', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },
   { id: 'magi-household', name: 'Medicaid MAGI Household and Income', group: 'C', audiences: ['billers', 'patients'], clinical: false },
   { id: '340b-entity-eligibility', name: '340B Hospital Eligibility', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },
   { id: '340b-orphan-exclusion', name: '340B Orphan Drug Exclusion', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },
@@ -1081,9 +1092,17 @@ const UTILITIES = [
   { id: '340b-ceiling-price', name: '340B Ceiling Price and Unit Rebate Amount', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },
   { id: 'mfp-refund-check', name: 'Negotiated-Price Refund Check (Pharmacy)', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },
   { id: 'pbm-reimbursement-check', name: 'PBM Reimbursement Check', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },
+  { id: 'nadac-margin', name: 'Pharmacy Margin Against NADAC', group: 'Q', audiences: ['billers', 'clinicians'], clinical: false },
+  { id: 'pharmacy-spread-check', name: 'Pharmacy Spread Check: Claims Against NADAC', group: 'Q', audiences: ['billers'], clinical: false },
   { id: 'medicaid-ura', name: 'Medicaid Unit Rebate Amount', group: 'B', audiences: ['billers', 'clinicians'], clinical: false },
   { id: 'ipledge-dispense-window', name: 'iPLEDGE Dispense Window (Isotretinoin)', group: 'Q', audiences: ['clinicians', 'patients'], clinical: false },
+  { id: 'lcd-diagnosis-check', name: 'Does This Diagnosis Support This Code Under the LCD?', group: 'Q', audiences: ['billers', 'coders'], clinical: false },
+  { id: 'part-b-or-d', name: 'Medicare Part B or Part D for This Drug?', group: 'C', audiences: ['billers', 'patients', 'clinicians'], clinical: false },
   { id: 'which-appeal-path', name: 'Which Appeal Rules Apply?', group: 'C', audiences: ['billers', 'patients', 'clinicians'], clinical: false },
+  { id: 'preventive-cost-share-check', name: 'Should I Have Paid for This Preventive Care?', group: 'C', audiences: ['patients', 'billers'], clinical: false },
+  { id: 'hsa-predeductible-check', name: 'HSA Safe Harbors: What Can Be Covered Before the Deductible?', group: 'C', audiences: ['patients', 'billers'], clinical: false },
+  { id: 'dpc-hsa-check', name: 'Does My Direct Primary Care Plan Keep HSA Eligibility?', group: 'C', audiences: ['patients', 'billers'], clinical: false },
+  { id: 'ma-criteria-check', name: 'Was This Medicare Advantage Denial Allowed to Use These Criteria?', group: 'C', audiences: ['patients', 'billers'], clinical: false },
   { id: 'bi-summary', name: 'Benefits Investigation Cost Summary', group: 'Q', audiences: ['billers', 'patients', 'clinicians'], clinical: false },
   { id: 'site-of-care-compare', name: 'Cost by Site of Care', group: 'Q', audiences: ['billers', 'patients', 'clinicians'], clinical: false },
   { id: 'appeal-worklist', name: 'Appeal Worklist by Deadline', group: 'P', audiences: ['billers', 'coders'], clinical: false },
@@ -1091,6 +1110,7 @@ const UTILITIES = [
   { id: 'x12-837-check', name: 'X12 837 Claim File Check', group: 'P', audiences: ['billers', 'coders'], clinical: false },
   { id: 'x12-271-reader', name: 'X12 271 Eligibility Response Reader', group: 'P', audiences: ['billers', 'coders'], clinical: false },
   { id: 'x12-277-reader', name: 'X12 277 Claim Status Reader', group: 'P', audiences: ['billers', 'coders'], clinical: false },
+  { id: 'hpt-price-compare', name: 'Compare One Service Across Hospital Price Files', group: 'P', audiences: ['billers', 'patients'], clinical: false },
   { id: 'hpt-file-check', name: 'Hospital Price Transparency File Check', group: 'P', audiences: ['billers', 'coders'], clinical: false },
   { id: 'denial-pattern-report', name: 'Denial Pattern Report', group: 'P', audiences: ['billers', 'coders'], clinical: false },
   { id: 'underpayment-check', name: 'Paid Below Contract Check', group: 'P', audiences: ['billers', 'coders'], clinical: false },
@@ -4547,6 +4567,7 @@ function restoreHome() {
   // The home view is restored from a cloned snapshot, so the hero combobox
   // loses its event listeners -- re-bind them. The clone ships an empty input.
   bindHeroSearch();
+  homeFiles.bindHome();
   document.title = 'Sophie Well';
 }
 
@@ -5615,6 +5636,27 @@ function renderToolView(util) {
       // spec-v9 §3.3: pre-fill META[id].example after the renderer mounts,
       // but let URL-hash state win (deep links keep their values).
       Promise.resolve().then(() => {
+        // spec-v1624: a record fills this tool from memory. Its values never
+        // reach the URL: hash tracking stays off for this view, the example is
+        // not applied, and each filled field says it came from the file.
+        const fromRecord = recordFill && recordFill.tileId === util.id ? recordFill : null;
+        recordFill = null;
+        if (fromRecord) {
+          fillFields(body, fromRecord.values);
+          for (const dom of Object.keys(fromRecord.values)) {
+            const node = body.querySelector(`#${CSS.escape(dom)}`);
+            const anchor = node && (node.closest('p, div, li, fieldset') || node);
+            const date = fromRecord.dates[dom];
+            if (anchor) anchor.appendChild(el('span', { class: 'field-provenance', text: date ? `${FILE_PROVENANCE_TEXT}, ${recordDate(date)}` : FILE_PROVENANCE_TEXT }));
+          }
+          const copyLink = [...content.querySelectorAll('.copy-row button')].find((b) => /copy link/i.test(b.textContent));
+          if (copyLink) copyLink.replaceWith(el('span', { class: 'muted', text: "Links aren't made from file values." }));
+          setTimeout(() => hoistResults(body), 0);
+          setTimeout(() => dropDuplicateNotice(content, body), 0);
+          setTimeout(() => foldRestatedNote(body), 0);
+          watchDeclaredRanges(body);
+          return;
+        }
         // spec-v754: a query says "68 kg" and queryFill returns 68 in the
         // field's CANONICAL unit -- but the unit select next to that field
         // pre-selects the US-customary option (lb, in, °F) per spec-v283. Left
@@ -5768,9 +5810,93 @@ function renderToolView(util) {
 
 let currentRouteId = null;
 
+// spec-v1623 step 4: dropped and chosen files. The hand-off maps come from the
+// views that read files; see views/home-files.js.
+const ACCEPT_FILES = { ...AF1515, ...AF1516, ...AF1509, ...AF1513, ...AF1604, ...AF1502, ...AF1510, ...AF1512, ...AFPALINT };
+function navigateTo(hash) {
+  currentRouteId = null;
+  if (window.location.hash === hash) route();
+  else window.location.hash = hash;
+}
+const homeFiles = createHomeFiles({
+  acceptFiles: ACCEPT_FILES,
+  navigate: navigateTo,
+  toolName: (tid) => (UTIL_BY_ID.get(tid) || { name: tid }).name,
+  computeAnswer: computeWithTile,
+  fillTool: (fill) => { recordFill = fill; },
+});
+
+// spec-v1624: values from a health record, held in memory for the one
+// navigation that opens their tool. They go into the fields directly and
+// never into the URL: a link lands in history, sync and screenshots.
+let recordFill = null;
+export const FILE_PROVENANCE_TEXT = 'from your file';
+
+function fillFields(root, values) {
+  resetUnitsToCanonical(new Set(Object.keys(values)));
+  for (const [dom, value] of Object.entries(values)) {
+    const node = root.querySelector(`#${CSS.escape(dom)}`);
+    if (!node) continue;
+    node.value = String(value);
+    node.dispatchEvent(new Event('input', { bubbles: true }));
+    node.dispatchEvent(new Event('change', { bubbles: true }));
+  }
+}
+
+// The answer a tool gives for these values, read from the tool itself: it is
+// rendered out of sight, filled, and its headline read -- the same number the
+// reader sees on opening it. Used by the records panel.
+// One at a time: tools share field ids (scr, age, sex), and two hidden copies
+// in the document at once would read each other's inputs.
+let computeQueue = Promise.resolve();
+function computeWithTile(id, values) {
+  const run = computeQueue.then(() => computeOneTile(id, values));
+  computeQueue = run.catch(() => null);
+  return run;
+}
+
+async function computeOneTile(id, values) {
+  const renderer = RENDERERS[id];
+  if (!renderer) return null;
+  const host = el('div', { class: 'record-offscreen', 'aria-hidden': 'true' });
+  document.body.appendChild(host);
+  try {
+    renderer(host);
+    fillFields(host, values);
+    await new Promise((r) => setTimeout(r, 30));
+    const q = host.querySelector('#q-results') || host;
+    const line = q.querySelector('h2, .result-band, li, p');
+    return line ? line.textContent.replace(/\s+/g, ' ').trim() : null;
+  } catch {
+    return null;
+  } finally {
+    host.remove();
+  }
+}
+
 function route() {
   const parsed = parseHash(window.location.hash);
   const id = parsed.route;
+  // spec-v1624: #/records is "Your record can fill these tools".
+  if (!id && parsed.sub === 'records') {
+    const main = getMain();
+    if (main && currentRouteId !== '/records') {
+      currentRouteId = '/records';
+      homeFiles.renderRecords(main);
+      document.title = 'Your record · Sophie Well';
+    }
+    return;
+  }
+  // spec-v1623: #/intake is the inventory of files the reader chose or dropped.
+  if (!id && parsed.sub === 'intake') {
+    const main = getMain();
+    if (main && currentRouteId !== '/intake') {
+      currentRouteId = '/intake';
+      homeFiles.renderInventory(main);
+      document.title = 'Your files · Sophie Well';
+    }
+    return;
+  }
   if (!id) {
     currentRouteId = null;
     restoreHome();
@@ -5788,6 +5914,8 @@ function route() {
     if (currentRouteId !== id) {
       currentRouteId = id;
       renderToolView(util);
+      // spec-v1623: a file dropped on the home page opens here, already in the tool.
+      homeFiles.afterToolRender(util, document.getElementById('tool-body'));
     }
   } else {
     currentRouteId = null;
@@ -6185,7 +6313,7 @@ function bindHeroSearch() {
   // spec-v751: the example chips. A chip is a demonstration, so it does exactly
   // what typing does -- fill the box, focus it, run the same render. No separate
   // routing path, or the example would stop being an honest example.
-  document.querySelectorAll('.hero-chip').forEach((chip) => {
+  document.querySelectorAll('.hero-chip:not(.hero-file-chip)').forEach((chip) => {
     chip.addEventListener('click', () => {
       input.value = chip.dataset.q || chip.textContent;
       input.focus();
@@ -6282,6 +6410,7 @@ function boot() {
   const initial = parseHash(window.location.hash);
   if (initial.audience) filterState.audience = initial.audience;
   bindHeroSearch();
+  homeFiles.bindHome();
   bindSkipLink();
   installKeyboard();
   // spec-v7 §3.2: load the synonym table once at boot. Hero search degrades

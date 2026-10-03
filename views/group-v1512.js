@@ -4,7 +4,11 @@ import { el, clear } from '../lib/dom.js';
 import * as VR from '../lib/vial-rounding-v1512.js';
 import * as RE from '../lib/rate-escalation-v1512.js';
 import * as DC from '../lib/dose-calendar-v1512.js';
+import * as CD from '../lib/chair-day-planner.js';
 import { resultRow } from '../lib/result-copy.js';
+import { uploadWorkbench } from './upload-workbench.js';
+import { APPT_FIELDS } from '../lib/upload-fields.js';
+import { acceptVia } from '../lib/hand-off.js';
 
 const NA = { value: '', text: '— choose —' };
 function selectField(root, label, id, options) {
@@ -28,6 +32,20 @@ function dateInput(root, label, id, type) {
   wrap.appendChild(el('label', { for: id, text: label }));
   wrap.appendChild(el('br'));
   wrap.appendChild(el('input', { id, type }));
+  root.appendChild(wrap);
+}
+function textField(root, label, id, placeholder) {
+  const wrap = el('p');
+  wrap.appendChild(el('label', { for: id, text: label }));
+  wrap.appendChild(el('br'));
+  wrap.appendChild(el('input', { id, type: 'text', autocomplete: 'off', placeholder }));
+  root.appendChild(wrap);
+}
+function textareaField(root, label, id, placeholder) {
+  const wrap = el('p');
+  wrap.appendChild(el('label', { for: id, text: label }));
+  wrap.appendChild(el('br'));
+  wrap.appendChild(el('textarea', { id, rows: '6', autocomplete: 'off', placeholder }));
   root.appendChild(wrap);
 }
 function list(root, items) {
@@ -114,4 +132,51 @@ export const renderers = {
       note(o, r.note);
     }));
   },
+  'chair-day-planner'(root) {
+    const pairs = [['cdp-chairs', 'chairs'], ['cdp-open', 'open'], ['cdp-close', 'close'], ['cdp-appts', 'appointments']];
+    numField(root, 'Chairs', 'cdp-chairs', 'e.g. 8', '200', '1');
+    textField(root, 'Opening time (HH:MM)', 'cdp-open', 'e.g. 07:30');
+    textField(root, 'Closing time (HH:MM)', 'cdp-close', 'e.g. 18:00');
+    note(root, 'Appointments one per line: reference, chair minutes, premedication minutes, observation minutes, and a preferred start (HH:MM, optional). Or load them from a file below.');
+    textareaField(root, 'Appointments', 'cdp-appts', 'A, 120, 30, 30, 08:00');
+    const ids = pairs.map(([d]) => d);
+    const o = out();
+    const input = () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      return args;
+    };
+    const show = (r) => safe(o, () => {
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Chair time', value: r.bandLabel }]);
+      const ul = el('ul');
+      for (const u of r.utilization) {
+        const mine = r.placed.filter((x) => x.chair === u.chair);
+        ul.appendChild(el('li', { text: `Chair ${u.chair} (${u.pct}% booked): ${mine.length ? mine.map((x) => `${x.start}-${x.end} ${x.reference}`).join(', ') : 'open all day'}` }));
+      }
+      o.appendChild(ul);
+      list(o, r.notes);
+      note(o, r.note);
+    });
+    let upload;
+    const run = () => {
+      const args = input();
+      if (upload && upload.isActive()) upload.compute(args);
+      else show(CD.chairDayPlanner(args));
+    };
+    upload = uploadWorkbench(root, {
+      id: 'cdp-upload', fields: APPT_FIELDS, label: 'Load appointments from a file',
+      compute: 'chair-day-planner', getInput: input, onResult: show,
+    });
+    document.getElementById('cdp-appts').addEventListener('input', () => {
+      if (upload.isActive()) upload.clear('Using the appointments entered above.');
+    });
+    root.appendChild(o);
+    wire(ids, run);
+  },
+};
+
+// spec-v1623 step 3: an appointment CSV goes to the planner.
+export const acceptFiles = {
+  'chair-day-planner': acceptVia('cdp-upload-file'),
 };

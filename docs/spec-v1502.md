@@ -125,5 +125,22 @@ One unit test file per tool. The cases that must exist:
   marks inline (`[met]`, `[not met]`, `[not documented]`, then `--` and the evidence) and evaluates only the
   "all of" / "one of" the policy states. The step therapy tool applies the 365-day lookback of 42 CFR
   422.136(a)(1) for a Medicare Advantage Part B drug.
-- **Not yet built:** `medicare-ffs-pa-required` (needs the CMS OPD list re-verified and the DMEPOS list as
-  dated data), and `auth-runout`'s CSV batch mode ([spec-v1501](spec-v1501.md) §3).
+- **Built 2026-09-30:** `medicare-ffs-pa-required`, with the [spec-v1603](spec-v1603.md) WISeR backfill.
+  - Every list was read in its CMS source that day. **The bundled OPD list was wrong in both directions** and
+    was fixed first (a4b59083): it held five codes CMS had removed and eight it never listed, and lacked
+    J0585-J0588, 20912, 21210, 30465 and 30520. Each code now carries its start and removal dates.
+  - **Added to the spec:** two programs it did not name, the ambulatory surgical center demonstration (ten
+    states from January 19 or February 16, 2026, with its own list, which already dropped 15847 and four
+    add-on vein codes) and WISeR (NJ, OH, OK, TX, AZ, WA, 2026 to 2031, Appendix A as of July 24, 2026, with
+    its paired-code and indication conditions and the April 6, 2026 start of C8007 and C8011). Deep brain
+    stimulation (61867, 61868) says postponed; PILD has no code in the guide and is not matched.
+  - DMEPOS dates are the list's phases by state (updated July 29, 2026), including L3761 and L3916, which
+    start October 28, 2026 in four states and April 26, 2027 nationwide. The ambulance program covers
+    A0426 and A0428 by the date each state joined (2014 to 2022).
+  - The ambulance, surgical center and WISeR programs are prior authorization or prepayment review; the
+    outpatient and DMEPOS programs are conditions of payment. The result says which.
+- **Built 2026-10-01:** `auth-runout`'s CSV batch mode: a CSV of authorizations through the upload workbench
+  ([spec-v1501](spec-v1501.md) §3) gives the renewal worklist sorted by submit-by date, each row through the
+  form's own `authRunout`. An optional as-of date marks renewals already past due (due today is not late). A row
+  that cannot be computed is listed last with its reason, never dropped. The reference column is redacted in
+  the redacted download.

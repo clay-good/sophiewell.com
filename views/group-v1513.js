@@ -5,24 +5,9 @@ import * as AD from '../lib/adherence-v1513.js';
 import * as PS from '../lib/pdc-star-v1513.js';
 import { resultRow } from '../lib/result-copy.js';
 import { uploadWorkbench } from './upload-workbench.js';
+import { FILL_FIELDS, MPR_FILL_FIELDS, SYNC_FIELDS } from '../lib/upload-fields.js';
+import { acceptVia } from '../lib/hand-off.js';
 
-const FILL_FIELDS = [
-  { id: 'patient', label: 'Patient', required: true, sensitive: true, synonyms: ['patient name', 'member', 'member name'] },
-  { id: 'measure', label: 'Measure', required: true, synonyms: ['star measure', 'measure id'] },
-  { id: 'fill_date', label: 'Fill date', required: true, synonyms: ['date filled', 'dispense date', 'service date'] },
-  { id: 'days_supply', label: 'Days supply', required: true, synonyms: ['supply days'] },
-  { id: 'ingredient', label: 'Ingredient', required: true, synonyms: ['drug ingredient', 'generic name', 'drug name'] },
-];
-const MPR_FILL_FIELDS = [
-  { id: 'fill_date', label: 'Fill date', required: true, synonyms: ['date filled', 'dispense date', 'service date'] },
-  { id: 'days_supply', label: 'Days supply', required: true, synonyms: ['supply days'] },
-];
-const SYNC_FIELDS = [
-  { id: 'medication', label: 'Medication', required: true, synonyms: ['drug name', 'medication name'] },
-  { id: 'last_fill_date', label: 'Last fill date', required: true, synonyms: ['last dispense date', 'fill date'] },
-  { id: 'days_supply', label: 'Days supply', required: true, synonyms: ['supply days'] },
-  { id: 'units_per_day', label: 'Units a day', required: true, synonyms: ['units per day', 'daily units'] },
-];
 
 function textareaField(root, label, id, placeholder) {
   const wrap = el('p');
@@ -202,4 +187,12 @@ export const renderers = {
     root.appendChild(o);
     wire(ids, run);
   },
+};
+
+// spec-v1623 step 3: a fill or medication CSV goes to the tool's workbench.
+export const acceptFiles = {
+  'mpr-gap-days': acceptVia('mpr-upload-file'),
+  'med-sync-plan': acceptVia('sync-upload-file'),
+  'pdc-star': acceptVia('ps-upload-file'),
+  'adherence-outreach-list': acceptVia('ao-upload-file'),
 };

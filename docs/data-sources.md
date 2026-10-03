@@ -172,8 +172,7 @@ Since [spec-v1621](spec-v1621.md) these come from the publisher's own files,
 fetched by `node scripts/data/run.mjs` (one builder per dataset under
 `scripts/data/builders/`), checked against bounds and per-edition canaries,
 and written with `coverage: 'full'`, `fetchedAt`, `sourceEdition` and
-`sourceSha256`. No tile reads them yet; the file tools of
-[spec-v1626](spec-v1626.md) will.
+`sourceSha256`.
 
 | Folder | Source | Edition today | Size |
 |---|---|---|---|
@@ -181,6 +180,20 @@ and written with `coverage: 'full'`, `fetchedAt`, `sourceEdition` and
 | `data/drg/` | IPPS Table 5 (correction notice when published), with next year's table as `upcoming.json` until it takes effect | FY2026, FY2027 upcoming | 772 MS-DRGs |
 | `data/mue/` | NCCI medically unlikely edits: practitioner, outpatient hospital and DME tables, one record per code; codes only | 2026 Q4 | 15,349 codes |
 | `data/nadac/` | NADAC, the latest week from the data.medicaid.gov datastore API, sharded by labeler | 2026-09-30 weekly | 30,079 NDCs |
+| `data/asp/` | Medicare Part B drug payment limits, the section 508 CSV of the newest quarterly ZIP; descriptors dropped, `period.json` holds the quarter's dates | 2026 Q4 | 918 codes |
+| `data/asp-ndc/` | The ASP NDC-HCPCS crosswalk of the same quarter, one record per 11-digit NDC with each code it bills under (dosage, package size and billable units); descriptors dropped | 2026 Q4 | 7,221 NDCs |
+| `data/mcd-articles/` | Medicare Coverage Database current billing and coding articles that list codes: code groups, covered and non-covered ICD-10-CM groups, group paragraphs as plain text, and the states their contractors serve; one shard per article plus `index.json`; descriptions dropped | 2026-09-28 weekly | 1,106 articles |
+
+## Health record concepts
+
+`data/concepts/concepts.json` ([spec-v1624](spec-v1624.md)) maps the coded
+values a downloaded health record carries -- LOINC codes, and HealthKit type
+identifiers for Apple Health -- to the concepts calculator fields are tagged
+with (`concept` on an MCP adapter field, `c` in `data/fields/`), with the unit
+each concept is kept in, the units it converts from, and a recency window. It
+ships code numbers and our own short names, never LOINC long names, with the
+LOINC notice in its manifest. A curated subset; the records panel
+(`views/record-panel.js`) is its only reader.
 
 ## The ICD-10-CM sample (not consumed at runtime)
 

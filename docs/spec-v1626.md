@@ -50,3 +50,20 @@ example that round-trip; the registry gate; a receipt test; the expired-data neg
 test for every dataset it reads; the catalog count surfaces moved
 (`node scripts/check-catalog-truth.mjs`); the tool's spec page "Build status" updated in
 the same PR with what was read and what differed from the plan.
+
+## Build status
+
+| # | Tool | Status |
+|---|---|---|
+| 2 | `preventive-cost-share-check` | Built September 29, 2026 ([spec-v1601](spec-v1601.md#build-status)) |
+| 3 | `hsa-predeductible-check` | Built September 30, 2026 ([spec-v1601](spec-v1601.md#build-status)) |
+| 14 | backfill `medicare-ffs-pa-required` (WISeR) | Built September 30, 2026 ([spec-v1502](spec-v1502.md#build-status)) |
+| 7 | `pa-metrics-compare` | Built September 30, 2026, without the bundled market table ([spec-v1603](spec-v1603.md#build-status)) |
+| 4 | `ma-criteria-check` | Built September 29, 2026 ([spec-v1603](spec-v1603.md#build-status)) |
+| 5 | `dpc-hsa-check` | Built September 29, 2026 ([spec-v1604](spec-v1604.md#build-status)) |
+| 6 | `payer-policy-diff` | Built September 29, 2026 ([spec-v1603](spec-v1603.md#build-status)) |
+| 13 | `pharmacy-spread-check` | Built September 30, 2026 ([spec-v1604](spec-v1604.md#build-status)) |
+
+`lib/json-stream.js` was extracted unchanged from `lib/hpt-stream-v1515.js` on October 1, 2026 (for
+`hpt-price-compare`); `hpt-file-check`'s tests pass unchanged. The other shared modules (`medicare-reprice`,
+`ncci-lookup`, `schema-check`, `preventive`) are not extracted yet; the tools built so far need none of them.

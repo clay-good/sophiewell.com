@@ -1,10 +1,18 @@
-// spec-v1510: renderers for mfp-refund-check, pbm-reimbursement-check, medicaid-ura.
+// spec-v1510: renderers for mfp-refund-check, pbm-reimbursement-check, medicaid-ura, nadac-margin, asp-payment.
 
 import { el, clear } from '../lib/dom.js';
 import * as MR from '../lib/mfp-refund-v1510.js';
 import * as PB from '../lib/pbm-reimbursement-v1510.js';
 import * as UR from '../lib/medicaid-ura-v1510.js';
 import * as TC from '../lib/therapy-cost-v1510.js';
+import * as NM from '../lib/nadac-margin.js';
+import * as AP from '../lib/asp-payment.js';
+import { loadManifest, loadFile, loadShard } from '../lib/data.js';
+import { parseDate } from '../lib/pa/date.js';
+import { loadNadac } from '../lib/nadac-load.js';
+import { uploadWorkbench } from './upload-workbench.js';
+import { MARGIN_FIELDS } from '../lib/upload-fields.js';
+import { acceptVia } from '../lib/hand-off.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -151,4 +159,117 @@ export const renderers = {
       note(o, r.note);
     }));
   },
+  'nadac-margin'(root) {
+    const pairs = [['nm-ndc', 'ndc'], ['nm-dos', 'serviceDate'], ['nm-qty', 'quantity'], ['nm-paid', 'reimbursed'], ['nm-cost', 'cost']];
+    textField(root, 'NDC (11 digits, or with its hyphens)', 'nm-ndc', 'e.g. 00002-1433-80');
+    dateInput(root, 'Date of service', 'nm-dos', 'date');
+    numField(root, 'Quantity dispensed, in NADAC pricing units (each, mL or g)', 'nm-qty', 'e.g. 30', '1000000', '0.001');
+    numField(root, 'Reimbursement: ingredient cost plus dispensing fee, dollars', 'nm-paid', 'e.g. 130', '10000000', '0.01');
+    numField(root, 'Your invoice cost per unit, in place of NADAC (optional)', 'nm-cost', 'e.g. 4.20', '1000000', '0.000001');
+    const ids = pairs.map(([d]) => d);
+    const o = out(); root.appendChild(o);
+    const show = (args) => safe(o, () => {
+      const r = NM.nadacMargin(args);
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Margin', value: r.bandLabel }]);
+      list(o, r.notes);
+      note(o, r.note);
+    });
+    // The week is fetched only when NADAC is the benchmark; a newer keystroke drops an older answer.
+    let seq = 0;
+    wire(ids, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const ndc = NM.normalizeNdc(args.ndc).ndc;
+      const mine = ++seq;
+      if (String(args.cost).trim() || !ndc || !parseDate(args.serviceDate)) { show(args); return; }
+      safe(o, () => note(o, 'Looking up NADAC for this NDC...'));
+      (async () => {
+        try {
+          const [manifest, week] = await Promise.all([loadManifest('nadac'), loadFile('nadac', 'week.json')]);
+          const listed = (manifest.shards || []).some((s) => s.name === NM.shardName(ndc));
+          const rows = listed ? await loadShard('nadac', NM.shardName(ndc)) : null;
+          return NM.lookupFrom({ ndc, manifest, week, rows });
+        } catch { return { status: 'unavailable' }; }
+      })().then((lookup) => { if (mine === seq) show({ ...args, lookup }); });
+    });
+    // spec-v1510 batch: a claims CSV gives margin by drug, by payer and in total. The page loads NADAC
+    // for the labelers the Worker names (the Worker has no network code), then runs it again.
+    const w = el('div', { id: 'nm-batch', 'aria-live': 'polite' });
+    const money = (c) => `${c < 0 ? '-' : ''}$${(Math.abs(c) / 100).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    const table = (caption, heads, rows) => {
+      if (!rows.length) return;
+      const t = el('table', { class: 'upload-mapping-table' });
+      t.appendChild(el('caption', { text: caption }));
+      const hr = el('tr');
+      for (const h of heads) hr.appendChild(el('th', { scope: 'col', text: h }));
+      t.appendChild(el('thead', null, [hr]));
+      const body = el('tbody');
+      for (const r of rows) { const tr = el('tr'); for (const c of r) tr.appendChild(el('td', { text: String(c) })); body.appendChild(tr); }
+      t.appendChild(body);
+      w.appendChild(el('div', { class: 'upload-mapping-scroll' }, [t]));
+    };
+    const showBatch = (r) => safe(w, () => {
+      if (!r.valid) { note(w, r.message); return; }
+      resultRow(w, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Claims file', value: r.bandLabel }]);
+      list(w, r.notes);
+      table('Margin by payer, lowest first', ['Payer', 'Claims', 'Below cost', 'Paid', 'Cost', 'Margin'], r.byPayer.map((p) => [p.payer, p.claims, p.below, money(p.paid), money(p.cost), money(p.margin)]));
+      table('Margin by drug, lowest first', ['NDC', 'Drug', 'Claims', 'Margin'], r.byDrug.slice(0, 20).map((d) => [d.ndc, d.description || 'invoice cost', d.claims, money(d.margin)]));
+    });
+    let bseq = 0;
+    const upload = uploadWorkbench(root, {
+      id: 'nm-upload', fields: MARGIN_FIELDS, label: 'Margin by drug and payer from a claims CSV',
+      compute: 'nadac-margin', getInput: () => ({}),
+      onResult: (r) => {
+        if (r && r.needLabelers) {
+          const mine = ++bseq;
+          safe(w, () => note(w, 'Looking up NADAC for the drugs in these claims...'));
+          loadNadac(r.needLabelers).then((nadac) => { if (mine === bseq) upload.compute({ nadac }); });
+          return;
+        }
+        showBatch(r);
+      },
+    });
+    root.appendChild(w);
+  },
+  'asp-payment'(root) {
+    const pairs = [['asp-code', 'code'], ['asp-dos', 'serviceDate'], ['asp-units', 'units'], ['asp-limit', 'limit'], ['asp-coins', 'coinsurance']];
+    textField(root, 'HCPCS code of the drug', 'asp-code', 'e.g. J9035');
+    dateInput(root, 'Date of service', 'asp-dos', 'date');
+    numField(root, 'Units billed, in the code\'s dosage units', 'asp-units', 'e.g. 10', '1000000', '0.001');
+    numField(root, 'Payment limit per unit from another quarter\'s file, dollars (optional)', 'asp-limit', 'e.g. 75.492', '1000000', '0.001');
+    numField(root, 'Coinsurance percentage with that limit (optional)', 'asp-coins', 'e.g. 20', '20', '0.001');
+    const ids = pairs.map(([d]) => d);
+    const o = out(); root.appendChild(o);
+    const show = (args) => safe(o, () => {
+      const r = AP.aspPayment(args);
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: null }, { label: 'Allowed', value: r.bandLabel }]);
+      list(o, r.notes);
+      note(o, r.note);
+    });
+    // The quarter's file is fetched only when no limit was typed; a newer keystroke drops an older answer.
+    let seq = 0;
+    wire(ids, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const code = AP.normalizeHcpcs(args.code);
+      const mine = ++seq;
+      if (String(args.limit).trim() || !code || !parseDate(args.serviceDate)) { show(args); return; }
+      safe(o, () => note(o, 'Looking up the payment limit for this code...'));
+      (async () => {
+        try {
+          const [manifest, period] = await Promise.all([loadManifest('asp'), loadFile('asp', 'period.json')]);
+          const listed = (manifest.shards || []).some((s) => s.name === AP.shardName(code));
+          const rows = listed ? await loadShard('asp', AP.shardName(code)) : null;
+          return AP.aspLookup({ code, manifest, period, rows });
+        } catch { return { status: 'unavailable' }; }
+      })().then((lookup) => { if (mine === seq) show({ ...args, lookup }); });
+    });
+  },
+};
+
+// spec-v1623 step 3: a pharmacy claims CSV goes to the margin workbench.
+export const acceptFiles = {
+  'nadac-margin': acceptVia('nm-upload-file'),
 };

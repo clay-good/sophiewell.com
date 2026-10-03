@@ -1197,8 +1197,28 @@ main h1 {
   border-radius: var(--radius);
   background: var(--bg-tertiary);
 }
+.hero-files { max-width: 720px; margin: var(--space-3) auto 0; padding: 0 var(--space-3); display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--space-2); color: var(--text-muted); }
+.hero-files-button { min-height: 44px; padding: 9px 16px; font: inherit; color: var(--text-primary, inherit); background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--radius-pill); cursor: pointer; }
+.hero-files-status { text-align: center; margin: var(--space-2) auto 0; max-width: 720px; padding: 0 var(--space-3); }
+.hero-files-status:empty { display: none; }
+.task-hero.drop-active { outline: 2px dashed var(--accent-pop-strong); outline-offset: 6px; }
+.intake-banner { border-left: 3px solid var(--accent, var(--border)); padding-left: var(--space-2); overflow-wrap: anywhere; }
+.record-offscreen { position: absolute; left: -10000px; top: 0; width: 720px; }
+.record-ready li { margin-bottom: var(--space-3); }
+.record-used { overflow-wrap: anywhere; }
+.receipt { margin-top: var(--space-3); }
+.receipt summary { cursor: pointer; font-weight: 600; }
+.receipt-hash { overflow-wrap: anywhere; font-family: var(--font-mono); font-size: 0.9rem; }
+.intake-actions { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.intake-actions button { min-height: 44px; }
+.intake-drop { border: 2px dashed var(--border); border-radius: var(--radius, 6px); padding: var(--space-3); margin: var(--space-3) 0; }
+.intake-drop.drop-active { border-color: var(--accent-pop-strong); }
+.intake-drop label { display: block; font-weight: 700; margin-top: var(--space-2); }
+.intake-path { overflow-wrap: anywhere; }
 .upload-workbench h2 { margin: 0 0 var(--space-1); font-size: 1rem; }
 .upload-workbench p { margin: var(--space-1) 0 var(--space-2); }
+/* Linux WebKit sizes a file input to its chosen file name (362px at 320px wide). */
+input[type='file'] { max-width: 100%; }
 .upload-workbench input[type='file'] { display: block; width: 100%; margin-top: var(--space-1); }
 .upload-mapping-scroll { overflow-x: auto; margin: var(--space-2) 0; }
 .upload-mapping-table { width: 100%; border-collapse: collapse; }

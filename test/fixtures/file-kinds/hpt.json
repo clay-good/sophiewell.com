@@ -1,0 +1,25 @@
+{
+  "hospital_name": "Example General Hospital",
+  "last_updated_on": "2026-07-01",
+  "version": "3.0.0",
+  "hospital_location": [
+    "Example City"
+  ],
+  "standard_charge_information": [
+    {
+      "description": "Office visit",
+      "code_information": [
+        {
+          "code": "99213",
+          "type": "CPT"
+        }
+      ],
+      "standard_charges": [
+        {
+          "setting": "outpatient",
+          "gross_charge": 200
+        }
+      ]
+    }
+  ]
+}

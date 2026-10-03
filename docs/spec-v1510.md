@@ -123,5 +123,28 @@ to thousands of dollars per fill, so a missed refund matters to a small pharmacy
   - `pbm-reimbursement-check` ships no AWP, WAC or MAC data.
   - `therapy-cost-compare` takes up to three regimens with the reader's prices and sources; partial-vial waste
     is left to `vial-rounding`.
-- **Not yet built:** `asp-payment` (the quarterly ASP file), `nadac-margin` (the NADAC feed), and
-  `mfp-refund-reconcile` (the upload workbench).
+- **Built 2026-09-30:** `nadac-margin` (single claim), in `lib/nadac-margin.js`.
+  - It prices from the bundled NADAC week (`data/nadac`, fetched weekly per [spec-v1621](spec-v1621.md)). A
+    row answers only from its effective date through the week's as-of date; any other date is "no
+    benchmark", never the current rate. An NDC outside the week, a failed load, or lapsed data asks for
+    the invoice cost instead. The manifest's shard list is checked before fetching, so an offline failure
+    is never reported as "not in NADAC".
+  - NDCs are normalized from 4-4-2, 5-3-2 and 5-4-1 to 11 digits; 10 bare digits are refused, since the
+    padded segment cannot be known.
+  - The worked example prices from an invoice cost, because a NADAC-priced example would change weekly.
+- **Built 2026-09-30:** `asp-payment`, with the new `asp` dataset (`scripts/data/builders/asp.mjs`, the section 508
+  CSV of the newest quarterly ZIP, found by link name on the CMS page; 918 codes in 2026 Q4).
+  - **Differed from the spec:** the tool prices from the payment limit CMS posts per HCPCS unit, not from a
+    recomputed 106% of ASP: the file does not post ASP, and the limit already carries the biosimilar add-on (its
+    Notes say "8% of reference add-on applied") and other methods ("lesser of", AMP-based). The coinsurance is
+    the file's, so an inflation-adjusted coinsurance is used as posted. The product-type input was dropped for the
+    same reason. The 340B hospital outpatient rate is not computed: it is set in each year's OPPS rule, which was
+    not read for this build; the result says so.
+  - A date outside the quarter on file, or a code the file lists with no limit (radium-223 posts "N/A" and its AWP
+    in a note), is not priced; a limit typed from another quarter's file replaces the lookup.
+- **Built 2026-10-01:** `nadac-margin`'s batch mode: a pharmacy claims CSV through the upload workbench gives margin
+  by payer and by drug (lowest first) and in total, each claim through `nadacOn`; a row's own invoice cost replaces
+  NADAC for that row. A payer paid below cost overall is named. The Worker keeps its no-network promise: it names
+  the labelers it needs, and the page loads them through `lib/nadac-load.js` and runs it again.
+- **Not yet built:** `mfp-refund-reconcile` (the upload workbench; needs the Medicare Transaction Facilitator's
+  remittance format).

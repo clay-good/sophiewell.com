@@ -1,0 +1,16 @@
+{
+  "reporting_entity_name": "Example Health Plan",
+  "reporting_entity_type": "health insurance issuer",
+  "reporting_structure": [
+    {
+      "reporting_plans": [],
+      "in_network_files": [
+        {
+          "description": "in-network",
+          "location": "https://example.test/in-network.json.gz"
+        }
+      ]
+    }
+  ],
+  "version": "2.2.1"
+}

@@ -2,12 +2,15 @@
 import { el, clear } from '../lib/dom.js';
 import { MAX_FILE_BYTES } from '../lib/upload-intake.js';
 import { resultRow } from '../lib/result-copy.js';
+import { renderReceipt } from './receipt.js';
+import { acceptVia } from '../lib/hand-off.js';
 
 const workerUrl = new URL('../lib/x12-835-worker.js', import.meta.url);
 const claimWorkerUrl = new URL('../lib/x12-837-worker.js', import.meta.url);
 const eligibilityWorkerUrl = new URL('../lib/x12-271-worker.js', import.meta.url);
 const statusWorkerUrl = new URL('../lib/x12-277-worker.js', import.meta.url);
 const hptWorkerUrl = new URL('../lib/hpt-worker.js', import.meta.url);
+const hptCompareWorkerUrl = new URL('../lib/hpt-compare-worker.js', import.meta.url);
 const analysisWorkerUrl = new URL('../lib/remittance-analysis-worker.js', import.meta.url);
 
 function table(root, caption, headers, rows) {
@@ -82,6 +85,7 @@ function reader835(root) {
           wrap.appendChild(button); results.appendChild(wrap);
         }
         results.appendChild(el('p', { class: 'muted', text: 'Structural and arithmetic checks only. Raw X12 code values are shown without proprietary code-list descriptions.' }));
+        renderReceipt(results, message);
       });
       worker.postMessage({ type: 'parse', files: payload }, payload.map((file) => file.buffer));
     } catch (error) { status.textContent = error instanceof Error ? error.message : 'The remittance could not be read.'; stop(); }
@@ -141,6 +145,7 @@ function denialPattern(root) {
       const shown = message.preview.rows.length; results.appendChild(el('p', { class: 'muted', text: message.preview.total > shown ? `Showing the first ${shown} of ${message.preview.total} adjustments.` : `Showing all ${shown} adjustments.` }));
       table(results, 'Adjustment detail', message.preview.headers, message.preview.rows); downloads(results, worker);
       results.appendChild(el('p', { class: 'muted', text: 'Categories use the same reviewed reason-code mapping as Denial Next Step. Unmapped codes remain visible and are never guessed.' }));
+      renderReceipt(results, message);
     });
     worker.postMessage({ type: 'parse-remittances', tool: 'denial-pattern-report', files: payload }, payload.map((file) => file.buffer));
   });
@@ -185,6 +190,7 @@ function underpayment(root) {
       const shown = message.preview.rows.length; results.appendChild(el('p', { class: 'muted', text: message.preview.total > shown ? `Showing the first ${shown} of ${message.preview.total} underpaid lines.` : `Showing all ${shown} underpaid lines.` }));
       table(results, 'Lines paid below contract', message.preview.headers, message.preview.rows); downloads(results, worker);
       results.appendChild(el('p', { class: 'muted', text: 'Allowed amount is billed charge minus CO adjustments. Modifier-specific fee rows take precedence over the code-only rate.' }));
+      renderReceipt(results, message);
     });
   }
   remit.addEventListener('change', async () => {
@@ -195,7 +201,7 @@ function underpayment(root) {
   fees.addEventListener('change', async () => {
     const file = fees.files && fees.files[0]; if (!file) return; if (!remittancesReady || !worker) { status.textContent = 'Choose the remittance files first.'; return; }
     if (file.size > MAX_FILE_BYTES) { status.textContent = 'The fee schedule exceeds the 50 MB limit.'; return; }
-    const buffer = await file.arrayBuffer(); worker.postMessage({ type: 'parse-fees', buffer }, [buffer]);
+    const buffer = await file.arrayBuffer(); worker.postMessage({ type: 'parse-fees', buffer, fileName: file.name }, [buffer]);
   });
 }
 
@@ -224,6 +230,7 @@ function check837(root) {
       const shown = message.preview.rows.length; results.appendChild(el('p', { class: 'muted', text: message.preview.total > shown ? `Showing the first ${shown} of ${message.preview.total} claims.` : `Showing all ${shown} claims.` }));
       table(results, 'Claim check results', message.preview.headers, message.preview.rows); downloads(results, worker);
       results.appendChild(el('p', { class: 'muted', text: 'Identifier checks prove format and check digits only. Diagnosis checks prove structure only. Raw X12 code values are preserved without code-list descriptions.' }));
+        renderReceipt(results, message);
     });
     worker.postMessage({ type: 'parse', files: payload }, payload.map((file) => file.buffer));
   });
@@ -258,6 +265,7 @@ function reader271(root) {
       const shown = message.preview.rows.length; results.appendChild(el('p', { class: 'muted', text: message.preview.total > shown ? `Showing the first ${shown} of ${message.preview.total} benefit lines.` : `Showing all ${shown} benefit lines.` }));
       table(results, 'Eligibility benefit lines', message.preview.headers, message.preview.rows); downloads(results, worker);
       results.appendChild(el('p', { class: 'muted', text: 'Raw X12 code values are shown without X12 code-list descriptions. Confirm benefits with the payer before relying on them.' }));
+        renderReceipt(results, message);
     });
     worker.postMessage({ type: 'parse', files: payload }, payload.map((file) => file.buffer));
   };
@@ -299,6 +307,7 @@ function reader277(root) {
       const shown = message.preview.rows.length; results.appendChild(el('p', { class: 'muted', text: message.preview.total > shown ? `Showing the first ${shown} of ${message.preview.total} claims.` : `Showing all ${shown} claims.` }));
       claimStatusTable(results, message.preview.headers, message.preview.rows); downloads(results, worker);
       results.appendChild(el('p', { class: 'muted', text: 'Accepted, pending and rejected are workflow groupings from the raw response values. Verify the raw category, status, entity and action codes before acting.' }));
+        renderReceipt(results, message);
     });
     worker.postMessage({ type: 'parse', files: payload }, payload.map((file) => file.buffer));
   });
@@ -334,9 +343,75 @@ function hptFileCheck(root) {
       if (message.findings.length) table(results, message.findingsTruncated ? `First ${message.findings.length.toLocaleString('en-US')} deficiencies` : 'Deficiencies', ['Rule', 'Location', 'Finding'], message.findings.map((finding) => [finding.code, finding.location, finding.message]));
       results.appendChild(el('p', { class: 'muted', text: 'This is a deterministic structural check against CMS template v3.0.0. It does not verify that prices are complete or accurate and is not a compliance determination.' }));
       const source = el('p'); source.appendChild(el('a', { href: 'https://github.com/CMSgov/hospital-price-transparency', target: '_blank', rel: 'noreferrer', text: 'Review the official CMS data dictionary and validator' })); results.appendChild(source);
+      renderReceipt(results, message);
     });
     worker.postMessage({ type: 'validate', file });
   });
 }
 
-export const renderers = { 'x12-835-reader': reader835, 'x12-837-check': check837, 'x12-271-reader': reader271, 'x12-277-reader': reader277, 'hpt-file-check': hptFileCheck, 'denial-pattern-report': denialPattern, 'underpayment-check': underpayment };
+// spec-v1515 tool 6: one code across several hospital price files, streamed in a Worker.
+function hptPriceCompare(root) {
+  root.appendChild(el('p', { class: 'notice', text: 'Compares one billing code across hospital price files you downloaded (CMS v3.0.0 CSV tall, CSV wide or JSON): gross charge, discounted cash price, and each payer\'s negotiated rate, side by side.' }));
+  root.appendChild(el('p', { class: 'muted', text: 'The files stay in this tab and are read in a stream, so a large file is never held whole.' }));
+  const codeWrap = el('p');
+  codeWrap.appendChild(el('label', { for: 'hptc-code', text: 'Billing code (CPT, HCPCS, MS-DRG or revenue code; a type may lead, as in MS-DRG 470)' }));
+  codeWrap.appendChild(el('br'));
+  const code = el('input', { id: 'hptc-code', type: 'text', autocomplete: 'off', placeholder: 'e.g. 70553' });
+  codeWrap.appendChild(code);
+  root.appendChild(codeWrap);
+  const input = el('input', { id: 'hptc-files', type: 'file', multiple: true, accept: '.csv,.json,text/csv,application/json' });
+  const status = el('p', { id: 'hptc-status', class: 'muted', role: 'status', 'aria-live': 'polite' });
+  const results = el('div', { id: 'q-results', 'aria-live': 'polite' });
+  root.appendChild(el('label', { for: 'hptc-files', text: 'Choose two or more hospital price files' })); root.appendChild(input); root.appendChild(status); root.appendChild(results);
+  let worker = null;
+  const run = () => {
+    if (worker) worker.terminate(); clear(results);
+    const files = [...(input.files || [])];
+    if (!files.length) { status.textContent = ''; return; }
+    if (!code.value.trim()) { status.textContent = 'Enter the billing code to compare.'; return; }
+    status.textContent = 'Reading the files locally...';
+    worker = new window.Worker(hptCompareWorkerUrl, { type: 'module' });
+    worker.addEventListener('error', () => { status.textContent = 'The hospital price files could not be read.'; });
+    worker.addEventListener('message', (event) => {
+      const m = event.data || {};
+      if (m.type === 'error') { status.textContent = m.message; return; }
+      if (m.type === 'progress') { status.textContent = `Reading ${m.name} (${(m.done + 1).toLocaleString('en-US')} of ${m.total.toLocaleString('en-US')})...`; return; }
+      if (m.type !== 'compared') return;
+      if (!m.valid) { status.textContent = m.message; return; }
+      status.textContent = `${files.length.toLocaleString('en-US')} file${files.length === 1 ? '' : 's'} read.`;
+      resultRow(results, [{ text: m.band, cls: null }, { label: 'Compared', value: m.bandLabel }]);
+      const money = (n) => (n == null ? '' : `$${n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`);
+      if (m.table.length) table(results, `Prices for ${code.value.trim()}`, ['Hospital', 'Setting', 'Gross', 'Cash', 'Payer', 'Plan', 'Negotiated', 'Median allowed'], m.table.slice(0, 200).map((t) => [t.hospital, t.setting, money(t.gross), money(t.cash), t.payer, t.plan, t.negotiated, money(t.median)]));
+      const ul = el('ul'); for (const n of m.notes) ul.appendChild(el('li', { text: n })); results.appendChild(ul);
+      if (m.csv) {
+        const wrap = el('p'); const button = el('button', { type: 'button', text: 'Download the comparison CSV' });
+        button.addEventListener('click', () => {
+          const url = window.URL.createObjectURL(new Blob([m.csv], { type: 'text/csv;charset=utf-8' }));
+          const anchor = el('a', { href: url, download: `hpt-price-compare-${code.value.trim().replace(/[^A-Za-z0-9-]+/g, '-')}.csv` });
+          anchor.click(); window.setTimeout(() => window.URL.revokeObjectURL(url), 0);
+        });
+        wrap.appendChild(button); results.appendChild(wrap);
+      }
+      renderReceipt(results, m);
+    });
+    worker.postMessage({ type: 'compare', files, code: code.value });
+  };
+  input.addEventListener('change', run);
+  code.addEventListener('change', run);
+}
+
+export const renderers = { 'x12-835-reader': reader835, 'x12-837-check': check837, 'x12-271-reader': reader271, 'x12-277-reader': reader277, 'hpt-file-check': hptFileCheck, 'hpt-price-compare': hptPriceCompare, 'denial-pattern-report': denialPattern, 'underpayment-check': underpayment };
+
+// spec-v1623 step 3: files handed off from a drop go through each tool's own
+// input. underpayment-check takes the remittances; its fee schedule is chosen
+// on the page.
+export const acceptFiles = {
+  'x12-835-reader': acceptVia('x835-files'),
+  'denial-pattern-report': acceptVia('dpr-files'),
+  'underpayment-check': acceptVia('upc-remittances'),
+  'x12-837-check': acceptVia('x837-files'),
+  'x12-271-reader': acceptVia('x271-file'),
+  'x12-277-reader': acceptVia('x277-files'),
+  'hpt-file-check': acceptVia('hpt-file'),
+  'hpt-price-compare': acceptVia('hptc-files'),
+};

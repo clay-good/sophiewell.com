@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { HPT_ATTESTATION } from '../../lib/hpt-v1515.js';
+import { expectNoHScroll } from '../lib/no-hscroll.js';
 
 function csv(rows) {
   return rows.map((row) => row.map((value) => {
@@ -27,15 +28,13 @@ test('HPT checker streams a local v3 CSV and reports precise deficiencies', asyn
   await expect(page.locator('#q-results')).toContainText('No v3.0.0 structural deficiencies found.');
   await expect(page.locator('#q-results')).toContainText('CSV tall');
   await expect(page.locator('#q-results')).toContainText('1');
-  let width = await page.evaluate(() => ({ scroll: document.documentElement.scrollWidth, client: document.documentElement.clientWidth }));
-  expect(width.scroll).toBeLessThanOrEqual(width.client + 1);
+  await expectNoHScroll(page, 'hpt-file-check');
 
   await input.setInputFiles({ name: 'bad.csv', mimeType: 'text/csv', buffer: Buffer.from(hospitalFile({ placeholder: true })) });
   await expect(page.locator('#hpt-status')).toHaveText('bad.csv checked.');
   await expect(page.locator('#q-results')).toContainText('structural deficiencies found');
   await expect(page.locator('#q-results')).toContainText('placeholder');
   await expect(page.locator('#q-results')).toContainText('Replace every bracketed CMS template placeholder');
-  width = await page.evaluate(() => ({ scroll: document.documentElement.scrollWidth, client: document.documentElement.clientWidth }));
-  expect(width.scroll).toBeLessThanOrEqual(width.client + 1);
+  await expectNoHScroll(page, 'hpt-file-check');
   expect(offOrigin).toEqual([]);
 });

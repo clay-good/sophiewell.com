@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { readFile } from 'node:fs/promises';
+import { expectNoHScroll } from '../lib/no-hscroll.js';
 
 function claimFile() {
   const isa = 'ISA*00*          *00*          *ZZ*SENDER         *ZZ*RECEIVER       *260928*1200*^*00501*000000001*0*P*:';
@@ -25,8 +26,7 @@ test('837 checker reports claim findings and exports patient-redacted results', 
   await expect(page.locator('#q-results')).toContainText('charge total at segment');
   await expect(page.locator('#q-results')).toContainText('ICD-10-CM at segment');
   await expect(page.locator('#q-results')).toContainText('NPI at segment');
-  const width = await page.evaluate(() => ({ scroll: document.documentElement.scrollWidth, client: document.documentElement.clientWidth }));
-  expect(width.scroll).toBeLessThanOrEqual(width.client + 1);
+  await expectNoHScroll(page, 'x12-837-check');
   const downloadPromise = page.waitForEvent('download');
   await page.getByRole('button', { name: 'Download redacted CSV' }).click();
   const download = await downloadPromise;

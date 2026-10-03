@@ -221,6 +221,7 @@ const COVERAGE = {
   'vasopressor-doses': { ...SUBSET('Dose ranges and standard concentrations for common vasopressors.'), sourceEdition: 'unversioned' },
   'tpn-rules': { ...SUBSET('Macronutrient energy densities and limits.'), sourceEdition: 'unversioned' },
   'iv-to-po': { ...SUBSET('IV-to-oral conversions for common drugs.'), sourceEdition: 'unversioned' },
+  concepts: { ...SUBSET('27 coded values a health record can fill, with units and recency windows; curated by hand.'), sourceEdition: 'unversioned' },
 };
 
 const TODAY = new Date().toISOString().slice(0, 10);
@@ -1109,6 +1110,510 @@ function v4TableDataset({ id, sourceUrl, agency, status, cadence, label, shardNa
 }
 
 const v4Datasets = [
+  v4TableDataset({
+    id: 'concepts', label: 'Health record concepts (LOINC codes to calculator fields)',
+    sourceUrl: 'https://loinc.org/', agency: 'LOINC codes (Regenstrief Institute); map by sophiewell.com', status: 'numeric-facts-with-attribution',
+    cadence: 'annual', shardName: 'concepts.json',
+    notes: 'spec-v1624: which coded values a health record can fill, the unit each is kept in, the units it converts from (value x factor), and how recent it must be. Codes are LOINC numbers only; LOINC long names and other LOINC content are not reproduced, and the labels are our own. This material contains content from LOINC (https://loinc.org), copyright Regenstrief Institute, Inc., available at no cost under the license at https://loinc.org/license/.',
+    seed: [
+      {
+        "id": "systolic-bp",
+        "label": "Systolic blood pressure",
+        "codes": [
+        {
+          "system": "HealthKit",
+          "code": "HKQuantityTypeIdentifierBloodPressureSystolic"
+        },
+          {
+            "system": "LOINC",
+            "code": "8480-6"
+          }
+        ],
+        "unit": "mmHg",
+        "acceptUnits": [],
+        "recencyDays": 365
+      },
+      {
+        "id": "diastolic-bp",
+        "label": "Diastolic blood pressure",
+        "codes": [
+        {
+          "system": "HealthKit",
+          "code": "HKQuantityTypeIdentifierBloodPressureDiastolic"
+        },
+          {
+            "system": "LOINC",
+            "code": "8462-4"
+          }
+        ],
+        "unit": "mmHg",
+        "acceptUnits": [],
+        "recencyDays": 365
+      },
+      {
+        "id": "body-weight",
+        "label": "Body weight",
+        "codes": [
+        {
+          "system": "HealthKit",
+          "code": "HKQuantityTypeIdentifierBodyMass"
+        },
+          {
+            "system": "LOINC",
+            "code": "29463-7"
+          }
+        ],
+        "unit": "kg",
+        "acceptUnits": [
+          {
+            "unit": "lb",
+            "factor": 0.45359237
+          },
+          {
+            "unit": "g",
+            "factor": 0.001
+          }
+        ],
+        "recencyDays": 365
+      },
+      {
+        "id": "body-height",
+        "label": "Body height",
+        "codes": [
+        {
+          "system": "HealthKit",
+          "code": "HKQuantityTypeIdentifierHeight"
+        },
+          {
+            "system": "LOINC",
+            "code": "8302-2"
+          }
+        ],
+        "unit": "cm",
+        "acceptUnits": [
+        {
+          "unit": "ft",
+          "factor": 30.48
+        },
+          {
+            "unit": "in",
+            "factor": 2.54
+          },
+          {
+            "unit": "m",
+            "factor": 100
+          }
+        ],
+        "recencyDays": 365
+      },
+      {
+        "id": "bmi",
+        "label": "Body mass index",
+        "codes": [
+        {
+          "system": "HealthKit",
+          "code": "HKQuantityTypeIdentifierBodyMassIndex"
+        },
+          {
+            "system": "LOINC",
+            "code": "39156-5"
+          }
+        ],
+        "unit": "kg/m2",
+        "acceptUnits": [
+        {
+          "unit": "count",
+          "factor": 1
+        },],
+        "recencyDays": 365,
+        "note": "Also derived from the most recent weight and height when no BMI is recorded."
+      },
+      {
+        "id": "total-cholesterol",
+        "label": "Total cholesterol",
+        "codes": [
+          {
+            "system": "LOINC",
+            "code": "2093-3"
+          }
+        ],
+        "unit": "mg/dL",
+        "acceptUnits": [
+          {
+            "unit": "mmol/L",
+            "factor": 38.67
+          }
+        ],
+        "recencyDays": 365
+      },
+      {
+        "id": "hdl-cholesterol",
+        "label": "HDL cholesterol",
+        "codes": [
+          {
+            "system": "LOINC",
+            "code": "2085-9"
+          }
+        ],
+        "unit": "mg/dL",
+        "acceptUnits": [
+          {
+            "unit": "mmol/L",
+            "factor": 38.67
+          }
+        ],
+        "recencyDays": 365
+      },
+      {
+        "id": "ldl-cholesterol",
+        "label": "LDL cholesterol (calculated or direct)",
+        "codes": [
+          {
+            "system": "LOINC",
+            "code": "13457-7"
+          },
+          {
+            "system": "LOINC",
+            "code": "18262-6"
+          }
+        ],
+        "unit": "mg/dL",
+        "acceptUnits": [
+          {
+            "unit": "mmol/L",
+            "factor": 38.67
+          }
+        ],
+        "recencyDays": 365
+      },
+      {
+        "id": "triglycerides",
+        "label": "Triglycerides",
+        "codes": [
+          {
+            "system": "LOINC",
+            "code": "2571-8"
+          }
+        ],
+        "unit": "mg/dL",
+        "acceptUnits": [
+          {
+            "unit": "mmol/L",
+            "factor": 88.57
+          }
+        ],
+        "recencyDays": 365
+      },
+      {
+        "id": "creatinine",
+        "label": "Creatinine, serum or plasma",
+        "codes": [
+          {
+            "system": "LOINC",
+            "code": "2160-0"
+          }
+        ],
+        "unit": "mg/dL",
+        "acceptUnits": [
+          {
+            "unit": "umol/L",
+            "factor": 0.011309658448314861
+          }
+        ],
+        "recencyDays": 365
+      },
+      {
+        "id": "cystatin-c",
+        "label": "Cystatin C",
+        "codes": [
+          {
+            "system": "LOINC",
+            "code": "33863-2"
+          }
+        ],
+        "unit": "mg/L",
+        "acceptUnits": [],
+        "recencyDays": 365
+      },
+      {
+        "id": "egfr",
+        "label": "eGFR",
+        "codes": [
+          {
+            "system": "LOINC",
+            "code": "98979-8"
+          },
+          {
+            "system": "LOINC",
+            "code": "62238-1"
+          },
+          {
+            "system": "LOINC",
+            "code": "33914-3"
+          }
+        ],
+        "unit": "mL/min/1.73m2",
+        "acceptUnits": [],
+        "recencyDays": 365,
+        "note": "Also derived from creatinine, age and sex (CKD-EPI 2021) when no eGFR is reported."
+      },
+      {
+        "id": "hemoglobin-a1c",
+        "label": "Hemoglobin A1c",
+        "codes": [
+          {
+            "system": "LOINC",
+            "code": "4548-4"
+          }
+        ],
+        "unit": "%",
+        "acceptUnits": [],
+        "recencyDays": 365
+      },
+      {
+        "id": "glucose-fasting",
+        "label": "Glucose, fasting",
+        "codes": [
+          {
+            "system": "LOINC",
+            "code": "1558-6"
+          }
+        ],
+        "unit": "mg/dL",
+        "acceptUnits": [
+          {
+            "unit": "mmol/L",
+            "factor": 18.016
+          }
+        ],
+        "recencyDays": 365
+      },
+      {
+        "id": "alt",
+        "label": "ALT",
+        "codes": [
+          {
+            "system": "LOINC",
+            "code": "1742-6"
+          }
+        ],
+        "unit": "U/L",
+        "acceptUnits": [],
+        "recencyDays": 365
+      },
+      {
+        "id": "ast",
+        "label": "AST",
+        "codes": [
+          {
+            "system": "LOINC",
+            "code": "1920-8"
+          }
+        ],
+        "unit": "U/L",
+        "acceptUnits": [],
+        "recencyDays": 365
+      },
+      {
+        "id": "platelets",
+        "label": "Platelets",
+        "codes": [
+          {
+            "system": "LOINC",
+            "code": "777-3"
+          }
+        ],
+        "unit": "10*3/uL",
+        "acceptUnits": [
+          {
+            "unit": "10*9/L",
+            "factor": 1
+          },
+          {
+            "unit": "K/uL",
+            "factor": 1
+          }
+        ],
+        "recencyDays": 365
+      },
+      {
+        "id": "albumin",
+        "label": "Albumin, serum",
+        "codes": [
+          {
+            "system": "LOINC",
+            "code": "1751-7"
+          }
+        ],
+        "unit": "g/dL",
+        "acceptUnits": [
+          {
+            "unit": "g/L",
+            "factor": 0.1
+          }
+        ],
+        "recencyDays": 365
+      },
+      {
+        "id": "urine-acr",
+        "label": "Urine albumin/creatinine ratio",
+        "codes": [
+          {
+            "system": "LOINC",
+            "code": "9318-7"
+          }
+        ],
+        "unit": "mg/g",
+        "acceptUnits": [
+          {
+            "unit": "mg/mmol",
+            "factor": 8.84
+          }
+        ],
+        "recencyDays": 365
+      },
+      {
+        "id": "sodium",
+        "label": "Sodium",
+        "codes": [
+          {
+            "system": "LOINC",
+            "code": "2951-2"
+          }
+        ],
+        "unit": "mmol/L",
+        "acceptUnits": [
+          {
+            "unit": "mEq/L",
+            "factor": 1
+          }
+        ],
+        "recencyDays": 365
+      },
+      {
+        "id": "potassium",
+        "label": "Potassium",
+        "codes": [
+          {
+            "system": "LOINC",
+            "code": "2823-3"
+          }
+        ],
+        "unit": "mmol/L",
+        "acceptUnits": [
+          {
+            "unit": "mEq/L",
+            "factor": 1
+          }
+        ],
+        "recencyDays": 365
+      },
+      {
+        "id": "chloride",
+        "label": "Chloride",
+        "codes": [
+          {
+            "system": "LOINC",
+            "code": "2075-0"
+          }
+        ],
+        "unit": "mmol/L",
+        "acceptUnits": [
+          {
+            "unit": "mEq/L",
+            "factor": 1
+          }
+        ],
+        "recencyDays": 365
+      },
+      {
+        "id": "bicarbonate",
+        "label": "Bicarbonate",
+        "codes": [
+          {
+            "system": "LOINC",
+            "code": "1963-8"
+          }
+        ],
+        "unit": "mmol/L",
+        "acceptUnits": [
+          {
+            "unit": "mEq/L",
+            "factor": 1
+          }
+        ],
+        "recencyDays": 365
+      },
+      {
+        "id": "calcium",
+        "label": "Calcium",
+        "codes": [
+          {
+            "system": "LOINC",
+            "code": "17861-6"
+          }
+        ],
+        "unit": "mg/dL",
+        "acceptUnits": [
+          {
+            "unit": "mmol/L",
+            "factor": 4.008
+          }
+        ],
+        "recencyDays": 365
+      },
+      {
+        "id": "phosphate",
+        "label": "Phosphate",
+        "codes": [
+          {
+            "system": "LOINC",
+            "code": "2777-1"
+          }
+        ],
+        "unit": "mg/dL",
+        "acceptUnits": [
+          {
+            "unit": "mmol/L",
+            "factor": 3.097
+          }
+        ],
+        "recencyDays": 365
+      },
+      {
+        "id": "bilirubin",
+        "label": "Bilirubin, total",
+        "codes": [
+          {
+            "system": "LOINC",
+            "code": "1975-2"
+          }
+        ],
+        "unit": "mg/dL",
+        "acceptUnits": [
+          {
+            "unit": "umol/L",
+            "factor": 0.05847953216374269
+          }
+        ],
+        "recencyDays": 365
+      },
+      {
+        "id": "inr",
+        "label": "INR",
+        "codes": [
+          {
+            "system": "LOINC",
+            "code": "6301-6"
+          }
+        ],
+        "unit": "1",
+        "acceptUnits": [],
+        "recencyDays": 365
+      }
+    ],
+  }),
+
   v4TableDataset({
     id: 'hcpcs-modifiers', label: 'HCPCS Modifier Lookup',
     sourceUrl: 'https://www.cms.gov/medicare/coding-billing/healthcare-common-procedure-system',

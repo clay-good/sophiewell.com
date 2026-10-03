@@ -152,5 +152,11 @@ a route A dataset pinned to a published version.
   charge/code pairings and all payer/allowed-amount conditional rules. Findings name
   the row or JSON path; the page states that this is a structural check rather than a
   compliance determination.
-- **Not yet built:**
-  `hpt-price-compare` and `pas-bundle-check`.
+- **Built 2026-10-01:** `hpt-price-compare`. Two or more CMS v3.0.0 files (CSV tall, CSV wide or JSON, mixed)
+  are streamed in a Worker with the readers `hpt-file-check` uses; only items carrying the code are kept (up to
+  500 per file), so memory follows the matches, not the file. Each row shows the gross charge, discounted cash
+  price, minimum, maximum, and each payer and plan's negotiated dollar, percentage or algorithm as stated, with
+  the allowed-amount percentiles; a percentage is never converted to dollars. A code type may lead the code
+  ("MS-DRG 470", "RC 0510"). A file that cannot be read is named and the others still compare. The CSV carries
+  the receipt trailer. Agents: waived as wrong-input-modality, like `hpt-file-check`.
+- **Not yet built:** `pas-bundle-check`.

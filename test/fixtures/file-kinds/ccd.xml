@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic C-CDA CCD for tests. No real person. -->
+<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:sdtc="urn:hl7-org:sdtc">
+  <realmCode code="US"/>
+  <templateId root="2.16.840.1.113883.10.20.22.1.1" extension="2015-08-01"/>
+  <templateId root="2.16.840.1.113883.10.20.22.1.2" extension="2015-08-01"/>
+  <title>Continuity of Care Document</title>
+  <recordTarget><patientRole><patient><administrativeGenderCode code="F"/><birthTime value="19600115"/></patient></patientRole></recordTarget>
+  <component><structuredBody/></component>
+</ClinicalDocument>

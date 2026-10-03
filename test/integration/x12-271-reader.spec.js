@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { readFile } from 'node:fs/promises';
+import { expectNoHScroll } from '../lib/no-hscroll.js';
 
 function eligibilityResponse() {
   const isa = 'ISA*00*          *00*          *ZZ*SENDER         *ZZ*RECEIVER       *260928*1200*^*00501*000000001*0*P*:';
@@ -27,8 +28,7 @@ test('271 reader accepts a file and pasted response and redacts patient identifi
   await expect(page.locator('#q-results')).toContainText('Individual Deductible in network: $1,500.00 for the calendar year; $1,112.40 remaining.');
   await expect(page.locator('#q-results')).toContainText('C');
   await expect(page.locator('#q-results')).toContainText('Deductible');
-  const width = await page.evaluate(() => ({ scroll: document.documentElement.scrollWidth, client: document.documentElement.clientWidth }));
-  expect(width.scroll).toBeLessThanOrEqual(width.client + 1);
+  await expectNoHScroll(page, 'x12-271-reader');
   const downloadPromise = page.waitForEvent('download');
   await page.getByRole('button', { name: 'Download redacted CSV' }).click();
   const download = await downloadPromise;

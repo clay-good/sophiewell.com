@@ -916,6 +916,7 @@ import acaExternalReviewV1503 from './adapters/aca-external-review-v1503.js';
 import medicaidAppealClockV1503 from './adapters/medicaid-appeal-clock-v1503.js';
 import qioDischargeAppealV1503 from './adapters/qio-discharge-appeal-v1503.js';
 import authRunoutV1502 from './adapters/auth-runout-v1502.js';
+import medicareFfsPaRequired from './adapters/medicare-ffs-pa-required.js';
 import authUnitsRequestV1502 from './adapters/auth-units-request-v1502.js';
 import quantityLimitCheckV1502 from './adapters/quantity-limit-check-v1502.js';
 import medicarePenaltiesV1507 from './adapters/medicare-penalties-v1507.js';
@@ -936,6 +937,12 @@ import vialRoundingV1512 from './adapters/vial-rounding-v1512.js';
 import rateEscalationV1512 from './adapters/rate-escalation-v1512.js';
 import doseCalendarV1512 from './adapters/dose-calendar-v1512.js';
 import appealPathV1505 from './adapters/appeal-path-v1505.js';
+import preventiveCostShareCheck from './adapters/preventive-cost-share-check.js';
+import dpcHsaCheck from './adapters/dpc-hsa-check.js';
+import hsaPredeductibleCheck from './adapters/hsa-predeductible-check.js';
+import maCriteriaCheck from './adapters/ma-criteria-check.js';
+import payerPolicyDiff from './adapters/payer-policy-diff.js';
+import paMetricsCompare from './adapters/pa-metrics-compare.js';
 import pdcStarV1513 from './adapters/pdc-star-v1513.js';
 import imidRemsV1511 from './adapters/imid-rems-v1511.js';
 import benefitsV1505 from './adapters/benefits-v1505.js';
@@ -944,6 +951,13 @@ import denialNextStepV1516 from './adapters/denial-next-step-v1516.js';
 import requestLettersV1504 from './adapters/request-letters-v1504.js';
 import mfpRefundV1510 from './adapters/mfp-refund-v1510.js';
 import pbmReimbursementV1510 from './adapters/pbm-reimbursement-v1510.js';
+import nadacMargin from './adapters/nadac-margin.js';
+import aspPayment from './adapters/asp-payment.js';
+import chairDayPlanner from './adapters/chair-day-planner.js';
+import partBDrugCoinsurance from './adapters/part-b-drug-coinsurance.js';
+import partBOrD from './adapters/part-b-or-d.js';
+import lcdDiagnosisCheck from './adapters/lcd-diagnosis-check.js';
+import pharmacySpreadCheck from './adapters/pharmacy-spread-check.js';
 import medicaidUraV1510 from './adapters/medicaid-ura-v1510.js';
 import entity340bV1509 from './adapters/entity-340b-v1509.js';
 import adherenceV1513 from './adapters/adherence-v1513.js';
@@ -1906,6 +1920,7 @@ const ADAPTER_MODULES = [
   ['medicaid-appeal-clock-v1503', medicaidAppealClockV1503],
   ['qio-discharge-appeal-v1503', qioDischargeAppealV1503],
   ['auth-runout-v1502', authRunoutV1502],
+  ['medicare-ffs-pa-required', medicareFfsPaRequired],
   ['auth-units-request-v1502', authUnitsRequestV1502],
   ['quantity-limit-check-v1502', quantityLimitCheckV1502],
   ['medicare-penalties-v1507', medicarePenaltiesV1507],
@@ -1926,6 +1941,12 @@ const ADAPTER_MODULES = [
   ['rate-escalation-v1512', rateEscalationV1512],
   ['dose-calendar-v1512', doseCalendarV1512],
   ['appeal-path-v1505', appealPathV1505],
+  ['preventive-cost-share-check', preventiveCostShareCheck],
+  ['dpc-hsa-check', dpcHsaCheck],
+  ['hsa-predeductible-check', hsaPredeductibleCheck],
+  ['ma-criteria-check', maCriteriaCheck],
+  ['payer-policy-diff', payerPolicyDiff],
+  ['pa-metrics-compare', paMetricsCompare],
   ['pdc-star-v1513', pdcStarV1513],
   ['imid-rems-v1511', imidRemsV1511],
   ['benefits-v1505', benefitsV1505],
@@ -1934,6 +1955,13 @@ const ADAPTER_MODULES = [
   ['request-letters-v1504', requestLettersV1504],
   ['mfp-refund-v1510', mfpRefundV1510],
   ['pbm-reimbursement-v1510', pbmReimbursementV1510],
+  ['nadac-margin', nadacMargin],
+  ['asp-payment', aspPayment],
+  ['chair-day-planner', chairDayPlanner],
+  ['part-b-drug-coinsurance', partBDrugCoinsurance],
+  ['part-b-or-d', partBOrD],
+  ['lcd-diagnosis-check', lcdDiagnosisCheck],
+  ['pharmacy-spread-check', pharmacySpreadCheck],
   ['medicaid-ura-v1510', medicaidUraV1510],
   ['entity-340b-v1509', entity340bV1509],
   ['adherence-v1513', adherenceV1513],

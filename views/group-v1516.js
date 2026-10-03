@@ -5,16 +5,12 @@ import * as DN from '../lib/denial-next-step-v1516.js';
 import { resultRow } from '../lib/result-copy.js';
 import { MAX_FILE_BYTES } from '../lib/upload-intake.js';
 import { uploadWorkbench } from './upload-workbench.js';
+import { APPEAL_FIELDS } from '../lib/upload-fields.js';
+import { renderReceipt } from './receipt.js';
+import { acceptVia } from '../lib/hand-off.js';
 
 const NA = { value: '', text: '— choose —' };
 const analysisWorkerUrl = new URL('../lib/remittance-analysis-worker.js', import.meta.url);
-const APPEAL_FIELDS = [
-  { id: 'reference', label: 'Claim reference', required: true, sensitive: true, synonyms: ['claim reference', 'claim id', 'patient account'] },
-  { id: 'payer', label: 'Payer type', required: true, synonyms: ['payer'] },
-  { id: 'denial_date', label: 'Denial date', required: true, synonyms: ['remittance date', 'denial date'] },
-  { id: 'amount', label: 'Amount', required: true, synonyms: ['denied amount', 'adjusted amount'] },
-  { id: 'window_days', label: 'Window days', required: false, synonyms: ['appeal window', 'appeal days'] },
-];
 function selectField(root, label, id, options) {
   const wrap = el('p');
   wrap.appendChild(el('label', { for: id, text: label }));
@@ -115,6 +111,7 @@ function appeal835(root, show) {
       if (message.preview.total) for (const [flavor, label] of [['full', 'Download 835 worklist CSV'], ['redacted', 'Download redacted 835 worklist CSV']]) {
         const button = el('button', { type: 'button', text: label }); button.addEventListener('click', () => worker.postMessage({ type: 'download', flavor })); results.appendChild(el('p', null, [button]));
       }
+      renderReceipt(results, message);
     });
     worker.postMessage({ type: 'parse-remittances', tool: 'appeal-worklist', files: payload }, payload.map((file) => file.buffer));
   });
@@ -165,4 +162,10 @@ export const renderers = {
     });
     appeal835(root, show);
   },
+};
+
+// spec-v1623 step 3: 835 remittances go to the 835 input, a claim CSV or TSV
+// to the column-mapping workbench.
+export const acceptFiles = {
+  'appeal-worklist': (root, files, { kind } = {}) => acceptVia(kind === 'x12-835' ? 'aw-835-files' : 'aw-upload-file')(root, files),
 };

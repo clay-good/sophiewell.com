@@ -21,6 +21,7 @@
   <url><loc>https://sophiewell.com/tools/mppr/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/bilateral-pay/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/multi-surgeon-pay/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sophiewell.com/tools/asp-payment/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/sequestration-adjust/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/ncci-ptp/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/mue-check/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -62,9 +63,11 @@
   <url><loc>https://sophiewell.com/tools/medicare-enrollment-window/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/aca-sep-window/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/medicaid-work-requirement-check/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sophiewell.com/tools/medicare-ffs-pa-required/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/auth-runout/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/auth-units-request/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/quantity-limit-check/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sophiewell.com/tools/part-b-drug-coinsurance/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/fpl-percent/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/premium-tax-credit/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/employer-coverage-affordability/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -79,6 +82,7 @@
   <url><loc>https://sophiewell.com/tools/gfe-deadline/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/ppdr-eligibility/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/vial-rounding/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sophiewell.com/tools/chair-day-planner/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/rate-escalation-schedule/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/dose-calendar/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/mpr-gap-days/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -88,6 +92,8 @@
   <url><loc>https://sophiewell.com/tools/imid-rems-fill-window/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/step-therapy-history/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/pa-criteria-checklist/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sophiewell.com/tools/pa-metrics-compare/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sophiewell.com/tools/payer-policy-diff/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/magi-household/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/340b-entity-eligibility/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/340b-orphan-exclusion/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -97,9 +103,17 @@
   <url><loc>https://sophiewell.com/tools/340b-ceiling-price/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/mfp-refund-check/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/pbm-reimbursement-check/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sophiewell.com/tools/nadac-margin/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sophiewell.com/tools/pharmacy-spread-check/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/medicaid-ura/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/ipledge-dispense-window/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sophiewell.com/tools/lcd-diagnosis-check/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sophiewell.com/tools/part-b-or-d/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/which-appeal-path/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sophiewell.com/tools/preventive-cost-share-check/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sophiewell.com/tools/hsa-predeductible-check/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sophiewell.com/tools/dpc-hsa-check/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sophiewell.com/tools/ma-criteria-check/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/bi-summary/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/site-of-care-compare/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/appeal-worklist/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -107,6 +121,7 @@
   <url><loc>https://sophiewell.com/tools/x12-837-check/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/x12-271-reader/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/x12-277-reader/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sophiewell.com/tools/hpt-price-compare/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/hpt-file-check/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/denial-pattern-report/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sophiewell.com/tools/underpayment-check/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>

@@ -2,6 +2,7 @@
 // the proposed columns before the existing PDC compute runs.
 import { test, expect } from '@playwright/test';
 import { readFile } from 'node:fs/promises';
+import { expectNoHScroll } from '../lib/no-hscroll.js';
 
 test('PDC file intake maps synonyms and matches the existing compute path', async ({ page }) => {
   const offOrigin = [];
@@ -27,8 +28,7 @@ test('PDC file intake maps synonyms and matches the existing compute path', asyn
   const confirm = page.getByRole('button', { name: 'Use 2 rows' });
   const confirmBox = await confirm.boundingBox();
   expect(confirmBox.height).toBeGreaterThanOrEqual(44);
-  const width = await page.evaluate(() => ({ scroll: document.documentElement.scrollWidth, client: document.documentElement.clientWidth }));
-  expect(width.scroll).toBeLessThanOrEqual(width.client + 1);
+  await expectNoHScroll(page, 'upload-workbench');
   await confirm.click();
 
   await expect(page.locator('#ps-upload-status')).toContainText('2 rows are in use');
@@ -36,8 +36,7 @@ test('PDC file intake maps synonyms and matches the existing compute path', asyn
   await expect(page.locator('#q-results')).toContainText('Smith, Ann');
   await expect(page.locator('.upload-file-results')).toContainText('Showing all 2 rows.');
   await expect(page.locator('.upload-file-results th')).toContainText(['member name', 'star measure', 'dispense date', 'supply days', 'drug ingredient', 'sophiewell_pdc_percent', 'sophiewell_in_denominator', 'sophiewell_reason']);
-  const previewWidth = await page.evaluate(() => ({ scroll: document.documentElement.scrollWidth, client: document.documentElement.clientWidth }));
-  expect(previewWidth.scroll).toBeLessThanOrEqual(previewWidth.client + 1);
+  await expectNoHScroll(page, 'upload-workbench');
 
   const fullDownloadPromise = page.waitForEvent('download');
   await page.getByRole('button', { name: 'Download results CSV' }).click();

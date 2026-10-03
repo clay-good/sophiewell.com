@@ -61,10 +61,10 @@ export default [
     summary: 'The 2021 race-free CKD-EPI eGFR: cystatin-C alone, the combined creatinine + cystatin C estimate, and creatinine-only for comparison (Inker 2021).',
     compute: F.ckdEpiCystatin,
     fields: [
-      { dom: 'cc-cys', arg: 'cystatinC', kind: 'number', required: true, label: 'Serum cystatin C', unit: 'mg/L' },
-      { dom: 'cc-cr', arg: 'creatinine', kind: 'number', required: false, label: 'Serum creatinine (for the combined estimate)', unit: 'mg/dL' },
-      { dom: 'cc-age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
-      { dom: 'cc-sex', arg: 'sex', kind: 'enum', values: ['male', 'female'], required: false, label: 'Sex' },
+      { dom: 'cc-cys', concept: 'cystatin-c', arg: 'cystatinC', kind: 'number', required: true, label: 'Serum cystatin C', unit: 'mg/L' },
+      { dom: 'cc-cr', concept: 'creatinine', arg: 'creatinine', kind: 'number', required: false, label: 'Serum creatinine (for the combined estimate)', unit: 'mg/dL' },
+      { dom: 'cc-age', concept: 'age', arg: 'age', kind: 'number', required: true, label: 'Age', unit: 'years' },
+      { dom: 'cc-sex', concept: 'sex', arg: 'sex', kind: 'enum', values: ['male', 'female'], required: false, label: 'Sex' },
     ],
   },
 ];

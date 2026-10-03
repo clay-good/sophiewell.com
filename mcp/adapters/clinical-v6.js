@@ -55,9 +55,9 @@ export default [
     summary: 'LDL cholesterol by Friedewald and NIH (Sampson 2020) equations plus non-HDL; Friedewald invalid at TG >=400.',
     compute: F.ldlCalc,
     fields: [
-      { dom: 'ldl-tc', arg: 'totalChol', kind: 'number', required: true, label: 'Total cholesterol', unit: 'mg/dL' },
-      { dom: 'ldl-hdl', arg: 'hdl', kind: 'number', required: true, label: 'HDL cholesterol', unit: 'mg/dL' },
-      { dom: 'ldl-tg', arg: 'tg', kind: 'number', required: true, label: 'Triglycerides', unit: 'mg/dL' },
+      { dom: 'ldl-tc', concept: 'total-cholesterol', arg: 'totalChol', kind: 'number', required: true, label: 'Total cholesterol', unit: 'mg/dL' },
+      { dom: 'ldl-hdl', concept: 'hdl-cholesterol', arg: 'hdl', kind: 'number', required: true, label: 'HDL cholesterol', unit: 'mg/dL' },
+      { dom: 'ldl-tg', concept: 'triglycerides', arg: 'tg', kind: 'number', required: true, label: 'Triglycerides', unit: 'mg/dL' },
     ],
   },
   {
@@ -65,7 +65,7 @@ export default [
     summary: 'Estimated average glucose from HbA1c (ADAG: eAG = 28.7*A1c - 46.7), reported in mg/dL and mmol/L.',
     compute: F.eagA1c,
     fields: [
-      { dom: 'eag-a1c', arg: 'a1c', kind: 'number', required: true, label: 'HbA1c', unit: '%' },
+      { dom: 'eag-a1c', concept: 'hemoglobin-a1c', arg: 'a1c', kind: 'number', required: true, label: 'HbA1c', unit: '%' },
     ],
   },
   {

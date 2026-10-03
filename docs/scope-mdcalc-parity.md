@@ -246,3 +246,33 @@ experience**.
 > v1515, claim-status files — [spec-v1515](spec-v1515.md), which adds `x12-277-reader` — is 1948.)
 
 > v1515, hospital price files — [spec-v1515](spec-v1515.md), which adds `hpt-file-check` — is 1949.)
+
+> v1601, preventive care cost sharing — [spec-v1601](spec-v1601.md), which adds `preventive-cost-share-check` — is 1950.)
+
+> v1604, direct primary care and HSAs — [spec-v1604](spec-v1604.md), which adds `dpc-hsa-check` — is 1951.)
+
+> v1603, Medicare Advantage denial process — [spec-v1603](spec-v1603.md), which adds `ma-criteria-check` — is 1952.)
+
+> v1603, payer policy changes — [spec-v1603](spec-v1603.md), which adds `payer-policy-diff` — is 1953.)
+
+> v1510, pharmacy margin against NADAC — [spec-v1510](spec-v1510.md), which adds `nadac-margin` — is 1954.)
+
+> v1604, plan pharmacy claims against NADAC — [spec-v1604](spec-v1604.md), which adds `pharmacy-spread-check` — is 1955.)
+
+> v1601, HSA coverage before the deductible — [spec-v1601](spec-v1601.md), which adds `hsa-predeductible-check` — is 1956.)
+
+> v1603, payer prior authorization reports — [spec-v1603](spec-v1603.md), which adds `pa-metrics-compare` — is 1957.)
+
+> v1510, Medicare Part B drug payment — [spec-v1510](spec-v1510.md), which adds `asp-payment` — is 1958.)
+
+> v1502, Original Medicare prior authorization lists — [spec-v1502](spec-v1502.md), which adds `medicare-ffs-pa-required` — is 1959.)
+
+> v1506, Part B drug coinsurance — [spec-v1506](spec-v1506.md), which adds `part-b-drug-coinsurance` — is 1960.)
+
+> v1512, infusion chair day planner — [spec-v1512](spec-v1512.md), which adds `chair-day-planner` — is 1961.)
+
+> v1505, Medicare Part B or Part D for a drug — [spec-v1505](spec-v1505.md), which adds `part-b-or-d` — is 1962.)
+
+> v1515, hospital price comparison — [spec-v1515](spec-v1515.md), which adds `hpt-price-compare` — is 1963.)
+
+> v1505, diagnosis support under the billing and coding articles — [spec-v1505](spec-v1505.md), which adds `lcd-diagnosis-check` — is 1964.)

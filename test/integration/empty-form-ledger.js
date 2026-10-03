@@ -44,6 +44,9 @@ export const ANSWERS_AN_EMPTY_FORM = new Set([
   // volume has been decided yet. The two measurements it does need are guarded
   // in the library (spec-v1007).
   "mehran-cin",
+  // spec-v1603: the answer is the process rule for the benefit, reason and criteria chosen in the
+  // pickers; the only number field (days since joining the plan) is optional and asked for when needed.
+  "ma-criteria-check",
   // spec-v1029 removed six lines from this list: ciwa, cows, pesi, charlson,
   // hospital-score and wells-pe-geneva. Each was a checklist with a MEASUREMENT
   // in it -- an age, a pulse, a count of admissions -- and the exemption written
@@ -105,6 +108,9 @@ export const ANSWERS_AN_EMPTY_FORM = new Set([
   "peds-weight-conv",
   "pertussis-case-def",
   "pews",
+  // spec-v1601: the answer is the federal rule for the plan, service and network chosen in the
+  // pickers; the only number field is the optional amount charged, which adds a note.
+  "preventive-cost-share-check",
   "sea-guideline",
   "sepsis-bundle-clock",
   "systemic-mastocytosis",

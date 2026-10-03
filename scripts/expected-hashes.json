@@ -30,5 +30,29 @@
     "etag": "\"1790706975-gzip\"",
     "lastModified": "Tue, 29 Sep 2026 18:36:15 GMT",
     "fetchedAt": "2026-09-29"
+  },
+  "asp": {
+    "url": "https://www.cms.gov/files/zip/october-2026-medicare-part-b-payment-limit-files-final.zip",
+    "edition": "2026 Q4",
+    "sha256": "a9b7afa80aae96c43cf84bf0b18648f1974429de2913e2e29d8342747174c417",
+    "etag": null,
+    "lastModified": "Thu, 17 Sep 2026 14:51:57 GMT",
+    "fetchedAt": "2026-10-01"
+  },
+  "asp-ndc": {
+    "url": "https://www.cms.gov/files/zip/october-2026-ndc-hcpcs-crosswalk-final.zip",
+    "edition": "2026 Q4",
+    "sha256": "e6bbf7c61e6d8bbbe83cac1272772ef7e5ff2ff2dc7029a75eede77201ef5ab1",
+    "etag": null,
+    "lastModified": "Thu, 17 Sep 2026 14:53:41 GMT",
+    "fetchedAt": "2026-10-01"
+  },
+  "mcd-articles": {
+    "url": "https://downloads.cms.gov/medicare-coverage-database/downloads/exports/current_article.zip",
+    "edition": "2026-09-28 weekly",
+    "sha256": "c4598b5875a0401975ab08072625ce548f4c4af439fb345ac0e0c6e58a3598bc",
+    "etag": "\"8843040ca66092472e97051b394d9727:1790820012.414743\"",
+    "lastModified": "Thu, 01 Oct 2026 02:00:12 GMT",
+    "fetchedAt": "2026-10-01"
   }
 }
