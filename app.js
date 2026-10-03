@@ -3418,6 +3418,7 @@ const UTILITIES = [
   { id: 'cdc-stature-for-age',    name: 'CDC Stature-for-Age Percentile (2-20 yr)',         group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'cdc-weight-for-age',     name: 'CDC Weight-for-Age Percentile (2-20 yr)',          group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   // spec-v1551: field-health (spec-v1540).
+  { id: 'severe-malaria-injectable', name: 'Severe Malaria Injectable Dose: Artesunate, Artemether, Quinine (WHO 2026)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'act-weight-band-dose', name: 'Malaria Treatment Dose by Weight: ACTs (WHO 2026)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   // spec-v1548: field-health (spec-v1540).
   { id: 'wasting-classify', name: 'Acute Malnutrition by MUAC, WHZ and Edema, 6 to 59 Months (WHO 2023)', group: 'N', audiences: ['clinicians', 'educators'], clinical: true },

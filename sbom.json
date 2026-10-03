@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:bb7ae2e0-c536-5a9b-84fa-8ab5ee510146",
+  "serialNumber": "urn:uuid:76db9cc6-2035-528c-85f0-003535ef31dd",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-03T20:40:37.573Z",
+    "timestamp": "2026-10-03T21:20:45.168Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1976 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1977 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c470d1ede22ecb7b1a62cf4681bb4c4c6edc647cfaa03042715c7c5ffb660b0c"
+          "content": "b9217a13c7bdc2f4b51ca77a343d25dc9d94609092f10fcdf376b6efcef5b4cb"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "126674"
+          "value": "126764"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0cfc472845b5533e9be624d645b1c6170ec8b188b82ba970d04f706dc089c728"
+          "content": "c60ace2b075799bf9837a1235bb054f793e9be2f5bc6b21e7e3291e00f96f8b5"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "573300"
+          "value": "573491"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "58ed39e55e8eea831f17dcacb75d7eeac54058f4c1d4d6b3b7adfd4e075d7fcd"
+          "content": "df8183568627c2d36e19e565cf22c3c1543e9e6584ba6e522927464a4e5902f2"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "246793"
+          "value": "246929"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ee5991a87687a6386b1ec6050b6df78d22f1eed32b0c420393b110082bf79151"
+          "content": "9af940422071d8bc8156457266dec158406b31e53c6729e2d5a0975788e149dc"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "113546"
+          "value": "113651"
         }
       ]
     },
@@ -13082,7 +13082,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "66d162d8bcd26f320e66be513a4f4821f8a35841040f3b2f2bac80ab698ab970"
+          "content": "30a78faf40e8c44570fb5b7428249bd62809f483a7509eed2fba8a6913a2882b"
         }
       ],
       "properties": [
@@ -13092,7 +13092,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2687086"
+          "value": "2687903"
         }
       ]
     },
@@ -20527,6 +20527,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4898"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/severe-malaria-injectable-v1551.js",
+      "type": "file",
+      "name": "lib/severe-malaria-injectable-v1551.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e1c1240b5f708c6143126080432391ad221269b543c23859da6a991f5ae0a847"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4894"
         }
       ]
     },
@@ -42350,6 +42371,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/severe-malaria-injectable-v1551.js",
+      "type": "file",
+      "name": "mcp/adapters/severe-malaria-injectable-v1551.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5416c36a74992074b162246a5c977f7d9e7f28a1053a98f5fa89b3aea4017d5b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "986"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/severin-ddh-v491.js",
       "type": "file",
       "name": "mcp/adapters/severin-ddh-v491.js",
@@ -45569,7 +45611,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c1dafa1458d05c24ed05d61b885239f9f1e5428eb7f24123ea7df015dd448a58"
+          "content": "11f11816902d53c4651a6b120b93870ce1a2d0e3c7e027bf1395cbfce861c4c0"
         }
       ],
       "properties": [
@@ -45579,7 +45621,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "116021"
+          "value": "116180"
         }
       ]
     },
@@ -49349,7 +49391,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3a7250f5f34a2aedcf38ffffd9efc7eab7c7277059d70215fad352b4dbb6cf60"
+          "content": "349861fa35d4fb044563b41e2ef52667d37600e5a24762f41db35d223559d6e8"
         }
       ],
       "properties": [
@@ -49359,7 +49401,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2699"
+          "value": "3500"
         }
       ]
     },
@@ -81390,6 +81432,7 @@
         "urn:sophiewell:file:source:lib/search.js",
         "urn:sophiewell:file:source:lib/secondary-mitral-regurgitation-stage-v849.js",
         "urn:sophiewell:file:source:lib/seinsheimer-subtroch-v413.js",
+        "urn:sophiewell:file:source:lib/severe-malaria-injectable-v1551.js",
         "urn:sophiewell:file:source:lib/severin-ddh-v491.js",
         "urn:sophiewell:file:source:lib/sfu-hydronephrosis-v477.js",
         "urn:sophiewell:file:source:lib/sha256.js",
@@ -83348,6 +83391,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/sea-guideline-v861.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/secondary-mitral-regurgitation-stage-v849.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/seinsheimer-subtroch-v413.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/severe-malaria-injectable-v1551.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/severin-ddh-v491.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/sfu-hydronephrosis-v477.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/shaffer-angle-v363.js",
@@ -83605,7 +83649,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "bb7ae2e0c536ca9b"
+      "value": "76db9cc62035628c"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -83617,7 +83661,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3066"
+      "value": "3068"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

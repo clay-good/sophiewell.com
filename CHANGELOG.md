@@ -21,6 +21,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Severe malaria injectable dose (WHO 2026): artesunate by weight (3 mg/kg
+  under 20 kg, 2.4 mg/kg from 20 kg) with its schedule, and IM artemether or
+  quinine as alternatives, quinine as salt with its infusion rate limit.
 - Malaria treatment dose by weight (WHO 2026): the weight-band dose and
   schedule of five artemisinin combinations, with the achieved mg/kg against
   WHO's targets, from the 10 September 2026 version of the living guideline.

@@ -963,6 +963,7 @@ import preventiveOwed from './adapters/preventive-owed.js';
 import whoAnemiaHbV1550 from './adapters/who-anemia-hb-v1550.js';
 import wastingClassifyV1548 from './adapters/wasting-classify-v1548.js';
 import actWeightBandDoseV1551 from './adapters/act-weight-band-dose-v1551.js';
+import severeMalariaInjectableV1551 from './adapters/severe-malaria-injectable-v1551.js';
 import medicaidUraV1510 from './adapters/medicaid-ura-v1510.js';
 import entity340bV1509 from './adapters/entity-340b-v1509.js';
 import adherenceV1513 from './adapters/adherence-v1513.js';
@@ -1972,6 +1973,7 @@ const ADAPTER_MODULES = [
   ['who-anemia-hb-v1550', whoAnemiaHbV1550],
   ['wasting-classify-v1548', wastingClassifyV1548],
   ['act-weight-band-dose-v1551', actWeightBandDoseV1551],
+  ['severe-malaria-injectable-v1551', severeMalariaInjectableV1551],
   ['medicaid-ura-v1510', medicaidUraV1510],
   ['entity-340b-v1509', entity340bV1509],
   ['adherence-v1513', adherenceV1513],

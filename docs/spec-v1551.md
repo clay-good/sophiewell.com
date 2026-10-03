@@ -209,4 +209,5 @@ MAL26 *high* (6-month review). SMH12 *low*. RAS23 *moderate*.
 | Tool | Status |
 |---|---|
 | `act-weight-band-dose` | **Built October 3, 2026** (catalog 1,976). The five tables (pp. 175–178) and the under-5 kg rule (§5.2.1.4.2) were re-read in the 10 September 2026 version through the IRIS API, and every band matches. The DHA-PPQ "60 < 80" / ">80" defect is read as stated and is a named test. **Differed from the spec:** the pregnancy input is not built, because tile 4 is not. Under 5 kg on any ACT but AL, the tile states WHO's same-mg/kg-as-5-kg rule instead of computing a dose. The splitting note (p. 188) was not re-read and is not printed. The ledger carries a *high*-volatility row. |
-| Tools 2–4 | Open. |
+| `severe-malaria-injectable` | **Built October 3, 2026** (catalog 1,977). Doses were re-read in MAL26 §5.2.2 (pp. 216–219) and the times in SMH12 p. 41. **Corrected from the spec:** WHO splits the *first* (loading) quinine dose IM as 10 mg/kg into each thigh; the spec said the first 10 mg/kg was split. **Differed:** no start-time input, so the times are printed as 0, 12 and 24 h, then daily. `who-severe-malaria` now links here. The ledger row is *high*. |
+| Tools 3–4 | Open. |

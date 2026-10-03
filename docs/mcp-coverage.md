@@ -8746,6 +8746,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/act-weight-band-dose-v1551.js (spec-v1551: WHO 2026 ACT weight bands — clinical disclaimer)
 - `act-weight-band-dose`
 
+### lib/severe-malaria-injectable-v1551.js (spec-v1551: WHO 2026 injectable severe malaria doses — clinical disclaimer)
+- `severe-malaria-injectable`
+
 ### lib/claims-pct-medicare.js (spec-v1604: Claims paid as a percent of Medicare — administrative disclaimer)
 - `claims-pct-medicare`
 

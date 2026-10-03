@@ -6966,6 +6966,18 @@
     },
     {
       "phrases": [
+        "iv artesunate dose",
+        "artesunate dose severe malaria",
+        "artesunate 2.4 mg/kg",
+        "quinine loading dose severe malaria",
+        "im artemether dose",
+        "injectable antimalarial dose"
+      ],
+      "tile": "severe-malaria-injectable",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
         "pertussis case definition",
         "whooping cough case definition",
         "is this a confirmed pertussis case",
