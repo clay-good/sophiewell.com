@@ -54,5 +54,21 @@
     "etag": "\"8843040ca66092472e97051b394d9727:1790820012.414743\"",
     "lastModified": "Thu, 01 Oct 2026 02:00:12 GMT",
     "fetchedAt": "2026-10-01"
+  },
+  "purple-book": {
+    "url": "https://www.accessdata.fda.gov/drugsatfda_docs/PurpleBook/2026/purplebook-search-August-data-download.csv",
+    "edition": "2026-08",
+    "sha256": "53b21871b4cd439abd6bb2fafa4447df0dd44e2da3cfcf51550298aef9afe2b5",
+    "etag": "\"80abca7c8334dd1:0\"",
+    "lastModified": "Tue, 25 Aug 2026 11:18:43 GMT",
+    "fetchedAt": "2026-10-03"
+  },
+  "orange-book": {
+    "url": "https://www.fda.gov/media/76860/download?attachment",
+    "edition": "2026-09 (products.txt of 2026-09-11)",
+    "sha256": "84e616aacf4f42bb85a94586c10abfc260f8fb9b60f07db3f10315ae70a3298e",
+    "etag": null,
+    "lastModified": "Fri, 11 Sep 2026 15:50:25 GMT",
+    "fetchedAt": "2026-10-03"
   }
 }

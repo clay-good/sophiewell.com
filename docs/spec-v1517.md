@@ -1,6 +1,6 @@
 # spec-v1517 — Automated refresh for the program's data
 
-**Status:** Proposed, September 25, 2026. No new tools; this keeps the other 101 correct.
+**Status:** Proposed, September 25, 2026. No new tools; this keeps the other 101 correct. In progress: see [build status](#build-status).
 **Charter:** [spec-v1500](spec-v1500.md). **Contract:** [spec-v1501](spec-v1501.md) §2.
 
 The goal is a program one person can maintain for decades. Two things make that
@@ -101,3 +101,16 @@ in the PR with the ledger rows that depend on that page.
   hand. A tool that cites a CFR section the watcher doesn't know fails lint.
 - `scripts/sources.md` and `docs/data-sources.md` gain a row per new dataset in the same
   change.
+
+## Build status
+
+Route-A builders live in `scripts/data/builders/` and run in the weekly refresh (`node scripts/data/run.mjs`);
+each has a fixture test and a row in `docs/data-sources.md`.
+
+| Dataset | Status |
+|---|---|
+| `mpfs`, `drg`, `mue`, `nadac` | Built September 29, 2026 ([spec-v1621](spec-v1621.md#build-status)) |
+| `asp`, `asp-ndc` | Built October 1, 2026 |
+| `mcd-articles` | Built October 1, 2026 |
+| `orange-book`, `purple-book` | Built October 3, 2026 for `substitution-check`. The Orange Book edition is the `products.txt` date inside the ZIP (the landing page's "content current as of" lagged it by weeks), so `zip.mjs` now reads each member's date; the Purple Book's newest month is found on the downloads page and its full listing is the table after the last header row. Both expire two months after their edition. |
+| The rest of the route-A list, and the route-B watchers | Open |

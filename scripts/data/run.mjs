@@ -132,6 +132,8 @@ export async function runBuilder(builder, ctx) {
       : sha256(res.bytes);
     if (prevHash && prevHash.sha256 === sourceSha256 && prevManifest && prevManifest.coverage === 'full') return row;
     const { records, ancillary } = await builder.parse(res.bytes, found);
+    // A builder may date the edition from the file itself (orange-book reads its products.txt date).
+    row.edition = found.edition;
     const canaries = [...(builder.stableCanaries || []), ...((builder.canaries && builder.canaries[found.edition]) || [])];
     const check = checkDataset({
       records,

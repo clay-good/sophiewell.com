@@ -38,6 +38,8 @@ export const FILE_INPUTS = {
   'tic-files': 'tic-file-check',
   'trl-files': 'tic-rate-lookup',
   'cer-files': 'carin-eob-reader',
+  'ibc-price-file': 'itemized-bill-check',
+  'ibc-bill-file': 'itemized-bill-check',
   'aw-835-files': 'appeal-worklist',
   'pa-file-picker': 'pa-lint',
   'rxm-${config.name}-file': '340b-rx-match',

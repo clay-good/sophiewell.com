@@ -50,6 +50,8 @@ Reasons are a fixed vocabulary:
 - `tic-file-check` - wrong-input-modality
 - `tic-rate-lookup` - wrong-input-modality
 - `carin-eob-reader` - wrong-input-modality
+- `itemized-bill-check` - wrong-input-modality
+- `substitution-check` - bespoke-shape
 - `denial-pattern-report` - wrong-input-modality
 - `underpayment-check` - wrong-input-modality
 - `ews-escalation` - time-dependent

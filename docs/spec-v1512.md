@@ -1,6 +1,6 @@
 # spec-v1512 — Specialty and infusion operations
 
-**Status:** Proposed, September 25, 2026. 5 new tools, group Q.
+**Status:** Proposed, September 25, 2026. 5 new tools, group Q; all five built ([build status](#build-status)).
 **Charter:** [spec-v1500](spec-v1500.md). **Machinery:** [spec-v1501](spec-v1501.md).
 
 An infusion center's day is dose rounding, vial math, dose calendars and chair
@@ -106,5 +106,12 @@ doesn't list products.
   preferred start (ties to the earlier line and the lower chair), so the same input always gives the same day.
   An appointment that does not fit after its preferred time is not moved earlier: it is listed with the earliest
   slot it could take in the schedule as built. The download adds each row's chair, start, end and status.
-- **Not yet built:** `substitution-check` (needs the
-  Orange Book and Purple Book files, route A).
+- **Built 2026-10-03:** `substitution-check`, on two new fetched datasets (`orange-book`, `purple-book`; builders
+  in `scripts/data/builders/`, spec-v1517). Each product is found by name and strength and picked from what the
+  name finds (the Orange Book has no NDCs, so NDC entry is not offered). Small molecules: same ingredient, dosage
+  form and route, and strength, sharing an exact A code (the preface, section 1.7, read that day: a three-character
+  code such as AB1 is equivalent only to AB1; its own example, Procardia XL AB2 against an AB1 nifedipine, is the
+  worked example). Biologics: the shelf product licensed 351(k) Interchangeable with the prescribed product as its
+  reference, at the same strength; a biosimilar that is not, or the reverse direction, is not. FDA's notes on a
+  product's strength (the levothyroxine special situation) are kept apart and shown. State pharmacy law is named
+  as governing the substitution. Agents: waived as bespoke-shape (two products picked from search lists).

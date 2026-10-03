@@ -1,0 +1,33 @@
+{
+  "manifestVersion": 2,
+  "dataset": "purple-book",
+  "label": "FDA Purple Book (licensed biological products)",
+  "sourceUrl": "https://purplebooksearch.fda.gov/downloads",
+  "agency": "FDA",
+  "status": "public-domain",
+  "cadence": "monthly",
+  "recordCount": 1737,
+  "shardLayout": "shards",
+  "shards": [
+    {
+      "name": "all.json",
+      "sha256": "7df2cb5bb23dde86424104863f741261bb3f9a642229031c12fcf3f8487c6fc7",
+      "records": 1737,
+      "bytes": 483757
+    }
+  ],
+  "notes": "One record per marketed licensed biological product from the full listing in the monthly data download: proprietary and proper names, license type, strength, dosage form, route, presentation, marketing status, and the reference product of a 351(k) biosimilar or interchangeable. Discontinued products are dropped.",
+  "coverage": "full",
+  "sourceEdition": "2026-08",
+  "effectiveFrom": "2026-08-01",
+  "fetchedAt": "2026-10-03",
+  "contentChangedAt": "2026-10-03",
+  "expiresOn": "2026-12-01",
+  "nextExpected": "2026-10-01",
+  "sourceSha256": "53b21871b4cd439abd6bb2fafa4447df0dd44e2da3cfcf51550298aef9afe2b5",
+  "recordsSha256": "02bd77636d7d89044d6253f4ac7a31bc2e55901c6116d31f18c49094a3035f74",
+  "recordBounds": {
+    "min": 1000,
+    "max": 5000
+  }
+}

@@ -14,5 +14,7 @@ import nadac from './nadac.mjs';
 import asp from './asp.mjs';
 import aspndc from './asp-ndc.mjs';
 import mcdarticles from './mcd-articles.mjs';
+import orangebook from './orange-book.mjs';
+import purplebook from './purple-book.mjs';
 
-export const BUILDERS = [mpfs, drg, mue, nadac, asp, aspndc, mcdarticles];
+export const BUILDERS = [mpfs, drg, mue, nadac, asp, aspndc, mcdarticles, orangebook, purplebook];

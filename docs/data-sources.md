@@ -182,6 +182,8 @@ and written with `coverage: 'full'`, `fetchedAt`, `sourceEdition` and
 | `data/nadac/` | NADAC, the latest week from the data.medicaid.gov datastore API, sharded by labeler | 2026-09-30 weekly | 30,079 NDCs |
 | `data/asp/` | Medicare Part B drug payment limits, the section 508 CSV of the newest quarterly ZIP; descriptors dropped, `period.json` holds the quarter's dates | 2026 Q4 | 918 codes |
 | `data/asp-ndc/` | The ASP NDC-HCPCS crosswalk of the same quarter, one record per 11-digit NDC with each code it bills under (dosage, package size and billable units); descriptors dropped | 2026 Q4 | 7,221 NDCs |
+| `data/orange-book/` | FDA Orange Book data files, `products.txt` of the monthly ZIP: one record per marketed (Rx or OTC) product with ingredient, dosage form and route, strength, trade name, applicant, application and product number, TE code, RLD and RS flags; discontinued products dropped; `names.json` maps trade names and ingredients to shards. No NDCs | 2026-09 (products.txt of 2026-09-11) | 25,544 products |
+| `data/purple-book/` | FDA Purple Book monthly data download, the full listing of licensed biological products: names, license type, strength, form, route, presentation and reference product; discontinued products dropped | 2026-08 | 1,737 products |
 | `data/mcd-articles/` | Medicare Coverage Database current billing and coding articles that list codes: code groups, covered and non-covered ICD-10-CM groups, group paragraphs as plain text, and the states their contractors serve; one shard per article plus `index.json`; descriptions dropped | 2026-09-28 weekly | 1,106 articles |
 
 ## Health record concepts
