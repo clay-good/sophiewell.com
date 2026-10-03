@@ -131,6 +131,14 @@ export const renderers = {
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Doses', value: r.bandLabel }]);
       list(o, r.notes);
+      // spec-v1512: the dates as a calendar file, each event named only by its place in the schedule.
+      const wrap = el('p'); const button = el('button', { type: 'button', text: 'Download the dates as a calendar file (.ics)' });
+      button.addEventListener('click', () => {
+        const url = window.URL.createObjectURL(new Blob([DC.toIcs(r.doses)], { type: 'text/calendar;charset=utf-8' }));
+        const anchor = el('a', { href: url, download: 'dose-calendar.ics' });
+        anchor.click(); window.setTimeout(() => window.URL.revokeObjectURL(url), 0);
+      });
+      wrap.appendChild(button); o.appendChild(wrap);
       note(o, r.note);
     }));
   },

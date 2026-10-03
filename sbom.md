@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `3ff44b230d811c20`
-Generated: 2026-10-03T07:47:29.407Z
+Build ID: `93e86f0282553612`
+Generated: 2026-10-03T08:28:35.682Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -300,7 +300,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/dom-fields.js` | 3941 | `7815860d170b0780dfaecb8567a3bb80cc6f7bc42d3eea123329c29f31c5a683` |
 | `lib/dom.js` | 984 | `b4b4ac74decb848bde516bfc1773e6c45a8d80031ed8f9d14226393d18fcde54` |
 | `lib/dorr-femur-v499.js` | 3385 | `b2b7a006e152b4301decb8c63f6f5367332bd6366e4606ec410ab3689be5e991` |
-| `lib/dose-calendar-v1512.js` | 5628 | `6d17f852544ea3e6bf5791bc2c565f00de8ead4d929037a0d48dc4aaec808254` |
+| `lib/dose-calendar-v1512.js` | 6678 | `4c613ade7371f63172050a0a8b75d76353ced1d2ab5e9ed426bb042f98714686` |
 | `lib/dose-schedule.js` | 1291 | `6bd747010b2e79ea5b45cbe11ebb8eb4d97f9524c2e0e2a9adcc91c1a96f7147` |
 | `lib/downton-fall-risk-v688.js` | 4381 | `11559782d78d3385853abf389b9d20689202b28f6c8d40b24cfdb39e4bb2575b` |
 | `lib/doxy-pep-v1401.js` | 3874 | `515506365a3d6ffcee56d78878cafbbc64ffc6e99e276bb02be639cf4a55609b` |
@@ -2359,7 +2359,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v151.js` | 13359 | `0f5eff3a293106878f3c19634996260b9ed65f358fb54c277941ddb9ef93784e` |
 | `views/group-v1510.js` | 20988 | `3e8cdbf16a7567269112c7a50e7abd49351c2be159d66956a987d54616f2dfac` |
 | `views/group-v1511.js` | 12916 | `93b0462d58e5904d62e34a3d32ff05a6f8d4a8a68ddf8a6160d8c64cb40d7750` |
-| `views/group-v1512.js` | 12754 | `0fb25670ebb13948277032222aefdf59e4f5b867aacd449a529870650d47bd96` |
+| `views/group-v1512.js` | 13381 | `3c334743e9f5219297d28cf29b43c18187d2666cd40bf50f40034d87a7ee60ce` |
 | `views/group-v1513.js` | 8961 | `ebd3a2e3ba0b3ee52e0424375dfc40aab175e62d9122172717428e4761dc810d` |
 | `views/group-v1514.js` | 11521 | `0bed1cb0547b0a58a0013ca31ffeb9993b738235a30a97a8191748dba1ef93f4` |
 | `views/group-v1515.js` | 39625 | `1e0e2eabf8f84e0ae0354c9e87b99842d8d5219dbecd9d410818dee80cf1039c` |

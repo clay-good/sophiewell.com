@@ -100,7 +100,8 @@ doesn't list products.
     the unrounded dose would discard (JW, or JZ when nothing is).
   - The escalation and calendar examples were read on DailyMed: Rituxan's 50 mg/hr first infusion
     (100 mg/hr later), raised every 30 minutes to 400 mg/hr, and Remicade's weeks 0, 2 and 6, then every
-    8 weeks. The `.ics` calendar download is not built.
+    8 weeks. The `.ics` calendar download was added October 3, 2026: one all-day event per dose, named only by
+    its place in the schedule, with no clock (DTSTAMP is the first dose's date, so the same schedule gives the same file).
 - **Built 2026-10-01:** `chair-day-planner`, typed or from a CSV through the upload workbench. Each appointment
   holds its chair for premedication, infusion and observation end to end; placement is first-fit in order of
   preferred start (ties to the earlier line and the lower chair), so the same input always gives the same day.

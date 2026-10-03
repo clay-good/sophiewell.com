@@ -67,6 +67,8 @@ jobs:
           # spec-v1517 route B: the cited CFR sections amended since their tools last read them. It never fails.
           echo >> data-refresh-summary.md
           node scripts/data/watch-ecfr.mjs >> data-refresh-summary.md || true
+          echo >> data-refresh-summary.md
+          node scripts/data/watch-pages.mjs >> data-refresh-summary.md || true
 
       - name: Run full test suite on refreshed data
         run: |

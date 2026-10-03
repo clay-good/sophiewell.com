@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Dose calendar: download the dates as a calendar file (.ics), one all-day event
+  per dose.
+- The weekly data refresh now lists the source pages of hand-entered figures
+  that changed since they were last read, with the modules to re-check.
+
 - Preventive services covered at $0: the USPSTF A and B recommendations a
   private plan must cover in network with no cost sharing, filtered by age,
   sex, pregnancy and the risk questions you answer, in the USPSTF's own words
