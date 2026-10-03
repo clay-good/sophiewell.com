@@ -75,7 +75,8 @@ export async function writeDataset(dataDir, builder, found, records, { sourceSha
   }
   if (existsSync(shardDir)) for (const f of await readdir(shardDir)) if (!written.has(f)) await rm(join(shardDir, f));
   const keep = new Set(['manifest.json', 'shards', ...Object.keys(ancillary)]);
-  for (const [name, value] of Object.entries(ancillary)) await writeIfChanged(join(folder, name), JSON.stringify(value, null, 2) + '\n');
+  // A .js ancillary is a module's text, written as is (poverty-guidelines); anything else is JSON.
+  for (const [name, value] of Object.entries(ancillary)) await writeIfChanged(join(folder, name), name.endsWith('.js') ? value : JSON.stringify(value, null, 2) + '\n');
   for (const f of await readdir(folder)) if (!keep.has(f)) await rm(join(folder, f), { recursive: true });
   const recordsSha256 = sha256(shardMeta.map((s) => s.sha256).join('') + JSON.stringify(ancillary));
   const manifest = {

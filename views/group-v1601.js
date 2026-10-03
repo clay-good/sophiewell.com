@@ -119,7 +119,7 @@ export const renderers = {
     let data = null;
     const section = (title, items, withQuestions) => {
       if (!items.length) return;
-      o.appendChild(el('h3', { text: title }));
+      o.appendChild(el('h2', { text: title }));
       const ul = el('ul');
       for (const r of items) {
         const li = el('li');

@@ -249,6 +249,17 @@ test('runBuilder: a multi-part edition is fetched and hashed as one, so a change
   assert.equal(changed.sameEditionHashChange, true);
 });
 
+test('runBuilder: a .js ancillary is written as the module text it is, not as JSON', async () => {
+  const dataDir = await mkdtemp(join(tmpdir(), 'sw-data-'));
+  const http = { get: async () => ({ notModified: false, bytes: Buffer.from('99213\n') }) };
+  const withModule = fakeBuilder({
+    discover: async () => ({ url: 'https://example.test/a.csv', edition: 'E1', expiresOn: '2027-04-01' }),
+    parse: async (bytes) => ({ records: [{ code: bytes.toString().trim() }], ancillary: { 'table.js': 'export const T = 1;\n' } }),
+  });
+  assert.equal((await runBuilder(withModule, { dataDir, hashes: {}, today: '2026-10-03', http })).status, 'updated');
+  assert.equal(await readFile(join(dataDir, 'demo', 'table.js'), 'utf8'), 'export const T = 1;\n');
+});
+
 test('summaryMarkdown: the decision and its reasons lead the pull request body', async () => {
   const { summaryMarkdown } = await import('../../scripts/data/summarize.mjs');
   const review = summaryMarkdown({ decision: { action: 'review', reasons: ['mpfs: canary "99213 work RVU": expected 1.3, got 1.31'] }, datasets: [{ id: 'mpfs', status: 'updated', editionBefore: 'RVU26C', edition: 'RVU26D', recordCount: 19453, problems: ['x'] }] });

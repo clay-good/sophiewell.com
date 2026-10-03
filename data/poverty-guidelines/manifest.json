@@ -1,0 +1,36 @@
+{
+  "manifestVersion": 2,
+  "dataset": "poverty-guidelines",
+  "label": "HHS poverty guidelines",
+  "sourceUrl": "https://aspe.hhs.gov/topics/poverty-economic-mobility/poverty-guidelines",
+  "agency": "HHS ASPE",
+  "status": "public-domain",
+  "cadence": "annual (January)",
+  "recordCount": 6,
+  "shardLayout": "shards",
+  "shards": [
+    {
+      "name": "guidelines.json",
+      "sha256": "11e2c4df39e4cdb8114fef79ff36e517cbd2a4981ab1e31eae6997fc8f44b3cc",
+      "records": 6,
+      "bytes": 409
+    }
+  ],
+  "ancillary": [
+    "guidelines.js"
+  ],
+  "notes": "One record per year and region (48 contiguous states and DC, Alaska, Hawaii): the guideline for one person and the amount for each additional person, read from the ASPE API at household sizes 1, 2, 8 and 9 with every answer checked against the request. guidelines.js carries the same table for the income calculators.",
+  "coverage": "full",
+  "sourceEdition": "2026",
+  "effectiveFrom": "2026-01-01",
+  "fetchedAt": "2026-10-03",
+  "contentChangedAt": "2026-10-03",
+  "expiresOn": "2027-03-31",
+  "nextExpected": "2027-01-31",
+  "sourceSha256": "8fa972bb66e47c90ecb55c8f8235ae23accded7455f23abec54d370a46516d4a",
+  "recordsSha256": "6e27f1576886f644f921f2bfac30c2b2630314aaf35be8e24c4fb95484a8434c",
+  "recordBounds": {
+    "min": 6,
+    "max": 30
+  }
+}

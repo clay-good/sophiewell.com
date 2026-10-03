@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `66babc10527cff7c`
-Generated: 2026-10-03T10:22:27.605Z
+Build ID: `f637638e1f60132b`
+Generated: 2026-10-03T10:52:55.638Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -504,7 +504,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/igcccg-v567.js` | 15655 | `279f4fffa68503aa75dd91ac700755e7e016bb42f4dc8377abc5d53eb62356a8` |
 | `lib/igg4-rd-2020-v825.js` | 8113 | `9a508c9597e17f30bc65156b09c5d5baf29116bca796c85070e050101c1614a0` |
 | `lib/imid-rems-v1511.js` | 5144 | `93b4fdbe02fbc83fe8bed133dae767ed827c945b73c02cc64d105e8381096404` |
-| `lib/income-screens-v1506.js` | 8985 | `e20d82459b3dee7fde275590abbf96f841988f88dd18df9093d1bf490453325f` |
+| `lib/income-screens-v1506.js` | 8871 | `a543c66ef8dcc0ab5c98b38b594e26ed15b1df36ec59b9d9f4d89fc265319b52` |
 | `lib/indomethacin-headache-ichd3-v819.js` | 10371 | `64c156e0d8e4450cbbb047a94b089e7b617fd7a3403c1b465055cc94ad6cd2bd` |
 | `lib/inflam-v230.js` | 8293 | `0b1ffb34b9b2b44043d86794c54d599384bc02b744c548bc84ade1c04c158880` |
 | `lib/inflam-v267.js` | 4172 | `3f8835d135972766119ea4c8f3dee85fc8bd310d95dd968c2c50be6eb0c9eff5` |
@@ -2378,7 +2378,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v159.js` | 10723 | `4468620fd3985650302950a1b9070add09e3c8e986791fe4634ff2f50e2c92f1` |
 | `views/group-v16.js` | 13376 | `3503141aaa8247033b2d1bbb218694ba7aed7f257e62f0c8b66d7fb5044e9671` |
 | `views/group-v160.js` | 11685 | `14ef775c5b8ffbe178e1263f27c806d4c99c02fc86dd79d907213aefd3b7b77f` |
-| `views/group-v1601.js` | 9012 | `0e39e527b59227b746a944ed9ca1af0d5f5ebe1f1baa8a894837802943330735` |
+| `views/group-v1601.js` | 9012 | `3555f69a734be96253ecdc7c65acf9b5d3ecd94ac41eae38354f7099c460b38c` |
 | `views/group-v1602.js` | 13948 | `0a4790a865a49ead12b7f19ff90bb2506760830931741691391ed0b737050b08` |
 | `views/group-v1603.js` | 7073 | `57d08d385ecd59045c644fea4cd65a57a6cdef633ff78b501b5742074c2a882b` |
 | `views/group-v1604.js` | 23127 | `60ab59e78a8575057a34586cc2b5c43c4c7c17c1880e34c1c4fe2ebf7b0eaabb` |

@@ -1238,6 +1238,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   band, because Gossop 1990 publishes none -- and says so, since a reader
   arriving from COWS will expect four. See docs/spec-v1061.md.
 
+### Changed
+
+- The poverty guidelines behind the income-percentage, household-income, Medicare
+  Savings Program and premium tax credit calculators now come from the weekly
+  data refresh (the ASPE poverty-guidelines API) instead of being typed in, so a
+  new year's figures arrive in January without waiting for someone to enter them.
+
 ### Fixed
 
 - A decimal comma typed into any number field (37,5) is now read as 37.5. Before,
