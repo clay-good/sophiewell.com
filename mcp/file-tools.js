@@ -19,9 +19,10 @@ import * as R837 from '../lib/x12-837-run.js';
 import * as R271 from '../lib/x12-271-run.js';
 import * as R277 from '../lib/x12-277-run.js';
 import { runHpt } from '../lib/hpt-run.js';
+import { runTic } from '../lib/tic-run.js';
 
 const X12_RUNS = { 'x12-835-reader': R835, 'x12-837-check': R837, 'x12-271-reader': R271, 'x12-277-reader': R277 };
-export const ANALYZABLE = [...Object.keys(X12_RUNS), 'hpt-file-check'];
+export const ANALYZABLE = [...Object.keys(X12_RUNS), 'hpt-file-check', 'tic-file-check'];
 const PREVIEW_ROWS = 20;
 
 const readOnly = (title) => ({ title, readOnlyHint: true, idempotentHint: true, openWorldHint: false });
@@ -123,6 +124,10 @@ export async function analyzeFile(args, { roots }) {
   if (!ANALYZABLE.includes(tool)) return refusal({ code: 'NOT_AVAILABLE' }, `${tool} runs on the site but not here yet. Tools available here: ${ANALYZABLE.join(', ')}.`);
   if (tool === 'hpt-file-check') {
     const { result, receipts } = await runHpt(await openAsBlob(r.real), r.name);
+    return { valid: true, tool, kind: rec.kind, findings: result, receipt: receipts.receipt, shareableReceipt: receipts.shareable };
+  }
+  if (tool === 'tic-file-check') {
+    const { result, receipts } = await runTic([{ blob: await openAsBlob(r.real), name: r.name }]);
     return { valid: true, tool, kind: rec.kind, findings: result, receipt: receipts.receipt, shareableReceipt: receipts.shareable };
   }
   if (r.size > MAX_FILE_BYTES) return refusal({ code: 'TOO_LARGE' }, `${r.name} is over the 50 MB limit these tools share with the site.`);

@@ -48,7 +48,7 @@ test('analyze_file runs the primary tool and returns the result with a receipt',
 });
 
 test('analyze_file runs every tool it lists on its fixture', async () => {
-  const fixture = { 'x12-835-reader': 'x12-835.835', 'x12-837-check': 'x12-837p.837', 'x12-271-reader': 'x12-271.271', 'x12-277-reader': 'x12-277.277', 'hpt-file-check': 'hpt-tall.csv' };
+  const fixture = { 'x12-835-reader': 'x12-835.835', 'x12-837-check': 'x12-837p.837', 'x12-271-reader': 'x12-271.271', 'x12-277-reader': 'x12-277.277', 'hpt-file-check': 'hpt-tall.csv', 'tic-file-check': 'tic-in-network.json' };
   for (const tool of ANALYZABLE) {
     const r = await analyzeFile({ path: join(FIX, fixture[tool]), tool }, { roots });
     assert.equal(r.valid, true, `${tool}: ${r.message}`);

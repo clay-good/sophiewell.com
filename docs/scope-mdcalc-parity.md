@@ -276,3 +276,5 @@ experience**.
 > v1515, hospital price comparison — [spec-v1515](spec-v1515.md), which adds `hpt-price-compare` — is 1963.)
 
 > v1505, diagnosis support under the billing and coding articles — [spec-v1505](spec-v1505.md), which adds `lcd-diagnosis-check` — is 1964.)
+
+> v1604, insurer price files — [spec-v1604](spec-v1604.md), which adds `tic-file-check` — is 1965.)

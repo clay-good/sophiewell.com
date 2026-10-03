@@ -63,7 +63,10 @@ the same PR with what was read and what differed from the plan.
 | 5 | `dpc-hsa-check` | Built September 29, 2026 ([spec-v1604](spec-v1604.md#build-status)) |
 | 6 | `payer-policy-diff` | Built September 29, 2026 ([spec-v1603](spec-v1603.md#build-status)) |
 | 13 | `pharmacy-spread-check` | Built September 30, 2026 ([spec-v1604](spec-v1604.md#build-status)) |
+| 10 | `tic-file-check` | Built October 2, 2026 ([spec-v1604](spec-v1604.md#build-status)) |
 
 `lib/json-stream.js` was extracted unchanged from `lib/hpt-stream-v1515.js` on October 1, 2026 (for
-`hpt-price-compare`); `hpt-file-check`'s tests pass unchanged. The other shared modules (`medicare-reprice`,
-`ncci-lookup`, `schema-check`, `preventive`) are not extracted yet; the tools built so far need none of them.
+`hpt-price-compare`); `hpt-file-check`'s tests pass unchanged. `lib/schema-check.js` was added October 2, 2026 for `tic-file-check`:
+the draft-07 subset the CMS schemas use, over whole values or a `json-stream` parser (FHIR StructureDefinition
+cardinality is not in it yet; `pas-bundle-check` and `carin-eob-reader` will add it). The other shared modules
+(`medicare-reprice`, `ncci-lookup`, `preventive`) are not extracted yet; the tools built so far need none of them.

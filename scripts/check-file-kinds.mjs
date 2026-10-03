@@ -35,6 +35,7 @@ export const FILE_INPUTS = {
   'x277-files': 'x12-277-reader',
   'hpt-file': 'hpt-file-check',
   'hptc-files': 'hpt-price-compare',
+  'tic-files': 'tic-file-check',
   'aw-835-files': 'appeal-worklist',
   'pa-file-picker': 'pa-lint',
   'rxm-${config.name}-file': '340b-rx-match',

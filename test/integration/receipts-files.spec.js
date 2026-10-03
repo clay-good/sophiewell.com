@@ -29,6 +29,12 @@ const RUNS = {
     await expect(page.locator('#q-results')).toContainText('structural');
     return [readFileSync(join(DIR, 'hpt-tall.csv'))];
   },
+  'tic-file-check': async (page) => {
+    await page.goto('/#tic-file-check');
+    await page.locator('#tic-files').setInputFiles({ name: 'mercy_in-network-rates.json', mimeType: 'application/json', buffer: readFileSync(join(DIR, 'tic-in-network.json')) });
+    await expect(page.locator('#q-results')).toContainText('against the CMS Transparency in Coverage schema');
+    return [readFileSync(join(DIR, 'tic-in-network.json'))];
+  },
   'denial-pattern-report': async (page) => {
     await page.goto('/#denial-pattern-report');
     await page.locator('#dpr-files').setInputFiles({ name: 'era_smith.835', mimeType: 'text/plain', buffer: readFileSync(join(DIR, 'x12-835.835')) });

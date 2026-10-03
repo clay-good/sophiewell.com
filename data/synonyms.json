@@ -10459,6 +10459,18 @@
     },
     {
       "phrases": [
+        "transparency in coverage file check",
+        "insurer machine readable file validator",
+        "in-network rates file validator",
+        "tic schema validator",
+        "allowed amounts file check",
+        "table of contents file check"
+      ],
+      "tile": "tic-file-check",
+      "audience": "billers"
+    },
+    {
+      "phrases": [
         "denial pattern report",
         "denial trends",
         "carc adjustment report",
