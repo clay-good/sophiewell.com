@@ -29,6 +29,7 @@ const CASES = {
   'mpr-gap-days': ['group-v1513', 'fill-history.csv', 'mpr-upload-file', 'csv-mapped'],
   'med-sync-plan': ['group-v1513', 'ambiguous.csv', 'sync-upload-file', 'csv-mapped'],
   'fpl-percent': ['group-v1506', 'households.csv', 'fpl-upload-file', 'csv-mapped'],
+  'extra-help-msp-screen': ['group-v1507', 'medicare-people.csv', 'msp-upload-file', 'csv-mapped'],
   'pa-lint': ['pa-lint', 'packet.pdf', 'pa-file-picker', 'pdf'],
 };
 

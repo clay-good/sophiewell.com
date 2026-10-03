@@ -9,6 +9,9 @@ import * as WR from '../lib/medicaid-work-requirement-v1507.js';
 import * as ML from '../lib/msp-lis-v1507.js';
 import * as MH from '../lib/magi-household-v1507.js';
 import { resultRow } from '../lib/result-copy.js';
+import { uploadWorkbench } from './upload-workbench.js';
+import { BATCH_TOOLS } from '../lib/batch-tools.js';
+import { acceptVia } from '../lib/hand-off.js';
 
 const NA = { value: '', text: '— choose —' };
 function selectField(root, label, id, options) {
@@ -206,16 +209,29 @@ export const renderers = {
     numField(root, 'Dependent relatives living in the home (optional)', 'msp-deps', 'e.g. 0', '20', '1');
     numField(root, 'Year (blank for this year)', 'msp-year', 'e.g. 2026', '2100', '1');
     const ids = pairs.map(([d]) => d);
-    const o = out(); root.appendChild(o);
-    wire(ids, () => safe(o, () => {
+    const o = out();
+    const formArgs = () => {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
-      const r = ML.extraHelpMspScreen(args);
+      return args;
+    };
+    const show = (r) => safe(o, () => {
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Likely', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
-    }));
+    });
+    // spec-v1501 §3: many people from a file, each row through extraHelpMspScreen; where they live and
+    // the year come from the form when the file leaves them blank.
+    const upload = uploadWorkbench(root, {
+      id: 'msp-upload', fields: BATCH_TOOLS['extra-help-msp-screen'].fields, label: 'Screen people from a file',
+      compute: 'extra-help-msp-screen', getInput: formArgs, onResult: show,
+    });
+    root.appendChild(o);
+    wire(ids, () => {
+      if (upload.isActive()) upload.compute(formArgs());
+      else show(ML.extraHelpMspScreen(formArgs()));
+    });
   },
   'magi-household'(root) {
     const pairs = [['mh-people', 'people'], ['mh-region', 'region'], ['mh-age', 'ageRule'], ['mh-year', 'year']];
@@ -236,4 +252,8 @@ export const renderers = {
       note(o, r.note);
     }));
   },
+};
+
+export const acceptFiles = {
+  'extra-help-msp-screen': acceptVia('msp-upload-file'),
 };

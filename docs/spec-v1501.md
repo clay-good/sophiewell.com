@@ -181,10 +181,13 @@ the research recorded in [scope-medication-access.md](scope-medication-access.md
 - **Built 2026-10-03:** §3's generic batch mode for form tools, `lib/batch-tools.js`. A tool is listed
   with its upload fields (named for its compute function's arguments) and, for a choice, its options and
   aliases. Each row calls the tool's own function in the upload Worker, and the download appends
-  `sophiewell_result` and `sophiewell_detail`. **Differed from the spec:** an optional column the file
-  lacks or leaves blank takes the form's answer, so a counselor's file needs only household size and
-  income. A required column never does: a blank income is refused rather than answered with the form's.
-  The first tool is `fpl-percent`. Tests: `test/unit/batch-tools.test.js`, `test/integration/fpl-batch.spec.js`.
+  `sophiewell_result` and `sophiewell_detail`. **Differed from the spec:** a field marked `fromForm` is
+  context the whole file shares (where people live, the program, the year). A blank or missing cell for
+  one of those takes the form's answer, so a counselor's file needs only household size and income. Every
+  other field is a fact about the row and stays the row's own, blank or not. A missing income is refused,
+  and a blank wage cell counts no wages; neither is answered with what the form holds. The tools are
+  `fpl-percent` and `extra-help-msp-screen`. Tests: `test/unit/batch-tools.test.js`,
+  `test/integration/fpl-batch.spec.js`.
 - **Built 2026-10-03:** §2's page watch, with [spec-v1517](spec-v1517.md#build-status).
 - **Not yet built:** §3's JSON intake, the remaining X12 transactions, batch mode for the
   other scalar tools (each needs its fields listed in `lib/batch-tools.js`), and upload integration for
