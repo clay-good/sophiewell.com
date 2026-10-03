@@ -6,6 +6,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Hospital Financial Assistance Discount: check a file of patients at once
+  against the policy's tiers entered on the form.
 - The seven appeal and request letter builders download as an editable Word file.
   While any [bracketed] blank is left, the file opens with a line saying it is
   not ready to send and how many blanks remain.

@@ -99,6 +99,8 @@ tool states that the administrative fee is set by HHS guidance, not by the regul
   - 45 CFR 149.610 does not define "business day"; the tool uses federal business days, as this spec
     says, and counts days ahead after the scheduling date through the service date. Scheduling fewer than
     3 business days ahead sets no estimate deadline, which CMS's FAQ confirms.
-  - `fap-discount` takes up to three tiers and reuses `fpl-percent`; the batch upload is not built.
+  - `fap-discount` takes up to three tiers and reuses `fpl-percent`. **Since October 3, 2026** it also runs
+    over a patients file ([spec-v1501](spec-v1501.md) §3 batch mode). Each row gives its own household size,
+    income and charges, and the policy's tiers and AGB on the form apply to every row.
   - `ppdr-eligibility` names the HHS administrative fee without a figure, because the regulation leaves
     the amount to guidance.

@@ -185,8 +185,9 @@ the research recorded in [scope-medication-access.md](scope-medication-access.md
   context the whole file shares (where people live, the program, the year). A blank or missing cell for
   one of those takes the form's answer, so a counselor's file needs only household size and income. Every
   other field is a fact about the row and stays the row's own, blank or not. A missing income is refused,
-  and a blank wage cell counts no wages; neither is answered with what the form holds. The tools are
-  `fpl-percent` and `extra-help-msp-screen`. Tests: `test/unit/batch-tools.test.js`,
+  and a blank wage cell counts no wages; neither is answered with what the form holds. A tool's
+  `formOnly` arguments (a hospital's discount tiers) are never columns: the form gives them to every row.
+  The tools are `fpl-percent`, `extra-help-msp-screen` and `fap-discount`. Tests: `test/unit/batch-tools.test.js`,
   `test/integration/fpl-batch.spec.js`.
 - **Built 2026-10-03:** §2's page watch, with [spec-v1517](spec-v1517.md#build-status).
 - **Not yet built:** §3's JSON intake, the remaining X12 transactions, batch mode for the
