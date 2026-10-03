@@ -1962,14 +1962,19 @@ test('R-PA-HIGHMARK-004 remains a non-enforcing member-specific lookup reminder'
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-HIGHMARK-004').status, 'pass');
 });
 
-test('R-PA-HIGHMARK-005 asks for a reference only after completed submission', () => {
+test('R-PA-HIGHMARK-005 asks for a reference only once the authorization is approved', () => {
   const initial = runEngine(bundleOf('Highmark member.\nPrior authorization required for CPT 27447.\n'));
   assert.equal(initial.find((x) => x.ruleId === 'R-PA-HIGHMARK-005').status, 'pass');
 
+  // Highmark's manual ties the reference number to the approval notice, so a
+  // submitted but undecided request may legitimately have none (issue #20).
   const submitted = runEngine(bundleOf('Highmark member.\nPrior authorization submitted.\n'));
-  assert.equal(submitted.find((x) => x.ruleId === 'R-PA-HIGHMARK-005').status, 'info');
+  assert.equal(submitted.find((x) => x.ruleId === 'R-PA-HIGHMARK-005').status, 'pass');
 
-  const confirmed = runEngine(bundleOf('Highmark member.\nPrior authorization submitted.\nReference number: HM-12345.\n'));
+  const approved = runEngine(bundleOf('Highmark member.\nPrior authorization approved.\n'));
+  assert.equal(approved.find((x) => x.ruleId === 'R-PA-HIGHMARK-005').status, 'info');
+
+  const confirmed = runEngine(bundleOf('Highmark member.\nPrior authorization approved.\nReference number: HM-12345.\n'));
   assert.equal(confirmed.find((x) => x.ruleId === 'R-PA-HIGHMARK-005').status, 'pass');
 });
 
@@ -5308,6 +5313,11 @@ test('R-PA-BCBSSC-017 advises when an HIX transplant lacks product-specific rout
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-017').status, 'info');
 });
 
+test('R-PA-BCBSSC-017 does not accept an exception request no BCBSSC source describes', () => {
+  const findings = runEngine(bundleOf('Blue Cross Blue Shield of South Carolina member.\nHIX transplant. Written exception request and medical director review request attached.\n'));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-017').status, 'info');
+});
+
 test('R-PA-BCBSSC-017 accepts a Blue Distinction transplant center', () => {
   const findings = runEngine(bundleOf('Blue Cross Blue Shield of South Carolina member.\nHIX transplant. Blue Distinction Center for Transplants selected.\n'));
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-BCBSSC-017').status, 'pass');
@@ -6575,7 +6585,7 @@ test('R-PA-HMSA-003 passes when the HMSA packet names the HHIN channel (info)', 
   assert.equal(f.status, 'pass');
 });
 
-test('R-PA-HMSA-006 does not fire on an acute admission, which needs no precertification', () => {
+test('R-PA-HMSA-006 does not fire on an admission without a concurrent review', () => {
   const text = 'HMSA member.\nAcute hospitalization; patient admitted Tuesday.\n';
   const findings = runEngine(bundleOf(text));
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-HMSA-006').status, 'pass');
@@ -6715,7 +6725,7 @@ test('R-PA-HMSA-008 passes when an expedited HMSA request documents the clinical
   assert.equal(f.status, 'pass');
 });
 
-test('R-PA-HMSA-016 does not fire on an acute hospitalization, which needs no precertification', () => {
+test('R-PA-HMSA-016 does not fire on an acute psychiatric hospitalization', () => {
   const text = 'HMSA member.\nAcute psychiatric hospitalization; patient admitted.\n';
   const findings = runEngine(bundleOf(text));
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-HMSA-016').status, 'pass');
@@ -6752,10 +6762,16 @@ test('R-PA-HMSA-018 does not infer new technology from clinical-trial context', 
   assert.equal(findings.find((x) => x.ruleId === 'R-PA-HMSA-018').status, 'pass');
 });
 
-test('R-PA-HMSA-018 flags new technology with no precertification sought', () => {
+test('R-PA-HMSA-018 advises on new technology with no precertification or coverage determination sought', () => {
   const text = 'HMSA member.\nThis procedure employs new technology.\n';
   const findings = runEngine(bundleOf(text));
-  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HMSA-018').status, 'flag');
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HMSA-018').status, 'info');
+});
+
+test('R-PA-HMSA-018 accepts new technology with a coverage determination sought', () => {
+  const text = 'HMSA member.\nThis procedure employs new technology. Coverage determination requested from HMSA in advance.\n';
+  const findings = runEngine(bundleOf(text));
+  assert.equal(findings.find((x) => x.ruleId === 'R-PA-HMSA-018').status, 'pass');
 });
 
 test('R-PA-HMSA-019 advises when an appeal omits the denial date (info)', () => {

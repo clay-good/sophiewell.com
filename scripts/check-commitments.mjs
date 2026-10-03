@@ -58,6 +58,26 @@ const AI_VENDOR_NEEDLES = [
   'cohere',
 ];
 
+// Exact citation URLs that contain a needle without naming an AI SDK. Cohere
+// Health is a prior-authorization review vendor, unrelated to the Cohere AI
+// SDK, and BCBSSC's only published continued-stay instructions live on a page
+// whose address names it (R-PA-BCBSSC-006, issue #20). Each entry is a full
+// URL, so the word anywhere else -- an import, a package name, another link --
+// still fails.
+const AI_VENDOR_URL_EXCEPTIONS = [
+  'https://www.southcarolinablues.com/en/home/providers/news-and-events/news-bulletins/importance-of-submitting-continued-stay-reviews-in-cohere-health.html',
+];
+
+// The AI-vendor needles one source line carries, in import / require /
+// string-literal context, after removing the excepted citation URLs.
+export function aiVendorHits(line) {
+  const quoted = line.match(/(['"`])(?:\\.|(?!\1).)*?\1/g) || [];
+  const importLike = /\b(?:import|require)\s*[(]?/.test(line);
+  let lower = ((importLike ? line : '') + ' ' + quoted.join(' ')).toLowerCase();
+  for (const url of AI_VENDOR_URL_EXCEPTIONS) lower = lower.split(url.toLowerCase()).join(' ');
+  return AI_VENDOR_NEEDLES.filter((needle) => lower.includes(needle.toLowerCase()));
+}
+
 const AUTH_VENDOR_PACKAGES = [
   'oauth', 'oauth2', 'passport', '@auth/', 'auth0', '@auth0/',
   '@clerk/', 'clerk-sdk-node', 'supabase-auth', '@supabase/auth',
@@ -192,14 +212,8 @@ async function checkAiVendorSubstrings() {
       // Examine import / require / string-literal contexts only. Cheap
       // approximation: if the line contains `import` or `require(` or any
       // quoted run, scan its quoted runs for the needles.
-      const quoted = line.match(/(['"`])(?:\\.|(?!\1).)*?\1/g) || [];
-      const importLike = /\b(?:import|require)\s*[(]?/.test(line);
-      const corpus = (importLike ? line : '') + ' ' + quoted.join(' ');
-      const lower = corpus.toLowerCase();
-      for (const needle of AI_VENDOR_NEEDLES) {
-        if (lower.includes(needle.toLowerCase())) {
-          violations.push({ file: rel, line: i + 1, msg: `AI-vendor substring "${needle}" appears in source (spec-v50 §3.6); allowed only in docs/.` });
-        }
+      for (const needle of aiVendorHits(line)) {
+        violations.push({ file: rel, line: i + 1, msg: `AI-vendor substring "${needle}" appears in source (spec-v50 §3.6); allowed only in docs/.` });
       }
     }
   }
@@ -431,4 +445,6 @@ async function main() {
   process.exit(1);
 }
 
-main().catch((err) => { console.error('check-commitments: error', err); process.exit(2); });
+if (process.argv[1] && process.argv[1].endsWith('check-commitments.mjs')) {
+  main().catch((err) => { console.error('check-commitments: error', err); process.exit(2); });
+}

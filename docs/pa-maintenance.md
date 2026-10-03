@@ -131,6 +131,17 @@ acknowledgment itself is current (no older than `failAfterDays`). A stale
 acknowledgment does not mask a stale source forever, so an abandoned ack
 re-surfaces as a failure.
 
+## A source URL the AI-vendor guard rejects
+
+`check-commitments` (spec-v50 §3.6) refuses AI-vendor names such as `cohere`
+in any quoted string under `lib/`. A payer page can trip it by accident: BCBSSC's
+continued-stay bulletin has an address that names Cohere Health, its
+prior-authorization review vendor, which has nothing to do with the AI SDK. When
+that page is the only source, add its full URL to `AI_VENDOR_URL_EXCEPTIONS` in
+`scripts/check-commitments.mjs` and a case to `test/unit/check-commitments.test.js`.
+Only that exact URL is exempt; the word anywhere else still fails. Look for
+another source first.
+
 ## The CI check: `scripts/check-pa-staleness.mjs`
 
 Wired into `npm run lint` (and therefore the CI Lint step). Behavior:
