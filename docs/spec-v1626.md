@@ -38,6 +38,7 @@ file tool registers in `lib/file-kinds.js` and exports `acceptFiles`.
 | 9 | `itemized-bill-check` | same | NCCI, MUE; the hospital's own price file (reader's) | two files: the bill CSV and the price file; the inventory pairs them when dropped together |
 | 10 | `tic-file-check` | `views/group-v1604.js` | TiC schemas | file tool, streamed |
 | 11 | `tic-rate-lookup` | same | TiC schemas, MPFS, OPPS, DRG | file tool, streamed; filters while streaming, holds only matches |
+| 9 | `itemized-bill-check` | Built October 3, 2026, without NCCI pair edits ([spec-v1602](spec-v1602.md#build-status)) |
 | 12 | `claims-pct-medicare` | same | MPFS, GPCI, OPPS, DRG | CSV workbench tool |
 | 13 | `pharmacy-spread-check` | same | NADAC | CSV workbench tool; the batch mode of `pbm-reimbursement-check`'s arithmetic, imported, not copied |
 | 14 | backfill `medicare-ffs-pa-required` (WISeR) | where [spec-v1502](spec-v1502.md) builds it | `wiser-codes` (curated) | |

@@ -10494,6 +10494,17 @@
     },
     {
       "phrases": [
+        "check my hospital bill",
+        "itemized bill check",
+        "hospital bill overcharged",
+        "compare bill to hospital prices",
+        "itemized bill against price transparency file"
+      ],
+      "tile": "itemized-bill-check",
+      "audience": "patients"
+    },
+    {
+      "phrases": [
         "denial pattern report",
         "denial trends",
         "carc adjustment report",

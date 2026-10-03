@@ -6,6 +6,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Check my hospital bill against its posted prices: each line of an itemized
+  bill beside the gross charge, cash price and (if you name it) your plan's
+  rate the hospital posted for that code, with lines above the posted price,
+  codes the hospital does not post, and units above Medicare's limits named.
+
 - Claims paid as a percent of Medicare: type a plan's claim lines or load its
   claims extract, choose a Medicare locality, and see what the plan allowed as
   a percent of the Medicare physician fee schedule, by provider and by service

@@ -1100,6 +1100,7 @@ const UTILITIES = [
   { id: 'lcd-diagnosis-check', name: 'Does This Diagnosis Support This Code Under the LCD?', group: 'Q', audiences: ['billers', 'coders'], clinical: false },
   { id: 'part-b-or-d', name: 'Medicare Part B or Part D for This Drug?', group: 'C', audiences: ['billers', 'patients', 'clinicians'], clinical: false },
   { id: 'which-appeal-path', name: 'Which Appeal Rules Apply?', group: 'C', audiences: ['billers', 'patients', 'clinicians'], clinical: false },
+  { id: 'itemized-bill-check', name: 'Check My Hospital Bill Against Its Posted Prices', group: 'C', audiences: ['patients', 'billers'], clinical: false },
   { id: 'carin-eob-reader', name: 'Read My Health Insurance Claims File', group: 'C', audiences: ['patients', 'billers'], clinical: false },
   { id: 'preventive-cost-share-check', name: 'Should I Have Paid for This Preventive Care?', group: 'C', audiences: ['patients', 'billers'], clinical: false },
   { id: 'hsa-predeductible-check', name: 'HSA Safe Harbors: What Can Be Covered Before the Deductible?', group: 'C', audiences: ['patients', 'billers'], clinical: false },
