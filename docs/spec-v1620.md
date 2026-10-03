@@ -61,7 +61,7 @@ M6 tools that need no dataset (`preventive-cost-share-check`, `ma-criteria-check
 | M3 | built September 29, 2026 ([build status](spec-v1623.md#build-status)) |
 | M4 | built September 29, 2026 ([build status](spec-v1625.md#build-status)) |
 | M5 | built September 29, 2026 ([build status](spec-v1624.md#build-status)) |
-| M6 | in progress: `preventive-cost-share-check`, `ma-criteria-check`, `dpc-hsa-check`, `payer-policy-diff`, `pharmacy-spread-check`, `hsa-predeductible-check`, `pa-metrics-compare` and `tic-file-check` built ([build status](spec-v1626.md#build-status)) |
+| M6 | in progress: `preventive-cost-share-check`, `ma-criteria-check`, `dpc-hsa-check`, `payer-policy-diff`, `pharmacy-spread-check`, `hsa-predeductible-check`, `pa-metrics-compare`, `tic-file-check`, `tic-rate-lookup` and `carin-eob-reader` built ([build status](spec-v1626.md#build-status)) |
 
 ## What the research settled
 
