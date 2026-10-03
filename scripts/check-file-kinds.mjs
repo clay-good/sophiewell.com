@@ -37,6 +37,7 @@ export const FILE_INPUTS = {
   'hptc-files': 'hpt-price-compare',
   'tic-files': 'tic-file-check',
   'trl-files': 'tic-rate-lookup',
+  'cer-files': 'carin-eob-reader',
   'aw-835-files': 'appeal-worklist',
   'pa-file-picker': 'pa-lint',
   'rxm-${config.name}-file': '340b-rx-match',

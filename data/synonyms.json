@@ -10482,6 +10482,18 @@
     },
     {
       "phrases": [
+        "read my claims file",
+        "explanation of benefits file",
+        "blue button claims",
+        "carin blue button",
+        "patient access api claims",
+        "my insurance claims data"
+      ],
+      "tile": "carin-eob-reader",
+      "audience": "patients"
+    },
+    {
+      "phrases": [
         "denial pattern report",
         "denial trends",
         "carc adjustment report",

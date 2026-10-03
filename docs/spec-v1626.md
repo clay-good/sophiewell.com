@@ -65,6 +65,7 @@ the same PR with what was read and what differed from the plan.
 | 13 | `pharmacy-spread-check` | Built September 30, 2026 ([spec-v1604](spec-v1604.md#build-status)) |
 | 10 | `tic-file-check` | Built October 2, 2026 ([spec-v1604](spec-v1604.md#build-status)) |
 | 11 | `tic-rate-lookup` | Built October 2, 2026, professional rates only ([spec-v1604](spec-v1604.md#build-status)) |
+| 8 | `carin-eob-reader` | Built October 2, 2026 ([spec-v1602](spec-v1602.md#build-status)) |
 
 `lib/json-stream.js` was extracted unchanged from `lib/hpt-stream-v1515.js` on October 1, 2026 (for
 `hpt-price-compare`); `hpt-file-check`'s tests pass unchanged. `lib/schema-check.js` was added October 2, 2026 for `tic-file-check`:

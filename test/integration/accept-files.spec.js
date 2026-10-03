@@ -21,6 +21,7 @@ const CASES = {
   'hpt-file-check': ['group-v1515', 'hpt-tall.csv', 'hpt-file', 'hpt-csv'],
   'tic-file-check': ['group-v1604', 'tic-in-network.json', 'tic-files', 'tic-in-network'],
   'tic-rate-lookup': ['group-v1604', 'tic-in-network.json', 'trl-files', 'tic-in-network'],
+  'carin-eob-reader': ['group-v1602', 'carin-eob.json', 'cer-files', 'fhir-carin-eob'],
   'appeal-worklist': ['group-v1516', 'x12-835.835', 'aw-835-files', 'x12-835'],
   'mpr-gap-days': ['group-v1513', 'fill-history.csv', 'mpr-upload-file', 'csv-mapped'],
   'med-sync-plan': ['group-v1513', 'ambiguous.csv', 'sync-upload-file', 'csv-mapped'],

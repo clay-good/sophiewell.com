@@ -6,6 +6,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Read my claims file: the claims data your health plan gives you through its
+  Patient Access API (CARIN Blue Button) becomes a table of claims, totals by
+  year for your out-of-pocket maximum, and the claims worth asking about:
+  denials, a preventive visit with cost sharing, out-of-network emergency care,
+  possible duplicates, and coinsurance that differs from your plan's rate.
+
 - Find negotiated rates in an insurer price file: name the billing codes (and,
   if you like, the providers) and get every in-network rate for them, each
   professional rate beside the Medicare fee schedule amount for your locality,

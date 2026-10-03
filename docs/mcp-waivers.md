@@ -49,6 +49,7 @@ Reasons are a fixed vocabulary:
 - `hpt-price-compare` - wrong-input-modality
 - `tic-file-check` - wrong-input-modality
 - `tic-rate-lookup` - wrong-input-modality
+- `carin-eob-reader` - wrong-input-modality
 - `denial-pattern-report` - wrong-input-modality
 - `underpayment-check` - wrong-input-modality
 - `ews-escalation` - time-dependent
