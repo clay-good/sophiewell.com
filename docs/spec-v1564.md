@@ -16,6 +16,18 @@ reopened by supplying what it names.
 | D6 | **Translation**: fund professional translation, or build the machinery and invite reviewed partner translations (spec-v1543 §5) | spec-v1543 phase 1 | Build the machinery after spec-v1541; seek partners |
 | D7 | **A written request to WHO** (drafted below) | The blocked growth tiles in §2 | Send it; build does not wait |
 
+### Decisions made October 3, 2026 (by the owner)
+
+| # | Decision |
+|---|---|
+| D1 | **Calculators first.** Build the calculator-shaped tiles now. Every classify-and-advise tile named in D1 stays blocked until there is a counsel opinion for the first target country. |
+| D2 | **Adopted.** Restate facts in our own words with a citation and never reproduce text. Add the `who-facts-with-attribution` status and the reproduction guard. |
+| D3 | **Adopted** for Brazil's Ministry of Health, on the same terms as D2. |
+| D4 | **Build last**, with the WHO edition in the title, a 6-month review and the band snapshot test. |
+| D5 | Not asked again: the recommendation (not now) stands, as recorded in spec-v1541. |
+| D6 | **English only for now, behind a pluggable layer.** The site supports English only. Strings go through a locale abstraction, so a reviewed translation can be plugged in later without touching tile logic. No other language ships, and partner translations are not solicited yet. |
+| D7 | Not decided here: sending the request to WHO is the owner's to do. |
+
 ## 2. Blocked by licence
 
 | Would-be tile | Needs | Why blocked |

@@ -399,3 +399,29 @@ test('rule 9 - a state-law citation with no row fails, and so does a row with no
   assert.match(findStateLawViolations(stateCase('after the session'))[0], /not a YYYY-MM-DD date/);
 });
 
+
+// spec-v1540 §8: the field-health ledger's volatility column, negative-tested with a backdated row.
+test('a field-health row past its volatility window fails; one inside it passes', async () => {
+  const { parseVolatilityLedger, findVolatilityViolations, ISSUER_PATTERN: P } = await import('../../scripts/check-citations.mjs');
+  const md = [
+    '## Field health (volatility-tracked)', '',
+    '| tile id | instrument | edition shipped | latest known edition | accessed | volatility | justification if behind |',
+    '|---|---|---|---|---|---|---|',
+    '| malaria-act | WHO malaria | 10 Sep 2026 | same | 2026-03-01 | high | current |',
+    '| growth-x | WHO growth | 2006 | same | 2025-01-01 | low | current |',
+    '| odd | x | y | z | 2026-09-01 | spicy | current |',
+    '', '## State law (gate-enforced)', '| tile id | a | b | c | d | e |', '|---|---|---|---|---|---|', '| not-me | 1 | 2 | 3 | 4 | 5 |',
+  ].join('\n');
+  const ledger = parseVolatilityLedger(md);
+  assert.deepEqual([...ledger.keys()], ['malaria-act', 'growth-x', 'odd']);
+  const tiles = [{ id: 'malaria-act' }, { id: 'growth-x' }, { id: 'odd' }];
+  const v = findVolatilityViolations({ tiles, ledger, today: '2026-10-03' });
+  assert.equal(v.length, 2);
+  assert.match(v[0], /^malaria-act: high-volatility source last read 2026-03-01, more than 6 months ago/);
+  assert.match(v[1], /^odd: volatility "spicy"/);
+  assert.deepEqual(findVolatilityViolations({ tiles, ledger, today: '2026-08-31' }).filter((x) => x.startsWith('malaria-act')), [], 'inside six months');
+  assert.match(findVolatilityViolations({ tiles: [], ledger, today: '2026-08-31' })[0], /names no tile/);
+  // spec-v1540 §8 issuers, bounded so longer words do not match.
+  for (const c of ['GTFCC 2024', 'PAHO 2023', 'ICMR guidance', 'MoHFW 2021', 'Ministério da Saúde, 2024']) assert.ok(P.test(c), c);
+  for (const c of ['ICMRA', 'PAHOS']) assert.ok(!P.test(c), c);
+});

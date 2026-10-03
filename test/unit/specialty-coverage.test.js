@@ -25,6 +25,9 @@ const ALLOWED_SPECIALTIES = new Set([
   // much of the catalog is legal rather than clinical; 'occupational-health' is the home for the
   // Cal/OSHA tiles (spec-v1398), a gap the 2026-09-05 catalog-depth audit also found.
   'health-law', 'occupational-health',
+  // spec-v1540 §9: the field-health program. Every tile in it carries 'global-health' plus its clinical
+  // specialty; 'community-health' marks the tiles whose intended user includes a community health worker.
+  'global-health', 'community-health',
   'ophthalmology', 'optometry', 'radiology',
   'hematology', 'hepatology', 'infectious-disease', 'internal-medicine',
   'maternal-fetal-medicine', 'movement-disorders', 'neonatology', 'nephrology', 'neurocritical-care',

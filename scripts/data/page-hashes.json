@@ -3,12 +3,12 @@
     "sha256": "f318db5fd3ca108cc4843969bb500a3bb10992b9c38d18d5638de4cf6092a54f",
     "recorded": "2026-10-03"
   },
-  "https://www.cms.gov/files/document/cy2026-lis-resource-limits-memo.pdf": {
-    "sha256": "d0e19604575af33f82f52fa010e2c265eaa6e5011c5e60015015ec7b2bdc0996",
+  "https://www.cms.gov/data-research/monitoring-programs/medicare-fee-service-compliance-programs/prior-authorization-and-pre-claim-review-initiatives": {
+    "sha256": "cbe3888093282af30e01117c061af768d5973529e16da8afd4a094889b4aa56e",
     "recorded": "2026-10-03"
   },
-  "https://www.cms.gov/initiatives/medicare-prescription-drug-affordability/overview/medicare-drug-price-negotiation-program/selected-drugs-negotiated-prices": {
-    "sha256": "ed7937149477029543071913ad04cf360e79fffa18a566f08c2dad9d8fa6a079",
+  "https://www.cms.gov/files/document/cy2026-lis-resource-limits-memo.pdf": {
+    "sha256": "d0e19604575af33f82f52fa010e2c265eaa6e5011c5e60015015ec7b2bdc0996",
     "recorded": "2026-10-03"
   },
   "https://www.cms.gov/newsroom/fact-sheets/2026-medicare-parts-b-premiums-deductibles": {
@@ -21,6 +21,10 @@
   },
   "https://www.cms.gov/newsroom/fact-sheets/medicare-part-d-2027-national-average-monthly-bid-amount-information": {
     "sha256": "c0c5aab8ade589e6a33b881b830e835ec076a8423398daa3761bfb5ef9dc3924",
+    "recorded": "2026-10-03"
+  },
+  "https://www.cms.gov/priorities/innovation/innovation-models/wiser": {
+    "sha256": "d283724ea08f40f47c397b4104218191c510b6ae4ccea635ffe77a1f0644f218",
     "recorded": "2026-10-03"
   },
   "https://www.federalregister.gov/d/2025-21879": {
