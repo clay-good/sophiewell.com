@@ -164,3 +164,23 @@ test('irf: therapy is counted from the midnight that follows admission (CMS: adm
   assert.match(r.notes[0], /^Therapy, or a therapy evaluation, must begin by October 11, 2026, 12:00 pm, 36 hours from the midnight that follows admission/);
   assert.ok(!r.notes.join(' ').includes('midnight that begins'), 'the second reading is gone: CMS settled it');
 });
+
+// spec-v1514: the written order check, 42 CFR 410.38(d)(1).
+test('dme: a missing written-order element is named with its paragraph; blanks are not checked, never missing', () => {
+  const base = { item: 'capped', delivered: '2026-03-02' };
+  assert.equal(dme(base).notes.some((n) => /Written order/.test(n)), false);
+  const r = dme({ ...base, swoName: 'yes', swoItem: 'yes', swoQty: 'na', swoDate: 'yes', swoPrac: 'yes', swoSig: 'no' });
+  assert.ok(r.notes.includes('Written order: missing the treating practitioner signature (F). Every element is a condition of payment (42 CFR 410.38(d)(1)(i)).'));
+  assert.equal(r.abnormal, true);
+  const one = dme({ ...base, swoName: 'yes' });
+  assert.match(one.notes.at(-1), /^Not checked: a general description of the item; /);
+  assert.equal(one.abnormal, false);
+});
+
+test('dme: an item on the face-to-face list needs the order before delivery; others before the claim', () => {
+  const base = { item: 'capped', delivered: '2026-03-02', orderReceived: '2026-03-05' };
+  assert.match(dme({ ...base, wopdList: 'yes' }).notes.at(-1), /not before delivery on March 2, 2026: .*face-to-face encounter within the 6 months before the order/);
+  assert.match(dme({ ...base, wopdList: 'no' }).notes.at(-1), /before the claim is submitted \(42 CFR 410\.38\(d\)\(1\)\(ii\)\(B\)\)/);
+  assert.match(dme({ ...base }).notes.at(-1), /was not answered/);
+});
+

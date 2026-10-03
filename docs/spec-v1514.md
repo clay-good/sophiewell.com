@@ -195,7 +195,11 @@ eCFR (current September 2026): 42 CFR 405.1200–405.1212, 409.30, 409.60, 409.6
     therapy minutes are not totaled.
   - The MCSN retrospective window (closed January 2, 2026, good cause excepted) was confirmed on the CMS
     patient-status appeals page.
-  - Not built: the standard-written-order check (410.38(d)(1)) and the face-to-face-required list for DME.
+  - The standard-written-order check was added October 3, 2026 (410.38(d)(1)(i)(A)-(F), read in the eCFR that day),
+    with the order's timing ((d)(1)(ii): before delivery for items on the Required Face-to-Face Encounter and Written
+    Order Prior to Delivery List, otherwise before the claim; (d)(2)'s 6-month encounter). Each element is answered
+    or left "not checked". Whether an item is on that list is still the reader's answer: no machine-readable copy
+    of the list was found.
 - **Updated 2026-10-03:** `irf-compliance-clock`, after the spec-v1517 eCFR watcher found 42 CFR 412.622 amended
   October 1, 2026 (FY2027 IRF final rule, 91 FR 48982, read that day): for admissions from that date the first
   interdisciplinary team meeting is due on or before day 4, the admission day being day 1 (CMS's example: admitted

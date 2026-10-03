@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `93e86f0282553612`
-Generated: 2026-10-03T08:28:35.682Z
+Build ID: `dccecd2279f5a394`
+Generated: 2026-10-03T08:57:03.208Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -867,7 +867,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/posas-observer-scar-v691.js` | 3697 | `dcb2792ef4faae3bbe45ac5e09c3322b3d79bd3f5708adb4443ad2e51df78c23` |
 | `lib/posas-patient-scar-v783.js` | 4310 | `58b2fefabafaf9466dd29beb9821909c3fd3feaa9e2f76cfcca6333f18035481` |
 | `lib/poseidon-v549.js` | 14464 | `9e03014da62b136861306d39992b287b5d9ac49230c33d0e728965dc548d7441` |
-| `lib/post-acute-clocks-v1514.js` | 36229 | `f5e677232518d6b9cfe5d5236a140143626a628e43ed502003c5eec98120eb54` |
+| `lib/post-acute-clocks-v1514.js` | 40084 | `66acde062fd34d46a259e522875e402651e4481480e0a4e60896d9ac7341ea5d` |
 | `lib/powers-ratio-v1454.js` | 6362 | `7488c3e53e54627ab3ba06e19f6b76c87b461c21e7e4d6f119568c0e6ef12e45` |
 | `lib/ppm-eoai-v548.js` | 10750 | `09729344a30c9e031d6258622cce62ca62069070343630bb9b60b09aaf3b8890` |
 | `lib/prague-barrett-v365.js` | 3549 | `0e55cf5d42483f2ea30ddd972ce3f06ecac02cf3fbc1fb106fab01b6fe2ba564` |
@@ -1927,7 +1927,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/posas-observer-scar-v691.js` | 1721 | `d9c999c764d37199dbde69cf9ba7a98038b86e2f56e0c427c1e7838934201666` |
 | `mcp/adapters/posas-patient-scar-v783.js` | 1853 | `8015f61a0185d69268e58db0fc87a6984e50baa1cd75f598382319bc018b46c3` |
 | `mcp/adapters/poseidon-v549.js` | 6308 | `4f7161ee9a0a4c9c7abd3a605efb92b23646e554586c07e18a7e0a0502194a31` |
-| `mcp/adapters/post-acute-clocks-v1514.js` | 6584 | `b40af42eee1d23b80f263ba8504fd324d96a2324c565de0e21d73a2b6976f64e` |
+| `mcp/adapters/post-acute-clocks-v1514.js` | 7958 | `e7cb074dfa2aebe036761769bc39658cc2440eb93f0fa16c9366b705cecfecd1` |
 | `mcp/adapters/powers-ratio-v1454.js` | 1157 | `9ead21ee77533b06c621f678540aea44078bf2a6e440711ca040a60a4756a5eb` |
 | `mcp/adapters/ppm-eoai-v548.js` | 6157 | `9796251187106be52f2e8edcae9ae7672a408850db37b51530b4f980008f1582` |
 | `mcp/adapters/prague-barrett-v365.js` | 1483 | `0ae010b0105d1757130ca6e7b4d31f485a50b3f81d32ac4940be576ae25ae332` |
@@ -2361,7 +2361,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1511.js` | 12916 | `93b0462d58e5904d62e34a3d32ff05a6f8d4a8a68ddf8a6160d8c64cb40d7750` |
 | `views/group-v1512.js` | 13381 | `3c334743e9f5219297d28cf29b43c18187d2666cd40bf50f40034d87a7ee60ce` |
 | `views/group-v1513.js` | 8961 | `ebd3a2e3ba0b3ee52e0424375dfc40aab175e62d9122172717428e4761dc810d` |
-| `views/group-v1514.js` | 11521 | `0bed1cb0547b0a58a0013ca31ffeb9993b738235a30a97a8191748dba1ef93f4` |
+| `views/group-v1514.js` | 12722 | `0d276901d06df9eb1c8431514eec48473d67ac288e08965ebfad634d7438fa7e` |
 | `views/group-v1515.js` | 39625 | `1e0e2eabf8f84e0ae0354c9e87b99842d8d5219dbecd9d410818dee80cf1039c` |
 | `views/group-v1516.js` | 10809 | `a915113c204cf0c8e4c6a4f92819d8d636d0f9f8c31823a7f3a82aec18ca2535` |
 | `views/group-v152.js` | 12369 | `dc29da131fcaf14f2a95a9e658fa3df1cc7b1d768b7b12b308267c97de3ede1e` |

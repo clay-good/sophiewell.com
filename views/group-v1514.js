@@ -165,11 +165,22 @@ export const renderers = {
     }));
   },
   'dme-rental-clock'(root) {
-    const pairs = [['dme-item', 'item'], ['dme-delivered', 'delivered'], ['dme-stop', 'lastUse'], ['dme-resume', 'resumed']];
+    const pairs = [['dme-item', 'item'], ['dme-delivered', 'delivered'], ['dme-stop', 'lastUse'], ['dme-resume', 'resumed'], ['dme-swo-name', 'swoName'], ['dme-swo-item', 'swoItem'], ['dme-swo-qty', 'swoQty'], ['dme-swo-date', 'swoDate'], ['dme-swo-prac', 'swoPrac'], ['dme-swo-sig', 'swoSig'], ['dme-wopd', 'wopdList'], ['dme-order-received', 'orderReceived']];
     selectField(root, 'Item type', 'dme-item', PA.DME_ITEMS);
     dateInput(root, 'Delivery date', 'dme-delivered', 'date');
     dateInput(root, 'Last day of use before a break (optional)', 'dme-stop', 'date');
     dateInput(root, 'Day use resumed (optional)', 'dme-resume', 'date');
+    const swo = el('details', { class: 'note-more' });
+    swo.appendChild(el('summary', { text: 'Check the written order (optional; a blank is not checked)' }));
+    selectField(swo, 'Beneficiary name or Medicare Beneficiary Identifier (MBI)', 'dme-swo-name', PA.SWO_ANSWERS);
+    selectField(swo, 'General description of the item', 'dme-swo-item', PA.SWO_ANSWERS);
+    selectField(swo, 'Quantity to be dispensed', 'dme-swo-qty', PA.SWO_QTY_ANSWERS);
+    selectField(swo, 'Order date', 'dme-swo-date', PA.SWO_ANSWERS);
+    selectField(swo, 'Treating practitioner name or NPI', 'dme-swo-prac', PA.SWO_ANSWERS);
+    selectField(swo, 'Treating practitioner signature', 'dme-swo-sig', PA.SWO_ANSWERS);
+    selectField(swo, 'Is the item on the CMS Required Face-to-Face Encounter and Written Order Prior to Delivery List?', 'dme-wopd', PA.WOPD_LIST);
+    dateInput(swo, 'Date the supplier received the order', 'dme-order-received', 'date');
+    root.appendChild(swo);
     const ids = pairs.map(([d]) => d);
     const o = out(); root.appendChild(o);
     wire(ids, () => safe(o, () => {

@@ -6,6 +6,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- DME rental clock: an optional written-order check, naming any of the six
+  required elements missing and whether the order reached the supplier in time.
+
 - Dose calendar: download the dates as a calendar file (.ics), one all-day event
   per dose.
 - The weekly data refresh now lists the source pages of hand-entered figures
