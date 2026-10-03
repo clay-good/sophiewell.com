@@ -232,6 +232,8 @@ dates). It's the cleanest machine-readable feed in the program (route A).
     NDC and the per-unit prices are not built.
     **Since October 3, 2026** the table comes from the weekly refresh (`data/mfp-negotiated-prices`,
     [spec-v1517](spec-v1517.md#build-status)), and the date it asks after moves with the newest price year.
+    An optional NDC field now looks the package up in the file's rows, names its drug, and gives its
+    per-unit price on the day; an NDC list that cannot be loaded is said so, never read as "not listed."
 - **Built 2026-10-01:** `part-b-drug-coinsurance`, on the `asp` dataset and `asp-payment`'s arithmetic (imported).
   The coinsurance is the file's percentage per code (84 codes are below 20% in 2026 Q4, marked "Inflation-adjusted
   coinsurance"). The pump insulin cap was read in the statute: 42 U.S.C. 1395l(a), concluding provisions, $35 for a

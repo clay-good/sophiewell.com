@@ -31,3 +31,31 @@ test('40 drugs, a blank drug asks, a blank date uses today and says so', () => {
   assert.equal(m({}).valid, false);
   assert.match(m({ drug: 'eliquis' }, new Date(Date.UTC(2026, 8, 26))).notes[0], /today/);
 });
+
+// The CMS file's NDC rows, as data/mfp-negotiated-prices ships them.
+const ROWS = [
+  { drug: 'ELIQUIS; ELIQUIS SPRINKLE', ndc11: '00003-0893-21', effective: '2026-01-01', end: '2026-12-31', perUnit: 4.145072 },
+  { drug: 'ELIQUIS; ELIQUIS SPRINKLE', ndc11: '00003-0893-21', effective: '2027-01-01', end: null, perUnit: 4.257193 },
+  { drug: 'ENTRESTO; ENTRESTO SPRINKLE', ndc11: '00078-0777-20', effective: '2026-01-01', end: '2025-12-31', perUnit: 4.9 },
+];
+
+test('an NDC names its drug and gives the per-unit price on the day, in any of its written forms', () => {
+  for (const ndc of ['00003-0893-21', '0003-0893-21', '00003089321']) {
+    const r = m({ ndc, date: '2027-02-01', ndcRows: ROWS });
+    assert.equal(r.price, 237.25, ndc);
+    assert.match(r.notes[0], /^NDC 00003-0893-21: \$4\.257193 per unit on February 1, 2027/);
+  }
+  assert.match(m({ ndc: '00003-0893-21', drug: 'xarelto', date: '2026-06-01', ndcRows: ROWS }).notes[0], /not the drug chosen/);
+});
+
+test('an NDC dropped before its price took effect has no period, and an unknown NDC is refused, not read as no price', () => {
+  assert.match(m({ ndc: '00078-0777-20', date: '2026-06-01', ndcRows: ROWS }).notes[0], /has no negotiated price on June 1, 2026/);
+  assert.match(m({ ndc: '00003-0893-99', date: '2026-06-01', ndcRows: ROWS }).message, /is not in the CMS/);
+  assert.match(m({ ndc: '0003089321', date: '2026-06-01', ndcRows: ROWS }).message, /10-digit NDC without hyphens/);
+});
+
+test('an NDC list that could not be loaded is said so, never taken as "not in the file"', () => {
+  const r = m({ ndc: '00003-0893-21', date: '2026-06-01', ndcRows: null });
+  assert.equal(r.valid, false);
+  assert.match(r.message, /could not be loaded/);
+});

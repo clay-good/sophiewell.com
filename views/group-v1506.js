@@ -211,20 +211,32 @@ export const renderers = {
     }));
   },
   'partd-mfp-price-check'(root) {
-    const pairs = [['mfp-drug', 'drug'], ['mfp-date', 'date']];
+    const pairs = [['mfp-drug', 'drug'], ['mfp-ndc', 'ndc'], ['mfp-date', 'date']];
     selectField(root, 'Drug selected for Medicare price negotiation', 'mfp-drug', MF.DRUGS);
+    textField(root, 'Or its NDC, for the per-unit price (optional)', 'mfp-ndc', 'e.g. 00003-0893-21');
     dateInput(root, 'Date of service (blank for today)', 'mfp-date', 'date');
     const ids = pairs.map(([d]) => d);
     const o = out(); root.appendChild(o);
-    wire(ids, () => safe(o, () => {
+    // The CMS file's NDC rows (data/mfp-negotiated-prices) load the first time an NDC is entered; null if
+    // they could not be, which the check never reads as "not in the file".
+    let ndcRows;
+    let loading = null;
+    const run = () => safe(o, () => {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
+      if (String(args.ndc).trim() && ndcRows === undefined) {
+        if (!loading) loading = loadShard('mfp-negotiated-prices', 'prices.json').then((rows) => { ndcRows = rows; }, () => { ndcRows = null; }).then(run);
+        note(o, 'Loading the CMS file\'s NDC list...');
+        return;
+      }
+      args.ndcRows = ndcRows;
       const r = MF.mfpPriceCheck(args);
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Negotiated price', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
-    }));
+    });
+    wire(ids, run);
   },
   'part-b-drug-coinsurance'(root) {
     const pairs = [['pbdc-code', 'code'], ['pbdc-dos', 'serviceDate'], ['pbdc-units', 'units'], ['pbdc-months', 'months'], ['pbdc-limit', 'limit'], ['pbdc-coins', 'coinsurance']];

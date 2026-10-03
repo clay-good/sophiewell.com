@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `4bdaf766e142dc21`
-Generated: 2026-10-03T11:42:31.709Z
+Build ID: `6128768774c417c0`
+Generated: 2026-10-03T11:51:33.843Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -661,7 +661,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/methacholine-v890.js` | 8610 | `57f61517b28f0dc0df72f0ec7670d4bf831bb0a652f2a83b492eab9839336f7b` |
 | `lib/methemoglobin-v864.js` | 10471 | `eecfdc7ce8e1d1540710c0a709a42b2b7fa516dfd8bcd8a38e4fce55b62b6ea9` |
 | `lib/meyers-mckeever-v408.js` | 3443 | `2e1194940bf147d4cb84ef46856ec0dbf67dbabaf76aeea1b45fa1b53d8df1b7` |
-| `lib/mfp-prices-v1506.js` | 5766 | `2e27a50870537a3a76c803743adb5de44ebf5aba8aae7d262a2977b4c04eab09` |
+| `lib/mfp-prices-v1506.js` | 8066 | `5c1315ef6cdfa689571aff5efb685c4b6971e7f5e9e874f38b1180f7cda3021a` |
 | `lib/mfp-refund-reconcile.js` | 10703 | `ebb32afa750d460d00294d8dea9bb4955de33011904e864e4d9d742f09b91b16` |
 | `lib/mfp-refund-v1510.js` | 4884 | `61a0c6ff6bcf76841d1015a6d57ce45ccac29c5307fdbb3f9bb9046268acb80e` |
 | `lib/mh-grading-scale-v860.js` | 10650 | `12d4c73d2cc090e044efa0e5a6df2f19c4759b3686146b060798f9ad53efc4f7` |
@@ -1748,7 +1748,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/methacholine-v890.js` | 1735 | `77d9b196ed62bfd615a898f11beeded90c65e84644ae79f5bdb43a79188fedeb` |
 | `mcp/adapters/methemoglobin-v864.js` | 2339 | `db6e15564da120fcbe6f659c9d7d82252a130bcb30181a8e92e0ce6c57bedc77` |
 | `mcp/adapters/meyers-mckeever-v408.js` | 1333 | `50be59c1a72be38ef287b739fef7da618e47ebde3dcd5ad16ace9b043162af39` |
-| `mcp/adapters/mfp-prices-v1506.js` | 727 | `002e66bdcc4256044c3b0d4cb437528302c676ccd4f2f6f7c71ac61b3849d3a7` |
+| `mcp/adapters/mfp-prices-v1506.js` | 1457 | `a0d894ed9cf5bec380a6ee55d082bd9bc112ace22a30b20b6e85835523fcc67e` |
 | `mcp/adapters/mfp-refund-v1510.js` | 1606 | `7776756619447dbdb92b4422655d5e82a0263eeb0801f77267749b6e14dd022a` |
 | `mcp/adapters/mh-grading-scale-v860.js` | 5537 | `ecb3ea9d29fec3a2fbd04555f4005b6e145a91dd1b658eacedb0e8c7aa44f7bf` |
 | `mcp/adapters/migraine-ichd3-v815.js` | 3614 | `5bc6f0dfea16470f20633ad2253f4b8bf514eba518c1fa9bdf2509974fa37376` |
@@ -2355,7 +2355,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1503.js` | 10845 | `e8197a48dd6f2c022795a2fcad41c58ef689bb0f54de9d554b4afc46ae2f8f16` |
 | `views/group-v1504.js` | 12899 | `45e7d5661d14790b75c2ec00ed6dd1cab5334f7f75bc04a38813a1fbdcc1d2ac` |
 | `views/group-v1505.js` | 11430 | `0bf2e09c59f3a9dc6092a4a371f1c2b7fc7f43e92833ebe78dfc7902fa651a38` |
-| `views/group-v1506.js` | 14663 | `387d5b592b4fda667adc06c860156571037a0c3a09d2da473a0fafbbc94d19d2` |
+| `views/group-v1506.js` | 15359 | `93fdc282c29e25e2c9a3d2dbabbcec3587b8435a3564a86679440cf17d8bc2d8` |
 | `views/group-v1507.js` | 13724 | `9164dcd5553ed2bf3173660028c504428a8bf17f44fc60e11e0833dabb653a50` |
 | `views/group-v1508.js` | 8229 | `9dd50e090ced34ec13dec250b12b0b4e750489d265a355e984fa3b6ee62259fe` |
 | `views/group-v1509.js` | 9355 | `c6052710ceac6ed488acfac42c0d347bc387f1dcfc5a3807399d03171ae4a31a` |
