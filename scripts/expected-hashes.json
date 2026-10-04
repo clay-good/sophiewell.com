@@ -8,12 +8,12 @@
     "fetchedAt": "2026-09-29"
   },
   "drg": {
-    "url": "https://www.cms.gov/files/zip/fy2026-ipps-fr-table-5.zip",
-    "edition": "FY2026",
-    "sha256": "7d2b92eead336284d370f24a3abc63d2e296bdf35708de1a73679793df38f68a",
+    "url": "https://www.cms.gov/files/zip/fy2027-ipps-fr-table-5.zip",
+    "edition": "FY2027",
+    "sha256": "3b43654767907b1c3fa64b5ea685c5669e4623ceb2c4a1fa488af640d1dc06d4",
     "etag": null,
-    "lastModified": "Thu, 31 Jul 2025 13:49:47 GMT",
-    "fetchedAt": "2026-09-29"
+    "lastModified": "Mon, 28 Sep 2026 13:06:20 GMT",
+    "fetchedAt": "2026-10-04"
   },
   "mue": {
     "url": "https://www.cms.gov/files/zip/medicare-ncci-2026-q4-practitioner-services-mue-table.zip",
@@ -81,11 +81,11 @@
   },
   "uspstf": {
     "url": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation-topics/uspstf-a-and-b-recommendations",
-    "edition": "A and B list read 2026-10-03 (latest release 2025-06)",
-    "sha256": "555532b08e05dbe0a8c643f46b0fe35e44746f595377d771c14e365d2221b909",
+    "edition": "A and B list read 2026-10-04 (latest release 2025-06)",
+    "sha256": "d40f6eee88dc44469be3da88847e7dfc247d68a42a357e276123317f9d40989f",
     "etag": null,
     "lastModified": null,
-    "fetchedAt": "2026-10-03"
+    "fetchedAt": "2026-10-04"
   },
   "poverty-guidelines": {
     "url": "https://aspe.hhs.gov/topics/poverty-economic-mobility/poverty-guidelines/api/2025/us/1",

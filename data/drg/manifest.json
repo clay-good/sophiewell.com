@@ -6,83 +6,80 @@
   "agency": "CMS",
   "status": "public-domain",
   "cadence": "annual",
-  "recordCount": 772,
+  "recordCount": 768,
   "shardLayout": "shards",
   "shards": [
     {
       "name": "0.json",
-      "sha256": "b72e3b1730ce114ac01a8ec784a5e092cd82b36a84da15838436fe4e3caab136",
+      "sha256": "84a5cd1fe5c0faf8ae9b7f70ad08a808f19d22513965a10febd6eec888977e00",
       "records": 85,
-      "bytes": 18104
+      "bytes": 18142
     },
     {
       "name": "1.json",
-      "sha256": "e0869e4ff8b0271a796b45ea0711d60607825b07f898738b360c4b2bece542e1",
+      "sha256": "0a5eb905c0888abd97e9cb0c6c1999bf09fbd62b2250f3e98d70b8f456c668e7",
       "records": 71,
-      "bytes": 13941
+      "bytes": 13950
     },
     {
       "name": "2.json",
-      "sha256": "c8298e09ac53ddb8bc05fe82bc667d50257496d0ab860d1523fbfe691e0aa4ef",
-      "records": 82,
-      "bytes": 17514
+      "sha256": "749d0684cb391ed959b5daed7cd33e23ced006ce4eaeb2af819aee3e737cd3bc",
+      "records": 78,
+      "bytes": 16665
     },
     {
       "name": "3.json",
-      "sha256": "e6cf0c2da64b8ecf03b6ab9b24b3e0886b488cfd251388111a1d5b51490a1a3e",
-      "records": 86,
-      "bytes": 17494
+      "sha256": "e2722849460e30fb5f8754837540e9b601ad3805173da4c3ada22bd492e184ae",
+      "records": 88,
+      "bytes": 17924
     },
     {
       "name": "4.json",
-      "sha256": "b37eac640a1b25bea4b0f950bb82789330831163e13606be4fc438b7b09449c3",
-      "records": 85,
-      "bytes": 19214
+      "sha256": "d57b30ac63713f77fadfb1add7169cefb02cb7c7e19678a69fa636a208ac4cd7",
+      "records": 83,
+      "bytes": 18880
     },
     {
       "name": "5.json",
-      "sha256": "ff43cbd3a5c3a67bd31ab364831541c73194b22fabbb2a532fbef2e597da9e33",
-      "records": 80,
-      "bytes": 16745
+      "sha256": "f9500e38d1337e1945bb7d86b380eaa44ea07552e0e7746a3079c04a9c63bfaf",
+      "records": 83,
+      "bytes": 17431
     },
     {
       "name": "6.json",
-      "sha256": "72d4d8c670fad7cf5ba0b4772781d8098b0fb98c5dcd366206b664bd39cb179d",
+      "sha256": "bc33344493b40ca6186bb524b463e1e9e72f7894285baa2162d5df62d84bf9d7",
       "records": 75,
-      "bytes": 15290
+      "bytes": 15396
     },
     {
       "name": "7.json",
-      "sha256": "0d2cc715a99a67a6aa3891c58d8cfb8f9982ebd6ea73c40aebb9785597d40aa2",
-      "records": 69,
-      "bytes": 14653
+      "sha256": "6e680cdda1177327d0cf0483ba60efda2f246295dbcd41d2167c9e98122c8bed",
+      "records": 66,
+      "bytes": 13830
     },
     {
       "name": "8.json",
-      "sha256": "06ee9d14cc98556c2eaef315dbc59010a77ee78e88ec948d76bf9aa6f4b9f7cb",
+      "sha256": "bad7412ca06f6eff4c1882ccac4d39cfaccdce26631a54f7ef7a51febe951eab",
       "records": 81,
-      "bytes": 17602
+      "bytes": 17606
     },
     {
       "name": "9.json",
-      "sha256": "8344eac35b12f61cfc40de2413c715bc6c6d16161d66d15e277250466eeb4e81",
+      "sha256": "5cc21e6bc6495a694ccd44ded1792fcfd536759576b7293e46f10fc0d2681c43",
       "records": 58,
-      "bytes": 11980
+      "bytes": 11983
     }
-  ],
-  "ancillary": [
-    "upcoming.json"
   ],
   "notes": "Table 5 of the IPPS final rule (correction notice when published). relativeWeight is the weight with the 10% cap applied.",
   "coverage": "full",
-  "sourceEdition": "FY2026",
-  "effectiveFrom": "2025-10-01",
-  "fetchedAt": "2026-09-29",
-  "contentChangedAt": "2026-09-29",
-  "expiresOn": "2027-10-01",
+  "sourceEdition": "FY2027",
+  "effectiveFrom": "2026-10-01",
+  "fetchedAt": "2026-10-04",
+  "contentChangedAt": "2026-10-04",
+  "expiresOn": "2028-10-01",
   "nextExpected": "2027-08-01",
-  "sourceSha256": "7d2b92eead336284d370f24a3abc63d2e296bdf35708de1a73679793df38f68a",
-  "recordsSha256": "bc3f3e9ec58e12442d6bafa34dc2524ca510b8fdf3c2dcfeeddd7b5af4c7586d",
+  "sourceSha256": "3b43654767907b1c3fa64b5ea685c5669e4623ceb2c4a1fa488af640d1dc06d4",
+  "recordsSha256": "59e097477df99377f66ecf63f195a0698e207785e1f27bb63e14ec8b5806e80b",
   "recordBounds": {
     "min": 740,
     "max": 800
