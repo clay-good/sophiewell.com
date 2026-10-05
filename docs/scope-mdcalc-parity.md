@@ -306,3 +306,5 @@ experience**.
 > v1551, WHO pre-referral rectal artesunate for children under 6 — [spec-v1551](spec-v1551.md), which adds `rectal-artesunate-prereferral` — is 1978.)
 
 > v1551, WHO 2026 malaria treatment choice in pregnancy — [spec-v1551](spec-v1551.md), which adds `malaria-pregnancy-treatment` — is 1979.)
+
+> v1546, WHO IMCI ORS Plans A, B and C — [spec-v1546](spec-v1546.md), which adds `imci-ors-plan` — is 1980.)

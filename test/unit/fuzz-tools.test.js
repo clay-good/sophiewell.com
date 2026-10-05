@@ -696,6 +696,7 @@ import * as actWeightBandDoseV1551 from '../../lib/act-weight-band-dose-v1551.js
 import * as severeMalariaInjectableV1551 from '../../lib/severe-malaria-injectable-v1551.js';
 import * as rectalArtesunatePrereferralV1551 from '../../lib/rectal-artesunate-prereferral-v1551.js';
 import * as malariaPregnancyTreatmentV1551 from '../../lib/malaria-pregnancy-treatment-v1551.js';
+import * as imciOrsPlanV1546 from '../../lib/imci-ors-plan-v1546.js';
 import * as pertussisCaseDefV868 from '../../lib/pertussis-case-def-v868.js';
 import * as eortcMsgIfdV869 from '../../lib/eortc-msg-ifd-v869.js';
 import * as nmsCriteriaV870 from '../../lib/nms-criteria-v870.js';
@@ -1492,6 +1493,7 @@ const MODULES = {
   'severe-malaria-injectable-v1551.js': severeMalariaInjectableV1551,
   'rectal-artesunate-prereferral-v1551.js': rectalArtesunatePrereferralV1551,
   'malaria-pregnancy-treatment-v1551.js': malariaPregnancyTreatmentV1551,
+  'imci-ors-plan-v1546.js': imciOrsPlanV1546,
   'pertussis-case-def-v868.js': pertussisCaseDefV868,
   'eortc-msg-ifd-v869.js': eortcMsgIfdV869,
   'nms-criteria-v870.js': nmsCriteriaV870,

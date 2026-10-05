@@ -7000,6 +7000,18 @@
     },
     {
       "phrases": [
+        "ors plan",
+        "plan b ors",
+        "plan c rehydration",
+        "imci diarrhea fluids",
+        "severe dehydration child iv fluid",
+        "how much ors"
+      ],
+      "tile": "imci-ors-plan",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
         "pertussis case definition",
         "whooping cough case definition",
         "is this a confirmed pertussis case",

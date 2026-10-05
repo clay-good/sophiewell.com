@@ -21,6 +21,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- ORS Plans A, B and C (WHO IMCI): the fluid for a child under 5 with
+  diarrhea, per loose stool, ORS over 4 hours by weight or age band, or IV
+  100 mL/kg timed by age, with the no-IV routes; severe malnutrition excluded.
 - Which malaria treatment in pregnancy (WHO 2026): the antimalarial WHO
   recommends by trimester, severity and species, with the first-trimester
   exclusions and the vivax relapse plan that waits for breastfeeding to end.

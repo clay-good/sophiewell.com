@@ -966,6 +966,7 @@ import actWeightBandDoseV1551 from './adapters/act-weight-band-dose-v1551.js';
 import severeMalariaInjectableV1551 from './adapters/severe-malaria-injectable-v1551.js';
 import rectalArtesunatePrereferralV1551 from './adapters/rectal-artesunate-prereferral-v1551.js';
 import malariaPregnancyTreatmentV1551 from './adapters/malaria-pregnancy-treatment-v1551.js';
+import imciOrsPlanV1546 from './adapters/imci-ors-plan-v1546.js';
 import medicaidUraV1510 from './adapters/medicaid-ura-v1510.js';
 import entity340bV1509 from './adapters/entity-340b-v1509.js';
 import adherenceV1513 from './adapters/adherence-v1513.js';
@@ -1978,6 +1979,7 @@ const ADAPTER_MODULES = [
   ['severe-malaria-injectable-v1551', severeMalariaInjectableV1551],
   ['rectal-artesunate-prereferral-v1551', rectalArtesunatePrereferralV1551],
   ['malaria-pregnancy-treatment-v1551', malariaPregnancyTreatmentV1551],
+  ['imci-ors-plan-v1546', imciOrsPlanV1546],
   ['medicaid-ura-v1510', medicaidUraV1510],
   ['entity-340b-v1509', entity340bV1509],
   ['adherence-v1513', adherenceV1513],

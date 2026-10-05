@@ -754,6 +754,7 @@ const PROBES = [
   ['iv artesunate dose severe malaria weight', ['severe-malaria-injectable']],
   ['rectal artesunate suppository child referral', ['rectal-artesunate-prereferral']],
   ['malaria treatment first trimester pregnancy', ['malaria-pregnancy-treatment']],
+  ['ors plan b some dehydration child diarrhea', ['imci-ors-plan']],
   ['pertussis case definition whooping cough confirmed probable', ['pertussis-case-def']],
   ['eortc msgerc invasive fungal disease proven probable possible', ['eortc-msg-ifd']],
   ['neuroleptic malignant syndrome diagnostic criteria priority points', ['nms-criteria']],

@@ -199,3 +199,10 @@ one-field-short forms give no dose.
 ## Staleness
 
 CB14 and ICCM11 *low*; PD24 *moderate*; MAL26 rows are owned by spec-v1551's *high* row.
+
+## Build status
+
+| Tool | Status |
+|---|---|
+| `imci-ors-plan` | **Built October 5, 2026** (catalog 1,980). Plans A, B and C re-read in the March 2014 chart booklet (the cdn.who.int PDF; the "Give extra fluid for diarrhoea" pages), PB13 pp. 17, 19 and 204, and PD24 rec. 3c. **Corrected from the spec:** severe acute malnutrition blocks all three plans, not only Plan C: PB13 p. 204 says standard ORS is unsuitable and IV is used only for shock, so the tile points to ReSoMal and the malnutrition protocol. **Differed:** the Plan C inputs are one "what is possible here" choice that follows the chart's flowchart (IV now / IV within 30 minutes / nasogastric tube / child can drink / none); PB13's banded Plan C volumes are not shown (Chart 11 is for after shock); Plan A prints zinc from both the 2014 chart and the 2024 guideline rather than an edition switch. The ledger row is *low*. |
+| Tools 2–4 | Open. `iccm-chw-sick-child` is a classify-and-advise tile blocked by owner decision D1 (spec-v1564). |
