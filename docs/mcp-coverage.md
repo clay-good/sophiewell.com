@@ -8752,6 +8752,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/rectal-artesunate-prereferral-v1551.js (spec-v1551: WHO pre-referral rectal artesunate — clinical disclaimer)
 - `rectal-artesunate-prereferral`
 
+### lib/malaria-pregnancy-treatment-v1551.js (spec-v1551: WHO 2026 malaria treatment in pregnancy — clinical disclaimer)
+- `malaria-pregnancy-treatment`
+
 ### lib/claims-pct-medicare.js (spec-v1604: Claims paid as a percent of Medicare — administrative disclaimer)
 - `claims-pct-medicare`
 

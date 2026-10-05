@@ -1,11 +1,12 @@
 // spec-v1551: renderers for act-weight-band-dose (the WHO 2026 weight-band dose of an ACT for uncomplicated
-// falciparum malaria), severe-malaria-injectable and rectal-artesunate-prereferral (Medication & Infusion,
-// Group F; spec-v1540).
+// falciparum malaria), severe-malaria-injectable, rectal-artesunate-prereferral and malaria-pregnancy-treatment
+// (Medication & Infusion, Group F; spec-v1540).
 
 import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/act-weight-band-dose-v1551.js';
 import * as SI from '../lib/severe-malaria-injectable-v1551.js';
 import * as RA from '../lib/rectal-artesunate-prereferral-v1551.js';
+import * as MP from '../lib/malaria-pregnancy-treatment-v1551.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -89,6 +90,23 @@ export const renderers = {
       const r = RA.rectalArtesunatePrereferral(args);
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Answer', value: r.bandLabel }]);
+      list(o, r.notes);
+      note(o, r.note);
+    }));
+  },
+  'malaria-pregnancy-treatment'(root) {
+    const pairs = [['mp-trimester', 'trimester'], ['mp-severity', 'severity'], ['mp-species', 'species']];
+    selectField(root, 'Trimester', 'mp-trimester', MP.TRIMESTER_OPTIONS);
+    selectField(root, 'Severity', 'mp-severity', MP.SEVERITY_OPTIONS);
+    selectField(root, 'Species', 'mp-species', MP.SPECIES_OPTIONS);
+    const ids = pairs.map(([d]) => d);
+    const o = out(); root.appendChild(o);
+    wire(ids, () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = MP.malariaPregnancyTreatment(args);
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'WHO 2026', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
     }));

@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:bcb2c2fd-b3fd-565d-868e-e3b0ba41aece",
+  "serialNumber": "urn:uuid:96ae765b-a074-57a0-838c-6eb93d42f736",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-05T20:56:23.217Z",
+    "timestamp": "2026-10-05T21:57:33.304Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1978 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1979 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2104f8d9ae034c9fd87e455d2ad7450ba380eec96797e7f1ab64466a0435f3b3"
+          "content": "99d552490b60e9af9cea45e63e15236ff7e9414987dbab8306ff3cfc688f174a"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "126837"
+          "value": "126901"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4a6cd1bc216751bc185483b199ada90bf50f214a7ad4d82dec3d56a6c1db2d08"
+          "content": "250be703ebe449364c77ac04bf58c74aba687689843a3eabb196df4425e70e4f"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "573669"
+          "value": "573836"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1a82f0a7ebaf23b1e38924d75ace4a040685cd1538e1dc79e2878eb0662b6e4c"
+          "content": "6f6caa298c8ddd0c0c3d1c2c406bef95c671b433500293ca37c23306cf9886c5"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "247069"
+          "value": "247207"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f614985009c73a099eb4199b563f15ec744439b2af7b80929551c2e4cab235b1"
+          "content": "5d1afbf353a86ec6b35228e34bbb7c5716c039a96112ea663b1f0c79999c3715"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "113743"
+          "value": "113824"
         }
       ]
     },
@@ -12278,6 +12278,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/malaria-pregnancy-treatment-v1551.js",
+      "type": "file",
+      "name": "lib/malaria-pregnancy-treatment-v1551.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "10d3b404eca9074687443d6f20e37b26fac6ba1a8d8e95f12fb3f7c89160be67"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6849"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/mallampati-v810.js",
       "type": "file",
       "name": "lib/mallampati-v810.js",
@@ -13082,7 +13103,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f40e670b9b75f421c6f3e7a1988fbdb9f0ee1738cda8dfc1198478261f09e17f"
+          "content": "e4382213a05e9a332884f120f7972bccbfdae7cc1ec49fbb2c1ce08501f4da44"
         }
       ],
       "properties": [
@@ -13092,7 +13113,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2688755"
+          "value": "2689556"
         }
       ]
     },
@@ -35273,6 +35294,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/malaria-pregnancy-treatment-v1551.js",
+      "type": "file",
+      "name": "mcp/adapters/malaria-pregnancy-treatment-v1551.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "428e63c9176377405df2dc69aeee97af7f269246ddde1cb529e9eaaabfb391d2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1132"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/mallampati-v810.js",
       "type": "file",
       "name": "mcp/adapters/mallampati-v810.js",
@@ -45653,7 +45695,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b03b092f041b7a5ff069f7e22ea0ac9401e47806ef7c860bba24b84802b9e2ea"
+          "content": "19cd7eb69eb1d37802ee638c14f92c98c4d54aa3e8e659d039ad6f38ccb2ed61"
         }
       ],
       "properties": [
@@ -45663,7 +45705,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "116355"
+          "value": "116522"
         }
       ]
     },
@@ -49433,7 +49475,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f4af5e1e6eeb136a0c2999457db7e2ad70f678b672349134dc5d18caef54b7d1"
+          "content": "e9a6d5e5b20e0b4e2863b45e03a052d6e7d4c68d066f9d08bb5bb789d3c80316"
         }
       ],
       "properties": [
@@ -49443,7 +49485,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "4799"
+          "value": "5736"
         }
       ]
     },
@@ -81081,6 +81123,7 @@
         "urn:sophiewell:file:source:lib/ma-criteria-check.js",
         "urn:sophiewell:file:source:lib/magi-household-v1507.js",
         "urn:sophiewell:file:source:lib/magic-gvhd-v577.js",
+        "urn:sophiewell:file:source:lib/malaria-pregnancy-treatment-v1551.js",
         "urn:sophiewell:file:source:lib/mallampati-v810.js",
         "urn:sophiewell:file:source:lib/malt-ipi-v700.js",
         "urn:sophiewell:file:source:lib/mandated-report-router-v1395.js",
@@ -83095,6 +83138,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/ma-criteria-check.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/magi-household-v1507.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/magic-gvhd-v577.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/malaria-pregnancy-treatment-v1551.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mallampati-v810.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/malt-ipi-v700.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mandated-report-router-v1395.js",
@@ -83693,7 +83737,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "bcb2c2fdb3fde65d"
+      "value": "96ae765ba07497a0"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -83705,7 +83749,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3070"
+      "value": "3072"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

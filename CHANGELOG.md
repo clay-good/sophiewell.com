@@ -21,6 +21,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Which malaria treatment in pregnancy (WHO 2026): the antimalarial WHO
+  recommends by trimester, severity and species, with the first-trimester
+  exclusions and the vivax relapse plan that waits for breastfeeding to end.
 - Rectal artesunate before referral (WHO): how many 100 mg suppositories a
   child under 6 with a danger sign gets when IM artesunate is not available
   and referral takes 6 hours or more, and what to do instead otherwise.

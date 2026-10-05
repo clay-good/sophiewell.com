@@ -6989,6 +6989,17 @@
     },
     {
       "phrases": [
+        "malaria in pregnancy treatment",
+        "malaria first trimester",
+        "antimalarial in pregnancy",
+        "artemether lumefantrine first trimester",
+        "vivax malaria pregnancy"
+      ],
+      "tile": "malaria-pregnancy-treatment",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
         "pertussis case definition",
         "whooping cough case definition",
         "is this a confirmed pertussis case",

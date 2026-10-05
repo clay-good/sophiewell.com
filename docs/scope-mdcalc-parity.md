@@ -304,3 +304,5 @@ experience**.
 > v1551, WHO 2026 injectable treatment of severe malaria — [spec-v1551](spec-v1551.md), which adds `severe-malaria-injectable` — is 1977.)
 
 > v1551, WHO pre-referral rectal artesunate for children under 6 — [spec-v1551](spec-v1551.md), which adds `rectal-artesunate-prereferral` — is 1978.)
+
+> v1551, WHO 2026 malaria treatment choice in pregnancy — [spec-v1551](spec-v1551.md), which adds `malaria-pregnancy-treatment` — is 1979.)
