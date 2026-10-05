@@ -10,7 +10,13 @@ import { join } from 'node:path';
 const REC = join(process.cwd(), 'test', 'fixtures', 'records');
 const file = (name) => ({ name, mimeType: 'application/octet-stream', buffer: readFileSync(join(REC, name)) });
 
+// The record's ages, recency notes and eGFR are read against today. Pin the page clock to the date the
+// unit tests use (test/unit/record-readers.test.js), or "14 months ago" and the age-58 eGFR drift with the
+// calendar: the first went red on October 4, 2026, and the second would on March 15, 2027.
+const NOW = new Date('2026-09-29T12:00:00Z');
+
 async function drop(page, files) {
+  await page.clock.install({ time: NOW });
   await page.goto('/');
   const chooser = page.waitForEvent('filechooser');
   await page.locator('#hero-files-button').click();
