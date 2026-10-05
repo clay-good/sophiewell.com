@@ -6978,6 +6978,17 @@
     },
     {
       "phrases": [
+        "rectal artesunate",
+        "artesunate suppository",
+        "pre-referral rectal artesunate",
+        "pre-referral malaria treatment",
+        "ras suppository dose"
+      ],
+      "tile": "rectal-artesunate-prereferral",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
         "pertussis case definition",
         "whooping cough case definition",
         "is this a confirmed pertussis case",

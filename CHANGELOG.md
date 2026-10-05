@@ -21,6 +21,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Rectal artesunate before referral (WHO): how many 100 mg suppositories a
+  child under 6 with a danger sign gets when IM artesunate is not available
+  and referral takes 6 hours or more, and what to do instead otherwise.
 - Severe malaria injectable dose (WHO 2026): artesunate by weight (3 mg/kg
   under 20 kg, 2.4 mg/kg from 20 kg) with its schedule, and IM artemether or
   quinine as alternatives, quinine as salt with its infusion rate limit.

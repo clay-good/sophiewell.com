@@ -3418,6 +3418,7 @@ const UTILITIES = [
   { id: 'cdc-stature-for-age',    name: 'CDC Stature-for-Age Percentile (2-20 yr)',         group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'cdc-weight-for-age',     name: 'CDC Weight-for-Age Percentile (2-20 yr)',          group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   // spec-v1551: field-health (spec-v1540).
+  { id: 'rectal-artesunate-prereferral', name: 'Rectal Artesunate Before Referral, Children Under 6 (WHO)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'severe-malaria-injectable', name: 'Severe Malaria Injectable Dose: Artesunate, Artemether, Quinine (WHO 2026)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'act-weight-band-dose', name: 'Malaria Treatment Dose by Weight: ACTs (WHO 2026)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   // spec-v1548: field-health (spec-v1540).

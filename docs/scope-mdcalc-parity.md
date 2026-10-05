@@ -302,3 +302,5 @@ experience**.
 > v1551, WHO 2026 ACT weight-band doses for uncomplicated malaria — [spec-v1551](spec-v1551.md), which adds `act-weight-band-dose` — is 1976.)
 
 > v1551, WHO 2026 injectable treatment of severe malaria — [spec-v1551](spec-v1551.md), which adds `severe-malaria-injectable` — is 1977.)
+
+> v1551, WHO pre-referral rectal artesunate for children under 6 — [spec-v1551](spec-v1551.md), which adds `rectal-artesunate-prereferral` — is 1978.)

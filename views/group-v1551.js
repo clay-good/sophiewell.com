@@ -1,9 +1,11 @@
 // spec-v1551: renderers for act-weight-band-dose (the WHO 2026 weight-band dose of an ACT for uncomplicated
-// falciparum malaria) and severe-malaria-injectable (Medication & Infusion, Group F; spec-v1540).
+// falciparum malaria), severe-malaria-injectable and rectal-artesunate-prereferral (Medication & Infusion,
+// Group F; spec-v1540).
 
 import { el, clear } from '../lib/dom.js';
 import * as M from '../lib/act-weight-band-dose-v1551.js';
 import * as SI from '../lib/severe-malaria-injectable-v1551.js';
+import * as RA from '../lib/rectal-artesunate-prereferral-v1551.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -68,6 +70,25 @@ export const renderers = {
       const r = SI.severeMalariaInjectable(args);
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Dose', value: r.bandLabel }]);
+      list(o, r.notes);
+      note(o, r.note);
+    }));
+  },
+  'rectal-artesunate-prereferral'(root) {
+    const pairs = [['ras-age', 'age'], ['ras-weight', 'weight'], ['ras-danger', 'danger'], ['ras-referral', 'referral'], ['ras-im', 'imAvailable']];
+    numField(root, 'Age in years', 'ras-age', 'e.g. 3', '120', 'any');
+    numField(root, 'Weight in kg', 'ras-weight', 'e.g. 14', '150', 'any');
+    selectField(root, 'Fever with a danger sign (convulsions, unusually sleepy or unconscious, unable to drink or feed, vomits everything)', 'ras-danger', RA.DANGER_OPTIONS);
+    selectField(root, 'Time to reach a facility that can give injectable treatment', 'ras-referral', RA.REFERRAL_OPTIONS);
+    selectField(root, 'IM artesunate available here', 'ras-im', RA.IM_OPTIONS);
+    const ids = pairs.map(([d]) => d);
+    const o = out(); root.appendChild(o);
+    wire(ids, () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = RA.rectalArtesunatePrereferral(args);
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Answer', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
     }));

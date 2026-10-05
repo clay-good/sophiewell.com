@@ -752,6 +752,7 @@ const PROBES = [
   ['severe acute malnutrition muac child edema', ['wasting-classify']],
   ['artemether lumefantrine dose by weight malaria', ['act-weight-band-dose']],
   ['iv artesunate dose severe malaria weight', ['severe-malaria-injectable']],
+  ['rectal artesunate suppository child referral', ['rectal-artesunate-prereferral']],
   ['pertussis case definition whooping cough confirmed probable', ['pertussis-case-def']],
   ['eortc msgerc invasive fungal disease proven probable possible', ['eortc-msg-ifd']],
   ['neuroleptic malignant syndrome diagnostic criteria priority points', ['nms-criteria']],

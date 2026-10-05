@@ -8749,6 +8749,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/severe-malaria-injectable-v1551.js (spec-v1551: WHO 2026 injectable severe malaria doses — clinical disclaimer)
 - `severe-malaria-injectable`
 
+### lib/rectal-artesunate-prereferral-v1551.js (spec-v1551: WHO pre-referral rectal artesunate — clinical disclaimer)
+- `rectal-artesunate-prereferral`
+
 ### lib/claims-pct-medicare.js (spec-v1604: Claims paid as a percent of Medicare — administrative disclaimer)
 - `claims-pct-medicare`
 
