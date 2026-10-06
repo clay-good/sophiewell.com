@@ -21,6 +21,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- WHO eight-contact antenatal schedule: which contact is due and when the
+  next is (up to 12 weeks, then 20, 26, 30, 34, 36, 38, 40; return at 41),
+  with the iron, folic acid and calcium lines.
+- Td doses in pregnancy (WHO 2017): by documented history, how many doses
+  now, the second dose by 38 weeks, the doses that follow, and no dose for a
+  woman already fully protected.
+- Low birth weight and preterm categories (WHO 2022): the weight and
+  gestational-age categories at birth, with kangaroo mother care for preterm
+  or low-birth-weight babies.
 - F-75 volume per feed (WHO 2021): 130 mL/kg/day, or 100 with severe
   edema, divided by the feeds and rounded to 5 mL, with the card's lower-row
   figure, the daily total and the 80% minimum.

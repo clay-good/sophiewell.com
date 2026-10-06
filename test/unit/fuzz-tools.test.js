@@ -703,6 +703,9 @@ import * as whoRabiesPepV1557 from '../../lib/who-rabies-pep-v1557.js';
 import * as pphWho2025V1558 from '../../lib/pph-who-2025-v1558.js';
 import * as laborCareGuideAlertV1558 from '../../lib/labor-care-guide-alert-v1558.js';
 import * as vitaminADoseChildV1550 from '../../lib/vitamin-a-dose-child-v1550.js';
+import * as whoAncScheduleV1559 from '../../lib/who-anc-schedule-v1559.js';
+import * as tdPregnancyScheduleV1559 from '../../lib/td-pregnancy-schedule-v1559.js';
+import * as newbornSizeCategoryV1559 from '../../lib/newborn-size-category-v1559.js';
 import * as f75FeedVolumeV1549 from '../../lib/f75-feed-volume-v1549.js';
 import * as f100RutfAmountV1549 from '../../lib/f100-rutf-amount-v1549.js';
 import * as samEmergencyFluidsV1549 from '../../lib/sam-emergency-fluids-v1549.js';
@@ -1518,6 +1521,9 @@ const MODULES = {
   'pph-who-2025-v1558.js': pphWho2025V1558,
   'labor-care-guide-alert-v1558.js': laborCareGuideAlertV1558,
   'vitamin-a-dose-child-v1550.js': vitaminADoseChildV1550,
+  'who-anc-schedule-v1559.js': whoAncScheduleV1559,
+  'td-pregnancy-schedule-v1559.js': tdPregnancyScheduleV1559,
+  'newborn-size-category-v1559.js': newbornSizeCategoryV1559,
   'f75-feed-volume-v1549.js': f75FeedVolumeV1549,
   'f100-rutf-amount-v1549.js': f100RutfAmountV1549,
   'sam-emergency-fluids-v1549.js': samEmergencyFluidsV1549,

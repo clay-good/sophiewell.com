@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:68bb5862-7880-52f9-85ed-c897f5f2ac7c",
+  "serialNumber": "urn:uuid:030c5870-5df1-5c3f-8a76-62fb2b77db52",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-06T04:23:58.374Z",
+    "timestamp": "2026-10-06T04:43:55.160Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1998 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2001 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5cc92486dcb2bb9d30dc5032ebd9dd360ae90fbb235fc0f9ae3e52c074674c4e"
+          "content": "9a3e3415e2ee984a064bca303a9b328e37815e94d196594200b36cf54be3e53c"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "128471"
+          "value": "128687"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1c97ac9f4c5824fd48f23006ac86511e56c9cec7732278c1101cec49a2109cd2"
+          "content": "b88e2cb19d41a7177c1e4dcf77b8b0242f9b7472ae9f05b633636e8af5ac9a43"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "578447"
+          "value": "579087"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "685ddd1085b543ce74783025a8db577f2302369d19f7f3a31e6c992e876ceee0"
+          "content": "3dfbde9e8d0462f569a38858de56b1704d7649fb5b285e604fb463adcc821c7f"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "249621"
+          "value": "250012"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "fcbab8bc1ff73b28e0787d078943b88c187d69f6578e08d5d452da41ef6c2243"
+          "content": "906e203c8472b1b28d9a6c45d36444b2b6e7e15d2838e0e4e453c1fdd095db1b"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "115509"
+          "value": "115753"
         }
       ]
     },
@@ -13271,7 +13271,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d4ce10c6e7ad3df0affd5758a7505a53569a5f0b82fbbcb0620489380b0641db"
+          "content": "13ac032f80ff2585ba5a30172192835c246f7ea98fbfc88229837e76b8221979"
         }
       ],
       "properties": [
@@ -13281,7 +13281,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2704378"
+          "value": "2706215"
         }
       ]
     },
@@ -14710,6 +14710,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "12458"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/newborn-size-category-v1559.js",
+      "type": "file",
+      "name": "lib/newborn-size-category-v1559.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2ce9432abcbd987b9a3792288a6e2a3c079dc42b9cdc7169cfde63fdced2f70e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3373"
         }
       ]
     },
@@ -22169,6 +22190,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/td-pregnancy-schedule-v1559.js",
+      "type": "file",
+      "name": "lib/td-pregnancy-schedule-v1559.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "24843d7c79e9109be56ee23f108064dded94f8ee0241f330d623dfc499e95f8b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5158"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/tegner-activity-v500.js",
       "type": "file",
       "name": "lib/tegner-activity-v500.js",
@@ -24202,6 +24244,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3664"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/who-anc-schedule-v1559.js",
+      "type": "file",
+      "name": "lib/who-anc-schedule-v1559.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6a3c7003f772597cd34647540c3fa421cab2561b7707b2508c67f738d72eccd2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3768"
         }
       ]
     },
@@ -37940,6 +38003,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/newborn-size-category-v1559.js",
+      "type": "file",
+      "name": "mcp/adapters/newborn-size-category-v1559.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "129408e4d7650937db1e6d3c2a1cb1d2ac0afc4eca35bd807c0465891bb63e36"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "954"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ng-tube-length-v1445.js",
       "type": "file",
       "name": "mcp/adapters/ng-tube-length-v1445.js",
@@ -44345,6 +44429,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/td-pregnancy-schedule-v1559.js",
+      "type": "file",
+      "name": "mcp/adapters/td-pregnancy-schedule-v1559.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "71ce14e8301fe1d61e9ea93d55df2aa8d6280f9f74f344c643e405c90349dece"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1024"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/tegner-activity-v500.js",
       "type": "file",
       "name": "mcp/adapters/tegner-activity-v500.js",
@@ -46109,6 +46214,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/who-anc-schedule-v1559.js",
+      "type": "file",
+      "name": "mcp/adapters/who-anc-schedule-v1559.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "65ba6c630fa13a53b8d36e6e1003b04d9da071ad2c457f0404acde46952d92a1"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "793"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/who-anemia-hb-v1550.js",
       "type": "file",
       "name": "mcp/adapters/who-anemia-hb-v1550.js",
@@ -46493,7 +46619,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "792c24507b3b9f63ee817bad7ccd152d01871e619bb0b1a35dc265b8aacbfb80"
+          "content": "978593a147d4add23300f59a819c6b8aad289cca6ffbb3e76d9a950ab0aa3fc4"
         }
       ],
       "properties": [
@@ -46503,7 +46629,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "118861"
+          "value": "119270"
         }
       ]
     },
@@ -50431,6 +50557,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "8164"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1559.js",
+      "type": "file",
+      "name": "views/group-v1559.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "540d5cd5b2d56415b04ab7b19100eba7b8b7d0c74f8e1778395e1986448846d4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4930"
         }
       ]
     },
@@ -82247,6 +82394,7 @@
         "urn:sophiewell:file:source:lib/neuro-v122.js",
         "urn:sophiewell:file:source:lib/neuro-v95.js",
         "urn:sophiewell:file:source:lib/neurology-v224.js",
+        "urn:sophiewell:file:source:lib/newborn-size-category-v1559.js",
         "urn:sophiewell:file:source:lib/ng-tube-length-v1445.js",
         "urn:sophiewell:file:source:lib/nhsn-vae-v876.js",
         "urn:sophiewell:file:source:lib/ni-rads-v373.js",
@@ -82602,6 +82750,7 @@
         "urn:sophiewell:file:source:lib/tanner-staging-v361.js",
         "urn:sophiewell:file:source:lib/tb-testing.js",
         "urn:sophiewell:file:source:lib/tbi-stroke-v206.js",
+        "urn:sophiewell:file:source:lib/td-pregnancy-schedule-v1559.js",
         "urn:sophiewell:file:source:lib/tegner-activity-v500.js",
         "urn:sophiewell:file:source:lib/tension-headache-ichd3-v818.js",
         "urn:sophiewell:file:source:lib/thakar-aki-v568.js",
@@ -82699,6 +82848,7 @@
         "urn:sophiewell:file:source:lib/weiss-v648.js",
         "urn:sophiewell:file:source:lib/wellens-criteria-v1441.js",
         "urn:sophiewell:file:source:lib/wexner-v324.js",
+        "urn:sophiewell:file:source:lib/who-anc-schedule-v1559.js",
         "urn:sophiewell:file:source:lib/who-anemia-hb-v1550.js",
         "urn:sophiewell:file:source:lib/who-hearing-grade-v858.js",
         "urn:sophiewell:file:source:lib/who-isup-renal-grade-v653.js",
@@ -82915,6 +83065,7 @@
         "urn:sophiewell:file:source:views/group-v1555.js",
         "urn:sophiewell:file:source:views/group-v1557.js",
         "urn:sophiewell:file:source:views/group-v1558.js",
+        "urn:sophiewell:file:source:views/group-v1559.js",
         "urn:sophiewell:file:source:views/group-v156.js",
         "urn:sophiewell:file:source:views/group-v1560.js",
         "urn:sophiewell:file:source:views/group-v1562.js",
@@ -84282,6 +84433,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/neuro-v122.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/neuro-v95.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/neurology-v224.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/newborn-size-category-v1559.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ng-tube-length-v1445.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nhsn-vae-v876.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ni-rads-v373.js",
@@ -84587,6 +84739,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/tanner-staging-v361.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tb-testing.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tbi-stroke-v206.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/td-pregnancy-schedule-v1559.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tegner-activity-v500.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tension-headache-ichd3-v818.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/thakar-aki-v568.js",
@@ -84671,6 +84824,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/weiss-v648.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/wellens-criteria-v1441.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/wexner-v324.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/who-anc-schedule-v1559.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/who-anemia-hb-v1550.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/who-hearing-grade-v858.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/who-isup-renal-grade-v653.js",
@@ -84793,7 +84947,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "68bb5862788042f9"
+      "value": "030c58705df1bc3f"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -84805,7 +84959,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3120"
+      "value": "3127"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

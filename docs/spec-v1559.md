@@ -117,3 +117,13 @@ the 2-week-before-birth check; every temperature edge; newborn glucose by popula
 ## Staleness
 
 ANC16 *moderate* (nutrition recommendations updated in 2020–2021, not read). The rest *low*.
+
+## Build status
+
+| Tool | Status |
+|---|---|
+| `who-anc-schedule` | **Built October 6, 2026** (catalog 1,999). Re-read in ANC16 rec E.7 and Box 5 (and A.2.1, A.3); the schedule matches. **Differed:** the gestational age is entered directly (no LMP or ultrasound route; `due-date` does that); earlier scheduled contacts are listed so a missed one is seen now. |
+| `td-pregnancy-schedule` | **Built October 6, 2026** (catalog 2,000). Re-read in TET17 ("Vaccination of pregnant women" and the summary table). **Added:** a woman documented as fully protected (6 childhood doses, or 5 from adolescence or adulthood) gets no Td in pregnancy; the "no reliable record" schedule is WHO's for countries where maternal and neonatal tetanus remains a problem. **Differed:** the expected birth is taken as 40 weeks (no date input), so the second dose's "2 weeks before birth" means by 38 weeks; an adult course takes the dose count, and the interval to the next dose is stated rather than checked. |
+| `newborn-temperature-who`, `newborn-hypoglycemia-who` | Open: THERM97 and HYPO97 were not found as readable English PDFs through the IRIS API this time. |
+| `newborn-size-category` | **Built October 6, 2026** (catalog 2,001). Re-read in LBW22 (glossary, recs A.1a and A.1b) and matches. A blank gestational age gives the weight category alone and says so. |
+

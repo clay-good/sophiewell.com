@@ -344,3 +344,9 @@ experience**.
 > v1549, Rehydration, Shock and Low Blood Sugar in Severe Malnutrition (WHO) — [spec-v1549](spec-v1549.md), which adds `sam-emergency-fluids` — is 1997.)
 
 > v1549, Weight Gain in g/kg/day During Severe Malnutrition Treatment (WHO) — [spec-v1549](spec-v1549.md), which adds `sam-weight-gain` — is 1998.)
+
+> v1559, WHO Eight-Contact Antenatal Schedule: Which Visit and When Is the Next — [spec-v1559](spec-v1559.md), which adds `who-anc-schedule` — is 1999.)
+
+> v1559, Tetanus-Diphtheria Doses in Pregnancy (WHO 2017) — [spec-v1559](spec-v1559.md), which adds `td-pregnancy-schedule` — is 2000.)
+
+> v1559, Low Birth Weight and Preterm Categories (WHO 2022) — [spec-v1559](spec-v1559.md), which adds `newborn-size-category` — is 2001.)

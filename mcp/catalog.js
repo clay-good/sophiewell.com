@@ -973,6 +973,9 @@ import whoRabiesPepV1557 from './adapters/who-rabies-pep-v1557.js';
 import pphWho2025V1558 from './adapters/pph-who-2025-v1558.js';
 import laborCareGuideAlertV1558 from './adapters/labor-care-guide-alert-v1558.js';
 import vitaminADoseChildV1550 from './adapters/vitamin-a-dose-child-v1550.js';
+import whoAncScheduleV1559 from './adapters/who-anc-schedule-v1559.js';
+import tdPregnancyScheduleV1559 from './adapters/td-pregnancy-schedule-v1559.js';
+import newbornSizeCategoryV1559 from './adapters/newborn-size-category-v1559.js';
 import f75FeedVolumeV1549 from './adapters/f75-feed-volume-v1549.js';
 import f100RutfAmountV1549 from './adapters/f100-rutf-amount-v1549.js';
 import samEmergencyFluidsV1549 from './adapters/sam-emergency-fluids-v1549.js';
@@ -2004,6 +2007,9 @@ const ADAPTER_MODULES = [
   ['pph-who-2025-v1558', pphWho2025V1558],
   ['labor-care-guide-alert-v1558', laborCareGuideAlertV1558],
   ['vitamin-a-dose-child-v1550', vitaminADoseChildV1550],
+  ['who-anc-schedule-v1559', whoAncScheduleV1559],
+  ['td-pregnancy-schedule-v1559', tdPregnancyScheduleV1559],
+  ['newborn-size-category-v1559', newbornSizeCategoryV1559],
   ['f75-feed-volume-v1549', f75FeedVolumeV1549],
   ['f100-rutf-amount-v1549', f100RutfAmountV1549],
   ['sam-emergency-fluids-v1549', samEmergencyFluidsV1549],

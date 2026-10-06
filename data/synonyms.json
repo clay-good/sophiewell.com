@@ -7081,6 +7081,37 @@
     },
     {
       "phrases": [
+        "antenatal care schedule",
+        "antenatal contact schedule",
+        "eight antenatal contacts",
+        "next antenatal visit"
+      ],
+      "tile": "who-anc-schedule",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "td in pregnancy",
+        "tetanus toxoid pregnancy",
+        "tt pregnancy schedule",
+        "maternal tetanus vaccine"
+      ],
+      "tile": "td-pregnancy-schedule",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "low birth weight",
+        "very low birth weight",
+        "preterm category",
+        "extremely preterm",
+        "kangaroo mother care"
+      ],
+      "tile": "newborn-size-category",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
         "f-75 volume",
         "f75 feed",
         "f-75 per feed",

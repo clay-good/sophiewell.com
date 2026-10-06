@@ -1,0 +1,1 @@
+{"td-pregnancy-schedule":[{"d":"tdp-history","k":"enum","l":"Documented tetanus vaccination","r":1,"v":["none","dtp3","dtp4","adult","full"]},{"d":"tdp-adult","k":"number","l":"Adolescent or adult Td doses (if that history)"},{"d":"tdp-weeks","k":"number","l":"Gestational age in weeks","r":1}]}
