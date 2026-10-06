@@ -5,7 +5,7 @@
 sophiewell.com is an offline-first single-page application. Calculation remains
 entirely client-side. The browser receives `index.html`, `styles.css`, and
 `app.js` from the same origin, boots a vanilla JavaScript application, and renders the home view: one
-combobox over all 1,981 utilities, and nothing else. Each utility runs entirely
+combobox over all 1,983 utilities, and nothing else. Each utility runs entirely
 client side and operates either on user-supplied input or on bundled reference
 data served from the same origin.
 
@@ -191,8 +191,8 @@ retired while they were live.
 | F | Medication & Infusion | 70 |
 | G | Clinical Scoring & Risk | 1433 |
 | H | Workflow & Documentation | 38 |
-| I | EMS & Field Medicine | 22 |
-| J | Immunization & Infectious Disease | 14 |
+| I | EMS & Field Medicine | 23 |
+| J | Immunization & Infectious Disease | 15 |
 | K | Reference Ranges | 0 |
 | L | Insurance Glossary | 0 |
 | M | State & Coverage Reference | 47 |

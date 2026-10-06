@@ -8761,6 +8761,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/cholera-rehydration-v1560.js (spec-v1560: GTFCC cholera dehydration, fluids and antibiotic — clinical disclaimer)
 - `cholera-rehydration`
 
+### lib/wbct20-v1555.js (spec-v1555: 20-minute whole blood clotting test — clinical disclaimer)
+- `wbct20`
+
+### lib/who-rabies-pep-v1557.js (spec-v1557: WHO 2018 rabies post-exposure prophylaxis — clinical disclaimer)
+- `who-rabies-pep`
+
 ### lib/claims-pct-medicare.js (spec-v1604: Claims paid as a percent of Medicare — administrative disclaimer)
 - `claims-pct-medicare`
 

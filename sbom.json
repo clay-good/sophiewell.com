@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:95681e1f-e657-502d-8246-c770087bbaee",
+  "serialNumber": "urn:uuid:e1d42e58-4b1e-5cce-8f56-7f2cf51cebe0",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-06T00:37:21.436Z",
+    "timestamp": "2026-10-06T01:25:34.719Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1981 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1983 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0f086125b3b66acb1fe05ee490c627d0b2aa669a829331bb74674cbe951a8789"
+          "content": "2fee520941aedbed8fbb5c8b52e991aa14c9170b6c7beb064a4e52d3cc143442"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "127065"
+          "value": "127242"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d0185eeba63a483ca510df4b2528f1b4bd47dd0ba321dee8893c5386ff04cbda"
+          "content": "0acaad71de8e816dcaf18acd4e0295d06c0aedebc12581fcf7e0add9efda4a5c"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "574436"
+          "value": "575008"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e2a2f290dc07115a8a4e2bbafef08187364046df99bb394987c4eed19189f3f1"
+          "content": "a1a1ff962f54ef2fd44e7292af8f635d46fb14215d3e46ff6b1d1aed4b1f1194"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "247461"
+          "value": "247703"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f5ac7f1eb3074fadd584ceaa815d2e71f610ff043cc3ab3aa48aaf969c774065"
+          "content": "1a56a25b082e2067e8f273c9cce710817f67a95e695b7dfcc2fa7bc2bf54b877"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "114000"
+          "value": "114177"
         }
       ]
     },
@@ -13145,7 +13145,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "bd6b71035bb9439862af251b517b0975c0734fb633a58fa85203da84e8e90bce"
+          "content": "0876a5631acccbc14657040de9c5bb7f6314341cc41c3aef0b3df373d6267166"
         }
       ],
       "properties": [
@@ -13155,7 +13155,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2691670"
+          "value": "2693720"
         }
       ]
     },
@@ -23828,6 +23828,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/wbct20-v1555.js",
+      "type": "file",
+      "name": "lib/wbct20-v1555.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3877e99ba9991eef70f62f48cbd7b5755bfabd4a7bb292106f61cea24da77595"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "9148"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/weiss-v648.js",
       "type": "file",
       "name": "lib/weiss-v648.js",
@@ -23971,6 +23992,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "7838"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/who-rabies-pep-v1557.js",
+      "type": "file",
+      "name": "lib/who-rabies-pep-v1557.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "257e2e9effaa70dccfc2af993ed29c1d5c96fe467351ed8e7a668f5a9780f97f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "9819"
         }
       ]
     },
@@ -45374,6 +45416,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/wbct20-v1555.js",
+      "type": "file",
+      "name": "mcp/adapters/wbct20-v1555.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2596f0726c916350cde831cae638eec9655b6eae454a14ef54cc2a32171c1c1c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1273"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/weiss-v648.js",
       "type": "file",
       "name": "mcp/adapters/weiss-v648.js",
@@ -45517,6 +45580,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2629"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/who-rabies-pep-v1557.js",
+      "type": "file",
+      "name": "mcp/adapters/who-rabies-pep-v1557.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6c1cef60ce5991400ceb417d74c89445ec39d649f02c1ece15085f011a194d1f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1423"
         }
       ]
     },
@@ -45779,7 +45863,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "63b897ea8fbea5d394c4c2a61ea676d3d3bce18e083bbc1edbcea74ea484fe0f"
+          "content": "12f2d8a6e73448db5b02054ba06aa35fd3bb19b8e86c0853b812b9a1ccf9a59d"
         }
       ],
       "properties": [
@@ -45789,7 +45873,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "116770"
+          "value": "116972"
         }
       ]
     },
@@ -49591,6 +49675,48 @@
         {
           "name": "sophiewell:bytes",
           "value": "5736"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1555.js",
+      "type": "file",
+      "name": "views/group-v1555.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8ac4fd5e9213c8fc6c3a64f695539a6a9cfcabdd7dfdf05efbc85254614fab39"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2804"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1557.js",
+      "type": "file",
+      "name": "views/group-v1557.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3f099bd3f031cb54a600f0ae2b605e2fe462b96ff0bae223e72f97eaa5bcccfa"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3112"
         }
       ]
     },
@@ -81799,6 +81925,7 @@
         "urn:sophiewell:file:source:lib/watcha-emergence-v1570.js",
         "urn:sophiewell:file:source:lib/watson-slac-v1431.js",
         "urn:sophiewell:file:source:lib/wayne-index-v527.js",
+        "urn:sophiewell:file:source:lib/wbct20-v1555.js",
         "urn:sophiewell:file:source:lib/weiss-v648.js",
         "urn:sophiewell:file:source:lib/wellens-criteria-v1441.js",
         "urn:sophiewell:file:source:lib/wexner-v324.js",
@@ -81806,6 +81933,7 @@
         "urn:sophiewell:file:source:lib/who-hearing-grade-v858.js",
         "urn:sophiewell:file:source:lib/who-isup-renal-grade-v653.js",
         "urn:sophiewell:file:source:lib/who-mucositis-v617.js",
+        "urn:sophiewell:file:source:lib/who-rabies-pep-v1557.js",
         "urn:sophiewell:file:source:lib/who-severe-malaria-v867.js",
         "urn:sophiewell:file:source:lib/who-surgical-checklist-v917.js",
         "urn:sophiewell:file:source:lib/wiltse-spondylolisthesis-v481.js",
@@ -82010,6 +82138,8 @@
         "urn:sophiewell:file:source:views/group-v155.js",
         "urn:sophiewell:file:source:views/group-v1550.js",
         "urn:sophiewell:file:source:views/group-v1551.js",
+        "urn:sophiewell:file:source:views/group-v1555.js",
+        "urn:sophiewell:file:source:views/group-v1557.js",
         "urn:sophiewell:file:source:views/group-v156.js",
         "urn:sophiewell:file:source:views/group-v1560.js",
         "urn:sophiewell:file:source:views/group-v1570.js",
@@ -83746,6 +83876,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/watcha-emergence-v1570.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/watson-slac-v1431.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/wayne-index-v527.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/wbct20-v1555.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/weiss-v648.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/wellens-criteria-v1441.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/wexner-v324.js",
@@ -83753,6 +83884,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/who-hearing-grade-v858.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/who-isup-renal-grade-v653.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/who-mucositis-v617.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/who-rabies-pep-v1557.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/who-severe-malaria-v867.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/who-surgical-checklist-v917.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/wiltse-spondylolisthesis-v481.js",
@@ -83869,7 +84001,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "95681e1fe657602d"
+      "value": "e1d42e584b1e7cce"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -83881,7 +84013,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3078"
+      "value": "3084"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

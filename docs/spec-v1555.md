@@ -210,3 +210,10 @@ neostigmine 50% response edge; the mamba refusal.
 ## Staleness
 
 All three sources *low*. Review when WHO publishes a global snakebite clinical guideline.
+
+## Build status
+
+| Tool | Status |
+|---|---|
+| `wbct20` | **Built October 5, 2026** (catalog 1,982). Re-read: SEARO16 pp. 123–125, 128–129 and 142 (IRIS API), AFRO10 pp. 60–61 (rendered page images; the text layer is garbled), INSTG16 (nhm.gov.in `Snakebite_Full.pdf`). **Corrected from the spec:** the India repeat schedule is on printed **p. 29** (and in the summary), not p. 19; the same guideline's monitoring paragraph (p. 28) says every **4** hours after the first 3, which the tile names as a conflict and does not follow. **Added:** SEARO accepts recycled glass washed only with 0.9% saline and hot-air dried. **Differed:** the bleeding-away-from-the-bite and neurotoxic inputs are not built; both rules are printed as notes on every clotted result. The schedule is printed as text with no clock times, because "every 6 hours for 24 hours" does not say whether the 24 hours run from admission. An invalid vessel makes the test invalid whichever way it came out. `snakebite-severity` gained a scope line and a link here. |
+| Tools 2–5 | Open. |

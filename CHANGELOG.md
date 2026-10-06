@@ -21,6 +21,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- 20-minute whole blood clotting test after snakebite (WHO): whether the test
+  is valid (only clean, dry glass), what clotted or not clotted means by
+  region, and when to retest, including the 6-hour check after antivenom.
+- Rabies post-exposure prophylaxis by WHO's 2018 categories: the vaccine
+  schedules with dates, whether RIG is needed, the RIG ceiling (20 IU/kg
+  human, 40 IU/kg equine) and its day-7 deadline, and the 10-day stop rule.
+  The CDC rabies tile is now labelled "(CDC, US)" and links here.
 - Cholera rehydration (GTFCC 2024): classifies dehydration from the
   signs (a blank sign is not assessed), gives Plan A, B or C volumes and rates,
   with the pregnancy and severe malnutrition protocols, the antibiotic when

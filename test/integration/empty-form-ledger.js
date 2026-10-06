@@ -125,6 +125,14 @@ export const ANSWERS_AN_EMPTY_FORM = new Set([
   "unit-converter-v4",
   "vasi",
   "vis",
+  // spec-v1555: the verdict comes from three required selects (vessel, result, timing); the only number
+  // field is the optional hours since the antivenom dose, and with it blank the answer says "No time
+  // since the loading dose was entered" and gives the 6-hour rule without a countdown.
+  "wbct20",
+  // spec-v1557: the plan comes from three required selects (category, history, immunocompromised); the
+  // only number field is the optional weight, used only for the RIG ceiling, and with it blank the
+  // answer says "No weight was entered" and gives the ceiling per kg.
+  "who-rabies-pep",
   "who-severe-malaria",
   "years-pe"
 ]);

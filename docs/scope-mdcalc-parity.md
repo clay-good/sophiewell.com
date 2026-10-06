@@ -310,3 +310,7 @@ experience**.
 > v1546, WHO IMCI ORS Plans A, B and C — [spec-v1546](spec-v1546.md), which adds `imci-ors-plan` — is 1980.)
 
 > v1560, GTFCC 2024 cholera dehydration, fluids and antibiotic — [spec-v1560](spec-v1560.md), which adds `cholera-rehydration` — is 1981.)
+
+> v1555, the 20-minute whole blood clotting test after snakebite — [spec-v1555](spec-v1555.md), which adds `wbct20` — is 1982.)
+
+> v1557, WHO 2018 rabies post-exposure prophylaxis — [spec-v1557](spec-v1557.md), which adds `who-rabies-pep` — is 1983.)

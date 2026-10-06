@@ -756,6 +756,8 @@ const PROBES = [
   ['malaria treatment first trimester pregnancy', ['malaria-pregnancy-treatment']],
   ['ors plan b some dehydration child diarrhea', ['imci-ors-plan']],
   ['cholera dehydration ringer lactate plan c', ['cholera-rehydration']],
+  ['20 minute whole blood clotting test snakebite', ['wbct20']],
+  ['who rabies category iii immunoglobulin schedule', ['who-rabies-pep']],
   ['pertussis case definition whooping cough confirmed probable', ['pertussis-case-def']],
   ['eortc msgerc invasive fungal disease proven probable possible', ['eortc-msg-ifd']],
   ['neuroleptic malignant syndrome diagnostic criteria priority points', ['nms-criteria']],

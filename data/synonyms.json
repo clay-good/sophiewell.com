@@ -7024,6 +7024,29 @@
     },
     {
       "phrases": [
+        "20wbct",
+        "wbct20",
+        "whole blood clotting test",
+        "20 minute clotting test",
+        "snakebite clotting test"
+      ],
+      "tile": "wbct20",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "who rabies",
+        "rabies category iii",
+        "rabies immunoglobulin dose",
+        "erig dose",
+        "essen regimen",
+        "zagreb regimen"
+      ],
+      "tile": "who-rabies-pep",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
         "plan score",
         "plan stroke score",
         "plan stroke mortality"
