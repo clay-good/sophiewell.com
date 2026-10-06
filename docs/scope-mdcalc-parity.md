@@ -330,3 +330,9 @@ experience**.
 > v1550, Vitamin A Dose for a Child: Routine, Diarrhea, Measles or Eye Signs (WHO) — [spec-v1550](spec-v1550.md), which adds `vitamin-a-dose-child` — is 1990.)
 
 > v1550, Deworming Dose and Frequency (WHO Preventive Chemotherapy) — [spec-v1550](spec-v1550.md), which adds `deworming-dose-who` — is 1991.)
+
+> v1552, Single Low-Dose Primaquine to Stop Falciparum Transmission (WHO 2026) — [spec-v1552](spec-v1552.md), which adds `primaquine-single-low-dose` — is 1992.)
+
+> v1552, Is an IPTp-SP Dose Due Today? Malaria Prevention in Pregnancy (WHO) — [spec-v1552](spec-v1552.md), which adds `iptp-sp-schedule` — is 1993.)
+
+> v1552, Seasonal Malaria Chemoprevention Dose: SP plus AQ by Age (WHO) — [spec-v1552](spec-v1552.md), which adds `smc-spaq-dose` — is 1994.)

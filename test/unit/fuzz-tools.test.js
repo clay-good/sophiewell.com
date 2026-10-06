@@ -703,6 +703,9 @@ import * as whoRabiesPepV1557 from '../../lib/who-rabies-pep-v1557.js';
 import * as pphWho2025V1558 from '../../lib/pph-who-2025-v1558.js';
 import * as laborCareGuideAlertV1558 from '../../lib/labor-care-guide-alert-v1558.js';
 import * as vitaminADoseChildV1550 from '../../lib/vitamin-a-dose-child-v1550.js';
+import * as primaquineSingleLowDoseV1552 from '../../lib/primaquine-single-low-dose-v1552.js';
+import * as iptpSpScheduleV1552 from '../../lib/iptp-sp-schedule-v1552.js';
+import * as smcSpaqDoseV1552 from '../../lib/smc-spaq-dose-v1552.js';
 import * as dewormingDoseWhoV1550 from '../../lib/deworming-dose-who-v1550.js';
 import * as mgso4ImRegimenV1558 from '../../lib/mgso4-im-regimen-v1558.js';
 import * as whoTbFdcDoseV1553 from '../../lib/who-tb-fdc-dose-v1553.js';
@@ -1511,6 +1514,9 @@ const MODULES = {
   'pph-who-2025-v1558.js': pphWho2025V1558,
   'labor-care-guide-alert-v1558.js': laborCareGuideAlertV1558,
   'vitamin-a-dose-child-v1550.js': vitaminADoseChildV1550,
+  'primaquine-single-low-dose-v1552.js': primaquineSingleLowDoseV1552,
+  'iptp-sp-schedule-v1552.js': iptpSpScheduleV1552,
+  'smc-spaq-dose-v1552.js': smcSpaqDoseV1552,
   'deworming-dose-who-v1550.js': dewormingDoseWhoV1550,
   'mgso4-im-regimen-v1558.js': mgso4ImRegimenV1558,
   'who-tb-fdc-dose-v1553.js': whoTbFdcDoseV1553,

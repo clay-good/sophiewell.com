@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:2bc4009a-aaa2-5af1-83da-b49cc2196ff4",
+  "serialNumber": "urn:uuid:6979ecf4-3aaa-5000-8540-654610da3eec",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-06T03:20:42.477Z",
+    "timestamp": "2026-10-06T03:45:12.597Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1991 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1994 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7c2f83b87703b24118be24ce9b16314d3a08ef5b7e72ae199774e7a1c330102e"
+          "content": "1447a7a856c795368c7a7dd979147ea6290f3745a2fe2b1726d2df2a72801db5"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "127900"
+          "value": "128146"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e837f5bb1bfeab540e8b4a22fde5648655e49fddc771e8594d917f96a09e6e98"
+          "content": "ab1060984cdab130ee5342659f29b28ccae6792b0fc1c4c5c4ffd2a6ed419403"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "576938"
+          "value": "577605"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d7dfb42edc47431a312e8b2a824769bd2b57344f04129919d0388ba8e5b9639b"
+          "content": "866ca9c76122ee8b9970119431fd1d39ad10ca1ec005a4655aa917007aa4f04f"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "248723"
+          "value": "249111"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e5883f08a99705325b8555bfed6811357118b166b2941f475d01d58c95db6a2a"
+          "content": "74735cea8c20210071085f50a2408cb38f7eb5b76a04565df998d23a84f781fa"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "114887"
+          "value": "115158"
         }
       ]
     },
@@ -10409,6 +10409,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/iptp-sp-schedule-v1552.js",
+      "type": "file",
+      "name": "lib/iptp-sp-schedule-v1552.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b54ea9c527ab0f9fe8aeec49b151555ddf6d951ca2a2880997ad609752ff4fd6"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5096"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/irecist-v551.js",
       "type": "file",
       "name": "lib/irecist-v551.js",
@@ -13208,7 +13229,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "81a3b37d80def332f6524c4ae40af035af6b8897cbcb52af07fbc55c0ce46090"
+          "content": "27c74fc4d421fea326b6f6dbe39513b4e7a37861e62ecabacb908d823b624355"
         }
       ],
       "properties": [
@@ -13218,7 +13239,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2699724"
+          "value": "2701892"
         }
       ]
     },
@@ -18095,6 +18116,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/primaquine-single-low-dose-v1552.js",
+      "type": "file",
+      "name": "lib/primaquine-single-low-dose-v1552.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0b55deef84f6413e2e078375bcabb903146b729d9d2003d1cd5753157ccb7d90"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3459"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/print.js",
       "type": "file",
       "name": "lib/print.js",
@@ -21094,6 +21136,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3334"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/smc-spaq-dose-v1552.js",
+      "type": "file",
+      "name": "lib/smc-spaq-dose-v1552.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b87ef71175576ccb8d29e4d24f754ebba33133721b0a4bb92a1fdb535343d896"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4997"
         }
       ]
     },
@@ -33866,6 +33929,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/iptp-sp-schedule-v1552.js",
+      "type": "file",
+      "name": "mcp/adapters/iptp-sp-schedule-v1552.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "44640089f255f2e05e23e20b5882e4510414b2f303be5edaaa84c693cc4d3b2c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1313"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/irecist-v551.js",
       "type": "file",
       "name": "mcp/adapters/irecist-v551.js",
@@ -40733,6 +40817,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/primaquine-single-low-dose-v1552.js",
+      "type": "file",
+      "name": "mcp/adapters/primaquine-single-low-dose-v1552.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "336a58dc5dc904a0abce22dca6a55914598cebd918d1687651f274887de8a68b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1121"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/prognostic-v231.js",
       "type": "file",
       "name": "mcp/adapters/prognostic-v231.js",
@@ -43207,6 +43312,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2632"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/smc-spaq-dose-v1552.js",
+      "type": "file",
+      "name": "mcp/adapters/smc-spaq-dose-v1552.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "39e5cab64406826efcead01ef7cd49a23f00c691eb86e775376c3193667c6301"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "905"
         }
       ]
     },
@@ -46199,7 +46325,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8b05e10329f643a5ad96ab9d03339e84c6ab9f5849ca187c6799d50e76948f9f"
+          "content": "e5d4fcf56fffc3589de7f08a9b8bc3e6b3e6bda6820ee0b36c17e53108ae33b7"
         }
       ],
       "properties": [
@@ -46209,7 +46335,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "117966"
+          "value": "118361"
         }
       ]
     },
@@ -50011,6 +50137,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "5736"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1552.js",
+      "type": "file",
+      "name": "views/group-v1552.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f696b0ae3219aaa68a46fed5c48588be0ed73e80e3f5182e6d2c2e0b9461dbd6"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5464"
         }
       ]
     },
@@ -81706,6 +81853,7 @@
         "urn:sophiewell:file:source:lib/ipledge-v1511.js",
         "urn:sophiewell:file:source:lib/ipmn-fukuoka-v883.js",
         "urn:sophiewell:file:source:lib/ips-hodgkin-v661.js",
+        "urn:sophiewell:file:source:lib/iptp-sp-schedule-v1552.js",
         "urn:sophiewell:file:source:lib/irecist-v551.js",
         "urn:sophiewell:file:source:lib/isakos-meniscal-v1426.js",
         "urn:sophiewell:file:source:lib/isgls-bile-leak-v658.js",
@@ -82072,6 +82220,7 @@
         "urn:sophiewell:file:source:lib/preventive-cost-share-check.js",
         "urn:sophiewell:file:source:lib/preventive-owed.js",
         "urn:sophiewell:file:source:lib/priapism-gas-v859.js",
+        "urn:sophiewell:file:source:lib/primaquine-single-low-dose-v1552.js",
         "urn:sophiewell:file:source:lib/print.js",
         "urn:sophiewell:file:source:lib/prognostic-v231.js",
         "urn:sophiewell:file:source:lib/prompt.js",
@@ -82215,6 +82364,7 @@
         "urn:sophiewell:file:source:lib/skin-tear-v900.js",
         "urn:sophiewell:file:source:lib/slums-v644.js",
         "urn:sophiewell:file:source:lib/smast-v737.js",
+        "urn:sophiewell:file:source:lib/smc-spaq-dose-v1552.js",
         "urn:sophiewell:file:source:lib/snot22-v552.js",
         "urn:sophiewell:file:source:lib/snyder-slap-v1417.js",
         "urn:sophiewell:file:source:lib/sows-subjective-v1062.js",
@@ -82566,6 +82716,7 @@
         "urn:sophiewell:file:source:views/group-v155.js",
         "urn:sophiewell:file:source:views/group-v1550.js",
         "urn:sophiewell:file:source:views/group-v1551.js",
+        "urn:sophiewell:file:source:views/group-v1552.js",
         "urn:sophiewell:file:source:views/group-v1553.js",
         "urn:sophiewell:file:source:views/group-v1555.js",
         "urn:sophiewell:file:source:views/group-v1557.js",
@@ -83750,6 +83901,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/ipass-handoff-v916.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ipledge-v1511.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ipmn-fukuoka-v883.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/iptp-sp-schedule-v1552.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/irecist-v551.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/isakos-meniscal-v1426.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/isgls-bile-leak-v658.js",
@@ -84077,6 +84229,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/preventive-cost-share-check.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/preventive-owed.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/priapism-gas-v859.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/primaquine-single-low-dose-v1552.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/prognostic-v231.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/propkd-v564.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/prostate-health-index-v714.js",
@@ -84195,6 +84348,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/skin-tear-v900.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/slums-v644.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/smast-v737.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/smc-spaq-dose-v1552.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/snot22-v552.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/snyder-slap-v1417.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/sows-subjective-v1062.js",
@@ -84441,7 +84595,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "2bc4009aaaa22af1"
+      "value": "6979ecf43aaa7000"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -84453,7 +84607,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3104"
+      "value": "3111"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

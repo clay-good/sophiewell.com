@@ -21,6 +21,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Single low-dose primaquine (WHO 2026): 3.75, 7.5 or 15 mg base by weight
+  with the ACT in low-transmission areas only, no G6PD test, excluding
+  pregnancy, infants under 1 month and breastfeeding of such an infant.
+- IPTp-SP schedule (WHO 2026): whether a dose is due today, not before week
+  13 and at least a month apart, and not with cotrimoxazole or another
+  contraindication (no IPTp alternative for women with HIV on cotrimoxazole).
+- Seasonal malaria chemoprevention (WHO 2023): the SP+AQ infant or child
+  pack by age, weight-based dosing from 60 months, and the contraindications
+  that stop a cycle.
 - Vitamin A dose for a child (WHO): routine supplementation, the IMCI
   persistent-diarrhea dose, the 2-day measles course or the 3-dose course for
   eye signs, with capsule counts and the holds.

@@ -135,3 +135,13 @@ months.
 ## Staleness
 
 MAL26 *high*. VFG26 and SMC23 *moderate*.
+
+## Build status
+
+| Tool | Status |
+|---|---|
+| `primaquine-single-low-dose` | **Built October 6, 2026** (catalog 1,992). Re-read in MAL26 §5.2.1.3 (p. 180, 2026 recommendation) and matches the spec: 3.75 / 7.5 / 15 mg base by weight, low-transmission areas only, no G6PD test, with the three exclusions. Under 5 kg and over 100 kg are refused. |
+| `vivax-radical-cure` | Open. |
+| `iptp-sp-schedule` | **Built October 6, 2026** (catalog 1,993). Re-read in MAL26 §4.2.1 (pp. 102–104) and §4.2.1.1 (p. 108, the 2026 recommendation against DHA-PPQ IPTp in HIV). **Differed:** the contraindications are one required choice (cotrimoxazole or another sulfa drug, SP allergy, severe illness or no oral intake, a recent SP-component drug), with cotrimoxazole separated because its answer adds that no IPTp alternative exists; doses are spaced 4 weeks apart and the answer says so; the wait is given in days, with no calendar date (the tile reads no clock). |
+| `smc-spaq-dose` | **Built October 6, 2026** (catalog 1,994). Re-read in SMC23 (IRIS 10665/368123) §2.5 and the distributor steps, and matches the spec, including the whole 250/12.5 mg infant SP tablet. **Stated:** §2.5.2 says SP or AQ in the previous 4 weeks; the distributor checklist says 28 days and adds an ACT, which the tile uses. Contraindications are one required choice; a blank weight under 60 months is disclosed (the pack goes by age). |
+

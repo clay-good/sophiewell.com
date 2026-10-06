@@ -7081,6 +7081,36 @@
     },
     {
       "phrases": [
+        "single low dose primaquine",
+        "primaquine gametocytocide",
+        "primaquine 0.25 mg/kg",
+        "slpq"
+      ],
+      "tile": "primaquine-single-low-dose",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "iptp",
+        "iptp-sp",
+        "intermittent preventive treatment pregnancy",
+        "sp in pregnancy malaria"
+      ],
+      "tile": "iptp-sp-schedule",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "seasonal malaria chemoprevention",
+        "smc dose",
+        "spaq",
+        "sp aq dose"
+      ],
+      "tile": "smc-spaq-dose",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
         "deworming",
         "deworming frequency",
         "albendazole deworming",

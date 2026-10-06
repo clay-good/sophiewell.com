@@ -8776,6 +8776,15 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/vitamin-a-dose-child-v1550.js (spec-v1550: WHO vitamin A doses for children by reason (routine, diarrhea, measles, eye signs) — clinical disclaimer)
 - `vitamin-a-dose-child`
 
+### lib/primaquine-single-low-dose-v1552.js (spec-v1552: WHO single low-dose primaquine with an ACT, by weight — clinical disclaimer)
+- `primaquine-single-low-dose`
+
+### lib/iptp-sp-schedule-v1552.js (spec-v1552: WHO IPTp-SP schedule and contraindications — clinical disclaimer)
+- `iptp-sp-schedule`
+
+### lib/smc-spaq-dose-v1552.js (spec-v1552: WHO SMC SP+AQ dose by age and its contraindications — clinical disclaimer)
+- `smc-spaq-dose`
+
 ### lib/deworming-dose-who-v1550.js (spec-v1550: WHO deworming dose and frequency by group and prevalence — clinical disclaimer)
 - `deworming-dose-who`
 
