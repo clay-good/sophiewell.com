@@ -7070,6 +7070,53 @@
     },
     {
       "phrases": [
+        "pritchard regimen",
+        "magnesium sulfate im",
+        "mgso4 im regimen",
+        "magnesium sulphate im",
+        "magnesium toxicity check",
+        "eclampsia magnesium im"
+      ],
+      "tile": "mgso4-im-regimen",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "tb dose by weight",
+        "hrze tablets",
+        "tb fdc dose",
+        "child tb dispersible",
+        "hrz dispersible",
+        "anti tb dose"
+      ],
+      "tile": "who-tb-fdc-dose",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "dose pole",
+        "praziquantel dose",
+        "ivermectin dose pole",
+        "mass drug administration",
+        "deworming dose",
+        "dec dose filariasis"
+      ],
+      "tile": "pc-dose-pole",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "dengue fluid",
+        "dengue iv fluids",
+        "dengue shock fluids",
+        "dengue fluid ladder",
+        "dengue rehydration"
+      ],
+      "tile": "dengue-fluid-plan",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
         "plan score",
         "plan stroke score",
         "plan stroke mortality"

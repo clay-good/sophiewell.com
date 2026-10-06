@@ -167,3 +167,10 @@ branch, and DEC refused when loiasis is unassessed; each CE row at 4.9/5.0/10.0/
 ## Staleness
 
 PC06, HC11, LF17 *low*. SCH22 *low*. ARPZ25 *high*. CE25 *moderate* (new).
+
+## Build status
+
+| Tool | Status |
+|---|---|
+| `pc-dose-pole` | **Built October 6, 2026** (catalog 1,988). Re-read in PC06 (IRIS 10665/43545): Table A4.1 from the page image (p. 49), Figure A4.1 (p. 51), section 5.5 and the intervention boxes. Every band matches the spec. **Added:** the Loa loa precaution for ivermectin, DEC only where onchocerciasis is absent, and the pregnancy notes (albendazole and mebendazole after the first trimester; praziquantel at any stage). **Differed:** the exclusion inputs (pregnant, breastfeeding, severely ill) are printed as each drug's exclusions rather than asked; SCH22's "praziquantel from 2 years" was not re-read, so below 94 cm the tile says only that the pole gives no dose. |
+| Other tools | Open. |

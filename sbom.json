@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:62fb1c87-6748-5ac9-857c-ab7ae535a429",
+  "serialNumber": "urn:uuid:2d6b9a7c-9740-547d-88c5-01f01fc91a9f",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-06T02:03:59.795Z",
+    "timestamp": "2026-10-06T02:52:22.968Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1985 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1989 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "922b8fbd22bde43fb40cdefac43a860baa6197b702b21db30b95b750606a409f"
+          "content": "3c0773a519375f49dcb80aad14564caadc967e5d858f285a6a212d0e7c65856d"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "127390"
+          "value": "127737"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "98227c6f0e5f6ab84d12e881e2e819d9fe63f14737f89eb4d9ac103bcaf341ed"
+          "content": "553ac23e03b4ddd28369180f2028046ef9d8015a4c851af8eb2aadf6759ba2bc"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "575477"
+          "value": "576523"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ad983833eaac45365f2d2f823deba1524c9e0055001e9cfd4d97186f081bcb24"
+          "content": "ff9845636ee621bbaba1e6a782503002919deebc0cf8e7ea494d09aad242bc47"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "247959"
+          "value": "248463"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2d96f2b6c2d1d32a3792cdd0f322e9fea8195f89383383d8aa6510a2e8b6ee6e"
+          "content": "72ee4d65b486396e4ef40956dc72320bd9ad33af8195ed5f34c5ccce671cd7c9"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "114339"
+          "value": "114706"
         }
       ]
     },
@@ -5344,6 +5344,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "8569"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/dengue-fluid-plan-v1563.js",
+      "type": "file",
+      "name": "lib/dengue-fluid-plan-v1563.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3330e840edb2f9797f0c0ed149fc7b7a341faade78278de3a806fe126266267e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6496"
         }
       ]
     },
@@ -13166,7 +13187,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "cf02e4433a920eac63122c2c4e7e6e8b0eb44667098043cb9bec2f26c309787e"
+          "content": "bf5a11d35fee70d076b0fa877ce7ea9a957889eb98ad5d4d1438a5033c94b406"
         }
       ],
       "properties": [
@@ -13176,7 +13197,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2695550"
+          "value": "2698365"
         }
       ]
     },
@@ -13429,6 +13450,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4884"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/mgso4-im-regimen-v1558.js",
+      "type": "file",
+      "name": "lib/mgso4-im-regimen-v1558.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a827696c7c0041cc7a12e6a8c49e41d7fc3d39e427e09a442bd6da22a965807b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7427"
         }
       ]
     },
@@ -16810,6 +16852,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "5414"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/pc-dose-pole-v1562.js",
+      "type": "file",
+      "name": "lib/pc-dose-pole-v1562.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f8997e5534d62ea83079e1dbccbbd77173174d086665be42fb51c6d2565cfab2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6047"
         }
       ]
     },
@@ -24101,6 +24164,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/who-tb-fdc-dose-v1553.js",
+      "type": "file",
+      "name": "lib/who-tb-fdc-dose-v1553.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c0055f9a94abc4f21cdf991e8c8af9ab51c077046066638f2d79f291befa7fc6"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7697"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/wiltse-spondylolisthesis-v481.js",
       "type": "file",
       "name": "lib/wiltse-spondylolisthesis-v481.js",
@@ -29179,6 +29263,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2335"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/dengue-fluid-plan-v1563.js",
+      "type": "file",
+      "name": "mcp/adapters/dengue-fluid-plan-v1563.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "34ffb9e3a6c8b14e78ec09110ccf4fdd9de2adf87f3b3add0d6ce4050ac977da"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "994"
         }
       ]
     },
@@ -36491,6 +36596,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/mgso4-im-regimen-v1558.js",
+      "type": "file",
+      "name": "mcp/adapters/mgso4-im-regimen-v1558.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "00be5d61ed7918bec521d19988cdf710e6853d59969f32e03cbbd2ca3ab5cebd"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1287"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/mh-grading-scale-v860.js",
       "type": "file",
       "name": "mcp/adapters/mh-grading-scale-v860.js",
@@ -39322,6 +39448,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1589"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/pc-dose-pole-v1562.js",
+      "type": "file",
+      "name": "mcp/adapters/pc-dose-pole-v1562.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "74445cda5154f2e39f54569bc7993b97c5113e481a93d62d59e4ce70ef833463"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "926"
         }
       ]
     },
@@ -45731,6 +45878,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/who-tb-fdc-dose-v1553.js",
+      "type": "file",
+      "name": "mcp/adapters/who-tb-fdc-dose-v1553.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "21ce1204f85a7b19a3bde09e651e5f80410475ad7569c2d50d439e5ebaa78012"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1094"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/wiltse-spondylolisthesis-v481.js",
       "type": "file",
       "name": "mcp/adapters/wiltse-spondylolisthesis-v481.js",
@@ -45947,7 +46115,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f96c320d577520e959d0a4526c1820fb7f9c2b19b7d35c94b073adef7ef789f7"
+          "content": "28993723da69d96e155476d4b54b9edd9bc5d933b099acecd7ade2a9971ef121"
         }
       ],
       "properties": [
@@ -45957,7 +46125,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "117224"
+          "value": "117698"
         }
       ]
     },
@@ -49763,6 +49931,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1553.js",
+      "type": "file",
+      "name": "views/group-v1553.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "530c3a4862037099ca4e6a2498241f0da5fd62a9d934b9e65ed5741590055c2c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2605"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:views/group-v1555.js",
       "type": "file",
       "name": "views/group-v1555.js",
@@ -49811,7 +50000,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "61de26046cad0696ab72f5a8a4f4a7c4ac65488ac6cab44fd38a431afb5e2fc3"
+          "content": "6456bede131a65960b45cfd8380a164af0134c5cf517171dac25b392760b9f40"
         }
       ],
       "properties": [
@@ -49821,7 +50010,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "6671"
+          "value": "8164"
         }
       ]
     },
@@ -49864,6 +50053,48 @@
         {
           "name": "sophiewell:bytes",
           "value": "3933"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1562.js",
+      "type": "file",
+      "name": "views/group-v1562.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c42366a98ac59cfdcba91f3aa5d2bef20c33c3c4b3ee59b66d8494817db9c2d2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2533"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1563.js",
+      "type": "file",
+      "name": "views/group-v1563.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3e8ee3894b093ef00990e4296c04777ec10882bc3cda40821712fb47a010d294"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2531"
         }
       ]
     },
@@ -81150,6 +81381,7 @@
         "urn:sophiewell:file:source:lib/dejour-trochlea-v485.js",
         "urn:sophiewell:file:source:lib/delbet-femoral-neck-v378.js",
         "urn:sophiewell:file:source:lib/delta-check-v925.js",
+        "urn:sophiewell:file:source:lib/dengue-fluid-plan-v1563.js",
         "urn:sophiewell:file:source:lib/denial-next-step-v1516.js",
         "urn:sophiewell:file:source:lib/denis-sacral-v376.js",
         "urn:sophiewell:file:source:lib/derivation.js",
@@ -81535,6 +81767,7 @@
         "urn:sophiewell:file:source:lib/mfp-prices-v1506.js",
         "urn:sophiewell:file:source:lib/mfp-refund-reconcile.js",
         "urn:sophiewell:file:source:lib/mfp-refund-v1510.js",
+        "urn:sophiewell:file:source:lib/mgso4-im-regimen-v1558.js",
         "urn:sophiewell:file:source:lib/mh-grading-scale-v860.js",
         "urn:sophiewell:file:source:lib/migraine-ichd3-v815.js",
         "urn:sophiewell:file:source:lib/milch-condyle-v418.js",
@@ -81696,6 +81929,7 @@
         "urn:sophiewell:file:source:lib/payer-policy-diff.js",
         "urn:sophiewell:file:source:lib/pbm-reimbursement-v1510.js",
         "urn:sophiewell:file:source:lib/pc-aspects-v1452.js",
+        "urn:sophiewell:file:source:lib/pc-dose-pole-v1562.js",
         "urn:sophiewell:file:source:lib/pc-ptsd5-v521.js",
         "urn:sophiewell:file:source:lib/pcdai-v522.js",
         "urn:sophiewell:file:source:lib/pci-surgery-timing-v898.js",
@@ -82043,6 +82277,7 @@
         "urn:sophiewell:file:source:lib/who-rabies-pep-v1557.js",
         "urn:sophiewell:file:source:lib/who-severe-malaria-v867.js",
         "urn:sophiewell:file:source:lib/who-surgical-checklist-v917.js",
+        "urn:sophiewell:file:source:lib/who-tb-fdc-dose-v1553.js",
         "urn:sophiewell:file:source:lib/wiltse-spondylolisthesis-v481.js",
         "urn:sophiewell:file:source:lib/winquist-hansen-v381.js",
         "urn:sophiewell:file:source:lib/workflow-v4.js",
@@ -82245,11 +82480,14 @@
         "urn:sophiewell:file:source:views/group-v155.js",
         "urn:sophiewell:file:source:views/group-v1550.js",
         "urn:sophiewell:file:source:views/group-v1551.js",
+        "urn:sophiewell:file:source:views/group-v1553.js",
         "urn:sophiewell:file:source:views/group-v1555.js",
         "urn:sophiewell:file:source:views/group-v1557.js",
         "urn:sophiewell:file:source:views/group-v1558.js",
         "urn:sophiewell:file:source:views/group-v156.js",
         "urn:sophiewell:file:source:views/group-v1560.js",
+        "urn:sophiewell:file:source:views/group-v1562.js",
+        "urn:sophiewell:file:source:views/group-v1563.js",
         "urn:sophiewell:file:source:views/group-v1570.js",
         "urn:sophiewell:file:source:views/group-v1571.js",
         "urn:sophiewell:file:source:views/group-v1572.js",
@@ -83209,6 +83447,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/dejour-trochlea-v485.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/delbet-femoral-neck-v378.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/delta-check-v925.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/dengue-fluid-plan-v1563.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/denial-next-step-v1516.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/denis-sacral-v376.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/derm-v151.js",
@@ -83557,6 +83796,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/meyers-mckeever-v408.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mfp-prices-v1506.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mfp-refund-v1510.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/mgso4-im-regimen-v1558.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mh-grading-scale-v860.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/migraine-ichd3-v815.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/milch-condyle-v418.js",
@@ -83692,6 +83932,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/payer-policy-diff.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pbm-reimbursement-v1510.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pc-aspects-v1452.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/pc-dose-pole-v1562.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pc-ptsd5-v521.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pcdai-v522.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/pci-surgery-timing-v898.js",
@@ -83997,6 +84238,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/who-rabies-pep-v1557.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/who-severe-malaria-v867.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/who-surgical-checklist-v917.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/who-tb-fdc-dose-v1553.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/wiltse-spondylolisthesis-v481.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/winquist-hansen-v381.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/woundid-v248.js",
@@ -84111,7 +84353,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "62fb1c876748dac9"
+      "value": "2d6b9a7c9740947d"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -84123,7 +84365,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3089"
+      "value": "3100"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

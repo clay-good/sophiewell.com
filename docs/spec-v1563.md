@@ -217,3 +217,10 @@ and the two yellow fever windows.
 
 HAT24 *high* (acoziborole pending). VL26 *moderate* (new). CL22, SBC23, PAHO19 *low*. DENG12 *low*;
 ARBO25 *moderate*. Case definitions *low*.
+
+## Build status
+
+| Tool | Status |
+|---|---|
+| `dengue-fluid-plan` | **Built October 6, 2026** (catalog 1,989). Every rate re-read in DENG12 (IRIS 10665/76887) pp. 26 and 28–31 and matches the spec, including the child 7 (compensated) vs 7.5 (hypotensive) mL/kg/h rows, each used as printed. **Differed:** the ARBO25 additions were not re-read and are not printed; the second-bolus guidance is printed as a note rather than a step. `who-dengue-2009` links here. |
+| Other tools | Open. |

@@ -972,6 +972,10 @@ import wbct20V1555 from './adapters/wbct20-v1555.js';
 import whoRabiesPepV1557 from './adapters/who-rabies-pep-v1557.js';
 import pphWho2025V1558 from './adapters/pph-who-2025-v1558.js';
 import laborCareGuideAlertV1558 from './adapters/labor-care-guide-alert-v1558.js';
+import mgso4ImRegimenV1558 from './adapters/mgso4-im-regimen-v1558.js';
+import whoTbFdcDoseV1553 from './adapters/who-tb-fdc-dose-v1553.js';
+import pcDosePoleV1562 from './adapters/pc-dose-pole-v1562.js';
+import dengueFluidPlanV1563 from './adapters/dengue-fluid-plan-v1563.js';
 import medicaidUraV1510 from './adapters/medicaid-ura-v1510.js';
 import entity340bV1509 from './adapters/entity-340b-v1509.js';
 import adherenceV1513 from './adapters/adherence-v1513.js';
@@ -1990,6 +1994,10 @@ const ADAPTER_MODULES = [
   ['who-rabies-pep-v1557', whoRabiesPepV1557],
   ['pph-who-2025-v1558', pphWho2025V1558],
   ['labor-care-guide-alert-v1558', laborCareGuideAlertV1558],
+  ['mgso4-im-regimen-v1558', mgso4ImRegimenV1558],
+  ['who-tb-fdc-dose-v1553', whoTbFdcDoseV1553],
+  ['pc-dose-pole-v1562', pcDosePoleV1562],
+  ['dengue-fluid-plan-v1563', dengueFluidPlanV1563],
   ['medicaid-ura-v1510', medicaidUraV1510],
   ['entity-340b-v1509', entity340bV1509],
   ['adherence-v1513', adherenceV1513],

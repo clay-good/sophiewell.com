@@ -1,9 +1,11 @@
 // spec-v1558: renderers for pph-who-2025 (WHO 2025 postpartum hemorrhage criteria and tranexamic acid) and
-// labor-care-guide-alert (WHO Labour Care Guide alert thresholds); Group G, Clinical Scoring & Risk; spec-v1540.
+// labor-care-guide-alert (WHO Labour Care Guide alert thresholds), Group G; and mgso4-im-regimen (magnesium
+// sulfate IM regimen and next-dose check), Group F; spec-v1540.
 
 import { el, clear } from '../lib/dom.js';
 import * as P from '../lib/pph-who-2025-v1558.js';
 import * as L from '../lib/labor-care-guide-alert-v1558.js';
+import * as G from '../lib/mgso4-im-regimen-v1558.js';
 import { resultRow } from '../lib/result-copy.js';
 
 function selectField(root, label, id, options, required) {
@@ -97,6 +99,32 @@ export const renderers = {
         const r = L.laborCareGuideAlert(args);
         if (!r.valid) { note(o, r.message); return; }
         resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'LCG', value: r.bandLabel }]);
+        list(o, r.notes);
+        note(o, r.note);
+      } catch (err) {
+        o.appendChild(el('p', { class: 'muted', text: err.message }));
+      }
+    };
+    for (const [id] of pairs) { const n = document.getElementById(id); if (n) { n.addEventListener('input', run); n.addEventListener('change', run); } }
+    run();
+  },
+  'mgso4-im-regimen'(root) {
+    const pairs = [['mg-source', 'source'], ['mg-regimen', 'regimen'], ['mg-rr', 'rr'], ['mg-reflex', 'reflex'], ['mg-urine', 'urine']];
+    selectField(root, 'Source manual', 'mg-source', G.SOURCE_OPTIONS, true);
+    selectField(root, 'Regimen', 'mg-regimen', G.REGIMEN_OPTIONS, true);
+    numField(root, 'Breathing rate per minute (next-dose check)', 'mg-rr', 'e.g. 18', '80');
+    selectField(root, 'Knee reflex (next-dose check)', 'mg-reflex', G.REFLEX_OPTIONS, false);
+    numField(root, 'Urine in the last 4 hours, mL (next-dose check)', 'mg-urine', 'e.g. 200', '5000');
+    const o = el('div', { id: 'q-results', 'aria-live': 'polite' });
+    root.appendChild(o);
+    const run = () => {
+      clear(o);
+      try {
+        const args = {};
+        for (const [dom, arg] of pairs) args[arg] = val(dom);
+        const r = G.mgso4ImRegimen(args);
+        if (!r.valid) { note(o, r.message); return; }
+        resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'MgSO4', value: r.bandLabel }]);
         list(o, r.notes);
         note(o, r.note);
       } catch (err) {

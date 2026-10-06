@@ -73,6 +73,10 @@ export const ANSWERS_AN_EMPTY_FORM = new Set([
   "igg4-rd-2020",
   "isth-bat",
   "kings-college",
+  // spec-v1558 (mgso4-im-regimen): the regimen comes from two required selects (source, regimen); the
+  // number fields are the optional next-dose check, and with them blank the tile gives the regimen and
+  // no safe-to-give verdict, which it gives only when all three checks are entered.
+  "mgso4-im-regimen",
   // spec-v1558: every row is optional and a blank one is listed as not assessed; clearing the number rows
   // leaves the select rows (companion, posture, amniotic fluid...) that were observed, so it reports on those.
   "labor-care-guide-alert",

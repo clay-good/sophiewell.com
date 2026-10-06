@@ -702,6 +702,10 @@ import * as wbct20V1555 from '../../lib/wbct20-v1555.js';
 import * as whoRabiesPepV1557 from '../../lib/who-rabies-pep-v1557.js';
 import * as pphWho2025V1558 from '../../lib/pph-who-2025-v1558.js';
 import * as laborCareGuideAlertV1558 from '../../lib/labor-care-guide-alert-v1558.js';
+import * as mgso4ImRegimenV1558 from '../../lib/mgso4-im-regimen-v1558.js';
+import * as whoTbFdcDoseV1553 from '../../lib/who-tb-fdc-dose-v1553.js';
+import * as pcDosePoleV1562 from '../../lib/pc-dose-pole-v1562.js';
+import * as dengueFluidPlanV1563 from '../../lib/dengue-fluid-plan-v1563.js';
 import * as pertussisCaseDefV868 from '../../lib/pertussis-case-def-v868.js';
 import * as eortcMsgIfdV869 from '../../lib/eortc-msg-ifd-v869.js';
 import * as nmsCriteriaV870 from '../../lib/nms-criteria-v870.js';
@@ -1504,6 +1508,10 @@ const MODULES = {
   'who-rabies-pep-v1557.js': whoRabiesPepV1557,
   'pph-who-2025-v1558.js': pphWho2025V1558,
   'labor-care-guide-alert-v1558.js': laborCareGuideAlertV1558,
+  'mgso4-im-regimen-v1558.js': mgso4ImRegimenV1558,
+  'who-tb-fdc-dose-v1553.js': whoTbFdcDoseV1553,
+  'pc-dose-pole-v1562.js': pcDosePoleV1562,
+  'dengue-fluid-plan-v1563.js': dengueFluidPlanV1563,
   'pertussis-case-def-v868.js': pertussisCaseDefV868,
   'eortc-msg-ifd-v869.js': eortcMsgIfdV869,
   'nms-criteria-v870.js': nmsCriteriaV870,

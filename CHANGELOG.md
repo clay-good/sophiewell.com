@@ -21,6 +21,17 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Magnesium sulfate IM regimen (WHO): the loading and IM maintenance doses
+  with syringe contents, and whether the next dose is safe under either WHO
+  manual's breathing, reflex and urine limits.
+- First-line TB tablets by weight (WHO): child dispersible HRZ, E and HR
+  under 25 kg, adult fixed-dose combinations from 25 kg with loose-tablet
+  equivalents, and the 4-month HPMZ regimen.
+- Mass treatment dose by height or age (WHO): praziquantel and ivermectin
+  tablets from the dose poles, and albendazole, mebendazole and DEC by age,
+  with each drug's exclusions.
+- Dengue IV fluid ladder (WHO 2012): the step-down mL per hour for warning
+  signs, compensated shock or hypotensive shock, adult or child, at a weight.
 - WHO Labour Care Guide alerts: which labor observations meet the guide's
   alert threshold, each compared as printed with its action; a blank row is
   listed as not assessed, never read as normal.

@@ -8773,6 +8773,18 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/labor-care-guide-alert-v1558.js (spec-v1558: WHO Labour Care Guide alert thresholds — clinical disclaimer)
 - `labor-care-guide-alert`
 
+### lib/mgso4-im-regimen-v1558.js (spec-v1558: WHO magnesium sulfate IM (Pritchard) regimen and the next-dose hold limits — clinical disclaimer)
+- `mgso4-im-regimen`
+
+### lib/who-tb-fdc-dose-v1553.js (spec-v1553: WHO first-line TB tablets by weight band (child dispersible and adult FDC) and HPMZ — clinical disclaimer)
+- `who-tb-fdc-dose`
+
+### lib/pc-dose-pole-v1562.js (spec-v1562: WHO preventive chemotherapy dose poles and age-based doses — clinical disclaimer)
+- `pc-dose-pole`
+
+### lib/dengue-fluid-plan-v1563.js (spec-v1563: WHO dengue IV fluid rates by group, age and weight — clinical disclaimer)
+- `dengue-fluid-plan`
+
 ### lib/claims-pct-medicare.js (spec-v1604: Claims paid as a percent of Medicare — administrative disclaimer)
 - `claims-pct-medicare`
 

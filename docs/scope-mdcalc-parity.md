@@ -318,3 +318,11 @@ experience**.
 > v1558, WHO 2025 postpartum hemorrhage criteria and tranexamic acid — [spec-v1558](spec-v1558.md), which adds `pph-who-2025` — is 1984.)
 
 > v1558, WHO Labour Care Guide alert thresholds — [spec-v1558](spec-v1558.md), which adds `labor-care-guide-alert` — is 1985.)
+
+> v1558, Magnesium Sulfate IM Regimen and Next-Dose Check (WHO) — [spec-v1558](spec-v1558.md), which adds `mgso4-im-regimen` — is 1986.)
+
+> v1553, First-Line TB Tablets by Weight: Child Dispersible and Adult FDCs (WHO) — [spec-v1553](spec-v1553.md), which adds `who-tb-fdc-dose` — is 1987.)
+
+> v1562, Mass Treatment Dose by Height or Age: Praziquantel, Ivermectin, Albendazole, Mebendazole, DEC (WHO) — [spec-v1562](spec-v1562.md), which adds `pc-dose-pole` — is 1988.)
+
+> v1563, Dengue IV Fluids: The Rate Ladder by Group and Weight (WHO) — [spec-v1563](spec-v1563.md), which adds `dengue-fluid-plan` — is 1989.)

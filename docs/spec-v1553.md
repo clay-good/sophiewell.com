@@ -236,3 +236,10 @@ flip; the contact bypass; each 4-month exclusion; every FDC and TPT band edge; t
 ## Staleness
 
 M5HB *moderate* (the algorithm recommendation was marked interim). M4 and M1 *low*.
+
+## Build status
+
+| Tool | Status |
+|---|---|
+| `who-tb-fdc-dose` | **Built October 6, 2026** (catalog 1,987). Re-read in M5HB (IRIS 10665/352523) Tables 5.3, 5.5, 5.7, 5.8 and §5.2.7.5, and M4HB25 (IRIS 10665/381095) Annex 4 A4.1 and §4.1. Every band matches the spec. **Added:** M5HB's ethambutol indication (extensive disease, HIV, or high HIV or isoniazid-resistance settings) and the pyridoxine tablet fractions. **Reading stated:** HPMZ eligibility says "more than 40 kg" while the dose table starts at 40 kg and the exclusion is "less than 40 kg"; exactly 40 kg is read as eligible. Under 4 kg is refused. A blank regimen is the standard regimen, and the answer says so. |
+| Other tools | Open; `who-child-tb-algorithm` is blocked by owner decision D1. |
