@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `f553a44d0015bf7b`
-Generated: 2026-10-06T05:37:07.785Z
+Build ID: `ef3aa0c68b19a9c0`
+Generated: 2026-10-06T06:24:06.501Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -25,9 +25,9 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 129098 | `72e3a68223f7597e7680073bc7db8381d11c2a1c499f7725f5d4af22b8a11d23` |
+| `index.html` | 129599 | `b1212550c24a5a0acce97333eef15ac5eb2073fe226b0a44bea5c1154edd9801` |
 | `styles.css` | 75594 | `84e01c95d5ccc0928a4adcab97925a49dd1c34d86866df26c7994356ecea582e` |
-| `app.js` | 580326 | `8ebb11634eb27dccea68d28c3431275eb5b761bdde03dd72ba83f27b284f4909` |
+| `app.js` | 581568 | `1c196a89534efc587cc0ff39c53fcf622e6906bceb09d3b3bb33e19030122794` |
 | `report-feedback.js` | 12178 | `955e5cb542c7b13dcbb85a75ecf4ccf2dc0b2dffecd84daac1d607bd6acc7cd2` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 | `theme.js` | 3132 | `6910af0b4c65869c6a3d24d17842bb2cc88c7d23f8fb32506fcdbfeec70ce979` |
@@ -35,7 +35,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `sw.js` | 6994 | `215b6fa7b871cac7b775393d28a00c11ff3ccd1ce1b3230b378bcb8d8f881b40` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 250672 | `c967ee28946b0cc8289ed5c96b9c58c63e0fbfc7f6238aeca229da92671c0384` |
+| `sitemap.xml` | 251455 | `71e79038d78d931d5f0a81b51d3fee3aff34adb086b79cc3cbd584296971e124` |
 | `_headers` | 2063 | `1a500c03dd4add8641287d189c20f15afa3657931417b11ea2a51f39b501773f` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 3682 | `8dd13c4dd66de0c9ec93c2c1561e5fec1902f144b677d3581cf56b124b04a1b8` |
@@ -48,7 +48,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | Path | Bytes | SHA-256 |
 |---|---:|---|
 | `report-worker.mjs` | 13434 | `bcbebe960bf79e0cb2038f7ddc216dfb0753a9665f071fa32966d5d460ffc794` |
-| `report-catalog.js` | 116219 | `b6b6f82fec70c1c9197fa68e7f77fb76205559167fb4268d487acc1224ebcf7c` |
+| `report-catalog.js` | 116777 | `87bbd342181742fc99945cdc02bad47b809cdc97294cde1d7fb5b7317d9adfac` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 
 ## Source-of-truth modules (lib + views)
@@ -90,6 +90,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/angle-malocclusion-v720.js` | 3749 | `550bb570288e3b855208fcb6d653617ff5a407a361fd819c19a64567397420f2` |
 | `lib/anthro-v238.js` | 7926 | `4c5f0797d588d729e3730edcc931c50876ddee6370637bf44dfd5149e1fe9f9e` |
 | `lib/anthro-v272.js` | 3348 | `e3c7419342dd80c7034ae09801c66c05b3c5ce6e1aa2fdaf1d88e5f07b079485` |
+| `lib/antivenom-repeat-v1555.js` | 11722 | `921e1cdc5a0cbf66adc41a370236b1b44a26def6fd17896e7b37a9b582b7c490` |
 | `lib/ao-spine-neuro-v1241.js` | 3036 | `47d07dfcece6ac8e96d140cffe8260fd562f2dbbf2725fe34673e66ae0d395af` |
 | `lib/ao-spine-subaxial-v1241.js` | 8874 | `20742c50120a9e0bba42f4fd9851bd5fb6eeb5ea8f213008adc1f316b4cb6e9a` |
 | `lib/ao-spine-tl-v1241.js` | 7571 | `affc80a356ec93515935f04be0c1a685ae027894bbeb71ec751a7fc7e6e86fa7` |
@@ -668,7 +669,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/membranous-risk-v878.js` | 11351 | `882c36c07e46543e32f1114792c1124ee9f9ff6b384084fc0a8c221e7dd62062` |
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2709643 | `b9a7e6549910f4e10a837fc57fbce8dae0d2181e2c7ae5b85ffb9480557f6ad1` |
+| `lib/meta.js` | 2714921 | `a31d04d01a9375732146a318bb3c23b42429226bf28f1c72cd8d001e5ac91681` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 19326 | `64342935cc7842381f6e318293cfcd6f97b69022268da6c595c5c71db388af2d` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -1049,6 +1050,9 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/slums-v644.js` | 6237 | `9b2459d9cc261ef5599b8b8092d2a31fbd66511d666a9f2811f366fbd8c49f51` |
 | `lib/smast-v737.js` | 3334 | `15043daafddc1d9e3c9ee3119ccb3f66038d78b1e0289987e77b3aaad262834a` |
 | `lib/smc-spaq-dose-v1552.js` | 4997 | `b87ef71175576ccb8d29e4d24f754ebba33133721b0a4bb92a1fdb535343d896` |
+| `lib/snake-antivenom-indication-v1555.js` | 9879 | `cf703b04e04c89b3ae85ce5f4c5417a84f34c42b5b036109efb46559196da1ec` |
+| `lib/snake-neostigmine-trial-v1555.js` | 8080 | `566c31df9485516854444a5cb74c0bf7f46d9418b2d6dbe2507efa0a0d31ad05` |
+| `lib/snakebite-syndrome-v1555.js` | 9857 | `bdd87951860434166df9f9de44f023531c7206be7b324f5960541deacba01966` |
 | `lib/snot22-v552.js` | 11497 | `90f581a13039333b4ee2e5c0486061a25dfa7056fba35e0c76a95c9f71754ab3` |
 | `lib/snyder-slap-v1417.js` | 4120 | `6238a203fe40d2863b38faddea9eaebb783c55939ee7122ad5d9835bf2ea0738` |
 | `lib/sows-subjective-v1062.js` | 5919 | `764d6f997deb57819ec194b22d92e88d87f863f0159d78dedabc671b32c2d4ca` |
@@ -1091,6 +1095,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/taco-trali-v906.js` | 8467 | `61d4684d02f080f6956e63ae326a8837d0dcba1e2b48ebb7a09e598ae587416d` |
 | `lib/takayasu-v638.js` | 4946 | `e6f6fd9a75612cbb13ba144972a674f3098d201c326e4c3125cf6a1f42f7b137` |
 | `lib/tanner-staging-v361.js` | 4925 | `e2484223339faaac7f4272ed90ce8834fc835f51b70498bb064bc25cf77c9ec5` |
+| `lib/tb-4-month-eligibility-v1553.js` | 8780 | `4a311c4e6756e06d5b3792bb5a45f5d041666f5934a2abb56d69c9e9831b8b1b` |
 | `lib/tb-testing.js` | 1648 | `cc73aea69ef4256ba44fab37bcff1dc497c553784de852a4f9cf12c7a9b1d7cb` |
 | `lib/tbi-stroke-v206.js` | 14126 | `d4d323dec158311d32c19d5aa0a0f365ff186e91c9d9ac8a7d8f9153324dbac5` |
 | `lib/td-pregnancy-schedule-v1559.js` | 5158 | `24843d7c79e9109be56ee23f108064dded94f8ee0241f330d623dfc499e95f8b` |
@@ -1201,6 +1206,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/who-severe-malaria-v867.js` | 8519 | `abec8e576aeaf4eb04082e01190677959d15b567f850a8dcf2ed33a81613062a` |
 | `lib/who-surgical-checklist-v917.js` | 8990 | `e46dd6f9bcde6239c5739174857434e2b5e79065a6d5829afea72be9c19b1b1b` |
 | `lib/who-tb-fdc-dose-v1553.js` | 7697 | `c0055f9a94abc4f21cdf991e8c8af9ab51c077046066638f2d79f291befa7fc6` |
+| `lib/who-tpt-dose-v1553.js` | 10110 | `9f5e701d4dd5414ab5dc8fa335a25bbd4aeeecfc1009d5ab2529d13155804c51` |
 | `lib/wiltse-spondylolisthesis-v481.js` | 3497 | `6cc7aba8c22ffdce234a0e6a36d2d607bd25642494da50f5f5add4a06f8163a7` |
 | `lib/winquist-hansen-v381.js` | 4270 | `285352c99d2f0a5d567e14be8216500bdae9e24158cb7bfc4bbf4e192a202e1e` |
 | `lib/workflow-v4.js` | 7999 | `927a8a476e2c1b124c9e51040e549001b580b0baf2a4409ce463a0681fd08a72` |
@@ -1261,6 +1267,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/angle-malocclusion-v720.js` | 1227 | `e08d0869b658b41b3ce68f85ad43a706256a4c218ce8938adc96dc96c302f239` |
 | `mcp/adapters/anthro-v238.js` | 3023 | `eb56f86bc6b9d0884860c513c2bd80708d2d355e7ddaf33b91a207b1a24772a8` |
 | `mcp/adapters/anthro-v272.js` | 712 | `a3db003cb9b199abcfbed93c52b777a4d29863a164f598cfbe436df99e2d0a9e` |
+| `mcp/adapters/antivenom-repeat-v1555.js` | 1876 | `439eccc6a3acf8ee385f8f3841ed020f567b0878d9bab5430f294e607a2a268c` |
 | `mcp/adapters/ao-spine-subaxial-v1241.js` | 1973 | `aa900fd4b58420a173764cf01f5c29ebd6fbf1fc217f02c787dce07567ef45a9` |
 | `mcp/adapters/ao-spine-tl-v1241.js` | 1807 | `d087b0994c06f2a0097c7eb9ec0ffd2522f20f242bf3a8f6c7ee4384f1d27970` |
 | `mcp/adapters/aom-criteria-v857.js` | 2779 | `252b2610ce7644f83fe62d91a09f4e23ad215542617de9f50fc6bfd0ec90d9e0` |
@@ -2117,6 +2124,9 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/slums-v644.js` | 1537 | `5f7cd245287f81a83250659106aec3afe19e914f951f3c2f1bd898431f0e6459` |
 | `mcp/adapters/smast-v737.js` | 2632 | `b29c69175bd548e88a28cb1db7c0d24f22045acbfa9aeaf14acf85fd925e8d4c` |
 | `mcp/adapters/smc-spaq-dose-v1552.js` | 905 | `39e5cab64406826efcead01ef7cd49a23f00c691eb86e775376c3193667c6301` |
+| `mcp/adapters/snake-antivenom-indication-v1555.js` | 2777 | `a14c18244147c926140151c2bcd0c2ed062ffec44aaa28e523b6a0de85725db6` |
+| `mcp/adapters/snake-neostigmine-trial-v1555.js` | 1583 | `8fbb5635d1ac8784966f0c3b33d7b1aa0329f5a575c581386258408dbdfb29cb` |
+| `mcp/adapters/snakebite-syndrome-v1555.js` | 1615 | `4883b369d562cbd221f09b87e5a8b0a44f5543235b57d5fed5109ffe922fa5c6` |
 | `mcp/adapters/snot22-v552.js` | 5813 | `d9b24a75c7946724790ceccfd79e24ac55428f56d4ac1b5df3fd72023f53dd3d` |
 | `mcp/adapters/snyder-slap-v1417.js` | 782 | `cefbf391d571b68c00ab25b1b90e551304bb77270417432fc841edabc10cdf94` |
 | `mcp/adapters/sows-subjective-v1062.js` | 1287 | `451361f134bed0b732f05db2e77406e052c76040c9d13b87439c6a2705f08fb7` |
@@ -2155,6 +2165,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/taco-trali-v906.js` | 3225 | `c43eb0309f98356d84da0a6fdffa74ed6d642ef7e3fd495f75e43285a728954c` |
 | `mcp/adapters/takayasu-v638.js` | 2480 | `954b12e94a767aaf190c65b848aa8e46396745679249a630189fc882bd0ac89d` |
 | `mcp/adapters/tanner-staging-v361.js` | 1491 | `9fce17f8aba34575dec7f14dc57ad1c4dc6c426e13a7cacb05c365bba6088f4f` |
+| `mcp/adapters/tb-4-month-eligibility-v1553.js` | 2449 | `61b9d5f291879d1012de7828769ef0fa6a027f0138fa210ce9421b5a6aa2cefa` |
 | `mcp/adapters/tb-testing.js` | 1256 | `01cc400284794652da66f0ac945e0d6f519de1637a9c628f0dbb217d2ca7c28a` |
 | `mcp/adapters/tbi-stroke-v206.js` | 4445 | `613b63854f7ababaa37691eafce9835fce79af1077981fd9dfc5e35f245c0600` |
 | `mcp/adapters/td-pregnancy-schedule-v1559.js` | 1024 | `71ce14e8301fe1d61e9ea93d55df2aa8d6280f9f74f344c643e405c90349dece` |
@@ -2252,6 +2263,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/who-severe-malaria-v867.js` | 3390 | `717fbbd0d242b5d52866912e26bbdb761b5725655d1eb03e9ef386179cbb194d` |
 | `mcp/adapters/who-surgical-checklist-v917.js` | 2085 | `e9c82a77f697e4db3bab7168f5124546e7f00eca590fc4df92fe68209c8731ca` |
 | `mcp/adapters/who-tb-fdc-dose-v1553.js` | 1094 | `21ce1204f85a7b19a3bde09e651e5f80410475ad7569c2d50d439e5ebaa78012` |
+| `mcp/adapters/who-tpt-dose-v1553.js` | 916 | `e6e1b466eaf82e60a32171b30f180a7a2e28ab4f1dc2319110eeadb6edc94794` |
 | `mcp/adapters/wiltse-spondylolisthesis-v481.js` | 1187 | `b37b6b3dc22d435170cf04df44812c2b39e380b8c5180d87a2a8e3113d64d160` |
 | `mcp/adapters/winquist-hansen-v381.js` | 1628 | `7e746816bd6777d9cc79a684960b1e96c1f7f2333f191a54b21c60bcf87c906e` |
 | `mcp/adapters/woundid-v248.js` | 3996 | `4178ac59432ed059469c46d457b28f439974bc048d0059c95c9600216b2e470e` |
@@ -2262,7 +2274,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/zabramski-v442.js` | 1156 | `f364baad3d680210aafd8b47cb6ad472521c8bfb9f02683340f5175dcb03d097` |
 | `mcp/adapters/zargar-caustic-v401.js` | 1423 | `158261bfae30e1660e5888582289b46bef0344c5763a15a9be2c812be5722d4a` |
 | `mcp/adapters/zulewski-v608.js` | 4193 | `68da25df2e1cd4653dd6ad796f5c0f032429c1da8d89459e8d66f5cc7bb51ab8` |
-| `mcp/catalog.js` | 119987 | `6dfda4ae5732104214acc29ad88c0a2b0e01410539b597e0fdb602368809fbd9` |
+| `mcp/catalog.js` | 120811 | `1661e9e141814e01500fbde838d2695817e7183e0d17d1f15e59412d118ea20a` |
 | `mcp/fields.js` | 9201 | `ff8920609cbc0abd65ea9265076cfc6df06e7bfd4fa0851cee84ac7622713d46` |
 | `mcp/file-tools.js` | 10464 | `1b98e48d0f003b5483e0a983e9c621abe4af0650101fe3bc0b2e48c9a1cae29f` |
 | `mcp/server.js` | 2985 | `6531d95a89218f599811c82c817e36abafd59b97a619927ae58a7f82157c4865` |
@@ -2446,9 +2458,10 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1550.js` | 5187 | `df3a9f31c1077aa5363e3b78c739d3317217c22f39414fce85db4b669d7f18de` |
 | `views/group-v1551.js` | 5736 | `e9a6d5e5b20e0b4e2863b45e03a052d6e7d4c68d066f9d08bb5bb789d3c80316` |
 | `views/group-v1552.js` | 5464 | `f696b0ae3219aaa68a46fed5c48588be0ed73e80e3f5182e6d2c2e0b9461dbd6` |
-| `views/group-v1553.js` | 2605 | `530c3a4862037099ca4e6a2498241f0da5fd62a9d934b9e65ed5741590055c2c` |
+| `views/group-v1553.js` | 6128 | `4cb1c025da3feb3a89ef8745385e9cfc94d1f5d39bddb5d94162298af140b095` |
 | `views/group-v1554.js` | 2871 | `cf6ec90688018e99094239ea556056e1484cbcfc74dc29465b2af88276713c7d` |
 | `views/group-v1555.js` | 2804 | `8ac4fd5e9213c8fc6c3a64f695539a6a9cfcabdd7dfdf05efbc85254614fab39` |
+| `views/group-v1555b.js` | 9411 | `3a1121c0a4e9af3be1170e3a7168d3e655068a0043f7cde0c8f4afc97c6e1d04` |
 | `views/group-v1557.js` | 3112 | `3f099bd3f031cb54a600f0ae2b605e2fe462b96ff0bae223e72f97eaa5bcccfa` |
 | `views/group-v1558.js` | 8164 | `6456bede131a65960b45cfd8380a164af0134c5cf517171dac25b392760b9f40` |
 | `views/group-v1559.js` | 4930 | `540d5cd5b2d56415b04ab7b19100eba7b8b7d0c74f8e1778395e1986448846d4` |

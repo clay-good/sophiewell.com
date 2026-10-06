@@ -654,6 +654,12 @@ and thresholds) is a stable rule in every case (Class A).
 | enteric-fever-regimen | WHO AWaRe empiric enteric fever regimen | WHO AWaRe antibiotic book (2022) | same | 2026-10-06 | current - chapter 15 and Table 15.2 read October 6, 2026 |
 | leprosy-classify-mdt | WHO PB/MB leprosy definitions and the 2018 MDT regimens | WHO SEARO leprosy guidelines (2018) | same | 2026-10-06 | current - case definitions and Table 3 read October 6, 2026 |
 | leprosy-pep-rifampicin | WHO single-dose rifampicin for leprosy contacts | WHO SEARO leprosy guidelines (2018) | same | 2026-10-06 | current - section 3.1 and Table 5 read October 6, 2026 |
+| snake-antivenom-indication | WHO SEARO and AFRO antivenom indications | WHO SEARO snakebite guidelines (2016); WHO AFRO (2010) | same | 2026-10-06 | current - SEARO pp. 129-142 and AFRO Table 14.1 read October 6, 2026 |
+| snakebite-syndrome | WHO snakebite syndromic approach (AFRO six, SEARO five) | WHO AFRO snakebite guidelines (2010); WHO SEARO (2016) | same | 2026-10-06 | current - AFRO ch. 8 and SEARO p. 101 read October 6, 2026 |
+| antivenom-repeat | WHO SEARO, AFRO and India antivenom repeat rules | WHO SEARO (2016), WHO AFRO (2010), India STG snake bite (2016) | same | 2026-10-06 | current - SEARO p. 142, AFRO p. 80 and India pp. 36-41 read October 6, 2026 |
+| snake-neostigmine-trial | WHO and India anticholinesterase trial for neurotoxic snakebite | WHO SEARO (2016), WHO AFRO (2010), India STG snake bite (2016) | same | 2026-10-06 | current - SEARO pp. 152-153, AFRO p. 88 and India p. 18 read October 6, 2026 |
+| who-tpt-dose | WHO TPT weight-band dosing (Table 4) | WHO TPT operational handbook, 2nd ed. (2024) | same | 2026-10-06 | current - Tables 3 and 4 read October 6, 2026 |
+| tb-4-month-eligibility | WHO 4-month regimen for non-severe TB in children | WHO TB Module 5 handbook (2022) | same | 2026-10-06 | current - Boxes 5.2-5.3 read October 6, 2026 |
 | vitamin-a-dose-child | WHO vitamin A doses for children by reason (routine, diarrhea, measles, eye signs) | WHO VA11 (2011), IMCI chart (2014), Pocket book (2013), SAM manual (1999) | same | 2026-10-06 | current - each source read October 6, 2026; their age bands differ at 12 months and each reason uses its own |
 | deworming-dose-who | WHO deworming dose and frequency by group and prevalence | WHO STH preventive chemotherapy guideline (2017) | same | 2026-10-06 | current - the 2017 guideline is current; recommendations read October 6, 2026 |
 | labor-care-guide-alert | WHO Labour Care Guide alert thresholds for each labor observation | WHO labour care guide user's manual (2020) | same | 2026-10-06 | current - the 2020 manual is the current edition; Tables 2-6 read October 6, 2026 |
@@ -701,6 +707,12 @@ guideline's citation carries its version date and DOI.
 | enteric-fever-regimen | WHO AWaRe empiric enteric fever regimen | WHO AWaRe antibiotic book (2022) | same | 2026-10-06 | moderate | current |
 | leprosy-classify-mdt | WHO PB/MB leprosy definitions and the 2018 MDT regimens | WHO SEARO leprosy guidelines (2018) | same | 2026-10-06 | low | current |
 | leprosy-pep-rifampicin | WHO single-dose rifampicin for leprosy contacts | WHO SEARO leprosy guidelines (2018) | same | 2026-10-06 | low | current |
+| snake-antivenom-indication | WHO SEARO and AFRO antivenom indications | WHO SEARO snakebite guidelines (2016); WHO AFRO (2010) | same | 2026-10-06 | low | current |
+| snakebite-syndrome | WHO snakebite syndromic approach (AFRO six, SEARO five) | WHO AFRO snakebite guidelines (2010); WHO SEARO (2016) | same | 2026-10-06 | low | current |
+| antivenom-repeat | WHO SEARO, AFRO and India antivenom repeat rules | WHO SEARO (2016), WHO AFRO (2010), India STG snake bite (2016) | same | 2026-10-06 | low | current |
+| snake-neostigmine-trial | WHO and India anticholinesterase trial for neurotoxic snakeb | WHO SEARO (2016), WHO AFRO (2010), India STG snake bite (2016) | same | 2026-10-06 | low | current |
+| who-tpt-dose | WHO TPT weight-band dosing (Table 4) | WHO TPT operational handbook, 2nd ed. (2024) | same | 2026-10-06 | moderate | current |
+| tb-4-month-eligibility | WHO 4-month regimen for non-severe TB in children | WHO TB Module 5 handbook (2022) | same | 2026-10-06 | moderate | current |
 | vitamin-a-dose-child | WHO vitamin A doses for children by reason (routine, diarrhe | WHO VA11 (2011), IMCI chart (2014), Pocket book (2013), SAM manual (1999) | same | 2026-10-06 | low | current |
 | deworming-dose-who | WHO deworming dose and frequency by group and prevalence | WHO STH preventive chemotherapy guideline (2017) | same | 2026-10-06 | low | current |
 | labor-care-guide-alert | WHO Labour Care Guide alerts | WHO labour care guide user's manual (2020) | same | 2026-10-06 | low | current - a 2020 manual |

@@ -973,6 +973,12 @@ import whoRabiesPepV1557 from './adapters/who-rabies-pep-v1557.js';
 import pphWho2025V1558 from './adapters/pph-who-2025-v1558.js';
 import laborCareGuideAlertV1558 from './adapters/labor-care-guide-alert-v1558.js';
 import vitaminADoseChildV1550 from './adapters/vitamin-a-dose-child-v1550.js';
+import snakeAntivenomIndicationV1555 from './adapters/snake-antivenom-indication-v1555.js';
+import snakebiteSyndromeV1555 from './adapters/snakebite-syndrome-v1555.js';
+import antivenomRepeatV1555 from './adapters/antivenom-repeat-v1555.js';
+import snakeNeostigmineTrialV1555 from './adapters/snake-neostigmine-trial-v1555.js';
+import whoTptDoseV1553 from './adapters/who-tpt-dose-v1553.js';
+import tb4MonthEligibilityV1553 from './adapters/tb-4-month-eligibility-v1553.js';
 import leprosyClassifyMdtV1561 from './adapters/leprosy-classify-mdt-v1561.js';
 import leprosyPepRifampicinV1561 from './adapters/leprosy-pep-rifampicin-v1561.js';
 import whoCotrimoxazoleV1554 from './adapters/who-cotrimoxazole-v1554.js';
@@ -2012,6 +2018,12 @@ const ADAPTER_MODULES = [
   ['pph-who-2025-v1558', pphWho2025V1558],
   ['labor-care-guide-alert-v1558', laborCareGuideAlertV1558],
   ['vitamin-a-dose-child-v1550', vitaminADoseChildV1550],
+  ['snake-antivenom-indication-v1555', snakeAntivenomIndicationV1555],
+  ['snakebite-syndrome-v1555', snakebiteSyndromeV1555],
+  ['antivenom-repeat-v1555', antivenomRepeatV1555],
+  ['snake-neostigmine-trial-v1555', snakeNeostigmineTrialV1555],
+  ['who-tpt-dose-v1553', whoTptDoseV1553],
+  ['tb-4-month-eligibility-v1553', tb4MonthEligibilityV1553],
   ['leprosy-classify-mdt-v1561', leprosyClassifyMdtV1561],
   ['leprosy-pep-rifampicin-v1561', leprosyPepRifampicinV1561],
   ['who-cotrimoxazole-v1554', whoCotrimoxazoleV1554],

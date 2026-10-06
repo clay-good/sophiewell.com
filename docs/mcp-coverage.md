@@ -8776,6 +8776,24 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/vitamin-a-dose-child-v1550.js (spec-v1550: WHO vitamin A doses for children by reason (routine, diarrhea, measles, eye signs) — clinical disclaimer)
 - `vitamin-a-dose-child`
 
+### lib/snake-antivenom-indication-v1555.js (spec-v1555: WHO SEARO and AFRO antivenom indications — clinical disclaimer)
+- `snake-antivenom-indication`
+
+### lib/snakebite-syndrome-v1555.js (spec-v1555: WHO snakebite syndromic approach (AFRO six, SEARO five) — clinical disclaimer)
+- `snakebite-syndrome`
+
+### lib/antivenom-repeat-v1555.js (spec-v1555: WHO SEARO, AFRO and India antivenom repeat rules — clinical disclaimer)
+- `antivenom-repeat`
+
+### lib/snake-neostigmine-trial-v1555.js (spec-v1555: WHO and India anticholinesterase trial for neurotoxic snakebite — clinical disclaimer)
+- `snake-neostigmine-trial`
+
+### lib/who-tpt-dose-v1553.js (spec-v1553: WHO TPT weight-band dosing (Table 4) — clinical disclaimer)
+- `who-tpt-dose`
+
+### lib/tb-4-month-eligibility-v1553.js (spec-v1553: WHO 4-month regimen for non-severe TB in children — clinical disclaimer)
+- `tb-4-month-eligibility`
+
 ### lib/leprosy-classify-mdt-v1561.js (spec-v1561: WHO PB/MB leprosy definitions and the 2018 MDT regimens — clinical disclaimer)
 - `leprosy-classify-mdt`
 

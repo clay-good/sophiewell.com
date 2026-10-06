@@ -7081,6 +7081,72 @@
     },
     {
       "phrases": [
+        "antivenom indication",
+        "when to give antivenom",
+        "snakebite antivenom criteria",
+        "asv indication",
+        "snake envenoming who criteria"
+      ],
+      "tile": "snake-antivenom-indication",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "snakebite syndrome",
+        "which snake bit",
+        "syndromic approach snakebite",
+        "snake identification by symptoms",
+        "krait cobra viper syndrome"
+      ],
+      "tile": "snakebite-syndrome",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "repeat antivenom",
+        "antivenom repeat dose",
+        "asv repeat dose",
+        "more antivenom snakebite",
+        "india asv regimen"
+      ],
+      "tile": "antivenom-repeat",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "neostigmine trial",
+        "anticholinesterase test snakebite",
+        "atropine neostigmine snakebite",
+        "tensilon test snake",
+        "neurotoxic snakebite ptosis"
+      ],
+      "tile": "snake-neostigmine-trial",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "tb preventive treatment dose",
+        "3hp tablets by weight",
+        "tpt dose by weight",
+        "levofloxacin tpt mdr contacts",
+        "isoniazid preventive therapy dose"
+      ],
+      "tile": "who-tpt-dose",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "shine regimen",
+        "4 month tb treatment child",
+        "non severe tb child",
+        "2hrz 2hr",
+        "short tb regimen children"
+      ],
+      "tile": "tb-4-month-eligibility",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
         "leprosy mdt",
         "paucibacillary multibacillary",
         "leprosy classification who",

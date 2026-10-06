@@ -703,6 +703,12 @@ import * as whoRabiesPepV1557 from '../../lib/who-rabies-pep-v1557.js';
 import * as pphWho2025V1558 from '../../lib/pph-who-2025-v1558.js';
 import * as laborCareGuideAlertV1558 from '../../lib/labor-care-guide-alert-v1558.js';
 import * as vitaminADoseChildV1550 from '../../lib/vitamin-a-dose-child-v1550.js';
+import * as snakeAntivenomIndicationV1555 from '../../lib/snake-antivenom-indication-v1555.js';
+import * as snakebiteSyndromeV1555 from '../../lib/snakebite-syndrome-v1555.js';
+import * as antivenomRepeatV1555 from '../../lib/antivenom-repeat-v1555.js';
+import * as snakeNeostigmineTrialV1555 from '../../lib/snake-neostigmine-trial-v1555.js';
+import * as whoTptDoseV1553 from '../../lib/who-tpt-dose-v1553.js';
+import * as tb4MonthEligibilityV1553 from '../../lib/tb-4-month-eligibility-v1553.js';
 import * as leprosyClassifyMdtV1561 from '../../lib/leprosy-classify-mdt-v1561.js';
 import * as leprosyPepRifampicinV1561 from '../../lib/leprosy-pep-rifampicin-v1561.js';
 import * as whoCotrimoxazoleV1554 from '../../lib/who-cotrimoxazole-v1554.js';
@@ -1526,6 +1532,12 @@ const MODULES = {
   'pph-who-2025-v1558.js': pphWho2025V1558,
   'labor-care-guide-alert-v1558.js': laborCareGuideAlertV1558,
   'vitamin-a-dose-child-v1550.js': vitaminADoseChildV1550,
+  'snake-antivenom-indication-v1555.js': snakeAntivenomIndicationV1555,
+  'snakebite-syndrome-v1555.js': snakebiteSyndromeV1555,
+  'antivenom-repeat-v1555.js': antivenomRepeatV1555,
+  'snake-neostigmine-trial-v1555.js': snakeNeostigmineTrialV1555,
+  'who-tpt-dose-v1553.js': whoTptDoseV1553,
+  'tb-4-month-eligibility-v1553.js': tb4MonthEligibilityV1553,
   'leprosy-classify-mdt-v1561.js': leprosyClassifyMdtV1561,
   'leprosy-pep-rifampicin-v1561.js': leprosyPepRifampicinV1561,
   'who-cotrimoxazole-v1554.js': whoCotrimoxazoleV1554,

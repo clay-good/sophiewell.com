@@ -21,6 +21,26 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Is antivenom indicated for this snakebite (WHO SEARO and AFRO): any one
+  systemic or local sign, AFRO's local signs only for necrotic species, the
+  high-reaction-risk rule, and never "not indicated" with a sign unassessed.
+- Which snake (WHO SEARO and AFRO syndromic approach): AFRO's six syndromes
+  and SEARO's five, with the antivenom class each points to, always as a
+  suggestion and not an identification.
+- When to repeat antivenom (WHO SEARO, AFRO and India): the 6-hour clotting
+  rule, SEARO's bleeding and neurotoxic timings, India's regimens with its 20-
+  and 30-vial limits; no invented initial dose and a 20WBCT not done is never
+  clotted.
+- Neostigmine trial for neurotoxic snakebite (WHO and India): atropine then
+  neostigmine by weight (WHO, IM) or 1.5 mg IV (India), the 50% ptosis
+  response, the stop rules, and no trial after a suspected mamba bite.
+- TB preventive treatment tablets by weight (WHO 2024): every Table 4 cell
+  for 3HP, 3HR, 6H/9H, 4R, 1HP and 6Lfx with the infant age splits, each
+  regimen's antiretroviral interactions, and the misprinted 6H cell in tablets
+  only.
+- Can this child take the 4-month TB regimen (WHO 2022): Box 5.3's three
+  settings, the Xpert low/medium edge, the exclusions, "may be considered"
+  with HIV, and when to add ethambutol.
 - Leprosy PB or MB and the MDT regimen (WHO 2018): the 2017 case
   definitions (an unassessed nerve never reads as none) and the same three
   drugs for 6 or 12 months, with the child doses by age or weight.

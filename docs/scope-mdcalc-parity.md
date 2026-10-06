@@ -360,3 +360,15 @@ experience**.
 > v1561, Leprosy: Paucibacillary or Multibacillary, and the MDT Regimen (WHO 2018) — [spec-v1561](spec-v1561.md), which adds `leprosy-classify-mdt` — is 2005.)
 
 > v1561, Single-Dose Rifampicin for Leprosy Contacts (WHO 2018) — [spec-v1561](spec-v1561.md), which adds `leprosy-pep-rifampicin` — is 2006.)
+
+> v1555, Is Antivenom Indicated for This Snakebite? (WHO SEARO and AFRO) — [spec-v1555](spec-v1555.md), which adds `snake-antivenom-indication` — is 2007.)
+
+> v1555, Which Snake? The Snakebite Syndromic Approach (WHO SEARO and AFRO) — [spec-v1555](spec-v1555.md), which adds `snakebite-syndrome` — is 2008.)
+
+> v1555, When to Repeat Antivenom (WHO SEARO, AFRO, and India) — [spec-v1555](spec-v1555.md), which adds `antivenom-repeat` — is 2009.)
+
+> v1555, Neostigmine Trial for Neurotoxic Snakebite: Doses and Response (WHO and India) — [spec-v1555](spec-v1555.md), which adds `snake-neostigmine-trial` — is 2010.)
+
+> v1553, TB Preventive Treatment Tablets by Weight: 3HP, 3HR, 6H, 4R, 1HP, 6Lfx (WHO 2024) — [spec-v1553](spec-v1553.md), which adds `who-tpt-dose` — is 2011.)
+
+> v1553, Can This Child Take the 4-Month TB Regimen? (WHO, Non-Severe TB) — [spec-v1553](spec-v1553.md), which adds `tb-4-month-eligibility` — is 2012.)

@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:f553a44d-0015-5f7b-82ca-a6c89a17da24",
+  "serialNumber": "urn:uuid:ef3aa0c6-8b19-59c0-8dd6-2f5aa7754992",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-06T05:37:07.785Z",
+    "timestamp": "2026-10-06T06:24:06.501Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2006 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2012 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "72e3a68223f7597e7680073bc7db8381d11c2a1c499f7725f5d4af22b8a11d23"
+          "content": "b1212550c24a5a0acce97333eef15ac5eb2073fe226b0a44bea5c1154edd9801"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "129098"
+          "value": "129599"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8ebb11634eb27dccea68d28c3431275eb5b761bdde03dd72ba83f27b284f4909"
+          "content": "1c196a89534efc587cc0ff39c53fcf622e6906bceb09d3b3bb33e19030122794"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "580326"
+          "value": "581568"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c967ee28946b0cc8289ed5c96b9c58c63e0fbfc7f6238aeca229da92671c0384"
+          "content": "71e79038d78d931d5f0a81b51d3fee3aff34adb086b79cc3cbd584296971e124"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "250672"
+          "value": "251455"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b6b6f82fec70c1c9197fa68e7f77fb76205559167fb4268d487acc1224ebcf7c"
+          "content": "87bbd342181742fc99945cdc02bad47b809cdc97294cde1d7fb5b7317d9adfac"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "116219"
+          "value": "116777"
         }
       ]
     },
@@ -1207,6 +1207,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3348"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/antivenom-repeat-v1555.js",
+      "type": "file",
+      "name": "lib/antivenom-repeat-v1555.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "921e1cdc5a0cbf66adc41a370236b1b44a26def6fd17896e7b37a9b582b7c490"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "11722"
         }
       ]
     },
@@ -13355,7 +13376,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b9a7e6549910f4e10a837fc57fbce8dae0d2181e2c7ae5b85ffb9480557f6ad1"
+          "content": "a31d04d01a9375732146a318bb3c23b42429226bf28f1c72cd8d001e5ac91681"
         }
       ],
       "properties": [
@@ -13365,7 +13386,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2709643"
+          "value": "2714921"
         }
       ]
     },
@@ -21350,6 +21371,69 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/snake-antivenom-indication-v1555.js",
+      "type": "file",
+      "name": "lib/snake-antivenom-indication-v1555.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "cf703b04e04c89b3ae85ce5f4c5417a84f34c42b5b036109efb46559196da1ec"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "9879"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/snake-neostigmine-trial-v1555.js",
+      "type": "file",
+      "name": "lib/snake-neostigmine-trial-v1555.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "566c31df9485516854444a5cb74c0bf7f46d9418b2d6dbe2507efa0a0d31ad05"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8080"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/snakebite-syndrome-v1555.js",
+      "type": "file",
+      "name": "lib/snakebite-syndrome-v1555.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "bdd87951860434166df9f9de44f023531c7206be7b324f5960541deacba01966"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "9857"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/snot22-v552.js",
       "type": "file",
       "name": "lib/snot22-v552.js",
@@ -22228,6 +22312,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4925"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/tb-4-month-eligibility-v1553.js",
+      "type": "file",
+      "name": "lib/tb-4-month-eligibility-v1553.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4a311c4e6756e06d5b3792bb5a45f5d041666f5934a2abb56d69c9e9831b8b1b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8780"
         }
       ]
     },
@@ -24542,6 +24647,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/who-tpt-dose-v1553.js",
+      "type": "file",
+      "name": "lib/who-tpt-dose-v1553.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9f5e701d4dd5414ab5dc8fa335a25bbd4aeeecfc1009d5ab2529d13155804c51"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "10110"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/wiltse-spondylolisthesis-v481.js",
       "type": "file",
       "name": "lib/wiltse-spondylolisthesis-v481.js",
@@ -25798,6 +25924,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "712"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/antivenom-repeat-v1555.js",
+      "type": "file",
+      "name": "mcp/adapters/antivenom-repeat-v1555.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "439eccc6a3acf8ee385f8f3841ed020f567b0878d9bab5430f294e607a2a268c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1876"
         }
       ]
     },
@@ -43778,6 +43925,69 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/snake-antivenom-indication-v1555.js",
+      "type": "file",
+      "name": "mcp/adapters/snake-antivenom-indication-v1555.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a14c18244147c926140151c2bcd0c2ed062ffec44aaa28e523b6a0de85725db6"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2777"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/snake-neostigmine-trial-v1555.js",
+      "type": "file",
+      "name": "mcp/adapters/snake-neostigmine-trial-v1555.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8fbb5635d1ac8784966f0c3b33d7b1aa0329f5a575c581386258408dbdfb29cb"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1583"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/snakebite-syndrome-v1555.js",
+      "type": "file",
+      "name": "mcp/adapters/snakebite-syndrome-v1555.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4883b369d562cbd221f09b87e5a8b0a44f5543235b57d5fed5109ffe922fa5c6"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1615"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/snot22-v552.js",
       "type": "file",
       "name": "mcp/adapters/snot22-v552.js",
@@ -44572,6 +44782,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1491"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/tb-4-month-eligibility-v1553.js",
+      "type": "file",
+      "name": "mcp/adapters/tb-4-month-eligibility-v1553.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "61b9d5f291879d1012de7828769ef0fa6a027f0138fa210ce9421b5a6aa2cefa"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2449"
         }
       ]
     },
@@ -46613,6 +46844,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/who-tpt-dose-v1553.js",
+      "type": "file",
+      "name": "mcp/adapters/who-tpt-dose-v1553.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e6e1b466eaf82e60a32171b30f180a7a2e28ab4f1dc2319110eeadb6edc94794"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "916"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/wiltse-spondylolisthesis-v481.js",
       "type": "file",
       "name": "mcp/adapters/wiltse-spondylolisthesis-v481.js",
@@ -46829,7 +47081,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6dfda4ae5732104214acc29ad88c0a2b0e01410539b597e0fdb602368809fbd9"
+          "content": "1661e9e141814e01500fbde838d2695817e7183e0d17d1f15e59412d118ea20a"
         }
       ],
       "properties": [
@@ -46839,7 +47091,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "119987"
+          "value": "120811"
         }
       ]
     },
@@ -50693,7 +50945,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "530c3a4862037099ca4e6a2498241f0da5fd62a9d934b9e65ed5741590055c2c"
+          "content": "4cb1c025da3feb3a89ef8745385e9cfc94d1f5d39bddb5d94162298af140b095"
         }
       ],
       "properties": [
@@ -50703,7 +50955,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2605"
+          "value": "6128"
         }
       ]
     },
@@ -50746,6 +50998,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2804"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1555b.js",
+      "type": "file",
+      "name": "views/group-v1555b.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3a1121c0a4e9af3be1170e3a7168d3e655068a0043f7cde0c8f4afc97c6e1d04"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "9411"
         }
       ]
     },
@@ -82024,6 +82297,7 @@
         "urn:sophiewell:file:source:lib/angle-malocclusion-v720.js",
         "urn:sophiewell:file:source:lib/anthro-v238.js",
         "urn:sophiewell:file:source:lib/anthro-v272.js",
+        "urn:sophiewell:file:source:lib/antivenom-repeat-v1555.js",
         "urn:sophiewell:file:source:lib/ao-spine-neuro-v1241.js",
         "urn:sophiewell:file:source:lib/ao-spine-subaxial-v1241.js",
         "urn:sophiewell:file:source:lib/ao-spine-tl-v1241.js",
@@ -82983,6 +83257,9 @@
         "urn:sophiewell:file:source:lib/slums-v644.js",
         "urn:sophiewell:file:source:lib/smast-v737.js",
         "urn:sophiewell:file:source:lib/smc-spaq-dose-v1552.js",
+        "urn:sophiewell:file:source:lib/snake-antivenom-indication-v1555.js",
+        "urn:sophiewell:file:source:lib/snake-neostigmine-trial-v1555.js",
+        "urn:sophiewell:file:source:lib/snakebite-syndrome-v1555.js",
         "urn:sophiewell:file:source:lib/snot22-v552.js",
         "urn:sophiewell:file:source:lib/snyder-slap-v1417.js",
         "urn:sophiewell:file:source:lib/sows-subjective-v1062.js",
@@ -83025,6 +83302,7 @@
         "urn:sophiewell:file:source:lib/taco-trali-v906.js",
         "urn:sophiewell:file:source:lib/takayasu-v638.js",
         "urn:sophiewell:file:source:lib/tanner-staging-v361.js",
+        "urn:sophiewell:file:source:lib/tb-4-month-eligibility-v1553.js",
         "urn:sophiewell:file:source:lib/tb-testing.js",
         "urn:sophiewell:file:source:lib/tbi-stroke-v206.js",
         "urn:sophiewell:file:source:lib/td-pregnancy-schedule-v1559.js",
@@ -83135,6 +83413,7 @@
         "urn:sophiewell:file:source:lib/who-severe-malaria-v867.js",
         "urn:sophiewell:file:source:lib/who-surgical-checklist-v917.js",
         "urn:sophiewell:file:source:lib/who-tb-fdc-dose-v1553.js",
+        "urn:sophiewell:file:source:lib/who-tpt-dose-v1553.js",
         "urn:sophiewell:file:source:lib/wiltse-spondylolisthesis-v481.js",
         "urn:sophiewell:file:source:lib/winquist-hansen-v381.js",
         "urn:sophiewell:file:source:lib/workflow-v4.js",
@@ -83342,6 +83621,7 @@
         "urn:sophiewell:file:source:views/group-v1553.js",
         "urn:sophiewell:file:source:views/group-v1554.js",
         "urn:sophiewell:file:source:views/group-v1555.js",
+        "urn:sophiewell:file:source:views/group-v1555b.js",
         "urn:sophiewell:file:source:views/group-v1557.js",
         "urn:sophiewell:file:source:views/group-v1558.js",
         "urn:sophiewell:file:source:views/group-v1559.js",
@@ -84128,6 +84408,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/angle-malocclusion-v720.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/anthro-v238.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/anthro-v272.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/antivenom-repeat-v1555.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ao-spine-subaxial-v1241.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ao-spine-tl-v1241.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/aom-criteria-v857.js",
@@ -84984,6 +85265,9 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/slums-v644.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/smast-v737.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/smc-spaq-dose-v1552.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/snake-antivenom-indication-v1555.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/snake-neostigmine-trial-v1555.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/snakebite-syndrome-v1555.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/snot22-v552.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/snyder-slap-v1417.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/sows-subjective-v1062.js",
@@ -85022,6 +85306,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/taco-trali-v906.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/takayasu-v638.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tanner-staging-v361.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/tb-4-month-eligibility-v1553.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tb-testing.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/tbi-stroke-v206.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/td-pregnancy-schedule-v1559.js",
@@ -85119,6 +85404,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/who-severe-malaria-v867.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/who-surgical-checklist-v917.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/who-tb-fdc-dose-v1553.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/who-tpt-dose-v1553.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/wiltse-spondylolisthesis-v481.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/winquist-hansen-v381.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/woundid-v248.js",
@@ -85233,7 +85519,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "f553a44d0015bf7b"
+      "value": "ef3aa0c68b19a9c0"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -85245,7 +85531,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3140"
+      "value": "3153"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
