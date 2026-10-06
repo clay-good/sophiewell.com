@@ -73,6 +73,10 @@ export const ANSWERS_AN_EMPTY_FORM = new Set([
   "igg4-rd-2020",
   "isth-bat",
   "kings-college",
+  // spec-v1560 (diphtheria-antitoxin-dose): the antitoxin dose comes from four required selects (site, time,
+  // neck swelling, severity); the only number field is the optional weight for the antibiotic, and with it
+  // blank the answer says "No weight was entered, so no mg dose is given".
+  "diphtheria-antitoxin-dose",
   // spec-v1558 (mgso4-im-regimen): the regimen comes from two required selects (source, regimen); the
   // number fields are the optional next-dose check, and with them blank the tile gives the regimen and
   // no safe-to-give verdict, which it gives only when all three checks are entered.

@@ -350,3 +350,9 @@ experience**.
 > v1559, Tetanus-Diphtheria Doses in Pregnancy (WHO 2017) — [spec-v1559](spec-v1559.md), which adds `td-pregnancy-schedule` — is 2000.)
 
 > v1559, Low Birth Weight and Preterm Categories (WHO 2022) — [spec-v1559](spec-v1559.md), which adds `newborn-size-category` — is 2001.)
+
+> v1554, Cotrimoxazole Prophylaxis in HIV: Who Gets It and the Dose by Weight (WHO) — [spec-v1554](spec-v1554.md), which adds `who-cotrimoxazole` — is 2002.)
+
+> v1560, Diphtheria Antitoxin Dose and Antibiotic (WHO 2024) — [spec-v1560](spec-v1560.md), which adds `diphtheria-antitoxin-dose` — is 2003.)
+
+> v1560, Typhoid (Enteric Fever) Antibiotic by Severity and Local Resistance (WHO AWaRe) — [spec-v1560](spec-v1560.md), which adds `enteric-fever-regimen` — is 2004.)

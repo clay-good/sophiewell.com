@@ -649,6 +649,9 @@ and thresholds) is a stable rule in every case (Class A).
 | who-anc-schedule | WHO eight-contact antenatal care schedule | WHO ANC recommendations (2016) | same | 2026-10-06 | current - recommendation E.7 and Box 5 read October 6, 2026 |
 | td-pregnancy-schedule | WHO Td doses in pregnancy by vaccination history | WHO tetanus vaccine position paper (2017) | same | 2026-10-06 | current - the 2017 position paper and its summary table read October 6, 2026 |
 | newborn-size-category | WHO low birth weight and preterm categories | WHO preterm and LBW recommendations (2022) | same | 2026-10-06 | current - the glossary and recs A.1a/A.1b read October 6, 2026 |
+| who-cotrimoxazole | WHO cotrimoxazole prophylaxis criteria and weight-band doses | WHO HIV guidelines (2021) and ARV dosing guidance (May 2026) | same | 2026-10-06 | current - section 6.3 and the 2026 Table 6 read October 6, 2026 |
+| diphtheria-antitoxin-dose | WHO diphtheria antitoxin dose by disease and the antibiotic | WHO diphtheria clinical management guideline (February 2024) | same | 2026-10-06 | current - sections 5 and 6 read October 6, 2026 |
+| enteric-fever-regimen | WHO AWaRe empiric enteric fever regimen | WHO AWaRe antibiotic book (2022) | same | 2026-10-06 | current - chapter 15 and Table 15.2 read October 6, 2026 |
 | vitamin-a-dose-child | WHO vitamin A doses for children by reason (routine, diarrhea, measles, eye signs) | WHO VA11 (2011), IMCI chart (2014), Pocket book (2013), SAM manual (1999) | same | 2026-10-06 | current - each source read October 6, 2026; their age bands differ at 12 months and each reason uses its own |
 | deworming-dose-who | WHO deworming dose and frequency by group and prevalence | WHO STH preventive chemotherapy guideline (2017) | same | 2026-10-06 | current - the 2017 guideline is current; recommendations read October 6, 2026 |
 | labor-care-guide-alert | WHO Labour Care Guide alert thresholds for each labor observation | WHO labour care guide user's manual (2020) | same | 2026-10-06 | current - the 2020 manual is the current edition; Tables 2-6 read October 6, 2026 |
@@ -691,6 +694,9 @@ guideline's citation carries its version date and DOI.
 | who-anc-schedule | WHO eight-contact antenatal care schedule | WHO ANC recommendations (2016) | same | 2026-10-06 | low | current |
 | td-pregnancy-schedule | WHO Td doses in pregnancy by vaccination history | WHO tetanus vaccine position paper (2017) | same | 2026-10-06 | low | current |
 | newborn-size-category | WHO low birth weight and preterm categories | WHO preterm and LBW recommendations (2022) | same | 2026-10-06 | low | current |
+| who-cotrimoxazole | WHO cotrimoxazole prophylaxis criteria and weight-band doses | WHO HIV guidelines (2021) and ARV dosing guidance (May 2026) | same | 2026-10-06 | moderate | current |
+| diphtheria-antitoxin-dose | WHO diphtheria antitoxin dose by disease and the antibiotic | WHO diphtheria clinical management guideline (February 2024) | same | 2026-10-06 | low | current |
+| enteric-fever-regimen | WHO AWaRe empiric enteric fever regimen | WHO AWaRe antibiotic book (2022) | same | 2026-10-06 | moderate | current |
 | vitamin-a-dose-child | WHO vitamin A doses for children by reason (routine, diarrhe | WHO VA11 (2011), IMCI chart (2014), Pocket book (2013), SAM manual (1999) | same | 2026-10-06 | low | current |
 | deworming-dose-who | WHO deworming dose and frequency by group and prevalence | WHO STH preventive chemotherapy guideline (2017) | same | 2026-10-06 | low | current |
 | labor-care-guide-alert | WHO Labour Care Guide alerts | WHO labour care guide user's manual (2020) | same | 2026-10-06 | low | current - a 2020 manual |

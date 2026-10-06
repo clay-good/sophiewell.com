@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:030c5870-5df1-5c3f-8a76-62fb2b77db52",
+  "serialNumber": "urn:uuid:bf50c55c-51d8-5874-8afa-d26ce3b83775",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-06T04:43:55.160Z",
+    "timestamp": "2026-10-06T05:13:22.152Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2001 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2004 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9a3e3415e2ee984a064bca303a9b328e37815e94d196594200b36cf54be3e53c"
+          "content": "b0e80468ae97720dd1bd67d19ead0733038ce978e8c93230b2c8d0224782e912"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "128687"
+          "value": "128939"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b88e2cb19d41a7177c1e4dcf77b8b0242f9b7472ae9f05b633636e8af5ac9a43"
+          "content": "0bf05bd51c1b6a7969eb7e97eeeb2183388b54ca92b522997f40b3fdb025efcf"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "579087"
+          "value": "579844"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3dfbde9e8d0462f569a38858de56b1704d7649fb5b285e604fb463adcc821c7f"
+          "content": "c90e108270bbc23417c7a5df57248f69166fd62beae3206074a9886a682a1698"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "250012"
+          "value": "250408"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "906e203c8472b1b28d9a6c45d36444b2b6e7e15d2838e0e4e453c1fdd095db1b"
+          "content": "babca19d7aca9ca4d71ca69967fbfd6c3a73b0895581bdbd83c3d97d8264133e"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "115753"
+          "value": "116038"
         }
       ]
     },
@@ -5600,6 +5600,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/diphtheria-antitoxin-dose-v1560.js",
+      "type": "file",
+      "name": "lib/diphtheria-antitoxin-dose-v1560.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0b5a0a3da6c709492873780c18614ec3a312010c21d9a718d84c8ff819cddd66"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5102"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/disability-rating-scale-v1433.js",
       "type": "file",
       "name": "lib/disability-rating-scale-v1433.js",
@@ -6541,6 +6562,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3397"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/enteric-fever-regimen-v1560.js",
+      "type": "file",
+      "name": "lib/enteric-fever-regimen-v1560.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "533c66ac2f7515801c701866414e515cd97eb50cf67dea2461a2419e00711608"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4869"
         }
       ]
     },
@@ -13271,7 +13313,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "13ac032f80ff2585ba5a30172192835c246f7ea98fbfc88229837e76b8221979"
+          "content": "578041c80a5ca1244a843aeda958ea736974734709da2bc421e4241578fe4a72"
         }
       ],
       "properties": [
@@ -13281,7 +13323,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2706215"
+          "value": "2708281"
         }
       ]
     },
@@ -24290,6 +24332,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/who-cotrimoxazole-v1554.js",
+      "type": "file",
+      "name": "lib/who-cotrimoxazole-v1554.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a2da50f3fa9b0181cccee2fcc56b4eafd6988420e2cf0cfd2d06539538a52b74"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6771"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/who-hearing-grade-v858.js",
       "type": "file",
       "name": "lib/who-hearing-grade-v858.js",
@@ -29750,6 +29813,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/diphtheria-antitoxin-dose-v1560.js",
+      "type": "file",
+      "name": "mcp/adapters/diphtheria-antitoxin-dose-v1560.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c54639ac770b588509d167312069ff6d21f94d5faf4079b3be11d69a5ee848bf"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1340"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/disability-rating-scale-v1433.js",
       "type": "file",
       "name": "mcp/adapters/disability-rating-scale-v1433.js",
@@ -30649,6 +30733,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1058"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/enteric-fever-regimen-v1560.js",
+      "type": "file",
+      "name": "mcp/adapters/enteric-fever-regimen-v1560.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6eb90786882aa52ddee2978e166b4376f1e426435d44b99162b391bc4c54ae88"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1181"
         }
       ]
     },
@@ -46256,6 +46361,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/who-cotrimoxazole-v1554.js",
+      "type": "file",
+      "name": "mcp/adapters/who-cotrimoxazole-v1554.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5e9e4244e97b960f2cd66265bf892e74693b91a55385aa113e8f8ec7c4ecac53"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1397"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/who-hearing-grade-v858.js",
       "type": "file",
       "name": "mcp/adapters/who-hearing-grade-v858.js",
@@ -46619,7 +46745,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "978593a147d4add23300f59a819c6b8aad289cca6ffbb3e76d9a950ab0aa3fc4"
+          "content": "be6040eb81d9d928eb19c9606be3d805a00363b7a8d9edf4282186b78c501341"
         }
       ],
       "properties": [
@@ -46629,7 +46755,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "119270"
+          "value": "119701"
         }
       ]
     },
@@ -50498,6 +50624,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1554.js",
+      "type": "file",
+      "name": "views/group-v1554.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "cf6ec90688018e99094239ea556056e1484cbcfc74dc29465b2af88276713c7d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2871"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:views/group-v1555.js",
       "type": "file",
       "name": "views/group-v1555.js",
@@ -50620,6 +50767,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3933"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1560b.js",
+      "type": "file",
+      "name": "views/group-v1560b.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0efba0f278bceda2d487bd90ccfc166d13399365e0afefd5f8865e9ad54f0ad3"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4190"
         }
       ]
     },
@@ -81960,6 +82128,7 @@
         "urn:sophiewell:file:source:lib/diabetes-diagnosis-v841.js",
         "urn:sophiewell:file:source:lib/diastolic-function-ase-v664.js",
         "urn:sophiewell:file:source:lib/dimeglio-clubfoot-v387.js",
+        "urn:sophiewell:file:source:lib/diphtheria-antitoxin-dose-v1560.js",
         "urn:sophiewell:file:source:lib/disability-rating-scale-v1433.js",
         "urn:sophiewell:file:source:lib/dive-v257.js",
         "urn:sophiewell:file:source:lib/dka-resolution-v905.js",
@@ -82005,6 +82174,7 @@
         "urn:sophiewell:file:source:lib/endo-v136.js",
         "urn:sophiewell:file:source:lib/endoleak-type-v1242.js",
         "urn:sophiewell:file:source:lib/enneking-v460.js",
+        "urn:sophiewell:file:source:lib/enteric-fever-regimen-v1560.js",
         "urn:sophiewell:file:source:lib/entity-340b-v1509.js",
         "urn:sophiewell:file:source:lib/entsleep-v243.js",
         "urn:sophiewell:file:source:lib/enturopsych-v254.js",
@@ -82850,6 +83020,7 @@
         "urn:sophiewell:file:source:lib/wexner-v324.js",
         "urn:sophiewell:file:source:lib/who-anc-schedule-v1559.js",
         "urn:sophiewell:file:source:lib/who-anemia-hb-v1550.js",
+        "urn:sophiewell:file:source:lib/who-cotrimoxazole-v1554.js",
         "urn:sophiewell:file:source:lib/who-hearing-grade-v858.js",
         "urn:sophiewell:file:source:lib/who-isup-renal-grade-v653.js",
         "urn:sophiewell:file:source:lib/who-mucositis-v617.js",
@@ -83062,12 +83233,14 @@
         "urn:sophiewell:file:source:views/group-v1551.js",
         "urn:sophiewell:file:source:views/group-v1552.js",
         "urn:sophiewell:file:source:views/group-v1553.js",
+        "urn:sophiewell:file:source:views/group-v1554.js",
         "urn:sophiewell:file:source:views/group-v1555.js",
         "urn:sophiewell:file:source:views/group-v1557.js",
         "urn:sophiewell:file:source:views/group-v1558.js",
         "urn:sophiewell:file:source:views/group-v1559.js",
         "urn:sophiewell:file:source:views/group-v156.js",
         "urn:sophiewell:file:source:views/group-v1560.js",
+        "urn:sophiewell:file:source:views/group-v1560b.js",
         "urn:sophiewell:file:source:views/group-v1562.js",
         "urn:sophiewell:file:source:views/group-v1563.js",
         "urn:sophiewell:file:source:views/group-v1570.js",
@@ -84040,6 +84213,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/diabetes-diagnosis-v841.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/diastolic-function-ase-v664.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dimeglio-clubfoot-v387.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/diphtheria-antitoxin-dose-v1560.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/disability-rating-scale-v1433.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dive-v257.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dka-resolution-v905.js",
@@ -84083,6 +84257,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/endo-v136.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/endoleak-type-v1242.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/enneking-v460.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/enteric-fever-regimen-v1560.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/entity-340b-v1509.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/entsleep-v243.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/enturopsych-v254.js",
@@ -84826,6 +85001,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/wexner-v324.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/who-anc-schedule-v1559.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/who-anemia-hb-v1550.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/who-cotrimoxazole-v1554.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/who-hearing-grade-v858.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/who-isup-renal-grade-v653.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/who-mucositis-v617.js",
@@ -84947,7 +85123,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "030c58705df1bc3f"
+      "value": "bf50c55c51d8a874"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -84959,7 +85135,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3127"
+      "value": "3135"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

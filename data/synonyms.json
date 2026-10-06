@@ -7081,6 +7081,37 @@
     },
     {
       "phrases": [
+        "cotrimoxazole prophylaxis",
+        "cotrimoxazole dose child",
+        "septrin prophylaxis hiv",
+        "ctx prophylaxis",
+        "bactrim prophylaxis hiv"
+      ],
+      "tile": "who-cotrimoxazole",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "diphtheria antitoxin",
+        "dat dose",
+        "diphtheria treatment",
+        "diphtheria antitoxin dose"
+      ],
+      "tile": "diphtheria-antitoxin-dose",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "typhoid treatment",
+        "enteric fever antibiotic",
+        "typhoid fever antibiotic",
+        "typhoid azithromycin"
+      ],
+      "tile": "enteric-fever-regimen",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
         "antenatal care schedule",
         "antenatal contact schedule",
         "eight antenatal contacts",

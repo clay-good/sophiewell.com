@@ -8776,6 +8776,15 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/vitamin-a-dose-child-v1550.js (spec-v1550: WHO vitamin A doses for children by reason (routine, diarrhea, measles, eye signs) — clinical disclaimer)
 - `vitamin-a-dose-child`
 
+### lib/who-cotrimoxazole-v1554.js (spec-v1554: WHO cotrimoxazole prophylaxis criteria and weight-band doses — clinical disclaimer)
+- `who-cotrimoxazole`
+
+### lib/diphtheria-antitoxin-dose-v1560.js (spec-v1560: WHO diphtheria antitoxin dose by disease and the antibiotic — clinical disclaimer)
+- `diphtheria-antitoxin-dose`
+
+### lib/enteric-fever-regimen-v1560.js (spec-v1560: WHO AWaRe empiric enteric fever regimen — clinical disclaimer)
+- `enteric-fever-regimen`
+
 ### lib/who-anc-schedule-v1559.js (spec-v1559: WHO eight-contact antenatal care schedule — clinical disclaimer)
 - `who-anc-schedule`
 

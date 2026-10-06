@@ -181,3 +181,10 @@ definitions; ARV band edges and the rifampicin doubling.
 ## Staleness
 
 SURV26 *low*. AHD25, HIVCM25 *moderate*. ARV26 *high*.
+
+## Build status
+
+| Tool | Status |
+|---|---|
+| `who-cotrimoxazole` | **Built October 6, 2026** (catalog 2,002). Eligibility re-read in HIV21 §6.3 and the dose table in ARV26 Table 6 (IRIS 10665/385571); both match the spec. **Differed:** the adult path takes a high-prevalence setting, active TB, WHO stage 3 or 4 and CD4, and asks for the CD4 only when nothing else decides; the Q-TIB alternative and the stopping rules are printed as notes. The adult dose (800/160 mg) is read from the 25–35 kg column and says so. |
+| Other tools | Open; `infant-arv-prophylaxis` and `who-pediatric-arv-dose` are built last (owner decision D4). |

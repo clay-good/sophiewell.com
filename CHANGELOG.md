@@ -21,6 +21,14 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Cotrimoxazole prophylaxis in HIV (WHO): who gets it (2021 criteria) and the
+  once-daily dose by weight band for infants and children (May 2026 table).
+- Diphtheria antitoxin dose (WHO 2024): a single 20,000, 40,000 or 80,000 IU
+  dose by site, time since onset, neck swelling and severity, with the
+  macrolide by weight and penicillin only when no macrolide is available.
+- Typhoid (enteric fever) antibiotic (WHO AWaRe 2022): ciprofloxacin where
+  fluoroquinolone resistance is low (child weight bands), azithromycin or
+  ceftriaxone where it is high, for 7 or 10 days.
 - WHO eight-contact antenatal schedule: which contact is due and when the
   next is (up to 12 weeks, then 20, 26, 30, 34, 36, 38, 40; return at 41),
   with the iron, folic acid and calcium lines.
