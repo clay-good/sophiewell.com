@@ -21,13 +21,16 @@ export default [
   },
   {
     id: 'who-growth-zscore',
-    summary: 'WHO 2006 growth z-score (LMS method): weight-for-age or length-for-age z-score and percentile for a child 0–24 months.',
+    summary: 'Gives WHO 2006 growth z-scores. Weight-for-age, length-for-age or head circumference-for-age (0–24 months), or weight-for-length/height (to 60 months), with the 0.7 cm lying/standing rule and no weight z with edema.',
     compute: F.whoGrowthZscore,
     fields: [
       { dom: 'wz-sex', arg: 'sex', kind: 'enum', values: ['male', 'female'], label: 'Sex' },
-      { dom: 'wz-measure', arg: 'measure', kind: 'enum', values: ['weight', 'length'], label: 'Measurement' },
-      { dom: 'wz-age', arg: 'ageMonths', kind: 'number', label: 'Age (months, 0–24)' },
-      { dom: 'wz-val', arg: 'value', kind: 'number', label: 'Measured value (kg or cm)' },
+      { dom: 'wz-measure', arg: 'measure', kind: 'enum', values: ['weight', 'length', 'wfl', 'hc'], label: 'Measurement (wfl = weight-for-length/height, hc = head circumference)' },
+      { dom: 'wz-age', arg: 'ageMonths', kind: 'number', label: 'Age (months, 0–24; to 60 for wfl)' },
+      { dom: 'wz-val', arg: 'value', kind: 'number', label: 'Measured value (kg or cm; the weight for wfl)' },
+      { dom: 'wz-len', arg: 'lengthCm', kind: 'number', label: 'Length or height (cm, wfl only)', required: false },
+      { dom: 'wz-pos', arg: 'position', kind: 'enum', values: ['lying', 'standing'], label: 'Length measured lying or standing (length and wfl)', required: false },
+      { dom: 'wz-edema', arg: 'edema', kind: 'enum', values: ['no', 'yes'], label: 'Edema of both feet (weight and wfl)', required: false },
     ],
   },
   {

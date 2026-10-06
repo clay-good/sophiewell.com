@@ -703,6 +703,7 @@ import * as whoRabiesPepV1557 from '../../lib/who-rabies-pep-v1557.js';
 import * as pphWho2025V1558 from '../../lib/pph-who-2025-v1558.js';
 import * as laborCareGuideAlertV1558 from '../../lib/labor-care-guide-alert-v1558.js';
 import * as vitaminADoseChildV1550 from '../../lib/vitamin-a-dose-child-v1550.js';
+import * as arpraziquantelDoseV1562 from '../../lib/arpraziquantel-dose-v1562.js';
 import * as chagasStageTreatmentV1563 from '../../lib/chagas-stage-treatment-v1563.js';
 import * as infantArvProphylaxisV1554 from '../../lib/infant-arv-prophylaxis-v1554.js';
 import * as whoPediatricArvDoseV1554 from '../../lib/who-pediatric-arv-dose-v1554.js';
@@ -1573,6 +1574,7 @@ const MODULES = {
   'pph-who-2025-v1558.js': pphWho2025V1558,
   'labor-care-guide-alert-v1558.js': laborCareGuideAlertV1558,
   'vitamin-a-dose-child-v1550.js': vitaminADoseChildV1550,
+  'arpraziquantel-dose-v1562.js': arpraziquantelDoseV1562,
   'chagas-stage-treatment-v1563.js': chagasStageTreatmentV1563,
   'infant-arv-prophylaxis-v1554.js': infantArvProphylaxisV1554,
   'who-pediatric-arv-dose-v1554.js': whoPediatricArvDoseV1554,

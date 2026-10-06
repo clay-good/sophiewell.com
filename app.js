@@ -3511,6 +3511,8 @@ const UTILITIES = [
   { id: 'chagas-stage-treatment', name: 'Chagas Disease: Stage, Whether to Treat, and Benznidazole or Nifurtimox Dose', group: 'J', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'infant-arv-prophylaxis', name: 'Infant HIV Prophylaxis: Risk Group and Nevirapine Dose (WHO Dec 2025, dosing May 2026)', group: 'J', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'who-pediatric-arv-dose', name: 'Pediatric ARV Doses by Weight (WHO May 2026, corrigendum June 2026)', group: 'J', audiences: ['clinicians', 'educators', 'field'], clinical: true },
+  // field-health batch (spec-v1540).
+  { id: 'arpraziquantel-dose', name: 'Arpraziquantel for Preschool Children With Schistosomiasis (Tablets by Weight)', group: 'F', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   // spec-v1550: field-health (spec-v1540).
   { id: 'vitamin-a-dose-child', name: 'Vitamin A Dose for a Child: Routine, Diarrhea, Measles or Eye Signs (WHO)', group: 'N', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'deworming-dose-who', name: 'Deworming Dose and Frequency (WHO Preventive Chemotherapy)', group: 'F', audiences: ['clinicians', 'educators', 'field'], clinical: true },

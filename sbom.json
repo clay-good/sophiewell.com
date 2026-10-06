@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:55df30ca-7438-58c3-8162-159fa6dfa31e",
+  "serialNumber": "urn:uuid:92a017ae-1174-571e-8ae7-174f101cafee",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-06T09:54:56.542Z",
+    "timestamp": "2026-10-06T10:49:56.172Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2053 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2054 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ecc396e65ec7ce5b5484f2d4ed73d291eaa1b5df2b6a7a72f79c0767650af3eb"
+          "content": "806208d98ad3a95876f6e17d82787f0d86193124d56e670f9da4689080024d1d"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "132885"
+          "value": "132979"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6e22fee0df72759f76cfa6cdd43b53afc492988770b9d34da6144028e900a4f0"
+          "content": "cadac6bbb9af00aa99b3ab5e7c79ebe728be265b75bca9afad9466504fc78d92"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "589742"
+          "value": "589978"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8393c9f2f4cd7fab64225be9a9af2de7a7b36e565e3f47ff6882b3194e4834eb"
+          "content": "891f8f84738da242e43f437da6d1a77822427f030d1633ef832cddceffbf3f3a"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "256880"
+          "value": "257010"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9b74a556934d3387e5303f1bc88d7bd2741cdd0aa2ad4f86f8f11eff2fd153be"
+          "content": "66c00d1cbe715af0f9e8801766a9c4267311c5fec15e7f4fe50164d71d1fad34"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "120527"
+          "value": "120630"
         }
       ]
     },
@@ -1480,6 +1480,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "11067"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/arpraziquantel-dose-v1562.js",
+      "type": "file",
+      "name": "lib/arpraziquantel-dose-v1562.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f6be8624644953ae03f128ee02707cb88e5ef28fcd2bcf0614b06cfd8cef7c37"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4494"
         }
       ]
     },
@@ -8693,7 +8714,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ab55ed9e9b56d47f239bfe21dc9d9811969332de08e595c2773d93538cc505d3"
+          "content": "b2444a87c7beb46d614aff8381ad02c98284a6dbac2824b6f098b323835adadb"
         }
       ],
       "properties": [
@@ -8703,7 +8724,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "62247"
+          "value": "71360"
         }
       ]
     },
@@ -13880,7 +13901,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4b11a548f26ed21d3d4404200921c7bbfa7c01354ff23afa1d112a69434aca52"
+          "content": "abc23c5c708bcee5c085eef752e4786da14a2b4c9e4eceb0d18b3f5bc42bc264"
         }
       ],
       "properties": [
@@ -13890,7 +13911,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2745591"
+          "value": "2746750"
         }
       ]
     },
@@ -17828,7 +17849,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2ff23d1f91469b3b6094ff9391afec8914af49a145c31995697ddbb0430a7719"
+          "content": "2d15c7f15cf26e13f3de140369244b3eb80ee7760d4987713a5d9dabc982fb2e"
         }
       ],
       "properties": [
@@ -17838,7 +17859,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "14829"
+          "value": "18695"
         }
       ]
     },
@@ -27058,6 +27079,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2956"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/arpraziquantel-dose-v1562.js",
+      "type": "file",
+      "name": "mcp/adapters/arpraziquantel-dose-v1562.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "596f80cfc7038800c6016d22a91ceb03893045844baece5365ad7c0da1208f3b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1399"
         }
       ]
     },
@@ -41789,7 +41831,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d2990e1ecb9f8a9ee6c59e2ca2562c1f2ac86e1bea298430ede09c3ba57f5a00"
+          "content": "69c9b27122a0e7f2798eeaa1ea54de015b23d5a3594ec078465d32442d978466"
         }
       ],
       "properties": [
@@ -41799,7 +41841,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2668"
+          "value": "3294"
         }
       ]
     },
@@ -48824,7 +48866,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3d7ff709d7e895632e9300601738837ff083c2a957dd5e9c8eaa23cc5086988d"
+          "content": "5775c6bb74a88a8619049dd4c440efa1a070cd427908d26edf95edb40425018f"
         }
       ],
       "properties": [
@@ -48834,7 +48876,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "126722"
+          "value": "126859"
         }
       ]
     },
@@ -50462,7 +50504,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "87db945559d3538dbcf7d26eac3ba81ca81e4969ba647b94408676e36d3c1daf"
+          "content": "df58d3516c9621a03d12be3ce4a48ef1e34759aba6eb9b8bdb4853d4e960bfbc"
         }
       ],
       "properties": [
@@ -50472,7 +50514,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "8714"
+          "value": "9747"
         }
       ]
     },
@@ -52982,7 +53024,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1f49489eae527cb0237872ee80d8b74fd6614ce0d2dd477170c63842d6a8a025"
+          "content": "3311c186d7a014584754b07fca0e7bce2f682204d4cd62c45b880484c2855de2"
         }
       ],
       "properties": [
@@ -52992,7 +53034,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "8979"
+          "value": "10529"
         }
       ]
     },
@@ -84116,6 +84158,7 @@
         "urn:sophiewell:file:source:lib/arbovirus-admission-check-v1563.js",
         "urn:sophiewell:file:source:lib/arc-hbr-v594.js",
         "urn:sophiewell:file:source:lib/areds-v615.js",
+        "urn:sophiewell:file:source:lib/arpraziquantel-dose-v1562.js",
         "urn:sophiewell:file:source:lib/arvc-tfc-v786.js",
         "urn:sophiewell:file:source:lib/asas-ibp-v1476.js",
         "urn:sophiewell:file:source:lib/asp-ndc-load.js",
@@ -86271,6 +86314,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/arbovirus-admission-check-v1563.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/arc-hbr-v594.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/areds-v615.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/arpraziquantel-dose-v1562.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/arvc-tfc-v786.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/asas-ibp-v1476.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/asp-payment.js",
@@ -87411,7 +87455,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "55df30ca743848c3"
+      "value": "92a017ae1174471e"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -87423,7 +87467,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3239"
+      "value": "3241"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

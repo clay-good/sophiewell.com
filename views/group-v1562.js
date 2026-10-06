@@ -6,6 +6,7 @@ import * as M0 from '../lib/helminth-intensity-v1562.js';
 import * as M1 from '../lib/schisto-community-treatment-v1562.js';
 import * as M2 from '../lib/lf-mda-regimen-v1562.js';
 import * as M3 from '../lib/cystic-echinococcosis-stage-v1562.js';
+import * as M4 from '../lib/arpraziquantel-dose-v1562.js';
 import { resultRow } from '../lib/result-copy.js';
 
 function selectField(root, label, id, options, required) {
@@ -158,6 +159,33 @@ export const renderers = {
         const r = M3.cysticEchinococcosisStage(args);
         if (!r.valid) { note(o, r.message); return; }
         resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'WHO 2025', value: r.bandLabel }]);
+        list(o, r.notes);
+        note(o, r.note);
+      } catch (err) {
+        o.appendChild(el('p', { class: 'muted', text: err.message }));
+      }
+    };
+    for (const [id] of pairs) { const n = document.getElementById(id); if (n) { n.addEventListener('input', run); n.addEventListener('change', run); } }
+    run();
+  },
+  'arpraziquantel-dose'(root) {
+    const pairs = [['apz-sp', 'species'], ['apz-w', 'weight'], ['apz-age', 'age'], ['apz-cys', 'cysticercosis'], ['apz-acute', 'acute'], ['apz-ind', 'inducer']];
+    selectField(root, 'Species', 'apz-sp', M4.SPECIES_OPTIONS, true);
+    numField(root, 'Weight in kg', 'apz-w', 'e.g. 12', '60');
+    numField(root, 'Age in years (3 months = 0.25)', 'apz-age', 'e.g. 3', '20');
+    selectField(root, 'Known or suspected cysticercosis', 'apz-cys', M4.YES_NO, false);
+    selectField(root, 'Known or suspected acute schistosomiasis', 'apz-acute', M4.YES_NO, false);
+    selectField(root, 'On a strong CYP inducer (rifampicin, carbamazepine, phenytoin)', 'apz-ind', M4.YES_NO, false);
+    const o = el('div', { id: 'q-results', 'aria-live': 'polite' });
+    root.appendChild(o);
+    const run = () => {
+      clear(o);
+      try {
+        const args = {};
+        for (const [dom, arg] of pairs) args[arg] = val(dom);
+        const r = M4.arpraziquantelDose(args);
+        if (!r.valid) { note(o, r.message); return; }
+        resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'EMA 2023', value: r.bandLabel }]);
         list(o, r.notes);
         note(o, r.note);
       } catch (err) {

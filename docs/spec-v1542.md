@@ -92,6 +92,8 @@ finder's result is recorded in this spec's Built section with the count found an
   it refused real figures with three decimals (an ASP payment limit of 75.492, a GPCI of 1.000); only a comma
   that could be grouping is refused. Number fields stay `type="number"`: the listener makes the switch to text
   inputs unnecessary.
-- **§2 (the unit profile and `sw-units`) is not built.** Its first rule depends on `global-health` tiles, which
-  wait on the owner decisions in [spec-v1564](spec-v1564.md).
+- **§2 (the unit profile and `sw-units`) is deferred, checked October 6, 2026.** The field health tiles now
+  exist, but none of them renders a unit select: all 80 checked take metric values directly (kg, cm, °C,
+  mmol/L) with the unit in the label. So rule 1 would change nothing on screen. Build §2 when a field health
+  tile first gains a unit select, or when the owner asks for a site-wide metric preference.
 

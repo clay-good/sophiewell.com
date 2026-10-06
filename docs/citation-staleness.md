@@ -701,6 +701,7 @@ and thresholds) is a stable rule in every case (Class A).
 | chagas-stage-treatment | SBC Chagas staging and PAHO trypanocidal doses | SBC Chagas guideline (2023); PAHO Chagas guidelines (2019) | same | 2026-10-06 | current - Table 5.2, Chart 9.2 and Annex 10 read October 6, 2026 |
 | infant-arv-prophylaxis | WHO infant HIV prophylaxis and nevirapine prophylaxis doses | WHO HIV clinical management (Dec 2025); paediatric dosing (May 2026, corr. June 2026) | same | 2026-10-06 | current - read October 6, 2026; review every 6 months |
 | who-pediatric-arv-dose | WHO paediatric ARV weight-band dosing | WHO paediatric ARV dosing guidance (May 2026, corrigendum June 2026) | same | 2026-10-06 | current - Tables 1 and 7 read October 6, 2026; review every 6 months |
+| arpraziquantel-dose | Arpraziquantel weight-band dosing | EMA arpraziquantel product information (2023); WHO EML 2025 | same | 2026-10-06 | current - read October 6, 2026 |
 | vitamin-a-dose-child | WHO vitamin A doses for children by reason (routine, diarrhea, measles, eye signs) | WHO VA11 (2011), IMCI chart (2014), Pocket book (2013), SAM manual (1999) | same | 2026-10-06 | current - each source read October 6, 2026; their age bands differ at 12 months and each reason uses its own |
 | deworming-dose-who | WHO deworming dose and frequency by group and prevalence | WHO STH preventive chemotherapy guideline (2017) | same | 2026-10-06 | current - the 2017 guideline is current; recommendations read October 6, 2026 |
 | labor-care-guide-alert | WHO Labour Care Guide alert thresholds for each labor observation | WHO labour care guide user's manual (2020) | same | 2026-10-06 | current - the 2020 manual is the current edition; Tables 2-6 read October 6, 2026 |
@@ -795,6 +796,7 @@ guideline's citation carries its version date and DOI.
 | chagas-stage-treatment | SBC Chagas staging and PAHO trypanocidal doses | SBC Chagas guideline (2023); PAHO Chagas guidelines (2019) | same | 2026-10-06 | low | current |
 | infant-arv-prophylaxis | WHO infant HIV prophylaxis and nevirapine prophylaxis doses | WHO HIV clinical management (Dec 2025); paediatric dosing (May 2026, corr. June 2026) | same | 2026-10-06 | high | current |
 | who-pediatric-arv-dose | WHO paediatric ARV weight-band dosing | WHO paediatric ARV dosing guidance (May 2026, corrigendum June 2026) | same | 2026-10-06 | high | current |
+| arpraziquantel-dose | Arpraziquantel weight-band dosing | EMA arpraziquantel product information (2023); WHO EML 2025 | same | 2026-10-06 | high | current |
 | vitamin-a-dose-child | WHO vitamin A doses for children by reason (routine, diarrhe | WHO VA11 (2011), IMCI chart (2014), Pocket book (2013), SAM manual (1999) | same | 2026-10-06 | low | current |
 | deworming-dose-who | WHO deworming dose and frequency by group and prevalence | WHO STH preventive chemotherapy guideline (2017) | same | 2026-10-06 | low | current |
 | labor-care-guide-alert | WHO Labour Care Guide alerts | WHO labour care guide user's manual (2020) | same | 2026-10-06 | low | current - a 2020 manual |

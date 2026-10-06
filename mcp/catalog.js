@@ -973,6 +973,7 @@ import whoRabiesPepV1557 from './adapters/who-rabies-pep-v1557.js';
 import pphWho2025V1558 from './adapters/pph-who-2025-v1558.js';
 import laborCareGuideAlertV1558 from './adapters/labor-care-guide-alert-v1558.js';
 import vitaminADoseChildV1550 from './adapters/vitamin-a-dose-child-v1550.js';
+import arpraziquantelDoseV1562 from './adapters/arpraziquantel-dose-v1562.js';
 import chagasStageTreatmentV1563 from './adapters/chagas-stage-treatment-v1563.js';
 import infantArvProphylaxisV1554 from './adapters/infant-arv-prophylaxis-v1554.js';
 import whoPediatricArvDoseV1554 from './adapters/who-pediatric-arv-dose-v1554.js';
@@ -2059,6 +2060,7 @@ const ADAPTER_MODULES = [
   ['pph-who-2025-v1558', pphWho2025V1558],
   ['labor-care-guide-alert-v1558', laborCareGuideAlertV1558],
   ['vitamin-a-dose-child-v1550', vitaminADoseChildV1550],
+  ['arpraziquantel-dose-v1562', arpraziquantelDoseV1562],
   ['chagas-stage-treatment-v1563', chagasStageTreatmentV1563],
   ['infant-arv-prophylaxis-v1554', infantArvProphylaxisV1554],
   ['who-pediatric-arv-dose-v1554', whoPediatricArvDoseV1554],

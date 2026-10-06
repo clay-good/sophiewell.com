@@ -9,6 +9,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - WHO growth z-scores: a weight-for-age z beyond ±3 is now WHO's restricted
   value, so it matches WHO Anthro (a boy of 1 year at 5.5 kg is −4.75, not
   −5.05). A value WHO flags as implausible now says to check the measurement.
+- WHO growth z-scores now also give weight-for-length (under 2 years),
+  weight-for-height (2 to 5 years, 65.0 to 109.3 cm) and head
+  circumference-for-age. They ask whether a length was taken lying or standing
+  and apply WHO's 0.7 cm rule. With edema of both feet, no weight-based z-score
+  is given.
 - Prior-auth packet check: HMSA's 20 rules now match HMSA's current provider
   pages. The old precertification page is now a one-line stub. The advanced-imaging
   rule now names Evolent, and the new-technology rule is advisory, since HMSA
@@ -21,6 +26,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Arpraziquantel for preschool schistosomiasis (EMA product information, WHO
+  2025 children's list): 150 mg dispersible tablets by weight band for S.
+  mansoni (50 mg/kg) or S. haematobium and mixed (60 mg/kg), 3 months to 6
+  years and 5 kg or more, with the contraindications.
 - Chagas disease (SBC 2023 and PAHO 2019): stage A to D from the ECG, LVEF
   and heart failure, whether to treat by phase, age and stage, and
   benznidazole or nifurtimox doses by weight for 60 days.

@@ -86,20 +86,33 @@ export const renderers = {
 
   // ----- 2.2 who-growth-zscore ------------------------------------------
   'who-growth-zscore'(root) {
-    note(root, 'WHO 2006 weight-for-age and length-for-age (WHO MGRS 2006), ages 0–24 months. Choose the measurement, enter the value, and the WHO LMS transform returns the z-score and percentile with the WHO low/severe bands.');
+    note(root, 'WHO 2006 growth standards (WHO MGRS 2006): weight-for-age, length-for-age and head circumference-for-age from 0 to 24 months, and weight-for-length or weight-for-height to 5 years. Choose the measurement, enter the values, and the WHO LMS transform returns the z-score and percentile with the WHO low/severe bands.');
     root.appendChild(selectField('Sex', 'wz-sex', SEX));
     root.appendChild(selectField('Measurement', 'wz-measure', [
       { value: '', text: '— measurement —' },
       { value: 'weight', text: 'Weight-for-age (kg)' },
       { value: 'length', text: 'Length-for-age (cm)' },
+      { value: 'wfl', text: 'Weight-for-length/height (kg and cm)' },
+      { value: 'hc', text: 'Head circumference-for-age (cm)' },
     ]));
-    root.appendChild(field('Age (months)', 'wz-age', { step: '0.5', min: 0, max: 24, placeholder: 'e.g. 6' }));
-    root.appendChild(field('Measured value (kg or cm)', 'wz-val', { step: '0.1', min: 0, placeholder: 'e.g. 7.5' }));
+    root.appendChild(field('Age (months)', 'wz-age', { step: '0.5', min: 0, max: 60, placeholder: 'e.g. 6' }));
+    root.appendChild(field('Measured value (kg or cm; the weight for weight-for-length)', 'wz-val', { step: '0.1', min: 0, placeholder: 'e.g. 7.5' }));
+    root.appendChild(field('Length or height (cm, weight-for-length only)', 'wz-len', { step: '0.1', min: 45, max: 110, placeholder: 'e.g. 74' }));
+    root.appendChild(selectField('Length measured (length and weight-for-length)', 'wz-pos', [
+      { value: '', text: '— position —' },
+      { value: 'lying', text: 'Lying' },
+      { value: 'standing', text: 'Standing' },
+    ]));
+    root.appendChild(selectField('Edema of both feet (weight measures)', 'wz-edema', [
+      { value: '', text: '— edema —' },
+      { value: 'no', text: 'No' },
+      { value: 'yes', text: 'Yes' },
+    ]));
     const o = out(); root.appendChild(o);
-    wire(['wz-sex', 'wz-measure', 'wz-age', 'wz-val'], () => safe(o, () => {
-      const r = M.whoGrowthZscore({ sex: selVal('wz-sex'), measure: selVal('wz-measure'), ageMonths: optNum('wz-age'), value: optNum('wz-val') });
+    wire(['wz-sex', 'wz-measure', 'wz-age', 'wz-val', 'wz-len', 'wz-pos', 'wz-edema'], () => safe(o, () => {
+      const r = M.whoGrowthZscore({ sex: selVal('wz-sex'), measure: selVal('wz-measure'), ageMonths: optNum('wz-age'), value: optNum('wz-val'), lengthCm: optNum('wz-len'), position: selVal('wz-pos'), edema: selVal('wz-edema') });
       if (!r.valid) { showInvalid(o, r); return; }
-      resultRow(o, [
+      resultRow(o, r.z === null ? [{ text: r.band, cls: 'warn' }] : [
         { text: r.band, cls: r.abnormal ? 'warn' : null },
         { label: 'z-score', value: `${r.z}` },
         { label: 'Percentile', value: `${r.percentile}` },

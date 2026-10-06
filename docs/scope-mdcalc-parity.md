@@ -454,3 +454,5 @@ experience**.
 > v1554, Infant HIV Prophylaxis: Risk Group and Nevirapine Dose (WHO Dec 2025, dosing May 2026) — [spec-v1554](spec-v1554.md), which adds `infant-arv-prophylaxis` — is 2052.)
 
 > v1554, Pediatric ARV Doses by Weight (WHO May 2026, corrigendum June 2026) — [spec-v1554](spec-v1554.md), which adds `who-pediatric-arv-dose` — is 2053.)
+
+> v1562, Arpraziquantel for Preschool Children With Schistosomiasis (Tablets by Weight) — [spec-v1562](spec-v1562.md), which adds `arpraziquantel-dose` — is 2054.)

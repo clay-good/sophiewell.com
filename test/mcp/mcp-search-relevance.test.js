@@ -761,6 +761,7 @@ const PROBES = [
   ['postpartum hemorrhage 300 ml shock index tranexamic acid', ['pph-who-2025']],
   ['labour care guide alert column', ['labor-care-guide-alert']],
   ['vitamin a dose measles child 200000 iu', ['vitamin-a-dose-child']],
+  ['arpraziquantel dose preschool schistosomiasis', ['arpraziquantel-dose']],
   ['chagas disease benznidazole dose stage', ['chagas-stage-treatment']],
   ['infant hiv prophylaxis nevirapine dose', ['infant-arv-prophylaxis']],
   ['pediatric arv dose by weight dolutegravir', ['who-pediatric-arv-dose']],
