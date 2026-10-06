@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `d698ae1d106751bc`
-Generated: 2026-10-05T23:14:49.686Z
+Build ID: `95681e1fe657602d`
+Generated: 2026-10-06T00:20:22.884Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -890,7 +890,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/priapism-gas-v859.js` | 10757 | `64a551a208b4f1430a62b0d16669339f61c853a2af7db33e5612ce32a559d6cf` |
 | `lib/print.js` | 4948 | `b94c3f3322dbee349c43f11ee513bf80e2b7d63ee8508423bfc64ca8111e3df4` |
 | `lib/prognostic-v231.js` | 7745 | `656bc7330019dc7bcc842abdf695a2479b2720bc1ccff858e7fd38357173fbf5` |
-| `lib/prompt.js` | 26800 | `94969c9dcb1802f750626dbad5067a7ecf2523dea28febafc0f053c3c3f05dba` |
+| `lib/prompt.js` | 27570 | `14035e7e8d1537ae3975760cecf4d920e6df8830191cca1d4ce6855544ae0f6b` |
 | `lib/propkd-v564.js` | 12565 | `a92acd4c8f065df50dcfffd0ad8dde4a6d1a6a9dddf8118bc4351307633d5c25` |
 | `lib/prostate-health-index-v714.js` | 3788 | `c73d17188461e047dbf1658447de06c9474dda8ff88e9b92b13845d53d2561a1` |
 | `lib/proteins-v274.js` | 4191 | `239832f2b739a3113615a0fc42554d2c89acbe52cfb6eba913c5992113d483f7` |

@@ -110,3 +110,22 @@ test('a whole-word phrase still earns the bonus in both fields', () => {
   // tokens at 1, so the phrase bonus is demonstrably still being paid twice.
   assert.ok(ranked[0].score >= 15, String(ranked[0].score));
 });
+
+test('an exact score tie goes to the tile whose name spells a one-word query as an acronym', () => {
+  // Same score for both (the word in the name and nowhere else); registry order would put
+  // the billing tile first.
+  const tiles = [
+    { id: 'bill', name: 'Monthly Plan Bill', group: 'C', audiences: ['patients'], desc: '' },
+    { id: 'plan-score', name: 'PLAN Score (Stroke)', group: 'G', audiences: ['clinicians'], desc: '' },
+  ];
+  const ranked = _testing.rankTilesAll('plan', tiles, 'all');
+  assert.equal(ranked[0].score, ranked[1].score, 'a tie, so only the tie-break decides');
+  assert.equal(ranked[0].tileId, 'plan-score');
+  // A two-word query is never re-ordered by it.
+  const two = _testing.rankTilesAll('plan bill', tiles, 'all');
+  assert.equal(two[0].tileId, 'bill');
+});
+
+test('"plan" reaches the PLAN Score in the top two', () => {
+  assert.ok(probe('plan').slice(0, 2).includes('plan-score'), probe('plan').join(', '));
+});
