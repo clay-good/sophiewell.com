@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:1513b97f-df91-5407-86a0-19da85d371c6",
+  "serialNumber": "urn:uuid:a16eb775-3407-5654-8c1f-2265ee95a775",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-06T06:35:48.346Z",
+    "timestamp": "2026-10-06T07:00:16.941Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2017 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2026 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "514ea9302fe5b1f67deb0f4e3d74ca460f71153d70d81cc5e2ecaf7cc26c0609"
+          "content": "27749444a4a98156c384a91627032d97038ab4d1a991661d82096a295084758f"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "130005"
+          "value": "130763"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "61b2acb6e1479a2a4319831d96c52be131c17ee307bd4361278f5c54aa69b0f1"
+          "content": "1827380c2b3526b6abc5e425ae966f9f7fd226e3db8a6bad67ae829436e8f4c1"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "582533"
+          "value": "584279"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e50aee975b56d2ed94a8465c98165032202989f52141a3cbf53e284ec0e9fe0c"
+          "content": "a8ef37762a3065a8e0f33bb326cb73e5a4085fd279de154d137654b6625ee2f5"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "252106"
+          "value": "253290"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5165b0760e91a4cc651bc88618ba5950f742fb7c77c28d4dfd4eb7a2a6d82266"
+          "content": "30b2ab9b2bc521a34133c3d9d66f3ef5b2763a644feabb082dc1c85577f28041"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "117229"
+          "value": "118082"
         }
       ]
     },
@@ -2782,6 +2782,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "322"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/buruli-ulcer-category-v1561.js",
+      "type": "file",
+      "name": "lib/buruli-ulcer-category-v1561.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e6e405295f8f3d22e95ed556e99f9a27599384ea71998fe94aee8f4cc8766ee5"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5083"
         }
       ]
     },
@@ -7322,6 +7343,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/filarial-lymphedema-stage-v1561.js",
+      "type": "file",
+      "name": "lib/filarial-lymphedema-stage-v1561.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "26b789405e1541e0b498e99f8a9665ff2fe6c661068c9c9c8af5c579e2ff115e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4499"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/file-head.js",
       "type": "file",
       "name": "lib/file-head.js",
@@ -11837,6 +11879,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/leprosy-disability-grade-v1561.js",
+      "type": "file",
+      "name": "lib/leprosy-disability-grade-v1561.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "81f587b5da51c808431eb9fcccb8dfb70d805903c2b223b9c02a5f170c5e620a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3623"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/leprosy-pep-rifampicin-v1561.js",
       "type": "file",
       "name": "lib/leprosy-pep-rifampicin-v1561.js",
@@ -11854,6 +11917,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2600"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/leprosy-reaction-prednisolone-v1561.js",
+      "type": "file",
+      "name": "lib/leprosy-reaction-prednisolone-v1561.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9a9d6c9002f643cf45143ccdb42367a61a387fa5a9fc60d1d2b48ae6342d0f01"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4019"
         }
       ]
     },
@@ -13391,6 +13475,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/meningitis-who-2025-v1560.js",
+      "type": "file",
+      "name": "lib/meningitis-who-2025-v1560.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7101d83e353b3e8963a9c1e4040318ddf07434acc99c5f8db582b95e8d7f68bd"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8604"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/mest-c-v528.js",
       "type": "file",
       "name": "lib/mest-c-v528.js",
@@ -13418,7 +13523,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2add76b92d9feefcc812ae0a873467ff1650d69959b3ee1a43d438fc3693c2c4"
+          "content": "e3d7448829c805455c7e64d73a5ac82599614dcc2229c75f69367749e8f6e4af"
         }
       ],
       "properties": [
@@ -13428,7 +13533,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2718361"
+          "value": "2725009"
         }
       ]
     },
@@ -15172,6 +15277,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "8702"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/noma-stage-v1561.js",
+      "type": "file",
+      "name": "lib/noma-stage-v1561.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "220b00d4b560c10a3d50ecf40b7f61652c631c31cc4881e03080c45d68777f8b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4420"
         }
       ]
     },
@@ -20657,6 +20783,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/scabies-diagnosis-mda-v1561.js",
+      "type": "file",
+      "name": "lib/scabies-diagnosis-mda-v1561.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0573a285f0ddb397c407de55993415b4ee81233190940478d37f02b9b70ab152"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6835"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/scadding-v523.js",
       "type": "file",
       "name": "lib/scadding-v523.js",
@@ -20884,6 +21031,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "6613"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/scrub-typhus-icmr-v1560.js",
+      "type": "file",
+      "name": "lib/scrub-typhus-icmr-v1560.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "10fa7cde248f7b31b99daef139969b91d4717d261a556bec79e609c0284043fa"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5919"
         }
       ]
     },
@@ -25151,6 +25319,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/yaws-test-and-treat-v1561.js",
+      "type": "file",
+      "name": "lib/yaws-test-and-treat-v1561.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0a41e2994bdd7e96f47cef3ea3a3b7fabf4da04d9b59e2e7759e2c079a9590c8"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6701"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/yerdel-pvt-v472.js",
       "type": "file",
       "name": "lib/yerdel-pvt-v472.js",
@@ -27457,6 +27646,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "6347"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/buruli-ulcer-category-v1561.js",
+      "type": "file",
+      "name": "mcp/adapters/buruli-ulcer-category-v1561.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5df57e310d992c1508c40ba641623ea93ded9bd0370cf20eb64f871716247211"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1499"
         }
       ]
     },
@@ -31682,6 +31892,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/filarial-lymphedema-stage-v1561.js",
+      "type": "file",
+      "name": "mcp/adapters/filarial-lymphedema-stage-v1561.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "59684f3602f0aa8b33ee4505c8f2ef27bb6e0fec2752a4cc8d5c4cbd7cdc8a2a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1430"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/fisher-grade-v600.js",
       "type": "file",
       "name": "mcp/adapters/fisher-grade-v600.js",
@@ -35693,6 +35924,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/leprosy-disability-grade-v1561.js",
+      "type": "file",
+      "name": "mcp/adapters/leprosy-disability-grade-v1561.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "59e83ab718b9b280e7162d96df00096b80e401dfc24b5ee5318f0b76ad7d3a9b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1314"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/leprosy-pep-rifampicin-v1561.js",
       "type": "file",
       "name": "mcp/adapters/leprosy-pep-rifampicin-v1561.js",
@@ -35710,6 +35962,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "798"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/leprosy-reaction-prednisolone-v1561.js",
+      "type": "file",
+      "name": "mcp/adapters/leprosy-reaction-prednisolone-v1561.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f455566c583ec3d7c3a81bfbe9e42d67eb5349b1efaacad75001fd22d73825a9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "981"
         }
       ]
     },
@@ -37159,6 +37432,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1323"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/meningitis-who-2025-v1560.js",
+      "type": "file",
+      "name": "mcp/adapters/meningitis-who-2025-v1560.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "85a334a732518dd6d31300d0a9a39879916041f87b90df440bd4cb7cf79707e5"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2566"
         }
       ]
     },
@@ -38797,6 +39091,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1679"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/noma-stage-v1561.js",
+      "type": "file",
+      "name": "mcp/adapters/noma-stage-v1561.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "99683fec3f30f7e69a8b90846c469e5314a5e51234825e11123d396eb6bc6a7a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1427"
         }
       ]
     },
@@ -43421,6 +43736,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/scabies-diagnosis-mda-v1561.js",
+      "type": "file",
+      "name": "mcp/adapters/scabies-diagnosis-mda-v1561.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4cee68f457cc2c938a5fd7bb63aa9887dc0ac9feebac30b4680afd4ce53d1634"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2238"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/scadding-v523.js",
       "type": "file",
       "name": "mcp/adapters/scadding-v523.js",
@@ -43606,6 +43942,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "5791"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/scrub-typhus-icmr-v1560.js",
+      "type": "file",
+      "name": "mcp/adapters/scrub-typhus-icmr-v1560.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ba4ba2a4538b9f580aec47168f12387ec29fc9a5254ccda8485599e02b5c6d1d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1807"
         }
       ]
     },
@@ -47159,6 +47516,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/yaws-test-and-treat-v1561.js",
+      "type": "file",
+      "name": "mcp/adapters/yaws-test-and-treat-v1561.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0ca7cc50108c3b1b3f6774c18fbe8b3afcc4d2efaa609db656da41d45875b968"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1890"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/yerdel-pvt-v472.js",
       "type": "file",
       "name": "mcp/adapters/yerdel-pvt-v472.js",
@@ -47291,7 +47669,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1706ee543b8796e0dba0232e3b03a3753cd5583293a5e75c72cf68ee5dfd1cca"
+          "content": "675fd86a5e4e0f60e8667045bd89466a653a5bbea65f120a012f669b3fa140a4"
         }
       ],
       "properties": [
@@ -47301,7 +47679,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "121488"
+          "value": "122759"
         }
       ]
     },
@@ -51344,7 +51722,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0efba0f278bceda2d487bd90ccfc166d13399365e0afefd5f8865e9ad54f0ad3"
+          "content": "8c48da53e66ec9ce557df90c93cb25289efdb9020cdb73ac6a26356f88c8b61b"
         }
       ],
       "properties": [
@@ -51354,7 +51732,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "4190"
+          "value": "8578"
         }
       ]
     },
@@ -51365,7 +51743,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "67042afb8cb9eebd0252b1fc826d5c9bc83aa08f5f3aeb3c4377acfcd16048f2"
+          "content": "f233e95066f65b66ead75c8470e9c4a389167ffe4ba77b7e2231da6677fe3e6a"
         }
       ],
       "properties": [
@@ -51375,7 +51753,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "3862"
+          "value": "15543"
         }
       ]
     },
@@ -82582,6 +82960,7 @@
         "urn:sophiewell:file:source:lib/brouet-cryoglobulinemia-v468.js",
         "urn:sophiewell:file:source:lib/brue-v547.js",
         "urn:sophiewell:file:source:lib/build-info.js",
+        "urn:sophiewell:file:source:lib/buruli-ulcer-category-v1561.js",
         "urn:sophiewell:file:source:lib/c-rads-v371.js",
         "urn:sophiewell:file:source:lib/c2hest-v1434.js",
         "urn:sophiewell:file:source:lib/ca-5150-hold-timeline-v1389.js",
@@ -82798,6 +83177,7 @@
         "urn:sophiewell:file:source:lib/field.js",
         "urn:sophiewell:file:source:lib/fielding-hawkins-v449.js",
         "urn:sophiewell:file:source:lib/figo-pas-v833.js",
+        "urn:sophiewell:file:source:lib/filarial-lymphedema-stage-v1561.js",
         "urn:sophiewell:file:source:lib/file-head.js",
         "urn:sophiewell:file:source:lib/file-kinds.js",
         "urn:sophiewell:file:source:lib/fisher-grade-v600.js",
@@ -83013,7 +83393,9 @@
         "urn:sophiewell:file:source:lib/lenke-scoliosis-v1241.js",
         "urn:sophiewell:file:source:lib/lepine-v596.js",
         "urn:sophiewell:file:source:lib/leprosy-classify-mdt-v1561.js",
+        "urn:sophiewell:file:source:lib/leprosy-disability-grade-v1561.js",
         "urn:sophiewell:file:source:lib/leprosy-pep-rifampicin-v1561.js",
+        "urn:sophiewell:file:source:lib/leprosy-reaction-prednisolone-v1561.js",
         "urn:sophiewell:file:source:lib/letournel-acetabulum-v466.js",
         "urn:sophiewell:file:source:lib/levine-edwards-v411.js",
         "urn:sophiewell:file:source:lib/li-rads-v327.js",
@@ -83087,6 +83469,7 @@
         "urn:sophiewell:file:source:lib/meld3-v678.js",
         "urn:sophiewell:file:source:lib/membranous-risk-v878.js",
         "urn:sophiewell:file:source:lib/meniere-aao-hns-v708.js",
+        "urn:sophiewell:file:source:lib/meningitis-who-2025-v1560.js",
         "urn:sophiewell:file:source:lib/mest-c-v528.js",
         "urn:sophiewell:file:source:lib/meta.js",
         "urn:sophiewell:file:source:lib/metabolic-hepatic-v219.js",
@@ -83172,6 +83555,7 @@
         "urn:sophiewell:file:source:lib/nms-criteria-v870.js",
         "urn:sophiewell:file:source:lib/nohria-stevenson-v369.js",
         "urn:sophiewell:file:source:lib/noise-exposure-v886.js",
+        "urn:sophiewell:file:source:lib/noma-stage-v1561.js",
         "urn:sophiewell:file:source:lib/nordland-tarnow-papilla-v1488.js",
         "urn:sophiewell:file:source:lib/norwood-hairloss-v502.js",
         "urn:sophiewell:file:source:lib/nottingham-grade-v649.js",
@@ -83433,6 +83817,7 @@
         "urn:sophiewell:file:source:lib/savary-miller-v405.js",
         "urn:sophiewell:file:source:lib/save-score-v543.js",
         "urn:sophiewell:file:source:lib/sbp-ascitic-fluid-v852.js",
+        "urn:sophiewell:file:source:lib/scabies-diagnosis-mda-v1561.js",
         "urn:sophiewell:file:source:lib/scadding-v523.js",
         "urn:sophiewell:file:source:lib/schema-check.js",
         "urn:sophiewell:file:source:lib/schenck-v647.js",
@@ -83444,6 +83829,7 @@
         "urn:sophiewell:file:source:lib/scoring-v6.js",
         "urn:sophiewell:file:source:lib/scp-pushing-v562.js",
         "urn:sophiewell:file:source:lib/screener.js",
+        "urn:sophiewell:file:source:lib/scrub-typhus-icmr-v1560.js",
         "urn:sophiewell:file:source:lib/sds-dependence-v730.js",
         "urn:sophiewell:file:source:lib/sdsg-spondylolisthesis-v1430.js",
         "urn:sophiewell:file:source:lib/sea-guideline-v861.js",
@@ -83647,6 +84033,7 @@
         "urn:sophiewell:file:source:lib/x12-837-worker.js",
         "urn:sophiewell:file:source:lib/x12-envelope.js",
         "urn:sophiewell:file:source:lib/yamaguchi-v642.js",
+        "urn:sophiewell:file:source:lib/yaws-test-and-treat-v1561.js",
         "urn:sophiewell:file:source:lib/yerdel-pvt-v472.js",
         "urn:sophiewell:file:source:lib/ymrs-v514.js",
         "urn:sophiewell:file:source:lib/young-burgess-v380.js",
@@ -84691,6 +85078,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/broset-v866.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/brouet-cryoglobulinemia-v468.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/brue-v547.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/buruli-ulcer-category-v1561.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/c-rads-v371.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/c2hest-v1434.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ca-5150-hold-timeline-v1389.js",
@@ -84892,6 +85280,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/field.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/fielding-hawkins-v449.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/figo-pas-v833.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/filarial-lymphedema-stage-v1561.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/fisher-grade-v600.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/fitzpatrick-v331.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/fluidresp-v113.js",
@@ -85083,7 +85472,9 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/lenke-scoliosis-v1241.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lepine-v596.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/leprosy-classify-mdt-v1561.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/leprosy-disability-grade-v1561.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/leprosy-pep-rifampicin-v1561.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/leprosy-reaction-prednisolone-v1561.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/letournel-acetabulum-v466.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/levine-edwards-v411.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/li-rads-v327.js",
@@ -85153,6 +85544,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/meld3-v678.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/membranous-risk-v878.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/meniere-aao-hns-v708.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/meningitis-who-2025-v1560.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/mest-c-v528.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/metabolic-hepatic-v219.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/metabolic-onc-v88.js",
@@ -85231,6 +85623,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/nms-criteria-v870.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nohria-stevenson-v369.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/noise-exposure-v886.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/noma-stage-v1561.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nordland-tarnow-papilla-v1488.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/norwood-hairloss-v502.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nottingham-grade-v649.js",
@@ -85451,6 +85844,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/savary-miller-v405.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/save-score-v543.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/sbp-ascitic-fluid-v852.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/scabies-diagnosis-mda-v1561.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/scadding-v523.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/schenck-v647.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/schobinger-avm-v497.js",
@@ -85460,6 +85854,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/scoring-v5.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/scoring-v6.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/scp-pushing-v562.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/scrub-typhus-icmr-v1560.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/sds-dependence-v730.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/sdsg-spondylolisthesis-v1430.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/sea-guideline-v861.js",
@@ -85629,6 +86024,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/winquist-hansen-v381.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/woundid-v248.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/yamaguchi-v642.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/yaws-test-and-treat-v1561.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/yerdel-pvt-v472.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ymrs-v514.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/young-burgess-v380.js",
@@ -85739,7 +86135,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "1513b97fdf912407"
+      "value": "a16eb77534070654"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -85751,7 +86147,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3163"
+      "value": "3181"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

@@ -3465,6 +3465,16 @@ const UTILITIES = [
   { id: 'crag-screen-fluconazole', name: 'Cryptococcal Antigen Screening and Fluconazole in Advanced HIV (WHO)', group: 'J', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'infant-hiv-test-schedule', name: 'When Is the Next HIV Test Due for an HIV-Exposed Infant? (WHO)', group: 'J', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'vivax-radical-cure', name: 'Primaquine or Tafenoquine for Vivax Relapse, by G6PD Result (WHO 2026)', group: 'F', audiences: ['clinicians', 'educators', 'field'], clinical: true },
+  // field-health batch (spec-v1540).
+  { id: 'meningitis-who-2025', name: 'Suspected Bacterial Meningitis: Lumbar Puncture, Empiric Antibiotics, Steroids, Duration (WHO 2025)', group: 'J', audiences: ['clinicians', 'educators', 'field'], clinical: true },
+  { id: 'scrub-typhus-icmr', name: 'Scrub Typhus: Case Definition and Doxycycline or Azithromycin Dose (ICMR, India)', group: 'J', audiences: ['clinicians', 'educators', 'field'], clinical: true },
+  { id: 'buruli-ulcer-category', name: 'Buruli Ulcer Category and 8-Week Antibiotic Doses (WHO)', group: 'J', audiences: ['clinicians', 'educators', 'field'], clinical: true },
+  { id: 'yaws-test-and-treat', name: 'Yaws: Case Class, Reading the Test, and Azithromycin Dose (WHO)', group: 'J', audiences: ['clinicians', 'educators', 'field'], clinical: true },
+  { id: 'leprosy-reaction-prednisolone', name: 'Prednisolone Schedule for a Type 1 Leprosy Reaction or Neuritis (WHO 2020)', group: 'J', audiences: ['clinicians', 'educators', 'field'], clinical: true },
+  { id: 'leprosy-disability-grade', name: 'WHO Leprosy Disability Grade and Eye-Hand-Foot (EHF) Score', group: 'J', audiences: ['clinicians', 'educators', 'field'], clinical: true },
+  { id: 'scabies-diagnosis-mda', name: 'Scabies: Confirmed, Clinical or Suspected, and Ivermectin Mass Treatment (WHO 2025)', group: 'J', audiences: ['clinicians', 'educators', 'field'], clinical: true },
+  { id: 'filarial-lymphedema-stage', name: 'Lymphedema Stage in Lymphatic Filariasis (Dreyer, 7 Stages)', group: 'J', audiences: ['clinicians', 'educators', 'field'], clinical: true },
+  { id: 'noma-stage', name: 'Noma (Cancrum Oris) Stage and Urgency (WHO)', group: 'J', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   // spec-v1550: field-health (spec-v1540).
   { id: 'vitamin-a-dose-child', name: 'Vitamin A Dose for a Child: Routine, Diarrhea, Measles or Eye Signs (WHO)', group: 'N', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'deworming-dose-who', name: 'Deworming Dose and Frequency (WHO Preventive Chemotherapy)', group: 'F', audiences: ['clinicians', 'educators', 'field'], clinical: true },

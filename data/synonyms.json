@@ -7081,6 +7081,105 @@
     },
     {
       "phrases": [
+        "who meningitis guideline",
+        "ct before lumbar puncture",
+        "empiric meningitis antibiotics",
+        "dexamethasone meningitis",
+        "meningitis listeria ampicillin"
+      ],
+      "tile": "meningitis-who-2025",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "scrub typhus treatment",
+        "rickettsial fever india",
+        "eschar fever doxycycline",
+        "weil felix scrub typhus",
+        "scrub typhus case definition"
+      ],
+      "tile": "scrub-typhus-icmr",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "buruli ulcer",
+        "mycobacterium ulcerans",
+        "buruli category",
+        "rifampicin clarithromycin 8 weeks",
+        "buruli ulcer treatment"
+      ],
+      "tile": "buruli-ulcer-category",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "yaws",
+        "yaws treatment azithromycin",
+        "dpp test yaws",
+        "yaws case definition",
+        "treponema pertenue"
+      ],
+      "tile": "yaws-test-and-treat",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "leprosy reaction prednisolone",
+        "type 1 reaction steroids",
+        "leprosy neuritis prednisolone",
+        "reversal reaction treatment",
+        "leprosy steroid taper"
+      ],
+      "tile": "leprosy-reaction-prednisolone",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "leprosy disability grade",
+        "ehf score",
+        "eye hand foot score",
+        "who disability grading leprosy",
+        "grade 2 disability leprosy"
+      ],
+      "tile": "leprosy-disability-grade",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "scabies diagnosis",
+        "iacs criteria scabies",
+        "ivermectin scabies dose",
+        "scabies mass drug administration",
+        "scabies treatment who"
+      ],
+      "tile": "scabies-diagnosis-mda",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "filarial lymphedema stage",
+        "dreyer staging",
+        "lymphatic filariasis leg swelling",
+        "elephantiasis stage",
+        "mossy foot"
+      ],
+      "tile": "filarial-lymphedema-stage",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "noma",
+        "cancrum oris",
+        "necrotizing gingivitis child",
+        "noma stages",
+        "noma referral"
+      ],
+      "tile": "noma-stage",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
         "who clinical stage hiv",
         "hiv staging",
         "hiv stage 3 4",

@@ -382,3 +382,21 @@ experience**.
 > v1554, When Is the Next HIV Test Due for an HIV-Exposed Infant? (WHO) — [spec-v1554](spec-v1554.md), which adds `infant-hiv-test-schedule` — is 2016.)
 
 > v1552, Primaquine or Tafenoquine for Vivax Relapse, by G6PD Result (WHO 2026) — [spec-v1552](spec-v1552.md), which adds `vivax-radical-cure` — is 2017.)
+
+> v1560, Suspected Bacterial Meningitis: Lumbar Puncture, Empiric Antibiotics, Steroids, Duration (WHO 2025) — [spec-v1560](spec-v1560.md), which adds `meningitis-who-2025` — is 2018.)
+
+> v1560, Scrub Typhus: Case Definition and Doxycycline or Azithromycin Dose (ICMR, India) — [spec-v1560](spec-v1560.md), which adds `scrub-typhus-icmr` — is 2019.)
+
+> v1561, Buruli Ulcer Category and 8-Week Antibiotic Doses (WHO) — [spec-v1561](spec-v1561.md), which adds `buruli-ulcer-category` — is 2020.)
+
+> v1561, Yaws: Case Class, Reading the Test, and Azithromycin Dose (WHO) — [spec-v1561](spec-v1561.md), which adds `yaws-test-and-treat` — is 2021.)
+
+> v1561, Prednisolone Schedule for a Type 1 Leprosy Reaction or Neuritis (WHO 2020) — [spec-v1561](spec-v1561.md), which adds `leprosy-reaction-prednisolone` — is 2022.)
+
+> v1561, WHO Leprosy Disability Grade and Eye-Hand-Foot (EHF) Score — [spec-v1561](spec-v1561.md), which adds `leprosy-disability-grade` — is 2023.)
+
+> v1561, Scabies: Confirmed, Clinical or Suspected, and Ivermectin Mass Treatment (WHO 2025) — [spec-v1561](spec-v1561.md), which adds `scabies-diagnosis-mda` — is 2024.)
+
+> v1561, Lymphedema Stage in Lymphatic Filariasis (Dreyer, 7 Stages) — [spec-v1561](spec-v1561.md), which adds `filarial-lymphedema-stage` — is 2025.)
+
+> v1561, Noma (Cancrum Oris) Stage and Urgency (WHO) — [spec-v1561](spec-v1561.md), which adds `noma-stage` — is 2026.)

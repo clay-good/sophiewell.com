@@ -703,6 +703,15 @@ import * as whoRabiesPepV1557 from '../../lib/who-rabies-pep-v1557.js';
 import * as pphWho2025V1558 from '../../lib/pph-who-2025-v1558.js';
 import * as laborCareGuideAlertV1558 from '../../lib/labor-care-guide-alert-v1558.js';
 import * as vitaminADoseChildV1550 from '../../lib/vitamin-a-dose-child-v1550.js';
+import * as meningitisWho2025V1560 from '../../lib/meningitis-who-2025-v1560.js';
+import * as scrubTyphusIcmrV1560 from '../../lib/scrub-typhus-icmr-v1560.js';
+import * as buruliUlcerCategoryV1561 from '../../lib/buruli-ulcer-category-v1561.js';
+import * as yawsTestAndTreatV1561 from '../../lib/yaws-test-and-treat-v1561.js';
+import * as leprosyReactionPrednisoloneV1561 from '../../lib/leprosy-reaction-prednisolone-v1561.js';
+import * as leprosyDisabilityGradeV1561 from '../../lib/leprosy-disability-grade-v1561.js';
+import * as scabiesDiagnosisMdaV1561 from '../../lib/scabies-diagnosis-mda-v1561.js';
+import * as filarialLymphedemaStageV1561 from '../../lib/filarial-lymphedema-stage-v1561.js';
+import * as nomaStageV1561 from '../../lib/noma-stage-v1561.js';
 import * as whoHivStagingV1554 from '../../lib/who-hiv-staging-v1554.js';
 import * as whoAdvancedHivV1554 from '../../lib/who-advanced-hiv-v1554.js';
 import * as cragScreenFluconazoleV1554 from '../../lib/crag-screen-fluconazole-v1554.js';
@@ -1537,6 +1546,15 @@ const MODULES = {
   'pph-who-2025-v1558.js': pphWho2025V1558,
   'labor-care-guide-alert-v1558.js': laborCareGuideAlertV1558,
   'vitamin-a-dose-child-v1550.js': vitaminADoseChildV1550,
+  'meningitis-who-2025-v1560.js': meningitisWho2025V1560,
+  'scrub-typhus-icmr-v1560.js': scrubTyphusIcmrV1560,
+  'buruli-ulcer-category-v1561.js': buruliUlcerCategoryV1561,
+  'yaws-test-and-treat-v1561.js': yawsTestAndTreatV1561,
+  'leprosy-reaction-prednisolone-v1561.js': leprosyReactionPrednisoloneV1561,
+  'leprosy-disability-grade-v1561.js': leprosyDisabilityGradeV1561,
+  'scabies-diagnosis-mda-v1561.js': scabiesDiagnosisMdaV1561,
+  'filarial-lymphedema-stage-v1561.js': filarialLymphedemaStageV1561,
+  'noma-stage-v1561.js': nomaStageV1561,
   'who-hiv-staging-v1554.js': whoHivStagingV1554,
   'who-advanced-hiv-v1554.js': whoAdvancedHivV1554,
   'crag-screen-fluconazole-v1554.js': cragScreenFluconazoleV1554,

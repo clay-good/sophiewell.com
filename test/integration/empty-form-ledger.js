@@ -77,6 +77,10 @@ export const ANSWERS_AN_EMPTY_FORM = new Set([
   // neck swelling, severity); the only number field is the optional weight for the antibiotic, and with it
   // blank the answer says "No weight was entered, so no mg dose is given".
   "diphtheria-antitoxin-dose",
+  // spec-v1561 (scabies-diagnosis-mda): the IACS level comes from the lesion and history selects; the only
+  // number fields are the optional community prevalence and the weight for ivermectin, and with the weight
+  // blank the answer says "Weight: not entered, so no ivermectin dose".
+  "scabies-diagnosis-mda",
   // spec-v1558 (mgso4-im-regimen): the regimen comes from two required selects (source, regimen); the
   // number fields are the optional next-dose check, and with them blank the tile gives the regimen and
   // no safe-to-give verdict, which it gives only when all three checks are entered.

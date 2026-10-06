@@ -21,6 +21,34 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Suspected bacterial meningitis (WHO 2025): image or defer the lumbar
+  puncture on six red flags (blank is not assessed), empiric ceftriaxone or
+  cefotaxime with Listeria and resistance add-ons, steroids and duration by
+  setting, and contact prophylaxis.
+- Scrub typhus (ICMR 2015): suspected, probable and confirmed cases (an eschar
+  counts before 5 days of fever) and doxycycline or azithromycin by weight,
+  in pregnancy, or IV for complicated disease.
+- Buruli ulcer category and 8-week antibiotics (WHO 2012 and 2020): category
+  I, II or III (exactly 5 and 15 cm follow WHO), "at least" with an
+  unassessed site, and rifampicin plus clarithromycin by weight with caps.
+- Yaws (WHO 2021 and 2018): reading the rapid and DPP tests (non-treponemal
+  alone is invalid), the case class, and azithromycin 30 mg/kg (maximum 2 g)
+  or by age band.
+- Prednisolone for a type 1 leprosy reaction or neuritis (WHO 2020): the two
+  20-week tracks from Table 3 (40 or 30 mg), the week lookup, and the track
+  nearer 0.5 mg/kg when none is chosen.
+- WHO leprosy disability grade and EHF score (2009): each eye, hand and foot
+  graded 0, 1 or 2 (the eye has no grade 1), the patient's highest grade and
+  the 0-12 sum, "at least" with a site unassessed.
+- Scabies (WHO 2025): the 2020 IACS levels and the primary-care rule,
+  ivermectin 200 micrograms/kg rounded up to 3 mg tablets with its
+  contraindications, and the 10% / 2% mass-treatment thresholds.
+- Lymphedema stage in lymphatic filariasis (Dreyer, WHO 2001): stages 1-7 per
+  limb by the highest feature, deferred within 30 days of an acute attack,
+  with WHO's three grades beside it.
+- Noma stage and urgency (WHO AFRO 2017): the warning sign and stages 1-5,
+  reversible through edema, emergency referral from edema, and "at least" with
+  a sign unassessed; no antibiotic doses.
 - WHO clinical stage of HIV (2026 surveillance guidance, Annex 1): every
   adult and child condition with the regional additions; the highest stage
   wins, an unassessed higher stage gives "at least", and stage 1 only when

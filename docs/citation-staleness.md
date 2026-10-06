@@ -665,6 +665,15 @@ and thresholds) is a stable rule in every case (Class A).
 | crag-screen-fluconazole | WHO cryptococcal antigen screening and pre-emptive fluconazole | WHO cryptococcal disease guidelines (2022); advanced HIV disease (2025) | same | 2026-10-06 | current - CRYPTO22 section 2.2 and AHD25 Table 2 read October 6, 2026 |
 | infant-hiv-test-schedule | WHO infant HIV diagnosis algorithm | WHO consolidated HIV guidelines (2021), Fig. 2.7 | same | 2026-10-06 | current - Box 2.5 and Fig. 2.7 read October 6, 2026 |
 | vivax-radical-cure | WHO vivax radical cure by G6PD status | WHO guidelines for malaria (10 September 2026) | same | 2026-10-06 | current - sections 5.2.1.6-5.2.1.7 read October 6, 2026 |
+| meningitis-who-2025 | WHO meningitis diagnosis, treatment and care | WHO meningitis guidelines (2025) | same | 2026-10-06 | current - executive summary read October 6, 2026 |
+| scrub-typhus-icmr | ICMR rickettsial disease case definitions and treatment | DHR-ICMR rickettsial guidelines (2015) | same | 2026-10-06 | current - sections 3.1 and 3.3 read October 6, 2026 |
+| buruli-ulcer-category | WHO Buruli ulcer categories and antibiotic treatment | WHO Buruli ulcer guidance (2012); HIV coinfection update (2020) | same | 2026-10-06 | current - BU12 Table 3 and BUHIV20 section 3.1 read October 6, 2026 |
+| yaws-test-and-treat | WHO yaws case definitions, test reading and azithromycin | WHO yaws eradication manual (2021); programme guide (2018) | same | 2026-10-06 | current - read October 6, 2026 |
+| leprosy-reaction-prednisolone | WHO prednisolone schedule for type 1 leprosy reactions | WHO SEARO leprosy reactions guidance (2020) | same | 2026-10-06 | current - Table 3 read October 6, 2026 |
+| leprosy-disability-grade | WHO leprosy disability grading and EHF score | WHO SEARO leprosy operational guidelines (2009) | same | 2026-10-06 | current - pp. 22-23 and 54 read October 6, 2026 |
+| scabies-diagnosis-mda | WHO scabies diagnosis, ivermectin and MDA thresholds | WHO scabies control guide (2025) | same | 2026-10-06 | current - Box 1 and Box 7 read October 6, 2026 |
+| filarial-lymphedema-stage | Dreyer 7-stage lymphedema staging | WHO lymphoedema staff manual (2001) | same | 2026-10-06 | current - pp. 9-13 read October 6, 2026 |
+| noma-stage | WHO noma stages and urgency | WHO AFRO noma brochure (2017) | same | 2026-10-06 | current - pp. 7-19 read October 6, 2026 |
 | vitamin-a-dose-child | WHO vitamin A doses for children by reason (routine, diarrhea, measles, eye signs) | WHO VA11 (2011), IMCI chart (2014), Pocket book (2013), SAM manual (1999) | same | 2026-10-06 | current - each source read October 6, 2026; their age bands differ at 12 months and each reason uses its own |
 | deworming-dose-who | WHO deworming dose and frequency by group and prevalence | WHO STH preventive chemotherapy guideline (2017) | same | 2026-10-06 | current - the 2017 guideline is current; recommendations read October 6, 2026 |
 | labor-care-guide-alert | WHO Labour Care Guide alert thresholds for each labor observation | WHO labour care guide user's manual (2020) | same | 2026-10-06 | current - the 2020 manual is the current edition; Tables 2-6 read October 6, 2026 |
@@ -723,6 +732,15 @@ guideline's citation carries its version date and DOI.
 | crag-screen-fluconazole | WHO cryptococcal antigen screening and pre-emptive fluconazo | WHO cryptococcal disease guidelines (2022); advanced HIV disease (2025) | same | 2026-10-06 | moderate | current |
 | infant-hiv-test-schedule | WHO infant HIV diagnosis algorithm | WHO consolidated HIV guidelines (2021), Fig. 2.7 | same | 2026-10-06 | moderate | current |
 | vivax-radical-cure | WHO vivax radical cure by G6PD status | WHO guidelines for malaria (10 September 2026) | same | 2026-10-06 | moderate | current |
+| meningitis-who-2025 | WHO meningitis diagnosis, treatment and care | WHO meningitis guidelines (2025) | same | 2026-10-06 | moderate | current |
+| scrub-typhus-icmr | ICMR rickettsial disease case definitions and treatment | DHR-ICMR rickettsial guidelines (2015) | same | 2026-10-06 | low | current |
+| buruli-ulcer-category | WHO Buruli ulcer categories and antibiotic treatment | WHO Buruli ulcer guidance (2012); HIV coinfection update (2020) | same | 2026-10-06 | low | current |
+| yaws-test-and-treat | WHO yaws case definitions, test reading and azithromycin | WHO yaws eradication manual (2021); programme guide (2018) | same | 2026-10-06 | low | current |
+| leprosy-reaction-prednisolone | WHO prednisolone schedule for type 1 leprosy reactions | WHO SEARO leprosy reactions guidance (2020) | same | 2026-10-06 | low | current |
+| leprosy-disability-grade | WHO leprosy disability grading and EHF score | WHO SEARO leprosy operational guidelines (2009) | same | 2026-10-06 | low | current |
+| scabies-diagnosis-mda | WHO scabies diagnosis, ivermectin and MDA thresholds | WHO scabies control guide (2025) | same | 2026-10-06 | low | current |
+| filarial-lymphedema-stage | Dreyer 7-stage lymphedema staging | WHO lymphoedema staff manual (2001) | same | 2026-10-06 | low | current |
+| noma-stage | WHO noma stages and urgency | WHO AFRO noma brochure (2017) | same | 2026-10-06 | low | current |
 | vitamin-a-dose-child | WHO vitamin A doses for children by reason (routine, diarrhe | WHO VA11 (2011), IMCI chart (2014), Pocket book (2013), SAM manual (1999) | same | 2026-10-06 | low | current |
 | deworming-dose-who | WHO deworming dose and frequency by group and prevalence | WHO STH preventive chemotherapy guideline (2017) | same | 2026-10-06 | low | current |
 | labor-care-guide-alert | WHO Labour Care Guide alerts | WHO labour care guide user's manual (2020) | same | 2026-10-06 | low | current - a 2020 manual |

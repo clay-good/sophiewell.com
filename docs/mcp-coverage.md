@@ -8776,6 +8776,33 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/vitamin-a-dose-child-v1550.js (spec-v1550: WHO vitamin A doses for children by reason (routine, diarrhea, measles, eye signs) — clinical disclaimer)
 - `vitamin-a-dose-child`
 
+### lib/meningitis-who-2025-v1560.js (spec-v1560: WHO meningitis diagnosis, treatment and care — clinical disclaimer)
+- `meningitis-who-2025`
+
+### lib/scrub-typhus-icmr-v1560.js (spec-v1560: ICMR rickettsial disease case definitions and treatment — clinical disclaimer)
+- `scrub-typhus-icmr`
+
+### lib/buruli-ulcer-category-v1561.js (spec-v1561: WHO Buruli ulcer categories and antibiotic treatment — clinical disclaimer)
+- `buruli-ulcer-category`
+
+### lib/yaws-test-and-treat-v1561.js (spec-v1561: WHO yaws case definitions, test reading and azithromycin — clinical disclaimer)
+- `yaws-test-and-treat`
+
+### lib/leprosy-reaction-prednisolone-v1561.js (spec-v1561: WHO prednisolone schedule for type 1 leprosy reactions — clinical disclaimer)
+- `leprosy-reaction-prednisolone`
+
+### lib/leprosy-disability-grade-v1561.js (spec-v1561: WHO leprosy disability grading and EHF score — clinical disclaimer)
+- `leprosy-disability-grade`
+
+### lib/scabies-diagnosis-mda-v1561.js (spec-v1561: WHO scabies diagnosis, ivermectin and MDA thresholds — clinical disclaimer)
+- `scabies-diagnosis-mda`
+
+### lib/filarial-lymphedema-stage-v1561.js (spec-v1561: Dreyer 7-stage lymphedema staging — clinical disclaimer)
+- `filarial-lymphedema-stage`
+
+### lib/noma-stage-v1561.js (spec-v1561: WHO noma stages and urgency — clinical disclaimer)
+- `noma-stage`
+
 ### lib/who-hiv-staging-v1554.js (spec-v1554: WHO clinical staging of HIV disease — clinical disclaimer)
 - `who-hiv-staging`
 

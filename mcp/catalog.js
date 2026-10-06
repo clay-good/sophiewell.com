@@ -973,6 +973,15 @@ import whoRabiesPepV1557 from './adapters/who-rabies-pep-v1557.js';
 import pphWho2025V1558 from './adapters/pph-who-2025-v1558.js';
 import laborCareGuideAlertV1558 from './adapters/labor-care-guide-alert-v1558.js';
 import vitaminADoseChildV1550 from './adapters/vitamin-a-dose-child-v1550.js';
+import meningitisWho2025V1560 from './adapters/meningitis-who-2025-v1560.js';
+import scrubTyphusIcmrV1560 from './adapters/scrub-typhus-icmr-v1560.js';
+import buruliUlcerCategoryV1561 from './adapters/buruli-ulcer-category-v1561.js';
+import yawsTestAndTreatV1561 from './adapters/yaws-test-and-treat-v1561.js';
+import leprosyReactionPrednisoloneV1561 from './adapters/leprosy-reaction-prednisolone-v1561.js';
+import leprosyDisabilityGradeV1561 from './adapters/leprosy-disability-grade-v1561.js';
+import scabiesDiagnosisMdaV1561 from './adapters/scabies-diagnosis-mda-v1561.js';
+import filarialLymphedemaStageV1561 from './adapters/filarial-lymphedema-stage-v1561.js';
+import nomaStageV1561 from './adapters/noma-stage-v1561.js';
 import whoHivStagingV1554 from './adapters/who-hiv-staging-v1554.js';
 import whoAdvancedHivV1554 from './adapters/who-advanced-hiv-v1554.js';
 import cragScreenFluconazoleV1554 from './adapters/crag-screen-fluconazole-v1554.js';
@@ -2023,6 +2032,15 @@ const ADAPTER_MODULES = [
   ['pph-who-2025-v1558', pphWho2025V1558],
   ['labor-care-guide-alert-v1558', laborCareGuideAlertV1558],
   ['vitamin-a-dose-child-v1550', vitaminADoseChildV1550],
+  ['meningitis-who-2025-v1560', meningitisWho2025V1560],
+  ['scrub-typhus-icmr-v1560', scrubTyphusIcmrV1560],
+  ['buruli-ulcer-category-v1561', buruliUlcerCategoryV1561],
+  ['yaws-test-and-treat-v1561', yawsTestAndTreatV1561],
+  ['leprosy-reaction-prednisolone-v1561', leprosyReactionPrednisoloneV1561],
+  ['leprosy-disability-grade-v1561', leprosyDisabilityGradeV1561],
+  ['scabies-diagnosis-mda-v1561', scabiesDiagnosisMdaV1561],
+  ['filarial-lymphedema-stage-v1561', filarialLymphedemaStageV1561],
+  ['noma-stage-v1561', nomaStageV1561],
   ['who-hiv-staging-v1554', whoHivStagingV1554],
   ['who-advanced-hiv-v1554', whoAdvancedHivV1554],
   ['crag-screen-fluconazole-v1554', cragScreenFluconazoleV1554],
