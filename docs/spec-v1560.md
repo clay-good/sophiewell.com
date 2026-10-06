@@ -19,7 +19,7 @@ Five tiles. Leptospirosis (modified Faine's) is blocked until its primary is rea
 
 ---
 
-## 1. `cholera-rehydration-plan` — Cholera: How Dehydrated, Which Plan, How Much Fluid (GTFCC 2024)
+## 1. `cholera-rehydration` — Cholera: How Dehydrated, Which Plan, How Much Fluid (GTFCC 2024)
 
 **Question.** How dehydrated is this patient with suspected cholera, how much fluid over what time,
 and do they need an antibiotic?
@@ -189,3 +189,10 @@ LP and steroid branches by setting; typhoid bands and durations; scrub typhus wi
 
 GTFCC *moderate* (job aids reissued 2024–2025, with live internal inconsistencies). DIPH24, MEN25
 *moderate* (new guidelines). AWARE22 *moderate*. ICMR15 *low* (old, unrevised).
+
+## Build status
+
+| Tool | Status |
+|---|---|
+| `cholera-rehydration` | **Built October 5, 2026** (catalog 1,981). **Renamed** from the planned `cholera-rehydration-plan`: with "plan" in its name and id, a search for the PLAN stroke score (`plan-score`) no longer found it in the top five (`test/unit/acronym-findable.test.js`); `plan-score` also gained its first synonyms ("plan score"). Re-read from gtfcc.org: the 12 July 2024 job aids (dehydration and admission; Plans A, B, C), the flowchart v1.0 (9 September 2024), the antibiotics note rev. October 2022 (Table 1), and the pregnancy note and severe malnutrition job aid (French editions; no English copy is on gtfcc.org). **Corrected from the spec:** the pregnancy note is dated **30 September 2020**, not November 2022; its severe and some lists add systolic below 90 (a danger sign) and a fetal heart above 160 (counted in both) and drop respiratory distress. The malnutrition job aid's severe rule is **2 of 5 signs** (lethargy, sunken eyes, weak pulse, drinking poorly, very slow pinch) with no single-sign rule, and IV is only for circulatory collapse (lethargy or unconsciousness); severe without collapse gets its oral or tube schedule. The malnutrition Plan B is 5 mL/kg every 30 minutes for 2 hours, then 5–10 mL/kg in alternate hours with F-75. **Readings stated:** blank signs are "not assessed" and the answer is given only when the best and worst readings agree; a worse grade meets the milder one (drinking poorly counts with "thirsty"); the job aid's overlapping age bands are read 2 to under 5 and 5 to under 15 years, as in the flowchart; a systolic of exactly 90 counts as a danger sign. **Not built:** the case definition (stated in the sources, not computed); the fluids quick-reference chart's banded volumes. |
+| Tools 2–5 | Open. |

@@ -8758,6 +8758,9 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/imci-ors-plan-v1546.js (spec-v1546: WHO IMCI ORS Plans A, B and C — clinical disclaimer)
 - `imci-ors-plan`
 
+### lib/cholera-rehydration-v1560.js (spec-v1560: GTFCC cholera dehydration, fluids and antibiotic — clinical disclaimer)
+- `cholera-rehydration`
+
 ### lib/claims-pct-medicare.js (spec-v1604: Claims paid as a percent of Medicare — administrative disclaimer)
 - `claims-pct-medicare`
 

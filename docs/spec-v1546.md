@@ -23,7 +23,7 @@ Four tiles. The classifications are spec-v1545; this is what the chart says to g
 | C3 | IM artesunate | CB14: 2.4 mg/kg for all | MAL26: 3 mg/kg under 20 kg, 2.4 mg/kg at 20 kg or more | MAL26 supersedes; routed to `severe-malaria-artesunate-dose` |
 | C4 | Rectal artesunate | CB14: 50 mg and 200 mg suppositories by age band | WHO 2017 information note: 100 mg suppositories, one up to 10 kg, two up to 20 kg | Routed to `rectal-artesunate-prereferral` (spec-v1551) |
 | C5 | Rectal diazepam, 0.5 mg/kg | CB14 age/weight bands (0.5 / 1.0 / 1.5 / 2.0 mL of 10 mg in 2 mL) | PB13 Chart 9 and Annex 2 print two further band sets for the same mg/kg | Compute 0.5 mg/kg (0.1 mL/kg of 10 mg in 2 mL); show the band of the chart the user names |
-| C6 | Plan B table vs cholera job aid | CB14 bands (below) | GTFCC 2024 prints different bands for the same 75 mL/kg | This tile implements CB14; cholera uses `cholera-rehydration-plan` (spec-v1560) |
+| C6 | Plan B table vs cholera job aid | CB14 bands (below) | GTFCC 2024 prints different bands for the same 75 mL/kg | This tile implements CB14; cholera uses `cholera-rehydration` (spec-v1560) |
 
 ---
 
@@ -97,7 +97,7 @@ Other rows:
   before classifying wheeze.
 - **Antimalarials** route to `act-weight-band-dose` (C2).
 - **Cholera** (2 years or more, 10–19 kg): CB14 leaves the drug to the national program; route to
-  `cholera-rehydration-plan`.
+  `cholera-rehydration`.
 
 **Output.** Tablets or mL per dose, how often, how many days, and the total to hand the caregiver.
 The achieved mg/kg shows beside amoxicillin, because a 4 kg child on 250 mg twice daily gets 62.5

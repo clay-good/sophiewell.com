@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `fce78522488d9efd`
-Generated: 2026-10-05T22:20:06.347Z
+Build ID: `d698ae1d106751bc`
+Generated: 2026-10-05T23:14:49.686Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -25,9 +25,9 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 
 | Path | Bytes | SHA-256 |
 |---|---:|---|
-| `index.html` | 126981 | `515b18df7e2d9883e742420a25e4d118a6c21c701e8c21c141d99ad199964e8a` |
+| `index.html` | 127065 | `0f086125b3b66acb1fe05ee490c627d0b2aa669a829331bb74674cbe951a8789` |
 | `styles.css` | 75594 | `84e01c95d5ccc0928a4adcab97925a49dd1c34d86866df26c7994356ecea582e` |
-| `app.js` | 574131 | `0b4fe9b3f14f707d036ec5ad2fdbf9e0a0744b9b4a4c7e84338a657386394d93` |
+| `app.js` | 574436 | `d0185eeba63a483ca510df4b2528f1b4bd47dd0ba321dee8893c5386ff04cbda` |
 | `report-feedback.js` | 12178 | `955e5cb542c7b13dcbb85a75ecf4ccf2dc0b2dffecd84daac1d607bd6acc7cd2` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 | `theme.js` | 3132 | `6910af0b4c65869c6a3d24d17842bb2cc88c7d23f8fb32506fcdbfeec70ce979` |
@@ -35,7 +35,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `sw.js` | 6994 | `215b6fa7b871cac7b775393d28a00c11ff3ccd1ce1b3230b378bcb8d8f881b40` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 247331 | `bb512f8db893762c3a6bdb9feaebe5fd424be0bc0a2dc6e1d6529755c923786f` |
+| `sitemap.xml` | 247461 | `e2a2f290dc07115a8a4e2bbafef08187364046df99bb394987c4eed19189f3f1` |
 | `_headers` | 2063 | `1a500c03dd4add8641287d189c20f15afa3657931417b11ea2a51f39b501773f` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 3682 | `8dd13c4dd66de0c9ec93c2c1561e5fec1902f144b677d3581cf56b124b04a1b8` |
@@ -48,7 +48,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | Path | Bytes | SHA-256 |
 |---|---:|---|
 | `report-worker.mjs` | 13434 | `bcbebe960bf79e0cb2038f7ddc216dfb0753a9665f071fa32966d5d460ffc794` |
-| `report-catalog.js` | 113907 | `de1b591d0820d46125f4fabcb9ad03cd9b4ff6629e9cb4ac33b9d6d8e99a7414` |
+| `report-catalog.js` | 114000 | `f5ac7f1eb3074fadd584ceaa815d2e71f610ff043cc3ab3aa48aaf969c774065` |
 | `report-policy.js` | 483 | `e2527b1784a6c8c9c1ed4ec0cf45d4fbc3b3261315fb03f720e66fbe05fa0b15` |
 
 ## Source-of-truth modules (lib + views)
@@ -226,6 +226,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/cholangitis-v310.js` | 4886 | `4cac9a021e002921e5ab5a7b41a7bb3b029db3050404e1bcf586f94cb8e8d7c3` |
 | `lib/cholecystitis-dx-v313.js` | 4270 | `6360a208f6243d59a29a492fcd166d7de931a86faf14ea411df7c782bf16cdcd` |
 | `lib/cholecystitis-v311.js` | 4816 | `d8e48338dd1d8961b5b227af4dfaba7c74602773b6314bfe605009ea637729a4` |
+| `lib/cholera-rehydration-v1560.js` | 19955 | `60d05144be677084c52464181bf6cacee1376e2eca8cd7fdd50f555508e0ae8d` |
 | `lib/clabsi-lcbi-v874.js` | 10412 | `511a3fe00f80da28010098040841170e1c99e52ae528f0709a64caf4dca1bc8e` |
 | `lib/claims-pct-medicare.js` | 8855 | `27afd7a3c41a6c7ada6fec958a4902e517d55e4157fc1757e05a77120e40ec88` |
 | `lib/clark-level-v340.js` | 3939 | `def67d057403850cbdc41455c286e22795e0c276c0f4e365d5e76c0e6b553599` |
@@ -657,7 +658,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/membranous-risk-v878.js` | 11351 | `882c36c07e46543e32f1114792c1124ee9f9ff6b384084fc0a8c221e7dd62062` |
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2690592 | `bf67430cd255953268703b6828f5e7875363e0e3e06b81e4a4a87b2e9527b816` |
+| `lib/meta.js` | 2691670 | `bd6b71035bb9439862af251b517b0975c0734fb633a58fa85203da84e8e90bce` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 19326 | `64342935cc7842381f6e318293cfcd6f97b69022268da6c595c5c71db388af2d` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -1361,6 +1362,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/cholangitis-v310.js` | 2724 | `54769c7ed01db8effd67edd3f6e81606655df10f546423aad3540ca92400f10c` |
 | `mcp/adapters/cholecystitis-dx-v313.js` | 1939 | `693a10820b678199d9cca306c9d619de8829b7134b4ff065f9802db0998065b8` |
 | `mcp/adapters/cholecystitis-v311.js` | 2909 | `1fe763f4ba018153e35530d0aa486039430e086d0cf6654275ba972b4ab0087c` |
+| `mcp/adapters/cholera-rehydration-v1560.js` | 1984 | `46a4065e536f97849aa4a938c7445aeb0a7e633e5b6b12716c6f857b5085b6b0` |
 | `mcp/adapters/clabsi-lcbi-v874.js` | 3377 | `5685fcd2b324666a9c02e2b85d6c04e9ba12e2fd4253d680a62bf3e42eff791f` |
 | `mcp/adapters/claims-pct-medicare.js` | 2306 | `0b419b9d1075b7e59d971ec5a4cc6b1d80a9262c574e396e0cc599a2e02b3321` |
 | `mcp/adapters/clark-level-v340.js` | 1368 | `323dc3cc05c00bbcc62366429c19f81679780999ee372698c44ce396b030f6a5` |
@@ -2210,7 +2212,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/zabramski-v442.js` | 1156 | `f364baad3d680210aafd8b47cb6ad472521c8bfb9f02683340f5175dcb03d097` |
 | `mcp/adapters/zargar-caustic-v401.js` | 1423 | `158261bfae30e1660e5888582289b46bef0344c5763a15a9be2c812be5722d4a` |
 | `mcp/adapters/zulewski-v608.js` | 4193 | `68da25df2e1cd4653dd6ad796f5c0f032429c1da8d89459e8d66f5cc7bb51ab8` |
-| `mcp/catalog.js` | 116633 | `f3050ec3381c39c09c9beef7e89a2847596eae75998df07fbf4ce6fa71301e01` |
+| `mcp/catalog.js` | 116770 | `63b897ea8fbea5d394c4c2a61ea676d3d3bce18e083bbc1edbcea74ea484fe0f` |
 | `mcp/fields.js` | 9201 | `ff8920609cbc0abd65ea9265076cfc6df06e7bfd4fa0851cee84ac7622713d46` |
 | `mcp/file-tools.js` | 10464 | `1b98e48d0f003b5483e0a983e9c621abe4af0650101fe3bc0b2e48c9a1cae29f` |
 | `mcp/server.js` | 2985 | `6531d95a89218f599811c82c817e36abafd59b97a619927ae58a7f82157c4865` |
@@ -2393,6 +2395,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1550.js` | 2995 | `a6643725acf3ac7824671aae6888002d572443d91fbe245aa979b0d7883f7c80` |
 | `views/group-v1551.js` | 5736 | `e9a6d5e5b20e0b4e2863b45e03a052d6e7d4c68d066f9d08bb5bb789d3c80316` |
 | `views/group-v156.js` | 10713 | `c8c967d1586f796af986c00cb75804dcb47a8dd40e1e4e1a465e15f4518f8637` |
+| `views/group-v1560.js` | 3933 | `8580f4c4b476172a58a37cd9339b6f3bbddc7282d4f505416c9c10f211d6e5bf` |
 | `views/group-v1570.js` | 2059 | `57632b7d4c7ea54d44b1ecaff89fd27e7489b287aa0ca9c1046c4116c7464d5a` |
 | `views/group-v1571.js` | 2312 | `5cc3b66be55b7e203deb7dc8e5db315c820a6355a9f63ed337c3f86ac59ad454` |
 | `views/group-v1572.js` | 2102 | `3551e331ca4b1e2ae863f02700c4212aba097cff170f290787a898ec2ecf1f12` |

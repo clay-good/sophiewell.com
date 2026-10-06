@@ -7012,6 +7012,27 @@
     },
     {
       "phrases": [
+        "cholera rehydration",
+        "cholera treatment",
+        "cholera dehydration",
+        "gtfcc",
+        "cholera antibiotic",
+        "cholera doxycycline"
+      ],
+      "tile": "cholera-rehydration",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "plan score",
+        "plan stroke score",
+        "plan stroke mortality"
+      ],
+      "tile": "plan-score",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
         "pertussis case definition",
         "whooping cough case definition",
         "is this a confirmed pertussis case",

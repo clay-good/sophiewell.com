@@ -21,6 +21,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Cholera rehydration (GTFCC 2024): classifies dehydration from the
+  signs (a blank sign is not assessed), gives Plan A, B or C volumes and rates,
+  with the pregnancy and severe malnutrition protocols, the antibiotic when
+  indicated, and zinc.
 - ORS Plans A, B and C (WHO IMCI): the fluid for a child under 5 with
   diarrhea, per loose stool, ORS over 4 hours by weight or age band, or IV
   100 mL/kg timed by age, with the no-IV routes; severe malnutrition excluded.

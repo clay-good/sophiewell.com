@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:fce78522-488d-5efd-866e-8b7128043271",
+  "serialNumber": "urn:uuid:d698ae1d-1067-51bc-8ca2-03d557045bee",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-05T22:20:06.347Z",
+    "timestamp": "2026-10-05T23:14:49.686Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1980 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1981 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "515b18df7e2d9883e742420a25e4d118a6c21c701e8c21c141d99ad199964e8a"
+          "content": "0f086125b3b66acb1fe05ee490c627d0b2aa669a829331bb74674cbe951a8789"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "126981"
+          "value": "127065"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0b4fe9b3f14f707d036ec5ad2fdbf9e0a0744b9b4a4c7e84338a657386394d93"
+          "content": "d0185eeba63a483ca510df4b2528f1b4bd47dd0ba321dee8893c5386ff04cbda"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "574131"
+          "value": "574436"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "bb512f8db893762c3a6bdb9feaebe5fd424be0bc0a2dc6e1d6529755c923786f"
+          "content": "e2a2f290dc07115a8a4e2bbafef08187364046df99bb394987c4eed19189f3f1"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "247331"
+          "value": "247461"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "de1b591d0820d46125f4fabcb9ad03cd9b4ff6629e9cb4ac33b9d6d8e99a7414"
+          "content": "f5ac7f1eb3074fadd584ceaa815d2e71f610ff043cc3ab3aa48aaf969c774065"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "113907"
+          "value": "114000"
         }
       ]
     },
@@ -4063,6 +4063,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4816"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/cholera-rehydration-v1560.js",
+      "type": "file",
+      "name": "lib/cholera-rehydration-v1560.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "60d05144be677084c52464181bf6cacee1376e2eca8cd7fdd50f555508e0ae8d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "19955"
         }
       ]
     },
@@ -13124,7 +13145,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "bf67430cd255953268703b6828f5e7875363e0e3e06b81e4a4a87b2e9527b816"
+          "content": "bd6b71035bb9439862af251b517b0975c0734fb633a58fa85203da84e8e90bce"
         }
       ],
       "properties": [
@@ -13134,7 +13155,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2690592"
+          "value": "2691670"
         }
       ]
     },
@@ -27898,6 +27919,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2909"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/cholera-rehydration-v1560.js",
+      "type": "file",
+      "name": "mcp/adapters/cholera-rehydration-v1560.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "46a4065e536f97849aa4a938c7445aeb0a7e633e5b6b12716c6f857b5085b6b0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1984"
         }
       ]
     },
@@ -45737,7 +45779,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f3050ec3381c39c09c9beef7e89a2847596eae75998df07fbf4ce6fa71301e01"
+          "content": "63b897ea8fbea5d394c4c2a61ea676d3d3bce18e083bbc1edbcea74ea484fe0f"
         }
       ],
       "properties": [
@@ -45747,7 +45789,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "116633"
+          "value": "116770"
         }
       ]
     },
@@ -49570,6 +49612,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "10713"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1560.js",
+      "type": "file",
+      "name": "views/group-v1560.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8580f4c4b476172a58a37cd9339b6f3bbddc7282d4f505416c9c10f211d6e5bf"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3933"
         }
       ]
     },
@@ -80795,6 +80858,7 @@
         "urn:sophiewell:file:source:lib/cholangitis-v310.js",
         "urn:sophiewell:file:source:lib/cholecystitis-dx-v313.js",
         "urn:sophiewell:file:source:lib/cholecystitis-v311.js",
+        "urn:sophiewell:file:source:lib/cholera-rehydration-v1560.js",
         "urn:sophiewell:file:source:lib/clabsi-lcbi-v874.js",
         "urn:sophiewell:file:source:lib/claims-pct-medicare.js",
         "urn:sophiewell:file:source:lib/clark-level-v340.js",
@@ -81947,6 +82011,7 @@
         "urn:sophiewell:file:source:views/group-v1550.js",
         "urn:sophiewell:file:source:views/group-v1551.js",
         "urn:sophiewell:file:source:views/group-v156.js",
+        "urn:sophiewell:file:source:views/group-v1560.js",
         "urn:sophiewell:file:source:views/group-v1570.js",
         "urn:sophiewell:file:source:views/group-v1571.js",
         "urn:sophiewell:file:source:views/group-v1572.js",
@@ -82850,6 +82915,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/cholangitis-v310.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cholecystitis-dx-v313.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cholecystitis-v311.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/cholera-rehydration-v1560.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/clabsi-lcbi-v874.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/claims-pct-medicare.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/clark-level-v340.js",
@@ -83803,7 +83869,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "fce78522488d9efd"
+      "value": "d698ae1d106751bc"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -83815,7 +83881,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3075"
+      "value": "3078"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

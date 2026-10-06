@@ -308,3 +308,5 @@ experience**.
 > v1551, WHO 2026 malaria treatment choice in pregnancy — [spec-v1551](spec-v1551.md), which adds `malaria-pregnancy-treatment` — is 1979.)
 
 > v1546, WHO IMCI ORS Plans A, B and C — [spec-v1546](spec-v1546.md), which adds `imci-ors-plan` — is 1980.)
+
+> v1560, GTFCC 2024 cholera dehydration, fluids and antibiotic — [spec-v1560](spec-v1560.md), which adds `cholera-rehydration` — is 1981.)
