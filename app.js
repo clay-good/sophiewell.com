@@ -3538,7 +3538,7 @@ const UTILITIES = [
   { id: 'act-weight-band-dose', name: 'Malaria Treatment Dose by Weight: ACTs (WHO 2026)', group: 'F', audiences: ['clinicians', 'educators'], clinical: true },
   // spec-v1548: field-health (spec-v1540).
   { id: 'wasting-classify', name: 'Acute Malnutrition by MUAC, WHZ and Edema, 6 to 59 Months (WHO 2023)', group: 'N', audiences: ['clinicians', 'educators'], clinical: true },
-  { id: 'who-growth-zscore',      name: 'WHO Growth z-Score (0-2 yr)',                      group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  { id: 'who-growth-zscore',      name: 'WHO Growth z-Score (0-5 yr)',                      group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'mid-parental-height',    name: 'Mid-Parental Target Height',                       group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'corrected-age',          name: 'Corrected Gestational Age',                        group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
 
