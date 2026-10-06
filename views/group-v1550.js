@@ -1,8 +1,11 @@
-// spec-v1550: renderer for who-anemia-hb -- is this hemoglobin anemic, by the WHO 2024 cutoffs with the
-// elevation and smoking adjustments (Clinical Scoring & Risk, Group G; field-health program, spec-v1540).
+// spec-v1550: renderers for who-anemia-hb -- is this hemoglobin anemic, by the WHO 2024 cutoffs with the
+// elevation and smoking adjustments (Clinical Scoring & Risk, Group G) -- and vitamin-a-dose-child (Group N)
+// and deworming-dose-who (Group F); field-health program, spec-v1540.
 
 import { el, clear } from '../lib/dom.js';
 import * as A from '../lib/who-anemia-hb-v1550.js';
+import * as V from '../lib/vitamin-a-dose-child-v1550.js';
+import * as W from '../lib/deworming-dose-who-v1550.js';
 import { resultRow } from '../lib/result-copy.js';
 
 const NA = { value: '', text: '— choose —' };
@@ -54,6 +57,41 @@ export const renderers = {
       const r = A.whoAnemiaHb(args);
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'WHO 2024', value: r.bandLabel }]);
+      list(o, r.notes);
+      note(o, r.note);
+    }));
+  },
+  'vitamin-a-dose-child'(root) {
+    const pairs = [['va-reason', 'reason'], ['va-age', 'age'], ['va-recent', 'recent'], ['va-rutf', 'rutf']];
+    selectField(root, 'Reason', 'va-reason', V.REASON_OPTIONS);
+    numField(root, 'Age in months', 'va-age', 'e.g. 18', '60', 'any');
+    selectField(root, 'Vitamin A dose in the past month (routine, diarrhea)', 'va-recent', V.YES_NO);
+    selectField(root, 'On RUTF (routine, diarrhea)', 'va-rutf', V.YES_NO);
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = V.vitaminADoseChild(args);
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Vitamin A', value: r.bandLabel }]);
+      list(o, r.notes);
+      note(o, r.note);
+    }));
+  },
+  'deworming-dose-who'(root) {
+    const pairs = [['dw-group', 'group'], ['dw-age', 'age'], ['dw-prev', 'prevalence'], ['dw-trimester', 'trimester'], ['dw-criteria', 'criteria']];
+    selectField(root, 'Group', 'dw-group', W.GROUP_OPTIONS);
+    numField(root, 'Age in months (child)', 'dw-age', 'e.g. 36', '228', 'any');
+    selectField(root, 'Local soil-transmitted helminth prevalence', 'dw-prev', W.PREVALENCE_OPTIONS);
+    selectField(root, 'Trimester (pregnant)', 'dw-trimester', W.TRIMESTER_OPTIONS);
+    selectField(root, 'Hookworm or whipworm 20% or more, and anemia 40% or more of pregnant women (pregnant)', 'dw-criteria', W.YES_NO);
+    const o = out(); root.appendChild(o);
+    wire(pairs.map(([d]) => d), () => safe(o, () => {
+      const args = {};
+      for (const [dom, arg] of pairs) args[arg] = val(dom);
+      const r = W.dewormingDoseWho(args);
+      if (!r.valid) { note(o, r.message); return; }
+      resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'WHO 2017', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
     }));

@@ -7070,6 +7070,28 @@
     },
     {
       "phrases": [
+        "vitamin a dose",
+        "vitamin a measles",
+        "vitamin a supplementation",
+        "xerophthalmia vitamin a",
+        "vitamin a capsule"
+      ],
+      "tile": "vitamin-a-dose-child",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "deworming",
+        "deworming frequency",
+        "albendazole deworming",
+        "soil transmitted helminth",
+        "sth preventive chemotherapy"
+      ],
+      "tile": "deworming-dose-who",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
         "pritchard regimen",
         "magnesium sulfate im",
         "mgso4 im regimen",

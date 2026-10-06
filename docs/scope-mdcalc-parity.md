@@ -326,3 +326,7 @@ experience**.
 > v1562, Mass Treatment Dose by Height or Age: Praziquantel, Ivermectin, Albendazole, Mebendazole, DEC (WHO) — [spec-v1562](spec-v1562.md), which adds `pc-dose-pole` — is 1988.)
 
 > v1563, Dengue IV Fluids: The Rate Ladder by Group and Weight (WHO) — [spec-v1563](spec-v1563.md), which adds `dengue-fluid-plan` — is 1989.)
+
+> v1550, Vitamin A Dose for a Child: Routine, Diarrhea, Measles or Eye Signs (WHO) — [spec-v1550](spec-v1550.md), which adds `vitamin-a-dose-child` — is 1990.)
+
+> v1550, Deworming Dose and Frequency (WHO Preventive Chemotherapy) — [spec-v1550](spec-v1550.md), which adds `deworming-dose-who` — is 1991.)

@@ -87,4 +87,5 @@ RAB18 *low*; no newer WHO rabies position paper exists.
 | Tool | Status |
 |---|---|
 | `who-rabies-pep` | **Built October 5, 2026** (catalog 1,983). Every rule re-read in RAB18 (IRIS 10665/272372): categories p. 203, Table 1 and pp. 213–215, RIG p. 215, immunocompromised p. 217. **Differed from the spec:** prior vaccination and "a complete PEP under 3 months ago" are one choice; the immunocompromised rule takes precedence over both, as the source says ("even if previously immunized"); the bat-contact input is folded into category III's definition. A monoclonal product gets no IU figure (WHO gives none). Calendar dates come only from an entered day-0 date (the tile reads no clock). `rabies-pep` is relabelled "(CDC, US)" and links here; the one-line "most countries outside the US follow WHO" sentence is carried by the link and this tile's name, not printed on the CDC tile. |
-| Backfill: `tetanus` | Open. |
+| Backfill: `tetanus` | **Done October 6, 2026.** TET17 re-read (Wkly Epidemiol Rec 2017;92(6)): the WHO position (6 doses, 3 primary plus 3 boosters, for lifelong protection) and TIG, preferably human, for dirty wounds when vaccination is incomplete or unknown. One line above the CDC tree, outside its live region. |
+| Backfill: `measles-case-def` link | **Done October 6, 2026**: it links to `vitamin-a-dose-child`. |

@@ -8773,6 +8773,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/labor-care-guide-alert-v1558.js (spec-v1558: WHO Labour Care Guide alert thresholds — clinical disclaimer)
 - `labor-care-guide-alert`
 
+### lib/vitamin-a-dose-child-v1550.js (spec-v1550: WHO vitamin A doses for children by reason (routine, diarrhea, measles, eye signs) — clinical disclaimer)
+- `vitamin-a-dose-child`
+
+### lib/deworming-dose-who-v1550.js (spec-v1550: WHO deworming dose and frequency by group and prevalence — clinical disclaimer)
+- `deworming-dose-who`
+
 ### lib/mgso4-im-regimen-v1558.js (spec-v1558: WHO magnesium sulfate IM (Pritchard) regimen and the next-dose hold limits — clinical disclaimer)
 - `mgso4-im-regimen`
 

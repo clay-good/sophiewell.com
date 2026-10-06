@@ -24,6 +24,8 @@ function numOrNull(id) {
 
 export const renderers = {
   tetanus(root) {
+    // spec-v1557: most countries outside the US follow WHO, whose measure differs from this CDC tree.
+    root.appendChild(el('p', { class: 'muted', text: 'Outside the US: WHO counts 6 doses (3 primary plus 3 boosters) for lifelong protection, so 3 childhood doses may not be full protection by its measure, and it gives tetanus immunoglobulin, preferably human, for dirty wounds when vaccination is incomplete or unknown (WHO position paper, 2017).' }));
     const region = el('div', { id: 'q-results', role: 'region' });
     root.appendChild(region);
     loadFile('tetanus', 'tetanus.json').then((d) => {

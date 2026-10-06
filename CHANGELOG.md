@@ -21,6 +21,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Vitamin A dose for a child (WHO): routine supplementation, the IMCI
+  persistent-diarrhea dose, the 2-day measles course or the 3-dose course for
+  eye signs, with capsule counts and the holds.
+- Deworming dose and frequency (WHO 2017): albendazole or mebendazole for
+  children and non-pregnant girls and women, yearly or twice a year by local
+  prevalence, and pregnant women only where both thresholds hold.
 - Magnesium sulfate IM regimen (WHO): the loading and IM maintenance doses
   with syringe contents, and whether the next dose is safe under either WHO
   manual's breathing, reflex and urine limits.

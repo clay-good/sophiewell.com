@@ -702,6 +702,8 @@ import * as wbct20V1555 from '../../lib/wbct20-v1555.js';
 import * as whoRabiesPepV1557 from '../../lib/who-rabies-pep-v1557.js';
 import * as pphWho2025V1558 from '../../lib/pph-who-2025-v1558.js';
 import * as laborCareGuideAlertV1558 from '../../lib/labor-care-guide-alert-v1558.js';
+import * as vitaminADoseChildV1550 from '../../lib/vitamin-a-dose-child-v1550.js';
+import * as dewormingDoseWhoV1550 from '../../lib/deworming-dose-who-v1550.js';
 import * as mgso4ImRegimenV1558 from '../../lib/mgso4-im-regimen-v1558.js';
 import * as whoTbFdcDoseV1553 from '../../lib/who-tb-fdc-dose-v1553.js';
 import * as pcDosePoleV1562 from '../../lib/pc-dose-pole-v1562.js';
@@ -1508,6 +1510,8 @@ const MODULES = {
   'who-rabies-pep-v1557.js': whoRabiesPepV1557,
   'pph-who-2025-v1558.js': pphWho2025V1558,
   'labor-care-guide-alert-v1558.js': laborCareGuideAlertV1558,
+  'vitamin-a-dose-child-v1550.js': vitaminADoseChildV1550,
+  'deworming-dose-who-v1550.js': dewormingDoseWhoV1550,
   'mgso4-im-regimen-v1558.js': mgso4ImRegimenV1558,
   'who-tb-fdc-dose-v1553.js': whoTbFdcDoseV1553,
   'pc-dose-pole-v1562.js': pcDosePoleV1562,

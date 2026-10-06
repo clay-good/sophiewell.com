@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:2d6b9a7c-9740-547d-88c5-01f01fc91a9f",
+  "serialNumber": "urn:uuid:2bc4009a-aaa2-5af1-83da-b49cc2196ff4",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-06T02:52:22.968Z",
+    "timestamp": "2026-10-06T03:20:42.477Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1989 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1991 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3c0773a519375f49dcb80aad14564caadc967e5d858f285a6a212d0e7c65856d"
+          "content": "7c2f83b87703b24118be24ce9b16314d3a08ef5b7e72ae199774e7a1c330102e"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "127737"
+          "value": "127900"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "553ac23e03b4ddd28369180f2028046ef9d8015a4c851af8eb2aadf6759ba2bc"
+          "content": "e837f5bb1bfeab540e8b4a22fde5648655e49fddc771e8594d917f96a09e6e98"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "576523"
+          "value": "576938"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ff9845636ee621bbaba1e6a782503002919deebc0cf8e7ea494d09aad242bc47"
+          "content": "d7dfb42edc47431a312e8b2a824769bd2b57344f04129919d0388ba8e5b9639b"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "248463"
+          "value": "248723"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "72ee4d65b486396e4ef40956dc72320bd9ad33af8195ed5f34c5ccce671cd7c9"
+          "content": "e5883f08a99705325b8555bfed6811357118b166b2941f475d01d58c95db6a2a"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "114706"
+          "value": "114887"
         }
       ]
     },
@@ -5512,6 +5512,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "14756"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/deworming-dose-who-v1550.js",
+      "type": "file",
+      "name": "lib/deworming-dose-who-v1550.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "34b808b71f4b220a1067ae73ab8ad8b346c37007a9cab80996c0b79d42717ef0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5253"
         }
       ]
     },
@@ -13187,7 +13208,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "bf5a11d35fee70d076b0fa877ce7ea9a957889eb98ad5d4d1438a5033c94b406"
+          "content": "81a3b37d80def332f6524c4ae40af035af6b8897cbcb52af07fbc55c0ce46090"
         }
       ],
       "properties": [
@@ -13197,7 +13218,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2698365"
+          "value": "2699724"
         }
       ]
     },
@@ -23618,6 +23639,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/vitamin-a-dose-child-v1550.js",
+      "type": "file",
+      "name": "lib/vitamin-a-dose-child-v1550.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b5248ae949fb35876696a8453d3fc15e1d6d275aa0e46f067e953b782651f5a8"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7265"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/vitamin-d-level-v881.js",
       "type": "file",
       "name": "lib/vitamin-d-level-v881.js",
@@ -29410,6 +29452,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3268"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/deworming-dose-who-v1550.js",
+      "type": "file",
+      "name": "mcp/adapters/deworming-dose-who-v1550.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ab6b6009d9d66fe6fd7894a8b2544d515b2899041eeadc45e5f8ef549fb0aceb"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1337"
         }
       ]
     },
@@ -45332,6 +45395,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/vitamin-a-dose-child-v1550.js",
+      "type": "file",
+      "name": "mcp/adapters/vitamin-a-dose-child-v1550.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "04da752d0ad594624821552250293ed8af6e5543f2e32eafbde16e04624e3c9a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1151"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/vitamin-d-level-v881.js",
       "type": "file",
       "name": "mcp/adapters/vitamin-d-level-v881.js",
@@ -46115,7 +46199,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "28993723da69d96e155476d4b54b9edd9bc5d933b099acecd7ade2a9971ef121"
+          "content": "8b05e10329f643a5ad96ab9d03339e84c6ab9f5849ca187c6799d50e76948f9f"
         }
       ],
       "properties": [
@@ -46125,7 +46209,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "117698"
+          "value": "117966"
         }
       ]
     },
@@ -46703,7 +46787,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3d385d6dcdab8056e141328e465235e8e45cbbd9c52fdb87e730ad9adf145541"
+          "content": "93acd8660941a9046e98ca70c75255389d49ee1e28c252d4ac76eed91c455e5a"
         }
       ],
       "properties": [
@@ -46713,7 +46797,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "9772"
+          "value": "10229"
         }
       ]
     },
@@ -49895,7 +49979,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a6643725acf3ac7824671aae6888002d572443d91fbe245aa979b0d7883f7c80"
+          "content": "df3a9f31c1077aa5363e3b78c739d3317217c22f39414fce85db4b669d7f18de"
         }
       ],
       "properties": [
@@ -49905,7 +49989,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2995"
+          "value": "5187"
         }
       ]
     },
@@ -81389,6 +81473,7 @@
         "urn:sophiewell:file:source:lib/dermatology-v223.js",
         "urn:sophiewell:file:source:lib/dermscore-v234.js",
         "urn:sophiewell:file:source:lib/dermuro-v191.js",
+        "urn:sophiewell:file:source:lib/deworming-dose-who-v1550.js",
         "urn:sophiewell:file:source:lib/diabetes-diagnosis-v841.js",
         "urn:sophiewell:file:source:lib/diastolic-function-ase-v664.js",
         "urn:sophiewell:file:source:lib/dimeglio-clubfoot-v387.js",
@@ -82251,6 +82336,7 @@
         "urn:sophiewell:file:source:lib/vhi10-v508.js",
         "urn:sophiewell:file:source:lib/vhwg-hernia-v666.js",
         "urn:sophiewell:file:source:lib/vial-rounding-v1512.js",
+        "urn:sophiewell:file:source:lib/vitamin-a-dose-child-v1550.js",
         "urn:sophiewell:file:source:lib/vitamin-d-level-v881.js",
         "urn:sophiewell:file:source:lib/vod-sos-v907.js",
         "urn:sophiewell:file:source:lib/vras-v602.js",
@@ -83454,6 +83540,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/dermatology-v223.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dermscore-v234.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dermuro-v191.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/deworming-dose-who-v1550.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/diabetes-diagnosis-v841.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/diastolic-function-ase-v664.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/dimeglio-clubfoot-v387.js",
@@ -84212,6 +84299,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/vhi10-v508.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/vhwg-hernia-v666.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/vial-rounding-v1512.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/vitamin-a-dose-child-v1550.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/vitamin-d-level-v881.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/vod-sos-v907.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/vras-v602.js",
@@ -84353,7 +84441,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "2d6b9a7c9740947d"
+      "value": "2bc4009aaaa22af1"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -84365,7 +84453,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3100"
+      "value": "3104"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

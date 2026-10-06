@@ -972,6 +972,8 @@ import wbct20V1555 from './adapters/wbct20-v1555.js';
 import whoRabiesPepV1557 from './adapters/who-rabies-pep-v1557.js';
 import pphWho2025V1558 from './adapters/pph-who-2025-v1558.js';
 import laborCareGuideAlertV1558 from './adapters/labor-care-guide-alert-v1558.js';
+import vitaminADoseChildV1550 from './adapters/vitamin-a-dose-child-v1550.js';
+import dewormingDoseWhoV1550 from './adapters/deworming-dose-who-v1550.js';
 import mgso4ImRegimenV1558 from './adapters/mgso4-im-regimen-v1558.js';
 import whoTbFdcDoseV1553 from './adapters/who-tb-fdc-dose-v1553.js';
 import pcDosePoleV1562 from './adapters/pc-dose-pole-v1562.js';
@@ -1994,6 +1996,8 @@ const ADAPTER_MODULES = [
   ['who-rabies-pep-v1557', whoRabiesPepV1557],
   ['pph-who-2025-v1558', pphWho2025V1558],
   ['labor-care-guide-alert-v1558', laborCareGuideAlertV1558],
+  ['vitamin-a-dose-child-v1550', vitaminADoseChildV1550],
+  ['deworming-dose-who-v1550', dewormingDoseWhoV1550],
   ['mgso4-im-regimen-v1558', mgso4ImRegimenV1558],
   ['who-tb-fdc-dose-v1553', whoTbFdcDoseV1553],
   ['pc-dose-pole-v1562', pcDosePoleV1562],

@@ -760,6 +760,8 @@ const PROBES = [
   ['who rabies category iii immunoglobulin schedule', ['who-rabies-pep']],
   ['postpartum hemorrhage 300 ml shock index tranexamic acid', ['pph-who-2025']],
   ['labour care guide alert column', ['labor-care-guide-alert']],
+  ['vitamin a dose measles child 200000 iu', ['vitamin-a-dose-child']],
+  ['deworming albendazole how often prevalence', ['deworming-dose-who']],
   ['pritchard magnesium sulfate im eclampsia', ['mgso4-im-regimen']],
   ['tb tablets by weight hrze dispersible', ['who-tb-fdc-dose']],
   ['praziquantel dose pole height tablets', ['pc-dose-pole']],
