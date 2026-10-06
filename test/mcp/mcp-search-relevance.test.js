@@ -758,6 +758,8 @@ const PROBES = [
   ['cholera dehydration ringer lactate plan c', ['cholera-rehydration']],
   ['20 minute whole blood clotting test snakebite', ['wbct20']],
   ['who rabies category iii immunoglobulin schedule', ['who-rabies-pep']],
+  ['postpartum hemorrhage 300 ml shock index tranexamic acid', ['pph-who-2025']],
+  ['labour care guide alert column', ['labor-care-guide-alert']],
   ['pertussis case definition whooping cough confirmed probable', ['pertussis-case-def']],
   ['eortc msgerc invasive fungal disease proven probable possible', ['eortc-msg-ifd']],
   ['neuroleptic malignant syndrome diagnostic criteria priority points', ['nms-criteria']],

@@ -970,6 +970,8 @@ import imciOrsPlanV1546 from './adapters/imci-ors-plan-v1546.js';
 import choleraRehydrationV1560 from './adapters/cholera-rehydration-v1560.js';
 import wbct20V1555 from './adapters/wbct20-v1555.js';
 import whoRabiesPepV1557 from './adapters/who-rabies-pep-v1557.js';
+import pphWho2025V1558 from './adapters/pph-who-2025-v1558.js';
+import laborCareGuideAlertV1558 from './adapters/labor-care-guide-alert-v1558.js';
 import medicaidUraV1510 from './adapters/medicaid-ura-v1510.js';
 import entity340bV1509 from './adapters/entity-340b-v1509.js';
 import adherenceV1513 from './adapters/adherence-v1513.js';
@@ -1986,6 +1988,8 @@ const ADAPTER_MODULES = [
   ['cholera-rehydration-v1560', choleraRehydrationV1560],
   ['wbct20-v1555', wbct20V1555],
   ['who-rabies-pep-v1557', whoRabiesPepV1557],
+  ['pph-who-2025-v1558', pphWho2025V1558],
+  ['labor-care-guide-alert-v1558', laborCareGuideAlertV1558],
   ['medicaid-ura-v1510', medicaidUraV1510],
   ['entity-340b-v1509', entity340bV1509],
   ['adherence-v1513', adherenceV1513],

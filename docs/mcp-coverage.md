@@ -8767,6 +8767,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/who-rabies-pep-v1557.js (spec-v1557: WHO 2018 rabies post-exposure prophylaxis — clinical disclaimer)
 - `who-rabies-pep`
 
+### lib/pph-who-2025-v1558.js (spec-v1558: WHO 2025 postpartum hemorrhage criteria and tranexamic acid — clinical disclaimer)
+- `pph-who-2025`
+
+### lib/labor-care-guide-alert-v1558.js (spec-v1558: WHO Labour Care Guide alert thresholds — clinical disclaimer)
+- `labor-care-guide-alert`
+
 ### lib/claims-pct-medicare.js (spec-v1604: Claims paid as a percent of Medicare — administrative disclaimer)
 - `claims-pct-medicare`
 

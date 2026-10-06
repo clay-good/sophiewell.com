@@ -68,7 +68,7 @@ collisions, no duplicates.
 2. **Calculation-shaped, lower regulatory risk:** `who-anemia-hb`, the `who-growth-zscore` fix and
    `wasting-classify`, `act-weight-band-dose`, `severe-malaria-injectable`, `rectal-artesunate-prereferral`,
    `imci-ors-plan`, `cholera-rehydration`, `wbct20`, `who-rabies-pep`, `pph-who-2025`,
-   `labour-care-guide-alert`, `who-tb-fdc-dose`, `pc-dose-pole`, `dengue-fluid-plan`.
+   `labor-care-guide-alert`, `who-tb-fdc-dose`, `pc-dose-pole`, `dengue-fluid-plan`.
 3. **After owner decision D1 (listed in the last spec):** everything that classifies and advises:
    IMCI, iCCM, PSBI, ETAT, SAM care setting, the TB decision algorithm.
 4. **High volatility last:** pediatric ARV doses and infant prophylaxis (D4), arpraziquantel.

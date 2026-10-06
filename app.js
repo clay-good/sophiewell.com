@@ -871,6 +871,7 @@ import { renderers as RV1546 } from './views/group-v1546.js';
 import { renderers as RV1560 } from './views/group-v1560.js';
 import { renderers as RV1555 } from './views/group-v1555.js';
 import { renderers as RV1557 } from './views/group-v1557.js';
+import { renderers as RV1558 } from './views/group-v1558.js';
 import { renderers as RV1603 } from './views/group-v1603.js';
 import { renderers as RV1604, acceptFiles as AF1604 } from './views/group-v1604.js';
 import { renderers as RV1602, acceptFiles as AF1602 } from './views/group-v1602.js';
@@ -970,7 +971,7 @@ const RENDERERS = { ...RA, ...RB, ...RC, ...RE, ...RF, ...RG, ...RH, ...RI, ...R
   ...RV902,
   ...RV903,
   ...RV905,
-  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV960, ...RV1061, ...RV1062, ...RV1240, ...RV1241, ...RV1242, ...RV1243, ...RV1400, ...RV1389, ...RV1393, ...RV1397, ...RV1395, ...RV1390, ...RV1391, ...RV1392, ...RV1394, ...RV1399, ...RV1398, ...RV1401, ...RV1396, ...RV1412, ...RV1413, ...RV1414, ...RV1416, ...RV1417, ...RV1418, ...RV1419, ...RV1420, ...RV1421, ...RV1422, ...RV1423, ...RV1424, ...RV1425, ...RV1426, ...RV1427, ...RV1428, ...RV1429, ...RV1430, ...RV1431, ...RV1433, ...RV1434, ...RV1435, ...RV1436, ...RV1438, ...RV1439, ...RV1440, ...RV1441, ...RV1442, ...RV1443, ...RV1444, ...RV1445, ...RV1446, ...RV1447, ...RV1448, ...RV1449, ...RV1450, ...RV1451, ...RV1452, ...RV1453, ...RV1454, ...RV1455, ...RV1468, ...RV1469, ...RV1470, ...RV1471, ...RV1472, ...RV1473, ...RV1475, ...RV1476, ...RV1479, ...RV1480, ...RV1481, ...RV1482, ...RV1483, ...RV1484, ...RV1485, ...RV1486, ...RV1487, ...RV1488, ...RV1489, ...RV1490, ...RV1491, ...RV1492, ...RV1493, ...RV1494, ...RV1495, ...RV1496, ...RV1497, ...RV1498, ...RV1499, ...RV1570, ...RV1571, ...RV1572, ...RV1503, ...RV1502, ...RV1507, ...RV1511, ...RV1514, ...RV1506, ...RV1508, ...RV1512, ...RV1505, ...RV1515, ...RV1516, ...RV1504, ...RV1510, ...RV1509, ...RV1513, ...RV1601, ...RV1550, ...RV1548, ...RV1551, ...RV1546, ...RV1560, ...RV1555, ...RV1557, ...RV1602, ...RV1603, ...RV1604, ...RV63, ...RPALINT };
+  ...RV906, ...RV907, ...RV908, ...RV909, ...RV910, ...RV911, ...RV912, ...RV916, ...RV917, ...RV918, ...RV919, ...RV920, ...RV921, ...RV922, ...RV923, ...RV924, ...RV925, ...RV927, ...RV928, ...RV932, ...RV958, ...RV960, ...RV1061, ...RV1062, ...RV1240, ...RV1241, ...RV1242, ...RV1243, ...RV1400, ...RV1389, ...RV1393, ...RV1397, ...RV1395, ...RV1390, ...RV1391, ...RV1392, ...RV1394, ...RV1399, ...RV1398, ...RV1401, ...RV1396, ...RV1412, ...RV1413, ...RV1414, ...RV1416, ...RV1417, ...RV1418, ...RV1419, ...RV1420, ...RV1421, ...RV1422, ...RV1423, ...RV1424, ...RV1425, ...RV1426, ...RV1427, ...RV1428, ...RV1429, ...RV1430, ...RV1431, ...RV1433, ...RV1434, ...RV1435, ...RV1436, ...RV1438, ...RV1439, ...RV1440, ...RV1441, ...RV1442, ...RV1443, ...RV1444, ...RV1445, ...RV1446, ...RV1447, ...RV1448, ...RV1449, ...RV1450, ...RV1451, ...RV1452, ...RV1453, ...RV1454, ...RV1455, ...RV1468, ...RV1469, ...RV1470, ...RV1471, ...RV1472, ...RV1473, ...RV1475, ...RV1476, ...RV1479, ...RV1480, ...RV1481, ...RV1482, ...RV1483, ...RV1484, ...RV1485, ...RV1486, ...RV1487, ...RV1488, ...RV1489, ...RV1490, ...RV1491, ...RV1492, ...RV1493, ...RV1494, ...RV1495, ...RV1496, ...RV1497, ...RV1498, ...RV1499, ...RV1570, ...RV1571, ...RV1572, ...RV1503, ...RV1502, ...RV1507, ...RV1511, ...RV1514, ...RV1506, ...RV1508, ...RV1512, ...RV1505, ...RV1515, ...RV1516, ...RV1504, ...RV1510, ...RV1509, ...RV1513, ...RV1601, ...RV1550, ...RV1548, ...RV1551, ...RV1546, ...RV1560, ...RV1555, ...RV1557, ...RV1558, ...RV1602, ...RV1603, ...RV1604, ...RV63, ...RPALINT };
 
 // ----- Utility registry ----------------------------------------------------
 // Source of truth for routes, names, group, audiences, and clinical flag.
@@ -3421,6 +3422,9 @@ const UTILITIES = [
   // lib/peds-percentile-v169.js header and docs/spec-v169.md.
   { id: 'cdc-stature-for-age',    name: 'CDC Stature-for-Age Percentile (2-20 yr)',         group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
   { id: 'cdc-weight-for-age',     name: 'CDC Weight-for-Age Percentile (2-20 yr)',          group: 'E', audiences: ['clinicians', 'educators'], clinical: true },
+  // spec-v1558: field-health (spec-v1540).
+  { id: 'labor-care-guide-alert', name: 'WHO Labour Care Guide: Which Observations Need an Alert?', group: 'G', audiences: ['clinicians', 'educators', 'field'], clinical: true },
+  { id: 'pph-who-2025', name: 'Postpartum Hemorrhage: WHO 2025 Criteria and Tranexamic Acid', group: 'G', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   // spec-v1555 and spec-v1557: field-health (spec-v1540).
   { id: 'wbct20', name: '20-Minute Whole Blood Clotting Test (20WBCT) After Snakebite (WHO)', group: 'I', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'who-rabies-pep', name: 'Rabies Post-Exposure Prophylaxis: WHO Categories and Schedules (2018)', group: 'J', audiences: ['clinicians', 'educators', 'field'], clinical: true },

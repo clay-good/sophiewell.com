@@ -7047,6 +7047,29 @@
     },
     {
       "phrases": [
+        "who pph criteria",
+        "pph 300 ml",
+        "postpartum hemorrhage criteria",
+        "postpartum haemorrhage",
+        "tranexamic acid pph",
+        "pph bundle"
+      ],
+      "tile": "pph-who-2025",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "labour care guide",
+        "labor care guide",
+        "who lcg",
+        "partograph alert",
+        "who partograph"
+      ],
+      "tile": "labor-care-guide-alert",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
         "plan score",
         "plan stroke score",
         "plan stroke mortality"

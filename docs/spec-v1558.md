@@ -63,7 +63,7 @@ answer says "IV only".
 **Overlap.** `qbl-pph` quantifies blood loss; `shock-index` is generic. This is the decision rule, and
 links both.
 
-## 2. `labour-care-guide-alert` — WHO Labour Care Guide: Which Observations Need an Alert?
+## 2. `labor-care-guide-alert` — WHO Labour Care Guide: Which Observations Need an Alert?
 
 **Question.** Which of this woman's labor observations meet the Labour Care Guide's alert threshold?
 
@@ -161,3 +161,11 @@ at 0.89, 0.9, 1.39, 1.4, 1.69, 1.7.
 
 PPH25 *low* (new). LCG20 *low* (a 2025 implementation package exists, not read). MCPC17, PCPNC15, PE11
 *low*.
+
+## Build status
+
+| Tool | Status |
+|---|---|
+| `pph-who-2025` | **Built October 6, 2026** (catalog 1,984). Re-read in PPH25 (IRIS 10665/382923): rec 22 (p. 39), recs 24–25, rec 27 (p. 44), rec 29, and the intrathecal-error note (p. 34); every threshold matches the spec. **Differed:** time since birth is entered in hours (no clock-time inputs, since the tile reads no clock), and the TXA window is given as time remaining; the prevention uterotonics (recs 7–13) are not printed, since the tile answers a bleed already happening. A blank sign with 300–499 mL refuses and asks for it. |
+| `labor-care-guide-alert` | **Built October 6, 2026** (catalog 1,985). **Renamed** from the planned `labour-care-guide-alert`: the id follows the house US spelling (`check-us-english`); the display name keeps WHO's product name, "Labour Care Guide", now on that gate's official-name allowlist. Every threshold re-read in LCG20 Tables 2–6 (pp. 10–18) and matches the spec. **Differed:** the supportive-care actions are the guide's own (offer a companion, offer pain relief, encourage fluids, encourage upright positions), with no senior alert; late decelerations also note the single prolonged deceleration only through the action text; a dilatation below 5 cm refuses (the guide starts at 5 cm); the time-at-dilatation row needs both the dilatation and the hours. |
+| Tools 3–4 | Open. |

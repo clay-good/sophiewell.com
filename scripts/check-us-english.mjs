@@ -83,7 +83,7 @@ const BANNED = new RegExp(
 // §3.7 allowlist; it keeps proper nouns and primary-source strings untouched.
 const CITATION_FIELD = /\b(citation|sourceCitation|citationUrl)\b\s*:|(^|[^\w])source\s*:/;
 const JOURNAL_TOKEN = /\b(Br J|Paediatr|Acta|Eur Urol|J Urol|J Clin Oncol|Lancet|BMJ|N Engl|Gut|Crit Care|Intensive Care|Anaesth|Haematol|Circulation|Chest|Stroke|Kidney Int|Nephrol|Fetal Matern Med|J Surg|Arch|Ann )\b/;
-const OFFICIAL_NAME = /Paediatric Index of Mortality|Advanced Paediatric Life Support|Adult and Paediatric Respiratory Failure|Orthopaedic Association/;
+const OFFICIAL_NAME = /Labour Care Guide|Paediatric Index of Mortality|Advanced Paediatric Life Support|Adult and Paediatric Respiratory Failure|Orthopaedic Association/;
 
 function isComment(line) {
   const t = line.trim();

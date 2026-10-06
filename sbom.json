@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:e1d42e58-4b1e-5cce-8f56-7f2cf51cebe0",
+  "serialNumber": "urn:uuid:62fb1c87-6748-5ac9-857c-ab7ae535a429",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-06T01:25:34.719Z",
+    "timestamp": "2026-10-06T02:03:59.795Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 1983 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 1985 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2fee520941aedbed8fbb5c8b52e991aa14c9170b6c7beb064a4e52d3cc143442"
+          "content": "922b8fbd22bde43fb40cdefac43a860baa6197b702b21db30b95b750606a409f"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "127242"
+          "value": "127390"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0acaad71de8e816dcaf18acd4e0295d06c0aedebc12581fcf7e0add9efda4a5c"
+          "content": "98227c6f0e5f6ab84d12e881e2e819d9fe63f14737f89eb4d9ac103bcaf341ed"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "575008"
+          "value": "575477"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a1a1ff962f54ef2fd44e7292af8f635d46fb14215d3e46ff6b1d1aed4b1f1194"
+          "content": "ad983833eaac45365f2d2f823deba1524c9e0055001e9cfd4d97186f081bcb24"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "247703"
+          "value": "247959"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1a56a25b082e2067e8f273c9cce710817f67a95e695b7dfcc2fa7bc2bf54b877"
+          "content": "2d96f2b6c2d1d32a3792cdd0f322e9fea8195f89383383d8aa6510a2e8b6ee6e"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "114177"
+          "value": "114339"
         }
       ]
     },
@@ -11228,6 +11228,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/labor-care-guide-alert-v1558.js",
+      "type": "file",
+      "name": "lib/labor-care-guide-alert-v1558.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0921500d2999d667f21815fdcf12a8a8cad7c2e954c42d7e31242b2887ad1ff6"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "10175"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/lachman-acl-v355.js",
       "type": "file",
       "name": "lib/lachman-acl-v355.js",
@@ -13145,7 +13166,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0876a5631acccbc14657040de9c5bb7f6314341cc41c3aef0b3df373d6267166"
+          "content": "cf02e4433a920eac63122c2c4e7e6e8b0eb44667098043cb9bec2f26c309787e"
         }
       ],
       "properties": [
@@ -13155,7 +13176,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2693720"
+          "value": "2695550"
         }
       ]
     },
@@ -17776,6 +17797,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "6362"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/pph-who-2025-v1558.js",
+      "type": "file",
+      "name": "lib/pph-who-2025-v1558.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0a109983b1ef326ac4b9b59ffe880cda59b5cbbbd46182658a81fbea06b9ef49"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "9559"
         }
       ]
     },
@@ -34370,6 +34412,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/labor-care-guide-alert-v1558.js",
+      "type": "file",
+      "name": "mcp/adapters/labor-care-guide-alert-v1558.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "feb413de5d68a0cf236d73a3aa9e694f29da10938251c1cab5ba9772cc3ddcbd"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2499"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/lachman-acl-v355.js",
       "type": "file",
       "name": "mcp/adapters/lachman-acl-v355.js",
@@ -40250,6 +40313,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/pph-who-2025-v1558.js",
+      "type": "file",
+      "name": "mcp/adapters/pph-who-2025-v1558.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c2b5a74518ae9b23a22a8f0ec38abeaf8b798b5100b9d703c0b7588f2d2f013e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1606"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/ppm-eoai-v548.js",
       "type": "file",
       "name": "mcp/adapters/ppm-eoai-v548.js",
@@ -45863,7 +45947,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "12f2d8a6e73448db5b02054ba06aa35fd3bb19b8e86c0853b812b9a1ccf9a59d"
+          "content": "f96c320d577520e959d0a4526c1820fb7f9c2b19b7d35c94b073adef7ef789f7"
         }
       ],
       "properties": [
@@ -45873,7 +45957,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "116972"
+          "value": "117224"
         }
       ]
     },
@@ -49717,6 +49801,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3112"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1558.js",
+      "type": "file",
+      "name": "views/group-v1558.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "61de26046cad0696ab72f5a8a4f4a7c4ac65488ac6cab44fd38a431afb5e2fc3"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6671"
         }
       ]
     },
@@ -81325,6 +81430,7 @@
         "urn:sophiewell:file:source:lib/kyoto-gastritis-v1442.js",
         "urn:sophiewell:file:source:lib/la-esophagitis-v318.js",
         "urn:sophiewell:file:source:lib/lab-interpret.js",
+        "urn:sophiewell:file:source:lib/labor-care-guide-alert-v1558.js",
         "urn:sophiewell:file:source:lib/lachman-acl-v355.js",
         "urn:sophiewell:file:source:lib/lake-louise-cmr-v790.js",
         "urn:sophiewell:file:source:lib/lansky-v352.js",
@@ -81637,6 +81743,7 @@
         "urn:sophiewell:file:source:lib/poseidon-v549.js",
         "urn:sophiewell:file:source:lib/post-acute-clocks-v1514.js",
         "urn:sophiewell:file:source:lib/powers-ratio-v1454.js",
+        "urn:sophiewell:file:source:lib/pph-who-2025-v1558.js",
         "urn:sophiewell:file:source:lib/ppm-eoai-v548.js",
         "urn:sophiewell:file:source:lib/prague-barrett-v365.js",
         "urn:sophiewell:file:source:lib/preg-dating.js",
@@ -82140,6 +82247,7 @@
         "urn:sophiewell:file:source:views/group-v1551.js",
         "urn:sophiewell:file:source:views/group-v1555.js",
         "urn:sophiewell:file:source:views/group-v1557.js",
+        "urn:sophiewell:file:source:views/group-v1558.js",
         "urn:sophiewell:file:source:views/group-v156.js",
         "urn:sophiewell:file:source:views/group-v1560.js",
         "urn:sophiewell:file:source:views/group-v1570.js",
@@ -83350,6 +83458,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/kyoto-gastritis-v1442.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/la-esophagitis-v318.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lab-interpret.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/labor-care-guide-alert-v1558.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lachman-acl-v355.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lake-louise-cmr-v790.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lansky-v352.js",
@@ -83630,6 +83739,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/poseidon-v549.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/post-acute-clocks-v1514.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/powers-ratio-v1454.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/pph-who-2025-v1558.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ppm-eoai-v548.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/prague-barrett-v365.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/preg-dating.js",
@@ -84001,7 +84111,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "e1d42e584b1e7cce"
+      "value": "62fb1c876748dac9"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -84013,7 +84123,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3084"
+      "value": "3089"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

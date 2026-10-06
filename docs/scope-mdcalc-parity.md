@@ -314,3 +314,7 @@ experience**.
 > v1555, the 20-minute whole blood clotting test after snakebite — [spec-v1555](spec-v1555.md), which adds `wbct20` — is 1982.)
 
 > v1557, WHO 2018 rabies post-exposure prophylaxis — [spec-v1557](spec-v1557.md), which adds `who-rabies-pep` — is 1983.)
+
+> v1558, WHO 2025 postpartum hemorrhage criteria and tranexamic acid — [spec-v1558](spec-v1558.md), which adds `pph-who-2025` — is 1984.)
+
+> v1558, WHO Labour Care Guide alert thresholds — [spec-v1558](spec-v1558.md), which adds `labor-care-guide-alert` — is 1985.)

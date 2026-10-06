@@ -700,6 +700,8 @@ import * as imciOrsPlanV1546 from '../../lib/imci-ors-plan-v1546.js';
 import * as choleraRehydrationV1560 from '../../lib/cholera-rehydration-v1560.js';
 import * as wbct20V1555 from '../../lib/wbct20-v1555.js';
 import * as whoRabiesPepV1557 from '../../lib/who-rabies-pep-v1557.js';
+import * as pphWho2025V1558 from '../../lib/pph-who-2025-v1558.js';
+import * as laborCareGuideAlertV1558 from '../../lib/labor-care-guide-alert-v1558.js';
 import * as pertussisCaseDefV868 from '../../lib/pertussis-case-def-v868.js';
 import * as eortcMsgIfdV869 from '../../lib/eortc-msg-ifd-v869.js';
 import * as nmsCriteriaV870 from '../../lib/nms-criteria-v870.js';
@@ -1500,6 +1502,8 @@ const MODULES = {
   'cholera-rehydration-v1560.js': choleraRehydrationV1560,
   'wbct20-v1555.js': wbct20V1555,
   'who-rabies-pep-v1557.js': whoRabiesPepV1557,
+  'pph-who-2025-v1558.js': pphWho2025V1558,
+  'labor-care-guide-alert-v1558.js': laborCareGuideAlertV1558,
   'pertussis-case-def-v868.js': pertussisCaseDefV868,
   'eortc-msg-ifd-v869.js': eortcMsgIfdV869,
   'nms-criteria-v870.js': nmsCriteriaV870,

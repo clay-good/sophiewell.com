@@ -73,6 +73,9 @@ export const ANSWERS_AN_EMPTY_FORM = new Set([
   "igg4-rd-2020",
   "isth-bat",
   "kings-college",
+  // spec-v1558: every row is optional and a blank one is listed as not assessed; clearing the number rows
+  // leaves the select rows (companion, posture, amniotic fluid...) that were observed, so it reports on those.
+  "labor-care-guide-alert",
   "masld-criteria",
   "mchat-rf",
   "membranous-risk",

@@ -21,6 +21,13 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- WHO Labour Care Guide alerts: which labor observations meet the guide's
+  alert threshold, each compared as printed with its action; a blank row is
+  listed as not assessed, never read as normal.
+- Postpartum hemorrhage by WHO's 2025 criteria: measured loss of 300 mL with
+  an abnormal sign, or 500 mL, within 24 hours starts the first-response
+  bundle; a blank vital sign is asked for, not read as normal; tranexamic acid
+  within 3 hours of birth and the second-dose rule.
 - 20-minute whole blood clotting test after snakebite (WHO): whether the test
   is valid (only clean, dry glass), what clotted or not clotted means by
   region, and when to retest, including the 6-hour check after antivenom.
