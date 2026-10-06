@@ -4,7 +4,7 @@
   "serialNumber": "urn:uuid:95681e1f-e657-502d-8246-c770087bbaee",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-06T00:20:22.884Z",
+    "timestamp": "2026-10-06T00:37:21.436Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -75397,9 +75397,9 @@
       "bom-ref": "urn:sophiewell:npm:package-lock.json:node_modules/proxy-addr",
       "type": "library",
       "name": "proxy-addr",
-      "version": "2.0.7",
+      "version": "2.0.8",
       "scope": "optional",
-      "purl": "pkg:npm/proxy-addr@2.0.7",
+      "purl": "pkg:npm/proxy-addr@2.0.8",
       "properties": [
         {
           "name": "sophiewell:lockfile",
@@ -75409,7 +75409,7 @@
       "hashes": [
         {
           "alg": "SHA-512",
-          "content": "96542c30b4940d43d3e388ddad4fcedfbaa59e27e2b433fe670ae699972848ac8b2afb59c69c95d27dbf6c3fcde2d040019fe024475953b28cadaa0ad7e5d802"
+          "content": "e679f1d321b2554718eadf519d6700456b704fd1750fc3bdaedd3c86d3ef9dde3d5b522066d98b921bbd59f333423d5c1718c720ee9ca279d43555b993b015c9"
         }
       ],
       "licenses": [
@@ -76234,9 +76234,9 @@
       "bom-ref": "urn:sophiewell:npm:package-lock.json:node_modules/source-map-js",
       "type": "library",
       "name": "source-map-js",
-      "version": "1.2.1",
+      "version": "1.2.2",
       "scope": "optional",
-      "purl": "pkg:npm/source-map-js@1.2.1",
+      "purl": "pkg:npm/source-map-js@1.2.2",
       "properties": [
         {
           "name": "sophiewell:lockfile",
@@ -76246,7 +76246,7 @@
       "hashes": [
         {
           "alg": "SHA-512",
-          "content": "51758c2a12cec1529bef6f0852d40f5f17d853ebac7726ed52b2bff2e184f0240cbeb84ea70bf30c1c23d108522fb31073bbc8b084811bc550f3e203431a5f40"
+          "content": "2868fff18e37c77e5a6550edb7e27898ad61a0b18750b3187d290e0c93508cd0c2de85b53ea3e8c4cc28d292d4b1633f5041b338dfcdc5e1f2c047cd5cd3f757"
         }
       ],
       "licenses": [
@@ -79946,9 +79946,9 @@
       "bom-ref": "urn:sophiewell:npm:mcp/package-lock.json:node_modules/proxy-addr",
       "type": "library",
       "name": "proxy-addr",
-      "version": "2.0.7",
+      "version": "2.0.8",
       "scope": "required",
-      "purl": "pkg:npm/proxy-addr@2.0.7",
+      "purl": "pkg:npm/proxy-addr@2.0.8",
       "properties": [
         {
           "name": "sophiewell:lockfile",
@@ -79958,7 +79958,7 @@
       "hashes": [
         {
           "alg": "SHA-512",
-          "content": "96542c30b4940d43d3e388ddad4fcedfbaa59e27e2b433fe670ae699972848ac8b2afb59c69c95d27dbf6c3fcde2d040019fe024475953b28cadaa0ad7e5d802"
+          "content": "e679f1d321b2554718eadf519d6700456b704fd1750fc3bdaedd3c86d3ef9dde3d5b522066d98b921bbd59f333423d5c1718c720ee9ca279d43555b993b015c9"
         }
       ],
       "licenses": [
