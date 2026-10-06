@@ -14,6 +14,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   circumference-for-age. They ask whether a length was taken lying or standing
   and apply WHO's 0.7 cm rule. With edema of both feet, no weight-based z-score
   is given.
+- Preventive iron for children now states WHO's malaria remarks. In a
+  malaria-endemic area, a child without access to malaria prevention, diagnosis
+  and treatment should not get oral iron, and an infant only if the child sleeps
+  under an insecticide-treated net.
 - Prior-auth packet check: HMSA's 20 rules now match HMSA's current provider
   pages. The old precertification page is now a one-line stub. The advanced-imaging
   rule now names Evolent, and the new-technology rule is advisory, since HMSA

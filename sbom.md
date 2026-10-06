@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `794fead1184827b4`
-Generated: 2026-10-06T11:05:32.947Z
+Build ID: `8016057318ea9e82`
+Generated: 2026-10-06T11:13:54.943Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -554,7 +554,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/ips-hodgkin-v661.js` | 4579 | `4fab1338c0b7d8be09a56dab15d1b136550834fdb7b84bb64ed0df81239df310` |
 | `lib/iptp-sp-schedule-v1552.js` | 5096 | `b54ea9c527ab0f9fe8aeec49b151555ddf6d951ca2a2880997ad609752ff4fd6` |
 | `lib/irecist-v551.js` | 15842 | `5b04f7e6aca6ec9e066f913e4acb2932735ea7bcecc5a0c0b86f0ad59ccc0652` |
-| `lib/iron-supplement-who-v1550.js` | 8033 | `a940f199a48be6ac6a9361b64f2c032d73a7790abb6ad0509fe9a0487f353e97` |
+| `lib/iron-supplement-who-v1550.js` | 8581 | `c72b3fa4ae3b51e328b391848e93b9ccefa93d76cca889a94575ef70a90a72cb` |
 | `lib/isakos-meniscal-v1426.js` | 7781 | `a59ac77f2adb4d29daccdd44d294dfbc081f5a7e74781239e1437095298d5b83` |
 | `lib/isgls-bile-leak-v658.js` | 4025 | `fb4c7549d0efb2005b1fa84384890a89dde860731d852965229df78d254a75ac` |
 | `lib/isgls-phlf-v657.js` | 4429 | `e28133793bc99063706e6cc81e028049bf2d8c5901f3833698b77e824d73adf4` |

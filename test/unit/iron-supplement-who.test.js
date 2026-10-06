@@ -30,3 +30,13 @@ test('preterm and refusals', () => {
   assert.equal(r({ group: 'c6' }).valid, false);
   assert.equal(r({}).valid, false);
 });
+
+test('malaria-endemic remarks: no oral iron without prevention and treatment; infants under treated nets', () => {
+  const infant = r({ group: 'c6', prevalence: 'ge40', rutf: 'no' }).notes.join(' ');
+  assert.match(infant, /without access to these should not get oral iron/);
+  assert.match(infant, /an infant gets iron only if the child sleeps under an insecticide-treated net/);
+  const school = r({ group: 'c5', prevalence: 'ge40', rutf: 'no' }).notes.join(' ');
+  assert.match(school, /should not get oral iron/);
+  assert.doesNotMatch(school, /an infant gets iron/);
+  assert.doesNotMatch(r({ group: 'woman', prevalence: 'ge40' }).notes.join(' '), /malaria/);
+});

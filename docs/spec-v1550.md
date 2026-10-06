@@ -134,10 +134,12 @@ pregnancy); on RUTF (yes / no).
 - **Holds:** no iron to a child on RUTF (CB14). This is **prevention**; treatment of anemia follows
   the IMCI iron bands in `imci-oral-drug-bands` or a clinician.
 
-**Not built.** CB14's iron treatment table by weight extracted partly garbled; its rows in
-`imci-oral-drug-bands` must be re-read from the page image before that tile ships (spec-v1546 build
-note). The 2016 guideline's malaria-area caveats were not read in detail; the tile prints that
-WHO pairs iron with malaria prevention and treatment where malaria is endemic.
+**Iron treatment table: re-read and built.** CB14's table by weight extracted partly garbled. It was
+re-read from the p. 14 page image and shipped in `imci-oral-drug-bands` on October 6, 2026 (see
+[spec-v1546](spec-v1546.md) build status). The 2016 guideline's malaria remarks (p. 4) were read the same day, and `iron-supplement-who` now
+states them for children: no oral iron without access to malaria prevention, prompt diagnosis and
+effective treatment; infants only under insecticide-treated nets; no anemia screening needed first
+where anemia is common.
 
 ## Tests
 
