@@ -448,3 +448,9 @@ experience**.
 > v1559, Low Blood Sugar in a Newborn: WHO Thresholds and Treatment — [spec-v1559](spec-v1559.md), which adds `newborn-hypoglycemia-who` — is 2049.)
 
 > v1563, Cutaneous Leishmaniasis in the Americas: Local or Systemic Treatment? (PAHO 2022) — [spec-v1563](spec-v1563.md), which adds `cutaneous-leishmaniasis-americas` — is 2050.)
+
+> v1563, Chagas Disease: Stage, Whether to Treat, and Benznidazole or Nifurtimox Dose — [spec-v1563](spec-v1563.md), which adds `chagas-stage-treatment` — is 2051.)
+
+> v1554, Infant HIV Prophylaxis: Risk Group and Nevirapine Dose (WHO Dec 2025, dosing May 2026) — [spec-v1554](spec-v1554.md), which adds `infant-arv-prophylaxis` — is 2052.)
+
+> v1554, Pediatric ARV Doses by Weight (WHO May 2026, corrigendum June 2026) — [spec-v1554](spec-v1554.md), which adds `who-pediatric-arv-dose` — is 2053.)

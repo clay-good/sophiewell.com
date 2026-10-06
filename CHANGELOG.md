@@ -21,6 +21,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Chagas disease (SBC 2023 and PAHO 2019): stage A to D from the ECG, LVEF
+  and heart failure, whether to treat by phase, age and stage, and
+  benznidazole or nifurtimox doses by weight for 60 days.
+- Infant HIV prophylaxis (WHO December 2025; dosing May 2026): high-risk
+  definition, 6 weeks of nevirapine or a three-drug regimen, breastfeeding
+  continuation, and the corrected nevirapine prophylaxis bands, labeled
+  prophylaxis.
+- Pediatric ARV doses by weight (WHO May 2026, corrigendum June 2026): pALD,
+  ABC/3TC, DTG dispersible and film-coated and TLD by weight band, and the
+  rifampicin adjustment; the table's ABC/3TC quarter-tablet conflict is shown.
 - Newborn temperature (WHO 1997): normal 36.5-37.5 °C, cold stress, moderate
   and severe hypothermia and hyperthermia, with WHO's rewarming for each and
   the IMCI 35.5 °C sign named.

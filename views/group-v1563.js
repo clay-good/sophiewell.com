@@ -9,6 +9,7 @@ import * as M3 from '../lib/zika-case-def-v1563.js';
 import * as M4 from '../lib/yellow-fever-case-def-v1563.js';
 import * as M5 from '../lib/visceral-leishmaniasis-2026-v1563.js';
 import * as M6 from '../lib/cutaneous-leishmaniasis-americas-v1563.js';
+import * as M7 from '../lib/chagas-stage-treatment-v1563.js';
 import { resultRow } from '../lib/result-copy.js';
 
 function selectField(root, label, id, options, required) {
@@ -269,6 +270,35 @@ export const renderers = {
         const r = M6.cutaneousLeishmaniasisAmericas(args);
         if (!r.valid) { note(o, r.message); return; }
         resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'PAHO 2022', value: r.bandLabel }]);
+        list(o, r.notes);
+        note(o, r.note);
+      } catch (err) {
+        o.appendChild(el('p', { class: 'muted', text: err.message }));
+      }
+    };
+    for (const [id] of pairs) { const n = document.getElementById(id); if (n) { n.addEventListener('input', run); n.addEventListener('change', run); } }
+    run();
+  },
+  'chagas-stage-treatment'(root) {
+    const pairs = [['ch-phase', 'phase'], ['ch-age', 'age'], ['ch-weight', 'weight'], ['ch-ecg', 'ecg'], ['ch-lvef', 'lvef'], ['ch-hf', 'hf'], ['ch-dig', 'digestive'], ['ch-preg', 'pregnant']];
+    selectField(root, 'Phase', 'ch-phase', M7.PHASE_OPTIONS, true);
+    numField(root, 'Age in years', 'ch-age', 'e.g. 30', '110');
+    numField(root, 'Weight in kg', 'ch-weight', 'e.g. 60', '200');
+    selectField(root, 'Chronic: ECG', 'ch-ecg', M7.ECG_OPTIONS, false);
+    numField(root, 'Chronic: LVEF % (optional)', 'ch-lvef', 'e.g. 60', '85');
+    selectField(root, 'Chronic: heart failure', 'ch-hf', M7.HF_OPTIONS, false);
+    selectField(root, 'Chronic: digestive form', 'ch-dig', M7.DIG_OPTIONS, false);
+    selectField(root, 'Pregnant', 'ch-preg', M7.YES_NO, false);
+    const o = el('div', { id: 'q-results', 'aria-live': 'polite' });
+    root.appendChild(o);
+    const run = () => {
+      clear(o);
+      try {
+        const args = {};
+        for (const [dom, arg] of pairs) args[arg] = val(dom);
+        const r = M7.chagasStageTreatment(args);
+        if (!r.valid) { note(o, r.message); return; }
+        resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'SBC/PAHO', value: r.bandLabel }]);
         list(o, r.notes);
         note(o, r.note);
       } catch (err) {

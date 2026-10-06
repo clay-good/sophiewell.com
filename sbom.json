@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:8dd5b9f2-d9fe-5df9-8c84-51373c004abe",
+  "serialNumber": "urn:uuid:55df30ca-7438-58c3-8162-159fa6dfa31e",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-06T09:41:30.204Z",
+    "timestamp": "2026-10-06T09:54:56.542Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2050 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2053 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6a63613ac79b710db980bd0345494ea1dd40b09c1727f7bf47e9f42a3b32e6cf"
+          "content": "ecc396e65ec7ce5b5484f2d4ed73d291eaa1b5df2b6a7a72f79c0767650af3eb"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "132608"
+          "value": "132885"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b2ac225e752c34033593748570e0e8f5afaa08a8841fab23632d6064f22bfa49"
+          "content": "6e22fee0df72759f76cfa6cdd43b53afc492988770b9d34da6144028e900a4f0"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "589106"
+          "value": "589742"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2ec4a4d8cd748344ac01a8bdcd5e981a18a7a8c2f87d1871b5f42935a9d1567c"
+          "content": "8393c9f2f4cd7fab64225be9a9af2de7a7b36e565e3f47ff6882b3194e4834eb"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "256481"
+          "value": "256880"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2751d87b2b9756f88c3f1fcbc559a02bb02c3bc6ac56d4f142741f7c4245eb7d"
+          "content": "9b74a556934d3387e5303f1bc88d7bd2741cdd0aa2ad4f86f8f11eff2fd153be"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "120214"
+          "value": "120527"
         }
       ]
     },
@@ -4021,6 +4021,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "7831"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/chagas-stage-treatment-v1563.js",
+      "type": "file",
+      "name": "lib/chagas-stage-treatment-v1563.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "55e9befc55ac4daeb3e36e6e40d046dcd9afe4d40f907701a0e685365b72b301"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "7956"
         }
       ]
     },
@@ -10556,6 +10577,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/infant-arv-prophylaxis-v1554.js",
+      "type": "file",
+      "name": "lib/infant-arv-prophylaxis-v1554.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a5b29cd5b28d236cbcee98c9275ffe502aae4ecbd34f9d3052a982768d3bbe4d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6658"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/infant-hiv-test-schedule-v1554.js",
       "type": "file",
       "name": "lib/infant-hiv-test-schedule-v1554.js",
@@ -13838,7 +13880,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8c8780bebd0f29852a05b39ac096deec0cc5cbbdd635b9d6fe8df9404a35de95"
+          "content": "4b11a548f26ed21d3d4404200921c7bbfa7c01354ff23afa1d112a69434aca52"
         }
       ],
       "properties": [
@@ -13848,7 +13890,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2743141"
+          "value": "2745591"
         }
       ]
     },
@@ -25319,6 +25361,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/who-pediatric-arv-dose-v1554.js",
+      "type": "file",
+      "name": "lib/who-pediatric-arv-dose-v1554.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "836b68fe28f792b3408736c10bcc49c95c449164b7a674a16854ed878f60e4f4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6298"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/who-rabies-pep-v1557.js",
       "type": "file",
       "name": "lib/who-rabies-pep-v1557.js",
@@ -29347,6 +29410,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2524"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/chagas-stage-treatment-v1563.js",
+      "type": "file",
+      "name": "mcp/adapters/chagas-stage-treatment-v1563.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b486767aa75f592047f9ce56d3d30c937a642503f077ab09a4ca3a73991acb2f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1525"
         }
       ]
     },
@@ -35332,6 +35416,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2852"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/infant-arv-prophylaxis-v1554.js",
+      "type": "file",
+      "name": "mcp/adapters/infant-arv-prophylaxis-v1554.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a56290e733637029d97faadb3d99d1a0c31614f6b6978fecf32e29768412f68a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1606"
         }
       ]
     },
@@ -48314,6 +48419,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/who-pediatric-arv-dose-v1554.js",
+      "type": "file",
+      "name": "mcp/adapters/who-pediatric-arv-dose-v1554.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "766a30706d4556c81f247095aad8d154627e12c749da24b4bb4eb5b3fd53a8fd"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1067"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/who-rabies-pep-v1557.js",
       "type": "file",
       "name": "mcp/adapters/who-rabies-pep-v1557.js",
@@ -48698,7 +48824,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "cfc288ee13fa7effa466355f8ed32949ba2b096d053b4992e240381e9d0fd180"
+          "content": "3d7ff709d7e895632e9300601738837ff083c2a957dd5e9c8eaa23cc5086988d"
         }
       ],
       "properties": [
@@ -48708,7 +48834,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "126283"
+          "value": "126722"
         }
       ]
     },
@@ -52625,7 +52751,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "eb4ac0000784e6ba4af0a8f667be76b512184c63a5e85d0c913bd20095bd9eda"
+          "content": "b5b0902c4984fd63bda08f42d5d8a63694d219b43ba373bdaa487183ce541208"
         }
       ],
       "properties": [
@@ -52635,7 +52761,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "8345"
+          "value": "11303"
         }
       ]
     },
@@ -52877,7 +53003,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b95864c67fa6cc7d771310b4101f2b8200221771fe90d0b785e650880d7d4ba3"
+          "content": "e3f7b29d2503e6077555c3416bead1678c11fc080ce9d36f8d7e1598fce941b5"
         }
       ],
       "properties": [
@@ -52887,7 +53013,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "16770"
+          "value": "18419"
         }
       ]
     },
@@ -84111,6 +84237,7 @@
         "urn:sophiewell:file:source:lib/cf-diagnosis-v828.js",
         "urn:sophiewell:file:source:lib/cgm-time-in-range-v1472.js",
         "urn:sophiewell:file:source:lib/cgvhd-severity-v911.js",
+        "urn:sophiewell:file:source:lib/chagas-stage-treatment-v1563.js",
         "urn:sophiewell:file:source:lib/chair-day-planner.js",
         "urn:sophiewell:file:source:lib/chalder-fatigue-v733.js",
         "urn:sophiewell:file:source:lib/cheops-v645.js",
@@ -84422,6 +84549,7 @@
         "urn:sophiewell:file:source:lib/imid-rems-v1511.js",
         "urn:sophiewell:file:source:lib/income-screens-v1506.js",
         "urn:sophiewell:file:source:lib/indomethacin-headache-ichd3-v819.js",
+        "urn:sophiewell:file:source:lib/infant-arv-prophylaxis-v1554.js",
         "urn:sophiewell:file:source:lib/infant-hiv-test-schedule-v1554.js",
         "urn:sophiewell:file:source:lib/inflam-v230.js",
         "urn:sophiewell:file:source:lib/inflam-v267.js",
@@ -85125,6 +85253,7 @@
         "urn:sophiewell:file:source:lib/who-hiv-staging-v1554.js",
         "urn:sophiewell:file:source:lib/who-isup-renal-grade-v653.js",
         "urn:sophiewell:file:source:lib/who-mucositis-v617.js",
+        "urn:sophiewell:file:source:lib/who-pediatric-arv-dose-v1554.js",
         "urn:sophiewell:file:source:lib/who-rabies-pep-v1557.js",
         "urn:sophiewell:file:source:lib/who-severe-malaria-v867.js",
         "urn:sophiewell:file:source:lib/who-surgical-checklist-v917.js",
@@ -86254,6 +86383,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/cf-diagnosis-v828.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cgm-time-in-range-v1472.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cgvhd-severity-v911.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/chagas-stage-treatment-v1563.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/chair-day-planner.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/chalder-fatigue-v733.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cheops-v645.js",
@@ -86539,6 +86669,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/imid-rems-v1511.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/income-screens-v1506.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/indomethacin-headache-ichd3-v819.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/infant-arv-prophylaxis-v1554.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/infant-hiv-test-schedule-v1554.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/inflam-v230.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/inflam-v267.js",
@@ -87157,6 +87288,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/who-hiv-staging-v1554.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/who-isup-renal-grade-v653.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/who-mucositis-v617.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/who-pediatric-arv-dose-v1554.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/who-rabies-pep-v1557.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/who-severe-malaria-v867.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/who-surgical-checklist-v917.js",
@@ -87279,7 +87411,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "8dd5b9f2d9feadf9"
+      "value": "55df30ca743848c3"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -87291,7 +87423,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3233"
+      "value": "3239"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

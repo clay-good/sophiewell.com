@@ -7081,6 +7081,39 @@
     },
     {
       "phrases": [
+        "chagas treatment",
+        "benznidazole dose",
+        "chagas stage a b1 b2 c d",
+        "trypanosoma cruzi treatment",
+        "nifurtimox chagas"
+      ],
+      "tile": "chagas-stage-treatment",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "infant hiv prophylaxis",
+        "nevirapine prophylaxis dose",
+        "high risk hiv exposed infant",
+        "pmtct infant prophylaxis",
+        "enhanced infant prophylaxis"
+      ],
+      "tile": "infant-arv-prophylaxis",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "pediatric arv dose",
+        "pald dose by weight",
+        "dolutegravir child dose",
+        "abacavir lamivudine child dose",
+        "arv weight band dosing"
+      ],
+      "tile": "who-pediatric-arv-dose",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
         "newborn hypothermia",
         "neonatal cold stress",
         "newborn temperature who",

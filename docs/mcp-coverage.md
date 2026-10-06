@@ -8776,6 +8776,15 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/vitamin-a-dose-child-v1550.js (spec-v1550: WHO vitamin A doses for children by reason (routine, diarrhea, measles, eye signs) — clinical disclaimer)
 - `vitamin-a-dose-child`
 
+### lib/chagas-stage-treatment-v1563.js (spec-v1563: SBC Chagas staging and PAHO trypanocidal doses — clinical disclaimer)
+- `chagas-stage-treatment`
+
+### lib/infant-arv-prophylaxis-v1554.js (spec-v1554: WHO infant HIV prophylaxis and nevirapine prophylaxis doses — clinical disclaimer)
+- `infant-arv-prophylaxis`
+
+### lib/who-pediatric-arv-dose-v1554.js (spec-v1554: WHO paediatric ARV weight-band dosing — clinical disclaimer)
+- `who-pediatric-arv-dose`
+
 ### lib/newborn-temperature-who-v1559.js (spec-v1559: WHO newborn hypothermia grades — clinical disclaimer)
 - `newborn-temperature-who`
 
