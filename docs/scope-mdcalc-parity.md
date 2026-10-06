@@ -336,3 +336,11 @@ experience**.
 > v1552, Is an IPTp-SP Dose Due Today? Malaria Prevention in Pregnancy (WHO) — [spec-v1552](spec-v1552.md), which adds `iptp-sp-schedule` — is 1993.)
 
 > v1552, Seasonal Malaria Chemoprevention Dose: SP plus AQ by Age (WHO) — [spec-v1552](spec-v1552.md), which adds `smc-spaq-dose` — is 1994.)
+
+> v1549, F-75 Volume per Feed in Severe Malnutrition Stabilization (WHO) — [spec-v1549](spec-v1549.md), which adds `f75-feed-volume` — is 1995.)
+
+> v1549, F-100 Range and RUTF Sachets per Day in Severe Malnutrition (WHO) — [spec-v1549](spec-v1549.md), which adds `f100-rutf-amount` — is 1996.)
+
+> v1549, Rehydration, Shock and Low Blood Sugar in Severe Malnutrition (WHO) — [spec-v1549](spec-v1549.md), which adds `sam-emergency-fluids` — is 1997.)
+
+> v1549, Weight Gain in g/kg/day During Severe Malnutrition Treatment (WHO) — [spec-v1549](spec-v1549.md), which adds `sam-weight-gain` — is 1998.)

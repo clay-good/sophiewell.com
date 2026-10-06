@@ -8776,6 +8776,18 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/vitamin-a-dose-child-v1550.js (spec-v1550: WHO vitamin A doses for children by reason (routine, diarrhea, measles, eye signs) — clinical disclaimer)
 - `vitamin-a-dose-child`
 
+### lib/f75-feed-volume-v1549.js (spec-v1549: WHO F-75 volume per feed in SAM stabilization — clinical disclaimer)
+- `f75-feed-volume`
+
+### lib/f100-rutf-amount-v1549.js (spec-v1549: WHO F-100 volumes and RUTF sachets per day by phase — clinical disclaimer)
+- `f100-rutf-amount`
+
+### lib/sam-emergency-fluids-v1549.js (spec-v1549: WHO emergency fluids and glucose in severe acute malnutrition — clinical disclaimer)
+- `sam-emergency-fluids`
+
+### lib/sam-weight-gain-v1549.js (spec-v1549: WHO weight gain grades in SAM rehabilitation — clinical disclaimer)
+- `sam-weight-gain`
+
 ### lib/primaquine-single-low-dose-v1552.js (spec-v1552: WHO single low-dose primaquine with an ACT, by weight — clinical disclaimer)
 - `primaquine-single-low-dose`
 

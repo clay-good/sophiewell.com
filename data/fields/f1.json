@@ -1,0 +1,1 @@
+{"f100-rutf-amount":[{"d":"fr-weight","k":"number","l":"Weight in kg","r":1},{"d":"fr-phase","k":"enum","l":"Phase","r":1,"v":["transition","outpatient","reduced","f100"]},{"d":"fr-sachet","k":"number","l":"RUTF sachet energy in kcal (500 if blank)"}]}

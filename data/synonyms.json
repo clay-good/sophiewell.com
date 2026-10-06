@@ -7081,6 +7081,48 @@
     },
     {
       "phrases": [
+        "f-75 volume",
+        "f75 feed",
+        "f-75 per feed",
+        "f75 reference card"
+      ],
+      "tile": "f75-feed-volume",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "rutf sachets",
+        "rutf dose",
+        "plumpy nut dose",
+        "f-100 volume",
+        "f100 feed"
+      ],
+      "tile": "f100-rutf-amount",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "resomal",
+        "resomal volume",
+        "sam shock fluids",
+        "malnutrition dehydration",
+        "sam hypoglycemia"
+      ],
+      "tile": "sam-emergency-fluids",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "weight gain g/kg/day",
+        "sam weight gain",
+        "malnutrition weight gain",
+        "failure to respond malnutrition"
+      ],
+      "tile": "sam-weight-gain",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
         "single low dose primaquine",
         "primaquine gametocytocide",
         "primaquine 0.25 mg/kg",

@@ -1,0 +1,1 @@
+{"f75-feed-volume":[{"d":"f75-weight","k":"number","l":"Admission weight in kg","r":1},{"d":"f75-interval","k":"enum","l":"Feeding interval","r":1,"v":["2","3","4"]},{"d":"f75-edema","k":"enum","l":"Severe (+++) edema","r":1,"v":["no","yes"]}]}

@@ -21,6 +21,17 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- F-75 volume per feed (WHO 2021): 130 mL/kg/day, or 100 with severe
+  edema, divided by the feeds and rounded to 5 mL, with the card's lower-row
+  figure, the daily total and the 80% minimum.
+- F-100 range and RUTF sachets per day (WHO): F-100 per feed in hospital,
+  and RUTF sachets for transition, outpatient (150-185 kcal/kg/day, WHO 2023)
+  or reduced treatment, with the older 2014 IMCI table beside it.
+- Rehydration, shock and low blood sugar in severe malnutrition (WHO 2021):
+  ReSoMal volumes, the 15 mL/kg shock infusion and its stop signs, and oral
+  or IV glucose, for a weight.
+- Weight gain during severe malnutrition treatment (WHO): g/kg/day graded
+  good (10 or more), moderate or poor, and not graded during stabilization.
 - Single low-dose primaquine (WHO 2026): 3.75, 7.5 or 15 mg base by weight
   with the ACT in low-transmission areas only, no G6PD test, excluding
   pregnancy, infants under 1 month and breastfeeding of such an infant.

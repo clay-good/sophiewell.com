@@ -703,6 +703,10 @@ import * as whoRabiesPepV1557 from '../../lib/who-rabies-pep-v1557.js';
 import * as pphWho2025V1558 from '../../lib/pph-who-2025-v1558.js';
 import * as laborCareGuideAlertV1558 from '../../lib/labor-care-guide-alert-v1558.js';
 import * as vitaminADoseChildV1550 from '../../lib/vitamin-a-dose-child-v1550.js';
+import * as f75FeedVolumeV1549 from '../../lib/f75-feed-volume-v1549.js';
+import * as f100RutfAmountV1549 from '../../lib/f100-rutf-amount-v1549.js';
+import * as samEmergencyFluidsV1549 from '../../lib/sam-emergency-fluids-v1549.js';
+import * as samWeightGainV1549 from '../../lib/sam-weight-gain-v1549.js';
 import * as primaquineSingleLowDoseV1552 from '../../lib/primaquine-single-low-dose-v1552.js';
 import * as iptpSpScheduleV1552 from '../../lib/iptp-sp-schedule-v1552.js';
 import * as smcSpaqDoseV1552 from '../../lib/smc-spaq-dose-v1552.js';
@@ -1514,6 +1518,10 @@ const MODULES = {
   'pph-who-2025-v1558.js': pphWho2025V1558,
   'labor-care-guide-alert-v1558.js': laborCareGuideAlertV1558,
   'vitamin-a-dose-child-v1550.js': vitaminADoseChildV1550,
+  'f75-feed-volume-v1549.js': f75FeedVolumeV1549,
+  'f100-rutf-amount-v1549.js': f100RutfAmountV1549,
+  'sam-emergency-fluids-v1549.js': samEmergencyFluidsV1549,
+  'sam-weight-gain-v1549.js': samWeightGainV1549,
   'primaquine-single-low-dose-v1552.js': primaquineSingleLowDoseV1552,
   'iptp-sp-schedule-v1552.js': iptpSpScheduleV1552,
   'smc-spaq-dose-v1552.js': smcSpaqDoseV1552,

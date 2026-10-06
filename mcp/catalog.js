@@ -973,6 +973,10 @@ import whoRabiesPepV1557 from './adapters/who-rabies-pep-v1557.js';
 import pphWho2025V1558 from './adapters/pph-who-2025-v1558.js';
 import laborCareGuideAlertV1558 from './adapters/labor-care-guide-alert-v1558.js';
 import vitaminADoseChildV1550 from './adapters/vitamin-a-dose-child-v1550.js';
+import f75FeedVolumeV1549 from './adapters/f75-feed-volume-v1549.js';
+import f100RutfAmountV1549 from './adapters/f100-rutf-amount-v1549.js';
+import samEmergencyFluidsV1549 from './adapters/sam-emergency-fluids-v1549.js';
+import samWeightGainV1549 from './adapters/sam-weight-gain-v1549.js';
 import primaquineSingleLowDoseV1552 from './adapters/primaquine-single-low-dose-v1552.js';
 import iptpSpScheduleV1552 from './adapters/iptp-sp-schedule-v1552.js';
 import smcSpaqDoseV1552 from './adapters/smc-spaq-dose-v1552.js';
@@ -2000,6 +2004,10 @@ const ADAPTER_MODULES = [
   ['pph-who-2025-v1558', pphWho2025V1558],
   ['labor-care-guide-alert-v1558', laborCareGuideAlertV1558],
   ['vitamin-a-dose-child-v1550', vitaminADoseChildV1550],
+  ['f75-feed-volume-v1549', f75FeedVolumeV1549],
+  ['f100-rutf-amount-v1549', f100RutfAmountV1549],
+  ['sam-emergency-fluids-v1549', samEmergencyFluidsV1549],
+  ['sam-weight-gain-v1549', samWeightGainV1549],
   ['primaquine-single-low-dose-v1552', primaquineSingleLowDoseV1552],
   ['iptp-sp-schedule-v1552', iptpSpScheduleV1552],
   ['smc-spaq-dose-v1552', smcSpaqDoseV1552],

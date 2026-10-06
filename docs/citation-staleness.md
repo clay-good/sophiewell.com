@@ -642,6 +642,10 @@ and thresholds) is a stable rule in every case (Class A).
 | primaquine-single-low-dose | WHO single low-dose primaquine with an ACT, by weight | WHO guidelines for malaria, 10 September 2026 (doi:10.2471/B09879) | same | 2026-10-06 | current - section 5.2.1.3 (2026 recommendation) read October 6, 2026 |
 | iptp-sp-schedule | WHO IPTp-SP schedule and contraindications | WHO guidelines for malaria, 10 September 2026 (doi:10.2471/B09879) | same | 2026-10-06 | current - section 4.2.1 read October 6, 2026, including the 2026 recommendation against DHA-PPQ IPTp in HIV |
 | smc-spaq-dose | WHO SMC SP+AQ dose by age and its contraindications | WHO SMC field guide, 2nd ed. (2023) | same | 2026-10-06 | current - section 2.5 read October 6, 2026 |
+| f75-feed-volume | WHO F-75 volume per feed in SAM stabilization | WHO SAM training course module 4 (2021) | same | 2026-10-06 | current - module 4 and the F-75 card read October 6, 2026; WHO is reviewing the edema weight assumption |
+| f100-rutf-amount | WHO F-100 volumes and RUTF sachets per day by phase | WHO wasting guideline (2023) and SAM training course (2021) | same | 2026-10-06 | current - WAST23 rec B10 and module 4 read October 6, 2026; the 2023 range replaced 150-220 kcal/kg/day |
+| sam-emergency-fluids | WHO emergency fluids and glucose in severe acute malnutrition | WHO SAM training course module 3 (2021) | same | 2026-10-06 | current - module 3 read October 6, 2026 |
+| sam-weight-gain | WHO weight gain grades in SAM rehabilitation | WHO SAM training course module 4 (2021) | same | 2026-10-06 | current - module 4 p. 30 read October 6, 2026 |
 | vitamin-a-dose-child | WHO vitamin A doses for children by reason (routine, diarrhea, measles, eye signs) | WHO VA11 (2011), IMCI chart (2014), Pocket book (2013), SAM manual (1999) | same | 2026-10-06 | current - each source read October 6, 2026; their age bands differ at 12 months and each reason uses its own |
 | deworming-dose-who | WHO deworming dose and frequency by group and prevalence | WHO STH preventive chemotherapy guideline (2017) | same | 2026-10-06 | current - the 2017 guideline is current; recommendations read October 6, 2026 |
 | labor-care-guide-alert | WHO Labour Care Guide alert thresholds for each labor observation | WHO labour care guide user's manual (2020) | same | 2026-10-06 | current - the 2020 manual is the current edition; Tables 2-6 read October 6, 2026 |
@@ -677,6 +681,10 @@ guideline's citation carries its version date and DOI.
 | primaquine-single-low-dose | WHO single low-dose primaquine with an ACT, by weight | WHO guidelines for malaria, 10 September 2026 (doi:10.2471/B09879) | same | 2026-10-06 | high | current |
 | iptp-sp-schedule | WHO IPTp-SP schedule and contraindications | WHO guidelines for malaria, 10 September 2026 (doi:10.2471/B09879) | same | 2026-10-06 | high | current |
 | smc-spaq-dose | WHO SMC SP+AQ dose by age and its contraindications | WHO SMC field guide, 2nd ed. (2023) | same | 2026-10-06 | moderate | current |
+| f75-feed-volume | WHO F-75 volume per feed in SAM stabilization | WHO SAM training course module 4 (2021) | same | 2026-10-06 | moderate | current |
+| f100-rutf-amount | WHO F-100 volumes and RUTF sachets per day by phase | WHO wasting guideline (2023) and SAM training course (2021) | same | 2026-10-06 | moderate | current |
+| sam-emergency-fluids | WHO emergency fluids and glucose in severe acute malnutritio | WHO SAM training course module 3 (2021) | same | 2026-10-06 | low | current |
+| sam-weight-gain | WHO weight gain grades in SAM rehabilitation | WHO SAM training course module 4 (2021) | same | 2026-10-06 | low | current |
 | vitamin-a-dose-child | WHO vitamin A doses for children by reason (routine, diarrhe | WHO VA11 (2011), IMCI chart (2014), Pocket book (2013), SAM manual (1999) | same | 2026-10-06 | low | current |
 | deworming-dose-who | WHO deworming dose and frequency by group and prevalence | WHO STH preventive chemotherapy guideline (2017) | same | 2026-10-06 | low | current |
 | labor-care-guide-alert | WHO Labour Care Guide alerts | WHO labour care guide user's manual (2020) | same | 2026-10-06 | low | current - a 2020 manual |

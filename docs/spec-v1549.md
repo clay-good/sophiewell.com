@@ -125,3 +125,13 @@ input; shock volumes at 10 kg; the weight-gain example and band edges at 5 and 1
 ## Staleness
 
 SAMC21 *moderate* (edema-weight assumption under review). WAST23 and SAM99 *low*.
+
+## Build status
+
+| Tool | Status |
+|---|---|
+| `f75-feed-volume` | **Built October 6, 2026** (catalog 1,995). Re-read in SAMC21 module 4 (pp. 3–4) and Web Annex A; every card row checked matches 130 (or 100) mL/kg/day ÷ feeds, rounded to the nearest 5 mL (the card's own footnote). The three source examples are tests. **Differed:** no rounding input; the answer gives the card's lower 0.2 kg row (the card's rule) and names the exact-weight figure beside it. |
+| `f100-rutf-amount` | **Built October 6, 2026** (catalog 1,996). Re-read in SAMC21 module 4 (pp. 21–24) and Annex C, WAST23 rec B10, and the CB14 RUTF table. **Corrected from the spec:** the 2021 course moves transition onto **RUTF at 100–135 kcal/kg/day** and keeps F-100 for in-hospital rehabilitation when RUTF is refused, so the phases are transition (RUTF), outpatient, reduced outpatient, and F-100. **Differed:** the 2014 IMCI table is shown beside the 2023 range for outpatients rather than through an edition switch; a blank sachet energy uses the standard 500 kcal sachet and says so. SAMC21's own Annex B RUTF table (2021) also differs from both; it is not shown. |
+| `sam-emergency-fluids` | **Built October 6, 2026** (catalog 1,997). Re-read in SAMC21 module 3 (sections 3, 5, 6). **Corrected from the spec:** the infusion stops when the pulse rises by **15** a minute (not 25) or breathing by 5, and half-strength Darrow's with 5% dextrose is listed first. **Not built:** the per-stool volumes and the temperature rows, which are not in module 3. |
+| `sam-weight-gain` | **Built October 6, 2026** (catalog 1,998). Re-read in SAMC21 module 4 (p. 30); the 4.80 → 4.85 kg example is a test. The gain is cleaned to 6 decimals so floating point cannot grade an exact 10.0 as moderate. |
+
