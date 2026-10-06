@@ -7081,6 +7081,138 @@
     },
     {
       "phrases": [
+        "trachoma grading",
+        "who simplified trachoma grading",
+        "trachomatous trichiasis",
+        "tf ti ts tt co",
+        "trachoma signs"
+      ],
+      "tile": "trachoma-grade",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "organophosphate atropine dose",
+        "atropine doubling",
+        "pesticide poisoning atropine",
+        "atropinization targets",
+        "atropine infusion organophosphate"
+      ],
+      "tile": "op-atropine-titration",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "scorpion sting grade",
+        "mesobuthus tamulus",
+        "indian red scorpion",
+        "scorpion envenomation grade",
+        "autonomic storm scorpion"
+      ],
+      "tile": "scorpion-grade-india",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "kato katz intensity",
+        "eggs per gram classification",
+        "helminth infection intensity",
+        "heavy intensity infection worms",
+        "schistosoma egg count class"
+      ],
+      "tile": "helminth-intensity",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "schistosomiasis mass treatment",
+        "praziquantel mda frequency",
+        "schisto preventive chemotherapy",
+        "poc-cca threshold",
+        "bilharzia mass drug administration"
+      ],
+      "tile": "schisto-community-treatment",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "lymphatic filariasis mda",
+        "ida regimen filariasis",
+        "dec albendazole mass treatment",
+        "ivermectin albendazole filariasis",
+        "loiasis albendazole twice yearly"
+      ],
+      "tile": "lf-mda-regimen",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "hydatid cyst",
+        "cystic echinococcosis",
+        "ce1 ce2 ce3 stage",
+        "pair hydatid",
+        "echinococcus liver cyst treatment"
+      ],
+      "tile": "cystic-echinococcosis-stage",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "sleeping sickness treatment",
+        "human african trypanosomiasis",
+        "fexinidazole dose",
+        "nect regimen",
+        "hat staging csf"
+      ],
+      "tile": "hat-treatment",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "dengue warning signs",
+        "dengue admission criteria",
+        "arbovirus hospitalization",
+        "acetaminophen dengue dose",
+        "no nsaids dengue"
+      ],
+      "tile": "arbovirus-admission-check",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "chikungunya case definition",
+        "chikungunya suspected case",
+        "chronic chikungunya",
+        "atypical chikungunya",
+        "chikungunya surveillance"
+      ],
+      "tile": "chikungunya-case-def",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "zika case definition",
+        "zika suspected case",
+        "zika probable case",
+        "zika prnt",
+        "zika surveillance"
+      ],
+      "tile": "zika-case-def",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "yellow fever case definition",
+        "yellow fever suspected case",
+        "yellow fever probable case",
+        "yellow fever surveillance",
+        "yellow fever vaccine window"
+      ],
+      "tile": "yellow-fever-case-def",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
         "who meningitis guideline",
         "ct before lumbar puncture",
         "empiric meningitis antibiotics",

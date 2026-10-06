@@ -14,6 +14,7 @@ import { META } from '../lib/meta.js';
 import { renderDerivation, updateDerivationSteps, clearDerivationSteps } from '../lib/derivation.js';
 import { inchesToCm, labConvert } from '../lib/unit-convert.js';
 import { resultRow } from '../lib/result-copy.js';
+import { obstetricShockBand } from '../lib/shock-index-obstetric-v1558.js';
 import { unitField, unitNum, unitNumOpt, WEIGHT_UNITS, GLUCOSE_UNITS, BUN_UNITS, CALCIUM_UNITS, ALBUMIN_UNITS } from '../lib/field-units.js';
 
 function field(label, id, opts = {}) {
@@ -578,6 +579,8 @@ export const renderers = {
     root.appendChild(field('SBP (mmHg)', 'si-sbp'));
     root.appendChild(field('DBP (mmHg)', 'si-dbp'));
     root.appendChild(field('Heart rate (bpm)', 'si-hr'));
+    // spec-v1558: an obstetric-hemorrhage band set (El Ayadi 2016) for low-resource referral.
+    root.appendChild(selectField('Shock index bands', 'si-ob', [{ value: 'general', text: 'General' }, { value: 'obstetric', text: 'Obstetric hemorrhage (low-resource referral)' }]));
     const o = out(); root.appendChild(o);
     const run = () => safe(o, () => {
       // spec-v1063: shockIndex returns hr/sbp, and a blank heart rate arrived as
@@ -602,8 +605,11 @@ export const renderers = {
         haveSi ? { text: `Shock index (HR/SBP): ${fmt(V4.shockIndex({ hr, sbp }), { digits: 2, fallback: '(enter HR & SBP > 0)' })}` } : null,
         haveSi && havePressures ? { text: `Modified shock index (HR/MAP): ${fmt(V4.modifiedShockIndex({ hr, sbp, dbp }), { digits: 2, fallback: '(enter HR, SBP & DBP > 0)' })}` } : null,
       ]);
+      const ob = haveSi && document.getElementById('si-ob').value === 'obstetric' ? obstetricShockBand(V4.shockIndex({ hr, sbp })) : null;
+      if (ob) o.appendChild(el('p', { text: ob.band }));
     });
     ['si-sbp', 'si-dbp', 'si-hr'].forEach((id) => document.getElementById(id).addEventListener('input', run));
+    document.getElementById('si-ob').addEventListener('change', run);
   },
 
   'bw-bsa-suite'(root) {

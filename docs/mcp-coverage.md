@@ -8776,6 +8776,42 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/vitamin-a-dose-child-v1550.js (spec-v1550: WHO vitamin A doses for children by reason (routine, diarrhea, measles, eye signs) — clinical disclaimer)
 - `vitamin-a-dose-child`
 
+### lib/trachoma-grade-v1561.js (spec-v1561: WHO simplified trachoma grading system — clinical disclaimer)
+- `trachoma-grade`
+
+### lib/op-atropine-titration-v1556.js (spec-v1556: Eddleston atropine dose-doubling protocol — clinical disclaimer)
+- `op-atropine-titration`
+
+### lib/scorpion-grade-india-v1556.js (spec-v1556: Mesobuthus tamulus clinical grades — clinical disclaimer)
+- `scorpion-grade-india`
+
+### lib/helminth-intensity-v1562.js (spec-v1562: WHO helminth infection intensity classes — clinical disclaimer)
+- `helminth-intensity`
+
+### lib/schisto-community-treatment-v1562.js (spec-v1562: WHO schistosomiasis preventive chemotherapy thresholds — clinical disclaimer)
+- `schisto-community-treatment`
+
+### lib/lf-mda-regimen-v1562.js (spec-v1562: WHO lymphatic filariasis MDA regimens — clinical disclaimer)
+- `lf-mda-regimen`
+
+### lib/cystic-echinococcosis-stage-v1562.js (spec-v1562: WHO cystic echinococcosis treatment — clinical disclaimer)
+- `cystic-echinococcosis-stage`
+
+### lib/hat-treatment-v1563.js (spec-v1563: WHO HAT treatment (acoziborole pending) — clinical disclaimer)
+- `hat-treatment`
+
+### lib/arbovirus-admission-check-v1563.js (spec-v1563: WHO arboviral disease clinical management — clinical disclaimer)
+- `arbovirus-admission-check`
+
+### lib/chikungunya-case-def-v1563.js (spec-v1563: WHO/PAHO chikungunya case definitions — clinical disclaimer)
+- `chikungunya-case-def`
+
+### lib/zika-case-def-v1563.js (spec-v1563: WHO interim Zika case definitions — clinical disclaimer)
+- `zika-case-def`
+
+### lib/yellow-fever-case-def-v1563.js (spec-v1563: WHO yellow fever case definitions — clinical disclaimer)
+- `yellow-fever-case-def`
+
 ### lib/meningitis-who-2025-v1560.js (spec-v1560: WHO meningitis diagnosis, treatment and care — clinical disclaimer)
 - `meningitis-who-2025`
 

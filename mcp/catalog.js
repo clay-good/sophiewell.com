@@ -973,6 +973,18 @@ import whoRabiesPepV1557 from './adapters/who-rabies-pep-v1557.js';
 import pphWho2025V1558 from './adapters/pph-who-2025-v1558.js';
 import laborCareGuideAlertV1558 from './adapters/labor-care-guide-alert-v1558.js';
 import vitaminADoseChildV1550 from './adapters/vitamin-a-dose-child-v1550.js';
+import trachomaGradeV1561 from './adapters/trachoma-grade-v1561.js';
+import opAtropineTitrationV1556 from './adapters/op-atropine-titration-v1556.js';
+import scorpionGradeIndiaV1556 from './adapters/scorpion-grade-india-v1556.js';
+import helminthIntensityV1562 from './adapters/helminth-intensity-v1562.js';
+import schistoCommunityTreatmentV1562 from './adapters/schisto-community-treatment-v1562.js';
+import lfMdaRegimenV1562 from './adapters/lf-mda-regimen-v1562.js';
+import cysticEchinococcosisStageV1562 from './adapters/cystic-echinococcosis-stage-v1562.js';
+import hatTreatmentV1563 from './adapters/hat-treatment-v1563.js';
+import arbovirusAdmissionCheckV1563 from './adapters/arbovirus-admission-check-v1563.js';
+import chikungunyaCaseDefV1563 from './adapters/chikungunya-case-def-v1563.js';
+import zikaCaseDefV1563 from './adapters/zika-case-def-v1563.js';
+import yellowFeverCaseDefV1563 from './adapters/yellow-fever-case-def-v1563.js';
 import meningitisWho2025V1560 from './adapters/meningitis-who-2025-v1560.js';
 import scrubTyphusIcmrV1560 from './adapters/scrub-typhus-icmr-v1560.js';
 import buruliUlcerCategoryV1561 from './adapters/buruli-ulcer-category-v1561.js';
@@ -2032,6 +2044,18 @@ const ADAPTER_MODULES = [
   ['pph-who-2025-v1558', pphWho2025V1558],
   ['labor-care-guide-alert-v1558', laborCareGuideAlertV1558],
   ['vitamin-a-dose-child-v1550', vitaminADoseChildV1550],
+  ['trachoma-grade-v1561', trachomaGradeV1561],
+  ['op-atropine-titration-v1556', opAtropineTitrationV1556],
+  ['scorpion-grade-india-v1556', scorpionGradeIndiaV1556],
+  ['helminth-intensity-v1562', helminthIntensityV1562],
+  ['schisto-community-treatment-v1562', schistoCommunityTreatmentV1562],
+  ['lf-mda-regimen-v1562', lfMdaRegimenV1562],
+  ['cystic-echinococcosis-stage-v1562', cysticEchinococcosisStageV1562],
+  ['hat-treatment-v1563', hatTreatmentV1563],
+  ['arbovirus-admission-check-v1563', arbovirusAdmissionCheckV1563],
+  ['chikungunya-case-def-v1563', chikungunyaCaseDefV1563],
+  ['zika-case-def-v1563', zikaCaseDefV1563],
+  ['yellow-fever-case-def-v1563', yellowFeverCaseDefV1563],
   ['meningitis-who-2025-v1560', meningitisWho2025V1560],
   ['scrub-typhus-icmr-v1560', scrubTyphusIcmrV1560],
   ['buruli-ulcer-category-v1561', buruliUlcerCategoryV1561],

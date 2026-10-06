@@ -10,6 +10,7 @@ import * as M5 from '../lib/leprosy-disability-grade-v1561.js';
 import * as M6 from '../lib/scabies-diagnosis-mda-v1561.js';
 import * as M7 from '../lib/filarial-lymphedema-stage-v1561.js';
 import * as M8 from '../lib/noma-stage-v1561.js';
+import * as M9 from '../lib/trachoma-grade-v1561.js';
 import { resultRow } from '../lib/result-copy.js';
 
 function selectField(root, label, id, options, required) {
@@ -276,6 +277,32 @@ export const renderers = {
         const r = M8.nomaStage(args);
         if (!r.valid) { note(o, r.message); return; }
         resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'WHO AFRO', value: r.bandLabel }]);
+        list(o, r.notes);
+        note(o, r.note);
+      } catch (err) {
+        o.appendChild(el('p', { class: 'muted', text: err.message }));
+      }
+    };
+    for (const [id] of pairs) { const n = document.getElementById(id); if (n) { n.addEventListener('input', run); n.addEventListener('change', run); } }
+    run();
+  },
+  'trachoma-grade'(root) {
+    const pairs = [['tr-tt', 'tt'], ['tr-co', 'co'], ['tr-fol', 'follicles'], ['tr-ti', 'ti'], ['tr-ts', 'ts']];
+    selectField(root, 'An upper-lid eyelash touches the eyeball, or recent epilation of in-turned upper-lid lashes', 'tr-tt', M9.YES_NO, false);
+    selectField(root, 'Corneal opacity blurring at least part of the pupil margin', 'tr-co', M9.YES_NO, false);
+    numField(root, 'Follicles of 0.5 mm or more in the central upper tarsal conjunctiva (count)', 'tr-fol', 'e.g. 6', '200');
+    selectField(root, 'Inflammatory thickening obscuring more than half the deep tarsal vessels', 'tr-ti', M9.YES_NO, false);
+    selectField(root, 'Easily visible scarring of the upper tarsal conjunctiva', 'tr-ts', M9.YES_NO, false);
+    const o = el('div', { id: 'q-results', 'aria-live': 'polite' });
+    root.appendChild(o);
+    const run = () => {
+      clear(o);
+      try {
+        const args = {};
+        for (const [dom, arg] of pairs) args[arg] = val(dom);
+        const r = M9.trachomaGrade(args);
+        if (!r.valid) { note(o, r.message); return; }
+        resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'WHO 2020', value: r.bandLabel }]);
         list(o, r.notes);
         note(o, r.note);
       } catch (err) {

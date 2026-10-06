@@ -163,3 +163,11 @@ grade; atropine doubling from 2 mg over four steps (2, 4, 8, 16), the stop-doubl
 ## Staleness
 
 GVS24 *low* (unchanged tables since 2001). BAW11 and EDD08 *low*.
+
+## Build status
+
+| Tool | Status |
+|---|---|
+| `scorpion-grade-india` | **Built October 6, 2026** (catalog 2,038). Re-read in BAW11 (PMC3016167, the "Evaluation of clinical grade" box) and matches. Grade only; no prazosin or antivenom dose. A blank sign makes the grade "at least". |
+| `op-atropine-titration` | **Built October 6, 2026** (catalog 2,038). Re-read in EDD08 (PMC2493390) panel 2 and matches. **Differed:** the inputs are the last bolus and the running total (not a dose list), so any sequence works; the next dose doubles the last. `peradeniya-op` gains a link here. |
+| Tiles 1–5 (Brazil) | Open: owner decision D3 adopted (spec-v1564); GVS24 not yet re-read. |

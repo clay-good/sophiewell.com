@@ -703,6 +703,18 @@ import * as whoRabiesPepV1557 from '../../lib/who-rabies-pep-v1557.js';
 import * as pphWho2025V1558 from '../../lib/pph-who-2025-v1558.js';
 import * as laborCareGuideAlertV1558 from '../../lib/labor-care-guide-alert-v1558.js';
 import * as vitaminADoseChildV1550 from '../../lib/vitamin-a-dose-child-v1550.js';
+import * as trachomaGradeV1561 from '../../lib/trachoma-grade-v1561.js';
+import * as opAtropineTitrationV1556 from '../../lib/op-atropine-titration-v1556.js';
+import * as scorpionGradeIndiaV1556 from '../../lib/scorpion-grade-india-v1556.js';
+import * as helminthIntensityV1562 from '../../lib/helminth-intensity-v1562.js';
+import * as schistoCommunityTreatmentV1562 from '../../lib/schisto-community-treatment-v1562.js';
+import * as lfMdaRegimenV1562 from '../../lib/lf-mda-regimen-v1562.js';
+import * as cysticEchinococcosisStageV1562 from '../../lib/cystic-echinococcosis-stage-v1562.js';
+import * as hatTreatmentV1563 from '../../lib/hat-treatment-v1563.js';
+import * as arbovirusAdmissionCheckV1563 from '../../lib/arbovirus-admission-check-v1563.js';
+import * as chikungunyaCaseDefV1563 from '../../lib/chikungunya-case-def-v1563.js';
+import * as zikaCaseDefV1563 from '../../lib/zika-case-def-v1563.js';
+import * as yellowFeverCaseDefV1563 from '../../lib/yellow-fever-case-def-v1563.js';
 import * as meningitisWho2025V1560 from '../../lib/meningitis-who-2025-v1560.js';
 import * as scrubTyphusIcmrV1560 from '../../lib/scrub-typhus-icmr-v1560.js';
 import * as buruliUlcerCategoryV1561 from '../../lib/buruli-ulcer-category-v1561.js';
@@ -1546,6 +1558,18 @@ const MODULES = {
   'pph-who-2025-v1558.js': pphWho2025V1558,
   'labor-care-guide-alert-v1558.js': laborCareGuideAlertV1558,
   'vitamin-a-dose-child-v1550.js': vitaminADoseChildV1550,
+  'trachoma-grade-v1561.js': trachomaGradeV1561,
+  'op-atropine-titration-v1556.js': opAtropineTitrationV1556,
+  'scorpion-grade-india-v1556.js': scorpionGradeIndiaV1556,
+  'helminth-intensity-v1562.js': helminthIntensityV1562,
+  'schisto-community-treatment-v1562.js': schistoCommunityTreatmentV1562,
+  'lf-mda-regimen-v1562.js': lfMdaRegimenV1562,
+  'cystic-echinococcosis-stage-v1562.js': cysticEchinococcosisStageV1562,
+  'hat-treatment-v1563.js': hatTreatmentV1563,
+  'arbovirus-admission-check-v1563.js': arbovirusAdmissionCheckV1563,
+  'chikungunya-case-def-v1563.js': chikungunyaCaseDefV1563,
+  'zika-case-def-v1563.js': zikaCaseDefV1563,
+  'yellow-fever-case-def-v1563.js': yellowFeverCaseDefV1563,
   'meningitis-who-2025-v1560.js': meningitisWho2025V1560,
   'scrub-typhus-icmr-v1560.js': scrubTyphusIcmrV1560,
   'buruli-ulcer-category-v1561.js': buruliUlcerCategoryV1561,

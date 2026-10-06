@@ -400,3 +400,27 @@ experience**.
 > v1561, Lymphedema Stage in Lymphatic Filariasis (Dreyer, 7 Stages) — [spec-v1561](spec-v1561.md), which adds `filarial-lymphedema-stage` — is 2025.)
 
 > v1561, Noma (Cancrum Oris) Stage and Urgency (WHO) — [spec-v1561](spec-v1561.md), which adds `noma-stage` — is 2026.)
+
+> v1562, Worm Infection Intensity From an Egg Count (Kato-Katz and Urine Filtration, WHO) — [spec-v1562](spec-v1562.md), which adds `helminth-intensity` — is 2027.)
+
+> v1562, Community Decision: Schistosomiasis Mass Treatment Frequency (WHO 2022) — [spec-v1562](spec-v1562.md), which adds `schisto-community-treatment` — is 2028.)
+
+> v1562, Which Filariasis Mass Treatment Regimen for This Area and This Person? (WHO 2017) — [spec-v1562](spec-v1562.md), which adds `lf-mda-regimen` — is 2029.)
+
+> v1562, Hydatid Cyst: WHO Stage and First-Line Treatment (2025) — [spec-v1562](spec-v1562.md), which adds `cystic-echinococcosis-stage` — is 2030.)
+
+> v1563, Sleeping Sickness (HAT): Stage and Which Drug (WHO 2024) — [spec-v1563](spec-v1563.md), which adds `hat-treatment` — is 2031.)
+
+> v1563, Dengue, Chikungunya, Zika or Yellow Fever: Signs That May Prompt Admission (WHO 2025) — [spec-v1563](spec-v1563.md), which adds `arbovirus-admission-check` — is 2032.)
+
+> v1563, Chikungunya Case Definition (WHO/PAHO) — [spec-v1563](spec-v1563.md), which adds `chikungunya-case-def` — is 2033.)
+
+> v1563, Zika Case Definition (WHO Interim 2016) — [spec-v1563](spec-v1563.md), which adds `zika-case-def` — is 2034.)
+
+> v1563, Yellow Fever Case Definition (WHO 2010) — [spec-v1563](spec-v1563.md), which adds `yellow-fever-case-def` — is 2035.)
+
+> v1561, WHO Simplified Trachoma Grading (2020 Amended) — [spec-v1561](spec-v1561.md), which adds `trachoma-grade` — is 2036.)
+
+> v1556, Organophosphate Poisoning: Atropine Dose Doubling and Infusion (Eddleston) — [spec-v1556](spec-v1556.md), which adds `op-atropine-titration` — is 2037.)
+
+> v1556, Indian Red Scorpion Sting Grade (Mesobuthus tamulus) — [spec-v1556](spec-v1556.md), which adds `scorpion-grade-india` — is 2038.)

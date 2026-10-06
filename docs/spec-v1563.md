@@ -223,4 +223,9 @@ ARBO25 *moderate*. Case definitions *low*.
 | Tool | Status |
 |---|---|
 | `dengue-fluid-plan` | **Built October 6, 2026** (catalog 1,989). Every rate re-read in DENG12 (IRIS 10665/76887) pp. 26 and 28–31 and matches the spec, including the child 7 (compensated) vs 7.5 (hypotensive) mL/kg/h rows, each used as printed. **Differed:** the ARBO25 additions were not re-read and are not printed; the second-bolus guidance is printed as a note rather than a step. `who-dengue-2009` links here. |
-| Other tools | Open. |
+| `hat-treatment` | **Built October 6, 2026** (catalog 2,035). Re-read in HAT24 (IRIS 10665/378083) summaries, §2.1.2–2.2.2, Table 2 and the NECT section. **Corrected from the spec:** NECT's eflornithine is given for **7 days** (14 days is NECT-long, the rescue regimen). **Differed:** pentamidine, suramin and melarsoprol are named without doses; the gambiense first trimester is referred to the former recommendations (TRS 984), as HAT24 says. Acoziborole is not offered (not in HAT24); *high* staleness. |
+| `visceral-leishmaniasis-2026`, `cutaneous-leishmaniasis-americas`, `chagas-stage-treatment` | Open. |
+| `arbovirus-admission-check` | **Built October 6, 2026** (catalog 2,035). Re-read in ARBO25 (IRIS 10665/381804) §2.7, the recommendations and Table 4-2, and matches. The output keeps WHO's "might encourage hospitalization" wording. **Added:** metamizole as the suggested alternative for pain or fever. |
+| `chikungunya-case-def` | **Built October 6, 2026** (catalog 2,035). Re-read in CHIK15 (IRIS 10665/242406) Table 1, and matches. |
+| `zika-case-def` | **Built October 6, 2026** (catalog 2,035). Re-read in ZIKA16 (IRIS 10665/204381), and matches; the IgM-plus-PRNT confirmation is one combined answer. |
+| `yellow-fever-case-def` | **Built October 6, 2026** (catalog 2,035). Re-read in YF10 (IRIS 10665/241679), and matches. The vaccine timing is one select (none in 30 days / 15–30 days / within 14 days), so the two windows are applied separately. |

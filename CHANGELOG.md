@@ -21,6 +21,43 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- WHO simplified trachoma grading (2020 amended): TT (upper lid only), CO,
+  TF (five or more follicles), TI and TS for one eye, with trichiasis referred
+  for surgery.
+- Organophosphate poisoning atropine (Eddleston 2008): double the last bolus
+  every 5 minutes until improving, the targets (heart rate and systolic over
+  80, clear chest), and the 10-20% hourly infusion once stable.
+- Indian red scorpion sting grade (Bawaskar, BMJ 2011): grades 1-4 from
+  local pain to warm shock, the highest wins, "at least" with a grade
+  unassessed; no drug doses.
+- Shock index: an obstetric hemorrhage band set (El Ayadi 2016) for low-resource
+  referral: 0.9 refer, 1.4 urgent tertiary care, 1.7 high risk of an adverse
+  outcome.
+- Worm infection intensity from an egg count (WHO 2011, Table 5.1): light,
+  moderate or heavy for roundworm, whipworm, hookworm and S. mansoni (heavy read
+  as "or more"), and S. haematobium light 1-50, heavy over 50.
+- Community schistosomiasis mass treatment (WHO 2022): yearly praziquantel
+  from 10% (30% by POC-CCA), everyone from 2 years, twice yearly after a poor
+  response, and test-and-treat or continued rounds under 10%.
+- Which filariasis mass treatment regimen (WHO 2017): DA, IDA, IA or
+  albendazole twice yearly by co-endemic onchocerciasis and loiasis (never
+  defaulted) and program status, and whether this person is eligible.
+- Hydatid cyst stage and first-line treatment (WHO 2025): CE1-CE5 and CL,
+  albendazole, PAIR or surgery by stage, size and facility tier for an
+  uncomplicated liver or lung cyst, with the albendazole dose.
+- Sleeping sickness (WHO 2024): stage by CSF (5 and 100 cells), fexinidazole
+  without a lumbar puncture when severe disease is unlikely, NECT or pentamidine
+  for small children, rhodesiense drugs, and the fexinidazole and NECT doses.
+- Dengue, chikungunya, Zika or yellow fever (WHO 2025): the signs that might
+  encourage hospitalization (dengue), with blanks as not assessed, no NSAIDs or
+  corticosteroids, and acetaminophen by weight.
+- Chikungunya case definition (WHO/PAHO 2015): suspected, confirmed, atypical,
+  severe acute, and suspected or confirmed chronic, with blanks as not assessed.
+- Zika case definition (WHO interim 2016): suspected, probable and confirmed,
+  with blanks as not assessed and a note that PAHO issued 2022 definitions.
+- Yellow fever case definition (WHO 2010): suspected, probable and confirmed,
+  with the separate 30-day (antibody) and 14-day (PCR, antigen, isolation)
+  vaccine windows.
 - Suspected bacterial meningitis (WHO 2025): image or defer the lumbar
   puncture on six red flags (blank is not assessed), empiric ceftriaxone or
   cefotaxime with Listeria and resistance add-ons, steroids and duration by

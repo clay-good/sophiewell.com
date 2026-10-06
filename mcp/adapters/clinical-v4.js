@@ -5,6 +5,7 @@
 
 import * as F from '../../lib/clinical-v4.js';
 import * as C from '../../lib/clinical.js';
+import { obstetricShockBand } from '../../lib/shock-index-obstetric-v1558.js';
 
 export default [
   {
@@ -73,8 +74,10 @@ export default [
       const shockIndex = have(a.hr, a.sbp) ? F.shockIndex({ hr: a.hr, sbp: a.sbp }) : null;
       const modifiedShockIndex = have(a.hr, a.sbp, a.dbp)
         ? F.modifiedShockIndex({ hr: a.hr, sbp: a.sbp, dbp: a.dbp }) : null;
-      return mapV == null && shockIndex == null ? null
-        : { map: mapV, pulsePressure, shockIndex, modifiedShockIndex };
+      if (mapV == null && shockIndex == null) return null;
+      // spec-v1558: the obstetric-hemorrhage bands (El Ayadi 2016), only when asked for.
+      const ob = a.bands === 'obstetric' && shockIndex != null ? obstetricShockBand(shockIndex) : null;
+      return { map: mapV, pulsePressure, shockIndex, modifiedShockIndex, ...(ob ? { obstetricBand: ob.band } : {}) };
     },
     fields: [
       // spec-v1045: the systolic pressure is in all four outputs and stays
@@ -85,6 +88,7 @@ export default [
       { dom: 'si-sbp', arg: 'sbp', kind: 'number', required: true, label: 'Systolic BP', unit: 'mmHg' },
       { dom: 'si-dbp', arg: 'dbp', kind: 'number', label: 'Diastolic BP', unit: 'mmHg' },
       { dom: 'si-hr', arg: 'hr', kind: 'number', label: 'Heart rate', unit: 'bpm' },
+      { dom: 'si-ob', arg: 'bands', kind: 'enum', label: 'Shock index bands', values: ['general', 'obstetric'] },
     ],
   },
   {

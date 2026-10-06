@@ -81,6 +81,12 @@ export const ANSWERS_AN_EMPTY_FORM = new Set([
   // number fields are the optional community prevalence and the weight for ivermectin, and with the weight
   // blank the answer says "Weight: not entered, so no ivermectin dose".
   "scabies-diagnosis-mda",
+  // spec-v1561 (trachoma-grade): four of the five signs are selects; the only number is the follicle count
+  // for TF, and with it blank the answer says "not assessed: TF (follicle count)".
+  "trachoma-grade",
+  // spec-v1563 (arbovirus-admission-check): the signs are selects; the only number is the optional weight for
+  // the acetaminophen dose, and with it blank the answer says "Weight: not entered, so no child dose is computed".
+  "arbovirus-admission-check",
   // spec-v1558 (mgso4-im-regimen): the regimen comes from two required selects (source, regimen); the
   // number fields are the optional next-dose check, and with them blank the tile gives the regimen and
   // no safe-to-give verdict, which it gives only when all three checks are entered.
