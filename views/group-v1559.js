@@ -4,6 +4,8 @@ import { el, clear } from '../lib/dom.js';
 import * as M0 from '../lib/who-anc-schedule-v1559.js';
 import * as M1 from '../lib/td-pregnancy-schedule-v1559.js';
 import * as M2 from '../lib/newborn-size-category-v1559.js';
+import * as M3 from '../lib/newborn-temperature-who-v1559.js';
+import * as M4 from '../lib/newborn-hypoglycemia-who-v1559.js';
 import { resultRow } from '../lib/result-copy.js';
 
 function selectField(root, label, id, options, required) {
@@ -94,6 +96,55 @@ export const renderers = {
         const r = M2.newbornSizeCategory(args);
         if (!r.valid) { note(o, r.message); return; }
         resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'WHO 2022', value: r.bandLabel }]);
+        list(o, r.notes);
+        note(o, r.note);
+      } catch (err) {
+        o.appendChild(el('p', { class: 'muted', text: err.message }));
+      }
+    };
+    for (const [id] of pairs) { const n = document.getElementById(id); if (n) { n.addEventListener('input', run); n.addEventListener('change', run); } }
+    run();
+  },
+  'newborn-temperature-who'(root) {
+    const pairs = [['nt2-temp', 'temp'], ['nt2-unit', 'unit'], ['nt2-site', 'site']];
+    numField(root, 'Temperature', 'nt2-temp', 'e.g. 35.8', '110');
+    selectField(root, 'Unit', 'nt2-unit', M3.UNIT_OPTIONS, false);
+    selectField(root, 'Site', 'nt2-site', M3.SITE_OPTIONS, false);
+    const o = el('div', { id: 'q-results', 'aria-live': 'polite' });
+    root.appendChild(o);
+    const run = () => {
+      clear(o);
+      try {
+        const args = {};
+        for (const [dom, arg] of pairs) args[arg] = val(dom);
+        const r = M3.newbornTemperatureWho(args);
+        if (!r.valid) { note(o, r.message); return; }
+        resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'WHO 1997', value: r.bandLabel }]);
+        list(o, r.notes);
+        note(o, r.note);
+      } catch (err) {
+        o.appendChild(el('p', { class: 'muted', text: err.message }));
+      }
+    };
+    for (const [id] of pairs) { const n = document.getElementById(id); if (n) { n.addEventListener('input', run); n.addEventListener('change', run); } }
+    run();
+  },
+  'newborn-hypoglycemia-who'(root) {
+    const pairs = [['nh-pop', 'population'], ['nh-glu', 'glucose'], ['nh-unit', 'unit'], ['nh-weight', 'weight']];
+    selectField(root, 'Baby', 'nh-pop', M4.POP_OPTIONS, true);
+    numField(root, 'Blood glucose (leave blank if it cannot be measured)', 'nh-glu', 'e.g. 2.4', '900');
+    selectField(root, 'Unit', 'nh-unit', M4.UNIT_OPTIONS, false);
+    numField(root, 'Weight in kg (sick infant)', 'nh-weight', 'e.g. 3', '10');
+    const o = el('div', { id: 'q-results', 'aria-live': 'polite' });
+    root.appendChild(o);
+    const run = () => {
+      clear(o);
+      try {
+        const args = {};
+        for (const [dom, arg] of pairs) args[arg] = val(dom);
+        const r = M4.newbornHypoglycemiaWho(args);
+        if (!r.valid) { note(o, r.message); return; }
+        resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'WHO', value: r.bandLabel }]);
         list(o, r.notes);
         note(o, r.note);
       } catch (err) {

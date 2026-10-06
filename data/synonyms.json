@@ -7081,6 +7081,39 @@
     },
     {
       "phrases": [
+        "newborn hypothermia",
+        "neonatal cold stress",
+        "newborn temperature who",
+        "baby temperature low",
+        "kangaroo rewarming newborn"
+      ],
+      "tile": "newborn-temperature-who",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "newborn hypoglycemia who",
+        "neonatal low blood sugar",
+        "2.6 mmol newborn",
+        "newborn glucose threshold",
+        "10% glucose 2 ml/kg newborn"
+      ],
+      "tile": "newborn-hypoglycemia-who",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "cutaneous leishmaniasis treatment",
+        "paho leishmaniasis",
+        "intralesional antimony",
+        "miltefosine cutaneous",
+        "leishmaniasis local treatment criteria"
+      ],
+      "tile": "cutaneous-leishmaniasis-americas",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
         "imci drug doses",
         "imci amoxicillin dose",
         "child amoxicillin by weight band",

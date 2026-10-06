@@ -8,6 +8,7 @@ import * as M2 from '../lib/chikungunya-case-def-v1563.js';
 import * as M3 from '../lib/zika-case-def-v1563.js';
 import * as M4 from '../lib/yellow-fever-case-def-v1563.js';
 import * as M5 from '../lib/visceral-leishmaniasis-2026-v1563.js';
+import * as M6 from '../lib/cutaneous-leishmaniasis-americas-v1563.js';
 import { resultRow } from '../lib/result-copy.js';
 
 function selectField(root, label, id, options, required) {
@@ -236,6 +237,38 @@ export const renderers = {
         const r = M5.visceralLeishmaniasis2026(args);
         if (!r.valid) { note(o, r.message); return; }
         resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'WHO 2026', value: r.bandLabel }]);
+        list(o, r.notes);
+        note(o, r.note);
+      } catch (err) {
+        o.appendChild(el('p', { class: 'muted', text: err.message }));
+      }
+    };
+    for (const [id] of pairs) { const n = document.getElementById(id); if (n) { n.addEventListener('input', run); n.addEventListener('change', run); } }
+    run();
+  },
+  'cutaneous-leishmaniasis-americas'(root) {
+    const pairs = [['cla-n', 'lesions'], ['cla-d', 'diameter'], ['cla-a', 'area'], ['cla-site', 'site'], ['cla-imm', 'immuno'], ['cla-fu', 'followUp'], ['cla-fail', 'failed'], ['cla-preg', 'pregnant'], ['cla-bf', 'breastfeeding'], ['cla-ecg', 'ecg'], ['cla-w', 'weight']];
+    numField(root, 'Number of lesions', 'cla-n', 'e.g. 2', '100');
+    numField(root, 'Largest lesion diameter in cm', 'cla-d', 'e.g. 2.5', '50');
+    numField(root, 'Largest lesion area in mm² (optional)', 'cla-a', 'e.g. 500', '100000');
+    selectField(root, 'A lesion on the head or near a joint', 'cla-site', M6.YES_NO, true);
+    selectField(root, 'Immunosuppressed', 'cla-imm', M6.YES_NO, true);
+    selectField(root, 'Follow-up possible', 'cla-fu', M6.YES_NO, true);
+    selectField(root, 'Local treatment failed or relapsed', 'cla-fail', M6.YES_NO, false);
+    selectField(root, 'Pregnant', 'cla-preg', M6.YES_NO, false);
+    selectField(root, 'Breastfeeding', 'cla-bf', M6.YES_NO, false);
+    selectField(root, 'Abnormal ECG', 'cla-ecg', M6.YES_NO, false);
+    numField(root, 'Weight in kg (for systemic doses)', 'cla-w', 'e.g. 70', '250');
+    const o = el('div', { id: 'q-results', 'aria-live': 'polite' });
+    root.appendChild(o);
+    const run = () => {
+      clear(o);
+      try {
+        const args = {};
+        for (const [dom, arg] of pairs) args[arg] = val(dom);
+        const r = M6.cutaneousLeishmaniasisAmericas(args);
+        if (!r.valid) { note(o, r.message); return; }
+        resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'PAHO 2022', value: r.bandLabel }]);
         list(o, r.notes);
         note(o, r.note);
       } catch (err) {

@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:d6b805e6-9701-5bcf-8627-b227dac1e91f",
+  "serialNumber": "urn:uuid:8dd5b9f2-d9fe-5df9-8c84-51373c004abe",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-06T09:03:46.378Z",
+    "timestamp": "2026-10-06T09:41:30.204Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2047 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2050 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4eec5c6f40afc82b93ec38a1a69bfb21cc1ec669e74ca913231dbe9dde20e609"
+          "content": "6a63613ac79b710db980bd0345494ea1dd40b09c1727f7bf47e9f42a3b32e6cf"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "132360"
+          "value": "132608"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "85d82ee3c4b871d5ab7fc6207c014524755fa12fb25e4014aa469ee2f69bcc12"
+          "content": "b2ac225e752c34033593748570e0e8f5afaa08a8841fab23632d6064f22bfa49"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "588486"
+          "value": "589106"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2d6de0f97154abc332432d73bb94cddf8869f03303542470c62030ff417054f7"
+          "content": "2ec4a4d8cd748344ac01a8bdcd5e981a18a7a8c2f87d1871b5f42935a9d1567c"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "256069"
+          "value": "256481"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0a5c14259a6a9625b4849ba4944bb9d7b2f3ad3389d1695aa4da0f8aa90b1fb1"
+          "content": "2751d87b2b9756f88c3f1fcbc559a02bb02c3bc6ac56d4f142741f7c4245eb7d"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "119917"
+          "value": "120214"
         }
       ]
     },
@@ -5218,6 +5218,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "7823"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/cutaneous-leishmaniasis-americas-v1563.js",
+      "type": "file",
+      "name": "lib/cutaneous-leishmaniasis-americas-v1563.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "cc404d281a4e292dc3a14e22eecd56334dca3c3a961e18633767de665a2f9301"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6733"
         }
       ]
     },
@@ -13817,7 +13838,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5802621351d724d6ef19b8a7d517a5355c07e68445bdaf95502c331c6f826823"
+          "content": "8c8780bebd0f29852a05b39ac096deec0cc5cbbdd635b9d6fe8df9404a35de95"
         }
       ],
       "properties": [
@@ -13827,7 +13848,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2740845"
+          "value": "2743141"
         }
       ]
     },
@@ -15260,6 +15281,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/newborn-hypoglycemia-who-v1559.js",
+      "type": "file",
+      "name": "lib/newborn-hypoglycemia-who-v1559.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "46372ce48f1b1d6d6751582b5ec433db7529abb310a58226a4b07b7c71afee6e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4869"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/newborn-size-category-v1559.js",
       "type": "file",
       "name": "lib/newborn-size-category-v1559.js",
@@ -15277,6 +15319,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3373"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/newborn-temperature-who-v1559.js",
+      "type": "file",
+      "name": "lib/newborn-temperature-who-v1559.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ff474e9798b5af6e9836f3468197eb21b47d8bc80d11e68ba228ae0ea814a90f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3828"
         }
       ]
     },
@@ -30464,6 +30527,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/cutaneous-leishmaniasis-americas-v1563.js",
+      "type": "file",
+      "name": "mcp/adapters/cutaneous-leishmaniasis-americas-v1563.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "df57c9c9b74ffe8f59d4bb148256d8634b5eaf32842bc9e577db0c2335ed8a8e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2049"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/cvrisk-engines-v202.js",
       "type": "file",
       "name": "mcp/adapters/cvrisk-engines-v202.js",
@@ -39536,6 +39620,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/newborn-hypoglycemia-who-v1559.js",
+      "type": "file",
+      "name": "mcp/adapters/newborn-hypoglycemia-who-v1559.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2e01d739889427c2055478b932f86db70ff9913ed57c32e5e63f8a5c9c93aaca"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1092"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/newborn-size-category-v1559.js",
       "type": "file",
       "name": "mcp/adapters/newborn-size-category-v1559.js",
@@ -39553,6 +39658,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "954"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/newborn-temperature-who-v1559.js",
+      "type": "file",
+      "name": "mcp/adapters/newborn-temperature-who-v1559.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ec43f8c3fda94be04b86f7b64b376565e4a3ee3fa2c72d47da351ef7673a9899"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "898"
         }
       ]
     },
@@ -48572,7 +48698,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a91cb283e0de5fa28f8b9b091b932e86832dd064b81e8c3c29b5a139affdb7e7"
+          "content": "cfc288ee13fa7effa466355f8ed32949ba2b096d053b4992e240381e9d0fd180"
         }
       ],
       "properties": [
@@ -48582,7 +48708,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "125790"
+          "value": "126283"
         }
       ]
     },
@@ -52625,7 +52751,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "540d5cd5b2d56415b04ab7b19100eba7b8b7d0c74f8e1778395e1986448846d4"
+          "content": "cc9fcbca34551104bb9e3309d66e8e987ead2454dfea6e9a96a15580753c7a4b"
         }
       ],
       "properties": [
@@ -52635,7 +52761,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "4930"
+          "value": "7407"
         }
       ]
     },
@@ -52751,7 +52877,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "abdbc68d8cab43647ac1c30bbdcfc40200e533ba380f81eaa266e902fcccaf3f"
+          "content": "b95864c67fa6cc7d771310b4101f2b8200221771fe90d0b785e650880d7d4ba3"
         }
       ],
       "properties": [
@@ -52761,7 +52887,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "14736"
+          "value": "16770"
         }
       ]
     },
@@ -84042,6 +84168,7 @@
         "urn:sophiewell:file:source:lib/csendes-mirizzi-v1240.js",
         "urn:sophiewell:file:source:lib/cts6-v773.js",
         "urn:sophiewell:file:source:lib/cuff-leak-v903.js",
+        "urn:sophiewell:file:source:lib/cutaneous-leishmaniasis-americas-v1563.js",
         "urn:sophiewell:file:source:lib/cvrisk-engines-v202.js",
         "urn:sophiewell:file:source:lib/cvrisk-v103.js",
         "urn:sophiewell:file:source:lib/cystic-echinococcosis-stage-v1562.js",
@@ -84520,7 +84647,9 @@
         "urn:sophiewell:file:source:lib/neuro-v122.js",
         "urn:sophiewell:file:source:lib/neuro-v95.js",
         "urn:sophiewell:file:source:lib/neurology-v224.js",
+        "urn:sophiewell:file:source:lib/newborn-hypoglycemia-who-v1559.js",
         "urn:sophiewell:file:source:lib/newborn-size-category-v1559.js",
+        "urn:sophiewell:file:source:lib/newborn-temperature-who-v1559.js",
         "urn:sophiewell:file:source:lib/ng-tube-length-v1445.js",
         "urn:sophiewell:file:source:lib/nhsn-vae-v876.js",
         "urn:sophiewell:file:source:lib/ni-rads-v373.js",
@@ -86181,6 +86310,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/csendes-mirizzi-v1240.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cts6-v773.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cuff-leak-v903.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/cutaneous-leishmaniasis-americas-v1563.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cvrisk-engines-v202.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cvrisk-v103.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cystic-echinococcosis-stage-v1562.js",
@@ -86613,7 +86743,9 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/neuro-v122.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/neuro-v95.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/neurology-v224.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/newborn-hypoglycemia-who-v1559.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/newborn-size-category-v1559.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/newborn-temperature-who-v1559.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ng-tube-length-v1445.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/nhsn-vae-v876.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/ni-rads-v373.js",
@@ -87147,7 +87279,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "d6b805e697015bcf"
+      "value": "8dd5b9f2d9feadf9"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -87159,7 +87291,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3227"
+      "value": "3233"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

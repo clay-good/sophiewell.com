@@ -3503,6 +3503,10 @@ const UTILITIES = [
   { id: 'imci-oral-drug-bands', name: 'Home Drug Doses by Weight or Age for Children 2-59 Months (WHO IMCI)', group: 'F', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'imci-prereferral-injectables', name: 'Pre-Referral Injections and Rectal Diazepam for Children 2-59 Months (WHO IMCI)', group: 'F', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'visceral-leishmaniasis-2026', name: 'Kala-Azar and PKDL Treatment by Region (WHO 2026)', group: 'J', audiences: ['clinicians', 'educators', 'field'], clinical: true },
+  // field-health batch (spec-v1540).
+  { id: 'newborn-temperature-who', name: 'Newborn Temperature: Cold Stress and Hypothermia Grades (WHO)', group: 'N', audiences: ['clinicians', 'educators', 'field'], clinical: true },
+  { id: 'newborn-hypoglycemia-who', name: 'Low Blood Sugar in a Newborn: WHO Thresholds and Treatment', group: 'N', audiences: ['clinicians', 'educators', 'field'], clinical: true },
+  { id: 'cutaneous-leishmaniasis-americas', name: 'Cutaneous Leishmaniasis in the Americas: Local or Systemic Treatment? (PAHO 2022)', group: 'J', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   // spec-v1550: field-health (spec-v1540).
   { id: 'vitamin-a-dose-child', name: 'Vitamin A Dose for a Child: Routine, Diarrhea, Measles or Eye Signs (WHO)', group: 'N', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'deworming-dose-who', name: 'Deworming Dose and Frequency (WHO Preventive Chemotherapy)', group: 'F', audiences: ['clinicians', 'educators', 'field'], clinical: true },

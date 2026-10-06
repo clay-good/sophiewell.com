@@ -93,6 +93,9 @@ export const ANSWERS_AN_EMPTY_FORM = new Set([
   // spec-v1550 (iron-supplement-who): the dose comes from the group and prevalence selects; the numbers are the
   // optional pregnancy hemoglobin and the preterm weight, and a blank hemoglobin is disclosed ("not entered").
   "iron-supplement-who",
+  // spec-v1559 (newborn-hypoglycemia-who): a blank glucose is WHO's own case ("no reliable measurement" for an
+  // at-risk newborn; "cannot be measured, treat as hypoglycemia" for a sick infant), and the answer says so.
+  "newborn-hypoglycemia-who",
   // spec-v1558 (mgso4-im-regimen): the regimen comes from two required selects (source, regimen); the
   // number fields are the optional next-dose check, and with them blank the tile gives the regimen and
   // no safe-to-give verdict, which it gives only when all three checks are entered.

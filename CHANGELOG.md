@@ -21,6 +21,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Newborn temperature (WHO 1997): normal 36.5-37.5 °C, cold stress, moderate
+  and severe hypothermia and hyperthermia, with WHO's rewarming for each and
+  the IMCI 35.5 °C sign named.
+- Newborn low blood sugar (WHO): at-risk newborns kept at 2.6 mmol/L or more
+  (feed and recheck), sick young infants under 2.2 given 10% glucose 2 mL/kg then
+  5 mL/kg/h, each threshold naming its population.
+- Cutaneous leishmaniasis in the Americas (PAHO 2022): local treatment when
+  1-3 lesions each 3 cm and 900 mm² or less away from the head and joints,
+  otherwise systemic, with the pregnancy, breastfeeding and abnormal-ECG options
+  and the antimony cap read per day.
 - IMCI home drug doses (WHO chart 2014): amoxicillin, acetaminophen, iron,
   ciprofloxacin, zinc (2014 or 2024 edition), albuterol and mebendazole by the
   chart's weight or age bands, weight first.

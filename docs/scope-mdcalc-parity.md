@@ -442,3 +442,9 @@ experience**.
 > v1546, Pre-Referral Injections and Rectal Diazepam for Children 2-59 Months (WHO IMCI) — [spec-v1546](spec-v1546.md), which adds `imci-prereferral-injectables` — is 2046.)
 
 > v1563, Kala-Azar and PKDL Treatment by Region (WHO 2026) — [spec-v1563](spec-v1563.md), which adds `visceral-leishmaniasis-2026` — is 2047.)
+
+> v1559, Newborn Temperature: Cold Stress and Hypothermia Grades (WHO) — [spec-v1559](spec-v1559.md), which adds `newborn-temperature-who` — is 2048.)
+
+> v1559, Low Blood Sugar in a Newborn: WHO Thresholds and Treatment — [spec-v1559](spec-v1559.md), which adds `newborn-hypoglycemia-who` — is 2049.)
+
+> v1563, Cutaneous Leishmaniasis in the Americas: Local or Systemic Treatment? (PAHO 2022) — [spec-v1563](spec-v1563.md), which adds `cutaneous-leishmaniasis-americas` — is 2050.)
