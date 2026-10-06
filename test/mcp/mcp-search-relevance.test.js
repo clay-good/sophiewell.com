@@ -761,6 +761,8 @@ const PROBES = [
   ['postpartum hemorrhage 300 ml shock index tranexamic acid', ['pph-who-2025']],
   ['labour care guide alert column', ['labor-care-guide-alert']],
   ['vitamin a dose measles child 200000 iu', ['vitamin-a-dose-child']],
+  ['leprosy paucibacillary multibacillary mdt regimen', ['leprosy-classify-mdt']],
+  ['single dose rifampicin leprosy contacts', ['leprosy-pep-rifampicin']],
   ['cotrimoxazole prophylaxis hiv dose by weight', ['who-cotrimoxazole']],
   ['diphtheria antitoxin dose who 2024', ['diphtheria-antitoxin-dose']],
   ['typhoid enteric fever antibiotic resistance', ['enteric-fever-regimen']],

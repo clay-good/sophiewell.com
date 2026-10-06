@@ -973,6 +973,8 @@ import whoRabiesPepV1557 from './adapters/who-rabies-pep-v1557.js';
 import pphWho2025V1558 from './adapters/pph-who-2025-v1558.js';
 import laborCareGuideAlertV1558 from './adapters/labor-care-guide-alert-v1558.js';
 import vitaminADoseChildV1550 from './adapters/vitamin-a-dose-child-v1550.js';
+import leprosyClassifyMdtV1561 from './adapters/leprosy-classify-mdt-v1561.js';
+import leprosyPepRifampicinV1561 from './adapters/leprosy-pep-rifampicin-v1561.js';
 import whoCotrimoxazoleV1554 from './adapters/who-cotrimoxazole-v1554.js';
 import diphtheriaAntitoxinDoseV1560 from './adapters/diphtheria-antitoxin-dose-v1560.js';
 import entericFeverRegimenV1560 from './adapters/enteric-fever-regimen-v1560.js';
@@ -2010,6 +2012,8 @@ const ADAPTER_MODULES = [
   ['pph-who-2025-v1558', pphWho2025V1558],
   ['labor-care-guide-alert-v1558', laborCareGuideAlertV1558],
   ['vitamin-a-dose-child-v1550', vitaminADoseChildV1550],
+  ['leprosy-classify-mdt-v1561', leprosyClassifyMdtV1561],
+  ['leprosy-pep-rifampicin-v1561', leprosyPepRifampicinV1561],
   ['who-cotrimoxazole-v1554', whoCotrimoxazoleV1554],
   ['diphtheria-antitoxin-dose-v1560', diphtheriaAntitoxinDoseV1560],
   ['enteric-fever-regimen-v1560', entericFeverRegimenV1560],

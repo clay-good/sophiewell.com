@@ -703,6 +703,8 @@ import * as whoRabiesPepV1557 from '../../lib/who-rabies-pep-v1557.js';
 import * as pphWho2025V1558 from '../../lib/pph-who-2025-v1558.js';
 import * as laborCareGuideAlertV1558 from '../../lib/labor-care-guide-alert-v1558.js';
 import * as vitaminADoseChildV1550 from '../../lib/vitamin-a-dose-child-v1550.js';
+import * as leprosyClassifyMdtV1561 from '../../lib/leprosy-classify-mdt-v1561.js';
+import * as leprosyPepRifampicinV1561 from '../../lib/leprosy-pep-rifampicin-v1561.js';
 import * as whoCotrimoxazoleV1554 from '../../lib/who-cotrimoxazole-v1554.js';
 import * as diphtheriaAntitoxinDoseV1560 from '../../lib/diphtheria-antitoxin-dose-v1560.js';
 import * as entericFeverRegimenV1560 from '../../lib/enteric-fever-regimen-v1560.js';
@@ -1524,6 +1526,8 @@ const MODULES = {
   'pph-who-2025-v1558.js': pphWho2025V1558,
   'labor-care-guide-alert-v1558.js': laborCareGuideAlertV1558,
   'vitamin-a-dose-child-v1550.js': vitaminADoseChildV1550,
+  'leprosy-classify-mdt-v1561.js': leprosyClassifyMdtV1561,
+  'leprosy-pep-rifampicin-v1561.js': leprosyPepRifampicinV1561,
   'who-cotrimoxazole-v1554.js': whoCotrimoxazoleV1554,
   'diphtheria-antitoxin-dose-v1560.js': diphtheriaAntitoxinDoseV1560,
   'enteric-fever-regimen-v1560.js': entericFeverRegimenV1560,

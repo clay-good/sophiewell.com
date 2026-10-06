@@ -7081,6 +7081,27 @@
     },
     {
       "phrases": [
+        "leprosy mdt",
+        "paucibacillary multibacillary",
+        "leprosy classification who",
+        "leprosy treatment regimen",
+        "hansen disease treatment"
+      ],
+      "tile": "leprosy-classify-mdt",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "leprosy chemoprophylaxis",
+        "single dose rifampicin",
+        "sdr leprosy",
+        "leprosy contact prophylaxis"
+      ],
+      "tile": "leprosy-pep-rifampicin",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
         "cotrimoxazole prophylaxis",
         "cotrimoxazole dose child",
         "septrin prophylaxis hiv",

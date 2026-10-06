@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:bf50c55c-51d8-5874-8afa-d26ce3b83775",
+  "serialNumber": "urn:uuid:f553a44d-0015-5f7b-82ca-a6c89a17da24",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-06T05:13:22.152Z",
+    "timestamp": "2026-10-06T05:37:07.785Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2004 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2006 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b0e80468ae97720dd1bd67d19ead0733038ce978e8c93230b2c8d0224782e912"
+          "content": "72e3a68223f7597e7680073bc7db8381d11c2a1c499f7725f5d4af22b8a11d23"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "128939"
+          "value": "129098"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0bf05bd51c1b6a7969eb7e97eeeb2183388b54ca92b522997f40b3fdb025efcf"
+          "content": "8ebb11634eb27dccea68d28c3431275eb5b761bdde03dd72ba83f27b284f4909"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "579844"
+          "value": "580326"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c90e108270bbc23417c7a5df57248f69166fd62beae3206074a9886a682a1698"
+          "content": "c967ee28946b0cc8289ed5c96b9c58c63e0fbfc7f6238aeca229da92671c0384"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "250408"
+          "value": "250672"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "babca19d7aca9ca4d71ca69967fbfd6c3a73b0895581bdbd83c3d97d8264133e"
+          "content": "b6b6f82fec70c1c9197fa68e7f77fb76205559167fb4268d487acc1224ebcf7c"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "116038"
+          "value": "116219"
         }
       ]
     },
@@ -11753,6 +11753,48 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/leprosy-classify-mdt-v1561.js",
+      "type": "file",
+      "name": "lib/leprosy-classify-mdt-v1561.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2662006a02670a03a5b16024eaf640efbedb65b82b22a01c049e782c7e81f61e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "4834"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/leprosy-pep-rifampicin-v1561.js",
+      "type": "file",
+      "name": "lib/leprosy-pep-rifampicin-v1561.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1d5c19d54e87ffedbe6f7284d0e9554a6a13654e921052fb501cc32638cd3482"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2600"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/letournel-acetabulum-v466.js",
       "type": "file",
       "name": "lib/letournel-acetabulum-v466.js",
@@ -13313,7 +13355,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "578041c80a5ca1244a843aeda958ea736974734709da2bc421e4241578fe4a72"
+          "content": "b9a7e6549910f4e10a837fc57fbce8dae0d2181e2c7ae5b85ffb9480557f6ad1"
         }
       ],
       "properties": [
@@ -13323,7 +13365,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2708281"
+          "value": "2709643"
         }
       ]
     },
@@ -35336,6 +35378,48 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/leprosy-classify-mdt-v1561.js",
+      "type": "file",
+      "name": "mcp/adapters/leprosy-classify-mdt-v1561.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c07ee21ce44c09fb87f29cabe0f9fccf2dc504e59f8a251e39a01b47c1610088"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1232"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/leprosy-pep-rifampicin-v1561.js",
+      "type": "file",
+      "name": "mcp/adapters/leprosy-pep-rifampicin-v1561.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "bcd52cc1d94699378578f0402b8c05070ce59a5f33f4920707087dfebf2cff40"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "798"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/letournel-acetabulum-v466.js",
       "type": "file",
       "name": "mcp/adapters/letournel-acetabulum-v466.js",
@@ -46745,7 +46829,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "be6040eb81d9d928eb19c9606be3d805a00363b7a8d9edf4282186b78c501341"
+          "content": "6dfda4ae5732104214acc29ad88c0a2b0e01410539b597e0fdb602368809fbd9"
         }
       ],
       "properties": [
@@ -46755,7 +46839,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "119701"
+          "value": "119987"
         }
       ]
     },
@@ -50788,6 +50872,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4190"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1561.js",
+      "type": "file",
+      "name": "views/group-v1561.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "67042afb8cb9eebd0252b1fc826d5c9bc83aa08f5f3aeb3c4377acfcd16048f2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3862"
         }
       ]
     },
@@ -82421,6 +82526,8 @@
         "urn:sophiewell:file:source:lib/leipzig-wilson-v812.js",
         "urn:sophiewell:file:source:lib/lenke-scoliosis-v1241.js",
         "urn:sophiewell:file:source:lib/lepine-v596.js",
+        "urn:sophiewell:file:source:lib/leprosy-classify-mdt-v1561.js",
+        "urn:sophiewell:file:source:lib/leprosy-pep-rifampicin-v1561.js",
         "urn:sophiewell:file:source:lib/letournel-acetabulum-v466.js",
         "urn:sophiewell:file:source:lib/levine-edwards-v411.js",
         "urn:sophiewell:file:source:lib/li-rads-v327.js",
@@ -83241,6 +83348,7 @@
         "urn:sophiewell:file:source:views/group-v156.js",
         "urn:sophiewell:file:source:views/group-v1560.js",
         "urn:sophiewell:file:source:views/group-v1560b.js",
+        "urn:sophiewell:file:source:views/group-v1561.js",
         "urn:sophiewell:file:source:views/group-v1562.js",
         "urn:sophiewell:file:source:views/group-v1563.js",
         "urn:sophiewell:file:source:views/group-v1570.js",
@@ -84476,6 +84584,8 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/leipzig-wilson-v812.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lenke-scoliosis-v1241.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lepine-v596.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/leprosy-classify-mdt-v1561.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/leprosy-pep-rifampicin-v1561.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/letournel-acetabulum-v466.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/levine-edwards-v411.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/li-rads-v327.js",
@@ -85123,7 +85233,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "bf50c55c51d8a874"
+      "value": "f553a44d0015bf7b"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -85135,7 +85245,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3135"
+      "value": "3140"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

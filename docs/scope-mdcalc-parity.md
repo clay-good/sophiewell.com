@@ -356,3 +356,7 @@ experience**.
 > v1560, Diphtheria Antitoxin Dose and Antibiotic (WHO 2024) — [spec-v1560](spec-v1560.md), which adds `diphtheria-antitoxin-dose` — is 2003.)
 
 > v1560, Typhoid (Enteric Fever) Antibiotic by Severity and Local Resistance (WHO AWaRe) — [spec-v1560](spec-v1560.md), which adds `enteric-fever-regimen` — is 2004.)
+
+> v1561, Leprosy: Paucibacillary or Multibacillary, and the MDT Regimen (WHO 2018) — [spec-v1561](spec-v1561.md), which adds `leprosy-classify-mdt` — is 2005.)
+
+> v1561, Single-Dose Rifampicin for Leprosy Contacts (WHO 2018) — [spec-v1561](spec-v1561.md), which adds `leprosy-pep-rifampicin` — is 2006.)

@@ -8776,6 +8776,12 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/vitamin-a-dose-child-v1550.js (spec-v1550: WHO vitamin A doses for children by reason (routine, diarrhea, measles, eye signs) — clinical disclaimer)
 - `vitamin-a-dose-child`
 
+### lib/leprosy-classify-mdt-v1561.js (spec-v1561: WHO PB/MB leprosy definitions and the 2018 MDT regimens — clinical disclaimer)
+- `leprosy-classify-mdt`
+
+### lib/leprosy-pep-rifampicin-v1561.js (spec-v1561: WHO single-dose rifampicin for leprosy contacts — clinical disclaimer)
+- `leprosy-pep-rifampicin`
+
 ### lib/who-cotrimoxazole-v1554.js (spec-v1554: WHO cotrimoxazole prophylaxis criteria and weight-band doses — clinical disclaimer)
 - `who-cotrimoxazole`
 

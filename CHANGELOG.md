@@ -21,6 +21,11 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Leprosy PB or MB and the MDT regimen (WHO 2018): the 2017 case
+  definitions (an unassessed nerve never reads as none) and the same three
+  drugs for 6 or 12 months, with the child doses by age or weight.
+- Single-dose rifampicin for leprosy contacts (WHO 2018): 600, 450 or 300 mg
+  by age, or 10-15 mg/kg under 20 kg, after excluding leprosy and TB.
 - Cotrimoxazole prophylaxis in HIV (WHO): who gets it (2021 criteria) and the
   once-daily dose by weight band for infants and children (May 2026 table).
 - Diphtheria antitoxin dose (WHO 2024): a single 20,000, 40,000 or 80,000 IU

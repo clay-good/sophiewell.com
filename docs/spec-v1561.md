@@ -206,3 +206,12 @@ stage and the 30-day deferral; each noma stage; each trachoma sign.
 
 LEP18, LEPR20 *low*. BU12 *moderate* (a 2025 WHO progress report not read). SCAB25 *moderate* (new).
 TRA20 *low*.
+
+## Build status
+
+| Tool | Status |
+|---|---|
+| `leprosy-classify-mdt` | **Built October 6, 2026** (catalog 2,005). Re-read in LEP18 (IRIS 10665/274127): the 2017 case definitions (pp. 1–2) and Table 3 (p. 17); both match the spec. An unassessed nerve with 1–5 lesions refuses rather than read as PB; a missing smear with a PB answer is disclosed. Children under 10, or 10–14 years under 40 kg, are dosed by weight with single-drug formulations. |
+| `leprosy-pep-rifampicin` | **Built October 6, 2026** (catalog 2,006). Re-read in LEP18 §3.1 and Table 5 (p. 21). **Corrected from the spec:** LEP18 asks to exclude leprosy and TB disease and other contraindications; it does not name pregnancy, so the tile does not. **Stated:** under 20 kg the weight row applies at any age from 2 years; a child under 6 years at 20 kg or more fits no row and is refused. |
+| Other tools | Open. |
+
