@@ -660,6 +660,11 @@ and thresholds) is a stable rule in every case (Class A).
 | snake-neostigmine-trial | WHO and India anticholinesterase trial for neurotoxic snakebite | WHO SEARO (2016), WHO AFRO (2010), India STG snake bite (2016) | same | 2026-10-06 | current - SEARO pp. 152-153, AFRO p. 88 and India p. 18 read October 6, 2026 |
 | who-tpt-dose | WHO TPT weight-band dosing (Table 4) | WHO TPT operational handbook, 2nd ed. (2024) | same | 2026-10-06 | current - Tables 3 and 4 read October 6, 2026 |
 | tb-4-month-eligibility | WHO 4-month regimen for non-severe TB in children | WHO TB Module 5 handbook (2022) | same | 2026-10-06 | current - Boxes 5.2-5.3 read October 6, 2026 |
+| who-hiv-staging | WHO clinical staging of HIV disease | WHO HIV surveillance guidance, Annex 1 (2026) | same | 2026-10-06 | current - Annex 1 read October 6, 2026 |
+| who-advanced-hiv | WHO advanced HIV disease definition and package | WHO advanced HIV disease guidelines (December 2025) | same | 2026-10-06 | current - definitions and Table 2 read October 6, 2026 |
+| crag-screen-fluconazole | WHO cryptococcal antigen screening and pre-emptive fluconazole | WHO cryptococcal disease guidelines (2022); advanced HIV disease (2025) | same | 2026-10-06 | current - CRYPTO22 section 2.2 and AHD25 Table 2 read October 6, 2026 |
+| infant-hiv-test-schedule | WHO infant HIV diagnosis algorithm | WHO consolidated HIV guidelines (2021), Fig. 2.7 | same | 2026-10-06 | current - Box 2.5 and Fig. 2.7 read October 6, 2026 |
+| vivax-radical-cure | WHO vivax radical cure by G6PD status | WHO guidelines for malaria (10 September 2026) | same | 2026-10-06 | current - sections 5.2.1.6-5.2.1.7 read October 6, 2026 |
 | vitamin-a-dose-child | WHO vitamin A doses for children by reason (routine, diarrhea, measles, eye signs) | WHO VA11 (2011), IMCI chart (2014), Pocket book (2013), SAM manual (1999) | same | 2026-10-06 | current - each source read October 6, 2026; their age bands differ at 12 months and each reason uses its own |
 | deworming-dose-who | WHO deworming dose and frequency by group and prevalence | WHO STH preventive chemotherapy guideline (2017) | same | 2026-10-06 | current - the 2017 guideline is current; recommendations read October 6, 2026 |
 | labor-care-guide-alert | WHO Labour Care Guide alert thresholds for each labor observation | WHO labour care guide user's manual (2020) | same | 2026-10-06 | current - the 2020 manual is the current edition; Tables 2-6 read October 6, 2026 |
@@ -713,6 +718,11 @@ guideline's citation carries its version date and DOI.
 | snake-neostigmine-trial | WHO and India anticholinesterase trial for neurotoxic snakeb | WHO SEARO (2016), WHO AFRO (2010), India STG snake bite (2016) | same | 2026-10-06 | low | current |
 | who-tpt-dose | WHO TPT weight-band dosing (Table 4) | WHO TPT operational handbook, 2nd ed. (2024) | same | 2026-10-06 | moderate | current |
 | tb-4-month-eligibility | WHO 4-month regimen for non-severe TB in children | WHO TB Module 5 handbook (2022) | same | 2026-10-06 | moderate | current |
+| who-hiv-staging | WHO clinical staging of HIV disease | WHO HIV surveillance guidance, Annex 1 (2026) | same | 2026-10-06 | low | current |
+| who-advanced-hiv | WHO advanced HIV disease definition and package | WHO advanced HIV disease guidelines (December 2025) | same | 2026-10-06 | moderate | current |
+| crag-screen-fluconazole | WHO cryptococcal antigen screening and pre-emptive fluconazo | WHO cryptococcal disease guidelines (2022); advanced HIV disease (2025) | same | 2026-10-06 | moderate | current |
+| infant-hiv-test-schedule | WHO infant HIV diagnosis algorithm | WHO consolidated HIV guidelines (2021), Fig. 2.7 | same | 2026-10-06 | moderate | current |
+| vivax-radical-cure | WHO vivax radical cure by G6PD status | WHO guidelines for malaria (10 September 2026) | same | 2026-10-06 | moderate | current |
 | vitamin-a-dose-child | WHO vitamin A doses for children by reason (routine, diarrhe | WHO VA11 (2011), IMCI chart (2014), Pocket book (2013), SAM manual (1999) | same | 2026-10-06 | low | current |
 | deworming-dose-who | WHO deworming dose and frequency by group and prevalence | WHO STH preventive chemotherapy guideline (2017) | same | 2026-10-06 | low | current |
 | labor-care-guide-alert | WHO Labour Care Guide alerts | WHO labour care guide user's manual (2020) | same | 2026-10-06 | low | current - a 2020 manual |

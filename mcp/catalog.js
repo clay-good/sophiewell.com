@@ -973,6 +973,11 @@ import whoRabiesPepV1557 from './adapters/who-rabies-pep-v1557.js';
 import pphWho2025V1558 from './adapters/pph-who-2025-v1558.js';
 import laborCareGuideAlertV1558 from './adapters/labor-care-guide-alert-v1558.js';
 import vitaminADoseChildV1550 from './adapters/vitamin-a-dose-child-v1550.js';
+import whoHivStagingV1554 from './adapters/who-hiv-staging-v1554.js';
+import whoAdvancedHivV1554 from './adapters/who-advanced-hiv-v1554.js';
+import cragScreenFluconazoleV1554 from './adapters/crag-screen-fluconazole-v1554.js';
+import infantHivTestScheduleV1554 from './adapters/infant-hiv-test-schedule-v1554.js';
+import vivaxRadicalCureV1552 from './adapters/vivax-radical-cure-v1552.js';
 import snakeAntivenomIndicationV1555 from './adapters/snake-antivenom-indication-v1555.js';
 import snakebiteSyndromeV1555 from './adapters/snakebite-syndrome-v1555.js';
 import antivenomRepeatV1555 from './adapters/antivenom-repeat-v1555.js';
@@ -2018,6 +2023,11 @@ const ADAPTER_MODULES = [
   ['pph-who-2025-v1558', pphWho2025V1558],
   ['labor-care-guide-alert-v1558', laborCareGuideAlertV1558],
   ['vitamin-a-dose-child-v1550', vitaminADoseChildV1550],
+  ['who-hiv-staging-v1554', whoHivStagingV1554],
+  ['who-advanced-hiv-v1554', whoAdvancedHivV1554],
+  ['crag-screen-fluconazole-v1554', cragScreenFluconazoleV1554],
+  ['infant-hiv-test-schedule-v1554', infantHivTestScheduleV1554],
+  ['vivax-radical-cure-v1552', vivaxRadicalCureV1552],
   ['snake-antivenom-indication-v1555', snakeAntivenomIndicationV1555],
   ['snakebite-syndrome-v1555', snakebiteSyndromeV1555],
   ['antivenom-repeat-v1555', antivenomRepeatV1555],

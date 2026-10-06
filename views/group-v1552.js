@@ -4,6 +4,7 @@ import { el, clear } from '../lib/dom.js';
 import * as M0 from '../lib/primaquine-single-low-dose-v1552.js';
 import * as M1 from '../lib/iptp-sp-schedule-v1552.js';
 import * as M2 from '../lib/smc-spaq-dose-v1552.js';
+import * as M3 from '../lib/vivax-radical-cure-v1552.js';
 import { resultRow } from '../lib/result-copy.js';
 
 function selectField(root, label, id, options, required) {
@@ -100,6 +101,36 @@ export const renderers = {
         const r = M2.smcSpaqDose(args);
         if (!r.valid) { note(o, r.message); return; }
         resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'SMC', value: r.bandLabel }]);
+        list(o, r.notes);
+        note(o, r.note);
+      } catch (err) {
+        o.appendChild(el('p', { class: 'muted', text: err.message }));
+      }
+    };
+    for (const [id] of pairs) { const n = document.getElementById(id); if (n) { n.addEventListener('input', run); n.addEventListener('change', run); } }
+    run();
+  },
+  'vivax-radical-cure'(root) {
+    const pairs = [['vx-weight', 'weight'], ['vx-age', 'age'], ['vx-sex', 'sex'], ['vx-preg', 'pregnant'], ['vx-bf', 'bfInfant'], ['vx-test', 'test'], ['vx-result', 'result'], ['vx-blood', 'blood'], ['vx-sa', 'southAmerica']];
+    numField(root, 'Weight in kg', 'vx-weight', 'e.g. 60', '250');
+    numField(root, 'Age in years', 'vx-age', 'e.g. 30', '120');
+    selectField(root, 'Sex', 'vx-sex', M3.SEX_OPTIONS, true);
+    selectField(root, 'Pregnant', 'vx-preg', M3.YES_NO, false);
+    selectField(root, 'Breastfeeding an infant under 1 month', 'vx-bf', M3.YES_NO, false);
+    selectField(root, 'G6PD test', 'vx-test', M3.TEST_OPTIONS, true);
+    selectField(root, 'G6PD result', 'vx-result', M3.RESULT_OPTIONS, false);
+    selectField(root, 'Blood-stage treatment', 'vx-blood', M3.BLOOD_OPTIONS, true);
+    selectField(root, 'In South America', 'vx-sa', M3.YES_NO, true);
+    const o = el('div', { id: 'q-results', 'aria-live': 'polite' });
+    root.appendChild(o);
+    const run = () => {
+      clear(o);
+      try {
+        const args = {};
+        for (const [dom, arg] of pairs) args[arg] = val(dom);
+        const r = M3.vivaxRadicalCure(args);
+        if (!r.valid) { note(o, r.message); return; }
+        resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'WHO 2026', value: r.bandLabel }]);
         list(o, r.notes);
         note(o, r.note);
       } catch (err) {

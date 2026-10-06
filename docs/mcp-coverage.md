@@ -8776,6 +8776,21 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/vitamin-a-dose-child-v1550.js (spec-v1550: WHO vitamin A doses for children by reason (routine, diarrhea, measles, eye signs) — clinical disclaimer)
 - `vitamin-a-dose-child`
 
+### lib/who-hiv-staging-v1554.js (spec-v1554: WHO clinical staging of HIV disease — clinical disclaimer)
+- `who-hiv-staging`
+
+### lib/who-advanced-hiv-v1554.js (spec-v1554: WHO advanced HIV disease definition and package — clinical disclaimer)
+- `who-advanced-hiv`
+
+### lib/crag-screen-fluconazole-v1554.js (spec-v1554: WHO cryptococcal antigen screening and pre-emptive fluconazole — clinical disclaimer)
+- `crag-screen-fluconazole`
+
+### lib/infant-hiv-test-schedule-v1554.js (spec-v1554: WHO infant HIV diagnosis algorithm — clinical disclaimer)
+- `infant-hiv-test-schedule`
+
+### lib/vivax-radical-cure-v1552.js (spec-v1552: WHO vivax radical cure by G6PD status — clinical disclaimer)
+- `vivax-radical-cure`
+
 ### lib/snake-antivenom-indication-v1555.js (spec-v1555: WHO SEARO and AFRO antivenom indications — clinical disclaimer)
 - `snake-antivenom-indication`
 

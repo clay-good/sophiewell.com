@@ -3459,6 +3459,12 @@ const UTILITIES = [
   { id: 'snake-neostigmine-trial', name: 'Neostigmine Trial for Neurotoxic Snakebite: Doses and Response (WHO and India)', group: 'I', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'who-tpt-dose', name: 'TB Preventive Treatment Tablets by Weight: 3HP, 3HR, 6H, 4R, 1HP, 6Lfx (WHO 2024)', group: 'F', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'tb-4-month-eligibility', name: 'Can This Child Take the 4-Month TB Regimen? (WHO, Non-Severe TB)', group: 'F', audiences: ['clinicians', 'educators', 'field'], clinical: true },
+  // field-health batch (spec-v1540).
+  { id: 'who-hiv-staging', name: 'WHO Clinical Stage of HIV (Adults, Adolescents and Children)', group: 'J', audiences: ['clinicians', 'educators', 'field'], clinical: true },
+  { id: 'who-advanced-hiv', name: 'Is This Advanced HIV Disease, and What Package Applies? (WHO 2025)', group: 'J', audiences: ['clinicians', 'educators', 'field'], clinical: true },
+  { id: 'crag-screen-fluconazole', name: 'Cryptococcal Antigen Screening and Fluconazole in Advanced HIV (WHO)', group: 'J', audiences: ['clinicians', 'educators', 'field'], clinical: true },
+  { id: 'infant-hiv-test-schedule', name: 'When Is the Next HIV Test Due for an HIV-Exposed Infant? (WHO)', group: 'J', audiences: ['clinicians', 'educators', 'field'], clinical: true },
+  { id: 'vivax-radical-cure', name: 'Primaquine or Tafenoquine for Vivax Relapse, by G6PD Result (WHO 2026)', group: 'F', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   // spec-v1550: field-health (spec-v1540).
   { id: 'vitamin-a-dose-child', name: 'Vitamin A Dose for a Child: Routine, Diarrhea, Measles or Eye Signs (WHO)', group: 'N', audiences: ['clinicians', 'educators', 'field'], clinical: true },
   { id: 'deworming-dose-who', name: 'Deworming Dose and Frequency (WHO Preventive Chemotherapy)', group: 'F', audiences: ['clinicians', 'educators', 'field'], clinical: true },

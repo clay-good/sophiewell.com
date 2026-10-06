@@ -21,6 +21,23 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- WHO clinical stage of HIV (2026 surveillance guidance, Annex 1): every
+  adult and child condition with the regional additions; the highest stage
+  wins, an unassessed higher stage gives "at least", and stage 1 only when
+  stages 2 to 4 are all none.
+- Is this advanced HIV disease (WHO 2025): CD4 200 or less (exactly 200 now
+  counts), the stage 3 or 4 fallback without CD4, every child under 5 unless
+  on ART over a year and stable, and the package by CD4 and age.
+- Cryptococcal antigen screening and fluconazole (WHO 2025 and 2022): screen
+  below CD4 100 (consider below 200), never under 10, and pre-emptive
+  fluconazole by adult dose or per kg for adolescents, with consolidation and
+  maintenance.
+- When is the next HIV test due for an HIV-exposed infant (WHO 2021): NAT at
+  4-6 weeks and 9 months, the final antibody test at 18 months or 3 months
+  after weaning (whichever is later), and confirm any positive.
+- Primaquine or tafenoquine for vivax relapse by G6PD result (WHO 2026): each
+  test-result row, the 14-day, 7-day and weekly regimens in mg base,
+  tafenoquine only in South America at over 70%, and no regimen without a test.
 - Is antivenom indicated for this snakebite (WHO SEARO and AFRO): any one
   systemic or local sign, AFRO's local signs only for necrotic species, the
   high-reaction-risk rule, and never "not indicated" with a sign unassessed.

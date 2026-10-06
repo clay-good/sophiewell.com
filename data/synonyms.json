@@ -7081,6 +7081,61 @@
     },
     {
       "phrases": [
+        "who clinical stage hiv",
+        "hiv staging",
+        "hiv stage 3 4",
+        "aids defining illness",
+        "who hiv clinical staging"
+      ],
+      "tile": "who-hiv-staging",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "advanced hiv disease",
+        "ahd package",
+        "cd4 200",
+        "advanced hiv who 2025",
+        "hiv package of care"
+      ],
+      "tile": "who-advanced-hiv",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "crag screening",
+        "cryptococcal antigen screening",
+        "preemptive fluconazole",
+        "fluconazole prophylaxis hiv",
+        "cryptococcal meningitis prevention"
+      ],
+      "tile": "crag-screen-fluconazole",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "eid hiv testing",
+        "early infant diagnosis",
+        "hiv exposed infant testing",
+        "infant nat schedule",
+        "18 month antibody test hiv"
+      ],
+      "tile": "infant-hiv-test-schedule",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "vivax radical cure",
+        "primaquine 14 days",
+        "tafenoquine vivax",
+        "g6pd primaquine dose",
+        "vivax relapse prevention"
+      ],
+      "tile": "vivax-radical-cure",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
         "antivenom indication",
         "when to give antivenom",
         "snakebite antivenom criteria",

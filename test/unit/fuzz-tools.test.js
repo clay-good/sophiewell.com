@@ -703,6 +703,11 @@ import * as whoRabiesPepV1557 from '../../lib/who-rabies-pep-v1557.js';
 import * as pphWho2025V1558 from '../../lib/pph-who-2025-v1558.js';
 import * as laborCareGuideAlertV1558 from '../../lib/labor-care-guide-alert-v1558.js';
 import * as vitaminADoseChildV1550 from '../../lib/vitamin-a-dose-child-v1550.js';
+import * as whoHivStagingV1554 from '../../lib/who-hiv-staging-v1554.js';
+import * as whoAdvancedHivV1554 from '../../lib/who-advanced-hiv-v1554.js';
+import * as cragScreenFluconazoleV1554 from '../../lib/crag-screen-fluconazole-v1554.js';
+import * as infantHivTestScheduleV1554 from '../../lib/infant-hiv-test-schedule-v1554.js';
+import * as vivaxRadicalCureV1552 from '../../lib/vivax-radical-cure-v1552.js';
 import * as snakeAntivenomIndicationV1555 from '../../lib/snake-antivenom-indication-v1555.js';
 import * as snakebiteSyndromeV1555 from '../../lib/snakebite-syndrome-v1555.js';
 import * as antivenomRepeatV1555 from '../../lib/antivenom-repeat-v1555.js';
@@ -1532,6 +1537,11 @@ const MODULES = {
   'pph-who-2025-v1558.js': pphWho2025V1558,
   'labor-care-guide-alert-v1558.js': laborCareGuideAlertV1558,
   'vitamin-a-dose-child-v1550.js': vitaminADoseChildV1550,
+  'who-hiv-staging-v1554.js': whoHivStagingV1554,
+  'who-advanced-hiv-v1554.js': whoAdvancedHivV1554,
+  'crag-screen-fluconazole-v1554.js': cragScreenFluconazoleV1554,
+  'infant-hiv-test-schedule-v1554.js': infantHivTestScheduleV1554,
+  'vivax-radical-cure-v1552.js': vivaxRadicalCureV1552,
   'snake-antivenom-indication-v1555.js': snakeAntivenomIndicationV1555,
   'snakebite-syndrome-v1555.js': snakebiteSyndromeV1555,
   'antivenom-repeat-v1555.js': antivenomRepeatV1555,

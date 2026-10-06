@@ -372,3 +372,13 @@ experience**.
 > v1553, TB Preventive Treatment Tablets by Weight: 3HP, 3HR, 6H, 4R, 1HP, 6Lfx (WHO 2024) — [spec-v1553](spec-v1553.md), which adds `who-tpt-dose` — is 2011.)
 
 > v1553, Can This Child Take the 4-Month TB Regimen? (WHO, Non-Severe TB) — [spec-v1553](spec-v1553.md), which adds `tb-4-month-eligibility` — is 2012.)
+
+> v1554, WHO Clinical Stage of HIV (Adults, Adolescents and Children) — [spec-v1554](spec-v1554.md), which adds `who-hiv-staging` — is 2013.)
+
+> v1554, Is This Advanced HIV Disease, and What Package Applies? (WHO 2025) — [spec-v1554](spec-v1554.md), which adds `who-advanced-hiv` — is 2014.)
+
+> v1554, Cryptococcal Antigen Screening and Fluconazole in Advanced HIV (WHO) — [spec-v1554](spec-v1554.md), which adds `crag-screen-fluconazole` — is 2015.)
+
+> v1554, When Is the Next HIV Test Due for an HIV-Exposed Infant? (WHO) — [spec-v1554](spec-v1554.md), which adds `infant-hiv-test-schedule` — is 2016.)
+
+> v1552, Primaquine or Tafenoquine for Vivax Relapse, by G6PD Result (WHO 2026) — [spec-v1552](spec-v1552.md), which adds `vivax-radical-cure` — is 2017.)

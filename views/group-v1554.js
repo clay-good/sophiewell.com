@@ -2,6 +2,10 @@
 
 import { el, clear } from '../lib/dom.js';
 import * as M0 from '../lib/who-cotrimoxazole-v1554.js';
+import * as M1 from '../lib/who-hiv-staging-v1554.js';
+import * as M2 from '../lib/who-advanced-hiv-v1554.js';
+import * as M3 from '../lib/crag-screen-fluconazole-v1554.js';
+import * as M4 from '../lib/infant-hiv-test-schedule-v1554.js';
 import { resultRow } from '../lib/result-copy.js';
 
 function selectField(root, label, id, options, required) {
@@ -48,6 +52,108 @@ export const renderers = {
         const r = M0.whoCotrimoxazole(args);
         if (!r.valid) { note(o, r.message); return; }
         resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'WHO', value: r.bandLabel }]);
+        list(o, r.notes);
+        note(o, r.note);
+      } catch (err) {
+        o.appendChild(el('p', { class: 'muted', text: err.message }));
+      }
+    };
+    for (const [id] of pairs) { const n = document.getElementById(id); if (n) { n.addEventListener('input', run); n.addEventListener('change', run); } }
+    run();
+  },
+  'who-hiv-staging'(root) {
+    const pairs = [['hs-age', 'ageGroup'], ['hs-s4', 's4'], ['hs-s3', 's3'], ['hs-s2', 's2']];
+    selectField(root, 'Age group', 'hs-age', M1.AGE_OPTIONS, true);
+    selectField(root, 'Stage 4 condition present', 'hs-s4', M1.STAGE4_OPTIONS, false);
+    selectField(root, 'Stage 3 condition present', 'hs-s3', M1.STAGE3_OPTIONS, false);
+    selectField(root, 'Stage 2 condition present', 'hs-s2', M1.STAGE2_OPTIONS, false);
+    const o = el('div', { id: 'q-results', 'aria-live': 'polite' });
+    root.appendChild(o);
+    const run = () => {
+      clear(o);
+      try {
+        const args = {};
+        for (const [dom, arg] of pairs) args[arg] = val(dom);
+        const r = M1.whoHivStaging(args);
+        if (!r.valid) { note(o, r.message); return; }
+        resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'WHO stage', value: r.bandLabel }]);
+        list(o, r.notes);
+        note(o, r.note);
+      } catch (err) {
+        o.appendChild(el('p', { class: 'muted', text: err.message }));
+      }
+    };
+    for (const [id] of pairs) { const n = document.getElementById(id); if (n) { n.addEventListener('input', run); n.addEventListener('change', run); } }
+    run();
+  },
+  'who-advanced-hiv'(root) {
+    const pairs = [['ah-age', 'age'], ['ah-cd4', 'cd4'], ['ah-stage', 'stage'], ['ah-stable', 'stable']];
+    numField(root, 'Age in years', 'ah-age', 'e.g. 35', '120');
+    numField(root, 'CD4 count, cells/mm³ (leave blank if not available)', 'ah-cd4', 'e.g. 150', '5000');
+    selectField(root, 'WHO clinical stage (used when there is no CD4)', 'ah-stage', M2.STAGE_OPTIONS, false);
+    selectField(root, 'Under 5: on ART more than a year and clinically stable', 'ah-stable', M2.YES_NO, false);
+    const o = el('div', { id: 'q-results', 'aria-live': 'polite' });
+    root.appendChild(o);
+    const run = () => {
+      clear(o);
+      try {
+        const args = {};
+        for (const [dom, arg] of pairs) args[arg] = val(dom);
+        const r = M2.whoAdvancedHiv(args);
+        if (!r.valid) { note(o, r.message); return; }
+        resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'WHO 2025', value: r.bandLabel }]);
+        list(o, r.notes);
+        note(o, r.note);
+      } catch (err) {
+        o.appendChild(el('p', { class: 'muted', text: err.message }));
+      }
+    };
+    for (const [id] of pairs) { const n = document.getElementById(id); if (n) { n.addEventListener('input', run); n.addEventListener('change', run); } }
+    run();
+  },
+  'crag-screen-fluconazole'(root) {
+    const pairs = [['cg-age', 'age'], ['cg-cd4', 'cd4'], ['cg-crag', 'crag'], ['cg-men', 'meningitis'], ['cg-weight', 'weight']];
+    numField(root, 'Age in years', 'cg-age', 'e.g. 16', '120');
+    numField(root, 'CD4 count, cells/mm³', 'cg-cd4', 'e.g. 80', '5000');
+    selectField(root, 'Cryptococcal antigen result', 'cg-crag', M3.CRAG_OPTIONS, false);
+    selectField(root, 'Signs or symptoms of meningitis', 'cg-men', M3.YES_NO, false);
+    numField(root, 'Weight in kg (adolescents 10-19)', 'cg-weight', 'e.g. 45', '150');
+    const o = el('div', { id: 'q-results', 'aria-live': 'polite' });
+    root.appendChild(o);
+    const run = () => {
+      clear(o);
+      try {
+        const args = {};
+        for (const [dom, arg] of pairs) args[arg] = val(dom);
+        const r = M3.cragScreenFluconazole(args);
+        if (!r.valid) { note(o, r.message); return; }
+        resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'WHO', value: r.bandLabel }]);
+        list(o, r.notes);
+        note(o, r.note);
+      } catch (err) {
+        o.appendChild(el('p', { class: 'muted', text: err.message }));
+      }
+    };
+    for (const [id] of pairs) { const n = document.getElementById(id); if (n) { n.addEventListener('input', run); n.addEventListener('change', run); } }
+    run();
+  },
+  'infant-hiv-test-schedule'(root) {
+    const pairs = [['ih-age', 'age'], ['ih-feeding', 'feeding'], ['ih-stopped', 'stoppedAt'], ['ih-nat6', 'nat6'], ['ih-nat9', 'nat9']];
+    numField(root, 'Infant age in weeks', 'ih-age', 'e.g. 20', '260');
+    selectField(root, 'Breastfeeding', 'ih-feeding', M4.FEEDING_OPTIONS, true);
+    numField(root, 'Age in weeks when breastfeeding stopped', 'ih-stopped', 'e.g. 30', '260');
+    selectField(root, 'NAT at 4-6 weeks', 'ih-nat6', M4.RESULT_OPTIONS, true);
+    selectField(root, 'NAT at 9 months', 'ih-nat9', M4.RESULT_OPTIONS, true);
+    const o = el('div', { id: 'q-results', 'aria-live': 'polite' });
+    root.appendChild(o);
+    const run = () => {
+      clear(o);
+      try {
+        const args = {};
+        for (const [dom, arg] of pairs) args[arg] = val(dom);
+        const r = M4.infantHivTestSchedule(args);
+        if (!r.valid) { note(o, r.message); return; }
+        resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Next test', value: r.bandLabel }]);
         list(o, r.notes);
         note(o, r.note);
       } catch (err) {

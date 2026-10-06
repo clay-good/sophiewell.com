@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:ef3aa0c6-8b19-59c0-8dd6-2f5aa7754992",
+  "serialNumber": "urn:uuid:1513b97f-df91-5407-86a0-19da85d371c6",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-06T06:24:06.501Z",
+    "timestamp": "2026-10-06T06:35:48.346Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2012 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2017 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b1212550c24a5a0acce97333eef15ac5eb2073fe226b0a44bea5c1154edd9801"
+          "content": "514ea9302fe5b1f67deb0f4e3d74ca460f71153d70d81cc5e2ecaf7cc26c0609"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "129599"
+          "value": "130005"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1c196a89534efc587cc0ff39c53fcf622e6906bceb09d3b3bb33e19030122794"
+          "content": "61b2acb6e1479a2a4319831d96c52be131c17ee307bd4361278f5c54aa69b0f1"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "581568"
+          "value": "582533"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "71e79038d78d931d5f0a81b51d3fee3aff34adb086b79cc3cbd584296971e124"
+          "content": "e50aee975b56d2ed94a8465c98165032202989f52141a3cbf53e284ec0e9fe0c"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "251455"
+          "value": "252106"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "87bbd342181742fc99945cdc02bad47b809cdc97294cde1d7fb5b7317d9adfac"
+          "content": "5165b0760e91a4cc651bc88618ba5950f742fb7c77c28d4dfd4eb7a2a6d82266"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "116777"
+          "value": "117229"
         }
       ]
     },
@@ -4861,6 +4861,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4287"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/crag-screen-fluconazole-v1554.js",
+      "type": "file",
+      "name": "lib/crag-screen-fluconazole-v1554.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d8972147cab54bdeb425a3af3c0b05a4e31e521b84288dc688cfdc60721f4168"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6088"
         }
       ]
     },
@@ -10241,6 +10262,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/infant-hiv-test-schedule-v1554.js",
+      "type": "file",
+      "name": "lib/infant-hiv-test-schedule-v1554.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "befb14c58cc2ff2a08cb2d68abc15d722719f73d66cd9d619daa4139d11549bf"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5941"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/inflam-v230.js",
       "type": "file",
       "name": "lib/inflam-v230.js",
@@ -13376,7 +13418,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a31d04d01a9375732146a318bb3c23b42429226bf28f1c72cd8d001e5ac91681"
+          "content": "2add76b92d9feefcc812ae0a873467ff1650d69959b3ee1a43d438fc3693c2c4"
         }
       ],
       "properties": [
@@ -13386,7 +13428,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2714921"
+          "value": "2718361"
         }
       ]
     },
@@ -24059,6 +24101,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/vivax-radical-cure-v1552.js",
+      "type": "file",
+      "name": "lib/vivax-radical-cure-v1552.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6e62af696d24c3b1184d182183d63d3749ba71b90800abfa531f4f40fa28c96b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "9544"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/vod-sos-v907.js",
       "type": "file",
       "name": "lib/vod-sos-v907.js",
@@ -24437,6 +24500,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/who-advanced-hiv-v1554.js",
+      "type": "file",
+      "name": "lib/who-advanced-hiv-v1554.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9e31300165dee47addcba76857eec1a61af9d7b03b58a182c17dc01135858dca"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6815"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/who-anc-schedule-v1559.js",
       "type": "file",
       "name": "lib/who-anc-schedule-v1559.js",
@@ -24517,6 +24601,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "8271"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/who-hiv-staging-v1554.js",
+      "type": "file",
+      "name": "lib/who-hiv-staging-v1554.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a953a71acd18f8e8a92437b84947abfc82f97e0b7e94fee6fa52be7a73bada35"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8931"
         }
       ]
     },
@@ -29347,6 +29452,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1574"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/crag-screen-fluconazole-v1554.js",
+      "type": "file",
+      "name": "mcp/adapters/crag-screen-fluconazole-v1554.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f99d22e90a42da331e0fb5e66aa31117deef8f7647a3a8540314dc2a5b8daadc"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1238"
         }
       ]
     },
@@ -34198,6 +34324,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2852"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/infant-hiv-test-schedule-v1554.js",
+      "type": "file",
+      "name": "mcp/adapters/infant-hiv-test-schedule-v1554.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a3d8db37ee25a2c23842264a64ec3064d7c3ebeb31b0f606ace3d14cf8835856"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1283"
         }
       ]
     },
@@ -46256,6 +46403,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/vivax-radical-cure-v1552.js",
+      "type": "file",
+      "name": "mcp/adapters/vivax-radical-cure-v1552.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "cb7cb87ed62f509d3244148d277ed838359865c3f4ba57c09c0987b9030b2ae7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1721"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/vod-sos-v907.js",
       "type": "file",
       "name": "mcp/adapters/vod-sos-v907.js",
@@ -46634,6 +46802,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/who-advanced-hiv-v1554.js",
+      "type": "file",
+      "name": "mcp/adapters/who-advanced-hiv-v1554.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2c5fbfb67a0583dd994cc52886612495a7edf1dc94895a15a38db0b3d43887b7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1107"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/who-anc-schedule-v1559.js",
       "type": "file",
       "name": "mcp/adapters/who-anc-schedule-v1559.js",
@@ -46714,6 +46903,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "2552"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/who-hiv-staging-v1554.js",
+      "type": "file",
+      "name": "mcp/adapters/who-hiv-staging-v1554.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a26b1e063e2d70eb80be14ec74f3cd6859f8c3cf898ea453f5c87ad0c82f7328"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1086"
         }
       ]
     },
@@ -47081,7 +47291,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1661e9e141814e01500fbde838d2695817e7183e0d17d1f15e59412d118ea20a"
+          "content": "1706ee543b8796e0dba0232e3b03a3753cd5583293a5e75c72cf68ee5dfd1cca"
         }
       ],
       "properties": [
@@ -47091,7 +47301,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "120811"
+          "value": "121488"
         }
       ]
     },
@@ -50924,7 +51134,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f696b0ae3219aaa68a46fed5c48588be0ed73e80e3f5182e6d2c2e0b9461dbd6"
+          "content": "745d803a78ae7b2755f79a1c4fe3785cd748230df5fe95e92ae3d379ca24be15"
         }
       ],
       "properties": [
@@ -50934,7 +51144,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "5464"
+          "value": "7206"
         }
       ]
     },
@@ -50966,7 +51176,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "cf6ec90688018e99094239ea556056e1484cbcfc74dc29465b2af88276713c7d"
+          "content": "eb4ac0000784e6ba4af0a8f667be76b512184c63a5e85d0c913bd20095bd9eda"
         }
       ],
       "properties": [
@@ -50976,7 +51186,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2871"
+          "value": "8345"
         }
       ]
     },
@@ -82471,6 +82681,7 @@
         "urn:sophiewell:file:source:lib/cotton-myer-v419.js",
         "urn:sophiewell:file:source:lib/cpak-v1447.js",
         "urn:sophiewell:file:source:lib/crafft-v511.js",
+        "urn:sophiewell:file:source:lib/crag-screen-fluconazole-v1554.js",
         "urn:sophiewell:file:source:lib/crawford-taaa-v464.js",
         "urn:sophiewell:file:source:lib/critcare-severity-v200.js",
         "urn:sophiewell:file:source:lib/critcare-v112.js",
@@ -82727,6 +82938,7 @@
         "urn:sophiewell:file:source:lib/imid-rems-v1511.js",
         "urn:sophiewell:file:source:lib/income-screens-v1506.js",
         "urn:sophiewell:file:source:lib/indomethacin-headache-ichd3-v819.js",
+        "urn:sophiewell:file:source:lib/infant-hiv-test-schedule-v1554.js",
         "urn:sophiewell:file:source:lib/inflam-v230.js",
         "urn:sophiewell:file:source:lib/inflam-v267.js",
         "urn:sophiewell:file:source:lib/inflam-v268.js",
@@ -83385,6 +83597,7 @@
         "urn:sophiewell:file:source:lib/vial-rounding-v1512.js",
         "urn:sophiewell:file:source:lib/vitamin-a-dose-child-v1550.js",
         "urn:sophiewell:file:source:lib/vitamin-d-level-v881.js",
+        "urn:sophiewell:file:source:lib/vivax-radical-cure-v1552.js",
         "urn:sophiewell:file:source:lib/vod-sos-v907.js",
         "urn:sophiewell:file:source:lib/vras-v602.js",
         "urn:sophiewell:file:source:lib/vte-v106.js",
@@ -83403,10 +83616,12 @@
         "urn:sophiewell:file:source:lib/weiss-v648.js",
         "urn:sophiewell:file:source:lib/wellens-criteria-v1441.js",
         "urn:sophiewell:file:source:lib/wexner-v324.js",
+        "urn:sophiewell:file:source:lib/who-advanced-hiv-v1554.js",
         "urn:sophiewell:file:source:lib/who-anc-schedule-v1559.js",
         "urn:sophiewell:file:source:lib/who-anemia-hb-v1550.js",
         "urn:sophiewell:file:source:lib/who-cotrimoxazole-v1554.js",
         "urn:sophiewell:file:source:lib/who-hearing-grade-v858.js",
+        "urn:sophiewell:file:source:lib/who-hiv-staging-v1554.js",
         "urn:sophiewell:file:source:lib/who-isup-renal-grade-v653.js",
         "urn:sophiewell:file:source:lib/who-mucositis-v617.js",
         "urn:sophiewell:file:source:lib/who-rabies-pep-v1557.js",
@@ -84571,6 +84786,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/cotton-myer-v419.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/cpak-v1447.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/crafft-v511.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/crag-screen-fluconazole-v1554.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/crawford-taaa-v464.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/critcare-severity-v200.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/critcare-v112.js",
@@ -84802,6 +85018,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/imid-rems-v1511.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/income-screens-v1506.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/indomethacin-headache-ichd3-v819.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/infant-hiv-test-schedule-v1554.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/inflam-v230.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/inflam-v267.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/inflam-v268.js",
@@ -85376,6 +85593,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/vial-rounding-v1512.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/vitamin-a-dose-child-v1550.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/vitamin-d-level-v881.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/vivax-radical-cure-v1552.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/vod-sos-v907.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/vras-v602.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/vte-v106.js",
@@ -85394,10 +85612,12 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/weiss-v648.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/wellens-criteria-v1441.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/wexner-v324.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/who-advanced-hiv-v1554.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/who-anc-schedule-v1559.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/who-anemia-hb-v1550.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/who-cotrimoxazole-v1554.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/who-hearing-grade-v858.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/who-hiv-staging-v1554.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/who-isup-renal-grade-v653.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/who-mucositis-v617.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/who-rabies-pep-v1557.js",
@@ -85519,7 +85739,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "ef3aa0c68b19a9c0"
+      "value": "1513b97fdf912407"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -85531,7 +85751,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3153"
+      "value": "3163"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",
