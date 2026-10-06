@@ -170,4 +170,8 @@ GVS24 *low* (unchanged tables since 2001). BAW11 and EDD08 *low*.
 |---|---|
 | `scorpion-grade-india` | **Built October 6, 2026** (catalog 2,038). Re-read in BAW11 (PMC3016167, the "Evaluation of clinical grade" box) and matches. Grade only; no prazosin or antivenom dose. A blank sign makes the grade "at least". |
 | `op-atropine-titration` | **Built October 6, 2026** (catalog 2,038). Re-read in EDD08 (PMC2493390) panel 2 and matches. **Differed:** the inputs are the last bolus and the running total (not a dose list), so any sequence works; the next dose doubles the last. `peradeniya-op` gains a link here. |
-| Tiles 1–5 (Brazil) | Open: owner decision D3 adopted (spec-v1564); GVS24 not yet re-read. |
+| `brazil-snakebite-antivenom` | **Built October 6, 2026** (catalog 2,044). Re-read in GVS24 (bvsms.saude.gov.br, vol. 3) Quadro 1 (p. 1128) and the general notes (p. 1153), and matches. A finding left blank makes the class "at least". |
+| `lee-white-clotting-time` | **Built October 6, 2026** (catalog 2,044). Re-read in GVS24 Quadro 6 (p. 1154) and the method; matches. Whole minutes only. |
+| `brazil-scorpion-antivenom` | **Built October 6, 2026** (catalog 2,044). Re-read in GVS24 (p. 1132) and Quadro 3 (p. 1133); matches. Age is not an input (the 6–12 hour child observation is printed). |
+| `brazil-spider-antivenom` | **Built October 6, 2026** (catalog 2,044). Re-read in GVS24 Quadro 4 (p. 1141); matches. Latrodectus drug doses are not printed (spec-v1564). |
+| `brazil-lonomia-antivenom` | **Built October 6, 2026** (catalog 2,044). Re-read in GVS24 Quadro 5 (p. 1145); matches. **Added:** skin bleeding with a normal clotting time is not a printed class; the tile says to repeat the clotting test. |

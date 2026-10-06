@@ -21,6 +21,24 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Snakebite severity and antivenom vials in Brazil (Ministry of Health 2024,
+  Quadro 1): Bothrops, Lachesis, Crotalus and Micrurus classes with vial counts
+  (Bothrops mild on a clotting abnormality alone), and 6 hours of observation
+  with no signs.
+- Lee-White clotting time after snakebite (Brazil 2024, Quadro 6): normal up
+  to 9 minutes, prolonged 10-30, incoagulable over 30; not the 20WBCT.
+- Scorpion sting in Brazil (Ministry of Health 2024, Quadro 3): mild with no
+  antivenom, moderate 2-3 vials, severe 4-6 vials, and 6-12 hours of
+  observation for children.
+- Spider bites in Brazil (Ministry of Health 2024, Quadro 4): Phoneutria and
+  Loxosceles classes and vial counts, prednisone for moderate and severe
+  Loxosceles, and supportive care for Latrodectus.
+- Lonomia caterpillar contact (Brazil 2024, Quadro 5): mild with 24 hours of
+  observation, moderate 5 vials on an abnormal clotting time, severe 10 vials
+  with internal bleeding.
+- Preventive iron and iron-folic acid (WHO): daily doses by age where anemia
+  is 40% or more, pregnancy (60 mg preferred at 40%, weekly 120 mg under 20%,
+  120 mg daily with anemia), preterm 2-4 mg/kg, and no iron on RUTF.
 - WHO simplified trachoma grading (2020 amended): TT (upper lid only), CO,
   TF (five or more follicles), TI and TS for one eye, with trichiasis referred
   for surgery.

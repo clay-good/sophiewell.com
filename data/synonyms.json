@@ -7081,6 +7081,72 @@
     },
     {
       "phrases": [
+        "brazil snakebite antivenom",
+        "jararaca antivenom vials",
+        "soro antibotropico",
+        "cascavel acidente",
+        "bothrops severity brazil"
+      ],
+      "tile": "brazil-snakebite-antivenom",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "lee white clotting time",
+        "tempo de coagulacao",
+        "clotting time snakebite brazil",
+        "lee-white test",
+        "incoagulable blood brazil"
+      ],
+      "tile": "lee-white-clotting-time",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "brazil scorpion antivenom",
+        "tityus sting",
+        "escorpiao picada",
+        "soro antiescorpionico",
+        "scorpion sting severity brazil"
+      ],
+      "tile": "brazil-scorpion-antivenom",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "brown spider bite brazil",
+        "loxosceles antivenom",
+        "phoneutria bite",
+        "aranha marrom",
+        "armadeira picada"
+      ],
+      "tile": "brazil-spider-antivenom",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "lonomia caterpillar",
+        "lonomia antivenom",
+        "taturana contact",
+        "soro antilonomico",
+        "caterpillar bleeding brazil"
+      ],
+      "tile": "brazil-lonomia-antivenom",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "iron supplementation who",
+        "iron folic acid pregnancy dose",
+        "preventive iron child",
+        "ferrous sulfate dose child who",
+        "iron drops infant"
+      ],
+      "tile": "iron-supplement-who",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
         "trachoma grading",
         "who simplified trachoma grading",
         "trachomatous trichiasis",

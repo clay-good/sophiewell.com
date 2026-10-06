@@ -3,6 +3,11 @@
 import { el, clear } from '../lib/dom.js';
 import * as M0 from '../lib/op-atropine-titration-v1556.js';
 import * as M1 from '../lib/scorpion-grade-india-v1556.js';
+import * as M2 from '../lib/brazil-snakebite-antivenom-v1556.js';
+import * as M3 from '../lib/lee-white-clotting-time-v1556.js';
+import * as M4 from '../lib/brazil-scorpion-antivenom-v1556.js';
+import * as M5 from '../lib/brazil-spider-antivenom-v1556.js';
+import * as M6 from '../lib/brazil-lonomia-antivenom-v1556.js';
 import { resultRow } from '../lib/result-copy.js';
 
 function selectField(root, label, id, options, required) {
@@ -76,6 +81,133 @@ export const renderers = {
         const r = M1.scorpionGradeIndia(args);
         if (!r.valid) { note(o, r.message); return; }
         resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Grade', value: r.bandLabel }]);
+        list(o, r.notes);
+        note(o, r.note);
+      } catch (err) {
+        o.appendChild(el('p', { class: 'muted', text: err.message }));
+      }
+    };
+    for (const [id] of pairs) { const n = document.getElementById(id); if (n) { n.addEventListener('input', run); n.addEventListener('change', run); } }
+    run();
+  },
+  'brazil-snakebite-antivenom'(root) {
+    const pairs = [['bsa-type', 'type'], ['bsa-local', 'local'], ['bsa-bleed', 'bleeding'], ['bsa-shock', 'shock'], ['bsa-renal', 'renal'], ['bsa-clot', 'clotting'], ['bsa-vagal', 'vagal'], ['bsa-neuro', 'neuro'], ['bsa-myo', 'myo'], ['bsa-olig', 'oliguria']];
+    selectField(root, 'Type of accident', 'bsa-type', M2.TYPE_OPTIONS, true);
+    selectField(root, 'Local signs', 'bsa-local', M2.LOCAL_OPTIONS, false);
+    selectField(root, 'Bleeding', 'bsa-bleed', M2.BLEED_OPTIONS, false);
+    selectField(root, 'Low blood pressure or shock', 'bsa-shock', M2.YES_NO, false);
+    selectField(root, 'Kidney failure or no urine', 'bsa-renal', M2.YES_NO, false);
+    selectField(root, 'Clotting abnormality (e.g. prolonged Lee-White)', 'bsa-clot', M2.YES_NO, false);
+    selectField(root, 'Lachesis: vagal signs (slow pulse, low BP, diarrhea)', 'bsa-vagal', M2.YES_NO, false);
+    selectField(root, 'Crotalus: paralysis signs (drooping eyelids, blurred vision)', 'bsa-neuro', M2.NEURO_OPTIONS, false);
+    selectField(root, 'Crotalus: muscle pain and dark urine', 'bsa-myo', M2.MYO_OPTIONS, false);
+    selectField(root, 'Crotalus: low urine output', 'bsa-olig', M2.YES_NO, false);
+    const o = el('div', { id: 'q-results', 'aria-live': 'polite' });
+    root.appendChild(o);
+    const run = () => {
+      clear(o);
+      try {
+        const args = {};
+        for (const [dom, arg] of pairs) args[arg] = val(dom);
+        const r = M2.brazilSnakebiteAntivenom(args);
+        if (!r.valid) { note(o, r.message); return; }
+        resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Brazil', value: r.bandLabel }]);
+        list(o, r.notes);
+        note(o, r.note);
+      } catch (err) {
+        o.appendChild(el('p', { class: 'muted', text: err.message }));
+      }
+    };
+    for (const [id] of pairs) { const n = document.getElementById(id); if (n) { n.addEventListener('input', run); n.addEventListener('change', run); } }
+    run();
+  },
+  'lee-white-clotting-time'(root) {
+    const pairs = [['lw-min', 'minutes'], ['lw-proto', 'protocol']];
+    numField(root, 'Clotting time, whole minutes', 'lw-min', 'e.g. 12', '120');
+    selectField(root, 'Done by the method (two glass tubes, 1 mL each, 37 C bath, read each minute from 5)', 'lw-proto', M3.YES_NO, false);
+    const o = el('div', { id: 'q-results', 'aria-live': 'polite' });
+    root.appendChild(o);
+    const run = () => {
+      clear(o);
+      try {
+        const args = {};
+        for (const [dom, arg] of pairs) args[arg] = val(dom);
+        const r = M3.leeWhiteClottingTime(args);
+        if (!r.valid) { note(o, r.message); return; }
+        resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Brazil', value: r.bandLabel }]);
+        list(o, r.notes);
+        note(o, r.note);
+      } catch (err) {
+        o.appendChild(el('p', { class: 'muted', text: err.message }));
+      }
+    };
+    for (const [id] of pairs) { const n = document.getElementById(id); if (n) { n.addEventListener('input', run); n.addEventListener('change', run); } }
+    run();
+  },
+  'brazil-scorpion-antivenom'(root) {
+    const pairs = [['bsc-local', 'local'], ['bsc-mod', 'moderate'], ['bsc-sev', 'severe']];
+    selectField(root, 'Local pain or tingling', 'bsc-local', M4.YES_NO, false);
+    selectField(root, 'Intense local pain with nausea, vomiting, sweating, drooling, agitation, fast breathing or fast pulse', 'bsc-mod', M4.YES_NO, false);
+    selectField(root, 'Incessant vomiting, profuse sweating or drooling, prostration, seizures, coma, slow pulse, heart failure, pulmonary edema or shock', 'bsc-sev', M4.YES_NO, false);
+    const o = el('div', { id: 'q-results', 'aria-live': 'polite' });
+    root.appendChild(o);
+    const run = () => {
+      clear(o);
+      try {
+        const args = {};
+        for (const [dom, arg] of pairs) args[arg] = val(dom);
+        const r = M4.brazilScorpionAntivenom(args);
+        if (!r.valid) { note(o, r.message); return; }
+        resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Brazil', value: r.bandLabel }]);
+        list(o, r.notes);
+        note(o, r.note);
+      } catch (err) {
+        o.appendChild(el('p', { class: 'muted', text: err.message }));
+      }
+    };
+    for (const [id] of pairs) { const n = document.getElementById(id); if (n) { n.addEventListener('input', run); n.addEventListener('change', run); } }
+    run();
+  },
+  'brazil-spider-antivenom'(root) {
+    const pairs = [['bsp-spider', 'spider'], ['bsp-mod', 'moderate'], ['bsp-sev', 'severe'], ['bsp-age', 'ageGroup'], ['bsp-weight', 'weight']];
+    selectField(root, 'Spider', 'bsp-spider', M5.SPIDER_OPTIONS, true);
+    selectField(root, 'Moderate signs (Phoneutria: intense pain, sweating, vomiting, agitation, high BP; Loxosceles: typical lesion with rash or fever)', 'bsp-mod', M5.YES_NO, false);
+    selectField(root, 'Severe signs (Phoneutria: profuse sweating, drooling, priapism, shock, pulmonary edema; Loxosceles: hemolysis)', 'bsp-sev', M5.YES_NO, false);
+    selectField(root, 'Adult or child (for prednisone)', 'bsp-age', M5.AGE_OPTIONS, false);
+    numField(root, 'Child weight in kg', 'bsp-weight', 'e.g. 20', '150');
+    const o = el('div', { id: 'q-results', 'aria-live': 'polite' });
+    root.appendChild(o);
+    const run = () => {
+      clear(o);
+      try {
+        const args = {};
+        for (const [dom, arg] of pairs) args[arg] = val(dom);
+        const r = M5.brazilSpiderAntivenom(args);
+        if (!r.valid) { note(o, r.message); return; }
+        resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Brazil', value: r.bandLabel }]);
+        list(o, r.notes);
+        note(o, r.note);
+      } catch (err) {
+        o.appendChild(el('p', { class: 'muted', text: err.message }));
+      }
+    };
+    for (const [id] of pairs) { const n = document.getElementById(id); if (n) { n.addEventListener('input', run); n.addEventListener('change', run); } }
+    run();
+  },
+  'brazil-lonomia-antivenom'(root) {
+    const pairs = [['blo-clot', 'clotting'], ['blo-bleed', 'bleeding']];
+    selectField(root, 'Clotting time', 'blo-clot', M6.CLOT_OPTIONS, true);
+    selectField(root, 'Bleeding', 'blo-bleed', M6.BLEED_OPTIONS, true);
+    const o = el('div', { id: 'q-results', 'aria-live': 'polite' });
+    root.appendChild(o);
+    const run = () => {
+      clear(o);
+      try {
+        const args = {};
+        for (const [dom, arg] of pairs) args[arg] = val(dom);
+        const r = M6.brazilLonomiaAntivenom(args);
+        if (!r.valid) { note(o, r.message); return; }
+        resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Brazil', value: r.bandLabel }]);
         list(o, r.notes);
         note(o, r.note);
       } catch (err) {

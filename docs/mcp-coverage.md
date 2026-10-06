@@ -8776,6 +8776,24 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/vitamin-a-dose-child-v1550.js (spec-v1550: WHO vitamin A doses for children by reason (routine, diarrhea, measles, eye signs) — clinical disclaimer)
 - `vitamin-a-dose-child`
 
+### lib/brazil-snakebite-antivenom-v1556.js (spec-v1556: Brazil Ministry of Health snakebite antivenom table — clinical disclaimer)
+- `brazil-snakebite-antivenom`
+
+### lib/lee-white-clotting-time-v1556.js (spec-v1556: Brazil Lee-White clotting time bands — clinical disclaimer)
+- `lee-white-clotting-time`
+
+### lib/brazil-scorpion-antivenom-v1556.js (spec-v1556: Brazil scorpion antivenom table — clinical disclaimer)
+- `brazil-scorpion-antivenom`
+
+### lib/brazil-spider-antivenom-v1556.js (spec-v1556: Brazil spider antivenom table — clinical disclaimer)
+- `brazil-spider-antivenom`
+
+### lib/brazil-lonomia-antivenom-v1556.js (spec-v1556: Brazil Lonomia antivenom table — clinical disclaimer)
+- `brazil-lonomia-antivenom`
+
+### lib/iron-supplement-who-v1550.js (spec-v1550: WHO preventive iron supplementation doses — clinical disclaimer)
+- `iron-supplement-who`
+
 ### lib/trachoma-grade-v1561.js (spec-v1561: WHO simplified trachoma grading system — clinical disclaimer)
 - `trachoma-grade`
 

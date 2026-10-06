@@ -87,6 +87,12 @@ export const ANSWERS_AN_EMPTY_FORM = new Set([
   // spec-v1563 (arbovirus-admission-check): the signs are selects; the only number is the optional weight for
   // the acetaminophen dose, and with it blank the answer says "Weight: not entered, so no child dose is computed".
   "arbovirus-admission-check",
+  // spec-v1556 (brazil-spider-antivenom): the class and vial count come from the spider and sign selects; the
+  // only number is the child weight for prednisone, and with it blank the answer says "weight: not entered".
+  "brazil-spider-antivenom",
+  // spec-v1550 (iron-supplement-who): the dose comes from the group and prevalence selects; the numbers are the
+  // optional pregnancy hemoglobin and the preterm weight, and a blank hemoglobin is disclosed ("not entered").
+  "iron-supplement-who",
   // spec-v1558 (mgso4-im-regimen): the regimen comes from two required selects (source, regimen); the
   // number fields are the optional next-dose check, and with them blank the tile gives the regimen and
   // no safe-to-give verdict, which it gives only when all three checks are entered.

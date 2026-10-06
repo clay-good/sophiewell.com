@@ -424,3 +424,15 @@ experience**.
 > v1556, Organophosphate Poisoning: Atropine Dose Doubling and Infusion (Eddleston) — [spec-v1556](spec-v1556.md), which adds `op-atropine-titration` — is 2037.)
 
 > v1556, Indian Red Scorpion Sting Grade (Mesobuthus tamulus) — [spec-v1556](spec-v1556.md), which adds `scorpion-grade-india` — is 2038.)
+
+> v1556, Snakebite Severity and Antivenom Vials in Brazil (Ministry of Health) — [spec-v1556](spec-v1556.md), which adds `brazil-snakebite-antivenom` — is 2039.)
+
+> v1556, Lee-White Clotting Time After Snakebite (Brazil) — [spec-v1556](spec-v1556.md), which adds `lee-white-clotting-time` — is 2040.)
+
+> v1556, Scorpion Sting Severity and Antivenom in Brazil (Tityus) — [spec-v1556](spec-v1556.md), which adds `brazil-scorpion-antivenom` — is 2041.)
+
+> v1556, Spider Bite Severity and Antivenom in Brazil (Phoneutria, Loxosceles) — [spec-v1556](spec-v1556.md), which adds `brazil-spider-antivenom` — is 2042.)
+
+> v1556, Lonomia Caterpillar Contact: Severity and Antivenom (Brazil) — [spec-v1556](spec-v1556.md), which adds `brazil-lonomia-antivenom` — is 2043.)
+
+> v1550, Preventive Iron and Iron-Folic Acid Doses (WHO) — [spec-v1550](spec-v1550.md), which adds `iron-supplement-who` — is 2044.)

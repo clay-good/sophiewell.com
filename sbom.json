@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:efb95337-6cde-5f1c-83d7-ef9eacd70cef",
+  "serialNumber": "urn:uuid:19d6bbd2-b350-56bf-87da-3707279ba7f8",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-06T07:51:14.810Z",
+    "timestamp": "2026-10-06T08:20:21.896Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2038 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2044 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d079e4c6fe1ce1a8ae77edf5a216ff020779e66596066fe54b709bc6a715d42f"
+          "content": "d95ca152c084e496a3a95a38ac0a615b2d4146a8e2a403bf308d46a86a6ee2e6"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "131671"
+          "value": "132116"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4cfc455d27e6fba628a960140263453dfb169f4820ca950c8df21a60eb0da43a"
+          "content": "e39916fcf5a5930acb875dff7d7e3040ccaac6f63b2c30853db0a7dd3f936d3e"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "586589"
+          "value": "587798"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d066f71ca44a8302a4fb626deefb17ef0f63f4442dad8db9e269e93f876ff54c"
+          "content": "f67bc80b3f6be5413f47fd916486909947e453664892abf3f0526fd4b9f02738"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "254855"
+          "value": "255661"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8f5457d2c49a3168d01efaff5201381d9c772ce177fe5bef53bfffcc5ce4dcdb"
+          "content": "114e10fe23d10b1e721f54bd72c4c6cd2b2409f1bea3c9604d32762013018010"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "119103"
+          "value": "119628"
         }
       ]
     },
@@ -2656,6 +2656,90 @@
         {
           "name": "sophiewell:bytes",
           "value": "1153"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/brazil-lonomia-antivenom-v1556.js",
+      "type": "file",
+      "name": "lib/brazil-lonomia-antivenom-v1556.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e97403f0158c9ddb926ec18e45b337458aedb13bd2a4fa488142181abaefe2e8"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2900"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/brazil-scorpion-antivenom-v1556.js",
+      "type": "file",
+      "name": "lib/brazil-scorpion-antivenom-v1556.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7ec36d37c37b1cff7f2e1ac6382fa56c50729b94a7443f965d3ea4daf8bc01b5"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2777"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/brazil-snakebite-antivenom-v1556.js",
+      "type": "file",
+      "name": "lib/brazil-snakebite-antivenom-v1556.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a671801eae7649cf32378dea0f551a85cde6fd0cec79f094448cae5ba9cdfed3"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6222"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/brazil-spider-antivenom-v1556.js",
+      "type": "file",
+      "name": "lib/brazil-spider-antivenom-v1556.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "87c7bca02fed31de7750b9602be2e3e3903e238df4863dbd38f483e12ff96fe8"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5106"
         }
       ]
     },
@@ -10745,6 +10829,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/iron-supplement-who-v1550.js",
+      "type": "file",
+      "name": "lib/iron-supplement-who-v1550.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a940f199a48be6ac6a9361b64f2c032d73a7790abb6ad0509fe9a0487f353e97"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8033"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/isakos-meniscal-v1426.js",
       "type": "file",
       "name": "lib/isakos-meniscal-v1426.js",
@@ -11875,6 +11980,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "3483"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/lee-white-clotting-time-v1556.js",
+      "type": "file",
+      "name": "lib/lee-white-clotting-time-v1556.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "67a6b7c097d3e8c2c42bcd7a8dffee68a8c2abdd20ac0106a5b7c2e2562acd0d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2448"
         }
       ]
     },
@@ -13649,7 +13775,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "316e7ccfcb4ddcb15334db16c1c0db37d4dd3e282829763916475be1b83ab236"
+          "content": "a3e7f3d357baf8b2200176abfc934e83b9d21c8df06d45ef0265ec28240fcacf"
         }
       ],
       "properties": [
@@ -13659,7 +13785,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2733985"
+          "value": "2738325"
         }
       ]
     },
@@ -27818,6 +27944,90 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/brazil-lonomia-antivenom-v1556.js",
+      "type": "file",
+      "name": "mcp/adapters/brazil-lonomia-antivenom-v1556.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5b1ad52ca5347216e08f73cff72877827daf0a4588eab5f6cff2d6acff800d67"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "853"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/brazil-scorpion-antivenom-v1556.js",
+      "type": "file",
+      "name": "mcp/adapters/brazil-scorpion-antivenom-v1556.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "164fedfdea5e7ba6a8e24899d0ddef7c4d499559c267968749d0fa641c303394"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1132"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/brazil-snakebite-antivenom-v1556.js",
+      "type": "file",
+      "name": "mcp/adapters/brazil-snakebite-antivenom-v1556.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f0ee7192af7ebd9acc93036adf120125cfc9ec9054dfd91918b428b78919fc1e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "2006"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/brazil-spider-antivenom-v1556.js",
+      "type": "file",
+      "name": "mcp/adapters/brazil-spider-antivenom-v1556.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "aa05090f3453a933993a23a5888abe5ef90dae91d1b798325a5c1094427eda50"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1411"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/brodsky-tonsil-v388.js",
       "type": "file",
       "name": "mcp/adapters/brodsky-tonsil-v388.js",
@@ -35210,6 +35420,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/iron-supplement-who-v1550.js",
+      "type": "file",
+      "name": "mcp/adapters/iron-supplement-who-v1550.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c1aba07ee6067e5c95f0670291f7922c7dc67d8b28c93fa37655eec5d184836f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1491"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/isakos-meniscal-v1426.js",
       "type": "file",
       "name": "mcp/adapters/isakos-meniscal-v1426.js",
@@ -36193,6 +36424,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1219"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/lee-white-clotting-time-v1556.js",
+      "type": "file",
+      "name": "mcp/adapters/lee-white-clotting-time-v1556.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c095fba6f353536c4e825d3b6029e9b892af6707dae5fba66e51f29d415eec4e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "868"
         }
       ]
     },
@@ -48194,7 +48446,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c46606477f22d14ad2626e6727afdbe16faacaf5833e51094f03f8a181808c59"
+          "content": "84cfa72fd8f5f9653abf57f4c8ec534c202a18776b620ac976c65b273b38534d"
         }
       ],
       "properties": [
@@ -48204,7 +48456,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "124403"
+          "value": "125315"
         }
       ]
     },
@@ -52010,6 +52262,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1550b.js",
+      "type": "file",
+      "name": "views/group-v1550b.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "cb13b89fc39dd14ff79acf7744917560572fe83d7e0b5cc06f974282d8168ab4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3005"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:views/group-v1551.js",
       "type": "file",
       "name": "views/group-v1551.js",
@@ -52142,7 +52415,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8a3d975128dce99e2e826bff22157532bd8ea36ec8b84cf27818840164dafea7"
+          "content": "ddf8b30f1ce64e6c5f8d7d9d409d72cf8ebe2739df40760deca8c3e2693ae58c"
         }
       ],
       "properties": [
@@ -52152,7 +52425,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "4575"
+          "value": "11925"
         }
       ]
     },
@@ -83500,6 +83773,10 @@
         "urn:sophiewell:file:source:lib/bp-categories-v843.js",
         "urn:sophiewell:file:source:lib/bpe-periodontal-v1481.js",
         "urn:sophiewell:file:source:lib/brackets.js",
+        "urn:sophiewell:file:source:lib/brazil-lonomia-antivenom-v1556.js",
+        "urn:sophiewell:file:source:lib/brazil-scorpion-antivenom-v1556.js",
+        "urn:sophiewell:file:source:lib/brazil-snakebite-antivenom-v1556.js",
+        "urn:sophiewell:file:source:lib/brazil-spider-antivenom-v1556.js",
         "urn:sophiewell:file:source:lib/brodsky-tonsil-v388.js",
         "urn:sophiewell:file:source:lib/bromage-scale-v467.js",
         "urn:sophiewell:file:source:lib/brooker-v452.js",
@@ -83885,6 +84162,7 @@
         "urn:sophiewell:file:source:lib/ips-hodgkin-v661.js",
         "urn:sophiewell:file:source:lib/iptp-sp-schedule-v1552.js",
         "urn:sophiewell:file:source:lib/irecist-v551.js",
+        "urn:sophiewell:file:source:lib/iron-supplement-who-v1550.js",
         "urn:sophiewell:file:source:lib/isakos-meniscal-v1426.js",
         "urn:sophiewell:file:source:lib/isgls-bile-leak-v658.js",
         "urn:sophiewell:file:source:lib/isgls-phlf-v657.js",
@@ -83939,6 +84217,7 @@
         "urn:sophiewell:file:source:lib/le-fort-v406.js",
         "urn:sophiewell:file:source:lib/lead-v863.js",
         "urn:sophiewell:file:source:lib/leddy-packer-v456.js",
+        "urn:sophiewell:file:source:lib/lee-white-clotting-time-v1556.js",
         "urn:sophiewell:file:source:lib/leeds-enthesitis-index-v706.js",
         "urn:sophiewell:file:source:lib/leipzig-wilson-v812.js",
         "urn:sophiewell:file:source:lib/lenke-scoliosis-v1241.js",
@@ -84777,6 +85056,7 @@
         "urn:sophiewell:file:source:views/group-v1549.js",
         "urn:sophiewell:file:source:views/group-v155.js",
         "urn:sophiewell:file:source:views/group-v1550.js",
+        "urn:sophiewell:file:source:views/group-v1550b.js",
         "urn:sophiewell:file:source:views/group-v1551.js",
         "urn:sophiewell:file:source:views/group-v1552.js",
         "urn:sophiewell:file:source:views/group-v1553.js",
@@ -85633,6 +85913,10 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/boyd-griffin-v458.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/bp-categories-v843.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/bpe-periodontal-v1481.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/brazil-lonomia-antivenom-v1556.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/brazil-scorpion-antivenom-v1556.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/brazil-snakebite-antivenom-v1556.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/brazil-spider-antivenom-v1556.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/brodsky-tonsil-v388.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/bromage-scale-v467.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/brooker-v452.js",
@@ -85985,6 +86269,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/ipmn-fukuoka-v883.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/iptp-sp-schedule-v1552.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/irecist-v551.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/iron-supplement-who-v1550.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/isakos-meniscal-v1426.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/isgls-bile-leak-v658.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/isgls-phlf-v657.js",
@@ -86032,6 +86317,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/le-fort-v406.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lead-v863.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/leddy-packer-v456.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/lee-white-clotting-time-v1556.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/leeds-enthesitis-index-v706.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/leipzig-wilson-v812.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/lenke-scoliosis-v1241.js",
@@ -86707,7 +86993,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "efb953376cde0f1c"
+      "value": "19d6bbd2b35056bf"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -86719,7 +87005,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3207"
+      "value": "3220"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

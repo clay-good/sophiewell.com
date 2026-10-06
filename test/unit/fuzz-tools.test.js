@@ -703,6 +703,12 @@ import * as whoRabiesPepV1557 from '../../lib/who-rabies-pep-v1557.js';
 import * as pphWho2025V1558 from '../../lib/pph-who-2025-v1558.js';
 import * as laborCareGuideAlertV1558 from '../../lib/labor-care-guide-alert-v1558.js';
 import * as vitaminADoseChildV1550 from '../../lib/vitamin-a-dose-child-v1550.js';
+import * as brazilSnakebiteAntivenomV1556 from '../../lib/brazil-snakebite-antivenom-v1556.js';
+import * as leeWhiteClottingTimeV1556 from '../../lib/lee-white-clotting-time-v1556.js';
+import * as brazilScorpionAntivenomV1556 from '../../lib/brazil-scorpion-antivenom-v1556.js';
+import * as brazilSpiderAntivenomV1556 from '../../lib/brazil-spider-antivenom-v1556.js';
+import * as brazilLonomiaAntivenomV1556 from '../../lib/brazil-lonomia-antivenom-v1556.js';
+import * as ironSupplementWhoV1550 from '../../lib/iron-supplement-who-v1550.js';
 import * as trachomaGradeV1561 from '../../lib/trachoma-grade-v1561.js';
 import * as opAtropineTitrationV1556 from '../../lib/op-atropine-titration-v1556.js';
 import * as scorpionGradeIndiaV1556 from '../../lib/scorpion-grade-india-v1556.js';
@@ -1558,6 +1564,12 @@ const MODULES = {
   'pph-who-2025-v1558.js': pphWho2025V1558,
   'labor-care-guide-alert-v1558.js': laborCareGuideAlertV1558,
   'vitamin-a-dose-child-v1550.js': vitaminADoseChildV1550,
+  'brazil-snakebite-antivenom-v1556.js': brazilSnakebiteAntivenomV1556,
+  'lee-white-clotting-time-v1556.js': leeWhiteClottingTimeV1556,
+  'brazil-scorpion-antivenom-v1556.js': brazilScorpionAntivenomV1556,
+  'brazil-spider-antivenom-v1556.js': brazilSpiderAntivenomV1556,
+  'brazil-lonomia-antivenom-v1556.js': brazilLonomiaAntivenomV1556,
+  'iron-supplement-who-v1550.js': ironSupplementWhoV1550,
   'trachoma-grade-v1561.js': trachomaGradeV1561,
   'op-atropine-titration-v1556.js': opAtropineTitrationV1556,
   'scorpion-grade-india-v1556.js': scorpionGradeIndiaV1556,

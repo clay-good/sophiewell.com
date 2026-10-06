@@ -973,6 +973,12 @@ import whoRabiesPepV1557 from './adapters/who-rabies-pep-v1557.js';
 import pphWho2025V1558 from './adapters/pph-who-2025-v1558.js';
 import laborCareGuideAlertV1558 from './adapters/labor-care-guide-alert-v1558.js';
 import vitaminADoseChildV1550 from './adapters/vitamin-a-dose-child-v1550.js';
+import brazilSnakebiteAntivenomV1556 from './adapters/brazil-snakebite-antivenom-v1556.js';
+import leeWhiteClottingTimeV1556 from './adapters/lee-white-clotting-time-v1556.js';
+import brazilScorpionAntivenomV1556 from './adapters/brazil-scorpion-antivenom-v1556.js';
+import brazilSpiderAntivenomV1556 from './adapters/brazil-spider-antivenom-v1556.js';
+import brazilLonomiaAntivenomV1556 from './adapters/brazil-lonomia-antivenom-v1556.js';
+import ironSupplementWhoV1550 from './adapters/iron-supplement-who-v1550.js';
 import trachomaGradeV1561 from './adapters/trachoma-grade-v1561.js';
 import opAtropineTitrationV1556 from './adapters/op-atropine-titration-v1556.js';
 import scorpionGradeIndiaV1556 from './adapters/scorpion-grade-india-v1556.js';
@@ -2044,6 +2050,12 @@ const ADAPTER_MODULES = [
   ['pph-who-2025-v1558', pphWho2025V1558],
   ['labor-care-guide-alert-v1558', laborCareGuideAlertV1558],
   ['vitamin-a-dose-child-v1550', vitaminADoseChildV1550],
+  ['brazil-snakebite-antivenom-v1556', brazilSnakebiteAntivenomV1556],
+  ['lee-white-clotting-time-v1556', leeWhiteClottingTimeV1556],
+  ['brazil-scorpion-antivenom-v1556', brazilScorpionAntivenomV1556],
+  ['brazil-spider-antivenom-v1556', brazilSpiderAntivenomV1556],
+  ['brazil-lonomia-antivenom-v1556', brazilLonomiaAntivenomV1556],
+  ['iron-supplement-who-v1550', ironSupplementWhoV1550],
   ['trachoma-grade-v1561', trachomaGradeV1561],
   ['op-atropine-titration-v1556', opAtropineTitrationV1556],
   ['scorpion-grade-india-v1556', scorpionGradeIndiaV1556],
