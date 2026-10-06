@@ -436,3 +436,9 @@ experience**.
 > v1556, Lonomia Caterpillar Contact: Severity and Antivenom (Brazil) — [spec-v1556](spec-v1556.md), which adds `brazil-lonomia-antivenom` — is 2043.)
 
 > v1550, Preventive Iron and Iron-Folic Acid Doses (WHO) — [spec-v1550](spec-v1550.md), which adds `iron-supplement-who` — is 2044.)
+
+> v1546, Home Drug Doses by Weight or Age for Children 2-59 Months (WHO IMCI) — [spec-v1546](spec-v1546.md), which adds `imci-oral-drug-bands` — is 2045.)
+
+> v1546, Pre-Referral Injections and Rectal Diazepam for Children 2-59 Months (WHO IMCI) — [spec-v1546](spec-v1546.md), which adds `imci-prereferral-injectables` — is 2046.)
+
+> v1563, Kala-Azar and PKDL Treatment by Region (WHO 2026) — [spec-v1563](spec-v1563.md), which adds `visceral-leishmaniasis-2026` — is 2047.)

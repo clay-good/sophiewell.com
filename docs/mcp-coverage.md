@@ -8776,6 +8776,15 @@ Each id below is live in `mcp/catalog.js`. The gate parses this list.
 ### lib/vitamin-a-dose-child-v1550.js (spec-v1550: WHO vitamin A doses for children by reason (routine, diarrhea, measles, eye signs) — clinical disclaimer)
 - `vitamin-a-dose-child`
 
+### lib/imci-oral-drug-bands-v1546.js (spec-v1546: WHO IMCI home drug dose bands — clinical disclaimer)
+- `imci-oral-drug-bands`
+
+### lib/imci-prereferral-injectables-v1546.js (spec-v1546: WHO IMCI pre-referral injection bands — clinical disclaimer)
+- `imci-prereferral-injectables`
+
+### lib/visceral-leishmaniasis-2026-v1563.js (spec-v1563: WHO VL and PKDL treatment, eastern Africa and South-East Asia — clinical disclaimer)
+- `visceral-leishmaniasis-2026`
+
 ### lib/brazil-snakebite-antivenom-v1556.js (spec-v1556: Brazil Ministry of Health snakebite antivenom table — clinical disclaimer)
 - `brazil-snakebite-antivenom`
 

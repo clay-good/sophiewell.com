@@ -7,6 +7,7 @@ import * as M1 from '../lib/arbovirus-admission-check-v1563.js';
 import * as M2 from '../lib/chikungunya-case-def-v1563.js';
 import * as M3 from '../lib/zika-case-def-v1563.js';
 import * as M4 from '../lib/yellow-fever-case-def-v1563.js';
+import * as M5 from '../lib/visceral-leishmaniasis-2026-v1563.js';
 import { resultRow } from '../lib/result-copy.js';
 
 function selectField(root, label, id, options, required) {
@@ -205,6 +206,36 @@ export const renderers = {
         const r = M4.yellowFeverCaseDef(args);
         if (!r.valid) { note(o, r.message); return; }
         resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Case', value: r.bandLabel }]);
+        list(o, r.notes);
+        note(o, r.note);
+      } catch (err) {
+        o.appendChild(el('p', { class: 'muted', text: err.message }));
+      }
+    };
+    for (const [id] of pairs) { const n = document.getElementById(id); if (n) { n.addEventListener('input', run); n.addEventListener('change', run); } }
+    run();
+  },
+  'visceral-leishmaniasis-2026'(root) {
+    const pairs = [['vl-region', 'region'], ['vl-ind', 'indication'], ['vl-weight', 'weight'], ['vl-age', 'age'], ['vl-preg', 'pregnant'], ['vl-contra', 'contraception'], ['vl-excl', 'exclusion'], ['vl-mal', 'malnourished'], ['vl-hiv', 'hiv']];
+    selectField(root, 'Region', 'vl-region', M5.REGION_OPTIONS, true);
+    selectField(root, 'Indication', 'vl-ind', M5.INDICATION_OPTIONS, true);
+    numField(root, 'Weight in kg', 'vl-weight', 'e.g. 20', '200');
+    numField(root, 'Age in years', 'vl-age', 'e.g. 10', '100');
+    selectField(root, 'Pregnant or breastfeeding', 'vl-preg', M5.YES_NO, false);
+    selectField(root, 'Could become pregnant: reliable contraception assured', 'vl-contra', M5.YES_NO, false);
+    selectField(root, 'Other exclusion (severe malnutrition, Hb under 5, severe VL, hearing loss, comorbidity, coinfection)', 'vl-excl', M5.YES_NO, false);
+    selectField(root, 'Severely malnourished (PKDL)', 'vl-mal', M5.YES_NO, false);
+    selectField(root, 'HIV coinfection', 'vl-hiv', M5.YES_NO, false);
+    const o = el('div', { id: 'q-results', 'aria-live': 'polite' });
+    root.appendChild(o);
+    const run = () => {
+      clear(o);
+      try {
+        const args = {};
+        for (const [dom, arg] of pairs) args[arg] = val(dom);
+        const r = M5.visceralLeishmaniasis2026(args);
+        if (!r.valid) { note(o, r.message); return; }
+        resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'WHO 2026', value: r.bandLabel }]);
         list(o, r.notes);
         note(o, r.note);
       } catch (err) {

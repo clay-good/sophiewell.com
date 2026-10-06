@@ -21,6 +21,15 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- IMCI home drug doses (WHO chart 2014): amoxicillin, acetaminophen, iron,
+  ciprofloxacin, zinc (2014 or 2024 edition), albuterol and mebendazole by the
+  chart's weight or age bands, weight first.
+- IMCI pre-referral treatments (WHO chart 2014, p. 17): ampicillin and
+  gentamicin IM, IM quinine and rectal diazepam by the chart's weight or age
+  bands, with the exact mg/kg volume beside each.
+- Kala-azar and PKDL treatment (WHO July 2026): eastern Africa paromomycin
+  plus miltefosine (or SSG plus paromomycin, or LAmB), South-East Asia relapse
+  combinations, PKDL regimens for both regions, and allometric miltefosine.
 - Snakebite severity and antivenom vials in Brazil (Ministry of Health 2024,
   Quadro 1): Bothrops, Lachesis, Crotalus and Micrurus classes with vial counts
   (Bothrops mild on a clotting abnormality alone), and 6 hours of observation

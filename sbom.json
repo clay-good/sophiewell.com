@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:19d6bbd2-b350-56bf-87da-3707279ba7f8",
+  "serialNumber": "urn:uuid:d6b805e6-9701-5bcf-8627-b227dac1e91f",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-06T08:20:21.896Z",
+    "timestamp": "2026-10-06T09:03:46.378Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -16,7 +16,7 @@
       "type": "application",
       "name": "sophiewell.com",
       "version": "1.0.0",
-      "description": "Sophie Well - 2044 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
+      "description": "Sophie Well - 2047 deterministic healthcare calculators. Free, client-side calculation, no accounts, no telemetry, no AI.",
       "licenses": [
         {
           "license": {
@@ -62,7 +62,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d95ca152c084e496a3a95a38ac0a615b2d4146a8e2a403bf308d46a86a6ee2e6"
+          "content": "4eec5c6f40afc82b93ec38a1a69bfb21cc1ec669e74ca913231dbe9dde20e609"
         }
       ],
       "properties": [
@@ -72,7 +72,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "132116"
+          "value": "132360"
         }
       ]
     },
@@ -104,7 +104,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e39916fcf5a5930acb875dff7d7e3040ccaac6f63b2c30853db0a7dd3f936d3e"
+          "content": "85d82ee3c4b871d5ab7fc6207c014524755fa12fb25e4014aa469ee2f69bcc12"
         }
       ],
       "properties": [
@@ -114,7 +114,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "587798"
+          "value": "588486"
         }
       ]
     },
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f67bc80b3f6be5413f47fd916486909947e453664892abf3f0526fd4b9f02738"
+          "content": "2d6de0f97154abc332432d73bb94cddf8869f03303542470c62030ff417054f7"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "255661"
+          "value": "256069"
         }
       ]
     },
@@ -440,7 +440,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "114e10fe23d10b1e721f54bd72c4c6cd2b2409f1bea3c9604d32762013018010"
+          "content": "0a5c14259a6a9625b4849ba4944bb9d7b2f3ad3389d1695aa4da0f8aa90b1fb1"
         }
       ],
       "properties": [
@@ -450,7 +450,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "119628"
+          "value": "119917"
         }
       ]
     },
@@ -10409,6 +10409,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/imci-oral-drug-bands-v1546.js",
+      "type": "file",
+      "name": "lib/imci-oral-drug-bands-v1546.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "40e9549e161e2a267390877204e7ef5dfdf721985dce1a877460b2d7f7d45cb8"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "8447"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/imci-ors-plan-v1546.js",
       "type": "file",
       "name": "lib/imci-ors-plan-v1546.js",
@@ -10426,6 +10447,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "10691"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/imci-prereferral-injectables-v1546.js",
+      "type": "file",
+      "name": "lib/imci-prereferral-injectables-v1546.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1db6b69973bf4b32dc2883ca30446076619095d76d6630944b1a6c9a41603efe"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "6374"
         }
       ]
     },
@@ -13775,7 +13817,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a3e7f3d357baf8b2200176abfc934e83b9d21c8df06d45ef0265ec28240fcacf"
+          "content": "5802621351d724d6ef19b8a7d517a5355c07e68445bdaf95502c331c6f826823"
         }
       ],
       "properties": [
@@ -13785,7 +13827,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2738325"
+          "value": "2740845"
         }
       ]
     },
@@ -24584,6 +24626,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:lib/visceral-leishmaniasis-2026-v1563.js",
+      "type": "file",
+      "name": "lib/visceral-leishmaniasis-2026-v1563.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fc3061faada4bd29124a8a4fca408cdcd421c80c55c8d2ffce03aa8d7b7f06b1"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "9178"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:lib/vitamin-a-dose-child-v1550.js",
       "type": "file",
       "name": "lib/vitamin-a-dose-child-v1550.js",
@@ -35063,6 +35126,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/imci-oral-drug-bands-v1546.js",
+      "type": "file",
+      "name": "mcp/adapters/imci-oral-drug-bands-v1546.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0ba24d7a87f83cca87cdd5a97bf99c28bcb0ded032bb9449378e11e084bf8b3b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1147"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/imci-ors-plan-v1546.js",
       "type": "file",
       "name": "mcp/adapters/imci-ors-plan-v1546.js",
@@ -35080,6 +35164,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "1269"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/imci-prereferral-injectables-v1546.js",
+      "type": "file",
+      "name": "mcp/adapters/imci-prereferral-injectables-v1546.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f72924b661bde559e60c643c100fc57e78b4a1092966def0c4143a48a2db1f05"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "951"
         }
       ]
     },
@@ -47453,6 +47558,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/visceral-leishmaniasis-2026-v1563.js",
+      "type": "file",
+      "name": "mcp/adapters/visceral-leishmaniasis-2026-v1563.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b2b6325b465fedb3c08392c467da1d5ab0e822fe28e075469f7a3f8c6a05d87e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "mcp-source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1895"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:mcp-source:mcp/adapters/vitamin-a-dose-child-v1550.js",
       "type": "file",
       "name": "mcp/adapters/vitamin-a-dose-child-v1550.js",
@@ -48446,7 +48572,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "84cfa72fd8f5f9653abf57f4c8ec534c202a18776b620ac976c65b273b38534d"
+          "content": "a91cb283e0de5fa28f8b9b091b932e86832dd064b81e8c3c29b5a139affdb7e7"
         }
       ],
       "properties": [
@@ -48456,7 +48582,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "125315"
+          "value": "125790"
         }
       ]
     },
@@ -52178,6 +52304,27 @@
       ]
     },
     {
+      "bom-ref": "urn:sophiewell:file:source:views/group-v1546b.js",
+      "type": "file",
+      "name": "views/group-v1546b.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4ac075216f28d646f0c57f8fac596f67c0399dea55615ca95fa14b0a028fcad7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "3936"
+        }
+      ]
+    },
+    {
       "bom-ref": "urn:sophiewell:file:source:views/group-v1548.js",
       "type": "file",
       "name": "views/group-v1548.js",
@@ -52604,7 +52751,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d3c532d965eaf95d722a35e11c826f434483a007bc207f246a54d0c4280210b0"
+          "content": "abdbc68d8cab43647ac1c30bbdcfc40200e533ba380f81eaa266e902fcccaf3f"
         }
       ],
       "properties": [
@@ -52614,7 +52761,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "12818"
+          "value": "14736"
         }
       ]
     },
@@ -84142,7 +84289,9 @@
         "urn:sophiewell:file:source:lib/ideberg-glenoid-v409.js",
         "urn:sophiewell:file:source:lib/igcccg-v567.js",
         "urn:sophiewell:file:source:lib/igg4-rd-2020-v825.js",
+        "urn:sophiewell:file:source:lib/imci-oral-drug-bands-v1546.js",
         "urn:sophiewell:file:source:lib/imci-ors-plan-v1546.js",
+        "urn:sophiewell:file:source:lib/imci-prereferral-injectables-v1546.js",
         "urn:sophiewell:file:source:lib/imid-rems-v1511.js",
         "urn:sophiewell:file:source:lib/income-screens-v1506.js",
         "urn:sophiewell:file:source:lib/indomethacin-headache-ichd3-v819.js",
@@ -84817,6 +84966,7 @@
         "urn:sophiewell:file:source:lib/vhi10-v508.js",
         "urn:sophiewell:file:source:lib/vhwg-hernia-v666.js",
         "urn:sophiewell:file:source:lib/vial-rounding-v1512.js",
+        "urn:sophiewell:file:source:lib/visceral-leishmaniasis-2026-v1563.js",
         "urn:sophiewell:file:source:lib/vitamin-a-dose-child-v1550.js",
         "urn:sophiewell:file:source:lib/vitamin-d-level-v881.js",
         "urn:sophiewell:file:source:lib/vivax-radical-cure-v1552.js",
@@ -85052,6 +85202,7 @@
         "urn:sophiewell:file:source:views/group-v153.js",
         "urn:sophiewell:file:source:views/group-v154.js",
         "urn:sophiewell:file:source:views/group-v1546.js",
+        "urn:sophiewell:file:source:views/group-v1546b.js",
         "urn:sophiewell:file:source:views/group-v1548.js",
         "urn:sophiewell:file:source:views/group-v1549.js",
         "urn:sophiewell:file:source:views/group-v155.js",
@@ -86252,7 +86403,9 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/ideberg-glenoid-v409.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/igcccg-v567.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/igg4-rd-2020-v825.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/imci-oral-drug-bands-v1546.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/imci-ors-plan-v1546.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/imci-prereferral-injectables-v1546.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/imid-rems-v1511.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/income-screens-v1506.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/indomethacin-headache-ichd3-v819.js",
@@ -86842,6 +86995,7 @@
         "urn:sophiewell:file:mcp-source:mcp/adapters/vhi10-v508.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/vhwg-hernia-v666.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/vial-rounding-v1512.js",
+        "urn:sophiewell:file:mcp-source:mcp/adapters/visceral-leishmaniasis-2026-v1563.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/vitamin-a-dose-child-v1550.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/vitamin-d-level-v881.js",
         "urn:sophiewell:file:mcp-source:mcp/adapters/vivax-radical-cure-v1552.js",
@@ -86993,7 +87147,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "19d6bbd2b35056bf"
+      "value": "d6b805e697015bcf"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -87005,7 +87159,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3220"
+      "value": "3227"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

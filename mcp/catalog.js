@@ -973,6 +973,9 @@ import whoRabiesPepV1557 from './adapters/who-rabies-pep-v1557.js';
 import pphWho2025V1558 from './adapters/pph-who-2025-v1558.js';
 import laborCareGuideAlertV1558 from './adapters/labor-care-guide-alert-v1558.js';
 import vitaminADoseChildV1550 from './adapters/vitamin-a-dose-child-v1550.js';
+import imciOralDrugBandsV1546 from './adapters/imci-oral-drug-bands-v1546.js';
+import imciPrereferralInjectablesV1546 from './adapters/imci-prereferral-injectables-v1546.js';
+import visceralLeishmaniasis2026V1563 from './adapters/visceral-leishmaniasis-2026-v1563.js';
 import brazilSnakebiteAntivenomV1556 from './adapters/brazil-snakebite-antivenom-v1556.js';
 import leeWhiteClottingTimeV1556 from './adapters/lee-white-clotting-time-v1556.js';
 import brazilScorpionAntivenomV1556 from './adapters/brazil-scorpion-antivenom-v1556.js';
@@ -2050,6 +2053,9 @@ const ADAPTER_MODULES = [
   ['pph-who-2025-v1558', pphWho2025V1558],
   ['labor-care-guide-alert-v1558', laborCareGuideAlertV1558],
   ['vitamin-a-dose-child-v1550', vitaminADoseChildV1550],
+  ['imci-oral-drug-bands-v1546', imciOralDrugBandsV1546],
+  ['imci-prereferral-injectables-v1546', imciPrereferralInjectablesV1546],
+  ['visceral-leishmaniasis-2026-v1563', visceralLeishmaniasis2026V1563],
   ['brazil-snakebite-antivenom-v1556', brazilSnakebiteAntivenomV1556],
   ['lee-white-clotting-time-v1556', leeWhiteClottingTimeV1556],
   ['brazil-scorpion-antivenom-v1556', brazilScorpionAntivenomV1556],

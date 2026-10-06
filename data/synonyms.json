@@ -7081,6 +7081,39 @@
     },
     {
       "phrases": [
+        "imci drug doses",
+        "imci amoxicillin dose",
+        "child amoxicillin by weight band",
+        "imci iron syrup dose",
+        "imci zinc dose"
+      ],
+      "tile": "imci-oral-drug-bands",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "imci prereferral",
+        "ampicillin gentamicin child referral",
+        "imci gentamicin dose",
+        "rectal diazepam child dose",
+        "im quinine child dose"
+      ],
+      "tile": "imci-prereferral-injectables",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
+        "kala azar treatment",
+        "visceral leishmaniasis who 2026",
+        "pkdl treatment",
+        "miltefosine dose by weight",
+        "paromomycin miltefosine"
+      ],
+      "tile": "visceral-leishmaniasis-2026",
+      "audience": "clinicians"
+    },
+    {
+      "phrases": [
         "brazil snakebite antivenom",
         "jararaca antivenom vials",
         "soro antibotropico",

@@ -692,6 +692,9 @@ and thresholds) is a stable rule in every case (Class A).
 | brazil-spider-antivenom | Brazil spider antivenom table | Guia de Vigilância em Saúde, vol. 3 (2024), Quadro 4 | same | 2026-10-06 | current - read October 6, 2026 |
 | brazil-lonomia-antivenom | Brazil Lonomia antivenom table | Guia de Vigilância em Saúde, vol. 3 (2024), Quadro 5 | same | 2026-10-06 | current - read October 6, 2026 |
 | iron-supplement-who | WHO preventive iron supplementation doses | WHO iron guidelines (2016), ANC (2016), preterm care (2022) | same | 2026-10-06 | current - read October 6, 2026 |
+| imci-oral-drug-bands | WHO IMCI home drug dose bands | WHO IMCI chart booklet (2014) | same | 2026-10-06 | current - pages 12-14 read from page images October 6, 2026 |
+| imci-prereferral-injectables | WHO IMCI pre-referral injection bands | WHO IMCI chart booklet (2014), p. 17 | same | 2026-10-06 | current - read from the page image October 6, 2026 |
+| visceral-leishmaniasis-2026 | WHO VL and PKDL treatment, eastern Africa and South-East Asia | WHO leishmaniasis guidelines (July 2026) | same | 2026-10-06 | current - recommendations 1-4 and Annex 2 read October 6, 2026 |
 | vitamin-a-dose-child | WHO vitamin A doses for children by reason (routine, diarrhea, measles, eye signs) | WHO VA11 (2011), IMCI chart (2014), Pocket book (2013), SAM manual (1999) | same | 2026-10-06 | current - each source read October 6, 2026; their age bands differ at 12 months and each reason uses its own |
 | deworming-dose-who | WHO deworming dose and frequency by group and prevalence | WHO STH preventive chemotherapy guideline (2017) | same | 2026-10-06 | current - the 2017 guideline is current; recommendations read October 6, 2026 |
 | labor-care-guide-alert | WHO Labour Care Guide alert thresholds for each labor observation | WHO labour care guide user's manual (2020) | same | 2026-10-06 | current - the 2020 manual is the current edition; Tables 2-6 read October 6, 2026 |
@@ -777,6 +780,9 @@ guideline's citation carries its version date and DOI.
 | brazil-spider-antivenom | Brazil spider antivenom table | Guia de Vigilância em Saúde, vol. 3 (2024), Quadro 4 | same | 2026-10-06 | low | current |
 | brazil-lonomia-antivenom | Brazil Lonomia antivenom table | Guia de Vigilância em Saúde, vol. 3 (2024), Quadro 5 | same | 2026-10-06 | low | current |
 | iron-supplement-who | WHO preventive iron supplementation doses | WHO iron guidelines (2016), ANC (2016), preterm care (2022) | same | 2026-10-06 | low | current |
+| imci-oral-drug-bands | WHO IMCI home drug dose bands | WHO IMCI chart booklet (2014) | same | 2026-10-06 | low | current |
+| imci-prereferral-injectables | WHO IMCI pre-referral injection bands | WHO IMCI chart booklet (2014), p. 17 | same | 2026-10-06 | low | current |
+| visceral-leishmaniasis-2026 | WHO VL and PKDL treatment, eastern Africa and South-East Asi | WHO leishmaniasis guidelines (July 2026) | same | 2026-10-06 | moderate | current |
 | vitamin-a-dose-child | WHO vitamin A doses for children by reason (routine, diarrhe | WHO VA11 (2011), IMCI chart (2014), Pocket book (2013), SAM manual (1999) | same | 2026-10-06 | low | current |
 | deworming-dose-who | WHO deworming dose and frequency by group and prevalence | WHO STH preventive chemotherapy guideline (2017) | same | 2026-10-06 | low | current |
 | labor-care-guide-alert | WHO Labour Care Guide alerts | WHO labour care guide user's manual (2020) | same | 2026-10-06 | low | current - a 2020 manual |
