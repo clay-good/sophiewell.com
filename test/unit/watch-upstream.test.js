@@ -11,8 +11,10 @@ const SHA = '5333564a710f80d7740180b9ffab8dbdcba9b502';
 
 test('the pins are read from the modules, not a list kept by hand', () => {
   const found = snapshots();
-  assert.deepEqual(found.map((s) => [s.repo, s.sha || s.tag, s.modules]), [
+  assert.deepEqual(found.map((s) => [s.repo || s.package, s.sha || s.tag || s.version, s.modules]), [
+    ['hl7.fhir.us.carin-bb', '2.2.0', ['lib/carin-eob-reader.js']],
     ['CMSgov/hospital-price-transparency', SHA, ['lib/hpt-v1515.js']],
+    ['hl7.fhir.us.davinci-pas', '2.2.1', ['lib/pas-bundle-check.js']],
     ['CMSgov/price-transparency-guide', 'v2.2.1', ['lib/tic-schemas.js']],
   ]);
   const dir = mkdtempSync(join(tmpdir(), 'pins-'));
@@ -59,4 +61,27 @@ test('a tag pin lists only newer version tags, compared as numbers', async () =>
   assert.match(markdown([r]), /newer versions v2\.3\.0, v2\.10\.0\. A new version is a new pin/);
   const same = await compare({ repo: 'o/r', tag: 'v2.10.0', modules: ['lib/x.js'] }, tags);
   assert.match(markdown([same]), /no newer version tag/);
+});
+
+// spec-v1621 §3.7: FHIR packages are pinned by version and compared with packages.fhir.org's dist-tags.latest.
+test('a FHIR package pin is read from its module and matches the profile builder', async () => {
+  const pkgs = snapshots().filter((s) => s.package);
+  assert.deepEqual(pkgs.map((s) => [s.package, s.version]), [['hl7.fhir.us.carin-bb', '2.2.0'], ['hl7.fhir.us.davinci-pas', '2.2.1']]);
+  const { PIN } = await import('../../scripts/data/builders/pas-profiles.mjs');
+  assert.equal(pkgs.find((s) => s.package === 'hl7.fhir.us.davinci-pas').version, PIN);
+});
+
+test('a package behind the registry says so; a prerelease or missing latest is unchecked, never current', async () => {
+  const reg = (body, status = 200) => async (url) => {
+    assert.equal(url, 'https://packages.fhir.org/hl7.fhir.us.carin-bb');
+    return { ok: status === 200, status, json: async () => body };
+  };
+  const s = { package: 'hl7.fhir.us.carin-bb', version: '2.2.0', modules: ['lib/carin-eob-reader.js'] };
+  const behind = await compare(s, reg({ 'dist-tags': { latest: '2.10.0' } }));
+  assert.equal(behind.status, 'behind');
+  assert.match(markdown([behind]), /`hl7\.fhir\.us\.carin-bb` \(pinned at 2\.2\.0 by `lib\/carin-eob-reader\.js`\): the registry's latest version is 2\.10\.0\. A new version is a new pin/);
+  assert.match(markdown([await compare(s, reg({ 'dist-tags': { latest: '2.2.0' } }))]), /the registry's latest version is the pin/);
+  assert.equal((await compare(s, reg({ 'dist-tags': { latest: '2.3.0-ballot' } }))).status, 'unchecked');
+  assert.equal((await compare(s, reg({}))).status, 'unchecked');
+  assert.match(markdown([await compare(s, reg({}, 404))]), /not checked \(the registry returned 404\)/);
 });

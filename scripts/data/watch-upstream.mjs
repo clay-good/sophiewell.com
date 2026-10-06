@@ -12,7 +12,12 @@
 //
 //   // Source tag: CMSgov/price-transparency-guide tag v2.2.1.
 //
-// and the watcher lists any newer version tag. Either way the list goes to the weekly data-refresh pull
+// and the watcher lists any newer version tag. A FHIR package from packages.fhir.org is pinned by version
+// (spec-v1621 §3.7):
+//
+//   // Source package: hl7.fhir.us.carin-bb version 2.2.0.
+//
+// and the watcher compares it with the registry's `dist-tags.latest`. Either way the list goes to the weekly data-refresh pull
 // request for a person to read ("gate the next"): the watcher never edits a module and never fails the job.
 //
 // Usage: node scripts/data/watch-upstream.mjs [--json] [--offline]
@@ -25,6 +30,8 @@ import { USER_AGENT } from './http.mjs';
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const SNAPSHOT = /Source snapshot: ([\w.-]+\/[\w.-]+) commit ([0-9a-f]{40})\b/g;
 const TAG = /Source tag: ([\w.-]+\/[\w.-]+) tag (v?\d+(?:\.\d+)*)\b/g;
+const PACKAGE = /Source package: ([a-z0-9][\w.-]*[a-z0-9]) version (\d+(?:\.\d+)*)\b/g;
+const RELEASE = /^v?\d+(\.\d+)*$/;
 
 // 'v2.10.0' -> [2, 10, 0]; compareVersions(a, b) < 0 when a is older.
 const parts = (t) => String(t).replace(/^v/, '').split('.').map(Number);
@@ -35,15 +42,15 @@ export function compareVersions(a, b) {
   return 0;
 }
 
-// snapshots(libDir) -> [{ repo, sha | tag, modules: [file] }], one per repo and pin.
+// snapshots(libDir) -> [{ repo, sha | tag, modules: [file] } | { package, version, modules }], one per pin.
 export function snapshots(libDir = join(ROOT, 'lib')) {
   const out = new Map();
   for (const f of readdirSync(libDir).filter((n) => n.endsWith('.js')).sort()) {
     const text = readFileSync(join(libDir, f), 'utf8');
-    for (const [re, kind] of [[SNAPSHOT, 'sha'], [TAG, 'tag']]) {
+    for (const [re, kind, name] of [[SNAPSHOT, 'sha', 'repo'], [TAG, 'tag', 'repo'], [PACKAGE, 'version', 'package']]) {
       for (const m of text.matchAll(re)) {
         const key = `${m[1]}@${m[2]}`;
-        if (!out.has(key)) out.set(key, { repo: m[1], [kind]: m[2], modules: [] });
+        if (!out.has(key)) out.set(key, { [name]: m[1], [kind]: m[2], modules: [] });
         out.get(key).modules.push(`lib/${f}`);
       }
     }
@@ -56,10 +63,18 @@ export async function compare(s, fetchImpl = globalThis.fetch) {
   const headers = { 'user-agent': USER_AGENT, accept: 'application/vnd.github+json' };
   if (process.env.GITHUB_TOKEN) headers.authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
   try {
+    if (s.package) {
+      const res = await fetchImpl(`https://packages.fhir.org/${s.package}`, { headers: { 'user-agent': USER_AGENT, accept: 'application/json' } });
+      if (!res.ok) throw new Error(`the registry returned ${res.status}`);
+      const latest = ((await res.json())['dist-tags'] || {}).latest;
+      if (!RELEASE.test(String(latest || ''))) throw new Error(`the registry's latest version is ${latest ? `"${latest}", not a release number` : 'missing'}`);
+      const newer = compareVersions(latest, s.version) > 0 ? [latest] : [];
+      return { ...s, status: newer.length ? 'behind' : 'current', newer };
+    }
     if (s.tag) {
       const res = await fetchImpl(`https://api.github.com/repos/${s.repo}/tags?per_page=100`, { headers });
       if (!res.ok) throw new Error(`tags returned ${res.status}`);
-      const newer = (await res.json()).map((t) => t.name).filter((n) => /^v?\d+(\.\d+)*$/.test(n) && compareVersions(n, s.tag) > 0)
+      const newer = (await res.json()).map((t) => t.name).filter((n) => RELEASE.test(n) && compareVersions(n, s.tag) > 0)
         .sort(compareVersions);
       return { ...s, status: newer.length ? 'behind' : 'current', newer };
     }
@@ -80,8 +95,10 @@ export async function compare(s, fetchImpl = globalThis.fetch) {
 export function markdown(rows) {
   const lines = ['## Pinned upstream schemas', ''];
   for (const r of rows) {
-    const where = `\`${r.repo}\` (pinned at ${r.tag || r.sha.slice(0, 12)} by ${r.modules.map((m) => `\`${m}\``).join(', ')})`;
+    const where = `\`${r.repo || r.package}\` (pinned at ${r.tag || r.version || r.sha.slice(0, 12)} by ${r.modules.map((m) => `\`${m}\``).join(', ')})`;
     if (r.status === 'unchecked') lines.push(`- ${where}: not checked (${r.error}).`);
+    else if (r.package && r.status === 'current') lines.push(`- ${where}: the registry's latest version is the pin.`);
+    else if (r.package) lines.push(`- ${where}: the registry's latest version is ${r.newer[0]}. A new version is a new pin: read its change log, then update the module, its tests and its package line together.`);
     else if (r.tag && r.status === 'current') lines.push(`- ${where}: no newer version tag.`);
     else if (r.tag) lines.push(`- ${where}: newer version${r.newer.length === 1 ? '' : 's'} ${r.newer.join(', ')}. A new version is a new pin: read its changes, then update the module, its tests and its tag line together.`);
     else if (r.status === 'current') lines.push(`- ${where}: no change on ${r.branch} since the pin.`);
