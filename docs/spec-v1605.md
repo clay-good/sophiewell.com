@@ -132,6 +132,11 @@ deterministic answer the page gives, and the file never leaves the reader's mach
     (Louisiana Healthcare Connections posts 59.98% approved after appeal for 250 of 967) is carried as posted,
     declared on the row (`rateMismatch`), and with a rate posted over a different denominator (an appeal rate out
     of all requests) left out of the pooled summary (`notPooled`). 349 rows in all.
-  - **Not in this edition:** Elevance reports (per-contract PDFs with no landing
+  - **Fifth pass, the same day:** Elevance, 68 rows (Anthem, Wellpoint, Simply, Healthy Blue, Amerigroup, Summit;
+    percentages only, times in whole days where 1 means up to 24 hours). All six insurers KFF covered in Medicare
+    Advantage are now in the table: 417 rows. Left out: Elevance's three Florida MA plans that post HTML pages
+    without a contract number, Indiana's unlinked statewide aggregate (it would double-count the four plan
+    reports), and Healthy Blue South Carolina (likely not Elevance-owned).
+  - **Not in this edition:** further Elevance reports (per-contract PDFs with no landing
     page, or refusing scripted requests), Aetna's Medicaid plans, Molina (its pages render by script), HCSC Illinois and New Mexico, Florida Blue, BCBS North
     Carolina and L.A. Care. CareSource and AmeriHealth Caritas Medicaid reports were not found on October 7, 2026.

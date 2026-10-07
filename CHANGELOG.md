@@ -54,6 +54,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- The prior authorization metrics table now includes Elevance (Anthem,
+  Wellpoint and its Medicaid plans): 417 calendar-2025 reports, with all six
+  of the largest Medicare Advantage insurers.
 - The prior authorization metrics table now includes Centene (Wellcare,
   Ambetter and its Medicaid plans): 349 calendar-2025 reports in all. Where a
   payer's posted rate does not match its own posted counts, both are kept as

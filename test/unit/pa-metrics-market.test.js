@@ -24,15 +24,15 @@ test('the bundled summary is the summary of the table (regenerate with the scrip
   assert.deepEqual(PA_METRICS_MARKET, summarize(rows));
 });
 
-test('the first edition: 349 reports; the Medicare Advantage market is 193 contract reports from five payers, rates only', () => {
-  assert.equal(rows.length, 349);
-  assert.equal(PA_METRICS_MARKET['medicaid-mco|2025'].reports, 89);
-  assert.equal(PA_METRICS_MARKET['qhp|2025'].reports, 55);
-  assert.deepEqual(PA_METRICS_MARKET['qhp|2025'].payers, ['Centene', 'Health Care Service Corporation', 'Kaiser Permanente', 'Oscar Health', 'UnitedHealthcare']);
+test('the first edition: 417 reports; the Medicare Advantage market is 228 contract reports from the six largest insurers, rates only', () => {
+  assert.equal(rows.length, 417);
+  assert.equal(PA_METRICS_MARKET['medicaid-mco|2025'].reports, 113);
+  assert.equal(PA_METRICS_MARKET['qhp|2025'].reports, 62);
+  assert.deepEqual(PA_METRICS_MARKET['qhp|2025'].payers, ['Centene', 'Elevance Health', 'Health Care Service Corporation', 'Kaiser Permanente', 'Oscar Health', 'UnitedHealthcare']);
   assert.deepEqual(PA_METRICS_MARKET['mmp|2025'].metrics, {}, 'two payers are not a market');
   const m = PA_METRICS_MARKET['ma|2025'];
-  assert.equal(m.reports, 193);
-  assert.deepEqual(m.payers, ['Aetna (CVS Health)', 'Centene', 'Humana', 'Kaiser Permanente', 'UnitedHealthcare']);
+  assert.equal(m.reports, 228);
+  assert.deepEqual(m.payers, ['Aetna (CVS Health)', 'Centene', 'Elevance Health', 'Humana', 'Kaiser Permanente', 'UnitedHealthcare']);
   assert.deepEqual(Object.keys(m.metrics), ['stdApprovedPct', 'stdDeniedPct', 'appealApprovedPct', 'expApprovedPct', 'expDeniedPct']);
   for (const s of Object.values(m.metrics)) assert.ok(s.p25 <= s.median && s.median <= s.p75);
 });

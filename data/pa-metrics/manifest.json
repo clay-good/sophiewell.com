@@ -6,21 +6,21 @@
   "agency": "Each payer's own posted report (URL on every row); curated by sophiewell.com",
   "status": "public-facts-with-attribution",
   "cadence": "annual",
-  "recordCount": 349,
+  "recordCount": 417,
   "shards": [
     {
       "name": "pa-metrics.json",
-      "sha256": "7bbacf455344ffc861ac4c08fddfa3e86c9a001d719cc8f328d17d4aad2d69f5",
-      "records": 349,
-      "bytes": 325102
+      "sha256": "91b1263f6164205649efa77bbd600256b7e1d82aebe818785ddc1fa9c2552f92",
+      "records": 417,
+      "bytes": 391337
     }
   ],
   "notes": "spec-v1605: one row per report a payer posted under 42 CFR 422.122(c), 438.210(f) or 45 CFR 156.223(c), with the payer's figures as posted, its URL and the date it was read. Counts are carried only where the payer posted them; a rate over zero requests is stored as no rate; nothing is back-computed. Curation is CC-BY-4.0.",
   "coverage": "subset",
-  "coverageNote": "Calendar-2025 reports as posted: Medicare Advantage contracts of UnitedHealthcare, Aetna, Humana, Kaiser Permanente and Centene; Medicaid managed care and CHIP plans of UnitedHealthcare, Humana, Kaiser and Centene; Marketplace issuers of UnitedHealthcare, Kaiser, Oscar, HCSC and Centene. Other insurers are not in it yet.",
+  "coverageNote": "Calendar-2025 reports as posted: Medicare Advantage contracts of UnitedHealthcare, Aetna, Humana, Kaiser Permanente, Centene and Elevance; Medicaid managed care and CHIP plans of UnitedHealthcare, Humana, Kaiser, Centene and Elevance; Marketplace issuers of UnitedHealthcare, Kaiser, Oscar, HCSC, Centene and Elevance. Other insurers are not in it yet.",
   "sourceEdition": "CY2025 reports, read 2026-10-07",
   "curatedAt": "2026-10-07",
   "contentChangedAt": "2026-10-07",
   "expiresOn": "2028-10-07",
-  "recordsSha256": "482a76552f7f8e591c947c8f16905985f8853a2b9df5fa116465490a83c5d604"
+  "recordsSha256": "cd58181e341b589f7df710461a3d3f245d71350ceceb05b531fc9c1fc07de1e4"
 }
