@@ -43,7 +43,7 @@ const STRUCTURAL = [
   // spec-v757: /tools/ is the whole catalog on one page -- 1564 names in
   // multi-column lists, which is exactly the shape that overflows a narrow
   // phone if a column minimum is set too wide.
-  '/', '/commitments/', '/topics/', '/tools/',
+  '/', '/commitments/', '/open-data/', '/topics/', '/tools/',
   ...dirSlugs('for').map((s) => `/for/${s}/`),
   ...dirSlugs('topics').map((s) => `/topics/${s}/`),
 ];

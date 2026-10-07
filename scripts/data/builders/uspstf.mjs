@@ -80,6 +80,9 @@ export default {
   notes: 'One record per row of the A and B list: topic, population, description verbatim, grade, release month and link, joined with the curated age, sex, pregnancy and risk of scripts/data/uspstf-populations.json. The USPSTF terms require verbatim reproduction with the source cited.',
   recordBounds: { min: 40, max: 80 },
   shardKey: () => 'recommendations',
+  // spec-v1605: an open export; the key changes with the description's wording, so a reworded or
+  // regraded recommendation is listed as one removed and one added.
+  changelogKey: (r) => r.key,
   discover,
   parse,
   shape: (r) => (r.key && r.description && ['A', 'B'].includes(r.grade) && /^\d{4}-\d{2}$/.test(r.released) ? null : 'a row without key, description, A/B grade or release month'),

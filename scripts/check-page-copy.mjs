@@ -502,7 +502,7 @@ async function main() {
   // none of them -- eight topic titles ran 68 to 73 characters and six
   // descriptions ran up to 209, so the tail of each was cut in a search result
   // wherever the tab did not cut it first. Same budgets, checked the same way.
-  const staticPages = ['index.html', 'tools/index.html', 'commitments/index.html', 'topics/index.html'];
+  const staticPages = ['index.html', 'tools/index.html', 'commitments/index.html', 'open-data/index.html', 'topics/index.html'];
   for (const dir of HUB_DIRS) {
     const base = join(ROOT, 'dist', dir);
     if (!existsSync(base)) continue;

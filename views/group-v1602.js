@@ -76,7 +76,7 @@ function carinEobReader(root) {
         });
         wrap.appendChild(button); results.appendChild(wrap);
       }
-      results.appendChild(el('p', { class: 'muted', text: 'A flag is a question worth asking your plan, not a finding that you were overcharged. Each states the fact from your file it rests on. Reason codes are shown as the plan sent them; preventive care other than preventive medicine visits is not checked yet.' }));
+      results.appendChild(el('p', { class: 'muted', text: 'A flag is a question worth asking your plan, not a finding that you were overcharged. Each states the fact from your file it rests on. Reason codes are shown as the plan sent them. Preventive care is checked by code: preventive visits and the screening, counseling, vaccine and PrEP codes on the CMS preventive services chart. A lab test also used for diagnosis, such as an A1c, is not flagged.' }));
       renderReceipt(results, m);
     });
     worker.postMessage({ type: 'read', files: payload, options: { coinsurancePct: root.querySelector('#cer-coins').value } }, payload.map((f) => f.buffer));

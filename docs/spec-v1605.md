@@ -69,12 +69,33 @@ deterministic answer the page gives, and the file never leaves the reader's mach
 - **Built October 3, 2026:** the Transparency in Coverage schema watch. `lib/tic-schemas.js` carries
   `Source tag: CMSgov/price-transparency-guide tag v2.2.1`, and `scripts/data/watch-upstream.mjs` lists any
   newer version tag in the weekly refresh pull request: "gate the next" is a person updating the module,
-  its tests and the tag line together. CARIN Blue Button was read at package 2.2.0 ([spec-v1602](spec-v1602.md)),
-  but the reader names no pin in code, so nothing watches it yet.
+  its tests and the tag line together. CARIN Blue Button is pinned at package 2.2.0 by a `Source package:` line in
+  `lib/carin-eob-reader.js`, compared with the FHIR package registry since October 6, 2026
+  ([spec-v1621](spec-v1621.md#build-status) §3.7).
 - **Built October 3, 2026:** the WISeR watch. `medicare-ffs-pa-required` was built September 30
   ([spec-v1502](spec-v1502.md#build-status)), and its two source pages (the WISeR model page and the
   prior-authorization initiatives page) are now `WATCHED_SOURCES` in the module. The route-B page watcher
   fingerprints them weekly, with baselines recorded the same day.
-- **Not yet built:** the preventive code map, the IRS HSA safe-harbor notices' page watch (static notices;
-  the indexed DPC fee limit in `dpc-hsa-check` is already watched), the curated PA metrics table, and the
-  open exports.
+- **Built October 7, 2026:** the IRS HSA safe-harbor watch. `lib/hsa-predeductible-check.js` lists Notices
+  2004-23, 2013-57, 2018-12 and 2019-45 and Publication 969 as `WATCHED_SOURCES`, with baselines recorded that
+  day. The notices are static, so a changed hash means a reissue; Publication 969 is revised each tax year and
+  is where a new or withdrawn safe harbor shows first. The indexed DPC fee limit in `dpc-hsa-check` (Notice
+  2026-5) was already watched.
+- **Built October 7, 2026:** the preventive code map, `lib/preventive-codes.js`, read in `carin-eob-reader`'s flags.
+  Read that day from the CMS chart MLN006559 (July 2026, one page per service): 84 HCPCS and CPT codes in 20
+  services, each with its 147.130 basis (USPSTF, ACIP or HRSA). **Differed from the spec:** only codes that are
+  preventive by their own descriptor are kept. Codes billed as often for diagnosis (lipid panel, glucose and A1c,
+  bone density, hepatitis B serologies, the STI tests), the blood-based colorectal tests (not a USPSTF strategy)
+  and Medicare-only benefits are left out and named in the module, so a routine A1c is never flagged. The chart
+  gives ICD-10 codes only through each NCD's coding file, so none are carried. It is a dated route-B constant
+  (`validThrough` September 30, 2027; past it the flag says the list is due for review), with the
+  `cms-preventive-services-chart` staleness-ledger row and the chart's `services.js` version line page-watched.
+- **Built October 7, 2026:** the open exports, at `/open-data/` (`scripts/build-open-data.mjs`). The USPSTF
+  dataset is offered as its bundled manifest, shard and `changelog.json` (the refresh runner appends an entry
+  for any refresh that adds, removes or changes a record, keyed by `changelogKey`), so the download is the
+  bundled dataset byte for byte; the preventive code map is written from its constant to
+  `preventive-codes.json`, one row per code with its source URL and read date. **Differed from the spec:** a
+  USPSTF row carries its own recommendation URL, and its read date is the manifest's `fetchedAt` (one read
+  for the whole list), not a per-row field. Older versions are not served; the changelog and the git history
+  are the record between them.
+- **Not yet built:** the curated PA metrics table.

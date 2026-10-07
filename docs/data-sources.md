@@ -190,6 +190,17 @@ and written with `coverage: 'full'`, `fetchedAt`, `sourceEdition` and
 | `data/mfp-negotiated-prices/` | CMS "Selected Drug List and Negotiated Prices" data file: every row kept (the file is a dated history of added, inflation-updated and deselected NDCs), one per NDC-11 and price period, with the 30-day price, the NDC-9 per-unit price, HCPCS code and type of update. `drugs.js` carries the per-drug price periods `partd-mfp-price-check` imports | file of 2026-09-21 | 560 NDC rows, 40 drugs |
 | `data/mcd-articles/` | Medicare Coverage Database current billing and coding articles that list codes: code groups, covered and non-covered ICD-10-CM groups, group paragraphs as plain text, and the states their contractors serve; one shard per article plus `index.json`; descriptions dropped | 2026-09-28 weekly | 1,106 articles |
 
+## Open data
+
+[spec-v1605](spec-v1605.md): the datasets curated for the public-utility tools are listed as
+downloads at [/open-data/](https://sophiewell.com/open-data/), built by `scripts/build-open-data.mjs`.
+A fetched dataset is offered as the files the tools read, so the download is the bundled dataset
+byte for byte; a builder with `changelogKey` (today `uspstf`) also keeps `changelog.json` beside its
+manifest, one entry per refresh that moved a record (added, removed, changed keys), newest first.
+The preventive code map (`lib/preventive-codes.js`, a dated route-B constant read from the CMS chart
+MLN006559) is written to `/open-data/preventive-codes.json`, one row per code with its source URL and
+read date.
+
 ## Health record concepts
 
 `data/concepts/concepts.json` ([spec-v1624](spec-v1624.md)) maps the coded

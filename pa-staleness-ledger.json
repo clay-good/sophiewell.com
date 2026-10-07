@@ -1266,6 +1266,14 @@
       "rules": [],
       "url": "https://www.cms.gov/training-education/partner-outreach-resources/new-medicare-card/medical-beneficiary-identifiers-mbis",
       "lastVerified": "2026-06-15"
+    },
+    {
+      "id": "cms-preventive-services-chart",
+      "label": "The HCPCS and CPT codes of the CMS Medicare preventive services chart (MLN006559, July 2026), screening, counseling, vaccine and PrEP codes only, backing the preventive code map in carin-eob-reader (lib/preventive-codes.js). Codes only, no descriptors. 45 CFR 147.130.",
+      "ruleFamily": "billing-v83",
+      "rules": [],
+      "url": "https://www.cms.gov/medicare/prevention/prevntiongeninfo/medicare-preventive-services/mps-quickreferencechart-1.html",
+      "lastVerified": "2026-10-07"
     }
   ],
   "acknowledgments": []

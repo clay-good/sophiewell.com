@@ -73,6 +73,8 @@ const urls = [
   // remains a real route. It must stay in the sitemap so crawlers find
   // the eight public-infrastructure commitments codified in spec-v50.
   `  <url><loc>${SITE}/commitments/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>`,
+  // spec-v1605: the open-data downloads of the curated coverage datasets.
+  `  <url><loc>${SITE}/open-data/</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>`,
   // spec-v757: the full catalog listing. Linked from the footer, and the only
   // internal hub that reaches every pre-rendered /tools/<id>/ page.
   `  <url><loc>${SITE}/tools/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>`,

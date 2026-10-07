@@ -58,12 +58,42 @@ async function readJsonOr(path, fallback) {
   return existsSync(path) ? JSON.parse(await readFile(path, 'utf8')) : fallback;
 }
 
+// spec-v1605 open exports: changelogEntry(previous, records, key, { date, edition }) -> the entry for
+// changelog.json, or null when no record moved. Records are matched by key; a key on both sides whose
+// record differs is `changed`. Keys are sorted so the file diffs cleanly.
+export function changelogEntry(previous, records, key, { date, edition }) {
+  const before = new Map(previous.map((r) => [key(r), JSON.stringify(r)]));
+  const after = new Map(records.map((r) => [key(r), JSON.stringify(r)]));
+  const added = [...after.keys()].filter((k) => !before.has(k)).sort();
+  const removed = [...before.keys()].filter((k) => !after.has(k)).sort();
+  const changed = [...after.keys()].filter((k) => before.has(k) && before.get(k) !== after.get(k)).sort();
+  if (previous.length && !added.length && !removed.length && !changed.length) return null;
+  return previous.length
+    ? { date, edition, records: records.length, added, removed, changed }
+    : { date, edition, records: records.length, first: true };
+}
+
+async function readRecords(folder) {
+  const m = await readJsonOr(join(folder, 'manifest.json'), null);
+  if (!m || m.coverage !== 'full' || !m.shards) return [];
+  const out = [];
+  for (const s of m.shards) out.push(...(await readJsonOr(join(folder, 'shards', s.name), [])));
+  return out;
+}
+
 // writeDataset(dataDir, builder, found, records, extra) -> manifest. Replaces
 // the folder's shard set (a sample's leftover shards are removed) and writes
 // the manifest v2 for fetched data.
 export async function writeDataset(dataDir, builder, found, records, { sourceSha256, today, ancillary = {} }) {
   const folder = join(dataDir, builder.id);
   const shardDir = join(folder, 'shards');
+  // An open-export dataset (a builder with `changelogKey`) keeps changelog.json beside its manifest:
+  // what each refresh added, removed and changed, newest first. It is not part of recordsSha256.
+  if (builder.changelogKey) {
+    const log = await readJsonOr(join(folder, 'changelog.json'), []);
+    const entry = changelogEntry(await readRecords(folder), records, builder.changelogKey, { date: today, edition: found.edition });
+    if (entry) await writeIfChanged(join(folder, 'changelog.json'), JSON.stringify([entry, ...log], null, 2) + '\n');
+  }
   const shards = shard(records, builder.shardKey);
   const written = new Set();
   const shardMeta = [];
@@ -74,7 +104,7 @@ export async function writeDataset(dataDir, builder, found, records, { sourceSha
     shardMeta.push({ name: s.name, sha256: sha256(json), records: s.items.length, bytes: Buffer.byteLength(json) });
   }
   if (existsSync(shardDir)) for (const f of await readdir(shardDir)) if (!written.has(f)) await rm(join(shardDir, f));
-  const keep = new Set(['manifest.json', 'shards', ...Object.keys(ancillary)]);
+  const keep = new Set(['manifest.json', 'shards', ...(builder.changelogKey ? ['changelog.json'] : []), ...Object.keys(ancillary)]);
   // A .js ancillary is a module's text, written as is (poverty-guidelines); anything else is JSON.
   for (const [name, value] of Object.entries(ancillary)) await writeIfChanged(join(folder, name), name.endsWith('.js') ? value : JSON.stringify(value, null, 2) + '\n');
   for (const f of await readdir(folder)) if (!keep.has(f)) await rm(join(folder, f), { recursive: true });

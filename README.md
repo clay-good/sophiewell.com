@@ -11,7 +11,8 @@
 
 <p align="center">
   <a href="https://sophiewell.com">Live site</a> ·
-  <a href="https://sophiewell.com/commitments/">Commitments</a>
+  <a href="https://sophiewell.com/commitments/">Commitments</a> ·
+  <a href="https://sophiewell.com/open-data/">Open data</a>
 </p>
 
 <!--

@@ -30,6 +30,19 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Open data: a new page, /open-data/, offers the datasets curated for the
+  coverage tools as free downloads: the USPSTF A and B list (with a changelog
+  of what each refresh added, removed or changed) and the preventive service
+  codes. Each row names its source and the date it was read.
+- Claims file reader: a cost share on a screening, counseling, vaccine or PrEP
+  code now raises "Preventive service with cost sharing", naming the service and
+  why most plans must cover it at $0. The codes come from the CMS preventive
+  services chart (July 2026). Codes also billed for diagnosis, such as A1c or a
+  lipid panel, are left out so they don't flag every routine test.
+- The weekly source-page watch now covers the IRS notices behind the HSA
+  safe-harbor check (Notices 2004-23, 2013-57, 2018-12, 2019-45 and
+  Publication 969) and the CMS preventive services chart.
+
 - Arpraziquantel for preschool schistosomiasis (EMA product information, WHO
   2025 children's list): 150 mg dispersible tablets by weight band for S.
   mansoni (50 mg/kg) or S. haematobium and mixed (60 mg/kg), 3 months to 6

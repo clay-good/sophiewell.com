@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:ca6868c7-0085-51ee-8566-11c519abd6ac",
+  "serialNumber": "urn:uuid:b919c087-36ea-5a2c-83c2-4564c7d88ab5",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-06T11:40:18.597Z",
+    "timestamp": "2026-10-07T13:25:34.373Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -272,7 +272,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "891f8f84738da242e43f437da6d1a77822427f030d1633ef832cddceffbf3f3a"
+          "content": "309f0e7006d5aeaba381e33a0eb72640fe7ca558d3ecc89bf99dbb7b4c65ccb5"
         }
       ],
       "properties": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "257010"
+          "value": "257124"
         }
       ]
     },
@@ -3737,7 +3737,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7d40016729965e69d4b9ce2002a2087c6e4fc74485e03c491aa3800ef28e9d0d"
+          "content": "99e06411531aa64a4db567c5b2f3b48f699593d2394ae86044679c9c3e36aa30"
         }
       ],
       "properties": [
@@ -3747,7 +3747,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "12893"
+          "value": "13663"
         }
       ]
     },
@@ -10100,7 +10100,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d70e8e8a288657ae6eb326aeed61d3f46eff4de809c27ec87c0b8d9ec59af902"
+          "content": "577a9c0f013af8dba79b9c31012485cfa8918e97f84d4792f33ba4dec399ba0d"
         }
       ],
       "properties": [
@@ -10110,7 +10110,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "11352"
+          "value": "12227"
         }
       ]
     },
@@ -17135,7 +17135,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "73428e80904504fb50baa461fa2ad632e1f86b567aba907774897df3eb91e8e4"
+          "content": "25d3938de9726eac1b4d201a6f334363c01cfc81107211312bc66c83c4c1fd84"
         }
       ],
       "properties": [
@@ -17145,7 +17145,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "72227"
+          "value": "72794"
         }
       ]
     },
@@ -18826,6 +18826,27 @@
         {
           "name": "sophiewell:bytes",
           "value": "4749"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/preventive-codes.js",
+      "type": "file",
+      "name": "lib/preventive-codes.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1d07f0a6c500d40db41499b8ad0e775ac3ad2c6d576dfed69beb672ad6eafdaa"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "5908"
         }
       ]
     },
@@ -53234,7 +53255,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "0a4790a865a49ead12b7f19ff90bb2506760830931741691391ed0b737050b08"
+          "content": "314704cab1a231083dc49567db1a1eabe9622283ecf331616fe8e47e8f692089"
         }
       ],
       "properties": [
@@ -53244,7 +53265,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "13948"
+          "value": "14088"
         }
       ]
     },
@@ -84984,6 +85005,7 @@
         "urn:sophiewell:file:source:lib/prenatal-infection-screening-schedule-v1394.js",
         "urn:sophiewell:file:source:lib/preop-fasting-v897.js",
         "urn:sophiewell:file:source:lib/pressure-injury-stage-v359.js",
+        "urn:sophiewell:file:source:lib/preventive-codes.js",
         "urn:sophiewell:file:source:lib/preventive-cost-share-check.js",
         "urn:sophiewell:file:source:lib/preventive-owed.js",
         "urn:sophiewell:file:source:lib/priapism-gas-v859.js",
@@ -87455,7 +87477,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "ca6868c7008571ee"
+      "value": "b919c08736eaaa2c"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -87467,7 +87489,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3241"
+      "value": "3242"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

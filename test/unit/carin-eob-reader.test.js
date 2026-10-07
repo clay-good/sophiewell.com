@@ -52,6 +52,21 @@ test('a preventive visit with coinsurance raises the preventive flag and nothing
   assert.match(r.flags[0].fact, /^Code 99396 on 2026-03-02 is a preventive medicine visit, and the file shows \$40\.00 for you to pay\./);
 });
 
+test('a screening code from the preventive code map with a cost share raises the preventive flag; a dual-use lab code does not', () => {
+  const r = readEob(ndjson(
+    eob('a', [line('77067', [amt(ADJ, 'eligible', 150), amt(C4, 'coinsurance', 30), amt(C4, 'memberliability', 30)])]),
+    eob('b', [line('83036', [amt(ADJ, 'eligible', 20), amt(C4, 'coinsurance', 4), amt(C4, 'memberliability', 4)])]),
+    eob('c', [line('G0121', [amt(ADJ, 'eligible', 900), amt(C4, 'memberliability', 0)])]),
+  ), { now: new Date('2026-10-07T12:00:00Z') });
+  assert.deepEqual(r.flags.map((f) => [f.claim, f.flag, f.tool]), [['a', 'Preventive service with cost sharing', 'preventive-cost-share-check']]);
+  assert.match(r.flags[0].fact, /^Code 77067 on 2026-03-02 is screening mammography on the CMS preventive services chart \(July 2026\), and the file shows \$30\.00 for you to pay\. In network, most plans \(not grandfathered ones\) must cover a USPSTF A or B recommendation without cost sharing/);
+});
+
+test('past its review date the code map still flags, and says the list is due for review', () => {
+  const r = readEob(ndjson(eob('a', [line('G0444', [amt(ADJ, 'eligible', 20), amt(C4, 'memberliability', 20)])])), { now: new Date('2027-10-01T12:00:00Z') });
+  assert.match(r.flags[0].fact, /\(July 2026, a list now due for review\)/);
+});
+
 test('out-of-network emergency care, a possible duplicate, a denial and a coinsurance mismatch are each named with their fact', () => {
   const r = readEob(ndjson(
     eob('b', [line('99284', [amt(ADJ, 'eligible', 500), amt(C4, 'memberliability', 300), status('benefitpaymentstatus', 'outofnetwork')], { locationCodeableConcept: { coding: [{ code: '23' }] } })]),

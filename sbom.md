@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `ca6868c7008571ee`
-Generated: 2026-10-06T11:40:18.597Z
+Build ID: `b919c08736eaaa2c`
+Generated: 2026-10-07T13:25:34.373Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -35,7 +35,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `sw.js` | 6994 | `215b6fa7b871cac7b775393d28a00c11ff3ccd1ce1b3230b378bcb8d8f881b40` |
 | `site.webmanifest` | 709 | `0e0de4da60590a12e8b27a0ae2a2f5ffdb6500b7d2b78f93631ec2f64ed3d5ce` |
 | `robots.txt` | 127 | `38fbf9c1854e72abb20e01e81dd5a31d4ea96f154c12d5db1ec3af05524dd1a1` |
-| `sitemap.xml` | 257010 | `891f8f84738da242e43f437da6d1a77822427f030d1633ef832cddceffbf3f3a` |
+| `sitemap.xml` | 257124 | `309f0e7006d5aeaba381e33a0eb72640fe7ca558d3ecc89bf99dbb7b4c65ccb5` |
 | `_headers` | 2063 | `1a500c03dd4add8641287d189c20f15afa3657931417b11ea2a51f39b501773f` |
 | `logo.png` | 63440 | `11afaf1b0d3ca68393d202e4810bf766b5b6d591b4e3ec52f41d3cacaa4616ec` |
 | `favicon.ico` | 3682 | `8dd13c4dd66de0c9ec93c2c1561e5fec1902f144b677d3581cf56b124b04a1b8` |
@@ -210,7 +210,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/cardiology-risk-v209.js` | 9171 | `88c42e30a3a988582df237cf741a23d58c25a559598f7d7e23455e1d15d59214` |
 | `lib/cardiology-risk-v214.js` | 15271 | `b2fdd193d52e45f04b84c9a31fa4fe6ccc97a34619e1f40888eda8500ba1a744` |
 | `lib/cardiometab-v251.js` | 7707 | `e4ff3dceeeb7c3f9225498e19390c095d052f05cf274eb1c74b6079b3c8b805c` |
-| `lib/carin-eob-reader.js` | 12893 | `7d40016729965e69d4b9ce2002a2087c6e4fc74485e03c491aa3800ef28e9d0d` |
+| `lib/carin-eob-reader.js` | 13663 | `99e06411531aa64a4db567c5b2f3b48f699593d2394ae86044679c9c3e36aa30` |
 | `lib/carin-run.js` | 2020 | `0408c27d858832fbba8a3f6c3c12dbd47f143f682b95781ebba341602a2f67c4` |
 | `lib/carin-worker.js` | 649 | `c62a24ab9b0b327eea57a22ff92d346185ef5ec8c3e352c0a097a5106cd5cc5d` |
 | `lib/carpentier-mr-v398.js` | 4463 | `b7d6dbb82a991dc9aa696fed03d7987e822d863a0ddba58babd7ea1f9524eb99` |
@@ -513,7 +513,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/hpt-v1515.js` | 23770 | `292e13960351576652be8f97bc50079e1aa1f571f92ee4cf34d74fd1d701fe4e` |
 | `lib/hpt-worker.js` | 1092 | `7d62f64cc7c26dadf569116ce948df0b9c5f030da26338f5ad4384617dd3660d` |
 | `lib/hrs-aki-v808.js` | 5530 | `1c0f95ac894d64cfa61e232142bcea6c972b1eb9d79dd7ce9a9a2bc88d44d40b` |
-| `lib/hsa-predeductible-check.js` | 11352 | `d70e8e8a288657ae6eb326aeed61d3f46eff4de809c27ec87c0b8d9ec59af902` |
+| `lib/hsa-predeductible-check.js` | 12227 | `577a9c0f013af8dba79b9c31012485cfa8918e97f84d4792f33ba4dec399ba0d` |
 | `lib/hughes-gbs-v800.js` | 3821 | `7eccbcbfa3b119a77f179e32c09a0d60436e093d390a0cbcdcd2c615e53964fa` |
 | `lib/hvpg-v1416.js` | 5947 | `2f6f237129840b8b722a4789e836f83a069772f90b07a4e8441e28d6f6b2c585` |
 | `lib/hypoglycemia-level-v1446.js` | 4543 | `fed8086cf5a9440aae872a555437a178571ee5b4e5ddf0be2993355e3eae2053` |
@@ -848,7 +848,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/pa/report.js` | 9691 | `d19c531e5ee3d480c96dd548c348b314ebcb37beaa3d5e8f87f70680e783e08d` |
 | `lib/pa/rule-sources.js` | 9357 | `6096fc0fc01b68c012dc97cd18de3e82257cb601cdac1a74ee9421d8e5f2add4` |
 | `lib/pa/rules.js` | 1567339 | `d61a3e1474798f5ca9808af4609e19ccb0e0ee741881141929e489863334a5f3` |
-| `lib/pa/staleness-ledger.js` | 72227 | `73428e80904504fb50baa461fa2ad632e1f86b567aba907774897df3eb91e8e4` |
+| `lib/pa/staleness-ledger.js` | 72794 | `25d3938de9726eac1b4d201a6f334363c01cfc81107211312bc66c83c4c1fd84` |
 | `lib/pa/staleness.js` | 9310 | `99249cde34d35bb57ea644fced966019d1373b34f792f1ea9b42b586b94454df` |
 | `lib/paed-delirium-v1499.js` | 3969 | `c8836be1003c2235bb05d8ce78a07baf922b3039ac798b4bf4a3ae8bb20aca20` |
 | `lib/page-title.js` | 1458 | `575f7d045fda35d9bc5c6a04f70fd76dbf3364a987983ccde90d84fa54b12925` |
@@ -929,6 +929,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/prenatal-infection-screening-schedule-v1394.js` | 14385 | `9d278f1f06d33353a7783070fcbb6266f959c1fc122492acc0951d49cf688c45` |
 | `lib/preop-fasting-v897.js` | 10063 | `ed23427c48116fc437eb20583c10f3c5211f1b3d5d0692d5ac7a7f37986d5b53` |
 | `lib/pressure-injury-stage-v359.js` | 4749 | `b286894ea7f911cf8ed86221f1440080f129fe5b621bfd78f9788bd5abe16cbb` |
+| `lib/preventive-codes.js` | 5908 | `1d07f0a6c500d40db41499b8ad0e775ac3ad2c6d576dfed69beb672ad6eafdaa` |
 | `lib/preventive-cost-share-check.js` | 11251 | `932c8d8c7a61bb037de2d494ae35600e271adee2537153d4d164883b898f3ac1` |
 | `lib/preventive-owed.js` | 9357 | `7874d4516699952bc455cf982a39a90a35995ad51fcd16080d8f014240076d3f` |
 | `lib/priapism-gas-v859.js` | 10757 | `64a551a208b4f1430a62b0d16669339f61c853a2af7db33e5612ce32a559d6cf` |
@@ -2567,7 +2568,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v16.js` | 13376 | `3503141aaa8247033b2d1bbb218694ba7aed7f257e62f0c8b66d7fb5044e9671` |
 | `views/group-v160.js` | 11685 | `14ef775c5b8ffbe178e1263f27c806d4c99c02fc86dd79d907213aefd3b7b77f` |
 | `views/group-v1601.js` | 8982 | `140f4c8f7160b256ae1f6e2e6c708d6c2a6b8ea60a88831d1b67f3d284888b37` |
-| `views/group-v1602.js` | 13948 | `0a4790a865a49ead12b7f19ff90bb2506760830931741691391ed0b737050b08` |
+| `views/group-v1602.js` | 14088 | `314704cab1a231083dc49567db1a1eabe9622283ecf331616fe8e47e8f692089` |
 | `views/group-v1603.js` | 7073 | `57d08d385ecd59045c644fea4cd65a57a6cdef633ff78b501b5742074c2a882b` |
 | `views/group-v1604.js` | 23127 | `60ab59e78a8575057a34586cc2b5c43c4c7c17c1880e34c1c4fe2ebf7b0eaabb` |
 | `views/group-v161.js` | 8025 | `01187902dc8b2523d595b9ff8b8a211db519fb0f1cc00228725b977474c9f4f1` |
