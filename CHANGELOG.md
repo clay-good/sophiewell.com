@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Names, member IDs, birth dates and account numbers typed into a letter
+  (the appeal and request letters, the HIPAA authorization, the records
+  request and the wallet card) no longer appear in the page's address, so a
+  shared link cannot carry them. Chosen file names are left out too.
 - Direct primary care and HSA check now knows the 2027 monthly limit ($150 for
   one person, $300 for more), unchanged in the IRS's first indexed year (Rev.
   Proc. 2026-24), instead of asking for it.
@@ -57,6 +61,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Check My Hospital Bill Against Its Posted Prices now drafts a letter to the
+  hospital's billing office: each line above the posted price, or missing from
+  the hospital's file, with the number the hospital posted, and a request to
+  correct or explain it. Print it or download it as a Word file.
 - The prior authorization metrics table now holds 618 calendar-2025 reports
   from 32 payers, adding Devoted, Highmark, SCAN, Point32Health, UPMC, Alignment, EmblemHealth, Independence, Excellus,
   Univera, Select Health, Priority Health, HealthPartners, L.A. Care, Blue

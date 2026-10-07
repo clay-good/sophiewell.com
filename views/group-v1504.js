@@ -20,7 +20,9 @@ function textField(root, label, id, placeholder) {
   const wrap = el('p');
   wrap.appendChild(el('label', { for: id, text: label }));
   wrap.appendChild(el('br'));
-  wrap.appendChild(el('input', { id, type: 'text', autocomplete: 'off', placeholder }));
+  // A person's name or ID is kept out of the page's shareable link (app.js trackHashState).
+  const personal = /-(enrollee|member|claimant|requester|patient|prescriber)$/.test(id) ? { 'data-private': '' } : {};
+  wrap.appendChild(el('input', { id, type: 'text', autocomplete: 'off', placeholder, ...personal }));
   root.appendChild(wrap);
 }
 function dateInput(root, label, id) {

@@ -3,7 +3,7 @@
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { itemizedBillCheck, linesFromText } from '../../lib/itemized-bill-check.js';
+import { itemizedBillCheck, linesFromText, billCorrectionRequest } from '../../lib/itemized-bill-check.js';
 import { extractForCodes } from '../../lib/hpt-compare.js';
 
 const ATT = 'To the best of its knowledge and belief';
@@ -73,4 +73,32 @@ test('the bill is refused by name until it is complete', () => {
   assert.deepEqual(itemizedBillCheck({ bill: ',99284,1,100\n,85025,1,20', setting: 'outpatient', payment: 'insured' }).needCodes, ['99284', '85025']);
   const bad = itemizedBillCheck({ bill: ',99284,lots,100', setting: 'outpatient', payment: 'insured', prices: {} });
   assert.equal(bad.rows[0].status, 'invalid');
+});
+
+test('spec-v1501 §4: the request to the billing office lists each flagged line with the posted number, and blanks what it was not told', async () => {
+  const r = await run('2026-03-02, 99284, 1, 2400, ED visit\n2026-03-02, 85025, 2, 120, CBC\n2026-03-02, 12345, 1, 50, Supply');
+  const now = new Date('2026-10-07T12:00:00Z');
+  const letter = billCorrectionRequest(r, {}, now);
+  assert.equal(letter.valid, true);
+  const items = letter.sections.find((s) => s.heading === 'Lines to review').items;
+  assert.deepEqual(items, [
+    'Line 1, code 99284 (ED visit), 2026-03-02: $2,400.00 for 1 unit. Charged $2,400.00 a unit, above the $2,000.00 gross charge the hospital posted.',
+    'Line 3, code 12345 (Supply), 2026-03-02: $50.00 for 1 unit. Not posted: the hospital\'s file does not list this code for this setting.',
+  ], 'the line at its posted price is not listed');
+  const text = letter.sections.flatMap((s) => [...(s.paragraphs || []), ...(s.items || [])]).join('\n');
+  assert.match(text, /Alpha Hospital, billing office/);
+  assert.match(text, /45 CFR 180\.50/);
+  assert.match(text, /Date: October 7, 2026/);
+  assert.match(text, /please tell me the standard charge you set for it/);
+  assert.equal(letter.blanks, 3, 'patient name twice and the account number');
+  assert.doesNotMatch(text, /overbill|overcharg/i, 'it asks; it does not accuse');
+  const filled = billCorrectionRequest(r, { patient: 'Pat Lee', account: 'A-100' }, now);
+  assert.equal(filled.blanks, 0);
+  assert.match(filled.band, /^2 lines listed for review\. No blanks left/);
+});
+
+test('with nothing flagged, or no check, there is no letter', async () => {
+  const r = await run('2026-03-02, 85025, 2, 120, CBC');
+  assert.match(billCorrectionRequest(r).message, /no correction to ask for/);
+  assert.equal(billCorrectionRequest(null).valid, false);
 });

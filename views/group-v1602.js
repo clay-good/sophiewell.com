@@ -9,6 +9,7 @@ import * as IBC from '../lib/itemized-bill-check.js';
 import { loadMue } from '../lib/mue-load.js';
 import { MAX_FILE_BYTES, parseDelimited, matchColumns } from '../lib/upload-intake.js';
 import { handOff } from '../lib/hand-off.js';
+import { renderPrintable } from '../lib/print.js';
 
 const carinWorkerUrl = new URL('../lib/carin-worker.js', import.meta.url);
 const billWorkerUrl = new URL('../lib/itemized-bill-worker.js', import.meta.url);
@@ -121,6 +122,29 @@ function itemizedBillCheck(root) {
   const results = el('div', { id: 'q-results', 'aria-live': 'polite' });
   root.appendChild(el('label', { for: 'ibc-price-file', text: 'Choose the hospital\'s price file' })); root.appendChild(priceFile); root.appendChild(status); root.appendChild(results);
 
+  // The request to the billing office, drafted from the last check once it flags a line (spec-v1501 §4).
+  const ask = el('section', { id: 'ibc-letter', hidden: '' });
+  ask.appendChild(el('h2', { text: 'Ask the billing office' }));
+  ask.appendChild(el('p', { class: 'muted', text: 'A letter listing each line worth asking about, citing the hospital\'s posted prices. What you leave blank stays as [bracketed text] to fill in before sending.' }));
+  for (const [id, label] of [['ibc-patient', 'Patient name (optional)'], ['ibc-account', 'Account number on the bill (optional)']]) {
+    const p = el('p'); p.appendChild(el('label', { for: id, text: label })); p.appendChild(el('br')); p.appendChild(el('input', { id, type: 'text', autocomplete: 'off', 'data-private': '' })); ask.appendChild(p);
+  }
+  const askBand = el('p', { role: 'status' });
+  const letter = el('div', { class: 'letter-region' });
+  ask.appendChild(askBand); ask.appendChild(letter);
+  root.appendChild(ask);
+  let last = null;
+  const drawLetter = () => {
+    clear(letter); askBand.textContent = '';
+    const r = last && IBC.billCorrectionRequest(last, { patient: root.querySelector('#ibc-patient').value, account: root.querySelector('#ibc-account').value });
+    ask.hidden = !(r && r.valid);
+    if (!ask.hidden) {
+      askBand.textContent = r.band;
+      renderPrintable(letter, { title: r.title, sections: r.sections, warnings: r.warnings, docx: { fileName: 'itemized-bill-review-request.docx' } });
+    }
+  };
+  for (const id of ['#ibc-patient', '#ibc-account']) root.querySelector(id).addEventListener('input', drawLetter);
+
   let worker = null;
   const billLines = async () => {
     const f = billFile.files && billFile.files[0];
@@ -132,7 +156,7 @@ function itemizedBillCheck(root) {
     return parsed.rows.map((r) => Object.fromEntries(IBC.BILL_FIELDS.map((x) => [x.id, mapping[x.id] == null ? '' : r[mapping[x.id]]])));
   };
   const run = async () => {
-    if (worker) worker.terminate(); clear(results);
+    if (worker) worker.terminate(); clear(results); last = null; drawLetter();
     const pf = priceFile.files && priceFile.files[0];
     let lines;
     try { lines = await billLines(); } catch (err) { status.textContent = err.message; return; }
@@ -158,6 +182,7 @@ function itemizedBillCheck(root) {
       const ul = el('ul'); for (const n of notes) ul.appendChild(el('li', { text: n })); results.appendChild(ul);
       results.appendChild(el('p', { class: 'muted', text: 'Each line is worth asking the hospital\'s billing office about, not a finding that you were overbilled. The posted prices are the hospital\'s own public statement of its charges (45 CFR 180.50), so a line above them is a fair question to put in writing.' }));
       renderReceipt(results, m);
+      last = m; drawLetter();
     });
     const billBlob = billFile.files && billFile.files[0];
     worker.postMessage({ type: 'check', priceFile: pf, billFile: billBlob || null, lines, setting: setting.value, payment: payment.value, plan: root.querySelector('#ibc-plan').value.trim(), mue: mue && mue.rows ? mue : null });

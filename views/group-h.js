@@ -16,6 +16,9 @@ import {
   mtpTracker, deviceDayCounter, bristolGirth, ventSbtPeep,
 } from '../lib/scoring-v4.js';
 
+// A person's name, birth date or contact is kept out of the page's shareable link (app.js trackHashState).
+const PRIVATE_IDS = new Set(['ha-pt', 'roi-pt', 'roi-dob', 'wc-name', 'wc-ec']);
+
 function out() { return el('div', { id: 'q-results', 'aria-live': 'polite' }); }
 
 function f29d(label, id, opts = {}) {
@@ -155,7 +158,7 @@ export const renderers = {
     for (const [l, id] of fields) {
       root.appendChild(el('p', {}, [
         el('label', { for: id, text: l }), el('br'),
-        el('input', { id, type: 'text', autocomplete: 'off' }),
+        el('input', { id, type: 'text', autocomplete: 'off', ...(PRIVATE_IDS.has(id) ? { 'data-private': '' } : {}) }),
       ]));
     }
     const region = el('div', { id: 'q-results', role: 'region', 'aria-live': 'polite' });
@@ -191,7 +194,7 @@ export const renderers = {
     for (const [l, id] of fields) {
       root.appendChild(el('p', {}, [
         el('label', { for: id, text: l }), el('br'),
-        el('input', { id, type: 'text', autocomplete: 'off' }),
+        el('input', { id, type: 'text', autocomplete: 'off', ...(PRIVATE_IDS.has(id) ? { 'data-private': '' } : {}) }),
       ]));
     }
     const region = el('div', { id: 'q-results', role: 'region', 'aria-live': 'polite' });
@@ -267,7 +270,7 @@ export const renderers = {
     for (const [l, id] of fields) {
       root.appendChild(el('p', {}, [
         el('label', { for: id, text: l }), el('br'),
-        el('input', { id, type: 'text', autocomplete: 'off' }),
+        el('input', { id, type: 'text', autocomplete: 'off', ...(PRIVATE_IDS.has(id) ? { 'data-private': '' } : {}) }),
       ]));
     }
     root.appendChild(el('p', {}, [el('label', { for: 'wc-allergies', text: 'Allergies (one per line; blank = NKDA)' }), el('br'),

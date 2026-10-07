@@ -4761,8 +4761,11 @@ function trackHashState(body) {
       body.querySelectorAll('input, select, textarea').forEach((node) => {
         if (!node.id) return;
         // Skip ephemeral pieces (search boxes inside lookup tools, the bill
-        // textarea, free-text fields with no semantic meaning).
-        if (node.tagName === 'TEXTAREA') return;
+        // textarea, free-text fields with no semantic meaning), a file input
+        // (its value is a fake path that cannot be restored), and a field
+        // marked data-private: a name or member ID typed into a letter must
+        // never land in a link someone shares.
+        if (node.tagName === 'TEXTAREA' || node.type === 'file' || node.hasAttribute('data-private')) return;
         if (node.type === 'checkbox') {
           if (node.checked) state[node.id] = '1';
         } else if (node.value !== '' && node.value != null) {
