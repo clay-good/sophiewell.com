@@ -19,20 +19,28 @@ test('a row without a source URL, or with a rate its counts do not give, fails t
   assert.match(checkRows([base, base]).join(), /duplicate/);
 });
 
+test('a rate posted as a whole percent is checked to the nearest whole percent, and only where the row says so', () => {
+  const base = { id: 'x', url: 'https://example.org/r.pdf', readOn: '2026-10-07', year: 2025, stdRequests: 1548, stdApproved: 1431, stdApprovedPct: 92 };
+  assert.match(checkRows([base]).join(), /does not match/);
+  assert.deepEqual(checkRows([{ ...base, ratePrecision: { stdApprovedPct: 0 } }]), []);
+  assert.match(checkRows([{ ...base, stdApprovedPct: 91, ratePrecision: { stdApprovedPct: 0 } }]).join(), /does not match/);
+});
+
 test('the bundled summary is the summary of the table (regenerate with the script on any change)', () => {
   assert.equal(readFileSync('lib/pa-metrics-market.js', 'utf8'), moduleText(summarize(rows)));
   assert.deepEqual(PA_METRICS_MARKET, summarize(rows));
 });
 
-test('the first edition: 472 reports; the Medicare Advantage market is 248 contract reports from the six largest insurers and Molina, rates only', () => {
-  assert.equal(rows.length, 472);
-  assert.equal(PA_METRICS_MARKET['medicaid-mco|2025'].reports, 141);
-  assert.equal(PA_METRICS_MARKET['qhp|2025'].reports, 63);
-  assert.deepEqual(PA_METRICS_MARKET['qhp|2025'].payers, ['Centene', 'Elevance Health', 'Health Care Service Corporation', 'Kaiser Permanente', 'Molina Healthcare', 'Oscar Health', 'UnitedHealthcare']);
+test('the first edition: 566 reports; the Medicare Advantage market is 313 contract reports from 21 payers, rates only', () => {
+  assert.equal(rows.length, 566);
+  assert.equal(PA_METRICS_MARKET['medicaid-mco|2025'].reports, 156);
+  assert.equal(PA_METRICS_MARKET['qhp|2025'].reports, 74);
+  assert.equal(PA_METRICS_MARKET['qhp|2025'].payers.length, 13);
   assert.deepEqual(PA_METRICS_MARKET['mmp|2025'].metrics, {}, 'four reports are too few to summarize');
   const m = PA_METRICS_MARKET['ma|2025'];
-  assert.equal(m.reports, 248);
-  assert.deepEqual(m.payers, ['Aetna (CVS Health)', 'Centene', 'Elevance Health', 'Humana', 'Kaiser Permanente', 'Molina Healthcare', 'UnitedHealthcare']);
+  assert.equal(m.reports, 313);
+  assert.equal(m.payers.length, 21);
+  for (const p of ['Aetna (CVS Health)', 'Centene', 'Elevance Health', 'Humana', 'Kaiser Permanente', 'UnitedHealthcare']) assert.ok(m.payers.includes(p), p);
   assert.deepEqual(Object.keys(m.metrics), ['stdApprovedPct', 'stdDeniedPct', 'appealApprovedPct', 'expApprovedPct', 'expDeniedPct']);
   for (const s of Object.values(m.metrics)) assert.ok(s.p25 <= s.median && s.median <= s.p75);
 });
@@ -58,6 +66,11 @@ test('figures read from the reports themselves', () => {
   const az = rows.find((r) => r.id === 'oscar-13877');
   assert.deepEqual([az.stdApprovedPct, az.stdDeniedPct, az.appealApprovedPct, az.stdMedianHours], [81.11, 18.89, 44.83, 40.8]);
   assert.deepEqual([rows.find((r) => r.id === 'hcsc-tx').stdDeniedPct, rows.find((r) => r.id === 'hcsc-tx').extendedApprovedPct], [6, null]);
+  const il = rows.find((r) => r.id === 'aetna-medicaid-mco-il');
+  assert.deepEqual([il.program, il.stdRequests, il.stdApproved, il.stdDenied, il.appeals, il.appealApproved, il.expRequests, il.stdMedianHours], ['medicaid-mco', 110555, 93277, 17278, 3284, 432, 5187, 24]);
+  const ny = rows.find((r) => r.id === 'highmark-qhp-ny');
+  assert.deepEqual([ny.stdDenied, ny.stdRequests, ny.stdDeniedPct, ny.rateMismatch], [46, 1342, 96.57, ['stdDeniedPct']], 'Highmark prints the approved rate in the denied row');
+  assert.deepEqual(rows.filter((r) => /^molina-qhp/.test(r.id)).length, 1, 'the Marketplace block Molina repeats on six state pages is one row');
 });
 
 test('quantile interpolates between closest ranks', () => {

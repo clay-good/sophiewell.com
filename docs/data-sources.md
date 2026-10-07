@@ -204,10 +204,11 @@ read date.
 `data/pa-metrics/` is the curated prior authorization metrics table: one row per report a payer posted
 under CMS-0057-F, with its figures as posted, the report's URL and the date it was read, hand-curated in
 `scripts/data/pa-metrics.json` and built by `scripts/build-data.mjs` (`coverage: 'subset'`). The first
-edition (read October 7, 2026) holds 472 calendar-2025 reports: 248 Medicare Advantage contract reports of the six
-largest insurers (UnitedHealthcare, Aetna, Humana, Kaiser Permanente, Centene, Elevance) and Molina, the Medicaid
-managed care and CHIP reports of UnitedHealthcare, Aetna, Humana, Kaiser, Centene, Elevance and Molina, and Marketplace
-issuer reports of UnitedHealthcare, Kaiser, Oscar, HCSC, Centene, Elevance and Molina. A rate a payer's own counts contradict is carried as posted and kept out of the summary. A program needs reports from three payers before it gets a
+edition (read October 7, 2026) holds 566 calendar-2025 reports from 24 payers: 313 Medicare Advantage contract
+reports (the six largest insurers, UnitedHealthcare, Aetna, Humana, Kaiser Permanente, Centene and Elevance, plus
+Molina, Devoted, SCAN, Highmark, Independence, Excellus, Univera, Blue Shield of California and regional plans),
+156 Medicaid managed care, 17 CHIP and 74 Marketplace issuer reports. A rate posted as a whole percent is checked
+to the nearest whole percent (`ratePrecision`). A rate a payer's own counts contradict is carried as posted and kept out of the summary. A program needs reports from three payers before it gets a
 market summary. `scripts/build-pa-metrics-market.mjs` checks every
 row (a source URL and read date; a stated rate reproduces from its counts; no rate over zero requests) and
 writes `lib/pa-metrics-market.js`, the per-metric median and middle half that `pa-metrics-compare` reads.

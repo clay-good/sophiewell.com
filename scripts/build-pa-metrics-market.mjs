@@ -55,7 +55,9 @@ export function checkRows(rows) {
       if (r[n] == null || r[d] == null) continue;
       if (r[d] === 0) { if (r[p] != null) problems.push(`${r.id}: ${p} over zero requests`); continue; }
       const declared = (r.rateMismatch || []).includes(p) && /does not match the posted counts/.test(r.note || '');
-      if (!declared && (r[p] == null || Math.abs((100 * r[n]) / r[d] - r[p]) > 0.051)) problems.push(`${r.id}: ${p} ${r[p]} does not match ${r[n]} of ${r[d]}`);
+      // A rate posted as a whole percent (`ratePrecision: {field: 0}`) is checked to the nearest whole percent.
+      const tolerance = r.ratePrecision?.[p] === 0 ? 0.501 : 0.051;
+      if (!declared && (r[p] == null || Math.abs((100 * r[n]) / r[d] - r[p]) > tolerance)) problems.push(`${r.id}: ${p} ${r[p]} does not match ${r[n]} of ${r[d]}`);
     }
   }
   return problems;

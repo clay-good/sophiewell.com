@@ -146,6 +146,18 @@ deterministic answer the page gives, and the file never leaves the reader's mach
     CHIP plan, with counts, and the Michigan Medicare-Medicaid plan H8026 (percentages only). The files are
     linked from each state's provider pages; Kansas, Virginia, West Virginia, New York, Ohio and California
     linked none on October 7, 2026. 472 rows in all.
+  - **Eighth pass, the same day:** 94 rows from 15 more payers, each from the payer's own file: Devoted (33 MA
+    contracts), Highmark (MA, its state Medicaid sections and four Marketplace states), Excellus and Univera, Select
+    Health, Blue Cross Blue Shield of Arizona and of Kansas, Wellmark, Blue Shield of California (Medicare and the
+    Promise Medi-Cal plan), L.A. Care, Independence, BlueCross BlueShield of Tennessee, Priority Health, HealthPartners
+    and SCAN. Many post whole percentages beside counts, so a row may declare `ratePrecision` and is checked to the
+    nearest whole percent. Defects in the files are carried as posted and declared: Highmark's New York Marketplace
+    prints the approved rate in the denied row, and prints one expedited block for three contracts (left out of the
+    summary); Priority Health H2320's expedited approval rate and two Wellmark rates contradict their counts; Devoted's
+    overturn rate is out of denied requests (not pooled). Left out: Highmark's Medicaid section that names no plan or
+    state. Not read: Blue Cross NC and Blue Cross MN (pages render by script), Florida Blue (percentages, no year
+    stated), Geisinger, UPMC and Harvard Pilgrim (refused scripted requests), Capital Blue Cross (CHIP pages name no
+    population), BCBS Alabama, Louisiana and South Carolina, Alignment and EmblemHealth (HTML pages, next). 566 rows.
   - **Not in this edition:** further Elevance reports (per-contract PDFs with no landing
     page, or refusing scripted requests), Aetna Better Health in the states that linked no report, HCSC Illinois and New Mexico, Florida Blue, BCBS North
     Carolina and L.A. Care. CareSource and AmeriHealth Caritas Medicaid reports were not found on October 7, 2026.
