@@ -51,6 +51,7 @@ const EXPECT = {
   'ptc-households.csv': ['csv-mapped', 'likely', 'Its columns fit 2 tools; choose one.'],
   'scheduled-services.csv': ['csv-mapped', 'likely', 'Does Original Medicare Require Prior Authorization? (services file)'],
   'timely-claims.csv': ['csv-mapped', 'likely', 'Claim Timely-Filing Deadline (claims file)'],
+  'appeal-decisions.csv': ['csv-mapped', 'likely', 'Medicare Appeal-Level Deadline (decisions file)'],
   'unknown.csv': ['csv-unknown', 'none', 'alpha, beta, gamma'],
   'reference-pprrvu.csv': ['reference-mpfs-rvu', 'certain', 'reference table'],
   'reference-addb.csv': ['reference-opps-addb', 'certain', 'Addendum B'],

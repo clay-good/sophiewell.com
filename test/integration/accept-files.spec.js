@@ -36,6 +36,7 @@ const CASES = {
   'irmaa': ['group-v1506', 'irmaa-people.csv', 'irm-upload-file', 'csv-mapped'],
   'refill-eligible-date': ['group-v1511', 'refill-fills.csv', 'rf-upload-file', 'csv-mapped'],
   'timely-filing': ['group-v63', 'timely-claims.csv', 'tf-upload-file', 'csv-mapped'],
+  'appeal-deadline': ['group-v63', 'appeal-decisions.csv', 'apd-upload-file', 'csv-mapped'],
   'pa-lint': ['pa-lint', 'packet.pdf', 'pa-file-picker', 'pdf'],
 };
 

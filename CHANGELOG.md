@@ -64,6 +64,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Medicare Appeal-Level Deadline Calculator now reads a list of decisions
+  (level just completed and notice date per row) and gives each one's next
+  level and filing deadline.
 - Claim Timely-Filing Deadline now reads a claims list (date of service and
   payer per row): Original Medicare claims get one calendar year, and any
   other payer uses its own limit, from the file or the form.

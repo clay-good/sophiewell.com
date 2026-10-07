@@ -155,3 +155,20 @@ test('timely-filing runs over a claims list: Original Medicare is one year, any 
   const none = runBatch('timely-filing', [{ serviceDate: '2026-09-01', payer: 'Cigna' }], {}, now);
   assert.match(none.rows[0].detail, /^Filing limit: blank\. Cigna is not Original Medicare/);
 });
+
+test('appeal-deadline runs over a list of Medicare decisions: receipt presumed 5 days after the notice, an unknown level refused by name', () => {
+  const r = runBatch('appeal-deadline', [
+    { level: 'Redetermination', decisionDate: '09/01/2026' },
+    { level: 'QIC', decisionDate: '2026-09-01', receivedDate: '2026-09-20' },
+    { level: 'council', decisionDate: '2026-03-01' },
+    { level: 'level 2', decisionDate: '2026-09-01' },
+    { level: 'initial', decisionDate: '2026-09-01', receivedDate: '2026-08-01' },
+  ], {}, new Date('2026-10-07T12:00:00Z'));
+  assert.equal(r.band, '3 decisions of 5 computed. 2 rows need corrected inputs.');
+  assert.deepEqual(r.rows.map((x) => x.label), ['Reconsideration (QIC) by 2027-03-05', 'ALJ / OMHA hearing by 2026-11-19', 'Past the deadline (2026-05-05)', 'Needs corrected inputs', 'Needs corrected inputs']);
+  assert.equal(r.rows[0].detail, 'Reconsideration (QIC): 180 days from receipt of the Redetermination (MAC) notice (presumed 2026-09-06, 5 days after its date; 42 CFR 405.962), so due by 2027-03-05; 149 days left.');
+  assert.match(r.rows[1].detail, /received 2026-09-20; 42 CFR 405\.1014\), so due by 2026-11-19; 43 days left\. At least \$200 must remain in controversy/);
+  assert.equal(r.rows[3].detail, 'Level just completed: "level 2" is not one of the choices. Write initial, redetermination, reconsideration, ALJ or council.');
+  assert.match(r.rows[4].detail, /receipt date cannot come before the notice date/);
+  assert.deepEqual(r.notes, ['Every value is the row\'s own; the form above is not used for file rows.', 'Rows that need corrected inputs say why in the result table and download.']);
+});

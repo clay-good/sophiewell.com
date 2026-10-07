@@ -63,6 +63,15 @@ function wire(ids, run) {
   });
   run();
 }
+// A batch result (lib/batch-tools.js runBatch): the summary and its notes; the workbench shows the rows.
+function showBatch(o, r) {
+  safe(o, () => {
+    if (!r.valid) { o.appendChild(el('p', { class: 'muted', text: r.message })); return; }
+    o.appendChild(el('p', { class: r.abnormal ? 'flag' : null, text: r.band }));
+    o.appendChild(el('ul', {}, r.notes.map((n) => li(n))));
+    o.appendChild(el('p', { class: 'muted', text: r.note }));
+  });
+}
 function li(text, cls) { return el('li', cls ? { class: cls, text } : { text }); }
 // A live days-remaining / past-due line (clock-dependent; not part of any
 // documented example's deterministic numbers).
@@ -99,8 +108,14 @@ export const renderers = {
     ]));
     root.appendChild(dateField('Decision / notice date', 'apd-date', '2026-01-15'));
     root.appendChild(dateField('Date received, only with proof of later receipt (optional)', 'apd-received', ''));
-    const o = out(); root.appendChild(o);
-    wire(['apd-denial', 'apd-level', 'apd-date', 'apd-received'], () => safe(o, () => {
+    const o = out();
+    // spec-v1501 §3: a list of Medicare decisions from a file, each row's level and notice date.
+    const upload = uploadWorkbench(root, {
+      id: 'apd-upload', fields: BATCH_TOOLS['appeal-deadline'].fields, label: 'Check appeal deadlines for decisions from a file',
+      compute: 'appeal-deadline', getInput: () => ({}), onResult: (r) => showBatch(o, r),
+    });
+    root.appendChild(o);
+    const single = () => safe(o, () => {
       // Denial routing block (renders only when a denial reason is chosen).
       const route = denialRoute({ category: str('apd-denial') });
       if (route) {
@@ -143,7 +158,11 @@ export const renderers = {
         r.aicUsd ? li(`Amount in controversy to reach ${r.nextLevel}: at least $${r.aicUsd} (${r.aicEdition}, set by the year of filing).`) : (r.aicEdition ? li(`Amount in controversy to reach ${r.nextLevel}: ${r.aicEdition}.`) : null),
       ].filter(Boolean)));
       o.appendChild(el('p', { class: 'muted', text: 'Deadlines per 42 CFR Part 405, Subpart I; AIC thresholds are indexed annually -- confirm the current-year amount.' }));
-    }));
+    });
+    wire(['apd-denial', 'apd-level', 'apd-date', 'apd-received'], () => {
+      if (upload.isActive()) { upload.compute({}); return; }
+      single();
+    });
   },
 
   // ----- 3.2 timely-filing --------------------------------------------------
@@ -158,15 +177,9 @@ export const renderers = {
     const o = out();
     // spec-v1501 §3: a claims list from a file, each row through timelyFiling with its own payer; the limit
     // above fills a row that leaves its limit blank.
-    const showBatch = (r) => safe(o, () => {
-      if (!r.valid) { o.appendChild(el('p', { class: 'muted', text: r.message })); return; }
-      o.appendChild(el('p', { class: r.abnormal ? 'flag' : null, text: r.band }));
-      o.appendChild(el('ul', {}, r.notes.map((n) => li(n))));
-      o.appendChild(el('p', { class: 'muted', text: r.note }));
-    });
     const upload = uploadWorkbench(root, {
       id: 'tf-upload', fields: BATCH_TOOLS['timely-filing'].fields, label: 'Check filing deadlines for claims from a file',
-      compute: 'timely-filing', getInput: () => ({ limitDays: str('tf-limit') }), onResult: showBatch,
+      compute: 'timely-filing', getInput: () => ({ limitDays: str('tf-limit') }), onResult: (r) => showBatch(o, r),
     });
     root.appendChild(o);
     const single = () => safe(o, () => {
@@ -285,5 +298,6 @@ export const renderers = {
 
 // spec-v1501 §3: a claims list dropped on the home page lands in the timely-filing upload.
 export const acceptFiles = {
+  'appeal-deadline': acceptVia('apd-upload-file'),
   'timely-filing': acceptVia('tf-upload-file'),
 };
