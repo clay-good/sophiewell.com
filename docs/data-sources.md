@@ -204,10 +204,10 @@ read date.
 `data/pa-metrics/` is the curated prior authorization metrics table: one row per report a payer posted
 under CMS-0057-F, with its figures as posted, the report's URL and the date it was read, hand-curated in
 `scripts/data/pa-metrics.json` and built by `scripts/build-data.mjs` (`coverage: 'subset'`). The first
-edition (read October 7, 2026) holds 584 calendar-2025 reports from 28 payers: 325 Medicare Advantage contract
+edition (read October 7, 2026) holds 589 calendar-2025 reports from 29 payers: 329 Medicare Advantage contract
 reports (the six largest insurers, UnitedHealthcare, Aetna, Humana, Kaiser Permanente, Centene and Elevance, plus
 Molina, Devoted, SCAN, Alignment, EmblemHealth, Highmark, Independence, Excellus, Univera, Blue Shield of California and regional plans),
-157 Medicaid managed care, 19 CHIP and 77 Marketplace issuer reports. A rate posted as a whole percent is checked
+157 Medicaid managed care, 19 CHIP and 78 Marketplace issuer reports. A rate posted as a whole percent is checked
 to the nearest whole percent (`ratePrecision`). A rate a payer's own counts contradict is carried as posted and kept out of the summary. A program needs reports from three payers before it gets a
 market summary. `scripts/build-pa-metrics-market.mjs` checks every
 row (a source URL and read date; a stated rate reproduces from its counts; no rate over zero requests) and

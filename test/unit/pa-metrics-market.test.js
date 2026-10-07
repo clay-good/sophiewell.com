@@ -31,15 +31,15 @@ test('the bundled summary is the summary of the table (regenerate with the scrip
   assert.deepEqual(PA_METRICS_MARKET, summarize(rows));
 });
 
-test('the first edition: 584 reports; the Medicare Advantage market is 325 contract reports from 24 payers, rates only', () => {
-  assert.equal(rows.length, 584);
+test('the first edition: 589 reports; the Medicare Advantage market is 329 contract reports from 25 payers, rates only', () => {
+  assert.equal(rows.length, 589);
   assert.equal(PA_METRICS_MARKET['medicaid-mco|2025'].reports, 157);
-  assert.equal(PA_METRICS_MARKET['qhp|2025'].reports, 77);
-  assert.equal(PA_METRICS_MARKET['qhp|2025'].payers.length, 15);
+  assert.equal(PA_METRICS_MARKET['qhp|2025'].reports, 78);
+  assert.equal(PA_METRICS_MARKET['qhp|2025'].payers.length, 16);
   assert.deepEqual(PA_METRICS_MARKET['mmp|2025'].metrics, {}, 'four reports are too few to summarize');
   const m = PA_METRICS_MARKET['ma|2025'];
-  assert.equal(m.reports, 325);
-  assert.equal(m.payers.length, 24);
+  assert.equal(m.reports, 329);
+  assert.equal(m.payers.length, 25);
   for (const p of ['Aetna (CVS Health)', 'Centene', 'Elevance Health', 'Humana', 'Kaiser Permanente', 'UnitedHealthcare']) assert.ok(m.payers.includes(p), p);
   assert.deepEqual(Object.keys(m.metrics), ['stdApprovedPct', 'stdDeniedPct', 'appealApprovedPct', 'expApprovedPct', 'expDeniedPct']);
   for (const s of Object.values(m.metrics)) assert.ok(s.p25 <= s.median && s.median <= s.p75);
