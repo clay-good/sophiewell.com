@@ -156,7 +156,7 @@ deterministic answer the page gives, and the file never leaves the reader's mach
     summary); Priority Health H2320's expedited approval rate and two Wellmark rates contradict their counts; Devoted's
     overturn rate is out of denied requests (not pooled). Left out: Highmark's Medicaid section that names no plan or
     state. Not read: Florida Blue (percentages, no year
-    stated), Geisinger, UPMC and Harvard Pilgrim (refused scripted requests), Capital Blue Cross (CHIP pages name no
+    stated), Geisinger (a CAPTCHA) and UPMC (its viewer does not serve the file), Capital Blue Cross (CHIP pages name no
     population), BCBS South Carolina (percentages, program not named). 566 rows.
   - **Ninth pass, the same day:** 18 rows from payer pages that print the figures in HTML: Blue Cross and Blue
     Shield of Alabama (ALL Kids and Marketplace; the page says "the previous calendar year" and no year, read as
@@ -171,6 +171,10 @@ deterministic answer the page gives, and the file never leaves the reader's mach
     data page) is by plan benefit package, not by contract, so each package is a row (`part`) and none is pooled:
     the contract would otherwise count once per package. One package with no requests is left out. 610 rows from
     30 payers; the Medicare Advantage summary still pools 329 reports.
+  - **Twelfth pass, the same day:** Point32Health, 4 rows (Tufts Medicare Preferred, Senior Care Options, One
+    Care and the New Hampshire Exchange), read in a browser because the files refuse scripted requests. Its appeal
+    rate is out of all requests (not pooled), and Tufts Medicare Preferred's expedited rates contradict their own
+    counts (795 and 214 of 1,511 posted as 75.7% and 24.3%; declared, not pooled). 614 rows from 31 payers.
   - **Not in this edition:** further Elevance reports (per-contract PDFs with no landing
     page, or refusing scripted requests), Aetna Better Health in the states that linked no report, HCSC Illinois and New Mexico, Florida Blue, BCBS North
     Carolina and L.A. Care. CareSource and AmeriHealth Caritas Medicaid reports were not found on October 7, 2026.
