@@ -45,9 +45,12 @@ test('unanswered terms are not read as yes or no', () => {
 });
 
 test('a year with no published limit asks for it; an entered limit is used', () => {
-  assert.match(d({ ...ok, year: '2027' }).message, /2027 monthly limit is indexed and not published here yet/);
-  assert.equal(d({ ...ok, year: '2027', limit: '155', fee: '154' }).verdict, 'compatible');
-  assert.match(d({ ...ok, year: '2027', limit: '155', fee: '154' }).band, /2027, as entered limit of \$155\.00/);
+  assert.match(d({ ...ok, year: '2028' }).message, /2028 monthly limit is indexed and not published here yet/);
+  assert.equal(d({ ...ok, year: '2028', limit: '155', fee: '154' }).verdict, 'compatible');
+  assert.match(d({ ...ok, year: '2028', limit: '155', fee: '154' }).band, /2028, as entered limit of \$155\.00/);
+  // Rev. Proc. 2026-24: 2027 is published and unchanged.
+  assert.deepEqual(DATED_DPC['dpc-limit-2027'].values, { one: 150, more: 300 });
+  assert.equal(d({ ...ok, year: '2027', fee: '151' }).verdict, d({ ...ok, year: '2026', fee: '151' }).verdict);
   assert.match(d({ ...ok, year: '2025' }).message, /2026 or later/);
   assert.deepEqual(DATED_DPC['dpc-limit-2026'].values, { one: 150, more: 300 });
 });

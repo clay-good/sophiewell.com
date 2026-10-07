@@ -6,6 +6,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Direct primary care and HSA check now knows the 2027 monthly limit ($150 for
+  one person, $300 for more), unchanged in the IRS's first indexed year (Rev.
+  Proc. 2026-24), instead of asking for it.
 - Prior-auth packet check, Arkansas Blue Cross: echocardiography (stress, resting
   transthoracic and transesophageal) now needs a documented clinical indication,
   as the provider manual of August 20, 2026 added it to Carelon's imaging list.

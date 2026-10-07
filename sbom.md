@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `09f7e4a3db36ac13`
-Generated: 2026-10-07T20:03:52.244Z
+Build ID: `b0e09634f3bf2916`
+Generated: 2026-10-07T21:19:12.330Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -325,7 +325,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/dose-schedule.js` | 1291 | `6bd747010b2e79ea5b45cbe11ebb8eb4d97f9524c2e0e2a9adcc91c1a96f7147` |
 | `lib/downton-fall-risk-v688.js` | 4381 | `11559782d78d3385853abf389b9d20689202b28f6c8d40b24cfdb39e4bb2575b` |
 | `lib/doxy-pep-v1401.js` | 3874 | `515506365a3d6ffcee56d78878cafbbc64ffc6e99e276bb02be639cf4a55609b` |
-| `lib/dpc-hsa-check.js` | 8512 | `6b4bcb8a6073acf7a17a935ab63f01c4dab72c33dd6aca5fefa107aeae0a4a7e` |
+| `lib/dpc-hsa-check.js` | 8850 | `06070b82ddb71108995f6d19700b8780921d181d0b7bd40535ff86fcd57adf59` |
 | `lib/dr-severity-v301.js` | 3779 | `760d88af2b8a3b94b23d19729b2879910b20c2372f1c45031029fde68bbf814e` |
 | `lib/dst-v304.js` | 3761 | `1020a889910971989f6789c8c56dcd0c19e29ea191ef50aaba85f6c7960d7331` |
 | `lib/e-faced-v571.js` | 9870 | `5f9c76ad0e8f01f00bf32601245e755b644f2527b61e6cc555adb00ad43f3033` |

@@ -218,9 +218,14 @@ the research recorded in [scope-medication-access.md](scope-medication-access.md
   (2000F) levels grouped as approved, partly approved, denied, pended, modified, cancelled, contact the payer,
   deferred or no action; the review or tracking number (HCR02), raw reason (HCR03), certified dates (DTP AAH),
   service dates and code, AAA rejections and the payer's MSG text. A 278 request (BHT02 13) is refused.
-- **Not yet built:** the 276 claim status request and building outbound X12 requests, batch mode for the
-  other scalar tools (each needs its fields listed in `lib/batch-tools.js`), and upload integration for
-  the remaining file-based tools.
+- **X12 intake covers:** 835, 837 (P, I, D), 271, 277/277CA, 278 responses and
+  999. The 270, 276 and 278 requests only ask a payer a question (the answers, 271, 277 and 278, are read), so no
+  reader is planned for them.
+- **Upload integration is complete (checked 2026-10-07):** every file input is registered with its tool
+  (`scripts/check-file-kinds.mjs` fails a new one that is not), and the recognized kinds that open no tool are
+  reference tables, containers and unknown files, by design ([spec-v1623](spec-v1623.md) step 5).
+- **Open:** batch mode for further scalar tools, one at a time where a list of cases is how the work arrives
+  (each needs its fields listed in `lib/batch-tools.js`).
 - **Built 2026-10-03:** §4's download. `renderPrintable` (`lib/print.js`) takes an optional `docx`, which
   adds "Download as Word (.docx)". The file is built on click by `renderDocumentDocx` in `lib/pa/docx.js`,
   the same deterministic first-party writer the PA lint report uses. While any bracketed blank is left, the
