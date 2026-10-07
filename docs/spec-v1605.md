@@ -156,7 +156,7 @@ deterministic answer the page gives, and the file never leaves the reader's mach
     summary); Priority Health H2320's expedited approval rate and two Wellmark rates contradict their counts; Devoted's
     overturn rate is out of denied requests (not pooled). Left out: Highmark's Medicaid section that names no plan or
     state. Not read: Florida Blue (percentages, no year
-    stated), Geisinger (a CAPTCHA) and UPMC (its viewer does not serve the file), Capital Blue Cross (CHIP pages name no
+    stated), Geisinger (a CAPTCHA), Capital Blue Cross (CHIP pages name no
     population), BCBS South Carolina (percentages, program not named). 566 rows.
   - **Ninth pass, the same day:** 18 rows from payer pages that print the figures in HTML: Blue Cross and Blue
     Shield of Alabama (ALL Kids and Marketplace; the page says "the previous calendar year" and no year, read as
@@ -175,6 +175,10 @@ deterministic answer the page gives, and the file never leaves the reader's mach
     Care and the New Hampshire Exchange), read in a browser because the files refuse scripted requests. Its appeal
     rate is out of all requests (not pooled), and Tufts Medicare Preferred's expedited rates contradict their own
     counts (795 and 214 of 1,511 posted as 75.7% and 24.3%; declared, not pooled). 614 rows from 31 payers.
+  - **Thirteenth pass, the same day:** UPMC Health Plan, 4 Medicare Advantage contracts, read from the spreadsheet
+    as UPMC's file viewer renders it (median and mean in whole days). Its Community HealthChoices file has two
+    pages with the same title and different figures and names no population for either, so it is not read.
+    618 rows from 32 payers.
   - **Not in this edition:** further Elevance reports (per-contract PDFs with no landing
     page, or refusing scripted requests), Aetna Better Health in the states that linked no report, HCSC Illinois and New Mexico, Florida Blue, BCBS North
     Carolina and L.A. Care. CareSource and AmeriHealth Caritas Medicaid reports were not found on October 7, 2026.

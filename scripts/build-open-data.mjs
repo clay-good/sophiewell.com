@@ -54,7 +54,7 @@ export function openDatasets(root = ROOT) {
     {
       id: 'pa-metrics',
       name: 'Prior authorization metrics as payers posted them',
-      what: 'One row per report a payer posted under the CMS prior authorization rule (CMS-0057-F): approval, denial, appeal and extended-review rates, counts where the payer gave them, and decision times as posted, each with the report\'s URL. Calendar 2025 reports from 31 payers so far, among them the six largest Medicare Advantage insurers, Molina, Highmark, Devoted and SCAN: Medicare Advantage contracts, Medicaid managed care and CHIP plans, and Marketplace issuers. Used by Payer Prior Authorization Report Check.',
+      what: 'One row per report a payer posted under the CMS prior authorization rule (CMS-0057-F): approval, denial, appeal and extended-review rates, counts where the payer gave them, and decision times as posted, each with the report\'s URL. Calendar 2025 reports from 32 payers so far, among them the six largest Medicare Advantage insurers, Molina, Highmark, Devoted and SCAN: Medicare Advantage contracts, Medicaid managed care and CHIP plans, and Marketplace issuers. Used by Payer Prior Authorization Report Check.',
       edition: pam.sourceEdition,
       readOn: pam.curatedAt,
       rows: pam.recordCount,

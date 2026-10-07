@@ -57,8 +57,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
-- The prior authorization metrics table now holds 614 calendar-2025 reports
-  from 31 payers, adding Devoted, Highmark, SCAN, Point32Health, Alignment, EmblemHealth, Independence, Excellus,
+- The prior authorization metrics table now holds 618 calendar-2025 reports
+  from 32 payers, adding Devoted, Highmark, SCAN, Point32Health, UPMC, Alignment, EmblemHealth, Independence, Excellus,
   Univera, Select Health, Priority Health, HealthPartners, L.A. Care, Blue
   Shield of California and the Blue plans of Alabama, Arizona, Kansas,
   Louisiana, Minnesota, North Carolina, Tennessee and Iowa. Reports

@@ -65,9 +65,9 @@ test('blanks and out-of-range values are asked for', () => {
 
 test('spec-v1605: each entered rate is set beside the bundled market for the same program and year', () => {
   const r = m({ ...full, stdDeniedPct: '20', stdApprovedPct: '80', expDeniedPct: '9.91' });
-  assert.ok(r.market.some((l) => /^Standard denied: 20% is above the middle half of 331 reports \(median 7\.6%, middle half 4\.36% to 12\.58%\)\.$/.test(l)));
+  assert.ok(r.market.some((l) => /^Standard denied: 20% is above the middle half of 335 reports \(median 7\.44%, middle half 4\.31% to 12\.38%\)\.$/.test(l)));
   assert.ok(r.market.some((l) => /^Expedited denied: 9\.91% is within the middle half/.test(l)));
-  assert.ok(r.notes.some((n) => /^Medicare Advantage contract reports for 2025 in the bundled table: 352 from Aetna \(CVS Health\), .*, UnitedHealthcare, Univera Healthcare, read October 7, 2026\. Each report counts once/.test(n)));
+  assert.ok(r.notes.some((n) => /^Medicare Advantage contract reports for 2025 in the bundled table: 356 from Aetna \(CVS Health\), .*, UnitedHealthcare, Univera Healthcare, read October 7, 2026\. Each report counts once/.test(n)));
 });
 
 test('spec-v1605: with no reports for the program or year, the result says so and compares nothing', () => {
