@@ -59,3 +59,19 @@ test('837 accepts declared separators and rejects mismatched or truncated envelo
   assert.throws(() => check837(newline.replace(/IEA[^\n]+\n$/, '')), /IEA trailer/);
   assert.throws(() => check837(newline.replace('SE|8|0001', 'SE|9|0001')), /SE01/);
 });
+
+test('837D (dental, 005010X224A2) sums SV302 line charges against the claim and checks the same identifiers and dates', () => {
+  const now = new Date('2026-10-07T12:00:00Z');
+  const body = (lines) => [
+    'BHT*0019*00*BATCH*20260928*1200*CH',
+    'HL*1**20*1', 'NM1*85*2*DENTAL GROUP*****XX*1234567893',
+    'HL*2*1*22*0', 'NM1*IL*1*DOE*JANE****MI*MEMBER1', 'NM1*PR*2*DELTA*****PI*12345',
+    'CLM*D-1*120***11:B:1*Y*A*Y*I', ...lines,
+  ];
+  const clean = check837(envelope(body(['LX*1', 'SV3*AD:D0120*45***1', 'DTP*472*D8*20260920', 'LX*2', 'SV3*AD:D1110*75***1', 'DTP*472*D8*20260920']), { version: '005010X224A2' }), now);
+  assert.equal(clean.claims[0].type, '837D');
+  assert.equal(clean.claims[0].lineChargeCents, 12000);
+  assert.equal(clean.claims[0].clean, true);
+  const bad = check837(envelope(body(['LX*1', 'SV3*AD:D0120*45***1', 'DTP*472*D8*20261120']), { version: '005010X224A2' }), now);
+  assert.deepEqual(bad.claims[0].findings.map((f) => f.check), ['charge total', 'service date']);
+});

@@ -50,7 +50,7 @@ read with those separators:
 | 835 | HP | 005010X221A1 | `x12-835` | `x12-835-reader`, `denial-pattern-report`, `appeal-worklist`, `underpayment-check` |
 | 837 | HC | 005010X222A1 | `x12-837p` | `x12-837-check` |
 | 837 | HC | 005010X223A2 | `x12-837i` | `x12-837-check` |
-| 837 | HC | 005010X224A2 | `x12-837d` | none yet; named as a dental claim |
+| 837 | HC | 005010X224A2 | `x12-837d` | `x12-837-check` (since October 7, 2026) |
 | 271 | HB | 005010X279A1 | `x12-271` | `x12-271-reader` |
 | 277 | HN | 005010X212 | `x12-277` | `x12-277-reader` |
 | 277 | HN | 005010X214 | `x12-277ca` | `x12-277-reader` |

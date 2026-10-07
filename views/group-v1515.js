@@ -209,7 +209,7 @@ function underpayment(root) {
 }
 
 function check837(root) {
-  root.appendChild(el('p', { class: 'notice', text: 'Checks X12 837P and 837I claim files locally for envelope integrity, identifier formats, diagnosis-code structure, date logic and claim-to-line charge totals.' }));
+  root.appendChild(el('p', { class: 'notice', text: 'Checks X12 837P, 837I and 837D (dental) claim files locally for envelope integrity, identifier formats, diagnosis-code structure, date logic and claim-to-line charge totals.' }));
   root.appendChild(el('p', { class: 'muted', text: 'Structural and arithmetic checks only. This does not apply a payer’s edits or X12 situational rules.' }));
   const input = el('input', { id: 'x837-files', type: 'file', multiple: true, accept: '.837,.txt,text/plain,application/octet-stream' });
   const status = el('p', { id: 'x837-status', class: 'muted', role: 'status', 'aria-live': 'polite' });

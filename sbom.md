@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `d9008b3500eb5311`
-Generated: 2026-10-07T16:33:46.066Z
+Build ID: `2a55fac61da5f43c`
+Generated: 2026-10-07T17:02:29.756Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -394,7 +394,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/figo-pas-v833.js` | 7409 | `2680f161b34ab92db39cf745ff07fd99d1e160fb926b8f118a98a1f0bb0a6059` |
 | `lib/filarial-lymphedema-stage-v1561.js` | 4499 | `26b789405e1541e0b498e99f8a9665ff2fe6c661068c9c9c8af5c579e2ff115e` |
 | `lib/file-head.js` | 388 | `e46fe9833ecc5f46c47141750e041f5e98a0342faaadda5f3bdee52fe3224bea` |
-| `lib/file-kinds.js` | 28790 | `4aa57b4dd16ba97374aa19988a8c6664ec929f12bfdceb402372a4c07e4783a6` |
+| `lib/file-kinds.js` | 28817 | `8ef73aaf557cd5ca7ad1f3b8a07b17545dbba2934ad95cffbfd365108c7c1bc9` |
 | `lib/fisher-grade-v600.js` | 10299 | `e9155f9fdefe95d66f6fa2ec622a908cb15ddc858a3dd1d3275d4384cff93a44` |
 | `lib/fitzpatrick-v331.js` | 3746 | `aa2e8153f5e4f4821db4aeffe966810bc8068f00d0bd77789b723f8c613691b1` |
 | `lib/fluidresp-v113.js` | 8862 | `b6a605fd55a8d672d87aeb73818cd415ccd9530f683a28b93cb899bdfc21e4cd` |
@@ -694,7 +694,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/meningitis-who-2025-v1560.js` | 8604 | `7101d83e353b3e8963a9c1e4040318ddf07434acc99c5f8db582b95e8d7f68bd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2746886 | `89a6cc741a396c97259b3516a6c84d58822b39236768f36e74889d16b1723417` |
+| `lib/meta.js` | 2746907 | `d4ce2cbd41516c75747419ceb9b671c3adf6673b55c3dd68e295564f5fd7596b` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 19326 | `64342935cc7842381f6e318293cfcd6f97b69022268da6c595c5c71db388af2d` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -1263,7 +1263,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/x12-835-v1515.js` | 12525 | `7b927702078d004eef49ae043bc0d5feffe7cf98a5160141856b78b30ef77987` |
 | `lib/x12-835-worker.js` | 1750 | `021c5e91596993778d9e31c965b2bd0855125ffc4d0eb53969fac9a0b14190fb` |
 | `lib/x12-837-run.js` | 2646 | `a3971650dd2ed99670e1819e56b55cc83520f1638af5625eca9ea07792eb3d10` |
-| `lib/x12-837-v1515.js` | 12281 | `0ca100a34d8ad50a522d699f852af2954f4ef75566b14a1587813d655e58c358` |
+| `lib/x12-837-v1515.js` | 12496 | `9291248f92d97604971cc00250a75e68e95d0808a75a491ca2b1fb40f1bbc5f8` |
 | `lib/x12-837-worker.js` | 1731 | `895e356929ed8db8275a8af7f58150594726af4f88c0781e0d2f1930b9f10425` |
 | `lib/x12-envelope.js` | 2391 | `3a26dee09254eb50d3c5c7c2829d16433583b3ce45ebaad1f1bed2c780ea8270` |
 | `lib/yamaguchi-v642.js` | 4584 | `33de97684b3a5c986e3805b1d01f7cd51fa3e87d4bc308e6d18385ca6db34205` |
@@ -2533,7 +2533,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1512.js` | 13381 | `3c334743e9f5219297d28cf29b43c18187d2666cd40bf50f40034d87a7ee60ce` |
 | `views/group-v1513.js` | 8961 | `ebd3a2e3ba0b3ee52e0424375dfc40aab175e62d9122172717428e4761dc810d` |
 | `views/group-v1514.js` | 12722 | `0d276901d06df9eb1c8431514eec48473d67ac288e08965ebfad634d7438fa7e` |
-| `views/group-v1515.js` | 39625 | `1e0e2eabf8f84e0ae0354c9e87b99842d8d5219dbecd9d410818dee80cf1039c` |
+| `views/group-v1515.js` | 39640 | `b831ca696e1d5c4c935443eb1c71befdb04d42881a5eb801ed8559e458413ff4` |
 | `views/group-v1516.js` | 10809 | `a915113c204cf0c8e4c6a4f92819d8d636d0f9f8c31823a7f3a82aec18ca2535` |
 | `views/group-v152.js` | 12369 | `dc29da131fcaf14f2a95a9e658fa3df1cc7b1d768b7b12b308267c97de3ede1e` |
 | `views/group-v153.js` | 11280 | `ffceef435372350d3a3f391724e3232537e6919c980ba7c4b8e8b7bab2186ee9` |

@@ -126,6 +126,9 @@ a route A dataset pinned to a published version.
 
 ## Build status
 
+- **Built 2026-10-07:** `x12-837-check` reads 837D dental claims (005010X224A2): SV3 service lines, the
+  line charge in SV302, with the same total, identifier, diagnosis and date checks as 837P and 837I. The
+  837D file kind now opens it.
 - **Built 2026-09-28:** `x12-835-reader` accepts one or more local 005010X221A1
   files, reads the ISA-declared separators, validates interchange, group and
   transaction controls, and proves service-line, claim and payment arithmetic.
