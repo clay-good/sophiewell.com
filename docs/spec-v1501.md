@@ -224,6 +224,14 @@ the research recorded in [scope-medication-access.md](scope-medication-access.md
 - **Upload integration is complete (checked 2026-10-07):** every file input is registered with its tool
   (`scripts/check-file-kinds.mjs` fails a new one that is not), and the recognized kinds that open no tool are
   reference tables, containers and unknown files, by design ([spec-v1623](spec-v1623.md) step 5).
+  **Correction, October 7, 2026:** four view modules (the FPL, credit and IRMAA screens, the Extra Help screen, the
+  financial assistance discount and the refill date) exported their file hand-off, but `app.js` never read it, so a
+  file dropped on the home page went to the inventory instead of the tool. They are wired now, and
+  `check-file-kinds` counts a hand-off only when `app.js` spreads it into `ACCEPT_FILES`.
+- **Built 2026-10-07:** `timely-filing` batch, a claims list with a payer column (so a file of dates alone is not
+  offered it): Original Medicare rows get one calendar year (42 CFR 424.44) and ignore a limit cell; any other payer,
+  a Medicare Advantage plan included, needs its limit in days, the row's own or the form's. Dates are read in the
+  common spreadsheet forms (03/02/2026 as well as 2026-03-02).
 - **Open:** batch mode for further scalar tools, one at a time where a list of cases is how the work arrives
   (each needs its fields listed in `lib/batch-tools.js`).
 - **Built 2026-10-03:** §4's download. `renderPrintable` (`lib/print.js`) takes an optional `docx`, which

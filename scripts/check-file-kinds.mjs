@@ -71,12 +71,19 @@ export async function fileInputIds() {
 
 // acceptFilesIds() -> tool ids with an acceptFiles entry, read from the views'
 // source (importing a view needs a DOM).
-export async function acceptFilesIds() {
+// A view's acceptFiles counts only when app.js imports it and spreads it into ACCEPT_FILES: an export the
+// app never reads hands off nothing (six batch tools sat that way until October 7, 2026). `unwired` lists them.
+export async function acceptFilesIds(unwired = []) {
   const ids = new Set();
+  const app = await readFile(join(ROOT, 'app.js'), 'utf8');
+  const spread = new Set([...(/const ACCEPT_FILES = \{([^}]*)\}/.exec(app) || [, ''])[1].matchAll(/\.\.\.(\w+)/g)].map((m) => m[1]));
+  const alias = new Map([...app.matchAll(/acceptFiles as (\w+) \} from '\.\/views\/([\w-]+\.js)'/g)].map((m) => [m[2], m[1]]));
   for (const f of (await readdir(join(ROOT, 'views'))).filter((n) => n.endsWith('.js'))) {
     const text = await readFile(join(ROOT, 'views', f), 'utf8');
     const m = /export const acceptFiles = \{([\s\S]*?)\n\};/.exec(text);
-    if (m) for (const k of m[1].matchAll(/^\s*'([a-z0-9-]+)':/gm)) ids.add(k[1]);
+    if (!m) continue;
+    if (!spread.has(alias.get(f))) { unwired.push(f); continue; }
+    for (const k of m[1].matchAll(/^\s*'?([a-z0-9-]+)'?:/gm)) ids.add(k[1]);
   }
   return ids;
 }
@@ -105,7 +112,9 @@ export async function problems() {
   }
 
   // 4. every live tool can take handed-off files
-  const accepting = await acceptFilesIds();
+  const unwired = [];
+  const accepting = await acceptFilesIds(unwired);
+  for (const f of unwired) out.push(`views/${f} exports acceptFiles, but app.js does not import it into ACCEPT_FILES`);
   for (const t of registryTools.values()) {
     if (t.status === 'live' && !t.route && !accepting.has(t.id)) out.push(`registry tool ${t.id} has no acceptFiles entry in its view`);
   }

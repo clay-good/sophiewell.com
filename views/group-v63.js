@@ -9,6 +9,9 @@
 
 import { el, clear } from '../lib/dom.js';
 import * as Ops from '../lib/ops-v63.js';
+import { uploadWorkbench } from './upload-workbench.js';
+import { BATCH_TOOLS } from '../lib/batch-tools.js';
+import { acceptVia } from '../lib/hand-off.js';
 import { denialRoute } from '../lib/coding-v5.js';
 
 // Friendly labels for the tiles the OA2 denial routing points at, so the
@@ -152,8 +155,21 @@ export const renderers = {
       { value: 'other', text: 'Other (enter the plan limit)' },
     ]));
     root.appendChild(field('Plan limit in days (non-Medicare)', 'tf-limit', { type: 'number', placeholder: '90' }));
-    const o = out(); root.appendChild(o);
-    wire(['tf-date', 'tf-payer', 'tf-limit'], () => safe(o, () => {
+    const o = out();
+    // spec-v1501 §3: a claims list from a file, each row through timelyFiling with its own payer; the limit
+    // above fills a row that leaves its limit blank.
+    const showBatch = (r) => safe(o, () => {
+      if (!r.valid) { o.appendChild(el('p', { class: 'muted', text: r.message })); return; }
+      o.appendChild(el('p', { class: r.abnormal ? 'flag' : null, text: r.band }));
+      o.appendChild(el('ul', {}, r.notes.map((n) => li(n))));
+      o.appendChild(el('p', { class: 'muted', text: r.note }));
+    });
+    const upload = uploadWorkbench(root, {
+      id: 'tf-upload', fields: BATCH_TOOLS['timely-filing'].fields, label: 'Check filing deadlines for claims from a file',
+      compute: 'timely-filing', getInput: () => ({ limitDays: str('tf-limit') }), onResult: showBatch,
+    });
+    root.appendChild(o);
+    const single = () => safe(o, () => {
       if (!str('tf-date')) { o.appendChild(el('p', { class: 'muted', text: 'Enter the date of service.' })); return; }
       const payer = str('tf-payer');
       if (payer !== 'medicare' && !(numv('tf-limit') > 0)) {
@@ -173,7 +189,11 @@ export const renderers = {
       // changes, and so both surfaces read the same.
       if (r.unusedLimitNote) o.appendChild(el('p', { class: 'muted', text: r.unusedLimitNote }));
       o.appendChild(el('p', { class: 'muted', text: r.medicare ? 'Medicare basis: 42 CFR 424.44 (one year after the date of service; ACA 6404).' : 'Non-Medicare limit is user-supplied; confirm against your payer contract.' }));
-    }));
+    });
+    wire(['tf-date', 'tf-payer', 'tf-limit'], () => {
+      if (upload.isActive()) { upload.compute({ limitDays: str('tf-limit') }); return; }
+      single();
+    });
   },
 
   // ----- 3.3 em-mdm ---------------------------------------------------------
@@ -261,4 +281,9 @@ export const renderers = {
       o.appendChild(el('p', { class: 'muted', text: 'ACA 6402(a) (42 U.S.C. 1320a-7k(d)); 42 CFR 401.305 as amended from January 1, 2025: an overpayment is identified when it is knowingly received or kept. A timely, good-faith investigation of related overpayments suspends the deadline for up to 180 days after identification. The deadline is the later of this date and any cost report due date, and a self-disclosure or an extended repayment schedule request also suspends it.' }));
     }));
   },
+};
+
+// spec-v1501 §3: a claims list dropped on the home page lands in the timely-filing upload.
+export const acceptFiles = {
+  'timely-filing': acceptVia('tf-upload-file'),
 };

@@ -136,3 +136,22 @@ test('refill-eligible-date runs over a fills file, each row with its own plan th
   assert.equal(r.band, '3 fills of 4 computed. 1 row needs corrected inputs.');
   assert.deepEqual(r.rows.map((x) => x.label), ['Refill from 2026-09-24', 'Refill from 2026-11-21', 'Needs corrected inputs', 'Refill from 2026-10-06']);
 });
+
+test('timely-filing runs over a claims list: Original Medicare is one year, any other payer needs its limit, the row\'s or the form\'s', () => {
+  const now = new Date('2026-10-07T12:00:00Z');
+  const r = runBatch('timely-filing', [
+    { serviceDate: '03/02/2026', payer: 'Medicare', limitDays: '90' },
+    { serviceDate: '2026-03-02', payer: 'Aetna', limitDays: '90' },
+    { serviceDate: '2026-09-01', payer: 'Humana Medicare Advantage' },
+    { serviceDate: '2026-02-30', payer: 'Medicare' },
+    { serviceDate: '2026-09-01', payer: '' },
+  ], { limitDays: '180' }, now);
+  assert.equal(r.band, '3 claims of 5 computed. 2 rows need corrected inputs.');
+  assert.deepEqual(r.rows.map((x) => x.label), ['File by 2027-03-02', 'Past the limit (2026-05-31)', 'File by 2027-02-28', 'Needs corrected inputs', 'Needs corrected inputs']);
+  assert.equal(r.rows[0].detail, 'Medicare: 365 days from the date of service (42 CFR 424.44), so the claim is due by 2027-03-02; 146 days left.', 'a limit cell is not used for Original Medicare');
+  assert.equal(r.rows[2].detail, 'Humana Medicare Advantage: 180 days from the date of service, so the claim is due by 2027-02-28; 144 days left.', 'a Medicare Advantage plan is not Original Medicare');
+  assert.match(r.rows[3].detail, /^Date of service: "2026-02-30" is not a date\.$/);
+  assert.match(r.rows[4].detail, /^Payer: blank/);
+  const none = runBatch('timely-filing', [{ serviceDate: '2026-09-01', payer: 'Cigna' }], {}, now);
+  assert.match(none.rows[0].detail, /^Filing limit: blank\. Cigna is not Original Medicare/);
+});

@@ -6,6 +6,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- A households, people, patients or fills file dropped on the home page now
+  opens the poverty-level, premium credit, IRMAA, Extra Help, financial
+  assistance or refill-date tool it fits, instead of the file inventory.
 - Names, member IDs, birth dates and account numbers typed into a letter
   (the appeal and request letters, the HIPAA authorization, the records
   request and the wallet card) no longer appear in the page's address, so a
@@ -61,6 +64,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Claim Timely-Filing Deadline now reads a claims list (date of service and
+  payer per row): Original Medicare claims get one calendar year, and any
+  other payer uses its own limit, from the file or the form.
 - Check My Hospital Bill Against Its Posted Prices now drafts a letter to the
   hospital's billing office: each line above the posted price, or missing from
   the hospital's file, with the number the hospital posted, and a request to

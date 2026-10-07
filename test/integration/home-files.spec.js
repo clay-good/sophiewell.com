@@ -27,6 +27,21 @@ test('a chosen 835 opens the remittance reader with the file in it; the URL hold
   await expect(page.locator('#q-results')).toContainText('claims balance');
 });
 
+// The batch tools' hand-offs were exported by their views but never read by app.js until October 7, 2026, so
+// these files went to the inventory. This goes through the home page, not the view module.
+for (const [file, route, rows] of [['households.csv', 'fpl-percent', 'households'], ['timely-claims.csv', 'timely-filing', 'claims']]) {
+  test(`a chosen ${file} opens ${route} with the file in its upload`, async ({ page }) => {
+    await page.goto('/');
+    const chooser = page.waitForEvent('filechooser');
+    await page.locator('#hero-files-button').click();
+    await (await chooser).setFiles(fixture(file));
+    await expect(page).toHaveURL(new RegExp(`#${route}(&|$)`));
+    await expect(page.locator('.intake-banner')).toContainText(`${file}: read as a spreadsheet (CSV).`);
+    await page.locator('.upload-workbench button', { hasText: /^Use \d+ rows?$/ }).click();
+    await expect(page.locator('#q-results')).toContainText(new RegExp(`\\d+ ${rows} of \\d+ computed`));
+  });
+}
+
 test('a file dropped on the home page opens its tool', async ({ page, browserName }) => {
   test.skip(browserName === 'webkit', 'WebKit drops the dataTransfer of a script-made DragEvent; the choose path covers WebKit');
   await page.goto('/');

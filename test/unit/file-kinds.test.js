@@ -50,6 +50,7 @@ const EXPECT = {
   'irmaa-people.csv': ['csv-mapped', 'likely', 'Medicare IRMAA (people file)'],
   'ptc-households.csv': ['csv-mapped', 'likely', 'Its columns fit 2 tools; choose one.'],
   'scheduled-services.csv': ['csv-mapped', 'likely', 'Does Original Medicare Require Prior Authorization? (services file)'],
+  'timely-claims.csv': ['csv-mapped', 'likely', 'Claim Timely-Filing Deadline (claims file)'],
   'unknown.csv': ['csv-unknown', 'none', 'alpha, beta, gamma'],
   'reference-pprrvu.csv': ['reference-mpfs-rvu', 'certain', 'reference table'],
   'reference-addb.csv': ['reference-opps-addb', 'certain', 'Addendum B'],
@@ -165,4 +166,9 @@ test('a households file with a benchmark column offers the credit estimate first
 test('spec-v1511: a fills file with a threshold column offers the refill batch first; a plain fill history is not made ambiguous', () => {
   assert.equal(rec('refill-fills.csv').candidates[0].id, 'refill-eligible-date');
   assert.deepEqual(rec('fill-history.csv').tools.map((t) => t.id), ['mpr-gap-days']);
+});
+
+test('spec-v1501 §3: a claims list with a payer column goes to the timely-filing batch; a file of dates alone does not', () => {
+  assert.deepEqual(rec('timely-claims.csv').tools.map((t) => t.id), ['timely-filing']);
+  assert.ok(!rec('scheduled-services.csv').candidates?.some((c) => c.id === 'timely-filing') && rec('scheduled-services.csv').tools.every((t) => t.id !== 'timely-filing'));
 });
