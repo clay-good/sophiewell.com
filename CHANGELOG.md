@@ -6,6 +6,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Prolonged services: Medicare's G0316 is now reported with 99223 from 105
+  minutes and with 99233 from 80 (the CY 2023 physician fee schedule rule),
+  not 104 and 79. The office codes were already right (G2212 from 89 with 99205
+  and 69 with 99215).
 - 60-Day Overpayment Report-and-Return Clock now follows 42 CFR 401.305 as
   amended from January 1, 2025. An optional investigation start date (and
   conclusion date) suspends the deadline up to 180 days after identification,

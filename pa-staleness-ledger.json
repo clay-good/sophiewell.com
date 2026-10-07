@@ -1065,7 +1065,10 @@
       "ruleFamily": "ops-v63",
       "rules": [],
       "url": "https://www.ama-assn.org/practice-management/cpt/cpt-evaluation-and-management",
-      "lastVerified": "2026-06-10"
+      "lastVerified": "2026-10-07",
+      "alsoCited": [
+        "https://www.ama-assn.org/system/files/2023-e-m-descriptors-guidelines.pdf"
+      ]
     },
     {
       "id": "ops-medicare-overpayment-60day",
@@ -1113,7 +1116,10 @@
       "ruleFamily": "billing-v79",
       "rules": [],
       "url": "https://www.cms.gov/medicare/coding-billing/national-correct-coding-initiative-ncci-edits",
-      "lastVerified": "2026-10-07"
+      "lastVerified": "2026-10-07",
+      "alsoCited": [
+        "https://www.cms.gov/files/document/01-chapter1-ncci-medicare-policy-manual-2026-final.pdf"
+      ]
     },
     {
       "id": "billing-mue-mai-semantics",
@@ -1121,7 +1127,10 @@
       "ruleFamily": "billing-v79",
       "rules": [],
       "url": "https://www.cms.gov/medicare/coding-billing/national-correct-coding-initiative-ncci-edits/medicare-ncci-medically-unlikely-edits-mues",
-      "lastVerified": "2026-06-13"
+      "lastVerified": "2026-10-07",
+      "alsoCited": [
+        "https://www.cms.gov/files/document/01-chapter1-ncci-medicare-policy-manual-2026-final.pdf"
+      ]
     },
     {
       "id": "billing-modifier-59-xepsu",
@@ -1153,7 +1162,10 @@
       "ruleFamily": "billing-v80",
       "rules": [],
       "url": "https://www.ama-assn.org/practice-management/cpt/cpt-evaluation-and-management",
-      "lastVerified": "2026-06-15"
+      "lastVerified": "2026-10-07",
+      "alsoCited": [
+        "https://www.ama-assn.org/system/files/2023-e-m-descriptors-guidelines.pdf"
+      ]
     },
     {
       "id": "billing-critical-care-bands",
@@ -1161,7 +1173,10 @@
       "ruleFamily": "billing-v80",
       "rules": [],
       "url": "https://www.cms.gov/regulations-and-guidance/guidance/manuals/downloads/clm104c12.pdf",
-      "lastVerified": "2026-10-07"
+      "lastVerified": "2026-10-07",
+      "alsoCited": [
+        "https://www.cms.gov/files/document/mln006764-evaluation-management-services.pdf"
+      ]
     },
     {
       "id": "billing-split-shared-fs",
@@ -1173,11 +1188,15 @@
     },
     {
       "id": "billing-prolonged-thresholds",
-      "label": "The prolonged-service add-on codes (AMA 99417/99418 vs Medicare G2212/G0316) and their per-primary-code time thresholds (99205 75/89, 99215 55/69, 99223 90/104, 99233 65/79; each unit +15 min) backing prolonged-services. AMA CPT; CMS Pub. 100-04 Ch. 12.",
+      "label": "The prolonged-service add-on codes (AMA 99417/99418 vs Medicare G2212/G0316) and their per-primary-code thresholds (99205 75/89, 99215 55/69 per CMS MLN006764 Table 3; 99223 90/105 and 99233 65/80 per the CY 2023 PFS final rule, 87 FR 69596-97: G0316 once the 15 prolonged minutes are complete; each further unit +15 min) backing prolonged-services. AMA CPT; CMS Pub. 100-04 Ch. 12.",
       "ruleFamily": "billing-v80",
       "rules": [],
       "url": "https://www.cms.gov/medicare/payment/fee-schedules/physician",
-      "lastVerified": "2026-06-15"
+      "lastVerified": "2026-10-07",
+      "alsoCited": [
+        "https://www.cms.gov/files/document/mln006764-evaluation-management-services.pdf",
+        "https://www.federalregister.gov/documents/2022/11/18/2022-23873/medicare-and-medicaid-programs-cy-2023-payment-policies-under-the-physician-fee-schedule-and-other-changes-to-part"
+      ]
     },
     {
       "id": "billing-therapy-8minute",
@@ -1201,7 +1220,10 @@
       "ruleFamily": "billing-v81",
       "rules": [],
       "url": "https://www.cms.gov/medicare/coding-billing/healthcare-common-procedure-system",
-      "lastVerified": "2026-06-15"
+      "lastVerified": "2026-10-07",
+      "alsoCited": [
+        "https://www.cms.gov/regulations-and-guidance/guidance/manuals/downloads/clm104c17.pdf"
+      ]
     },
     {
       "id": "billing-jw-jz-wastage",
@@ -1209,7 +1231,10 @@
       "ruleFamily": "billing-v81",
       "rules": [],
       "url": "https://www.cms.gov/medicare/payment/part-b-drugs/discarded-drugs",
-      "lastVerified": "2026-10-07"
+      "lastVerified": "2026-10-07",
+      "alsoCited": [
+        "https://www.cms.gov/medicare/medicare-fee-for-service-payment/hospitaloutpatientpps/downloads/jw-modifier-faqs.pdf"
+      ]
     },
     {
       "id": "billing-infusion-hierarchy",
@@ -1241,7 +1266,11 @@
       "ruleFamily": "billing-v82",
       "rules": [],
       "url": "https://www.cms.gov/nosurprises",
-      "lastVerified": "2026-06-15"
+      "lastVerified": "2026-10-07",
+      "alsoCited": [
+        "https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-B/part-149/subpart-A/section-149.30",
+        "https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-B/part-149/subpart-B/section-149.110"
+      ]
     },
     {
       "id": "billing-ipps-base-rates",
@@ -1249,7 +1278,10 @@
       "ruleFamily": "billing-v83",
       "rules": [],
       "url": "https://www.cms.gov/medicare/payment/prospective-payment-systems/acute-inpatient-pps",
-      "lastVerified": "2026-06-15"
+      "lastVerified": "2026-10-07",
+      "alsoCited": [
+        "https://www.ecfr.gov/current/title-42/chapter-IV/subchapter-B/part-412/subpart-D/section-412.64"
+      ]
     },
     {
       "id": "billing-opps-conversion-factor",
@@ -1257,7 +1289,10 @@
       "ruleFamily": "billing-v83",
       "rules": [],
       "url": "https://www.cms.gov/medicare/payment/prospective-payment-systems/hospital-outpatient",
-      "lastVerified": "2026-06-15"
+      "lastVerified": "2026-10-07",
+      "alsoCited": [
+        "https://www.ecfr.gov/current/title-42/chapter-IV/subchapter-B/part-419/subpart-C/section-419.32"
+      ]
     },
     {
       "id": "billing-mbi-grammar",

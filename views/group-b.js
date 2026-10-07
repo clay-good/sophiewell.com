@@ -635,8 +635,8 @@ export const renderers = {
     root.appendChild(selectField('Primary E/M code (selected by time)', 'ps-code', [
       { value: '99205', text: '99205 -- office/outpatient new (60-74 min)' },
       { value: '99215', text: '99215 -- office/outpatient established (40-54 min)' },
-      { value: '99223', text: '99223 -- inpatient/observation initial (75-89 min)' },
-      { value: '99233', text: '99233 -- inpatient/observation subsequent (50-64 min)' },
+      { value: '99223', text: '99223 -- inpatient/observation initial (75 min)' },
+      { value: '99233', text: '99233 -- inpatient/observation subsequent (50 min)' },
     ]));
     root.appendChild(selectField('Payer', 'ps-payer', [
       { value: 'ama', text: 'CPT / commercial (AMA 99417 / 99418)' },

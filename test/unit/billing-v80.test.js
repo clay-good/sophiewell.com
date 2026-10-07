@@ -129,7 +129,11 @@ test('prolonged-services: 99215 office and 99223 inpatient floors; below-thresho
   assert.equal(prolongedServices({ primaryCode: '99215', totalMinutes: 55, payer: 'ama' }).units, 1);
   assert.equal(prolongedServices({ primaryCode: '99215', totalMinutes: 54, payer: 'ama' }).units, 0);
   assert.equal(prolongedServices({ primaryCode: '99223', totalMinutes: 90, payer: 'ama' }).prolongedCode, '99418');
-  assert.equal(prolongedServices({ primaryCode: '99223', totalMinutes: 104, payer: 'medicare' }).prolongedCode, 'G0316');
+  assert.equal(prolongedServices({ primaryCode: '99223', totalMinutes: 105, payer: 'medicare' }).prolongedCode, 'G0316');
+  // CY 2023 PFS final rule: G0316 is billed with 99223 at 105 minutes and with 99233 at 80, once the 15 prolonged
+  // minutes after the 75 (or 50) are complete; 104 and 79 are one minute short.
+  assert.deepEqual([104, 105, 119, 120].map((m) => prolongedServices({ primaryCode: '99223', totalMinutes: m, payer: 'medicare' }).units), [0, 1, 1, 2]);
+  assert.deepEqual([79, 80].map((m) => prolongedServices({ primaryCode: '99233', totalMinutes: m, payer: 'medicare' }).units), [0, 1]);
   const below = prolongedServices({ primaryCode: '99215', totalMinutes: 50, payer: 'medicare' });
   assert.equal(below.units, 0);
   assert.match(below.divergence, /AMA 99417 starts at 55 min; Medicare G2212 starts at 69 min/);
