@@ -6,21 +6,21 @@
   "agency": "Each payer's own posted report (URL on every row); curated by sophiewell.com",
   "status": "public-facts-with-attribution",
   "cadence": "annual",
-  "recordCount": 589,
+  "recordCount": 610,
   "shards": [
     {
       "name": "pa-metrics.json",
-      "sha256": "cb88e999ef36da67ee2d58f6bef149129eeffb82b4a630434af1e1ec95a4006d",
-      "records": 589,
-      "bytes": 620730
+      "sha256": "95720445526774080cb233908edbce09ec81ded6507a74209589fc09c53d1f81",
+      "records": 610,
+      "bytes": 646439
     }
   ],
   "notes": "spec-v1605: one row per report a payer posted under 42 CFR 422.122(c), 438.210(f) or 45 CFR 156.223(c), with the payer's figures as posted, its URL and the date it was read. Counts are carried only where the payer posted them; a rate over zero requests is stored as no rate; nothing is back-computed. Curation is CC-BY-4.0.",
   "coverage": "subset",
-  "coverageNote": "Calendar-2025 reports as posted by 29 payers: the six largest Medicare Advantage insurers (UnitedHealthcare, Aetna, Humana, Kaiser Permanente, Centene, Elevance), Molina, Oscar, HCSC, Devoted, SCAN, Highmark, Independence, Excellus and Univera, Blue Shield of California, Blue Cross plans of Arizona, Kansas, Tennessee and Wellmark, Select Health, Priority Health, HealthPartners, L.A. Care, Blue Cross plans of Alabama, Louisiana and North Carolina, Alignment and EmblemHealth; Medicare Advantage contracts, Medicaid managed care and CHIP plans, and Marketplace issuers. Other payers are not in it yet.",
+  "coverageNote": "Calendar-2025 reports as posted by 30 payers: the six largest Medicare Advantage insurers (UnitedHealthcare, Aetna, Humana, Kaiser Permanente, Centene, Elevance), Molina, Oscar, HCSC, Devoted, SCAN, Highmark, Independence, Excellus and Univera, Blue Shield of California, Blue Cross plans of Arizona, Kansas, Tennessee and Wellmark, Select Health, Priority Health, HealthPartners, L.A. Care, Blue Cross plans of Alabama, Louisiana, Minnesota and North Carolina, Alignment and EmblemHealth; Medicare Advantage contracts, Medicaid managed care and CHIP plans, and Marketplace issuers. Other payers are not in it yet.",
   "sourceEdition": "CY2025 reports, read 2026-10-07",
   "curatedAt": "2026-10-07",
   "contentChangedAt": "2026-10-07",
   "expiresOn": "2028-10-07",
-  "recordsSha256": "b7e065081496d765a099630e5bb819c7b19e5e16cdb98adbbb90480f7d4d35a9"
+  "recordsSha256": "498b8c4322122233cd00d65712a6ac7d80b02146db361f32d1065edd835776e1"
 }

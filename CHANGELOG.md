@@ -57,11 +57,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
-- The prior authorization metrics table now holds 589 calendar-2025 reports
-  from 29 payers, adding Devoted, Highmark, SCAN, Alignment, EmblemHealth, Independence, Excellus,
+- The prior authorization metrics table now holds 610 calendar-2025 reports
+  from 30 payers, adding Devoted, Highmark, SCAN, Alignment, EmblemHealth, Independence, Excellus,
   Univera, Select Health, Priority Health, HealthPartners, L.A. Care, Blue
   Shield of California and the Blue plans of Alabama, Arizona, Kansas,
-  Louisiana, North Carolina, Tennessee and Iowa. A rate posted as a whole percent is checked against its counts to the
+  Louisiana, Minnesota, North Carolina, Tennessee and Iowa. Reports
+  posted per plan rather than per contract are carried but not pooled. A rate posted as a whole percent is checked against its counts to the
   nearest whole percent.
 - The prior authorization metrics table now includes Aetna Better Health's
   Medicaid and CHIP reports, with counts, from ten states: 472 calendar-2025

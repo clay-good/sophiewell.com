@@ -31,15 +31,15 @@ test('the bundled summary is the summary of the table (regenerate with the scrip
   assert.deepEqual(PA_METRICS_MARKET, summarize(rows));
 });
 
-test('the first edition: 589 reports; the Medicare Advantage market is 329 contract reports from 25 payers, rates only', () => {
-  assert.equal(rows.length, 589);
+test('the first edition: 610 reports; the Medicare Advantage market is 350 reports from 26 payers, rates only', () => {
+  assert.equal(rows.length, 610);
   assert.equal(PA_METRICS_MARKET['medicaid-mco|2025'].reports, 157);
   assert.equal(PA_METRICS_MARKET['qhp|2025'].reports, 78);
   assert.equal(PA_METRICS_MARKET['qhp|2025'].payers.length, 16);
   assert.deepEqual(PA_METRICS_MARKET['mmp|2025'].metrics, {}, 'four reports are too few to summarize');
   const m = PA_METRICS_MARKET['ma|2025'];
-  assert.equal(m.reports, 329);
-  assert.equal(m.payers.length, 25);
+  assert.equal(m.reports, 350);
+  assert.equal(m.payers.length, 26);
   for (const p of ['Aetna (CVS Health)', 'Centene', 'Elevance Health', 'Humana', 'Kaiser Permanente', 'UnitedHealthcare']) assert.ok(m.payers.includes(p), p);
   assert.deepEqual(Object.keys(m.metrics), ['stdApprovedPct', 'stdDeniedPct', 'appealApprovedPct', 'expApprovedPct', 'expDeniedPct']);
   for (const s of Object.values(m.metrics)) assert.ok(s.p25 <= s.median && s.median <= s.p75);
@@ -70,6 +70,9 @@ test('figures read from the reports themselves', () => {
   assert.deepEqual([il.program, il.stdRequests, il.stdApproved, il.stdDenied, il.appeals, il.appealApproved, il.expRequests, il.stdMedianHours], ['medicaid-mco', 110555, 93277, 17278, 3284, 432, 5187, 24]);
   const ny = rows.find((r) => r.id === 'highmark-qhp-ny');
   assert.deepEqual([ny.stdDenied, ny.stdRequests, ny.stdDeniedPct, ny.rateMismatch], [46, 1342, 96.57, ['stdDeniedPct']], 'Highmark prints the approved rate in the denied row');
+  const mn = rows.filter((r) => r.payer === 'Blue Cross and Blue Shield of Minnesota');
+  assert.ok(mn.length === 21 && mn.every((r) => r.part && r.notPooled.length === 5), 'plan-benefit-package reports are carried but not pooled');
+  assert.equal(PA_METRICS_MARKET['ma|2025'].metrics.stdDeniedPct.n, 329);
   assert.deepEqual(rows.filter((r) => /^molina-qhp/.test(r.id)).length, 1, 'the Marketplace block Molina repeats on six state pages is one row');
 });
 
