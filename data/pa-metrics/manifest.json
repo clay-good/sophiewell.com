@@ -1,0 +1,26 @@
+{
+  "manifestVersion": 2,
+  "dataset": "pa-metrics",
+  "label": "Prior authorization metrics as payers posted them (CMS-0057-F)",
+  "sourceUrl": "https://www.ecfr.gov/current/title-42/chapter-IV/subchapter-B/part-422/subpart-C/section-422.122",
+  "agency": "Each payer's own posted report (URL on every row); curated by sophiewell.com",
+  "status": "public-facts-with-attribution",
+  "cadence": "annual",
+  "recordCount": 149,
+  "shards": [
+    {
+      "name": "pa-metrics.json",
+      "sha256": "d2e7d909fddc7ca79cd86e6b3ae952296f34fc955d8ec386b8bb32d07ee8c1ef",
+      "records": 149,
+      "bytes": 132194
+    }
+  ],
+  "notes": "spec-v1605: one row per report a payer posted under 42 CFR 422.122(c), 438.210(f) or 45 CFR 156.223(c), with the payer's figures as posted, its URL and the date it was read. Counts are carried only where the payer posted them; a rate over zero requests is stored as no rate; nothing is back-computed. Curation is CC-BY-4.0.",
+  "coverage": "subset",
+  "coverageNote": "Calendar-2025 Medicare Advantage contract reports from four of the largest insurers (UnitedHealthcare, Aetna, Humana, Kaiser Permanente), as posted; other insurers and markets are not in it yet.",
+  "sourceEdition": "CY2025 reports, read 2026-10-07",
+  "curatedAt": "2026-10-07",
+  "contentChangedAt": "2026-10-07",
+  "expiresOn": "2028-10-07",
+  "recordsSha256": "7387789630e84ec63034346ae9e4798d987b8dcada210afb38f0b3c98303154e"
+}

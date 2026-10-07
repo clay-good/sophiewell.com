@@ -201,6 +201,14 @@ The preventive code map (`lib/preventive-codes.js`, a dated route-B constant rea
 MLN006559) is written to `/open-data/preventive-codes.json`, one row per code with its source URL and
 read date.
 
+`data/pa-metrics/` is the curated prior authorization metrics table: one row per report a payer posted
+under CMS-0057-F, with its figures as posted, the report's URL and the date it was read, hand-curated in
+`scripts/data/pa-metrics.json` and built by `scripts/build-data.mjs` (`coverage: 'subset'`). The first
+edition (read October 7, 2026) holds the 149 calendar-2025 Medicare Advantage contract reports of
+UnitedHealthcare, Aetna, Humana and Kaiser Permanente. `scripts/build-pa-metrics-market.mjs` checks every
+row (a source URL and read date; a stated rate reproduces from its counts; no rate over zero requests) and
+writes `lib/pa-metrics-market.js`, the per-metric median and middle half that `pa-metrics-compare` reads.
+
 ## Health record concepts
 
 `data/concepts/concepts.json` ([spec-v1624](spec-v1624.md)) maps the coded

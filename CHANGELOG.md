@@ -30,11 +30,16 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Payer Prior Authorization Report Check now sets each rate
+  beside the market: the median and middle half of 149 Medicare Advantage
+  contract reports for 2025 from UnitedHealthcare, Aetna, Humana and Kaiser
+  Permanente, read from each payer's own posted report. The table is also a
+  free download on /open-data/, one row per report with its URL.
 - Open data: a new page, /open-data/, offers the datasets curated for the
   coverage tools as free downloads: the USPSTF A and B list (with a changelog
   of what each refresh added, removed or changed) and the preventive service
   codes. Each row names its source and the date it was read.
-- Claims file reader: a cost share on a screening, counseling, vaccine or PrEP
+- Read My Health Insurance Claims File: a cost share on a screening, counseling, vaccine or PrEP
   code now raises "Preventive service with cost sharing", naming the service and
   why most plans must cover it at $0. The codes come from the CMS preventive
   services chart (July 2026). Codes also billed for diagnosis, such as A1c or a

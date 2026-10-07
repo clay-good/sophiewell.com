@@ -8,7 +8,7 @@ const n = (dom, arg, label, unit) => ({ dom, arg, kind: 'number', required: fals
 export default [
   {
     id: 'pa-metrics-compare',
-    summary: 'Checks a payer\'s posted CMS-0057-F prior authorization report. The nine required elements, stated rates against their counts, and median decision times against the deadline.',
+    summary: 'Checks a payer\'s posted CMS-0057-F prior authorization report. The nine required elements, stated rates against their counts, median decision times against the deadline, and each rate beside the bundled market table.',
     compute: PM.paMetricsCompare,
     fields: [
       { dom: 'pam-program', arg: 'program', kind: 'enum', required: true, values: vals(PM.PROGRAMS), label: 'Kind of plan' },

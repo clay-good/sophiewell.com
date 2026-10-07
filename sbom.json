@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:b919c087-36ea-5a2c-83c2-4564c7d88ab5",
+  "serialNumber": "urn:uuid:1bff6f91-400f-5f05-88f3-35aa75c23b4f",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-07T13:25:34.373Z",
+    "timestamp": "2026-10-07T13:56:25.518Z",
     "tools": [
       {
         "name": "scripts/build-sbom.mjs",
@@ -13901,7 +13901,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "abc23c5c708bcee5c085eef752e4786da14a2b4c9e4eceb0d18b3f5bc42bc264"
+          "content": "a6dac2f48e2ff493d91df26f2dba0fbddebd470f0ee0f6f56309e9178d530820"
         }
       ],
       "properties": [
@@ -13911,7 +13911,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2746750"
+          "value": "2746876"
         }
       ]
     },
@@ -16862,7 +16862,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "243045220eade4a4121eb4ec619df15240f97463e1fcd1f4e51121d0e00f5d09"
+          "content": "15dc14392288dbef56dbac1e612bbd4b755f068bba1d3615c9c2266df15058ca"
         }
       ],
       "properties": [
@@ -16872,7 +16872,28 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "10180"
+          "value": "12164"
+        }
+      ]
+    },
+    {
+      "bom-ref": "urn:sophiewell:file:source:lib/pa-metrics-market.js",
+      "type": "file",
+      "name": "lib/pa-metrics-market.js",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f876e1082ad3b8b3ef5db0411ef5102b0ad47f00956b36a7d032c45a75cc1ce9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "sophiewell:scope",
+          "value": "source"
+        },
+        {
+          "name": "sophiewell:bytes",
+          "value": "1280"
         }
       ]
     },
@@ -41222,7 +41243,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8f0226c38f8b4a63de3c3cc435ba1e2d58e09a338425f70cc3dc45b7012cd7e4"
+          "content": "933c01221c32c20d75608c14c5590c1d5611a86c80b660b5f69d0a972678c750"
         }
       ],
       "properties": [
@@ -41232,7 +41253,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "2444"
+          "value": "2487"
         }
       ]
     },
@@ -53276,7 +53297,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "57d08d385ecd59045c644fea4cd65a57a6cdef633ff78b501b5742074c2a882b"
+          "content": "f74b3fd9569ae95a0df44972a0a68738c120179b054d9a76016c4881011d2cd9"
         }
       ],
       "properties": [
@@ -53286,7 +53307,7 @@
         },
         {
           "name": "sophiewell:bytes",
-          "value": "7073"
+          "value": "7098"
         }
       ]
     },
@@ -84912,6 +84933,7 @@
         "urn:sophiewell:file:source:lib/own-notice.js",
         "urn:sophiewell:file:source:lib/pa-criteria-v1502.js",
         "urn:sophiewell:file:source:lib/pa-metrics-compare.js",
+        "urn:sophiewell:file:source:lib/pa-metrics-market.js",
         "urn:sophiewell:file:source:lib/pa/classify.js",
         "urn:sophiewell:file:source:lib/pa/cms-opd-pa-list.js",
         "urn:sophiewell:file:source:lib/pa/date.js",
@@ -87477,7 +87499,7 @@
   "properties": [
     {
       "name": "sophiewell:buildId",
-      "value": "b919c08736eaaa2c"
+      "value": "1bff6f91400faf05"
     },
     {
       "name": "sophiewell:runtimeAssetCount",
@@ -87489,7 +87511,7 @@
     },
     {
       "name": "sophiewell:sourceFileCount",
-      "value": "3242"
+      "value": "3243"
     },
     {
       "name": "sophiewell:rootLockedPackageCount",

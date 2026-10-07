@@ -62,3 +62,18 @@ test('blanks and out-of-range values are asked for', () => {
   assert.match(m({ ...full, timeUnit: '' }).message, /^Choose whether the decision times are in days or hours/);
   assert.match(m({ ...full, stdTotal: '10.5' }).message, /whole number/);
 });
+
+test('spec-v1605: each entered rate is set beside the bundled market for the same program and year', () => {
+  const r = m({ ...full, stdDeniedPct: '20', stdApprovedPct: '80', expDeniedPct: '9.91' });
+  assert.ok(r.market.some((l) => /^Standard denied: 20% is above the middle half of 149 reports \(median 8\.88%, middle half 6\.63% to 12\.73%\)\.$/.test(l)));
+  assert.ok(r.market.some((l) => /^Expedited denied: 9\.91% is within the middle half/.test(l)));
+  assert.ok(r.notes.some((n) => /^Medicare Advantage contract reports for 2025 in the bundled table: 149 from Aetna \(CVS Health\), Humana, Kaiser Permanente, UnitedHealthcare, read October 7, 2026\. Each report counts once/.test(n)));
+});
+
+test('spec-v1605: with no reports for the program or year, the result says so and compares nothing', () => {
+  for (const o of [{ ...full, program: 'qhp' }, { ...full, reportYear: '2026' }]) {
+    const r = m(o);
+    assert.deepEqual(r.market, []);
+    assert.ok(r.notes.some((n) => /^The bundled table has no .* reports for 202[56] yet, so these rates are not set beside other payers\.$/.test(n)));
+  }
+});

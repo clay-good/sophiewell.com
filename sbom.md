@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `b919c08736eaaa2c`
-Generated: 2026-10-07T13:25:34.373Z
+Build ID: `1bff6f91400faf05`
+Generated: 2026-10-07T13:56:25.518Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -694,7 +694,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/meningitis-who-2025-v1560.js` | 8604 | `7101d83e353b3e8963a9c1e4040318ddf07434acc99c5f8db582b95e8d7f68bd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2746750 | `abc23c5c708bcee5c085eef752e4786da14a2b4c9e4eceb0d18b3f5bc42bc264` |
+| `lib/meta.js` | 2746876 | `a6dac2f48e2ff493d91df26f2dba0fbddebd470f0ee0f6f56309e9178d530820` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 19326 | `64342935cc7842381f6e318293cfcd6f97b69022268da6c595c5c71db388af2d` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -835,7 +835,8 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/output-guard.js` | 3563 | `cb43b387537fb4e75d797e47246348263797ef8e33cd08d974ef71c0b66238fb` |
 | `lib/own-notice.js` | 3235 | `b9deb8bca5666b98b2eb345a783097f1c4a3289c57f21b8a60f93c159e032ece` |
 | `lib/pa-criteria-v1502.js` | 6063 | `7478c54061433847351d3b497907feb2c9d07c5bc1182c63b9416664db726299` |
-| `lib/pa-metrics-compare.js` | 10180 | `243045220eade4a4121eb4ec619df15240f97463e1fcd1f4e51121d0e00f5d09` |
+| `lib/pa-metrics-compare.js` | 12164 | `15dc14392288dbef56dbac1e612bbd4b755f068bba1d3615c9c2266df15058ca` |
+| `lib/pa-metrics-market.js` | 1280 | `f876e1082ad3b8b3ef5db0411ef5102b0ad47f00956b36a7d032c45a75cc1ce9` |
 | `lib/pa/classify.js` | 3432 | `a7958e40890ad63ebf68ce5a0107fe7ab5a5b0c9e877e2669e8f44ecfb7f34ca` |
 | `lib/pa/cms-opd-pa-list.js` | 5593 | `0be9d7b8b9c3be083078df985bb34b6d5510e5dbc9ee94d5c2e32d8aa06c77a9` |
 | `lib/pa/date.js` | 3567 | `5217fa23738763834dc97b8187965f5a678ddbb36b02ba40a1a76981ce3c81d9` |
@@ -1995,7 +1996,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `mcp/adapters/ottawa-bowel-prep-v670.js` | 1649 | `a713a154e4d5917597d068b16df4d2443fa2008cdf13a4a8324a15fcb3d1e87b` |
 | `mcp/adapters/outerbridge-v337.js` | 1485 | `227b6dcbf64100dc4df70c3ee3319ceb92fd4d72925cbf5a74097b80e202e5ee` |
 | `mcp/adapters/pa-criteria-v1502.js` | 863 | `0a587fce90b4fe026283aecef8be64ade40bb5cd6925a1258e546d97c25e73b7` |
-| `mcp/adapters/pa-metrics-compare.js` | 2444 | `8f0226c38f8b4a63de3c3cc435ba1e2d58e09a338425f70cc3dc45b7012cd7e4` |
+| `mcp/adapters/pa-metrics-compare.js` | 2487 | `933c01221c32c20d75608c14c5590c1d5611a86c80b660b5f69d0a972678c750` |
 | `mcp/adapters/paed-delirium-v1499.js` | 568 | `09de517edb50c5c907fffe9479bfb0d1071ab0c92403841ce65426b8159782aa` |
 | `mcp/adapters/pai-periapical-v1486.js` | 606 | `aa78a2cc267e926b2653842d08f2b499143b2e21910f1a4a56ca6a0863ae08cd` |
 | `mcp/adapters/painscore-v235.js` | 4868 | `e32e639ab3cfc56900eed9ca9bc6769ebb6755f51a1a031f7c2155aa6b19d0a3` |
@@ -2569,7 +2570,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v160.js` | 11685 | `14ef775c5b8ffbe178e1263f27c806d4c99c02fc86dd79d907213aefd3b7b77f` |
 | `views/group-v1601.js` | 8982 | `140f4c8f7160b256ae1f6e2e6c708d6c2a6b8ea60a88831d1b67f3d284888b37` |
 | `views/group-v1602.js` | 14088 | `314704cab1a231083dc49567db1a1eabe9622283ecf331616fe8e47e8f692089` |
-| `views/group-v1603.js` | 7073 | `57d08d385ecd59045c644fea4cd65a57a6cdef633ff78b501b5742074c2a882b` |
+| `views/group-v1603.js` | 7098 | `f74b3fd9569ae95a0df44972a0a68738c120179b054d9a76016c4881011d2cd9` |
 | `views/group-v1604.js` | 23127 | `60ab59e78a8575057a34586cc2b5c43c4c7c17c1880e34c1c4fe2ebf7b0eaabb` |
 | `views/group-v161.js` | 8025 | `01187902dc8b2523d595b9ff8b8a211db519fb0f1cc00228725b977474c9f4f1` |
 | `views/group-v163.js` | 8143 | `0c4000e57fa5291ce38bd620737125b1a5a309a647fb2283dfd89f2f681731ed` |

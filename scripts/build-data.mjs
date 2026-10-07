@@ -31,7 +31,7 @@
 
 import { createHash } from 'node:crypto';
 import { mkdir, readFile, readdir, writeFile, stat } from 'node:fs/promises';
-import { existsSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { dirname, join, relative, resolve } from 'node:path';
 import { gzipSync } from 'node:zlib';
 import { execFileSync } from 'node:child_process';
@@ -222,6 +222,7 @@ const COVERAGE = {
   'tpn-rules': { ...SUBSET('Macronutrient energy densities and limits.'), sourceEdition: 'unversioned' },
   'iv-to-po': { ...SUBSET('IV-to-oral conversions for common drugs.'), sourceEdition: 'unversioned' },
   concepts: { ...SUBSET('27 coded values a health record can fill, with units and recency windows; curated by hand.'), sourceEdition: 'unversioned' },
+  'pa-metrics': { ...SUBSET('Calendar-2025 Medicare Advantage contract reports from four of the largest insurers (UnitedHealthcare, Aetna, Humana, Kaiser Permanente), as posted; other insurers and markets are not in it yet.'), sourceEdition: 'CY2025 reports, read 2026-10-07' },
 };
 
 const TODAY = new Date().toISOString().slice(0, 10);
@@ -1110,6 +1111,15 @@ function v4TableDataset({ id, sourceUrl, agency, status, cadence, label, shardNa
 }
 
 const v4Datasets = [
+  // spec-v1605: the curated CMS-0057-F prior authorization metrics, one row per posted report, from
+  // scripts/data/pa-metrics.json (also the input of scripts/build-pa-metrics-market.mjs).
+  v4TableDataset({
+    id: 'pa-metrics', label: 'Prior authorization metrics as payers posted them (CMS-0057-F)',
+    sourceUrl: 'https://www.ecfr.gov/current/title-42/chapter-IV/subchapter-B/part-422/subpart-C/section-422.122', agency: 'Each payer\'s own posted report (URL on every row); curated by sophiewell.com', status: 'public-facts-with-attribution',
+    cadence: 'annual', shardName: 'pa-metrics.json',
+    notes: 'spec-v1605: one row per report a payer posted under 42 CFR 422.122(c), 438.210(f) or 45 CFR 156.223(c), with the payer\'s figures as posted, its URL and the date it was read. Counts are carried only where the payer posted them; a rate over zero requests is stored as no rate; nothing is back-computed. Curation is CC-BY-4.0.',
+    seed: JSON.parse(readFileSync(join(dirname(fileURLToPath(import.meta.url)), 'data', 'pa-metrics.json'), 'utf8')),
+  }),
   v4TableDataset({
     id: 'concepts', label: 'Health record concepts (LOINC codes to calculator fields)',
     sourceUrl: 'https://loinc.org/', agency: 'LOINC codes (Regenstrief Institute); map by sophiewell.com', status: 'numeric-facts-with-attribution',

@@ -102,6 +102,7 @@ export const renderers = {
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Report check', value: r.bandLabel }]);
       list(o, r.findings);
+      list(o, r.market);
       list(o, r.notes);
       note(o, r.note);
     }));

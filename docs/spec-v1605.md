@@ -98,4 +98,20 @@ deterministic answer the page gives, and the file never leaves the reader's mach
   USPSTF row carries its own recommendation URL, and its read date is the manifest's `fetchedAt` (one read
   for the whole list), not a per-row field. Older versions are not served; the changelog and the git history
   are the record between them.
-- **Not yet built:** the curated PA metrics table.
+- **Built October 7, 2026 (first edition):** the curated PA metrics table, `data/pa-metrics/` from
+  `scripts/data/pa-metrics.json`: the 149 calendar-2025 Medicare Advantage contract reports of UnitedHealthcare
+  (63, one PDF), Aetna (42, one PDF), Humana (32 PDFs) and Kaiser Permanente (12 rows from 9 regional PDFs; two
+  contracts are posted in a Northern and a Southern California part), each with its URL and read date, and on
+  `/open-data/`. Counts are carried where posted (all but Aetna), and every stated rate is checked against them
+  at build time (all reproduce). **Differed from the spec:**
+  - The market figure is the median and the **middle half** (25th to 75th percentile), not the full range: a
+    contract with three requests posts 0% or 100%, so the extremes describe no market.
+  - Every report counts once, since most payers post no request counts to weight by.
+  - Decision times are kept in the rows but not summarized. Humana and Aetna post whole days ("0 day(s)" is under
+    a day), Kaiser days and hours, and UnitedHealthcare's mean column (whole days) is smaller than its median,
+    which cannot be, so its times are not carried at all.
+  - A rate posted over zero requests (Kaiser's "0.00%" for 0 of 0) is stored as no rate.
+  - UnitedHealthcare posts its appeal rate without the number of appeals and reports no extended reviews.
+  - **Not in this edition** (read and left for the next pass): Elevance and Centene (Wellcare) MA (per-contract
+    PDFs with no landing page, or refusing scripted requests), and every Medicaid managed care and Marketplace
+    report. CareSource and AmeriHealth Caritas Medicaid reports were not found on October 7, 2026.

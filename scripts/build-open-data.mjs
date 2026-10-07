@@ -37,11 +37,12 @@ export function preventiveCodesExport() {
 export function openDatasets(root = ROOT) {
   const uspstf = JSON.parse(readFileSync(join(root, 'data', 'uspstf', 'manifest.json'), 'utf8'));
   const codes = preventiveCodesExport();
+  const pam = JSON.parse(readFileSync(join(root, 'data', 'pa-metrics', 'manifest.json'), 'utf8'));
   return [
     {
       id: 'uspstf',
       name: 'USPSTF A and B recommendations',
-      what: 'Each recommendation on the Task Force\'s A and B list: topic, population, its text verbatim, grade, release month and link, with the age, sex, pregnancy and risk conditions we read from it. Used by Preventive Services Your Plan Must Cover at $0.',
+      what: 'Each recommendation on the Task Force\'s A and B list: topic, population, its text verbatim, grade, release month and link, with the age, sex, pregnancy and risk conditions we read from it. Used by Preventive Services Covered at $0 (USPSTF A and B List).',
       edition: uspstf.sourceEdition,
       readOn: uspstf.fetchedAt,
       rows: uspstf.recordCount,
@@ -51,9 +52,21 @@ export function openDatasets(root = ROOT) {
       files: ['/data/uspstf/manifest.json', ...uspstf.shards.map((s) => `/data/uspstf/shards/${s.name}`), '/data/uspstf/changelog.json'],
     },
     {
+      id: 'pa-metrics',
+      name: 'Prior authorization metrics as payers posted them',
+      what: 'One row per report a payer posted under the CMS prior authorization rule (CMS-0057-F): approval, denial, appeal and extended-review rates, counts where the payer gave them, and decision times as posted, each with the report\'s URL. Calendar 2025 Medicare Advantage contracts from UnitedHealthcare, Aetna, Humana and Kaiser Permanente so far. Used by Payer Prior Authorization Report Check.',
+      edition: pam.sourceEdition,
+      readOn: pam.curatedAt,
+      rows: pam.recordCount,
+      sha256: pam.recordsSha256,
+      license: 'The figures are each payer\'s, as posted on its own site (URL on every row). Our curation is CC-BY-4.0.',
+      source: 'https://www.ecfr.gov/current/title-42/chapter-IV/subchapter-B/part-422/subpart-C/section-422.122',
+      files: ['/data/pa-metrics/manifest.json', ...pam.shards.map((s) => `/data/pa-metrics/${s.name}`)],
+    },
+    {
       id: 'preventive-codes',
       name: 'Preventive service codes',
-      what: 'The HCPCS and CPT codes that are screening, counseling, vaccine or PrEP codes by their own descriptor, each with the service and why most plans must cover it at $0 (USPSTF, ACIP or HRSA). Codes also billed for diagnosis are left out. Used by the claims file reader.',
+      what: 'The HCPCS and CPT codes that are screening, counseling, vaccine or PrEP codes by their own descriptor, each with the service and why most plans must cover it at $0 (USPSTF, ACIP or HRSA). Codes also billed for diagnosis are left out. Used by Read My Health Insurance Claims File.',
       edition: `CMS MLN006559, ${codes.edition}`,
       readOn: codes.rows[0].readOn,
       rows: codes.rows.length,
