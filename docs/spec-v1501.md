@@ -190,6 +190,19 @@ the research recorded in [scope-medication-access.md](scope-medication-access.md
   The tools are `fpl-percent`, `extra-help-msp-screen` and `fap-discount`. Tests: `test/unit/batch-tools.test.js`,
   `test/integration/fpl-batch.spec.js`.
 - **Built 2026-10-03:** §2's page watch, with [spec-v1517](spec-v1517.md#build-status).
+- **Built 2026-10-07:** batch mode for `irmaa` (filing status and MAGI per person, the year from the file or
+  the form). A bare "MFS" cell is refused with what to write instead: the married-filing-separately brackets
+  apply only to someone who lived with the spouse during the year, and SSA uses the single brackets otherwise,
+  so the row must say which ("MFS lived with spouse", or "single").
+- **Built 2026-10-07:** batch mode for `premium-tax-credit` (a navigator's households: income, size and each
+  household's own benchmark premium; region and year from the file or the form). A file with a benchmark column
+  also fits `fpl-percent`, so the reader chooses, the credit estimate listed first.
+- **Built 2026-10-07:** batch mode for `medicare-ffs-pa-required`: a biller's list of scheduled services
+  (code, date of service, and optionally setting and state; a file without them takes the form's answer).
+  **Added:** a batch field can be `strict`. This tool reads an unknown state as no state and answers in
+  general terms, so a cell like "Tx." would have been answered quietly instead of refused; a strict field
+  refuses the row and names the cell. States can be spelled out ("Texas", "District of Columbia").
+  Tests: `test/unit/batch-tools.test.js`, `test/integration/fpl-batch.spec.js`.
 - **Not yet built:** §3's JSON intake, the remaining X12 transactions, batch mode for the
   other scalar tools (each needs its fields listed in `lib/batch-tools.js`), and upload integration for
   the remaining file-based tools.

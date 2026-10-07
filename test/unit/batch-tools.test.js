@@ -78,3 +78,50 @@ test('a hospital\'s policy comes from the form for every patient; charges and in
   assert.ok(!fap.fields.some((f) => fap.formOnly.includes(f.id)), 'the policy is not a file column');
   assert.equal(rowArgs(fap, { size: '3', income: '30000', gross: '20000' }, FORM_FAP).tier2Discount, '50');
 });
+
+test('medicare-ffs-pa-required runs over a services file: a spelled-out state is read, an unknown one refused, a blank one takes the form', () => {
+  const r = runBatch('medicare-ffs-pa-required', [
+    { code: '64483', serviceDate: '2026-03-02', state: 'Texas' },
+    { code: '64483', serviceDate: '3/2/2026', state: 'Tx.' },
+    { code: 'L1833', serviceDate: '2026-11-02', state: '', setting: 'DME' },
+    { code: '', serviceDate: '2026-03-02' },
+  ], { setting: 'opd', state: 'KS' });
+  assert.equal(r.band, '2 services of 4 computed. 2 rows need corrected inputs.');
+  assert.match(r.rows[0].detail, /^WISeR prior authorization required, or prepayment review: 64483 .* in TX\.$/);
+  assert.deepEqual([r.rows[1].label, r.rows[1].detail], ['Needs corrected inputs', 'State where the service is furnished: "Tx." is not one of the choices.']);
+  assert.match(r.rows[2].detail, /^Required: L1833 is on the DMEPOS Required Prior Authorization List/);
+  assert.equal(r.rows[3].detail, 'Enter the HCPCS or CPT code.');
+});
+
+test('a strict choice that matches by value, words or alias is accepted; only a cell matching none is refused', () => {
+  const T = BATCH_TOOLS['medicare-ffs-pa-required'];
+  const st = T.fields.find((f) => f.id === 'state');
+  const se = T.fields.find((f) => f.id === 'setting');
+  assert.deepEqual(['tx', 'TX', 'texas', 'District of Columbia', 'puerto rico'].map((c) => cellValue(st, c)), ['TX', 'TX', 'TX', 'DC', 'PR']);
+  assert.deepEqual(['HOPD', 'Ambulatory surgical center', 'clinic', 'dmepos'].map((c) => cellValue(se, c)), ['opd', 'asc', 'office', 'dmepos']);
+  assert.ok(Object.values(st.aliases).every((v) => st.options.some((o) => o.value === v)), 'every state alias names a listed state');
+});
+
+test('premium-tax-credit runs over a households file, a missing size refused, a blank region taken from the form', () => {
+  const r = runBatch('premium-tax-credit', [
+    { magi: '40000', size: '3', benchmark: '1200', region: '' },
+    { magi: '95000', size: '4', benchmark: '1500', region: 'Hawaii' },
+    { magi: '38000', size: '', benchmark: '800' },
+  ], { region: 'us', year: '2026' });
+  assert.equal(r.band, '2 households of 3 computed. 1 row needs corrected inputs.');
+  assert.equal(r.rows[0].label, '$1,060.33 a month');
+  assert.equal(r.rows[1].label, '$815.21 a month', 'Hawaii\'s guideline, not the form\'s 48 states');
+  assert.equal(r.rows[2].detail, 'Enter the household size in people.');
+});
+
+test('irmaa runs over a people file; a bare "MFS" is refused, since the separate brackets need the person to have lived with the spouse', () => {
+  const r = runBatch('irmaa', [
+    { filing: 'Single', magi: '90000' },
+    { filing: 'MFJ', magi: '260000' },
+    { filing: 'MFS', magi: '120000' },
+    { filing: 'MFS lived with spouse', magi: '120000' },
+  ], { year: '2026' });
+  assert.equal(r.band, '3 people of 4 computed. 1 row needs corrected inputs.');
+  assert.deepEqual(r.rows.map((x) => x.label), ['No IRMAA', '+$81.20 B, +$14.50 D', 'Needs corrected inputs', '+$446.30 B, +$83.30 D']);
+  assert.equal(r.rows[2].detail, 'Tax filing status: "MFS" is not one of the choices. For married filing separately, write "MFS lived with spouse", or "single" if the person lived apart from the spouse all year.');
+});

@@ -272,8 +272,8 @@ with read-only permissions; publish opens the pull request). Changes:
 
 ## Build status
 
-**September 29, 2026.** Modules, four live datasets and the workflow are built; USPSTF and
-the schema/FHIR watches are open.
+**September 29, 2026.** Modules, four live datasets and the workflow are built. USPSTF (October 3) and
+the schema and FHIR package watches (October 6) followed; see the table.
 
 | Part | Status | Differs from the spec |
 |---|---|---|

@@ -53,3 +53,39 @@ test('a patients file is discounted under the hospital policy on the form, each 
   await expect(table).toContainText('so the patient owes $0.00 of $20,000.00');
   await expect(table).toContainText('Enter the gross charges in dollars.');
 });
+
+test('a scheduled-services file is checked against the Original Medicare lists, a bad state cell refused by name', async ({ page }) => {
+  await page.goto('/#medicare-ffs-pa-required');
+  await page.locator('#mfpa-setting').selectOption('opd');
+  await page.locator('#mfpa-state').selectOption('KS');
+  await page.locator('#mfpa-upload-file').setInputFiles(join(DIR, 'scheduled-services.csv'));
+  await page.getByRole('button', { name: 'Use 3 rows' }).click();
+  await expect(page.locator('#q-results')).toContainText('2 services of 3 computed. 1 row needs corrected inputs.');
+  const table = page.locator('.upload-file-results');
+  await expect(table).toContainText('in TX.');
+  await expect(table).toContainText('"Tx." is not one of the choices');
+});
+
+test('a households file is run through the premium tax credit estimate, each row its own benchmark', async ({ page }) => {
+  await page.goto('/#premium-tax-credit');
+  await page.locator('#ptc-region').selectOption('us');
+  await page.locator('#ptc-year').fill('2026');
+  await page.locator('#ptc-upload-file').setInputFiles(join(DIR, 'ptc-households.csv'));
+  await page.getByRole('button', { name: 'Use 3 rows' }).click();
+  await expect(page.locator('#q-results')).toContainText('2 households of 3 computed. 1 row needs corrected inputs.');
+  const table = page.locator('.upload-file-results');
+  await expect(table).toContainText('$1,060.33 a month');
+  await expect(table).toContainText('$815.21 a month');
+  await expect(table).toContainText('Enter the household size in people.');
+});
+
+test('a people file is checked for IRMAA, a bare MFS refused with what to write instead', async ({ page }) => {
+  await page.goto('/#irmaa');
+  await page.locator('#irm-year').fill('2026');
+  await page.locator('#irm-upload-file').setInputFiles(join(DIR, 'irmaa-people.csv'));
+  await page.getByRole('button', { name: 'Use 3 rows' }).click();
+  await expect(page.locator('#q-results')).toContainText('2 people of 3 computed. 1 row needs corrected inputs.');
+  const table = page.locator('.upload-file-results');
+  await expect(table).toContainText('+$81.20 B, +$14.50 D');
+  await expect(table).toContainText('write "MFS lived with spouse"');
+});

@@ -12,6 +12,7 @@ import { resultRow } from '../lib/result-copy.js';
 import { uploadWorkbench } from './upload-workbench.js';
 import { AUTH_FIELDS } from '../lib/upload-fields.js';
 import { acceptVia } from '../lib/hand-off.js';
+import { BATCH_TOOLS } from '../lib/batch-tools.js';
 
 const NA = { value: '', text: '— choose —' };
 function selectField(root, label, id, options) {
@@ -232,20 +233,34 @@ export const renderers = {
     selectField(root, 'State where the service is furnished', 'mfpa-state', MF.STATES);
     dateInput(root, 'Date of service', 'mfpa-dos', 'date');
     const ids = pairs.map(([d]) => d);
-    const o = out(); root.appendChild(o);
-    wire(ids, () => safe(o, () => {
+    const o = out();
+    const formArgs = () => {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
-      const r = MF.medicareFfsPaRequired(args);
+      return args;
+    };
+    const show = (r) => safe(o, () => {
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Original Medicare', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
-    }));
+    });
+    // spec-v1501 §3: a list of scheduled services from a file, each row through medicareFfsPaRequired; a
+    // file without a setting or state column takes the answer above.
+    const upload = uploadWorkbench(root, {
+      id: 'mfpa-upload', fields: BATCH_TOOLS['medicare-ffs-pa-required'].fields, label: 'Check services from a file',
+      compute: 'medicare-ffs-pa-required', getInput: formArgs, onResult: show,
+    });
+    root.appendChild(o);
+    wire(ids, () => {
+      if (upload.isActive()) upload.compute(formArgs());
+      else show(MF.medicareFfsPaRequired(formArgs()));
+    });
   },
 };
 
 // spec-v1623 step 3: an authorization CSV goes to the worklist.
 export const acceptFiles = {
   'auth-runout': acceptVia('ar-upload-file'),
+  'medicare-ffs-pa-required': acceptVia('mfpa-upload-file'),
 };

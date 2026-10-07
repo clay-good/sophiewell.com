@@ -102,16 +102,29 @@ export const renderers = {
     numField(root, 'Modified adjusted gross income from the tax return two years earlier', 'irm-magi', 'e.g. 150000', '1000000000', '0.01');
     numField(root, 'Premium year (blank for this year)', 'irm-year', 'e.g. 2026', '2100', '1');
     const ids = pairs.map(([d]) => d);
-    const o = out(); root.appendChild(o);
-    wire(ids, () => safe(o, () => {
+    const o = out();
+    const formArgs = () => {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
-      const r = IN.irmaa(args);
+      return args;
+    };
+    const show = (r) => safe(o, () => {
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'IRMAA', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
-    }));
+    });
+    // spec-v1501 §3: many people from a file, each row through irmaa; a file without a year column takes
+    // the year above.
+    const upload = uploadWorkbench(root, {
+      id: 'irm-upload', fields: BATCH_TOOLS['irmaa'].fields, label: 'Check people from a file',
+      compute: 'irmaa', getInput: formArgs, onResult: show,
+    });
+    root.appendChild(o);
+    wire(ids, () => {
+      if (upload.isActive()) upload.compute(formArgs());
+      else show(IN.irmaa(formArgs()));
+    });
   },
   'premium-tax-credit'(root) {
     const pairs = [['ptc-magi', 'magi'], ['ptc-size', 'size'], ['ptc-region', 'region'], ['ptc-bench', 'benchmark'], ['ptc-year', 'year']];
@@ -121,16 +134,29 @@ export const renderers = {
     numField(root, 'Benchmark (second-lowest-cost silver) premium, dollars a month', 'ptc-bench', 'e.g. 550', '100000', '0.01');
     numField(root, 'Coverage year (blank for this year)', 'ptc-year', 'e.g. 2026', '2100', '1');
     const ids = pairs.map(([d]) => d);
-    const o = out(); root.appendChild(o);
-    wire(ids, () => safe(o, () => {
+    const o = out();
+    const formArgs = () => {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
-      const r = MC.premiumTaxCredit(args);
+      return args;
+    };
+    const show = (r) => safe(o, () => {
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Credit', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
-    }));
+    });
+    // spec-v1501 §3: many households from a file, each row through premiumTaxCredit; a file without a
+    // region or year column takes the answer above.
+    const upload = uploadWorkbench(root, {
+      id: 'ptc-upload', fields: BATCH_TOOLS['premium-tax-credit'].fields, label: 'Estimate credits for households from a file',
+      compute: 'premium-tax-credit', getInput: formArgs, onResult: show,
+    });
+    root.appendChild(o);
+    wire(ids, () => {
+      if (upload.isActive()) upload.compute(formArgs());
+      else show(MC.premiumTaxCredit(formArgs()));
+    });
   },
   'employer-coverage-affordability'(root) {
     const pairs = [['eca-income', 'income'], ['eca-self', 'selfOnly'], ['eca-family', 'family'], ['eca-year', 'year']];
@@ -278,4 +304,6 @@ export const renderers = {
 
 export const acceptFiles = {
   'fpl-percent': acceptVia('fpl-upload-file'),
+  'premium-tax-credit': acceptVia('ptc-upload-file'),
+  'irmaa': acceptVia('irm-upload-file'),
 };

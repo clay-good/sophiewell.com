@@ -30,6 +30,18 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Medicare IRMAA now checks a CSV of people (filing status and income). A
+  filing status of just "MFS" is refused with what to write instead, because
+  the married-filing-separately brackets apply only to someone who lived with
+  the spouse during the year.
+- Premium Tax Credit Estimate now runs over a CSV of households (income,
+  household size and each household's benchmark premium), each row through the
+  same estimate as the form.
+- Does Original Medicare Require Prior Authorization? now checks a whole list
+  of scheduled services from a CSV file (code and date of service, with the
+  setting and state from the file or the form), each row through the same
+  check as the form. A state the file spells out is read; one it misspells is
+  refused by name rather than answered as if no state were given.
 - Payer Prior Authorization Report Check now sets each rate
   beside the market: the median and middle half of 149 Medicare Advantage
   contract reports (UnitedHealthcare, Aetna, Humana, Kaiser Permanente) or 52

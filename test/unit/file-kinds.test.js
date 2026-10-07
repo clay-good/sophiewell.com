@@ -45,6 +45,9 @@ const EXPECT = {
   'households.csv': ['csv-mapped', 'likely', 'Federal Poverty Level Percent (households file)'],
   'fap-patients.csv': ['csv-mapped', 'likely', 'Its columns fit 2 tools; choose one.'],
   'medicare-people.csv': ['csv-mapped', 'likely', 'Extra Help and Medicare Savings Program Screen (people file)'],
+  'irmaa-people.csv': ['csv-mapped', 'likely', 'Medicare IRMAA (people file)'],
+  'ptc-households.csv': ['csv-mapped', 'likely', 'Its columns fit 2 tools; choose one.'],
+  'scheduled-services.csv': ['csv-mapped', 'likely', 'Does Original Medicare Require Prior Authorization? (services file)'],
   'unknown.csv': ['csv-unknown', 'none', 'alpha, beta, gamma'],
   'reference-pprrvu.csv': ['reference-mpfs-rvu', 'certain', 'reference table'],
   'reference-addb.csv': ['reference-opps-addb', 'certain', 'Addendum B'],
@@ -149,4 +152,10 @@ test('head only: a 2 GB insurer rates file is recognized from its first 256 KB i
 test('the home page sample file is the 835 fixture, byte for byte', () => {
   const root = join(DIR, '..', '..', '..');
   assert.deepEqual(readFileSync(join(root, 'samples', 'x12-835.835')), readFileSync(join(DIR, 'x12-835.835')));
+});
+
+test('a households file with a benchmark column offers the credit estimate first, and still the poverty-level screen', () => {
+  const r = rec('ptc-households.csv');
+  assert.deepEqual(r.candidates.map((c) => c.id), ['premium-tax-credit', 'fpl-percent']);
+  assert.deepEqual(rec('households.csv').tools.map((t) => t.id), ['fpl-percent']);
 });
