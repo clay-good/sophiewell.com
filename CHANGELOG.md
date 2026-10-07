@@ -57,6 +57,9 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- The prior authorization metrics table now includes Aetna Better Health's
+  Medicaid and CHIP reports, with counts, from ten states: 472 calendar-2025
+  reports in all.
 - The prior authorization metrics table now includes Molina's Medicare,
   Medicaid, CHIP and Marketplace reports: 461 calendar-2025 reports in all.
 - The prior authorization metrics table now includes Elevance (Anthem,

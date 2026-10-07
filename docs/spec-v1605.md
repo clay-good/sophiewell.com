@@ -142,6 +142,10 @@ deterministic answer the page gives, and the file never leaves the reader's mach
     The Marketplace figures are identical on six state pages, so they are one row; a Medicare contract posted
     with different figures on several state pages is a row per page. Left out: Ohio Medicaid (the page links to
     the state's report instead); Georgia, Idaho, Texas and Virginia posted no report. 461 rows in all.
+  - **Seventh pass, the same day:** Aetna Better Health, 11 rows: Medicaid in nine states and Pennsylvania's
+    CHIP plan, with counts, and the Michigan Medicare-Medicaid plan H8026 (percentages only). The files are
+    linked from each state's provider pages; Kansas, Virginia, West Virginia, New York, Ohio and California
+    linked none on October 7, 2026. 472 rows in all.
   - **Not in this edition:** further Elevance reports (per-contract PDFs with no landing
-    page, or refusing scripted requests), Aetna's Medicaid plans, HCSC Illinois and New Mexico, Florida Blue, BCBS North
+    page, or refusing scripted requests), Aetna Better Health in the states that linked no report, HCSC Illinois and New Mexico, Florida Blue, BCBS North
     Carolina and L.A. Care. CareSource and AmeriHealth Caritas Medicaid reports were not found on October 7, 2026.

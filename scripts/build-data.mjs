@@ -222,7 +222,7 @@ const COVERAGE = {
   'tpn-rules': { ...SUBSET('Macronutrient energy densities and limits.'), sourceEdition: 'unversioned' },
   'iv-to-po': { ...SUBSET('IV-to-oral conversions for common drugs.'), sourceEdition: 'unversioned' },
   concepts: { ...SUBSET('27 coded values a health record can fill, with units and recency windows; curated by hand.'), sourceEdition: 'unversioned' },
-  'pa-metrics': { ...SUBSET('Calendar-2025 reports as posted: Medicare Advantage contracts of UnitedHealthcare, Aetna, Humana, Kaiser Permanente, Centene, Elevance and Molina; Medicaid managed care and CHIP plans of UnitedHealthcare, Humana, Kaiser, Centene, Elevance and Molina; Marketplace issuers of UnitedHealthcare, Kaiser, Oscar, HCSC, Centene, Elevance and Molina. Other insurers are not in it yet.'), sourceEdition: 'CY2025 reports, read 2026-10-07' },
+  'pa-metrics': { ...SUBSET('Calendar-2025 reports as posted: Medicare Advantage contracts of UnitedHealthcare, Aetna, Humana, Kaiser Permanente, Centene, Elevance and Molina; Medicaid managed care and CHIP plans of UnitedHealthcare, Aetna, Humana, Kaiser, Centene, Elevance and Molina; Marketplace issuers of UnitedHealthcare, Kaiser, Oscar, HCSC, Centene, Elevance and Molina. Other insurers are not in it yet.'), sourceEdition: 'CY2025 reports, read 2026-10-07' },
 };
 
 const TODAY = new Date().toISOString().slice(0, 10);

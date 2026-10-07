@@ -24,12 +24,12 @@ test('the bundled summary is the summary of the table (regenerate with the scrip
   assert.deepEqual(PA_METRICS_MARKET, summarize(rows));
 });
 
-test('the first edition: 461 reports; the Medicare Advantage market is 248 contract reports from the six largest insurers and Molina, rates only', () => {
-  assert.equal(rows.length, 461);
-  assert.equal(PA_METRICS_MARKET['medicaid-mco|2025'].reports, 132);
+test('the first edition: 472 reports; the Medicare Advantage market is 248 contract reports from the six largest insurers and Molina, rates only', () => {
+  assert.equal(rows.length, 472);
+  assert.equal(PA_METRICS_MARKET['medicaid-mco|2025'].reports, 141);
   assert.equal(PA_METRICS_MARKET['qhp|2025'].reports, 63);
   assert.deepEqual(PA_METRICS_MARKET['qhp|2025'].payers, ['Centene', 'Elevance Health', 'Health Care Service Corporation', 'Kaiser Permanente', 'Molina Healthcare', 'Oscar Health', 'UnitedHealthcare']);
-  assert.deepEqual(PA_METRICS_MARKET['mmp|2025'].metrics, {}, 'two payers are not a market');
+  assert.deepEqual(PA_METRICS_MARKET['mmp|2025'].metrics, {}, 'four reports are too few to summarize');
   const m = PA_METRICS_MARKET['ma|2025'];
   assert.equal(m.reports, 248);
   assert.deepEqual(m.payers, ['Aetna (CVS Health)', 'Centene', 'Elevance Health', 'Humana', 'Kaiser Permanente', 'Molina Healthcare', 'UnitedHealthcare']);

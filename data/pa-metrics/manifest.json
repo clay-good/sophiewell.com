@@ -6,21 +6,21 @@
   "agency": "Each payer's own posted report (URL on every row); curated by sophiewell.com",
   "status": "public-facts-with-attribution",
   "cadence": "annual",
-  "recordCount": 461,
+  "recordCount": 472,
   "shards": [
     {
       "name": "pa-metrics.json",
-      "sha256": "5511f6d39b5cfc6a4ffba17b7e0f8362d07f3cb6a22abafaff5d350ce6119c95",
-      "records": 461,
-      "bytes": 439585
+      "sha256": "72c8029becb26336205ec7f18eb8c431f999fc1b184095162bae10ed8cce67b9",
+      "records": 472,
+      "bytes": 451483
     }
   ],
   "notes": "spec-v1605: one row per report a payer posted under 42 CFR 422.122(c), 438.210(f) or 45 CFR 156.223(c), with the payer's figures as posted, its URL and the date it was read. Counts are carried only where the payer posted them; a rate over zero requests is stored as no rate; nothing is back-computed. Curation is CC-BY-4.0.",
   "coverage": "subset",
-  "coverageNote": "Calendar-2025 reports as posted: Medicare Advantage contracts of UnitedHealthcare, Aetna, Humana, Kaiser Permanente, Centene, Elevance and Molina; Medicaid managed care and CHIP plans of UnitedHealthcare, Humana, Kaiser, Centene, Elevance and Molina; Marketplace issuers of UnitedHealthcare, Kaiser, Oscar, HCSC, Centene, Elevance and Molina. Other insurers are not in it yet.",
+  "coverageNote": "Calendar-2025 reports as posted: Medicare Advantage contracts of UnitedHealthcare, Aetna, Humana, Kaiser Permanente, Centene, Elevance and Molina; Medicaid managed care and CHIP plans of UnitedHealthcare, Aetna, Humana, Kaiser, Centene, Elevance and Molina; Marketplace issuers of UnitedHealthcare, Kaiser, Oscar, HCSC, Centene, Elevance and Molina. Other insurers are not in it yet.",
   "sourceEdition": "CY2025 reports, read 2026-10-07",
   "curatedAt": "2026-10-07",
   "contentChangedAt": "2026-10-07",
   "expiresOn": "2028-10-07",
-  "recordsSha256": "0a243390327a4a502b21c9105c26b8a7ece653823d2778613301774a70a8b4ad"
+  "recordsSha256": "c286e5c80eab88799ba8e00fdf65d1964cddcbce0704ef0065f0607078b817d5"
 }

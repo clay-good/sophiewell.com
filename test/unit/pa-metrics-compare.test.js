@@ -80,5 +80,5 @@ test('spec-v1605: with no reports for the program or year, the result says so an
 
 test('spec-v1605: Marketplace and Medicaid managed care rates are set beside their own markets', () => {
   assert.ok(m({ ...full, program: 'qhp' }).market.some((l) => /^Standard denied: 7\.6% is below the middle half of 63 reports \(median 19%/.test(l)));
-  assert.ok(m({ ...full, program: 'medicaid-mco' }).market.some((l) => / of 132 reports \(median /.test(l)));
+  assert.ok(m({ ...full, program: 'medicaid-mco' }).market.some((l) => / of 141 reports \(median /.test(l)));
 });
