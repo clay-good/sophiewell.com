@@ -6,6 +6,12 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Prior-auth packet check, Arkansas Blue Cross: echocardiography (stress, resting
+  transthoracic and transesophageal) now needs a documented clinical indication,
+  as the provider manual of August 20, 2026 added it to Carelon's imaging list.
+  Four payers' rule citations (Arkansas, Alabama, Massachusetts and South
+  Carolina Blues) were re-read against their current pages; wording that had
+  drifted from the source was corrected.
 - Prolonged services: Medicare's G0316 is now reported with 99223 from 105
   minutes and with 99233 from 80 (the CY 2023 physician fee schedule rule),
   not 104 and 79. The office codes were already right (G2212 from 89 with 99205
@@ -48,6 +54,8 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Earliest Refill Date now checks a CSV of fills (fill date, days supply and
+  the plan's refill threshold), each row through the same rule as the form.
 - Medicare IRMAA now checks a CSV of people (filing status and income). A
   filing status of just "MFS" is refused with what to write instead, because
   the married-filing-separately brackets apply only to someone who lived with

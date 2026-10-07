@@ -5491,6 +5491,15 @@ test('R-PA-ARKBCBS-007 flags an Arkansas Blue Cross outpatient MRI with no clini
   assert.equal(f.status, 'flag');
 });
 
+test('R-PA-ARKBCBS-007 covers echocardiography, added to the Carelon list in the August 20, 2026 provider manual', () => {
+  for (const study of ['Transthoracic echocardiogram, CPT 93306', 'Stress echo, CPT 93350', 'Transesophageal echocardiography, CPT 93312']) {
+    const text = `Arkansas Blue Cross and Blue Shield member.\nRequested: ${study}.\n`;
+    assert.equal(runEngine(bundleOf(text)).find((x) => x.ruleId === 'R-PA-ARKBCBS-007').status, 'flag', study);
+  }
+  const ok = 'Arkansas Blue Cross and Blue Shield member.\nRequested: transthoracic echocardiogram. Reason for study: exertional dyspnea for 3 weeks.\n';
+  assert.equal(runEngine(bundleOf(ok)).find((x) => x.ruleId === 'R-PA-ARKBCBS-007').status, 'pass');
+});
+
 test('R-PA-ARKBCBS-007 does not treat an arbitrary 7xxxx code as advanced imaging', () => {
   const text = 'Arkansas Blue Cross and Blue Shield member.\nRequested: CPT 76700 abdominal ultrasound.\n';
   const findings = runEngine(bundleOf(text));

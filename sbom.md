@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `60741cd6b0b79782`
-Generated: 2026-10-07T15:59:27.025Z
+Build ID: `34edc4c9a34a9920`
+Generated: 2026-10-07T16:25:46.125Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -126,7 +126,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/banff-tcmr-v510.js` | 6562 | `3170dc54a5927851067ea0c5c3006865eb39e33267c2379e2e99b2cb1c39ef33` |
 | `lib/barrack-cement-v484.js` | 3367 | `9bdaeb3a9f9da107261f541591c89e08662ae49770e90a32a9e41fe7a6ba97be` |
 | `lib/barrow-ccf-v440.js` | 3198 | `f52772137a4282c641f7235b698a95e4949eed029e6f522be7151d8e236f7f29` |
-| `lib/batch-tools.js` | 14407 | `3a1f650bb435d32c327a3ee6ecf8a167c8a4128209ced06309f317d15d1b2bdf` |
+| `lib/batch-tools.js` | 15620 | `b5083fbbee6ae2d89944d2ab0e69f5224f319ba37b70a6794b50b105cbc1b827` |
 | `lib/bauer-score-v603.js` | 12642 | `6873a9af09ffadc793d0697ccff74aab1b75bca7c58face73f2453e564d40ea6` |
 | `lib/bctq-v774.js` | 3483 | `6d1cab9250cf31f91e435c3af2833721a7c424eb755d8edf1a1e5287d2f2ec9f` |
 | `lib/bell-nec-v431.js` | 4461 | `a8a0e560e740c82134a0e9eccb40b53e6b4e5da01eff8f994d0ba3c52366ad15` |
@@ -848,8 +848,8 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/pa/redact.js` | 8440 | `5869238a8172e79dcbd009dc7c5a89a879fd77eafed2762ec3d40af37dd9f9af` |
 | `lib/pa/report.js` | 9691 | `d19c531e5ee3d480c96dd548c348b314ebcb37beaa3d5e8f87f70680e783e08d` |
 | `lib/pa/rule-sources.js` | 9357 | `6096fc0fc01b68c012dc97cd18de3e82257cb601cdac1a74ee9421d8e5f2add4` |
-| `lib/pa/rules.js` | 1567339 | `d61a3e1474798f5ca9808af4609e19ccb0e0ee741881141929e489863334a5f3` |
-| `lib/pa/staleness-ledger.js` | 75095 | `0dac8017c12f49c431adb8697cfe4367d8bfc3e93eccda5d6f63cd1f73664725` |
+| `lib/pa/rules.js` | 1568416 | `250288eadd4ceaf4a29f4e37aa21358697f34dda3f05fc4acab2923a19b9052b` |
+| `lib/pa/staleness-ledger.js` | 75447 | `186d1a7cce64b8921f881e9b56c02cbc2e96d1d5b2c070ab713517f387fefcd7` |
 | `lib/pa/staleness.js` | 9310 | `99249cde34d35bb57ea644fced966019d1373b34f792f1ea9b42b586b94454df` |
 | `lib/paed-delirium-v1499.js` | 3969 | `c8836be1003c2235bb05d8ce78a07baf922b3039ac798b4bf4a3ae8bb20aca20` |
 | `lib/page-title.js` | 1458 | `575f7d045fda35d9bc5c6a04f70fd76dbf3364a987983ccde90d84fa54b12925` |
@@ -1190,7 +1190,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/ukeld-v1438.js` | 4228 | `0f12281e006ee5e16de40b7938b7f956498c45f422860dd4a1c6e4c43a3f8714` |
 | `lib/unit-convert.js` | 2601 | `642818802952c2c5e87338bc035dcd9d5ff07dec1e8b97a31ca09b0be38c14d2` |
 | `lib/up-to-seven-v586.js` | 11393 | `4a379fbb63e617cb741a5369394d693751912101492558fdda03ca9c478ff06b` |
-| `lib/upload-fields.js` | 13315 | `20d76a691a77996c0fcfb279a55c16c44a104c6b543b20d011ceda5729a1f5ca` |
+| `lib/upload-fields.js` | 13445 | `39f92dfe104e33b6d83ec9c6a381b119eaebc5f9491d6688630f7c99a0f58f19` |
 | `lib/upload-intake.js` | 6297 | `b9d99e65bfa09d6c016e7db1a49c22bf748c6c73c84b9c1a62c4c4dc5319f53f` |
 | `lib/upload-worker.js` | 13345 | `11a48f5d7037c780060bbe8ffe525f281e6a9ae4ad39394293482a48cef41e37` |
 | `lib/uro-v130.js` | 12895 | `370c7f4f91e8adeff37012c9d024e2bab403330eaffeecee756d06a61fb30c21` |
@@ -2529,7 +2529,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `views/group-v1509.js` | 9355 | `c6052710ceac6ed488acfac42c0d347bc387f1dcfc5a3807399d03171ae4a31a` |
 | `views/group-v151.js` | 13359 | `0f5eff3a293106878f3c19634996260b9ed65f358fb54c277941ddb9ef93784e` |
 | `views/group-v1510.js` | 20988 | `3e8cdbf16a7567269112c7a50e7abd49351c2be159d66956a987d54616f2dfac` |
-| `views/group-v1511.js` | 12916 | `93b0462d58e5904d62e34a3d32ff05a6f8d4a8a68ddf8a6160d8c64cb40d7750` |
+| `views/group-v1511.js` | 13746 | `b8685b9fff256ed112f0a6ea4726d5bceca9067280797ad8d89d35f594bd019b` |
 | `views/group-v1512.js` | 13381 | `3c334743e9f5219297d28cf29b43c18187d2666cd40bf50f40034d87a7ee60ce` |
 | `views/group-v1513.js` | 8961 | `ebd3a2e3ba0b3ee52e0424375dfc40aab175e62d9122172717428e4761dc810d` |
 | `views/group-v1514.js` | 12722 | `0d276901d06df9eb1c8431514eec48473d67ac288e08965ebfad634d7438fa7e` |

@@ -7,6 +7,9 @@ import * as CBU from '../lib/compounding-bud-v1511.js';
 import * as IP from '../lib/ipledge-v1511.js';
 import * as IR from '../lib/imid-rems-v1511.js';
 import { resultRow } from '../lib/result-copy.js';
+import { uploadWorkbench } from './upload-workbench.js';
+import { BATCH_TOOLS } from '../lib/batch-tools.js';
+import { acceptVia } from '../lib/hand-off.js';
 
 const NA = { value: '', text: '— choose —' };
 function selectField(root, label, id, options) {
@@ -144,16 +147,28 @@ export const renderers = {
     numField(root, 'Plan refill threshold (percent)', 'rf-pct', 'e.g. 75', '100', 'any');
     selectField(root, 'Eye drops (use the CMS 70% recommendation if no threshold)?', 'rf-eye', DS.YES_NO);
     const ids = pairs.map(([d]) => d);
-    const o = out(); root.appendChild(o);
-    wire(ids, () => safe(o, () => {
+    const o = out();
+    const formArgs = () => {
       const args = {};
       for (const [dom, arg] of pairs) args[arg] = val(dom);
-      const r = DS.refillEligibleDate(args);
+      return args;
+    };
+    const show = (r) => safe(o, () => {
       if (!r.valid) { note(o, r.message); return; }
       resultRow(o, [{ text: r.band, cls: r.abnormal ? 'warn' : null }, { label: 'Earliest refill', value: r.bandLabel }]);
       list(o, r.notes);
       note(o, r.note);
-    }));
+    });
+    // spec-v1511: many fills from a file, each row through refillEligibleDate with its own plan threshold.
+    const upload = uploadWorkbench(root, {
+      id: 'rf-upload', fields: BATCH_TOOLS['refill-eligible-date'].fields, label: 'Check fills from a file',
+      compute: 'refill-eligible-date', getInput: formArgs, onResult: show,
+    });
+    root.appendChild(o);
+    wire(ids, () => {
+      if (upload.isActive()) upload.compute(formArgs());
+      else show(DS.refillEligibleDate(formArgs()));
+    });
   },
   'compounding-bud'(root) {
     const pairs = [['cbud-type', 'prepType'], ['cbud-made', 'compounded'], ['cbud-cat', 'category'], ['cbud-method', 'method'], ['cbud-tested', 'sterilityTested'], ['cbud-nonsterile', 'nonsterileComponent'], ['cbud-store', 'storage'], ['cbud-form', 'form'], ['cbud-exp', 'componentExpiry']];
@@ -217,4 +232,9 @@ export const renderers = {
       note(o, r.note);
     }));
   },
+};
+
+// spec-v1623 step 3: a fills file with a threshold column goes to the refill batch.
+export const acceptFiles = {
+  'refill-eligible-date': acceptVia('rf-upload-file'),
 };

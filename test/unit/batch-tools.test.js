@@ -125,3 +125,14 @@ test('irmaa runs over a people file; a bare "MFS" is refused, since the separate
   assert.deepEqual(r.rows.map((x) => x.label), ['No IRMAA', '+$81.20 B, +$14.50 D', 'Needs corrected inputs', '+$446.30 B, +$83.30 D']);
   assert.equal(r.rows[2].detail, 'Tax filing status: "MFS" is not one of the choices. For married filing separately, write "MFS lived with spouse", or "single" if the person lived apart from the spouse all year.');
 });
+
+test('refill-eligible-date runs over a fills file, each row with its own plan threshold; a blank threshold is refused unless the row is eye drops', () => {
+  const r = runBatch('refill-eligible-date', [
+    { fillDate: '2026-09-01', daysSupply: '30', threshold: '75' },
+    { fillDate: '2026-09-10', daysSupply: '90', threshold: '80' },
+    { fillDate: '2026-09-15', daysSupply: '30', threshold: '' },
+    { fillDate: '2026-09-15', daysSupply: '30', threshold: '', eyeDrops: 'Y' },
+  ], {});
+  assert.equal(r.band, '3 fills of 4 computed. 1 row needs corrected inputs.');
+  assert.deepEqual(r.rows.map((x) => x.label), ['Refill from 2026-09-24', 'Refill from 2026-11-21', 'Needs corrected inputs', 'Refill from 2026-10-06']);
+});

@@ -619,18 +619,20 @@
         "R-PA-BCBSMA-002"
       ],
       "url": "https://provider.bluecrossma.com/",
-      "lastVerified": "2026-06-04",
+      "lastVerified": "2026-10-07",
       "alsoCited": [
         "https://provider.bluecrossma.com/ProviderHome/portal/home/News2/!ut/p/z0/fY9BTwJBDIX_Si-byIHMAMZ4NagBORjjBeZiyjCyA7Pt0pll3X9v1xiP3tq-772XGme2xhFe4xFLZMKk-87dfazm6-Vsc29f7Xr-aN-eZqv3xfNmYZe35sW4_wFNiKfLxT0Y55lK-Cpm2wpf4yEItCwFE_wIVCDFvaAMlf0DvJ4FU2Up9LmyPkWKXh1IB2hrlAa94pgSUCg9y3mEOCXcs-gPdIQ-lhoG7gC9cM5Q6gCNpmpIHTCpOLZH6roG-BM8SoAbYprm4Dudx6bfcQqZG3XXUIY25Ilpz273DZgl9JY!/",
+        "https://provider.bluecrossma.com/ProviderHome/portal/home/clinical-resources/clinical-criteria-and-guidelines/medical-policies/",
         "https://provider.bluecrossma.com/ProviderHome/portal/home/clinical-resources/prior-authorization/cancer-care/",
         "https://provider.bluecrossma.com/ProviderHome/portal/home/clinical-resources/prior-authorization/genetic-testing/",
         "https://provider.bluecrossma.com/ProviderHome/portal/home/clinical-resources/prior-authorization/high-tech-radiology/",
         "https://provider.bluecrossma.com/ProviderHome/portal/home/clinical-resources/prior-authorization/prior-auth-overview/",
-        "https://provider.bluecrossma.com/ProviderHome/portal/home/clinical-resources/clinical-criteria-and-guidelines/medical-policies/",
         "https://provider.bluecrossma.com/ProviderHome/portal/home/quality-and-performance/quality-indicators/blue-distinction/",
         "https://provider.bluecrossma.com/ProviderHome/wcm/connect/11593699-ec02-45ea-b5fe-f0a70c8b839d/MPC_031016-1x-F_Out-of-Network-Form-for-BH-MedSurg_Final.pdf?MOD=AJPERES",
         "https://provider.bluecrossma.com/ProviderHome/wcm/connect/provider%2Bportal%2Bcontent%2Blibrary/provider%2Bcentral/etools/etools",
-        "https://provider.bluecrossma.com/eforms/medication-prior-auth?secure=true"
+        "https://provider.bluecrossma.com/ProviderHome/wcm/connect/provider+portal+content+library/provider+central/etools/authorization+manager/authorization+manager+%28secure+and+non-secure%29",
+        "https://provider.bluecrossma.com/eforms/medication-prior-auth?secure=true",
+        "https://www.bluecrossma.org/medical-policies/"
       ]
     },
     {
@@ -642,21 +644,22 @@
         "R-PA-BCBSAL-002"
       ],
       "url": "https://www.bcbsal.org/web/precertification.html",
-      "lastVerified": "2026-06-04",
+      "lastVerified": "2026-10-07",
       "alsoCited": [
+        "https://providers.bcbsal.org/portal/documents/10226/305944/blue%2Badvantage%2Bprovider%2Bmanual/db5b8fd0-d9a3-436a-bab0-db5f662b4919",
+        "https://providers.bcbsal.org/portal/documents/10226/306297/InterQual%2BConnect%2BFrequently%2BAsked%2BQuestions/288c8d37-d119-e320-f301-708bd95c87b0",
+        "https://providers.bcbsal.org/portal/documents/10226/306297/Preferred%2BRadiology%2BProvider%2BProgram%2B2015%2BFrequently%2BAsked%2BQuestions%2Band%2BAnswers/8ef70674-f389-45f0-befe-64a53847d6a9?t=1677698583470",
+        "https://providers.bcbsal.org/portal/documents/10226/306297/Preservice%2BAppeals%2Band%2BConcurrent%2BAppeal%2BProcess/d52f32fb-40be-45ff-bf8f-de5b1fa607f1",
+        "https://providers.bcbsal.org/portal/resources/-/resource/viewArticle/JDAFGFPZ5Y",
+        "https://providers.bcbsal.org/portal/resources/-/resource/viewArticle/NGAW9UB5TT",
+        "https://providers.bcbsal.org/portal/resources/-/resources/category/1564136",
+        "https://providers.bcbsal.org/portal/resources/-/resources/category/360722",
         "https://providers.bcbsal.org/portal/resources/-/resources/category/3772311",
         "https://providers.bcbsal.org/portal/resources/-/resources/category/994514",
-        "https://providers.bcbsal.org/portal/resources/-/resources/category/1564136",
-        "https://providers.bcbsal.org/portal/documents/10226/306297/Preferred%2BRadiology%2BProvider%2BProgram%2B2015%2BFrequently%2BAsked%2BQuestions%2Band%2BAnswers/8ef70674-f389-45f0-befe-64a53847d6a9?t=1677698583470",
-        "https://providers.bcbsal.org/portal/documents/10226/305944/blue%2Badvantage%2Bprovider%2Bmanual/db5b8fd0-d9a3-436a-bab0-db5f662b4919",
-        "https://providers.bcbsal.org/portal/resources/-/resource/viewArticle/NGAW9UB5TT",
-        "https://providers.bcbsal.org/portal/web/pa/resources/-/resource/viewArticle/TBUFOONPGI",
-        "https://providers.bcbsal.org/portal/resources/-/resource/viewArticle/JDAFGFPZ5Y",
-        "https://providers.bcbsal.org/portal/documents/10226/306297/InterQual%2BConnect%2BFrequently%2BAsked%2BQuestions/288c8d37-d119-e320-f301-708bd95c87b0",
+        "https://providers.bcbsal.org/portal/web/pa/resources/-/resource/viewArticle/8IRBW18QPR",
         "https://providers.bcbsal.org/portal/web/pa/resources/-/resource/viewArticle/FYP640IW0U",
-        "https://providers.bcbsal.org/portal/web/pa/resources?_resourcesportlet_WAR_paresourcesportlet_action=expandResource&_resourcesportlet_WAR_paresourcesportlet_expanded=true&p_p_id=resourcesportlet_WAR_paresourcesportlet&p_p_lifecycle=1&p_p_mode=view&p_p_state=normal&p_r_p_p_http%3A%2F%2Fproviders.bcbsal.org%2Fpublic-render-parameters_categoryId=1415159403",
-        "https://providers.bcbsal.org/portal/resources/-/resources/category/360722",
-        "https://providers.bcbsal.org/portal/documents/10226/306297/Preservice%2BAppeals%2Band%2BConcurrent%2BAppeal%2BProcess/d52f32fb-40be-45ff-bf8f-de5b1fa607f1"
+        "https://providers.bcbsal.org/portal/web/pa/resources/-/resource/viewArticle/TBUFOONPGI",
+        "https://providers.bcbsal.org/portal/web/pa/resources?_resourcesportlet_WAR_paresourcesportlet_action=expandResource&_resourcesportlet_WAR_paresourcesportlet_expanded=true&p_p_id=resourcesportlet_WAR_paresourcesportlet&p_p_lifecycle=1&p_p_mode=view&p_p_state=normal&p_r_p_p_http%3A%2F%2Fproviders.bcbsal.org%2Fpublic-render-parameters_categoryId=1415159403"
       ]
     },
     {
@@ -668,7 +671,7 @@
         "R-PA-BCBSSC-002"
       ],
       "url": "https://www.southcarolinablues.com/en/home/providers.html",
-      "lastVerified": "2026-06-05",
+      "lastVerified": "2026-10-07",
       "alsoCited": [
         "https://www.southcarolinablues.com/en/home/providers/policies-and-authorizations/prior-authorization.html",
         "https://www.southcarolinablues.com/en/home/providers/policies-and-authorizations/medical-policies.html",
@@ -686,7 +689,7 @@
         "R-PA-ARKBCBS-002"
       ],
       "url": "https://www.arkansasbluecross.com/providers",
-      "lastVerified": "2026-06-05",
+      "lastVerified": "2026-10-07",
       "alsoCited": [
         "https://www.arkansasbluecross.com/providers/resource-center/prior-authorization",
         "https://assets.contentstack.io/v3/assets/blte81730ee65c02059/bltb5120d819c889758/abcbs-provider-manual.pdf"

@@ -170,7 +170,10 @@ and reproduces no chapter text.
     refills would be permitted at 21 days"); the carry-forward of earlier early refills and CSV batch mode
     are not built. **The CSV batch was held back on October 3, 2026:** in the file registry it would make
     every fill-history upload ambiguous among three tools and push the adherence flow into a choice. It
-    needs its own distinguishing column first (for example a plan threshold per row).
+    needs its own distinguishing column first (for example a plan threshold per row). **Built October 7, 2026** with that
+    column: the batch requires a plan-threshold column (a blank cell is refused unless the row says eye drops),
+    so a plain fill history still goes only to the adherence tools, and a fills file with a threshold lists
+    the refill batch first among the tools it fits.
 - **Built 2026-09-26:** `compounding-bud`, every limit taken from USP's own fact sheet (the Mississippi Board of
   Pharmacy copy), including the Category 1 rule that has no frozen limit and the Category 3 requirement of
   sterility testing. The longer nonsterile BUDs a monograph or stability data can support are not computed.

@@ -89,3 +89,13 @@ test('a people file is checked for IRMAA, a bare MFS refused with what to write 
   await expect(table).toContainText('+$81.20 B, +$14.50 D');
   await expect(table).toContainText('write "MFS lived with spouse"');
 });
+
+test('a fills file is checked for the earliest refill date, each with its plan threshold', async ({ page }) => {
+  await page.goto('/#refill-eligible-date');
+  await page.locator('#rf-upload-file').setInputFiles(join(DIR, 'refill-fills.csv'));
+  await page.getByRole('button', { name: 'Use 3 rows' }).click();
+  await expect(page.locator('#q-results')).toContainText('2 fills of 3 computed. 1 row needs corrected inputs.');
+  const table = page.locator('.upload-file-results');
+  await expect(table).toContainText('Refill from 2026-09-24');
+  await expect(table).toContainText('Refill from 2026-11-21');
+});
