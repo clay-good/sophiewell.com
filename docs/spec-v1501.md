@@ -213,7 +213,12 @@ the research recorded in [scope-medication-access.md](scope-medication-access.md
   rejected, its IK3/IK4 segment and element error positions, the AK9 group code, and AK9's received and
   accepted counts checked against the AK2 loops. It runs in a Worker and through MCP `analyze_file`, with a
   receipt. `x12-837-check` reads 837D dental claims ([spec-v1515](spec-v1515.md#build-status)).
-- **Not yet built:** the remaining X12 transactions (278 and 276 requests), batch mode for the
+- **Built 2026-10-07:** `x12-278-reader` (catalog 2,056) reads 005010X217 278 prior authorization responses,
+  laid out as in the CMS esMD X12N 278 companion guide: the HCR action at the patient event (2000E) and service
+  (2000F) levels grouped as approved, partly approved, denied, pended, modified, cancelled, contact the payer,
+  deferred or no action; the review or tracking number (HCR02), raw reason (HCR03), certified dates (DTP AAH),
+  service dates and code, AAA rejections and the payer's MSG text. A 278 request (BHT02 13) is refused.
+- **Not yet built:** the 276 claim status request and building outbound X12 requests, batch mode for the
   other scalar tools (each needs its fields listed in `lib/batch-tools.js`), and upload integration for
   the remaining file-based tools.
 - **Built 2026-10-03:** §4's download. `renderPrintable` (`lib/print.js`) takes an optional `docx`, which

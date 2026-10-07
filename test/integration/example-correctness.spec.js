@@ -112,6 +112,7 @@ const FILE_DRIVEN = new Map([
   ['x12-271-reader', 'x12-271-reader.spec.js'],
   ['x12-277-reader', 'x12-277-reader.spec.js'],
   ['x12-999-reader', 'x12-999-reader.spec.js'],
+  ['x12-278-reader', 'x12-278-reader.spec.js'],
   ['denial-pattern-report', 'remittance-analysis.spec.js'],
   ['underpayment-check', 'remittance-analysis.spec.js'],
   ['340b-rx-match', 'rx-match-workbench.spec.js'],

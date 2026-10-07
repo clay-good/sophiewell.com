@@ -13,6 +13,7 @@ const claimWorkerUrl = new URL('../lib/x12-837-worker.js', import.meta.url);
 const eligibilityWorkerUrl = new URL('../lib/x12-271-worker.js', import.meta.url);
 const statusWorkerUrl = new URL('../lib/x12-277-worker.js', import.meta.url);
 const ackWorkerUrl = new URL('../lib/x12-999-worker.js', import.meta.url);
+const authWorkerUrl = new URL('../lib/x12-278-worker.js', import.meta.url);
 const hptWorkerUrl = new URL('../lib/hpt-worker.js', import.meta.url);
 const hptCompareWorkerUrl = new URL('../lib/hpt-compare-worker.js', import.meta.url);
 const analysisWorkerUrl = new URL('../lib/remittance-analysis-worker.js', import.meta.url);
@@ -355,6 +356,38 @@ function reader999(root) {
   });
 }
 
+function reader278(root) {
+  root.appendChild(el('p', { class: 'notice', text: 'Reads X12 278 prior authorization responses locally: for each request and each service in it, the decision (approved, partly approved, denied, pended, modified and so on) with the review or tracking number, the raw reason code, the certified dates and the payer\'s message. Denials and rejections are listed first.' }));
+  root.appendChild(el('p', { class: 'muted', text: 'Choose one or more X12 text files, up to 50 MB each. The reader shows raw codes and groups only the action code; it does not ship code-list descriptions.' }));
+  const input = el('input', { id: 'x278-files', type: 'file', multiple: true, accept: '.278,.txt,text/plain,application/octet-stream' });
+  const status = el('p', { id: 'x278-status', class: 'muted', role: 'status', 'aria-live': 'polite' });
+  const results = el('div', { id: 'q-results', 'aria-live': 'polite' });
+  root.appendChild(el('label', { for: 'x278-files', text: 'Choose prior authorization response files' })); root.appendChild(input); root.appendChild(status); root.appendChild(results);
+  let worker = null;
+  input.addEventListener('change', async () => {
+    if (worker) worker.terminate(); clear(results);
+    const files = [...(input.files || [])]; if (!files.length) return;
+    if (files.some((file) => file.size > MAX_FILE_BYTES)) { status.textContent = 'Each file must be 50 MB or smaller.'; return; }
+    status.textContent = 'Reading the prior authorization responses locally...'; const payload = await transferFiles(files);
+    worker = new window.Worker(authWorkerUrl, { type: 'module' });
+    worker.addEventListener('error', () => { status.textContent = 'The prior authorization responses could not be read.'; });
+    worker.addEventListener('message', (event) => {
+      const message = event.data || {};
+      if (message.type === 'error') { status.textContent = message.message; return; }
+      if (message.type === 'download') { downloadMessage(worker, message); return; }
+      if (message.type !== 'parsed') return;
+      const v = message.totals; status.textContent = `${v.files.toLocaleString('en-US')} ${v.files === 1 ? 'file' : 'files'} read.`;
+      resultRow(results, [{ text: `${v.denied.toLocaleString('en-US')} denied, ${v.rejected.toLocaleString('en-US')} rejected, ${v.pended.toLocaleString('en-US')} pended, ${v.approved.toLocaleString('en-US')} approved and ${v.other.toLocaleString('en-US')} other decisions.`, cls: v.denied || v.rejected ? 'warn' : null }, { label: 'Decisions', value: v.decisions.toLocaleString('en-US') }]);
+      const shown = message.preview.rows.length; results.appendChild(el('p', { class: 'muted', text: message.preview.total > shown ? `Showing the first ${shown} of ${message.preview.total} decisions.` : `Showing all ${shown} decisions.` }));
+      table(results, 'Decisions, denials first', message.preview.headers, message.preview.rows); downloads(results, worker);
+      results.appendChild(el('p', { class: 'muted', text: 'The decision is a grouping of the raw HCR action code; a denial reason is the raw HCR03 code. Check the payer\'s letter before acting, and keep the review number for the claim.' }));
+      results.appendChild(el('p', {}, [el('a', { href: 'https://x12.org/codes', target: '_blank', rel: 'noreferrer', text: 'Look up raw codes' })]));
+      renderReceipt(results, message);
+    });
+    worker.postMessage({ type: 'parse', files: payload }, payload.map((file) => file.buffer));
+  });
+}
+
 function hptFileCheck(root) {
   root.appendChild(el('p', { class: 'notice', text: 'Streams a CMS Hospital Price Transparency v3.0.0 CSV tall, CSV wide or JSON file locally and checks its required fields, accepted values and conditional rules.' }));
   root.appendChild(el('p', { class: 'muted', text: 'The file stays in this tab. There is no 50 MB workbench limit: memory stays tied to the current CSV row or JSON charge item, so the practical limit is what your browser can open.' }));
@@ -474,7 +507,7 @@ function pasBundleCheck(root) {
   });
 }
 
-export const renderers = { 'x12-835-reader': reader835, 'x12-837-check': check837, 'x12-271-reader': reader271, 'x12-277-reader': reader277, 'x12-999-reader': reader999, 'hpt-file-check': hptFileCheck, 'hpt-price-compare': hptPriceCompare, 'pas-bundle-check': pasBundleCheck, 'denial-pattern-report': denialPattern, 'underpayment-check': underpayment };
+export const renderers = { 'x12-835-reader': reader835, 'x12-837-check': check837, 'x12-271-reader': reader271, 'x12-277-reader': reader277, 'x12-999-reader': reader999, 'x12-278-reader': reader278, 'hpt-file-check': hptFileCheck, 'hpt-price-compare': hptPriceCompare, 'pas-bundle-check': pasBundleCheck, 'denial-pattern-report': denialPattern, 'underpayment-check': underpayment };
 
 // spec-v1623 step 3: files handed off from a drop go through each tool's own
 // input. underpayment-check takes the remittances; its fee schedule is chosen
@@ -487,6 +520,7 @@ export const acceptFiles = {
   'x12-271-reader': acceptVia('x271-file'),
   'x12-277-reader': acceptVia('x277-files'),
   'x12-999-reader': acceptVia('x999-files'),
+  'x12-278-reader': acceptVia('x278-files'),
   'hpt-file-check': acceptVia('hpt-file'),
   'hpt-price-compare': acceptVia('hptc-files'),
   'pas-bundle-check': acceptVia('pas-file'),

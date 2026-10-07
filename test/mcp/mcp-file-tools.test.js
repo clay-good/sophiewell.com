@@ -48,7 +48,7 @@ test('analyze_file runs the primary tool and returns the result with a receipt',
 });
 
 test('analyze_file runs every tool it lists on its fixture', async () => {
-  const fixture = { 'x12-835-reader': 'x12-835.835', 'x12-837-check': 'x12-837p.837', 'x12-271-reader': 'x12-271.271', 'x12-277-reader': 'x12-277.277', 'x12-999-reader': 'x12-999.999', 'hpt-file-check': 'hpt-tall.csv', 'tic-file-check': 'tic-in-network.json', 'carin-eob-reader': 'carin-eob.json', 'pas-bundle-check': 'pas-request.json' };
+  const fixture = { 'x12-835-reader': 'x12-835.835', 'x12-837-check': 'x12-837p.837', 'x12-271-reader': 'x12-271.271', 'x12-277-reader': 'x12-277.277', 'x12-999-reader': 'x12-999.999', 'x12-278-reader': 'x12-278.278', 'hpt-file-check': 'hpt-tall.csv', 'tic-file-check': 'tic-in-network.json', 'carin-eob-reader': 'carin-eob.json', 'pas-bundle-check': 'pas-request.json' };
   for (const tool of ANALYZABLE) {
     const r = await analyzeFile({ path: join(FIX, fixture[tool]), tool }, { roots });
     assert.equal(r.valid, true, `${tool}: ${r.message}`);

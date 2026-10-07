@@ -458,3 +458,5 @@ experience**.
 > v1562, Arpraziquantel for Preschool Children With Schistosomiasis (Tablets by Weight) — [spec-v1562](spec-v1562.md), which adds `arpraziquantel-dose` — is 2054.)
 
 > v1501, X12 999 Acknowledgment Reader — [spec-v1501](spec-v1501.md), which adds `x12-999-reader` — is 2055.)
+
+> v1501, X12 278 Prior Authorization Response Reader — [spec-v1501](spec-v1501.md), which adds `x12-278-reader` — is 2056.)

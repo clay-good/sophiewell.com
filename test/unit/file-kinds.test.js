@@ -24,6 +24,7 @@ const EXPECT = {
   'x12-271.271': ['x12-271', 'certain', 'GS01 is HB'],
   'x12-277.277': ['x12-277', 'certain', 'GS08 is 005010X212'],
   'x12-277ca.277': ['x12-277ca', 'certain', 'GS08 is 005010X214'],
+  'x12-278.278': ['x12-278', 'certain', '005010X217'],
   'x12-999.999': ['x12-999', 'certain', 'ST01 is 999'],
   'x12-other.edi': ['x12-other', 'certain', 'Transaction set 834 (enrollment)'],
   'ccd.xml': ['ccda-ccd', 'certain', 'Continuity of Care Document template id'],

@@ -11364,6 +11364,16 @@
     },
     {
       "phrases": [
+        "278 reader",
+        "278 response",
+        "prior authorization response file",
+        "authorization decision file"
+      ],
+      "tile": "x12-278-reader",
+      "audience": "billers"
+    },
+    {
+      "phrases": [
         "hospital price file validator",
         "hospital price transparency file check",
         "hpt machine readable file",

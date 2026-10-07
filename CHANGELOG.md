@@ -54,6 +54,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- X12 278 Prior Authorization Response Reader: read a payer's 278 answer to a
+  prior authorization request. Each request and service shows its decision,
+  review or tracking number, reason code, certified dates and the payer's
+  message, with denials first. The file stays in your browser.
 - X12 999 Acknowledgment Reader: after you send an 837 or another X12 file, read
   the 999 that comes back. It shows each transaction set as accepted, accepted
   with errors or rejected, where each error is, and whether the group's counts

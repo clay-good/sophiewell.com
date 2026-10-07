@@ -1,0 +1,19 @@
+{
+  "whatThisIs": "Read X12 278 prior authorization responses without uploading them. For each request and each service in it, it shows the payer's decision, the review or tracking number, the raw reason code, the certified dates and the payer's message.",
+  "whenToUse": "Use this when a payer or clearinghouse returns a 278 response to a prior authorization request, to see at a glance which services were denied, pended or approved and keep the numbers the claim will need.",
+  "inputs": "One or more X12 278 005010X217 response files, up to 50 MB each. Files remain in the browser tab.",
+  "output": "Denied, rejected, pended, approved and other counts; a denials-first table with raw action and reason codes, review numbers, certified dates, service codes and payer messages; full or redacted CSV downloads.",
+  "example": {
+    "rows": [
+      [
+        "Service 64483",
+        "Denied; HCR A3, reason 0B"
+      ],
+      [
+        "Patient event",
+        "Approved; HCR A1, review AUTH-1, certified 2026-10-01 to 2026-12-29"
+      ]
+    ],
+    "result": "1 denied, 0 rejected, 0 pended, 1 approved and 0 other decisions."
+  }
+}

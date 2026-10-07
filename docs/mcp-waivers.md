@@ -46,6 +46,7 @@ Reasons are a fixed vocabulary:
 - `x12-271-reader` - wrong-input-modality
 - `x12-277-reader` - wrong-input-modality
 - `x12-999-reader` - wrong-input-modality
+- `x12-278-reader` - wrong-input-modality
 - `hpt-file-check` - wrong-input-modality
 - `hpt-price-compare` - wrong-input-modality
 - `tic-file-check` - wrong-input-modality
