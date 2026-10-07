@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `b0e09634f3bf2916`
-Generated: 2026-10-07T21:19:12.330Z
+Build ID: `539a8022660991e7`
+Generated: 2026-10-07T21:26:01.704Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -836,7 +836,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/own-notice.js` | 3235 | `b9deb8bca5666b98b2eb345a783097f1c4a3289c57f21b8a60f93c159e032ece` |
 | `lib/pa-criteria-v1502.js` | 6063 | `7478c54061433847351d3b497907feb2c9d07c5bc1182c63b9416664db726299` |
 | `lib/pa-metrics-compare.js` | 12492 | `0d19a338ca0d7eb292c15aa31ee46d1350009239a287fedf6296dfe702d9c0a7` |
-| `lib/pa-metrics-market.js` | 3726 | `ffbe5e531387fc14ce010fe0ad1d1f9546d04262ee01a8cb670799eddbf086b7` |
+| `lib/pa-metrics-market.js` | 4409 | `db4965fc5f8451e9bfc9354c0e66e11eb31a5ebcfee05c7d6402fd7a01dbab8c` |
 | `lib/pa/classify.js` | 3432 | `a7958e40890ad63ebf68ce5a0107fe7ab5a5b0c9e877e2669e8f44ecfb7f34ca` |
 | `lib/pa/cms-opd-pa-list.js` | 5593 | `0be9d7b8b9c3be083078df985bb34b6d5510e5dbc9ee94d5c2e32d8aa06c77a9` |
 | `lib/pa/date.js` | 3567 | `5217fa23738763834dc97b8187965f5a678ddbb36b02ba40a1a76981ce3c81d9` |

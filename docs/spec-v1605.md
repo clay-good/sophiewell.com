@@ -137,6 +137,11 @@ deterministic answer the page gives, and the file never leaves the reader's mach
     Advantage are now in the table: 417 rows. Left out: Elevance's three Florida MA plans that post HTML pages
     without a contract number, Indiana's unlinked statewide aggregate (it would double-count the four plan
     reports), and Healthy Blue South Carolina (likely not Elevance-owned).
+  - **Sixth pass, the same day:** Molina, 44 rows from its per-state provider prior authorization pages
+    (whole percentages, standard times in whole days, expedited in hours), read from the data each page renders.
+    The Marketplace figures are identical on six state pages, so they are one row; a Medicare contract posted
+    with different figures on several state pages is a row per page. Left out: Ohio Medicaid (the page links to
+    the state's report instead); Georgia, Idaho, Texas and Virginia posted no report. 461 rows in all.
   - **Not in this edition:** further Elevance reports (per-contract PDFs with no landing
-    page, or refusing scripted requests), Aetna's Medicaid plans, Molina (its pages render by script), HCSC Illinois and New Mexico, Florida Blue, BCBS North
+    page, or refusing scripted requests), Aetna's Medicaid plans, HCSC Illinois and New Mexico, Florida Blue, BCBS North
     Carolina and L.A. Care. CareSource and AmeriHealth Caritas Medicaid reports were not found on October 7, 2026.
