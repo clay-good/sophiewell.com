@@ -54,7 +54,8 @@ export function checkRows(rows) {
     for (const [n, d, p] of [['stdApproved', 'stdRequests', 'stdApprovedPct'], ['stdDenied', 'stdRequests', 'stdDeniedPct'], ['expApproved', 'expRequests', 'expApprovedPct'], ['expDenied', 'expRequests', 'expDeniedPct'], ['appealApproved', 'appeals', 'appealApprovedPct'], ['extendedApproved', 'extendedRequests', 'extendedApprovedPct']]) {
       if (r[n] == null || r[d] == null) continue;
       if (r[d] === 0) { if (r[p] != null) problems.push(`${r.id}: ${p} over zero requests`); continue; }
-      if (r[p] == null || Math.abs((100 * r[n]) / r[d] - r[p]) > 0.051) problems.push(`${r.id}: ${p} ${r[p]} does not match ${r[n]} of ${r[d]}`);
+      const declared = (r.rateMismatch || []).includes(p) && /does not match the posted counts/.test(r.note || '');
+      if (!declared && (r[p] == null || Math.abs((100 * r[n]) / r[d] - r[p]) > 0.051)) problems.push(`${r.id}: ${p} ${r[p]} does not match ${r[n]} of ${r[d]}`);
     }
   }
   return problems;
@@ -74,7 +75,9 @@ export function summarize(rows) {
     const payers = [...new Set(rs.map((r) => r.payer))].sort();
     // Fewer than three payers describe those payers, not a market: no summary is given.
     if (payers.length >= MIN_PAYERS) for (const m of SUMMARY_METRICS) {
-      const vals = rs.map((r) => r[m]).filter((v) => typeof v === 'number').sort((a, b) => a - b);
+      // A rate its own counts contradict, or one posted over a different denominator, is declared on the row
+      // (`notPooled`) and left out.
+      const vals = rs.filter((r) => !(r.notPooled || []).includes(m)).map((r) => r[m]).filter((v) => typeof v === 'number').sort((a, b) => a - b);
       if (vals.length < 10) continue;
       metrics[m] = { n: vals.length, median: round2(quantile(vals, 0.5)), p25: round2(quantile(vals, 0.25)), p75: round2(quantile(vals, 0.75)) };
     }

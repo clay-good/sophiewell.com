@@ -24,15 +24,15 @@ test('the bundled summary is the summary of the table (regenerate with the scrip
   assert.deepEqual(PA_METRICS_MARKET, summarize(rows));
 });
 
-test('the first edition: 243 reports; the Medicare Advantage market is 149 contract reports from four payers, rates only', () => {
-  assert.equal(rows.length, 243);
-  assert.equal(PA_METRICS_MARKET['medicaid-mco|2025'].reports, 52);
-  assert.equal(PA_METRICS_MARKET['qhp|2025'].reports, 34);
-  assert.deepEqual(PA_METRICS_MARKET['qhp|2025'].payers, ['Health Care Service Corporation', 'Kaiser Permanente', 'Oscar Health', 'UnitedHealthcare']);
-  assert.deepEqual(PA_METRICS_MARKET['chip-mco|2025'].metrics, {}, 'two payers are not a market');
+test('the first edition: 349 reports; the Medicare Advantage market is 193 contract reports from five payers, rates only', () => {
+  assert.equal(rows.length, 349);
+  assert.equal(PA_METRICS_MARKET['medicaid-mco|2025'].reports, 89);
+  assert.equal(PA_METRICS_MARKET['qhp|2025'].reports, 55);
+  assert.deepEqual(PA_METRICS_MARKET['qhp|2025'].payers, ['Centene', 'Health Care Service Corporation', 'Kaiser Permanente', 'Oscar Health', 'UnitedHealthcare']);
+  assert.deepEqual(PA_METRICS_MARKET['mmp|2025'].metrics, {}, 'two payers are not a market');
   const m = PA_METRICS_MARKET['ma|2025'];
-  assert.equal(m.reports, 149);
-  assert.deepEqual(m.payers, ['Aetna (CVS Health)', 'Humana', 'Kaiser Permanente', 'UnitedHealthcare']);
+  assert.equal(m.reports, 193);
+  assert.deepEqual(m.payers, ['Aetna (CVS Health)', 'Centene', 'Humana', 'Kaiser Permanente', 'UnitedHealthcare']);
   assert.deepEqual(Object.keys(m.metrics), ['stdApprovedPct', 'stdDeniedPct', 'appealApprovedPct', 'expApprovedPct', 'expDeniedPct']);
   for (const s of Object.values(m.metrics)) assert.ok(s.p25 <= s.median && s.median <= s.p75);
 });
@@ -50,6 +50,11 @@ test('figures read from the reports themselves', () => {
   const tx = rows.find((r) => r.id === 'uhc-medicaid-texas-chip');
   assert.equal(tx.program, 'chip-mco');
   assert.match(rows.find((r) => r.id === 'uhc-ifp-al').note, /DRAFT watermark/);
+  const la = rows.find((r) => r.id === 'centene-medicaid-la-37');
+  assert.deepEqual([la.appeals, la.appealApproved, la.appealApprovedPct, la.rateMismatch, la.notPooled], [967, 250, 59.98, ['appealApprovedPct'], ['appealApprovedPct']], 'a posted rate its own counts contradict is carried as posted, declared, and not pooled');
+  const h1416 = rows.filter((r) => r.report === 'H1416');
+  assert.equal(h1416.length, 1, 'a contract posted on five state pages with the same figures is one row');
+  assert.match(h1416[0].note, /posted on 5 state pages \(AR, IL, MS, SC, TN\)/);
   const az = rows.find((r) => r.id === 'oscar-13877');
   assert.deepEqual([az.stdApprovedPct, az.stdDeniedPct, az.appealApprovedPct, az.stdMedianHours], [81.11, 18.89, 44.83, 40.8]);
   assert.deepEqual([rows.find((r) => r.id === 'hcsc-tx').stdDeniedPct, rows.find((r) => r.id === 'hcsc-tx').extendedApprovedPct], [6, null]);

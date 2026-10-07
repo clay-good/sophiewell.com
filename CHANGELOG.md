@@ -54,6 +54,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- The prior authorization metrics table now includes Centene (Wellcare,
+  Ambetter and its Medicaid plans): 349 calendar-2025 reports in all. Where a
+  payer's posted rate does not match its own posted counts, both are kept as
+  posted and that rate is left out of the market comparison.
 - Payer Prior Authorization Report Check now compares Marketplace plans too:
   34 calendar-2025 issuer reports from UnitedHealthcare, Kaiser Permanente,
   Oscar and HCSC, read from each payer's own posted report.

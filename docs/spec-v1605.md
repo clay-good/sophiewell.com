@@ -126,6 +126,12 @@ deterministic answer the page gives, and the file never leaves the reader's mach
   - **Third pass, the same day:** 15 Marketplace issuer reports from Oscar (12 issuers, percentages only, denials
     including partial denials) and HCSC (Texas, Montana and Oklahoma; whole percentages; Illinois and New Mexico
     were not at the same address). With four payers the Marketplace now has a market summary (34 reports).
-  - **Not in this edition:** Elevance and Centene (Wellcare, Ambetter) reports (per-contract PDFs with no landing
+  - **Fourth pass, the same day:** Centene, 106 rows from 116 files found across its brand sites (Ambetter 21
+    issuers, Wellcare 46 MA contracts, 39 Medicaid, CHIP and other state plans). A contract Wellcare posts on
+    several state pages with identical figures is one row. **New rule:** a rate its own counts contradict
+    (Louisiana Healthcare Connections posts 59.98% approved after appeal for 250 of 967) is carried as posted,
+    declared on the row (`rateMismatch`), and with a rate posted over a different denominator (an appeal rate out
+    of all requests) left out of the pooled summary (`notPooled`). 349 rows in all.
+  - **Not in this edition:** Elevance reports (per-contract PDFs with no landing
     page, or refusing scripted requests), Aetna's Medicaid plans, Molina (its pages render by script), HCSC Illinois and New Mexico, Florida Blue, BCBS North
     Carolina and L.A. Care. CareSource and AmeriHealth Caritas Medicaid reports were not found on October 7, 2026.
