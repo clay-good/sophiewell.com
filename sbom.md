@@ -1,7 +1,7 @@
 # Sophie Well SBOM
 
-Build ID: `1bff6f91400faf05`
-Generated: 2026-10-07T13:56:25.518Z
+Build ID: `7baa1ee50df4e7c7`
+Generated: 2026-10-07T14:21:36.603Z
 Component: sophiewell.com 1.0.0
 License: MIT
 Engines: node >=22.23.2 <23, npm >=10.0.0
@@ -694,7 +694,7 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/meniere-aao-hns-v708.js` | 3001 | `f45dee46f6436026012bccf9e494030e1156656847167e212c4b4324d6c24ccd` |
 | `lib/meningitis-who-2025-v1560.js` | 8604 | `7101d83e353b3e8963a9c1e4040318ddf07434acc99c5f8db582b95e8d7f68bd` |
 | `lib/mest-c-v528.js` | 9310 | `e33f178c339338f62c47b6a19d50d345d38be3b05d9a33e7d2703e0a99ae3a69` |
-| `lib/meta.js` | 2746876 | `a6dac2f48e2ff493d91df26f2dba0fbddebd470f0ee0f6f56309e9178d530820` |
+| `lib/meta.js` | 2746857 | `334317abc7ce925939631ad819dcfb0cb975ba2dbeafc25ffd914588ebc6453a` |
 | `lib/metabolic-hepatic-v219.js` | 15123 | `36639294b0fb3501741ea1258d002c14b647c06314c8b8d8d1f65475cbbaf3dd` |
 | `lib/metabolic-onc-v88.js` | 19326 | `64342935cc7842381f6e318293cfcd6f97b69022268da6c595c5c71db388af2d` |
 | `lib/metabolic-v269.js` | 4382 | `3e3761baed7a75bde154097cf0d419ae57b67d5b01ae6a28a43050bb3f7d96d1` |
@@ -835,8 +835,8 @@ and loads only after a user opens Report a problem. No analytics or fonts.
 | `lib/output-guard.js` | 3563 | `cb43b387537fb4e75d797e47246348263797ef8e33cd08d974ef71c0b66238fb` |
 | `lib/own-notice.js` | 3235 | `b9deb8bca5666b98b2eb345a783097f1c4a3289c57f21b8a60f93c159e032ece` |
 | `lib/pa-criteria-v1502.js` | 6063 | `7478c54061433847351d3b497907feb2c9d07c5bc1182c63b9416664db726299` |
-| `lib/pa-metrics-compare.js` | 12164 | `15dc14392288dbef56dbac1e612bbd4b755f068bba1d3615c9c2266df15058ca` |
-| `lib/pa-metrics-market.js` | 1280 | `f876e1082ad3b8b3ef5db0411ef5102b0ad47f00956b36a7d032c45a75cc1ce9` |
+| `lib/pa-metrics-compare.js` | 12492 | `0d19a338ca0d7eb292c15aa31ee46d1350009239a287fedf6296dfe702d9c0a7` |
+| `lib/pa-metrics-market.js` | 2860 | `8510e872766237dd9356753a4637ad6712af9d5951465b819c2e60dcf766e81b` |
 | `lib/pa/classify.js` | 3432 | `a7958e40890ad63ebf68ce5a0107fe7ab5a5b0c9e877e2669e8f44ecfb7f34ca` |
 | `lib/pa/cms-opd-pa-list.js` | 5593 | `0be9d7b8b9c3be083078df985bb34b6d5510e5dbc9ee94d5c2e32d8aa06c77a9` |
 | `lib/pa/date.js` | 3567 | `5217fa23738763834dc97b8187965f5a678ddbb36b02ba40a1a76981ce3c81d9` |

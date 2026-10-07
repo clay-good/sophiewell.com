@@ -25,6 +25,9 @@ export const SEED = join(ROOT, 'scripts', 'data', 'pa-metrics.json');
 const OUT = join(ROOT, 'lib', 'pa-metrics-market.js');
 
 export const METRICS = ['stdApprovedPct', 'stdDeniedPct', 'appealApprovedPct', 'extendedApprovedPct', 'expApprovedPct', 'expDeniedPct'];
+// The extended-review rate is checked per row but not summarized: payers divide it by different things (Kaiser by
+// the requests whose review was extended, Humana's Virginia report by every request), so pooled it means nothing.
+export const SUMMARY_METRICS = METRICS.filter((m) => m !== 'extendedApprovedPct');
 
 // quantile(sorted, q): linear interpolation between closest ranks (R type 7, spreadsheet PERCENTILE.INC).
 export function quantile(sorted, q) {
@@ -32,6 +35,8 @@ export function quantile(sorted, q) {
   const lo = Math.floor(h);
   return sorted[lo] + (h - lo) * ((sorted[Math.min(lo + 1, sorted.length - 1)]) - sorted[lo]);
 }
+
+export const MIN_PAYERS = 3;
 
 const round2 = (x) => Math.round(x * 100) / 100;
 
@@ -66,14 +71,16 @@ export function summarize(rows) {
   for (const [key, rs] of [...groups.entries()].sort()) {
     const [program, year] = key.split('|');
     const metrics = {};
-    for (const m of METRICS) {
+    const payers = [...new Set(rs.map((r) => r.payer))].sort();
+    // Fewer than three payers describe those payers, not a market: no summary is given.
+    if (payers.length >= MIN_PAYERS) for (const m of SUMMARY_METRICS) {
       const vals = rs.map((r) => r[m]).filter((v) => typeof v === 'number').sort((a, b) => a - b);
       if (vals.length < 10) continue;
       metrics[m] = { n: vals.length, median: round2(quantile(vals, 0.5)), p25: round2(quantile(vals, 0.25)), p75: round2(quantile(vals, 0.75)) };
     }
     out[key] = {
       program, year: Number(year), reports: rs.length,
-      payers: [...new Set(rs.map((r) => r.payer))].sort(),
+      payers,
       readOn: rs.map((r) => r.readOn).sort().at(-1),
       metrics,
     };

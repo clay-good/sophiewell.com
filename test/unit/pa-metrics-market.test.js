@@ -24,7 +24,10 @@ test('the bundled summary is the summary of the table (regenerate with the scrip
   assert.deepEqual(PA_METRICS_MARKET, summarize(rows));
 });
 
-test('the first edition: 149 Medicare Advantage contract reports for 2025 from four payers, rates only', () => {
+test('the first edition: 228 reports; the Medicare Advantage market is 149 contract reports from four payers, rates only', () => {
+  assert.equal(rows.length, 228);
+  assert.equal(PA_METRICS_MARKET['medicaid-mco|2025'].reports, 52);
+  assert.deepEqual(PA_METRICS_MARKET['qhp|2025'].metrics, {}, 'two payers are not a market');
   const m = PA_METRICS_MARKET['ma|2025'];
   assert.equal(m.reports, 149);
   assert.deepEqual(m.payers, ['Aetna (CVS Health)', 'Humana', 'Kaiser Permanente', 'UnitedHealthcare']);
@@ -40,6 +43,11 @@ test('figures read from the reports themselves', () => {
   const u = rows.find((r) => r.id === 'uhc-H0169');
   assert.deepEqual([u.stdRequests, u.stdApproved, u.stdDeniedPct, u.expRequests, u.appeals, u.stdMedianHours], [40168, 34736, 13.5, 1325, null, null]);
   assert.equal(rows.find((r) => r.id === 'aetna-H0523').stdApprovedPct, 97.61);
+  const va = rows.find((r) => r.id === 'humana-medicaid-va');
+  assert.deepEqual([va.stdRequests, va.stdDeniedPct, va.appeals, va.appealApproved, va.extendedApproved, va.extendedRequests], [32969, 11.68, 39, 7, 1, 35244]);
+  const tx = rows.find((r) => r.id === 'uhc-medicaid-texas-chip');
+  assert.equal(tx.program, 'chip-mco');
+  assert.match(rows.find((r) => r.id === 'uhc-ifp-al').note, /DRAFT watermark/);
 });
 
 test('quantile interpolates between closest ranks', () => {

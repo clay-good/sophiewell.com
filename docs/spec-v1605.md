@@ -98,7 +98,7 @@ deterministic answer the page gives, and the file never leaves the reader's mach
   USPSTF row carries its own recommendation URL, and its read date is the manifest's `fetchedAt` (one read
   for the whole list), not a per-row field. Older versions are not served; the changelog and the git history
   are the record between them.
-- **Built October 7, 2026 (first edition):** the curated PA metrics table, `data/pa-metrics/` from
+- **Built October 7, 2026:** the curated PA metrics table, `data/pa-metrics/` from
   `scripts/data/pa-metrics.json`: the 149 calendar-2025 Medicare Advantage contract reports of UnitedHealthcare
   (63, one PDF), Aetna (42, one PDF), Humana (32 PDFs) and Kaiser Permanente (12 rows from 9 regional PDFs; two
   contracts are posted in a Northern and a Southern California part), each with its URL and read date, and on
@@ -112,6 +112,17 @@ deterministic answer the page gives, and the file never leaves the reader's mach
     which cannot be, so its times are not carried at all.
   - A rate posted over zero requests (Kaiser's "0.00%" for 0 of 0) is stored as no rate.
   - UnitedHealthcare posts its appeal rate without the number of appeals and reports no extended reviews.
-  - **Not in this edition** (read and left for the next pass): Elevance and Centene (Wellcare) MA (per-contract
-    PDFs with no landing page, or refusing scripted requests), and every Medicaid managed care and Marketplace
-    report. CareSource and AmeriHealth Caritas Medicaid reports were not found on October 7, 2026.
+  - **Second pass, the same day:** Medicaid managed care, CHIP and Marketplace reports from the same payers,
+    228 rows in all: UnitedHealthcare's Medicaid file (45 plans) and Marketplace file (18 states; its last pages
+    carry a DRAFT watermark, noted on each row), Kaiser's state-level Medicaid and CHIP sections and its Hawaii
+    Marketplace issuer (7), and Humana's 9 state Medicaid reports (two layouts). A plan is filed under the program
+    its payer filed it in, except where its name says CHIP (`chip-mco`), a Medicare-Medicaid plan (`mmp`) or New
+    York's Essential Plan (`bhp`).
+  - The extended-review rate is checked per row but not summarized: Kaiser divides by the requests whose review
+    was extended, Humana's Virginia report by every request.
+  - A program and year with reports from fewer than **three payers** gets no market summary (two payers describe
+    those payers): the Marketplace rows (UnitedHealthcare and Kaiser only) are in the table, and the tool says
+    why it does not compare them.
+  - **Not in this edition:** Elevance and Centene (Wellcare, Ambetter) reports (per-contract PDFs with no landing
+    page, or refusing scripted requests), Aetna's Medicaid plans, Molina, Oscar, HCSC, Florida Blue, BCBS North
+    Carolina and L.A. Care. CareSource and AmeriHealth Caritas Medicaid reports were not found on October 7, 2026.

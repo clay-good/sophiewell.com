@@ -32,9 +32,10 @@ project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 - Payer Prior Authorization Report Check now sets each rate
   beside the market: the median and middle half of 149 Medicare Advantage
-  contract reports for 2025 from UnitedHealthcare, Aetna, Humana and Kaiser
-  Permanente, read from each payer's own posted report. The table is also a
-  free download on /open-data/, one row per report with its URL.
+  contract reports (UnitedHealthcare, Aetna, Humana, Kaiser Permanente) or 52
+  Medicaid managed care plan reports (UnitedHealthcare, Humana, Kaiser) for
+  2025, read from each payer's own posted report. The table of 228 reports is
+  also a free download on /open-data/, one row per report with its URL.
 - Open data: a new page, /open-data/, offers the datasets curated for the
   coverage tools as free downloads: the USPSTF A and B list (with a changelog
   of what each refresh added, removed or changed) and the preventive service
